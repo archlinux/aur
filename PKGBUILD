@@ -1,24 +1,23 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Li Ruibo <lymanrb@gmail.com>
+# Maintainer: Michael Clayfield <asdf me asdf michaelclayfield asdf com asdf>
+# Contributor: Li Ruibo <lymanrb@gmail.com>
 # Contributor: Douglas Soares de Andrade <dsa@aur.archlinux-br.org>
 # Contributor: Rick Rein <jeebusroxors@gmail.com>
 
 pkgname=psqlodbc
-pkgver=13.00.0000
+pkgver=16.00.0000
 pkgrel=1
 pkgdesc="PostgreSQL ODBC driver"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('GPL')
 url="http://www.postgresql.org"
 depends=('unixodbc' 'postgresql-libs')
 makedepends=('postgresql')
 install=psqlodbc.install
 source=(https://ftp.postgresql.org/pub/odbc/versions/src/psqlodbc-$pkgver.tar.gz)
-sha256sums=('4f156931b44d78401abfc2b72e512147a02b836677f8aac610b812f12e08910d')
+sha256sums=('afd892f89d2ecee8d3f3b2314f1bd5bf2d02201872c6e3431e5c31096eca4c8b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-#  sed -i 's|#define DEFAULT_PGSOCKET_DIR.*|#define DEFAULT_PGSOCKET_DIR "/run/postgresql"|' socket.h
   ./configure --prefix=/usr
   make
 }
