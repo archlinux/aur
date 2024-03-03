@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.7.7.arch1
+pkgver=6.7.8.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -69,9 +69,9 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('256b8b44570ddbe266eb3ad0c2cba2616f1609b4a3de5014a3da5512907b14d9'
+sha256sums=('469ff46b98685df13b56c98417c64ba7a30f8a45baf34aa99f07935e1bf65c18'
             'SKIP'
-            '47208683675e5ad065c9a3821aa975fdb3c37d7d7d77222da4d6f8c3f09827d1'
+            '28e63905288dc1cee77a2a157887aa34cdf0e931e4f11b8e58f0f7dafd41f462'
             'SKIP'
             '153e7d5193cc7ce0dbf005304175c116c3abf4bb9b885cfc675bb735400a933e'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
@@ -136,7 +136,7 @@ prepare() {
   diff -u ../config .config || :
   
   ## Make use of modprobed-db, if installed
-  ## To do this, you need to enable copy the database into this directory and enable the relevant lines 
+  ## To do this, you need to copy the database into this directory and enable the relevant lines 
   ## at the top of this file!
   # make LSMOD=../modprobed.db localmodconfig 
 
