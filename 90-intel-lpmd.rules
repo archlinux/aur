@@ -1,0 +1,6 @@
+# Turn off intel_lpmd when running on power,
+# and set to auto when running on battery.
+# Rules thanks to 
+# https://github.com/intel/intel-lpmd/issues/24#issuecomment-1973348960
+ACTION=="change", SUBSYSTEM=="power_supply", KERNEL!="hidpp_battery*", ATTR{type}=="Mains", ATTR{online}=="0", RUN+="/usr/bin/intel_lpmd_control AUTO"
+ACTION=="change", SUBSYSTEM=="power_supply", KERNEL!="hidpp_battery*", ATTR{type}=="Mains", ATTR{online}=="1", RUN+="/usr/bin/intel_lpmd_control OFF"
