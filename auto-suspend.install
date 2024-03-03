@@ -1,0 +1,6 @@
+post_install() {
+  echo "* To set up and complete the installation, see:"
+  echo "*     /usr/share/doc/auto-suspend/README"
+  echo "*     /etc/auto-suspend.conf"
+  echo "* * * * * * * * * * * * * * * * * * * * * * * *"
+}

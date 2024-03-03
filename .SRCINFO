@@ -1,0 +1,18 @@
+pkgbase = auto-suspend
+	pkgdesc = A simple but handy system monitor in pure bash
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/loh-tar/auto-suspend
+	install = auto-suspend.install
+	arch = any
+	license = GPL-3.0-or-later
+	depends = bash
+	depends = iputils
+	depends = grep
+	depends = procps-ng
+	depends = findutils
+	backup = etc/auto-suspend.conf
+	source = auto-suspend-0.8.1.tar.gz::https://github.com/loh-tar/auto-suspend/archive/v0.8.1.tar.gz
+	sha256sums = 81d52fc9822c508a6442d7cafe483bea8e4e4140bb491e51aa09023ba9a89f42
+
+pkgname = auto-suspend
