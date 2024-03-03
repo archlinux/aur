@@ -1,0 +1,7 @@
+[Desktop Entry]
+Categories=Development;
+Exec=r-quick-share
+Icon=r-quick-share
+Name=RQuickShare
+Terminal=false
+Type=Application
