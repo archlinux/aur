@@ -3,7 +3,7 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=060.r6794.4980bad
-pkgrel=11
+pkgrel=12
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracutdevs/dracut'
@@ -146,7 +146,7 @@ prepare() {
 
   # apply all patches
   for p in ../*.patch ; do
-    patch -Np1 < ../$p
+    patch -Np1 < $p
     P=$(echo $p | sed 's/^\.\.\///g' | sed 's/\.patch$//g')
     S=$(cat ../$p | grep 'Subject:' | sed 's/^Subject:\ \[PATCH\]\ //g')
     printf "%s:\t%s\n" "$P" "$S" >> manifest
