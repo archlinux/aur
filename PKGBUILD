@@ -1,8 +1,8 @@
 # Maintainer: Forest Crossman <cyrozap at gmail dot com>
 
 pkgname=digilent.waveforms
-pkgver=3.21.3
-pkgrel=5
+pkgver=3.22.1
+pkgrel=1
 pkgdesc="Digilent WaveForms Application, Runtime and SDK"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://digilent.com/reference/software/waveforms/waveforms-3/start"
@@ -20,11 +20,11 @@ source_armv6h=("https://digilent.s3.amazonaws.com/Software/Waveforms2015/${pkgve
 source_armv7h=($source_armv6h)
 source_i686=("https://digilent.s3.amazonaws.com/Software/Waveforms2015/${pkgver}/${pkgname}_${pkgver}_i386.deb")
 source_x86_64=("https://digilent.s3.amazonaws.com/Software/Waveforms2015/${pkgver}/${pkgname}_${pkgver}_amd64.deb")
-sha256sums_aarch64=('efb303f69d1efe707c6af8d3656380e85fcef5ce0624d5cb2bd48f1dc82f0713')
-sha256sums_armv6h=('e46d0f3cbed485090fa46ddc1eed6d637a5232ff66dffdc713859d1fbf2e1df5')
+sha256sums_aarch64=('cc561673233a88d3da561d5afe0d2b681a6e85ddf0818b21a75e7d792db1ee32')
+sha256sums_armv6h=('6174b16496a9bc4dcc1bcff27557d69f94c51dbf237065b0334dbd3953e10a55')
 sha256sums_armv7h=($sha256sums_armv6h)
-sha256sums_i686=('64be424aa8e04039796a9633513ba7a7ad2fe0e1315bc03058d60a19617dcfcd')
-sha256sums_x86_64=('5ec37e051cf15b28572ac141f66a1a4ce6a4971c42d5c37cbba58cfd5d30d7ea')
+sha256sums_i686=('b22888b88a2e3c5e01cc45396b15b1a8da201e04d6fbaa8363abd0db4b836748')
+sha256sums_x86_64=('53ef6638c9111074e3c1711271541b1787da68ab422a7aa41a59dbbac7d17f13')
 
 package() {
   # Extract
