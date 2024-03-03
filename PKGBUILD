@@ -16,7 +16,7 @@ unset _pkgtype
 ## basic info
 _pkgname="ryujinx"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.1.1202
+pkgver=1.1.1217
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://github.com/Ryujinx/Ryujinx"
@@ -87,13 +87,13 @@ build() {
     -r linux-x64
     --nologo
     --self-contained true
-    -p:DebugType=embedded
-    -p:ExtraDefineConstants=DISABLE_UPDATER%2CFORCE_EXTERNAL_BASE_DIR
+    -p:DebugType=none
+    -p:ExtraDefineConstants=DISABLE_UPDATER
     -p:Version=${pkgver%%.r*}
   )
 
-  dotnet publish "${_args[@]}" -o publish     src/Ryujinx
-  dotnet publish "${_args[@]}" -o publish_ava src/Ryujinx.Ava
+  dotnet publish "${_args[@]}" -o publish_ava src/Ryujinx
+  dotnet publish "${_args[@]}" -o publish_gtk src/Ryujinx.Gtk3
 }
 
 package() {
@@ -101,13 +101,13 @@ package() {
 
   # program
   install -dm755 "$pkgdir/opt/ryujinx"
-  cp --reflink=auto -r publish/*     "$pkgdir/opt/ryujinx/"
+  cp --reflink=auto -r publish_gtk/* "$pkgdir/opt/ryujinx/"
   cp --reflink=auto -r publish_ava/* "$pkgdir/opt/ryujinx/"
 
   # symlinks
   install -dm755 "$pkgdir/usr/bin"
-  ln -s "/opt/ryujinx/Ryujinx"     "$pkgdir/usr/bin/ryujinx"
-  ln -s "/opt/ryujinx/Ryujinx.Ava" "$pkgdir/usr/bin/ryujinx.ava"
+  ln -s "/opt/ryujinx/Ryujinx" "$pkgdir/usr/bin/ryujinx"
+  ln -s "/opt/ryujinx/Ryujinx.Gtk3" "$pkgdir/usr/bin/ryujinx.gtk"
 
   # .desktop
   install -Dm644 distribution/linux/Ryujinx.desktop  "$pkgdir/usr/share/applications/ryujinx.desktop"
@@ -126,7 +126,7 @@ package() {
   find "$pkgdir" -type d -exec chmod 755 {} \;
   find "$pkgdir" -type f -exec chmod 644 {} \;
   chmod 755 "$pkgdir/opt/ryujinx/Ryujinx"
-  chmod 755 "$pkgdir/opt/ryujinx/Ryujinx.Ava"
+  chmod 755 "$pkgdir/opt/ryujinx/Ryujinx.Gtk3"
   chmod 755 "$pkgdir/opt/ryujinx/Ryujinx.sh"
 
   # writable log directory
