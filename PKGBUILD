@@ -42,6 +42,6 @@ package() {
 	install -Dv "target/raspotify/${_pkgname}" -t "${pkgdir}/usr/bin/"
 	install -Dvm644 "contrib/${_pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system/"
 	install -Dvm644 "contrib/${_pkgname}.user.service" "${pkgdir}/usr/lib/systemd/user/${_pkgname}.service"
-	install -Dvm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
+	install -Dvm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
