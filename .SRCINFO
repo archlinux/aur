@@ -1,20 +1,22 @@
 pkgbase = pcsclite-git
 	pkgdesc = Middleware to access a smart card using SCard API (PC/SC)
-	pkgver = 1.9.9.r0.g15c16c7
+	pkgver = 2.0.3.r0.gc4e7f6f9
 	pkgrel = 1
 	url = https://pcsclite.apdu.fr/
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = git
 	makedepends = autoconf-archive
 	makedepends = pkgconf
+	makedepends = polkit
 	depends = glibc
 	depends = libsystemd.so
 	depends = libudev.so
-	depends = python
 	depends = systemd
-	provides = pcsclite=1.9.9.r0.g15c16c7
+	optdepends = ccid: USB Chip/Smart Card Interface Devices driver
+	optdepends = python: API call trace logging with the pcsc-spy
+	provides = pcsclite=2.0.3.r0.gc4e7f6f9
 	provides = libpcsclite.so
 	provides = libpcscspy.so
 	conflicts = pcsclite

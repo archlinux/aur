@@ -2,14 +2,16 @@
 # Previous maintainer: Sean Enck <enckse@gmail.com>
 
 pkgname=pcsclite-git
-pkgver=1.9.9.r0.g15c16c7
+pkgver=2.0.3.r0.gc4e7f6f9
 pkgrel=1
 pkgdesc="Middleware to access a smart card using SCard API (PC/SC)"
 arch=('i686' 'x86_64')
 url="https://pcsclite.apdu.fr/"
-license=('BSD')
-depends=('glibc' 'libsystemd.so' 'libudev.so' 'python' 'systemd')
-makedepends=('git' 'autoconf-archive' 'pkgconf')
+license=('BSD-3-Clause')
+depends=('glibc' 'libsystemd.so' 'libudev.so' 'systemd')
+makedepends=('git' 'autoconf-archive' 'pkgconf' 'polkit')
+optdepends=('ccid: USB Chip/Smart Card Interface Devices driver'
+            'python: API call trace logging with the pcsc-spy')
 provides=("pcsclite=$pkgver" 'libpcsclite.so' 'libpcscspy.so')
 conflicts=('pcsclite')
 source=("git+https://salsa.debian.org/rousseau/PCSC.git")
