@@ -18,6 +18,7 @@ depends=(
   dbus
   ffmpeg
   gtk3
+  appmenu-gtk-module
   libpulse
   libxss
   libxt

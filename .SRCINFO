@@ -29,6 +29,7 @@ pkgbase = firefox-globalmenu
 	depends = dbus
 	depends = ffmpeg
 	depends = gtk3
+	depends = appmenu-gtk-module
 	depends = libpulse
 	depends = libxss
 	depends = libxt
