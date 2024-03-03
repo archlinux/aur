@@ -1,6 +1,6 @@
 pkgbase = bmv-bin
 license = MIT
-pkgdesc = bulk-rename files from stdin
+pkgdesc = drop-in mv replacement with bulk moving support
 pkgver = 0.0.8
 pkgrel = 1
 url = https://github.com/abenz1267/bmv
