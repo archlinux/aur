@@ -8,7 +8,7 @@ pkgdesc="A cross-platform context-aware keyremapper"
 arch=(i686 x86_64 armv6h armv7h aarch64)
 url=https://github.com/houmain/keymapper
 license=(GPL3)
-depends=(gcc-libs libusb libx11 dbus wayland)
+depends=(gcc-libs libxkbcommon libusb libx11 dbus wayland)
 makedepends=(cmake git)
 conflicts=(${_pkgname})
 provides=(${_pkgname})
@@ -17,7 +17,7 @@ sha256sums=(SKIP)
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
