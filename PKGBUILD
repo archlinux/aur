@@ -12,7 +12,7 @@ pkgname=(
 )
 
 pkgver=r473.c2e02af
-pkgrel=1
+pkgrel=2
 pkgdesc="Rime 配置：雾凇拼音 | 长期维护的简体词库"
 arch=("any")
 url="https://github.com/iDvel/rime-ice"
@@ -76,9 +76,9 @@ build() {
 
   # 仅编译 _schemas 中列出方案所依赖的语料库，按方案名字符长度排序
   _compile_schemas=("${_schemas_deps[@]}" "${_schemas[@]}")
-  # for _schema_name in "${_compile_schemas[@]}";
-  #   do rime_deployer --compile "$_schema_name.schema.yaml";
-  # done
+  for _schema_name in "${_compile_schemas[@]}";
+    do rime_deployer --compile "$_schema_name.schema.yaml";
+  done
 
   find . -type l -delete
 
