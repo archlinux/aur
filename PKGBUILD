@@ -1,7 +1,7 @@
 # Maintainer: Darvin Delgado <dnmodder at gmail dot com>
 _sdkver=8.0.100
 pkgname=ryujinx-git
-pkgver=r3103.dcf10561b
+pkgver=r3239.bc4d99a07
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 arch=(x86_64)
@@ -42,7 +42,7 @@ build() {
 	_args="-c Release -r linux-x64 -p:Version=$(git describe --tags) -p:DebugType=embedded -p:ExtraDefineConstants=DISABLE_UPDATER%2CFORCE_EXTERNAL_BASE_DIR"
 
 	dotnet publish $_args -o ../publish --self-contained src/Ryujinx
-	dotnet publish $_args -o ../publish_ava --self-contained src/Ryujinx.Ava
+	dotnet publish $_args -o ../publish_sdl2_headless --self-contained src/Ryujinx.Headless.SDL2
 }
 
 package() {
@@ -53,12 +53,12 @@ package() {
 	install -D "Ryujinx/distribution/misc/Logo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/ryujinx.svg"
 
 	cp -R "publish/"* "$pkgdir/opt/ryujinx/"
-	cp -R "publish_ava/"* "$pkgdir/opt/ryujinx/"
+	cp -R "publish_sdl2_headless/"* "$pkgdir/opt/ryujinx/"
 
 	chmod +x "$pkgdir/opt/ryujinx/Ryujinx.sh"
 	ln -s "/opt/ryujinx/Ryujinx.sh" "$pkgdir/usr/bin/ryujinx"
 
 	desktop-file-edit --set-key="Exec" --set-value="ryujinx %f" "$pkgdir/usr/share/applications/ryujinx.desktop"
-	desktop-file-edit --set-key="StartupWMClass" --set-value="Ryujinx.Ava" "$pkgdir/usr/share/applications/ryujinx.desktop"
+	desktop-file-edit --set-key="StartupWMClass" --set-value="Ryujinx" "$pkgdir/usr/share/applications/ryujinx.desktop"
 	desktop-file-edit --set-icon="ryujinx" "$pkgdir/usr/share/applications/ryujinx.desktop"
 }
