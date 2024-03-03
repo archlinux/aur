@@ -70,7 +70,6 @@ optdepends=(
   'xz: xz compression'
 )
 checkdepends=(
-  'base-devel'
   'btrfs-progs'
   'connman'
   'dash'
@@ -91,9 +90,6 @@ checkdepends=(
   'pigz'
   'qemu'
   'squashfs-tools'
-  'strace'
-  'tcpdump'
-  'vi'
 )
 provides=("${pkgname%-git}" 'initramfs')
 conflicts=("${pkgname%-git}")
