@@ -14,10 +14,16 @@ sha256sums=('3e6da0582ebc599e5b624c899faec3ad78e69cce4e4cd0ce0d3529f279a5fd51')
 
 prepare() {
   tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
-  cd "$srcdir"/FeatherPDF-v."$pkgver"
 }
 
 package() {
-  cd "${srcdir}"/FeatherPDF-v."${pkgver}"/dist/linux/
-  install -Dm755 featherpdf "${pkgdir}/usr/bin/feather-pdf"
+  # Instalar el script Python
+  install -Dm755 "$srcdir"/FeatherPDF-v."${pkgver}"/src/featherpdf.py "${pkgdir}/usr/local/bin/feather-pdf.py"
+  
+  # Crear un script shell para ejecutar upd8all.py y copiarlo a /usr/local/bin
+  echo '#!/bin/bash' > feather-pdf
+  echo 'python /usr/local/bin/feather-pdf.py "$@"' >> feather-pdf
+  chmod +x feather-pdf
+  install -Dm755 feather-pdf "${pkgdir}/usr/local/bin/feather-pdf"
 }
+
