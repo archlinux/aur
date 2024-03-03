@@ -1,7 +1,7 @@
 pkgbase = android-x86-libevent
 	pkgdesc = Event notification library (android)
 	pkgver = 2.1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libevent.org/
 	arch = any
 	license = BSD
@@ -16,9 +16,11 @@ pkgbase = android-x86-libevent
 	options = !emptydirs
 	source = https://github.com/libevent/libevent/releases/download/release-2.1.12-stable/libevent-2.1.12-stable.tar.gz
 	source = https://github.com/libevent/libevent/releases/download/release-2.1.12-stable/libevent-2.1.12-stable.tar.gz.asc
+	source = 0001-Force-compile-with-pthreads.patch
 	validpgpkeys = B35BF85BF19489D04E28C33C21194EBB165733EA
 	validpgpkeys = 9E3AC83A27974B84D1B3401DB86086848EF8686D
 	sha256sums = 92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb
 	sha256sums = SKIP
+	sha256sums = a102b8359dd36e8823c3dde23a1d39ffa758cc68c3cbfa6b65633990cec0ecac
 
 pkgname = android-x86-libevent
