@@ -2,7 +2,7 @@
 #Contributor: Janrupf <business.janrupf@gmail.com>
 
 pkgname=modular
-pkgver=0.4.1
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Modular installation tool - Repository: https://github.com/Sharktheone/arch-mojo"
 url="https://developer.modular.com/download"
