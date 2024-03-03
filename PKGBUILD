@@ -3,7 +3,7 @@
 
 _pkgname=libtg_owt
 pkgname=${_pkgname}-git
-pkgver=0.git.r325.10d5f4bf
+pkgver=0.git.r397.afd9d5d3
 pkgrel=1
 pkgdesc='WebRTC library - static linked, git version'
 arch=('x86_64')
@@ -14,16 +14,16 @@ makedepends=('git' 'unzip' 'cmake' 'protobuf' 'libxrandr' 'libxcomposite' 'opens
              'ffmpeg' 'libva' 'opus' 'yasm' 'libjpeg-turbo' 'pipewire' 'libxtst' 'abseil-cpp' 'libepoxy')
 options=('staticlibs')
 source=("tg_owt::git+${url}.git"
-        "libvpx::git+https://chromium.googlesource.com/webm/libvpx.git"
-        "libyuv::git+https://chromium.googlesource.com/libyuv/libyuv.git"
-        "pipewire::git+https://github.com/PipeWire/pipewire.git"
-        "0001-fix-h265_pps_parser-fix-missing-cstdint-include.patch"
+        "abseil-cpp::git+https://github.com/abseil/abseil-cpp.git"
+        "crc32c::git+https://github.com/google/crc32c.git"
+        "libsrtp::git+https://github.com/cisco/libsrtp.git"
+        "libyuv::git+https://gitlab.com/chromiumsrc/libyuv.git"
 )
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'e123c6b8e3cc0445ee9d843ff018500ab1203e6e4fb966a2409275a238bb26903e7d635929aab075cf4d5ce2098d3d1f101f9d5c2b81c6fb24fdcd9ddf85443b')
+        'SKIP')
 provides=('libtg_owt')
 conflicts=('libtg_owt')
 
@@ -35,13 +35,12 @@ pkgver(){
 prepare() {
   cd tg_owt
 
-  patch -p1 < "$srcdir/0001-fix-h265_pps_parser-fix-missing-cstdint-include.patch"
-
   git submodule init
-  git config submodule.src/third_party/libvpx/source/libvpx.url "$srcdir"/libvpx
-  git config submodule.src/third_party/libyuv.url "$srcdir"/libyuv
-  git config submodule.src/third_party/pipewire.url "$srcdir"/pipewire
-  git submodule update
+  git config submodule.src/third_party/abseil-cpp.url "$srcdir/abseil-cpp"
+  git config submodule.src/third_party/crc32c/src.url "$srcdir/crc32c"
+  git config submodule.src/third_party/libsrtp.url "$srcdir/libsrtp"
+  git config submodule.src/third_party/libyuv.url "$srcdir/libyuv"
+  git -c protocol.allow=never -c protocol.file.allow=always submodule update
 }
 
 build() {
