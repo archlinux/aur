@@ -1,6 +1,6 @@
 # Maintainer: Felipe Alfonso Gonzalez <f.alfonso@res-ear.ch>
 pkgname=feather-pdf
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="FeatherPDF is an ultra-lightweight PDF viewer."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('python' 'python-pip' 'python-pyqt5')
 
 source=("https://github.com/felipealfonsog/FeatherPDF/archive/refs/tags/v.${pkgver}.tar.gz")
 
-sha256sums=('3e48de8a0168c4a69b58e8a8020b3e495939da2202ef625dcaece15613df3f1a')
+sha256sums=('f90e5a2aea0aa0c640299825c695b2392ff49a1d8ac62c9a446fb3af2d2a3aa7')
 
 prepare() {
   tar xf "v${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
@@ -30,6 +30,6 @@ package() {
   install -Dm644 "$srcdir"/FeatherPDF-v"${pkgver}"/src/fpdf-iconlogo.png "${pkgdir}/usr/share/pixmaps/feather-pdf.png"
 
   # Install the .desktop file
-  install -Dm644 "$srcdir"/feather-pdf.desktop "${pkgdir}/usr/share/applications/feather-pdf.desktop"
+  install -Dm644 "$srcdir"/FeatherPDF-v"${pkgver}"/src/feather-pdf.desktop "${pkgdir}/usr/share/applications/feather-pdf.desktop"
 }
 
