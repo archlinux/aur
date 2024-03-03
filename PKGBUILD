@@ -7,14 +7,12 @@ pkgdesc='Simple script to install packages from Teamspeak 3'\''s addon site. Aut
 arch=('any')
 url='https://github.com/NekoPavel/teamspeak3-addon-installer'
 license=('WTFPL')
-depends=('bash' 'teamspeak3')
+depends=('bash' 'teamspeak3' 'pacman-contrib')
 source=('teamspeak3-install-addon' 'WTFPL')
 sha256sums=('41662e057318496023a0f59f02b420d65a7e988bc0e2bba017eadfc007823b93'
             '7637386b5f81e8a719ca336233149005e5fa28b5e6054ea7b67de49355b0ad40')
 
 package() {
-  mkdir -p -- "$pkgdir/usr/bin"
-  cp "teamspeak3-install-addon" "$pkgdir/usr/bin/teamspeak3-install-addon"
-  chmod +x $pkgdir/usr/bin/teamspeak3-install-addon
+  install -D "teamspeak3-install-addon" "$pkgdir/usr/bin/teamspeak3-install-addon"
   install -Dm644 ./WTFPL "$pkgdir/usr/share/licenses/$pkgname/WTFPL"
 }
