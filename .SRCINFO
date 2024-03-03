@@ -1,7 +1,7 @@
 pkgbase = vrc-get
 	pkgdesc = Open Source command line client of VRChat Package Manager
-	pkgver = 1.7.0
-	pkgrel = 2
+	pkgver = 1.7.1
+	pkgrel = 1
 	url = https://github.com/anatawa12/vrc-get
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = vrc-get
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = vrc-get-1.7.0.tar.gz::https://github.com/anatawa12/vrc-get/archive/refs/tags/v1.7.0.tar.gz
-	sha256sums = 585c3efec6ff57b03ad820da5387b63af26b54b0202d4e82dbb9d977c0d0aef3 
+	source = vrc-get-1.7.0.tar.gz::https://github.com/anatawa12/vrc-get/archive/refs/tags/v1.7.1.tar.gz
+	sha256sums = 6698ba5e50367b6e966699210fdeb6af543c6e82d08eb9ba9040837e745dc404
 
 pkgname = vrc-get
