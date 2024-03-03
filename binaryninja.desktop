@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Binary Ninja
+Exec=/opt/binaryninja/binaryninja
+Icon=/opt/binaryninja/docs/img/logo.png
+Type=Application
+Categories=Development;Debugger;Profiling;

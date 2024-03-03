@@ -1,104 +1,42 @@
-# Maintainer: David Manouchehri
+# Maintainer: apropos <jj@toki.la>
+# Contributor: David Manouchehri
 # Contributor: Alex Palaistras <alex+archlinux@deuill.org>
 # Contributor: Elen Eisendle
 # Contributor: Spenser Reinhardt
 
-_pkgname="binaryninja"
-_branch="stable"
-_edition="-personal"
-pkgname="${_pkgname}${_edition}"
-[[ "${_branch}" != "stable" ]] && pkgname="${pkgname}-${_branch}"
-pkgdesc="Binary Ninja is a binary multi-tool and reversing platform"
+pkgname=binaryninja-personal
+_pkgname=binaryninja
+pkgver=4.0.4911
+pkgrel=1
+pkgdesc="An interactive decompiler, disassembler, debugger, and binary analysis platform. This package is for the Personal Edition and requires both an installer zip and a license."
+arch=('x86_64')
 url="https://binary.ninja"
 license=('custom:Binary Ninja License Agreement')
-arch=('x86_64')
-conflicts=("${_pkgname}")
-provides=("${_pkgname}")
-pkgver=2.4.2846
-pkgrel=1 # reset after new release, and .srcinfo
-install="${_pkgname}.install"
-makedeps=('curl' 'perl')
 depends=(
-	'python2' 'glibc' 'glib2' 'gcc-libs-multilib' 'pcre' 'zlib'
+	'python' 'glibc' 'glib2' 'gcc-libs-multilib' 'pcre' 'zlib'
 	'libssh2' 'libnghttp2' 'libpsl' 'libxcb' 'icu' 'keyutils'
 	'libxext' 'libx11' 'libglvnd' 'krb5' 'e2fsprogs' 'libffi'
-	'libxau' 'libxdmcp' 'libcurl-compat' 'openssl-1.0' 'qt5-base'
+	'libxau' 'libxdmcp' 'libcurl-compat' 'openssl' 'qt5-base'
 )
 optdepends=('gtk-update-icon-cache: icon support')
-# https://binary.ninja/recover/
 source=(
-	"file://BinaryNinja${_edition}.zip"
-	"binaryninja.png"
+	"file://BinaryNinja-personal.zip" # https://binary.ninja/recover/
+	"${_pkgname}.png"
+	"${_pkgname}.desktop"
 )
-_hash=$(curl -s https://binary.ninja/js/hashes.js | perl -pe "s/.*Ninja${_edition}.zip\":\s\"([\da-f]+)\".*/\$1/g")
 sha256sums=(
-	"${_hash}"
-	'ac2e652f617d5ef8aaa34a5113164f51f3f673c872a635d29c93878a00650bf8'
+	'e030971677465e1b2c3c7e3dfa380553a5f306eb088f028194845ab52bdc6739'
+	'4f318001e7d39279ce063ef42077bae03e95c112aa203a4be3ea3d913c34327e'
+	'a1e20e8176292c67fcc50d3444e95e31ee91ff6cf861f8529554152ed7bd8139'
 )
 
-pkgver() {
-	curl -s https://binary.ninja/js/changelog.js | perl -pe 's/.*?version":\s"(\d+\.\d+\.\d+)".*/$1/'
-}
-
-_cp_files() {
-	# installs files, trims `${srcdir}/${_pkgname}` to allow outpath directly
-	mode="${1}"
-	inpath="${2}" # single path
-	outpath="${3}"
-	[[ ${argc} -gt 3 ]] && depth="${4}" # unset for no limit
-	[[ ${argc} -gt 4 ]] && skip="${5}" # comma separated list
-	# set $cmd based on depth's existence
-	[ -z ${depth+x} ] && cmd="find ${inpath} -type f" || cmd="find ${inpath} -maxdepth ${depth} -type f"
-	for file in $(${cmd}); do
-		if [ -z ${skip+x} ]; then # dont bother if unset
-			for s in $(echo ${skip}| sed 's/,/ /g'); do
-				[[ "${file}" =~ "${s}" ]] && c=0 && break
-			done
-			[ ! -z ${c+x} ] && unset c && continue # is skipped ? unset+continue : move file
-		fi
-		outfile=$(echo ${file} | perl -pe "s|${srcdir}/${_pkgname}|${outpath}|g") # trim
-		install -m "${mode}" "${file}" "${outfile}"
-	done
-}
-
-prepare() {
-	echo "[Desktop Entry]
-Name=Binary Ninja ${_edition}
-Exec=/usr/bin/${_pkgname}
-Icon=/opt/binaryninja/docs/img/logo.png
-Type=Application
-Categories=Development;Debugger;Profiling;" > "${srcdir}/binaryninja.desktop"
-}
+# pkgver() { curl -s https://binary.ninja/js/changelog.js | perl -pe 's/.*?version":\s"(\d+\.\d+\.\d+)".*/$1/' }
 
 package() {
-	_srcdir="${srcdir}/${_pkgname}"
-	destdir="${pkgdir}/opt/${_pkgname}"
-	[[ "${_branch}" != "stable" ]] && destdir="${destdir}-${_branch}"
-	
-	msg2 "Creating directories"
-	install -dm 755 "${pkgdir}/usr/share/icons/hicolor/128x128/apps/"
-	install -dm 755 "${pkgdir}/usr/share/applications/"
-	for dir in $(find "${_srcdir}" -type d); do
-		dir=$(echo $dir | perl -pe "s|${_srcdir}|${destdir}|g")
-		install -dm 755 "${dir}"
-	done
-	
-	msg2 "Copying non-executable files"
-	install -m 644 "${srcdir}/binaryninja.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/"
-	install -m 644 "${srcdir}/binaryninja.desktop" "${pkgdir}/usr/share/applications/"
-	install -m 644 "${_srcdir}/qt.conf" "${destdir}/qt.conf"
-	_cp_files 644 "${_srcdir}/docs" "${destdir}"
-	_cp_files 644 "${_srcdir}/api-docs" "${destdir}"
-	_cp_files 644 "${_srcdir}/scc-docs" "${destdir}"
-	_cp_files 644 "${_srcdir}/types" "${destdir}"
-	
-	msg2 "Copying executable files"
-	_cp_files 755 "${_srcdir}/" "${destdir}" "0" "qt.conf"
-	_cp_files 755 "${_srcdir}/python" "${destdir}"
-	_cp_files 755 "${_srcdir}/scripts" "${destdir}"
-	_cp_files 755 "${_srcdir}/plugins" "${destdir}"
-	_cp_files 755 "${_srcdir}/qt" "${destdir}"
-	_cp_files 755 "${_srcdir}/examples" "${destdir}"
-}
+	mkdir "${pkgdir}/opt"
+	install -d "${pkgdir}"/usr/share/{icons,applications}
 
-# vim:set et sw=2 sts=2 tw=80:
+	cp -r "${srcdir}/${_pkgname}" "${pkgdir}/opt/${_pkgname}"
+	install -m644 "${srcdir}/${_pkgname}.png" "${pkgdir}/usr/share/icons/"
+	install -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/"
+}
