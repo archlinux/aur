@@ -7,6 +7,8 @@ arch=(x86_64)
 url="https://maddymakesgamesinc.itch.io/celeste64"
 license=('custom:celeste64')
 options=('!strip')
+provides=(celeste64)
+conflicts=(celeste64)
 _archive_file="Celeste64-v$pkgver-Linux-x64.zip"
 source=("https://github.com/ExOK/Celeste64/releases/download/v$pkgver/$_archive_file"
         "celeste64.desktop")
