@@ -1,4 +1,4 @@
-# Mantenedor: Felipe Alfonso Gonzalez <f.alfonso@res-ear.ch>
+# Maintainer: Felipe Alfonso Gonzalez <f.alfonso@res-ear.ch>
 pkgname=feather-pdf
 pkgver=1.0.0
 pkgrel=1
@@ -39,32 +39,12 @@ Comment=Ultra-lightweight PDF viewer
 Exec=feather-pdf
 Icon=feather-pdf
 Terminal=false
-Categories=Office;Utility;
+Categories=Utility;Office;
 EOF
   install -Dm644 feather-pdf.desktop "${pkgdir}/usr/share/applications/feather-pdf.desktop"
 
-  # Update the GNOME menu
-  if [ -x "$(command -v update-desktop-database)" ]; then
-    update-desktop-database -q "${pkgdir}/usr/share/applications"
-  fi
-
-  # Update the KDE menu
+  # Update the MIME database
   if [ -x "$(command -v update-mime-database)" ]; then
-    update-mime-database "${pkgdir}/usr/share/applications"
-  fi
-
-  # Update the menu for Fluxbox
-  if [ -x "$(command -v fluxbox-generate_menu)" ]; then
-    fluxbox-generate_menu
-  fi
-
-  # Update the menu for Blackbox
-  if [ -x "$(command -v blackbox-generate_menu)" ]; then
-    blackbox-generate_menu
-  fi
-
-  # Update the Enlightenment menu
-  if [ -x "$(command -v enlightenment_remote)" ]; then
-    enlightenment_remote -menu-cache-update
+    update-mime-database "${pkgdir}/usr/share/mime"
   fi
 }
