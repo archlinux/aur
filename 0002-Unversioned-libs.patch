@@ -1,0 +1,10 @@
+--- a/configure
++++ b/configure
+@@ -584,6 +584,7 @@
+ else
+   as_ln_s='cp -pR'
+ fi
++as_ln_s='cp -pR'
+ rm -f conf$$ conf$$.exe conf$$.dir/conf$$.file conf$$.file
+ rmdir conf$$.dir 2>/dev/null
+ 
