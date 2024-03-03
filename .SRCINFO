@@ -1,11 +1,12 @@
 pkgbase = python-zigpy-znp
 	pkgdesc = Zigpy support for common Texas Instruments ZNP radio modules
 	pkgver = 0.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zigpy/zigpy-znp
 	arch = any
 	license = GPL3
 	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-mock
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
