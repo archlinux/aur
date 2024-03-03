@@ -1,34 +1,36 @@
-# Maintainer: AlphaJack <alphajack at tuta dot io>
-
-pkgname="ultimmc-bin"
-pkgver=nightly
-pkgrel=4
-pkgdesc="Free, open source launcher and instance manager for Minecraft"
+# Maintainer: Neptune <neptune@b7s.ru>
+pkgname=ultimmc-bin
+pkgver=1.6
+pkgrel=3
+pkgdesc="Free, open source launcher and instance manager for Minecraft."
+arch=('x86_64')
 url="https://github.com/UltimMC/Launcher"
-license=("custom")
-arch=("x86_64")
-provides=("ultimmc")
-depends=("java-runtime" "libgl" "qt5-base" "zlib")
-optdepends=("jre8-openjdk: java for minecraft < 1.17"
-            "jre-openjdk: java for minecraft >= 1.17"
-            "jprofiler: performance metrics"
-            "mcedit-unified: world editor")
-source=("$pkgname-$pkgver.zip::https://nightly.link/UltimMC/Launcher/workflows/main/develop/mmc-cracked-lin64.zip"
-        "ultimmc.svg"
-        "ultimmc.desktop"
-        "ultimmc")
-sha256sums=("SKIP"
-            "8c2c1ff1f4ce4ca7a7453ec1f7f666087f4319db7c654f81a7827a34f0c17e33"
-            "65ce52f857d84fb7c6f1c615ac06e8bbfb8d3ad6e6352b818d500b99de733ad0"
-            "054961d8373913919e5fda6d2c8cbb7301cfad16bc0347928b5d04ebbe0ce4e0")
+license=('Apache')
+depends=('zlib' 'opengl-driver' 'qt5-base' 'qt5-x11extras' 'qt5-svg' 'xorg-xrandr' 'zenity' 'wget')
+source=("$pkgname-$pkgver.zip::https://nightly.link/UltimMC/ultimmc-deb/workflows/ci/master/UltimMC.zip"
+        "https://raw.githubusercontent.com/UltimMC/ultimmc-deb/master/ultimmc/usr/share/man/man1/ultimmc.1")
+sha256sums=('SKIP'
+            'ef4957acc5be202049b46039512418df6556e409b816967b4949940bfadc2933')
 
-package(){
- cd "UltimMC/bin"
- find -type f -exec \
-  install -D -m 644 {} "$pkgdir/usr/lib/ultimmc/"{} \;
- find "$pkgdir" -type f \( -name "*.so" -o -name "UltimMC" \) -exec \
-  chmod +x {} \;
- install -D -m 644 "$srcdir/ultimmc.svg" "$pkgdir/usr/share/pixmaps/ultimmc.svg"
- install -D -m 644 "$srcdir/ultimmc.desktop" "$pkgdir/usr/share/applications/ultimmc.desktop"
- install -D -m 755 "$srcdir/ultimmc" "$pkgdir/usr/bin/ultimmc"
+prepare() {
+    mkdir -p "$pkgname-$pkgver"
+    bsdtar -xf ultimmc.deb -C "$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
+    bsdtar -xf data.tar.zst -C "$srcdir/$pkgname-$pkgver"
+}
+
+package() {
+    mkdir -p "$pkgdir/opt/ultimmc"
+    mkdir -p "$pkgdir/usr/share/applications"
+    mkdir -p "$pkgdir/usr/bin"
+    mkdir -p "$pkgdir/usr/share/man/man1"
+
+    cp -R "$srcdir/$pkgname-$pkgver/opt/ultimmc/" -T "$pkgdir/opt/ultimmc/"
+    cp -R "$srcdir/$pkgname-$pkgver/usr/share/applications/" -T "$pkgdir/usr/share/applications/"
+
+    install -m644 -D "$srcdir/$pkgname-$pkgver/usr/share/applications/ultimmc.desktop" "$pkgdir/usr/share/applications/ultimmc.desktop"
+    install -m644 -D "$srcdir/$pkgname-$pkgver/opt/ultimmc/icon.svg" "$pkgdir/opt/ultimmc/icon.svg"
+    install -m755 -D "$srcdir/$pkgname-$pkgver/opt/ultimmc/run.sh" "$pkgdir/opt/ultimmc/run.sh"
+    install -m755 -D "$srcdir/ultimmc.1" "$pkgdir/usr/share/man/man1/ultimmc.1"
+    ln -s "/opt/ultimmc/run.sh" "$pkgdir/usr/bin/ultimmc"
 }
