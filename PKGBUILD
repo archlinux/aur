@@ -3,7 +3,7 @@
 pkgname=harmonyvpktool
 pkgdesc="An all new Titanfall VPK unpacker. Over 2x faster than the most popular alternative! (ALPHA pre-release)"
 pkgver=2.0.0.alpha.2
-pkgrel=2
+pkgrel=3
 url="https://github.com/harmonytf/HarmonyVPKTool"
 license=('GPL3')
 arch=('x86_64')
@@ -23,9 +23,12 @@ Name=Harmony VPK Tool\n\
 Terminal=false\n\
 Type=Application" > $pkgname.desktop
 
+# Only build the executable
+  cd HarmonyVPKTool/src-tauri
+  sed -i '/"bundle": {/,/},/{/"active":/s/true/false/}' tauri.conf.json
+
 # Install dependencies
   export CARGO_HOME="$srcdir/CARGO_HOME"
-  cd HarmonyVPKTool
   yarn
 }
 
