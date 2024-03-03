@@ -7,13 +7,14 @@ pkgname=minio-client
 pkgver=2024.03.03
 _timever=T00-13-08Z
 _pkgver="${pkgver//./-}${_timever//:/-}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Replacement for ls, cp, mkdir, diff and rsync commands for filesystems and object storage'
 arch=('x86_64')
 url='https://minio.io/downloads/#minio-client'
 license=('AGPL-3.0-or-later')
 makedepends=('go' 'git')
 depends=('glibc')
+options=(!lto)
 install=minio-client.install
 source=(git+https://github.com/minio/mc.git#tag=RELEASE.${_pkgver})
 sha512sums=('SKIP')
