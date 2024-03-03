@@ -1,6 +1,6 @@
 pkgbase = novanav
 	pkgdesc = NovaNav: Lightweight browser for Linux and macOS, delivering fast, distraction-free browsing experience.
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/felipealfonsog/NovaNav
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = novanav
 	depends = python
 	depends = python-pip
 	depends = python-pyqt5
-	source = https://github.com/felipealfonsog/NovaNav/archive/refs/tags/v.0.0.4.tar.gz
-	sha256sums = b0b52022389890a8c0c4ab76021526fe8589aa7337511ea5365f19b0a244a853
+	source = https://github.com/felipealfonsog/NovaNav/archive/refs/tags/v.0.0.5.tar.gz
+	sha256sums = 108cd6eff95e5bd36cc960b2b5c3747e65a70d42dbbb9533eae20676eb1ac1d0
 
 pkgname = novanav
