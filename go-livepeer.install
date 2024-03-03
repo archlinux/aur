@@ -1,7 +1,8 @@
 post_install() {
     id livepeer 2>/dev/null || useradd -r -U -M -s /bin/false -d /var/lib/livepeer livepeer
     mkdir -p "/var/lib/livepeer"
-    chown livepeer:livepeer /var/lib/livepeer
+    chown -R livepeer:livepeer /var/lib/livepeer /var/cache/livepeer /etc/go-livepeer
+    chmod -R 700 /var/lib/livepeer /var/cache/livepeer /etc/go-livepeer
     echo -e "####################################################"
     echo -e "## Before first start you must edit the Livepeer  ##"
     echo -e "## configuration file with your orchestrator info ##"
@@ -28,4 +29,5 @@ post_upgrade() {
 
 post_remove() {
     userdel livepeer
+    groupdel livepeer
 }

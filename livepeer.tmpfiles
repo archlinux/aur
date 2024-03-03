@@ -1,2 +1,2 @@
 d /var/cache/livepeer 0755 livepeer livepeer -
-d /var/lib/livepeer 0750 livepeer livepeer -
+d /var/lib/livepeer 0700 livepeer livepeer -
