@@ -1,6 +1,6 @@
 # Maintainer: Nikko <nikko@faint.day>
 pkgname=qbittorrent-clientblocker-git
-pkgver=2.7.r11.g4dc4a36
+pkgver=2.9b3.r2.gcca9e55
 pkgrel=1
 pkgdesc="A peer manager for qBittorrent"
 arch=('any')
@@ -16,8 +16,8 @@ source=("${pkgname%-git}::git+https://github.com/Simple-Tracker/qBittorrent-Clie
 		"qbittorrent-clientblocker.service"
 		"qbittorrent-clientblocker@.service")
 sha256sums=('SKIP'
-            'dc90349aa648b12f3981ad1a42d49f35339eaee17032dd3e49891b1a37b821a2'
-            '024433398f84af587504da822575060ebaee01eaac39bfbaeb76f0d13a98726a')
+            '74b976ae930e0cebeb24340f14fa7bbbe215eed534aca69bd0ab09b86dd51499'
+            '7317cf944db6349f8348756041029f0a16e344e2bc5fb894adc3f2ef40fb688a')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"

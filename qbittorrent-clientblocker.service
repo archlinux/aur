@@ -7,7 +7,7 @@ After=qbittorrent-nox.service
 Type=simple
 Restart=always
 WorkingDirectory=/etc/qbittorrent-clientblocker/
-ExecStart=/usr/bin/qbittorrent-clientblocker
+ExecStart=/usr/bin/qbittorrent-clientblocker --nochdir
 
 [Install]
 WantedBy=multi-user.target
