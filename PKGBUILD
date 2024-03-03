@@ -2,7 +2,7 @@
 
 pkgname=('php-geoip' 'php-legacy-geoip')
 pkgver=1.1.1
-pkgrel=11
+pkgrel=12
 pkgdesc="GeoIP module for PHP"
 arch=('x86_64')
 url="https://pecl.php.net/package/geoip"
