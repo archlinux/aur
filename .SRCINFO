@@ -1,16 +1,16 @@
 pkgbase = bmv-bin
 license = MIT
 pkgdesc = bulk-rename files from stdin
-pkgver = 0.0.5
+pkgver = 0.0.6
 pkgrel = 1
 url = https://github.com/abenz1267/bmv
 arch = x86_64
 arch = aarch64
 provides = bmv
 conflicts = bmv
-source_x86_64 = https://github.com/abenz1267/bmv/releases/download/v0.0.5/bmv_0.0.5_linux_amd64.tar.gz
-sha256sums_x86_64 = a2663036963149186985459be53aac5b0363bded530b52e82b23372adeec84a9
-source_aarch64 = https://github.com/abenz1267/bmv/releases/download/v0.0.5/bmv_0.0.5_linux_arm64.tar.gz
-sha256sums_aarch64 = 62e4f8068b188e6e5cd7ced2199adbbab0737fff41875beae7e9beac2106ee26
+source_x86_64 = https://github.com/abenz1267/bmv/releases/download/v0.0.6/bmv_0.0.6_linux_amd64.tar.gz
+sha256sums_x86_64 = 4e4571145ae61a619cd8645ba5ca8786dd5d3411b9416d27ba43583cdd9d580f
+source_aarch64 = https://github.com/abenz1267/bmv/releases/download/v0.0.6/bmv_0.0.6_linux_arm64.tar.gz
+sha256sums_aarch64 = d8cb4b73ca932587a9c3c43dfb59220b33a8336c9528ba447feba045b75e5667
 
 pkgname = bmv-bin
