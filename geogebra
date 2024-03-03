@@ -1,10 +1,10 @@
 #!/bin/sh
-# run application with java env = 8
+# run application with java env = 11
 
 GG_PATH="/usr/share"
 export GG_CONFIG_PATH="${HOME}"
 GG_EXECUTABLE="${GG_PATH}/geogebra/geogebra"
-GG_JAVA_VERSION="8"
+GG_JAVA_VERSION="11"
 
 run_gg() {
     exec "${GG_EXECUTABLE}" "$@"
