@@ -1,4 +1,4 @@
-# Maintainer: Felipe Alfonso Gonzalez <f.alfonso@res-ear.ch>
+# Mantenedor: Felipe Alfonso Gonzalez <f.alfonso@res-ear.ch>
 pkgname=feather-pdf
 pkgver=1.0.0
 pkgrel=1
@@ -17,19 +17,19 @@ prepare() {
 }
 
 package() {
-  # Install the Python script
+  # Instalar el script Python
   install -Dm755 "$srcdir"/FeatherPDF-v."${pkgver}"/src/featherpdf.py "${pkgdir}/usr/local/bin/feather-pdf.py"
   
-  # Create a shell script to execute feather-pdf.py and copy it to /usr/local/bin
+  # Crear un script shell para ejecutar feather-pdf.py y copiarlo a /usr/local/bin
   echo '#!/bin/bash' > feather-pdf
   echo 'python3 /usr/local/bin/feather-pdf.py "$@"' >> feather-pdf
   chmod +x feather-pdf
   install -Dm755 feather-pdf "${pkgdir}/usr/local/bin/feather-pdf"
 
-  # Install the icon
+  # Instalar el icono
   install -Dm644 "$srcdir"/FeatherPDF-v."${pkgver}"/src/fpdf-iconlogo.png "${pkgdir}/usr/share/pixmaps/feather-pdf.png"
 
-  # Create the .desktop file dynamically
+  # Crear el archivo .desktop dinámicamente
   cat << EOF > feather-pdf.desktop
 [Desktop Entry]
 Version=1.0
@@ -39,20 +39,25 @@ Comment=Ultra-lightweight PDF viewer
 Exec=feather-pdf.py
 Icon=feather-pdf
 Terminal=false
-Categories=Utility;Office;
+Categories=Office;Utility;
 EOF
   install -Dm644 feather-pdf.desktop "${pkgdir}/usr/share/applications/feather-pdf.desktop"
 
-  # Install FeatherPDF in GNOME and KDE menus
-  install -Dm644 feather-pdf.desktop "${pkgdir}/usr/share/applications/gnome-feather-pdf.desktop"
-  install -Dm644 feather-pdf.desktop "${pkgdir}/usr/share/applications/kde-feather-pdf.desktop"
+  # Actualizar el caché de menús
+  update-desktop-database -q
 
-  # Install FeatherPDF in Enlightenment menu
-  install -Dm644 feather-pdf.desktop "${pkgdir}/usr/share/enlightenment/apps/applications/feather-pdf.desktop"
+  # Actualizar el caché de iconos
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
 
-  # Install FeatherPDF in Fluxbox menu
-  install -Dm644 feather-pdf.desktop "${pkgdir}/usr/share/fluxbox/feather-pdf.desktop"
+  # Instalar en menú de Fluxbox
+  mkdir -p "${pkgdir}/usr/share/fluxbox"
+  ln -s "/usr/share/applications/feather-pdf.desktop" "${pkgdir}/usr/share/fluxbox/"
 
-  # Install FeatherPDF in Blackbox menu
-  install -Dm644 feather-pdf.desktop "${pkgdir}/usr/share/blackbox/feather-pdf.desktop"
+  # Instalar en menú de Blackbox
+  mkdir -p "${pkgdir}/usr/share/blackbox"
+  ln -s "/usr/share/applications/feather-pdf.desktop" "${pkgdir}/usr/share/blackbox/"
+
+  # Instalar en menú de Enlightenment
+  mkdir -p "${pkgdir}/usr/share/applications/enlightenment"
+  ln -s "/usr/share/applications/feather-pdf.desktop" "${pkgdir}/usr/share/applications/enlightenment/"
 }
