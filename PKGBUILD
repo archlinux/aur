@@ -23,8 +23,10 @@ source_aarch64=("${pkgname}-${pkgver//_/-}-arm64.tar.gz::https://resource.fit2cl
 
 source_x86_64=("${pkgname}-${pkgver//_/-}-amd64.tar.gz::https://resource.fit2cloud.com/1panel/package/stable/v${pkgver//_/-}/release/1panel-v${pkgver//_/-}-linux-amd64.tar.gz"
 "1pctl::https://gitee.com/sengedev/${pkgname}/raw/main/1pctl")
-sha256sums_x86_64=(c3735145fbdc8103ef8b3c1b726cedf8ed05d06aa84b075f3b0d4c0291b76100"949f4427f8f3d21232245c7511182d6bd3fa2f76eff366026ebcfc758549a940")
-sha256sums_aarch64=(4b223ffdd7e50c2e93bae91fe7dd4aba24153bb2a1f7199883e8e6862e88005e"949f4427f8f3d21232245c7511182d6bd3fa2f76eff366026ebcfc758549a940")
+sha256sums_x86_64=("c3735145fbdc8103ef8b3c1b726cedf8ed05d06aa84b075f3b0d4c0291b76100"
+                   "949f4427f8f3d21232245c7511182d6bd3fa2f76eff366026ebcfc758549a940")
+sha256sums_aarch64=("4b223ffdd7e50c2e93bae91fe7dd4aba24153bb2a1f7199883e8e6862e88005e"
+                    "949f4427f8f3d21232245c7511182d6bd3fa2f76eff366026ebcfc758549a940")
 
 package() {
     install -vd ${pkgdir}/opt/1panel
