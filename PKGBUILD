@@ -155,7 +155,7 @@ build() {
 check() {
   cd "${pkgname%-git}/test"
 
-  TESTS="16 98" KVERSION="$(cd /lib/modules && ls -1 | tail -1)" V=1 make check
+  SKIP="18 20 30 35 40 50 60 62 63" KVERSION="$(cd /lib/modules && ls -1 | tail -1)" make check
 }
 
 package() {
