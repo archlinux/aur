@@ -16,8 +16,8 @@ pkgbase = flycast
 	depends = libgl
 	depends = libzip
 	source = flycast::git+https://github.com/flyinghead/flycast.git#tag=v2.2
-	source = breakpad-disable.patch
 	source = flyinghead.libchdr::git+https://github.com/flyinghead/libchdr.git
+	source = breakpad-disable.patch
 	source = flyinghead.mingw-breakpad::git+https://github.com/flyinghead/mingw-breakpad.git
 	source = google.oboe::git+https://github.com/google/oboe.git
 	source = gpuopen-librariesandsdks.vulkanmemoryallocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git

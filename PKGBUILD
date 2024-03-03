@@ -8,6 +8,7 @@
 : ${_build_avx:=false}
 : ${_build_git:=false}
 
+unset _pkgtype
 [[ "${_build_avx::1}" == "t" ]] && _pkgtype+="-avx"
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
@@ -44,8 +45,10 @@ _main_package() {
 
   if [ "${_build_git::1}" != "t" ] ; then
     _main_stable
+    _source_flycast_stable
   else
     _main_git
+    _source_flycast_git
   fi
 
   source+=("breakpad-disable.patch")
@@ -60,8 +63,12 @@ _main_stable() {
   _update_version
 
   _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git#tag=v${_pkgver:?}")
+  source+=("$_pkgsrc"::"git+$url.git#tag=v$_pkgver")
   sha256sums+=('SKIP')
+
+  _prepare() {
+    _prepare_flycast_stable
+  }
 
   pkgver() {
     echo "${_pkgver:?}"
@@ -77,6 +84,10 @@ _main_git() {
   source+=("$_pkgsrc"::"git+$url.git")
   sha256sums+=('SKIP')
 
+  _prepare() {
+    _prepare_flycast_git
+  }
+
   pkgver() {
     cd "$_pkgsrc"
     git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
@@ -87,7 +98,6 @@ _main_git() {
 # submodules
 _source_flycast() {
   source+=(
-    'flyinghead.libchdr'::'git+https://github.com/flyinghead/libchdr.git'
     'flyinghead.mingw-breakpad'::'git+https://github.com/flyinghead/mingw-breakpad.git'
     'google.oboe'::'git+https://github.com/google/oboe.git'
     'gpuopen-librariesandsdks.vulkanmemoryallocator'::'git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'
@@ -108,13 +118,11 @@ _source_flycast() {
     'SKIP'
     'SKIP'
     'SKIP'
-    'SKIP'
   )
 
   _prepare_flycast() (
-    cd "${srcdir:?}/$_pkgsrc"
+    cd "$srcdir/$_pkgsrc"
     local -A _submodules=(
-      ['flyinghead.libchdr']='core/deps/libchdr'
       ['flyinghead.mingw-breakpad']='core/deps/breakpad'
       ['google.oboe']='core/deps/oboe'
       ['gpuopen-librariesandsdks.vulkanmemoryallocator']='core/deps/VulkanMemoryAllocator'
@@ -129,6 +137,40 @@ _source_flycast() {
   )
 }
 
+_source_flycast_stable() {
+  source+=(
+    'flyinghead.libchdr'::'git+https://github.com/flyinghead/libchdr.git'
+  )
+  sha256sums+=(
+    'SKIP'
+  )
+
+  _prepare_flycast_stable() (
+    cd "$srcdir/$_pkgsrc"
+    local -A _submodules=(
+      ['flyinghead.libchdr']='core/deps/libchdr'
+    )
+    _submodule_update
+  )
+}
+
+_source_flycast_git() {
+  source+=(
+    'rtissera.libchdr'::'git+https://github.com/rtissera/libchdr.git'
+  )
+  sha256sums+=(
+    'SKIP'
+  )
+
+  _prepare_flycast_git() (
+    cd "$srcdir/$_pkgsrc"
+    local -A _submodules=(
+      ['rtissera.libchdr']='core/deps/libchdr'
+    )
+    _submodule_update
+  )
+}
+
 _source_vinniefalco_luabridge() {
   source+=(
     'google.googletest'::'git+https://github.com/google/googletest.git'
@@ -138,7 +180,7 @@ _source_vinniefalco_luabridge() {
   )
 
   _prepare_vinniefalco_luabridge() (
-    cd "${srcdir:?}/$_pkgsrc"
+    cd "$srcdir/$_pkgsrc"
     cd 'core/deps/luabridge'
     local -A _submodules=(
       ['google.googletest']='third_party/gtest'
@@ -170,6 +212,8 @@ prepare() {
   _prepare_flycast
   #_prepare_vinniefalco_luabridge
 
+  _prepare
+
   cd "$_pkgsrc"
   apply-patch "$srcdir/breakpad-disable.patch"
 }
@@ -184,25 +228,19 @@ build() {
   )
 
   if [[ "${_build_clang::1}" == "t" ]] ; then
-    export AR=llvm-ar
-    export NM=llvm-nm
+    export CC=clang
+    export CXX=clang++
+    export LDFLAGS+=" -fuse-ld=lld"
 
     _cmake_options+=(
-      -DCMAKE_C_COMPILER=clang
-      -DCMAKE_CXX_COMPILER=clang++
-
-      -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld"
-      -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld"
-      -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld"
-
       -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
       -DCMAKE_POLICY_DEFAULT_CMP0069=NEW
     )
   fi
 
   if [[ "${_build_avx::1}" == "t" ]] ; then
-    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
-    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
+    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
   fi
 
   cmake "${_cmake_options[@]}"
@@ -236,7 +274,7 @@ _update_version() {
 
   # update _pkgver
   if [ "$_pkgver" != "${_pkgver_new:?}" ] ; then
-    _pkgver="${_pkgver_new:?}"
+    _pkgver="$_pkgver_new"
   fi
 }
 
