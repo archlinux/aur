@@ -2,18 +2,17 @@
 
 _pkgname=mauiman
 pkgname=$_pkgname-git
-pkgver=1.1.0.r0.gebdc5db
+pkgver=3.1.0.r2.g2233bfa
 pkgrel=1
 pkgdesc='Maui Manager Library. Server and public library API.'
 url='https://invent.kde.org/maui/mauiman'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 license=(LGPL3)
-depends=(qt5-base qt5-systems)
+depends=(qt6-base)
 makedepends=(git extra-cmake-modules)
 groups=(maui)
 provides=($_pkgname)
 conflicts=($_pkgname)
-replaces=(maui-manager)
 source=(git+$url.git)
 sha256sums=('SKIP')
 
@@ -27,6 +26,7 @@ pkgver() {
 
 build() {
   cmake -B build -S $_pkgname \
+    -DBUILD_WITH_QT6=ON \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
