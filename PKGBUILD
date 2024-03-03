@@ -2,12 +2,12 @@
 
 _pkgname='pyTooling'
 pkgname=python-${_pkgname,,}
-pkgver=5.0.0
+pkgver=6.0.1
 pkgrel=1
 pkgdesc="A powerful collection of arbitrary useful classes, decorators, meta-classes and exceptions"
 arch=(any)
 url="https://github.com/pyTooling/$_pkgname"
-license=('Apache')
+license=('Apache-2.0')
 depends=('python' 'python-ruamel-yaml' 'python-colorama' 'python-setuptools')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 checkdepends=(
@@ -24,7 +24,7 @@ checkdepends=(
 )
 replaces=('python-pytooling-packaging' 'python-pymetaclasses' 'python-pyexceptions' 'python-pytooling-terminalui')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f532560117529328c5ecec957249c27a423746c951d9405732b3a96108e464ff')
+sha256sums=('ddf01808841d49fc798a2914dc71b53e59000d27409d69b0d9782934b12e7eb3')
 
 build() {
   cd "$_pkgname-$pkgver"
