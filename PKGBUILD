@@ -8,7 +8,7 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-hwloc
 pkgver=2.10.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc='Portable Hardware Locality is a portable abstraction of hierarchical architectures (android)'
 url='https://www.open-mpi.org/projects/hwloc/'
@@ -26,6 +26,24 @@ optdepends=("android-${_android_arch}-cairo"
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.open-mpi.org/software/hwloc/v${pkgver%.*}/downloads/hwloc-${pkgver}.tar.bz2")
 sha256sums=('0305dd60c9de2fbe6519fe2a4e8fdc6d3db8de574a0ca7812b92e80c05ae1392')
+
+prepare() {
+    cd "${srcdir}/hwloc-${pkgver}"
+
+    # Remove all references to -lpthread
+
+    sed -i 's|-lpthread||g' hwloc/Makefile.am
+    sed -i 's|-lpthread||g' hwloc/Makefile.in
+    sed -i 's|HWLOC_LIBS_PRIVATE -lpthread|HWLOC_LIBS_PRIVATE|g' configure
+    sed -i 's|LIBS -lpthread|LIBS|g' configure
+    sed -i 's|HWLOC_LIBS -lpthread|HWLOC_LIBS|g' configure
+    sed -i 's|LIBS="-lpthread|LIBS="|g' configure
+    sed -i 's|-lpthread||g' tests/hwloc/Makefile.am
+    sed -i 's|-lpthread||g' tests/hwloc/Makefile.in
+    sed -i 's|HWLOC_LIBS_PRIVATE -lpthread|HWLOC_LIBS_PRIVATE|g' config/hwloc.m4
+    sed -i 's|LIBS -lpthread|LIBS|g' config/hwloc.m4
+    sed -i 's|HWLOC_LIBS -lpthread|HWLOC_LIBS|g' config/hwloc.m4
+}
 
 build() {
     cd "${srcdir}/hwloc-${pkgver}"
