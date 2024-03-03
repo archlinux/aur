@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Celeste 64: Fragments of the Mountain
+Comment=A game made by the Celeste developers in under 2 weeks for Celeste's 6th Anniversary
+Exec=/opt/celeste64/Celeste64
+Path=/opt/celeste64
+Categories=Game;
+Type=Application
+Icon=/opt/celeste64/Content/Sprites/icon_strawberry.png
+Terminal=false
+StartupNotify=false
