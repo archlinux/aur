@@ -22,9 +22,24 @@ package() {
   
   # Create a shell script to execute feather-pdf.py and copy it to /usr/local/bin
   echo '#!/bin/bash' > feather-pdf
-  echo 'python /usr/local/bin/feather-pdf.py "$@"' >> feather-pdf
+  echo 'python3 /usr/local/bin/feather-pdf.py "$@"' >> feather-pdf
   chmod +x feather-pdf
   install -Dm755 feather-pdf "${pkgdir}/usr/local/bin/feather-pdf"
+
+  # Install the icon
+  install -Dm644 "$srcdir"/FeatherPDF-v."${pkgver}"/src/fpdf-iconlogo.png "${pkgdir}/usr/share/pixmaps/feather-pdf.png"
+
+  # Create the .desktop file dynamically
+  cat << EOF > feather-pdf.desktop
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=FeatherPDF
+Comment=Ultra-lightweight PDF viewer
+Exec=feather-pdf.py
+Icon=feather-pdf
+Terminal=false
+Categories=Utility;Office;
+EOF
+  install -Dm644 feather-pdf.desktop "${pkgdir}/usr/share/applications/feather-pdf.desktop"
 }
-
-
