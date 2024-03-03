@@ -1,8 +1,8 @@
 # Maintainer: diaowinner <diaowinner@gmail.com>
 # Maintainer: KreativeKorp <support@kreativekorp.com>
 pkgname=bitsnpicas-git
-pkgver=2.0.2.r319.8c20bb4
-pkgrel=4
+pkgver=2.0.2.r325.7700757
+pkgrel=1
 pkgdesc="Kreative BitsNPicas, with MapEdit and KeyEdit, in the latest snapshot version"
 arch=("any")
 url="https://github.com/kreativekorp/bitsnpicas"
@@ -36,7 +36,7 @@ package() {
   install -D -m644 -T "${srcdir}/${pkgname}/main/java/BitsNPicas/BitsNPicas.jar" "${pkgdir}/usr/lib/bitsnpicas.jar"
   install -D -m644 -T "${srcdir}/${pkgname}/main/java/BitsNPicas/MapEdit.jar" "${pkgdir}/usr/lib/mapedit.jar"
   install -D -m644 -T "${srcdir}/${pkgname}/main/java/BitsNPicas/KeyEdit.jar" "${pkgdir}/usr/lib/keyedit.jar"
-  install -D -m644 -T "${srcdir}/${pkgname}/main/java/BitsNPicas/dep/KSFL.jar" "${pkgdir}/usr/lib/KSFL.jar"
+  # install -D -m644 -T "${srcdir}/${pkgname}/main/java/BitsNPicas/dep/KSFL.jar" "${pkgdir}/usr/lib/KSFL.jar"
   install -D -m644 -T "${srcdir}/${pkgname}/main/java/BitsNPicas/dep/ual.jar" "${pkgdir}/usr/lib/ual.jar"
   install -D -m755 -T "${srcdir}/bitsnpicas" "${pkgdir}/usr/bin/bitsnpicas"
   install -D -m755 -T "${srcdir}/keyedit" "${pkgdir}/usr/bin/keyedit"
@@ -50,12 +50,15 @@ package() {
   install -D -m644 -T "${srcdir}/keyedit.desktop" "${pkgdir}/usr/share/applications/keyedit.desktop"
 
   # That should work...
-  ln -sf ${pkgdir}/usr/local/lib/bitsnpicas.jar ${pkgdir}/usr/lib/bitsnpicas.jar
-  ln -sf ${pkgdir}/usr/local/lib/mapedit.jar ${pkgdir}/usr/lib/mapedit.jar
-  ln -sf ${pkgdir}/usr/local/lib/keyedit.jar ${pkgdir}/usr/lib/keyedit.jar
-  ln -sf ${pkgdir}/usr/local/lib/KSFL.jar ${pkgdir}/usr/lib/KSFL.jar
-  ln -sf ${pkgdir}/usr/local/lib/ual.jar ${pkgdir}/usr/lib/ual.jar
-  ln -sf ${pkgdir}/usr/local/bin/bitsnpicas ${pkgdir}/usr/bin/bitsnpicas
-  ln -sf ${pkgdir}/usr/local/bin/keyedit ${pkgdir}/usr/bin/keyedit
-  ln -sf ${pkgdir}/usr/local/bin/mapedit ${pkgdir}/usr/bin/mapedit
+  mkdir ${pkgdir}/usr/local
+  mkdir ${pkgdir}/usr/local/lib
+  mkdir ${pkgdir}/usr/local/bin
+  ln -sf ${pkgdir}/usr/lib/bitsnpicas.jar ${pkgdir}/usr/local/lib/bitsnpicas.jar
+  ln -sf ${pkgdir}/usr/lib/mapedit.jar ${pkgdir}/usr/local/lib/mapedit.jar
+  ln -sf ${pkgdir}/usr/lib/keyedit.jar ${pkgdir}/usr/local/lib/keyedit.jar
+  # ln -sf ${pkgdir}/usr/lib/KSFL.jar ${pkgdir}/usr/local/lib/KSFL.jar
+  ln -sf ${pkgdir}/usr/lib/ual.jar ${pkgdir}/usr/local/lib/ual.jar
+  ln -sf ${pkgdir}/usr/bin/bitsnpicas ${pkgdir}/usr/local/bin/bitsnpicas
+  ln -sf ${pkgdir}/usr/bin/keyedit ${pkgdir}/usr/local/bin/keyedit
+  ln -sf ${pkgdir}/usr/bin/mapedit ${pkgdir}/usr/local/bin/mapedit
 }

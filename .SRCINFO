@@ -1,7 +1,7 @@
 pkgbase = bitsnpicas-git
 	pkgdesc = Kreative BitsNPicas, with MapEdit and KeyEdit, in the latest snapshot version
-	pkgver = 2.0.2.r319.8c20bb4
-	pkgrel = 4
+	pkgver = 2.0.2.r325.7700757
+	pkgrel = 1
 	url = https://github.com/kreativekorp/bitsnpicas
 	arch = any
 	license = MPL
