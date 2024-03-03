@@ -42,8 +42,4 @@ Terminal=false
 Categories=Office;Utility;
 EOF
   install -Dm644 feather-pdf.desktop "${pkgdir}/usr/share/applications/feather-pdf.desktop"
-
-  # Move the .desktop file to the Enlightenment menu directory
-  install -Dm644 feather-pdf.desktop "${pkgdir}/usr/share/enlightenment/data/applications/"
 }
-
