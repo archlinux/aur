@@ -1,6 +1,6 @@
 pkgbase = ox-console-bin
 	pkgdesc = A family of software packages providing an integrated solution for the econometric analysis of time series, forecasting, financial econometric modelling, or statistical analysis of cross-section and panel data.
-	pkgver = 9.00_0
+	pkgver = 9.10_0
 	pkgrel = 1
 	url = https://www.doornik.com/products.html#OxCons
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ox-console-bin
 	optdepends = python
 	provides = ox-console
 	provides = oxedit
-	source = ox-console-9.00-0-x86_64.deb::https://www.doornik.com/download/oxmetrics9/Ox_Console/oxconsole_9.00-0_amd64.deb
-	sha512sums = 638e4c13bf98c231b9a1b1b99eacdf5ca6e847be049b5e321330e218dc411007ab63278d6d9faaae5cc079293268f19ed61f25feb77ab58bc6160a3d5b093e80
+	source = ox-console-9.10-0-x86_64.deb::https://www.doornik.com/download/oxmetrics9/Ox_Console/oxconsole_9.10-0_amd64.deb
+	sha512sums = ab0d8d88b21e1c9be65ee50df5d0cf1ab2831be08ae2e402b453b78faf0fc58fe5a524ebe7beb68890b99796d4a4418c17cbbf2fc0ed95f3970f95b0dcf21a75
 
 pkgname = ox-console-bin
