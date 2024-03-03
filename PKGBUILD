@@ -3,7 +3,7 @@
 # Contributor: Johannes Wienke <languitar@semipol.de>
 _pkgname=structurizr
 pkgname=$_pkgname-cli
-pkgver=2024.03.02
+pkgver=2024.03.03
 pkgrel=1
 pkgdesc="A command line utility for Structurizr"
 arch=(any)
