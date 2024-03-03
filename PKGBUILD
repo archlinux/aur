@@ -29,20 +29,19 @@ package() {
   # Install the icon
   install -Dm644 "$srcdir"/FeatherPDF-v."${pkgver}"/src/fpdf-iconlogo.png "${pkgdir}/usr/share/pixmaps/feather-pdf.png"
 
-  # Install the .desktop file dynamically
+  # Create the .desktop file dynamically
   cat << EOF > feather-pdf.desktop
 [Desktop Entry]
 Version=1.0
 Type=Application
 Name=FeatherPDF
 Comment=Ultra-lightweight PDF viewer
-Exec=feather-pdf.py
+Exec=feather-pdf
 Icon=feather-pdf
 Terminal=false
-Categories=Office;
+Categories=Utility;Office;
 EOF
   install -Dm644 feather-pdf.desktop "${pkgdir}/usr/share/applications/feather-pdf.desktop"
-
-  # Copy the .desktop file to the user's applications directory for Enlightenment
   install -Dm644 feather-pdf.desktop "${pkgdir}/usr/local/share/applications/feather-pdf.desktop"
+  install -Dm644 feather-pdf.desktop "${pkgdir}/~/.e/applications/feather-pdf.desktop"
 }
