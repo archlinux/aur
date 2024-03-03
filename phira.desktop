@@ -5,6 +5,6 @@ Version=0.4.0
 Exec=/usr/bin/phira
 Type=Application
 Terminal=false
-Icon=/usr/share/icons/hicolor/512x512/apps/phira.png
+Icon=/usr/share/icons/hicolor/128x128/apps/phira.png
 Comment=A clone of the music game Phigros that supports custom beatmaps, multiplayer etc.
 Categories=Gaming;Music;Rust;
