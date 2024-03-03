@@ -17,39 +17,41 @@ prepare() {
 }
 
 package() {
-  # Install the Python script
-  install -Dm755 "$srcdir"/FeatherPDF-v."${pkgver}"/src/featherpdf.py "${pkgdir}/usr/local/bin/feather-pdf"
+  # Instalación del script Python
+  install -Dm755 "$srcdir"/FeatherPDF-v."${pkgver}"/src/featherpdf.py "${pkgdir}/usr/local/bin/feather-pdf.py"
   
-  # Install the icon
+  # Creación de un script shell para ejecutar feather-pdf.py y copiarlo a /usr/local/bin
+  echo '#!/bin/bash' > feather-pdf
+  echo 'python3 /usr/local/bin/feather-pdf.py "$@"' >> feather-pdf
+  chmod +x feather-pdf
+  install -Dm755 feather-pdf "${pkgdir}/usr/local/bin/feather-pdf"
+
+  # Instalación del icono
   install -Dm644 "$srcdir"/FeatherPDF-v."${pkgver}"/src/fpdf-iconlogo.png "${pkgdir}/usr/share/pixmaps/feather-pdf.png"
 
-  # Create the .desktop file
+  # Creación del archivo .desktop dinámicamente
   cat << EOF > feather-pdf.desktop
 [Desktop Entry]
 Version=1.0
 Type=Application
 Name=FeatherPDF
 Comment=Ultra-lightweight PDF viewer
-Exec=feather-pdf
+Exec=feather-pdf.py
 Icon=feather-pdf
 Terminal=false
-Categories=Office;Utility;
+Categories=Utility;Office;
 EOF
   install -Dm644 feather-pdf.desktop "${pkgdir}/usr/share/applications/feather-pdf.desktop"
-  
-  # Update menu cache for GNOME and KDE
-  update-desktop-database -q || true
-  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor || true
 
-  # Install in Fluxbox menu
-  mkdir -p "${pkgdir}/usr/share/fluxbox"
-  ln -s "/usr/share/applications/feather-pdf.desktop" "${pkgdir}/usr/share/fluxbox/"
+  # Actualización del menú principal
+  xdg-desktop-menu forceupdate
 
-  # Install in Blackbox menu
-  mkdir -p "${pkgdir}/usr/share/blackbox"
-  ln -s "/usr/share/applications/feather-pdf.desktop" "${pkgdir}/usr/share/blackbox/"
+  # Actualización de los iconos en los menús
+  xdg-icon-resource forceupdate
 
-  # Install in Enlightenment menu
-  mkdir -p "${pkgdir}/usr/share/applications/enlightenment"
-  ln -s "/usr/share/applications/feather-pdf.desktop" "${pkgdir}/usr/share/applications/enlightenment/"
+  # Actualización de los menús en GNOME
+  glib-compile-schemas /usr/share/glib-2.0/schemas
+
+  # Actualización de los menús en KDE Plasma
+  kbuildsycoca5 --noincremental
 }
