@@ -14,10 +14,10 @@ pkgbase = libdbusmenu-qtilities-git
 
 pkgname = libdbusmenu-qtilities5-git
 	depends = qt5-base
-	provides = 
-	conflicts = 
+	provides = libdbusmenu-qtilities5
+	conflicts = libdbusmenu-qtilities5
 
 pkgname = libdbusmenu-qtilities6-git
 	depends = qt6-base
-	provides = 
-	conflicts = 
+	provides = libdbusmenu-qtilities6
+	conflicts = libdbusmenu-qtilities6

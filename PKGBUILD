@@ -3,7 +3,7 @@
 _pkgname=libdbusmenu-qtilities
 pkgbase=$_pkgname-git
 pkgname=(libdbusmenu-qtilities{5,6}-git)
-pkgver=r362.8dfc07e
+pkgver=r367.bd5c6a3
 pkgrel=1
 pkgdesc="Qt implementation of the DBusMenu protocol"
 arch=(
@@ -44,14 +44,14 @@ build() {
 
 package_libdbusmenu-qtilities5-git() {
   depends=(qt5-base)
-  provides=($_pkgname5)
-  conflicts=($_pkgname5)
+  provides=(${_pkgname}5)
+  conflicts=(${_pkgname}5)
   DESTDIR="$pkgdir" cmake --install build5
 }
 
 package_libdbusmenu-qtilities6-git() {
   depends=(qt6-base)
-  provides=($_pkgname6)
-  conflicts=($_pkgname6)
+  provides=(${_pkgname}6)
+  conflicts=(${_pkgname}6)
   DESTDIR="$pkgdir" cmake --install build6
 }
