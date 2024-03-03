@@ -1,5 +1,5 @@
 pkgbase = celeste64-bin
-	pkgdesc = A game made in under 2 weeks for Celeste's 6th Anniversary
+	pkgdesc = A game made in under 2 weeks for Celeste's 6th Anniversary (official bin)
 	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://maddymakesgamesinc.itch.io/celeste64
