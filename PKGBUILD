@@ -15,6 +15,6 @@ sha256sums=('41662e057318496023a0f59f02b420d65a7e988bc0e2bba017eadfc007823b93'
 package() {
   mkdir -p -- "$pkgdir/usr/bin"
   cp "teamspeak3-install-addon" "$pkgdir/usr/bin/teamspeak3-install-addon"
-  chmod +x /usr/bin/teamspeak3-install-addon
+  chmod +x $pkgdir/usr/bin/teamspeak3-install-addon
   install -Dm644 ./WTFPL "$pkgdir/usr/share/licenses/$pkgname/WTFPL"
 }
