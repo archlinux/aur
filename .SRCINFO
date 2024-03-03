@@ -1,7 +1,7 @@
 pkgbase = php-memcache
 	pkgdesc = Memcache module for PHP
 	pkgver = 8.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pecl.php.net/package/memcache
 	arch = x86_64
 	license = PHP
