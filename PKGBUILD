@@ -1,7 +1,7 @@
 pkgname=qmarineplatformtheme5
 _conflictpkgname=qt5ct
 _pkguntar=qmarinetheme
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Another qt5ct for qt5, use toml as config"
 url="https://github.com/Decodetalkers/qmarinetheme"
@@ -11,7 +11,7 @@ makedepends=('git' 'ninja' 'cmake' 'tomlplusplus' 'kconfig5' 'kconfigwidgets5' '
 depends=('kconfig5' 'qt5-base' 'kconfigwidgets5' 'kiconthemes5')
 provides=("$_conflictpkgname")
 conflicts=("$_conflictpkgname")
-sha256sums=('857c82b17967832f8c1837a71bcc72d5a40dca3122be4fd7f19340a174ccaafb')
+sha256sums=('5f19a8b4f4d69dba1ff0e3e561074727e21202e0737fd5f0bfadb6c7338978e7')
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/Decodetalkers/qmarinetheme/archive/refs/tags/v${pkgver}.tar.gz")
 build() {
   cd ${_pkguntar}-$pkgver
