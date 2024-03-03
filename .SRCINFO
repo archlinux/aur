@@ -1,10 +1,10 @@
 pkgbase = r-hicvenndiagram
 	pkgdesc = Venn Diagram for genomic interaction data
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/hicVennDiagram
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-genomicranges
 	checkdepends = r-testthat
 	depends = r-complexupset
@@ -22,8 +22,8 @@ pkgbase = r-hicvenndiagram
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/hicVennDiagram_1.0.0.tar.gz
-	md5sums = 11577b64cc67b69e4b9d712a76cd3310
-	sha256sums = 0b172ec2b21d62be894deb7a67794d6f954b900f0eadbbcd03b0f2fbb506dc75
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/hicVennDiagram_1.0.1.tar.gz
+	md5sums = 6c8f208d9ee46b9dd61e112e9c9b725e
+	b2sums = 1afbe0ad3938b70817bc55e50d5ab3d25fab2e8bec7ef4dce6931b9f7dbb625db2f3aebb81430cf5dc7670de99c239c87deb6e03763ee89a9e0b26f0a3c2ffe6
 
 pkgname = r-hicvenndiagram

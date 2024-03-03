@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=hicVennDiagram
-_pkgver=1.0.0
+_pkgver=1.0.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Venn Diagram for genomic interaction data"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-complexupset
   r-eulerr
@@ -33,12 +33,12 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('11577b64cc67b69e4b9d712a76cd3310')
-sha256sums=('0b172ec2b21d62be894deb7a67794d6f954b900f0eadbbcd03b0f2fbb506dc75')
+md5sums=('6c8f208d9ee46b9dd61e112e9c9b725e')
+b2sums=('1afbe0ad3938b70817bc55e50d5ab3d25fab2e8bec7ef4dce6931b9f7dbb625db2f3aebb81430cf5dc7670de99c239c87deb6e03763ee89a9e0b26f0a3c2ffe6')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
