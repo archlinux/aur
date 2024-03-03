@@ -1,0 +1,19 @@
+diff --git a/browser/base/content/browser.js b/browser/base/content/browser.js
+--- a/browser/base/content/browser.js
++++ b/browser/base/content/browser.js
+@@ -4979,10 +4979,14 @@
+         .getCurrentSession()
+     ) {
+       return;
+     }
+ 
++    if (!document.hasFocus()) {
++      return;
++    }
++
+     let elt = document.getElementById("remoteBrowserTooltip");
+     elt.label = tooltip;
+     elt.style.direction = direction;
+     elt.openPopupAtScreen(
+       xDevPix / window.devicePixelRatio,
+
