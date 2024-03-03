@@ -11,9 +11,11 @@ depends=("wayland" "cairo" "libglvnd")
 makedepends=("xmake" "gcc" "wayland-protocols")
 source=(
     "${pkgname}-${pkgver}::https://github.com/Samudevv/samurai-render/archive/refs/tags/${pkgver}.tar.gz"
+    "${pkgname}.pc"
 )
 sha256sums=(
     "d3c25eb3cfe002f8092071a7a420b8174dd0be79b6e3e4f6269252099dbc75ec"
+    "47e18f2b4a9c3d8fffa34fd92f8a57c71fe4a763a0af9a9b416bffcbb8657420"
 )
 
 prepare() {
@@ -38,9 +40,11 @@ package() {
     mkdir -p \
         "${pkgdir}/usr/include/samure/" \
         "${pkgdir}/usr/include/samure/wayland" \
-        "${pkgdir}/usr/include/samure/backends"
+        "${pkgdir}/usr/include/samure/backends" \
+        "${pkgdir}/usr/share/pkgconfig/"
     cp samure/*.h "${pkgdir}/usr/include/samure/"
     cp samure/wayland/*.h "${pkgdir}/usr/include/samure/wayland"
     cp samure/backends/*.h "${pkgdir}/usr/include/samure/backends"
+    cp "${srcdir}/${pkgname}.pc" "${pkgdir}/usr/share/pkgconfig/"
     rm ${pkgdir}/usr/include/*.h
 }

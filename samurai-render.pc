@@ -1,0 +1,6 @@
+Name: samurai-render
+Description: Easy to use library to render into the Layer Shell of wlroots based wayland compositors
+URL: https://github.com/Samudevv/samurai-render
+Version: 24.03
+Requires: wayland-client
+Libs: -lsamurai-render
