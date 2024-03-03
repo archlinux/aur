@@ -1,0 +1,15 @@
+--- a/configure	2024-02-04
++++ b/configure	2024-03-03
+@@ -21471,12 +21471,6 @@
+ printf "%s\n" "#define SIZEOF_VOID_P $ac_cv_sizeof_void_p" >>confdefs.h
+ 
+ 
+-    if test "$ac_cv_sizeof_void_p" -eq 4
+-then :
+-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: PMIx does not support 32 bit builds." >&5
+-printf "%s\n" "$as_me: WARNING: PMIx does not support 32 bit builds." >&2;}
+-           as_fn_error $? "Cannot continue" "$LINENO" 5
+-fi
+     # The cast to long int works around a bug in the HP C Compiler
+ # version HP92453-01 B.11.11.23709.GP, which incorrectly rejects
+ # declarations like `int a3[[(sizeof (unsigned char)) >= 0]];'.

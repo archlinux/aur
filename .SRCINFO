@@ -1,0 +1,26 @@
+pkgbase = android-x86-64-openpmix
+	pkgdesc = Extended version of the PMI standard (android)
+	pkgver = 4.2.9
+	pkgrel = 1
+	url = https://github.com/openpmix/openpmix
+	arch = any
+	license = BSD-3-Clause
+	makedepends = android-x86-64-hwloc
+	makedepends = android-x86-64-zlib
+	makedepends = perl
+	makedepends = python
+	depends = android-x86-64-hwloc
+	depends = android-x86-64-libevent
+	depends = android-x86-64-zlib
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/openpmix/openpmix/releases/download/v4.2.9/pmix-4.2.9.tar.gz
+	source = 0001-Force-32-bits-compile.patch
+	source = 0002-Unversioned-libs.patch
+	md5sums = 6ef6da8a14d670712431fd62194bd390
+	md5sums = d0032b4f6868acb7b3a593f1a76f0eed
+	md5sums = 47db6b8ab5894753aa4c508f64c75389
+
+pkgname = android-x86-64-openpmix
