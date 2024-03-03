@@ -2,7 +2,7 @@
 
 pkgname=(ttf-fairiesevka ttf-fairiesevka-term ttf-fairiesevka-propo)
 pkgbase=fairiesevka-font
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='My personal flavor of the Iosevka font; patched with Nerd Font glyphs'
 arch=('any')
