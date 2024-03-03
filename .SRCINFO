@@ -1,0 +1,19 @@
+pkgbase = fairiesevka-font
+	pkgdesc = My personal flavor of the Iosevka font; patched with Nerd Font glyphs
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/punkfairie/Fairiesevka
+	arch = any
+	license = OFL
+	provides = ttf-font-nerd
+	source = https://github.com/punkfairie/Fairiesevka/releases/download/v1.0.0/Fairiesevka.zip
+	sha256sums = 50248015c1c7eda62573b45e874dae8dc5830c0b74346a1557fd7dca2e12e5ee
+
+pkgname = ttf-fairiesevka
+	pkgdesc = My personal flavor of the Iosevka font; patched with Nerd Font glyphs.
+
+pkgname = ttf-fairiesevka-term
+	pkgdesc = My personal flavor of the Iosevka font; patched with Nerd Font glyphs (single-width/mono variant).
+
+pkgname = ttf-fairiesevka-propo
+	pkgdesc = My personal flavor of the Iosevka font; patched with Nerd Font glyphs (variable-width/propo variant).
