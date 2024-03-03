@@ -17,6 +17,6 @@ RUN su build -c 'paru --nocheck --needed --noconfirm -Syu dracut-git'
 RUN L=$(paru -Si dracut-git | sed -n '/^Opt/,/^Conf/p' | sed '$d' | sed 's/^Opt.*://g' | sed 's/^\s*//g' | tr '\n' ' ') && su build -c "paru --needed --noconfirm -Syu $L"
 
 # reinstall with running tests
-RUN su build -c 'paru --rebuild -S dracut-git'
+RUN su build -c 'V=1 paru --rebuild -S dracut-git'
 
 RUN rm -fr ~build
