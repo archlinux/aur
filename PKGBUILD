@@ -1,7 +1,7 @@
 # Maintainer: Jake <aur@ja-ke.tech.de>
 
 pkgname=hyperion.ng-git
-pkgver=2.0.15.r87.612d1788
+pkgver=2.0.15.r97.fd5a94a3
 pkgrel=1
 pkgdesc="The reworked version (next generation) of Hyperion, ambient light software"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
