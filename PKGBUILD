@@ -1,7 +1,7 @@
 # Maintainer: Konstantin Shurukhin <kshurukhin (at) gmail (dot) com 
 pkgname=snx-rs-git
 _pkgname=snx-rs
-pkgver=0.11.0.r216.g6d34ceb
+pkgver=1.0.0rc.2.r229.ga8ae33d
 pkgrel=1
 pkgdesc="Open source VPN client for Checkpoint security gateways (git version)"
 arch=(x86_64)
@@ -23,7 +23,7 @@ sha256sums=(
 
 pkgver() {
   cd ${srcdir}/${_pkgname}
-  printf '%s.r%s.g%s' "$(git describe --tags --abbrev=0)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf '%s.r%s.g%s' "$(git describe --tags --abbrev=0 | sed 's/\-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
