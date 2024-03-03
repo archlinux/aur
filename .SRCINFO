@@ -1,12 +1,12 @@
 pkgbase = btrfs-progs-git
 	pkgdesc = Btrfs filesystem utilities
-	pkgver = 6935_6.6.3_r0_g92e18dbc
+	pkgver = 6994_6.7.1_r0_g60abf7a9
 	pkgrel = 1
 	url = https://btrfs.wiki.kernel.org/index.php/Main_Page
 	install = btrfs-progs-git.install
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
 	makedepends = e2fsprogs
 	makedepends = git
 	makedepends = python-setuptools

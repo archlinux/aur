@@ -6,12 +6,12 @@
 
 pkgname=btrfs-progs-git
 _gitname=${pkgname%-git}
-pkgver=6935_6.6.3_r0_g92e18dbc
+pkgver=6994_6.7.1_r0_g60abf7a9
 pkgrel=1
 pkgdesc="Btrfs filesystem utilities"
 arch=("i686" "x86_64")
 url="https://btrfs.wiki.kernel.org/index.php/Main_Page"
-license=('GPL')
+license=('GPL-2.0-only')
 depends=('glibc' 'lzo' 'systemd-libs' 'util-linux-libs' 'zlib' 'zstd')
 makedepends=('e2fsprogs' 'git' 'python-setuptools' 'python-sphinx' 'python-sphinx_rtd_theme' 'reiserfsprogs')
 optdepends=('reiserfsprogs: btrfs-convert utility'
