@@ -126,6 +126,12 @@ build() {
   make
 }
 
+check() {
+  cd "${pkgname%-git}"
+
+  TESTS="98" make check
+}
+
 package() {
   cd "${pkgname%-git}"
 
