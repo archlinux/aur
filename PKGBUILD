@@ -14,6 +14,7 @@ sha256sums=('c9b25e72d9b46053e61681a2a332c9f734e1d00e3dd12e3af602beb4294b5c66')
 
 prepare() {
     tar xf "${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
+    sed -i 's/os_string = GLib.get_os_info("NAME") + " " + GLib.get_os_info("VERSION")/os_string = GLib.get_os_info("NAME")/g' src/main.py
 }
 
 build() {
