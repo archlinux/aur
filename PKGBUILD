@@ -2,7 +2,7 @@
 
 pkgname=phira-bin
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A clone of the music game Phigros that supports custom beatmaps, multiplayer etc."
 arch=('x86_64')
 url="https://github.com/TeamFlos/phira"
@@ -29,7 +29,7 @@ source=(
     "${pkgname%-bin}.desktop"
 )
 b2sums=('d7c67dfb9dfb2827809049b7775d31a84ad27b63759acbb93a18aed9d251292c41a16dc96a03d7e2240e04c9534707a0f4fe9b84b6cac609dd95067177ad978b'
-        '6082233569818cb02d92893f0afcdfe6d43ba77adc061b3abb52132b2260d5fd51adf8b91a147e8e83d61573c1ac87fdcadd3a75aaf1193ee102b3b17d6f9466'
+        '4fb82fe12455f20e556ee34d225978aaef738c77d1eb6f10c022a1f86a74dc0db6cb43aaa55753a41b92d62fd949de58667fac561e8a725f70e810d01abe1693'
         '6be953d4402faf3dda9bd2cfb8bff31b1cb1bfce81bad2f3f0d1af034f3b0a33e0a88026f5cb030ae737b90e3fc3c72da3938d153e3e930beefaf2910b356224')
 
 package() {
