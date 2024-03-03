@@ -3,7 +3,7 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=060.r6794.4980bad
-pkgrel=7
+pkgrel=8
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracutdevs/dracut'
@@ -96,6 +96,8 @@ conflicts=("${pkgname%-git}")
 backup=('etc/dracut.conf')
 source=(
   'git+https://github.com/dracutdevs/dracut.git'
+  2269-1.patch::https://github.com/dracutdevs/dracut/commit/0057c3bb7afa803928b0214f8bbcb33e7d5e0c39.patch
+  2269-2.patch::https://github.com/dracutdevs/dracut/commit/51f1211be3610e57937fe2235d8088565b4f2639.patch
   2429.patch::https://github.com/dracutdevs/dracut/commit/71055058c0bdb6fec0dbebf2ec8bbfc968820b88.patch
   2494.patch::https://github.com/dracutdevs/dracut/commit/b88d0bab791bdc4ca75d13802f0391caf537650d.patch
   2527.patch::https://github.com/dracutdevs/dracut/commit/a2fe89116db4b286fbf515f26bd1773b5e6ee8ad.patch
@@ -107,6 +109,8 @@ source=(
 )
 sha512sums=(
   'SKIP'
+  c529f7a2aa13733c1567bf4ff52df49ad4ba13ab46c5090bdc77dd0c6d7a1d7442d659900a425e1ac590449ea553bfb1ab09716cfd561f7d4441f57086e24197
+  4b48a6cdfbf5289b031abe18450e29cf3a3fe6c1d05ba667a5fe26b0e3ba84f765b789cfae307c9718a0feb0abf5ab727fd1e818eb138518f7ea6c97ec2242ce
   83c1f6ff6cdee619dfe8bc7dd6401797e427678701424c85c0dd91268575ce2dd8d164ff8bf029afcf884835bd220929d22a15ab5da2ddf3cfffdc80dbdcf3c3
   addb075072359b4317844d24b456f110186ad110e9b0ed148ed0ae85350086decc71cb7d1a1aac275142537f0bff05f385d82102c1d802691cccdb349f0a62a3
   bba154e13463fb759e1cfd5f461b2b4e786ad8c6f4cacacbd918e911efc7d5a5368300676d6e6d8e9b7b2f4333314886bb1e34daac9f0c73c1c441baf7918063
