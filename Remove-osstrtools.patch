@@ -1,0 +1,12 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 23dfacc..e7eef66 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -20,7 +20,6 @@ users = "0.11.0"
+ greetd_ipc = { version = "0.8.0", features = ["sync-codec"] }
+ getopts = "0.2.21"
+ hostname = "0.3.1"
+-osstrtools = "0.2.2"
+ thiserror = "1.0.31"
+ freedesktop-desktop-entry = "0.5.0"
+ shell-words = "1.1.0"
