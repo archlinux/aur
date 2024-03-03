@@ -17,13 +17,14 @@ prepare() {
 }
 
 package() {
-  # Instalar el script Python
+  # Install the Python script
   install -Dm755 "$srcdir"/FeatherPDF-v."${pkgver}"/src/featherpdf.py "${pkgdir}/usr/local/bin/feather-pdf.py"
   
-  # Crear un script shell para ejecutar upd8all.py y copiarlo a /usr/local/bin
+  # Create a shell script to execute feather-pdf.py and copy it to /usr/local/bin
   echo '#!/bin/bash' > feather-pdf
   echo 'python /usr/local/bin/feather-pdf.py "$@"' >> feather-pdf
   chmod +x feather-pdf
   install -Dm755 feather-pdf "${pkgdir}/usr/local/bin/feather-pdf"
 }
+
 
