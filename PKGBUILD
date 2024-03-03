@@ -2,7 +2,7 @@
 pkgname=ox-console-bin
 _pkgname=ox-console
 pkgver=9.10_0
-pkgrel=1
+pkgrel=2
 pkgdesc="A family  of software packages providing an integrated solution for the econometric analysis of time series, forecasting, financial econometric modelling, or statistical analysis of cross-section and panel data."
 arch=('x86_64')
 url="https://www.doornik.com/products.html#OxCons"
@@ -39,7 +39,7 @@ package() {
   mkdir -p ${pkgdir}/usr/bin
   ln -s /usr/share/OxMetrics${pkgver:0:1}/oxedit ${pkgdir}/usr/bin/oxedit
   ln -s /usr/share/OxMetrics${pkgver:0:1}/ox/oxl.sh ${pkgdir}/usr/bin/oxl
-  mv ox/libox.so.9.0.0  ox/libox.so.9
-  ln -s /usr/lib/libomp.so $pkgdir/usr/share/OxMetrics${pkgver:0:1}/ox/libomp.so.5
+  mv ox/libox.so.9.1.0  ox/libox.so.9
+  ln -sf /usr/lib/libomp.so $pkgdir/usr/share/OxMetrics${pkgver:0:1}/ox/libomp.so.5
 
 }

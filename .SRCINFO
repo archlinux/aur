@@ -1,7 +1,7 @@
 pkgbase = ox-console-bin
 	pkgdesc = A family of software packages providing an integrated solution for the econometric analysis of time series, forecasting, financial econometric modelling, or statistical analysis of cross-section and panel data.
 	pkgver = 9.10_0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.doornik.com/products.html#OxCons
 	arch = x86_64
 	license = unknown
