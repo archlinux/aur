@@ -2,7 +2,7 @@ pkgbase = dreampie
 	pkgdesc = A Python shell which is designed to be reliable and fun.
 	pkgver = 1.2.1
 	pkgrel = 1
-	url = http://dreampie.org
+	url = https://github.com/noamraph/dreampie
 	arch = any
 	license = GPL
 	depends = pygtksourceview2
@@ -11,4 +11,3 @@ pkgbase = dreampie
 	md5sums = 6d745ce46624ebce91e2aac67ebbfbf1
 
 pkgname = dreampie
-
