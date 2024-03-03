@@ -17,19 +17,19 @@ prepare() {
 }
 
 package() {
-  # Instalar el script Python
+  # Install the Python script
   install -Dm755 "$srcdir"/FeatherPDF-v."${pkgver}"/src/featherpdf.py "${pkgdir}/usr/local/bin/feather-pdf.py"
   
-  # Crear un script shell para ejecutar feather-pdf.py y copiarlo a /usr/local/bin
+  # Create a shell script to execute feather-pdf.py and copy it to /usr/local/bin
   echo '#!/bin/bash' > feather-pdf
   echo 'python3 /usr/local/bin/feather-pdf.py "$@"' >> feather-pdf
   chmod +x feather-pdf
   install -Dm755 feather-pdf "${pkgdir}/usr/local/bin/feather-pdf"
 
-  # Instalar el icono
+  # Install the icon
   install -Dm644 "$srcdir"/FeatherPDF-v."${pkgver}"/src/fpdf-iconlogo.png "${pkgdir}/usr/share/pixmaps/feather-pdf.png"
 
-  # Crear el archivo .desktop dinámicamente
+  # Create the .desktop file dynamically
   cat << EOF > feather-pdf.desktop
 [Desktop Entry]
 Version=1.0
@@ -43,21 +43,19 @@ Categories=Office;Utility;
 EOF
   install -Dm644 feather-pdf.desktop "${pkgdir}/usr/share/applications/feather-pdf.desktop"
 
-  # Actualizar el caché de menús
-  update-desktop-database -q
+  # Update menu cache for GNOME and KDE
+  update-desktop-database -q || true
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor || true
 
-  # Actualizar el caché de iconos
-  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
-
-  # Instalar en menú de Fluxbox
+  # Install in Fluxbox menu
   mkdir -p "${pkgdir}/usr/share/fluxbox"
   ln -s "/usr/share/applications/feather-pdf.desktop" "${pkgdir}/usr/share/fluxbox/"
 
-  # Instalar en menú de Blackbox
+  # Install in Blackbox menu
   mkdir -p "${pkgdir}/usr/share/blackbox"
   ln -s "/usr/share/applications/feather-pdf.desktop" "${pkgdir}/usr/share/blackbox/"
 
-  # Instalar en menú de Enlightenment
+  # Install in Enlightenment menu
   mkdir -p "${pkgdir}/usr/share/applications/enlightenment"
   ln -s "/usr/share/applications/feather-pdf.desktop" "${pkgdir}/usr/share/applications/enlightenment/"
 }
