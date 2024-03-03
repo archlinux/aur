@@ -1,7 +1,7 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
 pkgname=curl-impersonate-chrome
-pkgver=v0.6.0
+pkgver=v0.6.1
 pkgrel=1
 pkgdesc="A special compilation of curl that makes it impersonate Chrome"
 url="https://github.com/lwthiker/curl-impersonate"
@@ -19,7 +19,7 @@ source=(
   "curl-impersonate.tar.gz::https://github.com/lwthiker/curl-impersonate/archive/refs/tags/${pkgver}.tar.gz"
 )
 
-md5sums=('484272f1aec11b24d324b2e71bd9c7c6')
+md5sums=('2f4183e25a8cc41f015913dbec2cb414')
 
 build () {
   cd curl-impersonate-${pkgver/v/}
