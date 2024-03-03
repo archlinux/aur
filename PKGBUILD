@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rcdklibs
-_pkgver=2.8
+_pkgver=2.9
 pkgname=r-${_pkgname,,}
-pkgver=2.8
+pkgver=2.9
 pkgrel=1
 pkgdesc='The CDK Libraries Packaged for R'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-rjava
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fccb520abcaff54e157c41573ca279ef31f1440b8dfec13c7d52d5b6b1021949')
+sha256sums=('ef91ad0411f35c5bafcec03b986c8bab99782b7be858a86d944877308ab1b4c1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
