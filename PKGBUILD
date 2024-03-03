@@ -2,7 +2,7 @@
 
 _pkgname=mauikit-calendar
 pkgname=$_pkgname-git
-pkgver=1.1.0.r3.gbf900e3
+pkgver=3.1.0.r2.g6034755
 pkgrel=1
 pkgdesc='MauiKit Calendar components'
 url='https://invent.kde.org/maui/mauikit-calendar'
@@ -16,10 +16,10 @@ depends=(akonadi-contacts
          ki18n
          libakonadi
          mauikit-git
-         qt5-base
-         qt5-declarative
-         qt5-quickcontrols2
-         qt5-svg)
+         qt6-base
+         qt6-declarative
+         qt6-quickcontrols2
+         qt6-svg)
 makedepends=(git extra-cmake-modules)
 groups=(maui)
 provides=($_pkgname)
@@ -37,6 +37,7 @@ pkgver() {
 
 build() {
   cmake -B build -S $_pkgname \
+    -DBUILD_WITH_QT6=ON \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
