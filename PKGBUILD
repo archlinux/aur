@@ -3,14 +3,20 @@
 
 pkgname=kvantum-qt6-git
 _gitname=Kvantum
-pkgver=1.0.10.r37.g85026b95
+pkgver=1.0.10.r50.gfc4ffbfe
 pkgrel=1
-pkgdesc="Qt6 component of the Kvantum theme engine"
+pkgdesc="SVG-based Qt6 theme engine plus a config tool and extra themes"
 arch=('x86_64')
 url="https://github.com/tsujan/Kvantum"
 license=('GPL3')
-depends=('kvantum-qt5-git>=1.0.10.r37' 'qt6-svg' 'qt5-x11extras' 'hicolor-icon-theme' 'kwindowsystem5')
-makedepends=('cmake' 'qt6-tools' 'git')
+groups=('qt')
+depends=('qt6-svg' 'qt5-x11extras' 'hicolor-icon-theme' 'kwindowsystem')
+makedepends=('cmake' 'qt5-tools' 'git')
+optdepends=('adapta-aurorae-theme-git: Matching kwin decorations for KvAdapta and KvAdaptaDark'
+            'breeze-enhanced-git: Made to match various themes of the Kvantum widget style')
+conflicts=('kvantum' 'kvantum-qt5-git' 'kvantum-git')
+replaces=('kvantum-qt5' 'kvantum' 'kvantum-git')
+provides=('kvantum-qt5' 'kvantum' 'kvantum-git')
 source=("git+${url}.git")
 md5sums=('SKIP')
 
@@ -21,24 +27,21 @@ pkgver() {
 
 }
 
-prepare() {
-  # Fix Qt6 build with Qt5 installed
-  sed 's|Qt6 Qt5|Qt6|' -i ${srcdir}/${_gitname}/${_gitname}/style/CMakeLists.txt
-}
-
-## Thanks ArchangeGabriel
-
 build() {
    cd ${srcdir}/${_gitname}/${_gitname}
-   mkdir -p build6 && cd build6
+   mkdir -p build && cd build
    cmake .. \
-         -DCMAKE_INSTALL_PREFIX=/usr \
-         -DENABLE_QT5=OFF
+         -DCMAKE_INSTALL_PREFIX=/usr
    make
-   
+
 }
 
 package() {
-   make -C ${srcdir}/${_gitname}/${_gitname}/build6 DESTDIR=${pkgdir}/ install
-    
+   make -C ${srcdir}/${_gitname}/${_gitname}/build DESTDIR=${pkgdir}/ install
+
+   cd ${srcdir}/${_gitname}/${_gitname}
+   install -Dm644 ChangeLog ${pkgdir}/usr/share/doc/kvantum/ChangeLog
+   install -Dm644 COPYING ${pkgdir}/usr/share/licenses/kvantum/COPYING
+   cp -r doc ${pkgdir}/usr/share/doc/kvantum
+
 }

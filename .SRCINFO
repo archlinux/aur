@@ -1,18 +1,29 @@
 pkgbase = kvantum-qt6-git
-	pkgdesc = Qt6 component of the Kvantum theme engine
-	pkgver = 1.0.10.r37.g85026b95
+	pkgdesc = SVG-based Qt6 theme engine plus a config tool and extra themes
+	pkgver = 1.0.10.r50.gfc4ffbfe
 	pkgrel = 1
 	url = https://github.com/tsujan/Kvantum
 	arch = x86_64
+	groups = qt
 	license = GPL3
 	makedepends = cmake
-	makedepends = qt6-tools
+	makedepends = qt5-tools
 	makedepends = git
-	depends = kvantum-qt5-git>=1.0.10.r37
 	depends = qt6-svg
 	depends = qt5-x11extras
 	depends = hicolor-icon-theme
-	depends = kwindowsystem5
+	depends = kwindowsystem
+	optdepends = adapta-aurorae-theme-git: Matching kwin decorations for KvAdapta and KvAdaptaDark
+	optdepends = breeze-enhanced-git: Made to match various themes of the Kvantum widget style
+	provides = kvantum-qt5
+	provides = kvantum
+	provides = kvantum-git
+	conflicts = kvantum
+	conflicts = kvantum-qt5-git
+	conflicts = kvantum-git
+	replaces = kvantum-qt5
+	replaces = kvantum
+	replaces = kvantum-git
 	source = git+https://github.com/tsujan/Kvantum.git
 	md5sums = SKIP
 
