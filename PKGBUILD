@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PolynomF
-_pkgver=2.0-5
+_pkgver=2.0-8
 pkgname=r-${_pkgname,,}
-pkgver=2.0.5
+pkgver=2.0.8
 pkgrel=1
 pkgdesc='Polynomials in R'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a86f7a8c768c9361a5203a7152532a39e038800f6db9b49b8591c8e2de135b2b')
+sha256sums=('72675174eeb164ea335b49f2995447cd9b4e8662f72c3f5b47e9ffb8413c24f7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
