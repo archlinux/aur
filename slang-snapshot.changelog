@@ -22,3 +22,5 @@ Changes since 2.3.3
 9. src/slang.ver: Removed the undefined symbol SLang_Rline_Quit,
    which was causing a link error on Gentoo Linux (Michal Rostecki)
 10. src/*.h: Updated the unicode tables from version 10.0.0 to 15.1.0
+11. lib/timestamp.sl: The test for a leap year assumed a 1-based
+    month, not 0 based, causing it to fail
