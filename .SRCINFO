@@ -1,13 +1,13 @@
 pkgbase = pyside2
 	pkgver = 5.15.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qt.io
 	arch = x86_64
 	license = LGPL
 	makedepends = cmake
 	makedepends = python-setuptools
 	makedepends = llvm
-	makedepends = clang=16.0.6
+	makedepends = clang=17.0.6
 	makedepends = qt5-multimedia
 	makedepends = qt5-tools
 	makedepends = qt5-sensors
@@ -45,7 +45,7 @@ pkgbase = pyside2
 
 pkgname = shiboken2
 	pkgdesc = Generates bindings for C++ libraries using CPython source code
-	depends = clang=16.0.6
+	depends = clang=17.0.6
 	depends = llvm
 	depends = libxslt
 	depends = qt5-xmlpatterns
