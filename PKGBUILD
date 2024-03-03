@@ -3,13 +3,13 @@
 
 pkgname=cevomapgen
 pkgver=31
-pkgrel=1
+pkgrel=2
 pkgdesc="External Random Map Generator for C-evo"
 arch=('x86_64' 'aarch64')
 url="https://sourceforge.net/projects/$pkgname"
 license=('GPL')
-depends=('qt5pas' 'glibc' 'libx11' 'hicolor-icon-theme')
-makedepends=('fpc' 'lazarus-qt5')
+depends=('qt6pas' 'glibc' 'libx11' 'hicolor-icon-theme')
+makedepends=('fpc' 'lazarus-qt6')
 source=("$url/files/Source/${pkgname}_${pkgver}.orig.tar.xz"
        "$url/files/Source/${pkgname}_${pkgver}.orig.tar.xz.asc")
 sha256sums=('ecb5c479a2951703f95e58924f4bad44faaf1961e5e17910f4596755baf01320'
@@ -22,6 +22,9 @@ prepare() {
 
   # currently cannot build with -pie as the RTL is not built with pie
   sed -i '/-k-pie/d' fpc.cfg
+  
+  # Switch to using qt6
+  sed -i 's/qt5/qt6/g' Makefile
 }
 
 
@@ -29,7 +32,7 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
 
   export LAZDIR="--lazarusdir=/usr/lib/lazarus"
-  make lazarusdir=/usr/lib/lazarus
+  make -B lazarusdir=/usr/lib/lazarus
 }
 
 
