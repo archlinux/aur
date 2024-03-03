@@ -1,6 +1,6 @@
 pkgbase = ijq
 	pkgdesc = Interactive jq tool, like jqplay for the commandline
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://git.sr.ht/~gpanders/ijq
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ijq
 	makedepends = go
 	makedepends = scdoc
 	depends = jq
-	source = ijq-v1.0.0.tar.gz::https://git.sr.ht/~gpanders/ijq/archive/v1.0.0.tar.gz
-	sha256sums = 77a50e3de7d640b8d4ce8f6fe98275251b9d34f9dda06a0d36be63060171bd27
+	source = ijq-v1.0.1.tar.gz::https://git.sr.ht/~gpanders/ijq/archive/v1.0.1.tar.gz
+	sha256sums = 513d6c3cff042216f75a2c22fe5a8178edb1b86b364388dad1640ab93a2c5668
 
 pkgname = ijq
