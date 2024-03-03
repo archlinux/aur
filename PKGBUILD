@@ -69,6 +69,32 @@ optdepends=(
   'tpm2-tools: tpm2-tss module support'
   'xz: xz compression'
 )
+checkdepends=(
+  'base-devel'
+  'btrfs-progs'
+  'connman'
+  'dash'
+  'dhclient'
+  'dhcp'
+  'dmraid'
+  'linux'
+  'lvm2'
+  'mdadm'
+  'multipath-tools'
+  'nbd'
+  'networkmanager'
+  'nfsidmap'
+  'nfs-utils'
+  'ntfs-3g'
+  'open-iscsi'
+  'parted'
+  'pigz'
+  'qemu'
+  'squashfs-tools'
+  'strace'
+  'tcpdump'
+  'vi'
+)
 provides=("${pkgname%-git}" 'initramfs')
 conflicts=("${pkgname%-git}")
 backup=('etc/dracut.conf')
@@ -127,9 +153,9 @@ build() {
 }
 
 check() {
-  cd "${pkgname%-git}"
+  cd "${pkgname%-git}/test"
 
-  TESTS="98" make check
+  TESTS="16 98" KVERSION="$(cd /lib/modules && ls -1 | tail -1)" V=1 make check
 }
 
 package() {
