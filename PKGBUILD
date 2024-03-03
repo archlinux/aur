@@ -2,18 +2,18 @@
 
 pkgname='python-ompython'
 _name=OMPython
-pkgver='3.4.0'
-pkgrel=2
+pkgver='3.5.0'
+pkgrel=1
 pkgdesc="OpenModelica-Python API Interface"
 url="https://openmodelica.org/"
-depends=('python' 'python-future' 'openmodelica-omc')
+depends=('openmodelica-omc' 'python' 'python-future' 'python-numpy' 'python-psutil' 'python-pyparsing')
 makedepends=('python-setuptools')
 optdepends=('python-pyzmq')
-license=('OSMC-PL')
+license=('LicenseRef-OSMC-PL')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
         'https://openmodelica.org/osmc-pl/osmc-pl-1.2.txt')
-md5sums=('b02ad9fba4de58bf880f0ffe23e7fa50'
+md5sums=('a4d0d9a5f27b6456ad79fdadea629cad'
          'f4bdef7120b0c3fcffe34734988e58e0')
 
 build() {
