@@ -1,6 +1,7 @@
-# Maintainer: ArtFox3  <artfox3@gmail.com>
+# Maintainer: chomsky <ivanonarch at tutanota dot com>
+# Contributor: Behnam Lal <dev at behnamlal dot xyz>
 pkgname="lobster"
-pkgver=4.0.0
+pkgver=v4.2.3
 pkgrel=1
 pkgdesc="Shell script to watch Movies/Webseries/Shows from the terminal."
 arch=('any')
@@ -8,7 +9,9 @@ url="https://github.com/justchokingaround/lobster.git"
 license=('GPL2')
 makedepends=('git')
 depends=('grep' 'sed' 'curl' 'fzf' 'mpv' 'html-xml-utils' 'patch')
-optdepends=('vlc: An alternative video player', 'ffmpeg: for downloading videos', 'rofi: external launcher', 'socat: for interacting with the mpv socket, used for the history feature', 'ueberzugpp: used for image preview with fzf')
+optdepends=('vlc: An alternative video player', 'ffmpeg: for downloading videos', 'rofi: external launcher', 'ueberzugpp: used for image preview with fzf')
+provides=($pkgname)
+conflicts=($pkgname)
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
