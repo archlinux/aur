@@ -2,13 +2,13 @@
 
 _pkgname=cask-server
 pkgname=$_pkgname-git
-pkgver=0.6.6.r0.g006f893
+pkgver=0.6.6.r3.ga06979f
 pkgrel=1
 pkgdesc='Public server and API to interface with Cask features'
 url='https://github.com/Nitrux/cask-server'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 license=(BSD-2-Clause custom:CC0 LGPL)
-depends=(qt5-base)
+depends=(qt6-base)
 makedepends=(git extra-cmake-modules)
 groups=(maui)
 provides=($_pkgname)

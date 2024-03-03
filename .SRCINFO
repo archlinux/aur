@@ -1,6 +1,6 @@
 pkgbase = cask-server-git
 	pkgdesc = Public server and API to interface with Cask features
-	pkgver = 0.6.6.r0.g006f893
+	pkgver = 0.6.6.r3.ga06979f
 	pkgrel = 1
 	url = https://github.com/Nitrux/cask-server
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = cask-server-git
 	license = LGPL
 	makedepends = git
 	makedepends = extra-cmake-modules
-	depends = qt5-base
+	depends = qt6-base
 	provides = cask-server
 	conflicts = cask-server
 	source = git+https://github.com/Nitrux/cask-server.git
