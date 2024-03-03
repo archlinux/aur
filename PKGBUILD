@@ -6,14 +6,13 @@ pkgname=kdecoration5
 _pkgname=kdecoration
 pkgver=5.27.10
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=1
+pkgrel=2
 pkgdesc='Plugin based Qt 5 library to create window decorations'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
 depends=(ki18n5)
 makedepends=(extra-cmake-modules kcoreaddons5)
-groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz{,.sig})
 sha256sums=('64966cb8258b50b55da50a8ab01fd1dd201065f1512216a04ce92189df679dde'
             'SKIP')
