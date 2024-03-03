@@ -11,7 +11,7 @@ license=('AGPL-3.0')
 depends=('webkit2gtk')
 provides=('r-quick-share')
 source=("https://github.com/Martichou/rquickshare/releases/download/v${pkgver}/r-quick-share_${pkgver}_amd64_GLIBC-${_glibcver}.deb")
-sha256sums=('SKIP')
+sha256sums=('62a53709ac4e0f31bb89151c4afcdb625ce186fc56633956269bf65aaa286989')
 
 package() {
     bsdtar -xf "data.tar.gz" -C "${pkgdir}/"
