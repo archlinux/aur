@@ -21,7 +21,7 @@ unzip -d addon addon.zip
 ADDONDIR="$(dirname "$(cd addon; find . -name package.ini)")"
 SETTINGSINI="$(cd addon; find . -name settings.ini)"
 
-TYPE="$(< "addon/$ADDONDIR/package.ini" grep '^Type *='|cut -d= -f2|sed 's/ //g'|tr "[:upper:]" "[:lower:]"|tr ' ' -|tr -d '"'|tr -d '\r\n')"
+TYPE="$(< "addon/$ADDONDIR/package.ini" grep '^Type *='|cut -d= -f2|sed 's/ //g'|tr "[:upper:]" "[:lower:]"|tr ' ' -|tr ',' '+'|tr -d '"'|tr -d '\r\n')"
 if [[ -z "$TYPE" ]] ; then if < "addon/$SETTINGSINI" grep '\[soundfiles\]' >/dev/null ; then TYPE="soundpack" ; fi ; fi
 VERSION="$(< "addon/$ADDONDIR/package.ini" grep -i '^Version *='|cut -d= -f2|tr -d '"'|tr -d ' \r\n')"
 if [[ -z "$VERSION" ]] ; then VERSION="$(< "addon/$SETTINGSINI" grep -i '^version *='|cut -d= -f2|tr -d ' \r\n')" ; fi
