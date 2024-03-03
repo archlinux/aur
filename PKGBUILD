@@ -1,24 +1,18 @@
-# Maintainer: xiota / aur.chaotic.cx
+# Maintainer:
 # Contributor: 2xsaiko <aur@dblsaiko.net>
 
 _gitname="kde-rounded-corners"
 _pkgname="kwin-effect-rounded-corners"
 pkgname="$_pkgname-git"
-pkgver=0.4.2.r3.ge784166
+pkgver=0.6.1.r3.g12a50941
 pkgrel=1
 pkgdesc="Rounds the corners of your windows"
-arch=('x86_64')
 url="https://github.com/matinlotfali/KDE-Rounded-Corners"
-license=("GPL3")
+license=("GPL-2.0-or-later")
+arch=('x86_64')
 
-provides=(
-  "$_gitname"
-  "$_pkgname"
-)
-conflicts=(
-  "$_gitname"
-  "$_pkgname"
-)
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
 
 depends=(
   'kwin'
@@ -27,29 +21,26 @@ makedepends=(
   'cmake'
   'extra-cmake-modules'
   'git'
-  'kdelibs4support'
-  'kinit'
   'qt5-tools'
+  'qt6-tools'
 )
 
-source=(
-  "$_gitname"::"git+$url"
-)
-sha256sums=(
-  "SKIP"
-)
+_pkgsrc="$_gitname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=("SKIP")
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   local _cmake_options=(
     -B build
-    -S "$_gitname"
+    -S "$_pkgsrc"
     -DCMAKE_BUILD_TYPE="Release"
     -DCMAKE_INSTALL_PREFIX='/usr'
+    -Wno-dev
   )
 
   cmake "${_cmake_options[@]}"
