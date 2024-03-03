@@ -2,7 +2,7 @@
 
 pkgname=python-instructor
 _pkgname=${pkgname#python-}
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
@@ -29,7 +29,7 @@ makedepends=(
 )
 checkdepends=(python-pytest)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('972529991759d5c3cabfb2f96074e0633204535864a888a7f3b31f2db01136eb')
+sha256sums=('182e362df5975d277d2eb325ed65c4710c42bf32543685ab51319d17b33ebacb')
 
 _archive="$_pkgname-$pkgver"
 
