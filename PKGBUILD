@@ -1,11 +1,11 @@
 pkgname=nyaa
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A tui tool for browsing and downloading torrents from nyaa.si"
 url='https://github.com/Beastwick18/nyaa/'
 arch=(x86_64)
 license=('GPL-3.0-or-later')
-makedepends=(cargo)
+makedepends=(rustup)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 b2sums=('SKIP')
 
