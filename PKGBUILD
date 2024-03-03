@@ -3,29 +3,33 @@
 _pkgname=TMB
 _pkgver=1.9.10
 pkgname=r-${_pkgname,,}
-pkgver=1.9.10
-pkgrel=1
+pkgver=${_pkgver//-/.}
+pkgrel=2
 pkgdesc="Template Model Builder: A General Random Effect Tool Inspired by 'ADMB'"
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
+  blas
+  lapack
   r
+)
+makedepends=(
   r-rcppeigen
 )
 optdepends=(
   r-numderiv
-  r-parallel
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('91dfae2d28f51bc1f85cdcd376c18800203354fceb5146e072087561fb2783b1')
+md5sums=('6554e07819b6fc786df8d68a19733344')
+b2sums=('71a1034d3739746b35181a2e13bb987a00a5d7ac4ec96c394cc5dba4a3b8c155e9a91334be08fd1c3985ca8f5fbcdb45bb81d3328725f5d0433efc9439bf269d')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
