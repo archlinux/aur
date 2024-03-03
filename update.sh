@@ -44,7 +44,7 @@ if [[ $old_version != $latest_version ]]; then
 
 	Signed-off-by: $maintainer"
 
-	git --no-pager diff HEAD..origin/master
+	git --no-pager diff origin/master..HEAD
 	echo "Do you want to push this commit to the remote repository? (y/n)"
 	read -r answer
 	if [[ $answer == "y" ]]; then
