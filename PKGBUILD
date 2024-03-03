@@ -1,5 +1,5 @@
 # Maintainer: Pavel Kuzminov <neko@pavel.gg>
-# Contributor: Jordan Klassen <jordan@klassen.me.uk>
+# Contributor: Emily Marigold Klassen <forivall@gmail.com>
 pkgname='teamspeak3-addon-installer'
 pkgver=0.2
 pkgrel=1
