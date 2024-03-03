@@ -2,7 +2,7 @@
 
 _pkgname=data-importer
 pkgname=firefly-iii-$_pkgname
-pkgver=1.4.2
+pkgver=1.4.4
 pkgrel=1
 pkgdesc='The Firefly III Data Importer can import data into Firefly III'
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/firefly-iii/$_pkgname"
 license=('custom')
 makedepends=('composer')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/firefly-iii/$_pkgname/archive/v${pkgver}.tar.gz")
-sha256sums=('3aea36646aa56a485d69ebd855d80dd34e9d09ffe5bf4441d1f151baf2c0c307')
+sha256sums=('a527e0d37269fc797c393d4b35b2399749636ec3ad84a082d8173c8e0f4a1c4e')
 
 backup=("etc/webapps/$pkgname/config.env")
 
