@@ -13,6 +13,8 @@ pkgbase = samurai-render
 	depends = cairo
 	depends = libglvnd
 	source = samurai-render-24.03.0::https://github.com/Samudevv/samurai-render/archive/refs/tags/24.03.0.tar.gz
+	source = samurai-render.pc
 	sha256sums = d3c25eb3cfe002f8092071a7a420b8174dd0be79b6e3e4f6269252099dbc75ec
+	sha256sums = 47e18f2b4a9c3d8fffa34fd92f8a57c71fe4a763a0af9a9b416bffcbb8657420
 
 pkgname = samurai-render
