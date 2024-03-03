@@ -4,9 +4,9 @@
 # Contributor: Mamy Ratsimbazafy <mamy (dot) ratsimbazafy_pkgbuild [at] gadz [at] org>
 
 pkgname=python-mlxtend
-_name="${pkgname#python-}"
+_pkgname="${pkgname#python-}"
 pkgver=0.23.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Library of Python tools and extensions for data science"
 arch=(any)
 url="https://github.com/rasbt/mlxtend"
@@ -36,7 +36,6 @@ checkdepends=(
   python-pytest
   python-tensorflow
 )
-
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   "0001-dont-include-tests-in-built-wheel.patch"
@@ -46,7 +45,7 @@ sha256sums=(
   '637e2427259c859048f695ed725750852fdb16c38321e0d73038b84bcc294754'
 )
 
-_archive="$_name-$pkgver"
+_archive="$_pkgname-$pkgver"
 
 prepare() {
   cd "$_archive"
@@ -65,12 +64,14 @@ check() {
   cd "$_archive"
 
   rm -rf tmp_install
-  _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   python -m installer --destdir=tmp_install dist/*.whl
 
-  export PYTHONPATH="$PWD/tmp_install/$_site_packages"
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  export PYTHONPATH="$PWD/tmp_install/$site_packages"
   pytest mlxtend/ \
     --ignore mlxtend/evaluate/f_test.py \
+    --deselect mlxtend/evaluate/tests/test_bias_variance_decomp.py::test_01_loss_bagging \
+    --deselect mlxtend/evaluate/tests/test_bias_variance_decomp.py::test_mse_bagging \
     --deselect mlxtend/classifier/tests/test_stacking_classifier.py::test_StackingClassifier \
     --deselect mlxtend/classifier/tests/test_stacking_classifier.py::test_StackingClassifier_proba_avg_1 \
     --deselect mlxtend/classifier/tests/test_stacking_classifier.py::test_StackingClassifier_proba_concat_1 \

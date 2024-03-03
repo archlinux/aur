@@ -1,7 +1,7 @@
 pkgbase = python-mlxtend
 	pkgdesc = Library of Python tools and extensions for data science
 	pkgver = 0.23.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rasbt/mlxtend
 	arch = any
 	license = BSD-3-Clause
