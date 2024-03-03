@@ -3,8 +3,8 @@
 # Contributor: Jonathan Liu <net147@gmail.com>
 
 pkgname=pg_activity
-pkgver=3.4.2
-pkgrel=4
+pkgver=3.5.0
+pkgrel=1
 pkgdesc="Top-like application for PostgreSQL server activity monitoring"
 arch=(any)
 url="https://github.com/dalibo/pg_activity"
@@ -27,9 +27,8 @@ checkdepends=(
   python-pytest
   python-pytest-postgresql
 )
-
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1e847d93244b50fb5bbb881c1b8b4fe78769c8f6b188f8cfa5a8c58ac7e51f0e')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('9ea11060ccaad6fc95994cfca6663b0aa4a6a30ef090a2adf2324ac58cc8cddf')
 
 _archive="$pkgname-$pkgver"
 
@@ -45,8 +44,8 @@ check() {
   rm -rf tmp_install
   python -m installer --destdir=tmp_install dist/*.whl
 
-  _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  export PYTHONPATH="$PWD/tmp_install/$_site_packages"
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  export PYTHONPATH="$PWD/tmp_install/$site_packages"
   # Deselected tests failing due to trying to modify locale.
   pytest tests/ \
     --deselect 'tests/test_data.py::test_encoding' \
