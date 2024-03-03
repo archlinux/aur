@@ -2,7 +2,7 @@
 
 pkgname=python-litestar
 _pkgname=${pkgname#python-}
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="Production-ready, Light, Flexible and Extensible ASGI API framework"
 arch=(any)
@@ -28,6 +28,7 @@ depends=(
   python-rich
   python-rich-click
   python-sniffio
+  python-starlette
   python-trio
   python-typing_extensions
   python-yaml
@@ -87,8 +88,8 @@ optdepends=(
   'python-redis: Redis store'
   'python-sqlalchemy: SQLAlchemy integration'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('17fc1d4d4ef1013b45e3c2b08ffc031415ca8948154eb5864e1069659bf9390f')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('338606a8a9b6185d8a6e4fdda94ab03cf68185339d629112bdcb8ff71dbe9d61')
 
 _archive="$_pkgname-$pkgver"
 
@@ -123,7 +124,6 @@ check() {
   )
   local deselect_test_args=(
     # Fails for unkown reason
-    --deselect=tests/unit/test_middleware/test_middleware_handling.py::test_custom_middleware_processing
     --deselect=tests/unit/test_template/test_template.py::test_media_type_inferred
 
     # Requires running docker compose
