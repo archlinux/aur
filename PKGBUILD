@@ -2,12 +2,12 @@
 
 _pkgname=KWIML
 pkgname=kwiml-git
-pkgver=r56.9c534d2
-pkgrel=1
+pkgver=r60.500bc25
+pkgrel=2
 pkgdesc='The Kitware Information Macro Library'
 arch=('any')
 url='https://gitlab.kitware.com/utils/kwiml'
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=(
   cmake
   git
