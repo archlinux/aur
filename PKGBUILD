@@ -18,31 +18,25 @@ prepare() {
 
 package() {
   # Install the Python script
-  install -Dm755 "$srcdir"/FeatherPDF-v."${pkgver}"/src/featherpdf.py "${pkgdir}/usr/local/bin/feather-pdf.py"
+  install -Dm755 "$srcdir"/FeatherPDF-v."${pkgver}"/src/featherpdf.py "${pkgdir}/usr/local/bin/feather-pdf"
   
-  # Create a shell script to execute feather-pdf.py and copy it to /usr/local/bin
-  echo '#!/bin/bash' > feather-pdf
-  echo 'python3 /usr/local/bin/feather-pdf.py "$@"' >> feather-pdf
-  chmod +x feather-pdf
-  install -Dm755 feather-pdf "${pkgdir}/usr/local/bin/feather-pdf"
-
   # Install the icon
   install -Dm644 "$srcdir"/FeatherPDF-v."${pkgver}"/src/fpdf-iconlogo.png "${pkgdir}/usr/share/pixmaps/feather-pdf.png"
 
-  # Create the .desktop file dynamically
+  # Create the .desktop file
   cat << EOF > feather-pdf.desktop
 [Desktop Entry]
 Version=1.0
 Type=Application
 Name=FeatherPDF
 Comment=Ultra-lightweight PDF viewer
-Exec=feather-pdf.py
+Exec=feather-pdf
 Icon=feather-pdf
 Terminal=false
 Categories=Office;Utility;
 EOF
   install -Dm644 feather-pdf.desktop "${pkgdir}/usr/share/applications/feather-pdf.desktop"
-
+  
   # Update menu cache for GNOME and KDE
   update-desktop-database -q || true
   gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor || true
