@@ -17,19 +17,19 @@ prepare() {
 }
 
 package() {
-  # Instalación del script Python
+  # Install the Python script
   install -Dm755 "$srcdir"/FeatherPDF-v."${pkgver}"/src/featherpdf.py "${pkgdir}/usr/local/bin/feather-pdf.py"
   
-  # Creación de un script shell para ejecutar feather-pdf.py y copiarlo a /usr/local/bin
+  # Create a shell script to execute feather-pdf.py and copy it to /usr/local/bin
   echo '#!/bin/bash' > feather-pdf
   echo 'python3 /usr/local/bin/feather-pdf.py "$@"' >> feather-pdf
   chmod +x feather-pdf
   install -Dm755 feather-pdf "${pkgdir}/usr/local/bin/feather-pdf"
 
-  # Instalación del icono
+  # Install the icon
   install -Dm644 "$srcdir"/FeatherPDF-v."${pkgver}"/src/fpdf-iconlogo.png "${pkgdir}/usr/share/pixmaps/feather-pdf.png"
 
-  # Creación del archivo .desktop dinámicamente
+  # Create the .desktop file dynamically
   cat << EOF > feather-pdf.desktop
 [Desktop Entry]
 Version=1.0
@@ -39,28 +39,32 @@ Comment=Ultra-lightweight PDF viewer
 Exec=feather-pdf.py
 Icon=feather-pdf
 Terminal=false
-Categories=Utility;Office;
+Categories=Office;Utility;
 EOF
   install -Dm644 feather-pdf.desktop "${pkgdir}/usr/share/applications/feather-pdf.desktop"
 
-  # Actualización del menú principal
-  xdg-desktop-menu forceupdate
+  # Update the GNOME menu
+  if [ -x "$(command -v update-desktop-database)" ]; then
+    update-desktop-database -q "${pkgdir}/usr/share/applications"
+  fi
 
-  # Actualización de los iconos en los menús
-  xdg-icon-resource forceupdate
+  # Update the KDE menu
+  if [ -x "$(command -v update-mime-database)" ]; then
+    update-mime-database "${pkgdir}/usr/share/applications"
+  fi
 
-  # Actualización de los menús en GNOME
-  glib-compile-schemas /usr/share/glib-2.0/schemas
+  # Update the menu for Fluxbox
+  if [ -x "$(command -v fluxbox-generate_menu)" ]; then
+    fluxbox-generate_menu
+  fi
 
-  # Actualización de los menús en KDE Plasma
-  kbuildsycoca5 --noincremental
+  # Update the menu for Blackbox
+  if [ -x "$(command -v blackbox-generate_menu)" ]; then
+    blackbox-generate_menu
+  fi
 
-  # Actualización de los menús en Fluxbox
-  fluxbox-generate_menu
-
-  # Actualización de los menús en Blackbox
-  blackbox -restart
-
-  # Actualización de los menús en Enlightenment
-  enlightenment_remote -desktop-cache-refresh
+  # Update the Enlightenment menu
+  if [ -x "$(command -v enlightenment_remote)" ]; then
+    enlightenment_remote -menu-cache-update
+  fi
 }
