@@ -1,0 +1,28 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -859,14 +859,7 @@
+     if (WIN32)
+         list(APPEND SRC_CORE evthread_win32.c)
+     else()
+-        find_package(Threads REQUIRED)
+-        if (NOT CMAKE_USE_PTHREADS_INIT)
+-            message(FATAL_ERROR
+-                    "Failed to find Pthreads, set EVENT__DISABLE_THREAD_SUPPORT to disable")
+-        endif()
+-
+         set(EVENT__HAVE_PTHREADS 1)
+-        list(APPEND LIB_APPS ${CMAKE_THREAD_LIBS_INIT})
+     endif()
+ endif()
+ 
+@@ -1152,9 +1145,7 @@
+             if (NOT EVENT__DISABLE_OPENSSL)
+                 target_link_libraries(regress event_openssl)
+             endif()
+-            if (CMAKE_USE_PTHREADS_INIT)
+-                target_link_libraries(regress event_pthreads)
+-            endif()
++            target_link_libraries(regress event_pthreads)
+         else()
+             message(WARNING "No suitable Python interpreter found, cannot generate regress tests!")
+         endif()

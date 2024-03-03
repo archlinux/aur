@@ -6,7 +6,7 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libevent
 pkgver=2.1.12
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Event notification library (android)"
 url="https://libevent.org/"
@@ -17,11 +17,19 @@ makedepends=("android-${_android_arch}-zlib"
              'python')
 optdepends=('python: event_rpcgen.py')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://github.com/libevent/libevent/releases/download/release-$pkgver-stable/libevent-$pkgver-stable.tar.gz"{,.asc})
+source=("https://github.com/libevent/libevent/releases/download/release-$pkgver-stable/libevent-$pkgver-stable.tar.gz"{,.asc}
+        '0001-Force-compile-with-pthreads.patch')
 sha256sums=('92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb'
-            'SKIP')
+            'SKIP'
+            'a102b8359dd36e8823c3dde23a1d39ffa758cc68c3cbfa6b65633990cec0ecac')
 validpgpkeys=('B35BF85BF19489D04E28C33C21194EBB165733EA'
               '9E3AC83A27974B84D1B3401DB86086848EF8686D')
+
+prepare() {
+    cd "${srcdir}/libevent-$pkgver-stable"
+
+    patch -Np1 -i ../0001-Force-compile-with-pthreads.patch
+}
 
 build() {
     cd "${srcdir}/libevent-$pkgver-stable"
@@ -36,7 +44,6 @@ build() {
         -DEVENT__LIBRARY_TYPE=SHARED \
         -DEVENT__DISABLE_REGRESS=OFF \
         -DEVENT__DOXYGEN=OFF \
-        -DEVENT__DISABLE_THREAD_SUPPORT=ON \
         -DEVENT__DISABLE_TESTS=ON \
         -DEVENT__DISABLE_SAMPLES=ON \
         -DOPENSSL_ROOT_DIR="${ANDROID_PREFIX}" \
@@ -55,7 +62,6 @@ build() {
         -DEVENT__LIBRARY_TYPE=STATIC \
         -DEVENT__DISABLE_REGRESS=OFF \
         -DEVENT__DOXYGEN=OFF \
-        -DEVENT__DISABLE_THREAD_SUPPORT=ON \
         -DEVENT__DISABLE_TESTS=ON \
         -DEVENT__DISABLE_SAMPLES=ON \
         -DOPENSSL_ROOT_DIR="${ANDROID_PREFIX}" \
