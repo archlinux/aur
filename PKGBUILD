@@ -39,7 +39,11 @@ Comment=Ultra-lightweight PDF viewer
 Exec=feather-pdf
 Icon=feather-pdf
 Terminal=false
-Categories=Office;Utility;
+Categories=Office;
 EOF
   install -Dm644 feather-pdf.desktop "${pkgdir}/usr/share/applications/feather-pdf.desktop"
+
+  # Verificar el contenido del archivo .desktop
+  echo "Contenido del archivo .desktop generado:"
+  cat "${pkgdir}/usr/share/applications/feather-pdf.desktop"
 }
