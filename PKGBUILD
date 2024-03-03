@@ -12,13 +12,16 @@ sha256sums=('a7da1cbb677b87122c6dd252de83e8f8088ec9d4a443ce83c1cff3ac9f3b592a')
 
 prepare() {
   tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
-  # cp "$srcdir"/term-pdf-wrp.c "$srcdir"/TermPDFViewer-v."$pkgver"/src/
 }
-build() {
-  cd "$srcdir"/TermPDFViewer-v."${pkgver}"
-  gcc -o term-pdf-wrp "$srcdir"/TermPDFViewer-v."${pkgver}"/src/term-pdf-wrp.c
-}
+
 package() {
-  install -Dm755 "$srcdir"/TermPDFViewer-v."${pkgver}"/src/term-pdf-wrp "${pkgdir}/usr/local/bin/term-pdf"
-  install -Dm755 "$srcdir"/TermPDFViewer-v."${pkgver}"/src/termpdf.py "${pkgdir}/usr/local/bin/termpdf.py"
+  # Instalar el script Python
+  install -Dm755 "$srcdir"/TermPDFViewer-v."${pkgver}"/src/termpdf.py "${pkgdir}/usr/local/bin/term-pdf.py"
+  
+  # Crear un script shell para ejecutar upd8all.py y copiarlo a /usr/local/bin
+  echo '#!/bin/bash' > term-pdf
+  echo 'python /usr/local/bin/term-pdf.py "$@"' >> term-pdf
+  chmod +x term-pdf
+  install -Dm755 term-pdf "${pkgdir}/usr/local/bin/term-pdf"
 }
+
