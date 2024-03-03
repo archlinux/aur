@@ -1,0 +1,4 @@
+post_install() {
+  echo ">>> Run game with 'bstone --data_dir <path_to_game_data>"
+  echo ">>> See https://github.com/bibendovsky/bstone#11---command-line-options for list of available command line switches."
+}

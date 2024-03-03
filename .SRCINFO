@@ -1,0 +1,20 @@
+pkgbase = bstone-git
+	pkgdesc = Unofficial source port for Blake Stone series (Aliens Of Gold and Planet Strike).
+	pkgver = r2302.e2e780db
+	pkgrel = 1
+	url = https://github.com/bibendovsky/bstone
+	install = bstone.install
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL2
+	makedepends = cmake
+	depends = sdl2
+	provides = bstone
+	source = git+https://github.com/bibendovsky/bstone.git
+	sha256sums = SKIP
+
+pkgname = bstone-git
