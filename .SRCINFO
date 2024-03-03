@@ -1,7 +1,7 @@
 pkgbase = util-linux-selinux
 	pkgdesc = SELinux aware miscellaneous system utilities for Linux
 	pkgver = 2.39.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/util-linux/util-linux
 	arch = x86_64
 	arch = aarch64
@@ -27,6 +27,7 @@ pkgbase = util-linux-selinux
 	makedepends = libselinux
 	options = strip
 	source = git+https://github.com/util-linux/util-linux#tag=bc0e318941a0539be1205ea1ac1dbfa834b7d033?signed
+	source = 0001-tmpfiles-add-and-install-for-uuidd-generate-run-uuid.patch
 	source = util-linux-BSD-2-Clause.txt::https://raw.githubusercontent.com/Cyan4973/xxHash/f035303b8a86c1db9be70cbb638678ef6ef4cb2d/LICENSE
 	source = pam-login
 	source = pam-common
@@ -39,6 +40,7 @@ pkgbase = util-linux-selinux
 	source = rfkill-block_.service
 	validpgpkeys = B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284
 	sha256sums = SKIP
+	sha256sums = d0864b925b14aaf0560afeb8df4257c0603c4e5bfce70f25e0ed3c6ab6fc58f6
 	sha256sums = 6ffedbc0f7878612d2b23589f1ff2ab15633e1df7963a5d9fc750ec5500c7e7a
 	sha256sums = ee917d55042f78b8bb03f5467e5233e3e2ddc2fe01e302bc53b218003fe22275
 	sha256sums = 57e057758944f4557762c6def939410c04ca5803cbdd2bfa2153ce47ffe7a4af
@@ -71,8 +73,8 @@ pkgname = util-linux-selinux
 	optdepends = words: default dictionary for look
 	provides = rfkill
 	provides = hardlink
-	provides = util-linux=2.39.3-1
-	provides = selinux-util-linux=2.39.3-1
+	provides = util-linux=2.39.3-2
+	provides = selinux-util-linux=2.39.3-2
 	conflicts = rfkill
 	conflicts = hardlink
 	conflicts = util-linux
@@ -96,7 +98,7 @@ pkgname = util-linux-libs-selinux
 	provides = libmount.so
 	provides = libsmartcols.so
 	provides = libuuid.so
-	provides = util-linux-libs=2.39.3-1
+	provides = util-linux-libs=2.39.3-2
 	provides = libutil-linux-selinux
 	conflicts = util-linux-libs
 	conflicts = libutil-linux-selinux

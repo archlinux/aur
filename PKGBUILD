@@ -13,7 +13,7 @@ pkgname=(util-linux-selinux util-linux-libs-selinux)
 _tag='bc0e318941a0539be1205ea1ac1dbfa834b7d033' # git rev-parse v${_tag_name}
 _tag_name=2.39.3
 pkgver=${_tag_name/-/}
-pkgrel=1
+pkgrel=2
 pkgdesc='SELinux aware miscellaneous system utilities for Linux'
 url='https://github.com/util-linux/util-linux'
 arch=('x86_64' 'aarch64')
@@ -39,6 +39,7 @@ license=(
 options=('strip')
 validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
 source=("git+https://github.com/util-linux/util-linux#tag=${_tag}?signed"
+        '0001-tmpfiles-add-and-install-for-uuidd-generate-run-uuid.patch'
         ${pkgbase/-selinux}-BSD-2-Clause.txt::https://raw.githubusercontent.com/Cyan4973/xxHash/f035303b8a86c1db9be70cbb638678ef6ef4cb2d/LICENSE
         pam-{login,common,remote,runuser,su}
         'util-linux.sysusers'
@@ -46,6 +47,7 @@ source=("git+https://github.com/util-linux/util-linux#tag=${_tag}?signed"
         'rfkill-unblock_.service'
         'rfkill-block_.service')
 sha256sums=('SKIP'
+            'd0864b925b14aaf0560afeb8df4257c0603c4e5bfce70f25e0ed3c6ab6fc58f6'
             '6ffedbc0f7878612d2b23589f1ff2ab15633e1df7963a5d9fc750ec5500c7e7a'
             'ee917d55042f78b8bb03f5467e5233e3e2ddc2fe01e302bc53b218003fe22275'
             '57e057758944f4557762c6def939410c04ca5803cbdd2bfa2153ce47ffe7a4af'
@@ -80,6 +82,9 @@ prepare() {
 
   # do not mark dirty
   sed -i '/dirty=/c dirty=' tools/git-version-gen
+
+  # tmpfiles: add and install for uuidd, generate /run/uuidd & /var/lib/libuuid
+  patch -Np1 < ../0001-tmpfiles-add-and-install-for-uuidd-generate-run-uuid.patch
 }
 
 build() {
