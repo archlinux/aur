@@ -2,7 +2,7 @@
 # Contributor: Gerard Ribugent <ribugent <at> gmail <dot> com>
 pkgname='python-azure-core'
 _name='azure-core'
-pkgver='1.30.0'
+pkgver='1.30.1'
 pkgrel=1
 pkgdesc="Microsoft Azure Core Library for Python"
 url="https://pypi.org/project/azure-core/"
@@ -12,7 +12,7 @@ optdepends=('python-aiohttp')
 license=('MIT')
 arch=('any')
 source=("https://pypi.io/packages/source/a/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('6f3a7883ef184722f6bd997262eddaf80cfe7e5b3e0caaaf8db1695695893d35')
+sha256sums=('26273a254131f84269e8ea4464f3560c731f29c0c1f69ac99010845f239c1a8f')
 
 package() {
   cd "$srcdir/${_name}-${pkgver}/"
