@@ -1,6 +1,6 @@
 pkgbase = libcurl-impersonate-bin
 	pkgdesc = Curl impersonate libcurl build. Libcurl is a special compilation of curl that makes it impersonate Firefox and Chrome.
-	pkgver = v0.6.0
+	pkgver = v0.6.1
 	pkgrel = 1
 	url = https://github.com/lwthiker/curl-impersonate
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = libcurl-impersonate-bin
 	depends = nss
 	provides = libcurl-impersonate-firefox
 	provides = libcurl-impersonate-chrome
-	source_x86_64 = libcurl-impersonate_x86_64.tar.gz::https://github.com/lwthiker/curl-impersonate/releases/download/v0.6.0/libcurl-impersonate-v0.6.0.x86_64-linux-gnu.tar.gz
-	md5sums_x86_64 = 34092fa12033c53a5bd681246e334c8a
-	source_aarch64 = libcurl-impersonate_aarch64.tar.gz::https://github.com/lwthiker/curl-impersonate/releases/download/v0.6.0/libcurl-impersonate-v0.6.0.aarch64-linux-gnu.tar.gz
-	md5sums_aarch64 = 0f24a3ebabb49f0f84d102124d92f032
+	source_x86_64 = libcurl-impersonate_x86_64.tar.gz::https://github.com/lwthiker/curl-impersonate/releases/download/v0.6.1/libcurl-impersonate-v0.6.1.x86_64-linux-gnu.tar.gz
+	md5sums_x86_64 = bed2142535c209e4a605e03ea014af9d
+	source_aarch64 = libcurl-impersonate_aarch64.tar.gz::https://github.com/lwthiker/curl-impersonate/releases/download/v0.6.1/libcurl-impersonate-v0.6.1.aarch64-linux-gnu.tar.gz
+	md5sums_aarch64 = 42cd4834511b78df6ae4737ca17c5282
 
 pkgname = libcurl-impersonate-bin
