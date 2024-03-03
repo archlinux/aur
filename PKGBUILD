@@ -4,15 +4,12 @@ pkgname=ruby-flexmock
 _pkgname=${pkgname#ruby-}
 pkgver=2.3.8
 _commit=a22b5b30631bcfba67c806b01951dc0ca157ec62
-pkgrel=1
+pkgrel=2
 pkgdesc="Flexible mocking for Ruby testing"
 arch=(any)
 url="https://github.com/doudou/flexmock"
 license=(MIT)
-depends=(
-  glibc
-  ruby
-)
+depends=(ruby)
 makedepends=(
   git
   rubygems
@@ -27,6 +24,12 @@ source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
 _archive="$_pkgname"
+
+pkgver() {
+  cd "$_archive"
+
+  git describe --tags | sed 's/^v//'
+}
 
 prepare() {
   cd "$_archive"
@@ -92,7 +95,7 @@ check() {
 package() {
   cd "$_archive"
 
-  cp --archive tmp_install/* "$pkgdir"
+  cp -a tmp_install/* "$pkgdir"
 
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
