@@ -3,7 +3,7 @@
 pkgname=keymapper-git
 _pkgname=keymapper
 pkgver=latest
-pkgrel=3
+pkgrel=4
 pkgdesc="A cross-platform context-aware keyremapper"
 arch=(i686 x86_64 armv6h armv7h aarch64)
 url=https://github.com/houmain/keymapper
