@@ -15,10 +15,10 @@ prepare() {
 }
 
 package() {
-  # Instalar el script Python
+  # Install the Python script
   install -Dm755 "$srcdir"/TermPDFViewer-v."${pkgver}"/src/termpdf.py "${pkgdir}/usr/local/bin/term-pdf.py"
   
-  # Crear un script shell para ejecutar upd8all.py y copiarlo a /usr/local/bin
+  # Create a shell script to execute term-pdf.py and copy it to /usr/local/bin
   echo '#!/bin/bash' > term-pdf
   echo 'python /usr/local/bin/term-pdf.py "$@"' >> term-pdf
   chmod +x term-pdf
