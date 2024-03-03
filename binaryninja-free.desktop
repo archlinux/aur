@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Binary Ninja (free)
+Exec=/opt/binaryninja-free/binaryninja
+Icon=/usr/share/icons/binaryninja-free.png
+Type=Application
+Categories=Development;Debugger;Profiling;

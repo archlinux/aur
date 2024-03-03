@@ -1,0 +1,18 @@
+pkgbase = binaryninja-free
+	pkgdesc = An interactive decompiler, disassembler, debugger, and binary analysis platform.
+	pkgver = 4.0.4911
+	pkgrel = 1
+	url = https://binary.ninja
+	arch = x86_64
+	license = custom:Binary Ninja Free Edition License Agreement
+	depends = python
+	depends = glibc
+	depends = qt5-base
+	source = https://cdn.binary.ninja/installers/BinaryNinja-free.zip
+	source = binaryninja-free.png
+	source = binaryninja-free.desktop
+	sha256sums = c692c160f4fc3b47c7b82cb2a0a0b6f6ee21a878ea6a9ceaf9e8e3cf1b09522d
+	sha256sums = 4f318001e7d39279ce063ef42077bae03e95c112aa203a4be3ea3d913c34327e
+	sha256sums = 075158d0131dd89565e021a6854a6ae0237442e0b4e03a61638a7f8a69ec9f85
+
+pkgname = binaryninja-free
