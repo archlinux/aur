@@ -1,6 +1,6 @@
 pkgbase = mackerel-agent-plugins-git
 	pkgdesc = Plugins for mackerel-agent
-	pkgver = 0.79.0
+	pkgver = 0.80.0
 	pkgrel = 1
 	url = https://github.com/mackerelio/mackerel-agent-plugins
 	arch = i686
