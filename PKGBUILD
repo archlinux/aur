@@ -1,6 +1,6 @@
 # Maintainer: Felipe Alfonso Gonzalez <f.alfonso@res-ear.ch>
 pkgname=feather-pdf
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="FeatherPDF is an ultra-lightweight PDF viewer."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('python' 'python-pip' 'python-pyqt5')
 
 source=("https://github.com/felipealfonsog/FeatherPDF/archive/refs/tags/v.${pkgver}.tar.gz")
 
-sha256sums=('f90e5a2aea0aa0c640299825c695b2392ff49a1d8ac62c9a446fb3af2d2a3aa7')
+sha256sums=('71c7e2d5ee0f1ddb99ee6d7cbbb10cbc5354e161adcf9f1bfaad91465f202bb9')
 
 prepare() {
   tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
