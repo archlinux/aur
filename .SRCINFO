@@ -1,6 +1,6 @@
 pkgbase = workout-tracker-bin
 	pkgdesc = A workout tracking web application for personal use (or family, friends), geared towards running and other GPX-based activities
-	pkgver = 0.9.0
+	pkgver = 0.10.2
 	pkgrel = 1
 	url = https://github.com/jovandeginste/workout-tracker
 	install = workout-tracker.install
@@ -17,10 +17,10 @@ pkgbase = workout-tracker-bin
 	b2sums = a124ab550c577815d570347ed74f43ad84b85bd5639464447e24e396aa1b96774557bf09fbbe3a6909113b3aa74b8fd028ee6f0fac8ff5a3a9274096b2744fc8
 	b2sums = fa90f14f6cacbe15a3a253372325ac263f66fd6a90118434b26831939c7a9cb1025e4a867e9c301f08f7527c5b06e9cbdee6ecac3fb2fd52215785408264b756
 	b2sums = 3a7041fcbe36b7e15e69e303dcbf56ebd0b674d335128b456d4aca80590f992cc4707a0dce24691395070d4b4fc4cde7c9df1d8a654a367dd9125b7712a46c24
-	b2sums = SKIP
-	source_x86_64 = https://github.com/jovandeginste/workout-tracker/releases/download/v0.9.0/workout-tracker-v0.9.0-linux-amd64.tar.gz
-	b2sums_x86_64 = ac4cb0e6d4be24d60ad9f281f9c677c96d52194391793ed08fd965a0fa33e9a19bb06a936b06ff70baa8931222816913853fe3440dfe5da9ce1044c754d8686c
-	source_aarch64 = https://github.com/jovandeginste/workout-tracker/releases/download/v0.9.0/workout-tracker-v0.9.0-linux-arm64.tar.gz
-	b2sums_aarch64 = b0f1be809c2aa9740b75962e7e9df3997244f0cb03b97f31eb516a8b3446578dfb16ecd6d3c51a258cb627f5022e2fe0edd5fa6edd0e405ba891d6e7d880be8f
+	b2sums = 52f16826f65e2fd13f3dd2158f6c0f934de1c39e546bac4e088a5bb478e33216225c11f9c10710a7efdb9fdec6ea44f5967f61be44dded86fecef5cd88435639
+	source_x86_64 = https://github.com/jovandeginste/workout-tracker/releases/download/v0.10.2/workout-tracker-v0.10.2-linux-amd64.tar.gz
+	b2sums_x86_64 = 30878fe1651e5862cdac2be74eb004619e7e3374b2492035d96e9dbc1cd0fdba93d10d1cc01db2c9a4625414a5db1e60f66d41f5161fc8d788c88594a761a376
+	source_aarch64 = https://github.com/jovandeginste/workout-tracker/releases/download/v0.10.2/workout-tracker-v0.10.2-linux-arm64.tar.gz
+	b2sums_aarch64 = 458a8a0db4dd37d91f7adc8786eb28336f2146a02e4e33d0f7d98956ec719989eddbddf61cd3167190a5c6a0b531591d2d399fc3003bf74244c808bfc7ddaa2d
 
 pkgname = workout-tracker-bin
