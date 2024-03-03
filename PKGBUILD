@@ -2,8 +2,8 @@
 
 pkgname=python-polyfactory
 _pkgname=${pkgname#python-}
-pkgver=2.14.1
-pkgrel=2
+pkgver=2.15.0
+pkgrel=1
 pkgdesc="Simple and powerful factories for mock data generation"
 arch=(any)
 url="https://github.com/litestar-org/polyfactory"
@@ -32,9 +32,8 @@ checkdepends=(
   python-hypothesis
   python-pytest-asyncio
 )
-
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ad19fe83497ddf47d8ee945d35261cea6fa656cc21d737cbcbd5ac32bdd957e5')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('45024371c1b30b34cf54119fb5fb84468ef82934cb12ca1e2f558aa1d93a6719')
 
 _archive="$_pkgname-$pkgver"
 
@@ -47,6 +46,7 @@ build() {
 check() {
   cd "$_archive"
 
+  # Deselect failing test
   pytest tests/ \
     --deselect tests/constraints/test_int_constraints.py::test_handle_constrained_int_handles_ge_with_le
 }
