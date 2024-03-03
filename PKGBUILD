@@ -7,7 +7,7 @@
 
 pkgname=geogebra-5
 pkgver=5.0.803.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynamic mathematics software with interactive graphics, algebra and spreadsheet"
 arch=('any')
 url='https://www.geogebra.org/'
@@ -16,7 +16,7 @@ depends=('hicolor-icon-theme' 'java-runtime=8' 'xdg-utils')
 provides=("${pkgname//-5/}")
 conflicts=("${pkgname//-5/}")
 source=("https://download.geogebra.org/installers/5.0/GeoGebra-Linux-Portable-${pkgver//./-}.tar.bz2"
-        "https://static.geogebra.org/images/geogebra-logo.svg"
+        "geogebra-logo.svg"
         "geogebra"
         "geogebra.desktop"
         "geogebra-mime.xml")

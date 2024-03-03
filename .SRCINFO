@@ -1,7 +1,7 @@
 pkgbase = geogebra-5
 	pkgdesc = Dynamic mathematics software with interactive graphics, algebra and spreadsheet
 	pkgver = 5.0.803.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.geogebra.org/
 	arch = any
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = geogebra-5
 	provides = geogebra
 	conflicts = geogebra
 	source = https://download.geogebra.org/installers/5.0/GeoGebra-Linux-Portable-5-0-803-0.tar.bz2
-	source = https://static.geogebra.org/images/geogebra-logo.svg
+	source = geogebra-logo.svg
 	source = geogebra
 	source = geogebra.desktop
 	source = geogebra-mime.xml
