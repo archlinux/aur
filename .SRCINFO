@@ -1,11 +1,14 @@
 pkgbase = glm-git
 	pkgdesc = C++ mathematics library for 3D software based on the OpenGL Shading Language (GLSL) specification
-	pkgver = 0.9.9.8.r222.gcc98465e
+	pkgver = 1.0.0.r26.gf8df2f3e
 	pkgrel = 1
-	url = http://glm.g-truc.net
-	arch = any
+	url = https://github.com/g-truc/glm
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = MIT
 	makedepends = cmake
+	makedepends = git
 	provides = glm
 	conflicts = glm
 	source = git+https://github.com/g-truc/glm.git
