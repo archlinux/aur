@@ -8,8 +8,8 @@ arch=('any')
 url="https://github.com/hadashisora/NintyFont"
 license=('GPL3')
 groups=()
-depends=()
-makedepends=('base-devel' 'qt5-base' 'cmake' 'fmt')
+depends=('fmt9')
+makedepends=('base-devel' 'qt5-base' 'cmake')
 source=("${_pkgname}::git+https://github.com/hadashisora/NintyFont.git")
 md5sums=('SKIP')
 

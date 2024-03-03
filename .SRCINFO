@@ -8,7 +8,7 @@ pkgbase = nintyfont-git
 	makedepends = base-devel
 	makedepends = qt5-base
 	makedepends = cmake
-	makedepends = fmt
+	depends = fmt9
 	source = nintyfont::git+https://github.com/hadashisora/NintyFont.git
 	md5sums = SKIP
 
