@@ -1,14 +1,14 @@
 pkgbase = cevomapgen
 	pkgdesc = External Random Map Generator for C-evo
 	pkgver = 31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/cevomapgen
 	arch = x86_64
 	arch = aarch64
 	license = GPL
 	makedepends = fpc
-	makedepends = lazarus-qt5
-	depends = qt5pas
+	makedepends = lazarus-qt6
+	depends = qt6pas
 	depends = glibc
 	depends = libx11
 	depends = hicolor-icon-theme
