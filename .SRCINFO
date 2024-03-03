@@ -1,7 +1,7 @@
 pkgbase = gedkeeper-git
 	pkgdesc = Personal genealogical database editor
 	pkgver = v3.5.1.r4.g03c755c6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/serg-norseman/gedkeeper
 	arch = x86_64
 	arch = i686
