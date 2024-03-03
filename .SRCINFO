@@ -8,6 +8,7 @@ pkgbase = ollama-rocm-git
 	makedepends = cmake
 	makedepends = clblast
 	makedepends = rocblas
+	makedepends = hipblas
 	makedepends = git
 	makedepends = go
 	provides = ollama
