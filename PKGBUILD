@@ -54,4 +54,13 @@ EOF
 
   # Actualización de los menús en KDE Plasma
   kbuildsycoca5 --noincremental
+
+  # Actualización de los menús en Fluxbox
+  fluxbox-generate_menu
+
+  # Actualización de los menús en Blackbox
+  blackbox -restart
+
+  # Actualización de los menús en Enlightenment
+  enlightenment_remote -desktop-cache-refresh
 }
