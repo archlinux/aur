@@ -1,10 +1,11 @@
-# Maintainer: Bruno Pagani <archange@archlinux.org>
+# Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
+# Contributor: Bruno Pagani <archange@archlinux.org>
 # Contributor: Martin Kostolný <clearmartin at zoho dot com>
 
 pkgname=plasma5-applets-thermal-monitor
 pkgver=1.3.0
 pkgrel=2
-pkgdesc="Plasma applet for monitoring temperatures of existing sensors including CPU, GPU and HDD."
+pkgdesc="Plasma applet for monitoring temperatures of existing sensors including CPU, GPU and HDD"
 arch=(any)
 url="https://gitlab.com/agurenko/plasma-applet-thermal-monitor/"
 license=(GPL)
