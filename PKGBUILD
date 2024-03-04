@@ -1,8 +1,8 @@
 # Maintainer: Christopher Schnick <crschnick@xpipe.io>
 
-_fullver="8.0.1"
+_fullver="8.1"
 pkgname="xpipe"
-pkgver="8.0.1"
+pkgver="8.1"
 pkgrel="1"
 epoch=1
 pkgdesc="Your entire server infrastructure at your fingertips"
@@ -32,7 +32,7 @@ replaces=()
 backup=()
 options=()
 install=
-changelog="xpipe.changelog"
+changelog="${pkgname}.changelog"
 source=("${pkgname}.desktop")
 source_x86_64=("${pkgname}-${_fullver}-x86_64.tar.gz::https://github.com/xpipe-io/${pkgname}/releases/download/${_fullver}/xpipe-portable-linux-x86_64.tar.gz")
 source_aarch64=("${pkgname}-${_fullver}-arm64.tar.gz::https://github.com/xpipe-io/${pkgname}/releases/download/${_fullver}/xpipe-portable-linux-arm64.tar.gz")
