@@ -9,7 +9,7 @@ url="https://github.com/Dvlv/BoxBuddyRS"
 license=('MIT')
 depends=('distrobox' 'libadwaita')
 makedepends=('cargo')
-checkdepends=('appstream-glib')
+checkdepends=('appstream')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('abfdf700d4372a6fc8f0d52941be8a4823a2bc78c5a9b2c35d09e6912ee4c5bb')
@@ -31,7 +31,7 @@ build() {
 
 check() {
   cd "BoxBuddyRS-$pkgver"
-  appstream-util validate-relax --nonet "${_app_id}.metainfo.xml"
+  appstreamcli validate --no-net "${_app_id}.metainfo.xml"
   desktop-file-validate "${_app_id}.desktop"
 }
 
