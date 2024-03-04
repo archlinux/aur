@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mockoon-git
-pkgver=6.2.0.r1.g29d3e500
-_electronversion=26
-_nodeversion=18
+pkgver=7.0.0.r1.gf1239065
+_electronversion=29
+_nodeversion=20
 pkgrel=1
 pkgdesc="The easiest and quickest way to run mock APIs locally. No remote deployment, no account required, open source."
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=(
     'npm'
     'git'
     'node-gyp'
-    'make'
+    'base-devel'
     'gcc'
 )
 source=(
@@ -28,7 +28,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -42,10 +42,10 @@ _ensure_local_nvm() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories "Development" --name "${pkgname}" --exec "${pkgname} %U"
+    gendesk -q -f -n --categories="Development" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -55,6 +55,9 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
+    echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+    echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+    echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
     sed '12,24d' -i "${srcdir}/${pkgname//-/.}/packages/desktop/build-configs/electron-builder.linux.js"
     npm run bootstrap
     npm run build:libs
