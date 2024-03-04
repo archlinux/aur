@@ -2,17 +2,14 @@
 pkgname=spx-translation
 pkgver=2.0.5_1
 _electronversion=25
-pkgrel=2
+pkgrel=3
 pkgdesc="聚合翻译程序(谷歌+deepl)"
 arch=('x86_64')
 url="https://github.com/mlmdflr/spx-translation"
-license=('custom')
+license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-    'gtk3'
-    'alsa-lib'
-    'nss'
-    'nspr'
+    "electron${_electronversion}"
 )
 makedepends=(
     'gendesk'
@@ -22,15 +19,21 @@ makedepends=(
     'git'
     'python'
     'node-gyp'
-    'make'
+    'base-devel'
     'gcc'
 )
 source=(
     "${pkgname}.git::git+${url}#tag=vv${pkgver//_/-}"
+    "${pkgname}.sh"
 )
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
-    gendesk -f -n -q --categories "Utility" --name "${pkgname}" --exec "${pkgname} %U"
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@runname@|app.asar|g" \
+        -i "${srcdir}/${pkgname}.sh"
+    gendesk -f -n -q --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -46,9 +49,9 @@ build() {
     yarn run build
 }
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname}",usr/bin}
-    cp -r "${srcdir}/${pkgname}.git/out/linux-unpacked/"* "${pkgdir}/opt/${pkgname}"
-    ln -sf "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/out/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -r  "${srcdir}/${pkgname}.git/out/linux-unpacked/resources/extern" "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.git/resources/build/icons/256x256.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}.git/out/linux-unpacked/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"

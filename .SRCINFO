@@ -1,10 +1,10 @@
 pkgbase = spx-translation
 	pkgdesc = 聚合翻译程序(谷歌+deepl)
 	pkgver = 2.0.5_1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mlmdflr/spx-translation
 	arch = x86_64
-	license = custom
+	license = MIT
 	makedepends = gendesk
 	makedepends = yarn
 	makedepends = npm
@@ -12,14 +12,13 @@ pkgbase = spx-translation
 	makedepends = git
 	makedepends = python
 	makedepends = node-gyp
-	makedepends = make
+	makedepends = base-devel
 	makedepends = gcc
-	depends = gtk3
-	depends = alsa-lib
-	depends = nss
-	depends = nspr
+	depends = electron25
 	conflicts = spx-translation
 	source = spx-translation.git::git+https://github.com/mlmdflr/spx-translation#tag=vv2.0.5-1
+	source = spx-translation.sh
 	sha256sums = SKIP
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = spx-translation
