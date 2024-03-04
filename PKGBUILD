@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mockoon
-pkgver=6.2.0
-_electronversion=26
-_nodeversion=18
+pkgver=7.0.0
+_electronversion=29
+_nodeversion=20
 pkgrel=1
 pkgdesc="The easiest and quickest way to run mock APIs locally. No remote deployment, no account required, open source."
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=(
     'npm'
     'git'
     'node-gyp'
-    'make'
+    'base-devel'
     'gcc'
 )
 source=(
@@ -28,7 +28,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -38,10 +38,10 @@ _ensure_local_nvm() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories "Development" --name "${pkgname}" --exec "${pkgname} %U"
+    gendesk -q -f -n --categories="Development" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -51,6 +51,9 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
+    echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+    echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+    echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
     sed '12,24d' -i "${srcdir}/${pkgname}.git/packages/desktop/build-configs/electron-builder.linux.js"
     npm run bootstrap
     npm run build:libs
@@ -59,7 +62,7 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/packages/desktop/packages/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/packages/desktop/packages/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
     for _icons in 16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
         install -Dm644 "${srcdir}/${pkgname}.git/packages/desktop/build-res/icon_${_icons}x32.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
