@@ -3,15 +3,18 @@
 _pkgname=multicrispr
 _pkgver=1.12.3
 pkgname=r-${_pkgname,,}
-pkgver=1.12.3
-pkgrel=1
-pkgdesc='Multi-locus multi-purpose Crispr/Cas design'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Multi-locus multi-purpose Crispr/Cas design"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
-  r-assertive
+  r-assertive.base
+  r-assertive.files
+  r-assertive.numbers
+  r-assertive.reflection
+  r-assertive.sets
   r-biocgenerics
   r-biostrings
   r-bsgenome
@@ -46,14 +49,15 @@ optdepends=(
   r-txdb.mmusculus.ucsc.mm10.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('abf0ec2d4d8e9030e86a42449b5729a08e292040e4af711bcc72ca72bbdb508d')
+md5sums=('d0bbc847e39772348376d944c884290a')
+b2sums=('ed79977a043b0bf57b139d7f304568fd88d7bb7317c673e58f459908fb0330c545243798cdaec86fd56bdf3f0c2e67270e67e0f8f341d280b35b130d4d898be8')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
