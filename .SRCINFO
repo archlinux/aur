@@ -11,4 +11,3 @@ pkgbase = libcmrt
 	sha256sums = ca22e905a2717fc740e703e65a0061a0e11f4ea513ba970bbc10b3bd6d28e6e0
 
 pkgname = libcmrt
-
