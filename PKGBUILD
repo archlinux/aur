@@ -46,6 +46,7 @@ makedepends=(
     glslang
     meson
     ninja
+    openvr-git
     vulkan-headers
     wayland-protocols
 )
