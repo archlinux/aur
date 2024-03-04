@@ -2,7 +2,7 @@
 pkgname=secret-diary-bin
 _pkgname=Secret-Diary
 pkgver=1.2.16
-pkgrel=6
+pkgrel=7
 pkgdesc="Desktop diary tool. crypt with AES 256. 安全日记本，一个加密信息管理软件，加密强度非常强，只能暴力破解数据，只要密码足够复杂，数据就足够安全。"
 arch=("x86_64")
 url="http://rocket049.cn/"
@@ -23,7 +23,7 @@ build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runappname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.zst"
+    bsdtar -xf "${srcdir}/data."*
     sed -e "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g" \
         -e "s|/opt/${pkgname%-bin}/Sd.png|${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
