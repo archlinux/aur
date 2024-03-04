@@ -1,7 +1,7 @@
 pkgbase = implay-bin
 	pkgdesc = Desktop media player built on top of mpv and imgui
 	pkgver = 1.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tsl0922.github.io/ImPlay
 	arch = x86_64
 	license = GPL-2.0-only

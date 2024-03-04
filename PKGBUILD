@@ -2,7 +2,7 @@
 pkgname=implay-bin
 _pkgname=ImPlay
 pkgver=1.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop media player built on top of mpv and imgui"
 arch=('x86_64')
 url="https://tsl0922.github.io/ImPlay"
@@ -21,7 +21,7 @@ source=(
 )
 sha256sums=('ecd8137b7b4dcda7b59280728829131325bfb38762cce87db5c3bd43847f226a')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.gz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|${_pkgname} %U|${pkgname%-bin} %U|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
