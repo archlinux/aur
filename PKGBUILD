@@ -10,7 +10,7 @@ url="https://github.com/ubuntu-flutter-community/musicpod"
 license=('GPL-3.0-or-later')
 depends=('gstreamer' 'gtk3' 'mpv')
 makedepends=('chrpath' 'clang' 'cmake' 'git' 'ninja')
-checkdepends=('appstream-glib')
+checkdepends=('appstream')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/ubuntu-flutter-community/musicpod.git'
@@ -34,7 +34,7 @@ build() {
 
 check() {
   cd "${pkgname%-git}"
-  appstream-util validate-relax --nonet "flatpak/${_app_id}.appdata.xml"
+  appstreamcli validate --no-net "flatpak/${_app_id}.appdata.xml"
   desktop-file-validate "flatpak/${_app_id}.desktop"
 }
 
