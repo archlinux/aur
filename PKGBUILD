@@ -3,7 +3,7 @@ pkgname=cycode
 _pkgname=CyCode
 pkgver=2.0.4
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="A web-based HTML Editor, Markdown Editor, and WYSIWYG Editor,a code editor with a primary focus on web development."
 arch=('any')
 url="https://github.com/magayagalabs/CyCode"
@@ -23,13 +23,13 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
-    gendesk -f -n -q --categories "Development" --name "${_pkgname}" --exec "${pkgname} %U"
+    gendesk -f -n -q --categories="Development" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"

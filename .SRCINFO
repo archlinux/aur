@@ -1,7 +1,7 @@
 pkgbase = cycode
 	pkgdesc = A web-based HTML Editor, Markdown Editor, and WYSIWYG Editor,a code editor with a primary focus on web development.
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/magayagalabs/CyCode
 	arch = any
 	license = MIT
@@ -14,6 +14,6 @@ pkgbase = cycode
 	source = cycode.git::git+https://github.com/magayagalabs/CyCode.git#tag=v2.0.4
 	source = cycode.sh
 	sha256sums = SKIP
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = cycode
