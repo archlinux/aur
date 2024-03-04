@@ -1,7 +1,7 @@
 pkgbase = qupath
 	pkgdesc = Bioimage analysis & digital pathology
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgver = 0.5.1
+	pkgrel = 1
 	url = https://github.com/qupath/qupath
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -19,7 +19,7 @@ pkgbase = qupath
 	depends = zlib
 	optdepends = ttf-droid: font for CJK characters
 	options = !strip
-	source = qupath-0.5.0.tar.gz::https://github.com/qupath/qupath/archive/v0.5.0.tar.gz
-	sha512sums = 825c4fee2ef2b067958f6330457831173891ef06aded24676c5d527d0a890e72c03b4b8fbe2de83c4b927a6c07b548767b86fdca1c9cdfc1da8326a701dd821e
+	source = qupath-0.5.1.tar.gz::https://github.com/qupath/qupath/archive/v0.5.1.tar.gz
+	sha512sums = 667ebb7d1e806f9c14c65db40b3baefd9816f48b0ce7ce0dddf53af46deaa25ad7656ba4369b4175ea03b709911fcbde6867247278d1527fab7919e1bc77e6f2
 
 pkgname = qupath
