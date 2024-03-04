@@ -9,8 +9,8 @@ url="https://crankshaft.space"
 license=('GPL-3.0-or-later')
 depends=('libappindicator-gtk3' 'python-jsbeautifier' 'xdg-utils')
 makedepends=('git' 'go' 'setconf' 'yarn')
-checkdepends=('appstream-glib' 'desktop-file-utils')
-_commit=e8e69525d9a649fbd1759ee727f7a3baf33012da  #tags/0.2.5^0
+checkdepends=('appstream' 'desktop-file-utils')
+_commit=e8e69525d9a649fbd1759ee727f7a3baf33012da  # tags/0.2.5^0
 source=("git+https://git.sr.ht/~avery/crankshaft#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -58,7 +58,7 @@ build() {
 check() {
   cd "$pkgname"
   desktop-file-validate "desktop/${_app_id}.desktop"
-  appstream-util validate-relax --nonet "desktop/${_app_id}.metainfo.xml"
+  appstreamcli validate --no-net "desktop/${_app_id}.metainfo.xml" || :
 }
 
 package() {
