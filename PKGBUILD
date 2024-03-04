@@ -2,11 +2,11 @@
 
 _pkgname=wshot
 pkgname=$_pkgname-git
-pkgver=1.0.3.r0.gdd54aff
+pkgver=1.0.2.r21.ga302158
 pkgrel=1
 pkgdesc="Screenshot GUI for wayland"
 arch=(any)
-url="https://github.com/stefonarch/$_pkgname"
+url="https://github.com/qtilities/wshot"
 license=(GPL3)
 source=(git+$url)
 sha512sums=(
@@ -26,17 +26,24 @@ depends=(
 
 pkgver() {
   cd $_pkgname
-  ( set -o pipefail
+  (
+    set -o pipefail
     git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
 
+build() {
+  local cmake_options=(
+    -B build
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -S $_pkgname
+    -W no-dev
+  )
+  cmake "${cmake_options[@]}"
+  cmake --build build --verbose
+}
+
 package() {
-  cd "$srcdir"/$_pkgname
-  install -vDm 755 $_pkgname -t "$pkgdir"/usr/bin/
-  install -vDm 644 $_pkgname.desktop -t "$pkgdir"/usr/share/applications/
-  install -vDm 644 $_pkgname.png -t "$pkgdir"/usr/share/pixmaps/
-  install -vDm 644 README.md -t "$pkgdir"/usr/share/doc/$_pkgname/
-  install -vDm 644 wshot1.png -t "$pkgdir"/usr/share/doc/$_pkgname/
+  DESTDIR="$pkgdir" cmake --install build
 }
