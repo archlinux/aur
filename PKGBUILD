@@ -1,8 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fcitx-huayupinyin
 _pkgname=com.thunisoft.input
+_appname=huayupy
 pkgver=2.4.8.207
-pkgrel=4
+pkgrel=5
 pkgdesc="The Input Method Developed by thunisoft"
 arch=("x86_64")
 url="https://pinyin.thunisoft.com"
@@ -21,17 +22,17 @@ source=(
 )
 sha256sums=('ec965e51f30ddf548d4ab2ba0324bc0e8c6691b39f33112a872eecbb6bf5fa5c')
 package() {
-    bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
+    bsdtar -xf "${srcdir}/data."* -C "${pkgdir}"
     find "${pkgdir}" -type d -exec chmod 755 {} \;
     mv "${pkgdir}/usr/lib/x86_64-linux-gnu/fcitx" "${pkgdir}/usr/lib/"
     install -Dm755 -d "${pkgdir}/usr/bin"
-    ln -sf "/opt/apps/${_pkgname}/files/bin/huayupy-config-tools-fcitx" "${pkgdir}/usr/bin/huayupy-config-tools-fcitx"
-    ln -sf "/opt/apps/${_pkgname}/files/bin/huayupy-daemon-fcitx" "${pkgdir}/usr/bin/huayupy-daemon-fcitx"
-    ln -sf "/opt/apps/${_pkgname}/files/bin/huayupy-merge-wordlib" "${pkgdir}/usr/bin/huayupy-merge-wordlib"
-    ln -sf "/opt/apps/${_pkgname}/files/bin/huayupy-qimpanel" "${pkgdir}/usr/bin/huayupy-qimpanel"
-    ln -sf "/opt/apps/${_pkgname}/files/bin/huayupy-toolBox" "${pkgdir}/usr/bin/huayupy-toolBox"
-    ln -sf "/opt/apps/${_pkgname}/files/bin/huayupy-updater-fcitx" "${pkgdir}/usr/bin/huayupy-updater-fcitx"
-    ln -sf "/opt/apps/${_pkgname}/files/bin/huayupy-wl-tool-fcitx" "${pkgdir}/usr/bin/huayupy-wl-tool-fcitx"
+    ln -sf "/opt/apps/${_pkgname}/files/bin/${_appname}-config-tools-fcitx" "${pkgdir}/usr/bin/${_appname}-config-tools-fcitx"
+    ln -sf "/opt/apps/${_pkgname}/files/bin/${_appname}-daemon-fcitx" "${pkgdir}/usr/bin/${_appname}-daemon-fcitx"
+    ln -sf "/opt/apps/${_pkgname}/files/bin/${_appname}-merge-wordlib" "${pkgdir}/usr/bin/${_appname}-merge-wordlib"
+    ln -sf "/opt/apps/${_pkgname}/files/bin/${_appname}-qimpanel" "${pkgdir}/usr/bin/${_appname}-qimpanel"
+    ln -sf "/opt/apps/${_pkgname}/files/bin/${_appname}-toolBox" "${pkgdir}/usr/bin/${_appname}-toolBox"
+    ln -sf "/opt/apps/${_pkgname}/files/bin/${_appname}-updater-fcitx" "${pkgdir}/usr/bin/${_appname}-updater-fcitx"
+    ln -sf "/opt/apps/${_pkgname}/files/bin/${_appname}-wl-tool-fcitx" "${pkgdir}/usr/bin/${_appname}-wl-tool-fcitx"
     ln -sf "/opt/apps/${_pkgname}/files/bin/special-symbols-fcitx" "${pkgdir}/usr/bin/special-symbols-fcitx"
     install -Dm644 "${pkgdir}/opt/apps/${_pkgname}/entries/autostart/${_pkgname}.desktop" "${pkgdir}/etc/xdg/autostart/${pkgname}.desktop"
     #Delete empty dirs
