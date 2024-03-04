@@ -1,7 +1,8 @@
 pkgbase = blas-aocl
 	pkgdesc = AMD Optimizing CPU Libraries (Provides BLAS/CBLAS/LAPACK/LAPACKE system-wide)
-	pkgver = 4.1.0
+	pkgver = 1
 	pkgrel = 1
+	epoch = 1
 	url = https://developer.amd.com/amd-aocl/
 	arch = x86_64
 	license = custom
