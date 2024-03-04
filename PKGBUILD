@@ -1,21 +1,18 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=multipanelfigure
-_pkgver=2.1.2
+_pkgver=2.1.5
 pkgname=r-${_pkgname,,}
-pkgver=2.1.2
-pkgrel=8
-pkgdesc='Infrastructure to Assemble Multi-Panel Figures (from Grobs)'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=1
+pkgdesc="Infrastructure to Assemble Multi-Panel Figures (from Grobs)"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-or-later')
 depends=(
-  r
   r-assertive.base
   r-assertive.files
   r-assertive.numbers
-  r-assertive.properties
-  r-assertive.types
   r-ggplot2
   r-gridgraphics
   r-gtable
@@ -25,23 +22,22 @@ depends=(
 )
 optdepends=(
   r-complexheatmap
-  r-grdevices
   r-knitr
-  r-lattice
   r-markdown
   r-rmarkdown
   r-roxygen2
   r-venndiagram
 )
-source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('eca98888d2f7c8887764443633bd557e9100f73694b2e5df68a63b304f5ba532')
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('e80c2af7114635a3cf1d01adf7d0207e')
+b2sums=('730435fc8dd88ba096bafa7f2d8474cb2b99f361ef2353a0ad144602942709629e83c95c3b887fb5fc3b368eb7de2cbe62606e85e5376f29f472e3b32f92e5d6')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
