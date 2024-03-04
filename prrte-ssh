@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# This script is a dummy wrapper which allows having openssh as *optional*
+# dependency for prrte - it always requires a valid plm_ssh_agent, even when it
+# is not actually used.
+exec /usr/bin/ssh "$@"
