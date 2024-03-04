@@ -1,5 +1,6 @@
-# Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
-# Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
+# Maintainer: Giorgi Taba K'obakhidze <t@gtk.ge>
+# Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+# Contributor: Maxime "pep" Buquet <archlinux@bouah.net>
 
 pkgname=(conversejs-git conversejs-epiphany-git conversejs-headless-git)
 pkgver=10.1.5.r122.g04c37537d
