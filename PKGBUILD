@@ -42,6 +42,7 @@ package() {
   ln -sT patr-java-profiler-bootstrap-$VERSION.jar "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-bootstrap.jar
 
   # create help script which starts the profiler, the other script is not available
+  mkdir -p "$pkgdir"/usr/bin/patrjprof
   AGENT_JAR=/usr/share/java/patrjprof/patr-java-profiler-agent-$VERSION-jar-with-dependencies.jar
   BOOTSTRAP_JAR=/usr/share/java/patrjprof/patr-java-profiler-bootstrap-$VERSION.jar
   echo -n '#!/bin/sh
