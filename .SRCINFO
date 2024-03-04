@@ -46,7 +46,7 @@ pkgbase = gamescope-sk-git
 	depends = xorg-server-xwayland
 	provides = gamescope
 	conflicts = gamescope
-	source = git+https://github.com/3003n/gamescope.git#branch=sk-gamscope
+	source = git+https://github.com/3003n/gamescope.git#branch=sk-gamescope
 	b2sums = SKIP
 
 pkgname = gamescope-sk-git

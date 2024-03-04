@@ -50,7 +50,7 @@ makedepends=(
     vulkan-headers
     wayland-protocols
 )
-_branch=sk-gamscope
+_branch=sk-gamescope
 source=("git+https://github.com/3003n/gamescope.git#branch=${_branch}")
 b2sums=('SKIP')
 
