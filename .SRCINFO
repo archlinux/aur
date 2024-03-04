@@ -7,6 +7,7 @@ pkgbase = r-quick-share-bin
 	license = AGPL-3.0-or-later
 	depends = webkit2gtk
 	depends = gtk3
+	depends = libayatana-appindicator
 	provides = r-quick-share
 	conflicts = r-quick-share
 	source = https://github.com/Martichou/rquickshare/releases/download/v0.2.0/r-quick-share_0.2.0_amd64_GLIBC-2.31.deb
