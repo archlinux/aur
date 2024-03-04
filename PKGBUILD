@@ -1,8 +1,8 @@
 #Maintainer: Nooberieno <nooberieno@gmail.com>
 pkgname='jura'
 pkgver=3.0
-pkgrel=2
-epoch=2
+pkgrel=3
+epoch=3
 pkgdesc="A lightweight terminal text editor"
 arch=('x86_64')
 url="https://github.com/Nooberieno/jura"
