@@ -1,44 +1,47 @@
-# Maintainer: Sergey Kostyaev <feo.me@ya.ru>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
+# Contributor: Sergey Kostyaev <feo.me@ya.ru>
+
 pkgname=freelib-git
-pkgver=6.0.18
+pkgver=6.0.53.r103.gcf3f1aa
 pkgrel=1
-epoch=
-pkgdesc="Freelib is book library manager."
-arch=('i686' 'x86_64')
+pkgdesc="Freelib is book library manager"
+arch=(x86_64)
 url="https://github.com/petrovvlad/freeLib"
-license=('GPL')
-groups=()
-depends=('qt5-base' 'qt5-webengine' 'qt5-xmlpatterns' 'quazip-qt5')
-makedepends=('git' 'cmake')
-checkdepends=()
-optdepends=()
-provides=("$pkgname")
-conflicts=("freelib")
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("git+https://github.com/petrovvlad/freeLib.git")
-noextract=()
-md5sums=('SKIP')
+license=(GPL3)
+depends=(qt6-base qt6-svg qt6-httpserver quazip-qt6)
+makedepends=(git cmake)
+provides=(freelib)
+conflicts=(freelib)
+source=("git+https://github.com/petrovvlad/freeLib.git"
+        "git+https://github.com/stachenov/quazip.git"
+        "freelib-SmtpClient-for-Qt::git+https://github.com/petrovvlad/SmtpClient-for-Qt.git")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
+
+pkgver() {
+  cd "freeLib"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
-  cd "$srcdir/freeLib"
-  git submodule update --init --recursive
+  cd "freeLib"
+  git submodule init
+  git config submodule.freeLib/src/quazip.url     "${srcdir}/quazip"
+  #git config submodule.freeLib/src/quazip.update none
+  git config submodule.freeLib/src/SmtpClient.url "${srcdir}/freelib-SmtpClient-for-Qt"
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
-  cd "$srcdir/freeLib"
-  mkdir build
-  cd build
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DQUAZIP_STATIC:BOOL=ON .. && cmake --build .
+  cmake -B build -S "freeLib" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DFREELIB_QT_MAJOR_VERSION=6
+
+  cmake --build build
 }
 
 package() {
-  cd "$srcdir/freeLib/build"
-
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
-
-# vim:set ts=2 sw=2 et:
