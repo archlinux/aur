@@ -1,0 +1,11 @@
+--- freenginx-1.25.4/src/os/unix/ngx_setproctitle.c.original	2024-03-04 09:53:28.509525998 -0300
++++ freenginx-1.25.4_custom/src/os/unix/ngx_setproctitle.c	2024-03-04 09:57:58.312820690 -0300
+@@ -89,7 +89,7 @@
+ 
+     ngx_os_argv[1] = NULL;
+ 
+-    p = ngx_cpystrn((u_char *) ngx_os_argv[0], (u_char *) "nginx: ",
++    p = ngx_cpystrn((u_char *) ngx_os_argv[0], (u_char *) NGINX_NAME": ",
+                     ngx_os_argv_last - ngx_os_argv[0]);
+ 
+     p = ngx_cpystrn(p, (u_char *) title, ngx_os_argv_last - (char *) p);
