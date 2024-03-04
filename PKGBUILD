@@ -1,5 +1,5 @@
 pkgname=mingw-w64-paraview
-pkgver=5.11.2
+pkgver=5.12.0
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
@@ -9,14 +9,12 @@ depends=('mingw-w64-qt5-tools' 'mingw-w64-qt5-svg' 'mingw-w64-boost' 'mingw-w64-
 makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-utf8cpp' 'mingw-w64-wine' 'protobuf' 'mingw-w64-nlohmann-json')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("${url}/files/v${pkgver:0:4}/ParaView-v${pkgver}.tar.xz")
-sha256sums=('5c5d2f922f30d91feefc43b4a729015dbb1459f54c938896c123d2ac289c7a1e')
+sha256sums=('d289afe7b48533e2ca4a39a3b48d3874bfe67cf7f37fdd2131271c57e64de20d')
 
 _architectures="x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/ParaView-v${pkgver}"
-  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/10335.patch | patch -p1 -d VTK
-  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/10350.patch | patch -p1 -d VTK
 }
 
 build() {
@@ -34,6 +32,8 @@ build() {
       -DVTK_MODULE_USE_EXTERNAL_VTK_fmt=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_cli11=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_exprtk=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_fast_float=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_token=OFF \
       -DCMAKE_CXX_STANDARD=17 \
       -DVTK_IGNORE_CMAKE_CXX11_CHECKS=ON \
       ..
