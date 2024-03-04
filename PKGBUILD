@@ -1,16 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy-bin
 _pkgname=Escrcpy
-pkgver=1.16.8
+pkgver=1.17.0
 _electronversion=27
-pkgrel=2
+pkgrel=1
 pkgdesc="使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动"
 arch=(
     'aarch64'
     'x86_64'
 )
 url="https://github.com/viarotel-org/escrcpy"
-license=('MIT')
+license=('Apache-2.0')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
@@ -21,13 +21,11 @@ depends=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb")
 source=(
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/viarotel-org/escrcpy/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('608449f39836e08b54dbe679e78fefbd8b2a4f77ac6fc16bf7320d1e89e4bb10'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
-sha256sums_aarch64=('9a78fa700c46864f9308925c36bb483078914c397d8d16797266fff46bc6d895')
-sha256sums_x86_64=('9ce56c139996eda8dce8d1c7182a7ee382c9ee4f0846d72e2c231cdadc17ea8a')
+sha256sums=('50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+sha256sums_aarch64=('38d967deb247f9ef075a4a15bdf04fef18ded0659001488945604fd1b4cafd65')
+sha256sums_x86_64=('bed95f56d15b7b4b2dc17e8414521475f41f39dcc4c8d71415bda070a2b5cf66')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -50,5 +48,4 @@ package() {
       install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
         -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
