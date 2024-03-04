@@ -3,7 +3,7 @@ pkgname=alphabiz-bin
 _pkgname=Alphabiz
 pkgver=0.3.2
 _electronversion=21
-pkgrel=1
+pkgrel=2
 pkgdesc="Web3 ecosystem - enable developers to build fully decentralized media platform and blockchain-based marketplace"
 arch=('x86_64')
 url="https://alpha.biz/"
@@ -21,7 +21,7 @@ source=(
 )
 sha256sums=('939873dbe7cfa8aec08723f84139eac47ce38d7153c302fe3175435e608645ba')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.zst"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt,usr/bin}

@@ -1,7 +1,7 @@
 pkgbase = alphabiz-bin
 	pkgdesc = Web3 ecosystem - enable developers to build fully decentralized media platform and blockchain-based marketplace
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://alpha.biz/
 	arch = x86_64
 	license = GPL-2.0-only
