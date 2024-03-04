@@ -16,13 +16,13 @@ source=(https://gitlab.dune-project.org/extensions/${pkgname}/-/archive/${_tar})
 sha512sums=('2c9365531b1e681bae6377c81b892eccc6497bbd0ac171d40a7b6f568d424fa8635684ec2378516d4fcc4b5e26a05418e48d6a099ae80b2fac9d360db83eb4da')
 
 prepare() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}-${_tarver}
   export _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
   python -m venv --system-site-packages _skbuild/linux-${CARCH}-${_pyversion}/cmake-build/dune-env
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}-${_tarver}
 
   XDG_CACHE_HOME="${PWD}" \
     python setup.py build \
@@ -46,7 +46,7 @@ build() {
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}-${_tarver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py --skip-cmake install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   find "${pkgdir}" -type d -empty -delete
