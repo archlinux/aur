@@ -1,4 +1,4 @@
-# Maintainer: Patrick Hechler <patrjprof at ph dot anderemails dot de>
+# Maintainer: Patrick Hechler <patrjprof@ph.anderemails.de>
 pkgname=patrjprof
 pkgver=1.1.0
 pkgrel=1
@@ -102,7 +102,7 @@ exec "$JAVA" \
   "${@:$ADD_ARGS_START}"' > "$pkgdir"/usr/lib/patrjprof/patrjprof.sh
   chmod +x "$pkgdir"/usr/lib/patrjprof/patrjprof.sh
 
-  # create symlink to the helper script
+  # create symlink to the script
   mkdir -p "$pkgdir"/usr/bin
   ln -sT ../lib/patrjprof/patrjprof.sh "$pkgdir"/usr/bin/patrjprof
 }
