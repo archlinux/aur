@@ -20,7 +20,8 @@ makedepends=(
 )
 
 _pkgsrc="$_module-$pkgver"
-source=("$url/archive/v$pkgver.tar.gz")
+_pkgext="tar.gz"
+source=("$_pkgsrc.$_pkgext"::"$url/archive/v$pkgver.$_pkgext")
 sha256sums=('51fed10bad025e4bb81714b6114546b7f42773eda82df10e769d76a7859e9c3a')
 
 build() {
