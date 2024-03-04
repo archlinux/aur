@@ -43,6 +43,7 @@ build() {
 
 package_xmm7360-pci-spat-dkms-git() {
   replaces=('xmm7360-pci-spat-dkms')
+  provides=('xmm7360-pci-spat-dkms')
   pkgdesc+=" – module sources"
   depends=('dkms')
   cd ${__pkgbase}
@@ -50,6 +51,7 @@ package_xmm7360-pci-spat-dkms-git() {
 }
 
 package_xmm7360-pci-spat-utils-git() {
+  replaces=('xmm7360-pci-spat-utils')
   replaces=('xmm7360-pci-spat-utils')
   pkgdesc+=" – utilities only"
   depends=('xmm7360-pci-spat-dkms' 'dbus-python' 'python-pyroute2' 'python-configargparse')
