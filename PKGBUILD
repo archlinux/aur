@@ -2,8 +2,8 @@
 
 pkgname=telegram-a
 realname=telegram-tt
-pkgver=10.4.7
-gitpkgver=a11db94e34e1b07af4c0261b02ded185d56e252c
+pkgver=10.4.8
+gitpkgver=f46acb5ab7569bc5ef14cb1ac8245208c0017799
 pkgrel=1
 pkgdesc="Official Telegram Web client version A system Electron version"
 arch=('any')
@@ -21,7 +21,7 @@ source=("https://github.com/Ajaxy/${realname}/archive/${gitpkgver}.tar.gz"
                 "disable_statoscope.patch"
                 "run_husky_install_only_in_git.patch"
                 "force-disable-auto-update.patch")
-sha256sums=('746d89ae45e0e931d95b4950a2419cfd9c1373b9ca1f1a7299d728b33bd8b397'
+sha256sums=('c0befd4b7621f53019307ee8dd1a36915f3f1ec468796afb938f3f18bec1fe76'
                 'f90da929a33048561899c8774969e6a1012dcbf679e0082c835783278b41b780'
                 'efeb0cd71fd3d39d75744885a585e9961481a68ccf885a0b4f929eaf062c2b35'
                 '7b40d89c682a491507f81e43adfc2793bedd65862017975c182380301455007d'
