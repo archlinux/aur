@@ -1,6 +1,6 @@
 pkgbase = python-libtimed
 	pkgdesc = Python API for timed
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/adfinis/libtimed.git
 	arch = any
