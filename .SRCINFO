@@ -1,7 +1,7 @@
 pkgbase = electron-youtube-music-bin
 	pkgdesc = A minimal electron app for Youtube Music
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pauchiner/electron-youtube-music
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,6 @@ pkgbase = electron-youtube-music-bin
 	source = electron-youtube-music-1.0.1.deb::https://github.com/pauchiner/electron-youtube-music/releases/download/v1.0.1/linux.deb
 	source = electron-youtube-music.sh
 	sha256sums = 8eeb09da838987efb24cfe0ded0c078457ee8399bed5dacdcff447c96d61f20c
-	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = electron-youtube-music-bin

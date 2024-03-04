@@ -4,7 +4,7 @@ pkgname="electron-${_appname}-bin"
 _pkgname="Youtube Music"
 pkgver=1.0.1
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal electron app for Youtube Music"
 arch=('x86_64')
 url="https://github.com/pauchiner/electron-youtube-music"
@@ -19,13 +19,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('8eeb09da838987efb24cfe0ded0c078457ee8399bed5dacdcff447c96d61f20c'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_pkgname}/${_appname}\"|${pkgname%-bin}|g;s|=${_appname}|=${pkgname%-bin}|g;s|Music;|AudioVideo;|g" \
         -i "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
