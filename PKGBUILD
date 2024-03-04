@@ -2,7 +2,7 @@
 
 pkgname=comtrya
 pkgver=0.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to help provision a fresh OS with the packages and configuration (dotfiles) you need to become productive again."
 arch=('x86_64')
 url="https://github.com/comtrya/comtrya"

@@ -1,7 +1,7 @@
 pkgbase = comtrya
 	pkgdesc = A tool to help provision a fresh OS with the packages and configuration (dotfiles) you need to become productive again.
 	pkgver = 0.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/comtrya/comtrya
 	arch = x86_64
 	license = custom:MIT
