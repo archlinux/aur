@@ -1,0 +1,22 @@
+pkgbase = mmseqs2-search-bin
+	pkgdesc = MMseqs2 app to run on your workstation or servers
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://search.mmseqs.com/
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = fuse2
+	makedepends = asar
+	depends = electron12
+	depends = hicolor-icon-theme
+	provides = mmseqs2-search=1.7.0
+	conflicts = mmseqs2-search
+	source = mmseqs2-search.sh
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	source_aarch64 = mmseqs2-search-1.7.0-aarch64.AppImage::https://github.com/soedinglab/MMseqs2-App/releases/download/v7-8e1704f/MMseqs2-Search-1.7.0-arm64.AppImage
+	sha256sums_aarch64 = afe09835f2763f8c3fdb08d0f33de8d0ac262c7ea41038203d093f7c0682eb0e
+	source_x86_64 = mmseqs2-search-1.7.0-x86_64.AppImage::https://github.com/soedinglab/MMseqs2-App/releases/download/v7-8e1704f/MMseqs2-Search-1.7.0.AppImage
+	sha256sums_x86_64 = 8741f3c9bb4ba43586c8e3abd8ff4438cb2a750fe0abb7c5d5afa23c80f98f03
+
+pkgname = mmseqs2-search-bin
