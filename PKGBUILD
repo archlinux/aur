@@ -9,7 +9,7 @@ pkgname=notesnook
 pkgver=2.6.15
 _electronversion=25
 _nodeversion=16
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote"
 arch=(
     'aarch64'
@@ -39,7 +39,7 @@ source=(
 )
 sha256sums=('SKIP'
             '102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -49,7 +49,7 @@ _ensure_local_nvm() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
-        -e "s|@appasar@|app|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     export npm_config_build_from_source=true
@@ -72,20 +72,12 @@ build() {
     cd "${srcdir}/${pkgname}.git/apps/desktop"
     npx nx run release --project @notesnook/desktop
     # Build AppImage
-    npx electron-builder -l AppImage:x64 AppImage:arm64 -p never
+    npx electron-builder -l AppImage -p never
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-    case "${CARCH}" in
-        x86_64)
-            _osarch=linux-unpacked
-        ;;
-        aarch64)
-            _osarch=linux-arm64-unpacked
-        ;;
-    esac
-    cp -r "${srcdir}/${pkgname}.git/apps/desktop/output/${_osarch}/resources/"{app,assets} "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${pkgname}.git/apps/desktop/output/linux-"*/resources/{app,assets} "${pkgdir}/usr/lib/${pkgname}"
     for _icons in 16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
         install -Dm644 "${srcdir}/${pkgname}.git/apps/desktop/assets/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"

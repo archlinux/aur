@@ -1,7 +1,7 @@
 pkgbase = notesnook
 	pkgdesc = A fully open source & end-to-end encrypted note taking alternative to Evernote
 	pkgver = 2.6.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://notesnook.com/
 	arch = aarch64
 	arch = x86_64
@@ -21,6 +21,6 @@ pkgbase = notesnook
 	source = notesnook.sh
 	sha256sums = SKIP
 	sha256sums = 102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440
-	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = notesnook
