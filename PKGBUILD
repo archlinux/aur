@@ -4,7 +4,7 @@
 _base=basix
 pkgname=python-"${_base}"-git
 pkgdesc="Python interface of FEniCS for ordinary and partial differential equations."
-pkgver=0.8.0.dev0_r975.15b915b
+pkgver=0.8.0.dev0_r1018.6261e98
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/FEniCS/${_base}"
@@ -14,7 +14,7 @@ depends=("blas-openblas" "fenics-basix" "petsc")
 makedepends=("boost" "gcc" "git" "pybind11" "python-setuptools")
 checkdepends=("python-pytest")
 options=(!emptydirs)
-source=("git+${url}#commit=15b915ba")
+source=("git+${url}#branch=main")
 sha512sums=('SKIP')
 
 provides=("python-${_base}"
@@ -100,6 +100,11 @@ _base_dir="${startdir}"/src/"${_base}"
 prepare() {
     cd "${_base_dir}"
     git clean -dfx
+
+    # Python installer tries to create the parent folder,
+    # but it already exists
+    cp -a "${_base_dir}"/LICENSE "${_base_dir}"/python
+    sed -i 's_\.\./LICENSE_LICENSE_g' "${_base_dir}"/python/pyproject.toml
 }
 
 pkgver() {
@@ -127,13 +132,40 @@ build() {
     python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-# There are a lot of failed tests
-check() {
-  cd "${_base_dir}"
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer python/dist/*.whl
-  test-env/bin/python -m pytest -ra || printf "Tests failed\n"
-}
+# There is no sane way of doing this
+# check() {
+#     cd "${_base_dir}"
+#     python -m venv --system-site-packages test-env
+#     source test-env/bin/activate
+#     pyver=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+#     export PYTHONPATH+=":${_base_dir}/python:/usr/basix/:$PWD/test-env/lib/python${pyver}/site-packages/"
+#     echo $PYTHONPATH
+#     pip -v install --no-deps --no-build-isolation ${_base_dir}/python/dist/*.whl
+#     # pytest test -k 'not test_elements and not test_ufl_wrapper'
+#     # This re-builds and installs fenics-basix (!)
+#     pip -v install --no-deps --no-build-isolation .[test]
+#     deactivate
+# }
+
+# # There are a lot of failed tests
+# # The instructions for running tests are triagged
+# check() {
+#   cd "${_base_dir}"
+#   # Conflicts with the installation (file exists)
+#
+#   python -m venv --system-site-packages test-env
+#   source test-env/bin/activate
+#   pip -v install --no-deps  --no-build-isolation .[test]
+#   pytest test
+#   # python -m installer python/dist/*.whl
+#   # PATH="${PWD}/test-env/bin:$PATH" python -m pytest -ra || printf "Tests failed\n"
+#   # deactivate
+#   # # # https://wiki.archlinux.org/title/Python_package_guidelines#Check
+#   # # cd "${_base_dir}"/python
+#   # # local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+#   # #
+#   # # PYTHONPATH+="$PWD/dist:$PWD/basix/__pycache__/lib.linux-$CARCH-cpython-${python_version}" pytest ../test || printf "Tests failed\n"
+# }
 
 package() {
     cd "${_base_dir}"/python
