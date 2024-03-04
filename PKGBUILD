@@ -1,6 +1,5 @@
 # Maintainer: WhitedonSAP <ayrtonarantes0987654321ayrt008 at gmail dot com>
 # Thanks for yochananmarqos for improve this PKGBUILD
-groups=('modified')
 
 pkgname=warehouse
 pkgver=1.4.0

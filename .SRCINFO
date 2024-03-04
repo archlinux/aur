@@ -4,7 +4,6 @@ pkgbase = warehouse
 	pkgrel = 1
 	url = https://github.com/flattool/warehouse
 	arch = x86_64
-	groups = modified
 	license = GPL-3.0-or-later
 	checkdepends = appstream-glib
 	makedepends = blueprint-compiler
