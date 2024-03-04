@@ -2,7 +2,7 @@
 pkgname=copytranslator-bin
 pkgver=9.1.0
 _electronversion=6
-pkgrel=3
+pkgrel=4
 pkgdesc="Foreign language reading and translation assistant based on copy and translate."
 arch=('x86_64')
 url="https://copytranslator.gitee.io/"
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     'hicolor-icon-theme'
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'asar'
@@ -22,13 +22,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('426f706acc80610731116b2317540fd10e844f597ca0489c83934f8ac3c0527a'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     asar e "${srcdir}/opt/${pkgname%-bin}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     sed -e "s|process.resourcesPath,\"locales|process.resourcesPath,\"../.././${pkgname%-bin}/locales|g" \
         -e "s|tray@2x.png|../.././${pkgname%-bin}/tray@2x.png|g" \
@@ -37,7 +37,7 @@ build() {
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
     sed "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g;s|/opt/${pkgname%-bin}/resources/linux-icon/icon.png|${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-}   
+}
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
