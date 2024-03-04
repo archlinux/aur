@@ -3,13 +3,13 @@
 pkgname=vkquake2
 _remote=vkQuake2
 pkgver=1.5.9
-pkgrel=1
+pkgrel=2
 pkgdesc="id Software's Quake 2 v3.21 with Vulkan support"
 arch=(i686 x86_64)
 url="https://github.com/kondrak/vkQuake2"
 license=(GPL2)
 depends=(alsa-lib libxxf86dga xdg-utils opengl-driver)
-makedepends=(vulkan-headers)
+makedepends=(vulkan-headers glu)
 install="$pkgname.install"
 source=("https://github.com/kondrak/$_remote/archive/$pkgver.tar.gz"
         'quake2.png'
