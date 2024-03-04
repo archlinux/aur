@@ -31,19 +31,19 @@ package() {
   VERSION=${pkgver}
 
   # copy original files
-  mkdir -p "$pkgdir"/usr/lib/patrjprof
-  cp -t "$pkgdir"/usr/lib/patrjprof \
+  mkdir -p "$pkgdir"/usr/share/java/patrjprof
+  cp -t "$pkgdir"/usr/share/java/patrjprof \
     patr-java-profiler-agent-$VERSION-jar-with-dependencies.jar \
     patr-java-profiler-bootstrap-$VERSION.jar
 
   # create symlink of agent/bootstrap without version/version-with-deps appendix
-  ln -sT patr-java-profiler-agent-$VERSION-jar-with-dependencies.jar "$pkgdir"/usr/lib/patrjprof/patr-java-profiler-agent-jar-with-dependencies.jar
-  ln -sT patr-java-profiler-agent-$VERSION-jar-with-dependencies.jar "$pkgdir"/usr/lib/patrjprof/patr-java-profiler-agent.jar
-  ln -sT patr-java-profiler-bootstrap-$VERSION.jar "$pkgdir"/usr/lib/patrjprof/patr-java-profiler-bootstrap.jar
+  ln -sT patr-java-profiler-agent-$VERSION-jar-with-dependencies.jar "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-agent-jar-with-dependencies.jar
+  ln -sT patr-java-profiler-agent-$VERSION-jar-with-dependencies.jar "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-agent.jar
+  ln -sT patr-java-profiler-bootstrap-$VERSION.jar "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-bootstrap.jar
 
   # create help script which starts the profiler, the other script is not available
-  AGENT_JAR=/usr/lib/patrjprof/patr-java-profiler-agent-$VERSION-jar-with-dependencies.jar
-  BOOTSTRAP_JAR=/usr/lib/patrjprof/patr-java-profiler-bootstrap-$VERSION.jar
+  AGENT_JAR=/usr/share/java/patrjprof/patr-java-profiler-agent-$VERSION-jar-with-dependencies.jar
+  BOOTSTRAP_JAR=/usr/share/java/patrjprof/patr-java-profiler-bootstrap-$VERSION.jar
   echo -n '#!/bin/sh
 
 AGENT_ARGS=""
