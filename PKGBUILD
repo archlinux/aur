@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deckboard-bin
 _pkgname=Deckboard
-pkgver=3.0.0_rc6
+pkgver=3.0.0_rc7
 _electronversion=4
 pkgrel=1
 pkgdesc="Control your PC with your phone in easy way possible."
@@ -15,15 +15,15 @@ license=('LicenseRef-custom')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'hicolor-icon-theme'
 )
 source_i686=("${pkgname%-bin}-${pkgver}-i686.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/-}_i386.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/-}_amd64.deb")
 source=("${pkgname%-bin}.sh")
-sha256sums=('0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
-sha256sums_i686=('7c6e09a564af649d50b4445a3809ef5c90b0e1b82dd832b5c9cef79f9da77d22')
-sha256sums_x86_64=('ed9f2f5f1680584d8682bf6cb658d9d3dfed9e56a9430f3ef1a165fd5c73b914')
+sha256sums=('50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+sha256sums_i686=('e51fa37e6e25d09387f2b2830df4f23da55881b096abd4b55985c99579adbdc0')
+sha256sums_x86_64=('8f7eb84aed5e329efa7d8b693ba5af473536c7965fb0a391b71ae473ae070669')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
