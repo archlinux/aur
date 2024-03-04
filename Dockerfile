@@ -16,8 +16,8 @@ RUN L=$(paru -Si dracut-git | sed -n '/^Opt/,/^Conf/p' | sed '$d' | sed 's/^Opt.
 # AUR test dependencies
 RUN su build -c 'paru --needed --noconfirm -Syu tgt'
 
-# rebuild to run some tests
-RUN su build -c 'cd ~build/.cache/paru/clone/dracut-git && V=1 TESTS=18 SKIP=" " makepkg --force --syncdeps --noconfirm'
-
 # check SRCINFO
 RUN su build -c 'cd ~build/.cache/paru/clone/dracut-git && makepkg --printsrcinfo > .SRCINFO && updpkgsums && git diff'
+
+# rebuild to run some tests
+RUN su build -c 'cd ~build/.cache/paru/clone/dracut-git && V=1 TESTS=50 SKIP=" " makepkg --force --syncdeps --noconfirm'
