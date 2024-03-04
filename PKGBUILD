@@ -1,8 +1,8 @@
 # Maintainer: Ning Sun <n at sunng dot info>
 
 pkgname=greptimedb-bin
-pkgver=0.7.0.20240226
-_pkgvergh=v0.7.0-nightly-20240226
+pkgver=0.7.0.20240304
+_pkgvergh=v0.7.0-nightly-20240304
 pkgrel=1
 pkgdesc='Open-source time-series database.'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("https://github.com/GreptimeTeam/greptimedb/releases/download/${_pkgverg
     "greptimedb.service"
     "greptimedb-tmpfile.conf"
     "greptimedb.toml")
-sha256sums=("0f40b6a131d3f0858a41738c3ad86058a92841a1f0457ff0c70182a9fa2f4a1d"
+sha256sums=("94e7b6d6c4406b8a2ece825c8596f0825e3bdc480cb07a8958a1f68089cedb63"
     "SKIP"
     "SKIP"
     "SKIP"
