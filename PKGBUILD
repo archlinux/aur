@@ -3,7 +3,7 @@ pkgname=yank-note
 pkgver=3.67.1
 _electronversion=22
 _nodeversion=18
-pkgrel=1
+pkgrel=2
 pkgdesc="A highly extensible Markdown editor. Version control, AI completion, mind map, documents encryption, code snippet running, integrated terminal, chart embedding, HTML applets, Reveal.js, plug-in, and macro replacement."
 arch=('x86_64')
 url="https://yank-note.com/"
@@ -29,7 +29,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -39,10 +39,10 @@ _ensure_local_nvm() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
+    gendesk -q -f -n --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -53,11 +53,11 @@ build() {
     HOME="${srcdir}/.electron-gyp"
     sed '/deb/d' -i electron-builder.json
     yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn electron-rebuild
+    yarn run electron-rebuild
     node scripts/download-pandoc.js
     node scripts/download-plantuml.js
     yarn run build
-    yarn run electron-builder --linux -p never | sed 's/identityName=.*$//'
+    yarn run electron-builder -l -p never | sed 's/identityName=.*$//'
     cd "${srcdir}/${pkgname}.git/out/.icon-set"
     cp icon_16x16.png icon_16.png
     cp icon_48x48.png icon_48.png
