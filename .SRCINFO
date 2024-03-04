@@ -1,7 +1,7 @@
 pkgbase = dosbox-staging
 	pkgdesc = DOS/x86 emulator focusing on ease of use. Based on DOSBox
 	pkgver = 0.81.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/dosbox-staging/dosbox-staging
 	arch = any
@@ -22,10 +22,11 @@ pkgbase = dosbox-staging
 	depends = libslirp
 	depends = fluidsynth
 	depends = munt
+	depends = zlib-ng
 	optdepends = ncurses
 	provides = dosbox
 	conflicts = dosbox
 	source = https://github.com/dosbox-staging/dosbox-staging/archive/v0.81.0.tar.gz
-	sha256sums = 9b133dbf2fe8410bb475267a8f26844d56b9025079783ec6a4574841888ae600
+	sha256sums = 211cbd2fb781bee1e92963f57e8111e22bcaf17a3a6dc11189982a0eea311e9b
 
 pkgname = dosbox-staging
