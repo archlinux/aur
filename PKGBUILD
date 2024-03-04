@@ -4,7 +4,7 @@ _pkgname="Hugin Messenger"
 pkgver=0.4.0
 _electronversion=19
 _nodeversion=16
-pkgrel=2
+pkgrel=3
 pkgdesc="The new version of the private messaging desktop application powered by the Kryptokrona Blockchain."
 arch=('any')
 url="https://hugin.chat/"
@@ -18,7 +18,7 @@ makedepends=(
     'npm'
     'nvm'
     'gendesk'
-    'make'
+    'base-devel'
     'gcc'
 )
 source=(
@@ -26,7 +26,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -36,10 +36,10 @@ _ensure_local_nvm() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -f -n -q --categories "Network" --name "${_pkgname}" --exec "${pkgname} %U"
+    gendesk -f -n -q --categories="Network" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -51,7 +51,6 @@ build() {
     HOME="${srcdir}/.electron-gyp"
     sed "s|linux-x64|linux|g;s|--linux --x64|-l|g" -i package.json
     sed -e '/"deb",/d' -e "s|snap|AppImage|g" -i build.config.json
-    sed "97s|!||g" -i src/backend/electron.cjs
     npm install
     npm run build:linux
 }
