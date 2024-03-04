@@ -1,0 +1,26 @@
+pkgbase = jetbrains-gateway-eap
+	pkgdesc = An entry point to Remote Development, Early Access Program (EAP) build.
+	pkgver = 241.14024.15
+	pkgrel = 1
+	url = https://www.jetbrains.com/remote-development/gateway/nextversion/
+	arch = x86_64
+	arch = i686
+	license = custom:jetbrains
+	depends = glib2
+	options = !strip
+	source = https://download-cf.jetbrains.com/idea/gateway/JetBrainsGateway-241.14024.15.tar.gz
+	source = jetbrains-gateway-eap.desktop
+	source = LICENSE
+	b2sums = a63625e260da3e7252ecdd5be482b2cc04b50fb73654989c981c524d2446883b3a912bd94e7797ffcd3ce8972e523481a09b972b8b2107e4959279a45fad6bc0
+	b2sums = e7ef51c2c64fce8d4990fcac68c901b63485ea8124db5aacf639c7cd0a00c82c2cf77cb1e3ea6b0ae79795dc4b6d34a32b694b9724ea65fd1665d608bc410a51
+	b2sums = dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77
+
+pkgname = jetbrains-gateway-eap
+	optdepends = jetbrains-gateway-eap-jre: JetBrains custom Java Runtime (Recommended)
+	optdepends = java-runtime: JRE - Required if jetbrains-gateway-eap-jre is not installed
+	optdepends = gnome-keyring: save login/deployment credentials safely
+	optdepends = java-openjfx: rendering Markdown files
+
+pkgname = jetbrains-gateway-eap-jre
+	pkgdesc = JBR (JetBrains Runtime) for JetBrains Gateway - a patched JRE
+	url = https://github.com/JetBrains/JetBrainsRuntime

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=JetBrains Gateway (EAP)
+Icon=/opt/jetbrains-gateway-eap/bin/gateway.svg
+Exec="/opt/jetbrains-gateway-eap/bin/gateway.sh" %f
+Comment=Develop together with pleasure!
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=jetbrains-gateway-eap
+StartupNotify=true
