@@ -1,0 +1,14 @@
+diff --unified --recursive --text gnome-commander-1.16.1/src/tags/gnome-cmd-tags-taglib.cc gnome-commander-1.16.1-patched/src/tags/gnome-cmd-tags-taglib.cc
+--- gnome-commander-1.16.1/src/tags/gnome-cmd-tags-taglib.cc	2023-07-08 17:33:10.000000000 +0200
++++ gnome-commander-1.16.1-patched/src/tags/gnome-cmd-tags-taglib.cc	2024-03-04 10:22:55.398983139 +0100
+@@ -150,8 +150,8 @@
+     if (flacProperties)
+     {
+         metadata.add(TAG_AUDIO_CODEC,"FLAC");
+-        if (flacProperties->sampleWidth())
+-            cout << "Audio.FLAC.SampleWidth  " << flacProperties->sampleWidth()<< endl;
++        if (flacProperties->bitsPerSample())
++            cout << "Audio.FLAC.BitsPerSample  " << flacProperties->bitsPerSample()<< endl;
+ 
+         return true;
+     }
