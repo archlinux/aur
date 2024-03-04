@@ -433,14 +433,6 @@ prepare() {
 
   patch -Np1 -i "${srcdir}/std-vector-non-const.patch" -d src/electron
 
-  # Create sysmlink to system clang-format
-  ln -s /usr/bin/clang-format src/buildtools/linux64
-  # Create sysmlink to system Node.js
-  mkdir -p src/third_party/node/linux/node-linux-x64/bin
-  ln -sf /usr/bin/node src/third_party/node/linux/node-linux-x64/bin
-  # Use system java
-  mkdir -p src/third_party/jdk/current/bin
-  ln -sfn /usr/bin/java src/third_party/jdk/current/bin/
   src/electron/script/apply_all_patches.py \
       src/electron/patches/config.json
 
@@ -472,6 +464,7 @@ prepare() {
   # Link to system tools required by the build
   mkdir -p third_party/node/linux/node-linux-x64/bin
   ln -sfn /usr/bin/node third_party/node/linux/node-linux-x64/bin/
+  mkdir -p third_party/jdk/current/bin
   ln -sfn /usr/bin/java third_party/jdk/current/bin/
   ln -sfn /usr/bin/clang-format buildtools/linux64
 
