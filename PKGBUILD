@@ -1,4 +1,4 @@
-# Maintainer: Patrick Hechler <patrjprof-git at ph dot anderemails dot de>
+# Maintainer: Patrick Hechler <patrjprof-git@ph.anderemails.de>
 pkgname=patrjprof-git
 pkgver=1.1.0r42.1806883
 pkgrel=1
@@ -42,7 +42,7 @@ check() {
   mvn test
   echo 'finished test'
 
-  export WD=.
+  export WD="$srcdir"/patr-java-profiler
   export VERSION=$(cat VERSION)
   export BOOTSTRAP_NAME=
   export AGENT_NAME=
