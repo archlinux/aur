@@ -6,3 +6,4 @@ src
 *.tar.xz.sig
 *.tar.zst
 *.tar.zst.sig
+*.whl

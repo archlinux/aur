@@ -1,7 +1,7 @@
 pkgbase = python-ruyaml
 	pkgdesc = ruyaml is a openly maintained fork of elusive ruamel-yaml package that can be used as as a drop-in replacement.
 	pkgver = 0.91.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pycontribs/ruyaml
 	arch = any
 	license = MIT
