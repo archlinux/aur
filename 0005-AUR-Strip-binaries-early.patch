@@ -1,4 +1,4 @@
-From f902e3f2d41a74d52cf4a1d8c0f78e059c4fdf74 Mon Sep 17 00:00:00 2001
+From 6ec6617bd7d0b24f0101b6001a764193cd48d017 Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Wed, 23 Aug 2023 19:31:35 +0300
 Subject: [PATCH 5/7] AUR Strip binaries early
@@ -8,7 +8,7 @@ Subject: [PATCH 5/7] AUR Strip binaries early
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Makefile.in b/Makefile.in
-index 7aefa09f..99ee6e17 100644
+index fc71a5d1..a80e5262 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -54,7 +54,7 @@ CFLAGS         ?= -O2 -march=nocona -mtune=core-avx2

@@ -6,7 +6,7 @@ _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.4
 _monover=9.0.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, experimental branch"
 url="https://github.com/ValveSoftware/Proton"
@@ -211,8 +211,8 @@ build() {
     # https://bugs.winehq.org/show_bug.cgi?id=43516
     # AVX is "hard" disabled for 32bit in any case.
     # AVX2 for both 32bit and 64bit is disabled below.
-    CFLAGS+=" -mno-avx2 -mno-avx"
-    CXXFLAGS+=" -mno-avx2 -mno-avx"
+    #CFLAGS+=" -mno-avx2 -mno-avx"
+    #CXXFLAGS+=" -mno-avx2 -mno-avx"
 
     export CFLAGS CXXFLAGS RUSTFLAGS LDFLAGS
 
@@ -220,7 +220,8 @@ build() {
     export CARGO_HOME="${SRCDEST}"/proton-cargo
     export WINEESYNC=0
     export WINEFSYNC=0
-    export DISPLAY=
+    unset DISPLAY
+
     SUBJOBS=$([[ "$MAKEFLAGS" =~ -j\ *([1-9][0-9]*) ]] && echo "${BASH_REMATCH[1]}" || echo "$(nproc)") \
         make -j1 dist
 }
@@ -276,12 +277,12 @@ sha256sums=('SKIP'
             '2cfc8d5c948602e21eff8a78613e1826f2d033df9672cace87fed56e8310afb6'
             'fd88fc7e537d058d7a8abf0c1ebc90c574892a466de86706a26d254710a82814'
             'd73d440c08ebd67c93fbd6534f4f1b4e98aa07342f9c7d98c8aaeb74755eb9cf'
-            'be2292d5b2c586daf96b96ee010d07e04802d38f196c5bd4a50fe81c0a69e4f5'
-            '894fe9815caa7a818c092dc0d0a2192b680c159c7950af6829ced6bcbc04423f'
-            'b3161b22d4d0a3c242a21aeeb7dea012082a5868d5a4f47adccaf4446e75c47a'
-            'dbdab9134e381c288dfbc6b3d279ecf623f37db3d133a3baea952909094bf6d8'
-            '0709768d95454c7ee9cbe96d7023a5021ae38138708abefc257a3dfce68a3f74'
-            'bd50d8ed714d1457f3eac9a42a3731295de3c9a2f7257179b5f7c03b392b7e34'
-            'ffde8e3c1c453c54e941958fba5a3c199880d9a1954e0cd35d0e7b5343998f56'
+            'f32cd6bfcc189a172ef7c0336264d24b870eef88c4e0feca3620b1411fbecb44'
+            'bf93c46e251d16c81688a843cbd0e0d3e5dd618139af050470d8597725c45e40'
+            'ecf97bbbfae0d9d8edef635189ab47d85d93b363fd6e71a9f3616469fdf9f309'
+            '73e74744f09db1ecee9866cd0131a27c6634cd68175d5db39a8d865bedf11117'
+            'b858409f6cab4b901becbdf5b029174e7f07516d0431664dcf3f245648e2a3f5'
+            '79ef58fa41ab5f5b97897f083790a52abbcd2d0611104050e61b4a78fb049af1'
+            '05d66721a83cf4e6939bd082edd54fe0e025713a4b951b68fdf61bc9c79e4f06'
             '3d308f8e87361669267fa52b986c24f1dea1913156a045f43ea04e02f7444b18'
             '0f9ddda17319e3ef23ee847c0a740bf74847796d4b3cf61b05feb9aa3141b7c7')

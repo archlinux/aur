@@ -1,4 +1,4 @@
-From e4e18b02eb403117681eec19f71d2dfb653d9af7 Mon Sep 17 00:00:00 2001
+From 198ff97d9760fc05fd7f1d207efd997667f4417e Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Wed, 26 Apr 2023 14:22:23 +0300
 Subject: [PATCH 1/7] AUR Pkgbuild changes
@@ -20,7 +20,7 @@ Subject: [PATCH 1/7] AUR Pkgbuild changes
  13 files changed, 89 insertions(+), 43 deletions(-)
 
 diff --git a/Makefile.in b/Makefile.in
-index b88483f7..822f0382 100644
+index b88483f7..a4ccd4e0 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -50,11 +50,12 @@ else
@@ -128,8 +128,8 @@ index b88483f7..822f0382 100644
  
 +FFMPEG_LTO_OPTS64 := --disable-inline-asm
 +FFMPEG_LTO_OPTS32 := --disable-inline-asm
-+FFMPEG_CONFIGURE_ARGS64 = --optflags="$(COMMON_FLAGS) $(COMMON_FLAGS64)" $(FFMPEG_LTO_OPTS64)
-+FFMPEG_CONFIGURE_ARGS32 = --optflags="$(COMMON_FLAGS) $(COMMON_FLAGS32)" $(FFMPEG_LTO_OPTS32)
++FFMPEG_CONFIGURE_ARGS64 = --optflags="$(COMMON_FLAGS) $(COMMON_FLAGS64) $(FFMPEG_LTO_OPTS64)"
++FFMPEG_CONFIGURE_ARGS32 = --optflags="$(COMMON_FLAGS) $(COMMON_FLAGS32) $(FFMPEG_LTO_OPTS32)"
 +
  $(eval $(call rules-source,ffmpeg,$(SRCDIR)/ffmpeg))
  $(eval $(call rules-configure,ffmpeg,32))
