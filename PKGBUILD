@@ -4,7 +4,7 @@ pkgname=gridea-bin
 _pkgname=Gridea
 pkgver=0.9.3
 _electronversion=7
-pkgrel=7
+pkgrel=8
 pkgdesc="A static blog writing client.静态博客写作客户端"
 arch=('x86_64')
 url='https://gridea.dev'
@@ -13,13 +13,10 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
+    "electron${_electronversion}-bin"
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 options=('!emptydirs')
 source=(
@@ -29,7 +26,7 @@ source=(
 )
 sha256sums=('9538866b640e44e9fd54bc1b3a957d1625648f1c1dd6b942dcd73d22701ede4e'
             'd5fd1669066ffaab84a9063cd2792ded7aca1f6f92a972f58ffb5173404b53d2'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
