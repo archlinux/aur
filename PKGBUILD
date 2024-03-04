@@ -3,16 +3,18 @@
 _pkgname=autonomics
 _pkgver=1.10.2
 pkgname=r-${_pkgname,,}
-pkgver=1.10.2
-pkgrel=1
-pkgdesc='Generifying and intuifying cross-platform omics analysis'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Generifying and intuifying cross-platform omics analysis"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-abind
-  r-assertive
+  r-assertive.base
+  r-assertive.files
+  r-assertive.numbers
+  r-assertive.sets
   r-biocfilecache
   r-biocgenerics
   r-bit64
@@ -51,10 +53,8 @@ optdepends=(
   r-knitr
   r-lme4
   r-lmertest
-  r-mass
   r-mixomics
   r-mpm
-  r-nlme
   r-org.hs.eg.db
   r-org.mm.eg.db
   r-rcurl
@@ -68,14 +68,15 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a9a63c09f9f4de533f92c8b82fa3f2821f532fd0edb4e5ba467d6fb327d30fb2')
+md5sums=('9034c755764d54d8bf0eb0e330f4e54f')
+b2sums=('ed49786ceee54208e06c3447dc00f6babcafbc68c339f2bbd2fabc632f9311a0173abf5ba7353f128d42f95710e3dfc25465a606ad1c889200e3132b4329ac57')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
