@@ -3,7 +3,7 @@ pkgname=git-good-bin
 pkgver=0.1.4
 _subver=r24.g43e637f
 _electronversion=25
-pkgrel=7
+pkgrel=8
 pkgdesc="Just a simple git client using electron and nodegit, focus on lightweight and performance"
 arch=("x86_64")
 url="https://github.com/weedz/git-good"
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('f0b0cb5f7bdcb9708bce7f51ee9a603e088402d5774e831af7bb6b94948c6624'
-            '97a81d2a8426672cab73bc8634d96007180bd3039915f74b8fdb71d6667f00ec')
+            'f9ecac842fc8235627c0258e78cecdf95caafc024ea9138a8c497739b0d0fc6f')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
