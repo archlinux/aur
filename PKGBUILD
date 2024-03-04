@@ -3,7 +3,7 @@ pkgname=coinstac-desktop-app-bin
 _appname=COINSTAC
 pkgver=6.8.2
 _electronversion=18
-pkgrel=1
+pkgrel=2
 pkgdesc="Collaborative Informatics and Neuroimaging Suite Toolkit for Anonymous Computation"
 arch=('x86_64')
 url="https://github.com/trendscenter/coinstac"
@@ -11,13 +11,10 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
+    "electron${_electronversion}-bin"
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux.AppImage"
@@ -26,7 +23,7 @@ source=(
 )
 sha256sums=('cf3159728690b42fee63c92997689372b114635e4fc574fd995747b91b9f51a6'
             'fcf8a012e25e06508e76c87a9607116d8cf2a195c8e12f960ff01e64b493f882'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
