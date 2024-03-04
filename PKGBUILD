@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=htbrowser-bin
 pkgver=5.0.2.21
-pkgrel=2
+pkgrel=3
 pkgdesc="红莲花国密浏览器是政企专用浏览器，支持国产密码算法，全面适配信创环境，可以提供国产密码改造服务，既满足安全可靠又保障自主可控的浏览器使用需求。"
 arch=(
     'aarch64'
@@ -34,14 +34,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c74e69c2dd5cd4543f078bce866947b1f6fdf9eea2de843810f0a6b89ee76f3f'
-            '4a8e9fbf4b44b6cfb347a013a1c4aa9b00b76598fe7b0fb506521e35c2134401')
+            '297a74c44e8bc82adaacc463fed4a12089f5ab28f83cc198844c0d409dd55bb2')
 sha256sums_aarch64=('65037262aa27d692c964155919f969286fb706d5cb77eed04883e74bdd50c06f')
 sha256sums_x86_64=('a09f7741801e0231eaa83ed569cb9e9a789be9fc0c22e12e9a8a4e882c9d125f')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/apps/${pkgname%-bin}/${pkgname%-bin}.sh|${pkgname%-bin}|g;s|/opt/apps/${pkgname%-bin}/${pkgname%-bin}.png|${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm755 -d "${srcdir}/opt/apps/${pkgname%-bin}/swiftshader"
