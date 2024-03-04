@@ -2,7 +2,7 @@
 _pkgname=bss
 pkgname="${_pkgname}english-bin"
 pkgver=2.0_65
-pkgrel=6
+pkgrel=7
 pkgdesc="白杉树背单词训练软件."
 arch=('x86_64')
 url="https://bailplus.github.io/bssenglish.pages/"
@@ -20,7 +20,7 @@ source=(
 )
 sha256sums=('5a0c4292539f8c6f698fa2487ca626adb3014f5a835bec2431886e8dc6d51c4d')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|usr/lib|opt|g" -i "${srcdir}/usr/lib/${pkgname%-bin}/${_pkgname}.py"
     sed "s|/usr/bin/${pkgname%-bin}|${pkgname%-bin}|g;s|/usr/share/pixmaps/${_pkgname}.png|${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
