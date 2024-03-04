@@ -3,7 +3,7 @@ pkgname=pomodoro-timer
 _pkgname="Pomodoro Timer"
 pkgver=1.1.0
 _electronversion=26
-pkgrel=1
+pkgrel=2
 pkgdesc="A pomodoro timer built with react and electron"
 arch=('any')
 url="https://github.com/pauchiner/pomodoro-timer"
@@ -18,7 +18,7 @@ makedepends=(
     'npm'
     'yarn'
     'git'
-    'make'
+    'base-devel'
     'gcc'
 )
 options=(
@@ -29,13 +29,13 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
-    gendesk -f -n -q --categories "Utility" --name "${_pkgname}" --exec "${pkgname} %U"
+    gendesk -f -n -q --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -44,7 +44,7 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    yarn install
+    yarn install --cache-folder "${srcdir}/.yarn_cache"
     yarn run package
 }
 package() {
