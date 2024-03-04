@@ -51,7 +51,7 @@ makedepends=(
     wayland-protocols
 )
 _branch=sk-gamscope
-source=("git+https://github.com/3003n/gamescope.git#bransh=${_branch}")
+source=("git+https://github.com/3003n/gamescope.git#branch=${_branch}")
 b2sums=('SKIP')
 
 provides=("$_pkgname")
