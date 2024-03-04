@@ -1,6 +1,6 @@
 # Maintainer: Ricardo Band <email@ricardo.band>
 pkgname=yawsso
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Yet Another AWS SSO - sync up AWS CLI v2 SSO login session to legacy CLI v1 credentials"
 arch=("any")
@@ -9,7 +9,7 @@ license=("custom:MIT")
 makedepends=("python-setuptools")
 depends=("python-pyperclip")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('199dab543a57bed015bc39d910f8e44f526a5746b7301f488b11ba1778c82080')
+sha256sums=('c33264f165293f7038848a3079dcd24d059bd6b35c821282cf005b70d2b77f71')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
