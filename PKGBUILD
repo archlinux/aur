@@ -1,5 +1,5 @@
 # Maintainer: Lea Seibert <mail@lea.moe>
-# Contributor: Ecmel Berk Canlıer <me@ecmelberk.com>
+# Contributor: FayBoy <ahmadyasinfikri at gmail dot com>
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: philefou <tuxication AT gmail DOT com>
 # Contributor: lindquist <tomas@famolsen.dk>
