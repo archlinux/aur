@@ -2,7 +2,7 @@
 pkgname=line-by-line-bin
 _pkgname=linebyline
 pkgver=0.5.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Modern markdown editor application with built-in ChatGPT extension."
 arch=("x86_64")
 url="https://linebyline-group.vercel.app/"
@@ -20,7 +20,7 @@ source=(
 )
 sha256sums=('dacc938af6660cb2a33b346f9b44c39d93644e2b25022c06a9ea744db324128d')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.gz"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
