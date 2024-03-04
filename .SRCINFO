@@ -1,7 +1,7 @@
 pkgbase = tiantianmazi-bin
 	pkgdesc = 天天码字是面向网文作者人群的一款方便,适用的码字工具平台.
 	pkgver = 1.0.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.tiantianmazi.com/
 	arch = x86_64
 	license = LicenseRef-custom

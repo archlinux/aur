@@ -3,7 +3,7 @@ pkgname=tiantianmazi-bin
 _chsname="天天码字"
 _appname=ttmz
 pkgver=1.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="天天码字是面向网文作者人群的一款方便,适用的码字工具平台."
 arch=('x86_64')
 url="http://www.tiantianmazi.com/"
@@ -27,7 +27,7 @@ source=(
 sha256sums=('8dbb468c3fb9e03f63c543d68c2b2855b6381df153aada3a0ea4ff8d87de937b'
             '92d01a96c324eb11ef8600d1014c5ac041c7ad30649f399a5c3fd83181b6ab30')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_chsname}/${_appname}.png|${pkgname%-bin}|g;s|\"/opt/${_chsname}/${_appname}\"|${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
