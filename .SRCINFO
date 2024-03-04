@@ -1,7 +1,7 @@
 pkgbase = python-bibtexparser
 	pkgdesc = Bibtex parser in Python
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/bibtexparser/
 	arch = any
 	license = LGPL3
@@ -9,7 +9,6 @@ pkgbase = python-bibtexparser
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pyparsing
-	depends = python-future
 	source = https://files.pythonhosted.org/packages/source/b/bibtexparser/bibtexparser-1.4.1.tar.gz
 	sha256sums = e00e29e24676c4808e0b4333b37bb55cca9cbb7871a56f63058509281588d789
 

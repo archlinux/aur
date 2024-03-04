@@ -4,12 +4,12 @@
 pkgname=python-bibtexparser
 _name=${pkgname#python-}
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Bibtex parser in Python"
 arch=('any')
 url="https://pypi.org/project/bibtexparser/"
 license=('LGPL3')
-depends=('python' 'python-pyparsing' 'python-future')
+depends=('python' 'python-pyparsing')
 makedepends=('python-setuptools')
 checkdepends=('python-nose')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
