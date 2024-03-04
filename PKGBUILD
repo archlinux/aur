@@ -4,7 +4,7 @@ _appname=YouKu
 _chsname="优酷"
 pkgver=1.0.0
 _electronversion=9
-pkgrel=4
+pkgrel=5
 pkgdesc="Linux版优酷客户端APP,基于Electron技术实现在uos的APP客户端."
 arch=('x86_64')
 url="http://gitlab.alibaba-inc.com/youku-node/uos-youku-app/blob/master/README.md"
@@ -13,7 +13,7 @@ license=("LicenseRef-custom")
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'hicolor-icon-theme'
 )
 source=(
@@ -21,13 +21,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('ae0b2ecd57224db7eedcf453dcd1178b2bf78e08fea2885978f7048dd0ebb78f'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '30c9f43c0211a6887d9161af08bb7ccc0a7b2300a8dca97ee6c4ba8cf1079e30')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed -e "s|\"/opt/${_chsname}/${_appname}\"|${pkgname%-bin}|g" \
         -e "s|/opt/${_chsname}/resources/assets/images/app_icon32.png|${pkgname%-bin}|g" \
         -e "s|Categories=Viedo;|Categories=AudioVideo;|g" \

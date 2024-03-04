@@ -1,17 +1,17 @@
 pkgbase = youku-bin
 	pkgdesc = Linux版优酷客户端APP,基于Electron技术实现在uos的APP客户端.
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://gitlab.alibaba-inc.com/youku-node/uos-youku-app/blob/master/README.md
 	arch = x86_64
 	license = LicenseRef-custom
-	depends = electron9
+	depends = electron9-bin
 	depends = hicolor-icon-theme
 	provides = youku=1.0.0
 	conflicts = youku
 	source = youku-1.0.0.deb::https://com-store-packages.uniontech.com/appstore/pool/appstore/u/uos-YouKu-app/uos-YouKu-app_1.0.0_amd64.deb
 	source = youku.sh
 	sha256sums = ae0b2ecd57224db7eedcf453dcd1178b2bf78e08fea2885978f7048dd0ebb78f
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = 30c9f43c0211a6887d9161af08bb7ccc0a7b2300a8dca97ee6c4ba8cf1079e30
 
 pkgname = youku-bin
