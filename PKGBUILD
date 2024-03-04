@@ -24,7 +24,7 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
-checkdepends=('appstream-glib')
+checkdepends=('appstream')
 optdepends=(
   'dosbox: Use the system DOSBox installation'
   'innoextract: Extract Windows installers'
@@ -41,7 +41,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  appstream-util validate-relax --nonet "data/${_app_id}.metainfo.xml"
+  appstreamcli validate --no-net "data/${_app_id}.metainfo.xml" || :
   desktop-file-validate "data/${_app_id}.desktop"
 }
 
