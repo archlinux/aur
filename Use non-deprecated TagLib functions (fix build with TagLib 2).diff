@@ -1,44 +1,42 @@
-diff --git a/shared/tag_helpers/APETagHelper.cpp b/shared/tag_helpers/APETagHelper.cpp
-index eee34e05a3..66e8510a53 100644
---- a/shared/tag_helpers/APETagHelper.cpp
-+++ b/shared/tag_helpers/APETagHelper.cpp
-@@ -84,7 +84,7 @@ APETagHelper::setTags( const Meta::FieldHash &changes )
-         QVariant value = changes.value( key );
-         TagLib::String field = fieldName( key );
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 13fea989d2ce22c11185560348d4bdcf627eb0d5..07b8b944af00efcbc3fb4fe8d07e27149a3548ac 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -79,7 +79,7 @@ option(WITH_IPOD "Enable iPod support in Amarok" ON)
+ option(WITH_PLAYGROUND "Enable building of playground scripts and applets (WARNING: some of them might have legal issues!)" OFF)
  
--        if( !field.isNull() && !field.isEmpty() )
-+        if( !field.isEmpty() )
-         {
-             if( key == Meta::valRating )
-                 m_tag->addValue( field, Qt4QStringToTString( QString::number( value.toFloat() / 10.0 ) ) );
-diff --git a/shared/tag_helpers/ASFTagHelper.cpp b/shared/tag_helpers/ASFTagHelper.cpp
-index 241e93d714..772728b58f 100644
---- a/shared/tag_helpers/ASFTagHelper.cpp
-+++ b/shared/tag_helpers/ASFTagHelper.cpp
-@@ -107,7 +107,7 @@ ASFTagHelper::setTags( const Meta::FieldHash &changes )
-         QVariant value = changes.value( key );
-         TagLib::String field = fieldName( key );
+ ############### Taglib
+-set(TAGLIB_MIN_VERSION "1.7")
++set(TAGLIB_MIN_VERSION "2.0")
+ find_package(Taglib REQUIRED)
+ set_package_properties( Taglib PROPERTIES DESCRIPTION "Support for Audio metadata." URL "http://developer.kde.org/~wheeler/taglib.html" TYPE REQUIRED PURPOSE "Required for tag reading" )
  
--        if( !field.isNull() && !field.isEmpty() )
-+        if( !field.isEmpty() )
-         {
-             if( key == Meta::valHasCover )
-                 continue;
-diff --git a/shared/tag_helpers/ID3v2TagHelper.cpp b/shared/tag_helpers/ID3v2TagHelper.cpp
-index ea9281dc30..7dd98062bc 100644
---- a/shared/tag_helpers/ID3v2TagHelper.cpp
-+++ b/shared/tag_helpers/ID3v2TagHelper.cpp
-@@ -187,7 +187,7 @@ ID3v2TagHelper::setTags( const Meta::FieldHash &changes )
-         QVariant value = changes.value( key );
-         TagLib::ByteVector field( fieldName( key ).toCString() );
+diff --git a/README b/README
+index d9a2481656394c1e065808f2bc6ed3fc7b29fee8..c33a3920e5dbc7ac01516a296d85b4983835f9b0 100644
+--- a/README
++++ b/README
+@@ -49,18 +49,13 @@ Required
+     * Qt 5.10 (or newer)
+       https://qt.io/
  
--        if( !field.isNull() && !field.isEmpty() )
-+        if( !field.isEmpty() )
-         {
-             if( key == Meta::valHasCover )
-                 continue;
+-    * TagLib 1.7 (or newer)
++    * TagLib 2.0 (or newer)
+       (Metadata tagging library)
+ 
+     * MySQL 5.0 (or newer) / MariaDB (external database support) or MariaDB
+       Embedded (In-process database support)
+ 
+ Optional
+-    * Taglib 1.8 for support of MOD, IT, S3M and XM files
+-    * Taglib 1.9 for support of Opus files
+-      http://taglib.org/
+-      https://github.com/taglib/taglib
+-
+     * TagLib Extras 1.0.1 (or newer)
+       (Support for metadata reading of additional file types)
+       svn://anonsvn.kde.org/home/kde/trunk/kdesupport/taglib-extras
 diff --git a/shared/tag_helpers/MP4TagHelper.cpp b/shared/tag_helpers/MP4TagHelper.cpp
-index 7a28b4473c..21f586146e 100644
+index 7a28b4473cf830ead8b751769d578d342ab2f232..21f586146e98374472f8c5d383b084235cc019c5 100644
 --- a/shared/tag_helpers/MP4TagHelper.cpp
 +++ b/shared/tag_helpers/MP4TagHelper.cpp
 @@ -53,8 +53,8 @@ MP4TagHelper::tags() const
@@ -52,14 +50,7 @@ index 7a28b4473c..21f586146e 100644
      {
          qint64 field;
          QString value = TStringToQString( it->second.toStringList().toString( '\n' ) );
-@@ -106,21 +106,21 @@ MP4TagHelper::setTags( const Meta::FieldHash &changes )
-         QVariant value = changes.value( key );
-         TagLib::String field = fieldName( key );
- 
--        if( !field.isNull() && !field.isEmpty() )
-+        if( !field.isEmpty() )
-         {
-             // http://gitorious.org/~jefferai/xdg-specs/jefferais-xdg-specs/blobs/mediaspecs/specifications/FMPSpecs/specification.txt sais that mp4 tags should be saved as strings
+@@ -112,15 +112,15 @@ MP4TagHelper::setTags( const Meta::FieldHash &changes )
              if( key == Meta::valHasCover )
                  continue;
              else if( key == Meta::valRating )
@@ -122,21 +113,8 @@ index 7a28b4473c..21f586146e 100644
  
      return true;
  }
-diff --git a/shared/tag_helpers/StringHelper.cpp b/shared/tag_helpers/StringHelper.cpp
-index fd7e49b432..a8d2aa3e97 100644
---- a/shared/tag_helpers/StringHelper.cpp
-+++ b/shared/tag_helpers/StringHelper.cpp
-@@ -36,7 +36,7 @@ Meta::Tag::Qt4QStringToTString( const QString &str )
- {
-     // Declare new var to prevent double call of trimmed func
-     QString val = str.trimmed();
--    return val.isEmpty() ? TagLib::String::null : TagLib::String( val.toUtf8().data(), TagLib::String::UTF8 );
-+    return val.isEmpty() ? TagLib::String() : TagLib::String( val.toUtf8().data(), TagLib::String::UTF8 );
- }
- 
- QString
 diff --git a/shared/tag_helpers/TagHelper.cpp b/shared/tag_helpers/TagHelper.cpp
-index 5a3b30009e..2607e53fe2 100644
+index 5a3b30009ed1c8ef3449049d5cb5432e96ce0cf6..2607e53fe247891a55746a9d18655a534839603f 100644
 --- a/shared/tag_helpers/TagHelper.cpp
 +++ b/shared/tag_helpers/TagHelper.cpp
 @@ -331,7 +331,7 @@ Meta::Tag::selectHelper( const TagLib::FileRef &fileref, bool forceCreation )
@@ -148,21 +126,8 @@ index 5a3b30009e..2607e53fe2 100644
      }
      else if( TagLib::ASF::File *file = dynamic_cast< TagLib::ASF::File * >( fileref.file() ) )
      {
-diff --git a/shared/tag_helpers/VorbisCommentTagHelper.cpp b/shared/tag_helpers/VorbisCommentTagHelper.cpp
-index f3ff542db6..95dc041d8a 100644
---- a/shared/tag_helpers/VorbisCommentTagHelper.cpp
-+++ b/shared/tag_helpers/VorbisCommentTagHelper.cpp
-@@ -151,7 +151,7 @@ VorbisCommentTagHelper::setTags( const Meta::FieldHash &changes )
-         QVariant value = changes.value( key );
-         TagLib::String field = fieldName( key );
- 
--        if( !field.isNull() && !field.isEmpty() )
-+        if( !field.isEmpty() )
-         {
-             if( key == Meta::valHasCover )
-                 continue;
 diff --git a/utilities/afttagger/AFTTagger.cpp b/utilities/afttagger/AFTTagger.cpp
-index ae653e7beb..dace0b3305 100644
+index ae653e7beb9a8c184449fdc2992c57a18d924469..dace0b33056d4721c6599427076fc5106a2513f2 100644
 --- a/utilities/afttagger/AFTTagger.cpp
 +++ b/utilities/afttagger/AFTTagger.cpp
 @@ -467,7 +467,7 @@ AFTTagger::handleXiphComment( TagLib::Ogg::XiphComment *comment, TagLib::File *f

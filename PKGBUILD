@@ -6,8 +6,8 @@
 # Contributor: Maël Kerbiriou <mael.kerbiriou-at-free-dot-fr>
 
 pkgname=amarok-git
-pkgver=2.9.71.r319.b592705a6c
-pkgrel=2
+pkgver=2.9.71.r328.g4bc5627
+pkgrel=1
 pkgdesc="The powerful music player for KDE"
 arch=("i686" "x86_64")
 url="http://amarok.kde.org"
@@ -26,19 +26,28 @@ optdepends=("libmtp: support for portable media devices"
 conflicts=("amarok" "taglib-extras")
 provides=("amarok")
 source=("git+https://invent.kde.org/multimedia/amarok.git"
-        "taglib2.diff")
+        "Refresh more deprecated codepaths.diff"
+        "Port away from deprecated QDesktopWidget functions & disable missing OSD settings functionalities on Wayland.diff"
+        "Fix crash in PodcastSettingsDialog initialization.diff"
+        "Use non-deprecated TagLib functions (fix build with TagLib 2).diff")
 sha512sums=("SKIP"
-            "8f57e97c334e09c490b2c38c6ecbeda2fbf05d109098a10e924fa72ab13768425c9b89f5ecf47ba197169854f9e19dd626c4454d7500ea36d72805555b852f8e")
+            "dd6f92fb8e1c1d4fe429cbbda9218bce4e0f3d7e5d0300e48fb95ca701d3c537dded9ef3d792b90ee02b69dd3a2ef07c285cd43eabc703058dee74fa0e2f34b8"
+            "ef489ed770974ee95b8f7ea56b3ec8bab9cdc03c4a1ac859472bdb09b4800a135178bbe9e1c964ea7d2ad30f08b5a6024ecd58f5e56dd00fc93b515cad7a74e0"
+            "04406608a3d4453580100cf81812646f0c5581422c3764a3d08166873cab4582b650ae13d574ca010e1896fc3e7b218424570341b9b5260e039e50a0e1e424fc"
+            "6646c130ffe993db8bc105e3737a585e149a1099759e3335af67bf84620b28cb4460a4925d8592eba9d4110b72f210628b7d6078f5dafe0de64259f811b413b0")
 
 pkgver() {
     cd "$srcdir/amarok"
     set -o pipefail
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
+    git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "${srcdir}/amarok"
-  patch -Np1 -i "${srcdir}/taglib2.diff"
+  patch -Np1 -i "${srcdir}/Refresh more deprecated codepaths.diff"
+  patch -Np1 -i "${srcdir}/Port away from deprecated QDesktopWidget functions & disable missing OSD settings functionalities on Wayland.diff"
+  patch -Np1 -i "${srcdir}/Fix crash in PodcastSettingsDialog initialization.diff"
+  patch -Np1 -i "${srcdir}/Use non-deprecated TagLib functions (fix build with TagLib 2).diff"
   mkdir -p "${srcdir}/build"
 }
 

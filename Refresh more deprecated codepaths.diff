@@ -1,0 +1,711 @@
+diff --git a/README b/README
+index d9a2481656394c1e065808f2bc6ed3fc7b29fee8..b9afcc0f82f7086785ca65df4377a9276104c544 100644
+--- a/README
++++ b/README
+@@ -39,14 +39,14 @@ not be entirely up to date. You can always look at CMakeLists.txt to discover
+ the most recent dependencies.
+ 
+ Required
+-    * KDE Frameworks 5.41 (or newer, for an exact list look at CMakeLists.txt)
++    * KDE Frameworks 5.57 (or newer, for an exact list look at CMakeLists.txt)
+       https://www.kde.org
+ 
+     * Phonon 4.6.60 (or newer with support for Qt5) and one of the following backends:
+       * phonon-gstreamer 4.6.3 (or newer)
+       * phonon-vlc 0.6.1 (or newer; as of 0.6.1 doesn't yet play Audio CDs, bug 313046)
+ 
+-    * Qt 5.10 (or newer)
++    * Qt 5.15
+       https://qt.io/
+ 
+     * TagLib 1.7 (or newer)
+diff --git a/shared/tag_helpers/APETagHelper.cpp b/shared/tag_helpers/APETagHelper.cpp
+index eee34e05a34a67daf6f064a41d7606519dfa951c..66e8510a535f4032430309c1ca3a3734bc2269e6 100644
+--- a/shared/tag_helpers/APETagHelper.cpp
++++ b/shared/tag_helpers/APETagHelper.cpp
+@@ -84,7 +84,7 @@ APETagHelper::setTags( const Meta::FieldHash &changes )
+         QVariant value = changes.value( key );
+         TagLib::String field = fieldName( key );
+ 
+-        if( !field.isNull() && !field.isEmpty() )
++        if( !field.isEmpty() )
+         {
+             if( key == Meta::valRating )
+                 m_tag->addValue( field, Qt4QStringToTString( QString::number( value.toFloat() / 10.0 ) ) );
+diff --git a/shared/tag_helpers/ASFTagHelper.cpp b/shared/tag_helpers/ASFTagHelper.cpp
+index 241e93d714db8e90c81d5b3e122b8974c8537c8d..772728b58f6fb7c9e1ec37253bf0ba3c460dee83 100644
+--- a/shared/tag_helpers/ASFTagHelper.cpp
++++ b/shared/tag_helpers/ASFTagHelper.cpp
+@@ -107,7 +107,7 @@ ASFTagHelper::setTags( const Meta::FieldHash &changes )
+         QVariant value = changes.value( key );
+         TagLib::String field = fieldName( key );
+ 
+-        if( !field.isNull() && !field.isEmpty() )
++        if( !field.isEmpty() )
+         {
+             if( key == Meta::valHasCover )
+                 continue;
+diff --git a/shared/tag_helpers/ID3v2TagHelper.cpp b/shared/tag_helpers/ID3v2TagHelper.cpp
+index ea9281dc30bc37feb0636357b7137e22a0c772ab..7dd98062bc043980b8365ff1e2b8bd41d9e78ce7 100644
+--- a/shared/tag_helpers/ID3v2TagHelper.cpp
++++ b/shared/tag_helpers/ID3v2TagHelper.cpp
+@@ -187,7 +187,7 @@ ID3v2TagHelper::setTags( const Meta::FieldHash &changes )
+         QVariant value = changes.value( key );
+         TagLib::ByteVector field( fieldName( key ).toCString() );
+ 
+-        if( !field.isNull() && !field.isEmpty() )
++        if( !field.isEmpty() )
+         {
+             if( key == Meta::valHasCover )
+                 continue;
+diff --git a/shared/tag_helpers/MP4TagHelper.cpp b/shared/tag_helpers/MP4TagHelper.cpp
+index 7a28b4473cf830ead8b751769d578d342ab2f232..54d192ffae97828c5393997a3bb270351cb785ea 100644
+--- a/shared/tag_helpers/MP4TagHelper.cpp
++++ b/shared/tag_helpers/MP4TagHelper.cpp
+@@ -106,7 +106,7 @@ MP4TagHelper::setTags( const Meta::FieldHash &changes )
+         QVariant value = changes.value( key );
+         TagLib::String field = fieldName( key );
+ 
+-        if( !field.isNull() && !field.isEmpty() )
++        if( !field.isEmpty() )
+         {
+             // http://gitorious.org/~jefferai/xdg-specs/jefferais-xdg-specs/blobs/mediaspecs/specifications/FMPSpecs/specification.txt sais that mp4 tags should be saved as strings
+             if( key == Meta::valHasCover )
+diff --git a/shared/tag_helpers/StringHelper.cpp b/shared/tag_helpers/StringHelper.cpp
+index fd7e49b432af0b3144265726e2716fa7f2ecb80f..a8d2aa3e977da10569c5a2cbc090ab437618865f 100644
+--- a/shared/tag_helpers/StringHelper.cpp
++++ b/shared/tag_helpers/StringHelper.cpp
+@@ -36,7 +36,7 @@ Meta::Tag::Qt4QStringToTString( const QString &str )
+ {
+     // Declare new var to prevent double call of trimmed func
+     QString val = str.trimmed();
+-    return val.isEmpty() ? TagLib::String::null : TagLib::String( val.toUtf8().data(), TagLib::String::UTF8 );
++    return val.isEmpty() ? TagLib::String() : TagLib::String( val.toUtf8().data(), TagLib::String::UTF8 );
+ }
+ 
+ QString
+diff --git a/shared/tag_helpers/VorbisCommentTagHelper.cpp b/shared/tag_helpers/VorbisCommentTagHelper.cpp
+index f3ff542db6cd50c51289d2e0ff6eab7417e7a218..95dc041d8a559ca00856c7f9908d576445c5f7c2 100644
+--- a/shared/tag_helpers/VorbisCommentTagHelper.cpp
++++ b/shared/tag_helpers/VorbisCommentTagHelper.cpp
+@@ -151,7 +151,7 @@ VorbisCommentTagHelper::setTags( const Meta::FieldHash &changes )
+         QVariant value = changes.value( key );
+         TagLib::String field = fieldName( key );
+ 
+-        if( !field.isNull() && !field.isEmpty() )
++        if( !field.isEmpty() )
+         {
+             if( key == Meta::valHasCover )
+                 continue;
+diff --git a/src/EngineController.cpp b/src/EngineController.cpp
+index 8eea4c5921132f15996c5714c064c4d1a2fdfc64..5dd8db9190fc968d77e8fa2215fbbb2bfbdba46c 100644
+--- a/src/EngineController.cpp
++++ b/src/EngineController.cpp
+@@ -84,7 +84,6 @@ EngineController::EngineController()
+     , m_tickInterval( 0 )
+     , m_lastTickPosition( -1 )
+     , m_lastTickCount( 0 )
+-    , m_mutex( QMutex::Recursive )
+ {
+     DEBUG_BLOCK
+     // ensure this object is created in a main thread
+diff --git a/src/EngineController.h b/src/EngineController.h
+index ca4ebfe132fb442a90853568f596c29b2c3ddbb4..06538689471e13f12c18817e2ff9dc25410004f6 100644
+--- a/src/EngineController.h
++++ b/src/EngineController.h
+@@ -27,7 +27,7 @@
+ #include "playback/EqualizerController.h"
+ #include "core/meta/Meta.h"
+ 
+-#include <QMutex>
++#include <QRecursiveMutex>
+ #include <QObject>
+ #include <QPointer>
+ #include <QSemaphore>
+@@ -579,7 +579,7 @@ private:
+     qint64 m_lastTickPosition;
+     qint64 m_lastTickCount;
+ 
+-    QMutex m_mutex;
++    QRecursiveMutex m_mutex;
+ 
+     // FIXME: this variable should be updated when
+     // Phonon::BackendCapabilities::notifier()'s capabilitiesChanged signal is emitted
+diff --git a/src/configdialog/dialogs/NotificationsConfig.cpp b/src/configdialog/dialogs/NotificationsConfig.cpp
+index 0c16fdcb1764566898e11f54937984123f2a68ac..00a15f6befab20dcc0438c27a0b822115abf4512 100644
+--- a/src/configdialog/dialogs/NotificationsConfig.cpp
++++ b/src/configdialog/dialogs/NotificationsConfig.cpp
+@@ -55,7 +55,7 @@ NotificationsConfig::NotificationsConfig( Amarok2ConfigDialog* parent )
+ 
+     connect( m_osdPreview, &OSDPreviewWidget::positionChanged, this, &NotificationsConfig::slotPositionChanged );
+ 
+-    const int numScreens = QApplication::desktop()->numScreens();
++    const int numScreens = QApplication::screens().size();
+     for( int i = 0; i < numScreens; i++ )
+         kcfg_OsdScreen->addItem( QString::number( i ) );
+ 
+diff --git a/src/context/ContextView.cpp b/src/context/ContextView.cpp
+index 9e3ba064d2d7a59afb292b7dac7903deb5df91bf..1aa3fc70af8b2ff7b597b3c5768903efb4c30f06 100644
+--- a/src/context/ContextView.cpp
++++ b/src/context/ContextView.cpp
+@@ -60,7 +60,8 @@ ContextView::ContextView( QWidget *parent )
+ 
+     KDeclarative::KDeclarative decl;
+     decl.setDeclarativeEngine( engine() );
+-    decl.setupBindings();
++    engine()->rootContext()->setContextObject( new KLocalizedContext( this ) );
++    decl.setupEngine( engine() );
+ 
+     connect( this, &QQuickWidget::statusChanged, this, &ContextView::slotStatusChanged );
+     connect( The::paletteHandler(), &PaletteHandler::newPalette, this, &ContextView::updatePalette );
+diff --git a/src/core-impl/collections/db/sql/SqlCollectionLocation.cpp b/src/core-impl/collections/db/sql/SqlCollectionLocation.cpp
+index 7f761432ef33d98ff30068587ba0b5cbffa36453..2659c5f7cfbb150341a15010fe805700824ef09b 100644
+--- a/src/core-impl/collections/db/sql/SqlCollectionLocation.cpp
++++ b/src/core-impl/collections/db/sql/SqlCollectionLocation.cpp
+@@ -38,8 +38,8 @@
+ #include <QDir>
+ #include <QFile>
+ #include <QFileInfo>
++#include <QStorageInfo>
+ 
+-#include <KDiskFreeSpaceInfo>
+ #include <KFileItem>
+ #include <KJob>
+ #include <KIO/DeleteJob>
+@@ -90,13 +90,9 @@ SqlCollectionLocation::isWritable() const
+     QStringList folders = actualLocation();
+     foreach( const QString &path, folders )
+     {
+-        float used = KDiskFreeSpaceInfo::freeSpaceInfo( path ).used();
+-        float total = KDiskFreeSpaceInfo::freeSpaceInfo( path ).size();
+-
+-        if( total <= 0 ) // protect against div by zero
+-            continue; //How did this happen?
+-
+-        float free_space = total - used;
++        float free_space = QStorageInfo( path ).bytesAvailable();
++        if( free_space <= 0 )
++            continue;
+         if( free_space >= 500*1000*1000 ) // ~500 megabytes
+             path_exists_with_space = true;
+ 
+@@ -298,18 +294,18 @@ SqlCollectionLocation::showDestinationDialog( const Meta::TrackList &tracks,
+         if( path.isEmpty() )
+             continue;
+         debug() << "Path" << path;
+-        KDiskFreeSpaceInfo spaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo( path );
++        QStorageInfo spaceInfo(path);
+         if( !spaceInfo.isValid() )
+             continue;
+ 
+-        KIO::filesize_t totalCapacity = spaceInfo.size();
+-        KIO::filesize_t used = spaceInfo.used();
++        KIO::filesize_t totalCapacity = spaceInfo.bytesTotal();
++        KIO::filesize_t used = totalCapacity - spaceInfo.bytesFree();
+ 
+-        KIO::filesize_t freeSpace = totalCapacity - used;
++        KIO::filesize_t availableSpace = spaceInfo.bytesAvailable();
+ 
+         debug() << "used:" << used;
+         debug() << "total:" << totalCapacity;
+-        debug() << "Free space" << freeSpace;
++        debug() << "Available space" << availableSpace;
+         debug() << "transfersize" << transferSize;
+ 
+         if( totalCapacity <= 0 ) // protect against div by zero
+@@ -320,8 +316,8 @@ SqlCollectionLocation::showDestinationDialog( const Meta::TrackList &tracks,
+         // since bad things happen when drives become totally full
+ 	// we make sure there is at least ~500MB left
+         // finally, ensure the path is writable
+-        debug() << ( freeSpace - transferSize );
+-        if( ( freeSpace - transferSize ) > 1024*1024*500 && info.isWritable() )
++        debug() << ( availableSpace - transferSize );
++        if( ( availableSpace - transferSize ) > 1024*1024*500 && info.isWritable() )
+             available_folders << path;
+     }
+ 
+diff --git a/src/core-impl/collections/db/sql/SqlMeta.cpp b/src/core-impl/collections/db/sql/SqlMeta.cpp
+index 5fd0b11abf6e2f031d66414f75d6f8638d4cc2a0..45e7513f3df56ae14cbae9b3a6d1f6056a0bdeec 100644
+--- a/src/core-impl/collections/db/sql/SqlMeta.cpp
++++ b/src/core-impl/collections/db/sql/SqlMeta.cpp
+@@ -1471,7 +1471,6 @@ SqlAlbum::SqlAlbum( Collections::SqlCollection *collection, int id, const QStrin
+     , m_unsetImageId( -1 )
+     , m_tracksLoaded( NotLoaded )
+     , m_suppressAutoFetch( false )
+-    , m_mutex( QMutex::Recursive )
+ {
+     Q_ASSERT( m_collection );
+     Q_ASSERT( m_id > 0 );
+diff --git a/src/core-impl/collections/db/sql/SqlMeta.h b/src/core-impl/collections/db/sql/SqlMeta.h
+index cf0204ff9e7522986132f18053aa8844df1b2bf8..dd385b1c502033de2c12354941441518b56af6e6 100644
+--- a/src/core-impl/collections/db/sql/SqlMeta.h
++++ b/src/core-impl/collections/db/sql/SqlMeta.h
+@@ -28,7 +28,7 @@
+ 
+ #include <QAtomicInt>
+ #include <QByteArray>
+-#include <QMutex>
++#include <QRecursiveMutex>
+ #include <QReadWriteLock>
+ #include <QString>
+ #include <QStringList>
+@@ -450,7 +450,7 @@ class AMAROK_SQLCOLLECTION_EXPORT SqlAlbum : public Meta::Album
+         bool m_suppressAutoFetch;
+         Meta::ArtistPtr m_artist;
+         Meta::TrackList m_tracks;
+-        mutable QMutex m_mutex;
++        mutable QRecursiveMutex m_mutex;
+ 
+         //TODO: add album artist
+ 
+diff --git a/src/core-impl/collections/ipodcollection/IpodCollection.cpp b/src/core-impl/collections/ipodcollection/IpodCollection.cpp
+index cd555ca47fb1b32a19429e23b09dd6f647f3b35c..1aab224054bbad409df6a8063369db0461b8e5d2 100644
+--- a/src/core-impl/collections/ipodcollection/IpodCollection.cpp
++++ b/src/core-impl/collections/ipodcollection/IpodCollection.cpp
+@@ -34,7 +34,6 @@
+ #include "core-impl/collections/support/MemoryQueryMaker.h"
+ #include "playlistmanager/PlaylistManager.h"
+ 
+-#include <KDiskFreeSpaceInfo>
+ #include <solid/device.h>
+ #include <solid/predicate.h>
+ #include <solid/storageaccess.h>
+@@ -47,6 +46,7 @@
+ #include <KConfigGroup>
+ #include <QDialogButtonBox>
+ #include <QPushButton>
++#include <QStorageInfo>
+ #include <QVBoxLayout>
+ 
+ 
+@@ -261,19 +261,19 @@ IpodCollection::icon() const
+ bool
+ IpodCollection::hasCapacity() const
+ {
+-    return KDiskFreeSpaceInfo::freeSpaceInfo( m_mountPoint ).isValid();
++    return QStorageInfo( m_mountPoint ).isValid();
+ }
+ 
+ float
+ IpodCollection::usedCapacity() const
+ {
+-    return KDiskFreeSpaceInfo::freeSpaceInfo( m_mountPoint ).used();
++    return QStorageInfo( m_mountPoint ).bytesTotal() - QStorageInfo( m_mountPoint ).bytesFree();
+ }
+ 
+ float
+ IpodCollection::totalCapacity() const
+ {
+-    return KDiskFreeSpaceInfo::freeSpaceInfo( m_mountPoint ).size();
++    return QStorageInfo( m_mountPoint ).bytesTotal();
+ }
+ 
+ Collections::CollectionLocation*
+diff --git a/src/core-impl/collections/mediadevicecollection/MediaDeviceCollection.cpp b/src/core-impl/collections/mediadevicecollection/MediaDeviceCollection.cpp
+index 0eec859ffd5a63e843162db20122434809ae4eda..f6795e733a6970eb773d97eca9cc49e11e5bc6bc 100644
+--- a/src/core-impl/collections/mediadevicecollection/MediaDeviceCollection.cpp
++++ b/src/core-impl/collections/mediadevicecollection/MediaDeviceCollection.cpp
+@@ -24,8 +24,6 @@
+ #include "core-impl/collections/mediadevicecollection/support/MediaDeviceInfo.h"
+ #include "core-impl/collections/support/MemoryQueryMaker.h"
+ 
+-#include <KDiskFreeSpaceInfo>
+-
+ using namespace Collections;
+ 
+ MediaDeviceCollectionFactoryBase::MediaDeviceCollectionFactoryBase( ConnectionAssistant* assistant )
+diff --git a/src/core-impl/collections/umscollection/UmsCollection.cpp b/src/core-impl/collections/umscollection/UmsCollection.cpp
+index 32873350e95b1151a782890b6111f564bd02830f..0ac4b438fbaa1794647f2eeb52599a01ac1d6fc0 100644
+--- a/src/core-impl/collections/umscollection/UmsCollection.cpp
++++ b/src/core-impl/collections/umscollection/UmsCollection.cpp
+@@ -44,12 +44,12 @@
+ #include <Solid/StorageDrive>
+ #include <Solid/StorageVolume>
+ 
++#include <QStorageInfo>
+ #include <QThread>
+ #include <QTimer>
+ #include <QUrl>
+ 
+ #include <KConfigGroup>
+-#include <KDiskFreeSpaceInfo>
+ 
+ 
+ UmsCollectionFactory::UmsCollectionFactory()
+@@ -407,13 +407,13 @@ UmsCollection::hasCapacity() const
+ float
+ UmsCollection::usedCapacity() const
+ {
+-    return KDiskFreeSpaceInfo::freeSpaceInfo( m_mountPoint ).used();
++    return QStorageInfo( m_mountPoint ).bytesTotal()-QStorageInfo( m_mountPoint ).bytesFree();
+ }
+ 
+ float
+ UmsCollection::totalCapacity() const
+ {
+-    return KDiskFreeSpaceInfo::freeSpaceInfo( m_mountPoint ).size();
++    return QStorageInfo( m_mountPoint ).bytesTotal();
+ }
+ 
+ CollectionLocation *
+diff --git a/src/core-impl/storage/sql/mysql-shared/MySqlStorage.cpp b/src/core-impl/storage/sql/mysql-shared/MySqlStorage.cpp
+index e13a32951d6d41b79f748d873ea8b6546cb143b7..4b8cf3ca6571ae75070524cc5c201afc86df19af 100644
+--- a/src/core-impl/storage/sql/mysql-shared/MySqlStorage.cpp
++++ b/src/core-impl/storage/sql/mysql-shared/MySqlStorage.cpp
+@@ -90,7 +90,6 @@ QThreadStorage< ThreadInitializer* > ThreadInitializer::storage;
+ MySqlStorage::MySqlStorage()
+     : SqlStorage()
+     , m_db( nullptr )
+-    , m_mutex( QMutex::Recursive )
+     , m_debugIdent( "MySQL-none" )
+ {
+     //Relevant code must be implemented in subclasses
+diff --git a/src/core-impl/storage/sql/mysql-shared/MySqlStorage.h b/src/core-impl/storage/sql/mysql-shared/MySqlStorage.h
+index 2ff4fa1bec37373ea43815480b2eeaedf8eca782..7027072738b13fe5237a539d3f2f44c1a4c3b0ea 100644
+--- a/src/core-impl/storage/sql/mysql-shared/MySqlStorage.h
++++ b/src/core-impl/storage/sql/mysql-shared/MySqlStorage.h
+@@ -22,7 +22,7 @@
+ #include <mysql.h>
+ 
+ 
+-#include <QMutex>
++#include <QRecursiveMutex>
+ #include <QString>
+ 
+ #ifdef Q_WS_WIN
+@@ -87,7 +87,7 @@ class MySqlStorage: public SqlStorage
+         MYSQL* m_db;
+ 
+         /** Mutex protecting the m_lastErrors list */
+-        mutable QMutex m_mutex;
++        mutable QRecursiveMutex m_mutex;
+ 
+         QString m_debugIdent;
+         QStringList m_lastErrors;
+diff --git a/src/core/playlists/Playlist.cpp b/src/core/playlists/Playlist.cpp
+index 06dee458a5a44724e0f36e1b92d5756395867efc..a77c726cd85031de5ee758a29f6101962141ae55 100644
+--- a/src/core/playlists/Playlist.cpp
++++ b/src/core/playlists/Playlist.cpp
+@@ -21,7 +21,6 @@
+ using namespace Playlists;
+ 
+ PlaylistObserver::PlaylistObserver()
+-    : m_playlistSubscriptionsMutex( QMutex::Recursive )  // prevent deadlocks
+ {
+ }
+ 
+@@ -73,8 +72,7 @@ void PlaylistObserver::tracksLoaded( PlaylistPtr )
+ }
+ 
+ Playlist::Playlist()
+-    : m_observersMutex( QMutex::Recursive ) // prevent deadlocks
+-    , m_async( true )
++    : m_async( true )
+ {
+ }
+ 
+diff --git a/src/core/playlists/Playlist.h b/src/core/playlists/Playlist.h
+index 1ff92df5a143bfef83ad7f064c2a4ae5660c89db..6a0b25965a74881534abffc00d13a2e537bf20f9 100644
+--- a/src/core/playlists/Playlist.h
++++ b/src/core/playlists/Playlist.h
+@@ -22,7 +22,7 @@
+ 
+ #include <QList>
+ #include <QMetaType>
+-#include <QMutex>
++#include <QRecursiveMutex>
+ #include <QPixmap>
+ #include <QSet>
+ #include <QSharedData>
+@@ -128,7 +128,7 @@ namespace Playlists
+ 
+         private:
+             QSet<PlaylistPtr> m_playlistSubscriptions;
+-            QMutex m_playlistSubscriptionsMutex; // guards access to m_playlistSubscriptions
++            QRecursiveMutex m_playlistSubscriptionsMutex; // guards access to m_playlistSubscriptions
+     };
+ 
+     class AMAROKCORE_EXPORT Playlist : public virtual QSharedData
+@@ -292,7 +292,7 @@ namespace Playlists
+              * write, even if it is recursive. This can cause deadlocks, so it would be
+              * never safe to lock it just for read.
+              */
+-            QMutex m_observersMutex;
++            QRecursiveMutex m_observersMutex;
+             bool m_async;
+     };
+ }
+diff --git a/src/core/support/Debug.cpp b/src/core/support/Debug.cpp
+index 138c080b9a884f469490f890ce41bee69405d7e2..50c6e5e8306c6f8061e81f4c2b7066c94a6920ed 100644
+--- a/src/core/support/Debug.cpp
++++ b/src/core/support/Debug.cpp
+@@ -24,7 +24,7 @@
+ #include <KConfigCore/KConfigGroup>
+ 
+ #include <QApplication>
+-#include <QMutex>
++#include <QRecursiveMutex>
+ #include <QObject>
+ 
+ #include <iostream>
+@@ -37,7 +37,7 @@
+ 
+ #define DEBUG_INDENT_OBJECTNAME QLatin1String("Debug_Indent_object")
+ 
+-AMAROKCORE_EXPORT QMutex Debug::mutex( QMutex::Recursive );
++AMAROKCORE_EXPORT QRecursiveMutex Debug::mutex;
+ 
+ using namespace Debug;
+ 
+diff --git a/src/core/support/Debug.h b/src/core/support/Debug.h
+index b0872f1b80ceaed25cbc8726ba2a5420f98c8bdb..1504a8ea2b68062c8bb5028ed4bc8ecb83eccfdf 100644
+--- a/src/core/support/Debug.h
++++ b/src/core/support/Debug.h
+@@ -26,7 +26,7 @@
+ 
+ #include "core/amarokcore_export.h"
+ #include <QDebug>
+-#include <QMutex>
++#include <QRecursiveMutex>
+ #include <QVariant>
+ 
+ // BEGIN: DEBUG_ASSERT
+@@ -116,7 +116,7 @@
+  */
+ namespace Debug
+ {
+-    extern AMAROKCORE_EXPORT QMutex mutex;
++    extern AMAROKCORE_EXPORT QRecursiveMutex mutex;
+ 
+     // from kdebug.h
+     enum DebugLevel {
+diff --git a/src/dynamic/biases/EchoNestBias.cpp b/src/dynamic/biases/EchoNestBias.cpp
+index 5831fcd259cf1ea9e8d952753c73d8708c029005..c14264326a16b4a05ed9b585656220b328be3692 100644
+--- a/src/dynamic/biases/EchoNestBias.cpp
++++ b/src/dynamic/biases/EchoNestBias.cpp
+@@ -64,7 +64,6 @@ Dynamic::EchoNestBias::EchoNestBias()
+     : SimpleMatchBias()
+     , m_artistSuggestedQuery( nullptr )
+     , m_match( PreviousTrack )
+-    , m_mutex( QMutex::Recursive )
+ {
+     loadDataFromFile();
+ }
+diff --git a/src/dynamic/biases/EchoNestBias.h b/src/dynamic/biases/EchoNestBias.h
+index 413cdb33d04f3eda8384626b799e5ed17d4333c0..54eee360f541a45700bfe0d0cf7d93694d19ba33 100644
+--- a/src/dynamic/biases/EchoNestBias.h
++++ b/src/dynamic/biases/EchoNestBias.h
+@@ -20,7 +20,7 @@
+ 
+ #include "dynamic/biases/TagMatchBias.h"
+ 
+-#include <QMutex>
++#include <QRecursiveMutex>
+ 
+ namespace KIO {
+     class StoredTransferJob;
+@@ -104,7 +104,7 @@ namespace Dynamic
+ 
+             MatchType m_match;
+ 
+-            mutable QMutex m_mutex; // mutex protecting all of the below structures
++            mutable QRecursiveMutex m_mutex; // mutex protecting all of the below structures
+             mutable QMap< QString, QStringList> m_similarArtistMap;
+             mutable QMap< QString, TrackSet> m_tracksMap;
+ 
+diff --git a/src/importers/ImporterSqlConnection.cpp b/src/importers/ImporterSqlConnection.cpp
+index 8176baca85240d3eddabc3d1e598b753676ed9c5..0853279ebb6101497f2a2b46f9031ec6b9823ccd 100644
+--- a/src/importers/ImporterSqlConnection.cpp
++++ b/src/importers/ImporterSqlConnection.cpp
+@@ -35,7 +35,6 @@ ImporterSqlConnection::ImporterSqlConnection( const QString &driver,
+                                               const QString &user,
+                                               const QString &password )
+     : m_connectionName( QUuid::createUuid().toString() )
+-    , m_apiMutex( QMutex::Recursive )
+     , m_openTransaction( false )
+ {
+     QSqlDatabase db = QSqlDatabase::addDatabase( driver, m_connectionName );
+@@ -48,7 +47,6 @@ ImporterSqlConnection::ImporterSqlConnection( const QString &driver,
+ 
+ ImporterSqlConnection::ImporterSqlConnection( const QString &dbPath )
+     : m_connectionName( QUuid::createUuid().toString() )
+-    , m_apiMutex( QMutex::Recursive )
+     , m_openTransaction( false )
+ {
+     QSqlDatabase db = QSqlDatabase::addDatabase( QStringLiteral("QSQLITE"), m_connectionName );
+@@ -57,7 +55,6 @@ ImporterSqlConnection::ImporterSqlConnection( const QString &dbPath )
+ 
+ ImporterSqlConnection::ImporterSqlConnection()
+     : m_connectionName( QUuid::createUuid().toString() )
+-    , m_apiMutex( QMutex::Recursive )
+     , m_openTransaction( false )
+ {
+ }
+diff --git a/src/importers/ImporterSqlConnection.h b/src/importers/ImporterSqlConnection.h
+index b0b7c844e9ea0f30752d928007f53198ed062e51..70896ef223672dd99830834f7f728f75197ddc8e 100644
+--- a/src/importers/ImporterSqlConnection.h
++++ b/src/importers/ImporterSqlConnection.h
+@@ -22,7 +22,7 @@
+ #include "amarok_export.h"
+ 
+ #include <QList>
+-#include <QMutex>
++#include <QRecursiveMutex>
+ #include <QPointer>
+ #include <QSharedPointer>
+ #include <QSqlDatabase>
+@@ -130,7 +130,7 @@ private:
+ 
+     Qt::ConnectionType blockingConnectionType() const;
+ 
+-    QMutex m_apiMutex;
++    QRecursiveMutex m_apiMutex;
+     bool m_openTransaction;
+     QList<QVariantList> m_result;
+ 
+diff --git a/src/network/NetworkAccessViewer.cpp b/src/network/NetworkAccessViewer.cpp
+index 38f50ed03842e8333b527196daa1e813538f3eb0..5454ab881956981abb5fc0b73a9dcf5484f6d5a1 100644
+--- a/src/network/NetworkAccessViewer.cpp
++++ b/src/network/NetworkAccessViewer.cpp
+@@ -33,7 +33,7 @@ NetworkAccessViewer::NetworkAccessViewer( QWidget *parent )
+     networkRequestsDialog->setupUi(dialog);
+ 
+     mapper = new QSignalMapper(this);
+-    connect( mapper, QOverload<QObject*>::of(&QSignalMapper::mapped),
++    connect( mapper, QOverload<QObject*>::of(&QSignalMapper::mappedObject),
+              this, &NetworkAccessViewer::requestFinished );
+ 
+     connect( networkRequestsDialog->requestList, &QTreeWidget::currentItemChanged, this, &NetworkAccessViewer::showItemDetails );
+diff --git a/src/playlistgenerator/PresetEditDialog.cpp b/src/playlistgenerator/PresetEditDialog.cpp
+index 7ef060ce224a56ffea67cdfe341677674ea034c9..fcf0f8e2d031a5500b7b6a78092330d119c9205e 100644
+--- a/src/playlistgenerator/PresetEditDialog.cpp
++++ b/src/playlistgenerator/PresetEditDialog.cpp
+@@ -52,7 +52,7 @@ APG::PresetEditDialog::PresetEditDialog( const PresetPtr &p )
+     ui.constraintTreeView->expandAll();
+ 
+     QSignalMapper* adderMapper = new QSignalMapper( this );
+-    connect( adderMapper, QOverload<const QString&>::of(&QSignalMapper::mapped),
++    connect( adderMapper, QOverload<const QString&>::of(&QSignalMapper::mappedString),
+              this, &PresetEditDialog::addNode );
+ 
+     QMenuBar* menuBar_Actions = new QMenuBar( this );
+diff --git a/src/scripting/scriptengine/AmarokLyricsScript.cpp b/src/scripting/scriptengine/AmarokLyricsScript.cpp
+index d4b5eedd5ae5b4d78a7a29be8ac4abac9560b3ae..fae437130d217cd0edc64feb76203844c01cb14c 100644
+--- a/src/scripting/scriptengine/AmarokLyricsScript.cpp
++++ b/src/scripting/scriptengine/AmarokLyricsScript.cpp
+@@ -97,6 +97,8 @@ AmarokLyricsScript::escape( const QString &str )
+ void
+ AmarokLyricsScript::setLyricsForTrack( const QString &trackUrl, const QString &lyrics ) const
+ {
++    Q_UNUSED( trackUrl );
++    Q_UNUSED( lyrics );
+     /* TODO - convert method invocation below
+     LyricsManager::instance()->setLyricsForTrack( trackUrl, lyrics );
+     */
+diff --git a/src/services/lastfm/biases/LastFmBias.cpp b/src/services/lastfm/biases/LastFmBias.cpp
+index af4ae2a98750c76b147c1def5035ab52c9fd4f32..468ca714aa7a2aacb018f6fe05c1efe095437140 100644
+--- a/src/services/lastfm/biases/LastFmBias.cpp
++++ b/src/services/lastfm/biases/LastFmBias.cpp
+@@ -64,7 +64,6 @@ Dynamic::LastFmBiasFactory::createBias()
+ Dynamic::LastFmBias::LastFmBias()
+     : SimpleMatchBias()
+     , m_match( SimilarArtist )
+-    , m_mutex( QMutex::Recursive )
+ {
+     loadDataFromFile();
+ }
+diff --git a/src/services/lastfm/biases/LastFmBias.h b/src/services/lastfm/biases/LastFmBias.h
+index 2848b38d9a0096245ee6981ab65e7f96ae5efaec..77509dc9f125c8635317c925ed9accfc2a7f42e1 100644
+--- a/src/services/lastfm/biases/LastFmBias.h
++++ b/src/services/lastfm/biases/LastFmBias.h
+@@ -20,7 +20,7 @@
+ 
+ #include "dynamic/biases/TagMatchBias.h"
+ 
+-#include <QMutex>
++#include <QRecursiveMutex>
+ 
+ namespace Dynamic
+ {
+@@ -95,7 +95,7 @@ namespace Dynamic
+ 
+             MatchType m_match;
+ 
+-            mutable QMutex m_mutex; // mutex protecting all of the below structures
++            mutable QRecursiveMutex m_mutex; // mutex protecting all of the below structures
+             mutable QMap< QString, QStringList> m_similarArtistMap;
+             mutable QMap< TitleArtistPair, QList<TitleArtistPair> > m_similarTrackMap;
+             mutable QMap< QString, TrackSet> m_tracksMap; // for artist AND album
+diff --git a/src/statusbar/CompoundProgressBar.cpp b/src/statusbar/CompoundProgressBar.cpp
+index 3741ff5b3475d97a80d969429d7a8d5d136c86b8..3f437ff4322dd35051a19c347daebf9deb03156c 100644
+--- a/src/statusbar/CompoundProgressBar.cpp
++++ b/src/statusbar/CompoundProgressBar.cpp
+@@ -26,7 +26,6 @@
+ 
+ CompoundProgressBar::CompoundProgressBar( QWidget *parent )
+         : ProgressBar( parent )
+-        , m_mutex( QMutex::Recursive )
+ {
+     m_progressDetailsWidget = new PopupWidget();
+     m_progressDetailsWidget->hide();
+diff --git a/src/statusbar/CompoundProgressBar.h b/src/statusbar/CompoundProgressBar.h
+index cfd5070c41b42a9095d58294819d9d88c982a5cd..ed9e72012a161fecadfea7084d1e49bfe2ed885f 100644
+--- a/src/statusbar/CompoundProgressBar.h
++++ b/src/statusbar/CompoundProgressBar.h
+@@ -23,7 +23,7 @@
+ #include <QList>
+ #include <QMap>
+ #include <QMouseEvent>
+-#include <QMutex>
++#include <QRecursiveMutex>
+ 
+ /**
+  * A progress bar that wraps a number of simple progress bars and displays their 
+@@ -75,7 +75,7 @@ private:
+ 
+     QMap< const QObject *, ProgressBar *> m_progressMap;
+     PopupWidget *m_progressDetailsWidget;
+-    QMutex m_mutex; // protecting m_progressMap consistency
++    QRecursiveMutex m_mutex; // protecting m_progressMap consistency
+ };
+ 
+ #endif
+diff --git a/src/widgets/Osd.cpp b/src/widgets/Osd.cpp
+index dc1cf722e3c0217d3bac52d25abffeca2cee4a06..4de9749a76d5a207c1845792312cf37a8e231411 100644
+--- a/src/widgets/Osd.cpp
++++ b/src/widgets/Osd.cpp
+@@ -463,7 +463,7 @@ OSDWidget::setTextColor(const QColor& color)
+ void
+ OSDWidget::setScreen( int screen )
+ {
+-    const int n = QApplication::desktop()->numScreens();
++    const int n = QApplication::screens().size();
+     m_screen = ( screen >= n ) ? n - 1 : screen;
+ }
+ 
+diff --git a/tests/TestExpression.cpp b/tests/TestExpression.cpp
+index a84ee6f7f88ec7c4065ed0f2e18d8e9ae81b8e7a..ea298c10c5ca1dcc7c103d927ea39f349ea7d37d 100644
+--- a/tests/TestExpression.cpp
++++ b/tests/TestExpression.cpp
+@@ -27,7 +27,7 @@
+ QTEST_GUILESS_MAIN( TestExpression )
+ 
+ //required for Debug.h
+-QMutex Debug::mutex;
++QRecursiveMutex Debug::mutex;
+ 
+ TestExpression::TestExpression()
+ {
+diff --git a/tests/TestQStringx.cpp b/tests/TestQStringx.cpp
+index 7b96d83ae9041c04bc6bfe4fb86613ea0efc51fe..010db2252e5808bf345d58cba2300c6f61a6b5db 100644
+--- a/tests/TestQStringx.cpp
++++ b/tests/TestQStringx.cpp
+@@ -28,7 +28,7 @@
+ QTEST_GUILESS_MAIN( TestQStringx )
+ 
+ //required for Debug.h
+-QMutex Debug::mutex;
++QRecursiveMutex Debug::mutex;
+ 
+ TestQStringx::TestQStringx()
+ {
