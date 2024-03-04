@@ -91,7 +91,6 @@ checkdepends=(
   'pigz'
   'qemu'
   'squashfs-tools'
-  'tgt'
 )
 provides=("${pkgname%-git}" 'initramfs')
 conflicts=("${pkgname%-git}")

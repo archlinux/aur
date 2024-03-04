@@ -7,6 +7,9 @@ RUN pacman --noconfirm -Syu base-devel git pacman-contrib
 RUN useradd -m build && echo "build ALL=(ALL) NOPASSWD: /usr/bin/pacman" >> "/etc/sudoers.d/allow_pacman" && echo "build ALL=(ALL) NOPASSWD: /usr/bin/paru" >> "/etc/sudoers.d/allow_pacman"
 RUN su build -c 'cd && git clone https://aur.archlinux.org/paru-bin.git && cd paru-bin && makepkg -s --noconfirm' && pacman -U --noconfirm ~build/paru-bin/*.pkg.tar.*
 
+# AUR test dependencies
+RUN su build -c 'paru --needed --noconfirm -Syu tgt'
+
 # install dracut-git without running tests
 RUN su build -c 'paru --nocheck --needed --noconfirm -Syu dracut-git'
 
