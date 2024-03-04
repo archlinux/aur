@@ -2,7 +2,7 @@
 # Contributor: Oleg Finkelshteyn <olegfink@gmail.com>
 pkgname=picocom-git
 _pkgname=picocom
-pkgver=r384.12537df
+pkgver=r396.ae43434
 pkgrel=1
 arch=(x86_64 i686)
 pkgdesc='Minimal dumb-terminal emulation program, very much like minicom. Development version'
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
   cd $_pkgname
-  make
+  make all doc
 }
 
 package() {

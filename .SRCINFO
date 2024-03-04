@@ -1,6 +1,6 @@
 pkgbase = picocom-git
 	pkgdesc = Minimal dumb-terminal emulation program, very much like minicom. Development version
-	pkgver = r384.12537df
+	pkgver = r396.ae43434
 	pkgrel = 1
 	url = https://gitlab.com/wsakernel/picocom
 	arch = x86_64
