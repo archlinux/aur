@@ -3,7 +3,7 @@
 # Contributor: redfish <redfish@galactica.pw>
 _base=coincurve
 pkgname=python-${_base}
-pkgver=19.0.0
+pkgver=19.0.1
 pkgrel=1
 pkgdesc="Cross-platform Python CFFI bindings for libsecp256k1"
 arch=(x86_64)
@@ -12,7 +12,7 @@ license=(Apache MIT)
 depends=(python-asn1crypto python-cffi libsecp256k1)
 makedepends=(python-build python-installer python-setuptools python-wheel python-requests)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('59917d3e961b561f44904aa0b09cb86d97933d0291b213929e6d4bc9a58f554b382facf7723cc6bfd58edf728aaf26cef72539509df679d26c8de1f1a769a0ad')
+sha512sums=('ab11ba6bcc62861628ee1e699c418a32bb6412c4a5de59c67d96162b3460cd9bb0dda4fbcc864350b1f9ac4d73a31efb1f128245bf58cb9a722815184c10d6e9')
 
 build() {
   cd ${_base}-${pkgver}
