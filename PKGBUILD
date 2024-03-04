@@ -2,7 +2,7 @@
 # Contributor: little_sheepycn <little_sheepycn@redstonebuild.onmicrosoft.com>
 
 pkgname=xdroid-bin
-pkgver=12.0.136
+pkgver=13.0.165
 pkgrel=1
 epoch=
 pkgdesc="卓懿,让安卓应用融入Linux平台应用生态体系，卓懿 x86_64 版（个人免费下载使用，不得用于商业用途）。"
@@ -24,12 +24,12 @@ backup=()
 options=('!strip')
 install=
 changelog=
-# _date=20230713
-source=("${pkgname}-${pkgver}.tar.gz::https://zhuolin-my.sharepoint.cn/personal/shiyang_zhuolin_partner_onmschina_cn/Documents/卓懿/xDroidInstall-${arch}-v${pkgver}.run.tar.gz?ga=1")
+_date=20240119
+source=("${pkgname}-${pkgver}.tar.gz::https://zhuolin-my.sharepoint.cn/personal/shiyang_zhuolin_partner_onmschina_cn/Documents/卓懿/xDroidInstall-${arch}-v${pkgver}-${_date}.run.tar.gz?ga=1")
 # https://zhuolin-my.sharepoint.cn/personal/shiyang_zhuolin_partner_onmschina_cn/Documents/%e5%8d%93%e6%87%bf/xDroidInstall-x86_64-v12.0.136.run.tar.gz?ga=1
 noextract=(${pkgname}-${pkgver}.tar.gz)
-md5sums=('fab56ac5525fbd367b15a4d76d541c7b')
-sha256sums=('e59216fb97465950d00a8e33a8f001d3b95e8e861e69f394e3124b8f76df6e0e')
+md5sums=('da6859f01d0ed6e97fa749d7f5f42b3f')
+sha256sums=('c12d9f654b223fe9efc80986319cf755204bdf26fb0cdb4ef2c8d55e24452808')
 #validpgpkeys=()
 
 package() {
