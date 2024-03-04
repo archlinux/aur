@@ -1,7 +1,7 @@
 # Maintainer: Tobias Borgert <tobias (dot) borgert (at) gmail (dot) com>
 
 pkgname=fineftp-server
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="FineFTP is a minimal FTP server library for Windows and Unix flavors"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=()
 optdepends=()
 source=(https://github.com/eclipse-ecal/fineftp-server/archive/v$pkgver.tar.gz
         Findasio.cmake.patch)
-md5sums=('054d759cd54d309784f1d0a5c9eb2585'
+md5sums=('632542cf3c7973a8a35681ea9bf0f970'
          '4073a681f63f2b346acefebe026f506f')
 
 prepare() {
