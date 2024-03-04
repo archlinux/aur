@@ -6,7 +6,7 @@ _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.4
 _monover=9.0.0
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, experimental branch"
 url="https://github.com/ValveSoftware/Proton"
@@ -99,6 +99,7 @@ source+=(
     0007-AUR-Enable-winewayland.patch
     0001-fshack-AMD-FSR-complete.patch
     4947.patch
+    server-Enable-link-time-optimization.patch
 )
 noextract=(
     wine-gecko-${_geckover}-{x86,x86_64}.tar.xz
@@ -176,6 +177,7 @@ prepare() {
     pushd wine
         patch -p1 -i "$srcdir"/0001-fshack-AMD-FSR-complete.patch
         patch -p1 -i "$srcdir"/4947.patch
+        patch -p1 -i "$srcdir"/server-Enable-link-time-optimization.patch
     popd
 }
 
@@ -285,4 +287,5 @@ sha256sums=('SKIP'
             '89baf181f197a6156507841c018fd81c8f934f77161ba90f5ee6466677428235'
             'b7297cabb316eb9621ec1abade892143392eba5fdbd3bd496df7992a7c9d7358'
             '3d308f8e87361669267fa52b986c24f1dea1913156a045f43ea04e02f7444b18'
-            '0f9ddda17319e3ef23ee847c0a740bf74847796d4b3cf61b05feb9aa3141b7c7')
+            '0f9ddda17319e3ef23ee847c0a740bf74847796d4b3cf61b05feb9aa3141b7c7'
+            'SKIP')
