@@ -1,48 +1,44 @@
-# Maintainer: TH Campbell (dysphoria) <thcampbell (at) protonmail (dot) com>
+# Merged with official ABS kile PKGBUILD by João, 2024/03/04 (all respective contributors apply herein)
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
+# Contributor: TH Campbell (dysphoria) <thcampbell (at) protonmail (dot) com>
 # Contributor: fclad <fcladera at fcladera.com>
 # Contributor: Antonio Rojas
 # Contributor: prettyvanilla <prettyvanilla at posteo.at>
 # Contributor: vnoel <victor.noel at crazydwarves dot org>
 
-_pkgname=kile
 pkgname=kile-git
-pkgver=v3.0b2.r432.gbc174ca6
+pkgver=3.0b2_r3569.g66599ab1
 pkgrel=1
-pkgdesc="A TeX/LaTeX frontend for KDE"
-arch=('i686' 'x86_64')
-url="http://kile.sourceforge.net/"
-license=('GPL2')
-depends=('kinit' 'texlive-core' 'okular>16.12.0' 'ktexteditor5' 'khtml' 'qt5-script')
-makedepends=('git' 'extra-cmake-modules' 'kdoctools5' 'python')
-conflicts=('kile')
-provides=('kile')
-replaces=('kile-svn')
-source=("kile::git+https://invent.kde.org/office/kile")
-md5sums=('SKIP')
+pkgdesc='A user friendly TeX/LaTeX frontend for KDE'
+arch=($CARCH)
+url='https://apps.kde.org/kile/'
+license=(GPL-2.0-only)
+depends=(gcc-libs glibc kcodecs-git kcompletion-git kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git kdbusaddons-git kguiaddons-git ki18n-git kiconthemes-git kinit-git kio-git kjobwidgets-git kparts-git kservice-git ktexteditor-git ktextwidgets-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git okular-git kcolorscheme-git hicolor-icon-theme perl poppler-qt6 qt6-base qt6-script qt6-5compat qt6-declarative texlive-basic)
+makedepends=(git extra-cmake-modules-git kdoctools-git okular-git)
+optdepends=('konsole-git: embedded terminal' 'imagemagick: for some file type conversions')
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
+
+
+prepare() {
+  cd ${pkgname%-git}
+  git checkout work/carl/kf6
+}
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  cd ${pkgname%-git}
+  _ver="$(git describe | sed 's/^v//;s/-.*//')"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-
-  [ -d build ] && rm -rf build
-  mkdir build
-  cd build
-
-  cmake .. \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6
+  cmake --build build
 }
 
 package() {
-  cd "$srcdir/$_pkgname/build"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
-
