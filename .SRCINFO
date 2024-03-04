@@ -1,16 +1,16 @@
 pkgbase = whatstron-bin
 	pkgdesc = Unofficial WhatsApp desktop client for Linux
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/murilopereirame/Whatstron
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = electron28
-	provides = whatstron=1.0.0
+	provides = whatstron=1.0.1
 	conflicts = whatstron
-	source = whatstron-1.0.0.deb::https://github.com/murilopereirame/Whatstron/releases/download/v1.0.0/Whatstron.deb
+	source = whatstron-1.0.1.deb::https://github.com/murilopereirame/Whatstron/releases/download/v1.0.1/Whatstron.deb
 	source = whatstron.sh
-	sha256sums = 0feb782ba613d270302779e75cb145bfe2b2cb9113fb743a81abd68c7c4a436f
+	sha256sums = e30f658747bdf57f7e80f41a59bcf88c00c8d40cd75c669f3b4e81491370b719
 	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = whatstron-bin

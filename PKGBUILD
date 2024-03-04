@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=whatstron-bin
 _pkgname=Whatstron
-pkgver=1.0.0
+pkgver=1.0.1
 _electronversion=28
-pkgrel=2
+pkgrel=1
 pkgdesc="Unofficial WhatsApp desktop client for Linux"
 arch=('x86_64')
 url="https://github.com/murilopereirame/Whatstron"
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0feb782ba613d270302779e75cb145bfe2b2cb9113fb743a81abd68c7c4a436f'
+sha256sums=('e30f658747bdf57f7e80f41a59bcf88c00c8d40cd75c669f3b4e81491370b719'
             '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
