@@ -1,0 +1,18 @@
+pkgbase = r-genepop
+	pkgdesc = Population Genetic Data Analysis Using Genepop
+	pkgver = 1.2.2
+	pkgrel = 0
+	url = https://cran.r-project.org/package=genepop
+	arch = x86_64
+	license = CECILL-2.0
+	depends = r
+	depends = r-rcpp
+	depends = r-rcppprogress
+	depends = r-stringr
+	optdepends = r-knitr
+	optdepends = r-shiny
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/genepop_1.2.2.tar.gz
+	sha256sums = a
+
+pkgname = r-genepop
