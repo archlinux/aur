@@ -4,7 +4,7 @@
 pkgname=archivebox
 _pkgname=ArchiveBox
 pkgver=0.7.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Open source self-hosted web archiving"
 arch=(any)
 url="https://github.com/ArchiveBox/ArchiveBox"
@@ -52,8 +52,8 @@ source=(
   "git+https://github.com/jazzband/django-taggit.git"
   "git+https://github.com/tapanpandita/pocket.git"
   "git+https://github.com/untitaker/python-atomicwrites.git"
-  "django-$_django_version::https://github.com/django/django/archive/refs/tags/$_django_version.tar.gz"
-  "django-extensions-$_django_extensions_version::https://github.com/django-extensions/django-extensions/archive/refs/tags/$_django_extensions_version.tar.gz"
+  "django-$_django_version::https://github.com/django/django/archive/$_django_version.tar.gz"
+  "django-extensions-$_django_extensions_version::https://github.com/django-extensions/django-extensions/archive/$_django_extensions_version.tar.gz"
 )
 sha256sums=(
   'SKIP'
@@ -66,6 +66,12 @@ sha256sums=(
 )
 
 _archive="$_pkgname"
+
+pkgver() {
+  cd "$_archive"
+
+  git describe --tags | sed 's/^v//'
+}
 
 prepare() {
   cd "$_archive"
@@ -118,7 +124,7 @@ check() {
   cd "$_archive"
 
   rm -rf test_venv
-  cp --archive --no-preserve=ownership venv test_venv
+  cp -a venv test_venv
   sed -i "s|#!/bin/python|#!$PWD/test_venv/bin/python|" test_venv/bin/archivebox
   export PATH="$PWD/test_venv/bin:$PATH"
   export PYTHONPATH="$PWD/test_venv/lib/python3.11/site-packages:$PYTHONPATH"
@@ -130,8 +136,8 @@ package() {
   cd "$_archive"
 
   install -dm755 "$pkgdir/opt/archivebox"
-  cp --archive --no-preserve=ownership venv/* "$pkgdir/opt/archivebox"
-  sed -i 's|#!/bin/python|#!/opt/archivebox/bin/python|' "$pkgdir/opt/archivebox/bin/archivebox"
+  cp -a -t "$pkgdir/opt/archivebox" venv/*
+  sed -i 's|#!/usr/bin/python|#!/opt/archivebox/bin/python|' "$pkgdir/opt/archivebox/bin/archivebox"
 
   install -dm755 "$pkgdir/usr/bin"
   ln -s /opt/archivebox/bin/archivebox "$pkgdir/usr/bin/archivebox"
