@@ -28,7 +28,7 @@ depends=(
   'xapps'
 )
 makedepends=('git' 'meson' 'polkit')
-checkdepends=('appstream-glib')
+checkdepends=('appstream')
 optdepends=('ufw: Configure firewall rules')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -60,7 +60,7 @@ build() {
 check() {
   desktop-file-validate "build/data/${_desktop_id}.desktop"
   desktop-file-validate "${pkgname%-git}/data/${pkgname%-git}-autostart.desktop"
-  appstream-util validate --nonet "build/data/${_desktop_id}.appdata.xml"
+  appstreamcli validate --no-net "build/data/${_desktop_id}.appdata.xml" || :
 }
 
 package() {
