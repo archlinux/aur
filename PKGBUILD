@@ -4,7 +4,7 @@ pkgname=python-pytensor
 _pkgname=${pkgname#python-}
 pkgver=2.18.6
 _commit=0666fd564d2d67384051c5bb6e0c09e713e0329c
-pkgrel=3
+pkgrel=4
 pkgdesc="Fork of Aesara -- Library for defining, optimizing, and efficiently evaluating mathematical expressions involving multi-dimensional arrays"
 arch=(x86_64)
 url="https://github.com/pymc-devs/pytensor"
@@ -55,6 +55,12 @@ sha256sums=(
 )
 
 _archive="$_pkgname"
+
+pkgver() {
+  cd "$_archive"
+
+  git describe --tags | sed 's/^rel-//'
+}
 
 prepare() {
   cd "$_archive"
