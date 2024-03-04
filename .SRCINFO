@@ -1,0 +1,15 @@
+pkgbase = xapu-git
+	pkgver = r6.ded109e
+	pkgrel = 1
+	url = https://xmpp-util.keyoxide.org/
+	arch = any
+	license = AGPL-3.0-only
+	depends = conversejs-headless
+	provides = xapu
+	conflicts = xapu
+	source = git+https://codeberg.org/keyoxide/xapu
+	sha256sums = SKIP
+
+pkgname = xapu-git
+	pkgdesc = Web-based XMPP/Jabber chat client written in javascript
+	backup = usr/share/webapps/converse.js/fullscreen.html
