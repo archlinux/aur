@@ -2,9 +2,9 @@
 
 pkgname=grimshot-bin-sway
 pkgver=1
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc="Symlink sway's included grimshot script to /usr/bin"
+pkgdesc="Symlink sway-contrib's included grimshot script to /usr/bin"
 arch=(any)
 url='https://swaywm.org/'
 license=(MIT)
@@ -12,7 +12,7 @@ provides=(grimshot)
 conflicts=(grimshot)
 
 package() {
-	depends+=(sway grim slurp jq)
+	depends+=(sway-contrib grim slurp jq)
 	optdepends+=(
 		'wl-clipboard: Copying screenshot to clipboard'
 		'libnotify: Notification support'

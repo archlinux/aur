@@ -1,7 +1,7 @@
 pkgbase = grimshot-bin-sway
-	pkgdesc = Symlink sway's included grimshot script to /usr/bin
+	pkgdesc = Symlink sway-contrib's included grimshot script to /usr/bin
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://swaywm.org/
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = grimshot-bin-sway
 	conflicts = grimshot
 
 pkgname = grimshot-bin-sway
-	depends = sway
+	depends = sway-contrib
 	depends = grim
 	depends = slurp
 	depends = jq
