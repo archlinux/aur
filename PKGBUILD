@@ -4,7 +4,7 @@
 _watch=("https://www.xnview.com/en/xnconvert" ">Version (\d[\d.]*\d+)\b")
 
 pkgname=xnconvert
-pkgver=1.99.0
+pkgver=1.100.1
 pkgrel=1
 pkgdesc="A powerful batch image-converter and resizer."
 url="https://www.xnview.com/en/xnconvert"
@@ -14,12 +14,12 @@ depends=("qt5-svg" "qt5-sensors" "libwebp" "gtk3")
 source=(
   "${pkgname}.desktop"
   "icons.tar.gz"
-  "XnConvert-linux-x64_${pkgver}.tgz::https://download.xnview.com/XnConvert-linux-x64.tgz"
+  "XnConvert-linux-x64_${pkgver}.tgz::https://download.xnview.com/old_versions/XnConvert/XnConvert-${pkgver}-linux-x64.tgz"
 )
 sha256sums=(
   '3c85bfca539dd2e4b0310eead5a50aae6ed66a5a63b370dd1b622043c69a15b5'
   '2ff8c57a0603c1811de45df55df59c0abdd77a15d61a9482789c9c78ce6cdf74'
-  '75acf7adb6037faa849de4ce27067f307671df8aeedf622ed6771291893d8ef2'
+  '75b11b7af3fb65c93ff7a39bea595ee1865af2cbd05bf41c0a14ccea7d525e65'
 )
 
 package() {
