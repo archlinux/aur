@@ -3,12 +3,11 @@
 _pkgname=flet
 pkgname=python-${_pkgname}-0-7-x
 pkgver=0.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Easily build realtime web, mobile and desktop apps in your favorite language and securely share them with your team.'
 url="https://${_pkgname}.dev/"
 license=('Apache')
 depends=(
-	'flutter'
 	'python-repath'
 	'python-typing-extensions'
 	'python-websocket-client'
@@ -19,6 +18,7 @@ depends=(
 	'python-packaging'
 	'python-poetry')
 makedepends=(
+	'flutter-engine'
 	'goreleaser'
 	'python-build'
 	'python-installer'
