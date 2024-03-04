@@ -8,6 +8,6 @@ pkgbase = pride
 	provides = pride
 	conflicts = pride
 	source = https://git.vwolfe.io/valerie/pride/archive/v0.3.1.tar.gz
-	sha256sums = 9237e416c2ba5eec05976637ce7539fae77439bad4610fe4cf8c7d2f23cc4426
+	sha256sums = 84ae4b41cb09afac5df4890491c7c7579f1b34e2680e51cb27f3ce9baa3519ca
 
 pkgname = pride
