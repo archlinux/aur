@@ -2,7 +2,7 @@
 
 _pkgbasename=a2wsgi
 pkgname=python-a2wsgi
-pkgver=1.10.0
+pkgver=1.10.2
 pkgrel=1
 pkgdesc='Converts WSGI apps to ASGI apps or the other way around'
 arch=(any)
@@ -22,4 +22,4 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-sha256sums=('826a2e51cddd626c6a3d7149dfdef667ac5301323370235b43462258f98e246d')
+sha256sums=('8b3888b09e0b1c4e32fd56507ac78e38598fc18eecd2c7e7e8be83a2ca064534')
