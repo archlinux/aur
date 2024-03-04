@@ -2,7 +2,7 @@
 
 pkgname=klog-time-tracker
 _pkgname=klog
-pkgver=6.2
+pkgver=6.3
 pkgrel=1
 pkgdesc='A plain-text file format and a command line tool for time tracking'
 arch=(x86_64)
@@ -14,7 +14,7 @@ makedepends=(go
 conflicts=(klog)
 _archive="$_pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('1aed50f58253fd11a16b2617dd85c64aeb1200e8a39404f93e94b94d92e40636')
+sha256sums=('f45c6ed67af572b4237a6eb88f9435bd4d59425e07b0924f00b731a8815b0d67')
 
 prepare() {
 	cd "$_archive"
