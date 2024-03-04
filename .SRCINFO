@@ -1,0 +1,18 @@
+pkgbase = filtile-git
+	pkgdesc = Layout generator for river: similar to rivertile but with more features
+	pkgver = r32.ec9fbe2
+	pkgrel = 1
+	url = https://github.com/pkulak/filtile
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	provides = filtile
+	source = git+https://github.com/pkulak/filtile
+	sha256sums = SKIP
+
+pkgname = filtile-git
