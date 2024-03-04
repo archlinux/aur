@@ -1,6 +1,6 @@
 # Maintainer: Patrick Hechler <patrjprof-git at ph dot anderemails dot de>
 pkgname=patrjprof-git
-pkgver=1.1.0r40.2a444f9
+pkgver=1.1.0r42.1806883
 pkgrel=1
 pkgdesc="An Open source Java profiler written in Java"
 arch=('any')
