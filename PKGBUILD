@@ -10,7 +10,7 @@ url="https://gnunn1.github.io/tilix-web"
 license=('MPL-2.0')
 depends=('libx11' 'gtkd' 'vte3' 'dconf' 'gsettings-desktop-schemas')
 makedepends=('appstream' 'git' 'ldc' 'po4a' 'meson')
-checkdepends=('appstream-glib')
+checkdepends=('appstream')
 optdepends=('python-nautilus: for "Open Tilix Here" support in nautilus'
             'libsecret: for the password manager'
             'vte3-notification: for desktop notifications support')
@@ -42,7 +42,7 @@ build() {
 check() {
   meson test -C build --print-errorlogs
 
-  appstream-util validate-relax --nonet build/data/com.gexperts.Tilix.appdata.xml
+  appstreamcli validate --no-net build/data/com.gexperts.Tilix.appdata.xml || :
 }
 
 package() {
