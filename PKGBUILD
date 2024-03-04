@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=snippet-notes
-pkgver=0.3.3
+pkgver=0.4.0
 _electronversion=22
 _nodeversion=18
-pkgrel=2
+pkgrel=1
 pkgdesc="A local note-taking software with quick recording and enhanced search capabilities.效能笔记，一款快速记录及搜索功能增强的本地笔记记录软件."
 arch=('any')
 url="https://github.com/xunxun10/snippet-notes"
-license=('MIT')
+license=('ISC')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
@@ -26,7 +26,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -49,7 +49,7 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    sed "s|--win|-l AppImage|g" -i package.json
+    sed "s|--win --x64|-l AppImage|g" -i package.json
     npm install
     npm run dist
 }
