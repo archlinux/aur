@@ -5,9 +5,9 @@
 
 pkgname=hmcl-new
 _pkgname=HMCL
-_ver=3.5.5
-_build=238
-_pkgver=$_ver.$_build
+_ver=3.5
+_build=6
+_pkgver=release-$_ver.$_build
 pkgver=$_ver.$_build
 pkgrel=1
 pkgdesc='An unofficial build of HMCL that trying to compile and run HMCL with the latest LTS version of java. (with HMCL-Clean changes)'
@@ -20,14 +20,14 @@ provides=('hmcl')
 conflicts=('hmcl')
 source=('hmcl.desktop'
   'hmcl-launch-script'
-  "${url}/raw/v${_pkgver}/HMCL/image/hmcl.png"
-  "${_pkgname}-v${_pkgver}.tar.gz::${url}/archive/v${_pkgver}.tar.gz"
+  "${url}/raw/${_pkgver}/HMCL/image/hmcl.png"
+  "${_pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz"
   "0001-Target-Java-17.patch"
   "0002-Cleanup.patch")
 sha256sums=('b4e8aa0f349bb3f5dd15a31c5a13ac3e10e5a5bcd2f97cf390041924275e43ef'
   '4fcd4bf8f8d2ca39cf25a8d59daeb53ffa54fbca0356bd55aa17a5ee31d59a95'
   'd4e56ae2e8c0d991dba01ef3124ef4d38918825f58728338a8bab5e78319306a'
-  'd61a800781c4e9f832d00e3efffa8440c67cb8037f293f6f7b234e6e196375f0'
+  'bba9b7d8fa15970043b990a60f5f977aa93e70c0d1e265e4fc409c8efd4533b5'
   'f98f716e544c74a6f1ab116a1aab2ae1c857f88b9999d009491333fa562cb2d5'
   '3afebafe4739a92416a6543e7441638df8e8f299058cd76009e136d6b57670d8')
 

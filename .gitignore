@@ -1,4 +1,5 @@
 /pkg
 /src
 /hmcl-new-*.pkg.tar*
-/hmcl-new-*.tar.gz
+/HMCL-*.tar.gz
+/hmcl.png
