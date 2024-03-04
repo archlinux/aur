@@ -1,0 +1,13 @@
+pkgbase = ttf-miracode
+	pkgdesc = A sharp, readable, vector-y version of Monocraft, the monospace programming font based on Minecraft
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/IdreesInc/Miracode
+	arch = any
+	license = OFL
+	source = https://github.com/IdreesInc/Miracode/releases/download/v1.0/Miracode.ttf
+	source = https://raw.githubusercontent.com/IdreesInc/Miracode/main/LICENSE
+	b2sums = 18aba89d62510a7f559e5696be06043f3f9a98efadbe4643e10f56fcf487ecedae874bdd462964e7f85edbc024a92ad2e874fb885cbf07e522779ce65afba4bf
+	b2sums = SKIP
+
+pkgname = ttf-miracode
