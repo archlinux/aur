@@ -1,13 +1,13 @@
-# Maintainer: gmes78 <gmes.078@gmail.com>
+# Maintainer: Joaquim Monteiro <joaquim.monteiro@protonmail.com>
 _pkgname=firmtool
 pkgname=firmtool-git
-pkgver=r28.0d54877
+pkgver=r42.fdc7085
 pkgrel=1
 pkgdesc="A tool to parse, extract, and build 3DS firmware files"
 arch=('any')
 url="https://github.com/TuxSH/firmtool"
 license=('BSD')
-depends=('python-cryptography')
+depends=('python-pycryptodome')
 makedepends=('python-setuptools' 'git')
 source=("git+https://github.com/TuxSH/${_pkgname}.git")
 md5sums=('SKIP')
