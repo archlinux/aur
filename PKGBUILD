@@ -15,7 +15,7 @@ conflicts=('openspace')
 source=("git+https://github.com/OpenSpace/OpenSpace.git#branch=master"
         "open-space")
 sha256sums=('SKIP'
-		    56c958c21b0dc0cd2dc822f24788cd5889a222acd82407e6800b167e6c277681)
+		    3139c195175c28753e2cf2b337a29226291df3e43b73a3476ae83e2db8174555)
 
 options=(!debug)
 
@@ -122,6 +122,8 @@ package() {
 	cp "${srcdir}/${_pkgname}/CREDITS.md" "$pkgdir/opt/OpenSpace/."
 	cp "${srcdir}/${_pkgname}/LICENSE.md" "$pkgdir/opt/OpenSpace/."
 	cp "${srcdir}/${_pkgname}/README.md" "$pkgdir/opt/OpenSpace/."
+	mkdir -p "$pkgdir/opt/OpenSpaceData"
+	chmod 777 "$pkgdir/opt/OpenSpaceData"
 }
 
 

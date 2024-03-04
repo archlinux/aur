@@ -2,5 +2,5 @@
 
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/OpenSpace/lib/:/opt/OpenSpace/modules/webbrowser/ext/Release/"
 
-exec /opt/OpenSpace/bin/OpenSpace "$@"
+exec ./OpenSpace "$@"
 
