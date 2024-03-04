@@ -2,7 +2,7 @@
 pkgname=syng-bin
 _appname=syng
 pkgver=2.0.0_beta_5
-pkgrel=4
+pkgrel=5
 pkgdesc="A free, open source, cross-platform, Chinese-To-English dictionary for desktops."
 arch=("x86_64")
 url="https://getsyng.com/"
@@ -25,7 +25,7 @@ source=(
 sha256sums=('18d9c3474e4c486460cc34f07b00259381875f0ac22db6a3cbe24713ba1693ab'
             '997e0e57760a71dfc656727d5bc14149bae55f907990f8c75650673924434f0c')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.gz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|${pkgname%-bin}-2|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}-2.desktop"
 }
 package() {
