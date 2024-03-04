@@ -1,7 +1,7 @@
 pkgbase = cpu-checker-bzr
 	pkgdesc = Userspace tools for helping to evaluate the CPU (or BIOS) support for various features.
 	pkgver = r41
-	pkgrel = 4
+	pkgrel = 5
 	url = https://launchpad.net/cpu-checker
 	arch = x86_64
 	license = GPL
@@ -9,10 +9,10 @@ pkgbase = cpu-checker-bzr
 	makedepends = make
 	makedepends = python-dulwich
 	makedepends = python-launchpadlib
-	depends = awk
 	depends = grep
 	depends = msr-tools
 	provides = cpu-checker=r41
+	conflicts = cpu-checker
 	source = bzr+lp:cpu-checker
 	md5sums = SKIP
 
