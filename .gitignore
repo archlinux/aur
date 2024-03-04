@@ -1,6 +1,5 @@
 src
 pkg
-anbox-modules
 *.pkg.tar.*
 *.log
-
+*.tar.gz
