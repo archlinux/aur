@@ -2,7 +2,7 @@
 
 pkgname=grimshot-bin-sway
 pkgver=1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Symlink sway-contrib's included grimshot script to /usr/bin"
 arch=(any)
@@ -18,5 +18,5 @@ package() {
 		'libnotify: Notification support'
 	)
 	install -dm755 "$pkgdir/usr/bin"
-	ln -s '/usr/share/sway/scripts/grimshot' "$pkgdir/usr/bin/grimshot"
+	ln -s '/usr/share/sway-contrib/grimshot' "$pkgdir/usr/bin/grimshot"
 }
