@@ -3,7 +3,7 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=060.r6794.4980bad
-pkgrel=12
+pkgrel=13
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracutdevs/dracut'
@@ -30,6 +30,7 @@ makedepends=(
 )
 optdepends=(
   'binutils: --uefi option support'
+  'biosdevname: BIOS network device renaming'
   'bluez: bluetooth (keyboard)'
   'btrfs-progs: scan for Btrfs on block devices'
   'busybox: allows use of busybox (on your own risk)'
@@ -180,7 +181,7 @@ build() {
 check() {
   cd "${pkgname%-git}/test"
 
-  SKIP=${SKIP-"20 40 50 60 62 63"} TESTS=${TESTS-"18"} KVERSION="$(cd /lib/modules && ls -1 | tail -1)" make check
+  SKIP=${SKIP-"20 50 60 62 63"} TESTS=${TESTS-"18"} KVERSION="$(cd /lib/modules && ls -1 | tail -1)" make check
 }
 
 package() {
