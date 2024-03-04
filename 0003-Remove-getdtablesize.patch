@@ -1,0 +1,98 @@
+--- a/src/mca/state/base/state_base_fns.c
++++ b/src/mca/state/base/state_base_fns.c
+@@ -872,95 +872,4 @@
+ 
+ void prte_state_base_check_fds(prte_job_t *jdata)
+ {
+-    int nfds, i, fdflags, flflags;
+-    char path[1024], info[256], **list = NULL, *status, *result, *r2;
+-    ssize_t rc;
+-    struct flock fl;
+-    bool flk;
+-    int cnt = 0;
+-
+-    /* get the number of available file descriptors
+-     * for this daemon */
+-    nfds = getdtablesize();
+-    result = NULL;
+-    /* loop over them and get their info */
+-    for (i = 0; i < nfds; i++) {
+-        fdflags = fcntl(i, F_GETFD);
+-        if (-1 == fdflags) {
+-            /* no open fd in that slot */
+-            continue;
+-        }
+-        flflags = fcntl(i, F_GETFL);
+-        if (-1 == flflags) {
+-            /* no open fd in that slot */
+-            continue;
+-        }
+-        snprintf(path, 1024, "/proc/self/fd/%d", i);
+-        memset(info, 0, 256);
+-        /* read the info about this fd */
+-        rc = readlink(path, info, 256);
+-        if (-1 == rc) {
+-            /* this fd is unavailable */
+-            continue;
+-        }
+-        /* get any file locking status */
+-        fl.l_type = F_WRLCK;
+-        fl.l_whence = 0;
+-        fl.l_start = 0;
+-        fl.l_len = 0;
+-        if (-1 == fcntl(i, F_GETLK, &fl)) {
+-            flk = false;
+-        } else {
+-            flk = true;
+-        }
+-        /* construct the list of capabilities */
+-        if (fdflags & FD_CLOEXEC) {
+-            PMIX_ARGV_APPEND_NOSIZE_COMPAT(&list, "cloexec");
+-        }
+-        if (flflags & O_APPEND) {
+-            PMIX_ARGV_APPEND_NOSIZE_COMPAT(&list, "append");
+-        }
+-        if (flflags & O_NONBLOCK) {
+-            PMIX_ARGV_APPEND_NOSIZE_COMPAT(&list, "nonblock");
+-        }
+-        /* from the man page:
+-         *  Unlike the other values that can be specified in flags,
+-         * the access mode values O_RDONLY, O_WRONLY, and O_RDWR,
+-         * do not specify individual bits.  Rather, they define
+-         * the low order two bits of flags, and defined respectively
+-         * as 0, 1, and 2. */
+-        if (O_RDONLY == (flflags & 3)) {
+-            PMIX_ARGV_APPEND_NOSIZE_COMPAT(&list, "rdonly");
+-        } else if (O_WRONLY == (flflags & 3)) {
+-            PMIX_ARGV_APPEND_NOSIZE_COMPAT(&list, "wronly");
+-        } else {
+-            PMIX_ARGV_APPEND_NOSIZE_COMPAT(&list, "rdwr");
+-        }
+-        if (flk && F_UNLCK != fl.l_type) {
+-            if (F_WRLCK == fl.l_type) {
+-                PMIX_ARGV_APPEND_NOSIZE_COMPAT(&list, "wrlock");
+-            } else {
+-                PMIX_ARGV_APPEND_NOSIZE_COMPAT(&list, "rdlock");
+-            }
+-        }
+-        if (NULL != list) {
+-            status = PMIX_ARGV_JOIN_COMPAT(list, ' ');
+-            PMIX_ARGV_FREE_COMPAT(list);
+-            list = NULL;
+-            if (NULL == result) {
+-                pmix_asprintf(&result, "    %d\t(%s)\t%s\n", i, info, status);
+-            } else {
+-                pmix_asprintf(&r2, "%s    %d\t(%s)\t%s\n", result, i, info, status);
+-                free(result);
+-                result = r2;
+-            }
+-            free(status);
+-        }
+-        ++cnt;
+-    }
+-    pmix_asprintf(&r2, "%s: %d open file descriptors after job %d completed\n%s",
+-                  PRTE_NAME_PRINT(PRTE_PROC_MY_NAME), cnt, PRTE_LOCAL_JOBID(jdata->nspace), result);
+-    pmix_output(0, "%s", r2);
+-    free(result);
+-    free(r2);
+ }
