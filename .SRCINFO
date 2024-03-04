@@ -1,16 +1,13 @@
 pkgbase = laradumps-bin
 	pkgdesc = A friendly app designed to boost your Laravel PHP coding and debugging experience.
 	pkgver = 2.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://laradumps.dev/
 	arch = x86_64
 	license = MIT
-	makedepends = squashfuse
-	depends = hicolor-icon-theme
+	makedepends = fuse2
 	depends = electron28
-	depends = dbus-glib
-	depends = libdbusmenu-glib
-	depends = gtk2
+	depends = hicolor-icon-theme
 	provides = laradumps=2.4.3
 	conflicts = laradumps
 	source = laradumps-2.4.3.AppImage::https://github.com/laradumps/app/releases/download/v2.4.3/LaraDumps-2.4.3.AppImage
@@ -18,6 +15,6 @@ pkgbase = laradumps-bin
 	source = laradumps.sh
 	sha256sums = 7eaf42750e181c569be5a552ab82369bbd0d95adae7a1be0dc1991cf34a55186
 	sha256sums = f8bf03b56eb053128b56fffec88e14404cafd4a63bf1fcc39f90c672f5318650
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = laradumps-bin

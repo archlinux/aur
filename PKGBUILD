@@ -3,7 +3,7 @@ pkgname=laradumps-bin
 _pkgname=LaraDumps
 pkgver=2.4.3
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="A friendly app designed to boost your Laravel PHP coding and debugging experience."
 arch=('x86_64')
 url="https://laradumps.dev/"
@@ -12,14 +12,11 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'hicolor-icon-theme'
     "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
+    'hicolor-icon-theme'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
@@ -28,7 +25,7 @@ source=(
 )
 sha256sums=('7eaf42750e181c569be5a552ab82369bbd0d95adae7a1be0dc1991cf34a55186'
             'f8bf03b56eb053128b56fffec88e14404cafd4a63bf1fcc39f90c672f5318650'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
