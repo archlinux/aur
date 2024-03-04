@@ -1,7 +1,7 @@
 pkgbase = riscv64-linux-gnu-gcc
 	pkgdesc = Cross compiler for 32-bit and 64-bit RISC-V
 	pkgver = 13.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gcc.gnu.org/
 	arch = x86_64
 	groups = risc-v
