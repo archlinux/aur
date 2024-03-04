@@ -1,6 +1,6 @@
 pkgbase = vesktop-git
-	pkgdesc = A standalone Electron app that loads Discord & Vencord
-	pkgver = 1.5.0.r10.g4d82a6f4
+	pkgdesc = Custom Discord desktop app with Vencord preinstalled
+	pkgver = 1.5.0.r14.g612d35c9
 	pkgrel = 1
 	url = https://github.com/Vencord/Vesktop
 	arch = any

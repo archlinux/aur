@@ -2,8 +2,8 @@
 
 _pkgname="vesktop"
 pkgname="$_pkgname-git"
-pkgdesc="A standalone Electron app that loads Discord & Vencord"
-pkgver=1.5.0.r10.g4d82a6f4
+pkgdesc="Custom Discord desktop app with Vencord preinstalled"
+pkgver=1.5.0.r14.g612d35c9
 pkgrel=1
 url="https://github.com/Vencord/Vesktop"
 license=('GPL-3.0-only')
@@ -41,7 +41,10 @@ build() {
   export SYSTEM_ELECTRON_VERSION=$(</usr/lib/electron/version)
   export ELECTRONVERSION=${SYSTEM_ELECTRON_VERSION%%.*}
 
-  sed -E -e 's&^(\s*)("electron"): "(.*)"(,?)$&\1\2: "'"$SYSTEM_ELECTRON_VERSION"'"\4&' -i "$_pkgsrc/package.json"
+  sed -E \
+    -e 's&^(\s*)("electron"): "(.*)"(,?)$&\1\2: "'"$SYSTEM_ELECTRON_VERSION"'"\4&' \
+    -e '/linux/s&^&"electronDist": "/usr/lib/electron",\n&' \
+    -i "$_pkgsrc/package.json"
 
   cd "$_pkgsrc"
   pnpm i
@@ -49,7 +52,7 @@ build() {
 }
 
 package() {
-  local _install_path="usr/lib"
+  local _install_path="usr/share"
   install -d "$pkgdir/$_install_path/$_pkgname"
   cp --reflink=auto -r "$_pkgsrc/dist/linux-unpacked/resources/app.asar" "$pkgdir/$_install_path/$_pkgname/"
 
@@ -73,5 +76,4 @@ Categories=Network;InstantMessaging;
 StartupWMClass=Vesktop;
 Keywords=discord;vencord;vesktop
 END
-
 }
