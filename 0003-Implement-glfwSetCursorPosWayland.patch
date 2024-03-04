@@ -1,0 +1,54 @@
+From 70bcc32a8e60c012e91f74bab9062c1a6596b39a Mon Sep 17 00:00:00 2001
+From: FayBoy <ahmadyasinfikri@gmail.com>
+Date: Thu, 22 Feb 2024 19:30:53 +0700
+Subject: [PATCH] Implement glfwSetCursorPosWayland
+
+
+diff --git a/src/wl_platform.h b/src/wl_platform.h
+index b17fa722..7ffc7e83 100644
+--- a/src/wl_platform.h
++++ b/src/wl_platform.h
+@@ -415,6 +415,8 @@ typedef struct _GLFWwindowWayland
+     } fallback;
+ 
+     uint32_t                    pointerAxisTime;
++    double                      askedCursorPosX, askedCursorPosY;
++    GLFWbool                    didAskForSetCursorPos;
+ } _GLFWwindowWayland;
+ 
+ // Wayland-specific global data
+diff --git a/src/wl_window.c b/src/wl_window.c
+index aab79d01..b1b280a7 100644
+--- a/src/wl_window.c
++++ b/src/wl_window.c
+@@ -2674,8 +2674,9 @@ void _glfwGetCursorPosWayland(_GLFWwindow* window, double* xpos, double* ypos)
+ 
+ void _glfwSetCursorPosWayland(_GLFWwindow* window, double x, double y)
+ {
+-    _glfwInputError(GLFW_FEATURE_UNAVAILABLE,
+-                    "Wayland: The platform does not support setting the cursor position");
++    window->wl.didAskForSetCursorPos = true;
++    window->wl.askedCursorPosX = x;
++    window->wl.askedCursorPosY = y;
+ }
+ 
+ void _glfwSetCursorModeWayland(_GLFWwindow* window, int mode)
+@@ -2909,6 +2910,15 @@ static const struct zwp_relative_pointer_v1_listener relativePointerListener =
+ static void lockedPointerHandleLocked(void* userData,
+                                       struct zwp_locked_pointer_v1* lockedPointer)
+ {
++    _GLFWwindow* window = userData;
++
++    if (window->wl.didAskForSetCursorPos)
++    {
++        window->wl.didAskForSetCursorPos = false;
++        zwp_locked_pointer_v1_set_cursor_position_hint(window->wl.lockedPointer,
++                                                       wl_fixed_from_double(window->wl.askedCursorPosX),
++                                                       wl_fixed_from_double(window->wl.askedCursorPosY));
++    }
+ }
+ 
+ static void lockedPointerHandleUnlocked(void* userData,
+-- 
+2.43.0
+
