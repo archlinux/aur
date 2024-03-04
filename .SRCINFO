@@ -20,7 +20,9 @@ pkgbase = arduino-ide-bin
 	options = !strip
 	source = https://github.com/arduino/arduino-ide/releases/download/2.3.2/arduino-ide_2.3.2_Linux_64bit.zip
 	source = https://www.arduino.cc/wiki/370832ed4114dd35d498f2f449b4781e/arduino.svg
+	source = arduino-ide-bin.sh
 	sha256sums = 1a23b911043a247116ace846f03a0265c719dcd49cf9a8af09334db4d3916e88
 	sha256sums = 4137981bcb4057c2e0092f22faea287767f102e0b48497d22cd55e8d6988e4ac
+	sha256sums = c02f0c40b92e50f46b09339d1ccfb0cb7cd7caa1e5d386ee9b85938810bfda34
 
 pkgname = arduino-ide-bin
