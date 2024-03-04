@@ -1,14 +1,14 @@
 pkgbase = trino-cli-bin
 	pkgdesc = Distributed SQL Query Engine for Big Data - Client
-	pkgver = 435
+	pkgver = 439
 	pkgrel = 1
 	url = https://trino.io/
 	arch = any
 	license = Apache
 	depends = java-runtime>=8
 	depends = sh
-	noextract = trino-cli-435-executable.jar
-	source = https://repo1.maven.org/maven2/io/trino/trino-cli/435/trino-cli-435-executable.jar
-	sha256sums = 5fe1bbe4ab6542eb3d998706b40326ecc0e8eeb78dd994e556f84687312ee56e
+	noextract = trino-cli-439-executable.jar
+	source = https://repo1.maven.org/maven2/io/trino/trino-cli/439/trino-cli-439-executable.jar
+	sha256sums = 00daefdfe869467d34cc502ee851e5b64eac790e253f67ac0c886c26b72d7d8d
 
 pkgname = trino-cli-bin
