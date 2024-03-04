@@ -1,3 +1,5 @@
-jura now stores the syntax highlighting colors and first line character in a config.jura file which is located in the home folder
+Added an editconfig command.
 
-**Full Changelog**: https://github.com/Nooberieno/jura/compare/2.6...3.0
+type jura or ./jura (depending on your installation) followed by "editconfig" to adjust your config file
+
+**Full Changelog**: https://github.com/Nooberieno/jura/compare/3.0...3.1
