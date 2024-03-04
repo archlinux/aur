@@ -2,7 +2,7 @@
 
 pkgname=cgmnlm
 pkgrel=1
-pkgver=1.6
+pkgver=1.7
 pkgdesc="colorful gemini line mode client - fork of gmni"
 url="https://sr.ht/~rwa/gemini-clients"
 arch=('x86_64' 'armv7h' 'aarch64')
