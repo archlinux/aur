@@ -3,7 +3,7 @@ pkgname=netpad-bin
 _pkgname=NetPad
 pkgver=0.6.1
 _electronversion=23
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform C# editor and playground."
 arch=('x86_64')
 url="https://github.com/tareqimbasher/NetPad"
@@ -22,7 +22,7 @@ source=(
 )
 sha256sums=('4c58c6de973c242de83f2a4ac8c122ea0f12bfb09d03a7564c97c86d26bea16a'
             '43485534798b716310ae2a0edeebb00e97ff0e42e5fde13ff2994e2bc82348f6'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
