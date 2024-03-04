@@ -5,7 +5,7 @@
 pkgname=kwin-scripts-forceblur-plasma6
 pkgver=0.7.0
 pkgrel=1
-pkgdesc="Force-enable blur effect to user-specified windows"
+pkgdesc="Force-enable blur effect to user-specified windows (fork that works with Plasma 6)"
 arch=(any)
 url='https://github.com/esjeon/kwin-forceblur'
 license=(MIT)
