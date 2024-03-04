@@ -1,22 +1,18 @@
 pkgbase = tenpi-music-player-bin
 	pkgdesc = A music player with real-time pitch shifting, time stretching, and reversing effects.
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://musicplayer.moe/
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = squashfuse
-	makedepends = asar
+	makedepends = fuse2
 	depends = electron28
-	depends = dbus-glib
-	depends = libdbusmenu-glib
-	depends = gtk2
 	depends = nodejs
 	provides = tenpi-music-player=0.2.4
 	conflicts = tenpi-music-player
 	source = tenpi-music-player-0.2.4.AppImage::https://github.com/Tenpi/Music-Player/releases/download/v0.2.4/Music-Player-0.2.4.AppImage
 	source = tenpi-music-player.sh
 	sha256sums = f37e4b3ff235b203b6a43444a9d8e9d602a41d91dd3495b5aa1ea0ee29742ce4
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = tenpi-music-player-bin
