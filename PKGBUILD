@@ -17,6 +17,9 @@ depends=(
     'nodejs'
     'python>3'
 )
+makedepends=(
+    'asar'
+)
 options=(
     '!strip'
 )

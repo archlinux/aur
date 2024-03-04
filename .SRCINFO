@@ -5,6 +5,7 @@ pkgbase = mapeo-desktop-bin
 	url = https://mapeo.app/
 	arch = x86_64
 	license = GPL-3.0-only
+	makedepends = asar
 	depends = electron9-bin
 	depends = hicolor-icon-theme
 	depends = nodejs
