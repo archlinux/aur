@@ -1,7 +1,7 @@
 pkgbase = wl-mirror-git
 	pkgdesc = a simple Wayland output mirror client
 	pkgver = 0.16.2.r0.g2abe912
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ferdi265/wl-mirror
 	arch = x86_64
 	license = GPL3+
@@ -12,10 +12,12 @@ pkgbase = wl-mirror-git
 	depends = glibc
 	depends = libglvnd
 	depends = wayland
-	optdepends = dmenu: for interactive selection of options and wl-present
-	optdepends = pipectl: for wl-present
-	optdepends = rofi: for interactively selecting options and wl-present
-	optdepends = slurp: for selecting regions and outputs and wl-present
+	optdepends = slurp: for selecting regions and outputs in wl-present
+	optdepends = pipectl: for managing named pipes in wl-present
+	optdepends = wofi: for interactive selection of options in wl-present
+	optdepends = wmenu: for interactive selection of options in wl-present
+	optdepends = rofi: for interactively selecting options in wl-present
+	optdepends = dmenu: for interactive selection of options in wl-present
 	provides = wl-mirror=0.16.2
 	conflicts = wl-mirror
 	source = git+https://github.com/Ferdi265/wl-mirror
