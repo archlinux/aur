@@ -1,5 +1,6 @@
-# Submitter: Victor Schulz <schulz89@gmail.com>
 # Maintainer: Dmitry Sokol <d.sokol@ireptu.film>
+# Contributor: Victor Schulz <schulz89@gmail.com>
+
 pkgname=uvm-systemc
 pkgver=1.0_beta5
 pkgrel=1
