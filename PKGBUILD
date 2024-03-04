@@ -1,11 +1,15 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yesplaymusic-bin
 _pkgname=YesPlayMusic
-pkgver=0.4.7
+pkgver=0.4.8
 _electronversion=13
-pkgrel=6
+pkgrel=1
 pkgdesc="高颜值的第三方网易云播放器。"
-arch=('x86_64')
+arch=(
+    'aarch64'
+    'armv7h'
+    'x86_64'
+)
 url="https://music.qier222.com/"
 _ghurl="https://github.com/qier222/YesPlayMusic"
 license=('MIT')
@@ -22,20 +26,25 @@ conflicts=(
     "r3play"
     "r3playx"
 )
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}-1/${pkgname%-bin}_${pkgver}_arm64.deb")
+source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}-1/${pkgname%-bin}_${pkgver}_armv7l.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}-1/${pkgname%-bin}_${pkgver}_amd64.deb")
 source=(
-    "${pkgname%-bin}-${pkgver}.pacman::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.pacman"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/qier222/YesPlayMusic/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9b9fc793354e2bcd677b31a7d29e7e5006479fdf7b89c8adfac1e17d072cd2c9'
-            'c33378c6fd12e6d040cedd06dc0d1bedfca74fd66bc46cc2cf10cc10e0906be6'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+sha256sums=('c33378c6fd12e6d040cedd06dc0d1bedfca74fd66bc46cc2cf10cc10e0906be6'
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+sha256sums_aarch64=('4907af898c06183372ead5875edc1303e67cb23d16114005103c7d894e296a12')
+sha256sums_armv7h=('bcb2c9a9fa68ccbb12bdf811393425be9c9c484efa44fa0cd15cadb916aa2d9d')
+sha256sums_x86_64=('433589b693db96f169e81fa15778df271bf1270d799c235bb2f3d33db4f2a900')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g;s|Categories=Music|Categories=AudioVideo|g" \
+    bsdtar -xf "${srcdir}/data."*
+    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g;s|Music;|AudioVideo;|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
