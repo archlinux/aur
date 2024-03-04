@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=autorecord-manager
 _pkgname="LAR 直播自动录制"
-pkgver=4.3.5
+pkgver=4.4.0
 _electronversion=20
 _nodeversion=16
-pkgrel=3
+pkgrel=1
 pkgdesc="基于 Electron 的多平台直播自动录制软件"
 arch=('any')
 url="https://github.com/WhiteMinds/LiveAutoRecord"
@@ -31,7 +31,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            'f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
