@@ -1,6 +1,6 @@
 _pkgname=gamescope
 pkgname=${_pkgname}-sk-git
-pkgver=3.14.1.r15.g6ed7472
+pkgver=3.14.1.r26.g3e9ab3b
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
@@ -52,12 +52,14 @@ makedepends=(
 # _tag=62d425164d383fcde498b17b0af5d00bfa92aed4
 _branch="sk-gamescope"
 source=("git+https://github.com/3003n/gamescope.git#branch=${_branch}"
+        "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a"
         "git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1"
         "git+https://github.com/Joshua-Ashton/reshade.git"
         "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
         )
 
 b2sums=('SKIP'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP')
@@ -81,6 +83,11 @@ prepare() {
     git submodule init thirdparty/SPIRV-Headers
     git config submodule.thirdparty/SPIRV-Headers.url ../SPIRV-Headers
     git -c protocol.file.allow=always submodule update
+
+    # make stb.wrap use our local clone
+    rm -rf subprojects/stb
+    git clone "$srcdir/stb" subprojects/stb
+    cp -av subprojects/packagefiles/stb/* subprojects/stb/ # patch from the .wrap we elided
 }
 
 pkgver() {
@@ -108,5 +115,3 @@ package() {
     cd "$srcdir/$_pkgname"
     install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/$pkgname/"
 }
-
-# vim: ts=2 sw=2 et:
