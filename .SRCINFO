@@ -12,6 +12,5 @@ pkgbase = chromeos-kde-git
 
 pkgname = chromeos-kde-git
 	optdepends = chromeos-gtk-theme: Matching GTK theme
-	optdepends = kvantum-theme-chromeos: ChromeOS theme for Kvantum Qt style (recommended)
 	optdepends = tela-icon-theme: Matching icon theme
 	provides = chromeos-kde
