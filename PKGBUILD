@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola
-pkgver=4.5.0
+pkgver=4.6.1
 pkgrel=1
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
@@ -11,6 +11,7 @@ license=('GPL-2.0-or-later')
 depends=(
   'git'
   'hicolor-icon-theme'
+  'python-importlib-metadata'
   'python-numpy'
   'python-polib'
   'python-pyqt5'
@@ -34,16 +35,13 @@ optdepends=(
   'python-send2trash: enables "Send to Trash" functionality.'
   'tk: to use the built-in ssh-askpass handler'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/git-cola/git-cola/archive/v$pkgver.tar.gz"
-        '0001-Unvendorize-polib.py.patch')
-sha256sums=('f8baaf6e168d605bf087e6ef77137089d9f01ea13f7947bb31cc7ac58e5aa248'
-            'ffeaafbf1495931d3ab5cee439a82bef340d9cb15d4d555a57e93aed47695fc9')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/git-cola/git-cola/archive/v$pkgver.tar.gz")
+sha256sums=('665019bc23f794d4f9f796bb7ee8e666ed13c9c3a1848fe37fb3541a0a143a64')
 
 prepare() {
   cd "$pkgname-$pkgver"
 
   # Remove vendorized polib.py
-  patch -Np1 -i ../0001-Unvendorize-polib.py.patch
   rm cola/polib.py
 }
 
