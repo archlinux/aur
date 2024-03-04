@@ -28,14 +28,14 @@ source=(
 sha256sums=('c61e98e1cff8eb5274c79499d807d08712f5092bff1e73c263849780c000da41'
             '0898729e7784b2fc63aad5cef7bda66a5a2853c3b156deea2280ede56ace218d'
             'e7c9efe5e722cfc9c66420d5d111202a28bbbdaa14832dfaa676e9da6e44c367'
-            '6aa0967712976b4b294645843071e74111975c97026eec3ce9c8234a38484fde')
+            'ac0f69eddf715ab428ffa00a51d20e380c046d0707f2fb64cbbcd408d5fc49de')
 build() {
     sed -e "s|@bottlename@|Deepin-${_officalname}|g" \
         -e "s|@appver@|${pkgver}|g" \
         -e "s|@packagename@|${pkgname}|g" \
         -e "s|@appname@|${_officalname}|g" \
         -i "${srcdir}/${pkgname}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     mv "${srcdir}/opt/apps/${_pkgname}" "${srcdir}/opt/apps/${pkgname}"
     sed -e "s|Icon=${_pkgname}|Icon=${pkgname}|g" \
         -e "s|\"/opt/apps/${_pkgname}/files/run.sh\"|${pkgname}|g" \

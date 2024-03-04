@@ -18,6 +18,6 @@ pkgbase = deepin-wine-tencent-edu
 	sha256sums = c61e98e1cff8eb5274c79499d807d08712f5092bff1e73c263849780c000da41
 	sha256sums = 0898729e7784b2fc63aad5cef7bda66a5a2853c3b156deea2280ede56ace218d
 	sha256sums = e7c9efe5e722cfc9c66420d5d111202a28bbbdaa14832dfaa676e9da6e44c367
-	sha256sums = 6aa0967712976b4b294645843071e74111975c97026eec3ce9c8234a38484fde
+	sha256sums = ac0f69eddf715ab428ffa00a51d20e380c046d0707f2fb64cbbcd408d5fc49de
 
 pkgname = deepin-wine-tencent-edu
