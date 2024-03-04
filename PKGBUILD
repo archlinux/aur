@@ -33,6 +33,8 @@ build() {
 
 package_conversejs-git() {
   pkgdesc='Web-based XMPP/Jabber chat client written in javascript'
+  provides=(conversejs)
+  conflicts=(conversejs)
   backup=('usr/share/webapps/converse.js/fullscreen.html')
 
   cd converse.js
@@ -46,6 +48,8 @@ package_conversejs-git() {
 
 package_conversejs-epiphany-git() {
   depends=('epiphany' 'conversejs-git' 'python')
+  provides=(conversejs-epiphany)
+  conflicts=(conversejs-epiphany)
   pkgdesc='Desktop launcher for Converse.js'
 
   install -Dm755 ../launcher.sh "$pkgdir"/usr/bin/conversejs
@@ -54,6 +58,8 @@ package_conversejs-epiphany-git() {
 
 package_conversejs-headless-git() {
   pkgdesc='Headless Converse.js'
+  provides=(conversejs-headless)
+  conflicts=(conversejs-headless)
 
   cd converse.js
   install -dm755 "$pkgdir"/usr/share/webapps/converse-headless.js

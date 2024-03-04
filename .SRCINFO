@@ -15,6 +15,8 @@ pkgbase = conversejs-git
 
 pkgname = conversejs-git
 	pkgdesc = Web-based XMPP/Jabber chat client written in javascript
+	provides = conversejs
+	conflicts = conversejs
 	backup = usr/share/webapps/converse.js/fullscreen.html
 
 pkgname = conversejs-epiphany-git
@@ -22,6 +24,10 @@ pkgname = conversejs-epiphany-git
 	depends = epiphany
 	depends = conversejs-git
 	depends = python
+	provides = conversejs-epiphany
+	conflicts = conversejs-epiphany
 
 pkgname = conversejs-headless-git
 	pkgdesc = Headless Converse.js
+	provides = conversejs-headless
+	conflicts = conversejs-headless
