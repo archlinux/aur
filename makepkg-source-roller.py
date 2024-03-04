@@ -215,7 +215,7 @@ def generate_source_list(deps, indent, extra_sources, pkgname, reverse_map):
 
 
 def generate_managed_scripts(deps, extra_cmds, pkgname, reverse_map):
-    script = """#!/bin/bash
+    script = """#!/usr/bin/env rbash
 set -e
 # Generated file. Do not modify by hand.
 # Usage: script <CARCH>
