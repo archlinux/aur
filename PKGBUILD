@@ -2,7 +2,7 @@
 _pkgname=sshuttle_gui
 pkgname="${_pkgname//_/-}-bin"
 pkgver=0.2
-pkgrel=5
+pkgrel=6
 pkgdesc="GUI for SShuttle - Transparent proxy server that works as a poor man's VPN. Forwards over ssh."
 arch=('x86_64')
 url="https://github.com/AKotov-dev/SShuttle-GUI"
@@ -25,7 +25,7 @@ build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

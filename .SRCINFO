@@ -1,7 +1,7 @@
 pkgbase = sshuttle-gui-bin
 	pkgdesc = GUI for SShuttle - Transparent proxy server that works as a poor man's VPN. Forwards over ssh.
 	pkgver = 0.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/AKotov-dev/SShuttle-GUI
 	arch = x86_64
 	license = GPL-3.0-only
