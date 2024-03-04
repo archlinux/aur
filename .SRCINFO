@@ -1,6 +1,6 @@
 pkgbase = python-easydict
 	pkgdesc = Access dict values as attributes (works recursively).
-	pkgver = 1.12
+	pkgver = 1.13
 	pkgrel = 1
 	url = https://github.com/makinacorpus/easydict
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-easydict
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	noextract = easydict-1.12-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/e/easydict/easydict-1.12-py3-none-any.whl
-	sha256sums = 039efc4e476c130cdc4dac3807223abbdf233506420ed00b4beddc1569cfe360
+	noextract = easydict-1.13-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/e/easydict/easydict-1.13-py3-none-any.whl
+	sha256sums = 6b787daf4dcaf6377b4ad9403a5cee5a86adbc0ca9a5bcf5410e9902002aeac2
 
 pkgname = python-easydict
