@@ -55,9 +55,6 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
-    echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
-    echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
     sed '12,24d' -i "${srcdir}/${pkgname//-/.}/packages/desktop/build-configs/electron-builder.linux.js"
     npm run bootstrap
     npm run build:libs
