@@ -1,16 +1,8 @@
-8c8
-< n exec 18.18.2 npm run webpack
----
-> npm run webpack
-13c13
-< mkdir $DIR
----
-> mkdir -p $DIR
 30c30
 < (cd $DIR && n exec 18.18.2 npm install --only=prod)
 ---
 > (cd $DIR && npm install --only=prod)
 34c34
-< rm -r $DIR/node_modules/better-sqlite3/Release
+<     for d in 'image-q/demo' 'better-sqlite3/Release' 'better-sqlite3/deps/sqlite3.tar.gz' '@jimp/plugin-print/fonts' 'jimp/browser' 'jimp/fonts'; do
 ---
-> rm -r $DIR/node_modules/better-sqlite3/build/Release
+>     for d in 'image-q/demo' 'better-sqlite3/build/Release' 'better-sqlite3/deps/sqlite3.tar.gz' '@jimp/plugin-print/fonts' 'jimp/browser' 'jimp/fonts'; do
