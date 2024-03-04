@@ -24,14 +24,10 @@ build() {
 
 check() {
 	cd "$srcdir/$_pkgname-$pkgver"
-	cargo check --manifest-path xidlehook-core/Cargo.toml
 	cargo test --manifest-path xidlehook-core/Cargo.toml
-	cargo check --all-features --manifest-path xidlehook-core/Cargo.toml
 	cargo test --all-features --manifest-path xidlehook-core/Cargo.toml
 
-	cargo check --manifest-path xidlehook-daemon/Cargo.toml
 	cargo test --manifest-path xidlehook-daemon/Cargo.toml
-	cargo check --all-features --manifest-path xidlehook-daemon/Cargo.toml
 	cargo test --all-features --manifest-path xidlehook-daemon/Cargo.toml
 }
 
