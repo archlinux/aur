@@ -1,13 +1,14 @@
 pkgbase = wolf3d-shareware
 	pkgdesc = Classic first person shooter, shareware episode data
 	pkgver = 1.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://3drealms.com/catalog/wolfenstein-3d_25/
 	arch = any
 	license = custom
-	makedepends = dynamite-git
+	makedepends = p7zip
+	makedepends = unzip
+	noextract = 1wolf14.zip
 	source = ftp://ftp.gamers.org/pub/games/wolf3d/official/1wolf14.zip
-	md5sums = a29432cd4a5184d552d8e5da8f80a531
+	md5sums = e6d75d885e408003d2f4751d8dfd1cb0
 
 pkgname = wolf3d-shareware
-

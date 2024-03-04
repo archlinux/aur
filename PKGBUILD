@@ -2,7 +2,7 @@
 
 pkgname=wolf3d-shareware
 pkgver=1.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Classic first person shooter, shareware episode data'
 arch=(any)
 url="https://3drealms.com/catalog/wolfenstein-3d_25/"
@@ -10,7 +10,7 @@ license=('custom')
 source=('ftp://ftp.gamers.org/pub/games/wolf3d/official/1wolf14.zip')
 noextract=('1wolf14.zip')
 md5sums=('e6d75d885e408003d2f4751d8dfd1cb0')
-makedepends=('p7zip unzip')
+makedepends=('p7zip' 'unzip')
 
 build() {
   cd $srcdir/
