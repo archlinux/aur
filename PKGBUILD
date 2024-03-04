@@ -4,7 +4,7 @@ pkgname=igdm-bin
 _pkgname=IGdm
 pkgver=3.0.4
 _electronversion=13
-pkgrel=6
+pkgrel=7
 pkgdesc="Desktop application for Instagram DMs"
 arch=('x86_64')
 url="https://github.com/igdmapps/igdm"
@@ -22,13 +22,13 @@ source=(
 )
 sha256sums=('c65181d96bc3886b77e37fe76d4a17626399ed3253a6353b78759fe0a1e40d99'
             'cfe59b21a32217b32573315adbcc0f3621aeaa8dec634e54eb30a0cf260867cc'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
