@@ -7,7 +7,7 @@
 # installation.
 
 pkgname=jabref-git
-pkgver=5.12.r121.de5481ad0b
+pkgver=5.12.r215.84463e7fba
 pkgrel=2
 epoch=3
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
@@ -20,11 +20,19 @@ optdepends=('gsettings-desktop-schemas: For web search support')
 provides=('jabref')
 conflicts=('jabref')
 source=("git+https://github.com/JabRef/jabref.git"
+        "git+https://github.com/JabRef/abbrv.jabref.org.git"
 	"${pkgname%-git}.desktop"
 	"${pkgname%-git}.sh")
 sha256sums=('SKIP'
+            'SKIP'
             'cb50a38f701374e6922e74e35c4f99f0418441c48b3c4855e64f0995f0be9cb8'
             'b5936f54b1fd806687171bef46b5be3fa247289e7c63352b448c0922072edcdf')
+
+prepare() {
+  cd ${pkgname%-git}
+
+  cp -a "${srcdir}"/abbrv.jabref.org/* buildres/abbrv.jabref.org/
+}
 
 pkgver() {
   cd ${pkgname%-git}
