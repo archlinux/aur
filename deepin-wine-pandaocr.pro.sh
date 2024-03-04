@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 BOTTLENAME=Deepin-@bottlename@
 APPVER=@appver@

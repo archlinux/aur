@@ -4,7 +4,7 @@ _pkgname=com.pandaocr.pro.spark
 _officalname=PandaOCR.Pro
 pkgver=5.52
 sparkver=1.0.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="多功能多引擎OCR文字识别、翻译、朗读、语音合成、日漫游戏机翻汉化、验证码识别、图床上传、以图搜图、扫码工具"
 arch=('x86_64')
@@ -16,7 +16,6 @@ depends=(
     'deepin-wine6-stable'
     'spark-dwine-helper'
     'xdg-utils'
-    'hicolor-icon-theme'
     'p7zip'
 )
 optdepends=(
@@ -27,20 +26,19 @@ install="${pkgname}.install"
 source=(
     "${pkgname}-${sparkver}.deb::https://d.store.deepinos.org.cn/store/reading/${_pkgname}/${_pkgname}_${sparkver}_i386.deb"
     "${pkgname}-${pkgver}.zip::${url}/releases/download/${pkgver}/${_officalname}_${pkgver}.zip"
-    "${pkgname}.sh"
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/miaomiaosoft/PandaOCR.Pro/${pkgver}/README.md"
+    "${pkgname}.sh"
 )
 sha256sums=('f21c8dd02ee531e32a6f8b4b9cf8c49a21d6c85d422063673ff172e07deeb98f'
             '9d630036c07b0cb6fc380668395d94f2bf4e6c728a822ba9f43d439ed4e79406'
-            '21fc8ca36649a1085d71f7391c2ec1378d2322a12a1713ce00eefc1072c90f3b'
-            'af3e23013f0ab183d5362b0b20569f0cf6cb7895fbe051af47ca586ddfd92950'
-            '8dbb5f5d875a8e79f0818ae3290ab92fd3925c949485f825f8ae4cf6a508c2b0')
+            '8dbb5f5d875a8e79f0818ae3290ab92fd3925c949485f825f8ae4cf6a508c2b0'
+            'b4948024dbc267c51f609200d000794b4dcff51eae3b677b53710ee04d9548c0')
 build() {
     sed -e "s|@appname@|${pkgname}|g" \
         -e "s|@appver@|${pkgver}|g" \
         -e "s|@bottlename@|${_officalname}|g" \
         -i "${srcdir}/${pkgname}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     mv "${srcdir}/opt/apps/${_pkgname}" "${srcdir}/opt/apps/${pkgname}"
     mkdir -p "${srcdir}/tmp"
     msg "Extracting Deepin Wine ${_officalname} archive ..."
