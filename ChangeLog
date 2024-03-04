@@ -786,3 +786,17 @@ Fixes:
 - On our Microsoft ToDo integration, we have fixed an authentication issue and restored the possibility to organize tasks by task lists. This was accidentally disabled.
 - Additionally, we fixed some UX edge cases that could cause an error with certain actions.
 - Finally, a problem causing the context menu of an event to appear behind other elements has been rectified.
+
+=== Morgen 3.2.5
+New Features:
+- By popular demand, the Check availability toggle is back. You can now view the availability of meeting invitees while creating a meeting, whether or not they use Morgen. This is done by fetching information directly from your team's Google and Outlook calendars and the information visible to you is based on the permissions of those underlying calendars.
+
+Improvements:
+- The Morgen UI is now more responsive when events are deleted or edited. Additionally, Morgen tasks can be dragged and dropped across lists or priority groups. Simply drop the task onto the name of a group to reassign its list or priority.
+
+Fixes:
+- Connections of incompatible CalDAV accounts to Morgen Cloud are now blocked early in the process to avoid confusion.
+- A problem causing a confirmation request when updating an event without attendees has been fixed.
+- Pinned contacts on the sidebar will now be automatically removed if the contact is no longer part of the team.
+- We fixed the condition that hides completed tasks from the calendar to include tasks closed from the sidebar.
+- An issue preventing typing "S" as the name of a new task list (!) has been rectified.
