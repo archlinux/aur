@@ -1,8 +1,8 @@
 pkgbase = jura
 	pkgdesc = A lightweight terminal text editor
 	pkgver = 3.2
-	pkgrel = 2
-	epoch = 2
+	pkgrel = 3
+	epoch = 3
 	url = https://github.com/Nooberieno/jura
 	changelog = CHANGELOG.md
 	arch = x86_64
