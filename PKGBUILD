@@ -15,12 +15,8 @@ provides=(
     "${pkgname%-git}"
 )
 depends=(
-    #"electron${_electronversion}"
+    "electron${_electronversion}"
     'hicolor-icon-theme'
-    'at-spi2-core'
-    'gtk3'
-    'nss'
-    'alsa-lib'
 )
 makedepends=(
     'gendesk'
@@ -30,9 +26,10 @@ makedepends=(
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
-    #"${pkgname%-git}.sh"
+    "${pkgname%-git}.sh"
 )
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -44,26 +41,27 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 build() {
-    gendesk -q -f -n --categories "AudioVideo" --name "${pkgname%-git}" --exec "${pkgname%-git} --no-sandbox %U"
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-git}|g" \
+        -e "s|@runname@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
+    gendesk -q -f -n --categories="AudioVideo" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     cd "${srcdir}/${pkgname//-/.}"
-    sed "s|development|production|g" src/main/main.ts
-    sed "s|development|production|g" src/main/menu.ts
-    sed "s|development|production|g" src/main/util.ts
     npm install
     npm run package
 }
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-git}",usr/bin}
-    cp -r "${srcdir}/${pkgname//-/.}/release/build/linux-"*/* "${pkgdir}/opt/${pkgname%-git}"
-    ln -sf "/opt/${pkgname%-git}/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
+    install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/release/build/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
     for _icons in 16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
         install -Dm644 "${srcdir}/${pkgname//-/.}/assets/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"

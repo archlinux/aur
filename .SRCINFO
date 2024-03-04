@@ -9,14 +9,13 @@ pkgbase = hihat-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = npm
+	depends = electron26
 	depends = hicolor-icon-theme
-	depends = at-spi2-core
-	depends = gtk3
-	depends = nss
-	depends = alsa-lib
 	provides = hihat
 	conflicts = hihat
 	source = hihat.git::git+https://github.com/johnnyshankman/hihat.git
+	source = hihat.sh
 	sha256sums = SKIP
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = hihat-git
