@@ -10,12 +10,12 @@
 
 pkgver=26.6.10
 _gcc_patches=116-patchset-2
-pkgrel=2
+pkgrel=3
 _major_ver=${pkgver%%.*}
 pkgname="electron${_major_ver}"
 pkgdesc='Build cross platform desktop apps with web technologies'
 arch=(x86_64)
-url='https://electronjs.org/'
+url='https://electronjs.org'
 license=(MIT BSD-3-Clause)
 depends=(c-ares
          gcc-libs # libgcc_s.so
@@ -37,6 +37,9 @@ makedepends=(clang
              lld
              llvm
              ninja
+             # Electron ships a vendored nodejs. Meanwhile the npm dependency pulls in nodejs whith is Arch's freshest version.
+             # Pinning the closest LTS here makes the build environment more consistent with the vendored copy.
+             nodejs-lts-hydrogen
              npm
              patchutils
              pciutils
@@ -448,7 +451,8 @@ prepare() {
 
   echo "Applying local patches..."
 
-  # Upstream fixes
+  ## Upstream fixes
+
   # Fix build with libxml2 2.12
   patch -Np1 -i ../libxml2-2.12.patch
 
@@ -531,11 +535,6 @@ build() {
   if [[ -n ${_system_libs[icu]+set} ]]; then
     _flags+=('icu_use_data_file=false')
   fi
-
-  # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
-  CFLAGS+='   -Wno-builtin-macro-redefined'
-  CXXFLAGS+=' -Wno-builtin-macro-redefined'
-  CPPFLAGS+=' -D__DATE__=  -D__TIME__=  -D__TIMESTAMP__='
 
   # Do not warn about unknown warning options
   CFLAGS+='   -Wno-unknown-warning-option'
