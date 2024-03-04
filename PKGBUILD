@@ -1,6 +1,7 @@
 #Maintainer: SimPilotAdamT <adam_tazul@outlook.com>
 
-pkgbase='img3tool'
+_pkgbase='img3tool'
+pkgbase='img3tool-git'
 pkgname=('img3tool-git')
 pkgver=0
 pkgrel=1
@@ -13,7 +14,7 @@ source=("git+$url")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgbase}
+  cd ${_pkgbase}
   if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
     printf '%s.r%s.g%s' \
       "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
@@ -27,12 +28,12 @@ pkgver() {
 }
 
 build() {
-  cd ${srcdir}/${pkgbase}
+  cd ${srcdir}/${_pkgbase}
   ./autogen.sh
   make
 }
 
 package() {
-  cd ${srcdir}/${pkgbase}
+  cd ${srcdir}/${_pkgbase}
   make prefix="/usr" DESTDIR="${pkgdir}" install
 }

@@ -1,4 +1,4 @@
-pkgbase = img3tool
+pkgbase = img3tool-git
 	pkgdesc = A tool for manipulating IMG3 files
 	pkgver = 0
 	pkgrel = 1
