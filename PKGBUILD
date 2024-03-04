@@ -10,7 +10,7 @@ url="https://github.com/mtkennerly/ludusavi"
 license=('MIT')
 depends=('bzip2' 'gcc-libs' 'hicolor-icon-theme')
 makedepends=('cargo' 'git' 'libx11' 'libxcb' 'python')
-checkdepends=('appstream-glib' 'desktop-file-utils')
+checkdepends=('appstream' 'desktop-file-utils')
 optdepends=('rclone: upload backups to the cloud')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
@@ -39,7 +39,7 @@ check() {
   export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --all-features
 
-  appstream-util validate-relax --nonet "assets/${_app_id}.metainfo.xml"
+  appstreamcli validate --no-net "assets/${_app_id}.metainfo.xml"
   desktop-file-validate "assets/$pkgname.desktop"
 }
 
