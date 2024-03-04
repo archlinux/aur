@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-posthog
 _name=posthog-python
-pkgver=3.4.2
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Integrate PostHog into any python application."
 arch=('any')
@@ -22,12 +22,19 @@ makedepends=(
 )
 checkdepends=(
   'python-freezegun'
-  'python-mock'
   'python-pytest'
   'python-pytest-timeout'
 )
 source=("$_name-$pkgver.tar.gz::https://github.com/PostHog/posthog-python/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8c5f7aad165f30ead15df28a045077856ed193097e2d7133f8ce37665e1aad6a')
+sha256sums=('477ba902a856b46649ffe76021faa3555c644bdd236c63f633a3c453e901590b')
+
+prepare() {
+  cd "$_name-$pkgver"
+
+  # Drop python-mock checkdepends
+  # https://archlinux.org/todo/drop-python-mock-checkdepends/
+  sed -i 's/import mock/from unittest import mock/g' posthog/test/test_{client,consumer,feature_flags}.py
+}
 
 build() {
   cd "$_name-$pkgver"

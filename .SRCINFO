@@ -1,12 +1,11 @@
 pkgbase = python-posthog
 	pkgdesc = Integrate PostHog into any python application.
-	pkgver = 3.4.2
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://posthog.com/docs/libraries/python
 	arch = any
 	license = MIT
 	checkdepends = python-freezegun
-	checkdepends = python-mock
 	checkdepends = python-pytest
 	checkdepends = python-pytest-timeout
 	makedepends = python-build
@@ -18,7 +17,7 @@ pkgbase = python-posthog
 	depends = python-monotonic
 	depends = python-requests
 	depends = python-six
-	source = posthog-python-3.4.2.tar.gz::https://github.com/PostHog/posthog-python/archive/refs/tags/v3.4.2.tar.gz
-	sha256sums = 8c5f7aad165f30ead15df28a045077856ed193097e2d7133f8ce37665e1aad6a
+	source = posthog-python-3.5.0.tar.gz::https://github.com/PostHog/posthog-python/archive/refs/tags/v3.5.0.tar.gz
+	sha256sums = 477ba902a856b46649ffe76021faa3555c644bdd236c63f633a3c453e901590b
 
 pkgname = python-posthog
