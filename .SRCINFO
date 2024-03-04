@@ -1,7 +1,7 @@
 pkgbase = librefancontrol-bin
 	pkgdesc = A way to control fans based on temperature
 	pkgver = 1.0.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/wiiznokes/LibreFanControl
 	arch = x86_64
 	license = AGPL-3.0-only

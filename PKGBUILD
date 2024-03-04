@@ -2,7 +2,7 @@
 pkgname=librefancontrol-bin
 _pkgname=LibreFanControl
 pkgver=1.0.5
-pkgrel=4
+pkgrel=5
 pkgdesc="A way to control fans based on temperature"
 arch=("x86_64")
 url="https://github.com/wiiznokes/LibreFanControl"
@@ -28,7 +28,7 @@ source=(
 )
 sha256sums=('23704f323b17d0f8d791667edc6fa4cf3807681fd44250deb5a2b1f768b98fc7')
 build() {
-    gendesk -q -f -n --categories "System;Utility" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
+    gendesk -q -f -n --categories="System" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt,etc/systemd/system,usr/bin,usr/local/bin/"${_pkgname}"Service}
