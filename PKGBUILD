@@ -48,7 +48,6 @@ makedepends=(
     ninja
     vulkan-headers
     wayland-protocols
-    openvr-git
 )
 # _tag=62d425164d383fcde498b17b0af5d00bfa92aed4
 _branch="sk-gamescope"
