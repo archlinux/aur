@@ -1,6 +1,6 @@
 pkgbase = gamescope-sk-git
 	pkgdesc = SteamOS session compositing window manager
-	pkgver = 3.14.1.r14.gc3c54be
+	pkgver = 3.14.1.r15.g6ed7472
 	pkgrel = 1
 	url = https://github.com/ValveSoftware/gamescope
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = gamescope-sk-git
 	makedepends = ninja
 	makedepends = vulkan-headers
 	makedepends = wayland-protocols
+	makedepends = openvr-git
 	depends = gcc-libs
 	depends = glibc
 	depends = glm
@@ -47,6 +48,12 @@ pkgbase = gamescope-sk-git
 	provides = gamescope
 	conflicts = gamescope
 	source = git+https://github.com/3003n/gamescope.git#branch=sk-gamescope
+	source = git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1
+	source = git+https://github.com/Joshua-Ashton/reshade.git
+	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
 	b2sums = SKIP
 
 pkgname = gamescope-sk-git
