@@ -11,12 +11,12 @@ RUN su build -c 'cd && git clone https://aur.archlinux.org/paru-bin.git && cd pa
 RUN su build -c 'paru --needed --noconfirm -Syu perl-config-general tgt'
 
 # install dracut-git without running tests
-RUN su build -c 'paru --needed --noconfirm -Syu dracut-git'
+RUN su build -c 'paru --nocheck --needed --noconfirm -Syu dracut-git'
 
 # install all optional dependencies
 RUN L=$(paru -Si dracut-git | sed -n '/^Opt/,/^Conf/p' | sed '$d' | sed 's/^Opt.*://g' | sed 's/^\s*//g' | tr '\n' ' ') && su build -c "paru --needed --noconfirm -Syu $L"
 
 # reinstall with running tests
-#RUN su build -c 'V=1 KVERSION="$(cd /lib/modules ls -1 | tail -1)" TESTS="30" SKIP=" " paru --rebuild -S dracut-git'
+RUN su build -c 'V=1 paru --rebuild -S dracut-git'
 
 RUN rm -fr ~build
