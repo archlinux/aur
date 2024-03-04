@@ -6,6 +6,7 @@ arch=('x86_64')
 url="https://feynarts.de/cuba/"
 license=('LGPL')
 makedepends=('make' 'automake' 'gcc')
+options=('staticlibs')
 source=("https://feynarts.de/cuba/Cuba-$pkgver.tar.gz")
 sha256sums=('8d9f532fd2b9561da2272c156ef7be5f3960953e4519c638759f1b52fe03ed52')
 
