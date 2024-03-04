@@ -6,6 +6,7 @@ pkgbase = python-compact-json-git
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	provides = python-compact-json
 	source = git+https://github.com/masaccio/compact-json.git
 	sha256sums = SKIP
 
