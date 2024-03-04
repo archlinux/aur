@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note-git
-pkgver=3.0.2.r2141.g4fce494d
+pkgver=3.0.2.r2144.gbfd512b2
 _electronversion=22
 _nodeversion=18
 pkgrel=1
@@ -29,7 +29,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -43,10 +43,10 @@ _ensure_local_nvm() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories "Utility" --name "${pkgname%-git}" --exec "${pkgname%-git} %U"
+    gendesk -q -f -n --categories="Utility" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -55,13 +55,13 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    sed '/deb/d' -i electron-builder.json
+    sed '/deb/d;s|icon.icns|icon.png|g' -i electron-builder.json
     yarn install --cache-folder "${srcdir}/.yarn_cache"
     yarn run electron-rebuild
     npx node scripts/download-pandoc.js
     npx node scripts/download-plantuml.js
     yarn run build
-    yarn run electron-builder --linux -p never | sed 's/identityName=.*$//'
+    yarn run electron-builder -l -p never | sed 's/identityName=.*$//'
     cd "${srcdir}/${pkgname%-git}.git/out/.icon-set"
     cp icon_16x16.png icon_16.png
     cp icon_48x48.png icon_48.png
