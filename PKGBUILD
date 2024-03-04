@@ -2,9 +2,9 @@
 _target='compass-readonly'
 _edition=' Readonly'
 pkgname="mongodb-$_target"
-_pkgver='1.42.1'
+_pkgver='1.42.2'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='2'
+pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition'
 # If you're running on armv7h or aarch64, use the electron28-bin package from the AUR for the electron28 dependency
 # If you're running on armv7h, you have to add it to the arch and source arrays of the electron28-bin AUR dependency
@@ -23,7 +23,7 @@ source=(
 	'fix-argv.diff'
 	'mongodb-compass.conf'
 )
-sha512sums=('dee3946302c713923403a91990c9395afaa017b27608ac2e25c78f71ce56ac3ac5409396b38ca858824c9de1fddca3438615071702ff532d64e6bdd68b240f98'
+sha512sums=('24ccb95f6762b8b32e1919b19318c2e6faa6a670d5faa6021ee2dcb04d459c0f448c2429b8635514684fa1b0a710d4580c1880e1f7627dee998bd667645a2571'
             '6338626b9c957c79cd761f19a3d17d856ff88ce96d38c5507269b8dbaf3f20bef00012d035e5e1bde6493db495e2cfce172bcd021a5a8ae1c37dcb5f7a46a875'
             '375142120fd97a3fd9e24d19c864ee3b24e50a5e6b0b224b7ce74742dc5bde185056a9b6f1add63d5ce66e3f0a9309e03873096540e5697547d60a2bc9e769ae'
             'f09a6026e8b963f4821454fa8c2da8c750c765f26010fbf54dfbecfd7451dda5466464bb15fada1252545366c94bf448dc0529c8bd8114f6f3834ae00176d3f1')
