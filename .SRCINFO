@@ -1,7 +1,7 @@
 pkgbase = webhookd
 	pkgdesc = A very simple webhook server launching scripts.
-	pkgver = 1.18.0
-	pkgrel = 2
+	pkgver = 1.19.0
+	pkgrel = 1
 	url = https://github.com/ncarlier/webhookd
 	arch = i686
 	arch = pentium4
@@ -15,7 +15,7 @@ pkgbase = webhookd
 	makedepends = git
 	makedepends = go
 	backup = etc/default/webhookd
-	source = webhookd::git+https://github.com/ncarlier/webhookd.git#tag=v1.18.0
+	source = webhookd::git+https://github.com/ncarlier/webhookd.git#tag=v1.19.0
 	source = webhookd.service
 	source = webhookd.user.service
 	sha256sums = SKIP

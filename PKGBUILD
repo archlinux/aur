@@ -1,8 +1,8 @@
 # Maintainer: Evine Deng <evinedeng@hotmail.com>
 
 pkgname="webhookd"
-pkgver=1.18.0
-pkgrel=2
+pkgver=1.19.0
+pkgrel=1
 pkgdesc="A very simple webhook server launching scripts."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/ncarlier/${pkgname}"
