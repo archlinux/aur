@@ -27,7 +27,9 @@ pkgbase = arduino-ide-src
 	options = !strip
 	source = https://github.com/arduino/arduino-ide/archive/refs/tags/2.3.2.zip
 	source = https://www.arduino.cc/wiki/370832ed4114dd35d498f2f449b4781e/arduino.svg
+	source = arduino-ide-src.sh
 	sha256sums = b6efddd014beb19cade2fe160d9e06a756063474cedf52aea3e0df36cbec38ee
 	sha256sums = 4137981bcb4057c2e0092f22faea287767f102e0b48497d22cd55e8d6988e4ac
+	sha256sums = c02f0c40b92e50f46b09339d1ccfb0cb7cd7caa1e5d386ee9b85938810bfda34
 
 pkgname = arduino-ide-src
