@@ -1,6 +1,6 @@
 # Maintainer: Patrick Hechler <patrjprof-git@ph.anderemails.de>
 pkgname=patrjprof-git
-pkgver=1.1.0r42.1806883
+pkgver=1.1.0r43.465e06d
 pkgrel=1
 pkgdesc="An Open source Java profiler written in Java"
 arch=('any')
@@ -58,31 +58,28 @@ check() {
 
 package() {
   cd "$srcdir"/patr-java-profiler
-  
+
   VERSION="$(cat VERSION)"
-  
+
   # copy original files
-  mkdir -p "$pkgdir"/usr/lib/patrjprof
-  cp -t "$pkgdir"/usr/lib/patrjprof \
+  mkdir -p "$pkgdir"/usr/share/java/patrjprof
+  cp -t "$pkgdir"/usr/share/java/patrjprof \
     patr-java-profiler-agent/target/patr-java-profiler-agent-$VERSION-jar-with-dependencies.jar \
-    patr-java-profiler-bootstrap/target/patr-java-profiler-bootstrap-$VERSION.jar \
-    patr-java-prof.sh
+    patr-java-profiler-bootstrap/target/patr-java-profiler-bootstrap-$VERSION.jar
 
   # create symlink of agent/bootstrap without version/version-with-deps appendix
   ln -sT patr-java-profiler-agent-$VERSION-jar-with-dependencies.jar "$pkgdir"/usr/lib/patrjprof/patr-java-profiler-agent-jar-with-dependencies.jar
   ln -sT patr-java-profiler-agent-$VERSION-jar-with-dependencies.jar "$pkgdir"/usr/lib/patrjprof/patr-java-profiler-agent.jar
   ln -sT patr-java-profiler-bootstrap-$VERSION.jar "$pkgdir"/usr/lib/patrjprof/patr-java-profiler-bootstrap.jar
 
-  # create help script which initilizes the enviroment for the other script
+  # create script which starts the profiler
   echo -n "#!/bin/sh
-export VERSION=$VERSION
-export AGENT_JAR=/usr/lib/patrjprof/patr-java-profiler-agent-$VERSION-jar-with-dependencies.jar
-export BOOTSTRAP_JAR=/usr/lib/patrjprof/patr-java-profiler-bootstrap-$VERSION.jar
-export WD=/usr/lib/patrjprof
-exec /usr/lib/patrjprof/patr-java-prof.sh "'"$@"' > "$pkgdir"/usr/lib/patrjprof/patrjprof.sh
-  chmod +x "$pkgdir"/usr/lib/patrjprof/patrjprof.sh
+#set values needed for the script
+AGENT_JAR=/usr/share/java/patrjprof/patr-java-profiler-agent-$VERSION-jar-with-dependencies.jar
+BOOTSTRAP_JAR=/usr/share/java/patrjprof/patr-java-profiler-bootstrap-$VERSION.jar
 
-  # create symlink to the helper script
-  mkdir -p "$pkgdir"/usr/bin
-  ln -sT ../lib/patrjprof/patrjprof.sh "$pkgdir"/usr/bin/patrjprof
+#helper script from git
+"'"$@"' > "$pkgdir"/usr/lib/patrjprof/patrjprof.sh
+  cat patr-java-prof-help.sh >> "$pkgdir"/usr/bin/patrjprof
+  chmod +x "$pkgdir"/usr/bin/patrjprof
 }
