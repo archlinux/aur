@@ -1,7 +1,7 @@
 pkgbase = sqlite3-page-explorer-bin
 	pkgdesc = Cross Platform app to explore internal organisation of tables and indices
 	pkgver = 1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/siara-cc/sqlite3_page_explorer
 	arch = x86_64
 	license = Apache-2.0
