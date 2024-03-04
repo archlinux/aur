@@ -1,4 +1,4 @@
-*.pkg.tar.*
-gyroflow/
-pkg/
-src/
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
