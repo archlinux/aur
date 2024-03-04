@@ -3,7 +3,7 @@ _appname=qaxbrowser
 _pkgname="${_appname}-safe-stable"
 pkgname=qianxin-browser-stable
 pkgver=1.0.45398.7
-pkgrel=1
+pkgrel=2
 pkgdesc="奇安信可信浏览器国密开发者专版"
 arch=(
     'aarch64'
@@ -15,16 +15,14 @@ _downloadurl="https://dl.qianxin.com/c8a52014-99d3-57ff/%E5%9B%BD%E5%AF%86%E5%BC
 license=('LicenseRef-custom')
 conflicts=("${pkgname%-stable}" "${_pkgname%-stable}" "${_pkgname%-safe-stable}")
 depends=(
-    'at-spi2-core'
-    'systemd-libs'
     'hicolor-icon-theme'
     'alsa-lib'
     'gtk2'
     'nss'
     'nspr'
     'libdrm'
-    'mesa'
     'libxkbcommon'
+    'mesa'
 )
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::${_downloadurl}/${_pkgname}_${pkgver}-1_arm64.deb")
 source_armv7h=("${pkgname}-${pkgver}-armv7h.deb::${_downloadurl}/${_pkgname}_${pkgver}-1_arm64.deb")
@@ -42,7 +40,7 @@ build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_appname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|Exec=/usr/bin/${_pkgname}|Exec=${pkgname}|g;s|Icon=${_pkgname%-stable}|Icon=${pkgname}|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname%-stable}.desktop"
     sed "s|/opt/qianxin.com/${_appname}/${_pkgname%-stable}|${pkgname}|g" \
