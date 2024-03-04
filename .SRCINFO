@@ -1,0 +1,14 @@
+pkgbase = gamescope-session-sk-git
+	pkgdesc = Common gamescope session files
+	pkgver = r223.0dbb596
+	pkgrel = 1
+	url = https://github.com/ChimeraOS/gamescope-session
+	install = gamescope-session.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = gamescope
+	source = gamescope-session::git+https://github.com/3003n/gamescope-session.git#branch=dev
+	md5sums = SKIP
+
+pkgname = gamescope-session-sk-git
