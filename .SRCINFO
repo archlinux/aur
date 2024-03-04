@@ -1,16 +1,20 @@
 pkgbase = ruby-thread_safe
-	pkgdesc = Thread-safe collections and utilities for Ruby
+	pkgdesc = (Deprecated) Thread-safe collections and utilities for Ruby
 	pkgver = 0.3.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ruby-concurrency/thread_safe
 	arch = any
-	license = APACHE
+	license = Apache-2.0
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rake
+	checkdepends = ruby-rspec
+	checkdepends = ruby-rspec-core
+	checkdepends = ruby-yard
 	makedepends = ruby-rdoc
+	makedepends = rubygems
 	depends = ruby
-	noextract = thread_safe-0.3.6.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/thread_safe-0.3.6.gem
-	sha1sums = 5a60162d065d0f479d61ba0a11734b44f5f7ef19
+	source = thread_safe-0.3.6.tar.gz::https://github.com/ruby-concurrency/thread_safe/archive/refs/tags/v0.3.6.tar.gz
+	b2sums = 32719abb80a126cb228dbd84b3f83fe418507609144a0e062cd0c0cd9c5c92db3ac7c093796378fae98acded9f91a7c3aae96965580fccdc4a35f323925ddca1
 
 pkgname = ruby-thread_safe
-
