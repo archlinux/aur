@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A local note-taking software with quick recording and enhanced search capabilities.效能笔记，一款快速记录及搜索功能增强的本地笔记记录软件."
 arch=('any')
 url="https://github.com/xunxun10/snippet-notes"
-license=('ISC')
+license=('MIT')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
