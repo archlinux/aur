@@ -1,0 +1,23 @@
+pkgbase = riscv64-linux-gnu-gcc
+	pkgdesc = Cross compiler for 32-bit and 64-bit RISC-V
+	pkgver = 13.2.0
+	pkgrel = 1
+	url = https://gcc.gnu.org/
+	arch = x86_64
+	groups = risc-v
+	license = GPL
+	license = LGPL
+	license = FDL
+	depends = riscv64-linux-gnu-binutils
+	depends = riscv64-linux-gnu-glibc
+	depends = libmpc
+	depends = libisl
+	depends = zstd
+	options = !emptydirs
+	options = !strip
+	options = !lto
+	source = https://gcc.gnu.org/pub/gcc/releases/gcc-13.2.0/gcc-13.2.0.tar.xz
+	sha256sums = e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da
+	b2sums = 0034b29d3d6cc05821f0c4253ce077805943aff7b370729dd203bda57d89c107edd657eeddc2fb1e69ea15c7b0323b961f46516c7f4af89a3ccf7fea84701be2
+
+pkgname = riscv64-linux-gnu-gcc

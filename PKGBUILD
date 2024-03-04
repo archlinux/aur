@@ -5,7 +5,7 @@
 
 _target=riscv64-linux-gnu
 pkgname=$_target-gcc
-pkgver=12.2.0
+pkgver=13.2.0
 pkgrel=1
 pkgdesc='Cross compiler for 32-bit and 64-bit RISC-V'
 arch=('x86_64')
@@ -15,7 +15,8 @@ groups=('risc-v')
 depends=("$_target-binutils" "$_target-glibc" 'libmpc' 'libisl' 'zstd')
 options=('!emptydirs' '!strip' '!lto')
 source=("https://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.xz")
-sha512sums=('e9e857bd81bf7a370307d6848c81b2f5403db8c7b5207f54bce3f3faac3bde63445684092c2bc1a2427cddb6f7746496d9fbbef05fbbd77f2810b2998f1f9173')
+sha256sums=('e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da')
+b2sums=('0034b29d3d6cc05821f0c4253ce077805943aff7b370729dd203bda57d89c107edd657eeddc2fb1e69ea15c7b0323b961f46516c7f4af89a3ccf7fea84701be2')
 
 if [[ -n "$_snapshot" ]]; then
   _basedir=gcc-$_snapshot
@@ -62,6 +63,7 @@ build() {
       --with-linker-hash-style=gnu \
       --disable-nls \
       --disable-libunwind-exceptions \
+      --disable-libsanitizer \
       --disable-libstdcxx-pch \
       --disable-libssp \
       --disable-multilib \
@@ -79,7 +81,7 @@ build() {
       --enable-gnu-indirect-function \
       --enable-default-pie \
       --enable-checking=release
-  make
+  make -j$(nproc)
 }
 
 package() {
