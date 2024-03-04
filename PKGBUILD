@@ -1,7 +1,7 @@
 # Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=wol-systemd
-pkgver=20230303
+pkgver=20240304
 pkgrel=1
 pkgdesc="A systemd unit file for enabling Wake-On-LAN automatically"
 arch=('any')
