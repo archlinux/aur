@@ -68,9 +68,9 @@ package() {
     patr-java-profiler-bootstrap/target/patr-java-profiler-bootstrap-$VERSION.jar
 
   # create symlink of agent/bootstrap without version/version-with-deps appendix
-  ln -sT patr-java-profiler-agent-$VERSION-jar-with-dependencies.jar "$pkgdir"/usr/lib/patrjprof/patr-java-profiler-agent-jar-with-dependencies.jar
-  ln -sT patr-java-profiler-agent-$VERSION-jar-with-dependencies.jar "$pkgdir"/usr/lib/patrjprof/patr-java-profiler-agent.jar
-  ln -sT patr-java-profiler-bootstrap-$VERSION.jar "$pkgdir"/usr/lib/patrjprof/patr-java-profiler-bootstrap.jar
+  ln -sT patr-java-profiler-agent-$VERSION-jar-with-dependencies.jar "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-agent-jar-with-dependencies.jar
+  ln -sT patr-java-profiler-agent-$VERSION-jar-with-dependencies.jar "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-agent.jar
+  ln -sT patr-java-profiler-bootstrap-$VERSION.jar "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-bootstrap.jar
 
   # create script which starts the profiler
   echo -n "#!/bin/sh
@@ -79,7 +79,7 @@ AGENT_JAR=/usr/share/java/patrjprof/patr-java-profiler-agent-$VERSION-jar-with-d
 BOOTSTRAP_JAR=/usr/share/java/patrjprof/patr-java-profiler-bootstrap-$VERSION.jar
 
 #helper script from git
-"'"$@"' > "$pkgdir"/usr/lib/patrjprof/patrjprof.sh
+"'"$@"' > "$pkgdir"/usr/bin/patrjprof
   cat patr-java-prof-help.sh >> "$pkgdir"/usr/bin/patrjprof
   chmod +x "$pkgdir"/usr/bin/patrjprof
 }
