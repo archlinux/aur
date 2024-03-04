@@ -1,20 +1,18 @@
 pkgbase = r-hrbrthemes
 	pkgdesc = Additional Themes, Theme Components and Utilities for 'ggplot2'
-	pkgver = 0.8.0
+	pkgver = 0.8.7
 	pkgrel = 1
 	url = https://cran.r-project.org/package=hrbrthemes
 	arch = any
 	license = MIT
 	checkdepends = r-hunspell
+	checkdepends = r-stringi
 	checkdepends = r-testthat
 	checkdepends = r-vdiffr
 	depends = r-extrafont
 	depends = r-gdtools
 	depends = r-ggplot2
-	depends = r-htmltools
-	depends = r-knitr
 	depends = r-magrittr
-	depends = r-rmarkdown
 	depends = r-scales
 	optdepends = r-clipr
 	optdepends = r-dplyr
@@ -25,8 +23,8 @@ pkgbase = r-hrbrthemes
 	optdepends = r-svglite
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://cran.r-project.org/src/contrib/hrbrthemes_0.8.0.tar.gz
-	md5sums = 164d952f9627188cff499edd1cce9c5c
-	sha256sums = ecfe33ff0907f141c84587376274d2c8249f03938f72e7a5676d945b1630f014
+	source = https://cran.r-project.org/src/contrib/hrbrthemes_0.8.7.tar.gz
+	md5sums = 2c239ee48ed2bf410b7e99f8c746c7ef
+	b2sums = 375f8330c487c7cc7099519f725ef6f8c5f7c1bda3fc089c05147f1d0b68524ca1219a327a0a217e638c7c8a0e3a6d7ba10604305b85bce9a55c47a930a17eeb
 
 pkgname = r-hrbrthemes
