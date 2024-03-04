@@ -1,5 +1,5 @@
 pkgname=nordvpn-git
-pkgver=r273.9ffda26
+pkgver=r390.11c55f2
 pkgrel=1
 pkgdesc="NordVPN client for Linux (Git version)"
 arch=('x86_64' 'arm64')
@@ -18,7 +18,7 @@ pkgver() {
 
 prepare() {
     if ! $(groups | grep -q '\bdocker\b'); then
-   	echo "You are not a member of the docker group. Docker is required to build the package."
+        echo "You are not a member of the docker group. Docker is required to build the package."
         exit 1
     fi
 
@@ -57,6 +57,6 @@ package() {
     install -Dm644 contrib/systemd/tmpfiles.d/* -t "${pkgdir}/usr/lib/systemd/tmpfiles.d/"
     install -Dm644 contrib/desktop/nordvpn.desktop "${pkgdir}/usr/share/applications/nordvpn.desktop"
     install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/nordvpn/LICENSE.md"
-    install -Dm644 contrib/rsa/rsa-key-1.pub "${pkgdir}/var/lib/nordvpn/data/rsa-key-1.pub"
+    install -Dm644 daemon/response/rsa-key-1.pub "${pkgdir}/var/lib/nordvpn/data/rsa-key-1.pub"
 }
 
