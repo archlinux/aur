@@ -1,7 +1,7 @@
 pkgbase = mad-pascal
-	pkgdesc = MADS is a multi-pass crossassembler designed for 6502 and 65816 processors
+	pkgdesc = Mad-Pascal (MP) is a 32-bit Turbo Pascal compiler for Atari XE/XL.
 	pkgver = 1.6.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tebe6502/Mad-Pascal
 	arch = x86_64
 	license = unknown
