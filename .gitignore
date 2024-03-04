@@ -1,7 +1,4 @@
-*.zip
-*.tar
-*.tar.gz
-*.tgz
-*.7z
-/pkg
+/*.pkg.tar*
+/*.tar.gz
 /src
+/pkg
