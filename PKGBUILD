@@ -1,6 +1,6 @@
 # Maintainer: Jérémie Roquet <jroquet@arkanosis.net>
 pkgname=binjr-bin
-pkgver=3.13.0
+pkgver=3.16.0
 pkgrel=1
 provides=("binjr")
 pkgdesc="Time Series Data Browser"
@@ -9,7 +9,7 @@ url="https://binjr.eu/"
 license=("Apache")
 source=("https://github.com/binjr/binjr/releases/download/v${pkgver}/binjr-${pkgver}_linux-amd64.tar.gz" "https://github.com/binjr/binjr/releases/download/v${pkgver}/binjr-${pkgver}_linux-amd64.tar.gz.asc")
 sha512sums=('SKIP' 'SKIP')
-validpgpkeys=("BAF5C2D20BE017155EE108152065AD47B326EB92")
+validpgpkeys=("20CAEC83151CCC7CE12DF29EAF45EEEFB23702CB")
 
 package() {
     install -d $pkgdir/{opt/binjr,usr/bin,usr/share/doc/binjr}
