@@ -4,7 +4,7 @@
 
 pkgname=arduino-ide-bin
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Arduino prototyping platform IDE, rewrite based on the Theia IDE framework."
 arch=(x86_64)
 url="https://github.com/arduino/arduino-ide"
@@ -33,7 +33,7 @@ package() {
 	chmod -R 755 "arduino-ide"
 	cp -r "arduino-ide" "$pkgdir/opt/arduino-ide"
 	install -dm755 "$pkgdir/usr/bin"
-	ln -s "/opt/arduino-ide/arduino-ide" "$pkgdir/usr/bin/arduino-ide"
 	install -Dm644 "arduino-ide-v2.desktop" "$pkgdir/usr/share/applications/arduino-ide-v2.desktop"
 	install -Dm644 "arduino.svg" "$pkgdir/usr/share/pixmaps/arduino-ide-v2.svg"
+	install -m755 "${srcdir}/${pkgname}.sh" "$pkgdir/usr/bin/arduino-ide"
 }
