@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=speek-appimage
 pkgver=1.7.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Privacy focused messenger that doesn't trust anyone with your identity, your contact list, or your communications"
 arch=('x86_64')
 url="https://speek.network/"
@@ -11,7 +11,7 @@ provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
 depends=()
 makedepends=(
-  'squashfuse'
+  'fuse2'
 )
 options=("!strip")
 _install_path="/opt/appimages"

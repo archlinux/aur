@@ -1,11 +1,11 @@
 pkgbase = speek-appimage
 	pkgdesc = Privacy focused messenger that doesn't trust anyone with your identity, your contact list, or your communications
 	pkgver = 1.7.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://speek.network/
 	arch = x86_64
 	license = LicenseRef-custom
-	makedepends = squashfuse
+	makedepends = fuse2
 	provides = speek=1.7.0
 	conflicts = speek
 	options = !strip
