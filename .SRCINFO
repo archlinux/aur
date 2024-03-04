@@ -1,7 +1,7 @@
 pkgbase = objtoschematic-bin
 	pkgdesc = A tool to convert 3D models into Minecraft formats such as .schematic, .litematic, .schem and .nbt
 	pkgver = 0.7.1
-	pkgrel = 9
+	pkgrel = 10
 	url = https://objtoschematic.com/
 	arch = x86_64
 	license = BSD-3-Clause
@@ -15,6 +15,6 @@ pkgbase = objtoschematic-bin
 	source = objtoschematic.sh
 	sha256sums = 5953facd08818a8c35a4360f220ecf72d681c37f979db85f028b5c5b8eb086c8
 	sha256sums = 013faf6901a4a9e6538ef3424509efb52c41dcde40070a97c6789c83c9c6de2e
-	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = objtoschematic-bin

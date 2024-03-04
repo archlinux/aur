@@ -3,7 +3,7 @@ pkgname=objtoschematic-bin
 _pkgname=ObjToSchematic
 pkgver=0.7.1
 _electronversion=13
-pkgrel=9
+pkgrel=10
 pkgdesc="A tool to convert 3D models into Minecraft formats such as .schematic, .litematic, .schem and .nbt"
 arch=('x86_64')
 url="https://objtoschematic.com/"
@@ -25,13 +25,13 @@ source=(
 )
 sha256sums=('5953facd08818a8c35a4360f220ecf72d681c37f979db85f028b5c5b8eb086c8'
             '013faf6901a4a9e6538ef3424509efb52c41dcde40070a97c6789c83c9c6de2e'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories "Game" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
+    gendesk -q -f -n --categories="Game" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
