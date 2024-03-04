@@ -2,7 +2,7 @@
 pkgname=tfiletransfer-bin
 _pkgname=tFileTransfer
 pkgver=2.2.1
-pkgrel=5
+pkgrel=6
 pkgdesc="File transfer tools built with Compose for Desktop. It could send/receive files to/from other devices via LocalNetwork."
 arch=('x86_64')
 url="https://github.com/Tans5/tFileTransfer_desktop"
@@ -25,7 +25,7 @@ build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed -e "s|/opt/${pkgname%-bin}/bin/${_pkgname}|${pkgname%-bin} %U|g" \
         -e "s|/opt/${pkgname%-bin}/lib/${_pkgname}.png|${pkgname%-bin}|g;s|未知|Utility;|g" \
         -i "${srcdir}/opt/${pkgname%-bin}/lib/${pkgname%-bin}-${_pkgname}.desktop"
