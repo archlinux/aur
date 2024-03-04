@@ -1,7 +1,7 @@
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 # Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
 
-pkgname=(conversejs-git conversejs-epiphany-git)
+pkgname=(conversejs-git conversejs-epiphany-git conversejs-headless-git)
 pkgver=10.1.5.r122.g04c37537d
 pkgrel=1
 arch=('any')
@@ -51,10 +51,15 @@ package_conversejs-epiphany-git() {
   install -Dm644 ../launcher.desktop "$pkgdir"/usr/share/applications/conversejs.desktop
 }
 
-#package_conversejs-headless-git() {
-#  depends=('epiphany' 'conversejs-git' 'python')
-#  pkgdesc='Desktop launcher for Converse.js'
-#
-#  install -Dm755 ../launcher.sh "$pkgdir"/usr/bin/conversejs
-#  install -Dm644 ../launcher.desktop "$pkgdir"/usr/share/applications/conversejs.desktop
-#}
+package_conversejs-headless-git() {
+  pkgdesc='Headless Converse.js'
+
+  cd converse.js
+  install -dm755 "$pkgdir"/usr/share/webapps/converse-headless.js
+  cp -r src/headless/dist "$pkgdir"/usr/share/webapps/converse-headless.js/
+
+  #are these needed?
+  cp -r sounds "$pkgdir"/usr/share/webapps/converse-headless.js/
+  install -dm755 "$pkgdir"/usr/share/webapps/converse-headless.js/images
+  cp -r images/favicon.ico "$pkgdir"/usr/share/webapps/converse-headless.js/images/
+}

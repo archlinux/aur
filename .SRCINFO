@@ -1,5 +1,5 @@
 pkgbase = conversejs-git
-	pkgver = 6.0.0.r364.gefb486511
+	pkgver = 10.1.5.r122.g04c37537d
 	pkgrel = 1
 	url = https://conversejs.org/
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = conversejs-git
 
 pkgname = conversejs-git
 	pkgdesc = Web-based XMPP/Jabber chat client written in javascript
+	backup = usr/share/webapps/converse.js/fullscreen.html
 
 pkgname = conversejs-epiphany-git
 	pkgdesc = Desktop launcher for Converse.js
@@ -22,3 +23,5 @@ pkgname = conversejs-epiphany-git
 	depends = conversejs-git
 	depends = python
 
+pkgname = conversejs-headless-git
+	pkgdesc = Headless Converse.js
