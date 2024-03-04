@@ -1,4 +1,4 @@
-From 4569aceed6267eaeffa0fd1f9f6e4c510a548076 Mon Sep 17 00:00:00 2001
+From 41b57a46854d8c6e78050434128f020aad6e03e0 Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Thu, 29 Feb 2024 15:28:48 +0200
 Subject: [PATCH 7/7] AUR Enable winewayland
@@ -9,7 +9,7 @@ Subject: [PATCH 7/7] AUR Enable winewayland
  2 files changed, 9 insertions(+)
 
 diff --git a/Makefile.in b/Makefile.in
-index a80e5262..ede0804a 100644
+index 99ee6e17..581b981c 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -426,6 +426,7 @@ WINE_SOURCE_ARGS = \
