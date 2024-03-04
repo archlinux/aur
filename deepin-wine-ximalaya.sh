@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 BOTTLENAME=Deepin-@appname@
 APPVER=@appver@
@@ -18,7 +18,7 @@ if [ -z "${DISABLE_ATTACH_FILE_DIALOG}" ];then
 fi
    
 if [ -n "${EXEC_PATH}" ];then
-    "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "${EXEC_PATH}" "$@" || exit $?
+    exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "${EXEC_PATH}" "$@" || exit $?
 else
-    "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "uninstaller.exe" "$@" || exit $?
+    exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "uninstaller.exe" "$@" || exit $?
 fi

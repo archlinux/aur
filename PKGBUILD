@@ -2,7 +2,7 @@
 _appname=ximalaya
 pkgname="deepin-wine-${_appname}"
 pkgver=4.0.2
-pkgrel=2
+pkgrel=3
 _sparkpkgname="com.${_appname}.spark"
 _sparkver=4.0.0spark9
 pkgdesc="喜马拉雅，是中国领先的音频分享平台。用声音分享人类智慧，用声音服务美好生活，做一家人一辈子的精神食粮，是平台的使命和初心。"
@@ -11,13 +11,13 @@ url="https://www.ximalaya.com"
 license=('LicenseRef-custom')
 depends=(
     'deepin-wine6-stable'
-    'deepin-wine-helper'
+    'spark-dwine-helper'
     'xdg-utils'
-    'lib32-glibc'
 )
 optdepends=(
     'wqy-microhei'
     'wqy-zenhei'
+    'ttf-ms-fonts'
 )
 makedepends=(
     'p7zip'
@@ -34,14 +34,14 @@ source=(
 sha256sums=('95834bc4ad16e4822331adac43b5f4feb9aeba50d103788a2cefad72cd8dc941'
             '7bb0647d70828858fcccba3af63cffc8ac0179defaba674fb120bd3786c703be'
             '95b52ed4c2b0ef19d4a091da847c7dd20761699aa63a12bf933fa2064f49cd01'
-            '1d9c5f770cfce6b7e7399333452aa78ceb94858a059ff5c98880eb7047f1fecb')
+            '8303c95e1a707be4e418d1750a47eaebf861f2cdff81a9e0c0212ae2edacef2a')
 build() {
     sed -e "s|@appname@|${_appname}|g" \
         -e "s|@appver@|${pkgver}|g" \
         -e "s|@packagename@|${pkgname}|g" \
         -i "${pkgname}.sh"
     
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     mkdir -p "${srcdir}/tmp"
 
     msg "Extracting Deepin Wine ${_appname} archive ..."
