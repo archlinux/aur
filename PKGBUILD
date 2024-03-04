@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simple-icons
-pkgver=11.6.0
+pkgver=11.7.0
 pkgrel=1
 pkgdesc="Free SVG icons for popular brands"
 arch=('any')
@@ -11,7 +11,6 @@ conflicts=("${pkgname}")
 makedepends=(
     'git'
 )
-options=('!strip')
 source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=${pkgver}"
 )
