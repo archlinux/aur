@@ -2,7 +2,7 @@
 pkgname=patrjprof-git
 pkgver=1.1.0r40.2a444f9
 pkgrel=1
-pkgdesc="A Java profiler written in Java"
+pkgdesc="An Open source Java profiler written in Java"
 arch=('any')
 url="https://git.rwth-aachen.de/patrick_laszlo.hechler/patr-java-profiler"
 license=('AGPL')
@@ -10,7 +10,7 @@ groups=()
 depends=('java-runtime-headless>=8')
 makedepends=('git' 'maven' 'java-runtime-headless>=8')
 optdepends=()
-provides=('patrjprof=${pkgver}')
+provides=("patrjprof=${pkgver}")
 conflicts=('patrjprof')
 replaces=()
 backup=()
