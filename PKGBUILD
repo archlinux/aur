@@ -1,20 +1,21 @@
 # Maintainer: k1f0 <generic at k1f0.mozmail.com>
 
 pkgname=rwpspread
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 _patch=""
 pkgdesc='Multi-Monitor Wallpaper Utility'
 arch=('x86_64')
 url='https://github.com/0xk1f0/rwpspread'
 license=('GPL3')
-makedepends=('cargo' 'git')
+makedepends=('cargo' 'git' 'gzip')
 optdepends=('wpaperd: wallpaper setter backend'
-            'swaybg: wallpaper setter backend')
+            'swaybg: wallpaper setter backend'
+            'hyprpaper: wallpaper setter backend')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}${_patch}::${url}/archive/refs/tags/v${pkgver}${_patch}.tar.gz")
-b2sums=('e34562c460fa99fac1d786720755f86755a2a666b75f7263cfd1fa6557d5ebd0671a6292bba1823c15d39c3be68b1800f87acf45f4bc15617bc5758ec23a53e8')
+b2sums=('63e974614cd1a3e633f58a47c06cf40e73e726bfff4a6bc432726d19366af77d14e11dc559fd68763ae652d8ac9593ded7c76a72a320e5c8a1f1f1cd4a8cc4bf')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}${_patch}"
@@ -30,5 +31,16 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}${_patch}"
+  # binary
   install -Dm0755 -t "${pkgdir}/usr/bin" "target/release/${pkgname}"
+  # shell completions
+  mv "completions/${pkgname%-git}.bash" "completions/${pkgname%-git}"
+  install -Dm0644 -t "${pkgdir}/usr/share/bash-completion/completions" "completions/${pkgname%-git}"
+  install -Dm0644 -t "${pkgdir}/usr/share/zsh/site-functions" "completions/_${pkgname%-git}"
+  install -Dm0644 -t "${pkgdir}/usr/share/fish/vendor_completions.d" "completions/${pkgname%-git}.fish"
+  # man page
+  gzip "man/${pkgname%-git}.1"
+  install -Dm0644 -t "${pkgdir}/usr/share/man/man1" "man/${pkgname%-git}.1.gz"
+  # license
+  install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname%-git}" "LICENSE"
 }
