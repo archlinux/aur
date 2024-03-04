@@ -20,7 +20,7 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
-checkdepends=('appstream-glib')
+checkdepends=('appstream')
 #checkdepends+=('python-pytest')
 optdepends=(
   'python-nautilus: Nautilus plugin'
@@ -41,7 +41,7 @@ check() {
    cd "$pkgname-$pkgver"
 #  PYTHONPATH=./ pytest
 
-  appstream-util validate-relax --nonet "data/${_app_id}.metainfo.xml"
+  appstreamcli validate --no-net "data/${_app_id}.metainfo.xml"
   desktop-file-validate "data/${_app_id}.desktop"
 }
 
