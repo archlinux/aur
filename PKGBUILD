@@ -5,7 +5,7 @@
 
 pkgname=linuxcnc
 pkgver=2.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)"
 arch=(x86_64)
 license=(GPL2 'custom: unredestributable')
@@ -13,7 +13,7 @@ url="https://linuxcnc.org/"
 depends=(glibc python gtk3 libusb libxss python-cairo gobject-introspection-runtime dbus-python python-pillow libxmu
          python-gobject tk python-matplotlib boost-libs python-numpy gstreamer at-spi2-core libepoxy libtirpc libxft
          harfbuzz gcc-libs fontconfig gdk-pixbuf2 libxext librsvg glib2 zlib cairo readline systemd-libs freetype2
-         libx11 libxinerama python-configobj libgpiod  python-yapps2 tcl pango bwidget)
+         libx11 libxinerama python-configobj libgpiod-1.6.4 python-yapps2 tcl pango bwidget)
 makedepends=(intltool boost asciidoc glu procps-ng psmisc tclx)
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LinuxCNC/linuxcnc/archive/refs/tags/v${pkgver}.tar.gz"
