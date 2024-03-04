@@ -3,7 +3,7 @@ pkgname=r3play-bin
 _pkgname=R3PLAY
 pkgver=2.0.0_alpha_2
 _electronversion=23
-pkgrel=1
+pkgrel=2
 pkgdesc="高颜值的第三方网易云播放器，支持 Windows/macOS/Linux.原名YesPlayMusic."
 arch=('x86_64')
 url="https://music.qier222.com/"
@@ -18,13 +18,10 @@ provides=("yesplaymusic")
 depends=(
     'hicolor-icon-theme'
     "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
     'nodejs'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 options=('!strip')
 source=(
@@ -34,7 +31,7 @@ source=(
 )
 sha256sums=('6108bdc25f8c27fedd4cad07e8c6f20c3eed895bea46f6d73123ad889d927ec7'
             'db52e3daad9260a1cc638efaf3f6b7a6bdead236365586a60078a9a287613037'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
