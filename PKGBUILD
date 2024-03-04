@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sqlite3-page-explorer-git
-pkgver=1.0.r57.g746d603
+pkgver=1.0.r68.g8f9786c
 _electronversion=22
 pkgrel=1
 pkgdesc="Cross Platform app to explore internal organisation of tables and indices"
@@ -23,7 +23,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -33,7 +33,7 @@ build() {
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@appasar@|app|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
-    gendesk -q -f -n --categories "Development" --name "${pkgname%-git}" --exec "${pkgname%-git} --no-sandbox %U"
+    gendesk -q -f -n --categories="Development" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
