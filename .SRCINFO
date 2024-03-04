@@ -1,21 +1,18 @@
 pkgbase = board4you-bin
 	pkgdesc = A whiteboard app built with Electron, React, react-icons, konva and bootstrap.
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GachiLord/board4you
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = squashfuse
+	makedepends = fuse2
 	depends = electron26
-	depends = dbus-glib
-	depends = libdbusmenu-glib
-	depends = gtk2
 	depends = nodejs
 	provides = board4you=1.0.7
 	conflicts = board4you
 	source = board4you-1.0.7.AppImage::https://github.com/GachiLord/board4you/releases/download/v1.0.7/board4you-1.0.7.AppImage
 	source = board4you.sh
 	sha256sums = 23938ce2a77b425544f24fffc7a8c909be81b857cc3eadfe292f95ba66210d88
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = board4you-bin
