@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gotepad-bin
 pkgver=2.3.2
-pkgrel=6
+pkgrel=7
 pkgdesc="A simple text editor built with Wails"
 arch=('x86_64')
 url="https://github.com/Sammy-T/gotepad"
@@ -25,7 +25,7 @@ sha256sums=('d385b11d6abb20175de0d7df5e42f4c7fa4df92cd43c70168bc8bfdd80abe5f2'
             'dca196dfc07025990b7613625b114fa8ae063e0fb5de6f29a81e42ffd1b5eaae'
             'de674115ab3a065b2d5f6f229777ed33369ccdeabdc6020047d72fe35441014d')
 build() {
-    gendesk -q -f -n --categories "Utility" --name "${pkgname%-bin}" --exec "${pkgname%-bin} %U"
+    gendesk -q -f -n --categories="Utility" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/build/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
