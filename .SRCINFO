@@ -1,13 +1,16 @@
 pkgbase = python-events
-	pkgdesc = Python Event Handling the C# Style
-	pkgver = 0.4
+	pkgdesc = Python event handling in the C# style
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/pyeve/events
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	source = https://github.com/pyeve/events/archive/v0.4.tar.gz
-	md5sums = 247122c04a7aef9dba56ca4b45ed80c8
+	makedepends = python-wheel
+	depends = python
+	source = https://github.com/pyeve/events/archive/v0.5.tar.gz
+	sha256sums = 51fed10bad025e4bb81714b6114546b7f42773eda82df10e769d76a7859e9c3a
 
 pkgname = python-events
-

@@ -1,26 +1,35 @@
-# Maintainer: Andrew Steinke <rkcf@rkcf.me>
+# Maintainer:
+# Contributor: Andrew Steinke <rkcf@rkcf.me>
 
-pkgname=python-events
-_pkgname=events
-pkgver=0.4
+_module="events"
+_pkgname="python-$_module"
+pkgname="$_pkgname"
+pkgver=0.5
 pkgrel=1
-pkgdesc="Python Event Handling the C# Style"
-arch=('any')
+pkgdesc="Python event handling in the C# style"
 url="https://github.com/pyeve/events"
-license=('BSD')
-makedepends=('python-setuptools')
-source=("https://github.com/pyeve/$_pkgname/archive/v$pkgver.tar.gz")
-md5sums=('247122c04a7aef9dba56ca4b45ed80c8')
+license=('BSD-3-Clause')
+arch=('any')
+
+depends=('python')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+
+_pkgsrc="$_module-$pkgver"
+source=("$url/archive/v$pkgver.tar.gz")
+sha256sums=('51fed10bad025e4bb81714b6114546b7f42773eda82df10e769d76a7859e9c3a')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py build
+  cd "$_pkgsrc"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --skip-build --optimize=1
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$_pkgsrc"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
-
-# vim:set ts=2 sw=2 et:
