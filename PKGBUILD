@@ -12,8 +12,8 @@
 pkgname=lightworks
 lwksver=2023.2
 lwksreldir=2023.2
-lwksbuild=143744
-pkgver=$lwksver
+lwksbuild=144635
+pkgver=$lwksver.$lwksbuild
 pkgrel=2
 pkgdesc="Lightworks is a professional video editing suite"
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
     )
 
 sha512sums=(
-    'a21cad4188536245cf2126e96b798f26563ee136154695a6e1194086229f59aa9eda75ef532673b46389d1554eefa45bf499155617a4daae0309c35a3f9f3989'
+    '99731f7aea6f8eb1299ff387cdd7eb4589e15586733491c166107e0d975852855c99c81475d04898765521a46604a2d7363e1da429234da60256d12cbc32167e'
     )
 
 package() {
