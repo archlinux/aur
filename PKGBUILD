@@ -4,7 +4,7 @@
 # Contributor: x-demon
 pkgname=nicotine-plus-git
 _app_id=org.nicotine_plus.Nicotine
-pkgver=3.3.1.r0.gf7f1f3f3b
+pkgver=3.3.2.r27.gc39868a1e
 pkgrel=1
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL-3.0-or-later')
 depends=('gtk4' 'python-gobject')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=('libadwaita: for Adwaita theme on GNOME')
-checkdepends=('appstream-glib' 'desktop-file-utils' 'python-pytest')
+checkdepends=('appstream' 'desktop-file-utils' 'python-pytest')
 provides=("${pkgname%-git}" 'nicotine+' 'nicotine')
 conflicts=("${pkgname%-git}" 'nicotine+' 'nicotine')
 source=('git+https://github.com/Nicotine-Plus/nicotine-plus.git')
@@ -36,7 +36,7 @@ check() {
   pytest --deselect=test/unit/test_version.py
 
   desktop-file-validate "data/${_app_id}.desktop"
-  appstream-util validate-relax --nonet "data/${_app_id}.appdata.xml"
+  appstreamcli validate --no-net "data/${_app_id}.appdata.xml"
 }
 
 package() {
