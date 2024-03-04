@@ -1,0 +1,14 @@
+
+## arg 1:  the new package version
+pre_install() {
+	if [[ ! -d "/usr/lib/${pkgname::-4}" ]]; then
+		mkdir /usr/lib/${pkgname::-4}
+	fi
+}
+
+## arg 1:  the old package version
+post_remove() {
+	if [[ -z "${pkgname::-4}" ]]; then
+		rmdir /usr/lib/${pkgname::-4}
+	fi
+}

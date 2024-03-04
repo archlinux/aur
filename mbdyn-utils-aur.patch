@@ -1,0 +1,38 @@
+diff --git a/utils/Makefile.am b/utils/Makefile.am
+index 1a3a58b476..de8861e057 100644
+--- a/utils/Makefile.am
++++ b/utils/Makefile.am
+@@ -10,10 +10,10 @@ ann_sim \
+ ann_tr \
+ c81merge \
+ c81test \
+-cl \
++mbdyn_cl \
+ crypt \
+ dae-intg \
+-deriv \
++mbdyn_deriv \
+ eu2rot \
+ eu2phi
+ 
+@@ -162,9 +162,9 @@ autopilot_SOURCES = autopilot.c
+ c81merge_SOURCES = c81merge.cc
+ c81test_SOURCES = c81test.cc
+ crypt_SOURCES = crypt.cc
+-cl_SOURCES = cl.cc
++mbdyn_cl_SOURCES = cl.cc
+ dae_intg_SOURCES = dae-intg.cc dae-intg.h
+-deriv_SOURCES = deriv.c
++mbdyn_deriv_SOURCES = deriv.c
+ print_env_SOURCES = env.c
+ eu2rot_SOURCES = eu2rot.cc
+ eu2phi_SOURCES = eu2phi.cc
+@@ -275,7 +275,7 @@ c81test_LDADD = ../mbdyn/aero/libaero.la \
+ ../libraries/libmbutil/libmbutil.la \
+ $(MYLIBS)
+ crypt_LDADD = $(MYLIBS) @SECURITY_LIBS@
+-cl_LDADD = $(MYLIBS)
++mbdyn_cl_LDADD = $(MYLIBS)
+ dae_intg_LDADD = $(MYLIBS)
+ eu2rot_LDADD = $(MYLIBS)
+ eu2phi_LDADD = $(MYLIBS)
