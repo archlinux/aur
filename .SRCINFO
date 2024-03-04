@@ -11,6 +11,7 @@ pkgbase = gamescope-sk
 	makedepends = glslang
 	makedepends = meson
 	makedepends = ninja
+	makedepends = openvr-git
 	makedepends = vulkan-headers
 	makedepends = wayland-protocols
 	depends = gcc-libs
