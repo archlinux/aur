@@ -2,7 +2,7 @@
 pkgname=lettura-bin
 _pkgname=lettura
 pkgver=0.1.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Another free and open-source feed reader"
 arch=('x86_64')
 url="https://github.com/zhanglun/lettura"
@@ -22,7 +22,7 @@ source=(
 sha256sums=('cec380ff04f9579ccbbc0be63e78e9aa9d68cb0be99634d8bec206f8608a573e'
             'cb0e47679b2552a19d61430fbc452636d7e227b799ed7093d5c13e01798d091b')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.gz"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"

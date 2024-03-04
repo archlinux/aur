@@ -1,7 +1,7 @@
 pkgbase = lettura-bin
 	pkgdesc = Another free and open-source feed reader
 	pkgver = 0.1.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zhanglun/lettura
 	arch = x86_64
 	license = MIT
