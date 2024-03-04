@@ -3,7 +3,7 @@ pkgname=tome-bin
 _pkgname=Tome
 pkgver=0.8.0
 _electronversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="Git integrated cross-platform markdown editor"
 arch=("x86_64")
 url="https://tome.evinowen.net/"
@@ -21,13 +21,13 @@ source=(
 )
 sha256sums=('1f7119842532cb4bb3907a672edd38264b7c4ca8d73e6d486efea98cb51e93d8'
             '3103a7058613516746435f89ff07509d42d9a07a485ad7b7fbc2781b06be4722'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
