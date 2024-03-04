@@ -72,18 +72,6 @@ package() {
     -Dm644 \
     "${_app_id}.nes" \
     "${pkgdir}/usr/games/${_app_id}/${_app_id}.nes"
-
-  # for _bin in *; do
-  #   if \
-  #     [[ "${_bin}" == *".bin" ]] || \
-  #     [[ "${_bin}" == *".cue" ]]; then
-  #     _dest=${_bin/$_rom_filename/$_uuid}
-  #     install \
-  #       -Dm644 \
-  #       "${_bin}" \
-  #       "${_game}/${_dest}"
-  #   fi
-  # done
 }
 
 # vim:set sw=2 sts=-1 et:
