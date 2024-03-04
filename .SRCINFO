@@ -1,0 +1,14 @@
+pkgbase = kwin-scripts-forceblur-plasma6
+	pkgdesc = Force-enable blur effect to user-specified windows
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/esjeon/kwin-forceblur
+	arch = any
+	license = MIT
+	depends = kwin
+	provides = kwin-scripts-forceblur
+	conflicts = kwin-scripts-forceblur
+	source = kwin-forceblur-0.7.0.tar.gz::https://github.com/bouteillerAlan/kwin-forceblur/archive/refs/heads/feat/upgrade-to-new-guidelines.tar.gz
+	sha256sums = 4b7cd5dc094096f65947143a0b5e45657031c30244877ec438d1427707fc2e3c
+
+pkgname = kwin-scripts-forceblur-plasma6
