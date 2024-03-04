@@ -1,7 +1,6 @@
-
 _pkgname=gamescope
 pkgname=${_pkgname}-sk
-pkgver=3.14.1.r14.gc3c54be
+pkgver=3.14.1.r15.g6ed7472
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
@@ -49,10 +48,19 @@ makedepends=(
     ninja
     vulkan-headers
     wayland-protocols
+    openvr-git
 )
-_tag=c3c54bebd48b3424eca0f41dd56c66fd425d184b
-source=("git+https://github.com/3003n/gamescope.git#commit=${_tag}")
-b2sums=('SKIP')
+_tag=62d425164d383fcde498b17b0af5d00bfa92aed4
+source=("git+https://github.com/3003n/gamescope.git#tag=${_tag}"
+        "git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1"
+        "git+https://github.com/Joshua-Ashton/reshade.git"
+        "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
+        )
+
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP')
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -68,11 +76,11 @@ prepare() {
         git apply "../$src"
     done
     meson subprojects download
-    git submodule init
+    git submodule init src/reshade
+    git config submodule.src/reshade.url "$srcdir/reshade"
+    git submodule init thirdparty/SPIRV-Headers
+    git config submodule.thirdparty/SPIRV-Headers.url ../SPIRV-Headers
     git -c protocol.file.allow=always submodule update
-
-    # Use Arch provided libdisplay-info, do use other subprojects as is
-    rm -rf subprojects/libdisplay-info
 }
 
 pkgver() {
@@ -81,13 +89,20 @@ pkgver() {
 }
 
 build() {
-    arch-meson "${_pkgname}" build \
-        -Dforce_fallback_for=stb \
-        -Dpipewire=enabled
-    meson compile -C build
+  export LDFLAGS="$LDFLAGS -lrt"
+  arch-meson gamescope build \
+    -Dforce_fallback_for=stb,libliftoff,wlroots \
+    -Dpipewire=enabled \
+    -Dwlroots:backends=drm,libinput,x11 \
+    -Dwlroots:renderers=gles2,vulkan
+  ninja -C build
 }
 
 package() {
+    install -d "$pkgdir"/usr/share/gamescope/reshade
+    cp -r "$srcdir"/GamescopeShaders/* "$pkgdir"/usr/share/gamescope/reshade/
+
+    chmod -R 655 "$pkgdir"/usr/share/gamescope
     meson install -C build --skip-subprojects --destdir="${pkgdir}"
 
     cd "$srcdir/$_pkgname"
