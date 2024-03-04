@@ -47,6 +47,7 @@ optdepends=(
   'hardlink: --hardlink option support'
   'iproute2: legacy networking support'
   'iputils: networking support'
+  'jq: NVMe-oF support (nvmf module)'
   'lvm2: support Logical Volume Manager'
   'lzop: lzop compression'
   'mdadm: support MD devices, also known as software RAID devices'
@@ -90,28 +91,29 @@ checkdepends=(
   'pigz'
   'qemu'
   'squashfs-tools'
+  'tgt'
 )
 provides=("${pkgname%-git}" 'initramfs')
 conflicts=("${pkgname%-git}")
 backup=('etc/dracut.conf')
 source=(
   'git+https://github.com/dracutdevs/dracut.git'
-  2269-1.patch::https://github.com/dracutdevs/dracut/commit/0057c3bb7afa803928b0214f8bbcb33e7d5e0c39.patch
-  2269-2.patch::https://github.com/dracutdevs/dracut/commit/51f1211be3610e57937fe2235d8088565b4f2639.patch
-  2429.patch::https://github.com/dracutdevs/dracut/commit/71055058c0bdb6fec0dbebf2ec8bbfc968820b88.patch
-  2494.patch::https://github.com/dracutdevs/dracut/commit/b88d0bab791bdc4ca75d13802f0391caf537650d.patch
-  2527.patch::https://github.com/dracutdevs/dracut/commit/a2fe89116db4b286fbf515f26bd1773b5e6ee8ad.patch
-  2531.patch::https://github.com/dracutdevs/dracut/commit/a8015f7dfc682100434e3ee051bf9472a8e6cad4.patch
-  2544.patch::https://github.com/dracutdevs/dracut/commit/c1a69b81f6ebd62a40054be2375cb77c040694aa.patch
-  2547-1.patch::https://github.com/dracutdevs/dracut/commit/6da61a2c0e38da4e6e880e1bb7f47d55d2c54c65.patch
-  2547-2.patch::https://github.com/dracutdevs/dracut/commit/842be0c89fe0cc8cac9efa88e68b07ae1c2d2464.patch
-  2549.patch::https://github.com/dracutdevs/dracut/commit/c20533f9cba63f796d6ee34724e430a712125877.patch
-  2556.patch::https://github.com/dracutdevs/dracut/commit/19a0ba94275e2d64f6b1a3130f137f626c648939.patch
-  2565.patch::https://github.com/dracutdevs/dracut/commit/8b3d8c73eba275c01d9714807c10899a5703f656.patch
-  2593-1.patch::https://github.com/dracutdevs/dracut/commit/ca69cc20833577fac415e36c66495c6dc5b1c721.patch
-  2593-2.patch::https://github.com/dracutdevs/dracut/commit/03cd454845346c206194c214f9b9ec15ec91d9b4.patch
-  2610.patch::https://github.com/dracutdevs/dracut/commit/f68d056bd9d32f4fc0c15163b256d1811a552302.patch
-  2613.patch::https://github.com/dracutdevs/dracut/commit/619de721cff44ed7c0b809bee80aee6986577e59.patch
+  2269-1.patch::https://github.com/dracutdevs/dracut/commit/0057c3bb7afa803928b0214f8bbcb33e7d5e0c39.patch  # fix(overlayfs): allow hostonly
+  2269-2.patch::https://github.com/dracutdevs/dracut/commit/51f1211be3610e57937fe2235d8088565b4f2639.patch  # fix(overlayfs): to allow overlay on top of network device
+  2429.patch::https://github.com/dracutdevs/dracut/commit/71055058c0bdb6fec0dbebf2ec8bbfc968820b88.patch    # fix(test): running tests no longer requires to be root
+  2494.patch::https://github.com/dracutdevs/dracut/commit/b88d0bab791bdc4ca75d13802f0391caf537650d.patch    # fix(resume): include in hostonly mode if resume= on cmdline
+  2527.patch::https://github.com/dracutdevs/dracut/commit/a2fe89116db4b286fbf515f26bd1773b5e6ee8ad.patch    # fix(resume): add new systemd-hibernate-resume.service
+  2531.patch::https://github.com/dracutdevs/dracut/commit/a8015f7dfc682100434e3ee051bf9472a8e6cad4.patch    # fix(resume): add new systemd-hibernate-resume.service
+  2544.patch::https://github.com/dracutdevs/dracut/commit/c1a69b81f6ebd62a40054be2375cb77c040694aa.patch    # fix(dracut.sh): skip README for AMD microcode generation
+  2547-1.patch::https://github.com/dracutdevs/dracut/commit/6da61a2c0e38da4e6e880e1bb7f47d55d2c54c65.patch  # fix(pcsc): add opensc load module file
+  2547-2.patch::https://github.com/dracutdevs/dracut/commit/842be0c89fe0cc8cac9efa88e68b07ae1c2d2464.patch  # fix(pcsc): add --disable-polkit to pcscd.service
+  2549.patch::https://github.com/dracutdevs/dracut/commit/c20533f9cba63f796d6ee34724e430a712125877.patch    # test(FULL SYSTEMD): no need to include dbus to the target
+  2556.patch::https://github.com/dracutdevs/dracut/commit/19a0ba94275e2d64f6b1a3130f137f626c648939.patch    # fix(90kernel-modules): add intel_lpss_pci for MacBook Pro
+  2565.patch::https://github.com/dracutdevs/dracut/commit/8b3d8c73eba275c01d9714807c10899a5703f656.patch    # test(UEFI): make test determinsitic
+  2593-1.patch::https://github.com/dracutdevs/dracut/commit/ca69cc20833577fac415e36c66495c6dc5b1c721.patch  # fix(dracut.sh): do not add device if `find_block_device`
+  2593-2.patch::https://github.com/dracutdevs/dracut/commit/03cd454845346c206194c214f9b9ec15ec91d9b4.patch  # feat(dracut.sh): protect `push_host_devs` function
+  2610.patch::https://github.com/dracutdevs/dracut/commit/f68d056bd9d32f4fc0c15163b256d1811a552302.patch    # fix(systemd-255): handle systemd-pcr{phase -> extend} rename
+  2613.patch::https://github.com/dracutdevs/dracut/commit/619de721cff44ed7c0b809bee80aee6986577e59.patch    # fix(i18n): handle symlinked keymap
 )
 sha512sums=('SKIP'
             'c529f7a2aa13733c1567bf4ff52df49ad4ba13ab46c5090bdc77dd0c6d7a1d7442d659900a425e1ac590449ea553bfb1ab09716cfd561f7d4441f57086e24197'
@@ -179,7 +181,7 @@ build() {
 check() {
   cd "${pkgname%-git}/test"
 
-  SKIP=${SKIP-"20 30 35 40 50 60 62 63"} TESTS=${TESTS-"18"} KVERSION="$(cd /lib/modules && ls -1 | tail -1)" make check
+  SKIP=${SKIP-"20 35 40 50 60 62 63"} TESTS=${TESTS-"18"} KVERSION="$(cd /lib/modules && ls -1 | tail -1)" make check
 }
 
 package() {
