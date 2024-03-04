@@ -1,16 +1,17 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: Norbert Preining <norbert@preining.info>
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Julian Weigt <juw@posteo.de>
 pkgname=python-msal
-pkgver=1.26.0
+pkgver=1.27.0
 pkgrel=1
-pkgdesc="Microsoft Authentication Library for Python library to access the Microsoft Cloud by supporting authentication of users with Microsoft Azure Active Directory accounts and Microsoft Accounts using OAuth2 and OpenID Connect"
+pkgdesc="Authenticate with Microsoft Entra (Azure Active Directory) accounts using OAuth2 and OpenID Connect"
 arch=(any)
 url="https://github.com/AzureAD/microsoft-authentication-library-for-python"
 license=(MIT)
 depends=("python-requests" "python-pyjwt" "python-cryptography" "python-mock")
 makedepends=("python-setuptools")
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/AzureAD/microsoft-authentication-library-for-python/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('6a247596ff3588776b5115bd07f3ef95eed0aff6cc5abc755502636820fd7ab5')
+sha256sums=('90a2188b185e41449e241b2693acb55b275f829a083854a740da16e773a19b26')
 
 build() {
   cd "microsoft-authentication-library-for-python-$pkgver"

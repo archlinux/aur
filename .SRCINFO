@@ -1,6 +1,6 @@
 pkgbase = python-msal
-	pkgdesc = Microsoft Authentication Library for Python library to access the Microsoft Cloud by supporting authentication of users with Microsoft Azure Active Directory accounts and Microsoft Accounts using OAuth2 and OpenID Connect
-	pkgver = 1.26.0
+	pkgdesc = Authenticate with Microsoft Entra (Azure Active Directory) accounts using OAuth2 and OpenID Connect
+	pkgver = 1.27.0
 	pkgrel = 1
 	url = https://github.com/AzureAD/microsoft-authentication-library-for-python
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-msal
 	depends = python-pyjwt
 	depends = python-cryptography
 	depends = python-mock
-	source = python-msal-1.26.0.tar.gz::https://github.com/AzureAD/microsoft-authentication-library-for-python/archive/refs/tags/1.26.0.tar.gz
-	sha256sums = 6a247596ff3588776b5115bd07f3ef95eed0aff6cc5abc755502636820fd7ab5
+	source = python-msal-1.27.0.tar.gz::https://github.com/AzureAD/microsoft-authentication-library-for-python/archive/refs/tags/1.27.0.tar.gz
+	sha256sums = 90a2188b185e41449e241b2693acb55b275f829a083854a740da16e773a19b26
 
 pkgname = python-msal
