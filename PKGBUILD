@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fsolauncher
 _pkgname="FreeSO Launcher"
-pkgver=1.10.1_prod.4
+pkgver=1.10.1_prod.6
 _electronversion=22
 _nodeversion=16
 pkgrel=1
@@ -25,7 +25,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -49,7 +49,7 @@ build() {
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     npm ci
-    npx electron-builder --linux appimage
+    npx electron-builder -l appimage
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
