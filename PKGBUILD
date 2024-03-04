@@ -15,10 +15,10 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation-openrc
-pkgver=17.5.0
-_buildver=22583795
+pkgver=17.5.1
+_buildver=23298084
 _pkgver=${pkgver}_${_buildver}
-pkgrel=2
+pkgrel=1
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC. Modified to use OpenRC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -77,7 +77,7 @@ source=(
   'vmnet.patch'
 )
 sha256sums=(
-  '7807f7bf10228c4c9950711694c34a7bc85f193366a2c3cc44996bb1601b38f8'
+  'aa60b7cef2a87acefbcf7c7a5242c7b09d7b910acbd5afebc5ef6617e50c7496'
 
   '67edc40e39686281f5101ced1a250648ae32e4cd5dffe4fd47bc3c7aed929d50'
   'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
@@ -91,8 +91,8 @@ sha256sums=(
 
   '10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e'
   '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
-  '27c640bd793eb1f8d7561060df9562ffc44832cf5c69ed79ff4408abd14ae493'
-  'b86f61a37a9dd74257751eba2478c471b6e1ccac6476c5845d3371236833a4fb'
+  '6b7c5dbf7d2237496943aca10b0e7337ed4da32ff80767fe2566a78c2fe6bf1e'
+  'cf64b63e2afed22cec1983cf8e1a4d9492a5df2e9eb468cc3205e7e086a67b47'
 )
 options=(!strip emptydirs)
 
@@ -107,8 +107,8 @@ _isoimages=(linux linuxPreGlibc25 netware solaris windows winPre2k winPreVista)
 
 if [ -n "$_enable_macOS_guests" ]; then
 
-_vmware_fusion_ver=13.5.0
-_vmware_fusion_buildver=22583790
+_vmware_fusion_ver=13.5.1
+_vmware_fusion_buildver=23298085
 _vmware_fusion_ver_full=${_vmware_fusion_ver}_${_vmware_fusion_buildver}
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
@@ -125,7 +125,7 @@ source+=(
   "efi-patches.txt"
 )
 sha256sums+=(
-  '8c365b44fb8372eb2bd5146d28e163d50ec71b6b92ee6bb3a1965dee182748d1'
+  '7ff2797c44f9569980acb0c41ebf647c9db59556602d5d7f0a2f0d2be3c4cc86'
   '8a61e03d0edbbf60c1c84a43aa87a6e950f82d2c71b968888f019345c2f684f3'
   '392c1effcdec516000e9f8ffc97f2586524d8953d3e7d6f2c5f93f2acd809d91'
 )
