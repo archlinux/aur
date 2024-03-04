@@ -2,7 +2,7 @@
 pkgname=animos-appimage
 pkgver=0.5.8
 _electronversion=22
-pkgrel=5
+pkgrel=6
 pkgdesc="Clean and minimal Anime-streaming desktop application without any ads."
 arch=("x86_64")
 url="https://animos.cf/"
@@ -14,7 +14,7 @@ depends=(
     'hicolor-icon-theme'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 options=(!strip)
 _install_path="/opt/appimages"
