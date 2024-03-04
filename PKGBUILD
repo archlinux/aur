@@ -2,7 +2,7 @@
 # Manual download of '${pkgname}-compiler-${pkgver}.tar' required from upstream
 
 pkgname=aocc
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="AMD Optimizing C/C++ Compiler"
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=("local://aocc-compiler-${pkgver}.tar" "local://modulefile")
 options=('staticlibs' '!strip' 'libtool')
 optdepends=('env-modules')
 install=aocc.install
-sha256sums=("5b04bfdb751c68dfb9470b34235d76efa80a6b662a123c3375b255982cb52acd" "SKIP")
+sha256sums=("ed5a560ec745b24dc0685ccdcbde914843fb2f2dfbfce1ba592de4ffbce1ccab" "SKIP")
 
 # default flags for compiler
 # edit this or /etc/makepkg.conf to your liking for default flags for your architecutre
