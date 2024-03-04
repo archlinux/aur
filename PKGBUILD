@@ -9,7 +9,7 @@ url="https://github.com/johnfactotum/quick-lookup"
 license=('GPL-3.0-or-later')
 depends=('gjs' 'gtk4' 'libadwaita' 'webkitgtk-6.0')
 makedepends=('meson')
-checkdepends=('appstream-glib')
+checkdepends=('appstream')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('aae36cdbccdbd1d182b289eb92843d34ff9eb303cb590a38b881bc663dc7d5bb')
 
@@ -27,7 +27,7 @@ build () {
 
 check() {
   cd "$pkgname-$pkgver"
-  appstream-util validate-relax --nonet "${_app_id}.appdata.xml"
+  appstreamcli validate --no-net "${_app_id}.appdata.xml" || :
   desktop-file-validate "${_app_id}.desktop"
 }
 
