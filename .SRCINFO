@@ -1,19 +1,20 @@
 pkgbase = mkinitcpio-zerotier
 	pkgdesc = mkinitcpio hook that initialises ZeroTier One to assist in the remote unlocking of encrypted partitions
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 1.1
+	pkgrel = 1
 	url = https://gitlab.archlinux.org/alphajack/mkinitcpio-zerotier
 	install = mkinitcpio-zerotier.install
 	arch = any
 	license = GPL3
 	depends = mkinitcpio
-	depends = mkinitcpio-netconf
 	depends = mkinitcpio-utils
 	depends = zerotier-one
-	optdepends = mkinitcpio-tinyssh: SSH server
-	optdepends = mkinitcpio-dropbear: SSH server
+	optdepends = mkinitcpio-tinyssh: SSH server (busybox initrd)
+	optdepends = mkinitcpio-dropbear: SSH server (busybox initrd)
+	optdepends = mkinitcpio-netconf: network connectivity (busybox initrd)
+	optdepends = mkinitcpio-systemd-extras: network connectiviy and SSH server (systemd initrd)
 	backup = var/lib/zerotier-one/initcpio/config.ini
-	source = mkinitcpio-zerotier-1.0.tar.gz::https://gitlab.archlinux.org/alphajack/mkinitcpio-zerotier/-/archive/1.0/mkinitcpio-zerotier-1.0.tar.gz
-	sha256sums = 11b2c1d9826e107433798c311475f9af9fed08a1402508233d4ef74e60e0b73b
+	source = mkinitcpio-zerotier-1.1.tar.gz::https://gitlab.archlinux.org/alphajack/mkinitcpio-zerotier/-/archive/v1.1/mkinitcpio-zerotier-v1.1.tar.gz
+	b2sums = 9043f056997739dc3b6d709df52d7043dc2aa97a64606ecca4bc5f1d1a2f4f49f983d29be1db381ba823236d8dfc42c2dfb7a4f9daf5e87e29b7987fc3ab2beb
 
 pkgname = mkinitcpio-zerotier
