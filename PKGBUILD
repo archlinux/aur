@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ulogviewer-bin
 _pkgname=ULogViewer
-pkgver=4.0.7.218
+pkgver=4.0.8.303
 pkgrel=1
 pkgdesc="Cross-Platform Universal Log Viewer."
 arch=(
@@ -36,8 +36,8 @@ source=(
 )
 sha256sums=('4b023d792eb6b929311286a207c6493e18875bd9d320db8f7a996dd5d5716fea'
             'b5655aeda6af46f693ab0b78c69e313f2db718cc75fb707e0160637158239aa1')
-sha256sums_aarch64=('42355e111c829b57b51dba239e09712e88a97706d570b11a4187108f85412da9')
-sha256sums_x86_64=('0f6438e83d7299ce553f1e0f64891eee0204956011d4f5dc6a30713a76b100b6')
+sha256sums_aarch64=('f3cf317f2c29a9dcf94299e1fbb969653ae8274ba54b02cad21672bc1c9c2c73')
+sha256sums_x86_64=('769c3e0e74d8ffe87cf00d6c72a288b6692db90fd889ab18bf6aa03065c29d9f')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
