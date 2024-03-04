@@ -1,7 +1,7 @@
 pkgbase = xpeviewer-bin
 	pkgdesc = PE file viewer/editor for Windows, Linux and MacOS.
 	pkgver = 0.04
-	pkgrel = 6
+	pkgrel = 7
 	url = http://ntinfo.biz/
 	arch = x86_64
 	license = MIT

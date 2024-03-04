@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xpeviewer-bin
 pkgver=0.04
-pkgrel=6
+pkgrel=7
 pkgdesc="PE file viewer/editor for Windows, Linux and MacOS."
 arch=(x86_64)
 url="http://ntinfo.biz/"
@@ -20,7 +20,7 @@ source=(
 sha256sums=('9244a20b48c1ffa4be7d8d2714ff47f72a40bbecbd00ee6398754ed2e505f25c'
             'd0dfc6996d90bc96474a32b5656eec06bf988cdbcfd226f24fcb7a062208e4ee')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.zst"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/opt/${pkgname%-bin}"
