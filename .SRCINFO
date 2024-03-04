@@ -1,7 +1,7 @@
 pkgbase = xmm7360-pci-spat-dkms-git
 	pkgdesc = Driver for the Fibocom L850-GL / Intel XMM7360 LTE modem
 	pkgver = 0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/SimPilotAdamT/xmm7360-pci-SPAT
 	install = xmm7360.install
 	arch = x86_64
