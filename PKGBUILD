@@ -3,7 +3,7 @@ pkgname=rats-search-bin
 _pkgname="Rats on The Boat"
 pkgver=1.11.0
 _electronversion=24
-pkgrel=6
+pkgrel=7
 pkgdesc="BitTorrent P2P multi-platform search engine for Desktop and Web servers with integrated torrent client."
 arch=('x86_64')
 url="https://github.com/DEgITx/rats-search"
@@ -24,7 +24,7 @@ source=(
 sha256sums=('012c03571f9083d13bedf925bdf4e478e2f6d102caac981d90a455a57da3922d'
             'fa6a25af037d88ee811669579da9674e5694611599600b11e691115054f6fe2f')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\" %U|${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     rm -rf "${srcdir}/opt/${_pkgname}/ia32"
