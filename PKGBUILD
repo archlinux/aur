@@ -1,9 +1,9 @@
-# Maintainer: Shayne Hartford <shayneehartford@gmail.com>
+# Maintainer: Lucas Frendorf <lucasfrendorf@gmail.com>
 
 pkgbase=chromeos-kde-git
-pkgname=(chromeos-kde-git kvantum-theme-chromeos-git)
+pkgname=(chromeos-kde-git)
 _pkgname=chromeos-kde
-pkgver=r18.3fcbdb4
+pkgver=r79.aa9fd22
 pkgrel=1
 pkgdesc="ChromeOS theme for kde plasma"
 arch=(any)
@@ -13,6 +13,8 @@ options=('!strip')
 source=("git+$url.git")
 sha256sums=('SKIP')
 makedepends=('git')
+optdepends=('chromeos-gtk-theme: Matching GTK theme'
+            'tela-icon-theme: Matching icon theme')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -20,41 +22,24 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package_chromeos-kde-git() {
-    provides=('chromeos-kde')
-    optdepends=('chromeos-gtk-theme: Matching GTK theme'
-                'kvantum-theme-chromeos: ChromeOS theme for Kvantum Qt style (recommended)'
-                'tela-icon-theme: Matching icon theme')
-
-    cd $_pkgname
-
-    install -d "$pkgdir"/usr/share
-    
-    rm sddm/{README.md,install.sh}
-    
-    # Temporary fix for upstream filestructure
-    mv aurorae themes
-    mkdir -p aurorae
-    mv themes aurorae/
-    
-    mv sddm themes
-    mkdir -p sddm
-    mv themes sddm/
-
-    cp -r aurorae "$pkgdir"/usr/share
-    cp -r color-schemes "$pkgdir"/usr/share
-    cp -r plasma "$pkgdir"/usr/share
-    cp -r sddm "$pkgdir"/usr/share
+prepare() {
+    cd "$srcdir/${pkgname%-git}"
+    sed -i "s#/usr/share#$pkgdir/usr/share#" install.sh
+    cd "$srcdir/${pkgname%-git}/sddm"
+    sed -i "s#/usr/share#$pkgdir/usr/share#" install.sh
 }
 
-package_kvantum-theme-chromeos-git() {
-    provides=('kvantum-theme-chromeos')
-    pkgdesc="ChromeOS theme for KDE Plasma 5"
-    depends=(kvantum-qt5)
+package_chromeos-kde-git() {
+    provides=('chromeos-kde')
 
-    cd $_pkgname
 
-    install -d "$pkgdir"/usr/share
+    # Run install script from GitHub
+    cd "$srcdir/${pkgname%-git}"
+    install -d "$pkgdir/usr/share"
+    ./install.sh
 
-    cp -r Kvantum "$pkgdir"/usr/share
+    # SDDM theme
+    cd "$srcdir/${pkgname%-git}/sddm"
+    install -d "$pkgdir/usr/share/sddm/themes"
+    ./install.sh
 }
