@@ -5,10 +5,10 @@ _fontname="borders-divide"
 _pkgname="ttf-$_fontname"
 pkgname="$_pkgname"
 pkgver=1.000
-pkgrel=1
+pkgrel=2
 pkgdesc="TrueType Font: Borders Divide, But Hearts Shall Conquer"
-url="http://www.dafont.com/borders-divide-but-hearts-shall-conquer.font"
-license=('custom:Free for pesonal use')
+url="https://www.dafont.com/borders-divide-but-hearts-shall-conquer.font"
+license=('LicenseRef:Free-for-personal-use')
 arch=('any')
 
 source=(
@@ -27,8 +27,8 @@ prepare() {
 }
 
 package() {
-  install -Dm644 *.ttf -t "${pkgdir:?}/usr/share/fonts/TTF/"
-  install -Dm644 'License-20180523.txt' "${pkgdir:?}/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 *.ttf -t "$pkgdir/usr/share/fonts/TTF/"
+  install -Dm644 'License-20180523.txt' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
