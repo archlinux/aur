@@ -27,10 +27,11 @@ license=(
   "custom"
 )
 _dmca_exemption="https://archive.org/about/dmca.php"
+_wiki="https://upload.wikimedia.org/wikipedia"
 source=(
   "${_app_id}.nes::${_archive}/nes-roms/Super%20Mario%20Bros.%20%28World%29.nes"
   "nes-template.desktop"
-  "${_app_id}.png::https://upload.wikimedia.org/wikipedia/en/0/03/Super_Mario_Bros._box.png"
+  "${_app_id}.png::${_wiki}/en/0/03/Super_Mario_Bros._box.png"
 )
 sha256sums+=(
   "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de"
