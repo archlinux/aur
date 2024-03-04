@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ytm-dlp-gui
 _pkgname=YTM-DLP-GUI
-pkgver=1.2.0
+pkgver=1.3.0
 _electronversion=26
-pkgrel=2
+pkgrel=1
 pkgdesc="An ElectronJS app for downloading music off Youtube Music."
 arch=('any')
 url="https://github.com/RENOMIZER/ytm-dlp-gui"
-license=('Unlicense')
+license=('MIT')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
@@ -23,7 +23,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
