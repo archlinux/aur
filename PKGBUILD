@@ -8,7 +8,7 @@ pkgdesc='Helper utility to work with patches made available via a public-inbox a
 license=('GPL')
 arch=('any')
 url='https://git.kernel.org/pub/scm/utils/b4/b4.git/'
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 depends=('python-requests' 'git-filter-repo' 'patatt')
 source=("https://mirrors.edge.kernel.org/pub/software/devel/b4/${pkgname}-${pkgver}.tar."{xz,sign})
 validpgpkeys=('DE0E66E32F1FDD0902666B96E63EDCA9329DD07E')
@@ -17,10 +17,10 @@ sha256sums=('c372a1fc7f135adacb9764ada4c43bb1a8441b4aa063bf9f81edbf12cf073284'
 
 build() {
 	cd "$pkgname-$pkgver"
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
