@@ -25,7 +25,7 @@ makedepends=(
   'python-installer'
   'python-poetry-core'
 )
-checkdepends=('appstream-glib')
+checkdepends=('appstream')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/srevinsaju/guiscrcpy.git')
@@ -55,7 +55,7 @@ build() {
 
 check() {
   cd "${pkgname%-git}"
-  appstream-util validate-relax --nonet "appimage/${pkgname%-git}.appdata.xml" || :
+  appstreamcli validate --no-net "appimage/${pkgname%-git}.appdata.xml" || :
   desktop-file-validate "appimage/${pkgname%-git}.desktop" || :
 }
 
