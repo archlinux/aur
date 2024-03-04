@@ -6,7 +6,7 @@ pkgbase = tagger
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
-	checkdepends = appstream-glib
+	checkdepends = appstream
 	makedepends = blueprint-compiler
 	makedepends = dotnet-sdk>=8
 	makedepends = git

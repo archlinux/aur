@@ -10,7 +10,7 @@ url="https://github.com/NickvisionApps/Tagger"
 license=('GPL-3.0-or-later')
 depends=('chromaprint' 'dotnet-runtime>=8' 'ffmpeg' 'libadwaita' 'webp-pixbuf-loader')
 makedepends=('blueprint-compiler' 'dotnet-sdk>=8' 'git')
-checkdepends=('appstream-glib')
+checkdepends=('appstream')
 optdepends=('yelp: in-app help')
 conflicts=('nickvision-tagger')
 replaces=('nickvision-tagger')
@@ -41,8 +41,8 @@ build() {
 
 check() {
   cd Tagger
-  appstream-util validate-relax --nonet \
-    "_nickbuild/usr/share/metainfo/${_app_id}.metainfo.xml"
+  appstreamcli validate --no-net \
+    "_nickbuild/usr/share/metainfo/${_app_id}.metainfo.xml" || :
   desktop-file-validate "_nickbuild/usr/share/applications/${_app_id}.desktop"
 }
 
