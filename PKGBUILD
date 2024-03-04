@@ -4,7 +4,7 @@
 _pkgname=xidlehook
 pkgname=$_pkgname-withdrawnwin
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='xautolock rewrite in Rust, with a few extra features (withdrawn window patched fork)'
 url='https://github.com/realSaltyFish/xidlehook'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,8 @@ license=('MIT')
 makedepends=('rust' 'libxss' 'python')
 optdepends=()
 depends=('libpulse' 'libxcb')
-provides=('xidlehook')
+conflicts=($_pkgname)
+provides=($_pkgname)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('f2d5d400031a1a4aeeb6950fd04ff51350628153ec9c4d74d9d9f1070e827cb5')
 
