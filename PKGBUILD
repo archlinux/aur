@@ -3,28 +3,28 @@
 _pkgname=assertive.reflection
 _pkgver=0.0-5
 pkgname=r-${_pkgname,,}
-pkgver=0.0.5
-pkgrel=4
-pkgdesc='Assertions for Checking the State of R'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Assertions for Checking the State of R"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-or-later')
 depends=(
-  r
   r-assertive.base
 )
 optdepends=(
   r-testthat
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c2ca9b27cdddb9b9876351afd2ebfaf0fbe72c636cd12aa2af5d64e33fbf34bd')
+source=("https://cran.r-project.org/src/contrib/Archive/$_pkgname/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('e5b52b04481fe2b713a668262fb1c642')
+b2sums=('3091e695854ccd6ac3d0febb22e8a45249f21a176b212e37b9f208bafc6aa526a60b2bfca648338b222cd6c7b6a2bb00a70349d3beda891f915e2703cccfaa10')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
