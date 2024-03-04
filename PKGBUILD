@@ -253,7 +253,7 @@ sha256sums=('SKIP'
             '9d1f69f668e12fc14b4ccbcf88cb5a3acf666df06dafa8834f037bd8110ca17f'
             'bfae9e773edfd0ddbc617777fdd4c0609cba2b048be7afe40f97768e4eb6117e'
             '547e092f6a20ebd15e486b31111145bc94b8709ec230da89c591963001378845'
-            '1eebf52f298ffb0a5525fa64b28039a6a0b5d83c07c3457262c88e9cc4bb0451'
+            '68a0f35a9c52411bd1cce55210d7c06a528607a5e5cc32117f3a2ea658d850aa'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -439,7 +439,7 @@ prepare() {
   echo "Putting together electron sources"
   # Generate gclient gn args file and prepare-electron-source-tree.sh
   python makepkg-source-roller.py generate electron/DEPS $pkgname
-  bash prepare-electron-source-tree.sh "$CARCH"
+  rbash prepare-electron-source-tree.sh "$CARCH"
   mv electron src/electron
 
   (
