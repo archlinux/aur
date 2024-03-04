@@ -1,7 +1,7 @@
 pkgbase = ffplayout
 	pkgdesc = 24/7 playout based on rust and ffmpeg
-	pkgver = 0.20.4
-	pkgrel = 2
+	pkgver = 0.20.5
+	pkgrel = 0
 	url = https://github.com/ffplayout/ffplayout
 	install = ffplayout.install
 	arch = x86_64
@@ -11,17 +11,15 @@ pkgbase = ffplayout
 	makedepends = nodejs-lts-hydrogen
 	makedepends = npm
 	makedepends = pandoc
-	depends = ffmpeg-ffplayout>=5.0
+	depends = ffmpeg-ffplayout
 	depends = sudo
 	provides = ffplayout
 	conflicts = ffplayout-git
 	conflicts = ffplayout-unstable-git
 	backup = etc/ffplayout/ffplayout.yml
-	source = ffplayout-0.20.4::git+https://github.com/ffplayout/ffplayout.git#tag=v0.20.4
+	source = ffplayout-${pkgver}::git+https://github.com/ffplayout/ffplayout.git#tag=v${pkgver}
 	source = ffplayout.install
-	source = disable_embed_frontend.patch
 	sha256sums = SKIP
 	sha256sums = 91fa57deb966dd5f3f611d0a8213934f200487c64153167a1d9d6f7c9b1b85e8
-	sha256sums = cdb28811b27935a97421497877691fefac208f582be6d49445824e4d0ac6d976
 
 pkgname = ffplayout
