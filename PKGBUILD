@@ -20,9 +20,11 @@ changelog=
 noextract=()
 source=("patr-java-profiler-agent.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-agent/${pkgver}/patr-java-profiler-agent-${pkgver}-jar-with-dependencies.jar"
         "patr-java-profiler-bootstrap.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-bootstrap/${pkgver}/patr-java-profiler-bootstrap-${pkgver}.jar"
+        "patr-java-profiler-test.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-test/${pkgver}/patr-java-profiler-test-${pkgver}.jar"
         )
 md5sums=('06c3fcba9e169ea05423e9814980eb54'
          '32688535a6ffce4eec273596f52cf241'
+         '1d6ebb015624d977064e519195f8049b'
          )
 
 check() {
@@ -32,7 +34,7 @@ check() {
   java \
     "-javaagent:patr-java-profiler-agent.jar" \
     "-Xbootclasspath/a:patr-java-profiler-bootstrap.jar" \
-    -cp "patr-java-profiler-test/target/patr-java-profiler-test-$VERSION.jar" \
+    -cp "patr-java-profiler-test/target/patr-java-profiler-test.jar" \
     de.hechler.patrick.profiler.test.PHPTestMain
   echo 'finished test:'
   cat ./patr-java-profiler-output.txt # at least ensure that the file exists, if not something went completly wrong
