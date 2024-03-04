@@ -24,7 +24,6 @@ makedepends=(
   'meson'
 )
 #checkdepends=(
-#  'python-mock'  ## TODO: Drop python-mock: https://archlinux.org/todo/drop-python-mock-checkdepends/
 #  'python-pytest'
 #)
 optdepends=(
