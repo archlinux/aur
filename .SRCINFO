@@ -1,0 +1,17 @@
+pkgbase = snac2
+	pkgdesc = A simple, minimalistic ActivityPub instance
+	pkgver = 2.49
+	pkgrel = 1
+	url = https://codeberg.org/grunfink/snac2
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	arch = riscv32
+	arch = riscv64
+	license = MIT
+	depends = openssl
+	depends = curl
+	source = https://codeberg.org/grunfink/snac2/archive/2.49.tar.gz
+	sha512sums = 7798f9265d0c3bb38134d0ac4521b793ad60ca45e138d95db109b065827fd0dcc31dea3c09e78dd59e76f5b64f6e054efb34acabf2ff0e70d514136c2cd217df
+
+pkgname = snac2
