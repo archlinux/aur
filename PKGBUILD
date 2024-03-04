@@ -6,7 +6,7 @@
 pkgname=fluentd
 pkgver=1.16.3
 _commit=d3cf2e0f95a0ad88b9897197db6c5152310f114f
-pkgrel=1
+pkgrel=2
 pkgdesc="Data collector designed to scale and simplify log management"
 arch=(any)
 url="https://github.com/fluent/fluentd"
@@ -64,6 +64,12 @@ sha256sums=(
 )
 
 _archive="$pkgname"
+
+pkgver() {
+  cd "$_archive"
+
+  git describe --tags | sed 's/^v//'
+}
 
 prepare() {
   cd "$_archive"
@@ -127,7 +133,7 @@ check() {
 package() {
   cd "$_archive"
 
-  cp --archive tmp_install/* "$pkgdir"
+  cp -a tmp_install/* "$pkgdir"
 
   install -Dm644 fluent.conf "$pkgdir/etc/fluent/fluentd.conf"
 
