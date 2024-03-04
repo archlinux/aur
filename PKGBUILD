@@ -9,7 +9,7 @@ url="https://github.com/pycontribs/wstools"
 license=('custom')
 depends=('python-six')
 makedepends=('python-pbr' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest-runner' 'autopep8' 'python-pytest-cov')
+checkdepends=('python-pytest' 'autopep8' 'python-pytest-cov')
 source=("https://github.com/pycontribs/wstools/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         python310.patch)
 sha512sums=('1acd8e62d71c7d330f1e953a0da1956291c5dfb25ff9b8b8799c83feaa4230e384955735b131bab7b430b92ae6c18498927d416d2d1e11fb5c5dad93417c671a'
@@ -20,6 +20,7 @@ export PBR_VERSION=$pkgver
 prepare() {
   cd wstools-$pkgver
   patch -Np1 -i ../python310.patch
+  sed -i "s/, 'pytest-runner'//" setup.py
 }
 
 build() {
