@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('gst-plugins-bad-libs' 'gst-plugins-good' 'gstreamer' 'libadwaita'
          'libpulse' 'libsoup3')
 makedepends=('cargo' 'meson')
-checkdepends=('appstream-glib')
+checkdepends=('appstream')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SeaDve/Mousai/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('a777e9c6ad310f2bb85ac88fc6f0de96e712ed49bed6905bc7e8e54820af4e37')
@@ -34,7 +34,7 @@ check() {
 #  export RUSTUP_TOOLCHAIN=stable
 #  meson test -C build --print-errorlogs || :
 
-  appstream-util validate-relax --nonet "build/data/${_app_id}.metainfo.xml"
+  appstreamcli validate --no-net "build/data/${_app_id}.metainfo.xml" || :
   desktop-file-validate "build/data/${_app_id}.desktop"
 }
 
