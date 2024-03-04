@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-types-docutils
 _name=${pkgname#python-}
-pkgver=0.20.0.20240303
+pkgver=0.20.0.20240304
 pkgrel=1
 pkgdesc="Typing stubs for docutils"
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('c44500d25ca0788a580d70622a0d9dcb450e3783c04baa7e7b3300b054d7afdc')
+sha256sums=('c35ae35ca835a5aeead758df411cd46cfb7e7f19f2b223c413dae7e069d5b0be')
 
 build() {
   cd "$_name-$pkgver"
