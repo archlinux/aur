@@ -3,7 +3,7 @@
 # Contributor: Javier Tiá <javier dot tia at gmail dot com>
 pkgname=vnote-bin
 pkgver=3.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt-based, free and open source note-taking application, focusing on Markdown now."
 arch=('x86_64')
 url="https://app.vnote.fun/"
@@ -19,7 +19,7 @@ depends=(
     'nss'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 options=('!strip')
 source=(
