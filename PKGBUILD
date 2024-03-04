@@ -2,9 +2,9 @@
 
 pkgname=act-runner-bin
 pkgver=0.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A runner for Gitea Actions based on GitHub's Act"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://gitea.com/gitea/act_runner"
 license=('MIT')
 optdepends=('docker: for running containers')
@@ -12,7 +12,10 @@ provides=('act_runner')
 conflicts=('act_runner')
 
 source_x86_64=("https://gitea.com/gitea/act_runner/releases/download/v${pkgver}/act_runner-${pkgver}-linux-amd64.xz")
+source_aarch64=("https://gitea.com/gitea/act_runner/releases/download/v${pkgver}/act_runner-${pkgver}-linux-arm64.xz")
+
 sha256sums_x86_64=('8abae07c3c57fad9a79f0ac97f9c11678b90bce70397d76dfb31c73f78285073')
+sha256sums_aarch64=('daab20e045832a8e41266b6e75dc3f3b21b9edce5be1b68f697616575bc6d2e6')
 
 source=('act_runner.service'
         'act_runner.yaml'
@@ -24,7 +27,11 @@ sha256sums=('245f610f82bcb5140d9040f997332186c03a575b98cce603e39f1f0300773e3e'
             '5f8944df92d0e5278e3a29795dfcd8bcd340bea37075627d4f9d3303cdb58607')
 
 package() {
-    mv act_runner-${pkgver}-linux-amd64 act_runner
+    if [[ $CARCH == "x86_64" ]]; then
+        mv act_runner-${pkgver}-linux-amd64 act_runner
+    elif [[ $CARCH == "aarch64" ]]; then
+        mv act_runner-${pkgver}-linux-arm64 act_runner
+    fi
     install -Dm755 act_runner -t "$pkgdir/usr/bin"
     install -Dm644 "$srcdir/act_runner.service" "$pkgdir/usr/lib/systemd/system/act_runner.service"
     install -Dm644 "$srcdir/act_runner.yaml" "$pkgdir/etc/act_runner/act_runner.yaml"
