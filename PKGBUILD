@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="A tool to help provision a fresh OS with the packages and configuration (dotfiles) you need to become productive again."
 arch=('x86_64')
 url="https://github.com/comtrya/comtrya"
+options=(!lto)
 license=('custom:MIT')
 depends=()
 makedepends=('cargo')
