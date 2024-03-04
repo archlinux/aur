@@ -5,7 +5,7 @@
 
 pkgname=gotosocial-rc
 _pkgname=${pkgname%-rc}
-pkgver=0.14.0rc2
+pkgver=0.14.0rc3
 pkgrel=1
 pkgdesc='ActivityPub social network server written in Golang (release candidate)'
 arch=('x86_64')
@@ -51,7 +51,7 @@ backup=(
   'etc/gotosocial/template/tag.tmpl'
   'etc/gotosocial/template/thread.tmpl'
 )
-_commit='504c4f227f82a44e7851dafb1614af7a944080e7'
+_commit='f487fc5d4be9175db571b5a573ea5d1f348f014a'
 source=(
   "$_pkgname::git+https://github.com/superseriousbusiness/gotosocial#commit=$_commit"
   'sysusers.conf'
