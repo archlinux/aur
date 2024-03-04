@@ -1,6 +1,6 @@
 pkgbase = python-pip-audit
 	pkgdesc = A tool for scanning Python environments for known vulnerabilities
-	pkgver = 2.7.1
+	pkgver = 2.7.2
 	pkgrel = 1
 	url = https://github.com/pypa/pip-audit
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = python-pip-audit
 	depends = python-rich
 	depends = python-toml
 	options = !strip
-	source = python-pip-audit-2.7.1.tar.gz::https://github.com/pypa/pip-audit/archive/refs/tags/v2.7.1.tar.gz
-	sha512sums = b4bb1bd14e27c168ecaa47f0a74c671a6ad24f349c922eeaeaafc7a9846a3fa7f0e10ad5cf6a2adc3f98bed5908e7e231ac7542a44b5762ee5bf14863f54f537
+	source = python-pip-audit-2.7.2.tar.gz::https://github.com/pypa/pip-audit/archive/refs/tags/v2.7.2.tar.gz
+	sha512sums = 81941a94309afbd70b8c5bb11317215d54235b558289709f8e12af97b7a701d8cee6dc488d67ceee4e1852b96d0b064149eaf75cc31616b9846e3c8c5d7b20d9
 
 pkgname = python-pip-audit
