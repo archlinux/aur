@@ -1,6 +1,6 @@
 pkgbase = panda3ds-git
 	pkgdesc = HLE 3DS emulator
-	pkgver = 0.8.r1780.3c25be4c
+	pkgver = 0.8.r1812.1e1665fe
 	pkgrel = 1
 	url = https://panda3ds.com
 	arch = x86_64
