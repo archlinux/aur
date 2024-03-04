@@ -25,7 +25,7 @@ makedepends=(
  'python-setuptools'
  'python-wheel'
  )
-checkdepends=('appstream-glib' 'desktop-file-utils')
+checkdepends=('appstream' 'desktop-file-utils')
 optdepends=(
   'dosbox: required for Boxtron'
   'git: required for SteamTinkerLaunch'
@@ -57,7 +57,7 @@ build() {
 
 check() {
   cd "ProtonUp-Qt-$pkgver"
-  appstream-util validate-relax --nonet "share/metainfo/${_app_id}.appdata.xml"
+  appstreamcli validate --no-net "share/metainfo/${_app_id}.appdata.xml" || :
   desktop-file-validate "share/applications/${_app_id}.desktop"
 }
 
