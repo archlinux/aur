@@ -3,7 +3,7 @@ pkgname=zxinfo-file-browser-bin
 pkgver=1.2.5
 _subver=final
 _electronversion=27
-pkgrel=1
+pkgrel=2
 pkgdesc="Organize and manage your emulator files for ZX Spectrum & ZX 81 - powered by the web"
 arch=('x86_64')
 url="https://github.com/thomasheckmann/zxinfo-file-browser"
@@ -12,12 +12,9 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}-${_subver}/${pkgname%-bin}-${pkgver}-${_subver}.AppImage"
@@ -26,7 +23,7 @@ source=(
 )
 sha256sums=('3bdb2b699ba17bab7ed4179ca2eee9d88e2796f527d88d0f3cd30ac8d858016a'
             '2042c6124204156b44ed7676a90f1e0bb9ddfee1f76d20f7b6f220a90398f74e'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
