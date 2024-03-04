@@ -36,7 +36,7 @@ makedepends=(
   'mold'
   'nasm'
 )
-checkdepends=('desktop-file-utils' 'appstream-glib')
+checkdepends=('appstream' 'desktop-file-utils')
 optdepends=('flatpak: Flatpak support for Cosmic Store')
 
 _submodules=(
@@ -192,7 +192,7 @@ build() {
 
 check() {
   cd cosmic-epoch
-  appstream-util validate-relax --nonet cosmic-sysext/usr/share/metainfo/*.metainfo.xml || :
+  appstreamcli validate --no-net cosmic-sysext/usr/share/metainfo/*.metainfo.xml || :
   desktop-file-validate cosmic-sysext/usr/share/applications/*.desktop || :
 
 #  export CARGO_HOME="$srcdir/cargo-home"
