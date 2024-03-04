@@ -18,12 +18,25 @@ options=()
 install=
 changelog=
 noextract=()
-source=("patr-java-profiler-agent-${pkgver}-jar-with-dependencies.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-agent/${pkgver}/patr-java-profiler-agent-${pkgver}-jar-with-dependencies.jar"
-        "patr-java-profiler-bootstrap-${pkgver}.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-bootstrap/${pkgver}/patr-java-profiler-bootstrap-${pkgver}.jar"
+source=("patr-java-profiler-agent.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-agent/${pkgver}/patr-java-profiler-agent-${pkgver}-jar-with-dependencies.jar"
+        "patr-java-profiler-bootstrap.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-bootstrap/${pkgver}/patr-java-profiler-bootstrap-${pkgver}.jar"
         )
 md5sums=('06c3fcba9e169ea05423e9814980eb54'
          '32688535a6ffce4eec273596f52cf241'
          )
+
+check() {
+  cd "$srcdir"
+
+  echo 'start test'
+  java \
+    "-javaagent:patr-java-profiler-agent.jar" \
+    "-Xbootclasspath/a:patr-java-profiler-bootstrap.jar" \
+    -cp "patr-java-profiler-test/target/patr-java-profiler-test-$VERSION.jar" \
+    de.hechler.patrick.profiler.test.PHPTestMain
+  echo 'finished test:'
+  cat ./patr-java-profiler-output.txt # at least ensure that the file exists, if not something went completly wrong
+}
 
 package() {
   cd "$srcdir"
@@ -32,8 +45,8 @@ package() {
 
   # copy original files
   mkdir -p "$pkgdir"/usr/share/java/patrjprof
-  cp -T patr-java-profiler-bootstrap-$VERSION.jar                    "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-bootstrap.jar
-  cp -T patr-java-profiler-agent-$VERSION-jar-with-dependencies.jar  "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-agent.jar
+  cp -T patr-java-profiler-bootstrap.jar  "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-bootstrap.jar
+  cp -T patr-java-profiler-agent.jar      "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-agent.jar
 
   # create help script which starts the profiler, the other script is not available
   mkdir -p "$pkgdir"/usr/bin
