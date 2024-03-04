@@ -15,7 +15,7 @@ checkdepends=(python-pytest vtk libpng fmt jsoncpp verdict freetype2 libxt
 optdepends=('python-mpi4py: for ')
 changelog=CHANGELOG.md
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('79fc08914255a3ce7fdac9fccd757f605caf6ae1263aff7ee82a3bfbe61e2a4d2bff9957bb3e96e35a15e053f64d6a2d5efc3afa23e6bd47618ce33e8a1dacea')
+sha512sums=('cc77bd7c21cdaf6693ad6d38bc3572b5a078e63f4a0b1af4d0e589cf24307fabc0d46e47bcf6b68e36b4d2782c95d4f459352067f07c20580088d4c6ddf45532')
 
 build() {
   cd ${_base}-${pkgver}
