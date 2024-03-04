@@ -2,8 +2,8 @@ _pkgname=clash-nyanpasu
 _Pkgname=clash-nyanpasu
 _disname=clash-nyanpasu
 major_version=1
-minor_version=4
-patch_version=5
+minor_version=5
+patch_version=0
 
 pkgname="${_pkgname}"-appimage
 pkgver="${major_version}.${minor_version}.${patch_version}"
@@ -18,7 +18,7 @@ conflicts=('clash-nyanpasu-git' 'clash-nyanpasu-bin' 'clash-nyanpasu')
 provides=('clash-nyanpasu')
 optdepends=('clash-rs: custom protocol network proxy, coding with rust')
 source_x86_64=("${_Pkgname}-${major_version}.${minor_version}.${patch_version}-amd64.AppImage::https://github.com/LibNyanpasu/clash-nyanpasu/releases/download/v${major_version}.${minor_version}.${patch_version}/${_Pkgname}_${major_version}.${minor_version}.${patch_version}_amd64.AppImage")
-sha256sums_x86_64=('d9c9315fe0cd641551f12f92c685fd6b002db2d9ed5cfb4a68c23d55b4e7c21d')
+sha256sums_x86_64=('bd0b98c3658c0d59a61d2ef54c5b0aad430c79e6b40ce44416add5d8731b78b2')
 
 _appimage="${_Pkgname}-${major_version}.${minor_version}.${patch_version}-amd64.AppImage"
 noextract=("${_appimage}")
