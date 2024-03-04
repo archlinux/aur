@@ -31,7 +31,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -39,9 +39,9 @@ pkgver() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
-        -e "s|@appasar@|app|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
-    gendesk -q -f -n --categories "Network" --pkgname "${_appname}-browser-git" --name "${_pkgname}" --exec "${pkgname%-git}"
+    gendesk -q -f -n --categories="Network" --pkgname="${_appname}-browser-git" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -51,8 +51,7 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    sed '62,65d;61s|,||g' -i electron-builder.json
-    sed '47s|app.isPackaged|!app.isPackaged|g' -i build/electron.js
+    sed '62,65d;s|"deb",|"AppImage"|g' -i electron-builder.json
     sed "s|https://www.google.fr/|about:blank|g" -i src/App.js
     npm install
     npm run electron:package:linux
