@@ -11,7 +11,7 @@
 pkgname=glfw-wayland-minecraft-cursorfix
 pkgdesc="A free, open source, portable framework for graphical application development (wayland, patched for Minecraft)"
 pkgver=3.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/BoyOrigin/glfw-wayland"
 license=('custom:ZLIB')
@@ -52,8 +52,8 @@ build() {
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_INSTALL_LIBDIR=lib \
       -DBUILD_SHARED_LIBS=ON \
-      -D GLFW_BUILD_WAYLAND=ON \
-      -D GLFW_BUILD_X11=OFF
+      -D GLFW_BUILD_WAYLAND=1 \
+      -D GLFW_BUILD_X11=0
 }
 
 package() {
