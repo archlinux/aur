@@ -1,5 +1,5 @@
 pkgname=nordvpn
-pkgver=3.17.0
+pkgver=3.17.2
 pkgrel=1
 pkgdesc="NordVPN client for Linux"
 arch=('x86_64' 'arm64')
@@ -10,7 +10,7 @@ depends=('iptables' 'iproute2' 'wireguard-tools')
 provides=('nordvpn')
 conflicts=('openvpn-nordvpn' 'nordvpn-bin' 'nordvpn-cli-bin' 'nordvpn-git')
 source=("https://github.com/NordSecurity/nordvpn-linux/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('27e547b46767696afcb9b5e0a91c92977a1380bd29972e3d4315de896682c43b')
+sha256sums=('f3d002fbcc8f7611aa6ac235cfeb4dd0dcec3475178a296ab6f165b87b582289')
 install=nordvpn.install
 
 prepare() {
@@ -21,7 +21,7 @@ prepare() {
     bsdtar -xf "${pkgver}.tar.gz"
     cd "nordvpn-linux-${pkgver}"
     patch --forward --strip=1 --input="${srcdir}/../ci_env.sh.patch"
-    # patch --forward --strip=1 --input="${srcdir}/../ci_compile.sh.patch"
+    patch --forward --strip=1 --input="${srcdir}/../ci_compile.sh.patch"
     patch --forward --strip=1 --input="${srcdir}/../magefiles_scripts.go.patch"
 }
 
@@ -54,6 +54,6 @@ package() {
     install -Dm644 contrib/systemd/tmpfiles.d/* -t "${pkgdir}/usr/lib/systemd/tmpfiles.d/"
     install -Dm644 contrib/desktop/nordvpn.desktop "${pkgdir}/usr/share/applications/nordvpn.desktop"
     install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/nordvpn/LICENSE.md"
-    install -Dm644 contrib/rsa/rsa-key-1.pub "${pkgdir}/var/lib/nordvpn/data/rsa-key-1.pub"
+    install -Dm644 daemon/response/rsa-key-1.pub "${pkgdir}/var/lib/nordvpn/data/rsa-key-1.pub"
 }
 

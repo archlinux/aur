@@ -1,14 +1,25 @@
 diff --git a/ci/compile.sh b/ci/compile.sh
-index dd1bf9a..dba1c2a 100755
+index 6db84a4..05a1fbd 100755
 --- a/ci/compile.sh
 +++ b/ci/compile.sh
-@@ -8,7 +8,8 @@ source "${CI_PROJECT_DIR}"/ci/archs.sh
- 
- # Since race detector has huge performance price and it works only on amd64 and does not
- # work with pie executables, its enabled only for development builds.
--branch="${CI_COMMIT_REF_NAME:=$(git describe --contains --all HEAD)}"
-+# branch="${CI_COMMIT_REF_NAME:=$(git describe --contains --all HEAD)}"
-+branch="main"
+@@ -11,11 +11,6 @@ source "${WORKDIR}"/ci/archs.sh
  # shellcheck disable=SC2153
- [ "${branch}" != "main" ] && [ "${ENVIRONMENT}" = "dev" ] && [ "${ARCH}" = "amd64" ] && BUILDMODE="-race" || BUILDMODE="-buildmode=pie"
+ [ "${ENVIRONMENT}" = "dev" ] && [ "${ARCH}" = "amd64" ] && BUILDMODE="-race" || BUILDMODE="-buildmode=pie"
  
+-if [[ "${ENVIRONMENT}" == "prod" ]]; then
+-	EVENTS_DOMAIN="${EVENTS_PROD_DOMAIN}"
+-else
+-	EVENTS_DOMAIN="${EVENTS_STAGING_DOMAIN}"
+-fi
+ 
+ LDFLAGS="-X 'main.Version=${VERSION}' \
+ 	-X 'main.Environment=${ENVIRONMENT}' \
+@@ -23,8 +18,6 @@ LDFLAGS="-X 'main.Version=${VERSION}' \
+ 	-X 'main.Arch=${ARCH}' \
+ 	-X 'main.PackageType=${PACKAGE:-deb}' \
+ 	-X 'main.Salt=${SALT}' \
+-	-X 'main.EventsDomain=${EVENTS_DOMAIN}' \
+-	-X 'main.EventsSubdomain=${EVENTS_SUBDOMAIN}' \
+ 	-X 'main.FirebaseToken=${FIREBASE_TOKEN:-""}'"
+ 
+ declare -A names_map=(
