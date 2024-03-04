@@ -1,7 +1,7 @@
 # Maintainer: A. Benz <hello@benz.dev>
 pkgname=bmv-bin
 license=('MIT')
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc='drop-in mv replacement with bulk moving support'
 url='https://github.com/abenz1267/bmv'
@@ -10,8 +10,8 @@ source_aarch64=("https://github.com/abenz1267/bmv/releases/download/v$pkgver/bmv
 arch=('x86_64' 'aarch64')
 conflicts=('bmv')
 provides=('bmv')
-sha256sums_x86_64=('9e3248e898d4346a0d74af450db48957051d25b23f0fc3dccf928175281aaee4')
-sha256sums_aarch64=('da747d1b8e80c4718b8b84500b09aaff47be0b794410007e3df85125f888da54')
+sha256sums_x86_64=('b01a3b4a927a1bfa94261009f67cf7cc65f3570f770b6f8b4b079f4cbf0f6193')
+sha256sums_aarch64=('ce325ccb404d726147928f89345c307f9798428a4221741b22020761cb716c21')
 
 package() {
   cd "$srcdir/"
