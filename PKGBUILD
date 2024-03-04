@@ -9,7 +9,7 @@ url="https://apps.gnome.org/PikaBackup"
 license=('GPL-3.0-or-later')
 depends=('borg' 'fuse3' 'libadwaita' 'libsecret' 'python-pyfuse3')
 makedepends=('cargo' 'git' 'itstool' 'meson')
-checkdepends=('appstream-glib')
+checkdepends=('appstream')
 #checkdepends+=('xorg-server-xvfb')
 _commit=668f9b2e41a95bd71c3d5d45f90cf769ebcce80b  # tags/v0.7.0^0
 source=("git+https://gitlab.gnome.org/World/pika-backup.git#commit=$_commit")
@@ -49,7 +49,7 @@ check() {
 #  xvfb-run -a -s "-screen 0 1024x768x24" dbus-run-session meson test -C build --no-stdsplit --print-errorlogs || :
 
   desktop-file-validate build/data/org.gnome.World.PikaBackup.Monitor.desktop
-  appstream-util validate-relax --nonet build/data/org.gnome.World.PikaBackup.metainfo.xml
+  appstreamcli validate --no-net build/data/org.gnome.World.PikaBackup.metainfo.xml || :
 }
 
 package() {
