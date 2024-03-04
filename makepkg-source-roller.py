@@ -225,8 +225,8 @@ place_subproject_into_tree () {
     if [[ -n "$parent_dir" ]]; then
         mkdir -p "$parent_dir"
     fi
-    # Remove the target dir only if it's empty
-    rm -df "$2"
+    # Remove the target dir
+    rm -rf "$2"
     if [[ "$3" == "true" ]]; then
         cp -r "$1" "$2"
     else
