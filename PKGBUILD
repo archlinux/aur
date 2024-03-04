@@ -1,6 +1,6 @@
 # Maintainer: Patrick Hechler <patrjprof-git@ph.anderemails.de>
 pkgname=patrjprof-git
-pkgver=1.1.0r43.465e06d
+pkgver=1.1.0r66.fb936e5
 pkgrel=1
 pkgdesc="An Open source Java profiler written in Java"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://git.rwth-aachen.de/patrick_laszlo.hechler/patr-java-profiler"
 license=('AGPL')
 groups=()
 depends=('java-runtime-headless>=8')
-makedepends=('git' 'maven' 'java-runtime-headless>=8')
+makedepends=('git' 'maven' 'java-environment>=8')
 optdepends=()
 provides=("patrjprof=${pkgver}")
 conflicts=('patrjprof')
@@ -77,7 +77,7 @@ AGENT_JAR=/usr/share/java/patrjprof/patr-java-profiler-agent.jar
 BOOTSTRAP_JAR=/usr/share/java/patrjprof/patr-java-profiler-bootstrap.jar
 
 #helper script from git
-"'"$@"' > "$pkgdir"/usr/bin/patrjprof
+" > "$pkgdir"/usr/bin/patrjprof
   cat patr-java-prof-help.sh >> "$pkgdir"/usr/bin/patrjprof
   chmod +x "$pkgdir"/usr/bin/patrjprof
 }
