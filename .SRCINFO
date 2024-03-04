@@ -1,11 +1,11 @@
 pkgbase = koishi-desktop-bin
 	pkgdesc = Launch Koishi from your desktop
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://koishi.chat/manual/starter/
 	arch = x86_64
 	license = AGPL-3.0-only
-	makedepends = squashfuse
+	makedepends = fuse2
 	depends = nodejs
 	provides = koishi-desktop=1.0.2
 	conflicts = koishi-desktop

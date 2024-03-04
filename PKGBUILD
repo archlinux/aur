@@ -4,7 +4,7 @@ pkgname="${_pkgname}-desktop-bin"
 _appname="chat.${_pkgname}.desktop"
 _shortname=koi
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Launch Koishi from your desktop"
 arch=('x86_64')
 url="https://koishi.chat/manual/starter/"
@@ -16,7 +16,7 @@ depends=(
     'nodejs'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64-v${pkgver}.AppImage"
