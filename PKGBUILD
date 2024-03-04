@@ -12,9 +12,15 @@ arch=("x86_64")
 provides=("remux")
 conflicts=("remux")
 source=("https://git.vwolfe.io/valerie/remux/archive/v$pkgver.tar.gz")
-sha256sums=("54364a06839fb5d97cfcbcfda74960d65cafcd63cec4eed9f42d2fde45beff62")
+sha256sums=("d34997e4855ee221a3bc14274368a034c4f4e3213e1ea95e8a4cc65c82e590fc")
+
+build() {
+    cd "$srcdir/$pkgname"
+    cargo build --release
+}
 
 package() {
-    install -Dm755 remux -t "$pkgdir/usr/bin"
+    cd "$srcdir/$pkgname"
+    install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
