@@ -4,8 +4,10 @@ Requires=network.target
 After=network.target network-online.target
 
 [Service]
+Restart=on-failure
+RestartSec=10s
 ExecStart=/usr/bin/ethtool -s %i wol g
-Type=oneshot
+Type=simple
 
 [Install]
 WantedBy=multi-user.target

@@ -1,18 +1,17 @@
 # Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=wol-systemd
-pkgver=20210121
-pkgrel=2
+pkgver=20230303
+pkgrel=1
 pkgdesc="A systemd unit file for enabling Wake-On-LAN automatically"
 arch=('any')
 url="https://wiki.archlinux.org/index.php/Wake-on-LAN"
 license=('FDL1.3')
 depends=('ethtool')
+source=('wol@.service')
 install=wol-systemd.install
-source=('wol@.service' 'wol-systemd.install')
 
 package() {
   install -Dm 644 wol@.service "${pkgdir}/usr/lib/systemd/system/wol@.service"
 }
-sha1sums=('6d5039ad3e08cd726a2f004d9566c8a1bd79ed6f'
-          'ee32d3ec60f1257509b7bac3af36ff6b57ab325f')
+sha256sums=('83cf4620006eea447d544c1d06f190e8f6e065ea8f0ace962387bb9580583c68')
