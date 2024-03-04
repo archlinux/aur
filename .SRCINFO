@@ -1,20 +1,20 @@
 pkgbase = mapeo-desktop-bin
 	pkgdesc = An offline map editing application for indigenous territory mapping in remote environments.
 	pkgver = 5.6.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://mapeo.app/
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = gtk3
-	depends = alsa-lib
-	depends = python
-	depends = nss
+	depends = electron9-bin
 	depends = hicolor-icon-theme
-	depends = libxss
 	depends = nodejs
+	depends = python>3
 	provides = mapeo-desktop=5.6.2
 	conflicts = mapeo-desktop
+	options = !strip
 	source = mapeo-desktop-5.6.2.deb::https://github.com/digidem/mapeo-desktop/releases/download/v5.6.2/Install_Mapeo_v5.6.2_linux.deb
+	source = mapeo-desktop.sh
 	sha256sums = 7bd9620e618b323182974dcc3df1a4bf0b4902f2622ac5af3728ea3d9909cb52
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = mapeo-desktop-bin
