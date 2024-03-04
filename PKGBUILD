@@ -14,8 +14,15 @@ optdepends=('python-pyvista: for plotting'
   'python-numba: for jit support'
   'slepc: for eigenvalue solver support'
   'gmsh: for extract data from Gmsh models')
-source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('2181247edef9f4e3f7b181dc6fc755402a2b9dcf871ed0bcfda53b8bc36a98678cab3306918c16b67e13f04ffc1f161f0c9c290241a4222013b47eac4c8c261c')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
+timer_fix.patch::${url}/pull/2966.patch)
+sha512sums=('2181247edef9f4e3f7b181dc6fc755402a2b9dcf871ed0bcfda53b8bc36a98678cab3306918c16b67e13f04ffc1f161f0c9c290241a4222013b47eac4c8c261c'
+            '63674969f4af1f76725464b1b7f8ec2ff1805abd06429c41abf553ebfb997f95712104c5f81f924a8aa6e4c30723bfb5a9e296123a87086fefc5f6a1cf2f5c9c')
+
+prepare() {
+  cd ${_base}-${pkgver}
+  patch -p1 -i ../timer_fix.patch
+}
 
 build() {
   cd ${_base}-${pkgver}/python
