@@ -2,7 +2,7 @@
 pkgname=gopeed-bin
 _pkgname=Gopeed
 pkgver=1.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="High speed downloader that supports all platforms."
 arch=('x86_64')
 url="https://gopeed.com/"
@@ -11,7 +11,6 @@ license=('GPL-3.0-only')
 provides=("${pkgname%-bin}-${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    #'at-spi2-core'
     'gtk3'
     'libdbusmenu-glib'
     'libappindicator-gtk3'
@@ -27,7 +26,7 @@ build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
