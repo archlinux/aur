@@ -2,7 +2,7 @@
 # Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
 
 pkgname=(conversejs-git conversejs-epiphany-git)
-pkgver=6.0.0.r364.gefb486511
+pkgver=10.1.5.r122.g04c37537d
 pkgrel=1
 arch=('any')
 url="https://conversejs.org/"
@@ -26,13 +26,13 @@ build() {
   make dist
   gzip -vfk9 dist/converse.min.js* \
     dist/converse.min.css* \
-    dist/webfonts/*.svg \
     dist/locales/*.js* \
     dist/locales/dayjs/*.js*
 }
 
 package_conversejs-git() {
   pkgdesc='Web-based XMPP/Jabber chat client written in javascript'
+  backup=('usr/share/webapps/converse.js/fullscreen.html')
 
   cd converse.js
   install -dm755 "$pkgdir"/usr/share/webapps/converse.js/images
@@ -50,3 +50,11 @@ package_conversejs-epiphany-git() {
   install -Dm755 ../launcher.sh "$pkgdir"/usr/bin/conversejs
   install -Dm644 ../launcher.desktop "$pkgdir"/usr/share/applications/conversejs.desktop
 }
+
+#package_conversejs-headless-git() {
+#  depends=('epiphany' 'conversejs-git' 'python')
+#  pkgdesc='Desktop launcher for Converse.js'
+#
+#  install -Dm755 ../launcher.sh "$pkgdir"/usr/bin/conversejs
+#  install -Dm644 ../launcher.desktop "$pkgdir"/usr/share/applications/conversejs.desktop
+#}
