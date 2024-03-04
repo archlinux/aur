@@ -1,6 +1,14 @@
-# 0.6.7
+# 0.6.8
 
     - Update CD commands for newer build system.
+
+# 0.6.7
+
+    - Failed to build wheels. This version does not exist.
+
+# 0.6.6
+
+    - Failed to build wheels. This version does not exist.
 
 # 0.6.5
 
