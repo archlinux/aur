@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-cgns
 	pkgdesc = Standard for recording and recovering computer data associated with the numerical solution of fluid dynamics equations (mingw-w64)
-	pkgver = 4.3.0
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = http://www.cgns.org
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = mingw-w64-cgns
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = mingw-w64-cgns-4.3.0.tar.gz::https://github.com/CGNS/CGNS/archive/v4.3.0.tar.gz
-	sha256sums = 7709eb7d99731dea0dd1eff183f109eaef8d9556624e3fbc34dc5177afc0a032
+	source = mingw-w64-cgns-4.4.0.tar.gz::https://github.com/CGNS/CGNS/archive/v4.4.0.tar.gz
+	sha256sums = 3b0615d1e6b566aa8772616ba5fd9ca4eca1a600720e36eadd914be348925fe2
 
 pkgname = mingw-w64-cgns

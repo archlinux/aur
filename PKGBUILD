@@ -1,6 +1,6 @@
 pkgname=mingw-w64-cgns
 _PKGNAME=CGNS
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc='Standard for recording and recovering computer data associated with the numerical solution of fluid dynamics equations (mingw-w64)'
 arch=('any')
@@ -10,7 +10,7 @@ depends=('mingw-w64-crt' 'mingw-w64-hdf5')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/${_PKGNAME}/${_PKGNAME}/archive/v${pkgver}.tar.gz)
-sha256sums=('7709eb7d99731dea0dd1eff183f109eaef8d9556624e3fbc34dc5177afc0a032')
+sha256sums=('3b0615d1e6b566aa8772616ba5fd9ca4eca1a600720e36eadd914be348925fe2')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
