@@ -9,7 +9,7 @@ url="https://github.com/vikdevelop/SaveDesktop"
 license=('GPL-3.0-or-later')
 depends=('hicolor-icon-theme' 'libadwaita' 'python-dbus' 'python-gobject')
 makedepends=('git')
-checkdepends=('appstream-glib')
+checkdepends=('appstream')
 _commit=51253bcb6f2dff3de4a3212605396d9723258f17  # tags/3.1.1^0
 source=("git+https://github.com/vikdevelop/SaveDesktop.git#commit=${_commit}"
         "$pkgname.sh"
@@ -35,7 +35,7 @@ prepare() {
 
 check() {
   cd SaveDesktop
-  appstream-util validate-relax --nonet "flatpak/${_app_id}.metainfo.xml"
+  appstreamcli validate --no-net "flatpak/${_app_id}.metainfo.xml"
   desktop-file-validate "flatpak/${_app_id}.desktop"
 }
 
