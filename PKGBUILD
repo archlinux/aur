@@ -4,9 +4,9 @@ _appname=GitHubDesktop
 pkgname="${_pkgname}-zh-bin"
 pkgver=3.3.8_linux2
 #_zhpkgver="${pkgver%_linux2}"
-_zhpkgver=3.3.8
+_zhpkgver=3.3.9
 _electronversion=26
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for managing Git and GitHub.Chinese SC Version.Github Desktop 汉化版"
 arch=(
     'aarch64'
@@ -39,9 +39,9 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/shiftkey/desktop/release-${pkgver//_/-}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ae9477be564f83ad64af64de563cd81565d84b6a4fe68e93077c72c4e12f1133'
+sha256sums=('ed8011ed0fef99c5b3fe04cefd419c7ddc7299aadfae5ea127048d651919e366'
             '891d678cd6aa67c0712f663b5fee690f24d11d360795300814f7bf2eb91ba530'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 sha256sums_aarch64=('179f751dedb67eec9f8ec9717674bc37939ba44237f6b71f9339b090a72fe7f3')
 sha256sums_armv7h=('a645b6b20077585ee93d2ad6b8adc7e7b7be0db66409fa13054c7c1049431efe')
 sha256sums_x86_64=('317b4421512c7791803c6bb13077052c9fccd34f653d19d7ea1fa48f9525486f')
@@ -50,7 +50,7 @@ build() {
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     install -Dm644 "${srcdir}/GithubDesktop汉化工具/Linux/"* -t "${srcdir}/usr/lib/${_pkgname}/resources/app"
     sed -e "5i\Name[zh_CN]=Github桌面版" \
         -e "6i\Comment[zh_CN]=从桌面对Github进行简单协作" \
