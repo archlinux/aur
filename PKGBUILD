@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/pycontribs/wstools"
 license=('custom')
 depends=('python-six')
-makedepends=('python-pbr' 'python-setuptools')
+makedepends=('python-pbr' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest-runner' 'autopep8' 'python-pytest-cov')
 source=("https://github.com/pycontribs/wstools/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         python310.patch)
@@ -24,17 +24,17 @@ prepare() {
 
 build() {
   cd wstools-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
   cd wstools-$pkgver
-  python setup.py test
+  pytest
 }
 
 package() {
   cd wstools-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -d "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 docs/* "$pkgdir/usr/share/licenses/$pkgname"/
