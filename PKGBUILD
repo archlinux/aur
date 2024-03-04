@@ -3,7 +3,7 @@ pkgname=snapmail-bin
 _pkgname=Snapmail
 pkgver=0.3.1_rc.6
 _electronversion=19
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source P2P messaging app based on Holochain.It is the latest iteration of Snapmail from Glass Bead Software."
 arch=('x86_64')
 url="https://github.com/glassbeadsoftware/snapmail"
@@ -12,14 +12,11 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
     'java-runtime'
     'nodejs'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 options=('!strip')
 _install_path="/opt/appimages"
@@ -30,7 +27,7 @@ source=(
 )
 sha256sums=('e40525d3a19e352aaa261539ae9304a9eaf434ebcf4c427583062ecb12022fab'
             '12ce98b0343aa56cfff71264980dbbcb0f4696bff5500c3ea5f59aed05b9ef62'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -39,7 +36,6 @@ build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -e "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
-    sed "309s|isPackaged|isPackaged == false|g" -i "${srcdir}/squashfs-root/resources/app/out-tsc/main.js"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
 }
 package() {
