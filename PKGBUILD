@@ -26,6 +26,7 @@ source=(
   'gcc-hash-style-both.patch'
   'gcc_pure64.patch'
 )
+source[1]="https://gcc.gnu.org/pub/gcc/infrastructure/${source[1]##*/}"
 md5sums=('27e459c2566b8209ab064570e1b378f7'
          'e039bfcfb6c2ab039b8ee69bf883e824'
          'e34fca0540d840e5d0f6427e98c92252'
