@@ -26,7 +26,7 @@ makedepends=(
   'python-installer'
   'python-poetry-core'
 )
-checkdepends=('appstream-glib')
+checkdepends=('appstream')
 _commit=332175e50b63d1503c08afc5d839fc3f3fc50aba  # tags/v2023.1.1^0
 source=("git+https://github.com/srevinsaju/guiscrcpy.git#commit=$_commit?signed")
 sha256sums=('SKIP')
@@ -56,7 +56,7 @@ build() {
 
 check() {
   cd "$pkgname"
-  appstream-util validate-relax --nonet "appimage/$pkgname.appdata.xml"
+  appstreamcli validate --no-net "appimage/$pkgname.appdata.xml"
   desktop-file-validate "appimage/$pkgname.desktop"
 }
 
