@@ -3,7 +3,7 @@ pkgname=lepton-bin
 _pkgname=Lepton
 pkgver=1.10.0
 _electronversion=13
-pkgrel=1
+pkgrel=2
 pkgdesc="A lean code snippet manager"
 arch=('x86_64')
 url="https://hackjutsu.com/Lepton"
@@ -14,12 +14,9 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
@@ -28,7 +25,7 @@ source=(
 )
 sha256sums=('ace652c720110c09fe46c9f37dffe9f2e476f6d072e0c7a23fa5d9ebbf085a1e'
             'bbee9578431a6a08cd42a86b84e8b4c65ba132357fd6615996445bdc4a534224'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
