@@ -1,6 +1,6 @@
 pkgbase = mediamtx-git
 	pkgdesc = Ready-to-use RTSP / RTMP / LL-HLS / WebRTC server and proxy that allows to read, publish and proxy video and audio streams
-	pkgver = 0.23.5.r5.g0d1aad2
+	pkgver = 1.6.0.r0.gdec395c
 	pkgrel = 1
 	url = https://github.com/bluenviron/mediamtx
 	arch = x86_64

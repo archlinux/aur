@@ -2,7 +2,7 @@
 
 _pkgname=mediamtx
 pkgname=$_pkgname-git
-pkgver=0.23.5.r5.g0d1aad2
+pkgver=1.6.0.r0.gdec395c
 pkgrel=1
 pkgdesc="Ready-to-use RTSP / RTMP / LL-HLS / WebRTC server and proxy that allows to read, publish and proxy video and audio streams"
 arch=('x86_64' 'aarch64')
@@ -35,6 +35,7 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath"
+    go generate ./...
     go build -ldflags='-s -w -linkmode=external'
 }
 
@@ -44,5 +45,6 @@ package() {
     cd $pkgname
     install -d "$pkgdir"/etc/$_pkgname
     install -Dm644 $_pkgname.yml "$pkgdir"/etc/$_pkgname/$_pkgname.yml
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
     install -Dm755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
 }
