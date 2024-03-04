@@ -1,13 +1,15 @@
 pkgbase = xmm7360-pci-spat-dkms-git
 	pkgdesc = Driver for the Fibocom L850-GL / Intel XMM7360 LTE modem
 	pkgver = 0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SimPilotAdamT/xmm7360-pci-SPAT
 	install = xmm7360.install
 	arch = x86_64
 	license = BSD
 	license = GPL
 	makedepends = python
+	conflicts = xmm7360-pci-dkms-git
+	conflicts = xmm7360-pci-utils-git
 	source = git+https://github.com/SimPilotAdamT/xmm7360-pci-SPAT
 	source = dkms.conf
 	source = xmm7360.service
@@ -17,14 +19,16 @@ pkgbase = xmm7360-pci-spat-dkms-git
 	sha512sums = 9bbd2ffbf6b455b69744bccca1c9a495a5fbad9785f1fe536f899b2373b21bbeec1a7f8de3222f694ba54758024c7cb02adcaf4472a117db1f9af4b757711b79
 	sha512sums = 51cc3e1a492204c0c1bf1bc752572a1361fb030bc47f9cd412e1ce7595d7578c540f492ab7d933231dc0f20c74bc92ef5e6fcda3c060cee8806e45a7fc7cec06
 
-pkgname = xmm7360-pci-spat-dkms
+pkgname = xmm7360-pci-spat-dkms-git
 	pkgdesc = Driver for the Fibocom L850-GL / Intel XMM7360 LTE modem – module sources
 	depends = dkms
-	provides = XMM7360-PCI-SPAT-MODULE
+	replaces = xmm7360-pci-spat-dkms
 
-pkgname = xmm7360-pci-spat-utils
+pkgname = xmm7360-pci-spat-utils-git
 	pkgdesc = Driver for the Fibocom L850-GL / Intel XMM7360 LTE modem – utilities only
-	depends = XMM7360-PCI-SPAT-MODULE
+	depends = xmm7360-pci-spat-dkms
 	depends = dbus-python
 	depends = python-pyroute2
 	depends = python-configargparse
+	replaces = xmm7360-pci-spat-utils
+	backup = etc/xmm7360

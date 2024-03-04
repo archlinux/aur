@@ -1,4 +1,4 @@
 *.pkg.tar.zst
-/src
-/pkg
-/xmm7360-pci
+src
+pkg
+xmm7360-pci-SPAT
