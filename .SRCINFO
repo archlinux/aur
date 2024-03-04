@@ -1,6 +1,6 @@
 pkgbase = wg-netns
 	pkgdesc = WireGuard with Linux Network Namespaces (netns)
-	pkgver = 2.3.0
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://github.com/dadevel/wg-netns
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = wg-netns
 	depends = python
 	depends = iproute2
 	optdepends = python-yaml: yaml config support
-	source = wg-netns-2.3.0.tar.gz::https://github.com/dadevel/wg-netns/archive/refs/tags/v2.3.0.tar.gz
-	sha256sums = b39a69988f8d941c27541ba92ba23dbb1f44150ffa2d5e1e0ff0b8a3b04e06a9
+	source = wg-netns-2.3.2.tar.gz::https://github.com/dadevel/wg-netns/archive/refs/tags/v2.3.2.tar.gz
+	sha256sums = a0d02bc9a9409a1c3aa1ca345ea2f0fd3672b6850b81b6ac575076bea2d7f5bd
 
 pkgname = wg-netns
