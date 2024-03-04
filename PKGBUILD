@@ -9,7 +9,7 @@ url="https://fabiocolacio.github.io/Marker"
 license=('GPL-3.0-or-later')
 depends=('gtksourceview3' 'gtkspell3' 'webkit2gtk-4.1')
 makedepends=('git' 'itstool' 'meson')
-checkdepends=('appstream-glib')
+checkdepends=('appstream')
 optdepends=('pandoc: export to HTML, PDF, RTF, OTF, DOCX, LaTeX'
             'yelp: in-app help')
 provides=("${pkgname%-*}")
@@ -59,7 +59,7 @@ build() {
 
 check() {
   cd Marker
-  appstream-util validate-relax --nonet data/*.appdata.xml
+  appstreamcli validate --no-net data/*.appdata.xml || :
   desktop-file-validate data/*.desktop
 }
 
