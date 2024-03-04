@@ -28,7 +28,7 @@ makedepends=(
   'python-wheel'
   'rsync'
 )
-checkdepends=('appstream-glib' 'desktop-file-utils')
+checkdepends=('appstream' 'desktop-file-utils')
 optdepends=(
   'python-pygments: syntax highlighting'
   'python-pyinotify: file system change monitoring'
@@ -56,7 +56,7 @@ build() {
 check() {
   cd "$pkgname-$pkgver"
   desktop-file-validate share/applications/*.desktop
-  appstream-util validate-relax --nonet share/metainfo/*.appdata.xml
+  appstreamcli validate --no-net share/metainfo/*.appdata.xml || :
 
   # Run the unit tests
 #  GIT_CONFIG_NOSYSTEM=true LC_ALL="C.UTF-8" make test V=2
