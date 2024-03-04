@@ -6,7 +6,7 @@ arch=('x86_64')
 url="https://github.com/ffplayout/ffplayout"
 license=('GPL3')
 depends=(
-  'ffmpeg-ffplayout>=5.0'
+  'ffmpeg-ffplayout'
   'sudo'
 )
 makedepends=(
@@ -23,11 +23,9 @@ install='ffplayout.install'
 source=(
   "${pkgname}::git+https://github.com/ffplayout/ffplayout.git"
   'ffplayout.install'
-  'disable_embed_frontend.patch'
 )
 sha256sums=('SKIP'
-            '91fa57deb966dd5f3f611d0a8213934f200487c64153167a1d9d6f7c9b1b85e8'
-            'cdb28811b27935a97421497877691fefac208f582be6d49445824e4d0ac6d976')
+            '91fa57deb966dd5f3f611d0a8213934f200487c64153167a1d9d6f7c9b1b85e8')
 
 pkgver() {
   cd ${pkgname}
@@ -36,8 +34,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname}"
-
-  patch --forward --strip=1 --input="${srcdir}/disable_embed_frontend.patch"
 
   sed -i 's/default = \["embed_frontend"\]/default = []/' ffplayout-api/Cargo.toml
 
