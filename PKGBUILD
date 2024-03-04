@@ -33,8 +33,8 @@ package() {
   # copy original files
   mkdir -p "$pkgdir"/usr/lib/patrjprof
   cp -t "$pkgdir"/usr/lib/patrjprof \
-    patr-java-profiler-agent/target/patr-java-profiler-agent-$VERSION-jar-with-dependencies.jar \
-    patr-java-profiler-bootstrap/target/patr-java-profiler-bootstrap-$VERSION.jar
+    patr-java-profiler-agent-$VERSION-jar-with-dependencies.jar \
+    patr-java-profiler-bootstrap-$VERSION.jar
 
   # create symlink of agent/bootstrap without version/version-with-deps appendix
   ln -sT patr-java-profiler-agent-$VERSION-jar-with-dependencies.jar "$pkgdir"/usr/lib/patrjprof/patr-java-profiler-agent-jar-with-dependencies.jar
