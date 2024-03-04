@@ -3,7 +3,7 @@ pkgname=zui-bin
 _pkgname=Zui
 pkgver=1.6.0
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful desktop application for exploring and working with data. The official front-end to the Zed lake."
 arch=('x86_64')
 url="https://www.brimdata.io/"
@@ -27,13 +27,13 @@ source=(
 )
 sha256sums=('c857fae016a2f2c8e8d7af37e2f14cb1e1687e2db085ff5aa148561732b293dc'
             'e3d24db419fcb44a1dab91f351b8203e74e8501ea11c4be82ad3cc05070cad9f'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
