@@ -1,0 +1,12 @@
+pkgbase = gpodder2go-git
+	pkgdesc = simple self-hosted, drop-in replacement for gpodder/mygpo
+	pkgver = 0.1.2.r43.20c230d
+	pkgrel = 1
+	url = https://github.com/oxtyped/gpodder2go
+	arch = x86_64
+	license = AGPL
+	makedepends = go
+	source = git+https://github.com/oxtyped/gpodder2go.git
+	sha256sums = SKIP
+
+pkgname = gpodder2go-git
