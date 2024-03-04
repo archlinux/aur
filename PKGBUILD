@@ -4,14 +4,14 @@
 # Contributor: haha662 <haha662 at outlook dot com>
 
 _pkgname=bookdown
-_pkgver=0.37
+_pkgver=0.38
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Authoring Books and Technical Documents with R Markdown"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   pandoc
   r-htmltools
@@ -46,12 +46,12 @@ optdepends=(
   r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f4bb797613b2e89435e211f2d55b0912')
-sha256sums=('b3c11156d873ea892b548344d02e01bbfa3505002ab948010bdcf28215f548a2')
+md5sums=('41358aa78abe01e70e121fe317cb7c5f')
+b2sums=('f907ddfcfee2b72867fbc1079ba7ffcd01096f70aede0e81c96c46b2e0f34339f67cffe146ac644780b50c3f28a41090e16d7cdee4ca7f49fbf7d6ace7403c68')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

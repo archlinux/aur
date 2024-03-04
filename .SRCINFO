@@ -1,10 +1,10 @@
 pkgbase = r-bookdown
 	pkgdesc = Authoring Books and Technical Documents with R Markdown
-	pkgver = 0.37
+	pkgver = 0.38
 	pkgrel = 1
 	url = https://cran.r-project.org/package=bookdown
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-downlit
 	checkdepends = r-testthat
 	checkdepends = r-xml2
@@ -32,8 +32,8 @@ pkgbase = r-bookdown
 	optdepends = r-webshot
 	optdepends = r-withr
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/bookdown_0.37.tar.gz
-	md5sums = f4bb797613b2e89435e211f2d55b0912
-	sha256sums = b3c11156d873ea892b548344d02e01bbfa3505002ab948010bdcf28215f548a2
+	source = https://cran.r-project.org/src/contrib/bookdown_0.38.tar.gz
+	md5sums = 41358aa78abe01e70e121fe317cb7c5f
+	b2sums = f907ddfcfee2b72867fbc1079ba7ffcd01096f70aede0e81c96c46b2e0f34339f67cffe146ac644780b50c3f28a41090e16d7cdee4ca7f49fbf7d6ace7403c68
 
 pkgname = r-bookdown
