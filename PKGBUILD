@@ -1,22 +1,30 @@
 # Maintainer: Patrik Bachan <patrikbachan at gmail dot com>
 pkgname=asammdf-git
-pkgver=r2489.c3ea7216
+pkgver=r4518.edaac991
 pkgrel=1
 pkgdesc="fast parser and editor for ASAM MDF files including GUI"
 arch=('x86_64') # should build any run on any architecture with C compiler, but PKG is them arch. specific
 url="https://github.com/danielhrisca/asammdf"
-license=('LGPL3')
+license=('LGPL-3.0-only')
 groups=()
-depends=('python' 'python-pandas' 'python-natsort' 'python-numpy' 'python-numexpr' 'python-cchardet' 'python-lxml' 'python-lz4' 'hicolor-icon-theme')
+depends=('python' 'python-pandas' 'python-numpy' 'python-numexpr' 'python-cchardet' 'python-chardet'  'python-lz4' 'python-importlib-metadata' 'canmatrix-git'  'hicolor-icon-theme')
 makedepends=('git' 'python-setuptools')
 optdepends=(
     'python-h5py: for HDF5 export'
     'python-scipy: for Matlab v4 and v5 .mat export'
     'python-hdf5storage: for Matlab v7.3 .mat export'
     'python-fastparquet: for parquet export'
-    'python-pyqt5: for GUI tool'
+    'python-snappy: snappy export' 
     'python-pyqtgraph: for GUI tool and Signal plotting'
     'python-matplotlib: as fallback for Signal plotting'
+    'python-pyqt5: GUI'
+    'pyside6: GUI'
+    'python-packaging: GUI'
+    'python-natsort: GUI'
+    'python-lxml: GUI'
+    'python-cryptography: encryption'
+    'python-keyring: encryption'
+    'python-fsspec: filesystem'
 )
 source=("${pkgname}"'::git+https://github.com/danielhrisca/asammdf.git'
 	'asammdf.desktop')
