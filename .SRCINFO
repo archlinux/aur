@@ -10,7 +10,7 @@ pkgbase = python-pina-mathlab
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = python-pytorch
+	depends = python-pytorch-lightning
 	source = PINA-0.1.0.post2403.tar.gz::https://github.com/mathLab/PINA/archive/refs/tags/v0.1.0.post2403.tar.gz
 	sha512sums = 559d410c1d9f33ce77762de880d0f2131292ff207960027bd4267c1300f2765ac120fa3850723331115733f0fa76ff2df349977770dc5f3b458e88d788a962b7
 
