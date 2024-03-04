@@ -9,7 +9,7 @@ url="https://github.com/unobserved-io/espanso-gui"
 license=('GPL-3.0-or-later')
 depends=('espanso' 'gtk3' 'hicolor-icon-theme')
 makedepends=('cargo' 'meson')
-checkdepends=('appstream-glib')
+checkdepends=('appstream')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('a0ba09756ea2fe97e2b07569ba8cd2938e0c40826c02f4a93efc1e62aa3fa472')
 
@@ -29,7 +29,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  appstream-util validate-relax --nonet "assets/linux/${_app_id}.appdata.xml" || :
+  appstreamcli validate --no-net "assets/linux/${_app_id}.appdata.xml" || :
   desktop-file-validate "assets/linux/${_app_id}.desktop"
 }
 
