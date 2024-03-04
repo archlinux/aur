@@ -1,27 +1,61 @@
-# Maintainer: mark.blakeney at bullet-systems dot net
-# Original Maintainer: Jameson Pugh <imntreal@gmail.com>
-
-_pkgname=skypeforlinux
-pkgname=$_pkgname-bin
-pkgver=8.13.76.8
+_name=skypeforlinux
+pkgname=${_name}-bin
+pkgver=8.113.0.210
 pkgrel=1
-pkgdesc="Skype for Linux - Insider/Preview Version"
-arch=("x86_64")
-url="http://www.skype.com"
-license=("custom")
-depends=("gtk2" "libxss" "gconf" "alsa-lib" "libxtst" "libsecret" "nss")
-optdepends=("gnome-keyring")
-conflicts=("$_pkgname" "$_pkgname-beta-bin")
-provides=("$_pkgname")
-source=("https://repo.skype.com/deb/pool/main/s/$_pkgname/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('3d75df92f00743f76a799534fe522ffbce44b996273cadb378182ac9f7fabfee')
+pkgdesc='Skype for Linux'
+arch=('x86_64')
+url='https://www.skype.com/'
+license=('custom')
+provides=("${_name}" 'skype')
+conflicts=("${_name}" 'skype')
+options=('!strip' '!emptydirs')
+
+depends=(
+    'alsa-lib'
+    'glibc'
+    'gtk3'
+    'libsecret'
+    'libxss'
+    'libxtst'
+    'nss'
+)
+
+makedepends=(
+    'squashfs-tools'
+)
+
+optdepends=(
+    'org.freedesktop.secrets: keyring/password support'
+    'libappindicator-gtk3: system tray icon support'
+)
+
+# curl -H 'Snap-Device-Series: 16' 'http://api.snapcraft.io/v2/snaps/info/skype'
+source_x86_64=("${_name}-${pkgver}-x86_64.snap::https://api.snapcraft.io/api/v1/snaps/download/QRDEfjn4WJYnm0FzDKwqqRZZI77awQEV_330.snap")
+sha256sums_x86_64=('ab0cc12e3967b991c8b059060449ab4fb5add3a8f2299f72c97f3fd7af8c0b05')
 
 package() {
-  tar -xJC "$pkgdir" -f data.tar.xz
-  install -d "$pkgdir/usr/share/licenses/$pkgname"
-  mv "$pkgdir/usr/share/$_pkgname/LICENSES.chromium.html" \
-    "${pkgdir}/usr/share/licenses/$pkgname/"
-  rm -rf "$pkgdir/opt"
-}
+    local sname="source_${CARCH}"
 
-# vim:set ts=2 sw=2 et:
+    local extract=(
+        'snap/gui/*.desktop'
+        'usr/share/icons/hicolor/*/apps'
+        'usr/share/pixmaps'
+        'usr/share/skypeforlinux'
+    )
+
+    unsquashfs -d "${pkgdir}" "${!sname[0]%::*}" "${extract[@]}"
+
+    # according to the guidelines, "Large self-contained packages" should be in /opt
+    local pkg_opt="${pkgdir}/opt"
+    install -dm755 "${pkg_opt}"
+    mv "${pkgdir}/usr/share/skypeforlinux" -t "${pkg_opt}"
+    chmod -R a-st "${pkg_opt}" # remove suid
+
+    local pkg_bin="${pkgdir}/usr/bin"
+    install -dm755 "${pkg_bin}"
+    ln -s '/opt/skypeforlinux/skypeforlinux' -t "${pkg_bin}"
+
+    local pkg_app="${pkgdir}/usr/share/applications"
+    mv "${pkgdir}/snap/gui" -T "${pkg_app}"
+    sed -e 's/Exec=skype/Exec=skypeforlinux/;s/Icon=.*/Icon=skypeforlinux/' -i "${pkg_app}/"*
+}
