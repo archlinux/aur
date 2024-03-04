@@ -3,7 +3,7 @@
 pkgname=dissent-git
 _pkgname=dissent
 _fqpn=so.libdb.${_pkgname}
-pkgver=r465.d5ceba1
+pkgver=r466.8d59853
 pkgrel=1
 pkgdesc='Discord client written in go and gtk4'
 arch=('x86_64' 'aarch64')
@@ -25,6 +25,7 @@ pkgver() {
 prepare() {
     cd "${_pkgname}"
     mkdir -p build
+    sed -i "s/so.libdb.Dissent/so.libdb.Dissent.Devel/" "${srcdir}/${_pkgname}/nix/${_fqpn}.desktop"
 }
 
 build() {
