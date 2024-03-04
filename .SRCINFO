@@ -18,7 +18,7 @@ pkgbase = aocl
 	sha256sums = 0cb761d4705c72e6a7b8956cf33211dadaa128e3193cfe9b24daa6d3ec3dadbe
 	sha256sums = 1b538de9561a5de59a69b5697ba5f494391897bd6d34101e7847e821e10ce550
 	sha256sums = c9ddea1c7e02048239dd6f800bd2ec807bcb0b2e632fe26537b2be0d8eafba37
-	sha256sums = dddc96efcb7db40eb98b4b00eaa78c4b5f01b552ebf3c58a2a1949cfba1d722e
+	sha256sums = SKIP
 
 pkgname = aocl-aocc
 	install = aocl-aocc.install
