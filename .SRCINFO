@@ -1,0 +1,16 @@
+pkgbase = python-mpegdash
+	pkgdesc = MPD (Media Presentation Description) parser
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/sangwonl/python-mpegdash
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = python-mpegdash-0.4.0.tar.gz::https://github.com/sangwonl/python-mpegdash/archive/refs/tags/0.4.0.tar.gz
+	sha256sums = 4128520c920d55906430a3540ca0b78db184554d1726bc91119f1fbc07aeb61a
+
+pkgname = python-mpegdash
