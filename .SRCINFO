@@ -1,0 +1,12 @@
+pkgbase = python-compact-json-git
+	pkgdesc = A JSON formatter that produces compact but human-readable
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/masaccio/compact-json
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	source = git+https://github.com/masaccio/compact-json.git
+	sha256sums = SKIP
+
+pkgname = python-compact-json-git
