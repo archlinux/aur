@@ -11,20 +11,20 @@
 
 pkgver=25.9.8
 # _gcc_patches=114-patchset-1
-pkgrel=4
+pkgrel=5
 
 _major_ver=${pkgver%%.*}
 pkgname="electron${_major_ver}"
 pkgdesc='Build cross platform desktop apps with web technologies'
 arch=(x86_64)
-url='https://electronjs.org/'
+url='https://electronjs.org'
 license=(MIT BSD-3-Clause)
 depends=(c-ares
          gcc-libs # libgcc_s.so
          glibc # libc.so libm.so
          gtk3 libgtk-3.so
          libevent
-         libffi
+         libffi libffi.so
          nss # libnss3.so
          zlib libz.so)
 makedepends=(clang
@@ -38,6 +38,9 @@ makedepends=(clang
              lld
              llvm
              ninja
+             # Electron ships a vendored nodejs. Meanwhile the npm dependency pulls in nodejs whith is Arch's freshest version.
+             # Pinning the closest LTS here makes the build environment more consistent with the vendored copy.
+             nodejs-lts-hydrogen
              npm
              patchutils
              pciutils
@@ -62,12 +65,12 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         default_app-icon.patch
         electron-launcher.sh
         electron.desktop
+        icu-74.patch
         jinja-python-3.10.patch
+        libxml2-2.12.patch
         random-fixes-for-gcc13.patch
         std-vector-non-const.patch
         use-system-libraries-in-node.patch
-        libxml2-2.12.patch
-        icu-74.patch
         makepkg-source-roller.py
         # BEGIN managed sources
         chromium-mirror::git+https://github.com/chromium/chromium.git#tag=114.0.5735.289
@@ -216,12 +219,12 @@ sha256sums=('SKIP'
             'dd2d248831dd4944d385ebf008426e66efe61d6fdf66f8932c963a12167947b4'
             'b0ac3422a6ab04859b40d4d7c0fd5f703c893c9ec145c9894c468fbc0a4d457c'
             '4484200d90b76830b69eea3a471c103999a3ce86bb2c29e6c14c945bf4102bae'
+            '547e092f6a20ebd15e486b31111145bc94b8709ec230da89c591963001378845'
             '55dbe71dbc1f3ab60bf1fa79f7aea7ef1fe76436b1d7df48728a1f8227d2134e'
+            'bfae9e773edfd0ddbc617777fdd4c0609cba2b048be7afe40f97768e4eb6117e'
             'ba4dd0a25a4fc3267ed19ccb39f28b28176ca3f97f53a4e9f5e9215280040ea0'
             '893bc04c7fceba2f0a7195ed48551d55f066bbc530ec934c89c55768e6f3949c'
             'ff588a8a4fd2f79eb8a4f11cf1aa151298ffb895be566c57cc355d47f161f53f'
-            'bfae9e773edfd0ddbc617777fdd4c0609cba2b048be7afe40f97768e4eb6117e'
-            '547e092f6a20ebd15e486b31111145bc94b8709ec230da89c591963001378845'
             '3ae82375ba212c31fd4ba6f1fa4e2445eeca8eb8c952176131ad57c0258db224'
             'SKIP'
             'SKIP'
@@ -364,6 +367,7 @@ sha256sums=('SKIP'
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
+# plus any so names that are provided + linked
 declare -gA _system_libs=(
   [brotli]=brotli
   [dav1d]="dav1d libdav1d.so"
@@ -414,7 +418,7 @@ prepare() {
   popd
 
   echo "Running hooks..."
-  # python "${srcdir}/depot_tools/gclient.py" runhooks
+  # depot_tools/gclient.py runhooks
   src/build/landmines.py
   src/build/util/lastchange.py -o src/build/util/LASTCHANGE
   src/build/util/lastchange.py -m GPU_LISTS_VERSION \
@@ -437,13 +441,16 @@ prepare() {
   ln -sfn /usr/bin/java src/third_party/jdk/current/bin/
   src/electron/script/apply_all_patches.py \
       src/electron/patches/config.json
-  pushd src/electron
+
+  pushd src
+  pushd electron
   yarn install --frozen-lockfile
-  pushd ..
+  popd
 
   echo "Applying local patches..."
 
-  # Upstream fixes
+  ## Upstream fixes
+
   patch -Np1 -i "${srcdir}/add-some-typename-s-that-are-required-in-C-17.patch"
 
   # Revert addition of compiler flag that needs newer clang
@@ -496,10 +503,38 @@ build() {
   export AR=ar
   export NM=nm
 
+  local _flags=(
+    'custom_toolchain="//build/toolchain/linux/unbundle:default"'
+    'host_toolchain="//build/toolchain/linux/unbundle:default"'
+    'clang_base_path="/usr"'
+    'clang_use_chrome_plugins=false'
+    'symbol_level=0' # sufficient for backtraces on x86(_64)
+    'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
+    'treat_warnings_as_errors=false'
+    'disable_fieldtrial_testing_config=true'
+    'blink_enable_generated_code_formatting=false'
+    'ffmpeg_branding="Chrome"'
+    'rtc_use_pipewire=true'
+    'link_pulseaudio=true'
+    'use_custom_libcxx=false'
+    'use_gnome_keyring=false'
+    'use_sysroot=false'
+    'use_system_libffi=true'
+    'is_component_ffmpeg=false'
+  )
+
+  if [[ -n ${_system_libs[icu]+set} ]]; then
+    _flags+=('icu_use_data_file=false')
+  fi
+
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
   CFLAGS+='   -Wno-builtin-macro-redefined'
   CXXFLAGS+=' -Wno-builtin-macro-redefined'
   CPPFLAGS+=' -D__DATE__=  -D__TIME__=  -D__TIMESTAMP__='
+
+  # Do not warn about unknown warning options
+  CFLAGS+='   -Wno-unknown-warning-option'
+  CXXFLAGS+=' -Wno-unknown-warning-option'
 
   # Let Chromium set its own symbol level
   CFLAGS=${CFLAGS/-g }
@@ -519,35 +554,10 @@ build() {
   # https://crbug.com/957519#c122
   CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
 
-  # Do not warn about unknown warning options
-  CFLAGS+='   -Wno-unknown-warning-option'
-  CXXFLAGS+=' -Wno-unknown-warning-option'
-
   export CHROMIUM_BUILDTOOLS_PATH="${PWD}/buildtools"
-  GN_EXTRA_ARGS='
-    custom_toolchain = "//build/toolchain/linux/unbundle:default"
-    host_toolchain = "//build/toolchain/linux/unbundle:default"
-    clang_base_path = "/usr"
-    clang_use_chrome_plugins = false
-    symbol_level = 0 # sufficient for backtraces on x86(_64)
-    chrome_pgo_phase = 0
-    treat_warnings_as_errors = false
-    disable_fieldtrial_testing_config = true
-    blink_enable_generated_code_formatting = false
-    ffmpeg_branding = "Chrome"
-    rtc_use_pipewire = true
-    link_pulseaudio = true
-    use_custom_libcxx = false
-    use_gnome_keyring = false
-    use_sysroot = false
-    use_system_libffi = true
-    icu_use_data_file = false
-    is_component_ffmpeg = false
-  '
   gn gen out/Release \
-      --args="import(\"//electron/build/args/release.gn\") ${GN_EXTRA_ARGS}"
-  ninja -C out/Release electron
-  ninja -C out/Release electron_dist_zip
+      --args="import(\"//electron/build/args/release.gn\") ${_flags[*]}"
+  ninja -C out/Release electron electron_dist_zip
   # ninja -C out/Release third_party/electron_node:headers
 }
 
