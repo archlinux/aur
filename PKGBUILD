@@ -4,13 +4,13 @@ _base=fluiddyn
 pkgname=python-${_base}
 pkgver=0.6.0
 pkgrel=1
-pkgdesc="A framework for studying fluid dynamics using Python"
+pkgdesc="Framework for studying fluid dynamics"
 arch=(any)
 url="https://foss.heptapod.net/${_base}/${_base}"
-license=('custom:"CeCILL-B"')
-depends=(python-matplotlib python-h5netcdf python-psutil python-distro python-qtpy)
+license=(CECILL-B)
+depends=(python-matplotlib python-h5netcdf python-psutil python-distro python-qtpy python-simpleeval)
 optdepends=('python-pyfftw: Calculate FFT')
-makedepends=(python-build python-installer python-setuptools python-wheel)
+makedepends=(python-build python-installer python-pdm python-wheel)
 checkdepends=(python-pytest python-scipy ipython)
 source=(${url}/-/archive/${pkgver}/${_base}-${pkgver}.tar.gz)
 sha512sums=('a47b2ddc7ca7ba6dd591b7ac2c6063df4ec5df5d2bf44918a136250fb4bdb1bbc7b620e97382fc2136ab2bdf782f9bccb3cfde24b5f8b540202c9eeca46522ce')
@@ -24,7 +24,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest --ignore=${_base}/io/test/test_multitiff.py -k 'not image'
+  test-env/bin/python -m pytest -k 'not save_load_image and not serie_1d and not serie_2d'
 }
 
 package() {
