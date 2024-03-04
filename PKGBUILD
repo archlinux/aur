@@ -180,7 +180,7 @@ build() {
 check() {
   cd "${pkgname%-git}/test"
 
-  SKIP=${SKIP-"20 35 40 50 60 62 63"} TESTS=${TESTS-"18"} KVERSION="$(cd /lib/modules && ls -1 | tail -1)" make check
+  SKIP=${SKIP-"20 40 50 60 62 63"} TESTS=${TESTS-"18"} KVERSION="$(cd /lib/modules && ls -1 | tail -1)" make check
 }
 
 package() {
