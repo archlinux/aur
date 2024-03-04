@@ -2,11 +2,11 @@
 pkgname=anklang-bin
 pkgver=0.2.0
 _electronversion=25
-pkgrel=3
+pkgrel=4
 pkgdesc="A digital audio synthesis application for live creation and composition of music and other audio material."
 arch=('x86_64')
 url="https://github.com/tim-janik/anklang"
-license=("MPL2")
+license=("MPL-2.0")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -22,7 +22,7 @@ depends=(
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('749f5a76b3bde9fdf3f6ea87cca936f2ab2572ac00e31e3d3a47e63f66c0e099')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.zst"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|Exec=/usr/local/lib/${pkgname%-bin}-0-2/bin/${pkgname%-bin}|Exec=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/local/share/applications/${pkgname%-bin}.desktop"
 }

@@ -1,10 +1,10 @@
 pkgbase = anklang-bin
 	pkgdesc = A digital audio synthesis application for live creation and composition of music and other audio material.
 	pkgver = 0.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tim-janik/anklang
 	arch = x86_64
-	license = MPL2
+	license = MPL-2.0
 	depends = gtk2
 	depends = gtk3
 	depends = alsa-lib
