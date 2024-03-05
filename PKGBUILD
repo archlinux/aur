@@ -1,20 +1,20 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Nebulosa
-_pkgver=1.12.0
+_pkgver=1.12.1
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Single-Cell Data Visualisation Using Kernel Gene-Weighted Density Estimation'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgdesc="Single-Cell Data Visualisation Using Kernel Gene-Weighted Density Estimation"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-ggplot2
+  r-ggrastr
   r-ks
   r-patchwork
-  r-seurat
+  r-seuratobject
   r-singlecellexperiment
   r-summarizedexperiment
 )
@@ -28,18 +28,19 @@ optdepends=(
   r-rmarkdown
   r-scater
   r-scran
-  r-seuratobject
+  r-seurat
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cc08da2bf124e836890656c51090e87041d8947da864bcd8a2f750983b6ff34f')
+md5sums=('daedaeb79ec239323487565bce3f7ca2')
+b2sums=('b3472b0f74b6aefc9aa5953758cb5d8cc6d92071c2d77f17e54a3a983b4ca72365c370c2e2bd57978785ab0632b3b5c3f79d91f9b3607c7aab381ed44b648155')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
