@@ -68,8 +68,6 @@ prepare() {
 	sed -i '/CMAKE_INTERPROCEDURAL_OPTIMIZATION/d' CMakeLists.txt
 	sed -i '/discord-rpc/d' CMakeLists.txt
 	sed -i '/FMT_HEADER_ONLY/d' src/Common/precompiled.h
-	# https://gitlab.archlinux.org/archlinux/packaging/packages/glslang/-/merge_requests/2
-	sed -i '/glslang REQUIRED/i find_package(SPIRV-Tools-opt)' CMakeLists.txt
 }
 
 build() {
