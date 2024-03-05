@@ -4,7 +4,7 @@
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=folly
-pkgver=2024.02.26.00
+pkgver=2024.03.04.00
 pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
@@ -48,7 +48,7 @@ source=(
   "fix-missing-include.patch"
 )
 sha256sums=(
-  '83e47b22c3387ea0ea4cd79be2d404ba181869968300575e2431805d633ebcb6'
+  '7f3a70bd94dc264afc84bd58afa19cea71822b06b5744aee511cb9ab38059484'
   '7655b9d6fd926770dae4d26f67b6aedf8fb6ff03927782bcfeffa09b5138b87c'
   '19cc8b4190e3c7d4ef9d1d9842a2def99bb261711ae85cb03e63787c4995e286'
 )
