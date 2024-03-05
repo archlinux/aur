@@ -1,0 +1,4 @@
+[ttf-sil-doulos]
+source = "regex"
+url = "https://software.sil.org/doulos/download/"
+regex = "DoulosSIL-(\\d+\\.\\d+).zip"
