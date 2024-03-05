@@ -8,6 +8,6 @@ nanors/
 nv-codec-headers/
 Simple-Web-Server/
 TPCircularBuffer/
-ViGEmClient/
+Virtual-Gamepad-Emulation-Client/
 miniupnp/
 *.pkg.tar.*
