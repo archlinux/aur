@@ -1,6 +1,6 @@
 pkgbase = orca-slicer
 	pkgdesc = Orca Slicer is a fork of Bambu Studio. It was previously known as BambuStudio-SoftFever
-	pkgver = 1.9.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://github.com/SoftFever/OrcaSlicer
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = orca-slicer
 	depends = ttf-harmonyos-sans
 	provides = OrcaSlicer
 	conflicts = OrcaSlicer
-	source = https://github.com/SoftFever/OrcaSlicer/archive/refs/tags/v1.9.0.tar.gz
+	source = https://github.com/SoftFever/OrcaSlicer/archive/refs/tags/v1.9.1.tar.gz
 	source = 0001-Boost-fix.patch
 	source = orca-slicer.sh
 	sha256sums = a21b0e55708d5335985be2e1bb9e40c12b7e91162dc0d5b78d48a139dcad1dd6
