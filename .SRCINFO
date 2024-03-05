@@ -1,6 +1,6 @@
 pkgbase = psfiles
 	pkgdesc = A CLI tool to monitor file system activity of a Linux process
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/mukovnin/psfiles
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = psfiles
 	license = MIT
 	makedepends = cmake
 	options = zipman
-	source = https://github.com/mukovnin/psfiles/archive/v0.3.1/psfiles-0.3.1.tar.gz
-	sha256sums = 1334cebe27141b890bb28d56cefea47d8dc06829191496e40055e5c37426b3c4
+	source = https://github.com/mukovnin/psfiles/archive/v0.4.0/psfiles-0.4.0.tar.gz
+	sha256sums = 8dd87c16383e4cd6c5f1cff70e5254be836cfda57471668ee5dcdb39fdce358d
 
 pkgname = psfiles
