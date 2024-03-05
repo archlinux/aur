@@ -1,0 +1,12 @@
+pkgbase = python-depthai
+	pkgdesc = DepthAI Python Library
+	pkgver = 2.24.0.0
+	pkgrel = 1
+	url = https://github.com/luxonis/depthai-python
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-pip
+	options = !strip
+
+pkgname = python-depthai
