@@ -1,7 +1,7 @@
 # Maintainer: Kookies <kookies@tutamail.com>
 _pkgbase="openrevolution"
 pkgname="$_pkgbase-git"
-pkgver=v2.8.1
+pkgver=v2.8.1.cca0f4f
 pkgrel=1
 pkgdesc="C/C++ BRSTM and other format tools"
 arch=('x86_64')
@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$_pkgbase/"
-  git describe --tags | sed -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g'
+  echo $(git describe --tags).$(git rev-parse --short HEAD)
 }
 
 prepare() {
