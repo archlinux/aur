@@ -7,9 +7,9 @@
 # Contributor: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
 # Contributor: The_Decryptor
 
-_commit=ddf769b7e8aba0a727a56caa913e29bf34c0f251
+_commit=fa2c48bb1a78884b0f0cf0ec9aca3d70e21a7c17
 pkgname=h2o-git
-pkgver=2.2.0.7939
+pkgver=2.2.0.7949
 pkgrel=1
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64' 'aarch64')
