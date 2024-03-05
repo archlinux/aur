@@ -1,5 +1,5 @@
 pkgbase = python-textual-universal-directorytree
-	pkgdesc = textual plugin for a DirectoryTree compatible with remote filesystems
+	pkgdesc = A Textual Directory Tree for all File Systems
 	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/juftin/textual-universal-directorytree
