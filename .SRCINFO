@@ -1,0 +1,15 @@
+pkgbase = rustic-backup
+	pkgdesc = A wrapper around the Restic backup program
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/bnavetta/rustic
+	arch = x86_64
+	arch = aarch64
+	arch = arm7h
+	license = MIT
+	makedepends = cargo
+	depends = restic
+	source = rustic-backup-0.2.1.tar.gz::https://github.com/bnavetta/rustic/archive/refs/tags/v0.2.1.tar.gz
+	b2sums = f807b0d60b9af81e356318c756cc7278bdc1bb5f56a16337e8a393b6b074c98fda68f9974453ff7d91524fe0353e262633f3c4ded6df38d8ae242fa89c17d372
+
+pkgname = rustic-backup
