@@ -1,0 +1,16 @@
+pkgbase = redshiftqt-git
+	pkgdesc = Frontend for redshift written in Qt (latest commit)
+	pkgver = r36.0c9d79b
+	pkgrel = 1
+	url = https://github.com/loathingKernel/RedShiftQt
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = qt5-base
+	depends = redshift
+	provides = redshiftqt
+	conflicts = redshiftqt
+	source = git+https://github.com/loathingKernel/RedShiftQt.git
+	sha256sums = SKIP
+
+pkgname = redshiftqt-git
