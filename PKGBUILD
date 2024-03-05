@@ -2,13 +2,13 @@
 
 _name=DearPyGui
 pkgname=python-dearpygui
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='A fast and powerful Graphical User Interface Toolkit for Python with minimal dependencies'
 arch=(x86_64)
 url='https://github.com/hoffstadt/DearPyGui'
 license=('MIT')
-depends=(python)
+depends=('python>=3.8')
 makedepends=(python-build python-installer python-wheel)
 source=("git+$url#tag=v$pkgver")
 b2sums=('SKIP')
