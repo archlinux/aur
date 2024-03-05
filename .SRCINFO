@@ -1,0 +1,17 @@
+pkgbase = osqp-eigen-git
+	pkgdesc = Simple C++ wrapper for osqp library.
+	pkgver = v0.8.1.r5.ga752c5e
+	pkgrel = 1
+	url = https://github.com/osqp/osqp
+	arch = x86_64
+	license = apache
+	makedepends = cmake
+	makedepends = git
+	depends = eigen
+	depends = osqp
+	provides = osqp-eigen
+	conflicts = osqp-eigen
+	source = osqp-eigen::git+https://github.com/robotology/osqp-eigen.git
+	sha256sums = SKIP
+
+pkgname = osqp-eigen-git
