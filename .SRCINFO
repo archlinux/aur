@@ -1,6 +1,6 @@
 pkgbase = replay-browser
 	pkgdesc = Replay.io is a tool that makes debugging easy. It's a browser that lets you record your web app and retroactively inspect it using print statements and browser DevTools.
-	pkgver = 2023.09.20
+	pkgver = 2024.03.01
 	pkgrel = 1
 	url = https://www.replay.io
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = replay-browser
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	source = replay-browser-2023.09.20-1.tar.bz2::https://static.replay.io/downloads/linux-replay.tar.bz2
-	sha256sums = 1d529a16bf41daa6ecf27b66f1a44e6eb698e9421cb1e813d6c89d4ca4619df3
+	source = replay-browser-2024.03.01-1.tar.bz2::https://static.replay.io/downloads/linux-replay.tar.bz2
+	sha256sums = d44fcb212c56318c6fbd0b3e34aec3afd6d8e9d3117de0e3adf0288b13d25c46
 
 pkgname = replay-browser
