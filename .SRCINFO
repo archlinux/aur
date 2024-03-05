@@ -1,0 +1,29 @@
+pkgbase = perl-file-kdbx
+	pkgdesc = Encrypted database to store secret text and files
+	pkgver = 0.906
+	pkgrel = 1
+	url = https://metacpan.org/release/File-KDBX
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-deep
+	makedepends = perl-test-fatal
+	makedepends = perl-test-warnings
+	depends = perl-boolean
+	depends = perl-crypt-argon2
+	depends = perl-cryptx
+	depends = perl-crypt-rijndael>=1.0
+	depends = perl-devel-globaldestruction
+	depends = perl-iterator-simple
+	depends = perl-math-bigint
+	depends = perl-namespace-clean
+	depends = perl-ref-util
+	depends = perl-scalar-list-utils
+	depends = perl-scope-guard
+	depends = perl-xml-libxml
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/C/CC/CCM/File-KDBX-0.906.tar.gz
+	md5sums = d6fad88f528b7ddfc409e9c7c08b39de
+	sha512sums = 09936f3ebfa6a0f7b514033065e8ddeb4aa158afec14f36a0c71f7e7db4ae79ac948e4d4962577bddda17357287ca15cbc6668517cdd3ca8b29f637c192b3c8b
+
+pkgname = perl-file-kdbx
