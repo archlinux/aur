@@ -1,27 +1,29 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
+_name=tempest
 pkgname=python-tempest
-pkgver=36.0.0
+pkgver=37.0.0
 pkgrel=1
 pkgdesc='OpenStack Integration Testing'
-arch=('any')
+arch=(any)
 url='https://docs.openstack.org/tempest/'
-license=('Apache')
-depends=('python-pbr' 'python-cliff' 'python-jsonschema' 'python-testtools'
-         'python-paramiko' 'python-netaddr' 'python-testrepository'
-         'python-oslo-concurrency' 'python-oslo-config' 'python-oslo-log'
-         'python-oslo-serialization' 'python-oslo-utils' 'python-six'
-         'python-fixtures' 'python-yaml' 'python-subunit' 'python-stevedore'
-         'python-prettytable' 'python-os-testr' 'python-urllib3'
-         'python-debtcollector')
-checkdepends=('python-hacking' 'python-mock' 'python-oslotest')
-source=("https://opendev.org/openstack/tempest/archive/$pkgver.tar.gz")
-sha512sums=('d1691d236658994d67da41ea7c4abd223e4dcb867c5c277e1855189d4a63ca5fe91d6199579c22965da413c1fdc8edff80e684f9747502c146e8e08e002dbff0')
+license=(Apache)
+makedepends=(python-setuptools)
+depends=(python-pbr python-cliff python-jsonschema python-testtools
+         python-paramiko python-netaddr python-testrepository
+         python-oslo-concurrency python-oslo-config python-oslo-log
+         python-oslo-serialization python-oslo-utils python-six
+         python-fixtures python-yaml python-subunit python-stevedore
+         python-prettytable python-os-testr python-urllib3
+         python-debtcollector)
+checkdepends=(python-hacking python-mock python-oslotest)
+source=("$pkgname-$pkgver.tar.gz::https://opendev.org/openstack/tempest/archive/$pkgver.tar.gz")
+sha512sums=('a7358d139350b38f5f21fd3591ea01aaa90c9c9f0119ef015f2dd0678aaa87fe201cf1c82bb216809a938004642a3a53ff44a65456a508f192582d13be1b1242')
 
 export PBR_VERSION=$pkgver
 
 build() {
-  cd tempest
+  cd $_name
   python setup.py build
 }
 
@@ -32,8 +34,6 @@ build() {
 #}
 
 package() {
-  cd tempest
+  cd $_name
   python setup.py install --root="$pkgdir" --optimize=1
 }
-
-# vim:set ts=2 sw=2 et:
