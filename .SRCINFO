@@ -1,5 +1,5 @@
 pkgbase = audamo
-	pkgdesc = Audamon is an auto dark mode tool that sets light and dark mode themes based on time or location.
+	pkgdesc = Audamo is an auto dark mode tool that sets light and dark mode themes based on time or location.
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/braun-steven/audamo/tree/v1.0.0
