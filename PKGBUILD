@@ -2,7 +2,7 @@
 
 _name=psd-tools
 pkgname=python-$_name
-pkgver=1.9.30
+pkgver=1.9.31
 pkgrel=1
 pkgdesc='Python package for working with Adobe Photoshop PSD files'
 arch=(any)
@@ -18,7 +18,7 @@ depends=('python>=3.8'
          python-scikit-image)
 makedepends=(cython python-build python-installer python-wheel)
 source=("$url/archive/v$pkgver.tar.gz")
-b2sums=('c6ca3060367cac1ae57c2763418f986ed2be44f53d0a58a39ea9f7c6f34e00847251f2f9d5d897ca01d434fb79b052dea6066ce022afeb5906cb8f6c160a51fa')
+b2sums=('9b74cc44eabf639ac0b5434f28fe2650e733700118d75b02c76a53a16e1989ae923b1aab2663fea83c8280649b4c9a396343a120ba08c84e62efc7ac155a5eb8')
 
 build() {
     cd $_name-$pkgver
