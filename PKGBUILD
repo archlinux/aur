@@ -29,7 +29,7 @@ pkgver() {
 
 prepare() {
 	cd ${srcdir}/${pkgname}
-	patch --forward --strip=1 --input="${srcdir}/mbdyn-utils-aur.patch"
+	patch --forward --strip=1 --input="../../mbdyn-utils-aur.patch"
 	sh bootstrap.sh
 	CXXFLAGS="-O3 -march=native" \
 	FCFLAGS="-O3" \
