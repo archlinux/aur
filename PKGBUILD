@@ -2,7 +2,7 @@
 pkgname=hexhoot-bin
 pkgver=1.0.3
 _electronversion=24
-pkgrel=7
+pkgrel=8
 pkgdesc="An Opensource Peer-to-peer communication platform with Zero-Knowledge-Proof based authentication."
 arch=(x86_64)
 url="http://blog.hexhoot.com/"
@@ -19,13 +19,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('32718c19454f79216858ef3406f59a777e3f1724330d716498d5b4cb262eab9d'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.zst"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
