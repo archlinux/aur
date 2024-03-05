@@ -1,6 +1,6 @@
 pkgbase = kdeplasma5-arch-update-notifier-git
 	pkgdesc = KDE plasmoid that lets you know when arch updates are required. Takes all repo's into account (core, extra, aur, ...).
-	pkgver = 4.0.1
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = https://github.com/bouteillerAlan/archupdate
 	arch = any
