@@ -1,0 +1,16 @@
+pkgbase = python-hdlmake
+	pkgdesc = Generates multi-purpose makefiles for HDL projects management.
+	pkgver = 3.3
+	pkgrel = 1
+	url = http://www.ohwr.org/projects/hdl-make
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/a6/5b/230bba0c6427a444a1bc6b75bf651fcf2ee1259cab66e930ab14784d9cb9/hdlmake-3.3.tar.gz
+	sha256sums = c25ba91340d89e58b58af298c2cfbdbf7e0016be1a32b223f2bc082c07deb619
+
+pkgname = python-hdlmake
+	depends = python
