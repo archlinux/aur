@@ -1,6 +1,6 @@
 # Maintainer: Patrick Hechler <patrjprof@ph.anderemails.de>
 pkgname=patrjprof
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="An Open source Java profiler written in Java"
 arch=('any')
@@ -22,9 +22,9 @@ source=("patr-java-profiler-agent.jar::https://nexuspat.hechler.de/repository/ma
         "patr-java-profiler-bootstrap.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-bootstrap/${pkgver}/patr-java-profiler-bootstrap-${pkgver}.jar"
         "patr-java-profiler-test.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-test/${pkgver}/patr-java-profiler-test-${pkgver}.jar"
         )
-md5sums=('06c3fcba9e169ea05423e9814980eb54'
-         '32688535a6ffce4eec273596f52cf241'
-         '1d6ebb015624d977064e519195f8049b'
+md5sums=('e034c1717ad0ae7c5d850743fe1aa31a'
+         '6648203ec0369816b5d7d24259a4b9f1'
+         'ad15430e3f2cd76107723eda8266cb8f'
          )
 
 check() {
@@ -34,7 +34,7 @@ check() {
   java \
     "-javaagent:patr-java-profiler-agent.jar" \
     "-Xbootclasspath/a:patr-java-profiler-bootstrap.jar" \
-    -cp "patr-java-profiler-test/target/patr-java-profiler-test.jar" \
+    -cp "patr-java-profiler-test.jar" \
     de.hechler.patrick.profiler.test.PHPTestMain
   echo 'finished test:'
   cat ./patr-java-profiler-output.txt # at least ensure that the file exists, if not something went completly wrong
