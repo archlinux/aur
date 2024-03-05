@@ -5,7 +5,7 @@ pkgver=7.1.9
 pkgrel=2
 pkgdesc="An easy-to-use and highly extensible IRC Bot framework (Formerly Willie)"
 arch=('any')
-license=('custom:EFL')
+license=('EFL-2.0')
 url='https://sopel.chat'
 depends=('python-setuptools' 'sqlite' 'python-xmltodict' 'python-pytz' 'python-praw'
          'python-geoip2' 'python-requests' 'python-dnspython' 'python-sqlalchemy1.3')
