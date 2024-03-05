@@ -9,7 +9,6 @@ pkgbase = rapl-read-ryzen-git
 	makedepends = gcc
 	provides = rapl-read-ryzen
 	conflicts = rapl-read-ryzen
-	options = !debug
 	source = rapl-read-ryzen::git+https://github.com/djselbeck/rapl-read-ryzen
 	sha256sums = SKIP
 
