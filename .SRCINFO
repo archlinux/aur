@@ -1,6 +1,6 @@
 pkgbase = mit8-bin
 	pkgdesc = Программа для управления измерителями температуры серии МИТ-8 производства ООО ИзТех
-	pkgver = 3.4.4
+	pkgver = 3.4.6
 	pkgrel = 1
 	url = https://www.iztech.ru
 	arch = x86_64
@@ -14,6 +14,6 @@ pkgbase = mit8-bin
 	replaces = mit8
 	options = strip
 	source = https://www.iztech.ru/content/files/app/mit8-bin-linux-x86_64.tar.gz
-	md5sums = 6d0400e30bec385f2574471f8479c67d
+	md5sums = acf7106ab3dfc752e17e4e33c11fcefe
 
 pkgname = mit8-bin
