@@ -1,18 +1,19 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-aodhclient
-pkgver=3.3.0
-pkgrel=2
+pkgver=3.5.0
+pkgrel=1
 pkgdesc='Client library for the Aodh API'
-arch=('any')
+arch=(any)
 url="https://docs.openstack.org/$pkgname/"
-license=('Apache')
-depends=('python-pbr' 'python-cliff' 'python-osc-lib' 'python-oslo-i18n'
-         'python-oslo-serialization' 'python-oslo-utils' 'python-osprofiler'
-         'python-keystoneauth1' 'python-six' 'python-pyparsing')
-checkdepends=('python-oslotest' 'python-stestr' 'python-testtools')
-source=("https://opendev.org/openstack/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('c46462166fde0a98e14b60532e8d0f264b9866568eb3650dd04c1af5e8867780d0b3b7eb578adbba29fc44b88c3c04fb2d5c4bf8ebcfed8abffb5ffca813bee9')
+license=(Apache)
+makedepends=(python-setuptools)
+depends=(python-pbr python-cliff python-osc-lib python-oslo-i18n
+         python-oslo-serialization python-oslo-utils python-osprofiler
+         python-keystoneauth1 python-six python-pyparsing)
+checkdepends=(python-oslotest python-stestr python-testtools)
+source=("$pkgname-$pkgver.tar.gz::https://opendev.org/openstack/$pkgname/archive/$pkgver.tar.gz")
+sha512sums=('301b702be32161d13ae2b70c4f4abb175208ce8c941f0e4ddcb494c70caa4e24ecbb422b0f25c04ddbbddf838ed2ab53571ca36df85b77b7c73e60cca042bd61')
 
 export PBR_VERSION=$pkgver
 
@@ -32,5 +33,3 @@ package() {
   cd $pkgname
   python setup.py install --root="$pkgdir" --optimize=1
 }
-
-# vim:set ts=2 sw=2 et:
