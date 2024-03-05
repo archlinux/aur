@@ -1,0 +1,17 @@
+pkgbase = python-adaptix
+	pkgdesc = An utility class for creating instances of dataclasses
+	pkgver = 3.0.0b2
+	pkgrel = 1
+	url = https://github.com/reagento/adaptix
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.8
+	provides = python-dataclass-factory
+	source = https://github.com/reagento/adaptix/archive/v3.0.0b2.tar.gz
+	b2sums = 4a87b1fa3167c77ba6f855049bca260521a4880ee10e30a61091307902a30d840635ae80967d838ca476f4d8901ab49c4b27e52b41ae98c25c494a7d23cb2de3
+
+pkgname = python-adaptix
