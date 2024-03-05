@@ -2,8 +2,9 @@
 # Contributor:
 
 pkgname="python-thop"
-pkgver=1.0.0
-pkgrel=3
+_pkgname="pytorch-OpCounter"
+pkgver=0.1.1
+pkgrel=5
 pkgdesc='Count the MACs / FLOPs of your PyTorch model.'
 arch=(any)
 url="https://github.com/Lyken17/pytorch-OpCounter"
@@ -11,17 +12,18 @@ license=(MIT)
 depends=(python python-pytorch)
 conflicts=()
 makedepends=(python-build python-installer python-setuptools python-wheel)
-source=(pytorch-OpCounter-master.zip::"$url/archive/refs/heads/master.zip")
-sha256sums=('9dd5999570452100f8082c360ab3d9cbf9bcad22b7fb87ed8bcfff20dbc02433')
+source=("git+$url#commit=43c064a")
+sha256sums=('SKIP')
 
 build() {
-  cd "${srcdir}/pytorch-OpCounter-master"
+  cd "${srcdir}/${_pkgname}"
+  sed -i '21d' setup.py
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package(){
   depends+=()
-  cd "${srcdir}/pytorch-OpCounter-master"
+  cd "${srcdir}/${_pkgname}"
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
