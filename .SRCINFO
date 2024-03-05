@@ -42,6 +42,7 @@ pkgbase = gamescope-sk-git
 	depends = sdl2
 	depends = vulkan-icd-loader
 	depends = wayland
+	depends = xcb-util-renderutil
 	depends = xcb-util-wm
 	depends = xcb-util-errors
 	depends = xorg-server-xwayland

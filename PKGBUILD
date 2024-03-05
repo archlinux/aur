@@ -35,6 +35,7 @@ depends=(
     sdl2
     vulkan-icd-loader
     wayland
+    xcb-util-renderutil
     xcb-util-wm
     xcb-util-errors
     xorg-server-xwayland
