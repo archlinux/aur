@@ -9,7 +9,8 @@ license=('custom:EFL')
 url='https://sopel.chat'
 depends=('python-setuptools' 'sqlite' 'python-xmltodict' 'python-pytz' 'python-praw'
          'python-geoip2' 'python-requests' 'python-dnspython' 'python-sqlalchemy1.3')
-makedepends=('python-sphinx' 'python-sphinxcontrib-autoprogram')
+makedepends=('python-build' 'python-installer' 'python-wheel'
+             'python-sphinx' 'python-sphinxcontrib-autoprogram')
 checkdepends=('python-pytest' 'python-pytest-vcr' 'python-requests-mock')
 backup=('etc/sopel.cfg')
 source=("https://github.com/sopel-irc/sopel/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
@@ -25,7 +26,7 @@ prepare() {
 
 build() {
   cd sopel-$pkgver
-  python setup.py build egg_info
+  python -m build --wheel --no-isolation
   PYTHONPATH="$PWD" make -C docs man
 }
 
@@ -36,7 +37,7 @@ check() {
 
 package() {
   cd sopel-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 contrib/sopel.cfg "$pkgdir/etc/sopel.cfg"
