@@ -2,7 +2,7 @@
 
 pkgbase="python-vegas"
 pkgname=("python-vegas" "python2-vegas")
-pkgver=5.6
+pkgver=6.0
 pkgrel=1
 pkgdesc="Python library for multidimensional Monte Carlo integration"
 arch=('i686' 'x86_64')
@@ -25,4 +25,4 @@ package_python2-vegas() {
 	python2 setup.py install --root="$pkgdir" --prefix=/usr
 }
 
-md5sums=('c681f0b968bbbad6edb16b8282fe0ebd')
+md5sums=('cb65d82a1c7bfba31c086333d43c6aa9')

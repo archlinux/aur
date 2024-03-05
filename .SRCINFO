@@ -1,6 +1,6 @@
 pkgbase = python-vegas
 	pkgdesc = Python library for multidimensional Monte Carlo integration
-	pkgver = 5.6
+	pkgver = 6.0
 	pkgrel = 1
 	url = https://github.com/gplepage/vegas.git
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = python-vegas
 	license = LGPL
 	makedepends = cython
 	makedepends = cython2
-	source = https://pypi.python.org/packages/source/v/vegas/vegas-5.6.tar.gz
-	md5sums = c681f0b968bbbad6edb16b8282fe0ebd
+	source = https://pypi.python.org/packages/source/v/vegas/vegas-6.0.tar.gz
+	md5sums = cb65d82a1c7bfba31c086333d43c6aa9
 
 pkgname = python-vegas
 	depends = python-gvar
