@@ -1,7 +1,7 @@
 pkgbase = python-langchain-core
 	pkgdesc = Building applications with LLMs through composability
 	pkgver = 0.1.29
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/langchain-core
 	arch = any
 	license = MIT
@@ -21,7 +21,7 @@ pkgbase = python-langchain-core
 	depends = python-jinja
 	depends = python-typing_extensions
 	source = https://files.pythonhosted.org/packages/source/l/langchain-core/langchain_core-0.1.29.tar.gz
-	source = https://raw.githubusercontent.com/langchain-ai/langchain/v0.1.7/LICENSE
+	source = https://raw.githubusercontent.com/langchain-ai/langchain/v0.1.11/LICENSE
 	sha256sums = 6731dabffad03b9213ada2640d54ed7f4ef6b99fce87ade3c71474ae154dd3cc
 	sha256sums = 4ec67e4ca6e6721dba849b2ca82261597c86a61ee214bbf21416006b7b2d0478
 
