@@ -2,10 +2,10 @@
 # Contributor: Andrej Radović <r.andrej@gmail.com>
 
 pkgname=python-iteration-utilities
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="Utilities based on Pythons iterators and generators."
-url="https://github.com/MSeifert04/iteration_utilities"
+url='https://iteration-utilities.readthedocs.io'
 license=('Apache-2.0')
 arch=('x86_64')
 
@@ -15,10 +15,10 @@ checkdepends=('python-pytest')
 
 _pypi=iteration_utilities
 source=(
-  "$_pypi-$pkgver.tar.gz::https://github.com/MSeifert04/iteration_utilities/archive/refs/tags/v$pkgver.tar.gz"
+  "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-  '38245a7f48588ee21329438d094f207a41a15c5960f7cfac3b1ec0a08a55bcf9'
+  'a17bd698bc65b796b265e56f02a8d71f517716dc066a4c507e12563795bfe3bd'
 )
 
 build() {
