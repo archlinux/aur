@@ -3,7 +3,7 @@
 pkgname=graphmod-git
 _pkgname="${pkgname%-git}"
 pkgver=1.4.r53.g983c38f
-pkgrel=1
+pkgrel=2
 pkgdesc="Present the module dependencies of a program as a 'dot' graph"
 arch=('i686' 'x86_64')
 url="https://github.com/yav/${_pkgname}"
@@ -21,16 +21,18 @@ pkgver() {
 
 prepare() {
     cd "$_pkgname"
-    stack config set resolver lts-21.8
+    stack config set resolver lts-22.19 # ghc-9.6.4
+    echo 'compiler: ghc-9.6.5' >> stack.yaml
 }
 
 build() {
-  cd "$_pkgname"
-  stack build
+    cd "$_pkgname"
+    stack build
+
 }
 
 package() {
-  cd "$_pkgname"
-  stack install --local-bin-path "${pkgdir}/usr/bin"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "$_pkgname"
+    stack install --local-bin-path "${pkgdir}/usr/bin"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
