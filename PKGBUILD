@@ -25,7 +25,7 @@ build() {
 
 check() {
   cd ${_pkgname}-${_gitcommit}
-  python setup.py test
+  pytest
 }
 
 package_htmlmin() {
