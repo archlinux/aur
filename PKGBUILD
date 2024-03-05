@@ -1,8 +1,8 @@
 # Maintainer: Andrej Halveland (SnipeX_) <andrej.halv@gmail.com>
 
 pkgname=zotify-git
-pkgver=r78.ff527fe
-pkgrel=4
+pkgver=r93.5da27d3
+pkgrel=1
 pkgdesc="A fast and customizable music and podcast downloader."
 arch=('x86_64')
 url="https://zotify.xyz/zotify/zotify"
