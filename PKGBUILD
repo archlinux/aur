@@ -2,7 +2,7 @@
 
 pkgname="pass-it-on-server"
 pkgver=0.14.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Pass-it-on server component"
 arch=("any")
 license=("MIT")
@@ -11,7 +11,7 @@ conflicts=("pass-it-on-server-bin")
 depends=("openssl" "sqlite")
 makedepends=("cargo")
 source=("https://github.com/kwheelans/pass-it-on/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('786a02f742015903c6c6fd852552d272912f4740e15847618a86e217f71f5419d25e1031afee585313896444934eb04b903a685b1448b755d56f701afe9be2ce')
+b2sums=('812c0247dc8743c91ac466920ac808f77e4856ec6262c1adf540aae87a5d285eb789442be28e1ae14d63ecebda9a3986fe8b7c04b1f3bc78f010e1ccbdf54ed8')
 
 prepare() {
 	export RUSTUP_TOOLCHAIN=stable
