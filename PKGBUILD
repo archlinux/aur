@@ -10,6 +10,7 @@ url='https://github.com/wineasio/wineasio'
 arch=('i686' 'x86_64' 'x86_64_v3')
 license=('LGPL')
 
+options=('!lto')
 depends=('wine' 'jack')
 makedepends=('git')
 depends_x86_64+=('lib32-jack')
