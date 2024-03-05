@@ -1,0 +1,40 @@
+diff --git a/meson.build b/meson.build
+index 2c7318a..cb7c05c 100644
+--- a/meson.build
++++ b/meson.build
+@@ -102,9 +102,6 @@ endif
+ 
+ # Various helper libraries, subprojects, and scripts common to all builds
+ fs = import('fs')
+-cmake = import('cmake')
+-tools = subproject('general-tools')
+-padbin = tools.get_variable('padbin_executable')
+ bin2s = files('tools/bin2s.py')
+ call_bin2s = files('tools/callBin2S.py')
+ 
+@@ -140,22 +137,17 @@ if host_machine.system() != 'gba'
+     subdir('assets')
+ 
+     # libmodplug must be built as a dynamic/shared library
+-    cmake_options = cmake.subproject_options()
+-    cmake_options.add_cmake_defines({ 'BUILD_SHARED_LIBS' : 'ON' })
+-    modplug = cmake.subproject('libmodplug', options : cmake_options)
+ 
+     # Other required dependencies
+     tilengine = subproject('Tilengine', default_options : ['default_library=static'])
+-    sdl = subproject('sdl2', default_options : ['default_library=shared'])
+-    sdl_mixer = subproject('sdl2_mixer', default_options : ['default_library=shared'])
+     soloud = subproject('SoLoud', default_options : ['default_library=static'])
+ 
+     dependencies = [
+-        modplug.dependency('modplug'),
++        dependency('libmodplug'),
+         tilengine.get_variable('tilengine_dep'),
+-        sdl.get_variable('sdl2_dep'),
++        dependency('sdl2'),
+         soloud.get_variable('soloud_dep'),
+-        sdl_mixer.get_variable('sdl2_mixer_dep'),
++        dependency('SDL2_mixer'),
+         # dependency('gl'),
+         # dependency('glew'),
+     ]

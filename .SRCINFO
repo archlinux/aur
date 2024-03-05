@@ -1,6 +1,6 @@
 pkgbase = apotris-git
-	pkgdesc = A block stacking puzzle game for the Gameboy Advance (Linux port)
-	pkgver = 3.4.6.r378.g7f9b3db
+	pkgdesc = A block stacking puzzle game for the Game Boy Advance (Linux port)
+	pkgver = 3.4.6.r648.g7cb1d73
 	pkgrel = 1
 	url = https://apotris.com/
 	arch = aarch64
@@ -9,29 +9,32 @@ pkgbase = apotris-git
 	arch = i686
 	arch = pentium4
 	arch = x86_64
-	license = GPL3
-	makedepends = general-tools
+	license = GPL-3.0-only
 	makedepends = git
-	makedepends = sfml
-	depends = gcc-libs
+	makedepends = libmodplug
+	makedepends = meson
+	makedepends = python
+	makedepends = sdl2_mixer
+	makedepends = xxd
+	depends = bash
 	depends = glibc
-	depends = libmodplug
-	provides = apotris=3.4.6.r378.g7f9b3db
+	depends = libopenmpt
+	depends = sdl2
+	provides = apotris=3.4.6.r648.g7cb1d73
 	conflicts = apotris
 	source = apotris::git+https://gitea.com/akouzoukos/apotris.git#branch=ports
 	source = soloud::git+https://github.com/akouzoukos/soloud.git
 	source = Tilengine::git+https://github.com/akouzoukos/Tilengine.git
 	source = apotris.sh
+	source = apotris-install.patch
+	source = apotris-use-system-libs.patch
+	source = soloud-use-system-libs.patch
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = 6e704bfe9e2083f22a344024607521f01522d776310dd8597ed575a87214157b14984298da07bc5fb0c819eb7c16731afe9a77e2dad501ca2511be4a689cd3ba
+	b2sums = 6a5b652537461135895820391beb20bb2e64e312f08ddbd9ea8d313047118693556df26e89019e81b26c6650388597eebbc8ae4cf824739aadb41121d728ed80
+	b2sums = 3af6d3c3b5434720fa7b4adce00f3e3ede6bfaa3824dd86372bacbfd101f84941ff30d969c6c40fa125d38870c4ed47aa0f1b9ce9701114d07290017338d3d4a
+	b2sums = 3ef703d45b06cac59768c0e36ed09fe8238aef03d8a51893707aaf91c0efeb5518276e4985a0efc0bcec2370ce4abe1c7494a87327723779f0689550ebd9a8f6
+	b2sums = 1c92929a34ddf8c85572c3f0ef02ba7310cb85e5b6f0f3f852aa069d340b11b25608d388a94df15ec5558243105b632fe48ce090f18a4d5e924473e1436bb7e7
 
 pkgname = apotris-git
-	depends = gcc-libs
-	depends = glibc
-	depends = libmodplug
-	depends = libsfml-audio.so
-	depends = libsfml-graphics.so
-	depends = libsfml-system.so
-	depends = libsfml-window.so

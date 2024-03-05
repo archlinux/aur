@@ -1,0 +1,25 @@
+diff --git a/meson.build b/meson.build
+index 6564170..855bf17 100644
+--- a/meson.build
++++ b/meson.build
+@@ -42,18 +42,13 @@ sources = files(
+     'src' / 'backend' / 'sdl' / 'soloud_sdl2_dll.c',
+ )
+ 
+-cmake = import('cmake')
+ 
+-sdl = subproject('sdl2', default_options : ['default_library=shared'])
+ 
+-cmake_options = cmake.subproject_options()
+-cmake_options.add_cmake_defines({ 'BUILD_SHARED_LIBS' : 'ON' })
+-modplug = cmake.subproject('libmodplug', options : cmake_options)
+ 
+ link_args = []
+ deps = [
+-    modplug.dependency('modplug'),
+-    sdl.get_variable('sdl2_dep')
++    dependency('libmodplug'),
++    dependency('sdl2')
+ ]
+ 
+ inc = include_directories('include')
