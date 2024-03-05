@@ -3,7 +3,7 @@
 
 pkgname=hotspot
 pkgver=20240304
-pkgrel=1
+pkgrel=2
 pkgdesc="The Linux perf GUI for performance analysis"
 arch=('x86_64')
 url="https://github.com/KDAB/hotspot"
@@ -27,12 +27,17 @@ depends=(
     'threadweaver5'
 )
 makedepends=('cmake>=3.16.0' 'desktop-file-utils' 'extra-cmake-modules' 'git')
-source=("git+$url#commit=6f9f958c4ff68b3c94ccca0fa3c2d86c46c9185f")
-b2sums=('SKIP')
+source=("git+$url#commit=6f9f958c4ff68b3c94ccca0fa3c2d86c46c9185f"
+        "git+https://github.com/KDAB/perfparser.git"
+        "git+https://github.com/koenpoppe/PrefixTickLabels")
+b2sums=('SKIP' 'SKIP' 'SKIP')
 
 prepare() {
     cd $pkgname
-    git submodule update --init --recursive
+    git submodule init
+    git config submodule.3rdparty/perfparser.url       "$srcdir/perfparser"
+    git config submodule.3rdparty/PrefixTickLabels.url "$srcdir/PrefixTickLabels"
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {

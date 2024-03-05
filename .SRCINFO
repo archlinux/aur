@@ -1,7 +1,7 @@
 pkgbase = hotspot
 	pkgdesc = The Linux perf GUI for performance analysis
 	pkgver = 20240304
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KDAB/hotspot
 	arch = x86_64
 	license = GPL-2.0-only
@@ -26,6 +26,10 @@ pkgbase = hotspot
 	depends = solid5
 	depends = threadweaver5
 	source = git+https://github.com/KDAB/hotspot#commit=6f9f958c4ff68b3c94ccca0fa3c2d86c46c9185f
+	source = git+https://github.com/KDAB/perfparser.git
+	source = git+https://github.com/koenpoppe/PrefixTickLabels
+	b2sums = SKIP
+	b2sums = SKIP
 	b2sums = SKIP
 
 pkgname = hotspot
