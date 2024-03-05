@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-glslang
 	pkgdesc = OpenGL and OpenGL ES shader front end and validator (mingw-w64)
-	pkgver = 13.0.0
+	pkgver = 14.0.0
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/glslang
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = mingw-w64-glslang
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = mingw-w64-glslang-13.0.0.tar.gz::https://github.com/KhronosGroup/glslang/archive/13.0.0.tar.gz
-	sha256sums = bcda732434f829aa74414ea0e06d329ec8ac28637c38a0de45e17c8fd25a4715
+	source = mingw-w64-glslang-14.0.0.tar.gz::https://github.com/KhronosGroup/glslang/archive/14.0.0.tar.gz
+	sha256sums = 80bbb916a23e94ea9cbfb1acb5d1a44a7e0c9613bcf5b5947c03f2273bdc92b0
 
 pkgname = mingw-w64-glslang
