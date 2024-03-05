@@ -1,13 +1,13 @@
 pkgbase = bmi160-aya-neo-dkms-git
-	pkgdesc = BMI160 DKMS driver for devices with 10EC5280 ACPI ID
-	pkgver = 1.0.0
+	pkgdesc = BMI160 DKMS driver patch for devices with 10EC5280 ACPI ID
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/pastaq/bmi160-aya-neo
 	arch = any
 	license = GPL3
+	makedepends = curl
 	makedepends = dkms
 	makedepends = git
-	makedepends = wget
 	makedepends = linux-headers
 	source = git+https://github.com/pastaq/bmi160-aya-neo.git
 	sha256sums = SKIP
