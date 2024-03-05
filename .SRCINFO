@@ -1,0 +1,18 @@
+pkgbase = uppaal-beta
+	pkgdesc = Verify timed automata models and learn strategies. Beta release channel.
+	pkgver = 5.1.0_beta5
+	pkgrel = 1
+	url = https://uppaal.org/
+	arch = any
+	license = custom
+	makedepends = unzip
+	depends = jre17-openjdk
+	depends = xdg-utils
+	provides = uppaal-beta-
+	noextract = uppaal-5.1.0-beta5-linux64.zip
+	options = debug
+	options = !strip
+	source = https://download.uppaal.org/uppaal-5.1/uppaal-5.1.0/uppaal-5.1.0-beta5-linux64.zip
+	sha512sums = 7699aedaf05829649cbf90ae690e71d4fc0b727a97babcaa2b1b3e29d641d62ae16b91fce33b82a46ee21a0514d824151b5c367b6c31151de27ad5d8e428ec03
+
+pkgname = uppaal-beta
