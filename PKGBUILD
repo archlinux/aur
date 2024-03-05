@@ -1,14 +1,14 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=python-langsmith
-pkgver=0.1.10
+pkgver=0.1.19
 pkgrel=1
 pkgdesc='LangSmith Client SDK Implementations'
 arch=('any')
 url='https://github.com/langchain-ai/langsmith-sdk'
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/langchain-ai/langsmith-sdk/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4e013279a5b064b78b1b230501a01460d50bec6c0c0ba38424ec282c770dacba')
+sha256sums=('c98e3d720efe3aa1a53f1887567eddc0cbe5b06c24e7795d13880f54a4956a15')
 depends=(python python-pydantic python-requests python-openai python-orjson
     python-pandas python-psutil python-typing_extensions python-urllib3)
 makedepends=(python-build python-installer python-wheel python-poetry-core)
