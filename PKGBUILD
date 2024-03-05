@@ -1,14 +1,14 @@
 # Maintainer: Leone <comdir@infonix.info>
 pkgname=yd-go
 pkgver=5af17d8
-pkgrel=6
+pkgrel=7
 epoch=
 pkgdesc="Panel indicator for Yandex-disk CLI daemon (linux)"
 arch=('x86_64')
 url="https://github.com/slytomcat/yd-go"
 license=('GPL-3.0 license')
 groups=()
-depends=("go" "yandex-disk" "dbus-broker")
+depends=("go" "yandex-disk" "dbus-broker" "gendesk")
 makedepends=()
 checkdepends=()
 optdepends=()
