@@ -3,7 +3,7 @@ pkgname=imagine-bin
 _appname=Imagine
 pkgver=0.7.5
 _electronversion=12
-pkgrel=6
+pkgrel=7
 pkgdesc="PNG/JPEG optimization app"
 arch=("x86_64")
 url="https://github.com/meowtec/Imagine"
@@ -11,21 +11,18 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
+    "electron${_electronversion}-bin"
     'libjpeg6-turbo'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/meowtec/Imagine/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh")
 sha256sums=('a032f096cc4d09f866d9e575706cb3174875900a234ed0dca0e9a2dfc2cea838'
             'aebee0e853c4db64ce36bd0b235613a9b948036a7f62af387f2e0b406cd657b7'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
