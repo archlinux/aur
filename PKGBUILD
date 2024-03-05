@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=textual-universal-directorytree
 pkgname=python-${_base}
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="textual plugin for a DirectoryTree compatible with remote filesystems"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(python-textual python-universal_pathlib)
 makedepends=(python-build python-installer python-hatchling python-wheel)
 # checkdepends=(python-pytest)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('37256f3b7cf12f56c18a7e7faf21081b70d3b1ca7a3db9f15388614b1cb215e3e19a60891fecd2169b430cfdbfdca5d0010962c04dadbc3df5ba72c08314f451')
+sha512sums=('abb04a2e3db8d7e0bef6375216e820b793e7a33ce58dc4f10853e7cb2aa1ceb7e657f64626eeccd7a4aa7b56323fdcf0ffd5ba5349b4089915aab945234fd0c6')
 
 build() {
   cd ${_base}-${pkgver}
