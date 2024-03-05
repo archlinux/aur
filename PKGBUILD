@@ -8,7 +8,7 @@
 _name=Rack
 pkgname=vcvrack
 pkgver=2.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Open-source Eurorack modular synthesizer simulator'
 url='https://vcvrack.com/'
 license=(custom CCPL GPL3)
@@ -16,7 +16,7 @@ arch=(x86_64 aarch64)
 _plugin_name=Fundamental
 _plugin_ver=2.6.0
 _plugin_pkg=$pkgname-${_plugin_name,,}
-depends=(glfw-x11 jansson)
+depends=(glfw jansson)
 makedepends=(alsa-lib cmake curl gendesk git glew jack jq libarchive libpulse openssl rtmidi simde
   speexdsp zstd)
 provides=("$_plugin_pkg=$_plugin_ver")
@@ -104,7 +104,6 @@ build() {
 }
 
 package() {
-  # Rack does not start with glfw-wayland
   depends+=(libcurl.so libGLEW.so libarchive.so libcrypto.so librtmidi.so
     libsamplerate.so libspeexdsp.so zenity)
   cd $_name

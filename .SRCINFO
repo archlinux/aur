@@ -1,7 +1,7 @@
 pkgbase = vcvrack
 	pkgdesc = Open-source Eurorack modular synthesizer simulator
 	pkgver = 2.4.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://vcvrack.com/
 	arch = x86_64
 	arch = aarch64
@@ -24,7 +24,7 @@ pkgbase = vcvrack
 	makedepends = simde
 	makedepends = speexdsp
 	makedepends = zstd
-	depends = glfw-x11
+	depends = glfw
 	depends = jansson
 	provides = vcvrack-fundamental=2.6.0
 	conflicts = vcvrack-fundamental
@@ -60,7 +60,7 @@ pkgbase = vcvrack
 	sha256sums = 1159629aa90abb7c972c0f630d55d018b88a6b3bc3ff0bb9466cc06982f38641
 
 pkgname = vcvrack
-	depends = glfw-x11
+	depends = glfw
 	depends = jansson
 	depends = libcurl.so
 	depends = libGLEW.so
