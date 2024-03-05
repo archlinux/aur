@@ -21,7 +21,7 @@ build() {
 
 check() {
   cd ipdb-$pkgver
-  python setup.py test
+  python -m unittest -v
 }
 
 package() {
