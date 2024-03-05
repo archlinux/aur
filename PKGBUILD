@@ -1,8 +1,9 @@
 # Maintainer: Tom Zander
+# Maintainer: Calvin McAnarney <calvin@mcanarney.org>
 
 pkgname=fulcrum
 pkgdesc='A fast & nimble SPV server for Bitcoin Cash'
-pkgver=1.9.8
+pkgver=1.10.0
 pkgrel=1
 url='https://codeberg.org/Flowee/fulcrum'
 arch=('x86_64')
@@ -20,8 +21,8 @@ source=(
     "https://codeberg.org/Flowee/fulcrum/archive/v$pkgver.tar.gz"
     "fulcrum.conf"
 )
-sha256sums=('22acaec5ae0923fd444103ef43e3ecff8fabbc09fc2838ea651a3eeb787d05b9'
-    '7af8de6df023a2c06575e675de72af71abc1bdc74be6629c08aded63bf55ac1a'
+sha256sums=('fa12472dfe9411ace9fdc8cd2dad97ed601e5b866b8011b26585399bc936273b'
+    '39c732e08ffa4d5b566b49f1e3a6929c8d0a12590e1616ccad1d6d4d8987e3a6'
 )
 
 prepare() {
