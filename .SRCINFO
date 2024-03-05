@@ -1,6 +1,6 @@
 pkgbase = libdbusmenu-qtilities-git
 	pkgdesc = Qt implementation of the DBusMenu protocol
-	pkgver = r362.8dfc07e
+	pkgver = r367.bd5c6a3
 	pkgrel = 1
 	url = https://github.com/qtilities/libdbusmenu-qtilities
 	arch = i686

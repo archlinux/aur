@@ -35,7 +35,7 @@ build() {
       -B build$v \
       -D CMAKE_INSTALL_PREFIX=/usr \
       -D CMAKE_BUILD_TYPE=None \
-      -D PROJECT_QT_VERSION=$v \
+      -D DBUSMENU_QT_VERSION=$v \
       -S "$srcdir/$_pkgname" \
       -W no-dev
     cmake --build build$v --verbose
