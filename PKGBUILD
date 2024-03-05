@@ -1,11 +1,11 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Previous Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Nicolas Pouillard <nicolas.pouillard@gmail.com>
 # Contributor: Peter Simons <simons@cryp.to>
 
 pkgbase=zfec
 pkgname=python-zfec
-pkgver=1.5.7.2
-pkgrel=2
+pkgver=1.5.7.3
+pkgrel=1
 pkgdesc="Fast erasure coding tool"
 arch=('x86_64')
 url='https://github.com/tahoe-lafs/zfec'
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/z/zfec/zfec-$pkgver.tar.gz")
-sha256sums=('4ee519be0dcc7da2e88482bcfc0bf977a425e1d7e8278cf5bbbb8d00f8a2afb6')
+sha256sums=('9945344daae53087310b61bdd7ad8b83999351f721b72daaf0fb5aa131761a15')
 
 prepare() {
 	cd "zfec-$pkgver"

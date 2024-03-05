@@ -1,7 +1,7 @@
 pkgbase = zfec
 	pkgdesc = Fast erasure coding tool
-	pkgver = 1.5.7.2
-	pkgrel = 2
+	pkgver = 1.5.7.3
+	pkgrel = 1
 	url = https://github.com/tahoe-lafs/zfec
 	arch = x86_64
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = zfec
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = python-zfec-1.5.7.2.tar.gz::https://files.pythonhosted.org/packages/source/z/zfec/zfec-1.5.7.2.tar.gz
-	sha256sums = 4ee519be0dcc7da2e88482bcfc0bf977a425e1d7e8278cf5bbbb8d00f8a2afb6
+	source = python-zfec-1.5.7.3.tar.gz::https://files.pythonhosted.org/packages/source/z/zfec/zfec-1.5.7.3.tar.gz
+	sha256sums = 9945344daae53087310b61bdd7ad8b83999351f721b72daaf0fb5aa131761a15
 
 pkgname = python-zfec
