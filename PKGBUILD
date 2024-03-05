@@ -3,7 +3,7 @@
 
 pkgname=bridge-utils
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities for configuring the Linux ethernet bridge"
 arch=('x86_64')
 url='https://wiki.linuxfoundation.org/networking/bridge'
@@ -14,11 +14,16 @@ source=("https://mirrors.edge.kernel.org/pub/linux/utils/net/${pkgname}/${pkgnam
 sha256sums=('a61d8be4f1a1405c60c8ef38d544f0c18c05b33b9b07e5b4b31033536165e60e'
             'SKIP')
 
-build() {
+prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   aclocal
   autoconf
+}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
   ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
