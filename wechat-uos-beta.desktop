@@ -1,0 +1,14 @@
+[Desktop Entry]
+Comment=WeChat Beta
+Comment[zh_CN]=
+Exec=wechat-uos-beta %u
+Icon=wechat-uos-beta
+Name=WeChat (Beta)
+Name[zh_CN]=微信 Beta
+Categories=Utility;Network;
+StartupNotify=true
+Terminal=false
+Type=Application
+Keywords=wechat;weixin;electronic;we;w;
+Keywords[zh_CN]=微;微信;wechat;weixin;electronic;we;
+StartupWMClass=electronic-wechat
