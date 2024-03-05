@@ -1,29 +1,34 @@
-pkgbase=python-os-testr
-pkgname=('python-os-testr' 'python2-os-testr')
-pkgver=1.0.0
-pkgrel=2
-pkgdesc="A testr wrapper to provide additional functionality"
-arch=('any')
-url='https://pypi.python.org/pypi/os-testr'
-license=('Apache')
-source=( https://pypi.python.org/packages/47/ac/767db04504bd21b2fbcf11dd404c6b8bcc0cf954410c3c05f0d65877de2e/os-testr-1.0.0.tar.gz )
-md5sums=('915dc11818c13c1726d57def7c372154')
-makedepends=('python2' 'python' 'python-setuptools' 'python2-setuptools')
+# Maintainer: Andy Botting <andy@andybotting.com>
 
-package_python-os-testr() {
-  depends=('python' 'python-subunit' 'python-testtools' 'python-stestr>=1.0.0' 'python-pbr')
+_name=os-testr
+pkgname=python-os-testr
+pkgver=3.0.0
+pkgrel=1
+pkgdesc='A testr wrapper to provide functionality for OpenStack projects'
+arch=(any)
+url="https://docs.openstack.org/$_name/"
+license=(Apache)
+makedepends=(python-setuptools)
+depends=(python-pbr python-subunit python-testtools)
+checkdepends=(python-oslotest python-stestr python-testscenarios
+              python-ddt python-six)
+source=("$pkgname-$pkgver.tar.gz::https://opendev.org/openstack/$_name/archive/$pkgver.tar.gz")
+sha512sums=('49d5334c79434241bf5441390a9c5d67ecd937dea1aca0aadefba056e31950e91457acc576e0318df2fb2e7cb2fc61453ab37e6391113df165829c0dd49a4ea7')
 
-  cd $srcdir/os-testr-$pkgver
-  python setup.py install --root=$pkgdir
+export PBR_VERSION=$pkgver
+
+build() {
+  cd $_name
+  python setup.py build
 }
 
-package_python2-os-testr() {
-  depends=('python2' 'python2-subunit' 'python2-testtools' 'python2-stestr>=1.0.0' 'python2-pbr')
+# Tests don't pass
+#check() {
+#  cd $_name
+#  stestr run
+#}
 
-  cd $srcdir/os-testr-$pkgver
-  python2 setup.py install --root=$pkgdir
-  mv "${pkgdir}/usr/bin/ostestr"{,2}
-  mv "${pkgdir}/usr/bin/subunit-trace"{,2}
-  mv "${pkgdir}/usr/bin/subunit2html"{,2}
-  mv "${pkgdir}/usr/bin/generate-subunit"{,2}
+package() {
+  cd $_name
+  python setup.py install --root="$pkgdir" --optimize=1
 }
