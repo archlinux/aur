@@ -1,0 +1,1 @@
+u sonarqube - "Sonarqube daemon user" /var/lib/sonarqube /bin/bash

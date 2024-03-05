@@ -4,36 +4,29 @@
 
 _pkgname=sonarqube
 pkgname=sonarqube-bin
-pkgver=10.1.0.73491
+pkgver=10.4.1.88267
 pkgrel=1
 pkgdesc="An open source platform for continuous inspection of code quality"
 arch=('x86_64')
 url="http://www.sonarqube.org/"
 license=('LGPL3')
-
 depends=('java-runtime=17')
-
-optdepends=('apache: a fully featured webserver'
-            'maven: a java project management and project comprehension tool'
+optdepends=(
             'postgresql: A sophisticated object-relational DBMS')
-
 backup=("etc/webapps/${_pkgname}/sonar.properties")
-
 conflicts=("${_pkgname}-lts")
 provides=("${_pkgname}")
 options=('!strip')
-
-install=${_pkgname}.install
 source=("https://binaries.sonarsource.com/Distribution/${_pkgname}/${_pkgname}-${pkgver}.zip"
         "${_pkgname}.service"
-        "${_pkgname}-tmpfile.conf"
-        "${_pkgname}-user.conf"
+        "${_pkgname}.tmpfiles"
+        "${_pkgname}.sysusers"
         "99-${_pkgname}.conf")
 
-sha256sums=('ccf5872157349ffde75c5ae54f95303b392435bc5cd36120af047daa83782e29'
-            'cbea7066125c5e1b1ca093b73ccfaa4a477dc8a8431c4619de356bd36a6a44a9'
-            '2d908a2965df90a74feb0e734dabb27543f5a375ce94ce2a26b4682f462e3ea5'
-            '43ff10bbb495827e952225dce79da79bb800627eaa6f1d933f8f7fb408aafe6d'
+sha256sums=('8163c2a507405b02491c1a3d97c564fb6dc7702b2eb7a0f3b6e7728cd6288207'
+            'd279c05080a2998ed9759b3e357eefef331bdcde631d0edd042102ea723fe231'
+            '53c0f2eef6dbcead3c690a0158b2a162e60f718552f5a1ffded4d601b3f17cf6'
+            'a50fac609f12d3f1241bfb430a3d1b82d98f0649aff96e4a6f33bbe9733d854f'
             '682b3ab19eee18b39453fa2e99af89ba7e4ecb0f63dcebf137e65aa225a42e68')
 
 package() {
@@ -56,8 +49,9 @@ package() {
     # Install the systemd configuration and service files.
     cd "${srcdir}"
     install -Dm644 "${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
-    install -Dm644 "${_pkgname}-user.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
-    install -Dm644 "${_pkgname}-tmpfile.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
+    install -Dm644 ${_pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${_pkgname}.conf
+    install -Dm644 ${_pkgname}.sysusers "${pkgdir}"/usr/lib/sysusers.d/${_pkgname}.conf
+
 
     # Install an example conf for required sysctl values (vm.max_map_count and fs.file-max); see https://docs.sonarqube.org/display/SONAR/Requirements#Requirements-Linux.
     install -Dm644 "99-${_pkgname}.conf" "${pkgdir}/usr/share/doc/${_pkgname}/99-${_pkgname}.conf"
@@ -66,4 +60,9 @@ package() {
     ln -s "/var/log/${_pkgname}" "${pkgdir}/usr/share/webapps/${_pkgname}/logs"
     ln -s "/run/${_pkgname}" "${pkgdir}/usr/share/webapps/${_pkgname}/run"
     ln -s "/etc/webapps/${_pkgname}" "${pkgdir}/usr/share/webapps/${_pkgname}/conf"
+    rm -rf "${pkgdir}/usr/share/webapps/${_pkgname}/temp" 
+    ln -s "/var/lib/${_pkgname}/temp" "${pkgdir}/usr/share/webapps/${_pkgname}/temp" 
+     rm -rf "${pkgdir}/usr/share/webapps/${_pkgname}/data" 
+    ln -s "/var/lib/${_pkgname}/data" "${pkgdir}/usr/share/webapps/${_pkgname}/data"
+    ln -s "/var/lib/${_pkgname}/downloads" "${pkgdir}/usr/share/webapps/${_pkgname}/extensions/downloads"
 }

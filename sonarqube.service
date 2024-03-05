@@ -8,6 +8,7 @@ After=network.target
 Type=forking
 User=sonarqube
 Group=sonarqube
+Environment=PIDDIR=/var/lib/sonarqube
 SyslogIdentifier=sonarqube
 RuntimeDirectory=sonarqube
 LimitNOFILE=65536

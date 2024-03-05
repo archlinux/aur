@@ -1,0 +1,8 @@
+d /var/lib/sonarqube 0750
+Z /var/lib/sonarqube - sonarqube sonarqube
+d /var/log/sonarqube 0750 sonarqube sonarqube
+d /var/lib/sonarqube/temp 0750 sonarqube sonarqube
+d /var/lib/sonarqube/data 0750 sonarqube sonarqube
+d /var/lib/sonarqube/downloads 0750 sonarqube sonarqube
+z /etc/webapps/sonarqube 0755 root sonarqube
+z /etc/webapps/sonarqube/sonar.properties 0660 root sonarqube
