@@ -43,18 +43,18 @@ build() {
 
 check() {
   if [[ ${pkgrel} > 1 ]]; then
-    cd "PrismLauncher-${pkgver}-${pkgrel}"
+    cd "PrismLauncher-${pkgver}-${pkgrel}/build"
   else
-    cd "PrismLauncher-${pkgver}"
+    cd "PrismLauncher-${pkgver}/build"
   fi
   ctest .
 }
 
 package() {
   if [[ ${pkgrel} > 1 ]]; then
-    cd "PrismLauncher-${pkgver}-${pkgrel}"
+    cd "PrismLauncher-${pkgver}-${pkgrel}/build"
   else
-    cd "PrismLauncher-${pkgver}"
+    cd "PrismLauncher-${pkgver}/build"
   fi
   DESTDIR="${pkgdir}" cmake --install .
 }
