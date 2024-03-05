@@ -3,8 +3,8 @@
 _pkgbase='black-magic-debug'
 pkgbase="${_pkgbase}-git"
 pkgname=(black-magic-debug-app-git black-magic-debug-udev-git)
-pkgver=1.10.0.r612.g8a7d6982
-pkgrel=2
+pkgver=1.10.0.r618.gefe259ab
+pkgrel=1
 pkgdesc='Plug&Play in application debugger for microcontrollers'
 arch=('any')
 url='https://black-magic.org'
@@ -20,7 +20,7 @@ pkgver() {
 
 prepare() {
     cd blackmagic
-    # meson subprojects download
+    meson subprojects download
 }
 
 build() {
