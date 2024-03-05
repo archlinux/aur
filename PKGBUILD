@@ -6,7 +6,7 @@ _commit=
 pkgver=8.0.5.3  # pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=8.1.0
-pkgrel=4
+pkgrel=7
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 url="https://github.com/ValveSoftware/Proton"
@@ -173,26 +173,18 @@ build() {
     local -A flags
     for opt in "${split[@]}"; do flags["${opt%%=*}"]="${opt##*=}"; done
     local march="${flags["-march"]:-nocona}"
-    local mtune="${flags["-mtune"]:-core-avx2}"
+    local mtune="generic" #"${flags["-mtune"]:-core-avx2}"
 
-    CFLAGS="-O2 -march=$march -mtune=$mtune -pipe -fno-semantic-interposition"
-    CXXFLAGS="-O2 -march=$march -mtune=$mtune -pipe -fno-semantic-interposition"
-    RUSTFLAGS="-C opt-level=2 -C target-cpu=$march"
+    CFLAGS="-O3 -march=$march -mtune=$mtune -pipe -fno-semantic-interposition"
+    CXXFLAGS="-O3 -march=$march -mtune=$mtune -pipe -fno-semantic-interposition"
+    RUSTFLAGS="-C opt-level=3 -C target-cpu=$march"
     LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
-    # If using -march=native and the CPU supports AVX, launching a d3d9
-    # game can cause an Unhandled exception. The cause seems to be the
-    # combination of AVX instructions and tree vectorization (implied by O2),
-    # all tested archictures from sandybridge to haswell are affected.
-    # Since Wine 5.16 AVX is supported. Testing showed 32bit applications
-    # crashing with AVX regardless, but 64bit applications worked just fine.
-    # Relevant Wine issues
-    # https://bugs.winehq.org/show_bug.cgi?id=45289
-    # https://bugs.winehq.org/show_bug.cgi?id=43516
     # AVX is "hard" disabled for 32bit in any case.
-    # AVX2 for both 32bit and 64bit is disabled below.
-    CFLAGS+=" -mno-avx2 -mno-avx"
-    CXXFLAGS+=" -mno-avx2 -mno-avx"
+    # AVX/AVX2 for 64bit is disabled below.
+    # Seems unnecessery for 64bit if -mtune=generic is used
+    #CFLAGS+=" -mno-avx2 -mno-avx"
+    #CXXFLAGS+=" -mno-avx2 -mno-avx"
 
     export CFLAGS CXXFLAGS RUSTFLAGS LDFLAGS
 
@@ -200,7 +192,8 @@ build() {
     export CARGO_HOME="${SRCDEST}"/proton-cargo
     export WINEESYNC=0
     export WINEFSYNC=0
-    export DISPLAY=
+    unset DISPLAY
+
     SUBJOBS=$([[ "$MAKEFLAGS" =~ -j\ *([1-9][0-9]*) ]] && echo "${BASH_REMATCH[1]}" || echo "$(nproc)") \
         make -j1 dist
 }
