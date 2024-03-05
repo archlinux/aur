@@ -1,0 +1,13 @@
+pkgbase = ros2-humble-foxglove-msgs
+	pkgdesc = Message schemas supported by Foxglove Studio
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/foxglove/schemas
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = ros2-humble
+	source = https://github.com/foxglove/schemas/archive/refs/tags/ros-v2.3.0.tar.gz
+	sha256sums = ef37a00b166209fd9801efd7b7da9e0245b61fffa8c444835b9ae15ee28c7952
+
+pkgname = ros2-humble-foxglove-msgs
