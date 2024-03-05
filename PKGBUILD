@@ -6,7 +6,7 @@ _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.4
 _monover=9.0.0
-pkgrel=6
+pkgrel=7
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, experimental branch"
 url="https://github.com/ValveSoftware/Proton"
@@ -95,11 +95,6 @@ source=(
     0005-AUR-Strip-binaries-early.patch
     0006-AUR-Fix-hwnd-redefinition.patch
 )
-source+=(
-    0007-AUR-Enable-winewayland.patch
-    0001-fshack-AMD-FSR-complete.patch
-    4947.patch
-)
 noextract=(
     wine-gecko-${_geckover}-{x86,x86_64}.tar.xz
     wine-mono-${_monover}-x86.tar.xz
@@ -170,13 +165,6 @@ prepare() {
     patch -p1 -i "$srcdir"/0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
     patch -p1 -i "$srcdir"/0005-AUR-Strip-binaries-early.patch
     patch -p1 -i "$srcdir"/0006-AUR-Fix-hwnd-redefinition.patch
-
-    # Wine wayland is disabled, use at your own risk
-    patch -p1 -i "$srcdir"/0007-AUR-Enable-winewayland.patch
-    pushd wine
-        patch -p1 -i "$srcdir"/0001-fshack-AMD-FSR-complete.patch
-        patch -p1 -i "$srcdir"/4947.patch
-    popd
 }
 
 build() {
@@ -202,6 +190,7 @@ build() {
 
     # AVX is "hard" disabled for 32bit in any case.
     # AVX/AVX2 for 64bit is disabled below.
+    # Seems unnecessery for 64bit if -mtune=generic is used
     #CFLAGS+=" -mno-avx2 -mno-avx"
     #CXXFLAGS+=" -mno-avx2 -mno-avx"
 
@@ -273,7 +262,4 @@ sha256sums=('SKIP'
             '4af57781b6e81f0ac5ed1b1ab1a0fdaea92e1992e67d69d37a92334962921f5b'
             'a3667c3fe517ea856dc7a5ab73fb5e10b20e5743f66f72d35b9a42394ed31701'
             'fce16c5db9950068a3c965fd87e9194bbe13ead8a2c02d4710884c3669e236e5'
-            '89baf181f197a6156507841c018fd81c8f934f77161ba90f5ee6466677428235'
-            'b7297cabb316eb9621ec1abade892143392eba5fdbd3bd496df7992a7c9d7358'
-            '3d308f8e87361669267fa52b986c24f1dea1913156a045f43ea04e02f7444b18'
-            '0f9ddda17319e3ef23ee847c0a740bf74847796d4b3cf61b05feb9aa3141b7c7')
+            '89baf181f197a6156507841c018fd81c8f934f77161ba90f5ee6466677428235')
