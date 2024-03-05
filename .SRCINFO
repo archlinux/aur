@@ -7,9 +7,12 @@ pkgbase = pacman-mirrors-helper-git
 	license = GPL-3.0-or-later
 	makedepends = git
 	depends = bash
+	depends = coreutils
 	depends = curl
-	depends = sed
 	depends = ncurses
+	depends = pacman
+	depends = sed
+	depends = util-linux
 	source = git+https://codeberg.org/Application-Maker/pacman-mirrors-helper.git#branch=main
 	sha256sums = SKIP
 
