@@ -2,7 +2,7 @@ pkgbase = audamo
 	pkgdesc = Audamo is an auto dark mode tool that sets light and dark mode themes based on time or location.
 	pkgver = 1.0.1
 	pkgrel = 1
-	url = https://github.com/braun-steven/audamo/tree/v1.0.1
+	url = https://www.steven-braun.de/audamo
 	arch = any
 	license = MIT
 	depends = python
@@ -11,7 +11,7 @@ pkgbase = audamo
 	depends = python-astral
 	depends = python-timezonefinder
 	depends = python-pytz
-	source = git+https://github.com/braun-steven/audamo.git
+	source = git+https://github.com/braun-steven/audamo.git#tag=v1.0.1
 	md5sums = SKIP
 
 pkgname = audamo
