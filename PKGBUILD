@@ -3,7 +3,7 @@
 # Contributor: Maxime "pep" Buquet <archlinux@bouah.net>
 
 pkgname=(conversejs-git conversejs-epiphany-git conversejs-headless-git)
-pkgver=10.1.5.r122.g04c37537d
+pkgver=v10.1.5.r122.g04c3753
 pkgrel=1
 arch=('any')
 url="https://conversejs.org/"
@@ -18,7 +18,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd converse.js
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

@@ -1,5 +1,5 @@
 pkgbase = conversejs-git
-	pkgver = 10.1.5.r122.g04c37537d
+	pkgver = v10.1.5.r122.g04c3753
 	pkgrel = 1
 	url = https://conversejs.org/
 	arch = any
