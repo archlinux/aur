@@ -1,6 +1,6 @@
 pkgbase = mkinitcpio-dsdt-hook
-	pkgdesc = This hook adds acpi_override files to the initramfs for those who have modified the dsdt table following https://wiki.archlinux.org/title/DSDT.
-	pkgver = 0.1
+	pkgdesc = Add acpi_override files to initramfs for those who have modified their dsdt table following https://wiki.archlinux.org/title/DSDT.
+	pkgver = 0.2
 	pkgrel = 1
 	arch = any
 	license = GPL

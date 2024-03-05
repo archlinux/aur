@@ -1,8 +1,8 @@
 # Maintainer: 1ridic <i@8f.al>
 pkgname=mkinitcpio-dsdt-hook
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
-pkgdesc="This hook adds acpi_override files to the initramfs for those who have modified the dsdt table following https://wiki.archlinux.org/title/DSDT."
+pkgdesc="Add acpi_override files to initramfs for those who have modified their dsdt table following https://wiki.archlinux.org/title/DSDT."
 arch=("any")
 license=("GPL")
 depends=('mkinitcpio' 'libarchive')
