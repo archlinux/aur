@@ -1,7 +1,7 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=python-langchain-core
-pkgver=0.1.27
+pkgver=0.1.29
 pkgrel=1
 pkgdesc="Building applications with LLMs through composability"
 url="https://pypi.org/project/langchain-core"
@@ -23,7 +23,7 @@ _module=${pkgname#python-}
 _src_folder="${_module/-/_}-${pkgver}"
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/${_module}/${_module/-/_}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/langchain-ai/langchain/v0.1.7/LICENSE")
-sha256sums=('698414223525c0bc130d85a614e1493905d588ab72fe0c9ad3b537b1dc62067f'
+sha256sums=('6731dabffad03b9213ada2640d54ed7f4ef6b99fce87ade3c71474ae154dd3cc'
             '4ec67e4ca6e6721dba849b2ca82261597c86a61ee214bbf21416006b7b2d0478')
 
 build() {
