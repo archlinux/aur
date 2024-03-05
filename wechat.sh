@@ -22,7 +22,7 @@ function launch() {
 		--symlink usr/lib64 /lib64 \
 		--symlink usr/bin /bin \
 		--symlink usr/bin /sbin \
-		--ro-bind /home/kimiblockmoe/Downloads/TrashCan/opt /opt \
+		--ro-bind /opt /opt \
 		--bind "$XDG_RUNTIME_DIR/bus" "$XDG_RUNTIME_DIR/bus" \
 		--bind "$XDG_RUNTIME_DIR/pulse" "$XDG_RUNTIME_DIR/pulse" \
 		--dev /dev \
