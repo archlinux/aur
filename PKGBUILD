@@ -12,11 +12,11 @@ makedepends=('git' 'rust')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+${url}"
-		'intellectual.conf'
-		'intellectual.service')
+        'intellectual.conf'
+        'intellectual.service')
 sha256sums=('SKIP'
-			'90f3dbe07e6284ff4f5d90c0edb2a653fb16b19c63daf0401837016497e48c60'
-			'299f94def28836caf5abf4afcb794f0a78d503aa2460e5fbf196595f69239876')
+            '90f3dbe07e6284ff4f5d90c0edb2a653fb16b19c63daf0401837016497e48c60'
+            '299f94def28836caf5abf4afcb794f0a78d503aa2460e5fbf196595f69239876')
 backup=('etc/intellectual.conf')
 options=('!buildflags')
 
@@ -36,5 +36,5 @@ package() {
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
   install -Dm644 ../../intellectual.conf -t "${pkgdir}/etc/"
   install -Dm644 ../../intellectual.service -t "${pkgdir}/usr/lib/systemd/system/"
-  install -Dm755 "target/release/intellectual" "${pkgdir}/usr/bin/"
+  install -Dm755 "target/release/intellectual" -t "${pkgdir}/usr/bin/"
 }
