@@ -1,7 +1,7 @@
 # Maintainer: Ayush Agarwal <ayush at ayushnix dot com>
 
 pkgname=tessen
-pkgver=2.2.0
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="An interactive menu to autotype and copy password-store and gopass data"
 arch=(any)
@@ -23,7 +23,7 @@ optdepends=('pass: supported pass backend'
             'pass-otp: to generate OTP'
             'xdg-utils: to open URLs in default web browser')
 source=("$_url/refs/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('138a75490fab00d2ffce3950dab4314f61449bb9800f5fbab4d131e4f81fa1f1')
+sha256sums=('f38dbbacac1bbc370fa04baf119d4ff70dd6f8bb6bcb2ae7d3a56c6860bc0fbb')
 install=tessen.install
 
 package() {
