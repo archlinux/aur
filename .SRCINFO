@@ -1,0 +1,20 @@
+pkgbase = python-langchain-text-splitters
+	pkgdesc = Building applications with LLMs through composability
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://pypi.org/project/langchain-text-splitters
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry
+	depends = python
+	depends = python-lxml
+	depends = python-langchain-core
+	source = https://files.pythonhosted.org/packages/source/l/langchain-text-splitters/langchain_text_splitters-0.0.1.tar.gz
+	source = https://raw.githubusercontent.com/langchain-ai/langchain/v0.1.11/LICENSE
+	sha256sums = ac459fa98799f5117ad5425a9330b21961321e30bc19a2a2f9f761ddadd62aa1
+	sha256sums = 4ec67e4ca6e6721dba849b2ca82261597c86a61ee214bbf21416006b7b2d0478
+
+pkgname = python-langchain-text-splitters
