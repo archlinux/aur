@@ -1,7 +1,7 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=python-langchain-community
-pkgver=0.0.24
+pkgver=0.0.25
 pkgrel=1
 pkgdesc="Community contributed LangChain integrations."
 url="https://pypi.org/project/langchain-community"
@@ -63,7 +63,7 @@ _module=${pkgname#python-}
 _src_folder="${_module/-/_}-${pkgver}"
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/${_module}/${_module/-/_}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/langchain-ai/langchain/v0.1.7/LICENSE")
-sha256sums=('fd609f6c962cca4b7b75f2159f1fbf74b14fdd45011ee2be53e95db4e678837f'
+sha256sums=('b6c8c14cd6ec2635e51e3974bf78a8de3b959bbedb4af55aad164f8cf392f0c5'
             '4ec67e4ca6e6721dba849b2ca82261597c86a61ee214bbf21416006b7b2d0478')
 
 build() {
