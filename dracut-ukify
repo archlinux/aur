@@ -224,12 +224,12 @@ function gen_image() {
 
     read -r pkgbase < "$path"
 
-    local initrd=$(mktemp)
+    local initrd=$(mktemp ukify.XXXXXXXXXX)
 
     msg2 "Building initrd image %s (%s)" "$kernel" "$version_name"
     dracut -q -f --no-hostonly-cmdline --kver "${version}" ${ukify_variants[$variant]} "$initrd"
 
-    local os_release=$(mktemp)
+    local os_release=$(mktemp ukify.XXXXXXXXXX)
     grep -v '^BUILD_ID=' /etc/os-release > "$os_release"
     echo "BUILD_ID=\"$version_name\"" >> "$os_release"
     echo "VERSION_ID=\"$(variant_name "$pkgbase" "$variant")\"" >> "$os_release"
