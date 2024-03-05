@@ -1,17 +1,18 @@
-pkgbase = makepkg-tidy-scripts-git
-	pkgdesc = Collection of scripts for tidying packages created using makepkg. Includes optipng and upx support.
-	pkgver = 0.r7.4af5db2
+pkgbase = makepkg-tidy-optipng-git
+	pkgdesc = Optimise PNG image sizes during packaging via a makepkg tidy script for optipng.
+	pkgver = r7.baee74a
 	pkgrel = 1
-	url = https://gitlab.com/Freso/makepkg-tidy-scripts
+	url = https://gitlab.archlinux.org/freso/makepkg-tidy-optipng
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = git
-	optdepends = optipng: For optipng tidy script.
-	optdepends = upx: For upx tidy script.
-	provides = makepkg-tidy-scripts
+	makedepends = coreutils
+	provides = makepkg-tidy-optipng
+	conflicts = makepkg-tidy-optipng
 	conflicts = makepkg-tidy-scripts
-	source = git+https://gitlab.com/Freso/makepkg-tidy-scripts
-	md5sums = SKIP
+	source = git+https://gitlab.archlinux.org/freso/makepkg-tidy-optipng.git
+	b2sums = SKIP
 
-pkgname = makepkg-tidy-scripts-git
-
+pkgname = makepkg-tidy-optipng-git
+	depends = optipng
+	depends = pacman

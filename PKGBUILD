@@ -1,29 +1,23 @@
-# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
-_pkgname=makepkg-tidy-scripts
-pkgname=${_pkgname}-git
-pkgver=0.r7.4af5db2
+# Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
+pkgname=makepkg-tidy-optipng-git
+pkgver=r7.baee74a
 pkgrel=1
-pkgdesc='Collection of scripts for tidying packages created using makepkg. Includes optipng and upx support.'
+pkgdesc='Optimise PNG image sizes during packaging via a makepkg tidy script for optipng.'
 arch=('any')
-url='https://gitlab.com/Freso/makepkg-tidy-scripts'
-license=('GPL')
-makedepends=('git')
-optdepends=(
-  'optipng: For optipng tidy script.'
-  'upx: For upx tidy script.'
-)
+url="https://gitlab.archlinux.org/freso/${pkgname%-git}"
+license=('GPL-2.0-or-later')
+makedepends=('git' 'coreutils')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("git+${url}")
-md5sums=('SKIP')
+conflicts=("${pkgname%-git}" 'makepkg-tidy-scripts')
+source=("git+${url}.git")
+b2sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
-  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
-  cd "${_pkgname}"
-  install -Dm755 optipng.sh "$pkgdir"/usr/share/makepkg/tidy/optipng.sh
-  install -Dm755 upx.sh "$pkgdir"/usr/share/makepkg/tidy/upx.sh
+  depends=('optipng' 'pacman')
+  install -Dm755 "${pkgname%-git}"/optipng.sh "$pkgdir"/usr/share/makepkg/tidy/optipng.sh
 }
