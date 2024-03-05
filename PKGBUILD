@@ -3,8 +3,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 #pkgname=('vulkan-caps-viewer-x11' 'vulkan-caps-viewer-wayland')
-pkgbase=vulkan-caps-viewer
-pkgbase=vulkan-caps-viewer
+pkgname=vulkan-caps-viewer
+#pkgbase=vulkan-caps-viewer
 pkgver=3.33
 pkgrel=2
 epoch=1
