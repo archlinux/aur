@@ -1,9 +1,9 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=renpy
-pkgver=8.2.0
-_verdate=24012702
-pkgrel=2
+pkgver=8.2.1
+_commit=1a30d4dd8eb5d0f21ac8550703439db05fde0cc8
+pkgrel=1
 pkgdesc="Visual novel engine Ren'Py along with its platdeps libs"
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -14,22 +14,20 @@ depends=(
 	'sdl2_gfx' 'sdl2_ttf' 'python-future' 'python-ecdsa')
 makedepends=(
 	'cython0' 'python-setuptools-scm' 'python-sphinx' 'python-sphinx_rtd_dark_mode' 
-	'python-sphinx_rtd_theme' 'python-build' 'python-installer' 'python-wheel')
+	'python-sphinx_rtd_theme' 'python-build' 'python-installer' 'python-wheel' 'git')
 provides=('python-renpy')
 replaces=('renpy64')
 install='renpy.install'
 
-source=("$pkgname-$pkgver-$_verdate.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/${pkgver}.${_verdate}.tar.gz"
+source=("git+https://github.com/${pkgname}/${pkgname}.git#commit=${_commit}"
         "${pkgname}.desktop"
         "${pkgname}-launcher.sh")
-sha256sums=('4e854c7cda8a77d990b9fd9025bd9af0fb36c12700301b50b349b7cea84c9649'
+sha256sums=('SKIP'
             'b58efcc42526c4de15e8963b02991e558b5e3d15d720b3777b791ac13fc815e6'
             'a38112859bf659d48c30be5c7c20ed1a1c72271ffd74eb4b4e730afbd87d73dc')
 
-_srcdir="${pkgname}-${pkgver}.${_verdate}"
-
 build() {
-	cd "${_srcdir}"
+	cd "${pkgname}"
 
 	pushd 'module'
 		python -m build --wheel --no-isolation
@@ -55,7 +53,7 @@ package() {
 	install -D -m755 "${pkgname}-launcher.sh" "$pkgdir/usr/bin/$pkgname"
 	install -D -m644 "${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
 
-	cd "${_srcdir}"
+	cd "${pkgname}"
 	cp -r 'sdk-fonts' 'launcher' 'renpy' 'renpy.py' 'the_question' 'tutorial' 'gui' "$pkgdir/usr/share/$pkgname"
 	cp -r doc/* "$pkgdir/usr/share/doc/$pkgname"
 	install -D -m644 'launcher/game/images/logo.png' "$pkgdir/usr/share/pixmaps/${pkgname}.png"

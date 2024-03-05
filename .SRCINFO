@@ -1,7 +1,7 @@
 pkgbase = renpy
 	pkgdesc = Visual novel engine Ren'Py along with its platdeps libs
-	pkgver = 8.2.0
-	pkgrel = 2
+	pkgver = 8.2.1
+	pkgrel = 1
 	url = http://www.renpy.org
 	install = renpy.install
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = renpy
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = git
 	depends = glibc
 	depends = ffmpeg
 	depends = fribidi
@@ -31,10 +32,10 @@ pkgbase = renpy
 	depends = python-ecdsa
 	provides = python-renpy
 	replaces = renpy64
-	source = renpy-8.2.0-24012702.tar.gz::https://github.com/renpy/renpy/archive/refs/tags/8.2.0.24012702.tar.gz
+	source = git+https://github.com/renpy/renpy.git#commit=1a30d4dd8eb5d0f21ac8550703439db05fde0cc8
 	source = renpy.desktop
 	source = renpy-launcher.sh
-	sha256sums = 4e854c7cda8a77d990b9fd9025bd9af0fb36c12700301b50b349b7cea84c9649
+	sha256sums = SKIP
 	sha256sums = b58efcc42526c4de15e8963b02991e558b5e3d15d720b3777b791ac13fc815e6
 	sha256sums = a38112859bf659d48c30be5c7c20ed1a1c72271ffd74eb4b4e730afbd87d73dc
 
