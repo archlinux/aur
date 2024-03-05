@@ -19,7 +19,7 @@ build() {
 
 check() {
   cd nose-exclude-$pkgver
-  python setup.py test
+  nosetests tests
 }
 
 package() {
