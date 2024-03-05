@@ -1,7 +1,7 @@
 pkgbase = proton-experimental
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components, experimental branch
 	pkgver = 9.0.20240301
-	pkgrel = 5
+	pkgrel = 6
 	epoch = 1
 	url = https://github.com/ValveSoftware/Proton
 	install = proton-experimental.install
@@ -144,7 +144,6 @@ pkgbase = proton-experimental
 	source = 0007-AUR-Enable-winewayland.patch
 	source = 0001-fshack-AMD-FSR-complete.patch
 	source = 4947.patch
-	source = server-Enable-link-time-optimization.patch
 	sha256sums = SKIP
 	sha256sums = 2cfc8d5c948602e21eff8a78613e1826f2d033df9672cace87fed56e8310afb6
 	sha256sums = fd88fc7e537d058d7a8abf0c1ebc90c574892a466de86706a26d254710a82814
@@ -158,6 +157,5 @@ pkgbase = proton-experimental
 	sha256sums = b7297cabb316eb9621ec1abade892143392eba5fdbd3bd496df7992a7c9d7358
 	sha256sums = 3d308f8e87361669267fa52b986c24f1dea1913156a045f43ea04e02f7444b18
 	sha256sums = 0f9ddda17319e3ef23ee847c0a740bf74847796d4b3cf61b05feb9aa3141b7c7
-	sha256sums = SKIP
 
 pkgname = proton-experimental

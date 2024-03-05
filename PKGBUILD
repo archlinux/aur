@@ -6,7 +6,7 @@ _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.4
 _monover=9.0.0
-pkgrel=5
+pkgrel=6
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, experimental branch"
 url="https://github.com/ValveSoftware/Proton"
@@ -99,7 +99,6 @@ source+=(
     0007-AUR-Enable-winewayland.patch
     0001-fshack-AMD-FSR-complete.patch
     4947.patch
-    server-Enable-link-time-optimization.patch
 )
 noextract=(
     wine-gecko-${_geckover}-{x86,x86_64}.tar.xz
@@ -177,7 +176,6 @@ prepare() {
     pushd wine
         patch -p1 -i "$srcdir"/0001-fshack-AMD-FSR-complete.patch
         patch -p1 -i "$srcdir"/4947.patch
-        patch -p1 -i "$srcdir"/server-Enable-link-time-optimization.patch
     popd
 }
 
@@ -195,24 +193,15 @@ build() {
     local -A flags
     for opt in "${split[@]}"; do flags["${opt%%=*}"]="${opt##*=}"; done
     local march="${flags["-march"]:-nocona}"
-    local mtune="${flags["-mtune"]:-core-avx2}"
+    local mtune="generic" #"${flags["-mtune"]:-core-avx2}"
 
-    CFLAGS="-O2 -march=$march -mtune=$mtune -pipe -ftree-vectorize -fno-semantic-interposition"
-    CXXFLAGS="-O2 -march=$march -mtune=$mtune -pipe -ftree-vectorize -fno-semantic-interposition"
-    RUSTFLAGS="-C opt-level=2 -C target-cpu=$march"
+    CFLAGS="-O3 -march=$march -mtune=$mtune -pipe -fno-semantic-interposition"
+    CXXFLAGS="-O3 -march=$march -mtune=$mtune -pipe -fno-semantic-interposition"
+    RUSTFLAGS="-C opt-level=3 -C target-cpu=$march"
     LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
-    # If using -march=native and the CPU supports AVX, launching a d3d9
-    # game can cause an Unhandled exception. The cause seems to be the
-    # combination of AVX instructions and tree vectorization (implied by O2),
-    # all tested archictures from sandybridge to haswell are affected.
-    # Since Wine 5.16 AVX is supported. Testing showed 32bit applications
-    # crashing with AVX regardless, but 64bit applications worked just fine.
-    # Relevant Wine issues
-    # https://bugs.winehq.org/show_bug.cgi?id=45289
-    # https://bugs.winehq.org/show_bug.cgi?id=43516
     # AVX is "hard" disabled for 32bit in any case.
-    # AVX2 for both 32bit and 64bit is disabled below.
+    # AVX/AVX2 for 64bit is disabled below.
     #CFLAGS+=" -mno-avx2 -mno-avx"
     #CXXFLAGS+=" -mno-avx2 -mno-avx"
 
@@ -287,5 +276,4 @@ sha256sums=('SKIP'
             '89baf181f197a6156507841c018fd81c8f934f77161ba90f5ee6466677428235'
             'b7297cabb316eb9621ec1abade892143392eba5fdbd3bd496df7992a7c9d7358'
             '3d308f8e87361669267fa52b986c24f1dea1913156a045f43ea04e02f7444b18'
-            '0f9ddda17319e3ef23ee847c0a740bf74847796d4b3cf61b05feb9aa3141b7c7'
-            'SKIP')
+            '0f9ddda17319e3ef23ee847c0a740bf74847796d4b3cf61b05feb9aa3141b7c7')
