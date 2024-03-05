@@ -3,7 +3,7 @@
 
 pkgname=gtkmathview
 pkgver=0.8.0
-pkgrel=9
+pkgrel=10
 pkgdesc="C++ rendering engine for MathML documents"
 arch=('x86_64')
 url="http://helm.cs.unibo.it/mml-widget/"
