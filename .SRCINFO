@@ -1,0 +1,36 @@
+pkgbase = elyprismlauncher
+	pkgdesc = This fork of Prism Launcher replaces legacy Mojang accounts with Ely.by accounts. This is not endorsed by Prism Launcher or Ely.by.
+	pkgver = 8.2
+	pkgrel = 1
+	url = https://github.com/Octol1ttle/ElyPrismLauncher
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = jdk17-openjdk
+	makedepends = scdoc
+	makedepends = ghc-filesystem
+	makedepends = gamemode
+	depends = java-runtime=17
+	depends = libgl
+	depends = qt6-base
+	depends = qt6-5compat
+	depends = qt6-svg
+	depends = qt6-imageformats
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = quazip-qt6
+	depends = tomlplusplus
+	depends = cmark
+	optdepends = glfw: to use system GLFW libraries
+	optdepends = openal: to use system OpenAL libraries
+	optdepends = visualvm: Profiling support
+	optdepends = xorg-xrandr: for older minecraft versions
+	optdepends = java-runtime=8: for older minecraft versions
+	source = https://github.com/Octol1ttle/ElyPrismLauncher/releases/download/8.2/PrismLauncher-8.2.tar.gz
+	sha256sums = 0ef8d62791845635299d51f57075d40c3d6339d9c61b1e5a92752670b873e5b8
+
+pkgname = elyprismlauncher
