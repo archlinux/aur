@@ -1,4 +1,4 @@
-# Maintainer: Kookies <kookies@tutamail.com>
+# Maintainer: Kookies <kookies at tutamail dot com>
 
 pkgname=libctru-git
 _libname=libctru
@@ -8,7 +8,7 @@ epoch=1
 pkgdesc="Nintendo 3DS userland library. (git)"
 arch=('any')
 url="https://github.com/devkitPro/libctru"
-license=('custom')
+license=('LicenseRef-libctru')
 depends=('devkitARM')
 makedepends=('git' 'devkit-env' 'devkitARM')
 provides=('libctru')
@@ -34,6 +34,6 @@ package() {
   make -C "${_libname}" install
 
   # license
-  install -d "${pkgdir}"/usr/share/licenses/${_libname}
-  sed '/license/,$!d' README.md > "${pkgdir}/usr/share/licenses/${_libname}/LICENSE"
+  install -d "${pkgdir}"/usr/share/licenses/${pkgname}
+  sed '/license/,$!d' README.md > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
