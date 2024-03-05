@@ -1,0 +1,5 @@
+[libopenshot-audio]
+source = "github"
+github = "openshot/libopenshot-audio"
+prefix = "v"
+use_max_tag = true
