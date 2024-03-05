@@ -8,7 +8,6 @@ pkgbase = pacman-mirrors-helper-git
 	makedepends = git
 	depends = bash
 	depends = curl
-	depends = grep
 	depends = sed
 	depends = ncurses
 	source = git+https://codeberg.org/Application-Maker/pacman-mirrors-helper.git#branch=main
