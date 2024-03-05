@@ -1,5 +1,5 @@
 pkgbase = whisper.cpp-cuda
-	pkgdesc = Port of OpenAI's Whisper model in C/C++
+	pkgdesc = Port of OpenAI's Whisper model in C/C++ (with CUDA)
 	pkgver = 1.5.4
 	pkgrel = 1
 	url = https://github.com/ggerganov/whisper.cpp
