@@ -3,10 +3,10 @@ _projectname=skycoin
 pkgname=skywire
 _pkgname=${pkgname}
 _githuborg=${FORK:-$_projectname}
-pkgdesc="Skywire Mainnet Node implementation. Skycoin.com"
+pkgdesc="Skywire node implementation + deployment services, service discovery, & dmsg utilities. Skycoin.com"
 _pkggopath=github.com/${_githuborg}/${_pkgname}
-pkgver='1.3.17'
-pkgrel='2'
+pkgver='1.3.18'
+pkgrel='1'
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -26,12 +26,12 @@ source=("skywire-${_tag_ver}.tar.gz::${url}/archive/refs/tags/${_tag_ver}.tar.gz
 "${_source[@]}")
 #"https://raw.githubusercontent.com/skycoin/skywire/develop/dmsghttp-config.json"
 #"all_servers.json"::"https://dmsgd.skywire.skycoin.com/dmsg-discovery/all_servers")
-sha256sums=('e2da80b94b343fd8b10c948dd69c13957f2f406b1af4673a732da7693060e8ae'
+sha256sums=('ebfec5cc8c082307e24d502b0f305cda1201e6372af300fc6517598caf15a176'
             'SKIP')
 #            'SKIP'
 #            'SKIP')
-_binary=("skywire-cli" "skywire-visor")
-_appbinary=("skychat" "skysocks" "skysocks-client" "vpn-client" "vpn-server")
+_binaryscript=("skywire-cli" "skywire-visor")
+_appscript=("skychat" "skysocks" "skysocks-client" "vpn-client" "vpn-server")
 
 prepare() {
 # https://wiki.archlinux.org/index.php/Go_package_guidelines
@@ -70,17 +70,19 @@ BUILDINFO="${BUILDINFO_VERSION} ${BUILDINFO_DATE} ${BUILDINFO_COMMIT}"
 cd "${srcdir}"/go/src/${_pkggopath} || exit
 _cmddir="${srcdir}"/go/src/${_pkggopath}/cmd
 #static compilation with 'musl' avoids glibc runtime deps which cause binary to fail if correct glibc / libc6 is not found on the system
-_msg2 "building app binaries"
-go build -trimpath --ldflags="" --ldflags "${BUILDINFO} -s -w -linkmode external -extldflags '-static' -buildid=" -o $_GOAPPS "${_cmddir}"/apps/...
-_msg2 "building skywire binaries"
-cd "${_cmddir}"/skywire-visor || exit
-go build -trimpath --ldflags="" --ldflags "${BUILDINFO} -s -w -linkmode external -extldflags '-static' -buildid=" -o $GOBIN "${_cmddir}"/skywire-visor/... "${_cmddir}"/skywire-cli/...
+_msg2 "building skywire binary"
+go build -trimpath --ldflags="" --ldflags "${BUILDINFO} -s -w -linkmode external -extldflags '-static' -buildid=" -o $GOBIN/skywire "${_cmddir}"/skywire-deployment/...
+_msg2 'creating launcher scripts'
+for _i in "${_appscript[@]}" ; do
+  _msg3 ${_i}
+  echo -e '#!/bin/bash\n/opt/skywire/bin/skywire app '"${_i} "'$@' > "${_GOAPPS}/${_i}"
+done
+echo -e '#!/bin/bash\n/opt/skywire/bin/skywire cli $@' > "${GOBIN}/skywire-cli"
+echo -e '#!/bin/bash\n/opt/skywire/bin/skywire visor $@' > "${GOBIN}/skywire-visor"
 #binary transparency
 cd "$GOBIN" || exit
 _msg2 'binary sha256sums'
-sha256sum $(ls)
-cd "$_GOAPPS" || exit
-sha256sum $(ls)
+sha256sum skywire
 
 #the dmsghttp-config.json must match the current dmsg servers on the production deployment
 #https://dmsgd.skywire.skycoin.com/dmsg-discovery/all_servers
@@ -116,26 +118,23 @@ mkdir -p "${_pkgdir}/${_dir}/apps"
 mkdir -p "${_pkgdir}/${_dir}/local/custom"
 mkdir -p "${_pkgdir}/${_dir}/scripts"
 mkdir -p "${_pkgdir}/${_systemddir}"
-_msg2 'installing binaries'
-for _i in "${_binary[@]}" ; do
-  _msg3 ${_i}
-	install -Dm755 "${GOBIN}/${_i}" "${_pkgdir}/${_bin}/"
-	ln -rTsf "${_pkgdir}/${_bin}/${_i}" "${_pkgdir}/usr/bin/${_i}"
-done
-_msg2 'installing app binaries'
-for _i in "${_appbinary[@]}" ; do
+_msg2 'installing scripts and binaries'
+install -Dm755 "${GOBIN}/skywire" "${_pkgdir}/${_bin}/"
+ln -rTsf "${_pkgdir}/${_bin}/skywire" "${_pkgdir}/usr/bin/skywire"
+install -Dm755 "${GOBIN}/skywire-cli" "${_pkgdir}/${_bin}/"
+ln -rTsf "${_pkgdir}/${_bin}/skywire-cli" "${_pkgdir}/usr/bin/skywire-cli"
+install -Dm755 "${GOBIN}/skywire-visor" "${_pkgdir}/${_bin}/"
+ln -rTsf "${_pkgdir}/${_bin}/skywire-visor" "${_pkgdir}/usr/bin/skywire-visor"
+for _i in "${_appscript[@]}" ; do
   _msg3 ${_i}
   install -Dm755 "${_GOAPPS}/${_i}" "${_pkgdir}/${_apps}/${_i}"
 	ln -rTsf "${_pkgdir}/${_apps}/${_i}" "${_pkgdir}/usr/bin/${_i}"
 done
-_msg2 'Installing scripts'
 for _i in "${_script[@]}" ; do
   _msg3 ${_i}
   install -Dm755 "${srcdir}/${_skywirebin}${_i}" "${_pkgdir}/${_scriptsdir}/${_i}"
   ln -rTsf "${_pkgdir}/${_scriptsdir}/${_i}" "${_pkgdir}/usr/bin/${_i}"
 done
-_msg2 'Symlink skywire-visor to skywire'
-ln -rTsf "${_pkgdir}/${_bin}/${_pkgname}-visor" "${_pkgdir}/usr/bin/${_pkgname}"
 _msg2 'installing dmsghttp-config.json'
 install -Dm644 "${srcdir}/dmsghttp-config.json" "${_pkgdir}/${_dir}/dmsghttp-config.json" || install -Dm644 "${srcdir}/skywire/dmsghttp-config.json" "${_pkgdir}/${_dir}/dmsghttp-config.json" || install -Dm644 "${srcdir}/skywire-${_pkgver}/dmsghttp-config.json" "${_pkgdir}/${_dir}/dmsghttp-config.json"
 #make sure the dmsghttp-config will get redownloaded on subsequent builds
