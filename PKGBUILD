@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=hwatch
-pkgver=0.3.10
+pkgver=0.3.11
 pkgrel=1
 pkgdesc="A modern alternative to the watch command"
 arch=('x86_64')
@@ -11,11 +11,11 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('e2427fc634eb4ab4cd28d9629ee06896494b70a009eaacff302f849939291670')
+sha256sums=('61d2758921c4911b0230fd99c175f29127dfc713a23462ed48bb89857fadd7ff')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
