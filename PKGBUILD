@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="mkdocs-htmlproofer-plugin"
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="MkDocs plugin to validates URL in rendered html files"
 url="https://github.com/manuzhang/mkdocs-htmlproofer-plugin"
@@ -12,7 +12,7 @@ replaces=("python-mkdocs-htmlproofer-plugin-git")
 depends=("mkdocs" "python-beautifulsoup4" "python-requests")
 makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c6da9834d9ee601549cfd0c9936bd2baeaa56d39f66f67ee447a717259a4b930')
+b2sums=('d123e00d9e76787f73038780297df2cdf02a7604644e7d19e21505f649c2cd95c8d00d373c48ab663432b3a13287ade994980d017c409af9217fed1d23df7d01')
 
 build(){
  cd "$pkgname-$pkgver"
