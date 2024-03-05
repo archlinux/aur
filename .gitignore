@@ -1,6 +1,10 @@
 /.vscode/
 /src
 /pkg
+
+# Too large for the AUR, therefore we download it from GitHub
+/github-pr-93.patch
+
 *.log
 *.pkg.*
 *.tar.*
