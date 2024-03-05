@@ -1,6 +1,6 @@
 pkgbase = python-barbicanclient
 	pkgdesc = Client library for the Barbican Key Management API
-	pkgver = 5.6.1
+	pkgver = 5.7.0
 	pkgrel = 1
 	url = https://docs.openstack.org/python-barbicanclient/
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = python-barbicanclient
 	checkdepends = python-oslotest
 	checkdepends = python-oslo-config
 	checkdepends = python-openstackclient
+	makedepends = python-setuptools
 	depends = python-pbr
 	depends = python-requests
 	depends = python-cliff
@@ -19,7 +20,7 @@ pkgbase = python-barbicanclient
 	depends = python-oslo-i18n
 	depends = python-oslo-serialization
 	depends = python-oslo-utils
-	source = https://opendev.org/openstack/python-barbicanclient/archive/5.6.1.tar.gz
-	sha512sums = 34f1f57ea49391e1bab3d8e200475c13d061d7935b3d2c7f4e834f0d02e9ee9cdedf612fbfcef5e3686e8febdbbea1b68ff50dc8d93286337f273497d627c4d0
+	source = python-barbicanclient-5.7.0.tar.gz::https://opendev.org/openstack/python-barbicanclient/archive/5.7.0.tar.gz
+	sha512sums = 17cac8fd627789b0b1cd36f7c3c09abdb38fad238a84c159e5add291ded7d69bd88aa57ed2d41c1f30e49898460768e53b49a2fd75e9eb87235b0731bbf2bf16
 
 pkgname = python-barbicanclient

@@ -1,20 +1,21 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-barbicanclient
-pkgver=5.6.1
+pkgver=5.7.0
 pkgrel=1
 pkgdesc='Client library for the Barbican Key Management API'
-arch=('any')
+arch=(any)
 url="https://docs.openstack.org/$pkgname/"
-license=('Apache')
-depends=('python-pbr' 'python-requests' 'python-cliff'
-         'python-keystoneauth1' 'python-oslo-i18n'
-         'python-oslo-serialization' 'python-oslo-utils')
-checkdepends=('python-fixtures' 'python-requests-mock' 'python-stestr'
-              'python-testtools' 'python-oslotest' 'python-oslo-config'
-              'python-openstackclient')
-source=("https://opendev.org/openstack/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('34f1f57ea49391e1bab3d8e200475c13d061d7935b3d2c7f4e834f0d02e9ee9cdedf612fbfcef5e3686e8febdbbea1b68ff50dc8d93286337f273497d627c4d0')
+license=(Apache)
+makedepends=(python-setuptools)
+depends=(python-pbr python-requests python-cliff
+         python-keystoneauth1 python-oslo-i18n
+         python-oslo-serialization python-oslo-utils)
+checkdepends=(python-fixtures python-requests-mock python-stestr
+              python-testtools python-oslotest python-oslo-config
+              python-openstackclient)
+source=("$pkgname-$pkgver.tar.gz::https://opendev.org/openstack/$pkgname/archive/$pkgver.tar.gz")
+sha512sums=('17cac8fd627789b0b1cd36f7c3c09abdb38fad238a84c159e5add291ded7d69bd88aa57ed2d41c1f30e49898460768e53b49a2fd75e9eb87235b0731bbf2bf16')
 
 export PBR_VERSION=$pkgver
 
@@ -34,5 +35,3 @@ package() {
   cd $pkgname
   python setup.py install --root="$pkgdir" --optimize=1
 }
-
-# vim:set ts=2 sw=2 et:
