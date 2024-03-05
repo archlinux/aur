@@ -1,10 +1,11 @@
 pkgbase = moonshine
 	pkgdesc = Streaming server for Moonlight clients, written in Rust.
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hgaiser/moonshine
 	arch = x86_64
 	license = BSD-2
+	makedepends = rust
 	depends = avahi
 	depends = cuda
 	depends = ffmpeg
