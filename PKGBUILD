@@ -18,6 +18,7 @@ makedepends=(
   git
 )
 depends=(
+  cdemu-client
   libstatusnotifieritem-qt6
   qt6-base
 )

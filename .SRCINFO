@@ -10,6 +10,7 @@ pkgbase = omgmounter-git
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = git
+	depends = cdemu-client
 	depends = libstatusnotifieritem-qt6
 	depends = qt6-base
 	provides = omgmounter
