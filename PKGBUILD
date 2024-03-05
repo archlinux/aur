@@ -1,22 +1,23 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-ironicclient
-pkgver=5.4.0
+pkgver=5.5.0
 pkgrel=1
 pkgdesc='Python client library for Ironic'
-arch=('any')
+arch=(any)
 url="https://docs.openstack.org/$pkgname/"
-license=('Apache')
-depends=('python-six' 'python-requests' 'python-yaml'
-         'python-openstackclient' 'python-prettytable' 'python-oslo-utils'
-         'python-oslo-serialization' 'python-oslo-i18n' 'python-osc-lib'
-         'python-keystoneauth1' 'python-jsonschema' 'python-dogpile.cache'
-         'python-appdirs' 'python-pbr')
-checkdepends=('python-fixtures' 'python-requests-mock' 'python-mock'
-              'python-babel' 'python-oslotest' 'python-testtools' 'python-tempest'
-              'python-stestr' 'python-ddt' 'python-openstackclient')
-source=("https://opendev.org/openstack/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('de1e7b7e92e6430559c8dbf38c121d104f281532ff13e6d1e667b4b6f4ad5dcf2bd3825617521557dfc291763a8562d334b12f259018d56ee46b7ab35cd0caa5')
+license=(Apache)
+makedepends=(python-setuptools)
+depends=(python-six python-requests python-yaml
+         python-openstackclient python-prettytable python-oslo-utils
+         python-oslo-serialization python-oslo-i18n python-osc-lib
+         python-keystoneauth1 python-jsonschema python-dogpile.cache
+         python-appdirs python-pbr)
+checkdepends=(python-fixtures python-requests-mock python-mock
+              python-babel python-oslotest python-testtools python-tempest
+              python-stestr python-ddt python-openstackclient)
+source=("$pkgname-$pkgver.tar.gz::https://opendev.org/openstack/$pkgname/archive/$pkgver.tar.gz")
+sha512sums=('ec30e9e98d55fa862375448291a55a74c702eae7b7445471a45fc14630bc27d3a1f40484aad4deb9b07631367c4fbf8769773c6ef8ed16af10a411e7a27ee810')
 
 export PBR_VERSION=$pkgver
 
@@ -34,5 +35,3 @@ package() {
   cd $pkgname
   python setup.py install --root="$pkgdir" --optimize=1
 }
-
-# vim:set ts=2 sw=2 et:
