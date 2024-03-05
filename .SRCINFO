@@ -19,6 +19,5 @@ pkgbase = mbdyn-git
 	optdepends = blas-openblas: eigenanalysis support, openBLAS version
 	source = mbdyn-git::git+https://public.gitlab.polimi.it/DAER/mbdyn.git#branch=develop
 	sha256sums = SKIP
-	sha256sums = fd547a306e80db6fa298691dc866057554295cc29080e3454903b0526c7ed1c0
 
 pkgname = mbdyn-git
