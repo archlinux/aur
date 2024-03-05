@@ -1,18 +1,18 @@
 pkgbase = siyuan-note-bin
 	pkgdesc = A local-first personal knowledge management system
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://b3log.org/siyuan/
 	arch = x86_64
 	license = AGPL3
-	depends = electron29
+	depends = electron28
 	optdepends = pandoc: docx export.
 	provides = siyuan-note
-	source = siyuan-note-bin-3.0.1.tar.gz::https://github.com/siyuan-note/siyuan/releases/download/v3.0.1/siyuan-3.0.1-linux.tar.gz
+	source = siyuan-note-bin-3.0.2.tar.gz::https://github.com/siyuan-note/siyuan/releases/download/v3.0.2/siyuan-3.0.2-linux.tar.gz
 	source = siyuan-note.sh
 	source = siyuan-note.desktop
-	sha512sums = b1fc0a54d233563d8593217604952240d0a638602390f966948dc1809514ffdd23e34b8de08c59e4dd367e832733bfd6509833808588e9b59bec1e4b62e3b21e
-	sha512sums = e51739a37c2a025238206d8c62e9ddbc3aa2f18bda2d70e7e1e3f4aa2b442564736faf0ee4b21a51393414903ccce6fef47cb2b42413e4bf0ad537774dbf7694
+	sha512sums = 4c2b8008cf1d556a17c82306ac9fdddc5c8fd3e18ea231d0c80c086e090f1aff8be28e06d8b65a379e8c08d634e803697789bdda3a0dd4a4497842d4cf8fa4b9
+	sha512sums = ae1f84d9b36e42fc4d374f7adb1191b9158a3633b4a0e5d6dbf4bc2e6a0db499b23d7b2fff2a760e4751e4de5bbc8ac33df13958a153df5e2d67de303f9916d6
 	sha512sums = 4ca7d777c2dce64d89a874af268773009ba0ebe064c3ce0034913c447666bf6636a3c81d1145579fe1b0b6a35195b1f97b1b4cd56b50e990fb0642c4aae281f0
 
 pkgname = siyuan-note-bin
