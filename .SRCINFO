@@ -1,7 +1,7 @@
 pkgbase = nitrogen
 	pkgdesc = Background browser and setter for X windows
 	pkgver = 1.6.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://projects.l3ib.org/nitrogen/
 	arch = x86_64
 	license = GPL
