@@ -7,8 +7,8 @@ _souceName="archupdate"
 
 pkgname="kdeplasma-arch-update-notifier-git"
 # pkgver is updated automatically by the pkgver step
-pkgver=5.0.2
-pkgrel=2
+pkgver=4.0.1
+pkgrel=1
 pkgdesc="KDE plasmoid that lets you know when arch updates are required. Takes all repo's into account (core, extra, aur, ...)."
 arch=("any")
 url="https://github.com/bouteillerAlan/archupdate"
