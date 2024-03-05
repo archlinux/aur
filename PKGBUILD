@@ -2,7 +2,7 @@
 # Contributor: ava1ar <mail(at)ava1ar(dot)me>
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-driver
-pkgver=20.04.85
+pkgver=20.04.86
 pkgrel=1
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
@@ -50,7 +50,7 @@ optdepends=(
   'xorg-xbacklight: To use the backlight service'
 )
 install="$pkgname.install"
-_commit=517490ee4e1d0fffed6b6a698f77448e31881727  # tags/20.04.85^0
+_commit=50d6acf4ed5a8ac68c7d37c2b0fea91c3c5771a6  # tags/20.04.86^0
 source=(
   "git+https://github.com/pop-os/system76-driver.git#commit=${_commit}"
   'cli.patch'
