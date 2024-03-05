@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: GPL-2.0-only
+
+build() {
+    quiet "extracting acpi override image: '%s'" "/boot/acpi_override"
+    LC_ALL=C.UTF-8 bsdtar -C "$EARLYROOT" -xf "/boot/acpi_override"
+}
+
+help() {
+    cat <<HELPEOF
+This hook adds acpi_override files to the initramfs for those who have
+modified the dsdt table following https://wiki.archlinux.org/title/DSDT.
+HELPEOF
+}
+
+# vim: set ft=sh ts=4 sw=4 et:
