@@ -8,5 +8,6 @@ pkgbase = python-nodegraphqt
 	license = License
 	makedepends = python
 	makedepends = python-pip
+	depends = python-qt.py
 
 pkgname = python-nodegraphqt

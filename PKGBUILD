@@ -10,6 +10,7 @@ arch=(any)
 url="https://github.com/jchanvfx/NodeGraphQt"
 license=(MIT License)
 makedepends=("python" "python-pip")
+depends=("python-qt.py")
 build() {
   pip install --no-deps --target="NodeGraphQt" NodeGraphQt==0.6.35
 }
