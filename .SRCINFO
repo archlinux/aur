@@ -1,6 +1,6 @@
 pkgbase = r-naniar
 	pkgdesc = Data Structures, Summaries, and Visualisations for Missing Data
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=naniar
 	arch = any
@@ -35,7 +35,7 @@ pkgbase = r-naniar
 	optdepends = r-testthat
 	optdepends = r-vdiffr
 	optdepends = r-wakefield
-	source = https://cran.r-project.org/src/contrib/naniar_1.0.0.tar.gz
-	sha256sums = c2eda97de603e2daf4c1c5d12f9c9a65635910833a3c669e08e344e90d9394f4
+	source = https://cran.r-project.org/src/contrib/naniar_1.1.0.tar.gz
+	sha256sums = a94c46c3a78893bd935a0a51adb6a523915afb35427a56ce650b1e1ab28c6f44
 
 pkgname = r-naniar

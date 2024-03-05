@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=naniar
-_pkgver=1.0.0
+_pkgver=1.1.0
 pkgname=r-${_pkgname,,}
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Data Structures, Summaries, and Visualisations for Missing Data'
 arch=('any')
@@ -44,7 +44,7 @@ optdepends=(
   r-wakefield
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c2eda97de603e2daf4c1c5d12f9c9a65635910833a3c669e08e344e90d9394f4')
+sha256sums=('a94c46c3a78893bd935a0a51adb6a523915afb35427a56ce650b1e1ab28c6f44')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
