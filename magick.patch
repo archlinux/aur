@@ -1,0 +1,27 @@
+--- a/CMakeLists.txt	2024-02-29 19:00:00.000000000 -0600
++++ b/CMakeLists.txt	2024-03-05 15:40:11.585633947 -0600
+@@ -85,6 +85,7 @@
+
+ if(IMAGEMAGICK)
+     find_package(ImageMagick COMPONENTS Magick++)
++    string(REPLACE "libMagick++-6." "libMagick++-7." ImageMagick_Magick++_LIBRARY "${ImageMagick_Magick++_LIBRARY}")
+     if(GRAPHICSMAGICK)
+         set(GRAPHICSMAGICK OFF)
+         message("** ImageMagick and GraphicsMagick cannot be used at the same time.")
+@@ -455,13 +456,13 @@
+         message(FATAL_ERROR "** Unable to locate ImageMagick... is it installed?")
+     else()
+         message("** Using ImageMagick")
+-        include_directories(${ImageMagick_INCLUDE_DIRS})
++        include_directories("${ImageMagick_Magick++_INCLUDE_DIR}")
+         add_definitions(-DPQMIMAGEMAGICK)
+         add_definitions(-DMAGICKCORE_QUANTUM_DEPTH=16)
+         add_definitions(-DMAGICKCORE_HDRI_ENABLE=1)
+-        target_link_libraries(photoqt PRIVATE ${ImageMagick_LIBRARIES})
++        target_link_libraries(photoqt PRIVATE "${ImageMagick_Magick++_LIBRARY}")
+         if(TESTING)
+-            target_link_libraries(photoqt_test PRIVATE ${ImageMagick_LIBRARIES})
++            target_link_libraries(photoqt_test PRIVATE "${ImageMagick_Magick++_LIBRARY}")
+         endif()
+     endif()
+ else()

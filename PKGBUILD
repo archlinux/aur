@@ -3,7 +3,7 @@
 
 pkgname=photoqt
 pkgver=4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and highly configurable image viewer with a simple and nice interface."
 arch=('x86_64')
 url="http://photoqt.org/"
@@ -13,8 +13,10 @@ optdepends=('libqpsd-git: PSB/PSD support'
             'xcftools: XCF support'
             'poppler-qt6: PDF support')
 makedepends=('cmake' 'qt6-tools' 'extra-cmake-modules')
-source=(https://photoqt.org/downloads/source/$pkgname-$pkgver.tar.gz)
-sha256sums=('07466e6ef5881191670f6bfbe1ba4fbfeff0afbbda1d2f503f8ffff7f69f8f34')
+source=(https://photoqt.org/downloads/source/$pkgname-$pkgver.tar.gz
+        magick.patch)
+sha256sums=('07466e6ef5881191670f6bfbe1ba4fbfeff0afbbda1d2f503f8ffff7f69f8f34'
+            '70b1103d71ea0399b3a665c2133f7d85221f2761807d629e42a9875178d9e6b5')
 
 # NOTE
 # To use GraphicsMagick instead of ImageMagick replace it in the depends array above and change
@@ -30,6 +32,8 @@ sha256sums=('07466e6ef5881191670f6bfbe1ba4fbfeff0afbbda1d2f503f8ffff7f69f8f34')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
+
+  patch -p1 < $srcdir/magick.patch
 
   cmake . -DCMAKE_INSTALL_PREFIX=/usr -DFREEIMAGE=OFF -DDEVIL=OFF -DPOPPLER=OFF -DQTPDF=ON -DIMAGEMAGICK=ON -DGRAPHICSMAGICK=OFF -DLIBVIPS=OFF -DVIDEO_MPV=ON -DCHROMECAST=ON -DRESVG=ON -DZXING=ON -DCMAKE_BUILD_TYPE=Release
 

@@ -1,7 +1,7 @@
 pkgbase = photoqt
 	pkgdesc = Fast and highly configurable image viewer with a simple and nice interface.
 	pkgver = 4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://photoqt.org/
 	arch = x86_64
 	license = GPL2
@@ -30,6 +30,8 @@ pkgbase = photoqt
 	optdepends = xcftools: XCF support
 	optdepends = poppler-qt6: PDF support
 	source = https://photoqt.org/downloads/source/photoqt-4.3.tar.gz
+	source = magick.patch
 	sha256sums = 07466e6ef5881191670f6bfbe1ba4fbfeff0afbbda1d2f503f8ffff7f69f8f34
+	sha256sums = 70b1103d71ea0399b3a665c2133f7d85221f2761807d629e42a9875178d9e6b5
 
 pkgname = photoqt
