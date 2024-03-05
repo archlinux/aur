@@ -1,3 +1,5 @@
+# Maintainer: Abdur-Rahman Mansoor <armansoor at posteo dot net>
+
 _pkgname=httpx-socks
 pkgname=python-$_pkgname
 epoch=1
