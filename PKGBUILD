@@ -15,12 +15,6 @@ conflicts=($_pkgbase)
 source=("$_pkgbase"::"git+https://github.com/ic-scm/openrevolution")
 md5sums=('SKIP')
 
-prepare() {
-  # build all binaries by default
-  cd "$srcdir/$_pkgbase/"
-  sed 's/\#//g' build.sh
-}
-
 pkgver() {
   cd "$srcdir/$_pkgbase/"
   git describe --tags | sed -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g'
@@ -33,5 +27,6 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgbase"
-  install -m755 -D 'brstm_*' "$pkgdir/usr/bin/"
+  install -m755 -D 'brstm_rt' "$pkgdir/usr/bin/"
+  install -m755 -D 'brstm_converter' "$pkgdir/usr/bin/"
 }
