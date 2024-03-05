@@ -2,12 +2,12 @@
 
 pkgname=zotero-bin
 pkgver=6.0.35
-pkgrel=1
+pkgrel=2
 pkgdesc="Zotero Standalone. Is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources."
 arch=('x86_64')
 url="https://www.zotero.org/download"
 license=('AGPL3')
-depends=('dbus-glib' 'gtk3' 'nss' 'libxt')
+depends=('dbus-glib' 'gtk3' 'nss' 'libxt' 'debugedit')
 provides=('zotero')
 conflicts=('zotero')
 
