@@ -9,7 +9,7 @@
 # Contributor: Dave Pretty <david dot pretty at gmail dot com>
 
 pkgname=anki-git
-pkgver=r10790.70ee28b55
+pkgver=r10935.eb597475c
 pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="hhttps://apps.ankiweb.net/"
@@ -30,6 +30,7 @@ depends=(
     'python-orjson'
     'python-distro'
     'python-stringcase'
+    'python-pip-system-certs'
 
     # aqt
     'python-send2trash'
