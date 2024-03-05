@@ -5,9 +5,9 @@ _module="markdownify"
 _pkgname="python-$_module"
 pkgname="$_pkgname"
 pkgver=0.11.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Convert HTML to Markdown"
-url="http://github.com/matthewwithanm/python-markdownify"
+url="https://github.com/matthewwithanm/python-markdownify"
 license=('MIT')
 arch=('any')
 
@@ -58,7 +58,7 @@ check() {
 
 package() {
   cd "$_pkgsrc"
-  python -m installer --destdir="${pkgdir:?}" dist/*.whl
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 LICENSE -t "${pkgdir:?}/usr/share/licenses/${pkgname:?}/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

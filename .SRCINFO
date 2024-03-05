@@ -1,8 +1,8 @@
 pkgbase = python-markdownify
 	pkgdesc = Convert HTML to Markdown
 	pkgver = 0.11.6
-	pkgrel = 4
-	url = http://github.com/matthewwithanm/python-markdownify
+	pkgrel = 5
+	url = https://github.com/matthewwithanm/python-markdownify
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
