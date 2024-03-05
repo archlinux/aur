@@ -23,13 +23,6 @@ else
 fi
 sha256sums=('0ef8d62791845635299d51f57075d40c3d6339d9c61b1e5a92752670b873e5b8')
 
-
-prepare() {
-  #cd "PrismLauncher-${pkgver}-${pkgrel}"
-  cd "PrismLauncher-${pkgver}"
-
-}
-
 build() {
   if [[ ${pkgrel} > 1 ]]; then
     cd "PrismLauncher-${pkgver}-${pkgrel}"
