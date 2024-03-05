@@ -1,14 +1,14 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=probe-rs-git
-pkgver=0.22.0.r23.gbf27a722
+pkgver=0.23.0.r14.g6ac76ef8
 pkgrel=1
 pkgdesc="A debugging toolset and library for debugging embedded ARM and RISC-V targets on a separate host"
 arch=(x86_64
     aarch64
     riscv64)
 url="https://github.com/probe-rs/probe-rs"
-license=('MIT' 'Apache')
+license=('MIT' 'Apache-2.0')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
