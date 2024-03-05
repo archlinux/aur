@@ -1,4 +1,4 @@
-pkgbase = python-yolox-git
+pkgbase = python-yolox
 	pkgdesc = YOLOX is an object detection method, an anchor-free version of YOLO, with a simpler design but better performance.
 	pkgver = 0.3.0
 	pkgrel = 3
@@ -24,7 +24,7 @@ pkgbase = python-yolox-git
 	source = git+https://github.com/Megvii-BaseDetection/YOLOX
 	sha256sums = SKIP
 
-pkgname = python-yolox-git
+pkgname = python-yolox
 	depends = python
 	depends = python-numpy
 	depends = python-opencv

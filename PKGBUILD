@@ -1,7 +1,7 @@
 # Maintainer: fanyujun <dlutfyj@outlook.com>
 # Contributor:
 
-pkgname="python-yolox-git"
+pkgname="python-yolox"
 pkgver=0.3.0
 pkgrel=3
 pkgdesc='YOLOX is an object detection method, an anchor-free version of YOLO, with a simpler design but better performance.'
