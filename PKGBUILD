@@ -2,18 +2,19 @@
 
 pkgname=python-muranopkgcheck
 pkgver=0.3.0
-pkgrel=6
+pkgrel=7
 pkgdesc='Murano package validator tool'
-arch=('any')
+arch=(any)
 url='https://docs.openstack.org/murano-pkg-check/'
-license=('Apache')
-depends=('python-pbr' 'python-yaml' 'python-yaql' 'python-six'
-         'python-stevedore' 'python-semantic-version' 'python-oslo-i18n')
-checkdepends=('python-subunit' 'python-oslotest' 'python-oslotest'
-              'python-testrepository' 'python-testscenarios' 'python-testtools'
-              'python-stestr' 'python-mock')
-source=("https://opendev.org/openstack/murano-pkg-check/archive/$pkgver.tar.gz")
-sha512sums=('efc83424137deb304559ef884eb6ab686369cd25718ae64c2eeb52d3d9f666ca8dee62414eea993120376fb49b4d348f14dc9c26c05353288a2330b592595710')
+license=(Apache)
+makedepends=(python-setuptools)
+depends=(python-pbr python-yaml python-yaql python-six
+         python-stevedore python-semantic-version python-oslo-i18n)
+checkdepends=(python-subunit python-oslotest python-oslotest
+              python-testrepository python-testscenarios python-testtools
+              python-stestr python-mock)
+source=("$pkgname-$pkgver.tar.gz::https://opendev.org/openstack/murano-pkg-check/archive/$pkgver.tar.gz")
+sha512sums=('1cc99cb6131d2c30f09405e443d41f577c217cd49bfef60f76882509f90711ddd75803e8e26b4a91392724f6cf6364d86b8aa38d03b0d04dcabb424c3ad5c098')
 
 export PBR_VERSION=$pkgver
 
@@ -33,5 +34,3 @@ package() {
   cd murano-pkg-check
   python setup.py install --root="$pkgdir" --optimize=1
 }
-
-# vim:set ts=2 sw=2 et:
