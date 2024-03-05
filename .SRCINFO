@@ -1,7 +1,7 @@
 pkgbase = nitrokey-app2
 	pkgdesc = Nitrokey management application for Nitrokey 3 devices
-	pkgver = 2.2.1
-	pkgrel = 3
+	pkgver = 2.2.2
+	pkgrel = 1
 	url = https://github.com/Nitrokey/nitrokey-app2
 	arch = any
 	license = Apache-2.0
@@ -13,7 +13,7 @@ pkgbase = nitrokey-app2
 	depends = qt6-svg
 	depends = python-pyudev
 	depends = hicolor-icon-theme
-	source = nitrokey-app2-2.2.1.tar.gz::https://github.com/Nitrokey/nitrokey-app2/archive/refs/tags/v2.2.1.tar.gz
-	sha256sums = da869c32357e297e19b9a2ef4c9d06b891d9ac1201be86f91064aa3c425fdd63
+	source = nitrokey-app2-2.2.2.tar.gz::https://github.com/Nitrokey/nitrokey-app2/archive/refs/tags/v2.2.2.tar.gz
+	sha256sums = c6ae2092e4eac2a1d6f6a9701058cc049ac9754d11c452dc34d4f95ef37a068a
 
 pkgname = nitrokey-app2
