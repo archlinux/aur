@@ -1,10 +1,10 @@
 pkgname=kwinft
-_pkgname=thesius-ship
+_pkgname=theseus-ship
 pkgver=6.0.0
 pkgrel=1
-pkgdesc='thesius-ship: Wayland and X11 Compositor for the KDE Plasma desktop formerly named kwinft'
+pkgdesc='theseus-ship: Wayland and X11 Compositor for the KDE Plasma desktop formerly named kwinft'
 arch=(x86_64 aarch64)
-url="https://github.com/winft/thesius-ship"
+url="https://github.com/winft/theseus-ship"
 license=(LGPL)
 depends=(breeze kscreenlocker libplasma python qt6-tools xcb-util-cursor wayland xorg-xwayland wlroots kdecoration 'como')
 makedepends=(extra-cmake-modules git kdoctools)

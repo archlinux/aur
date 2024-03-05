@@ -1,8 +1,8 @@
 pkgbase = kwinft
-	pkgdesc = thesius-ship: Wayland and X11 Compositor for the KDE Plasma desktop formerly named kwinft
+	pkgdesc = theseus-ship: Wayland and X11 Compositor for the KDE Plasma desktop formerly named kwinft
 	pkgver = 6.0.0
 	pkgrel = 1
-	url = https://github.com/winft/thesius-ship
+	url = https://github.com/winft/theseus-ship
 	install = kwinft.install
 	arch = x86_64
 	arch = aarch64
