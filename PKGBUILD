@@ -2,13 +2,14 @@
 _pkgbase="openrevolution"
 pkgname="$_pkgbase-git"
 pkgver=v2.8.1.cca0f4f
-pkgrel=1
-pkgdesc="C/C++ BRSTM and other format tools"
-arch=('x86_64')
+pkgrel=2
+pkgdesc="C/C++ BRSTM and other format tools - git version"
+arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/ic-scm/$_pkgbase"
-license=('GPL3')
+license=('GPL-3.0-only')
 makedepends=('git')
-optdepends=('ffmpeg')
+depends=('glibc' 'gcc-libs')
+optdepends=('ffmpeg: Audio manipulation with the --ffmpeg option')
 provides=($_pkgbase)
 conflicts=($_pkgbase)
 source=(
@@ -16,7 +17,7 @@ source=(
 	"00-skiprtbuild.patch"
 )
 sha256sums=('SKIP'
-           'SKIP'
+           'b24e06f8a0f7493d978a68d4fa21c1c54366fd559f8642fe9618d487965fa6ed'
 )
 
 pkgver() {
