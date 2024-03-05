@@ -10,7 +10,7 @@
 
 pkgver=26.6.10
 _gcc_patches=116-patchset-2
-pkgrel=3
+pkgrel=4
 _major_ver=${pkgver%%.*}
 pkgname="electron${_major_ver}"
 pkgdesc='Build cross platform desktop apps with web technologies'
@@ -49,6 +49,7 @@ makedepends=(clang
              python-pyparsing
              python-requests
              python-six
+             rust
              qt5-base
              wget
              yarn)
@@ -61,6 +62,7 @@ options=('!lto') # Electron adds its own flags for ThinLTO
 source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         "https://github.com/stha09/chromium-patches/releases/download/chromium-$_gcc_patches/chromium-$_gcc_patches.tar.xz"
         REVERT-disable-autoupgrading-debug-info.patch
+        compiler-rt-16.patch
         default_app-icon.patch
         electron-launcher.sh
         electron.desktop
@@ -217,6 +219,7 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
 sha256sums=('SKIP'
             '25ad7c1a5e0b7332f80ed15ccf07d7e871d8ffb4af64df7c8fef325a527859b0'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
+            '8a2649dcc6ff8d8f24ddbe40dc2a171824f681c6f33c39c4792b645b87c9dcab'
             'dd2d248831dd4944d385ebf008426e66efe61d6fdf66f8932c963a12167947b4'
             'b0ac3422a6ab04859b40d4d7c0fd5f703c893c9ec145c9894c468fbc0a4d457c'
             '4484200d90b76830b69eea3a471c103999a3ce86bb2c29e6c14c945bf4102bae'
@@ -459,6 +462,9 @@ prepare() {
   # Revert addition of compiler flag that needs newer clang
   patch -Rp1 -i ../REVERT-disable-autoupgrading-debug-info.patch
 
+  # Allow libclang_rt.builtins from compiler-rt 16 to be used
+  patch -Np1 -i ../compiler-rt-16.patch
+
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../patches/chromium-114-maldoca-include.patch
   patch -Np1 -i ../patches/chromium-114-ruy-include.patch
@@ -527,12 +533,32 @@ build() {
     'enable_hangout_services_extension=true'
     'enable_widevine=false'
     'enable_nacl=false'
-    'enable_rust=false'
+    'rust_sysroot_absolute="/usr"'
   )
 
   if [[ -n ${_system_libs[icu]+set} ]]; then
     _flags+=('icu_use_data_file=false')
   fi
+
+  local _clang_version=$(
+    clang --version | grep -m1 version | sed 's/.* \([0-9]\+\).*/\1/')
+
+  _flags+=(
+    "clang_version=\"$_clang_version\""
+  )
+
+  # Allow the use of nightly features with stable Rust compiler
+  # https://github.com/ungoogled-software/ungoogled-chromium/pull/2696#issuecomment-1918173198
+  export RUSTC_BOOTSTRAP=1
+
+  _flags+=(
+    "rustc_version=\"$(rustc --version)\""
+  )
+
+  # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
+  CFLAGS+='   -Wno-builtin-macro-redefined'
+  CXXFLAGS+=' -Wno-builtin-macro-redefined'
+  CPPFLAGS+=' -D__DATE__=  -D__TIME__=  -D__TIMESTAMP__='
 
   # Do not warn about unknown warning options
   CFLAGS+='   -Wno-unknown-warning-option'
