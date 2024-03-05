@@ -2,7 +2,7 @@
 
 pkgbase=xwm-git
 pkgname=xwm-git
-pkgver=1.0.0beta1.r30.g8c63746
+pkgver=1.0.0beta1.r32.ga5de73b
 pkgrel=1
 pkgdesc="XWM (X light Window Manager) is a light-weight window manager for the X11 Window System"
 arch=(
@@ -66,8 +66,6 @@ prepare()
 build() {
     cd "${srcdir}/${pkgname}"
 
-    autoupdate
-    sed -i 's/0.19/0.20/g' configure.ac
     ./autogen.sh
     ./configure \
         --enable-nls \
