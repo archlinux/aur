@@ -4,13 +4,13 @@
 _name=erd
 pkgname=erd-git
 pkgver=0.2.1.0.r18.gd3c8406
-pkgrel=6
+pkgrel=7
 pkgdesc='A utility for generating entity-relationship diagrams from plain-text descriptions - git version'
 arch=('x86_64')
 url="https://github.com/BurntSushi/$_name"
 license=('Unlicense')
 depends=('ghc-libs' 'haskell-gitrev' 'haskell-graphviz' 'haskell-raw-strings-qq' 'haskell-yaml')
-makedepends=('ghc' 'git')
+makedepends=('ghc' 'git' 'uusi')
 checkdepends=('haskell-tasty' 'haskell-tasty-hunit')
 provides=('erd')
 conflicts=('erd')
@@ -22,6 +22,13 @@ pkgver() {
   cd "$_name"
 
   git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$_name"
+
+  # allow bytestring 0.11
+  uusi -u bytestring
 }
 
 build() {
