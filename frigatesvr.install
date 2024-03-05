@@ -1,0 +1,7 @@
+post_install() {
+  chown openhab4: /usr/share/openhab4/addons/org.openhab.binding.mqtt.frigatesvr-4.*
+}
+
+post_upgrade() {
+  post_install
+}
