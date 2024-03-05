@@ -1,7 +1,7 @@
 # Maintainer: Zhou Qiankang <wszqkzqk@qq.com>
 
 pkgname=varallel
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A cross-platform and easy to use CLI tool to run commands in parallel"
 url="https://github.com/wszqkzqk/varallel"
