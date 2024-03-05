@@ -1,13 +1,13 @@
 pkgbase = dreampie
 	pkgdesc = A Python shell which is designed to be reliable and fun.
-	pkgver = 1.2.1
+	pkgver = 1.3.0.20220116
 	pkgrel = 1
 	url = https://github.com/noamraph/dreampie
 	arch = any
 	license = GPL
 	depends = pygtksourceview2
 	optdepends = python2-matplotlib: for interactive plotting
-	source = dreampie-1.2.1.tar.gz::https://github.com/noamraph/dreampie/tarball/1.2.1
-	md5sums = 6d745ce46624ebce91e2aac67ebbfbf1
+	source = dreampie-1.3.0.20220116.zip::https://github.com/noamraph/dreampie/archive/f615e9c63380d5987a820025fbb9dfe28ab96897.zip
+	md5sums = ff8223d17115811f05661716c71f95ca
 
 pkgname = dreampie
