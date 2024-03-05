@@ -4,7 +4,7 @@
 pkgname=headset-bin
 pkgver=4.2.1
 _electronversion=14
-pkgrel=6
+pkgrel=7
 pkgdesc="An Electron-based music player for the busy ones"
 arch=(x86_64)
 url="https://headsetapp.co/"
@@ -23,13 +23,13 @@ source=(
 )
 sha256sums=('f3582c22aef8b2081ab84ea0f2933acf4e4a4e6b1b7b8f4265af5a450103c0ca'
             '0fd4183b7556b9f1b93d974969bad60053ab01db10ed2b501d26ed6840766045'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
