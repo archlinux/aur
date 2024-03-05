@@ -1,6 +1,6 @@
 # Maintainer: Mio Nekoya <mio9 at tabbybox.art>
 pkgname=serve-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 epoch=
 pkgdesc="Quickly serve static folders, minus npx"
@@ -19,9 +19,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("serve-$pkgver-$pkgrel::https://github.com/tabbybox/serve/releases/download/v0.2.1/serve-linux-amd64")
+source=("serve-$pkgver-$pkgrel::https://github.com/tabbybox/serve/releases/download/v0.2.2/serve-linux-amd64")
 noextract=()
-sha256sums=("cabb61986f2499acb086416fa5a529fd513821f8c1b5c4927d06acee5ad6573c")
+sha256sums=("7afb3e7474ada923dc8bd5e941cdb56e233b5fd0ae16ceca37bb6dab9bd6d1d3")
 validpgpkeys=()
 
 #prepare() {

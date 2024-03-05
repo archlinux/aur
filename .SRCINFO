@@ -1,11 +1,11 @@
 pkgbase = serve-bin
 	pkgdesc = Quickly serve static folders, minus npx
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/tabbybox/serve
 	arch = x86_64
 	license = MIT
-	source = serve-0.2.1-1::https://github.com/tabbybox/serve/releases/download/v0.2.1/serve-linux-amd64
-	sha256sums = cabb61986f2499acb086416fa5a529fd513821f8c1b5c4927d06acee5ad6573c
+	source = serve-0.2.2-1::https://github.com/tabbybox/serve/releases/download/v0.2.2/serve-linux-amd64
+	sha256sums = 7afb3e7474ada923dc8bd5e941cdb56e233b5fd0ae16ceca37bb6dab9bd6d1d3
 
 pkgname = serve-bin
