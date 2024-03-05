@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Duru Can Celasun <can at dcc dot im>
 pkgname=pymdown-extensions
-pkgver=10.7
+pkgver=10.7.1
 pkgrel=1
 pkgdesc="Extensions for Python Markdown"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-build' 'python-hatchling' 'python-installer'
 optdepends=('python-pygments: syntax highlighting')
 checkdepends=('python-pygments' 'python-pytest-cov')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/facelessuser/pymdown-extensions/archive/$pkgver.tar.gz")
-sha256sums=('4a82c027e42934ca03ba6237e718c437c2940766df94f7ec1551160988a1bbfc')
+sha256sums=('065d6a7844b79d729a52e02717a79309b45158904b305c5fa350266e5256b59b')
 
 build() {
   cd "$pkgname-$pkgver"
