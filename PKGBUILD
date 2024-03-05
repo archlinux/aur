@@ -14,6 +14,8 @@ optdepends=('glfw: to use system GLFW libraries'
             'visualvm: Profiling support'
             'xorg-xrandr: for older minecraft versions'
             'java-runtime=8: for older minecraft versions')
+conflicts=('prismlauncher')
+provides=('prismlauncher')
 if [[ ${pkgrel} > 1 ]]; then
   source=("https://github.com/Octol1ttle/ElyPrismLauncher/releases/download/${pkgver}-${pkgrel}/PrismLauncher-${pkgver}-${pkgrel}.tar.gz")
 else
