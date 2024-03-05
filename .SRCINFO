@@ -1,7 +1,7 @@
 pkgbase = sddm-git
 	pkgdesc = The Simple Desktop Display Manager
 	pkgver = 0.21.0.14.gae072f9
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/sddm/sddm
 	arch = x86_64
 	license = GPL
@@ -34,6 +34,8 @@ pkgbase = sddm-git
 	backup = etc/pam.d/sddm-autologin
 	backup = etc/pam.d/sddm-greeter
 	source = git+https://github.com/sddm/sddm.git#branch=develop
+	source = 0001-Revert-cmake-remove-the-final-Arch-PAM-modules.patch
 	sha256sums = SKIP
+	sha256sums = 8939dabe3dd539ff44cf3e5740a1a4a518836ae147fbe54f163bd9f0b10ccc6e
 
 pkgname = sddm-git
