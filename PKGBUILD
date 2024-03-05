@@ -4,7 +4,7 @@
 
 pkgbase=zfec
 pkgname=python-zfec
-pkgver=1.5.7.3
+pkgver=1.5.7.4
 pkgrel=1
 pkgdesc="Fast erasure coding tool"
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/z/zfec/zfec-$pkgver.tar.gz")
-sha256sums=('9945344daae53087310b61bdd7ad8b83999351f721b72daaf0fb5aa131761a15')
+sha256sums=('1069857218f8babe4084439712720803a11fe91b14f20bc77a96a4e6f4e1111f')
 
 prepare() {
 	cd "zfec-$pkgver"
