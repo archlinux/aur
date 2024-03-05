@@ -1,4 +1,4 @@
-# Maintainer: Abdur-Rahman Mansoor <mansoorar at proton dot me>
+# Maintainer: Abdur-Rahman Mansoor <armansoor at posteo dot net>
 
 _pkgname='quikc'
 pkgname='quikc-git'
