@@ -4,7 +4,7 @@ _pkgname=ipc
 _appname=Interastral.Peace.Chat
 pkgver=1.0.0
 _electronversion=24
-pkgrel=6
+pkgrel=7
 pkgdesc="Interastral Peace Chat (HSR messaging app)"
 arch=('x86_64')
 url="https://github.com/niizam/ipc"
@@ -13,12 +13,9 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_appname}-linux-x64-${pkgver}.AppImage"
@@ -27,7 +24,7 @@ source=(
 )
 sha256sums=('4e190977093c308f8122a716e005814d72b28a832dce341c1026f52c6ec370f5'
             '4a0102513b658872c91f6e2a2d8244aaaab86c8686bc572c169b386d511c6975'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
