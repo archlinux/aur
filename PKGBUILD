@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur@engestrom.ch>
 
 pkgname=fex-emu
-pkgver=2402
+pkgver=2403
 pkgrel=1
 pkgdesc='Fast usermode x86 and x86-64 emulator for Arm64'
 url=https://fex-emu.com
@@ -24,8 +24,8 @@ source=("git+https://github.com/FEX-Emu/FEX#tag=FEX-$pkgver"
         "git+https://github.com/FEX-Emu/robin-map"
         "git+https://github.com/Sonicadvance1/tiny-json"
         "git+https://github.com/FEX-Emu/vixl"
-        "git+https://github.com/FEX-Emu/xbyak"
-        "git+https://github.com/FEX-Emu/xxhash"
+        "git+https://github.com/herumi/xbyak"
+        "git+https://github.com/Cyan4973/xxHash"
         )
 sha256sums=('SKIP'
             'SKIP'
