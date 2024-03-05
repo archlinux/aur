@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=%_title% (%_uuid%)
+Name=%_title%
 Comment=%pkgdesc%
 Type=Application
 TryExec=fceux
