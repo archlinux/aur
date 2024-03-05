@@ -3,7 +3,7 @@ pkgname=webkitty-bin
 _pkgname=WebKitty
 pkgver=3.2.1
 _electronversion=24
-pkgrel=5
+pkgrel=6
 pkgdesc="Local web development IDE"
 arch=("x86_64")
 url="https://dartfling.com/product?pid=3"
@@ -13,12 +13,9 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
@@ -27,7 +24,7 @@ source=(
 )
 sha256sums=('103f4ccb57d0e7685993b6cc1a47ead500f5eef0c63a7c501af36456e5d696f1'
             'c46ac74ef8cd13c7541f9de280f3d759319f70292fd32d4d170193041b06300b'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
