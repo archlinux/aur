@@ -1,12 +1,14 @@
 pkgbase = libctru-git
 	pkgdesc = Nintendo 3DS userland library. (git)
-	pkgver = v2.0.1.11.g5f13628
+	pkgver = v2.3.0.4.ga6a6548
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/devkitPro/libctru
 	arch = any
-	license = ZLIB
+	license = custom
 	makedepends = git
+	makedepends = devkit-env
+	makedepends = devkitARM
 	depends = devkitARM
 	provides = libctru
 	conflicts = libctru
