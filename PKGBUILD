@@ -3,20 +3,20 @@
 # Contributor: Corpswalker <corpswalker@gmail.com>
 _base=mamba
 pkgname=micro${_base}-bin
-pkgver=1.5.6
+pkgver=1.5.7
 pkgrel=1
 pkgdesc="Tiny version of mamba, the fast conda package installer"
-arch=('x86_64' 'aarch64')
+arch=(x86_64 aarch64)
 url="https://github.com/${_base}-org/${_base}"
-license=('custom:BSD-3-clause')
+license=(BSD-3-clause)
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.bz2::https://api.anaconda.org/download/conda-forge/${pkgname%-bin}/${pkgver}/linux-64/${pkgname%-bin}-${pkgver}-0.tar.bz2")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.bz2::https://api.anaconda.org/download/conda-forge/${pkgname%-bin}/${pkgver}/linux-aarch64/${pkgname%-bin}-${pkgver}-0.tar.bz2")
 options=(strip)
 depends=(glibc)
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-sha512sums_x86_64=('1bc48e3dd32cfe6075e619005b783743019b575715d133cdff5d815dba1e3ae8abdbe63e7d18b924ecfcbc0babb424e23b549e05dc7b2a93040414f4d3ae47bd')
-sha512sums_aarch64=('dc54e5eac14d7cd2dd48ca346e4a700bffd6be56c8fc1a84099425d08133d972a57b7fd8542fc9e14f0322b3c94a1dc5c15c606ba856e717d56bd23806ededef')
+sha512sums_x86_64=('6ab4c89595576d65356d18c6ea72974bbe9de8aafffbb832147566c06640868f8fe4159faa7a1d31cce49a8d1e43232e2b852f4361ca0b3b7c5d39e756468e48')
+sha512sums_aarch64=('2b2c23e92db651e6f1d52b638b8cbdbed745c96c01ddbc94aabfd139c261f5e5cae1db534b218dacd029655f364b0de084b31e8b7470e46d61ec92f19f4b6c24')
 
 check() {
   export PREFIX="${srcdir}"

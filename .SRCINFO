@@ -1,18 +1,18 @@
 pkgbase = micromamba-bin
 	pkgdesc = Tiny version of mamba, the fast conda package installer
-	pkgver = 1.5.6
+	pkgver = 1.5.7
 	pkgrel = 1
 	url = https://github.com/mamba-org/mamba
 	arch = x86_64
 	arch = aarch64
-	license = custom:BSD-3-clause
+	license = BSD-3-clause
 	depends = glibc
 	provides = micromamba
 	conflicts = micromamba
 	options = strip
-	source_x86_64 = micromamba-1.5.6-x86_64.tar.bz2::https://api.anaconda.org/download/conda-forge/micromamba/1.5.6/linux-64/micromamba-1.5.6-0.tar.bz2
-	sha512sums_x86_64 = 1bc48e3dd32cfe6075e619005b783743019b575715d133cdff5d815dba1e3ae8abdbe63e7d18b924ecfcbc0babb424e23b549e05dc7b2a93040414f4d3ae47bd
-	source_aarch64 = micromamba-1.5.6-aarch64.tar.bz2::https://api.anaconda.org/download/conda-forge/micromamba/1.5.6/linux-aarch64/micromamba-1.5.6-0.tar.bz2
-	sha512sums_aarch64 = dc54e5eac14d7cd2dd48ca346e4a700bffd6be56c8fc1a84099425d08133d972a57b7fd8542fc9e14f0322b3c94a1dc5c15c606ba856e717d56bd23806ededef
+	source_x86_64 = micromamba-1.5.7-x86_64.tar.bz2::https://api.anaconda.org/download/conda-forge/micromamba/1.5.7/linux-64/micromamba-1.5.7-0.tar.bz2
+	sha512sums_x86_64 = 6ab4c89595576d65356d18c6ea72974bbe9de8aafffbb832147566c06640868f8fe4159faa7a1d31cce49a8d1e43232e2b852f4361ca0b3b7c5d39e756468e48
+	source_aarch64 = micromamba-1.5.7-aarch64.tar.bz2::https://api.anaconda.org/download/conda-forge/micromamba/1.5.7/linux-aarch64/micromamba-1.5.7-0.tar.bz2
+	sha512sums_aarch64 = 2b2c23e92db651e6f1d52b638b8cbdbed745c96c01ddbc94aabfd139c261f5e5cae1db534b218dacd029655f364b0de084b31e8b7470e46d61ec92f19f4b6c24
 
 pkgname = micromamba-bin
