@@ -1,18 +1,19 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-futurist
-pkgver=2.4.1
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc='Code from the future, delivered to you in the now.'
-arch=('any')
+arch=(any)
 url='https://docs.openstack.org/futurist/'
-license=('Apache')
-depends=('python-pbr' 'python-six' 'python-monotonic' 'python-prettytable'
-         'python-wheel')
-checkdepends=('python-eventlet' 'python-oslotest' 'python-stestr'
-              'python-testrepository' 'python-testscenarios' 'python-testtools')
-source=("https://opendev.org/openstack/futurist/archive/$pkgver.tar.gz")
-sha512sums=('1af2ea994f82a1814b54a779ab42bbbf3f7ef9d5fa8cd723b8c20df3eba038e23e0e29a905ba4364b2332c9bdb997d6ec5331c10cdeacb29d498b2692a7033cd')
+license=(Apache)
+makedepends=(python-setuptools)
+depends=(python-pbr python-six python-monotonic python-prettytable
+         python-wheel)
+checkdepends=(python-eventlet python-oslotest python-stestr
+              python-testrepository python-testscenarios python-testtools)
+source=("$pkgname-$pkgver.tar.gz::https://opendev.org/openstack/futurist/archive/$pkgver.tar.gz")
+sha512sums=('b8781788fe329391788a0402fb24cf9c503d28496f2db2605effdce1cd1cbdb39b7f2f77c8312513b2da18ed4c008dad2eec37d1bdeb3658652f5fa6a1d59e84')
 
 export PBR_VERSION=$pkgver
 
@@ -30,5 +31,3 @@ package() {
   cd futurist
   python setup.py install --root="$pkgdir" --optimize=1
 }
-
-# vim:set ts=2 sw=2 et:
