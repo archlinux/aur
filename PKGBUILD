@@ -2,7 +2,7 @@
 
 pkgname="pass-it-on-cli"
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Pass-it-on-cli client"
 arch=("any")
 license=("MIT")
@@ -10,7 +10,7 @@ url="https://github.com/kwheelans/pass-it-on-cli"
 depends=("openssl")
 makedepends=("cargo")
 source=("https://github.com/kwheelans/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('786a02f742015903c6c6fd852552d272912f4740e15847618a86e217f71f5419d25e1031afee585313896444934eb04b903a685b1448b755d56f701afe9be2ce')
+b2sums=('c6861cd28b5bf0709316c9b71de834462bf440d09cad29856433aa9c9ed06ed4db5464feec6d53c1b64aa93a35cec72a95c0b45c32b667acf47aaf6fbd64f2b1')
 
 prepare() {
 	export RUSTUP_TOOLCHAIN=stable
