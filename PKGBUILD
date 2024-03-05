@@ -11,7 +11,7 @@ license=('AGPL-3.0-only')
 makedepends=('git' 'rust')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=('${_pkgname}::git+${url}'
+source=("${_pkgname}::git+${url}"
 		'intellectual.conf'
 		'intellectual.service')
 sha256sums=('SKIP'
