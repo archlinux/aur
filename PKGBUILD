@@ -1,5 +1,6 @@
 # Maintainer: Lea Seibert <mail@lea.moe>
 # Contributor: FayBoy <ahmadyasinfikri at gmail dot com>
+# Contributor: Ecmel Berk Canlıer <me@ecmelberk.com>
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: philefou <tuxication AT gmail DOT com>
 # Contributor: lindquist <tomas@famolsen.dk>
@@ -27,7 +28,7 @@ source=("https://github.com/glfw/glfw/archive/${pkgver}.tar.gz"
         "0003-Implement-glfwSetCursorPosWayland.patch"
         "0004-Fix-Window-size-on-unset-fullscreen.patch"
         "0005-Add-warning-about-being-an-unofficial-patch.patch"
-        "0006-Don-t-crash-on-calls-to-focus-or-icon.patch"
+        "0006-Don-t-crash-on-icon-calls.patch"
         "0007-Platform-Prefer-Wayland-over-X11.patch")
 sha512sums=('39ad7a4521267fbebc35d2ff0c389a56236ead5fa4bdff33db113bd302f70f5f2869ff4e6db1979512e1542813292dff5a482e94dfce231750f0746c301ae9ed'
             '00a6731d5e22162bcfb4e9672b3f819f5331b05c96fb61ba62b65a676c4e36af6460f66fe9974f575fc6f48ae277ee67a7b5db98342963e65018ccdc11ac1f71'
