@@ -1,0 +1,15 @@
+pkgbase = python-pylpsd
+	pkgdesc = Python implementation of the lpsd algorithm for computing power spectral density with logarithmically spaced points
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/bleykauf/py-lpsd/
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-setuptools
+	depends = python-numpy
+	depends = python-scipy
+	source = https://github.com/bleykauf/py-lpsd/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = cee064a2eac917b02493841327317214deeac38eece468f351323608b09b78a0
+
+pkgname = python-pylpsd
