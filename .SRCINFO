@@ -6,11 +6,12 @@ pkgbase = openrevolution-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	depends = rtaudio
 	optdepends = ffmpeg
 	provides = openrevolution
 	conflicts = openrevolution
 	source = openrevolution::git+https://github.com/ic-scm/openrevolution
-	md5sums = SKIP
+	source = 00-skiprtbuild.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = openrevolution-git

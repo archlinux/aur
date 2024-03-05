@@ -1,33 +1,33 @@
 # Maintainer: Kookies <kookies@tutamail.com>
-_pkgbase=openrevolution
-pkgname="${_pkgbase}-git"
+_pkgbase="openrevolution"
+pkgname="$_pkgbase-git"
 pkgver=v2.7.0.r16.g54281d7
 pkgrel=1
 pkgdesc="C/C++ BRSTM and other format tools"
 arch=('x86_64')
-url="https://github.com/ic-scm/openrevolution"
+url="https://github.com/ic-scm/$_pkgbase"
 license=('GPL3')
 makedepends=('git')
 optdepends=('ffmpeg')
 provides=($_pkgbase)
 conflicts=($_pkgbase)
 source=(
-	"$_pkgbase"::"git+https://github.com/ic-scm/openrevolution"
-	00-skiprtbuild.patch
+	"$_pkgbase"::"git+https://github.com/ic-scm/$_pkgbase"
+	"00-skiprtbuild.patch"
 )
-b2sums=('SKIP'
-	'676a1ee540097f44115ff39db572c13053fa4d04b8931f7db37cd09eb019810d7e329fc0ac74fd4efdfe0c714bc3cd2d667198ae13c58ceef152ac8891705fce'
+sha256sums=('SKIP'
+           'SKIP'
 )
-
-prepare() {
-  cd "$srcdir/$_pkgbase/"
-  patch --forward --strip=1 ../../00-skiprtbuild.patch
-}	
 
 pkgver() {
   cd "$srcdir/$_pkgbase/"
   git describe --tags | sed -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g'
 }
+
+prepare() {
+  cd "$srcdir/$_pkgbase/"
+  patch --forward --strip=1 --input=../00-skiprtbuild.patch
+}	
 
 build() {
   cd "$srcdir/$_pkgbase/"
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgbase"
+  cd "$srcdir/$_pkgbase/"
   install -m755 -D 'brstm_converter' "$pkgdir/usr/bin/"
   install -m755 -D 'brstm_decoder' "$pkgdir/usr/bin/"
   install -m755 -D 'brstm_encoder' "$pkgdir/usr/bin/"
