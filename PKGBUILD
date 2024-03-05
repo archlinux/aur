@@ -2,7 +2,7 @@
 
 pkgname=dxvk-mingw
 pkgver=2.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
 url="https://github.com/doitsujin/dxvk"
@@ -38,31 +38,24 @@ prepare() {
     local -A flags
     for opt in "${split[@]}"; do flags["${opt%%=*}"]="${opt##*=}"; done
     local march="${flags["-march"]:-nocona}"
-    local mtune="${flags["-mtune"]:-core-avx2}"
+    local mtune="generic" #"${flags["-mtune"]:-core-avx2}"
 
-    export CFLAGS="-O2 -march=$march -mtune=$mtune -pipe"
-    export CXXFLAGS="-O2 -march=$march -mtune=$mtune -pipe"
-    export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
+    CFLAGS="-O3 -march=$march -mtune=$mtune -pipe"
+    CXXFLAGS="-O3 -march=$march -mtune=$mtune -pipe"
+    LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
     # These flags are taken from Proton
     CFLAGS+=" -mfpmath=sse -fwrapv -fno-strict-aliasing"
     CXXFLAGS+=" -mfpmath=sse -fwrapv -fno-strict-aliasing -std=c++17"
     LDFLAGS+=" -Wl,--file-alignment,4096"
 
-    # If using -march= with a CPU that supports supports AVX, launching a 32bit
-    # d3d9 game can cause an Unhandled exception. The cause seems to be the
-    # combination of AVX instructions and tree vectorization (implied by O3),
-    # all tested archictures from sandybridge to haswell are affected.
-    # Disabling AVX (and AVX2 as a side-effect).
-    # Since Wine 5.16 AVX is supported. Testing showed 32bit applications
-    # crashing with AVX regardless, but 64bit applications worked just fine.
-    # So disable AVX only for the 32bit binaries and AVX2 for the 64bit.
-    # AVX2 seems to degrade performance. So disregard the above.
-    # Relevant Wine issues
-    # https://bugs.winehq.org/show_bug.cgi?id=45289
-    # https://bugs.winehq.org/show_bug.cgi?id=43516
-    CFLAGS+=" -mno-avx2 -mno-avx"
-    CXXFLAGS+=" -mno-avx2 -mno-avx"
+    # AVX is "hard" disabled for 32bit in any case.
+    # AVX/AVX2 for 64bit is disabled below.
+    # Seems unnecessery for 64bit if -mtune=generic is used
+    #CFLAGS+=" -mno-avx2 -mno-avx"
+    #CXXFLAGS+=" -mno-avx2 -mno-avx"
+
+    export CFLAGS CXXFLAGS LDFLAGS
 
     local cross_ldflags="$LDFLAGS"
 
@@ -87,6 +80,7 @@ build() {
         --prefix "/usr/share/dxvk/x64" \
         --bindir "" --libdir "" \
         --buildtype "plain" \
+        --force-fallback-for=libdisplay-info \
         --strip
     ninja -C "build/x64" -v
 
@@ -95,6 +89,7 @@ build() {
         --prefix "/usr/share/dxvk/x32" \
         --bindir "" --libdir "" \
         --buildtype "plain" \
+        --force-fallback-for=libdisplay-info \
         --strip
     ninja -C "build/x32" -v
 }
