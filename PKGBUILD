@@ -1,4 +1,4 @@
-# Maintainer: Abdur-Rahman Mansoor <mansoorar at proton dot me>
+# Maintainer: Abdur-Rahman Mansoor <armansoor at posteo dot net>
 # Contributor: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 pkgname=inetsim
 pkgver=1.3.2
