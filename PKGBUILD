@@ -1,5 +1,6 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
-# Maintainer: Bruno Pagani <archange@archlinux.org>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: David Runge <dvzrv@archlinux.org>
+# Contributor: Bruno Pagani <archange@archlinux.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Florian Pritz <bluewind@xinu.at>
 # Contributor: Asa Marco <marcoasa90[at]gmail[.]com>
