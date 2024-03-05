@@ -1,7 +1,7 @@
 pkgbase = geant4-full
 	pkgdesc = A simulation toolkit for particle physics interactions - includes all the optional libraries
-	pkgver = 11.2.0
-	pkgrel = 4
+	pkgver = 11.2.1
+	pkgrel = 1
 	url = http://geant4.cern.ch/
 	install = geant4-full.install
 	arch = x86_64
@@ -38,11 +38,9 @@ pkgbase = geant4-full
 	conflicts = geant4-realsurfacedata
 	conflicts = geant4-saiddata
 	options = !emptydirs
-	source = http://geant4-data.web.cern.ch/releases/geant4-v11.2.0.tar.gz
+	source = http://geant4-data.web.cern.ch/releases/geant4-v11.2.1.tar.gz
 	source = geant4-full.install
-	source = SoQt.patch
-	sha256sums = 46ad7fab3c5cb4bd0bdd77dd6d3e2283184819235bcbc01b2d117d81b35596a6
+	sha256sums = 835db6543d5cb2e801675958965be96877f66d6907bb521954b598b785deae5e
 	sha256sums = 312ed6a25f3fbfb3832b01ef3958df0b387b59d142fdf5db10ccf8bb112348e3
-	sha256sums = 3b5a899436e0f0a614a17604166a0946bf2e206ef66e1161522337a5be7a8d08
 
 pkgname = geant4-full

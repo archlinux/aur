@@ -1,8 +1,8 @@
 # Maintainer: Filippo Falezza <filippo dot falezza at outlook dot it>
 
 pkgname='geant4-full'
-pkgver=11.2.0
-pkgrel=4
+pkgver=11.2.1
+pkgrel=1
 pkgdesc="A simulation toolkit for particle physics interactions - includes all the optional libraries"
 depends=(
   'cmake>=3.16'
@@ -48,19 +48,19 @@ options=('!emptydirs')
 source=(
   "http://geant4-data.web.cern.ch/releases/geant4-v${pkgver}.tar.gz"
   'geant4-full.install'
-  'SoQt.patch'
+#  'SoQt.patch'
 )
 sha256sums=(
-  "46ad7fab3c5cb4bd0bdd77dd6d3e2283184819235bcbc01b2d117d81b35596a6"
+  "835db6543d5cb2e801675958965be96877f66d6907bb521954b598b785deae5e"
   "312ed6a25f3fbfb3832b01ef3958df0b387b59d142fdf5db10ccf8bb112348e3"
-  "3b5a899436e0f0a614a17604166a0946bf2e206ef66e1161522337a5be7a8d08"
+#  "1cf456d2d02afb52378ad6882b1901329ae6437989ecef4ebe1333d116efc3e2"
 )
 install="geant4-full.install"
 
 prepare()
 {
   cd "${srcdir}"
-  patch -Np0 -i "${srcdir}"/SoQt.patch
+  #patch -Np0 -i "${srcdir}"/SoQt.patch
 
 }
 
