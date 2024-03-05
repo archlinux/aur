@@ -47,8 +47,6 @@ prepare() {
 	git -c protocol.file.allow=always submodule update
 	patch -Np1 < ../use-system-libs.patch
 	rm -r core/deps/libretro-common/include/libchdr
-	# https://gitlab.archlinux.org/archlinux/packaging/packages/glslang/-/merge_requests/2
-	sed -i '/glslang REQUIRED/i find_package(SPIRV-Tools-opt)' CMakeLists.txt
 }
 
 build() {
