@@ -4,13 +4,13 @@ pkgname='python-pynfft'
 _pkgname='pyNFFT'
 pkgver=1.4.2
 _pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python wrapper to the NFFT library."
 arch=('x86_64')
 url="https://github.com/pyNFFT/pyNFFT"
 license=('GPL3')
 checkdepends=('python-nose')
-depends=(nfft python)
+depends=(nfft python python-numpy)
 makedepends=('cython')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$_pkgver.tar.gz"
     new-api.patch
