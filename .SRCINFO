@@ -1,7 +1,7 @@
 pkgbase = lua-mobdebug-git
 	pkgdesc = Remote debugger for Lua
-	pkgver = 0.80.r2.g2efd76b
-	pkgrel = 2
+	pkgver = 0.80.r7.g4cf97f9
+	pkgrel = 1
 	url = https://github.com/pkulchenko/MobDebug
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = lua-mobdebug-git
 	makedepends = luarocks
 	makedepends = lua
 	makedepends = lua53
-	makedepends = lua52
 	source = git+https://github.com/pkulchenko/MobDebug.git
 	sha256sums = SKIP
 
@@ -23,8 +22,3 @@ pkgname = lua53-mobdebug-git
 	depends = lua53
 	depends = lua53-socket
 	provides = lua53-mobdebug
-
-pkgname = lua52-mobdebug-git
-	depends = lua52
-	depends = lua52-socket
-	provides = lua52-mobdebug
