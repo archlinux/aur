@@ -5,7 +5,7 @@ _tag=ddaf9d2d3e0b75c4ba3c39d1060cbc30190990b7
 _plasmoidName="a2n.archupdate.plasmoid"
 _souceName="archupdate"
 
-pkgname="kdeplasma-arch-update-notifier-git"
+pkgname="kdeplasma5-arch-update-notifier-git"
 # pkgver is updated automatically by the pkgver step
 pkgver=4.0.1
 pkgrel=1
