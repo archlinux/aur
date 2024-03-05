@@ -3,7 +3,7 @@ pkgname=kahla-bin
 _pkgname=Kahla
 pkgver=4.5.0
 _electronversion=8
-pkgrel=10
+pkgrel=11
 pkgdesc="A cross-platform business messaging app."
 arch=("x86_64")
 url="https://www.kahla.app/"
@@ -13,7 +13,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'hicolor-icon-theme'
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
@@ -22,13 +22,13 @@ source=(
 )
 sha256sums=('937672471cd111e8136d819db3e59707d97356c02585b88fca84beab46c8209b'
             '2f5e2140f19b9216cb3fecd147f935586c806c54b2edcdf5521f535237a1c3f7'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g;s|Utility|Network;Utility|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
