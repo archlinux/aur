@@ -1,13 +1,13 @@
 pkgbase = min-browser-bin
 	pkgdesc = A fast, minimal browser that protects your privacy
 	pkgver = 1.31.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://minbrowser.org/
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = Apache-2.0
-	depends = electron29
+	depends = electron29-bin
 	depends = nodejs
 	provides = min-browser=1.31.2
 	conflicts = min-browser

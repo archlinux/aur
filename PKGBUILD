@@ -5,7 +5,7 @@ pkgname="${_appname}-browser-bin"
 _pkgname=Min
 pkgver=1.31.2
 _electronversion=29
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast, minimal browser that protects your privacy"
 arch=(
     'aarch64'
@@ -18,7 +18,7 @@ license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'nodejs'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-arm64.deb")
