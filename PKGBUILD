@@ -3,7 +3,7 @@
 
 pkgname=sunshine-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.21.0
+pkgver=0.22.0
 _gittag=v$pkgver
 pkgrel=1
 pkgdesc="A self-hosted game stream host for Moonlight."
@@ -38,8 +38,8 @@ optdepends=('cuda: NvFBC capture support'
             'libdrm')
 conflicts=('sunshine')
 provides=('sunshine')
-b2sums=('ee223327df1847d40d634a8c239a5aaab74fca9db9722bb9f8931164fc5a0ddfca2612c4b721d18f759eeb8ee943bc53247f6106c96ae1b4ce51e79d0f853bd6'
-        '6d424d6a3402b1696bf6124224b7caaeb7e444b16d4855dba16536d6b24dfe0f34bfd1a6f10f217e91004368512864820ae4c686a675f7822786b3de3c4fc43d')
+b2sums=('854bbb391f93202efacf40de24c921dc934b3cf82427abc21fb39c0fa6f0ec2a37e2950bb506b91c593a89d0e118d4198378497dedff79f9728b7ebae98cab0e'
+        '3832939c0bb5634dfc8c1cfc32ab13e48db8760f1adee4ba832f5de98d4eb4b630ba297af7e1a1f6657defc9ef5f95efa69434de98fdf265d9f02c7b1cc6a759')
 
 prepare() {
     sed -i "s/@PROJECT_NAME@/$_pkgname/g" "$_pkgname-$pkgver.desktop"
