@@ -1,6 +1,6 @@
 pkgbase = kdeplasma-arch-update-notifier-git
 	pkgdesc = KDE plasmoid that lets you know when arch updates are required. Takes all repo's into account (core, extra, aur, ...).
-	pkgver = 5.0.3
+	pkgver = 5.0.4
 	pkgrel = 2
 	url = https://github.com/bouteillerAlan/archupdate
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = kdeplasma-arch-update-notifier-git
 	depends = yay
 	depends = kdialog
 	optdepends = paru: paru support
-	source = git+https://github.com/bouteillerAlan/archupdate.git#tag=ea08eb36a730bb8a80947c2b97bf6a6bac0092a1?signed
+	source = git+https://github.com/bouteillerAlan/archupdate.git#tag=706c895ba20b0eaf05470af023a18a1d42445f78?signed
 	validpgpkeys = 6A2ECC8A396F8A943A109A1E0F11C2A6BF79111E
 	sha256sums = SKIP
 
