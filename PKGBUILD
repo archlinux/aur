@@ -8,7 +8,7 @@ arch=('any')
 license=('EFL-2.0')
 url='https://sopel.chat'
 depends=('python-setuptools' 'sqlite' 'python-xmltodict' 'python-pytz' 'python-praw'
-         'python-geoip2' 'python-requests' 'python-dnspython' 'python-sqlalchemy1.3')
+         'python-geoip2' 'python-requests' 'python-dnspython' 'python-sqlalchemy')
 makedepends=('python-build' 'python-installer' 'python-wheel'
              'python-sphinx' 'python-sphinxcontrib-autoprogram')
 checkdepends=('python-pytest' 'python-pytest-vcr' 'python-requests-mock')
@@ -20,7 +20,7 @@ sha512sums=('55fd81f7d16bf3a46c216a0ae68b72df3cc2f4d1d282786f87eadadf51d19838f92
 
 prepare() {
   cd sopel-$pkgver
-  sed -i 's/<6/<8/;s/==0.12/>=0.12/' {dev-,}requirements.txt
+  sed -i 's/<6/<8/;s/==0.12/>=0.12/;s/<1.4/<2.0/' {dev-,}requirements.txt
   patch -Np1 -i ${srcdir}/open-U-deprecated.patch
 }
 
