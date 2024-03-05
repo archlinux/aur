@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=logger
-_pkgver=0.2.2
+_pkgver=0.3.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=1
 pkgdesc="A Lightweight, Modern and Flexible Logging Utility"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -35,8 +35,8 @@ optdepends=(
   r-txtq
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('379ee674e7ca9aa384e01a338aaf1322')
-b2sums=('5d1a1c4144df2de5583c67f2ef3070d1c465a45a15ae952d75bee876d84b0b957f34b06d0e8b6e43d162a4fdbf922479484805393a67667d763d88b54e40d366')
+md5sums=('ffd57ef28ef487d204e18c0b72ed45ae')
+b2sums=('bfb96d62c7b6160b7680607bf4778e7a7332022f08f82480b291c6274a3ed6769a3701b829d4349269054fef3fd677ed38a7a274ab4e860793cabb3f9d432e17')
 
 build() {
   mkdir build
