@@ -1,7 +1,7 @@
-pkgbase = python-yolox
+pkgbase = python-yolox-git
 	pkgdesc = YOLOX is an object detection method, an anchor-free version of YOLO, with a simpler design but better performance.
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Megvii-BaseDetection/YOLOX
 	arch = any
 	license = MIT
@@ -21,10 +21,10 @@ pkgbase = python-yolox
 	optdepends = tensorboard
 	optdepends = python-onnx
 	optdepends = python-onnxsim
-	source = YOLOX-main.zip::https://github.com/Megvii-BaseDetection/YOLOX/archive/refs/heads/main.zip
-	sha256sums = c3575f0c242b104a650931ff91d893e9835983aa549ae51cd338280ff701a1b4
+	source = git+https://github.com/Megvii-BaseDetection/YOLOX
+	sha256sums = SKIP
 
-pkgname = python-yolox
+pkgname = python-yolox-git
 	depends = python
 	depends = python-numpy
 	depends = python-opencv
