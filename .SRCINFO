@@ -1,17 +1,19 @@
 pkgbase = wl-gears-git
 	pkgdesc = Gears for Wayland compositors
 	pkgver = r7.b7ecdeb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~soreau/wl-gears
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = wayland-protocols
+	depends = glibc
 	depends = libepoxy
 	depends = libglvnd
 	depends = wayland
 	provides = wl-gears
 	conflicts = wl-gears
+	options = !debug
 	source = wl-gears::git+https://git.sr.ht/~soreau/wl-gears
 	b2sums = SKIP
 
