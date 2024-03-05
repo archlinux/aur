@@ -4,7 +4,7 @@
 _pkgname=yazi
 pkgname=yazi-git
 pkgver=0.2.3.r30.g0cb572a
-pkgrel=2
+pkgrel=3
 pkgdesc="Blazing fast terminal file manager written in Rust, based on async I/O."
 url="https://github.com/sxyazi/yazi"
 arch=("x86_64")
@@ -19,7 +19,7 @@ optdepends=(
     'fzf: for directory jumping'
     'poppler: for PDF preview'
     'zoxide: for directory jumping')
-makedepends=(cargo git)
+makedepends=(cargo git imagemagick)
 options=(!lto)
 provides=(yazi)
 conflicts=(yazi)
