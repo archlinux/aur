@@ -3,20 +3,18 @@
 
 pkgname=kvantum-qt6-git
 _gitname=Kvantum
-pkgver=1.0.10.r50.gfc4ffbfe
+pkgver=1.0.10.r51.gf6bfa8fd
 pkgrel=1
 pkgdesc="SVG-based Qt6 theme engine plus a config tool and extra themes"
 arch=('x86_64')
 url="https://github.com/tsujan/Kvantum"
-license=('GPL3')
-groups=('qt')
-depends=('qt6-svg' 'qt5-x11extras' 'hicolor-icon-theme' 'kwindowsystem')
-makedepends=('cmake' 'qt5-tools' 'git')
-optdepends=('adapta-aurorae-theme-git: Matching kwin decorations for KvAdapta and KvAdaptaDark'
-            'breeze-enhanced-git: Made to match various themes of the Kvantum widget style')
+license=('GPL-3.0-or-later')
+depends=('qt6-svg' 'hicolor-icon-theme' 'kwindowsystem')
+makedepends=('cmake' 'qt6-tools' 'git')
+optdepends=('breeze-enhanced-git: Made to match various themes of the Kvantum widget style')
 conflicts=('kvantum' 'kvantum-qt5-git' 'kvantum-git')
 replaces=('kvantum-qt5' 'kvantum' 'kvantum-git')
-provides=('kvantum-qt5' 'kvantum' 'kvantum-git')
+provides=('kvantum')
 source=("git+${url}.git")
 md5sums=('SKIP')
 
