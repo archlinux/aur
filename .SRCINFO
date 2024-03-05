@@ -1,0 +1,20 @@
+pkgbase = omgmounter-git
+	pkgdesc = CDEmu CD/DVD image mounter frontend
+	pkgver = r13.86e3081
+	pkgrel = 1
+	url = https://github.com/qtilities/omgmounter
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = git
+	depends = libstatusnotifieritem-qt6
+	depends = qt6-base
+	provides = omgmounter
+	conflicts = omgmounter
+	source = git+https://github.com/qtilities/omgmounter.git
+	sha512sums = SKIP
+
+pkgname = omgmounter-git
