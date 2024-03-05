@@ -3,8 +3,8 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-kelvie-fw-git
-_tag=v6.7.5
-pkgver=6.7.5.r11.02ce437afc26
+_tag=v6.7.8
+pkgver=6.7.8.r11.1e5039dbb333.slim
 pkgrel=1
 pkgdesc="Linux kernel for Kelvie's AMD Framework 13 laptop"
 url="https://www.kernel.org"
