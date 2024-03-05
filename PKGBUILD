@@ -62,5 +62,3 @@ package() {
 	libtool --finish "${pkgdir}/usr/lib/${pkgname::-4}"
 	make DESTDIR=${pkgdir} install
 }
-sha256sums=('SKIP'
-            'fd547a306e80db6fa298691dc866057554295cc29080e3454903b0526c7ed1c0')
