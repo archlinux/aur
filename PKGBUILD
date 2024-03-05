@@ -3,14 +3,14 @@
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 
 _pkgname=spelling
-_pkgver=2.2.1
+_pkgver=2.3.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Tools for Spell Checking in R"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   r-commonmark
   r-hunspell
@@ -21,12 +21,12 @@ optdepends=(
   r-pdftools
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('47128c93e6cace1644edddfbb127de7b')
-sha256sums=('4fd4afcb5caa010630372c2dd32c34e8fc02ae385425c1f4b7dae697f8ab256f')
+md5sums=('375bbd00c2d9980ee78ffb834175d139')
+b2sums=('750815d3fd1d60d4340ec4c3e4567b4e6162af1fd0d1fe0e6483e054de3cd138a87f092152be00750cd04ddb6458cc6e4a430bfe14aaee992d09ac6854becb47')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
