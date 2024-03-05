@@ -3,9 +3,10 @@
 
 pkgname=uppaal
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Verify timed automata models and learn strategies."
 arch=('any')
+options=(debug !strip)
 url="https://uppaal.org/"
 license=('custom')
 depends=('jre17-openjdk' 'xdg-utils')
@@ -32,9 +33,9 @@ Encoding=UTF-8
 Version=1.0
 Type=Application
 GenericName=Model Checker ${pkgver}
-Name=UPPAAL 5.0.0
+Name=UPPAAL ${pkgver}
 Comment=Verify timed automata models and learn strategies
-Exec=${prefix}/usr/bin/uppaal %u
+Exec=${prefix}/usr/bin/${pkgname} %u
 Icon=uppaal-icon
 Categories=Application;Science;Math;Education;Development;IDE
 Terminal=false
