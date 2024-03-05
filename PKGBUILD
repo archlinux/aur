@@ -1,6 +1,6 @@
 _pkgname=gamescope
 pkgname=${_pkgname}-sk
-pkgver=3.14.1
+pkgver=3.14.1.r27
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
@@ -35,6 +35,7 @@ depends=(
     sdl2
     vulkan-icd-loader
     wayland
+    xcb-util-renderutil
     xcb-util-wm
     xcb-util-errors
     xorg-server-xwayland
