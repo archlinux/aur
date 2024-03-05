@@ -1,0 +1,18 @@
+pkgbase = osqp-git
+	pkgdesc = The Operator Splitting QP Solver
+	pkgver = v1.0.0.beta1.r9.g1704870
+	pkgrel = 1
+	url = https://github.com/osqp/osqp
+	arch = i686
+	arch = x86_64
+	license = apache
+	makedepends = cmake
+	makedepends = python-scipy
+	makedepends = git
+	provides = osqp
+	conflicts = osqp
+	options = staticlibs
+	source = osqp-git::git+https://github.com/osqp/osqp.git
+	sha256sums = SKIP
+
+pkgname = osqp-git
