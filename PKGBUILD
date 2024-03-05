@@ -1,8 +1,8 @@
 # Maintainer: Sergey Shatunov <me@aur.rocks>
 
 pkgname=dracut-ukify
-pkgver=6
-pkgrel=5
+pkgver=7
+pkgrel=1
 pkgdesc="Integration layer for dracut and systemd's ukify tool for Arch Linux"
 url="https://aur.archlinux.org/packages/dracut-ukify"
 arch=(any)
@@ -16,11 +16,11 @@ source=('10-dracut-ukify-pre-install.hook'
         '60-dracut-ukify-remove.hook'
         'dracut-ukify'
         'dracut-ukify.conf')
-sha256sums=('e9592f4f738e8ac70044db1e3f0c4839bc07f37662d5dbc221230cf1617a6b4d'
-            '08225b2c3f5e2a734561b5fa9a3e84060dfffd85b2898adb0fff0ce3b068b4d0'
+sha256sums=('7be65bccc0e7b861961cc8902a120d8c0bf5cfce8ba83e2ade8aa772c4b4417f'
+            '9bae8040c5efcb8b1d9306b479664f5d18315fd6ae2c8c196dccce43562bd8f8'
             '341cd01546d840e7401f7bec868a78e2f6ca12563e93d993a07bc51efe674ed0'
-            '63757e1f635c967c3c4f4ff3b4edbc473be5f911bf6c5abd0f30a7e593ce2488'
-            '2d49e6e4232639ed40caa5fdc2dc0fbc65ae64da81abb102ec51a77c2cf423b1')
+            'b3017f8e45818ac07375c73d14febdad950afefa9432b1b020ef05f75c810062'
+            '931704a244590b64e9640a20e1c92b869c9c2574f770b3abcd76b1a801bb2792')
 backup=(etc/dracut-ukify.conf)
 provides=(dracut-hook)
 conflicts=(dracut-hook-uefi dracut-uefi-hook)

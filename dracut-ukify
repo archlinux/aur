@@ -23,6 +23,7 @@ fi
 declare -a ukify_global_args=()
 declare -A ukify_variants=()
 declare -A ukify_install_path=()
+declare -A ukify_cmdline=()
 
 [ -f "/etc/dracut-ukify.conf" ] && source /etc/dracut-ukify.conf
 
@@ -241,6 +242,20 @@ function gen_image() {
     ukify_args+=(--uname "$version")
     ukify_args+=(--os-release "@$os_release")
     ukify_args+=(--output "$image")
+
+    if [ ! -z "${ukify_cmdline["$variant"]}" ]; then
+      for i in "${!ukify_args[@]}"; do
+         [[ "${ukify_args[$i]}" = "--cmdline" ]] && break
+      done
+      if [ "${ukify_args[$i]}" == "--cmdline" ]; then
+        # Global args contains cmdline, override it
+        ukify_args[$((i + 1))]="${ukify_cmdline["$variant"]}"
+      else
+        # There is no global cmdline, append it
+        ukify_args+=("--cmdline" "${ukify_cmdline["$variant"]}")
+      fi
+    fi
+
     if ukify_obsolete_syntax; then
       ukify_args+=("$vmlinuz" "$initrd")
     else
