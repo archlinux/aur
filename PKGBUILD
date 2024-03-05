@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=copybook-bin
 pkgver=1.0.1096
-pkgrel=4
+pkgrel=5
 pkgdesc='生成拼音、汉字、汉字字帖'
 arch=(x86_64)
 url="https://github.com/xxNull-lsk/Copybook"
@@ -21,7 +21,7 @@ build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${pkgname%-bin}/data/flutter_assets/res/app.png|${pkgname%-bin}|g;s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin} %U|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }

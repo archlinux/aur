@@ -1,7 +1,7 @@
 pkgbase = copybook-bin
 	pkgdesc = 生成拼音、汉字、汉字字帖
 	pkgver = 1.0.1096
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/xxNull-lsk/Copybook
 	arch = x86_64
 	license = BSD-3-Clause
