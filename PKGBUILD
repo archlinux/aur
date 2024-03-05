@@ -1,4 +1,5 @@
-# Maintainer: ParaSait <parasait at proton dot me>
+# Maintainer: ksj podhorsky.ksj@gmail.com 
+# ParaSait <parasait at proton dot me>
 # Former maintainer: Richard Neumann <mail at richard dash neumann period de>
 # Former maintainer: Tobias Hübner <dasNeutrum@gmx.de>
 
