@@ -1,6 +1,6 @@
 pkgbase = python-gvar
 	pkgdesc = Python library for working with correlated Gaussian variables
-	pkgver = 12.1
+	pkgver = 13.0.1
 	pkgrel = 1
 	url = https://github.com/gplepage/gvar
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = python-gvar
 	license = LGPL
 	makedepends = cython
 	makedepends = cython2
-	source = https://github.com/gplepage/gvar/archive/v12.1.tar.gz
-	sha256sums = cb0fc700df13d4d880c43cc8347be0dd6b20fd7b90af33347680771d9cc6143f
+	source = https://github.com/gplepage/gvar/archive/v13.0.1.tar.gz
+	sha256sums = 4e602efac16d9f58ba1e67f6943ce1656e71005182f6218b62292c751f5e7024
 
 pkgname = python-gvar
 	depends = python-numpy
