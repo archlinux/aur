@@ -1,7 +1,7 @@
 # Maintainer: Bouteiller a2n Alan <a2n.dev@pm.me>
 
 # git rev-parse tagName
-_tag=cf5b87e3bd43f5371bb388334249e1be5f236f6d
+_tag=a34d9b5dc300d4ef12cb4f53a6fe2653726d116c
 _plasmoidName="a2n.archupdate.plasmoid"
 _souceName="archupdate"
 
