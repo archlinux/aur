@@ -1,0 +1,25 @@
+pkgbase = libstatusnotifieritem-qt-git
+	pkgdesc = Qt implementation of the StatusNotifierItem specification
+	pkgver = r12.3a4db53
+	pkgrel = 1
+	url = https://github.com/qtilities/libstatusnotifieritem-qt
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = git
+	source = git+ssh://git@github.com/qtilities/libstatusnotifieritem-qt.git
+	sha512sums = SKIP
+
+pkgname = libstatusnotifieritem-qt5-git
+	depends = qt5-base
+	depends = libdbusmenu-qtilities5
+	provides = libstatusnotifieritem-qt5
+	conflicts = libstatusnotifieritem-qt5
+
+pkgname = libstatusnotifieritem-qt6-git
+	depends = qt6-base
+	depends = libdbusmenu-qtilities6
+	provides = libstatusnotifieritem-qt6
+	conflicts = libstatusnotifieritem-qt6
