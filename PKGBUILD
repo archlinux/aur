@@ -63,6 +63,7 @@ package_opencl-caps-viewer-x11() {
 
   cd OpenCLCapsViewer/build-x11
   make INSTALL_ROOT="$pkgdir/" install
+
   install -m644 ../Resources/icon.png \
     "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/openclCapsViewer.png
 }
@@ -75,6 +76,7 @@ package_opencl-caps-viewer-wayland() {
 
   cd OpenCLCapsViewer/build-wayland
   make INSTALL_ROOT="$pkgdir/" install
+
   install -m644 ../Resources/icon.png \
     "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/openclCapsViewer.png
 }
