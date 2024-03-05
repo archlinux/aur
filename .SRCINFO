@@ -1,6 +1,6 @@
 pkgbase = ashuffle
 	pkgdesc = Automatic library-wide shuffle for mpd.
-	pkgver = 3.14.3
+	pkgver = 3.14.7
 	pkgrel = 1
 	url = https://github.com/joshkunz/ashuffle
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ashuffle
 	depends = libmpdclient
 	depends = yaml-cpp
 	depends = abseil-cpp>=20211102.0
-	source = https://github.com/joshkunz/ashuffle/archive/v3.14.3/ashuffle-3.14.3.tar.gz
-	sha256sums = 2c53fa0469eab4e107acedc758679c50bd0485a661a3259be4624b7db127404a
+	source = https://github.com/joshkunz/ashuffle/archive/v3.14.7/ashuffle-3.14.7.tar.gz
+	sha256sums = 3df7942ee0abd691e354a9253c8540e94795e3ab8d6cd08525d1a6641e31635a
 
 pkgname = ashuffle
