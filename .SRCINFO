@@ -1,7 +1,7 @@
 pkgbase = apotris-git
 	pkgdesc = A block stacking puzzle game for the Game Boy Advance (Linux port)
 	pkgver = 3.4.6.r648.g7cb1d73
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apotris.com/
 	arch = aarch64
 	arch = armv7h
@@ -33,7 +33,7 @@ pkgbase = apotris-git
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = 6a5b652537461135895820391beb20bb2e64e312f08ddbd9ea8d313047118693556df26e89019e81b26c6650388597eebbc8ae4cf824739aadb41121d728ed80
-	b2sums = 3af6d3c3b5434720fa7b4adce00f3e3ede6bfaa3824dd86372bacbfd101f84941ff30d969c6c40fa125d38870c4ed47aa0f1b9ce9701114d07290017338d3d4a
+	b2sums = 435a83ad6efe373701eca5b1fed7cb83f99b82ce303e1fe330300abddb25bf166751800c28c62af303cded5d3a95944637f3978405fe13e044a7f3870a2753d4
 	b2sums = 3ef703d45b06cac59768c0e36ed09fe8238aef03d8a51893707aaf91c0efeb5518276e4985a0efc0bcec2370ce4abe1c7494a87327723779f0689550ebd9a8f6
 	b2sums = 1c92929a34ddf8c85572c3f0ef02ba7310cb85e5b6f0f3f852aa069d340b11b25608d388a94df15ec5558243105b632fe48ce090f18a4d5e924473e1436bb7e7
 

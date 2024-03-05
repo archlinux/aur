@@ -1,23 +1,28 @@
+diff --git a/assets/meson.build b/assets/meson.build
+index cbcfb10..6b6c4a7 100644
+--- a/assets/meson.build
++++ b/assets/meson.build
+@@ -54,8 +54,5 @@ fs = import('fs')
+ 
+ foreach file : audio_files
+     filename = fs.name(file)
+-    audio_target = configure_file(
+-        input : file,
+-        output: filename,
+-        copy : true)
++    install_data(filename, install_dir : 'share/apotris', install_mode : 'rw-r--r--')
+ endforeach
 diff --git a/meson.build b/meson.build
-index 2c7318a..8341fca 100644
+index 2c7318a..71d85ae 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -137,7 +137,7 @@ if host_machine.system() != 'gba'
-     #############################
- 
-     # Bring in required audio assets to copy to build output
--    subdir('assets')
-+    install_subdir('assets', install_dir : get_option('datadir') / 'apotris')
- 
-     # libmodplug must be built as a dynamic/shared library
-     cmake_options = cmake.subproject_options()
 @@ -215,7 +215,8 @@ if host_machine.system() != 'gba'
          dependencies : dependencies,
          link_args : link_args,
          gui_app : true,
 -        install_rpath: 'lib'
 +        install : true,
-+        install_dir : get_option('libdir') / 'apotris'
++        install_dir : 'lib/apotris'
      )
  else
      ##########################################
