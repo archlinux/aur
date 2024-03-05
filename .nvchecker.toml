@@ -1,0 +1,5 @@
+[openshot]
+source = "github"
+github = "OpenShot/openshot-qt"
+prefix = "v"
+use_max_tag = true
