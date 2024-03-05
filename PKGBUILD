@@ -1,8 +1,8 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=nbdkit
-pkgver=1.36.2
-pkgrel=3
+pkgver=1.36.4
+pkgrel=1
 pkgdesc="NBD server toolkit"
 arch=('x86_64')
 url="https://gitlab.com/nbdkit/nbdkit/"
@@ -34,10 +34,14 @@ _dldir="${pkgver%.*}"
 source=(
 		"http://download.libguestfs.org/nbdkit/${_dldir}-stable/nbdkit-${pkgver}.tar.gz"
 		"http://download.libguestfs.org/nbdkit/${_dldir}-stable/nbdkit-${pkgver}.tar.gz.sig"
+		broken-file.patch
 )
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # https://github.com/file/file/pull/137
+  patch -p1 < "${srcdir}/broken-file.patch"
 }
 
 build() {
@@ -65,5 +69,6 @@ check() {
   make check
 }
 
-sha256sums=('6a9935f315d62e483b74c7aa28b8005e7fc903fba78bc9a5a41ec6dcce18ea62'
-            'SKIP')
+sha256sums=('70720bc67a2404d4e50ca75afe49e07352686327f428f4c7706a9b55229b0e8e'
+            'SKIP'
+            '7150a8b5849ef48c7e60a93cd461ee658df02a4184c182df305b2cd16371473e')
