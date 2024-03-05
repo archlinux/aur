@@ -13,6 +13,7 @@ pkgbase = whisper.cpp-cuda
 	depends = gcc-libs
 	depends = cuda
 	provides = whisper.cpp
+	conflicts = whisper.cpp
 	source = whisper.cpp-1.5.4.tar.gz::https://github.com/ggerganov/whisper.cpp/archive/v1.5.4.tar.gz
 	sha256sums = 06eed84de310fdf5408527e41e863ac3b80b8603576ba0521177464b1b341a3a
 

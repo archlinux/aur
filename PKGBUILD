@@ -11,6 +11,7 @@ url="https://github.com/ggerganov/whisper.cpp"
 license=("MIT")
 depends=('glibc' 'gcc-libs' 'cuda')
 makedepends=('cmake' 'git')
+conflicts=("${_pkgname}")
 provides=('whisper.cpp')
 
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
