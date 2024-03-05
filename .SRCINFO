@@ -1,12 +1,10 @@
 pkgbase = glew1.13
 	pkgdesc = A cross-platform C/C++ extension loading library
 	pkgver = 1.13.0
-	pkgrel = 3
-	url = http://glew.sourceforge.net
+	pkgrel = 4
+	url = https://glew.sourceforge.net
 	arch = x86_64
-	license = BSD
-	license = MIT
-	license = GPL
+	license = BSD-3-Clause
 	depends = libgl
 	provides = glew-1.13.0=1.13.0
 	source = glew-1.13.0.tar.gz::https://downloads.sourceforge.net/glew/glew-1.13.0.tgz

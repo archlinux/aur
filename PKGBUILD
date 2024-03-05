@@ -4,10 +4,10 @@
 _pkgname="glew1.13"
 pkgname="$_pkgname"
 pkgver=1.13.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A cross-platform C/C++ extension loading library'
-url='http://glew.sourceforge.net'
-license=('BSD' 'MIT' 'GPL')
+url='https://glew.sourceforge.net'
+license=('BSD-3-Clause')
 arch=('x86_64')
 
 depends=(
@@ -18,7 +18,7 @@ depends=(
   #libx11
 )
 
-provides=('glew-1.13.0=1.13.0')
+provides=("glew-1.13.0=$pkgver")
 
 _pkgsrc="glew-$pkgver"
 _pkgext="tar.gz"
@@ -51,5 +51,5 @@ package() {
   done
 
   # license
-  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
