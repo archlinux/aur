@@ -1,30 +1,42 @@
 # Maintainer: Eric Spreen <erispre@gmail.com>
 pkgname=gnunet-gtk-git
-pkgdesc="A framework for secure peer-to-peer networking (GTK 3 interfaces)"
-pkgver=0.11.6.r1.gbd150825
+pkgver=0.19.2.1.r12.2aadd292
 pkgrel=1
+pkgdesc="A framework for secure peer-to-peer networking (GTK 3 interfaces)"
 arch=('i686' 'x86_64')
 url="http://gnunet.org"
 license=('GPL3')
-conflicts=('gnunet-gtk')
-provides=('gnunet-gtk')
+groups=()
 depends=('gnunet-git' 'gtk3' 'libglade' 'glade')
-source=('git+https://gnunet.org/git/gnunet-gtk.git')
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+replaces=()
+backup=()
+options=()
+install=
+source=('git+https://git.gnunet.org/gnunet-gtk.git')
+noextract=()
 md5sums=('SKIP')
 
 pkgver() {
-    cd gnunet-gtk
-    git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+    cd "$srcdir/${pkgname%-git}"
+    printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
+prepare() {
+    cd "$srcdir/${pkgname%-git}"
+    ./bootstrap
 }
 
 build() {
-    cd "${srcdir}/gnunet-gtk"
-    ./bootstrap
+    cd "$srcdir/${pkgname%-git}"
+
     ./configure --prefix=/usr --with-gnunet=/usr
     make
 }
 
 package() {
     cd "${srcdir}/gnunet-gtk"
-    make DESTDIR="${pkgdir}/" install
+    make DESTDIR="${pkgdir}" install
 }
