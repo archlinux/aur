@@ -1,8 +1,8 @@
 # Maintainer: Andrej Halveland (SnipeX_) <andrej.halv@gmail.com>
 
 pkgname=zotify
-pkgver=0.6.12
-_commit=8cfd27407e8bacc50d43c8983a97443b29a2b7cf # 0.6.12
+pkgver=0.6.13
+_commit=5da27d32a1f522e80a3129c61f939b1934a0824a # 0.6.13
 pkgrel=1
 pkgdesc="A fast and customizable music and podcast downloader."
 arch=('x86_64')
