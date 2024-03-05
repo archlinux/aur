@@ -1,0 +1,170 @@
+post_install() {
+
+	PACK_NAME="com.qq.weixin.mejituu" #软件包名
+	BOTTLE_NAME="Mejituu-WeChat" #容器名
+	ACTIVEX_NAME=""
+	MAKE_AUTOSTART="" #若需要开机自启，则填写1
+
+	make_autostart()
+	{
+	    for username in $(ls /home)
+	    do
+	        echo "/home/${username}"
+	        if [ -d "/home/${username}/.config/autostart" ]
+	        then
+	            cp "/opt/apps/${PACK_NAME}/entries/applications/${PACK_NAME}.desktop" "/home/${username}/.config/autostart/"
+	            sed -i "s#%u#\"autostart\"#" "/home/${username}/.config/autostart/${PACK_NAME}.desktop"
+	        fi
+	    done
+	}
+
+	function zenity()
+	{
+	    local user=$(who | awk '{print $1}' | head -n 1)
+	    local uid=$(id -u $user)
+	    sudo -u $user DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$uid/bus zenity "$@"
+	}
+
+	isInstallDesktop="no"
+	if [ -d "/host/opt/apps/cn.flamescion.bookworm-compatibility-mode" ] || [ -f "/host/etc/default/grub" ]
+	then
+	    echo "检测到ACE兼容环境"
+	    isInstallDesktop=`zenity --entry --title="微信（懵仙兔兔） 安装工具" --text="检测到ACE兼容环境，是否需要强制安装desktop到用户目录（默认：no，安装请输入：yes）\n注：一般适用于Arch Linux和Fedora，除非你遇到不能正常安装desktop\n\t或者你需要使用微信（懵仙兔兔） 监视器就需要安装！！！\n不需要请默认！！！" --entry-text "no" --width=400`
+	    timeZone=$(cat /etc/timezone)
+	    if [ "${timeZone}" != "Asia/Shanghai" ]
+	    then
+	        isReviseTimeZone=`zenity --entry --title="微信（懵仙兔兔） 安装工具" --text="检测到ACE兼容环境中的时区不是中国时区，是否需要修改为中国时区（默认：yes，不需要请输入：no）\n不需要请默认！！！" --entry-text "yes" --width=400`
+	        if [ "${isReviseTimeZone}" = "yes" ]
+	        then
+	            ln -snf "/usr/share/zoneinfo/Asia/Shanghai" "/etc/localtime" && echo "Asia/Shanghai" >| "/etc/timezone"
+	        fi
+	    fi
+	    if [ "${isInstallDesktop}" = "yes" ]
+	    then
+	        zenity --info --title="微信（懵仙兔兔） 安装工具" --text="因你选择需要强制安装desktop到用户目录，请彻底安装完成后在系统内（不是ACE里）执行下列操作才能显示\nupdate-desktop-database ~/.local/share/applications\n或者重启" --width=400 &
+	    fi
+	fi
+
+	if [ ! -d "/usr/lib/p7zip" ] && [ -d "/usr/lib/7zip" ]
+	then
+	    echo "检测到p7zip过度到7zip"
+	    if [ ! -d "/opt/p7zip-legacy" ]
+	    then
+	        zenity --warning --title="微信（懵仙兔兔） 安装工具" --text="警告！！！\n检测到软件包 p7zip 过度到 7zip\n将会导致解压异常以至于运行异常！！！\n请回退 p7zip p7zip-full 软件包版本！！！" --width=400 &
+	    fi
+	fi
+
+	for username in $(ls /home)
+	do
+	    echo "/home/${username}"
+	    if [ -d "/home/${username}/.deepinwine/${BOTTLE_NAME}" ]
+	    then
+	        rm -rf "/home/${username}/.deepinwine/${BOTTLE_NAME}"
+	    fi
+	    if [ "${isInstallDesktop}" = "yes" ]
+	    then
+	        cat "/opt/apps/com.qq.weixin.mejituu/entries/applications/com.qq.weixin.mejituu.desktop" | sed "s#^Exec=\(.*\)#Exec=bookworm-run \1#" >| "/home/${username}/.local/share/applications/com.qq.weixin.mejituu.desktop"
+	        chown ${username}:${username} "/home/${username}/.local/share/applications/com.qq.weixin.mejituu.desktop"
+	        cat "/opt/apps/com.qq.weixin.mejituu/entries/applications/com.qq.weixin.mejituu-fix.desktop" | sed "s#^Exec=\(.*\)#Exec=bookworm-run \1#" >| "/home/${username}/.local/share/applications/com.qq.weixin.mejituu-fix.desktop"
+	        chown ${username}:${username} "/home/${username}/.local/share/applications/com.qq.weixin.mejituu-fix.desktop"
+	        cat "/opt/apps/com.qq.weixin.mejituu/entries/applications/com.qq.weixin.mejituu-monitor.desktop" | sed "s#^Exec=\"\(.*\)#Exec=\"/opt/apps/cn.flamescion.bookworm-compatibility-mode/files/bookworm-env\1#" >| "/home/${username}/.local/share/applications/com.qq.weixin.mejituu-monitor.desktop"
+	        chown ${username}:${username} "/home/${username}/.local/share/applications/com.qq.weixin.mejituu-monitor.desktop"
+	    fi
+	done
+
+	if [ -n "${MAKE_AUTOSTART}" ]
+	then
+	    make_autostart
+	fi
+
+	if [ -n "${ACTIVEX_NAME}" ]
+	then
+	    if [ ! -d "/usr/lib/mozilla/plugins" ]
+	    then
+	        mkdir -p "/usr/lib/mozilla/plugins"
+	    fi
+	    cp "/usr/share/pipelight/libpipelight.so" "/usr/lib/mozilla/plugins/libpipelight-${ACTIVEX_NAME}.so"
+	fi
+
+	if hash update-desktop-database 2>/dev/null
+	then
+	    update-desktop-database
+	fi
+
+	# Make sure the script returns 0
+	true
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+
+	BOTTLE_NAME="Mejituu-WeChat" #在引号中填写容器名
+	PACK_NAME="com.qq.weixin.mejituu"   #在引号中填写软件包名
+	ACTIVEX_NAME="" #activex相关，若未使用，可不设置
+	MAKE_AUTOSTART="" #如果先前设置了开机自启，则在此处填写1
+
+	### 以下为功能段，若只用于打包则以下内容可不看，只填写上方即可
+
+	if [ "$1" = "remove" ] || [ "$1" = "purge" ]
+	then
+	    echo "清理卸载残留"
+
+	    make_autostart()
+	    {
+	        for username in $(ls /home)
+	        do
+	            echo "/home/${username}"
+	            if [ -d "/home/${username}/.config/autostart" ]
+	            then
+	                rm "/home/${username}/.config/autostart/${PACK_NAME}.desktop"
+	            fi
+	        done
+	    }
+
+	    if [ -n "${MAKE_AUTOSTART}" ]
+	    then
+	        make_autostart
+	    fi
+
+	    if [ -n "${ACTIVEX_NAME}" ]
+	    then
+	        rm "/usr/lib/mozilla/plugins/libpipelight-${ACTIVEX_NAME}.so"
+	    fi
+
+	    if [ -z "${BOTTLE_NAME}" ]
+	    then
+	        echo "W: 没有指定容器，跳过清理容器。请手动前往 ~/.deepinwine/ 下删除"
+	    fi
+
+	    if [ -e "/opt/deepinwine/tools/spark_kill.sh" ]
+	    then
+	        /opt/deepinwine/tools/spark_kill.sh "${BOTTLE_NAME}"
+	        ###这里注意，如果没写BOTTLE_NAME,会把QQ杀了
+	    fi
+
+	    for username in $(ls /home)
+	    do
+	        echo "/home/${username}"
+	        if [ -d "/home/${username}/.deepinwine/${BOTTLE_NAME}" ]
+	        then
+	            rm -rf "/home/${username}/.deepinwine/${BOTTLE_NAME}"
+	        fi
+	        rm -f "/home/${username}/.local/share/applications/com.qq.weixin.mejituu.desktop" "/home/${username}/.local/share/applications/com.qq.weixin.mejituu-fix.desktop" "/home/${username}/.local/share/applications/com.qq.weixin.mejituu-monitor.desktop"
+	    done
+	else
+	    for username in $(ls /home)
+	    do
+	        echo "/home/${username}"
+	        if [ -d "/home/${username}/.deepinwine/${BOTTLE_NAME}/drive_c/users/${username}/AppData/Roaming/Tencent/WeChat/XPlugin/Plugins/RadiumWMPF" ]
+	        then
+	            rm -rf "/home/${username}/.deepinwine/${BOTTLE_NAME}/drive_c/users/${username}/AppData/Roaming/Tencent/WeChat/XPlugin/Plugins/RadiumWMPF"
+	        fi
+	        rm -f "/home/${username}/.local/share/applications/com.qq.weixin.mejituu.desktop" "/home/${username}/.local/share/applications/com.qq.weixin.mejituu-fix.desktop" "/home/${username}/.local/share/applications/com.qq.weixin.mejituu-monitor.desktop"
+	    done
+	    echo "非卸载，跳过清理"
+	fi
+}
+

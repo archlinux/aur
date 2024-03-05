@@ -1,0 +1,21 @@
+pkgbase = com.qq.weixin.mejituu
+	pkgdesc = Tencent WeChat Client from Spark Store (Mejituu version). Wine 微信客户端 （懵仙兔兔）
+	pkgver = 3.9.9.43_plus_Mejituu_2024022102
+	pkgrel = 1
+	url = https://weixin.qq.com/
+	install = wechat.install
+	arch = x86_64
+	license = unknown
+	depends = libjpeg6-turbo
+	depends = xdotool
+	depends = zenity
+	depends = rsync
+	depends = mejituu-wine8
+	depends = spark-dwine-helper
+	depends = xdg-utils
+	optdepends = wqy-microhei: Recommended font
+	optdepends = wqy-zenhei: Recommended font
+	source = https://cdn.d.store.deepinos.org.cn/store/chat/com.qq.weixin.mejituu/com.qq.weixin.mejituu_3.9.9.43_plus_Mejituu-2024022102_all.deb
+	b2sums = 047dd3d1ac7ed05e604e20de1b84510bc6729d485c88878f0d02fa9b3248f9231d3cc60bb9849c135cbc5e3c7c4c55480ca565c8bfed325d2e2c81a0122d483f
+
+pkgname = com.qq.weixin.mejituu
