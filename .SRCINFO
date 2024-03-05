@@ -1,6 +1,6 @@
 pkgbase = python-troveclient
 	pkgdesc = Client library for OpenStack DBaaS API
-	pkgver = 8.2.1
+	pkgver = 8.4.0
 	pkgrel = 1
 	url = https://docs.openstack.org/python-troveclient/
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = python-troveclient
 	checkdepends = python-testtools
 	checkdepends = python-mock
 	checkdepends = python-httplib2
+	makedepends = python-setuptools
 	depends = python-pbr
 	depends = python-prettytable
 	depends = python-requests
@@ -25,9 +26,9 @@ pkgbase = python-troveclient
 	depends = python-swiftclient
 	depends = python-mistralclient
 	depends = python-osc-lib
-	source = https://opendev.org/openstack/python-troveclient/archive/8.2.1.tar.gz
+	source = python-troveclient-8.4.0.tar.gz::https://opendev.org/openstack/python-troveclient/archive/8.4.0.tar.gz
 	source = trove.bash_completion
-	sha512sums = 2c3bd042d8158c0e0133da61d2528604dacbad5b1a7615bb17f1e6a173681e83633883d611afff65a5937dbd79eeaba52801ee1d3b98e856bbefe60445c89a0e
+	sha512sums = bd8b1f08433dee53b32a1d09df7f429cc0f268f9648c69ffcbf867e30d7cd39122cf266d4dd0e83cee7d6615c4b25f235e814f6ea4f348e384d29aa48978aef7
 	sha512sums = 53a8603e7add596e847fcfcea9b454168956af581fb48794ab0ac08f6dce1d8c71ef47682e8b974bf184fc19e8473d362c75e9d70cd99d761ca7e113ea1f0ee9
 
 pkgname = python-troveclient

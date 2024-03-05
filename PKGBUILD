@@ -1,21 +1,22 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-troveclient
-pkgver=8.2.1
+pkgver=8.4.0
 pkgrel=1
 pkgdesc='Client library for OpenStack DBaaS API'
-arch=('any')
+arch=(any)
 url="https://docs.openstack.org/$pkgname/"
-license=('Apache')
-depends=('python-pbr' 'python-prettytable' 'python-requests' 'python-oslo-i18n'
-         'python-oslo-utils' 'python-babel' 'python-keystoneauth1' 'python-six'
-         'python-swiftclient' 'python-mistralclient' 'python-osc-lib')
-checkdepends=('python-fixtures' 'python-oslotest' 'python-openstackclient'
-              'python-requests-mock' 'python-stestr' 'python-testscenarios'
-              'python-testtools' 'python-mock' 'python-httplib2')
-source=("https://opendev.org/openstack/$pkgname/archive/$pkgver.tar.gz"
+license=(Apache)
+makedepends=(python-setuptools)
+depends=(python-pbr python-prettytable python-requests python-oslo-i18n
+         python-oslo-utils python-babel python-keystoneauth1 python-six
+         python-swiftclient python-mistralclient python-osc-lib)
+checkdepends=(python-fixtures python-oslotest python-openstackclient
+              python-requests-mock python-stestr python-testscenarios
+              python-testtools python-mock python-httplib2)
+source=("$pkgname-$pkgver.tar.gz::https://opendev.org/openstack/$pkgname/archive/$pkgver.tar.gz"
         'trove.bash_completion')
-sha512sums=('2c3bd042d8158c0e0133da61d2528604dacbad5b1a7615bb17f1e6a173681e83633883d611afff65a5937dbd79eeaba52801ee1d3b98e856bbefe60445c89a0e'
+sha512sums=('bd8b1f08433dee53b32a1d09df7f429cc0f268f9648c69ffcbf867e30d7cd39122cf266d4dd0e83cee7d6615c4b25f235e814f6ea4f348e384d29aa48978aef7'
             '53a8603e7add596e847fcfcea9b454168956af581fb48794ab0ac08f6dce1d8c71ef47682e8b974bf184fc19e8473d362c75e9d70cd99d761ca7e113ea1f0ee9')
 
 export PBR_VERSION=$pkgver
@@ -41,5 +42,3 @@ package() {
   python setup.py install --root="$pkgdir" --optimize=1
   install -D --mode 644 $srcdir/trove.bash_completion $pkgdir/usr/share/bash-completion/completions/trove
 }
-
-# vim:set ts=2 sw=2 et:
