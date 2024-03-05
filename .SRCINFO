@@ -1,0 +1,16 @@
+pkgbase = osmosis-bin
+	pkgdesc = Command line Java application for processing OSM data.
+	pkgver = 0.49.2
+	pkgrel = 1
+	url = http://wiki.openstreetmap.org/wiki/Osmosis
+	arch = any
+	license = LicenseRef-Public-Domain
+	depends = java-runtime
+	provides = osmosis=0.49.2
+	conflicts = osmosis
+	source = osmosis-0.49.2.zip::https://github.com/openstreetmap/osmosis/releases/download/0.49.2/osmosis-0.49.2.zip
+	source = osmosis.sh
+	sha256sums = 6950f1dfdbe4337ad193b0501309351426c403fab770061c9ddca9a28aefc26d
+	sha256sums = 1166f979471cad4033ededda7167d52df8d70ee3eed01a43b971b452637683ce
+
+pkgname = osmosis-bin
