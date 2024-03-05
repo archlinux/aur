@@ -1,39 +1,51 @@
-# Maintainer:  Florian Lindner <florian.lindner@xgm.de>
+# Maintainer: Gerasimos Chourdakis <chourdak at in dot tum dot de>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Florian Lindner <florian.lindner@xgm.de>
 
 pkgname=precice
-pkgver=2.5.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A Coupling Library for Partitioned Multi-Physics Simulations on Massively Parallel Systems"
-arch=('x86_64')
-url="https://www.precice.org"
-license=('LGPL3')
-depends=('boost' 'libxml2' 'openmpi' 'petsc' 'python-numpy')
-conflicts=('petsc-complex')
-makedepends=('cmake' 'eigen')
-optdepends=()
-provides=('precice')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/precice/precice/archive/v${pkgver}.tar.gz")
-sha256sums=('76ec6ee0d1a66f6f3d3d2d11f03cfc5aa7ef4d9e5deb9b7a4b4455ec7f796c00')
+arch=(x86_64)
+url="https://${pkgname}.org"
+license=(LGPL-3.0-or-later)
+depends=(boost libxml2 openmpi petsc python-numpy)
+conflicts=(petsc-complex)
+makedepends=(cmake eigen gcc-fortran)
+optdepends=('man-db: manual pages for precice-tools'
+  'git: for Git Revision Info support')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz)
+sha512sums=('dc1229de994854200e4868120ae28547d9d7acce152780f5d7fb210f3866323233015e46478e5c83f44080996a82198eeedfb95e4ee62d08f51e57fdca60cc31')
 
 build() {
-    cd "${pkgname}-${pkgver}"
-    cmake . \
-          -DCMAKE_BUILD_TYPE=None \
-          -DCMAKE_INSTALL_PREFIX=/usr \
-          -DBUILD_SHARED_LIBS=ON \
-          -DPRECICE_MPICommunication=ON \
-          -DPRECICE_PETScMapping=ON \
-          -DPRECICE_PythonActions=ON \
-          -Wno-dev
-    make
+  cmake \
+    -S ${pkgname}-${pkgver} \
+    -B build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_CXX_STANDARD=17 \
+    -DBUILD_SHARED_LIBS=ON \
+    -DPRECICE_FEATURE_MPI_COMMUNICATION=ON \
+    -DPRECICE_FEATURE_PETSC_MAPPING=ON \
+    -DPRECICE_FEATURE_PYTHON_ACTIONS=ON \
+    -DPRECICE_CONFIGURE_PACKAGE_GENERATION=ON \
+    -DPRECICE_FEATURE_GINKGO_MAPPING=OFF \
+    -DPRECICE_BINDINGS_C=ON \
+    -DPRECICE_BINDINGS_FORTRAN=ON \
+    -DPRECICE_BUILD_TOOLS=ON \
+    -Wno-dev
+
+  cmake --build build
 }
 
 # check() {
-#     cd "${pkgname}-${pkgver}"
-#     make test
+#   ctest --test-dir build
 # }
 
 package() {
-    cd "${pkgname}-${pkgver}"
-    make DESTDIR="${pkgdir}/" install
+  DESTDIR="${pkgdir}" cmake --build build --target install
+  install -Dm 644 ${pkgname}-${pkgver}/LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}
+  install -Dm 644 ${pkgname}-${pkgver}/docs/man/man1/${pkgname}-tools.1 -t ${pkgdir}/usr/share/man/man1
+  cd "${pkgdir}"
+  rm -r usr/share/lintian
 }
