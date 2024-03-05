@@ -4,10 +4,10 @@
 _pkgname="paintstorm"
 pkgname="$_pkgname"
 pkgver=2.50
-pkgrel=0
+pkgrel=1
 pkgdesc="Professional software for digital painting"
-url="http://www.paintstormstudio.com"
-license=('Commercial')
+url="https://www.paintstormstudio.com"
+license=('LicenseRef-Paintstorm')
 arch=('x86_64')
 
 makedepends=(
@@ -36,8 +36,8 @@ prepare() {
   sh "$_filename" --noexec
 
   # delete junk .* files
-  find "${srcdir:?}/PaintstormInstall/paintstorm" -type f -name '.*' -delete
-  find "${srcdir:?}/PaintstormInstall/paintstorm" -type f -iname '~*' -delete
+  find "$srcdir/PaintstormInstall/paintstorm" -type f -name '.*' -delete
+  find "$srcdir/PaintstormInstall/paintstorm" -type f -iname '~*' -delete
 
   # privacy policy
   curl --no-progress-meter \
@@ -71,20 +71,19 @@ package() {
     'libcurl-gnutls'
 
     # AUR
-    #'glew-1.13.0'
     'glew1.13'
   )
 
   # move files
-  install -dm755 "${pkgdir:?}/usr"/{bin,share}
-  mv PaintstormInstall/paintstorm "${pkgdir:?}/usr/share/"
+  install -dm755 "$pkgdir/usr"/{bin,share}
+  mv PaintstormInstall/paintstorm "$pkgdir/usr/share/"
 
-  install -Dm755 "PaintstormInstall/paintstorm.desktop" -t "${pkgdir:?}/usr/share/applications/"
+  install -Dm755 "PaintstormInstall/paintstorm.desktop" -t "$pkgdir/usr/share/applications/"
 
-  ln -s "/usr/share/paintstorm/Paintstorm" "${pkgdir:?}/usr/bin/paintstorm"
+  ln -s "/usr/share/paintstorm/Paintstorm" "$pkgdir/usr/bin/paintstorm"
 
   # prevent crash
-  install -dm755 "${pkgdir:?}/usr/share/fonts"/{opentype,truetype}
+  install -dm755 "$pkgdir/usr/share/fonts"/{opentype,truetype}
 
   # license/eula
   install -Dm644 "$_privacy_policy.txt" -t "$pkgdir/usr/share/licenses/$pkgname"
