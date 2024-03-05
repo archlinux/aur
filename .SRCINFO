@@ -1,0 +1,16 @@
+pkgbase = python-nose-exclude
+	pkgdesc = Exclude specific directories from nosetests runs
+	pkgver = 0.5.0
+	pkgrel = 10
+	url = https://github.com/kgrandis/nose-exclude
+	arch = any
+	license = LGPL
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-nose
+	source = python-nose-exclude-0.5.0.tar.gz::https://github.com/kgrandis/nose-exclude/archive/0.5.0.tar.gz
+	sha512sums = 0d8a21687831c825524c0cbb2da5b2195482558e2d2b0088944ccdf2d74787353f350ebbece8c4ce80f576426767ecb670afccbaf9f850e8476e1d2260bcc381
+
+pkgname = python-nose-exclude
