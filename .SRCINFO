@@ -1,6 +1,6 @@
 pkgbase = mozc-with-jp-dict
 	pkgver = 2.29.5374.102
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/fcitx/mozc
 	arch = x86_64
 	license = Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND NAIST-2003 AND Unicode-3.0
@@ -18,7 +18,7 @@ pkgbase = mozc-with-jp-dict
 	makedepends = ibus
 	makedepends = rustup
 	options = !lto
-	source = git+https://github.com/fcitx/mozc.git#commit=97d1d650091683d9ca77e0d4ad69c2d5226aaa1a
+	source = git+https://github.com/fcitx/mozc.git#commit=0e00713e43b7482f9106277600ff0c7e445fa856
 	source = git+https://github.com/phoepsilonix/mozcdict-ext.git
 	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20240109/small_lex.zip
 	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20240109/core_lex.zip
