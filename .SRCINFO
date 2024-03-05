@@ -1,0 +1,13 @@
+pkgbase = python-pip-system-certs
+	pkgdesc = Patches pip and requests at runtime to use certificates from the default system store
+	pkgver = 4.0
+	pkgrel = 1
+	url = https://gitlab.com/alelec/pip-system-certs
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python3
+	source = https://gitlab.com/alelec/pip-system-certs/-/archive/v4.0/pip-system-certs-v4.0.tar.gz
+	sha512sums = 6c583e0f8b61a774a78e0f561aa95717ed3e5735268bdd6a2767f0803697a3f7a64d132c9d1d5947a2bf06c220b9da4a10d4c31e8e523605422c4cbb7935a294
+
+pkgname = python-pip-system-certs
