@@ -1,0 +1,11 @@
+[Unit]
+Description=An alternative frontend for Genius focused on privacy and simplicity.
+After=syslog.target
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/intellectual.conf
+ExecStart=/usr/bin/intellectual -a "${ADDRESS}" -p "${PORT}" -w "${WORKERS}" -k "${KEEP_ALIVE_TIMEOUT}"
+
+[Install]
+WantedBy=multi-user.target
