@@ -12,7 +12,11 @@ pkgbase = intellectual-git
 	conflicts = intellectual
 	options = !buildflags
 	backup = etc/intellectual.conf
-	source = intellectual::git+https://github.com/Insprill/intellectual
+	source = ${_pkgname}::git+${url}
+	source = intellectual.conf
+	source = intellectual.service
 	sha256sums = SKIP
+	sha256sums = 90f3dbe07e6284ff4f5d90c0edb2a653fb16b19c63daf0401837016497e48c60
+	sha256sums = 299f94def28836caf5abf4afcb794f0a78d503aa2460e5fbf196595f69239876
 
 pkgname = intellectual-git

@@ -11,8 +11,12 @@ license=('AGPL-3.0-only')
 makedepends=('git' 'rust')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+${url}")
-sha256sums=('SKIP')
+source=('${_pkgname}::git+${url}'
+		'intellectual.conf'
+		'intellectual.service')
+sha256sums=('SKIP'
+			'90f3dbe07e6284ff4f5d90c0edb2a653fb16b19c63daf0401837016497e48c60'
+			'299f94def28836caf5abf4afcb794f0a78d503aa2460e5fbf196595f69239876')
 backup=('etc/intellectual.conf')
 options=('!buildflags')
 
