@@ -1,0 +1,12 @@
+pkgbase = xsens-device-api
+	pkgdesc = Movella Xsens Device API
+	pkgver = 2022.0.0
+	pkgrel = 1
+	url = https://www.xsens.com/software-downloads
+	arch = any
+	license = custom
+	depends = libusb
+	source = https://www.xsens.com/hubfs/Downloads/Software/MTSS/Releases/2022.0.0/MT_Software_Suite_linux-x64_2022.0_b7085_r119802.tar.gz
+	sha256sums = 2872b96f7c48cfdbe0788dc89881973ea17cd59624bce8af8e7a76b1f4d82d43
+
+pkgname = xsens-device-api
