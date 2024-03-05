@@ -1,7 +1,7 @@
 # Maintainer: Marco Rubin <marco.rubin@protonmail.com>
 
 pkgname=singularity-ce
-pkgver=4.1.1
+pkgver=4.1.2
 pkgrel=1
 pkgdesc='An open source container platform designed to be simple, fast, and secure.'
 arch=(x86_64)
@@ -30,7 +30,7 @@ provides=('singularity-container')
 conflicts=('singularity-container')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
         'tmpfiles.conf')
-b2sums=('2a4efd996f6fa8a818f87740c8c31834cbe07ad0859b7e96439fed95aa73c5e1e2a0e632f151600bd0459237c7c8b2036529d491faae5df887c7368a6f777658'
+b2sums=('af1f717bbfe09f8d392ce3e2c5cecc462359856a735fb9f07e8245dc75d2cdde5069aebe01deb4668bb2859e6f396911e00b581d8cc9ba3334a7384e6ec72681'
         '97226e92c3ae887c4e33561fddf60887c395b02a8aee11be78c28fc909df597ed806dd11cdbde00b22452ddeeff04f1ed94d45bb5330b1b38449f6f829f42385')
 
 build() {
