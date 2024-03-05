@@ -1,47 +1,47 @@
 # Maintainer: Martin Rys <rys.pw/contact>
 pkgname=packr
-_pkgname=packr
 pkgver=2.8.3
-pkgrel=1
-pkgdesc="packr - Go static assets bundler"
+pkgrel=2
+pkgdesc="[DEPRECATED, USE GO EMBED] Go static assets bundler"
 url="https://github.com/gobuffalo/packr"
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=()
+depends=('glibc')
 makedepends=(
 	'go'
 	'git'
 )
 
-source=("$_pkgname::git+https://github.com/gobuffalo/packr.git#tag=v${pkgver}")
+source=("${pkgname}-${pkgver}::git+https://github.com/gobuffalo/packr.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
-	cd "$srcdir/$_pkgname"
+	mv "${pkgname}-${pkgver}" "${pkgname}"
 
-	if [ -L "$srcdir/$_pkgname" ]; then
-		rm "$srcdir/$_pkgname" -rf
-		mv "$srcdir/go/src/$_pkgname/" "$srcdir/$_pkgname"
+	if [[ -L "${srcdir}/${pkgname}" ]]; then
+		rm -rf "${srcdir}/${pkgname}"
+		mv "${srcdir}/go/src/${pkgname}/" "${srcdir}/${pkgname}"
 	fi
 
-	rm -rf "$srcdir/go/src"
-	mkdir -p "$srcdir/go/src"
-	export GOPATH="$srcdir/go"
-	mv "$srcdir/$_pkgname" "$srcdir/go/src/"
-	cd "$srcdir/go/src/$_pkgname/"
-	ln -sf "$srcdir/go/src/$_pkgname/" "$srcdir/$_pkgname"
+	rm -rf "${srcdir}/go/src"
+	mkdir -p "${srcdir}/go/src"
+	export GOPATH="${srcdir}/go"
+	mv "${srcdir}/${pkgname}" "${srcdir}/go/src/"
+	cd "${srcdir}/go/src/${pkgname}/"
+	ln -sf "${srcdir}/go/src/${pkgname}/" "${srcdir}/${pkgname}"
 
 	echo ":: Updating git submodules"
 	git submodule update --init
 
 	echo ":: Building binary"
-	cd "${_pkgname}2"
-	go install -v -gcflags "-trimpath $GOPATH/src"
+	cd "${pkgname}2"
+	go install -v -gcflags "-trimpath ${GOPATH}/src"
 }
 
 package() {
-	ls -lah $srcdir/go/bin/
-	find "$srcdir/go/bin/" -type f -executable | while read filename; do
-		install -DT "$filename" "$pkgdir/usr/bin/$(basename $filename)"
+	find "${srcdir}/go/bin/" -type f -executable | while read filename; do
+		install -DT "${filename}" "${pkgdir}/usr/bin/$(basename ${filename})"
 	done
+	install -d                                       "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -D  "${srcdir}/${pkgname}/LICENSE.txt"   "${pkgdir}/usr/share/licenses/${pkgname}"
 }
