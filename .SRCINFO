@@ -10,7 +10,7 @@ pkgbase = super-mario-bros-2
 	source = nes-template.desktop
 	source = com.nintendo.SuperMarioBros2.png::https://upload.wikimedia.org/wikipedia/en/0/00/Super_Mario_Bros_2.jpg
 	sha256sums = 47ba60fad332fdea5ae44b7979fe1ee78de1d316ee027fea2ad5fe3c0d86f25a
-	sha256sums = e021676ce1a72920536fad3733b4d5beb703f27da88f3418a517c675f0572a24
+	sha256sums = 209068f2ee7bfb33cea86a516d8c0625a206a8157a1d78b0a80b058a3202d1a8
 	sha256sums = a9e5b5bda9a15eb96bc8a861a5876af498a53070f3b0e29858eeb424e34e2c1b
 
 pkgname = super-mario-bros-2
