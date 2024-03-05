@@ -3,7 +3,7 @@ pkgname=intrigue-bin
 _pkgname=Intrigue
 pkgver=0.1.6
 _electronversion=12
-pkgrel=6
+pkgrel=7
 pkgdesc="Organize literature into ideas, fast."
 arch=('x86_64')
 url="https://github.com/shaunabanana/intrigue"
@@ -11,18 +11,18 @@ license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'hicolor-icon-theme'
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
+)
+makedepends=(
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('467fdc85ce640e9289604e7e7ce60e0b9146b295da857b100603749f988e38d0'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
