@@ -10,49 +10,51 @@
 # Contributor: Sean Pringle <sean.pringle@gmail.com>
 # Contributor: SanskritFritz (gmail)
 pkgname=rofi-lbonn-wayland
-pkgver=1.7.5+wayland2
+pkgver=1.7.5+wayland3
 pkgrel=1
 pkgdesc='A window switcher, run dialog and dmenu replacement - fork with wayland support'
 arch=(x86_64)
 url="https://github.com/lbonn/rofi"
 license=(MIT)
-depends=(libxdg-basedir
+depends=(cairo
+         gdk-pixbuf2
+         glib2
+         glibc
+         hicolor-icon-theme
+         libxcb
+         libxkbcommon
          libxkbcommon-x11
-         librsvg
+         pango
          startup-notification
          wayland
+         xcb-util
          xcb-util-cursor
-         xcb-util-wm
-         xcb-util-xrm)
-makedepends=(check
-             meson
-             wayland-protocols)
+         xcb-util-wm)
+makedepends=('meson' 'wayland-protocols')
+checkdepends=(check)
 provides=(rofi)
 conflicts=(rofi)
-source=("${url}/releases/download/${pkgver}/${pkgname%-lbonn-wayland}-${pkgver}.tar.gz")
-sha256sums=('025a390469008179eaffaa599e2eabbd81a77f7141d9038e008304673ba19843')
+source=("$url/releases/download/$pkgver/${pkgname%-lbonn-wayland}-$pkgver.tar.gz")
+sha256sums=('ddd66ce401bc30da8e502499bafb9ab2dbf1f8d62aeb9d41f32213394246ea59')
 
 prepare() {
-   cd ${pkgname%-lbonn-wayland}-${pkgver}
-   sed -i "s/xfce4-terminal.wrapper/xfce4-terminal/g" script/rofi-sensible-terminal
-   # This is copied from the offical Arch rofi PKGBUILD.
-   # I do not use xfce, so if this causes any issue please let me know.
+	cd ${pkgname%-lbonn-wayland}-$pkgver
+	sed -i "s/xfce4-terminal.wrapper/xfce4-terminal/g" script/rofi-sensible-terminal
+	# This is copied from the offical Arch rofi PKGBUILD.
+	# I do not use xfce, so if this causes any issue please let me know.
 }
 build() {
-   local meson_options=(-Dwayland=enabled -Dcheck=enabled)
-   cd ${pkgname%-lbonn-wayland}-${pkgver}
-   arch-meson build #"${meson_options[@]}"
-   meson compile -C build
+	local meson_options=(-Dwayland=enabled -Dcheck=enabled)
+	arch-meson ${pkgname%-lbonn-wayland}-$pkgver build "${meson_options[@]}"
+	meson compile -C build
 }
 
 check() {
-   cd ${pkgname%-lbonn-wayland}-${pkgver}
-   LC_ALL=C meson test -C build
+	LC_ALL=C meson test -C build --print-errorlogs
 }
 
 package() {
-   cd ${pkgname%-lbonn-wayland}-${pkgver}
-   meson install -C build --destdir="${pkgdir}"
-   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-   install -Dm755 Examples/*.sh -t "$pkgdir/usr/share/doc/${pkgname%-lbonn-wayland}/examples"
+	meson install -C build --destdir="${pkgdir}"
+	install -Dm644 ${pkgname%-lbonn-wayland}-$pkgver/COPYING "${pkgdir}/usr/share/licenses/$pkgname/COPYING"
+	install -Dm755 ${pkgname%-lbonn-wayland}-$pkgver/Examples/*.sh -t "${pkgdir}/usr/share/doc/${pkgname%-lbonn-wayland}/examples"
 }
