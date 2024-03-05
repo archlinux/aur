@@ -8,8 +8,8 @@ _pkgname=firefox-esr
 pkgname=firefox-esr-globalmenu
 pkgver=115.8.0
 pkgrel=1
-pkgdesc="Standalone web browser from mozilla.org, with appmenu patch."
-url="https://www.mozilla.org/$_pkgname/"
+pkgdesc="Standalone web browser from mozilla.org, Extended Support Release. (With appmenu patch from Ubuntu)"
+url="https://www.mozilla.org/en-US/firefox/enterprise/"
 arch=(x86_64)
 license=(MPL-2.0)
 provides=("$_pkgname=$pkgver")
