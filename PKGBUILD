@@ -1,14 +1,14 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mlr3
-_pkgver=0.17.2
+_pkgver=0.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Machine Learning in R - Next Generation"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(LGPL3)
+license=('LGPL-3.0-only')
 depends=(
   r-backports
   r-checkmate
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e8bf4edf11e12f7c0101d3f46e8a02b8')
-b2sums=('a942c9fa836364d9c7077e3326488a26219e3bdf06b9ed95e307682c95b3fe33883cdb1336c50887df0772c50bb47320cee192d998932e85a1847a72930c9506')
+md5sums=('53a1efda2c582c0a1fb6ccbcd562784f')
+b2sums=('0685b31fe879251f1c898da7fd31648dbf916c35cae463bcd9f7770e2347237508215f4bce48d31cf288276080f8894755a7c9d623088a2eedd1b74cd11b0c25')
 
 build() {
   mkdir build
