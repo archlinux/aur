@@ -1,5 +1,6 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
-# Maintainer: Frederik Schwan <freswa at archlinux dot org>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: Guillaume ALAUX <guillaume@archlinux.org>
 
 # TODO add test, see about packaging jtreg and using it here
@@ -12,7 +13,7 @@ _minorver=0
 _securityver=1
 _updatever=0
 pkgver=21.0.1.0.r184.ge338a16
-pkgrel=3
+pkgrel=4
 _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
 arch=('x86_64')
 url='https://openjdk.java.net/'

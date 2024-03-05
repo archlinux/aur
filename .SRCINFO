@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-wakefield
 	pkgver = 21.0.1.0.r184.ge338a16
-	pkgrel = 3
+	pkgrel = 4
 	url = https://openjdk.java.net/
 	arch = x86_64
 	license = custom
@@ -63,7 +63,7 @@ pkgname = jre-openjdk-wakefield-headless
 	optdepends = java-rhino: for some JavaScript support
 	provides = java-runtime-headless=21
 	provides = java-runtime-headless-openjdk=21
-	provides = jre21-openjdk-headless=21.0.1.0.r184.ge338a16-3
+	provides = jre21-openjdk-headless=21.0.1.0.r184.ge338a16-4
 	conflicts = jdk-openjdk
 	conflicts = jre-openjdk
 	backup = etc/java-openjdk-wakefield/logging.properties
@@ -107,10 +107,10 @@ pkgname = jre-openjdk-wakefield
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=21
 	provides = java-runtime-openjdk=21
-	provides = jre21-openjdk=21.0.1.0.r184.ge338a16-3
+	provides = jre21-openjdk=21.0.1.0.r184.ge338a16-4
 	provides = java-runtime-headless=21
 	provides = java-runtime-headless-openjdk=21
-	provides = jre21-openjdk-headless=21.0.1.0.r184.ge338a16-3
+	provides = jre21-openjdk-headless=21.0.1.0.r184.ge338a16-4
 	conflicts = jdk-openjdk
 	conflicts = jre-openjdk-headless
 	backup = etc/java-openjdk-wakefield/logging.properties
@@ -168,13 +168,13 @@ pkgname = jdk-openjdk-wakefield
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-environment=21
 	provides = java-environment-openjdk=21
-	provides = jdk21-openjdk=21.0.1.0.r184.ge338a16-3
+	provides = jdk21-openjdk=21.0.1.0.r184.ge338a16-4
 	provides = java-runtime=21
 	provides = java-runtime-openjdk=21
-	provides = jre21-openjdk=21.0.1.0.r184.ge338a16-3
+	provides = jre21-openjdk=21.0.1.0.r184.ge338a16-4
 	provides = java-runtime-headless=21
 	provides = java-runtime-headless-openjdk=21
-	provides = jre21-openjdk-headless=21.0.1.0.r184.ge338a16-3
+	provides = jre21-openjdk-headless=21.0.1.0.r184.ge338a16-4
 	conflicts = jre-openjdk
 	conflicts = jre-openjdk-headless
 	backup = etc/java-openjdk-wakefield/logging.properties
@@ -195,11 +195,11 @@ pkgname = jdk-openjdk-wakefield
 pkgname = openjdk-wakefield-src
 	pkgdesc = OpenJDK Java 21 wayland sources
 	arch = any
-	depends = jdk21-openjdk=21.0.1.0.r184.ge338a16-3
-	provides = openjdk21-src=21.0.1.0.r184.ge338a16-3
+	depends = jdk21-openjdk=21.0.1.0.r184.ge338a16-4
+	provides = openjdk21-src=21.0.1.0.r184.ge338a16-4
 
 pkgname = openjdk-wakefield-doc
 	pkgdesc = OpenJDK Java 21 wayland documentation
 	arch = any
-	depends = jdk21-openjdk=21.0.1.0.r184.ge338a16-3
-	provides = openjdk21-doc=21.0.1.0.r184.ge338a16-3
+	depends = jdk21-openjdk=21.0.1.0.r184.ge338a16-4
+	provides = openjdk21-doc=21.0.1.0.r184.ge338a16-4
