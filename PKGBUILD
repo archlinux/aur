@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=sunshine-git
-pkgver=nightly.dev.r214.g032680c
+pkgver=nightly.dev.r830.gcacadc4
 pkgrel=1
 pkgdesc="Game Stream server for Moonlight, latest git"
 arch=('x86_64')
@@ -23,6 +23,7 @@ libxcb
 libxfixes
 libxrandr
 libxtst
+miniupnpc
 numactl
 openssl
 opus
@@ -49,7 +50,7 @@ source=(
 git+https://github.com/LizardByte/Sunshine.git#branch=nightly
 git+https://github.com/moonlight-stream/moonlight-common-c.git
 git+https://gitlab.com/eidheim/Simple-Web-Server.git
-git+https://github.com/ViGEm/ViGEmClient.git
+git+https://github.com/LizardByte/Virtual-Gamepad-Emulation-Client.git
 git+https://github.com/miniupnp/miniupnp.git
 git+https://github.com/FFmpeg/nv-codec-headers.git
 git+https://github.com/michaeltyson/TPCircularBuffer.git
@@ -78,14 +79,14 @@ pkgver() {
 
 prepare() {
   cd Sunshine
-  git rm -f third-party/ffmpeg-windows-x86_64
-  git rm -f third-party/ffmpeg-macos-x86_64
-  git rm -f third-party/ffmpeg-macos-aarch64
-  git rm -f third-party/ffmpeg-linux-aarch64
+  rm -f third-party/ffmpeg-windows-x86_64
+  rm -f third-party/ffmpeg-macos-x86_64
+  rm -f third-party/ffmpeg-macos-aarch64
+  rm -f third-party/ffmpeg-linux-aarch64
   git submodule init
   git config submodule.third-party/moonlight-common-c.url "${srcdir}/moonlight-common-c"
   git config submodule.third-party/Simple-Web-Server.url "${srcdir}/Simple-Web-Server"
-  git config submodule.third-party/ViGEmClient.url "${srcdir}/ViGEmClient"
+  git config submodule.third-party/ViGEmClient.url "${srcdir}/Virtual-Gamepad-Emulation-Client"
   git config submodule.third-party/miniupnp.url "${srcdir}/miniupnp"
   git config submodule.third-party/nv-codec-headers.url "${srcdir}/nv-codec-headers"
   git config submodule.third-party/TPCircularBuffer.url "${srcdir}/TPCircularBuffer"

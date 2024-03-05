@@ -1,6 +1,6 @@
 pkgbase = sunshine-git
 	pkgdesc = Game Stream server for Moonlight, latest git
-	pkgver = nightly.dev.r214.g032680c
+	pkgver = nightly.dev.r830.gcacadc4
 	pkgrel = 1
 	url = https://github.com/LizardByte/Sunshine
 	install = sunshine-git.install
@@ -25,6 +25,7 @@ pkgbase = sunshine-git
 	depends = libxfixes
 	depends = libxrandr
 	depends = libxtst
+	depends = miniupnpc
 	depends = numactl
 	depends = openssl
 	depends = opus
@@ -38,7 +39,7 @@ pkgbase = sunshine-git
 	source = git+https://github.com/LizardByte/Sunshine.git#branch=nightly
 	source = git+https://github.com/moonlight-stream/moonlight-common-c.git
 	source = git+https://gitlab.com/eidheim/Simple-Web-Server.git
-	source = git+https://github.com/ViGEm/ViGEmClient.git
+	source = git+https://github.com/LizardByte/Virtual-Gamepad-Emulation-Client.git
 	source = git+https://github.com/miniupnp/miniupnp.git
 	source = git+https://github.com/FFmpeg/nv-codec-headers.git
 	source = git+https://github.com/michaeltyson/TPCircularBuffer.git
