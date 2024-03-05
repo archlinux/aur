@@ -1,4 +1,4 @@
-# Maintainer: Abdur-Rahman Mansoor <mansoorar at proton dot me>
+# Maintainer: Abdur-Rahman Mansoor <armansoor at posteo dot net>
 
 pkgname='rustpython'
 pkgver=0.3.0
