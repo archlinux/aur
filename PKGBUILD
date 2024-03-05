@@ -1,6 +1,6 @@
 #Maintainer: Nooberieno <nooberieno@gmail.com>
 pkgname='jura'
-pkgver=3.2
+pkgver=3.3
 pkgrel=3
 epoch=3
 pkgdesc="A lightweight terminal text editor"
