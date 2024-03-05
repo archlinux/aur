@@ -1,26 +1,23 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=ok-edu-classroom-desktop-git
-pkgname=ok-edu-classroom-desktop-git
-pkgver=1.1.0.230628.r26.g1b1663d
+pkgname=(ok-msg-desktop-git)
+pkgver=r11.4ebddbc
 pkgrel=1
-pkgdesc="OkEDU-Classroom-Desktop 客户端 OkEDU Classroom 是基于“互联网+教育”理念， 解决在线上课问题而研发的互动教室，是实时、高效、功能完备的上课工具，本软件基于浏览器实时多媒体标准 WebRTC 以及即时通讯协议 XMPP 实现，具备很好的通用性、拓展性、移植性。"
 arch=(x86_64
-    aarch64)
-url="https://gitee.com/chuanshantech/ok-edu-classroom-desktop"
-license=('GPL-2.0' 'MulanPubL-2.0')
-groups=()
-provides=(${pkgbase%-git})
-conflicts=(${pkgbase%-git})
+    aarch64
+    riscv64)
+_url="https://github.com/okstar-org"
+url="${_url}/ok-msg-desktop"
+pkgdesc="OkEDU 是基于“互联网+教育”理念， 解决在线上课问题而研发的互动教室。"
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 replaces=()
+license=('GPL-2.0-or-later' 'MulanPubL-2.0')
+groups=()
 depends=(
-        python)
-makedepends=(
-    cmake
-    ninja
+    python
 #     gbm
-    gcc
-    git
     gtk3
     libdrm
     libinput
@@ -47,45 +44,72 @@ makedepends=(
 # Qt Multimedia
     alsa-lib
     gstreamer
+    qt5-multimedia
+    qt5-svg
+    qt5-xmlpatterns
 
 # sqlite sqlcipher
     sqlite
     sqlcipher
 
 # vpx qrencode sodium
+    ffmpeg
+    qrencode
+    libexif
     libvpx
     libjpeg-turbo
     libtiff
     libpng
-    ffmpeg
-    qrencode
     libsodium
+    libxss
 
 # webrtc gloox
-    webrtc-audio-processing
-    gloox
+#     webrtc-audio-processing
+#     ok-gloox
             )
+makedepends=(
+    cmake
+    clang
+    llvm
+    gcc
+    git
+    ninja)
 checkdepends=()
 optdepends=()
-source=("${pkgname%-git}::git+${url}.git")
-sha256sums=('SKIP')
-options=('!strip')
+source=("${pkgname}::git+${_url}/ok-msg-desktop.git"
+    "gloox::git+https://gitee.com/okstar-org/ok-gloox.git"
+)
+sha256sums=('SKIP'
+            'SKIP')
+options=()
 
-pkgver() {
-    cd "${srcdir}/${pkgname%-git}/"
-    git describe --long --tags | sed 's/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
+    cd "${srcdir}/${pkgname}"
+    git submodule init
+    git config submodule.3rdparty/gloox.url "$srcdir/gloox"
+    git -c protocol.file.allow=always submodule update
 }
 
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    ( set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
+}
 build() {
-    cd "${srcdir}/${pkgname%-git}"
-
+#     export QTDIR=/usr/lib
+    cd "${srcdir}/${pkgname}"
+#     sed -i '1,13d' cmake/dependencies.cmake
 # see：https://wiki.archlinux.org/title/CMake_package_guidelines
-#     cmake -DCMAKE_BUILD_TYPE=Release \
-    cmake -DCMAKE_BUILD_TYPE=None \
-        -DCMAKE_CONFIGURATION_TYPES=RelWithDebInfo \
+#     cmake -DCMAKE_BUILD_TYPE=Release None \
+    cmake -DCMAKE_BUILD_TYPE=Debug \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_INSTALL_LIBEXECDIR=lib \
+        -DCMAKE_MAKE_PROGRAM=/usr/bin/ninja \
+        -DCMAKE_C_COMPILER=clang \
+        -DCMAKE_CXX_COMPILER=clang++ \
         -B build \
         -G Ninja \
         -Wno-dev
