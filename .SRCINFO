@@ -1,7 +1,7 @@
 pkgbase = gsconnect-git
 	pkgdesc = GSConnect CLI
 	pkgver = 56.r15.g43594cc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GSConnect/gnome-shell-extension-gsconnect
 	arch = any
 	license = GPL-2.0-or-later OR MPL-2.0
@@ -26,7 +26,7 @@ pkgbase = gsconnect-git
 	optdepends = python-pydbus: for fetch gsconnect status for waybar
 	optdepends = python-nautilus: Nautilus integration
 	optdepends = nemo-python: Nemo integration
-	provides = gnome-shell-extension-gsconnect
+	provides = gsconnect
 	conflicts = gnome-shell-extension-gsconnect
 	options = !debug
 	source = gsconnect::git+https://github.com/GSConnect/gnome-shell-extension-gsconnect.git

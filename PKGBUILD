@@ -2,7 +2,7 @@
 
 pkgname=gsconnect-git
 pkgver=56.r15.g43594cc
-pkgrel=1
+pkgrel=2
 pkgdesc="GSConnect CLI"
 arch=(any)
 url="https://github.com/GSConnect/gnome-shell-extension-${pkgname%-git}"
@@ -16,7 +16,7 @@ optdepends=('ydotool: generic command-line automation tool'
             'python-pydbus: for fetch gsconnect status for waybar'
             'python-nautilus: Nautilus integration'
             'nemo-python: Nemo integration')
-provides=(gnome-shell-extension-${pkgname%-git})
+provides=(${pkgname%-git})
 conflicts=(gnome-shell-extension-${pkgname%-git})
 options=(!debug)
 source=(${pkgname%-git}::git+$url.git
