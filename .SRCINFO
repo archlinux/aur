@@ -1,6 +1,6 @@
 pkgbase = fdlogger
 	pkgdesc = Ham Radio - ARRL Field Day logger GUI
-	pkgver = 24.2.21
+	pkgver = 24.3.2
 	pkgrel = 1
 	url = https://pypi.org/project/fdlogger/
 	arch = any
@@ -18,11 +18,11 @@ pkgbase = fdlogger
 	provides = fdlogger
 	conflicts = fdcurses
 	conflicts = fdlogger-git
-	source = https://files.pythonhosted.org/packages/source/f/fdlogger/fdlogger-24.2.21.tar.gz
+	source = https://files.pythonhosted.org/packages/source/f/fdlogger/fdlogger-24.3.2.tar.gz
 	source = fdlogger.1
-	md5sums = 6bf85d0b7be38b1fa0cd73234e0c36c5
+	md5sums = 8dc0c97b5f2af216e1ec42499796123d
 	md5sums = 4d29a2367a568ed7c5d5c2857d4f7fb7
-	sha256sums = cdfc9a480239d4b486b5a07287379eb2931a417e18899c6bb1b34125c20c9955
+	sha256sums = 2b183955c8fa401a94172bb82de08aba4b11e308e7d7ff26672551c4ea2c29c4
 	sha256sums = ab08f8f9578f9e96b40bb0a22c82c6dac53e75764bb0912e60c95a6cd1f8b8a5
 
 pkgname = fdlogger
