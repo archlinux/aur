@@ -5,8 +5,7 @@ Wants=graphical-session.target
 After=graphical-session.target
 
 [Service]
-ExecStart=/usr/bin/moonshine /etc/moonshine/config.toml -v
-WorkingDirectory=/etc/moonshine
+ExecStart=/usr/bin/moonshine %E/moonshine/config.toml
 
 [Install]
 WantedBy=graphical-session.target
