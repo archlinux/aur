@@ -1,3 +1,4 @@
+# Maintainer: VetheonGames <vetheon@pixelridgesoftworks.com>
 pkgname=glava-ridged
 pkgver=1.0.0
 pkgrel=1
@@ -6,19 +7,18 @@ arch=('x86_64')
 url="https://git.pixelridgesoftworks.com/PixelRidge-Softworks/glava-ridged.git"
 license=('GPL')
 depends=('glfw-x11' 'pulseaudio' 'libconfig' 'fftw')
-makedepends=('cmake' 'make' 'git')
+makedepends=('git' 'meson' 'ninja')
+optdepends=('obs-studio: for optional OBS support')
 source=("git+${url}")  # Cloning the entire repo
 sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname"
-  mkdir -p build
-  cd build
-  cmake ..
-  make
+  meson build --prefix=/usr
+  ninja -C build
 }
 
 package() {
-  cd "$srcdir/$pkgname/build"
-  make DESTDIR="$pkgdir/" install
+  cd "$srcdir/$pkgname"
+  DESTDIR="$pkgdir" ninja -C build install
 }

@@ -5,13 +5,14 @@ pkgbase = glava-ridged
 	url = https://git.pixelridgesoftworks.com/PixelRidge-Softworks/glava-ridged.git
 	arch = x86_64
 	license = GPL
-	makedepends = cmake
-	makedepends = make
 	makedepends = git
+	makedepends = meson
+	makedepends = ninja
 	depends = glfw-x11
 	depends = pulseaudio
 	depends = libconfig
 	depends = fftw
+	optdepends = obs-studio: for optional OBS support
 	source = git+https://git.pixelridgesoftworks.com/PixelRidge-Softworks/glava-ridged.git
 	sha256sums = SKIP
 
