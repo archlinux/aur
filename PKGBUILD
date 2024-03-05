@@ -9,7 +9,7 @@ pkgname=wine-ge-custom
 _srctag=GE-Proton8-26
 _commit=21f5f463cb761b94bcd00553f924f55516389f5b
 pkgver=${_srctag//-/.}
-pkgrel=1
+pkgrel=2
 epoch=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -138,12 +138,12 @@ build() {
   local -A flags
   for opt in "${split[@]}"; do flags["${opt%%=*}"]="${opt##*=}"; done
   local march="${flags["-march"]:-nocona}"
-  local mtune="${flags["-mtune"]:-core-avx2}"
+  local mtune="generic" #"${flags["-mtune"]:-core-avx2}"
 
   # From Proton
-  OPTIMIZE_FLAGS="-O2 -march=$march -mtune=$mtune -mfpmath=sse -pipe -fno-semantic-interposition"
+  OPTIMIZE_FLAGS="-O3 -march=$march -mtune=$mtune -mfpmath=sse -pipe -fno-semantic-interposition"
   SANITY_FLAGS="-fwrapv -fno-strict-aliasing"
-  COMMON_FLAGS="$OPTIMIZE_FLAGS $SANITY_FLAGS -s -mno-avx2"
+  COMMON_FLAGS="$OPTIMIZE_FLAGS $SANITY_FLAGS -s"
 
   export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
   export CROSSLDFLAGS="$LDFLAGS -Wl,--file-alignment,4096"
