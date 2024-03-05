@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=freeLib
-Keywords=fb2,mobi,epub,azw3
-Exec=/opt/freelib/freeLib
-Terminal=false
-Type=Application
-Icon=/opt/freelib/freeLib.png
-Categories=Office
-NoDisplay=false
