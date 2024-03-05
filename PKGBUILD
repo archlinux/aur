@@ -1,8 +1,8 @@
 # Maintainer: Sir-Photch <sir-photch@posteo.me>
 
 pkgname=dab-rs
-pkgver=0.3.3
-pkgrel=3
+pkgver=0.3.4
+pkgrel=1
 pkgdesc="Announcement Bot for Discord, implemented in Rust"
 arch=(any)
 url="https://github.com/Sir-Photch/dab-rs"
@@ -24,7 +24,7 @@ source=(
 	tmpfiles-dab-rs.conf
 )
 
-sha512sums=('6073ab97f5320870b6e0cbb3b9caa73986f6c5eff25a8c63a21927f0abae0b98d349d6ca8c0a22f90c67107aeb1d673413e52cfdc9572765336ddd3e4f4126e4'
+sha512sums=('9c1b18cf8d699ccb7a4f1a75ab0af1822221351c992f7b32cc66b02d4d829bd75b6ab7c4c6537134e511fb375d19e84f3131608da6e6ea0a96939d47c880df55'
             'fad6d2eae7f5e06afbe63bf41a62eee0327290355ffd5662f7472d6e737af627a3b738055b5dba51895b8bb71fbd1806f8d47c15461a01da3b1debaec734c50d'
             'db962f08a4d40dc4b5893590d5538ad9937a53681b85d51e15185a55106f2e2cfd6305aeeb1d72aaba4678119c7f917d20021dd4479ff35e677e3ff4d6ed44c6'
             'e0f8e4f6d6979e2b17b315dcad1b69025ed6b89398efb34069e6e76f6062e714e2f436bdc26a6e63d0a9dfe3b81931326bae1bef79b940c20b1843a15082c6e3'
