@@ -9,6 +9,7 @@
 : ${_build_wow64:=true}
 : ${_build_git:=true}
 
+unset _pkgtype
 [[ "${_build_staging::1}" == "t" ]] && _pkgtype+="-staging"
 [[ "${_build_wow64::1}" == "t" ]] && _pkgtype+="-wow64"
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
@@ -16,7 +17,7 @@
 # basic info
 _pkgname="wine"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=9.0.r0.gfd115355
+pkgver=9.3.r194.gc1b8db0c
 pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://gitlab.winehq.org/wine/wine"
@@ -43,12 +44,14 @@ _main_package() {
     v4l-utils             #lib32-v4l-utils
     desktop-file-utils
     libgphoto2
-    samba
-    sane
 
     # with-wayland
     libxkbcommon
     wayland
+  )
+  local _spacehogs=(
+    samba
+    sane
   )
   makedepends=(
     libcups               #lib32-libcups
@@ -64,11 +67,15 @@ _main_package() {
     opencl-headers
     perl
     vulkan-headers
+
+    "${_spacehogs[@]}"
   )
   optdepends=(
     alsa-plugins          #lib32-alsa-plugins
     cups
     dosbox
+
+    "${_spacehogs[@]}"
   )
 
   options=(staticlibs !lto)
@@ -208,9 +215,6 @@ package() {
     prefix="$pkgdir/usr" \
     libdir="$pkgdir/usr/lib" \
     dlldir="$pkgdir/usr/lib/wine"
-
-  i686-w64-mingw32-strip --strip-unneeded "$pkgdir/usr/lib/wine/i386-windows"/*.dll
-  x86_64-w64-mingw32-strip --strip-unneeded "$pkgdir/usr/lib/wine/x86_64-windows"/*.dll
 
   ln -sf wine "$pkgdir/usr/bin/wine64"
 
