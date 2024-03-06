@@ -1,0 +1,26 @@
+pkgbase = python-canopen
+	pkgdesc = A Python implementation of the CANopen standard.
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/christiansandberg/canopen
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-anyio
+	makedepends = python-pytest
+	makedepends = python-pytest-cov
+	makedepends = python-pytest-mock
+	makedepends = python-pytest-timeout
+	makedepends = python-pytest-curio
+	depends = python
+	depends = python-can
+	depends = python-msgpack
+	depends = python-wrapt
+	source = canopen-2.2.0.tar.gz::https://github.com/christiansandberg/canopen/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = 1a4559330bc38cafbcfd3cf844576a1de7a62af6064c66c93b1f35dd6c431299
+
+pkgname = python-canopen
