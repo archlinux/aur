@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-moox-lazierattributes'
-pkgver='1.07008'
+pkgver='1.07009'
 pkgrel='1'
 pkgdesc="Lazier Attributes."
 arch=('any')
@@ -10,12 +10,12 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-clone>=0.39' 'perl-moox-returnmodifiers>=0.03' 'perl-namespace-clean>=0.27' 'perl>=5.006')
 makedepends=()
-checkdepends=('perl-test-requires>=0')
+checkdepends=('perl-test-requires>=0' 'perl-moose')
 url='https://metacpan.org/release/MooX-LazierAttributes'
-source=('https://cpan.metacpan.org/authors/id/L/LN/LNATION/MooX-LazierAttributes-1.07008.tar.gz')
-md5sums=('75e3e031e13ac25591f3474f75f17311')
-sha512sums=('bbaeaa78482723e7501b4eab768c80fbf70b83548ccd953bbe0917b831a29e5a7da7fc459ad84d5283b41024eaf286cefcc0d13eedda3e684e094706adeb00b7')
-_distdir="MooX-LazierAttributes-1.07008"
+source=("https://cpan.metacpan.org/authors/id/L/LN/LNATION/MooX-LazierAttributes-$pkgver.tar.gz")
+md5sums=('5c38ff736c94bdc6019ecb374ca6774d')
+sha512sums=('0e0398f61d8e38ad7bf1567a88f162c5f4391846a7d97b133accc4d4c0776ec3fbbfeb85c16a6f56ff320fc701faa3a10cbdf0faf095007a90c98d93c06cac21')
+_distdir="MooX-LazierAttributes-$pkgver"
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                      \
