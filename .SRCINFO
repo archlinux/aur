@@ -1,7 +1,7 @@
 pkgbase = r-gmodels
 	pkgdesc = Various R Programming Tools for Model Fitting
-	pkgver = 2.18.1.1
-	pkgrel = 3
+	pkgver = 2.19.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=gmodels
 	arch = any
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = r-gmodels
 	optdepends = r-lme4
 	optdepends = r-matrix
 	optdepends = r-nlme
-	source = https://cran.r-project.org/src/contrib/gmodels_2.18.1.1.tar.gz
-	sha256sums = da7d48021b7cd2fd8a7cd8d0bb9658b12342a32698a13877b25ca94aa03f1e95
+	source = https://cran.r-project.org/src/contrib/gmodels_2.19.1.tar.gz
+	sha256sums = bb57b83274dcc6c62eeb0d0b041d81ed19daca927bcd3872c4667ccfe3e9888d
 
 pkgname = r-gmodels
