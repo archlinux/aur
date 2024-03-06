@@ -6,9 +6,9 @@
 
 _name=libkscreen
 pkgname=${_name}5
-pkgver=5.27.10
+pkgver=5.27.11
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=2
+pkgrel=1
 pkgdesc='KDE screen management software'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -23,7 +23,7 @@ makedepends=(extra-cmake-modules doxygen qt5-tools qt5-doc plasma-wayland-protoc
 conflicts=("$_name<6.0")
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$_name-$pkgver.tar.xz{,.sig})
-sha256sums=('27f59f088929bc7fb560c353fb9da98832dde5b58fde88d9c694c98fdf3aff98'
+sha256sums=('0d11f41d489f32303988e5a2eee8cef7f4eb18faea5614e65bf202007ea21dd5'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
