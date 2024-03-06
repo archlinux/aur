@@ -1,17 +1,17 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=r-quick-share
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Rust implementation of NearbyShare/QuickShare from Android for Linux."
 arch=('x86_64')
 url="https://github.com/Martichou/rquickshare"
-license=('AGPL-3.0-or-later')
+license=('GPL-3.0-or-later')
 depends=('gtk3' 'libayatana-appindicator' 'webkit2gtk')
 makedepends=('cargo' 'pnpm' 'protobuf')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('084bca3c4c62e8b4866d14aa72c03c8bb494ff676164099edc5e2f947ae03ec5'
+sha256sums=('b382d38f4a6e499077080badb21ab5d58ded6e767fc0722b7dfc3e8195954431'
             '5de9d91fa5f21bd6eb9983b1b1d100637fbf2ef6ee106fba090969b1f965a4f5')
 
 prepare() {
@@ -27,6 +27,9 @@ prepare() {
   pushd core_lib
   cargo fetch --target "$CARCH-unknown-linux-gnu"
   popd
+
+  # Don't bundle AppImage
+  sed -i 's/"targets": "all"/"targets": "deb"/g' frontend/src-tauri/tauri.conf.json
 }
 
 build() {
