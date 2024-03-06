@@ -62,7 +62,7 @@ build() {
 
 	rgblink <(rgbasm -E -i src/hUGEDriver src/hUGEDriver/hUGEDriver.asm -o -) \
 	        <(rgbasm -i src/hUGEDriver/include src/halt.asm -o -) \
-	        -n halt.sym -o - | rgbfix -vp 0xFF >halt.gb
+	        -n halt.sym -o - | rgbfix -vp 0xFF - >halt.gb
 
 	lazbuild --lazarusdir="${_lazdir}" src/uge2source/uge2source.lpi --build-mode="Default"
 }
