@@ -2,7 +2,7 @@
 pkgdesc='WPE launcher and webapp container'
 pkgname=cog
 pkgver=0.18.3
-pkgrel=1
+pkgrel=2
 url=https://github.com/Igalia/cog
 arch=(i686 x86_64 aarch64 armv7l armv7h)
 groups=(wpe)
@@ -29,7 +29,7 @@ build () {
 		-D programs=true \
 		-D wayland_weston_content_protection=true \
 		-D wayland_weston_direct_display=true \
-		-D wpe_api=1.1 \
+		-D wpe_api=2.0 \
 		_build "${pkgname}-${pkgver}"
 	meson compile -C _build
 }
