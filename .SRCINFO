@@ -1,6 +1,6 @@
 pkgbase = wwphone
 	pkgdesc = A proprietary CTI and SIP client from wwcom
-	pkgver = 4.0.72
+	pkgver = 4.0.75
 	pkgrel = 1
 	url = https://www.wwcom.ch/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = wwphone
 	depends = openssl-1.1
 	depends = xdg-utils
 	optdepends = xclip: select/copy clipboard call support
-	source = https://wwcom.ch/downloads/wwphone_4_0_72.deb
-	sha256sums = 0910ad5147fdc6216bb93e8e970a8a45d469d0895ea3b51458eba927a9a5d1aa
+	source = https://wwcom.ch/downloads/wwphone_4_0_75.deb
+	sha256sums = 57bf0ecc71be95d681583a378fae5888aa74e56ddb8f8db5d6d2f6b36f424dee
 
 pkgname = wwphone
