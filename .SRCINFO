@@ -1,7 +1,7 @@
 pkgbase = ruby-pdf-core
 	pkgdesc = Implements low level PDF features for Prawn (experimental)
-	pkgver = 0.9.0
-	pkgrel = 4
+	pkgver = 0.10.0
+	pkgrel = 1
 	url = https://github.com/prawnpdf/pdf-core
 	arch = any
 	license = GPL-2.0-only
@@ -13,7 +13,7 @@ pkgbase = ruby-pdf-core
 	makedepends = rubygems
 	depends = ruby
 	options = !emptydirs
-	source = ruby-pdf-core-0.9.0.tar.gz::https://github.com/prawnpdf/pdf-core/archive/0.9.0.tar.gz
-	sha256sums = f7d21d2c9717a0a4b0d42941e37d9c24940b9657efbd0ae31e95bc11fb5f5413
+	source = ruby-pdf-core-0.10.0.tar.gz::https://github.com/prawnpdf/pdf-core/archive/0.10.0.tar.gz
+	sha256sums = 301532cbdc05142dad047c58c88a1684f39d37bd36e87890709a1739ab778192
 
 pkgname = ruby-pdf-core
