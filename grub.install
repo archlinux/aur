@@ -1,0 +1,38 @@
+#!/bin/sh
+
+post_upgrade() {
+  # We used to package /boot/grub/grub.cfg, but there is no reason to.
+  # Remove the file from package, but move real file back in place.
+  if [ ! -f /boot/grub/grub.cfg -a -f /boot/grub/grub.cfg.pacsave ]; then
+    mv /boot/grub/grub.cfg.pacsave /boot/grub/grub.cfg
+  fi
+
+  # Give a hint to update installation and configuration one after another.
+  cat <<EOM
+:: To use the new features provided in this GRUB update, it is recommended
+   to install it to the MBR or UEFI. Due to potential configuration
+   incompatibilities, it is advised to run both, installation and generation
+   of configuration:
+     # grub-install ...
+     # grub-mkconfig -o /boot/grub/grub.cfg
+EOM
+
+  # return if old package version greater 2:2.06-0...
+  (( $(vercmp $2 '2:2.06-0') > 0 )) && return
+
+  if [[ -e /sys/firmware/efi/efivars ]]; then
+    cat <<EOM
+:: Grub does no longer support side-loading modules when secure boot is
+   enabled. Thus booting will fail, unless you have an efi executable
+   'grubx64.efi' with bundled modules.
+EOM
+  fi
+}
+
+post_install() {
+  cat <<EOM
+:: Install your bootloader and generate configuration with:
+     # grub-install ...
+     # grub-mkconfig -o /boot/grub/grub.cfg
+EOM
+}
