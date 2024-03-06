@@ -3,7 +3,7 @@
 #
 
 pkgname=c-evo-dh
-pkgver=1.10
+pkgver=1.11
 pkgrel=1
 pkgdesc="C-evo: Distant Horizon, Empire Building Game"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('fpc' 'lazarus-gtk2')
 depends=('gtk2')
 optdepends=('ffmpeg: Needed for sounds')
 source=("$url/files/Source/${pkgname}_${pkgver}.orig.tar.xz")
-sha256sums=('a650c8b597ee9ec5578ee0f3d7baf6d007c9160a74c2d611b3df9273db0444c4')
+sha256sums=('f63a4794c2c1ce93a78ca186fb5e326e6ee6e48d606066a109d32be72ee7c9ba')
 
 # Arch does not use games or libexec folders
 prepare() {
