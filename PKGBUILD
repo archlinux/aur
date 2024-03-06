@@ -22,7 +22,7 @@ source_x86_64=("https://gitlab.com/eduke32-linux/binaries/duke32-$pkgver/-/raw/m
 source_i386=("https://gitlab.com/eduke32-linux/binaries/duke32-$pkgver/-/raw/main/eduke32-linux-i686.tar.xz")
 source_pentium4=("https://gitlab.com/eduke32-linux/binaries/duke32-$pkgver/-/raw/main/eduke32-linux-i686.tar.xz")
 source_i686=("https://gitlab.com/eduke32-linux/binaries/duke32-$pkgver/-/raw/main/eduke32-linux-i686.tar.xz")
-source_aarch64=("https://gitlab.com/eduke32-linux/binaries/duke32-$pkgver/-/raw/main/eduke32-linux-aarch64.tar.xz")
+source_aarch64=("https://gitlab.com/eduke32-linux/binaries/duke32-$pkgver/-/raw/main/eduke32-linux-arm64.tar.xz")
 
 
 package() {
