@@ -2,16 +2,16 @@
 
 _pkgname=device-flasher
 pkgname=$_pkgname-bin
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Install CalyxOS (binary release)"
 url="https://gitlab.com/CalyxOS/device-flasher"
+license=('Apache-2.0')
 arch=('x86_64')
-license=('Apache2')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname-$pkgver::https://release.calyxinstitute.org/$_pkgname/$pkgver/$_pkgname.linux")
-sha256sums=('f1385d51a9042cf1b7ef434475da2b7d007ec68665af44ef9ae1cc6df4771b1b')
+sha256sums=('3c318b63d2e93c62e6e3199e58782557a8f19c84f4993a4c80f47028781899f8')
 
 package() {
   install -Dm755 $_pkgname-$pkgver "$pkgdir/usr/bin/$_pkgname"
