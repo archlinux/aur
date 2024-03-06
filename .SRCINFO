@@ -1,7 +1,7 @@
 pkgbase = ttf-juliamono-nerd-font
 	pkgdesc = JuliaMono, a font for programming, patched with Nerd Fonts (Regular, Mono, Propo)
 	pkgver = 0.054
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mietzen/juliamono-nerd-font
 	arch = any
 	license = OFL-1.1
