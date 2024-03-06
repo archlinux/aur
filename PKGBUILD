@@ -3,13 +3,13 @@
 
 pkgname='perl-web-microformats2'
 pkgver='0.511'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Read Microformats2 metadata from HTML or JSON"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-datetime-format-iso8601>=0' 'perl-html-parser>=0' 'perl-html-treebuilder-xpath>=0' 'perl-json>=0' 'perl-moo>=0' 'perl-moox-handlesvia>=0' 'perl-path-class>=0' 'perl-readonly>=0' 'perl-type-tiny>=0' 'perl-uri>=0' 'perl>=5.10.0')
-makedepends=()
+makedepends=('perl-module-build-tiny')
 checkdepends=('perl-test-deep>=0')
 url='https://metacpan.org/release/Web-Microformats2'
 source=("http://search.cpan.org/CPAN/authors/id/J/JM/JMAC/Web-Microformats2-$pkgver.tar.gz")
