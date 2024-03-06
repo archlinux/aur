@@ -23,9 +23,9 @@ depends=(
   'util-linux'
 )
 makedepends=(
-  'git'
-  'bash-completion'
   'asciidoc'
+  'bash-completion'
+  'git'
 )
 optdepends=(
   'binutils: --uefi option support'
