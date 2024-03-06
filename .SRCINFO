@@ -1,0 +1,13 @@
+pkgbase = spotx-bash-git
+	pkgdesc = SpotX Mac and Linux adblocker for the Spotify desktop client, in Bash
+	pkgver = r68.ed84218
+	pkgrel = 1
+	url = https://github.com/SpotX-Official/SpotX-Bash
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	replaces = spotx-git
+	source = spotx-bash-git::git+https://github.com/SpotX-Official/SpotX-Bash
+	sha256sums = SKIP
+
+pkgname = spotx-bash-git
