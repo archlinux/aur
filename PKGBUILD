@@ -41,10 +41,10 @@ shared_library_build_options=" \
 enable_all_projects_minus_libc="-DLLVM_ENABLE_PROJECTS=bolt;clang;clang-tools-extra;libclc;lld;lldb;openmp;polly;pstl;compiler-rt"
 #enable_all_projects="-DLLVM_ENABLE_PROJECTS=bolt;clang;clang-tools-extra;libc;libclc;lld;lldb;openmp;polly;pstl;compiler-rt"
 # both modules and thinlto barf with gcc
+# -DLLVM_ENABLE_MODULES=ON now barfs when compiling with clang 18, complaining about missing symbols
 build_with_clang_options=" \
 			-DLLVM_BINUTILS_INCDIR=/usr/include \
             -DLLVM_ENABLE_LLD=ON \
-            -DLLVM_ENABLE_MODULES=ON \
             -DLLVM_ENABLE_LTO=Thin \
             -DCMAKE_C_COMPILER=clang \
             -DCMAKE_CXX_COMPILER=clang++ \
