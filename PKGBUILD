@@ -1,13 +1,13 @@
 # Maintainer: Strahinya Radich <contact@strahinja.org>
 pkgname=sled
-pkgver=0.11.11
+pkgver=0.12.5
 pkgrel=1
 pkgdesc="Simple text editor"
 arch=('x86_64')
 url="https://strahinja.srht.site/sled"
 license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~strahinja/sled/archive/v$pkgver.tar.gz")
-md5sums=('afaddb4cd2705fb51711f6c161b960ce')
+md5sums=('bc71a6663167ddd41d4afabdc255e689')
 
 build() {
 	cd $pkgname-v$pkgver
@@ -23,7 +23,7 @@ build() {
 }
 
 package() {
-	local redo=$(command -v redo || echo ./do)
+	#local redo=$(command -v redo || echo ./do)
 	cd $pkgname-v$pkgver
-	FALLBACKVER=$pkgver-$pkgrel PREFIX="$pkgdir/usr" ${redo} install
+	FALLBACKVER=$pkgver-$pkgrel PREFIX="$pkgdir/usr" make -e install
 }
