@@ -6,10 +6,10 @@
 # Contributor: Ada <adadonderr@gmail.com>
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
-pkgver=2.6.15
+pkgver=2.6.16
 _electronversion=25
 _nodeversion=16
-pkgrel=2
+pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote"
 arch=(
     'aarch64'
@@ -28,9 +28,9 @@ makedepends=(
     'npm'
     'git'
     'zip'
-    'node-gyp'
-    'make'
+    'base-devel'
     'gcc'
+    'curl'
 )
 source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
@@ -62,6 +62,11 @@ build() {
     HOME="${srcdir}/.electron-gyp"
     #build
     cd "${srcdir}/${pkgname}.git"
+    if [ `curl ifconfig.co/country` == "China" ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    fi
     # Install packages
     npm ci --ignore-scripts --prefer-offline --no-audit
     npm run bootstrap -- --scope=web
