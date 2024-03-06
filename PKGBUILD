@@ -279,6 +279,145 @@ build() {
   fi
 }
 
+_rm_man() {
+  mv \
+    "${pkgdir}/usr/share/man/man1/${pkgbase}.1.gz" \
+    "${srcdir}"
+  rm \
+    -f \
+    "${pkgdir}/usr/share/man" || \
+    true
+  install \
+    -Dm \
+      755 \
+    "${srcdir}/${pkgbase}.1.gz" \
+    "${pkgdir}/usr/share/man/man1/${pkgbase}.1.gz"
+}
+
+_remove_rest_of_grub() {
+  local \
+    _the_rest_of_grub=()
+  _the_rest_of_grub=( 
+    /etc/grub.d/00_header
+    /etc/grub.d/10_linux
+    /etc/grub.d/20_linux_xen
+    /etc/grub.d/25_bli
+    /etc/grub.d/30_os-prober
+    /etc/grub.d/30_uefi-firmware
+    /etc/grub.d/40_custom
+    /etc/grub.d/41_custom
+    /etc/grub.d/README
+    /usr/bin/grub-bios-setup
+    /usr/bin/grub-editenv
+    /usr/bin/grub-file
+    /usr/bin/grub-fstest
+    /usr/bin/grub-glue-efi
+    /usr/bin/grub-install
+    /usr/bin/grub-kbdcomp
+    /usr/bin/grub-macbless
+    /usr/bin/grub-menulst2cfg
+    /usr/bin/grub-mkconfig
+    /usr/bin/grub-mkfont
+    /usr/bin/grub-mkimage
+    /usr/bin/grub-mklayout
+    /usr/bin/grub-mknetdir
+    /usr/bin/grub-mkpasswd-pbkdf2
+    /usr/bin/grub-mkrelpath
+    /usr/bin/grub-mkrescue
+    /usr/bin/grub-mkstandalone
+    /usr/bin/grub-mount
+    /usr/bin/grub-ofpathname
+    /usr/bin/grub-probe
+    /usr/bin/grub-reboot
+    /usr/bin/grub-render-label
+    /usr/bin/grub-script-check
+    /usr/bin/grub-set-default
+    /usr/bin/grub-sparc64-setup
+    /usr/bin/grub-syslinux2cfg
+    /usr/share/bash-completion/completions/grub
+    /usr/share/grub/ascii.h
+    /usr/share/grub/ascii.pf2
+    /usr/share/grub/euro.pf2
+    /usr/share/grub/grub-mkconfig_lib
+    /usr/share/grub/themes/starfield/COPYING.CC-BY-SA-3.0
+    /usr/share/grub/themes/starfield/README
+    /usr/share/grub/themes/starfield/blob_w.png
+    /usr/share/grub/themes/starfield/boot_menu_c.png
+    /usr/share/grub/themes/starfield/boot_menu_e.png
+    /usr/share/grub/themes/starfield/boot_menu_n.png
+    /usr/share/grub/themes/starfield/boot_menu_ne.png
+    /usr/share/grub/themes/starfield/boot_menu_nw.png
+    /usr/share/grub/themes/starfield/boot_menu_s.png
+    /usr/share/grub/themes/starfield/boot_menu_se.png
+    /usr/share/grub/themes/starfield/boot_menu_sw.png
+    /usr/share/grub/themes/starfield/boot_menu_w.png
+    /usr/share/grub/themes/starfield/dejavu_10.pf2
+    /usr/share/grub/themes/starfield/dejavu_12.pf2
+    /usr/share/grub/themes/starfield/dejavu_14.pf2
+    /usr/share/grub/themes/starfield/dejavu_16.pf2
+    /usr/share/grub/themes/starfield/dejavu_bold_14.pf2
+    /usr/share/grub/themes/starfield/slider_c.png
+    /usr/share/grub/themes/starfield/slider_n.png
+    /usr/share/grub/themes/starfield/slider_s.png
+    /usr/share/grub/themes/starfield/starfield.png
+    /usr/share/grub/themes/starfield/terminal_box_c.png
+    /usr/share/grub/themes/starfield/terminal_box_e.png
+    /usr/share/grub/themes/starfield/terminal_box_n.png
+    /usr/share/grub/themes/starfield/terminal_box_ne.png
+    /usr/share/grub/themes/starfield/terminal_box_nw.png
+    /usr/share/grub/themes/starfield/terminal_box_s.png
+    /usr/share/grub/themes/starfield/terminal_box_se.png
+    /usr/share/grub/themes/starfield/terminal_box_sw.png
+    /usr/share/grub/themes/starfield/terminal_box_w.png
+    /usr/share/grub/themes/starfield/theme.txt
+    /usr/share/grub/unicode.pf2
+    /usr/share/grub/widthspec.h
+    /usr/share/info/grub-dev.info.gz
+    /usr/share/info/grub.info-1.gz
+    /usr/share/info/grub.info-2.gz
+    /usr/share/info/grub.info.gz
+    /usr/share/locale/en@arabic/LC_MESSAGES/grub.mo
+    /usr/share/locale/en@cyrillic/LC_MESSAGES/grub.mo
+    /usr/share/locale/en@greek/LC_MESSAGES/grub.mo
+    /usr/share/locale/en@hebrew/LC_MESSAGES/grub.mo
+    /usr/share/locale/en@piglatin/LC_MESSAGES/grub.mo
+    /usr/share/locale/en@quot/LC_MESSAGES/grub.mo
+    /usr/share/man/man1/grub-editenv.1.gz
+    /usr/share/man/man1/grub-file.1.gz
+    /usr/share/man/man1/grub-fstest.1.gz
+    /usr/share/man/man1/grub-glue-efi.1.gz
+    /usr/share/man/man1/grub-kbdcomp.1.gz
+    /usr/share/man/man1/grub-menulst2cfg.1.gz
+    /usr/share/man/man1/grub-mkfont.1.gz
+    /usr/share/man/man1/grub-mkimage.1.gz
+    /usr/share/man/man1/grub-mklayout.1.gz
+    /usr/share/man/man1/grub-mknetdir.1.gz
+    /usr/share/man/man1/grub-mkpasswd-pbkdf2.1.gz
+    /usr/share/man/man1/grub-mkrelpath.1.gz
+    /usr/share/man/man1/grub-mkrescue.1.gz
+    /usr/share/man/man1/grub-mkstandalone.1.gz
+    /usr/share/man/man1/grub-mount.1.gz
+    /usr/share/man/man1/grub-render-label.1.gz
+    /usr/share/man/man1/grub-script-check.1.gz
+    /usr/share/man/man1/grub-syslinux2cfg.1.gz
+    /usr/share/man/man8/grub-bios-setup.8.gz
+    /usr/share/man/man8/grub-install.8.gz
+    /usr/share/man/man8/grub-macbless.8.gz
+    /usr/share/man/man8/grub-mkconfig.8.gz
+    /usr/share/man/man8/grub-ofpathname.8.gz
+    /usr/share/man/man8/grub-probe.8.gz
+    /usr/share/man/man8/grub-reboot.8.gz
+    /usr/share/man/man8/grub-set-default.8.gz
+    /usr/share/man/man8/grub-sparc64-setup.8.gz
+  )
+  for _each_thing \
+    in "${_the_rest_of_grub}"; do
+    rm \
+      -rf \
+      "${_file}"
+  done
+}
+
 _package_grub-emu() {
   cd \
     "${srcdir}/grub-emu/"
@@ -302,6 +441,16 @@ _package_grub-emu() {
     -f \
     "${pkgdir}/usr/lib/grub/${_EMU_ARCH}-emu"/{kernel.exec,gdb_grub,gmodule.pl} || \
     true
+  _rm_man
+  rm \
+    -f \
+    "${pkgdir}/usr/share/info" || \
+    true
+  rm \
+    -f \
+    "${pkgdir}/usr/share/info" || \
+    true
+  _rm_rest_of_grub
 }
 
 package() {
