@@ -3,7 +3,7 @@ pkgname=huelectron-bin
 _pkgname=huElectron
 pkgver=0.6.1
 _electronversion=24
-pkgrel=6
+pkgrel=7
 pkgdesc="An open-source and cross-platform app for the Hue lighting system from Philips - built on Electron."
 arch=(x86_64)
 url="https://github.com/4ch1m/huElectron"
@@ -23,13 +23,13 @@ source=(
 )
 sha256sums=('8d3ea2043a7fee5a83a6ff34b97b93acc7cb98318e2ff08d827bb2a8ca5bd94f'
             '1f3f81918f9254f49488f0a113f55bd1da262b9300026d927b21cd10e895bcc6'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories "Development;Utility" --name "${_pkgname}" --exec "${pkgname} %U"
+    gendesk -q -f -n --categories="Development;Utility" --name="${_pkgname}" --exec="${pkgname} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
