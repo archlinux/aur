@@ -1,19 +1,18 @@
 pkgbase = brother-hll6200dw
 	pkgdesc = Brother HL-L6200DW CUPS driver
-	pkgver = 3.2.0_1
+	pkgver = 3.5.1
 	pkgrel = 1
-	url = http://brother.com
+	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=hll6200dw_us_as
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = custom:proprietary
 	depends = cups
-	source = https://download.brother.com/welcome/dlf102426/hll6200dwlpr-3.2.0-1.i386.rpm
-	source = https://download.brother.com/welcome/dlf102427/hll6200dwcupswrapper-3.2.0-1.i386.rpm
+	source = https://download.brother.com/welcome/dlf102426/hll6200dwlpr-3.5.1-1.i386.rpm
+	source = https://download.brother.com/welcome/dlf102427/hll6200dwcupswrapper-3.5.1-1.i386.rpm
 	source = brother-hll6200dw.patch
-	md5sums = f3c49178cf4d661850717ca54bbd21ae
-	md5sums = b899e0b58f58422e24df8b1159981222
-	md5sums = 042f2f42b5641add7f2f28731bdbfc57
+	md5sums = 57b1247713c5cbafe352dbfbc61fd0ae
+	md5sums = d3fb2f589f0a1c7e1e20fb74e4a027f7
+	md5sums = 0d7f161bb79cea09ae18c5d9cbceaa4f
 	depends_x86_64 = lib32-glibc
 
 pkgname = brother-hll6200dw
-

@@ -1,0 +1,4 @@
+pkg/
+*.rpm
+src/
+*.tar.zst
