@@ -1,6 +1,6 @@
-pkgbase = mutter-performance
+pkgbase = mutter-rc-performance
 	pkgdesc = A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync
-	pkgver = 45.4
+	pkgver = 46.rc
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
@@ -37,25 +37,13 @@ pkgbase = mutter-performance
 	depends = pipewire
 	depends = startup-notification
 	depends = xorg-xwayland
-	source = mutter-performance::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=919e71b113cc03c0fe1de7777393a19947f7b9f9
+	source = mutter-rc-performance::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=1e74e5071f381b2dd9026f8186987245dfd89100
 	source = mr1441.patch
-	source = mr3304.patch
-	source = mr3327.patch
-	source = mr3373.patch
 	sha256sums = SKIP
-	sha256sums = 8d082a002e3506f67cf40c9ea03119e9e24f6c02238e633265a51992501e9799
-	sha256sums = 1339a8235b54a218c109a1d5e0992b3dca0f7610beb98fab0c27f0d68e026e16
-	sha256sums = 2bf8e12fe60a35469352510cc14a76603722441c1cb47ae9548a79712a01a762
-	sha256sums = 3e1f07b696ad37b1c639a524c092cd9259444bc6156542901ccaec936bea240f
+	sha256sums = a2b68f8fefb0db50726bf2a2821dfd8d35d182191acf5b33c1f8ed379268a95b
 
-pkgname = mutter-performance
+pkgname = mutter-rc-performance
 	groups = gnome
 	provides = mutter
-	provides = libmutter-13.so
+	provides = libmutter-14.so
 	conflicts = mutter
-
-pkgname = mutter-performance-docs
-	pkgdesc = A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync (documentation)
-	depends = 
-	provides = mutter-docs
-	conflicts = mutter-docs
