@@ -52,7 +52,6 @@ function inputMethod() {
 function launch() {
 	echo "Launching WeChat Beta..."
 	bwrap \
-		--dir "$XDG_RUNTIME_DIR" \
 		--dir /tmp \
 		--symlink usr/lib /lib \
 		--symlink usr/lib64 /lib64 \
@@ -117,7 +116,7 @@ EOF
 manageDirs
 moeDect
 inputMethod
-launchDbusProxy &
+#launchDbusProxy &
 sleep 0.1
 launch $@
 

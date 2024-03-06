@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=wechat-uos-bwrap
 pkgver=1
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="WeChat Testing with bwrap sandbox"
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
 	wechat-${pkgver}.deb::"https://cdn4.cnxclm.com/uploads/2024/03/05/3VDyAc0x_wechat-beta_1.0.0.145_amd64.deb?attname=wechat-beta_1.0.0.145_amd64.deb"
 )
 noextract=()
-md5sums=('5bc66063aaf8618c02716196d21f2ef6'
+md5sums=('9ac42ce5ee6e78c68752ec0b441942d2'
          '0b654857592a9713c65a58bd061811ba'
          '600e74549ce2258c045d5c2f7689ea63'
          '1da072bd774d1b5c08b9545b409e3fcb')
