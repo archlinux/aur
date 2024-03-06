@@ -1,0 +1,11 @@
+pkgbase = f40-backgrounds
+	pkgdesc = Desktop backgrounds of the Fedora 40 default theme for GNOME, KDE, Mate and Xfce desktops
+	pkgver = 40.0.0
+	pkgrel = 1
+	url = https://github.com/fedoradesign/backgrounds
+	arch = any
+	license = CC-BY-SA-4.0
+	source = https://github.com/fedoradesign/backgrounds/releases/download/v40.0.0/f40-backgrounds-40.0.0.tar.xz
+	b2sums = 39bae9dbaafea5e26f3c24bc515d184538c5bcc3b4db6fcb5ab7619c059214b9b763978cb9d0651ff672281d2e1f2dc3c76968aa7ccbed7b1fb92a271b9bcbe0
+
+pkgname = f40-backgrounds
