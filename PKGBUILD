@@ -1,8 +1,8 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgbase=vpkedit
 pkgname=(vpkedit libvpkeditc)
-pkgver=4.1.0
-pkgrel=3
+pkgver=4.1.2
+pkgrel=1
 pkgdesc="A library and CLI/GUI tool to create, read, and write several pack file formats"
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKEdit"
@@ -18,9 +18,6 @@ source=("$pkgname::git+$url.git#tag=v${pkgver}"
 		"minizip-ng::git+https://github.com/zlib-ng/minizip-ng.git"
 		"sourcepp::git+https://github.com/craftablescience/sourcepp.git"
 		"miniaudio::git+https://github.com/mackron/miniaudio.git"
-		"libvpkeditc.patch::https://github.com/craftablescience/VPKEdit/commit/4ae22388250f76e68006564c31a6a5fcd49b6c69.patch"
-		"libvpkeditc2.patch::https://github.com/craftablescience/VPKEdit/commit/55e2d756b68d02cd93afcfc3abc02ebe39036b7b.patch"
-		"libvpkeditc3.patch::https://github.com/craftablescience/VPKEdit/commit/b831bd32dc9dcf3a48aa8c5924796d473c7457ea.patch"
 		#Submodule for submodules
 		"bufferstream::git+https://github.com/craftablescience/BufferStream.git")
 sha256sums=('SKIP'
@@ -32,16 +29,10 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '9f59b6aa4e561e4ab60818ec7bfab4d968ce33e4f88d2e3abe5e3d20e2d73a20'
-            '61bbc9ccb191fe0c117f97a519b216b7060f805ceb284e8e0583f74e0daeb618'
-            '69fb93ace18cf2e1339430e6135b445964656793fee47e15bbff0e36c5185ff8'
             'SKIP')
 
 prepare() {
 	cd "$srcdir/$pkgname"
-	patch -p1 <"$srcdir/libvpkeditc.patch"
-	patch -p1 <"$srcdir/libvpkeditc2.patch"
-	patch -p1 <"$srcdir/libvpkeditc3.patch"
 	git submodule init
 	for submodule in {vtflib,saap,speedykeyv,sourcepp,miniaudio}; do
 		git config submodule.src/gui/thirdparty/$submodule.url "$srcdir/${submodule}"

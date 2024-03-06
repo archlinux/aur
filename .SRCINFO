@@ -1,7 +1,7 @@
 pkgbase = vpkedit
 	pkgdesc = A library and CLI/GUI tool to create, read, and write several pack file formats
-	pkgver = 4.1.0
-	pkgrel = 3
+	pkgver = 4.1.2
+	pkgrel = 1
 	url = https://github.com/craftablescience/VPKEdit
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = vpkedit
 	makedepends = qt6-tools
 	depends = gcc-libs
 	depends = glibc
-	source = vpkedit::git+https://github.com/craftablescience/VPKEdit.git#tag=v4.1.0
+	source = vpkedit::git+https://github.com/craftablescience/VPKEdit.git#tag=v4.1.2
 	source = argparse::git+https://github.com/p-ranav/argparse.git
 	source = vtflib::git+https://github.com/StrataSource/VTFLib.git
 	source = saap::git+https://github.com/Trico-Everfire/SteamAppPathProvider.git
@@ -20,9 +20,6 @@ pkgbase = vpkedit
 	source = minizip-ng::git+https://github.com/zlib-ng/minizip-ng.git
 	source = sourcepp::git+https://github.com/craftablescience/sourcepp.git
 	source = miniaudio::git+https://github.com/mackron/miniaudio.git
-	source = libvpkeditc.patch::https://github.com/craftablescience/VPKEdit/commit/4ae22388250f76e68006564c31a6a5fcd49b6c69.patch
-	source = libvpkeditc2.patch::https://github.com/craftablescience/VPKEdit/commit/55e2d756b68d02cd93afcfc3abc02ebe39036b7b.patch
-	source = libvpkeditc3.patch::https://github.com/craftablescience/VPKEdit/commit/b831bd32dc9dcf3a48aa8c5924796d473c7457ea.patch
 	source = bufferstream::git+https://github.com/craftablescience/BufferStream.git
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -33,9 +30,6 @@ pkgbase = vpkedit
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 9f59b6aa4e561e4ab60818ec7bfab4d968ce33e4f88d2e3abe5e3d20e2d73a20
-	sha256sums = 61bbc9ccb191fe0c117f97a519b216b7060f805ceb284e8e0583f74e0daeb618
-	sha256sums = 69fb93ace18cf2e1339430e6135b445964656793fee47e15bbff0e36c5185ff8
 	sha256sums = SKIP
 
 pkgname = vpkedit
