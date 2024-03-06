@@ -1,0 +1,15 @@
+pkgbase = dyna-git
+	pkgdesc = Convert a colorscheme from one terminal emulator to another.
+	pkgver = 0.1.1.r13.g96545ad
+	pkgrel = 1
+	url = https://git.sr.ht/~grtcdr/dyna
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	provides = dyna
+	conflicts = dyna
+	source = dyna::git+https://git.sr.ht/~grtcdr/dyna
+	sha1sums = SKIP
+
+pkgname = dyna-git
