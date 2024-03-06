@@ -1,4 +1,4 @@
-/pkg
-/src
-/*.xpi
-/*.tar*
+*
+!PKGBUILD
+!.gitignore
+!.SRCINFO
