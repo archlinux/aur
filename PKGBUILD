@@ -2,7 +2,7 @@
 pkgname=melodie-bin
 pkgver=2.0.0
 _electronversion=18
-pkgrel=9
+pkgrel=10
 pkgdesc="Melodie is a portable, simple-as-pie music player"
 arch=('x86_64')
 url="https://feugy.github.io/melodie/"
@@ -12,10 +12,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'hicolor-icon-theme'
-    "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
+    "electron${_electronversion}-bin"
     'python>=3'
     'nodejs'
 )
@@ -26,7 +23,7 @@ source=(
 )
 sha256sums=('3b841b77e3c974396e8317bcd14b7d023dfc7bd5dbc4c78f17eb53c143645dfe'
             '73c77debeee2edc386c515d1be6507325c36f4d5729e64743d7350ad146a3e2c'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
