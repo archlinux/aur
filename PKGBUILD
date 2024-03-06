@@ -2,7 +2,8 @@
 pkgname=utools-bin
 _pkgname=uTools
 pkgver=4.4.1
-pkgrel=2
+_electronversion=22
+pkgrel=3
 pkgdesc="uTools Utilities.新一代效率工具平台,自由组合插件应用,打造专属你的趁手工具集"
 arch=("x86_64")
 url="https://u.tools"
@@ -16,9 +17,6 @@ depends=(
     'hicolor-icon-theme'
     'nss'
     'alsa-lib'
-    'lib32-gcc-libs'
-    'lib32-glibc'
-    'nodejs'
 )
 options=(
     '!strip'
@@ -30,7 +28,7 @@ source=(
 sha256sums=('24cd6613008cfabffaab1727324ddd772123acf8d89781b0ddc0486a84384e0f'
             '79ece83ed12ba8fe68f7ae40af48df0e3e8f23fcb0f1cae6908fa14221cbab64')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin} --no-sandbox|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {

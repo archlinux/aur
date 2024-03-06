@@ -1,7 +1,7 @@
 pkgbase = utools-bin
 	pkgdesc = uTools Utilities.新一代效率工具平台,自由组合插件应用,打造专属你的趁手工具集
 	pkgver = 4.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://u.tools
 	arch = x86_64
 	license = LicenseRef-custom
@@ -10,9 +10,6 @@ pkgbase = utools-bin
 	depends = hicolor-icon-theme
 	depends = nss
 	depends = alsa-lib
-	depends = lib32-gcc-libs
-	depends = lib32-glibc
-	depends = nodejs
 	provides = utools=4.4.1
 	conflicts = utools
 	options = !strip
