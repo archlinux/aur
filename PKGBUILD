@@ -2,12 +2,12 @@
 pkgname=linked-bin
 pkgver=1.5.2
 _electronversion=17
-pkgrel=7
+pkgrel=8
 pkgdesc="Daily journaling without distraction. An easy, distraction-free way to record your thoughts, declutter your mind and keep the things you want to remember. "
 arch=('x86_64')
 url="https://uselinked.com/"
 _ghurl="https://github.com/lostdesign/linked"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('44fc87edf617d445a014ddc637ae547371f218f803b2558d0e1014d3879483cf'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
