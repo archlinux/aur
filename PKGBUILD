@@ -16,7 +16,7 @@ makedepends=('cmake' 'qt6-tools' 'extra-cmake-modules')
 source=(https://photoqt.org/downloads/source/$pkgname-$pkgver.tar.gz
         magick.patch)
 sha256sums=('07466e6ef5881191670f6bfbe1ba4fbfeff0afbbda1d2f503f8ffff7f69f8f34'
-            '70b1103d71ea0399b3a665c2133f7d85221f2761807d629e42a9875178d9e6b5')
+            'a757cf48c09102de01071841af1d154e20826f9b00665d45c1bb4132e789390f')
 
 # NOTE
 # To use GraphicsMagick instead of ImageMagick replace it in the depends array above and change
