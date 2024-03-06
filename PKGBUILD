@@ -1,7 +1,7 @@
 # Maintainer: Jérôme de Courval <decje9@gmail.com>
 pkgname=tandoor-recipes-git
 pkgver=1.2.2.r1199.a497a6b7
-pkgrel=2
+pkgrel=3
 pkgdesc=""
 arch=('any')
 url="https://github.com/TandoorRecipes/recipes"
@@ -32,7 +32,7 @@ sha1sums=(
     '2477c21bff44ed1051281dd66a6f13a296db11ca'
     'b564ef5c07d98c9983cb891e1e974dbf678e5c73'
     '431a88a4ab33ec118961d80c00e3a5944d2c5691'
-    '42dbc9268ed26f21095042ca7ca2f958c086744d'
+    '6072447d59acbc452b1e4dc5b0064c5ccafae97b'
     'd97eedbb1e58a98e3bd4c34ed124542e20758b80'
 )
 
