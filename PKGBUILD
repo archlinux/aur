@@ -19,9 +19,11 @@ pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
 license=('GPL2')
-depends=('cgal' 'fbx-sdk' 'ffmpeg4.4' 'glew' 'glu' 'mesa' 'mpir' 'pcl' 'pdal' 'qt5-base' 'qt5-tools' 'qt5-svg' 'qt5-websockets' 'shapelib' 'tbb' 'opencascade' 'opencv' 'gdal')
+depends=('cgal' 'fbx-sdk' 'ffmpeg4.4' 'glew' 'glu' 'mesa' 'mpir' 'pcl' 'pdal' 'laszip' 'qt5-base' 'qt5-tools' 'qt5-svg' 'qt5-websockets' 'shapelib' 'tbb' 'opencascade' 'opencv' 'gdal')
 #fix pcl:>vtk:>vtkm:>openmp missing deps
-depends+=(openmp)
+depends+=(openmpi)
+depends+=(nlohmann-json fmt jsoncpp)
+depends+=(utf8cpp fast_float)
 makedepends=('clang' 'cmake' 'doxygen' 'git' 'laz-perf' 'libharu' 'ninja' 'proj' 'python')
 conflicts=('cloudcompare')
 provides=('cloudcompare')
@@ -82,7 +84,7 @@ build() {
         -DPLUGIN_IO_QFBX:BOOL=ON # requires update of AUR/fbx-sdk (https://www.autodesk.com/content/dam/autodesk/www/adn/fbx/2020-1-1/fbx202011_fbxsdk_linux.tar.gz)
         -DFBX_SDK_INCLUDE_DIR:PATH=/usr/include
         -DFBX_SDK_LIBRARY_FILE:FILEPATH=/usr/lib/libfbxsdk.so
-        -DPLUGIN_IO_QPDAL:BOOL=ON
+        -DPLUGIN_IO_QLAS:BOOL=ON
         -DPLUGIN_IO_QPHOTOSCAN:BOOL=ON
         -DPLUGIN_IO_QRDB:BOOL=OFF # requires rdblib (package for AUR from http://www.riegl.com/products/software-packages/rdblib/)
         -DPLUGIN_IO_QSTEP=ON # requires opencascade
