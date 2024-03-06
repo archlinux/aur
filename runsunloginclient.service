@@ -6,6 +6,7 @@ After=network-online.target
 [Service]
 Type=simple
 ExecStart=/opt/sunlogin/bin/oray_rundaemon -m server
+KillMode=process
 ExecStop=
 
 [Install]

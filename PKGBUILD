@@ -4,25 +4,26 @@
 pkgname=sunloginclient
 _pkgname=sunlogin
 _debname=SunloginClient
-pkgver=11.0.1.44968
-pkgrel=2
+pkgver=15.2.0.62802
+pkgrel=1
 pkgdesc="Proprietary software that supports remote control of mobile devices, Windows, Mac, Linux and other systems.(GUI version)"
-arch=("x86_64" "aarch64")
+arch=("x86_64")
 url="https://sunlogin.oray.com"
 depends=("libappindicator-gtk3"
+         "gconf"
          'xorg-xhost'
          'libcrypt.so=1-64')
 license=('custom')
 provides=('sunlogin')
 source=("runsunloginclient.service"
-        'LICENSE')
+        'LICENSE::https://service.oray.com/question/1820.html')
 source_x86_64=("https://down.oray.com/${_pkgname}/linux/${_debname}_${pkgver}_amd64.deb")
 source_aarch64=("https://down.oray.com/${_pkgname}/linux/${_debname}_${pkgver}_kylin_arm.deb")
 install="${pkgname}.install"
-sha256sums=('7f36a60d84741d817a0d0804bd39c8c7d7058144a6934b2abf0841446f4a56de'
-            'b3da0bda5ab0d4badb2cf7723dac95a9c5f5efb89f3d3f192d78728b064d0720')
-sha256sums_x86_64=('e8175ed0e3deff2e04ae7d6927c3f47b9586a085b67109109ceba4ed54fd24b2')
-sha256sums_aarch64=('4d34fdea6c4ca7421acbb3ee791ea4d1470ff4fd567204f00a09042cfd547c09')
+options=(emptydirs)
+sha256sums=('bdf8bae0231c1ba656adba5d8fb519fa00eb2294dee487e8c06b4ffd3e9f487e'
+            'SKIP')
+sha256sums_x86_64=('9838813c5253772cff234f66509955c7c1d3bad0eb89d9993b7b1ec64e9976bc')
 
 build() {
   mkdir -p build
@@ -32,27 +33,40 @@ build() {
 _install (){
   cd ${srcdir}/build
 
-  find usr/local/${_pkgname}/$1 -type f -exec \
+  find usr/local/${_pkgname}/$1 -maxdepth 1 -type f -exec \
       install -Dm$2 {} -t ${pkgdir}/opt/${_pkgname}/$1 \;
 }
 
 package() {
   cd build
+
   # system service
   install -Dm644 ${srcdir}/run${pkgname}.service -t \
                  "${pkgdir}/usr/lib/systemd/system/"
   # bin
   _install bin 755
 
-  # font
+  # etc
+  # empty dir
+  install -dm755 ${pkgdir}/opt/${_pkgname}/etc
+
+  # lib
+  _install lib 644
+
+  # res
+  _install res 644
+
+  # res/font
   _install res/font 644
 
-  # icon
+  # res/icon
   _install res/icon 644
 
-  # skin
-  # write permission is required for sunlogin client to work
-  _install res/skin 666
+  # res/locales
+  _install res/locales 644
+
+  # res/skin
+  _install res/skin 644
 
   # desktop entry
   install -Dm644 usr/share/applications/${_pkgname}.desktop -t \

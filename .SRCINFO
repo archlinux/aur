@@ -1,23 +1,22 @@
 pkgbase = sunloginclient
 	pkgdesc = Proprietary software that supports remote control of mobile devices, Windows, Mac, Linux and other systems.(GUI version)
-	pkgver = 11.0.1.44968
-	pkgrel = 2
+	pkgver = 15.2.0.62802
+	pkgrel = 1
 	url = https://sunlogin.oray.com
 	install = sunloginclient.install
 	arch = x86_64
-	arch = aarch64
 	license = custom
 	depends = libappindicator-gtk3
+	depends = gconf
 	depends = xorg-xhost
 	depends = libcrypt.so=1-64
 	provides = sunlogin
+	options = emptydirs
 	source = runsunloginclient.service
-	source = LICENSE
-	sha256sums = 7f36a60d84741d817a0d0804bd39c8c7d7058144a6934b2abf0841446f4a56de
-	sha256sums = b3da0bda5ab0d4badb2cf7723dac95a9c5f5efb89f3d3f192d78728b064d0720
-	source_x86_64 = https://down.oray.com/sunlogin/linux/SunloginClient_11.0.1.44968_amd64.deb
-	sha256sums_x86_64 = e8175ed0e3deff2e04ae7d6927c3f47b9586a085b67109109ceba4ed54fd24b2
-	source_aarch64 = https://down.oray.com/sunlogin/linux/SunloginClient_11.0.1.44968_kylin_arm.deb
-	sha256sums_aarch64 = 4d34fdea6c4ca7421acbb3ee791ea4d1470ff4fd567204f00a09042cfd547c09
+	source = LICENSE::https://service.oray.com/question/1820.html
+	sha256sums = bdf8bae0231c1ba656adba5d8fb519fa00eb2294dee487e8c06b4ffd3e9f487e
+	sha256sums = SKIP
+	source_x86_64 = https://down.oray.com/sunlogin/linux/SunloginClient_15.2.0.62802_amd64.deb
+	sha256sums_x86_64 = 9838813c5253772cff234f66509955c7c1d3bad0eb89d9993b7b1ec64e9976bc
 
 pkgname = sunloginclient

@@ -23,4 +23,16 @@ post_upgrade() {
   post_install
 }
 
+post_remove() {
+  if [ -f "/etc/orayconfig.conf" ]; then
+    rm -f /etc/orayconfig.conf
+  fi
+
+  if [ -f "/etc/xdg/autostart/sunlogin.desktop" ];then
+    rm -f /etc/xdg/autostart/sunlogin.desktop
+  fi
+
+  rm -rf /var/log/sunlogin
+}
+
 # vim: ts=2 sw=2 et:
