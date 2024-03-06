@@ -1,6 +1,6 @@
 pkgbase = hpp-fcl
 	pkgdesc = An extension of the Flexible Collision Library
-	pkgver = 2.4.2
+	pkgver = 2.4.4
 	pkgrel = 1
 	url = https://github.com/humanoid-path-planner/hpp-fcl
 	arch = i686
@@ -19,13 +19,13 @@ pkgbase = hpp-fcl
 	depends = glibc
 	depends = gcc-libs
 	optdepends = doxygen
-	source = https://github.com/humanoid-path-planner/hpp-fcl/releases/download/v2.4.2/hpp-fcl-2.4.2.tar.gz
-	source = https://github.com/humanoid-path-planner/hpp-fcl/releases/download/v2.4.2/hpp-fcl-2.4.2.tar.gz.sig
+	source = https://github.com/humanoid-path-planner/hpp-fcl/releases/download/v2.4.4/hpp-fcl-2.4.4.tar.gz
+	source = https://github.com/humanoid-path-planner/hpp-fcl/releases/download/v2.4.4/hpp-fcl-2.4.4.tar.gz.sig
 	validpgpkeys = 9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28
 	validpgpkeys = A031AD35058955293D54DECEC45D22EF408328AD
 	validpgpkeys = F534E75540B2E7D24F99746987CFFF3D0D73CC93
 	validpgpkeys = 1462AF00C9CF3C9E7AFC905E63380359F089A579
-	sha256sums = c6abadd59e5e93367a3defaf38c0ee70989990474ccce1a8220711800e3ab9db
+	sha256sums = cae32b6beb6a93896bf566453e6897606763219cebb3dbfaa229a1e4214b542a
 	sha256sums = SKIP
 
 pkgname = hpp-fcl
