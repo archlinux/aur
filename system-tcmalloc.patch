@@ -1,24 +1,25 @@
-@@ -556,36 +556,16 @@ include_directories( ${CMAKE_SOURCE_DIR}/src/core/include )
- include_directories( ${CMAKE_BINARY_DIR}/src/core )
+@@ -543,39 +543,19 @@ include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/src/binfhe/include )
+ 
+ include_directories( ${CMAKE_CURRENT_BINARY_DIR}/src/core )
  
 -### Handle third-party gperftools for optional tcmalloc
 -
 -add_custom_target(
--	tcm
--	COMMAND ./autogen.sh
--	COMMAND ./configure --prefix=${CMAKE_CURRENT_BINARY_DIR}/third-party --enable-minimal
--	COMMAND make
--	COMMAND make install
--	WORKING_DIRECTORY ${THIRDPARTYDIR}/gperftools
+-    tcm
+-    COMMAND ./autogen.sh
+-    COMMAND ./configure --prefix=${CMAKE_CURRENT_BINARY_DIR}/third-party --enable-minimal
+-    COMMAND make
+-    COMMAND make install
+-    WORKING_DIRECTORY ${THIRDPARTYDIR}/gperftools
 -)
 -
 -add_custom_target(
--	tcm_clean
--	COMMAND rm -rf include/gperftools include/google lib/libtcmalloc_minimal* lib/pkgconfig/libtcmalloc* lib/pkgconfig/libprofiler.pc share/doc/gperftools
--	WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/third-party
+-    tcm_clean
+-    COMMAND rm -rf include/gperftools include/google lib/libtcmalloc_minimal* lib/pkgconfig/libtcmalloc* lib/pkgconfig/libprofiler.pc share/doc/gperftools
+-    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/third-party
 -)
 +### Handle optional tcmalloc
-
+ 
  if(BUILD_STATIC)
 -add_library(tcmalloc_static STATIC IMPORTED GLOBAL)
 -set_target_properties(tcmalloc_static PROPERTIES IMPORTED_LOCATION ${CMAKE_CURRENT_BINARY_DIR}/third-party/lib/libtcmalloc_minimal${CMAKE_STATIC_LIBRARY_SUFFIX})
@@ -32,11 +33,13 @@
  endif()
  
  if(WITH_TCM)
--	install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/third-party/lib DESTINATION .
--		FILES_MATCHING PATTERN "libtcmalloc_minimal.*")
+-    install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/third-party/lib DESTINATION .
+-        FILES_MATCHING PATTERN "libtcmalloc_minimal.*")
 -    list(APPEND THIRDPARTYLIBS "tcmalloc")
--	list(APPEND THIRDPARTYSTATICLIBS "tcmalloc_static")
+-    list(APPEND THIRDPARTYSTATICLIBS "tcmalloc_static")
 -    install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/third-party/include DESTINATION include/openfhe/third-party/)
 +    list(APPEND THIRDPARTYLIBS "${TCMALLOC_LIB}")
 +    list(APPEND THIRDPARTYSTATICLIBS "${TCMALLOC_STATIC_LIB}")
  endif()
+ 
+ if(WITH_NTL)

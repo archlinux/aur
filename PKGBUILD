@@ -1,22 +1,22 @@
 # Maintainer: ObserverOfTime <chronobserver@disroot.org>
 
 pkgname=openfhe-development-git
-pkgver=1.0.3.r0.g122f470
+pkgver=1.1.3.r0.g7b08ce1
 pkgrel=1
 pkgdesc='Open-Source Fully Homomorphic Encryption Library'
 arch=('i686' 'x86_64')
 url='https://www.openfhe.org/'
 license=('BSD')
-depends=('libtcmalloc_minimal.so' 'ntl' 'openmp')
+depends=('gperftools' 'ntl' 'openmp')
 makedepends=('cmake' 'git')
 provides=("openfhe=${pkgver%.r*}" "openfhe-development=${pkgver%.r*}")
-conflicts=('openfhe' 'openfhe-development' 'openfhe-release')
+conflicts=('openfhe' 'openfhe-development')
 source=("git+https://github.com/openfheorg/openfhe-development.git"
-        'git+https://github.com/openfheorg/cereal.git'
+        'cereal::git+https://github.com/openfheorg/cereal.git'
         'google-test::git+https://github.com/google/googletest.git'
         'system-tcmalloc.patch')
 sha256sums=('SKIP' 'SKIP' 'SKIP'
-            'f2aa14008e48d8e82fe043be65ee2367d96057a0ac13990623abb81a941fb590')
+            'beec5409bdfcc1147416baee6f19e711d1e930463016d70735ebf99fb160f2e8')
 
 pkgver() {
     cd ${pkgname%-git}
