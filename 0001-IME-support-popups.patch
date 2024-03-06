@@ -1,7 +1,7 @@
-From 52a47361d0c6fc38f634e7076584e018066fc924 Mon Sep 17 00:00:00 2001
+From 4e0aa75bd879fada4d17ab439b99564aadf08aea Mon Sep 17 00:00:00 2001
 From: tokyo4j <hrak1529@gmail.com>
 Date: Fri, 23 Feb 2024 03:50:55 +0900
-Subject: [PATCH 2/3] IME: support popups
+Subject: [PATCH 1/2] IME: support popups
 
 ---
  include/input/ime.h |   7 +++
@@ -50,10 +50,10 @@ index 419aa99..6d44664 100644
  	LAB_NODE_DESC_TREE,
  	LAB_NODE_DESC_SSD_BUTTON,
 diff --git a/src/desktop.c b/src/desktop.c
-index 35d56b8..aac7f73 100644
+index 412de00..5d8a932 100644
 --- a/src/desktop.c
 +++ b/src/desktop.c
-@@ -416,6 +416,11 @@ get_cursor_context(struct server *server)
+@@ -340,6 +340,11 @@ get_cursor_context(struct server *server)
  				ret.type = LAB_SSD_CLIENT;
  				ret.surface = get_surface_from_layer_node(node);
  				return ret;
@@ -242,10 +242,10 @@ index 18d5420..29a8f9c 100644
  	return relay;
  }
 diff --git a/src/layers.c b/src/layers.c
-index 79cffe9..be77f46 100644
+index 20e9e68..f84c2fb 100644
 --- a/src/layers.c
 +++ b/src/layers.c
-@@ -277,6 +277,8 @@ create_popup(struct wlr_xdg_popup *wlr_popup, struct wlr_scene_tree *parent,
+@@ -298,6 +298,8 @@ create_popup(struct wlr_xdg_popup *wlr_popup, struct wlr_scene_tree *parent)
  		free(popup);
  		return NULL;
  	}
@@ -254,7 +254,7 @@ index 79cffe9..be77f46 100644
  	node_descriptor_create(&popup->scene_tree->node,
  		LAB_NODE_DESC_LAYER_POPUP, popup);
  
-@@ -402,6 +404,9 @@ handle_new_layer_surface(struct wl_listener *listener, void *data)
+@@ -424,6 +426,9 @@ handle_new_layer_surface(struct wl_listener *listener, void *data)
  		return;
  	}
  
@@ -265,10 +265,10 @@ index 79cffe9..be77f46 100644
  		LAB_NODE_DESC_LAYER_SURFACE, surface);
  
 diff --git a/src/output.c b/src/output.c
-index 6d05ee9..07ed2d3 100644
+index 16eee4b..de24379 100644
 --- a/src/output.c
 +++ b/src/output.c
-@@ -320,6 +320,7 @@ new_output_notify(struct wl_listener *listener, void *data)
+@@ -346,6 +346,7 @@ new_output_notify(struct wl_listener *listener, void *data)
  	/*
  	 * Set the z-positions to achieve the following order (from top to
  	 * bottom):
@@ -276,7 +276,7 @@ index 6d05ee9..07ed2d3 100644
  	 *	- session lock layer
  	 *	- layer-shell popups
  	 *	- overlay layer
-@@ -334,6 +335,7 @@ new_output_notify(struct wl_listener *listener, void *data)
+@@ -360,6 +361,7 @@ new_output_notify(struct wl_listener *listener, void *data)
  	wlr_scene_node_raise_to_top(&output->layer_tree[3]->node);
  	wlr_scene_node_raise_to_top(&output->layer_popup_tree->node);
  	wlr_scene_node_raise_to_top(&output->session_lock_tree->node);
@@ -298,5 +298,5 @@ index dc9acc9..8a96807 100644
  
  	view_connect_map(view, xdg_surface->surface);
 -- 
-2.43.2
+2.44.0
 
