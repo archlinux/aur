@@ -4,6 +4,7 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 
+_offline="false"
 # shellcheck disable=SC2034
 _distro="life"
 pkgbase="${_distro}-keyring"
@@ -17,8 +18,9 @@ pkgdesc='Life PGP keyring'
 arch=(
   'any'
 )
-_url="ssh://${_distro}_local_git/home/git/${pkgbase}"
-url="https://gitlab.${_distro}.org/${_distro}/${pkgbase}"
+_ssh_local="ssh://${_distro}_local_git/home/git/${pkgbase}"
+_ns="themartiancompany"
+url="https://github.com/${_ns}/${pkgbase}"
 license=(
   'GPL3'
 )
@@ -39,6 +41,9 @@ checkdepends=(
   'python-coverage'
   'python-pytest'
 )
+_url="${url}"
+[[ "${_offline}" == true ]] && \
+  _url="${_ssh_local}"
 source=(
   "${pkgname}::git+${_url}#tag=${_tag}?signed"
 )
