@@ -4,7 +4,7 @@ pkgname=hyperkeys-bin
 _appname=HyperKeys
 pkgver=1.3.0
 _electronversion=20
-pkgrel=6
+pkgrel=7
 pkgdesc="Unleash you keyboard shorcuts"
 arch=('x86_64')
 url="https://hyperkeys.xureilab.com/"
@@ -14,20 +14,16 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk3'
-    'gtk2'
     'java-runtime'
     'perl'
-    'python'
+    'python>3'
     'nodejs'
-    'libdbusmenu-gtk3'
-    'libxmu'
+    'libdbusmenu-glib'
     'xdotool'
+    'libxmu'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 options=(
     '!emptydirs'
@@ -38,7 +34,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('2884e6025aa4dfee198f1279584e8ec798d8f9519cbe8c6ed1f4648b26e63711'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
