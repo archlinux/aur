@@ -1,4 +1,6 @@
 /src/
 /pkg/
-haskell-pointfree-*.pkg.tar
+/chroot/
+haskell-pointfree-*.log
+haskell-pointfree-*.pkg.tar*
 pointfree-*.tar.gz
