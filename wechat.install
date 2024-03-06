@@ -3,27 +3,13 @@ post_install() {
 	PACK_NAME="com.qq.weixin.mejituu" #软件包名
 	BOTTLE_NAME="Mejituu-WeChat" #容器名
 	ACTIVEX_NAME=""
-	MAKE_AUTOSTART="" #若需要开机自启，则填写1
 
-	make_autostart()
-	{
-	    for username in $(ls /home)
-	    do
-	        echo "/home/${username}"
-	        if [ -d "/home/${username}/.config/autostart" ]
-	        then
-	            cp "/opt/apps/${PACK_NAME}/entries/applications/${PACK_NAME}.desktop" "/home/${username}/.config/autostart/"
-	            sed -i "s#%u#\"autostart\"#" "/home/${username}/.config/autostart/${PACK_NAME}.desktop"
-	        fi
-	    done
+	function zenity() {
+		local user=$(logname 2>/dev/null || echo $SUDO_USER)
+		local uid=$(id -u "$user")
+		su "$user" -c "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$uid/bus zenity $*"
 	}
 
-	function zenity()
-	{
-	    local user=$(who | awk '{print $1}' | head -n 1)
-	    local uid=$(id -u $user)
-	    sudo -u $user DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$uid/bus zenity "$@"
-	}
 
 	isInstallDesktop="no"
 	if [ -d "/host/opt/apps/cn.flamescion.bookworm-compatibility-mode" ] || [ -f "/host/etc/default/grub" ]
@@ -54,13 +40,13 @@ post_install() {
 	    fi
 	fi
 
-	for username in $(ls /home)
-	do
-	    echo "/home/${username}"
-	    if [ -d "/home/${username}/.deepinwine/${BOTTLE_NAME}" ]
-	    then
-	        rm -rf "/home/${username}/.deepinwine/${BOTTLE_NAME}"
-	    fi
+	for username in $(getent passwd | cut -d: -f1); do
+
+		homedir=$(getent passwd "$username" | cut -d: -f6)
+		if [ -d "${homedir}/.deepinwine/${BOTTLE_NAME}" ]; then
+			rm -rf "${homedir}/.deepinwine/${BOTTLE_NAME}"
+		fi
+
 	    if [ "${isInstallDesktop}" = "yes" ]
 	    then
 	        cat "/opt/apps/com.qq.weixin.mejituu/entries/applications/com.qq.weixin.mejituu.desktop" | sed "s#^Exec=\(.*\)#Exec=bookworm-run \1#" >| "/home/${username}/.local/share/applications/com.qq.weixin.mejituu.desktop"
@@ -72,11 +58,6 @@ post_install() {
 	    fi
 	done
 
-	if [ -n "${MAKE_AUTOSTART}" ]
-	then
-	    make_autostart
-	fi
-
 	if [ -n "${ACTIVEX_NAME}" ]
 	then
 	    if [ ! -d "/usr/lib/mozilla/plugins" ]
@@ -86,9 +67,8 @@ post_install() {
 	    cp "/usr/share/pipelight/libpipelight.so" "/usr/lib/mozilla/plugins/libpipelight-${ACTIVEX_NAME}.so"
 	fi
 
-	if hash update-desktop-database 2>/dev/null
-	then
-	    update-desktop-database
+	if command -v update-desktop-database >/dev/null 2>&1; then
+		update-desktop-database
 	fi
 
 	# Make sure the script returns 0
@@ -104,30 +84,12 @@ post_remove() {
 	BOTTLE_NAME="Mejituu-WeChat" #在引号中填写容器名
 	PACK_NAME="com.qq.weixin.mejituu"   #在引号中填写软件包名
 	ACTIVEX_NAME="" #activex相关，若未使用，可不设置
-	MAKE_AUTOSTART="" #如果先前设置了开机自启，则在此处填写1
 
 	### 以下为功能段，若只用于打包则以下内容可不看，只填写上方即可
 
 	if [ "$1" = "remove" ] || [ "$1" = "purge" ]
 	then
 	    echo "清理卸载残留"
-
-	    make_autostart()
-	    {
-	        for username in $(ls /home)
-	        do
-	            echo "/home/${username}"
-	            if [ -d "/home/${username}/.config/autostart" ]
-	            then
-	                rm "/home/${username}/.config/autostart/${PACK_NAME}.desktop"
-	            fi
-	        done
-	    }
-
-	    if [ -n "${MAKE_AUTOSTART}" ]
-	    then
-	        make_autostart
-	    fi
 
 	    if [ -n "${ACTIVEX_NAME}" ]
 	    then
@@ -164,7 +126,6 @@ post_remove() {
 	        fi
 	        rm -f "/home/${username}/.local/share/applications/com.qq.weixin.mejituu.desktop" "/home/${username}/.local/share/applications/com.qq.weixin.mejituu-fix.desktop" "/home/${username}/.local/share/applications/com.qq.weixin.mejituu-monitor.desktop"
 	    done
-	    echo "非卸载，跳过清理"
 	fi
 }
 
