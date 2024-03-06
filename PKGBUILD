@@ -3,8 +3,8 @@
 
 
 pkgname=1panel-bin
-pkgver=1.10.0_lts
-pkgrel=3
+pkgver=1.10.1_lts
+pkgrel=1
 pkgdesc="1Panel is a modern and open source Linux panel."
 arch=('x86_64' 'aarch64')
 url="https://1panel.cn"
@@ -28,8 +28,8 @@ optdepends=(
 conflicts=('1panel-dev-bin')
 source_aarch64=("${pkgname}-${pkgver//_/-}-arm64.tar.gz::https://resource.fit2cloud.com/1panel/package/stable/v${pkgver//_/-}/release/1panel-v${pkgver//_/-}-linux-arm64.tar.gz")
 source_x86_64=("${pkgname}-${pkgver//_/-}-amd64.tar.gz::https://resource.fit2cloud.com/1panel/package/stable/v${pkgver//_/-}/release/1panel-v${pkgver//_/-}-linux-amd64.tar.gz")
-sha256sums_x86_64=("c3735145fbdc8103ef8b3c1b726cedf8ed05d06aa84b075f3b0d4c0291b76100")
-sha256sums_aarch64=("4b223ffdd7e50c2e93bae91fe7dd4aba24153bb2a1f7199883e8e6862e88005e")
+sha256sums_x86_64=("5804421c5432eabf99eb28f8f6de3d02fac3f9b6d2abadba8b2b575cc09e2437")
+sha256sums_aarch64=("fa7f9d0486a23ecc79aa50b54e4ba0bfe3e53939166a926483e22d1ae0747710")
 
 build() {
     # Override the upstream 1pctl script
