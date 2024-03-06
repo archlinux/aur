@@ -1,7 +1,7 @@
 pkgbase = openvino
 	pkgdesc = A toolkit for developing artificial inteligence and deep learning applications
-	pkgver = 2023.3.0
-	pkgrel = 2
+	pkgver = 2024.0.0
+	pkgrel = 1
 	url = https://docs.openvinotoolkit.org/
 	arch = x86_64
 	license = Apache-2.0
@@ -32,13 +32,11 @@ pkgbase = openvino
 	conflicts = intel-openvino
 	replaces = intel-openvino
 	options = !emptydirs
-	source = git+https://github.com/openvinotoolkit/openvino.git#tag=2023.3.0
-	source = https://storage.openvinotoolkit.org/dependencies/gna/gna_03.05.00.2116.zip
+	source = git+https://github.com/openvinotoolkit/openvino.git#tag=2024.0.0
 	source = oneDNN-openvinotoolkit::git+https://github.com/openvinotoolkit/oneDNN.git
 	source = git+https://github.com/herumi/xbyak.git
 	source = git+https://github.com/madler/zlib.git
 	source = git+https://github.com/zeux/pugixml.git
-	source = git+https://github.com/opencv/ade.git
 	source = git+https://github.com/gflags/gflags.git
 	source = googletest-openvinotoolkit::git+https://github.com/openvinotoolkit/googletest.git
 	source = git+https://github.com/KhronosGroup/OpenCL-ICD-Loader.git
@@ -58,11 +56,8 @@ pkgbase = openvino
 	source = git+https://github.com/openvinotoolkit/mlas.git
 	source = openvino.conf
 	source = setupvars.sh
-	source = 010-ade-disable-werror.patch
-	source = 015-openvino-disable-werror.patch
+	source = 010-openvino-disable-werror.patch
 	source = 020-openvino-use-protobuf-shared-libs.patch
-	sha256sums = SKIP
-	sha256sums = 960350567702bda17276ac4c060d7524fb7ce7ced785004bd861c81ff2bfe2c5
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -87,8 +82,7 @@ pkgbase = openvino
 	sha256sums = SKIP
 	sha256sums = 335a55533ab26bd1f63683921baf33b8e8e3f2732a94554916d202ee500f90af
 	sha256sums = e5024ad3382f285fe63dc58faca379f11a669bbe9f5d90682c59ad588aab434c
-	sha256sums = 502fcbb3fcbb66aa5149ad2cc5f1fa297b51ed12c5c9396a16b5795a03860ed0
 	sha256sums = 1b420e3cc2afca11154c672123f001cf03cd2b96be3baafd229f6ee7d752419e
-	sha256sums = 9e0f517320c4351489db5840658ffcf537716b23e88a02ee69380734a40ced21
+	sha256sums = 17417f7193e94c7df32242c71d650d8beda2dadea8b05db131a7731a56e9c84a
 
 pkgname = openvino

@@ -1,6 +1,6 @@
 --- a/thirdparty/dependencies.cmake
 +++ b/thirdparty/dependencies.cmake
-@@ -347,7 +347,7 @@ if(ENABLE_OV_PADDLE_FRONTEND OR ENABLE_OV_ONNX_FRONTEND OR ENABLE_OV_TF_FRONTEND
+@@ -307,7 +307,7 @@ if(ENABLE_OV_PADDLE_FRONTEND OR ENABLE_OV_ONNX_FRONTEND OR ENABLE_OV_TF_FRONTEND
          # Note: Debian / Ubuntu / RHEL libprotobuf.a can only be used with -DBUILD_SHARED_LIBS=OFF
          # because they are compiled without -fPIC
          if(NOT DEFINED Protobuf_USE_STATIC_LIBS)
