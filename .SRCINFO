@@ -1,7 +1,7 @@
 pkgbase = gpu-viewer
 	pkgdesc = A frontend to glxinfo and vulkaninfo.
 	pkgver = 3.02
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/arunsivaramanneo/GPU-Viewer/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = gpu-viewer
 	makedepends = meson
 	makedepends = ninja
 	depends = gtk4
-	depends = libadwaita
+	depends = libadwaita>=1.4
 	depends = python
 	depends = python-gobject
 	depends = python-click
