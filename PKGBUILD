@@ -4,17 +4,25 @@
 pkgname=python-pyvips
 _pkgname=pyvips
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Python binding for libvips using cffi'
-arch=(any)
+arch=('x86_64')
 url='https://github.com/libvips/pyvips'
 license=(MIT)
 depends=(
+  glib2
+  glibc
   libvips
   python-cffi
   python-numpy
+  python-pkgconfig
 )
 makedepends=(
+  imagemagick
+  libheif
+  libjxl
+  openslide
+  poppler-glib
   python-build
   python-installer
   python-setuptools
@@ -26,7 +34,7 @@ sha256sums=('89f5b0cae73720f0a52d872c4ee0a43a1bc40f02565c07b2d7558aaeead23bf8')
 
 build() {
   cd "${_pkgname}-${pkgver}"
-  python -m build --wheel --no-isolation -x
+  python -m build --wheel --no-isolation
 }
 
 package() {
