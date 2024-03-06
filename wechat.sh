@@ -67,7 +67,7 @@ function launch() {
 		--ro-bind /usr /usr \
 		--bind "${XDG_DOCUMENTS_DIR}"/WeChat_Data "${HOME}" \
 		--bind "${XDG_DOCUMENTS_DIR}"/WeChat_Downloads "${XDG_DOWNLOAD_DIR}" \
-		--bind "${XAUTHORITY}" "${XAUTHORITY}" \
+		--bind-try "${XAUTHORITY}" "${XAUTHORITY}" \
 		--ro-bind /etc /etc \
 		--hostname trash \
 		--unshare-uts \
