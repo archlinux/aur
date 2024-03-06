@@ -10,7 +10,7 @@ _pkgname=${pkgname%-git}
 provides=(gimp)
 conflicts=(gimp)
 epoch=2
-pkgver=2.99.17.r751.05b2f93876
+pkgver=2.99.19.r120.0f32312e26
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ depends=(
 	'libwmf>=0.2.8'
 	'icu'
 	'enchant'
-	'libgexiv2>=0.10.6'
+	'libgexiv2>=0.14.0'
 	'librsvg>=2.40.6'
 	'desktop-file-utils'
 	'libexif>=0.6.15'
@@ -32,8 +32,8 @@ depends=(
 	'poppler-data>=0.4.9'
 	'openexr>=1.6.1'
 	'mypaint-brushes1>=1.3.0'
-	'babl>=0.1.74'
-	'gegl>=0.4.32'
+	'babl>=0.1.108'
+	'gegl>=0.4.48'
 	'cairo>=1.14.0'
 	'appstream-glib>=0.7.7'
 	'gobject-introspection>=1.32.0'
