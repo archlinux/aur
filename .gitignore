@@ -1,0 +1,6 @@
+PhoneInfoga/*
+*.tar.gz
+*.tar.zst
+*.log
+pkg/*
+src/*
