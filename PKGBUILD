@@ -1,6 +1,7 @@
 # Maintainer: Fijxu <fijxu [at] nadeko [dot] net> 
 
 _pkgname=suyu
+_branch=master
 pkgname=suyu-git
 pkgver=r27087.c15523798
 pkgrel=1
@@ -8,8 +9,9 @@ pkgdesc="suyu is the afterlife the world's most popular, open-source, Nintendo S
 arch=(x86_64)
 url=https://gitlab.com/suyu-emu/suyu
 license=(GPL3)
-provides=(suyu)
-conflicts=(yuzu yuzu-early-access-appimage yuzu-early-access-git)
+provides=('suyu')
+conflicts=(suyu-dev-git yuzu yuzu-early-access-appimage yuzu-early-access-git)
+install=$pkgname.install
 depends=(
   brotli
   enet
@@ -54,7 +56,7 @@ makedepends=(
 options=(!debug)
 _tag=d32620fe796f9cd90e8e5660deb0fc8f4decd61f
 source=(
-  git+https://gitlab.com/suyu-emu/suyu.git#branch=master
+  git+https://gitlab.com/suyu-emu/suyu.git#branch=${_branch}
   git+https://github.com/arsenm/sanitizers-cmake.git
   git+https://github.com/yhirose/cpp-httplib.git
   git+https://github.com/arun11299/cpp-jwt.git
@@ -129,15 +131,15 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_REPOSITORY=suyu-emu/suyu \
-    -DBUILD_TAG=${pkgver} \
+    -DBUILD_TAG=${_branch}-${pkgver} \
     -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
     -DENABLE_QT6=OFF \
     -DENABLE_QT_TRANSLATION=ON \
     -DENABLE_SDL2=ON \
     -DENABLE_WEB_SERVICE=ON \
     -DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
-    -DTITLE_BAR_FORMAT_IDLE="suyu | ${pkgver} {}" \
-    -DTITLE_BAR_FORMAT_RUNNING="suyu | ${pkgver} | {}" \
+    -DTITLE_BAR_FORMAT_IDLE="suyu | ${_branch}-${pkgver} {}" \
+    -DTITLE_BAR_FORMAT_RUNNING="suyu | ${_branch}-${pkgver} | {}" \
     -DUSE_DISCORD_PRESENCE=OFF \
     -DYUZU_CHECK_SUBMODULES=OFF \
     -DYUZU_DOWNLOAD_TIME_ZONE_DATA=ON \
@@ -158,6 +160,12 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
+  mv ${pkgdir}/usr/bin/yuzu ${pkgdir}/usr/bin/suyu
+  ln -s ${pkgdir}/usr/bin/suyu ${pkgdir}/usr/bin/yuzu
+  mv ${pkgdir}/usr/bin/yuzu-cmd ${pkgdir}/usr/bin/suyu-cmd
+  ln -s ${pkgdir}/usr/bin/suyu-cmd ${pkgdir}/usr/bin/yuzu-cmd
+  mv ${pkgdir}/usr/bin/yuzu-room ${pkgdir}/usr/bin/suyu-room
+  ln -s ${pkgdir}/usr/bin/suyu-room ${pkgdir}/usr/bin/yuzu-room
   install -Dm644 ${_pkgname}/dist/72-yuzu-input.rules -t "${pkgdir}"/usr/lib/udev/rules.d/
 }
 
