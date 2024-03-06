@@ -4,7 +4,7 @@ pkgname=kalidoface-bin
 _pkgname=Kalidoface
 pkgver=0.1.0
 _electronversion=24
-pkgrel=7
+pkgrel=8
 pkgdesc="A Vtuber web app powered by the latest and great in motion capture tech from MediaPipe."
 arch=('x86_64')
 url="https://lab.kalidoface.com/"
@@ -22,16 +22,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('effd121646ac6fdcbf65a18c08ac621f42bd59d2719003b53524fd67a941310e'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    sed 's~const isdev = !app.isPackaged || process.env.NODE_ENV == "development";~const isdev = app.isPackaged;~g' \
-        -i "${srcdir}/opt/${_pkgname}/resources/app/src/electron.cjs"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
