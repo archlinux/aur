@@ -12,7 +12,7 @@ unset _pkgtype
 _gitname="dolphin"
 _pkgname="$_gitname-tabopts"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=23.08.5
+pkgver=24.02.0
 pkgrel=1
 pkgdesc='KDE File Manager - with extended tab options'
 url="https://invent.kde.org/xiota/dolphin/-/merge_requests/1"
@@ -21,12 +21,27 @@ arch=(i686 x86_64)
 
 # main package
 _main_package() {
+  depends+=(
+    'baloo-widgets'
+    'kcmutils'
+    'kio-extras'
+    'knewstuff'
+    'kparts'
+    'kuserfeedback'
+    'plasma-activities'
+  )
+  makedepends+=(
+    'extra-cmake-modules>=5.200'
+    'git'
+    'kdoctools'
+  )
   optdepends=(
     'ffmpegthumbs: video thumbnails'
     'kde-cli-tools: for editing file type options'
     'kdegraphics-thumbnailers: PDF and PS thumbnails'
     'kio-admin: for managing files as administrator'
     'konsole: terminal panel'
+    'purpose: share context menu'
   )
 
   provides=("$_gitname=${pkgver%%.r*}")
@@ -43,23 +58,6 @@ _main_package() {
 _main_stable() {
   : ${_pkgver:=${pkgver%%.r*}}
 
-  depends+=(
-    'baloo-widgets'
-    'kactivities5'
-    'kcmutils5'
-    'kio-extras'
-    'knewstuff5'
-    'kparts5'
-    'kuserfeedback5'
-  )
-  makedepends+=(
-    'extra-cmake-modules'
-    'kdoctools5'
-  )
-  optdepends+=(
-    'purpose5: share context menu'
-  )
-
   _pkgsrc="$_gitname-$_pkgver"
   _pkgext="tar.xz"
   _dl_url="https://download.kde.org/stable/release-service"
@@ -68,15 +66,15 @@ _main_stable() {
   if [[ "${_autoupdate::1}" == "t" ]] ; then
     sha256sums+=('SKIP')
   else
-    sha256sums+=('6309abda566dfe890f6a3790f101198ed0f274728896054f21e24bdfc3e1f1f3')
+    sha256sums+=('10ef284597e28f933d8b4ead75d02759a15df4bcc928ed10b54f8065b7431257')
   fi
 
   source+=(
     # "https://invent.kde.org/system/dolphin/-/merge_requests/269.patch"
-    "dolphin-tabopts-1.patch"::"https://invent.kde.org/xiota/dolphin/-/merge_requests/1.patch"
+    "dolphin-tabopts-3.patch"::"https://invent.kde.org/xiota/dolphin/-/commit/62b60d15f2680e46d143611d55dc7f9f74aed50f.patch"
   )
   sha256sums+=(
-    'a50de534a6049ec4e232b6bddb8b39a105287bd0f6eac934e4eaac50df6f0004'
+    '390fbd2fe4cbd34001004ccca80b9677709d1d0f8f6a10b2b80659dc2dea6874'
   )
 
   pkgver() {
@@ -86,24 +84,6 @@ _main_stable() {
 
 # git package
 _main_git() {
-  depends+=(
-    'baloo-widgets>=24'
-    'kactivities'
-    'kcmutils'
-    'kio-extras>=24'
-    'knewstuff'
-    'kparts'
-    'kuserfeedback'
-  )
-  makedepends+=(
-    'extra-cmake-modules>=5.200'
-    'git'
-    'kdoctools'
-  )
-  optdepends+=(
-    'purpose: share context menu'
-  )
-
   _pkgsrc="$_gitname"
   source+=(
     "$_pkgsrc"::"git+https://invent.kde.org/system/dolphin.git"
@@ -137,8 +117,14 @@ prepare() {
 }
 
 build() {
-  cmake -B build -S "$_pkgsrc" \
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
     -DBUILD_TESTING=OFF
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
   cmake --build build
 }
 
