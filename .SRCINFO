@@ -1,7 +1,7 @@
 pkgbase = 1panel-dev-bin
 	pkgdesc = 1Panel is a modern and open source Linux panel.
 	pkgver = 1.10.1_alpha.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://1panel.cn
 	install = 1panel-dev-bin.install
 	arch = x86_64

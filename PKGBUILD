@@ -3,7 +3,7 @@
 
 pkgname=1panel-dev-bin
 pkgver=1.10.1_alpha.4
-pkgrel=2
+pkgrel=3
 pkgdesc="1Panel is a modern and open source Linux panel."
 arch=('x86_64' 'aarch64')
 url="https://1panel.cn"
@@ -44,6 +44,6 @@ build() {
 package() {
     install -vd ${pkgdir}/opt/1panel
     install -vDm755 ${srcdir}/*/1panel ${pkgdir}/usr/bin/1panel
-    install -vDm644 ${srcdir}/*/1panel.service -t ${pkgdir}/usr/lib/systemd/system/1panel.service
+    install -vDm644 ${srcdir}/*/1panel.service -t ${pkgdir}/usr/lib/systemd/system
     install -vDm755 ${srcdir}/*/1pctl ${pkgdir}/usr/bin/1pctl
 }
