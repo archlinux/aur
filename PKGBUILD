@@ -2,7 +2,7 @@
 # Contributor: Senge Dev <sengedev at gmail dot com>
 
 pkgname=1panel-dev-bin
-pkgver=1.10.1_alpha.2
+pkgver=1.10.1_alpha.4
 pkgrel=1
 pkgdesc="1Panel 是一个现代化、开源的 Linux 服务器运维管理面板。（本包为开发板，不建议在生产环境安装）"
 arch=('x86_64' 'aarch64')
@@ -23,9 +23,9 @@ source_aarch64=("${pkgname}-${pkgver//_/-}-arm64.tar.gz::https://resource.fit2cl
 
 source_x86_64=("${pkgname}-${pkgver//_/-}-amd64.tar.gz::https://resource.fit2cloud.com/1panel/package/dev/v${pkgver//_/-}/release/1panel-v${pkgver//_/-}-linux-amd64.tar.gz"
 "1pctl::https://gitee.com/sengedev/1panel-bin/raw/main/1pctl")
-sha256sums_x86_64=("ce04714a0868ffe112feae42c98704727ccfbcb33d046a5414ec9b0e7832d4e7"
+sha256sums_x86_64=("ab89bc6d790dcc88229df53fb46d03d8b8a369b67ce3c4464d93437f43778605"
 "949f4427f8f3d21232245c7511182d6bd3fa2f76eff366026ebcfc758549a940")
-sha256sums_aarch64=("a226362dacfe8974b9f39d13665bdd047058a91704b09721d4ad438eadf9f6b9"
+sha256sums_aarch64=("c206e658b19dc499f52d90d2a0bb0f333f1cc67bbbdbae98f24d395561cf32d9"
 "949f4427f8f3d21232245c7511182d6bd3fa2f76eff366026ebcfc758549a940")
 
 package() {
