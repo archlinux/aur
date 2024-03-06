@@ -1,12 +1,12 @@
 pkgbase = fumosay
 	pkgdesc = cowsay with fumofumos written in C.
-	pkgver = 1.1
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/randomtwdude/fumosay
 	arch = x86_64
 	license = BSD-3-Clause
 	depends = glibc
-	source = https://github.com/randomtwdude/fumosay/releases/download/fumo1.1/fumosay-1.1.tar.gz
-	sha512sums = e8990e77bbab8a1b5e2c3dc5659c4c08cad8ad922eae7e6f829015738b7fc0160a2f2b9454639d188c4cc51c302050f3108690e65f7a63783107370ab50c4ebb
+	source = https://github.com/randomtwdude/fumosay/releases/download/fumo1.1.1/fumosay-1.1.1.tar.gz
+	sha512sums = 6241b88dd20276149a607d74c4aa09214150e8ea04d8ae3356c66591207aadccf67293356d7c3b1e543a641f94421bffcb6b69d4906e998d1d4cdea4b9420d43
 
 pkgname = fumosay
