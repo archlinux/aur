@@ -1,13 +1,13 @@
 pkgbase = globalping-cli
 	pkgdesc = Better understand your network routing, fix anycast issues, monitor your CDN and DNS performance, do uptime monitoring and build your own network tools for personal or public use.
-	pkgver = 1.1.6
-	pkgrel = 2
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = https://github.com/jsdelivr/globalping-cli
 	arch = x86_64
 	license = Mozilla Public License 2.0
 	makedepends = git
 	makedepends = go
-	source = globalping-cli::git+https://github.com/jsdelivr/globalping-cli.git#tag=v1.1.6
+	source = globalping-cli::git+https://github.com/jsdelivr/globalping-cli.git#tag=v1.2.1
 	sha256sums = SKIP
 
 pkgname = globalping-cli

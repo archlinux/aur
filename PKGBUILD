@@ -1,7 +1,7 @@
 # Maintainer: Per Osbeck <per@osbeck.com>
 pkgname=globalping-cli
-pkgver=1.1.6
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="Better understand your network routing, fix anycast issues, monitor your CDN and DNS performance, do uptime monitoring and build your own network tools for personal or public use."
 arch=(x86_64)
 url="https://github.com/jsdelivr/globalping-cli"
