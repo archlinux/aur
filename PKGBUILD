@@ -39,7 +39,7 @@ depends=(
 	'appstream-glib>=0.7.7'
 	'gobject-introspection>=1.32.0'
 	)
-makedepends=('git' 'intltool>=0.40.1'
+makedepends+=('git' 'intltool>=0.40.1'
              'alsa-lib>=1.0.0' 'libxslt' 'glib-networking'
              'alsa-lib' 'curl' 'ghostscript' 'libxpm' 'webkit2gtk'
              'libheif' 'libwebp' 'libmng' 'iso-codes' 'aalib' 'zlib'
