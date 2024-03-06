@@ -1,7 +1,7 @@
 pkgbase = lunarcalendar-bin
 	pkgdesc = Chinese Lunar Date Control Written in Qt.用Qt写的中国农历日期控件
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/KangLin/LunarCalendar
 	arch = x86_64
 	license = GPL-3.0-only
