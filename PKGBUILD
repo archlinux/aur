@@ -3,7 +3,7 @@ _pkgname=next.library
 pkgname="${_pkgname//./-}-bin"
 pkgver=0.1.0
 _electronversion=21
-pkgrel=7
+pkgrel=8
 pkgdesc="Book library manager, for book enthusiast."
 arch=('x86_64')
 url="https://github.com/CMOISDEAD/next-library"
@@ -13,19 +13,16 @@ conflicts=("${pkgname%-bin}")
 depends=(
     'hicolor-icon-theme'
     "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('223c05617c241c21a3408a5103543bbff100c314f912648767b643d79c23dc67'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \

@@ -1,21 +1,18 @@
 pkgbase = next-library-bin
 	pkgdesc = Book library manager, for book enthusiast.
 	pkgver = 0.1.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/CMOISDEAD/next-library
 	arch = x86_64
 	license = GPL3
-	makedepends = squashfuse
+	makedepends = fuse2
 	depends = hicolor-icon-theme
 	depends = electron21
-	depends = dbus-glib
-	depends = libdbusmenu-glib
-	depends = gtk2
 	provides = next-library=0.1.0
 	conflicts = next-library
 	source = next-library-0.1.0.AppImage::https://github.com/CMOISDEAD/next-library/releases/download/v0.1.0/next.library-0.1.0.AppImage
 	source = next-library.sh
 	sha256sums = 223c05617c241c21a3408a5103543bbff100c314f912648767b643d79c23dc67
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = next-library-bin
