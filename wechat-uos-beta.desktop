@@ -1,14 +1,23 @@
 [Desktop Entry]
 Comment=WeChat Beta
 Comment[zh_CN]=
+TryExec=wechat-uos-beta
 Exec=wechat-uos-beta %u
 Icon=wechat-uos-beta
 Name=WeChat (Beta)
 Name[zh_CN]=微信 Beta
-Categories=Utility;Network;
-StartupNotify=true
+Categories=Utility;Network;InstantMessaging;Chat;
 Terminal=false
 Type=Application
-Keywords=wechat;weixin;electronic;we;w;
-Keywords[zh_CN]=微;微信;wechat;weixin;electronic;we;
-StartupWMClass=electronic-wechat
+Keywords=wechat;weixin;we;w;
+Keywords[zh_CN]=微;微信;wechat;weixin;we;
+StartupWMClass=微信
+X-GNOME-SingleWindow=true
+SingleMainWindow=true
+Actions=quit;
+
+[Desktop Action quit]
+Name=Quit WeChat
+Name[zh_CN]=退出
+Exec=bash -c '/usr/bin/killall wechat'
+Icon=application-exit
