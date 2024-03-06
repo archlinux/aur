@@ -2,7 +2,7 @@
 
 pkgname=scie-pants-bin
 pkgdesc="scie-pants is the Pants build tool launcher binary"
-pkgver=0.10.6
+pkgver=0.10.7
 pkgrel=1
 arch=("x86_64" "aarch64")
 url="https://github.com/pantsbuild/scie-pants"
@@ -13,11 +13,11 @@ options=("!strip")
 case "${CARCH:=x86_64}" in
   x86_64)
     _pkgarch="x86_64"
-    sha256sums+=("ad88bc2331464a9c8cea99eb72fd5de73b652c9defeec92fdd3f3c312e4ed009")
+    sha256sums+=("952de8780c86cadb6ac6057a7e1b4d58f739dfea6b2d4f35ffe2d1eb8fc3df06")
     ;;
   aarch64)
     _pkgarch="aarch64"
-    sha256sums+=("4624ddd8b8589e21fd6dac576ee44a38144e12c339788c618137785871210d2f")
+    sha256sums+=("4610d25bac9e385df7800d5cc54f2a1672de2ed5396ec0e9d04f481cd6667eaa")
     ;;
 esac
 
