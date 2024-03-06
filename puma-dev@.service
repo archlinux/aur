@@ -1,0 +1,11 @@
+[Unit]
+After=network.target
+
+[Service]
+User=%i
+ExecStart=/usr/bin/puma-dev -sysbind
+Restart=on-failure
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
