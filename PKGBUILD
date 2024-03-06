@@ -1,7 +1,7 @@
 # Maintainer: Jonas Pucher <jonaas.pucher000000@gmail.com>
 
 pkgname=samurai-select
-pkgver=1.24.0
+pkgver=1.24.1
 pkgrel=1
 pkgdesc="A screen selection tool for wayland compositors using the layer shell"
 arch=("x86_64" "aarch64")
@@ -16,7 +16,7 @@ source=(
   "${pkgname}-${pkgver}::https://github.com/Samudevv/samurai-select/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  "0cbcab461eadda743651d3a7bf019e9d5cf7056538b84f738f10406dfcaad367"
+  "a4598e903c6e2ef89bbe3474ad880cfbe0ff3aa0f6448720bd199902361fe867"
 )
 
 prepare() {
