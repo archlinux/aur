@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=mvfst
-pkgver=2024.02.26.00
+pkgver=2024.03.04.00
 pkgrel=1
 pkgdesc="An implementation of the QUIC transport protocol"
 arch=(x86_64)
@@ -67,7 +67,7 @@ provides=(
   libmvfst_transport_settings_functions.so
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('197f5660d73e0f5e885865369fa7cd87fb3c0013fd038f7bd68eab1e3ed5a7d3')
+sha256sums=('06922633d6ee2f01e77f66812c87517ebbf06bbb56552a61ba1f7a3b757dc15a')
 
 _archive="$pkgname-$pkgver"
 
