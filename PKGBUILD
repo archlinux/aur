@@ -2,7 +2,7 @@
 pkgname=myapp-scrapthatpage-bin
 pkgver=1.0.0
 _electronversion=23
-pkgrel=7
+pkgrel=8
 pkgdesc="A desktop app that automates web scraper with easy to use script actions."
 arch=(
     'aarch64'
@@ -18,7 +18,7 @@ depends=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 source=("${pkgname%-bin}.sh")
-sha256sums=('0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+sha256sums=('50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 sha256sums_aarch64=('396a63f91399afcaed82d7153e5ec61ca8169815934c98e6b20b50e1aa462c1b')
 sha256sums_x86_64=('8695fc432cc4f8be29b53ebc773152809a5a7b407d55c1b92875c15ecfe9c9f1')
 build() {
@@ -26,7 +26,7 @@ build() {
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
