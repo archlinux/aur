@@ -1,6 +1,6 @@
 pkgbase = tandoor-recipes-git
 	pkgver = 1.2.2.r1199.a497a6b7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TandoorRecipes/recipes
 	install = tandoor.install
 	arch = any

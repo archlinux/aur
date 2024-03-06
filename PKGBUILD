@@ -1,7 +1,7 @@
 # Maintainer: Jérôme de Courval <decje9@gmail.com>
 pkgname=tandoor-recipes-git
 pkgver=1.2.2.r1199.a497a6b7
-pkgrel=1
+pkgrel=2
 pkgdesc=""
 arch=('any')
 url="https://github.com/TandoorRecipes/recipes"
