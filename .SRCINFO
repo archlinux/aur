@@ -7,6 +7,7 @@ pkgbase = plasma6-wallpapers-blurredwallpaper
 	license = GPL
 	makedepends = git
 	depends = plasma-workspace
+	conflicts = kdeplasma-blurredwallpaper-git
 	source = https://github.com/bouteillerAlan/blurredwallpaper/archive/refs/tags/v3.0.1.tar.gz
 	sha256sums = 56e4162c01da62b7301f4eb58fd3bff4f2eabf351ed4ec016acf8d514da663fe
 

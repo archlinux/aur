@@ -10,6 +10,7 @@ arch=(x86_64)
 url="https://github.com/bouteillerAlan/${_pkgname}"
 license=(GPL)
 depends=(plasma-workspace)
+conflicts=(kdeplasma-blurredwallpaper-git)
 makedepends=(git)
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('56e4162c01da62b7301f4eb58fd3bff4f2eabf351ed4ec016acf8d514da663fe')
