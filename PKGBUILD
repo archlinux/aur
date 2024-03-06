@@ -3,7 +3,7 @@ pkgname=tm-desktop-bin
 pkgver=09.11.2023
 _realver=0.8.2
 _electronversion=27
-pkgrel=2
+pkgrel=3
 pkgdesc="A TikTok Music desktop application."
 arch=('x86_64')
 url="https://github.com/NeverExcel/tm-desktop"
@@ -12,12 +12,9 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'gtk2'
-    'libdbusmenu-glib'
-    'dbus-glib'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${_realver}.AppImage"
@@ -26,7 +23,7 @@ source=(
 )
 sha256sums=('f109a8a3eddd61e0497537114dd2ca4f548eb946c3acbc6e58d0f8af2445e1f2'
             'fca810bcb164e26493b6e6bf39e95aaca781fba20ad6e02fec625a43d142aecd'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
