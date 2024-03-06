@@ -1,0 +1,30 @@
+pkgbase = yami4
+	pkgdesc = YAMI4 - Messaging Solution for Distributed Systems
+	pkgver = 2.0.0
+	pkgrel = 0
+	url = http://www.inspirel.com/yami4/index.html
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = GPL-3.0-or-later
+	makedepends = gawk
+	makedepends = git
+	makedepends = python
+	depends = gcc-libs
+	depends = glibc
+	source = http://www.inspirel.com/yami4/files/yami4-gpl-2.0.0.zip
+	sha256sums = dd599c8d72f08e344c563057d007ff57841910f931bba184dccfa3ad7e9041f1
+
+pkgname = libyami4
+	pkgdesc = YAMI4 - Messaging Solution for Distributed Systems (lib)
+	provides = libyami4
+
+pkgname = python-libyami4
+	pkgdesc = YAMI4 - Messaging Solution for Distributed Systems (python)
+	depends = python
+	provides = python-libyami4
+	conflicts = 
+
+pkgname = yami4-core
+	pkgdesc = YAMI4 - Messaging Solution for Distributed Systems (core)
+	provides = yami4-core
