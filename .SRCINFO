@@ -1,6 +1,6 @@
 pkgbase = blinker-git
 	pkgdesc = Inspired by the 20 20 20 rule, this is a little reminder to look 20 feet away from your screen every 20 minutes. Keep your eyes healthy, reduce eye strain, prevent headaches and increase productivity.
-	pkgver = 2.1.1.r0.g9ad8ce7
+	pkgver = 2.1.1.r4.g721406b
 	pkgrel = 1
 	url = https://github.com/mrkpatchaa/blinker
 	arch = x86_64
@@ -9,14 +9,16 @@ pkgbase = blinker-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = npm
+	makedepends = gcc
+	makedepends = base-devel
 	depends = electron28
 	depends = nodejs
-	provides = blinker=2.1.1.r0.g9ad8ce7
+	provides = blinker=2.1.1.r4.g721406b
 	conflicts = blinker
 	options = !emptydirs
 	source = blinker.git::git+https://github.com/mrkpatchaa/blinker.git
 	source = blinker.sh
 	sha256sums = SKIP
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = blinker-git

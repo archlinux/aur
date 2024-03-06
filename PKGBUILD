@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=blinker-git
-pkgver=2.1.1.r0.g9ad8ce7
+pkgver=2.1.1.r4.g721406b
 _electronversion=28
 _nodeversion=18
 pkgrel=1
@@ -19,6 +19,8 @@ makedepends=(
     'git'
     'nvm'
     'npm'
+    'gcc'
+    'base-devel'
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
@@ -26,7 +28,7 @@ source=(
 )
 options=('!emptydirs')
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -43,16 +45,17 @@ build() {
         -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories "Utility" --name "${pkgname%-git}" --exec "${pkgname%-git} %U"
+    gendesk -q -f -n --categories="Utility" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
-    export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl="https://electronjs.org/headers"
-    npm ci
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
+    npm install
     npm run package
 }
 package() {
