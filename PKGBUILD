@@ -101,12 +101,4 @@ package() {
   for icon in $(find "${pkgdir}"/usr/share/icons/ -type f); do
     mv "${icon}" "${icon%.*}-2.99.${icon##*.}"
   done
-
-  #fix man
-  rm "${pkgdir}"/usr/share/man/man1/gimp{,tool,-console}.1
-  rm "${pkgdir}"/usr/share/man/man5/gimprc.5
-
-  #fix metainfo
-  rm -rf "${pkgdir}"/usr/share/metainfo
-  rm "${pkgdir}"/usr/share/appdata/gimp-data-extras.metainfo.xml
 }
