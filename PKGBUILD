@@ -2,7 +2,7 @@
 _appname=affine
 pkgname="${_appname}-canary-bin"
 _pkgname=AFFiNE-canary
-pkgver=0.13.0_canary.5
+pkgver=0.13.0_canary.6
 _electronversion=29
 pkgrel=1
 pkgdesc="There can be more than Notion and Miro. AFFiNE is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use.Beta Version."
@@ -27,7 +27,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/toeverything/AFFiNE/v${pkgver//_/-}/packages/frontend/core/public/favicon-192.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e10d4e5397165970423073eaac73afe746fa27fdd818e3416efaa76b7cafdec7'
+sha256sums=('bd42c74df4e271b708544b4315394f459aacfb0dc1221928138054711f7f854a'
             'b54bb7aa14dd5725bc268921eeea9dee973dacbc13e0cea30e7d2adb5cd5a53f'
             'b266795bb7f2dd32b76ef8f05788bbd63da556629265cca13217167cfc4d9cde'
             '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
