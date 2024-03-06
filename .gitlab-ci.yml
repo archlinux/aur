@@ -4,6 +4,7 @@ build:
     name: countstarlight/makepkg:latest
     entrypoint: [""]
   before_script:
+    - sudo pacman -Sy --noconfirm archlinux-keyring
     - yay -Syu --noconfirm
   script:
     - |
@@ -24,7 +25,8 @@ test:
   stage: test
   image: archlinux:latest
   script:
-    - pacman -Syu --noconfirm
+    - pacman -Sy --noconfirm
+    - pacman -S --noconfirm archlinux-keyring
     - pacman --noconfirm -U *.pkg.tar.zst
     - python -c "import uritools"
 
