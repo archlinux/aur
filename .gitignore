@@ -1,2 +1,5 @@
 *~
 *.tar.gz
+*.swp
+pkg
+src
