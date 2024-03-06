@@ -50,6 +50,7 @@ function inputMethod() {
 }
 
 function launch() {
+	echo "Launching WeChat Beta..."
 	bwrap \
 		--dir "$XDG_RUNTIME_DIR" \
 		--dir /tmp \
@@ -77,15 +78,46 @@ function launch() {
 		--bind /usr/lib/wechat-uos/license/ /usr/lib/license/ \
 		--bind /dev/null /sys/dev/block \
 		--unsetenv __EGL_VENDOR_LIBRARY_FILENAMES \
+		--ro-bind /usr/lib/snapd-xdg-open/xdg-open /usr/bin/xdg-open \
 		env QT_QPA_PLATFORM=xcb \
 			GTK_USE_PORTAL=1 \
 			LD_LIBRARY_PATH=/opt/wechat-beta \
 			LD_PRELOAD=/usr/lib/wechat-uos/license/libuosdevicea.so \
 			/opt/wechat-beta/wechat
+
+}
+
+function launchDbusProxy() {
+	APP_NAME=trash.wechat.beta
+	APP_FOLDER="$XDG_RUNTIME_DIR/app/$APP_NAME"
+	mkdir -p "$APP_FOLDER"
+	bwrap \
+		--new-session \
+		--symlink /usr/lib64 /lib64 \
+		--ro-bind /usr/lib /usr/lib \
+		--ro-bind /usr/lib64 /usr/lib64 \
+		--ro-bind /usr/bin /usr/bin \
+		--bind "$XDG_RUNTIME_DIR" "$XDG_RUNTIME_DIR" \
+		--ro-bind-data 3 "/.flatpak-info" \
+		--die-with-parent \
+		-- \
+		env -i xdg-dbus-proxy \
+			"$DBUS_SESSION_BUS_ADDRESS" \
+			"$APP_FOLDER/bus" \
+			--filter \
+			--log \
+			--talk=org.freedesktop.portal.Flatpak \
+			--call="org.freedesktop.portal.Desktop=org.freedesktop.portal.Settings.Read@/org/freedesktop/portal/desktop" \
+			--broadcast="org.freedesktop.portal.Desktop=org.freedesktop.portal.Settings.SettingChanged@/org/freedesktop/portal/desktop" 3<<EOF
+[Application]
+name=$APP_NAME
+EOF
 }
 
 manageDirs
 moeDect
 inputMethod
+launchDbusProxy &
+sleep 0.1
 launch $@
 

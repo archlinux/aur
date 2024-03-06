@@ -4,6 +4,7 @@ pkgbase = wechat-uos-bwrap
 	pkgrel = 3
 	arch = x86_64
 	license = proprietary
+	depends = snapd-xdg-open-git
 	depends = nss
 	depends = lsb-release
 	depends = xdg-utils
