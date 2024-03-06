@@ -4,14 +4,14 @@
 
 pkgname=('teleport' 'teleport-client')
 _pkgname=teleport
-pkgver=14.3.4
+pkgver=15.1.1
 pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/gravitational/teleport"
 license=('Apache')
 depends=('glibc' 'libbpf')
-makedepends=('go>=1.17.0' 'rust' 'yarn' 'libbpf-static>=1.2.0')
+makedepends=('go>=1.17.0' 'rustup' 'yarn' 'libbpf-static>=1.2.0' 'wasm-pack')
 provides=('tctl' 'tsh')
 
 _webassets_ref=f48049a453348e0ee1ce2b998dffe5659455b398
@@ -45,6 +45,15 @@ prepare() {
             patch -Np1 -i "${srcdir}/${f}"
         fi
     done
+
+    env CARGO_HOME="${srcdir}/cargo" \
+        rustup default 1.76.0
+
+    # Update wasm-bindgen. This is due to a version conflict specifically with v15.0.1.
+    env PATH="${CARGO_HOME}/bin:${PATH}" \
+        CARGO_HOME="${srcdir}/cargo" \
+        cargo add --package rdp-client wasm-bindgen@0.2.91
+
 }
 
 build() {
@@ -61,7 +70,9 @@ build() {
     export ADDFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
     # Build
-    PATH="${PATH}:${CARGO_HOME}/bin" make full
+    env PATH="${PATH}:${CARGO_HOME}/bin" \
+        RUST_LOG=debug \
+        make full
 
     # Make sure go path is writable so it can be cleaned up
     chmod -R u+w "${srcdir}/go"
@@ -91,7 +102,7 @@ package_teleport-client() {
     install -Dm755 build/tctl "${pkgdir}/usr/bin/tctl"
     install -Dm755 build/tsh "${pkgdir}/usr/bin/tsh"
 }
-sha512sums=('18a2c6671071656486243f2a766381a6ce2d6cccef854eab4488a44357560b30b223d224ab1cd0b002d0359e7e357be8d5741330c04eec0ed1366aeda6539918'
+sha512sums=('da094ab77039d293a2300d2c96957456bec25c99c21291240a5c723f4c22ccf50a107789cba8e0a33cb46d9f7aafda54d26fa753bd83e40533352109b1feeb2e'
             'bf13a77d1cdaa0c3e09034ede9acdf6834a7e21dbb18b0f9d8f46917be9772416edba7f0001cd38f6124564c0c31549f8d7048dd7a9f5ad76ff8e02f4451f044'
             '409116e201c40b7e0a379b316123500ab7691cbf441ecee048811885f97cd1185671676bb61bf36cb288399e8c0355a0a9f963ce7f94e44ba49e061187c9249e'
             '469249bebaa974e5e205c66c0459ed071b06a35aa9b94a3f34d3cbc5e75aa0f290d70ba8e5c63b49a6319a0f524a846ded459e07e3dde4c260e7668959821b96'
