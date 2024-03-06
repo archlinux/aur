@@ -17,10 +17,9 @@ pkgbase = plasma-settings
 	depends = kcmutils
 	depends = plasma-workspace
 	depends = kdeclarative
-	depends = plasma-framework
 	depends = ki18n
 	depends = kirigami-addons
 	source = http://download.kde.org/stable/plasma-settings/plasma-settings-24.02.0.tar.xz
-	sha256sums = b5c7b5c58cba9250bffa0fb88f7cd3fb712bfc112fb1716ef9b1c07f0bd6d2ca
+	sha256sums = b423461aa9c6dc0a7c96170261114ee9ecfe6296c97c9be8522d1942d125a5ad
 
 pkgname = plasma-settings

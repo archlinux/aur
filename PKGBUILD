@@ -11,13 +11,12 @@ depends=(
   'kcmutils'
   'plasma-workspace'
   'kdeclarative'
-  'plasma-framework'
   'ki18n'
   'kirigami-addons'
 )
 makedepends=(cmake extra-cmake-modules)
 source=("http://download.kde.org/stable/$pkgname/$pkgname-$pkgver.tar.xz")
-sha256sums=('b5c7b5c58cba9250bffa0fb88f7cd3fb712bfc112fb1716ef9b1c07f0bd6d2ca')
+sha256sums=('b423461aa9c6dc0a7c96170261114ee9ecfe6296c97c9be8522d1942d125a5ad')
 
 prepare() {
   mkdir -p build
