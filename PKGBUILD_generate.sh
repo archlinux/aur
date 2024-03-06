@@ -13,5 +13,7 @@ sed -i ':a;N;$!ba;s/validpgpkeys=.*[\n\r]options/options/g' $pkgbuild_file
 
 
 prepare='prepare() {\n    cp $_pkgname-$pkgver\/part\/pageview.cpp ..\/\n    sed "s\/Key_J\\([^a-zA-Z]\\)\/Key_N\\1\/g;\n	s\/Key_K\\([^a-zA-Z]\\)\/Key_E\\1\/g;\n	s\/Key_L\\([^a-zA-Z]\\)\/Key_I\\1\/g" -i okular-$pkgver\/part\/pageview.cpp || return 1\n}'
+provides='provides=("okular");'
 
 sed -i "s/\(options.*\)/\1\n\n$prepare/" $pkgbuild_file
+sed -i "s/\(options.*\)/\1\n$provides/" $pkgbuild_file
