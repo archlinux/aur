@@ -1,11 +1,11 @@
 pkgbase = malachite
 	pkgdesc = Tool for packaging and maintaining pacman repositories
 	pkgver = 3.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/crystal-linux/software/malachite
 	arch = x86_64
 	arch = aarch64
-	license = GPL-3.0-or-later
+	license = GPL-3.0-only
 	makedepends = cargo
 	depends = git
 	depends = pacman-contrib
