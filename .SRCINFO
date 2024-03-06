@@ -1,0 +1,21 @@
+pkgbase = js-design-electron-bin
+	pkgdesc = 即时设计 A professional UI design software tailored for Chinese designers.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://js.design
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-custom
+	depends = electron15-bin
+	depends = hicolor-icon-theme
+	conflicts = js-design
+	source = LICENSE.html::https://js.design/terms
+	source = js-design-electron.sh
+	sha256sums = 61e4aa3720bf8615c90c0dc61cdbd70bf3ba4e24bf8cd7dc767f92eba657a0d5
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	source_aarch64 = js-design-1.0.2-aarch64.deb::https://img.js.design/assets/download/%E7%BB%9F%E4%BF%A1UOS/%E5%8D%B3%E6%97%B6%E8%AE%BE%E8%AE%A1_arm64.deb
+	sha256sums_aarch64 = f64ce56620709aa4d25273495ce62b111c1be1a5f94b9fc88d2f36ad8c0d12d9
+	source_x86_64 = js-design-1.0.2-x86_64.deb::https://img.js.design/assets/download/%E7%BB%9F%E4%BF%A1UOS/%E5%8D%B3%E6%97%B6%E8%AE%BE%E8%AE%A1_amd64.deb
+	sha256sums_x86_64 = 748132bf033dcdec2af34fc4bc637fcfed547ce0e4f332a0b46bb00717ac95ec
+
+pkgname = js-design-electron-bin
