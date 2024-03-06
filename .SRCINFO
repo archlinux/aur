@@ -1,6 +1,6 @@
 pkgbase = zotero
 	pkgdesc = A free, easy-to-use tool to help you collect, organize, cite, and share your research sources.
-	pkgver = 6.0.30
+	pkgver = 6.0.35
 	pkgrel = 1
 	url = https://github.com/zotero/zotero
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = zotero
 	depends = nss
 	depends = libxt
 	source = zotero.desktop
-	source = zotero-client::git+https://github.com/zotero/zotero.git#tag=5350a60c9aeb14480372b552e59df4386ad10b7d
+	source = zotero-client::git+https://github.com/zotero/zotero.git#tag=46f6427d01110622aecd84047d8fc50c6270c34a
 	source = zotero-build::git+https://github.com/zotero/zotero-build.git#tag=5cec38cd40361d939e32eb0b6e0fd18ac7b78a56
-	source = zotero-standalone-build::git+https://github.com/zotero/zotero-standalone-build.git#tag=6.0.30
+	source = zotero-standalone-build::git+https://github.com/zotero/zotero-standalone-build.git#tag=6.0.35
 	source = zotero-translators::git+https://github.com/zotero/translators.git
 	source = zotero-styles::git+https://github.com/zotero/bundled-styles.git
 	source = zotero-pdf-worker::git+https://github.com/zotero/pdf-worker.git
