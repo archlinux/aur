@@ -16,7 +16,7 @@ Comment=Program for the Use and Computation of Kinship Data
 Path=/opt/elan/
 
 # The executable of the application, possibly with arguments.
-Exec=/opt/elan/bin/ELAN_6.6
+Exec=/opt/elan/bin/ELAN_6.7
 
 # The name of the icon that will be used to display this entry
 Icon=elan
