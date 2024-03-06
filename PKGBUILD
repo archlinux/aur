@@ -1,17 +1,17 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 _pkgbase="piper-voices"
-pkgname="$_pkgbase-minimal"
+pkgname="piper-voices-minimal"
 pkgver=1.0.0
-pkgrel=2
-pkgdesc="Voices for Piper text to speech system (single voice for english)"
-url="https://huggingface.co/rhasspy/$_pkgbase"
+pkgrel=3
+pkgdesc="Voices for Piper text to speech system (en_US, single model)"
+url="https://huggingface.co/rhasspy/piper-voices"
 license=("MIT")
 arch=("any")
-groups=("$_pkgbase")
-provides=("$_pkgbase")
-conflicts=("$_pkgbase-en-us")
-depends=("$_pkgbase-common")
+groups=("piper-voices")
+provides=("piper-voices")
+conflicts=("piper-voices-en-us")
+depends=("piper-voices-common")
 makedepends=("git-lfs")
 options=("!strip")
 install="$pkgname.install"
@@ -25,11 +25,11 @@ prepare(){
  # https://manpages.debian.org/testing/git-lfs/git-lfs-pull.1.en.html
 
  # needed to avoid smudge error
- rm -rf "$_pkgbase"
+ rm -rf "piper-voices"
  
  # download the repo by keeping the lfs pointers
- GIT_LFS_SKIP_SMUDGE=1 git clone "https://huggingface.co/rhasspy/$_pkgbase"
- cd "$_pkgbase"
+ GIT_LFS_SKIP_SMUDGE=1 git clone "https://huggingface.co/rhasspy/piper-voices"
+ cd "piper-voices"
 
  # uncomment to download all lfs objects (~6GB total, 107 models)
  #git lfs pull 
@@ -57,7 +57,7 @@ prepare(){
 }
 
 package(){
- cd "$_pkgbase"
- install -d "$pkgdir/usr/share/$_pkgbase"
- cp -r * "$pkgdir/usr/share/$_pkgbase"
+ cd "piper-voices"
+ install -d "$pkgdir/usr/share/piper-voices"
+ cp -r * "$pkgdir/usr/share/piper-voices"
 }
