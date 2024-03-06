@@ -1,12 +1,11 @@
 pkgbase = zhiximind-desktop-bin
 	pkgdesc = 知犀思维导图官方版
 	pkgver = 2.1.4.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.zhixi.com
 	arch = x86_64
 	license = ISC
-	makedepends = asar
-	depends = electron21
+	depends = electron19
 	depends = hicolor-icon-theme
 	provides = zhiximind-desktop=2.1.4.0
 	conflicts = zhiximind-desktop
@@ -14,7 +13,7 @@ pkgbase = zhiximind-desktop-bin
 	source = LICENSE-2.1.4.0.html::https://www.zhixi.com/user-agreement
 	source = zhiximind-desktop.sh
 	sha256sums = 972aed41c6a54acf99f0ccb60047f52ba9fe264fbee04a9a0c4746df7a33eb53
-	sha256sums = 2b4abfdc101c27d844600bf83d76be8a5b1ba3934db79166b5a85c82e73ca1c0
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = 042c161d8978e8652c5dee57179a6eac372ea80578a21a52679668692264b3ea
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = zhiximind-desktop-bin
