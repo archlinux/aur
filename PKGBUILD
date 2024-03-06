@@ -1,7 +1,5 @@
 # Patched package:
-# Maintainer: Saren Arterius <saren@wtako.net>
-# Co-maintainer: Térence Clastres <t.clastres@gmail.com>
-# Co-maintainer: Mingi Sung <fiestalake@disroot.org>
+# Maintainer: Ewout van Mansom <ewout@vanmansom.name>
 
 # Official package:
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
@@ -13,14 +11,12 @@
 # Merge Requests List: ()
 _merge_requests_to_use=()
 
-## Enable the `check()` operation (Disabled if not set)
-: "${_enable_check:=""}"
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-pkgname=gnome-shell-performance
+pkgname=gnome-shell-rc-performance
 _pkgname=gnome-shell
-pkgver=45.4
+pkgver=46.rc
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
@@ -59,13 +55,6 @@ makedepends=(
   meson
   sassc
 )
-if [ -n "$_enable_check" ]; then
-  checkdepends=(
-    appstream-glib
-    python-dbusmock
-    xorg-server-xvfb
-  )
-fi
 optdepends=(
   'evolution-data-server: Evolution calendar integration'
   'gnome-bluetooth-3.0: Bluetooth support'
@@ -80,7 +69,7 @@ optdepends=(
 groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver gnome-shell=$epoch:$pkgver)
 conflicts=(gnome-shell)
-_commit=58522920b5ae96d2b95dad0371ce13eb4bd955ce  # tags/45.4^0
+_commit=dfb0f96f292b379a6f459053cbddafe98ebdf1c0  # tags/46.rc^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
   "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
@@ -168,7 +157,7 @@ prepare() {
 build() {
   local meson_options=(
     -D gtk_doc=true
-    -D tests=$(if [ -n "$_enable_check" ]; then echo "true"; else echo "false"; fi)
+    -D tests=false
   )
 
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
@@ -178,22 +167,7 @@ build() {
   meson compile -C build
 }
 
-_check() (
-  export NO_AT_BRIDGE=1 GTK_A11Y=none
-  export XDG_RUNTIME_DIR="$PWD/rdir"
-  mkdir -p -m 700 "$XDG_RUNTIME_DIR"
-
-  meson test -C build --print-errorlogs -t 3
-)
-
-if [ -n "$_enable_check" ]; then
-  check() {
-    dbus-run-session xvfb-run -s '-nolisten local +iglx -noreset' \
-      bash -c "$(declare -f _check); _check"
-  }
-fi
-
 package() {
-  depends+=(libmutter-13.so)
+  depends+=(libmutter-14.so)
   meson install -C build --destdir "$pkgdir"
 }
