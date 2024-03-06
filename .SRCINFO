@@ -1,0 +1,16 @@
+pkgbase = velus-git
+	pkgdesc = The Velus Lustre compiler.
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/INRIA/velus
+	arch = x86_64
+	license = Inria Non-Commercial License Agreement
+	depends = opam
+	depends = git
+	depends = make
+	depends = ocamlbuild
+	depends = coreutils
+	source = https://github.com/INRIA/velus/archive/refs/tags/v3.0.0.tar.gz
+	sha256sums = f61ea2b36acf83759aa10b3a2c11696b912b9926a44862c5d678e46f3ac3602d
+
+pkgname = velus-git
