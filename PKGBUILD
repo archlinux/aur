@@ -1,6 +1,6 @@
 # Maintainer: 0xGingi <0xgingi@0xgingi.com>
 pkgname=('jellyfin-rpc-git')
-pkgver=0.15.5.r4.gefc78b5
+pkgver=1.0.2.r0.g1163cfe
 pkgrel=1
 pkgdesc="Displays the content you're currently watching on Discord"
 arch=('any')
@@ -12,6 +12,7 @@ provides=('jellyfin-rpc')
 conflicts=('jellyfin-rpc')
 source=("git+https://github.com/Radiicall/jellyfin-rpc.git")
 md5sums=('SKIP')
+options=(!lto)
 
 pkgver() {
   cd jellyfin-rpc
@@ -30,13 +31,14 @@ build() {
 	cd jellyfin-rpc
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release --no-default-features
+	cargo build --frozen --release --all-features --no-default-features
+
 }
 
 check() {
 	cd jellyfin-rpc
 	export RUSTUP_TOOLCHAIN=stable
-	cargo test --frozen --no-default-features
+	cargo test --frozen --all-features
 
 }
 
