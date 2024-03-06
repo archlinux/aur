@@ -2,6 +2,7 @@
 pkgname=yesplaymusic-bin
 _pkgname=YesPlayMusic
 pkgver=0.4.8
+_subver=2
 _electronversion=13
 pkgrel=1
 pkgdesc="高颜值的第三方网易云播放器。"
@@ -26,18 +27,18 @@ conflicts=(
     "r3play"
     "r3playx"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}-1/${pkgname%-bin}_${pkgver}_arm64.deb")
-source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}-1/${pkgname%-bin}_${pkgver}_armv7l.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}-1/${pkgname%-bin}_${pkgver}_amd64.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}-${_subver}/${pkgname%-bin}_${pkgver}_arm64.deb")
+source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}-${_subver}/${pkgname%-bin}_${pkgver}_armv7l.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}-${_subver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 source=(
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/qier222/YesPlayMusic/v${pkgver}/LICENSE"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/qier222/YesPlayMusic/v${pkgver}-${_subver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c33378c6fd12e6d040cedd06dc0d1bedfca74fd66bc46cc2cf10cc10e0906be6'
             '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
-sha256sums_aarch64=('4907af898c06183372ead5875edc1303e67cb23d16114005103c7d894e296a12')
-sha256sums_armv7h=('bcb2c9a9fa68ccbb12bdf811393425be9c9c484efa44fa0cd15cadb916aa2d9d')
-sha256sums_x86_64=('433589b693db96f169e81fa15778df271bf1270d799c235bb2f3d33db4f2a900')
+sha256sums_aarch64=('3cfd1aa726d2391aa578e068825760215d6d619a9aa3c919e3be26b80103a5dd')
+sha256sums_armv7h=('13ccd225abbd4d5beb6fcee95648f5aae551809ffd1eefe1b37cf446980d5ad3')
+sha256sums_x86_64=('8935a2fad64651053b27599c98c76559748aa581b2e263007aaf4237d7e19d9f')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
