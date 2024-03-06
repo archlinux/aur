@@ -4,7 +4,7 @@
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=proxygen
-pkgver=2024.02.26.00
+pkgver=2024.03.04.00
 pkgrel=1
 pkgdesc="A collection of C++ HTTP libraries including an easy to use HTTP server"
 arch=(x86_64)
@@ -41,8 +41,8 @@ provides=(
   libproxygenhqloggerhelper.so
   libproxygenhttpserver.so
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a4deac2d7d358326d1d6489aafd785d4324857228e9bb702a21b0e6dcbb86756')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('c3586cd8a3978dd88ea73b7dc217b0ce9f3bae51f5a2e554135daaf772215e8d')
 
 _archive="$pkgname-$pkgver"
 
