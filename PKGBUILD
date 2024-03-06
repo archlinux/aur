@@ -3,8 +3,9 @@
 
 pkgname="python-thop"
 _pkgname="pytorch-OpCounter"
-pkgver=0.1.1
-pkgrel=5
+epoch=1
+pkgver=0.1.1.post2209072238
+pkgrel=1
 pkgdesc='Count the MACs / FLOPs of your PyTorch model.'
 arch=(any)
 url="https://github.com/Lyken17/pytorch-OpCounter"
