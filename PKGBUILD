@@ -4,7 +4,7 @@ _pkgname=Inventario
 _appname=electron-vite-project
 pkgver=1.0.1
 _electronversion=26
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple desktop app to manage a wearhose inventory."
 arch=('x86_64')
 url="https://github.com/osoyinas/simple-inventory"
@@ -13,19 +13,16 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-Linux-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('7c3eff2dc086aa6cab60fe1d8e44730c7e31a47e7b755bb25e5ab9336c06aa2f'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
