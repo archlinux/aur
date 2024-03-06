@@ -4,7 +4,7 @@
 pkgname=authpass-bin
 pkgver=1.9.11
 _subver=2007
-pkgrel=1
+pkgrel=2
 pkgdesc='Password Manager based on Flutter for all platforms. Keepass 2.x (kdbx 3.x) compatible.'
 arch=('x86_64')
 url="https://authpass.app/"
@@ -22,12 +22,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('f464b6d5610de4c9d17cbbb5906625c272e8c5ac0ebf8e45b2a3007bbc9c246b'
-            '87aad073913a72e5fa1c7f4e0f6f695dafc5ba8ea675a62be03c532c701c243a')
+            '984792e5e81a0f8f076fdfd20bdc72c152664346b099312114ecb1e4fe2fcb83')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.zst"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${pkgname%-bin}/icon.svg|${pkgname%-bin}|g;s|Network|Network;Utility|g" \
       -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
