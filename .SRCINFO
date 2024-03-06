@@ -1,0 +1,17 @@
+pkgbase = kubestr-bin
+	pkgdesc = Kubestr is a collection of tools to discover, validate and evaluate your kubernetes storage options
+	pkgver = 0.4.41
+	pkgrel = 1
+	url = https://github.com/kastenhq/kubestr
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = kubestr
+	conflicts = kubestr
+	noextract = kubestr-bin-0.4.41.tar.gz
+	source_x86_64 = kubestr-bin-0.4.41.tar.gz::https://github.com/kastenhq/kubestr/releases/download/v0.4.41/kubestr_0.4.41_Linux_amd64.tar.gz
+	sha256sums_x86_64 = 167486d909f25637d964a81d70297af023959be14b90f03c120a4f9566e8786b
+	source_aarch64 = kubestr-bin-0.4.41.tar.gz::https://github.com/kastenhq/kubestr/releases/download/v0.4.41/kubestr_0.4.41_Linux_arm64.tar.gz
+	sha256sums_aarch64 = d78d53ba8dd52b3320f18faa4f51c76da43b1d65c4116452aa8a29e64ee44d2d
+
+pkgname = kubestr-bin
