@@ -1,12 +1,12 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=copperspice-git
-pkgver=1.8.2.r6.g3e891fa60
+pkgver=1.9.1.r0.g7c92c2560
 pkgrel=1
 pkgdesc='Libraries for developing cross platform software applications in C++ (git version)'
 arch=('x86_64')
 url='https://www.copperspice.com/'
-license=('LGPL2.1')
+license=('LGPL-2.1-only')
 depends=('cups' 'fontconfig' 'glib2' 'gstreamer' 'gst-plugins-base-libs' 'libgl'
          'libice' 'libpulse' 'libsm' 'libx11' 'libxcb' 'libxi' 'libxkbcommon'
          'libxkbcommon-x11' 'openssl' 'vulkan-icd-loader' 'xcb-util-keysyms'
@@ -48,7 +48,7 @@ package() {
     DESTDIR="$pkgdir" cmake --install build
     
     local _file
-    mkdir -p "${pkgdir}/usr/bin"
+    install -d -m755 "${pkgdir}/usr/bin"
     while read -r -d '' _file
     do
         ln -s "../lib/copperspice/bin/${_file##*/}" "${pkgdir}/usr/bin/${_file##*/}-cs"

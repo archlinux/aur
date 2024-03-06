@@ -1,10 +1,10 @@
 pkgbase = copperspice-git
 	pkgdesc = Libraries for developing cross platform software applications in C++ (git version)
-	pkgver = 1.8.2.r6.g3e891fa60
+	pkgver = 1.9.1.r0.g7c92c2560
 	pkgrel = 1
 	url = https://www.copperspice.com/
 	arch = x86_64
-	license = LGPL2.1
+	license = LGPL-2.1-only
 	makedepends = git
 	makedepends = cmake
 	makedepends = alsa-lib
