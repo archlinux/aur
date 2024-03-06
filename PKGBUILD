@@ -1,4 +1,7 @@
+# SPDX-License-Identifier: AGPL-3.0
+#
 # Maintainer: Pellegrino Prevete (dvorak) <pellegrinoprevete@gmail.com>
+# Maintainer: Truocolo <truocolo@aol.com>
 # Contributor: Fabio Castelli (muflone) <webreg@muflone.com>
 
 pkgbase=ur
@@ -8,15 +11,19 @@ url="https://www.humaninstrumentalityproject.org"
 pkgver=0.1
 pkgrel=3
 license=(
-  'AGPL3')
+  'AGPL3'
+)
 _ns="tallero"
 _url="https://gitlab.archlinux.org/${_ns}/${pkgname}"
 depends=(
-  'binutils')
+  'binutils'
+)
 makedepends=(
-  'git')
+  'git'
+)
 checkdepends=(
-  'shellcheck')
+  'shellcheck'
+)
 arch=(
   any
 )
@@ -46,8 +53,11 @@ package() {
     DESTDIR="${_pkgdir}"
     PREFIX='/usr'
   )
-  cd "${pkgname}"
+  cd \
+    "${pkgname}"
   make \
     "${_opts[@]}" \
     install
 }
+
+# vim:set sw=2 sts=-1 et:
