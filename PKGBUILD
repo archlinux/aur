@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mqttx-git
 _pkgname=MQTTX
-pkgver=1.9.9.r0.g9cfc2735
+pkgver=1.9.9.r11.g364a39e0
 _electronversion=13
 _nodeversion=16
 pkgrel=1
@@ -24,13 +24,15 @@ makedepends=(
     'yarn'
     'python'
     'curl'
+    'base-devel'
+    'gcc'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -47,25 +49,30 @@ build() {
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -f -n -q --categories "Development" --name "${_pkgname}" --exec "${pkgname%-git} %U"
+    gendesk -f -n -q --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
+    touch "${srcdir}/.electron-gyp/.yarnrc"
     sed -e "/target: 'deb'/d" -e "/target: 'rpm'/d" -e "/target: 'snap'/d" -i vue.config.js
-    yarn install --cache-folder "${srcdir}/.yarn_cache" --no-lockfile
+    yarn install --cache-folder "${srcdir}/.yarn_cache" #--no-lockfile
     yarn run electron:build-linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    if [ "${CARCH}" = x86_64 ];then
-        _osarchpath=linux-unpacked;
-    elif [ "${CARCH}" = aarch64 ];then
-        _osarchpath=linux-arm64-unpacked
-    fi
+    case "${CARCH}" in
+        x86_64)
+            _osarchpath=linux-unpacked
+        ;;
+        aarch64)
+            _osarchpath=linux-arm64-unpacked
+        ;;
+    esac
     install -Dm644 "${srcdir}/${pkgname//-/.}/dist_electron/${_osarchpath}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/dist_electron/${_osarchpath}/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-git}/swiftshader"
     install -Dm644 "${srcdir}/${pkgname//-/.}/public/icons/app.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
