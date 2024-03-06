@@ -1,20 +1,24 @@
 pkgbase = final2x-bin
 	pkgdesc = 2^x Image Super-Resolution
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://final2x.tohru.top/
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	depends = electron27
 	depends = python>=3.8
 	depends = nodejs
+	depends = openssl-1.1
+	depends = libice
+	depends = libbsd
+	depends = libsm
 	conflicts = final2x
 	options = !strip
-	source = final2x-1.2.0.deb::https://github.com/Tohrusky/Final2x/releases/download/2024-01-02/Final2x-linux-pip-x64-deb.deb
+	source = final2x-1.2.0.deb::https://github.com/Tohrusky/Final2x/releases/download/2024-01-02/Final2x-ubuntu-x64-deb.deb
 	source = LICENSE-1.2.0::https://raw.githubusercontent.com/Tohrusky/Final2x/2024-01-02/LICENSE
 	source = final2x.sh
-	sha256sums = bc79595c6b0ec89be92aa57165e293c4aa2ed92d862df9d48c2efb2eb770eccf
+	sha256sums = e10fba1653ffc6d294ed845d05ddb8701d28c3a95d3cd65c35b0960af23c6056
 	sha256sums = 7b4e93ff707625a2632519b35d5891035356f551f18dd18539ad94c72f59286a
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = final2x-bin

@@ -4,10 +4,10 @@ _pkgname=Final2x
 pkgver=1.2.0
 _date=2024-01-02
 _electronversion=27
-pkgrel=2
+pkgrel=3
 pkgdesc="2^x Image Super-Resolution"
 arch=('x86_64')
-license=('BSD')
+license=('BSD-3-Clause')
 conflicts=("${pkgname%-bin}")
 url="https://final2x.tohru.top/"
 _ghurl="https://github.com/Tohrusky/Final2x"
@@ -15,24 +15,28 @@ depends=(
     "electron${_electronversion}"
     'python>=3.8'
     'nodejs'
+    'openssl-1.1'
+    'libice'
+    'libbsd'
+    'libsm'
 )
 options=(
     '!strip'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${_date}/${_pkgname}-linux-pip-x64-deb.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${_date}/${_pkgname}-ubuntu-x64-deb.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Tohrusky/Final2x/${_date}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('bc79595c6b0ec89be92aa57165e293c4aa2ed92d862df9d48c2efb2eb770eccf'
+sha256sums=('e10fba1653ffc6d294ed845d05ddb8701d28c3a95d3cd65c35b0960af23c6056'
             '7b4e93ff707625a2632519b35d5891035356f551f18dd18539ad94c72f59286a'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
