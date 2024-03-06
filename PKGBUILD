@@ -1,12 +1,12 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=copperspice
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc='Libraries for developing cross platform software applications in C++'
 arch=('x86_64')
 url='https://www.copperspice.com/'
-license=('LGPL2.1')
+license=('LGPL-2.1-only')
 depends=('cups' 'fontconfig' 'glib2' 'gstreamer' 'gst-plugins-base-libs' 'libgl'
          'libice' 'libpulse' 'libsm' 'libx11' 'libxcb' 'libxi' 'libxkbcommon'
          'libxkbcommon-x11' 'openssl' 'vulkan-icd-loader' 'xcb-util-keysyms'
@@ -19,7 +19,7 @@ makedepends=('cmake' 'alsa-lib' 'mariadb-libs' 'postgresql' 'postgresql-libs'
 options=('!lto')
 source=("https://github.com/copperspice/copperspice/archive/cs-${pkgver}/${pkgname}-${pkgver}.tar.gz"
         '010-copperspice-fix-cmake-include-dirs.patch')
-sha256sums=('b58fc49110bc3b4f86172627dd9a1bcf5d087f51ec525f29ec4a5449e6708fcf'
+sha256sums=('7ebee0e722e31ef90a687aaf1bf6eff09d93b318d8db62c4d7872a911894d1b0'
             '1bef08debd977fb08861552e39e2752459c5fe9743d9d593bc135f5978df9c46')
 
 prepare() {

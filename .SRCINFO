@@ -1,10 +1,10 @@
 pkgbase = copperspice
 	pkgdesc = Libraries for developing cross platform software applications in C++
-	pkgver = 1.9.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://www.copperspice.com/
 	arch = x86_64
-	license = LGPL2.1
+	license = LGPL-2.1-only
 	makedepends = cmake
 	makedepends = alsa-lib
 	makedepends = mariadb-libs
@@ -42,9 +42,9 @@ pkgbase = copperspice
 	optdepends = mariadb-libs: for MySQL database support
 	optdepends = postgresql-libs: for PostgreSQL database support
 	options = !lto
-	source = https://github.com/copperspice/copperspice/archive/cs-1.9.0/copperspice-1.9.0.tar.gz
+	source = https://github.com/copperspice/copperspice/archive/cs-1.9.1/copperspice-1.9.1.tar.gz
 	source = 010-copperspice-fix-cmake-include-dirs.patch
-	sha256sums = b58fc49110bc3b4f86172627dd9a1bcf5d087f51ec525f29ec4a5449e6708fcf
+	sha256sums = 7ebee0e722e31ef90a687aaf1bf6eff09d93b318d8db62c4d7872a911894d1b0
 	sha256sums = 1bef08debd977fb08861552e39e2752459c5fe9743d9d593bc135f5978df9c46
 
 pkgname = copperspice
