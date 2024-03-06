@@ -1,7 +1,7 @@
 pkgbase = perl-web-mention
 	pkgdesc = Implementation of the IndieWeb Webmention protocol
 	pkgver = 0.721
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Web-Mention
 	arch = any
 	license = PerlArtistic
@@ -9,6 +9,7 @@ pkgbase = perl-web-mention
 	checkdepends = perl-test-exception>=0
 	checkdepends = perl-test-lwp-useragent>=0
 	checkdepends = perl-test-warn>=0
+	makedepends = perl-module-build-tiny
 	depends = perl-datetime>=0
 	depends = perl-datetime-format-iso8601>=0
 	depends = perl-http-link>=0

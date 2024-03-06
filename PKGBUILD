@@ -1,15 +1,15 @@
-# Contributor: Anonymous
+# Contributor: Ordoban <dirk.langer@vvovgonik.de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-web-mention'
 pkgver='0.721'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Implementation of the IndieWeb Webmention protocol"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-datetime>=0' 'perl-datetime-format-iso8601>=0' 'perl-http-link>=0' 'perl-json>=0' 'perl-lwp-protocol-https>=0' 'perl-mojo-dom58>=0' 'perl-moo>=0' 'perl-moox-classattribute>=0' 'perl-moox-enumeration>=0' 'perl-moox-handlesvia>=0' 'perl-path-class>=0' 'perl-readonly>=0' 'perl-string-truncate>=0' 'perl-try-tiny>=0' 'perl-type-tiny>=0' 'perl-uri>=0' 'perl-web-microformats2>=0.5' 'perl-libwww>=0' 'perl>=5.10.0')
-makedepends=()
+makedepends=('perl-module-build-tiny')
 checkdepends=('perl-test-exception>=0' 'perl-test-lwp-useragent>=0' 'perl-test-warn>=0')
 url='https://metacpan.org/release/Web-Mention'
 source=("https://cpan.metacpan.org/authors/id/J/JM/JMAC/Web-Mention-$pkgver.tar.gz")
