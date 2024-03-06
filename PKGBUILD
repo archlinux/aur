@@ -2,7 +2,7 @@
 pkgname=electronim-bin
 pkgver=0.0.99
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="Electron based multi IM (Instant Messaging) client"
 arch=('x86_64')
 url="https://github.com/manusa/electronim"
@@ -11,19 +11,16 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('12161384f90419f25e860dae7b5909c59b016be1041148989b770a547cd30816'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
