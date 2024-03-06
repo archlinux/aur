@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fsolauncher
 _pkgname="FreeSO Launcher"
-pkgver=1.10.1_prod.6
+pkgver=1.10.2_prod.1
 _electronversion=22
 _nodeversion=16
 pkgrel=1
@@ -48,7 +48,7 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    npm ci
+    npm install
     npx electron-builder -l appimage
 }
 package() {
