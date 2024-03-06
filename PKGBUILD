@@ -7,11 +7,11 @@
 
 pkgname=gadmin-rsync
 pkgver=0.1.9
-pkgrel=5
-pkgdesc="An easy to use GTK+ frontend for the rsync backup client and server"
-arch=('i686' 'x86_64')
+pkgrel=6
+pkgdesc="An easy to use GTK2 frontend for the rsync backup client and server"
 url="https://web.archive.org/web/20180720061609/http://dalalven.dtdns.net:80/linux/gadmintools-webpage"
-license=('GPL3')
+arch=('i686' 'x86_64')
+license=('GPL-3.0-or-later')
 depends=('gtk2' 'rsync')
 optdepends=("zenity: for launching with the desktop shortcut")
 source=("https://github.com/sedwards/gadmintools_src_pkgs/raw/master/gadmin-rsync-0.1.9.tar.gz"
@@ -30,7 +30,8 @@ package() {
 # Install
   install -Dm755 $pkgname.sh "$pkgdir/usr/bin/$pkgname-desktop"
   cd $pkgname-0.1.9
-  make DESTDIR=$pkgdir install
+  make install DESTDIR="$pkgdir"
+  install -Dm644 AUTHORS ChangeLog README -t "$pkgdir/usr/share/doc/$pkgname"
 # Remove an unnecessary folder
   rm -dr "$pkgdir/usr/share/pixmaps/$pkgname"
 # Use the script in the desktop shortcut

@@ -1,11 +1,11 @@
 pkgbase = gadmin-rsync
-	pkgdesc = An easy to use GTK+ frontend for the rsync backup client and server
+	pkgdesc = An easy to use GTK2 frontend for the rsync backup client and server
 	pkgver = 0.1.9
-	pkgrel = 5
+	pkgrel = 6
 	url = https://web.archive.org/web/20180720061609/http://dalalven.dtdns.net:80/linux/gadmintools-webpage
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	depends = gtk2
 	depends = rsync
 	optdepends = zenity: for launching with the desktop shortcut
