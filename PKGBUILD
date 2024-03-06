@@ -3,7 +3,7 @@ pkgname=webeep-sync-bin
 _appname=webeep-sync
 pkgver=1.0.3
 _electronversion=22
-pkgrel=4
+pkgrel=5
 pkgdesc="Keep all your WeBeep files synced on your computer!"
 arch=('x86_64')
 url="https://github.com/toto04/webeep-sync"
@@ -20,13 +20,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('8e77681185c6795fbfbf038a5cde95f78c2aadf19108804fb1a4d64c6d2c615a'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.zst"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
