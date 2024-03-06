@@ -1,6 +1,6 @@
 pkgbase = p3x-redis-ui-bin
 	pkgdesc = A very functional handy database GUI and works in your pocket on the responsive web or as a desktop app
-	pkgver = 2024.4.134
+	pkgver = 2024.4.136
 	pkgrel = 1
 	url = https://www.corifeus.com/redis-ui
 	arch = aarch64
@@ -9,16 +9,16 @@ pkgbase = p3x-redis-ui-bin
 	license = MIT
 	depends = electron29
 	depends = hicolor-icon-theme
-	conflicts = p3x-redis-ui=2024.4.134
-	source = LICENSE-2024.4.134::https://raw.githubusercontent.com/patrikx3/redis-ui/v2024.4.134/LICENSE
+	conflicts = p3x-redis-ui=2024.4.136
+	source = LICENSE-2024.4.136::https://raw.githubusercontent.com/patrikx3/redis-ui/v2024.4.136/LICENSE
 	source = p3x-redis-ui.sh
-	sha256sums = aab4cfe5086f65c4c387b1fa49680dc7c5efd680d5a424fb0449af5f6ed2a306
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
-	source_aarch64 = p3x-redis-ui-2024.4.134-aarch64.deb::https://github.com/patrikx3/redis-ui/releases/download/v2024.4.134/p3x-redis-ui_2024.4.134_arm64.deb
-	sha256sums_aarch64 = 38278e0111abd2569949eb6601fa15160ec5822fe063d56e3aa0361067ebbb57
-	source_armv7h = p3x-redis-ui-2024.4.134-armv7h.deb::https://github.com/patrikx3/redis-ui/releases/download/v2024.4.134/p3x-redis-ui_2024.4.134_armv7l.deb
-	sha256sums_armv7h = 63b1fd0d80b858679b1528730d90d889141e2f6023217c0a5d7b69031accf870
-	source_x86_64 = p3x-redis-ui-2024.4.134-x86_64.deb::https://github.com/patrikx3/redis-ui/releases/download/v2024.4.134/p3x-redis-ui_2024.4.134_amd64.deb
-	sha256sums_x86_64 = b1eb6bc135d3a0d648014e3a0c60da38acf5e013c794ea96c42456a8d6e967cb
+	sha256sums = d08d4c39fec00b9830f4815699745dc466fca304f270deb9d284755c58ca8c56
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	source_aarch64 = p3x-redis-ui-2024.4.136-aarch64.deb::https://github.com/patrikx3/redis-ui/releases/download/v2024.4.136/p3x-redis-ui_2024.4.136_arm64.deb
+	sha256sums_aarch64 = 85a64625366b09ed5f9db87c958eceef0570148f7905d81f2e54aef45a3c2719
+	source_armv7h = p3x-redis-ui-2024.4.136-armv7h.deb::https://github.com/patrikx3/redis-ui/releases/download/v2024.4.136/p3x-redis-ui_2024.4.136_armv7l.deb
+	sha256sums_armv7h = 577dd912a18441db8a82a4a50da5ec79765f437fc30d52c41115c7192efee3dc
+	source_x86_64 = p3x-redis-ui-2024.4.136-x86_64.deb::https://github.com/patrikx3/redis-ui/releases/download/v2024.4.136/p3x-redis-ui_2024.4.136_amd64.deb
+	sha256sums_x86_64 = 515738cfca7e0c5e35faa242cfc98220710e77d6f13e68ac2ca1a0740d8b05b3
 
 pkgname = p3x-redis-ui-bin
