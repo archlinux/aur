@@ -6,7 +6,7 @@ pkgbase = webcord
 	arch = any
 	license = MIT
 	makedepends = npm
-	makedepends = esbuild
+	makedepends = esbuild>=0.19
 	depends = electron28
 	options = !strip
 	options = !emptydirs

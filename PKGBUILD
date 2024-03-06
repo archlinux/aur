@@ -9,15 +9,15 @@ _repo='WebCord'
 url="https://github.com/SpacingBat3/${_repo}"
 license=('MIT')
 depends=("${_electron}")
-makedepends=('npm' 'esbuild')
+makedepends=('npm' 'esbuild>=0.19')
 options=('!strip' '!emptydirs')
 
 _snapshot="${_repo}-${pkgver}"
 source=(
     "${_snapshot}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-    "buildInfo.json"
-    "webcord.desktop"
-    "webcord.sh"
+    'buildInfo.json'
+    'webcord.desktop'
+    'webcord.sh'
 )
 
 sha256sums=(
@@ -30,53 +30,53 @@ sha256sums=(
 prepare() {
     cd "${_snapshot}"
     npm ci --omit=dev --ignore-scripts --prefix=.
-    rm -r "sources/code/build"
-    rm "sources/assets/icons/app.ic"*
+    rm -r 'sources/code/build'
+    rm 'sources/assets/icons/app.ic'*
 }
 
 build() {
     cd "${_snapshot}"
 
-    local flags=(
-        --outbase="sources"
-        --outdir="app"
+    local common=(
+        --outbase='sources'
+        --outdir='app'
         --minify
         --platform=node
         --target=es2022
     )
 
-    esbuild "sources/code/**/*.ts" \
-        "${flags[@]}" --format=cjs
+    local cjs=(
+        --format=cjs
+    )
 
-    esbuild "sources/code/**/*.mts" \
-        "${flags[@]}" --format=esm --out-extension:".js=.mjs"
+    local esm=(
+        --format=esm
+        --out-extension:'.js=.mjs'
+    )
+
+    esbuild 'sources/code/**/*.ts' "${common[@]}" "${cjs[@]}"
+    esbuild 'sources/code/**/*.mts' "${common[@]}" "${esm[@]}"
 }
 
 package() {
-    local bin="/usr/bin"
     local lib="/usr/lib/${pkgname}"
-    local icons="/usr/share/icons/hicolor/512x512/apps"
+    local pkg_lib="${pkgdir}${lib}"
+    install -Dm644 "${source[1]}" -t "${pkg_lib}"
+    install -Dm644 "${source[2]}" -t "${pkgdir}/usr/share/applications"
 
-    install -dm755 "${pkgdir}"{"${bin}","${lib}","${icons}"}
-
-    install -Dm644 "${source[1]}" \
-        -t "${pkgdir}${lib}"
-
-    install -Dm644 "${source[2]}" \
-        -t "${pkgdir}/usr/share/applications"
-
-    local exec="${pkgdir}${bin}/${pkgname}"
+    local pkg_bin="${pkgdir}/usr/bin"
+    local exec="${pkg_bin}/${pkgname}"
+    install -dm755 "${pkg_bin}"
     sed -e "s|@ELECTRON@|${_electron}|;s|@APP_DIR@|${lib}|" "${source[3]}" > "${exec}"
     chmod 755 "${exec}"
 
     cd "${_snapshot}"
+    cp -r --parents 'package.json' 'app' 'sources/'{'assets','translations'} 'node_modules' -t "${pkg_lib}"
+    ln -s "../sources/translations" -T "${pkg_lib}/app/translations"
 
-    cp -r --parents "package.json" "app" "sources/"{"assets","translations"} "node_modules" \
-        -t "${pkgdir}${lib}"
+    local pkg_icons="${pkgdir}/usr/share/icons/hicolor/512x512/apps"
+    install -dm755 "${pkg_icons}"
+    ln -s "${lib}/sources/assets/icons/app.png" -T "${pkg_icons}/${pkgname}.png"
 
-    install -Dm644 "LICENSE" \
-        -t "${pkgdir}/usr/share/licenses/${pkgname}"
-
-    ln -sT "../sources/translations" "${pkgdir}${lib}/app/translations"
-    ln -sT "${lib}/sources/assets/icons/app.png" "${pkgdir}${icons}/${pkgname}.png"
+    install -Dm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
