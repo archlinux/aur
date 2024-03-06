@@ -31,7 +31,7 @@ post_install() {
     echo -e "Public IP: http://$_1panel_public_ip:$_1panel_port/$_1panel_entrance"
     echo -e "Username: $_1panel_username"
     echo -e "Password: $_1panel_password"
-    echo -e "If you are not Chinese user, please click \033[32m'简体中文'\033[0m and switch it to English."
+    echo -e "If you are not Chinese user, please click \033[32m'中文（简体）'033[0m and switch it to English."
     unset _1panel_active_interface
     unset _1panel_local_ip
     unset _1panel_public_ip
