@@ -33,6 +33,9 @@ build() {
     -S "$srcdir/nelson" \
     -B build
   cmake --build build
+
+  export PATH=/usr/lib/qt6:$PATH
+  cmake --build build -- buildhelp
 }
 
 package() {
