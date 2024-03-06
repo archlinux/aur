@@ -7,7 +7,7 @@ pkgdesc="Intelligent developer platform for Cloud and Edge using WASM"
 arch=('x86_64')
 url="https://www.moonbitlang.com/"
 license=('unknown')
-depends=('glibc' 'gcc-libs' 'openssl-1.1')
+depends=('glibc' 'gcc-libs' 'git')
 provides=("moonbit")
 conflicts=("moonbit")
 _download_url="https://cli.moonbitlang.com/ubuntu_x86"
@@ -17,12 +17,12 @@ source=("${_download_url}/moon"
         "${_download_url}/moonrun"
         "${_download_url}/mooninfo"
         "${_download_url}/moondoc")
-sha256sums=('026bd9a9ee35b7bd04b51c777b9265c402afd0284bcddfde43ba39b0462d1b95'
-            'b0fc9949f608a50713c1848cc5ea82083b801ef1315ee934b3081058907e5ef1'
-            '04860ddad5af21f18920bbc02099e1a0d00a5abec6ac20f88819817f8b5da8db'
-            '6005aa72c4a520da457674e9052259b8e08d5f788a1636f0f7c99bd7c0891b64'
-            'f1e6f1d9b6786d01831246a3f14603f26e190add5d8aa8fcef89532107dffab4'
-            'bc460f4b22a151fc98c8689a7c64e44261cf8923da90469895ef05af118cd387')
+sha256sums=('0738e07c8166d7129e866fa7cf4e5d35febe2eaa1f051c8a250e1d525a5b0205'
+            '416391e7517cd79713e5b375c749ec48393470fc1bfe1c1abb38d930a227bb84'
+            'ea47121dbd1673b1395150ce6ac337cb0a1d4ca6f7a1eb56ce03127b9dced0fa'
+            '4bb85c272ba6d2bb62d3a0c2d6cd435274366a5230c758c72d2d098ab1233d71'
+            'd55242c6a384f8482e53ad6c5d68e8e2593f4b35270c30a555f64ed4d8e9c71d'
+            'c1ff3738f8ca3e558d9b1a0aeb58743f9c3b641357f2902af83f63de7397a97b')
 
 pkgver() {
   cd "${srcdir}"
