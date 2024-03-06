@@ -2,7 +2,7 @@
 pkgbase=vpkedit
 pkgname=(vpkedit libvpkeditc)
 pkgver=4.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A library and CLI/GUI tool to create, read, and write several pack file formats"
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKEdit"
@@ -33,6 +33,8 @@ sha256sums=('SKIP'
 
 prepare() {
 	cd "$srcdir/$pkgname"
+	# Change to right version number
+	sed -i 's/4.1.1/4.1.2/' CMakeLists.txt
 	git submodule init
 	for submodule in {vtflib,saap,speedykeyv,sourcepp,miniaudio}; do
 		git config submodule.src/gui/thirdparty/$submodule.url "$srcdir/${submodule}"

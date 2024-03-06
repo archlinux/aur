@@ -1,7 +1,7 @@
 pkgbase = vpkedit
 	pkgdesc = A library and CLI/GUI tool to create, read, and write several pack file formats
 	pkgver = 4.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/craftablescience/VPKEdit
 	arch = x86_64
 	license = MIT
