@@ -1,8 +1,8 @@
-_electron='electron28'
+_electron='electron29'
 
 pkgname=webcord
 pkgver=4.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Discord and SpaceBar Electron-based client implemented without Discord API'
 arch=('any')
 _repo='WebCord'
