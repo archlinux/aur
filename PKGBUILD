@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=git-it-electron-git
 _appname=Git-it
-pkgver=5.2.2.r377.g046f362
+pkgver=5.2.2.r384.g926758e
 _electronversion=28
 pkgrel=1
 pkgdesc="A Desktop App for Learning Git and GitHub"
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -34,7 +34,7 @@ build() {
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
-    gendesk -q -f -n --categories "Utility" --name "${_appname}" --exec "${pkgname%-git}"
+    gendesk -q -f -n --categories="Utility" --name="${_appname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -42,6 +42,7 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     sed "s|--arch=x64   ||g" -i package.json
     npm install
