@@ -1,18 +1,13 @@
 # Maintainer: Strahinya Radich <contact@strahinja.org>
 pkgname=sled
 pkgver=0.12.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple text editor"
 arch=('x86_64')
 url="https://strahinja.srht.site/sled"
 license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~strahinja/sled/archive/v$pkgver.tar.gz")
 md5sums=('bc71a6663167ddd41d4afabdc255e689')
-optdepends=(
-	'katex: For math mode'
-	'git: For {git-log}'
-	'imagemagick: For img tag attributes'
-)
 checkdepends=(
 	'perl'
 	'expect'

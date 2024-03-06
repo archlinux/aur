@@ -1,15 +1,12 @@
 pkgbase = sled
 	pkgdesc = Simple text editor
 	pkgver = 0.12.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://strahinja.srht.site/sled
 	arch = x86_64
 	license = GPL3
 	checkdepends = perl
 	checkdepends = expect
-	optdepends = katex: For math mode
-	optdepends = git: For {git-log}
-	optdepends = imagemagick: For img tag attributes
 	source = sled-0.12.5.tar.gz::https://git.sr.ht/~strahinja/sled/archive/v0.12.5.tar.gz
 	md5sums = bc71a6663167ddd41d4afabdc255e689
 
