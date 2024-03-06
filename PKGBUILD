@@ -30,6 +30,7 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'bash-completion' 'p11-kit' 'systemd' 'libfido2' 'tpm2-tss' 'rsync'
              'bpf' 'libbpf' 'clang' 'llvm' 'curl' 'gnutls' 'python-pyelftools'
              'libpwquality' 'qrencode' 'lib32-gcc-libs' 'python-pefile')
+conflicts=("mkinitcpio<38-1")
 validpgpkeys=('63CDA1E5D3FC22B998D20DD6327F26951A015CC4'  # Lennart Poettering <lennart@poettering.net>
               'A9EA9081724FFAE0484C35A1A81CEA22BC8C7E2E'  # Luca Boccassi <luca.boccassi@gmail.com>
               '9A774DB5DB996C154EBBFBFDA0099A18E29326E1'  # Yu Watanabe <watanabe.yu+github@gmail.com>
@@ -38,10 +39,6 @@ source=("git+https://github.com/systemd/systemd-stable#tag=${_tag}?signed"
         "git+https://github.com/systemd/systemd#tag=v${_tag_name%.*}?signed"
         '0001-Use-Arch-Linux-device-access-groups.patch'
         '0002-Disable-mount_nofollow-for-ChromiumOS-kernels.patch'
-        # mkinitcpio files
-        'initcpio-hook-udev'
-        'initcpio-install-systemd'
-        'initcpio-install-udev'
         # bootloader files
         'arch.conf'
         'loader.conf'
@@ -64,9 +61,6 @@ sha512sums=('SKIP'
             'SKIP'
             '3ccf783c28f7a1c857120abac4002ca91ae1f92205dcd5a84aff515d57e706a3f9240d75a0a67cff5085716885e06e62597baa86897f298662ec36a940cf410e'
             '14279a57ec414dc68c25d9e0fd688c94cd078143bf144ac9081ffaa1e369527f3f04369fc27a88c03ae15cc879ac9678c38ca4c7ebfc1d7cbb40a2c2941266d1'
-            '4a6cd0cf6764863985dc5ad774d7c93b574645a05b3295f989342951d43c71696d069641592e37eeadb6d6f0531576de96b6392224452f15cd9f056fae038f8e'
-            'ada692514d758fa11e2be6b4c5e1dc2d9d47548f24ada35afdce1dcac918e72ae2251c892773e6cf41fa431c3613a1608668e999eb86a565870fecb55c47b4ba'
-            'a8c7e4a2cc9c9987e3c957a1fc3afe8281f2281fffd2e890913dcf00cf704024fb80d86cb75f9314b99b0e03bac275b22de93307bfc226d8be9435497e95b7e6'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
             'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
             '5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75'
@@ -266,11 +260,6 @@ package_systemd-chromiumos() {
 
   # ship default policy to leave services disabled
   echo 'disable *' >"$pkgdir"/usr/lib/systemd/system-preset/99-default.preset
-
-  # add mkinitcpio hooks
-  install -D -m0644 initcpio-install-systemd "$pkgdir"/usr/lib/initcpio/install/systemd
-  install -D -m0644 initcpio-install-udev "$pkgdir"/usr/lib/initcpio/install/udev
-  install -D -m0644 initcpio-hook-udev "$pkgdir"/usr/lib/initcpio/hooks/udev
 
   # The group 'systemd-journal' is allocated dynamically and may have varying
   # gid on different systems. Let's install with gid 0 (root), systemd-tmpfiles
