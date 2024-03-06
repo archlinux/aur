@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=h7toolpc-wine
-pkgver=2.2.4
-pkgrel=1
+pkgver=2.2.5
+pkgrel=0
 pkgdesc="Wine H7-TOOL 的 PC 上位机，支持串口、CAN、示波器、CMSIS-DAP、DS18B20、RTT Viewer、脱机烧录等"
 arch=('x86_64')
 url="http://www.armbbs.cn/forum.php?mod=viewthread&tid=95468"
@@ -10,24 +10,25 @@ license=('unknow')
 provides=(${pkgname})
 conflicts=(${pkgname} ${pkgname%-wine} 'h7toolpc-bin')
 replaces=(h7toolpc-bin)
-depends=(wine
+depends=(
+    bash
+    hicolor-icon-theme
+    wine
     wqy-microhei)
 optdepends=()
 makedepends=(libarchive)
 backup=()
-options=('!strip')
+options=()
 install=${pkgname}.install
 source=("${pkgname/pc-wine/PC_release}-${pkgver}.7z::https://img.anfulai.cn/bbs/95468/${pkgname/pc-wine/PC_release}(V${pkgver}).7z"
         "icons.tar.gz"
         "${pkgname}.install")
-sha256sums=('96e51d182af19a4d798056014858836fcfe32f6e1cc3793438b7a28cc4dd005b'
+sha256sums=('2465c51723f41a298632fa00d3ca170c7554ce5f828761c73d213da1d803f255'
             '6823224b5699dc17c41efdcbc8465554f007cb62cadea0aad9b67c08c5698142'
             '078a64b4818c65daabe24ad31ead1912ee564b15da79084fa1c7d1a004f30cef')
 noextract=("icons.tar.gz")
 
 package() {
-    export LC_CTYPE="zh_CN.UTF-8"
-
     armfly="opt/armfly"
 
     install -dm0755 "${pkgdir}/${armfly}/${pkgname%-wine}"
