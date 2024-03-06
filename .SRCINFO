@@ -2,7 +2,7 @@ pkgbase = life-keyring
 	pkgdesc = Life PGP keyring
 	pkgver = 20220731
 	pkgrel = 1
-	url = https://gitlab.life.org/life/life-keyring
+	url = https://github.com/themartiancompany/life-keyring
 	install = life-keyring.install
 	arch = any
 	groups = base-devel
@@ -14,7 +14,7 @@ pkgbase = life-keyring
 	makedepends = python
 	makedepends = sequoia-sq
 	depends = pacman
-	source = life-keyring::git+ssh://life_local_git/home/git/life-keyring#tag=20220731?signed
+	source = life-keyring::git+https://github.com/themartiancompany/life-keyring#tag=20220731?signed
 	validpgpkeys = 3D115DD206D92A0656C827BC8B686E3C22E4C2FA
 	sha256sums = SKIP
 
