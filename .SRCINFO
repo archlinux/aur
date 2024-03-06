@@ -1,0 +1,18 @@
+pkgbase = duke3d
+	pkgdesc = Duke Nukem 3D developed by ID Software Powered by the EDuke32
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/eduke32-linux
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = eduke32-bin
+	depends = git
+	depends = yad
+	source = https://gitlab.com/eduke32-linux/duke3d/-/archive/1.0.0-1/duke3d-1.0.0-1.tar.bz2
+	sha256sums = SKIP
+
+pkgname = duke3d
