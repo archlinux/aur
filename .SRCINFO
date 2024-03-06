@@ -1,24 +1,21 @@
 pkgbase = 1panel-dev-bin
-	pkgdesc = 1Panel 是一个现代化、开源的 Linux 服务器运维管理面板。（本包为开发板，不建议在生产环境安装）
+	pkgdesc = 1Panel is a modern and open source Linux panel.
 	pkgver = 1.10.1_alpha.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://1panel.cn
 	install = 1panel-dev-bin.install
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
+	makedepends = pwgen
 	depends = docker
 	depends = docker-compose
 	optdepends = ufw
 	optdepends = firewalld
 	conflicts = 1panel-bin
 	source_x86_64 = 1panel-dev-bin-1.10.1-alpha.4-amd64.tar.gz::https://resource.fit2cloud.com/1panel/package/dev/v1.10.1-alpha.4/release/1panel-v1.10.1-alpha.4-linux-amd64.tar.gz
-	source_x86_64 = 1pctl::https://gitee.com/sengedev/1panel-bin/raw/main/1pctl
 	sha256sums_x86_64 = ab89bc6d790dcc88229df53fb46d03d8b8a369b67ce3c4464d93437f43778605
-	sha256sums_x86_64 = 949f4427f8f3d21232245c7511182d6bd3fa2f76eff366026ebcfc758549a940
 	source_aarch64 = 1panel-dev-bin-1.10.1-alpha.4-arm64.tar.gz::https://resource.fit2cloud.com/1panel/package/dev/v1.10.1-alpha.4/release/1panel-v1.10.1-alpha.4-linux-arm64.tar.gz
-	source_aarch64 = 1pctl::https://gitee.com/sengedev/1panel-bin/raw/main/1pctl
 	sha256sums_aarch64 = c206e658b19dc499f52d90d2a0bb0f333f1cc67bbbdbae98f24d395561cf32d9
-	sha256sums_aarch64 = 949f4427f8f3d21232245c7511182d6bd3fa2f76eff366026ebcfc758549a940
 
 pkgname = 1panel-dev-bin

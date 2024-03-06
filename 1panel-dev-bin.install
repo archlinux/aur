@@ -1,121 +1,76 @@
 pre_install() {
-        echo
-cat << EOF
- ██╗    ██████╗  █████╗ ███╗   ██╗███████╗██╗
-███║    ██╔══██╗██╔══██╗████╗  ██║██╔════╝██║
-╚██║    ██████╔╝███████║██╔██╗ ██║█████╗  ██║
- ██║    ██╔═══╝ ██╔══██║██║╚██╗██║██╔══╝  ██║
- ██║    ██║     ██║  ██║██║ ╚████║███████╗███████╗
- ╚═╝    ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚══════╝
-EOF
-        echo -e "================== 1Panel开始安装 =================="
+    echo -e "================== installing 1Panel =================="
 }
 
 post_install() {
-        echo -e "\033[31m强烈建议修改面板配置，否则面板容易遭到攻击\033[0m"
-        echo -e "================== 1Panel安装成功 =================="
-        echo -e "如需设置1Panel用户名、密码、端口号，请在启动1panel服务前运行以下命令："
-        echo -e "海外服务器请运行："
-        echo -e 'sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/sengedev/1panel-bin/main/1panel.init)"'
-        echo -e "大陆服务器请运行："
-        echo -e 'sudo sh -c "$(curl -fsSL https://gitee.com/sengedev/1panel-bin/raw/main/1panel.init)"'
+    _1panel_active_interface=$(ip route get 8.8.8.8 | awk 'NR==1 {print $5}')
+    if [[ -z $_1panel_active_interface ]]; then
+        _1panel_local_ip="127.0.0.1"
+    else
+        _1panel_local_ip=`ip -4 addr show dev "$_1panel_active_interface" | grep -oP '(?<=inet\s)\d+(\.\d+){3}'`
+    fi
+    _1panel_public_ip=`curl -s https://api64.ipify.org`
+    if [[ -z "$_1panel_public_ip" ]]; then
+        _1panel_public_ip="N/A"
+    fi
+    if echo "$_1panel_public_ip" | grep -q ":"; then
+        _1panel_public_ip=[${_1panel_public_ip}]
+        1panel listen-ip ipv6
+    fi
+    if [ $_1panel_public_ip == "N/A" ]; then
+        echo -e "\033[31mFailed to get 1Panel public IP address.\033[0m"
+    fi
+    # ORIGINAL_PORT=port (/usr/bin/1pctl)
+    _1panel_port=$(sed -n 's/^ORIGINAL_PORT=\(.*\)/\1/p' /usr/bin/1pctl)
+    _1panel_username=$(sed -n 's/^ORIGINAL_USERNAME=\(.*\)/\1/p' /usr/bin/1pctl)
+    _1panel_password=$(sed -n 's/^ORIGINAL_PASSWORD=\(.*\)/\1/p' /usr/bin/1pctl)
+    _1panel_entrance=$(sed -n 's/^ORIGINAL_ENTRANCE=\(.*\)/\1/p' /usr/bin/1pctl)
+    echo -e "================== 1Panel installed ==================="
+    echo -e "Please access 1Panel using your web browser after the \033[33m 1panel.service\033[0m service is started."
+    echo -e "Local IP: http://$_1panel_local_ip:$_1panel_port/$_1panel_entrance"
+    echo -e "Public IP: http://$_1panel_public_ip:$_1panel_port/$_1panel_entrance"
+    echo -e "Username: $_1panel_username"
+    echo -e "Password: $_1panel_password"
+    echo -e "If you are not Chinese user, please click \033[32m'简体中文'\033[0m and switch it to English."
+    unset _1panel_active_interface
+    unset _1panel_local_ip
+    unset _1panel_public_ip
+    unset _1panel_port
+    unset _1panel_username
+    unset _1panel_password
+    unset _1panel_entrance
 }
 
 ## arg 1:  the old package version
 pre_remove() {
-        echo
-cat << EOF
- ██╗    ██████╗  █████╗ ███╗   ██╗███████╗██╗
-███║    ██╔══██╗██╔══██╗████╗  ██║██╔════╝██║
-╚██║    ██████╔╝███████║██╔██╗ ██║█████╗  ██║
- ██║    ██╔═══╝ ██╔══██║██║╚██╗██║██╔══╝  ██║
- ██║    ██║     ██║  ██║██║ ╚████║███████╗███████╗
- ╚═╝    ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚══════╝
-EOF
-        echo -e "================== 1Panel正在卸载 =================="
-        echo -e "\033[34m正在停止systemd服务...\033[0m"
-        systemctl disable --now 1panel
+    echo -e "================== Uninstalling 1Panel =================="
+    echo -e "\033[34mStopping systemd service...\033[0m"
+    systemctl disable --now 1panel
 }
 
 post_remove() {
-        echo -e "\033[34m正在删除1Panel配置文件...\033[0m"
-        rm -rf /opt/1panel
-        echo -e "================== 1Panel卸载完成 =================="
-}
-
-
-pre_install() {
-        echo
-cat << EOF
- ██╗    ██████╗  █████╗ ███╗   ██╗███████╗██╗
-███║    ██╔══██╗██╔══██╗████╗  ██║██╔════╝██║
-╚██║    ██████╔╝███████║██╔██╗ ██║█████╗  ██║
- ██║    ██╔═══╝ ██╔══██║██║╚██╗██║██╔══╝  ██║
- ██║    ██║     ██║  ██║██║ ╚████║███████╗███████╗
- ╚═╝    ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚══════╝
-EOF
-        echo -e "================== 1Panel开始安装 =================="
-}
-
-post_install() {
-        echo -e "\033[31m强烈建议修改面板配置，否则面板容易遭到攻击\033[0m"
-        echo -e "================== 1Panel安装成功 =================="
-        echo -e "如需设置1Panel用户名、密码、端口号，请在启动1panel服务前运行以下命令："
-        echo -e "海外服务器请运行："
-        echo -e 'sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/sengedev/1panel-bin/main/1panel.init)"'
-        echo -e "大陆服务器请运行："
-        echo -e 'sudo sh -c "$(curl -fsSL https://gitee.com/sengedev/1panel-bin/raw/main/1panel.init)"'
+    echo -e "\033[34mDeleting 1Panel configuration files...\033[0m"
+    rm -rf /opt/1panel
+    echo -e "=================== 1Panel uninstalled =================="
 }
 
 pre_upgrade() {
-        echo
-cat << EOF
- ██╗    ██████╗  █████╗ ███╗   ██╗███████╗██╗
-███║    ██╔══██╗██╔══██╗████╗  ██║██╔════╝██║
-╚██║    ██████╔╝███████║██╔██╗ ██║█████╗  ██║
- ██║    ██╔═══╝ ██╔══██║██║╚██╗██║██╔══╝  ██║
- ██║    ██║     ██║  ██║██║ ╚████║███████╗███████╗
- ╚═╝    ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚══════╝
-EOF
-        export no_need_start="false"
-        echo -e "================== 1Panel开始更新 =================="
-        # 停止1Panel服务
-        if systemctl is-active --quiet 1panel; then
-                echo -e "正在临时停止1Panel服务..."
-                systemctl stop 1panel
-                export _restart_1panel_service=true
-        fi
+    export no_need_start="false"
+    echo -e "================== Upgrading 1Panel ==================="
+    # Stop 1panel service`
+    if systemctl is-active --quiet 1panel; then
+        echo -e "Temporarily stoping 1Panel service..."
+        systemctl stop 1panel
+        export _restart_1panel_service=true
+    fi
 }
 
 
 post_upgrade() {
-        if [ -n "${_restart_1panel_service+x}" ]; then
-                echo -e "正在重启1Panel服务..."
-                systemctl start 1panel
-                unset _restart_1panel_service
-        fi
-        echo -e "================== 1Panel更新成功 =================="
-}
-
-
-## arg 1:  the old package version
-pre_remove() {
-        echo
-cat << EOF
- ██╗    ██████╗  █████╗ ███╗   ██╗███████╗██╗
-███║    ██╔══██╗██╔══██╗████╗  ██║██╔════╝██║
-╚██║    ██████╔╝███████║██╔██╗ ██║█████╗  ██║
- ██║    ██╔═══╝ ██╔══██║██║╚██╗██║██╔══╝  ██║
- ██║    ██║     ██║  ██║██║ ╚████║███████╗███████╗
- ╚═╝    ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚══════╝
-EOF
-        echo -e "================== 1Panel正在卸载 =================="
-        echo -e "\033[34m正在停止systemd服务...\033[0m"
-        systemctl disable --now 1panel
-}
-
-post_remove() {
-        echo -e "\033[34m正在删除1Panel配置文件...\033[0m"
-        rm -rf /opt/1panel
-        echo -e "================== 1Panel卸载完成 =================="
+    if [ -n "${_restart_1panel_service+x}" ]; then
+        echo -e "Restarting..."
+        systemctl start 1panel
+        unset _restart_1panel_service
+    fi
+    echo -e "=================== 1Panel upgraded ==================="
 }
