@@ -2,7 +2,7 @@
 pkgname=wavy-bin
 pkgver=1.0.1
 _electronversion=28
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple protocol testing tool that supports various connection types(now serial port only)."
 arch=('x86_64')
 url="https://github.com/novrain/wavy"
@@ -12,8 +12,6 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'java-runtime'
-    'lib32-gcc-libs'
-    'lib32-glibc'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
@@ -22,13 +20,13 @@ source=(
 )
 sha256sums=('8a16bdec4c84fb69ac3124e093b13a485e09aa5980b8104a0f40a158f965452c'
             '9f1a32e4c028facd2d42a3e5bb8c0bf6af386e3d48d2c205bb253694826f57be'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.zst"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
