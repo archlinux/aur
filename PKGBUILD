@@ -1,7 +1,7 @@
 # Maintainer: Eldred Habert <arch@eldred.fr>
 pkgname=hugetracker-git
 pkgver=v1.0.1.r5.9e31f80
-pkgrel=1
+pkgrel=2
 pkgdesc='The music composition suite for the Nintendo Game Boy'
 arch=('x86_64')
 url='https://nickfa.ro/index.php?title=HUGETracker'
