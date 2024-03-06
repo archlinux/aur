@@ -36,10 +36,6 @@ function createWrapIfNotExist() {
 	fi
 }
 
-function gamescopeLaunch() {
-	gamescope -F fsr --sharpness 0 -- launch
-}
-
 function inputMethod() {
 	if [[ ${XMODIFIERS} =~ fcitx ]]; then
 		QT_IM_MODULE=fcitx
@@ -50,9 +46,11 @@ function inputMethod() {
 }
 
 function launch() {
+	inputMethod
+	moeDect
 	echo "Launching WeChat Beta..."
 	bwrap \
-		--dir /tmp \
+		--tmpfs /tmp \
 		--symlink usr/lib /lib \
 		--symlink usr/lib64 /lib64 \
 		--symlink usr/bin /bin \
@@ -63,6 +61,8 @@ function launch() {
 		--dev /dev \
 		--dev-bind /dev/dri /dev/dri \
 		--dev-bind /dev/shm /dev/shm \
+		--ro-bind /sys/dev/char /sys/dev/char \
+		--ro-bind /sys/devices /sys/devices \
 		--proc /proc \
 		--ro-bind /usr /usr \
 		--bind "${XDG_DOCUMENTS_DIR}"/WeChat_Data "${HOME}" \
@@ -76,17 +76,14 @@ function launch() {
 		--ro-bind /usr/share/wechat-uos/etc/os-release "${osRel}" \
 		--ro-bind /usr/share/wechat-uos/etc/lsb-release /etc/lsb-release \
 		--ro-bind /usr/lib/wechat-uos/license/ /usr/lib/license/ \
-		--ro-bind /dev/null /sys/dev/block \
+		--ro-bind-try /dev/null /sys/dev/block \
 		--ro-bind /usr/lib/snapd-xdg-open/xdg-open /usr/bin/xdg-open \
 		--setenv QT_QPA_PLATFORM xcb \
 		--setenv GTK_USE_PORTAL 1 \
 		--setenv LD_LIBRARY_PATH /opt/wechat-beta:/usr/lib/wechat-uos/license \
 		/opt/wechat-beta/wechat
-
 }
 
 manageDirs
-moeDect
-inputMethod
 launch $@
 
