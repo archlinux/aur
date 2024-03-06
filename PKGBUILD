@@ -1,7 +1,7 @@
 # Maintainer: Strahinya Radich <contact@strahinja.org>
 pkgname=sled
 pkgver=0.12.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple text editor"
 arch=('x86_64')
 url="https://strahinja.srht.site/sled"

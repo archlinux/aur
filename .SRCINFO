@@ -1,7 +1,7 @@
 pkgbase = sled
 	pkgdesc = Simple text editor
 	pkgver = 0.12.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://strahinja.srht.site/sled
 	arch = x86_64
 	license = GPL3
