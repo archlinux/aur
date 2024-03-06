@@ -19,9 +19,9 @@ sha256sums_i386=('SKIP')
 sha256sums_i686=('SKIP')
 sha256sums_aarch64=('SKIP')
 source_x86_64=("https://gitlab.com/eduke32-linux/binaries/duke32-$pkgver/-/raw/main/eduke32-linux-x64.tar.xz")
-source_i386=("https://gitlab.com/eduke32-linux/binaries/duke32-$pkgver/-/raw/main/eduke32-linux-i386.tar.xz")
-source_pentium4=("https://gitlab.com/eduke32-linux/binaries/duke32-$pkgver/-/raw/main/eduke32-linux-i386.tar.xz")
-source_i686=("https://gitlab.com/eduke32-linux/binaries/duke32-$pkgver/-/raw/main/eduke32-linux-i386.tar.xz")
+source_i386=("https://gitlab.com/eduke32-linux/binaries/duke32-$pkgver/-/raw/main/eduke32-linux-i686.tar.xz")
+source_pentium4=("https://gitlab.com/eduke32-linux/binaries/duke32-$pkgver/-/raw/main/eduke32-linux-i686.tar.xz")
+source_i686=("https://gitlab.com/eduke32-linux/binaries/duke32-$pkgver/-/raw/main/eduke32-linux-i686.tar.xz")
 source_aarch64=("https://gitlab.com/eduke32-linux/binaries/duke32-$pkgver/-/raw/main/eduke32-linux-aarch64.tar.xz")
 
 
