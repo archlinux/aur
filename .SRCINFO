@@ -1,6 +1,6 @@
 pkgbase = gimp-develop-git
 	pkgdesc = GNU Image Manipulation Program (non-conflicting git version)
-	pkgver = 2.99.7.r462.d33c45fb47
+	pkgver = 2.99.19.r120.0f32312e26
 	pkgrel = 1
 	epoch = 1
 	url = https://www.gimp.org
@@ -34,7 +34,7 @@ pkgbase = gimp-develop-git
 	depends = libwmf>=0.2.8
 	depends = icu
 	depends = enchant
-	depends = libgexiv2>=0.10.6
+	depends = libgexiv2>=0.14.0
 	depends = librsvg>=2.40.6
 	depends = desktop-file-utils
 	depends = libexif>=0.6.15
@@ -45,8 +45,8 @@ pkgbase = gimp-develop-git
 	depends = poppler-data>=0.4.9
 	depends = openexr>=1.6.1
 	depends = mypaint-brushes1>=1.3.0
-	depends = babl>=0.1.74
-	depends = gegl>=0.4.32
+	depends = babl>=0.1.108
+	depends = gegl>=0.4.48
 	depends = cairo>=1.14.0
 	depends = appstream-glib>=0.7.7
 	depends = gobject-introspection>=1.32.0
