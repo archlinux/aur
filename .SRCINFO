@@ -1,0 +1,26 @@
+pkgbase = hugetracker-bin
+	pkgdesc = The music composition suite for the Nintendo Game Boy
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://nickfa.ro/index.php?title=HUGETracker
+	arch = x86_64
+	license = custom:public domain
+	depends = fontconfig
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk2
+	depends = pango
+	depends = rgbds>=0.5.0
+	depends = sdl2
+	depends = libatk-1.0.so
+	depends = libcairo.so
+	optdepends = ffmpeg: "Export song" functionality
+	provides = hugetracker
+	conflicts = hugetracker
+	noextract = hUGETracker.zip
+	source = hUGETracker.zip::https://github.com/SuperDisk/hUGETracker/releases/download/v1.0.5/hUGETracker-1.0.5-linux.zip
+	source = LICENSE
+	sha256sums = ad43114845be0facf5b8f72bffcfb3cb82712356a956151c450184245384c499
+	sha256sums = 89e3f0dbfb531db8d9ba1b20865407b35a0aad5b3f5468bd8527a17a5026e836
+
+pkgname = hugetracker-bin
