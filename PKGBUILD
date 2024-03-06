@@ -4,12 +4,12 @@
 pkgname=ame
 _pkgname=amethyst
 pkgver=4.0.3
-pkgrel=7
+pkgrel=8
 _codename='Funky Fish'
 pkgdesc='Amethyst is a fast and efficient AUR helper'
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/crystal-linux/software/amethyst"
-license=('GPL-3.0-or-later')
+url="https://gitlab.com/crystal-linux/software/${_pkgname}"
+license=('GPL-3.0-only')
 depends=(
     'git'
     'pacman-contrib'

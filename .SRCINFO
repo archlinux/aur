@@ -1,11 +1,11 @@
 pkgbase = ame
 	pkgdesc = Amethyst is a fast and efficient AUR helper
 	pkgver = 4.0.3
-	pkgrel = 7
+	pkgrel = 8
 	url = https://gitlab.com/crystal-linux/software/amethyst
 	arch = x86_64
 	arch = aarch64
-	license = GPL-3.0-or-later
+	license = GPL-3.0-only
 	makedepends = cargo
 	depends = git
 	depends = pacman-contrib
