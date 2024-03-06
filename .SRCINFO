@@ -1,6 +1,6 @@
 pkgbase = xfce4-docklike-plugin-ng-git
 	pkgdesc = A modern, docklike, minimalist taskbar for XFCE (Forked version)
-	pkgver = 0.4.2.r3.g9a5bb70
+	pkgver = 0.4.2.r10.gbd2c870
 	pkgrel = 1
 	url = https://gitlab.xfce.org/panel-plugins/xfce4-docklike-plugin
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = xfce4-docklike-plugin-ng-git
 	makedepends = xfce4-dev-tools
 	makedepends = intltool
 	depends = xfce4-panel
-	depends = libwnck3
+	depends = libxfce4windowing
 	depends = libxfce4ui
 	depends = gtk3
 	depends = cairo
