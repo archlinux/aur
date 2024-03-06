@@ -5,3 +5,4 @@
 !PKGBUILD
 !upload-symbol-archive
 !*.patch
+!*.desktop
