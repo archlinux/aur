@@ -6,7 +6,7 @@
 # Maintainer: Adam Lawson <dev@goshawk22.uk>
 
 pkgname=powerstat
-pkgver=0.04.02
+pkgver=0.04.03
 pkgrel=1
 pkgdesc='A tool for measuring a laptops power usage via the battery.'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ url="https://github.com/ColinIanKing/powerstat"
 license=('GPL2')
 depends=('glibc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ColinIanKing/$pkgname/archive/refs/tags/V$pkgver.tar.gz")
-sha256sums=('51b79161fc1dfc8776c025cb726bde331393c177cfe71dbc1fd95b59ef470aaf')
+sha256sums=('f7612bb5af9c1355bda30b0441aaab34e0b125bd867e7feac98671fd39de9b17')
 
 build() {
   cd $pkgname-$pkgver
