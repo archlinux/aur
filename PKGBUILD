@@ -3,14 +3,14 @@ pkgname=lanzouyun-pan
 pkgver=3.4.8
 _electronversion=18
 _nodeversion=17
-pkgrel=1
+pkgrel=2
 pkgdesc="蓝奏云网盘、客户端,实现了蓝奏云大部分功能并添加了许多增强型功能,可作为网盘的日常管理工具使用,项目用 electron 构建."
 arch=('any')
 url="https://github.com/chenhb23/lanzouyun-disk"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'gendesk'
@@ -18,8 +18,7 @@ makedepends=(
     'npm'
     'yarn'
     'git'
-    'node-gyp'
-    'make'
+    'base-devel'
     'gcc'
 )
 options=(
@@ -30,7 +29,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -53,12 +52,7 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl="https://electronjs.org/headers"
     HOME="${srcdir}/.electron-gyp"
-    sed -e "s|-mw|-l|g" \
-        -e "47i\    \"linux\": {" \
-        -e "47i\        \"target\": \"AppImage\"," \
-        -e "47i\        \"artifactName\": \"lanzouyun-\${version}-\${arch}.\${ext}\"" \
-        -e "47i\    }," \
-        -i app/package.json
+    sed "s|electron-builder -mw|electron-builder -l AppImage|g" -i app/package.json
     yarn install --cache-folder "${srcdir}/.yarn_cache"
     yarn run build
 }
