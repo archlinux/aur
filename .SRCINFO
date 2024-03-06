@@ -3,17 +3,19 @@ pkgbase = pomodoro-applet
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/stump/pomodoro-applet
-	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-or-later
+	makedepends = git
 	makedepends = intltool
+	depends = cairo
+	depends = glib2
+	depends = glibc
 	depends = gnome-panel
-	source = http://ftp.stump.io/software/pomodoro-applet/pomodoro-applet-1.0.tar.gz
-	source = 0001-Port-to-libpanel-applet-5-and-gstreamer-1.0.patch
-	source = 0002-Switch-to-in-process-applet.patch
-	sha256sums = a3d3e4706177a12d403cdfd6aa7fa0f2f84597d2ecf74e5a85b6185e05ad74b2
-	sha256sums = 1af0a1f513758312466541d4c1d68abfd12b50b62bcd96b70ecfe16fbbdaad43
-	sha256sums = 73bc22035cae43bde160931ffa90750500688a0027d38f80e5851baad464714f
+	depends = gtk3
+	depends = libcanberra
+	depends = libnotify
+	depends = librsvg
+	source = git+https://github.com/stump/pomodoro-applet.git#commit=5bc211e7f5f20e2a335b1a1c7e9e1748a6f846df
+	sha256sums = SKIP
 
 pkgname = pomodoro-applet
-

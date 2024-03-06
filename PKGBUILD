@@ -3,33 +3,29 @@
 pkgname=pomodoro-applet
 pkgver=1.0
 pkgrel=1
-pkgdesc="GNOME Panel applet for timing the intervals used in the Pomodoro Techinique(tm)"
-arch=('i686' 'x86_64')
-url="https://github.com/stump/pomodoro-applet"
-license=('GPL')
-depends=('gnome-panel')
-makedepends=('intltool')
-source=(http://ftp.stump.io/software/$pkgname/$pkgname-$pkgver.tar.gz
-        0001-Port-to-libpanel-applet-5-and-gstreamer-1.0.patch
-        0002-Switch-to-in-process-applet.patch)
-sha256sums=('a3d3e4706177a12d403cdfd6aa7fa0f2f84597d2ecf74e5a85b6185e05ad74b2'
-            '1af0a1f513758312466541d4c1d68abfd12b50b62bcd96b70ecfe16fbbdaad43'
-            '73bc22035cae43bde160931ffa90750500688a0027d38f80e5851baad464714f')
+pkgdesc='GNOME Panel applet for timing the intervals used in the Pomodoro Techinique(tm)'
+arch=('x86_64')
+url='https://github.com/stump/pomodoro-applet'
+license=('GPL-3.0-or-later')
+depends=('cairo' 'glib2' 'glibc' 'gnome-panel' 'gtk3' 'libcanberra' 'libnotify' 'librsvg')
+makedepends=('git' 'intltool')
+_commit=5bc211e7f5f20e2a335b1a1c7e9e1748a6f846df  # master
+source=("git+https://github.com/stump/pomodoro-applet.git#commit=$_commit")
+sha256sums=('SKIP')
 
 prepare() {
-  cd $pkgname-$pkgver
-  patch -Np1 -i ../0001-Port-to-libpanel-applet-5-and-gstreamer-1.0.patch
-  patch -Np1 -i ../0002-Switch-to-in-process-applet.patch
-  autoreconf -fi
+  cd $pkgname
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd $pkgname-$pkgver
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib/$pkgname
+  cd $pkgname
+  ./configure --prefix=/usr
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   make DESTDIR="$pkgdir" install
 }
