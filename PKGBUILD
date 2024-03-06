@@ -21,7 +21,7 @@ makedepends=('lgogdownloader')
 options=('!strip')
 
 source=(
-  "${_shortname}_latest.sh::gogdownloader://${_shortname//-/_}/en3installer0"
+  "${_shortname}-${pkgver}.sh::gogdownloader://${_shortname//-/_}/en3installer0"
   "${pkgname}.desktop"
   "${_shortname}.bash"
 )
