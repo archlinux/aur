@@ -3,7 +3,7 @@ pkgname=glyphr-studio-desktop-bin
 _appname="Glyphr Studio"
 pkgver=0.6.0
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop client for Glyphr Studio built in electron.Glyphr Studio is a free, web based font designer."
 arch=("x86_64")
 url="https://www.glyphrstudio.com/"
@@ -22,13 +22,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('b156bd22d1864c71ddb5063c17f405d1340760207cf15973082e6d072e55c317'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_appname}/${pkgname%-bin}\"|${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
