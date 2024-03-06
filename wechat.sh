@@ -45,6 +45,7 @@ function inputMethod() {
 		QT_IM_MODULE=fcitx
 	elif [[ ${XMODIFIERS} =~ ibus ]]; then
 		QT_IM_MODULE=ibus
+		IBUS_USE_PORTAL=1
 	fi
 }
 
@@ -57,12 +58,11 @@ function launch() {
 		--symlink usr/bin /bin \
 		--symlink usr/bin /sbin \
 		--ro-bind /opt /opt \
-		--bind "$XDG_RUNTIME_DIR/bus" "$XDG_RUNTIME_DIR/bus" \
-		--bind "$XDG_RUNTIME_DIR/pulse" "$XDG_RUNTIME_DIR/pulse" \
+		--bind "$XDG_RUNTIME_DIR" "$XDG_RUNTIME_DIR" \
+		--chmod 0700 "$XDG_RUNTIME_DIR" \
 		--dev /dev \
 		--dev-bind /dev/dri /dev/dri \
 		--dev-bind /dev/shm /dev/shm \
-		--ro-bind /sys/dev/char /sys/dev/char \
 		--proc /proc \
 		--ro-bind /usr /usr \
 		--bind "${XDG_DOCUMENTS_DIR}"/WeChat_Data "${HOME}" \
@@ -75,10 +75,11 @@ function launch() {
 		--bind /usr/share/wechat-uos/etc/os-release "${osRel}" \
 		--bind /usr/share/wechat-uos/etc/lsb-release /etc/lsb-release \
 		--bind /usr/lib/wechat-uos/license/ /usr/lib/license/ \
+		--bind /dev/null /sys/dev/block \
+		--unsetenv __EGL_VENDOR_LIBRARY_FILENAMES \
 		env QT_QPA_PLATFORM=xcb \
 			GTK_USE_PORTAL=1 \
 			LD_LIBRARY_PATH=/opt/wechat-beta \
-			LIBVA_DRIVER_NAME=iHD \
 			LD_PRELOAD=/usr/lib/wechat-uos/license/libuosdevicea.so \
 			/opt/wechat-beta/wechat
 }
