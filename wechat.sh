@@ -10,8 +10,42 @@ function moeDect() {
 
 }
 
+function sourceXDG() {
+	if [[ -d "${HOME}"/.config ]]; then
+		source "${HOME}"/.config/user-dirs.dirs
+	else
+		source "${XDG_CONFIG_HOME}"/user-dirs.dirs
+	fi
+}
+
+function manageDirs() {
+	sourceXDG
+	createWrapIfNotExist "${XDG_DOCUMENTS_DIR}"/WeChat_Downloads
+	createWrapIfNotExist "${XDG_DOCUMENTS_DIR}"/WeChat_Data
+	if [ -d "${HOME}/Documents/TrashBox" ]; then
+		mv "${HOME}/Documents/TrashBox"/* \
+			"${XDG_DOCUMENTS_DIR}"/WeChat_Data
+	fi
+}
+
+function createWrapIfNotExist() {
+	if [ -d "$@" ]; then
+		return 0
+	else
+		mkdir -p "$@"
+	fi
+}
+
 function gamescopeLaunch() {
 	gamescope -F fsr --sharpness 0 -- launch
+}
+
+function inputMethod() {
+	if [[ ${XMODIFIERS} =~ fcitx ]]; then
+		QT_IM_MODULE=fcitx
+	elif [[ ${XMODIFIERS} =~ ibus ]]; then
+		QT_IM_MODULE=ibus
+	fi
 }
 
 function launch() {
@@ -31,13 +65,14 @@ function launch() {
 		--ro-bind /sys/dev/char /sys/dev/char \
 		--proc /proc \
 		--ro-bind /usr /usr \
-		--bind "${HOME}/Documents/TrashBox" "$HOME" \
+		--bind "${XDG_DOCUMENTS_DIR}"/WeChat_Data "${HOME}" \
+		--bind "${XDG_DOCUMENTS_DIR}"/WeChat_Downloads "${XDG_DOWNLOAD_DIR}" \
 		--bind "${XAUTHORITY}" "${XAUTHORITY}" \
 		--ro-bind /etc /etc \
 		--hostname trash \
 		--unshare-uts \
 		--bind /usr/share/wechat-uos/var/ /var/ \
-		--bind /usr/share/wechat-uos/etc/os-release /usr/share/moeOS-Docs/os-release \
+		--bind /usr/share/wechat-uos/etc/os-release "${osRel}" \
 		--bind /usr/share/wechat-uos/etc/lsb-release /etc/lsb-release \
 		--bind /usr/lib/wechat-uos/license/ /usr/lib/license/ \
 		env QT_QPA_PLATFORM=xcb \
@@ -48,4 +83,8 @@ function launch() {
 			/opt/wechat-beta/wechat
 }
 
-launch
+manageDirs
+moeDect
+inputMethod
+launch $@
+
