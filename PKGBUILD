@@ -3,14 +3,13 @@
 _pkgname=EcoIndR
 _pkgver=2.0
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
-pkgrel=1
-pkgdesc='Ecological Indicators'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Ecological Indicators"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-2.0-or-later')
 depends=(
-  r
   r-fd
   r-picante
   r-rarity
@@ -20,8 +19,6 @@ depends=(
 optdepends=(
   r-alphahull
   r-geor
-  r-methods
-  r-mgcv
   r-plotrix
   r-raster
   r-sf
@@ -29,14 +26,15 @@ optdepends=(
   r-sp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a')
+md5sums=('1bb0e62d2cfb2da1f626240c3e6ad4b7')
+b2sums=('af9fc281d4426b144de7be17df258daef3f7749476377d5074956d6f5a033599608075ca552b224cfc80ee9496ff068dd262e074a1b56a3aa91732407a980bff')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
