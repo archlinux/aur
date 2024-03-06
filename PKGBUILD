@@ -2,7 +2,7 @@
 
 pkgname=ttf-juliamono-nerd-font
 pkgver=0.054
-pkgrel=1
+pkgrel=2
 pkgdesc="JuliaMono, a font for programming, patched with Nerd Fonts (Regular, Mono, Propo)"
 arch=('any')
 url="https://github.com/mietzen/juliamono-nerd-font"
