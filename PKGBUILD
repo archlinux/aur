@@ -8,7 +8,7 @@
 
 pkgname=flexget
 _pkgname=Flexget
-pkgver=3.11.19
+pkgver=3.11.20
 pkgrel=1
 pkgdesc="Multipurpose automation tool for downloading media content from different sources"
 arch=(any)
@@ -78,12 +78,12 @@ optdepends=(
   'python-transmissionrpc: Transmission support'
 )
 source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   "flexget.service"
   "flexget@.service"
 )
 sha256sums=(
-  '3179fe5f371a43f04d95af4a73426a9dcbb02caad2107c8fd66bf53547bfbe4b'
+  'e5f551374a1f8e991ab2e0ca0c319e20fb98c835134c192b6c3905154d47b154'
   '117de8d5cbe0ac53ecd3be3e579f2cfa62ef186ab36e382f857059380447c5aa'
   'aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a'
 )
@@ -110,9 +110,9 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dvm644 -t "$pkgdir/usr/lib/systemd/user/" \
+  install -Dm644 -t "$pkgdir/usr/lib/systemd/user/" \
     "$srcdir/flexget.service" \
     "$srcdir/flexget@.service"
 
-  install -Dvm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
