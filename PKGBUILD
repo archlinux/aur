@@ -74,17 +74,16 @@ pkgver() {
     "$(git -C $_pkgname log --pretty=format:'%h' -n 1)"
 }
 
-prepare() {
+build() {
   export CFLAGS CXXFLAGS LDFLAGS
   meson "${srcdir}/${_pkgname}"\
         "${srcdir}/build"\
-        --prefix=/usr
-}
-
-build() {
+        --prefix=/usr \
+        -Dbug-report-url='https://github.com/bartoszek/AUR-gimp-git/issues'
   export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
 # shellcheck disable=SC2046 # allow MAKEFLAGS to split when passing multiple flags.
- ninja $(grep -oP -- '-+[A-z]+ ?[0-9]*'<<<"${MAKEFLAGS:--j1}") -C "${srcdir}/build"
+  ninja $(grep -oP -- '-+[A-z]+ ?[0-9]*'<<<"${MAKEFLAGS:--j1}") -C "${srcdir}/build"
+}
 }
 
 package() {
