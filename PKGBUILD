@@ -3,7 +3,7 @@ pkgname=codex-bin
 _pkgname=Codex
 pkgver=2.0.4
 _electronversion=26
-pkgrel=2
+pkgrel=3
 pkgdesc="A free note-taking software for programmers and Computer Science students"
 arch=('x86_64')
 url="https://codexnotes.com/"
@@ -20,13 +20,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('e36b9cab0f56cf8084d3657e754629df065042aabe704efd15a4e9985529c321'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${_pkgname}|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
