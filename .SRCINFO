@@ -1,0 +1,15 @@
+pkgbase = ttf-greybeard-bin
+	pkgdesc = a chunky monospaced bitmap programming font for old nerds that hate eyestrain
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/flowchartsman/greybeard
+	arch = any
+	license = MIT
+	conflicts = ttf-greybeard
+	conflicts = ttf-greybeard-git
+	source = Greybeard-v1.0.0-ttf.zip::https://github.com/flowchartsman/greybeard/releases/download/v1.0.0/Greybeard-v1.0.0-ttf.zip
+	source = LICENSE::https://github.com/flowchartsman/greybeard/raw/v1.0.0/LICENSE
+	sha256sums = ddb9075cc4156e90f156bb17c2e91a59a731d3c9fc0350631adafa99d6affbf9
+	sha256sums = 1e2dd64b68b21c7fed75c008120c4d313740f90d992f3385218a97bfd58e4f04
+
+pkgname = ttf-greybeard-bin
