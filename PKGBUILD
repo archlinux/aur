@@ -4,7 +4,7 @@ pkgname="deepin-wine-${_officalname}"
 _pkgname="com.${_officalname}.spark"
 _appname=YuQue
 pkgver=3.2.2.1107
-pkgrel=3
+pkgrel=4
 pkgdesc="新一代云端知识库，用于个人笔记与知识创作，团队协同与知识沉淀"
 arch=("x86_64")
 url="https://www.yuque.com/"
@@ -18,7 +18,6 @@ depends=(
     'deepin-wine6-stable'
     'spark-dwine-helper'
     'libx11'
-    'lib32-glibc'
     'xdg-utils'
 )
 makedepends=(
@@ -34,13 +33,13 @@ source=(
 sha256sums=('165ab89ecfa89c1639b3607599cb1e35393cde66251d9e470dbb23592a72a3c7'
             'f66967eb394b93a61c01b30efb2f03128e6d9d019526808d7db687aee29a8bb3'
             '79b82aa631d01a625dc18021c30234a03029bb69011460de83c4395928f75f36'
-            'a6c011b5cac7eb65aa4251ce3771ce2748f264479afd0afdae5e51c90da8c1c6')
+            '99ebf377576c233e2c7b54bdc2ecc983ef735a615697943f093b47ca55a448a1')
 build() {
     sed -e "s|@bottlename@|${_appname}|g" \
         -e "s|@pkgname@|${pkgname}|g" \
         -e "s|@appver@|${pkgver}|g" \
         -i "${srcdir}/${pkgname}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     mv "${srcdir}/opt/apps/${_pkgname}" "${srcdir}/opt/apps/${pkgname}"
     install -Dm755 -d "${srcdir}/tmp"
     bsdtar -xf "${srcdir}/opt/apps/${pkgname}/files/files.7z" -C "${srcdir}/tmp"

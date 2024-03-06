@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+set -e
 BOTTLENAME=Deepin-@bottlename@
 APPVER=@appver@
 EXEC_PATH="c:/Program Files/Yuque/yuque-desktop/语雀.exe"
