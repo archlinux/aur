@@ -1,0 +1,15 @@
+pkgbase = microterm-git
+	pkgdesc = Simple VTE-based GTK terminal emulator
+	pkgver = r5.9d904a9
+	pkgrel = 1
+	url = https://github.com/BlackCodec/microterm/
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	depends = gtk3>=3.18.9
+	depends = vte3>=0.42.5
+	source = git+https://github.com/BlackCodec/microterm.git
+	md5sums = SKIP
+
+pkgname = microterm-git
