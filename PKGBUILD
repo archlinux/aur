@@ -2,12 +2,14 @@
 
 _pkgname=suyu
 pkgname=suyu-git
-pkgver=r27058.9cee46b38
+pkgver=r27087.c15523798
 pkgrel=1
-pkgdesc="suyu is the afterlife the world's most popular, open-source, Nintendo Switch emulator"
+pkgdesc="suyu is the afterlife the world's most popular, open-source, Nintendo Switch emulator (master branch)"
 arch=(x86_64)
 url=https://gitlab.com/suyu-emu/suyu
 license=(GPL3)
+provides=(suyu)
+conflicts=(yuzu yuzu-early-access-appimage yuzu-early-access-git)
 depends=(
   brotli
   enet
@@ -52,7 +54,7 @@ makedepends=(
 options=(!debug)
 _tag=d32620fe796f9cd90e8e5660deb0fc8f4decd61f
 source=(
-  git+https://gitlab.com/suyu-emu/suyu.git
+  git+https://gitlab.com/suyu-emu/suyu.git#branch=master
   git+https://github.com/arsenm/sanitizers-cmake.git
   git+https://github.com/yhirose/cpp-httplib.git
   git+https://github.com/arun11299/cpp-jwt.git

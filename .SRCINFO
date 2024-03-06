@@ -1,6 +1,6 @@
 pkgbase = suyu-git
-	pkgdesc = suyu is the afterlife the world's most popular, open-source, Nintendo Switch emulator
-	pkgver = r27058.9cee46b38
+	pkgdesc = suyu is the afterlife the world's most popular, open-source, Nintendo Switch emulator (master branch)
+	pkgver = r27087.c15523798
 	pkgrel = 1
 	url = https://gitlab.com/suyu-emu/suyu
 	arch = x86_64
@@ -42,8 +42,12 @@ pkgbase = suyu-git
 	depends = sdl2
 	depends = vulkan-utility-libraries
 	depends = zlib
+	provides = suyu
+	conflicts = yuzu
+	conflicts = yuzu-early-access-appimage
+	conflicts = yuzu-early-access-git
 	options = !debug
-	source = git+https://gitlab.com/suyu-emu/suyu.git
+	source = git+https://gitlab.com/suyu-emu/suyu.git#branch=master
 	source = git+https://github.com/arsenm/sanitizers-cmake.git
 	source = git+https://github.com/yhirose/cpp-httplib.git
 	source = git+https://github.com/arun11299/cpp-jwt.git
