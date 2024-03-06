@@ -1,21 +1,18 @@
 pkgbase = mediachips-bin
 	pkgdesc = Manage your videos, add any metadata to them and play them.
 	pkgver = 0.11.3_beta
-	pkgrel = 8
+	pkgrel = 9
 	url = https://mediachips.app/
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = squashfuse
-	depends = electron17
-	depends = dbus-glib
-	depends = libdbusmenu-glib
-	depends = gtk2
+	makedepends = fuse2
+	depends = electron17-bin
 	depends = nodejs
 	provides = mediachips=0.11.3_beta
 	conflicts = mediachips
 	source = mediachips-0.11.3_beta.AppImage::https://github.com/fupdec/mediaChips/releases/download/v0.11.3-beta/MediaChips.v0.11.3.Linux.AppImage
 	source = mediachips.sh
 	sha256sums = 8af9d3e09bc812826e8c67908b2bfb7b6c638d70946cf45ae696f26b2e276610
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = mediachips-bin

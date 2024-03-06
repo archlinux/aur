@@ -3,7 +3,7 @@ pkgname=mediachips-bin
 _pkgname=MediaChips
 pkgver=0.11.3_beta
 _electronversion=17
-pkgrel=8
+pkgrel=9
 pkgdesc="Manage your videos, add any metadata to them and play them."
 arch=("x86_64")
 url="https://mediachips.app/"
@@ -12,21 +12,18 @@ license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
+    "electron${_electronversion}-bin"
     'nodejs'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}.v${pkgver%_beta}.Linux.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('8af9d3e09bc812826e8c67908b2bfb7b6c638d70946cf45ae696f26b2e276610'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
