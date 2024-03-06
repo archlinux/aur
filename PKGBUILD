@@ -30,6 +30,6 @@ package() {
    install -dm755 "$pkgdir/usr/lib"
 
    # Link to binary
-   ln -sf "$srcdir/eduke32" "$pkgdir/usr/bin"
-   ln -sf "$srcdir/mapster32" "$pkgdir/usr/bin"   
+   cp -r "$srcdir/eduke32" "$pkgdir/usr/bin"
+   cp -r "$srcdir/mapster32" "$pkgdir/usr/bin"   
 }
