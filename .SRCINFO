@@ -1,0 +1,19 @@
+pkgbase = kjs
+	pkgdesc = Support for JS scripting in applications
+	pkgver = 5.115.0
+	pkgrel = 1
+	url = https://community.kde.org/Frameworks
+	arch = x86_64
+	groups = kf5-aids
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools5
+	depends = qt5-base
+	depends = pcre
+	source = https://download.kde.org/stable/frameworks/5.115/portingAids/kjs-5.115.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.115/portingAids/kjs-5.115.0.tar.xz.sig
+	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
+	sha256sums = 9cf4e00070586af43a21d5e4c30c61e66bc1c5f53952d4335bc7df44f9130432
+	sha256sums = SKIP
+
+pkgname = kjs
