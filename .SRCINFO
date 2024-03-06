@@ -1,6 +1,6 @@
 pkgbase = micromamba
 	pkgdesc = C++ tiny version of mamba, the fast conda package installer
-	pkgver = 1.5.6
+	pkgver = 1.5.7
 	pkgrel = 1
 	url = https://github.com/mamba-org/mamba
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = micromamba
 	depends = termcolor
 	depends = tl-expected
 	provides = micromamba
-	source = micromamba-1.5.6.tar.gz::https://github.com/mamba-org/mamba/archive/refs/tags/2023.12.21.tar.gz
-	md5sums = 1c398b6e09a9d62be148284f35ef7c71
+	source = micromamba-1.5.7.tar.gz::https://github.com/mamba-org/mamba/archive/refs/tags/2024.03.04.tar.gz
+	md5sums = c32af03934acc74c52388da65b6f148f
 
 pkgname = micromamba
