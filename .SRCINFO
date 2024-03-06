@@ -1,7 +1,7 @@
 pkgbase = python-museval
 	pkgdesc = Source separation evaluation tools for Python
 	pkgver = 0.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/sigsep/sigsep-mus-eval
 	arch = any
 	license = MIT

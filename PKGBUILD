@@ -3,7 +3,7 @@
 pkgname=python-museval
 _gitpkgname=sigsep-mus-eval
 pkgver=0.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Source separation evaluation tools for Python'
 arch=('any')
 url='https://github.com/sigsep/sigsep-mus-eval'
@@ -41,19 +41,21 @@ sha512sums=(
 )
 
 prepare() {
+    cd "${srcdir}/${_gitpkgname}-${pkgver}"
+
     # Fix numpy compatibility issue
     # See also: https://github.com/sigsep/sigsep-mus-eval/pull/88
     # Remove this patch once a stable release of v0.4.1 or newer has been
     # tagged on GitHub
-    patch -p1 -d "${srcdir}/${_gitpkgname}-${pkgver}" < "${srcdir}/github-pr-88.patch"
+    patch -p1 < '../github-pr-88.patch'
 
     # Fix failing test
     # See also: https://github.com/sigsep/sigsep-mus-eval/pull/93
-    # Remove these patches (and the `git` makedepends entry) once a
-    # stable release of v0.4.1 or newer has been tagged on GitHub
-    git -C "${srcdir}/${_gitpkgname}-${pkgver}" apply \
-        "${srcdir}/github-pr-91.patch" \
-        "${srcdir}/github-pr-93.patch"
+    # Remove the following patches (and the `git` makedepends entry)
+    # once a stable release of v0.4.1 or newer has been tagged on GitHub
+    git init
+    git apply --verbose '../github-pr-91.patch' '../github-pr-93.patch'
+    rm -rf .git
 }
 
 build() {
