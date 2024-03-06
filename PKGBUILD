@@ -2,7 +2,7 @@
 pkgname=mydict-bin
 _pkgname=MyDict
 pkgver=0.6.14
-pkgrel=5
+pkgrel=6
 pkgdesc='A Chinese and English dictionary.一款中英文词典'
 arch=(x86_64)
 url="https://github.com/xxNull-lsk/my_dict"
@@ -33,12 +33,12 @@ source=(
 )
 sha256sums=('505769645eed49ed19d6fd39dd5a1c8fd5b9bef8f262b34a45fbb03d7265e66d'
             '7514140772df5ff1a5cff21685af45c7b50f320fee680e134553d053e40e6ccb'
-            '74b91fd4ca1906a8a059b008f198fed6d9621021a1aacb19595965609bc80785')
+            'e76ef1cda2fe52d55bc4194292fd8df688bfba37c379e66ad6fa7502f40bbc19')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --exec "${pkgname%-bin}" --categories "Utility" --name "${_pkgname}"
+    gendesk -q -f -n --exec="${pkgname%-bin}" --categories="Utility" --name="${_pkgname}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
