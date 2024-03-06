@@ -1,6 +1,6 @@
 pkgbase = carta-appimage
 	pkgdesc = Cube Analysis and Rendering Tool for Astronomy
-	pkgver = 4.0.0
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://cartavis.org
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = carta-appimage
 	depends = hicolor-icon-theme
 	depends = libidn11
 	depends = rtmpdump
-	noextract = carta-4.0-x86_64.AppImage
+	noextract = carta-4.1-x86_64.AppImage
 	options = !strip
-	source_x86_64 = carta-appimage-v4.0.0.tgz::https://github.com/CARTAvis/carta/releases/latest/download/carta.AppImage.x86_64.tgz
-	source_x86_64 = LICENSE::https://raw.githubusercontent.com/CARTAvis/carta-backend/v4.0.0/COPYING.md
-	sha256sums_x86_64 = df4368690927ebadaf5b73510c4c9c062a2ee3fb0ff8ced75737c4c4ec2d3f00
+	source_x86_64 = carta-appimage-v4.1.0.tgz::https://github.com/CARTAvis/carta/releases/latest/download/carta.AppImage.x86_64.tgz
+	source_x86_64 = LICENSE::https://raw.githubusercontent.com/CARTAvis/carta-backend/v4.1.0/COPYING.md
+	sha256sums_x86_64 = eb6580798f9cc5b27800bb3d8ce2680766dbbd8419e1f79128ebb38ac485d720
 	sha256sums_x86_64 = 26c03bc049c15fc5b9e52d791a06f1a6bc32f89edc8f8c701ab0aadf66e85b82
 
 pkgname = carta-appimage
