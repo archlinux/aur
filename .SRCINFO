@@ -1,6 +1,6 @@
 pkgbase = stress-ng
 	pkgdesc = Software to stress test a computer system in various selectable ways
-	pkgver = 0.17.05
+	pkgver = 0.17.06
 	pkgrel = 1
 	url = https://github.com/ColinIanKing/stress-ng
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = stress-ng
 	optdepends = linux-lts-headers: include some headers from the LTS kernel
 	optdepends = linux-zen-headers: include some headers from the ZEN kernel
 	optdepends = linux-hardened-headers: include some headers from the HARDENED kernel
-	source = stress-ng-0.17.05.tar.gz::https://github.com/ColinIanKing/stress-ng/archive/refs/tags/V0.17.05.tar.gz
-	b2sums = 3fb5f633a6b8d23cbc91a2960606b3cc603c0b0656facb95e38474b0c991bd6bd59c8767a883d86e0799b34baf047db7a90902acfddd83d73f3d0652ca73e9e3
+	source = stress-ng-0.17.06.tar.gz::https://github.com/ColinIanKing/stress-ng/archive/refs/tags/V0.17.06.tar.gz
+	b2sums = cb5285d5ca12957d9eab7df1e6e011be35cc87a7d43d4d99ec7433588c1c9c959ac05f97b6dde4483ed6c3ad4b9317e299e0650aa8c0cb50f5bd38f8e9bd4ace
 
 pkgname = stress-ng
