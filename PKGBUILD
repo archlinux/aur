@@ -3,7 +3,7 @@ pkgname=ntrack-bin
 _pkgname=NTrack
 pkgver=1.3.0
 _electronversion=22
-pkgrel=4
+pkgrel=5
 pkgdesc="A desktop app where you can easily keep track of your time-based tasks."
 arch=('x86_64')
 url="https://github.com/kutay-celebi/ntracker"
@@ -18,13 +18,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('45f3d8938b232a7fa7c8f942c840a6dfaa8765c32862071d7edce6cd94b48e1f'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
