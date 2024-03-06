@@ -3,11 +3,12 @@
 
 pkgname=raze
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Build engine port backed by GZDoom tech'
 arch=('x86_64')
 url='https://github.com/coelckers/Raze'
 license=('custom:BUILD' 'GPL2')
+options=(!lto)
 depends=('gtk3'
          'hicolor-icon-theme'
          'libgl'

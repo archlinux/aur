@@ -1,7 +1,7 @@
 pkgbase = raze
 	pkgdesc = Build engine port backed by GZDoom tech
 	pkgver = 1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coelckers/Raze
 	arch = x86_64
 	license = custom:BUILD
@@ -21,6 +21,7 @@ pkgbase = raze
 	optdepends = gxmessage: crash dialog (GNOME)
 	optdepends = kdialog: crash dialog (KDE)
 	optdepends = xorg-xmessage: crash dialog (other)
+	options = !lto
 	source = Raze::git+https://github.com/coelckers/Raze#tag=1.9.1
 	source = raze.desktop
 	sha256sums = SKIP
