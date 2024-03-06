@@ -4,7 +4,7 @@ _pkgname="Flashpoint Launcher"
 pkgver=12.1.1
 _electronversion=19
 _nodeversion=16
-pkgrel=3
+pkgrel=4
 pkgdesc="A desktop application used to browse, manage and play games from Flashpoint Archive"
 arch=('x86_64')
 url="http://bluemaxima.org/flashpoint/"
@@ -12,18 +12,21 @@ _ghurl="https://github.com/FlashpointProject/launcher"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-    'python'
-    'libnss_nis'
+    'python>3'
+    'alsa-lib'
     'gtk3'
+    'nspr'
+    'nss'
 )
 makedepends=(
     'gendesk'
     'npm'
     'nvm'
     'rust'
-    'yarn'
     'git'
     'gcc'
+    'base-devel'
+    'libnss_nis'
 )
 source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=${pkgver}"
@@ -37,18 +40,20 @@ _ensure_local_nvm() {
 }
 build() {
     _ensure_local_nvm
-    gendesk -q -f -n --categories "Game" --name "${_pkgname}" --exec "${pkgname}"
+    gendesk -q -f -n --categories="Game" --name="${_pkgname}" --exec="${pkgname} --no-sandbox %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export ELECTRONVERSION="${_electronversion}"
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    export CARGO_HOME="${srcdir}/.cargo"
+    export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
+    export CARGO_HOME="${srcdir}/.cargo"
     sed 's|"deb", "7z"|"AppImage"|g' -i gulpfile.js
-    yarn install --cache-folder "${srcdir}/.yarn_cache"    
-    yarn run release:linux
+    npm install --force
+    npm run release:linux
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/"${pkgname}",usr/bin}
