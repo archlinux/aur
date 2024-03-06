@@ -1,0 +1,17 @@
+pkgbase = luarocket
+	pkgdesc = Vendor Lua rocks into a local project directory
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jcrd/luarocket
+	arch = any
+	license = MIT
+	checkdepends = python-j2cli
+	depends = bash
+	depends = luarocks
+	options = !strip
+	source = luarocket-0.1.0.tar.gz::https://github.com/jcrd/luarocket/archive/v0.1.0.tar.gz
+	source = foo-0.1.0-1.rockspec.template
+	sha512sums = d10220ea35da48db261c5d3a28918238ecc11a54e2076a470b771a56185eb46bd14cfe9f377dcea69577c69c1c513cf84de0217266d72386c1d8f68582d87a2f
+	sha512sums = c2deab0626acb6ba110b55b684aca8e89396c6c3ac549c0b83100c391f734618036de2070819b91b40cd2d3b6f7a74b244e21c97f130d5a92b74d31c29611d9f
+
+pkgname = luarocket

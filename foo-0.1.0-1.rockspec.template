@@ -1,0 +1,19 @@
+package = "foo"
+version = "0.1.0-1"
+source = {
+   url = "foo-0.1.0.tar.gz",
+   dir = "foo-0.1.0"
+}
+description = {
+   homepage = "*** please enter a project homepage ***",
+   license = "*** please specify a license ***"
+}
+dependencies = {
+   "lua ~> {{ lua_ver }}"
+}
+build = {
+   type = "builtin",
+   modules = {
+      foo = "main.lua"
+   }
+}
