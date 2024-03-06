@@ -1,10 +1,10 @@
 pkgname=nelson-git
-pkgver=r4035.d1fa17ddd
+pkgver=r4037.5d618a09f
 pkgrel=1
 pkgdesc='an array programming language'
 arch=('x86_64')
 url='https://github.com/nelson-lang/nelson/'
-license=('GPL2')
+license=('LGPL3')
 depends=(alsa-lib binutils brotli bzip2 curl db5.3 dbus double-conversion duktape \
 	 e2fsprogs expat flac fontconfig freetype2 gcc-libs glib2 glibc graphite \
 	 harfbuzz hwloc icu jack2 keyutils krb5 lame libb2 libcap libevent libfabric \
@@ -26,6 +26,7 @@ pkgver() {
 build() {
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     -DCMAKE_C_FLAGS="-Wno-error=format-security" \
     -DCMAKE_CXX_FLAGS="-Wno-error=format-security" \
     -G "Unix Makefiles" \

@@ -1,10 +1,10 @@
 pkgbase = nelson-git
 	pkgdesc = an array programming language
-	pkgver = r4035.d1fa17ddd
+	pkgver = r4037.5d618a09f
 	pkgrel = 1
 	url = https://github.com/nelson-lang/nelson/
 	arch = x86_64
-	license = GPL2
+	license = LGPL3
 	makedepends = cmake
 	makedepends = git
 	makedepends = boost
