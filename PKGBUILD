@@ -4,7 +4,7 @@ pkgname="${_pkgname//-/}-bin"
 _appname=NodeFlow
 pkgver=0.0.2_alpha
 _electronversion=23
-pkgrel=6
+pkgrel=7
 pkgdesc="An Editor for creating simple or complex OCR workflows"
 arch=('x86_64')
 url="https://github.com/maxnth/NodeFlow"
@@ -13,12 +13,9 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver//_/-}/${_appname}-${pkgver%_alpha}.AppImage"
@@ -27,7 +24,7 @@ source=(
 )
 sha256sums=('fd1bb578d47245a95ba7c206f7f64aa013e56afe2247511dea48e62190d4a545'
             '2fa2313855f0dfa9399163896c8a91747298ae501fb1f915e6a8479dc60f3791'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
