@@ -1,12 +1,11 @@
 pkgbase = budgeted-ui-bin
 	pkgdesc = A data pipeline for budget data and so much more
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/politicker/budgeted
 	arch = x86_64
 	license = MIT
 	depends = electron28
-	depends = openssl-1.1
 	depends = nodejs
 	depends = hicolor-icon-theme
 	provides = budgeted-ui=1.2.1

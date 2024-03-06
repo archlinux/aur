@@ -3,7 +3,7 @@ _pkgname=budgeted
 pkgname="${_pkgname}-ui-bin"
 pkgver=1.2.1
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="A data pipeline for budget data and so much more"
 arch=('x86_64')
 url="https://github.com/politicker/budgeted"
@@ -12,7 +12,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'openssl-1.1'
     'nodejs'
     'hicolor-icon-theme'
 )
@@ -27,7 +26,7 @@ build() {
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
