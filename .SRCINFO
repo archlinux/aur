@@ -1,6 +1,6 @@
 pkgbase = life-keyring-git
 	pkgdesc = Life PGP keyring
-	pkgver = 2022.07.31
+	pkgver = 2024.03.07
 	pkgrel = 1
 	url = https://gitlab.life.org/life/life-keyring
 	install = life-keyring.install
