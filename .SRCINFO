@@ -1,0 +1,25 @@
+pkgbase = hqdfm-wine
+	pkgdesc = Wine 华秋 DFM 是一款高效的 PCB 设计软件，一键分析设计隐患，提供优化方案，输出 Gerber、BOM、坐标文件，让设计和制造更简单。
+	pkgver = 4.0
+	pkgrel = 0
+	url = https://dfm.elecfans.com
+	install = hqdfm-wine.install
+	arch = x86_64
+	license = unknow
+	makedepends = libarchive
+	depends = bash
+	depends = hicolor-icon-theme
+	depends = wine
+	depends = wqy-microhei
+	depends = winetricks
+	provides = hqdfm
+	conflicts = hqdfm
+	options = !strip
+	source = hqdfm-v4.0.zip::https://dfm.elecfans.com/uploads/software/HQDFM%20V4.0.zip
+	source = hqdfm-wine.install
+	source = hqdfm.png::https://dfm.elecfans.com/static/images/dfm_logo.png
+	sha256sums = 9324c17cef9bf3a70de1b5229b69b380d0c567b130f8006e1da47c045a6e5cfe
+	sha256sums = 18ba316bf686a95eda0ac51276965b6ba2a0c7093ed6c73484b3d226b5cb1085
+	sha256sums = 2fa20ad946fbf021b14d9493aad8b7af3d8829e71b0ca66316b2ee1065b66b15
+
+pkgname = hqdfm-wine
