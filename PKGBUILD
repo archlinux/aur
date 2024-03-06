@@ -2,17 +2,17 @@
 
 _pkgname=nym-wallet
 pkgname="${_pkgname}-appimage"
-pkgver=1.2.10
+pkgver=1.2.12
 pkgrel=1
 pkgdesc="The Nym desktop wallet enables you to use the Nym network and take advantage of its key capabilities"
 arch=('x86_64')
 url="https://github.com/nymtech/nym"
 license=('Apache 2.0')
-depends=('webkit2gtk')
+depends=('openssl-1.1' 'webkit2gtk')
 options=(!strip)
 _filename="${_pkgname}_${pkgver}_amd64.AppImage"
 source_x86_64=("https://github.com/nymtech/nym/releases/download/nym-wallet-v${pkgver}/${_filename}")
-sha256sums_x86_64=(4c84826e1cfc433c0ff84651ff55eaaab3a542f2505ef62968d2033bb6e219f1)
+sha256sums_x86_64=('642e391c958831f5ddf06b1801d9da656389a0c58aea6d888c7b5d27cd2625ef')
 
 package() {
     chmod +x ${_filename}
