@@ -2,18 +2,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-coerce-types-standard'
-pkgver='0.000007'
-pkgrel='2'
+pkgver='0.000008'
+pkgrel='1'
 pkgdesc="Coercing"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-moo>=2.003002' 'perl-moox-lazierattributes>=1.03' 'perl-type-tiny>=1.002001' 'perl>=5.006')
 makedepends=()
+checkdepends=('perl-json')
 url='https://metacpan.org/release/Coerce-Types-Standard'
 source=("http://search.cpan.org/CPAN/authors/id/L/LN/LNATION/Coerce-Types-Standard-$pkgver.tar.gz")
-md5sums=('c05940c59987058977e9c6072a89f17c')
-sha512sums=('7a42b5761a8a70312602abedf5363ab911d09e38f9cdaf7c7a8360c0016013a2f60120a2e25013cac88064c85703d65b484cd8d9bea40c341f391456a37292d2')
+md5sums=('c61d248a4df2d0835953dbb5ea06d8aa')
+sha512sums=('3da1e4f30ab1941ead8359ddf512ba9639f724b40596b58860f3039a3ffe12595011d6e12e9de6ec38df4fc9b0d461c032b9b469cbec43e0a71517737fa967af')
 _distdir="Coerce-Types-Standard-$pkgver"
 
 build() {

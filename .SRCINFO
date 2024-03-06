@@ -1,18 +1,19 @@
 pkgbase = perl-coerce-types-standard
 	pkgdesc = Coercing
-	pkgver = 0.000007
-	pkgrel = 2
+	pkgver = 0.000008
+	pkgrel = 1
 	url = https://metacpan.org/release/Coerce-Types-Standard
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	checkdepends = perl-json
 	depends = perl-moo>=2.003002
 	depends = perl-moox-lazierattributes>=1.03
 	depends = perl-type-tiny>=1.002001
 	depends = perl>=5.006
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/L/LN/LNATION/Coerce-Types-Standard-0.000007.tar.gz
-	md5sums = c05940c59987058977e9c6072a89f17c
-	sha512sums = 7a42b5761a8a70312602abedf5363ab911d09e38f9cdaf7c7a8360c0016013a2f60120a2e25013cac88064c85703d65b484cd8d9bea40c341f391456a37292d2
+	source = http://search.cpan.org/CPAN/authors/id/L/LN/LNATION/Coerce-Types-Standard-0.000008.tar.gz
+	md5sums = c61d248a4df2d0835953dbb5ea06d8aa
+	sha512sums = 3da1e4f30ab1941ead8359ddf512ba9639f724b40596b58860f3039a3ffe12595011d6e12e9de6ec38df4fc9b0d461c032b9b469cbec43e0a71517737fa967af
 
 pkgname = perl-coerce-types-standard
