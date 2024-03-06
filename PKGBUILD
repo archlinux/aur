@@ -13,7 +13,7 @@ _minorver=0
 _securityver=1
 _updatever=0
 pkgver=21.0.1.0.r184.ge338a16
-pkgrel=4
+pkgrel=5
 _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
 arch=('x86_64')
 url='https://openjdk.java.net/'
@@ -144,8 +144,9 @@ package_jre-openjdk-wakefield-headless() {
   pkgdesc="OpenJDK Java ${_majorver} headless wayland runtime environment"
   depends=("${_commondeps[@]}" 'giflib')
   optdepends=('java-rhino: for some JavaScript support')
-  provides=("java-runtime-headless=${_majorver}" "java-runtime-headless-openjdk=${_majorver}" "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}")
-  conflicts=("jdk-openjdk" "jre-openjdk")
+  provides=("java-runtime-headless=${_majorver}" "java-runtime-headless-openjdk=${_majorver}" "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}"
+            "jre${_majorver}-openjdk-wakefield-headless=${pkgver}-${pkgrel}")
+  conflicts=("jdk-openjdk" "jre-openjdk" "jdk-openjdk-wakefield" "jre-openjdk-wakefield")
   backup=(etc/${pkgbase}/logging.properties
           etc/${pkgbase}/management/jmxremote.access
           etc/${pkgbase}/management/jmxremote.password.template
@@ -204,8 +205,9 @@ package_jre-openjdk-wakefield() {
               'gtk2: for the Gtk+ 2 look and feel - desktop usage'
               'gtk3: for the Gtk+ 3 look and feel - desktop usage')
   provides=("java-runtime=${_majorver}" "java-runtime-openjdk=${_majorver}" "jre${_majorver}-openjdk=${pkgver}-${pkgrel}"
-            "java-runtime-headless=${_majorver}" "java-runtime-headless-openjdk=${_majorver}" "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}")
-  conflicts=("jdk-openjdk" "jre-openjdk-headless")
+            "java-runtime-headless=${_majorver}" "java-runtime-headless-openjdk=${_majorver}" "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}"
+            "jre${_majorver}-openjdk-wakefield=${pkgver}-${pkgrel}")
+  conflicts=("jdk-openjdk" "jdk-openjdk-wakefield" "jre-openjdk-headless" "jre-openjdk-wakefield-headless")
   backup=(etc/${pkgbase}/logging.properties
           etc/${pkgbase}/management/jmxremote.access
           etc/${pkgbase}/management/jmxremote.password.template
@@ -277,8 +279,9 @@ package_jdk-openjdk-wakefield() {
               'gtk3: for the Gtk+ 3 look and feel - desktop usage')
   provides=("java-environment=${_majorver}" "java-environment-openjdk=${_majorver}" "jdk${_majorver}-openjdk=${pkgver}-${pkgrel}"
             "java-runtime=${_majorver}" "java-runtime-openjdk=${_majorver}" "jre${_majorver}-openjdk=${pkgver}-${pkgrel}"
-            "java-runtime-headless=${_majorver}" "java-runtime-headless-openjdk=${_majorver}" "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}")
-  conflicts=("jre-openjdk" "jre-openjdk-headless")
+            "java-runtime-headless=${_majorver}" "java-runtime-headless-openjdk=${_majorver}" "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}"
+            "jdk${_majorver}-openjdk-wakefield=${pkgver}-${pkgrel}")
+  conflicts=("jre-openjdk" "jre-openjdk-wakefield" "jre-openjdk-headless" "jre-openjdk-wakefield-headless")
   backup=(etc/${pkgbase}/logging.properties
           etc/${pkgbase}/management/jmxremote.access
           etc/${pkgbase}/management/jmxremote.password.template
@@ -346,7 +349,7 @@ package_openjdk-wakefield-src() {
   pkgdesc="OpenJDK Java ${_majorver} wayland sources"
   arch=('any')
   # Depends on JDK to get license files
-  depends=("jdk${_majorver}-openjdk=${pkgver}-${pkgrel}")
+  depends=("jdk${_majorver}-openjdk-wakefield=${pkgver}-${pkgrel}")
   provides=("openjdk${_majorver}-src=${pkgver}-${pkgrel}")
 
   install -Dm 644 -t "${pkgdir}${_jvmdir}/lib" ${_imgdir}/jdk/lib/src.zip
@@ -359,7 +362,7 @@ package_openjdk-wakefield-doc() {
   pkgdesc="OpenJDK Java ${_majorver} wayland documentation"
   arch=('any')
   # Depends on JDK to get license files
-  depends=("jdk${_majorver}-openjdk=${pkgver}-${pkgrel}")
+  depends=("jdk${_majorver}-openjdk-wakefield=${pkgver}-${pkgrel}")
   provides=("openjdk${_majorver}-doc=${pkgver}-${pkgrel}")
 
   install -dm 755 "${pkgdir}/usr/share/doc"

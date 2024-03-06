@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-wakefield
 	pkgver = 21.0.1.0.r184.ge338a16
-	pkgrel = 4
+	pkgrel = 5
 	url = https://openjdk.java.net/
 	arch = x86_64
 	license = custom
@@ -63,9 +63,12 @@ pkgname = jre-openjdk-wakefield-headless
 	optdepends = java-rhino: for some JavaScript support
 	provides = java-runtime-headless=21
 	provides = java-runtime-headless-openjdk=21
-	provides = jre21-openjdk-headless=21.0.1.0.r184.ge338a16-4
+	provides = jre21-openjdk-headless=21.0.1.0.r184.ge338a16-5
+	provides = jre21-openjdk-wakefield-headless=21.0.1.0.r184.ge338a16-5
 	conflicts = jdk-openjdk
 	conflicts = jre-openjdk
+	conflicts = jdk-openjdk-wakefield
+	conflicts = jre-openjdk-wakefield
 	backup = etc/java-openjdk-wakefield/logging.properties
 	backup = etc/java-openjdk-wakefield/management/jmxremote.access
 	backup = etc/java-openjdk-wakefield/management/jmxremote.password.template
@@ -107,12 +110,15 @@ pkgname = jre-openjdk-wakefield
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=21
 	provides = java-runtime-openjdk=21
-	provides = jre21-openjdk=21.0.1.0.r184.ge338a16-4
+	provides = jre21-openjdk=21.0.1.0.r184.ge338a16-5
 	provides = java-runtime-headless=21
 	provides = java-runtime-headless-openjdk=21
-	provides = jre21-openjdk-headless=21.0.1.0.r184.ge338a16-4
+	provides = jre21-openjdk-headless=21.0.1.0.r184.ge338a16-5
+	provides = jre21-openjdk-wakefield=21.0.1.0.r184.ge338a16-5
 	conflicts = jdk-openjdk
+	conflicts = jdk-openjdk-wakefield
 	conflicts = jre-openjdk-headless
+	conflicts = jre-openjdk-wakefield-headless
 	backup = etc/java-openjdk-wakefield/logging.properties
 	backup = etc/java-openjdk-wakefield/management/jmxremote.access
 	backup = etc/java-openjdk-wakefield/management/jmxremote.password.template
@@ -168,15 +174,18 @@ pkgname = jdk-openjdk-wakefield
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-environment=21
 	provides = java-environment-openjdk=21
-	provides = jdk21-openjdk=21.0.1.0.r184.ge338a16-4
+	provides = jdk21-openjdk=21.0.1.0.r184.ge338a16-5
 	provides = java-runtime=21
 	provides = java-runtime-openjdk=21
-	provides = jre21-openjdk=21.0.1.0.r184.ge338a16-4
+	provides = jre21-openjdk=21.0.1.0.r184.ge338a16-5
 	provides = java-runtime-headless=21
 	provides = java-runtime-headless-openjdk=21
-	provides = jre21-openjdk-headless=21.0.1.0.r184.ge338a16-4
+	provides = jre21-openjdk-headless=21.0.1.0.r184.ge338a16-5
+	provides = jdk21-openjdk-wakefield=21.0.1.0.r184.ge338a16-5
 	conflicts = jre-openjdk
+	conflicts = jre-openjdk-wakefield
 	conflicts = jre-openjdk-headless
+	conflicts = jre-openjdk-wakefield-headless
 	backup = etc/java-openjdk-wakefield/logging.properties
 	backup = etc/java-openjdk-wakefield/management/jmxremote.access
 	backup = etc/java-openjdk-wakefield/management/jmxremote.password.template
@@ -195,11 +204,11 @@ pkgname = jdk-openjdk-wakefield
 pkgname = openjdk-wakefield-src
 	pkgdesc = OpenJDK Java 21 wayland sources
 	arch = any
-	depends = jdk21-openjdk=21.0.1.0.r184.ge338a16-4
-	provides = openjdk21-src=21.0.1.0.r184.ge338a16-4
+	depends = jdk21-openjdk-wakefield=21.0.1.0.r184.ge338a16-5
+	provides = openjdk21-src=21.0.1.0.r184.ge338a16-5
 
 pkgname = openjdk-wakefield-doc
 	pkgdesc = OpenJDK Java 21 wayland documentation
 	arch = any
-	depends = jdk21-openjdk=21.0.1.0.r184.ge338a16-4
-	provides = openjdk21-doc=21.0.1.0.r184.ge338a16-4
+	depends = jdk21-openjdk-wakefield=21.0.1.0.r184.ge338a16-5
+	provides = openjdk21-doc=21.0.1.0.r184.ge338a16-5
