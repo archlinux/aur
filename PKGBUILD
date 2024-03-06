@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=gog-rail-route
-pkgver=2.0.8.71371
+pkgver=2.0.8.71386
 pkgrel=1
 pkgdesc='Design and automate your own railway network. GOG version.'
 _shortname="${pkgname#gog-}"
@@ -27,7 +27,7 @@ options=('!strip')
 _gog_id='2011886219'
 
 source=(
-  "${_shortname}_latest.sh::gogdownloader://${_gog_id}/en3installer0"
+  "${_shortname}-${pkgver}.sh::gogdownloader://${_gog_id}/en3installer0"
   "${pkgname}.desktop"
   "${_shortname}.bash"
 )

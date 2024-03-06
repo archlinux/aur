@@ -1,6 +1,6 @@
 pkgbase = gog-rail-route
 	pkgdesc = Design and automate your own railway network. GOG version.
-	pkgver = 2.0.8.71371
+	pkgver = 2.0.8.71386
 	pkgrel = 1
 	url = https://www.gog.com/en/game/rail_route
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = gog-rail-route
 	depends = pango
 	conflicts = gog-rail-route-demo
 	options = !strip
-	source = rail-route_latest.sh::gogdownloader://2011886219/en3installer0
+	source = rail-route-2.0.8.71386.sh::gogdownloader://2011886219/en3installer0
 	source = gog-rail-route.desktop
 	source = rail-route.bash
 	sha512sums = cb80f3426e4c6ad9a7381ac88656847b9c8cfb9199dd2e510a6ec753a0e942a9e13d8151714c3eb02644a5f83488f88d46c6922aea97e6e4843fe8b45bbf3c44
