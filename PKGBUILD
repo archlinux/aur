@@ -4,8 +4,8 @@
 # Contributor: Cedric Staub <cs+aur {at} cssx.cc>
 
 pkgname=episoder
-pkgver=0.9.2
-pkgrel=2
+pkgver=0.10.1
+pkgrel=1
 pkgdesc='Tool to tell you about new episodes of your favourite TV shows'
 url='https://code.ott.net/episoder'
 arch=('any')
@@ -27,7 +27,7 @@ source=(
 )
 
 sha256sums=(
-	'fec4061bf9d8d3571c53481f7040d851a6893b890cb48fccce10461ca0b02fb0'
+	'f8606a51772f00298340411c15878c785b9d16a146e0ad60e8c6baae3d85b14c'
 	'SKIP'
 )
 

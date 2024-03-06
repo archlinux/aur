@@ -1,7 +1,7 @@
 pkgbase = episoder
 	pkgdesc = Tool to tell you about new episodes of your favourite TV shows
-	pkgver = 0.9.2
-	pkgrel = 2
+	pkgver = 0.10.1
+	pkgrel = 1
 	url = https://code.ott.net/episoder
 	arch = any
 	license = GPL3
@@ -9,10 +9,10 @@ pkgbase = episoder
 	depends = python-beautifulsoup4
 	depends = python-requests
 	depends = python-sqlalchemy
-	source = episoder-0.9.2.tar.gz::https://code.ott.net/episoder/downloads/episoder-0.9.2.tar.gz
-	source = episoder-0.9.2.tar.gz.asc::https://code.ott.net/episoder/downloads/episoder-0.9.2.tar.gz.asc
+	source = episoder-0.10.1.tar.gz::https://code.ott.net/episoder/downloads/episoder-0.10.1.tar.gz
+	source = episoder-0.10.1.tar.gz.asc::https://code.ott.net/episoder/downloads/episoder-0.10.1.tar.gz.asc
 	validpgpkeys = C9A11B84B6AED0D4D00A43E8D9536D39C966A628
-	sha256sums = fec4061bf9d8d3571c53481f7040d851a6893b890cb48fccce10461ca0b02fb0
+	sha256sums = f8606a51772f00298340411c15878c785b9d16a146e0ad60e8c6baae3d85b14c
 	sha256sums = SKIP
 
 pkgname = episoder
