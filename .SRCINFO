@@ -1,7 +1,7 @@
 pkgbase = mingo-bin
 	pkgdesc = A proprietary MongoDB GUI based on electron from developers for developers
 	pkgver = 1.13.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mingo.io
 	arch = aarch64
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = mingo-bin
 	source = LICENSE-1.13.5.html::https://mingo.io/eula
 	source = mingo.sh
 	sha256sums = eef8a290e343ee814884f1f2f7c1fabeff6f96a4ab9aac856256cda6d2f7d718
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 	source_aarch64 = mingo-1.13.5-aarch64.deb::https://github.com/mingo-app/mingo/releases/download/v1.13.5/mingo_1.13.5_arm64.deb
 	sha256sums_aarch64 = fd6a0c03d3de97c51021a3bf833d527be8db092cc8cabada36b679ab74919cf3
 	source_x86_64 = mingo-1.13.5-x86_64.deb::https://github.com/mingo-app/mingo/releases/download/v1.13.5/mingo_1.13.5_amd64.deb
