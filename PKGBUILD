@@ -11,13 +11,15 @@ _regionSmall=${_region,,}
 _locale="${_lang}_${_region}"
 pkgname="piper-voices-${_lang}-${_regionSmall}"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Voices for Piper text to speech system ($_locale)"
 url="https://huggingface.co/rhasspy/piper-voices"
 license=("MIT")
 arch=("any")
 groups=("piper-voices")
 provides=("piper-voices")
+# only en_US conflicts with minimal, other locales are compatible with it
+conflicts=("piper-voices-minimal")
 depends=("piper-voices-common")
 makedepends=("git-lfs")
 

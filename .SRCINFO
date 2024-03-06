@@ -1,7 +1,7 @@
 pkgbase = piper-voices-en-us
 	pkgdesc = Voices for Piper text to speech system (en_US)
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://huggingface.co/rhasspy/piper-voices
 	arch = any
 	groups = piper-voices
@@ -9,5 +9,6 @@ pkgbase = piper-voices-en-us
 	makedepends = git-lfs
 	depends = piper-voices-common
 	provides = piper-voices
+	conflicts = piper-voices-minimal
 
 pkgname = piper-voices-en-us
