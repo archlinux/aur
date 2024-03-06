@@ -3,11 +3,11 @@
 pkgname=malachite
 _pkgname=mlc
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool for packaging and maintaining pacman repositories'
 arch=('x86_64' 'aarch64')
-url="https://git.getcryst.al/crystal/software/${pkgname}"
-license=('GPL3')
+url="https://gitlab.com/crystal-linux/software/malachite"
+license=('GPL-3.0-or-later')
 depends=('git' 'pacman-contrib' 'gnupg' 'gpgme' 'libarchive' 'libgpg-error' 'podman')
 makedepends=('cargo')
 source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
