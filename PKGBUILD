@@ -19,7 +19,7 @@ build() {
 
 check() {
   cd "$srcdir"/vine-$pkgver
-  python setup.py test
+  pytest
 }
 
 package() {
