@@ -1,0 +1,5 @@
+~*
+/src
+/pkg
+/hugetracker-*.pkg.tar.*
+/*.tar.gz

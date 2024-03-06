@@ -1,0 +1,36 @@
+pkgbase = hugetracker
+	pkgdesc = The music composition suite for the Nintendo Game Boy
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://nickfa.ro/index.php?title=HUGETracker
+	arch = x86_64
+	license = custom:public domain
+	makedepends = fpc
+	makedepends = git
+	makedepends = lazarus
+	depends = fontconfig
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk2
+	depends = pango
+	depends = rgbds>=0.5.0
+	depends = sdl2
+	depends = libatk-1.0.so
+	depends = libcairo.so
+	optdepends = ffmpeg: "Export song" functionality
+	provides = hugetracker
+	conflicts = hugetracker
+	source = hUGETracker.tar.gz::https://github.com/SuperDisk/hUGETracker/archive/refs/tags/v1.0.5.tar.gz
+	source = Pascal-SDL-2-Headers.tar.gz::https://github.com/ev1313/Pascal-SDL-2-Headers/archive/088eeb3af8b680898d9fcaff390eddce9744ee51.tar.gz
+	source = bgrabitmap.tar.gz::https://github.com/bgrabitmap/bgrabitmap/archive/2814b069d55f726b9f3b4774d85d00dd72be9c05.tar.gz
+	source = hUGEDriver.tar.gz::https://github.com/SuperDisk/hUGEDriver/archive/df5a07ba1d684bf25b1de949ac0d9521a8937c32.tar.gz
+	source = rackctls.tar.gz::https://github.com/olivluca/rackctls/archive/15c50fb5dd398875a274b3aa2c36aa769d145a11.tar.gz
+	source = default_runtime_dir.patch
+	sha256sums = 19524290997dc8c04b2b5e42e20b7acf5430b6a8ac42366b9c12c8bc9e8f36c9
+	sha256sums = 70a6b029365b9cb3c52628ea1419c5f2e379a2d960510560e6e730c8c5f907dc
+	sha256sums = d9daea6027be28f6b2c30ee0fdd1c7fca8cc715d1bbb972403e844a42fa0f07c
+	sha256sums = a2f19f1ec957c5ba17f981c277687098cc874002874533a0b2c461a5a9c6c819
+	sha256sums = f069ba10fa267564a0bd88488e4d4ad31d013b07edadbf760f8b1197fba04042
+	sha256sums = 59e64986a039fc6dece071b94930f5855ff2d0c1a9a5740ad7af13d9d74b023f
+
+pkgname = hugetracker
