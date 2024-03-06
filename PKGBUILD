@@ -1,10 +1,11 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
+
 pkgbase=python-asdf-standard
 _pname=${pkgbase#python-}
 _pyname=${_pname/-/_}
 pkgname=("python-${_pname}")
 #"python-${_pname}-doc")
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Standards document describing ASDF, Advanced Scientific Data Format"
 arch=('any')
@@ -14,30 +15,29 @@ makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
              'python-installer')
-#            'python-sphinx'
 #            'python-sphinx-asdf'
 #            'graphviz')
-#checkdepends=('python-pytest' 'python-jsonschema')
+#checkdepends=('python-pytest'
+#              'python-asdf')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('ebea2e535c5256ce475a21159e2489fa')
+md5sums=('ccdd9e09c94f12fddd78914faecad727')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
     python -m build --wheel --no-isolation
 
 #   msg "Building Docs"
-#   cd ${srcdir}/${_pyname}-${pkgver}/docs
-#   PYTHONPATH="../build/lib" make html
+#   PYTHONPATH="../build/lib" make -C docs html
 }
 
 #check() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
 #
-#    pytest || warning "Tests failed"
+#    pytest -vv -l -ra --color=yes -o console_output_style=count #|| warning "Tests failed" -vv -l -ra --color=yes -o console_output_style=count
 #}
 
 package_python-asdf-standard() {
-    depends=('python>=3.8' 'python-importlib_resources>=3')
+    depends=('python>=3.8')
     optdepends=('python-sphinx-asdf: For doc building (circular dep avoided)'
                 'graphviz: For doc building')
     cd ${srcdir}/${_pyname}-${pkgver}
