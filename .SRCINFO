@@ -1,13 +1,13 @@
 pkgbase = dk-c++-bin
 	pkgdesc = A C++ IDE designed for easy use.
 	pkgver = 1.3.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/EntityPlantt/DK-CPP
 	arch = x86_64
 	license = LicenseRef-custom
 	makedepends = gendesk
 	makedepends = imagemagick
-	depends = electron19
+	depends = electron19-bin
 	depends = gcc
 	depends = nodejs
 	provides = dk-c++=1.3.0
@@ -17,6 +17,6 @@ pkgbase = dk-c++-bin
 	source = dk-c++.sh
 	sha256sums = 3b59ed87183c16072a6db41108c940cece6d5c51a452c6a48c78f1b8d69315d2
 	sha256sums = 118e8d39dc5b8e68c533eb798f8e569b056c1238c7d8a2ab4c7eefd7067eea0d
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = dk-c++-bin
