@@ -1,7 +1,8 @@
 # Maintainer: Qingxu <me@linioi.com>
 
 pkgname=yesplaymusic
-pkgver=0.4.7
+pkgver=0.4.8
+subver=-2
 pkgrel=1
 pkgdesc="A third party music application for Netease Music"
 arch=("x86_64")
@@ -26,9 +27,9 @@ optdepends=(
     'libappindicator-gtk3'
 )
 source=(
-    "YesPlayMusic-${pkgver}.pacman::https://github.com/qier222/YesPlayMusic/releases/download/v${pkgver}${subver}/YesPlayMusic-${pkgver}${subver}.pacman"
+    "YesPlayMusic-${pkgver}.pacman::https://github.com/qier222/YesPlayMusic/releases/download/v${pkgver}${subver}/YesPlayMusic-${pkgver}.pacman"
 )
-sha256sums=('9b9fc793354e2bcd677b31a7d29e7e5006479fdf7b89c8adfac1e17d072cd2c9')
+sha256sums=('ff1719049256ddd20e08a803d5a3ccdf946ab7c62b324eb622ccfc33804efad2')
 
 package() {
     cd ${srcdir}
@@ -36,8 +37,8 @@ package() {
     # Remove exsiting files
     rm -f ${pkgdir}/.PKGINFO ${pkgdir}/.MTREE ${pkgdir}/.INSTALL
     # Make KDE happy :)
-    echo 'Comment[zh_CN]=高颜值的第三方网易云播放器' >> ${pkgdir}/usr/share/applications/yesplaymusic.desktop
-    sed -i -E "s|Categories=Music;|Categories=Music;AudioVideo;Player;|" ${pkgdir}/usr/share/applications/yesplaymusic.desktop   
+    echo 'Comment[zh_CN]=高颜值的第三方网易云播放器' >>${pkgdir}/usr/share/applications/yesplaymusic.desktop
+    sed -i -E "s|Categories=Music;|Categories=Music;AudioVideo;Player;|" ${pkgdir}/usr/share/applications/yesplaymusic.desktop
 }
 
 post_install() {
