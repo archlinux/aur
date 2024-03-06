@@ -41,6 +41,10 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP')
 
 pkgver() {
@@ -147,6 +151,7 @@ package() {
 # Call prepare_submodule in prepare() function
 
 prepare_submodule() {
+  git -C "$srcdir/CCCoreLib" config submodule.extern/nanoflann.url "$srcdir/nanoflann"
   git -C "$srcdir/cloudcompare" config submodule.plugins/core/IO/qE57IO/extern/libE57Format.url "$srcdir/libE57Format"
   git -C "$srcdir/cloudcompare" config submodule.extern/CCCoreLib.url "$srcdir/CCCoreLib"
   git -C "$srcdir/cloudcompare" config submodule.plugins/core/Standard/qPoissonRecon/extern/PoissonRecon.url "$srcdir/PoissonRecon"
@@ -155,9 +160,13 @@ prepare_submodule() {
   git -C "$srcdir/cloudcompare" config submodule.plugins/core/Standard/qMasonry.url "$srcdir/masonry-cc"
   git -C "$srcdir/cloudcompare" config submodule.plugins/core/Standard/qJSonRPCPlugin.url "$srcdir/JSonRPCPlugin"
   git -C "$srcdir/cloudcompare" config submodule.plugins/core/Standard/qCanupo/contrib/dlib.url "$srcdir/dlib"
+  git -C "$srcdir/cloudcompare" config submodule.plugins/core/Standard/cc-treeiso-plugin.url "$srcdir/cc-treeiso-plugin"
+  git -C "$srcdir/cloudcompare" config submodule.plugins/core/Standard/q3DMASC.url "$srcdir/q3DMASC"
+  git -C "$srcdir/libE57Format" config submodule.test/extern/googletest.url "$srcdir/googletest"
   git -C "$srcdir/cloudcompare" -c protocol.file.allow=always submodule update --init --recursive
 }
 source+=(
+  "nanoflann::git+https://github.com/jlblancoc/nanoflann"
   "libE57Format::git+https://github.com/asmaloney/libE57Format"
   "CCCoreLib::git+https://github.com/CloudCompare/CCCoreLib"
   "PoissonRecon::git+https://github.com/cloudcompare/PoissonRecon"
@@ -166,4 +175,7 @@ source+=(
   "masonry-cc::git+https://github.com/CyberbuildLab/masonry-cc"
   "JSonRPCPlugin::git+https://gitlab.com/theadib/JSonRPCPlugin"
   "dlib::git+https://github.com/davisking/dlib"
+  "cc-treeiso-plugin::git+https://github.com/truebelief/cc-treeiso-plugin"
+  "q3DMASC::git+https://github.com/dgirardeau/q3DMASC"
+  "googletest::git+https://github.com/google/googletest"
 )
