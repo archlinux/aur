@@ -1,6 +1,6 @@
 Index: qt5ct/CMakeLists.txt
 ===================================================================
---- qt5ct/CMakeLists.txt	(revision 689)
+--- qt5ct/CMakeLists.txt	(revision 690)
 +++ qt5ct/CMakeLists.txt	(working copy)
 @@ -27,8 +27,11 @@
  
@@ -28,7 +28,7 @@ Index: qt5ct/CMakeLists.txt
  message(STATUS "Generating translations ...")
 Index: qt5ct/src/qt5ct/appearancepage.cpp
 ===================================================================
---- qt5ct/src/qt5ct/appearancepage.cpp	(revision 689)
+--- qt5ct/src/qt5ct/appearancepage.cpp	(revision 690)
 +++ qt5ct/src/qt5ct/appearancepage.cpp	(working copy)
 @@ -378,7 +378,7 @@
  {
@@ -41,7 +41,7 @@ Index: qt5ct/src/qt5ct/appearancepage.cpp
      {
 Index: qt5ct/src/qt5ct-common/qt5ct.cpp
 ===================================================================
---- qt5ct/src/qt5ct-common/qt5ct.cpp	(revision 689)
+--- qt5ct/src/qt5ct-common/qt5ct.cpp	(revision 690)
 +++ qt5ct/src/qt5ct-common/qt5ct.cpp	(working copy)
 @@ -113,6 +113,7 @@
      for(const QString &p : QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation))
@@ -53,7 +53,7 @@ Index: qt5ct/src/qt5ct-common/qt5ct.cpp
      paths.removeDuplicates();
 Index: qt5ct/src/qt5ct-qtplugin/CMakeLists.txt
 ===================================================================
---- qt5ct/src/qt5ct-qtplugin/CMakeLists.txt	(revision 689)
+--- qt5ct/src/qt5ct-qtplugin/CMakeLists.txt	(revision 690)
 +++ qt5ct/src/qt5ct-qtplugin/CMakeLists.txt	(working copy)
 @@ -9,7 +9,7 @@
  
@@ -66,7 +66,7 @@ Index: qt5ct/src/qt5ct-qtplugin/CMakeLists.txt
  endif()
 Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
 ===================================================================
---- qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp	(revision 689)
+--- qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp	(revision 690)
 +++ qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp	(working copy)
 @@ -45,6 +45,7 @@
  #endif
@@ -148,7 +148,7 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
 +        QDynamicPropertyChangeEvent *ee = static_cast<QDynamicPropertyChangeEvent*>(e);
 +        if(ee->propertyName() == "KDE_COLOR_SCHEME_PATH")
 +        {
-+            if(qApp->property("KDE_COLOR_SCHEME_PATH").isNull())
++            if(qApp->property("KDE_COLOR_SCHEME_PATH").toString().isEmpty())
 +            {
 +                QSettings settings(Qt5CT::configFile(), QSettings::IniFormat);
 +                settings.beginGroup("Appearance");
@@ -169,7 +169,7 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
 +}
 Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.h
 ===================================================================
---- qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.h	(revision 689)
+--- qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.h	(revision 690)
 +++ qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.h	(working copy)
 @@ -87,10 +87,13 @@
      //virtual QPixmap fileIconPixmap(const QFileInfo &fileInfo, const QSizeF &size,
