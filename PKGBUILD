@@ -2,9 +2,9 @@
 _pkgname=yesplaymusic
 pkgname="my-${_pkgname}-bin"
 _appname=YesPlayMusic
-pkgver=0.4.14
+pkgver=0.4.15
 _electronversion=13
-pkgrel=2
+pkgrel=1
 pkgdesc="A third party music player for Netease Music.高颜值的第三方网易云播放器，支持本地音乐播放、离线歌单、桌面歌词、Touch Bar歌词、Mac状态栏歌词显示。"
 arch=(
     'aarch64'
@@ -25,9 +25,6 @@ depends=(
     'hicolor-icon-theme'
     "electron${_electronversion}"
 )
-makedepends=(
-    'asar'
-)
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_armv7l.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
@@ -36,19 +33,16 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c33378c6fd12e6d040cedd06dc0d1bedfca74fd66bc46cc2cf10cc10e0906be6'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
-sha256sums_aarch64=('2c1366c944eacd09be5b9dc18017ba56a3bafd536942c272b056c2d2b8e1c668')
-sha256sums_armv7h=('50c9336fa6832bbcdc71507d3777e5e439ee680cf57e5dc8c70258b7718e3927')
-sha256sums_x86_64=('520b4579860b1e0b77331f540395e9fe1d1c49c12b44ff6b182e50da9b0e19b2')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+sha256sums_aarch64=('8de642006739cc3677513a34be517d97a252581ef2e042b944ee42a6d36c8a32')
+sha256sums_armv7h=('90f311b45cc3a5fdb9ecb28141b64f0221e1a697fa04a5380da0723ea42d5a44')
+sha256sums_x86_64=('78139692825ec904b6f44b9d4c06753b2d200bf82822ce8ab46640421cdb8a4c')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    asar e "${srcdir}/opt/${_appname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/32x32/apps/${_pkgname}.png" "${srcdir}/app.asar.unpacked/tray-icon.png"
-    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
     sed -e "s|/opt/${_appname}/${_pkgname} %U|${pkgname%-bin}|g" \
         -e "s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
         -e "s|Categories=Music;|Categories=AudioVideo;|g" \
@@ -56,10 +50,10 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${_appname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    for _icons in 16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
-        install -Dm644 "${srcdir}/app.asar.unpacked/img/icons/${_icons}.png" \
+    for _icons in 24x24 88x88;do
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
