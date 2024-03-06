@@ -3,7 +3,7 @@ pkgname=gmail-desktop-bin
 _appname="Gmail Desktop"
 pkgver=3.0.0_alpha.37
 _electronversion=23
-pkgrel=7
+pkgrel=8
 pkgdesc="Nifty Gmail desktop app (unofficial)"
 arch=('x86_64')
 url="https://github.com/timche/gmail-desktop"
@@ -21,13 +21,13 @@ source=(
 )
 sha256sums=('aa125803e43bd295154e3d0fa9def4fe3a89d1f312b15e2989aa3a25b1a49861'
             '056c7c1e5bf66eba0167d966d192c743f6b66ed854011c9b6dac04f959f8f5b5'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_appname}/${pkgname%-bin}\"|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
