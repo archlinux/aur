@@ -2,12 +2,12 @@
 pkgdesc='WPE launcher and webapp container'
 pkgname=cog
 pkgver=0.18.3
-pkgrel=2
+pkgrel=3
 url=https://github.com/Igalia/cog
 arch=(i686 x86_64 aarch64 armv7l armv7h)
 groups=(wpe)
 conflicts=(cog-git)
-depends=('wpewebkit>=2.36.0' 'wpebackend-fdo>=1.10.0' libinput libmanette)
+depends=('wpewebkit>=2.42.5-3' 'wpebackend-fdo>=1.10.0' libinput libmanette)
 makedepends=(meson wayland-protocols libxcb libxkbcommon-x11 gtk4 weston)
 optdepends=('libxcb: x11 platform support'
             'libxkbcommon-x11: x11 platform support'

@@ -1,7 +1,7 @@
 pkgbase = cog
 	pkgdesc = WPE launcher and webapp container
 	pkgver = 0.18.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Igalia/cog
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = cog
 	makedepends = libxkbcommon-x11
 	makedepends = gtk4
 	makedepends = weston
-	depends = wpewebkit>=2.36.0
+	depends = wpewebkit>=2.42.5-3
 	depends = wpebackend-fdo>=1.10.0
 	depends = libinput
 	depends = libmanette
