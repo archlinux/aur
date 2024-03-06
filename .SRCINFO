@@ -1,78 +1,8 @@
 pkgbase = kf5-transition-dummy
-	pkgdesc = dummy package to track kf5-package renames
+	pkgdesc = metapackage - empty project
 	pkgver = 5.150.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
-	provides = kirigami-addons=0.11.50
-	provides = kquickimageeditor=0.3.5
-	provides = kuserfeedback
-	provides = attica=5.150.0
-	provides = baloo=5.150.0
-	provides = bluez-qt=5.150.0
-	provides = frameworkintegration=5.150.0
-	provides = kactivities-stats=5.150.0
-	provides = kactivities=5.150.0
-	provides = karchive=5.150.0
-	provides = kauth=5.150.0
-	provides = kbookmarks=5.150.0
-	provides = kcalendarcore=5.150.0
-	provides = kcmutils=5.150.0
-	provides = kcodecs=5.150.0
-	provides = kcompletion=5.150.0
-	provides = kconfig=1:5.150.0
-	provides = kconfigwidgets=5.150.0
-	provides = kcontacts=5.150.0
-	provides = kcoreaddons=5.150.0
-	provides = kcrash=5.150.0
-	provides = kdav=1:5.150.0
-	provides = kdbusaddons=5.150.0
-	provides = kdeclarative=5.150.0
-	provides = kded=5.150.0
-	provides = kdesu=5.150.0
-	provides = kdnssd=5.150.0
-	provides = kdoctools=5.150.0
-	provides = kfilemetadata=5.150.0
-	provides = kglobalaccel=5.150.0
-	provides = kguiaddons=5.150.0
-	provides = kholidays=1:5.150.0
-	provides = ki18n=5.150.0
-	provides = kiconthemes=5.150.0
-	provides = kidletime=5.150.0
-	provides = kimageformats=5.150.0
-	provides = kio=5.150.0
-	provides = kitemmodels=5.150.0
-	provides = kitemviews=5.150.0
-	provides = kjobwidgets=5.150.0
-	provides = knewstuff=5.150.0
-	provides = knotifications=5.150.0
-	provides = knotifyconfig=5.150.0
-	provides = kpackage=5.150.0
-	provides = kparts=5.150.0
-	provides = kpeople=5.150.0
-	provides = kplotting=5.150.0
-	provides = kpty=5.150.0
-	provides = kquickcharts=5.150.0
-	provides = krunner=5.150.0
-	provides = kservice=5.150.0
-	provides = ktexteditor=5.150.0
-	provides = ktextwidgets=5.150.0
-	provides = kunitconversion=5.150.0
-	provides = kwallet=5.150.0
-	provides = kwayland=5.150.0
-	provides = kwidgetsaddons=5.150.0
-	provides = kwindowsystem=5.150.0
-	provides = kxmlgui=5.150.0
-	provides = modemmanager-qt=5.150.0
-	provides = networkmanager-qt=5.150.0
-	provides = plasma-framework=5.150.0
-	provides = prison=5.150.0
-	provides = purpose=5.150.0
-	provides = qqc2-desktop-style=5.150.0
-	provides = solid=5.150.0
-	provides = sonnet=5.150.0
-	provides = syndication=5.150.0
-	provides = syntax-highlighting=5.150.0
-	provides = threadweaver=5.150.0
 
 pkgname = kf5-transition-dummy
 	depends = do-not-install
