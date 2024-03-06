@@ -1,6 +1,6 @@
 pkgbase = swift-bin
 	pkgdesc = Binary builds of the Swift programming language
-	pkgver = 5.9.2
+	pkgver = 5.10
 	pkgrel = 1
 	url = https://www.swift.org/
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = swift-bin
 	provides = swift-language
 	replaces = swift-language-bin
 	options = !strip
-	source_x86_64 = https://download.swift.org/swift-5.9.2-release/ubi9/swift-5.9.2-RELEASE/swift-5.9.2-RELEASE-ubi9.tar.gz
-	sha256sums_x86_64 = 7c2a8b44d2999761e117d4e437d2092f357a8ab93c445ef2db6f521d3e3a31aa
-	source_aarch64 = https://download.swift.org/swift-5.9.2-release/ubi9-aarch64/swift-5.9.2-RELEASE/swift-5.9.2-RELEASE-ubi9-aarch64.tar.gz
-	sha256sums_aarch64 = d740b5a71601d3222877fc3b4a341d7add21fa5a4b5f5654eea870e0a5be1deb
+	source_x86_64 = https://download.swift.org/swift-5.10-release/ubi9/swift-5.10-RELEASE/swift-5.10-RELEASE-ubi9.tar.gz
+	sha256sums_x86_64 = 0db8d9e499ec63a07ce970a2f41613310fb712c3936f1a797ccdacde7536384d
+	source_aarch64 = https://download.swift.org/swift-5.10-release/ubi9-aarch64/swift-5.10-RELEASE/swift-5.10-RELEASE-ubi9-aarch64.tar.gz
+	sha256sums_aarch64 = 784f859cdcacffa2df93fa0d433aa1a38c6ad0884f628bbdad039bc25d63b3c4
 
 pkgname = swift-bin
