@@ -1,7 +1,7 @@
 # Maintainer: James Barrios <hey@dendarrion.com>
 
 pkgname=ttf-juliamono-nerd-font
-pkgver=0.053
+pkgver=0.054
 pkgrel=1
 pkgdesc="JuliaMono, a font for programming, patched with Nerd Fonts"
 arch=('any')
