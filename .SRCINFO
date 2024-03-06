@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-rc-performance
-	pkgdesc = Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync
+	pkgdesc = Next generation desktop shell (release candidate with performance patches)
 	pkgver = 46.rc
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://wiki.gnome.org/Projects/GnomeShell
 	arch = x86_64
