@@ -2,7 +2,7 @@ pkgbase = piper-voices
 	pkgdesc = Voices for Piper text to speech system
 	pkgver = 1.0.0
 	pkgrel = 2
-	epoch = 1
+	epoch = 2
 	url = https://huggingface.co/rhasspy/piper-voices
 	arch = any
 	groups = piper-voices
@@ -13,113 +13,4 @@ pkgbase = piper-voices
 	conflicts = piper-voices-minimal
 	options = !strip
 
-pkgname = piper-voices-ar-jo
-	pkgdesc = Voices for Piper text to speech system (ar-jo)
-
-pkgname = piper-voices-ca-es
-	pkgdesc = Voices for Piper text to speech system (ca-es)
-
-pkgname = piper-voices-cs-cz
-	pkgdesc = Voices for Piper text to speech system (cs-cz)
-
-pkgname = piper-voices-da-dk
-	pkgdesc = Voices for Piper text to speech system (da-dk)
-
-pkgname = piper-voices-de-de
-	pkgdesc = Voices for Piper text to speech system (de-de)
-
-pkgname = piper-voices-el-gr
-	pkgdesc = Voices for Piper text to speech system (el-gr)
-
-pkgname = piper-voices-en-gb
-	pkgdesc = Voices for Piper text to speech system (en-gb)
-
-pkgname = piper-voices-en-us
-	pkgdesc = Voices for Piper text to speech system (en-us)
-
-pkgname = piper-voices-es-es
-	pkgdesc = Voices for Piper text to speech system (es-es)
-
-pkgname = piper-voices-es-mx
-	pkgdesc = Voices for Piper text to speech system (es-mx)
-
-pkgname = piper-voices-fa-ir
-	pkgdesc = Voices for Piper text to speech system (fa-ir)
-
-pkgname = piper-voices-fi-fi
-	pkgdesc = Voices for Piper text to speech system (fi-fi)
-
-pkgname = piper-voices-fr-fr
-	pkgdesc = Voices for Piper text to speech system (fr-fr)
-
-pkgname = piper-voices-hu-hu
-	pkgdesc = Voices for Piper text to speech system (hu-hu)
-
-pkgname = piper-voices-is-is
-	pkgdesc = Voices for Piper text to speech system (is-is)
-
-pkgname = piper-voices-it-it
-	pkgdesc = Voices for Piper text to speech system (it-it)
-
-pkgname = piper-voices-ka-ge
-	pkgdesc = Voices for Piper text to speech system (ka-ge)
-
-pkgname = piper-voices-kk-kz
-	pkgdesc = Voices for Piper text to speech system (kk-kz)
-
-pkgname = piper-voices-lb-lu
-	pkgdesc = Voices for Piper text to speech system (lb-lu)
-
-pkgname = piper-voices-ne-np
-	pkgdesc = Voices for Piper text to speech system (ne-np)
-
-pkgname = piper-voices-nl-be
-	pkgdesc = Voices for Piper text to speech system (nl-be)
-
-pkgname = piper-voices-nl-nl
-	pkgdesc = Voices for Piper text to speech system (nl-nl)
-
-pkgname = piper-voices-no-no
-	pkgdesc = Voices for Piper text to speech system (no-no)
-
-pkgname = piper-voices-pl-pl
-	pkgdesc = Voices for Piper text to speech system (pl-pl)
-
-pkgname = piper-voices-pt-br
-	pkgdesc = Voices for Piper text to speech system (pt-br)
-
-pkgname = piper-voices-pt-pt
-	pkgdesc = Voices for Piper text to speech system (pt-pt)
-
-pkgname = piper-voices-ro-ro
-	pkgdesc = Voices for Piper text to speech system (ro-ro)
-
-pkgname = piper-voices-ru-ru
-	pkgdesc = Voices for Piper text to speech system (ru-ru)
-
-pkgname = piper-voices-sk-sk
-	pkgdesc = Voices for Piper text to speech system (sk-sk)
-
-pkgname = piper-voices-sl-si
-	pkgdesc = Voices for Piper text to speech system (sl-si)
-
-pkgname = piper-voices-sr-rs
-	pkgdesc = Voices for Piper text to speech system (sr-rs)
-
-pkgname = piper-voices-sv-se
-	pkgdesc = Voices for Piper text to speech system (sv-se)
-
-pkgname = piper-voices-sw-cd
-	pkgdesc = Voices for Piper text to speech system (sw-cd)
-
-pkgname = piper-voices-tr-tr
-	pkgdesc = Voices for Piper text to speech system (tr-tr)
-
-pkgname = piper-voices-uk-ua
-	pkgdesc = Voices for Piper text to speech system (uk-ua)
-
-pkgname = piper-voices-vi-vn
-	pkgdesc = Voices for Piper text to speech system (vi-vn)
-
-pkgname = piper-voices-zh-cn
-	pkgdesc = Voices for Piper text to speech system (zh-cn)
+pkgname = piper-voices
