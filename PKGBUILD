@@ -3,7 +3,7 @@ pkgname=modv-bin
 _pkgname=modV
 pkgver=3.29.1
 _electronversion=25
-pkgrel=5
+pkgrel=6
 pkgdesc="modular audio visualisation powered by JavaScript"
 arch=("x86_64")
 url="https://modv.vcync.gl/"
@@ -13,13 +13,9 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
-    'lib32-glibc'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}.AppImage"
@@ -28,7 +24,7 @@ source=(
 )
 sha256sums=('987b13cbd076f0113a4a11df8cd132e1580dec7abe5ea69fa12a6e5e5a5f7992'
             '4ff9462e56a52889b0005f007e0a66930c6b19687751f551bf7316b6ee35119e'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
