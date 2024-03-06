@@ -7,9 +7,9 @@
 
 pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=4.3.1
+pkgver=4.4.0
 secp256k1ver=0.20.9
-pkgrel=3
+pkgrel=1
 url='http://www.electroncash.org/'
 arch=('any')
 license=('MIT')
@@ -54,13 +54,14 @@ optdepends=(
   'python-rpyc: send commands to Electrum Python console from an external script'
   'python-trezor: Trezor hardware wallet support'
   'python-keepkey: Trezor hardware wallet support'
-  'zbar: QR code reading support'
+  'python-zxing-cpp: QR code reading support'
+  'gst-plugins-good: QR code reading support'
 )
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/${pkgver}.tar.gz"
         "secp256k1-${secp256k1ver}.tar.gz::https://github.com/Bitcoin-ABC/secp256k1/archive/v${secp256k1ver}.tar.gz")
-sha256sums=('c85d4c0b641d4c4253ed7590224335d9144261f87e939282d17a5ddcc29f341f'
+sha256sums=('5654c6a22b0e493d6f7aa10ca27ed53061fe654b36ccef24a305524e00927f91'
             '68e84775e57da77e19ccb6b0dde6ca0882377bdd48ecc6da0047a70201ec64c8')
 
 prepare() {
