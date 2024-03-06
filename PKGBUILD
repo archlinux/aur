@@ -280,9 +280,14 @@ build() {
 }
 
 _rm_man() {
+  ls \
+    "${pkgdir}/usr/share/man/man1/" |
+    grep \
+      "emu"
   mv \
     "${pkgdir}/usr/share/man/man1/${pkgbase}.1.gz" \
-    "${srcdir}"
+    "${srcdir}" || \
+    true
   rm \
     -f \
     "${pkgdir}/usr/share/man" || \
