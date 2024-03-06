@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy-bin
 _pkgname=Escrcpy
-pkgver=1.17.0
+pkgver=1.17.1
 _electronversion=27
 pkgrel=1
 pkgdesc="使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动"
@@ -24,14 +24,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
-sha256sums_aarch64=('38d967deb247f9ef075a4a15bdf04fef18ded0659001488945604fd1b4cafd65')
-sha256sums_x86_64=('bed95f56d15b7b4b2dc17e8414521475f41f39dcc4c8d71415bda070a2b5cf66')
+sha256sums_aarch64=('290c6a5e0896212d497457ce8468373ee9d78d6a6f51c21c921611a134103217')
+sha256sums_x86_64=('6a430f01e4cc7dc9cadc62b09891350539900b9015a46d2f770caccf44ef9812')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     cd "${srcdir}/opt/${_pkgname}/resources/extra/linux"
     chmod 755 android-platform-tools/{adb,etc1tool,fastboot,hprof-conv,make_f2fs,make_f2fs_casefold,mke2fs,sqlite3} \
