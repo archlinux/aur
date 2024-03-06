@@ -1,0 +1,26 @@
+diff '--color=auto' --unified --recursive --text rmg/Source/3rdParty/mupen64plus-core/src/device/cart/cart_rom.c rmg-patch/Source/3rdParty/mupen64plus-core/src/device/cart/cart_rom.c
+--- rmg/Source/3rdParty/mupen64plus-core/src/device/cart/cart_rom.c	2024-03-06 01:53:03.803523640 -0600
++++ rmg-patch/Source/3rdParty/mupen64plus-core/src/device/cart/cart_rom.c	2024-03-06 01:53:36.143794017 -0600
+@@ -32,7 +32,7 @@
+ #define __STDC_FORMAT_MACROS
+ #include <inttypes.h>
+ 
+-#define CART_ROM_ADDR_MASK UINT32_C(0x03ffffff);
++#define CART_ROM_ADDR_MASK UINT32_C(0x0fffffff);
+ 
+ 
+ void init_cart_rom(struct cart_rom* cart_rom,
+diff '--color=auto' --unified --recursive --text rmg/Source/3rdParty/mupen64plus-core/src/device/memory/memory.h rmg-patch/Source/3rdParty/mupen64plus-core/src/device/memory/memory.h
+--- rmg/Source/3rdParty/mupen64plus-core/src/device/memory/memory.h	2024-03-06 01:53:03.805523595 -0600
++++ rmg-patch/Source/3rdParty/mupen64plus-core/src/device/memory/memory.h	2024-03-06 01:54:55.043019494 -0600
+@@ -28,8 +28,8 @@
+ #include "osal/preproc.h"
+ 
+ enum { RDRAM_MAX_SIZE = 0x800000 };
+-enum { CART_ROM_MAX_SIZE = 0x4000000 };
+-enum { DD_ROM_MAX_SIZE = 0x400000 };
++enum { CART_ROM_MAX_SIZE = 0x10000000 };
++enum { DD_ROM_MAX_SIZE = 0x1000000 };
+ 
+ typedef void (*read32fn)(void*,uint32_t,uint32_t*);
+ typedef void (*write32fn)(void*,uint32_t,uint32_t,uint32_t);
