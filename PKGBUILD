@@ -2,7 +2,7 @@
 pkgname=aliyun-adrive-bin
 pkgver=4.11.0
 _electronversion=22
-pkgrel=2
+pkgrel=3
 pkgdesc="Aliyun aDrive阿里云盘"
 arch=('x86_64')
 url="https://www.aliyundrive.com"
@@ -22,18 +22,18 @@ makedepends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.exe::https://cdn.aliyundrive.net/downloads/apps/desktop/aDrive-${pkgver}.exe"
-    "LICENSE.html"
+    "LICENSE.html::https://terms.alicdn.com/legal-agreement/terms/suit_bu1_dingtalk/suit_bu1_dingtalk202103191654_76478.html"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('507bf86e5dffe75fc9cdd8caea0e1b284dd10dfeba435e331040c305958df7a6'
-            'e266be0821c3ebe2521767404dccb1d4cd4000be8fe318174bdb5c70ac015509'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'ee4bf71493d9425c0270f59a72778d52b53a9bdcb981f462d1e699d347e9246e'
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories "Network" --name "${pkgname%-bin}阿里云盘" --exec "${pkgname%-bin} %U"
+    gendesk -q -f -n --categories="Network" --name="${pkgname%-bin}阿里云盘" --exec="${pkgname%-bin} %U"
     install -Dm755 -d "${srcdir}/tmp"
     7z x -aoa "${srcdir}/${pkgname%-bin}-${pkgver}.exe" -o"${srcdir}/tmp"
     find "${srcdir}/tmp/resources" -type d -exec chmod 755 {} \;
