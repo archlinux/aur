@@ -1,0 +1,12 @@
+diff -ur quarto-cli-1.4.551.orig/src/project/types/website/website-search.ts quarto-cli-1.4.551/src/project/types/website/website-search.ts
+--- quarto-cli-1.4.551.orig/src/project/types/website/website-search.ts	2024-03-06 11:25:25.000000000 +1300
++++ quarto-cli-1.4.551/src/project/types/website/website-search.ts	2024-03-06 22:04:38.498170207 +1300
+@@ -8,7 +8,7 @@
+ import { basename, join, relative } from "path/mod.ts";
+ 
+ // currently not building the index here so not using fuse
+-// @deno-types="fuse/dist/fuse.d.ts"
++//
+ // import Fuse from "fuse/dist/fuse.esm.min.js";
+ 
+ import { DOMParser, Element, initDenoDom } from "../../../core/deno-dom.ts";
