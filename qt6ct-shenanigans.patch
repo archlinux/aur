@@ -38,7 +38,7 @@ index c3d7498..32844ae 100644
 +target_link_libraries(qt6ct-qtplugin PRIVATE Qt6::Widgets Qt6::GuiPrivate Qt6::QuickControls2 KF6::ConfigCore KF6::ConfigWidgets KF6::IconThemes qt6ct-common)
  install(TARGETS qt6ct-qtplugin DESTINATION ${PLUGINDIR}/platformthemes)
 diff --git a/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp b/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
-index 1d13faf..4c21429 100644
+index 1d13faf..ec57221 100644
 --- a/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
 +++ b/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
 @@ -44,6 +44,7 @@
@@ -120,7 +120,7 @@ index 1d13faf..4c21429 100644
 +        QDynamicPropertyChangeEvent *ee = static_cast<QDynamicPropertyChangeEvent*>(e);
 +        if(ee->propertyName() == "KDE_COLOR_SCHEME_PATH")
 +        {
-+            if(qApp->property("KDE_COLOR_SCHEME_PATH").isNull())
++            if(qApp->property("KDE_COLOR_SCHEME_PATH").toString().isEmpty())
 +            {
 +                QSettings settings(Qt6CT::configFile(), QSettings::IniFormat);
 +                settings.beginGroup("Appearance");

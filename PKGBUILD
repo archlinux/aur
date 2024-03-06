@@ -4,7 +4,7 @@
 pkgname=qt6ct-kde
 _pkgname=qt6ct
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt 6 Configuration Utility, patched to work correctly with KDE applications'
 arch=(x86_64)
 url='https://github.com/trialuser02/qt6ct'
@@ -16,7 +16,7 @@ provides=($_pkgname)
 source=(https://github.com/trialuser02/$_pkgname/releases/download/$pkgver/$_pkgname-$pkgver.tar.xz
         $_pkgname-shenanigans.patch)
 sha256sums=('0a9f00db7f9c2003b33fad1715cbf2a483bf50a99079b97bf8e5d0bdbd3392cd'
-            '50f453e600f26897f1e9e894ecdce3fc5a28165c6072ea09db1f6ca16bcd0ea3')
+            'f6d59feb482be3630acc165c9708b8e940f0d77f38058a92e7f3a37951f93d14')
 
 prepare() {
   patch -d $_pkgname-$pkgver -p1 < $_pkgname-shenanigans.patch # The magic
