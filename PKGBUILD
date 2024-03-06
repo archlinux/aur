@@ -1,7 +1,7 @@
 # Maintainer: zaoqi <zaomir@outlook.com>
 
 pkgname=koreader-bin
-pkgver=2024.03
+pkgver=2024.03.1
 pkgrel=1
 pkgdesc="An ebook reader application supporting PDF, DjVu, EPUB, FB2 and many more formats, running on Cervantes, Kindle, Kobo, PocketBook and Android devices"
 arch=("x86_64" 'aarch64')
@@ -10,8 +10,8 @@ license=('AGPL3')
 depends=('sdl2' 'fonts-noto-hinted' 'fonts-droid-fallback')
 source_x86_64=("https://github.com/koreader/koreader/releases/download/v${pkgver}/koreader-${pkgver}-amd64.deb")
 source_aarch64=("https://github.com/koreader/koreader/releases/download/v${pkgver}/koreader-${pkgver}-arm64.deb")
-sha256sums_x86_64=('2c02af3624025486192271450ba253cd136f05603a62ae5cf4c1c2b9c3c5a4b2')
-sha256sums_aarch64=('838a172b3855d76cac40142e510ba1132c6b0e408dd3c1cedba112eded0d2b52')
+sha256sums_x86_64=('119de2aa9d00d81670237e379efbe9ef5446431e853deb14072e0b85ae18cf85')
+sha256sums_aarch64=('f41bbe9967c9b8f687e6757bd4932b7068a989959f71fd7d29f55ab825bddbe2')
 
 build() {
   mkdir -p "${srcdir}/dpkgdir"
