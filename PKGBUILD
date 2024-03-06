@@ -66,27 +66,20 @@ source=(
 	D187749.patch
 	unity-menubar.patch
 	fix_csd_window_buttons.patch
-	firefox-115.4.0-icu-74.patch)
+	icu-74.patch)
 validpgpkeys=(
 	# Mozilla Software Releases <release@mozilla.com>
 	# https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
 	'14F26682D0916CDD81E37B6D61B7B526D98F0353')
-sha256sums=('af8086f23efc8492d286671f6035b1a915de6f4ed5c7897e40be0e1cb6b895ea'
-						'SKIP'
-						'ed84a17fa4a17faa70a0528556dbafeeb6ee59697451325881cb064b0ee8afec'
-						'23669d3a84f186d4c73c996abd3306d41a50cedf1d7bb0c897279b082e695d15'
-						'4c3b59f7cdafcdf714510ed605c667e4c0d1f540edd31b02d03330ac1f4869bb'
-						'74440d292e76426ac5cba9058a6f86763c37a9aa61b7afc47771140f1f53870b'
-						'e08d0bc5b7e562f5de6998060e993eddada96d93105384960207f7bdf2e1ed6e'
-						'b07223e5928a5a0d4cb53e5c1a80cd93289f2f69a622c08e76d41a2434277ecc')
-b2sums=('37bb3d0ef990922baa81f0083ba91f079755c6cf45df238d7ccfa4f9bc0cb597f59c7d08bc0b976dae422df0b3897d1cd153ae12970ac4e3e9fad892781c3b45'
-				'SKIP'
-				'bbc69752492649f288e0ceef6ce4a1703030cc98abd2442b7ebfba2be786eea643f594af5dc237a6e3c04fd0c8b147f529fd9e790f04c64b9f10abb3c826827f'
-				'078aa4873c178335d66b33b6ac24cb0e5fcce632fb1ef03d13359b2b930ee9cc44b78e2ae55ec224153bcd88ecb2616feb6d446cf75b7bea4ae2394699456c46'
-				'4dd2b8ac07b8c3be61ef8016562c2166e1915819fb2530f34d7619e9bf9860dfd74bb307a2911caa956809e098ae687a4446f851748a4f43fc3c8c29801a8d16'
-				'4b3837b398c5391ac036a59c8df51f9ad170b2d8c3d5d2011a63bacd9e24a81de4505ddf7ef722a0a6920b02bb8dbc2bb7b6f151e2aa7843baccec0572cc56c0'
-				'd5ec87260288d18718a3751c3cd9593cf00f64eabb0fc1285291bfca53fd7f2280d17607558ed4364667aef053f8d4917deec7a8dffab0f040634c8a27fa2754'
-				'94992ee197bbb5ce73a8187981aa1a6a2951219c08a7f5940dec7a7c2fcc053751843785f3edcbac97cec7977262ad8b31631a16357aac84215f90650cbc40cf')
+sha1sums=(
+		'd2bd2c47676c0c8575bcccbad4742dcdc23bc698'
+		'SKIP'
+		'bb4bbaddc549edd3506b5e955840fcebffcafb71'
+		'b3ccca02959d94ef2a5db8f140ff96a2cd9724ef'
+		'559ce09fee54c849ea4da2bf881da37f5fc0cac9'
+		'076dc68b2ec6c454afe9b5a9b3fbb7908ce575b8'
+		'4193d307cfc152ef2813973b0eae4385a4a2a968'
+		'54a3b8938f64aa41b03581e48c660851d4676253')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -154,7 +147,6 @@ prepare() {
 		ac_add_options --with-system-ffi
 		ac_add_options --with-system-pixman
 		ac_add_options --with-system-zlib
-		ac_add_options --with-system-icu
 		ac_add_options --with-system-jpeg
 		# does not have APNG support
 		# ac_add_options --with-system-png
@@ -179,7 +171,7 @@ fi
 build() {
 	cd firefox-$pkgver
 
-	export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
+	export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=none
 	export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
 	export MOZ_NOSPAM=1
 	MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
@@ -194,18 +186,17 @@ build() {
 
 	# Do 3-tier PGO
 	echo "Building instrumented browser..."
-	cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-profile-generate=cross
-END
+	cat >.mozconfig ../mozconfig - <<-END
+		ac_add_options --enable-profile-generate=cross
+	END
 	./mach build
 
 	echo "Profiling instrumented browser..."
 
 	./mach package
-	LLVM_PROFDATA=llvm-profdata \
-		JARLOG_FILE="$PWD/jarlog" \
+	LLVM_PROFDATA=llvm-profdata JARLOG_FILE="$PWD/jarlog" \
 		xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
-		./mach python build/pgo/profileserver.py
+			./mach python build/pgo/profileserver.py
 
 	stat -c "Profile data found (%s bytes)" merged.profdata
 	test -s merged.profdata
@@ -325,7 +316,7 @@ package() {
 	# Desktop
 	install -Dvm755 /dev/stdin "$pkgdir/usr/share/applications/$desktopid.desktop" < <(\
 		sed -e "s|Exec=firefox |Exec=/usr/lib/$_pkgname/$_pkgname --name $desktopid |g" \
-				-e "s|Icon=org.mozilla.firefox|Icon=$desktopid|g" \
+			-e "s|Icon=org.mozilla.firefox|Icon=$desktopid|g" \
 			taskcluster/docker/firefox-flatpak/org.mozilla.firefox.desktop\
 	)
 
