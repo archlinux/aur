@@ -1,7 +1,7 @@
 pkgbase = okular
 	pkgdesc = Document Viewer
 	pkgver = 24.02.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.kde.org/okular/
 	arch = x86_64
 	groups = kde-applications
@@ -49,7 +49,6 @@ pkgbase = okular
 	depends = qt6-svg
 	depends = threadweaver
 	depends = zlib
-	optdepends = calligra: ODT and ODP support
 	optdepends = ebook-tools: mobi and epub support
 	optdepends = kdegraphics-mobipocket: mobi support
 	optdepends = unarchiver: Comic Book Archive support (alternative)
