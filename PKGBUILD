@@ -10,7 +10,7 @@ url="https://github.com/Rosalie241/${_pkgname}"
 license=('GPL3')
 
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("$_pkgname" "rmg-git")
 
 depends=("hidapi" "libsamplerate" "speexdsp" "minizip" "sdl2" "zlib" "freetype2" "qt6-base" "qt6-svg" "xdg-user-dirs")
 makedepends=("git" "pkg-config" "nasm" "cmake" "ninja")
