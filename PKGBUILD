@@ -1,34 +1,31 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pdmaner-bin
 _appname=PDManer
-pkgver=4.9.0
+pkgver=4.9.1
 _electronversion=13
 pkgrel=1
 pkgdesc="A multi operating system open source and free desktop version relational database modeling tool.一款多操作系统开源免费的桌面版关系数据库模型建模工具"
 arch=("x86_64")
 url="http://www.pdmaner.com"
-_downurl="https://github.com/zxp19821005/My_AUR_Files"
+_dlurl="https://github.com/zxp19821005/My_AUR_Files"
 license=("MPL-2.0")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
     'java-runtime'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${_downurl}/releases/download/v${pkgver}/${_appname}-linux_v${pkgver}.AppImage"
+    "${pkgname%-bin}-${pkgver}.AppImage::${_dlurl}/releases/download/${_appname}${pkgver}/${_appname}-linux_v${pkgver}.AppImage"
     "LICENSE-${pkgver}::https://gitee.com/robergroup/pdmaner/raw/master/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2e5817bd8d912fe81c62af357a73ea33947111aace5b191625d63de8a3e75fd3'
+sha256sums=('538a3ac13d660c359434183cfd4650abadd502ea1f0c3f1824682344b1c9e03a'
             '7c91afc2c15fc478de3fc38f2678e560906859da6932f2c03b6bc9076d592d18'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
