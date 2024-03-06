@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com> / ihipop <ihipop at gmail dot com>
 _pkgname=eudic
 pkgname="eusoft-${_pkgname}-bin"
-pkgver=2024.02.04
-pkgrel=3
+pkgver=2024.03.01
+pkgrel=1
 pkgdesc="权威的英语词典软件,英语学习者必备的工具,支持学习笔记、生词本多平台同步,让你随时随地学英语."
 arch=('x86_64')
 url="https://www.eudic.net/v4/en/app/eudic"
@@ -19,6 +19,9 @@ depends=(
     'libthai'
     'fontconfig'
 )
+makedepends=(
+    'fuse2'
+)
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::https://static-main.frdic.com/pkg/eudic.AppImage?v=${pkgver//./-}"
     "LICENSE-${pkgver}.html::https://www.eudic.net/v4/en/home/privacy"
@@ -26,13 +29,13 @@ source=(
 )
 sha256sums=('5b5e107fc99b700bfb519d2ecaf6877bbf117ceee7cc8f784c784e0be8b0a2a3'
             '12ec1b3e4be99eee9c2d5fb55c196d2294c1b112e137927c61f81efb0e308f75'
-            '1c16d8f32224cacd37423b5731c8b4c5e652d18b3109ab649a992a13aca2a3df')
+            '2c777ba40c497000e2d5ba172ccee54dd006e1db2c3626ea2cf47dccd476632e')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    rm -rf "${srcdir}/squashfs-root/"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    rm -rf "${srcdir}/squashfs-root/"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     rm -f  "${srcdir}"*.AppImage
     sed "s|/usr/share/${_pkgname}/AppRun|${pkgname%-bin}|g;s|Icon=com.eusoft.${_pkgname}|Icon=${pkgname%-bin}|g" \
