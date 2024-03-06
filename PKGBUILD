@@ -4,14 +4,14 @@
 
 pkgname=not1mm
 pkgver=24.3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Ham Radio Contest Logger - Blatant ripoff of N1MM - Numbered Release"
 license=('GPL-3.0-only')
 arch=('any')
 url="https://pypi.org/project/not1mm/"
 depends=('python' 'python-pyqt5' 'python-requests' 'python-dicttoxml' 'python-xmltodict' 'python-psutil' \
 	 'python-sounddevice' 'python-soundfile' 'python-numpy' 'python-notctyparser' 'python-pyserial' \
-	 'python-gobject' 'gtk4' 'hamradio-menus')
+	 'python-gobject' 'python-thefuzz' 'gtk4' 'hamradio-menus')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=('hamlib' 'flrig')
 provides=('not1mm')

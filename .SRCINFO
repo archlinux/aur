@@ -1,7 +1,7 @@
 pkgbase = not1mm
 	pkgdesc = Ham Radio Contest Logger - Blatant ripoff of N1MM - Numbered Release
 	pkgver = 24.3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/not1mm/
 	arch = any
 	license = GPL-3.0-only
@@ -20,6 +20,7 @@ pkgbase = not1mm
 	depends = python-notctyparser
 	depends = python-pyserial
 	depends = python-gobject
+	depends = python-thefuzz
 	depends = gtk4
 	depends = hamradio-menus
 	optdepends = hamlib
