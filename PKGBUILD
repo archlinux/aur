@@ -10,7 +10,6 @@ license=('LicenseRef-custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'java-runtime'
     'hicolor-icon-theme'
     'gtk3'
     'alsa-lib'
@@ -23,8 +22,8 @@ source=(
 )
 sha256sums=('b758c1649dac2f4603c7df75e545a0a42cca9e936ad50cf98bbca01970c8e5d9')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.bz2"
-    gendesk -q -f -n --categories "Finance;Utility" --name "${_pkgname}" --exec "${pkgname%-bin}"
+    bsdtar -xf "${srcdir}/data."*
+    gendesk -q -f -n --categories="Finance;Utility" --name="${_pkgname}" --exec="${pkgname%-bin}"
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-bin}",usr/bin}

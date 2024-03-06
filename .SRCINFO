@@ -6,7 +6,6 @@ pkgbase = moneydance-bin
 	arch = x86_64
 	license = LicenseRef-custom
 	makedepends = gendesk
-	depends = java-runtime
 	depends = hicolor-icon-theme
 	depends = gtk3
 	depends = alsa-lib
