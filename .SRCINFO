@@ -1,7 +1,7 @@
 pkgbase = kinda-bard-bin
 	pkgdesc = Google Bard Desktop Application
 	pkgver = 1.0.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.zorbawong.com/
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -12,6 +12,6 @@ pkgbase = kinda-bard-bin
 	source = kinda-bard-1.0.0.deb::https://github.com/zorbajwhk/KindaBard/releases/download/v1.0.0/kinda-bard_1.0.0_amd64.deb
 	source = kinda-bard.sh
 	sha256sums = 01a88b842648036f9034e50ba5c626a33281ae23e4b279bf6aea67dc43aec75c
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = kinda-bard-bin
