@@ -1,16 +1,15 @@
 pkgbase = duckstation-qt-bin
 	pkgdesc = Fast PlayStation 1 emulator for PC and Android
-	pkgver = latest
-	pkgrel = 1
+	pkgver = 0.1.r6292
+	pkgrel = 2
 	url = https://github.com/stenzek/duckstation
 	arch = x86_64
 	license = GPL3
-	makedepends = gendesk
 	provides = duckstation-qt
 	provides = duckstation
-	noextract = duckstation-qt-latest.AppImage
+	noextract = duckstation-qt-0.1.r6292.AppImage
 	options = !strip
-	source = duckstation-qt-latest.AppImage::https://github.com/stenzek/duckstation/releases/download/latest/DuckStation-x64.AppImage
-	sha256sums = SKIP
+	source = duckstation-qt-0.1.r6292.AppImage::https://github.com/stenzek/duckstation/releases/download/latest/DuckStation-x64.AppImage
+	sha256sums = 48126c8dcb4305e1bb4bc1accb851b01fa2e206b573091d3057068385019c9a0
 
 pkgname = duckstation-qt-bin

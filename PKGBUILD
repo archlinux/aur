@@ -1,38 +1,33 @@
 # Creator: Dimitris Kiziridis <ragouel at outlook dot com>
 # Maintainer: Artem Vasilev <artem.vasilev@rwth-aachen.de>
+# Maintainer: gardenapple <mailbox@appl.garden>
 
 pkgname=duckstation-qt-bin
-pkgver=latest
-pkgrel=1
+_pkgname="${pkgname%-bin}"
+_fullname=org.duckstation.DuckStation
+pkgver=0.1.r6292
+pkgrel=2
 pkgdesc="Fast PlayStation 1 emulator for PC and Android"
 arch=('x86_64')
 url='https://github.com/stenzek/duckstation'
 license=('GPL3')
-provides=('duckstation-qt' 'duckstation')
+provides=("$_pkgname" 'duckstation')
 options=('!strip')
-makedepends=('gendesk')
-noextract=("${pkgname%-bin}-${pkgver}.AppImage")
-source=("${pkgname%-bin}-${pkgver}.AppImage::https://github.com/stenzek/duckstation/releases/download/latest/DuckStation-x64.AppImage")
-sha256sums=('SKIP')
+noextract=("${_pkgname}-${pkgver}.AppImage")
+source=("${_pkgname}-${pkgver}.AppImage::https://github.com/stenzek/duckstation/releases/download/latest/DuckStation-x64.AppImage")
+sha256sums=('48126c8dcb4305e1bb4bc1accb851b01fa2e206b573091d3057068385019c9a0')
 
 package() {
-  chmod 755 ./${pkgname%-bin}-${pkgver}.AppImage
-  ./${pkgname%-bin}-${pkgver}.AppImage --appimage-extract
-  install -Dm644 squashfs-root/${pkgname%-bin}.png "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-  gendesk -f -n --pkgname "${pkgname%-bin}" \
-          --pkgdesc "$pkgdesc" \
-          --name "DuckStation-Qt" \
-          --comment "$pkgdesc" \
-          --exec "${pkgname%-bin}" \
-          --categories 'Utility;Game;Application' \
-          --icon "${pkgname%-bin}"
-  install -Dm644 "${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-  install -d "${pkgdir}/usr/bin"
-  install -d "${pkgdir}/opt"
-  cp -avR squashfs-root/ "${pkgdir}/opt/${pkgname%-bin}"
-  echo "#!/usr/bin/env bash
-  cd /opt/${pkgname%-bin}
-  ./AppRun" > ${pkgname%-bin}.sh
-  install -Dm755 ${pkgname%-bin}.sh "${pkgdir}/usr/bin/${pkgname%-bin}"
-  find "${pkgdir}/opt/${pkgname%-bin}" -type d -exec chmod 755 {} +
+	chmod 755 "$srcdir/${_pkgname}-${pkgver}.AppImage"
+	"$srcdir/${_pkgname}-${pkgver}.AppImage" --appimage-extract
+	install -Dm644 "squashfs-root/${_fullname}.png" -t "$pkgdir/usr/share/pixmaps"
+	install -Dm644 "squashfs-root/${_fullname}.desktop" -t "$pkgdir/usr/share/applications"
+	install -d "$pkgdir/opt"
+	cp -avR squashfs-root/ "$pkgdir/opt/$_pkgname"
+	cat <<- EOF > "${_pkgname}.sh"
+		#!/bin/sh
+		cd /opt/$_pkgname && ./AppRun
+	EOF
+	install -Dm755 ${_pkgname}.sh "$pkgdir/usr/bin/$_pkgname"
+	find "$pkgdir/opt/$_pkgname" -type d -exec chmod 755 {} +
 }
