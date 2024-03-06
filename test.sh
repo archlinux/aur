@@ -14,11 +14,11 @@ echo "## check installed files"
 echo
 echo "### check command help"
 
-${pkgname} --help
+${execname} --help
 
 echo
 echo "### check command version"
 
-${pkgname} version
+${execname} version
 
 echo "test OK"
