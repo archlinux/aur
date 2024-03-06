@@ -1,6 +1,6 @@
 pkgbase = bmi160-aya-neo-dkms-git
 	pkgdesc = BMI160 DKMS driver patch for devices with 10EC5280 ACPI ID
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/pastaq/bmi160-aya-neo
 	arch = any
