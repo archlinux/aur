@@ -1,7 +1,7 @@
 pkgbase = 1panel-dev-bin
 	pkgdesc = 1Panel is a modern and open source Linux panel.
-	pkgver = 1.10.1_alpha.4
-	pkgrel = 3
+	pkgver = 1.10.1_alpha.5
+	pkgrel = 1
 	url = https://1panel.cn
 	install = 1panel-dev-bin.install
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = 1panel-dev-bin
 	optdepends = ufw
 	optdepends = firewalld
 	conflicts = 1panel-bin
-	source_x86_64 = 1panel-dev-bin-1.10.1-alpha.4-amd64.tar.gz::https://resource.fit2cloud.com/1panel/package/dev/v1.10.1-alpha.4/release/1panel-v1.10.1-alpha.4-linux-amd64.tar.gz
-	sha256sums_x86_64 = ab89bc6d790dcc88229df53fb46d03d8b8a369b67ce3c4464d93437f43778605
-	source_aarch64 = 1panel-dev-bin-1.10.1-alpha.4-arm64.tar.gz::https://resource.fit2cloud.com/1panel/package/dev/v1.10.1-alpha.4/release/1panel-v1.10.1-alpha.4-linux-arm64.tar.gz
-	sha256sums_aarch64 = c206e658b19dc499f52d90d2a0bb0f333f1cc67bbbdbae98f24d395561cf32d9
+	source_x86_64 = 1panel-dev-bin-1.10.1-alpha.5-amd64.tar.gz::https://resource.fit2cloud.com/1panel/package/dev/v1.10.1-alpha.5/release/1panel-v1.10.1-alpha.5-linux-amd64.tar.gz
+	sha256sums_x86_64 = 21b68b6434bde83045727f150b035ecb002e8166602ff4e0b0ee2836b5cacdcb
+	source_aarch64 = 1panel-dev-bin-1.10.1-alpha.5-arm64.tar.gz::https://resource.fit2cloud.com/1panel/package/dev/v1.10.1-alpha.5/release/1panel-v1.10.1-alpha.5-linux-arm64.tar.gz
+	sha256sums_aarch64 = 366c2d3eb98f4ac167e5dde87c4db4143df72c0ce99b840b14fcd87f616cf006
 
 pkgname = 1panel-dev-bin
