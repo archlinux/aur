@@ -1,12 +1,12 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
-# Contributor: Alexandre Bouvier <contact@amb.tf>
+# Maintainer: Fijxu <fijxu [at] nadeko [dot] net> 
 
-pkgname=yuzu
-pkgver=1706
+_pkgname=suyu
+pkgname=suyu-git
+pkgver=r27058.9cee46b38
 pkgrel=1
-pkgdesc='Nintendo Switch emulator'
+pkgdesc="suyu is the afterlife the world's most popular, open-source, Nintendo Switch emulator"
 arch=(x86_64)
-url=https://yuzu-emu.org/
+url=https://gitlab.com/suyu2/suyu
 license=(GPL3)
 depends=(
   brotli
@@ -50,18 +50,18 @@ makedepends=(
   vulkan-headers
 )
 options=(!debug)
-_tag=3c4c4632dc609a6790c508188dc93b5fdec43ef1
+_tag=d32620fe796f9cd90e8e5660deb0fc8f4decd61f
 source=(
-  git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=${_tag}
+  git+https://gitlab.com/suyu2/suyu.git
   git+https://github.com/arsenm/sanitizers-cmake.git
   git+https://github.com/yhirose/cpp-httplib.git
   git+https://github.com/arun11299/cpp-jwt.git
   git+https://github.com/mozilla/cubeb.git
-  git+https://github.com/MerryMage/dynarmic.git
+  git+https://gitlab.com/suyu2/dynarmic.git
   git+https://github.com/bylaws/libadrenotools.git
-  yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git
+  git+https://gitlab.com/suyu2/mbedtls.git
   git+https://github.com/brofield/simpleini.git
-  yuzu-sirit::git+https://github.com/yuzu-emu/sirit.git
+  git+https://gitlab.com/suyu2/sirit.git
   git+https://github.com/KhronosGroup/SPIRV-Headers.git
   git+https://github.com/eggert/tz.git
   git+https://github.com/lat9nq/tzdb_to_nx.git
@@ -84,16 +84,22 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP')
 
+pkgver() {
+    cd "$srcdir/$_pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 prepare() {
-  cd yuzu-mainline
+  cd "$srcdir/$_pkgname"
+  git submodule init
   git config submodule.cpp-httplib.url "${srcdir}"/cpp-httplib
   git config submodule.cpp-jwt.url "${srcdir}"/cpp-jwt
   git config submodule.cubeb.url "${srcdir}"/cubeb
   git config submodule.dynarmic.url "${srcdir}"/dynarmic
   git config submodule.libadrenotools.url "${srcdir}"/libadrenotools
-  git config submodule.mbedtls.url "${srcdir}"/yuzu-mbedtls
+  git config submodule.mbedtls.url "${srcdir}"/mbedtls
   git config submodule.simpleini.url "${srcdir}"/simpleini
-  git config submodule.sirit.url "${srcdir}"/yuzu-sirit
+  git config submodule.sirit.url "${srcdir}"/sirit
   git config submodule.tzdb_to_nx.url "${srcdir}"/tzdb_to_nx
   git config submodule.VulkanMemoryAllocator.url "${srcdir}"/VulkanMemoryAllocator
   git config submodule.xbyak.url "${srcdir}"/xbyak
@@ -115,17 +121,12 @@ prepare() {
   popd
 }
 
-pkgver() {
-  cd yuzu-mainline
-  git describe --tags | sed 's/.*-//'
-}
-
 build() {
   export CXXFLAGS+=' -Wno-switch'
-  cmake -S yuzu-mainline -B build -G Ninja \
+  cmake -S suyu -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_REPOSITORY=yuzu-emu/yuzu-mainline \
+    -DBUILD_REPOSITORY=suyu2/suyu \
     -DBUILD_TAG=${pkgver} \
     -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
     -DENABLE_QT6=OFF \
@@ -133,8 +134,8 @@ build() {
     -DENABLE_SDL2=ON \
     -DENABLE_WEB_SERVICE=ON \
     -DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
-    -DTITLE_BAR_FORMAT_IDLE="yuzu | ${pkgver} {}" \
-    -DTITLE_BAR_FORMAT_RUNNING="yuzu | ${pkgver} | {}" \
+    -DTITLE_BAR_FORMAT_IDLE="suyu | ${pkgver} {}" \
+    -DTITLE_BAR_FORMAT_RUNNING="suyu | ${pkgver} | {}" \
     -DUSE_DISCORD_PRESENCE=OFF \
     -DYUZU_CHECK_SUBMODULES=OFF \
     -DYUZU_DOWNLOAD_TIME_ZONE_DATA=ON \
@@ -155,7 +156,7 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
-  install -Dm644 yuzu-mainline/dist/72-yuzu-input.rules -t "${pkgdir}"/usr/lib/udev/rules.d/
+  install -Dm644 ${_pkgname}/dist/72-yuzu-input.rules -t "${pkgdir}"/usr/lib/udev/rules.d/
 }
 
 # vim: ts=2 sw=2 et:
