@@ -1,0 +1,78 @@
+From e9ce2fe81ccd79938d6ca83deb7afa5af0425604 Mon Sep 17 00:00:00 2001
+From: Raven Black <ravenblack@dropbox.com>
+Date: Thu, 18 Jan 2024 16:34:15 +0000
+Subject: [PATCH] Patch cel-cpp to not break build
+
+Signed-off-by: Raven Black <ravenblack@dropbox.com>
+---
+ bazel/cel-cpp-memory.patch | 44 ++++++++++++++++++++++++++++++++++++++
+ bazel/repositories.bzl     |  5 ++++-
+ 2 files changed, 48 insertions(+), 1 deletion(-)
+ create mode 100644 bazel/cel-cpp-memory.patch
+
+diff --git a/bazel/cel-cpp-memory.patch b/bazel/cel-cpp-memory.patch
+new file mode 100644
+index 0000000000000..84df54db60b82
+--- /dev/null
++++ b/bazel/cel-cpp-memory.patch
+@@ -0,0 +1,44 @@
++From 09a072b4bb5a75e1df15beba29a9f13b1948ff8b Mon Sep 17 00:00:00 2001
++From: Ivan Prisyazhnyy <john.koepi@gmail.com>
++Date: Thu, 18 Jan 2024 13:55:29 +0000
++Subject: [PATCH] Fix: use of sized deallocation in base/memory.h wo check
++
++Dependant projects that do not use `-fsized-deallocation`
++would not compile with the call to delete(void*, size_t, align).
++
++There are other places that already check for
++`defined(__cpp_sized_deallocation)` and this patch just shares
++this practice.
++
++Testing:
++
++    // fix .bazelrc to have:
++    build --cxxopt=-fno-sized-deallocation
++
++    $ bazel build --verbose_failures //base:\*
++
++Signed-off-by: Ivan Prisyazhnyy <john.koepi@gmail.com>
++---
++ base/memory.h | 8 +++++++-
++ 1 file changed, 7 insertions(+), 1 deletion(-)
++
++diff --git a/base/memory.h b/base/memory.h
++index 3552e19a..c310128a 100644
++--- a/base/memory.h
+++++ b/base/memory.h
++@@ -89,8 +89,14 @@ class Allocator {
++ 
++   void deallocate(pointer p, size_type n) {
++     if (!allocation_only_) {
++-      ::operator delete(static_cast<void*>(p), n * sizeof(T),
+++#if defined(__cpp_sized_deallocation) && __cpp_sized_deallocation >= 201309L
+++      ::operator delete(static_cast<void *>(p), n * sizeof(T),
++                         static_cast<std::align_val_t>(alignof(T)));
+++#else
+++      ::operator delete(static_cast<void *>(p),
+++                        static_cast<std::align_val_t>(alignof(T)));
+++      static_cast<void>(n); // unused
+++#endif
++     }
++   }
++
+diff --git a/bazel/repositories.bzl b/bazel/repositories.bzl
+index aa93c9c838d8a..3220aeb2ecb18 100644
+--- a/bazel/repositories.bzl
++++ b/bazel/repositories.bzl
+@@ -702,7 +702,10 @@ def _com_github_facebook_zstd():
+ def _com_google_cel_cpp():
+     external_http_archive(
+         "com_google_cel_cpp",
+-        patches = ["@envoy//bazel:cel-cpp.patch"],
++        patches = [
++            "@envoy//bazel:cel-cpp.patch",
++            "@envoy//bazel:cel-cpp-memory.patch",
++        ],
+         patch_args = ["-p1"],
+     )
+ 
