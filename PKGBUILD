@@ -4,7 +4,7 @@
 pkgname=soundsense-rs-git
 _pkgname=soundsense-rs
 pkgver=1.5.1.travis.r12.gf701020
-pkgrel=3
+pkgrel=4
 pkgdesc="A Rust version of SoundSense"
 arch=("x86_64")
 url="https://github.com/prixt/${_pkgname}"
@@ -17,6 +17,7 @@ source=("git+https://github.com/prixt/${_pkgname}.git"
 sha256sums=('SKIP'
             'ced141bf8441d271ee610beebe79cdd5bfe287b1d157d79a7c470d0e44673e5f'
             'd427efa76714279f114b3b88dd584dc3b3fe55236c361fbaf09a77358e25afc8')
+options=("!lto")
 
 prepare() {
   patch --directory="${srcdir}/${_pkgname}" --forward --strip=1 --input="${srcdir}/linux_web_fix.patch"
