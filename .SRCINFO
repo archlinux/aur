@@ -1,6 +1,6 @@
 pkgbase = hmcl-bin
 	pkgdesc = A Minecraft Launcher which is multi-functional, cross-platform and popular.
-	pkgver = 3.5.6.239
+	pkgver = 3.5.6.240
 	pkgrel = 1
 	url = https://github.com/huanghongxun/HMCL
 	arch = any
@@ -10,16 +10,16 @@ pkgbase = hmcl-bin
 	depends = java-openjfx
 	provides = hmcl
 	conflicts = hmcl
-	noextract = hmcl-bin-3.5.6.239-1.jar
+	noextract = hmcl-bin-3.5.6.240-1.jar
 	source = hmcl.desktop
 	source = hmcl-launch-script
 	source = craft_table.png
 	source = LICENSE::https://raw.githubusercontent.com/HMCL-dev/HMCL/javafx/LICENSE
-	source = hmcl-bin-3.5.6.239-1.jar::https://github.com/HMCL-dev/HMCL/releases/download/v3.5.6.239/HMCL-3.5.6.239.jar
+	source = hmcl-bin-3.5.6.240-1.jar::https://github.com/HMCL-dev/HMCL/releases/download/v3.5.6.240/HMCL-3.5.6.240.jar
 	sha256sums = 9a561081f8f3ece3da114afd4f6d90565ca0e04716eef4ea88c6b4306566ae9b
 	sha256sums = 26ed30d5c96f645da00780f71f36e43b1b790d81307b8ee8f98e0d065970433d
 	sha256sums = 2989a1b5301b8c7b9afdae5696c6a4e5246afa2d4f1f3d3dad5c192f036a9b4c
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
-	sha256sums = 249baaa4379a11eee1350b714076229e00d2e714d2371e1f856a0fa3d99faa75
+	sha256sums = b67dfecc4f4adf551f707c10ab305ba818ac60e767bf050ece9727a8a4934fb0
 
 pkgname = hmcl-bin
