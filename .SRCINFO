@@ -1,12 +1,12 @@
 pkgbase = movie-rename-bin
 	pkgdesc = A simple tool to rename movies, written in Rust.
-	pkgver = 2.2.2
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/SinTan1729/movie-rename
 	arch = x86_64
 	license = GPL3
 	provides = movie-rename
-	source = movie-rename-2.2.2.tar.gz::https://github.com/SinTan1729/movie-rename/releases/download/2.2.2/movie-rename.tar.gz
-	b2sums = 775856d1dd94b99e6314f5a2e8088687a7c1b539ac91a5f520c9c80501afdbce9232c19de9f10d6a8d2c189ccf109544885fa626bbb7937083bad84820eef555
+	source = movie-rename-2.3.0.tar.gz::https://github.com/SinTan1729/movie-rename/releases/download/2.3.0/movie-rename.tar.gz
+	b2sums = c8d33c7cf0a4a985a991cbc50337ad38a3791eaa259df2c5703f1da0af844233dfeb3082e7c2bc06b8ce292820db18f2c6561dd49adba4a422801af6c29821bb
 
 pkgname = movie-rename-bin
