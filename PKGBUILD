@@ -2,12 +2,12 @@
 
 pkgbase=lightway-core-git
 pkgname=('lightway-core-git' 'lightway-core-doc-git')
-pkgver=1.14.0.r0.g1b7cb4b
+pkgver=1.16.3.r0.g7ce3439
 pkgrel=1
 pkgdesc='A VPN protocol by ExpressVPN (git version)'
 arch=('x86_64')
 url='https://www.expressvpn.com/lightway/'
-license=('GPL2')
+license=('GPL-2.0-or-later')
 makedepends=('git' 'cmake' 'ruby-ceedling' 'doxygen' 'graphviz')
 source=('git+https://github.com/expressvpn/lightway-core.git'
         'git+https://github.com/open-quantum-safe/liboqs.git'
@@ -40,6 +40,7 @@ pkgver() {
 
 build() {
     export CFLAGS+=' -ffat-lto-objects'
+    [ -z "$LC_ALL" ] && export LC_ALL='C'
     cd lightway-core
     ceedling release project:linux
     doxygen
