@@ -6,13 +6,15 @@ pkgname=(
   ${_pkgbase}-git
   ${_pkgbase}-pinyin-git
   ${_pkgbase}-double-pinyin-git
-  ${_pkgbase}-double-pinyin-flypy-git
-  ${_pkgbase}-double-pinyin-mspy-git
   ${_pkgbase}-double-pinyin-abc-git
+  ${_pkgbase}-double-pinyin-mspy-git
+  ${_pkgbase}-double-pinyin-sogou-git
+  ${_pkgbase}-double-pinyin-flypy-git
+  ${_pkgbase}-double-pinyin-ziguang-git
 )
 
 pkgver=r473.c2e02af
-pkgrel=2
+pkgrel=3
 pkgdesc="Rime 配置：雾凇拼音 | 长期维护的简体词库"
 arch=("any")
 url="https://github.com/iDvel/rime-ice"
@@ -38,10 +40,11 @@ prepare() {
 _schemas=(
   rime_ice
   double_pinyin
-  double_pinyin_flypy
-  double_pinyin_mspy
-  double_pinyin_ziguang
   double_pinyin_abc
+  double_pinyin_mspy
+  double_pinyin_sogou
+  double_pinyin_flypy
+  double_pinyin_ziguang
 )
 
 build() {
@@ -51,7 +54,13 @@ build() {
   # 生成各方案的默认配置文件，注释掉所有非当前方案
   # 
   _suggestion_schemas=$(sed -n '/^schema_list:/,/^$/ {/^schema_list:/d; /^\s*#.*$/d; /^$/d; s/.*schema:\s*//g; s/\s*#.*//g; p }' _default.yaml)
-  
+
+  for _suggestion_schema_name in $_suggestion_schemas; do
+    if [[ ! ${_schemas[*]} =~ (^|[[:space:]])"$_suggestion_schema_name"($|[[:space:]]) ]]; then
+      sed -i "s/^\s*- schema: $_suggestion_schema_name .*\$/#&/" _default.yaml;
+    fi
+  done
+
   for _schema_name in "${_schemas[@]}"; do
     cp -f _default.yaml "${_schema_name}.default.yaml"
 
@@ -206,9 +215,11 @@ package_rime-ice-git() {
     # ${_pkgbase}
     ${_pkgbase}-pinyin
     ${_pkgbase}-double-pinyin
-    ${_pkgbase}-double-pinyin-flypy
-    ${_pkgbase}-double-pinyin-mspy
     ${_pkgbase}-double-pinyin-abc
+    ${_pkgbase}-double-pinyin-mspy
+    ${_pkgbase}-double-pinyin-sogou
+    ${_pkgbase}-double-pinyin-flypy
+    ${_pkgbase}-double-pinyin-ziguang
   )
 
   for _schema_name in "${_schemas[@]}"; do
@@ -223,9 +234,11 @@ package_rime-ice-pinyin-git() {
     ${_pkgbase}
     # ${_pkgbase}-pinyin
     ${_pkgbase}-double-pinyin
-    ${_pkgbase}-double-pinyin-flypy
-    ${_pkgbase}-double-pinyin-mspy
     ${_pkgbase}-double-pinyin-abc
+    ${_pkgbase}-double-pinyin-mspy
+    ${_pkgbase}-double-pinyin-sogou
+    ${_pkgbase}-double-pinyin-flypy
+    ${_pkgbase}-double-pinyin-ziguang
   )
 
   _package_schema rime_ice
@@ -238,42 +251,14 @@ package_rime-ice-double-pinyin-git() {
     ${_pkgbase}
     ${_pkgbase}-pinyin
     # ${_pkgbase}-double-pinyin
-    ${_pkgbase}-double-pinyin-flypy
-    ${_pkgbase}-double-pinyin-mspy
     ${_pkgbase}-double-pinyin-abc
+    ${_pkgbase}-double-pinyin-mspy
+    ${_pkgbase}-double-pinyin-sogou
+    ${_pkgbase}-double-pinyin-flypy
+    ${_pkgbase}-double-pinyin-ziguang
   )
  
   _package_schema double_pinyin
-}
-
-package_rime-ice-double-pinyin-flypy-git() {
-  pkgdesc='Rime 配置：雾凇拼音 | 长期维护的简体词库 - 小鹤双拼'
-  provides=(rime-ice-double-pinyin-flypy)
-  conflicts=(
-    ${_pkgbase}
-    ${_pkgbase}-pinyin
-    ${_pkgbase}-double-pinyin
-    # ${_pkgbase}-double-pinyin-flypy
-    ${_pkgbase}-double-pinyin-mspy
-    ${_pkgbase}-double-pinyin-abc
-  )
-
-  _package_schema double_pinyin_flypy
-}
-
-package_rime-ice-double-pinyin-mspy-git() {
-  pkgdesc='Rime 配置：雾凇拼音 | 长期维护的简体词库 - 微软双拼'
-  provides=(rime-ice-double-pinyin-mspy)
-  conflicts=(
-    ${_pkgbase}
-    ${_pkgbase}-pinyin
-    ${_pkgbase}-double-pinyin
-    ${_pkgbase}-double-pinyin-flypy
-    # ${_pkgbase}-double-pinyin-mspy
-    ${_pkgbase}-double-pinyin-abc
-  )
-
-  _package_schema double_pinyin_mspy
 }
 
 package_rime-ice-double-pinyin-abc-git() {
@@ -283,10 +268,80 @@ package_rime-ice-double-pinyin-abc-git() {
     ${_pkgbase}
     ${_pkgbase}-pinyin
     ${_pkgbase}-double-pinyin
-    ${_pkgbase}-double-pinyin-flypy
-    ${_pkgbase}-double-pinyin-mspy
     # ${_pkgbase}-double-pinyin-abc
+    ${_pkgbase}-double-pinyin-mspy
+    ${_pkgbase}-double-pinyin-sogou
+    ${_pkgbase}-double-pinyin-flypy
+    ${_pkgbase}-double-pinyin-ziguang
   )
 
   _package_schema double_pinyin_abc
+}
+
+package_rime-ice-double-pinyin-mspy-git() {
+  pkgdesc='Rime 配置：雾凇拼音 | 长期维护的简体词库 - 微软双拼'
+  provides=(rime-ice-double-pinyin-mspy)
+  conflicts=(
+    ${_pkgbase}
+    ${_pkgbase}-pinyin
+    ${_pkgbase}-double-pinyin
+    ${_pkgbase}-double-pinyin-abc
+    # ${_pkgbase}-double-pinyin-mspy
+    ${_pkgbase}-double-pinyin-sogou
+    ${_pkgbase}-double-pinyin-flypy
+    ${_pkgbase}-double-pinyin-ziguang
+  )
+
+  _package_schema double_pinyin_mspy
+}
+
+package_rime-ice-double-pinyin-sogou-git() {
+  pkgdesc='Rime 配置：雾凇拼音 | 长期维护的简体词库 - 搜狗双拼'
+  provides=(rime-ice-double-pinyin-sogou)
+  conflicts=(
+    ${_pkgbase}
+    ${_pkgbase}-pinyin
+    ${_pkgbase}-double-pinyin
+    ${_pkgbase}-double-pinyin-abc
+    ${_pkgbase}-double-pinyin-mspy
+    # ${_pkgbase}-double-pinyin-sogou
+    ${_pkgbase}-double-pinyin-flypy
+    ${_pkgbase}-double-pinyin-ziguang
+  )
+
+  _package_schema double_pinyin_sogou
+}
+
+package_rime-ice-double-pinyin-flypy-git() {
+  pkgdesc='Rime 配置：雾凇拼音 | 长期维护的简体词库 - 小鹤双拼'
+  provides=(rime-ice-double-pinyin-flypy)
+  conflicts=(
+    ${_pkgbase}
+    ${_pkgbase}-pinyin
+    ${_pkgbase}-double-pinyin
+    ${_pkgbase}-double-pinyin-abc
+    ${_pkgbase}-double-pinyin-mspy
+    ${_pkgbase}-double-pinyin-sogou
+    # ${_pkgbase}-double-pinyin-flypy
+    ${_pkgbase}-double-pinyin-ziguang
+  )
+
+  _package_schema double_pinyin_flypy
+}
+
+package_rime-ice-double-pinyin-ziguang-git() {
+  pkgdesc='Rime 配置：雾凇拼音 | 长期维护的简体词库 - 紫光双拼'
+  provides=(rime-ice-double-pinyin-ziguang)
+  conflicts=(
+    ${_pkgbase}
+    ${_pkgbase}-pinyin
+    ${_pkgbase}-double-pinyin
+    ${_pkgbase}-double-pinyin-abc
+    ${_pkgbase}-double-pinyin-mspy
+    ${_pkgbase}-double-pinyin-sogou
+    ${_pkgbase}-double-pinyin-flypy
+    # ${_pkgbase}-double-pinyin-ziguang
+  )
+
+  _package_schema double_pinyin_ziguang
 }
