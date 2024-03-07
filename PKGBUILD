@@ -18,24 +18,12 @@ url="https://www.dre.vanderbilt.edu/~schmidt/ACE.html"
 license=('LicenseRef-DOC')
 depends=('gcc-libs' 'glibc' 'openssl' 'xerces-c')
 makedepends=('perl')
-provides=(
-    'libACE.so'
-    'libACEXML.so'
-    'libACEXML_Parser.so'
-    'libACEXML_XML_Svc_Conf_Parser.so'
-    'libACE_Compression.so'
-    'libACE_ETCL.so'
-    'libACE_ETCL_Parser.so'
-    'libACE_HTBP.so'
-    'libACE_INet.so'
-    'libACE_INet_SSL.so'
-    'libACE_Monitor_Control.so'
-    'libACE_RLECompression.so'
-    'libACE_RMCast.so'
-    'libACE_SSL.so'
-    'libACE_TMCast.so'
-    'libACE_XML_Utils.so'
-    'libKokyu.so'
+provides=('libACE.so' 'libACEXML.so' 'libACEXML_Parser.so'
+    'libACEXML_XML_Svc_Conf_Parser.so' 'libACE_Compression.so'
+    'libACE_ETCL.so'  'libACE_ETCL_Parser.so' 'libACE_HTBP.so'
+    'libACE_INet.so' 'libACE_INet_SSL.so' 'libACE_Monitor_Control.so'
+    'libACE_RLECompression.so' 'libACE_RMCast.so' 'libACE_SSL.so'
+    'libACE_TMCast.so' 'libACE_XML_Utils.so' 'libKokyu.so'
 )
 
 source=("https://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-${_pkgver}/ACE-src-${pkgver}.tar.gz")
@@ -100,6 +88,26 @@ build() {
     "$ACE_ROOT/bin/mwc.pl" -type gnuace ACE.mwc
     make
 }
+
+# Some of these tests can fail due to network configuration
+# E.g. multicast blocked in firewall
+#check() {
+#    export ACE_ROOT="$srcdir/ACE_wrappers"
+#    export LD_LIBRARY_PATH="$ACE_ROOT/lib:$LD_LIBRARY_PATH"
+#    cd "$ACE_ROOT"
+#
+#    "$ACE_ROOT/bin/auto_run_tests.pl" -Config FIXED_BUGS_ONLY 2>&1 | tee tests.log
+#
+#    local status=0
+#
+#    echo "--- Failed tests:"
+#    if grep "auto_run_tests_finished" tests.log | grep -v "Result:0"; then
+#        status=1
+#    fi
+#    echo "---"
+#
+#    return "$status"
+#}
 
 package() {
     export ACE_ROOT="$srcdir/ACE_wrappers"
