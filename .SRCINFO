@@ -1,0 +1,17 @@
+pkgbase = pauser
+	pkgdesc = 一个开源的检测程序运行算法问题的耗时和内存占用的小工具.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/jswysnemc/ConsolePauserPlusPlus
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = glibc
+	depends = glibc
+	noextract = ConsolePauserPlusPlus.git
+	source = pauser-0.0.1::git+https://github.com/jswysnemc/ConsolePauserPlusPlus.git
+	md5sums = SKIP
+
+pkgname = pauser
