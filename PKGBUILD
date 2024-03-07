@@ -1,32 +1,40 @@
-# Maintainer:  glatavento <glatavento  at outlook dot com>
-# Contributor: sukanka    <su975853527 at gmail   dot com>
-
-pkgname=siyuan-note-bin
-_pkgname=siyuan-note
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Maintainer: bgt <choo-yy at qq dot com>
+# Contributor: glatavento <glatavento  at outlook dot com>
+# Contributor: sukanka <su975853527 at gmail dot com>
+_pkgname=siyuan
+pkgname="${_pkgname}-note-bin"
 pkgver=3.0.2
-pkgrel=1
+_electronversion=28
+pkgrel=2
 pkgdesc="A local-first personal knowledge management system"
 arch=('x86_64')
 url="https://b3log.org/siyuan/"
-license=('AGPL3')
-depends=(electron28)
-optdepends=('pandoc: docx export.')
-provides=($_pkgname)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/siyuan-note/siyuan/releases/download/v${pkgver}/siyuan-${pkgver}-linux.tar.gz"
-"$_pkgname.sh"
-"$_pkgname.desktop")
-sha512sums=('4c2b8008cf1d556a17c82306ac9fdddc5c8fd3e18ea231d0c80c086e090f1aff8be28e06d8b65a379e8c08d634e803697789bdda3a0dd4a4497842d4cf8fa4b9'
-            'ae1f84d9b36e42fc4d374f7adb1191b9158a3633b4a0e5d6dbf4bc2e6a0db499b23d7b2fff2a760e4751e4de5bbc8ac33df13958a153df5e2d67de303f9916d6'
-            '4ca7d777c2dce64d89a874af268773009ba0ebe064c3ce0034913c447666bf6636a3c81d1145579fe1b0b6a35195b1f97b1b4cd56b50e990fb0642c4aae281f0')
-
-package() {
-    cd $srcdir 
-    install -Dm755 ${_pkgname}.sh  ${pkgdir}/usr/bin/${_pkgname}
-    install -Dm644 ${_pkgname}.desktop -t ${pkgdir}/usr/share/applications
-    
-    cd $srcdir/siyuan-${pkgver}-linux
-    install -Dm644 resources/stage/icon.png  ${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png
-    mkdir -p ${pkgdir}/usr/lib
-    mv resources ${pkgdir}/usr/lib/${_pkgname}
+_ghurl="https://github.com/siyuan-note/siyuan"
+license=('AGPL-3.0-only')
+depends=(
+    "electron${_electronversion}"
+)
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
+source=(
+    "${pkgname%-bin}-${pkgver}.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.tar.gz"
+    "${pkgname%-bin}.desktop"
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('1566eabcd0cd75c5260362d37298660208d57225ac5439aeeb4250247ef76cd9'
+            'a8129c198d77a882ce930ccf094ced1d7dc9c0f0c3eca1f204e013bcfae5c8df'
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|app|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
 }
-# vim: ts=2 sw=2 et:
+package() {
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/${_pkgname}-${pkgver}-linux/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}-linux/resources/app/electron/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+}

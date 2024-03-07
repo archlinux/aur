@@ -1,18 +1,18 @@
 pkgbase = siyuan-note-bin
 	pkgdesc = A local-first personal knowledge management system
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://b3log.org/siyuan/
 	arch = x86_64
-	license = AGPL3
+	license = AGPL-3.0-only
 	depends = electron28
-	optdepends = pandoc: docx export.
-	provides = siyuan-note
-	source = siyuan-note-bin-3.0.2.tar.gz::https://github.com/siyuan-note/siyuan/releases/download/v3.0.2/siyuan-3.0.2-linux.tar.gz
-	source = siyuan-note.sh
+	provides = siyuan-note=3.0.2
+	conflicts = siyuan-note
+	source = siyuan-note-3.0.2.tar.gz::https://github.com/siyuan-note/siyuan/releases/download/v3.0.2/siyuan-3.0.2-linux.tar.gz
 	source = siyuan-note.desktop
-	sha512sums = 4c2b8008cf1d556a17c82306ac9fdddc5c8fd3e18ea231d0c80c086e090f1aff8be28e06d8b65a379e8c08d634e803697789bdda3a0dd4a4497842d4cf8fa4b9
-	sha512sums = ae1f84d9b36e42fc4d374f7adb1191b9158a3633b4a0e5d6dbf4bc2e6a0db499b23d7b2fff2a760e4751e4de5bbc8ac33df13958a153df5e2d67de303f9916d6
-	sha512sums = 4ca7d777c2dce64d89a874af268773009ba0ebe064c3ce0034913c447666bf6636a3c81d1145579fe1b0b6a35195b1f97b1b4cd56b50e990fb0642c4aae281f0
+	source = siyuan-note.sh
+	sha256sums = 1566eabcd0cd75c5260362d37298660208d57225ac5439aeeb4250247ef76cd9
+	sha256sums = a8129c198d77a882ce930ccf094ced1d7dc9c0f0c3eca1f204e013bcfae5c8df
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = siyuan-note-bin
