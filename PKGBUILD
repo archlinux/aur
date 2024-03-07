@@ -3,7 +3,7 @@
 pkgname=dbgate-bin
 pkgver=5.2.7
 _electronversion=25
-pkgrel=4
+pkgrel=5
 pkgdesc="Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others. Runs under Windows, Linux, Mac or as web application"
 arch=(
     'aarch64'
@@ -17,12 +17,10 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
+    'hicolor-icon-theme'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux_arm64.AppImage")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux_armv7l.AppImage")
@@ -32,7 +30,7 @@ source=(
 	"${pkgname%-bin}.sh"
 )
 sha256sums=('4ba7d897a31d45781b6bbc0b87e9a241873d61fff657af2f0c54608f652d235b'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 sha256sums_aarch64=('c0f659c4feb350067b29c202656669b3dabb19a9626f6a2df3a51a7116a56a22')
 sha256sums_armv7h=('cc0c7b59475a254bda665b835dcf7f145813f2daa5687dc41e2116b13195fd04')
 sha256sums_x86_64=('75801a25bcd13b1f1073f2c8c048f49c7ebe58eb1162f5105b486a0ce99a8696')
