@@ -3,7 +3,7 @@
 
 pkgname=deepgit
 pkgver=4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to investigate the history of source code."
 arch=('any')
 url="http://www.syntevo.com/deepgit/"
@@ -44,7 +44,7 @@ package() {
 
     # Copy other stuff to /usr/share/$pkgname/
     cd $srcdir/${pkgname}
-    install -m 644 -Dt "$pkgdir/usr/share/$pkgname" changelog.txt known-issues.txt readme-linux.txt
+    install -m 644 -Dt "$pkgdir/usr/share/$pkgname" changelog.txt readme-linux.txt
 
     # Install some icons
     cd "${srcdir}/${pkgname}/bin"

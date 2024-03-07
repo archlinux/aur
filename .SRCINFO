@@ -1,7 +1,7 @@
 pkgbase = deepgit
 	pkgdesc = A tool to investigate the history of source code.
 	pkgver = 4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.syntevo.com/deepgit/
 	arch = any
 	license = custom
