@@ -95,7 +95,7 @@ function execAppUnsafe() {
 		--ro-bind /usr/lib/wechat-uos/license/ /usr/lib/license/ \
 		--setenv QT_QPA_PLATFORM xcb \
 		--setenv LD_LIBRARY_PATH /opt/wechat-beta:/usr/lib/wechat-uos/license \
-		fish #/opt/wechat-beta/wechat
+		/opt/wechat-beta/wechat
 }
 
 function launch() {
