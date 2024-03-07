@@ -23,12 +23,12 @@ prepare() {
 # Create a shortcut
   echo -e "[Desktop Entry]\n\
 Name=RedShiftQt\n\
-Exec=$pkgname\n\
+Exec=redshiftqt\n\
 Icon=redshift\n\
 Terminal=false\n\
 Type=Application\n\
 Categories=Utility;\n\
-Keywords=redshift;filter;eyes" > $pkgname.desktop
+Keywords=redshift;filter;eyes" > redshiftqt.desktop
 }
 
 build() {
