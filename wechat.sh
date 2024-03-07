@@ -74,13 +74,13 @@ function execApp() {
 		--ro-bind /etc /etc \
 		--unshare-all \
 		--share-net \
+		--bind /usr/bin/true /usr/bin/lsblk \
 		--ro-bind /usr/share/wechat-uos/var/ /var/ \
 		--ro-bind /usr/share/wechat-uos/etc/os-release "${osRel}" \
 		--ro-bind /usr/share/wechat-uos/etc/lsb-release /etc/lsb-release \
 		--ro-bind /usr/lib/wechat-uos/license/ /usr/lib/license/ \
 		--ro-bind /usr/lib/snapd-xdg-open/xdg-open /usr/bin/xdg-open \
 		--setenv QT_QPA_PLATFORM xcb \
-		--setenv GTK_USE_PORTAL 1 \
 		--setenv LD_LIBRARY_PATH /opt/wechat-beta:/usr/lib/wechat-uos/license \
 		/opt/wechat-beta/wechat
 }
