@@ -1,7 +1,7 @@
 pkgbase = python-langchain-text-splitters
 	pkgdesc = Building applications with LLMs through composability
 	pkgver = 0.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/langchain-text-splitters
 	arch = any
 	license = MIT
