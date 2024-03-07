@@ -1,7 +1,7 @@
 # Maintainer: XandrCopyrighted (or xxandr, XDR) <xxandrr@proton.me>
 
 pkgname="xfetch-bin"
-pkgver=3.5
+pkgver=3.6
 pkgrel=1
 pkgdesc="A simple fetch written in Rust."
 arch=('any')
