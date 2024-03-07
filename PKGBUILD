@@ -4,7 +4,7 @@ _appname="Rao Pics"
 _pkgname="@acmeelectron"
 pkgver=0.7.16
 _electronversion=20
-pkgrel=4
+pkgrel=5
 pkgdesc="RaoPics help you visit material on any devices, base on Eagle/Billfish/Pixcall and other photos material management apps."
 arch=(
     'aarch64'
@@ -24,7 +24,7 @@ depends=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname// /.}-${pkgver}-linux-arm64-openssl-1.1.x.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname// /.}-${pkgver}-linux-amd64-openssl-1.1.x.deb")
 source=("${pkgname%-bin}.sh")
-sha256sums=('0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+sha256sums=('50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 sha256sums_aarch64=('6e2bd0fdf5133ecd11c66dc069c75955f7e37ae6cfb8fc06a37e0f32913c9d29')
 sha256sums_x86_64=('7b53f1988cdf792b4f46c1f6e52fb28adccd0b95b47058a191f393feeb475c41')
 build() {
@@ -32,7 +32,7 @@ build() {
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_appname}/${_pkgname}\"|${pkgname%-bin}|g;s|${_pkgname}|${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
