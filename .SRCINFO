@@ -1,12 +1,13 @@
 pkgbase = r-goftest
 	pkgdesc = Classical Goodness-of-Fit Tests for Univariate Distributions
 	pkgver = 1.2.3
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=goftest
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	source = https://cran.r-project.org/src/contrib/goftest_1.2-3.tar.gz
-	sha256sums = 3a5f74b6ae7ece5b294781ae57782abe12375d61789c55ff5e92e4aacf347f19
+	md5sums = a0b5ead2181094d4a929708f700a4bdc
+	b2sums = a1b0ae4ff1e930ca59a03c81a605169daafc29dcf5dd31f6392e2be9d0f7178027827c7bdc93f31497e2f3224368b4364bcbb88d93afb86ff8faf12981e91cdb
 
 pkgname = r-goftest
