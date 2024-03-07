@@ -9,7 +9,7 @@ license=('BSD 3-Clause')
 depends=('python')
 
 source=("https://github.com/felipealfonsog/GitSyncMaster/archive/refs/tags/v.${pkgver}.tar.gz")
-sha256sums=('67c6975e1d72a5601074ac0ea4f8c4b57691cead3eecf0140cb89bd91495ed46')
+sha256sums=('a080d08f6eb34f340dd4024a504939d6542756be7a20848d601991d3107d50c2')
 
 prepare() {
   tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
