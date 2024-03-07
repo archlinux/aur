@@ -28,6 +28,12 @@ function manageDirs() {
 	fi
 }
 
+function detectXauth() {
+	if [ ! ${XAUTHORITY} ]; then
+		XAUTHORITY=/dev/null
+	fi
+}
+
 function createWrapIfNotExist() {
 	if [ -d "$@" ]; then
 		return 0
@@ -45,10 +51,7 @@ function inputMethod() {
 	fi
 }
 
-function launch() {
-	inputMethod
-	moeDect
-	echo "Launching WeChat Beta..."
+function execApp() {
 	bwrap \
 		--tmpfs /tmp \
 		--symlink usr/lib /lib \
@@ -76,12 +79,35 @@ function launch() {
 		--ro-bind /usr/share/wechat-uos/etc/os-release "${osRel}" \
 		--ro-bind /usr/share/wechat-uos/etc/lsb-release /etc/lsb-release \
 		--ro-bind /usr/lib/wechat-uos/license/ /usr/lib/license/ \
-		--ro-bind-try /dev/null /sys/dev/block \
 		--ro-bind /usr/lib/snapd-xdg-open/xdg-open /usr/bin/xdg-open \
 		--setenv QT_QPA_PLATFORM xcb \
 		--setenv GTK_USE_PORTAL 1 \
 		--setenv LD_LIBRARY_PATH /opt/wechat-beta:/usr/lib/wechat-uos/license \
 		/opt/wechat-beta/wechat
+}
+
+function execAppUnsafe() {
+	bwrap \
+		--dev-bind / / \
+		--ro-bind /usr/share/wechat-uos/var/ /var/ \
+		--ro-bind /usr/share/wechat-uos/etc/os-release "${osRel}" \
+		--ro-bind /usr/share/wechat-uos/etc/lsb-release /etc/lsb-release \
+		--ro-bind /usr/lib/wechat-uos/license/ /usr/lib/license/ \
+		--setenv QT_QPA_PLATFORM xcb \
+		--setenv LD_LIBRARY_PATH /opt/wechat-beta:/usr/lib/wechat-uos/license \
+		fish #/opt/wechat-beta/wechat
+}
+
+function launch() {
+	detectXauth
+	inputMethod
+	moeDect
+	echo "Launching WeChat Beta..."
+	if [[ ${trashAppUnsafe} = 1 ]]; then
+		execAppUnsafe
+	else
+		execApp
+	fi
 }
 
 manageDirs
