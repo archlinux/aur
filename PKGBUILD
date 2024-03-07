@@ -1,14 +1,16 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
+# Maintainer: Petrov Vlad <petrov.vlad@ya.ru>
 # Contributor: ava1ar <mail(at)ava1ar(dot)info>
 
 pkgname=freelib
-pkgver=6.0.53
+pkgver=6.0.83
 pkgrel=1
 pkgdesc="Freelib is book library manager"
 arch=(x86_64)
 url="https://github.com/petrovvlad/freeLib"
 license=(GPL3)
 depends=(qt6-base qt6-svg qt6-httpserver quazip-qt6)
+optdepends=('kindlegen: convert to EPUB, MOBI, AZW3')
 makedepends=(git cmake)
 source=("git+https://github.com/petrovvlad/freeLib.git#tag=v${pkgver}"
         "git+https://github.com/stachenov/quazip.git"

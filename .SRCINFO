@@ -1,6 +1,6 @@
 pkgbase = freelib
 	pkgdesc = Freelib is book library manager
-	pkgver = 6.0.53
+	pkgver = 6.0.83
 	pkgrel = 1
 	url = https://github.com/petrovvlad/freeLib
 	arch = x86_64
@@ -11,7 +11,8 @@ pkgbase = freelib
 	depends = qt6-svg
 	depends = qt6-httpserver
 	depends = quazip-qt6
-	source = git+https://github.com/petrovvlad/freeLib.git#tag=v6.0.53
+	optdepends = kindlegen: convert to EPUB, MOBI, AZW3
+	source = git+https://github.com/petrovvlad/freeLib.git#tag=v6.0.83
 	source = git+https://github.com/stachenov/quazip.git
 	source = freelib-SmtpClient-for-Qt::git+https://github.com/petrovvlad/SmtpClient-for-Qt.git
 	sha256sums = SKIP
