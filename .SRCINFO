@@ -1,11 +1,11 @@
 pkgbase = heptabase-bin
 	pkgdesc = A visual note-taking tool for learning complex topics.
-	pkgver = 1.29.5
+	pkgver = 1.29.7
 	pkgrel = 1
 	url = https://heptabase.com
 	arch = x86_64
 	license = custom
-	source = https://github.com/heptameta/project-meta/releases/download/v1.29.5/Heptabase-1.29.5.AppImage
-	sha512sums = 232f4443ff92308a028f1ad4849d0d2155f28d6213257d3867e59e34f5897bcd290d6588712c274f203997e5046a50ecd7771a68052b6d34cc36548decdd79e9
+	source = https://github.com/heptameta/project-meta/releases/download/v1.29.7/Heptabase-1.29.7.AppImage
+	sha512sums = 040696bc54de7b9120e045f73112fc83d3cff4cabcd452b1dc44c2eb45b0dfdfc5e280befee8e36495f7c2c90fadd529f45931fce117e75561603166500b5a73
 
 pkgname = heptabase-bin
