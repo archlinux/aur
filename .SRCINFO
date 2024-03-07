@@ -1,7 +1,7 @@
 pkgbase = r-modules
 	pkgdesc = Self Contained Units of Source Code
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=modules
 	arch = any
 	license = MIT
@@ -9,10 +9,10 @@ pkgbase = r-modules
 	optdepends = r-devtools
 	optdepends = r-knitr
 	optdepends = r-lintr
-	optdepends = r-parallel
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/modules_0.13.0.tar.gz
-	sha256sums = 553b42f26627db265de5279f93f4b1f9d141d67e51c8f56b86e86fd6a5b7c7fc
+	md5sums = 3a07ad7260c200f44081628ead32ffbf
+	b2sums = 4e24c748d09d500e46b6c9dfcb5bd21c71b20cf3158974c23d3204f63f596a6dd071e28d8b8a3ddea3ca70834adc13b93728afbb35b42b5d0b907a9c23d21f27
 
 pkgname = r-modules
