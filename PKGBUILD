@@ -1,4 +1,5 @@
 # Maintainer: Mišo Barišić <me@misobarisic.com>
+# Maintainer: Navid Yaghoobi <navidys@fedoraproject.org>
 pkgname="podman-tui"
 pkgver=0.17.0
 pkgrel=1
