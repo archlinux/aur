@@ -2,12 +2,12 @@
 
 pkgname=arrayfire
 pkgver=3.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="High performance software library for parallel computing with an easy-to-use API"
 arch=('x86_64')
 url='https://arrayfire.com'
 license=('BSD')
-depends=('cblas' 'fftw' 'lapacke' 'forge' 'freeimage' 'glfw' 'glew' 'intel-oneapi-mkl' 'intel-oneapi-tbb')
+depends=('cblas' 'fftw' 'lapacke' 'forge' 'freeimage' 'glfw' 'glew' 'intel-oneapi-mkl' 'intel-oneapi-tbb' 'spdlog')
 makedepends=('cmake' 'graphviz' 'doxygen' 'opencl-headers' 'python' 'ocl-icd' 'cuda' 'cudnn' 'git' 'ninja' 'boost')
 optdepends=('cuda: Required for using CUDA backend'
             'nvidia-utils: Required for using CUDA backend'
@@ -16,13 +16,19 @@ optdepends=('cuda: Required for using CUDA backend'
             'ocl-icd: Required for OpenCL ICD Bindings')
 options=('!lto')
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname}-full-${pkgver}.tar.bz2"
-        'arrayfire-boost-1.76.0.patch')
+        'arrayfire-boost-1.76.0.patch'
+        '3451-update-toolkit-driver-cuda-12-4.patch'
+        '3521-fix-build-failure-with-cudnn.patch')
 sha512sums=('731995b8a8783e2fbdf04f9c89b31efc888deaa4046f623b932c2fabd83ea3e8d1d779d17148e01a4b30f2be64ba2d850f556129acff2004e3ecd780227fe025'
-            '92e34c28e4b6222febef5a3047f4faf64756a50b46a68507931b989984bbc6729aa4d1560dc267650f1890cb1ad7aa0866dd3debc0073f9103f764af7618d795')
+            '92e34c28e4b6222febef5a3047f4faf64756a50b46a68507931b989984bbc6729aa4d1560dc267650f1890cb1ad7aa0866dd3debc0073f9103f764af7618d795'
+            '5a4f252278a9a29f3fe61c54512e1246f602fbf61be1c835cbcaf41c2092b3fa8bfe255d77f181fa636da7045e7e69b529d6d81871d149ddcced17a84e868542'
+            'e415c85d41af19a4c896ac196fff84943196d5e5e35362f6b555b08a7446acd0a7c52c723f28a6269ad81bf503cf1abbc72dd8dc128938ba5c89d679cca1f48f')
 
 prepare() {
   cd "${srcdir}/arrayfire-full-v${pkgver}"
   patch -Np1 -i "${srcdir}/arrayfire-boost-1.76.0.patch"
+  patch -Np1 -i "${srcdir}/3451-update-toolkit-driver-cuda-12-4.patch"
+  patch -Np1 -i "${srcdir}/3521-fix-build-failure-with-cudnn.patch"
 }
 
 build() {
@@ -32,7 +38,7 @@ build() {
       -GNinja \
       -Bbuild \
       -DUSE_CPU_MKL=ON \
-      -DGOOGLETEST_VERSION=1.9.0 \
+      -DGOOGLETEST_VERSION=1.14.0 \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_INSTALL_LIBDIR=/usr/lib \
       -DAF_WITH_IMAGEIO=ON \
