@@ -1,24 +1,20 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Marcell Pardavi <marcell.pardavi@gmail.com>
 
-# I saw upstream "closed" the Linux support issue and made the code repository
-# public and open sourced it, so I thought "Yay"!. It turns out that was
-# premature. The issue actually just got migrated and the source is open but
-# still macOS only (builds with Xcode and targets Metal for the UI). So this
-# package isn't going to work yet. That being said now that the source is
-# public I kind of expect it won't take the community *so very long* to help
-# port it to other platforms. As such I'll leave this up and keep working on it
-# for when that actually happens. PKGREL=0 because not-yet-functional.
-
 # git submodules with vendored dependencies
 declare -gA _tags=(
     [protocol]="8645a138fb2ea72c4dab13e739b1f3c9ea29ac84"
 )
 
+# Tests assume access to vulkan video drivers, Wayland window creation,
+# detecting system keymaps, etc. Until their is something sensical for
+# a package to test in the suite, just skip it by default.
+BUILDENV+=(!check)
+
 pkgname=zed-editor
 pkgver=0.126.0
 _pkgver=$pkgver-pre
-pkgrel=0
+pkgrel=1
 pkgdesc='high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
 url=https://zed.dev
