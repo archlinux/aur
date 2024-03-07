@@ -3,7 +3,7 @@
 
 pkgname=uppaal
 pkgver=5.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Verify timed automata models and learn strategies."
 arch=('any')
 options=(debug !strip)
@@ -19,10 +19,10 @@ noextract=("${_zipname}")
 sha512sums=('e7fceddd699ebbe1a0120209bbe59fe7ef61b0c3b671bc453028e46e68310c3e96e3c5be7d9aec8cd5c85d065b3a4c7d6f9c68e7e5578d410efec7a6d9407543')
 
 build() {
-  # determine x11 or wayland
+  # determine x11 or wayland (upstreamed, remove once 5.1.0 is released)
   if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
     # add env vars for wayland fixes
-    prefix="env _JAVA_AWT_WM_NONREPARENTING=1 _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true' "
+    prefix="env _JAVA_AWT_WM_NONREPARENTING=1 "
   else
     prefix=""
   fi
@@ -50,9 +50,9 @@ package() {
 
   # check if latest is newer than $pkgver
   if [[ "$(echo -e "$latest\n$pkgver" | sort -V | tail -n 1)" == "$latest" ]]; then
-    msg2 "Packaging newest stable release: uppaal-$latest"
+    echo "Packaging newest stable release: uppaal-$latest"
   else
-    warning "Newer release available but not yet packaged ($latest > $pkgver). Visit uppaal.org for manual installation instructions if urgent."
+    echo "Newer release available but not yet packaged ($latest > $pkgver). Visit uppaal.org for manual installation instructions if urgent."
   fi
 
   install -dm755 "${pkgdir}"/opt/
@@ -83,11 +83,6 @@ package() {
         install -Dm644 "$xml_mimetype_file" "$mimetype_dir/$(basename "$xml_mimetype_file")"
     fi
   done
-
-  # assoc uppaal mime types with launcher
-  xdg-mime default "${launcher_path}" "application/uppaal-xml"
-  xdg-mime default "${launcher_path}" "application/uppaal-xta"
-  xdg-mime default "${launcher_path}" "application/uppaal-ta" 
 
   # symlink startup script to bin 
   ln -s "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"

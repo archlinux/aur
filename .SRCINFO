@@ -1,7 +1,7 @@
 pkgbase = uppaal
 	pkgdesc = Verify timed automata models and learn strategies.
 	pkgver = 5.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://uppaal.org/
 	arch = any
 	license = custom
