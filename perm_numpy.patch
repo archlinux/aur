@@ -1,0 +1,18 @@
+--- pyproject.toml	2024-03-07 14:12:24.047099532 -0500
++++ pyproject.toml	2024-03-07 14:12:43.137375664 -0500
+@@ -140,7 +140,7 @@
+     "numpy==1.22.4; python_version=='3.9' and platform_python_implementation != 'PyPy'",
+     "numpy==1.22.4; python_version=='3.10' and platform_system=='Windows' and platform_python_implementation != 'PyPy'",
+     "numpy==1.22.4; python_version=='3.10' and platform_system != 'Windows' and platform_python_implementation != 'PyPy'",
+-    "numpy==1.23.3; python_version=='3.11' and platform_python_implementation != 'PyPy'",
++    "numpy>=1.23.3; python_version=='3.11' and platform_python_implementation != 'PyPy'",
+     "numpy>=1.26.0b1; python_version>='3.12'",
+     "numpy; python_version>='3.8' and platform_python_implementation=='PyPy'",
+ ]
+@@ -177,4 +177,4 @@
+ addopts = "--ignore=dipy/testing/decorators.py --ignore-glob='bench*.py' --ignore-glob=**/benchmarks/*"
+ filterwarnings = [
+     'ignore:.*You do not have FURY installed.*:UserWarning',
+-]
+\ No newline at end of file
++]
