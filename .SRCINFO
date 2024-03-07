@@ -1,8 +1,8 @@
 pkgbase = lua-readline
 	pkgdesc = Lua bindings to readline
-	pkgver = 3.2
-	pkgrel = 2
-	url = https://pjb.com.au/comp/lua/readline.html
+	pkgver = 3.3
+	pkgrel = 1
+	url = https://peterbillam.gitlab.io/pjb_lua/lua/readline.html
 	arch = x86_64
 	arch = i686
 	license = MIT
@@ -11,10 +11,10 @@ pkgbase = lua-readline
 	makedepends = lua52
 	makedepends = lua53
 	depends = readline
-	source = https://pjb.com.au/comp/lua/readline-3.2.tar.gz
+	source = readline-3.3.tar.gz
 	source = fix-version.patch
-	sha256sums = 6422e2d260afb7d73199ca64610f05437e571f239cca832de4d86f7d1f5569d6
-	sha256sums = bcca1f722f3a06428ad7b67026e04910de61d8152af0140d4e819db1811e398f
+	sha256sums = 1a3bd8e2229bbaada9b27d23cc3ac4cdf19418a3fc83dd7f4f176588d7520088
+	sha256sums = 0929d18ea10d9523e96eee2ef16cad84e6997898f864bf894e52a6ce9db96967
 
 pkgname = lua-readline
 

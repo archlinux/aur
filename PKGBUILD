@@ -4,15 +4,15 @@ pkgname=(lua-readline lua51-readline lua52-readline lua53-readline)
 _pkgname=readline
 pkgbase=lua-readline
 pkgdesc="Lua bindings to readline"
-pkgver=3.2
-pkgrel=2
+pkgver=3.3
+pkgrel=1
 arch=('x86_64' 'i686')
-url='https://pjb.com.au/comp/lua/readline.html'
+url='https://peterbillam.gitlab.io/pjb_lua/lua/readline.html'
 license=('MIT')
 depends=('readline')
 makedepends=('lua<5.5' 'lua51' 'lua52' 'lua53')
 _archive="${_pkgname}-${pkgver}"
-source=("https://pjb.com.au/comp/lua/${_archive}.tar.gz"
+source=("${_archive}.tar.gz"
 'fix-version.patch')
 
 
@@ -59,5 +59,5 @@ package_lua51-readline() {
 }
 
 
-sha256sums=('6422e2d260afb7d73199ca64610f05437e571f239cca832de4d86f7d1f5569d6'
-'bcca1f722f3a06428ad7b67026e04910de61d8152af0140d4e819db1811e398f')
+sha256sums=('1a3bd8e2229bbaada9b27d23cc3ac4cdf19418a3fc83dd7f4f176588d7520088'
+'0929d18ea10d9523e96eee2ef16cad84e6997898f864bf894e52a6ce9db96967')
