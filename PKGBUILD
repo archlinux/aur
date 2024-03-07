@@ -2,7 +2,7 @@
 # Contributor: Hezekiah Michael <spiritomb at protonmail dot com>
 
 pkgname=firefox-extension-keepassxc-browser
-pkgver=1.9.0
+pkgver=1.9.0.1
 pkgrel=1
 _filename=keepassxc-browser-$pkgver-fx.xpi
 pkgdesc="Official browser plugin for the KeePassXC password manager."
@@ -11,8 +11,8 @@ arch=("any")
 license=("GPL-3.0-only")
 source=($_filename::"https://github.com/keepassxreboot/keepassxc-browser/releases/download/${pkgver}/keepassxc-browser_${pkgver}_firefox.zip")
 noextract=("$_filename")
-sha256sums=('95dba740deabadb8239f796b9cb68af02b4d3f3fa4012464882656ed0a69b9d3')
-b2sums=('5cabc816cb9897e39bc330dfc3d280718cb3cf31fc1edcdf2da4c8160fc5a7405b16721165a5425522422802cf5fa0f0f00927f95a16bad141ca95f33ee36df9')
+sha256sums=('4a8f8a49046707dc478d3d283571c4fa17ae8d24753756429c000d907a682d9d')
+b2sums=('a9b49a28b15081613b34ee3af4dcba789ce2ce50f7c7480506620b9a9790d89e664e0b34fbdfc9244acc904c68d6f1f1a9fbe489371160d903cfd567831ac295')
 
 package() {
     install -Dm644 "$_filename" "$pkgdir"/usr/lib/firefox/browser/extensions/keepassxc-browser@keepassxc.org.xpi
