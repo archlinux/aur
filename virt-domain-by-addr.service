@@ -1,0 +1,12 @@
+[Service]
+Environment="LIBVIRT_DEFAULT_URI=qemu:///system"
+User=vdba
+ExecStart=/usr/bin/virt-domain-by-addr
+Restart=on-failure
+
+[Unit]
+Description=virt-domain-by-addr
+After=network.target
+
+[Install]
+WantedBy=default.target
