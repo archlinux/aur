@@ -4,7 +4,7 @@
 
 pkgname=papis-git
 _pkgname=papis
-pkgver=0.13.r334.g3a4d9d8e
+pkgver=0.13.r353.geef210ac
 pkgrel=1
 pkgdesc="Command-line document and bibliography manager"
 arch=('any')
@@ -45,6 +45,7 @@ optdepends=(
     'papis-zotero: imports from zotero'
     'pdfjs: pdf reader in the web app'
     'python-jinja: jinja formatting'
+    'python-papis-scihub: imports from scihub'
     'python-whoosh: whoosh database backend'
 )
 checkdepends=(
