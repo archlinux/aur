@@ -1,17 +1,16 @@
 pkgbase = nuclia-sync-agent-bin
 	pkgdesc = A small application that runs on your computer and keeps your files in sync with the Nuclia cloud.
-	pkgver = 1.0.8
+	pkgver = 1.0.10
 	pkgrel = 1
 	url = https://github.com/nuclia/sync-agent
 	arch = x86_64
 	license = MIT
 	depends = electron27
-	depends = nodejs
-	provides = nuclia-sync-agent=1.0.8
+	provides = nuclia-sync-agent=1.0.10
 	conflicts = nuclia-sync-agent
-	source = nuclia-sync-agent-1.0.8.deb::https://github.com/nuclia/sync-agent/releases/download/1.0.8/nuclia-sync-agent_1.0.0_amd64.deb
+	source = nuclia-sync-agent-1.0.10.deb::https://github.com/nuclia/sync-agent/releases/download/1.0.10/nuclia-sync-agent_1.0.10_amd64.deb
 	source = nuclia-sync-agent.sh
-	sha256sums = c6c6bbb3f4e946e5525c20ca584b080e54c5d83bc81156e6f36471adfdef64c7
+	sha256sums = cb48fa5cd41064686d91d8b9566497bfd1777f0ef29f0d50a1d01c68e4a2191b
 	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = nuclia-sync-agent-bin
