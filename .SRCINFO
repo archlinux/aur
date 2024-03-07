@@ -1,14 +1,15 @@
 pkgbase = r-deldir
 	pkgdesc = Delaunay Triangulation and Dirichlet (Voronoi) Tessellation
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=deldir
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = gcc-fortran
 	depends = r
 	optdepends = r-polyclip
 	source = https://cran.r-project.org/src/contrib/deldir_2.0-4.tar.gz
-	sha256sums = d418acb28ec3707b6d64c7466d0cefbb49b098537f37558d8f7a5befd34a4653
+	md5sums = dba584ac3a3f26871618d7b2c0d2338a
+	b2sums = b22f62f04473314a44ab329d72c212eceb828615d3c46bbf2529800a1f28c8ebecefa3462f057bf9433978eb641074a960a29031045371fb833466328fe34c44
 
 pkgname = r-deldir
