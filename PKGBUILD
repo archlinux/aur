@@ -2,8 +2,8 @@
 # Maintainer: Patrick Klein <patrick@libklein.com>
 
 pkgname=gurobi
-pkgver=11.0.0
-pkgrel=2
+pkgver=11.0.1
+pkgrel=1
 pkgdesc="State-of-the-art solver for mathematical programming"
 arch=('x86_64')
 url="https://www.gurobi.com/products/gurobi-optimizer"
@@ -21,7 +21,7 @@ source=(
 	"gurobi_setup.m"
 )
 md5sums=(
-	'1978defa7586770aff250c160c105bcd'
+	'e7f6bdc64e47db9bc706bd4bdf30bf6e'
 	'1f34712dbc8df686d987b6bf129811fd'
 	'fde2cef01f075e2d28188576a2639b34')
 

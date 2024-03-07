@@ -1,7 +1,7 @@
 pkgbase = gurobi
 	pkgdesc = State-of-the-art solver for mathematical programming
-	pkgver = 11.0.0
-	pkgrel = 2
+	pkgver = 11.0.1
+	pkgrel = 1
 	url = https://www.gurobi.com/products/gurobi-optimizer
 	arch = x86_64
 	license = custom
@@ -10,10 +10,10 @@ pkgbase = gurobi
 	optdepends = java-environment: Java programming interface support
 	optdepends = mono: .NET programming interface support
 	optdepends = matlab: MATLAB programming interface support, versions 2008b onwards
-	source = https://packages.gurobi.com/11.0/gurobi11.0.0_linux64.tar.gz
+	source = https://packages.gurobi.com/11.0/gurobi11.0.1_linux64.tar.gz
 	source = gurobi.sh
 	source = gurobi_setup.m
-	md5sums = 1978defa7586770aff250c160c105bcd
+	md5sums = e7f6bdc64e47db9bc706bd4bdf30bf6e
 	md5sums = 1f34712dbc8df686d987b6bf129811fd
 	md5sums = fde2cef01f075e2d28188576a2639b34
 
