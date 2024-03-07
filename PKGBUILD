@@ -3,24 +3,25 @@
 _pkgname=iC10TrainingData
 _pkgver=1.3.1
 pkgname=r-${_pkgname,,}
-pkgver=1.3.1
-pkgrel=4
-pkgdesc='Training Datasets for iC10 Package'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Training Datasets for iC10 Package"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('41a2d27f8e41680fd1676a2f3f4cbf51473d7dd6d78c094d12a90c3856acbe9c')
+md5sums=('077ad100c88732bdefae178f52d9074a')
+b2sums=('f5e4c7b7991d228f9b655541c411bfd281cefb01ba1be4159c7cbb3a8c6da9065094b65a5dcfe98119fdc9966a8a534e4efc9c96b0ebe04abf6ea1246daf3ecb')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
