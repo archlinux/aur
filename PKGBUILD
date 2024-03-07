@@ -3,7 +3,7 @@ pkgname=quasar-todo-bin
 _pkgname=Quasar-Todo
 pkgver=0.1.4
 _electronversion=22
-pkgrel=4
+pkgrel=5
 pkgdesc="Playing with Quasar CLI by making a simple to-do list"
 arch=('x86_64')
 url="https://github.com/spenserblack/quasar-todo"
@@ -12,12 +12,9 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
@@ -26,7 +23,7 @@ source=(
 )
 sha256sums=('3f0bb12701d72751f5ad8937e09d9d5c3e0bb9fdfe998af0edb63203cb29d9a4'
             '0cadd467ba2b1f8ad00eb2c55c458c250d6f70a661a0aff1acb905777353c997'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
