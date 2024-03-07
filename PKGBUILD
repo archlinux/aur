@@ -3,7 +3,7 @@
 
 _crate="svg2pdf-cli"
 pkgname="svg2pdf"
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='The command line interface for svg2pdf.'
 url='https://crates.io/crates/svg2pdf-cli'
@@ -12,8 +12,8 @@ license=('Apache' 'MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 
-source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/svg2pdf-cli/0.9.1/download")
-sha512sums=('d73df8dd7715b6dcf7d2a60dee530d0da55af136447b25df81d60e320d69d0ab3da602f5a35650b33b50a0429f8b3dcc924eda95302706e72973f23ff3ec1ef8')
+source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/svg2pdf-cli/0.10.0/download")
+sha512sums=('d8f5c5fe44472fbcccafffb6143d6460c0ded24c4aa2d3a2adbb22ec6ba7734833676dc3da5f2a719b92867540a96cd85161f237275ebed2a97dc2377d3cdc6c')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')

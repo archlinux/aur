@@ -1,6 +1,6 @@
 pkgbase = svg2pdf
 	pkgdesc = The command line interface for svg2pdf.
-	pkgver = 0.9.1
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://crates.io/crates/svg2pdf-cli
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = svg2pdf
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = svg2pdf-cli-0.9.1.tar.gz::https://crates.io/api/v1/crates/svg2pdf-cli/0.9.1/download
-	sha512sums = d73df8dd7715b6dcf7d2a60dee530d0da55af136447b25df81d60e320d69d0ab3da602f5a35650b33b50a0429f8b3dcc924eda95302706e72973f23ff3ec1ef8
+	source = svg2pdf-cli-0.10.0.tar.gz::https://crates.io/api/v1/crates/svg2pdf-cli/0.10.0/download
+	sha512sums = d8f5c5fe44472fbcccafffb6143d6460c0ded24c4aa2d3a2adbb22ec6ba7734833676dc3da5f2a719b92867540a96cd85161f237275ebed2a97dc2377d3cdc6c
 
 pkgname = svg2pdf
