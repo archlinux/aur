@@ -3,15 +3,15 @@
 # Previous Maintainer: Peter Reschenhofer < peterreschenhofer at gmail dot com >
 # Contributor: Familia < carlosfamilia at gmail dot com >
 pkgname=rstudio-server-bin
-pkgver=2023.12.0_369
-pkgrel=3
+pkgver=2023.12.1_402
+pkgrel=1
 pkgdesc="A integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('x86_64')
 license=('GPL')
 url="http://www.rstudio.org/"
 depends=('r>=3.3.0' 'glibc>=2.7' 'libedit' 'psmisc' 'openssl-1.1')
-conflicts=('rstudio-server' 'rstudio-server-git')
-sha256sums=('bd670c4ef1241009a2cc0960ea0e99c8ba44fcc257331505546a1f3c0dee5686'
+conflictss=('rstudio-server' 'rstudio-server-git')
+sha256sums=('64044984a5791690586e21bf4411019ed3dccaf32a69e0838090762f3eba8da0'
             '24b0545aa2a576c7d7480c0ef77d7641e2ebaadae856fd2a18f57871bd25fd88'
             '993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92')
 provides=("rstudio-server=${pkgver}")

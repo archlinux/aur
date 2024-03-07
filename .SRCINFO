@@ -1,7 +1,7 @@
 pkgbase = rstudio-server-bin
 	pkgdesc = A integrated development environment (IDE) for R (binary version from RStudio official website)
-	pkgver = 2023.12.0_369
-	pkgrel = 3
+	pkgver = 2023.12.1_402
+	pkgrel = 1
 	url = http://www.rstudio.org/
 	install = rstudio-server-bin.install
 	arch = x86_64
@@ -11,13 +11,11 @@ pkgbase = rstudio-server-bin
 	depends = libedit
 	depends = psmisc
 	depends = openssl-1.1
-	provides = rstudio-server=2023.12.0_369
-	conflicts = rstudio-server
-	conflicts = rstudio-server-git
-	source = https://download2.rstudio.org/server/focal/amd64/rstudio-server-2023.12.0-369-amd64.deb
+	provides = rstudio-server=2023.12.1_402
+	source = https://download2.rstudio.org/server/focal/amd64/rstudio-server-2023.12.1-402-amd64.deb
 	source = rstudio-server.service
 	source = rstudio
-	sha256sums = bd670c4ef1241009a2cc0960ea0e99c8ba44fcc257331505546a1f3c0dee5686
+	sha256sums = 64044984a5791690586e21bf4411019ed3dccaf32a69e0838090762f3eba8da0
 	sha256sums = 24b0545aa2a576c7d7480c0ef77d7641e2ebaadae856fd2a18f57871bd25fd88
 	sha256sums = 993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92
 
