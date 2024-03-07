@@ -1,7 +1,7 @@
 pkgbase = yocto-nanbield-meta
 	pkgdesc = Yocto Nanbield project build dependencies
-	pkgver = 4.3.2
-	pkgrel = 2
+	pkgver = 4.3.3
+	pkgrel = 1
 	url = https://docs.yoctoproject.org/ref-manual/system-requirements.html#required-packages-for-the-build-host
 	arch = any
 	license = GPL
@@ -15,6 +15,7 @@ pkgbase = yocto-nanbield-meta
 	depends = gcc
 	depends = git
 	depends = glibc-locales
+	depends = inetutils
 	depends = iputils
 	depends = lz4
 	depends = mesa

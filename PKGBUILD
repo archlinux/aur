@@ -1,8 +1,8 @@
 # Maintainer: Jason Carrete <jasoncarrete5@gmail.com>
 
 pkgname=yocto-nanbield-meta
-pkgver=4.3.2
-pkgrel=2
+pkgver=4.3.3
+pkgrel=1
 pkgdesc="Yocto Nanbield project build dependencies"
 arch=('any')
 url="https://docs.yoctoproject.org/ref-manual/system-requirements.html#required-packages-for-the-build-host"
@@ -19,6 +19,7 @@ depends=(
   gcc
   git
   glibc-locales
+  inetutils
   iputils
   lz4
   mesa
