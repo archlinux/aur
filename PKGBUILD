@@ -7,11 +7,11 @@ pkgver=1.14.1
 pkgrel=1
 pkgdesc="A Python package with bindings to the 'Virtual Instrument Software Architecture' VISA library"
 url="https://github.com/pyvisa/pyvisa"
-arch=('any')
 license=('MIT')
+arch=('any')
 depends=('python-distribute' 'python-docutils' 'python-typing_extensions')
-makedepends=('git' 'python-setuptools-scm' 'python-pytest')
 optdepends=('python-pyvisa-py: Pure Python backend')
+makedepends=('git' 'python-setuptools-scm' 'python-pytest')
 source=("git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')
 
@@ -26,7 +26,7 @@ build() {
 
 check(){
   cd pyvisa
-  PYTHONPATH="$srcdir/pyvisa-$pkgver" python -m pytest --pyargs pyvisa --ignore pyvisa/testsuite/test_cmd_line_tools.py
+  PYTHONPATH="$srcdir/pyvisa" python -m pytest --pyargs pyvisa --ignore pyvisa/testsuite/test_cmd_line_tools.py
 }
 
 package(){
