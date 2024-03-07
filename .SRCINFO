@@ -1,6 +1,6 @@
 pkgbase = nvidia-390xx-utils
 	pkgver = 390.157
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
@@ -14,6 +14,7 @@ pkgbase = nvidia-390xx-utils
 	source = kernel-6.4.patch
 	source = kernel-6.5.patch
 	source = kernel-6.6.patch
+	source = kernel-6.8.patch
 	source = kernel-4.16+-memory-encryption.patch
 	b2sums = 8e24aea70b139185bd682b080d32aeda673e6e92b45a90e6f6e0d736674180400bc8bd1aa5c66b8d033fc9d5e0cfffed456a87298bd93a3afbbc30b8dc48c4e9
 	b2sums = c1da4ce5784e43385465913a95053a3e54f800aac6f1b49f33e2a77504d76da5e6db6ec7074fbe7ba5f52dcef9e1ebaa620942c33ff825a56caba5c9c8b0d1be
@@ -24,6 +25,7 @@ pkgbase = nvidia-390xx-utils
 	b2sums = f9ee14546802eb180a650d91cbf7bcaa046afe80a4ac07624a6d2c186db956d9b055c21dd05987b5ad39be205255142c11f73d39fe6f9c7a3d9553f8ac8ad221
 	b2sums = 0d4101e8d55b853613ddf53a4f258beda23c89bb2beb2cede6be7ecb1a35be1a81604363e2367d06e6bcd64ba4424eb7d2766c6468ebb9bb75d06ac2b40edbeb
 	b2sums = 1b0156a4fe7eddcfa549dbb56f892c181fd86ef5897bbf4f81ed1ea68f7bff6e77602083bd2792fc57f790b35a8020c0879695b1e6b1be02d3233fb6f781dc4a
+	b2sums = d7059792166bd0d1fce8f494d869b13e95aefd31af8d626651f5087e87f9c728655d1fbffbc8b6c2e1ee5d9e96f2a3fafadf7a3e06c28bdbfd266319c32c7704
 	b2sums = a8234f542c2324ad698443e3decf7b6eacf3cb420b7aded787f102a8d32b64c2a8d45ea58e37a5e3b6f2f060f0cccd63d3a182065f57c606006d0ff8c7f6bb05
 
 pkgname = nvidia-390xx-utils
