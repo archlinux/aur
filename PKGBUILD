@@ -3,8 +3,8 @@ pkgname=mailspring-bin
 _pkgname=Mailspring
 pkgver=1.13.3
 _electronversion=22
-pkgrel=2
-pkgdesc="A beautiful, fast and fully open source mail client for Mac, Windows and Linux."
+pkgrel=3
+pkgdesc="A beautiful, fast and fully open source mail client."
 arch=('x86_64')
 url="https://getmailspring.com/"
 _ghurl="https://github.com/Foundry376/Mailspring"
@@ -24,13 +24,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('d85e64f3345123ac75110d24f30bc8ab54372e7ae7d913a9fccabe1fb56ace57'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
