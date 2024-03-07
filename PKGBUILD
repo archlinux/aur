@@ -6,7 +6,7 @@ _srcname='mlt'
 pkgbase=$_gitname-git
 pkgname=('mlt-git')
 pkgdesc='Multimedia Framework'
-pkgver=7.16.0.r16.56b1f62f 
+pkgver=7.22.0.r27.30115615 
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/mltframework/${_srcname}" license=('LGPL2.1')
@@ -66,6 +66,8 @@ build(){ 	rm -rf build
 		  -DCMAKE_INSTALL_PREFIX=/usr \
 		  -DMOD_OPENCV=ON \
 		  -DMOD_GLAXNIMATE=ON \
+                  -DMOD_GLAXNIMATE_QT6=ON \
+                  -DMOD_QT6=ON \
 		  -DMOD_MOVIT=ON \
 		  -DSWIG_PYTHON=ON
 #Each swig binding adds another dependency, just adding Python to see how it works, 
