@@ -1,17 +1,17 @@
 # Maintainer: Alcubierre Drive <alcubierre-drive@github>
 pkgname=geo-osm-tiles
 pkgname_cap=Geo-OSM-Tiles
-pkgver=0.02
+pkgver=0.04
 pkgrel=1
 pkgdesc="Utility that enables download of OSM tiles (downloadosmtiles.pl)"
 arch=('any')
-url="https://metacpan.org/release/ROTKRAUT/Geo-OSM-Tiles-0.02/view/downloadosmtiles.pl"
+url="https://metacpan.org/release/ROTKRAUT/Geo-OSM-Tiles-0.04/view/downloadosmtiles.pl"
 license=('Perl')
 #groups=('base-devel')
 depends=('perl')
 makedepends=('make')
 source=("https://cpan.metacpan.org/authors/id/R/RO/ROTKRAUT/${pkgname_cap}-${pkgver}.tar.gz")
-sha512sums=('67c3909a7aa14a3b807e89c163033e716a5026c481734a05a1eda3411e512082f4518845772655f42ee9328bf7242bae3c89e1fbc0258a38f43850aeca6a494b')
+sha512sums=('bdb28b23176dfca07dc0b0bc21adbd7ce75f3dba965c05f920886c254a978ecc40b8ac65e2268f5ffb47d6df1038d59bc0817ccf91d9cdb277ce0492b6ace760')
 
 build() {
     cd "$srcdir/${pkgname_cap}-$pkgver"
