@@ -13,12 +13,12 @@ handle() {
     [[ "$trline" =~ $MAC_REGEX ]] &&
       MAC=$(echo $trline | sed -E "s/$MAC_REGEX/\1/")
   done
- 
+
   domain=$(for name in $(virsh list --name); do virsh domiflist "${name}" | grep -i -q "${MAC}" && echo "${name}" && break; done)
   echo "${domain}"
   ([[ -z "${MAC}" ]] || [[ -z "${domain}" ]]) &&
     domain="-"
-  
+
   RESPONSE="$(cat <<EOF
 HTTP/1.1 200
 Content-Type: text/plain

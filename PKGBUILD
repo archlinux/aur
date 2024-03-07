@@ -2,7 +2,7 @@
 
 pkgname=virt-domain-by-addr
 pkgdesc="A basic server written in shell answering with a libvirt domain name when given a mac"
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 arch=('any')
 url='https://github.com/vbouchaud/aur/tree/main/virt-domain-by-addr'
@@ -21,7 +21,7 @@ source=(
 
 sha256sums=(
     35e3cbe726e28f2f624acbe4fce8af09715e55537df7aa22ac89f00cde399515
-    8cc9675b089121fb8ff1c71b7274568f32839b812c22ca5cccd9530c5c3e4507
+    6a4b8aea5d687fb907d2e1bd55e41d795f43887c28fd7ab929e2d9d55e5d37d2
     b6b86d4cce7774016d03f1ded10d4b37a93e05a7ae2439f03860c5c10beed837
     4e74b7cd4ba113510ce25a249b9143761679b51823002a9d937918245cbbf289
 )
