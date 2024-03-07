@@ -2,7 +2,7 @@
 #
 pkgname=wechat-beta-bwrap
 pkgver=1.0.0.145
-pkgrel=6
+pkgrel=8
 uosver=2.1.5
 epoch=
 pkgdesc="WeChat Testing with bwrap sandbox"
@@ -15,7 +15,7 @@ makedepends=('dpkg')
 source=(
 	wechat.sh
 	wechat-beta.desktop
-	wechat-beta.svg
+	wechat-beta.png
 	license.tar.gz
 	wechat-uos-${uosver}-x86_64.deb::"https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.weixin/com.tencent.weixin_${uosver}_amd64.deb"
 	wechat-beta-${pkgver}.deb::"https://cdn4.cnxclm.com/uploads/2024/03/05/3VDyAc0x_wechat-beta_1.0.0.145_amd64.deb?attname=wechat-beta_${pkgver}_amd64.deb"
@@ -24,7 +24,7 @@ source=(
 noextract=()
 md5sums=('eda5b1524fe570724558ae2eaff4360e'
          '4967385a00db424e596263618335411f'
-         '600e74549ce2258c045d5c2f7689ea63'
+         'cf971cb2cb01d8a5fd89d3a3555abfaf'
          '6b159c6e9d21a98925489bc37a9aea43'
          '27d585e8fc57950ed4f4f3ffc036447f'
          '1da072bd774d1b5c08b9545b409e3fcb')
@@ -47,5 +47,5 @@ package() {
 	echo "Installing stuff in place"
 	install -Dm644 wechat-beta.desktop "${pkgdir}/usr/share/applications/wechat-beta.desktop"
 	install -Dm755 wechat.sh "${pkgdir}/usr/bin/wechat-beta"
-	install -Dm644 wechat-beta.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/wechat-beta.svg"
+	install -Dm644 wechat-beta.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/wechat-beta.png"
 }
