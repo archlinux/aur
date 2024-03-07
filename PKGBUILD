@@ -2,7 +2,7 @@
 pkgname=pad-md
 pkgver=0.6
 _electronversion=24
-pkgrel=3
+pkgrel=4
 pkgdesc="A notepad app for desktop, developed in Electron, with TS/JS, HTML and CSS."
 arch=('any')
 url="https://pad-md-landing-page.vercel.app/"
@@ -25,13 +25,13 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname}.sh"
-    gendesk -f -n -q --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
+    gendesk -f -n -q --categories="Utility" --name="${pkgname}" --exec="${pkgname}"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -39,7 +39,13 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
+    if [ `curl ifconfig.co/country` == "China" ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    fi
     npm install
     npm run build
     npm run package
