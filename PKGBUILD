@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname='wxparaver'
 pkgdesc='Expressive powerful and flexible trace visualizer for post-mortem trace analysis (from BSC).'
-pkgver='4.11.3.20240111'
+pkgver='4.11.4.20240307'
 pkgrel='1'
 arch=('x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
@@ -9,7 +9,7 @@ license=('LGPL2.1')
 depends=(wxwidgets-gtk3 webkit2gtk boost libxml2 zlib)
 source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-${pkgver%.*}-src.tar.bz2"
         "wxParaver.desktop")
-sha512sums=(e705a8516de72e481457ff667096efb34dd9c4cfd3ba3fd128c07ea67543e7b0c802a4fe11bfd50484f802523109bc27b795f9ee86e554d63a0731b9b9b612ad
+sha512sums=(1097aa45ca8b23ef718e13026f32e16d6e1e4c292fcb0e674c0a600f6f89d04a3cb9ff6d7e6c154dfc159701e4d541deb03cb195d289ba34b7c9f2369b6a7b23
             f1b000ea660765bbd454d9ae54d360233389121e54f8bcab241420b42aefa4f679735500efd43afdcd932f3a7bd339f00ff299f755a62163c1c3e34bd6920f6e)
 
 prepare() {
