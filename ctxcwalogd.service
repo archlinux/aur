@@ -1,0 +1,16 @@
+# Service file for Citrix Workspace App Log Writer 
+# Author: Moabeat <moabeat@berlin.de> 
+
+[Unit]
+Description=Citrix Workspace App Log Writer Service
+After=network.target
+
+[Service]
+Type=forking
+Restart=always
+ExecStartPre=mkdir -m 700 -p /var/run/ctxcwalogd
+ExecStart=/opt/Citrix/ICAClient/util/ctxcwalogd
+ExecStopPost=rm -rf /var/run/ctxcwalogd
+
+[Install]
+WantedBy=multi-user.target

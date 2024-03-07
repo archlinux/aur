@@ -1,0 +1,17 @@
+# Service file for Citrix Workspace App USB Forwarding Service
+# Author: Moabeat <moabeat@berlin.de> 
+
+[Unit]
+Description=Citrix Workspace App USB Forwarding Service
+After=udev.service
+Requires=ctxcwalogd.service
+
+[Service]
+Type=forking
+Restart=always
+ExecStartPre=mkdir -m 700 -p /var/run/ctxusbd
+ExecStart=/opt/Citrix/ICAClient/usb/ctxusbd
+ExecStopPost=rm -rf /var/run/ctxusbd
+
+[Install]
+WantedBy=multi-user.target
