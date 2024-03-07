@@ -1,18 +1,18 @@
 pkgbase = eagle-animation-bin
 	pkgdesc = An awesome, free and open-source animation software.
-	pkgver = 2.3.1
-	pkgrel = 5
+	pkgver = 2.4.0
+	pkgrel = 1
 	url = https://brickfilms.com/
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = electron25
+	depends = electron29
 	depends = hicolor-icon-theme
 	depends = nodejs
-	provides = eagle-animation=2.3.1
+	provides = eagle-animation=2.4.0
 	conflicts = eagle-animation
-	source = eagle-animation-2.3.1.deb::https://github.com/brick-a-brack/eagle-animation/releases/download/v2.3.1/eagle-animation-2.3.1-linux.deb
+	source = eagle-animation-2.4.0.deb::https://github.com/brick-a-brack/eagle-animation/releases/download/v2.4.0/eagle-animation-2.4.0-linux.deb
 	source = eagle-animation.sh
-	sha256sums = c394b441cd06bbe775d219a0aa7bf5c7f00e3f1abc4e810bc841e14ffb6b3b2a
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = 1f6f8b4f213a458ac5a24b6927dde5b6a38d8e9a29708b981bd252491dc0ce34
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = eagle-animation-bin
