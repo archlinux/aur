@@ -1,7 +1,7 @@
 # Maintainer: Pouyan Heyratpour <me@pouyan.dev>
 
 pkgname=polywatch-git
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="File change watcher with filter & rate limit feature which run command(s) when file change events happen"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=()
 makedepends=('go' 'goreleaser')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/pouyanh/polywatch/archive/v${pkgver}.tar.gz)
-md5sums=('f4144551a9561be4c3639e30d541529f')
+md5sums=('1741cdd96afd036f2bcdf0f5306520ed')
 provides=('polywatch')
 conflicts=('polywatch')
 
