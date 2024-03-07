@@ -1,0 +1,22 @@
+pkgbase = android-x86-64-libxcrypt
+	pkgdesc = Modern library for one-way hashing of passwords (android)
+	pkgver = 4.4.36
+	pkgrel = 1
+	url = https://github.com/besser82/libxcrypt/
+	arch = any
+	license = LGPL
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/besser82/libxcrypt//releases/download/v4.4.36/libxcrypt-4.4.36.tar.xz
+	source = https://github.com/besser82/libxcrypt//releases/download/v4.4.36/libxcrypt-4.4.36.tar.xz.asc
+	source = 0001-Remove-OBSERVE_MEM.patch
+	validpgpkeys = 678CE3FEE430311596DB8C16F52E98007594C21D
+	sha256sums = e5e1f4caee0a01de2aee26e3138807d6d3ca2b8e67287966d1fefd65e1fd8943
+	sha256sums = SKIP
+	sha256sums = f11770eb92a33e12636a9b4b8acf4310c47865d23a8baa29d7baad5a179b4f09
+
+pkgname = android-x86-64-libxcrypt
