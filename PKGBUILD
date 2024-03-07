@@ -3,7 +3,7 @@
 
 pkgname=docker-credential-secretservice-bin
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Store docker credentials using the D-Bus Secret Service"
 arch=('x86_64' 'aarch64')
 url="https://github.com/docker/docker-credential-helpers"
