@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=hicVennDiagram
-_pkgver=1.0.1
+_pkgver=1.0.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -33,8 +33,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6c8f208d9ee46b9dd61e112e9c9b725e')
-b2sums=('1afbe0ad3938b70817bc55e50d5ab3d25fab2e8bec7ef4dce6931b9f7dbb625db2f3aebb81430cf5dc7670de99c239c87deb6e03763ee89a9e0b26f0a3c2ffe6')
+md5sums=('61651aeae22cb23e4e66b3a7b9d0896f')
+b2sums=('f6e5af8063c103b62b53ff38c80ee2b8441ebf4395bf92a0c42a81d868c738c2f5059ce366438cbac9eae4859b53a3abdcf3b5d39be1da103be3d1b3fa6db52d')
 
 build() {
   mkdir build
