@@ -1,6 +1,6 @@
 pkgbase = auxilium-git
 	pkgdesc = Tool for parse args in many shell (bash, ksh,zsh)
-	pkgver = 0.0.19
+	pkgver = 0.0.20
 	pkgrel = 1
 	url = https://salsa.debian.org/openstack-team/third-party/auxilium
 	arch = any
@@ -8,6 +8,6 @@ pkgbase = auxilium-git
 	makedepends = git
 	provides = auxilium
 	conflicts = auxilium
-	source = auxilium::git+https://salsa.debian.org/openstack-team/third-party/auxilium.git#commit=ec77bcbc9eff22aa0a46772baffc795491c76a3d
+	source = auxilium::git+https://salsa.debian.org/openstack-team/third-party/auxilium.git#commit=e9154f99de138ffb7d389be7f8fd8098126cbca9
 
 pkgname = auxilium-git
