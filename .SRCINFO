@@ -1,15 +1,12 @@
 pkgbase = code-notes-bin
 	pkgdesc = A simple code snippet & gist manager for developers built with Electron & Vue.js
 	pkgver = 1.2.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://lauthieb.github.io/code-notes
 	arch = x86_64
 	license = MIT
-	makedepends = squashfuse
-	depends = electron8
-	depends = dbus-glib
-	depends = libdbusmenu-glib
-	depends = gtk2
+	makedepends = fuse2
+	depends = electron8-bin
 	provides = code-notes=1.2.4
 	conflicts = code-notes
 	source = code-notes-1.2.4.AppImage::https://github.com/lauthieb/code-notes/releases/download/1.2.4/code-notes-1.2.4-x86_64.AppImage
@@ -17,6 +14,6 @@ pkgbase = code-notes-bin
 	source = code-notes.sh
 	sha256sums = 45262ac6118071ec68a750eff6dd5ab7578bbff870a03403a32fa46935b5c47c
 	sha256sums = d292c9f2252858356efe3e4f88cdb6052756a2708ffe12ecb579b7731469ca76
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = code-notes-bin
