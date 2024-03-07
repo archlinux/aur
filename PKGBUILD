@@ -42,7 +42,6 @@ source=('git+https://github.com/mapnik/mapnik.git'
         'mapnik-use-system-sparsehash.patch'
         'git+https://github.com/mapnik/test-data.git')
 sha256sums=('SKIP'
-            '3fcf178e646df526e9a5c278f56ad16e4f75d2f27108e7b33419649a46b92f52'
             'dabb1b99540a6df86b34511d0d94ef505f706419b7e6d1d69314797ebcdce72f'
             'SKIP')
 
