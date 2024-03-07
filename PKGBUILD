@@ -5,7 +5,7 @@ pkgname='python-qh3-bin'
 _pkgname="${pkgname/-bin}"
 _srcname="${_pkgname/python-/}"
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python'
 arch=('x86_64')
 url='https://github.com/jawah/qh3'
@@ -24,12 +24,12 @@ makedepends=(
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-_wheel="qh3-$pkgver-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+_wheel="qh3-$pkgver-pp310-pypy310_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
 source=(
-  "https://files.pythonhosted.org/packages/f7/9e/514e3d4599963406f5920513b8d28b4b7903c9923bc816e998d2c46c2622/$_wheel"
+  "https://files.pythonhosted.org/packages/e6/9a/d04c031212f05ef496fd657f9e56cb2a443fb4adbdcca79cd17f7f5e5790/$_wheel"
 )
 sha256sums=(
-  'af19986f61f86a0d7704f23b6d1944d3123fb6d18b05f5a84fb915b0b4632021'
+  '8ce1dbfb3740b7be8b8d4aa808e1a58b9f87f3041abc6ca6bd0b8d4d6a87e340'
 )
 
 package() {
