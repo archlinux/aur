@@ -1,25 +1,27 @@
 # Maintainer: Jeremy Baxter <jtbx@disroot.org>
 
 pkgname=callisto-git
-pkgver=v0.1.0.r97.g019fea4
+pkgver=0_gitbd664d10c2dee5e772b9bc3beb6a6f4bdc4203ae
 pkgrel=1
 pkgdesc='standalone scripting platform for Lua 5.4'
 arch=('x86_64')
-url='https://github.com/jtbx/callisto'
-makedepends=('git')
-license=('GPL')
+url='https://sr.ht/~jeremy/callisto/'
+depends=(readline)
+makedepends=(git)
+license=(GPL)
 options=('!emptydirs')
-source=("$pkgname::git+https://github.com/jtbx/callisto.git")
+source=("$pkgname::git+https://git.sr.ht/~jeremy/callisto")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$pkgname"
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	printf "0_git"
+	git -C "$pkgname" rev-parse HEAD
 }
 
 build() {
 	cd "$pkgname"
-	make -j$(nproc)
+	./configure -wreadline
+	make
 }
 
 package() {
