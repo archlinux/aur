@@ -289,9 +289,12 @@ _rm_man() {
   mv \
     "${_pkgdir}/usr/share/man/man1/${pkgbase}.1" \
     "${srcdir}" || \
-    true
+    echo \
+      "an error on moving" \
+      "${_pkgdir}/usr/share/man/man1/${pkgbase}.1" \
+      "to ${srcdir}"
   rm \
-    -f \
+    -rf \
     "${_pkgdir}/usr/share/man" || \
     true
   install \
@@ -302,10 +305,42 @@ _rm_man() {
     true
 }
 
-_rm_the_rest_of_grub() {
+_the_rest_of_grub() {
   local \
     _pkgdir="${1}" \
-    _the_rest_of_grub=()
+    _the_rest_of_grub=() \
+    _man_entries=()
+  _man_entries=(
+    grub-editenv
+    grub-file
+    grub-fstest
+    grub-glue-efi
+    grub-kbdcomp
+    grub-menulst2cfg
+    grub-mkfont
+    grub-mkimage
+    grub-mklayout
+    grub-mknetdir
+    grub-mkpasswd-pbkdf2
+    grub-mkrelpath
+    grub-mkrescue
+    grub-mkstandalone
+    grub-mount
+    grub-render-label
+    grub-script-check
+    grub-syslinux2cfg
+  )
+  _man8_entries=(
+    grub-bios-setup.8
+    grub-install.8
+    grub-macbless.8
+    grub-mkconfig
+    grub-ofpathname
+    grub-probe
+    grub-reboot
+    grub-set-default
+    grub-sparc64-setup
+  )
   _the_rest_of_grub=( 
     /etc/grub.d/00_header
     /etc/grub.d/10_linux
@@ -391,74 +426,67 @@ _rm_the_rest_of_grub() {
     /usr/share/locale/en@hebrew/LC_MESSAGES/grub.mo
     /usr/share/locale/en@piglatin/LC_MESSAGES/grub.mo
     /usr/share/locale/en@quot/LC_MESSAGES/grub.mo
-    /usr/share/man/man1/grub-editenv.1.gz
-    /usr/share/man/man1/grub-file.1.gz
-    /usr/share/man/man1/grub-fstest.1.gz
-    /usr/share/man/man1/grub-glue-efi.1.gz
-    /usr/share/man/man1/grub-kbdcomp.1.gz
-    /usr/share/man/man1/grub-menulst2cfg.1.gz
-    /usr/share/man/man1/grub-mkfont.1.gz
-    /usr/share/man/man1/grub-mkimage.1.gz
-    /usr/share/man/man1/grub-mklayout.1.gz
-    /usr/share/man/man1/grub-mknetdir.1.gz
-    /usr/share/man/man1/grub-mkpasswd-pbkdf2.1.gz
-    /usr/share/man/man1/grub-mkrelpath.1.gz
-    /usr/share/man/man1/grub-mkrescue.1.gz
-    /usr/share/man/man1/grub-mkstandalone.1.gz
-    /usr/share/man/man1/grub-mount.1.gz
-    /usr/share/man/man1/grub-render-label.1.gz
-    /usr/share/man/man1/grub-script-check.1.gz
-    /usr/share/man/man1/grub-syslinux2cfg.1.gz
-    /usr/share/man/man8/grub-bios-setup.8.gz
-    /usr/share/man/man8/grub-install.8.gz
-    /usr/share/man/man8/grub-macbless.8.gz
-    /usr/share/man/man8/grub-mkconfig.8.gz
-    /usr/share/man/man8/grub-ofpathname.8.gz
-    /usr/share/man/man8/grub-probe.8.gz
-    /usr/share/man/man8/grub-reboot.8.gz
-    /usr/share/man/man8/grub-set-default.8.gz
-    /usr/share/man/man8/grub-sparc64-setup.8.gz
   )
-  for _each_thing \
-    in "${_the_rest_of_grub}"; do
-    rm \
-      -rf \
-      "${_pkgdir}${_file}" || \
-      true
+  for _cmd in \
+      "${_man1_entries}"; do
+    _to_the_rest_of_grub+=(
+      "/usr/share/man/man1/${_cmd}.1"
+    )
   done
+  for _cmd in \
+      "${_man8_entries}"; do
+    _to_the_rest_of_grub+=(
+      "/usr/share/man/man8/${_cmd}.1"
+    )
+  done
+  echo \
+    "${_the_rest_of_grub[@]}"
 }
 
 _package_grub-emu() {
+  local \
+    _pkgdir="${1}" \
+    _each_thing
   cd \
     "${srcdir}/${pkgbase}"
   echo \
     "Run make install for emu build..."
   make \
-    DESTDIR="${pkgdir}/" \
+    DESTDIR="${_pkgdir}/" \
     bashcompletiondir="/usr/share/bash-completion/completions" \
     install
   echo \
     "Remove gdb debugging related files for emu build..."
   rm \
-    -f \
-    "${pkgdir}/usr/lib/grub/${_EMU_ARCH}-emu"/*.module || \
+    -rf \
+    "${_pkgdir}/usr/lib/grub/${_EMU_ARCH}-emu"/*.module || \
     true
   rm \
-    -f \
-    "${pkgdir}/usr/lib/grub/${_EMU_ARCH}-emu"/*.image || \
+    -rf \
+    "${_pkgdir}/usr/lib/grub/${_EMU_ARCH}-emu"/*.image || \
     true
   rm \
-    -f \
-    "${pkgdir}/usr/lib/grub/${_EMU_ARCH}-emu"/{kernel.exec,gdb_grub,gmodule.pl} || \
+    -rf \
+    "${_pkgdir}/usr/lib/grub/${_EMU_ARCH}-emu"/{kernel.exec,gdb_grub,gmodule.pl} || \
     true
   _rm_man \
-    "${pkgdir}"
+    "${_pkgdir}"
   rm \
-    -f \
-    "${pkgdir}/usr/share/info" || \
+    -rf \
+    "${_pkgdir}/usr/share/info" \
+    "${_pkgdir}/usr/share/man8" \
+    "${_pkgdir}/usr/share/"  || \
     true
-  _rm_the_rest_of_grub \
-    "${pkgdir}"
+  for _each_thing \
+    in $(_the_rest_of_grub); do
+    echo \
+      "deleting ${_pkgdir}${_each_thing}"
+    rm \
+      -rf \
+      "${_pkgdir}${_each_thing}" || \
+      echo \
+        "an error on deleting ${_pkgdir}${_each_thing}"
+  done
 }
 
 package() {
@@ -467,7 +495,8 @@ package() {
   if [[ "${_GRUB_EMU_BUILD}" == "1" ]]; then
     echo \
       "Package grub emu stuff..."
-    _package_grub-emu
+    _package_grub-emu \
+      "${pkgdir}"
   fi
 }
 
