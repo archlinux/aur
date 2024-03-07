@@ -9,7 +9,7 @@ pkgdesc='Minimal dumb-terminal emulation program, very much like minicom. Develo
 url='https://gitlab.com/wsakernel/picocom'
 license=(GPL2)
 source=('git+https://gitlab.com/wsakernel/picocom.git')
-makedepends=(git)
+makedepends=(git pandoc)
 conflicts=(picocom)
 provides=(picocom)
 
