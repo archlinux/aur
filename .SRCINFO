@@ -1,13 +1,14 @@
 pkgbase = r-rmutil
 	pkgdesc = Utilities for Nonlinear Regression and Repeated Measurements Models
 	pkgver = 1.1.10
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=rmutil
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = gcc-fortran
 	depends = r
 	source = https://cran.r-project.org/src/contrib/rmutil_1.1.10.tar.gz
-	sha256sums = 819fd7ce695cc742b4594705986eb06764460fc88521ea32de793c49de7ca5f9
+	md5sums = b7b0dfa56534cab7cc4a8b57bac51317
+	b2sums = 04f850b4698cd3cbb14254b2ae4f376088fe6b7e423320c30a9f8d346c04cdaae9735f0439c3f3344c1d3ab833835a5112668fc7d979484e200e6aea130fecc5
 
 pkgname = r-rmutil
