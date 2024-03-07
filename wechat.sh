@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function launch() {
-	if [ -d "${HOME}/Documents/WeChat_Data" ]; then
+	if [ ! -d "${HOME}/Documents/WeChat_Data" ]; then
 		mkdir -p ${HOME}/Documents/WeChat_Data
 	fi
 	echo "Launching WeChat Beta..."
