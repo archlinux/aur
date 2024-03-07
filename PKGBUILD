@@ -4,14 +4,14 @@ pkgname="${_officalname}-bin"
 _pkgname=SuwellReader
 _appname="cn.${_officalname//-/.}"
 pkgver=3.0.22.0916
-pkgrel=6
+pkgrel=7
 pkgdesc="OFD Reader Professional 3.0 From Suwell .LTD"
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 arch=('x86_64')
 url="https://www.suwell.cn/"
 _downurl="https://com-store-packages.uniontech.com"
-license=('LicenseRef-custom')
+license=('LicenseRef-Proprietary')
 depends=(
     'gtk2'
     'hicolor-icon-theme'
@@ -25,7 +25,7 @@ depends=(
 )
 options=(
     '!strip'
-    'emptydirs'
+    '!emptydirs'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_downurl}/appstore/pool/appstore/c/${_appname}.appstore/${_appname}.appstore_${pkgver}-1_amd64.deb"
@@ -37,7 +37,7 @@ build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed -e "s|/usr/bin/${_officalname//-/}|${pkgname%-bin}|g" \
         -e '/Icon=/d' \
         -e '/serverice/d' \
