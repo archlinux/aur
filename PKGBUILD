@@ -1,6 +1,6 @@
 # Maintainer: <ayedeil at posteo dot com>
 pkgname=bricklink-studio
-pkgver=2.24.1_1
+pkgver=2.24.2_1
 pkgrel=2
 pkgdesc="Lego cad software created by Bricklink"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("$pkgname-$pkgver.exe::https://s3.amazonaws.com/blstudio/Studio2.0/Archi
         "$pkgname.desktop"
         "$pkgname.xml")
 noextract=("$pkgname-$pkgver.exe")
-sha256sums=('b3e5b19682cc8c2cfa0ef40b175b9b25fb29664487c5426fab625b1698ad9351'
+sha256sums=('793b9212d3ba790f5bb34e762980a3c60234861d484f65236fb4f8500930e8b2'
             'a6b6ec21561e2a9594d8ba9e7dc496b819060003eef52a98c474f256da626f24'
             '0751e793784b23635ac722df64954ad8dc2037e53fdffd79ad513ef0e79ab2de'
             '7d3e39b48657b25f93a4e680e4d1473dad004dca8338467028c9aa3dc498326a')
