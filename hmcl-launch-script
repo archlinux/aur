@@ -14,6 +14,6 @@ exec java --module-path "${JAVA_HOME}/lib/javafx.base.jar:${JAVA_HOME}/lib/javaf
 
 else
 
-exec java -jar /usr/share/java/hmcl-bin/hmcl-stable-bin.jar "$@"
+exec java -jar /usr/share/java/hmcl-stable-bin/hmcl-bin.jar "$@"
 
 fi
