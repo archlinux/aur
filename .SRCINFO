@@ -1,36 +1,36 @@
 pkgbase = linux-hardened-versioned-bin
 	pkgdesc = The Security-Hardened Linux kernel and modules | repackaged with a unique package name for each version
-	pkgver = 6.7.6.hardened1
+	pkgver = 6.7.8.hardened1
 	pkgrel = 1
 	url = https://github.com/anthraxx/linux-hardened
 	arch = x86_64
 	license = GPL2
-	noextract = linux-hardened-6.7.6.hardened1-1-x86_64.pkg.tar.zst
-	noextract = linux-hardened-headers-6.7.6.hardened1-1-x86_64.pkg.tar.zst
-	noextract = linux-hardened-docs-6.7.6.hardened1-1-x86_64.pkg.tar.zst
+	noextract = linux-hardened-6.7.8.hardened1-1-x86_64.pkg.tar.zst
+	noextract = linux-hardened-headers-6.7.8.hardened1-1-x86_64.pkg.tar.zst
+	noextract = linux-hardened-docs-6.7.8.hardened1-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://mirror.aarnet.edu.au/pub/archlinux/extra/os/x86_64/linux-hardened-6.7.6.hardened1-1-x86_64.pkg.tar.zst
-	source = https://mirror.aarnet.edu.au/pub/archlinux/extra/os/x86_64/linux-hardened-headers-6.7.6.hardened1-1-x86_64.pkg.tar.zst
-	source = https://mirror.aarnet.edu.au/pub/archlinux/extra/os/x86_64/linux-hardened-docs-6.7.6.hardened1-1-x86_64.pkg.tar.zst
-	sha256sums = 9c0dab128467f3fc1d09f699f9b67a20408bdd2d48fdb8a38896785b73dbec21
-	sha256sums = 2ca7fd0ea2e8f7e1b26b3b410da0c7b069399f71d531e01ed802555a66433b8f
-	sha256sums = 417f87f5646f0c4ea95a8b40df4e376cbc58a94dabf34cda1af6d3f5c097e781
+	source = https://mirror.aarnet.edu.au/pub/archlinux/extra/os/x86_64/linux-hardened-6.7.8.hardened1-1-x86_64.pkg.tar.zst
+	source = https://mirror.aarnet.edu.au/pub/archlinux/extra/os/x86_64/linux-hardened-headers-6.7.8.hardened1-1-x86_64.pkg.tar.zst
+	source = https://mirror.aarnet.edu.au/pub/archlinux/extra/os/x86_64/linux-hardened-docs-6.7.8.hardened1-1-x86_64.pkg.tar.zst
+	sha256sums = 3e5e92a3e2388d9bafeec8d594a90e73167525c270717c2903a811ca82d1f1a1
+	sha256sums = 0f2a8e66dbe954ba526fec9fe86790e24c244a3c253d53fcc8051ef72fe1ec34
+	sha256sums = 8ffab309f96e730c392349ea78de2e65f30a742bd62c6b4af9b3b8daf1068a45
 
 pkgname = linux-hardened-versioned-bin
-	pkgdesc = Metapackage depending on linux6.7.6.hardened1-1-hardened-bin
-	depends = linux6.7.6.hardened1-1-hardened-bin
+	pkgdesc = Metapackage depending on linux6.7.8.hardened1-1-hardened-bin
+	depends = linux6.7.8.hardened1-1-hardened-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-hardened-versioned-headers-bin
-	pkgdesc = Metapackage depending on linux6.7.6.hardened1-1-hardened-headers-bin
-	depends = linux6.7.6.hardened1-1-hardened-headers-bin
+	pkgdesc = Metapackage depending on linux6.7.8.hardened1-1-hardened-headers-bin
+	depends = linux6.7.8.hardened1-1-hardened-headers-bin
 
 pkgname = linux-hardened-versioned-docs-bin
-	pkgdesc = Metapackage depending on linux6.7.6.hardened1-1-hardened-docs-bin
-	depends = linux6.7.6.hardened1-1-hardened-docs-bin
+	pkgdesc = Metapackage depending on linux6.7.8.hardened1-1-hardened-docs-bin
+	depends = linux6.7.8.hardened1-1-hardened-docs-bin
 
-pkgname = linux6.7.6.hardened1-1-hardened-bin
-	pkgdesc = The Security-Hardened Linux kernel and modules, version 6.7.6-hardened1-1-hardened
+pkgname = linux6.7.8.hardened1-1-hardened-bin
+	pkgdesc = The Security-Hardened Linux kernel and modules, version 6.7.8-hardened1-1-hardened
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
@@ -42,11 +42,11 @@ pkgname = linux6.7.6.hardened1-1-hardened-bin
 	provides = WIREGUARD-MODULE
 	conflicts = linux-hardened
 
-pkgname = linux6.7.6.hardened1-1-hardened-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Security-Hardened Linux kernel 6.7.6-hardened1-1-hardened
+pkgname = linux6.7.8.hardened1-1-hardened-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Security-Hardened Linux kernel 6.7.8-hardened1-1-hardened
 	depends = pahole
 	conflicts = linux-hardened-headers
 
-pkgname = linux6.7.6.hardened1-1-hardened-docs-bin
-	pkgdesc = Documentation for the Security-Hardened Linux kernel 6.7.6-hardened1-1-hardened
+pkgname = linux6.7.8.hardened1-1-hardened-docs-bin
+	pkgdesc = Documentation for the Security-Hardened Linux kernel 6.7.8-hardened1-1-hardened
 	conflicts = linux-hardened-docs
