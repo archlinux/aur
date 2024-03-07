@@ -1,9 +1,10 @@
-# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Maintainer: DaarkWel <daarkwel at mail dot ru>
+# Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Arto Puranen <purcher@gmail.com>
 
 pkgname=arno-iptables-firewall
-pkgver=2.1.1
-pkgrel=2
+pkgver=2.1.1_a
+pkgrel=1
 pkgdesc="A secure stateful firewall for both single and multi-homed machine"
 arch=('any')
 url="https://github.com/arno-iptables-firewall/aif/"
@@ -32,11 +33,11 @@ backup=(etc/${pkgname}/firewall.conf
         etc/${pkgname}/plugins/traffic-shaper.conf
         etc/${pkgname}/plugins/transparent-dnat.conf
         etc/${pkgname}/plugins/transparent-proxy.conf)
-source=($pkgname-$pkgver.tar.gz::https://github.com/arno-iptables-firewall/aif/archive/${pkgver}.tar.gz)
-sha256sums=('6f5ae0e671b8ded8eb80efa48d4d0aa50324acde6ffdc4b3d34c7f8cc4fce598')
+source=($pkgname-$pkgver.tar.gz::https://github.com/arno-iptables-firewall/aif/archive/${pkgver//_/}.tar.gz)
+sha256sums=('68aa1f3b22c13bcdb24af71ea5796041f059cecac8d601444cb56133d1d969c9')
 
 package() {
-  cd "${srcdir}"/aif-${pkgver}
+  cd "${srcdir}"/aif-${pkgver//_/}
 
 # conf files
   install -d -m 0755 etc/${pkgname}/plugins/ "${pkgdir}"/etc/${pkgname}/plugins/
@@ -65,7 +66,7 @@ package() {
   install -Dm0644 share/man/man8/${pkgname}.8 "${pkgdir}"/usr/share/man/man8/${pkgname}.8
 
 # systemd script
-  install -Dm0644 "${srcdir}"/aif-${pkgver}/lib/systemd/system/${pkgname}.service \
+  install -Dm0644 "${srcdir}"/aif-${pkgver//_/}/lib/systemd/system/${pkgname}.service \
     "${pkgdir}"/usr/lib/systemd/system/${pkgname}.service
   sed 's|local/s||g' -i "${pkgdir}"/usr/lib/systemd/system/${pkgname}.service
 }

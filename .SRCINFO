@@ -1,7 +1,7 @@
 pkgbase = arno-iptables-firewall
 	pkgdesc = A secure stateful firewall for both single and multi-homed machine
-	pkgver = 2.1.1
-	pkgrel = 2
+	pkgver = 2.1.1_a
+	pkgrel = 1
 	url = https://github.com/arno-iptables-firewall/aif/
 	arch = any
 	license = GPL
@@ -30,8 +30,7 @@ pkgbase = arno-iptables-firewall
 	backup = etc/arno-iptables-firewall/plugins/traffic-shaper.conf
 	backup = etc/arno-iptables-firewall/plugins/transparent-dnat.conf
 	backup = etc/arno-iptables-firewall/plugins/transparent-proxy.conf
-	source = arno-iptables-firewall-2.1.1.tar.gz::https://github.com/arno-iptables-firewall/aif/archive/2.1.1.tar.gz
-	sha256sums = 6f5ae0e671b8ded8eb80efa48d4d0aa50324acde6ffdc4b3d34c7f8cc4fce598
+	source = arno-iptables-firewall-2.1.1_a.tar.gz::https://github.com/arno-iptables-firewall/aif/archive/2.1.1a.tar.gz
+	sha256sums = 68aa1f3b22c13bcdb24af71ea5796041f059cecac8d601444cb56133d1d969c9
 
 pkgname = arno-iptables-firewall
-
