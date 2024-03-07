@@ -1,0 +1,14 @@
+pkgbase = gtk-theme-e17gtk-revolved-git
+	pkgdesc = A dark GTK2/GTK3 theme with sharp corners, which is designed for use in Enlightenment and gives the elegant look of Enlightenment to GTK widgets - Revolved version.
+	pkgver = 2217140
+	pkgrel = 1
+	url = https://git.disroot.org/eudaimon/E17gtk-revolved.git
+	arch = any
+	license = GPL
+	makedepends = git
+	optdepends = enlightenment
+	optdepends = qt5-styleplugins: GTK+ rendering for QT5
+	source = git+https://git.disroot.org/eudaimon/E17gtk-revolved
+	md5sums = SKIP
+
+pkgname = gtk-theme-e17gtk-revolved-git
