@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=woterm-bin
 _pkgname=WoTerm
-pkgver=9.30.2
-_releasedate=202402030755
+pkgver=9.30.4
+_releasedate=202403031942
 pkgrel=1
 pkgdesc="支持常见的主流通迅协议SSH1/SSH2/SFTP/TELNET/RLOGIN/RDP/VNC/SHELL/SERIALPORT/TCP/UDP的一个跨平台工具."
 arch=("x86_64")
@@ -31,13 +31,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.tar.gz::https://down.woterm.com/linux/${pkgname%-bin}-linux-${CARCH}-v${pkgver}-${_releasedate}.tar.gz"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('446df854a6a378c7e6e1f9b46eb1a2704b04465522d5932e04eaac6ae14ef431'
-            '7de029b4d6976d338ac2b2a7151d32457423367bd346d58130bc5d10b4d99331')
+sha256sums=('7448cf1be61436cba1fcd2e4213d4ef2e7545b0279c595bec86155eceddb618b'
+            '4147d53c8a3b51d7f1acab9fc8b9a94ca377c54c7fabf18d81dfe2b1884f6fe3')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-bin} --no-sandbox %U"
+    gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} --no-sandbox %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
