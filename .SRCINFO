@@ -1,7 +1,7 @@
 pkgbase = chugins-git
 	pkgdesc = Repository for ChuGins (to use with chuck)
 	pkgver = chuck.1.5.2.1.r2.gebc3223
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ccrma/chugins
 	arch = i686
 	arch = x86_64
