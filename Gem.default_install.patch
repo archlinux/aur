@@ -1,4 +1,4 @@
-From 37d2b35146c79f9af72dfaa47ccf6af7fab3d584 Mon Sep 17 00:00:00 2001
+From 13fd35c291eee7dde9628b8923cc2a7d6853a1ef Mon Sep 17 00:00:00 2001
 From: Felipe Contreras <felipe.contreras@gmail.com>
 Date: Thu, 20 May 2021 16:26:25 -0500
 Subject: [PATCH] Add Gem.default_install
@@ -40,14 +40,15 @@ Signed-off-by: Felipe Contreras <felipe.contreras@gmail.com>
 ---
  lib/rubygems/defaults.rb       |  7 +++++++
  lib/rubygems/path_support.rb   |  2 +-
+ test/rubygems/helper.rb        |  2 ++
  test/rubygems/test_rubygems.rb | 16 ++++++++++++++++
- 3 files changed, 24 insertions(+), 1 deletion(-)
+ 4 files changed, 26 insertions(+), 1 deletion(-)
 
 diff --git a/lib/rubygems/defaults.rb b/lib/rubygems/defaults.rb
-index 4806ea6469..b7254937d2 100644
+index 1bd208feb9..6b261a9412 100644
 --- a/lib/rubygems/defaults.rb
 +++ b/lib/rubygems/defaults.rb
-@@ -8,6 +8,13 @@ module Gem
+@@ -9,6 +9,13 @@ module Gem
    @pre_uninstall_hooks  ||= []
    @pre_install_hooks    ||= []
  
@@ -55,30 +56,50 @@ index 4806ea6469..b7254937d2 100644
 +  # Determines the default install directory
 +
 +  def self.default_install
-+    Gem.default_dir
++    @default_install ||= Gem.default_dir
 +  end
 +
    ##
    # An Array of the default sources that come with RubyGems
  
 diff --git a/lib/rubygems/path_support.rb b/lib/rubygems/path_support.rb
-index d601e653c9..f8a1a0d783 100644
+index 13091e29ba..455f413f3d 100644
 --- a/lib/rubygems/path_support.rb
 +++ b/lib/rubygems/path_support.rb
-@@ -23,7 +23,7 @@ class Gem::PathSupport
+@@ -24,7 +24,7 @@ class Gem::PathSupport
    # hashtable, or defaults to ENV, the system environment.
    #
    def initialize(env)
--    @home = env["GEM_HOME"] || Gem.default_dir
-+    @home = env["GEM_HOME"] || Gem.default_install
+-    @home = normalize_home_dir(env["GEM_HOME"] || Gem.default_dir)
++    @home = normalize_home_dir(env["GEM_HOME"] || Gem.default_install)
+     @path = split_gem_path env["GEM_PATH"], @home
  
-     if File::ALT_SEPARATOR
-       @home = @home.gsub(File::ALT_SEPARATOR, File::SEPARATOR)
+     @spec_cache_dir = env["GEM_SPEC_CACHE"] || Gem.default_spec_cache_dir
+diff --git a/test/rubygems/helper.rb b/test/rubygems/helper.rb
+index ed9e34a906..2739847376 100644
+--- a/test/rubygems/helper.rb
++++ b/test/rubygems/helper.rb
+@@ -375,6 +375,7 @@ def setup
+       @orig_default_gem_home = RbConfig::CONFIG["default_gem_home"]
+       RbConfig::CONFIG["default_gem_home"] = @gemhome
+     else
++      Gem.instance_variable_set(:@default_install, @gemhome)
+       Gem.instance_variable_set(:@default_dir, @gemhome)
+     end
+ 
+@@ -466,6 +467,7 @@ def teardown
+     if Gem.java_platform?
+       RbConfig::CONFIG["default_gem_home"] = @orig_default_gem_home
+     else
++      Gem.instance_variable_set :@default_install, nil
+       Gem.instance_variable_set :@default_dir, nil
+     end
+ 
 diff --git a/test/rubygems/test_rubygems.rb b/test/rubygems/test_rubygems.rb
-index 8bd116646f..5f539dc598 100644
+index ec195b65cd..385c204ce2 100644
 --- a/test/rubygems/test_rubygems.rb
 +++ b/test/rubygems/test_rubygems.rb
-@@ -49,6 +49,22 @@ def self.default_dir
+@@ -51,6 +51,22 @@ def self.default_dir
      end
    end
  
@@ -102,5 +123,5 @@ index 8bd116646f..5f539dc598 100644
  
    def util_install_operating_system_rb(content)
 -- 
-2.39.2
+0.1
 
