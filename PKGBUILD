@@ -30,18 +30,25 @@ noextract=(
   "${_pkgbase}-${pkgver}.tgz"
 )
 sha512sums=(
-  '665cc138b30bd501a59ba256c95006f25553100a0e6959b58a7fd1536ce81809d81280f5469e13f9932facb3611da69e4bd85f8c9d6025405f883af8731fa1b5'
+  'f039490152431151da575b21f452ee28b2e0085bfd10027e33ef086e34883e0a1e368decb392f51e018131f9c8f3c73b3b330466475cbb21a8a1b15e2b73abab'
 )
 
 package() {
+  cd \
+    "${pkgdir}"
+  local \
+    _npm_options=()
+  _npm_options=(
+    -g
+    # --user
+    #   root
+    --prefix
+      "${pkgdir}/usr"
+  )
   npm \
     install \
-      -g \
-      --user \
-        root \
-      --prefix \
-        "${pkgdir}/usr" \
-	"${srcdir}/${_pkgbase}-${pkgver}.tgz"
+      "${_npm_options[@]}" \
+      "${srcdir}/${_pkgbase}-${pkgver}.tgz"
   rm \
     -fr \
     "${pkgdir}/usr/etc"
