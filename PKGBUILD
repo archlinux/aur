@@ -3,12 +3,12 @@
 _pkgname=yaImpute
 _pkgver=1.0-34
 pkgname=r-${_pkgname,,}
-pkgver=1.0.34
-pkgrel=1
-pkgdesc='Nearest Neighbor Observation Imputation and Evaluation Tools'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Nearest Neighbor Observation Imputation and Evaluation Tools"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
@@ -17,19 +17,19 @@ optdepends=(
   r-fastica
   r-gam
   r-gower
-  r-parallel
   r-randomforest
   r-vegan
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b4c898c95fca784480bbbc239c78c85dc9f45a96c34c563ea7e81248ef8a8a73')
+md5sums=('d4e6899077278d5386b0063a2d4be696')
+b2sums=('6b21c59b068a7efbc76c5f490d820b1e0f5dfce428ee155a10e33705ec617384740f883a2d6215c66901649af585706b36b84d87add7043b8a2705b53a2647b8')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
