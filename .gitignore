@@ -1,0 +1,6 @@
+src/
+pkg/
+
+supergfxctl-plasmoid-v*.tar.gz
+plasma6-applets-supergfxctl-*.pkg.tar.zst
+
