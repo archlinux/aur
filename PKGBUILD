@@ -1,5 +1,5 @@
 pkgname=('flang')
-pkgver=16.0.6
+pkgver=17.0.6
 pkgrel=1
 pkgdesc="ground-up implementation of a Fortran front end written in modern C++"
 arch=('x86_64')
@@ -13,15 +13,16 @@ _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkg
 source=($_source_base/flang-$pkgver.src.tar.xz{,.sig}
         $_source_base/cmake-$pkgver.src.tar.xz{,.sig}
         $_source_base/clang-$pkgver.src.tar.xz{,.sig})
-sha256sums=('0a15d253d0d81c6f4619cd834f7a934e6ae69cfc74eeed9ba3c8372648253017'
+sha256sums=('ca3bececb1ca31b993cdf837d2305e4c9af3b6c7acc93d8a2813cb6619d7640b'
             'SKIP'
-            '39d342a4161095d2f28fb1253e4585978ac50521117da666e2b1f6f28b62f514'
+            '807f069c54dc20cb47b21c1f6acafdd9c649f3ae015609040d6182cab01140f4'
             'SKIP'
-            '1186b6e6eefeadd09912ed73b3729e85b59f043724bb2818a95a2ec024571840'
+            'a78f668a726ae1d3d9a7179996d97b12b90fb76ab9442a43110b972ff7ad9029'
             'SKIP')
 
 prepare() {
-  sed -i "20iFIROptCodeGenPassIncGen" flang-$pkgver.src/lib/Frontend/CMakeLists.txt
+  # https://github.com/llvm/llvm-project/issues/54128
+  curl -L https://github.com/llvm/llvm-project/pull/71691.patch | patch -p2 -d flang-$pkgver.src
 }
 
 build() {
