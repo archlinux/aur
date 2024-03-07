@@ -2,7 +2,7 @@
 # Contributor: Sid Karunaratne <sid at karunaratne dot net>
 pkgname=weevely
 _pkgname=weevely3
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="a stealth PHP web shell that provides a telnet-like console"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/epinna/weevely3"
 license=('GPL3')
 depends=(python python-dateutil python-mako python-prettytable python-pyopenssl python-yaml python-pysocks)
 source=("https://github.com/epinna/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('79d09044960a461e9ff3d92a0517904af61ef50cc8018127aa4de60016af114a')
+sha256sums=('2bdad7efd59d3854b50b7c41f8a8a864b7ec36de8c6f343d32f258680dd1aef8')
 
 build() {
   cd ${_pkgname}-${pkgver}

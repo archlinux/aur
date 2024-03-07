@@ -1,6 +1,6 @@
 pkgbase = weevely
 	pkgdesc = a stealth PHP web shell that provides a telnet-like console
-	pkgver = 4.0.1
+	pkgver = 4.0.2
 	pkgrel = 1
 	url = https://github.com/epinna/weevely3
 	arch = any
@@ -12,8 +12,7 @@ pkgbase = weevely
 	depends = python-pyopenssl
 	depends = python-yaml
 	depends = python-pysocks
-	source = https://github.com/epinna/weevely3/archive/v4.0.1.tar.gz
-	sha256sums = 79d09044960a461e9ff3d92a0517904af61ef50cc8018127aa4de60016af114a
+	source = https://github.com/epinna/weevely3/archive/v4.0.2.tar.gz
+	sha256sums = 2bdad7efd59d3854b50b7c41f8a8a864b7ec36de8c6f343d32f258680dd1aef8
 
 pkgname = weevely
-
