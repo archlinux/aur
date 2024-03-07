@@ -1,0 +1,24 @@
+pkgbase = plattenalbum-git
+	pkgdesc = Browse music with MPD
+	pkgver = 2.0.0.r0.g9cf9d8f
+	pkgrel = 1
+	url = https://github.com/SoongNoonien/plattenalbum
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = gettext
+	makedepends = glib2
+	depends = python-mpd2>=3.1
+	depends = gtk4
+	depends = python-gobject
+	depends = libadwaita
+	provides = plattenalbum
+	provides = mpdevil
+	provides = mpdevil-git
+	conflicts = plattenalbum
+	conflicts = mpdevil-git
+	source = git+https://github.com/SoongNoonien/plattenalbum.git
+	md5sums = SKIP
+
+pkgname = plattenalbum-git
