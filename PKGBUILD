@@ -3,21 +3,18 @@
 _base=fenicsprecice
 pkgname=python-${_base}
 pkgdesc="FEniCS-preCICE adapter is a preCICE adapter for the open source computing platform FEniCS"
-pkgver=1.4.0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 arch=(any)
 url="https://github.com/precice/${_base/precice/-adapter}"
-license=(LGPL3)
+license=(LGPL-3.0-or-later)
 depends=(python-pyprecice python-dolfin python-scipy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${_base/precice/-adapter}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('ee5c50fbff18242e9bbee4cdf5a80a2b870c4e96c0f689838a926f33cfb08960a8300b3d8821d55f62ecf9cf8b8a78bd8e3ed9ef5338644240deec61e075e193')
+sha512sums=('e8565bf42aa2adb6adbff6741bdf1acc1ae9042288f1032b0af11153b2092a4a9faeb9dcbdbd8045669cf0a4a42ae5f539f3ce3befdd6d1bfe84dc37011c2b0c')
 
 build() {
-  if [ -z "$(ldconfig -p | grep libcuda.so.1)" ]; then
-    export OMPI_MCA_opal_warn_on_missing_libcuda=0
-  fi
   cd ${_base/precice/-adapter}-${pkgver}
   python -m build --wheel --skip-dependency-check --no-isolation
 }
