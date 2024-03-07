@@ -3,7 +3,7 @@ pkgname=graphiql-desktop-bin
 _appname=GraphiQL
 pkgver=0.1.0
 _electronversion=21
-pkgrel=4
+pkgrel=6
 pkgdesc="Electron-based desktop application for GraphiQL 2"
 arch=('x86_64')
 url="https://github.com/nathanchapman/graphiql-desktop"
@@ -12,13 +12,10 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
     'hicolor-icon-theme'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage"
@@ -27,7 +24,7 @@ source=(
 )
 sha256sums=('ca8f455113f5d6e571fb35e30cd4b5747f6325e44203b37a309c180cebca3e2c'
             'bd3a1e3d2fbd88a32174e4a111d32b4c02d526642392e06ac9b2a77b89781492'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
