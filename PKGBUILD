@@ -3,7 +3,7 @@
 # Contributor: Jimmy Stelzer <jimmy dot stelzer at gmail dot com>
 # Contributor: Mikołaj Chwalisz <chwalisz at tkn.tu-berlin dot de>
 pkgname=uniflash
-pkgver=8.4.0.4458
+pkgver=8.6.0.4688
 pkgrel=1
 pkgdesc="Universal Flash Programmer for Texas Instruments devices. Provides a single interface for programming Flash memory and executing Flash based operations on supported targets."
 arch=('i686' 'x86_64')
@@ -17,11 +17,11 @@ depends=(
 optdepends=(
 	'python2: The SimpleLink CC31xx/CC32xx families require Python2.7'
 )
-source=(${pkgname}_sl.$pkgver.run::https://dr-download.ti.com/software-development/software-programming-tool/MD-QeJBJLj8gq/8.4.0/${pkgname}_sl.$pkgver.run
+source=(${pkgname}_sl.$pkgver.run::https://dr-download.ti.com/software-development/software-programming-tool/MD-QeJBJLj8gq/8.6.0/${pkgname}_sl.$pkgver.run
 		62-msp430uif.rules)
 noextract=("${pkgname}_sl.$pkgver.run" )
 options=(!strip)
-sha256sums=('110aa4cc161ca7b49614b53ac22927f5d142e3ec5935c98523510999cc48860b'
+sha256sums=('71fc52337b0332d79e17cfe7e7712143588c6301357a591b83aa5bbd6cd700ca'
             'e6fc064be173031f3a845f937b2dd7bd6742125e2bcb18f943968dde27b10cfb')
 
 DLAGENTS=('https::/usr/bin/curl -fLC - --cookie nada -o %o %u')
