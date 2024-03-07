@@ -3,24 +3,25 @@
 _pkgname=sonicLength
 _pkgver=1.4.7
 pkgname=r-${_pkgname,,}
-pkgver=1.4.7
-pkgrel=4
-pkgdesc='Estimating Abundance of Clones from DNA Fragmentation Data'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=9
+pkgdesc="Estimating Abundance of Clones from DNA Fragmentation Data"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('af097ff97eff9a0ae58afc5523d6c30ba750325eb102d5a8ab6c0662a6646df3')
+md5sums=('f2ba331f3e7c0368220ec0c463d6838f')
+b2sums=('52b663daec95952304878535cf4b4e3c9ed3162b12ef051e9df85749bbd834acaaaee29a0b7ec89c49612328802516bea71126a511252973b1edb8b906f2f934')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
