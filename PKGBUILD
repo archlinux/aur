@@ -2,7 +2,7 @@
 pkgname=deskgpt-bin
 pkgver=1.0.0
 _electronversion=26
-pkgrel=3
+pkgrel=4
 pkgdesc="A desktop client for OpenAI's ChatGPT, providing a seamless experience across Linux, Windows, and MacOS."
 arch=("x86_64")
 url="https://github.com/0x11c11e/DeskGPT"
@@ -17,13 +17,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('aa3ba0bcec46df1d286893b2805898357a426c83c45fe8b3afec416c2386a30a'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {

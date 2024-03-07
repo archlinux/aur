@@ -1,7 +1,7 @@
 pkgbase = deskgpt-bin
 	pkgdesc = A desktop client for OpenAI's ChatGPT, providing a seamless experience across Linux, Windows, and MacOS.
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/0x11c11e/DeskGPT
 	arch = x86_64
 	license = GPL-3.0-only
@@ -11,6 +11,6 @@ pkgbase = deskgpt-bin
 	source = deskgpt-1.0.0.deb::https://github.com/0x11c11e/DeskGPT/releases/download/v1.0.0/deskgpt_1.0.0_amd64.deb
 	source = deskgpt.sh
 	sha256sums = aa3ba0bcec46df1d286893b2805898357a426c83c45fe8b3afec416c2386a30a
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = deskgpt-bin
