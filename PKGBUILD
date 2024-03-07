@@ -1,11 +1,12 @@
 pkgname=hath-rust
 pkgdesc="Hentai@Home but rusty"
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/james58899/hath-rust"
-license=("GPL3")
+license=("GPL-3.0-only")
 options=("!lto") # https://github.com/briansmith/ring/issues/1444
+depends=("gcc-libs" "glibc")
 makedepends=("cargo")
 source=(
     "$url/archive/refs/tags/v$pkgver.tar.gz"
@@ -13,14 +14,26 @@ source=(
     "hath-rust.tmpfiles"
     "hath-rust.sysusers"
 )
-sha256sums=('706cd3ea22db0fa638a8082b69e75daab1e2d8e8b93cd676a8bdc178e1fa10fb'
+sha256sums=('1133088becf2ce4fa809b182c7568e7e5cae4e200e5dbaf1804267a406944bf8'
             '7fb01a1563c431384a2e9fc7da1105650e63069e0ed634240e456d4456a0a73b'
             '4732b0b6683df5734e652e3d8c5875d90d48577cc46e579bdf43e656d3ca216e'
             '28b78e349e96777177e6f95f078c3d09fec0dcd174b1a70d5dc9b18e309b0a81')
 
+prepare() {
+    cd "$srcdir/hath-rust-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 build() {
     cd "$srcdir/hath-rust-$pkgver"
-    cargo build --release
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --all-features
+}
+check() {
+    cd "$srcdir/hath-rust-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen --release --all-features
 }
 package() {
     cd "$srcdir/hath-rust-$pkgver"
