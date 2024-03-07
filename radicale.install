@@ -1,0 +1,8 @@
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  # configuration and file system storage changes with >= 3.0.0
+  if [ "$(vercmp "$2" "3.0.0")" -le 0 ]; then
+    echo "WARNING: Major changes introduced to filesystem storage and configuration. Read /usr/share/doc/radicale/NEWS.md"
+  fi
+}
