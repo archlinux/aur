@@ -1,7 +1,7 @@
 pkgbase = python-papis-scihub-git
 	pkgdesc = Papis plugin to import from Sci-Hub (incorporates upstream PR #62)
 	pkgver = 1.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/papis/scripts/tree/master/papis-scihub
 	arch = any
 	license = GPL3
@@ -9,6 +9,7 @@ pkgbase = python-papis-scihub-git
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
+	provides = python-papis-scihub
 	source = python-papis-scihub-git::git+https://github.com/hseg/scripts.git#branch=local
 	sha256sums = SKIP
 
