@@ -19,8 +19,8 @@ pkgbase = mesa-git
 	makedepends = glslang
 	makedepends = directx-headers
 	makedepends = python-ply
-	makedepends = llvm=16.0.6
-	makedepends = clang=16.0.6
+	makedepends = llvm=17.0.6
+	makedepends = clang=17.0.6
 	makedepends = libclc
 	makedepends = spirv-llvm-translator
 	depends = libdrm
@@ -44,7 +44,7 @@ pkgbase = mesa-git
 	depends = libxcb
 	depends = glibc
 	depends = zlib
-	depends = llvm-libs=16.0.6
+	depends = llvm-libs=17.0.6
 	optdepends = opengl-man-pages: for the OpenGL API man pages
 	optdepends = clang: opencl
 	optdepends = compiler-rt: opencl
