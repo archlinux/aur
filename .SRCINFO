@@ -1,14 +1,14 @@
 pkgbase = r-tcltk2
 	pkgdesc = Tcl/Tk Additions
 	pkgver = 1.2.11
-	pkgrel = 3
+	pkgrel = 6
 	url = https://cran.r-project.org/package=tcltk2
 	arch = any
-	license = LGPL
+	license = LGPL-3.0-only AND LicenseRef-tcltk2
 	depends = r
 	depends = tk
-	optdepends = r-utils
 	source = https://cran.r-project.org/src/contrib/tcltk2_1.2-11.tar.gz
-	sha256sums = ad183ae3b7190501504a0589e0b3be480f04267303e3384fef00987446a37dc5
+	md5sums = 8c2bb042e85986436eaf4b3e49e242ec
+	b2sums = 4864384637398419273373e7778a116cd9042278282eb2259aa6d1540524ed5b06edcd1a5606ec9ae118b72987bfd7a3202ad4a2e416040cc80b16a21f82834f
 
 pkgname = r-tcltk2
