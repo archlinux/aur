@@ -3,24 +3,25 @@
 _pkgname=kpeaks
 _pkgver=1.1.0
 pkgname=r-${_pkgname,,}
-pkgver=1.1.0
-pkgrel=4
-pkgdesc='Determination of K Using Peak Counts of Features for Clustering'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Determination of K Using Peak Counts of Features for Clustering"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0d5e857aa09fdb43189a9626b55327e231bbf669c3e420f3fb0c53042c76fd14')
+md5sums=('67d7b4b6122fd5229bce53c96e8d47a2')
+b2sums=('42862048ef83e5c4bacbece1bbb2e79049434056cf8d51b559019d3228225cca4b76f6e7a2478090ed86111f6848f739e6923747908804524c8b6a399d7e597e')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
