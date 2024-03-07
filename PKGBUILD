@@ -4,7 +4,7 @@
 
 
 pkgname=plasma6-wallpapers-wallpaper-engine-git
-pkgver=0.5.4.r44.ge803d26
+pkgver=0.5.4.r55.g81ec11c
 pkgrel=1
 pkgdesc="A simple kde wallpaper plugin integrating wallpaper engine"
 arch=('x86_64')
@@ -25,13 +25,11 @@ optdepends=(
 provides=("plasma6-wallpapers-wallpaper-engine")
 conflicts=("plasma6-wallpapers-wallpaper-engine")
 source=(
-    "${pkgname}::git+${url}.git"
+    "${pkgname}::git+${url}.git#branch=qt6"
     "git+https://github.com/KhronosGroup/glslang.git"
-    "migrage-to-kde-plasma-6.diff::${url}/pull/344.diff"
 )
 sha256sums=('SKIP'
-            'SKIP'
-            'daf7cec351afaf6b906effb16d58600e4e1c89f16cad80dec28352de3f8b99a5')
+            'SKIP')
 
 prepare(){
     cd "${srcdir}/${pkgname}"
@@ -42,7 +40,6 @@ prepare(){
         git config "submodule.${module}.url" "${srcdir}/${repo}"
     done
     git -c protocol.file.allow=always submodule update
-    git apply "${srcdir}/migrage-to-kde-plasma-6.diff"
 }
 pkgver(){
     cd "${srcdir}/${pkgname}"

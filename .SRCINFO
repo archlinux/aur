@@ -1,6 +1,6 @@
 pkgbase = plasma6-wallpapers-wallpaper-engine-git
 	pkgdesc = A simple kde wallpaper plugin integrating wallpaper engine
-	pkgver = 0.5.4.r44.ge803d26
+	pkgver = 0.5.4.r55.g81ec11c
 	pkgrel = 1
 	url = https://github.com/catsout/wallpaper-engine-kde-plugin
 	arch = x86_64
@@ -27,11 +27,9 @@ pkgbase = plasma6-wallpapers-wallpaper-engine-git
 	optdepends = mpv: alternative video backend
 	provides = plasma6-wallpapers-wallpaper-engine
 	conflicts = plasma6-wallpapers-wallpaper-engine
-	source = plasma6-wallpapers-wallpaper-engine-git::git+https://github.com/catsout/wallpaper-engine-kde-plugin.git
+	source = plasma6-wallpapers-wallpaper-engine-git::git+https://github.com/catsout/wallpaper-engine-kde-plugin.git#branch=qt6
 	source = git+https://github.com/KhronosGroup/glslang.git
-	source = migrage-to-kde-plasma-6.diff::https://github.com/catsout/wallpaper-engine-kde-plugin/pull/344.diff
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = daf7cec351afaf6b906effb16d58600e4e1c89f16cad80dec28352de3f8b99a5
 
 pkgname = plasma6-wallpapers-wallpaper-engine-git
