@@ -1,6 +1,6 @@
 # Maintainer: G1ya777
 pkgname=rename-gru-git
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A cli tool to batch rename all the files in the provided directory written in rust"
 url="https://github.com/G1ya777/GRU"
