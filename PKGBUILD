@@ -6,15 +6,15 @@ pkgver=0.7.1
 pkgrel=1
 pkgdesc="A pure python backend for PyVISA"
 url="https://github.com/pyvisa/pyvisa-py"
-arch=('any')
 license=('MIT')
+arch=('any')
 depends=('python-pyvisa')
-makedepends=('git' 'python-wheel' 'python-setuptools-scm' 'python-pytest')
 optdepends=('linux-gpib: gpib instrument support'
             'python-pyserial: interface with serial instruments'
             'python-pyusb: interface with USB instruments'
             'python-gpib-ctypes: interface with GPIB instruments'
             'python-psutil: discover TCPIP devices across multiple interfaces')
+makedepends=('git' 'python-wheel' 'python-setuptools-scm' 'python-pytest')
 source=("git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')
 
@@ -34,5 +34,6 @@ check() {
 
 package() {
   cd pyvisa-py
-  python setup.py install --skip-build --optimize=1 --prefix=/usr --root="$pkgdir" 
+  python setup.py install --skip-build --optimize=1 --prefix=/usr --root="$pkgdir"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
