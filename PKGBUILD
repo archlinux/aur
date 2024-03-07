@@ -50,7 +50,6 @@ makedepends=(
 )
 optdepends=(
     'qt6-wayland: for Wayland support'
-    'resolvconf: for resolv.conf management'
 )
 
 install=mozillavpn.install

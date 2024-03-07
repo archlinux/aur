@@ -33,7 +33,6 @@ pkgbase = mozillavpn
 	depends = qt6-websockets
 	depends = wireguard-tools
 	optdepends = qt6-wayland: for Wayland support
-	optdepends = resolvconf: for resolv.conf management
 	options = !lto
 	source = https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/2.20.0-mantic1/mozillavpn_2.20.0.orig.tar.gz
 	sha256sums = 86d28df16f40001d24cdf5c2b913c13a09248c8ef405c0981db34c039f95f197
