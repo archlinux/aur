@@ -2,7 +2,7 @@
 
 pkgname=python-langchain
 pkgver=0.1.11
-pkgrel=2
+pkgrel=3
 pkgdesc='Build context-aware reasoning applications'
 arch=('any')
 url='https://pypi.org/project/langchain'
@@ -40,12 +40,12 @@ depends=(python
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry-core')
 
 build() {
-    cd "${_src_name}/libs/langchain"
+    cd "${_src_name}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${_src_name}/libs/langchain"
+    cd "${_src_name}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
     cd ${srcdir}
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
