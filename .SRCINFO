@@ -1,0 +1,15 @@
+pkgbase = kc
+	pkgdesc = console-based password storing application
+	pkgver = 2.5.3
+	pkgrel = 1
+	url = https://github.com/levaidaniel/kc
+	arch = any
+	license = BSD-2-Clause
+	depends = libbsd>=0.2.0,
+	depends = libxml2>=2.6.0,
+	depends = openssl>=1.1.1,
+	depends = readline
+	source = kc-2.5.3.tar.gz::https://github.com/levaidaniel/kc/archive/refs/tags/2.5.3.tar.gz
+	sha256sums = 593db34bf53ad9197c3ac1ffc3742dfc03a784862f0a5fadeda6b6d2ad287539
+
+pkgname = kc
