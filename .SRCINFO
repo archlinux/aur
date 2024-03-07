@@ -1,6 +1,6 @@
 pkgbase = qrca-git
 	pkgdesc = Scan QR-Codes with your camera on phones and laptops, and create your own for easily sharing data between devices.
-	pkgver = 0.1.r297.a64d924
+	pkgver = 0.1.r351.c48d5c2
 	pkgrel = 1
 	url = https://apps.kde.org/de/qrca/
 	arch = x86_64
@@ -8,24 +8,26 @@ pkgbase = qrca-git
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
-	makedepends = extra-cmake-modules>=5.240.0
+	makedepends = extra-cmake-modules
 	makedepends = qt6-svg
 	makedepends = qt6-quickcontrols2
 	makedepends = qt6-multimedia
-	makedepends = purpose>=5.240.0
+	makedepends = purpose
+	makedepends = python
+	makedepends = kguiaddons
 	depends = qt6-declarative
 	depends = hicolor-icon-theme
 	depends = gcc-libs
 	depends = xdg-utils
-	depends = prison>=5.240.0
-	depends = kcontacts>=5.240.0
-	depends = knotifications>=5.240.0
-	depends = kcoreaddons>=5.240.0
-	depends = ki18n>=5.240.0
-	depends = kio>=5.240.0
-	depends = kservice>=5.240.0
+	depends = prison
+	depends = kcontacts
+	depends = knotifications
+	depends = kcoreaddons
+	depends = ki18n
+	depends = kio
+	depends = kservice
 	depends = qt6-base
-	depends = kirigami>=5.240.0
+	depends = kirigami
 	provides = qrca
 	conflicts = qrca
 	source = qrca-git::git+https://invent.kde.org/utilities/qrca.git
