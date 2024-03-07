@@ -1,29 +1,26 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=python-langsmith
+_pkgname=${pkgname#python-}
 pkgver=0.1.19
-pkgrel=5
+pkgrel=6
 pkgdesc='LangSmith Client SDK Implementations'
 arch=('any')
-url="https://pypi.org/project/langsmith"
+url="https://github.com/langchain-ai/langsmith-sdk"
 license=('MIT')
-_module=${pkgname#python-}
-_src_name="${_module/-/_}-${pkgver}"
-source=("https://pypi.org/packages/source/${_module::1}/${_module}/${_src_name}.tar.gz"
-        "https://github.com/langchain-ai/${_module}-sdk/raw/v${pkgver}/LICENSE")
-sha256sums=('461093c19d5eb9b108069381c7342ba2fa30d60d77e5361e2374b779fa401b8b'
-            '34e0b9842c7a31d34e53bc7eb224e81e07a34996106e029bbc72dea2d449f496')
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('c98e3d720efe3aa1a53f1887567eddc0cbe5b06c24e7795d13880f54a4956a15')
 depends=(python python-pydantic python-requests python-openai python-orjson
     python-pandas python-psutil python-typing_extensions python-urllib3)
 makedepends=(python-build python-installer python-wheel python-poetry-core)
 
 build() {
-    cd "${_src_name}"
+    cd "${_pkgname}-sdk-${pkgver}/python"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${_src_name}"
+    cd "${_pkgname}-sdk-${pkgver}/python"
     python -m installer --destdir="${pkgdir}" dist/*.whl
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${_pkgname}-sdk-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
