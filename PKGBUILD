@@ -3,36 +3,26 @@
 _base=pyprecice
 pkgname=python-${_base}
 pkgdesc="Python language bindings for the preCICE coupling library"
-pkgver=2.5.0.4
+pkgver=3.0.0.0
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/${_base/py/}/python-bindings"
-license=(LGPL3)
+license=(LGPL-3.0-or-later)
 depends=(precice python-mpi4py)
 makedepends=(python-build python-installer python-setuptools cython python-pkgconfig python-wheel)
 source=(python-bindings-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('cd0397c18a769d1294ff3223b6b877686e9280611ff995115296cabecae4c31f4ec42e1af343a619603483160eeff014bbf592e43a59a74f2ac2aa9042963faa')
+sha512sums=('74181dbfaee6e87995e81ba66698ed534203426507929a83dad4d1f10d6d8bb9eabdd577708eb87565812f10a87862791b8641feffc2a20c1e507ba72256954f')
 
 build() {
   cd python-bindings-${pkgver}
-  python setup.py clean --all
-  python setup.py \
-    build_ext \
-    --include-dirs=/usr/include \
-    --library-dirs=/usr/lib \
-    --inplace
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-# check() {
-#   if [ -z "$(ldconfig -p | grep libcuda.so.1)" ]; then
-#     export OMPI_MCA_opal_warn_on_missing_libcuda=0
-#   fi
-#   cd python-bindings-${pkgver}
-#   # FIXME: https://github.com/precice/python-bindings/issues/1
-#   python setup.py test
-# }
-
+check() {
+  cd python-bindings-${pkgver}
+  # FIXME: https://github.com/precice/python-bindings/issues/1
+  python setup.py test
+}
 package() {
   cd python-bindings-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
