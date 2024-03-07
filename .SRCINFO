@@ -1,6 +1,6 @@
 pkgbase = wishlist
 	pkgdesc = The SSH directory
-	pkgver = 0.4.0
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://github.com/charmbracelet/wishlist
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = wishlist
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = https://github.com/charmbracelet/wishlist/archive/v0.4.0/wishlist-0.4.0.tar.gz
-	sha256sums = eacbcfce6451f17e1c9f1a8c22bce7599742154e2462d5d8e8fe133992d98e56
+	source = https://github.com/charmbracelet/wishlist/archive/v0.14.1/wishlist-0.14.1.tar.gz
+	sha256sums = c83cefe6e94059ea5cb9db7698797aa8effbaacef35f165fe077f15afad1261e
 
 pkgname = wishlist
