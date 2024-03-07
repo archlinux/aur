@@ -35,14 +35,19 @@ sha512sums=(
 )
 
 package() {
+  local \
+    _npm_options=()
+  _npm_options=(
+    -g
+    # --user
+    #   root
+    --prefix
+      "${pkgdir}"/usr
+    )
   npm \
     install \
-    -g \
-    --user \
-      root \
-    --prefix \
-      "${pkgdir}"/usr \
-      "${srcdir}/${_pkgbase}-${pkgver}.tgz"
+    "${_npm_options[@]}" \
+    "${srcdir}/${_pkgbase}-${pkgver}.tgz"
   rm \
     -fr \
       "${pkgdir}/usr/etc"
