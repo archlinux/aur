@@ -2,13 +2,13 @@
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=girara-git
-pkgver=0.4.0.r12.g968c080
+pkgver=0.4.3.r3.gd173770
 pkgrel=1
 pkgdesc="User interface library focused on simplicity and minimalism"
 arch=('x86_64')
 url="https://pwmt.org/projects/girara"
-license=('custom')
-depends=('gtk3' 'glib2' 'json-c' 'pango')
+license=('Zlib')
+depends=('gtk3' 'glib2' 'json-glib' 'pango')
 makedepends=('git' 'meson' 'ninja' 'doxygen' 'check')
 conflicts=('girara')
 provides=('girara')
