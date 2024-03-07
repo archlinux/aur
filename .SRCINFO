@@ -8,6 +8,7 @@ pkgbase = docker-credential-secretservice-bin
 	license = MIT
 	provides = docker-credential-secretservice
 	conflicts = docker-credential-secretservice
+	options = !debug
 	source_x86_64 = docker-credential-secretservice-bin-x86_64::https://github.com/docker/docker-credential-helpers/releases/download/v0.8.1/docker-credential-secretservice-v0.8.1.linux-amd64
 	source_x86_64 = LICENSE::https://raw.githubusercontent.com/docker/docker-credential-helpers/v0.8.1/LICENSE
 	b2sums_x86_64 = acda8ab49b7cb210cb451392307e07db36d85a4e0ef1462c3a2b3f5eb0cf1cfe5878912c852f0d61b473c30210bf8194827f17ae3b9a97c84052dcbf4b354715

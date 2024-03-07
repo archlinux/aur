@@ -10,6 +10,7 @@ url="https://github.com/docker/docker-credential-helpers"
 license=('MIT')
 depends=()
 makedepends=()
+options=("!debug")
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 
