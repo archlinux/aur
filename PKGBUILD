@@ -1,16 +1,19 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 pkgname=python-pykakasi
+_pkgname=${pkgname#python-}
 pkgver=2.2.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Lightweight converter from Japanese Kana-kanji sentences into Kana-Roman"
 arch=(any)
-url='https://pypi.org/project/pykakasi'
-license=(GPL3)
+url='https://codeberg.org/miurahr/pykakasi'
+license=(GPL-3.0-or-later)
 depends=(
+    python
     python-deprecated
     python-jaconv
     python-setuptools
+    python-importlib-metadata
 )
 makedepends=(
     python-build
@@ -19,17 +22,17 @@ makedepends=(
     python-sphinx
     python-wheel
 )
-_module="${pkgname#python-}"
-_src_name="${_module/-/_}-${pkgver}"
-source=("https://pypi.org/packages/source/${_module::1}/${_module}/${_src_name}.tar.gz"
-        "${_module}-remove-klepto-1.patch::https://codeberg.org/miurahr/${_module}/pulls/156.patch")
+# source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+_src_name="${_pkgname/-/_}-${pkgver}"
+source=("${_pkgname}-${pkgver}.tar.gz::https://pypi.org/packages/source/${_pkgname::1}/${_pkgname}/${_src_name}.tar.gz"
+        "${_pkgname}-remove-klepto-1.patch::${url}/pulls/156.patch")
 sha256sums=('3a3510929a5596cae51fffa9cf78c0f742d96cebd93f726c96acee51407d18cc'
             'b47d9c37d66afa7c58e51db96dd18e7a405b5b624308537f79b91242b69575ee')
 
 prepare() {
   cd "${_src_name}"
   # remove build-time dependency on python-klepto
-  patch -Np1 -i "../${_module}-remove-klepto-1.patch"
+  patch -Np1 -i "../${_pkgname}-remove-klepto-1.patch"
 }
 
 build() {
