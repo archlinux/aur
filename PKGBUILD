@@ -3,7 +3,7 @@ pkgname=ringer-client-desktop
 _pkgname=Ringer
 pkgver=4.0.0
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="A new cross platform messaging app"
 arch=('any')
 url="https://github.com/Lif-Platforms/Ringer-Client-Desktop"
@@ -15,9 +15,9 @@ depends=(
     'nodejs'
 )
 makedepends=(
-    'yarn'
     'npm'
     'git'
+    'curl'
 )
 options=(
     '!strip'
@@ -29,7 +29,7 @@ source=(
 )
 sha256sums=('SKIP'
             '5ae75de25c7204dba7bfbbbe3c9f58cf6f565963359735a471e1f61ee8692181'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
@@ -37,21 +37,21 @@ build() {
         -i "${srcdir}/${pkgname}.sh"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl="https://electronjs.org/headers"
+    export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    sed "s|development|production|g" -i .env
-    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    npx electron-packager . "${_pkgname}" --platform=linux --out=out
-    rm -rf "${srcdir}/${pkgname}.git/out/${_pkgname}-linux-"*/resources/app/node_modules/.cache
+    sed "s|win|linux|g;s|nsis|AppImage|g;s|app-icon.ico|logo512.png|g" -i package.json
+    npm install
+    npm run build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}.git/out/${_pkgname}-linux-"*/resources/app "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/public/${_pkgname}-Icon-Production.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${pkgname}.git/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/public/logo512.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
