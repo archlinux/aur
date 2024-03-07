@@ -17,11 +17,11 @@ prepare() {
 
 package() {
   # Instalar el script Python
-  install -Dm755 "$srcdir"/GitSyncMaster-v."${pkgver}"/src/aur-dev/git_updater.sh "${pkgdir}/usr/local/bin/gitsync.sh"
+  install -Dm755 "$srcdir"/GitSyncMaster-v."${pkgver}"/src/aur-dev/git_updater.py "${pkgdir}/usr/local/bin/gitsync.py"
   
   # Crear un script shell para ejecutar upd8all.py y copiarlo a /usr/local/bin
   echo '#!/bin/bash' > upd8all
-  echo 'bash /usr/local/bin/gitsync.sh "$@"' >> gitsync
+  echo 'python /usr/local/bin/gitsync.py "$@"' >> gitsync
   chmod +x gitsync
   install -Dm755 upd8all "${pkgdir}/usr/local/bin/gitsync"
 }
