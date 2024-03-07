@@ -1,7 +1,7 @@
 pkgbase = bonsai-coreutils-git
 	pkgdesc = New core utilities for a new era.
 	pkgver = r173.c97201f
-	pkgrel = 1
+	pkgrel = 5
 	url = https://git.tebibyte.media/bonsai/coreutils
 	arch = any
 	license = AGPL
