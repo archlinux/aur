@@ -23,6 +23,6 @@ pkgbase = candy
 	depends = spdlog
 	backup = etc/candy.conf
 	source = candy-5.0.tar.gz::https://github.com/lanthora/candy/archive/refs/tags/v5.0.tar.gz
-	sha256sums = 37c7f33cb8698e4ab8cd68ea0c509326e3d9616caa70d7c4e886f4ac1f12de8b
+	sha256sums = 94c9947dc5fc834588ba32118a9c2a1ac07ec10d6091bf4ea3e0d58955c4a44e
 
 pkgname = candy
