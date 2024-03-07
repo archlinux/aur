@@ -12,6 +12,7 @@ pkgbase = git-dumper-git
 	depends = python-requests
 	depends = python-beautifulsoup4
 	depends = python-dulwich
+	depends = python-requests-pkcs12
 	source = git+https://github.com/arthaud/git-dumper
 	sha512sums = SKIP
 

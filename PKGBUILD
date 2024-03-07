@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/arthaud/git-dumper"
 license=('MIT')
 makedepends=(git python-setuptools)
-depends=(python python-pysocks python-requests python-beautifulsoup4 python-dulwich)
+depends=(python python-pysocks python-requests python-beautifulsoup4 python-dulwich python-requests-pkcs12)
 source=(git+https://github.com/arthaud/git-dumper)
 sha512sums=('SKIP')
 
