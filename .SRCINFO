@@ -1,6 +1,6 @@
 pkgbase = qmarineplatformtheme6
 	pkgdesc = Another qt6ct for qt6, use toml as config
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/Decodetalkers/qmarinetheme
 	arch = x86_64
@@ -10,10 +10,13 @@ pkgbase = qmarineplatformtheme6
 	makedepends = ninja
 	makedepends = cmake
 	makedepends = tomlplusplus
-	depends = qt5-base
+	depends = kconfig
+	depends = qt6-base
+	depends = kconfigwidgets
+	depends = kiconthemes
 	provides = qt6ct
 	conflicts = qt6ct
-	source = qmarineplatformtheme6-v0.1.5.tar.gz::https://github.com/Decodetalkers/qmarinetheme/archive/refs/tags/v0.1.5.tar.gz
-	sha256sums = 5f19a8b4f4d69dba1ff0e3e561074727e21202e0737fd5f0bfadb6c7338978e7
+	source = qmarineplatformtheme6-v0.1.6.tar.gz::https://github.com/Decodetalkers/qmarinetheme/archive/refs/tags/v0.1.6.tar.gz
+	sha256sums = c78d31c670df30e4131646d0275870d0eefad1342576778540c531ab8c32c82a
 
 pkgname = qmarineplatformtheme6
