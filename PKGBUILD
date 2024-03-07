@@ -3,7 +3,7 @@ pkgname=claude-desktop
 _pkgname=Claude-Desktop
 pkgver=1.0.0
 _electronversion=25
-pkgrel=4
+pkgrel=5
 pkgdesc="An Electron-based desktop application for Claude2(unofficial)."
 arch=('any')
 url="https://github.com/Karenina-na/Claude-Desktop"
@@ -22,13 +22,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
-    gendesk -q -f -n --categories "Network" --name "${_pkgname}" --exec "${pkgname} %U"
+    gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -36,8 +36,14 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    npm ci
+    if [ `curl ifconfig.co/country` == "China" ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    fi
+    npm install
     npm run build
 }
 package() {

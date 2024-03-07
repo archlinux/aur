@@ -1,7 +1,7 @@
 pkgbase = claude-desktop
 	pkgdesc = An Electron-based desktop application for Claude2(unofficial).
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Karenina-na/Claude-Desktop
 	arch = any
 	license = MIT
@@ -13,6 +13,6 @@ pkgbase = claude-desktop
 	source = claude-desktop.git::git+https://github.com/Karenina-na/Claude-Desktop.git#tag=v1.0.0
 	source = claude-desktop.sh
 	sha256sums = SKIP
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = claude-desktop
