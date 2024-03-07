@@ -2,7 +2,7 @@
 # Co-Maintainer: Ricardo Gonçalves <ricardompgoncalves@gmail.com>
 
 pkgname=autenticacao-gov-pt-bin
-pkgver=3.11.0
+pkgver=3.12.0
 pkgrel=1
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) - version with pre compiled binaries by AMA"
 arch=('x86_64')
@@ -31,19 +31,21 @@ optdepends=('plugin-autenticacao-gov-pt: Necessário para autenticações online
 conflicts=('cartaodecidadao' 'cartaodecidadao-bin' 'autenticacao-gov-pt')
 replaces=('cartaodecidadao-bin')
 
-source_x86_64=("https://aplicacoes.autenticacao.gov.pt/apps/pteid-mw-linux.x86_64.flatpak"
+source_x86_64=("https://github.com/amagovpt/autenticacao.gov/releases/download/v3.12.0/pteid-mw-3.12.0.flatpak"
  "autenticacao-gov-pt-bin.install")
 
-sha512sums_x86_64=('ec2b0fa55b0d3693349d8f46c13e42d5e1ad3a4145288e1fec2ecbd327c1a09786916cd1c08ea051391f1fe9826ab6e29c7e94e304f1cea867edc3307016528f'
+sha512sums_x86_64=('01fec7530b9c918e4d357a03152faa78754230e281eb3826355c4cc80163ad2653b71fd0846fdfd4078295f2f241d1c775376d95e94387feba8e097e9077f7fc'
                    'd38b9748f386fcf64f3f0cb717eccf7936c64f0e7b6370ae3b1b079902015ce56d3057afcf2877ca4eee38776269ac3642701803ba96b24a81cfccc9a4d3245f')
 
 install='autenticacao-gov-pt-bin.install'
 
 prepare() {
+  rm -rf ${srcdir}/pteid
+  rm -rf ${srcdir}/pteid_out
   mkdir -p pteid
   ostree init --repo=pteid --mode=bare-user
-  ostree static-delta apply-offline --repo=pteid pteid-mw-linux.x86_64.flatpak
-  ostree checkout --repo=pteid -U $(basename $(echo pteid/objects/*/*.commit | cut -d/ -f3- --output-delimiter= ) .commit) pteid_out
+  ostree static-delta apply-offline --repo=pteid pteid-mw-3.12.0.flatpak
+  ostree checkout --repo=pteid -U $(basename $(echo pteid/objects/*/*.commit | cut -d/ -f3- --output-delimiter='' | tr -d '\0') .commit) pteid_out
 }
 
 package() {
@@ -69,10 +71,7 @@ package() {
   rm -rf "${pkgdir}"/usr/lib/pkgconfig/poppler.pc
   rm -rf "${pkgdir}"/usr/lib/pkgconfig/xerces-c.pc
   rm -rf "${pkgdir}"/usr/lib/pkgconfig/xml-security-c.pc
-  rm -rf "${pkgdir}"/usr/share/man/man3/libcurl*
-  rm -rf "${pkgdir}"/usr/share/man/man3/curl*
-  rm -rf "${pkgdir}"/usr/share/man/man3/CURL*
-  rm -rf "${pkgdir}"/usr/share/man/man1/curl*
+  rm -rf "${pkgdir}"/usr/share/man
   rm -rf "${pkgdir}"/usr/share/aclocal/libcurl*
   rm -rf "${pkgdir}"/usr/lib/libcurl*
   rm -rf "${pkgdir}"/usr/lib/pkgconfig/libcjson.pc
