@@ -22,7 +22,7 @@ source=(
 )
 
 noextract=()
-md5sums=('56b998121ea5d9492254ac0e9541f42f'
+md5sums=('8c495ed7aefc67f374045d5bc05c15d1'
          'cbbd80b8b8e5a29130028937c1eccc6e'
          '600e74549ce2258c045d5c2f7689ea63'
          '6b159c6e9d21a98925489bc37a9aea43'
