@@ -1,7 +1,7 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 
 pkgname='perl-alien-cfitsio'
-pkgver='4.3.1.0'
+pkgver='4.4.0.1'
 pkgrel='1'
 pkgdesc="Build and Install the CFITSIO library"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('perl-sort-versions')
 checkdepends=('perl-test2-suite' 'perl-package-stash')
 url='https://metacpan.org/dist/Alien-CFITSIO'
 source=("https://cpan.metacpan.org/authors/id/D/DJ/DJERIUS/Alien-CFITSIO-v${pkgver}.tar.gz")
-sha512sums=('1abf3f0d96887ce146f468bb44a5cdfd9504ff0e5bc5ef56f45f26e080785b0ed8dec7241b55f75e56037cd1bb3d4a3cf56a061140a5fa0bf116d435ac224a86')
+sha512sums=('29327be58b6cd7c0b415e9be4ef6504a5db4d54102e41a18f61d2566771e56482058b410dac2f5a63dc56d21a26e42078704686bd354e6c2f854a29baea13cde')
 _distdir="Alien-CFITSIO-v${pkgver}"
 
 build() {
@@ -23,7 +23,7 @@ build() {
       MODULEBUILDRC=/dev/null
 
     cd "$srcdir/$_distdir"
-    export ALIEN_CFITSIO_ATLEAST_VERSION="$pkgver"
+    export ALIEN_CFITSIO_ATLEAST_VERSION="${pkgver::5}"
     /usr/bin/perl Makefile.PL
     make
   )
