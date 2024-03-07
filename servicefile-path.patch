@@ -1,0 +1,11 @@
+--- /usr/lib/systemd/system/isolate.service	2024-02-29 23:50:10.000000000 +0100
++++ systemd/isolate.service	2024-03-01 00:21:28.680577647 +0100
+@@ -3,7 +3,7 @@
+ 
+ [Service]
+ Type=notify
+-ExecStart=/usr/local/sbin/isolate-cg-keeper
++ExecStart=/usr/bin/isolate-cg-keeper
+ Slice=isolate.slice
+ Delegate=true
+ 
