@@ -3,7 +3,7 @@
 pkgbase="awatcher"
 pkgname=('awatcher-bundle' 'aw-awatcher')
 pkgdesc="Activity and idle watchers"
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/2e3s/${pkgbase}"
@@ -14,7 +14,7 @@ source=(
     "${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-    'd5efaf4d01fa493c720e5443c6b383bfe53160101716bdd96dbbcee1ca440b73'
+    '4c56afc12bc3af26572254b40a8034591ba190a7759827c372099992acd996b8'
 )
 # LTO seems to break libsqlite3-sys compilation
 options=('!lto')
