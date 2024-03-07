@@ -5,7 +5,7 @@ pkgdesc="Multi-Level IR Compiler Framework for LLVM"
 arch=('x86_64')
 url="https://mlir.llvm.org/"
 license=("custom:Apache 2.0 with LLVM Exception")
-depends=("llvm=$pkgver")
+depends=("llvm>=${pkgver%%.*}")
 makedepends=("cmake")
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz")
 sha256sums=('58a8818c60e6627064f312dbf46c02d9949956558340938b71cf731ad8bc0813')
