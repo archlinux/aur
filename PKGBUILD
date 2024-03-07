@@ -1,6 +1,6 @@
 # Maintainer: nukeop <aur@gumblert.tech>
 pkgname=nuclear-player-git
-pkgver=v0.6.16.r0.df029f1
+pkgver=v0.6.30
 pkgrel=1
 pkgdesc="A free, multiplatform music player app that streams from multiple sources."
 url="https://nuclear.js.org"
@@ -9,7 +9,7 @@ conflicts=("${pkgname%-git}")
 arch=(x86_64)
 license=('GPL3')
 depends=('libnotify' 'libappindicator-gtk3' 'libxtst' 'nss')
-makedepends=('git' 'lerna' 'npm' 'nodejs-lts-erbium')
+makedepends=('git' 'lerna' 'npm' 'nodejs-lts-hydrogen')
 source=(
     'git+https://github.com/nukeop/nuclear.git'
 	'nuclear.desktop'
