@@ -1,18 +1,22 @@
-# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
-# Mafntainer: Truocolo <truocolo@aol.com>
+# SPDX-License-Identifier: AGPL-3.0
+#
+# Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+# Maintainer: Truocolo <truocolo@aol.com>
 # Contributor: katt <magunasu.b97@gmail.com>
 # Contributor: Fabio Loli
 
+_git="false"
 pkgname=duckstation
-_pkgver="v0.1-6045"
-pkgver="$( \
-  echo "${_pkgver}" | \
-    sed \
-      "s/-/+/g")"
+_majver="0.1"
+_rev="6232"
+_pkgver="${_majver}-${_rev}"
+_commit="21bbe5c76cc95b2334585f62746905f8aa3464e2"
+pkgver="${_majver}.r${_rev}"
 _pkgdesc=(
   "A Sony PlayStation (PSX) emulator,"
   "focusing on playability, speed, and"
-  "long-term maintainability (stable snapshot)")
+  "long-term maintainability (stable snapshot)"
+)
 pkgrel=1
 arch=(
   x86_64
@@ -20,35 +24,53 @@ arch=(
   i686
   pentium4
   arm
+  risv32
+  powerpc
+  armv7h
 )
-url="https://github.com/stenzek/${pkgname}"
-license=(GPL3)
+_gh="github.com"
+_http="https://${_gh}"
+_ns="stenzek"
+url="${_http}/${_ns}/${pkgname}"
+license=(
+  GPL3
+)
 makedepends=(
+  alsa-lib
   cmake
   extra-cmake-modules
-  qt6-tools
+  gtk3
   libdrm
   libpulse
-  alsa-lib
-  sndio
-  gtk3
   ninja
-  # git
+  qt6-tools
+  sndio
 )
+source=()
+sha256sums=()
+[[  "${_git}" == "true" ]] && \
+  makedepends+=(
+    git
+  ) && \
+  source+=(
+    "${pkgname}-${_pkgver}::git+${url}#commit=${_commit}"
+  ) && \
+  sha256sums+=(
+    SKIP
+  )
+[[ "${_git}" == false ]] && \
+  source+=(
+    "${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz"
+  ) && \
+  sha256sums+=(
+    "c061a7a65575242652cf2224a830b14881274f1569393f84af41de6304874fe2"
+  )
 depends=(
   sdl2
-  qt6-base)
-optdepends=(
-  'psx-bios: PlayStation Bioses')
-# _commit="2d78b3f26a18600cbeb1f7add97f345d7345deeb"
-source=(
-  "${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz"
-  # "${pkgname}-${_pkgver}::git+${url}#commit=${_commit}"
-  # "${url}/archive/refs/tags/${_pkgver}.tar.gz"
+  qt6-base
 )
-sha256sums=(
-  0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
-  #'adc6af10f1a14059ebb00637dac7283760f6ef647ebaec224a0e6e88ac901f0a'
+optdepends=(
+  'psx-bios: PlayStation Bioses'
 )
 
 build() {
@@ -57,11 +79,11 @@ build() {
   _cmake_opts=(
     -B build
     -S "${pkgname}-${_pkgver}"
-    -DBUILD_NOGUI_FRONTEND=OFF
+    -DBUILD_NOGUI_FRONTEND=ON
     -DUSE_WAYLAND=ON
     -G Ninja
-    -Wno-dev)
-
+    -Wno-dev
+  )
   cmake \
     "${_cmake_opts[@]}"
   ninja \
@@ -113,3 +135,5 @@ EOF
     "${pkgname}-${_pkgver}/data/resources/images/duck.png" \
     "${_pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
+
+# vim:set sw=2 sts=-1 et:
