@@ -3,24 +3,25 @@
 _pkgname=FMStable
 _pkgver=0.1-4
 pkgname=r-${_pkgname,,}
-pkgver=0.1.4
-pkgrel=2
-pkgdesc='Finite Moment Stable Distributions'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=4
+pkgdesc="Finite Moment Stable Distributions"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2a391061dc2d2e89f6639aada07e839fdf950c0b20e27566219bb89befb4e93a')
+md5sums=('3697fa5f8c5cc6acfcf0285ca7819f56')
+b2sums=('f28d9b17352e3d6c0ad287512e9b08af46aafff97b5ca5287ad32f472a3a07a6586982a1ec3d93bd9bba030943880c105d9eb18df33904b4a65db97bf37844a0')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
