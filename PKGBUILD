@@ -1,8 +1,9 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=python-langchain-core
-pkgver=0.1.29
-pkgrel=4
+_pkgname=${pkgname#python-}
+pkgver=0.1.30
+pkgrel=1
 pkgdesc="Building applications with LLMs through composability"
 url="https://pypi.org/project/langchain-core"
 depends=(python
@@ -19,11 +20,10 @@ depends=(python
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry')
 license=('MIT')
 arch=('any')
-_module=${pkgname#python-}
-_src_name="${_module/-/_}-${pkgver}"
-source=("https://pypi.org/packages/source/${_module::1}/${_module}/${_src_name}.tar.gz"
-        "https://raw.githubusercontent.com/langchain-ai/langchain/v0.1.11/LICENSE")
-sha256sums=('6731dabffad03b9213ada2640d54ed7f4ef6b99fce87ade3c71474ae154dd3cc'
+_src_name="${_pkgname/-/_}-${pkgver}"
+source=("https://pypi.org/packages/source/${_pkgname::1}/${_pkgname}/${_src_name}.tar.gz"
+        "https://github.com/langchain-ai/langchain/raw/v0.1.11/LICENSE")
+sha256sums=('e13a016e55e7f082ff3eeeda2d0cb505b89a8830e3a23c1d134d0a89d7871894'
             '4ec67e4ca6e6721dba849b2ca82261597c86a61ee214bbf21416006b7b2d0478')
 
 build() {
