@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=neanes-bin
 _pkgname=Neanes
-pkgver=0.4.15
+pkgver=0.4.16
 _electronversion=28
 pkgrel=1
 pkgdesc="A free and open source scorewriter for notating Byzantine chant in Byzantine notation."
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d6dfefa13e35258b1cfefde6abc0e09e322eba57a71b2b6b658a9edd3b87200b'
+sha256sums=('bb1dd6046f091edec2e0d88e76663872ec5d2010fb3968f33e36767c34c62fcd'
             '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
