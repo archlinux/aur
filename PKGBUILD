@@ -8,7 +8,7 @@ arch=('any')
 license=('Apache')
 url="https://github.com/box/genty"
 depends=('python-six')
-makedepends=('python-setuptools' 'git')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'git')
 source=("git+https://github.com/box/genty.git#tag=v$pkgver")
 sha512sums=('SKIP')
 
@@ -19,7 +19,7 @@ prepare() {
 
 build() {
   cd "$srcdir/genty"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -29,5 +29,5 @@ check() {
 
 package() {
   cd genty
-  python setup.py install --root="${pkgdir}" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
