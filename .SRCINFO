@@ -1,6 +1,6 @@
 pkgbase = r-customprodb
 	pkgdesc = Generate customized protein database from NGS data, with a focus on RNA-Seq data, for proteomics search
-	pkgver = 1.41.0
+	pkgver = 1.42.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/customProDB
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-customprodb
 	depends = r-variantannotation
 	optdepends = r-bsgenome.hsapiens.ucsc.hg19
 	optdepends = r-rmariadb
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/customProDB_1.41.0.tar.gz
-	sha256sums = ab2aac98334abf50b115eec8d5d214c6d784df38fad511585d23a338966bd4bc
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/customProDB_1.42.1.tar.gz
+	sha256sums = 28be9c341aa2bc3e2c89560f041c5c3c23e6018de4591949f91a22043b3b51fc
 
 pkgname = r-customprodb

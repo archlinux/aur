@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=customProDB
-_pkgver=1.41.0
+_pkgver=1.42.1
 pkgname=r-${_pkgname,,}
-pkgver=1.41.0
+pkgver=1.42.1
 pkgrel=1
 pkgdesc='Generate customized protein database from NGS data, with a focus on RNA-Seq data, for proteomics search'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-rmariadb
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ab2aac98334abf50b115eec8d5d214c6d784df38fad511585d23a338966bd4bc')
+sha256sums=('28be9c341aa2bc3e2c89560f041c5c3c23e6018de4591949f91a22043b3b51fc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
