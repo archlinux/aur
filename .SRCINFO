@@ -1,0 +1,24 @@
+pkgbase = python-wassima-git
+	pkgdesc = Access your OS root certificates with the atmost ease (built from latest commit)
+	pkgver = 1.1.0.r0.gcfb12bf
+	pkgrel = 1
+	url = https://github.com/jawah/wassima
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = maturin
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-maturin
+	makedepends = python-wheel
+	depends = gcc-libs
+	depends = glibc
+	depends = python
+	depends = python-certifi
+	provides = python-wassima
+	conflicts = python-wassima
+	source = git+https://github.com/jawah/wassima.git
+	sha256sums = SKIP
+
+pkgname = python-wassima-git
