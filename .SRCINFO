@@ -1,6 +1,6 @@
 pkgbase = wstunnel
 	pkgdesc = Tunnel all your traffic over websocket protocol - Bypass firewalls/DPI
-	pkgver = 9.2.2
+	pkgver = 9.2.3
 	pkgrel = 1
 	url = https://github.com/erebe/wstunnel
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = wstunnel
 	conflicts = wstunnel-bin
 	conflicts = nodejs-wstunnel
 	conflicts = haskell-wstunnel-bin
-	source = https://github.com/erebe/wstunnel/archive/refs/tags/v9.2.2.tar.gz
-	sha256sums = bfd7a9fd56e62f120268573bfc661c22e3aeac6d4ea53b6d0b7cd9919362c795
+	source = https://github.com/erebe/wstunnel/archive/refs/tags/v9.2.3.tar.gz
+	sha256sums = d747fcefc892513b195ab8227ed1c853e9d95966c87bb08dbc01211982fecb83
 
 pkgname = wstunnel
