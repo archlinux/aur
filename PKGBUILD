@@ -6,12 +6,20 @@
 
 _pkgname=pcsclite
 pkgname=lib32-$_pkgname
-pkgver=2.0.1
+# https://gitlab.archlinux.org/archlinux/packaging/packages/pcsclite/-/commits/main
+# https://salsa.debian.org/rousseau/PCSC/blob/master/ChangeLog
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="PC/SC Architecture smartcard middleware library (32-bit)"
 arch=('x86_64')
 url='https://pcsclite.apdu.fr/'
-license=('BSD')
+# https://salsa.debian.org/rousseau/PCSC/-/blob/2.0.3/COPYING
+license=(
+  'BSD-3-Clause'        # Most of it
+  'GPL-3.0-or-later'    # doc/example/pcsc_demo.c, src/spy/, UnitaryTests/
+  'BSD-2-Clause'        # src/auth.c, src/auth.h
+  '0BSD'                # src/simclist.c, src/simclist.h
+)
 depends=('libsystemd.so' 'libudev.so' 'libpolkit-gobject-1.so' $_pkgname)
 makedepends=('lib32-systemd' 'lib32-polkit' 'autoconf-archive')
 provides=('libpcsclite.so' 'libpcscspy.so')
@@ -19,7 +27,7 @@ validpgpkeys=('F5E11B9FFE911146F41D953D78A1B4DFE8F9C57E') # Ludovic Rousseau <ro
 source=("https://pcsclite.apdu.fr/files/pcsc-lite-${pkgver}.tar.bz2"{,.asc}
         "program-suffix.patch"
         "systemd-unit-conflicts.diff")
-sha256sums=('5edcaf5d4544403bdab6ee2b5d6c02c6f97ea64eebf0825b8d0fa61ba417dada'
+sha256sums=('f42ee9efa489e9ff5d328baefa26f9c515be65021856e78d99ad1f0ead9ec85d'
             'SKIP'
             'c63d6525a8514a30816f550b79fa1d269f1504951efc198ce4e503ab5f48a9c6'
             'e77aa9d0b6431d0de6a80d96bfd57e31b3c99e9ddcadf72990fe625b5cb128af')
@@ -55,6 +63,12 @@ build() {
     --with-systemdsystemunitdir=/usr/lib/systemd/system
 
   make
+
+  # namcap requires separate files for each "uncommon" license (ex: BSD* ones), so splitting the upstream COPYING file
+  awk '/David Corcoran/{flag=1} /GNU GPL v3/ {flag=0} flag' COPYING > LICENSE.BSD-3-Clause
+  awk '/GNU GPL v3/    {flag=1} /auth.c/     {flag=0} flag' COPYING > LICENSE.GPL-3.0-or-later
+  awk '/auth.c/        {flag=1} /simclist.c/ {flag=0} flag' COPYING > LICENSE.BSD-2-Clause
+  awk '/simclist.c/    {flag=1} flag'                       COPYING > LICENSE.0BSD
 }
 
 package() {
@@ -67,7 +81,7 @@ package() {
   rm -v "$pkgdir"/usr/bin/pcsc-spy-32
   # Keep pcscd-32 as it's useful for using with 32-bit only drivers
 
-  install -D -m0644 "$srcdir/pcsc-lite-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m0644 LICENSE.* -t "$pkgdir/usr/share/licenses/$pkgname"
   install -d "$pkgdir/usr/lib32/pcsc/drivers"
 }
 
