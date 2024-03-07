@@ -2,7 +2,7 @@
 pkgname=karbonized-bin
 pkgver=1.12.0
 _electronversion=25
-pkgrel=5
+pkgrel=6
 pkgdesc="Awesome Image Generator for Code Snippets & Screenshots"
 arch=('x86_64')
 url="https://github.com/yossTheDev/karbonized"
@@ -11,19 +11,16 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('ec525f543d01b865a12896eed63c1334fb4acc2178cc68af009bc314a8de8a62'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
