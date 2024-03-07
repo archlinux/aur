@@ -1,16 +1,16 @@
-pkgname='alsa-scarlett-gui-git'
+pkgname='alsa-scarlett-gui-dev'
 _pkgname='alsa-scarlett-gui'
-pkgver=0.2.7.g65c0
+pkgver=0.3.3.116.g7f40
 pkgrel=1
-pkgdesc="Gtk4 GUI for the Focusrite Scarlett Gen 2/3 ALSA Mixer Driver."
+pkgdesc="GUI for the ALSA controls presented by the Scarlett2 driver, Development version"
 arch=('i686' 'x86_64')
 url="https://github.com/geoffreybennett/alsa-scarlett-gui"
 license=('GPL3')
-depends=('gtk4' 'alsa-lib')
+depends=('alsa-lib' 'gtk4' 'openssl')
 makedepends=('gcc' 'make' 'git' 'pkgconf' 'sed')
 provides=('alsa-scarlett-gui')
-source=( "$_pkgname::git+https://github.com/geoffreybennett/alsa-scarlett-gui.git")
-sha384sums=('SKIP')
+source=("git+${url}.git#branch=dev")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
