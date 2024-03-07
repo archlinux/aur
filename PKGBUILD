@@ -84,7 +84,7 @@ build() {
     --with-mpc \
     --with-isl \
     --with-libelf \
-    --with-arch=rv64imafdc_zicsr_zifencei \
+    --with-arch=rv64imafdc \
     --with-abi=lp64d \
     --with-pkgversion='Arch User Repository'
 
