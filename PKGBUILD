@@ -3,7 +3,7 @@ pkgname=cgdi
 _pkgname=CGDI
 pkgver=0.0.8
 _electronversion=23
-pkgrel=4
+pkgrel=5
 pkgdesc="Application to calculate duration between 2 dates (Electron app)"
 arch=('any')
 url="https://github.com/nullfuzz-pentest/CGDI"
@@ -23,13 +23,13 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname}.sh"
-    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname}"
+    gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname}"
     cd "${srcdir}/${pkgname}.git/src"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -37,6 +37,7 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     npm install    
     npx electron-packager . "${_pkgname}" --platform=linux -overwrite
