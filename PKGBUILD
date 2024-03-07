@@ -2,7 +2,7 @@
 
 pkgname=python-langchain-core
 pkgver=0.1.29
-pkgrel=3
+pkgrel=4
 pkgdesc="Building applications with LLMs through composability"
 url="https://pypi.org/project/langchain-core"
 depends=(python
@@ -20,19 +20,19 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry')
 license=('MIT')
 arch=('any')
 _module=${pkgname#python-}
-_src_folder="${_module/-/_}-${pkgver}"
-source=("https://pypi.org/packages/source/${_module::1}/${_module}/${_module/-/_}-${pkgver}.tar.gz"
+_src_name="${_module/-/_}-${pkgver}"
+source=("https://pypi.org/packages/source/${_module::1}/${_module}/${_src_name}.tar.gz"
         "https://raw.githubusercontent.com/langchain-ai/langchain/v0.1.11/LICENSE")
 sha256sums=('6731dabffad03b9213ada2640d54ed7f4ef6b99fce87ade3c71474ae154dd3cc'
             '4ec67e4ca6e6721dba849b2ca82261597c86a61ee214bbf21416006b7b2d0478')
 
 build() {
-    cd "${srcdir}/${_src_folder}"
+    cd "${_src_name}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_src_folder}"
+    cd "${_src_name}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

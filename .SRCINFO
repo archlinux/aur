@@ -1,7 +1,7 @@
 pkgbase = python-langchain-core
 	pkgdesc = Building applications with LLMs through composability
 	pkgver = 0.1.29
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pypi.org/project/langchain-core
 	arch = any
 	license = MIT
