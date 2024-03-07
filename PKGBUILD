@@ -1,14 +1,17 @@
 # Maintainer:
 
 # options
-: ${CARGO_HOME:=${SRCDEST:-${startdir:?}}/cargo-home}
+: ${CARGO_HOME:=$SRCDEST/cargo-home}
 
+: ${_build_git:=true}
+
+unset _pkgtype
 : ${_pkgtype:=git}
 
 # basic info
 _pkgname="mozillavpn"
 pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
-pkgver=2.19.0.r44.g54da75553
+pkgver=2.20.0.r86.g07dcec47
 pkgrel=1
 pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
 url="https://github.com/mozilla-mobile/mozilla-vpn-client"
@@ -50,13 +53,13 @@ _main_package() {
     'yamllint'
   )
   optdepends=(
-    'openresolv: for resolv.conf management'
     'qt6-wayland: for Wayland support'
   )
 
   options=('!lto')
+  install="$_pkgname.install"
 
-  if [ x"$pkgname" == x"$_pkgname" ] ; then
+  if [ "${_build_git::1}" != "t" ] ; then
     _main_stable
   else
     _main_git
@@ -73,13 +76,14 @@ _main_stable() {
   sha256sums+=('SKIP')
 
   _prepare() {
-    cd "$_pkgsrc"
-    local _tag=$(git tag | grep -Ev '^.*[A-Za-z]{2}.*$' | sort -V | tail -1)
+    pushd "$_pkgsrc"
+    local _tag=$(git tag | grep -Ev '^.*[A-Za-z]{2}.*$' | sort -rV | head -1)
     _pkgver="${_tag#v}"
 
     if [[ "$_tag" != "v${pkgver%%.r*}" ]] ; then
       git checkout -f "$_tag"
     fi
+    popd
   }
 
   pkgver() {
@@ -103,9 +107,9 @@ _main_git() {
 
   pkgver() {
     cd "$_pkgsrc"
-    local _tag=$(git tag | sort -V | tail -1)
-    local _revision=$(git rev-list --count $_tag..HEAD)
-    local _hash=$(git rev-parse --short HEAD)
+    local _tag=$(git tag | sort -rV | head -1)
+    local _revision=$(git rev-list --count --cherry-pick $_tag...HEAD)
+    local _hash=$(git rev-parse --short=8 HEAD)
 
     local _pkgver=$(
       printf '%s.r%s.g%s' \
@@ -143,7 +147,7 @@ _source_mozillavpn() {
   )
 
   _prepare_mozillavpn() (
-    cd "${srcdir:?}/$_pkgsrc"
+    cd "$srcdir/$_pkgsrc"
     local -A _submodules=(
       #['kdab.android_openssl']='3rdparty/openSSL'
       ['adjust.android_sdk']='3rdparty/adjust-android-sdk'
@@ -174,7 +178,7 @@ _source_getsentry_sentry_native() {
   )
 
   _prepare_getsentry_sentry_native() (
-    cd "${srcdir:?}/$_pkgsrc"
+    cd "$srcdir/$_pkgsrc"
     cd "3rdparty/sentry"
     local -A _submodules=(
       ['chromium.googlesource.com.linux-syscall-support']='external/third_party/lss'
@@ -216,7 +220,7 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir:?}" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 }
 
 # execute
