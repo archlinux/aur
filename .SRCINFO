@@ -1,20 +1,19 @@
 pkgbase = localchat-bin
 	pkgdesc = Chat with generative language models locally on your computer with zero setup.
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://nathanlesage.github.io/local-chat/
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = asar
 	depends = electron28
-	provides = localchat=0.9.0
+	provides = localchat=0.10.0
 	conflicts = localchat
 	source = localchat.sh
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
-	source_aarch64 = localchat-0.9.0-aarch64.deb::https://github.com/nathanlesage/local-chat/releases/download/v0.9.0/localchat_0.9.0_arm64.deb
-	sha256sums_aarch64 = 0509c2c3d13702b1518cc8795581a19826e75eff9fd6f3d20de5eb8c7da5b3cf
-	source_x86_64 = localchat-0.9.0-x86_64.deb::https://github.com/nathanlesage/local-chat/releases/download/v0.9.0/localchat_0.9.0_amd64.deb
-	sha256sums_x86_64 = 22ab5cf20a267ed68886f3e9e09f2a66ee480d3db2f23b5d84bb4698d3dc06ff
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	source_aarch64 = localchat-0.10.0-aarch64.deb::https://github.com/nathanlesage/local-chat/releases/download/v0.10.0/localchat_0.10.0_arm64.deb
+	sha256sums_aarch64 = 576245055d0390c799278ac0880cf4901dde03e72085491c45bce5e9b416f854
+	source_x86_64 = localchat-0.10.0-x86_64.deb::https://github.com/nathanlesage/local-chat/releases/download/v0.10.0/localchat_0.10.0_amd64.deb
+	sha256sums_x86_64 = 7eabe690816b841c9aa6b57bbb4056939d6c195195f133f4d9cfcc988c6b3123
 
 pkgname = localchat-bin
