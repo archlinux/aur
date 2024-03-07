@@ -1,0 +1,11 @@
+pkgbase = imager-git
+	pkgdesc = Image and video viewer in terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/spynets1/imager
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = gcc
+
+pkgname = imager-git
