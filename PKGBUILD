@@ -9,7 +9,7 @@ url="https://codeberg.org/XDR/xFetch"
 license=('MIT')
 
 source=(
-	"https://codeberg.org/XDR/xFetch/releases/download/3.5/xfetch.tar.gz"
+	"https://codeberg.org/XDR/xFetch/releases/download/3.6/xfetch.tar.gz"
 	"https://codeberg.org/XDR/xFetch/raw/branch/main/LICENSE"
 )
 sha256sums=(
