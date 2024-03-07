@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034,SC2154 # to allow unused/uninitialized variables.
 
 pkgname=openimagedenoise-git
-pkgver=2.2.0.r0.gdfa3b96
+pkgver=2.2.1.r0.g5960a13
 #_fragment="#tag=v${pkgver}"
 pkgrel=1
 pkgdesc="Intel(R) Open Image Denoise library"
