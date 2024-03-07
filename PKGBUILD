@@ -1,6 +1,6 @@
 # Maintainer: Manuel Kauschinger <admin at bruzzzla dot de>
 pkgname=iota-firefly-wallet
-pkgver=2.0.8
+pkgver=2.0.9
 pkgrel=1
 pkgdesc="The IOTA Firefly Wallet"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=('gnome-keyring' 'libsecret' 'gtk3' 'libxss' 'nss')
 
 
 source_x86_64=("https://github.com/iotaledger/firefly/releases/download/desktop-iota-$pkgver/firefly-iota-desktop-$pkgver.AppImage")
-sha256sums_x86_64=('117e05368e823425570f919d22b39ff8d6259b071c5c68dc5803f9cae9353423')
+sha256sums_x86_64=('1fecfb2a80d416b33e8862d92e1e7c5c2f1f2ca86caf766e92e6f1cc543b334a')
 
 source=("iota-firefly-wallet.desktop")
 md5sums=('c22e0c2b6cd8941ea147ddc01352858a')
