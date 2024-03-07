@@ -2,14 +2,13 @@ pkgbase = python-papis-scihub-git
 	pkgdesc = Papis plugin to import from Sci-Hub
 	pkgver = 1.4.0
 	pkgrel = 1
-	url = https://github.com/raj-magesh/papis-scripts/papis-scihub
+	url = https://github.com/papis/scripts/tree/master/papis-scihub
 	arch = any
 	license = GPL3
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python
-	source = python-papis-scihub-git::git+https://github.com/raj-magesh/papis-scripts.git
-	source = fix-build-lint.patch
+	source = python-papis-scihub-git::git+https://github.com/hseg/scripts.git#branch=local
 	sha256sums = SKIP
-	sha256sums = 00f6a2efe1c8459ce6d19a71cf2d77313137637811998263ce98849834f80bbf
 
 pkgname = python-papis-scihub-git
