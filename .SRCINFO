@@ -4,12 +4,13 @@ pkgbase = zathura-djvu-git
 	pkgrel = 1
 	url = https://pwmt.org/projects/zathura-djvu
 	arch = x86_64
-	license = custom
+	license = Zlib
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
 	depends = zathura-git
 	depends = djvulibre
+	depends = desktop-file-utils
 	provides = zathura-djvu
 	conflicts = zathura-djvu
 	source = zathura-djvu-git::git+https://git.pwmt.org/pwmt/zathura-djvu.git#branch=develop
