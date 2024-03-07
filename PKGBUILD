@@ -7,12 +7,12 @@ pkgname=('brave-extension-bitwarden-git'
          'firefox-extension-bitwarden-git'
          'librewolf-extension-bitwarden-git'
          'opera-extension-bitwarden-git')
-pkgver=2024.1.1.r14000.g0530536
+pkgver=2024.2.1.r14334.g73504d9
 pkgrel=1
 pkgdesc='Bitwarden browser extensions'
 arch=('any')
 url='https://github.com/bitwarden/clients'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 makedepends=('git' 'nodejs' 'npm' 'unzip')
 source=('git+https://github.com/bitwarden/clients.git')
 sha256sums=('SKIP')

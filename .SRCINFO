@@ -1,10 +1,10 @@
 pkgbase = extension-bitwarden-git
 	pkgdesc = Bitwarden browser extensions
-	pkgver = 2024.1.1.r14000.g0530536
+	pkgver = 2024.2.1.r14334.g73504d9
 	pkgrel = 1
 	url = https://github.com/bitwarden/clients
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = nodejs
 	makedepends = npm
