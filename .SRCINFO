@@ -1,7 +1,7 @@
 pkgbase = act_runner
 	pkgdesc = Runner for Gitea based on Gitea fork of act
 	pkgver = 0.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitea.com/gitea/act_runner
 	arch = x86_64
 	license = MIT
