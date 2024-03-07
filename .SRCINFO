@@ -1,6 +1,6 @@
 pkgbase = dnsjit
 	pkgdesc = Engine for capturing, parsing and replaying DNS
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/DNS-OARC/dnsjit
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = dnsjit
 	depends = libck
 	depends = lz4
 	depends = zstd
-	source = https://github.com/DNS-OARC/dnsjit/archive/v1.2.1.tar.gz
-	sha256sums = ecac17974d104c17d1df775c2b548109ad7e53d05fbc2acd823fa43fce330d51
+	source = https://github.com/DNS-OARC/dnsjit/archive/v1.3.0.tar.gz
+	sha256sums = b12d2ea95cd7bf3f6f9d832033f3c68280d379f7f4af1f7716414459b37b653a
 
 pkgname = dnsjit
