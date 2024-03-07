@@ -1,8 +1,8 @@
 # Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
 
 pkgname=llvm-bolt
-pkgver=17.0.6
-pkgrel=2
+pkgver=18.1.0
+pkgrel=1
 pkgdesc='a post-link optimizer developed to speed up large applications'
 url="https://github.com/llvm/llvm-project/tree/main/bolt"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -10,7 +10,7 @@ arch=('x86_64')
 makedepends=('clang' 'cmake' 'ninja' 'llvm' 'llvm-libs' 'python')
 options=(!lto)
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver/llvm-project-$pkgver.src.tar.xz"{,.sig})
-sha512sums=('6d85bf749e0d77553cc215cbfa61cec4ac4f4f652847f56f946b6a892a99a5ea40b6ab8b39a9708a035001f007986941ccf17e4635260a8b0c1fa59e78d41e30'
+sha512sums=('b94f837ff0e1aafdd4939e6e50740c8ab6af602b182357ae495359301a6d5fadaa997014895b90e0c91a715c713218396bb10687167ef30b17ebeccf310f2adf'
             'SKIP')
 validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A'  # Tom Stellard <tstellar@redhat.com>
               'D574BD5D1D0E98895E3BF90044F2485E45D59042') # Tobias Hieta <tobias@hieta.se>
