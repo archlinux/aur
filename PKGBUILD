@@ -4,16 +4,16 @@ _pkgname=Discord-Netflix
 pkgver=1.1.12
 _electronversion=22
 _nodeversion=16
-pkgrel=3
+pkgrel=4
 pkgdesc="An updated and improved version from the original Discord-Netflix from Nirewen."
 arch=('any')
 url="https://discord.gg/kbf8EjpxbU"
 _ghurl="https://github.com/V0l-D/Discord-Netflix"
-license=('GPL3')
+license=('GPL-3.0-only')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
-    'python>=3'
+    'python>3'
 )
 makedepends=(
     'gendesk'
@@ -21,13 +21,14 @@ makedepends=(
     'npm'
     'git'
     'base-devel'
+    'gcc'
 )
 source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -40,7 +41,7 @@ build() {
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -f -n -q --categories "Utility" --name "${pkgname}" --exec "${pkgname} %U"
+    gendesk -f -n -q --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -48,7 +49,13 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
+    if [ `curl ifconfig.co/country` == "China" ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    fi
     npm install
     npm run linbuild
 }
