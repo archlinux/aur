@@ -1,8 +1,8 @@
 pkgbase = perl-perlx-maybe
 	pkgdesc = PerlX::Maybe - return a pair only if they are both defined
 	pkgver = 1.202
-	pkgrel = 1
-	url = http://metacpan.cpan.org/dist/_
+	pkgrel = 2
+	url = http://metacpan.cpan.org/release/PerlX-Maybe
 	arch = any
 	license = GPL
 	license = PerlArtistic

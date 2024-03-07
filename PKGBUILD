@@ -3,11 +3,11 @@
 
 pkgname='perl-perlx-maybe'
 pkgver='1.202'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="PerlX::Maybe - return a pair only if they are both defined"
 _dist=PerlX-Maybe
 arch=('any')
-url="http://metacpan.cpan.org/dist/_$dist"
+url="http://metacpan.cpan.org/release/$_dist"
 license=('GPL' 'PerlArtistic')
 options=('!emptydirs' purge)
 depends=('perl')
