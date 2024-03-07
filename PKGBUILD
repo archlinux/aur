@@ -16,7 +16,7 @@ declare -gA _tags=(
 )
 
 pkgname=zed-editor
-pkgver=0.125.1
+pkgver=0.126.0
 _pkgver=$pkgver-pre
 pkgrel=0
 pkgdesc='high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
@@ -24,23 +24,29 @@ arch=(x86_64)
 url=https://zed.dev
 _url="https://github.com/zed-industries/zed"
 license=(GPL-3.0-or-later AGPL-3.0-or-later Apache-2.0)
-depends=()
-makedepends=(alsa-lib
-             cargo
+depends=(alsa-lib
+         fontconfig
+         gcc-libs
+         glibc
+         libxkbcommon-x11
+         openssl
+         vulkan-driver
+         vulkan-icd-loader
+         wayland
+         zstd)
+makedepends=(cargo
              # clang
-             fontconfig
              # gcc-objc
              # libdispatch
-             libxkbcommon-x11
-             openssl
              # protobuf
+             vulkan-headers
              vulkan-validation-layers
              # wasmtime
-             wayland)
+            )
 _archive="zed-$_pkgver"
 source=("$_url/archive/v$_pkgver/$_archive.tar.gz"
         "protocol-${_tags[protocol]}.tar.gz::https://github.com/livekit/protocol/archive/${_tags[protocol]}.tar.gz")
-sha256sums=('fa0f58874aebfe21f04ad3684e5fcbd35a5aab956c90351470fd5fff3927ca10'
+sha256sums=('d60cd49363585c6788bd92406de4562762365f84cb871ca45fdd76e21ae155d2'
             'cd26bc1015fa0b79154c23a385441ae81e9a4385211cf2989eb939ae83d0e414')
 
 prepare() {
