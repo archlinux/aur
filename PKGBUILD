@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt6-base-headless
-_qtver=6.6.1
+_qtver=6.6.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -36,7 +36,7 @@ _pkgfn="qtbase-everywhere-src-$_qtver"
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
         qt6-base-cflags.patch
         qt6-base-nostrip.patch)
-sha256sums=('450c5b4677b2fe40ed07954d7f0f40690068e80a94c9df86c2c905ccd59d02f7'
+sha256sums=('b89b426b9852a17d3e96230ab0871346574d635c7914480a2a27f98ff942677b'
             '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
             '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094')
 
