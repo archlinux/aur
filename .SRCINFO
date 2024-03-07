@@ -1,0 +1,17 @@
+pkgbase = perl-net-async-websocket
+	pkgdesc = Perl Net::Async::WebSocket CPAN module
+	pkgver = 0.13
+	pkgrel = 2
+	url = https://metacpan.org/release/Net-Async-WebSocket
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-io-async
+	depends = perl-protocol-websocket
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Net-Async-WebSocket-0.13.tar.gz
+	md5sums = 3b4bd23e760bd944a9e79e5a0be7773e
+
+pkgname = perl-net-async-websocket
