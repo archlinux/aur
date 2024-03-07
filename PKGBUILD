@@ -15,21 +15,15 @@ provides=("openimagedenoise=${pkgver%.r*}")
 conflicts=(openimagedenoise)
 makedepends=(git cmake 'ispc>=1.14' ninja)
 source=("${pkgname%-git}::git+https://github.com/OpenImageDenoise/oidn.git${_fragment}"
-        "git+https://github.com/OpenImageDenoise/mkl-dnn.git"
-        "git+https://github.com/NVIDIA/cutlass"
-        "git+https://github.com/ROCmSoftwarePlatform/composable_kernel"
         )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
 
 prepare() {
-  git -C "${srcdir}"/${pkgname%-git} config submodule.mkl-dnn.url "${srcdir}"/mkl-dnn
-  git -C "${srcdir}"/${pkgname%-git} config submodule.cutlass.url "${srcdir}"/cutlass
-  git -C "${srcdir}"/${pkgname%-git} config submodule.external/composable_kernel.url "${srcdir}"/composable_kernel
-  sed 's|../oidn-weights.git|https://github.com/OpenImageDenoise/oidn-weights.git|' -i "${srcdir}"/${pkgname%-git}/.gitmodules
-  git -C "${srcdir}"/${pkgname%-git} -c protocol.file.allow=always submodule update --init --recursive # --remote
+  prepare_submodule
 }
 
 pkgver() {
@@ -46,5 +40,22 @@ build() {
 package() {
   DESTDIR=${pkgdir} ninja -C "build" install
 }
+
+# Generated with git_submodule_PKGBUILD_conf.sh ( https://gist.github.com/bartoszek/41a3bfb707f1b258de061f75b109042b )
+# Call prepare_submodule in prepare() function
+
+prepare_submodule() {
+  git -C "$srcdir/openimagedenoise" config submodule.mkl-dnn.url "$srcdir/mkl-dnn"
+  git -C "$srcdir/openimagedenoise" config submodule.weights.url "$srcdir/oidn-weights"
+  git -C "$srcdir/openimagedenoise" config submodule.cutlass.url "$srcdir/cutlass"
+  git -C "$srcdir/openimagedenoise" config submodule.external/composable_kernel.url "$srcdir/composable_kernel"
+  git -C "$srcdir/openimagedenoise" -c protocol.file.allow=always submodule update --init --recursive
+}
+source+=(
+  "mkl-dnn::git+https://github.com/OpenImageDenoise/mkl-dnn.git"
+  "oidn-weights::git+https://github.com/OpenImageDenoise/oidn-weights.git"
+  "cutlass::git+https://github.com/NVIDIA/cutlass"
+  "composable_kernel::git+https://github.com/ROCmSoftwarePlatform/composable_kernel"
+)
 
 # vim:set ts=2 sw=2 et:

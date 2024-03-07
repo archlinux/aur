@@ -14,9 +14,11 @@ pkgbase = openimagedenoise-git
 	provides = openimagedenoise=2.2.0
 	conflicts = openimagedenoise
 	source = openimagedenoise::git+https://github.com/OpenImageDenoise/oidn.git
-	source = git+https://github.com/OpenImageDenoise/mkl-dnn.git
-	source = git+https://github.com/NVIDIA/cutlass
-	source = git+https://github.com/ROCmSoftwarePlatform/composable_kernel
+	source = mkl-dnn::git+https://github.com/OpenImageDenoise/mkl-dnn.git
+	source = oidn-weights::git+https://github.com/OpenImageDenoise/oidn-weights.git
+	source = cutlass::git+https://github.com/NVIDIA/cutlass
+	source = composable_kernel::git+https://github.com/ROCmSoftwarePlatform/composable_kernel
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
