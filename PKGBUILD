@@ -3,12 +3,12 @@
 _pkgname=h5vcData
 _pkgver=2.22.0
 pkgname=r-${_pkgname,,}
-pkgver=2.22.0
-pkgrel=1
-pkgdesc='Example data for the h5vc package'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Example data for the h5vc package"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-or-later')
 depends=(
   r
 )
@@ -16,14 +16,15 @@ optdepends=(
   r-h5vc
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ff015754b692f4057063e947d01e76a1bfa6c9715f71b4123f3c2a6f1eced45d')
+md5sums=('c251316e2d6dc6cb90e8faad0015103b')
+b2sums=('4c71488a293cc88ad70e67b166b687b8e156edad74343d5f3d1354ce310d428615591706193bb1faaba58e3e5b4d8b105d328ca77c2529a5ac2c11c908bcd211')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
