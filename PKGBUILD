@@ -3,8 +3,8 @@
 _repo=coreutils
 _pkgname=bonsai-$_repo
 pkgname=$_pkgname-git
-pkgver=r82.0cbfb5c
-pkgrel=4
+pkgver=r173.c97201f
+pkgrel=1
 pkgdesc="New core utilities for a new era."
 arch=('any')
 url="https://git.tebibyte.media/bonsai/coreutils"
@@ -12,8 +12,11 @@ license=('AGPL')
 depends=()
 makedepends=('rust' 'rust-bindgen')
 provides=('bonsai-coreutils')
-source=("git+https://git.tebibyte.media/bonsai/coreutils.git")
-md5sums=(SKIP)
+source=("git+https://git.tebibyte.media/bonsai/coreutils.git" "bonsai.sh")
+md5sums=(
+	SKIP
+	ae956a4af74f13b3ec522d16420e608b
+)
 
 pkgver() {
   cd "$_repo"
@@ -31,15 +34,10 @@ pkgver() {
 # }
 
 package() {
-	cd "$_repo"
-	
-	make install PREFIX="$pkgdir/usr"
+	profile_d="$pkgdir/etc/profile.d"
+	mkdir -p "$profile_d"
+	mv bonsai.sh "$profile_d"
 
-	for file in $pkgdir/usr/bin/* $pkgdir/usr/share/man/man1/*; do
-		case "$file" in
-			*true*) rm "$file" ;;
-			*false*) rm "$file" ;;
-			*) ;;
-		esac
-	done
+	cd "$_repo"
+	make install PREFIX="$pkgdir/opt/bonsai"
 }
