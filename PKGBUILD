@@ -11,28 +11,102 @@
 pkgname=ace
 _pkgver=7_1_3
 pkgver=7.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Framework that provides many components and patterns for developing high-performance, distributed real-time and embedded systems."
+arch=('x86_64')
 url="https://www.dre.vanderbilt.edu/~schmidt/ACE.html"
-license=('custom')
-arch=('i686' 'x86_64')
-depends=()
-options=(!libtool)
-conflicts=('libace')
-source=("https://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-${_pkgver}/ACE-${pkgver}.tar.gz")
-sha256sums=('4cb82d8daf83f3abe50ac460b4fac9a8da2512f08d8efb4d327dcacd0b3929b3')
+license=('LicenseRef-DOC')
+depends=('gcc-libs' 'glibc' 'openssl' 'xerces-c')
+makedepends=('perl')
+provides=(
+    'libACE.so'
+    'libACEXML.so'
+    'libACEXML_Parser.so'
+    'libACEXML_XML_Svc_Conf_Parser.so'
+    'libACE_Compression.so'
+    'libACE_ETCL.so'
+    'libACE_ETCL_Parser.so'
+    'libACE_HTBP.so'
+    'libACE_INet.so'
+    'libACE_INet_SSL.so'
+    'libACE_Monitor_Control.so'
+    'libACE_RLECompression.so'
+    'libACE_RMCast.so'
+    'libACE_SSL.so'
+    'libACE_TMCast.so'
+    'libACE_XML_Utils.so'
+    'libKokyu.so'
+)
+
+source=("https://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-${_pkgver}/ACE-src-${pkgver}.tar.gz")
+sha256sums=('105a2705dddb3c93e486028f63a33ec0f3f6dbcd63cdd166f34f5d5da35ab5ac')
+
+prepare() {
+    export ACE_ROOT="$srcdir/ACE_wrappers"
+    cd "$ACE_ROOT"
+
+    # Built a select subset of components in the ACE release
+    # Inspired by Debian
+    cat <<-EOF > "$ACE_ROOT/ACE.mwc"
+	workspace {
+	    exclude {
+	        apps/gperf/tests
+	        apps/Gateway
+	        apps/JAWS
+	        apps/JAWS2
+	        apps/JAWS3
+	        apps/drwho
+	        apps/mkcsregdb
+	        apps/soreduce
+
+	        ACEXML/tests
+	        Kokyu/tests
+	        ACEXML/examples
+	        netsvcs/clients
+	        protocols/examples
+
+	        ASNMP
+	        MPC
+	        examples
+	        performance-tests
+	        websvcs
+	    }
+	}
+	EOF
+}
 
 build() {
-  export ACE_ROOT=$srcdir/ACE_wrappers
-  cd $ACE_ROOT
-  echo '#include "ace/config-linux.h"' > ace/config.h
-  echo 'INSTALL_PREFIX = /usr
-  include $(ACE_ROOT)/include/makeinclude/platform_linux.GNU' > include/makeinclude/platform_macros.GNU
-  cd ace
-  make
+    export ACE_ROOT="$srcdir/ACE_wrappers"
+    cd "$ACE_ROOT"
+
+    cat <<-EOF > "$ACE_ROOT/ace/config.h"
+	#include "ace/config-linux.h"
+	EOF
+
+    cat <<-EOF > "$ACE_ROOT/include/makeinclude/platform_macros.GNU"
+	INSTALL_PREFIX = /usr
+	ipv6 = 1
+	ssl = 1
+	xerces3 = 1
+	include \$(ACE_ROOT)/include/makeinclude/platform_linux.GNU
+	EOF
+
+    cat <<-EOF > "$ACE_ROOT/bin/MakeProjectCreator/config/default.features"
+	ipv6 = 1
+	ssl = 1
+	xerces3 = 1
+	EOF
+
+    "$ACE_ROOT/bin/mwc.pl" -type gnuace ACE.mwc
+    make
 }
 
 package() {
-  cd $srcdir/ACE_wrappers/ace
-  make DESTDIR="$pkgdir/" install
+    export ACE_ROOT="$srcdir/ACE_wrappers"
+    cd "$ACE_ROOT"
+    make DESTDIR="$pkgdir/" install
+    rm -rf "$pkgdir/usr/share/ace/include"
+    rm -rf "$pkgdir/usr/share/ace/bin"
+    rm "$pkgdir/usr/share/ace/ace-devel.sh"
+    install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
