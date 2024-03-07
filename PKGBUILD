@@ -2,11 +2,12 @@
 
 pkgname=sweet-folders-icons-git
 _pkgname=Sweet-folders
-pkgver=r12.d50fbe3
+pkgver=r14.b2192ff
 pkgrel=1
 arch=("any")
 pkgdesc="Folder icons from the Sweet GTK Theme for Linux desktop environments"
 url="https://github.com/EliverLara/${_pkgname}"
+makedepends=('git')
 license=('GPL')
 source=("git+${url}")
 sha256sums=('SKIP')
