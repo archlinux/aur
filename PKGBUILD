@@ -2,13 +2,13 @@
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=zathura-ps-git
-pkgrel=1
 pkgver=0.2.7.r2.g0d28473
+pkgrel=2
 pkgdesc="PostScript support for zathura"
 arch=('x86_64')
 url="https://pwmt.org/projects/zathura-ps"
-license=('custom')
-depends=('zathura-git' 'libspectre')
+license=('Zlib')
+depends=('zathura-git' 'libspectre' 'desktop-file-utils')
 makedepends=('git' 'meson' 'ninja')
 conflicts=('zathura-ps')
 provides=('zathura-ps')
