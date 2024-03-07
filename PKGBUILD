@@ -3,9 +3,9 @@ _pkgname=slimjet
 pkgname="${_pkgname}-beta-bin"
 _appname="flashpeak-${_pkgname}"
 pkgver=42.0.3.0
-pkgrel=2
+pkgrel=3
 _libffmpegverurl="https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt"
-_libffmpegver=0.84.0
+_libffmpegver=0.85.0
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('x86_64')
 url="https://www.slimjet.com"
@@ -18,6 +18,7 @@ depends=(
     'nss'
     'at-spi2-core'
     'libxrandr'
+    'libxcomposite'
 )
 optdepends=(
     'kdialog: needed for file dialogs in KDE' 'ttf-liberation: fix fonts for some PDFs'
@@ -35,15 +36,16 @@ source=(
     "libffmpeg-${_libffmpegver}.zip::${_libffmpegverurl}/releases/download/${_libffmpegver}/${_libffmpegver}-linux-x64.zip"
 )
 sha256sums=('a83b5922db4fc6d1037ce5122b4b3198a78e1d3f9f65882088886d8825fb1989'
-            '184b31197ea9a52b68728f7c471033e3f86eee38fb0d9e5590ed107a2b83304a')
+            '95eaa8588ea61ba2d4fbb31f666933b7f1cbe11e3b801a06b77474c1df94f09a')
 build() {
     bsdtar -xf "${srcdir}/data."*
-    bsdtar -xf "${srcdir}/control."*
+    #bsdtar -xf "${srcdir}/control."*
     find "${srcdir}" -type d -exec chmod 755 {} \;
+    rm -rf "${srcdir}/opt/.gitkeep"
 }
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt,usr/bin}
-    cp -r "${srcdir}/opt/${_pkgname}" "${pkgdir}/opt"
+    cp -r "${srcdir}/opt" "${pkgdir}"
+    install -Dm755 -d "${pkgdir}/usr/bin"
     ln -sf "/opt/${_pkgname}/${_appname}" "${pkgdir}/usr/bin/${_appname}"
     install -Dm644 "${srcdir}/libffmpeg.so" -t "${pkgdir}/opt/${_pkgname}"
     install -Dm644 "${srcdir}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
