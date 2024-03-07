@@ -1,5 +1,5 @@
 pkgname=mlir
-pkgver=16.0.6
+pkgver=17.0.6
 pkgrel=1
 pkgdesc="Multi-Level IR Compiler Framework for LLVM"
 arch=('x86_64')
@@ -8,7 +8,17 @@ license=("custom:Apache 2.0 with LLVM Exception")
 depends=("llvm=$pkgver")
 makedepends=("cmake")
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz")
-sha256sums=('ce5e71081d17ce9e86d7cbcfa28c4b04b9300f8fb7e78422b1feb6bc52c3028e')
+sha256sums=('58a8818c60e6627064f312dbf46c02d9949956558340938b71cf731ad8bc0813')
+
+prepare() {
+  cd llvm-project-${pkgver}.src/
+  # CMake Error at /usr/lib/cmake/llvm/AddLLVM.cmake:590 (add_library):
+  # add_library cannot create target "llvm_gtest" because an imported target
+  rm -r third-party
+
+  # /usr/bin/ld: cannot find -lLLVMCodeGenTypes: No such file or directory
+  sed -i 's|LLVM_LINK_COMPONENTS|IGNORE_THAT|g' mlir/tools/mlir-tblgen/CMakeLists.txt
+}
 
 build() {
   cmake -S llvm-project-${pkgver}.src/mlir -B build \
