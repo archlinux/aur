@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggraph
-_pkgver=2.2.0
+_pkgver=2.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -43,8 +43,8 @@ optdepends=(
   r-tibble
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fa46dccd79fad0bb9c6cc4ed3c365e35')
-b2sums=('085c3bd1756451bd0e03fa70d6841163c4f74092fdfe973e664c667dab8a829d7fc2d95ca3502747513c75a17e827ef90b7d36fac72f4b6be6edcdfcb4f985cb')
+md5sums=('cacb7920286e8197ea44a31749319981')
+b2sums=('cc6566fc1558d2d1091117624f2198f20a2872eb2a68698b5ca7ee0f99dfc1f7b0800fcbfe542d1dad676b02e70c9d47f7d5f335154d97a88c1c515b1e0534a8')
 
 build() {
   mkdir build
