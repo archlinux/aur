@@ -1,6 +1,6 @@
 # Maintainer: Nicolas Derumigny nderumigny <at> gmail <dot> com
 pkgname=spack
-pkgver=0.21.1
+pkgver=0.21.2
 pkgrel=1
 pkgdesc="A flexible package manager for supercomputer that supports multiple versions, configurations, platforms, and compilers."
 arch=('i686' 'x86_64')
@@ -8,6 +8,7 @@ url="https://spack.io/"
 license=('MIT')
 depends=('python' 'polkit')
 optdepends=( 'env-modules-tcl' 'lmod' )
+makedepends=( 'debugedit' 'patch'  )
 source=(
         spack-${pkgver}.tar.gz::https://github.com/spack/spack/archive/v${pkgver}.tar.gz
         spack.sysusers
