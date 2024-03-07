@@ -3,24 +3,25 @@
 _pkgname=ORIClust
 _pkgver=1.0-2
 pkgname=r-${_pkgname,,}
-pkgver=1.0.2
-pkgrel=1
-pkgdesc='Order-restricted Information Criterion-based Clustering Algorithm'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=4
+pkgdesc="Order-Restricted Information Criterion-Based Clustering Algorithm"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8a78e945fde4333348b279e4bd79af157b0699e448b2bdfcbdf4d349b05bd20c')
+md5sums=('45f234da67bcf367370cf7b471511f19')
+b2sums=('605a04fe14edd4102a35c1cc833fcab019d6b1c6959848ffc40702bc4c43354b9e910f1b64496c3106cc13318428eccc5e31b09ce9d07ab927435d489743d73b')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
