@@ -13,16 +13,10 @@ sha256sums=('26321df1bc2855adbcefac0a32091ce843271d93791fceff914a3f4c7b06d269')
 prepare() {
     source /opt/ros/humble/setup.bash
 }
-
 build() {
     colcon build --cmake-args -Wno-dev
 }
-
 package() {
     mkdir -p $pkgdir/opt/ros/humble
-    cp -r $srcdir/install/* $pkgdir/opt/ros/humble
-    rm $pkgdir/opt/ros/humble/*setup.*
-    rm $pkgdir/opt/ros/humble/_local_setup*
-    rm $pkgdir/opt/ros/humble/COLCON_IGNORE
-
+    cp -r $srcdir/install/ackermann_msgs/* $pkgdir/opt/ros/humble
 }
