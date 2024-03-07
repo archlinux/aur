@@ -72,7 +72,6 @@ function execApp() {
 		--bind "${XDG_DOCUMENTS_DIR}"/WeChat_Downloads "${XDG_DOWNLOAD_DIR}" \
 		--ro-bind-try "${XAUTHORITY}" "${XAUTHORITY}" \
 		--ro-bind /etc /etc \
-		--hostname TrashChat \
 		--unshare-all \
 		--share-net \
 		--ro-bind /usr/share/wechat-uos/var/ /var/ \
