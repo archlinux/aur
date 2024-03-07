@@ -39,15 +39,13 @@ package() {
     _npm_options=()
   _npm_options=(
     -g
-    # --user
-    #   root
-    --prefix
-      "${pkgdir}"/usr
+    # --user=root
+    --prefix="${pkgdir}/usr"
     )
   npm \
     install \
-    "${_npm_options[@]}" \
-    "${srcdir}/${_pkgbase}-${pkgver}.tgz"
+      "${_npm_options[@]}" \
+      "${srcdir}/${_pkgbase}-${pkgver}.tgz"
   rm \
     -fr \
       "${pkgdir}/usr/etc"
