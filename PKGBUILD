@@ -3,12 +3,12 @@
 _pkgname=mapplots
 _pkgver=1.5.2
 pkgname=r-${_pkgname,,}
-pkgver=1.5.2
-pkgrel=1
-pkgdesc='Data Visualisation on Maps'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Data Visualisation on Maps"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
@@ -16,14 +16,15 @@ optdepends=(
   r-shapefiles
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ed0e151d6865549d1a10882984a7fb29bc89a7b94ad69e512f90937b981c8a18')
+md5sums=('d376f1fa68dd004de1fa49bf1146e465')
+b2sums=('bd796d85ec69f5569fc2a4515b00c596738e988fb70eef5d93ae9aa1aaf30a6881232f58e6df30a1b40f06af1c350db8416578d97ce54f67f25d22973d30774c')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
