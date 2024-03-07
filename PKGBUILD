@@ -5,7 +5,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Yen Chi Hsuan <yan12125 at gmail.com>
 pkgname=nwjs-sdk-bin
-pkgver=0.84.0
+pkgver=0.85.0
 pkgrel=1
 pkgdesc="node-webkit is an app runtime based on Chromium and node.js. SDK release with DevTools"
 arch=("x86_64")
@@ -19,7 +19,7 @@ optdepends=(
 provides=("nwjs-sdk")
 conflicts=("nwjs-sdk")
 source=("${pkgname}-${pkgver}.tar.gz::http://dl.nwjs.io/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-x64.tar.gz")
-sha512sums=('2e1b5f1fc588c756d87674a66fa1a33fb7f33a2daa6b0ffacd779ff0c43336052c1b5c5b4e0c5fba15cc4df605033a927da3f3ddc075342689a1c2a3e752fb43')
+sha512sums=('d80115c915dffb2d6e0656dd0a876936180be90cc11ee6535327abfec24924d4bc71aa34a4ea76aff83dc71151c97afc80e619f64b20c3b710c7b5e6ca5cb1ea')
 
 package() {
   cd "${pkgname%-bin}-v${pkgver}-linux-x64"
