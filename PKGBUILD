@@ -24,7 +24,7 @@ build() {
 
 check() {
   cd "$srcdir/genty"
-  python setup.py test
+  python -m unittest -v
 }
 
 package() {
