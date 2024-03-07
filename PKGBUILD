@@ -3,12 +3,12 @@ pkgname=google-messages-bin
 _pkgname=GoogleMessages
 pkgver=1.4.2
 _electronversion=19
-pkgrel=6
+pkgrel=7
 pkgdesc='A "native-like" OS X, Windows, & Linux desktop app for Google Messages'
 arch=('x86_64')
 url="https://www.messagesfordesktop.com/"
 _ghurl="https://github.com/kelyvin/Google-Messages-For-Desktop"
-license=('LicenseRef-custom')
+license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -23,13 +23,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('204112783720e2428ec0ad78ebd9f95f30bf9c77959d4ebd6232be30da98970a'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories "Network" --name "${_pkgname}" --exec "${pkgname%-bin}"
+    gendesk -q -f -n --categories="Network" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
 package() {   
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
