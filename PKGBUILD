@@ -1,6 +1,6 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 pkgname=perl-test-http-localserver
-pkgver=0.75
+pkgver=0.76
 pkgrel=1
 pkgdesc='Test::HTTP::LocalServer - spawn a local HTTP server for testing'
 _dist=Test-HTTP-LocalServer
@@ -10,7 +10,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl' 'perl-http-message' 'perl-cgi' 'perl-http-request-ascgi' 'perl-http-daemon')
 options=('!emptydirs' purge)
 source=("https://cpan.metacpan.org/authors/id/C/CO/CORION/${_dist}-${pkgver}.tar.gz")
-md5sums=('e878310d042e0dcc8b0a1a1cd24efbdd')
+md5sums=('23552703814fd58b49a56f5b0b0bdcc0')
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
