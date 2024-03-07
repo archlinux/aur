@@ -11,7 +11,7 @@ if [[ -n ${_pkg_suffix} ]]; then
     _pkgver_dash_suffix=${_pkgver_dash_suffix}-${_pkg_suffix}
 fi
 pkgver=${_pkgver_suffix}
-pkgrel=1
+pkgrel=5
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -45,6 +45,7 @@ enable_all_projects_minus_libc="-DLLVM_ENABLE_PROJECTS=bolt;clang;clang-tools-ex
 build_with_clang_options=" \
 			-DLLVM_BINUTILS_INCDIR=/usr/include \
             -DLLVM_ENABLE_LLD=ON \
+			-DLLVM_ENABLE_MODULES=ON \
             -DLLVM_ENABLE_LTO=Thin \
             -DCMAKE_C_COMPILER=clang \
             -DCMAKE_CXX_COMPILER=clang++ \
