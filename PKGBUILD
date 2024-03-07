@@ -19,18 +19,20 @@ license=(
 )
 depends=(
   'nodejs'
+  'inherits'
 )
 makedepends=(
   'npm'
 )
+_npm=""http://registry.npmjs.org"
 source=(
-  http://registry.npmjs.org/$_pkgbase/-/$_pkgbase-$pkgver.tgz
+  "${_npm}/${_pkgbase}/-/${_pkgbase}-${pkgver}.tgz"
 )
 noextract=(
   "${_pkgbase}-${pkgver}.tgz"
 )
 sha512sums=(
-  'f039490152431151da575b21f452ee28b2e0085bfd10027e33ef086e34883e0a1e368decb392f51e018131f9c8f3c73b3b330466475cbb21a8a1b15e2b73abab'
+  "f039490152431151da575b21f452ee28b2e0085bfd10027e33ef086e34883e0a1e368decb392f51e018131f9c8f3c73b3b330466475cbb21a8a1b15e2b73abab"
 )
 
 package() {
