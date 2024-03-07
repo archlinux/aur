@@ -2,6 +2,7 @@
 pkgname=prometheus-podman-exporter
 pkgver=1.9.0
 pkgrel=1
+pkgdesc="Prometheus exporter for podman environments exposing containers, pods, images, volumes and networks information."
 arch=(x86_64)
 url="https://github.com/containers/prometheus-podman-exporter"
 license=('APACHE-2.0')
