@@ -1,6 +1,6 @@
 _pkgname=cyberdrop_dl
 pkgname=cyberdropdownloader
-pkgver=5.1.82
+pkgver=5.1.92
 pkgrel=1
 pkgdesc="Bulk downloader for multiple file hosts and forum sites"
 arch=('any')
@@ -31,9 +31,12 @@ makedepends=(
     python-poetry-core
     python-wheel
 )
+optdepends=(
+    'flaresolverr: A proxy server to bypass Cloudflare protection'
+)
 conflicts=('cyberdrop-dl' 'cyberdrop-dl-git')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('60813d984223af16fbd969c1659b09d1dcb60f8e81cc138cbb8359e780d92c1a')
+sha256sums=('65b75f27df2f7a8d83fd10fb9ab4cc0c618a2cf173ec1a8692230dcb2f57676b')
 
 build(){
     cd $_pkgname-$pkgver
