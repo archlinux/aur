@@ -1,0 +1,15 @@
+pkgbase = nodejs-inherits
+	pkgdesc = Browser-friendly inheritance fully compatible with standard node.js
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://github.com/isaacs/inherits
+	arch = any
+	license = custom
+	makedepends = npm
+	depends = nodejs
+	provides = inherits=2.0.4
+	noextract = inherits-2.0.4.tgz
+	source = http://registry.npmjs.org/inherits/-/inherits-2.0.4.tgz
+	sha512sums = 93fbc6697e3f6256b75b3c8c0af4d039761e207bea38ab67a8176ecd31e9ce9419cc0b2428c859d8af849c189233dcc64a820578ca572b16b8758799210a9ec1
+
+pkgname = nodejs-inherits
