@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 pkgname=dnglab-bin
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Camera RAW to DNG file format converter"
 arch=(
     'aarch64'
@@ -23,7 +23,7 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v
 sha256sums_aarch64=('0b902d1453afe89b777658041d1e5b27b4865690c2ec9f5640661200fd894174')
 sha256sums_x86_64=('60b02849e56db7680118c6b6d42d131bec48104c7e9b747d61745b9a8b58bd88')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
