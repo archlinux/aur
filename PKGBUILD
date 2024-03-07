@@ -2,13 +2,13 @@
 
 pkgname=gsconnect-git
 pkgver=56.r15.g43594cc
-pkgrel=2
+pkgrel=3
 pkgdesc="GSConnect CLI"
 arch=(any)
 url="https://github.com/GSConnect/gnome-shell-extension-${pkgname%-git}"
 license=('GPL-2.0-or-later OR MPL-2.0')
-depends=(dconf gobject-introspection-runtime gjs gvc-git hicolor-icon-theme libnautilus-extension python python-gobject)
-makedepends=(appstream flake8 eslint git meson python-black)
+depends=(dbus dconf gobject-introspection-runtime gjs gvc-git hicolor-icon-theme libnautilus-extension python python-gobject)
+makedepends=(appstream coreutils desktop-file-utils eslint flake8 gettext git glib2 gtk-update-icon-cache meson pkgconf python-black)
 optdepends=('ydotool: generic command-line automation tool'
             'wtype: xdotool type for wayland'
             'wl-clipboard: command-line copy/paste utilities for Wayland'
