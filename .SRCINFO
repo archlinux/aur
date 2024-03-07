@@ -1,6 +1,6 @@
 pkgbase = riffdiff
 	pkgdesc = A diff filter highlighting which line parts have changed
-	pkgver = 2.27.1
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/walles/riff
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = riffdiff
 	depends = glibc
 	depends = gcc-libs
 	conflicts = riff
-	source = riffdiff-2.27.1.tar.gz::https://github.com/walles/riff/archive/refs/tags/2.27.1.tar.gz
-	sha256sums = ba52c76c103f7e88301a61227b648d63115e52c7b14ff966073a8d0264f42bde
+	source = riffdiff-3.0.0.tar.gz::https://github.com/walles/riff/archive/refs/tags/3.0.0.tar.gz
+	sha256sums = 693821b00a95aa0d6b215ab96f3bca5c1a5fc9cf07e7bd80261941a0afb81a4e
 
 pkgname = riffdiff
