@@ -3,12 +3,12 @@
 _name=n30f
 pkgname=${_name}-git
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='a quick hack to display a png in a borderless and transparent non-wm-managed window'
 arch=('x86_64')
 url="https://github.com/sdhand/n30f"
 depends=('cairo' 'libxcb')
-makedepends=('gcc')
+makedepends=('gcc' 'git')
 license=('custom:BSD-3-Clause')
 provides=('n30f')
 conflicts=('n30f')
