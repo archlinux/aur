@@ -1,7 +1,7 @@
 pkgbase = ungoogled-chromium-xdg
 	pkgdesc = A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory
 	pkgver = 122.0.6261.111
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
 	license = BSD-3-Clause
@@ -71,7 +71,7 @@ pkgbase = ungoogled-chromium-xdg
 	source = xdg-basedir.patch
 	source = no-omnibox-suggestion-autocomplete.patch
 	source = index.html
-	source = ungoogled-chromium-122.0.6261.111-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/refs/tags/122.0.6261.111-1.tar.gz
+	source = ungoogled-chromium-122.0.6261.111-1.zip::https://github.com/noahvogt/ungoogled-chromium/archive/refs/heads/update.zip
 	source = 0001-adjust-buffer-format-order.patch
 	source = 0001-enable-linux-unstable-deb-target.patch
 	source = 0001-ozone-wayland-implement-text_input_manager_v3.patch
