@@ -5,7 +5,7 @@
 pkgname=hmcl-stable-bin
 _ver=3.5.6
 pkgver=${_ver}
-pkgrel=2
+pkgrel=3
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
 arch=('any')
 url="https://github.com/huanghongxun/HMCL"
