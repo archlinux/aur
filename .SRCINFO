@@ -1,6 +1,6 @@
 pkgbase = squirrel-sql
 	pkgdesc = A Java SQL client for any JDBC compliant database
-	pkgver = 4.6.0
+	pkgver = 4.7.1
 	pkgrel = 1
 	url = http://www.squirrelsql.org/
 	install = squirrel-sql.install
@@ -9,10 +9,10 @@ pkgbase = squirrel-sql
 	license = GPL
 	makedepends = unzip
 	depends = java-runtime
-	source = http://downloads.sourceforge.net/squirrel-sql/squirrelsql-4.6.0-optional.zip
+	source = http://downloads.sourceforge.net/squirrel-sql/squirrelsql-4.7.1-optional.zip
 	source = squirrel-sql
 	source = squirrel-sql.desktop
-	md5sums = 4adb48cecd1a5305437acf2de42be404
+	md5sums = 0aae118ca4a1796af5e553df7390dd0a
 	md5sums = 13fcedb38028ddafae5d5d4526dad5a3
 	md5sums = 14f0b383472e67040112c446cd2dc3d4
 
