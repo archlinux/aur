@@ -1,0 +1,17 @@
+pkgbase = perl-moox-role-eventemitter
+	pkgdesc = MooX::Role::EventEmitter
+	pkgver = 0.04
+	pkgrel = 1
+	url = https://metacpan.org/release/MooX-Role-EventEmitter
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-moo
+	depends = perl-try-tiny
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/C/CO/CORION/MooX-Role-EventEmitter-0.04.tar.gz
+	md5sums = a3aa02766f9e2e3d0e2642a0b9384afa
+
+pkgname = perl-moox-role-eventemitter
