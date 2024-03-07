@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=colorRamps
-_pkgver=2.3.2
+_pkgver=2.3.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d14c789854947e7bbf74730d4466b10a')
-b2sums=('a256e6ce30ad9676f22f871fbb075bff7ac26be888a8544af739e05c12199809d7ae20d2901769951924e3457d6dc9abb07782488e5f026720b7f9443ff38337')
+md5sums=('5d338c19f816ffd8f1413aebc579236f')
+b2sums=('6e582cf3890824e29e8180a566114508ade746184897f924519fa7713224c4c5c5330d886acb4cf66866b2b24bc8118b29497d8afe43ad00707474610e68d163')
 
 build() {
   mkdir build
