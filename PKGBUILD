@@ -3,13 +3,13 @@
 
 pkgname=utterly-nord-plasma
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A Global theme for Plasma 5 with transparency, blur, rounded edges for
 window borders and widgets, Nord Color Palette and inspired wallpaper and a
 reasonable desktop layout with a top panel, dock and a Android 12 like clock
 widget.'
 url='https://github.com/HimDek/Utterly-Nord-Plasma'
-_commit='6d9ffe008f0bee47c8346c9a7ec71f206d999fd0'
+_commit='81da69e4c87fe00e446f335b44c5c0244e773189'
 arch=('any')
 license=('GPL2')
 depends=('plasma-desktop')
