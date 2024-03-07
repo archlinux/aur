@@ -103,7 +103,7 @@ index 38b1f619a..9a4bbd6e8 100644
                          Q.push_back(fullpath);
                      }
 diff --git LiteEditor/mainbook.cpp LiteEditor/mainbook.cpp
-index 08ba0bfad..13e0db11c 100644
+index ef0e306b5..7c597beff 100644
 --- LiteEditor/mainbook.cpp
 +++ LiteEditor/mainbook.cpp
 @@ -450,7 +450,7 @@ int MainBook::FindEditorIndexByFullPath(const wxString& fullpath)
@@ -138,7 +138,7 @@ index 08ba0bfad..13e0db11c 100644
      fileName.MakeAbsolute();
  
  #ifdef __WXMSW__
-@@ -1849,7 +1856,7 @@ WelcomePage* MainBook::GetWelcomePage(bool createIfMissing)
+@@ -1838,7 +1845,7 @@ WelcomePage* MainBook::GetWelcomePage(bool createIfMissing)
  
  clEditor* MainBook::OpenFileAsync(const wxString& file_name, std::function<void(IEditor*)>&& callback)
  {
@@ -147,7 +147,7 @@ index 08ba0bfad..13e0db11c 100644
      auto editor = FindEditor(real_path);
      if (editor) {
          push_callback(std::move(callback), real_path);
-@@ -1860,7 +1867,7 @@ clEditor* MainBook::OpenFileAsync(const wxString& file_name, std::function<void(
+@@ -1849,7 +1856,7 @@ clEditor* MainBook::OpenFileAsync(const wxString& file_name, std::function<void(
              m_book->SetSelection(index);
          }
      } else {
@@ -156,7 +156,7 @@ index 08ba0bfad..13e0db11c 100644
          if (editor) {
              push_callback(std::move(callback), real_path);
          }
-@@ -1919,7 +1926,7 @@ void MainBook::OnIdle(wxIdleEvent& event)
+@@ -1908,11 +1915,12 @@ void MainBook::OnIdle(wxIdleEvent& event)
      auto editor = GetActiveEditor(false);
      CHECK_PTR_RET(editor);
  
@@ -164,10 +164,9 @@ index 08ba0bfad..13e0db11c 100644
 +    execute_callbacks_for_file(CLRealPath(editor->GetFileName().GetFullPath(), true));
  }
  
- void MainBook::OnEditorModified(clCommandEvent& event)
-@@ -1952,4 +1959,5 @@ void MainBook::OnEditorSaved(clCommandEvent& event)
- #endif
- }
+ void MainBook::OnEditorModified(clCommandEvent& event) { event.Skip(); }
+ 
+ void MainBook::OnEditorSaved(clCommandEvent& event) { event.Skip(); }
  
 -void MainBook::OnSessionLoaded(clCommandEvent& event) { event.Skip(); }
 \ No newline at end of file
