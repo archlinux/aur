@@ -3,7 +3,7 @@
 # Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
 # Maintainer: Truocolo <truocolo@aol.com>
 # Contributor: katt <magunasu.b97@gmail.com>
-# Contributor: Fabio Loli
+# Contributor: Fabio Loli <fabio.lolix@disroot.org>
 
 _git="false"
 pkgname=duckstation
