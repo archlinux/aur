@@ -1,0 +1,291 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e308a467..acb3157e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -62,7 +62,8 @@ if (QT_MAJOR_VERSION STREQUAL "5")
+         PURPOSE "Qt5X11Extras is needed for the x11renderer"
+         URL "http://doc.qt.io/qt-5/qtx11extras-index.html")
+ elseif (QT_MAJOR_VERSION STREQUAL "6")
+-    find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} CONFIG REQUIRED Gui) # qtx11extras_p.h
++    find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} CONFIG REQUIRED Gui OpenGLWidgets)
++    find_package(Qt${QT_MAJOR_VERSION}XcbQpaPrivate) # qtx11extras_p.h
+ endif()
+ 
+ include(ECMPoQmTools)
+diff --git a/cmake/FindGObject.cmake b/cmake/FindGObject.cmake
+index af0c9f73..de9e0824 100644
+--- a/cmake/FindGObject.cmake
++++ b/cmake/FindGObject.cmake
+@@ -47,6 +47,6 @@ FIND_LIBRARY(_GLibs NAMES glib-2.0
+ SET( GOBJECT_LIBRARIES ${_GObjectLibs} ${_GModuleLibs} ${_GThreadLibs} ${_GLibs} )
+ 
+ INCLUDE(FindPackageHandleStandardArgs)
+-FIND_PACKAGE_HANDLE_STANDARD_ARGS(GOBJECT DEFAULT_MSG GOBJECT_LIBRARIES GOBJECT_INCLUDE_DIR)
++FIND_PACKAGE_HANDLE_STANDARD_ARGS(GObject DEFAULT_MSG GOBJECT_LIBRARIES GOBJECT_INCLUDE_DIR)
+ 
+ MARK_AS_ADVANCED(GOBJECT_INCLUDE_DIR _GObjectLibs _GModuleLibs _GThreadLibs _GLibs)
+diff --git a/gstreamer/CMakeLists.txt b/gstreamer/CMakeLists.txt
+index 5c7ae930..86c45a3f 100644
+--- a/gstreamer/CMakeLists.txt
++++ b/gstreamer/CMakeLists.txt
+@@ -78,7 +78,7 @@ if (OPENGL_FOUND)
+     list(APPEND phonon_gstreamer_SRCS glrenderer.cpp)
+ endif ()
+ 
+-if (Qt5X11Extras_FOUND)
++if (Qt5X11Extras_FOUND OR Qt6XcbQpaPrivate_FOUND)
+     set(BUILD_X11RENDERER TRUE)
+ endif()
+ 
+@@ -116,7 +116,10 @@ if (QT_MAJOR_VERSION STREQUAL "5")
+         target_link_libraries(phonon_gstreamer Qt::X11Extras)
+     endif()
+ else()
+-    target_link_libraries(phonon_gstreamer Qt6::GuiPrivate)
++    target_link_libraries(phonon_gstreamer Qt::GuiPrivate Qt::OpenGLWidgets)
++    if(Qt6XcbQpaPrivate_FOUND)
++        target_link_libraries(phonon_gstreamer Qt::XcbQpaPrivate)
++    endif()
+ endif()
+ 
+ if(USE_INSTALL_PLUGIN)
+diff --git a/gstreamer/debug.cpp b/gstreamer/debug.cpp
+index 2f7421fc..e43da64b 100644
+--- a/gstreamer/debug.cpp
++++ b/gstreamer/debug.cpp
+@@ -36,11 +36,9 @@
+ 
+ #define DEBUG_INDENT_OBJECTNAME QLatin1String("Debug_Indent_object")
+ 
++QRecursiveMutex Debug::mutex;
+ 
+-QMutex Phonon::Gstreamer::Debug::mutex( QMutex::Recursive );
+-
+-using namespace Phonon::Gstreamer;
+-using namespace Phonon::Gstreamer::Debug;
++using namespace Debug;
+ 
+ static bool s_debugColorsEnabled = true;
+ static DebugLevel s_debugLevel = DEBUG_NONE;
+diff --git a/gstreamer/debug.h b/gstreamer/debug.h
+index 213bf719..687e4de0 100644
+--- a/gstreamer/debug.h
++++ b/gstreamer/debug.h
+@@ -42,10 +42,6 @@
+ #define __PRETTY_FUNCTION__ __FILE__
+ #endif
+ 
+-namespace Phonon {
+-
+-namespace Gstreamer {
+-
+ /**
+  * @namespace Debug
+  * @short kdebug with indentation functionality and convenience macros
+@@ -77,7 +73,7 @@ namespace Gstreamer {
+  */
+ namespace Debug
+ {
+-    extern QMutex mutex;
++    extern QRecursiveMutex mutex;
+ 
+     enum DebugLevel {
+         DEBUG_INFO  = 0,
+@@ -151,7 +147,7 @@ namespace Debug
+     class Block
+     {
+     public:
+-        Block( const char *name );
++        explicit Block( const char *name );
+         ~Block();
+ 
+     private:
+@@ -201,8 +197,4 @@ namespace Debug
+     typedef QList<QVariant> List;
+ }
+ 
+-} // namespace Gstreamer
+-
+-} // namespace Phonon
+-
+ #endif
+diff --git a/gstreamer/debug_p.h b/gstreamer/debug_p.h
+index 676df7c5..48096578 100644
+--- a/gstreamer/debug_p.h
++++ b/gstreamer/debug_p.h
+@@ -22,6 +22,7 @@
+ #include "debug.h"
+ 
+ #include <QtCore/QString>
++#include <QIODevice>
+ 
+ class IndentPrivate
+     : public QObject
+diff --git a/gstreamer/devicemanager.cpp b/gstreamer/devicemanager.cpp
+index 2735f22b..3ce305d0 100644
+--- a/gstreamer/devicemanager.cpp
++++ b/gstreamer/devicemanager.cpp
+@@ -32,8 +32,14 @@
+ #include <gst/gst.h>
+ 
+ #include <QtCore/QSettings>
+-#if QT_VERSION > QT_VERSION_CHECK(5, 0, 0) && defined(BUILD_X11RENDERER)
++#include <QGuiApplication>
++
++#if defined(BUILD_X11RENDERER)
++# if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+ #include <QtX11Extras/QX11Info>
++# else
++#include <qpa/qplatformnativeinterface.h>
++# endif
+ #endif
+ 
+ /*
+@@ -359,10 +365,10 @@ AbstractRenderer *DeviceManager::createVideoRenderer(VideoWidget *parent)
+         return new WidgetRenderer(parent);
+     }
+ #if defined(BUILD_X11RENDERER)
+-#if QT_VERSION > QT_VERSION_CHECK(5, 0, 0)
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+     else if (QX11Info::isPlatformX11()) {
+ #else
+-    else {
++    else if (nullptr != qApp->nativeInterface<QNativeInterface::QX11Application>()) {
+ #endif
+         if (m_videoSinkWidget == "xwindow") {
+             return new X11Renderer(parent);
+diff --git a/gstreamer/effect.cpp b/gstreamer/effect.cpp
+index 913afddd..7424812e 100644
+--- a/gstreamer/effect.cpp
++++ b/gstreamer/effect.cpp
+@@ -101,7 +101,7 @@ void Effect::setupEffectParams()
+                     case G_TYPE_STRING:
+                         m_parameterList.append(Phonon::EffectParameter(i, propertyName,
+                             { },   //hints
+-                            G_PARAM_SPEC_STRING(param)->default_value,
++                            QString::fromUtf8(G_PARAM_SPEC_STRING(param)->default_value),
+                             0,
+                             0));
+                         break;
+diff --git a/gstreamer/glrenderer.cpp b/gstreamer/glrenderer.cpp
+index ca241324..4c718b01 100644
+--- a/gstreamer/glrenderer.cpp
++++ b/gstreamer/glrenderer.cpp
+@@ -76,9 +76,7 @@ GLRenderer::GLRenderer(VideoWidget* videoWidget) :
+     , m_glWindow(0)
+ {
+     debug() << "Creating OpenGL renderer";
+-    QGLFormat format = QGLFormat::defaultFormat();
+-    format.setSwapInterval(1);    // Enable vertical sync on draw to avoid tearing
+-    m_glWindow = new GLRenderWidgetImplementation(videoWidget, format);
++    m_glWindow = new GLRenderWidgetImplementation(videoWidget);
+ 
+     GstElement *videoSink = m_glWindow->createVideoSink();
+     if (videoSink) {
+@@ -218,8 +216,8 @@ const char *const yuvToRgb =
+     "DP3 result.color.z, R1, c[1].xwyw;"
+     "END";
+ 
+-GLRenderWidgetImplementation::GLRenderWidgetImplementation(VideoWidget*videoWidget, const QGLFormat &format) :
+-        QGLWidget(format, videoWidget)
++GLRenderWidgetImplementation::GLRenderWidgetImplementation(VideoWidget*videoWidget) :
++        QOpenGLWidget(videoWidget)
+         , m_program(0)
+         , m_yuvSupport(false)
+         , m_videoWidget(videoWidget)
+@@ -227,11 +225,11 @@ GLRenderWidgetImplementation::GLRenderWidgetImplementation(VideoWidget*videoWidg
+     makeCurrent();
+     glGenTextures(3, m_texture);
+ 
+-    glProgramStringARB = (_glProgramStringARB) context()->getProcAddress(QLatin1String("glProgramStringARB"));
+-    glBindProgramARB = (_glBindProgramARB) context()->getProcAddress(QLatin1String("glBindProgramARB"));
+-    glDeleteProgramsARB = (_glDeleteProgramsARB) context()->getProcAddress(QLatin1String("glDeleteProgramsARB"));
+-    glGenProgramsARB = (_glGenProgramsARB) context()->getProcAddress(QLatin1String("glGenProgramsARB"));
+-    glActiveTexture = (_glActiveTexture) context()->getProcAddress(QLatin1String("glActiveTexture"));
++    glProgramStringARB = (_glProgramStringARB) context()->getProcAddress("glProgramStringARB");
++    glBindProgramARB = (_glBindProgramARB) context()->getProcAddress("glBindProgramARB");
++    glDeleteProgramsARB = (_glDeleteProgramsARB) context()->getProcAddress("glDeleteProgramsARB");
++    glGenProgramsARB = (_glGenProgramsARB) context()->getProcAddress("glGenProgramsARB");
++    glActiveTexture = (_glActiveTexture) context()->getProcAddress("glActiveTexture");
+ 
+     m_hasPrograms = glProgramStringARB && glBindProgramARB && glDeleteProgramsARB && glGenProgramsARB && glActiveTexture;
+ 
+@@ -252,7 +250,7 @@ GLRenderWidgetImplementation::GLRenderWidgetImplementation(VideoWidget*videoWidg
+     }
+ 
+     QPalette palette;
+-    palette.setColor(QPalette::Background, Qt::black);
++    palette.setColor(backgroundRole(), Qt::black);
+     setPalette(palette);
+     setAutoFillBackground(true);
+     // Videowidget always have this property to allow hiding the mouse cursor
+diff --git a/gstreamer/glrenderer.h b/gstreamer/glrenderer.h
+index c4416927..813b0186 100644
+--- a/gstreamer/glrenderer.h
++++ b/gstreamer/glrenderer.h
+@@ -22,7 +22,8 @@
+ 
+ #ifndef QT_NO_OPENGL
+ 
+-#include <QtOpenGL/QGLWidget>
++#include <QOpenGLWidget>
++#include <QOpenGLContext>
+ 
+ #ifndef QT_OPENGL_ES
+ class QString;
+@@ -49,7 +50,7 @@ private:
+     GLRenderWidgetImplementation *m_glWindow;
+ };
+ 
+-class GLRenderWidgetImplementation : public QGLWidget
++class GLRenderWidgetImplementation : public QOpenGLWidget
+ {
+     Q_OBJECT
+ 
+@@ -60,7 +61,7 @@ class GLRenderWidgetImplementation : public QGLWidget
+     typedef void (*_glGenProgramsARB) (GLsizei, GLuint *);
+     typedef void (*_glActiveTexture) (GLenum);
+ public:
+-    GLRenderWidgetImplementation(VideoWidget *control, const QGLFormat &format);
++    GLRenderWidgetImplementation(VideoWidget *control);
+     void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
+     GstElement *createVideoSink();
+     void updateTexture(const QByteArray &array, int width, int height);
+diff --git a/gstreamer/mediaobject.cpp b/gstreamer/mediaobject.cpp
+index ee490d56..4e57b164 100644
+--- a/gstreamer/mediaobject.cpp
++++ b/gstreamer/mediaobject.cpp
+@@ -30,7 +30,6 @@
+ #include "gsthelper.h"
+ #include "pipeline.h"
+ 
+-#include <QtCore/QByteRef>
+ #include <QtCore/QEvent>
+ #include <QtCore/QFile>
+ #include <QtCore/QFileInfo>
+diff --git a/gstreamer/widgetrenderer.cpp b/gstreamer/widgetrenderer.cpp
+index 751da125..3fdb1dd2 100644
+--- a/gstreamer/widgetrenderer.cpp
++++ b/gstreamer/widgetrenderer.cpp
+@@ -80,7 +80,7 @@ WidgetRenderer::WidgetRenderer(VideoWidget *videoWidget_)
+ 
+     // Clear the background with black by default
+     QPalette palette;
+-    palette.setColor(QPalette::Background, Qt::black);
++    palette.setColor(videoWidget()->backgroundRole(), Qt::black);
+     videoWidget()->setPalette(palette);
+     videoWidget()->setAutoFillBackground(true);
+     videoWidget()->setAttribute(Qt::WA_NoSystemBackground, false);
+diff --git a/gstreamer/x11renderer.cpp b/gstreamer/x11renderer.cpp
+index 32de24e7..561eff7a 100644
+--- a/gstreamer/x11renderer.cpp
++++ b/gstreamer/x11renderer.cpp
+@@ -72,7 +72,7 @@ X11Renderer::X11Renderer(VideoWidget *videoWidget)
+     m_renderWidget = new OverlayWidget(videoWidget, this);
+     debug() << "Creating X11 overlay renderer";
+     QPalette palette;
+-    palette.setColor(QPalette::Background, Qt::black);
++    palette.setColor(videoWidget->backgroundRole(), Qt::black);
+     videoWidget->setPalette(palette);
+     videoWidget->setAutoFillBackground(true);
+     m_renderWidget->setMouseTracking(true);

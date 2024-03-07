@@ -1,0 +1,27 @@
+pkgbase = phonon-qt6-gstreamer-git
+	pkgdesc = Phonon GStreamer backend for Qt6
+	pkgver = 4.10.0_r3316.g2bfadef4
+	pkgrel = 1
+	url = https://community.kde.org/Phonon
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = phonon-qt6
+	makedepends = qt6-tools
+	depends = gst-plugins-base
+	depends = phonon-qt6
+	optdepends = pulseaudio: PulseAudio support
+	optdepends = gst-plugins-good: PulseAudio support and good codecs
+	optdepends = gst-plugins-bad: additional codecs
+	optdepends = gst-plugins-ugly: additional codecs
+	optdepends = gst-libav: libav codec
+	provides = phonon-qt6-gstreamer
+	provides = phonon-qt6-backend
+	provides = phonon-qt6-backend-git
+	conflicts = phonon-qt6-gstreamer
+	source = git+https://github.com/KDE/phonon-gstreamer.git
+	source = qt6_build_patch.patch
+	sha256sums = SKIP
+	sha256sums = 3da6e5739f36f829141edc3d4c814389a425d1eecd597f1e7e63708356b8f148
+
+pkgname = phonon-qt6-gstreamer-git
