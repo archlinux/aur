@@ -6,7 +6,7 @@
 # Contributor: jibi <jibi@paranoici.org>
 
 pkgname='inspircd'
-pkgver='3.16.1'
+pkgver='3.17.0'
 pkgrel='2'
 pkgdesc='InspIRCd is a modular Internet Relay Chat (IRC) server written in C++ for Linux, BSD, Windows and macOS systems.'
 arch=('x86_64' 'aarch64')
@@ -53,7 +53,7 @@ source=(
     "$pkgname.sysusers"
 )
 sha512sums=(
-    '2b488858b0012bcb3eb92a33960e9927c861587c7b7451a47fd3e10a97fad9c392524d98712593fd455c5cbae7fd1779e4b90b9e55680c2f36b483e0acf2bba5'
+    '02d1748cffa50a2b01443ec7fd5fb455e640cf274e0c0dc70f0b2353d8c9d3cfc93b04e8c10af66d5aa5ea8f859844d117071c5c0e0842ae71f4abdc3db9a1ba'
     '5a16a7c237693ffc6a108358f339b6aa2451fb16430561848ae869f890199b38fab6a13640bcc35cf1d07e32d7e5fff405d88668ee05ddaffc2ef61cb42ee832'
     '90e7ae20a0d13cef2ff00c56382ea5cf1ed8843228937c49cab7fe0e2a34d02b9fac20dd55c6cd5e79533b5764a9d10d19e26b043a2d9c98a4384a7e1c2859c4'
 )
