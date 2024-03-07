@@ -9,15 +9,19 @@
 
 pkgname=bin32-firefox-bin
 pkgver=123.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org - 32bit version for 64bit systems"
 arch=('x86_64')
 _arch=i686
 license=('MPL' 'GPL' 'LGPL')
+provides=('bin32-firefox')
+conflicts=('bin32-firefox')
 url="https://www.mozilla.org/en-US/firefox/"
-depends=('lib32-dbus-glib' 'lib32-gtk3' 'lib32-libxt' 'lib32-nss')
+depends=('bash' 'lib32-alsa-lib' 'lib32-at-spi2-core' 'lib32-cairo' 'lib32-dbus' 'lib32-fontconfig' 'lib32-freetype2'
+	'lib32-gcc-libs' 'lib32-gdk-pixbuf2' 'lib32-glib2' 'lib32-glibc' 'lib32-gtk3' 'lib32-libx11' 'lib32-libxcb'
+	'lib32-libxcomposite' 'lib32-libxcursor' 'lib32-libxdamage' 'lib32-libxext' 'lib32-libxfixes' 'lib32-libxi'
+	'lib32-libxrandr' 'lib32-libxrender' 'lib32-nspr' 'lib32-nss' 'lib32-pango')
 optdepends=('lib32-librsvg: svg_loader.so library'
-            'lib32-gtk-engines: libclearlooks.so library'
             'lib32-ffmpeg: extra codec support (x264)')
 source=(https://download-installer.cdn.mozilla.net/pub/firefox/releases/$pkgver/linux-$_arch/en-US/firefox-$pkgver.tar.bz2
         'firefox32.desktop')
