@@ -1,7 +1,7 @@
 pkgbase = python-langsmith
 	pkgdesc = LangSmith Client SDK Implementations
 	pkgver = 0.1.19
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/langsmith
 	arch = any
 	license = MIT
@@ -18,7 +18,7 @@ pkgbase = python-langsmith
 	depends = python-psutil
 	depends = python-typing_extensions
 	depends = python-urllib3
-	source = https://files.pythonhosted.org/packages/source/l/langsmith/langsmith-0.1.19.tar.gz
+	source = https://pypi.org/packages/source/l/langsmith/langsmith-0.1.19.tar.gz
 	sha256sums = 461093c19d5eb9b108069381c7342ba2fa30d60d77e5361e2374b779fa401b8b
 
 pkgname = python-langsmith
