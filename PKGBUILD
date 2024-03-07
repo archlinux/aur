@@ -3,12 +3,12 @@
 _pkgname=proto
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
-pkgver=1.0.0
-pkgrel=4
-pkgdesc='Prototype Object-Based Programming'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=9
+pkgdesc="Prototype Object-Based Programming"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r
 )
@@ -17,14 +17,15 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9294d9a3b2b680bb6fac17000bfc97453d77c87ef68cfd609b4c4eb6d11d04d1')
+md5sums=('ba74c21febd5282d73e97ccaf5ebbb84')
+b2sums=('9a6b7830558dc3d5b64b686b0f110bf784c02d4f82144936abc931572f0fd5dc60cbf48d1f60361dcc2522945c9f8c49c8c45799046002813efc64214b4c0b71')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
