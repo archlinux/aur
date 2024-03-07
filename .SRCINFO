@@ -1,6 +1,6 @@
 pkgbase = kwin-polonium-git
 	pkgdesc = A tiling window manager for KWin 5.27 and up (Git version)
-	pkgver = 0.3.0.r12.g440a30b
+	pkgver = 1.0b1.r2.g60dc024
 	pkgrel = 1
 	url = https://zeroxoneafour.github.io/polonium/
 	arch = any

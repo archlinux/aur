@@ -1,7 +1,7 @@
 # Maintainer: Joaquim Monteiro <joaquim.monteiro@protonmail.com>
 
 pkgname=kwin-polonium-git
-pkgver=0.3.0.r12.g440a30b
+pkgver=1.0b1.r2.g60dc024
 pkgrel=1
 pkgdesc='A tiling window manager for KWin 5.27 and up (Git version)'
 arch=('any')
