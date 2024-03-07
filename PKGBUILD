@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Siavash Askari Nasr <ciavash@protonmail.com>
 pkgname=restfox-bin
-pkgver=0.4.0
+pkgver=0.5.0
 _electronversion=27
-pkgrel=2
+pkgrel=1
 pkgdesc="Offline-first web HTTP client"
 arch=('x86_64')
 url='https://restfox.dev'
@@ -14,14 +14,17 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
 )
+options=(
+    '!emptydirs'
+)
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/flawiddsouza/Restfox/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1f78bdacd23ad18d64d60be7575c2ba0c8cc7bb4e2ecdc7256671ed0d0ccc216'
+sha256sums=('8f85ebc442bf0a3ad7f4bdd6145138ce1e4b223995a96090b227c63665bb4fe7'
             '82601c8ed24f59528b28c23a2fb309f9743dffc860ba06ce8d253e1ed8959a16'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
