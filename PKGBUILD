@@ -1,15 +1,14 @@
-# system requirements: ncbi-blast+ (see<https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download>)
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=protr
 _pkgver=1.7-0
 pkgname=r-${_pkgname,,}
-pkgver=1.7.0
-pkgrel=1
-pkgdesc='Generating Various Numerical Representation Schemes for Protein Sequences'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('BSD')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Generating Various Numerical Representation Schemes for Protein Sequences"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('BSD-3-Clause')
 depends=(
   r
 )
@@ -23,15 +22,18 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('44c22a7fbe169496f2bf3d25ac27044da36d746fcf1bb4f5424461d17abc6741')
+md5sums=('e13e53d13fd27b7e4718a32df6ceeac5')
+b2sums=('6ef12b2ccacec70370e81fa055a3f66b1f2335eb18b5dfe1b1afd346c0a4b7915d8941b58765ab704718a484a4f886efbd1145c2fd3bcddab1083fd803a050db')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
