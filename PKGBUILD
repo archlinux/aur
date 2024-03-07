@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=uvw
 pkgname=python-${_base}
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Universal VTK Writer for Numpy Arrays"
 arch=(x86_64)
@@ -15,7 +15,7 @@ checkdepends=(python-pytest vtk libpng fmt jsoncpp verdict freetype2 libxt
 optdepends=('python-mpi4py: for ')
 changelog=CHANGELOG.md
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('cc77bd7c21cdaf6693ad6d38bc3572b5a078e63f4a0b1af4d0e589cf24307fabc0d46e47bcf6b68e36b4d2782c95d4f459352067f07c20580088d4c6ddf45532')
+sha512sums=('9bccca28bfad3889c85e669d6076674a5e6892f23cc820bae4c7521f183e73cd59eeb8d1482a06904cbd62678983e04167dfc994b71cb8b999a3e310bed865a7')
 
 build() {
   cd ${_base}-${pkgver}
