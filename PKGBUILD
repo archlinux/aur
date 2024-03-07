@@ -13,7 +13,7 @@ license=('Apache')
 depends=(intel-tbb python)
 provides=("openimagedenoise=${pkgver%.r*}")
 conflicts=(openimagedenoise)
-makedepends=(git cmake 'ispc>=1.14' ninja)
+makedepends=(git makepkg-git-lfs-proto cmake 'ispc>=1.14' ninja)
 source=("${pkgname%-git}::git+https://github.com/OpenImageDenoise/oidn.git${_fragment}"
         )
 sha256sums=('SKIP'
@@ -53,7 +53,7 @@ prepare_submodule() {
 }
 source+=(
   "mkl-dnn::git+https://github.com/OpenImageDenoise/mkl-dnn.git"
-  "oidn-weights::git+https://github.com/OpenImageDenoise/oidn-weights.git"
+  "oidn-weights::git-lfs+https://github.com/OpenImageDenoise/oidn-weights.git"
   "cutlass::git+https://github.com/NVIDIA/cutlass"
   "composable_kernel::git+https://github.com/ROCmSoftwarePlatform/composable_kernel"
 )

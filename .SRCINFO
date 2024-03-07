@@ -6,6 +6,7 @@ pkgbase = openimagedenoise-git
 	arch = x86_64
 	license = Apache
 	makedepends = git
+	makedepends = makepkg-git-lfs-proto
 	makedepends = cmake
 	makedepends = ispc>=1.14
 	makedepends = ninja
@@ -15,7 +16,7 @@ pkgbase = openimagedenoise-git
 	conflicts = openimagedenoise
 	source = openimagedenoise::git+https://github.com/OpenImageDenoise/oidn.git
 	source = mkl-dnn::git+https://github.com/OpenImageDenoise/mkl-dnn.git
-	source = oidn-weights::git+https://github.com/OpenImageDenoise/oidn-weights.git
+	source = oidn-weights::git-lfs+https://github.com/OpenImageDenoise/oidn-weights.git
 	source = cutlass::git+https://github.com/NVIDIA/cutlass
 	source = composable_kernel::git+https://github.com/ROCmSoftwarePlatform/composable_kernel
 	sha256sums = SKIP
