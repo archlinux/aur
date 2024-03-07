@@ -13,8 +13,6 @@ pkgbase = r-quick-share
 	depends = webkit2gtk
 	options = !lto
 	source = r-quick-share-0.3.0.tar.gz::https://github.com/Martichou/rquickshare/archive/refs/tags/v0.3.0.tar.gz
-	source = r-quick-share.desktop
 	sha256sums = b382d38f4a6e499077080badb21ab5d58ded6e767fc0722b7dfc3e8195954431
-	sha256sums = 5de9d91fa5f21bd6eb9983b1b1d100637fbf2ef6ee106fba090969b1f965a4f5
 
 pkgname = r-quick-share
