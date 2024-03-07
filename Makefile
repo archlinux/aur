@@ -17,7 +17,7 @@ help-common:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m %-30s\033[0m %s\n", $$1, $$2}'
 
 
-.PHONY: renew install update package clean update_tag test
+.PHONY: renew install package clean update_tag test
 renew: update_tag install ## get newer version and renew package, install that
 
 install: ## install package
