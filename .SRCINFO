@@ -1,0 +1,21 @@
+pkgbase = prometheus-podman-exporter
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/containers/prometheus-podman-exporter
+	arch = x86_64
+	license = APACHE-2.0
+	makedepends = gcc
+	makedepends = btrfs-progs
+	makedepends = git
+	makedepends = go
+	makedepends = glibc
+	makedepends = gcc-libs
+	makedepends = systemd
+	makedepends = gpgme
+	makedepends = device-mapper
+	makedepends = pkgconf
+	depends = podman>4
+	source = prometheus-podman-exporter-1.9.0.tar.gz::https://github.com/containers/prometheus-podman-exporter/archive/v1.9.0.tar.gz
+	sha256sums = 4e54ca332158edfc615474b9dd28c7cf6c41c532881a5ae06e345281556fb7b1
+
+pkgname = prometheus-podman-exporter
