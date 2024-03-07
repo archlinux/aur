@@ -1,7 +1,7 @@
 # Maintainer: Interaccoonale <xzzzf.dsx@gmail.com>
 pkgname=renamer
 pkgver=1.3.2
-pkgrel=1
+pkgrel=7
 pkgdesc='A bulk file renamer written in flutter (dart). '
 arch=('x86_64')
 url="https://github.com/sun-jiao/renamer"
