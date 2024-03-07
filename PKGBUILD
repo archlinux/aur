@@ -280,27 +280,31 @@ build() {
 }
 
 _rm_man() {
+  local \
+    _pkgdir="${1}"
   ls \
-    "${pkgdir}/usr/share/man/man1/" |
+    "${_pkgdir}/usr/share/man/man1/" |
     grep \
       "emu"
   mv \
-    "${pkgdir}/usr/share/man/man1/${pkgbase}.1.gz" \
+    "${_pkgdir}/usr/share/man/man1/${pkgbase}.1" \
     "${srcdir}" || \
     true
   rm \
     -f \
-    "${pkgdir}/usr/share/man" || \
+    "${_pkgdir}/usr/share/man" || \
     true
   install \
     -Dm \
       755 \
-    "${srcdir}/${pkgbase}.1.gz" \
-    "${pkgdir}/usr/share/man/man1/${pkgbase}.1.gz"
+    "${srcdir}/${pkgbase}.1" \
+    "${_pkgdir}/usr/share/man/man1/${pkgbase}.1" ||  \
+    true
 }
 
-_remove_rest_of_grub() {
+_rm_the_rest_of_grub() {
   local \
+    _pkgdir="${1}" \
     _the_rest_of_grub=()
   _the_rest_of_grub=( 
     /etc/grub.d/00_header
@@ -419,13 +423,14 @@ _remove_rest_of_grub() {
     in "${_the_rest_of_grub}"; do
     rm \
       -rf \
-      "${_file}"
+      "${_pkgdir}${_file}" || \
+      true
   done
 }
 
 _package_grub-emu() {
   cd \
-    "${srcdir}/grub-emu/"
+    "${srcdir}/${pkgbase}"
   echo \
     "Run make install for emu build..."
   make \
@@ -446,21 +451,19 @@ _package_grub-emu() {
     -f \
     "${pkgdir}/usr/lib/grub/${_EMU_ARCH}-emu"/{kernel.exec,gdb_grub,gmodule.pl} || \
     true
-  _rm_man
+  _rm_man \
+    "${pkgdir}"
   rm \
     -f \
     "${pkgdir}/usr/share/info" || \
     true
-  rm \
-    -f \
-    "${pkgdir}/usr/share/info" || \
-    true
-  _rm_rest_of_grub
+  _rm_the_rest_of_grub \
+    "${pkgdir}"
 }
 
 package() {
   cd \
-    "${srcdir}/grub/"
+    "${srcdir}/${_pkg}"
   if [[ "${_GRUB_EMU_BUILD}" == "1" ]]; then
     echo \
       "Package grub emu stuff..."
