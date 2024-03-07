@@ -1,6 +1,6 @@
 pkgbase = azure-static-web-apps-cli-bin
 	pkgdesc = Azure Static Web Apps CLI
-	pkgver = 1.1.6
+	pkgver = 1.1.7
 	pkgrel = 1
 	url = https://github.com/Azure/static-web-apps-cli
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = azure-static-web-apps-cli-bin
 	optdepends = libsecret: for storing secrets
 	provides = azure-static-web-apps-cli
 	conflicts = azure-static-web-apps-cli
-	source = azure-static-web-apps-cli-1.1.6.tgz::https://github.com/Azure/static-web-apps-cli/releases/download/v1.1.6/azure-static-web-apps-cli-1.1.6.tgz
-	b2sums = 96852ffce8b34d1a3dd2046a18d9420b6a970cf4942e7312911892735c6b2ff394543b8802c0f5d132731dd66ac479cc29caae669c1ab2faa72f1d12286a842b
+	source = azure-static-web-apps-cli-1.1.7.tgz::https://github.com/Azure/static-web-apps-cli/releases/download/v1.1.7/azure-static-web-apps-cli-1.1.7.tgz
+	b2sums = e6de7a0ebc70bf2444803978e1b7daf5adf74719985c63a9a6cf122708aa35f89d054f65435afd3c68b5312ad093c34629c66d169fee2524e7fbcf2f5c7bf01e
 
 pkgname = azure-static-web-apps-cli-bin
