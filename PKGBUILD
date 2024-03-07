@@ -3,7 +3,7 @@ pkgname=sofie-chef-bin
 _appname=SofieChef
 pkgver=0.3.3
 _electronversion=26
-pkgrel=2
+pkgrel=3
 pkgdesc="Disrupting the industry & stirring pots"
 arch=('x86_64')
 url="https://github.com/nrkno/sofie-chef"
@@ -12,12 +12,9 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}-Linux-Executable.AppImage"
@@ -26,7 +23,7 @@ source=(
 )
 sha256sums=('913f848d292ab514b0f241d63e3e7c6ff7968fbf096977f821aea39193d0d9e2'
             'ac26e60681c9ba6ec5eddf9b1afa3442d8ada9d77fe42b4515c42a2a15392c44'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
