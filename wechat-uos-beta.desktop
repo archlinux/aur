@@ -1,11 +1,11 @@
 [Desktop Entry]
 Comment=WeChat Beta
-Comment[zh_CN]=
+Comment[zh_CN]=微信测试版
 TryExec=wechat-uos-beta
 Exec=wechat-uos-beta %u
 Icon=wechat-uos-beta
 Name=WeChat (Beta)
-Name[zh_CN]=微信 Beta
+Name[zh_CN]=微信 (测试版)
 Categories=Utility;Network;InstantMessaging;Chat;
 Terminal=false
 Type=Application
@@ -18,6 +18,6 @@ StartupWMClass=wechat
 
 [Desktop Action quit]
 Name=Quit WeChat
-Name[zh_CN]=退出
+Name[zh_CN]=退出微信
 Exec=bash -c '/usr/bin/killall wechat'
 Icon=application-exit

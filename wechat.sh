@@ -45,9 +45,17 @@ function createWrapIfNotExist() {
 function inputMethod() {
 	if [[ ${XMODIFIERS} =~ fcitx ]]; then
 		QT_IM_MODULE=fcitx
+		GTK_IM_MODULE=fcitx
 	elif [[ ${XMODIFIERS} =~ ibus ]]; then
 		QT_IM_MODULE=ibus
+		GTK_IM_MODULE=ibus
 		IBUS_USE_PORTAL=1
+	fi
+}
+
+function lnDir() {
+	if [ ! -f "${HOME}"/xwechat_files ]; then
+		ln -s "${XDG_DOCUMENTS_DIR}"/WeChat_Data/xwechat_files "${HOME}"/xwechat_files
 	fi
 }
 
@@ -101,6 +109,7 @@ function launch() {
 	detectXauth
 	inputMethod
 	moeDect
+	lnDir
 	echo "Launching WeChat Beta..."
 	if [[ ${trashAppUnsafe} = 1 ]]; then
 		execAppUnsafe
