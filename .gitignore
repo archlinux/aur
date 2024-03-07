@@ -1,4 +1,5 @@
 *.gz
 *.zst
+*.deb
 /pkg
 /src
