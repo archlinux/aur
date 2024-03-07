@@ -2,7 +2,7 @@
 _pkgname=gotify_tray
 pkgname="${_pkgname//_/-}-bin"
 pkgver=0.5.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Cross-platform desktop client for receiving messages from a Gotify server"
 arch=('x86_64')
 url="https://github.com/seird/gotify-tray"
@@ -22,12 +22,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1c98ee2d33ea2102f983ebeed64674007c661560e9bf46dd1aa6a6ec09f43187'
-            '429ec798aa14c7f36a8cb8064b0ee057aff35d62eec96dcec866ff877d6380d2')
+            'ee22d6e0d56653714cc6a752e02bbac52864908f64267407145f47464e576bde')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.gz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|Exec=/opt/${pkgname%-bin}/${pkgname%-bin}|Exec=${pkgname%-bin}|g;s|Icon=/usr/share/icons/${pkgname%-bin}.ico|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname//_/}.desktop"
 }
