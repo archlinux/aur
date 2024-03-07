@@ -2,7 +2,7 @@
 #
 pkgname=wechat-beta-bwrap
 pkgver=1.0.0.145
-pkgrel=5
+pkgrel=6
 uosver=2.1.5
 epoch=
 pkgdesc="WeChat Testing with bwrap sandbox"
@@ -22,7 +22,7 @@ source=(
 )
 
 noextract=()
-md5sums=('8c495ed7aefc67f374045d5bc05c15d1'
+md5sums=('eda5b1524fe570724558ae2eaff4360e'
          'cbbd80b8b8e5a29130028937c1eccc6e'
          '600e74549ce2258c045d5c2f7689ea63'
          '6b159c6e9d21a98925489bc37a9aea43'
