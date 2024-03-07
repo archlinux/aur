@@ -14,15 +14,14 @@ pkgname=(
   libnm-iwd
   nm-iwd-cloud-setup
 )
-pkgver=1.44.2
+pkgver=1.46.0
 pkgrel=1
 pkgdesc="Network connection manager and user applications; using iwd backend instead of wpa_supplicant"
 url="https://networkmanager.dev/"
 arch=(x86_64)
-license=(GPL)
+license=(LGPL-2.1-or-later)
 makedepends=(
   audit
-  bluez-libs
   curl
   dhclient
   dnsmasq
@@ -57,7 +56,7 @@ checkdepends=(
   libx11
   python-dbus
 )
-_commit=8bee6ef894a27ffc8a464df3b32b03e811e1a15d  # tags/1.44.2^0
+_commit=e39f48a30a2ef7b445276a859bbd5255e4c5071d  # tags/1.46.0^0
 source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=$_commit"
         "$pkgbase.install")
 sha256sums=('SKIP' '6f77a626ec3fd7583beb45ffcac236cdc1fe2b5e5b8ccc5d90983312a265e818')
@@ -69,6 +68,9 @@ pkgver() {
 
 build() {
   local meson_options=(
+    # build checks this option; injecting just via *FLAGS is broken
+    -D b_lto=true
+
     # system paths
     -D dbus_conf_dir=/usr/share/dbus-1/system.d
 
@@ -82,8 +84,6 @@ build() {
     # features
     -D iwd=true
     -D teamdctl=true
-    -D bluez5_dun=true
-    -D ebpf=true
 
     # configuration plugins
     -D config_plugins_default=keyfile
@@ -110,7 +110,7 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs || :
+  NMTST_FORCE_REAL_ROOT=1 meson test -C build --print-errorlogs
 }
 
 _pick() {
@@ -126,7 +126,6 @@ _pick() {
 package_networkmanager-iwd() {
   depends=(
     audit
-    bluez-libs
     curl
     iproute2
     jansson
@@ -154,7 +153,9 @@ package_networkmanager-iwd() {
     'ppp: dialup connection support'
   )
   backup=(etc/NetworkManager/NetworkManager.conf)
-  install="$pkgbase.install"
+
+  # NM wants to move to LGPL only, but there's still GPL code left
+  license+=(GPL-2.0-or-later)
 
   meson install -C build --destdir "$pkgdir"
 
@@ -189,12 +190,13 @@ END
 
   shopt -s globstar
 
+  _pick docs usr/share/gtk-doc
+
   _pick libnm usr/include/libnm
   _pick libnm usr/lib/girepository-1.0/NM-*
   _pick libnm usr/lib/libnm.*
   _pick libnm usr/lib/pkgconfig/libnm.pc
   _pick libnm usr/share/gir-1.0/NM-*
-  _pick libnm usr/share/gtk-doc/html/libnm
   _pick libnm usr/share/vala/vapi/libnm.*
 
   _pick cloud usr/lib/**/*nm-cloud-setup*
@@ -209,7 +211,6 @@ END
 
 package_libnm-iwd() {
   pkgdesc="NetworkManager client library with iwd backend"
-  license=(LGPL)
   depends=(
     glib2
     nss
