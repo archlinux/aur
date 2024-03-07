@@ -23,6 +23,6 @@ package() {
   echo '#!/bin/bash' > gitsync
   echo 'python /usr/local/bin/gitsync.py "$@"' >> gitsync
   chmod +x gitsync
-  install -Dm755 upd8all "${pkgdir}/usr/local/bin/gitsync"
+  install -Dm755 gitsync "${pkgdir}/usr/local/bin/gitsync"
 }
 
