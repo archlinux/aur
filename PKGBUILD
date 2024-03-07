@@ -3,24 +3,25 @@
 _pkgname=GWASExactHW
 _pkgver=1.01
 pkgname=r-${_pkgname,,}
-pkgver=1.01
-pkgrel=4
-pkgdesc='Exact Hardy-Weinburg testing for Genome Wide Association Studies'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=9
+pkgdesc="Exact Hardy-Weinburg testing for Genome Wide Association Studies"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e850ed40fbf14b02eb3798603cfb111fe3718bb69d74c0ff4cb6f679209a15a7')
+md5sums=('041fc38bed5b43e6f81962b872cbfbe4')
+b2sums=('585c3a70ca8a1ceb352e50ca3f8d6e2bd541dd1489b6da5eb90afad276897ed137f2dbb74d6dd735d695c565daefcf9276a9b56acaf96e767477fa3c812fcae6')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
