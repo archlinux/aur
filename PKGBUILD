@@ -5,7 +5,7 @@ pkgname=uppaal-beta
 pkgver=5.1.0_beta5
 _pkgver_base=$(echo ${pkgver} | cut -d'_' -f1)
 _pkgver_dash=$(echo ${pkgver} | sed 's/_/-/g')
-pkgrel=1
+pkgrel=2
 pkgdesc="Verify timed automata models and learn strategies. Beta release channel."
 arch=('any')
 options=(debug !strip)
@@ -17,16 +17,14 @@ provides=("${pkgname}-${pkgver_dash}")
 _relname="uppaal-${_pkgver_dash}-linux64"
 _zipname="${_relname}.zip"
 source=("https://download.uppaal.org/uppaal-5.1/uppaal-${_pkgver_base}/uppaal-${_pkgver_dash}-linux64.zip")
-# https://download.uppaal.org/uppaal-5.0/uppaal-5.0.0/uppaal-5.0.0-linux64.zip
-# https://download.uppaal.org/uppaal-5.1/uppaal-5.1.0/uppaal-5.1.0-beta5-linux64.zip
 noextract=("${_zipname}")
 sha512sums=('7699aedaf05829649cbf90ae690e71d4fc0b727a97babcaa2b1b3e29d641d62ae16b91fce33b82a46ee21a0514d824151b5c367b6c31151de27ad5d8e428ec03')
 
 build() {
-  # determine x11 or wayland
+  # determine x11 or wayland (upstreamed, remove once next beta is released)
   if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
     # add env vars for wayland fixes
-    prefix="env _JAVA_AWT_WM_NONREPARENTING=1 _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true' "
+    prefix="env _JAVA_AWT_WM_NONREPARENTING=1 "
   else
     prefix=""
   fi
@@ -54,9 +52,9 @@ package() {
 
   # check if latest is newer than $pkgver
   if [[ "$(echo -e "$latest\n$_pkgver_dash" | sort -V | tail -n 1)" == "$latest" ]]; then
-    msg2 "Packaging newest beta release: uppaal-$latest"
+    echo "Packaging newest beta release: uppaal-$latest"
   else
-    warning "Newer beta release available but not yet packaged ($latest > $pkgver). Visit uppaal.org for manual installation instructions if urgent."
+    echo "Newer beta release available but not yet packaged ($latest > $pkgver). Visit uppaal.org for manual installation instructions if urgent."
   fi
 
   install -dm755 "${pkgdir}"/opt/
@@ -87,11 +85,6 @@ package() {
        install -Dm644 "$xml_mimetype_file" "$mimetype_dir/$(basename "$xml_mimetype_file" | sed "s/uppaal/${pkgname}/")"
     fi
   done
-
-  # assoc uppaal mime types with launcher
-  xdg-mime default "${launcher_path}" "application/uppaal-xml"
-  xdg-mime default "${launcher_path}" "application/uppaal-xta"
-  xdg-mime default "${launcher_path}" "application/uppaal-ta" 
 
   # symlink startup script to bin 
   ln -s "/opt/${pkgname}/uppaal" "${pkgdir}/usr/bin/${pkgname}"

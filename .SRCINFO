@@ -1,7 +1,7 @@
 pkgbase = uppaal-beta
 	pkgdesc = Verify timed automata models and learn strategies. Beta release channel.
 	pkgver = 5.1.0_beta5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://uppaal.org/
 	arch = any
 	license = custom
