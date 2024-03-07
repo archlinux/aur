@@ -1,7 +1,7 @@
 # Maintainer: Peter Semiletov peter.semiletov at gmail dot com
 
 pkgname=bedroomstudio-git
-pkgver=29e8389db4cdbd1ab2284d550e8c17607a085503
+pkgver=1.0.0.r3.g7a290ae
 pkgrel=1
 pkgdesc='A set of LV2 plugins for bedroom music studios'
 arch=('x86_64')
@@ -17,10 +17,10 @@ source=("git+https://github.com/psemiletov/bedroomstudio.git")
 md5sums=('SKIP')
 
 
-#pkgver() {
-#  cd "${srcdir}/bedroomstudio"
-#  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-#}
+pkgver() {
+  cd "${srcdir}/bedroomstudio"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
 	cd "${srcdir}/bedroomstudio"
