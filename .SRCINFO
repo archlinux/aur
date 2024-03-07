@@ -1,7 +1,7 @@
 pkgbase = python-langsmith
 	pkgdesc = LangSmith Client SDK Implementations
 	pkgver = 0.1.19
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pypi.org/project/langsmith
 	arch = any
 	license = MIT
