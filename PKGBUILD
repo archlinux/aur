@@ -28,7 +28,7 @@ source=(
 	"${pkgname%-bin}.sh"
 )
 sha256sums=('a39993ba8ad40ce74234e908db276841df1fd517c19385d01436d160986c77b1'
-            'b1def85c2245bf0e8f61d233ed6b6cc26f3323157eaca60df7868854bb53cf85')
+            '8141e31e6fa242eb005924977a7786a2741e2f00cdb7bf13686d97b35d6e3527')
 build() {
 	sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
@@ -36,12 +36,12 @@ build() {
 	cd "${srcdir}/${pkgname%-bin}"
 	case "${CARCH}" in
         x86_64)
-            rm -rf *-aarch64*
+            rm -rf *aarch64*
 			mv dsp-linux-amd64 "${pkgname%-bin}"
 			mv dsp-linux-amd64-debug "${pkgname%-bin}-debug"
         ;;
         aarch64)
-            rm -rf *-amd64*
+            rm -rf *amd64*
 			mv dsp-linux-aarch64 "${pkgname%-bin}"
 			mv dsp-linux-aarch64-debug "${pkgname%-bin}-debug"
         ;;
