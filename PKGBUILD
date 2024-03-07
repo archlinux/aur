@@ -17,8 +17,8 @@ makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'rust' 'git')
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
-        drop-flags-unsupported-by-clang16.patch
-        compiler-rt-16.patch
+        drop-flag-unsupported-by-clang17.patch
+        compiler-rt-adjust-paths.patch
         abseil-remove-unused-targets.patch
         disable-logging.patch
         fix-no-matching-strcat.patch
@@ -26,8 +26,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         fix-undeclared-isnan.patch)
 sha256sums=('0b3da2f0ca63625e84a1b36571f23591248b8fcb422ce683c09283dbfc35c309'
             '1f6acf165578288dc84edc7d9dcfabf7d38f55153b63a37ee5afa929f0e2baad'
-            '53774fd7f807ad42f77d45cab9e5480cc2bcb0a5c5138110a434407521af9607'
-            '8a2649dcc6ff8d8f24ddbe40dc2a171824f681c6f33c39c4792b645b87c9dcab'
+            '3bd35dab1ded5d9e1befa10d5c6c4555fe0a76d909fb724ac57d0bf10cb666c1'
+            'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
             SKIP
             SKIP
             SKIP
@@ -154,11 +154,11 @@ prepare() {
   # Upstream fixes
 
   if (( _system_clang )); then
-    # Drop compiler flags that need newer clang
-    patch -Np1 -i ../drop-flags-unsupported-by-clang16.patch
+    # Drop compiler flag that needs newer clang
+    patch -Np1 -i ../drop-flag-unsupported-by-clang17.patch
 
-    # Allow libclang_rt.builtins from compiler-rt 16 to be used
-    patch -Np1 -i ../compiler-rt-16.patch
+    # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
+    patch -Np1 -i ../compiler-rt-adjust-paths.patch
   fi
 
   # Fixes the build crashing with the following error:
