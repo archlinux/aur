@@ -1,6 +1,6 @@
 pkgbase = rwpspread
 	pkgdesc = Multi-Monitor Wallpaper Utility
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/0xk1f0/rwpspread
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = rwpspread
 	optdepends = hyprpaper: wallpaper setter backend
 	provides = rwpspread
 	conflicts = rwpspread-git
-	source = rwpspread-0.2.2::https://github.com/0xk1f0/rwpspread/archive/refs/tags/v0.2.2.tar.gz
-	b2sums = 63e974614cd1a3e633f58a47c06cf40e73e726bfff4a6bc432726d19366af77d14e11dc559fd68763ae652d8ac9593ded7c76a72a320e5c8a1f1f1cd4a8cc4bf
+	source = rwpspread-0.2.3::https://github.com/0xk1f0/rwpspread/archive/refs/tags/v0.2.3.tar.gz
+	b2sums = 65c384db78a3c2f3e4b21699b4d752928ed3d225291ffa0079a20c8ec38bdbff8f91a7d02c36bae3bc233e0bdf00a5b3d8bc799a29866e30eb18df937d6b4caa
 
 pkgname = rwpspread
