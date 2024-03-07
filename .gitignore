@@ -1,0 +1,6 @@
+pkg
+src
+caraoke-plasmoid
+*.pkg.tar.*
+*.log
+

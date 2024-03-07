@@ -1,0 +1,19 @@
+pkgbase = plasma6-applets-caraoke-git
+	pkgdesc = kde widget for representation of karaoke styled lyrics.
+	pkgver = r24.acdefb5
+	pkgrel = 1
+	url = https://github.com/Copay/caraoke-plasmoid
+	arch = any
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = cmake
+	makedepends = make
+	depends = plasma-workspace
+	depends = plasma5support
+	provides = plasma6-applets-caraoke
+	conflicts = plasma6-applets-caraoke
+	source = git+https://github.com/Copay/caraoke-plasmoid.git#branch=kde6
+	sha256sums = SKIP
+
+pkgname = plasma6-applets-caraoke-git
