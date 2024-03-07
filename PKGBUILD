@@ -1,12 +1,13 @@
 # Maintainer: Gesh <gesh@gesh.uni.cx>
+
 pkgname=python-papis-scihub-git
 _plugname="${pkgname%-git}"
 _plugname="${_plugname#python-}"
 pkgver=1.4.0
 pkgrel=1
-pkgdesc="Papis plugin to import from Sci-Hub"
+pkgdesc='Papis plugin to import from Sci-Hub (incorporates upstream PR #62)'
 arch=('any')
-url="https://github.com/papis/scripts/tree/master/papis-scihub"
+url='https://github.com/papis/scripts/tree/master/papis-scihub'
 license=('GPL3')
 depends=('python')
 makedepends=('python-build' 'python-installer')
