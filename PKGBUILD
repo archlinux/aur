@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=net-player
 _pkgname="${pkgname//-p/P}"
-pkgver=2.0.1
+pkgver=2.0.2
 _electronversion=13
 _nodeversion=16
 pkgrel=1
@@ -21,14 +21,15 @@ makedepends=(
     'npm'
     'nvm'
     'git'
-    'pnpm'
+    'yarn'
+    'curl'
 )
 source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -45,12 +46,17 @@ build() {
     cd "${srcdir}/${pkgname}.git"
     sed -e "s|mac|linux|g" -e "s|zip|AppImage|g" -i vue.config.js
     export npm_config_build_from_source=true
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export npm_config_disturl=https://electronjs.org/headers
     export HOME="${srcdir}/.electron-gyp"
-    yarn install --no-lockfile #--cache-folder "${srcdir}/.yarn_cache" --production
+    if [ `curl ifconfig.co/country` == "China" ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    fi
+    yarn install --cache-folder "${srcdir}/.yarn_cache"
     yarn run electron:build
 }
 package() {
