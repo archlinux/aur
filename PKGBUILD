@@ -23,7 +23,7 @@ source=(
 
 noextract=()
 md5sums=('eda5b1524fe570724558ae2eaff4360e'
-         'cbbd80b8b8e5a29130028937c1eccc6e'
+         '4967385a00db424e596263618335411f'
          '600e74549ce2258c045d5c2f7689ea63'
          '6b159c6e9d21a98925489bc37a9aea43'
          '27d585e8fc57950ed4f4f3ffc036447f'
