@@ -2,15 +2,15 @@
 
 pkgname=svt-av1-psy-git
 pkgver=2.0.0.rc2.r2.gc233913e
-pkgrel=1
+pkgrel=2
 pkgdesc='Bleeding edge psycho-visually focused fork of SVT-AV1'
 arch=('x86_64')
 url='https://github.com/gianni-rosato/svt-av1-psy'
 license=('BSD' 'custom: Alliance for Open Media Patent License 1.0')
 depends=('glibc')
 makedepends=('git' 'cmake' 'yasm')
-provides=('svt-av1')
-conflicts=('svt-av1')
+provides=('svt-av1' 'svt-av1-git')
+conflicts=('svt-av1' 'svt-av1-git')
 source=('git+https://github.com/gianni-rosato/svt-av1-psy')
 sha256sums=('SKIP')
 
