@@ -1,6 +1,8 @@
 # Maintainer: Zoey Mertes (zmertes at zmertes dot net)
 # shellcheck shell=bash disable=SC2034,SC2154
 
+# release 1.2.0 notes
+# * fresh binary and gamecontrollerdb.txt
 # release 1.1.0 notes
 # * yay finally a proper packaging, no more nabbing it out of the macos version
 # * yay svg icon!
@@ -15,7 +17,7 @@
 # if so, can you make the binary named PlaydateMirror from the beginning pretty please? thanks <3
 
 pkgname=playdate-mirror
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Screen viewer and controller for the Playdate console'
 arch=('x86_64')
@@ -35,7 +37,7 @@ source=(
 )
 
 sha512sums=(
-  'c79ae1e7f7090e7746acb6ba85735449f44ea8b401ecbf13aebd9e0c160311cf66fc24cfa82ed3e18d678c9128ae538d3f61544df6e34697b51c4c8b2641e8c3'
+  'a299092fd1c03cc9ee6ce843ff5a4614a1b35968c57976451aeccc567d3d59a8bea8a58dfc51939043946df449f70561b0e9e8782315315bb70000849a98a76c'
   '84d348266722753a81bdf95e17917f4c4665c484fdb3ac258b0f46d5e3e92c62aff0df91b78c0e1d43ace9f2e15f3a9a6a24726a37302ddbf40499f5ca60864c'
 )
 
@@ -51,10 +53,6 @@ build() {
 }
 
 package() {
-  # make needed directories
-  # mkdir -p "${pkgdir}/usr/bin" \
-  #   "${pkgdir}/usr/share/licenses/playdate-mirror/"
-
   echo >&2 'Packaging the mirror binary'
   install -D -m 755 "${srcdir}/usr/bin/mirror" "${pkgdir}/usr/bin/PlaydateMirror"
 
