@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Zhou <pn3535 at icloud dot com>
 pkgname=stapxs-qq-lite-bin
-pkgver=2.5.0
+pkgver=2.5.7
 pkgrel=1
 epoch=
 pkgdesc="一个兼容 oicq-http 的非官方网页版 QQ 客户端, 使用 Vue 重制的全新版本."
