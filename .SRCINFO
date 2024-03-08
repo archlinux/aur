@@ -1,18 +1,17 @@
 pkgbase = python-suntime
 	pkgdesc = Simple sunset and sunrise time calculation python library
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/SatAgro/suntime
 	arch = any
 	license = LGPL-3.0-only
+	checkdepends = python-dateutil
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	depends = python-dateutil
-	depends = python-six
-	source = suntime-1.3.0.tar.gz::https://files.pythonhosted.org/packages/source/s/suntime/suntime-1.3.0.tar.gz
-	sha256sums = be1a6cf802c916fb103bc1b923caf1bc5406178599eb90cb70ac3b90405f0866
+	source = suntime-1.3.1.tar.gz::https://files.pythonhosted.org/packages/source/s/suntime/suntime-1.3.1.tar.gz
+	sha256sums = 36a3c104600c9b94e73b56d7845a9c6b3793ef0b141fd83e7fee13fe0b080187
 
 pkgname = python-suntime
