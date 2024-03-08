@@ -2,10 +2,10 @@
 
 pkgname=firejail-handler-extra
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="BitTorrent/Youtube URL handlers for Firejail"
 arch=(x86_64)
-license=(GPL2)
+license=(GPL-2.0-or-later)
 url="https://github.com/glitsj16/firejail-handler-extra"
 depends=('firejail' 'inotify-tools' 'xdg-user-dirs' 'xdg-utils')
 # package contains only text files
