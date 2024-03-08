@@ -2,17 +2,17 @@
 
 pkgname=python-proton-vpn-session
 _gitpkgname=python-proton-vpn-session
-_gitcommit=5864beddfc638d802d388dfefafb414afbdedd61
+#_gitcommit=5864beddfc638d802d388dfefafb414afbdedd61
 pkgver=0.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The proton-vpn-session component provides utility classes to manage VPN sessions."
 arch=("any")
 url="https://github.com/ProtonVPN/python-proton-vpn-session"
 license=("GPL3")
 groups=("ProtonVPN")
 makedepends=("git" "python-setuptools")
-#source=("git+https://github.com/ProtonVPN/${_gitpkgname}.git#tag=${pkgver}")
-source=("git+https://github.com/ProtonVPN/${_gitpkgname}.git#commit=${_gitcommit}")
+source=("git+https://github.com/ProtonVPN/${_gitpkgname}.git#tag=v${pkgver}")
+#source=("git+https://github.com/ProtonVPN/${_gitpkgname}.git#commit=${_gitcommit}")
 sha256sums=('SKIP')
 
 build() {
