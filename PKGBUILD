@@ -4,7 +4,7 @@ pkgname="${_pkgname}-ee-bin"
 _appname=BingGPT
 pkgver=0.4.7
 _electronversion=26
-pkgrel=1
+pkgrel=2
 pkgdesc="BingGPT Enhanced Editon - Desktop application of new Bing's AI-powered chat.A rewritten version."
 arch=(
     'aarch64'
@@ -26,7 +26,7 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v
 source=(
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+sha256sums=('50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 sha256sums_aarch64=('c51a2fd6705dc5bfe7b3cdebf6fd6daedade8be00fc5e8cbd0abc3ddbda20b16')
 sha256sums_x86_64=('01dafcd9a29abc8e1960ce0a405bbaa7ca7612f353d9a0bac3ab439eec564839')
 build() {
