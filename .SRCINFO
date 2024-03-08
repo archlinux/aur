@@ -1,7 +1,7 @@
 pkgbase = molden
 	pkgdesc = A program for molecular and electronic structure visualization
 	pkgver = 7.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.theochem.ru.nl/molden/
 	arch = i686
 	arch = x86_64

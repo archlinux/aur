@@ -1,7 +1,7 @@
-# Maintainer: Dan Maftei <dan.maftei@gmail.com>
+# Maintainer: banana-bred <j.forer@posteo.net>
 pkgname="molden"
 pkgver=7.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A program for molecular and electronic structure visualization"
 arch=('i686' 'x86_64')
 url="https://www.theochem.ru.nl/molden/"
@@ -48,3 +48,5 @@ package() {
   install -t "$pkgdir/usr/share/doc/$pkgname" -Dm755 doc/figures.ps.Z  doc/manual.ps.Z doc/manual.txt.Z
   install -t "$pkgdir/usr/share/licenses/$pkgname/" -Dm755 CopyRight MOLDEN_COMMERCIAL_LICENSE REGISTER
 }
+
+# vim: ts=2 sw=2 et :
