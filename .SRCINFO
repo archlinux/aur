@@ -1,13 +1,13 @@
 pkgbase = terrascan-bin
 	pkgdesc = Detect compliance and security violations across Infrastructure as Code
-	pkgver = 1.18.3
+	pkgver = 1.19.1
 	pkgrel = 1
 	url = https://github.com/accurics/terrascan
 	arch = x86_64
 	license = Apache-2
 	provides = terrascan
 	conflicts = terrascan
-	source = https://github.com/accurics/terrascan/releases/download/v1.18.3/terrascan_1.18.3_Linux_x86_64.tar.gz
-	sha256sums = 7d8f634136f58f694326c834ff58db3ccdf5dfe7b651966a5665d8253d04f7dc
+	source = https://github.com/accurics/terrascan/releases/download/v1.19.1/terrascan_1.19.1_Linux_x86_64.tar.gz
+	sha256sums = e931556f8c8a9e5b67bd6c0d378b5c1e3210bfe6466d6205164e919b66d4906a
 
 pkgname = terrascan-bin
