@@ -1,7 +1,7 @@
 pkgbase = gerbil-scheme
 	pkgdesc = Opinionated dialect of Scheme designed for systems programming, on the Gambit runtime.
 	pkgver = 0.18.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mighty-gerbils/gerbil
 	arch = x86_64
 	arch = i686
@@ -12,6 +12,8 @@ pkgbase = gerbil-scheme
 	depends = sqlite
 	conflicts = gerbil-scheme-git
 	source = git+https://github.com/mighty-gerbils/gerbil#tag=v0.18.1
+	source = https://github.com/mighty-gerbils/gerbil/commit/2ce62e8f70f1ee1168715dcc11f141054ec03cdb.patch
 	sha512sums = SKIP
+	sha512sums = f020003f21a18f4045892e57970d4cb92b455647890a21d33e6cb5f345cfe639559da901f0803ba50a5e251ccfdd872491394745a01294ae05fd6fb9068597c8
 
 pkgname = gerbil-scheme
