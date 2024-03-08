@@ -1,20 +1,17 @@
 pkgbase = airgorah-bin
 	pkgdesc = A WiFi auditing software that can perform deauth attacks and passwords cracking
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://crates.io/crates/airgorah
-	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = cairo
 	depends = pango
 	depends = gdk-pixbuf2
 	depends = gtk4
-	provides = airgorah=0.7.0
+	provides = airgorah=0.7.1
 	conflicts = airgorah
-	source_aarch64 = airgorah-0.7.0-aarch64.pkg.tar.zst::https://github.com/martin-olivier/airgorah/releases/download/v0.7.0/airgorah_0.7.0_aarch64.pkg.tar.zst
-	sha256sums_aarch64 = 3b7a30969790f1f3e406cbda27b0854186b16e8a9cabefae2ccebfc9098f80a8
-	source_x86_64 = airgorah-0.7.0-x86_64.pkg.tar.zst::https://github.com/martin-olivier/airgorah/releases/download/v0.7.0/airgorah_0.7.0_x86_64.pkg.tar.zst
-	sha256sums_x86_64 = 797397dbccbff725a21399b06a08d9bf9c34674387881185831098d7b276d20b
+	source_x86_64 = airgorah-0.7.1-x86_64.pkg.tar.zst::https://github.com/martin-olivier/airgorah/releases/download/v0.7.1/airgorah_0.7.1_x86_64.pkg.tar.zst
+	sha256sums_x86_64 = b0a6109b3f7224364f5b6b08b1996cff501cea58a0959914fe73855f613467ff
 
 pkgname = airgorah-bin
