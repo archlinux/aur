@@ -7,9 +7,9 @@
 # Contributor: oguzkagan <me@oguzkaganeren.com.tr>
 
 pkgname='xampp'
-_srcver='8.2.4'
+_srcver='8.2.12'
 _binver=0
-pkgrel=2
+pkgrel=1
 
 # This PKGBUILD deals with two different versioning formats: the upstream
 # format MAJOR.MINOR.REVISION-BUILD - used internally by XAMPP - and the
@@ -61,7 +61,7 @@ sha256sums=('3f262ef4b3e752992667ab482cbf364e3b9e6f95b4b6fb12a1ce6fa7a88f124e'
             '39a5617deaf42d17281b3b1b828351c0f6108cee774b3e4671af3d9bbcd48883'
             '8825623ea18abb8bfb3a8811b6c59dc8485f7d767c6f3a013fdc1b1afc979426'
             '83b30970378e8d30d7acd13ebe6dc31652548a44d2cca9fd5919fa7f06fe238d')
-sha256sums_x86_64=('80649062144fbe2d71e534e82d3043176a040b1a952abf06c73f168c4c4c4b8b')
+sha256sums_x86_64=('df0774e7a6d0d0754a5f0132015411234b5f953df2365b693d3758fc35a30374')
 sha256sums_i686=('SKIP')
 
 _platform="$(test "${CARCH}" = 'x86_64' && echo "${_build64name}" || echo "${_build32name}")"
