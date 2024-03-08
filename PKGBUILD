@@ -3,7 +3,7 @@ pkgname=notes-nc-bin
 _pkgname=Notes
 pkgver=0.8.0
 _electronversion=26
-pkgrel=4
+pkgrel=5
 pkgdesc="Cross-platform Notes desktop application for markdown notes"
 arch=('x86_64')
 url="https://github.com/mscharley/notes-nc"
@@ -12,12 +12,9 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
@@ -26,7 +23,7 @@ source=(
 )
 sha256sums=('e0408b98f96518be982163e9268e9b715b8e76abb09b1d7fd36df08467586c59'
             '3dcc1e196d70d5503a020194e91d5d663f428c349622d1f0eb545ec2f354264b'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
