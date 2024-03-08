@@ -1,7 +1,7 @@
 # Maintainer: beelzy
 pkgname=kame-tools-git
-pkgver=5ae1ae1
-pkgrel=4
+pkgver=90ca8e5
+pkgrel=1
 pkgdesc="A tool for bundling 3DS theme files"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://gitlab.com/beelzy/kame-tools"
@@ -13,7 +13,7 @@ _gitroot='https://gitlab.com/beelzy/kame-tools.git'
 _gitname='kame-tools'
 
 source=("git+${_gitroot}"
-        "git+https://github.com/Steveice10/buildtools.git")
+        "git+https://github.com/lifehackerhansol/buildtools.git")
 sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
