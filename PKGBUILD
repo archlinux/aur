@@ -2,17 +2,17 @@
 pkgname=avogadro2-appimage
 _pkgname=Avogadro2
 pkgver=1.98.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced molecular editor designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas."
 arch=("x86_64")
 url="https://two.avogadro.cc/"
 _ghurl="https://github.com/OpenChemistry/avogadroapp"
-license=('custom:BSD3-Clause')
+license=('BSD-3-Clause')
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
 depends=()
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 options=('!strip')
 _install_path="/opt/appimages"
