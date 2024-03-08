@@ -1,22 +1,22 @@
 pkgbase = musa
 	pkgdesc = MooreThreads MUSA
-	pkgver = 2.5.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://developer.mthreads.com/sdk/download/musa
 	arch = x86_64
 	license = custom
 	makedepends = binutils
 	options = !strip
-	source = MUSA+Toolkits-v1.5.2+Intel+CPU_Ubuntu.zip::https://developer.mthreads.com/sdk/download/musa?equipment=&os=&driverVersion=&version=
-	source = 00-port-ti-img-rouge-newer-sources.diff::https://github.com/dixyes/mtgpu-drv/commit/5f747fbfd28b25f230d4487be1a8fd6217715ba3.diff
-	source = 01-disable-cursor_set-things.diff::https://github.com/dixyes/mtgpu-drv/commit/17170659d9fcf6b1591ac539e7a7dae71ca01924.diff
-	source = 02-avoid-redefine.diff::https://github.com/dixyes/mtgpu-drv/commit/3d84942c3b1070054aafb089f48bbb57c88d643e.diff
-	source = 03-fake-ubuntu.diff::https://github.com/dixyes/mtgpu-drv/commit/f05b21697014645f2bb6470c9d8d7cb91af1bcb0.diff
-	sha512sums = a1749d95fa617d1974376aa8321ac71f0e4d3e3a5d9d8b07ea4904b48d6271e5d06f36c46a787127803b3fce7568c85e2d6cb9c3f44641c8b24d627318ba0f75
-	sha512sums = dff8983f4abe3a6bd12ff8490ef8964753388b26d333c84083365c20a98bc761973c956bc4b87f37d981683eff25dcc0346714c59f9e00afe3a24da7717c7216
+	source = MUSA+SDK-rc2.0.0+Intel+CPU_Ubuntu.zip::https://developer.mthreads.com/sdk/download/musa?equipment=&os=&driverVersion=&version=
+	source = 00-port-ti-img-rouge-newer-sources-2.6.0.diff::https://github.com/dixyes/mtgpu-drv/commit/5348abd9861c6906e4927d26a7d587190c7f1fe0.diff
+	source = 01-disable-cursor_set-things-2.6.0.diff::https://github.com/dixyes/mtgpu-drv/commit/fb093df3606894481555fb19161c5713e5a1fbbe.diff
+	source = 02-fake-ubuntu-2.6.0.diff::https://github.com/dixyes/mtgpu-drv/commit/b7bb67ab99172a6dc8e0e29db255ac4b9d44f967.diff
+	source = 03-fix-oops-2.6.0.diff::https://github.com/dixyes/mtgpu-drv/commit/78a7620f8c3ad8201749a504216d886809fc9c01.diff
+	sha512sums = a06fe0c6d49d0569072bb2ebc40d68d5cf6f00a8fcafd72b25619469276e740f5a0bcd4cf742751ec6e2698310cd9c9041593039fb5e2509641e68be13dada07
+	sha512sums = 3342a70d3edd8eeffed316344616cb3e7e0811bbe63afd48e7802e9807209236516ee3ccfbd8a449569ec05a04f73c562d3a246f28a364db6b3be46838f20a74
 	sha512sums = d9ade66f27c9afe43343191ed671a18740a2543dab95c12f11187f3bff57ded4b0a8ef56f383413e0ba98447c851f07f591a3a128cc21df4780c699107447427
-	sha512sums = 21f4b395462f1e3af0178427931caae7dca139eceda16e65943e4989b8aa73acb36bfebd076ab3d80936942f16b94892d28b10e68bbbead015a2de68d4ba2629
-	sha512sums = cd448b8909afe31260e2e34b402a41b1b5e4a34e5dabc413a0d154ed89de039001d115945403c560ea8b137786c7926038b1e4e25bf921b4956f6662daa27621
+	sha512sums = 06b60c59c664234959f2f9c4cbc30e871bdc405a396cb2094222a66e302dbdc272c8ee3ebdc659c66428224fe1c6c5d29baa76bd66273328e3c5b77fce1a1eef
+	sha512sums = 8b4ffa908b73dbcc7b0957bb4e8444fa7481bf9eb3751b2ffb656d4fe1cbaf2f28c1614a26e39a6f971e01340659b4f20507c72aae21cfd04fa84a6420ad9697
 
 pkgname = musa-userspace
 	pkgdesc = MooreThreads MUSA userspace libraries include muDNN, mccl
