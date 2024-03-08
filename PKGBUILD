@@ -2,20 +2,17 @@
 pkgname=postybirb-plus-bin
 pkgver=3.1.39
 _electronversion=19
-pkgrel=1
+pkgrel=2
 pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly."
 arch=('x86_64')
 url="https://www.postybirb-plus.com/"
 _ghurl="https://github.com/mvdicarlo/postybirb-plus"
 license=('BSD-3-Clause')
 depends=(
-    "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
+    "electron${_electronversion}-bin"
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=(
@@ -29,7 +26,7 @@ source=(
 )
 sha256sums=('48399a824c30669d85f7345db800de6601b9a93b2b1c06e0c8400891f5cb6326'
             'a0b91aa0ffc9564128c6599eac1fc0ba93b8fe477dff6258ef315f0019b5726d'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
