@@ -2,7 +2,7 @@
 # Contributor: Danny Dutton <duttondj@vt.edu>
 pkgname=webtorrent-desktop-git
 _pkgname="WebTorrent"
-pkgver=0.24.0.r366.g1cefcff3
+pkgver=0.24.0.r371.gebaf9cf8
 _electronversion=15
 _nodeversion=16
 pkgrel=1
@@ -30,7 +30,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
