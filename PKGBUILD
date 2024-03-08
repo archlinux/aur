@@ -12,5 +12,5 @@ md5sums=('6effcdd6d67971e03a905cd00af9e72d')
 package() {
   cd $srcdir
   install -Dm766 "${srcdir}/fansly-downloader-ng" "${pkgdir}/usr/local/bin/fansly-downloader-ng"
-  chmod -R 0555 "${pkgdir}/usr/local/bin/fansly-downloader-ng"
+  chmod +x "${pkgdir}/usr/local/bin/fansly-downloader-ng"
 }
