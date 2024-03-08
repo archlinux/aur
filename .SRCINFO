@@ -1,11 +1,11 @@
 pkgbase = kcl-bin
 	pkgdesc = Your one stop shop to do anything with Kafka. Producing, consuming, transacting, administrating; 0.8.0 through 3.2+
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/twmb/kcl
 	arch = aarch64
 	arch = x86_64
-	license = LicenseRef-BSD
+	license = BSD-3-Clause
 	optdepends = kafka
 	provides = kcl=0.15.0
 	conflicts = kcl

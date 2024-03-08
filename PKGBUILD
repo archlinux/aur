@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kcl-bin
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Your one stop shop to do anything with Kafka. Producing, consuming, transacting, administrating; 0.8.0 through 3.2+"
 arch=(
     'aarch64'
     'x86_64'
 )
 url="https://github.com/twmb/kcl"
-license=('LicenseRef-BSD')
+license=('BSD-3-Clause')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 optdepends=(
