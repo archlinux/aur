@@ -1,13 +1,12 @@
 pkgbase = iputils-git
 	pkgdesc = Network monitoring tools, including ping
-	pkgver = 20221126.r66.g2beff77
+	pkgver = 20240117.r11.g3400f3a
 	pkgrel = 1
 	url = https://github.com/iputils/iputils
 	arch = i686
 	arch = x86_64
-	license = GPL
-	license = BSD
-	license = custom
+	license = GPL-2.0-or-later
+	license = BSD-3-Clause
 	makedepends = git
 	makedepends = meson
 	makedepends = libxslt
@@ -15,11 +14,10 @@ pkgbase = iputils-git
 	depends = libcap
 	depends = libidn2
 	depends = openssl
-	provides = iputils=20221126.r66.g2beff77
+	provides = iputils=20240117.r11.g3400f3a
 	conflicts = iputils
 	conflicts = arping
 	conflicts = netkit-base
-	replaces = netkit-base
 	source = git+https://github.com/iputils/iputils.git
 	sha256sums = SKIP
 

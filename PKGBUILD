@@ -1,17 +1,16 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=iputils-git
-pkgver=20221126.r66.g2beff77
+pkgver=20240117.r11.g3400f3a
 pkgrel=1
 pkgdesc="Network monitoring tools, including ping"
 arch=('i686' 'x86_64')
 url="https://github.com/iputils/iputils"
-license=('GPL' 'BSD' 'custom')
+license=('GPL-2.0-or-later' 'BSD-3-Clause')
 depends=('glibc' 'libcap' 'libidn2' 'openssl')
 makedepends=('git' 'meson' 'libxslt')
 provides=("iputils=$pkgver")
 conflicts=('iputils' 'arping' 'netkit-base')
-replaces=('netkit-base')
 source=("git+https://github.com/iputils/iputils.git")
 sha256sums=('SKIP')
 
