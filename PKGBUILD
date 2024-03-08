@@ -5,11 +5,11 @@
 _pkgname=xmlparsedata
 _pkgver=1.0.5
 pkgname=r-${_pkgname,,}
-pkgver=1.0.5
-pkgrel=6
-pkgdesc='R code parse data as an XML tree'
-arch=('any')
-url='https://github.com/r-lib/xmlparsedata'
+pkgver=${_pkgver//-/.}
+pkgrel=8
+pkgdesc="Parse Data of 'R' Code as an 'XML' Tree"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
 license=('MIT')
 depends=(
   r
@@ -19,16 +19,19 @@ optdepends=(
   r-testthat
   r-xml2
 )
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/r-lib/xmlparsedata/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('89c58d560d0059e6b5481f41b4e7890fa457418ce7cb85e17974b4e63029f3bf')
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('3667d2785071e956227798e2a4cfbd49')
+b2sums=('a480a2263e09daaa7bb3b49b7dcbe8588c21733f85ebaf137d9bab4d3c991533e5a7fe71fdf0211ff0baef90b4a0d5cbd8c378a4cd229daf6c5681990dd47e8a')
 
 build() {
-  R CMD INSTALL ${_pkgname}-${pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
