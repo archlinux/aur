@@ -2,7 +2,7 @@
 pkgname=xresconv-gui-bin
 pkgver=2.4.1
 _electronversion=25
-pkgrel=4
+pkgrel=5
 pkgdesc="批量转表工具的GUI版本，依赖electron"
 arch=(
     'aarch64'
@@ -29,7 +29,7 @@ source=(
 )
 sha256sums=('3383900bc8b96fe4f9fcd7c851f925bc995aa3db9c054e5838c1e2703bf57898'
             '7e00e3bdc3fa297143a39b09ad56a7be6b60ca29591156dc4eaf55e8c76f8e07'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 sha256sums_aarch64=('6faa1b3ffdd26df957ff6b88a44031dff85a41609918c753e5f7461673490643')
 sha256sums_armv7h=('764344ac701ef894e19c1598b15c83a7b54c799022b2a6fd4f45526bce54586d')
 sha256sums_x86_64=('cab293d47e071684823f8567246cf8423439ca7908c35b95e4611961aa0062eb')
