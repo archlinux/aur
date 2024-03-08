@@ -1,7 +1,7 @@
 # Maintainer: Evine Deng <evinedeng@hotmail.com>
 
 pkgname="frp-panel"
-pkgver=0.0.17
+pkgver=0.0.18
 pkgrel=1
 pkgdesc="A multi node frp webui and for frp server and client management"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -18,7 +18,7 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.tmpfiles"
         "${pkgname}@.service")
-sha256sums=('ec1829ae53792feae6e13921a094aee4edc15d83db1929dc724923a22e44d27d'
+sha256sums=('9596b1b3ea45e42f61b8a7ae9692fbc7782aa351a5a9e90c6a336b362907e390'
             'd909eac5b51218404824363ce35886fcd2a8065773ffecde8f64855a107369a0'
             '430b38fb5de8ea2bdd03ef65d376b5aae7acad88cfffd5031d05b45e8ae1040b')
 
