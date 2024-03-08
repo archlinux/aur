@@ -2,7 +2,7 @@
 pkgname=mu-epub-viewer-bin
 pkgver=1.1.4
 _electronversion=16
-pkgrel=4
+pkgrel=5
 pkgdesc="Epub viewer on Electron that support text translation."
 arch=('x86_64')
 url="https://github.com/azu/mu-epub-reader"
@@ -10,14 +10,11 @@ license=('MIT')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'hicolor-icon-theme'
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
@@ -26,7 +23,7 @@ source=(
 )
 sha256sums=('638b33189eda422f481464d4e6c81eb455192908f1cc35017dfc6b2f3e5f22b9'
             '8696e42debf4f04bd943baa459cfa5d17ef59407a1e9d3b705af1f9e56407c72'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
