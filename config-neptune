@@ -94,9 +94,6 @@ CONFIG_HAVE_RUST=n
 # Build as module to experiment with toggling
 CONFIG_TCG_TPM=m
 
-# Galileo Analogix I2C magic module thing
-CONFIG_DRM_ANALOGIX_ANX7580=m
-
 # Per Colin at Quectel
 CONFIG_CFG80211_CERTIFICATION_ONUS=y
 CONFIG_ATH_REG_DYNAMIC_USER_REG_HINTS=y

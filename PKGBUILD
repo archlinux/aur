@@ -6,7 +6,7 @@
 pkgbase=linux-neptune-65
 _tag=6.5.0-valve1
 pkgver=${_tag//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc='SteamOS linux-neptune 6.5 mirrored from Valve'
 url="https://gitlab.steamos.cloud/jupiter/linux-integration/-/tree/$_tag"
 arch=(x86_64)
@@ -20,13 +20,13 @@ makedepends=(
 options=('!strip' '!debug')
 _srcname=archlinux-linux-neptune
 source=(
-  "$_srcname::git+https://gitlab.com/evlaV/linux-integration.git#commit=c1f0367831470e82163d7b194a71cb0bcdee45b4"
+  "$_srcname::git+https://gitlab.com/evlaV/linux-integration.git#tag=$_tag"
   config          # Upstream Arch Linux kernel configuration file, DO NOT EDIT!!!
   config-neptune  # Jupiter: the neptune kernel fragment file (overrides 'config' above)
 )
 sha256sums=('SKIP'
             '5aff0f8584e01165dc20cd107df338f57a13ce7f0da14e07f4c9097cd748469f'
-            '4c63a395d6c8164430d0ffe193bb9ef7b9a19afa63ff9a3159fb76827d5386b4')
+            '84c0b6d9fa85ee75e713de2c83a8f2b432fdbe1498553f2129fccef2d5002019')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -85,8 +85,7 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  # Jupiter: compress modules better, https://bugs.archlinux.org/task/78894
-  make ZSTD_CLEVEL=19 INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
