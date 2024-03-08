@@ -2,7 +2,7 @@
 
 pkgbase=gpgme-git
 pkgname=('gpgme-git' 'python-gpgme-git' 'qgpgme-qt5-git' 'qgpgme-qt6-git')
-pkgver=1.22.0.r26.gab25df83
+pkgver=1.23.2.r27.g47f3d92b
 pkgrel=1
 pkgdesc="GnuPG Made Easy"
 arch=('i686' 'x86_64')
@@ -111,7 +111,6 @@ package_qgpgme-qt6-git() {
   depends=('gcc-libs' 'gpgme-git' 'qt6-base')
   provides=("qgpgme-qt6=$pkgver" 'qgpgme')
   conflicts=('qgpgme-qt6')
-  replaces=('qgpgme')
 
   cd "gpgme"
 

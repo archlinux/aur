@@ -1,6 +1,6 @@
 pkgbase = gpgme-git
 	pkgdesc = GnuPG Made Easy
-	pkgver = 1.22.0.r26.gab25df83
+	pkgver = 1.23.2.r27.g47f3d92b
 	pkgrel = 1
 	url = https://www.gnupg.org/related_software/gpgme/
 	arch = i686
@@ -23,7 +23,7 @@ pkgname = gpgme-git
 	depends = gcc-libs
 	depends = gnupg
 	depends = libgpg-error
-	provides = gpgme=1.22.0.r26.gab25df83
+	provides = gpgme=1.23.2.r27.g47f3d92b
 	provides = libgpgme.so
 	provides = libgpgmepp.so
 	conflicts = gpgme
@@ -32,7 +32,7 @@ pkgname = python-gpgme-git
 	pkgdesc = Python bindings for GPGme
 	depends = python
 	depends = gpgme-git
-	provides = python-gpgme=1.22.0.r26.gab25df83
+	provides = python-gpgme=1.23.2.r27.g47f3d92b
 	conflicts = python-gpgme
 
 pkgname = qgpgme-qt5-git
@@ -40,7 +40,7 @@ pkgname = qgpgme-qt5-git
 	depends = gcc-libs
 	depends = gpgme-git
 	depends = qt5-base
-	provides = qgpgme-qt5=1.22.0.r26.gab25df83
+	provides = qgpgme-qt5=1.23.2.r27.g47f3d92b
 	conflicts = qgpgme-qt5
 
 pkgname = qgpgme-qt6-git
@@ -48,7 +48,6 @@ pkgname = qgpgme-qt6-git
 	depends = gcc-libs
 	depends = gpgme-git
 	depends = qt6-base
-	provides = qgpgme-qt6=1.22.0.r26.gab25df83
+	provides = qgpgme-qt6=1.23.2.r27.g47f3d92b
 	provides = qgpgme
 	conflicts = qgpgme-qt6
-	replaces = qgpgme
