@@ -8,14 +8,14 @@ url="https://github.com/vsergeev/python-periphery"
 license=('MIT')
 arch=('any')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest-runner')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vsergeev/python-periphery/archive/v$pkgver.tar.gz")
 sha512sums=('34042d9364d7846252f464cffb1361ea1c4717cce9c1fd6788f4be495784a17c42fc5fcf3f296a7d7277c420ed876f6c2815f9e46936460275356405911cb50d')
 
 build() {
   cd python-periphery-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -25,6 +25,6 @@ check() {
 
 package() {
   cd python-periphery-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
