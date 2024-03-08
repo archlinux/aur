@@ -1,7 +1,7 @@
 pkgbase = python-proton-keyring-linux
 	pkgdesc = The proton-keyring-linux component.
 	pkgver = 0.0.1
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/ProtonVPN/python-proton-keyring-linux
 	arch = any
 	groups = ProtonVPN
@@ -12,7 +12,7 @@ pkgbase = python-proton-keyring-linux
 	optdepends = gnome-keyring: Gnome keyring support
 	optdepends = pass: pass support
 	optdepends = kwallet5: KDE keyring support
-	source = git+https://github.com/ProtonVPN/python-proton-keyring-linux.git#commit=5ff3c7f9a1a162836649502dd23c2fbe1f487d73
+	source = git+https://github.com/ProtonVPN/python-proton-keyring-linux.git#tag=v0.0.1
 	sha256sums = SKIP
 
 pkgname = python-proton-keyring-linux
