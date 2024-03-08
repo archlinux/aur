@@ -3,24 +3,25 @@
 _pkgname=LPE
 _pkgver=1.76.0
 pkgname=r-${_pkgname,,}
-pkgver=1.76.0
-pkgrel=1
-pkgdesc='Methods for analyzing microarray data using Local Pooled Error (LPE) method'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('LGPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Methods for analyzing microarray data using Local Pooled Error (LPE) method"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('LGPL-2.0-or-later')
 depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('09b7b5f563be2cd30d15f8e40a8d6660401609bd6e09bdc04060fed1abf21a46')
+md5sums=('9001fbe949f64e59e79de1f81bd4aa01')
+b2sums=('a84c98379b351d59b1e5a0c92bec0433e86850cf77b0331bf8314523bef95381e36db84ec15caba5fecb693aa5bcd0cd01908c1fd12e2f09e1c1b954d7c05b74')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
