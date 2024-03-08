@@ -11,20 +11,20 @@
 pkgname=ace
 _pkgver=7_1_3
 pkgver=7.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Framework that provides many components and patterns for developing high-performance, distributed real-time and embedded systems."
 arch=('x86_64')
 url="https://www.dre.vanderbilt.edu/~schmidt/ACE.html"
 license=('LicenseRef-DOC')
-depends=('gcc-libs' 'glibc' 'openssl' 'xerces-c')
+depends=('gcc-libs' 'glibc')
 makedepends=('perl')
 provides=('libACE.so' 'libACEXML.so' 'libACEXML_Parser.so'
     'libACEXML_XML_Svc_Conf_Parser.so' 'libACE_Compression.so'
-    'libACE_ETCL.so'  'libACE_ETCL_Parser.so' 'libACE_HTBP.so'
-    'libACE_INet.so' 'libACE_INet_SSL.so' 'libACE_Monitor_Control.so'
-    'libACE_RLECompression.so' 'libACE_RMCast.so' 'libACE_SSL.so'
-    'libACE_TMCast.so' 'libACE_XML_Utils.so' 'libKokyu.so'
+    'libACE_ETCL.so'  'libACE_ETCL_Parser.so' 'libACE_HTBP.so' 'libACE_INet.so'
+    'libACE_Monitor_Control.so' 'libACE_RLECompression.so' 'libACE_RMCast.so'
+    'libACE_TMCast.so' 'libKokyu.so'
 )
+
 
 source=("https://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-${_pkgver}/ACE-src-${pkgver}.tar.gz")
 sha256sums=('105a2705dddb3c93e486028f63a33ec0f3f6dbcd63cdd166f34f5d5da35ab5ac')
@@ -73,17 +73,11 @@ build() {
 
     cat <<-EOF > "$ACE_ROOT/include/makeinclude/platform_macros.GNU"
 	INSTALL_PREFIX = /usr
-	ipv6 = 1
-	ssl = 1
-	xerces3 = 1
 	include \$(ACE_ROOT)/include/makeinclude/platform_linux.GNU
 	EOF
 
-    cat <<-EOF > "$ACE_ROOT/bin/MakeProjectCreator/config/default.features"
-	ipv6 = 1
-	ssl = 1
-	xerces3 = 1
-	EOF
+    #cat <<-EOF > "$ACE_ROOT/bin/MakeProjectCreator/config/default.features"
+	#EOF
 
     "$ACE_ROOT/bin/mwc.pl" -type gnuace ACE.mwc
     make
