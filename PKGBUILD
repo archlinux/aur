@@ -3,7 +3,7 @@ pkgname=media-hoarder-bin
 _pkgname="Media Hoarder"
 pkgver=1.3.4
 _electronversion=13
-pkgrel=1
+pkgrel=2
 pkgdesc="The media frontend for data hoarders and movie lovers"
 arch=('x86_64')
 url="https://github.com/theMK2k/Media-Hoarder"
@@ -12,7 +12,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'hicolor-icon-theme'
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'asar'
@@ -24,13 +24,13 @@ source=(
 )
 sha256sums=('b190b12fc40a476488ce68e479b73546ad1927c65d7e581cf2ec6f083e06d9a1'
             '3c67fce0428a3d133bb589cd1db329789ec235049af1412511f89420c99ae9a6'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\"|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     sed "s|data\/${pkgname%-bin}.db_initial|..\/..\/${pkgname%-bin}\/data/${pkgname%-bin}.db_initial|g" -i "${srcdir}/app.asar.unpacked/js/app."*.js
