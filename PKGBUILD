@@ -1,17 +1,17 @@
 # Maintainer: Kevin Wheelans <kevin dot wheelans at proton dot me>
 
 pkgname="pass-it-on-server"
-pkgver=0.14.2
-pkgrel=3
+pkgver=0.14.3
+pkgrel=1
 pkgdesc="Pass-it-on server component"
 arch=("any")
 license=("MIT")
 url="https://github.com/kwheelans/pass-it-on"
 conflicts=("pass-it-on-server-bin")
-depends=()
+depends=("openssl" "sqlite")
 makedepends=("cargo")
-source=("https://github.com/kwheelans/pass-it-on/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('812c0247dc8743c91ac466920ac808f77e4856ec6262c1adf540aae87a5d285eb789442be28e1ae14d63ecebda9a3986fe8b7c04b1f3bc78f010e1ccbdf54ed8')
+source=("https://github.com/kwheelans/pass-it-on/releases/download/v$pkgver/pass-it-on-v$pkgver.tar.gz")
+b2sums=('6be7ca435fe8b624c6b275820aa7374898d2300bfb9ef53493ba6a2551f13ffa0c20ff7b3c4bc093450f98b1c8926fd097098cf92618679f4397b1dfbfa8108c')
 
 prepare() {
 	export RUSTUP_TOOLCHAIN=stable
@@ -22,7 +22,7 @@ prepare() {
 build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --bin $pkgname --release --manifest-path pass-it-on-$pkgver/Cargo.toml --no-default-features --features server-bin-full,vendored-tls,bundled-sqlite
+    cargo build --frozen --bin $pkgname --release --manifest-path pass-it-on-$pkgver/Cargo.toml --no-default-features --features server-bin-full
 }
 
 #check() {
