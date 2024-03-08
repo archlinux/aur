@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-libssh
-	pkgdesc = Library for accessing ssh client services through C libraries (android)
-	pkgver = 0.9.6
-	pkgrel = 3
+	pkgdesc = Library for accessing ssh client services through C libraries (Android x86-64)
+	pkgver = 0.10.6
+	pkgrel = 1
 	url = https://www.libssh.org/
 	arch = any
 	groups = android-libssh
@@ -15,11 +15,9 @@ pkgbase = android-x86-64-libssh
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://www.libssh.org/files/0.9/libssh-0.9.6.tar.xz
+	source = https://www.libssh.org/files/0.10/libssh-0.10.6.tar.xz
 	source = 0001-Fix-static-lib.patch
-	source = 0002-Fix-missing-prototype-error.patch
-	md5sums = 0174df377361221a31a9576afbaba330
+	md5sums = 5f46371aa8bfa7e6bff7f2a6f3edf80e
 	md5sums = 66588a420aac9c580c31018a5b1c78cf
-	md5sums = 768b2bee29d9f55f09f74279ef06f48d
 
 pkgname = android-x86-64-libssh

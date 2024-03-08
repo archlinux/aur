@@ -10,26 +10,23 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libssh
-pkgver=0.9.6
-pkgrel=3
+pkgver=0.10.6
+pkgrel=1
 arch=('any')
-pkgdesc="Library for accessing ssh client services through C libraries (android)"
+pkgdesc="Library for accessing ssh client services through C libraries (Android ${_android_arch})"
 license=('LGPL')
 url="https://www.libssh.org/"
 depends=("android-${_android_arch}-zlib"
          "android-${_android_arch}-openssl")
-groups=(android-libssh)
-options=(!strip !buildflags staticlibs !emptydirs)
+groups=('android-libssh')
 makedepends=('android-cmake'
              'doxygen'
              'python')
+options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.libssh.org/files/${pkgver%.*}/libssh-$pkgver.tar.xz"
-        '0001-Fix-static-lib.patch'
-        '0002-Fix-missing-prototype-error.patch')
-
-md5sums=('0174df377361221a31a9576afbaba330'
-         '66588a420aac9c580c31018a5b1c78cf'
-         '768b2bee29d9f55f09f74279ef06f48d')
+        '0001-Fix-static-lib.patch')
+md5sums=('5f46371aa8bfa7e6bff7f2a6f3edf80e'
+         '66588a420aac9c580c31018a5b1c78cf')
 
 prepare() {
     cd "${srcdir}/libssh-${pkgver}"
@@ -38,11 +35,14 @@ prepare() {
     sed 's/find_package(OpenSSL)/#find_package(OpenSSL)/' -i CMakeLists.txt
 
     patch -Np1 -i "../0001-Fix-static-lib.patch"
-    patch -Np1 -i "../0002-Fix-missing-prototype-error.patch"
 }
 
 build() {
+    cd "${srcdir}/libssh-${pkgver}"
     source android-env ${_android_arch}
+
+    export CFLAGS="${CFLAGS} -D__USE_BSD"
+    export CXXFLAGS="${CXXFLAGS} -D__USE_BSD"
 
     version=$(cat ${ANDROID_PREFIX_INCLUDE}/openssl/opensslv.h | grep "OPENSSL_VERSION_TEXT" | sed 's/^[^\"]*"OpenSSL //' | sed 's/ .*$//')
     libssl=${ANDROID_PREFIX_LIB}/libssl.so
@@ -88,6 +88,7 @@ build() {
 }
 
 package(){
+    cd "${srcdir}/libssh-${pkgver}"
     source android-env ${_android_arch}
 
     # install static library
