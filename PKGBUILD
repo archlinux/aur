@@ -33,7 +33,7 @@ if [ -n "$_disable_docs" ]; then
 else
   pkgname=(mutter-performance-beta mutter-performance-beta-docs)
 fi
-pkgver=46beta
+pkgver=46rc
 pkgrel=1
 pkgdesc="A window manager for GNOME - beta version | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -111,7 +111,7 @@ makedepends=(
 if [ -n "$_enable_check" ]; then
   checkdepends=(gnome-session xorg-server-xvfb pipewire-session-manager python-dbusmock zenity)
 fi
-_commit=f8a257e104cf2055bccc3d1c9342d3c705fe8f3b  # tags/46.beta
+_commit=1e74e5071f381b2dd9026f8186987245dfd89100  # tags/46.rc
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         '1441.patch'
         '3304.patch'
