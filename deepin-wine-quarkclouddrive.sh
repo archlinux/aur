@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 BOTTLENAME=Deepin-@bottlename@
 APPVER=@appver@
@@ -21,10 +21,10 @@ if [ -n "$EXPO{RT_ENVS" ];then
 fi
 if [ -n "${EXEC_PATH}" ];then
     if [ -z "${EXEC_PATH##*.lnk*}" ];then
-        exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "C:/windows/command/start.exe" "/Unix" "${EXEC_PATH}" "$@"
+        exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "C:/windows/command/start.exe" "/Unix" "${EXEC_PATH}" "$@" || exit $?
     else
-        exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "${EXEC_PATH}" "$@"
+        exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "${EXEC_PATH}" "$@" || exit $?
     fi
 else
-    exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "uninstaller.exe" "$@"
+    exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "uninstaller.exe" "$@" || exit $?
 fi
