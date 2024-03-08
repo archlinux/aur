@@ -1,0 +1,5 @@
+[rocm-clang-ocl]
+source = 'github'
+github = 'ROCm/clang-ocl'
+use_latest_release = true
+prefix = 'rocm-'
