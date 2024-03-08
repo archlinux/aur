@@ -1,14 +1,14 @@
 pkgbase = python-proton-vpn-logger
 	pkgdesc = The proton-vpn-logger is a general purpose logging package for the entire vpn linux client.
 	pkgver = 0.2.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/ProtonVPN/python-proton-vpn-logger
 	arch = any
 	groups = ProtonVPN
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python-proton-core
-	source = git+https://github.com/ProtonVPN/python-proton-vpn-logger.git#commit=0acbc1ab41a65cbc9ceb340e3db011e6f89eb65a
+	source = git+https://github.com/ProtonVPN/python-proton-vpn-logger.git#tag=v0.2.1
 	sha256sums = SKIP
 
 pkgname = python-proton-vpn-logger
