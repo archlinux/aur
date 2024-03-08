@@ -1,11 +1,11 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=dynarmic
 pkgname=$_pkgname-git
-pkgver=6.6.2.r2.g3131d6c2
+pkgver=6.7.0.r25.ga41c3802
 pkgrel=1
 pkgdesc="An ARM dynamic recompiler"
 arch=('aarch64' 'x86_64')
-url="https://github.com/merryhime/dynarmic"
+url="https://github.com/lioncash/dynarmic"
 license=('0BSD')
 depends=('gcc-libs' 'glibc' 'llvm-libs')
 makedepends=(
@@ -26,6 +26,7 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
+	git tag 6.7.0 fa6cc2e4b2a2954f2298b6548174479c5b106c2a
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
