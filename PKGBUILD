@@ -4,28 +4,25 @@
 # Contributor: Artem Sereda <overmind88@gmail.com>
 
 pkgname=kde-thumbnailer-apk
-pkgver=1.1
-pkgrel=2
+pkgver=2.0
+pkgrel=1
 pkgdesc="Preview image generator plugin for Android Application Package files"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/z3ntu/kde-thumbnailer-apk"
-license=('GPL')
-depends=('kio5')
+license=('GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL')
+depends=('kio' 'libzip')
 makedepends=('cmake' 'extra-cmake-modules')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/z3ntu/kde-thumbnailer-apk/archive/v1.1.tar.gz")
-sha512sums=('6754e77491f7b2b6b4eb37cea3743f56622f93ce914c0c2cdfbcf642c02f32b5b9fe3b737387013a3465a008898db72c41450a2303eb20c116667d4301f2e6fd')
+source=("https://github.com/z3ntu/kde-thumbnailer-apk/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
+sha512sums=('7ecda7a4b304ac022edde973c34232897aefd5726b5cb09fe1f1a867beb1f0826abfb086f1b472e38de8302125bccae266212bc59d0c135de67bb6e99c5f6144')
 
 build() {
-  mkdir -p $pkgname-$pkgver/build
-  cd $pkgname-$pkgver/build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib ..
-  make
+    cmake -B build -S "$pkgname-$pkgver" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -Wno-dev
+    cmake --build build
 }
 
 package() {
-  cd $pkgname-$pkgver/build
-  make DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
 }
-
-# vim:set ts=8 sts=2 sw=2 et:
