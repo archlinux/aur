@@ -1,7 +1,7 @@
 # Maintainer: Peter Semiletov peter.semiletov at gmail dot com
 
 pkgname=eko
-pkgver=7.0.1
+pkgver=7.1.0
 pkgrel=1
 pkgdesc="EKO is a simple sound editor with mixer and audio effects."
 arch=('x86_64')
@@ -23,4 +23,4 @@ package(){
   make INSTALL_ROOT="${pkgdir}" install
 }
 
-md5sums=(c551cdcf901a3501603dbc4bfedd3fee)
+md5sums=(12a43742ad8dade8303cb1f3e73a9b9b)

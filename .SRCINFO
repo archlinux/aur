@@ -1,6 +1,6 @@
 pkgbase = eko
 	pkgdesc = EKO is a simple sound editor with mixer and audio effects.
-	pkgver = 7.0.1
+	pkgver = 7.1.0
 	pkgrel = 1
 	url = https://github.com/psemiletov/eko
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = eko
 	depends = gcc-libs
 	depends = libsamplerate
 	depends = libsndfile
-	source = https://github.com/psemiletov/eko/archive/7.0.1.tar.gz
-	md5sums = c551cdcf901a3501603dbc4bfedd3fee
+	source = https://github.com/psemiletov/eko/archive/7.1.0.tar.gz
+	md5sums = 12a43742ad8dade8303cb1f3e73a9b9b
 
 pkgname = eko
