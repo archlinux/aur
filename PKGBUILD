@@ -3,12 +3,12 @@
 _pkgname=praznik
 _pkgver=11.0.0
 pkgname=r-${_pkgname,,}
-pkgver=11.0.0
-pkgrel=3
-pkgdesc='Tools for Information-Based Feature Selection and Scoring'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=8
+pkgdesc="Tools for Information-Based Feature Selection and Scoring"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r
 )
@@ -16,14 +16,15 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c6d6ff8ad0c37dbc25d42dcf4c35dd0fdd6bff445176a71e7346e55974b165a1')
+md5sums=('52453daecb6fcf6cae694d00cd86006f')
+b2sums=('0c38ab05d2472ff91a4e3e9e185776d995b9d563ddff813d897c53165422c1f92d84d834ee1e94f4c9e9e1785f57ce16d0f3d7576c8571544b26f54601f3271e')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
