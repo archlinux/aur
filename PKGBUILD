@@ -3,7 +3,7 @@ pkgname=mizar-bin
 _pkgname=Mizar
 pkgver=1.3.0
 _electronversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="A TCP testing tool, immediately useful and intuitive to use right out of the box"
 arch=('x86_64')
 url="https://github.com/Fabio286/mizar"
@@ -13,19 +13,16 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
 )
 makedepends=(
-    'squashfuse'
+    'fuse'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux_${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c4cd133ba91a23666cc36abf1b26e4fbad1ac26c842f0039821c9f5483535799'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
