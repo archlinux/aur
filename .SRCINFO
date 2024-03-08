@@ -1,13 +1,13 @@
 pkgbase = python-proton-vpn-connection
 	pkgdesc = The proton-vpn-connection component defines the interface that VPN connection backends should implement.
-	pkgver = 0.11.3
+	pkgver = 0.14.2
 	pkgrel = 1
 	url = https://github.com/ProtonVPN/python-proton-vpn-connection
 	arch = any
 	groups = ProtonVPN
 	license = GPL3
 	makedepends = python-setuptools
-	source = git+https://github.com/ProtonVPN/python-proton-vpn-connection.git#commit=6c6b13cd641c9c890f88690853cf52b6db918723
+	source = git+https://github.com/ProtonVPN/python-proton-vpn-connection.git#tag=v0.14.2
 	sha256sums = SKIP
 
 pkgname = python-proton-vpn-connection
