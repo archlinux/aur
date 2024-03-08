@@ -1,7 +1,7 @@
 pkgbase = cromite-bin
 	pkgdesc = Cromite a Bromite fork with ad blocking and privacy enhancements (binary release)
 	pkgver = 122.0.6261.111
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uazo/cromite
 	arch = x86_64
 	license = GPL3
@@ -23,7 +23,7 @@ pkgbase = cromite-bin
 	options = !strip
 	source = cromite.desktop
 	source = cromite.png
-	source = https://raw.githubusercontent.com/uazo/cromite/v122.0.6261.111-aeb7dce1db09d042991073d6352a1363efeeceee/LICENSE
+	source = LICENSE
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	sha256sums = 3ddf5b02a7eb51047770c608e23a51d7f70baf7920146c61dfc8c9c653d4e89a
 	sha256sums = 95ea4e28bc95c30200d832c075a04d79191110573f8bbebf881b81c4cef6c211

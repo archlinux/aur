@@ -2,7 +2,7 @@
 
 pkgname=cromite-bin
 pkgver=122.0.6261.111
-pkgrel=1
+pkgrel=2
 _cromite_commit='aeb7dce1db09d042991073d6352a1363efeeceee'
 _launcher_ver=8
 pkgdesc='Cromite a Bromite fork with ad blocking and privacy enhancements (binary release)'
@@ -27,7 +27,7 @@ conflicts=('cromite')
 options=(!strip)
 source=(cromite.desktop
         cromite.png
-        https://raw.githubusercontent.com/uazo/cromite/v${pkgver}-${_cromite_commit}/LICENSE
+        LICENSE
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz)
 
 source_x86_64=(https://github.com/uazo/cromite/releases/download/v${pkgver}-${_cromite_commit}/chrome-lin64.tar.gz)
@@ -63,7 +63,7 @@ package() {
 	local toplevel_binaries=(
 		chrome_crashpad_handler
 
-		# LibQt
+		# Qt
 		libqt5_shim.so
 		libqt6_shim.so
 
