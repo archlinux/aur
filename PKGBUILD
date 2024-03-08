@@ -3,7 +3,7 @@ pkgname=realm-studio-bin
 _pkgname="Realm Studio"
 pkgver=14.1.2
 _electronversion=24
-pkgrel=3
+pkgrel=4
 pkgdesc='A tool, any developer or system administrator would use when building and maintaining their app built on the Realm Mobile Platform.'
 arch=('x86_64')
 url="https://realm.io/products/realm-studio/"
@@ -24,7 +24,7 @@ source=(
 )
 sha256sums=('927cbb21cf043d08218bcee442767fceeae9007ac182d4c191ec2f4ab2347abd'
             'b805ac8f6d254316eb3d5bb052d58e36054a933401e4f493af66e1c6cd2ed0fb'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
