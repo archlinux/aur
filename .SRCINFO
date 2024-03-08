@@ -1,13 +1,13 @@
 pkgbase = dnsx
 	pkgdesc = Fast and multi-purpose DNS toolkit
-	pkgver = 1.1.6
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/projectdiscovery/dnsx
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	provides = dnsx
-	source = dnsx-1.1.6.tar.gz::https://github.com/projectdiscovery/dnsx/archive/v1.1.6.tar.gz
-	sha256sums = 5fc857feceac3438ab1a3d9a577412ad153be5206887d4396247f87939be8e9c
+	source = dnsx-1.2.1.tar.gz::https://github.com/projectdiscovery/dnsx/archive/v1.2.1.tar.gz
+	sha256sums = 08a806e1f87e11e1a4953bf84a35c77afdd84a946b8e7c9b602443007eeb1fe3
 
 pkgname = dnsx
