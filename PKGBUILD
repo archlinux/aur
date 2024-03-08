@@ -5,7 +5,7 @@
 
 pkgname='fcitx5-mozc-ut'
 pkgver=2.29.5400.102
-pkgrel=1
+pkgrel=2
 pkgdesc='Mozc module for Fcitx5'
 arch=('x86_64')
 url='https://github.com/fcitx/mozc'
@@ -39,29 +39,29 @@ package() {
 
     # BSD-3-Clause
     sed -n 67,94p data/installer/credits_en.html > Mozc
-    install -Dm644 Mozc "${pkgdir}"/usr/share/licenses/mozc/Mozc
+    install -Dm644 Mozc "${pkgdir}"/usr/share/licenses/${pkgname}/Mozc
     # BSD-3-Clause
     sed -n 317,344p data/installer/credits_en.html > Breakpad
-    install -Dm644 Breakpad "${pkgdir}"/usr/share/licenses/mozc/Breakpad
+    install -Dm644 Breakpad "${pkgdir}"/usr/share/licenses/${pkgname}/Breakpad
     # NAIST-2003
     sed -n 355,424p data/installer/credits_en.html > IPAdic
-    install -Dm644 IPAdic "${pkgdir}"/usr/share/licenses/mozc/IPAdic
+    install -Dm644 IPAdic "${pkgdir}"/usr/share/licenses/${pkgname}/IPAdic
     # BSD-2-Clause
     sed -n 435,457p data/installer/credits_en.html > Japanese-Usage-Dictionary
-    install -Dm644 Japanese-Usage-Dictionary "${pkgdir}"/usr/share/licenses/mozc/Japanese-Usage-Dictionary
+    install -Dm644 Japanese-Usage-Dictionary "${pkgdir}"/usr/share/licenses/${pkgname}/Japanese-Usage-Dictionary
     # Public Domain Data
     sed -n 468,470p data/installer/credits_en.html > Okinawa-Dictionary
-    install -Dm644 Okinawa-Dictionary "${pkgdir}"/usr/share/licenses/mozc/Okinawa-Dictionary
+    install -Dm644 Okinawa-Dictionary "${pkgdir}"/usr/share/licenses/${pkgname}/Okinawa-Dictionary
     # BSD-3-Clause
     sed -n 481,513p data/installer/credits_en.html > Protocol-Buffers
-    install -Dm644 Protocol-Buffers "${pkgdir}"/usr/share/licenses/mozc/Protocol-Buffers
+    install -Dm644 Protocol-Buffers "${pkgdir}"/usr/share/licenses/${pkgname}/Protocol-Buffers
     # MIT
     sed -n 698,704p data/installer/credits_en.html > Tamachi-Phonetic-Kanji-Alphabet
-    install -Dm644 Tamachi-Phonetic-Kanji-Alphabet "${pkgdir}"/usr/share/licenses/mozc/Tamachi-Phonetic-Kanji-Alphabet
+    install -Dm644 Tamachi-Phonetic-Kanji-Alphabet "${pkgdir}"/usr/share/licenses/${pkgname}/Tamachi-Phonetic-Kanji-Alphabet
     # MIT
     sed -n 762,782p data/installer/credits_en.html > Windows-Implementation-Library
     sed -i -e 's|^[ \t]*||g' Windows-Implementation-Library
-    install -Dm644 Windows-Implementation-Library "${pkgdir}"/usr/share/licenses/mozc/Windows-Implementation-Library
+    install -Dm644 Windows-Implementation-Library "${pkgdir}"/usr/share/licenses/${pkgname}/Windows-Implementation-Library
 
     install -Dm644 bazel-bin/unix/fcitx5/fcitx5-mozc.so "${pkgdir}"/usr/lib/fcitx5/fcitx5-mozc.so
     install -Dm644 unix/fcitx5/mozc-addon.conf "${pkgdir}"/usr/share/fcitx5/addon/mozc.conf
