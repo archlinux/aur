@@ -210,15 +210,6 @@ prepare() {
   # Comment: This fixes three issues that were preventing GPU copies on the Nvidia proprietary driver.
   pick_mr '3304' '3304.patch' 'patch'
 
-  # Title: backends/native: Fix the issue where KMS thread fails to acquire realtime on boot
-  # Author: Agustín Dall'Alba <gnome@dallalba.com.ar>
-  # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3327
-  # Type: 3
-  # Status: 2
-  # Comment: Remove G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START to fix the issue where KMS thread
-  #          fails to acquire realtime priority on boot when the shell starts before the rtkit daemon.
-  pick_mr '3327' '3327.patch' 'patch'
-
   # Title: kms/crtc: Increase default deadline evasion to 1000 microseconds
   # Author: Daniel van Vugt <daniel.van.vugt@canonical.com>
   # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3373
