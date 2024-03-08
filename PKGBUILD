@@ -5,7 +5,7 @@ _appname="Sharing GUI"
 pkgver=1.4.0
 _electronversion=21
 _nodeversion=18
-pkgrel=3
+pkgrel=4
 pkgdesc="Easily share files to multiple devices on the LAN/Public Network."
 arch=('any')
 url="https://sharing-gui.yuanx.me/"
@@ -13,7 +13,7 @@ _ghurl="https://github.com/imyuanx/sharing-GUI"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'gendesk'
@@ -27,7 +27,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
