@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chatall-bin
 _appname=ChatALL
-pkgver=1.59.91
+pkgver=1.61.92
 _electronversion=28
 pkgrel=1
 pkgdesc="Concurrently chat with ChatGPT, Bing Chat, bard, Alpaca, Vincuna, Claude, ChatGLM, MOSS, iFlytek Spark, ERNIE and more, discover the best answers"
@@ -21,8 +21,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-amd64.deb")
 source=("${pkgname%-bin}.sh")
 sha256sums=('50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
-sha256sums_aarch64=('eabba879439129fcca6469be99c3bb994c4a87daad35fecd5776d32651c97aaa')
-sha256sums_x86_64=('9f6d11225381a20663cce1d27e79bd670de62795296d63559d96b401d550074f')
+sha256sums_aarch64=('350346346d6e207c1dfb7e2504a2fc0f79b3eb39cf2406277f2b261e87e9d0b7')
+sha256sums_x86_64=('528d4e88284864a2830bd55a6a0f5bd2b5f41e00d29ed8d81c9eb49b510a2d4d')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
