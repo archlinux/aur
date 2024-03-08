@@ -1,14 +1,14 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: silver hikari <kerrickethan@gmail.com>
 pkgname=gridmonger-git
-pkgver=1.1.0.r37.aeec810
+pkgver=1.1.0.r85.0ac13d0
 epoch=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Your trusty old-school cRPG mapping companion"
 arch=('x86_64')
 url="https://gridmonger.johnnovak.net/"
 license=('custom:WTFPL')
 depends=('zenity' 'libxxf86vm' 'libglvnd' 'libxi' 'libxrandr' 'libx11' 'libxinerama' 'libxcursor')
-makedepends=('git' 'nim' 'dart-sass' 'python-sphinx' 'gendesk' 'nim-atlas')
+makedepends=('git' 'nim' 'dart-sass' 'python-sphinx' 'gendesk')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/johnnovak/gridmonger' 'git+https://github.com/johnnovak/koi' 'git+https://github.com/johnnovak/nim-glfw#branch=gridmonger')
@@ -23,7 +23,7 @@ prepare() {
 	gendesk -n -f --pkgname="${pkgname%-git}" --pkgdesc="$pkgdesc" --exec="/opt/gridmonger/gridmonger" --icon="/usr/share/pixmaps/gridmonger.png"
 	atlas init --deps=deps
 	cd "${pkgname%-git}"
-	echo -e 'requires "nanovg"\nrequires"osdialog"\nrequires"riff"\nrequires"winim"\nrequires "file:///home/silver/aur-packages-git/gridmonger/src/nim-glfw"\nrequires "file:///home/silver/aur-packages-git/gridmonger/src/koi"' > 'gridmonger.nimble'
+	echo -e "requires \"nanovg\"\nrequires \"osdialog\"\nrequires \"riff\"\nrequires \"winim\"\nrequires \"file://$srcdir/nim-glfw\"\nrequires \"file://$srcdir/koi\"" > 'gridmonger.nimble'
 	atlas install gridmonger.nimble
 }
 
