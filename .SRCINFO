@@ -1,0 +1,18 @@
+pkgbase = lightly-qt6-git
+	pkgdesc = A modern style for qt applications. (qt6 branch)
+	pkgver = 0.4.1.r73.g00ca2344
+	pkgrel = 1
+	url = https://github.com/boehs/Lightly
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = cmake
+	makedepends = qt6ct
+	makedepends = qt6-declarative
+	makedepends = kdecoration
+	makedepends = extra-cmake-modules
+	source = git+https://github.com/boehs/Lightly.git#branch=qt6
+	source = add-missing-files.patch
+	sha256sums = SKIP
+	sha256sums = 2553ff71310e265a9481c0afb9d50bbd1d9f66d47bd67675956199601c1a6501
+
+pkgname = lightly-qt6-git
