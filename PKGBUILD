@@ -3,7 +3,7 @@ pkgname=commas-bin
 _pkgname=Commas
 pkgver=0.30.0
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="A hackable, pluggable terminal, and also a command runner."
 arch=("x86_64")
 url="https://github.com/CyanSalt/commas"
@@ -25,13 +25,13 @@ source=(
 )
 sha256sums=('066fb0a38b0ee5993a70e31847984ee45f6021c9d80756d2fd550474da088307'
             '65b65c25d8d68549dc271f7c755426ba8884f6ae9fb3a8061eec65c241345f48'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
+    gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
