@@ -1,4 +1,4 @@
-pkgbase = kc
+pkgbase = kc-full
 	pkgdesc = console-based password manager - YubiKey, scrypt, PCRE and readline support
 	pkgver = 2.5.3
 	pkgrel = 1
@@ -13,6 +13,7 @@ pkgbase = kc
 	depends = libscrypt>=1.14
 	depends = pcre>=8.12
 	depends = readline
+	provides = kc
 	conflicts = kc
 	source = kc-2.5.3.tar.gz::https://github.com/levaidaniel/kc/archive/refs/tags/2.5.3.tar.gz
 	sha256sums = 593db34bf53ad9197c3ac1ffc3742dfc03a784862f0a5fadeda6b6d2ad287539
