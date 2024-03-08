@@ -3,7 +3,7 @@ pkgname=sixgrid-bin
 _pkgname=SixGrid
 pkgver=0.3.7_2
 _electronversion=11
-pkgrel=3
+pkgrel=4
 pkgdesc="Open-Source Desktop Client for e926/e621 and websites alike"
 arch=("x86_64")
 url="https://github.com/SixGrid/sixgrid"
@@ -11,20 +11,17 @@ license=("Apache-2.0")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
+    "electron${_electronversion}-bin"
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-59eec7f0cda0db6230b5292a6f0329f52dd53271-linux-amd64.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('08c237d8d71ec516c90bb8a8f197da51acb7489966f373c7021b2cecff3ee850'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
