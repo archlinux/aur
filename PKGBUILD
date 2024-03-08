@@ -13,10 +13,8 @@ _1panel_original_port=`expr $RANDOM % 55535 + 10000`
 _1panel_original_username=$(pwgen -nABCv 10 1)
 _1panel_original_password=$(pwgen -nBCv 20 1)
 _1panel_original_entrance=$(pwgen -nABCv 10 1)
-install=1panel-bin.install
+install=1panel.install
 depends=(
-    'docker'
-    'docker-compose'
 )
 makedepends=(
     'pwgen'
@@ -24,8 +22,13 @@ makedepends=(
 optdepends=(
     'ufw'
     'firewalld'
+    'docker'
+    'docker-compose'
 )
-conflicts=('1panel-dev-bin')
+conflicts=(
+    '1panel-dev-bin'
+    '1panel-git'
+)
 source_aarch64=("${pkgname}-${pkgver//_/-}-arm64.tar.gz::https://resource.fit2cloud.com/1panel/package/stable/v${pkgver//_/-}/release/1panel-v${pkgver//_/-}-linux-arm64.tar.gz")
 source_x86_64=("${pkgname}-${pkgver//_/-}-amd64.tar.gz::https://resource.fit2cloud.com/1panel/package/stable/v${pkgver//_/-}/release/1panel-v${pkgver//_/-}-linux-amd64.tar.gz")
 sha256sums_x86_64=("5804421c5432eabf99eb28f8f6de3d02fac3f9b6d2abadba8b2b575cc09e2437")
