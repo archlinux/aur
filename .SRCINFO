@@ -1,13 +1,14 @@
 pkgbase = term-ux-git
 	pkgdesc = A custom Teeworlds curses client based on chillerbot-ux (ddnet based).
-	pkgver = 16.0.r421.g17c478731
+	pkgver = 18.0.3.r1066.g2b35da053
 	pkgrel = 1
-	url = chillerbot.github.io/
+	url = https://chillerbot.github.io/
 	arch = x86_64
 	license = custom:BSD
 	license = CCPL:by-nc-sa
 	checkdepends = gmock
 	makedepends = git
+	makedepends = cargo
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = python
