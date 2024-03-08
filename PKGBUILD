@@ -1,9 +1,10 @@
+# Maintainer: ptchinster <AT> gmail.com
 # Maintainer: gt <AT> notfoss.com
 # Contributor: Jim Pryor <profjim@jimpryor.net>
 
 pkgname="dcron-git"
-pkgver="4.5.r9.g6186237"
-pkgrel="2"
+pkgver=4.5.r18.g53fca46
+pkgrel=1
 pkgdesc="dillon's lightweight cron daemon (Git version)."
 arch=("i686" "x86_64" "armv6h" "armv7h")
 license=("GPL")
@@ -31,6 +32,7 @@ build() {
     # fix paths to point to /usr/bin
     sed -i 's=/usr/sbin/sendmail=/usr/bin/sendmail=g' defs.h
     sed -i 's=/usr/sbin/run-cron=/usr/bin/run-cron=g' extra/root.crontab
+    sed -i '28 a CFLAGS += -Wextra -Wformat=2 -Wformat-security -fstack-protector-all -fstack-check -Wl,-z,nodlopen -Wl,-z,nodump -Wl,-z,noexecstack -Wl,-z,noexecheap -Wl,-z,relro -Wl,-z,now -fPIE -Wl,-z,-pie' Makefile
 
     # by default, any member of group "users" can edit their own crontab
     make \
