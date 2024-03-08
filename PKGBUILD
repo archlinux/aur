@@ -64,11 +64,6 @@
 #   'n' - do not apply this patch
 #   'y' - apply this patch
 #
-# Show argument names for function pointer struct (PR: 69011)
-# CLANGD_HOVERPTRFN:
-#   'n' - do not apply this patch
-#   'y' - apply this patch
-#
 # Resolve the dependent type from its single instantiation (PR: 71279, 74971)
 # CLANGD_RESOLVEDEPTYPE:
 #   'n' - do not apply this patch
@@ -114,7 +109,6 @@
 : ${CLANGD_HOVERVIRTOFF:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERLAYOUTEVERYHERE:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERNODEFS:=$CLANGD_DEFAULT_PATCH_STATE}
-: ${CLANGD_HOVERPTRFN:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_RESOLVEDEPTYPE:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_INLAYHINTSBLOCKEND:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_RESOLVEINCHEADERS:=$CLANGD_DEFAULT_PATCH_STATE}
@@ -123,7 +117,7 @@
 : ${CLANGD_CONFIG_INCLUDE_STYLE:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt
-pkgver=19.r3010.gd4fd20258f63
+pkgver=19.r4713.g2e0ddfc16385
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
@@ -146,7 +140,6 @@ source=("git+https://github.com/llvm/llvm-project.git#branch=main"
         'hover-virt-offset.patch'
         'hover-layout-everyhere.patch'
         'hover-no-defs.patch'
-        'hover-ptrfn-args.patch'
         'resolve-depend-type.patch'
         'inlay-hints-blockend-linelimit10.patch'
         'resolve-incomplete-header-includes.patch'
@@ -167,8 +160,7 @@ sha256sums=('SKIP'
             '1b1ad88faa83b36dd68f63851a0fd6e07eed16595fcbffdc8a57b5c884f8a98c'  # hover-virt-offset
             '62e38f3074f39d51524b3d43aabb3991df97e43ea4a8c20e8073c479a41d1057'  # hover-layout-everyhere
             '94b328ea81eb615a90acf18a9a78733d77093deb12203683510fe4881bad95c6'  # hover-no-defs
-            '24a8e0b207598798b91f030bcccf0a074f0ccd23885ea4e802a8bda1c05657e0'  # hover-ptrfn-args
-            '6e1f9c9a01ac50be93537227fffe20816ae0d51243ca8836c39d99dec8dad51e'  # resolve-depend-type
+            '4c610c149b6ca59ab5fad137a221d5d527a50f141fb782359cc2f9e5de7e68cd'  # resolve-depend-type
             '3365392bf7d95a02e2fb22dffbba011a3fa1179543426a2558b9ac61a300a7a7'  # inlay-hints-blockend-linelimit10
             '991fac650864bbf16832a8c8a0689ee44ef2959a79c9b950ff6200cb4c51beff'  # resolve-incomplete-header-includes
             '459bc42c7366305e562fa710551de909b581aa2358ca739585a0477dd06ebd6d'  # lsp-remove-files-from-cdb
@@ -181,78 +173,80 @@ pkgver() {
     git describe --long --match llvmorg-\* | sed -r 's/llvmorg-([^-]*)-(init|rc[0-9]+)-(.*)/\1-r\3/;s/-/./g'
 }
 
+apply_patch() {
+    echo -e "\033[0;34m  -> \033[1;37mApplying patch: $1\033[0m"
+    patch -p1 -i ${srcdir}/$1.patch
+}
+
 prepare() {
     mkdir -p build
     cd ${srcdir}/llvm-project
 
     # Hover patches
     if [ "$CLANGD_DOXYGEN" != "n" ]; then
-        patch -p1 -i ${srcdir}/hover-doxygen-trunk.patch
-        patch -p1 -i ${srcdir}/doxygen-extra-render-trunk.patch
-        patch -p1 -i ${srcdir}/doxygen-more-fields.patch
+        apply_patch hover-doxygen-trunk
+        apply_patch doxygen-extra-render-trunk
+        apply_patch doxygen-more-fields
     fi
     if [ "$CLANGD_RESOLVEFWDPARAMS" != "n" ]; then
-        patch -p1 -i ${srcdir}/hover-resolve-forward-params.patch
+        apply_patch hover-resolve-forward-params
     fi
     if [ "$CLANGD_HOVERBITFIELDSMASK" != "n" ]; then
-        patch -p1 -i ${srcdir}/hover-bit-fields-mask.patch
+        apply_patch hover-bit-fields-mask
     fi
     if [ "$CLANGD_HOVERINHEX" != "n" ]; then
-        patch -p1 -i ${srcdir}/hover-hex-formats.patch
+        apply_patch hover-hex-formats
     fi
     if [ "$CLANGD_HOVERVIRTOFF" != "n" ]; then
-        patch -p1 -i ${srcdir}/hover-virt-offset.patch
+        apply_patch hover-virt-offset
     fi
     if [ "$CLANGD_HOVERLAYOUTEVERYHERE" != "n" ]; then
-        patch -p1 -i ${srcdir}/hover-layout-everyhere.patch
+        apply_patch hover-layout-everyhere
     fi
     if [ "$CLANGD_HOVERNODEFS" != "n" ]; then
-        patch -p1 -i ${srcdir}/hover-no-defs.patch
-    fi
-    if [ "$CLANGD_HOVERPTRFN" != "n" ]; then
-        patch -p1 -i ${srcdir}/hover-ptrfn-args.patch
+        apply_patch hover-no-defs
     fi
     if [ "$CLANGD_HOVERRECORDPAD" != "n" ]; then
-        patch -p1 -i ${srcdir}/hover-record-paddings.patch
+        apply_patch hover-record-paddings
     fi
 
     # LSP patches
     if [ "$CLANGD_CODELENS" != "n" ]; then
-        patch -p1 -i ${srcdir}/lsp-codelens.patch
+        apply_patch lsp-codelens
     fi
     if [ "$CLANGD_LSPREMOVEFROMCDB" != "n" ]; then
-        patch -p1 -i ${srcdir}/lsp-remove-files-from-cdb.patch
+        apply_patch lsp-remove-files-from-cdb
     fi
 
     # Code-completion patches
     if [ "$CLANGD_POSTFIXCOMPLETION" != "n" ]; then
-        patch -p1 -i ${srcdir}/postfix-completion-trunk.patch
+        apply_patch postfix-completion-trunk
     fi
 
     # Refactoring patches
     if [ "$CLANGD_EXTRACTFUNC" != "n" ]; then
-        patch -p1 -i ${srcdir}/refactor-extract-function.patch
+        apply_patch refactor-extract-function
     fi
 
     # Inlay hints patches
     if [ "$CLANGD_INLAYHINTSPADS" != "n" ]; then
-        patch -p1 -i ${srcdir}/inlay-hints-paddings.patch
+        apply_patch inlay-hints-paddings
     fi
     if [ "$CLANGD_INLAYHINTSBLOCKEND" != "n" ]; then
-        patch -p1 -i ${srcdir}/inlay-hints-blockend-linelimit10.patch
+        apply_patch inlay-hints-blockend-linelimit10
     fi
 
     # Resolve patches
     if [ "$CLANGD_RESOLVEDEPTYPE" != "n" ]; then
-        patch -p1 -i ${srcdir}/resolve-depend-type.patch
+        apply_patch resolve-depend-type
     fi
     if [ "$CLANGD_RESOLVEINCHEADERS" != "n" ]; then
-        patch -p1 -i ${srcdir}/resolve-incomplete-header-includes.patch
+        apply_patch resolve-incomplete-header-includes
     fi
 
     # Config patches
     if [ "$CLANGD_CONFIG_INCLUDE_STYLE" != "n" ]; then
-        patch -p1 -i ${srcdir}/config-include-style.patch
+        apply_patch config-include-style
     fi
 }
 
