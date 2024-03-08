@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/enjoy-digital/$_pkgname"
 license=('BSD-2-Clause')
 depends=('python-migen' 'python-litex')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest-runner')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha512sums=('b31af9938a319539919f66ac35fd685c3f0786a5203c5ab7d20f3452dd315f41da195a2f838b6bb83231d73770b9c29c2acb76a89ab36412878807e8cbe64864')
@@ -17,7 +17,7 @@ sha512sums=('b31af9938a319539919f66ac35fd685c3f0786a5203c5ab7d20f3452dd315f41da1
 build() {
   cd $_pkgname-$pkgver
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -29,7 +29,7 @@ check() {
 package() {
   cd $_pkgname-$pkgver
 
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
