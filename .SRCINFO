@@ -1,13 +1,13 @@
 pkgbase = r-desirability
 	pkgdesc = Function Optimization and Ranking via Desirability Functions
 	pkgver = 2.1
-	pkgrel = 5
+	pkgrel = 8
 	url = https://cran.r-project.org/package=desirability
 	arch = any
-	license = GPL
+	license = GPL-2.0-only
 	depends = r
-	optdepends = r-lattice
 	source = https://cran.r-project.org/src/contrib/desirability_2.1.tar.gz
-	sha256sums = b33af2ce184532b819f21a959af0b752991b764ef301051873141865eeee8f24
+	md5sums = 6597122db76d97f04c66556d66bbd2d5
+	b2sums = 63810972528557734e57bdf3a5c2db98bf8cbcb95c419b12ef34c3cf0243c13ad64f654789c96c33f2ec5345d5df6da3974a2ef639d0f589ef064d3ce96fda37
 
 pkgname = r-desirability
