@@ -1,0 +1,24 @@
+pkgbase = python-lpc_checksum
+	pkgdesc = Python script to calculate LPC firmware checksums, based on the C version by Roel Verdult. It can be used as a standalone application, or as a Python module that integrates directly in a build environment (e.g. SCons). It does not need to be compiled.
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/basilfx/lpc_checksum
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-poetry
+	makedepends = python-anyio
+	makedepends = python-libtmux
+	makedepends = python-pytest
+	makedepends = python-pytest-curio
+	makedepends = python-pytest-timeout
+	depends = python
+	depends = python-intelhex
+	source = lpc_checksum-3.0.0.tar.gz::https://github.com/basilfx/lpc_checksum/archive/refs/tags/v3.0.0.tar.gz
+	sha256sums = a52530513eb5ddd7ef475321f8c408177fc680730b1049dcec4893908e15d2f0
+
+pkgname = python-lpc_checksum
