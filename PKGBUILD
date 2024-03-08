@@ -5,13 +5,13 @@
 
 pkgname=openxcom
 pkgver=1.0
-pkgrel=8
+pkgrel=9
 pkgdesc="An open-source reimplementation of the famous X-COM game"
 arch=('i686' 'x86_64')
 url="https://openxcom.org/"
-license=('GPL3')
-depends=('sdl_gfx' 'sdl_mixer' 'sdl_image' 'yaml-cpp' 'mesa')
-makedepends=('boost' 'glu' 'xmlto' 'docbook-xml' 'docbook-xsl' 'xorgproto')
+license=('GPL-3.0-or-later')
+depends=('gcc-libs' 'glibc' 'libglvnd' 'sdl12-compat' 'sdl_gfx' 'sdl_image' 'sdl_mixer' 'yaml-cpp')
+makedepends=('boost' 'docbook-xml' 'docbook-xsl' 'glu' 'xmlto' 'xorgproto')
 optdepends=('openxcom-data-steam: Original XCom data files from steam')
 install="${pkgname}.install"
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/SupSuper/OpenXcom/archive/v1.0.tar.gz"

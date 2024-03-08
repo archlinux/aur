@@ -1,23 +1,26 @@
 pkgbase = openxcom
 	pkgdesc = An open-source reimplementation of the famous X-COM game
 	pkgver = 1.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://openxcom.org/
 	install = openxcom.install
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = boost
-	makedepends = glu
-	makedepends = xmlto
 	makedepends = docbook-xml
 	makedepends = docbook-xsl
+	makedepends = glu
+	makedepends = xmlto
 	makedepends = xorgproto
+	depends = gcc-libs
+	depends = glibc
+	depends = libglvnd
+	depends = sdl12-compat
 	depends = sdl_gfx
-	depends = sdl_mixer
 	depends = sdl_image
+	depends = sdl_mixer
 	depends = yaml-cpp
-	depends = mesa
 	optdepends = openxcom-data-steam: Original XCom data files from steam
 	source = openxcom-1.0.tar.gz::https://github.com/SupSuper/OpenXcom/archive/v1.0.tar.gz
 	source = openxcom-abs-fix.patch
@@ -29,4 +32,3 @@ pkgbase = openxcom
 	sha256sums = 3b285e666fc3d37486861b3a17ff156d9b8804167403c58a267bdb69e55c8b86
 
 pkgname = openxcom
-
