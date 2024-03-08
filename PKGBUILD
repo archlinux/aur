@@ -5,7 +5,7 @@
 
 pkgname='fcitx5-mozc-ut'
 pkgver=2.29.5400.102
-pkgrel=2
+pkgrel=3
 pkgdesc='Mozc module for Fcitx5'
 arch=('x86_64')
 url='https://github.com/fcitx/mozc'
@@ -37,6 +37,10 @@ build() {
 package() {
     cd ${pkgname}-git/src
 
+    # BSD-3-Clause
+    sed -n 1,29p unix/fcitx5/fcitx_key_translator.h > Fcitx5
+    sed -i -e 's|^\/\/[ ]\?||g' Fcitx5
+    install -Dm644 Fcitx5 "${pkgdir}"/usr/share/licenses/${pkgname}/Fcitx5
     # BSD-3-Clause
     sed -n 67,94p data/installer/credits_en.html > Mozc
     install -Dm644 Mozc "${pkgdir}"/usr/share/licenses/${pkgname}/Mozc
