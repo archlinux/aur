@@ -3,7 +3,7 @@ pre_install() {
 }
 
 post_install() {
-    echo -e "Obtaining the local IP address of the machine..."
+    echo -e "Obtaining the local IP address of this machine..."
     _1panel_active_interface=$(ip route get 8.8.8.8 | awk 'NR==1 {print $5}')
     if [[ -z $_1panel_active_interface ]]; then
         _1panel_local_ip="127.0.0.1"
@@ -34,6 +34,17 @@ post_install() {
     echo -e "Username: $_1panel_username"
     echo -e "Password: $_1panel_password"
     echo -e "If you are not Chinese user, please click \033[32m'中文（简体）'\033[0m and switch it to English."
+    # 判断docker和docker-compose安装
+    if pacman -Qs docker >/dev/null 2>&1; then
+        echo -e "Docker is installed correctly."
+    else
+        echo -e "\033[31mWarning: Docker is not installed, please install it, or most of the features of this package will not be available.\033[0m"
+    fi
+    if pacman -Qs docker-compose >/dev/null 2>&1; then
+        echo -e "Docker Compose is installed correctly."
+    else
+        echo -e "\033[31mWarning: Docker Compose is not installed, please install it, or 1Panel application store will not be avaliable.\033[0m"
+    fi
     unset _1panel_active_interface
     unset _1panel_local_ip
     unset _1panel_public_ip
