@@ -1,8 +1,8 @@
 # Maintainer: G1ya777
 pkgname=rename-gru-git
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
-pkgdesc="A cli tool to batch rename all the files in the provided directory written in rust"
+pkgdesc="A CLI tool to batch rename files in the provided directory"
 url="https://github.com/G1ya777/GRU"
 license=("MIT")
 arch=("any")
