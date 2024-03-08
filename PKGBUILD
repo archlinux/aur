@@ -25,7 +25,8 @@ md5sums=('SKIP')
 sha1sums=('SKIP')
 
 build() {
-  cmake -B build -S ${pkgname} -DCMAKE_INSTALL_PREFIX="/usr" -DTARGET_PLATFORM="linux" -DCMAKE_BUILD_TYPE="None" -DDEV_BUILD="Off" ..
+  cmake -B build -S ${pkgname} -DCMAKE_INSTALL_PREFIX="/usr" -DTARGET_PLATFORM="linux" \
+        -DCMAKE_BUILD_TYPE="None" -DDEV_BUILD="Off"
   cd build
   make
 }
