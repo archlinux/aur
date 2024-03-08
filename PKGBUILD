@@ -3,24 +3,25 @@
 _pkgname=grr
 _pkgver=0.9.5
 pkgname=r-${_pkgname,,}
-pkgver=0.9.5
-pkgrel=4
-pkgdesc='Alternative Implementations of Base R Functions'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=10
+pkgdesc="Alternative Implementations of Base R Functions"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('292606de2983ac5840c90d3e0977441b482c9e73c1674b662f8b4fb8f3632b2b')
+md5sums=('7e5bb79c5fe4533e0d2ac80485912dec')
+b2sums=('608d5e74ea87c44f31565b2999e426168a6aec827c0d90294bb04f3653d8f8c10746b3cc2c754385f1ec766fa1b029f54ecd8426bdf92f149ded77b1ddaee58c')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
