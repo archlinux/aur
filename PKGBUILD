@@ -1,15 +1,15 @@
 # Maintainer: Jiri Pospisil <jiri@jpospisil.com>
 pkgname=llvm-libunwind
-pkgver=16.0.6
+pkgver=17.0.6
 pkgrel=1
 pkgdesc='LLVM'\''s libunwind library'
 url='https://github.com/llvm/llvm-project/tree/main/libunwind'
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver/llvm-project-$pkgver.src.tar.xz")
 arch=('x86_64')
-makedepends=('clang' 'cmake' 'ninja')
+makedepends=('clang' 'cmake' 'ninja' 'python')
 options=('!lto')
 license=('custom:Apache 2.0 with LLVM Exception')
-b2sums=('95192d39cbd2914e5609db365965f1c00bfea6c2d653b3996bd2acef8a2b37e37f6fc8a9d2b65711ad72657e0ef52c42f733053cf65051e7822f27396c30406d')
+b2sums=('d6ede1a9fda8756995c3e0654111941649e15794179641806f18919f1dc68c41ca0cabd5693b5096d05dccc3a391cd20d34af1137bf8af92ed3117a1ce84d1b2')
 
 build() {
   cd "$srcdir/llvm-project-$pkgver.src"
