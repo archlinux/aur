@@ -2,13 +2,13 @@
 
 pkgname=aichat
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenAI, ChatGPT, ollama and more in your terminal"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/sigoden/aichat"
 license=('MIT' 'APACHE')
 depends=('gcc-libs')
-makedepends=('cargo')
+makedepends=('cargo' 'clang' 'mold')
 conflicts=('aichat-bin' 'aichat-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('de554ef95d75a17b20f384b5f2ea07b3d2cd6112e87e9e038145d13285633468')
@@ -27,6 +27,13 @@ build() {
 
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+
+	# https://github.com/rui314/mold?tab=readme-ov-file#how-to-use
+	export RUSTFLAGS="${RUSTFLAGS} \
+      -C linker=clang \
+      -C link-arg=-flto \
+      -C linker-plugin-lto \
+      -C link-arg=-fuse-ld=lld"
 
 	cargo build --release --frozen
 }

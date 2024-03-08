@@ -1,7 +1,7 @@
 pkgbase = aichat
 	pkgdesc = OpenAI, ChatGPT, ollama and more in your terminal
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sigoden/aichat
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = aichat
 	license = MIT
 	license = APACHE
 	makedepends = cargo
+	makedepends = clang
+	makedepends = mold
 	depends = gcc-libs
 	conflicts = aichat-bin
 	conflicts = aichat-git
