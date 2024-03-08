@@ -1,14 +1,14 @@
 # Maintainer: Chiller Dragon <chillerdragon@gmail.com>
 
 pkgname=term-ux-git
-pkgver=16.0.r421.g17c478731
+pkgver=18.0.3.r1066.g2b35da053
 pkgrel=1
 pkgdesc="A custom Teeworlds curses client based on chillerbot-ux (ddnet based)."
 arch=('x86_64')
 url="chillerbot.github.io/"
 license=('custom:BSD' 'CCPL:by-nc-sa')
 depends=('freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'pnglite' 'ffmpeg' 'libnotify' 'miniupnpc' 'sqlite' 'mariadb-libs')
-makedepends=('git' 'cmake' 'ninja' 'python')
+makedepends=('git' 'cargo' 'cmake' 'ninja' 'python')
 checkdepends=('gmock')
 provides=('term-ux')
 conflicts=('term-ux')
