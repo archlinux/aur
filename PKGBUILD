@@ -2,7 +2,7 @@
 _pkgname=tidgi
 pkgname="${_pkgname}-desktop-git"
 _appname=TidGi
-pkgver=0.9.3.r0.gb7269e6d
+pkgver=0.9.3.r3.g4e398504
 _electronversion=28
 pkgrel=1
 pkgdesc="an privatcy-in-mind, automated, auto-git-backup, freely-deployed Tiddlywiki knowledge management Desktop note app, with local REST API."
@@ -22,6 +22,7 @@ provides=(
     "${pkgname%-git}"
 )
 depends=(
+    #"electron${_electronversion}"
     'alsa-lib'
     'blas'
     'java-runtime'
@@ -37,6 +38,7 @@ makedepends=(
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
+    #"${pkgname%-git}.sh"
 )
 sha256sums=('SKIP')
 pkgver() {
