@@ -2,7 +2,7 @@
 pkgname=yakuza-bin
 pkgver=0.2.2
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="An extensible linux application launcher"
 arch=('x86_64')
 url="https://github.com/fzdwx/yakuza"
@@ -11,9 +11,9 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
+)
+makedepends=(
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${pkgname%-bin}-0.1.0.AppImage"
@@ -24,7 +24,7 @@ source=(
 sha256sums=('6f4ee338308cd8a018add29bcb2fa3f6ab53f2b3967e3d82a0eecb82bf8bc4a0'
             '53af07ff1586a021dd891e2fe3f1fe2f3b93ed92f1977a6325c3c0dbe1afe9b7'
             '9e05d771f47c0447e9147319523e1a2de79538b9e85f7ad1f4d657ac56648b38'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
