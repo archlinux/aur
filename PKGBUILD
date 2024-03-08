@@ -3,7 +3,7 @@ pkgname=gopher-bin
 _pkgname=Gopher
 pkgver=1
 _electronversion=2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-Platform Desktop Password Manager"
 arch=('x86_64')
 url="https://github.com/HusnainTaj/Gopher"
@@ -11,7 +11,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'gendesk'
@@ -25,7 +25,7 @@ source=(
 sha256sums=('3d1ada1614d852f49d3606faa95eb4425829693cefa738bf2359b2a86ccacb95'
             'a48a85aa1cf632a0e34abe0696865e1a379bcbd6878a9e10bedd400e1ec2a90f'
             'cd28f93efae53392db346b89ea3a61c8cbad465c20cfb1083e827cfff8e62090'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
