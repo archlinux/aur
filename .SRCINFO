@@ -1,0 +1,21 @@
+pkgbase = hyprcursor
+	pkgdesc = The hyprland cursor format, library and utilities
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/hyprwm/hyprcursor
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = gdb
+	depends = hyprlang>=0.4.2
+	depends = cairo
+	depends = libzip
+	depends = librsvg
+	provides = hyprcursor
+	conflicts = hyprcursor-git
+	source = hyprcursor-0.1.0.tar.gz::https://github.com/hyprwm/hyprcursor/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = b1f28898be5dc32f7511a530b9781f7617be6f5a7c226ff981cb325604017a6c
+
+pkgname = hyprcursor
