@@ -3,7 +3,7 @@ pkgname=tts-vue
 pkgver=1.9.15
 _electronversion=19
 _nodeversion=14
-pkgrel=5
+pkgrel=6
 pkgdesc="Microsoft speech synthesis tool, built using Electron+Vue+ElementPlus+Vite.微软语音合成工具,使用Electron+Vue+ElementPlus+Vite构建。"
 arch=('x86_64')
 url="https://tts-doc.loker.vip/home.html"
@@ -11,7 +11,7 @@ _ghurl="https://github.com/LokerL/tts-vue"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'gendesk'
@@ -24,7 +24,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -48,7 +48,6 @@ build() {
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     sed "s|\/\${version}||g" -i electron-builder.json5
-    sed "s|app.isPackaged|!app.isPackaged|g" -i electron/main/index.ts
     npm install
     npm run build
 }
