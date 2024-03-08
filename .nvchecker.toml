@@ -1,0 +1,5 @@
+[tbb-combo-native-agent]
+source = "regex"
+# See Javascript function `component_version()` on https://eatm.tbb.com.tw/eATM3/LOGIN/login
+url = "https://eatm.tbb.com.tw/eATM3/COMPONENT/component_version_aj"
+regex = "\"ComboReaderVersion\":\"([0-9.]+)\""
