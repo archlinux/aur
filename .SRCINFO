@@ -1,6 +1,6 @@
 pkgbase = ulwgl-launcher
 	pkgdesc = This is the Unified Launcher for Windows Games on Linux, to run Proton with fixes outside of Steam
-	pkgver = 0.1.RC3.r217.697173a
+	pkgver = 0.1.RC3.r218.00c2c8f
 	pkgrel = 1
 	url = https://github.com/Open-Wine-Components/ULWGL-launcher
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = ulwgl-launcher
 	depends = libxcrypt
 	depends = libxcrypt-compat
 	depends = gcc-libs
-	source = git+https://github.com/Open-Wine-Components/ULWGL-launcher.git#commit=697173a2f27f0ca4f22fd09366a476593204c2fe
+	source = git+https://github.com/Open-Wine-Components/ULWGL-launcher.git#commit=00c2c8f24a9f7ab24d7638367d5f58e8364c7746
 	sha256sums = SKIP
 	depends_x86_64 = lib32-glibc
 	depends_x86_64 = lib32-libxcrypt

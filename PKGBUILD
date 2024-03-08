@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=ulwgl-launcher
-pkgver=0.1.RC3.r217.697173a
+pkgver=0.1.RC3.r218.00c2c8f
 pkgrel=1
 pkgdesc="This is the Unified Launcher for Windows Games on Linux, to run Proton with fixes outside of Steam"
 arch=('x86_64')
@@ -54,7 +54,7 @@ makedepends=(
   scdoc
 )
 install=
-_commit=697173a2f27f0ca4f22fd09366a476593204c2fe
+_commit=00c2c8f24a9f7ab24d7638367d5f58e8364c7746
 _origin="https://github.com/Open-Wine-Components/ULWGL-launcher.git"
 source=(
   "git+$_origin#commit=$_commit"
