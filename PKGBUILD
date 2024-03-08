@@ -4,8 +4,8 @@ _appname=EMP
 _pkgname=emp
 pkgver=0.8.8
 _electronversion=25
-_nodeversion=18
-pkgrel=5
+_nodeversion=20
+pkgrel=6
 pkgdesc="A functional music player for FLAC, mp3, and m4a audio. "
 arch=("any")
 url="https://github.com/kevinfrei/EMP"
@@ -21,13 +21,15 @@ makedepends=(
     'gendesk'
     'nvm'
     'git'
+    'base-devel'
+    'gcc'
 )
 source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -39,9 +41,8 @@ build() {
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
-
     _ensure_local_nvm
-    gendesk -q -f -n --categories "AudioVideo" --name "EMP: Electron Music Player" --exec "${pkgname} %U"
+    gendesk -q -f -n --categories="AudioVideo" --name="${_appname}: Electron Music Player" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git" || exit
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -50,17 +51,14 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    sed -e '9i\  "repository": "github:kevinfrei/EMP",' -e "s|\"./\"|\"https://github.com/kevinfrei/EMP\"|g" -i package.json
+    sed -e '9i\  "repository": "github:kevinfrei/EMP",' \
+        -e "s|\"./\"|\"https://github.com/kevinfrei/EMP\"|g" \
+        -e 's|electron-builder",|electron-builder -l AppImage",|g' \
+        -i package.json
     sed "s|\/\${version}||g" -i electron-builder.json5
-    sed "s|app.isPackaged|!app.isPackaged|g" -i electron/main.ts
-    sed "s|!app.isPackaged|app.isPackaged|g" -i electron/menu.ts
-    sed "s|(!app.isPackaged)|(app.isPackaged)|g;s|app.isPackaged,|!app.isPackaged,|g" -i electron/window.ts
     # .yarnrc.yml existed
     yarn install
-    npx lerna run build 
-    npx tsc
-    npx vite build
-    npx electron-builder -l AppImage
+    yarn run build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
