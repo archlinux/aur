@@ -1,6 +1,6 @@
 pkgbase = lima-gui
 	pkgdesc = Making a GUI for lima VM.
-	pkgver = 0.3.1
+	pkgver = 0.4.1
 	pkgrel = 2
 	url = https://github.com/afbjorklund/lima-gui
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = lima-gui
 	makedepends = qt5-tools
 	depends = lima
 	depends = qt5-base
-	source = lima-gui-0.3.1.tar.gz::https://github.com/afbjorklund/lima-gui/archive/refs/tags/v0.3.1.tar.gz
-	sha256sums = 39e4b93bdae0b836faeeef295b3a5b30602f0002d61a2c18fd2c2345ec06a81f
+	source = lima-gui-0.4.1.tar.gz::https://github.com/afbjorklund/lima-gui/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 56f725167d4833873c97dfda9c6810b8ab00c15834e46010e668da510a25677b
 
 pkgname = lima-gui
