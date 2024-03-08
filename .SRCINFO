@@ -1,5 +1,5 @@
 pkgbase = fansly-downloader-ng
-	pkgdesc = A CLI system information tool written in BASH that supports displaying images.
+	pkgdesc = Easy-to-use fansly.com content downloading tool. Written in Python and available as a standalone Windows Executable. Enjoy your Fansly content offline anytime, anywhere in the highest possible content resolution! Fully customizable to download in bulk or single: photos, videos & audio from timeline, messages, collection & single posts.
 	pkgver = v0.8.17
 	pkgrel = 1
 	url = https://github.com/prof79/fansly-downloader-ng
