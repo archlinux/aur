@@ -6,7 +6,7 @@
 
 pkgname=python-pyautogui
 _name=PyAutoGUI
-pkgver=0.9.53
+pkgver=0.9.54
 pkgrel=1
 pkgdesc="A cross-platform GUI automation Python module for human beings"
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=('python' 'python-setuptools')
 provides=('python-pyautogui')
 conflicts=('python-pyautogui-git')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-b2sums=('4aa1463cb4c1ff91f6bc91d3977e426ca531bd575aee0137914f691008729043803b874db9b4ea51463f996ae44f307bbd2e048a50bc976d458405d0ee244def')
+b2sums=('a18994b0392a8c4d9b068b1cebe1d65b67526f04cbaf6d6f0d6406336ebc40b770c3b617025e6db21558e603f7cd60badced99ac59e51e375aed4a17236446e0')
 
 build() {
 	cd "$srcdir/$_name-$pkgver"
