@@ -3,7 +3,7 @@
 # Contributor: witchymary
 
 pkgname=aegisub-arch1t3cht-git
-pkgver=3.2.2.r1055.f4b57a14e
+pkgver=3.2.2.r1139.cd2e89463
 pkgrel=1
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
@@ -34,12 +34,12 @@ makedepends=('git' 'meson' 'cmake' 'boost')
 optdepends=('vapoursynth: VapourSynth source support'
             'avisynthplus: AviSynth source support'
             'vapoursynth-plugin-lsmashsource: VapourSynth plugin used by default (LWLibavSource)'
-            'vapoursynth-plugin-bestaudiosource: VapourSynth plugin used by default (BestAudioSource)'
             'vapoursynth-plugin-wwxd: VapourSynth plugin for keyframe generation'
             'vapoursynth-plugin-scxvid: VapourSynth plugin for keyframe generation')
 source=("${pkgname}::git+https://github.com/arch1t3cht/Aegisub.git#branch=feature"
         "${pkgname}-ffms2::git+https://github.com/arch1t3cht/ffms2.git"
-        "${pkgname}-bestsource::git+https://github.com/vapoursynth/bestsource.git#commit=ba1249c1f5443be6d0ec2be32490af5bbc96bf99"
+        "${pkgname}-bestsource::git+https://github.com/vapoursynth/bestsource.git#tag=R1"
+        "${pkgname}-libp2p::git+https://github.com/sekrit-twc/libp2p#commit=5e65679ae54d0f9fa412ab36289eb2255e341625"
         "${pkgname}-avisynth::git+https://github.com/AviSynth/AviSynthPlus.git#tag=v3.7.2"
         "${pkgname}-vapoursynth::git+https://github.com/vapoursynth/vapoursynth.git#tag=R59"
         "${pkgname}-luajit::git+https://github.com/LuaJIT/LuaJIT.git#branch=v2.1"
@@ -48,6 +48,7 @@ source=("${pkgname}::git+https://github.com/arch1t3cht/Aegisub.git#branch=featur
 noextract=("${pkgname}-gtest-1.8.1.zip"
            "${pkgname}-gtest-1.8.1-1-wrap.zip")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -77,6 +78,11 @@ prepare() {
 
     # Initialize subproject wraps for bestsource
     ln -s ../../"${pkgname}-bestsource" subprojects/bestsource
+    patch --directory=subprojects/bestsource --forward --strip=1 < subprojects/packagefiles/bestsource/0001.patch
+
+    # Initialize subproject wraps for bestsource/libp2p
+    rm -r subprojects/bestsource/libp2p
+    ln -s ../"${pkgname}-libp2p" subprojects/bestsource/libp2p
 
     # Initialize subproject wraps for avisynth
     mv ../"${pkgname}-avisynth" subprojects/avisynth
