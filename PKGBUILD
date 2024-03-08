@@ -1,4 +1,4 @@
-# Maintainer: xiota / aur.chaotic.cx
+# Maintainer:
 
 # options
 if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ] ; then
@@ -10,13 +10,14 @@ fi
 : ${_build_latest:=true}
 : ${_build_bin:=true}
 
+unset _pkgtype
 [[ "${_build_latest::1}" == "t" ]] && _pkgtype+="-latest"
 [[ "${_build_bin::1}" == "t" ]] && _pkgtype+="-bin"
 
 # basic info
 _pkgname='pcsx2'
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.7.5555
+pkgver=1.7.5600
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
