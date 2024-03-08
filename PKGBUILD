@@ -5,7 +5,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-openjpeg2
-pkgver=2.5.0
+pkgver=2.5.2
 pkgrel=1
 arch=('any')
 pkgdesc="An open source JPEG 2000 codec, version ${pkgver} (android)"
@@ -17,7 +17,7 @@ depends=('android-ndk'
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-cmake')
 source=("https://github.com/uclouvain/openjpeg/archive/v${pkgver}.tar.gz")
-md5sums=('5cbb822a1203dd75b85639da4f4ecaab')
+md5sums=('f9ee64845881a15109ed0aa73a12202f')
 
 build() {
     cd "${srcdir}"/openjpeg-${pkgver}
@@ -25,21 +25,21 @@ build() {
 
     mkdir "build-${_android_arch}-static" && pushd "build-${_android_arch}-static"
     android-${_android_arch}-cmake \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DBUILD_DOC=OFF \
-    -DBUILD_TESTING=OFF \
-    -DBUILD_SHARED_LIBS=OFF \
-    ..
+        -DCMAKE_BUILD_TYPE=Release \
+        -DBUILD_DOC=OFF \
+        -DBUILD_TESTING=OFF \
+        -DBUILD_SHARED_LIBS=OFF \
+        ..
     make $MAKEFLAGS
     popd
 
     mkdir "build-${_android_arch}-shared" && pushd "build-${_android_arch}-shared"
     android-${_android_arch}-cmake \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DBUILD_DOC=OFF \
-    -DBUILD_TESTING=OFF \
-    -DBUILD_PKGCONFIG_FILES=ON \
-    ..
+        -DCMAKE_BUILD_TYPE=Release \
+        -DBUILD_DOC=OFF \
+        -DBUILD_TESTING=OFF \
+        -DBUILD_PKGCONFIG_FILES=ON \
+        ..
     make $MAKEFLAGS
     popd
 }
