@@ -1,5 +1,5 @@
 pkgbase = python-zcbor
-	pkgdesc = zcbor is a low footprint CBOR library in the C language (C++ compatible), tailored for use in microcontrollers. It comes with a schema-driven script tool that can validate your data, or even generate code. The schema language (CDDL) allows creating very advanced and detailed schemas.
+	pkgdesc = zcbor is a low footprint CBOR library in the C language (C++ compatible), tailored for use in microcontrollers.
 	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/NordicSemiconductor/zcbor
