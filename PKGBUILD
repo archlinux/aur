@@ -1,6 +1,6 @@
 # Maintainer : Antonio Orefice <xt7player@gmail.com>
 pkgname=xt7-player-mpv
-pkgver=0.34.3172
+pkgver=0.37.3190
 #hotfix=-hotfix
 pkgrel=2
 _realname=xt7-player-mpv
@@ -61,5 +61,5 @@ package() {
 
 }
 
-md5sums=('9b31b27449519fe21be85b6c87983ffe'
+md5sums=('1e1b71cbd0ce82213ec87572229f5ffc'
          'b6f1380e33b47d0ed95c7ba1b3f4ec73')
