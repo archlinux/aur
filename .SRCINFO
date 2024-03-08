@@ -1,7 +1,7 @@
 pkgbase = vikunja-desktop-bin
 	pkgdesc = The open-source, self-hostable to-do app.Organize everything, on all platforms.
 	pkgver = 0.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vikunja.io/
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -12,6 +12,6 @@ pkgbase = vikunja-desktop-bin
 	source = vikunja-desktop-0.23.0.pacman::https://dl.vikunja.io/desktop/0.23.0/Vikunja%20Desktop-v0.23.0.pacman
 	source = vikunja-desktop.sh
 	sha256sums = 39e48d4bad48ca39e91e61cd81bbc67bfcf5f1ba86ccd739adc0206b02278266
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = vikunja-desktop-bin
