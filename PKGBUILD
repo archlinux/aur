@@ -9,8 +9,8 @@ pkgdesc='A Next-Generation Verilog-A compiler https://openvaf.semimod.de/'
 arch=(x86_64)
 url='https://github.com/pascalkuthe/OpenVAF'
 license=('GPL3')
-depends=('llvm-libs')
-makedepends=('clang' 'lld' 'llvm' 'rust' 'cargo-nextest' 'python')
+depends=('llvm16-libs')
+makedepends=('clang16' 'lld16' 'llvm16' 'rust' 'cargo-nextest' 'python')
 options=('!lto')
 
 source=(
@@ -27,6 +27,7 @@ build() {
     cd "${srcdir}/${_name}-${_name}-v${pkgver}"
     patch -p1 < "${srcdir}/0001-patch-for-llvm16.patch"
     export CARGO_TARGET_DIR=target
+    export LLVM_CONFIG=/bin/llvm-config-16
     export LLVM_LINK_SHARED=1
     cargo build --release
 }
