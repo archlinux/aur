@@ -1,6 +1,6 @@
 pkgbase = libtdesktopenvironment
 	pkgdesc = Common libraries for desktop integration for the- apps
-	pkgver = 1.0
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/vicr123/libtdesktopenvironment
 	arch = x86_64
@@ -16,7 +16,12 @@ pkgbase = libtdesktopenvironment
 	depends = libxss
 	depends = libxext
 	depends = libxrandr
-	source = libtdesktopenvironment::https://github.com/theCheeseboard/libtdesktopenvironment/archive/v1.0.tar.gz
-	sha256sums = a9ed005f0bcf429baa8c0e0ebd3a443947443c0a67ccef4680395497d9a5a777
+	depends = qt6-wayland
+	source = libtdesktopenvironment-2.0-src::https://github.com/theCheeseboard/libtdesktopenvironment/archive/v2.0.tar.gz
+	source = wayland-protocols::git+https://gitlab.freedesktop.org/wayland/wayland-protocols.git#commit=f01202f
+	source = wlr-protocols::git+https://gitlab.freedesktop.org/wlroots/wlr-protocols.git#commit=4264185
+	sha256sums = b1fb92be9e2a778557493b2ac819e9671dd4cb2a8f877af4ccf7c8e4805affc7
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = libtdesktopenvironment
