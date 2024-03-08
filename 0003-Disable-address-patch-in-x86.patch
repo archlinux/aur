@@ -1,0 +1,34 @@
+--- a/opal/mca/patcher/overwrite/patcher_overwrite_module.c
++++ b/opal/mca/patcher/overwrite/patcher_overwrite_module.c
+@@ -312,30 +312,7 @@
+ 
+ static int mca_patcher_overwrite_patch_address (uintptr_t sys_addr, uintptr_t hook_addr)
+ {
+-    mca_patcher_base_patch_t *patch;
+-    int rc;
+-
+-    patch = OBJ_NEW(mca_patcher_base_patch_t);
+-    if (OPAL_UNLIKELY(NULL == patch)) {
+-        return OPAL_ERR_OUT_OF_RESOURCE;
+-    }
+-
+-    patch->patch_orig = sys_addr;
+-    patch->patch_value = hook_addr;
+-
+-    opal_mutex_lock (&mca_patcher_overwrite_module.patch_list_mutex);
+-    do {
+-        rc = mca_patcher_overwrite_apply_patch (patch);
+-        if (OPAL_SUCCESS != rc) {
+-            break;
+-        }
+-
+-        opal_list_append (&mca_patcher_overwrite_module.patch_list, &patch->super);
+-    } while (0);
+-
+-    opal_mutex_unlock (&mca_patcher_overwrite_module.patch_list_mutex);
+-
+-    return OPAL_SUCCESS;
++    return OPAL_ERROR;
+ }
+ 
+ static int mca_patcher_overwrite_patch_symbol (const char *func_symbol_name, uintptr_t func_new_addr,
