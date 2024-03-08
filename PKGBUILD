@@ -1,12 +1,12 @@
 # Maintainer: Bruno Miguel <bruno@privacyrequired.com>
 pkgname=kdotool-git
-pkgver=0.2.1.c9d74fc
+pkgver=0.2.2.pre.7690f4b
 pkgrel=1
 pkgdesc='xdotool-like for KDE Wayland'
 arch=(x86_64)
 url='https://github.com/jinliu/kdotool'
 license=(Apache-2.0)
-depends=(plasma-wayland-session)
+depends=(plasma-wayland-protocols)
 makedepends=(git rust cargo)
 provides=(kdotool)
 source=(git+$url.git)

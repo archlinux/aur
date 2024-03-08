@@ -1,6 +1,6 @@
 pkgbase = kdotool-git
 	pkgdesc = xdotool-like for KDE Wayland
-	pkgver = 0.2.1.c9d74fc
+	pkgver = 0.2.2.pre.7690f4b
 	pkgrel = 1
 	url = https://github.com/jinliu/kdotool
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = kdotool-git
 	makedepends = git
 	makedepends = rust
 	makedepends = cargo
-	depends = plasma-wayland-session
+	depends = plasma-wayland-protocols
 	provides = kdotool
 	source = git+https://github.com/jinliu/kdotool.git
 	md5sums = SKIP
