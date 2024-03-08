@@ -1,7 +1,7 @@
 # Maintainer: Gaël PORTAY <gael.portay@gmail.com>
 
 pkgname=iamroot
-pkgver=19
+pkgver=20
 pkgrel=1
 pkgdesc='Emulating the syscall chroot(2) in an unpriviliged process'
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=('lib32-glibc'
 checkdepends=('shellcheck')
 options=('!strip')
 source=("https://github.com/gportay/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('6c55bfa952b79a0d188d7f0add2de08cd34bbe3130202da9a4c3b8d20c37b490')
+sha256sums=('27c3019135fce9359a7e7ff6abb0501108c4881e6c57609f4c14d0fb91f17eec')
 validpgpkeys=('8F3491E60E62695ED780AC672FA122CA0501CA71')
 
 # Fixes:
@@ -40,6 +40,7 @@ build() {
 	make PREFIX=/usr i686/libiamroot-musl-i386.so.1
 	make PREFIX=/usr x86_64/libiamroot-linux-x86-64.so.2
 	make PREFIX=/usr x86_64/libiamroot-musl-x86_64.so.1
+	make PREFIX=/usr ld-iamroot.so
 	make PREFIX=/usr doc
 }
 
