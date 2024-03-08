@@ -4,21 +4,20 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname='mozc'
-pkgver=2.29.5374.102
+pkgver=2.29.5400.102
 pkgrel=1
 pkgdesc='The Open Source edition of Google Japanese Input'
 arch=('x86_64')
 url='https://github.com/google/mozc'
-license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND NAIST-2003 AND Unicode-3.0')
+license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
 depends=('qt6-base')
 makedepends=('bazel' 'git' 'python')
 optdepends=('fcitx5-mozc-ut: Fcitx5 integration'
-            'fcitx-mozc-ut: Fcitx integration'
             'ibus-mozc: IBus integration'
             'emacs-mozc: Emacs integration')
 conflicts=('mozc-ut')
 options=(!distcc !ccache)
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=c2fcbf6515c5884437977de46187c16a8cb7bb50")
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=e87c83febda07ffd93fcbfc4ea67562f40423005")
 sha256sums=('SKIP')
 
 prepare() {
@@ -39,9 +38,32 @@ build() {
 package() {
     cd ${pkgname}-git/src
 
-    install -Dm644 ../LICENSE                                   "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
-    install -Dm644 data/installer/credits_en.html               "${pkgdir}"/usr/share/licenses/${pkgname}/Submodules
+    # BSD-3-Clause
+    sed -n 67,94p data/installer/credits_en.html > Mozc
+    install -Dm644 Mozc "${pkgdir}"/usr/share/licenses/mozc/Mozc
+    # BSD-3-Clause
+    sed -n 317,344p data/installer/credits_en.html > Breakpad
+    install -Dm644 Breakpad "${pkgdir}"/usr/share/licenses/mozc/Breakpad
+    # NAIST-2003
+    sed -n 355,424p data/installer/credits_en.html > IPAdic
+    install -Dm644 IPAdic "${pkgdir}"/usr/share/licenses/mozc/IPAdic
+    # BSD-2-Clause
+    sed -n 435,457p data/installer/credits_en.html > Japanese-Usage-Dictionary
+    install -Dm644 Japanese-Usage-Dictionary "${pkgdir}"/usr/share/licenses/mozc/Japanese-Usage-Dictionary
+    # Public Domain Data
+    sed -n 468,470p data/installer/credits_en.html > Okinawa-Dictionary
+    install -Dm644 Okinawa-Dictionary "${pkgdir}"/usr/share/licenses/mozc/Okinawa-Dictionary
+    # BSD-3-Clause
+    sed -n 481,513p data/installer/credits_en.html > Protocol-Buffers
+    install -Dm644 Protocol-Buffers "${pkgdir}"/usr/share/licenses/mozc/Protocol-Buffers
+    # MIT
+    sed -n 698,704p data/installer/credits_en.html > Tamachi-Phonetic-Kanji-Alphabet
+    install -Dm644 Tamachi-Phonetic-Kanji-Alphabet "${pkgdir}"/usr/share/licenses/mozc/Tamachi-Phonetic-Kanji-Alphabet
+    # MIT
+    sed -n 762,782p data/installer/credits_en.html > Windows-Implementation-Library
+    sed -i -e 's|^[ \t]*||g' Windows-Implementation-Library
+    install -Dm644 Windows-Implementation-Library "${pkgdir}"/usr/share/licenses/mozc/Windows-Implementation-Library
 
-    install -Dm755 bazel-bin/server/mozc_server                 "${pkgdir}"/usr/lib/mozc/mozc_server
-    install -Dm755 bazel-bin/gui/tool/mozc_tool                 "${pkgdir}"/usr/lib/mozc/mozc_tool
+    install -Dm644 bazel-bin/server/mozc_server "${pkgdir}"/usr/lib/mozc/mozc_server
+    install -Dm644 bazel-bin/gui/tool/mozc_tool "${pkgdir}"/usr/lib/mozc/mozc_tool
 }
