@@ -1,0 +1,25 @@
+pkgbase = ttf-dosis
+	pkgdesc = by Edgar Tolentino, Pablo Impallari, Igino Marini
+	pkgver = 1.000
+	pkgrel = 1
+	url = https://fonts.google.com/specimen/Dosis
+	arch = any
+	license = custom:SIL Open Font License v1.1
+	source = Dosis-Bold-1.000.ttf::https://github.com/googlefonts/dosis-vf/raw/3407d52f1d1b1c36c14e756ad0b36561d8d44a3b/fonts/ttf/Dosis-Bold.ttf
+	source = Dosis-ExtraBold-1.000.ttf::https://github.com/googlefonts/dosis-vf/raw/3407d52f1d1b1c36c14e756ad0b36561d8d44a3b/fonts/ttf/Dosis-ExtraBold.ttf
+	source = Dosis-ExtraLight-1.000.ttf::https://github.com/googlefonts/dosis-vf/raw/3407d52f1d1b1c36c14e756ad0b36561d8d44a3b/fonts/ttf/Dosis-ExtraLight.ttf
+	source = Dosis-Light-1.000.ttf::https://github.com/googlefonts/dosis-vf/raw/3407d52f1d1b1c36c14e756ad0b36561d8d44a3b/fonts/ttf/Dosis-Light.ttf
+	source = Dosis-Medium-1.000.ttf::https://github.com/googlefonts/dosis-vf/raw/3407d52f1d1b1c36c14e756ad0b36561d8d44a3b/fonts/ttf/Dosis-Medium.ttf
+	source = Dosis-Regular-1.000.ttf::https://github.com/googlefonts/dosis-vf/raw/3407d52f1d1b1c36c14e756ad0b36561d8d44a3b/fonts/ttf/Dosis-Regular.ttf
+	source = Dosis-SemiBold-1.000.ttf::https://github.com/googlefonts/dosis-vf/raw/3407d52f1d1b1c36c14e756ad0b36561d8d44a3b/fonts/ttf/Dosis-SemiBold.ttf
+	source = ttf-dosis-1.000-OFL.txt::https://github.com/googlefonts/dosis-vf/raw/3407d52f1d1b1c36c14e756ad0b36561d8d44a3b/OFL.txt
+	sha256sums = 136c4e90a66432cc5014da5d47f436bcd521759c641ae4f52814d18a50d265ec
+	sha256sums = 9d097d5da1fb331eb050a0fa761c915c3c91be7d9b6fbab09232f16d506c6614
+	sha256sums = e02b7683565a01fd373cb2605fefc34c680f15d033e8b341a862a995841b5d33
+	sha256sums = 6bbcc7b146dd7df81ba69d93ad958f037614cd504ad00835cdcf98b7aa8f988e
+	sha256sums = 40a6bd332c9494dd008e1503a7a343d6dae4f6b4b1c2bc8bef063235cc823c3c
+	sha256sums = ecc46c2075fdc6c46b9a41e8870f4527eabafa4f7caae6b2bc1b15b894c3df75
+	sha256sums = 7f23e4ef818aa5774bd4f3ab11c846d0dff72d5557e1c3fa8393357a5f16d709
+	sha256sums = 6dfa3951f0c829518b284608fcc1acb196cba1536b1ae1713a49deccde1ccc53
+
+pkgname = ttf-dosis
