@@ -1,6 +1,6 @@
 pkgbase = python-jwcrypto
 	pkgdesc = Python implementation of JWK, JWS, JWE specifications
-	pkgver = 1.5.4
+	pkgver = 1.5.6
 	pkgrel = 1
 	url = https://github.com/latchset/jwcrypto
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-jwcrypto
 	depends = python
 	depends = python-cryptography
 	depends = python-typing_extensions
-	source = git+https://github.com/latchset/jwcrypto?signed#tag=f14859245bfb9c9d773362b141ec1e8496360e36
+	source = git+https://github.com/latchset/jwcrypto?signed#tag=5334ef9abd35e7a086b90e95c4f331fbdd5841c4
 	validpgpkeys = BB97AF8BC4E7A5C0D96223D3C788C4C1D4550D45
 	validpgpkeys = 7C7BD146943B206BB645B64594EAD67E004B65AB
 	sha256sums = SKIP
