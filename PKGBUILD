@@ -2,7 +2,7 @@
 pkgname=nostr-relay-tray-bin
 pkgver=1.2.1
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple nostr relay tray."
 arch=('x86_64')
 url="https://github.com/CodyTseng/nostr-relay-tray"
@@ -19,7 +19,7 @@ source=(
 )
 sha256sums=('b867625899bb3c9267b063a7d86ca961f05a41a385a9a052b14996eb8c9b12f6'
             '6aa57f1ed1b76d69cf0dbd1d68048c6a718a80589d762a8e2f2f2a389c802083'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
