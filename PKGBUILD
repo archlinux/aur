@@ -2,16 +2,15 @@
 
 pkgname=gnu-netcat-svn
 pkgver=r370
-pkgrel=2
+pkgrel=3
 pkgdesc="A networking utility which reads and writes data across network connections"
 arch=('i686' 'x86_64')
 url="https://netcat.sourceforge.net/"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('glibc')
 makedepends=('subversion' 'texinfo')
 provides=("gnu-netcat=$pkgver" 'netcat')
 conflicts=('gnu-netcat')
-replaces=('netcat')
 source=("svn+https://svn.code.sf.net/p/netcat/code/trunk")
 sha256sums=('SKIP')
 
