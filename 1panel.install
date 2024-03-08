@@ -37,12 +37,12 @@ post_install() {
     # 判断docker和docker-compose安装
     if pacman -Qs docker >/dev/null 2>&1; then
         echo -e "Docker is installed correctly."
-    else:
+    else
         echo -e "\033[31mWarning: Docker is not installed, please install it, or most of the features of this package will not be available.\033[0m"
     fi
     if pacman -Qs docker-compose >/dev/null 2>&1; then
         echo -e "Docker Compose is installed correctly."
-    else:
+    else
         echo -e "\033[31mWarning: Docker Compose is not installed, please install it, or 1Panel application store will not be avaliable.\033[0m"
     fi
     unset _1panel_active_interface

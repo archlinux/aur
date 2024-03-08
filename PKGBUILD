@@ -30,9 +30,13 @@ source=(
     "${pkgname}"::"git+https://github.com/1Panel-dev/1Panel.git#branch=dev"
     "1panel.service"
 )
-sha256sums=("SKIP")
+sha256sums=(
+    "SKIP"
+    "1d85c0b4a0b7256c75bb14d10d2bfb29fdcfb4c7ebc99622b024bd61be314ea3"
+)
 
 build() {
+    # Override the upstream 1pctl script
     echo "#!/bin/bash" > ${srcdir}/1pctl
     echo "BASE_DIR=/opt" >> ${srcdir}/1pctl
     echo "ORIGINAL_PORT=${_1panel_original_port}" >> ${srcdir}/1pctl
@@ -40,10 +44,10 @@ build() {
     echo "ORIGINAL_ENTRANCE=${_1panel_original_entrance}" >> ${srcdir}/1pctl
     echo "ORIGINAL_USERNAME=${_1panel_original_username}" >> ${srcdir}/1pctl
     echo "ORIGINAL_PASSWORD=${_1panel_original_password}" >> ${srcdir}/1pctl
-    # Override the upstream 1pctl script
+    echo "1panel --help" >> ${srcdir}/1pctl
+    # Compile 1Panel using Makefile
     cd ${srcdir}/${pkgname}
     make build_all
-
 }
 
 package() {
