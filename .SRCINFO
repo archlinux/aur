@@ -1,11 +1,11 @@
 pkgbase = deepin-wine-ttplayer
 	pkgdesc = 千千静听是一款完全免费的音乐播放软件,集播放、音效、转换、歌词等众多功能于一身。利用DeepinWine6重新进行封装。
 	pkgver = 5.7
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.baidu.com/
 	install = deepin-wine-ttplayer.install
 	arch = x86_64
-	license = custom:freeware
+	license = LicenseRef-Freeware
 	depends = deepin-wine6-stable
 	depends = spark-dwine-helper
 	depends = xdg-utils
@@ -18,6 +18,6 @@ pkgbase = deepin-wine-ttplayer
 	source = deepin-wine-ttplayer-5.7.deb::https://d.store.deepinos.org.cn/store/music/com.qianqian.ttplayer.spark/com.qianqian.ttplayer.spark_5.7.spark0_i386.deb
 	source = deepin-wine-ttplayer.sh
 	sha256sums = 4494df38c9bc9c47e697e8a96f69c678e4635389ccc74e19dd324f0a668c62ec
-	sha256sums = 6180d6842daa98543b45df1659448e400ef2f45853b3b716d4330b9108606c72
+	sha256sums = b760e2660ee191dfd92ec240f8403ffdfc4cd5d9314f263e84c9cfa66792aa90
 
 pkgname = deepin-wine-ttplayer

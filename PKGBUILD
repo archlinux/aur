@@ -3,14 +3,13 @@ _officalname=ttplayer
 pkgname="deepin-wine-${_officalname}"
 _sparkname="com.qianqian.${_officalname}.spark"
 _runname=TTPlayer
-_bottlename="Deepin-${_runname}"
 pkgver=5.7
-pkgrel=6
+pkgrel=7
 pkgdesc="千千静听是一款完全免费的音乐播放软件,集播放、音效、转换、歌词等众多功能于一身。利用DeepinWine6重新进行封装。"
 arch=("x86_64")
 url="https://www.baidu.com/"
 _downurl=https://d.store.deepinos.org.cn/store
-license=('custom:freeware')
+license=('LicenseRef-Freeware')
 conflicts=("${_officalname}")
 provides=("${_officalname}=${pkgver}")
 depends=(
@@ -30,14 +29,13 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('4494df38c9bc9c47e697e8a96f69c678e4635389ccc74e19dd324f0a668c62ec'
-            '6180d6842daa98543b45df1659448e400ef2f45853b3b716d4330b9108606c72')
+            'b760e2660ee191dfd92ec240f8403ffdfc4cd5d9314f263e84c9cfa66792aa90')
 build() {
-    sed -e "s|=@bottlename@|${_bottlename}|g" \
+    sed -e "s|@runname@|${_runname}|g" \
         -e "s|@pkgver@|${pkgver}|g" \
         -e "s|@pkgname@|${pkgname}|g" \
-        -e "s|@runname@|${_runname}|g" \
         -i "${srcdir}/${pkgname}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     mv "${srcdir}/opt/apps/${_sparkname}" "${srcdir}/opt/apps/${pkgname}"
     sed "s|${_sparkname}|${pkgname}|g;s|Music|AudioVideo|g;s|/opt/apps/${pkgname}/files/run.sh|${pkgname}|g" \
         -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${_sparkname}.desktop" 
