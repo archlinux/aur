@@ -24,6 +24,7 @@ source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbrac
 sha256sums_x86_64=('5963d3c0d968da318fa9f2fdbe7b14a5dc7a47ad9e3c2f63e229dfc4cf5d47d4')
 
 package() {
+  cd "${srcdir}/mods_${pkgver}_Linux_${CARCH}"
   # bin
   install -Dm755 "./mods" "${pkgdir}/usr/bin/mods"
   # license
