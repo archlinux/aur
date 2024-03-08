@@ -1,7 +1,7 @@
 # Maintainer: Chris Lane <aur at chrislane dot com>
 
 pkgname=mods
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="AI for the command line, built for pipelines"
 url="https://github.com/charmbracelet/mods"
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('git' 'go')
 depends=('glibc')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/charmbracelet/mods/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('4cd4f1a795a63da79e2d89f4f4c0725b0d839a019e24139dedf55d068a15a8c8c9c6b01af6cb579259fd81456f3f50cc77e4d2b6ad9563465790f0c13d29d77a')
+sha512sums=('42a7e3ee2cf4c561fa5f743e54fc6ce1c0e195ff0390dfab1ce1c2ff6496c752a90247d228cf5b5981ffd3721f2f5e4a54e74b615eb30a886937d5b3f4aa73a7')
 
 prepare(){
   cd "$pkgname-$pkgver"
