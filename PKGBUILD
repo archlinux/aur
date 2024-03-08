@@ -3,7 +3,7 @@ pkgname=weektodo-bin
 _pkgname=WeekToDo
 pkgver=2.2.0
 _electronversion=25
-pkgrel=1
+pkgrel=2
 pkgdesc="A Free and Open Source Weekly Planner. Stop prioritizing what's on your schedule and start scheduling your priorities."
 arch=("x86_64")
 url="https://weektodo.me/"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('098a3556bad8d2af812d25f17d1f8ffcf67b8225ebc9816d2631596d722c59af'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
