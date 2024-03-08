@@ -92,6 +92,10 @@ pkgver() {
 
 prepare() {
   git -C "${srcdir}"/"${_base}" clean -dfx
+
+  # c++: warning: switch ‘-fcheck-pointer-bounds’ is no longer supported
+  sed -i 's/^\([[:space:]]*\)\(.*check-pointer-bounds.*\)/# \1\2/g' \
+      "${srcdir}"/"${_base}"/cmake/modules/gcc.cmake
 }
 
 build() {
