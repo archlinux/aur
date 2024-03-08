@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-spirv-headers
 	pkgdesc = SPIR-V Headers (mingw-w64)
-	pkgver = 1.3.268.0
+	pkgver = 1.3.275.0
 	pkgrel = 1
 	url = https://www.khronos.org/registry/spir-v/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = mingw-w64-spirv-headers
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/KhronosGroup/SPIRV-Headers/archive/refs/tags/vulkan-sdk-1.3.268.0/spirv-headers-1.3.268.0.tar.gz
-	sha256sums = 1022379e5b920ae21ccfb5cb41e07b1c59352a18c3d3fdcbf38d6ae7733384d4
+	source = https://github.com/KhronosGroup/SPIRV-Headers/archive/refs/tags/vulkan-sdk-1.3.275.0/spirv-headers-1.3.275.0.tar.gz
+	sha256sums = d46b261f1fbc5e85022cb2fada9a6facb5b0c9932b45007a77fe05639a605bd1
 
 pkgname = mingw-w64-spirv-headers
