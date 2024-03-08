@@ -3,7 +3,7 @@ pkgname=explorama-bin
 _pkgname=Explorama
 pkgver=1.0.0_alpha.4
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="A user-friendly data analytics tool designed specifically for subject matter experts and individuals without in-depth technical knowledge."
 arch=('x86_64')
 url="https://github.com/Explorama/Explorama"
@@ -13,12 +13,15 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
 )
+makedepends=(
+    'fuse2'
+)
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver//_/-}/${_pkgname}-linux.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('356f67ebff6927811a5d3d14a4993d5fdfaf75523e288b15f9f04373db661103'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
