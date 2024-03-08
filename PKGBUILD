@@ -1,7 +1,7 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 pkgname=dream3d
-pkgver=6.5.163
-pkgrel=2
+pkgver=6.5.171
+pkgrel=1
 pkgdesc='Analysis tool for microstructure data'
 arch=('x86_64')
 url='http://dream3d.bluequartz.net'
@@ -9,7 +9,7 @@ license=('custom: DREAM.3D License')
 depends=('libpng15')
 source=(http://dream3d.bluequartz.net/binaries/DREAM3D-${pkgver}-Linux-x86_64.tar.gz
         dream3d.desktop)
-sha256sums=('44bf04e3c919fb9a37cf1b7bdd6e4a3e565aef608aa1f4da22f9743cb727835b'
+sha256sums=('10ee14392f344a69779d370777d9ffd845226669ee5a6ea24e4a58460cdd2fce'
             'f53cf8ef2e97aa31fd41bd6723109502d5909aa43f6796ee7e734fe36ac427bc')
 package() {
 
