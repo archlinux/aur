@@ -2,7 +2,7 @@
 pkgname=perplexity-ai-app
 pkgver=2.1.0
 _electronversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="The Unofficial Perplexity AI Desktop App, powered by Electron which brings the magic of AI language processing to your desktop."
 arch=('any')
 url="https://github.com/inulute/perplexity-ai-app"
@@ -22,13 +22,13 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
-    gendesk -f -n -q --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
+    gendesk -f -n -q --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
