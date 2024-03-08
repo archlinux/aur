@@ -1,7 +1,7 @@
 pkgbase = bazecor
 	pkgdesc = Graphical configurator for Dygma keyboards
 	pkgver = 1.4.0.rc.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Dygmalab/Bazecor
 	arch = x86_64
 	license = GPL-3.0-only

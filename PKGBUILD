@@ -5,7 +5,7 @@ _appimage="Bazecor-${_pkgver}-x64.AppImage"
 
 pkgname="bazecor"
 pkgver=${_pkgver/-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Graphical configurator for Dygma keyboards"
 url="https://github.com/Dygmalab/Bazecor"
 license=("GPL-3.0-only")
