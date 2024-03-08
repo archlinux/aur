@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=commas-git
 _pkgname=Commas
-pkgver=0.30.0.r0.gb02f27e
-_electronversion=28
-_nodever=18
+pkgver=0.30.0.r6.gc18abab
+_electronversion=29
+_nodever=20
 pkgrel=1
 pkgdesc="A hackable, pluggable terminal, and also a command runner."
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 depends=(
     "electron${_electronversion}"
-    'python'
+    'python>3'
 )
 makedepends=(
     'gendesk'
@@ -26,7 +26,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -43,7 +43,7 @@ build() {
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-git} %U"
+    gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -54,7 +54,6 @@ build() {
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     npm install
-    npm add ansi-styles
     npm run build
 }
 package() {
