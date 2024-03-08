@@ -3,7 +3,7 @@ pkgname=blix-bin
 _pkgname=Blix
 pkgver=1.3.0
 _electronversion=24
-pkgrel=4
+pkgrel=5
 pkgdesc="A cross-platform AI-assisted graph photo editor."
 arch=(
     'aarch64'
@@ -16,7 +16,6 @@ conflicts=("${pkgname%-bin}")
 options=('!strip')
 depends=(
     "electron${_electronversion}"
-    'nodejs'
 )
 makedepends=(
     'asar'
@@ -24,7 +23,7 @@ makedepends=(
 source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums=('0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+sha256sums=('50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 sha256sums_aarch64=('d1444cb7ed34ead088218271eebb6b02868a3a881fb400a14e21fe22b33f6f43')
 sha256sums_x86_64=('cc3356aede7d58bfcc2758d700f6bd836181bc87566491b573f4bb4f031bab4f')
 build() {
@@ -32,10 +31,11 @@ build() {
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g;s|productivity|Graphics|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    sed "s|e.app.isPackaged|!e.app.isPackaged|g" -i "${srcdir}/app.asar.unpacked/build/electron/lib/plugins/PluginManager.js"
     cp -r "${srcdir}/opt/${_pkgname}/resources/${pkgname%-bin}-plugins" "${srcdir}/app.asar.unpacked"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
