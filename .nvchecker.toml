@@ -1,0 +1,8 @@
+[chunghwa-post-webatm]
+source = "regex"
+url = "https://webatm.post.gov.tw/postatm/index.jsp"
+regex = "setSysVersion\\('([0-9,]+)'\\);"
+# Chunghwa Post website returns different versions based on client OS
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:83.0) Gecko/20100101 Firefox/83.0"
+from_pattern = ","
+to_pattern = "."
