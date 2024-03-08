@@ -7,20 +7,33 @@
 pkgname="turbovnc"
 pkgdesc="A derivative of Virtual Network Computing that is tuned to provide peak performance for 3D and video workloads"
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="http://www.turbovnc.org/"
 license=('GPL-2.0-or-later')
-depends=('java-runtime>11'
+depends=('hicolor-icon-theme'
+         'java-runtime>11'
+         'libglvnd'
          'libjpeg-turbo'
-         'libxaw'
-         'libxcursor'
+         'libx11'
+         'libxau'
+         'libxdmcp'
+         'libxext'
+         'libxfont2'
          'libxi'
-         'libxt'
          'openssl'
-         'python')
+         'pam'
+         'perl'
+         'pixman'
+         'python'
+         'zlib')
 makedepends=('cmake>=3.12'
-             'java-environment>11')
+             'java-environment>11'
+             'libxaw'
+             'libxcursor'
+             'libxt'
+             'xorg-server'
+             'xtrans')
 conflicts=('tigervnc' 'tigervnc-git' 'tightvnc' 'tightvnc-git')
 backup=(etc/turbovnc/turbovncserver.conf
         etc/turbovnc/turbovncserver-security.conf)
@@ -32,17 +45,19 @@ sha256sums=('3530a4ab7dfe36be7aa1bd9da6e9cf048be9f585b1940949d3c286ce53ec2b30'
 validpgpkeys=(AE1A7BA4EFFF9A9987E1474C4BACCAB36E7FE9A1) # The VirtualGL Project <information@VirtualGL.org>
 
 build() {
+	export JAVA_HOME=/usr/lib/jvm/default/
 	cmake -B build \
 	      -S "$pkgname-$pkgver" \
 	      -DCMAKE_BUILD_TYPE='None' \
-	      -DCMAKE_INSTALL_PREFIX='/usr' \
-	      -DCMAKE_INSTALL_SYSCONFDIR='/etc/turbovnc' \
+	      -DCMAKE_INSTALL_PREFIX=/usr \
+	      -DCMAKE_INSTALL_DOCDIR=/usr/share/doc/$pkgname \
+	      -DCMAKE_INSTALL_MANDIR=/usr/share/man/$pkgname \
+	      -DCMAKE_INSTALL_SYSCONFDIR=/etc/turbovnc \
 	      -Wno-dev \
 	      -G "Unix Makefiles" \
 	      -DTJPEG_LIBRARY=/usr/lib/libturbojpeg.so \
-	      -DTJPEG_JNILIBRARY=/usr/lib/libturbojpeg.so \
-	      -DTVNC_DOCDIR=/usr/share/doc/$pkgname \
-	      -DTJPEG_JAR=/usr/share/java/turbojpeg.jar
+	      -DTVNC_SYSTEMLIBS=1 \
+	      -DTVNC_SYSTEMX11=1
 	cmake --build build
 }
 
