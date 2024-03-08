@@ -1,6 +1,6 @@
 pkgbase = android-x86-libpng
-	pkgdesc = A collection of routines used to create PNG format graphics (android)
-	pkgver = 1.6.42
+	pkgdesc = A collection of routines used to create PNG format graphics (Android x86)
+	pkgver = 1.6.43
 	pkgrel = 1
 	url = http://www.libpng.org/pub/png/libpng.html
 	arch = any
@@ -11,7 +11,9 @@ pkgbase = android-x86-libpng
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = http://downloads.sourceforge.net/sourceforge/libpng/libpng-1.6.42.tar.xz
-	sha256sums = c919dbc11f4c03b05aba3f8884d8eb7adfe3572ad228af972bb60057bdb48450
+	source = http://downloads.sourceforge.net/sourceforge/libpng/libpng-1.6.43.tar.xz
+	source = 0001-Disable-zlib-version-check.patch
+	md5sums = 22b8362d16c3724eba9c1fb8d187320a
+	md5sums = 02be00cae20d83569e60fffd98047d1b
 
 pkgname = android-x86-libpng
