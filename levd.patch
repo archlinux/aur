@@ -1,14 +1,30 @@
 --- a/levd/CMakeLists.txt
 +++ b/levd/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required (VERSION 2.6)
++cmake_minimum_required (VERSION 3.16)
+ project (kraken_linux)
+ # The version number.
+ set (Levd_VERSION_MAJOR 0)
 @@ -10,7 +10,7 @@ set(CMAKE_CXX_FLAGS "-fmax-errors=2")
  set(KRAKEN_LIB_LIBRARIES
    :libsensors.so
    :libyaml-cpp.so
 -  :libglog.so.0
-+  :libglog.so.1
++  :libglog.so.2
    :libusb-1.0.so.0)
 
  # configure a header file to pass some of the CMake settings
+@@ -26,6 +26,9 @@ set(KRAKEN_LIB_SOURCES
+   ${PROJECT_SOURCE_DIR}/kraken_driver.cpp
+   ${PROJECT_SOURCE_DIR}/main.cpp)
+
++find_package (glog 0.7.0 REQUIRED)
++add_definitions(-DGLOG_USE_GLOG_EXPORT)
++
+ add_executable (kraken ${KRAKEN_LIB_SOURCES})
+ target_link_libraries(kraken ${KRAKEN_LIB_LIBRARIES})
+
 @@ -47,5 +47,5 @@ install(
    FILES_MATCHING PATTERN "levd.cfg")
  install(
@@ -16,3 +32,13 @@
 -  DESTINATION /etc/systemd/system
 +  DESTINATION /usr/lib/systemd/system
    FILES_MATCHING PATTERN "levd.service")
+--- a/levd/leviathan_config.hpp
++++ b/levd/leviathan_config.hpp
+@@ -5,6 +5,7 @@
+ #include <functional>
+ #include <map>
+ #include <string>
++#include <stdint.h>
+
+ #define DEFAULT_RED 0xFF0000
+

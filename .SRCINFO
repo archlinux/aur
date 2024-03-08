@@ -1,7 +1,7 @@
 pkgbase = levd-git
 	pkgdesc = Daemon to control NZXT Kraken x61
 	pkgver = r24.cd12fdf
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/graphcareful/levd
 	arch = i686
 	arch = x86_64
