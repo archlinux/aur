@@ -24,7 +24,7 @@ source=(
 
 md5sums=('eb7f2e49d0516e90bacea3962395469c'
          '4967385a00db424e596263618335411f'
-         'bb30c4e0c5b55f33c262fe34e4a026df'
+         '9a116855373f8d754bfc7c94f3609d11'
          '6b159c6e9d21a98925489bc37a9aea43'
          '27d585e8fc57950ed4f4f3ffc036447f'
          '1da072bd774d1b5c08b9545b409e3fcb')
