@@ -19,7 +19,7 @@ pkgbase=mutter-rc-performance
 pkgname=mutter-rc-performance
 epoch=1
 pkgver=46.rc
-pkgrel=2
+pkgrel=3
 pkgdesc="A window manager for GNOME (release candidate with performance patches)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64 aarch64)
@@ -62,7 +62,7 @@ _commit=1e74e5071f381b2dd9026f8186987245dfd89100  # tags/46.rc
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch')
 sha256sums=('SKIP'
-            'a2b68f8fefb0db50726bf2a2821dfd8d35d182191acf5b33c1f8ed379268a95b')
+            'd0617b65f73c2af562c235b38fb90f6111822cb674f70b0b45581a8f1a18fbca')
 
 pkgver() {
   cd $pkgname
@@ -185,7 +185,7 @@ build() {
     -D egl_device=true
     -D wayland_eglstream=true
     -D installed_tests=false
-    -D libdisplay_info=true
+    -D libdisplay_info=enabled
     -D docs=false
     -D tests=false
   )
