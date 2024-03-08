@@ -8,7 +8,7 @@ pkgver=0.9.0
 pkgrel=1
 url='https://shellcheck.net'
 pkgdesc='Shell script analysis tool (binary release, static)'
-license=(AGPL3)
+license=(GPL-3.0-only)
 arch=(x86_64 armv6h aarch64)
 conflicts=(
 	"shellcheck"
