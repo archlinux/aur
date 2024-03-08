@@ -64,7 +64,7 @@
 #   'n' - do not apply this patch
 #   'y' - apply this patch
 #
-# Resolve the dependent type from its single instantiation (PR: 71279, 74971)
+# Resolve the dependent type from its single instantiation (PR: 71279)
 # CLANGD_RESOLVEDEPTYPE:
 #   'n' - do not apply this patch
 #   'y' - apply this patch
@@ -95,6 +95,11 @@
 # CLANGD_CONFIG_INCLUDE_STYLE:
 #   'n' - do not apply this patch
 #   'y' - apply this patch
+#
+# Implement simple folding of preprocessor branches (PR: 80592)
+# CLANGD_PREPROCESSOR_FOLDING:
+#   'n' - do not apply this patch
+#   'y' - apply this patch
 
 
 : ${CLANGD_DEFAULT_PATCH_STATE:=n}
@@ -115,9 +120,10 @@
 : ${CLANGD_LSPREMOVEFROMCDB:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERRECORDPAD:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_CONFIG_INCLUDE_STYLE:=$CLANGD_DEFAULT_PATCH_STATE}
+: ${CLANGD_PREPROCESSOR_FOLDING:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt
-pkgver=19.r4713.g2e0ddfc16385
+pkgver=19.r4743.gcb6ff746e0c7
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
@@ -145,7 +151,8 @@ source=("git+https://github.com/llvm/llvm-project.git#branch=main"
         'resolve-incomplete-header-includes.patch'
         'lsp-remove-files-from-cdb.patch'
         'hover-record-paddings.patch'
-        'config-include-style.patch')
+        'config-include-style.patch'
+        'lsp-preprocessor-folding.patch')
 sha256sums=('SKIP'
             '75b331257caa768c16687fd668ec2b8be62feb283892d601476c3e039f298a54'  # hover-doxygen-trunk
             '614dd012009facb502a7d44e07fc819aa95383c8917537c57968f76ba7881a94'  # doxygen-extra-render-trunk
@@ -165,7 +172,8 @@ sha256sums=('SKIP'
             '991fac650864bbf16832a8c8a0689ee44ef2959a79c9b950ff6200cb4c51beff'  # resolve-incomplete-header-includes
             '459bc42c7366305e562fa710551de909b581aa2358ca739585a0477dd06ebd6d'  # lsp-remove-files-from-cdb
             '0f5f7cc7f984988824bca66a2d08b0fa2b1b6ccdfcc1917e5cb0ed810036cfe7'  # hover-record-paddings
-            'a05f3894ddb881ef77146da6955fc0612de684d7bc09a2ef9b9fc6aa750efcac') # config-include-style
+            'a05f3894ddb881ef77146da6955fc0612de684d7bc09a2ef9b9fc6aa750efcac'  # config-include-style
+            '020e5509e2e13578abb6943ccf228feaa0083dd27cc611fa62c7cd3d700d82f7') # lsp-preprocessor-folding
 
 pkgver() {
     cd llvm-project
@@ -216,6 +224,9 @@ prepare() {
     fi
     if [ "$CLANGD_LSPREMOVEFROMCDB" != "n" ]; then
         apply_patch lsp-remove-files-from-cdb
+    fi
+    if [ "$CLANGD_PREPROCESSOR_FOLDING" != "n" ]; then
+        apply_patch lsp-preprocessor-folding
     fi
 
     # Code-completion patches
