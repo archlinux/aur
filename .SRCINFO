@@ -1,7 +1,7 @@
 pkgbase = kraft
 	pkgdesc = Kraft helps you to handle documents like quotes and invoices in your small business.
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.volle-kraft-voraus.de/
 	arch = x86_64
 	license = GPL
@@ -9,7 +9,7 @@ pkgbase = kraft
 	makedepends = extra-cmake-modules
 	makedepends = asciidoctor
 	makedepends = po4a
-	depends = akonadi-contacts>=23.08.0-1
+	depends = akonadi-contacts5
 	depends = akonadi
 	depends = ctemplate
 	optdepends = python-reportlab: default PDF generator

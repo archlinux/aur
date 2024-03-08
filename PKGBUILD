@@ -6,13 +6,13 @@
 pkgname=kraft
 pkgver=1.1
 _ver=v$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="Kraft helps you to handle documents like quotes and invoices in your small business."
 arch=('x86_64')
 url="http://www.volle-kraft-voraus.de/"
 license=('GPL')
 depends=(
-	'akonadi-contacts>=23.08.0-1' 'akonadi' 'ctemplate'
+	'akonadi-contacts5' 'akonadi' 'ctemplate'
 )
 optdepends=(
 	'python-reportlab: default PDF generator'
