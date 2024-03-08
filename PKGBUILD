@@ -18,8 +18,8 @@ if [[ -v 'QT5_BUILD' ]]; then
     makedepends+=('qt5-tools')
     _buildflags+=('QT6_BUILD=OFF' 'QT5_BUILD=ON')
 else
-    depends+=('qt6-base')
-    makedepends+=('qt6-tools' 'qt6-5compat')
+    depends+=('qt6-base' 'qt6-5compat')
+    makedepends+=('qt6-tools')
     _buildflags+=('QT6_BUILD=ON' 'QT5_BUILD=OFF')
 fi
 

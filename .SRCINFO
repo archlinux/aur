@@ -7,8 +7,8 @@ pkgbase = torrent-file-editor
 	license = GPL-3.0-or-later
 	makedepends = cmake
 	makedepends = qt6-tools
-	makedepends = qt6-5compat
 	depends = qt6-base
+	depends = qt6-5compat
 	source = https://github.com/torrent-file-editor/torrent-file-editor/releases/download/v0.3.18/torrent-file-editor-0.3.18.tar.gz
 	sha256sums = 78b69e0151c5998b4df8b69225e7930c18b7d4419eeaabcad769df0f38a86292
 
