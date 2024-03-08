@@ -25,7 +25,7 @@ source=(
 sha256sums=('9cb9436eb881f237e5ab7a37a306b15ce12768782f797d2eb6e0aa3ad5cf691e'
             '470456008e1b4054229e95b6fee0401321c514d39569fb9c76004a8e8b753034')
 build() {
-    gendesk -q -f -n --pkgname "${pkgname%-appimage}" --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-appimage} --no-sandbox %U"
+    gendesk -q -f -n --pkgname="${pkgname%-appimage}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-appimage} --no-sandbox %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/usr/bin/${pkgname%-appimage}"
