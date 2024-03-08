@@ -1,0 +1,24 @@
+pkgbase = 1panel-git
+	pkgdesc = 1Panel, a modern open source linux panel.
+	pkgver = 1.10.1_alpha.5
+	pkgrel = 1
+	url = https://1panel.cn
+	install = 1panel.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = pwgen
+	makedepends = go
+	makedepends = nodejs
+	makedepends = git
+	optdepends = ufw
+	optdepends = firewalld
+	optdepends = docker
+	optdepends = docker-compose
+	conflicts = 1panel-dev-bin
+	conflicts = 1panel-bin
+	source = 1panel-git::git+https://github.com/1Panel-dev/1Panel.git#branch=dev
+	source = 1panel.service
+	sha256sums = SKIP
+
+pkgname = 1panel-git
