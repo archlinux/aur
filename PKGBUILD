@@ -118,13 +118,10 @@ build() {
     -Denable-comsol=OFF
     -Denable-diana-fea=OFF
     -Denable-lsdyna=OFF
-    -Denable-cxx-17=ON
     -Denable-reference-doc=OFF
     -Denable-doxygen-doc=OFF
-    # -Denable-mfront-quantity-tests=ON
-    -Denable-mfront-quantity-tests=OFF
-    # -Denable-testing=ON
-    -Denable-testing=OFF
+    -Denable-mfront-quantity-tests=ON
+    -Denable-testing=ON
     # Takes forever on my machine (killed after 30 minutes)
     # [ 95%] Building CXX object mfront/src/CMakeFiles/TFELMFront.dir/MFrontHeader.o
     # -Denable-sanitize-options=ON
@@ -137,6 +134,8 @@ build() {
   make -C "${srcdir}"/build
 }
 
+# # Enable if you want, but:
+# #   100% tests passed, 0 tests failed out of 6642
 # check() {
 #   LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${srcdir}/build/lib/" make -C "${srcdir}"/build check
 # }
