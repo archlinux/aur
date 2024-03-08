@@ -4,7 +4,7 @@ pkgver=2.0.12
 pkgrel=2
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64')
-url="https://github.com/hardinfo2/hardinfo2"
+url="https://www.hardinfo2.org"
 license=('GPL-2.0-or-later')
 depends=('gtk3' 'libsoup')
 optdepends=(
@@ -20,7 +20,7 @@ optdepends=(
   'usbutils: USB Devices module'
   'xdg-utils: open your browser for bugs, homepage & links')
 makedepends=('cmake')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/release-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/hardinfo2/hardinfo2/archive/refs/tags/release-$pkgver.tar.gz")
 sha256sums=('b7ba812b2e43f2873826f7dc5363fc24baf3a7e51da22a7b160b5fe4c5dd23ab')
 
 build() {
