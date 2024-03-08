@@ -1,6 +1,6 @@
 pkgbase = android-x86-64-libxcb
-	pkgdesc = X11 client-side library (android)
-	pkgver = 1.16
+	pkgdesc = X11 client-side library (Android x86-64)
+	pkgver = 1.16.1
 	pkgrel = 1
 	url = https://xcb.freedesktop.org/
 	arch = any
@@ -16,10 +16,7 @@ pkgbase = android-x86-64-libxcb
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://xorg.freedesktop.org/archive/individual/lib/libxcb-1.16.tar.xz
-	source = https://xorg.freedesktop.org/archive/individual/lib/libxcb-1.16.tar.xz.sig
-	validpgpkeys = 3BB639E56F861FA2E86505690FDD682D974CA72A
-	sha512sums = 002fbc126c6f09eb7db5e4197cd0572d495f64b6de714a76d9a024fe3e13122c1cfc7c55207c0dee76cc63fcccf87b37db513223eadaf760af2bd2a926443bf8
-	sha512sums = SKIP
+	source = https://xorg.freedesktop.org/archive/individual/lib/libxcb-1.16.1.tar.xz
+	md5sums = e60f0fd3c06e4628be4141bcb3a27f9a
 
 pkgname = android-x86-64-libxcb
