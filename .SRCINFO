@@ -76,7 +76,7 @@ pkgbase = mutter-performance-beta
 	source = 3304.patch
 	source = 3373.patch
 	sha256sums = SKIP
-	sha256sums = b31854ad45ce257d99cd208d9af8a429ad408f18eed24337039316f44048dfa5
+	sha256sums = d0617b65f73c2af562c235b38fb90f6111822cb674f70b0b45581a8f1a18fbca
 	sha256sums = 3308241b53f15477fff4a92cc0a97eef643867965e9054f86d1e038d3d52cc1d
 	sha256sums = 5cccd4b9e09b22dc5ecd6273c39a1639a80ea23b0356484ee0de9f2231453567
 
