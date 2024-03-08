@@ -3,9 +3,8 @@ _pkgname=danmoshui
 pkgname="deepin-wine-${_pkgname}"
 _sparkname="com.${_pkgname}.spark"
 _zhsname="淡墨水字帖"
-_bottlename="Deepin-${_pkgname}"
 pkgver=0.0.6
-pkgrel=5
+pkgrel=6
 pkgdesc="DanMoShui Calligraphy on deepin wine 6.基于Deepin Wine 6的淡墨水字帖PC版。"
 arch=("x86_64")
 url="https://danmoshui.com"
@@ -27,14 +26,14 @@ source=(
 )
 sha256sums=('8e2e1d90abf308a5f7eb105db2abb684d4b39955ce4fe3c4b09b2722eeb37f0f'
             'bd406f5d41584e0234c580d53462045843b5670467568d1478042499f864dc87'
-            'b0eeaff0818b3613b2495b39149678286c5bd8c1daba3fa7970eab464a8ad1e7')
+            '1e22a11ea9be78f91a43e9be7e572dca1e88dcd59601eb734156f788d76d4e0f')
 build() {
-    sed -e "s|@bottlename@|${_bottlename}|g" \
+    sed -e "s|@bottlename@|${_pkgname}|g" \
         -e "s|@pkgver@|${pkgver}|g" \
         -e "s|@runname@|${_zhsname}|g" \
         -e "s|@pkgname@|${pkgname}|g" \
         -i "${srcdir}/${pkgname}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     mv "${srcdir}/opt/apps/${_sparkname}" "${srcdir}/opt/apps/${pkgname}"
     sed "s|\"/opt/apps/${_sparkname}/files/run.sh\"|${pkgname}|g;s|${_sparkname}|${pkgname}|g" \
         -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${_sparkname}.desktop"

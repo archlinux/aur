@@ -1,7 +1,7 @@
 pkgbase = deepin-wine-danmoshui
 	pkgdesc = DanMoShui Calligraphy on deepin wine 6.基于Deepin Wine 6的淡墨水字帖PC版。
 	pkgver = 0.0.6
-	pkgrel = 5
+	pkgrel = 6
 	url = https://danmoshui.com
 	install = deepin-wine-danmoshui.install
 	arch = x86_64
@@ -17,6 +17,6 @@ pkgbase = deepin-wine-danmoshui
 	source = deepin-wine-danmoshui.sh
 	sha256sums = 8e2e1d90abf308a5f7eb105db2abb684d4b39955ce4fe3c4b09b2722eeb37f0f
 	sha256sums = bd406f5d41584e0234c580d53462045843b5670467568d1478042499f864dc87
-	sha256sums = b0eeaff0818b3613b2495b39149678286c5bd8c1daba3fa7970eab464a8ad1e7
+	sha256sums = 1e22a11ea9be78f91a43e9be7e572dca1e88dcd59601eb734156f788d76d4e0f
 
 pkgname = deepin-wine-danmoshui

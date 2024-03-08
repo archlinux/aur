@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
-BOTTLENAME=@bottlename@
+BOTTLENAME=Deepin-
 APPVER=@pkgver@
 EXEC_PATH="c:/Program Files/@runname@_x64/@runname@.exe"
 START_SHELL_PATH="/opt/deepinwine/tools/run_v4.sh"
