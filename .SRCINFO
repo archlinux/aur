@@ -1,7 +1,7 @@
 pkgbase = android-x86-opus
-	pkgdesc = Codec designed for interactive speech and audio transmission over the Internet (android)
-	pkgver = 1.4
-	pkgrel = 4
+	pkgdesc = Codec designed for interactive speech and audio transmission over the Internet (Android x86)
+	pkgver = 1.5.1
+	pkgrel = 1
 	url = http://www.opus-codec.org
 	arch = any
 	license = BSD
@@ -11,7 +11,7 @@ pkgbase = android-x86-opus
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = http://downloads.us.xiph.org/releases/opus/opus-1.4.tar.gz
-	sha256sums = c9b32b4253be5ae63d1ff16eea06b94b5f0f2951b7a02aceef58e3a3ce49c51f
+	source = http://downloads.us.xiph.org/releases/opus/opus-1.5.1.tar.gz
+	md5sums = 06c0e626ea3ad72f7b006e9130c8b15d
 
 pkgname = android-x86-opus
