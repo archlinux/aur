@@ -4,13 +4,14 @@ pkgbase='kc'
 pkgname='kc'
 pkgver=2.5.3
 pkgrel=1
-pkgdesc="console-based password storing application"
+pkgdesc="console-based password manager - basic functionality with readline support"
 arch=('any')
 url="https://github.com/levaidaniel/kc"
 license=('BSD-2-Clause')
-depends=('libbsd>=0.2.0',
-'libxml2>=2.6.0',
-'openssl>=1.1.1',
+conflicts=('kc-full')
+depends=('libbsd>=0.2.0'
+'libxml2>=2.6.0'
+'openssl>=1.1.1'
 'readline'
 )
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/levaidaniel/${pkgbase}/archive/refs/tags/${pkgver}.tar.gz")
