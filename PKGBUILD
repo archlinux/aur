@@ -3,7 +3,7 @@ _pkgname=butterfly
 pkgname="linwood-${_pkgname}-bin"
 _appname="dev.linwood.${_pkgname}"
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful, minimalistic, cross-platform, opensource note-taking app"
 arch=("x86_64")
 url="https://docs.butterfly.linwood.dev/"
@@ -27,12 +27,12 @@ source=(
 )
 sha256sums=('0d9b640994ee951e110fffac4d6090e87e324b204a2978ae6ff6d0e27055509d'
             '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef'
-            '1e338ff128b2be2b0d484ea2d00814db6709a5e2cc455a373428d21f8ed690d5')
+            '840eb0ad528d294064aa09b2b6df7a0e4a800249f43305c756cf78bee627fe1d')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.zst"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|${_pkgname} %f|${pkgname%-bin} %f|g;s|${_appname}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${_appname}.desktop"
     sed "s|${_appname}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/mime/packages/${_appname}.xml"
 }
