@@ -8,10 +8,11 @@ arch=('any')
 url="https://github.com/weiwei/junitparser"
 license=('Apache 2.0')
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-setuptools-scm')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-setuptools-scm'
+             'python-pytest' 'python-anyio' 'python-pytest-curio')
 
-source=("${_name}-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('d37ca5b35569dd7ebfdee976f2396b7d95cc46aa3c5910a0a7771c80751a5524')
+source=("${_name}-$pkgver.tar.gz::https://github.com/weiwei/junitparser/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('8b02126122427de28c86527ccbf2301bdfdf0c87caadb3f327e7dcadbe9d71b8')
 
 build() {
   cd $_name-$pkgver
@@ -21,4 +22,9 @@ build() {
 package() {
   cd $_name-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
+}
+
+check() {
+  cd $_name-$pkgver
+  python -m pytest
 }

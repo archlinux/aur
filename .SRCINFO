@@ -10,8 +10,11 @@ pkgbase = python-junitparser
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
+	makedepends = python-pytest
+	makedepends = python-anyio
+	makedepends = python-pytest-curio
 	depends = python
-	source = junitparser-3.1.2.tar.gz::https://files.pythonhosted.org/packages/source/j/junitparser/junitparser-3.1.2.tar.gz
-	sha256sums = d37ca5b35569dd7ebfdee976f2396b7d95cc46aa3c5910a0a7771c80751a5524
+	source = junitparser-3.1.2.tar.gz::https://github.com/weiwei/junitparser/archive/refs/tags/3.1.2.tar.gz
+	sha256sums = 8b02126122427de28c86527ccbf2301bdfdf0c87caadb3f327e7dcadbe9d71b8
 
 pkgname = python-junitparser
