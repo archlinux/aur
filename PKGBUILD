@@ -7,7 +7,7 @@ _appname=chain-desktop-wallet
 _pkgname=cro-chain-desktop
 pkgname="${_pkgname}-bin"
 pkgdesc='Crypto.com DeFi Desktop Wallet'
-pkgver=1.4.8
+pkgver=1.4.9
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/crypto-com/chain-desktop-wallet'
@@ -18,7 +18,7 @@ options=('!strip')
 depends=('gtk3' 'nss' 'alsa-lib')
 _appimg="Crypto.com-DeFi-Desktop-Wallet-${pkgver}.AppImage"
 source=("${_appimg}::${url}/releases/download/v${pkgver}/${_appimg}")
-sha512sums=('038d55d8e1ebb3d61ce5369104ee6ea151c0358842d04a3b7dd530f9dc35d2ea440a85ea38056cebe1fc8c0814760af3ae90d6055179c446618a35b201856750')
+sha512sums=('013f979ffaa0b2464586aceb71e968ccdb71d636fc75b19510fe5da37e24e2b5dacd30438540029993448bf97a98b86f36cd7c46b1f4e438d7452f84c82b4c7c')
 
 prepare() {
   # Extract files
