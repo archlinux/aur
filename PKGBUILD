@@ -30,7 +30,7 @@ build() {
   cp -r cmake{-$pkgver.src,}
   cd flang-$pkgver.src
   export CXXFLAGS="${CXXFLAGS} -Wp,-U_GLIBCXX_ASSERTIONS"
-  cmake -LAH \
+  cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCLANG_DIR=/usr/lib/cmake/clang/ \
