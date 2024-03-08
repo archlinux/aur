@@ -1,6 +1,6 @@
 pkgbase = hyprcursor-git
 	pkgdesc = The hyprland cursor format, library and utilities
-	pkgver = 0.1.0.r18.aa954a2
+	pkgver = 0.1.0.r0.g2bf4f66f
 	pkgrel = 1
 	url = https://github.com/hyprwm/hyprcursor
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = hyprcursor-git
 	depends = hyprlang>=0.4.2
 	depends = cairo
 	depends = libzip
+	depends = librsvg
 	provides = hyprcursor
 	conflicts = hyprcursor
 	source = hyprcursor::git+https://github.com/hyprwm/hyprcursor.git

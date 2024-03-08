@@ -2,13 +2,13 @@
 
 _pkgname="hyprcursor"
 pkgname="${_pkgname}-git"
-pkgver=0.1.0.r18.aa954a2
+pkgver=0.1.0.r0.g2bf4f66f
 pkgrel=1
 pkgdesc="The hyprland cursor format, library and utilities"
 arch=(any)
 url="https://github.com/hyprwm/hyprcursor"
 license=('BSD')
-depends=('hyprlang>=0.4.2' 'cairo' 'libzip')
+depends=('hyprlang>=0.4.2' 'cairo' 'libzip' 'librsvg')
 makedepends=('git' 'cmake' 'gcc' 'gdb')
 source=("${_pkgname}::git+https://github.com/hyprwm/hyprcursor.git")
 conflicts=("${_pkgname}")
@@ -17,9 +17,8 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd ${_pkgname}
-	printf "0.1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    # git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
-    #  | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
+     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
