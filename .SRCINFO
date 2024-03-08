@@ -1,14 +1,15 @@
 pkgbase = r-qcc
 	pkgdesc = Quality Control Charts
 	pkgver = 2.7
-	pkgrel = 7
+	pkgrel = 10
 	url = https://cran.r-project.org/package=qcc
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	source = https://cran.r-project.org/src/contrib/qcc_2.7.tar.gz
-	sha256sums = ff139a046e6b139ac25537b69be24e0ff32d6a39db6c941d1d02b4710f378251
+	md5sums = e16783e0accb474c542a0b3d07352431
+	b2sums = 34564db3c476230fdf58ba3364b82ede7a143b51a1fdd3dd57ffd69d9a28225efdf0cbd3e620d6d8b6db5e1b0c659316148b97a280f8c4683ede1b21709bb5d2
 
 pkgname = r-qcc
