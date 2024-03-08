@@ -1,7 +1,7 @@
 pkgbase = harmony-music-git
 	pkgdesc = A cross platform App for streaming Music
 	pkgver = r581.0754ede
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anandnet/Harmony-Music
 	arch = x86_64
 	license = GPL
