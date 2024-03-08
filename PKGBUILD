@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc='Qt based GUI tool designed to create and edit .torrent files'
 arch=('x86_64')
 url="https://${pkgname}.github.io/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 
 if [ "${QT6_BUILD}" ]; then
     depends=('qt6-base')
@@ -24,14 +24,13 @@ source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/$
 sha256sums=('78b69e0151c5998b4df8b69225e7930c18b7d4419eeaabcad769df0f38a86292')
 
 build() {
-    cmake -B "build" -S "${_snapshot}" \
+    cmake -B 'build' -S "${_snapshot}" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         "-D${_buildflag}"
 
-    cmake --build "build"
+    cmake --build 'build'
 }
 
 package() {
-    DESTDIR="${pkgdir}" cmake --install "build"
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_snapshot}/LICENSE"
+    DESTDIR="${pkgdir}" cmake --install 'build'
 }
