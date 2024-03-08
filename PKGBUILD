@@ -3,24 +3,25 @@
 _pkgname=clv
 _pkgver=0.3-2.4
 pkgname=r-${_pkgname,,}
-pkgver=0.3.2.4
-pkgrel=1
-pkgdesc='Cluster Validation Techniques'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Cluster Validation Techniques"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('baee506aa15cec3a13ac97f1280c7451fba4eb05506417e59cf06af04d2471fd')
+md5sums=('bad3bb2af579830b283b0d8b5fa58a6f')
+b2sums=('d2bd5de2f2087c5e7d54c245e9db9cd7a30ed872031903ed250ac599387c6f2e48e4c5734f4a40360572d6dae2daf81c2223cd7e1242180fdbefe3e35baa4258')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

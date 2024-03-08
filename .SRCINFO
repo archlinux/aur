@@ -1,12 +1,13 @@
 pkgbase = r-clv
 	pkgdesc = Cluster Validation Techniques
 	pkgver = 0.3.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=clv
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	source = https://cran.r-project.org/src/contrib/clv_0.3-2.4.tar.gz
-	sha256sums = baee506aa15cec3a13ac97f1280c7451fba4eb05506417e59cf06af04d2471fd
+	md5sums = bad3bb2af579830b283b0d8b5fa58a6f
+	b2sums = d2bd5de2f2087c5e7d54c245e9db9cd7a30ed872031903ed250ac599387c6f2e48e4c5734f4a40360572d6dae2daf81c2223cd7e1242180fdbefe3e35baa4258
 
 pkgname = r-clv
