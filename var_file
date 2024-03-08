@@ -1,0 +1,5 @@
+#!/bin/bash
+
+
+# Specify the data folder path.
+DUCKCLOUD_FOLDER=/usr/share/duckcloud

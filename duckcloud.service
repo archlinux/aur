@@ -6,9 +6,8 @@
 #
 # This unit file assumes that:
 # - A user name `duckcloud` have been created.
-# - The `--folder` flag inside the `ExecStart` line point to a folder listed inside the`
-#   `ReadWritePaths` line.
-# - The content of `--folder` points to a folder owned by the `duckcloud` user.
+# - A file `/etc/duckcloud/var_file` exists with the `DATADIR` env variable setup.
+# - The `DATADIR` env variable content is a path pointing to a folder owned by the `duckcloud` user.
 #
 # **NOTE:** This is an example service file that may change in the future. If you
 # wish to use this please copy rather than symlink it.
@@ -28,14 +27,8 @@ User=duckcloud
 Group=duckcloud
 SyslogIdentifier=duckcloud
 
-# Specify where all the data is located by updating the path in
-# both "ExecStart" and "ReadWritePaths"
-#
-# ExecStart one indicate to the server where it must put the data.
-# ReadWritePaths give write permission to the folder. All the remaining
-# filesystem is read-only.
-ReadWritePaths=/usr/share/duckcloud
-ExecStart=/usr/bin/duckcloud run --folder=/usr/share/duckcloud
+EnvironmentFile=/etc/duckcloud/var_file
+ExecStart=/usr/bin/duckcloud run
 
 
 
@@ -58,7 +51,6 @@ PrivateDevices=true
 # # - No modifications allowed to Control Groups
 # # - Hostname
 # # - System Clock
-ProtectSystem=strict
 ProtectKernelTunables=true
 ProtectKernelModules=true
 ProtectControlGroups=true
