@@ -1,8 +1,8 @@
 # Maintainer: João Victor Soares <joao.victor.ssv@outlook.com>
 
 pkgname=fvm
-pkgver=2.4.1
-pkgrel=3
+pkgver=3.0.13
+pkgrel=1
 pkgdesc="Flutter Version Management: A simple cli to manage Flutter SDK versions."
 arch=('x86_64')
 url="https://github.com/leoafarias/fvm"
@@ -15,13 +15,22 @@ source=(
 conflicts=()
 OPTIONS=()
 sha256sums=(
-  '03db8f332ab0eab6bcbfb0c630ed9eb40a7bbe9fd4647282e2bbf7ea1b3f0ad3'
+  '90057a5660f673441437e177671356f98f88bfffa38899a2387af40b430cc57b'
 )
 
 package() {
   cd $srcdir
 
   tar -xf "fvm-${pkgver}-linux-x64.tar.gz"
-  install -Dm755 "${srcdir}/fvm/fvm" "${pkgdir}/usr/bin/fvm"
-  install -Dm644 "${srcdir}/fvm/src/LICENSE" "${pkgdir}/usr/share/licenses/fvm/LICENSE"
+  install -Dm755 "${srcdir}/fvm/fvm" "${pkgdir}/usr/share/${pkgname}/${pkgname}"
+  install -Dm664 "${srcdir}/fvm/src/dart" "${pkgdir}/usr/share/${pkgname}/src/dart"
+  install -Dm664 "${srcdir}/fvm/src/fvm.snapshot" "${pkgdir}/usr/share/${pkgname}/src/fvm.snapshot"
+  install -Dm644 "${srcdir}/fvm/src/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  mkdir -p "${pkgdir}/usr/bin"
+  
+  chmod +x "${pkgdir}/usr/share/${pkgname}/${pkgname}"
+  chmod +x "${pkgdir}/usr/share/${pkgname}/src/dart"
+
+  ln -s "/usr/share/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
