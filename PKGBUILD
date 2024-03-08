@@ -3,12 +3,15 @@
 _pkgname='plakativ'
 pkgname="$_pkgname-git"
 pkgver=0.5.2.r0.ge84aa8d
-pkgrel=1
+pkgrel=2
 pkgdesc='Stretch a PDF document or raster image across multiple pages that can then be printed.'
 arch=('any')
 url="https://gitlab.mister-muffin.de/josch/plakativ"
 license=('GPL-3.0-or-later')
-depends=()
+depends=(
+  'python-pymupdf'
+  'img2pdf'
+)
 makedepends=(
   'git'
   'python-setuptools'
