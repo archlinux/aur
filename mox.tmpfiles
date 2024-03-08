@@ -1,0 +1,2 @@
+d /etc/mox 755 mox mox 
+d /var/mox 755 mox mox 
