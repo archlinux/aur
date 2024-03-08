@@ -5,8 +5,8 @@
 # Contributor: wahnby <wahnby AT yahoo DOT fr>
 
 pkgname='gnunet'
-pkgver='0.20.0'
-pkgrel=2
+pkgver='0.21.0'
+pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
 url="http://${pkgname}.org"
@@ -17,7 +17,8 @@ depends=('brotli' 'gettext' 'gnutls' 'iptables' 'jansson' 'libcurl-gnutls'
          'libtool' 'libunistring' 'miniupnpc' 'nss' 'openssl' 'sqlite' 'which'
          'zlib')
 makedepends=('bluez-libs' 'libpulse' 'libtool' 'opus' 'pkgconfig' 'postgresql'
-             'python' 'python-sphinx' 'python-sphinx-book-theme')
+             'python' 'python-sphinx' 'python-sphinx-multiversion'
+             'python-sphinx_rtd_theme')
 optdepends=('bluez: for bluetooth transport'
             'gnunet-gtk: for handling the gnunet:// URI scheme'
             'jose: for re:claimID OpenID Connect plugin'
@@ -41,7 +42,7 @@ source=("ftp://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig}
         "${pkgname}-user.service")
 install="${pkgname}.install"
 validpgpkeys=('3D11063C10F98D14BD24D1470B0998EF86F59B6A')
-sha256sums=('56029e78a99c04d52b1358094ae5074e4cd8ea9b98cf6855f57ad9af27ac9518'
+sha256sums=('a846eb9f64b5602c6e518badfa32a9ee18d9e66042ad4765e40a936041ca74ad'
             'SKIP'
             '163818b89beddcaf78937daba5bdf0ae060b2975de0731aa13d1ccdd813cf262'
             '66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755'
