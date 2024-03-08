@@ -8,9 +8,10 @@ pkgdesc="TFEL/MFront introduce DSLs based on C++ to handle material knowledge"
 arch=(x86_64)
 url="https://github.com/thelfer/${_upstream}"
 license=(GPL3)
-depends=(gcc-libs gnuplot boost boost-libs)
+depends=(gcc-libs gnuplot boost boost-libs python python-numpy)
 provides=(tfel mfront)
-makedepends=(cmake gcc-fortran python python-numpy)
+makedepends=(cmake gcc-fortran)
+optdepends=(calculix)
 source=(${_base}::git+${url}#branch=master)
 sha512sums=('SKIP')
 
