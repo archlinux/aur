@@ -1,0 +1,6 @@
+librush_release_x86_64-unknown-linux-gnu.tar.zst
+
+pkg/
+src/
+
+*.pkg.tar.zst
