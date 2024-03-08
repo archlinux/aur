@@ -1,14 +1,15 @@
 pkgbase = dart-sass-embedded
 	pkgdesc = Wrapper for Dart Sass that implements the compiler side of the Embedded Sass protocol
-	pkgver = 1.54.8
+	pkgver = 1.62.1
 	pkgrel = 1
 	url = https://github.com/sass/dart-sass-embedded
 	arch = x86_64
 	license = MIT
 	makedepends = dart
+	makedepends = buf
 	depends = glibc
 	options = !strip
-	source = dart-sass-embedded-1.54.8.tgz::https://github.com/sass/DART-SASS-EMBEDDED/archive/1.54.8.tar.gz
-	sha256sums = ff3127947fb6f389a4ef4e3f6f7c0ca2b09c1fc65b87f6f23fb819fe3ae8d4c5
+	source = dart-sass-embedded-1.62.1.tgz::https://github.com/sass/DART-SASS-EMBEDDED/archive/1.62.1.tar.gz
+	sha256sums = d7845134c31b6e288d267678fa85c16a89f02891ea70b761063f4e26912f68bd
 
 pkgname = dart-sass-embedded
