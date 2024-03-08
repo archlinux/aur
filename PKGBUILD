@@ -77,6 +77,7 @@ package_linux6.6.21-1-lts-bin() {
   tar -xf "${_kernpkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
   sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
+  mv "${pkgdir}/usr/share/licenses/"{"${_pkgname}","${_versioned_pkgname}-bin"}
 }
 
 package_linux6.6.21-1-lts-headers-bin() {
@@ -86,6 +87,7 @@ package_linux6.6.21-1-lts-headers-bin() {
   tar -xf "${_headerspkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
+  mv "${pkgdir}/usr/share/licenses/"{"${_pkgname}-headers","${_versioned_pkgname}-headers-bin"}
 }
 
 package_linux6.6.21-1-lts-docs-bin() {
@@ -94,4 +96,5 @@ package_linux6.6.21-1-lts-docs-bin() {
   tar -xf "${_docspkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
   mv "${pkgdir}/usr/share/doc/"{"${_pkgname}","${_versioned_pkgname}"}
+  mv "${pkgdir}/usr/share/licenses/"{"${_pkgname}-docs","${_versioned_pkgname}-docs-bin"}
 }
