@@ -37,8 +37,8 @@ build() {
 package() {
   install -Dt "${pkgdir}/boot" -m644 amd-ucode.img
 
-  install -Dt "${pkgdir}/usr/lib/firmware/amd-ucode/" -m644 microcode_amd_fam17h.bin
-  install -Dt "${pkgdir}/usr/lib/firmware/amd-ucode/" -m644 microcode_amd_fam19h.bin
+  install -Dt "${pkgdir}/usr/lib/firmware/amd-ucode" -m644 microcode_amd_fam17h.bin
+  install -Dt "${pkgdir}/usr/lib/firmware/amd-ucode" -m644 microcode_amd_fam19h.bin
 
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 "CPUMicrocodes-${_commit}/AMD/LICENSE"
 }
