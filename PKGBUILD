@@ -9,7 +9,7 @@ pkgver=21.0.1
 pkgrel=1
 pkgdesc="A library that provides a Python interface to the Telegram Bot API"
 url="https://github.com/${pkgname}/${pkgname}"
-license=(GPL3 LGPL)
+license=(GPL-3.0-or-later LGPL-3.0-or-later)
 arch=(any)
 depends=(python-httpx)
 makedepends=(python-build python-installer python-setuptools python-wheel)
@@ -23,7 +23,7 @@ optdepends=('python-cryptography: for support cryptography library'
 source=(${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz{,.asc})
 validpgpkeys=('4CBA518847044E289548BD9FA2B984A9073022B2') # Hinrich Mahler (Key for signing releases of python-telegram-bot <22366557+Bibo-Joshi@users.noreply.github.com>
 sha512sums=('3df5070bde4a1d8cb25e3ebc09c8698b7260d2b0158b3045227a55eef340f40bf435e5426ff09f4c2a58fdbafff91bdb2abd7b33c2d19e1e40ae8c23e9ab8083'
-            'SKIP')
+  'SKIP')
 
 build() {
   cd ${pkgname}-${pkgver}
