@@ -16,15 +16,8 @@
 #
 _pkg_user="eranif"
 _pkg_name="codelite"
-_pkg_ver="17.7.0"
+_pkg_ver="17.9.0"
 #_commit="16470d74c038b5c5c17756e78bd04ae6e00c2007"
-
-
-# dtl submodule: https://github.com/cubicdaiya/dtl
-_dtl_pkg_user="cubicdaiya"
-_dtl_pkg_name="dtl"
-_dtl_pkg_ident="cd45dd48089c6e9f7a595d920ddfb82c08d59150"
-_dtl_pkg_name_ident="${_dtl_pkg_user}-${_dtl_pkg_name}-${_dtl_pkg_ident:0:7}"
 
 # ccwrap submodule: https://github.com/eranif/cc-wrapper
 _ccwrap_pkg_user="${_pkg_user}"
@@ -37,6 +30,12 @@ _ctags_pkg_user="${_pkg_user}"
 _ctags_pkg_name="ctags"
 _ctags_pkg_ident="3e173d8d82fd2d3534feff0d822d6de36ca3d74e"
 _ctags_pkg_name_ident="${_ctags_pkg_user}-${_ctags_pkg_name}-${_ctags_pkg_ident:0:7}"
+
+# dtl submodule: https://github.com/cubicdaiya/dtl
+_dtl_pkg_user="cubicdaiya"
+_dtl_pkg_name="dtl"
+_dtl_pkg_ident="cd45dd48089c6e9f7a595d920ddfb82c08d59150"
+_dtl_pkg_name_ident="${_dtl_pkg_user}-${_dtl_pkg_name}-${_dtl_pkg_ident:0:7}"
 
 # wxcfg/wx-config-msys2s submodule: https://github.com/eranif/wx-config-msys2.git
 _wxcfg_pkg_user="${_pkg_user}"
@@ -56,7 +55,7 @@ _yaml_pkg_name="yaml-cpp"
 _yaml_pkg_ident="1b50109f7bea60bd382d8ea7befce3d2bd67da5f"
 _yaml_pkg_name_ident="${_yaml_pkg_user}-${_yaml_pkg_name}-${_yaml_pkg_ident:0:7}"
 
-# tinyjson sub-submodule: https://github.com/eranif/tinyjson
+# tinyjson (yaml-cpp) sub-submodule: https://github.com/eranif/tinyjson
 _json_pkg_user="${_pkg_user}"
 _json_pkg_name="tinyjson"
 _json_pkg_ident="a6b0d0d31a05a9f55b4944b3b20f769305eb583a"
@@ -88,7 +87,7 @@ _pkg_name_ident="${_pkg_name}-${_pkg_ident}"
 pkgdesc="Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in C++"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://codelite.org/"
-license=('GPL')
+license=("GPL-2.0-or-later")
 
 makedepends=('pkgconfig' 'cmake' 'ninja' 'clang')
 
@@ -136,7 +135,7 @@ source=(
     "http://repos.codelite.org/wxCrafterLibs/wxgui.zip"
   )
 
-sha256sums=('7e78d711200b3227fdbb44cb0eb269dac0d32b3b350c4adf9e6a71660820eb4d'
+sha256sums=('8578c83acb9377d56c62f47aa1753a8d0d7ceb328d00a211dc5ac3392ac0bf77'
             '507adbaf9776f9f99f39e563876a6a5633eaa0c512f6b9b55c711037165413e4'
             '9343c1f05956308c7f3c4b6ad33d68c08d95ef0ffcdce0ec6c883ccd21bd5f71'
             'ff539f3e2ee4c52073e8b73fd8046163d68b0db567ce7ea5b9438424dc3a2253'
