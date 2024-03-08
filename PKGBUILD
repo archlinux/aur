@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cpeditor-bin
 pkgver=7.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The IDE for competitive programming Fetch, Code, Compile, Run, Check, Submit"
 arch=("x86_64")
 url="https://cpeditor.org/"
@@ -34,12 +34,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('30303f0c7bcac3ae9cc6550ed9e86e5be8c4c1d49e09542dca18f17a2561b0a6'
-            'b4eae24229532b482599a1aeeba095b536f403a91f99a86a78918d4cebfb6fde')
+            '0acb6f9ce3037b89f24bf8218bc42418104d837a9e09c366106e5142ffbe9af1')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|usr/share|opt|g" -i "${srcdir}/usr/share/${pkgname%-bin}/${pkgname%-bin}.sh"
 }
 package() {
