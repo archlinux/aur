@@ -1,8 +1,8 @@
 pkgbase = dynarmic
 	pkgdesc = An ARM dynamic recompiler
 	pkgver = 6.7.0
-	pkgrel = 1
-	url = https://github.com/merryhime/dynarmic
+	pkgrel = 2
+	url = https://github.com/lioncash/dynarmic
 	arch = aarch64
 	arch = x86_64
 	license = 0BSD
@@ -17,8 +17,8 @@ pkgbase = dynarmic
 	depends = glibc
 	depends = llvm-libs
 	provides = libdynarmic.so
-	source = dynarmic-6.7.0.tar.gz::https://github.com/merryhime/dynarmic/archive/refs/tags/6.7.0.tar.gz
-	b2sums = 1f8df7386e296f0ba2bce032c629530e9c1afc742c801605b51a42906b39182c7055090a07ad273580671113979834963756d32509e5e2df0a221bf14d385843
+	source = dynarmic-fa6cc2e4b2a2954f2298b6548174479c5b106c2a.tar.gz::https://github.com/lioncash/dynarmic/archive/fa6cc2e4b2a2954f2298b6548174479c5b106c2a.tar.gz
+	b2sums = 9f25e019f2a80486f11ebdb9872bea5345877074150024baadb959ae038b92bb550e0674f27f14c89cff2cab49ddb5d826c267303093934ae9db54791ba69dc8
 	makedepends_aarch64 = oaknut>=2.0.2
 	makedepends_x86_64 = xbyak>=7.05
 	makedepends_x86_64 = zydis>=4

@@ -1,10 +1,10 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=dynarmic
 pkgver=6.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An ARM dynamic recompiler"
 arch=('aarch64' 'x86_64')
-url="https://github.com/merryhime/dynarmic"
+url="https://github.com/lioncash/dynarmic"
 license=('0BSD')
 depends=('gcc-libs' 'glibc' 'llvm-libs')
 makedepends=(
@@ -18,11 +18,12 @@ makedepends_aarch64=('oaknut>=2.0.2')
 makedepends_x86_64=('xbyak>=7.05' 'zydis>=4')
 checkdepends=('catch2>=3.5' 'oaknut>=2.0.2')
 provides=('libdynarmic.so')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('1f8df7386e296f0ba2bce032c629530e9c1afc742c801605b51a42906b39182c7055090a07ad273580671113979834963756d32509e5e2df0a221bf14d385843')
+_commit=fa6cc2e4b2a2954f2298b6548174479c5b106c2a
+source=("$pkgname-$_commit.tar.gz::$url/archive/$_commit.tar.gz")
+b2sums=('9f25e019f2a80486f11ebdb9872bea5345877074150024baadb959ae038b92bb550e0674f27f14c89cff2cab49ddb5d826c267303093934ae9db54791ba69dc8')
 
 build() {
-	cmake -S $pkgname-$pkgver -B build \
+	cmake -S $pkgname-$_commit -B build \
 		-DBUILD_SHARED_LIBS=ON \
 		-DBUILD_TESTING="$CHECKFUNC" \
 		-DCMAKE_BUILD_TYPE=Release \
@@ -44,5 +45,5 @@ package() {
 	depends_x86_64+=('libZydis.so')
 	# shellcheck disable=SC2154
 	DESTDIR="$pkgdir" cmake --install build
-	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname $pkgname-$pkgver/LICENSE.txt
+	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname $pkgname-$_commit/LICENSE.txt
 }
