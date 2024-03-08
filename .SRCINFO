@@ -1,0 +1,11 @@
+pkgbase = fansly-downloader-ng
+	pkgdesc = A CLI system information tool written in BASH that supports displaying images.
+	pkgver = v0.8.17
+	pkgrel = 1
+	url = https://github.com/prof79/fansly-downloader-ng
+	arch = any
+	license = MIT
+	source = fansly-downloader-ng::https://github.com/prof79/fansly-downloader-ng/releases/download/v0.8.17/Fansly_Downloader_NG-Linux-v0.8.17.zip
+	md5sums = 6effcdd6d67971e03a905cd00af9e72d
+
+pkgname = fansly-downloader-ng
