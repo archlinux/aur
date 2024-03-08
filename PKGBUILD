@@ -23,7 +23,7 @@ conflicts=(gtk3 gtk3-typeahead gtk3-print-backends gtk3-nocsd gtk3-nocsd-git gtk
 provides=(gtk3-classic=$_gtkver gtk3=$_gtkver gtk3-typeahead=$_gtkver gtk3-mushrooms=$_gtkver gtk3-print-backends
           libgtk-3.so libgdk-3.so libgailutil-3.so)
 arch=(x86_64)
-license=(LGPL)
+license=(LGPL-2.0-only)
 depends=(
 	at-spi2-atk
 	atk
