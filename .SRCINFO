@@ -1,12 +1,13 @@
 pkgbase = r-mcbiopi
 	pkgdesc = Matrix Computation Based Identification of Prime Implicants
 	pkgver = 1.1.6
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=mcbiopi
 	arch = any
-	license = LGPL
+	license = LGPL-2.0-or-later
 	depends = r
 	source = https://cran.r-project.org/src/contrib/mcbiopi_1.1.6.tar.gz
-	sha256sums = 271541d1d79a96caad01b7534886a799587894b6dcfab600ff82c312bc165cb1
+	md5sums = c77adce837eafd4e4bd4a571bdf6fb7c
+	b2sums = af9735507cbfd920bfa03a3c420b4ba7706c39bba201a4d4550bea03e9d7d09079ab0aa11c29832085830c1c1520dd16979341d79ba22841af8a40292c0dd481
 
 pkgname = r-mcbiopi
