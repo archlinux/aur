@@ -2,7 +2,7 @@
 pkgname=hoptodesk-bin
 pkgver=1.41.6
 #https://www.hoptodesk.com/changelog
-pkgrel=1
+pkgrel=2
 pkgdesc="A free remote desktop tool that allows users to share their screens and remotely control access to their computers and devices."
 arch=('x86_64')
 url="https://www.hoptodesk.com"
@@ -22,7 +22,7 @@ source=(
 )
 sha256sums=('6f04637c0b4426c365176385666cde27b089037ba4173f92065775a95d217f89')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/usr/share/icons/hicolor/128x128/${pkgname%-bin}.png|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
