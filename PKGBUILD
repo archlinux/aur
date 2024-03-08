@@ -7,8 +7,6 @@ url="http://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 depends=("mlir>=${pkgver%%.*}")
 makedepends=('cmake' 'python' 'clang')
-validpgpkeys+=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D') # Hans Wennborg <hans@chromium.org>
-validpgpkeys+=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com>
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
 source=($_source_base/flang-$pkgver.src.tar.xz{,.sig}
         $_source_base/cmake-$pkgver.src.tar.xz{,.sig}
@@ -19,6 +17,8 @@ sha256sums=('ca3bececb1ca31b993cdf837d2305e4c9af3b6c7acc93d8a2813cb6619d7640b'
             'SKIP'
             'a78f668a726ae1d3d9a7179996d97b12b90fb76ab9442a43110b972ff7ad9029'
             'SKIP')
+validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A'  # Tom Stellard <tstellar@redhat.com>
+              'D574BD5D1D0E98895E3BF90044F2485E45D59042') # Tobias Hieta <tobias@hieta.se>
 
 prepare() {
   # https://github.com/llvm/llvm-project/issues/54128
@@ -26,15 +26,21 @@ prepare() {
 }
 
 build() {
-  rm -rf clang cmake
-  mv clang{-$pkgver.src,}
-  mv cmake{-$pkgver.src,}
+  cp -r clang{-$pkgver.src,}
+  cp -r cmake{-$pkgver.src,}
+  cd flang-$pkgver.src
   export CXXFLAGS="${CXXFLAGS} -Wp,-U_GLIBCXX_ASSERTIONS"
-  cmake -S flang-$pkgver.src -B build -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCLANG_DIR=/usr/lib/cmake/clang/ -DMLIR_TABLEGEN_EXE=/usr/bin/mlir-tblgen -DFLANG_INCLUDE_TESTS=OFF
+  cmake -LAH \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCLANG_DIR=/usr/lib/cmake/clang/ \
+    -DMLIR_TABLEGEN_EXE=/usr/bin/mlir-tblgen \
+    -DFLANG_INCLUDE_TESTS=OFF \
+    -B build -S .
   make -C build
 }
 
 package() {
+  cd flang-$pkgver.src
   make DESTDIR="${pkgdir}" install -C build
 }
