@@ -1,0 +1,23 @@
+pkgbase = python-zcbor
+	pkgdesc = zcbor is a low footprint CBOR library in the C language (C++ compatible), tailored for use in microcontrollers. It comes with a schema-driven script tool that can validate your data, or even generate code. The schema language (CDDL) allows creating very advanced and detailed schemas.
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/NordicSemiconductor/zcbor
+	arch = any
+	license = Apache 2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = python-cbor2
+	depends = python-yaml
+	depends = python-regex
+	optdepends = python-pyelftools
+	optdepends = python-pyserial
+	optdepends = python-serial
+	source = zcbor-0.8.1.tar.gz::https://github.com/NordicSemiconductor/zcbor/releases/download/0.8.1/zcbor-0.8.1.tar.gz
+	sha256sums = 53763faf7b418732ba6c69ccc5da8acd2edb2c7c80ce0a466793d52bda70ecf9
+
+pkgname = python-zcbor
