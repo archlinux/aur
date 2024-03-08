@@ -2,7 +2,7 @@
 pkgname=weimail-bin
 _uosname="cn.ankexinchuang.${pkgname%-bin}"
 pkgver=2.3.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Native Xinchuang email client, free email client software that supports multiple Xinchuang platforms.Just used in China."
 arch=(
     'aarch64'
@@ -28,7 +28,7 @@ source=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_downurl}/latest/${pkgname%-bin}-latest-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_downurl}/latest/${pkgname%-bin}-latest-amd64.deb")
-sha256sums=('64d50527fcbf762a2924118bb06c37059f9f861aaeb382bab131564cb9cb9022')
+sha256sums=('477e6aae1d92f07f2ee0cf64abdfec881f0bb5b39f28f2d1d18492c21bef8e30')
 sha256sums_aarch64=('0ebd90d2c166b3f1679383b4ee10a9cda1755171279b6e9b5fabd3730cfca02e')
 sha256sums_x86_64=('ca223885989a6bb568448a0dd5d204c26d33751c25f42c249be57ddc023825b6')
 build() {
