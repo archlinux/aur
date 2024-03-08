@@ -1,7 +1,7 @@
 pkgbase = python313
 	pkgdesc = Major release 3.13 of the Python high-level programming language
 	pkgver = 3.13.0a4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.python.org/
 	arch = i686
 	arch = x86_64

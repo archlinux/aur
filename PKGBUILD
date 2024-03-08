@@ -3,7 +3,7 @@
 
 pkgname=python313
 pkgver=3.13.0a4
-pkgrel=1
+pkgrel=2
 _pyver=3.13.0
 _pybasever=3.13
 _pymajver=3
@@ -36,7 +36,8 @@ build() {
   cd "${srcdir}/Python-${pkgver}"
 
   CFLAGS="${CFLAGS} -fno-semantic-interposition -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer"
-  ./configure --prefix=/usr \
+  ./configure ax_cv_c_float_words_bigendian=no \
+              --prefix=/usr \
               --enable-shared \
               --with-computed-gotos \
               --with-lto \
