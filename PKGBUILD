@@ -1,7 +1,7 @@
 # Maintainer: Simone Scalabrino <s.scalabrino9@gmail.com>
 _appname="youtube-music"
 _appdesc="Standalone silo app for YouTube Music"
-_gittag="0.1"
+_gittag="0.2"
 
 _gitname=silos-apps
 pkgname="silo-${_appname}"
