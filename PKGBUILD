@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Obsidian 2 Theme - Gnome theme, based upon Adwaita-Maia dark skin"
 arch=('any')
 url="https://github.com/madmaxms/theme-obsidian-2/"
-license=('GPL')
+license=('GPLv3')
 optdepends=('gnome-tweak-tool: A tool to customize advanced GNOME 3 options.')
 source=(
 	"${pkgname}-${pkgver}.tar.xz::https://github.com/madmaxms/theme-obsidian-2/releases/download/v${pkgver}/obsidian-2-theme.tar.xz"
