@@ -1,0 +1,16 @@
+pkgbase = mgis-git
+	pkgdesc = Support for MFront generic behaviours
+	pkgver = r37.bb667ad
+	pkgrel = 1
+	url = https://github.com/thelfer/MFrontGenericInterfaceSupport
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	provides = mgis
+	provides = mfront-generic-interface-support-git
+	conflicts = mgis
+	conflicts = mfront-generic-interface-support-git
+	source = mgis::git+https://github.com/thelfer/MFrontGenericInterfaceSupport.git
+	md5sums = SKIP
+
+pkgname = mgis-git
