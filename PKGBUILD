@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="An Open source Java profiler written in Java"
 arch=('any')
 url="https://git.rwth-aachen.de/patrick_laszlo.hechler/patr-java-profiler"
-license=('AGPL')
+license=('AGPL-3.0-or-later')
 groups=()
 depends=('java-runtime-headless>=8')
 makedepends=()
