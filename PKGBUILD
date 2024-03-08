@@ -2,7 +2,7 @@
 
 pkgbase=xwm-git
 pkgname=xwm-git
-pkgver=1.0.0beta1.r32.ga5de73b
+pkgver=1.0.0beta1.r47.g6ec4141
 pkgrel=1
 pkgdesc="XWM (X light Window Manager) is a light-weight window manager for the X11 Window System"
 arch=(
@@ -38,7 +38,6 @@ makedepends=(
     gettext
     git
     m4
-    sed
     pkgconf)
 checkdepends=()
 optdepends=(
