@@ -1,6 +1,6 @@
 pkgbase = infracost-bin
 	pkgdesc = Cloud cost estimates for Terraform
-	pkgver = 0.10.29
+	pkgver = 0.10.33
 	pkgrel = 1
 	url = https://github.com/infracost/infracost
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = infracost-bin
 	license = Apache
 	provides = infracost-bin
 	conflicts = infracost
-	source = infracost-0.10.29-amd64.tar.gz::https://github.com/infracost/infracost/releases/download/v0.10.29/infracost-linux-amd64.tar.gz
-	sha256sums = ff3608cea25a06f0b411a89e7443410dfbd19857aeb95d0fb0a5beefed46eff0
+	source = infracost-0.10.33-amd64.tar.gz::https://github.com/infracost/infracost/releases/download/v0.10.33/infracost-linux-amd64.tar.gz
+	sha256sums = 86df61332e2a6e6782ac3e8681c4bac5dccfa976512c64ebd7c5a77f218e1c87
 
 pkgname = infracost-bin
