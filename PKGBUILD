@@ -4,15 +4,15 @@
 
 pkgbase=openxcom-extended-git
 pkgname=('openxcom-extended-git' 'openxcom-extended-docs-git')
-pkgver=6.9.7_r11408.74a61e2f6
+pkgver=7.12.1_r12521.510548ad8
 pkgrel=1
 pkgdesc="An extended version of the open-source reimplementation of X-COM (OXCE) (git-version)"
 arch=('i686' 'x86_64')
 url="https://openxcom.org/forum/index.php/topic,5251.0.html"
-license=('GPL3')
-makedepends=('git' 'xmlto' 'docbook-xml' 'docbook-xsl' 'doxygen' 'sdl_mixer'
-             'sdl_gfx' 'sdl_image' 'sdl' 'yaml-cpp' 'libgl' 'gcc-libs' 'glibc'
-             'boost' 'glu' 'cmake' 'hicolor-icon-theme' 'xorgproto')
+license=('GPL-3.0-or-later')
+makedepends=('boost' 'cmake' 'docbook-xml' 'docbook-xsl' 'doxygen' 'gcc-libs' 'git'
+             'glu' 'hicolor-icon-theme' 'libgl' 'sdl' 'sdl_gfx' 'sdl_image' 'sdl_mixer'
+             'xmlto' 'xorgproto' 'yaml-cpp')
 source=(openxcom-extended::git+"https://github.com/MeridianOXC/OpenXcom.git")
 sha256sums=('SKIP')
 
@@ -26,14 +26,13 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p openxcom-extended/build
   sed -i 's:openxcom.6 DESTINATION ${CMAKE_INSTALL_PREFIX}/man/man6):openxcom.6 DESTINATION ${CMAKE_INSTALL_PREFIX}/share/man/man6):' openxcom-extended/docs/CMakeLists.txt
-
 }
 
 build() {
-  cd openxcom-extended/build
-  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE="None" -DDEV_BUILD="Off" ..
+  cmake -B build -S openxcom-extended -DCMAKE_INSTALL_PREFIX="/usr" \
+         -DCMAKE_BUILD_TYPE="None" -DDEV_BUILD="Off"
+  cd build
   make
 
   # Make documentation
@@ -43,15 +42,15 @@ build() {
 
 package_openxcom-extended-git() {
   pkgdesc="An extended version of the open-source reimplementation of X-COM (OXCE) (git-version)"
-  depends=('sdl_mixer' 'sdl_gfx' 'sdl_image' 'sdl' 'yaml-cpp' 'libgl' 'gcc-libs'
-           'glibc' 'hicolor-icon-theme')
+  depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'libgl' 'sdl' 'sdl_gfx'
+           'sdl_image' 'sdl_mixer' 'yaml-cpp')
   optdepends=('openxcom-data-steam: pacman-tracked X-COM data files from Steam'
               'openxcom-tftd-data-steam: pacman-tracked Terror From The Deep data files from Steam')
   provides=('openxcom' 'openxcom-git')
   conflicts=('openxcom')
   install="${pkgname}.install"
 
-  cd openxcom-extended/build
+  cd build
 
   make DESTDIR="${pkgdir}" install
 }
@@ -59,7 +58,7 @@ package_openxcom-extended-git() {
 package_openxcom-extended-docs-git() {
   pkgdesc="Documentation for the extended version of the open-source reimplementation of X-COM (OXCE) (git-version)"
   arch=('any')
-  cd openxcom-extended/build/docs
+  cd build/docs
   install -dm755 "${pkgdir}/usr/share/doc/openxcom-extended/"
   cp -a html "${pkgdir}/usr/share/doc/openxcom-extended/"
 }
