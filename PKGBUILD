@@ -35,13 +35,14 @@ sha256sums_aarch64=("fa7f9d0486a23ecc79aa50b54e4ba0bfe3e53939166a926483e22d1ae07
 
 build() {
     # Override the upstream 1pctl script
-    echo "#!/bin/bash" > ${srcdir}/*/1pctl
-    echo "BASE_DIR=/opt" >> ${srcdir}/*/1pctl
-    echo "ORIGINAL_PORT=${_1panel_original_port}" >> ${srcdir}/*/1pctl
-    echo "ORIGINAL_VERSION=${pkgver//_/-}" >> ${srcdir}/*/1pctl
-    echo "ORIGINAL_ENTRANCE=${_1panel_original_entrance}" >> ${srcdir}/*/1pctl
-    echo "ORIGINAL_USERNAME=${_1panel_original_username}" >> ${srcdir}/*/1pctl
-    echo "ORIGINAL_PASSWORD=${_1panel_original_password}" >> ${srcdir}/*/1pctl
+    echo "#!/bin/bash" > ${srcdir}/1pctl
+    echo "BASE_DIR=/opt" >> ${srcdir}/1pctl
+    echo "ORIGINAL_PORT=${_1panel_original_port}" >> ${srcdir}/1pctl
+    echo "ORIGINAL_VERSION=v${pkgver//_/-}" >> ${srcdir}/1pctl
+    echo "ORIGINAL_ENTRANCE=${_1panel_original_entrance}" >> ${srcdir}/1pctl
+    echo "ORIGINAL_USERNAME=${_1panel_original_username}" >> ${srcdir}/1pctl
+    echo "ORIGINAL_PASSWORD=${_1panel_original_password}" >> ${srcdir}/1pctl
+    echo "1panel --help" >> ${srcdir}/1pctl
 }
 
 package() {
