@@ -3,7 +3,7 @@ pkgname=passbox
 pkgver=1.0.0
 _electronversion=24
 _nodeversion=18
-pkgrel=4
+pkgrel=5
 pkgdesc="A versatile toolbox primarily designed for password management and note-taking."
 arch=('x86_64')
 url="https://github.com/zzk13180/passbox"
@@ -25,7 +25,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -38,7 +38,7 @@ build() {
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname} %U"
+    gendesk -q -f -n --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
