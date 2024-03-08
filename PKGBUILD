@@ -3,7 +3,7 @@
 pkgname=gstarcad-bin
 pkgver=24.1
 _subver=sp1
-pkgrel=2
+pkgrel=3
 pkgdesc="浩辰 CAD.Free trial for 30 days"
 arch=(
     'aarch64'
@@ -34,7 +34,7 @@ build(){
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|gcad|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed -e "s|bash /opt/apps/${pkgname%-bin}/v2024/files/gclauncher.sh %F|${pkgname%-bin} %F|g" \
         -e "s|/opt/apps/${pkgname%-bin}/v2024/files/gcad.svg|${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"

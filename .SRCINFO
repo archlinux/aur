@@ -1,7 +1,7 @@
 pkgbase = gstarcad-bin
 	pkgdesc = 浩辰 CAD.Free trial for 30 days
 	pkgver = 24.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gstarcad.com/cad_linux
 	arch = aarch64
 	arch = x86_64
