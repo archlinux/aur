@@ -2,10 +2,10 @@
 
 pkgname=firejail-handler-http
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="HTTP(S) URL handler for Firejail"
 arch=(x86_64)
-license=(GPL2)
+license=(GPL-2.0-or-later)
 url="https://github.com/glitsj16/firejail-handler-http"
 depends=('firejail' 'inotify-tools' 'xdg-user-dirs' 'xdg-utils')
 # package contains only text files
