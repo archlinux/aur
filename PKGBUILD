@@ -3,7 +3,7 @@ pkgname=simple-web-server-bin
 _pkgname=Simple-Web-Server
 pkgver=1.2.10
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="Create a local web server in just a few clicks with an easy to use interface. A continuation of Web Server for Chrome, built with Electron."
 arch=(
     "aarch64"
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('57e19cef8140644e1f4ac091f5bb90dc20e65f26232a756233cba336c2dbd85b'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 sha256sums_aarch64=('f570b30f373f0d6056dd3a2e31050c74b6eb322af4079d0034c8380066051929')
 sha256sums_x86_64=('9bb848f65527ff45511dad2733ac86bd618f72684fadc12921128a370320563e')
 build() {
@@ -32,7 +32,7 @@ build() {
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_pkgname//-/ }/${pkgname%-bin}\"|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
