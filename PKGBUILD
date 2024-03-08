@@ -3,7 +3,7 @@
 
 pkgname=torrent-file-editor
 pkgver=0.3.18
-pkgrel=2
+pkgrel=3
 pkgdesc='Qt based GUI tool designed to create and edit .torrent files'
 arch=('x86_64')
 url="https://${pkgname}.github.io/"
