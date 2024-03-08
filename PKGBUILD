@@ -5,15 +5,15 @@
 pkgbase=openxcom-git
 pkgname=('openxcom-git' 'openxcom-docs-git')
 _gitname=OpenXcom
-pkgver=1.0_r3059_g3af9628ba
+pkgver=1.0_r3113_ge2c5a1b45
 pkgrel=1
 pkgdesc="An open-source reimplementation of the famous X-COM game (git-version)"
 arch=('i686' 'x86_64')
 url="https://openxcom.org/"
-license=('GPL3')
-makedepends=('git' 'xmlto' 'docbook-xml' 'docbook-xsl' 'doxygen' 'sdl_mixer'
-             'sdl_gfx' 'sdl_image' 'sdl' 'yaml-cpp' 'libgl' 'gcc-libs' 'glibc'
-             'boost' 'glu' 'cmake' 'hicolor-icon-theme' 'xorgproto')
+license=('GPL-3.0-or-later')
+makedepends=('boost' 'cmake' 'docbook-xml' 'docbook-xsl' 'doxygen' 'gcc-libs' 'git'
+             'glu' 'hicolor-icon-theme' 'libgl' 'sdl' 'sdl_gfx' 'sdl_image' 'sdl_mixer'
+             'xmlto' 'xorgproto' 'yaml-cpp')
 source=(git+"https://github.com/SupSuper/${_gitname}.git")
 sha256sums=('SKIP')
 
@@ -21,13 +21,16 @@ pkgver() {
   cd ${_gitname}
   git describe --long --tags | sed -e 's:^v::;s:\([^-]*-g\):r\1:;s:-:_:g'
 }
+
 prepare() {
-  mkdir -p ${_gitname}/build
+  # Fix manpage install location
+  sed -i 's:openxcom.6 DESTINATION ${CMAKE_INSTALL_PREFIX}/man/man6):openxcom.6 DESTINATION ${CMAKE_INSTALL_PREFIX}/share/man/man6):' ${_gitname}/docs/CMakeLists.txt
 }
 
 build() {
-  cd ${_gitname}/build
-  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE="None" -DDEV_BUILD="Off" ..
+  cmake -B build -S ${_gitname} -DCMAKE_INSTALL_PREFIX="/usr" \
+        -DCMAKE_BUILD_TYPE="None" -DDEV_BUILD="Off"
+  cd build
   make
 
   # Make documentation
@@ -37,24 +40,23 @@ build() {
 
 package_openxcom-git() {
   pkgdesc="An open-source reimplementation of the famous X-COM game (git-version)"
-  depends=('sdl_mixer' 'sdl_gfx' 'sdl_image' 'sdl' 'yaml-cpp' 'libgl' 'gcc-libs'
-           'glibc' 'hicolor-icon-theme')
-  optdepends=('openxcom-data-steam: pacman-tracked X-COM data files from Steam')
+  depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'libgl' 'sdl' 'sdl_gfx'
+           'sdl_image' 'sdl_mixer' 'yaml-cpp')
+  optdepends=('openxcom-data-steam: pacman-tracked X-COM data files from Steam'
+              'openxcom-tftd-data-steam: pacman-tracked Terror From The Deep data files from Steam')
   provides=('openxcom')
   conflicts=('openxcom')
   install="${pkgname}.install"
 
-  cd ${_gitname}/build
+  cd build
 
   make DESTDIR="${pkgdir}" install
-  # Fix manpage location
-  install -Dm644 "${srcdir}/OpenXcom/docs/openxcom.6" "${pkgdir}/usr/share/man/man6/openxcom.6"
 }
 
 package_openxcom-docs-git() {
   pkgdesc="Documentation for the open-source reimplementation of the famous X-COM game (git-version)"
   arch=('any')
-  cd ${_gitname}/build/docs
+  cd build/docs
   install -dm755 "${pkgdir}/usr/share/doc/openxcom/"
   cp -a html "${pkgdir}/usr/share/doc/openxcom/"
 }
