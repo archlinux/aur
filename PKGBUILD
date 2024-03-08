@@ -27,7 +27,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -60,7 +60,6 @@ build() {
     mv src/components/ui/Table src/components/ui/table
     mv src/components/ui/Search src/components/ui/search
     mv src/components/ui/Pagination src/components/ui/pagination
-    sed "s|preload: app.isPackaged|preload: !app.isPackaged|g;s|icon.ico|icon.png|g" -i src/main/main.ts
     npm install
     npm run package
     cp release/build/.icon-set/icon_256.png release/build/.icon-set/icon_256x256.png
