@@ -1,7 +1,7 @@
 pkgbase = openvaf
 	pkgdesc = A Next-Generation Verilog-A compiler https://openvaf.semimod.de/
 	pkgver = 23.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pascalkuthe/OpenVAF
 	arch = x86_64
 	license = GPL3

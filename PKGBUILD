@@ -4,7 +4,7 @@
 pkgname=openvaf
 _name=OpenVAF
 pkgver=23.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A Next-Generation Verilog-A compiler https://openvaf.semimod.de/'
 arch=(x86_64)
 url='https://github.com/pascalkuthe/OpenVAF'
