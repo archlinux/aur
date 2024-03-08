@@ -1,7 +1,7 @@
 pkgbase = paster-bin
 	pkgdesc = A clipboard management tool implemented with Electron + React + ArcoDesign.It well be a handy paste tool
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/zengxiaolou/paste
 	arch = x86_64
 	license = GPL-3.0-only
@@ -12,6 +12,6 @@ pkgbase = paster-bin
 	source = paster-1.0.0.deb::https://github.com/zengxiaolou/paste/releases/download/v1.0.0/paster_1.0.0_amd64.deb
 	source = paster.sh
 	sha256sums = 051afe059a8eb439c7c8250eda48e5c485ed49abd7d82d7f65f6a4148de25309
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = paster-bin
