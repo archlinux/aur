@@ -8,7 +8,7 @@ pkgbase = pandoc-bin
 	license = GPL2
 	optdepends = texlive-core: for pdf output
 	provides = pandoc=3.1.12.2
-	conflicts = pandoc
+	provides = pandoc-cli=3.1.12.2
 	conflicts = pandoc-cli
 	source = pandoc-bin-source-3.1.12.2.tar.gz::https://github.com/jgm/pandoc/archive/3.1.12.2.tar.gz
 	sha256sums = f22f18fe008641fd3fccddb040c3747efd57fad669df6ca41f4926421f317bd2

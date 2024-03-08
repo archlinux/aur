@@ -5,8 +5,8 @@ pkgdesc="Pandoc - executable only, without 750MB Haskell depends/makedepends"
 url="https://pandoc.org"
 license=("GPL2")
 arch=('x86_64' 'aarch64')
-conflicts=("pandoc" "pandoc-cli")
-provides=("pandoc=$pkgver")
+conflicts=("pandoc-cli")
+provides=("pandoc=$pkgver" "pandoc-cli=$pkgver")
 optdepends=('texlive-core: for pdf output')
 
 # The binary release doesn't have the datafiles, so we need to yoink those out of the source tarball, too.
