@@ -1,0 +1,18 @@
+pkgbase = python-litejesd204b
+	pkgdesc = Small footprint and configurable JESD204B core
+	pkgver = 2021.08
+	pkgrel = 3
+	url = https://github.com/enjoy-digital/litejesd204b
+	arch = any
+	license = BSD-2-Clause
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-migen
+	depends = python-litex
+	source = python-litejesd204b-2021.08.tar.gz::https://github.com/enjoy-digital/litejesd204b/archive/2021.08.tar.gz
+	sha512sums = b31af9938a319539919f66ac35fd685c3f0786a5203c5ab7d20f3452dd315f41da195a2f838b6bb83231d73770b9c29c2acb76a89ab36412878807e8cbe64864
+
+pkgname = python-litejesd204b
