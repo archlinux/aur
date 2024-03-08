@@ -3,9 +3,9 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-opus
-pkgver=1.4
-pkgrel=4
-pkgdesc="Codec designed for interactive speech and audio transmission over the Internet (android)"
+pkgver=1.5.1
+pkgrel=1
+pkgdesc="Codec designed for interactive speech and audio transmission over the Internet (Android ${_android_arch})"
 arch=('any')
 url="http://www.opus-codec.org"
 license=("BSD")
@@ -13,7 +13,7 @@ depends=('android-ndk')
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-configure')
 source=("http://downloads.us.xiph.org/releases/opus/opus-$pkgver.tar.gz")
-sha256sums=('c9b32b4253be5ae63d1ff16eea06b94b5f0f2951b7a02aceef58e3a3ce49c51f')
+md5sums=('06c0e626ea3ad72f7b006e9130c8b15d')
 
 prepare() {
     source android-env ${_android_arch}
