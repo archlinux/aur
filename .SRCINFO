@@ -1,10 +1,10 @@
 pkgbase = diffuse-player-bin
 	pkgdesc = A music player that connects to your cloud/distributed storage.
 	pkgver = 3.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://diffuse.sh/
 	arch = x86_64
-	license = LicenseRef-PPL-2.0
+	license = LicenseRef-PPL-2.0.0
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	provides = diffuse-player=3.4.0

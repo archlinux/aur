@@ -2,12 +2,12 @@
 _pkgname=diffuse
 pkgname="${_pkgname}-player-bin"
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A music player that connects to your cloud/distributed storage."
 arch=('x86_64')
 url="https://diffuse.sh/"
 _ghurl="https://github.com/icidasset/diffuse"
-license=("LicenseRef-PPL-2.0")
+license=("LicenseRef-PPL-2.0.0")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -21,7 +21,7 @@ source=(
 sha256sums=('7c616273e8e1f78ced354d6613810dbdc115a7ccc42fae3102d5210fe8d1ee84'
             '22f6e9359127b271eba050bc6e87abc699982ace7a6b386c1c346c7f3154eda8')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.gz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|Exec=${_pkgname}|Exec=${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
