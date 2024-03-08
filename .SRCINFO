@@ -1,14 +1,14 @@
 pkgbase = peirates-bin
 	pkgdesc = Kubernetes Penetration Testing tool.
-	pkgver = 1.14
+	pkgver = 1.1.16
 	pkgrel = 1
 	url = https://github.com/inguardians/peirates
 	arch = x86_64
 	license = Apache 2
 	provides = peirates-bin
-	source = https://github.com/inguardians/peirates/releases/download/v1.14/peirates-linux-amd64.tar.xz
-	source = https://raw.githubusercontent.com/inguardians/peirates/v1.14/LICENSE
-	sha256sums = 38f32c270bb40a136c8c963ec709fc893b7761f9911768754abb174ba46c569b
+	source = https://github.com/inguardians/peirates/releases/download/v1.1.16/peirates-linux-amd64.tar.xz
+	source = https://raw.githubusercontent.com/inguardians/peirates/v1.1.16/LICENSE
+	sha256sums = d00a0e537750d339c2510b639b66ba436a23c908bfc109c68bcf6c4c95971d03
 	sha256sums = 8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643
 
 pkgname = peirates-bin
