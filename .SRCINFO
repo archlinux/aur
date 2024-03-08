@@ -1,6 +1,6 @@
 pkgbase = magiskboot-bin
 	pkgdesc = magiskboot binary from magisk offical release
-	pkgver = 26.4
+	pkgver = 27.0
 	pkgrel = 1
 	url = https://github.com/topjohnwu/Magisk
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = magiskboot-bin
 	license = GPL3
 	makedepends = unzip
 	conflicts = magiskboot-git
-	source = https://github.com/topjohnwu/Magisk/releases/download/v26.4/Magisk-v26.4.apk
-	sha256sums = 543a96fe26c012d99baf3a3aa5a97b80508d67cc641af7c12ce9f7b226b2b889
+	source = https://github.com/topjohnwu/Magisk/releases/download/v27.0/Magisk-v27.0.apk
+	sha256sums = f511bd33d3242911d05b0939f910a3133ef2ba0e0ff1e098128f9f3cd0c16610
 
 pkgname = magiskboot-bin
