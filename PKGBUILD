@@ -2,7 +2,7 @@
 pkgname=lala-companion-bin
 pkgver=0.0.11
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="3D personified desktop assistants, tuned for you, powered by AI vision and voice."
 arch=("x86_64")
 url="https://lalaland.chat/"
@@ -18,13 +18,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('d78e77b06a7b6b32f2c54bdb75a8448b82b73ae74211ba71c7116bd0bf58d7a9'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.zst"
+    bsdtar -xf "${srcdir}/data."*
 } 
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
