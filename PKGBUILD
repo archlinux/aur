@@ -4,7 +4,7 @@ pkgname=pennywise-bin
 _pkgname=Pennywise
 pkgver=0.8.0
 _electronversion=5
-pkgrel=10
+pkgrel=11
 pkgdesc="Cross-platform application to open any website or media in a floating window"
 arch=(
 	'i686'
@@ -32,7 +32,7 @@ source=(
 	"${pkgname%-bin}.sh"
 )
 sha256sums=('b41ccd76edcf9e9af64581622b1d6dc1de7ed55a96548c4af8c43d32cd764b0b'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 sha256sums_i686=('df794adfb3fd28cb68beabe59cadfc000c0b20c83bb38f064d9409a7951b6799')
 sha256sums_x86_64=('02d5f5ea3bf0b934d650cbb75c3cb43ab62b3d1c48c733b2f85816ccc8736191')
 build() {
@@ -40,7 +40,7 @@ build() {
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-	bsdtar -xf "${srcdir}/data.tar.xz"
+	bsdtar -xf "${srcdir}/data."*
 	sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\"|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
