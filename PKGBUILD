@@ -115,12 +115,10 @@ _commit=1e74e5071f381b2dd9026f8186987245dfd89100  # tags/46.rc
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         '1441.patch'
         '3304.patch'
-        '3327.patch'
         '3373.patch')
 sha256sums=('SKIP'
             'b31854ad45ce257d99cd208d9af8a429ad408f18eed24337039316f44048dfa5'
             '3308241b53f15477fff4a92cc0a97eef643867965e9054f86d1e038d3d52cc1d'
-            'da62bbdf094381460784b5d95d1c06236c6f3e2f0aa16611719030b531f4d2f5'
             '5cccd4b9e09b22dc5ecd6273c39a1639a80ea23b0356484ee0de9f2231453567')
 
 pkgver() {
