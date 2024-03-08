@@ -1,17 +1,16 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=fig2dev-git
-pkgver=3.2.8b.r59.g6bba6c8
+pkgver=3.2.9.r9.ga22a904
 pkgrel=1
 pkgdesc="Format conversion utility that can be used with xfig"
 arch=('i686' 'x86_64')
 url="https://mcj.sourceforge.net/"
-license=('custom')
+license=('Xfig')
 depends=('glibc' 'ghostscript' 'libpng' 'netpbm' 'zlib')
 makedepends=('git')
 provides=("fig2dev=$pkgver" 'transfig')
 conflicts=('fig2dev' 'transfig')
-replaces=('transfig')
 source=("git+https://git.code.sf.net/p/mcj/fig2dev")
 sha256sums=('SKIP')
 

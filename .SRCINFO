@@ -1,22 +1,21 @@
 pkgbase = fig2dev-git
 	pkgdesc = Format conversion utility that can be used with xfig
-	pkgver = 3.2.8b.r59.g6bba6c8
+	pkgver = 3.2.9.r9.ga22a904
 	pkgrel = 1
 	url = https://mcj.sourceforge.net/
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = Xfig
 	makedepends = git
 	depends = glibc
 	depends = ghostscript
 	depends = libpng
 	depends = netpbm
 	depends = zlib
-	provides = fig2dev=3.2.8b.r59.g6bba6c8
+	provides = fig2dev=3.2.9.r9.ga22a904
 	provides = transfig
 	conflicts = fig2dev
 	conflicts = transfig
-	replaces = transfig
 	source = git+https://git.code.sf.net/p/mcj/fig2dev
 	sha256sums = SKIP
 
