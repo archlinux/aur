@@ -1,6 +1,6 @@
 pkgbase = plattenalbum
 	pkgdesc = Browse music with MPD
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/SoongNoonien/plattenalbum
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = plattenalbum
 	depends = python-gobject
 	depends = libadwaita
 	provides = mpdevil
-	source = plattenalbum-2.0.0.tar.gz::https://github.com/SoongNoonien/plattenalbum/archive/v2.0.0.tar.gz
-	sha256sums = 5bce5e3bd68e7f4776e509af0cde220e6f06e14aa1b9ef3db64ba74e4808a8a3
+	source = plattenalbum-2.0.1.tar.gz::https://github.com/SoongNoonien/plattenalbum/archive/v2.0.1.tar.gz
+	sha256sums = cee314bc90b78492f64661860e58db16ec47754f038c80b40a312dbafd186826
 
 pkgname = plattenalbum
