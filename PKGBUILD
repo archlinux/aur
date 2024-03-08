@@ -2,12 +2,12 @@
 
 _pkgname=fdns
 pkgname=${_pkgname}-git
-pkgver=0.9.73+7ae7d44
+pkgver=0.9.73+3fb36ca
 pkgrel=1
 pkgdesc="Firejail DNS-over-HTTPS proxy server"
 arch=(x86_64)
 url="https://github.com/netblue30/fdns"
-license=(GPL2)
+license=(GPL-3.0-only)
 backup=(
     etc/fdns/hosts
     etc/fdns/list.adblocker
