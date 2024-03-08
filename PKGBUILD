@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=r3playx-git
 _pkgname=R3PLAYX
-pkgver=2.7.4.r25.g15ee92d
+pkgver=2.7.4.r27.ga477b57
 _electronversion=28
 _nodeversion=18
 pkgrel=1
@@ -13,12 +13,13 @@ conflicts=(
     "${pkgname%-git}"
     "yesplaymusic"
     "r3play"
+    "my-yesplaymusic"
 )
 provides=("yesplaymusic")
 depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
-    'python'
+    'python>3'
 )
 makedepends=(
     'gendesk'
@@ -26,7 +27,7 @@ makedepends=(
     'nvm'
     'npm'
     'pnpm'
-    'make'
+    'base-devel'
     'gcc'
 )
 source=(
@@ -34,7 +35,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
