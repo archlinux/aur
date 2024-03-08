@@ -3,8 +3,8 @@ pkgname=commas
 _pkgname=Commas
 pkgver=0.30.0
 _electronversion=28
-_nodever=16
-pkgrel=2
+_nodever=18
+pkgrel=3
 pkgdesc="A hackable, pluggable terminal, and also a command runner."
 arch=("x86_64")
 url="https://github.com/CyanSalt/commas"
@@ -12,7 +12,7 @@ license=('ISC')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
-    'python'
+    'python>3'
 )
 makedepends=(
     'gendesk'
@@ -25,7 +25,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -38,7 +38,7 @@ build() {
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname} %U"
+    gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -48,9 +48,7 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    sed "s|app.isPackaged|!process.defaultApp|g" -i src/main/utils/directory.ts
-    npm install --no-package-lock
-    #npm add ansi-styles
+    npm install
     npm run build
 }
 package() {
