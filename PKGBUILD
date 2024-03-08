@@ -2,7 +2,7 @@
 pkgname=acodec-bin
 _pkgname=ACodec
 pkgver=2.5.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Encoder & decoder for various algorithms with graphical user interface."
 arch=(
     "aarch64"
@@ -27,7 +27,7 @@ sha256sums_armv7h=('326442abe0b053e571d1bafe08a2ab7d1a26d14488b5f9473c7f7eeaa8fb
 sha256sums_i686=('32e94dae17ff3e80341d4d5ebcb4a503e6b6c73a9a74e27c24cfa60771d5a342')
 sha256sums_x86_64=('42ba192af6a7b23ee11a9568ece9e7a3cb32ca99e9088b9cc8211c45b6e7b364')
 build() {
-    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-bin}"
+    gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin}"
     cp "${srcdir}/${pkgname%-bin}.desktop" "${srcdir}/${pkgname%-bin}w.desktop"
     sed "s|Name=${_pkgname}|Name=${_pkgname}-w|g;s|Exec=${pkgname%-bin}|Exec=${pkgname%-bin}w|g" \
         -i "${srcdir}/${pkgname%-bin}w.desktop"
