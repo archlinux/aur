@@ -3,13 +3,13 @@
 _gitname=pykeepass_cache
 pkgbase="python-${_gitname}"
 pkgname="python-${_gitname}-git"
-pkgver=r7.8c79e6a
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="PyKeePass database caching in a background process. "
 arch=("any")
 license=("GPL3")
 url="https://github.com/libkeepass/pykeepass_cache"
-depends=("python-pykeepass")
+depends=("python-pykeepass" "python-daemon" "python-rpyc")
 makedepends=("git" "python-setuptools")
 provides=(python-pykeepass_cache)
 source=("git+https://github.com/libkeepass/pykeepass_cache.git")

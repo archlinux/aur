@@ -1,6 +1,6 @@
 pkgbase = python-pykeepass_cache
 	pkgdesc = PyKeePass database caching in a background process.
-	pkgver = r7.8c79e6a
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/libkeepass/pykeepass_cache
 	arch = any
@@ -8,9 +8,10 @@ pkgbase = python-pykeepass_cache
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-pykeepass
+	depends = python-daemon
+	depends = python-rpyc
 	provides = python-pykeepass_cache
 	source = git+https://github.com/libkeepass/pykeepass_cache.git
 	sha512sums = SKIP
 
 pkgname = python-pykeepass_cache-git
-
