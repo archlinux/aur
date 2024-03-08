@@ -1,10 +1,10 @@
 # Maintainer: Dan Maftei <dan.maftei@gmail.com>
 pkgname="molden"
 pkgver=7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A program for molecular and electronic structure visualization"
 arch=('i686' 'x86_64')
-url="http://www.cmbi.ru.nl/molden/"
+url="https://www.theochem.ru.nl/molden/"
 license=('custom')
 groups=()
 depends=('mesa' 'glu')
