@@ -3,7 +3,7 @@
 _commit='c7af5d5b1e8ddcb9ac71ba6f07640de678501c6f'
 pkgname=amd-zen-ucode-platomav
 pkgver=r286
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="Microcode update image for AMD Zen CPUs (family 17h and 19h) from platomav's github"
 url='https://github.com/platomav/CPUMicrocodes'
@@ -36,6 +36,9 @@ build() {
 
 package() {
   install -Dt "${pkgdir}/boot" -m644 amd-ucode.img
+
+  install -Dt "${pkgdir}/usr/lib/firmware/amd-ucode/" -m644 microcode_amd_fam17h.bin
+  install -Dt "${pkgdir}/usr/lib/firmware/amd-ucode/" -m644 microcode_amd_fam19h.bin
 
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 "CPUMicrocodes-${_commit}/AMD/LICENSE"
 }

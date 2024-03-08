@@ -1,7 +1,7 @@
 pkgbase = amd-zen-ucode-platomav
 	pkgdesc = Microcode update image for AMD Zen CPUs (family 17h and 19h) from platomav's github
 	pkgver = r286
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/platomav/CPUMicrocodes
 	arch = any
 	license = custom
