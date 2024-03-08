@@ -2,7 +2,7 @@
 pkgname=sbe-bin
 pkgver=3.5.0
 _electronversion=25
-pkgrel=2
+pkgrel=3
 pkgdesc="An unofficial Scrapbox desktop app"
 arch=('x86_64')
 url="https://github.com/kondoumh/sbe"
@@ -11,13 +11,10 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
     'hicolor-icon-theme'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
@@ -26,7 +23,7 @@ source=(
 )
 sha256sums=('0256de2b0bb80cbd30d53948808a645c3b9898a136ba2754d39a21007b2a383c'
             '0c0557908ff74a92af66c9b4435403c14e230c11e56eace0016fcfb7151187d2'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
