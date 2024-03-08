@@ -2,7 +2,7 @@
 pkgname=chatd-bin
 pkgver=1.1.0
 _electronversion=24
-pkgrel=2
+pkgrel=3
 pkgdesc="Chat with your documents using local AI"
 arch=('x86_64')
 url="https://chatd.ai/"
@@ -28,7 +28,7 @@ source=(
 )
 sha256sums=('0c2879ae40b1c17ce81bb90eec7e281018736c6aad0574aabb4c025a92418687'
             '2482d360377c8e4d4ef1432e93f9e67e6f6d76ce0e69eee6f2647c3f1c296dd2'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
