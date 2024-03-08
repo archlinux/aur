@@ -2,7 +2,7 @@
 
 pkgname=hyperion.ng-git
 pkgver=2.0.15.r97.fd5a94a3
-pkgrel=1
+pkgrel=2
 pkgdesc="The reworked version (next generation) of Hyperion, ambient light software"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/hyperion-project/hyperion.ng"
@@ -60,6 +60,16 @@ package() {
 
   install -Dm 644 ${srcdir}/hyperion.systemd "${pkgdir}/usr/lib/systemd/system/hyperiond@.service"
   install -Dm 644 ${srcdir}/hyperion.systemd-user "${pkgdir}/usr/share/hyperion/hyperiond-user.service"
+  install -Dm 644 ${srcdir}/hyperion.systemd-user "${pkgdir}/usr/lib/systemd/user/hyperiond.service"
 
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+
+  echo
+  echo
+  echo -------------------------------------------------------------
+  echo 'run to start hyperion as user via systemsd:'
+  echo 'systemctl --user daemon-reload && systemctl --user enable hyperiond && systemctl --user start hyperiond'
+  echo -------------------------------------------------------------
+  echo
+  echo
 }
