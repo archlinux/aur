@@ -1,12 +1,13 @@
 pkgbase = r-kodata
 	pkgdesc = LINCS Knock-Out Data Package
 	pkgver = 1.28.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/KOdata
 	arch = any
 	license = MIT
 	depends = r
 	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/KOdata_1.28.0.tar.gz
-	sha256sums = 8a4aa27165cf43268fa9e9a1aed2cf18659558459d130d8c864ab0f3ddd6d4b5
+	md5sums = 40e099053eae889ad66256a94427ac54
+	b2sums = ecd7c3597cd1e81dfbc1782b9ab4d6f5e898491c5d3de180bf2312c6e3ccd204dd3582a75abd261e13693a90fafaae8ab083a7618d15dc3d0d643886c52effd8
 
 pkgname = r-kodata
