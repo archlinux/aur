@@ -2,10 +2,10 @@
 
 _githubuser=matmoul
 _githubrepo=plasma-containmentactions-customdesktopmenu
-_gitcommit=12faa87435610a2be884a424df637adaa3eb29f8
+_gitcommit=5b70ecb8feab1b23877e35890ed64ce16c98bac4
 
 pkgname=plasma-addons-customdesktopmenu-git
-pkgver=0.2.0.r3.12faa87
+pkgver=0.2.0.r4.5b70ecb
 pkgrel=1
 pkgdesc='Custom desktop menu for Plasma6'
 arch=('any')

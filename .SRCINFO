@@ -1,6 +1,6 @@
 pkgbase = plasma-addons-customdesktopmenu-git
 	pkgdesc = Custom desktop menu for Plasma6
-	pkgver = 0.2.0.r3.12faa87
+	pkgver = 0.2.0.r4.5b70ecb
 	pkgrel = 1
 	url = https://github.com/matmoul/plasma-containmentactions-customdesktopmenu
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = plasma-addons-customdesktopmenu-git
 	makedepends = git
 	makedepends = extra-cmake-modules
 	depends = kdeplasma-addons
-	source = git+https://github.com/matmoul/plasma-containmentactions-customdesktopmenu.git#commit=12faa87435610a2be884a424df637adaa3eb29f8
+	source = git+https://github.com/matmoul/plasma-containmentactions-customdesktopmenu.git#commit=5b70ecb8feab1b23877e35890ed64ce16c98bac4
 	sha256sums = SKIP
 
 pkgname = plasma-addons-customdesktopmenu-git
