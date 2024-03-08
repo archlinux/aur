@@ -11,7 +11,7 @@ groups=()
 depends=('gcc-libs' 'zlib' 'libunwind' 'snappy' 'lz4' 'perl' 'qt5-base' 'python')
 makedepends=('git' 'cmake' 'doxygen-git')
 provides=("$_pkgname=$pkgver")
-options=(!strip)
+options=(!strip !lto)
 source=(
     "${pkgname}::git+${url}.git"
     "git+https://github.com/intel/libipt.git"

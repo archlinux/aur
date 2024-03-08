@@ -20,6 +20,7 @@ pkgbase = dynamorio-git
 	depends = python
 	provides = dynamorio=10.0.r6140.3fc09e86e
 	options = !strip
+	options = !lto
 	source = dynamorio-git::git+https://github.com/DynamoRIO/dynamorio.git
 	source = git+https://github.com/intel/libipt.git
 	source = git+https://github.com/madler/zlib.git
