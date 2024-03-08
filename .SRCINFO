@@ -1,6 +1,6 @@
 pkgbase = iamroot-arm
 	pkgdesc = Emulating the syscall chroot(2) in an unpriviliged process (arm)
-	pkgver = 19
+	pkgver = 20
 	pkgrel = 1
 	url = https://github.com/gportay/iamroot
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = iamroot-arm
 	makedepends = patchelf
 	makedepends = asciidoctor
 	options = !strip
-	source = https://github.com/gportay/iamroot/archive/v19.tar.gz
+	source = https://github.com/gportay/iamroot/archive/v20.tar.gz
 	validpgpkeys = 8F3491E60E62695ED780AC672FA122CA0501CA71
-	sha256sums = 6c55bfa952b79a0d188d7f0add2de08cd34bbe3130202da9a4c3b8d20c37b490
+	sha256sums = 27c3019135fce9359a7e7ff6abb0501108c4881e6c57609f4c14d0fb91f17eec
 
 pkgname = iamroot-arm
