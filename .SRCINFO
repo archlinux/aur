@@ -1,0 +1,17 @@
+pkgbase = vault-gui-bin
+	pkgdesc = GUI for Hashicorps Vault
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/adfinis/vault-gui
+	arch = x86_64
+	license = MIT
+	makedepends = binutils
+	makedepends = tar
+	depends = openssl
+	depends = webkit2gtk
+	provides = vault-gui=0.0.0
+	conflicts = vault-gui-git
+	source = https://github.com/adfinis/vault-gui/releases/download/v0.0.0/vault-gui_0.0.0_amd64.deb
+	sha256sums = SKIP
+
+pkgname = vault-gui-bin
