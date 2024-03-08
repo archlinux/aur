@@ -1,7 +1,7 @@
 pkgbase = goovpn-bin
 	pkgdesc = Cross-platform gui (use wails) openvpn client.
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Vai3soh/goovpn
 	arch = x86_64
 	license = AGPL-3.0-only
