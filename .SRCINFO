@@ -1,6 +1,6 @@
 pkgbase = python-proton-vpn-network-manager
 	pkgdesc = The proton-vpn-network-manager component provides the necessary functionality for other components to interact with NetworkManager.
-	pkgver = 0.3.3
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/ProtonVPN/python-proton-vpn-network-manager
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-proton-vpn-network-manager
 	optdepends = network-manager-applet: password prompt on Gnome and other GTK DEs
 	optdepends = plasma-nm: password prompt on KDE Plasma
 	conflicts = python-protonvpn-nm-lib
-	source = git+https://github.com/ProtonVPN/python-proton-vpn-network-manager.git#commit=0bf750e84a01ecab1844ac1400420e522ff2d839
+	source = git+https://github.com/ProtonVPN/python-proton-vpn-network-manager.git#tag=v0.4.0
 	sha256sums = SKIP
 
 pkgname = python-proton-vpn-network-manager
