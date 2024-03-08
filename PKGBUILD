@@ -2,7 +2,7 @@
 pkgname=avogadro2-bin
 _pkgname=Avogadro2
 pkgver=1.99.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced molecular editor designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas."
 arch=("x86_64")
 url="https://two.avogadro.cc/"
@@ -20,10 +20,10 @@ depends=(
     'openssl-1.1'
     'qt5-base'
     'libgpg-error'
-    'python'
+    'python>3'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 options=('!strip')
 source=(
@@ -33,7 +33,7 @@ source=(
 )
 sha256sums=('1657fe24e35df38fa3da39c6abab81aa0cbdc02142bcea0927834657d95baf53'
             '3e6a55dc0da9bb56a7f232b1766da524c9d9c1dad61dfeea8424f1df7fb6f2f4'
-            'cc7164384bcb269951b5df94dbf8898c3855c8718aa5446348989cc3631404e8')
+            'c97cea90cbddf8489d4cb30984e96c33e1df957ccab58f017b103be8eff59f40')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
