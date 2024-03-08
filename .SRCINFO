@@ -1,0 +1,20 @@
+pkgbase = python-litepcie
+	pkgdesc = Small footprint and configurable PCIe core
+	pkgver = 2021.08
+	pkgrel = 4
+	url = https://github.com/enjoy-digital/litepcie
+	arch = any
+	license = BSD-2-Clause
+	checkdepends = python-pytest
+	checkdepends = python-litex-boards
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-migen
+	depends = python-litex
+	depends = python-yaml
+	source = python-litepcie-2021.08.tar.gz::https://github.com/enjoy-digital/litepcie/archive/2021.08.tar.gz
+	sha512sums = dbfecb9a3c47cb0ad3711bb7881557b8b1d598bfff87835ca6d7fda15b2a991797a675690da11b1fe46f3cf2a98ca3f2be35193e63b9e596bb1d697dde70a941
+
+pkgname = python-litepcie
