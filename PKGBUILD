@@ -9,7 +9,7 @@ url="https://github.com/NordicSemiconductor/zcbor"
 license=('Apache 2.0')
 depends=('python' 'python-cbor2' 'python-yaml' 'python-regex')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-setuptools-scm')
-optdepends=('python-pyelftools' 'python-pyserial' 'python-serial')
+optdepends=('python-pyelftools' 'python-pyserial')
 
 source=("${_name}-$pkgver.tar.gz::https://github.com/NordicSemiconductor/zcbor/releases/download/$pkgver/${_name}-$pkgver.tar.gz")
 sha256sums=('53763faf7b418732ba6c69ccc5da8acd2edb2c7c80ce0a466793d52bda70ecf9')

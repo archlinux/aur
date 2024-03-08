@@ -16,7 +16,6 @@ pkgbase = python-zcbor
 	depends = python-regex
 	optdepends = python-pyelftools
 	optdepends = python-pyserial
-	optdepends = python-serial
 	source = zcbor-0.8.1.tar.gz::https://github.com/NordicSemiconductor/zcbor/releases/download/0.8.1/zcbor-0.8.1.tar.gz
 	sha256sums = 53763faf7b418732ba6c69ccc5da8acd2edb2c7c80ce0a466793d52bda70ecf9
 
