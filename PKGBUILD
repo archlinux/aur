@@ -1,9 +1,9 @@
 # Maintainer: Dobroslaw Kijowski <dobo90_at_gmail.com>
 
-_commit='c7af5d5b1e8ddcb9ac71ba6f07640de678501c6f'
+_commit='34d31dc4834df13444abca10c01e89828d969434'
 pkgname=amd-zen-ucode-platomav
-pkgver=r286
-pkgrel=2
+pkgver=r288
+pkgrel=1
 arch=(any)
 pkgdesc="Microcode update image for AMD Zen CPUs (family 17h and 19h) from platomav's github"
 url='https://github.com/platomav/CPUMicrocodes'
@@ -12,7 +12,7 @@ conflicts=(amd-ucode)
 provides=(amd-ucode)
 source=("https://github.com/platomav/CPUMicrocodes/archive/${_commit}.zip"
         'https://raw.githubusercontent.com/dobo90/amd-ucodegen/7a3c51e821df96910ecb05b22f3e4866b4fb85b2/amd-ucodegen.c')
-sha256sums=('3f556dcd3f7fd79217bda992573dd2752f713a4211fb7b266d1cd56249755962'
+sha256sums=('e5db3d80b3eac7f4445a8d9fb29596f1a588e2e8111a55c8652e6a1ef264bcce'
             'e3e21e155c2e9df96b378bc1d48ae183f1d8dfab310f86bb0bfb9296289eabf6')
 
 build() {
