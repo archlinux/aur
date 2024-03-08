@@ -1,0 +1,14 @@
+pkgbase = python-scripts
+	pkgdesc = A collection of various shell scripts
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/rsalmaso/scripts
+	arch = any
+	license = MIT
+	checkdepends = python-stua
+	makedepends = python-setuptools
+	depends = python
+	source = python-scripts-3.0.0.tar.gz::https://github.com/rsalmaso/scripts/archive/refs/tags/3.0.0.tar.gz
+	sha256sums = f58b44c2ef252753647038449ea1766046ade8d26d8b0135e018891420a485c3
+
+pkgname = python-scripts
