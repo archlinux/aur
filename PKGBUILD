@@ -25,7 +25,7 @@ prepare() {
 build() {
   cp -r cmake{-$pkgver.src,}
   cd mlir-${pkgver}.src
-  cmake -LAH \
+  cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLLVM_LINK_LLVM_DYLIB=ON \
