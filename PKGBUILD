@@ -6,10 +6,10 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libxcb
-pkgver=1.16
+pkgver=1.16.1
 pkgrel=1
 arch=('any')
-pkgdesc="X11 client-side library (android)"
+pkgdesc="X11 client-side library (Android ${_android_arch})"
 url="https://xcb.freedesktop.org/"
 depends=("android-${_android_arch}-xcb-proto"
          "android-${_android_arch}-libxdmcp"
@@ -20,10 +20,8 @@ makedepends=('python'
              "android-${_android_arch}-xorgproto")
 license=('custom')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=(https://xorg.freedesktop.org/archive/individual/lib/libxcb-$pkgver.tar.xz{,.sig})
-sha512sums=('002fbc126c6f09eb7db5e4197cd0572d495f64b6de714a76d9a024fe3e13122c1cfc7c55207c0dee76cc63fcccf87b37db513223eadaf760af2bd2a926443bf8'
-            'SKIP')
-validpgpkeys=('3BB639E56F861FA2E86505690FDD682D974CA72A') # "Matt Turner <mattst88@gmail.com>"
+source=("https://xorg.freedesktop.org/archive/individual/lib/libxcb-$pkgver.tar.xz")
+md5sums=('e60f0fd3c06e4628be4141bcb3a27f9a')
 
 build() {
     cd "$srcdir/libxcb-$pkgver"
