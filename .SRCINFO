@@ -1,6 +1,6 @@
 pkgbase = betterbird-bin
 	pkgdesc = EN-US // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will.
-	pkgver = 115.8.0
+	pkgver = 115.8.1
 	pkgrel = 1
 	url = https://www.betterbird.eu/index.html
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = betterbird-bin
 	depends = dbus-glib
 	depends = hunspell
 	optdepends = hunspell-en_US
-	provides = betterbird=115.8.0
-	source = https://www.betterbird.eu/downloads/LinuxArchive/betterbird-115.8.0-bb24.en-US.linux-x86_64.tar.bz2
+	provides = betterbird=115.8.1
+	source = https://www.betterbird.eu/downloads/LinuxArchive/betterbird-115.8.1-bb25.en-US.linux-x86_64.tar.bz2
 	source = betterbird.desktop
 	source = vendor-prefs.js
-	sha256sums = 693b2a834c16d7be75649d4feee3826a2aa590baba8e700e4a4927512a620477
+	sha256sums = c57e8fb6a9666c79fb15d33c5decbf19e270cae9d75e6dd0658be8cdbd345fcf
 	sha256sums = b664d5453512ba1c8a58699d106fb1248991dbae0ee44464484be0886278945b
 	sha256sums = b11745416d2b2f8bac1ccd3dcb99411c7239b067adf9eb973903c448f8747d09
 
