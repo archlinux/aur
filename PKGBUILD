@@ -1,41 +1,32 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
-_pkg_networkmanager='networkmanager-qt6'
-_pkg_modemmanager='modemmanager-qt6'
-_pkg_bluez='bluez-qt6'
-_pkg_pulseaudio='pulseaudio-qt6-git'
-_pkg_polkit='polkit-qt6-git'
+_pkg_networkmanager='networkmanager-qt'
+_pkg_modemmanager='modemmanager-qt'
+_pkg_bluez='bluez-qt'
+_pkg_pulseaudio='pulseaudio-qt'
+_pkg_polkit='polkit-qt6'
 
-pkgname=('thedesk' 'td-polkitagent' 'xdg-desktop-portal-td' 'thedesk-platform' 'libthedesk')
-pkgver=1.0.2
+pkgname=('thedesk' 'td-polkitagent' 'xdg-desktop-portal-td' 'thedesk-platform' 'libthedesk' 'thedesk-wayland')
+pkgver=2.0
 pkgrel=0
 pkgdesc="Desktop Environment built on Qt"
 arch=("x86_64" "aarch64")
 url="https://github.com/theCheeseboard/thedesk"
 license=('GPL3')
-makedepends=('git' 'qt6-tools' 'qt6-positioning' 'cmake' 'clang' $_pkg_polkit 'libtdesktopenvironment' $_pkg_pulseaudio $_pkg_networkmanager $_pkg_modemmanager $_pkg_bluez 'qrencode' 'libthefile' 'contemporary-icons' 'contemporary-widgets' 'ttf-contemporary' 'xf86-input-libinput' 'libxi' 'libx11' 'qrencode')
-source=("thedesk-$pkgver"::"https://github.com/theCheeseboard/thedesk/archive/refs/tags/v$pkgver.tar.gz"
-        "kf6-patch.patch")
-sha256sums=("600408180c7548f4dc049d348b0585bf0f104f1620a1caec63ee03a968512af6"
-            "SKIP")
+makedepends=('git' 'qt6-tools' 'qt6-positioning' 'cmake' 'clang' $_pkg_polkit 'libtdesktopenvironment' $_pkg_pulseaudio $_pkg_networkmanager $_pkg_modemmanager $_pkg_bluez 'qrencode' 'libthefile' 'contemporary-icons' 'contemporary-widgets' 'ttf-contemporary' 'xf86-input-libinput' 'libxi' 'libx11' 'qrencode' 'wayfire' 'glm')
+source=("thedesk-$pkgver"::"https://github.com/theCheeseboard/thedesk/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('3d89ff199f908cb16443caf900b9f0de03af6d0837c0528135b66f01d0bf3334')
 
 doInstallModule() {
 	DESTDIR="$pkgdir" cmake --install "build/$1"
 }
 
-prepare() {
-    cd "$pkgname-$pkgver"
-    patch --forward --strip=1 --input="${srcdir}/kf6-patch.patch"
-}
-
 build() {
+	export XDG_DATA_DIRS=/usr/share
+        export PKG_CONFIG_PATH=/usr/lib/wlroots0.16/pkgconfig
 	cmake -B build -S "$pkgname-$pkgver" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_PREFIX_PATH='/opt/KF5-qt6/lib/pkgconfig;/opt/KF5-qt6/lib/cmake' \
-		-DKF5BluezQt_DIR=/opt/KF5-qt6/lib/cmake/KF5BluezQt \
-		-DKF5ModemManagerQt_DIR=/opt/KF5-qt6/lib/cmake/KF5ModemManagerQt \
-		-DKF5NetworkManagerQt_DIR=/opt/KF5-qt6/lib/cmake/KF5NetworkManagerQt \
-		-DKF5PulseAudioQt_DIR=/opt/KF5-qt6/lib/cmake/KF5PulseAudioQt \
-		-DKF_VERSION_MAJOR=5 \
+                -DQT_WAYLAND_SCANNER=/usr/lib/qt6/qtwaylandscanner \
+                -DCMAKE_CXX_FLAGS="-isystem /usr/include/wlroots0.16" \
 		-DFORCE_STABLE=ON
 	cmake --build build
 }
@@ -71,4 +62,15 @@ package_thedesk() {
     doInstallModule 'plugins';
     doInstallModule 'startdesk';
     doInstallModule 'locker';
+    
+    rm $pkgdir/usr/share/wayland-sessions/thedesk-wayland.desktop
+}
+
+package_thedesk-wayland() {
+    depends=('wayfire' 'wayfire-plugins-dbusqt' 'thedesk' 'glm')
+    
+    doInstallModule 'wayfire-plugins'
+    
+    mkdir -p $pkgdir/usr/share/wayland-sessions/
+    cp $srcdir/build/thedesk-wayland.desktop $pkgdir/usr/share/wayland-sessions/
 }
