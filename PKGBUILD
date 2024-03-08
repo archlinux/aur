@@ -93,7 +93,7 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-xanmod-bore
 _major=6.7
-pkgver=${_major}.7
+pkgver=${_major}.9
 _branch=6.x
 xanmod=1
 _revision=
@@ -140,11 +140,11 @@ for _patch in ${_patches[@]}; do
 done
 sha256sums=('ef31144a2576d080d8c31698e83ec9f66bf97c677fa2aaf0d5bbb9f3345b1069' # kernel
             'SKIP'                                                             # kernel signature
-            '1bf862e6ba0feeffdf4a90068462abf35df524385f921d6adbaa9a147360fabc' # xanmod patch
+            'ffa31e3d22f8bbcb44f99ba72399c7ba09e3387e57ca46cdc31d1b18b2e91903' # xanmod patch
             '5c84bfe7c1971354cff3f6b3f52bf33e7bbeec22f85d5e7bfde383b54c679d30' # choose-gcc-optimization.sh
-            'c02d2efc539f460299d97c6bd2cd66e4ea2cef8094a25faa56732598b76b36a3' # 0001-bore.patch
+            '8f5b9b525e899290958d3f76ca86955cc61215d4f54b710a06f9f56fb9dde6f1' # 0001-bore.patch
             '02be008f054a44322a74f0615e8a0d3ad7d6c5bc80182472a9cefbded959ce61' # 0002-glitched-cfs.patch
-            'ba3243f7dcbc7a2f9fce8aeba28cb32ed809038166f1deb932b304cfc8065e98' # 0003-glitched-eevdf-additions.patch
+            '3ef4699107a2552b36350df44927a42a46df42781aaccbe23dd90491273e296d' # 0003-glitched-eevdf-additions.patch
             '47d7ecce973899e2f218ac7b25b3257198a492fd9a38635f10abd67b491c7631' # 0004-o3-optimization.patch
 )
 
@@ -185,18 +185,20 @@ prepare() {
                    --enable ARCH_SUPPORTS_LTO_CLANG \
                    --enable ARCH_SUPPORTS_LTO_CLANG_THIN \
                    --enable HAS_LTO_CLANG \
-                   --enable LTO_CLANG_THIN
+                   --enable LTO_CLANG_THIN 
   fi
 
   # Disable features not needed for desktop use
   echo "Disabling features not needed for desktop use..."
   scripts/config --disable X86_EXTENDED_PLATFORM \
                  --disable BLK_DEBUG_FS \
-                 --disable MEMORY_HOTPLUG
+                 --disable MEMORY_HOTPLUG \
+                 --disable CONFIG_ANDROID_BINDER_IPC
 
   # Setting features for desktop use
   echo "Setting features for desktop use..."
-  scripts/config --set-val CONFIG_BLK_DEV_LOOP_MIN_COUNT 0
+  scripts/config --set-val CONFIG_BLK_DEV_LOOP_MIN_COUNT 0 \
+                 --enable SCHED_BORE
 
   # Setting HZ tick rate
   echo "Setting Tickrate HZ..."
