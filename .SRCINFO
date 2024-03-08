@@ -1,6 +1,6 @@
 pkgbase = stapxs-qq-lite-bin
 	pkgdesc = 一个兼容 oicq-http 的非官方网页版 QQ 客户端, 使用 Vue 重制的全新版本.
-	pkgver = 2.5.0
+	pkgver = 2.5.7
 	pkgrel = 1
 	url = https://github.com/Stapxs/Stapxs-QQ-Lite-2.0
 	install = stapxs-qq-lite-bin.install
