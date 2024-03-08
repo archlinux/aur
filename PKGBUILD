@@ -14,8 +14,7 @@ _1panel_original_username=$(pwgen -nABCv 10 1)
 _1panel_original_password=$(pwgen -nBCv 20 1)
 _1panel_original_entrance=$(pwgen -nABCv 10 1)
 install=1panel.install
-depends=(
-)
+
 makedepends=(
     'pwgen'
 )
