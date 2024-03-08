@@ -3,7 +3,7 @@
 # Contributor: William Di Luigi <williamdiluigi@gmail.com>
 
 pkgname=isolate
-pkgver=1.10.1
+pkgver=2.0
 pkgrel=1
 pkgdesc="Sandbox for securely executing untrusted programs"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ conflicts=('isolate-git')
 install=$pkgname.install
 
 source=("https://github.com/ioi/isolate/archive/v$pkgver.zip")
-sha512sums=('9a785e7b7eefacc7ab197058d73206669eec2cd72961d26209504f9f3c2a4cbd3d6754c3ecf474c7932f9bfddb8f61a7fe51c22b26bd124f766dbd710e2dc621')
+sha512sums=('12a19607b8b4f8f1ea3416e0f344a24f4546a384069f80aa8fb57bc64dd1b2630d7b6573f096ab9458e624e90de9c3b573556cfab08d43d04cdb3c000ca6af89')
 
 build() {
   cd isolate-$pkgver
@@ -25,7 +25,7 @@ build() {
 
 package() {
   cd isolate-$pkgver
-  make PREFIX="$pkgdir/usr" VARPREFIX="$pkgdir/var" CONFIGDIR="$pkgdir/etc" install install-doc
+  make PREFIX="$pkgdir/usr" VARPREFIX="$pkgdir/var" CONFIGDIR="$pkgdir/etc" SBINDIR="$pkgdir/usr/bin" install install-doc
 
   # Patch the configuration file so that it uses a standard directory
   sed -i "s|/var/local/lib/isolate|/var/lib/isolate|" $pkgdir/etc/isolate
