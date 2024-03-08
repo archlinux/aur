@@ -1,0 +1,20 @@
+pkgbase = android-x86-libnghttp3
+	pkgdesc = HTTP/3 library written in C (android)
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/ngtcp2/nghttp3
+	arch = any
+	license = MIT
+	makedepends = android-cmake
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/ngtcp2/nghttp3/releases/download/v1.2.0/nghttp3-1.2.0.tar.xz
+	source = https://github.com/ngtcp2/nghttp3/releases/download/v1.2.0/nghttp3-1.2.0.tar.xz.asc
+	validpgpkeys = F4F3B91474D1EB29889BD0EF7E8403D5D673C366
+	sha256sums = d2e216bae7bd7362f850922e4237a5caa204853b3594b22adccab4c1e1c1d1aa
+	sha256sums = SKIP
+
+pkgname = android-x86-libnghttp3
