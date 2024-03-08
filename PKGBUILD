@@ -1,14 +1,14 @@
 # Maintainer: Tuncay <mamehiscore@aol.com>
 pkgname=tochd
-pkgver=0.10
+pkgver=0.12
 pkgrel=1
-pkgdesc="Convert game ISO and archives to CD CHD for emulation."
+pkgdesc="Convert game ISO and archives to CD/DVD CHD for emulation."
 arch=('any')
 url="https://github.com/thingsiplay/tochd"
 license=('MIT')
 depends=('python3' 'p7zip' 'mame-tools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7ee3c007f409b172606987fa41d872578fea241551d0f72df1f3da2a38c633a2')
+sha256sums=('70d8586aa1b09f45966786bf72813c6571ddedcd6f2fdad9f2641e1c9d1a9ec2')
 
 check() {
 	cd "$pkgname-$pkgver"
