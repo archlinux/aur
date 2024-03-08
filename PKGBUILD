@@ -4,7 +4,7 @@ pkgname="${_appname}-desktop-bin"
 _pkgname=OONI-Probe-desktop
 pkgver=3.9.4
 _electronversion=12
-pkgrel=1
+pkgrel=2
 pkgdesc="The next generation OONI Probe desktop app"
 arch=('x86_64')
 url="https://github.com/ooni/probe-desktop"
@@ -12,14 +12,11 @@ license=('BSD-3-Clause')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'hicolor-icon-theme'
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
@@ -28,7 +25,7 @@ source=(
 )
 sha256sums=('e9138bccb09ecd9be3e120bbe9db6f7b30a4ba920ef28482b2c5569dbeb867a7'
             '1fc3f6a8bf2909bfaad6d6f4825c8e8b6dfed17e3b5270a9fd060d6de7938f8d'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \

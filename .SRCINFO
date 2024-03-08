@@ -1,16 +1,13 @@
 pkgbase = ooniprobe-desktop-bin
 	pkgdesc = The next generation OONI Probe desktop app
 	pkgver = 3.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ooni/probe-desktop
 	arch = x86_64
 	license = BSD-3-Clause
-	makedepends = squashfuse
-	depends = electron12
+	makedepends = fuse2
+	depends = electron12-bin
 	depends = hicolor-icon-theme
-	depends = dbus-glib
-	depends = libdbusmenu-glib
-	depends = gtk2
 	provides = ooniprobe-desktop=3.9.4
 	conflicts = ooniprobe-desktop
 	source = ooniprobe-desktop-3.9.4.AppImage::https://github.com/ooni/probe-desktop/releases/download/v3.9.4/OONI-Probe-desktop-3.9.4.AppImage
@@ -18,6 +15,6 @@ pkgbase = ooniprobe-desktop-bin
 	source = ooniprobe-desktop.sh
 	sha256sums = e9138bccb09ecd9be3e120bbe9db6f7b30a4ba920ef28482b2c5569dbeb867a7
 	sha256sums = 1fc3f6a8bf2909bfaad6d6f4825c8e8b6dfed17e3b5270a9fd060d6de7938f8d
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = ooniprobe-desktop-bin
