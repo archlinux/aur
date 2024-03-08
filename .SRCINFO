@@ -1,0 +1,15 @@
+pkgbase = plakativ-git
+	pkgdesc = Stretch a PDF document or raster image across multiple pages that can then be printed.
+	pkgver = 0.5.2.r0.ge84aa8d
+	pkgrel = 1
+	url = https://gitlab.mister-muffin.de/josch/plakativ
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = python-setuptools
+	provides = plakativ
+	conflicts = plakativ
+	source = plakativ::git+https://gitlab.mister-muffin.de/josch/plakativ
+	sha256sums = SKIP
+
+pkgname = plakativ-git
