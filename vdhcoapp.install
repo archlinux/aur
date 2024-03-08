@@ -1,11 +1,14 @@
 post_install() {
-  /usr/bin/vdhcoapp install --system
+  echo "vdhcoapp: system install"
+  vdhcoapp install --system
 }
 
 post_upgrade() {
-  /usr/bin/vdhcoapp install --system
+  echo "vdhcoapp: system install"
+  vdhcoapp install --system
 }
 
 pre_remove() {
-  /usr/bin/vdhcoapp uninstall --system
+  echo "vdhcoapp: system uninstall"
+  vdhcoapp uninstall --system
 }

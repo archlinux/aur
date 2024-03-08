@@ -1,0 +1,50 @@
+# Maintainer:
+
+# options
+export CARGO_HOME="${CARGO_HOME:-$SRCDEST/cargo-home}"
+export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
+export CARGO_TARGET_DIR=target
+
+: ${_build_git:=false}
+
+unset _pkgtype
+[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
+
+# basic info
+_pkgname=vdhcoapp-filepicker
+pkgname="$_pkgname${_pkgtype:-}"
+pkgver=1.0.1
+pkgrel=1
+pkgdesc="Filepicker for VDHCoApp" # added in 2.0.16
+url="https://github.com/paulrouget/static-filepicker"
+arch=('x86_64')
+license=('LicenseRef-Pending')
+
+depends=(
+  'at-spi2-core'
+  'gdk-pixbuf2'
+  'gtk3'
+  'pango'
+)
+makedepends=(
+  'cargo'
+  'git'
+)
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git#tag=v$pkgver")
+sha256sums=('SKIP')
+
+prepare() {
+  cd "$_pkgsrc"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+  cd "$_pkgsrc"
+  cargo build --frozen --release --all-features
+}
+
+package() {
+  install -Dm755 "$_pkgsrc/$CARGO_TARGET_DIR/release/filepicker" -t "$pkgdir/usr/bin/"
+}

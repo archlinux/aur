@@ -1,98 +1,46 @@
-# Maintainer:
 
-## options
-if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ] ; then
-  : ${_autoupdate:=false}
-else
-  : ${_autoupdate:=true}
-fi
-
-: ${_build_git:=true}
-
-unset _pkgtype
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
-
-## basic info
 _pkgname="vdhcoapp"
-pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.0.19.r2.g475703e
+pkgname="$_pkgname"
+pkgver=2.0.19
 pkgrel=1
 pkgdesc="Companion application for Video DownloadHelper browser add-on"
 url="https://github.com/aclap-dev/vdhcoapp"
 license=('GPL-2.0-or-later')
 arch=('x86_64')
 
-_main_package() {
-  makedepends+=(
-    'esbuild'
-    'jq'
-    'yq'
+makedepends=(
+  'esbuild'
+  'jq'
+  'yq'
 
-    # AUR
-    'nvm'
-  )
+  # AUR
+  'nvm'
+)
 
-  options=(!strip emptydirs)
-  install="$_pkgname.install"
+options=(!strip emptydirs)
+install="$_pkgname.install"
 
-  if [ "${_build_git::1}" != "t" ] ; then
-    _main_stable
-  else
-    _main_git
-  fi
-
-  _main_filepicker
-}
-
-# stable package
-_main_stable() {
-  _update_version
-
-  _pkgsrc="$_pkgname-${_pkgver:?}"
-  _pkgext="tar.gz"
-  source+=("$_pkgsrc.$_pkgext"::"$url/archive/v$_pkgver.$_pkgext")
-  sha256sums+=('SKIP')
-
-  pkgver() {
-    echo "${_pkgver:?}"
-  }
-}
-
-# git package
-_main_git() {
-  #makedepends+=('git')
-
-  provides=("$_pkgname=${pkgver%%.r*}")
-  conflicts=("$_pkgname")
-
-  _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git")
-  sha256sums+=('SKIP')
-
-  pkgver() {
-    cd "$_pkgsrc"
-    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-  }
-}
+_pkgsrc="$_pkgname-$pkgver"
+_pkgext="tar.gz"
+source+=("$_pkgsrc.$_pkgext"::"$url/archive/v$pkgver.$_pkgext")
+sha256sums+=('SKIP')
 
 # filepicker
-_main_filepicker() {
-  depends+=(
-    'at-spi2-core'
-    'gdk-pixbuf2'
-    'gtk3'
-    'pango'
-  )
-  makedepends+=(
-    'cargo'
-    'git'
-  )
+depends+=(
+  'at-spi2-core'
+  'gdk-pixbuf2'
+  'gtk3'
+  'pango'
+)
+makedepends+=(
+  'cargo'
+  'git'
+)
 
-  _filepicker_url="https://github.com/paulrouget/static-filepicker"
-  _filepicker_pkgsrc="vdhcoapp-filepicker"
-  source+=("$_filepicker_pkgsrc"::"git+$_filepicker_url.git")
-  sha256sums+=('SKIP')
-}
+_filepicker_url="https://github.com/paulrouget/static-filepicker"
+_filepicker_pkgsrc="vdhcoapp-filepicker"
+source+=("$_filepicker_pkgsrc"::"git+$_filepicker_url.git")
+sha256sums+=('SKIP')
 
 _filepicker_prepare() {
   export CARGO_HOME="${CARGO_HOME:-$SRCDEST/cargo-home}"
@@ -112,7 +60,6 @@ _filepicker_package() {
   install -Dm755 "$srcdir/$_filepicker_pkgsrc/$CARGO_TARGET_DIR/release/filepicker" -t "$pkgdir/usr/bin/"
 }
 
-# common functions
 prepare() {
   cd "$_pkgsrc"
   mv -f app/* .
@@ -188,28 +135,19 @@ package() {
   _filepicker_package
 }
 
-# update version
-_update_version() {
-  : ${_pkgver:=${pkgver%%.r*}}
-
-  if [[ "${_autoupdate::1}" != "t" ]] ; then
-    return
-  fi
-
-  local _response=$(curl -Ssf "$url/releases.atom")
-  local _tag=$(
-    printf '%s' "$_response" \
-      | grep '"https://.*/releases/tag/.*"' \
-      | sed -E 's@^.*/releases/tag/(.*)".*$@\1@' \
-      | grep -Ev '[a-z]{2}' | sort -rV | head -1
-  )
-  local _pkgver_new="${_tag#v}"
-
-  # update _pkgver
-  if [ "$_pkgver" != "${_pkgver_new:?}" ] ; then
-    _pkgver="${_pkgver_new:?}"
-  fi
+cat >vdhcoapp.install <<END
+post_install() {
+  echo "vdhcoapp: system install"
+  vdhcoapp install --system
 }
 
-# execute
-_main_package
+post_upgrade() {
+  echo "vdhcoapp: system install"
+  vdhcoapp install --system
+}
+
+pre_remove() {
+  echo "vdhcoapp: system uninstall"
+  vdhcoapp uninstall --system
+}
+END
