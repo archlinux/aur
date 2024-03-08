@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 _APPDIR=/opt/@appname@
 _RUNNAME="${_APPDIR}/@runname@"
@@ -14,4 +14,4 @@ export QT_X11_NO_MITSHM=1
 export QTWEBENGINE_LOCALES_PATH="${_APPDIR}/qtwebengine_locales:${QTWEBENGINE_LOCALES_PATH}"
 export QT_PLUGIN_PATH="${_APPDIR}/plugins:${QT_PLUGIN_PATH}"
 cd "${_APPDIR}"
-exec "${_RUNNAME}" "$@" | exit $?
+exec "${_RUNNAME}" "$@" || exit $?

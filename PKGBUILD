@@ -5,7 +5,7 @@
 pkgname=dooble-bin
 _pkgname=Dooble
 pkgver=2023.11.30
-pkgrel=3
+pkgrel=4
 pkgdesc="Web browser based on QtWebEngine"
 arch=("x86_64")
 url="https://textbrowser.github.io/dooble"
@@ -79,12 +79,12 @@ source=(
 )
 sha256sums=('ccbe838464b18cb3ae16580f0173df4346914504bccc6fc14db1bf537eb9da6d'
             'c60bf2d6a8bfdf7c7418bba91c6767cbb4b48dccae36dd5d9ffdb48f756815dd'
-            'fb6e83ced7565462bc103d45bfd82a2ea1fde0b6e549bd8c4c887c5ecd96c2d9')
+            '8c1c658ce21dc1f5fe8687c7406b3f263dc53e2498662c538d963644e9dacdf1')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.zst"
+    bsdtar -xf "${srcdir}/data."*
     cp "${srcdir}/opt/${pkgname%-bin}/Translations/${pkgname%-bin}_zh_CN_simple.qm" \
        "${srcdir}/opt/${pkgname%-bin}/Translations/${pkgname%-bin}_zh_CN.qm"
     sed "s|/usr/bin/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
