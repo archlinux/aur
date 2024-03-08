@@ -1,18 +1,20 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=openxcom-extended
-pkgver=7.12.0
+pkgver=7.12.1
 epoch=1
 # Repo doesn't use tags, so set which commit this version corresponds to in
 # https://github.com/MeridianOXC/OpenXcom/commits/oxce-plus/src/version.h
-_commit=1bde457c85a96993ba0210ee62a361872554bd9b
+_commit=510548ad85dae992af5ce514e58a5412ddd24fe5
 pkgrel=1
 pkgdesc="An extended version of the open-source reimplementation of X-COM (OXCE)"
 arch=('i686' 'x86_64')
 url="https://openxcom.org/forum/index.php/topic,5251.0.html"
-license=('GPL3')
-depends=('sdl_mixer' 'sdl_gfx' 'sdl_image' 'sdl' 'yaml-cpp' 'libgl' 'hicolor-icon-theme' 'gcc-libs')
-makedepends=('git' 'xmlto' 'docbook-xml' 'docbook-xsl' 'doxygen' 'boost' 'glu' 'cmake' 'xorgproto')
+license=('GPL-3.0-or-later')
+depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'libgl'
+         'sdl' 'sdl_gfx' 'sdl_image' 'sdl_mixer' 'yaml-cpp')
+makedepends=('boost' 'cmake' 'docbook-xml' 'docbook-xsl'
+             'doxygen' 'git' 'glu' 'xmlto' 'xorgproto')
 optdepends=('openxcom-data-steam: pacman-tracked X-COM data files from Steam'
             'openxcom-tftd-data-steam: pacman-tracked Terror From The Deep data files from Steam')
 provides=('openxcom' 'openxcom-git')
@@ -22,20 +24,14 @@ source=(${pkgname}::git+"https://github.com/MeridianOXC/OpenXcom.git#commit=${_c
 md5sums=('SKIP')
 sha1sums=('SKIP')
 
-prepare() {
-  mkdir -p ${pkgname}/build
-  # 7.9.22 build fix
-  sed -i '/#include <memory>/a#include <utility>' openxcom-extended/src/Engine/CrossPlatform.h
-}
-
 build() {
-  cd ${pkgname}/build
-  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DTARGET_PLATFORM="linux" -DCMAKE_BUILD_TYPE="None" -DDEV_BUILD="Off" ..
+  cmake -B build -S ${pkgname} -DCMAKE_INSTALL_PREFIX="/usr" -DTARGET_PLATFORM="linux" -DCMAKE_BUILD_TYPE="None" -DDEV_BUILD="Off" ..
+  cd build
   make
 }
 
 package() {
-  cd ${pkgname}/build
+  cd build
   make DESTDIR="${pkgdir}" install
 
   # Fix manpage location
