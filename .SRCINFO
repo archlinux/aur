@@ -1,0 +1,17 @@
+pkgbase = hardinfo2-git
+	pkgdesc = System Information and Benchmark for Linux Systems.
+	pkgver = 2.0.12.r15.g0a095c0
+	pkgrel = 1
+	url = https://github.com/hardinfo2/hardinfo2
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = git
+	depends = gtk3
+	depends = libsoup3
+	provides = hardinfo2
+	conflicts = hardinfo2
+	source = git+https://github.com/hardinfo2/hardinfo2.git
+	sha256sums = SKIP
+
+pkgname = hardinfo2-git
