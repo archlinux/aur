@@ -1,17 +1,18 @@
 pkgbase = r-rbowtie
 	pkgdesc = R bowtie wrapper
 	pkgver = 1.42.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/Rbowtie
 	arch = x86_64
-	license = Artistic2.0
+	license = Artistic-2.0 OR LicenseRef-Rbowtie
 	depends = r
+	depends = zlib
 	optdepends = r-biocstyle
 	optdepends = r-knitr
-	optdepends = r-parallel
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rbowtie_1.42.0.tar.gz
-	sha256sums = 88a2aaa3bbbc451aae708d5ba88e39a2ddbee9709029daf94aaf301d1fca3cab
+	md5sums = 409fc50371b1eaf9be2af500aff05249
+	b2sums = 9cb33afde91eeedfd33db8f234821faa7f1dd0f3022f1b94c77845c94ece1ba3d68b02c660ef35f2e98facf788e3b24d656dd4eba5e5c15ccad388bd5dee83a8
 
 pkgname = r-rbowtie
