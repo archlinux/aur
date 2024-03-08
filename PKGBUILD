@@ -1,51 +1,73 @@
-# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Michele Mocciola <mimocciola@yahoo.com>
-_base=TFEL
-pkgname=${_base,,}
-pkgver=4.2.0
+_base=tfel-mfront
+_upstream=tfel
+pkgname=${_base}-git
+pkgver=20240222.r2684.9d61feca8
 pkgrel=1
-pkgdesc="TFEL/MFront introduces DSLs based on C++ to handle material knowledge"
+pkgdesc="TFEL/MFront introduce DSLs based on C++ to handle material knowledge"
 arch=(x86_64)
-url="https://github.com/thelfer/${_base}"
+url="https://github.com/thelfer/${_upstream}"
 license=(GPL3)
-depends=(gcc-libs gnuplot)
-provides=(mfront)
-makedepends=(cmake gcc-fortran)
-optdepends=()
-source=(${url}/archive/${_base}-${pkgver}.tar.gz)
-sha512sums=('54fac7e9c939875232eebfd54f521cc6a80e203804a28ea6edf959db0a780e916a26b22df8a3ca5a39e0bf58b18098609228fc284a3f14de989edbecc336408e')
+depends=(gcc-libs gnuplot boost boost-libs)
+provides=(tfel mfront)
+makedepends=(cmake gcc-fortran python python-numpy)
+source=(${_base}::git+${url}#branch=master)
+sha512sums=('SKIP')
 
-build() {
-  cmake \
-    -S ${pkgname}-${_base}-${pkgver} \
-    -B build \
-    -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -Denable-python=OFF \
-    -Denable-python-bindings=OFF \
-    -Denable-fortran=ON \
-    -Denable-aster=ON \
-    -Denable-abaqus=ON \
-    -Denable-ansys=ON \
-    -Denable-europlexus=ON \
-    -Denable-zmat=ON \
-    -Denable-cyrano=ON \
-    -Denable-calculix=ON \
-    -Denable-comsol=ON \
-    -Denable-diana-fea=ON \
-    -Denable-lsdyna=ON \
-    -Denable-cxx-17=ON \
-    -Denable-reference-doc=OFF \
-    -Wno-dev
-  cmake --build build --target all
+pkgver() {
+  cd "${srcdir}"/"${_base}"
+  printf "%s.r%s.%s" \
+         "$(git log -1 --format=%cs | tr -d '-')" \
+         "$(git rev-list --count HEAD)" \
+         "$(git rev-parse --short HEAD)"
 }
 
-# check() {
-#   # cmake --build build --target check
-#   LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${srcdir}/build/lib/" ctest --verbose --output-on-failure --test-dir build
-# }
+prepare() {
+  git -C "${srcdir}"/"${_base}" clean -dfx
+}
+
+build() {
+  CONFOPTS=(
+    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -Denable-python=ON
+    -Denable-python-bindings=ON
+    -Denable-numpy-support=ON
+    -Dinstall-system-libraries=ON
+    -Denable-fortran=ON
+    -Denable-aster=OFF
+    -Denable-abaqus=OFF
+    -Denable-ansys=OFF
+    -Denable-europlexus=OFF
+    -Denable-zmat=OFF
+    -Denable-cyrano=OFF
+    -Denable-calculix=ON
+    -Denable-comsol=OFF
+    -Denable-diana-fea=OFF
+    -Denable-lsdyna=OFF
+    -Denable-cxx-17=ON
+    -Denable-reference-doc=OFF
+    -Denable-doxygen-doc=OFF
+    # -Denable-mfront-quantity-tests=ON
+    -Denable-mfront-quantity-tests=OFF
+    # -Denable-testing=ON
+    -Denable-testing=OFF
+    # -Denable-sanitize-options=ON
+    -Denable-sanitize-options=OFF
+    -Wno-dev
+    -S "${srcdir}"/"${_base}"
+    -B "${srcdir}"/build
+  )
+  cmake ${CONFOPTS[@]}
+  make -C "${srcdir}"/build
+}
+
+check() {
+  LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${srcdir}/build/lib/" make -C "${srcdir}"/build check
+}
 
 package() {
-  DESTDIR="${pkgdir}" cmake --build build --target install
-  install -Dm 644 ${pkgname}-${_base}-${pkgver}/LICENCE-GNU-GPL -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  # DESTDIR="${pkgdir}" cmake --build "${srcdir}"/"${_base}"/build --target install
+  make -C "${srcdir}"/"${_base}"/build DESTDIR="${pkgdir}" install
+  install -Dm 644 ${_base}/LICENCE-GNU-GPL -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
