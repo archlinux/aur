@@ -1,15 +1,13 @@
 pkgbase = rime-ice-git
 	pkgdesc = Rime 配置：雾凇拼音 | 长期维护的简体词库
-	pkgver = r473.c2e02af
-	pkgrel = 3
+	pkgver = r474.a03b57b
+	pkgrel = 1
 	url = https://github.com/iDvel/rime-ice
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = librime
 	makedepends = rime-prelude
-	makedepends = coreutils
-	makedepends = grep
 	makedepends = sed
 	conflicts = rime-emoji
 	source = rime-ice::git+https://github.com/iDvel/rime-ice.git

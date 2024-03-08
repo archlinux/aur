@@ -13,14 +13,14 @@ pkgname=(
   ${_pkgbase}-double-pinyin-ziguang-git
 )
 
-pkgver=r473.c2e02af
-pkgrel=3
+pkgver=r474.a03b57b
+pkgrel=1
 pkgdesc="Rime 配置：雾凇拼音 | 长期维护的简体词库"
 arch=("any")
 url="https://github.com/iDvel/rime-ice"
 license=("GPL3")
 
-makedepends=("git" "librime" "rime-prelude" "coreutils" "grep" "sed")
+makedepends=("git" "librime" "rime-prelude" "sed")
 
 source=("${_pkgbase}::git+${url}.git")
 sha512sums=("SKIP")
