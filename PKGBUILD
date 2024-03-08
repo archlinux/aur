@@ -6,8 +6,7 @@ pkgname=trenchbroom-bin
 pkgver=2024.1
 _pkgver=Linux-ubuntu-22.04-v$pkgver-Release.$CARCH
 pkgrel=2
-pkgdesc="TrenchBroom is a free (GPLv3+), cross platform level editor for Quake-engine based games. It supports Quake, Quake 2, and Hexen 2 and runs on Windows (XP and newer), Mac OS X (10.6 and newer) and Linux.x86_64.
-This is the Ubuntu Release version of TrenchBroom 2024.1 repackaged for Arch. For a current commit build use trenchbroom-git."
+pkgdesc="TrenchBroom is a free (GPLv3+), cross platform level editor for Quake-engine based games. This is the Ubuntu Release version of TrenchBroom 2024.1 repackaged for Arch."
 arch=("x86_64")
 url="https://trenchbroom.github.io/"
 license=('GPL3')
