@@ -1,6 +1,6 @@
 pkgbase = tfel-mfront-git
 	pkgdesc = TFEL/MFront introduce DSLs based on C++ to handle material knowledge
-	pkgver = 20240222.r2684.9d61feca8
+	pkgver = 20240222.r2750.0459fabae
 	pkgrel = 1
 	url = https://github.com/thelfer/tfel
 	arch = x86_64

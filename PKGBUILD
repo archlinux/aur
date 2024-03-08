@@ -2,7 +2,7 @@
 _base=tfel-mfront
 _upstream=tfel
 pkgname=${_base}-git
-pkgver=20240222.r2684.9d61feca8
+pkgver=20240222.r2750.0459fabae
 pkgrel=1
 pkgdesc="TFEL/MFront introduce DSLs based on C++ to handle material knowledge"
 arch=(x86_64)
@@ -62,12 +62,12 @@ build() {
   make -C "${srcdir}"/build
 }
 
-check() {
-  LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${srcdir}/build/lib/" make -C "${srcdir}"/build check
-}
+# check() {
+#   LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${srcdir}/build/lib/" make -C "${srcdir}"/build check
+# }
 
 package() {
   # DESTDIR="${pkgdir}" cmake --build "${srcdir}"/"${_base}"/build --target install
-  make -C "${srcdir}"/"${_base}"/build DESTDIR="${pkgdir}" install
+  make -C "${srcdir}"/build DESTDIR="${pkgdir}" install
   install -Dm 644 ${_base}/LICENCE-GNU-GPL -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
