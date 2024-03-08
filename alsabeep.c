@@ -23,19 +23,18 @@
 #define SIGUSR1 10
 #define	SIGTERM 15
 
-/* Definitions */
-#undef DEBUG
-
 /* Static data */
 static DECLARE_WAIT_QUEUE_HEAD (beep_wait);
-static char what_beep=0;
+static char what_beep = 0;
 // array for task_struct to hold task info
 static struct task_struct kth;
 static struct task_struct *pkth=&kth;
 static int data;
 
 static pid_t helper_pid = 0;
+static int debug = 0;
 module_param(helper_pid,int,0660);
+module_param(debug,int,0660);
 
 MODULE_AUTHOR("Robin Becker lt becker dot rg at gmail dot com gt");
 MODULE_DESCRIPTION("Alsa Beep Driver");
@@ -44,10 +43,11 @@ MODULE_LICENSE("GPL");
 static char beep_name[] = "AlsaBeep";
 static struct input_dev *beep_dev;
 
-void my_kill(pid_t pid, int sig){
+static int my_kill(pid_t pid, int sig){
 	// this code is from https://stackoverflow.com/questions/31646466/how-to-send-signal-from-kernel-to-user-space
 	struct kernel_siginfo info;
 	struct task_struct *t;
+	int r=0;
 
 	memset(&info, 0, sizeof(info));
 	info.si_signo = sig;
@@ -59,28 +59,34 @@ void my_kill(pid_t pid, int sig){
 	rcu_read_lock();
 	// find the task with that pid
 	t = pid_task(find_pid_ns(pid, &init_pid_ns), PIDTYPE_PID);
-	printk(KERN_INFO "alsabeep:my_kill: pid=%d sif=%d t @ %p\n",pid,sig,t);
+	if(debug) printk(KERN_INFO "alsabeep:my_kill: pid=%d sif=%d t @ %p\n",pid,sig,t);
 	if (t != NULL) {
 		rcu_read_unlock();      
-		if (send_sig_info(sig, &info, t) < 0) // send signal
-			printk(KERN_WARNING "alsabeep:my_kill(%d, %d)  error\n",pid,sig);
+		if (send_sig_info(sig, &info, t) < 0) { // send signal
+			if(debug) printk(KERN_WARNING "alsabeep:my_kill(%d, %d)  error\n",pid,sig);
+			r = 1;
+		}
 	} else {
 		rcu_read_unlock();
-		printk(KERN_WARNING "alsabeep:my_kill(%d, %d) pid_task error\n",pid,sig);
+		if(debug) printk(KERN_WARNING "alsabeep:my_kill(%d, %d) pid_task error\n",pid,sig);
 		//return -ENODEV;
+		r = 1;
 	}
+	return r;
 }
 
 // long running function to be executed inside a thread
-int wait_for_beep_event(void *data) {
+static int wait_for_beep_event(void *data) {
 	// kthread_should_stop call is important.
 	while (!kthread_should_stop()) {
 		while(1){
 			if (!wait_event_interruptible(beep_wait, what_beep)) {
-				printk(KERN_INFO "alsabeep:wait_for_beep_event: wakes what_beep=%d helper_pid=0\n", what_beep);
+				if(debug) printk(KERN_INFO "alsabeep:wait_for_beep_event: wakes what_beep=%d helper_pid=%d\n", what_beep, helper_pid);
 				while (what_beep>0) {
-					if (helper_pid) my_kill(helper_pid, SIGUSR1);
-					else printk(KERN_WARNING "alsabeep:wait_for_beep_event: what_beep=%d helper_pid=0\n", what_beep);
+					if (helper_pid){
+						//if signal failure we abandon this helper
+						if(my_kill(helper_pid, SIGUSR1)) helper_pid = 0;
+					} else if(debug) printk(KERN_WARNING "alsabeep:wait_for_beep_event: what_beep=%d helper_pid=%d\n", what_beep, helper_pid);
 					what_beep--;
 				}
 			}
@@ -100,13 +106,10 @@ static int beep_event(struct input_dev *dev, unsigned int type,
 	case SND_TONE: break;
 	default: return -1;
 	}
-#ifdef DEBUG
-	printk(KERN_WARNING "beep_event called with %d %d %d\n",
-				type, code, value);
-#endif
+	if(debug) printk(KERN_WARNING "beep_event called with %d %d %d\n", type, code, value);
 
-	if (value) {
-		what_beep=1;
+	if (value && helper_pid) {
+		what_beep += 1;
 		wake_up(&beep_wait);
 	}
 	return 0;
@@ -123,19 +126,19 @@ static int __init mod_init(void){
 
 	ret = input_register_device(beep_dev);
 	if(ret){
-		printk(KERN_INFO "Unable to register beep device\n");
+		if(debug) printk(KERN_INFO "Unable to register beep device\n");
 		my_kill(helper_pid, SIGUSR1);
 		return ret;
 	}
 
-	printk(KERN_INFO "input: %s\n", beep_name);
+	if(debug) printk(KERN_INFO "input: %s phys=%s\n", beep_name, beep_dev->phys);
 
   	pkth = kthread_create(wait_for_beep_event, &data, "wait_for_beep_event");
   	if (pkth != NULL) {
     	wake_up_process(pkth);
-    	printk(KERN_INFO "wait_for_beep_event thread started\n");
+    	if(debug) printk(KERN_INFO "wait_for_beep_event thread started\n");
   	} else {
-    	printk(KERN_INFO "kthread wait_for_beep_event thread could not be created\n");
+    	if(debug) printk(KERN_INFO "kthread wait_for_beep_event thread could not be created\n");
     	return -1;
   	}
 
@@ -144,7 +147,7 @@ static int __init mod_init(void){
 
 static void __exit mod_exit(void)
 {
-	printk(KERN_INFO "exit alsabeep helper_pid=%d\n", helper_pid);
+	if(debug) printk(KERN_INFO "exit alsabeep helper_pid=%d\n", helper_pid);
 	if (helper_pid) {
 		my_kill(helper_pid, SIGTERM);
 	}
