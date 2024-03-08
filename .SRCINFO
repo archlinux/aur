@@ -1,7 +1,7 @@
 pkgbase = lyrically-bin
 	pkgdesc = Music player inspired by Lyric Speaker
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CyanSalt/lyrically
 	arch = x86_64
 	license = ISC
@@ -14,6 +14,6 @@ pkgbase = lyrically-bin
 	sha256sums = 11706f4ef803ea2c0b1d57152987e91c6a9d7bc4f031d90b73e74766a3a9cfab
 	sha256sums = ab219244090109bd4c111ee2f8d574337bc668860f9e9678190f4591df4dec1a
 	sha256sums = 9950b2ef9948d119f67c09e78478be5c96db2028bebf735ee60a9e3c5afe0bc0
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = lyrically-bin
