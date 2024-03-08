@@ -4,7 +4,7 @@ _pkgname=redisviewer
 _appname="Redis Viewer"
 pkgver=2.3.2
 _electronversion=9
-pkgrel=4
+pkgrel=5
 pkgdesc="A Redis visualization client tool that pursues ultimate performance, minimalist layout, efficient interaction, cross platform, and supports deserialization of Java bytecode."
 arch=('x86_64')
 url="https://github.com/redisviewer/RedisViewer"
@@ -13,7 +13,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'hicolor-icon-theme'
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_appname// /.}-${pkgver}.deb"
@@ -22,13 +22,13 @@ source=(
 )
 sha256sums=('05782f359b7e9b97027f2aacbe99f6345208e862ee3ebd1046e80a0cf074f844'
             '68f3ca5eaa3a59b7e01cbafc7848cb20ea108627ed0c94023e7536adfeeb3e89'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."
     sed -e "s|\"/opt/${_appname}/${_pkgname}\"|${pkgname%-bin}|g" \
         -e "s|Utility|Development|g" \
         -e "s|${_pkgname}|${pkgname%-bin}|g" \
