@@ -1,6 +1,6 @@
 pkgbase = android-x86-64-gdbm
-	pkgdesc = GNU database library (android)
-	pkgver = 1.19
+	pkgdesc = GNU database library (Android x86-64)
+	pkgver = 1.23
 	pkgrel = 1
 	url = http://www.gnu.org/software/gdbm/gdbm.html
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = android-x86-64-gdbm
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://ftp.gnu.org/gnu/gdbm/gdbm-1.19.tar.gz
-	sha256sums = 37ed12214122b972e18a0d94995039e57748191939ef74115b1d41d8811364bc
+	source = https://ftp.gnu.org/gnu/gdbm/gdbm-1.23.tar.gz
+	md5sums = 8551961e36bf8c70b7500d255d3658ec
 
 pkgname = android-x86-64-gdbm
