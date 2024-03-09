@@ -1,14 +1,17 @@
 pkgbase = uw-ttyp0-font
 	pkgdesc = Bitmap monospaced font with unicode support and Powerline symbols
 	pkgver = 1.3
-	pkgrel = 6
+	pkgrel = 7
 	url = http://people.mpi-inf.mpg.de/~uwe/misc/uw-ttyp0
 	arch = any
 	license = custom
 	makedepends = xorg-bdftopcf
+	makedepends = xorg-mkfontscale
 	makedepends = perl
+	makedepends = fonttosfnt
+	conflicts = uw-ttyp0-otb
+	conflicts = otb-uw_ttyp0
 	source = http://people.mpi-inf.mpg.de/~uwe/misc/uw-ttyp0/uw-ttyp0-1.3.tar.gz
 	sha512sums = 193966b826cafa313384f20e225d4a0b0057364ed23c2beaf27a59095fdb9079281fdc1d292592038512a56ec0387e531a28449344e2960f0ecd3e64c7a6f6e7
 
 pkgname = uw-ttyp0-font
-
