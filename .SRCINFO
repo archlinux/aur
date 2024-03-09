@@ -20,6 +20,7 @@ pkgbase = suyu-dev-git
 	makedepends = spirv-headers
 	makedepends = vulkan-headers
 	makedepends = catch2
+	makedepends = rapidjson
 	depends = brotli
 	depends = enet
 	depends = gcc-libs
