@@ -55,7 +55,7 @@ build() {
 
 package_vulkan-caps-viewer-x11() {
   pkgdesc+=" (X11)"
-  depends=('vulkan-icd-loader' 'qt5-x11extras')
+  depends=('hicolor-icon-theme' 'vulkan-icd-loader' 'qt5-x11extras')
   provides=('vulkan-caps-viewer')
   conflicts=('vulkan-caps-viewer')
 
@@ -68,7 +68,7 @@ package_vulkan-caps-viewer-x11() {
 
 package_vulkan-caps-viewer-wayland() {
   pkgdesc+=" (Wayland)"
-  depends=('vulkan-icd-loader' 'qt5-wayland')
+  depends=('hicolor-icon-theme' 'vulkan-icd-loader' 'qt5-wayland')
   provides=('vulkan-caps-viewer')
   conflicts=('vulkan-caps-viewer')
 

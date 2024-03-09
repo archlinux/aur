@@ -18,6 +18,7 @@ pkgbase = vulkan-caps-viewer
 
 pkgname = vulkan-caps-viewer-x11
 	pkgdesc = Vulkan Hardware Capability Viewer (X11)
+	depends = hicolor-icon-theme
 	depends = vulkan-icd-loader
 	depends = qt5-x11extras
 	provides = vulkan-caps-viewer
@@ -25,6 +26,7 @@ pkgname = vulkan-caps-viewer-x11
 
 pkgname = vulkan-caps-viewer-wayland
 	pkgdesc = Vulkan Hardware Capability Viewer (Wayland)
+	depends = hicolor-icon-theme
 	depends = vulkan-icd-loader
 	depends = qt5-wayland
 	provides = vulkan-caps-viewer
