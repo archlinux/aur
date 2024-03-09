@@ -1,5 +1,5 @@
---- curl-7.86.0/lib/Makefile.am.orig	2022-10-29 12:03:24 +0000
-+++ curl-7.86.0/lib/Makefile.am	2022-10-29 12:05:35 +0000
+--- a/lib/Makefile.am
++++ b/lib/Makefile.am
 @@ -107,7 +107,8 @@
  endif
  
