@@ -1,20 +1,20 @@
 pkgbase = packettracer
 	pkgdesc = A cross-platform visual simulation tool designed by Cisco Systems that allows users to create network topologies and imitate modern computer network
-	pkgver = 8.2.1
+	pkgver = 8.2.2
 	pkgrel = 1
 	url = https://www.netacad.com/courses/packet-tracer
 	arch = x86_64
 	license = custom
 	options = !strip
 	options = !emptydirs
-	source = local://CiscoPacketTracer_821_Ubuntu_64bit.deb
+	source = local://CiscoPacketTracer822_amd64_signed.deb
 	source = packettracer.sh
 	source = cisco-pt.desktop
 	source = cisco-ptsa.desktop
-	sha512sums = 21049b337714c216ce9257f4dda3f157cbd282adee30e688dfcb61681f381a60f839d376d97ddb66e4e716a6bdce6346ea2047c05bbfaa19d507eda4f52c3cb2
+	sha512sums = 55835357b01449150f5c962d852f2921d4e39f697297cb34471b8cc83a91bced6c31703cc28a90e61db7a9a32e5534de4f11e5c4f6735f400456d25a013fadde
 	sha512sums = 47d575abf87ff26917ced452922ae6030b548e0deecca66397dbd4e22c032e217fcb4219b1bc783e6efa5fcbc4472dbe75b0d26f9d07de63a63d720475eb5122
-	sha512sums = 2db30a687e8546c83613bffbf43ac98311e66aa42b0264e60ac678c7152336f4b046c46e71cba53ebd45c5ddb702552e9496efd93a143fcef7ebe31ad2bbad64
-	sha512sums = 3a67dbc2437e213b6999384b574f1251feed25791d5427197bfc3edf384ee938c449dccd482e6dfccceb43a274199718a957671658054dc9931d1c3479590fcd
+	sha512sums = 739ca68e39072e036d9e055222c3b4c8433d10fd8425d1a3f555ffa012e6f2b90f019975192f991368aff06abe29509f92085159525f5c95c37960da9a91099f
+	sha512sums = 90068e517607900ab0937974d1204e780463216cea4e377b1fb93d9d79bd78eee980da5943a54dcca7908d7b2362d2012b4db610bd72c373c84184c8fa917cef
 	depends = openssl>=1.0
 	depends = dbus
 	depends = icu
