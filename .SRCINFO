@@ -1,6 +1,6 @@
 pkgbase = kwin-effects-forceblur-git
-	pkgdesc = KWin Wayland Force Blur effect (disable Blur and enable Blur+ in System Settings)
-	pkgver = r1.07fafebed
+	pkgdesc = KWin Blur effect fork with window class force blur feature (Wayland & X11)
+	pkgver = r12.d10a6bb72
 	pkgrel = 1
 	url = https://github.com/taj-ny/kwin-forceblur-wayland
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = kwin-effects-forceblur-git
 	depends = kwin
 	depends = kcrash
 	depends = kglobalaccel
-	source = kwin-effects-forceblur-git::git+https://github.com/taj-ny/kwin-forceblur-wayland.git#branch=plugin
+	source = kwin-effects-forceblur-git::git+https://github.com/taj-ny/kwin-forceblur-wayland.git
 	sha256sums = SKIP
 
 pkgname = kwin-effects-forceblur-git
