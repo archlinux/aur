@@ -20,4 +20,4 @@ RUN su build -c 'paru --needed --noconfirm -Syu tgt'
 RUN su build -c 'cd ~build/.cache/paru/clone/dracut-git && makepkg --printsrcinfo > .SRCINFO && updpkgsums && git diff'
 
 # rebuild to run some tests
-RUN su build -c 'cd ~build/.cache/paru/clone/dracut-git && V=1 TESTS="18" SKIP=" " makepkg --force --syncdeps --noconfirm'
+RUN su build -c 'cd ~build/.cache/paru/clone/dracut-git && V=1 TESTS="01" SKIP=" " makepkg --force --syncdeps --noconfirm'

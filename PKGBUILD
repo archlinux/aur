@@ -110,6 +110,7 @@ source=(
   2549.patch::${url}/commit/c20533f9cba63f796d6ee34724e430a712125877.patch    # test(FULL SYSTEMD): no need to include dbus to the target
   2556.patch::${url}/commit/19a0ba94275e2d64f6b1a3130f137f626c648939.patch    # fix(90kernel-modules): add intel_lpss_pci for MacBook Pro
   2565.patch::${url}/commit/8b3d8c73eba275c01d9714807c10899a5703f656.patch    # test(UEFI): make test determinsitic
+  2582.patch::${url}/commit/b3c70d337fe108bb24fb50923a360d8957006b86.patch    # fix: do not use modprobe --all
   2593-1.patch::${url}/commit/ca69cc20833577fac415e36c66495c6dc5b1c721.patch  # fix(dracut.sh): do not add device if `find_block_device`
   2593-2.patch::${url}/commit/03cd454845346c206194c214f9b9ec15ec91d9b4.patch  # feat(dracut.sh): protect `push_host_devs` function
   2610.patch::${url}/commit/f68d056bd9d32f4fc0c15163b256d1811a552302.patch    # fix(systemd-255): handle systemd-pcr{phase -> extend} rename
@@ -129,6 +130,7 @@ sha512sums=('SKIP'
             'a6565ee8bb9c54183078e41c04fb5c29262c3a357a79d5c38bb801f39668ef9f3f56fd4d497208bc5f40ebdfdc82a0b45c52d4e0efb746384dc7f0f48b98c9e4'
             '191633e5f88743433678e859ad3333273185872a2464c2842341e90edfca1eea14829a00d5bf5db23c2a8a0e56778e631d2f9d67c0f0fe891b409b02d5affba8'
             '81bcdfc63864fa6b820c78d9b70854998f86d35cb34913b564ce94dcc094e7fc31038ea14a5a5e3870748824b63a24cca8c7db572d6cf7b4e31f30399f3ab064'
+            '4aa808f891409756720cc53f6ac9a229c2b543419da23bd69796df5861bb11563755433728f12379950dbbb557ec183e02ba9ba70d37739f2b3a078392aa939f'
             '295e4847d1a1e8a2d0572ed42b2e992b37aa3875295027fb8b42e128458ed0766a8cd2cb56f455fe863086f357d536b55d9af7f3ff5293b734bd539a1cb86b5c'
             'ea6ac33900494d166e87ffc2a5a3891777f480c2c2299c5cc101e8ba91aa1b25840ace0ae4514c684de942d42a030b086f56bc048244bc0ee0525ea1c45feca0'
             'fdffc9362d72c98cd595f458b7a20157868e4f445ad692afde8337df77496bc905597d18d646b01ee58f9cdd3eefc848bfe04e9aa565fde6e4a2e65aa3fe75e0'
@@ -160,7 +162,7 @@ prepare() {
 
   # remove dracut modules not meant for arch x86_64
   for f in 45ifcfg 80cms 81cio_ignore 91zipl 95dasd 95dasd_mod \
-    95dasd_rules 95dcssblk 95qeth_rules 95zfcp \
+    95dasd_rules 95dcssblk 95fcoe* 95qeth_rules 95zfcp \
     95zfcp_rules 95znet; do
     rm -rf modules.d/$f
   done
