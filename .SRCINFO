@@ -1,0 +1,19 @@
+pkgbase = corgi3ds-git
+	pkgdesc = An LLE dog-themed 3DS emulator
+	pkgver = 0.8.r1822.048eca55
+	pkgrel = 1
+	url = https://github.com/PSI-Rockin/Corgi3DS
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = qt5-base
+	makedepends = qt5-multimedia
+	makedepends = git
+	makedepends = gmp
+	depends = gcc-libs
+	provides = corgi3ds
+	conflicts = corgi3ds
+	source = git+https://github.com/PSI-Rockin/Corgi3DS
+	sha256sums = SKIP
+
+pkgname = corgi3ds-git
