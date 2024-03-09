@@ -10,8 +10,7 @@ pkgbase = pureref
 	makedepends = binutils
 	depends = fuse2
 	options = !strip
-	source = pureref-1.11.1.deb::https://www.pureref.com/files/build.php?build=LINUX64.deb&downloadKey=8PocQbh7s%2BvQRGoqAkWEEw%3D%3D
+	source = pureref-1.11.1.deb::https://www.pureref.com/files/build.php?build=LINUX64.deb&version=1.11.1&downloadKey=WIwNERu1MYyxaucmLysjBQ%3D%3D
 	sha512sums = 60c6ba0a35643d8e448d781093a826a1726730bf9d7e10028151831dc295d75288380c5776b283a6611be3c5547aa0355b95564cb9b8f01facba3fab34fd4a32
 
 pkgname = pureref
-
