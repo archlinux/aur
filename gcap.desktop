@@ -1,10 +1,11 @@
 [Desktop Entry]
 Version=1.0
-Name=GCAP
+Name=GCAP 2024
 Comment=Programa de Apuração dos Ganhos de Capital
 Path=/usr/bin
 Exec=gcap
 Icon=gcap
+StartupWMClass=br-gov-serpro-gcap-app-PGDGCAP
 Terminal=false
 StartupNotify=false
 Type=Application
