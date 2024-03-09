@@ -1,11 +1,11 @@
 pkgbase = alsa-scarlett-gui-dev
 	pkgdesc = GUI for the ALSA controls presented by the Scarlett2 driver, Development version
-	pkgver = 0.3.3.116.g7f40
+	pkgver = 0.3.3.116.g7f40565
 	pkgrel = 1
 	url = https://github.com/geoffreybennett/alsa-scarlett-gui
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later OR LGPL-3.0-or-later
 	makedepends = gcc
 	makedepends = make
 	makedepends = git

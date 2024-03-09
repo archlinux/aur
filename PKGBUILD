@@ -1,11 +1,11 @@
 pkgname='alsa-scarlett-gui-dev'
 _pkgname='alsa-scarlett-gui'
-pkgver=0.3.3.116.g7f40
+pkgver=0.3.3.116.g7f40565
 pkgrel=1
 pkgdesc="GUI for the ALSA controls presented by the Scarlett2 driver, Development version"
 arch=('i686' 'x86_64')
 url="https://github.com/geoffreybennett/alsa-scarlett-gui"
-license=('GPL3')
+license=('GPL-3.0-or-later OR LGPL-3.0-or-later')
 depends=('alsa-lib' 'gtk4' 'openssl')
 makedepends=('gcc' 'make' 'git' 'pkgconf' 'sed')
 provides=('alsa-scarlett-gui')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
-    echo "$(git describe --abbrev=4 --always --tags | sed 's/-/./g')"
+    echo "$(git describe --always --tags | sed 's/-/./g')"
 }
 
 build() {
