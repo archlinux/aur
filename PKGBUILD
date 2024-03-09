@@ -25,7 +25,7 @@ noextract=(
 	wechat-beta_${pkgver}_amd64.deb
 )
 
-md5sums=('eda5b1524fe570724558ae2eaff4360e'
+md5sums=('44061f8f6beeb0507fe664fdca69e72d'
          '4967385a00db424e596263618335411f'
          'cf971cb2cb01d8a5fd89d3a3555abfaf'
          '6b159c6e9d21a98925489bc37a9aea43'
