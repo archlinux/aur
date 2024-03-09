@@ -7,5 +7,25 @@ pkgbase = vulkan-caps-viewer
 	arch = x86_64
 	arch = aarch64
 	license = LGPL-3.0-or-later
+	makedepends = git
+	makedepends = qt5-wayland
+	makedepends = qt5-x11extras
+	makedepends = vulkan-icd-loader
+	source = git+https://github.com/SaschaWillems/VulkanCapsViewer.git#commit=1008cecb054ab15acf51353ac85ffd8ebb135cc4
+	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
+	sha256sums = SKIP
+	sha256sums = SKIP
 
-pkgname = vulkan-caps-viewer
+pkgname = vulkan-caps-viewer-x11
+	pkgdesc = Vulkan Hardware Capability Viewer (X11)
+	depends = vulkan-icd-loader
+	depends = qt5-x11extras
+	provides = vulkan-caps-viewer
+	conflicts = vulkan-caps-viewer
+
+pkgname = vulkan-caps-viewer-wayland
+	pkgdesc = Vulkan Hardware Capability Viewer (Wayland)
+	depends = vulkan-icd-loader
+	depends = qt5-wayland
+	provides = vulkan-caps-viewer
+	conflicts = vulkan-caps-viewer
