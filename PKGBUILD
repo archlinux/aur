@@ -19,7 +19,7 @@ pkgver() {
 
 }
 
-prepare() {
+build() {
 
     cd "${srcdir}/${_pkgname}"
 
