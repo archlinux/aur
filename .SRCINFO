@@ -1,6 +1,6 @@
 pkgbase = the-dark-mod-bin
 	pkgdesc = First person stealth game inspired by the Thief series based on id Tech 4 engine
-	pkgver = 2.11
+	pkgver = 2.12
 	pkgrel = 1
 	url = https://www.thedarkmod.com/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = the-dark-mod-bin
 	makedepends = imagemagick
 	makedepends = p7zip
 	options = !strip
-	source = https://update.thedarkmod.com/zipsync/tdm_installer.linux64.zip
-	sha256sums = SKIP
+	source = https://web.archive.org/web/20240309212858if_/https://update.thedarkmod.com/zipsync/tdm_installer.linux64.zip
+	sha256sums = e96956bf330b079ac3a9801b4671d0f42fd369d8b08b94e8222dddb69bbe4f1f
 
 pkgname = the-dark-mod-bin
