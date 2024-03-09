@@ -1,7 +1,7 @@
 pkgbase = rsiedit-bin
 	pkgdesc = C# GUI application for manipulation of RSI files used in SS14.
 	pkgver = 0.6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/space-wizards/RSIEdit
 	arch = x86_64
 	license = MIT

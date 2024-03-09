@@ -3,7 +3,7 @@
 
 pkgname=rsiedit-bin
 pkgver=0.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="C# GUI application for manipulation of RSI files used in SS14."
 arch=("x86_64")
 url="https://github.com/space-wizards/RSIEdit"
