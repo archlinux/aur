@@ -1,6 +1,6 @@
 pkgbase = cue-git
 	pkgdesc = A command-line music player
-	pkgver = v2.4.2.r0.gbf201e4
+	pkgver = v2.4.3.r0.g3d0c59b
 	pkgrel = 1
 	url = https://github.com/ravachol/kew
 	arch = x86_64
