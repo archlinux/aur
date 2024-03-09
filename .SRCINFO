@@ -1,7 +1,7 @@
 pkgbase = dracut-ukify
 	pkgdesc = Integration layer for dracut and systemd's ukify tool for Arch Linux
 	pkgver = 8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://aur.archlinux.org/packages/dracut-ukify
 	arch = any
 	license = MIT
@@ -21,9 +21,9 @@ pkgbase = dracut-ukify
 	source = dracut-ukify
 	source = dracut-ukify.conf
 	sha256sums = 7be65bccc0e7b861961cc8902a120d8c0bf5cfce8ba83e2ade8aa772c4b4417f
-	sha256sums = 341cd01546d840e7401f7bec868a78e2f6ca12563e93d993a07bc51efe674ed0
-	sha256sums = dc319246e6dacc16b23a2ed2886e6468020e978a9b3f2fb9bb4cd06a82888490
-	sha256sums = 08225b2c3f5e2a734561b5fa9a3e84060dfffd85b2898adb0fff0ce3b068b4d0
+	sha256sums = dd9e0c08220467ee994cac81779c5241802de23dc98b849dc2c54a32d34aff9b
+	sha256sums = d96d34365c49fe1b5295c304fdc84bd4e6a74302dda3da9bb62220c891dea4fd
+	sha256sums = fdf700f716ebedf2b1da92a2b013a1ef93249e853a241d9f0581690b522db814
 	sha256sums = 332565e1f68ef90c55a6a894de784003209dadb96ff5384cd0891b936dad53a9
 	sha256sums = 931704a244590b64e9640a20e1c92b869c9c2574f770b3abcd76b1a801bb2792
 
