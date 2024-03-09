@@ -1,10 +1,10 @@
 # Maintainer: Kimiblock Moe
 pkgname=wechat-uos-bwrap
 pkgver=1
-pkgrel=10
+pkgrel=11
 epoch=
 pkgdesc="WeChat Testing with bwrap sandbox"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://weixin.qq.com/"
 license=('proprietary')
 groups=()
@@ -14,17 +14,28 @@ checkdepends=()
 provides=()
 conflicts=()
 replaces=()
+
 source=(
 	wechat.sh
 	wechat-uos-beta.desktop
 	wechat-uos-beta.svg
+)
+
+source_x86_64=(
 	wechat-${pkgver}.deb::"https://cdn4.cnxclm.com/uploads/2024/03/05/3VDyAc0x_wechat-beta_1.0.0.145_amd64.deb?attname=wechat-beta_1.0.0.145_amd64.deb"
 )
+
+source_x86_64=(
+	wechat-${pkgver}.deb::"https://cdn4.cnxclm.com/uploads/2024/03/05/NKX87bHT_wechat-beta_1.0.0.150_arm64.deb?attname=wechat-beta_1.0.0.150_arm64.deb"
+)
+
 noextract=()
-md5sums=('9047f94e7f4ea10ae2d62aed09960ef7'
-	'b6e6920af829dafb0be82da1c79e46a9'
-	'600e74549ce2258c045d5c2f7689ea63'
-	'1da072bd774d1b5c08b9545b409e3fcb')
+md5sums=('e0adb79ef287920f8c6546300aeb1ffa'
+         'b6e6920af829dafb0be82da1c79e46a9'
+         '600e74549ce2258c045d5c2f7689ea63')
+md5sums_x86_64=('1da072bd774d1b5c08b9545b409e3fcb')
+
+
 validpgpkeys=()
 function package() {
 	tar -xf data.tar.xz ./opt/wechat-beta

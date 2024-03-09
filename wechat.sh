@@ -20,7 +20,6 @@ function sourceXDG() {
 
 function manageDirs() {
 	sourceXDG
-	createWrapIfNotExist "${XDG_DOCUMENTS_DIR}"/WeChat_Downloads
 	createWrapIfNotExist "${XDG_DOCUMENTS_DIR}"/WeChat_Data
 	if [ -d "${HOME}/Documents/TrashBox" ]; then
 		mv "${HOME}/Documents/TrashBox"/* \
@@ -30,7 +29,8 @@ function manageDirs() {
 
 function detectXauth() {
 	if [ ! ${XAUTHORITY} ]; then
-		export XAUTHORITY=/dev/null
+		echo '[Warn] No ${XAUTHORITY} detected! Do you have any X server running?'
+		export XAUTHORITY="/$(uuidgen)/$(uuidgen)"
 	fi
 	if [[ ! ${DISPLAY} ]]; then
 		echo '[Warn] No ${DISPLAY} detected! Do you have any X server running?'
@@ -53,6 +53,7 @@ function inputMethod() {
 		export QT_IM_MODULE=ibus
 		export GTK_IM_MODULE=ibus
 		export IBUS_USE_PORTAL=1
+		echo "[Warn] iBus is untested!"
 	fi
 }
 
@@ -80,7 +81,6 @@ function execApp() {
 		--proc /proc \
 		--ro-bind /usr /usr \
 		--bind "${XDG_DOCUMENTS_DIR}"/WeChat_Data "${HOME}" \
-		--bind "${XDG_DOCUMENTS_DIR}"/WeChat_Downloads "${XDG_DOWNLOAD_DIR}" \
 		--ro-bind-try "${XAUTHORITY}" "${XAUTHORITY}" \
 		--ro-bind /etc /etc \
 		--unshare-all \
@@ -91,6 +91,13 @@ function execApp() {
 		--ro-bind /usr/share/wechat-uos/etc/lsb-release /etc/lsb-release \
 		--ro-bind /usr/lib/wechat-uos/license/ /usr/lib/license/ \
 		--ro-bind /usr/lib/snapd-xdg-open/xdg-open /usr/bin/xdg-open \
+		--ro-bind-try "${XDG_CONFIG_HOME}"/user-dirs.dirs "${XDG_CONFIG_HOME}"/user-dirs.dirs \
+		--ro-bind-try "${XDG_CONFIG_HOME}"/fontconfig	"${XDG_CONFIG_HOME}"/fontconfig \
+		--ro-bind-try "${XDG_CONFIG_HOME}"/Trolltech.conf "${XDG_CONFIG_HOME}"/Trolltech.conf \
+		--ro-bind-try /etc/xdg/Trolltech.conf /etc/xdg/Trolltech.conf \
+		--ro-bind-try "${XDG_CONFIG_HOME}"/kdeglobals "${XDG_CONFIG_HOME}"/kdeglobals \
+		--ro-bind-try /etc/xdg/kdeglobals /etc/xdg/kdeglobals \
+		--dir "${XDG_DOCUMENTS_DIR}" \
 		--setenv QT_QPA_PLATFORM xcb \
 		--setenv LD_LIBRARY_PATH /opt/wechat-beta:/usr/lib/wechat-uos/license \
 		--setenv QT_AUTO_SCREEN_SCALE_FACTOR 1 \
