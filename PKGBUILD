@@ -5,7 +5,7 @@
 
 pkgname="dcron"
 pkgver="4.6"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="dillon's lightweight cron daemon"
 arch=("i686" "x86_64" "armv6h" "armv7h")
 license=("GPL")
@@ -26,10 +26,6 @@ build() {
     # fix paths to point to /usr/bin
     sed -i 's=/usr/sbin/sendmail=/usr/bin/sendmail=g' defs.h
     sed -i 's=/usr/sbin/run-cron=/usr/bin/run-cron=g' extra/root.crontab
-
-    # add additional CFLAGS for hardening
-    sed -i '28 a CFLAGS += -Wextra -Wformat=2 -Wformat-security -fstack-protector-all -fstack-check -Wl,-z,nodlopen -Wl,-z,nodump -Wl,-z,noexecstack -Wl,-z,noexecheap -Wl,-z,relro -Wl,-z,now -fPIE -Wl,-z,-pie' Makefile
-
 
     # by default, any member of group "users" can edit their own crontab
     make \

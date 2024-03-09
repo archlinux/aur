@@ -1,7 +1,7 @@
 pkgbase = dcron
 	pkgdesc = dillon's lightweight cron daemon
 	pkgver = 4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.jimpryor.net/linux/dcron.html
 	arch = i686
 	arch = x86_64
