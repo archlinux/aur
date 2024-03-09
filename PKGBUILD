@@ -7,7 +7,7 @@
 _pkgname=thunderbird
 pkgname=thunderbird-globalmenu
 pkgver=115.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone mail and news reader from mozilla.org (With appmenu patch from Ubuntu)"
 url="https://www.thunderbird.net/"
 arch=(x86_64)
@@ -132,7 +132,6 @@ prepare() {
 		ac_add_options --with-app-name=$_pkgname
 		export MOZILLA_OFFICIAL=1
 		export MOZ_APP_REMOTINGNAME=${_pkgname}
-		export MOZ_REMOTE_SETTINGS_DEVTOOLS=1
 		export MOZ_APP_PROFILE="mozilla/${_pkgname}"
 
 		# Keys
@@ -230,10 +229,8 @@ package() {
 		about=Mozilla Thunderbird for Arch Linux [Global Menu]
 
 		[Preferences]
-		mozilla.partner.id="archlinux"
 		app.distributor=archlinux
-		app.distributor.channel=$pkgname
-		app.partner.archlinux=archlinux
+		app.distributor.channel=$_pkgname
 
 	END
 
@@ -251,10 +248,6 @@ package() {
 		sed '/^<rect/d' comm/mail/branding/$theme/TB-symbolic.svg # Make svg transparent
 	) "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$desktopid-symbolic.svg"
 
-	# Replace duplicate binary with link
-	# https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-	ln -srfv "$pkgdir/usr/lib/$_pkgname/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
-
 	# Metainfo
 	install -Dvm644 /dev/stdin "$pkgdir/usr/share/metainfo/$desktopid.metainfo.xml" < <(\
 		RELEASE_NOTES_URL="https://www.${_pkgname}.net/en-US/${_pkgname}/${pkgver}/releasenotes/" \
@@ -270,16 +263,25 @@ package() {
 	fi
 
 	# Desktop
-	install -Dvm755 "$srcdir/$desktopid.desktop" \
-		"$pkgdir/usr/share/applications/$desktopid.desktop"
-
-	# Install a wrapper to avoid confusion about binary path
-	install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" < <(\
-		sed -e '/^export TMPDIR/d' \
-			-e "s|/app/lib/thunderbird/thunderbird |/usr/lib/$_pkgname/$_pkgname |" \
-			-e "s|org.mozilla.Thunderbird|$desktopid|" \
-				comm/taskcluster/docker/tb-flatpak/launch_script.sh\
+	install -Dvm755 /dev/stdin "$pkgdir/usr/share/applications/$desktopid.desktop" < <(\
+		sed -e "s|Exec=thunderbird|Exec=/usr/bin/$_pkgname|g" \
+			-e "s|Icon=org.mozilla.Thunderbird|Icon=$desktopid|g" \
+			-e "s|StartupWMClass=thunderbird|StartupWMClass=$_pkgname|" \
+			"$srcdir/$desktopid.desktop"\
 	)
+
+	# Install a launcher for set necessary environment variable
+	install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<-END
+		#!/usr/bin/env sh
+		export MOZ_APP_LAUNCHER="\$0" # Used for determine whether firefox is default browser
+		export MOZ_DESKTOP_FILE_NAME=$desktopid # https://bugzilla.mozilla.org/show_bug.cgi?id=1438051
+		exec /usr/lib/$_pkgname/$_pkgname "\$@"
+
+	END
+
+	# Replace duplicate binary with link
+	# https://bugzilla.mozilla.org/show_bug.cgi?id=658850
+	ln -srfv "$pkgdir/usr/lib/$_pkgname/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
 }
 
 # vim:set sw=2 sts=-1 et:
