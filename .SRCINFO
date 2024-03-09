@@ -1,7 +1,7 @@
 pkgbase = vorta
 	pkgdesc = A GUI for BorgBackup
 	pkgver = 0.9.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/borgbase/vorta
 	arch = any
 	license = GPL

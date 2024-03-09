@@ -1,7 +1,7 @@
 # Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
 pkgname=vorta
 pkgver=0.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A GUI for BorgBackup"
 arch=('any')
 url="https://github.com/borgbase/vorta"
@@ -28,6 +28,8 @@ package() {
 
   install -Dm644 package/icon-symbolic.svg \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/com.borgbase.Vorta-symbolic.svg"
+  install -Dm644 src/vorta/assets/icons/icon.svg \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.borgbase.Vorta.svg"
   install -Dm644 "src/$pkgname/assets/metadata/com.borgbase.Vorta.appdata.xml" -t \
     "$pkgdir/usr/share/metainfo"
   install -Dm644 "src/$pkgname/assets/metadata/com.borgbase.Vorta.desktop" -t \
