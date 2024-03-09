@@ -4,7 +4,7 @@
 
 
 pkgname=plasma6-wallpapers-wallpaper-engine-git
-pkgver=0.5.4.r68.g4a235cb
+pkgver=0.5.4.r74.gdad1870
 pkgrel=1
 pkgdesc="A simple kde wallpaper plugin integrating wallpaper engine"
 arch=('x86_64')
@@ -26,36 +26,52 @@ provides=("plasma6-wallpapers-wallpaper-engine")
 conflicts=("plasma6-wallpapers-wallpaper-engine")
 source=(
     "${pkgname}::git+${url}.git#branch=qt6"
+    "backend_scene::git+https://github.com/catsout/wallpaper-scene-renderer.git"
     "git+https://github.com/KhronosGroup/glslang.git"
+    "nlohmann::git+https://github.com/nlohmann/json.git"
+    "git+https://github.com/KhronosGroup/SPIRV-Reflect.git"
+    "Eigen::git+https://gitlab.com/libeigen/eigen.git"
+    "git+https://github.com/mackron/miniaudio.git"
+    "git+https://github.com/google/googletest.git"
 )
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP')
 
 prepare(){
-    cd "${srcdir}/${pkgname}"
-    git submodule init
-    grep submodule .gitmodules | sed 's/\[submodule "//;s/"\]//' | while read -r module
+    declare -ra modules=(
+      "${srcdir}/${pkgname}" "${srcdir}/${pkgname}/src/backend_scene"
+      "${srcdir}/${pkgname}/src/backend_scene/third_party/SPIRV-Reflect"
+    )
+    for p in "${modules[@]}"
     do
-        repo=$(basename "${module}")
-        git config "submodule.${module}.url" "${srcdir}/${repo}"
+        cd "${p}"
+        git submodule init
+        grep submodule .gitmodules | sed 's/\[submodule "//;s/"\]//' | while read -r module
+        do
+            repo=$(basename "${module}")
+            git config "submodule.${module}.url" "${srcdir}/${repo}"
+        done
+        git -c protocol.file.allow=always submodule update
     done
-    git -c protocol.file.allow=always submodule update
 }
 pkgver(){
     cd "${srcdir}/${pkgname}"
     git describe --tags --long | sed 's/v//;s/-/.r/;s/-/./g'
 }
 build(){
-    # CMake Error: The INTERFACE_QT_MAJOR_VERSION property of 
-    # "Qt6::Qml" does not agree with the value of QT_MAJOR_VERSION 
-    # already determined for "WallpaperEngineKde".
-    sed -i 's/Qt5 //' "${srcdir}/${pkgname}/src/CMakeLists.txt"
-
     cmake -B build -S "${srcdir}/${pkgname}" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=None \
         -DQT_MAJOR_VERSION=6 \
-        -DBUILD_QML=ON
+        -DBUILD_QML=ON \
+        -DUSE_PLASMAPKG=OFF \
+        -DSPIRV_REFLECT_STATIC_LIB=ON
     cmake --build build
 }
 package(){

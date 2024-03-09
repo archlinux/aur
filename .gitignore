@@ -3,5 +3,10 @@ src
 *.pkg.tar.*
 plasma6-wallpapers-wallpaper-engine-git
 glslang
+Eigen
+SPIRV-Reflect
+backend_scene
+miniaudio
+nlohmann
+googletest
 *.log
-migrage-to-kde-plasma-6.diff
