@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=drawProteins
-_pkgver=1.22.0
+_pkgver=1.22.2
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.22.2
 pkgrel=1
 pkgdesc='Package to Draw Protein Schematics from Uniprot API output'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('123268d6fdf0dd0a6a767f6150b09991dc10f1482d9b9e269c9dbaf267039527')
+sha256sums=('7112a4924a43d9a0bb27ace07566dfbb97b30c44784d3553f3157e9d489088d5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
