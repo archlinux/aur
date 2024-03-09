@@ -5,7 +5,7 @@
 
 pkgname='littlefs-fuse'
 pkgver=2.7.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A FUSE wrapper that puts the littlefs in user-space'
 url='https://github.com/littlefs-project/littlefs-fuse'
 arch=('aarch64' 'x86_64')
