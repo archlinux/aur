@@ -1,4 +1,4 @@
-# Maintainer: yuki_wastaken <yukiat@proton.me>
+# Maintainer: yuki_wastaken <yukiat at proton dot me>
 pkgname=catnip-git
 _pkgname=catnip
 pkgver=r50.fe90ca5
