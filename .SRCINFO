@@ -1,6 +1,6 @@
 pkgbase = beaver-notes
 	pkgdesc = A privacy-focused, cross-platform note-taking application.
-	pkgver = 2.8.0
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://www.beavernotes.com/
 	arch = x86_64
@@ -30,9 +30,9 @@ pkgbase = beaver-notes
 	depends = gcc-libs
 	depends = libx11
 	provides = beaver-notes
-	source = beaver-notes-2.8.0.tar.gz::https://github.com/Daniele-rolli/Beaver-Notes/archive/refs/tags/2.8.0.tar.gz
+	source = beaver-notes-2.9.0.tar.gz::https://github.com/Daniele-rolli/Beaver-Notes/archive/refs/tags/2.9.0.tar.gz
 	source = beaver-notes.desktop
-	sha256sums = 7a454d9509c21897602112ef09ec4687e1947f1f52a1f4d6a20628453eace447
+	sha256sums = 134b091e4beb2b98e9d8cfaa8006b4d2ddaa573c45092fc6814663c0d165042d
 	sha256sums = 88c929e920a36084f5257c6d77eee2e75e6b27938c52205c55c25e08bfe89420
 
 pkgname = beaver-notes
