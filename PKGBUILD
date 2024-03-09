@@ -1,6 +1,6 @@
 # Maintainer: Mykola Dimura <mykola.dimura@gmail.com>
 pkgname=readerwriterqueue-git
-pkgver=1.0.4.r6.g0973284
+pkgver=1.0.6.r5.g2dee33a
 pkgrel=1
 pkgdesc="A fast single-producer, single-consumer lock-free queue for C++."
 arch=('any')

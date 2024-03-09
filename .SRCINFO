@@ -4,8 +4,10 @@ pkgbase = readerwriterqueue-git
 	pkgrel = 1
 	url = https://github.com/cameron314/readerwriterqueue
 	arch = any
-	license = Simplified BSD License
+	license = BSD-2-Clause
 	makedepends = git
+	provides = readerwriterqueue
+	conflicts = readerwriterqueue
 	options = !strip
 	options = !buildflags
 	options = staticlibs
@@ -13,4 +15,3 @@ pkgbase = readerwriterqueue-git
 	sha1sums = SKIP
 
 pkgname = readerwriterqueue-git
-
