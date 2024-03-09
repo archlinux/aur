@@ -52,9 +52,9 @@ makedepends=(
   shaderc
   spirv-headers
   vulkan-headers
+  catch2
 )
-options=(!debug)
-_tag=d32620fe796f9cd90e8e5660deb0fc8f4decd61f
+options=(!debug lto)
 source=(
   git+https://gitlab.com/suyu-emu/suyu.git#branch=${_branch}
   git+https://github.com/arsenm/sanitizers-cmake.git
