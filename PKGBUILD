@@ -7,10 +7,10 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-gdbm
-pkgver=1.19
+pkgver=1.23
 pkgrel=1
 arch=('any')
-pkgdesc="GNU database library (android)"
+pkgdesc="GNU database library (Android ${_android_arch})"
 url="http://www.gnu.org/software/gdbm/gdbm.html"
 license=('GPL')
 depends=("android-${_android_arch}-gettext"
@@ -18,7 +18,7 @@ depends=("android-${_android_arch}-gettext"
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://ftp.gnu.org/gnu/gdbm/gdbm-${pkgver}.tar.gz")
-sha256sums=('37ed12214122b972e18a0d94995039e57748191939ef74115b1d41d8811364bc')
+md5sums=('8551961e36bf8c70b7500d255d3658ec')
 
 prepare() {
     cd "${srcdir}/gdbm-${pkgver}"
