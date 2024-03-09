@@ -2,8 +2,8 @@
 # Maintainer: pikl <me@pikl.uk>
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
-pkgrel=2
-pkgver=1.98.0
+pkgrel=1
+pkgver=1.98.1
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('MIT')
@@ -41,7 +41,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
         'https://download.geonames.org/export/dump/cities500.zip'
         'https://download.geonames.org/export/dump/admin1CodesASCII.txt'
         'https://download.geonames.org/export/dump/admin2Codes.txt')
-sha256sums=('0e09d833560dd6ed2c1b339ff3fdebde2c620e490e49bac582cf8169d394f047'
+sha256sums=('8f96cdc0d89f9d11ac46633eec8164059f0265936126ac5ef4b0868b5b4832c5'
             '0a9d7fffe3c301190cc8581ee7e11417eb0661937a2c03d76c8b8bc39710205b'
             'dc1a3d7baf2ec4f00a4a80f88a1f28dc1092eb7a08195544cc37b6532777f5d7'
             'd20455349cdb9409adb42cdbde48c30a176d2a5337ad148c6d2227ecc523c88a'
