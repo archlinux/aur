@@ -1,21 +1,21 @@
 # Maintainer: Kimiblock Moe
 pkgname=wechat-uos-bwrap
 pkgver=1
-pkgrel=8
+pkgrel=9
 epoch=
 pkgdesc="WeChat Testing with bwrap sandbox"
 arch=('x86_64')
 url=""
 license=('proprietary')
 groups=()
-depends=('snapd-xdg-open-git' 'nss' 'lsb-release' 'xdg-utils' 'libxss' "wechat-uos" 'bc' 'libnotify' 'bubblewrap' 'xdg-desktop-portal-gtk')
+depends=('snapd-xdg-open-git' 'nss' 'libxss' "wechat-uos" 'libnotify' 'bubblewrap')
 makedepends=()
 checkdepends=()
-optdepends=(
-	'xdg-desktop-portal-kde: KDE Portal'
-	'xdg-desktop-portal-lxqt: lxqt Portal'
-	'xdg-desktop-portal-gnome: Gnome Portal'
-)
+#optdepends=(
+#	'xdg-desktop-portal-kde: KDE Portal'
+#	'xdg-desktop-portal-lxqt: lxqt Portal'
+#	'xdg-desktop-portal-gnome: Gnome Portal'
+#)
 provides=()
 conflicts=()
 replaces=()
