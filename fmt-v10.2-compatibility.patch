@@ -1,0 +1,44 @@
+commit bd46378b43aaa394094799d18f734495385c6f67
+Author: Carl Smedstad <carl.smedstad@protonmail.com>
+Date:   Sat Mar 9 18:10:10 2024 +0100
+
+    Wrap/replace unformattable types
+    
+    This is an attempt at making v2024.03.04.00 compile on Arch Linux where
+    the available fmt version is 10.2.0.
+
+diff --git a/eden/common/utils/PathFuncs.cpp b/eden/common/utils/PathFuncs.cpp
+index c72e703..1cad469 100644
+--- a/eden/common/utils/PathFuncs.cpp
++++ b/eden/common/utils/PathFuncs.cpp
+@@ -215,7 +215,7 @@ folly::Expected<RelativePath, int> joinAndNormalize(
+   }
+   const std::string joined = base.value().empty() ? std::string{path}
+       : path.empty()                              ? std::string{base.value()}
+-                     : fmt::format("{}{}{}", base, kDirSeparator, path);
++                     : fmt::format("{}{}{}", base, kDirSeparatorStr, path);
+   const CanonicalData cdata{canonicalPathData(joined)};
+   const auto& parts{cdata.components};
+   XDCHECK(!cdata.isAbsolute);
+diff --git a/eden/common/utils/PathFuncs.h b/eden/common/utils/PathFuncs.h
+index 42faae6..2cafa25 100644
+--- a/eden/common/utils/PathFuncs.h
++++ b/eden/common/utils/PathFuncs.h
+@@ -1510,7 +1510,7 @@ struct AbsolutePathSanityCheck {
+     if (!val.starts_with(detail::kRootStr)) {
+       throw_<std::domain_error>(
+           "attempt to construct an AbsolutePath from a non-absolute string: \"",
+-          val,
++          std::string_view(val),
+           "\"");
+     }
+     size_t offset = detail::kRootStr.size();
+@@ -1518,7 +1518,7 @@ struct AbsolutePathSanityCheck {
+     if (val.size() > 1 && val.ends_with(kDirSeparator)) {
+       // We do allow "/" though
+       throw_<std::domain_error>(
+-          "AbsolutePath must not end with a slash: ", val);
++          "AbsolutePath must not end with a slash: ", std::string_view(val));
+     }
+ 
+     if (val.size() > offset) {

@@ -4,3 +4,4 @@
 !.SRCINFO
 !PKGBUILD
 !build-shared-library.patch
+!fmt-v10.2-compatibility.patch
