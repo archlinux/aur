@@ -1,6 +1,6 @@
 pkgbase = swaync
 	pkgdesc = A simple notification daemon with a GTK panel for checking previous notifications like other DEs
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/ErikReider/SwayNotificationCenter
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = swaync
 	provides = notification-daemon
 	conflicts = swaync
 	conflicts = swaync-client
-	source = SwayNotificationCenter-0.10.0.tar.gz::https://github.com/ErikReider/SwayNotificationCenter/archive/v0.10.0.tar.gz
-	sha256sums = 5eb6fb0cfdaa9eb518565e032a7d9f716b3edfd99602697344eac00e404d4c8d
+	source = SwayNotificationCenter-0.10.1.tar.gz::https://github.com/ErikReider/SwayNotificationCenter/archive/v0.10.1.tar.gz
+	sha256sums = 5586d8a679dde5e530cb8b6f0c86abdd0d5e41362fc1c4e56e2211edea0f7a13
 
 pkgname = swaync
