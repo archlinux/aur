@@ -3,7 +3,7 @@
 
 pkgname=ds4drv
 pkgver=0.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Sony DualShock 4 Userspace Driver"
 arch=('any')
 url="https://github.com/chrippa/ds4drv"
@@ -11,6 +11,7 @@ license=('MIT')
 depends=(
     python-setuptools
     bluez-utils
+    bluez-deprecated-tools
     python-evdev
     python-pyudev
 )
