@@ -9,13 +9,13 @@
 pkgname=llvm70
 pkgdesc="LLVM compiler toolchain, version 7.0 (installed under /opt/llvm70)"
 pkgver=7.0.1
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://llvm.org/"
-license=('custom:University of Illinois/NCSA Open Source License')
+license=('NCSA')
 depends=('libedit' 'libxml2' 'python')
 makedepends=('cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2' 'python-sphinx')
-options=('staticlibs')
+options=('staticlibs' '!lto')
 source=(https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz)
 sha256sums=('a38dfc4db47102ec79dcc2aa61e93722c5f6f06f0a961073bd84b78fb949419b')
 
