@@ -1,0 +1,20 @@
+pkgbase = doh-relay-git
+	pkgdesc = DNS-over-HTTPS relay service.
+	pkgver = 1.0.0+beta.9.r87.20240222.f4d8f69
+	pkgrel = 1
+	url = https://github.com/tinkernels/doh-relay
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	makedepends = git
+	depends = go>=1.20
+	provides = dnslookup=1.0.0+beta.9.r87.20240222.f4d8f69
+	conflicts = dnslookup
+	source = git+https://github.com/tinkernels/doh-relay.git
+	sha1sums = SKIP
+
+pkgname = doh-relay-git
