@@ -1,21 +1,21 @@
-# Maintainer: cleanrock (AT gmail DOT com)
-# Maintainer: Erdbeerkaese (erdbeerkaese AT gawab DOT com)
+# Contributor: cleanrock (AT gmail DOT com)
+# Contributor: Erdbeerkaese (erdbeerkaese AT gawab DOT com)
 # Contributor: DuGi <dugi@irc.pl>
 
 pkgname=springlobby-git
-pkgver=0.224.40.g813a0bb
+pkgver=0.274.4.g290f1fa73
 pkgrel=1
 pkgdesc="A free cross-platform lobby client for the Spring RTS project, development version."
 arch=('i686' 'x86_64')
 url="https://github.com/springlobby/springlobby/wiki"
 license=('GPL2')
-depends=('wxgtk' 'boost-libs' 'libnotify' 'curl' 'hicolor-icon-theme' 'alure')
+depends=('wxwidgets-gtk3' 'boost-libs' 'libnotify' 'curl' 'hicolor-icon-theme' 'alure')
 optdepends=() 
 makedepends=('git' 'cmake' 'boost')
 conflicts=('springlobby')
 provides=('springlobby')
 install=springlobby.install
-source=('git://github.com/springlobby/springlobby.git')
+source=('git+https://github.com/springlobby/springlobby.git')
 noextract=()
 md5sums=('SKIP')
 # options=('!strip' 'debug' '!buildflags')
