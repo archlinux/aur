@@ -1,0 +1,5 @@
+[srgn]
+source = "github"
+github = "alexpovel/srgn"
+prefix = "srgn-v"
+use_latest_release = true
