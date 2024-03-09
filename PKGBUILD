@@ -2,30 +2,31 @@
 
 _githubuser=matmoul
 _githubrepo=plasma-containmentactions-customdesktopmenu
-_pkgtagname=v0.1.1
+_pkgtagname=v0.2.0
 
 pkgname=plasma-addons-customdesktopmenu
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
-pkgdesc='Custom desktop menu for Plasma5'
+pkgdesc='Custom desktop menu for Plasma6'
 arch=('any')
 url="https://github.com/${_githubuser}/${_githubrepo}"
-license=('GPL2')
-depends=('plasma-workspace')
+license=('GPL3')
+depends=('kdeplasma-addons')
 makedepends=('git' 'extra-cmake-modules')
 install=${pkgname}.install
 source=("${_githubrepo}::https://github.com/${_githubuser}/${_githubrepo}/archive/refs/tags/${_pkgtagname}.tar.gz")
-sha256sums=('1605fec314098c42062da8592db4f54391ee96dc3b0169d9b577fbd26b6d2254')
+sha256sums=('684cf81599b4e5efa9ddc39f0de89fe9a135f7c50c10e6585d2c6a3a9b9fcebc')
 
 build() {
 	cd "${_githubrepo}-${pkgver}"/src
-	mkdir build
-	cd build
-	cmake ..
-	make
+        cmake --fresh -B ../_build .
+        cd ../_build
+        make clean
+        make
 }
 
 package() {
-	cd "${_githubrepo}-${pkgver}"/src/build
-	install -D -m755 bin/plasma_containmentactions_customdesktopmenu.so ${pkgdir}/usr/lib/qt/plugins/plasma/containmentactions/plasma_containmentactions_customdesktopmenu.so
+	cd "${_githubrepo}-${pkgver}"
+        install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/plasma-addons-customdesktopmenu-git/LICENSE
+        install -D -m755 _build/bin/plasma/containmentactions/matmoul-customdesktopmenu.so ${pkgdir}/usr/lib/qt6/plugins/plasma/containmentactions/matmoul-customdesktopmenu.so
 }
