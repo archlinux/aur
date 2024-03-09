@@ -22,7 +22,10 @@ optdepends=(
     'docker'            # Docker image manager
     'docker-compose'    # Docker compose plugin, make sure 1Panel app store works.
 )
-conflicts=('1panel-dev-bin' '1panel-bin')
+conflicts=(
+    '1panel-dev-bin'
+    '1panel-bin'
+)
 source=("${pkgname}"::"git+https://github.com/1Panel-dev/1Panel.git")
 sha256sums=("SKIP")
 
