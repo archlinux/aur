@@ -1,7 +1,7 @@
 pkgbase = android-x86-libnghttp2
-	pkgdesc = Framing layer of HTTP/2 is implemented as a reusable C library (android)
-	pkgver = 1.58.0
-	pkgrel = 2
+	pkgdesc = Framing layer of HTTP/2 is implemented as a reusable C library (Android x86)
+	pkgver = 1.60.0
+	pkgrel = 1
 	url = https://nghttp2.org/
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = android-x86-libnghttp2
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/nghttp2/nghttp2/releases/download/v1.58.0/nghttp2-1.58.0.tar.xz
-	sha256sums = 4a68a3040da92fd9872c056d0f6b0cd60de8410de10b578f8ade9ecc14d297e0
+	source = https://github.com/nghttp2/nghttp2/releases/download/v1.60.0/nghttp2-1.60.0.tar.xz
+	md5sums = 2b09aaea09a783b2f31e3e5adaeaecbd
 
 pkgname = android-x86-libnghttp2

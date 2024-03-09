@@ -4,17 +4,17 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libnghttp2
-pkgver=1.58.0
-pkgrel=2
+pkgver=1.60.0
+pkgrel=1
 arch=('any')
-pkgdesc='Framing layer of HTTP/2 is implemented as a reusable C library (android)'
+pkgdesc="Framing layer of HTTP/2 is implemented as a reusable C library (Android ${_android_arch})"
 url='https://nghttp2.org/'
 license=('MIT')
 depends=('android-ndk')
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/nghttp2/nghttp2/releases/download/v$pkgver/nghttp2-$pkgver.tar.xz")
-sha256sums=('4a68a3040da92fd9872c056d0f6b0cd60de8410de10b578f8ade9ecc14d297e0')
+md5sums=('2b09aaea09a783b2f31e3e5adaeaecbd')
 
 build() {
     cd "${srcdir}/nghttp2-$pkgver"
