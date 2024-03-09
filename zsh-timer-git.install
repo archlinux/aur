@@ -1,0 +1,6 @@
+post_install() {
+    cat << EOF
+To activate this plugin add the following line to your sources section in ~/.zshrc:
+    source /usr/share/zsh/plugins/zsh-timer/timer.plugin.zsh
+EOF
+}

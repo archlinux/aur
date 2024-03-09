@@ -1,0 +1,14 @@
+pkgbase = zsh-timer-git
+	pkgdesc = This plugin allows to display command's execution time in a very nonintrusive way.
+	pkgver = r7156.06753e814
+	pkgrel = 1
+	url = https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/timer
+	install = zsh-timer-git.install
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = zsh
+	source = git+https://github.com/ohmyzsh/ohmyzsh.git
+	sha256sums = SKIP
+
+pkgname = zsh-timer-git
