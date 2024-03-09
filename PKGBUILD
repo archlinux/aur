@@ -43,6 +43,8 @@ build() {
 }
 
 package() {
+    if [ ! $(getent group users) ]; then groupadd users; fi ;
+
     cd "$pkgname"
     make DESTDIR="$pkgdir" install
 
