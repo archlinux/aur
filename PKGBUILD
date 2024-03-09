@@ -5,8 +5,8 @@
 # Get Last.fm API key and secret at https://www.last.fm/api/account/create
 
 pkgname=spotube
-pkgver=3.4.1
-pkgrel=2
+pkgver=3.5.0
+pkgrel=1
 pkgdesc="Open source Spotify client that doesn't require Premium nor uses Electron! Available for both desktop & mobile!"
 arch=("x86_64" "aarch64")
 url="https://spotube.krtirtho.dev/"
@@ -15,17 +15,13 @@ depends=("mpv" "libappindicator-gtk3" "libsecret" "libnotify" "at-spi2-core" "li
 makedepends=("flutter>=3.16.0" "clang" "cmake" "ninja" "pkgconf" "gtk3" "imagemagick" "jsoncpp")
 source=(
     "spotube-$pkgver.tar.gz::https://github.com/KRTirtho/spotube/archive/refs/tags/v$pkgver.tar.gz"
-    # See https://github.com/olivier2/spotube/tree/proxy-setting for more info
-    "001-oliver2-proxy-settings.diff::https://github.com/KRTirtho/spotube/compare/v$pkgver...olivier2:spotube:proxy-setting.diff"
 )
-sha256sums=('d130691e67c682978d15800b9618032035a75de28658b5055bfaa98206791787'
-            '931bebf7fdcbb74740ca88c906cd0678a0c0c615b0759e776c08084aa51e6bda')
+sha256sums=('76b79fb139208564056a249f068a11ad4ce6224cbbc61f1e6cd75fb00e798738')
 
-_release_date=2024-01-28
+_release_date=2024-03-08
 
 prepare() {
     cd "$srcdir/spotube-$pkgver"
-    patch -Np1 -i "$srcdir/001-oliver2-proxy-settings.diff"
     {
         echo "SPOTIFY_SECRETS=$MAKEPKG_SPOTUBE_SPOTIFY_SECRETS"
         echo "ENABLE_UPDATE_CHECK=0"
