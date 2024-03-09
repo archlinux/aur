@@ -1,6 +1,6 @@
 # Maintainer: Akira Fukushima <h3.poteto@gmail.com>
 pkgname=whalebird
-pkgver=6.0.3
+pkgver=6.0.4
 pkgrel=1
 pkgdesc="Single-column Fediverse client for desktop "
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('whalebird-bin' 'whalebird-desktop-git')
 source=("https://github.com/h3poteto/whalebird-desktop/archive/refs/tags/v$pkgver.tar.gz"
         whalebird.desktop
         electron-builder.yml)
-md5sums=('b4e67ae73516bf5e815d16f6559d25af'
+md5sums=('0fe1d3c207e01076158d2405a8831bf9'
          '6ab525c54c6e91871d0d6f05a76f5289'
          '480286196dc0614fd14b0d906c00b228')
 
