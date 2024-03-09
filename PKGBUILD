@@ -47,8 +47,6 @@ prepare() {
 }
 
 build() {
-  export CXXFLAGS+=" -Wno-error=deprecated-declarations"
-
   cmake -B build -S $_pluginname \
   -DCMAKE_BUILD_TYPE=None \
   -DCMAKE_INSTALL_PREFIX='/usr' \
@@ -57,7 +55,8 @@ build() {
   -DQT_VERSION=6 \
   -DCREDS="$SPOTIFY_TOKEN" \
   -DLASTFM_CREDS="$LASTFM_KEY" \
-  -Wno-dev
+  -Wno-dev \
+  -DCMAKE_CXX_FLAGS="-Wno-error=deprecated-declarations"
 
   cmake --build build
 }
