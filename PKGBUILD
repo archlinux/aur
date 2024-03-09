@@ -1,13 +1,13 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=simple64
-pkgver=2024.01.1
+pkgver=2024.03.1
 pkgrel=1
 _cheat_parser_commit='0de7c5c0af4508887ff996d56eb2a6a7fc827528'
 pkgdesc='Nintendo64 emulator based on Mupen64Plus'
 arch=('x86_64')
 url='https://simple64.github.io/'
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('hidapi' 'libpng' 'qt6-base' 'qt6-websockets' 'sdl2' 'sdl2_net'
          'vulkan-icd-loader' 'zlib' 'hicolor-icon-theme')
 optdepends=('discord-game-sdk: for Discord support'
