@@ -161,13 +161,7 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
-  mv ${pkgdir}/usr/bin/yuzu ${pkgdir}/usr/bin/suyu
-  ln -s ${pkgdir}/usr/bin/suyu ${pkgdir}/usr/bin/yuzu
-  mv ${pkgdir}/usr/bin/yuzu-cmd ${pkgdir}/usr/bin/suyu-cmd
-  ln -s ${pkgdir}/usr/bin/suyu-cmd ${pkgdir}/usr/bin/yuzu-cmd
-  mv ${pkgdir}/usr/bin/yuzu-room ${pkgdir}/usr/bin/suyu-room
-  ln -s ${pkgdir}/usr/bin/suyu-room ${pkgdir}/usr/bin/yuzu-room
-  install -Dm644 ${_pkgname}/dist/72-yuzu-input.rules -t "${pkgdir}"/usr/lib/udev/rules.d/
+  install -Dm644 ${_pkgname}/dist/72-suyu-input.rules -t "${pkgdir}"/usr/lib/udev/rules.d/
 }
 
 # vim: ts=2 sw=2 et
