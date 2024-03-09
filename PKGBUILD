@@ -2,12 +2,12 @@
 
 pkgname=mingw-w64-libass
 pkgver=0.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A portable library for SSA/ASS subtitles rendering (mingw-w64)"
 arch=('any')
 url="https://github.com/libass/libass/"
 license=('BSD')
-depends=('mingw-w64-crt' 'mingw-w64-fribidi' 'mingw-w64-fontconfig' 'mingw-w64-freetype2' 'mingw-w64-glib2' 'mingw-w64-harfbuzz')
+depends=('mingw-w64-crt' 'mingw-w64-fribidi' 'mingw-w64-fontconfig' 'mingw-w64-freetype2' 'mingw-w64-harfbuzz' 'mingw-w64-libunibreak')
 options=(!strip !buildflags !libtool staticlibs)
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-configure' 'nasm' 'git')
 _tag=915599d88e951e34079383cf926d2731bb45cea1
@@ -34,7 +34,8 @@ build() {
     mkdir -p ${srcdir}/libass/build-${_arch} && cd ${srcdir}/libass/build-${_arch}
 
     ${_arch}-configure \
-      --enable-fontconfig
+      --enable-fontconfig \
+      --enable-libunibreak
     make
   done
 }
