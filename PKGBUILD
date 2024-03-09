@@ -1,7 +1,7 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=python-pep517
-pkgver=0.13.0
+pkgver=0.13.1
 pkgrel=4
 pkgdesc='Wrappers to build Python packages using PEP 517 hooks'
 arch=('any')
@@ -10,15 +10,8 @@ license=('MIT')
 depends=('python' 'python-pip')
 makedepends=('python-flit-core' 'python-build' 'python-installer')
 checkdepends=('python-pytest' 'python-testpath')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pep517/pep517-$pkgver.tar.gz"
-        "a29513a03d60a90c048ad9281dd7e897bd6f40b1.patch")
-sha256sums=('ae69927c5c172be1add9203726d4b84cf3ebad1edcd5f71fcdc746e66e829f59'
-            '0676bad1483c869ececfb050b50005b102f0b9f17210993410355b7e64797efa')
-
-prepare() {
-  cd "pep517-$pkgver"
-  patch -p1 < "${srcdir}/a29513a03d60a90c048ad9281dd7e897bd6f40b1.patch"
-}
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pep517/pep517-$pkgver.tar.gz")
+sha256sums=('1b2fa2ffd3938bb4beffe5d6146cbcb2bda996a5a4da9f31abffd8b24e07b317')
 
 build() {
   cd "pep517-$pkgver"
