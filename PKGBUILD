@@ -6,7 +6,7 @@ pkgdesc="NovaNav: Lightweight browser for Linux and macOS, delivering fast, dist
 arch=('x86_64')
 url="https://github.com/felipealfonsog/NovaNav"
 license=('MIT')
-depends=('python' 'python-pip' 'python-pyqt5')
+depends=('python' 'python-pip' 'python-pyqt5' 'python-pyqt5-webengine')
 
 source=("https://github.com/felipealfonsog/NovaNav/archive/refs/tags/v.${pkgver}.tar.gz")
 

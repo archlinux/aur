@@ -8,6 +8,7 @@ pkgbase = novanav
 	depends = python
 	depends = python-pip
 	depends = python-pyqt5
+	depends = python-pyqt5-webengine
 	source = https://github.com/felipealfonsog/NovaNav/archive/refs/tags/v.0.0.5.tar.gz
 	sha256sums = 108cd6eff95e5bd36cc960b2b5c3747e65a70d42dbbb9533eae20676eb1ac1d0
 
