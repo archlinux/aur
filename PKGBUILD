@@ -1,40 +1,34 @@
-# Maintainer: Erik Wallström <erik.wallstrom@live.com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Erik Wallström <erik.wallstrom@live.com>
 pkgname=pop-icon-theme-git
-_pkgname=pop-icon-theme
-pkgver=r2326.27be527bda
+pkgver=3.5.0.r2504.3126c6a3f6
 pkgrel=1
-pkgdesc="An icon theme for Pop!_OS"
-arch=("any")
+pkgdesc="System76 Pop icon theme"
+arch=('any')
 url="https://github.com/pop-os/icon-theme"
-license=('CCPL')
-makedepends=("git" "meson" "ninja")
-optdepends=(
-	"gnome-shell"
-	"gnome-flashback"
-	"budgie-desktop"
-	"xfce4-session"
-	"mate-desktop"
-	"mate-desktop"
-	"lxde-common"
-	"pop-gtk-theme-git: Recommended gtk theme"
-)
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/pop-os/icon-theme.git")
-sha256sums=("SKIP")
+license=('CC-BY-SA-4.0 AND CC-BY-NC-SA-4.0')
+depends=('adwaita-icon-theme')
+makedepends=('git''dpkg''meson')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+options=('!strip')
+source=('git+https://github.com/pop-os/icon-theme.git')
+sha256sums=('SKIP')
 
 pkgver() {
-  	cd ${srcdir}/${_pkgname}
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd icon-theme
+  printf "%s.r%s.%s" "$(dpkg-parsechangelog --show-field Version | sed 's/1://;s/-/./')" \
+    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() { 
-  	cd ${srcdir}/${_pkgname}
-	meson --prefix='/usr' build
-	ninja -C build
+build() {
+  arch-meson icon-theme build
+  meson compile -C build
 }
 
 package() {
-  	cd ${srcdir}/${_pkgname}
-	DESTDIR="${pkgdir}" ninja -C build install
+  meson install -C build --destdir "$pkgdir"
+
+  cd icon-theme
+  install -Dm644 COPYING LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

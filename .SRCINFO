@@ -1,25 +1,16 @@
 pkgbase = pop-icon-theme-git
-	pkgdesc = An icon theme for Pop!_OS
-	pkgver = r2326.27be527bda
+	pkgdesc = System76 Pop icon theme
+	pkgver = 3.5.0.r2504.3126c6a3f6
 	pkgrel = 1
 	url = https://github.com/pop-os/icon-theme
 	arch = any
-	license = CCPL
-	makedepends = git
-	makedepends = meson
-	makedepends = ninja
-	optdepends = gnome-shell
-	optdepends = gnome-flashback
-	optdepends = budgie-desktop
-	optdepends = xfce4-session
-	optdepends = mate-desktop
-	optdepends = mate-desktop
-	optdepends = lxde-common
-	optdepends = pop-gtk-theme-git: Recommended gtk theme
+	license = CC-BY-SA-4.0 AND CC-BY-NC-SA-4.0
+	makedepends = gitdpkgmeson
+	depends = adwaita-icon-theme
 	provides = pop-icon-theme
 	conflicts = pop-icon-theme
-	source = pop-icon-theme::git+https://github.com/pop-os/icon-theme.git
+	options = !strip
+	source = git+https://github.com/pop-os/icon-theme.git
 	sha256sums = SKIP
 
 pkgname = pop-icon-theme-git
-
