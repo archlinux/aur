@@ -6,13 +6,13 @@
 pkgname=clang70
 pkgdesc="C language family frontend for LLVM, version 7.0 (installed under /opt/llvm70)"
 pkgver=7.0.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://llvm.org/"
-license=('custom:University of Illinois/NCSA Open Source License')
+license=('NCSA')
 depends=('llvm70' 'python')
 makedepends=('cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2' 'python-sphinx')
-options=('staticlibs')
+options=('staticlibs' '!lto')
 source=(https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz
         https://releases.llvm.org/$pkgver/cfe-$pkgver.src.tar.xz)
 sha256sums=('a38dfc4db47102ec79dcc2aa61e93722c5f6f06f0a961073bd84b78fb949419b'
