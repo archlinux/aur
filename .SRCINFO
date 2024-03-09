@@ -1,18 +1,30 @@
 pkgbase = libajantv2
-	pkgdesc = AJA NTV2 Open Source Static Libs and Headers for building applications that only wish to statically link against
-	pkgver = 16.2_bugfix5
-	pkgrel = 2
+	pkgdesc = Open-source SDK for discovering, interrogating and controlling NTV2 professional video I/O devices from AJA Video Systems, Inc
+	pkgver = 17.0.1
+	pkgrel = 1
 	epoch = 1
-	url = https://github.com/aja-video/ntv2
+	url = https://github.com/aja-video/libajantv2
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cmake
 	makedepends = git
-	options = !lto
-	options = staticlibs
 	options = debug
-	source = ntv2::git+https://github.com/aja-video/ntv2.git#commit=0acbac70a0b5e6509cca78cfbf69974c73c10db9
+	source = libajantv2::git+https://github.com/aja-video/libajantv2.git#commit=b6acce6b135c3d9ae7a2bce966180b159ced619f
 	sha256sums = SKIP
 
 pkgname = libajantv2
+	depends = gcc-libs
+	depends = glibc
+
+pkgname = ajantv2-tools
+	depends = gcc-libs
+	depends = glibc
+	depends = libajantv2
+
+pkgname = ajantv2-dkms
+	pkgdesc = Open-source device driver for discovering, interrogating and controlling NTV2 professional video I/O devices from AJA Video Systems, Inc
+	arch = any
+	depends = dkms
+	provides = ajantv2
+	conflicts = ajantv2
