@@ -1,19 +1,20 @@
 pkgbase = act_runner
 	pkgdesc = Runner for Gitea based on Gitea fork of act
 	pkgver = 0.2.6
-	pkgrel = 2
+	pkgrel = 4
 	url = https://gitea.com/gitea/act_runner
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	optdepends = docker
 	optdepends = gitea
+	backup = etc/act_runner/act_runner.yaml
 	source = act_runner-0.2.6.tar.gz::https://gitea.com/gitea/act_runner/archive/v0.2.6.tar.gz
 	source = act_runner.service
 	source = act_runner.sysusers
 	source = act_runner.tmpfiles
 	sha256sums = 8dbc7da07752d7ed8900581963045f3dcbfe02c52cb560acefd88099b8daf136
-	sha256sums = ffcd415415b68a2902c942eaf0b13b11d184974434e333735e31ce14cdab3b57
+	sha256sums = 0211027d0fe34635b1ad7bc301c941a1ae40d2c9c72eef66b552c9bc2ded8cf2
 	sha256sums = f0de2d8076ff59db8f5686addc096fc29e02190bfb7b44329979b3d9e1ad292f
 	sha256sums = 86885e9226ffb7bc3dbb105dc2e10630c41717212c804e19413acf3974c8b347
 
