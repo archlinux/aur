@@ -8,4 +8,5 @@
 !rabbitvcs-thunar.install
 !.gitignore
 !.SRCINFO
+!chroot-build.sh
 
