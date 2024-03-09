@@ -5,22 +5,34 @@
 # Maintainer: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
+declare -r _tag="17eb440d6792960c1a56d2b8832b9edd23eadab3"
+
 pkgname="inja"
 pkgver="3.4.0"
 pkgrel="1"
 pkgdesc="A template engine for modern C++."
 arch=("any")
-url="https://github.com/pantor/${pkgname}"
+url="https://github.com/Spixmaster/${pkgname}"
 license=("MIT")
 depends=("nlohmann-json")
 makedepends=("cmake" "doxygen")
-source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("3d9a1dc084c03c5801346672db65b6c833d229a0f7fa9a09418fb24cbba0ff464607873cf7c81ba4ecedf912e0e5e394d719a73d67860600756f88d8716a0211")
+checkdepends=("doctest")
+source=("${pkgname}::git+${url}.git#tag=${_tag}")
+sha512sums=("SKIP")
 
 build()
 {
-    cmake -B "${srcdir}"/"${pkgname}"-"${pkgver}"/build/ -D BUILD_BENCHMARK=OFF -D BUILD_TESTING=OFF -D CMAKE_BUILD_TYPE=None -D CMAKE_INSTALL_PREFIX=/usr/ -D INJA_BUILD_TESTS=OFF -D INJA_USE_EMBEDDED_JSON=OFF -S "${srcdir}"/"${pkgname}"-"${pkgver}"/ -Wno-dev
-    cmake --build "${srcdir}"/"${pkgname}"-"${pkgver}"/build/
+    for status in "OFF" "ON"; do
+        cmake -B "${srcdir}"/"${pkgname}"/build/ -D BUILD_BENCHMARK=OFF -D BUILD_TESTING="${status}" -D CMAKE_BUILD_TYPE=None -D CMAKE_INSTALL_PREFIX=/usr/ -D COVERALLS=OFF -D INJA_BUILD_TESTS="${status}" -D INJA_EXPORT=ON -D INJA_INSTALL=ON -D INJA_INSTALL_SINGLE_HEADER=ON -D INJA_USE_EMBEDDED_JSON=OFF -S "${srcdir}"/"${pkgname}"/ -Wno-dev
+        cmake --build "${srcdir}"/"${pkgname}"/build/
+    done
+}
+
+check()
+{
+    cd "${srcdir}"/"${pkgname}"/build/ || exit 1
+    ./inja_test
+    ./single_inja_test
 }
 
 package()
@@ -30,18 +42,18 @@ package()
     mkdir -p "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 
     # Install the software.
-    DESTDIR="${pkgdir}"/ cmake --install "${srcdir}"/"${pkgname}"-"${pkgver}"/build/
+    DESTDIR="${pkgdir}"/ cmake --install "${srcdir}"/"${pkgname}"/build/
 
     # Install the documentation.
-    install -Dm644 "${srcdir}"/"${pkgname}"-"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    install -Dm644 "${srcdir}"/"${pkgname}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
 
-    cd "${srcdir}"/"${pkgname}"-"${pkgver}"/doc/ || exit 1
+    cd "${srcdir}"/"${pkgname}"/doc/ || exit 1
     doxygen Doxyfile
-    cp -r "${srcdir}"/"${pkgname}"-"${pkgver}"/doc/* "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    cp -r "${srcdir}"/"${pkgname}"/doc/* "${pkgdir}"/usr/share/doc/"${pkgname}"/
 
     find "${pkgdir}"/usr/share/doc/"${pkgname}"/ -type d -exec chmod 755 {} +
     find "${pkgdir}"/usr/share/doc/"${pkgname}"/ -type f -exec chmod 644 {} +
 
     # Install the license.
-    install -Dm644 "${srcdir}"/"${pkgname}"-"${pkgver}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    install -Dm644 "${srcdir}"/"${pkgname}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }
