@@ -3,9 +3,9 @@
 
 pkgname=obs-pipewire-audio-capture
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='PipeWire audio capturing for OBS Studio'
-arch=('x86_64')
+arch=('x86_64' 'x86_64_v3')
 url='https://github.com/dimtpap/obs-pipewire-audio-capture'
 license=('GPL2')
 depends=('obs-studio>=28' 'wireplumber')

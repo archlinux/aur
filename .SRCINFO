@@ -1,9 +1,10 @@
 pkgbase = obs-pipewire-audio-capture
 	pkgdesc = PipeWire audio capturing for OBS Studio
 	pkgver = 1.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dimtpap/obs-pipewire-audio-capture
 	arch = x86_64
+	arch = x86_64_v3
 	license = GPL2
 	makedepends = cmake
 	depends = obs-studio>=28
