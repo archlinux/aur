@@ -2,7 +2,7 @@
 
 pkgbase=ok-edu-classroom-desktop-git
 pkgname=(ok-msg-desktop-git)
-pkgver=r11.4ebddbc
+pkgver=r31.341cfc8
 pkgrel=1
 arch=(x86_64
     aarch64
@@ -10,12 +10,22 @@ arch=(x86_64
 _url="https://github.com/okstar-org"
 url="${_url}/ok-msg-desktop"
 pkgdesc="OkMSG是由OkStar(okstar.org)社区开发和维护的注重数据安全与保护的企业通讯协同工具，支持独立私有化部署的集即时消息、语音、视频通话、发送文件、会议等多种功能于一身的开源项目，同时让您的企业更加有效开启协作、有效沟通，控制成本，开拓新业务，并帮助您加速发展业务。"
-provides=(${pkgname%-git})
-conflicts=(${pkgname%-git})
+provides=(${pkgname%-git} ok-gloox)
+conflicts=(${pkgname%-git} ok-gloox)
 replaces=()
 license=('GPL-2.0-or-later' 'MulanPubL-2.0')
 groups=()
-depends=(
+depends=(glibc
+    gcc-libs)
+# _cver=14
+# _gver=12
+makedepends=(
+    cmake
+#     clang${_cver}
+#     llvm${_cver}
+#     gcc${_gver}
+    git
+    ninja
     python
 #     gbm
     gtk3
@@ -62,22 +72,15 @@ depends=(
     libpng
     libsodium
     libxss
-
+    highway
 # webrtc gloox
 #     webrtc-audio-processing
 #     ok-gloox
-            )
-makedepends=(
-    cmake
-    clang
-    llvm
-    gcc
-    git
-    ninja)
+    )
 checkdepends=()
 optdepends=()
 source=("${pkgname}::git+${_url}/ok-msg-desktop.git"
-    "gloox::git+https://gitee.com/okstar-org/ok-gloox.git"
+    "gloox::git+${_url}/ok-gloox.git"
 )
 sha256sums=('SKIP'
             'SKIP')
@@ -90,6 +93,7 @@ prepare()
     git submodule init
     git config submodule.3rdparty/gloox.url "$srcdir/gloox"
     git -c protocol.file.allow=always submodule update
+    git checkout develop
 }
 
 pkgver() {
@@ -105,18 +109,32 @@ build() {
 #     sed -i '1,13d' cmake/dependencies.cmake
 # see：https://wiki.archlinux.org/title/CMake_package_guidelines
 #     cmake -DCMAKE_BUILD_TYPE=Release None \
+# clang
+#     cmake -DCMAKE_BUILD_TYPE=Debug \
+#         -DCMAKE_INSTALL_PREFIX=/usr \
+#         -DCMAKE_C_COMPILER=/usr/lib/llvm${_cver}/bin/clang \
+#         -DCMAKE_CXX_COMPILER=/usr/lib/llvm${_cver}/bin/clang++ \
+#         -B build \
+#         -G Ninja \
+#         -Wno-dev
+# #         -DCMAKE_MAKE_PROGRAM=/usr/bin/ninja \
+# gcc 12
+#     cmake -DCMAKE_BUILD_TYPE=Debug \
+#         -DCMAKE_INSTALL_PREFIX=/usr \
+#         -DCMAKE_C_COMPILER=/usr/bin/gcc-${_gver} \
+#         -DCMAKE_CXX_COMPILER=/usr/bin/g++-${_gver} \
+#         -B build \
+#         -G Ninja \
+#         -Wno-dev
     cmake -DCMAKE_BUILD_TYPE=Debug \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_MAKE_PROGRAM=/usr/bin/ninja \
-        -DCMAKE_C_COMPILER=clang \
-        -DCMAKE_CXX_COMPILER=clang++ \
         -B build \
         -G Ninja \
         -Wno-dev
-
+#         -DCMAKE_MAKE_PROGRAM=/usr/bin/ninja \
     ninja -C build
 }
 
 package() {
-    DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname%-git}/build install
+    DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname}/build install
 }
