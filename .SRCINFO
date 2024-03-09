@@ -1,5 +1,5 @@
 pkgbase = kf6-servicemenus-rootactions
-	pkgdesc = Adds context menu entries for certain root only entries, authenticated though polkit.
+	pkgdesc = Allows admin users to perform several root only actions from dolphin via polkit agent.
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://codeberg.org/stefanwimmer128/kf6-servicemenus-rootactions
