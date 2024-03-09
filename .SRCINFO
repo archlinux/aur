@@ -1,6 +1,6 @@
 pkgbase = android-x86-hwdata
-	pkgdesc = hardware identification databases (android)
-	pkgver = 0.379
+	pkgdesc = hardware identification databases (Android x86)
+	pkgver = 0.380
 	pkgrel = 1
 	url = https://github.com/vcrhonek/hwdata
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = android-x86-hwdata
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/vcrhonek/hwdata/archive/refs/tags/v0.379.tar.gz
+	source = https://github.com/vcrhonek/hwdata/archive/refs/tags/v0.380.tar.gz
 	validpgpkeys = 3C40194FB79138CE0F78FD4919C2F062574F5403
-	md5sums = 2d8d413696545fd889ca3d32b78f64b5
+	md5sums = 65d190da425b4fc9a38f4fb96b21f56f
 
 pkgname = android-x86-hwdata
