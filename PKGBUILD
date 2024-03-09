@@ -36,4 +36,5 @@ build() {
 package() {
   cd ${_pkgname}
   DESTDIR="${pkgdir}" cmake --install build
+  install -Dm644 -t ${pkgdir}/usr/share/licenses/${pkgname}/ LICENSE.txt
 }
