@@ -1,6 +1,6 @@
 pkgbase = python-pyautogui
 	pkgdesc = A cross-platform GUI automation Python module for human beings
-	pkgver = 0.9.53
+	pkgver = 0.9.54
 	pkgrel = 1
 	url = https://github.com/asweigart/pyautogui
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-pyautogui
 	optdepends = scrot: screenshot tool
 	provides = python-pyautogui
 	conflicts = python-pyautogui-git
-	source = https://files.pythonhosted.org/packages/source/P/PyAutoGUI/PyAutoGUI-0.9.53.tar.gz
-	b2sums = 4aa1463cb4c1ff91f6bc91d3977e426ca531bd575aee0137914f691008729043803b874db9b4ea51463f996ae44f307bbd2e048a50bc976d458405d0ee244def
+	source = https://files.pythonhosted.org/packages/source/P/PyAutoGUI/PyAutoGUI-0.9.54.tar.gz
+	b2sums = a18994b0392a8c4d9b068b1cebe1d65b67526f04cbaf6d6f0d6406336ebc40b770c3b617025e6db21558e603f7cd60badced99ac59e51e375aed4a17236446e0
 
 pkgname = python-pyautogui
