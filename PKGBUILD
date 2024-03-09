@@ -4,7 +4,7 @@
 # Contributor: kartikmohta
 # Contributor: calvertdw
 pkgname=ros2-arch-deps
-pkgver=0.18
+pkgver=0.17
 pkgrel=1
 pkgdesc="Dependencies for building ROS2 on Arch"
 url="https://index.ros.org/doc/ros2/"
@@ -39,8 +39,7 @@ depends=('asio'
          'procps-ng' # provides /usr/bin/free command
          'qt5-base' 
          'qt5-svg'
-         'sip'
-	 'tinyxml'
+         'tinyxml'
          'tinyxml2'
          'vtk'
          'wget'
@@ -69,10 +68,12 @@ depends=('asio'
          'python-colcon-zsh'         
          'python-colcon-cd'         
          'python-colcon-common-extensions'
-         'python-rospkg'
+         'python-pyqt5-sip4'
+	 'python-rospkg'
          'python-rosdistro'
          'python-rosdep'
          'python-sip4'
+	 'sip4'
 )
 
 optdepends=('python-pydot: running the node graph in rqt'
