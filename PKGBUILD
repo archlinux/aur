@@ -7,7 +7,7 @@
 
 pkgname=pcl-git
 pkgver=r14291.cc9c979cd
-pkgrel=2
+pkgrel=1
 pkgdesc="a standalone, large scale, open project for 2D/3D image and point cloud processing"
 arch=(i686 x86_64)
 url="http://pointclouds.org/"
@@ -22,8 +22,8 @@ depends=(
 	libxcursor
 	openmpi
 	qhull
-	qt6-base
-	qt6-webengine
+	qt5-base
+	qt5-webkit
 	vtk
 	pugixml
 	fmt
