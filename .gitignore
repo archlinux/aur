@@ -1,0 +1,4 @@
+/src/
+/pkg/
+/kf6-servicemenus-rootactions/
+*.pkg.tar.zst

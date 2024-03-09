@@ -1,0 +1,50 @@
+labels:
+  picus: small
+
+steps:
+  build:
+    image: codeberg.org/stefanwimmer128/archlinux-chaotic-paru-user:latest
+    commands:
+      - export HOME=/home/user
+      - sudo chown -R $(id -u):$(id -g) .
+      - paru -Syu --noconfirm
+      - makepkg -s --noconfirm
+  upload:
+    image: woodpeckerci/plugin-s3
+    settings:
+      bucket: kf6-servicemenus-rootactions
+      source: "*.pkg.tar.zst"
+      target: /${CI_PIPELINE_NUMBER}/
+      path_style: true
+      endpoint: https://minio.stefanwimmer128.xyz/
+      access_key:
+        from_secret: upload_key
+      secret_key:
+        from_secret: upload_secret
+  checksum:
+    image: alpine:latest
+    commands:
+      - sha256sum *.pkg.tar.zst | tee SHA256SUM
+  upload-checksum:
+    image: woodpeckerci/plugin-s3
+    settings:
+      bucket: kf6-servicemenus-rootactions
+      source: SHA256SUM
+      target: /${CI_PIPELINE_NUMBER}/
+      path_style: true
+      endpoint: https://minio.stefanwimmer128.xyz/
+      access_key:
+        from_secret: upload_key
+      secret_key:
+        from_secret: upload_secret
+  publish:
+    when:
+      event: tag
+    image: woodpeckerci/plugin-gitea-release
+    settings:
+        base_url: https://codeberg.org/
+        files:
+          - kf6-servicemenus-rootactions-${CI_COMMIT_TAG##v}-any.pkg.tar.zst
+          - SHA256SUM
+        api_key:
+          from_secret: release_token
