@@ -1,0 +1,18 @@
+pkgbase = kf6-servicemenus-rootactions-git
+	pkgdesc = Adds context menu entries for certain root only entries, authenticated though polkit.
+	pkgver = 1.0.0.r0.g452676f
+	pkgrel = 1
+	url = https://codeberg.org/stefanwimmer128/kf6-servicemenus-rootactions
+	arch = any
+	license = GPL-2.0-or-later
+	depends = dolphin
+	depends = kdialog
+	depends = perl
+	depends = polkit
+	optdepends = kate
+	provides = kf6-servicemenus-rootactions
+	conflicts = kf6-servicemenus-rootactions
+	source = kf6-servicemenus-rootactions::git+https://codeberg.org/stefanwimmer128/kf6-servicemenus-rootactions.git
+	sha256sums = SKIP
+
+pkgname = kf6-servicemenus-rootactions-git
