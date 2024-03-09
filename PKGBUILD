@@ -2,10 +2,10 @@
 
 _githubuser=matmoul
 _githubrepo=plasma-containmentactions-customdesktopmenu
-_gitcommit=5b70ecb8feab1b23877e35890ed64ce16c98bac4
+_gitcommit=896bfa4f76620cc377088e454281a12dfa3f5a74
 
 pkgname=plasma-addons-customdesktopmenu-git
-pkgver=0.2.0.r4.5b70ecb
+pkgver=0.2.0.r5.896bfa4
 pkgrel=1
 pkgdesc='Custom desktop menu for Plasma6'
 arch=('any')
@@ -19,10 +19,14 @@ sha256sums=('SKIP')
 
 build() {
 	cd "${_githubrepo}"/src
-	./build.sh
+	cmake --fresh -B ../_build .
+	cd ../_build
+	make clean
+	make
 }
 
 package() {
-	cd "${_githubrepo}"/_build
-	install -D -m755 bin/plasma/containmentactions/matmoul-customdesktopmenu.so ${pkgdir}/usr/lib/qt6/plugins/plasma/containmentactions/matmoul-customdesktopmenu.so
+	cd "${_githubrepo}"
+	install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/plasma-addons-customdesktopmenu-git/LICENSE
+	install -D -m755 _build/bin/plasma/containmentactions/matmoul-customdesktopmenu.so ${pkgdir}/usr/lib/qt6/plugins/plasma/containmentactions/matmoul-customdesktopmenu.so
 }
