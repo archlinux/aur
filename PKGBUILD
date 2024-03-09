@@ -1,6 +1,6 @@
 # Maintainer: Herbert Knapp <herbert.knapp@edu.uni-graz.at>
 pkgname=gtk-gnutella-git
-pkgver=1.2.2.r0.gadc121a3e
+pkgver=1.2.3.r8.g0cbba2f8b
 pkgrel=1
 pkgdesc='Efficient Gnutella 2 client (latest git version)'
 arch=('i686' 'x86_64')

@@ -1,6 +1,6 @@
 pkgbase = gtk-gnutella-git
 	pkgdesc = Efficient Gnutella 2 client (latest git version)
-	pkgver = 1.2.2.r0.gadc121a3e
+	pkgver = 1.2.3.r8.g0cbba2f8b
 	pkgrel = 1
 	url = http://gtk-gnutella.sourceforge.net/
 	install = gtk-gnutella-git.install
