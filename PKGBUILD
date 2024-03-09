@@ -3,7 +3,7 @@
 _pkgname=suyu
 _branch=dev
 pkgname=suyu-dev-git
-pkgver=r27098.b92e62988
+pkgver=r27167.d02af377d4
 pkgrel=1
 pkgdesc="suyu is the afterlife the world's most popular, open-source, Nintendo Switch emulator (dev branch)"
 arch=(x86_64)
@@ -52,9 +52,9 @@ makedepends=(
   shaderc
   spirv-headers
   vulkan-headers
+  catch2
 )
-options=(!debug)
-_tag=d32620fe796f9cd90e8e5660deb0fc8f4decd61f
+options=(!debug lto)
 source=(
   git+https://gitlab.com/suyu-emu/suyu.git#branch=${_branch}
   git+https://github.com/arsenm/sanitizers-cmake.git
