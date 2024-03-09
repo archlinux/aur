@@ -1,4 +1,4 @@
-# Maintainer: FailSpy
+# Maintainer: FailSpy <failspy at exonull dot com>
 # Contributor: GrbavaCigla <alexa.ognjanovic at gmail dot com>
 # Contributor: hawerner
 # Contributor: tryst
