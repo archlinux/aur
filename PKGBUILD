@@ -5,9 +5,11 @@ pkgrel=1
 pkgdesc="A fast single-producer, single-consumer lock-free queue for C++."
 arch=('any')
 url='https://github.com/cameron314/readerwriterqueue'
-license=('Simplified BSD License')
+license=('BSD-2-Clause')
 depends=()
 makedepends=('git')
+provides=(readerwriterqueue)
+conflicts=(readerwriterqueue)
 options=('!strip' '!buildflags' 'staticlibs')
 source=("${pkgname}::git+https://github.com/cameron314/readerwriterqueue.git#branch=master")
 sha1sums=('SKIP')
