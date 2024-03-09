@@ -2,7 +2,7 @@
 
 pkgname=atlas-git
 pkgdesc="A modern tool for managing database schemas"
-pkgver=0.19.0
+pkgver=0.19.2
 pkgrel=1
 binary=atlas
 arch=("x86_64")
@@ -16,8 +16,8 @@ source=(
   "${binary}-${pkgver}.tar.gz::https://github.com/ariga/${binary}/archive/v${pkgver}.tar.gz"
 )
 
-sha256sums=('e3f8a366ca7836af457798c025be4119f40ddbef13a38fb399510cd01fc8491c')
-b2sums=('7b5a12497e25d84857b497f0a28bfba074744e009d171e222494c59fbe4232877f3b2fc22a0116fedc59e2f8b83efac77412f93afa5e19423c02b10478e48092')
+sha256sums=('54b1e793278b451ae7302fc01bbdcd2d3bb122b2824d84631507ad86822ba9b9')
+b2sums=('8517cd05e02fdd0635b374c4dde8752e6fa7950d035a81caecb413829416b4e81a2368bb7901449a7dea49b2da1a25ea9d2cd40b8575814fc5d114b7d57a03d5')
 
 prepare() {
   cd "${srcdir}/${binary}-${pkgver}"
