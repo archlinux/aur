@@ -1,0 +1,16 @@
+pkgbase = go-bindata-hashicorp
+	pkgdesc = A small utility which generates Go code from any file (Hashicorp version)
+	pkgver = 3.0.7+bf7910af
+	pkgrel = 5
+	url = https://github.com/hashicorp/go-bindata
+	arch = x86_64
+	license = CC0 1.0
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = go-bindata
+	conflicts = go-bindata
+	source = git+https://github.com/hashicorp/go-bindata#commit=bf7910af899725e4938903fb32048c7c0b15f12e
+	sha512sums = SKIP
+
+pkgname = go-bindata-hashicorp
