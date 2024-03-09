@@ -1,6 +1,6 @@
 pkgbase = android-armv7a-eabi-libksba
-	pkgdesc = A CMS and X.509 access library (android)
-	pkgver = 1.5.0
+	pkgdesc = A CMS and X.509 access library (Android armv7a-eabi)
+	pkgver = 1.6.6
 	pkgrel = 1
 	url = https://www.gnupg.org/related_software/libksba/index.html
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = android-armv7a-eabi-libksba
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://gnupg.org/ftp/gcrypt/libksba/libksba-1.5.0.tar.bz2
-	sha256sums = ae4af129216b2d7fdea0b5bf2a788cd458a79c983bb09a43f4d525cc87aba0ba
+	source = https://gnupg.org/ftp/gcrypt/libksba/libksba-1.6.6.tar.bz2
+	md5sums = b84be832461d4704c227c3719288bfc9
 
 pkgname = android-armv7a-eabi-libksba
