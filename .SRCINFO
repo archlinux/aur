@@ -1,6 +1,6 @@
 pkgbase = akamai-bin
 	pkgdesc = Manage and configure Akamai from the Command Line
-	pkgver = 1.5.4
+	pkgver = 1.5.6
 	pkgrel = 2
 	url = https://github.com/akamai/cli
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = akamai-bin
 	license = Apache
 	provides = akamai
 	provides = akamai-cli
-	source = https://raw.githubusercontent.com/akamai/cli/v1.5.4/LICENSE
+	source = https://raw.githubusercontent.com/akamai/cli/v1.5.6/LICENSE
 	b2sums = 21231bed1327f35b322032568be6b848d23595a294f5e055bc2506a57c122b3ebf3809ae9574b2f16b8856c744816658a06091f8d8e596a31586b3f632ae5d6b
-	source_x86_64 = akamai-bin-1.5.4-x86_64::https://github.com/akamai/cli/releases/download/v1.5.4/akamai-v1.5.4-linuxamd64
+	source_x86_64 = akamai-bin-1.5.6-x86_64::https://github.com/akamai/cli/releases/download/v1.5.6/akamai-v1.5.6-linuxamd64
 	b2sums_x86_64 = afb2005e67d37f831d779043c32f2c81532bca5d3e3e8c58d54d690f434d51d4b13cd020c9c190e16bb71256aeb44cc627be16bb0cfe9dad90fe1a77b15eb8de
-	source_pentium4 = akamai-bin-1.5.4-x86_64::https://github.com/akamai/cli/releases/download/v1.5.4/akamai-v1.5.4-linux386
+	source_pentium4 = akamai-bin-1.5.6-x86_64::https://github.com/akamai/cli/releases/download/v1.5.6/akamai-v1.5.6-linux386
 	b2sums_pentium4 = afb2005e67d37f831d779043c32f2c81532bca5d3e3e8c58d54d690f434d51d4b13cd020c9c190e16bb71256aeb44cc627be16bb0cfe9dad90fe1a77b15eb8de
 
 pkgname = akamai-bin
