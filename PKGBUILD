@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=probe-rs-git
-pkgver=0.23.0.r14.g6ac76ef8
+pkgver=0.23.0.r21.g8e561138
 pkgrel=1
 pkgdesc="A debugging toolset and library for debugging embedded ARM and RISC-V targets on a separate host"
 arch=(x86_64
@@ -9,10 +9,23 @@ arch=(x86_64
     riscv64)
 url="https://github.com/probe-rs/probe-rs"
 license=('MIT' 'Apache-2.0')
-provides=(${pkgname%-git})
-conflicts=(${pkgname%-git})
+provides=(${pkgname%-git}
+    cargo-embed
+    cargo-flash
+    rtthost
+    smoke_tester
+    target-gen
+    xtask)
+conflicts=(${pkgname%-git}
+    cargo-embed
+    cargo-flash
+    rtthost
+    smoke_tester
+    target-gen
+    xtask)
 replaces=()
 depends=(gcc-libs
+    glibc
     libusb
     libftdi
     openssl
@@ -20,7 +33,7 @@ depends=(gcc-libs
 makedepends=(git
     cargo)
 backup=()
-options=('!lto')
+options=(!lto)
 install=
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
@@ -51,12 +64,12 @@ build() {
 # 		--release
 }
 
-# check() {
-#     cd "${srcdir}/${pkgname}/"
-#
-#     export RUSTUP_TOOLCHAIN=stable
-#     cargo test --all-features
-# }
+check() {
+    cd "${srcdir}/${pkgname}/"
+
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --all-features
+}
 
 package() {
     cd "${srcdir}/${pkgname}/"
