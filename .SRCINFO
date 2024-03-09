@@ -1,0 +1,17 @@
+pkgbase = corlink-server-git
+	pkgdesc = The corlink licensing server for the corlink project.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/ruby-network/corlink
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = make
+	depends = go
+	depends = upx
+	provides = corlink-server
+	conflicts = corlink-server
+	source = git+https://github.com/ruby-network/corlink
+	sha256sums = SKIP
+
+pkgname = corlink-server-git
