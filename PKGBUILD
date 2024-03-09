@@ -2,7 +2,7 @@
 
 pkgname=gcap2023
 pkgver=2023.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Brazilian physical person income tax (IRPF) auxiliary program for calculation of capital gains'
 arch=('any')
 url='https://www.gov.br/pt-br/servicos/apurar-imposto-sobre-ganhos-de-capital'
@@ -31,7 +31,7 @@ package() {
     install -D -m644 "GCAP${pkgver%%.*}/Leia_me.htm" -t "${pkgdir}/usr/share/doc/${pkgname}"
     cp -dr --no-preserve='ownership' "GCAP${pkgver%%.*}/help" "${pkgdir}/usr/share/doc/${pkgname}"
     cp -dr --no-preserve='ownership' "GCAP${pkgver%%.*}/lib" "${pkgdir}/usr/share/java/${pkgname}"
-    ln -s ../../doc/gcap/help "${pkgdir}/usr/share/java/${pkgname}/help"
+    ln -s "../../doc/${pkgname}/help" "${pkgdir}/usr/share/java/${pkgname}/help"
     
     local _file
     local _res
