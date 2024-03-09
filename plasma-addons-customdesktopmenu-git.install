@@ -1,0 +1,11 @@
+post_install() {
+	kbuildsycoca6
+}
+
+post_upgrade() {
+	kbuildsycoca6
+}
+
+post_remove() {
+	kbuildsycoca6
+}

@@ -6,7 +6,7 @@ _gitcommit=896bfa4f76620cc377088e454281a12dfa3f5a74
 
 pkgname=plasma-addons-customdesktopmenu-git
 pkgver=0.2.0.r5.896bfa4
-pkgrel=1
+pkgrel=2
 pkgdesc='Custom desktop menu for Plasma6'
 arch=('any')
 url="https://github.com/${_githubuser}/${_githubrepo}"
@@ -14,6 +14,7 @@ license=('GPL3')
 #depends=('plasma-desktop' 'kdeplasma-addons')
 depends=('kdeplasma-addons')
 makedepends=('git' 'extra-cmake-modules')
+install=${pkgname}.install
 source=("git+https://github.com/${_githubuser}/${_githubrepo}.git#commit=${_gitcommit}")
 sha256sums=('SKIP')
 
