@@ -1,10 +1,9 @@
 pkgbase = wechat-beta-bwrap
 	pkgdesc = WeChat Testing with bwrap sandbox
 	pkgver = 1.0.0.145
-	pkgrel = 9
+	pkgrel = 10
 	arch = x86_64
 	license = proprietary
-	makedepends = dpkg
 	depends = nss
 	depends = xdg-utils
 	depends = libxss

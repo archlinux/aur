@@ -2,7 +2,7 @@
 #
 pkgname=wechat-beta-bwrap
 pkgver=1.0.0.145
-pkgrel=9
+pkgrel=10
 uosver=2.1.5
 epoch=
 pkgdesc="WeChat Testing with bwrap sandbox"
