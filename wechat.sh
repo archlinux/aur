@@ -93,6 +93,7 @@ function execApp() {
 		--ro-bind /usr/lib/snapd-xdg-open/xdg-open /usr/bin/xdg-open \
 		--setenv QT_QPA_PLATFORM xcb \
 		--setenv LD_LIBRARY_PATH /opt/wechat-beta:/usr/lib/wechat-uos/license \
+		--setenv QT_AUTO_SCREEN_SCALE_FACTOR 1 \
 		/opt/wechat-beta/wechat
 }
 
