@@ -13,6 +13,7 @@ pkgbase = kwin-effects-forceblur-git
 	depends = kwin
 	depends = kcrash
 	depends = kglobalaccel
+	conflicts = lightlyshaders
 	source = kwin-effects-forceblur-git::git+https://github.com/taj-ny/kwin-forceblur-wayland.git
 	sha256sums = SKIP
 

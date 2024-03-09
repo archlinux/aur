@@ -8,6 +8,7 @@ arch=(x86_64)
 url="https://github.com/taj-ny/kwin-forceblur-wayland"
 license=(GPL3)
 depends=(kio knotifications kwin kcrash kglobalaccel)
+conflicts=(lightlyshaders)
 makedepends=(git extra-cmake-modules qt6-tools)
 source=("$pkgname::git+${url}.git")
 sha256sums=('SKIP')
