@@ -2,9 +2,9 @@
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 
 pkgname=python-pyhanko
-_name=pyHanko
-pkgver=0.21.0
-pkgrel=2
+_pkgname=pyHanko
+pkgver=0.22.0
+pkgrel=1
 pkgdesc="Tools for stamping and signing PDF files"
 url="https://github.com/MatthiasValvekens/pyHanko"
 license=(MIT)
@@ -51,10 +51,10 @@ optdepends=(
   'python-fonttools: to use OpenType fonts'
   'python-uharfbuzz: to use OpenType fonts'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f5ca74c2a4c966079763e546fc25b386073c44c901a33bba8fb184036d5fab10')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('e8db5a072b32f551adee117eea5333063994710f4d7fd75be68b9198b0f1efaf')
 
-_archive="$_name-$pkgver"
+_archive="$_pkgname-$pkgver"
 
 build() {
   cd "$_archive"
