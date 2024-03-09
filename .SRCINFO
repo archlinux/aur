@@ -1,7 +1,7 @@
 pkgbase = firefox-esr-globalmenu
 	pkgdesc = Standalone web browser from mozilla.org, Extended Support Release. (With appmenu patch from Ubuntu)
 	pkgver = 115.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/en-US/firefox/enterprise/
 	arch = x86_64
 	license = MPL-2.0

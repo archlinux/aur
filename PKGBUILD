@@ -4,10 +4,13 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
+_ff_displayname=FirefoxESR
+_ff_theme=official
+
 _pkgname=firefox-esr
 pkgname=firefox-esr-globalmenu
 pkgver=115.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release. (With appmenu patch from Ubuntu)"
 url="https://www.mozilla.org/en-US/firefox/enterprise/"
 arch=(x86_64)
@@ -94,7 +97,11 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
 
 prepare() {
-	mkdir mozbuild
+	if ! mkdir mozbuild; then
+		error "Remove '$srcdir' before build!"
+		exit 1
+	fi
+	
 	cd firefox-$pkgver
 
 	for patch in "${source[@]}"; do
@@ -123,17 +130,13 @@ prepare() {
 		ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 
 		# Branding
-		ac_add_options --enable-official-branding
+		ac_add_options --with-branding=browser/branding/$_ff_theme
 		ac_add_options --enable-update-channel=release
 		ac_add_options --with-distribution-id=org.archlinux
-		ac_add_options --with-unsigned-addon-scopes=app,system
-		ac_add_options --allow-addon-sideload
-		export MOZILLA_OFFICIAL=1
-		export MOZ_APP_REMOTINGNAME=${_pkgname}
-		export MOZ_REMOTE_SETTINGS_DEVTOOLS=1
-		# ESR
 		ac_add_options --with-app-name=$_pkgname
-		export MOZ_APP_PROFILE="mozilla/${_pkgname}"
+		export MOZILLA_OFFICIAL=1
+		export MOZ_APP_REMOTINGNAME=$_pkgname
+		export MOZ_APP_PROFILE="mozilla/$_pkgname"
 
 		# Keys
 		ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key
@@ -161,10 +164,18 @@ prepare() {
 		ac_add_options --disable-updater
 		ac_add_options --disable-tests
 
+		# System addons
+		ac_add_options --with-unsigned-addon-scopes=app,system
+		ac_add_options --allow-addon-sideload
+
 	END
 
 if [[ -n $_SCCACHE ]]; then
 	echo 'ac_add_options --with-ccache=sccache' >> ../mozconfig
+fi
+
+if [[ $_ff_theme == 'official' ]]; then
+	echo 'ac_add_options --enable-official-branding' >> ../mozconfig
 fi
 }
 
@@ -222,7 +233,6 @@ package() {
 	local vendordir="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/"
 	local distdir="$pkgdir/usr/lib/$_pkgname/distribution/"
 	local nssckbi="$pkgdir/usr/lib/$_pkgname/libnssckbi.so"
-	local i theme=official
 
 	cd firefox-$pkgver
 	DESTDIR="$pkgdir" ./mach install
@@ -271,7 +281,7 @@ package() {
 
 	# Icons
 	for i in 22 24 256; do
-		install -Dvm644 browser/branding/$theme/default$i.png \
+		install -Dvm644 browser/branding/$_ff_theme/default$i.png \
 			"$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$desktopid.png"
 	done
 	for i in 16 32 48 64 128; do
@@ -280,26 +290,15 @@ package() {
 			"$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$desktopid.png"
 	done
 
-	install -Dvm644 browser/branding/$theme/content/about-logo.png \
+	install -Dvm644 browser/branding/$_ff_theme/content/about-logo.png \
 		"$pkgdir/usr/share/icons/hicolor/192x192/apps/$desktopid.png"
-	install -Dvm644 browser/branding/$theme/content/about-logo@2x.png \
+	install -Dvm644 browser/branding/$_ff_theme/content/about-logo@2x.png \
 		"$pkgdir/usr/share/icons/hicolor/384x384/apps/$desktopid.png"
 
-	install -Dvm644 browser/branding/$theme/content/about-logo.svg \
+	install -Dvm644 browser/branding/$_ff_theme/content/about-logo.svg \
 		"$pkgdir/usr/share/icons/hicolor/scalable/apps/$desktopid.svg"
-	install -Dvm644 browser/branding/$theme/content/about-logo.svg \
+	install -Dvm644 browser/branding/$_ff_theme/content/about-logo.svg \
 		"$pkgdir/usr/share/icons/hicolor/symbolic/apps/$desktopid-symbolic.svg"
-
-	# Replace duplicate binary with link
-	# https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-	ln -srfv "$pkgdir/usr/lib/$_pkgname/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
-
-	# Metainfo
-	install -Dvm644 /dev/stdin "$pkgdir/usr/share/metainfo/$desktopid.appdata.xml" < <(\
-		VERSION=$pkgver DATE=$(date +%Y-%m-%d) envsubst < <(\
-			sed "s|org.mozilla.firefox|$desktopid|g" \
-				taskcluster/docker/firefox-flatpak/org.mozilla.firefox.appdata.xml.in)\
-	)
 
 	# Use system certificates
 	if [[ -e $nssckbi ]]; then
@@ -313,18 +312,34 @@ package() {
 			browser/components/shell/search-provider-files/firefox-search-provider.ini\
 	)
 
+	# Metainfo
+	install -Dvm644 /dev/stdin "$pkgdir/usr/share/metainfo/$desktopid.metainfo.xml" < <(\
+		VERSION=$pkgver DATE=$(date +%Y-%m-%d) envsubst < <(\
+			sed "s|org.mozilla.firefox|$desktopid|g" \
+				taskcluster/docker/firefox-flatpak/org.mozilla.firefox.appdata.xml.in)\
+	)
+
+	# Install a launcher for set necessary environment variable
+	install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<-END
+		#!/usr/bin/env sh
+		export MOZ_APP_LAUNCHER="\$0" # Used for determine whether firefox is default browser
+		export MOZ_DESKTOP_FILE_NAME=$desktopid # https://bugzilla.mozilla.org/show_bug.cgi?id=1438051
+		exec /usr/lib/$_pkgname/$_pkgname "\$@"
+
+	END
+
 	# Desktop
 	install -Dvm755 /dev/stdin "$pkgdir/usr/share/applications/$desktopid.desktop" < <(\
-		sed -e "s|Exec=firefox |Exec=/usr/lib/$_pkgname/$_pkgname --name $desktopid |g" \
+		sed -e "/^Name.*=/s|Firefox|$_ff_displayname|g" \
+			-e "s|Exec=firefox|Exec=/usr/bin/$_pkgname|g" \
 			-e "s|Icon=org.mozilla.firefox|Icon=$desktopid|g" \
+			-e "s|StartupWMClass=firefox|StartupWMClass=$_pkgname|" \
 			taskcluster/docker/firefox-flatpak/org.mozilla.firefox.desktop\
 	)
 
-	# Install a wrapper to avoid confusion about binary path
-	install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" < <(\
-		sed "s|/app/lib/firefox/firefox |/usr/lib/$_pkgname/$_pkgname --name $desktopid |" \
-			taskcluster/docker/firefox-flatpak/launch-script.sh\
-	)
+	# Replace duplicate binary with link
+	# https://bugzilla.mozilla.org/show_bug.cgi?id=658850
+	ln -srfv "$pkgdir/usr/lib/$_pkgname/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
 }
 
 # vim:set sw=2 sts=-1 et:
