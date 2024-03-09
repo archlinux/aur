@@ -1,7 +1,7 @@
 pkgbase = dcron
 	pkgdesc = dillon's lightweight cron daemon
-	pkgver = 4.5
-	pkgrel = 9
+	pkgver = 4.6
+	pkgrel = 1
 	url = http://www.jimpryor.net/linux/dcron.html
 	arch = i686
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = dcron
 	conflicts = cron
 	backup = var/spool/cron/root
 	backup = etc/conf.d/crond
-	source = http://www.jimpryor.net/linux/releases/dcron-4.5.tar.gz
+	source = https://github.com/ptchinster/dcron/archive/refs/tags/v4.6.tar.gz
 	source = service
-	md5sums = 078833f3281f96944fc30392b1888326
+	md5sums = a2623b7ba605adb9588822e4c573579c
 	md5sums = 2eefc422db24bf2ac38e3a16292ccdc4
 
 pkgname = dcron

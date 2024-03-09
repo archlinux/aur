@@ -1,10 +1,11 @@
-# Maintainer: gt <AT> notfoss.com
+# Maintainer: ptchinster <AT> gmail <DOT> com
+# Contributor:  gt <AT> notfoss.com
 # Contributor:  Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 # Contributor: Paul Mattal <paul.archlinux.org>
 
 pkgname="dcron"
-pkgver="4.5"
-pkgrel="9"
+pkgver="4.6"
+pkgrel="1"
 pkgdesc="dillon's lightweight cron daemon"
 arch=("i686" "x86_64" "armv6h" "armv7h")
 license=("GPL")
@@ -14,9 +15,9 @@ depends=("bash")
 optdepends=("msmtp-mta: sending cron job output via email")
 provides=("cron")
 conflicts=("cron")
-source=("http://www.jimpryor.net/linux/releases/${pkgname}-${pkgver}.tar.gz"
+source=("https://github.com/ptchinster/dcron/archive/refs/tags/v4.6.tar.gz"
         "service")
-md5sums=("078833f3281f96944fc30392b1888326"
+md5sums=("a2623b7ba605adb9588822e4c573579c"
          "2eefc422db24bf2ac38e3a16292ccdc4")
 
 build() {
@@ -40,6 +41,8 @@ build() {
 }
 
 package() {
+    if [ ! $(getent group users) ]; then groupadd users; fi ;
+
     cd "$srcdir/${pkgname}-${pkgver}"
     make DESTDIR="$pkgdir" install
 
