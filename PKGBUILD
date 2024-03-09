@@ -5,7 +5,7 @@
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
 
 pkgname=phpunit
-pkgver=11.0.2
+pkgver=11.0.4
 pkgrel=1
 pkgdesc="A programmer-oriented testing framework for PHP"
 conflicts=('phpunit-bin')
