@@ -3,28 +3,33 @@
 _pkgname=float
 _pkgver=0.3-2
 pkgname=r-${_pkgname,,}
-pkgver=0.3.2
-pkgrel=1
-pkgdesc='32-Bit Floats'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('BSD')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="32-Bit Floats"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('BSD-2-Clause')
 depends=(
+  blas
+  lapack
   r
 )
 makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('233a0dd71f02491ce410c173fd3c3a503b3b49a6a5fe092dde61710db2732a91')
+md5sums=('5bd17f68abd9d11360b64c21c54816e8')
+b2sums=('4abdbfd3c9988ad34d71800dbb9afdc412608c6651362591f8876bf3fcbe543035c0524534613fa5178491c042f244da4aab5bb8a25a8d6bc9d0fdcb6fc0a566')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
