@@ -1,41 +1,35 @@
-# Maintainer: redfish <redfish@galactica.pw>
+# Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
+# Contributor: redfish <redfish@galactica.pw>
 # Contributor: Gergely Imreh <imrehg@gmailcom>
 # Contributor: Jakub "Kubuxu" Sztandera  <kubuxu@protonmail.ch>
-# vim: set expandtab ts=2 sw=2:
 
 pkgname=ipget
-pkgver=0.6.0
+pkgver=0.10.0
 pkgrel=1
-pkgdesc="wget for IPFS: retrieve files over IPFS and save them locally."
+pkgdesc="wget for IPFS: retrieve files over IPFS and save them locally"
 arch=('x86_64')
 url="https://github.com/ipfs/ipget"
 license=('MIT')
-makedepends=('go' 'gx' 'gx-go' 'git')
-optdepends=('go-ipfs: to use full potential of IPFS network'
-            'go-pie: PIE enabled compilation (makedepend)')
-source=("https://github.com/ipfs/ipget/archive/v${pkgver}.tar.gz")
-
-prepare() {
-    export GOPATH="${srcdir}"
-
-    # Link the source to the right place for go
-    mkdir -p "${srcdir}/src/github.com/ipfs/"
-    if [ ! -e "${srcdir}/src/github.com/ipfs/ipget" ]; then
-        ln -s "${srcdir}/ipget-${pkgver}" "${srcdir}/src/github.com/ipfs/ipget"
-    fi
-}
+depends=('glibc')
+makedepends=('go')
+optdepends=('go-ipfs: to use full potential of IPFS network')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('a9bffe36f23284fa691cca0bc85d1890782ca0c7bc69a25f9881b712914a96cb')
 
 build() {
-    cd "${srcdir}/src/github.com/ipfs/ipget"
-    go build
-
-    # For some reason file creation mode in Go lacks write permission,
-    # which breaks package re-builds (even with -C)
-    chmod -R o+w "${srcdir}"
+  cd "${pkgname}-${pkgver}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build
 }
 
 package() {
-  install -D "${srcdir}/${pkgname}-${pkgver}/ipget" "${pkgdir}/usr/bin/ipget"
+  cd "${pkgname}-${pkgver}"
+  install -Dm644 -t "${pkgdir}/usr/bin" ipget
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
-sha256sums=('ffa3a532f7aad74cb442376590e60bdcceba0cfc115ad72d11400a96f768b11f')
+# vim: set expandtab ts=2 sw=2:

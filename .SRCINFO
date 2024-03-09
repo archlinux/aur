@@ -1,18 +1,14 @@
 pkgbase = ipget
-	pkgdesc = wget for IPFS: retrieve files over IPFS and save them locally.
-	pkgver = 0.6.0
+	pkgdesc = wget for IPFS: retrieve files over IPFS and save them locally
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/ipfs/ipget
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	makedepends = gx
-	makedepends = gx-go
-	makedepends = git
+	depends = glibc
 	optdepends = go-ipfs: to use full potential of IPFS network
-	optdepends = go-pie: PIE enabled compilation (makedepend)
-	source = https://github.com/ipfs/ipget/archive/v0.6.0.tar.gz
-	sha256sums = ffa3a532f7aad74cb442376590e60bdcceba0cfc115ad72d11400a96f768b11f
+	source = ipget-0.10.0.tar.gz::https://github.com/ipfs/ipget/archive/v0.10.0.tar.gz
+	sha256sums = a9bffe36f23284fa691cca0bc85d1890782ca0c7bc69a25f9881b712914a96cb
 
 pkgname = ipget
-
