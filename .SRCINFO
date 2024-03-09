@@ -1,13 +1,18 @@
 pkgbase = python-astropy-helpers
 	pkgdesc = Utilities used for building the Astropy python library for astronomy
 	pkgver = 4.0.1
-	pkgrel = 6
+	pkgrel = 8
 	url = https://astropy-helpers.readthedocs.io/
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
 	source = https://files.pythonhosted.org/packages/source/a/astropy-helpers/astropy-helpers-4.0.1.tar.gz
+	source = fix-importlib.patch
 	md5sums = e626e395b4eac6784acb45c5f56e6706
+	md5sums = b289870dcc9fe1c7744868b454d3cad4
 
 pkgname = python-astropy-helpers
 	optdepends = python-astropy-helpers-doc=4.0.1: Documentation for Astropy helpers
