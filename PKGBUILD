@@ -1,10 +1,10 @@
 # Maintainer: ptchinster <AT> gmail.com
-# Maintainer: gt <AT> notfoss.com
+# Contributor: gt <AT> notfoss.com
 # Contributor: Jim Pryor <profjim@jimpryor.net>
 
 pkgname="dcron-git"
-pkgver=4.5.r25.g3779c04
-pkgrel=2
+pkgver=4.6.r0.gf82c21e
+pkgrel=1
 pkgdesc="dillon's lightweight cron daemon (Git version)."
 arch=("i686" "x86_64" "armv6h" "armv7h")
 license=("GPL")
