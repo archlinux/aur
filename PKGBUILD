@@ -2,7 +2,8 @@
 pkgname=panelcleaner
 _module='PanelCleaner'
 _pkgname_pypi='pcleaner'
-pkgver='2.4.0'
+pkgver='2.5.0'
+_pypiver='2.5.2'
 pkgrel=1
 pkgdesc="An AI-powered tool to clean manga panels. Provides both a CLI (pcleaner) and GUI (Qt-based)"
 url="https://github.com/VoxelCubes/PanelCleaner"
@@ -29,7 +30,7 @@ package() {
     # Most python packages, including the heavy ones like PySide6, torch etc. are provided by pacman.
     # Remaining packages that aren't in the official repositories and or have broken AUR packages are installed with pipx.
     # This should provide a slim, but robust installation.
-    PIPX_HOME=${pipx_home} PIPX_BIN_DIR=${pipx_bin_dir} pipx install --system-site-packages ${_pkgname_pypi}==${pkgver}
+    PIPX_HOME=${pipx_home} PIPX_BIN_DIR=${pipx_bin_dir} pipx install --system-site-packages ${_pkgname_pypi}==${_pypiver}
     # A few references to the pkgdir remain in the pipx installation, fixing only the ones that are important.
     # The rest are merely an artifact from the setup process, since pipx isn't designed to be used with pacman.
 
@@ -53,6 +54,6 @@ package() {
     install --mode=644 --owner=root --group=root "PanelCleaner.desktop" "$pkgdir/usr/share/applications/"
 
     mkdir -p "$pkgdir/usr/share/pixmaps"
-    install --mode=644 --owner=root --group=root "icons/logo.png" "$pkgdir/usr/share/pixmaps/panelcleaner.png"
+    install --mode=644 --owner=root --group=root "icons/logo-big.png" "$pkgdir/usr/share/pixmaps/panelcleaner.png"
 }
 
