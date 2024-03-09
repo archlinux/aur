@@ -7,13 +7,14 @@
 
 pkgname=obs-studio-browser
 pkgver=30.0.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
 license=('GPL-2.0-or-later')
 # To manage dependency rebuild easily, this will prevent you to rebuild OBS on non-updated system
 _qtver=6.6.2
+_libajantv2ver=17.0.1
 _libdatachannelver=0.20
 _mbedtlsver=3.5.1
 _pythonver=3.11
@@ -70,7 +71,7 @@ makedepends=(
   "jack" # Deps of JACK plugin
   "git"
   "uthash" # Deps of libobs
-  "libajantv2" # Deps of AJA plugin (static lib)
+  "libajantv2>=$_libajantv2ver" # Deps of AJA plugins
   "libdatachannel>=$_libdatachannelver" # Deps of WebRTC plugin (NICE variant like the Flatpak)
   "libfdk-aac" # Deps of FDK AAC plugin
   "luajit" # Deps of Scripting plugin
@@ -103,6 +104,7 @@ optdepends=(
   "systemd-libs: V4L2 support"
   "v4l2loopback-dkms: V4L2 virtual camera output"
   "libdatachannel>=$_libdatachannelver: WHIP Support"
+  "libajantv2>=$_libajantv2ver: AJA support"
 )
 provides=("obs-studio=$pkgver" "obs-vst" "obs-websocket" "obs-browser")
 conflicts=(
@@ -117,6 +119,7 @@ source=(
   "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
   "0001-Add_finder_for_uthash.patch"
   "0002-Use_system_uthash.patch"
+  "0003-Update_to_libajantv2_17_legacy_path_only.patch"
 )
 sha256sums=(
   "SKIP"
@@ -124,6 +127,7 @@ sha256sums=(
   "SKIP"
   "f4a56021a7f1c564f95b588d7c09b60a89efa2c1954c8a418cf6320b5a818542"
   "874456110d17d2efe02f8a1f47f58c877922d8bdab6435df334b9e6460b26bf8"
+  "a7149e1d9a07270132cf8085d52225ed3200a78ea943cbf52d64b1b8f293e117"
 )
 
 if [[ $CARCH == 'x86_64' ]]; then
@@ -138,6 +142,7 @@ prepare() {
 
   patch -Np1 -i "$srcdir/0001-Add_finder_for_uthash.patch"
   patch -Np1 -i "$srcdir/0002-Use_system_uthash.patch"
+  patch -Np1 -i "$srcdir/0003-Update_to_libajantv2_17_legacy_path_only.patch"
 }
 
 build() {
