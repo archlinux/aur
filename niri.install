@@ -1,0 +1,6 @@
+post_upgrade() {
+	echo "Note: You can interactively synchronize your config.kdl with"
+	echo "      the new Niri options from default-config.kdl by doing:"
+	echo
+	echo "      meld /usr/share/doc/niri/default-config.kdl ~/.config/niri/config.kdl"
+}
