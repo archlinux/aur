@@ -1,0 +1,16 @@
+pkgbase = llin-git
+	pkgdesc = An in-game music player and download accelerator for osu! lazer.
+	pkgver = 2024.304.0.r0.64259af
+	pkgrel = 1
+	url = https://github.com/MATRIX-feather/LLin
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = dotnet-sdk
+	depends = osu-lazer
+	depends = dotnet-runtime
+	conflicts = osu-lazer-bin
+	source = git+https://github.com/MATRIX-feather/LLin.git
+	sha256sums = SKIP
+
+pkgname = llin-git
