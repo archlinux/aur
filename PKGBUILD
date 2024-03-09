@@ -1,11 +1,11 @@
 # Maintainer: Nicola Revelant <nicolarevelant@outlook.com>
 
 pkgname=italian-draughts-git
-pkgver=1.3.4.r0.g7334b64
+pkgver=1.3.4.r28.g74eb7da
 pkgrel=1
-pkgdesc="Play Italian Draughts against the computer"
+pkgdesc="Italian Draughts, a strategy board game"
 arch=("x86_64")
-license=("GPL3")
+license=('GPL-3.0-or-later')
 depends=(
 	"wxwidgets-gtk3"
 	"hicolor-icon-theme"
@@ -28,7 +28,12 @@ sha256sums=(
 
 build() {
 	cd "$pkgname"
-	cmake -Bbuild -GNinja -DCMAKE_BUILD_TYPE="Release" -DCMAKE_INSTALL_PREFIX="/usr"
+	cmake \
+		-B build \
+		-G Ninja \
+		-D CMAKE_INSTALL_PREFIX="/usr" \
+		-Wno-dev
+
 	cmake --build build
 }
 
