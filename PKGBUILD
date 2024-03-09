@@ -13,7 +13,7 @@ fi
 # basic info
 _pkgname="mercury-browser"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=122.0.2
+pkgver=123.0.1
 pkgrel=1
 pkgdesc="Compiler optimized, private Firefox fork"
 url="https://github.com/Alex313031/Mercury"
