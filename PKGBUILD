@@ -1,8 +1,8 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=python-pytest-postgresql
-_name=${pkgname#python-}
-pkgver=5.1.0
+_pkgname=${pkgname#python-}
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="Test your code that relies on a running PostgreSQL Database"
 arch=(any)
@@ -14,22 +14,22 @@ license=(
 depends=(
   python
   python-mirakuru
+  python-packaging
   python-port-for
   python-psycopg
   python-pytest
-  python-setuptools
 )
 makedepends=(
   python-build
   python-installer
+  python-setuptools
   python-wheel
 )
 checkdepends=(postgresql)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('387a6eac08b0e59d08b953b88699e6d06b22eccbbe16771ad94c0a19ed7812d1')
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('eba270e7a7f762dcfed0005e9c07f3cd084a35c4b168ca0d9cd5647eb6d2d78c')
-
-_archive="$_name-$pkgver"
+_archive="$_pkgname-$pkgver"
 
 build() {
   cd "$_archive"
