@@ -5,7 +5,7 @@
 
 pkgbase=postgresql-git
 pkgname=('postgresql-libs-git' 'postgresql-docs-git' 'postgresql-git')
-pkgver=16.beta2.r1125.g390298f080
+pkgver=16.beta2.r1571.gf160bf06f7
 pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS (Git version)'
 url='https://www.postgresql.org/'
@@ -17,7 +17,6 @@ makedepends=('krb5' 'libxml2' 'python' 'perl' 'tcl' 'openssl'
 source=(git+https://git.postgresql.org/git/postgresql.git
         postgresql-run-socket.patch
         postgresql-perl-rpath.patch
-        libxml2-2.12.patch
         postgresql.pam
         postgresql.logrotate
         postgresql.service
@@ -27,7 +26,6 @@ source=(git+https://git.postgresql.org/git/postgresql.git
 sha512sums=('SKIP'
             '9f82c8e6982cc1ab4e5048c485a0c5a75fef32bf610bfeaccb8c4c28bb84ff0ebca8de83efc03044cf98275296babdcd9e12119f5320cedd899285e8a6f48b00'
             '524bafe0efd9ba9dc23af38deb3bfbf24c60368ad7cd89f525c3891dfe0beeb6aadd52a0465c64d70c841f7b554e35032d1ba1f461fd452b1dd73a0e4e75b400'
-            '4669810a22419feb09e2b90e3a3cb27e1ade9d4be1e3241583fbf428e49ce957d1f5a32ca0fe2f965e59f605d688d8e2c45daa137887adf939bd67eb6d1fa8d5'
             '1e6183ab0eb812b3ef687ac2c26ce78f7cb30540f606d20023669ac00ba04075487fb72e4dc89cc05dab0269ff6aca98fc1167cc75669c225b88b592482fbf67'
             '9ab4da01337ffbab8faec0e220aaa2a642dbfeccf7232ef2645bdc2177a953f17ee3cc14a4d8f8ebd064e1dae8b3dba6029adbffb8afaabea383963213941ba8'
             'ee0c010be07e8b5396cfd89c1d077b7c5573753d0210ea4e330e314c2759e25fbee9071e663f871855d65cc8ac75162af9e793dd10892f50f515e7a89cc8d6a0'
@@ -44,7 +42,6 @@ prepare() {
   cd postgresql
   patch -p1 < ../postgresql-run-socket.patch
   patch -p1 < ../postgresql-perl-rpath.patch
-  patch -p1 < ../libxml2-2.12.patch
 }
 
 build() {
