@@ -2,8 +2,8 @@
 # Contributor: Aria Moradi <aria.moradi007 at gmail dot com>
 
 pkgname=rsiedit-bin
-pkgver=0.6.5
-pkgrel=2
+pkgver=0.6.6
+pkgrel=1
 pkgdesc="C# GUI application for manipulation of RSI files used in SS14."
 arch=("x86_64")
 url="https://github.com/space-wizards/RSIEdit"

@@ -1,12 +1,12 @@
 pkgbase = rsiedit-bin
 	pkgdesc = C# GUI application for manipulation of RSI files used in SS14.
-	pkgver = 0.6.5
-	pkgrel = 2
+	pkgver = 0.6.6
+	pkgrel = 1
 	url = https://github.com/space-wizards/RSIEdit
 	arch = x86_64
 	license = MIT
 	options = !strip
-	source = Editor_Linux_0.6.5.zip::https://github.com/space-wizards/RSIEdit/releases/download/v0.6.5/Editor_Linux.zip
+	source = Editor_Linux_0.6.6.zip::https://github.com/space-wizards/RSIEdit/releases/download/v0.6.6/Editor_Linux.zip
 	source = RSIEdit.desktop
 	source = RSIEdit.png
 	sha256sums = 5c0edc669baa5e0e3aefe5f59fd59e319f30fa321e1dfc3a9ef180797407c4b8
