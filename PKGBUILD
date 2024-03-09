@@ -399,7 +399,7 @@ fi
 
 ## Check if nonfree licence is enabled
 if [[ $_nonfree_enabled == 'ON' ]]; then
-  license=('custom')
+  license=('LicenseRef-nonfree-and-unredistributable')
   source+=("license_if_nonfree_enabled.txt")
   sha256sums+=("04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36")
   _args+=(--enable-nonfree)
