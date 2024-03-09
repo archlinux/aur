@@ -2,7 +2,7 @@
 # Contributor : Immae <ismael.bouya@normalesup.org>
 
 pkgname=spip
-pkgver=4.1.13
+pkgver=4.1.15
 pkgrel=1
 pkgdesc="A publishing system for the Internet in which great importance is attached to collaborative working, to multilingual environments, and to simplicity of use for web authors."
 arch=('x86' 'x86_64')
@@ -13,7 +13,7 @@ source=("http://files.spip.net/spip/archives/${pkgname}-v${pkgver}.zip"
         "httpd-spip.conf"
         "mes_options.php")
 options=(!strip)
-sha256sums=('dafc2646227df12b30034f3232c11901baf823cf050f65eec4ca153def13cfea'
+sha256sums=('93782e833fd74cdb916dfb0c7756d93b61f9c71f993b87dcc902c640200b209b'
             '18c625bf2192ceb7647617593285c9fbfc110197c0179ac8ae4bc70c414b9582'
             '9c2eed4d009faef9128ec60135b4ff03c3c2d09387a7ac7f4887748f0d85ce75')
 
