@@ -1,8 +1,8 @@
-# Maintainer: Gerard Ribugent <ribugent <at> gmail <dot> com>
+# Contributor: Gerard Ribugent <ribugent <at> gmail <dot> com>
 pkgname='python-azure-identity'
 _name='azure_identity'
 pkgver='1.15.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft Azure Identity Library for Python"
 url="https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/identity/azure-identity"
 depends=(
@@ -16,10 +16,11 @@ depends=(
 makedepends=('python-installer' 'python-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
-sha256sums=('a14b1f01c7036f11f148f22cd8c16e05035293d714458d6b44ddf534d93eb912')
+source=("https://pypi.io/packages/source/a/azure-identity/azure-identity-${pkgver}.tar.gz")
+sha256sums=('4c28fc246b7f9265610eb5261d65931183d019a23d4b0e99357facb2e6c227c8')
 
-package() {
-    python -m installer --destdir="$pkgdir" ${_name}-${pkgver}-py3-none-any.whl
-    install -Dm0644 $_name-$pkgver.dist-info/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+package(){
+    cd azure-identity-$pkgver
+    python setup.py install --root="$pkgdir"/
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
