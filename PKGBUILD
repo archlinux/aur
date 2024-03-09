@@ -1,7 +1,7 @@
 # Maintainer: alba4k <blaskoazzolaaaron@gmail.com>
 
 pkgname="hyprcursor"
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="The hyprland cursor format, library and utilities"
 arch=(any)
@@ -13,7 +13,7 @@ _archive="${pkgname}-${pkgver}"
 source=("$_archive.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 provides=("hyprcursor")
 conflicts=("hyprcursor-git")
-sha256sums=('b1f28898be5dc32f7511a530b9781f7617be6f5a7c226ff981cb325604017a6c')
+sha256sums=('8443fda105dca5e2b1c71eefa5a9863f2ac36a13044382345bf4a270e3b5d3bd')
 
 build() {
 	cd "$_archive"
