@@ -2,13 +2,13 @@
 # Contributor: Original submitter: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=constellation
-pkgver=2.10.0
-_pkgver=2.10.0
+pkgver=2.11.0
+_pkgver=2.11.0
 pkgrel=1
 pkgdesc="A graph-focused data visualisation and interactive analysis application"
 arch=('x86_64')
 url='https://constellation-app.com'
-license=('Apache')
+license=('Apache-2.0')
 depends=('java-runtime'
          'libnet'
          'lib32-glibc'
@@ -17,7 +17,7 @@ depends=('java-runtime'
 makedepends=('gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/constellation-app/constellation/releases/download/v${_pkgver}/constellation-linux-v${_pkgver}.tar.gz"
         'icon.png')
-sha256sums=('ef8365c4fe4968bfe1abca2f9127f089fd885e8ce77863b3262663bd2d6d5603'
+sha256sums=('461cecf815ab8534c2683ad6c51fc8bc7152f0996be8a1d749beef65d8b3a280'
             '4ddf0edb1323aa2e752a30fe17303e8ef25280e6d53dcdd147b9d7c811c05565')
 
 package() {
