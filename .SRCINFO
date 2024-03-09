@@ -1,0 +1,12 @@
+pkgbase = tty-colorscheme
+	pkgdesc = Change TTY colors
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/red-magic/tty-colorscheme
+	install = tty-colorscheme.install
+	arch = any
+	backup = etc/tty-colorscheme/tty-colorscheme.conf
+	source = https://github.com/red-magic/tty-colorscheme/archive/refs/tags/v1.0.tar.gz
+	b2sums = a33d603ff3cc727d3a26d855fae21a3ddfe491408d9b51a2e5ddc0e8e9af4f5fb2d1ace81fa2851d12a65ad0230137942474d9e5cc3e9e5266703fda7e37f805
+
+pkgname = tty-colorscheme
