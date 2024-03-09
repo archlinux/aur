@@ -1,10 +1,10 @@
 # Maintainer: Ivan Molchanov <ia.molc@ya.ru>
 pkgname="krdc-xfreerdp"
 pkgver="23.08.5"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Remote Desktop Client(old version with xfreerdp)"
 arch=("x86_64")
-makedepends=(git extra-cmake-modules)
+makedepends=(extra-cmake-modules)
 depends=(gcc-libs glibc kactivities5  kbookmarks5 kcmutils5 kcompletion5  kconfig5  kconfigwidgets5 kcoreaddons5  kdnssd5 ki18n5  kio5  knotifications5 knotifyconfig5  kwidgetsaddons5 kwallet5  kxmlgui5  qt5-base)
 optdepends=('libvncserver: VNC support'
             'libssh: VNC support'

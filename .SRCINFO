@@ -1,12 +1,11 @@
 pkgbase = krdc-xfreerdp
 	pkgdesc = Remote Desktop Client(old version with xfreerdp)
 	pkgver = 23.08.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.kde.org/krdc/
 	arch = x86_64
 	license = GPL-2.0-or-later
 	license = LGPL-2.0-or-later
-	makedepends = git
 	makedepends = extra-cmake-modules
 	depends = gcc-libs
 	depends = glibc
