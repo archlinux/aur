@@ -1,7 +1,7 @@
 pkgbase = wine-staging-wow64
 	pkgdesc = A compatibility layer for running Windows programs
-	pkgver = 9.3
-	pkgrel = 2
+	pkgver = 9.4
+	pkgrel = 1
 	url = https://www.winehq.org
 	install = wine.install
 	arch = x86_64
@@ -19,6 +19,8 @@ pkgbase = wine-staging-wow64
 	makedepends = opencl-headers
 	makedepends = perl
 	makedepends = vulkan-headers
+	makedepends = samba
+	makedepends = sane
 	depends = alsa-plugins
 	depends = fontconfig
 	depends = freetype2
@@ -36,24 +38,24 @@ pkgbase = wine-staging-wow64
 	depends = v4l-utils
 	depends = desktop-file-utils
 	depends = libgphoto2
-	depends = samba
-	depends = sane
 	depends = libxkbcommon
 	depends = wayland
 	optdepends = alsa-lib
 	optdepends = cups
 	optdepends = dosbox
-	provides = wine=9.3
-	provides = wine-staging=9.3
-	provides = wine-wow64=9.3
+	optdepends = samba
+	optdepends = sane
+	provides = wine=9.4
+	provides = wine-staging=9.4
+	provides = wine-wow64=9.4
 	conflicts = wine
 	options = staticlibs
 	options = !lto
 	backup = usr/lib/binfmt.d/wine.conf
-	source = git+https://gitlab.winehq.org/wine/wine.git#tag=wine-9.3
+	source = git+https://gitlab.winehq.org/wine/wine.git#tag=wine-9.4
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
-	source = git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v9.3
+	source = git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v9.4
 	b2sums = SKIP
 	b2sums = 45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b
 	b2sums = e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588
