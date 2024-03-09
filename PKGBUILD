@@ -3,7 +3,7 @@
 _pkgname=flet
 pkgname=python-${_pkgname}-0-7-x
 pkgver=0.7.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Easily build realtime web, mobile and desktop apps in your favorite language and securely share them with your team.'
 url="https://${_pkgname}.dev/"
 license=('Apache')
@@ -22,7 +22,8 @@ makedepends=(
 	'goreleaser'
 	'python-build'
 	'python-installer'
-	'python-wheel')
+	'python-wheel'
+	'cmake')
 arch=('any')
 conflicts=('python-flet')
 source=(
