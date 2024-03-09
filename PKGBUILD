@@ -2,7 +2,7 @@
 
 pkgname=python-pep517
 pkgver=0.13.1
-pkgrel=4
+pkgrel=1
 pkgdesc='Wrappers to build Python packages using PEP 517 hooks'
 arch=('any')
 url='https://github.com/pypa/pep517'
