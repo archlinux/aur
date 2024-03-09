@@ -5,7 +5,7 @@
 
 pkgname='ibus-mozc'
 pkgver=2.29.5400.102
-pkgrel=2
+pkgrel=3
 pkgdesc='Mozc module for IBus'
 arch=('x86_64')
 url='https://github.com/google/mozc'
@@ -60,9 +60,9 @@ package() {
     sed -i -e 's|^[ \t]*||g' Windows-Implementation-Library
     install -Dm644 Windows-Implementation-Library "${pkgdir}"/usr/share/licenses/${pkgname}/Windows-Implementation-Library
 
-    install -Dm644 bazel-bin/renderer/qt/mozc_renderer "${pkgdir}"/usr/lib/mozc/mozc_renderer
+    install -Dm755 bazel-bin/renderer/qt/mozc_renderer "${pkgdir}"/usr/lib/mozc/mozc_renderer
 
-    install -Dm644 bazel-bin/unix/ibus/ibus_mozc "${pkgdir}"/usr/lib/${pkgname}/ibus-engine-mozc
+    install -Dm755 bazel-bin/unix/ibus/ibus_mozc "${pkgdir}"/usr/lib/${pkgname}/ibus-engine-mozc
     install -Dm644 bazel-bin/unix/ibus/mozc.xml "${pkgdir}"/usr/share/ibus/component/mozc.xml
 
     cd bazel-bin/unix
