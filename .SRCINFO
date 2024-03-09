@@ -1,0 +1,25 @@
+pkgbase = compiler-rt15
+	pkgdesc = Compiler runtime libraries for clang 15
+	pkgver = 15.0.7
+	pkgrel = 1
+	url = https://compiler-rt.llvm.org/
+	arch = x86_64
+	license = custom:Apache 2.0 with LLVM Exception
+	makedepends = llvm15
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python
+	depends = gcc-libs
+	options = staticlibs
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/compiler-rt-15.0.7.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/compiler-rt-15.0.7.src.tar.xz.sig
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/cmake-15.0.7.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/cmake-15.0.7.src.tar.xz.sig
+	validpgpkeys = 474E22316ABF4785A88C6E8EA2C794A986419D8A
+	sha256sums = 353832c66cce60931ea0413b3c071faad59eefa70d02c97daa8978b15e4b25b7
+	sha256sums = SKIP
+	sha256sums = 8986f29b634fdaa9862eedda78513969fe9788301c9f2d938f4c10a3e7a3e7ea
+	sha256sums = SKIP
+	makedepends_x86_64 = lib32-gcc-libs
+
+pkgname = compiler-rt15
