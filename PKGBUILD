@@ -22,7 +22,7 @@ _build_platforms="x86_64-efi"
 
 _pkgname="grub"
 pkgname="${_pkgname}-improved-luks2-git"
-pkgver=2.12.r2.gb835601c7
+pkgver=2.12.r10.g04d2a50f3
 pkgrel=1
 pkgdesc="GNU GRand Unified Bootloader (2) with Argon2 support. Patch made by Patrick Steinhardt"
 arch=('x86_64')
@@ -55,6 +55,7 @@ source=("grub::git+https://git.savannah.gnu.org/git/grub.git"
         'add-GRUB_COLOR_variables.patch'
         'detect-archlinux-initramfs.patch'
         'grub.default')
+options=(!lto)
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
