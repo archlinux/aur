@@ -1,3 +1,4 @@
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: Alexander Bruegmann <mail[at]abruegmann[dot]eu>
 pkgname=latex-digsig
 _pkgname=${pkgname#latex-}
