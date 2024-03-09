@@ -1,6 +1,6 @@
 pkgbase = bililive-recorder-bin
 	pkgdesc = B站录播姬 | BiliBili Stream Recorder | 哔哩哔哩直播录制
-	pkgver = 2.10.1
+	pkgver = 2.11.0
 	pkgrel = 1
 	url = https://github.com/Bililive/BililiveRecorder
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = bililive-recorder-bin
 	provides = bililive-recorder
 	conflicts = bililive-recorder
 	options = staticlibs
-	source = bililive-recorder-bin-2.10.1.zip::https://github.com/Bililive/BililiveRecorder/releases/download/v2.10.1/BililiveRecorder-CLI-linux-x64.zip
-	sha256sums = 325ed38731dc7c25a51219d5e508927201ef2259ed0286e071ca43fda32aa766
+	source = bililive-recorder-bin-2.11.0.zip::https://github.com/Bililive/BililiveRecorder/releases/download/v2.11.0/BililiveRecorder-CLI-linux-x64.zip
+	sha256sums = 2eb845e6bc1269e00ee67dd30a793cb000594ee1c0ec6de9982211ccfa7a404a
 
 pkgname = bililive-recorder-bin
