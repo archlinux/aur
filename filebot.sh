@@ -15,6 +15,11 @@ fi
 APP_DATA="${HOME}/.config/filebot"
 LIBRARY_PATH="${FILEBOT_HOME}/lib/$(uname -m):/lib64"
 
+# Disable wayland and force xwayland
+# workaround for bug https://www.filebot.net/forums/viewtopic.php?t=13567
+# as of 09.03.2024 seems relevant under KDE 6.0 using Wayland and nvidia/amd gpu
+WAYLAND_DISPLAY=
+
 # shellcheck disable=SC2086
 java \
   -Dapplication.deployment=aur \

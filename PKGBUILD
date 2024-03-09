@@ -9,7 +9,7 @@
 
 pkgname=filebot
 pkgver=5.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The ultimate TV and Movie Renamer"
 arch=('i686' 'x86_64' 'aarch64' 'armv7l' 'armv7h')
 url="https://www.filebot.net/"
@@ -32,7 +32,7 @@ source=("https://get.filebot.net/filebot/FileBot_${pkgver}/FileBot_${pkgver}-aur
 
 sha256sums=('6adee7746fae1b656a8fc94841c019eecd5f31c3c2003ec0fdb88d6b3f08cfa1'
             'SKIP'
-            '3c05e7ac0f2268a42dccc9158081022db857c656f8350d33518bc7ad7ac17a3a')
+            '2a6926291fcaacfca99c8b1ecf2c3ea9ee73ad6842c51a592256349ddb6fe885')
 validpgpkeys=('B0976E51E5C047AD0FD051294E402EBF7C3C6A71')
 
 package() {
