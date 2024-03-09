@@ -7,7 +7,7 @@ pkgrel=6
 pkgdesc="NLP/IR library for Python"
 arch=(any)
 url="https://github.com/chrislit/abydos"
-license=(GPL3)
+license=(GPL-3.0-or-later)
 depends=(python-numpy)
 makedepends=(
     python-build
