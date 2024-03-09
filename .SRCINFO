@@ -1,7 +1,7 @@
 pkgbase = maigret
 	pkgdesc = Collect a dossier on a person by username from thousands of sites
 	pkgver = 0.4.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/soxoj/maigret
 	arch = any
 	license = MIT
@@ -30,7 +30,7 @@ pkgbase = maigret
 	depends = python-xhtml2pdf
 	depends = python-xmind
 	depends = socid-extractor
-	source = maigret-0.4.4.tar.gz::https://github.com/soxoj/maigret/archive/refs/tags/v0.4.4.tar.gz
+	source = maigret-0.4.4.tar.gz::https://github.com/soxoj/maigret/archive/v0.4.4.tar.gz
 	source = dont-install-tests-etc.patch
 	source = fix-pytest-crash.patch
 	sha256sums = f890ad0986f94b1674324a17c011ec6a955e62fd87feb578707589371f08847f

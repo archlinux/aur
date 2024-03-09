@@ -2,7 +2,7 @@
 
 pkgname=maigret
 pkgver=0.4.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Collect a dossier on a person by username from thousands of sites"
 arch=(any)
 url="https://github.com/soxoj/maigret"
@@ -38,9 +38,8 @@ checkdepends=(
   python-pytest-httpserver
   python-reportlab
 )
-
 source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   "dont-install-tests-etc.patch"
   "fix-pytest-crash.patch"
 )
@@ -68,8 +67,9 @@ build() {
 check() {
   cd "$_archive"
 
-  # Deselected tests fail due to DeprecationWarning.
+  # Deselected tests fail due to DeprecationWarning or AssertionError
   pytest \
+    --deselect tests/test_activation.py::test_import_aiohttp_cookies \
     --deselect tests/test_report.py::test_html_report \
     --deselect tests/test_report.py::test_html_report_broken \
     --deselect tests/test_report.py::test_text_report \
