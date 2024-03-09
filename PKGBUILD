@@ -1,6 +1,6 @@
 pkgname=android-environment
-pkgver=3
-pkgrel=2
+pkgver=4
+pkgrel=1
 pkgdesc='Script providing common environment variables and functions for Android builds.'
 arch=('any')
 url='https://aur.archlinux.org/packages/android-evironment'

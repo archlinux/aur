@@ -48,25 +48,42 @@ export ANDROID_SYSROOT=${ANDROID_TOOLCHAIN}/sysroot
 export ANDROID_CROSS_PREFIX=$ANDROID_TOOLCHAIN/bin
 export ANDROID_PKGCONFIG=android-${_android_arch}-pkg-config
 
+
 case "$_android_arch" in
     aarch64)
+        export ANDROID_SYSROOT_INCLUDE=${ANDROID_SYSROOT}/usr/include/aarch64-linux-android
+        export ANDROID_SYSROOT_LIB=${ANDROID_SYSROOT}/usr/lib/aarch64-linux-android
         export ANDROID_TOOLS_COMPILER_PREFIX=${ANDROID_CROSS_PREFIX}/aarch64-linux-android${ANDROID_MINIMUM_PLATFORM}-
         export ANDROID_ABI=arm64-v8a
         ;;
     armv7a-eabi)
+        export ANDROID_SYSROOT_INCLUDE=${ANDROID_SYSROOT}/usr/include/arm-linux-androideabi
+        export ANDROID_SYSROOT_LIB=${ANDROID_SYSROOT}/usr/lib/arm-linux-androideabi
         export ANDROID_TOOLS_COMPILER_PREFIX=${ANDROID_CROSS_PREFIX}/armv7a-linux-androideabi${ANDROID_MINIMUM_PLATFORM}-
         export ANDROID_ABI=armeabi-v7a
         ;;
+    riscv64)
+        export ANDROID_SYSROOT_INCLUDE=${ANDROID_SYSROOT}/usr/include/riscv64-linux-android
+        export ANDROID_SYSROOT_LIB=${ANDROID_SYSROOT}/usr/lib/riscv64-linux-android
+        export ANDROID_TOOLS_COMPILER_PREFIX=${ANDROID_CROSS_PREFIX}/riscv64-linux-android${ANDROID_MINIMUM_PLATFORM}-
+        export ANDROID_ABI=riscv64
+        ;;
     x86)
+        export ANDROID_SYSROOT_INCLUDE=${ANDROID_SYSROOT}/usr/include/i686-linux-android
+        export ANDROID_SYSROOT_LIB=${ANDROID_SYSROOT}/usr/lib/i686-linux-android
         export ANDROID_TOOLS_COMPILER_PREFIX=${ANDROID_CROSS_PREFIX}/i686-linux-android${ANDROID_MINIMUM_PLATFORM}-
         export ANDROID_ABI=x86
         ;;
     x86-64)
+        export ANDROID_SYSROOT_INCLUDE=${ANDROID_SYSROOT}/usr/include/x86_64-linux-android
+        export ANDROID_SYSROOT_LIB=${ANDROID_SYSROOT}/usr/lib/x86_64-linux-android
         export ANDROID_TOOLS_COMPILER_PREFIX=${ANDROID_CROSS_PREFIX}/x86_64-linux-android${ANDROID_MINIMUM_PLATFORM}-
         export ANDROID_ABI=x86_64
         ;;
 esac
 
+
+export ANDROID_SYSROOT_LIB_API=${ANDROID_SYSROOT_LIB}/${ANDROID_MINIMUM_PLATFORM}
 export ANDROID_CC=${ANDROID_TOOLS_COMPILER_PREFIX}clang
 export ANDROID_CXX=${ANDROID_TOOLS_COMPILER_PREFIX}clang++
 export ANDROID_TOOLS_PREFIX=${ANDROID_CROSS_PREFIX}/llvm-
