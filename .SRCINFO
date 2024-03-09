@@ -6,6 +6,7 @@ pkgbase = kvantum-git
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cmake
+	makedepends = kwindowsystem
 	makedepends = kwindowsystem5
 	makedepends = qt5-svg
 	makedepends = qt5-tools

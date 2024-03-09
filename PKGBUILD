@@ -40,12 +40,12 @@ prepare() {
 
 build() {
   cmake -B build5 -S Kvantum/Kvantum \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DENABLE_QT5=ON
   make -C build5
 
   cmake -B build6 -S Kvantum/Kvantum \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DENABLE_QT5=OFF
+    -DCMAKE_INSTALL_PREFIX=/usr
   make -C build6
 }
 
