@@ -1,21 +1,22 @@
 pkgbase = python-pyvisa-py
 	pkgdesc = A pure python backend for PyVISA
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/pyvisa/pyvisa-py
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools-scm
-	makedepends = python-pytest
+	makedepends = python-wheel
 	depends = python-pyvisa
 	optdepends = linux-gpib: gpib instrument support
-	optdepends = python-pyserial: interface with serial instruments
-	optdepends = python-pyusb: interface with USB instruments
 	optdepends = python-gpib-ctypes: interface with GPIB instruments
 	optdepends = python-psutil: discover TCPIP devices across multiple interfaces
-	source = git+https://github.com/pyvisa/pyvisa-py.git#tag=0.7.1
+	optdepends = python-pyserial: interface with serial instruments
+	optdepends = python-pyusb: interface with USB instruments
+	source = git+https://github.com/pyvisa/pyvisa-py.git#tag=0.7.2
 	sha256sums = SKIP
 
 pkgname = python-pyvisa-py
