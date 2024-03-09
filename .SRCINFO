@@ -1,6 +1,6 @@
 pkgbase = termtree
 	pkgdesc = A file tree view
-	pkgver = 2.2.5
+	pkgver = 2.2.6
 	pkgrel = 1
 	url = https://github.com/bendikMichal/termtree
 	arch = x86_64
