@@ -1,7 +1,7 @@
 pkgbase = md-tui-bin
 	pkgdesc = A terminal markdown viewer
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/henriklovhaug/md-tui
 	arch = x86_64
 	license = AGPL-3.0-or-later

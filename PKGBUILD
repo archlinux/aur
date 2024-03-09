@@ -4,7 +4,7 @@
 
 pkgname=md-tui-bin
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal markdown viewer"
 url="https://github.com/henriklovhaug/md-tui"
 license=("AGPL-3.0-or-later")
