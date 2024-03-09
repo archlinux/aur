@@ -1,13 +1,15 @@
 pkgbase = dec-bin
 	pkgdesc = A declarative package manager for Arch Linux
 	pkgver = 0.2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/rehposuite/dec
 	arch = x86_64
 	license = GPL
 	depends = paru
 	provides = dec
-	source = git+https://gitlab.com/rehposuite/dec.git
-	sha256sums = SKIP
+	source = https://gitlab.com/rehposuite/dec/-/raw/49d2d3b298b0d339bc6acebf6449842d3cb74e5b/bin/dec-0.2.0.0-x86_64
+	source = https://gitlab.com/rehposuite/dec/-/raw/main/LICENSE
+	sha256sums = 2aebffcb1ba492d1768e9fdd2817aeab34de0977f4a4eb0bf4d8c242cafba064
+	sha256sums = cc4f824f8326882956af8fdded810b3aa7a5912913b926e23ebd3272406cab11
 
 pkgname = dec-bin
