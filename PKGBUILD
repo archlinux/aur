@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-icons-git
 pkgver=r11.1e328da
-pkgrel=1
+pkgrel=2
 pkgdesc="System76 Cosmic icon theme"
 arch=('any')
 url="https://github.com/pop-os/cosmic-icons"
 license=('CC-BY-SA-4.0 AND GPL-3.0-or-later')
-depends=('pop-icon-theme')  # TODO: Depend on pop-icon-theme-git
+depends=('pop-icon-theme-git')
 makedepends=('git' 'just')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
