@@ -1,12 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=GE-Proton8-32
-_commit=749c5cf3059be20f5a145c58f1783e65483c432f
+_srctag=GE-Proton9-1
+_commit=ba1f3740eca937442b6a0fb5786f76ab898afb6a
 pkgver=${_srctag//-/.}
 _geckover=2.47.4
-_monover=8.1.0
-pkgrel=7
+_monover=9.0.0
+pkgrel=1
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -94,7 +94,6 @@ source=(
     0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
     0005-AUR-Strip-binaries-early.patch
     0006-AUR-Fix-hwnd-redefinition.patch
-    gecko-version.patch
 )
 noextract=(
     wine-gecko-${_geckover}-{x86,x86_64}.tar.xz
@@ -168,7 +167,6 @@ prepare() {
     patch -p1 -i "$srcdir"/0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
     patch -p1 -i "$srcdir"/0005-AUR-Strip-binaries-early.patch
     patch -p1 -i "$srcdir"/0006-AUR-Fix-hwnd-redefinition.patch
-    patch -p1 -i "$srcdir"/gecko-version.patch
 }
 
 build() {
@@ -260,11 +258,10 @@ package() {
 sha256sums=('SKIP'
             '2cfc8d5c948602e21eff8a78613e1826f2d033df9672cace87fed56e8310afb6'
             'fd88fc7e537d058d7a8abf0c1ebc90c574892a466de86706a26d254710a82814'
-            '4e3e8a40729e4c9e3e9e651cebe4f1aed8f9a4d22e991e6cd24608687f0eedd4'
-            'b0b75d205b2d696f41d56a525be555bb9e0d4368780c9774579b3b24fa95988d'
-            '759ef54f55a1c0123fab9ecda34caaa69e8bf753529fcbd6ccf6fcb820f963ac'
-            '9bd1c3e0725a034ebbde56327834e9b4b1806571c25c4f3396fdc593203b2429'
-            '655f716c9dd4f29e22448b637b9118b869cc4b67d7126e8983eb2d1ed2b031f6'
-            '0675e014359895a5616a999f9e7d9c69d013644843ab910e7a127e3df0c52807'
-            'ff755d796e490915aa0c9859b84ae15a8b3b17229fe79e8ef6c6630cbede60a8'
-            '7fb23288e5e9c20a349a5578d6a77bfdc62b9d611bca892e665cac4a3b4bf5d9')
+            'd73d440c08ebd67c93fbd6534f4f1b4e98aa07342f9c7d98c8aaeb74755eb9cf'
+            '5a9c2744a81126147468ebe0c7b9ecb403b307ed08e051c98b9295124d6005ea'
+            '0595299b1151c154ed220ea4d50b32581d46611cb701de6c174b1802e3f984ac'
+            'e15df4abc4dc1528cd0e649ed3c2e3528f38dfa3be023951389f160fdcb57ea5'
+            '2a73bc6f519cf09527bfb18dc30a00855321119d046491cf758400bfda2ec1f0'
+            'aae4194be9b3bf2c34ed9d2db9657c367dcd4f76934ff89d5ac3a3283b78948d'
+            'fbec0b15b57a501359764df0c3e2d41666d75c48b098cbe2bad09870e0b90299')
