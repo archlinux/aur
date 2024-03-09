@@ -19,7 +19,7 @@
 # So for now just sticking with that. Will switch in the future if that lib implementation gets fixed.
 
 pkgname=localsend-bin
-pkgver=1.13.1
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='An open source cross-platform alternative to AirDrop '
 url=https://github.com/localsend/localsend
@@ -30,7 +30,7 @@ conflicts=('localsend-git' 'localsend')
 provides=('localsend')
 options=(!strip)
 source=("https://github.com/localsend/localsend/releases/download/v${pkgver}/LocalSend-${pkgver}-linux-x86-64.AppImage")
-sha256sums=('a7a167b1bf447851eb2ea0c9763d0242900f00a8d3ef47d6ad0dfa6f9dd2cc09')
+sha256sums=('e89e885a1de2122dbe5b2b7ec439dca00accee1e63237d4685946a48a35ca8d2')
 _appimage="LocalSend-${pkgver}-linux-x86-64.AppImage"
 _appimage_nover="localsend.AppImage"
 _pkgname="localsend"
