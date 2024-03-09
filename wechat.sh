@@ -30,7 +30,10 @@ function manageDirs() {
 
 function detectXauth() {
 	if [ ! ${XAUTHORITY} ]; then
-		XAUTHORITY=/dev/null
+		export XAUTHORITY=/dev/null
+	fi
+	if [[ ! ${DISPLAY} ]]; then
+		echo '[Warn] No ${DISPLAY} detected! Do you have any X server running?'
 	fi
 }
 
@@ -54,7 +57,7 @@ function inputMethod() {
 }
 
 function lnDir() {
-	if [ ! -f "${HOME}"/xwechat_files ]; then
+	if [ ! -d "${HOME}"/xwechat_files ]; then
 		ln -s "${XDG_DOCUMENTS_DIR}"/WeChat_Data/xwechat_files "${HOME}"/xwechat_files
 	fi
 }

@@ -26,7 +26,7 @@ source=(
 	wechat-${pkgver}.deb::"https://cdn4.cnxclm.com/uploads/2024/03/05/3VDyAc0x_wechat-beta_1.0.0.145_amd64.deb?attname=wechat-beta_1.0.0.145_amd64.deb"
 )
 noextract=()
-md5sums=('105fe4898090e7555b1e65594113da03'
+md5sums=('fe75decd997e4bd3850d966c1757fe60'
          'b6e6920af829dafb0be82da1c79e46a9'
          '600e74549ce2258c045d5c2f7689ea63'
          '1da072bd774d1b5c08b9545b409e3fcb')
