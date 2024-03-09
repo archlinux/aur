@@ -1,6 +1,6 @@
 pkgbase = uim-mozc
 	pkgdesc = uim plugin module for Mozc
-	pkgver = 2.29.5374.102
+	pkgver = 2.29.5400.102
 	pkgrel = 1
 	url = https://github.com/e-kato/macuim
 	install = uim-mozc.install
@@ -11,9 +11,9 @@ pkgbase = uim-mozc
 	makedepends = bazel
 	makedepends = git
 	makedepends = python
-	depends = mozc>=2.29.5374.102
+	depends = mozc>=2.29.5400.102
 	depends = uim
-	source = mozc::git+https://github.com/google/mozc.git#commit=c2fcbf6515c5884437977de46187c16a8cb7bb50
+	source = mozc::git+https://github.com/google/mozc.git#commit=e87c83febda07ffd93fcbfc4ea67562f40423005
 	source = uim-mozc::git+https://github.com/e-kato/macuim.git#commit=7beac7ba000e0459a4dc933f3873b521664d2665
 	source = bazel.patch
 	source = mozc.patch
