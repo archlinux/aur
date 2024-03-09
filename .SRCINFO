@@ -1,27 +1,37 @@
 pkgbase = musa
 	pkgdesc = MooreThreads MUSA
 	pkgver = 2.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.mthreads.com/sdk/download/musa
 	arch = x86_64
 	license = custom
 	makedepends = binutils
 	options = !strip
 	source = MUSA+SDK-rc2.0.0+Intel+CPU_Ubuntu.zip::https://developer.mthreads.com/sdk/download/musa?equipment=&os=&driverVersion=&version=
-	source = 00-port-ti-img-rouge-newer-sources-2.6.0.diff::https://github.com/dixyes/mtgpu-drv/commit/5348abd9861c6906e4927d26a7d587190c7f1fe0.diff
-	source = 01-disable-cursor_set-things-2.6.0.diff::https://github.com/dixyes/mtgpu-drv/commit/fb093df3606894481555fb19161c5713e5a1fbbe.diff
-	source = 02-fake-ubuntu-2.6.0.diff::https://github.com/dixyes/mtgpu-drv/commit/b7bb67ab99172a6dc8e0e29db255ac4b9d44f967.diff
-	source = 03-fix-oops-2.6.0.diff::https://github.com/dixyes/mtgpu-drv/commit/78a7620f8c3ad8201749a504216d886809fc9c01.diff
+	source = 00-port-ti-img-rouge-newer-sources-2.6.0-2.diff::https://github.com/dixyes/mtgpu-drv/commit/4bae8c0555c09ac55d417f184788824a77b014b3.diff
+	source = 01-disable-cursor_set-things-2.6.0-2.diff::https://github.com/dixyes/mtgpu-drv/commit/995bbbac20757ca22232448d1f29c5a2e9b67c04.diff
+	source = 02-fake-ubuntu-2.6.0-2.diff::https://github.com/dixyes/mtgpu-drv/commit/81e52ddbbcc587a800724d25584d8060a1228429.diff
+	source = 03-fix-ipc_tty_write-2.6.0-2.diff::https://github.com/dixyes/mtgpu-drv/commit/d85a187f4e9d2a031bebdabf4fecb841aa6b4851.diff
+	source = 04-workaround-pci_enable_pcie_error_reporting-2.6.0-2.diff::https://github.com/dixyes/mtgpu-drv/commit/0b797a3e4b4f4ed36d6f0b7915cb764b7d6d0ba7.diff
 	sha512sums = a06fe0c6d49d0569072bb2ebc40d68d5cf6f00a8fcafd72b25619469276e740f5a0bcd4cf742751ec6e2698310cd9c9041593039fb5e2509641e68be13dada07
-	sha512sums = 3342a70d3edd8eeffed316344616cb3e7e0811bbe63afd48e7802e9807209236516ee3ccfbd8a449569ec05a04f73c562d3a246f28a364db6b3be46838f20a74
+	sha512sums = 6b8cea6c6c26c9ee83c095ff362d484401dfa2d745bfa603bc3ac2a9dcec5de31139c72de4f70ec9680ecfed695a196bbe33e6141dcd7a60a8aa05c6e2638200
 	sha512sums = d9ade66f27c9afe43343191ed671a18740a2543dab95c12f11187f3bff57ded4b0a8ef56f383413e0ba98447c851f07f591a3a128cc21df4780c699107447427
 	sha512sums = 06b60c59c664234959f2f9c4cbc30e871bdc405a396cb2094222a66e302dbdc272c8ee3ebdc659c66428224fe1c6c5d29baa76bd66273328e3c5b77fce1a1eef
-	sha512sums = 8b4ffa908b73dbcc7b0957bb4e8444fa7481bf9eb3751b2ffb656d4fe1cbaf2f28c1614a26e39a6f971e01340659b4f20507c72aae21cfd04fa84a6420ad9697
-
-pkgname = musa-userspace
-	pkgdesc = MooreThreads MUSA userspace libraries include muDNN, mccl
-	depends = 
+	sha512sums = 6964b0960aafdec107b7c2a919a31b8e738605c71ffe2813f7614128958a18207308f4326d5ba5e5d4e235d313862377f5e5ffcc45cdc9cf390c69658b3cab85
+	sha512sums = 7137d91dea6e8ffdee392ecd7124bdb7ba0491b68ceda0c8663562f552d029403a2f9b849cac060a45748cc8d298ba1f7a2b7f2950b8f785348edb59754b6965
 
 pkgname = mtgpu-dkms
 	pkgdesc = MooreThreads mtgpu dkms driver
 	depends = dkms
+
+pkgname = musa-userspace-chunxiao
+	pkgdesc = MooreThreads MUSA userspace libraries for chunxiao (S70 S80 S3000) include OpenCL, Vulkan, Xorg drivers, muDNN, MCCL, MUSA Toolkits
+	provides = musa-userspace
+	conflicts = musa-userspace
+	replaces = musa-userspace
+
+pkgname = musa-userspace-quyuan
+	pkgdesc = MooreThreads MUSA userspace libraries for quyuan (S90 S4000) include OpenCL, Vulkan, Xorg drivers, muDNN, MCCL, MUSA Toolkits
+	provides = musa-userspace
+	conflicts = musa-userspace
+	replaces = musa-userspace
