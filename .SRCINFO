@@ -1,12 +1,12 @@
 pkgbase = ash-listening-set
 	pkgdesc = A dataset of filters for headphone correction and binaural synthesis of spatial audio systems on headphones
-	pkgver = 9.4
+	pkgver = 9.5
 	pkgrel = 1
 	url = https://github.com/ShanonPearce/ASH-Listening-Set
 	arch = any
 	license = Creative Commons
 	replaces = ash-ir-dataset-git
-	source = https://github.com/ShanonPearce/ASH-Listening-Set/archive/refs/tags/v9.4.tar.gz
-	sha256sums = e92043739d64031d5829e76d3b18735764855fa4de21423ff018cad9fabcca8b
+	source = https://github.com/ShanonPearce/ASH-Listening-Set/archive/refs/tags/v9.5.tar.gz
+	sha256sums = 70d51cf0c8757acf1ace0495100b030a678d7f9a625972ff4eb4aa3363491337
 
 pkgname = ash-listening-set
