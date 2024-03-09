@@ -1,0 +1,16 @@
+pkgbase = python-empy3
+	pkgdesc = Powerful and robust templating system for Python
+	pkgver = 3.3.4
+	pkgrel = 1
+	url = http://www.alcyone.com/software/empy/
+	arch = any
+	license = LGPL
+	makedepends = python-setuptools
+	depends = python
+	provides = python-empy
+	conflicts = python-empy
+	replaces = python-empy
+	source = https://pypi.python.org/packages/source/e/empy/empy-3.3.4.tar.gz
+	sha256sums = 73ac49785b601479df4ea18a7c79bc1304a8a7c34c02b9472cf1206ae88f01b3
+
+pkgname = python-empy3
