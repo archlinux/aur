@@ -54,7 +54,6 @@ post_install() {
     unset _1panel_entrance
 }
 
-## arg 1:  the old package version
 pre_remove() {
     echo -e "================== Uninstalling 1Panel =================="
     echo -e "\033[34mStopping systemd service...\033[0m"
@@ -62,8 +61,7 @@ pre_remove() {
 }
 
 post_remove() {
-    echo -e "\033[34mDeleting 1Panel configuration files...\033[0m"
-    rm -rf /opt/1panel
+    echo -e "\033[34mPlease delete /opt/1panel files after backup them...\033[0m"
     echo -e "=================== 1Panel uninstalled =================="
 }
 
