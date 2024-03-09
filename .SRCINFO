@@ -1,7 +1,7 @@
 pkgbase = vulkan-caps-viewer
 	pkgdesc = Vulkan Hardware Capability Viewer
 	pkgver = 3.33
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://vulkan.gpuinfo.org
 	arch = x86_64
