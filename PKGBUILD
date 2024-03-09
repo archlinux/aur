@@ -10,7 +10,7 @@ pkgname='mkpkg'
 pkgdesc='Tool to rebuild packages based on dependency triggers'
 _gitname='Arch-mkpkg'
 
-pkgver=6.0.1
+pkgver=6.0.3
 pkgrel=1
 url="https://github.com/gene-git/Arch-mkpkg"
 
