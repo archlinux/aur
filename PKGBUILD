@@ -4,9 +4,9 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-kmod
-pkgver=31
+pkgver=32
 pkgrel=1
-pkgdesc="Linux kernel module management tools and library (android)"
+pkgdesc="Linux kernel module management tools and library (Android ${_android_arch})"
 arch=('any')
 url='https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git'
 license=('GPL2')
@@ -17,7 +17,7 @@ depends=("android-${_android_arch}-zlib"
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-$pkgver.tar."{xz,sign}
         '0001-Use-getcwd.patch')
-md5sums=('6165867e1836d51795a11ea4762ff66a'
+md5sums=('1046fda48766fae905f83150d12eec78'
          'SKIP'
          'c3d62ea51e242a716752f988c742a4b8')
 validpgpkeys=('EAB33C9690013C733916AC839BA2A5A630CBEA53')  # Lucas DeMarchi
