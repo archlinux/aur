@@ -2,16 +2,12 @@
 # Contributor: Senge Dev <sengedev at gmail dot com>
 
 pkgname=1panel-git
-pkgver=1.10.1_alpha.5
+pkgver=2024.3.9.archlinux
 pkgrel=1
 pkgdesc="1Panel, a modern open source linux panel."
 arch=('x86_64' 'aarch64')
 url="https://1panel.cn"
 license=('GPL-3.0-or-later')
-_1panel_original_port=`expr $RANDOM % 55535 + 10000`
-_1panel_original_username=$(pwgen -nABCv 10 1)
-_1panel_original_password=$(pwgen -nBCv 20 1)
-_1panel_original_entrance=$(pwgen -nABCv 10 1)
 install=1panel.install
 makedepends=(
     'pwgen'
@@ -26,25 +22,45 @@ optdepends=(
     'docker-compose'
 )
 conflicts=('1panel-dev-bin' '1panel-bin')
-source=(
-    "${pkgname}"::"git+https://github.com/1Panel-dev/1Panel.git#branch=dev"
-    "1panel.service"
-)
-sha256sums=(
-    "SKIP"
-    "1d85c0b4a0b7256c75bb14d10d2bfb29fdcfb4c7ebc99622b024bd61be314ea3"
-)
+source=("${pkgname}"::"git+https://github.com/1Panel-dev/1Panel.git")
+sha256sums=("SKIP")
 
 build() {
-    # Override the upstream 1pctl script
-    echo "#!/bin/bash" > ${srcdir}/1pctl
-    echo "BASE_DIR=/opt" >> ${srcdir}/1pctl
-    echo "ORIGINAL_PORT=${_1panel_original_port}" >> ${srcdir}/1pctl
-    echo "ORIGINAL_VERSION=v${pkgver//_/-}" >> ${srcdir}/1pctl
-    echo "ORIGINAL_ENTRANCE=${_1panel_original_entrance}" >> ${srcdir}/1pctl
-    echo "ORIGINAL_USERNAME=${_1panel_original_username}" >> ${srcdir}/1pctl
-    echo "ORIGINAL_PASSWORD=${_1panel_original_password}" >> ${srcdir}/1pctl
-    echo "1panel --help" >> ${srcdir}/1pctl
+    # Create 1pctl file, or 1Panel systemd service cannot start.
+    cat > ${srcdir}/1pctl << EOF
+#!/bin/bash
+BASE_DIR=/opt
+ORIGINAL_PORT=`expr $RANDOM % 55535 + 10000`
+ORIGINAL_VERSION=${pkgver}
+ORIGINAL_ENTRANCE=$(pwgen -nABCv 10 1)
+ORIGINAL_USERNAME=$(pwgen -nABCv 10 1)
+ORIGINAL_PASSWORD=$(pwgen -nBCv 20 1)
+1panel \$@
+EOF
+    # Create systemd service
+    cat> ${srcdir}/1panel.service << EOF
+[Unit]
+Description=1Panel, a modern open source linux panel
+After=syslog.target network.target
+
+[Service]
+ExecStart=/usr/bin/1panel
+ExecReload=/bin/kill -s HUP \$MAINPID
+Restart=always
+RestartSec=5
+LimitNOFILE=1048576
+LimitNPROC=1048576
+LimitCORE=1048576
+Delegate=yes
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+EOF
+    # Edit the source code using sed
+    sed -i 's/当前已经是最新版本/当前版本为AUR版本，如需更新，请使用AUR更新/g' ${srcdir}/${pkgname}/frontend/src/lang/modules/zh.ts
+    sed -i 's/當前已經是最新版本/當前版本為AUR版本，如需更新，請使用AUR更新/g' ${srcdir}/${pkgname}/frontend/src/lang/modules/tw.ts
+    sed -i 's/It is currently the latest version/It is ArchLinux AUR version, if you want to update it, please use AUR./g' ${srcdir}/${pkgname}/frontend/src/lang/modules/en.ts
     # Compile 1Panel using Makefile
     cd ${srcdir}/${pkgname}
     make build_all

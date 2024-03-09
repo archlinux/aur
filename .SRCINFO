@@ -1,6 +1,6 @@
 pkgbase = 1panel-git
 	pkgdesc = 1Panel, a modern open source linux panel.
-	pkgver = 1.10.1_alpha.5
+	pkgver = 2024.3.9.archlinux
 	pkgrel = 1
 	url = https://1panel.cn
 	install = 1panel.install
@@ -17,8 +17,7 @@ pkgbase = 1panel-git
 	optdepends = docker-compose
 	conflicts = 1panel-dev-bin
 	conflicts = 1panel-bin
-	source = 1panel-git::git+https://github.com/1Panel-dev/1Panel.git#branch=dev
-	source = 1panel.service
+	source = 1panel-git::git+https://github.com/1Panel-dev/1Panel.git
 	sha256sums = SKIP
 
 pkgname = 1panel-git
