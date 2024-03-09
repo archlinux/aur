@@ -6,7 +6,7 @@
 # Maintainer: Samuel Corsi-House <chouse.samuel@gmail.com>
 _pkgname=playit
 pkgname=$_pkgname-bin
-pkgver=0.15.10
+pkgver=0.15.13
 pkgrel=1
 pkgdesc="The playit program"
 arch=('x86_64')
@@ -15,8 +15,8 @@ license=('BSD-2-Clause')
 conflicts=(playit)
 source=("$_pkgname-$pkgver.deb::https://playit-cloud.github.io/ppa/data/${_pkgname}_${pkgver}_amd64.deb"
 	"LICENSE.txt::https://raw.githubusercontent.com/playit-cloud/playit-agent/master/LICENSE.txt")
-sha256sums=("71a4229a89dfe999d28a2f97aac14b0a46fc2ebd35941f3eee4be0940fa08dca"
-	    "SKIP")
+sha256sums=('fa69110d73b85c203337fb4b182b6dfae12d8148246efb2a05455e966174eb2c'
+            'SKIP')
 
 package() {
 	bsdtar -xf data.tar.gz -C "$pkgdir/"
