@@ -19,7 +19,7 @@ depends=(
   'libpulse'
   'libseat.so'
   'libxkbcommon'
-  'pop-icon-theme'  # TODO: Depend on pop-icon-theme-git
+  'pop-icon-theme-git'
   'pop-launcher-git'
   'systemd-libs'
   'wayland'
