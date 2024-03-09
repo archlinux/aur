@@ -1,6 +1,6 @@
 pkgbase = govarnam-ibus-git
 	pkgdesc = IBus engine for GoVarnam providing Indian language input method - Git version
-	pkgver = 1.6.2.r3.g38b3d0b
+	pkgver = 1.6.2.r3.g18e6d36
 	pkgrel = 1
 	url = https://varnamproject.github.io/
 	arch = x86_64
@@ -12,9 +12,7 @@ pkgbase = govarnam-ibus-git
 	provides = govarnam-ibus
 	source = govarnam-ibus-git::git+https://github.com/varnamproject/govarnam-ibus.git
 	source = git+https://github.com/varnamproject/govarnam.git
-	source = wayland-fix.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 02479dff418290567b2748d6f23124474fe7b8f7eb89694464c4eb0fa843ed4f
 
 pkgname = govarnam-ibus-git

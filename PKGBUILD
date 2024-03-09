@@ -2,7 +2,7 @@
 # Contributor: Ashwin Vishnu <ashwinvis+arch at pr0t0nm4il dot com>
 
 pkgname=govarnam-ibus-git
-pkgver=1.6.2.r3.g38b3d0b
+pkgver=1.6.2.r3.g18e6d36
 pkgrel=1
 pkgdesc="IBus engine for GoVarnam providing Indian language input method - Git version"
 arch=('x86_64')
@@ -11,21 +11,14 @@ license=('AGPL')
 makedepends=('go' 'git')
 depends=('govarnam' 'ibus')
 source=("${pkgname}::git+https://github.com/varnamproject/govarnam-ibus.git"
-    "git+https://github.com/varnamproject/govarnam.git"
-    "wayland-fix.patch")
+    "git+https://github.com/varnamproject/govarnam.git")
 sha256sums=('SKIP'
-            'SKIP'
-            '02479dff418290567b2748d6f23124474fe7b8f7eb89694464c4eb0fa843ed4f')
+            'SKIP')
 provides=('govarnam-ibus')
 
 pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//g'
-}
-
-prepare() {
-  cd "$pkgname"
-  git am ../wayland-fix.patch
 }
 
 build() {
@@ -55,4 +48,3 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/ibus/component"
 	cp -a --no-preserve=ownership component/*.xml "${pkgdir}/usr/share/ibus/component"
 }
-
