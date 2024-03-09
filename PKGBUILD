@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=nile-git
-pkgver=r73.8f7ab26
+pkgver=1.0.2.r0.gae09acf
 pkgrel=1
 pkgdesc="Unofficial Amazon Games client"
 arch=('x86_64')
@@ -22,7 +22,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

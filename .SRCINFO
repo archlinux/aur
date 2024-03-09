@@ -1,6 +1,6 @@
 pkgbase = nile-git
 	pkgdesc = Unofficial Amazon Games client
-	pkgver = r73.8f7ab26
+	pkgver = 1.0.2.r0.gae09acf
 	pkgrel = 1
 	url = https://github.com/imLinguin/nile
 	arch = x86_64
