@@ -12,11 +12,11 @@ fi
 _pluginname=tuna
 pkgname=obs-$_pluginname
 pkgver=1.9.7
-pkgrel=1
+pkgrel=2
 arch=("x86_64" "aarch64")
 pkgdesc="Get song info from right within obs"
 url="https://obsproject.com/forum/resources/tuna.843/"
-license=('GPL2')
+license=(GPL-2.0-or-later)
 depends=(
   "obs-studio>=28" "curl" "dbus" "gcc-libs" "glibc" "libmpdclient"
   "qt6-base" "taglib"
@@ -47,6 +47,8 @@ prepare() {
 }
 
 build() {
+  export CXXFLAGS+=" -Wno-error=deprecated-declarations"
+
   cmake -B build -S $_pluginname \
   -DCMAKE_BUILD_TYPE=None \
   -DCMAKE_INSTALL_PREFIX='/usr' \
