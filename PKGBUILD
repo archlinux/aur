@@ -1,11 +1,11 @@
 # Maintainer: Mykola Dimura <mykola.dimura@gmail.com>
 pkgname=mingw-w64-readerwriterqueue-git
-pkgver=r77.66a9b18
-pkgrel=3
+pkgver=1.0.6.r5.g2dee33a
+pkgrel=1
 pkgdesc="A fast single-producer, single-consumer lock-free queue for C++. (mingw-w64)"
 arch=('any')
 url='https://github.com/cameron314/readerwriterqueue'
-license=('Simplified BSD License')
+license=('BSD-2-Clause')
 depends=('mingw-w64-crt')
 makedepends=('git')
 options=('!strip' '!buildflags' 'staticlibs')
@@ -31,6 +31,5 @@ package() {
 }
  
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git -C ${pkgname%-git} describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }

@@ -4,7 +4,7 @@ pkgbase = mingw-w64-readerwriterqueue-git
 	pkgrel = 3
 	url = https://github.com/cameron314/readerwriterqueue
 	arch = any
-	license = Simplified BSD License
+	license = BSD-2-Clause
 	makedepends = git
 	depends = mingw-w64-crt
 	options = !strip
@@ -14,4 +14,3 @@ pkgbase = mingw-w64-readerwriterqueue-git
 	sha1sums = SKIP
 
 pkgname = mingw-w64-readerwriterqueue-git
-
