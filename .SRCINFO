@@ -1,6 +1,6 @@
 pkgbase = android-x86-giflib
-	pkgdesc = A library for reading and writing gif images (android)
-	pkgver = 5.2.1
+	pkgdesc = A library for reading and writing gif images (Android x86)
+	pkgver = 5.2.2
 	pkgrel = 1
 	url = http://sourceforge.net/projects/giflib/
 	arch = any
@@ -12,10 +12,9 @@ pkgbase = android-x86-giflib
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://downloads.sourceforge.net/project/giflib/giflib-5.2.1.tar.gz
-	source = Makefile.patch
-	md5sums = 6f03aee4ebe54ac2cc1ab3e4b0a049e5
-	md5sums = 0c6a08273d51f7fd965c79c967f5e7ed
+	source = https://downloads.sourceforge.net/project/giflib/giflib-5.2.2.tar.gz
+	source = 0001-Unversioned-libs.patch
+	md5sums = 913dd251492134e235ee3c9a91987a4d
+	md5sums = 4009aa119ecad67d50f4350b7af83ddc
 
 pkgname = android-x86-giflib
-
