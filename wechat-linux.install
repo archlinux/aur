@@ -1,0 +1,13 @@
+post_install() {
+    mkdir -p /usr/lib/license
+    if [ ! -f /usr/lib/license/libuosdevicea.so ]; then
+        touch /usr/lib/license/libuosdevicea.so
+    fi
+}
+
+post_remove() {
+    if [ -f /usr/lib/license/libuosdevicea.so ]; then
+        rm /usr/lib/license/libuosdevicea.so
+        rmdir /usr/lib/license
+    fi
+}

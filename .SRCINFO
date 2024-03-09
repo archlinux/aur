@@ -1,0 +1,29 @@
+pkgbase = wechat-linux-bwrap
+	pkgdesc = Tencent WeChat Client from Spark Store with sandboxing using bwrap
+	pkgver = 2.2.0
+	pkgrel = 1
+	install = wechat-linux.install
+	arch = x86_64
+	license = proprietary
+	depends = snapd-xdg-open-git
+	depends = nss
+	depends = lsb-release
+	depends = xdg-utils
+	depends = libxss
+	depends = bc
+	depends = libnotify
+	depends = bubblewrap
+	depends = xdg-desktop-portal-gtk
+	optdepends = xdg-desktop-portal-kde: KDE Portal
+	optdepends = xdg-desktop-portal-lxqt: lxqt Portal
+	optdepends = xdg-desktop-portal-gnome: Gnome Portal
+	source = wechat.sh
+	source = wechat-linux.desktop
+	source = wechat-linux.svg
+	source = wechat-2.2.0.deb::https://cdn4.cnxclm.com/uploads/2024/03/08/85uZHDjz_store.spark-app.wechat-linux-spark_2.2-real1.0.0.0_amd64.deb?attname=store.spark-app.wechat-linux-spark_2.2-real1.0.0.0_amd64.deb
+	md5sums = 06c82e1ba414bb1b4140dfbc3da4bace
+	md5sums = 4416ba2723325292f2177eec63775f62
+	md5sums = 600e74549ce2258c045d5c2f7689ea63
+	md5sums = caabaa599446f5a23364644f734e2e2c
+
+pkgname = wechat-linux-bwrap
