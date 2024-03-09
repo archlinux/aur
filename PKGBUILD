@@ -1,7 +1,7 @@
 # Maintainer: MotorTruck1221 motortruck1221@protonmail.com
 
 pkgname=corlink-server
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=2
 pkgdesc="The corlink license server for the corlink project."
 url="https://github.com/ruby-network/corlink/license"
