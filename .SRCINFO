@@ -1,6 +1,6 @@
 pkgbase = android-armv7a-eabi-expat
-	pkgdesc = An XML parser library (android)
-	pkgver = 2.6.0
+	pkgdesc = An XML parser library (Android armv7a-eabi)
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = https://libexpat.github.io/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = android-armv7a-eabi-expat
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/libexpat/libexpat/archive/R_2_6_0.tar.gz
-	md5sums = aa424e56fe6378bb4b9f26b903f42119
+	source = https://github.com/libexpat/libexpat/archive/R_2_6_1.tar.gz
+	md5sums = 0cfa8405040dd2d4f643d4619ba3278a
 
 pkgname = android-armv7a-eabi-expat
