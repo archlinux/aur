@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=GCAP 2023
+Comment=Programa de Apuração dos Ganhos de Capital (versão 2023)
+Path=/usr/bin
+Exec=gcap2023
+Icon=gcap2023
+StartupWMClass=br-gov-serpro-gcap-app-PGDGCAP
+Terminal=false
+StartupNotify=false
+Type=Application
+Categories=Application;
