@@ -1,0 +1,95 @@
+From 837a514a10be1a9977352edbabe8efa41392e07f Mon Sep 17 00:00:00 2001
+From: Paul Hindt <paulh@aja.com>
+Date: Wed, 11 Oct 2023 21:57:44 -0700
+Subject: [PATCH] aja: Update plugin to use new libajantv2 deps
+
+AJA's ntv2 repo on github, which was used to build the initial
+version of the OBS AJA plugin, has been replaced by a new repo.
+
+The original repo placed a maintenance burden on AJA, requiring
+filtering open-source code from proprietary code.
+
+The new repo splits and re-organizes the open-source code from
+AJA's internal repo, to allow its use as a submodule by other
+projects, both internal and external to AJA.
+
+This PR updates the OBS AJA plugin to use deps from the new repo.
+---
+ cmake/Modules/FindLibAJANTV2.cmake            | 11 ++++--
+ plugins/aja/aja-widget-io.cpp                 | 17 +++++-----
+ 5 files changed, 47 insertions(+), 37 deletions(-)
+
+diff --git a/cmake/Modules/FindLibAJANTV2.cmake b/cmake/Modules/FindLibAJANTV2.cmake
+index 3ce91deedff7a..9a016bc1cb276 100644
+--- a/cmake/Modules/FindLibAJANTV2.cmake
++++ b/cmake/Modules/FindLibAJANTV2.cmake
+@@ -15,7 +15,7 @@ endif()
+ 
+ find_path(
+   AJA_LIBRARIES_INCLUDE_DIR
+-  NAMES ajalibraries
++  NAMES libajantv2
+   HINTS ENV
+         AJASDKPath${_lib_suffix}
+         ENV
+@@ -99,10 +99,17 @@ find_package_handle_standard_args(LibAJANTV2 DEFAULT_MSG AJA_LIBRARIES_INCLUDE_D
+ mark_as_advanced(AJA_LIBRARIES_INCLUDE_DIR AJA_NTV2_LIB)
+ 
+ if(LIBAJANTV2_FOUND)
+-  set(AJA_LIBRARIES_INCLUDE_DIR ${AJA_LIBRARIES_INCLUDE_DIR}/ajalibraries)
++  set(AJA_LIBRARIES_INCLUDE_DIR ${AJA_LIBRARIES_INCLUDE_DIR}/libajantv2)
+   set(AJA_LIBRARIES_INCLUDE_DIRS
+       ${AJA_LIBRARIES_INCLUDE_DIR} ${AJA_LIBRARIES_INCLUDE_DIR}/ajaanc ${AJA_LIBRARIES_INCLUDE_DIR}/ajabase
+       ${AJA_LIBRARIES_INCLUDE_DIR}/ajantv2 ${AJA_LIBRARIES_INCLUDE_DIR}/ajantv2/includes)
++  if(CMAKE_HOST_SYSTEM_NAME MATCHES "Windows")
++    list(APPEND AJA_LIBRARIES_INCLUDE_DIRS ${AJA_LIBRARIES_INCLUDE_DIR}/ajantv2/src/win)
++  elseif(CMAKE_HOST_SYSTEM_NAME MATCHES "Darwin")
++    list(APPEND AJA_LIBRARIES_INCLUDE_DIRS ${AJA_LIBRARIES_INCLUDE_DIR}/ajantv2/src/mac)
++  elseif(CMAKE_HOST_SYSTEM_NAME MATCHES "Linux")
++    list(APPEND AJA_LIBRARIES_INCLUDE_DIRS ${AJA_LIBRARIES_INCLUDE_DIR}/ajantv2/src/lin)
++  endif()
+ 
+   set(LIBAJANTV2_LIBRARIES ${AJA_NTV2_LIB})
+   if(AJA_NTV2_DEBUG_LIB STREQUAL "AJA_NTV2_DEBUG_LIB-NOTFOUND")
+diff --git a/plugins/aja/aja-widget-io.cpp b/plugins/aja/aja-widget-io.cpp
+index 18e571dfe98c5..c7d01c0acd465 100644
+--- a/plugins/aja/aja-widget-io.cpp
++++ b/plugins/aja/aja-widget-io.cpp
+@@ -1,6 +1,7 @@
+ #include "aja-widget-io.hpp"
+ #include "aja-common.hpp"
+ 
++#include <ajantv2/includes/ntv2enums.h>
+ #include <ajantv2/includes/ntv2utils.h>
+ #include <ajantv2/includes/ntv2signalrouter.h>
+ 
+@@ -35,21 +36,21 @@ static const WidgetInputSocket kWidgetInputSockets[] = {
+ 	//NTV2InputCrosspointID        | NTV2WidgetID                | Name | DatastreamIndex
+ 	{ NTV2_INPUT_CROSSPOINT_INVALID, NTV2_WIDGET_INVALID,          "",                    -1},
+ 	{ NTV2_XptFrameBuffer1Input,     NTV2_WgtFrameBuffer1,                kFramebufferNickname,   0},
+-	{ NTV2_XptFrameBuffer1BInput,    NTV2_WgtFrameBuffer1,                kFramebufferNickname,   1},
++	{ NTV2_XptFrameBuffer1DS2Input,  NTV2_WgtFrameBuffer1,                kFramebufferNickname,   1},
+ 	{ NTV2_XptFrameBuffer2Input,     NTV2_WgtFrameBuffer2,                kFramebufferNickname,   0},
+-	{ NTV2_XptFrameBuffer2BInput,    NTV2_WgtFrameBuffer2,                kFramebufferNickname,   1},
++	{ NTV2_XptFrameBuffer2DS2Input,  NTV2_WgtFrameBuffer2,                kFramebufferNickname,   1},
+ 	{ NTV2_XptFrameBuffer3Input,     NTV2_WgtFrameBuffer3,                kFramebufferNickname,   0},
+-	{ NTV2_XptFrameBuffer3BInput,    NTV2_WgtFrameBuffer3,                kFramebufferNickname,   1},
++	{ NTV2_XptFrameBuffer3DS2Input,  NTV2_WgtFrameBuffer3,                kFramebufferNickname,   1},
+ 	{ NTV2_XptFrameBuffer4Input,     NTV2_WgtFrameBuffer4,                kFramebufferNickname,   0},
+-	{ NTV2_XptFrameBuffer4BInput,    NTV2_WgtFrameBuffer4,                kFramebufferNickname,   1},
++	{ NTV2_XptFrameBuffer4DS2Input,  NTV2_WgtFrameBuffer4,                kFramebufferNickname,   1},
+ 	{ NTV2_XptFrameBuffer5Input,     NTV2_WgtFrameBuffer5,                kFramebufferNickname,   0},
+-	{ NTV2_XptFrameBuffer5BInput,    NTV2_WgtFrameBuffer5,                kFramebufferNickname,   1},
++	{ NTV2_XptFrameBuffer5DS2Input,  NTV2_WgtFrameBuffer5,                kFramebufferNickname,   1},
+ 	{ NTV2_XptFrameBuffer6Input,     NTV2_WgtFrameBuffer6,                kFramebufferNickname,   0},
+-	{ NTV2_XptFrameBuffer6BInput,    NTV2_WgtFrameBuffer6,                kFramebufferNickname,   1},
++	{ NTV2_XptFrameBuffer6DS2Input,  NTV2_WgtFrameBuffer6,                kFramebufferNickname,   1},
+ 	{ NTV2_XptFrameBuffer7Input,     NTV2_WgtFrameBuffer7,                kFramebufferNickname,   0},
+-	{ NTV2_XptFrameBuffer7BInput,    NTV2_WgtFrameBuffer7,                kFramebufferNickname,   1},
++	{ NTV2_XptFrameBuffer7DS2Input,  NTV2_WgtFrameBuffer7,                kFramebufferNickname,   1},
+ 	{ NTV2_XptFrameBuffer8Input,     NTV2_WgtFrameBuffer8,                kFramebufferNickname,   0},
+-	{ NTV2_XptFrameBuffer8BInput,    NTV2_WgtFrameBuffer8,                kFramebufferNickname,   1},
++	{ NTV2_XptFrameBuffer8DS2Input,  NTV2_WgtFrameBuffer8,                kFramebufferNickname,   1},
+ 	{ NTV2_XptCSC1VidInput,          NTV2_WgtCSC1,                        kCSCNickname,           0},
+ 	{ NTV2_XptCSC1KeyInput,          NTV2_WgtCSC1,                        kCSCNickname,           1},
+ 	{ NTV2_XptCSC2VidInput,          NTV2_WgtCSC2,                        kCSCNickname,           0},
