@@ -3,7 +3,7 @@
 pkgname=ksysguard6-git
 pkgver=6.0.1
 pkgrel=1
-pkgdesc='Track and control the processes running in your system'
+pkgdesc='Track and control the processes running in your system. KF6 version'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
