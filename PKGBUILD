@@ -1,10 +1,10 @@
 # Maintainer: AnnikaV9 <carrot.moncher@gmail.com>
 
 pkgname=hcclient
-pkgver=1.19.3
+pkgver=1.19.4
 pkgrel=1
 pkgdesc="A terminal client for hack.chat"
-arch=("x86_64")
+arch=("any")
 url="https://github.com/AnnikaV9/hcclient"
 license=("Unlicense")
 provides=("hcclient")
@@ -13,8 +13,8 @@ makedepends=("python-pip" "python-wheel")
 source=("hcclient-${pkgver}-py3-none-any.whl::${url}/releases/download/v${pkgver}/hcclient-${pkgver}-py3-none-any.whl"
         "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=("hcclient-${pkgver}-py3-none-any.whl")
-sha256sums=('01e8fe70d4401594d7ee2eeeabc8f4084d41f6162e7f40d66489ae561989baf9'
-            '820d66751f829ec2017686146ac2876396b8fb1e9b4488e7a57da87030f6fdbc')
+sha256sums=('933c7762e8d5d00b17dcddd93beadd0da8063097e432e72c5a4eab2eb413f70a'
+            '057c51b97389c1079ed41a07819fbc5e4e172489bd394f611117586fb119a415')
 
 build() {
   python -m venv iso-env
