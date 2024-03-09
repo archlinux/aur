@@ -15,13 +15,14 @@ _1panel_original_entrance=$(pwgen -nABCv 10 1)
 install=1panel.install
 
 makedepends=(
-    'pwgen'
+    'pwgen'             # Generate username, password and 1Panel entrance before compile.
+    'lsof'              # Make sure the port will not be occupied.
 )
 optdepends=(
-    'ufw'
-    'firewalld'
-    'docker'
-    'docker-compose'
+    'ufw'               # Firewall manager
+    'firewalld'         # Firewall manager
+    'docker'            # Docker image manager
+    'docker-compose'    # Docker compose plugin, make sure 1Panel app store works.
 )
 conflicts=(
     '1panel-bin'
@@ -33,15 +34,19 @@ sha256sums_x86_64=("21b68b6434bde83045727f150b035ecb002e8166602ff4e0b0ee2836b5ca
 sha256sums_aarch64=("366c2d3eb98f4ac167e5dde87c4db4143df72c0ce99b840b14fcd87f616cf006")
 
 build() {
-    # Override the upstream 1pctl script
+    _1panel_port=`expr $RANDOM % 55535 + 10000`
+    while lsof -i:$_1panel_port > /dev/null 2>&1; do
+        _1panel_port=`expr $RANDOM % 55535 + 10000`
+    done
+    # Create 1pctl file, or 1Panel systemd service cannot start.
     cat > ${srcdir}/1pctl << EOF
 #!/bin/bash
 BASE_DIR=/opt
-ORIGINAL_PORT=${_1panel_original_port}
+ORIGINAL_PORT=${_1panel_port}
 ORIGINAL_VERSION=${pkgver}
-ORIGINAL_ENTRANCE=${_1panel_original_entrance}
-ORIGINAL_USERNAME=${_1panel_original_username}
-ORIGINAL_PASSWORD=${_1panel_original_password}
+ORIGINAL_ENTRANCE=$(pwgen -nABCv 10 1)
+ORIGINAL_USERNAME=$(pwgen -nABCv 10 1)
+ORIGINAL_PASSWORD=$(pwgen -nBCv 20 1)
 1panel \$@
 EOF
 }
