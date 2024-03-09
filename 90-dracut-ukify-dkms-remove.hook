@@ -1,0 +1,10 @@
+[Trigger]
+Type = Path
+Operation = Remove
+Target = usr/src/*/dkms.conf
+
+[Action]
+Description = Updating linux images...
+When = PostTransaction
+Exec = /usr/bin/dracut-ukify -z
+NeedsTargets
