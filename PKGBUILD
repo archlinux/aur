@@ -1,11 +1,11 @@
 # Maintainer: Herbert Knapp
 pkgname=winamp2
 pkgver=2.95
-pkgrel=4
+pkgrel=5
 pkgdesc='Winamp 2.95 audio player with Milkdrop 1.04, FLAC 1.1.2, APE 3.99, MPC 0.99f plugins'
 arch=('any')
 url="http://www.nullsoft.com"
-source=('winamp295rc_full_milkdrop_flac_ape_mpc.zip::https://gateway.ipfs.io/ipfs/QmT2VSVUDCRWmaDfHnUfnRx9rw27dZufvHTgtuf5rzT4yb')
+source=('winamp295rc_full_milkdrop_flac_ape_mpc.zip::https://web.archive.org/web/20240309214220if_/https://litter.catbox.moe/g4jqkt')
 sha512sums=('7dd253b9aa0a6066ffd1332f01ca2620ad2f9951769aaf8fec07264ea7214f2718e8aa9dd780cb20d7d0e996f6a31b025ec66930e4e4ad78de54e4d9bdeec58d')
 license=('unknown')
 depends=('wine')
@@ -30,7 +30,7 @@ package() {
     echo 'mkdir -p ~/.winamp2'
     echo '[[ -d ~/.winamp2/winamp ]] || cp -r /opt/Winamp2 ~/.winamp2/winamp'
     echo "cd ~/.winamp2/winamp/"
-    echo "WINEDEBUG=-all WINEPREFIX=~/.winamp2 wine winamp.exe"
+    echo "WINEDLLOVERRIDES='mscoree,mshtml=' WINEDEBUG=-all WINEPREFIX=~/.winamp2 wine winamp.exe"
   } > "${_launcher}"
   chmod +x "${_launcher}"
   
