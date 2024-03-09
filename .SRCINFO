@@ -1,16 +1,15 @@
 pkgbase = freealchemist
 	pkgdesc = A figure block game written in Python where you have to connect blocks
-	pkgver = 0.5
-	pkgrel = 4
+	pkgver = 0.7
+	pkgrel = 1
 	url = http://dakblog.wordpress.com/freealchemist/
 	arch = any
 	license = GPL
-	depends = python2
-	depends = python2-pygame
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/freealchemist_0.5.orig.tar.bz2
+	makedepends = python-setuptools
+	depends = python-pygame
+	source = https://github.com/dakk/FreeAlchemist/archive/44e7173219c30de3676110dc6ce5beea9e03cc33.zip
 	source = freealchemist-starter
-	md5sums = 550126b213119967183e0cf6532b1157
+	md5sums = 9a142c3464d857d6f246d1d898743816
 	md5sums = 7b7027eecfb4457fc1fde4d7b7b68b3a
 
 pkgname = freealchemist
-
