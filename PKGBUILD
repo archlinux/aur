@@ -2,7 +2,7 @@
 
 pkgname=('clang-prefixed-release')
 #pkgver=15.0.7
-_pkgver=18.1.0
+_pkgver=18.1.1
 _pkg_suffix=
 _pkgver_suffix=${_pkgver}
 _pkgver_dash_suffix=${_pkgver}
@@ -11,7 +11,7 @@ if [[ -n ${_pkg_suffix} ]]; then
     _pkgver_dash_suffix=${_pkgver_dash_suffix}-${_pkg_suffix}
 fi
 pkgver=${_pkgver_suffix}
-pkgrel=5
+pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -23,7 +23,7 @@ checkdepends=("python-psutil")
 # stable
 #source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz")
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${_pkgver_dash_suffix}/llvm-project-${_pkgver_suffix}.src.tar.xz")
-sha512sums=('b94f837ff0e1aafdd4939e6e50740c8ab6af602b182357ae495359301a6d5fadaa997014895b90e0c91a715c713218396bb10687167ef30b17ebeccf310f2adf')
+sha512sums=('f21b7a70504a3b645c641d57f10c78a2ac99d9627755be96b5380cb088e1604976382c7b87a75908370491e0985c0788fbbc00996ccb744f33525989a5b0f046')
 install=clang.install
 static_build=false
 build_with_gcc=false
