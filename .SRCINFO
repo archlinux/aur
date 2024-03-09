@@ -1,7 +1,7 @@
 pkgbase = squareline-studio
 	pkgdesc = Visual drag-and-drop UI editor to create beautiful Graphical User Interfaces quickly and easily
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://squareline.io/
 	arch = x86_64
 	license = custom

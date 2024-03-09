@@ -3,7 +3,7 @@
 pkgname=squareline-studio
 _pkgname=SquareLine_Studio
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Visual drag-and-drop UI editor to create beautiful Graphical User Interfaces quickly and easily"
 arch=('x86_64')
 url="https://squareline.io/"
@@ -22,7 +22,7 @@ package() {
 
   # binary
   chmod 755 SquareLine_Studio.x86_64 lvgl/lv_font_conv-linux
-  chmod 755 SquareLine_Studio.x86_64 lvgl/lvgl_v{8_2_0,8_3_3,8_3_4}/server/{micropython,server.py}
+  find lvgl/ -type d -name 'lvgl_v*' -exec chmod 755 {}/server/micropython  {}/server/server.py \;
 
   # desktop entry
   sed "s|__folder__|/opt/${pkgname}|g"  squareline_studio.desktop.template > ${pkgname}.desktop
