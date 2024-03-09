@@ -7,7 +7,8 @@ _branch=qt6
 pkgdesc="A modern style for qt applications. (qt6 branch)"
 url="https://github.com/boehs/Lightly"
 license=('GPL-2.0')
-makedepends=('cmake' 'qt6ct' 'qt6-declarative' 'kdecoration' 'extra-cmake-modules')
+depends=('kdecoration')
+makedepends=('cmake' 'qt6ct' 'qt6-declarative' 'extra-cmake-modules' 'git')
 arch=('x86_64')
 
 source=("git+${url}.git#branch=${_branch}"
