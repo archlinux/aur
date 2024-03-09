@@ -1,0 +1,17 @@
+pkgbase = scarlett2-git
+	pkgdesc = Scarlett2 Firmware Management Utility for Scarlett 2/3/4th gen, Clarett USB, and Clarett+ interfaces
+	pkgver = 2e74a61
+	pkgrel = 1
+	url = https://github.com/geoffreybennett/scarlett2
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = gcc
+	makedepends = make
+	makedepends = git
+	makedepends = pkgconf
+	makedepends = sed
+	source = git+https://github.com/geoffreybennett/scarlett2.git
+	sha256sums = SKIP
+
+pkgname = scarlett2-git
