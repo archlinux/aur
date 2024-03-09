@@ -1,7 +1,7 @@
 pkgbase = kf6-servicemenus-rootactions
 	pkgdesc = Allows admin users to perform several root only actions from dolphin via polkit agent.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/stefanwimmer128/kf6-servicemenus-rootactions
 	arch = any
 	license = GPL-2.0-or-later
@@ -10,6 +10,8 @@ pkgbase = kf6-servicemenus-rootactions
 	depends = perl
 	depends = polkit
 	optdepends = kate
+	replaces = kf5-servicemenus-rootactions
+	replaces = kde-servicemenus-rootactions
 	source = kf6-servicemenus-rootactions::git+https://codeberg.org/stefanwimmer128/kf6-servicemenus-rootactions.git#tag=v1.0.0
 	sha256sums = SKIP
 
