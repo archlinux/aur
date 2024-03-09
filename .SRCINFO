@@ -1,0 +1,14 @@
+pkgbase = zsh-urltools-git
+	pkgdesc = This plugin provides two aliases: urlencode and urldecode to decode/encode URL strings.
+	pkgver = r7156.06753e814
+	pkgrel = 1
+	url = https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/urltools
+	install = zsh-urltools-git.install
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = zsh
+	source = git+https://github.com/ohmyzsh/ohmyzsh.git
+	sha256sums = SKIP
+
+pkgname = zsh-urltools-git
