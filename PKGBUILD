@@ -2,7 +2,7 @@
 #
 pkgname=wechat-beta-bwrap
 pkgver=1.0.0.145
-pkgrel=8
+pkgrel=9
 uosver=2.1.5
 epoch=
 pkgdesc="WeChat Testing with bwrap sandbox"
@@ -11,17 +11,20 @@ url=""
 license=('proprietary')
 groups=()
 depends=('nss' 'xdg-utils' 'libxss' 'libnotify' 'bubblewrap' 'xdg-desktop-portal' 'openssl-1.1' 'lsb-release')
-makedepends=('dpkg')
 source=(
 	wechat.sh
 	wechat-beta.desktop
 	wechat-beta.png
 	license.tar.gz
-	wechat-uos-${uosver}-x86_64.deb::"https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.weixin/com.tencent.weixin_${uosver}_amd64.deb"
-	wechat-beta-${pkgver}.deb::"https://cdn4.cnxclm.com/uploads/2024/03/05/3VDyAc0x_wechat-beta_1.0.0.145_amd64.deb?attname=wechat-beta_${pkgver}_amd64.deb"
+	wechat-uos_${uosver}_amd64.deb::"https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.weixin/com.tencent.weixin_${uosver}_amd64.deb"
+	wechat-beta_${pkgver}_amd64.deb::"https://cdn4.cnxclm.com/uploads/2024/03/05/3VDyAc0x_wechat-beta_1.0.0.145_amd64.deb?attname=wechat-beta_${pkgver}_amd64.deb"
 )
 
-noextract=()
+noextract=(
+	wechat-uos_${uosver}_amd64.deb
+	wechat-beta_${pkgver}_amd64.deb
+)
+
 md5sums=('eda5b1524fe570724558ae2eaff4360e'
          '4967385a00db424e596263618335411f'
          'cf971cb2cb01d8a5fd89d3a3555abfaf'
@@ -30,13 +33,18 @@ md5sums=('eda5b1524fe570724558ae2eaff4360e'
          '1da072bd774d1b5c08b9545b409e3fcb')
 build() {
 	echo "Extract wechat-uos deb file"
-	mkdir -p wechat-uos
-	dpkg -x ${srcdir}/wechat-uos-${uosver}-x86_64.deb wechat-uos
+	mkdir -p ${srcdir}/wechat-uos
+	bsdtar -xf ${srcdir}/wechat-uos_${uosver}_amd64.deb -C ${srcdir}/wechat-uos
+	bsdtar -xf ${srcdir}/wechat-uos/data.tar.xz -C ${srcdir}/wechat-uos ./usr/lib/license/libuosdevicea.so
+
+	echo "Extract wechat-beta deb file"
+	mkdir -p ${srcdir}/wechat-beta
+	bsdtar -xpf wechat-beta_${pkgver}_amd64.deb -C ${srcdir}/wechat-beta
 }
 
 package() {
 	echo "Extract wechat-beta deb file"
-	dpkg -x wechat-beta-${pkgver}.deb ${pkgdir}/
+	bsdtar -xpf ${srcdir}/wechat-beta/data.tar.xz -C ${pkgdir}
 	echo "Fixing licenses"
 	mkdir -p ${pkgdir}/usr/share/wechat-uos
 	cp -r license/etc ${pkgdir}/usr/share/wechat-uos
