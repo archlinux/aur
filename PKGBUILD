@@ -12,7 +12,7 @@ options=("!strip")
 source=("Editor_Linux_$pkgver.zip::$url/releases/download/v$pkgver/Editor_Linux.zip"
         "RSIEdit.desktop"
 	"RSIEdit.png")
-sha256sums=('5c0edc669baa5e0e3aefe5f59fd59e319f30fa321e1dfc3a9ef180797407c4b8'
+sha256sums=('9b9c6ac2c9a29da785c6947ef318589c04111dfd273ac024feb3da111fde3385'
             '58c4554c6ada6b33d16f82a87301a2975f8ef2ca6247b3bab6bd8b8d76b92898'
             '56b7069383f1e839ce9aa14c8ca5e00bd089e3da85dd3ca774788d214c1fedea')
 
