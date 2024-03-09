@@ -3,7 +3,7 @@
 # Contributor: Jim Pryor <profjim@jimpryor.net>
 
 pkgname="dcron-git"
-pkgver=4.5.r18.g53fca46
+pkgver=4.5.r25.g3779c04
 pkgrel=1
 pkgdesc="dillon's lightweight cron daemon (Git version)."
 arch=("i686" "x86_64" "armv6h" "armv7h")
@@ -15,7 +15,7 @@ makedepends=("git")
 optdepends=("msmtp-mta: sending cron job output via email")
 provides=("cron")
 conflicts=("cron")
-source=("$pkgname"::"git+https://github.com/dubiousjim/dcron.git"
+source=("$pkgname"::"git+https://github.com/ptchinster/dcron.git"
         "service")
 md5sums=("SKIP"
         "2eefc422db24bf2ac38e3a16292ccdc4")
@@ -32,7 +32,6 @@ build() {
     # fix paths to point to /usr/bin
     sed -i 's=/usr/sbin/sendmail=/usr/bin/sendmail=g' defs.h
     sed -i 's=/usr/sbin/run-cron=/usr/bin/run-cron=g' extra/root.crontab
-    sed -i '28 a CFLAGS += -Wextra -Wformat=2 -Wformat-security -fstack-protector-all -fstack-check -Wl,-z,nodlopen -Wl,-z,nodump -Wl,-z,noexecstack -Wl,-z,noexecheap -Wl,-z,relro -Wl,-z,now -fPIE -Wl,-z,-pie' Makefile
 
     # by default, any member of group "users" can edit their own crontab
     make \
@@ -58,3 +57,4 @@ package() {
     install -D -m755 extra/prune-cronstamps "$pkgdir"/etc/cron.d/prune-cronstamps
     install -Dm644  "$srcdir"/service "$pkgdir"/usr/lib/systemd/system/dcron.service
 }
+

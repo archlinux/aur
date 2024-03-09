@@ -1,6 +1,6 @@
 pkgbase = dcron-git
 	pkgdesc = dillon's lightweight cron daemon (Git version).
-	pkgver = 4.5.r18.g53fca46
+	pkgver = 4.5.r25.g3779c04
 	pkgrel = 1
 	url = http://www.jimpryor.net/linux/dcron.html
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = dcron-git
 	conflicts = cron
 	backup = var/spool/cron/root
 	backup = etc/conf.d/crond
-	source = dcron-git::git+https://github.com/dubiousjim/dcron.git
+	source = dcron-git::git+https://github.com/ptchinster/dcron.git
 	source = service
 	md5sums = SKIP
 	md5sums = 2eefc422db24bf2ac38e3a16292ccdc4
