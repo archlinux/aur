@@ -1,3 +1,56 @@
+## GE-Proton9-1
+
+Proton:
+
+    Pulled in upstream changes from proton 9 bleeding edge
+    wine updated to Proton 9 bleeding edge
+    dxvk updated to latest git
+    vkd3d updated to latest git
+
+Wine:
+
+    All previous proton-ge patches rebased to proton 9 (thanks for the FSR rebase loathingKernel)
+    Star Citizen EAC patch removed, no longer needed, instead currently uses protonfix with EOS_USE_ANTICHEATCLIENTNULL=1
+    Wine-staging rebased on top of proton 9 bleeding edge wine
+
+Protonfixes:
+
+    core count fix added for farcry primal (allows game to run)
+    added ulwgl entry for egs version of farcry primal
+    core count fix added for farcry 2
+    added ulwgl entry for uplay and egs versions of farcry 2
+    core count fix added for far cry blood dragon
+    added ulwgl entries for uplay and egs versions of far cry blood dragon
+    added ulwgl entries for uplay and egs version of farcry 3
+    added ulwgl entries for uplay and egs versions of farcry 4
+    added ulwgl entry for egs version of uncharted legacy of thieves collection
+    added fixes for Trails in the Sky 1-3 and ulwgl entries for the gog versions (thanks keenanweaver)
+    added core count fix for New World
+    added zoom games platform for ulwlgl
+    added fix for duke nukem manhatten project zoom edition
+    added fixes and ulwgl entries for the gog version of Soldier of Fortune II (thanks keenanweaver)
+    added fix for Street Racing Syndicate (thanks doZennn)
+    added fix and ulwgl entry for zoom version of hardwar (thanks keenanweaver)
+    added fix for They Are Billions and ulwgl entry for gog version (thanks zocker-160)
+    added fix for black screen in Grim Dawn and add ulwgl entry for gog version (thanks Aqa-Ib)
+    added fix for Dirt 3 complete edition
+    added fix for Postal III (thanks doZennn)
+    added fixes for Incoming trilogy (thanks doZennn)
+    fixed assetto corsa dotnet not installing (game runs again)
+    added fix and ulwgl entry for GOG version of Silent Hill 4 (thanks keenanweaver)
+    added fix and ulwgl entry for GOG version of Wheel of Time (thanks keenanweaver)
+    added fix for Gabriel Knight 3 (thanks marianoag)
+    added fix for Gobliiins 5 (thanks marianoag)
+    added fix for Ceville (thanks marianoag)
+    added fix for Nine Witches: Family Disruption (thanks marianoag)
+    xrandr added to protonfixes for screen resolution detection -- this is needed for some games like gothic/gothic 2 (fixes for those those games are still a work in progress)
+    added fix which wil skip running winetricks in protonfixes if no internet connection is available. A winetricks check is performed on every run. If a winetrick is found to be missing it tries to install it. During that time it will check if there is an internet connection available. If there is not one, the winetrick is skipped until the next time the game is run and subsequently the winetrick.)
+
+Known Issue:
+
+    wmv video playback regression in some games (one example being Ultimate Marvel vs Capcom 3). This is a known regression in upstream proton and they are aware/working on it.
+
+
 ## GE-Proton8-32
 
 HOTFIX:
