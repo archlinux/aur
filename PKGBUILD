@@ -1,6 +1,6 @@
 # Maintainer: OpenSorcerer <alex cat opensourcery dog eu>
 pkgname=cntb
-pkgver=1.4.8
+pkgver=1.4.9
 pkgrel=1
 pkgdesc="Contabo Command Line Interface"
 arch=('i686' 'x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('go' 'git')
 provides=('cntb-bin')
 conflicts=('cntb-bin')
-source=("git+$url.git#tag=$pkgver")
+source=("git+$url.git#tag=v$pkgver")
 md5sums=('SKIP')
 
 build() {
