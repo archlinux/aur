@@ -2,15 +2,15 @@
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 pkgname=python-liblarch-git
 _name=liblarch
-pkgver=3.2.0.r0.g628f588
-pkgrel=3
+pkgver=3.2.0.r3.gfe06860
+pkgrel=1
 pkgdesc="Python library to easily handle data structure, with a GTK binding"
 arch=('any')
 url="https://wiki.gnome.org/Projects/liblarch"
 license=('LGPL-3.0-or-later')
-depends=('gtk3' 'python-gobject' 'python-cairo')
+depends=('gtk3' 'python-cairo' 'python-gobject')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-checkdepends=('python-pytest' 'xorg-server-xvfb')
+checkdepends=('python-pytest')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+https://github.com/getting-things-gnome/liblarch.git")
@@ -28,7 +28,7 @@ build() {
 
 check() {
   cd "$_name"
-  xvfb-run -d pytest
+  pytest
 }
 
 package() {
