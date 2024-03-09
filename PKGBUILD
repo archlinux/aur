@@ -2,14 +2,25 @@
 
 _pkgname=isoimagewriter
 pkgname=$_pkgname-git
-pkgver=0.8.r42.gf253244
+pkgver=24.01.90.r25.gf042c72
 pkgrel=1
 pkgdesc="Tool to write a .iso file to a USB disk"
-arch=("x86_64" "i686")
+arch=('x86_64')
 url="https://community.kde.org/ISOImageWriter"
-license=('GPL3')
-depends=('ki18n' 'kauth' 'kwidgetsaddons' 'kiconthemes' 'kcrash' 'qgpgme' 'solid')
-makedepends=('git' 'cmake' 'extra-cmake-modules' 'python')
+license=('GPL-3.0-or-later')
+depends=('gcc-libs'
+         'glibc'
+         'hicolor-icon-theme'
+         'karchive'
+         'kcoreaddons'
+         'kcrash'
+         'ki18n'
+         'kiconthemes'
+         'kwidgetsaddons'
+         'qgpgme-qt6'
+         'qt6-base'
+         'solid')
+makedepends=('git' 'cmake' 'extra-cmake-modules')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(git+https://invent.kde.org/utilities/isoimagewriter.git)
@@ -20,17 +31,14 @@ pkgver() {
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../$_pkgname -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DKDE_INSTALL_LIBDIR=lib
-  make
+  cmake -B build -S $_pkgname \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DKDE_INSTALL_LIBDIR=lib
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir" cmake --install build
 }
