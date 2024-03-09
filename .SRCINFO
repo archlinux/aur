@@ -2,7 +2,7 @@ pkgbase = kwin-effects-forceblur-git
 	pkgdesc = KWin Blur effect fork with window class force blur feature (Wayland & X11)
 	pkgver = r12.d10a6bb72
 	pkgrel = 1
-	url = https://github.com/taj-ny/kwin-forceblur-wayland
+	url = https://github.com/taj-ny/kwin-forceblur
 	arch = x86_64
 	license = GPL3
 	makedepends = git
@@ -14,7 +14,7 @@ pkgbase = kwin-effects-forceblur-git
 	depends = kcrash
 	depends = kglobalaccel
 	conflicts = lightlyshaders
-	source = kwin-effects-forceblur-git::git+https://github.com/taj-ny/kwin-forceblur-wayland.git
+	source = kwin-effects-forceblur-git::git+https://github.com/taj-ny/kwin-forceblur.git
 	sha256sums = SKIP
 
 pkgname = kwin-effects-forceblur-git
