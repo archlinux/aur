@@ -5,7 +5,7 @@ Requisite=network.target
 Wants=network-online.target
 After=network-online.target
 StartLimitIntervalSec=30s
-StartLimitBurst=3
+StartLimitBurst=30
 
 [Service]
 Environment=DISPLAY=:0
@@ -15,7 +15,7 @@ WorkingDirectory=/usr/share/hyperion
 TimeoutStopSec=5
 KillMode=mixed
 Restart=always
-RestartSec=2
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target

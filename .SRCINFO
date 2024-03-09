@@ -1,7 +1,7 @@
 pkgbase = hyperion.ng-git
 	pkgdesc = The reworked version (next generation) of Hyperion, ambient light software
 	pkgver = 2.0.15.r97.fd5a94a3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hyperion-project/hyperion.ng
 	arch = i686
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = hyperion.ng-git
 	source = hyperion.systemd
 	source = hyperion.systemd-user
 	sha512sums = SKIP
-	sha512sums = 135a02e07c21f13c078914b5420db97b3d8b5d40fd4c06d10ab9750ce5ebe5c8872fbbc48e33c51edede8c65674cdbb2148aa9a02ce27081980442d360061a38
-	sha512sums = ca894619a552df48c5d83a43c377d54df87aab641ed279de1f7f97788ecbcb641f9114a511ff4632e386ebe5363cb5b378775323aa19304dbc046c6b0b5b9aad
+	sha512sums = 7a43cedc636760885283f92564716237f3ed0917852b359e301509bca4c923d8d0f3bcca7ffbc8a066de726781e207737365a31e1438ff8ae30a9bd3c1f9fc71
+	sha512sums = 3313b7bfd1f8bdc07832432fdd54ad9470534f54829d8e19cec632d5a4beb7e34fca93fda00a8a373984092f807116df16dc38a91892b352a7fbc0eec3d42f49
 
 pkgname = hyperion.ng-git

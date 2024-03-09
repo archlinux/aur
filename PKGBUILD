@@ -2,7 +2,7 @@
 
 pkgname=hyperion.ng-git
 pkgver=2.0.15.r97.fd5a94a3
-pkgrel=2
+pkgrel=3
 pkgdesc="The reworked version (next generation) of Hyperion, ambient light software"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/hyperion-project/hyperion.ng"
@@ -17,8 +17,8 @@ source=("git+https://github.com/hyperion-project/${pkgname%-git}"
         "hyperion.systemd"
         "hyperion.systemd-user")
 sha512sums=('SKIP'
-            '135a02e07c21f13c078914b5420db97b3d8b5d40fd4c06d10ab9750ce5ebe5c8872fbbc48e33c51edede8c65674cdbb2148aa9a02ce27081980442d360061a38'
-            'ca894619a552df48c5d83a43c377d54df87aab641ed279de1f7f97788ecbcb641f9114a511ff4632e386ebe5363cb5b378775323aa19304dbc046c6b0b5b9aad')
+            '7a43cedc636760885283f92564716237f3ed0917852b359e301509bca4c923d8d0f3bcca7ffbc8a066de726781e207737365a31e1438ff8ae30a9bd3c1f9fc71'
+            '3313b7bfd1f8bdc07832432fdd54ad9470534f54829d8e19cec632d5a4beb7e34fca93fda00a8a373984092f807116df16dc38a91892b352a7fbc0eec3d42f49')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"

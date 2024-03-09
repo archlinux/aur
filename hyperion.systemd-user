@@ -2,7 +2,7 @@
 Description=Hyperion ambient light systemd service
 Documentation=https://docs.hyperion-project.org
 StartLimitIntervalSec=30s
-StartLimitBurst=3
+StartLimitBurst=30
 
 [Service]
 Environment=DISPLAY=:0
@@ -11,7 +11,7 @@ WorkingDirectory=/usr/share/hyperion
 TimeoutStopSec=5
 KillMode=mixed
 Restart=always
-RestartSec=2
+RestartSec=10
 
 
 [Install]
