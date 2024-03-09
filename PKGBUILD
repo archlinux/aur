@@ -2,13 +2,13 @@
 pkgname=catnip-git
 _pkgname=catnip
 pkgver=r50.fe90ca5
-pkgrel=1
+pkgrel=3
 pkgdesc="A minimalistic and fast system fetch written in Nim."
 arch=(x86_64)
 url="https://github.com/iinsertNameHere/catnip"
 license=('MIT')
 groups=()
-depends=('openssl' 'pcre')
+depends=('openssl' 'pcre' 'glibc')
 makedepends=('git' 'nim')
 source=('git+https://github.com/iinsertNameHere/catnip.git')
 sha256sums=('SKIP')
