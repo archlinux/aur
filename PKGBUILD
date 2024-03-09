@@ -5,7 +5,7 @@
 
 pkgname='emacs-mozc'
 pkgver=2.29.5400.102
-pkgrel=2
+pkgrel=3
 pkgdesc='Mozc module for Emacs'
 arch=('x86_64')
 url='https://github.com/google/mozc'
@@ -60,6 +60,6 @@ package() {
     sed -i -e 's|^[ \t]*||g' Windows-Implementation-Library
     install -Dm644 Windows-Implementation-Library "${pkgdir}"/usr/share/licenses/${pkgname}/Windows-Implementation-Library
 
-    install -Dm644 bazel-bin/unix/emacs/mozc_emacs_helper "${pkgdir}"/usr/bin/mozc_emacs_helper
+    install -Dm755 bazel-bin/unix/emacs/mozc_emacs_helper "${pkgdir}"/usr/bin/mozc_emacs_helper
     install -Dm644 unix/emacs/mozc.el "${pkgdir}"/usr/share/emacs/site-lisp/mozc.el
 }
