@@ -1,0 +1,13 @@
+pkgbase = imagine-term-git
+	pkgdesc = Imagine is a program that displays images and video in the terminal.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/spynets1/imagine
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = gcc
+	depends = ffmpeg
+	conflicts = imagine
+
+pkgname = imagine-term-git
