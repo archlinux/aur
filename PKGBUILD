@@ -5,7 +5,7 @@
 
 _appname='jmusicbot'
 pkgname="$_appname"
-_pkgverUpstream="0.3.9"
+_pkgverUpstream="0.4.0"
 pkgver="${_pkgverUpstream//-/.}"
 pkgrel=1
 pkgdesc="A cross-platform Discord music bot with a clean interface"
@@ -18,16 +18,16 @@ source=("JMusicBot-${_pkgverUpstream}.tar.gz::https://github.com/jagrosh/MusicBo
         "fix-pom.xslt"
         "jmusicbot@.service"
         "jmusicbot.service")
-sha384sums=('67fff98a7c88718fbac88a1bcb11e7de96a3f6557ffa3b2ee3f036a49cd0a535376725b6533909388a0c94ac3b728aef'
+sha384sums=('d5fc747230eab289da6a8a44c1a86c38291073ad6bb43c84609bb6d7abcce98cab0f7b636747248e4e53b883e0884ff7'
             'b14dcf390d40f51d40b2aee4e8c44722837ad7a9850ecfd48174c74e8ed50709b6a64a817c301a2186e6386c26de0440'
             '0e2f5b34b17ab99c425712b8e164493538c0d8df45b9d997649dbf6332bbdef7d6ce33e195ed331cf02d132ee2fa7e88'
             'b57c88e240c167debd323399b4144a1f0a566205ccfe54075f06481fe6cfb105f92bc94536575b84bbc1607c102b5e75')
 
 # Build parameters
 # Uncomment and edit to build with a specific Java Development Kit
-#export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
+#JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
 # Uncomment and edit to use a specific Maven installation
-#export MVN_HOME="/opt/maven"
+#MVN_HOME="/opt/maven"
 
 build() {
     local buildDir="${srcdir}/MusicBot-${_pkgverUpstream}"

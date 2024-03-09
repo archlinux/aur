@@ -1,6 +1,6 @@
 pkgbase = jmusicbot
 	pkgdesc = A cross-platform Discord music bot with a clean interface
-	pkgver = 0.3.9
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/jagrosh/MusicBot
 	arch = any
@@ -9,11 +9,11 @@ pkgbase = jmusicbot
 	makedepends = maven
 	makedepends = libxslt
 	depends = java-runtime-headless>=11
-	source = JMusicBot-0.3.9.tar.gz::https://github.com/jagrosh/MusicBot/archive/refs/tags/0.3.9.tar.gz
+	source = JMusicBot-0.4.0.tar.gz::https://github.com/jagrosh/MusicBot/archive/refs/tags/0.4.0.tar.gz
 	source = fix-pom.xslt
 	source = jmusicbot@.service
 	source = jmusicbot.service
-	sha384sums = 67fff98a7c88718fbac88a1bcb11e7de96a3f6557ffa3b2ee3f036a49cd0a535376725b6533909388a0c94ac3b728aef
+	sha384sums = d5fc747230eab289da6a8a44c1a86c38291073ad6bb43c84609bb6d7abcce98cab0f7b636747248e4e53b883e0884ff7
 	sha384sums = b14dcf390d40f51d40b2aee4e8c44722837ad7a9850ecfd48174c74e8ed50709b6a64a817c301a2186e6386c26de0440
 	sha384sums = 0e2f5b34b17ab99c425712b8e164493538c0d8df45b9d997649dbf6332bbdef7d6ce33e195ed331cf02d132ee2fa7e88
 	sha384sums = b57c88e240c167debd323399b4144a1f0a566205ccfe54075f06481fe6cfb105f92bc94536575b84bbc1607c102b5e75
