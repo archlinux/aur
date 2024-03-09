@@ -3,3 +3,4 @@
 !.nvchecker.toml
 !.SRCINFO
 !PKGBUILD
+!reportlab-4.1.0-compatibility.patch

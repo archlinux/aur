@@ -5,7 +5,7 @@
 pkgname=python-xhtml2pdf
 _pkgname=${pkgname#python-}
 pkgver=0.2.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for converting HTML into PDFs using ReportLab"
 arch=(any)
 url="https://github.com/xhtml2pdf/xhtml2pdf"
@@ -36,10 +36,22 @@ makedepends=(
   texlive-latexextra
 )
 checkdepends=(python-nose)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4e802908267d3b8682076cca11cb314997dff946400e10a929243d40b4c17e28')
+source=(
+  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+  "reportlab-4.1.0-compatibility.patch"
+)
+sha256sums=(
+  '4e802908267d3b8682076cca11cb314997dff946400e10a929243d40b4c17e28'
+  '53fb653376a3d92cf50d28094c99e6685a588ab9390526e31992815690ea9096'
+)
 
 _archive="$_pkgname-$pkgver"
+
+prepare() {
+  cd "$_archive"
+
+  patch --forward --strip=1 --input="$srcdir/reportlab-4.1.0-compatibility.patch"
+}
 
 build() {
   cd "$_archive"

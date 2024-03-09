@@ -1,0 +1,28 @@
+From 1252510bd23b833b45b4d252aeac62c1eb51eeef Mon Sep 17 00:00:00 2001
+From: Stefan <96178532+stefan6419846@users.noreply.github.com>
+Date: Sat, 10 Feb 2024 11:47:23 +0100
+Subject: [PATCH] Adapt to new ShowBoundaryValue import
+
+---
+ xhtml2pdf/context.py | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/xhtml2pdf/context.py b/xhtml2pdf/context.py
+index 31abc542..d768875b 100644
+--- a/xhtml2pdf/context.py
++++ b/xhtml2pdf/context.py
+@@ -27,8 +27,13 @@
+ from reportlab.lib.styles import ParagraphStyle
+ from reportlab.pdfbase import pdfmetrics
+ from reportlab.pdfbase.ttfonts import TTFont
+-from reportlab.platypus.frames import Frame, ShowBoundaryValue
++from reportlab.platypus.frames import Frame
+ from reportlab.platypus.paraparser import ParaFrag, ps2tt, tt2ps
++try:
++    from reportlab.pdfgen.canvas import ShowBoundaryValue
++except ImportError:
++    # reportlab < 4.0.9.1
++    from reportlab.platypus.frames import ShowBoundaryValue
+ 
+ from xhtml2pdf import default, parser
+ from xhtml2pdf.files import getFile, pisaFileObject
