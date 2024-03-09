@@ -1,5 +1,5 @@
 pkgbase = tty-colorscheme
-	pkgdesc = Change TTY colors
+	pkgdesc = A simple script to change colors in the linux TTY with 300 colorschemes
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/red-magic/tty-colorscheme

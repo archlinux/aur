@@ -1,7 +1,7 @@
 pkgname=tty-colorscheme
 pkgver=1.0
 pkgrel=1
-pkgdesc='Change TTY colors'
+pkgdesc='A simple script to change colors in the linux TTY with 300 colorschemes'
 url=https://github.com/red-magic/tty-colorscheme
 arch=(any)
 backup=(etc/tty-colorscheme/tty-colorscheme.conf)
