@@ -16,6 +16,7 @@ depends=(gcc-libs
   glibc
   libx11)
 makedepends=(cmake
+  kwindowsystem
   kwindowsystem5
   qt5-svg
   qt5-tools
