@@ -1,0 +1,20 @@
+pkgbase = lib32-libnewt
+	pkgdesc = Not Erik's Windowing Toolkit - text mode windowing with slang
+	pkgver = 0.52.24
+	pkgrel = 1
+	url = https://fedorahosted.org/newt/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = lib32-tcl
+	depends = lib32-glibc
+	depends = lib32-gpm
+	depends = lib32-popt
+	depends = lib32-slang
+	depends = libnewt
+	optdepends = lib32-tcl: whiptcl support
+	options = !makeflags
+	source = git+https://pagure.io/newt.git#tag=5f2762040505edd7a25878fe27a00a2d34485663
+	b2sums = SKIP
+
+pkgname = lib32-libnewt
