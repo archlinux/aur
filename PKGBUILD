@@ -4,7 +4,7 @@
 
 
 pkgname=plasma6-wallpapers-wallpaper-engine-git
-pkgver=0.5.4.r55.g81ec11c
+pkgver=0.5.4.r68.g4a235cb
 pkgrel=1
 pkgdesc="A simple kde wallpaper plugin integrating wallpaper engine"
 arch=('x86_64')
@@ -46,6 +46,11 @@ pkgver(){
     git describe --tags --long | sed 's/v//;s/-/.r/;s/-/./g'
 }
 build(){
+    # CMake Error: The INTERFACE_QT_MAJOR_VERSION property of 
+    # "Qt6::Qml" does not agree with the value of QT_MAJOR_VERSION 
+    # already determined for "WallpaperEngineKde".
+    sed -i 's/Qt5 //' "${srcdir}/${pkgname}/src/CMakeLists.txt"
+
     cmake -B build -S "${srcdir}/${pkgname}" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=None \
