@@ -7,8 +7,8 @@
 pkgname=coreutils-hybrid-git
 _pkgname=coreutils
 __pkgname=uutils
-pkgver=0.0.23.r221.g60fbf1db8
-pkgrel=2
+pkgver=0.0.24.r237.gb34d410ad
+pkgrel=1
 pkgdesc='GNU coreutils / uutils-coreutils hybrid package. Uses stable uutils programs mixed with GNU counterparts if uutils counterpart is unfinished / buggy'
 arch=('x86_64')
 license=('GPL3' 'MIT')
@@ -18,6 +18,7 @@ depends=('glibc' 'acl' 'attr' 'gmp' 'libcap' 'openssl')
 conflicts=('coreutils' 'coreutils-hybrid')
 provides=('coreutils' 'coreutils-hybrid')
 makedepends=('git' 'rust' 'cargo' 'gperf' 'rsync' 'wget')
+options=(!lto)
 source=("coreutils::git+https://git.savannah.gnu.org/git/coreutils.git"
         "uutils::git+https://github.com/uutils/coreutils.git")
 sha512sums=('SKIP'
