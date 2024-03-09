@@ -2,8 +2,8 @@
 
 pkgname=gcap2023
 pkgver=2023.1.3
-pkgrel=2
-pkgdesc='Brazilian physical person income tax (IRPF) auxiliary program for calculation of capital gains'
+pkgrel=3
+pkgdesc='Brazilian physical person income tax (IRPF) auxiliary program for calculation of capital gains (2023 version)'
 arch=('any')
 url='https://www.gov.br/pt-br/servicos/apurar-imposto-sobre-ganhos-de-capital'
 license=('LicenseRef-custom')
