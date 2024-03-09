@@ -1,16 +1,16 @@
 pkgbase = vaudtax
 	pkgdesc = VaudTax
-	pkgver = 2022
-	pkgrel = 2
+	pkgver = 2023
+	pkgrel = 1
 	url = https://www.vd.ch/themes/etat-droit-finances/impots/impots-pour-les-individus/remplir-ma-declaration-dimpot/vaudtax-1
 	arch = x86_64
 	license = custom
 	depends = webkit2gtk
 	depends = jre11-openjdk
 	depends = gnome-vfs
-	source = vaudtax-2022-1.1-production.tar.gz::https://vaudtax-dl.vd.ch/vaudtax2022/telechargement/linux/64bit/VaudTax_2022.tar.gz
+	source = vaudtax-2023-1.2-production.tar.gz::https://vaudtax-dl.vd.ch/vaudtax2023/telechargement/linux/64bit/VaudTax_2023.tar.gz
 	source = vaudtax
-	sha256sums = c4a1e04d403aa4136fc5fa7cfb0125874dddf42b4aabf2d06d8935916ebfa14b
+	sha256sums = cdf2c9a821b1084dcaaedcb24281b7c00948f4dcccabd8acb0a193449672a19d
 	sha256sums = e92996587a65052a528cc93f4eab7f95b025935f79fffbe40131e91d2540edba
 
 pkgname = vaudtax
