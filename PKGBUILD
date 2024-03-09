@@ -1,7 +1,7 @@
 # Maintainer: glatavento <glatavento at outlook dot com>
 
 pkgname=ride-bin
-pkgver=4.4.3732
+pkgver=4.5.4097
 pkgrel=1
 pkgdesc='A remote IDE for Dyalog APL'
 arch=('x86_64')
@@ -10,15 +10,15 @@ license=('MIT')
 depends=('nodejs' 'dyalog-bin')
 makedepends=('gendesk')
 source=("https://github.com/Dyalog/ride/releases/download/v$pkgver/ride-$pkgver-1_amd64.deb")
-sha256sums=('90faacfd7aa4f1c7a442e3086e02163a7512fb4b70a538ed152a64b8ff589e8a')
+sha256sums=('4ae402b63e9a776e8e7e90a21b5da7874823a5bebdf3e7c00c0b532285404543')
 
-_name="Ride 4.4"
-_exec="/opt/ride-4.4/Ride-4.4"
+_name="Ride 4.5"
+_exec="/opt/ride-4.5/Ride-4.5"
 _categories="Development;TextEditor"
 
 package() {
   bsdtar -xf "$srcdir/data.tar.gz" -C "$pkgdir"
 
-  gendesk -f -n --icon "ride44"
+  gendesk -f -n --icon "ride45"
   install -Dm644 "ride.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
