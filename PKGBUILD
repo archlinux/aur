@@ -5,7 +5,7 @@
 
 pkgname='mozc'
 pkgver=2.29.5400.102
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source edition of Google Japanese Input'
 arch=('x86_64')
 url='https://github.com/google/mozc'
@@ -64,6 +64,6 @@ package() {
     sed -i -e 's|^[ \t]*||g' Windows-Implementation-Library
     install -Dm644 Windows-Implementation-Library "${pkgdir}"/usr/share/licenses/mozc/Windows-Implementation-Library
 
-    install -Dm644 bazel-bin/server/mozc_server "${pkgdir}"/usr/lib/mozc/mozc_server
-    install -Dm644 bazel-bin/gui/tool/mozc_tool "${pkgdir}"/usr/lib/mozc/mozc_tool
+    install -Dm755 bazel-bin/server/mozc_server "${pkgdir}"/usr/lib/mozc/mozc_server
+    install -Dm755 bazel-bin/gui/tool/mozc_tool "${pkgdir}"/usr/lib/mozc/mozc_tool
 }
