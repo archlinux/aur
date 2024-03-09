@@ -9,7 +9,12 @@ arch=(any)
 url="https://github.com/chrislit/abydos"
 license=(GPL3)
 depends=(python-numpy)
-makedepends=(python-setuptools)
+makedepends=(
+    python-build
+    python-installer
+    python-setuptools
+    python-wheel
+)
 checkdepends=(
     python-pytest
     python-deprecation
@@ -33,7 +38,7 @@ prepare() {
 
 build() {
   cd ${_pkg}-${pkgver}
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -44,5 +49,5 @@ check() {
 
 package() {
   cd ${_pkg}-${pkgver}
-  python setup.py install --prefix=/usr --root="${pkgdir}" --skip-build --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
