@@ -1,9 +1,10 @@
-# Maintainer: leuko <aur_202302 at aydos.de>
+# Maintainer: dangerdev <dangerdev004@protonmail.com>
+# Contributor: leuko <aur_202302 at aydos.de>
 # Contributor: Tobias Borgert <tobias.borgert@gmail.com>
 # Contributor: kartikmohta
 # Contributor: calvertdw
 pkgname=ros2-arch-deps
-pkgver=0.17
+pkgver=0.18
 pkgrel=1
 pkgdesc="Dependencies for building ROS2 on Arch"
 url="https://index.ros.org/doc/ros2/"
@@ -38,7 +39,8 @@ depends=('asio'
          'procps-ng' # provides /usr/bin/free command
          'qt5-base' 
          'qt5-svg'
-         'tinyxml'
+         'sip'
+	 'tinyxml'
          'tinyxml2'
          'vtk'
          'wget'
@@ -70,8 +72,6 @@ depends=('asio'
          'python-rospkg'
          'python-rosdistro'
          'python-rosdep'
-         'sip4'
-         'python-pyqt5-sip4'
          'python-sip4'
 )
 
