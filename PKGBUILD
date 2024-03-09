@@ -2,13 +2,14 @@
 
 pkgname=changedetection.io
 pkgver=0.45.16
-pkgrel=1
+pkgrel=2
 pkgdesc='change monitoring of web pages'
 arch=(any)
 url='https://github.com/dgtlmoon/changedetection.io'
 license=('Apache 2.0')
 makedepends=(python-setuptools)
 depends=(# ordered per https://github.com/dgtlmoon/changedetection.io/blob/master/requirements.txt
+         python-pyee
          python-flask-compress
          python-eventlet
          python-validators
@@ -57,6 +58,7 @@ sha512sums=('1fda3d1e3c4e16b7dd4a2a4bcb9dbc32122a3c4349d45e525ee1b3600c6b3d536f6
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   sed -Ei 's/[~=]=.*//' requirements.txt
+  sed -i '/pyppeteer-ng/d' requirements.txt
   python setup.py install --root="$pkgdir" --optimize=1
   install -Dm644 "${srcdir}/sysusers" "${pkgdir}/usr/lib/sysusers.d/changedetection.io.conf"
   install -Dm644 "${srcdir}/tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/changedetection.io.conf"
