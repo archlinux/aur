@@ -7,7 +7,7 @@
 
 pkgname=pcl-git
 pkgver=r14291.cc9c979cd
-pkgrel=1
+pkgrel=2
 pkgdesc="a standalone, large scale, open project for 2D/3D image and point cloud processing"
 arch=(i686 x86_64)
 url="http://pointclouds.org/"
@@ -87,7 +87,7 @@ prepare() {
 		-DBUILD_simulation=ON \
 		-DCMAKE_CUDA_COMPILER=/opt/cuda/bin/nvcc \
 		-DCMAKE_MODULE_PATH=/usr/lib/cmake/OpenVDB \
-		-DWITH_QT=QT6
+		-DWITH_QT=QT5  # VTK is still using Qt5
 }
 
 build() {
