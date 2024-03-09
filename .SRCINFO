@@ -1,6 +1,6 @@
 pkgbase = tnl-git
 	pkgdesc = An efficient C++ library providing parallel algorithms and data structures for high-performance computing on GPUs, multicore CPUs and distributed clusters
-	pkgver = r7177.f80bb29a6
+	pkgver = r7577.4a3d9321c
 	pkgrel = 1
 	url = https://tnl-project.org/
 	arch = x86_64
@@ -33,6 +33,6 @@ pkgbase = tnl-git
 	optdepends = hypre: for Hypre wrappers
 	options = !lto
 	source = git+https://gitlab.com/tnl-project/tnl.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = tnl-git
