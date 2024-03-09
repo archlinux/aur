@@ -1,13 +1,13 @@
 pkgbase = python-pytweening
 	pkgdesc = A set of tweening / easing functions implemented in Python.
-	pkgver = 1.0.4
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/asweigart/pytweening
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = https://pypi.org/packages/source/p/pytweening/pytweening-1.0.4.tar.gz
-	b2sums = 0ca099f81e90a719ab1d1ea5aa11cd389d326e8697bfe879fbe89d62d054e07d37972787af9f897a6650cbc55785713a48d97dbe8d7e3f1f17363e50f840483c
+	source = https://pypi.org/packages/source/p/pytweening/pytweening-1.2.0.tar.gz
+	b2sums = ef3fc5c7778c8b996f0fcb92a92033031b97c8ea42d8f320dee1c835b3df8b527e16da1f71c26c08a2a55127d444f96e24cf1e982aae1b0b81a07b6f5576e22f
 
 pkgname = python-pytweening
