@@ -7,12 +7,8 @@ pkgdesc="Imagine is a program that displays images and video in the terminal."
 arch=(x86_64)
 url="https://gitlab.com/spynets1/imagine"
 license=('GPL-3.0-or-later')
-groups=()
 depends=(ffmpeg)
 makedepends=(git gcc)
-checkdepends=()
-optdepends=()
-provides=()
 conflicts=(imagine)
 md5sums=()
 
@@ -28,4 +24,6 @@ build() {
 package() {
 	cd imagine
 	install -Dm755 ./imagine "$pkgdir/usr/bin/imagine"
+	install -Dm655 ./readme.md "$pkgdir/usr/share/doc/imagine-term-images/README"
+	install -Dm655 ./LICENSE "$pkgdir/usr/share/licenses/imagine-term-images/LICENSE"
 }
