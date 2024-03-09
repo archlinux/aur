@@ -1,11 +1,11 @@
 pkgbase = python-flet-0-7-x
 	pkgdesc = Easily build realtime web, mobile and desktop apps in your favorite language and securely share them with your team.
 	pkgver = 0.7.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://flet.dev/
 	arch = any
 	license = Apache
-	makedepends = flutter-engine
+	makedepends = flutter-3-16-9
 	makedepends = goreleaser
 	makedepends = python-build
 	makedepends = python-installer
