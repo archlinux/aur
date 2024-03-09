@@ -4,37 +4,29 @@
 # Contributor: Lyle Putnam <lcputnam@amerytel.net>
 
 pkgname=noip
-pkgver=2.1.9
-pkgrel=7
+pkgver=3.0.0
+pkgrel=1
 pkgdesc='Dynamic DNS Client Updater for no-ip.com services'
 arch=('x86_64' 'i686' 'armv7h' 'armv6h' 'aarch64')
 url='http://www.no-ip.com/downloads.php?page=linux'
 license=('GPL')
 install="$pkgname.install"
 depends=('glibc')
-source=('http://www.no-ip.com/client/linux/noip-duc-linux.tar.gz'
+source=('https://dmej8g5cpdyqd.cloudfront.net/downloads/noip-duc_3.0.0.tar.gz'
         'noip.service')
-sha256sums=('82b9bafab96a0c53b21aaef688bf70b3572e26217b5e2072bdb09da3c4a6f593'
-            'ab092b323eb6f86682ed18796d0b467acff8587206cc53a3cc90564608026389')
-
-prepare() {
-  cd "$pkgname-$pkgver-1"
-
-  sed -i '/^#define CONFIG_FILEPATH/s/PREFIX//' noip2.c
-  sed -i '/^#define CONFIG_FILENAME/s/PREFIX//' noip2.c
-}
-
-build() {
-  cd "$pkgname-$pkgver-1"
-
-  cc -Wall $CLFAGS $LDFLAGS -g -Dlinux -DPREFIX=/usr noip2.c -o noip2 -Wno-unused-but-set-variable
-}
+sha512sums=('db66f1b9e9fd49a7f7c8267c74637d9df22e5d0c7c9474bd6fed13e027e4baef083a5ede4c8a17a735258aaeb5a6721259eba24d9a3dfbd3a3218d7c204a3347'
+            '6949972af4a0b71c0f1e57230a78757b47799bbc50050ebf74893603ace6a0e959dbb4cb4523bb992d579f1369ee1e008c67f270cd6d670ad88d176485704856')
 
 package() {
-  cd "$pkgname-$pkgver-1"
+  tar xf noip-duc_3.0.0.tar.gz
+  cd "$pkgname-duc_$pkgver/binaries"
+  ar xf noip-duc_3.0.0_amd64.deb
+  tar xf data.tar.xz
+  mv usr "${pkgdir}"
+  rm -fr noip-duc_3.0.0
 
-  install -Dm755 noip2 "$pkgdir/usr/bin/noip2"
+  install -d "$pkgdir/usr/"
   install -Dm644 "$srcdir/$pkgname.service" \
-    "$pkgdir/usr/lib/systemd/system/noip2.service"
+    "$pkgdir/usr/lib/systemd/system/noip.service"
 }
 

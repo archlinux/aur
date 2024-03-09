@@ -1,11 +1,12 @@
 [Unit]
-Description=No-IP Dynamic DNS Update Client
-Requires=systemd-resolved.service
-After=systemd-resolved.service
+Description=No-IP Dynamic Update Client
+After=network.target auditd.service
 
 [Service]
-Type=forking
-ExecStart=/usr/bin/noip2 -c /etc/no-ip2.conf
+EnvironmentFile=/etc/default/noip-duc
+ExecStart=/usr/bin/noip-duc
+Restart=on-failure
+Type=simple
 
 [Install]
 WantedBy=multi-user.target
