@@ -3,7 +3,7 @@
 pkgname=hyprpanel-bin
 _pkgname=${pkgname%-bin}
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An opinionated panel/shell for the Hyprland compositor."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pdf/hyprpanel"
@@ -22,6 +22,7 @@ sha256sums_x86_64=('8276c75b11d21a973eeba9fdac113b302c2ec82f6347200ec7a11207a2cf
 sha256sums_aarch64=('d3ed34f85291f7c064b45a2db702dcb1da0c7fd76117d775ddbf45e4bc32bf16')
 
 package() {
+	install -Dm644 "${srcdir}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 	install -Dm755 "${srcdir}/${_pkgname}-client" "${pkgdir}/usr/bin/${_pkgname}-client"
 }
