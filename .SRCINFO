@@ -1,10 +1,10 @@
 pkgbase = simple64-git
 	pkgdesc = Nintendo64 emulator based on Mupen64Plus (git version)
-	pkgver = 2023.11.02.r0.g72b0a75
+	pkgver = 2024.03.1.r0.g99e37c5
 	pkgrel = 1
 	url = https://simple64.github.io/
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
@@ -39,6 +39,6 @@ pkgbase = simple64-git
 	sha256sums = SKIP
 	sha256sums = 6bc5bc2123ea4a69acebe18d2d33676f35b850d2011fc3f9e83078567ef2d9c9
 	sha256sums = 8bab53ec62f144cc9c93fa7a30c7ac37e410ce562c72ade6afa9ba1afe406694
-	sha256sums = acd624abe80b3399ef76c9f6ff45c5194ade6640a0fb18e43fd646c60345a883
+	sha256sums = e188400b7de70ada7fbdec90f4bafbddd5f20f408fbb8ced1886508d9740e89f
 
 pkgname = simple64-git

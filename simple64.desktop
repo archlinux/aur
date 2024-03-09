@@ -6,6 +6,7 @@ Comment=Nintendo64 emulator based on Mupen64Plus
 Path=/usr/bin
 Exec=simple64-gui
 Icon=simple64
+StartupWMClass=simple64-gui
 Terminal=false
 StartupNotify=false
 Categories=Game;
