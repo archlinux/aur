@@ -2,7 +2,7 @@
 pkgname=python-fangfrisch
 _name=${pkgname#python-}
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Freshclam like utility that allows downloading unofficial virus definition files"
 arch=('any')
 license=('GPL')
@@ -30,6 +30,12 @@ install=fangfrisch.install
 
 build() {
 	cd "$_name-$pkgver" || exit 1
+	cat >>setup.cfg <<EOT
+[options.packages.find]
+exclude =
+    tests
+    tests.*
+EOT
 	python -m build --wheel --no-isolation
 }
 
