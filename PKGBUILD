@@ -1,6 +1,8 @@
-# Maintainer: Tab Fitts <tfitts [at] spryservers [dot] net>
+# Maintainer: Andrew Simmons <agsimmons0 at gmail dot com>
+# Contributor:: Tab Fitts <tfitts [at] spryservers [dot] net>
+
 pkgname=splashtop-business
-pkgver=3.5.2.0
+pkgver=3.6.0.0
 pkgrel=1
 pkgdesc="Splashtop Business. Remotely access your desktop from any device from anywhere!"
 arch=('x86_64')
@@ -11,16 +13,20 @@ provides=('splashtop-business')
 options=('!strip')
 install=${pkgname}.install
 source=("https://download.splashtop.com/linuxclient/${pkgname}_Ubuntu_v${pkgver}_amd64.tar.gz")
-sha512sums=('ad307b322704f2996ce16bf82842c14ba687f118367fb3da980018d53773bcd92ab7eadb69f7526f5ef1a2115f84e125573eed9b56e2d0c07ac44b32a8f8598f')
+sha256sums=('a4a016ac3409317dc1ce777d4418dedd36b33ef9a5d232df1838e0e7975081ca')
 
 prepare(){
-    tar xzf ${pkgname}_Ubuntu_v${pkgver}_amd64.tar.gz
-    ar -x splashtop-business_Ubuntu_amd64.deb
+    ar x splashtop-business_Ubuntu_amd64.deb
 }
 
 package(){
-
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
 
+    # mkdir -p "$pkgdir/usr/bin"
+    # ln -s "$pkgdir/opt/splashtop-business/splashtop-business" "$pkgdir/usr/bin/splashtop-business" 
+
+    mkdir -m 777 "$pkgdir/opt/splashtop-business/config"
+    mkdir -m 755 "$pkgdir/opt/splashtop-business/dump"
+    mkdir -m 777 "$pkgdir/opt/splashtop-business/log"
 }

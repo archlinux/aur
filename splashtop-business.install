@@ -1,56 +1,24 @@
+## arg 1:  the new package version
 post_install() {
 	xdg-icon-resource forceupdate --theme hicolor
 
-	echo "[Splashtop-business] Configure Splashtop Business"
+	ln -sf /opt/splashtop-business/splashtop-business /usr/bin/splashtop-business
 
-	if [ ! -d "/opt/splashtop-business/config/" ]; then
-		mkdir -p /opt/splashtop-business/config/
-	fi
-	if [ ! -d "/opt/splashtop-business/dump/" ]; then
-		mkdir -p /opt/splashtop-business/dump/
-	fi
-	if [ ! -d "/opt/splashtop-business/log/" ]; then
-		mkdir -p /opt/splashtop-business/log/
-	fi
-	chmod a=rwx /opt/splashtop-business/config
-	chmod a=rwx /opt/splashtop-business/log
-
-	if [ -f "/opt/splashtop-business/splashtop-business" ]; then
-		rm /opt/splashtop-business/splashtop-business
-	fi
-
-	if [ -f "/opt/splashtop-business/splashtop-business-xenial" ]; then
-		rm /opt/splashtop-business/splashtop-business-xenial
-	fi
-
-	if [ -f "/opt/splashtop-business/splashtop-business-bionic" ]; then
-		rm /opt/splashtop-business/splashtop-business-bionic
-	fi
-
-	if [ -f "/opt/splashtop-business/splashtop-business-focal" ]; then
-		mv /opt/splashtop-business/splashtop-business-focal /opt/splashtop-business/splashtop-business
-		ln -sf /opt/splashtop-business/splashtop-business /usr/bin/splashtop-business
-	fi
-
-	if [ ! -f "/usr/bin/splashtop-business" ]; then
-        ln -s /opt/splashtop-business/splashtop-business /usr/bin/splashtop-business
-	fi
-
-	echo "" >> /usr/share/applications/splashtop-business.desktop
 	update-desktop-database -q
 }
 
+## arg 1:  the new package version
+## arg 2:  the old package version
 post_upgrade() {
 	post_install
 }
 
+## arg 1:  the old package version
 post_remove() {
 	xdg-icon-resource forceupdate --theme hicolor
-	if [ "$1" = "remove" ]; then
-	    echo "Uninstall - Splashtop Business"
-	fi
 
 	rm /usr/bin/splashtop-business
-	rm -rf /opt/splashtop-business/
+	rm -rf /opt/splashtop-business
+
 	update-desktop-database -q
 }

@@ -1,0 +1,7 @@
+*
+!.gitignore
+!PKGBUILD
+!*.install
+!*.sysusers
+!.SRCINFO
+
