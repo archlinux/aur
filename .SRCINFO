@@ -8,8 +8,6 @@ pkgbase = freealchemist
 	makedepends = python-setuptools
 	depends = python-pygame
 	source = https://github.com/dakk/FreeAlchemist/archive/44e7173219c30de3676110dc6ce5beea9e03cc33.zip
-	source = freealchemist-starter
 	md5sums = 9a142c3464d857d6f246d1d898743816
-	md5sums = 7b7027eecfb4457fc1fde4d7b7b68b3a
 
 pkgname = freealchemist
