@@ -1,0 +1,4 @@
+[obs-pipewire-audio-capture]
+source = "github"
+github = "dimtpap/obs-pipewire-audio-capture"
+use_latest_release = true
