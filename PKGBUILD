@@ -4,7 +4,7 @@
 _py=py3
 _pkgname=bilibili-api-python
 pkgname=python-bilibili-api-python
-pkgver=15.5.5
+pkgver=16.2.0
 pkgrel=1
 pkgdesc="The fork of module bilibili-api. 哔哩哔哩的各种 API 调用便捷整合（视频、动态、直播等），另外附加一些常用的功能。"
 arch=('any')
@@ -33,7 +33,7 @@ depends=('python'
 source=(
 	"https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl"
 )
-sha256sums=('f2b6c62aa189b6f3a78e85eed6cab18d3585d093c80f8423b411c6bb460fef4c')
+sha256sums=('af4682db5c2e5cf44cb0ca36f5f2f4350f377e9d5d2bc6644d308831d11bc2bd')
 
 package() {
   cd "$srcdir" || return 1
