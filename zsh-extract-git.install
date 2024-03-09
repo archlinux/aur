@@ -1,7 +1,6 @@
 post_install() {
-	cat<<<"
-To use, source the library from your .zshrc:
-	
-	source /usr/share/zsh/plugins/zsh-extract/extract.plugin.zsh
-"
+    cat << EOF
+To activate this plugin, add the following line to your sources section in your ~/.zshrc:
+    source /usr/share/zsh/plugins/zsh-extract/extract.plugin.zsh
+EOF
 }
