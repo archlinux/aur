@@ -10,27 +10,32 @@ url="https://1panel.cn"
 license=('GPL-3.0-or-later')
 install=1panel.install
 makedepends=(
-    'pwgen'
-    'go'
-    'nodejs'
-    'git'
+    'pwgen'             # Generate username, password and 1Panel entrance before compile.
+    'go'                # Compile the backend of 1Panel.
+    'nodejs'            # Compile the frontend of 1Panel.
+    'git'               # Clone the 1Panel repository.
+    'lsof'              # Make sure the port will not be occupied.
 )
 optdepends=(
-    'ufw'
-    'firewalld'
-    'docker'
-    'docker-compose'
+    'ufw'               # Firewall manager
+    'firewalld'         # Firewall manager
+    'docker'            # Docker image manager
+    'docker-compose'    # Docker compose plugin, make sure 1Panel app store works.
 )
 conflicts=('1panel-dev-bin' '1panel-bin')
 source=("${pkgname}"::"git+https://github.com/1Panel-dev/1Panel.git")
 sha256sums=("SKIP")
 
 build() {
+    _1panel_port=`expr $RANDOM % 55535 + 10000`
+    while lsof -i:$_1panel_port > /dev/null 2>&1; do
+        _1panel_port=`expr $RANDOM % 55535 + 10000`
+    done
     # Create 1pctl file, or 1Panel systemd service cannot start.
     cat > ${srcdir}/1pctl << EOF
 #!/bin/bash
 BASE_DIR=/opt
-ORIGINAL_PORT=`expr $RANDOM % 55535 + 10000`
+ORIGINAL_PORT=${_1panel_port}
 ORIGINAL_VERSION=${pkgver}
 ORIGINAL_ENTRANCE=$(pwgen -nABCv 10 1)
 ORIGINAL_USERNAME=$(pwgen -nABCv 10 1)
