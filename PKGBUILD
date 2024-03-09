@@ -141,7 +141,7 @@ build() {
     -DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
     -DTITLE_BAR_FORMAT_IDLE="suyu | ${_branch}-${pkgver} {}" \
     -DTITLE_BAR_FORMAT_RUNNING="suyu | ${_branch}-${pkgver} | {}" \
-    -DUSE_DISCORD_PRESENCE=OFF \
+    -DUSE_DISCORD_PRESENCE=ON \
     -DSUYU_CHECK_SUBMODULES=OFF \
     -DSUYU_DOWNLOAD_TIME_ZONE_DATA=ON \
     -DSUYU_USE_BUNDLED_FFMPEG=OFF \
@@ -161,13 +161,7 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
-  mv ${pkgdir}/usr/bin/yuzu ${pkgdir}/usr/bin/suyu
-  ln -s ${pkgdir}/usr/bin/suyu ${pkgdir}/usr/bin/yuzu
-  mv ${pkgdir}/usr/bin/yuzu-cmd ${pkgdir}/usr/bin/suyu-cmd
-  ln -s ${pkgdir}/usr/bin/suyu-cmd ${pkgdir}/usr/bin/yuzu-cmd
-  mv ${pkgdir}/usr/bin/yuzu-room ${pkgdir}/usr/bin/suyu-room
-  ln -s ${pkgdir}/usr/bin/suyu-room ${pkgdir}/usr/bin/yuzu-room
-  install -Dm644 ${_pkgname}/dist/72-yuzu-input.rules -t "${pkgdir}"/usr/lib/udev/rules.d/
+  install -Dm644 ${_pkgname}/dist/72-suyu-input.rules -t "${pkgdir}"/usr/lib/udev/rules.d/
 }
 
 # vim: ts=2 sw=2 et:
