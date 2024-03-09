@@ -8,8 +8,9 @@ pkgbase = lightly-qt6-git
 	makedepends = cmake
 	makedepends = qt6ct
 	makedepends = qt6-declarative
-	makedepends = kdecoration
 	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = kdecoration
 	source = git+https://github.com/boehs/Lightly.git#branch=qt6
 	source = add-missing-files.patch
 	sha256sums = SKIP
