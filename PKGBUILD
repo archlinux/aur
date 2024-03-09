@@ -3,7 +3,7 @@
 
 pkgname=splashtop-business
 pkgver=3.6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Splashtop Business. Remotely access your desktop from any device from anywhere!"
 arch=('x86_64')
 url="https://www.splashtop.com/business"
@@ -22,9 +22,6 @@ prepare(){
 package(){
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
-
-    # mkdir -p "$pkgdir/usr/bin"
-    # ln -s "$pkgdir/opt/splashtop-business/splashtop-business" "$pkgdir/usr/bin/splashtop-business" 
 
     mkdir -m 777 "$pkgdir/opt/splashtop-business/config"
     mkdir -m 755 "$pkgdir/opt/splashtop-business/dump"
