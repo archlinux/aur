@@ -1,7 +1,7 @@
 pkgbase = proton-experimental
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components, experimental branch
-	pkgver = 9.0.20240301
-	pkgrel = 7
+	pkgver = 9.0.20240307.2
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/ValveSoftware/Proton
 	install = proton-experimental.install
@@ -131,7 +131,7 @@ pkgbase = proton-experimental
 	options = !lto
 	options = !debug
 	options = emptydirs
-	source = proton::git+https://github.com/ValveSoftware/Proton.git#tag=experimental-9.0-20240301
+	source = proton::git+https://github.com/ValveSoftware/Proton.git#tag=experimental-9.0-20240307b
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.4/wine-gecko-2.47.4-x86.tar.xz
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.4/wine-gecko-2.47.4-x86_64.tar.xz
 	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-9.0.0/wine-mono-9.0.0-x86.tar.xz
