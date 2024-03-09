@@ -1,0 +1,33 @@
+pkgbase = ksysguard6-git
+	pkgdesc = Track and control the processes running in your system
+	pkgver = 6.0.1
+	pkgrel = 1
+	url = https://kde.org/plasma-desktop/
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	depends = gcc-libs
+	depends = glibc
+	depends = kcompletion
+	depends = kconfig
+	depends = kconfigwidgets
+	depends = kcoreaddons
+	depends = kdbusaddons
+	depends = ki18n
+	depends = kiconthemes
+	depends = kio
+	depends = knewstuff
+	depends = knotifications
+	depends = ksystemstats
+	depends = kwidgetsaddons
+	depends = kwindowsystem
+	depends = kxmlgui
+	depends = libksysguard
+	depends = lm_sensors
+	depends = qt6-base
+	depends = zlib
+	source = git+https://invent.kde.org/vvova/ksysguard.git#branch=kf6
+	sha256sums = SKIP
+
+pkgname = ksysguard6-git
