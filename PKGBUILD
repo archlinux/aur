@@ -8,8 +8,9 @@
 
 
 pkgname=soundkonverter
-pkgver=3.0.1.27.gca95836
-pkgrel=4
+pkgver=3.0.1.32
+_commit=dd52d33046cf740415f8507a3ffd5b37dffc5a2c
+pkgrel=1
 pkgdesc="Front-end to various audio converters"
 arch=('i686' 'x86_64')
 url="https://store.kde.org/p/1126634"
@@ -65,27 +66,11 @@ optdepends=(
   'wavpack: wavpack backend'
   'sox: sox plugin (change sample rate, various effects)'
 )
-source=(
-  'git+https://github.com/dfaust/soundkonverter.git'
-  'taglib2.diff'
-)
-provides=('soundkonverter-git')
-conflicts=('soundkonverter-git')
-sha256sums=(
-  'SKIP'
-  '6775198a5c30495ead5cda9756643e7e3c5b767dd5f322f985c9775bb37093e9'
-)
+source=("git+https://github.com/nphantasm/soundkonverter.git#commit=${_commit}")
+provides=()
+conflicts=()
+sha256sums=('SKIP')
 # options=('debug')
-
-pkgver() {
-  cd "$srcdir/soundkonverter"
-  echo "$(git describe --long --tags | tr - . | tr -d v)"
-}
-
-prepare() {
-  cd "$srcdir/soundkonverter"
-  patch -Np1 -i "$srcdir/taglib2.diff"
-}
 
 build() {
   cmake -S soundkonverter/src -B build \

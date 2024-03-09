@@ -1,7 +1,7 @@
 pkgbase = soundkonverter
 	pkgdesc = Front-end to various audio converters
-	pkgver = 3.0.1.27.gca95836
-	pkgrel = 4
+	pkgver = 3.0.1.32
+	pkgrel = 1
 	url = https://store.kde.org/p/1126634
 	arch = i686
 	arch = x86_64
@@ -51,11 +51,7 @@ pkgbase = soundkonverter
 	optdepends = vorbis-tools: vorbis tools backend
 	optdepends = wavpack: wavpack backend
 	optdepends = sox: sox plugin (change sample rate, various effects)
-	provides = soundkonverter-git
-	conflicts = soundkonverter-git
-	source = git+https://github.com/dfaust/soundkonverter.git
-	source = taglib2.diff
+	source = git+https://github.com/nphantasm/soundkonverter.git#commit=dd52d33046cf740415f8507a3ffd5b37dffc5a2c
 	sha256sums = SKIP
-	sha256sums = 6775198a5c30495ead5cda9756643e7e3c5b767dd5f322f985c9775bb37093e9
 
 pkgname = soundkonverter
