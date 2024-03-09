@@ -1,7 +1,7 @@
 pkgbase = termius-deb
 	pkgdesc = Desktop SSH Client (deb release)
-	pkgver = 8.9.7
-	pkgrel = 2
+	pkgver = 8.9.9
+	pkgrel = 1
 	url = https://termius.com
 	arch = x86_64
 	license = custom:proprietary
@@ -9,7 +9,7 @@ pkgbase = termius-deb
 	provides = termius
 	conflicts = termius
 	conflicts = termius-beta
-	source = termius-8.9.7.deb::https://autoupdate.termius.com/linux/Termius.deb
+	source = termius-rolling.deb::https://autoupdate.termius.com/linux/Termius.deb
 	b2sums = SKIP
 
 pkgname = termius-deb

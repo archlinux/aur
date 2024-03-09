@@ -5,8 +5,8 @@
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!#
 pkgname=termius-deb
 _pkgname=Termius
-pkgver=8.9.7
-pkgrel=2
+pkgver=8.9.9
+pkgrel=1
 pkgdesc='Desktop SSH Client (deb release)'
 arch=('x86_64')
 url='https://termius.com'
@@ -14,18 +14,18 @@ license=('custom:proprietary')
 makedepends=('links')
 provides=("${pkgname//-deb}")
 conflicts=("${pkgname//-deb}" "${pkgname//-deb/'-beta'}")
-source=("${pkgname//-deb}-$pkgver.deb::https://autoupdate.termius.com/linux/$_pkgname.deb")
+source=("${pkgname//-deb}-rolling.deb::https://autoupdate.termius.com/linux/$_pkgname.deb")
 b2sums=('SKIP')
 
 prepare() {
-    mkdir -p "${pkgname//-deb}-$pkgver/"
-    bsdtar -xpf 'data.tar.xz' -C "${pkgname//-deb}-$pkgver/"
+    mkdir -p "${pkgname//-deb}-rolling/"
+    bsdtar -xpf 'data.tar.xz' -C "${pkgname//-deb}-rolling/"
 
     ## License
     links -width 80 -dump 'https://termius.com/terms-of-use' | sed -n '/Terms and Conditions/,/Last updated:/p' > 'LICENSE.txt'
 
     ## Convert
-    cd "${pkgname//-deb}-$pkgver/"
+    cd "${pkgname//-deb}-rolling/"
 
     mv "opt/$_pkgname/${pkgname//-deb/'-app'}" "opt/$_pkgname/${pkgname//-deb}"
     mv "usr/share/applications/${pkgname//-deb/'-app'}.desktop" "opt/$_pkgname/${pkgname//-deb}.desktop"
@@ -77,7 +77,7 @@ package() {
                 'xdg-utils: Open files')
 
     install -d "$pkgdir/opt/${pkgname//-deb}/"
-    cp -a "${pkgname//-deb}-$pkgver/opt/$_pkgname/." "$pkgdir/opt/${pkgname//-deb}/"
+    cp -a "${pkgname//-deb}-rolling/opt/$_pkgname/." "$pkgdir/opt/${pkgname//-deb}/"
 
     chmod 755 "$pkgdir/opt/${pkgname//-deb}/${pkgname//-deb}"
     chmod u+s "$pkgdir/opt/${pkgname//-deb}/chrome-sandbox" || true
