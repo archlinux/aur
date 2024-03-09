@@ -3,7 +3,7 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=060.r6794.4980bad
-pkgrel=14
+pkgrel=15
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracutdevs/dracut'
@@ -97,6 +97,7 @@ conflicts=("${pkgname%-git}")
 backup=('etc/dracut.conf')
 source=(
   git+${url}.git
+  2250.patch::${url}/commit/94ce821d49205044a3336d63f837d6e4ff8d6a85.patch    # fix(net-lib): add a new dracut module called net-lib
   2269-1.patch::${url}/commit/0057c3bb7afa803928b0214f8bbcb33e7d5e0c39.patch  # fix(overlayfs): allow hostonly
   2269-2.patch::${url}/commit/51f1211be3610e57937fe2235d8088565b4f2639.patch  # fix(overlayfs): to allow overlay on top of network device
   2429.patch::${url}/commit/71055058c0bdb6fec0dbebf2ec8bbfc968820b88.patch    # fix(test): running tests no longer requires to be root
@@ -115,6 +116,7 @@ source=(
   2613.patch::${url}/commit/619de721cff44ed7c0b809bee80aee6986577e59.patch    # fix(i18n): handle symlinked keymap
 )
 sha512sums=('SKIP'
+            'def345164b010cf97b66c29daa1fd7066b73f76e15287d474dd91aeafd9b248018b20b4bd38ebfead32c3848e85d818bb8b979697c1889d8b32c93cf8b0cbea4'
             'c529f7a2aa13733c1567bf4ff52df49ad4ba13ab46c5090bdc77dd0c6d7a1d7442d659900a425e1ac590449ea553bfb1ab09716cfd561f7d4441f57086e24197'
             '4b48a6cdfbf5289b031abe18450e29cf3a3fe6c1d05ba667a5fe26b0e3ba84f765b789cfae307c9718a0feb0abf5ab727fd1e818eb138518f7ea6c97ec2242ce'
             '83c1f6ff6cdee619dfe8bc7dd6401797e427678701424c85c0dd91268575ce2dd8d164ff8bf029afcf884835bd220929d22a15ab5da2ddf3cfffdc80dbdcf3c3'
