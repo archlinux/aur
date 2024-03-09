@@ -2,7 +2,7 @@
 # Maintainer: Aron Young <tkf6fkt at gmail dot com>
 _pkgname=obsidian
 pkgname=obsidian-bin
-pkgver=1.5.3
+pkgver=1.5.8
 pkgrel=1
 pkgdesc="A powerful knowledge base that works on top of a local folder of plain text Markdown files"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=('obsidian')
 options+=('!strip')
 source_x86_64=(${pkgname}-${pkgver}-x86_64.AppImage::"${url}/releases/download/v${pkgver}/Obsidian-${pkgver}.AppImage")
 source_aarch64=(${pkgname}-${pkgver}-aarch64.AppImage::"${url}/releases/download/v${pkgver}/Obsidian-${pkgver}-arm64.AppImage")
-sha256sums_x86_64=('078b33ddc652766dfdd71e6f1a333ad2e5b1bac15bd8454655e46ff9a0e2b021')
-sha256sums_aarch64=('89cbe08b2738222687728b83aeaf3378b6b04651c0bc18f0715029e31e79b350')
+sha256sums_x86_64=('41bf02e53cff52589847fd652bf683571833b8d6b096138d7077909789d59688')
+sha256sums_aarch64=('2472fb8824acb720dac3a6ae4ca1ed8f8bbd4ba66362ccc5af8a17d5a08570f9')
 
 prepare() {
     _appimage="${pkgname}-${pkgver}-${CARCH}.AppImage"

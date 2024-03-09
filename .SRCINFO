@@ -1,6 +1,6 @@
 pkgbase = obsidian-bin
 	pkgdesc = A powerful knowledge base that works on top of a local folder of plain text Markdown files
-	pkgver = 1.5.3
+	pkgver = 1.5.8
 	pkgrel = 1
 	url = https://github.com/obsidianmd/obsidian-releases
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = obsidian-bin
 	depends = fuse2
 	conflicts = obsidian
 	options = !strip
-	source_x86_64 = obsidian-bin-1.5.3-x86_64.AppImage::https://github.com/obsidianmd/obsidian-releases/releases/download/v1.5.3/Obsidian-1.5.3.AppImage
-	sha256sums_x86_64 = 078b33ddc652766dfdd71e6f1a333ad2e5b1bac15bd8454655e46ff9a0e2b021
-	source_aarch64 = obsidian-bin-1.5.3-aarch64.AppImage::https://github.com/obsidianmd/obsidian-releases/releases/download/v1.5.3/Obsidian-1.5.3-arm64.AppImage
-	sha256sums_aarch64 = 89cbe08b2738222687728b83aeaf3378b6b04651c0bc18f0715029e31e79b350
+	source_x86_64 = obsidian-bin-1.5.8-x86_64.AppImage::https://github.com/obsidianmd/obsidian-releases/releases/download/v1.5.8/Obsidian-1.5.8.AppImage
+	sha256sums_x86_64 = 41bf02e53cff52589847fd652bf683571833b8d6b096138d7077909789d59688
+	source_aarch64 = obsidian-bin-1.5.8-aarch64.AppImage::https://github.com/obsidianmd/obsidian-releases/releases/download/v1.5.8/Obsidian-1.5.8-arm64.AppImage
+	sha256sums_aarch64 = 2472fb8824acb720dac3a6ae4ca1ed8f8bbd4ba66362ccc5af8a17d5a08570f9
 
 pkgname = obsidian-bin
