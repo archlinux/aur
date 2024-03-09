@@ -22,7 +22,7 @@ pkgname=(
     "${_pkgbase}-ux581l-git"
     "${_pkgbase}-ux581l-unicode-git"
 )
-pkgver=r713.6972f85
+pkgver=r714.7a24da9
 pkgrel=1
 pkgdesc="Linux newest feature-rich configurable driver for Asus numberpad"
 arch=('any')
@@ -34,10 +34,11 @@ depends=(
     'python-libevdev'
     'i2c-tools'
     'python-libevdev'
-    'python-inotify'
+    'python-pyinotify'
     'python-xlib'
     'python-numpy'
     'python-evdev'
+    'python-smbus2'
     'xorg-xinput'
 )
 makedepends=('git')
