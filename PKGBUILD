@@ -3,14 +3,13 @@
 _pkgname=MAST
 _pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
-pkgrel=1
-pkgdesc='Model-based Analysis of Single Cell Transcriptomics'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Model-based Analysis of Single Cell Transcriptomics"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-abind
   r-biobase
   r-biocgenerics
@@ -35,7 +34,6 @@ optdepends=(
   r-gseabase
   r-hdf5array
   r-knitr
-  r-lattice
   r-limma
   r-lme4
   r-nmf
@@ -50,14 +48,15 @@ optdepends=(
   r-zinbwave
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9792e5c49877d58efaee7ad3bc855fa866fa059c86942054366549737b673e9e')
+md5sums=('5b2d5c6a33243cdf9c2e4440ba4bf1da')
+b2sums=('c2cbbaf06959e1aa058dc006340fb50d58c6bc6db2207053cdf68dbfd522a30165fdad3b063bbacb970b4e2a3d81934c35c3871f024c0ffbdad0bfe013c3dc72')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
