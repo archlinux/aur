@@ -3,7 +3,7 @@
 pkgname=plasma6-applets-thermal-monitor-git
 _pkgname=${pkgname%-git}
 pkgver=0.1.3.r3.g6133642
-pkgrel=1
+pkgrel=2
 pkgdesc="A KDE Plasmoid for displaying system temperatures. Latest commit."
 arch=(any)
 url="https://invent.kde.org/olib/thermalmonitor"
@@ -15,7 +15,7 @@ depends=(
   kitemmodels
   kdeclarative
 )
-makedepends=(cmake git)
+makedepends=(cmake extra-cmake-modules git)
 source=("${_pkgname}::git+${url}.git")
 b2sums=('SKIP')
 
