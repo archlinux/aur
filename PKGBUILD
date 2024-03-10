@@ -4,6 +4,8 @@ pkgname=kerneloops-git
 pkgver=0.12.r44.g00ac663
 pkgrel=1
 pkgdesc="Client tool for reporting OOPS to http://oops.kernel.org/"
+provides=("kerneloops={pkgver}")
+conflicts=('kerneloops')
 arch=('i686' 'x86_64')
 url="http://oops.kernel.org/"
 license=('GPL2')
