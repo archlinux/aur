@@ -1,10 +1,11 @@
 pkgbase = android-aarch64-libxdmcp
-	pkgdesc = X11 Display Manager Control Protocol library (Android aarch64)
+	pkgdesc = X11 Display Manager Control Protocol library (Android, aarch64)
 	pkgver = 1.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xorg.freedesktop.org/
 	arch = any
 	license = custom
+	makedepends = android-configure
 	makedepends = android-aarch64-xorg-util-macros
 	depends = android-aarch64-xorgproto
 	options = !strip
