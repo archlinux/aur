@@ -18,7 +18,8 @@ license=(MPL-2.0)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 depends=(
-	dbus
+	dbus-glib
+	botan
 	ffmpeg
 	gtk3
 	appmenu-gtk-module
