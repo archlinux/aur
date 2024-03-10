@@ -1,0 +1,17 @@
+pkgbase = chomikbox
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = http://chomikuj.pl/ChomikBox.aspx
+	arch = any
+	license = freeware
+	depends = qt4
+	depends = gstreamer0.10-base
+	provides = chomikbox
+	source = http://bts.box.chomikuj.pl/repo/all/2.0.5/linux64/ChomikBox-pl-installer.64.sh
+	source = chomikbox.png
+	source = chomikbox-music-light.png
+	md5sums = 758911e6ffc6e3c2e83ad7b64a97c603
+	md5sums = 644b11c413a5542b187e7a040b7a0d5e
+	md5sums = 0ccd8b3e3ce7fb30a5706f80f4959b5c
+
+pkgname = chomikbox
