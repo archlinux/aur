@@ -2,12 +2,12 @@
 
 pkgname='git-of-theseus'
 pkgver='0.3.4'
-pkgrel=1
+pkgrel=2
 pkgdesc='Plot stats on Git repositories'
 arch=('any')
 url="https://github.com/erikbern/$pkgname"
 license=('Apache-2.0')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 depends=('python-gitpython'
     'python-numpy'
     'python-tqdm'
@@ -34,12 +34,12 @@ sha256sums=('SKIP'
 
 build() {
     cd "$srcdir/$pkgname"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$srcdir/$pkgname"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 "${srcdir}/git-of-theseus-analyze.1" "${pkgdir}/usr/share/man/man1/git-of-theseus-analyze.1"
     install -Dm644 "${srcdir}/git-of-theseus-survival-plot.1" "${pkgdir}/usr/share/man/man1/git-of-theseus-survival-plot.1"
     install -Dm644 "${srcdir}/git-of-theseus-stack-plot.1" "${pkgdir}/usr/share/man/man1/git-of-theseus-stack-plot.1"

@@ -1,12 +1,15 @@
 pkgbase = git-of-theseus
 	pkgdesc = Plot stats on Git repositories
 	pkgver = 0.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/erikbern/git-of-theseus
 	arch = any
 	license = Apache-2.0
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-gitpython
 	depends = python-numpy
 	depends = python-tqdm
