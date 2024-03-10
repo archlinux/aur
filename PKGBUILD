@@ -16,18 +16,18 @@
 # 
 # Maintainer: Bernard Baeyens (berbae)  <berbae52 at sfr dot fr>
 pkgname=udisksvm
-pkgver=2.6.3
+pkgver=2.6.4
 pkgrel=1
 pkgdesc="GUI UDisks wrapper for removable media"
 arch=('any')
 url='https://bbs.archlinux.org/viewtopic.php?id=112397'
 license=('GPL')
-depends=('udisks2' 'python-gobject' 'python-pyqt5' 'oxygen-icons')
+depends=('udisks2' 'python-gobject' 'python-pyqt6' 'oxygen-icons')
 install=udisksvm.install
 changelog=ChangeLog
 source=("https://github.com/berbae/udisksvm/raw/master/$pkgname-$pkgver.tar.gz")
 
-sha256sums=('7b6f60f5b289ac73b07989e6d26fff231b61dd9d45c04ab025bf7c594a1fdc7c')
+sha256sums=('c881d051f53407a4330a0a7b82ff228301486e6e2f4094dc31fff477e97a6a96')
 
 package() {
   cd $srcdir
