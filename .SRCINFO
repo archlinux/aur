@@ -1,0 +1,25 @@
+pkgbase = maliit-keyboard
+	pkgdesc = Virtual keyboard based on Maliit framework
+	pkgver = 2.3.1
+	pkgrel = 3
+	url = https://maliit.github.io/
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = libpinyin
+	makedepends = anthy
+	makedepends = libchewing
+	depends = maliit-framework
+	depends = hunspell
+	depends = presage
+	depends = qt5-multimedia
+	depends = qt5-quickcontrols2
+	depends = qt5-feedback
+	depends = qt5-graphicaleffects
+	optdepends = anthy: japanese language support
+	optdepends = libpinyin: chinese language support
+	optdepends = libchewing: chinese language support
+	source = https://github.com/maliit/keyboard/archive/2.3.1/maliit-keyboard-2.3.1.tar.gz
+	sha256sums = c3e1eb985b8ae7ce4e3e28412b7e797ff5db437ccd327e0d852a3c37f17fe456
+
+pkgname = maliit-keyboard
