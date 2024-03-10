@@ -1,6 +1,6 @@
 pkgbase = piavpn-bin
 	pkgdesc = Private Internet Access client
-	pkgver = 3.5.3
+	pkgver = 3.5.5
 	pkgrel = 1
 	epoch = 1
 	url = https://privateinternetaccess.com/
@@ -19,9 +19,9 @@ pkgbase = piavpn-bin
 	conflicts = pia-tools
 	conflicts = private-internet-access-vpn
 	options = !strip
-	source_x86_64 = https://installers.privateinternetaccess.com/download/pia-linux-3.5.3-07926.run
-	sha256sums_x86_64 = b1ddb4a9c283c17cb6ff86a8733867f62af279a40e88ba4151503069057d96ad
-	source_aarch64 = https://installers.privateinternetaccess.com/download/pia-linux-arm64-3.5.3-07926.run
-	sha256sums_aarch64 = cea8df2492c0257bedfc2fd018d12e7451e2579bf975a5440a8c118187a70b3f
+	source_x86_64 = https://installers.privateinternetaccess.com/download/pia-linux-3.5.5-08091.run
+	sha256sums_x86_64 = 03162ad68559f50eb4cd5ff6d033b76d88d6fdfd9114bf1247cc548e3c043883
+	source_aarch64 = https://installers.privateinternetaccess.com/download/pia-linux-arm64-3.5.5-08091.run
+	sha256sums_aarch64 = 934afc21e5095cf79ddeb82711ed275f1330baea65341f6b6e001632c454a5e1
 
 pkgname = piavpn-bin
