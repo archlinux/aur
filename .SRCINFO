@@ -1,6 +1,6 @@
 pkgbase = vk-hdr-layer-kwin6-git
 	pkgdesc = Vulkan Wayland HDR WSI Layer (Xaver Hugl's fork for KWin 6)
-	pkgver = r28.869199c
+	pkgver = r31.f5f13b7
 	pkgrel = 1
 	url = https://github.com/Zamundaaa/VK_hdr_layer
 	arch = x86_64
