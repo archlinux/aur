@@ -25,5 +25,3 @@ package () {
   install -Dm755 curl_* "${pkgdir}/usr/bin/"
   install -Dm755 curl-impersonate-* "${pkgdir}/usr/bin/"
 }
-md5sums_x86_64=('b554c4785b5ab6506a040544356bfa7b')
-md5sums_aarch64=('281f7afacbda68df9f29b39e043c8039')
