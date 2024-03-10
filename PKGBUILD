@@ -3,12 +3,13 @@
 pkgname=adguardian
 _pkgname=AdGuardian-Term
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Terminal-based, real-time traffic monitoring and statistics for your AdGuard Home instance"
 arch=(x86_64)
 url="https://github.com/Lissy93/AdGuardian-Term"
 license=(MIT)
 makedepends=(cargo)
+optdepends=('gum: interactive prompt for generation of environment file for authentication')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/Lissy93/$_pkgname/archive/refs/tags/$pkgver.tar.gz"
 	adguardian.bash)
 
