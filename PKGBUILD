@@ -7,7 +7,7 @@ pkgname=powershell
 _pkgname=PowerShell
 pkgver=7.4.1
 _commit=a4348e51b87075cb8cd8047830e6575e4f91f3cf
-pkgrel=3
+pkgrel=4
 pkgdesc="A cross-platform automation and configuration tool/framework (latest release)"
 arch=(x86_64)
 url="https://github.com/PowerShell/PowerShell"
@@ -42,6 +42,12 @@ sha256sums=(
 )
 
 _archive="$_pkgname"
+
+pkgver() {
+  cd "$_archive"
+
+  git describe --tags | sed 's/^v//'
+}
 
 prepare() {
   cd "$_archive"
@@ -211,7 +217,7 @@ package() {
   local pkgnum=${pkgver:0:1}
 
   install -dm755 "$pkgdir/usr/lib/$pkgname-$pkgnum"
-  cp --archive -t "$pkgdir/usr/lib/$pkgname-$pkgnum" lib/*
+  cp -a -t "$pkgdir/usr/lib/$pkgname-$pkgnum" lib/*
 
   install -dm755 "$pkgdir/usr/bin"
   ln -s "/usr/lib/$pkgname-$pkgnum/pwsh" "$pkgdir/usr/bin/pwsh"
