@@ -1,18 +1,15 @@
 pkgbase = yofi-bin
 	pkgdesc = Minimalistic menu for Wayland-based compositors
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/l4l/yofi
 	arch = x86_64
 	license = MIT
 	depends = fontconfig
-	depends = expat
-	depends = graphite
-	depends = pcre
 	depends = wayland-protocols
 	depends = libxkbcommon
 	provides = yofi
-	source = https://github.com/l4l/yofi/releases/download/0.2.0/yofi-ubuntu-20.04
-	sha256sums = 6abac7e27b0261a8f2e3f8d4c57492e8e4d7914133a9c2dc3a1be1ddf9085d0b
+	source = https://github.com/l4l/yofi/releases/download/0.2.1/yofi-ubuntu-22.04
+	sha256sums = fe8af047001b6c47d63d66755a13a337aefb1f3c5ecc472049e20fda3918b08a
 
 pkgname = yofi-bin
