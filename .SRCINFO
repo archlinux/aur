@@ -1,10 +1,11 @@
 pkgbase = android-x86-xcb-proto
-	pkgdesc = XML-XCB protocol descriptions (android)
+	pkgdesc = XML-XCB protocol descriptions (Android, x86)
 	pkgver = 1.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xcb.freedesktop.org/
 	arch = any
 	license = custom
+	makedepends = android-configure
 	makedepends = python
 	makedepends = android-x86-libxml2
 	depends = android-ndk
