@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=r-quick-share
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Rust implementation of NearbyShare/QuickShare from Android for Linux."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk3' 'libayatana-appindicator' 'webkit2gtk')
 makedepends=('cargo' 'pnpm' 'protobuf')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6641fa7cd0c5089fc952344904bfc68598afd418eea3c2a486efbaf9d1bce39e')
+sha256sums=('799cde545de923bf0a1aaaeda0b8e9ba2477daf43102aa1914427a4c83d10d06')
 
 prepare() {
   cd rquickshare-$pkgver
