@@ -1,5 +1,5 @@
 msg() {
-  printf "%b" "\e[1;31m==> WARNING: To use this effect disable the default Blur effect and any other forks of the blur effect as well (such as LightlyShaders). You can do this under Desktop Effects in System Settings\n\e[0m"
+  printf "%b" "\e[1;31m==> WARNING: To use this effect disable the default Blur effect and any other forks of the blur effect as well (such as the one provided by LightlyShaders). Then enable the Force Blur effect. You can do this under Desktop Effects in System Settings\n\e[0m"
 }
 
 post_install() {
