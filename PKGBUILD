@@ -5,12 +5,12 @@ pkgname=$_pkgname
 pkgdesc='Command-line tool for deploying your Neocities site'
 url="https://github.com/kugland/$_pkgname"
 pkgver=0.1.11
-pkgrel=3
+pkgrel=4
 arch=('any')
 source=("$_pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('0a8fee770fba94a75e34936056adead6b15b50c28f178d0aee7143e0bf55ff67')
 makedepends=(cargo)
-license=('GPL3')
+license=('GPL-3.0-or-later')
 options=(!lto)
 
 prepare() {
