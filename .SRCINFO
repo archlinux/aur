@@ -1,0 +1,14 @@
+pkgbase = python-easyeda2kicad-git
+	pkgdesc = Convert any LCSC components (including EasyEDA) to KiCad library
+	pkgver = v0.6.5.r22.g8eeaab0
+	pkgrel = 1
+	url = https://github.com/uPesy/easyeda2kicad.py
+	arch = any
+	license = AGPL
+	makedepends = python-setuptools
+	depends = python
+	options = !emptydirs
+	source = python-easyeda2kicad-git::git+https://github.com/uPesy/easyeda2kicad.py.git
+	sha256sums = SKIP
+
+pkgname = python-easyeda2kicad-git
