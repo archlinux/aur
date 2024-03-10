@@ -1,7 +1,7 @@
 pkgbase = lua-readline
 	pkgdesc = Lua bindings to readline
 	pkgver = 3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://peterbillam.gitlab.io/pjb_lua/lua/readline.html
 	arch = x86_64
 	arch = i686

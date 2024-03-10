@@ -8,8 +8,8 @@ index 939a054..74f494e 100644
  local M = {} -- public interface
 -M.Version     = '3.1' -- reset OldHistoryLength if histfile gets set
 -M.VersionDate = '20apr2022'
-+M.Version     = '3.2' -- fix a memory leak in readline()
-+M.VersionDate = '01oct2022'
++M.Version     = '3.3' -- return nil if ctrl-D is first char
++M.VersionDate = '13apr2023' -- from git history
  
  --[[
  Alexander Adler suggests adding four Alternate-Interface functions:
