@@ -1,0 +1,4 @@
+[python-seleniumbase]
+source = "github"
+github = "seleniumbase/SeleniumBase"
+use_latest_release = "true"
