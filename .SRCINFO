@@ -1,7 +1,7 @@
 pkgbase = plasma-applets-weather-widget-2
 	pkgdesc = An updated version of the plasma-applet-weather-widget by Kotelnik
 	pkgver = 3.0.0b2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/blackadderkate/weather-widget-2
 	arch = x86_64
 	license = GPL
