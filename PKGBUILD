@@ -2,7 +2,7 @@
 # Thanks for yochananmarqos for improve this PKGBUILD
 
 pkgname=warehouse
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="A versatile toolbox for managing flatpak user data, viewing flatpak app info, and batch managing installed flatpaks"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('flatpak-xdg-utils' 'gtk4' 'libadwaita' 'python-gobject')
 makedepends=('blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('3b7f343e39595b4d8503bbf209551a972cc92b8cb3db2ec6167c20e71c456d04')
+sha256sums=('1f59d5a49873ea267814a609143297545ed7877a18abed5980e8668fc9a40bbe')
 
 prepare() {
     cd "${pkgname}-${pkgver}"

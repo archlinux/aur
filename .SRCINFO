@@ -1,6 +1,6 @@
 pkgbase = warehouse
 	pkgdesc = A versatile toolbox for managing flatpak user data, viewing flatpak app info, and batch managing installed flatpaks
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/flattool/warehouse
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = warehouse
 	depends = gtk4
 	depends = libadwaita
 	depends = python-gobject
-	source = https://github.com/flattool/warehouse/archive/refs/tags/1.5.0.tar.gz
-	sha256sums = 3b7f343e39595b4d8503bbf209551a972cc92b8cb3db2ec6167c20e71c456d04
+	source = https://github.com/flattool/warehouse/archive/refs/tags/1.5.1.tar.gz
+	sha256sums = 1f59d5a49873ea267814a609143297545ed7877a18abed5980e8668fc9a40bbe
 
 pkgname = warehouse
