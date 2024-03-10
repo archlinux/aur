@@ -3,7 +3,7 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=060.r6794.4980bad
-pkgrel=19
+pkgrel=20
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracutdevs/dracut'
@@ -36,7 +36,6 @@ optdepends=(
   'bzip2: bzip2 compression'
   'cifs-utils: support CIFS'
   'connman: support for connman networking'
-  'cryptsetup: support for encrypted with LUKS filesystems'
   'dash: allows use of dash (on your own risk)'
   'dhclient: legacy networking support'
   'dmraid: dmraid dracut module support'
