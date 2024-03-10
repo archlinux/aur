@@ -5,8 +5,8 @@
 
 projname=zim-desktop-wiki
 pkgname=zim-dev
-pkgver=4110a13c
-pkgrel=3
+pkgver=0.75.2.59.g4e6c9
+pkgrel=1
 pkgdesc="Zim desktop wiki. Develop branch"
 arch=(any)
 license=('GPL' 'PerlArtistic')
@@ -28,8 +28,13 @@ optdepends=('bzr: Version Control plugin'
             'lilypond: Insert Score plugin'
             'gtksourceview3: Source View plugin'
             'texlive-bin: Insert Equation plugin')
-source=("git+https://github.com/zim-desktop-wiki/zim-desktop-wiki.git#commit=$pkgver")
+source=("git+https://github.com/$projname/$projname.git#branch=develop")
 sha256sums=('SKIP')
+
+pkgver() {
+    cd "$projname"
+    echo "$(git describe --abbrev=4 --always --tags | sed 's/-/./g')"
+}
 
 check() {
 	cd "${srcdir}/${projname}"

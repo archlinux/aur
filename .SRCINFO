@@ -1,7 +1,7 @@
 pkgbase = zim-dev
 	pkgdesc = Zim desktop wiki. Develop branch
-	pkgver = 4110a13c
-	pkgrel = 3
+	pkgver = 0.75.2.59.g4e6c9
+	pkgrel = 1
 	url = https://zim-wiki.org/
 	arch = any
 	license = GPL
@@ -27,7 +27,7 @@ pkgbase = zim-dev
 	optdepends = texlive-bin: Insert Equation plugin
 	provides = zim
 	conflicts = zim
-	source = git+https://github.com/zim-desktop-wiki/zim-desktop-wiki.git#commit=4110a13c
+	source = git+https://github.com/zim-desktop-wiki/zim-desktop-wiki.git#branch=develop
 	sha256sums = SKIP
 
 pkgname = zim-dev
