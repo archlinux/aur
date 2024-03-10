@@ -2,7 +2,7 @@
 _gitname="weather-widget-2"
 pkgname=plasma-applets-weather-widget-2
 pkgver=3.0.0b2
-pkgrel=3
+pkgrel=4
 pkgdesc="An updated version of the plasma-applet-weather-widget by Kotelnik"
 arch=('x86_64')
 url="https://github.com/blackadderkate/$_gitname"
@@ -20,7 +20,7 @@ prepare() {
 build() {
     cmake -B ./build -S ./${_gitname}-${pkgver} \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DQML_INSTALL_DIR=/usr/lib/qt/qml \
+        -DQML_INSTALL_DIR=/usr/lib/qt6/qml \
         -DLOCALE_INSTALL_DIR=/usr/share/locale \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_LIBDIR=lib \
