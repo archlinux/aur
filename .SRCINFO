@@ -1,7 +1,7 @@
 pkgbase = dracut-git
 	pkgdesc = An event driven initramfs infrastructure
 	pkgver = 060.r6794.4980bad
-	pkgrel = 17
+	pkgrel = 18
 	url = https://github.com/dracutdevs/dracut
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -48,6 +48,7 @@ pkgbase = dracut-git
 	optdepends = bzip2: bzip2 compression
 	optdepends = cifs-utils: support CIFS
 	optdepends = connman: support for connman networking
+	optdepends = cryptsetup: support for encrypted with LUKS filesystems
 	optdepends = dash: allows use of dash (on your own risk)
 	optdepends = dhclient: legacy networking support
 	optdepends = dmraid: dmraid dracut module support
