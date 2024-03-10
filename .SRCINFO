@@ -1,18 +1,19 @@
 pkgbase = mrbuild
 	pkgdesc = Simple build system
 	pkgver = 1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dkogan/mrbuild
 	arch = any
-	groups = 
 	license = MIT
 	depends = perl
 	depends = chrpath
 	provides = mrbuild
 	conflicts = mrbuild
 	source = mrbuild-1.8.tar.gz::https://github.com/dkogan/mrbuild/archive/refs/tags/v1.8.tar.gz
+	source = libdirs.patch
 	source = LICENSE
 	sha256sums = e1bc7b1543be739bfbfcf04fd220ed055ea2c16a9a537608a9b01746cb89ce22
+	sha256sums = SKIP
 	sha256sums = 9ef5ec6f58aaa29dab6415cd56b48c22907fc6c850a17976d765602c6ceb9cd6
 
 pkgname = mrbuild

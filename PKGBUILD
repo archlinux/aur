@@ -1,12 +1,11 @@
 # Maintainer: Matthew Tran <0e4ef622 at gmail.com>
 pkgname=mrbuild
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple build system"
 arch=('any')
 url="https://github.com/dkogan/mrbuild"
 license=('MIT')
-groups=('')
 depends=('perl' 'chrpath')
 provides=('mrbuild')
 conflicts=('mrbuild')
