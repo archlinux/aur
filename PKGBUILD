@@ -6,13 +6,14 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-libxdmcp
 pkgver=1.1.5
-pkgrel=1
-pkgdesc="X11 Display Manager Control Protocol library (Android ${_android_arch})"
+pkgrel=2
+pkgdesc="X11 Display Manager Control Protocol library (Android, ${_android_arch})"
 arch=('any')
 url="https://xorg.freedesktop.org/"
 license=('custom')
 depends=("android-${_android_arch}-xorgproto")
-makedepends=("android-${_android_arch}-xorg-util-macros")
+makedepends=('android-configure'
+             "android-${_android_arch}-xorg-util-macros")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=(${url}/releases/individual/lib/libXdmcp-${pkgver}.tar.xz)
 md5sums=('ce0af51de211e4c99a111e64ae1df290')
