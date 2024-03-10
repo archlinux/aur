@@ -3,31 +3,34 @@
 
 _pkgname=qutepart
 pkgname=qutepart-git
-pkgver=3.3.2.r1.gaa69fe6
+pkgver=3.3.3.r4.g9cca26c
 pkgrel=1
-pkgdesc="Code editor component for PyQt and Pyside"
-arch=('any')
-url="https://github.com/hlamer/qutepart/"
-license=('LGPL')
-makedepends=('git' 'python-setuptools')
-depends=('python-pyqt5')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("$pkgname::git+https://github.com/hlamer/$_pkgname.git")
-md5sums=('SKIP')
+pkgdesc='Code editor component for PyQt and Pyside'
+arch=(any)
+url=https://github.com/hlamer/qutepart
+license=(LGPL)
+makedepends=(git python-build python-installer python-wheel python-setuptools)
+depends=(python-pyqt5)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+https://github.com/hlamer/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
   git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
+prepare() {
+  git -C $pkgname clean -dfx
+}
+
 build() {
   cd $pkgname
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd $pkgname
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
-
