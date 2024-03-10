@@ -1,7 +1,7 @@
 # Maintainer: Jonas Kalsvik <jonas@kalsvik.no>
 pkgname="epicmickeylauncher"
-pkgver="0.4.1"
-pkgrel=5
+pkgver="0.4.2"
+pkgrel=6
 epoch=
 pkgdesc="Mod Installer, Level Loader & Launcher for every Epic Mickey game."
 arch=('x86_64')
@@ -28,8 +28,6 @@ validpgpkeys=()
 prepare(){
  tar -zxvf data.tar.gz
 }
-
-
 
 package() {
 	cd ${srcdir}
