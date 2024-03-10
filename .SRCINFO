@@ -1,6 +1,6 @@
 pkgbase = python-keyring-pass
 	pkgdesc = https://www.passwordstore.org backend for keyring
-	pkgver = 0.9.2
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://github.com/nazarewk/keyring_pass
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-keyring-pass
 	depends = python-keyring
 	depends = python-jaraco.classes
 	depends = pass
-	source = https://files.pythonhosted.org/packages/source/k/keyring-pass/keyring_pass-0.9.2.tar.gz
-	b2sums = e95cca011ac258499dd66b5afe52981aa10555262e7c7864fe337fe75e557c83cedfb43e3cf43f7835884879d39540cebb005220b81b5a2ab49ef7da946b8765
+	source = https://files.pythonhosted.org/packages/source/k/keyring-pass/keyring_pass-0.9.3.tar.gz
+	b2sums = e0da97f33347493dc5411144795699a850238e095cfd2abb7602443cff297d3ffcac4fb3adab98cbed34b9c1d3308053e40cf6a80f7ba14cf54ba63b2e79a4b2
 
 pkgname = python-keyring-pass

@@ -1,7 +1,7 @@
 # Maintainer: Atte Lautanala <atte@lautana.la>
 pkgname=python-keyring-pass
 _pkgname=keyring_pass
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc='https://www.passwordstore.org backend for keyring'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python-keyring' 'python-jaraco.classes' 'pass')
 makedepends=('python-build' 'python-installer')
 source=("https://files.pythonhosted.org/packages/source/k/${_pkgname/_/-}/$_pkgname-$pkgver.tar.gz")
-b2sums=('e95cca011ac258499dd66b5afe52981aa10555262e7c7864fe337fe75e557c83cedfb43e3cf43f7835884879d39540cebb005220b81b5a2ab49ef7da946b8765')
+b2sums=('e0da97f33347493dc5411144795699a850238e095cfd2abb7602443cff297d3ffcac4fb3adab98cbed34b9c1d3308053e40cf6a80f7ba14cf54ba63b2e79a4b2')
 
 
 build() {
