@@ -1,6 +1,6 @@
 pkgbase = kate-root
 	pkgdesc = Advanced Text Editor from the KDE project, patched to be able to run as root.
-	pkgver = 23.08.4
+	pkgver = 24.02.0
 	pkgrel = 1
 	url = https://apps.kde.org/kate/
 	arch = x86_64
@@ -12,82 +12,79 @@ pkgbase = kate-root
 	arch = riscv64
 	groups = kde-applications
 	groups = kde-utilities
-	license = custom: CC0
-	license = FDL
-	license = GPL2
-	license = LGPL
-	license = custom: LGPL2.0
+	license = CC0-1.0
+	license = GFDL-1.3-or-later
+	license = GPL-2.0-or-later
+	license = LGPL-2.0-or-later
+	license = LGPL-3.0-or-later
 	license = MIT
 	checkdepends = appstream
 	makedepends = appstream
-	makedepends = attica5
-	makedepends = cmake
-	makedepends = extra-cmake-modules>=5.90.0
+	makedepends = attica>=6
+	makedepends = cmake>=3.16
+	makedepends = extra-cmake-modules>=6
 	makedepends = fontconfig
 	makedepends = freetype2
 	makedepends = gettext
-	makedepends = kdoctools5>=5.90.0
-	makedepends = kuserfeedback5>=1.2.0
-	makedepends = kwallet5>=5.90.0
-	makedepends = plasma-framework5
+	makedepends = intltool
+	makedepends = kdoctools>=6
+	makedepends = kuserfeedback>=6
+	makedepends = kwallet>=6
 	makedepends = pkgconf
 	depends = hicolor-icon-theme
 	depends = gcc-libs
 	depends = glibc
-	depends = qt5-base
-	depends = qt5-x11extras
-	depends = kactivities5>=5.90.0
-	depends = kcompletion5>=5.90.0
-	depends = ki18n5>=5.90.0
-	depends = kconfig5>=5.90.0
-	depends = kconfigwidgets5>=5.90.0
-	depends = kcoreaddons5>=5.90.0
-	depends = kdbusaddons5>=5.90.0
-	depends = kio5>=5.90.0
-	depends = kbookmarks5>=5.90.0
-	depends = kcrash5>=5.90.0
-	depends = kiconthemes5>=5.90.0
-	depends = kjobwidgets5>=5.90.0
-	depends = knewstuff5>=5.90.0
-	depends = kparts5>=5.90.0
-	depends = kservice5>=5.90.0
-	depends = ktextwidgets5>=5.90.0
-	depends = ktexteditor5>=5.90.0
-	depends = kxmlgui5>=5.90.0
-	depends = kwidgetsaddons5>=5.90.0
-	depends = kwindowsystem5>=5.90.0
-	depends = syntax-highlighting5>=5.90.0
+	depends = kcompletion>=6
+	depends = ki18n>=6
+	depends = kconfig>=6
+	depends = kconfigwidgets>=6
+	depends = kcoreaddons>=6
+	depends = kdbusaddons>=6
+	depends = kguiaddons>=6
+	depends = kio>=6
+	depends = kbookmarks>=6
+	depends = kcrash>=6
+	depends = kiconthemes>=6
+	depends = knewstuff>=6
+	depends = kparts>=6
+	depends = kservice>=6
+	depends = ktextwidgets>=6
+	depends = ktexteditor>=6
+	depends = kxmlgui>=6
+	depends = kwidgetsaddons>=6
+	depends = kwindowsystem>=6
+	depends = qt6-base>=6.5.0
+	depends = syntax-highlighting>=6
 	optdepends = bash: For migration script from kate session applet to kde plasma addon.
 	optdepends = clang: C and C++ LSP support.
 	optdepends = git: git-blame plugin.
-	optdepends = kguiaddons5>=5.90.0: katefiletree and project addons.
 	optdepends = konsole: open a terminal in Kate.
-	optdepends = kuserfeedback5>=1.2.0
-	optdepends = kwallet5>=5.90.0
+	optdepends = kuserfeedback>=6
+	optdepends = kwallet>=6
 	optdepends = markdownpart: Markdown preview.
 	optdepends = pkgconf: To use the pkg-config files.
 	optdepends = python-lsp-server: Python LSP support.
 	optdepends = rust: Rust LSP support.
 	optdepends = svgpart: SVG preview.
 	optdepends = texlab: LaTeX LSP support.
-	provides = kate=23.08.4
-	provides = kwrite=23.08.4
-	provides = kate-kf5=23.08.4
-	provides = kwrite-kf5=23.08.4
-	provides = kate-qt5=23.08.4
-	provides = kwrite-qt5=23.08.4
+	provides = kate=24.02.0
+	provides = kwrite=24.02.0
+	provides = kate-kf6=24.02.0
+	provides = kwrite-kf6=24.02.0
+	provides = kate-qt6=24.02.0
+	provides = kwrite-qt6=24.02.0
 	conflicts = kate
 	conflicts = kwrite
 	replaces = kwrite
 	replaces = kwrite-root
-	source = https://download.kde.org/stable/release-service/23.08.4/src/kate-23.08.4.tar.xz
-	source = https://download.kde.org/stable/release-service/23.08.4/src/kate-23.08.4.tar.xz.sig
+	source = https://download.kde.org/stable/release-service/24.02.0/src/kate-24.02.0.tar.xz
+	source = https://download.kde.org/stable/release-service/24.02.0/src/kate-24.02.0.tar.xz.sig
 	source = 0001-Defuse-root-block.patch
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
-	sha256sums = 297facaab205f67f2c61b17650ef27a10b32ea699083577eeece25d0beb3fba2
-	sha256sums = 8dd9eda2d14acf09cec12d3ecd3411922b2a37ccd5900a7637936088fe54e0ca
+	sha256sums = 9b1efcccf4e36efcdbc2eada6399cd8128ce187a19182400313062f75ee35f48
+	sha256sums = 87f291b7d75cd9db732eba60af5b355b3145b45fb9ce9d0cd194554988d4072a
 	sha256sums = abc7a33c8e8cd3a79ea4699bca0086c4146a9a43771a10fc60b97dcf62faca44
 
 pkgname = kate-root

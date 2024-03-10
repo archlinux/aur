@@ -8,7 +8,7 @@
 
 _pkgname=kate
 pkgname="${_pkgname}-root"
-pkgver=23.08.4
+pkgver=24.02.0
 pkgrel=1
 arch=(
   'x86_64'
@@ -20,11 +20,11 @@ arch=(
   'riscv64'
 )
 license=(
-  'custom: CC0'
-  'FDL'
-  'GPL2'
-  'LGPL'
-  'custom: LGPL2.0'
+  'CC0-1.0'
+  'GFDL-1.3-or-later'  # Documentation is under "FDL" but I could not find out which version.
+  'GPL-2.0-or-later'
+  'LGPL-2.0-or-later'
+  'LGPL-3.0-or-later'
   'MIT'
 )
 pkgdesc='Advanced Text Editor from the KDE project, patched to be able to run as root.'
@@ -38,38 +38,38 @@ depends=(
   'hicolor-icon-theme'
   'gcc-libs'
   'glibc'
-  'qt5-base'
-  'qt5-x11extras'
-  'kactivities5>=5.90.0'
-  'kcompletion5>=5.90.0'
-  'ki18n5>=5.90.0'
-  'kconfig5>=5.90.0'
-  'kconfigwidgets5>=5.90.0'
-  'kcoreaddons5>=5.90.0'
-  'kdbusaddons5>=5.90.0'
-  'kio5>=5.90.0'
-  'kbookmarks5>=5.90.0'
-  'kcrash5>=5.90.0'
-  'kiconthemes5>=5.90.0'
-  'kjobwidgets5>=5.90.0'
-  'knewstuff5>=5.90.0'
-  'kparts5>=5.90.0'
-  'kservice5>=5.90.0'
-  'ktextwidgets5>=5.90.0'
-  'ktexteditor5>=5.90.0'
-  'kxmlgui5>=5.90.0'
-  'kwidgetsaddons5>=5.90.0'
-  'kwindowsystem5>=5.90.0'
-  'syntax-highlighting5>=5.90.0'
+  # 'kactivities5>=5.90.0'
+  'kcompletion>=6'
+  'ki18n>=6'
+  'kconfig>=6'
+  'kconfigwidgets>=6'
+  'kcoreaddons>=6'
+  'kdbusaddons>=6'
+  'kguiaddons>=6'
+  'kio>=6'
+  'kbookmarks>=6'
+  'kcrash>=6'
+  'kiconthemes>=6'
+  # 'kjobwidgets>=6'
+  'knewstuff>=6'
+  'kparts>=6'
+  'kservice>=6'
+  'ktextwidgets>=6'
+  'ktexteditor>=6'
+  'kxmlgui>=6'
+  'kwidgetsaddons>=6'
+  'kwindowsystem>=6'
+  # 'libx11'
+  'qt6-base>=6.5.0'
+  'syntax-highlighting>=6'
 )
 optdepends=(
   'bash: For migration script from kate session applet to kde plasma addon.'
   'clang: C and C++ LSP support.'
   'git: git-blame plugin.'
-  'kguiaddons5>=5.90.0: katefiletree and project addons.'
   'konsole: open a terminal in Kate.'
-  'kuserfeedback5>=1.2.0'
-  'kwallet5>=5.90.0'
+  'kuserfeedback>=6'
+  'kwallet>=6'
   'markdownpart: Markdown preview.'
   'pkgconf: To use the pkg-config files.'
   'python-lsp-server: Python LSP support.'
@@ -79,16 +79,17 @@ optdepends=(
 )
 makedepends=(
   'appstream'
-  'attica5'
-  'cmake'
-  'extra-cmake-modules>=5.90.0'
+  'attica>=6'
+  'cmake>=3.16'
+  'extra-cmake-modules>=6'
   'fontconfig'
   'freetype2'
   'gettext'
-  'kdoctools5>=5.90.0'
-  'kuserfeedback5>=1.2.0'
-  'kwallet5>=5.90.0'
-  'plasma-framework5'
+  'intltool'
+  'kdoctools>=6'
+  'kuserfeedback>=6'
+  'kwallet>=6'
+  # 'plasma-framework5>=5.90.0'
   'pkgconf'
   # 'python>=3.7' # Needed if `-DBUILD_python=ON`.
   # 'pyside2'     # Needed if `-DBUILD_python=ON`.
@@ -104,10 +105,10 @@ conflicts=(
 provides=(
   "kate=${pkgver}"
   "kwrite=${pkgver}"
-  "kate-kf5=${pkgver}"
-  "kwrite-kf5=${pkgver}"
-  "kate-qt5=${pkgver}"
-  "kwrite-qt5=${pkgver}"
+  "kate-kf6=${pkgver}"
+  "kwrite-kf6=${pkgver}"
+  "kate-qt6=${pkgver}"
+  "kwrite-qt6=${pkgver}"
 )
 replaces=(
   'kwrite'
@@ -118,8 +119,8 @@ source=(
   "0001-Defuse-root-block.patch"
 )
 sha256sums=(
-  '297facaab205f67f2c61b17650ef27a10b32ea699083577eeece25d0beb3fba2'  # ${_pkgname}-${pkgver}.tar.xz
-  '8dd9eda2d14acf09cec12d3ecd3411922b2a37ccd5900a7637936088fe54e0ca'  # ${_pkgname}-${pkgver}.tar.xz.sig
+  '9b1efcccf4e36efcdbc2eada6399cd8128ce187a19182400313062f75ee35f48'  # ${_pkgname}-${pkgver}.tar.xz
+  '87f291b7d75cd9db732eba60af5b355b3145b45fb9ce9d0cd194554988d4072a'  # ${_pkgname}-${pkgver}.tar.xz.sig
   'abc7a33c8e8cd3a79ea4699bca0086c4146a9a43771a10fc60b97dcf62faca44'  # 0001-Defuse-root-block.patch
 )
 validpgpkeys=(
