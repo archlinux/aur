@@ -1,6 +1,6 @@
 # Maintainer: Jens Kabisch <jenskabi@gmail.com>
 pkgname=yesbotics-serial-monitor
-pkgver=0.1.2
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='A fast and lightweight serial monitor with some helping functions to work with the Yesbotics Simple Serial Protocol.'
 arch=('1686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
