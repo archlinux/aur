@@ -3,12 +3,12 @@
 _pkgname=log4r
 _pkgver=0.4.3
 pkgname=r-${_pkgname,,}
-pkgver=0.4.3
-pkgrel=1
+pkgver=${_pkgver//-/.}
+pkgrel=3
 pkgdesc="A Fast and Lightweight Logging System for R, Based on 'log4j'"
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('Artistic2.0')
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r
 )
@@ -28,14 +28,15 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('dfe3d49d35a8d8f3ad63f156d18e860540a01bd0af0e343cbab3e31a2cf5904c')
+md5sums=('48d5f4212c65e91cbd900c2fbaf2f3d6')
+b2sums=('2ba50dbe1312f564dba282afda0adf9ecbd1b7f4e2e7e9ddb2b1f12f398286c5523321d7686c0733831d19b0d05024f485f90d93b59cd721570c94a8891ee31e')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
