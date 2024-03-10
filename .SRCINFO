@@ -1,14 +1,13 @@
 pkgbase = pokemon-colorscripts-git
-	pkgdesc = CLI utility that prints unicode sprites of pokemon to the terminal
-	pkgver = r108.3dc0b2e
+	pkgdesc = Print Pokemon ASCII art in the terminal
+	pkgver = r112.0483c85b
 	pkgrel = 1
-	url = https://gitlab.com/phoneybadger/pokemon-colorscripts.git
+	url = https://gitlab.com/phoneybadger/pokemon-colorscripts
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = coreutils
 	depends = python
 	source = pokemon-colorscripts::git+https://gitlab.com/phoneybadger/pokemon-colorscripts.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = pokemon-colorscripts-git
