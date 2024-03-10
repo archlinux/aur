@@ -4,8 +4,8 @@
 # Contributor: Dhananjay Balan <mail@dbalan.in>
 
 pkgname=minio-client
-pkgver=2024.03.07
-_timever=T00-31-49Z
+pkgver=2024.03.09
+_timever=T06-43-06Z
 _pkgver="${pkgver//./-}${_timever//:/-}"
 pkgrel=2
 pkgdesc='Replacement for ls, cp, mkdir, diff and rsync commands for filesystems and object storage'
