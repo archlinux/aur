@@ -1,7 +1,7 @@
 pkgbase = cppman
 	pkgdesc = C++ 98/11/14/17/20 manual pages for Linux, with source from cplusplus.com and cppreference.com.
 	pkgver = 0.5.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aitjcize/cppman
 	arch = any
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = cppman
 	optdepends = vim: For using vim as a pager
 	optdepends = perl: for bash/zsh completion
 	conflicts = cppman-git
-	source = https://files.pythonhosted.org/packages/source/c/cppman/cppman-0.5.6.tar.gz
-	b2sums = 0221f1a444f91e5e2db44be6d1be4ea3d1521fc043a661cb6a1ab79f0c4eeba970e0f8d77aaa88f7d622a719a671f44b935cededfaff445f0363f2006e49cdb1
+	source = https://github.com/aitjcize/cppman/archive/0.5.6.tar.gz
+	b2sums = ca4c3bc05e3f8b7de432147dcff861ab4b1d3b3de2729da2dc4cb8513f96b3b92e9a7ebbbf0ad577d7372ebc7d152290431d4d95127c63a1a9122c2dd5f12aae
 
 pkgname = cppman

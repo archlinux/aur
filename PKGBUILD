@@ -4,7 +4,7 @@
 
 pkgname=cppman
 pkgver=0.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ 98/11/14/17/20 manual pages for Linux, with source from cplusplus.com and cppreference.com."
 arch=('any')
 url="https://github.com/aitjcize/cppman"
@@ -13,15 +13,15 @@ conflicts=(cppman-git)
 depends=(python python-beautifulsoup4 python-html5lib)
 optdepends=("vim: For using vim as a pager"
             "perl: for bash/zsh completion")
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-b2sums=('0221f1a444f91e5e2db44be6d1be4ea3d1521fc043a661cb6a1ab79f0c4eeba970e0f8d77aaa88f7d622a719a671f44b935cededfaff445f0363f2006e49cdb1')
+source=("$url/archive/$pkgver.tar.gz")
+b2sums=('ca4c3bc05e3f8b7de432147dcff861ab4b1d3b3de2729da2dc4cb8513f96b3b92e9a7ebbbf0ad577d7372ebc7d152290431d4d95127c63a1a9122c2dd5f12aae')
 
 build() {
     cd $pkgname-$pkgver
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd $pkgname-$pkgver
-    python setup.py install --root="$pkgdir/" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
