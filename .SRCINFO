@@ -1,0 +1,28 @@
+pkgbase = midori
+	pkgdesc = Lightweight web browser
+	pkgver = 9.0
+	pkgrel = 6
+	url = https://github.com/midori-browser/core
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = intltool
+	makedepends = ninja
+	makedepends = vala
+	depends = aria2
+	depends = gcr
+	depends = libarchive
+	depends = libpeas
+	depends = libxss
+	depends = webkit2gtk
+	depends = zeitgeist
+	optdepends = gst-plugins-base: HTML5 OGG videos support
+	optdepends = gst-plugins-good: HTML5 H264 and WebM videos support
+	optdepends = gst-libav: HTML5 H264 videos support
+	options = !emptydirs
+	source = midori::git+https://github.com/midori-browser/core.git#commit=f6b3b1e030db7eb2de7faf73ec4ccc18949b668d
+	sha256sums = SKIP
+
+pkgname = midori
