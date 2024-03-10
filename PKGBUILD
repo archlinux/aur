@@ -2,6 +2,7 @@
 # Contributor: Ashwin Vishnu <ashwinvis+arch at pr0t0nm4il dot com>
 
 pkgname=govarnam-ibus-git
+epoch=1
 pkgver=1.6.2.r3.g18e6d36
 pkgrel=1
 pkgdesc="IBus engine for GoVarnam providing Indian language input method - Git version"
