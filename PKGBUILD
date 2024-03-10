@@ -1,7 +1,7 @@
 # Maintainer: sakul987 <sakul987@proton.me>
 pkgname='wg-container'
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Run specific applications in a WireGuard VPN"
 arch=('any')
 url="https://github.com/sakul987/wg-container"

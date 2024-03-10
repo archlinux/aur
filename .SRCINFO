@@ -1,7 +1,7 @@
 pkgbase = wg-container
 	pkgdesc = Run specific applications in a WireGuard VPN
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sakul987/wg-container
 	arch = any
 	license = GPL-3.0-only
