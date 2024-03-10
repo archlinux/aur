@@ -4,12 +4,12 @@ pkgbase=python-asdf_wcs_schemas
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="World Coordinate System (WCS) ASDF schemas "
 arch=('any')
 url="https://github.com/asdf-format/asdf-wcs-schemas"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
@@ -20,7 +20,7 @@ makedepends=('python-setuptools-scm'
 checkdepends=('python-pytest'
               'python-asdf_coordinates_schemas')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('fed2b1265d96ce36ff082cb573220667')
+md5sums=('08707642fa2fff2450513a7ac4543ed7')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -45,7 +45,7 @@ check() {
 }
 
 package_python-asdf_wcs_schemas() {
-    depends=('python>=3.8' 'python-asdf-standard>=1.0.1' 'python-asdf_transform_schemas>=0.3.0' 'python-asdf_unit_schemas>=0.1.0')
+    depends=('python>=3.9' 'python-asdf-standard>=1.1.0' 'python-asdf_transform_schemas>=0.5.0' 'python-asdf_coordinates_schemas>=0.3.0')
     optdepends=('python-asdf_wcs_schemas-doc: Documentation for ASDF WCS Schemas')
     cd ${srcdir}/${_pyname}-${pkgver}
 
