@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Special compilation of libcurl that makes it impersonate Firefox and Chrome"
 url="https://github.com/lwthiker/curl-impersonate"
 license=('MIT')
-arch=('x86_64' 'aarch64')
+arch=('x86_64' 'aarch64' 'armv7h')
 depends=(nss)
 provides=(libcurl-impersonate-firefox libcurl-impersonate-chrome)
 
@@ -22,7 +22,7 @@ source_armv7h=(
 
 md5sums_x86_64=('bed2142535c209e4a605e03ea014af9d')
 md5sums_aarch64=('42cd4834511b78df6ae4737ca17c5282')
-md5sums_armv7h=('xxxxx')
+md5sums_armv7h=('a89a5cad530320979bdd3fd0c1701626')
 
 package () {
   mkdir -p "${pkgdir}/usr/lib/"

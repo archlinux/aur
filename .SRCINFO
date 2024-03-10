@@ -5,6 +5,7 @@ pkgbase = libcurl-impersonate-bin
 	url = https://github.com/lwthiker/curl-impersonate
 	arch = x86_64
 	arch = aarch64
+	arch = armv7h
 	license = MIT
 	depends = nss
 	provides = libcurl-impersonate-firefox
@@ -13,5 +14,7 @@ pkgbase = libcurl-impersonate-bin
 	md5sums_x86_64 = bed2142535c209e4a605e03ea014af9d
 	source_aarch64 = libcurl-impersonate_aarch64.tar.gz::https://github.com/lwthiker/curl-impersonate/releases/download/v0.6.1/libcurl-impersonate-v0.6.1.aarch64-linux-gnu.tar.gz
 	md5sums_aarch64 = 42cd4834511b78df6ae4737ca17c5282
+	source_armv7h = curl-impersonate_aarch64.tar.gz::https://github.com/lwthiker/curl-impersonate/releases/download/v0.6.1/curl-impersonate-v0.6.1.arm-linux-gnueabihf.tar.gz
+	md5sums_armv7h = a89a5cad530320979bdd3fd0c1701626
 
 pkgname = libcurl-impersonate-bin
