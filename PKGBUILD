@@ -10,13 +10,14 @@ license=('MIT')
 arch=('any')
 depends=('python')
 makedepends=('git' 'python-build' 'python-installer' 'python-hatchling')
-checkdepends=('python-asynctest' 'python-pytest' 'python-alt-pytest-asyncio'
+checkdepends=('python-pytest' 'python-alt-pytest-asyncio'
               'python-pytest-helpers-namespace')
 source=("git+https://github.com/delfick/nose-of-yeti.git#commit=$_commit")
 sha512sums=('SKIP')
 
 build() {
   cd nose-of-yeti
+  sed -i '/asynctest/d' pyproject.toml
   python -m build -nw
 }
 
