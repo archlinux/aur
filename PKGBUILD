@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=neovim-surround
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc='Provides mappings to easily delete, change, and add paired "surroundings"'
 arch=('any')
@@ -13,9 +13,9 @@ license=('custom:vim')
 groups=('neovim-plugins')
 depends=('neovim')
 install=nvim-doc.install
-source=($pkgname-$pkgver.tar.gz::https://github.com/tpope/${pkgname#neo}/archive/v2.1.tar.gz
+source=("$pkgname-$pkgver.tar.gz::https://github.com/tpope/${pkgname#neo}/archive/v${pkgver}.tar.gz"
         license.txt)
-sha256sums=('e8fdc95650e0c3ca61890f6607a21dd01e763a0f2d177f15547afd0adb83ec73'
+sha256sums=('6f775e932650e6a718af7750a7b1d21aef062402f317a49c6a79055f650379c5'
             '446c67d93c43addf076fe103a71844c2d875d478f82186436567dd221f2652f3')
 
 package() {
