@@ -4,7 +4,7 @@
 
 pkgname=blocky
 pkgver=0.23
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and lightweight DNS proxy as ad-blocker"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/0xERR0R/blocky"
@@ -25,9 +25,9 @@ b2sums=('4dd8b4a9587ed2b768ff2cf8809e14242032d7e8be3d3c422eb5518df33c32c0f767ba8
 )
 
 prepare() {
-    cd "$pkgname-$pkgver"
-    mkdir -p build
-    go mod download
+	cd "$pkgname-$pkgver"
+	echo ":: Downloading Go modules..."
+	go mod download
 }
 
 build() {
