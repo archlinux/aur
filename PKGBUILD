@@ -2,7 +2,7 @@
 
 _reponame=kwin-forceblur
 pkgname=kwin-effects-forceblur
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="KWin Blur effect fork with window class force blur feature (Wayland & X11)"
 arch=(x86_64)
