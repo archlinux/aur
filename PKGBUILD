@@ -12,7 +12,7 @@ install="${pkgname}.install"
 source=(
 	'bgrt-no-watermark.plymouth'
 )
-sha256sums=('53a7e07c1c0422939384a4345ad776cbd15425d242b58fe63895830c2ff2fce8')
+sha256sums=('186791c1a4066ae3778a5fe51ee2b55ef34736b3c53ee05ee1a7af07a2940611')
 
 package() {
 	install -Dm644 "bgrt-no-watermark.plymouth" "${pkgdir}/usr/share/plymouth/themes/bgrt-no-watermark/bgrt-no-watermark.plymouth"
