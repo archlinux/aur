@@ -5,23 +5,23 @@
 _pkgname=pywapi
 pkgname=python-$_pkgname
 pkgver=0.3.8
-pkgrel=7
-pkgdesc="Python wrapper around the Yahoo! Weather, Weather.com and NOAA APIs"
-arch=('any')
-url="https://launchpad.net/python-weather-api"
-license=('MIT')
-depends=('python')
-source=(https://launchpad.net/python-weather-api/trunk/$pkgver/+download/$_pkgname-$pkgver.tar.gz)
-md5sums=('75bf8257f32f2d36169d57d92566cdb1')
+pkgrel=8
+pkgdesc='Python wrapper around the Yahoo! Weather, Weather.com and NOAA APIs'
+arch=(any)
+url=https://launchpad.net/python-weather-api
+license=(MIT)
+depends=(python)
+makedepends=(python-build python-installer python-wheel python-setuptools)
+source=("$pkgname-$pkgver.tar.gz::$url/trunk/$pkgver/+download/$_pkgname-$pkgver.tar.gz")
+sha256sums=('3167e9864a6924870cb674743dc35352379d8af772280dfe2b35a00e940a4588')
 
 build() {
   cd $_pkgname-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd $_pkgname-$pkgver
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  python setup.py install --root="$pkgdir" --optimize=1
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
-
