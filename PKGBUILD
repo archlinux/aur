@@ -1,6 +1,6 @@
 # Maintainer: Jordan Rudess <jrudess@gmail.com>
 pkgname=slang-verilog
-pkgver=2.0
+pkgver=5.0
 pkgrel=1
 epoch=
 pkgdesc="SystemVerilog Language Services"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/MikePopoloski/slang/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('e7527e5c3ae7db0e6bbc8dbb405b76568eef48302ed3d6d9f1928c85f040b271')
+sha256sums=('c598109357a93628e93b1a9027312e568a0a28a56c4c15093621d0b586d36100')
 validpgpkeys=()
 
 prepare() {
@@ -33,7 +33,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/slang-$pkgver/build"
-	cmake -DCMAKE_CXX_COMPILER=g++ -DCMAKE_BUILD_TYPE=Release -DxxHash_DIR=$srcdir/..  -DCMAKE_INSTALL_PREFIX=/usr -DSLANG_USE_SYSTEM_LIBS=True -DBUILD_SHARED_LIBS=False ..
+	cmake -DCMAKE_CXX_COMPILER=g++ -DCMAKE_BUILD_TYPE=Release -DxxHash_DIR=$srcdir/..  -DCMAKE_INSTALL_PREFIX=/usr -DSLANG_USE_SYSTEM_LIBS=True -DBUILD_SHARED_LIBS=True -DCPACK_PACKAGE_NAME=svlang -DCPACK_PACKAGE_INSTALL_DIRECTORY=svlang -DCMAKE_PROJECT_NAME=svlang ..
 	make VERBOSE=1
 }
 
