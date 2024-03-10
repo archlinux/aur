@@ -1,14 +1,17 @@
 pkgbase = python-gdbgui
 	pkgdesc = Browser-based frontend to gdb. Debug C, C++, Go, or Rust.
 	pkgver = 0.15.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gdbgui.com
 	arch = any
 	license = GPL
 	checkdepends = python-nox
 	checkdepends = python-pytest
 	checkdepends = python-pytest-cov
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	makedepends = yarn
 	depends = python>=3.6
 	depends = python-brotli
@@ -19,8 +22,6 @@ pkgbase = python-gdbgui
 	depends = python-flask-socketio>5.3
 	depends = python-pygdbmi>=0.10.0.2
 	depends = python-pygments>=2.2.0
-	provides = gdbgui=0.15.2.0
-	conflicts = gdbgui
 	source = https://github.com/cs01/gdbgui/archive/0.15.2.0.tar.gz
 	b2sums = ffdce1923aead7d5cf202aa6954bbedcfa55cb27351b7635dd9636a8b398e4d9d8baa1c59789ba47e80ae581fa6510cae2017d0639cc7f9137d8ce5e0324172b
 
