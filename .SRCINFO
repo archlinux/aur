@@ -1,11 +1,11 @@
 pkgbase = perl-math-gsl
 	pkgdesc = Perl module providing interface to the GNU Scientific Library
-	pkgver = 0.43
+	pkgver = 0.44
 	pkgrel = 1
 	url = https://metacpan.org/release/Math-GSL
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	checkdepends = perl-test-exception
 	checkdepends = perl-test-class
 	checkdepends = perl-test-most
@@ -15,7 +15,7 @@ pkgbase = perl-math-gsl
 	depends = perl
 	depends = gsl
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/H/HA/HAKONH/Math-GSL-0.43.tar.gz
-	md5sums = 8db782c053ec8417f39f55439a65d3c5
+	source = https://cpan.metacpan.org/authors/id/H/HA/HAKONH/Math-GSL-0.44.tar.gz
+	md5sums = c3249e41b1c304a8fb45e6982543c408
 
 pkgname = perl-math-gsl

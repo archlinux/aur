@@ -4,18 +4,18 @@
 # Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname=perl-math-gsl
-pkgver=0.43
+pkgver=0.44
 pkgrel=1
 pkgdesc='Perl module providing interface to the GNU Scientific Library'
 arch=('i686' 'x86_64')
 url='https://metacpan.org/release/Math-GSL'
-license=('GPL')
+license=(GPL-2.0-or-later)
 options=(!emptydirs)
 depends=('perl' 'gsl')
 makedepends=('perl-module-build' 'perl-alien-gsl')
 checkdepends=('perl-test-exception' 'perl-test-class' 'perl-test-most' 'perl-test-taint')
 source=("https://cpan.metacpan.org/authors/id/H/HA/HAKONH/Math-GSL-$pkgver.tar.gz")
-md5sums=('8db782c053ec8417f39f55439a65d3c5')
+md5sums=('c3249e41b1c304a8fb45e6982543c408')
 
 prepare() {
 	cd Math-GSL-$pkgver
