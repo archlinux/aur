@@ -1,14 +1,14 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 
 pkgname=kwin-effects-forceblur-git
-pkgver=r12.d10a6bb72
+pkgver=r22.f93eeffb1
 pkgrel=2
 pkgdesc="KWin Blur effect fork with window class force blur feature (Wayland & X11)"
 arch=(x86_64)
 url="https://github.com/taj-ny/kwin-forceblur"
 license=(GPL3)
 depends=(kio knotifications kwin kcrash kglobalaccel)
-conflicts=("${pkgname%-git}" lightlyshaders)
+conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 makedepends=(git extra-cmake-modules qt6-tools)
 source=("$pkgname::git+${url}.git")
