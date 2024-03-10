@@ -11,6 +11,7 @@ license=(GPL3)
 depends=(kio knotifications kwin kcrash kglobalaccel)
 makedepends=(git extra-cmake-modules qt6-tools)
 source=("$pkgname::$url/archive/refs/tags/v$pkgver.tar.gz")
+install="$pkgname.install"
 sha256sums=('7a9b68c28e0073520069327311be472096d65125a9bd2bd9040022a73c9d46b7')
 
 build() {
