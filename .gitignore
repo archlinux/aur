@@ -1,7 +1,8 @@
-pkg/
-src/
-NAM/
 eigen/
 guitarix/
 guitarix.vst/
 guitarix.vst-git-*.pkg.tar.*
+NAM/
+pkg/
+RTNeural
+src/
