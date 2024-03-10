@@ -12,6 +12,7 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 makedepends=(git extra-cmake-modules qt6-tools)
 source=("$pkgname::git+${url}.git")
+install="$pkgname.install"
 sha256sums=('SKIP')
 
 pkgver() {

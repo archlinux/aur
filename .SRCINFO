@@ -3,6 +3,7 @@ pkgbase = kwin-effects-forceblur-git
 	pkgver = r22.f93eeffb1
 	pkgrel = 1
 	url = https://github.com/taj-ny/kwin-forceblur
+	install = kwin-effects-forceblur-git.install
 	arch = x86_64
 	license = GPL3
 	makedepends = git
