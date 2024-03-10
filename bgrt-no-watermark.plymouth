@@ -1,6 +1,6 @@
 [Plymouth Theme]
-Name=BGRT-better-luks
-Description=Jimmac's spinner theme using the ACPI BGRT graphics as background with a couple small tweaks to show the LUKS passphrase prompt under the OEM logo.
+Name=BGRT-No-Watermark
+Description=Jimmac's spinner theme using the ACPI BGRT graphics as background, but without watermark
 ModuleName=two-step
 
 [two-step]
@@ -14,7 +14,7 @@ TitleVerticalAlignment=.382
 HorizontalAlignment=.5
 VerticalAlignment=.7
 WatermarkHorizontalAlignment=.5
-WatermarkVerticalAlignment=.96
+WatermarkVerticalAlignment=2
 Transition=none
 TransitionDuration=0.0
 BackgroundStartColor=0x000000
@@ -55,4 +55,11 @@ SuppressMessages=true
 ProgressBarShowPercentComplete=true
 UseProgressBar=true
 Title=Upgrading Firmware...
+SubTitle=Do not turn off your computer
+
+[system-reset]
+SuppressMessages=true
+ProgressBarShowPercentComplete=true
+UseProgressBar=true
+Title=Resetting System...
 SubTitle=Do not turn off your computer

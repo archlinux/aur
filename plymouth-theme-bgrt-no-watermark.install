@@ -2,7 +2,7 @@ post_install() {
 	cat <<EOF 
 
 ==> To activate the theme, run as root:
-==> plymouth-set-default-theme -R bgrt-better-luks
+==> plymouth-set-default-theme -R bgrt-no-watermark
 
 EOF
 }
