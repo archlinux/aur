@@ -1,0 +1,14 @@
+# Source and package folders
+src/
+pkg/
+
+# The installer script
+ChomikBox-pl-installer.64.sh
+
+# Archive files
+*.zip
+*.tar.gz
+*.tar.bz2
+
+# Package files
+*.zst
