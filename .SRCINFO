@@ -1,0 +1,19 @@
+pkgbase = avocado-framework
+	pkgdesc = Set of tools and libraries to help with automated testing
+	pkgver = 103.0
+	pkgrel = 1
+	url = http://avocado-framework.github.io/
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = python-docutils
+	depends = python
+	depends = libvirt-python
+	depends = python-setuptools
+	provides = python-avocado=103.0
+	provides = avocado=103.0
+	provides = python-avocado-framework=103.0
+	conflicts = python-avocado
+	source = https://github.com/avocado-framework/avocado/archive/103.0.tar.gz
+	sha256sums = c502c3014062be32ab6c92bf089cad661c1be56992269bacdc68aa6e204dcabc
+
+pkgname = avocado-framework
