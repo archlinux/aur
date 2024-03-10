@@ -1,0 +1,14 @@
+pkgbase = interception-fnkeys-xiaoxin
+	pkgdesc = An Interception tools plugin fixing failed Fn-key mappings on latest Lenovo XiaoXin series.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/NagiNikaido/Fix-Fnkeys-XiaoXin
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	depends = interception-tools
+	source = https://github.com/NagiNikaido/Fix-Fnkeys-XiaoXin/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 07909cb2142ae9d4ee573632ebbadb90f0d728cf54329f0873fec0685aa46575
+
+pkgname = interception-fnkeys-xiaoxin
