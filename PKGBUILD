@@ -3,7 +3,7 @@
 
 pkgname='slang-snapshot'
 _pkgname="${pkgname%-snapshot}"
-_pkgver=2.3.4-11
+_pkgver=2.3.4-12
 _prever="pre$_pkgver"
 pkgver="${_pkgver/-/.}"
 pkgrel=1
@@ -25,7 +25,7 @@ options=('lto' '!makeflags')
 source=("${url}${_pkgname}-$_prever.tar.gz")
 validpgpkeys=('AE962A02D29BFE4A4BB2805FDE401E0D5873000A')  # John E. Davis
 # Taken from $url
-md5sums=('f94a0e56168a4673dfe9f3d21ac3859a')
+md5sums=('a73e5a83ccb461227f5d30bb9784e26b')
 changelog="$pkgname.changelog"
 
 build() {
@@ -60,10 +60,10 @@ package() {
 
 # Calculated
 sha256sums=(
-  '8b1c937ac8085ad436fb88e2708d4b45eec4261c151dffa2b7f9d38bab11519f'
+  'e1ee510a3fe620cade67ec912fedcf7fab697910de717dffed0b7065d960931a'
 )
 b2sums=(
-  '5db15f5883db37d9d9c971c208a312455137e4452f711ad67db57c98f74c5a4fe42b8a3d6ca804e49e8716952d3b7be9f406d39b8e2d9b3b42e7ff806b1132f2'
+  '69c70bcb3a137197faebc9ea24f710755c1ee23d9b70322a231765b033424cfd74906bd4e7c32be301dd34fff278707dd1d8a42e88d7bce4ee6695aa709950cd'
 )
 
 # eof

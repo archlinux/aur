@@ -24,3 +24,4 @@ Changes since 2.3.3
 10. src/*.h: Updated the unicode tables from version 10.0.0 to 15.1.0
 11. lib/timestamp.sl: The test for a leap year assumed a 1-based
     month, not 0 based, causing it to fail
+12. modules/chksum_sha2.c: Use memcpy to avoid type-punning warning
