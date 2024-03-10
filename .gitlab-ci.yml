@@ -1,0 +1,29 @@
+include:
+  - project: "common/gitlab-helper"
+    ref: master
+    file: "ci-helper.yml"
+
+workflow: !reference [ .common, workflow ]
+
+variables:
+  PKG_NAME: "helm-diff"
+
+stages:
+  - build
+  - test
+  - deploy
+
+build-helm-diff:
+  extends: .arch-build
+  image: ${CI_REGISTRY}/common/gitlab-helper/archlinux-yay:master
+  #before_script:
+  #  - git config --global --add safe.directory /builds/arch/helm-diff
+  needs: []
+  
+test-helm-diff:
+  extends: .arch-test
+  image: ${CI_REGISTRY}/common/gitlab-helper/archlinux-yay:master
+  needs: ["build-helm-diff"]
+
+deploy-helm-diff:
+  extends: .arch-deploy
