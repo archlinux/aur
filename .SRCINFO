@@ -1,0 +1,19 @@
+pkgbase = pmbootstrap-systemd-git
+	pkgdesc = Sophisticated chroot/build/flash tool to develop and install postmarketOS (systemd branch)
+	pkgver = 2.2.1.r38.g5da5a93a
+	pkgrel = 1
+	url = https://gitlab.com/postmarketOS/pmbootstrap
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-argcomplete
+	provides = pmbootstrap
+	conflicts = pmbootstrap
+	source = git+https://gitlab.com/postmarketOS/pmbootstrap.git#branch=systemd
+	sha256sums = SKIP
+
+pkgname = pmbootstrap-systemd-git
