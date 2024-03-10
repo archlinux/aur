@@ -2,12 +2,11 @@
 # Contributor: piratecarrot <39475419+piratecarrot@users.noreply.github.com>
 pkgname=libdogleg-git
 pkgver=v0.16.r1.g1f88d01
-pkgrel=1
+pkgrel=2
 pkgdesc="Large-scale nonlinear least-squares optimization library for both sparse and dense problems"
 arch=('i686' 'x86_64')
 url="https://github.com/dkogan/libdogleg"
 license=('LGPL-3.0-only')
-groups=('')
 depends=('suitesparse' 'lapack' 'glibc')
 makedepends=('make' 'gcc' 'mrbuild')
 provides=('libdogleg')
