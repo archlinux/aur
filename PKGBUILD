@@ -22,9 +22,8 @@ _filenames=(
     gnome-shell
     gtk-2.0
     gtk-3.0
-    gtk.3.20
+    gtk-3.20
     gtk-4.0
-    kde
     metacity-1
     unity
     xfwm4
@@ -32,12 +31,22 @@ _filenames=(
     README.md
     index.theme
 )
-_install_prefix=$pkgdir/usr/share/themes/Dracula
 
 package() {
-    cd $srcdir
-    mkdir -p $_install_prefix
-    for filename in "${_files[@]}"; do
+    cd $srcdir/$_pkgname
+
+    _install_prefix=$pkgdir/usr/share/themes/Dracula
+    mkdir -p $_install_prefix \
+        $pkgdir/usr/share/aurorae/themes \
+        $pkgdir/usr/share/sddm/themes
+    for filename in "${_filenames[@]}"; do
         cp -a $filename $_install_prefix
     done
+
+    # kde
+    cd $srcdir/$_pkgname/kde
+    cp -a aurorae/* $pkgdir/usr/share/aurorae/themes
+    cp -a color-schemes $pkgdir/usr/share
+    cp -a plasma $pkgdir/usr/share
+    cp -a sddm/* $pkgdir/usr/share/sddm/themes
 }
