@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libsrtp
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Library for SRTP (Secure Realtime Transport Protocol) (mingw-w64)"
 arch=('any')
@@ -10,7 +10,7 @@ makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8a43ef8e9ae2b665292591af62aa1a4ae41e468b6d98d8258f91478735da4e09')
+sha256sums=('bf641aa654861be10570bfc137d1441283822418e9757dc71ebb69a6cf84ea6b')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
