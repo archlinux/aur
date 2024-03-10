@@ -1,0 +1,5 @@
+[python-selectolax]
+source = "github"
+github = "rushter/selectolax"
+use_latest_release = "true"
+prefix = "v"
