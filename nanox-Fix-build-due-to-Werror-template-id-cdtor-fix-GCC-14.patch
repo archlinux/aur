@@ -1,0 +1,27 @@
+From 619d004832ec8dee433e6f279a93f427634a1d40 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Joan=20Bruguera=20Mic=C3=B3?= <joanbrugueram@gmail.com>
+Date: Sun, 10 Mar 2024 23:16:21 +0000
+Subject: [PATCH] Fix build due to -Werror=template-id-cdtor (fix GCC 14)
+
+---
+ src/core/addressspace_decl.hpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/core/addressspace_decl.hpp b/src/core/addressspace_decl.hpp
+index 793a918..10a2976 100644
+--- a/src/core/addressspace_decl.hpp
++++ b/src/core/addressspace_decl.hpp
+@@ -172,8 +172,8 @@ class SeparateAddressSpace {
+ template <class T>
+ class MemSpace : public T {
+    public:
+-   MemSpace<T>( Device &d );
+-   MemSpace<T>( memory_space_id_t memSpaceId, Device &d, bool allocWide, std::size_t slabSize );
++   MemSpace( Device &d );
++   MemSpace( memory_space_id_t memSpaceId, Device &d, bool allocWide, std::size_t slabSize );
+    void copy( MemSpace< SeparateAddressSpace > &from, TransferList &list, WD const *wd, bool inval = false );
+ };
+ 
+-- 
+2.44.0
+
