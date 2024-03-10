@@ -1,10 +1,12 @@
 pkgbase = android-armv7a-eabi-xtrans
-	pkgdesc = X transport library (android)
+	pkgdesc = X transport library (Android, armv7a-eabi)
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xorg.freedesktop.org/
 	arch = any
 	license = custom
+	makedepends = android-configure
+	depends = android-ndk
 	options = !strip
 	options = !buildflags
 	options = staticlibs
