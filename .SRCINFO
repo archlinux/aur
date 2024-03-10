@@ -1,17 +1,17 @@
 pkgbase = teleprompter
 	pkgdesc = A simple Gtk4 application to read scrolling text from your screen
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/Nokse22/teleprompter
-	arch = aarch64
 	arch = x86_64
-	license = GPL3
+	arch = aarch64
+	license = GPL-3.0-or-later
 	checkdepends = appstream-glib
 	makedepends = git
 	makedepends = meson
 	depends = libadwaita
 	depends = python
-	source = git+https://github.com/Nokse22/teleprompter.git#tag=v0.1.6
+	source = git+https://github.com/Nokse22/teleprompter.git#tag=v0.1.7
 	sha256sums = SKIP
 
 pkgname = teleprompter
