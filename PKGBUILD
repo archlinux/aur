@@ -1,8 +1,8 @@
 # Maintainer: Arvid Norlander <VorpalBlade@users.noreply.github.com>
 pkgname=paketkoll
-_pkgver=0.1.3
+_pkgver=0.2.0
 pkgver=${_pkgver/-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Fast integrity check for files installed by pacman"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/VorpalBlade/paketkoll"
@@ -10,7 +10,7 @@ license=('MPL-2.0')
 makedepends=('cargo' 'cmake')
 options=('!lto') # LTO breaks with ring
 source=("$pkgname-$_pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-${_pkgver}.crate")
-sha256sums=('6d299452b7598c72acea136dd0f8082486968fe31786c1f334a79196d6fd9007')
+sha256sums=('3c7b6f2af033be95eb524f53090d9a8f51783853b257a1a645eb2f5f9256fac4')
 
 prepare() {
     cd "$pkgname-$_pkgver"
