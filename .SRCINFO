@@ -1,0 +1,13 @@
+pkgbase = neocities-deploy-git
+	pkgdesc = Command-line tool for deploying your Neocities site
+	pkgver = 0.1.11.r3.g2fd2edc
+	pkgrel = 1
+	url = https://github.com/kugland/neocities-deploy
+	arch = any
+	license = GPL3
+	makedepends = cargo
+	options = !lto
+	source = neocities-deploy::git+https://github.com/kugland/neocities-deploy#branch=master
+	sha256sums = SKIP
+
+pkgname = neocities-deploy-git
