@@ -1,8 +1,8 @@
 # Maintainer: Joost Bremmer <contact@madeofmagicandwires.online>
 # Contributor: Tomas Kral <tomas.kral@gmail.com>
 pkgname=nvpy
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="Simplenote syncing note-taking application, but uglier and cross-platformerer."
 arch=("any")
 url="https://github.com/cpbotha/nvpy"
@@ -19,7 +19,7 @@ provides=("$pkgname")
 conflicts=("${pkgname}-git")
 source=("https://github.com/cpbotha/${pkgname}/archive/v${pkgver}.tar.gz")
 install=nvpy.install
-sha256sums=('fd045f90660134154474318f7155b2fa0a439c7b00da85800d7d75c4650666e2')
+sha256sums=('f3c400623cd63ebd830df64fc39be1f5a68ce48e6d76b079d6d3713decf0bb28')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
