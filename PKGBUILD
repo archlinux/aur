@@ -1,12 +1,12 @@
 # Maintainer: bemxio <bemxiov@protonmail.com>
 
 pkgname=chomikbox
-pkgdesc=""
+pkgdesc="A desktop application for Chomikuj.pl integration"
 
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 
-arch=(any)
+arch=(x86_64)
 
 url="http://chomikuj.pl/ChomikBox.aspx"
 license=("freeware")
