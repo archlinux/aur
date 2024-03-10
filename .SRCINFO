@@ -1,6 +1,6 @@
 pkgbase = firestorm-next-bin
 	pkgdesc = [PRE-RELEASE] Firestorm is a feature-packed third-party viewer for Second Life. This is the *alpha* release that currently features PBR support. **USE AT YOUR OWN RISK**
-	pkgver = 7.1.3.72975
+	pkgver = 7.1.4.73289
 	pkgrel = 1
 	url = http://www.firestormviewer.org/
 	install = firestorm-next.install

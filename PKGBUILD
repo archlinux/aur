@@ -1,7 +1,7 @@
 # Maintainer: Alex Tharp <alex@toastercup.io>
 _appname=firestorm-next
 pkgname="${_appname}-bin"
-pkgver=7.1.3.72975
+pkgver=7.1.4.73289
 pkgrel=1
 pkgdesc="[PRE-RELEASE] Firestorm is a feature-packed third-party viewer for Second Life. This is the *alpha* release that currently features PBR support. **USE AT YOUR OWN RISK**"
 url="http://www.firestormviewer.org/"
@@ -27,7 +27,7 @@ source=("${_appname}.desktop"
         "${_appname}.launcher")
 md5sums=('bdf52344099529a7006ea67426239182'
          '6a56b1a0df5960481ad40ed40dca8f91')
-_tar_md5sum='4f93e9ce2891107ab640583a9ef4aafa' # verified in prepare()
+_tar_md5sum='db4d03c6f026ea46da18dfba64adb76e' # verified in prepare()
 
 # Text formatting
 _bold_font_weight=$(tput bold)
@@ -36,7 +36,7 @@ _red_font_color=$(tput setaf 1)
 _reset_font_color=$(tput sgr0)
 
 prepare() {
-  printf "\nPlease obtain the private URL for version ${pkgver} of ${_appname} by joining the Firestorm Preview group and looking at the most recent notices. ${_bold_font_weight}Do ${_red_font_color}not${_reset_font_color}${_bold_font_weight} share this URL.\n\n"
+  printf "\nPlease obtain the private URL for version ${pkgver} of Firestorm by joining the Firestorm Preview group and looking under the \"Linux for Second Life (64-bit)\" section in the attached notecard of the most recent alpha/beta notice. ${_bold_font_weight}Do ${_red_font_color}not${_reset_font_color}${_bold_font_weight} share this URL.\n\n"
   printf "${_bold_font_weight}Group URL: ${_normal_font_weight}https://my.secondlife.com/groups/7ba4569c-9dd9-fed2-aaa7-36065d18a13c\n"
   printf "${_bold_font_weight}Inworld Group URI: ${_normal_font_weight}secondlife:///app/group/7ba4569c-9dd9-fed2-aaa7-36065d18a13c/about\n\n"
   printf "${_bold_font_weight}Enter the download URL here:${_normal_font_weight} "
