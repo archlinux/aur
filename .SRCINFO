@@ -1,11 +1,14 @@
 pkgbase = gnofract4d
 	pkgdesc = Create beautiful fractal images
 	pkgver = 4.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/fract4d/gnofract4d
 	arch = any
 	license = BSD
 	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = gtk3
 	depends = libjpeg
