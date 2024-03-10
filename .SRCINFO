@@ -1,6 +1,6 @@
 pkgbase = mysql80
 	pkgdesc = Fast SQL database server, community edition, v8.0
-	pkgver = 8.0.35
+	pkgver = 8.0.36
 	pkgrel = 1
 	url = https://www.mysql.com/products/community/
 	arch = x86_64
@@ -20,14 +20,14 @@ pkgbase = mysql80
 	makedepends = libfido2
 	makedepends = re2
 	makedepends = rapidjson
-	source = https://cdn.mysql.com/Downloads/MySQL-8.0/mysql-boost-8.0.35.tar.gz
+	source = https://cdn.mysql.com/Downloads/MySQL-8.0/mysql-boost-8.0.36.tar.gz
 	source = my-default.cnf
 	source = mysql-ld.so.conf
 	source = mysql.sysconfig
 	source = mysqld_service.patch
 	source = systemd-tmpfiles.patch
 	source = systemd-sysusers.conf
-	sha256sums = 41253c3a99cefcf6d806040c6687692eb0c37b4c7aae5882417dfb9c5d3ce4ce
+	sha256sums = 429c5f69f3722e31807e74119d157a023277af210bfee513443cae60ebd2a86d
 	sha256sums = 6bc24ae510f6b6bbad6b3edda2d0028b29292937b482274a4c2fae335f4de328
 	sha256sums = e1c23fa0971a13d998f2790379b68c475438d05b6d6f2691b99051dbf497567f
 	sha256sums = 203dcd22fea668477ac7123dbd9909fae72d3d07f8855417a669a9c94db072ae
@@ -51,8 +51,8 @@ pkgname = mysql80
 	depends = zstd
 	depends = bash
 	optdepends = perl-dbd-mysql: for mysqlhotcopy, mysql_convert_table_format, mysql_setpermission, mysqldumpslow
-	provides = mariadb=8.0.35
-	provides = mysql=8.0.35
+	provides = mariadb=8.0.36
+	provides = mysql=8.0.36
 	conflicts = mariadb
 	conflicts = mysql
 	options = emptydirs
@@ -66,9 +66,9 @@ pkgname = libmysqlclient80
 	depends = libsasl
 	depends = zlib
 	depends = zstd
-	provides = libmariadbclient=8.0.35
-	provides = libmysqlclient=8.0.35
-	provides = mariadb-libs=8.0.35
+	provides = libmariadbclient=8.0.36
+	provides = libmysqlclient=8.0.36
+	provides = mariadb-libs=8.0.36
 	conflicts = libmariadbclient
 	conflicts = libmysqlclient
 	conflicts = mariadb-libs
@@ -83,7 +83,7 @@ pkgname = mysql-clients80
 	depends = lz4
 	depends = zstd
 	depends = bash
-	provides = mariadb-clients=8.0.35
-	provides = mysql-clients=8.0.35
+	provides = mariadb-clients=8.0.36
+	provides = mysql-clients=8.0.36
 	conflicts = mariadb-clients
 	conflicts = mysql-clients

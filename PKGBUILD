@@ -7,7 +7,7 @@
 pkgname=('mysql80' 'libmysqlclient80' 'mysql-clients80')
 pkgbase=mysql80
 _pkgbase=mysql
-pkgver=8.0.35
+pkgver=8.0.36
 pkgrel=1
 pkgdesc="Fast SQL database server, community edition, v8.0"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=("https://cdn.mysql.com/Downloads/MySQL-8.0/${_pkgbase}-boost-${pkgver}.t
         "mysqld_service.patch"
         "systemd-tmpfiles.patch"
         "systemd-sysusers.conf")
-sha256sums=('41253c3a99cefcf6d806040c6687692eb0c37b4c7aae5882417dfb9c5d3ce4ce'
+sha256sums=('429c5f69f3722e31807e74119d157a023277af210bfee513443cae60ebd2a86d'
             '6bc24ae510f6b6bbad6b3edda2d0028b29292937b482274a4c2fae335f4de328'
             'e1c23fa0971a13d998f2790379b68c475438d05b6d6f2691b99051dbf497567f'
             '203dcd22fea668477ac7123dbd9909fae72d3d07f8855417a669a9c94db072ae'
@@ -169,7 +169,7 @@ package_mysql80(){
   rm "${pkgdir}/usr/lib/libmysqlclient.a"
   rm "${pkgdir}/usr/lib/libmysqlclient.so"
   rm "${pkgdir}/usr/lib/libmysqlclient.so.21"
-  rm "${pkgdir}/usr/lib/libmysqlclient.so.21.2.35"
+  rm "${pkgdir}/usr/lib/libmysqlclient.so.21.2.36"
   rm "${pkgdir}/usr/lib/libmysqlservices.a"
   rm "${pkgdir}/usr/lib/pkgconfig/mysqlclient.pc"
   rmdir "${pkgdir}/usr/lib/pkgconfig"
