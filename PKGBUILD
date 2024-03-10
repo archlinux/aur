@@ -3,24 +3,25 @@
 _pkgname=SMVar
 _pkgver=1.3.4
 pkgname=r-${_pkgname,,}
-pkgver=1.3.4
-pkgrel=3
-pkgdesc='Structural Model for variances'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=8
+pkgdesc="Structural Model for Variances"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('aaea3ef7da6cee1bb86fef166df766229c8b7cac9fcf5bc28da7adff5e2c01d6')
+md5sums=('0cad7d2abfd4be6306eaf2bce923ce7d')
+b2sums=('da5e76b6e6ecd9d2992943429056ee6956509e9414e15a537e640ecff7efe190029e5c6f726138fb325fac1ffec4fe1fc1d2c54f647d55fcedbacae4f46b912b')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
