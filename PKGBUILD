@@ -2,41 +2,43 @@
 # Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=survey
-_pkgver=4.2-1
+_pkgver=4.4-1
 pkgname=r-${_pkgname,,}
-pkgver=4.2.1
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Analysis of Complex Survey Samples'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgdesc="Analysis of Complex Survey Samples"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only OR GPL-3.0-only')
 depends=(
-  r
   r-minqa
   r-mitools
   r-numderiv
+  r-rcpp
+)
+makedepends=(
+  r-rcpparmadillo
 )
 optdepends=(
   r-aer
   r-compquadform
   r-dbi
-  r-foreign
   r-hexbin
-  r-kernsmooth
-  r-mass
-  r-parallel
   r-quantreg
+  r-r.rsp
   r-rsqlite
+  r-summer
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cc3c61e132fb20bed98fa59a8254335a588780a5f4eeb51fab7489390aadf150')
+md5sums=('06574ba74a051c98255e363584da7a36')
+b2sums=('effa071ca864052ff3c740132cffe74df2f9e58631cde91bc4194b4d68b37690942d746d602201ac1906f7a3e6d0c3ef9126afe77938275d430fd47e1fd9d977')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
