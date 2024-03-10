@@ -1,10 +1,10 @@
 pkgbase = frink-lang-bin
 	pkgdesc = A practical calculating tool and programming language.
 	pkgver = 20240227
-	pkgrel = 1
+	pkgrel = 2
 	url = https://frinklang.org/
 	arch = any
-	license = LicenseRef-Proprietary
+	license = unknown
 	makedepends = awk
 	makedepends = imagemagick
 	makedepends = unzip
