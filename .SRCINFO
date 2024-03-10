@@ -1,6 +1,6 @@
 pkgbase = bililiverecorder-bin
 	pkgdesc = BiliBili Stream Recorder. Pre-compiled.
-	pkgver = 2.10.1
+	pkgver = 2.11.0
 	pkgrel = 1
 	url = https://github.com/BililiveRecorder/BililiveRecorder
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = bililiverecorder-bin
 	provides = bililiverecorder
 	conflicts = bililiverecorder
 	noextract = BililiveRecorder-CLI-linux-x64.zip
-	source = https://github.com/BililiveRecorder/BililiveRecorder/releases/download/v2.10.1/BililiveRecorder-CLI-linux-x64.zip
-	sha256sums = 325ed38731dc7c25a51219d5e508927201ef2259ed0286e071ca43fda32aa766
+	source = https://github.com/BililiveRecorder/BililiveRecorder/releases/download/v2.11.0/BililiveRecorder-CLI-linux-x64.zip
+	sha256sums = 2eb845e6bc1269e00ee67dd30a793cb000594ee1c0ec6de9982211ccfa7a404a
 
 pkgname = bililiverecorder-bin
