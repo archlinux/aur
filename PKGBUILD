@@ -4,15 +4,15 @@
 
 pkgname=czmq-git
 _pkgname=${pkgname%-git}
-pkgver=4.2.1.r111.gd26ea1a8
-pkgrel=5
+pkgver=4.2.1.r118.g1b5062c3
+pkgrel=1
 epoch=1
 pkgdesc="High-level C binding for ZeroMQ"
 arch=('i686' 'x86_64' 'aarch64')
 depends=('zeromq' 'curl' 'lz4' 'systemd-libs' 'util-linux-libs')
 makedepends=('git' 'pkg-config')
 url="https://github.com/zeromq/${_pkgname}"
-license=('MPL')
+license=('MPL-2.0')
 source=("git+${url}")
 sha256sums=('SKIP')
 provides=("${_pkgname}=${pkgver%.r*}" libczmq.so)
