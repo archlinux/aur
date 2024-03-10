@@ -1,16 +1,16 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-opus
-pkgver=1.4
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Codec designed for interactive speech and audio transmission over the Internet (mingw-w64)"
 arch=(any)
 url="https://www.opus-codec.org"
-license=("BSD")
+license=("BSD-3-Clause")
 makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt')
 options=('staticlibs' '!strip' '!buildflags')
-source=("https://github.com/xiph/opus/releases/download/v${pkgver}/opus-${pkgver}.tar.gz")
-sha256sums=('c9b32b4253be5ae63d1ff16eea06b94b5f0f2951b7a02aceef58e3a3ce49c51f')
+source=("https://downloads.xiph.org/releases/opus/opus-$pkgver.tar.gz")
+b2sums=('5ba1d6f28594f366b545507bafb22751e15a0e78e152e7cdef456dccb0bc9fc512faa18c90fb4ea5455a9535de89df987dea8a0fabce9a25c285d0c410d4b482')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -20,6 +20,9 @@ build() {
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-configure \
       --enable-custom-modes \
+      --enable-deep-plc \
+      --enable-dred \
+      --enable-osce \
       --disable-doc
     make
     popd
