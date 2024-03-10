@@ -30,7 +30,7 @@ package() {
   cd ${_pyname}-${pkgver}
   python -m installer --destdir="$pkgdir" --compile-bytecode=2 dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm 644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 example*.py -t "${pkgdir}/usr/share/doc/${pkgname}/examples"
 }
 
