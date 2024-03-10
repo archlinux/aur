@@ -1,11 +1,12 @@
 pkgbase = android-aarch64-termcap
-	pkgdesc = Terminal feature database (android)
+	pkgdesc = Terminal feature database (Android, aarch64)
 	pkgver = 1.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = ftp://ftp.gnu.org/gnu/termcap/
 	arch = any
 	license = GPL
 	license = LGPL
+	makedepends = android-environment
 	depends = android-ndk
 	options = !strip
 	options = !buildflags
