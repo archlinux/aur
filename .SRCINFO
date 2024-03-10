@@ -1,15 +1,16 @@
 pkgbase = r-geem
 	pkgdesc = Solve Generalized Estimating Equations
 	pkgver = 0.10.1
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=geeM
 	arch = any
-	license = GPL
+	license = GPL-3.0-only
 	depends = r
 	optdepends = r-geepack
 	optdepends = r-mumin
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/geeM_0.10.1.tar.gz
-	sha256sums = fe76a32981b55835095041e777d1cf2e9ce43edb8d9488db56279f7cb6f43fe5
+	md5sums = e493043dac3bd7c57b104ace2a6e19d7
+	b2sums = 584fc4ee474abf2c53b7aa6b6a0f602c636eac3fa9d9b87e797aaa69c1d905b535eb8094e6e91608968a4d0227d5249650c17c4e41cecd80957829dfdd52180d
 
 pkgname = r-geem
