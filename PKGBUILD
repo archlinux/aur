@@ -2,7 +2,7 @@
 #Contributor: Aaron Griffin <aaron@archlinux.org>
 
 pkgname=neovim-bufexplorer
-pkgver=7.4.12
+pkgver=7.4.26
 pkgrel=1
 pkgdesc="A simple buffer list/switcher for Neovim"
 arch=('any')
@@ -11,8 +11,8 @@ license=('BSD')
 depends=('neovim')
 groups=('neovim-plugins')
 install=nvim-doc.install
-source=("$pkgname.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('bcd8549fdd64d149356f1995eaf3f7cd6e0996d8c9128b41085772a24e13a00a')
+source=("$pkgname.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('3302df8f942729e2735f5f9c918f70cd308225fc6e1d3adc8ffb86988d00db80')
 conflicts=('neovim-buffexplorer')
 
 package() {
@@ -20,7 +20,7 @@ package() {
 
 	installpath="${pkgdir}/usr/share/nvim/runtime"
 
-	install -D -m644 doc/bufexplorer.txt $installpath/doc/bufexplorer.txt
-	install -D -m644 plugin/bufexplorer.vim $installpath/plugin/bufexplorer.vim
+	install -D -m644 doc/*  -t "$installpath/doc/"
+	install -D -m644 plugin/* -t "$installpath/plugin/"
 	install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
