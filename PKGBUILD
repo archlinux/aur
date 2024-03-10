@@ -2,7 +2,7 @@
 pkgname='spectral'
 pkgdesc='Signal processing techniques to select representative regions from Paraver traces (from BSC).'
 pkgver='3.4.1.20180918'
-pkgrel='2'
+pkgrel='3'
 arch=('x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('GPL3')
@@ -20,6 +20,9 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname-${pkgver%.*}"
+
+	# For now, ignore new errors from GCC 14 (see https://gcc.gnu.org/gcc-14/porting_to.html)
+	export CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration"
 
 	./configure \
 		--prefix=/usr \
