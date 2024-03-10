@@ -1,11 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hardinfo2
-pkgver=2.0.12
-pkgrel=2
+pkgver=2.0.15
+pkgrel=1
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64')
 url="https://www.hardinfo2.org"
-license=('GPL-2.0-or-later')
+license=('GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later')
 depends=('gtk3' 'libsoup')
 optdepends=(
   'dmidecode: Memory Devices / System DMI module'
@@ -21,7 +21,7 @@ optdepends=(
   'xdg-utils: open your browser for bugs, homepage & links')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hardinfo2/hardinfo2/archive/refs/tags/release-$pkgver.tar.gz")
-sha256sums=('b7ba812b2e43f2873826f7dc5363fc24baf3a7e51da22a7b160b5fe4c5dd23ab')
+sha256sums=('3673f9358e965e676f49eb3103c1716620d22af7b878289ca45c013e2f2b8327')
 
 build() {
   cmake -B build -S "$pkgname-release-$pkgver" \

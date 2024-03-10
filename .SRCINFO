@@ -1,10 +1,10 @@
 pkgbase = hardinfo2
 	pkgdesc = System Information and Benchmark for Linux Systems.
-	pkgver = 2.0.12
-	pkgrel = 2
+	pkgver = 2.0.15
+	pkgrel = 1
 	url = https://www.hardinfo2.org
 	arch = x86_64
-	license = GPL-2.0-or-later
+	license = GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later
 	makedepends = cmake
 	depends = gtk3
 	depends = libsoup
@@ -19,7 +19,7 @@ pkgbase = hardinfo2
 	optdepends = udisks2: Storage module
 	optdepends = usbutils: USB Devices module
 	optdepends = xdg-utils: open your browser for bugs, homepage & links
-	source = hardinfo2-2.0.12.tar.gz::https://github.com/hardinfo2/hardinfo2/archive/refs/tags/release-2.0.12.tar.gz
-	sha256sums = b7ba812b2e43f2873826f7dc5363fc24baf3a7e51da22a7b160b5fe4c5dd23ab
+	source = hardinfo2-2.0.15.tar.gz::https://github.com/hardinfo2/hardinfo2/archive/refs/tags/release-2.0.15.tar.gz
+	sha256sums = 3673f9358e965e676f49eb3103c1716620d22af7b878289ca45c013e2f2b8327
 
 pkgname = hardinfo2
