@@ -1,7 +1,7 @@
 pkgbase = idris2-lsp-git
 	pkgdesc = Language Server for Idris2
 	pkgver = latest
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/idris-community/idris2-lsp
 	arch = x86_64
 	license = custom:BSD

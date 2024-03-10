@@ -3,7 +3,7 @@
 _pkgname=idris2-lsp
 pkgname="$_pkgname-git"
 pkgver=latest
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc='Language Server for Idris2'
 arch=('x86_64')
@@ -37,7 +37,7 @@ build() {
 check() {
 	cd "$srcdir/$_pkgname"
 	make testbin
-	make test-only
+	INTERACTIVE='' make test-only
 }
 
 package() {
