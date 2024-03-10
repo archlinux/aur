@@ -1,7 +1,7 @@
 pkgbase = lightly-qt6-git
 	pkgdesc = A modern style for qt applications. (qt6 branch)
 	pkgver = 0.4.1.r73.g00ca2344
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/boehs/Lightly
 	arch = x86_64
 	license = GPL-2.0
