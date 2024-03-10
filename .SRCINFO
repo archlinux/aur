@@ -1,7 +1,7 @@
 pkgbase = wg-container
 	pkgdesc = Run specific applications in a WireGuard VPN
-	pkgver = 2.0
-	pkgrel = 2
+	pkgver = 2.1
+	pkgrel = 1
 	url = https://github.com/sakul987/wg-container
 	arch = any
 	license = GPL-3.0-only
@@ -15,7 +15,7 @@ pkgbase = wg-container
 	depends = ufw
 	depends = sed
 	depends = wireguard-tools
-	source = wg-container-2.0.tar.gz::https://github.com/sakul987/wg-container/archive/2.0.tar.gz
-	sha256sums = 1a29811370fcd52766cc10205fdb3f19dc8a1364eb2391218876617266779385
+	source = wg-container-2.1.tar.gz::https://github.com/sakul987/wg-container/archive/2.1.tar.gz
+	sha256sums = 7a96dec27129ea7b2be3780ad9558e3d09a8f2946ddd0e2c964a62a0fa1c0513
 
 pkgname = wg-container
