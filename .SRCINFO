@@ -1,6 +1,6 @@
 pkgbase = rust-parallel-bin
 	pkgdesc = Fast parallel command runner, written in Rust
-	pkgver = 1.16.1
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = https://github.com/aaronriekenberg/rust-parallel
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = rust-parallel-bin
 	provides = rust-parallel
 	conflicts = rust-parallel
 	conflicts = rust-parallel-git
-	source_x86_64 = rust-parallel-bin-1.16.1-x86_64.tar.gz::https://github.com/aaronriekenberg/rust-parallel/releases/download/v1.16.1/rust-parallel-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = a2815e67d5ea69a2eaedc6509b2058fb07466a8f1355f76ec1f48515bfb98ee7
-	source_aarch64 = rust-parallel-bin-1.16.1-aarch64.tar.gz::https://github.com/aaronriekenberg/rust-parallel/releases/download/v1.16.1/rust-parallel-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = f770cd701734828ff1c2e0c220012a20be7f7bb6fcf92a1a9a5ed36df33b8cb4
+	source_x86_64 = rust-parallel-bin-1.17.0-x86_64.tar.gz::https://github.com/aaronriekenberg/rust-parallel/releases/download/v1.17.0/rust-parallel-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = c737c97af93e5e281d4162e64ba23d5c16ee42a2f95aa68dc235e0fd309ff9c4
+	source_aarch64 = rust-parallel-bin-1.17.0-aarch64.tar.gz::https://github.com/aaronriekenberg/rust-parallel/releases/download/v1.17.0/rust-parallel-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 7c1018da8048647be8f816026a0b2478661a42383e440901bf3840d0ba0d87ee
 
 pkgname = rust-parallel-bin
