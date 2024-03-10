@@ -1,7 +1,7 @@
 # Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=bar-protonmail
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Get notifications and unread messages count from ProtonMail (Waybar/Polybar module)'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-proton-client' 'python-gobject' 'python-dasbus')
 makedepends=('poetry' 'python-pip')
 optdepends=('python-pysocks: support for proxies')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/crabvk/bar-protonmail/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('68f9dd2dc561828d8a6936032fa81a203ed59623a7b8c980f03fa69a6b26f794e48bcb000017c0b402650fe940460c35e03c54eb8fcfb1653d0f7f58ea7f2faf')
+sha512sums=('10eab77522b5b5690d0b28ee65fa35a62c321956e229eeb547dbc749d425b8edcf896d3dd47ce1c7badf8493d8fc598db1806a359792004fd47980e64cedb546')
 
 build() {
     cd $pkgname-$pkgver
