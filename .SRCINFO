@@ -1,0 +1,14 @@
+pkgbase = dec-git
+	pkgdesc = A declarative package manager for Arch Linux
+	pkgver = 0.2.0.0
+	pkgrel = 1
+	url = https://gitlab.com/rehposuite/dec
+	arch = x86_64
+	license = GPL
+	makedepends = stack
+	depends = paru
+	provides = dec
+	source = git+https://gitlab.com/rehposuite/dec.git
+	sha256sums = SKIP
+
+pkgname = dec-git
