@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=prjoxide-nightly
-pkgver=20240309_30712ff
+pkgver=20240310_30712ff
 pkgrel=1
 epoch=1
 pkgdesc="Documenting Lattice's 28nm FPGA parts"
