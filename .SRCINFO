@@ -1,12 +1,13 @@
 pkgbase = glui
 	pkgdesc = A GLUT-based C++ user interface library which provides controls such as buttons, checkboxes, radio buttons, and spinners to OpenGL applications
 	pkgver = 2.37
-	pkgrel = 1
+	pkgrel = 2
 	url = http://glui.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = freeglut
+	makedepends = freeglut
+	makedepends = glu
 	options = staticlibs
 	source = https://github.com/libglui/glui/archive/refs/tags/2.37.tar.gz
 	source = makefile.patch

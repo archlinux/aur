@@ -3,9 +3,9 @@
 # Contributor: dopsi
 pkgname=glui
 pkgver=2.37
-pkgrel=1
+pkgrel=2
 pkgdesc="A GLUT-based C++ user interface library which provides controls such as buttons, checkboxes, radio buttons, and spinners to OpenGL applications"
-depends=('freeglut')
+makedepends=('freeglut' 'glu')
 source=("https://github.com/libglui/glui/archive/refs/tags/${pkgver}.tar.gz" 'makefile.patch')
 url="http://glui.sourceforge.net/"
 arch=('i686' 'x86_64')
