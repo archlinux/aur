@@ -1,0 +1,13 @@
+pkgbase = exfetch-bin
+	pkgdesc = A fork of xFetch designed to look as good as possible, whilst maintaining its high performance.
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/WilliamAnimate/exfetch
+	arch = any
+	license = MIT
+	source = https://github.com/WilliamAnimate/exfetch/releases/download/v0.9.0/exfetch.tar.gz
+	source = https://raw.githubusercontent.com/WilliamAnimate/exfetch/main/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = exfetch-bin
