@@ -1,7 +1,7 @@
 # Maintainer: Night Kaly <night@night0721.xyz>
 pkgname=fnf
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple fuzzy finder for the terminal"
 arch=('x86_64')
 url="https://github.com/leo-arch/fnf"
