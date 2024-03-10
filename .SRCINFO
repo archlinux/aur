@@ -5,8 +5,12 @@ pkgbase = flut-renamer
 	url = https://github.com/sun-jiao/renamer
 	arch = x86_64
 	license = GPL3
+	makedepends = flutter
+	makedepends = clang
+	makedepends = cmake
+	makedepends = ninja
 	depends = gtk3
-	source = https://github.com/sun-jiao/renamer/releases/download/1.3.3/flut-renamer-linux.tar.gz
-	sha256sums = abde292b18c4f4c1ed44181da2585010979c5cc47e1914bc10de693eeb6daad8
+	source = https://github.com/sun-jiao/renamer/archive/refs/tags/1.3.3.tar.gz
+	sha256sums = 4f74f03d9e2ece36f2a648606d9488538a269662ba8083dcff601c172a6a02c1
 
 pkgname = flut-renamer
