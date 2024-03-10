@@ -1,6 +1,6 @@
 pkgbase = hancho
 	pkgdesc = Simple pleasant build system in Python
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/aappleby/hancho
 	arch = any
@@ -9,9 +9,7 @@ pkgbase = hancho
 	depends = python
 	optdepends = gtk3: to build the included meson example
 	options = !strip
-	source = hancho-0.0.1.tar.gz::https://github.com/aappleby/hancho/archive/0.0.1.tar.gz
-	source = https://raw.githubusercontent.com/aappleby/hancho/81c57cde7d09dfed0731f2506d2a6bb296515e5d/LICENSE
-	sha512sums = 36600d832d7a2726282b679cc89ac026c7e5c415919505e6adce4f7eba574eccab7105ddc09d05c655449ab6e0f92e78a85284f30d38b1685678bf7f6c7ff5ff
-	sha512sums = c5048ded873a9c0b8a2a50bbbde763ecb6c8b32883ac793382570435080a150ef78e56238c7141aaf8f465cadaf1023cd19d1275d9df834e6aaf815081edc6d1
+	source = hancho-0.0.2.tar.gz::https://github.com/aappleby/hancho/archive/0.0.2.tar.gz
+	sha512sums = 35ec7cbeb196e6c2f6a89724a2e8713d1b2b78de20914bc99255062bf71639aa3a984caa7446de8f9cb97bfd96db9b741708fa8b9163185671cc7336205a0f2f
 
 pkgname = hancho
