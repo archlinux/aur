@@ -1,16 +1,15 @@
 pkgbase = dhcpcd-ui
 	pkgdesc = dhcpcd Monitor in GTK+
 	pkgver = 0.7.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://roy.marples.name/projects/dhcpcd-ui
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = python-cairosvg
 	makedepends = python-xcffib
 	depends = gtk2
 	depends = libnotify
-	depends = dhcpcd-dbus>=0.6.0
 	depends = hicolor-icon-theme
 	source = https://github.com/NetworkConfiguration/dhcpcd-ui/releases/download/v0.7.9/dhcpcd-ui-0.7.9.tar.xz
 	md5sums = e3b0b1506688c71742a65a76c740a0e0
