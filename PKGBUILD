@@ -1,16 +1,16 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=ocserv
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="OpenConnect VPN Server"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/openconnect/ocserv"
-license=('GPL2')
-depends=('autogen' 'libpcl' 'http-parser' 'libnl' 'libsystemd' 'protobuf-c' 'talloc' 'libseccomp' 'freeradius-client' 'libev' 'oath-toolkit' 'geoip')
+license=(GPL-2.0-or-later)
+depends=('autogen' 'http-parser' 'libnl' 'libsystemd' 'protobuf-c' 'talloc' 'libseccomp' 'freeradius-client' 'libev' 'oath-toolkit' 'geoip')
 makedepends=('freeradius' 'gperf')
 backup=('etc/ocserv.config' 'etc/ocserv-passwd')
 source=("https://gitlab.com/openconnect/ocserv/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('2cb90577d34c320165eaab138eb000ee8acb210ced7a5b1fba8a260a69b9a42e')
+sha256sums=('7568c3352613f9853590b7e41aff27a293aef5e58b277fbb1c1b830355a76720')
 
 prepare() {
   cd ${pkgname}-${pkgver}
@@ -19,7 +19,7 @@ prepare() {
 
 build() {
   cd ${pkgname}-${pkgver}
-  ./configure --prefix=/usr --sbindir=/usr/bin
+  ./configure --prefix=/usr --sbindir=/usr/bin --libexecdir=/usr/lib
   make
 }
 
