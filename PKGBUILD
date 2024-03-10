@@ -8,12 +8,14 @@ arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/VorpalBlade/paketkoll"
 license=('MPL-2.0')
 makedepends=('cargo' 'cmake')
-options=('!lto')
+options=('!lto') # LTO breaks with ring
 source=("$pkgname-$_pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-${_pkgver}.crate")
 sha256sums=('6d299452b7598c72acea136dd0f8082486968fe31786c1f334a79196d6fd9007')
 
 prepare() {
     cd "$pkgname-$_pkgver"
+    # Needed to ensure that we can find the latest man page and completions
+    rm -rf target/release/build/${pkgname}-*
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
@@ -35,12 +37,10 @@ package() {
     cd "$pkgname-$_pkgver"
     local _cmd_name="target/release/${pkgname}"
     # The directory has a random hash in it, so we need to find it
-    local _completions_dir=$(ls -d target/debug/build/paketkoll-*/out)
+    local _build_dir=$(ls -d target/release/build/${pkgname}-*/out)
     install -Dm0755 -t "$pkgdir/usr/bin/" "$_cmd_name"
-    mkdir -p "$pkgdir/usr/share/bash-completion/completions/"
-    mkdir -p "$pkgdir/usr/share/zsh/site-functions/"
-    mkdir -p "$pkgdir/usr/share/fish/vendor_completions.d/"
-    install -m644 "${_completions_dir}/_${pkgname}" "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
-    install -m644 "${_completions_dir}/${pkgname}.bash" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-    install -m644 "${_completions_dir}/${pkgname}.fish" "$pkgdir/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+    install -Dm644 -t "$pkgdir/usr/share/man/man1/" "${_build_dir}/${pkgname}"*".1"
+    install -Dm644 "${_build_dir}/_${pkgname}" "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+    install -Dm644 "${_build_dir}/${pkgname}.bash" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+    install -Dm644 "${_build_dir}/${pkgname}.fish" "$pkgdir/usr/share/fish/vendor_completions.d/${pkgname}.fish"
 }
