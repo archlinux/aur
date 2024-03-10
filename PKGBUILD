@@ -2,7 +2,7 @@
 pkgname=bulk-rename-plus
 pkgver=1.6.0
 pkgrel=1
-pkgdesc='Tiny and powerful cmd tool for bulk renaming recursively paths, written in C++'
+pkgdesc='A compact yet potent command-line tool designed for efficiently renaming paths in bulk, written in C++'
 arch=('x86_64')
 url="https://github.com/siyia2/bulk-rename-plus"
 license=('GPL3')
