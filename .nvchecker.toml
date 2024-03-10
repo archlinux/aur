@@ -1,0 +1,6 @@
+[miniconda3]
+source = "regex"
+url = "https://repo.anaconda.com/miniconda/"
+regex = "Miniconda3-py311_([\\d.-]+)-Linux-x86_64.sh"
+from_pattern = "-"
+to_pattern = "."

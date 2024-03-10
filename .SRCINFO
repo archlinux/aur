@@ -1,19 +1,19 @@
 pkgbase = miniconda3
 	pkgdesc = Mini version of Anaconda Python distribution
-	pkgver = 23.10.0
+	pkgver = 24.1.2.0
 	pkgrel = 1
 	url = https://conda.io/en/latest/miniconda
 	install = miniconda3.install
 	arch = x86_64
 	arch = aarch64
-	license = custom
+	license = BSD-3-Clause
 	provides = conda
 	options = !strip
 	options = libtool
 	options = staticlibs
-	source_x86_64 = miniconda3-23.10.0-x86_64.sh::https://repo.continuum.io/miniconda/Miniconda3-py311_23.10.0-1-Linux-x86_64.sh
-	sha512sums_x86_64 = 91bf4689bf8dc69e56a7779926890ad648c1da50ac8a45dea6e65d1bda472c3727474125b087c73b1193da244d79bb29d934199e8c5114e3662f809c4cca6b47
-	source_aarch64 = miniconda3-23.10.0-aarch64.sh::https://repo.continuum.io/miniconda/Miniconda3-py311_23.10.0-1-Linux-aarch64.sh
-	sha512sums_aarch64 = e8e1ec87840018ebe8ef364cfde63d9264d4ce5d2f99e8971bec762dd840b4a6bb848acbe52b9decdde03f936b9bc490663cfb2409542103a3b09b2c6918a410
+	source_x86_64 = miniconda3-24.1.2.0-x86_64.sh::https://repo.anaconda.com/miniconda/Miniconda3-py311_24.1.2-0-Linux-x86_64.sh
+	sha512sums_x86_64 = f6f4144aa819e4098c60a96a77976ed1f3ffb6db5251a7c7d5734e856e635e0913641d391e262bdf860524e31143a6f1727be9c93388528a0285d8cf190bdab6
+	source_aarch64 = miniconda3-24.1.2.0-aarch64.sh::https://repo.anaconda.com/miniconda/Miniconda3-py311_24.1.2-0-Linux-aarch64.sh
+	sha512sums_aarch64 = a9a3676f896d9d1310ee01395f4825748c54d274ce2f8e046a8ed05a12c1237193df7e8226b833c50a3e28d885b5e0b33afe1eaea6c279c28a74955a603a964e
 
 pkgname = miniconda3
