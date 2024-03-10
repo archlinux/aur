@@ -2,18 +2,18 @@
 
 pkgname=python-terminaltables
 _pyname=terminaltables
-pkgver=3.1.0
+pkgver=3.1.10
 pkgrel=11
 pkgdesc="Generate simple tables in terminals from a nested list of strings"
 arch=('any')
-url="https://github.com/Robpol86/terminaltables"
+url="https://github.com/matthewdeanmartin/terminaltables"
 license=('MIT')
 depends=('python')
 makedepends=('python-build' 'python-wheel' 'python-installer' 'python-poetry-core')
 checkdepends=('python-pytest' 'python-colorama' 'python-termcolor' 'python-colorclass')
-source=("${_pyname}-${pkgver}.tar.gz::https://github.com/Robpol86/${_pyname}/archive/v${pkgver}.tar.gz"
+source=("${_pyname}-${pkgver}.tar.gz::https://github.com/matthewdeanmartin/${_pyname}/archive/v${pkgver}.tar.gz"
         python-3.8.patch)
-sha512sums=('dc49458652fff8bc6094d316d84c9b8e9fca1a26e3230c0b668bc03ec8528793f4ef024e8032d4a56fbfabfdfd4a1142870f550f0b373ba6a42dd2e3ead3f501'
+sha512sums=('84fa403cee4206b6b19de0206d89535bd2965a0796e1890dd9b0a9c6593c5f41d0d24b88ee9db426067c777712a4e810d67d4d0246496239a7a96b53a24e8174'
             '9a33ef51cbd2854bf9acc247e2d966332229446158e7dae9cad25e03335eb9689d50b0a22234285aa56c707e6e93c12f950299efcfbe7e42ed527216090592f2')
 
 prepare() {
