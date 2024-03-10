@@ -1,0 +1,15 @@
+pkgbase = inputplumber-bin
+	pkgdesc = Open source input daemon for Linux
+	pkgver = v0.6.0
+	pkgrel = 1
+	url = https://github.com/ShadowBlip/inputplumber
+	arch = x86_64
+	license = GPL
+	depends = dbus
+	depends = libevdev
+	provides = inputplumber
+	conflicts = inputplumber-git
+	source = inputplumber-v0.6.0.tar.gz::https://github.com/ShadowBlip/inputplumber/releases/download/v0.6.0/inputplumber.tar.gz
+	sha256sums = c699f25a93d42c39e5ca78eb9fbaa275d3d6b4a24d14b2764b3ee8e1d054bd4b
+
+pkgname = inputplumber-bin
