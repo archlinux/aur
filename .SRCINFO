@@ -1,5 +1,5 @@
 pkgbase = flutter-dummy
-	pkgdesc = An empty package for users who has flutter SDK installed in their home dir, to satisfy the build dependencies of flutter applications.
+	pkgdesc = An empty package for users who have flutter SDK installed in their home dir, to satisfy the build dependencies of flutter applications.
 	pkgver = 3.19.2
 	pkgrel = 1
 	url = https://flutter.dev
