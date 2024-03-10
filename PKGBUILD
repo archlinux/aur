@@ -2,15 +2,17 @@
 #
 pkgname=wechat-beta-bwrap
 pkgver=1.0.0.145
-pkgrel=11
+pkgrel=12
 uosver=2.1.5
 epoch=
 pkgdesc="WeChat Testing with bwrap sandbox"
 arch=('x86_64')
 url=""
 license=('proprietary')
+conflicts=('wechat-uos')
 groups=()
-depends=('nss' 'xdg-utils' 'libxss' 'libnotify' 'bubblewrap' 'xdg-desktop-portal' 'openssl-1.1' 'lsb-release')
+depends=('nss' 'xdg-utils' 'libxss' 'libnotify' 'bubblewrap' 
+	'xdg-user-dirs' 'xdg-desktop-portal' 'openssl-1.1' 'lsb-release')
 source=(
 	wechat.sh
 	wechat-beta.desktop
@@ -25,7 +27,7 @@ noextract=(
 	wechat-beta_${pkgver}_amd64.deb
 )
 
-md5sums=('5bbe5144ec0623faf514b7a191163fac'
+md5sums=('222a2eb9b29569c4753ec887a505164d'
          '4967385a00db424e596263618335411f'
          'cf971cb2cb01d8a5fd89d3a3555abfaf'
          '6b159c6e9d21a98925489bc37a9aea43'
