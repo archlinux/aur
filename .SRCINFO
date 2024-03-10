@@ -1,7 +1,7 @@
 pkgbase = simp
 	pkgdesc = A simple and fast image manipulation program
 	pkgver = 3.5.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/Kl4rry/simp
 	arch = x86_64
 	license = Apache-2.0
@@ -12,6 +12,7 @@ pkgbase = simp
 	makedepends = nasm
 	makedepends = gendesk
 	makedepends = clang
+	makedepends = mold
 	depends = gtk3
 	depends = libxcb
 	depends = libxkbcommon
