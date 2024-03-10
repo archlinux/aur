@@ -1,10 +1,11 @@
 pkgbase = android-armv7a-eabi-libgpg-error
-	pkgdesc = Support library for libgcrypt (android)
+	pkgdesc = Support library for libgcrypt (Android, armv7a-eabi)
 	pkgver = 1.48
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnupg.org
 	arch = any
 	license = LGPL
+	makedepends = android-configure
 	depends = android-ndk
 	options = !strip
 	options = !buildflags
