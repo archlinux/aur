@@ -11,10 +11,10 @@ RUN su build -c 'cd && git clone https://aur.archlinux.org/paru-bin.git && cd pa
 RUN su build -c 'paru --nocheck --needed --noconfirm -Syu dracut-git'
 
 # install all optional dependencies
-RUN L=$(paru -Si dracut-git | sed -n '/^Opt/,/^Conf/p' | sed '$d' | sed 's/^Opt.*://g' | sed 's/^\s*//g' | tr '\n' ' ') && su build -c "paru --needed --noconfirm --assume-installed initramfs -Syu $L"
+RUN L=$(paru -Si dracut-git | sed -n '/^Opt/,/^Conf/p' | sed '$d' | sed 's/^Opt.*://g' | sed 's/^\s*//g' | tr '\n' ' ') && su build -c "paru --nocheck --needed --noconfirm --assume-installed initramfs -Syu $L"
 
 # AUR test dependencies
-RUN su build -c 'paru --needed --noconfirm -Syu tgt'
+RUN su build -c 'paru --nocheck --needed --noconfirm -Syu tgt'
 
 # check SRCINFO
 RUN su build -c 'cd ~build/.cache/paru/clone/dracut-git && makepkg --printsrcinfo > .SRCINFO && updpkgsums && git diff'

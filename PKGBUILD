@@ -3,7 +3,7 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=060.r6794.4980bad
-pkgrel=16
+pkgrel=17
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracutdevs/dracut'
@@ -52,6 +52,7 @@ optdepends=(
   'lzop: lzop compression'
   'mdadm: support MD devices, also known as software RAID devices'
   'memstrack: memstrack module support'
+  'mksh: allows use of mksh'
   'multipath-tools: dmraid dracut module support'
   'nbd: support network block devices'
   'ndctl: NVDIMM support'
@@ -64,6 +65,7 @@ optdepends=(
   'pigz: faster gzip compression'
   'plymouth: plymouth boot splash'
   'rng-tools: enable rngd service to help generating entropy early during boot'
+  'rsyslog: enable logging with rsyslog'
   'sbsigntools: uefi_secureboot_cert/key configuration option support'
   'squashfs-tools: support for building a squashed initramfs'
   'tar: live tar image'
