@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=steamback-git
-pkgver=r240.f5f5e77
+pkgver=1.0.0.r25.gba41859
 pkgrel=1
 pkgdesc="Add versioned save-game snapshots to Steam-cloud enabled games."
 arch=('x86_64')
@@ -30,7 +30,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
