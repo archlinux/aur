@@ -17,5 +17,5 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
-	make PREFIX="/usr" install
+	sudo make PREFIX="/usr" install
 }
