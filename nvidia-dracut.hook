@@ -1,0 +1,14 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = nvidia
+Target = nvidia-lts
+
+[Action]
+Description = NVIDIA module rebuild dracut...
+Depends = dracut
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/dracut-install
+NeedsTargets
