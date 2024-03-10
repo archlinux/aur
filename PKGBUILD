@@ -1,78 +1,136 @@
-# Maintainer: Kenny Strawn <Kenny[dot]Strawn[at]gmail[dot]com>
+# Maintainer:
+# Contributor: Kenny Strawn <Kenny[dot]Strawn[at]gmail[dot]com>
 
-pkgname=calamares-git
-pkgver=3.2.55.r9930.c70deed13
+_pkgname="calamares"
+pkgname="$_pkgname-git"
+pkgver=3.3.5.r19.g10acebf
 pkgrel=1
-pkgdesc='Distribution-independent installer framework (development version)'
-arch=('i686' 'x86_64')
-license=(GPL)
+pkgdesc="Distribution-independent installer framework"
 url="https://github.com/calamares/calamares"
-license=('LGPL')
-conflicts=('calamares' 'calamares-dev')
-provides=('calamares' 'calamares-dev')
-replaces=('calamares-dev')
-depends=('kconfig' 'kcoreaddons' 'kiconthemes' 'ki18n' 'kio' 'solid' 'yaml-cpp' 'kpmcore>=4.1.0' 'mkinitcpio-openswap'
-         'boost-libs' 'ckbcomp' 'hwinfo' 'qt5-svg' 'polkit-qt5' 'gtk-update-icon-cache' 'plasma-framework'
-         'qt5-xmlpatterns' 'squashfs-tools' 'libpwquality' 'appstream-qt') # 'pythonqt>=3.2')
-makedepends=('extra-cmake-modules' 'qt5-tools' 'qt5-translations' 'git' 'boost')
-# backup=('usr/share/calamares/modules/bootloader.conf'
-#         'usr/share/calamares/modules/displaymanager.conf'
-#         'usr/share/calamares/modules/initcpio.conf'
-#         'usr/share/calamares/modules/unpackfs.conf')
+license=("GPL-3.0-or-later")
+arch=('i686' 'x86_64')
 
+depends=(
+  'boost-libs'
+  'ckbcomp'
+  'hwinfo'
+  'kconfig'
+  'kcoreaddons'
+  'ki18n'
+  'kiconthemes'
+  'kpmcore'
+  'libpwquality'
+  'polkit-qt6'
+  'python'
+  'python-jsonschema'
+  'python-yaml'
+  'qt6-svg'
+  'solid'
+  'squashfs-tools'
+  'yaml-cpp'
+)
+makedepends=(
+  'boost'
+  'extra-cmake-modules'
+  'git'
+  'ninja'
+  'qt6-tools'
+  'qt6-translations'
+)
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+backup=(
+  #'usr/share/calamares/modules/bootloader.conf'
+  #'usr/share/calamares/modules/displaymanager.conf'
+  #'usr/share/calamares/modules/initcpio.conf'
+  #'usr/share/calamares/modules/unpackfs.conf'
+)
+
+_pkgsrc="$_pkgname"
 source=(
-	"git+https://github.com/calamares/calamares.git"
-	"yay-support.patch"
+  "$_pkgsrc"::"git+$url.git"
+  "yay-support.patch"
 )
 sha256sums=(
-	'SKIP'
-	'SKIP'
+  'SKIP'
+  'SKIP'
 )
 
 pkgver() {
-	cd ${srcdir}/calamares
-	_ver="$(cat CMakeLists.txt | grep -m3 -e "  VERSION" | grep -o "[[:digit:]]*" | xargs | sed s'/ /./g')"
-	_git=".r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-	printf '%s%s' "${_ver}" "${_git}"
-	sed -i -e "s|\${CALAMARES_VERSION_MAJOR}.\${CALAMARES_VERSION_MINOR}.\${CALAMARES_VERSION_PATCH}|${_ver}${_git}|g" CMakeLists.txt
-	sed -i -e "s|CALAMARES_VERSION_RC 1|CALAMARES_VERSION_RC 0|g" CMakeLists.txt
-#	sed -i -e "s|default|manjaro|g" src/branding/CMakeLists.txt
-	rm -rf ${srcdir}/calamares/.git
+  cd "$_pkgsrc"
+
+  local _regex='^set\(CALAMARES_VERSION ([0-9]+\.[0-9]+\.[0-9]+([^0-9].*)?)\)\s*$'
+  local _file='CMakeLists.txt'
+
+  local _line=$(
+    grep -E "$_regex" "$_file" | head -1
+  )
+  local _version=$(
+    printf '%s' "$_line" | sed -E "s@$_regex@\1@;s@alpha@a@;s@beta@b@;s@-@.@"
+  )
+  local _line=$(
+    printf '%s' "$_line" | sed -E 's@\(@\\(@;s@\)@\\)@'
+  )
+  local _commit=$(
+    git log -G "$_line" -1 --pretty=oneline --no-color | sed 's@\ .*$@@'
+  )
+  local _revision=$(
+    git rev-list --count --cherry-pick "$_commit"...HEAD
+  )
+  local _hash=$(
+    git rev-parse --short=7 HEAD
+  )
+
+  printf '%s.r%s.g%s' \
+    "$_version" \
+    "$_revision" \
+    "$_hash"
 }
 
 prepare() {
-	cd ${srcdir}/calamares
-	sed -i -e 's/"Install configuration files" OFF/"Install configuration files" ON/' CMakeLists.txt
-
-	git apply ../yay-support.patch
+  cd "$_pkgsrc"
+  git apply ../yay-support.patch
 }
 
 
 build() {
-	cd ${srcdir}/calamares
+  local _skip_modules=(
+    dracut
+    dracutlukscfg
+    dummycpp
+    dummyprocess
+    dummypython
+    dummypythonqt
+    initramfs
+    initramfscfg
+    interactiveterminal
+    packagechooser
+    packagechooserq
+    services-openrc
+  )
 
-	mkdir -p build
-	cd build
-        cmake .. \
-              -DCMAKE_BUILD_TYPE=Release \
-              -DCMAKE_INSTALL_PREFIX=/usr \
-              -DCMAKE_INSTALL_LIBDIR=lib \
-              -DWITH_PYTHONQT:BOOL=ON \
-              -DBoost_NO_BOOST_CMAKE=ON \
-              -DSKIP_MODULES="webview interactiveterminal initramfs \
-                              initramfscfg dracut dracutlukscfg \
-                              dummyprocess dummypython dummycpp \
-                              dummypythonqt services-openrc"
-        make
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+
+    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_INSTALL_LIBDIR='lib'
+    -DWITH_QT6=ON
+    -DINSTALL_CONFIG=ON
+    -DSKIP_MODULES="${_skip_modules[*]}"
+
+    -DBUILD_TESTING=OFF
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-	cd ${srcdir}/calamares/build
-	make DESTDIR="$pkgdir" install
-
-	# rename services-systemd back to services
-	mv "$pkgdir/usr/lib/calamares/modules/services-systemd" "$pkgdir/usr/lib/calamares/modules/services"
-	mv "$pkgdir/usr/share/calamares/modules/services-systemd.conf" "$pkgdir/usr/share/calamares/modules/services.conf"
-	sed -i -e 's/-systemd//' "$pkgdir/usr/lib/calamares/modules/services/module.desc"
-	sed -i -e 's/-systemd//' "$pkgdir/usr/share/calamares/settings.conf"
+  DESTDIR="$pkgdir" cmake --install build
 }

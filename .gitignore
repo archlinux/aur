@@ -1,4 +1,4 @@
-calamares
-pkg
-src
-*.pkg.tar.*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
