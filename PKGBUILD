@@ -1,15 +1,15 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=botsay
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=1
 pkgdesc='Like cowsay, but with randomly generated ASCII robots and color support'
 arch=(x86_64)
 url='https://github.com/xyproto/botsay'
-license=(BSD)
+license=(BSD-3-Clause)
 makedepends=(git go)
-source=("git+$url#commit=259a804712812f5eee6aef1475e1b22b65df09c4") # tag: v1.2.6
-b2sums=('SKIP')
+source=("git+$url#commit=694a159fc918067f4537a661f83db758e576c4d5") # tag: v1.2.7
+b2sums=(SKIP)
 
 build() {
   cd $pkgname
