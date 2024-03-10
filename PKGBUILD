@@ -1,7 +1,7 @@
 # Maintainer: Peter Fern <aur at 0xc0dedbad dot com>
 
 pkgname=hyprpanel
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="An opinionated panel/shell for the Hyprland compositor."
 arch=('x86_64' 'aarch64')
@@ -14,12 +14,13 @@ optdepends=('systemd: logging support'
 	'upower: battery status support')
 makedepends=('git' 'go')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('c2589aca93d45b016738d2b0124e3fbe9f6565c9d89c91c68dbe70a10ecb2ecc')
 
 build() {
 	export CGO_ENABLED=0
 	cd "${pkgname}-${pkgver}"
-	go build -o "${pkgname}" "./cmd/${pkgname}"
-	go build -o "${pkgname}-client" "./cmd/${pkgname}-client"
+	go build -v -o "${pkgname}" "./cmd/${pkgname}"
+	go build -v -o "${pkgname}-client" "./cmd/${pkgname}-client"
 }
 
 package() {
@@ -29,4 +30,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('4043019bd9eddfea43bab68270a31411ab7159b7bff224d8466024bfb14d8a01')
