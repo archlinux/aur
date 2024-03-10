@@ -18,6 +18,7 @@
 #include <getopt.h>
 #include <unistd.h>
 #include <signal.h>
+#include <sys/stat.h>
 
 #define BUF_LEN 48000
 #define DEF_FREQ 400
@@ -50,10 +51,11 @@ static int	keepopen = 0;	//if 1 do not close STDOUT/ERR
   -a name  : use alsa device name ('%s')\n\
   -d dur   : set duration in seconds (%.2f)\n\
   -f freq  : set frequency in HZ, and play it. (%.0fHZ)\n\
-  -h       : print this Help\n\
-  -r evdev : daemonize if given; optional target for symlink\n\
-               %s\n\
-  -l       : if given keep stdout & stderr open for log\n\
+  -h	   : print this Help\n\
+  -l	   : if given keep stdout & stderr open for log\n\
+  -n       : if given do not daemonize\n\
+  -r evdev : daemonize if given unless -n flag is given; optional target for symlink\n\
+			   %s\n\
   -t kind  : sine or square wave (%s)\n\
   -v vol   : volume (%.3f)\n\
 \n\
@@ -153,6 +155,21 @@ static void beep(){
 	closeDevice();
 }
 
+static pid_t read_helper(void){
+	LPRINTF("read_helper\n");
+	pid_t pid=0;
+	int r=0;
+	FILE *f = fopen(HELPER_PID,"r");
+	LPRINTF("opened %s f=%p\n",HELPER_PID,f);
+	if (f) {
+		r=fscanf(f,"%d",&pid);
+		fclose(f);
+		LPRINTF("closed %s pid=%s\n",HELPER_PID,pid);
+	}
+	LPRINTF("%d read from %s %s\n", pid,HELPER_PID,(r==1?"ok":"failed"));
+	return pid;
+}
+
 static void write_helper(pid_t pid){
 	FILE *f = fopen(HELPER_PID,"w");
 	if (f) {
@@ -162,84 +179,112 @@ static void write_helper(pid_t pid){
 		}
 		fclose(f);
 	}
-	LPRINTF("%d write to %s %s\n", pid,HELPER_PID,helper_written?"ok":"failed");
+	LPRINTF(" write %d to %s %s\n", pid,HELPER_PID,helper_written?"ok":"failed");
 }
 
 // Function to handle termination signals
 void sigterm_handler(int sig) {
+	LPRINTF(" sigterm_hadler: helper_written=%d revlink=%d evlink=%s\n", helper_written, revlink, evlink);
 	if (helper_written){
 		if(revlink){
-			errno = 0;
 			int r = remove(evlink);
-			LPRINTF("remove(%s) %s[%d]\n", evlink, (r?"ok":"failed"), errno);
+			LPRINTF(" remove(%s) %s[%d]\n", evlink, (r?"FAILED":"OK"), (r?errno:0));
 		}
 		write_helper(0);
 	}
-    exit(0);
+	exit(0);
 }
 
 void sigusr1_handler(int sig) {
 	beep();
 }
 
-pid_t detach(void) {
+static void ensure_dir(const char *path, mode_t mode){
+	struct stat sb;
+	int r;
 
-    // Create a child process to become the daemon
-    pid_t pid = fork();
+	if (!(stat(path, &sb)==0 && S_ISDIR(sb.st_mode))) {
+		r = mkdir(path, mode);
+		LPRINTF(" create path %s mode=%04x %s[%d]\n", path, mode, (r?"FAILED":"OK"), (r?errno:0));
+		if (r) exit(1);
+	}
+}
 
-    if (pid < 0) {
-        perror("fork");
-        exit(1);
-    }
+pid_t wait_for_signals(void){
+	int r;
+	pid_t pid;
 
-    if (pid > 0) return pid;
-
-    // Child process continues as the daemon
-    // Set up signal handler
-    signal(SIGTERM, sigterm_handler);
-    signal(SIGUSR1, sigusr1_handler);
+	// Child process continues as the daemon
+	// Set up signal handler
+	signal(SIGTERM, sigterm_handler);
+	signal(SIGUSR1, sigusr1_handler);
 
 	uid_t uid = getuid();
-	LPRINTF("detached uid=%d evdev=%s alsaname=%s\n", uid, evdev, alsaname);
+	LPRINTF(" wait_for_signals uid=%d evdev=%s alsaname=%s\n", uid, evdev, alsaname);
 	if (!uid) { //we are root
+		//LPRINTF("sleep(5)...\n"); sleep(5); LPRINTF("...over\n");
+		if((pid=read_helper())) {
+			LPRINTF(" pid=%ld is already running\n", pid);
+			exit(1);	//another daemon is already in play
+		}
 		pid = getpid();
 		LPRINTF("detached pid=%d\n", pid);
 		write_helper(pid);
 		if(evdev && helper_written) {
-			errno = 0;
-			revlink = symlink(evdev, evlink);
-			LPRINTF("symlink(%s,%s) %s[%d]\n", evlink, evdev, (revlink?"failed":"ok"),errno)
+			ensure_dir("/dev", 0755);
+			ensure_dir("/dev/input", 0755);
+			ensure_dir("/dev/input/by-path", 0755);
+			remove(evlink); //in case it already exists
+			r = symlink(evdev, evlink);
+			LPRINTF("symlink(%s,%s) %s[%d]\n", evdev, evlink, (r?"FAILED":"OK"),(r?errno:0))
+			revlink = r?0:1;
 		} else {
 			evdev = NULL;
 		}
 	}
 
-
-    // Change working directory to avoid file system clutter
-    if (chdir("/") != 0) {
-        perror("chdir");
-        exit(1);
-    }
+	// Change working directory to avoid file system clutter
+	r = chdir("/");
+	LPRINTF("chdir(\"/\") %s[%d]\n", (r?"FAILED":"OK"), (r?errno:0));
+	if(r) exit(1);
 
 
-    // Close standard input, output, and error
-    close(STDIN_FILENO);
+	// Close standard input, output, and error
+	close(STDIN_FILENO);
 	if (!keepopen) {
-    	close(STDOUT_FILENO);
-    	close(STDERR_FILENO);
+		close(STDOUT_FILENO);
+		close(STDERR_FILENO);
 	}
 
-    // Main loop for handling server logic
-    while (1) {
+	// Main loop for handling server logic
+	while (1) {
 		pause();
-    }
+	}
+	LPRINTF("reached end of detach\n");
 	return 0;
+}
+
+pid_t detach(void) {
+	// Create a child process to become the daemon
+	pid_t pid = fork();
+
+	if (pid < 0) {
+		LPRINTF(" detach fork failed errno=%d\n", errno);
+		perror("fork");
+		exit(1);
+	}
+
+	if (pid > 0) return pid;
+
+	LPRINTF(" detach fork succeeded\n");
+	return wait_for_signals();
 }
 
 int main(int argc, char *argv[]) {
 	int optIndex=0;
 	int daemonize = 0;
-	while (( optIndex = getopt(argc, argv, "a::d:f:hlr::t:v:")) != -1) {
+	int nodaemonize = 0;
+	while (( optIndex = getopt(argc, argv, "a::d:f:hlnr::t:v:")) != -1) {
 		DPRINTF("optindex='%c' optarg=%s\n", optIndex, optarg);
 		switch (optIndex) {
 			case 'a':
@@ -255,6 +300,9 @@ int main(int argc, char *argv[]) {
 				return 0;
 			case 'l':
 				keepopen = 1;
+				break;
+			case 'n':
+				nodaemonize = 1;
 				break;
 			case 'r':
 				if (optarg && *optarg) evdev = optarg;
@@ -274,12 +322,17 @@ int main(int argc, char *argv[]) {
 	}
 
 	if (daemonize) {
-		pid_t pid = detach();
-		if (pid>0) {
-        	exit(0); // Parent process exits
+		pid_t pid;
+		if (nodaemonize) {
+			pid = wait_for_signals();
 		} else {
-			printf("failed to detach\n");
-			exit(1);
+			pid = detach();
+			if (pid>0) {
+				exit(0); // Parent process exits
+			} else {
+				printf("failed to detach\n");
+				exit(1);
+			}
 		}
 	} else {
 		beep();

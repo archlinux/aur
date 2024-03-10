@@ -1,23 +1,57 @@
 #!/usr/bin/bash
-. /etc/@_PKGBASE@-helper.conf
-
-if [ -n "$LOG" -a -w "$(dirname "${LOG}")" ]; then
-	LFLAG="-l"
-	if [ -x /usr/bin/stdbuf -a -x /usr/bin/iofilt ]; then
-		PROG="$(basename $0)"
-		exec &> >(stdbuf -i0 -o0 -e0 /usr/bin/iofilt -f'%FT%T' -p "$PROG" -z'Europe/London' > "${LOG}")
-	else
-		exec &> "${LOG}"
-	fi
-else
-	LFLAG=""
+source /etc/@_PKGBASE@-helper.conf
+if [ -n "$LOG" ]; then
+	PROG="$(basename $0)"
+	eval "$LOG"
+	echo "###### $PROG $@"
 fi
 
-echo "##### env start"
-env
-echo "##### env end"
+stop(){
+	modprobe -r @_PKGBASE@
+	killall @_PKGBASE@-daemon
+	rm -rf /dev/input/by-path/platform-pcspkr-event-spkr
+}
 
-echo "# about to exec
-${exe} $LFLAG"
+case "$1" in
+	(start)
+		stop
+		echo "##### modprobe @_PKGBASE@ debug=${@_PKGBASE@_debug:0}"
+		modprobe @_PKGBASE@ debug="${@_PKGBASE@_debug:0}"
 
-eval "exec $exe $LFLAG"
+		if lsmod | grep -sq @_PKGBASE@; then
+			for x in $(find /sys/devices/virtual/input -name name); do
+				if [ "$(cat $x)" = "@_PKGBASE@" ]; then
+					#we found our device
+					d="$(dirname $x)"
+					d=$(ls -d $d/event*)
+					[ -n "$d" ] && r="-r/dev/input/$(basename $d)"
+					break
+				fi
+			done
+			if [ -z "$r" ]; then
+				echo "!!!!! cannot find @_PKGBASE@ /dev/input/ device"
+				exit 1
+			fi
+		else
+			echo "!!!!! failed to load @_PKGBASE@"
+			exit 1
+		fi
+
+		echo "# about to exec
+${exe} $r $LFLAG"
+		eval "exec $exe $r $LFLAG"
+		;;
+	(stop)
+		stop
+		;;
+	(status)
+		if [ -d "/sys/module/@_PKGBASE@" ]; then
+			echo "@_PKGBASE@ is loaded"
+		else
+			echo "@_PKGBASE@ is not loaded"
+		fi
+		for x in $(pidof @_PKGBASE@-daemon); do
+			ps -hp $x
+		done
+		;;
+esac

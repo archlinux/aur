@@ -1,5 +1,34 @@
 post_install() {
-  cat<<EOF
+	#set up service files
+	case "`readlink /usr/bin/init`" in
+		(*systemd)
+			cat > /lib/systemd/system/alsabeep.service <<EOF
+[Unit]
+Description=Alsa based beep replacement for systems without a PC Speaker
+
+[Service]
+ExecStart=/usr/bin/alsabeep-helper start
+ExecStop=/usr/bin/alsabeep-helper stop
+
+[Install]
+WantedBy=default.target
+EOF
+			;;
+		(*runit*)
+			mkdir /etc/runit/sv/alsabeep
+			cat >/etc/runit/sv/alsabeep/run <<EOF
+#!/usr/bin/sh
+exec /usr/bin/alsabeep-helper start
+EOF
+			cat >/etc/runit/sv/alsabeep/finish <<EOF
+#!/usr/bin/sh
+exec /usr/bin/alsabeep-helper stop
+EOF
+			chmod a+x /etc/runit/sv/alsabeep/*
+			;;
+	esac
+
+	cat<<EOF
 
 configure using /etc/alsabeep-helper.conf
 
@@ -17,5 +46,9 @@ post_upgrade() {
 }
 
 post_remove() {
-	modprobe -r alsabeep 2>/dev/null || true
+	(
+	killall alsabeep-daemon || true
+	modprobe -r alsabeep || true
+	rm -rf /lib/systemd/system/alsabeep.service /etc/runit/sv/alsabeep || true
+	) 2>/dev/null
 }

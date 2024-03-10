@@ -40,7 +40,7 @@ MODULE_AUTHOR("Robin Becker lt becker dot rg at gmail dot com gt");
 MODULE_DESCRIPTION("Alsa Beep Driver");
 MODULE_LICENSE("GPL");
 
-static char beep_name[] = "AlsaBeep";
+static char beep_name[] = "alsabeep";
 static struct input_dev *beep_dev;
 
 static int my_kill(pid_t pid, int sig){
