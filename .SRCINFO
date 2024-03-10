@@ -1,7 +1,7 @@
 pkgbase = obs-durchblick
 	pkgdesc = Modular multiview for OBS Studio
 	pkgver = 0.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://obsproject.com/forum/resources/durchblick.1484/
 	arch = x86_64
 	arch = aarch64

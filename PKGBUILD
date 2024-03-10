@@ -3,7 +3,7 @@
 _pluginname=durchblick
 pkgname=obs-$_pluginname
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Modular multiview for OBS Studio"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/durchblick.1484/"
@@ -15,7 +15,7 @@ source=("$_pluginname-$pkgver.tar.gz"::"https://github.com/univrsal/$_pluginname
 sha256sums=(""3f16c4dfff3f31d7683ce2c3180f8659c14f1fc7a14553ff8ad293269674a893)
 
 build() {
-  cmake -B build -S $_pluginname \
+  cmake -B build -S "$_pluginname-$pkgver" \
   -DCMAKE_BUILD_TYPE=None \
   -DCMAKE_INSTALL_PREFIX='/usr' \
   -DCMAKE_INSTALL_LIBDIR=lib \
