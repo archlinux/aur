@@ -1,0 +1,17 @@
+pkgbase = python-unityparser
+	pkgdesc = A python library to parse and dump Unity YAML files
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/socialpoint-labs/unity-yaml-parser
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-pytest
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = python-unityparser-3.0.1.tar.gz::https://github.com/socialpoint-labs/unity-yaml-parser/archive/refs/tags/v3.0.1/unityparser-3.0.1.tar.gz
+	sha256sums = d10828fd322692794f5049d85cdb41bbe8a2d186db101ca4abe79411c46dfd61
+
+pkgname = python-unityparser
