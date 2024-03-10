@@ -2,14 +2,14 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=benchdamic
-_pkgver=1.8.1
+_pkgver=1.8.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Benchmark of differential abundance methods on microbiome data"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-aldex2
   r-ancombc
@@ -54,12 +54,12 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ca158383ebf87138c91438c7946fe567')
-sha256sums=('ceff84a598cf1158721982693d9b02346dbaa6a94362862124269acd64a939df')
+md5sums=('3e181e9df4a701c33b61a184a26f0a59')
+b2sums=('1588d6de023a6f80582bdffc8de610b0830ac1a0120e4ed3018b585082a55018b3f4b17df7cd02289033ea30f565dc085a6445fb8b6d78daf314f8c03488f309')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
