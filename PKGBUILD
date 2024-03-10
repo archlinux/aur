@@ -4,12 +4,12 @@
 # Contributor: Tim Meusel <tim@bastelfreak.de>
 
 pkgname=pacemaker
-pkgver=2.1.6
+pkgver=2.1.7
 pkgrel=1
 pkgdesc="advanced, scalable high-availability cluster resource manager"
 arch=('i686' 'x86_64')
 url="https://github.com/ClusterLabs/${pkgname}/"
-license=('GPL2')
+license=(GPL-2.0-or-later LGPL-2.1-or-later CC-BY-SA-4.0 BSD-3-Clause)
 makedepends=('inkscape' 'help2man' 'asciidoc')
 depends=('gnutls' 'glib2' 'pam' 'libtool' 'python-lxml' 'python-yaml' 'libesmtp'
          'corosync' 'libqb' 'resource-agents' 'fence-agents'
@@ -20,7 +20,7 @@ optdepends=('pssh: for use with some tools'
             'booth: for geo-clustering')
 source=("https://github.com/ClusterLabs/$pkgname/archive/Pacemaker-$pkgver.tar.gz"
         'crm_report.in')
-sha512sums=('46a05cec46212e92eef3916fa44ced5fcf41d3014761bbe095cd23ef7acad6969a937d81c907f2ff1a2f212bc20ec9f9bf43786db31ebd5a227fdfade91e7440'
+sha512sums=('15ad988666d1238a804c916f927cacc33726259d5ba5eee521c21b0951634953627471331e8e3ed0ffa721c64a7f994dcd0569b804e042d17c99f394e21c44aa'
             '09a80f5579db9016dcbba759ee9b661aea24ed7c98906939d5e50befb344c693652a9634ab804a91bfedeeeb69ce5ab87f30d2ed356bfefd9cdc67669a1cce64')
 
 prepare() {
@@ -79,12 +79,18 @@ package() {
     u hacluster 189:189 "cluster user" / /sbin/nologin
 	EOF
   rm -fr "$pkgdir/var"
-  chmod a+x "$pkgdir/usr/share/pacemaker/tests/cts/CTSlab.py"
+#  chmod a+x "$pkgdir/usr/share/pacemaker/tests/cts/CTSlab.py"
   find "$pkgdir" -name '*.xml' -type f -print0 | xargs -0 chmod a-x
   rm -fr "$pkgdir/etc/init.d"
   rm -f "$pkgdir/usr/bin/fence_pcmk"
   mv "$pkgdir/usr/bin/crm_report" "$pkgdir/usr/bin/crm_report.pacemaker"
   install -Dm755 crm_report.in "$pkgdir/usr/bin/crm_report"
+  cd ${pkgname}-Pacemaker-${pkgver}
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  cd licenses
+  for f in *; do
+    install -Dm644 "$f" "$pkgdir/usr/share/licenses/$pkgname/$f"
+  done
 }
 
 # vim: set sw=2 et ts=2:
