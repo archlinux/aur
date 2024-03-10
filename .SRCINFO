@@ -1,14 +1,14 @@
 pkgbase = numbat-bin
 	pkgdesc = A statically typed programming language for scientific computations with first class support for physical dimensions and units
-	pkgver = 1.10.1
-	pkgrel = 3
+	pkgver = 1.11.0
+	pkgrel = 1
 	url = https://github.com/sharkdp/numbat
 	arch = x86_64
 	license = MIT
 	license = Apache-2.0
 	provides = numbat
 	conflicts = numbat
-	source = numbat-1.10.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/sharkdp/numbat/releases/download/v1.10.1/numbat-v1.10.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = b8889a1411a23aed32be5436413632fc55f312937475860107f44281dba961a4
+	source = numbat-1.11.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/sharkdp/numbat/releases/download/v1.11.0/numbat-v1.11.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = f9b1907e715aba00382fc7cac3764373839ab1c2373c27945da308a6070ac2f7
 
 pkgname = numbat-bin
