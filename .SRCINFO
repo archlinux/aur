@@ -1,11 +1,11 @@
 pkgbase = massdns
 	pkgdesc = A high-performance DNS stub resolver for bulk lookups and reconnaissance
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/blechschmidt/massdns
 	arch = x86_64
 	arch = i686
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = cmake
 	depends = glibc
 	provides = massdns

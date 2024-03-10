@@ -2,11 +2,11 @@
 
 pkgname=massdns
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-performance DNS stub resolver for bulk lookups and reconnaissance"
 arch=("x86_64" "i686")
 url="https://github.com/blechschmidt/massdns"
-license=("GPL3")
+license=('GPL-3.0-or-later')
 provides=('massdns')
 conflicts=('massdns')
 depends=('glibc')
@@ -23,4 +23,6 @@ build() {
 package() {
   cd ${pkgname}-${pkgver}
   install -Dm755 bin/massdns ${pkgdir}/usr/bin/massdns
+  install -Dm644 doc/massdns.1 ${pkgdir}/usr/share/man/man1/massdns.1
+  install -Dm644 README.md ${pkgdir}/usr/share/doc/massdns/README.md
 }
