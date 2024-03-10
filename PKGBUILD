@@ -3,27 +3,25 @@
 _pkgname=exactRankTests
 _pkgver=0.8-35
 pkgname=r-${_pkgname,,}
-pkgver=0.8.35
-pkgrel=1
-pkgdesc='Exact Distributions for Rank and Permutation Tests'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=6
+pkgdesc="Exact Distributions for Rank and Permutation Tests"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
-optdepends=(
-  r-survival
-)
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7eb4a9ff431a306f634a5feba39c381afb17573e24230976ece843c84e8969e3')
+md5sums=('5c3767db5ff0c9d69b9990d4443f0cad')
+b2sums=('513d696cc55e2663ee8f722bc441c5ec5b0f7f9438ccaacd255e09bf40b93315cd6dd33054a433fbd7a3b29a01bac22a252dc956e57522c443763ba71f31c9a7')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
