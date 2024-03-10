@@ -1,7 +1,7 @@
 # Maintainer: Alexis Williams <alexis@typedr.at>
 pkgname=frink-lang-bin
 pkgver=20240227
-pkgrel=1
+pkgrel=2
 pkgdesc="A practical calculating tool and programming language."
 arch=('any')
 url="https://frinklang.org/"
@@ -59,8 +59,7 @@ java_opts=(
 	"-Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
 )
 
-export _JAVA_OPTIONS="${java_opts[*]}"
-exec $rlwrap $rlwrap_args /usr/bin/java -cp $CP frink.gui.FrinkStarter "$@"
+exec $rlwrap $rlwrap_args /usr/bin/java ${java_opts[*]} -cp $CP frink.gui.FrinkStarter "$@"
 EOF
 	chmod a+x "$pkgdir/usr/bin/frink"
 
