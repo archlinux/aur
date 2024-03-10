@@ -33,5 +33,3 @@ package() {
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 example*.py -t "${pkgdir}/usr/share/doc/${pkgname}/examples"
 }
-
-# vim:set et sw=2 ts=2 tw=79:
