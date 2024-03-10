@@ -1,7 +1,7 @@
 pkgbase = dimemas
 	pkgdesc = High-abstracted network simulator for message-passing programs (from BSC).
 	pkgver = 5.4.2.20210310
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools
 	arch = x86_64
 	license = LGPL2.1
