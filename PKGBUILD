@@ -5,7 +5,7 @@
 
 pkgbase=network-manager-applet-git
 pkgname=(network-manager-applet-git nm-connection-editor-git)
-pkgver=1.37.0.dev.r3.gc3dfce54
+pkgver=1.37.0.dev.r7.g077ff541
 pkgrel=1
 pkgdesc="Applet for managing network connections"
 arch=('i686' 'x86_64')
@@ -65,6 +65,7 @@ package_network-manager-applet-git() {
      _pick nm-connection-editor "$pkgdir"/usr/share/locale
      _pick nm-connection-editor "$pkgdir"/usr/share/man/man1/nm-connection-editor.1
      _pick nm-connection-editor "$pkgdir"/usr/share/metainfo
+     _pick nm-connection-editor "$pkgdir"/usr/share/icons/hicolor/scalable/apps/nm-device-wwan-symbolic.svg
 }
 
 package_nm-connection-editor-git() {

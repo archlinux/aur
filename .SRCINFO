@@ -1,6 +1,6 @@
 pkgbase = network-manager-applet-git
 	pkgdesc = Applet for managing network connections
-	pkgver = 1.37.0.dev.r3.gc3dfce54
+	pkgver = 1.37.0.dev.r7.g077ff541
 	pkgrel = 1
 	url = http://www.gnome.org/projects/NetworkManager/
 	arch = i686
