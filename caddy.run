@@ -1,0 +1,2 @@
+#!/bin/sh
+exec caddy run --environ --config /etc/caddy/Caddyfile 2>&1
