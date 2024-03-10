@@ -1,19 +1,19 @@
 # Maintainer: noraj <printf %s 'YWxleGFuZHJlLnphbm5pQGV1cm9wZS5jb20='|base64 -d>
 pkgname=ruqola-better-git
 _pkgname=ruqola
-pkgver=2.0.0.r428.ga24aeb5
+pkgver=2.1.0.r624.g4910cec
 pkgrel=1
-pkgdesc='Rocket.Chat client for the KDE desktop'
+pkgdesc='Rocket.Chat client for the KDE desktop (Plasma 6 / qt6)'
 arch=('x86_64')
 url='https://invent.kde.org/network/ruqola'
 license=('LGPL2.1')
 depends=(
-  # qt5 group
- 'qt5-websockets' 'qt5-networkauth' 'qt5-multimedia'
- # kf5 group
- 'kwidgetsaddons5' 'ki18n5' 'kcrash5' 'kcoreaddons5' 'syntax-highlighting5' 'sonnet5' 'ktextwidgets5' 'knotifyconfig5' 'kio5' 'kiconthemes5' 'kxmlgui5' 'kidletime5' 'prison5' 'kdoctools5'
+  # qt6 group
+ 'qt6-websockets' 'qt6-networkauth' 'qt6-multimedia'
+ # kf6 group
+ 'kwidgetsaddons' 'ki18n' 'kcrash' 'kcoreaddons' 'syntax-highlighting' 'sonnet' 'ktextwidgets' 'knotifyconfig' 'kio' 'kiconthemes' 'kxmlgui' 'kidletime' 'prison' 'kdoctools' 'kstatusnotifieritem'
  # others
- 'qtkeychain-qt5' 'hicolor-icon-theme' 'kuserfeedback5' 'ktextaddons'
+ 'qtkeychain-qt6' 'hicolor-icon-theme' 'kuserfeedback' 'ktextaddons'
 )
 makedepends=('cmake' 'extra-cmake-modules' 'git')
 provides=(ruqola)
@@ -27,17 +27,23 @@ pkgver() {
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  mkdir -p build
+build() {
+  cd $_pkgname
+
+  cmake -B "$srcdir/build" -S "$srcdir/$_pkgname" \
+    -DCMAKE_BUILD_TYPE='Release' \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -Wno-dev #\
+    #--preset release-qt6
+  cmake --build "$srcdir/build" #\
+    # --preset release-qt6
 }
 
-build() {
-  cd build
-  cmake "../$_pkgname" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
-  cmake --build .
+check() {
+  ctest --test-dir "$srcdir/build" --output-on-failure
 }
 
 package() {
-  cd build
-  DESTDIR="$pkgdir" cmake --install .
+  DESTDIR="$pkgdir" cmake --install "$srcdir/build"
 }
