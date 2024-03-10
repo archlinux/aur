@@ -1,7 +1,7 @@
 # Maintainer: hyknn <hyknn@protonmail.com>
 
 pkgname=spotx-bash-git
-pkgver=r68.ed84218
+pkgver=r73.f4ae675
 pkgrel=1
 pkgdesc="SpotX Mac and Linux adblocker for the Spotify desktop client, in Bash"
 arch=("x86_64")
