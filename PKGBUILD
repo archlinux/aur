@@ -26,5 +26,3 @@ package () {
   cp -a libcurl-impersonate-* "${pkgdir}/usr/lib/"
   chown -R root:root "${pkgdir}/usr/lib/"
 }
-md5sums_x86_64=('bed2142535c209e4a605e03ea014af9d')
-md5sums_aarch64=('42cd4834511b78df6ae4737ca17c5282')
