@@ -1,0 +1,13 @@
+pkgbase = freshrss-comicsinfeed-git
+	pkgdesc = In-feed comics for some webcomics
+	pkgver = r15.076e662
+	pkgrel = 1
+	url = https://github.com/giventofly/freshrss-comicsinfeed
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = freshrss
+	source = xExtension-ComicsInFeed::git+https://github.com/giventofly/freshrss-comicsinfeed.git
+	sha256sums = SKIP
+
+pkgname = freshrss-comicsinfeed-git
