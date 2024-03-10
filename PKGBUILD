@@ -3,7 +3,7 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=060.r6794.4980bad
-pkgrel=18
+pkgrel=19
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracutdevs/dracut'
@@ -45,7 +45,6 @@ optdepends=(
   'f2fs-tools: fsfs filesystem support'
   'fuse3: live on NTFS (dmsquash-live-ntfs module)'
   'gzip: gzip compression'
-  'hardlink: --hardlink option support'
   'iproute2: legacy networking support'
   'iputils: networking support'
   'jq: NVMe-oF support (nvmf module)'
@@ -70,7 +69,7 @@ optdepends=(
   'sbsigntools: uefi_secureboot_cert/key configuration option support'
   'squashfs-tools: support for building a squashed initramfs'
   'tar: live tar image'
-  'tpm2-tools: tpm2-tss module support'
+  'tpm2-tools: tpm2 support for e.g. LUKS'
   'xz: xz compression'
 )
 checkdepends=(
@@ -164,9 +163,9 @@ prepare() {
   cat manifest
 
   # remove dracut modules not meant for arch x86_64
-  for f in 45ifcfg 80cms 81cio_ignore 91zipl 95dasd 95dasd_mod \
-    95dasd_rules 95dcssblk 95fcoe* 95qeth_rules 95zfcp \
-    95zfcp_rules 95znet; do
+  for f in 45ifcfg 80cms 81cio_ignore 90ppcmac 91zipl \
+    95dasd 95dasd_mod 95dasd_rules 95dcssblk 95fcoe* \
+    95qeth_rules 95zfcp 95zfcp_rules 95znet; do
     rm -rf modules.d/$f
   done
 }
