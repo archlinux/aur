@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/Robpol86/terminaltables"
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools' 'python-build' 'python-wheel' 'python-installer')
+makedepends=('python-build' 'python-wheel' 'python-installer' 'python-poetry-core')
 checkdepends=('python-pytest' 'python-colorama' 'python-termcolor' 'python-colorclass')
 source=("${_pyname}-${pkgver}.tar.gz::https://github.com/Robpol86/${_pyname}/archive/v${pkgver}.tar.gz"
         python-3.8.patch)
