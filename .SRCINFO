@@ -1,7 +1,7 @@
 pkgbase = obs-tuna
 	pkgdesc = Get song info from right within obs
 	pkgver = 1.9.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://obsproject.com/forum/resources/tuna.843/
 	arch = x86_64
 	arch = aarch64
