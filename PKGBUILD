@@ -12,8 +12,9 @@ pkgdesc="A fast, concise, readable, pragmatic and open sourced programming langu
 arch=('x86_64')
 url="https://odin-lang.org/"
 license=('BSD-2-Clause')
-depends=('clang' 'llvm14-libs')
-makedepends=('git' 'clang' 'clang14' 'llvm14' 'python')
+depends=('clang' 'llvm-libs')
+makedepends=('git' 'clang' 'llvm' 'python')
+options=('staticlibs')
 provides=('odin')
 conflicts=('odin')
 source=("https://github.com/odin-lang/Odin/archive/refs/tags/${pkgver_actual}.tar.gz")
@@ -21,8 +22,8 @@ sha256sums=('29ce1e8dc6467dd1b7c66ee6940cffed1a2872127b9ec0d8aa0710abecdeec52')
 
 build() {
   cd "${srcdir}/Odin-${pkgver_actual}/"
-  export LLVM_CONFIG=llvm-config-14
-  export CXX=/usr/lib/llvm14/bin/clang++
+  export LLVM_CONFIG=llvm-config
+  export CXX=/usr/bin/clang++
   make release_native
 }
 
