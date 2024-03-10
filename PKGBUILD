@@ -1,20 +1,23 @@
-# system requirements: C++11
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=qs
-_pkgver=0.25.7
+_pkgver=0.26.1
 pkgname=r-${_pkgname,,}
-pkgver=0.25.7
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Quick Serialization of R Objects'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgdesc="Quick Serialization of R Objects"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
+  lz4
   r-rapiserialize
   r-rcpp
   r-stringfish
+  zstd
+)
+makedepends=(
+  r-bh
 )
 optdepends=(
   r-data.table
@@ -24,14 +27,15 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e7332be3a6469236b9556aee83f47f0b626378c88d248d80830a4c7193571228')
+md5sums=('ee0fad99d74c0798fcea6659f988b2d1')
+b2sums=('d8e0e33fd43c8ec22de9c0da84d610f8539def1048fef03deeedb55b3ab15508302685c8ba396b47f0657c59df3f1055e4a2400f21160dbe25e8a12e29495f01')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
