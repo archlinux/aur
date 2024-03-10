@@ -2,7 +2,7 @@
 # Contributor: lukebond
 
 pkgname=neovim-ctrlp
-pkgver=1.80
+pkgver=1.81
 pkgrel=1
 pkgdesc="Full path fuzzy file, buffer, mru, tag, ... finder"
 arch=('any')
@@ -14,7 +14,7 @@ groups=('neovim-plugins')
 install=nvim-doc.install
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ctrlpvim/ctrlp.vim/archive/$pkgver.tar.gz"
   LICENSE)
-sha256sums=('65762884e4787bb6c13812ea2a0b82ec3bb1e5e552a43aea4a0e9700c2f0b1f2'
+sha256sums=('9de452e7c3c2e1831007fdc69149368f9169837681ff46a09e1bca8cbdbebf93'
             '446c67d93c43addf076fe103a71844c2d875d478f82186436567dd221f2652f3')
 
 package() {
