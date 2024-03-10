@@ -1,5 +1,5 @@
 pkgname=lexido
-pkgver=1.0.1
+pkgver=1.1
 pkgrel=1
 pkgdesc="Lexido is a smart assistant for the Linux command line, powered by Gemini Pro 1.0."
 arch=("x86_64")
@@ -8,7 +8,7 @@ license=('AGPL3')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/micr0-dev/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('b445e6ed387a5b5e71ab285542f5179cd7ab0f84a60ea2e394a99db18eacaa57')
+sha256sums=('5d19e7ac0e7ed59043e1d2759db38bca64f4c0981404b3fd5adfa478d2bb5547')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
