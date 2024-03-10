@@ -6,14 +6,15 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-libgpg-error
 pkgver=1.48
-pkgrel=2
+pkgrel=3
 arch=('any')
-pkgdesc="Support library for libgcrypt (android)"
+pkgdesc="Support library for libgcrypt (Android, ${_android_arch})"
 url="https://www.gnupg.org"
 license=('LGPL')
 depends=('android-ndk')
+makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=(https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-${pkgver}.tar.bz2{,.sig}
+source=("https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-${pkgver}.tar.bz2"{,.sig}
         '0001-Unversioned-libs.patch')
 # https://www.gnupg.org/download/integrity_check.html
 sha256sums=('89ce1ae893e122924b858de84dc4f67aae29ffa610ebf668d5aa539045663d6f'
