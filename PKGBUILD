@@ -3,13 +3,15 @@
 # Contributor: perlawk
 
 pkgname=dlib-cuda
-pkgver=19.24
+pkgver=19.24.3
 pkgrel=1
 pkgdesc="A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques"
 arch=('x86_64')
 url="http://dlib.net"
 license=('custom')
 depends=('cblas'
+         'cuda'
+         'cudnn'
          'lapack'
          'blas'
          'libjpeg-turbo'
@@ -18,11 +20,12 @@ depends=('cblas'
 provides=('dlib')
 conflicts=('dlib')
 optdepends=('giflib: for GIF support'
+            'libjxl: for JPEG XL support'
             'libwebp: for WebP support'
             'sqlite: for sqlite support')
-makedepends=('cmake' 'ninja' 'cuda' 'cudnn')
-source=("http://dlib.net/files/dlib-${pkgver}.tar.bz2")
-sha256sums=('28fdd1490c4d0bb73bd65dad64782dd55c23ea00647f5654d2227b7d30b784c4')
+makedepends=('cmake' 'ninja')
+source=("https://codeload.github.com/davisking/dlib/tar.gz/refs/tags/v${pkgver}")
+sha256sums=('4b1f28e76020775334e67cc348ceb26a4f5161df6659848be0d3b300406400a3')
 
 build() {
     cd "${srcdir}"
