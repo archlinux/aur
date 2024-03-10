@@ -27,11 +27,3 @@ pkgname = sentencepiece
 	depends = abseil-cpp
 	depends = gperftools
 	depends = protobuf
-
-pkgname = python-sentencepiece
-	pkgdesc = Python wrapper for SentencePiece
-	depends = gcc-libs
-	depends = glibc
-	depends = sentencepiece
-	depends = python
-	optdepends = python-protobuf
