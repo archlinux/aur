@@ -1,6 +1,6 @@
 pkgbase = firefox-clearurls
 	pkgdesc = Removes tracking elements from URLs
-	pkgver = 1.26.0
+	pkgver = 1.23.1
 	pkgrel = 1
 	url = https://clearurls.xyz
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = firefox-clearurls
 	license = LGPL3
 	makedepends = strip-nondeterminism
 	makedepends = zip
-	source = https://github.com/ClearUrls/Addon/archive/refs/tags/1.26.0.tar.gz
-	md5sums = ae8af03e72047c93be2503153bd901d9
+	source = https://github.com/ClearUrls/Addon/archive/refs/tags/1.23.1.tar.gz
+	md5sums = 1a9f22a4b77f32a150056e4633cfc0d6
 
 pkgname = firefox-clearurls
