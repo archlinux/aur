@@ -4,13 +4,13 @@
 # aarch64 tester: Irissman    <irissman@probus.ca>
 # armv7h tester: kauron
 pkgname=duplicati-canary-bin
-pkgver=2.0.7.100
+pkgver=2.0.7.101
 pkgrel=1
-_date=2023-12-27
+_date=2024-03-08
 _branch=canary
 pkgdesc="A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers"
 url="http://duplicati.com"
-license=('LGPL')
+license=('MIT')
 install=duplicati.install
 source=(
   # https://updates.duplicati.com/${_branch}/duplicati-${pkgver}_${_branch}_${_date}.zip # duplicati.com seems to be blocked in Russia, see https://aur.archlinux.org/packages/duplicati-latest/#comment-746652
@@ -28,7 +28,7 @@ noextract=(
 backup=(
   etc/default/duplicati
 )
-sha256sums=('2cfa87204a489adc6e37afd7c2fb0d67189632c1bc7bf5498812f607d85bafe4'
+sha256sums=('870504f05fdda8c17abf89af4d81ef0ce84365e2cc179c34d4a64427910fa6b3'
             '5e47acfb251e0fbe4c01bd75ba88a78c497208bf767addb59010baea049dd19f'
             '0722036feafb16a229f905744722619921050b9b148046aafd8f3c1b16241b3b'
             'b9389b399467f3e02aa8e76bb98f6efbca1166fbc4d0bdf939493f8403462959'
