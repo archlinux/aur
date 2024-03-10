@@ -2,7 +2,7 @@
 pkgname='clusteringsuite'
 pkgdesc='Automatically expose the main performance trends in applications'\'' computation structure (from BSC).'
 pkgver='2.6.9.20230313'
-pkgrel='2'
+pkgrel='3'
 arch=('x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL2.1')
@@ -35,6 +35,9 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname-${pkgver%.*}"
+
+	# For now, ignore new errors from GCC 14 (see https://gcc.gnu.org/gcc-14/porting_to.html)
+	export CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration"
 
 	# NOTE: The following optional features are NOT enabled:
 	# * CAPEK algorithm
