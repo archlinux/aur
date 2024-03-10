@@ -1,6 +1,6 @@
 # Maintainer: Armin Preiml <apreiml@strohwolke.at>
 pkgname=mailpit
-pkgver=1.14.1
+pkgver=1.14.3
 pkgrel=1
 pkgdesc="Web and API based SMTP testing"
 arch=("x86_64" "arm64")
@@ -28,5 +28,5 @@ package() {
     cd "mailpit-${pkgver}"
     install -D -m755 mailpit ${pkgdir}/usr/bin/mailpit
 }
-sha256sums=('38e6439c957189383a4c6a9b0778f5ea2d1ca7e040b743f75ada34c05840bc81'
+sha256sums=('6b1473f5372eb8ae60cc6a3385e494de3aa79a2eef3a9b61ee1513ea81c45b87'
             '602494cc3d28d58fa430ec3c53fd66e694db9faa87e98e45effe00a844affc4b')
