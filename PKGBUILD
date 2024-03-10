@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=webapp-manager-git
-pkgver=1.2.8.r4.g4895615
+pkgver=1.3.4.r1.g3ae21d4
 pkgrel=1
 pkgdesc="Run websites as if they were apps."
 arch=('any')
@@ -30,12 +30,12 @@ pkgver() {
 prepare() {
   cd "$srcdir/${pkgname%-git}"
 
-  # Fix license path
-  sed -i 's/common-licenses\/GPL/licenses\/common\/GPL\/license.txt/g' \
+  # Set version in About dialog
+  sed -i "s/__DEB_VERSION__/$pkgver/g" \
     "usr/lib/${pkgname%-git}/${pkgname%-git}.py"
 
-  # Set version in About dialog
-  sed -i "s/__DEB_VERSION__/${pkgver%.r*}/g" \
+  # Fix license path
+  sed -i 's|common-licenses/GPL|licenses/spdx/GPL-3.0-or-later.txt|g' \
     "usr/lib/${pkgname%-git}/${pkgname%-git}.py"
 }
 
