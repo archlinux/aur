@@ -4,13 +4,14 @@
 
 pkgname=cppman
 pkgver=0.5.6
-pkgrel=2
+pkgrel=3
 pkgdesc="C++ 98/11/14/17/20 manual pages for Linux, with source from cplusplus.com and cppreference.com."
 arch=('any')
 url="https://github.com/aitjcize/cppman"
 license=('GPL3')
 conflicts=(cppman-git)
 depends=(python python-beautifulsoup4 python-html5lib)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 optdepends=("vim: For using vim as a pager"
             "perl: for bash/zsh completion")
 source=("$url/archive/$pkgver.tar.gz")
