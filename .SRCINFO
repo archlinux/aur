@@ -1,0 +1,20 @@
+pkgbase = inputplumber-git
+	pkgdesc = Open source input daemon for Linux
+	pkgver = v0.6.0.r0.g2bf8a31
+	pkgrel = 1
+	url = https://github.com/ShadowBlip/InputPlumber
+	arch = x86_64
+	license = GPL
+	makedepends = rust
+	makedepends = make
+	makedepends = cmake
+	makedepends = clang
+	makedepends = git
+	depends = dbus
+	depends = libevdev
+	provides = inputplumber
+	conflicts = inputplumber-bin
+	source = inputplumber::git+https://github.com/ShadowBlip/inputplumber.git
+	sha256sums = SKIP
+
+pkgname = inputplumber-git
