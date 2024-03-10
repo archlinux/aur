@@ -1,12 +1,12 @@
 # Maintainer: sakul987 <sakul987@proton.me>
 pkgname='wg-container'
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Run specific applications in a WireGuard VPN"
 arch=('any')
 url="https://github.com/sakul987/wg-container"
 license=('GPL-3.0-only')
-depends=('bash' 'sudo' 'coreutils' 'grep' 'gawk' 'iproute2' 'iptables' 'ufw' 'sed')
+depends=('bash' 'sudo' 'coreutils' 'grep' 'gawk' 'iproute2' 'iptables' 'ufw' 'sed' 'wireguard-tools')
 optdepends=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sakul987/wg-container/archive/${pkgver}.tar.gz")
 sha256sums=('1a29811370fcd52766cc10205fdb3f19dc8a1364eb2391218876617266779385')
