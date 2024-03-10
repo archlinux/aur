@@ -1,7 +1,7 @@
 # Maintainer: Evine Deng <evinedeng@hotmail.com>
 
 pkgname="ddns-go"
-pkgver=6.2.0
+pkgver=6.2.1
 pkgrel=1
 pkgdesc="A simple, easy-to-use ddns service | 简单好用的DDNS"
 license=('MIT')
