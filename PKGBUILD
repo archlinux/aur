@@ -11,7 +11,7 @@
 
 pkgname=ungoogled-chromium-xdg
 pkgver=122.0.6261.111
-pkgrel=3
+pkgrel=4
 _launcher_ver=8
 _manual_clone=0
 _system_clang=1
@@ -172,7 +172,7 @@ prepare() {
   # https://discourse.ubuntu.com/t/chromium-hardware-accelerated-build-for-intel-based-platforms-available-for-beta-testing/35625
   # https://git.launchpad.net/~chromium-team/chromium-browser/+git/snap-from-source/
   # patch -Np1 -i ../0001-enable-linux-unstable-deb-target.patch
-  patch -Np1 -i ../0001-adjust-buffer-format-order.patch
+  # patch -Np1 -i ../0001-adjust-buffer-format-order.patch
   # patch -Np1 -i ../0001-vaapi-flag-ozone-wayland.patch
 
   # move ~/.pki directory to ${XDG_DATA_HOME:-$HOME/.local}/share/pki
