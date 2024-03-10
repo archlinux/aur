@@ -1,7 +1,7 @@
 pkgbase = miniconda3
 	pkgdesc = Mini version of Anaconda Python distribution
 	pkgver = 24.1.2.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://conda.io/en/latest/miniconda
 	install = miniconda3.install
 	arch = x86_64
