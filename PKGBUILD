@@ -1,20 +1,22 @@
 # Maintainer: Grzegorz Alibożek <grzegorz.alibozek@gmail.com>
 _gitname="weather-widget-2"
 pkgname=plasma-applets-weather-widget-2
-pkgver=3.0b2
-pkgrel=1
+pkgver=3.0.0b2
+pkgrel=2
 pkgdesc="An updated version of the plasma-applet-weather-widget by Kotelnik"
 arch=('x86_64')
 url="https://github.com/blackadderkate/$_gitname"
 license=('GPL')
 depends=('plasma-workspace' 'qt6-5compat' 'qt6-declarative')
 makedepends=('extra-cmake-modules')
-source=(${url}/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('708eeed3fb035a7d03c09c5329a19c8f3a9578492a9c86cd3383fae597e2e027')
+source=(${url}/archive/refs/tags/${pkgver}.tar.gz)
+sha256sums=('d2e54f742b7ffa51cde6493df6a726d9087ee245825296b9192d072e642dbf23')
 
 build() {
     cmake -B ./build -S ./${_gitname}-${pkgver} \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DQML_INSTALL_DIR="/usr/lib/qt/qml" \
+        -DLOCALE_INSTALL_DIR="/usr/share/locale" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
