@@ -7,13 +7,13 @@
 # Contributor: Alan Beale <the.mrabz@gmail.com>
 
 pkgname=xrdp
-pkgver=0.9.24
+pkgver=0.10.0_beta.1
 pkgrel=1
 pkgdesc="An open source remote desktop protocol (RDP) server"
 url="https://github.com/neutrinolabs/xrdp"
 arch=(i686 x86_64 armv6h armv7l aarch64)
-license=('Apache')
-makedepends=('nasm')
+license=('Apache-2.0')
+makedepends=('nasm' 'cmocka')
 depends=('libxrandr' 'fuse' 'libfdk-aac' 'ffmpeg' 'imlib2')
 checkdepends=('check')
 optdepends=('tigervnc' 'tightvnc' 'realvnc-vnc-server')
@@ -22,23 +22,25 @@ backup=('etc/xrdp/sesman.ini'
 	'etc/xrdp/cert.pem'
 	'etc/xrdp/key.pem'
 	'etc/xrdp/startwm.sh'
-	'etc/xrdp/reconnectwm.sh')
+	'etc/xrdp/reconnectwm.sh'
+	'etc/default/xrdp')
 install="${pkgname}.install"
-source=("https://github.com/neutrinolabs/xrdp/releases/download/v${pkgver}/xrdp-${pkgver}.tar.gz"
+source=("https://github.com/neutrinolabs/xrdp/releases/download/v${pkgver//_/-}/xrdp-${pkgver//_/-}.tar.gz"
 	"arch-config.diff")
-sha256sums=('68b2c58254ed8488900b99e6f84ed666324e7665614ce68d21dcf2f5e8ad1717'
-            '1ea3b860870786e52c7ae0dc83c533ada7e6ef8a33f7bcf4889228337ea3dc15')
+sha256sums=('4e2ce2d4298eccf18edeaa3da040bf457ef3f349a1ca5f9a3bef2cff08842908'
+            'e0ffce5b1a436990281fe2cc4a3cd9c2840a1dad99740aeaea866ccd9ef56db0')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver//_/-}"
   patch -Np2 -b -z .orig <../arch-config.diff
   ./bootstrap
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver//_/-}"
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
+              --libexecdir=/usr/lib \
               --localstatedir=/var \
               --sbindir=/usr/bin \
               --with-systemdsystemunitdir=/usr/lib/systemd/system \
@@ -62,13 +64,15 @@ build() {
 }
 
 check () {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver//_/-}"
   make check
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver//_/-}"
+  sed -i 's^param=Xorg^param=/usr/lib/Xorg^g' sesman/sesman.ini
   make DESTDIR="$pkgdir" install
   rm -f "$pkgdir"/etc/xrdp/rsakeys.ini
   install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
+  install -Dm644 instfiles/default/xrdp "$pkgdir"/etc/default/xrdp
 }
