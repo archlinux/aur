@@ -4,7 +4,7 @@
 pkgname=authy-export-git
 _bin=authy-export
 _gitname=authy
-pkgver=c4f25fd
+pkgver=v0.3.2.2.gc4f2
 pkgrel=1
 pkgdesc='Export your TOTP secret tokens from Authy.'
 arch=('x86_64')
@@ -16,11 +16,11 @@ source=(
     "git+${url}.git"
     'authy-qrcode-helper.sh'
 )
-sha256sums=(
-    'SKIP'
-    '9a1209265ee938ca0931aae3c74fff17a6141c8a05f4170e3a4c294d8e635772'
-)
 
+pkgver() {
+    cd "$_gitname"
+    echo "$(git describe --abbrev=4 --always --tags | sed 's/-/./g')"
+}
 
 prepare(){
     cd ${srcdir}/${_gitname}
@@ -45,3 +45,6 @@ package() {
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${_bin}/"
     install -Dm644 LICENSE "${pkgdir}/usr/share/doc/${_bin}/"
 }
+
+sha256sums=('SKIP'
+            '9a1209265ee938ca0931aae3c74fff17a6141c8a05f4170e3a4c294d8e635772')
