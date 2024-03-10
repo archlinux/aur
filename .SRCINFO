@@ -1,14 +1,14 @@
 pkgbase = libax25
 	pkgdesc = Ham Radio - library for AX.25, ROSE, 6PACK, KISS and NETROM protocols.
 	pkgver = 0.0.12_rc5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://linux-ax25.in-berlin.de
 	install = libax25.install
 	arch = i686
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.1-only
 	depends = glibc
-	source = https://linux-ax25.in-berlin.de/pub/libax25/libax25-0.0.12-rc5.tar.gz
+	source = https://web.archive.org/web/https://linux-ax25.in-berlin.de/pub/libax25/libax25-0.0.12-rc5.tar.gz
 	md5sums = 21e64a76d41f3129acc7b540730e2f4d
 	sha256sums = bf15791950ce1ebdfc37fe75d80ad9a6767e6bb1536d704da6848991cf4323df
 

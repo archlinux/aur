@@ -5,14 +5,15 @@
 
 pkgname=libax25
 pkgver=0.0.12_rc5
-pkgrel=2
+pkgrel=3
 pkgdesc="Ham Radio - library for AX.25, ROSE, 6PACK, KISS and NETROM protocols."
 arch=('i686' 'x86_64')
 url="https://linux-ax25.in-berlin.de"
-license=('LGPL')
+license=('LGPL-2.1-only')
 depends=('glibc')
 install=$pkgname.install
-source=(https://linux-ax25.in-berlin.de/pub/${pkgname}/${pkgname}-${pkgver//_/-}.tar.gz)
+source=(https://web.archive.org/web/\
+https://linux-ax25.in-berlin.de/pub/${pkgname}/${pkgname}-${pkgver//_/-}.tar.gz)
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver//_/-}
