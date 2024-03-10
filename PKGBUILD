@@ -5,7 +5,7 @@
 
 pkgname=xfce4-panel-compiz
 _realname=xfce4-panel
-pkgver=4.18.4
+pkgver=4.18.6
 pkgrel=1
 pkgdesc="Panel for the Xfce desktop environment with fixes for Compiz"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ provides=("$_realname=$pkgver")
 conflicts=("$_realname")
 source=("https://archive.xfce.org/src/xfce/$_realname/${pkgver%.*}/$_realname-$pkgver.tar.bz2"
 	  "xfce4-panel-4.18.0-invert_scroll_workspaces-1.patch")
-sha256sums=('32304f82094ea3779741f968dc851032d8790eb78f3aa01676520b96cfacfb54'
+sha256sums=('21337161f58bb9b6e42760cb6883bc79beea27882aa6272b61f0e09d750d7c62'
             'b88569bba5cb5b26c6347d3f0e211244e83868622d1495068bfcf4c9f38cc332')
 
 prepare() {
