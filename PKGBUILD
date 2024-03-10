@@ -4,10 +4,10 @@
 
 pkgname='perl-astro-fits-header'
 pkgver='3.09'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Object Orientated interface to FITS HDUs"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('GPL-3.0-or-later')
 options=('!emptydirs')
 depends=('perl-astro-fits-cfitsio')
 makedepends=('perl-module-build')

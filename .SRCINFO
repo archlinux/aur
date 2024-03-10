@@ -1,11 +1,10 @@
 pkgbase = perl-astro-fits-header
 	pkgdesc = Object Orientated interface to FITS HDUs
 	pkgver = 3.09
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Astro-FITS-Header
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = GPL-3.0-or-later
 	checkdepends = perl-starlink-ast
 	makedepends = perl-module-build
 	depends = perl-astro-fits-cfitsio
