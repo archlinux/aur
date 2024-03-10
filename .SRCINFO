@@ -1,11 +1,11 @@
 pkgbase = kondo-git
 	pkgdesc = Save disk space by cleaning non-essential files from software projects.
 	pkgver = latest
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tbillington/kondo
 	arch = x86_64
 	license = MIT
-	makedepends = rust
+	makedepends = cargo
 	makedepends = git
 	makedepends = gtk3
 	depends = gcc-libs

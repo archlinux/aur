@@ -4,14 +4,14 @@ _pkgname=kondo
 pkgname=("$_pkgname-git" "$_pkgname-ui-git")
 pkgbase="$_pkgname-git"
 pkgver=latest
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc='Save disk space by cleaning non-essential files from software projects.'
 arch=(x86_64)
 url="https://github.com/tbillington/$_pkgname"
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('rust' 'git' 'gtk3')
+makedepends=('cargo' 'git' 'gtk3')
 source=("$_pkgname::git+https://github.com/tbillington/$_pkgname.git")
 sha256sums=('SKIP')
 
