@@ -1,10 +1,11 @@
 pkgbase = android-aarch64-kmod
 	pkgdesc = Linux kernel module management tools and library (Android aarch64)
 	pkgver = 32
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git
 	arch = any
 	license = GPL2
+	makedepends = android-environment
 	depends = android-aarch64-zlib
 	depends = android-aarch64-openssl
 	depends = android-aarch64-xz
