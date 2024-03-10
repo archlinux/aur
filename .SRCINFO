@@ -1,13 +1,15 @@
 pkgbase = nyxt-git
 	pkgdesc = A keyboard-driven web browser designed for power users
 	pkgver = latest
-	pkgrel = 4
+	pkgrel = 5
 	url = https://nyxt.atlas.engineer
 	arch = i686
 	arch = x86_64
-	license = custom:BSD
+	license = BSD
 	makedepends = git
 	makedepends = sbcl
+	depends = glibc
+	depends = zstd
 	depends = enchant
 	depends = glib-networking
 	depends = gobject-introspection-runtime
@@ -26,6 +28,7 @@ pkgbase = nyxt-git
 	conflicts = nyxt-browser
 	conflicts = nyxt-browser-git
 	options = !strip
+	options = !makeflags
 	source = nyxt::git+https://github.com/atlas-engineer/nyxt.git
 	sha256sums = SKIP
 

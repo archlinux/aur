@@ -9,7 +9,7 @@ pkgrel=5
 pkgdesc='A keyboard-driven web browser designed for power users'
 arch=('i686' 'x86_64')
 url='https://nyxt.atlas.engineer'
-license=('custom:BSD')
+license=('BSD')
 conflicts=("$_pkgname" "$_pkgname-browser" "$_pkgname-browser-git")
 provides=("$_pkgname" "$_pkgname-browser" "$_pkgname-browser-git")
 source=("$_pkgname::git+https://github.com/atlas-engineer/$_pkgname.git")
@@ -17,7 +17,9 @@ sha256sums=('SKIP')
 # If someday Next works with other Lisps, replace 'sbcl' with 'common-lisp' and
 # add 'cl-asdf'.
 makedepends=('git' 'sbcl')
-depends=('enchant'
+depends=('glibc'
+         'zstd'
+         'enchant'
          'glib-networking'
          'gobject-introspection-runtime'
          'gsettings-desktop-schemas'
@@ -28,16 +30,11 @@ optdepends=('gstreamer: for HTML5 audio/video'
             'gst-plugins-good: for HTML5 audio/video'
             'gst-plugins-bad: for HTML5 audio/video'
             'gst-plugins-ugly: for HTML5 audio/video')
-options=('!strip')
+options=('!strip' '!makeflags')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-	cd "$srcdir/$_pkgname"
-	git submodule update --init --recursive --jobs "$(nproc)"
 }
 
 build() {
