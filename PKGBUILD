@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=video-downloader-git
-pkgver=0.10.2.r10.g6976439
+pkgver=0.12.11.r1.gf4425b8
 pkgrel=1
 pkgdesc="Download videos from websites like YouTube and many others (based on yt-dlp)"
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
   'yt-dlp'
 )
 makedepends=('git' 'meson')
-checkdepends=('appstream-glib')
+checkdepends=('appstream-glib' 'flake8')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+https://github.com/Unrud/video-downloader.git")
