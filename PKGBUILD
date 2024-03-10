@@ -5,7 +5,7 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-kmod
 pkgver=32
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux kernel module management tools and library (Android ${_android_arch})"
 arch=('any')
 url='https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git'
@@ -14,6 +14,7 @@ depends=("android-${_android_arch}-zlib"
          "android-${_android_arch}-openssl"
          "android-${_android_arch}-xz"
          "android-${_android_arch}-zstd")
+makedepends=('android-environment')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-$pkgver.tar."{xz,sign}
         '0001-Use-getcwd.patch')
