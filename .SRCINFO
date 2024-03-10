@@ -1,7 +1,7 @@
 pkgbase = firefox-clearurls
 	pkgdesc = Removes tracking elements from URLs
 	pkgver = 1.23.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://clearurls.xyz
 	arch = any
 	groups = firefox-addons
