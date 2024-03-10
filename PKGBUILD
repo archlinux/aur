@@ -2,10 +2,10 @@
 
 _pkgname=neocities-deploy
 pkgname=$_pkgname-bin
-pkgdesc='Command-line tool for deploying your Neocities site (prebuilt statically linked binary)'
+pkgdesc='Command-line tool for deploying your Neocities site (prebuilt statically-linked binary)'
 url="https://github.com/kugland/$_pkgname"
 pkgver=0.1.11
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 makedepends=(curl)
 license=('GPL-3.0-or-later')

@@ -1,7 +1,7 @@
 pkgbase = neocities-deploy-bin
-	pkgdesc = Command-line tool for deploying your Neocities site (prebuilt statically linked binary)
+	pkgdesc = Command-line tool for deploying your Neocities site (prebuilt statically-linked binary)
 	pkgver = 0.1.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kugland/neocities-deploy
 	arch = x86_64
 	arch = i686
