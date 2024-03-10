@@ -1,7 +1,7 @@
 # Maintainer: Peter Fern <aur at 0xc0dedbad dot com>
 
 pkgname=hyprpanel
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="An opinionated panel/shell for the Hyprland compositor."
 arch=('x86_64' 'aarch64')
@@ -29,4 +29,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('43b88a20a25acd5d2a2fa8eab50d158ff849c977a4cfe548008db65324d86922')
+sha256sums=('4043019bd9eddfea43bab68270a31411ab7159b7bff224d8466024bfb14d8a01')
