@@ -16,9 +16,13 @@ source_x86_64=(
 source_aarch64=( 
   "curl-impersonate_aarch64.tar.gz::https://github.com/lwthiker/curl-impersonate/releases/download/${pkgver}/curl-impersonate-${pkgver}.aarch64-linux-gnu.tar.gz"
 )
+source_armv7h=( 
+  "curl-impersonate_aarch64.tar.gz::https://github.com/lwthiker/curl-impersonate/releases/download/${pkgver}/curl-impersonate-${pkgver}.arm-linux-gnueabihf.tar.gz"
+)
 
 md5sums_x86_64=('b554c4785b5ab6506a040544356bfa7b')
 md5sums_aarch64=('281f7afacbda68df9f29b39e043c8039')
+md5sums_armv7h=('xxxxx')
 
 package () {
   mkdir -p "${pkgdir}/usr/bin/"
