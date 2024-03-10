@@ -15,7 +15,8 @@ license=(MPL-2.0)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 depends=(
-	dbus
+	dbus-glib
+	botan
 	ffmpeg
 	gtk3
 	appmenu-gtk-module
@@ -73,14 +74,14 @@ validpgpkeys=(
 	# https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
 	'14F26682D0916CDD81E37B6D61B7B526D98F0353')
 sha1sums=(
-					'f7992a7f0eea3052a00315e8d1c013410c44fc3d'
-          'SKIP'
-          'bb4bbaddc549edd3506b5e955840fcebffcafb71'
-          'b3ccca02959d94ef2a5db8f140ff96a2cd9724ef'
-          '559ce09fee54c849ea4da2bf881da37f5fc0cac9'
-          '076dc68b2ec6c454afe9b5a9b3fbb7908ce575b8'
-          '7cb502baf161aabdfaae9fbd74cf44260a2b59ac'
-          '54a3b8938f64aa41b03581e48c660851d4676253')
+		'f7992a7f0eea3052a00315e8d1c013410c44fc3d'
+		'SKIP'
+		'bb4bbaddc549edd3506b5e955840fcebffcafb71'
+		'b3ccca02959d94ef2a5db8f140ff96a2cd9724ef'
+		'559ce09fee54c849ea4da2bf881da37f5fc0cac9'
+		'076dc68b2ec6c454afe9b5a9b3fbb7908ce575b8'
+		'59206e9c42055ebcd15fb5fc27ff8f12d64b1f38'
+		'54a3b8938f64aa41b03581e48c660851d4676253')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -127,11 +128,6 @@ prepare() {
 		ac_add_options --enable-official-branding
 		ac_add_options --enable-update-channel=release
 		ac_add_options --with-distribution-id=org.archlinux
-
-		# Custom
-		ac_add_options --with-app-name=$_pkgname
-		export MOZILLA_OFFICIAL=1
-		export MOZ_APP_REMOTINGNAME=${_pkgname}
 		export MOZ_APP_PROFILE="mozilla/${_pkgname}"
 
 		# Keys
