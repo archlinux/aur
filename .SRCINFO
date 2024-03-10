@@ -1,0 +1,16 @@
+pkgbase = obs-ocr
+	pkgdesc = OCR Plugin for OBS based on Tesseract
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/occ-ai/obs-ocr
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = obs-studio
+	depends = opencv
+	depends = curl
+	depends = tesseract
+	source = obs-ocr-0.0.5.tar.xz::https://github.com/occ-ai/obs-ocr/releases/download/0.0.5/obs-ocr-0.0.5-source.tar.xz
+	sha256sums = 00cc82b6828227b1a7d34b65c64de7e3b37cccd4504e15745cabcabbe0f3ab11
+
+pkgname = obs-ocr
