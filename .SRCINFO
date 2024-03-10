@@ -1,7 +1,7 @@
 pkgbase = acestream-launcher
 	pkgdesc = Open AceStream links with a Media Player of your choice
 	pkgver = 2.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/jonian/acestream-launcher
 	arch = any
 	license = GPL-3.0-only
@@ -14,7 +14,6 @@ pkgbase = acestream-launcher
 	optdepends = acestream-engine
 	optdepends = libnotify: support for desktop notifications
 	optdepends = mpv: default media player
-	provides = acestream-launcher
 	source = acestream-launcher-2.1.0.tar.gz::https://github.com/jonian/acestream-launcher/archive/v2.1.0.tar.gz
 	sha256sums = ab3a9a8c88d95674c9159df02625b9dd4f8827cfe1b9322dfce9dfd19f3c725c
 
