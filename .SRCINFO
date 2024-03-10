@@ -1,0 +1,24 @@
+pkgbase = frink-lang-bin
+	pkgdesc = A practical calculating tool and programming language.
+	pkgver = 20240227
+	pkgrel = 1
+	url = https://frinklang.org/
+	arch = any
+	license = LicenseRef-Proprietary
+	makedepends = awk
+	makedepends = imagemagick
+	makedepends = unzip
+	depends = bash
+	depends = java-runtime
+	optdepends = rlwrap: readline support for the command-line shell
+	noextract = frink-lang-bin.jar
+	noextract = frink-lang-bin-unitnames.txt
+	noextract = frink-lang-bin-functionnames.txt
+	source = frink-lang-bin.jar::https://frinklang.org/frinkjar/frink.jar
+	source = frink-lang-bin-unitnames.txt::https://frinklang.org/frinkjar/unitnames.txt
+	source = frink-lang-bin-functionnames.txt::https://frinklang.org/frinkjar/functionnames.txt
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = frink-lang-bin
