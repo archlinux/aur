@@ -1,6 +1,6 @@
 pkgbase = magpie-wm-v1-git
 	pkgdesc = Budgie's in-development Wayland compositor - latest git
-	pkgver = r142.038e441
+	pkgver = r145.3f14a19
 	pkgrel = 1
 	url = https://github.com/BuddiesOfBudgie/magpie/tree/v1
 	arch = x86_64
@@ -11,6 +11,8 @@ pkgbase = magpie-wm-v1-git
 	makedepends = git
 	makedepends = meson
 	makedepends = wayland-protocols
+	depends = libxcb
+	depends = libxkbcommon
 	depends = wlroots
 	depends = wayland
 	depends = xorg-xwayland
