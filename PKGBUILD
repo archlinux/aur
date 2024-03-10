@@ -1,15 +1,15 @@
 #Maintainer Solomon Choina <shlomochoina@gmail.com>
 pkgname=kvirc-git
-pkgver=5.2.0.r10.g6b57a7bef
+pkgver=5.2.2.r1.g5ddf504c5
 pkgrel=1
-pkgdesc="Qt5 based IRC-Client, compiled with kde5 support - Git Version"
+pkgdesc="Qt5 based IRC-Client, compiled with kde6 support - Git Version"
 arch=('i686' 'x86_64')
 url="http://www.kvirc.net"
 license=('GPL-2.0-only')
-depends=('qt5-base' 'glibc' 'openssl' 'zlib' 'perl' 'qt5-multimedia' 'qt5-svg'
-         'qt5-x11extras' 'qt5-webkit' 'phonon-qt5' 'enchant' 'kcoreaddons5'
-         'ki18n5' 'kxmlgui5' 'kwindowsystem5' 'knotifications5'
-         'kservice5' 'audiofile' 'libxss' 'qt5-webengine')
+depends=('glibc' 'openssl' 'zlib' 'perl' 'qt6-svg'
+  'qt6-multimedia' 'enchant' 'audiofile' 'libxss'
+  'qt6-webengine' 'qt6-5compat' 'phonon-qt6' 'kio'
+  'knotifications' 'kxmlgui' 'kparts' 'kstatusnotifieritem')
 makedepends=('python' 'ninja' 'gettext' 'doxygen' 'extra-cmake-modules' 'zsh' 'cmake' 'git'  'gettext')
 conflicts=('kvirc4' 'kvirc')
 provides=('kvirc')
@@ -26,14 +26,15 @@ build() {
   cmake -B _build \
     -S "${pkgname}" \
     -G Ninja \
+    -DCMAKE_SKIP_RPATH=YES \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE="Release" \
     -DWANT_PERL=ON \
     -DWANT_AUDIOFILE=ON \
     -DWANT_KDE=ON \
     -DWANT_OGG_THEORA=ON \
-    -DWANT_DCC_VIDEO=ON \
-    -DWANT_GTKSTYLE=ON
+    -DWANT_DCC_VIDEO=OFF \
+    -DWANT_GTKSTYLE=FF
   ninja -C _build
 }
 
