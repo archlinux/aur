@@ -23,7 +23,7 @@ prepare() {
 
 build() {
   cd ${_pyname}-${pkgver}
-  python -m build --wheel --no-isolation
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
