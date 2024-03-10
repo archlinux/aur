@@ -5,12 +5,12 @@ pkgname=$_pkgname-git
 pkgdesc='Command-line tool for deploying your Neocities site'
 url="https://github.com/kugland/$_pkgname"
 pkgver=0.1.11.r3.g2fd2edc
-pkgrel=1
+pkgrel=2
 arch=('any')
 source=("$_pkgname::git+${url}#branch=master")
 sha256sums=('SKIP')
 makedepends=(cargo)
-license=('GPL3')
+license=('GPL-3.0-or-later')
 options=(!lto)
 
 prepare() {
