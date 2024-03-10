@@ -1,0 +1,19 @@
+pkgbase = opencity
+	pkgdesc = OpenCity, a 3D city simulator
+	pkgver = 0.0.6.5
+	pkgrel = 1
+	url = http://www.opencity.info/
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = gcc-libs
+	depends = glibc
+	depends = glu
+	depends = libglvnd
+	depends = sdl12-compat
+	depends = sdl_image
+	depends = sdl_net
+	depends = sdl_mixer
+	source = https://sourceforge.net/projects/opencity/files/Stable/0.0.6/opencity-0.0.6.5stable.tar.bz2
+	sha1sums = f9fd35974fd45e6d8c4453417d01c56b1ef13bca
+
+pkgname = opencity
