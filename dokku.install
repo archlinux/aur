@@ -76,7 +76,7 @@ setup-plugins() {
   chown dokku:dokku -R "${DOKKU_LIB_ROOT}/plugins" "${DOKKU_LIB_ROOT}/core-plugins"
 
   echo "Install all core plugins"
-  echo -e "#!/bin/sh\\n\\n~/.basher/bash -l \$@" > /tmp/login-basher
+  echo -e "#!/bin/sh\\n\\n~/.basher/bash -l \$1 \"\$2 \$3\"" > /tmp/login-basher
   chmod +x /tmp/login-basher
   BASH_BIN=/tmp/login-basher dokku plugin:install --core
   rm /tmp/login-basher

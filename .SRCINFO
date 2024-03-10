@@ -1,7 +1,7 @@
 pkgbase = dokku
 	pkgdesc = Docker-powered PaaS that helps build and manage the lifecycle of applications
 	pkgver = 0.33.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dokku/dokku
 	install = dokku.install
 	arch = any
@@ -39,7 +39,7 @@ pkgbase = dokku
 	source = systemd_calls.patch
 	source = LICENSE
 	sha256sums = 0228c0d848acfcd05c72350aab49d452de9da207c8bafb78517fede75a21d90c
-	sha256sums = 27185dccb2734fc147ca4a8d9c4ac921f4fb2addfb67b0470c04320a0c3f8ae0
+	sha256sums = 743c53127dc91c660a2aa0ff94cf8faa6aa763c6e76c5696438c97a5c97bd199
 	sha256sums = aec08deb0b1d466f37a0c76f93fc507d443ab8bd770cc0c1097ffeffa75cf9a4
 	sha256sums = b1ac2fed5ac269fb7bbf651a3d37ef5fd56d2c33320e17cb6e23a22a93f5c046
 

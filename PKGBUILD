@@ -2,7 +2,7 @@
 
 pkgname=dokku
 pkgver=0.33.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Docker-powered PaaS that helps build and manage the lifecycle of applications'
 arch=('any')
 url='https://github.com/dokku/dokku'
@@ -42,7 +42,7 @@ source=("${url}/archive/v${pkgver}.zip"
         "systemd_calls.patch"
         "LICENSE")
 sha256sums=('0228c0d848acfcd05c72350aab49d452de9da207c8bafb78517fede75a21d90c'
-            '27185dccb2734fc147ca4a8d9c4ac921f4fb2addfb67b0470c04320a0c3f8ae0'
+            '743c53127dc91c660a2aa0ff94cf8faa6aa763c6e76c5696438c97a5c97bd199'
             'aec08deb0b1d466f37a0c76f93fc507d443ab8bd770cc0c1097ffeffa75cf9a4'
             'b1ac2fed5ac269fb7bbf651a3d37ef5fd56d2c33320e17cb6e23a22a93f5c046')
 install="${pkgname}.install"
