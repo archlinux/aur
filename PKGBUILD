@@ -3,7 +3,7 @@
 pkgname=curl-impersonate-bin
 pkgver=v0.6.1
 pkgrel=1
-pkgdesc="Curl impersonate scripts and executable. Libcurl is a special compilation of curl that makes it impersonate Firefox and Chrome"
+pkgdesc="Special compilation of curl that makes it impersonate Firefox and Chrome"
 url="https://github.com/lwthiker/curl-impersonate"
 license=('MIT')
 arch=('x86_64' 'aarch64')
