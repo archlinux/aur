@@ -4,13 +4,13 @@
 
 pkgname=torrentinfo
 pkgver=1.8.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Bittorrent .torrent file parser and summariser"
 arch=('any')
 url="https://github.com/Fuuzetsu/torrentinfo"
 license=(GPL2)
 depends=(python)
-makedepends=(git python-setuptools)
+makedepends=(git python-build python-installer python-setuptools python-wheel)
 source=("git+$url#commit=3c9b3ba80c867ba28e8ce0982fec8ea5369df8ef")
 b2sums=('SKIP')
 
@@ -21,10 +21,10 @@ prepare() {
 
 build() {
     cd $pkgname
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd $pkgname
-    python setup.py install --root="$pkgdir/" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
