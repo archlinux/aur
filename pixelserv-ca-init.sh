@@ -4,7 +4,9 @@
 TARGET_DIR='/var/cache/pixelserv'
 
 # ensure the target directory exists
-if [[ ! -d "$TARGET_DIR" ]]; then
+if [[ -d "$TARGET_DIR" ]]; then
+	echo "$TARGET_DIR already exists. Consider to remove it before generating new certificates"
+else
 	sudo mkdir -pv "$TARGET_DIR"
 fi
 
