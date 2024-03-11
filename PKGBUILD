@@ -5,20 +5,20 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libx11
 pkgver=1.8.7
-pkgrel=1
+pkgrel=2
 arch=('any')
-pkgdesc="X11 client-side library (android)"
+pkgdesc="X11 client-side library (Android, ${_android_arch})"
 url="https://xorg.freedesktop.org/"
+license=('custom')
 # keep xorgproto runtime dependency
 # https://lists.archlinux.org/pipermail/arch-dev-public/2019-December/029767.html
-depends=('android-ndk'
-         "android-${_android_arch}-libxcb"
+depends=("android-${_android_arch}-libxcb"
          "android-${_android_arch}-xorgproto")
-makedepends=("android-${_android_arch}-xorg-util-macros"
+makedepends=('android-configure'
+             "android-${_android_arch}-xorg-util-macros"
              "android-${_android_arch}-xtrans")
-license=('custom')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=(${url}/releases/individual/lib/libX11-${pkgver}.tar.xz{,.sig}
+source=("${url}/releases/individual/lib/libX11-${pkgver}.tar.xz"{,.sig}
         '0001-Fix-missing-symbols.patch')
 sha512sums=('d53bfc18f38d339a6a695b09835b2ae96b323881678bfe7ddca697605e3bdf4102ff49cc3078880a6c55b5977fcdd0aadaf5429086132de3a5bda302f79a2fa6'
             'SKIP'
