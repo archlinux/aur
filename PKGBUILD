@@ -1,7 +1,7 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=kona-git
-pkgver=20120613
+pkgver=20230601
 pkgrel=1
 pkgdesc="An open-source implementation of the K language, an ASCII APL."
 url="https://github.com/kevinlawler/kona"
@@ -12,7 +12,7 @@ makedepends=('git')
 conflicts=('kona')
 provides=('kona')
 optdepends=('rlwrap: for a nicer repl')
-source=('git://github.com/kevinlawler/kona.git')
+source=('git+https://github.com/kevinlawler/kona.git')
 md5sums=('SKIP')
 _gitname="kona"
 
