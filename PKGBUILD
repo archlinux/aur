@@ -2,7 +2,7 @@
 pkgname=houdunren-camera
 pkgver=1.0.83
 _electronversion=25
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop camera software that can be used for online live streaming, distance learning, and video conferencing.桌面摄像头软件，可用于在线直播、远程教学、视频会议"
 arch=('any')
 url="https://www.houdunren.com/"
@@ -24,7 +24,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
@@ -39,10 +39,12 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    sed '/mainWindow.webContents.openDevTools()/d' -i src/main/index.ts
     pnpm config set store-dir "${srcdir}/.pnpm_store"
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
     pnpm config set link-workspace-packages true
+    echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+    echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+    echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
     sed '/- snap/d;/- deb/d' -i electron-builder.yml
     pnpm install
     pnpm run build:linux
