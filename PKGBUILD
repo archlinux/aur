@@ -4,12 +4,12 @@
 
 _pkgname=libdatachannel
 pkgname="$_pkgname-nice"
-pkgver=0.20.1
-pkgrel=2
+pkgver=0.20.2
+pkgrel=1
 pkgdesc="C/C++ WebRTC network library featuring Data Channels, Media Transport, and WebSockets"
 arch=('x86_64' 'aarch64')
 url="https://github.com/paullouisageneau/$_pkgname"
-license=('MPL2')
+license=(MPL-2.0)
 makedepends=('git' 'cmake' 'plog')
 depends=('glibc' 'glib2' 'gcc-libs' 'openssl' 'libnice' 'libsrtp' 'libusrsctp')
 provides=("$_pkgname=$pkgver")

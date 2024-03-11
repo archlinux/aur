@@ -1,11 +1,11 @@
 pkgbase = libdatachannel-nice
 	pkgdesc = C/C++ WebRTC network library featuring Data Channels, Media Transport, and WebSockets
-	pkgver = 0.20.1
-	pkgrel = 2
+	pkgver = 0.20.2
+	pkgrel = 1
 	url = https://github.com/paullouisageneau/libdatachannel
 	arch = x86_64
 	arch = aarch64
-	license = MPL2
+	license = MPL-2.0
 	makedepends = git
 	makedepends = cmake
 	makedepends = plog
@@ -16,10 +16,10 @@ pkgbase = libdatachannel-nice
 	depends = libnice
 	depends = libsrtp
 	depends = libusrsctp
-	provides = libdatachannel=0.20.1
+	provides = libdatachannel=0.20.2
 	conflicts = libdatachannel
 	options = debug
-	source = git+https://github.com/paullouisageneau/libdatachannel.git#tag=v0.20.1
+	source = git+https://github.com/paullouisageneau/libdatachannel.git#tag=v0.20.2
 	md5sums = SKIP
 
 pkgname = libdatachannel-nice
