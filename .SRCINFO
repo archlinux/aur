@@ -1,0 +1,18 @@
+pkgbase = atuin-lily-git
+	pkgdesc = Magical shell history ( lilydjwg fork )
+	pkgver = r968.9d91564
+	pkgrel = 1
+	url = https://github.com/atuinsh/atuin
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	optdepends = bash-preexec: bash integration
+	provides = atuin
+	conflicts = atuin
+	options = !lto
+	source = atuin-lily::git+https://github.com/lilydjwg/atuin.git
+	sha256sums = SKIP
+
+pkgname = atuin-lily-git
