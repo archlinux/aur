@@ -6,8 +6,8 @@
 _pkgname=input-leap-inputcapture
 pkgbase=$_pkgname
 pkgname=($_pkgname-headless $_pkgname)
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.4.0+677+gc5bb9dca
+pkgrel=1
 pkgdesc="Open-source KVM software"
 arch=(x86_64)
 url="https://github.com/input-leap/input-leap"
