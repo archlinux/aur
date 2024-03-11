@@ -3,8 +3,8 @@
 
 _arch=x64v4
 _pkgbase=linux-xanmod-edge
-_major=6.7
-_minor=4
+_major=6.8
+_minor=0
 _branch=6.x
 _xanmodrel=1
 _xanmodrev=
@@ -55,8 +55,8 @@ validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('4a388142a9ed11105a416931f1d5b6d54e868fbb3c2ce881612694a7ba69c129'
-            '1f480931792c393bada7dd469f61758f52e6968bc8060fafcec2017367c9877e')
+sha256sums=('b343b8da6b54a7acf1193d98aedd0b8fd5e64aa09acc919228caa50a3e7f7d5b'
+            '5d7238536fa596bb596ae41ab5127d6f5364d6749aa9d4307326a478c0f74312')
 
 _package() {
   pkgdesc="The Linux kernel and modules with Xanmod patches - Rolling Release (EDGE) - Prebuilt version - ${_arch}"
@@ -111,7 +111,7 @@ _package-headers() {
   mkdir -p "${pkgdir}"/usr/share/doc "${pkgdir}"/usr/src "${pkgdir}/usr/lib/modules/${kernver}"
   cp -r usr/share/doc/linux-headers-* "${pkgdir}/usr/share/doc/"
   cp -r usr/src/linux-headers-${kernver} "${builddir}"
-  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"}
+  ln -sr "${builddir}" "${pkgdir}/usr/src/${pkgbase}"
 }
 
 eval "package_${pkgname[0]}() { _package \"\$@\"; }"
