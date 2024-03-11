@@ -1,0 +1,33 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6a9ae25..98b0530 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -188,13 +188,13 @@ endif()
+ 
+ # This line needs to be updated manually with any new/deleted object files; cmake discourages GLOBbing source files
+ add_executable(bolt
+-    modules/fmt/src/format.cc src/main.cxx src/browser.cxx src/browser/app.cxx src/browser/client.cxx
++    src/main.cxx src/browser.cxx src/browser/app.cxx src/browser/client.cxx
+     src/browser/resource_handler.cxx src/browser/window_launcher.cxx ${WINDOW_LAUNCHER_OS_SPECIFIC}
+     src/mime.cxx src/file_manager/directory.cxx client_cmake_gen.cxx ${BOLT_FILE_MANAGER_LAUNCHER_GEN}
+ )
+ 
+ # Various build properties
+-target_include_directories(bolt PUBLIC ${CEF_ROOT} modules/fmt/include)
++target_include_directories(bolt PUBLIC ${CEF_ROOT})
+ set_target_properties(bolt PROPERTIES CXX_STANDARD 20 CXX_EXTENSIONS OFF)
+ target_link_libraries(bolt PUBLIC libcef_dll_wrapper)
+ if(UNIX AND NOT APPLE)
+@@ -241,6 +241,12 @@ if(NOT WIN32)
+     install(TARGETS java-proxy DESTINATION opt/bolt-launcher)
+ endif()
+ 
++# fmt9
++find_package(fmt 9.0.0...<10.0.0 REQUIRED)
++get_target_property(FMT_INCLUDE_DIRECTORIES fmt::fmt INTERFACE_INCLUDE_DIRECTORIES)
++target_include_directories(bolt PUBLIC ${FMT_INCLUDE_DIRECTORIES})
++target_link_libraries(bolt PUBLIC fmt::fmt)
++
+ # Bolt uses GTK on all platforms, but it must specifically use gtk3
+ # to avoid symbols conflicting with CEF's GTK usage on Unix platforms
+ find_package(PkgConfig REQUIRED)
