@@ -5,7 +5,7 @@ _pkgname=Wave
 _appname="${_pkgname} Terminal"
 pkgver=0.6.3
 _electronversion=28
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source, cross-platform terminal for seamless workflows"
 arch=('any')
 url="https://www.waveterm.dev/"
@@ -32,11 +32,12 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     gendesk -f -n -q --categories="Utility" --name="${_appname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
@@ -50,6 +51,8 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
+    mkdir -p "${srcdir}/.electron-gyp"
+    touch "${srcdir}/.electron-gyp/.yarnrc"
     yarn install --cache-folder "${srcdir}/.yarn_cache"
     scripthaus run electron-rebuild
     scripthaus run build-backend
