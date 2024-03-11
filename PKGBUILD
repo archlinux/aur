@@ -11,8 +11,8 @@ makedepends=()
 optdepends=()
 provides=('ci-toolbox')
 conflicts=('ci-toolbox')
-source=("https://gitlab.com/mbedsys/citbx4gitlab/-/archive/$pkgver/citbx4gitlab-$pkgver.tar.bz2")
-sha256sums=('c30d84a359ab07530fd44edcabc59f0d15d7f4b34098127030f224f2bd33f8fc')
+source=("https://gitlab.com/api/v4/projects/mbedsys%2fcitbx4gitlab/packages/generic/ci-toolbox/$pkgver/ci-toolbox-$pkgver.tar.xz")
+sha256sums=('35f6ed1016124d4c5130e7985bfe0e2f73b49ada4ada44423ad04b4692f2e9cb')
 
 package() {
     mkdir "$pkgdir/usr/"
