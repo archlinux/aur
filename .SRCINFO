@@ -1,6 +1,6 @@
 pkgbase = audiobookconverter-bin
 	pkgdesc = Improved AudioBookConverter based on freeipodsoftware release (mp3 to m4b converter)
-	pkgver = 6.1.0
+	pkgver = 6.2.10
 	pkgrel = 1
 	url = https://github.com/yermak/AudioBookConverter
 	install = audiobookconverter-bin.install
@@ -9,9 +9,9 @@ pkgbase = audiobookconverter-bin
 	provides = audiobookconverter
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/yermak/AudioBookConverter/releases/download/version_6.1.0/AudioBookConverter-static-binaries-6.1.0.tar.gz
+	source = https://github.com/yermak/AudioBookConverter/releases/download/version_6.2.10/AudioBookConverter-static-binaries-6.2.10.tar.gz
 	source = audiobookconverter-AudioBookConverter.desktop
-	sha512sums = f1f31e2e5d8764217ee56d37aff5aa372857f15f5978e6e54063efc154bbea586e72156762e8e59a3becfd5549258963e792a6da40663eefd5d273cdf51b8156
+	sha512sums = 76171c2100a5c3919efe346c38b699c48637d6f85cac8074df674155e7ca85d1478a5dc52617a454b6a04c45a74cd3a51bb158ec48c972e0d80fea1e6161cde0
 	sha512sums = 6fafcfac49c8e7a0e2e0f2305f4812de6342a692f3a8cf7523f1d2decf49731e5ab60235ea4ecab5a9ea53c2a6463cff8fb08bc01a8ffd8b8f98f2bea80cfa6a
 
 pkgname = audiobookconverter-bin
