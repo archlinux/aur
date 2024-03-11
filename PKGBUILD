@@ -3,24 +3,25 @@
 _pkgname=segmented
 _pkgver=2.0-3
 pkgname=r-${_pkgname,,}
-pkgver=2.0.3
-pkgrel=1
-pkgdesc='Regression Models with Break-Points / Change-Points Estimation'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Regression Models with Break-Points / Change-Points Estimation (with Possibly Random Effects)"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e7a88ae270ecb853067fbe26e21477dd369b47cefc443c3af486f2bebed909b9')
+md5sums=('1ea139e06c62456571430a62cc3cbc8b')
+b2sums=('96d706f1df10c0b9ffba604bc1e8d684ebaaf153224f754fad90379b8f240b3d4e78580ea5c761faf989a244e6f7c632619ac6862d64590964e925570dbd78c2')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
