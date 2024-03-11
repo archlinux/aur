@@ -12,12 +12,13 @@ pkgbase = ruqola-git
 	depends = qt6-websockets
 	depends = qtkeychain-qt6
 	depends = hicolor-icon-theme
-	depends = syntax-highlighting5
-	depends = kuserfeedback5
-	depends = knotifyconfig5
-	depends = kdoctools5
-	depends = kidletime5
-	depends = prison5
+	depends = syntax-highlighting
+	depends = kwidgetsaddons
+	depends = kuserfeedback
+	depends = knotifyconfig
+	depends = kdoctools
+	depends = prison
+	depends = kidletime
 	depends = ktextaddons
 	provides = ruqola
 	conflicts = ruqola
@@ -25,4 +26,3 @@ pkgbase = ruqola-git
 	md5sums = SKIP
 
 pkgname = ruqola-git
-
