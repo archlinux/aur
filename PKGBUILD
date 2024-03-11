@@ -2,11 +2,11 @@
 
 _pkgname=elixir-ls
 pkgname=elixir-ls-git
-pkgver=0.7.0.r13.g98b7906
+pkgver=0.20.0.r10.ga6f5d8ab
 pkgrel=1
 pkgdesc='A frontend-independent Language Server Protocol for Elixir'
 url='https://github.com/elixir-lsp/elixir-ls'
-license=('Apache')
+license=('Apache-2.0')
 arch=('any')
 depends=('elixir' 'erlang-nox')
 makedepends=('git' 'rebar3')
@@ -43,7 +43,7 @@ package() {
   export MIX_ENV=prod
 
   install -dm0755 "${pkgdir}"/usr/lib/${_pkgname}
-  mix elixir_ls.release -o "${pkgdir}"/usr/lib/${_pkgname}
+  mix elixir_ls.release2 -o "${pkgdir}"/usr/lib/${_pkgname}
 
   install -dm0755 "${pkgdir}"/usr/bin
 
