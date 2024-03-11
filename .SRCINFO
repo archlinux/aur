@@ -13,7 +13,6 @@ pkgbase = python-sardana
 	depends = python-pyqtgraph
 	depends = python-numpy
 	depends = python-h5py
-	depends = python-mock
 	depends = libibus
 	depends = python-pytest
 	depends = spyder

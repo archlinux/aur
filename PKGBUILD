@@ -10,7 +10,7 @@ url="https://gitlab.com/sardana-org/${_name}"
 license=('LGPL')
 depends=(
   python-taurus itango python-lxml python-click python-pyqtgraph
-  python-numpy python-h5py python-mock libibus python-pytest spyder
+  python-numpy python-h5py libibus python-pytest spyder
   python-scipy libblockdev python-pyqt5-datavisualization
   python-jsonpointer gobject-introspection-runtime
 )
