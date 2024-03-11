@@ -3,11 +3,11 @@
 _reponame=Shipwright
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=8.0.3.r26.g19cede44c
+pkgver=8.0.5.r138.g8b3cfdb84
 pkgrel=1
 arch=("x86_64" "i686" "armv7h" "aarch64")
 url="https://shipofharkinian.com/"
-_depends_soh=("sdl2" "sdl2_net" "libpulse" "glew" "zenity")
+_depends_soh=("sdl2" "sdl2_net" "glew" "zenity" "libzip")
 _depends_soh_otr_exporter=("libpng")
 depends=("${_depends_soh[@]}" "${_depends_soh_otr_exporter[@]}")
 makedepends=("cmake" "ninja" "python" "curl" "lsb-release" "libxrandr" "libxinerama" "libxi" "glu" "boost")
