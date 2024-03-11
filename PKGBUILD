@@ -16,6 +16,7 @@ depends=(
   glibc
   glslang
   hyprlang
+  hyprcursor
   libdisplay-info
   libdrm
   libglvnd
