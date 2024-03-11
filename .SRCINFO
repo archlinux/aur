@@ -1,16 +1,15 @@
-pkgbase = brother-mfc-l2750dw
-	pkgdesc = LPR and CUPS driver for the Brother MFC-l2750DW
-	pkgver = 4.0.0
+pkgbase = brother-mfc-l2400dw
+	pkgdesc = LPR and CUPS driver for the Brother HL-L2400DW
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = http://solutions.brother.com/linux/en_us/
-	install = brother-mfc-l2750dw.install
+	install = brother-mfc-l2400dw.install
 	arch = i686
 	arch = x86_64
 	license = custom:brother commercial license
 	depends = cups
-	source = http://download.brother.com/welcome/dlf103529/mfcl2750dwpdrv-4.0.0-1.i386.rpm
-	md5sums = 74e8e59060d8038bfb9090091354bf09
+	source = https://download.brother.com/welcome/dlf105969/hll2460dwpdrv-4.1.0-1.i386.rpm
+	md5sums = 0e42304efafea5fa0deaa64a6291d7a4
 	depends_x86_64 = lib32-glibc
 
-pkgname = brother-mfc-l2750dw
-
+pkgname = brother-mfc-l2400dw
