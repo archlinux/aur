@@ -1,18 +1,35 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=valent-git
-pkgver=r1125.2bd885f8
+pkgver=1.0.0.alpha.45.r0.gac5fcf0cc
 pkgrel=1
 pkgdesc="Connect, control and sync devices"
 arch=('x86_64')
 url="https://valent.andyholmes.ca"
 license=('GPL-3.0-or-later')
-depends=('evolution-data-server' 'gnutls' 'gstreamer' 'json-glib' 'libadwaita'
-         'libpeas-2' 'libportal-gtk4' 'libpulse' 'libsysprof-capture' 'sqlite')
-makedepends=('git' 'meson' 'gobject-introspection' 'vala')
-#makedepends+=('gi-docgen') # -Ddocumentation=true (should be split out into a docs package)
-checkdepends=('appstream')
-#checkdepends+=('walbottle') # -Dtests=true (for JSON tests)
+depends=(
+  'evolution-data-server'
+  'gnutls'
+  'gstreamer'
+  'json-glib'
+  'libadwaita'
+  'libpeas-2'
+  'libportal-gtk4'
+  'libpulse'
+  'libsysprof-capture'
+  'sqlite'
+)
+makedepends=(
+#  'gi-docgen'  ## -Ddocumentation=true
+  'git'
+  'meson'
+  'gobject-introspection'
+  'vala'
+)
+checkdepends=(
+  'appstream'
+#  'walbottle'  ## -Dtests=true (for JSON tests)
+)
 provides=('libvalent-1.so=1.0.0')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -23,7 +40,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -34,10 +51,7 @@ prepare() {
 }
 
 build() {
-  arch-meson "${pkgname%-git}" build \
-    -Ddocumentation='false' \
-    -Dtests='false' \
-    -Dfuzz_tests='false'
+  arch-meson "${pkgname%-git}" build
   meson compile -C build
 }
 
