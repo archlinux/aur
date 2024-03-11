@@ -1,27 +1,61 @@
-# Maintainer:
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=budgie-indicator-applet
-pkgver=0.6.2
+pkgver=0.7.2.r1.g6ff6208
+_commit=6ff6208c28ebf97c80b2534511e48e95fef3d5b8
 pkgrel=1
 pkgdesc="Application Indicator Applet for the budgie-desktop"
 url='https://github.com/UbuntuBudgie/budgie-indicator-applet'
 arch=('i686' 'x86_64')
-license=('LGPL3')
-depends=('budgie-desktop' 'ido' 'libindicator-gtk3' 'libpeas')
-makedepends=('gobject-introspection' 'gtk3' 'intltool' 'libtool')
+license=('GPL-3.0-only')
+depends=(
+  'atk'
+  'ayatana-ido'
+  'budgie-desktop'
+  'gdk-pixbuf2'
+  'glib2'
+  'glibc'
+  'gtk3'
+  'libayatana-indicator'
+  'libpeas'
+)
+makedepends=(
+  'git'
+)
+source=("git+${url}.git#commit=${_commit}")
+b2sums=('SKIP')
 
-source=("https://github.com/UbuntuBudgie/budgie-indicator-applet/archive/v${pkgver}.tar.gz")
-sha512sums=('7faaad7418d4df7eaef675c281c1fc09f06eb979f6e3662e9e757628ea7d94c24264d15a4c9f2b70cf78a259b11881903c3e43a56150b800307e25decdd95b99')
+prepare() {
+  cd "${srcdir}/${pkgname}"
+
+  echo "Adding LDFLAGS vaues to CLFLAGS to respect LTO, relro, as-needed etc. configs."
+  export CFLAGS+=" ${LDFLAGS}"
+
+  ./autogen.sh \
+    --libdir=/usr/lib \
+    --prefix=/usr \
+    --sharedstatedir=/var \
+    --sharedstatedir=/var/lib \
+    --sysconfdir=/etc \
+    --with-ayatana-indicators
+
+  echo "Adding LTO and '--as-needed' params to libtool."
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+}
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  git describe --long --tags| sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  ./autogen.sh --prefix=/usr
+  cd "${srcdir}/${pkgname}"
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   make DESTDIR="${pkgdir}" install
 }
