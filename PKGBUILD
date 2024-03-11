@@ -3,8 +3,8 @@ pkgname="watt-wiser-sensors-bin"
 _pkgname=${pkgname%-bin}
 pkgdesc="A software energy consumption estimation tool"
 _repo="watt-wiser"
-pkgver=v0.0.6
-pkgrel=2
+pkgver=v0.0.8
+pkgrel=1
 arch=("any")
 url="https://github.com/wattwisegames/$_repo"
 source=("${_repo}-${pkgver}-linux.tar.xz"::"${url}/releases/download/${pkgver}/${_repo}-${pkgver}-linux.tar.xz")
@@ -13,9 +13,9 @@ provides=($_pkgname)
 conflicts=("$_pkgname" "watt-wiser-git" "watt-wiser-sensors-git")
 depends=("lm_sensors")
 
-sha256sums=('63706f77013f1aeb6b48230e3fa9ed4b67c943f9fc21035cc4d02efd12cbe32a')
-sha512sums=('4341f618578ae7a32b381bf16032081727bf5bbdd4c24a595c84b53871b4faa5c00e7f60816ffe2690d062ed68cddb6263dfc792f7c6d5df9807e4aef2ba7165')
-b2sums=('d2b8efc2a8352cd82d30416942608ec0e4924e8b146bda6131061802c26dd02c025eb88929877a5438521afe0115765d5ab7334b04a8b3956cafb2c0de18a32d')
+sha256sums=('6db5612ede2c6307f24047e7c9a82223536fc2c97c81e0e6b774877b8d280634')
+sha512sums=('3f41194f5c1b88bb2e3e35b3363657e11568c1909aaea755790f31d61d8e5ba0448dfe4e1fb78f9e291ca9ea24cd307e56fffdb584fd1e51e1c2f28f24e95f12')
+b2sums=('df5b85474a505b0ac3e852fb1ffe2883d58411a0fa00a83f223b1209bdd3fc575a9c8aa48e9f719ca59bb0f594bcdd938c77f71ec68f4bf0138a7c86fea252ba')
 
 package() {
   cd "${_repo}-${pkgver}-linux"
