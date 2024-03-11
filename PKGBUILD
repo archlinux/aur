@@ -7,14 +7,15 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-libxslt
 pkgver=1.1.39
-pkgrel=1
+pkgrel=2
 arch=('any')
-pkgdesc="XML stylesheet transformation library (android)"
+pkgdesc="XML stylesheet transformation library (Android, ${_android_arch})"
 url="https://gitlab.gnome.org/GNOME/libxslt/-/wikis/home"
 license=('custom:MIT')
 depends=("android-${_android_arch}-libgcrypt"
          "android-${_android_arch}-libxml2"
-         "android-${_android_arch}-xz")
+         "android-${_android_arch}-xz"
+         'android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://gitlab.gnome.org/GNOME/libxslt/-/archive/v${pkgver}/libxslt-v${pkgver}.tar.gz")
 md5sums=('8058ddbcae9bc4a6ab75327e748561de')
