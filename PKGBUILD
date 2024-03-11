@@ -3,12 +3,12 @@
 
 pkgname=jeveassets
 pkgver=7.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Out-of-game asset manager for Eve-Online, written in Java"
 arch=('any')
 url="http://eve.nikr.net/jeveasset"
 license=('GPL2')
-depends=('jre-openjdk')
+depends=('java-environment')
 install=$pkgname.install
 
 source=(
