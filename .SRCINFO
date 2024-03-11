@@ -1,11 +1,12 @@
 pkgbase = ctranslate2
 	pkgdesc = A C++ and Python library for efficient inference with Transformer models.
-	pkgver = 4.0.0
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://opennmt.net/CTranslate2
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = cuda
 	makedepends = git
 	makedepends = intel-oneapi-mkl
 	makedepends = onednn
@@ -14,7 +15,8 @@ pkgbase = ctranslate2
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	source = git+https://github.com/OpenNMT/CTranslate2.git#commit=61492e00246b5e3818b56fb27d570220c87b6194
+	options = !lto
+	source = git+https://github.com/OpenNMT/CTranslate2.git#commit=27092e4f3c8f23534a3ba2b5d2d35b048fa40ddf
 	source = git+https://github.com/jarro2783/cxxopts.git
 	source = git+https://github.com/NVIDIA/thrust.git
 	source = git+https://github.com/google/googletest.git
@@ -37,6 +39,7 @@ pkgname = ctranslate2
 	pkgdesc = A C++ library for efficient inference with Transformer models.
 	depends = nlohmann-json
 	depends = onednn
+	optdepends = cuda
 	provides = libctranslate2.so=4
 
 pkgname = python-ctranslate2
@@ -46,3 +49,4 @@ pkgname = python-ctranslate2
 	depends = python-pytorch
 	depends = python-setuptools
 	depends = python-yaml
+	optdepends = python-pytorch-cuda

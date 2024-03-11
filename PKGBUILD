@@ -5,7 +5,7 @@ pkgname=(
 #  'ctranslate2-docs'
 )
 pkgbase=ctranslate2
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="A C++ and Python library for efficient inference with Transformer models."
 arch=('x86_64')
@@ -13,7 +13,7 @@ url="https://opennmt.net/CTranslate2"
 license=('MIT')
 makedepends=(
   'cmake'
-#  'cuda'
+  'cuda'
 #  'cudnn'
   'git'
   'intel-oneapi-mkl'
@@ -35,7 +35,8 @@ makedepends=(
 #  'python-pytorch'
 #  'python-yaml'
 #)
-_commit=61492e00246b5e3818b56fb27d570220c87b6194  # tags/4.0.0^0
+options=('!lto')  # lto-wrapper fails with CUDA options enabled
+_commit=27092e4f3c8f23534a3ba2b5d2d35b048fa40ddf  # tags/4.1.0^0
 source=("git+https://github.com/OpenNMT/CTranslate2.git#commit=$_commit"
         'git+https://github.com/jarro2783/cxxopts.git'
         'git+https://github.com/NVIDIA/thrust.git'
@@ -84,14 +85,13 @@ prepare() {
 
 build() {
 
-  ## WITH_CUDA='ON'
-  ## CUDA_DYNAMIC_LOADING='ON'
-  ## CUDA_ARCH_LIST='Common'
   ## WITH_CUDNN='ON'
-  # fails to build
+  # hard dependency if enabled, however convolution layers will not be supported on
+  # GPU if CUDA is enabled without it
 
   ## WITH_OPENBLAS='ON'
-  # fails to build
+  # Enabling both WITH_DNNL and WITH_OPENBLAS is broken
+  # https://github.com/OpenNMT/CTranslate2/issues/1294
 
   cmake -B build -S CTranslate2 \
     -DCMAKE_BUILD_TYPE='Release' \
@@ -100,6 +100,9 @@ build() {
     -DWITH_MKL='ON' \
     -DWITH_DNNL='ON' \
     -DWITH_RUY='ON' \
+    -DWITH_CUDA='ON' \
+    -DCUDA_DYNAMIC_LOADING='ON' \
+    -DCUDA_ARCH_LIST='Common' \
     -Wno-dev
   cmake --build build
 
@@ -126,6 +129,7 @@ build() {
 package_ctranslate2() {
   pkgdesc="A C++ library for efficient inference with Transformer models."
   depends=('nlohmann-json' 'onednn')
+  optdepends=('cuda')
   provides=('libctranslate2.so=4')
 
   DESTDIR="$pkgdir" cmake --install build
@@ -145,6 +149,7 @@ package_python-ctranslate2() {
     'python-setuptools'
     'python-yaml'
   )
+  optdepends=('python-pytorch-cuda')
 
   cd CTranslate2/python
   python -m installer --destdir="$pkgdir" dist/*.whl
