@@ -2,7 +2,7 @@
 # Contributor: Tong Chunli<t.cunly at 163 dot com>
 
 pkgname=python-colcon-core
-pkgver=0.15.1
+pkgver=0.15.2
 pkgrel=1
 pkgdesc="Command line tool to build sets of software packages."
 arch=(any)
@@ -10,10 +10,10 @@ url="https://colcon.readthedocs.io/en/released/"
 license=('Apache')
 depends=('python-pytest' 'python-pytest-runner' 'python-pytest-rerunfailures'
          'python-pytest-repeat' 'python-coverage' 'python-pytest-cov'
-         'python-distlib' 'python-notify2' 'python-empy')
+         'python-distlib' 'python-notify2' 'python-empy3')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/colcon/colcon-core/archive/$pkgver.tar.gz")
-sha256sums=('b8b019e9dfe871e9a12e029bb37b31ecc9fb7b869b51c9abdcc9a7da8ec25809')
+sha256sums=('2eebc46d001163a70c37bff57c5cc83c694563ff75b5178bcd2a24d6ff0cb645')
 
 _pkgname=colcon-core
 
