@@ -2,7 +2,7 @@ post_install() {
 	#set up service files
 	case "`readlink /usr/bin/init`" in
 		(*systemd)
-			cat > /lib/systemd/system/alsabeep.service <<EOF
+			cat > /lib/systemd/system/alsabeep.service <<\EOF
 [Unit]
 Description=Alsa based beep replacement for systems without a PC Speaker
 
@@ -16,19 +16,48 @@ EOF
 			;;
 		(*runit*)
 			mkdir /etc/runit/sv/alsabeep
-			cat >/etc/runit/sv/alsabeep/run <<EOF
+			cat >/etc/runit/sv/alsabeep/run <<\EOF
 #!/usr/bin/sh
 exec /usr/bin/alsabeep-helper start
 EOF
-			cat >/etc/runit/sv/alsabeep/finish <<EOF
+			cat >/etc/runit/sv/alsabeep/finish <<\EOF
 #!/usr/bin/sh
 exec /usr/bin/alsabeep-helper stop
 EOF
 			chmod a+x /etc/runit/sv/alsabeep/*
 			;;
+		(openrc-init)
+			cat >/etc/init.d/alsabeep <<\EOF
+#!/sbin/openrc-run
+name=alsabeep
+description="Alsa based beep replacement for systems without a PC Speaker"
+start() {
+		ebegin "Starting alsabeep"
+		alsabeep_n=0 /usr/bin/alsabeep-helper start
+		eend 0
+}
+stop() {
+		ebegin "Stopping alsabeep"
+		/usr/bin/alsabeep-helper stop
+		eend 0
+}
+status() {
+		p="`pidof alsabeep-daemon`"
+		if [ -d /sys/module/alsabeep ]; then
+			m='is running'
+			[ -n "$p" ] && m="$m with alsabeep-daemon[$p]" || m="$m without alsdabeep-daemon"
+		else
+			m='is stopped'
+			[ -n "$p" ] && m="$m, but alsabeep-daemon[$p] runs" || true
+		fi
+		einfo "Status alsabeep $m"
+}
+EOF
+			chmod a+x /etc/init.d/alsabeep
+			;;
 	esac
 
-	cat<<EOF
+	cat<<\EOF
 
 configure using /etc/alsabeep-helper.conf
 
@@ -49,6 +78,6 @@ post_remove() {
 	(
 	killall alsabeep-daemon || true
 	modprobe -r alsabeep || true
-	rm -rf /lib/systemd/system/alsabeep.service /etc/runit/sv/alsabeep || true
+	rm -rf /lib/systemd/system/alsabeep.service /etc/runit/sv/alsabeep /etc/init.d/alsabeep || true
 	) 2>/dev/null
 }
