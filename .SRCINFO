@@ -1,6 +1,6 @@
 pkgbase = perl-latexml
 	pkgdesc = LaTeX to XML converter
-	pkgver = 0.8.7
+	pkgver = 0.8.8
 	pkgrel = 1
 	url = http://dlmf.nist.gov/LaTeXML/
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = perl-latexml
 	depends = perl-io-string
 	depends = perl-archive-zip
 	options = !emptydirs
-	source = http://dlmf.nist.gov/LaTeXML/releases/LaTeXML-0.8.7.tar.gz
-	sha512sums = 3936ec54ce74aa4486b8be7ba3f9810ce76f5660a7434c7d291dc87cacf23181169698efffa5d0860411cbbadf87cd47f94541a59ced0a8aca7aa82dc92bc8dd
+	source = https://dlmf.nist.gov/LaTeXML/releases/LaTeXML-0.8.8.tar.gz
+	b2sums = 2660e6a009fa5c3520098201da5113011886031e2336154fc0a218cdf7bbfae40cb2b0b5ebbbae66a8aa25145898a91375339815d021c02727d1a506b2296e13
 
 pkgname = perl-latexml
