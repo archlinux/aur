@@ -1,0 +1,16 @@
+pkgbase = idris2-toml-idr-git
+	pkgdesc = A TOML parser for Idris 2
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/cuddlefishie/toml-idr
+	arch = x86_64
+	license = MPL-2.0
+	license = CC0-1.0
+	makedepends = git
+	depends = idris2
+	provides = idris2-toml-idr
+	conflicts = idris2-toml-idr
+	source = idris2-toml-idr::git+https://github.com/cuddlefishie/toml-idr.git
+	sha256sums = SKIP
+
+pkgname = idris2-toml-idr-git
