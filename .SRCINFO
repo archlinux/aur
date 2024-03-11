@@ -1,14 +1,14 @@
 pkgbase = newman
 	pkgdesc = Newman is a command-line collection runner for Postman
-	pkgver = 6.1.0
+	pkgver = 6.1.1
 	pkgrel = 1
 	url = https://github.com/postmanlabs/newman
 	arch = any
 	license = Apache
 	makedepends = npm
 	depends = nodejs
-	noextract = newman-6.1.0.tgz
-	source = https://registry.npmjs.org/newman/-/newman-6.1.0.tgz
-	sha512sums = d00fdd4959c6be69cdbfa45ab4234c2189d27ccaa452304b31a73f2efa3e0b466bf0141bc1e06e130fb3351d6480f881c14426615911bc6589c08fdc137376a8
+	noextract = newman-6.1.1.tgz
+	source = https://registry.npmjs.org/newman/-/newman-6.1.1.tgz
+	b2sums = 3ce40b6fd6c26a91c81d69679ad5cb92a2163559387eab7f856fec172d537d3175bd7a990c21c32a5bc22b25542dd529422316f0b295f8ef78ff1062588bf916
 
 pkgname = newman
