@@ -1,13 +1,13 @@
 pkgbase = clamtk-gnome
 	pkgdesc = a simple plugin for ClamTk to allow a right-click, context menu scan of files or folders in the Nautilus file manager.
-	pkgver = 6.15
+	pkgver = 6.16
 	pkgrel = 1
 	url = https://github.com/dave-theunsub/clamtk-gnome
 	arch = any
 	license = GPL
 	depends = clamtk
 	depends = python-nautilus
-	source = https://github.com/dave-theunsub/clamtk-gnome/releases/download/v6.15/clamtk-gnome-6.15.tar.xz
-	md5sums = e6d58c2860b8729a9442e358acf2e04f
+	source = https://github.com/dave-theunsub/clamtk-gnome/releases/download/v6.16/clamtk-gnome-6.16.tar.xz
+	md5sums = 44e8be8fb69694a11660e3e54242b613
 
 pkgname = clamtk-gnome
