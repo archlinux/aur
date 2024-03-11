@@ -12,7 +12,12 @@ fi
 
 # check the ownership of the directory
 if [[ "$(stat -c '%U' "$TARGET_DIR")" != 'nobody' ]]; then
-	sudo chown -v nobody:nobody "$TARGET_DIR"
+	sudo chown -vR nobody:root "$TARGET_DIR"
+fi
+
+# check directory permissions
+if [[ "$(stat -c '%A' "$TARGET_DIR")" =~ '---$' ]]; then
+	sudo chmod -vR o-rwx "$TARGET_DIR"
 fi
 
 # generate cert

@@ -1,11 +1,26 @@
 # arg 1:  the new package version
 post_install() {
-	if [ ! -d /var/cache/pixelserv ]; then
-		/bin/mkdir /var/cache/pixelserv
+	# target directory
+	TARGET_DIR='/var/cache/pixelserv'
+
+	# ensure the target directory exists
+	if [[ -d "$TARGET_DIR" ]]; then
+		echo "$TARGET_DIR already exists. Consider to remove it before generating new certificates"
+	else
+		sudo mkdir -pv "$TARGET_DIR"
 	fi
-	/bin/chown -R nobody:root /var/cache/pixelserv
-	/bin/chmod -R 755 /var/cache/pixelserv
-cat << EOF
+
+	# check the ownership of the directory
+	if [[ "$(stat -c '%U' "$TARGET_DIR")" != 'nobody' ]]; then
+		sudo chown -vR nobody:root "$TARGET_DIR"
+	fi
+
+	# check directory permissions
+	if [[ "$(stat -c '%A' "$TARGET_DIR")" =~ '---$' ]]; then
+		sudo chmod -vR o-rwx "$TARGET_DIR"
+	fi
+
+	cat <<EOF
 
     In order to use pixelserv-tls you need to:
         1. create root CA certificate https://git.io/vNuoH
@@ -37,7 +52,8 @@ post_upgrade() {
 
 # arg 1:  the old package version
 post_remove() {
-cat << EOF
+	TARGET_DIR='/var/cache/pixelserv'
+	cat <<EOF
 
     If you won't use pixelserv-tls anymore you may remove "Pixelserv CA" certificate
     and pixelserv-tls's cert folder using:
@@ -45,7 +61,7 @@ cat << EOF
         rm /usr/share/ca-certificates/trust-source/anchors/ca.pixelserv.crt
         trust extract-compat
 
-        rm -rf /var/cache/pixelserv
+        rm -rf $TARGET_DIR
 
 EOF
 }
