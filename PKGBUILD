@@ -4,10 +4,10 @@
 # Contributor: johnnyapol <arch@johnnyapol.me>
 # Based off the discord community repo PKGBUILD by Filipe Laíns (FFY00) <lains@archlinux.org>
 _pkgname=discord
-_electron=electron26
+_electron=electron
 pkgname=${_pkgname}_arch_electron
 pkgver=0.0.44
-pkgrel=1
+pkgrel=2
 pkgdesc="Discord (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('any')
 provides=("${_pkgname}")
@@ -37,6 +37,7 @@ prepare() {
   rm Discord/resources/app.asar
   sed -i "s|process.resourcesPath|'/usr/share/${_pkgname}/resources'|" Discord/resources/app/app_bootstrap/buildInfo.js
   sed -i "s|exeDir,|'/usr/share/pixmaps',|" Discord/resources/app/app_bootstrap/autoStart/linux.js
+  sed -i -E "s|resourcesPath = _path.+;|resourcesPath = '/usr/share/${_pkgname}/resources';|" Discord/resources/app/common/paths.js
   asar p Discord/resources/app Discord/resources/app.asar
   rm -rf Discord/resources/app
 }
