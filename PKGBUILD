@@ -1,4 +1,6 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+Maintainer: 
+# Contributor: cqzw555 <cqzw555 at 163 dot com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Nicolas Pouillard <nicolas.pouillard@gmail.com>
 # Contributor: Peter Simons <simons@cryp.to>
 
