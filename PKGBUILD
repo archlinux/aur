@@ -4,7 +4,7 @@
 pkgname=aliyunpan-gaozhangmin-bin
 _pkgname=XBYDriver
 url="https://github.com/gaozhangmin/aliyunpan"
-pkgrel=1
+pkgrel=2
 pkgver=3.12.5
 pkgdesc="阿里云盘小白羊版，gaozhangmin's fork"
 arch=("any")

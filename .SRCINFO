@@ -1,7 +1,7 @@
 pkgbase = aliyunpan-gaozhangmin-bin
 	pkgdesc = 阿里云盘小白羊版，gaozhangmin's fork
 	pkgver = 3.12.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gaozhangmin/aliyunpan
 	arch = any
 	license = MIT
