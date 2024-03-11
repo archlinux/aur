@@ -1,7 +1,7 @@
 pkgbase = android-armv7a-eabi-libxau
 	pkgdesc = X11 authorisation library (Android, armv7a-eabi)
 	pkgver = 1.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xorg.freedesktop.org/
 	arch = any
 	license = custom
