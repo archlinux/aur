@@ -2,7 +2,7 @@
 
 _pkgname=pacwrap
 pkgname=('pacwrap-git' 'pacwrap-dist-git')
-pkgver=0.7.2.r14.8f419c0
+pkgver=0.7.2.r17.7ef03e3
 pkgrel=1
 _pkgbase=$_pkgname
 pkgdesc="Facilitates the creation, management, and execution of unprivileged Arch-based bubblewrap containers."
@@ -44,7 +44,7 @@ package_pacwrap-git() {
 	install -Dm 755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   	install -Dm 755 "dist/bin/${_pkgname}-key" "${pkgdir}/usr/bin/${_pkgname}-key"
 	install -Dm 644 "dist/bin/${_pkgname}.1" "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
-	install -Dm 644 "dist/bin/${_pkgname}.yml.2" "${pkgdir}/usr/share/man/man2/pcwrap.yml.2"
+	install -Dm 644 "dist/bin/${_pkgname}.yml.2" "${pkgdir}/usr/share/man/man2/${_pkgname}.yml.2"
 	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
