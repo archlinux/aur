@@ -30,7 +30,7 @@ source_aarch64=(
 )
 
 noextract=()
-md5sums=('e0adb79ef287920f8c6546300aeb1ffa'
+md5sums=('33be405a7b38028c33b3141165b65f5a'
          'b6e6920af829dafb0be82da1c79e46a9'
          '600e74549ce2258c045d5c2f7689ea63')
 md5sums_x86_64=('1da072bd774d1b5c08b9545b409e3fcb')

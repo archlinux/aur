@@ -11,15 +11,15 @@ function moeDect() {
 }
 
 function sourceXDG() {
-	if [[ -d "${HOME}"/.config ]]; then
+	if [[ ! ${XDG_CONFIG_HOME} ]]; then
 		source "${HOME}"/.config/user-dirs.dirs
+		export XDG_CONFIG_HOME="${HOME}"/.config
 	else
 		source "${XDG_CONFIG_HOME}"/user-dirs.dirs
 	fi
 }
 
 function manageDirs() {
-	sourceXDG
 	createWrapIfNotExist "${XDG_DOCUMENTS_DIR}"/WeChat_Data
 	if [ -d "${HOME}/Documents/TrashBox" ]; then
 		mv "${HOME}/Documents/TrashBox"/* \
@@ -129,6 +129,7 @@ function launch() {
 	fi
 }
 
+sourceXDG
 manageDirs
 launch $@
 
