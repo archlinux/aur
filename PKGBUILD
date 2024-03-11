@@ -2,7 +2,7 @@
 pkgname=ttkmusicplayer-bin
 _pkgname=TTKMusicPlayer
 pkgver=3.6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="TTKMusicPlayer that imitation Kugou music, the music player uses of qmmp core library based on Qt for windows and linux.(支持网易云音乐、酷我音乐、酷狗音乐)"
 arch=('x86_64')
 url="https://github.com/Greedysky/TTKMusicPlayer"
@@ -31,13 +31,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('00d2821f984e967488caef71e6bf44c830a76c6acb7f224c77a76b1641ecbf9e'
-            '49a0410566fd177649695979287d994db641ba9cca304692b62ad6085886721d')
+            '1637474c3eedf557db89fc2c0cf0e1ee70ee0df5e2fdabc8898fc121415aab47')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|" \
         -e "s|@runname@|${_pkgname}|g" \
         -e "s|@pkgver@|${pkgver}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories="AudioVideo;Player;Audio;Qt" --name="${_pkgname}" --exec="${pkgname%-bin}"
+    sed "4i\Name[zh_CN]=天天酷音" -i "${srcdir}/${pkgname%-bin}.desktop"
     install -Dm755 -d "${srcdir}/opt/${pkgname%-bin}"
     7z x -aoa "${srcdir}/${pkgname%-bin}-${pkgver}.7z" -o"${srcdir}/opt/${pkgname%-bin}"
     rm -rf "${srcdir}/opt/${pkgname%-bin}/Downloads"
