@@ -1,6 +1,6 @@
 # Maintainer: ACCESA <accesa.mdash@gmail.com>
 pkgname=cia-accesa
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Control Inteligente de Accesos"
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=('gir1.2-gnomekeyring-1.0: Description of optional feature'
             'libgnome-keyring: Another optional feature'
             'lsb-release: Yet another optional feature'
             'pulseaudio: Optional feature for sound support')
-source=("cia-1.0.0-1-x86_64.pkg.tar.zst::https://www.dropbox.com/scl/fi/50vciyf5p1odyp0whr4rg/cia-1.0.0-1-x86_64.pkg.tar.zst?rlkey=l5abk785r94fm4p0xsklc2bni&dl=0")
+source=("cia-1.0.0-1-x86_64.pkg.tar.zst::https://www.dropbox.com/scl/fi/5d6v1vwxs24qdivdvh10m/cia-1.0.0-1-x86_64.pkg.tar.zst?rlkey=xpkuwou7trfwpk3y540zrgt3v&dl=0")
 md5sums=('SKIP')
 
 package(){
