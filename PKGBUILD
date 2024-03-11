@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=epiR
-_pkgver=2.0.68
+_pkgver=2.0.70
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -34,8 +34,8 @@ optdepends=(
   r-tidyr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e6089bd440752fa0a94ae9c3bc02029f')
-b2sums=('f97b9221e54eab85c3fa1901d26bbe817049acdaa9dfa1cc57d0edb4408ab1df93f19b182501b4ef511653f81849b28ebac9d39f61995dc48d6c51ce6b83e419')
+md5sums=('efde157d51b6f9b4b765c81d39c6b29f')
+b2sums=('2156fbe27763954b43db87f4e24d72ad73c5ec5ee7110de134d46941ea6bb7b8145417fb6340c6c0a2c35502211ee1f707a351d59dd74bf79ccb006112b0d541')
 
 build() {
   mkdir build
