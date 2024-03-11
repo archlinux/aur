@@ -1,7 +1,7 @@
 # Maintainer: ferstar
 pkgname=wechat-linux-bwrap
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Tencent WeChat Client from Spark Store with sandboxing using bwrap"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
 	'xdg-desktop-portal-gnome: Gnome Portal'
 )
 provides=()
-conflicts=()
+conflicts=(wechat-uos)
 replaces=()
 source=(
 	wechat.sh

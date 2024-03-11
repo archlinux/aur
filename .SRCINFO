@@ -1,7 +1,7 @@
 pkgbase = wechat-linux-bwrap
 	pkgdesc = Tencent WeChat Client from Spark Store with sandboxing using bwrap
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	install = wechat-linux.install
 	arch = x86_64
 	license = proprietary
@@ -17,6 +17,7 @@ pkgbase = wechat-linux-bwrap
 	optdepends = xdg-desktop-portal-kde: KDE Portal
 	optdepends = xdg-desktop-portal-lxqt: lxqt Portal
 	optdepends = xdg-desktop-portal-gnome: Gnome Portal
+	conflicts = wechat-uos
 	source = wechat.sh
 	source = wechat-linux.desktop
 	source = wechat-linux.svg
