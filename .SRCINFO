@@ -1,7 +1,7 @@
 pkgbase = autenticacao-gov-pt-bin
 	pkgdesc = Portuguese Citizen Card Application (Portugal eID) - version with pre compiled binaries by AMA
 	pkgver = 3.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cartaodecidadao.pt/
 	install = autenticacao-gov-pt-bin.install
 	arch = x86_64
@@ -34,6 +34,7 @@ pkgbase = autenticacao-gov-pt-bin
 	conflicts = cartaodecidadao
 	conflicts = cartaodecidadao-bin
 	conflicts = autenticacao-gov-pt
+	conflicts = openpace
 	replaces = cartaodecidadao-bin
 	source_x86_64 = https://github.com/amagovpt/autenticacao.gov/releases/download/v3.12.0/pteid-mw-3.12.0.flatpak
 	source_x86_64 = autenticacao-gov-pt-bin.install

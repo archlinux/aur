@@ -3,7 +3,7 @@
 
 pkgname=autenticacao-gov-pt-bin
 pkgver=3.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) - version with pre compiled binaries by AMA"
 arch=('x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -28,7 +28,7 @@ makedepends=('zstd' 'tar' 'flatpak' 'ostree')
 optdepends=('plugin-autenticacao-gov-pt: Necessário para autenticações online'
 'autenticacao-gov-pt-pki: PKI que confirma a validade dos certificados dos CC'
 'ecce-gov-pt-certificates: Certificados da ECCE - quem assina dos certificados contidos em cartaodecidadao-pki')
-conflicts=('cartaodecidadao' 'cartaodecidadao-bin' 'autenticacao-gov-pt')
+conflicts=('cartaodecidadao' 'cartaodecidadao-bin' 'autenticacao-gov-pt' 'openpace')
 replaces=('cartaodecidadao-bin')
 
 source_x86_64=("https://github.com/amagovpt/autenticacao.gov/releases/download/v3.12.0/pteid-mw-3.12.0.flatpak"
