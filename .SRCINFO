@@ -1,0 +1,17 @@
+pkgbase = python-matrix-synapse-pam
+	pkgdesc = PAM auth provider for the Synapse Matrix server
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/14mRh4X0r/matrix-synapse-pam
+	arch = x86_64
+	arch = armv7l
+	arch = armv7h
+	arch = aarch64
+	license = EUPL
+	depends = python
+	depends = python-pam
+	depends = python-twisted
+	source = matrix-synapse-pam-0.1.3.tar.gz::https://github.com/14mRh4X0r/matrix-synapse-pam/archive/v0.1.3.tar.gz
+	sha256sums = def8f1547133ba260d4653478cea915b88048a85f3ca2d014ebcebccd1672cbc
+
+pkgname = python-matrix-synapse-pam
