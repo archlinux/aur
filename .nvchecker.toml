@@ -1,0 +1,5 @@
+[calcmysky]
+source = "github"
+github = "10110111/CalcMySky"
+use_latest_release = "true"
+prefix = "v"
