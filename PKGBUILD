@@ -2,7 +2,7 @@
 
 pkgname=italian-draughts-git
 pkgver=1.3.4.r28.g74eb7da
-pkgrel=1
+pkgrel=2
 pkgdesc="Italian Draughts, a strategy board game"
 arch=("x86_64")
 license=('GPL-3.0-or-later')
@@ -32,6 +32,7 @@ build() {
 		-B build \
 		-G Ninja \
 		-D CMAKE_INSTALL_PREFIX="/usr" \
+		-D DOCS=1 \
 		-Wno-dev
 
 	cmake --build build
