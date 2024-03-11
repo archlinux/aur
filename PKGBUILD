@@ -10,6 +10,7 @@ arch=(x86_64)
 url=https://gitlab.com/suyu-emu/suyu
 license=(GPL-3.0-or-later)
 provides=('suyu')
+conflics=(suyu-git suyu-dev-qt6-git)
 install=$pkgname.install
 depends=(
   brotli
