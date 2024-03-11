@@ -1,10 +1,11 @@
 pkgbase = android-x86-64-pciutils
-	pkgdesc = PCI bus configuration space access library and tools (android)
+	pkgdesc = PCI bus configuration space access library and tools (Android, x86-64)
 	pkgver = 3.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mj.ucw.cz/sw/pciutils/
 	arch = any
 	license = GPL2
+	makedepends = android-environment
 	depends = android-x86-64-hwdata
 	depends = android-x86-64-kmod
 	options = !strip
