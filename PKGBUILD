@@ -3,7 +3,7 @@
 
 pkgname=logseq-desktop-wayland-bin
 _pkgname=logseq-desktop
-pkgver=0.9.20
+pkgver=0.10.7
 pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management. Enabled flags for wayland support."
 arch=("x86_64")
@@ -13,8 +13,8 @@ provides=("logseq-desktop")
 conflicts=("logseq-desktop-git" "logseq-desktop")
 source=("https://github.com/logseq/logseq/releases/download/${pkgver}/logseq-linux-x64-${pkgver}.zip"
       "${_pkgname}.desktop")
-sha256sums=('fb9002a317063fd8473c3d08b8ffd0546bc30fbef257747cfafe2bf17e88c3d4'
-            'd3ef0abb2af02d7a27bf158921297d9cafebd73c9c955e893060b56a4cecd7a5')
+sha256sums=('8a01e3a97cfdaee5a1b929d52ae70fce4fcd125919992402f7071982d5184ca9'
+    'd3ef0abb2af02d7a27bf158921297d9cafebd73c9c955e893060b56a4cecd7a5')
 
 package() {
     cd "$srcdir/Logseq-linux-x64"
