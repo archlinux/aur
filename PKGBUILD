@@ -2,6 +2,8 @@
 # Maintainer: Balló György <ballogyor+arch at gmail dot com>
 # Maintainer: Bruno Pagani <archange@archlinux.org>
 
+# binary version of this package (-bin): github.com/noahvogt/keepassxc-allow-aur-extension-origin-bin-aur
+
 pkgname=keepassxc-allow-aur-extension-origin
 pkgver=2.7.6
 pkgrel=3
