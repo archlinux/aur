@@ -1,13 +1,13 @@
 pkgbase = android-x86-64-libx11
-	pkgdesc = X11 client-side library (android)
+	pkgdesc = X11 client-side library (Android, x86-64)
 	pkgver = 1.8.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xorg.freedesktop.org/
 	arch = any
 	license = custom
+	makedepends = android-configure
 	makedepends = android-x86-64-xorg-util-macros
 	makedepends = android-x86-64-xtrans
-	depends = android-ndk
 	depends = android-x86-64-libxcb
 	depends = android-x86-64-xorgproto
 	options = !strip
