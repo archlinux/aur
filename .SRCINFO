@@ -1,6 +1,6 @@
 pkgbase = ci-toolbox-bin
 	pkgdesc = CI toolbox for Gitlab CI
-	pkgver = 8.3.0
+	pkgver = 8.4.2
 	pkgrel = 1
 	url = https://gitlab.com/mbedsys/citbx4gitlab
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = ci-toolbox-bin
 	depends = tar
 	provides = ci-toolbox
 	conflicts = ci-toolbox
-	source = https://gitlab.com/api/v4/projects/mbedsys%2fcitbx4gitlab/packages/generic/ci-toolbox/8.3.0/ci-toolbox-8.3.0.tar.xz
-	sha256sums = e95100f4a0061f40088c36e5a40d625105b21e17e83ab604cf77b0590b1ea41d
+	source = https://gitlab.com/mbedsys/citbx4gitlab/-/archive/8.4.2/citbx4gitlab-8.4.2.tar.bz2
+	sha256sums = c30d84a359ab07530fd44edcabc59f0d15d7f4b34098127030f224f2bd33f8fc
 
 pkgname = ci-toolbox-bin
