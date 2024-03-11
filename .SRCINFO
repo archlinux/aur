@@ -1,13 +1,13 @@
 pkgbase = bulk-rename-plus
 	pkgdesc = A compact yet potent command-line tool designed for efficiently renaming paths in bulk, written in C++
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/siyia2/bulk-rename-plus
 	arch = x86_64
 	license = GPL3
 	depends = bash
 	depends = coreutils
 	source = https://github.com/siyia2/bulk-rename-plus/archive/v1.6.0.tar.gz
-	md5sums = a88ca8c25e1f558f0f854ce937d72f3e
+	md5sums = c99b55c7ed096671ce489dc86a0004c4
 
 pkgname = bulk-rename-plus
