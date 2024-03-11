@@ -5,7 +5,7 @@ _pkgname="com.${_appname}.spark"
 _providername=ByteDance
 pkgver=3.4.0
 _sparkver=2.9.2spark7
-pkgrel=1
+pkgrel=2
 pkgdesc="douyin,record beautify life;抖音，记录美好生活"
 arch=('x86_64')
 url="https://www.douyin.com"
@@ -28,12 +28,12 @@ install="${pkgname}.install"
 source=(
     "${_pkgname}_${_sparkver}_i386.deb::https://mirrors.sdu.edu.cn/spark-store//store/video/${_pkgname}/${_pkgname}_${_sparkver}_all.deb"
 	"${_appname}-${pkgver}.exe::${_downurl}/releases/download/${_appname}-v${pkgver}/${_appname}-v${pkgver}.exe"
-    "LICENSE.html::${url}/draft/douyin_agreement/douyin_agreement_user.html"
+    "LICENSE-${pkgver}.html"
     "${pkgname}.sh"
 )
 sha256sums=('f5bb3df57822718590e0bc432ed33f1548350add863a11e6a39058ea784c7c17'
             '5f50da1063c6cb68ee5ed2610a381cba79893689054644a70864a798be315bc1'
-            '80d1bfb7a530d4497e8be2305e2ee662a25c4d6bc2e8f1b3a24642eec7efd054'
+            '8a18c6c9d84fe0c25f838ced53aef6b031c58ab18ce687f0b0432599f65f4596'
             '2449301dc19b0fb82afaa7692f2e74cc8bad01296c7d3c5ac6e4f09bcc7f68ae')
 build() {
     sed -e "s|@bottlename@|Deepin-${_appname}|g" \
@@ -65,5 +65,5 @@ package() {
     install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/icons/hicolor/scalable/apps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "LICENSE-${pkgver}.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
 }

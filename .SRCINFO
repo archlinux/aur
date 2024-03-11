@@ -1,7 +1,7 @@
 pkgbase = deepin-wine-douyin
 	pkgdesc = douyin,record beautify life;抖音，记录美好生活
 	pkgver = 3.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.douyin.com
 	install = deepin-wine-douyin.install
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = deepin-wine-douyin
 	conflicts = douyin
 	source = com.douyin.spark_2.9.2spark7_i386.deb::https://mirrors.sdu.edu.cn/spark-store//store/video/com.douyin.spark/com.douyin.spark_2.9.2spark7_all.deb
 	source = douyin-3.4.0.exe::https://github.com/zxp19821005/My_AUR_Files/releases/download/douyin-v3.4.0/douyin-v3.4.0.exe
-	source = LICENSE.html::https://www.douyin.com/draft/douyin_agreement/douyin_agreement_user.html
+	source = LICENSE-3.4.0.html
 	source = deepin-wine-douyin.sh
 	sha256sums = f5bb3df57822718590e0bc432ed33f1548350add863a11e6a39058ea784c7c17
 	sha256sums = 5f50da1063c6cb68ee5ed2610a381cba79893689054644a70864a798be315bc1
-	sha256sums = 80d1bfb7a530d4497e8be2305e2ee662a25c4d6bc2e8f1b3a24642eec7efd054
+	sha256sums = 8a18c6c9d84fe0c25f838ced53aef6b031c58ab18ce687f0b0432599f65f4596
 	sha256sums = 2449301dc19b0fb82afaa7692f2e74cc8bad01296c7d3c5ac6e4f09bcc7f68ae
 
 pkgname = deepin-wine-douyin
