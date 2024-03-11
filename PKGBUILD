@@ -4,7 +4,7 @@
 # (https://aur.archlinux.org/packages/fanficfare-git)
 _pkgname=kalamine
 pkgname=kalamine-git
-pkgver=v0.34.r1.c9af422
+pkgver=v0.36.r2.6004686
 pkgrel=1
 pkgdesc="A text-based, cross-platform Keyboard Layout Maker."
 arch=('any')
