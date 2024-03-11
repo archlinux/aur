@@ -1,6 +1,6 @@
 # Contributor: Christoph Lehmann (OpenGeoSys)
 pkgname=mgis
-pkgver=r37.bb667ad
+pkgver=2.2
 pkgrel=1
 pkgdesc="Support for MFront generic behaviours"
 arch=("x86_64")
@@ -15,22 +15,15 @@ replaces=()
 backup=()
 options=()
 install=
-source=('mgis::git+https://github.com/thelfer/MFrontGenericInterfaceSupport.git')
-noextract=()
-md5sums=('SKIP')
-
-pkgver() {
-    cd "$srcdir/mgis"
-
-    # Git, no tags available
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=('mgis.tar.gz::https://github.com/thelfer/MFrontGenericInterfaceSupport/archive/refs/tags/MFrontGenericInterfaceSupport-2.2.tar.gz')
+sha512sums=('38a015d790a29d174aa9b37a81df4054d15522a3b31ae80f5d64efc0c696093c3efedd7879db616ee7c093455712abdca760a9dd02458eecc88f3cb3e9cfc513')
 
 build() {
+    mv MFrontGenericInterfaceSupport-*${pkgver} ${pkgname}
     cd "$srcdir"
     mkdir -p build
     cd build
-    cmake "../mgis" -DCMAKE_BUILD_TYPE=Debug
+    cmake "../${pkgname}" -DCMAKE_BUILD_TYPE=Debug
     make
 }
 
