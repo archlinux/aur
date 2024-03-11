@@ -8,7 +8,7 @@
 # Feel free to flag the package if you wish; I track new versions regardless.
 
 pkgname=invidtui
-pkgver=0.4.2
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="TUI-based Invidious client"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -24,7 +24,7 @@ optdepends=(
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
-sha256sums=('9b173e8414cdfeca1a1cedc82a1d5cdece91182626be46d4f9dd57b7667dc87a')
+sha256sums=('178f62e671c9dd9e907052a94733283bf53db42ba52f37d730b0235459decd27')
 
 prepare() {
   cd "$pkgname-$pkgver"

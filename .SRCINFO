@@ -1,6 +1,6 @@
 pkgbase = invidtui
 	pkgdesc = TUI-based Invidious client
-	pkgver = 0.4.2
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/darkhz/invidtui
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = invidtui
 	optdepends = mpv-mpris: MPRIS support
 	optdepends = screen: Efficiently resume and suspend instances
 	optdepends = youtube-dl: Alternative to yt-dlp
-	source = invidtui-0.4.2.tar.gz::https://github.com/darkhz/invidtui/archive/v0.4.2.tar.gz
-	sha256sums = 9b173e8414cdfeca1a1cedc82a1d5cdece91182626be46d4f9dd57b7667dc87a
+	source = invidtui-0.4.4.tar.gz::https://github.com/darkhz/invidtui/archive/v0.4.4.tar.gz
+	sha256sums = 178f62e671c9dd9e907052a94733283bf53db42ba52f37d730b0235459decd27
 
 pkgname = invidtui
