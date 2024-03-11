@@ -1,10 +1,11 @@
 pkgbase = android-x86-libgcrypt
-	pkgdesc = General purpose cryptographic library based on the code from GnuPG (android)
+	pkgdesc = General purpose cryptographic library based on the code from GnuPG (Android, x86)
 	pkgver = 1.10.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnupg.org
 	arch = any
 	license = LGPL
+	makedepends = android-configure
 	depends = android-x86-libgpg-error
 	options = !strip
 	options = !buildflags
@@ -13,7 +14,7 @@ pkgbase = android-x86-libgcrypt
 	source = https://gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.10.3.tar.bz2
 	source = https://gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.10.3.tar.bz2.sig
 	validpgpkeys = AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD
-	sha256sums = 8b0870897ac5ac67ded568dcfadf45969cfa8a6beb0fd60af2a9eadc2a3272aa
-	sha256sums = SKIP
+	md5sums = a8cada0b343e10dbee51c9e92d856a94
+	md5sums = SKIP
 
 pkgname = android-x86-libgcrypt
