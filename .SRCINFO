@@ -1,0 +1,13 @@
+pkgbase = gnome-shell-extension-openweatherrefined
+	pkgdesc = Display weather for the current or a specified location in the GNOME shell
+	pkgver = 123
+	pkgrel = 1
+	url = https://github.com/penguin-teal/gnome-openweather
+	arch = any
+	license = GPL-3.0-or-later
+	depends = dconf
+	depends = gnome-shell
+	source = openweatherrefined-v123.tar.gz::https://github.com/penguin-teal/gnome-openweather/archive/refs/tags/v123.tar.gz
+	sha256sums = e3399f9cb7d8093949db7229974b1b3220234d661adbaf19318d52e30a97c949
+
+pkgname = gnome-shell-extension-openweatherrefined
