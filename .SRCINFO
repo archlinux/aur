@@ -1,12 +1,12 @@
 pkgbase = kube-capacity-git
 	pkgdesc = A simple CLI that provides an overview of the resource requests, limits, and utilization in a Kubernetes cluster
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/robscott/kube-capacity
 	arch = x86_64
 	license = Apache-2.0
 	options = !strip
-	source = https://github.com/robscott/kube-capacity/releases/download/v0.7.1/kube-capacity_0.7.1_Linux_x86_64.tar.gz
-	sha256sums = 138d02b0a49db5fe1aa3bdb5bae58e452d72d92ac22e5bc336175720634821b6
+	source = https://github.com/robscott/kube-capacity/releases/download/v0.8.0/kube-capacity_v0.8.0_linux_x86_64.tar.gz
+	sha256sums = 610ce6e5d7f528df1c60d3b5e277d00ac43cdfd9ce4d36f0b3132bb68fc12cf3
 
 pkgname = kube-capacity-git
