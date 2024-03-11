@@ -5,7 +5,7 @@ _pkgname=Sonixd
 pkgver=0.15.5
 _electronversion=22
 _nodeversion=16
-pkgrel=2
+pkgrel=3
 pkgdesc="A full-featured Subsonic/Jellyfin compatible desktop client"
 arch=('x86_64')
 url="https://github.com/jeffvli/sonixd"
@@ -28,7 +28,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -50,7 +50,9 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    sed -e '/"tar.xz"/d' -e 's|"AppImage",|"AppImage"|g' -i package.json
+    mkdir -p "${srcdir}/.electron-gyp"
+    touch "${srcdir}/.electron-gyp/.yarnrc"
+    sed "s|electron-builder build|electron-builder -l AppImage|g" -i package.json
     yarn install --cache-folder "${srcdir}/.yarn_cache"
     yarn run package
 }
