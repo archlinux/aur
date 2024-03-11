@@ -1,7 +1,7 @@
 # Maintainer: Peter Semiletov peter.semiletov at gmail dot com
 
 pkgname=drumlabooh-git
-pkgver=2.2.0.r2.g030a330
+pkgver=2.3.0.r1.gcb9e751
 pkgrel=1
 pkgdesc='LV2/VSTi drum machine that supports Hydrogen, Drumlabooh and SFZ drumkits'
 arch=('x86_64')
