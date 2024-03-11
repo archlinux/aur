@@ -1,19 +1,19 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=gleam-git
-pkgver=0.25.0.r27.g98d7a9da
+pkgver=1.0.0.r60.gf125b96c7
 pkgrel=1
 pkgdesc="A statically typed language for the Erlang VM"
 arch=('x86_64')
-license=('Apache')
+license=('Apache-2.0')
 url='https://github.com/gleam-lang/gleam'
-makedepends=('rust')
+makedepends=('git' 'cargo')
 depends=('erlang-nox')
 provides=('gleam')
 conflicts=('gleam')
-options=(strip !docs !libtool !staticlibs)
 source=('gleam::git+https://github.com/gleam-lang/gleam.git')
 sha256sums=('SKIP')
+options=(strip !docs !libtool !staticlibs !lto)
 
 pkgver() {
   cd "gleam"
