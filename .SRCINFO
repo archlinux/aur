@@ -1,18 +1,17 @@
 pkgbase = jan-bin
 	pkgdesc = Run AI on your own PC
-	pkgver = 0.4.7
+	pkgver = 0.4.8
 	pkgrel = 1
 	url = https://jan.ai/
 	arch = x86_64
 	license = AGPL-3.0-only
-	makedepends = asar
 	depends = electron28
 	depends = hicolor-icon-theme
-	provides = jan=0.4.7
+	provides = jan=0.4.8
 	conflicts = jan
-	source = jan-0.4.7.deb::https://github.com/janhq/jan/releases/download/v0.4.7/jan-linux-amd64-0.4.7.deb
+	source = jan-0.4.8.deb::https://github.com/janhq/jan/releases/download/v0.4.8/jan-linux-amd64-0.4.8.deb
 	source = jan.sh
-	sha256sums = 62d11f2f99b00fed2b2ebe7a2712d6e65a8dd62144e4cdebb4582283eb63605c
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = ea5502cbd5a6bcd02dcc41f7f0cceac11c5319bce335fdcaf91ce1de4d77f996
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = jan-bin
