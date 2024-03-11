@@ -1,7 +1,7 @@
 # Maintainer: Omar Sandoval <osandov at osandov dot com>
 
 pkgname=drgn
-pkgver=0.0.25
+pkgver=0.0.26
 pkgrel=1
 pkgdesc='Programmable debugger'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('LGPL2.1')
 depends=('libelf' 'libkdumpfile' 'python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('42dc13ac73d3d06bab76c676b2d103a2a6a0f1a1969e02e6769727049e1bdd02')
+sha256sums=('a7ccbf72acea32dda8b431e9a5817d1c410e734a471d261eedd59a20c4727929')
 
 build() {
 	cd "$pkgname-$pkgver"
