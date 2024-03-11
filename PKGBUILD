@@ -1,8 +1,9 @@
 # Maintainer: Carlos Galindo <arch -at- cgj.es>
+# Contributor: Darkfish Tech <arch at darkfish dot com dot au>
 
 pkgname=nextcloud-app-files_automatedtagging
 _appname=files_automatedtagging
-pkgver=1.17.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="Nextcloud app that assigns tags to newly uploaded files based on some conditions"
 arch=('any')
@@ -10,7 +11,7 @@ url="https://github.com/nextcloud/files_automatedtagging"
 license=('AGPL3')
 makedepends=('npm' 'yq' 'rsync')
 source=("${_appname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('df80cdcbf0660949139a78d00e5f47263ec59f5cb1f4b35343c3212ac600e10b99ff0bc68b7b8491e0658747b73c4e9f772b227885dd19e48ee215f449a85ae0')
+sha512sums=('5c52f097c843936fab24c7444b749ef792d0945c64949925547a67a7363bd2fe7960f5ef63a815f9f803b25a544de096858fa8d76674f8524602e2366913936f')
 
 prepare() {
     mv "${srcdir}/${_appname}-${pkgver}" "${srcdir}/${_appname}"
