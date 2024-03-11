@@ -1,0 +1,12 @@
+pkgbase = desktop-patcher-hook
+	pkgdesc = A pacman hook to make some apps behave nicer, including using the wayland ozone platform, the gtk file picker & zooming qt apps
+	pkgver = v1.0.0.r13.g24f35c2
+	pkgrel = 1
+	url = https://github.com/Nixuge/DesktopPatcher
+	arch = any
+	license = WTFPL
+	depends = python
+	source = git+https://github.com/Nixuge/DesktopPatcher
+	sha256sums = SKIP
+
+pkgname = desktop-patcher-hook
