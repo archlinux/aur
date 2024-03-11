@@ -1,13 +1,13 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=dosage-tracker
-pkgver=1.5.5
+pkgver=1.5.6
 pkgrel=1
 pkgdesc='Medication tracker for Linux'
 url="https://github.com/diegopvlk/Dosage"
+license=('GPL-3.0-or-later')
 arch=('x86_64' 'aarch64')
-license=('GPL3')
-depends=('libadwaita')
+depends=('gjs' 'libadwaita')
 makedepends=('blueprint-compiler' 'git' 'meson')
 checkdepends=('appstream-glib')
 source=("git+$url.git#tag=v$pkgver")
@@ -23,6 +23,6 @@ check() {
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
   ln -s io.github.diegopvlk.Dosage "$pkgdir/usr/bin/$pkgname"
 }

@@ -1,17 +1,18 @@
 pkgbase = dosage-tracker
 	pkgdesc = Medication tracker for Linux
-	pkgver = 1.5.5
+	pkgver = 1.5.6
 	pkgrel = 1
 	url = https://github.com/diegopvlk/Dosage
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-or-later
 	checkdepends = appstream-glib
 	makedepends = blueprint-compiler
 	makedepends = git
 	makedepends = meson
+	depends = gjs
 	depends = libadwaita
-	source = git+https://github.com/diegopvlk/Dosage.git#tag=v1.5.5
+	source = git+https://github.com/diegopvlk/Dosage.git#tag=v1.5.6
 	sha256sums = SKIP
 
 pkgname = dosage-tracker
