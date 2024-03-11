@@ -2,7 +2,7 @@
 
 pkgname=opencpn-plugin-o_charts
 pkgver=2.0.0.66
-pkgrel=2
+pkgrel=3
 pkgdesc="use charts from o-charts.org in opencpn"
 arch=('x86_64' 'aarch64')
 license=("GPL2" "custom")
@@ -17,11 +17,8 @@ prepare() {
 }
 
 build() {
-  cd o-charts_pi-${pkgver}
-  mkdir -p build
-  cd build
-  cmake -DCMAKE_BUILD_TYPE=Release -Dplugin_target=AUR ..
-  make tarball-install
+  cmake -S o-charts_pi-${pkgver} -B build -DCMAKE_BUILD_TYPE=None -Wno-dev -Dplugin_target=AUR
+  cmake --build build -t tarball-install
 }
 
 package() {
