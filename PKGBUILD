@@ -7,7 +7,7 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-libxau
 pkgver=1.0.11
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="X11 authorisation library (Android, ${_android_arch})"
 url="https://xorg.freedesktop.org/"
