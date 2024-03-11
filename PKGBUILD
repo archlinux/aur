@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deltachat-desktop-bin
 _pkgname=DeltaChat
-pkgver=1.43.1
+pkgver=1.44.1
 _electronversion=28
 pkgrel=1
 pkgdesc="Email-based instant messaging for Desktop."
@@ -30,8 +30,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.pacman::https://download.delta.chat/desktop/v${pkgver}/${pkgname%-bin}-${pkgver}.pacman"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d56414d857b97c0001b1974b1cf8bc0e25b2354d116d86ba7a3e5c77c93ec819'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+sha256sums=('9800b81b960427bbcf1b6a981c76e24394f126c390149491d18ee9826845b969'
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
