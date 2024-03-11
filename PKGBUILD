@@ -5,13 +5,14 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-pciutils
 pkgver=3.11.1
-pkgrel=1
-pkgdesc="PCI bus configuration space access library and tools (android)"
+pkgrel=2
 arch=('any')
+pkgdesc="PCI bus configuration space access library and tools (Android, ${_android_arch})"
 license=('GPL2')
 url="https://mj.ucw.cz/sw/pciutils/"
 depends=("android-${_android_arch}-hwdata"
          "android-${_android_arch}-kmod")
+makedepends=('android-environment')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://mj.ucw.cz/download/linux/pci/pciutils-${pkgver}.tar.gz"{,.sign}
         '0001-Do-not-use-lresolv.patch'
