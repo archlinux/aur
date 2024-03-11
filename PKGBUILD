@@ -15,9 +15,9 @@ else
     pkgver=5.0.2
 fi
 
-pkgrel=1
+pkgrel=2
 arch=('any')
-pkgdesc='High performance message passing library (MPI) (android)'
+pkgdesc="High performance message passing library (MPI) (Android, ${_android_arch})"
 url='https://www.open-mpi.org'
 license=('BSD-3-Clause AND LicenseRef-MPICH')
 depends=("android-${_android_arch}-hwloc"
@@ -32,7 +32,8 @@ makedepends=("android-${_android_arch}-hwloc"
              "android-${_android_arch}-libnl"
              "android-${_android_arch}-openpmix"
              "android-${_android_arch}-prrte"
-             "android-${_android_arch}-zlib")
+             "android-${_android_arch}-zlib"
+             'android-environment')
 optdepends=("android-${_android_arch}-openssh: for execution on remote hosts via plm_ssh_agent")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/openmpi-$pkgver.tar.bz2"

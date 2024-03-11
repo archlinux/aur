@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-openmpi
-	pkgdesc = High performance message passing library (MPI) (android)
+	pkgdesc = High performance message passing library (MPI) (Android, aarch64)
 	pkgver = 5.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.open-mpi.org
 	arch = any
 	license = BSD-3-Clause AND LicenseRef-MPICH
@@ -11,6 +11,7 @@ pkgbase = android-aarch64-openmpi
 	makedepends = android-aarch64-openpmix
 	makedepends = android-aarch64-prrte
 	makedepends = android-aarch64-zlib
+	makedepends = android-environment
 	depends = android-aarch64-hwloc
 	depends = android-aarch64-libevent
 	depends = android-aarch64-libfabric
