@@ -1,12 +1,13 @@
 pkgbase = netscanner
 	pkgdesc = Network scanner
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Chleba/netscanner
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
 	depends = gcc-libs
+	depends = iw
 	source = netscanner-0.4.0.tar.gz::https://github.com/Chleba/netscanner/archive/v0.4.0.tar.gz
 	source = Cargo.lock
 	sha512sums = e952538da7a875ab8e6de87cfbe4126f77c682eb807393d0d0807dbd0a9c54abf4bef5e5cc43e7e3d8606a909adb3b97178198037be6c940c84fa3d68949c053
