@@ -1,15 +1,18 @@
 pkgbase = python-brython
 	pkgdesc = A Python 3 implementation for client-side web programming
-	pkgver = 3.11.2
+	pkgver = 3.11.3
 	pkgrel = 1
 	url = https://brython.info/
 	arch = any
 	license = BSD
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
 	depends = python
 	depends = python-plumbum
 	provides = python-brython
 	options = !emptydirs
-	source = https://github.com/brython-dev/brython/archive/3.11.2.tar.gz
-	sha512sums = 1f0d06ae6d6523fb8f99a4ff407783b677063e99f278e1a860a422535695d2f67d98d9ccea02968dd15a52998bd34620dd54f758d5f7f4a4668e9bc621680172
+	source = https://github.com/brython-dev/brython/archive/3.11.3.tar.gz
+	sha512sums = 5938fd308c7a9f0f499e98d9b42364d5ffb5dd17315458c9e3d0d0503a264f8d2517e1abf96a49859e273a3e85f68446cd6932c8f109ac2f85970132d6602b6d
 
 pkgname = python-brython
