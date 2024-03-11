@@ -1,0 +1,5 @@
+[python-treecorr]
+source = "github"
+github = "rmjarvis/TreeCorr"
+use_latest_release = "true"
+prefix = "v"

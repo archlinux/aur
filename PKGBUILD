@@ -4,20 +4,20 @@
 # Contributor: M. Jarvis
 _base=TreeCorr
 pkgname=python-${_base,,}
-pkgver=4.3.3
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Module for computing 2-point correlation functions"
 arch=(x86_64)
 url="https://github.com/rmjarvis/${_base}"
-license=('BSD')
-depends=(python-numpy python-cffi python-yaml python-coord)
-makedepends=(python-build python-installer python-setuptools python-wheel)
+license=(BSD-2-Clause-FreeBSD)
+depends=(python-numpy python-yaml python-coord)
+makedepends=(python-build python-installer python-setuptools python-wheel pybind11)
 optdepends=('python-fitsio: reads FITS catalogs or writes to FITS output files'
   'python-pandas: speeds up reading from ASCII catalogs'
   'python-h5py: reads HDF5 catalogs')
 # checkdepends=(python-pytest python-pandas python-fitsio python-mockmpi) # python-scipy python-hdpy
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('9474e1539b13b5e4e588714b5a099542e35895d83d08912c335586120777e2edebbe44e3f56a56e376065bd6c6e4b274c6d6f8a9ef09440d910f28ff31601703')
+sha512sums=('7e756aafd957dc175d7a1b67c0e300d4aa72a5091099a25ede1ed56633a1ffeeadedb3ae7f98a9c38de08f13b2a86f9cc5f167901c90c8a796d7469bc00ab398')
 
 build() {
   cd ${_base}-${pkgver}
