@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgbase=linux-flowx13
-pkgver=6.7.9.arch1
+pkgver=6.8.arch1
 pkgrel=1
 pkgdesc='Linux (with patches for the Asus Flow X13)'
 url='https://github.com/archlinux/linux'
@@ -22,6 +22,7 @@ makedepends=(
   graphviz
   imagemagick
   python-sphinx
+  python-yaml
   texlive-latexextra
 )
 options=('!strip')
@@ -39,17 +40,17 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('0fd733fc0778f8da1fdf66df1698d394248807de71eef83a4d1218bcb3dfd346'
+sha256sums=('c969dea4e8bb6be991bbf7c010ba0e0a5643a3a8d8fb0a2aaa053406f1e965f3'
             'SKIP'
-            '16b6541d9aad469faf325a354c1b7cdff5df402a8073317d548b93dd1c184a4f'
+            '1edc3ce4e5cb716d6a89ebd1bc24b4509e65d9f18899f59e4c40e5d3ad4233ba'
             'SKIP'
-            '04143712e593d45a597661fe00f89cf92d52c62df3468c68a46c952c2ef4db64'
+            '03e735507e01dd3fb845d3a9dfa9a7a7286fcb57d213b4b116dcba7e088407f0'
             '92b8cee96a70a2f27db6ff8899e47b18884e289f3c2eb05500b37c5db6f23fe8')
-b2sums=('2a5990e067439dcb3a6e7647832c85a2ce7faf28c48f414ebcb4d33ea37f870204c4b6bf98fca1faaf61bb59f579d6b597d8b2b29bd8cd2cc3b25afba3fe1fd8'
+b2sums=('c6f17f816cea16e629f63e9379b98888713f57b2c5173306926471f139a9d612a0c74e119341f8075390e55e203d787d9edeb4ad5a064b18870f6f0f7ffaafb2'
         'SKIP'
-        'd8c6fb5b5438236ce0e9ed3cfbcd016dd04835ad2665190b3d9974b2491ca7fdbd4216470e3d47fc4dc7f089133f535e5cad3fd94ee67944f412712bf27ac0c7'
+        '1b5e7cb354f6a3e9423ce98b5829d70be36f3ad44b6067dc21070db4543d0813a751fd79e1dcca5fdf1defe6adfe5c4005c48bd326d84dcbea4ccf32906e22b4'
         'SKIP'
-        '21083151bdcd0fc2bcc0475b9cd73bab5666a71f043eedd67b19a3a4c09c8253a5a06794ce9270215782f5885e05e70b5e424123f1bded7aa7a6d3f30d02a4b3'
+        '167299818c921749eafeb83327eeddbfe4db9f5659e297d86cfd8ceb6006c504d8dd772f32b0fe13935cb2ed8937324fca122510bf07f107db0b270e2f26906a'
         '5b4cff2ab2ce1d2464eb4b0b1398e2ad1af85c1322b9187e19894a7dff19e094ad0b7190122be5fdadde283d9433591bf6b55a045354d0abe5351bd4cd410dc4')
 
 
