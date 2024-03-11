@@ -1,10 +1,11 @@
 pkgbase = android-armv7a-eabi-pciutils
-	pkgdesc = PCI bus configuration space access library and tools (android)
+	pkgdesc = PCI bus configuration space access library and tools (Android, armv7a-eabi)
 	pkgver = 3.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mj.ucw.cz/sw/pciutils/
 	arch = any
 	license = GPL2
+	makedepends = android-environment
 	depends = android-armv7a-eabi-hwdata
 	depends = android-armv7a-eabi-kmod
 	options = !strip
