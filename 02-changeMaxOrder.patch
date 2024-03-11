@@ -1,0 +1,14 @@
+--- a/blackmagic-io-12.8.1a1/bm_util.c	2024-02-09 02:02:38.000000000 +0100
++++ b/blackmagic-io-12.8.1a1/bm_util.c	2024-03-11 22:10:20.051722843 +0100
+@@ -137,7 +137,11 @@
+ 		alloc_size += align - 1;
+ 	}
+ 
++#if KERNEL_VERSION_OR_LATER(6, 8, 0)
++	if (get_order(alloc_size) < MAX_PAGE_ORDER)
++#else
+ 	if (get_order(alloc_size) < MAX_ORDER)
++#endif
+ 		mem = (vm_address_t)kmalloc(alloc_size, GFP_KERNEL);
+ 
+ 	if (mem == 0 && (flags & BM_ALLOC_CONTIGUOUS) == 0)
