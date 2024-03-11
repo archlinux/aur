@@ -1,6 +1,6 @@
 # Maintainer: Steven Braun <steven.braun.mz@gmail.com >
 pkgname=audamo
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Audamo is an auto dark mode tool that sets light and dark mode themes based on time or location."
 arch=('any')
