@@ -6,7 +6,7 @@ pkgver=4.18.1
 pkgrel=1
 pkgdesc='A volume control application based on GStreamer'
 arch=('x86_64')
-url='https://docs.xfce.org/apps/xfce4-mixer'
+url='https://docs.xfce.org/apps/xfce4-mixer/start'
 license=('GPL2')
 depends=('xfce4-panel' 'alsa-lib>=1.2.1' 'gstreamer')
 makedepends=('intltool')
