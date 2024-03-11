@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=coro
-_pkgver=1.0.3
+_pkgver=1.0.4
 pkgname=r-${_pkgname,,}
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="'Coroutines' for R"
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4e7729b1b1461be7805b2fcad0ed4c04755390dad3f1a2cb9f3af701db6d7d73')
+sha256sums=('8f21bf44ec46fa1da88e9232db5536f494cbd87aade3ef16957d27919f58cc64')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
