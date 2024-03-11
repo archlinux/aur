@@ -8,7 +8,6 @@ pkgrel=1
 arch=('x86_64')
 url="https://www.ledger.com/ledger-live"
 license=('MIT')
-install=${_pkgname}.install
 options=(!strip libtool staticlibs)
 
 source=(
