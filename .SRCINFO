@@ -1,18 +1,18 @@
 pkgbase = plasma6-applets-netspeed
 	pkgdesc = Plasma 6 widget that displays the currently used network bandwidth
-	pkgver = 2.0.r7.gdb8ff30
+	pkgver = 3.1
 	pkgrel = 1
 	url = https://github.com/dfaust/plasma-applet-netspeed-widget
 	arch = any
 	license = GPL-2.0-only
 	makedepends = cmake
 	makedepends = extra-cmake-modules
-	makedepends = git
 	depends = awk
 	depends = plasma-workspace
+	optdepends = kdeplasma-addons: support to launch a user defined application when the applet is clicked
 	conflicts = plasma5-applets-netspeed
 	replaces = plasma5-applets-netspeed
-	source = plasma6-applets-netspeed::git+https://github.com/dfaust/plasma-applet-netspeed-widget#commit=db8ff307fd4e6748fd988ecc77e473c828b47f9c
-	b2sums = SKIP
+	source = plasma6-applets-netspeed-3.1.tar.gz::https://github.com/dfaust/plasma-applet-netspeed-widget/archive/refs/tags/v3.1.tar.gz
+	b2sums = 1f54130cb59b355be2b240d3e01d0b9abea9fd76f8843c190098e15bb630092742ce604c8567fd8952069e165d0ac2853dcf0203fc022de7b54ac3dc1229e8ca
 
 pkgname = plasma6-applets-netspeed
