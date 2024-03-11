@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=net-player
 _pkgname="${pkgname//-p/P}"
-pkgver=2.0.2
+pkgver=2.0.4
 _electronversion=13
 _nodeversion=16
 pkgrel=1
@@ -51,6 +51,8 @@ build() {
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export npm_config_disturl=https://electronjs.org/headers
     export HOME="${srcdir}/.electron-gyp"
+    mkdir -p "${srcdir}/.electron-gyp"
+    touch "${srcdir}/.electron-gyp/.yarnrc"
     if [ `curl ifconfig.co/country` == "China" ];then
         echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
         echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
