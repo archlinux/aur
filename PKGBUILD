@@ -10,7 +10,7 @@ url='https://github.com/neutrinolabs/xorgxrdp'
 license=('MIT')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-makedepends=('nasm' 'xorg-server-devel' 'xrdp')
+makedepends=('nasm' 'xorg-server-devel' 'xrdp-git')
 options=('staticlibs')
 source=("git+$url#branch=devel")
 sha256sums=('SKIP')
