@@ -3,13 +3,13 @@
 
 pkgname=python-liblarch
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library to easily handle data structure"
 arch=(any)
 url=https://wiki.gnome.org/action/show/Projects/liblarch
 license=(LGPL3)
 depends=(gtk3 python python-gobject)
-makedepends=(python-distribute)
+makedepends=(python-build python-installer python-wheel)
 checkdepends=(python-nose)
 provides=(python-liblarch_gtk)
 conflicts=(python-liblarch_gtk)
@@ -35,9 +35,14 @@ check() {
   kill "${broadway_pid}"
 }
 
+build () {
+  cd "$srcdir/liblarch-${pkgver}"
+  python -m build --wheel --no-isolation
+}
+
 package() {
   cd "$srcdir/liblarch-${pkgver}"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 # vim:set ts=2 sw=2 et:
