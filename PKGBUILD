@@ -8,17 +8,18 @@
 pkgname=gnucash-docs-git
 _pkgname=gnucash-docs
 __pkgname=Gnucash
-pkgver=5.5.r0.g1d039709
+pkgver=5.5.r16.g1ccea462
+#.r16.g1ccea462
 #.r0.g1d039709
 #.r22.g874ac13
-pkgrel=2
+pkgrel=1
 pkgdesc="GnuCash documentation package - GIT version"
 arch=('any')
 url="http://www.gnucash.org/docs.phtml"
-license=('GPL3' 'FDL')
+license=('GPL-2.0-only OR GFDL-1.1-only')
 depends=('yelp')
-makedepends=('git' 'rarian' 'docbook-xsl')
-# 'libtool' 'autoconf' 'automake')
+makedepends=('git' 'docbook-xsl' 'cmake')
+# 'rarian' 'libtool' 'autoconf' 'automake')
 conflicts=('gnucash-docs')
 provides=('gnucash-docs')
 source=("$pkgname::git+https://github.com/${__pkgname}/${_pkgname}.git")
