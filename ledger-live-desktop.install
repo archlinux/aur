@@ -1,6 +1,0 @@
-post_install() {
-	echo "
-Add udev rules to enable Ledger device:
-curl https://raw.githubusercontent.com/LedgerHQ/udev-rules/master/add_udev_rules.sh | sudo bash
-"
-}
