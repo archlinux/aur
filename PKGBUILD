@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=bmv
-pkgver=0.0.12
+pkgver=0.0.13
 pkgrel=1
 pkgdesc='drop-in mv replacement with bulk moving support'
 url='https://github.com/abenz1267/bmv'
@@ -11,8 +11,8 @@ makedepends=('go')
 conflicts=('bmv')
 provides=('bmv')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('75e52d21ef10454a06a1e18611b7dc127167701de0009322e3a5f29c623d2248')
-b2sums=('c2bcaa6013ebf9b0437f882aeb806053d30d8f60c90adbe3b278e3a92091032f2543043d5e1e01a689e1f2f9ea6923b8ae31a08f78fbbfd68a350a3fcbeaef2d')
+sha256sums=('63e31df4c5888dc42ca5e33f499da64f8a826542f2bd1c76cff12e4b0bf50f00')
+b2sums=('6df12d330862651e86253211399c85b1c8d896f9ed9bbbbbf1276ef42e4539c8e9672a822db2f347dde0a42362be8422c0edcb3ca584d0df43479f69dcf79af6')
 
 build() {
   cd ${pkgname}-${pkgver}
