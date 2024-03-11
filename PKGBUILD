@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simple-icons
-pkgver=11.7.0
+pkgver=11.8.0
 pkgrel=1
 pkgdesc="Free SVG icons for popular brands"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=(
     'git'
 )
 source=(
-    "${pkgname}.git::git+${_ghurl}.git#tag=${pkgver}"
+    "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
 )
 sha256sums=('SKIP')
 package() {
