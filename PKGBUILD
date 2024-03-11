@@ -2,19 +2,19 @@
 # Contributor: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=kasts-git
-pkgver=23.08.3_r1376.g5cbf1405
+pkgver=24.04.70_r1549.g3f1440ae
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 pkgdesc="Kirigami-based podcast player"
 url="https://invent.kde.org/multimedia/kasts"
 license=('GPL2')
-depends=('qt5-multimedia' 'qt5-quickcontrols2' 'qtkeychain-qt5' 'kirigami2' 'ki18n5'
-         'kconfig5' 'kcoreaddons5' 'syndication5' 'taglib' 'threadweaver5' 'vlc'
-         'kirigami-addons5')
-makedepends=('extra-cmake-modules' 'git' 'qt5-svg' 'qt5-tools')
+depends=('qt6-multimedia' 'qt6-declarative' 'qtkeychain-qt6' 'kirigami' 'ki18n'
+         'kconfig' 'kcoreaddons' 'syndication' 'taglib' 'threadweaver' 'vlc'
+         'kirigami-addons')
+makedepends=('extra-cmake-modules' 'git' 'qt6-svg' 'qt6-tools')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
-source=("git+${url}.git#branch=release/23.08")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -28,7 +28,11 @@ pkgver() {
 }
 
 build() {
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo -B build -S "${pkgname%-git}"
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+    -DQT_MAJOR_VERSION=6 \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -B build \
+    -S "${pkgname%-git}"
   cmake --build build --config RelWithDebInfo
 }
 
