@@ -1,13 +1,14 @@
 pkgbase = r-tmvnsim
 	pkgdesc = Truncated Multivariate Normal Simulation
 	pkgver = 1.0.2
-	pkgrel = 9
+	pkgrel = 11
 	url = https://cran.r-project.org/package=tmvnsim
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
 	makedepends = gcc-fortran
 	depends = r
 	source = https://cran.r-project.org/src/contrib/tmvnsim_1.0-2.tar.gz
-	sha256sums = 97f63d0bab3b240cc7bdbe6e6e74e90ad25a4382a345ee51a26fe3959edeba0f
+	md5sums = 50a38f2142ee328060aca7d2672b5dcf
+	b2sums = 09105660070368676a161201c1e0a8b12ab265353ef51f4fcb4e223b0fa7a3261d531dc8a629620f0c9d17ade5e5689d7e50bdb8a8266ccb8166f54e98408286
 
 pkgname = r-tmvnsim
