@@ -2,16 +2,16 @@
 
 _githubuser=aarnt
 _githubrepo=octopi
-_gitcommit=64e72f06c9ae9c844b92977e036865d90339b87d
+_gitcommit=4f6101f1af06ec64e81d805c84716b24254b670f
 
 pkgname=octopi-dev
-pkgver=0.16.0.r4.64e72f0
+pkgver=0.16.0.r5.4f6101f
 pkgrel=1
 pkgdesc='This is Octopi, a powerful Pacman frontend using Qt libs'
 arch=('any')
 url="https://github.com/${_githubuser}/${_githubrepo}"
 license=('GPL2')
-depends=('alpm_octopi_utils' 'qtermwidget' 'sudo')
+depends=('alpm_octopi_utils' 'qtermwidget' 'qt-sudo')
 makedepends=('git' 'qt5-tools')
 optdepends=('octopi-notifier-qt5: Notifier for Octopi using Qt5 libs'
             'octopi-notifier-frameworks: Notifier for Octopi with Knotifications support'
@@ -25,7 +25,7 @@ provides=('octopi' 'octopi-repoeditor' 'octopi-cachecleaner')
 source=("git+https://github.com/${_githubuser}/${_githubrepo}.git#commit=${_gitcommit}")
 sha256sums=('SKIP')
 
-_subdirs=(helper repoeditor cachecleaner sudo)
+_subdirs=(helper repoeditor cachecleaner)
 
 prepare() {
 	cd "${_githubrepo}"
