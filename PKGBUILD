@@ -2,9 +2,9 @@
 _pkgname=frame
 pkgname="${_pkgname}-eth-bin"
 _appname=Frame
-pkgver=0.6.8
+pkgver=0.6.9
 _electronversion=23
-pkgrel=4
+pkgrel=1
 pkgdesc="System-wide Web3"
 arch=(
     "aarch64"
@@ -25,13 +25,14 @@ depends=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 source=("${pkgname%-bin}.sh")
-sha256sums=('0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
-sha256sums_aarch64=('92dd36a4a68992985293aa796573877c33d8e4d1e036d2b2de167622aece374b')
-sha256sums_x86_64=('356f81057f557f5f2ff945c1c215265933930484033525fe1c63a2fa511f41e2')
+sha256sums=('dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums_aarch64=('e4c8238d08392f1c36791749e8e160222cf7c865bfe97a55912bd306f7bf1870')
+sha256sums_x86_64=('d85bf8ac7c07419a35747628039c300b278424b76d5369d691eed48e0d9bf60d')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed -e "s|/opt/${_appname}/${_pkgname}|${pkgname%-bin}|g" \
