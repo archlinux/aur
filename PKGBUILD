@@ -8,7 +8,7 @@ pkgrel=3
 pkgdesc='Scarlett2 Firmware Management Utility for Scarlett 2nd/3rd/4th Gen, Clarett USB, and Clarett+ interfaces'
 arch=('i686' 'x86_64')
 url="https://github.com/geoffreybennett/$_pkgname"
-provides=($_pkgname)
+provides=("$_pkgname")
 depends=('scarlett2-firmware')
 makedepends=('gcc' 'make' 'git' 'pkgconf' 'sed')
 license=('GPL-3.0-or-later')  # /usr/share/licenses/spdx/
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
-    echo "$(git describe --abbrev=4 --always --tags | sed 's/-/./g')"
+    git describe --abbrev=4 --always --tags | sed 's/-/./g'
 }
 
 build() {
