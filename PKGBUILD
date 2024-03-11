@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=x-minecraft-launcher-bin
 _appname="X Minecraft Launcher"
-pkgver=0.42.0
+pkgver=0.42.1
 _electronversion=27
 pkgrel=1
 pkgdesc="An Open Source Minecraft Launcher with Modern UX. Provide a Disk Efficient way to manage all your Mods!"
@@ -13,7 +13,10 @@ url="https://xmcl.app/"
 _ghurl="https://github.com/Voxelum/x-minecraft-launcher"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
-conflicts=("${pkgname%-bin}")
+conflicts=(
+    "${pkgname%-bin}"
+    "xmcl-launcher"
+)
 depends=(
     "electron${_electronversion}"
 )
@@ -29,13 +32,14 @@ source=(
 )
 sha256sums=('4c56e72cc6784c4c2d870c307d74e7afa6c13b001bb52f9b255cd82ab709adcb'
             '72e17fb1c83deda594cf7c6bf61b45ee31880b86e2d526e9a4b16d2d8b3fc7fa'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
-sha256sums_aarch64=('a5154bdcdc16eb8c130f5c18ed0b26af174db3e49c5e7e3a5596324f3146631d')
-sha256sums_x86_64=('182072716e5495ebc8350444d47bdb62af5a58e3617b8d1d8c0ba0cff242a8a7')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums_aarch64=('29256b1552a1947fe36559d09a328973ce63d109a805af2f990e3a49f15cdf87')
+sha256sums_x86_64=('1489ca14760fe95029dbe9ab760ff58bd309443905492d65c522eb7ad4d4f77b')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories="Game" --name="${_appname}" --exec="${pkgname} %U"
 }
