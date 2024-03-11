@@ -7,7 +7,7 @@ pkgbase = xbyak
 	license = BSD
 	makedepends = git
 	makedepends = cmake
-	source = xbyak::git+https://github.com/herumi/xbyak/commit/fc183427e852a70fb98add1ba640020a53034bb0
+	source = xbyak::git+https://github.com/herumi/xbyak#commit=fc183427e852a70fb98add1ba640020a53034bb0
 	b2sums = SKIP
 
 pkgname = xbyak
