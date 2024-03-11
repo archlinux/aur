@@ -10,16 +10,24 @@ function help() {
   echo "usage: ${0} [OPTIONS]"
   echo
   echo "where OPTIONS are:"
+  echo " -b            remove branding"
+  echo " -e            apply empty configuration"
   echo " -h            show this help"
   echo " -i INTERFACE  install via INTERFACE"
   echo " -k KEYFILE    use KEYFILE"
   echo " -p PACKAGE    install PACKAGE"
-  echo " -r            reset configuration"
+  echo " -r            apply default configuration"
   echo " -s SCRIPT     run script"
 }
 
-while getopts "hi:k:p:rs:" opt; do
+while getopts "behi:k:p:rs:" opt; do
   case ${opt} in
+    b)
+      OPTIONS+=(-b)
+      ;;
+    e)
+      OPTIONS+=(-e)
+      ;;
     h)
       help
       exit 0
