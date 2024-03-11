@@ -1,13 +1,13 @@
 pkgbase = md-tui-bin
 	pkgdesc = A terminal markdown viewer
-	pkgver = 0.2.4
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/henriklovhaug/md-tui
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	provides = md-tui
 	conflicts = md-tui
-	source = https://github.com/henriklovhaug/md-tui/releases/download/v0.2.4/md-tui-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums = 0653f296e94f77b92e9307255762e25e928e991b1c6bb3fb0ff5a74bd9d52488
+	source = https://github.com/henriklovhaug/md-tui/releases/download/v0.3.0/md-tui-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums = 58eec804a8463b22ad3734f07963cebb21444aed626badc816f3e78c39ab1595
 
 pkgname = md-tui-bin
