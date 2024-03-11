@@ -3,18 +3,17 @@
 _pkgname=suyu
 _branch=master
 pkgname=suyu-git
-pkgver=r27087.c15523798
+pkgver=r27048.f7c0931e3c
 pkgrel=1
 pkgdesc="suyu is the afterlife the world's most popular, open-source, Nintendo Switch emulator (master branch)"
 arch=(x86_64)
 url=https://gitlab.com/suyu-emu/suyu
-license=(GPL3)
+license=(GPL-3.0-or-later)
 provides=('suyu')
-conflicts=(suyu-dev-git yuzu yuzu-early-access-appimage yuzu-early-access-git)
 install=$pkgname.install
 depends=(
-  brotli
   enet
+  llvm-libs
   gcc-libs
   glibc
   hicolor-icon-theme
@@ -26,7 +25,6 @@ depends=(
   libopus.so
   libspeexdsp.so
   libssl.so
-  libswscale.so
   libusb-1.0.so
   libva.so
   libzstd.so
@@ -35,10 +33,10 @@ depends=(
   qt5-multimedia
   qt5-webengine
   sdl2
-  vulkan-utility-libraries
   zlib
 )
 makedepends=(
+  brotli
   boost
   clang
   cmake
@@ -52,6 +50,7 @@ makedepends=(
   shaderc
   spirv-headers
   vulkan-headers
+  vulkan-utility-libraries
   catch2
   rapidjson
 )
@@ -127,6 +126,9 @@ prepare() {
 }
 
 build() {
+  if [[ $CXXFLAGS == *"-flto"* ]]; then
+    flags+=("-DSUYU_ENABLE_LTO=ON")
+  fi
   export CXXFLAGS+=' -Wno-switch'
   cmake -S suyu -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
@@ -155,6 +157,7 @@ build() {
     -DSUYU_USE_QT_MULTIMEDIA=ON \
     -DSUYU_USE_QT_WEB_ENGINE=ON \
     -DSUYU_TESTS=OFF \
+    "${flags[@]}" \
     -Wno-dev
   cmake --build build
 }
