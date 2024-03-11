@@ -1,0 +1,23 @@
+pkgbase = python-kasa-git
+	pkgdesc = Python library to control TPLink's smart home devices, Git version
+	pkgver = 0.6.2.1.r49.g7507837
+	pkgrel = 1
+	url = https://github.com/python-kasa/python-kasa
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python-aiohttp
+	depends = python-asyncclick
+	depends = python-async-timeout
+	depends = python-pydantic
+	depends = python-yarl
+	provides = python-kasa
+	conflicts = python-kasa
+	source = git+https://github.com/python-kasa/python-kasa.git
+	b2sums = SKIP
+
+pkgname = python-kasa-git
