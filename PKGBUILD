@@ -1,6 +1,6 @@
 # Maintainer: aulonsal <seraur at aulonsal dot com>
 pkgname=f2-bin
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc='Cross-platform command-line tool for batch renaming files and directories quickly and safely'
 arch=('x86_64' 'i686' 'aarch64')
@@ -10,13 +10,13 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("$pkgname-$pkgver-LICENCE::${url/github/raw.githubusercontent}/v$pkgver/LICENCE")
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_amd64.tar.gz")
-source_i686=("$pkgname-$pkgver-i686.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_i386.tar.gz")
+source_i686=("$pkgname-$pkgver-i686.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_386.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_arm64.tar.gz")
 
 b2sums=('1375f8eb689085b7735551ce0f5f19167df905bdf8f105ac72479ae6214666f74a03ce24766bc08a9407c878ecd8078ca3e81013ecf4fd8c80a52dc308e29d78')
-b2sums_x86_64=('6f9fe6e46b6592060bda3a97e1bc9739ad99506e22810318ebfbaec7d52afc7cbb669ca796677aa729356fb457bd723c9b53f05fe79fae9a24fd22f735849887')
-b2sums_i686=('02bf52df9b21aa3344f1dda3b5d9259f26235b5825ca361cd2dae5c1557bd02fa92fc5ac6504ba83bb48f43283a70bdacaf61f673a51d2e1eb5dff39ae6c715f')
-b2sums_aarch64=('97a447c21c7bc1962e40ec2cc826ef3116828adec8ca8bae0d3fbcf6ad14af8757d6e3546e176e30ce8da6949c018e9290e03e217d0985ed1c2576d05b096297')
+b2sums_x86_64=('ba65c18968a9bedf7f35ad6ac88a40489dde8abc499dc7d3286bbe766689e2ef7ab506fc568f6de17c89744de0a6f48e9653f1cd3818ba6567864d80085853e2')
+b2sums_i686=('1e43776233a73c9b5379423289cce2c040b6b665687fc8c5d06e153e5982846c891643e6a2621dc650296ef5e80bc49d4f6cd6a33b122f398a1c52d0bf0f1dbe')
+b2sums_aarch64=('8e0e1d7e20e853705f9cb2b200aed429c6fe05fc7ecd7753a30e827318234f690eed7a2d09c776f0518d33dd0673998f66cd8ba9849de8cf654628cdd8d7d241')
 
 package() {
 	install -Dm755 "${pkgname%-bin}" -t "$pkgdir/usr/bin"
