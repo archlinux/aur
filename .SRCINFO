@@ -1,5 +1,5 @@
 pkgbase = mythplugins
-	pkgver = 33.1.r11.g51cb10a678
+	pkgver = 34.0.r16.g95fb10412c
 	pkgrel = 1
 	epoch = 0
 	url = http://www.mythtv.org
@@ -8,7 +8,7 @@ pkgbase = mythplugins
 	makedepends = dvdauthor
 	makedepends = dvd+rw-tools
 	makedepends = mesa-libgl
-	makedepends = mythtv-git>=33.1.r11.g51cb10a678
+	makedepends = mythtv-git>=34.0.r16.g95fb10412c
 	makedepends = perl-datetime-format-iso8601
 	makedepends = perl-date-manip
 	makedepends = perl-image-size
@@ -21,7 +21,6 @@ pkgbase = mythplugins
 	makedepends = libhdhomerun
 	makedepends = python-pillow
 	makedepends = python-pycurl
-	makedepends = python-oauthlib
 	makedepends = gdb
 	makedepends = mariadb-libs
 	makedepends = minizip
@@ -29,12 +28,10 @@ pkgbase = mythplugins
 	makedepends = perl-xml-xpath
 	makedepends = python-urllib3
 	makedepends = libcdio-paranoia
-	source = git+https://github.com/MythTV/mythweb#branch=fixes/33
-	source = git+https://github.com/MythTV/mythtv#branch=fixes/33
-	source = 001-mythnetvision-configure.patch
+	source = git+https://github.com/MythTV/mythweb#branch=fixes/34
+	source = git+https://github.com/MythTV/mythtv#branch=fixes/34
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 51c9fb042a3f2acf4ab9682cb48e9a123cf8f0e312fd8b25dd187bb56e0d701a
 
 pkgname = mythplugins-mytharchive
 	pkgdesc = Create DVDs or archive recorded shows in MythTV
@@ -60,7 +57,6 @@ pkgname = mythplugins-mythmusic
 pkgname = mythplugins-mythnetvision
 	pkgdesc = MythNetvision plugin for MythTV
 	depends = mythtv
-	depends = python-oauthlib
 	depends = python-urllib3
 
 pkgname = mythplugins-mythnews
@@ -83,8 +79,8 @@ pkgname = mythplugins-mythweb
 	depends = mythtv
 	depends = perl-cgi
 	optdepends = lighttpd
-	optdepends = php7-apache
-	optdepends = php7-fpm
+	optdepends = php-apache
+	optdepends = php-fpm
 	optdepends = nginx
 
 pkgname = mythplugins-mythzoneminder

@@ -13,9 +13,9 @@ pkgname=('mythplugins-mytharchive'
          'mythplugins-mythweather'
          'mythplugins-mythweb'
          'mythplugins-mythzoneminder')
-br=fixes/33
+br=fixes/34
 t="${br#*/}+${br%/[0-9][0-9]}"
-pkgver=33.1.r11.g51cb10a678
+pkgver=34.0.r16.g95fb10412c
 pkgrel=1
 epoch=0
 arch=('any')
@@ -24,15 +24,14 @@ license=('GPL')
 makedepends=('dvdauthor' 'dvd+rw-tools' 'mesa-libgl' "mythtv-git>=$pkgver"
              'perl-datetime-format-iso8601' 'perl-date-manip' 'perl-image-size' 'perl-cgi'
              'perl-json' 'perl-libwww' 'perl-soap-lite' 'perl-xml-simple' 'perl-xml-xpath' 'libhdhomerun'
-             'python-pillow' 'python-pycurl' 'python-oauthlib' 'gdb' 'mariadb-libs' 'minizip'
+             'python-pillow' 'python-pycurl' 'gdb' 'mariadb-libs' 'minizip'
              'python-lxml' 'perl-xml-xpath' 'python-urllib3' 'libcdio-paranoia')
 source=("git+https://github.com/MythTV/mythweb#branch=$br"
         "git+https://github.com/MythTV/mythtv#branch=$br"
-        '001-mythnetvision-configure.patch'
 )
+
 sha256sums=('SKIP'
-            'SKIP'
-            '51c9fb042a3f2acf4ab9682cb48e9a123cf8f0e312fd8b25dd187bb56e0d701a')
+            'SKIP')
 
 pkgver() {
   cd "${srcdir}/mythtv/$pkgbase"
@@ -42,8 +41,6 @@ pkgver() {
 prepare() {
   cd "$srcdir/mythtv/$pkgbase"
   
-  patch -Np1 < "../../001-mythnetvision-configure.patch"
-
   cd "$srcdir/mythweb"
   
   sed -re 's@/usr/local.*/usr/share@/usr/share@' -i 'mythweb.php'
@@ -92,7 +89,7 @@ package_mythplugins-mythmusic() {
 
 package_mythplugins-mythnetvision() {
   pkgdesc="MythNetvision plugin for MythTV"
-  depends=('mythtv' 'python-oauthlib' 'python-urllib3')
+  depends=('mythtv' 'python-urllib3')
 
   cd "$srcdir/mythtv/$pkgbase/mythnetvision"
   make INSTALL_ROOT="$pkgdir" install
@@ -120,17 +117,16 @@ package_mythplugins-mythweb() {
   pkgdesc="Web interface for the MythTV scheduler"
   depends=('mythtv' 'perl-cgi')
   optdepends=('lighttpd'
-              'php7-apache'
-              'php7-fpm'
+              'php-apache'
+              'php-fpm'
               'nginx')
 
-  sed -i 's/unix.*-fpm\.sock;/unix:\/var\/run\/php-fpm7\/php-fpm\.sock;/' "$srcdir/mythweb/mythweb.conf.nginx"
+  sed -i 's/unix.*-fpm\.sock;/unix:\/var\/run\/php-fpm\/php-fpm\.sock;/' "$srcdir/mythweb/mythweb.conf.nginx"
 
   mkdir -p "$pkgdir/var/lib/mythtv/mythweb"/{image_cache,php_sessions}
   cp -R "$srcdir/mythweb"/* "$pkgdir/var/lib/mythtv/mythweb"
   chown -R http:http "$pkgdir/var/lib/mythtv/mythweb"
   chmod g+rw "$pkgdir/var/lib/mythtv/mythweb"/{image_cache,php_sessions}
-  
 }
 
 package_mythplugins-mythzoneminder() {
