@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=GenomeInfoDb
-_bcver=1.38.1
+_bcver=1.38.7
 pkgname="r-${_bcname,,}"
 pkgver="${_bcver//[:-]/.}"
 pkgrel=1
@@ -55,7 +55,7 @@ optdepends=(
 # )
 
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=("0ea23eef0de55ff1e0a3673f16743224106a1d33776972ae758296f1568e869c7e6c6c3fcfc408a6dd3a795d77a7cfb925944659d05f880b6cf5e4ed89dfb93e")
+b2sums=('2b015fdde7dacc64987a771ee031410b635cf917bd820abdc3a0d1d08b9fd4a8a6fc800b8e932478dd30e7f3247d910dbacebe741e427a3c38378b10a217edb1')
 
 build() {
     mkdir -p "${srcdir}/build/"
