@@ -1,0 +1,13 @@
+pkgbase = 64tass
+	pkgdesc = cross-assembler targeting MOS 65xx micro processors (6502, 65C02, R65C02, W65C02, 65CE02, 65816, DTV, 65EL02, 4510)
+	pkgver = 1.59.3120
+	pkgrel = 1
+	url = https://tass64.sourceforge.net/
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = https://sourceforge.net/projects/tass64/files/source/64tass-1.59.3120-src.zip
+	sha256sums = a89a7b79ad234c6ea51a1c9d6c472d0f3827d01b2501b3f30cd0af9541423eef
+
+pkgname = 64tass
