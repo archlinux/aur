@@ -1,6 +1,6 @@
 pkgbase=msl
-pkgname=('msl')
-pkgver=1.7.4
+pkgname='msl'
+pkgver=1.7.5
 pkgrel=1
 pkgdesc='Shader language based off GLSL that allows compiling multiple shaders into modules.'
 arch=('i686' 'x86_64')
