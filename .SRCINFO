@@ -1,11 +1,12 @@
 pkgbase = envkey-bin
 	pkgdesc = Secure, human-friendly, cross-platform secrets and config.
 	pkgver = 2.4.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.envkey.com/
 	arch = x86_64
 	license = MIT
-	depends = electron13
+	makedepends = fuse2
+	depends = electron13-bin
 	depends = hicolor-icon-theme
 	depends = nodejs
 	depends = libsecret
@@ -16,6 +17,6 @@ pkgbase = envkey-bin
 	source = envkey.sh
 	sha256sums = ad009fa2339c4ecde7fd7371a0dafa3a9ae0f85aa08df9d6b832298f0cb5aa72
 	sha256sums = d3e78cbc2e92dfabac2dc9c8a5cd22e702cba2a65455c265e5bed3a1d447a704
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = envkey-bin
