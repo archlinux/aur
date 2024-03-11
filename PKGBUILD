@@ -3,18 +3,17 @@
 _pkgname=suyu
 _branch=dev
 pkgname=suyu-dev-git
-pkgver=r27167.d02af377d4
+pkgver=r27175.bd5bdbe6c7
 pkgrel=1
 pkgdesc="suyu is the afterlife the world's most popular, open-source, Nintendo Switch emulator (dev branch)"
 arch=(x86_64)
 url=https://gitlab.com/suyu-emu/suyu
-license=(GPL3)
+license=(GPL-2.0-or-later)
 provides=('suyu')
 install=$pkgname.install
-conflicts=(yuzu yuzu-early-access-appimage yuzu-early-access-git)
 depends=(
-  brotli
   enet
+  llvm-libs
   gcc-libs
   glibc
   hicolor-icon-theme
@@ -26,7 +25,6 @@ depends=(
   libopus.so
   libspeexdsp.so
   libssl.so
-  libswscale.so
   libusb-1.0.so
   libva.so
   libzstd.so
@@ -35,10 +33,10 @@ depends=(
   qt5-multimedia
   qt5-webengine
   sdl2
-  vulkan-utility-libraries
   zlib
 )
 makedepends=(
+  brotli
   boost
   clang
   cmake
@@ -52,6 +50,7 @@ makedepends=(
   shaderc
   spirv-headers
   vulkan-headers
+  vulkan-utility-libraries
   catch2
   rapidjson
 )
