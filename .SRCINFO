@@ -2,6 +2,7 @@ pkgbase = python-ultralytics
 	pkgdesc = Ultralytics YOLOv8 for SOTA object detection, multi-object tracking, instance segmentation, pose estimation and image classification.
 	pkgver = 8.1.26
 	pkgrel = 1
+	url = https://github.com/ultralytics/ultralytics
 	arch = any
 	license = AGPL-3.0-or-later
 	makedepends = python-build
