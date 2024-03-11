@@ -9,7 +9,7 @@ arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/ThePBone/GalaxyBudsClient"
 license=('GPL-3.0-only')
 depends=('gcc-libs' 'zlib' 'bluez')
-makedepends=('git' 'dotnet-sdk')
+makedepends=('git' 'dotnet-sdk>=8.0')
 provides=("${pkgname}")
 conflicts=("${_pkgname}-bin")
 options=('!strip')
