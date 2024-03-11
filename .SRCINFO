@@ -21,7 +21,7 @@ pkgbase = python-ultralytics
 	depends = python-pandas
 	depends = python-seaborn
 	depends = python-lap
-	source = https://files.pythonhosted.org/packages/db/23/32dca36723349d98eaf59768f4f72ac996ffb5b9616bc9e7977d0ee990ed/${_module}-${pkgver}.tar.gz
+	source = https://files.pythonhosted.org/packages/db/23/32dca36723349d98eaf59768f4f72ac996ffb5b9616bc9e7977d0ee990ed/ultralytics-8.1.26.tar.gz
 	sha256sums = 88048ce58a682e8196b757d22f9eb1491cab4e6e5440351476bc53e25f26dd0e
 
 pkgname = python-ultralytics
