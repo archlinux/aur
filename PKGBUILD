@@ -2,12 +2,12 @@
 
 pkgname=fvm
 pkgver=3.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Flutter Version Management: A simple cli to manage Flutter SDK versions."
 arch=('x86_64')
 url="https://github.com/leoafarias/fvm"
 license=('MIT')
-depends=()
+depends=('git' 'zip' 'unzip' 'xz' 'curl' 'file' 'mesa')
 optdepends=()
 source=(
   "$url/releases/download/$pkgver/fvm-$pkgver-linux-x64.tar.gz"
