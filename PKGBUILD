@@ -3,7 +3,7 @@
 
 _pkgname="xdg-desktop-portal-hyprland"
 pkgname="${_pkgname}-git"
-pkgver=1.3.1.r12.g1b713911
+pkgver=1.3.1.r14.g2d2fb547
 pkgrel=1
 pkgdesc="xdg-desktop-portal backend for hyprland"
 url="https://github.com/hyprwm/xdg-desktop-portal-hyprland"
@@ -21,7 +21,7 @@ optdepends=(
 source=("${_pkgname}::git+$url.git")
 sha256sums=('SKIP')
 
-backup=("etc/xdg/xdg-desktop-portal/hyprland-portals.conf")
+backup=("usr/share/xdg-desktop-portal/hyprland-portals.conf")
 
 pkgver() {
 	cd "${_pkgname}"
@@ -47,8 +47,8 @@ package() {
 	DESTDIR="${pkgdir}" cmake --install build
 
 	# https://github.com/hyprwm/xdg-desktop-portal-hyprland/issues/171#issuecomment-1898969439
-	install -dm755 "$pkgdir/etc/xdg/xdg-desktop-portal"
-	echo -e "[preferred]\ndefault=gtk;hyprland" > "$pkgdir/etc/xdg/xdg-desktop-portal/hyprland-portals.conf"
+	install -dm755 "$pkgdir/usr/share/xdg-desktop-portal"
+	echo -e "[preferred]\ndefault=hyprland;gtk" > "$pkgdir/usr/share/xdg-desktop-portal/hyprland-portals.conf"
 
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
