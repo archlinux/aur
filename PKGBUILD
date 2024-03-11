@@ -4,7 +4,7 @@
 
 _pkgname=input-overlay
 pkgname="obs-plugin-$_pkgname-bin"
-pkgver=5.0.4
+pkgver=5.0.5
 pkgrel=1
 groups=('obs-plugins')
 pkgdesc="obs-studio plugin to show keyboard, gamepad and mouse input on stream."
@@ -18,8 +18,8 @@ _source=("$_pkgname-$pkgver-linux-x86_64.zip"
          "$_pkgname-$pkgver-presets.zip")
 source=("${_source[@]/#/$url/releases/download/v$pkgver/}")
 noextract=("${_source[1]}")
-sha256sums=('556a6cc643f5a242161f9ba71c24fa750d12e7d8e2298c8a89a78d6169a009ec'
-            'efdc9d65dd9ed8c0670159b5697284b55c8057aea5a508afde634a23c799d698')
+sha256sums=('71ae9292ad25e7186b50b433b0b3bc3090122db87cf9a8b650e6afcfaad7d2ca'
+            '728be2fa05947270d7eb6cacdeb3a518f7b505a5c4c27db628b722dbec2753e1')
 
 package() {
   local from="$srcdir/$_pkgname"
