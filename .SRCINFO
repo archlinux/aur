@@ -1,6 +1,6 @@
 pkgbase = prowlarr-nightly
 	pkgdesc = Usenet and torrent aggregator, similar to nzbhydra2 and jackett.
-	pkgver = 1.14.2.4318
+	pkgver = 1.14.3.4322
 	pkgrel = 1
 	url = https://github.com/Prowlarr/Prowlarr
 	arch = x86_64
@@ -24,11 +24,11 @@ pkgbase = prowlarr-nightly
 	sha512sums = 9159ceda0955f2ebc495dd470c9d6234d8534a120ab81fa58fefae94a8ecfdc8fe883fb1287bc10429e7b4f35ac59d36232d716c161a242a4bfcdff768f1b9a2
 	sha512sums = 6ebd6f268e5aa7446e3c77540f5c95b3237959892e8800f5f380a0f979c71ec0d6f7664c1a58f7d10a255bc21a19bad0fef8609b02b4d5e15f340e66364017d2
 	sha512sums = 473f38f922c1c24987bc77bb687739e3de0eed5c567407c690e0e9ac1604479bbe4f606ccb804067dbe97a100a748b4c2e05a11e30835d42e67ec65177a4f42a
-	source_x86_64 = prowlarr.develop.1.14.2.4318.linux-core-x64.tar.gz::https://prowlarr.servarr.com/v1/update/nightly/updatefile?version=1.14.2.4318&os=linux&runtime=netcore&arch=x64
-	sha512sums_x86_64 = 83e36eef6cc8740e1b7cbcaf34d45731bec47c134445f3bf26af62194ea0f9992de30f49bbb6111c484ee530d0ea184dd37ece7c6481e61dc074d78baaad4797
-	source_aarch64 = prowlarr.develop.1.14.2.4318.linux-core-arm64.tar.gz::https://prowlarr.servarr.com/v1/update/nightly/updatefile?version=1.14.2.4318&os=linux&runtime=netcore&arch=arm64
-	sha512sums_aarch64 = 195158e249f617df0e8104410e13c22774a27a5db440a58c59a541c014115eafd23167ed8eb5088a0f5f86d0af4cc875bbe6331c0335222f215674f80124f50d
-	source_armv7h = prowlarr.develop.1.14.2.4318.linux-core-arm.tar.gz::https://prowlarr.servarr.com/v1/update/nightly/updatefile?version=1.14.2.4318&os=linux&runtime=netcore&arch=arm
-	sha512sums_armv7h = 5c47f2b9313ef7b4e564c324c1948006e775bfcdc4f68e0fbdf81172124ec90cd099ae8187379abc03a66c53a002f076aed78d0dc5dfaa7769b2757c1c606eed
+	source_x86_64 = prowlarr.develop.1.14.3.4322.linux-core-x64.tar.gz::https://prowlarr.servarr.com/v1/update/nightly/updatefile?version=1.14.3.4322&os=linux&runtime=netcore&arch=x64
+	sha512sums_x86_64 = cd4be5610d32271dab56e9e471da65cdab9b97b5707900fb66dd03f5e4d73996cf5c1bb6578d7189df8ac9e40c26b7075267a1df4fbb118bb2ccf043b4f9d955
+	source_aarch64 = prowlarr.develop.1.14.3.4322.linux-core-arm64.tar.gz::https://prowlarr.servarr.com/v1/update/nightly/updatefile?version=1.14.3.4322&os=linux&runtime=netcore&arch=arm64
+	sha512sums_aarch64 = 5e98650aceab091c650e3c52a340fb8cce3e192f70f6e868c2bfad412aa406327f00a07413161ebc241c6fd9ac1a5c32b88136458a80019b310024a44802dd35
+	source_armv7h = prowlarr.develop.1.14.3.4322.linux-core-arm.tar.gz::https://prowlarr.servarr.com/v1/update/nightly/updatefile?version=1.14.3.4322&os=linux&runtime=netcore&arch=arm
+	sha512sums_armv7h = 25a80d002d0eca1ceace502e6f5ff9c99022f8413cfbb067eb531bc0c6ce1bde77021f7da21d30c0ee6348885a38ae8951c8031a2d63b1ff092e45cf175c373a
 
 pkgname = prowlarr-nightly
