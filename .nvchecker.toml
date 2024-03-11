@@ -1,0 +1,4 @@
+[python-allure-commons]
+source = "github"
+github = "allure-framework/allure-python"
+use_latest_release = "true"
