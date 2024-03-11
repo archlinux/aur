@@ -1,0 +1,20 @@
+pkgbase = idris2-pack-git
+	pkgdesc = An Idris2 package manager with curated package collections
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/stefan-hoeck/idris2-pack
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	makedepends = idris2
+	makedepends = idris2-filepath
+	makedepends = idris2-toml-idr
+	depends = chez-scheme
+	depends = sh
+	optdepends = idris2: Bootstrapping
+	provides = idris2-pack
+	conflicts = idris2-pack
+	source = idris2-pack::git+https://github.com/stefan-hoeck/idris2-pack.git
+	sha256sums = SKIP
+
+pkgname = idris2-pack-git
