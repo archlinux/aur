@@ -3,7 +3,7 @@ pkgname=watt-wiser
 pkgdesc='A software energy consumption estimation tool'
 arch=("any")
 url="https://git.sr.ht/~whereswaldon/watt-wiser"
-pkgver=v0.0.6
+pkgver=v0.0.7
 pkgrel=1
 license=("Unlicense")
 makedepends=("go" "gcc" "vulkan-headers" "pkgconf" "wayland" "wayland-protocols" "libx11" "libxkbcommon-x11" "libxcursor")
@@ -12,9 +12,9 @@ provides=($pkgname)
 conflicts=("$pkgname" "watt-wiser-git" "watt-wiser-sensors-git")
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('0e42868d98bc92b8730fa14f7059f0dc8d2d49512ba32d6cdaf889a31ea58bb9')
-sha512sums=('efb959e0ae8894809027332fec2ef1e9d0044cd1c1d7de27fa2d31dd42fa69b0c8ace3cb7400ba122c9d284484729664540c50f5ee640c672b12839308847abf')
-b2sums=('a8b9e3b0d906b0ada42eb3ba47eef0302798c5bb53405ffe9c8eca8b705acf7ed4549eec5aa5bbaa4d44e686b8ff2d257185c4716680efc683823dcc347f3a74')
+sha256sums=('1166245f0da7171e7670e4b30d5572a32e20e12c78cd329fb099f007ee95ccf2')
+sha512sums=('a70e8ebbba7197b88b36887a0a58cbbf978031f972ce5e0a786039e21077d3626dce6e51eb51bc9600c48bf94437a15203fe35d847159c576296633de6083831')
+b2sums=('8a2b703c0d1b674e6ebf126894b02f7de2f7ef79e7fcc0fcc44f4ec11a523aa94ac150474314c48fdb8c01af9b52a42407a59c37009847e48f9171aa2b6df22f')
 
 build() {
   cd "${pkgname}-${pkgver}"
