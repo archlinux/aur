@@ -1,19 +1,19 @@
 # Maintainer: Shantanu Tushar <shantanu@kde.org>
 pkgname=ruqola-git
-pkgver=2.1.0
-pkgrel=3
+pkgver=2.1.43alpha
+pkgrel=1
 epoch=
 pkgdesc="Rocket.Chat client for the KDE desktop"
 arch=('x86_64')
 url="https://invent.kde.org/network/ruqola/"
 license=('GPL2')
 groups=()
-depends=('qt5-networkauth' 'qt5-websockets' 'qtkeychain' 'hicolor-icon-theme' 'syntax-highlighting5' 'kwidgetsaddons5' 'kuserfeedback5' 'knotifyconfig5' 'kdoctools5' 'prison5' 'kidletime5' 'ktextaddons')
+depends=('qt6-networkauth' 'qt6-websockets' 'qtkeychain-qt6' 'hicolor-icon-theme' 'syntax-highlighting' 'kwidgetsaddons' 'kuserfeedback' 'knotifyconfig' 'kdoctools' 'prison' 'kidletime' 'ktextaddons')
 makedepends=('cmake' 'extra-cmake-modules' 'git')
 provides=(ruqola)
 conflicts=(ruqola)
 _name=ruqola
-source=("git+https://invent.kde.org/network/$_name.git#branch=2.1")
+source=("git+https://invent.kde.org/network/$_name.git")
 md5sums=('SKIP')
 
 build() {
