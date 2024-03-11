@@ -2,7 +2,7 @@
 #pkgname=(libnvidia-container1 libnvidia-container-tools nvidia-container-runtime nvidia-container-toolkit nvidia-container-toolkit-base nvidia-docker2)
 pkgname=libnvidia-container-bin
 
-pkgver=1.14.5
+pkgver=1.14.6
 pkgrel=1
 _pkgname_tools=libnvidia-container-tools
 _pkgname_tools=libnvidia-container-tools
@@ -21,11 +21,11 @@ source=("https://nvidia.github.io/libnvidia-container/stable/deb/amd64/./${_pkgl
 "https://nvidia.github.io/libnvidia-container/stable/deb/amd64/./${_pkglist[3]}_${pkgver}-1_amd64.deb"
 "https://nvidia.github.io/libnvidia-container/stable/deb/amd64/./${_pkglist[4]}_${pkgver}-1_amd64.deb"
 "https://nvidia.github.io/libnvidia-container/stable/deb/amd64/./${_pkglist[5]}_2.14.0-1_all.deb")
-sha256sums=('5f9aba9303c520915c6dd384e88fc126438a745460917beca0cacaceca808b42'
-            '8e02a8a1cd0c79ab0e9dec1aaecd46fdb67932b589278e5ece50ed4aa8e4ce78'
+sha256sums=('a1bf234c2f97fe45c183b2eba8beed82da5fe0a589bb2c9136046d5a0bd759bf'
+            'c7c338095a77a8787b7644afa9462c355512ff480ad4b63abf9e3eb97734e51a'
             'fe425ba3a1008748b123ce0cc50835b4a29f4000df5a88d7b22479514a8fb795'
-            '8716342164eca1008d9eabb9c20830b7d4e527b600e09723ef24143ba036400a'
-            '1c2fda706646105d3f8f2cf70769d2870ad8e300443396b2182eb86c373b65b1'
+            '1599a5a7a2248a4e061bec92ff8f0be831b239d9fcd08d1a4c0fad0fd57e9a82'
+            'c814a4681b6e553f4534ea186e3ef8adf9ccad97b4a277524d75bc21d07d20c4'
             'f4d01406e7e38ce810c0b3ba44c56842abc1ee38affa4c6a8a56da7989f17b2e')
 install=libnvidia-container-bin.install
 

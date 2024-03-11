@@ -1,11 +1,11 @@
 post_install() {
-  ln -sf /usr/lib/x86_64-linux-gnu/libnvidia-container.so.1.14.5 /usr/lib/libnvidia-container.so.1
-  ln -sf /usr/lib/x86_64-linux-gnu/libnvidia-container-go.so.1.14.5 /usr/lib/libnvidia-container-go.so.1
+  ln -sf /usr/lib/x86_64-linux-gnu/libnvidia-container.so.1.14.6 /usr/lib/libnvidia-container.so.1
+  ln -sf /usr/lib/x86_64-linux-gnu/libnvidia-container-go.so.1.14.6 /usr/lib/libnvidia-container-go.so.1
 }
 
 post_upgrade() {
-  ln -sf /usr/lib/x86_64-linux-gnu/libnvidia-container.so.1.14.5 /usr/lib/libnvidia-container.so.1
-  ln -sf /usr/lib/x86_64-linux-gnu/libnvidia-container-go.so.1.14.5 /usr/lib/libnvidia-container-go.so.1
+  ln -sf /usr/lib/x86_64-linux-gnu/libnvidia-container.so.1.14.6 /usr/lib/libnvidia-container.so.1
+  ln -sf /usr/lib/x86_64-linux-gnu/libnvidia-container-go.so.1.14.6 /usr/lib/libnvidia-container-go.so.1
 }
 
 post_remove() {
