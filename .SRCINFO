@@ -1,6 +1,6 @@
 pkgbase = p3x-onenote-bin
 	pkgdesc = Linux Electron Onenote - A Linux compatible version of OneNote
-	pkgver = 2024.4.124
+	pkgver = 2024.4.142
 	pkgrel = 1
 	url = https://www.corifeus.com/onenote/
 	arch = aarch64
@@ -9,17 +9,17 @@ pkgbase = p3x-onenote-bin
 	license = MIT
 	depends = electron29
 	depends = hicolor-icon-theme
-	provides = p3x-onenote=2024.4.124
+	provides = p3x-onenote=2024.4.142
 	conflicts = p3x-onenote
-	source = LICENSE-2024.4.124::https://raw.githubusercontent.com/patrikx3/onenote/v2024.4.124/LICENSE
+	source = LICENSE-2024.4.142::https://raw.githubusercontent.com/patrikx3/onenote/v2024.4.142/LICENSE
 	source = p3x-onenote.sh
-	sha256sums = 6a47b2022f4b478c2b5e071763de30829b7882c53292933af0f47184072d8d25
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
-	source_aarch64 = p3x-onenote-2024.4.124-aarch64.deb::https://github.com/patrikx3/onenote/releases/download/v2024.4.124/p3x-onenote_2024.4.124_arm64.deb
-	sha256sums_aarch64 = b85937f3ec8c1746fc9449d7d0e84fac8fa7ec87b8ae8ba2c0bca4b24cbf0310
-	source_armv7h = p3x-onenote-2024.4.124-armv7h.deb::https://github.com/patrikx3/onenote/releases/download/v2024.4.124/p3x-onenote_2024.4.124_armv7l.deb
-	sha256sums_armv7h = 7bcbe9f94b2036dc82b8fc3ce5bc605faf8c98c3a957c9cf86cc480350bd3ea8
-	source_x86_64 = p3x-onenote-2024.4.124-x86_64.deb::https://github.com/patrikx3/onenote/releases/download/v2024.4.124/p3x-onenote_2024.4.124_amd64.deb
-	sha256sums_x86_64 = b910bc2c0408572f1eb91b2ae63ea830fed9341c7e0ff019c866471c58851fa6
+	sha256sums = 9610dab5a4ed91d2caa7d0eee497dcf618fda2715bcdeb3281acbf9c93b7a038
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	source_aarch64 = p3x-onenote-2024.4.142-aarch64.deb::https://github.com/patrikx3/onenote/releases/download/v2024.4.142/p3x-onenote_2024.4.142_arm64.deb
+	sha256sums_aarch64 = 0e7613dd5be23d81fe3cb96236fd102e1b1b9c01918d04c587584cdeadffc5e1
+	source_armv7h = p3x-onenote-2024.4.142-armv7h.deb::https://github.com/patrikx3/onenote/releases/download/v2024.4.142/p3x-onenote_2024.4.142_armv7l.deb
+	sha256sums_armv7h = 14d13dddd8a753a52cb741d51a03a23628e98e3a7985b1c867bd72c1a859f639
+	source_x86_64 = p3x-onenote-2024.4.142-x86_64.deb::https://github.com/patrikx3/onenote/releases/download/v2024.4.142/p3x-onenote_2024.4.142_amd64.deb
+	sha256sums_x86_64 = 727e50d76bdec5b93f5ef21d9725a39aa0edd2a8ec83eed9f416e6bb55cb326d
 
 pkgname = p3x-onenote-bin
