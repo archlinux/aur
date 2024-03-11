@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="A python package for managing the World Coordinate System (WCS) of astronomical data"
 arch=('any')
 url="http://gwcs.readthedocs.io"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-installer')
 checkdepends=('python-pytest-doctestplus'
 #             'python-pytest-remotedata'
