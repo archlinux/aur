@@ -3,7 +3,7 @@ pkgname=mailspring-bin
 _pkgname=Mailspring
 pkgver=1.13.3
 _electronversion=22
-pkgrel=3
+pkgrel=4
 pkgdesc="A beautiful, fast and fully open source mail client."
 arch=('x86_64')
 url="https://getmailspring.com/"
@@ -24,11 +24,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('d85e64f3345123ac75110d24f30bc8ab54372e7ae7d913a9fccabe1fb56ace57'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@|--password-store=\"gnome-libsecret\"|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
 }
