@@ -1,12 +1,13 @@
-# Maintainer: Chris Coggburn <chris@coggburn.us>
+# Maintainer: Sich <little_sich@tuta.io> 
+# Contributor: Chris Coggburn <chris@coggburn.us>
 pkgname=gpa-git
-pkgver=0.9.9.r6.g774dbff
+pkgver=0.11.base.r206.g596b953
 pkgrel=1
 pkgdesc="A graphical user interface for the GnuPG"
 arch=('i686' 'x86_64')
 url="https://www.gnupg.org/related_software/gpa/"
-license=('GPL3')
-depends=('gpgme' 'gtk2' 'desktop-file-utils')
+license=('GPL-3.0-or-later')
+depends=('gpgme' 'gtk3')
 makedepends=('git')
 provides=('gpa')
 conflicts=('gpa')
@@ -28,7 +29,7 @@ prepare() {
 
 build() {
   cd "$pkgname"
-  ./configure --prefix=/usr
+  ./configure CFLAGS=-fno-exceptions --prefix=/usr
   make
 }
 
@@ -40,6 +41,7 @@ check() {
 package() {
   cd "$pkgname"
   make DESTDIR="$pkgdir/" install
+  rm -rf "$pkgdir/src"
 }
 
 # vim:set ts=2 sw=2 et:
