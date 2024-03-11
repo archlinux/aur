@@ -1,12 +1,12 @@
 # Maintainer: tercean <cg@zknt.org>
 pkgname=deltachat-desktop
-pkgver=1.44.0
+pkgver=1.44.1
 pkgrel=1
 pkgdesc="A privacy oriented chat application built on e-mail"
 arch=("any")
 url="https://github.com/deltachat/deltachat-desktop"
 license=("GPL")
-depends=('electron25')
+depends=('electron28')
 makedepends=('npm' 'nodejs>=16' 'rustup' 'python' 'unzip')
 conflicts=("deltachat-desktop-git")
 source=(
@@ -15,10 +15,10 @@ source=(
     "deltachat-desktop.sh"
     "static_build_info.patch"
 )
-sha256sums=('c563d3c6ba7c273b55d3ecef4a2e2f5d236fe2c0a8b4a4e98f8473d2ec9666c8'
+sha256sums=('f9e33150931e21dbe308eeab490c62794ce09eb5ee8aaabbe9f36a5dfa0ef100'
             '39bae164c234b3c89e7ae2bde89753c90065df7f37fece084f7f5acccbb9f1f1'
-            '2efb67b67672fcd48f82bcaf8db980cdff8d93b9f7d95ac4d6a211b61af3880c'
-            'bb569a37db5781cac24b867a00eb031c6155ec326de88081c96df2a56e894002')
+            '5c92de2d18839f3dedf677c3830da5edbb8d69545f607d114b5bf853786a7c8d'
+            '1dbbe4122eca89102df38b91ba184de05a5a5acee03f690d64bcbc02b3e096de')
 
 prepare() {
     cd "$srcdir/${pkgname}-${pkgver}"
