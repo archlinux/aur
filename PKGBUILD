@@ -4,8 +4,8 @@
 
 pkgbase=pyutil
 pkgname=python-pyutil
-pkgver=3.3.0
-pkgrel=2
+pkgver=3.3.6
+pkgrel=1
 pkgdesc="General-purpose python library (used by tahoe-lafs)"
 arch=('any')
 url='https://pypi.org/project/pyutil'
@@ -13,10 +13,10 @@ license=('GPL2')
 depends=('python')
 optdepends=('python-simplejson: jsonutil support'
             'python-zbase32: randcookie support')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'python-versioneer')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pyutil/pyutil-$pkgver.tar.gz"
         'setup.py.patch')
-sha256sums=('8c4d4bf668c559186389bb9bce99e4b1b871c09ba252a756ccaacd2b8f401848'
+sha256sums=('5dc3d6bb9c5bababb5d0b773e094045d75712e8b34af2d29b0e28602668267c0'
             'c04d9474203ff677a0a23818d1d78eb7564f51f99dfac4ebf512170b5fdf7004')
 
 prepare() {
