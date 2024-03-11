@@ -1,10 +1,11 @@
 pkgbase = android-x86-libxcb
-	pkgdesc = X11 client-side library (Android x86)
+	pkgdesc = X11 client-side library (Android, x86)
 	pkgver = 1.16.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xcb.freedesktop.org/
 	arch = any
 	license = custom
+	makedepends = android-configure
 	makedepends = python
 	makedepends = android-x86-libxslt
 	makedepends = android-x86-xorg-util-macros
