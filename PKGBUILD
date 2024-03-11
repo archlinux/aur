@@ -3,7 +3,7 @@
 
 pkgname=autenticacao-gov-pt
 _pkgname=autenticacao.gov
-pkgver=3.8.0
+pkgver=3.12.0
 pkgrel=1
 pkgdesc="Portuguese Citizen Card Application (Portugal eID)"
 arch=('i686' 'x86_64')
@@ -24,29 +24,21 @@ depends=('qt5-base'
          'xml-security-c'
          'libcurl-gnutls'
          'openjpeg2'
-         'java-runtime'
-         'java-environment')
-makedepends=('swig' 'qconf' 'git' 'xml-security-c' 'libcurl-gnutls' 'java-runtime' 'java-environment' 'openjpeg2')
+         'openpace-git')
+makedepends=('swig' 'qconf' 'git')
 optdepends=('plugin-autenticacao-gov-pt: Necessário para autenticações online'
             'autenticacao-gov-pt-pki: PKI que confirma a validade dos certificados dos CC'
             'ecce-gov-pt-certificates: Certificados da ECCE quem assina dos certificados contidos em cartaodecidadao-pki')
 conflicts=('classpath' 'cartaodecidadao' 'cartaodecidadao-bin')
 replaces=('cartaodecidadao')
 
-source=('git+https://github.com/amagovpt/autenticacao.gov/#branch=openssl-3'
+source=('git+https://github.com/amagovpt/autenticacao.gov/#branch=master'
         'autenticacao-gov-pt.install')
 
 sha512sums=('SKIP'
             '344a0722a4554150f17f25d49d85c8a42d5e75b2444d59b1648f7c3d0817eb93eb011680f3cccf092a5eceef7c13e8048f0d09de4f07199a33c7bd1033c3de9f')
 
 install='autenticacao-gov-pt.install'
-
-prepare(){
-cat >> ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw/eidlibJava_Wrapper/eidlibJava_Wrapper.pro <<EOF
-INCLUDEPATH += /usr/lib/jvm/default/include
-INCLUDEPATH += /usr/lib/jvm/default/include/linux
-EOF
-}
 
 build() {
   cd ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw
