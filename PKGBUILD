@@ -1,6 +1,6 @@
 # Maintainer: 46620 <46620osu@gmail.com>
 pkgname='revanced-cli-bin'
-pkgver=4.4.1
+pkgver=4.4.2
 pkgrel=1
 pkgdesc='Command line application as an alternative to the ReVanced Manager'
 arch=('any')
@@ -14,7 +14,7 @@ install='revanced-cli.install'
 source=("${url}/releases/download/v${pkgver}/revanced-cli-${pkgver}-all.jar"
         "${url}/raw/v${pkgver}/LICENSE"
         "${pkgname%????}.sh")
-sha256sums=('f2e84a6c40371fc198e3275e7e42d702a09974321900db3781940663209474e3'
+sha256sums=('cdd91ab32630c8f07a98fbd154c3f7fd4a1a5dd691c4023c1b23b1b026013041'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '966cb49d9de2c2081b1bc5af00babe3a8c7735320f248ff1a8c1c8c7cc775502')
 
