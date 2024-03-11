@@ -1,7 +1,7 @@
 pkgbase = csmith
 	pkgdesc = Tool for stress-testing compilers, static analyzers, and other tools that process C code
 	pkgver = 2.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://embed.cs.utah.edu/csmith/
 	arch = i686
 	arch = x86_64

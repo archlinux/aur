@@ -3,7 +3,7 @@
 # Previous maintainer: spider-mario <spidermario@free.fr>
 pkgname=csmith
 pkgver=2.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Tool for stress-testing compilers, static analyzers, and other tools that process C code'
 arch=('i686' 'x86_64')
 url='http://embed.cs.utah.edu/csmith/'
