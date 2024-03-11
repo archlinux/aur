@@ -1,7 +1,7 @@
 pkgbase = ukrmol-out
 	pkgdesc = Outer region programs for UKRmol+
 	pkgver = 3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://zenodo.org/records/5799134
 	arch = any
 	license = custom
@@ -13,6 +13,7 @@ pkgbase = ukrmol-out
 	makedepends = openmpi
 	depends = lapack
 	depends = blas
+	depends = gbtolib
 	source = https://zenodo.org/record/5799134/files/ukrmol-out-3.2.tar.gz?download=1
 	sha256sums = 9d3acc132c4128957d0a34ac8700924d3efdb7b84e37107fad6f80ac840aee59
 

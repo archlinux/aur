@@ -2,14 +2,14 @@
 
 pkgname="ukrmol-out"
 pkgver=3.2
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Outer region programs for UKRmol+"
 arch=('any')
 url='https://zenodo.org/records/5799134'
 license=('custom')
 groups=()
-depends=('lapack' 'blas')
+depends=('lapack' 'blas' 'gbtolib')
 makedepends=('cmake' 'gcc' 'gcc-fortran' 'cmake' 'doxygen' 'openmpi')
 checkdepends=()
 optdepends=()
