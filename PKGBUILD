@@ -2,15 +2,14 @@
 
 pkgname=neosurf-git
 pkgdesc="A NetSurf fork with various improvements"
-pkgver=16.r14.ge60719e
-pkgrel=2
+pkgver=16.r21.gd6c77f2
+pkgrel=1
 arch=("x86_64")
 makedepends=(
 	git
 	python3
 	cmake
 	ninja
-	zsh
 	gperf
 	flex
 	bison
@@ -35,7 +34,7 @@ depends=(
 	wayland
 	zlib
 )
-license=(GPL2)
+license=('GPL-2.0-only')
 url="https://github.com/CobaltBSD/neosurf"
 source=(
 	"neosurf"::"git+https://github.com/CobaltBSD/neosurf.git"
@@ -50,7 +49,11 @@ b2sums=(
 
 build() {
 	cd "neosurf"
-	cmake -B build -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr"
+	cmake \
+		-B build \
+		-G Ninja \
+		-DCMAKE_INSTALL_PREFIX="/usr"
+
 	cmake --build build
 }
 
