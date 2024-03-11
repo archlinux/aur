@@ -5,8 +5,10 @@
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
 
+# binary version of this package (-bin): github.com/noahvogt/openssh-dotconfig-bin-aur
+
 pkgname=openssh-dotconfig
-pkgver=9.5p1
+pkgver=9.7p1
 pkgrel=1
 pkgdesc='Premier connectivity tool for remote login with the SSH protocol - but moved $HOME/.ssh to $HOME/.config/ssh'
 arch=('x86_64')
@@ -51,7 +53,7 @@ source=(https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${pkgname%-*}-${pkg
         ssh-agent.service
         sshd.conf
         sshd.pam)
-sha256sums=('f026e7b79ba7fb540f75182af96dc8a8f1db395f922bbc9f6ca603672686086b'
+sha256sums=('490426f766d82a2763fcacd8d83ea3d70798750c7bd2aff2e57dc5660f773ffd'
             'SKIP'
 			'27e43dfd1506c8a821ec8186bae65f2dc43ca038616d6de59f322bd14aa9d07f'
             '78b806c38bc1e246daaa941bfe7880e6eb6f53f093bea5d5868525ae6d223d30'
@@ -60,7 +62,7 @@ sha256sums=('f026e7b79ba7fb540f75182af96dc8a8f1db395f922bbc9f6ca603672686086b'
             'b3b1e4f7af169cd5fccdcdf9538ef37fc919c79a9905f797925153a94e723998'
             '76635a91526ce44571485e292e3a777ded6a439af78cb93514b999f91fb9b327'
             '633e24cbfcb045ba777d3e06d5f85dfaa06d44f4727d38c7fb2187c57498221d')
-b2sums=('55dbb0a2792b0046c943a19ca0966660e6e378e77856e94823a1bbbafaa0da94357403765c4c028aebf6543049a0f9bbe0019629be3f92cdadfac1be56def796'
+b2sums=('520859fcbdf678808fc8515b64585ab9a90a8055fa869df6fbba3083cb7f73ddb81ed9ea981e131520736a8aed838f85ae68ca63406a410df61039913c5cb48b'
         'SKIP'
         '29e1a1c2744e0234830c6f93a46338ea8dc943370e20a24883d207d611025e54643da678f2826050c073a36be48dfdc7329d4cfb144c2ff90607a5f10f73dc59'
         '1ff8cd4ae22efed2b4260f1e518de919c4b290be4e0b5edbc8e2225ffe63788678d1961e6f863b85974c4697428ee827bcbabad371cfc91cc8b36eae9402eb97'
