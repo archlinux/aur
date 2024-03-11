@@ -14,7 +14,7 @@ makedepends=("git" "cmake>=3.7.2")
 optdepends=("libvolk")
 provides=("sigutils")
 conflicts=("sigutils")
-source=("${pkgname}::git+https://github.com/BatchDrake/sigutils.git#branch=develop")
+source=("${pkgname}::git+https://github.com/BatchDrake/sigutils.git")
 md5sums=('SKIP')
 
 pkgver() {
