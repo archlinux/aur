@@ -1,7 +1,7 @@
 # Maintainer:  moviuro <moviuro+archlinux@gmail.com>
 
 pkgname=mkmm
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Moviuro's Kernel Module Manager"
 arch=('any')
@@ -23,5 +23,8 @@ package() {
   install -Dm 444 "${srcdir}/${pkgname}/${pkgname}-bleach.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}-bleach.service"
   install -Dm 444 "${srcdir}/${pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/Readme.md"
   install -dm 755 "${pkgdir}/usr/lib/${pkgname}"
+
+  # Opinionated install
+  install -Dm 444 -t "${pkgdir}/usr/share/libalpm/hooks" "${srcdir}/${pkgname}/"*tmpfs*hook
 }
 
