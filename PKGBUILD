@@ -4,7 +4,7 @@
 pkgname=autenticacao-gov-pt
 _pkgname=autenticacao.gov
 pkgver=3.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Portuguese Citizen Card Application (Portugal eID)"
 arch=('i686' 'x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -24,6 +24,8 @@ depends=('qt5-base'
          'xml-security-c'
          'libcurl-gnutls'
          'openjpeg2'
+         'java-runtime'
+         'java-environment'
          'openpace-git')
 makedepends=('swig' 'qconf' 'git')
 optdepends=('plugin-autenticacao-gov-pt: Necessário para autenticações online'
@@ -39,6 +41,13 @@ sha512sums=('SKIP'
             '344a0722a4554150f17f25d49d85c8a42d5e75b2444d59b1648f7c3d0817eb93eb011680f3cccf092a5eceef7c13e8048f0d09de4f07199a33c7bd1033c3de9f')
 
 install='autenticacao-gov-pt.install'
+
+prepare(){
+cat >> ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw/eidlibJava_Wrapper/eidlibJava_Wrapper.pro <<EOF
+INCLUDEPATH += /usr/lib/jvm/default/include
+INCLUDEPATH += /usr/lib/jvm/default/include/linux
+EOF
+}
 
 build() {
   cd ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw

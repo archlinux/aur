@@ -1,7 +1,7 @@
 pkgbase = autenticacao-gov-pt
 	pkgdesc = Portuguese Citizen Card Application (Portugal eID)
 	pkgver = 3.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cartaodecidadao.pt/
 	install = autenticacao-gov-pt.install
 	arch = i686
@@ -27,6 +27,8 @@ pkgbase = autenticacao-gov-pt
 	depends = xml-security-c
 	depends = libcurl-gnutls
 	depends = openjpeg2
+	depends = java-runtime
+	depends = java-environment
 	depends = openpace-git
 	optdepends = plugin-autenticacao-gov-pt: Necessário para autenticações online
 	optdepends = autenticacao-gov-pt-pki: PKI que confirma a validade dos certificados dos CC
