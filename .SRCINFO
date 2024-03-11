@@ -1,0 +1,18 @@
+pkgbase = python-http-parser
+	pkgdesc = HTTP request/response parser for Python
+	pkgver = 0.9.0
+	pkgrel = 8
+	url = https://github.com/benoitc/http-parser
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = cython
+	depends = python
+	source = https://github.com/benoitc/http-parser/archive/0.9.0/python-http-parser-0.9.0.tar.gz
+	sha512sums = 75e51bef43d9d7698aad69f8bfe651e24784b97603cac55f33bf4c12c86792c8c71d6206f31847d052e4d8621a5ea65a7b34eca5bebdb8189f58e6d98d33139d
+
+pkgname = python-http-parser
