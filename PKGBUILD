@@ -1,6 +1,6 @@
 pkgbase=linux-dfsg
 pkgname=(linux{,-headers}-bin)
-pkgver=6.7.7_1
+pkgver=6.7.9_1
 pkgrel=1
 arch=(x86_64 aarch64)
 url=https://packages.debian.org/source/sid/linux
@@ -8,27 +8,27 @@ license=(GPL2)
 options=(!strip)
 _url=https://ftp.debian.org/debian/pool/main/l/linux
 source_x86_64=(
-	$_url/linux-image-6.7.7-amd64-unsigned_6.7.7-1_amd64.deb
-	$_url/linux-headers-6.7.7-amd64_6.7.7-1_amd64.deb
-	$_url/linux-headers-6.7.7-common_6.7.7-1_all.deb
-	$_url/linux-kbuild-6.7.7_6.7.7-1_amd64.deb)
+	$_url/linux-image-6.7.9-amd64-unsigned_6.7.9-1_amd64.deb
+	$_url/linux-headers-6.7.9-amd64_6.7.9-1_amd64.deb
+	$_url/linux-headers-6.7.9-common_6.7.9-1_all.deb
+	$_url/linux-kbuild-6.7.9_6.7.9-1_amd64.deb)
 source_aarch64=(`sed s/md/rm/g<<<${source_x86_64[@]}`)
 noextract=(
 	${source_x86_64[@]##*/}
 	${source_aarch64[@]##*/})
 sha256sums_x86_64=(
-	1a67d2bfaa3400cabc06589a034ca59bf07a7cae7647f5cdd60d88164056ad1c
-	2d47b4fd8fe8d14cd32d515ac3f62396aa4a4de6dd6aed659fdcd242732e7591
-	8e4f5f289fb716e7502630982927c2a52ed179a8f0248c90f1706b68ba917e5b
-	afeb74533ae6575d9fb5b7c7931e41b7d4574878e7d0a1a148cd39f575d5b9c8)
+	e7480b399a8e7614499c2c70e252b60b9a63330d705df539d4feff5592c54e80
+	8e8128fe8f2e7d803ac498f568f67f1a4d1578e7cde2cd479a95f68bc1290960
+	205c07e2453aa8e3ec1016faec1624750827584546ca2e544b94badf6fce686a
+	c6ec5002464661c7b7b1dd65fbfe36e5c904f29035bcc1aa5654cf8451065f50)
 sha256sums_aarch64=(
-	1fa20eb712ef4a7c7308dd5967c7526565bb210c572ec2df5ed3a6f6030f390f
-	03cb648d213fa13f3e85f095f056476e2db450f8acd592590e082e68a039bdc7
-	8e4f5f289fb716e7502630982927c2a52ed179a8f0248c90f1706b68ba917e5b
-	3c10e0be5a1dce9f128212477aea69035a3719f316665aeb537b2d03ed367a79)
-_arch=${CARCH/x86_/amd};_arch=${_arch/arch/rm}
+	e2326128e587a7de8247c3bee95bb12a1e3ad56a07051c524045de02741dd901
+	1e45bd24b9f8c23ac35d682690a4fc10ea1b2d53a74fdd017ce2fa861d85be9b
+	${sha256sums_x86_64[2]}
+	abf3ad70c600a5dc265d0feb482b03684fe286bfaf85085a9cf2ce0655bc66a0)
+_arch=${CARCH/x86_/amd} _arch=${_arch/arch/rm}
 _source=(${source_x86_64[@]});[ $_arch = arm64 ] && _source=(${source_aarch64[@]})
-_pkgver=6.7.7
+_pkgver=6.7.9
 package_linux-bin(){
 	pkgdesc='The Linux kernel and modules'
 	depends_x86_64=(initramfs)
