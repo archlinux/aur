@@ -1,16 +1,16 @@
 pkgbase = bmv-bin
 license = MIT
 pkgdesc = drop-in mv replacement with bulk moving support
-pkgver = 0.0.12
+pkgver = 0.0.13
 pkgrel = 1
 url = https://github.com/abenz1267/bmv
 arch = x86_64
 arch = aarch64
 provides = bmv
 conflicts = bmv
-source_x86_64 = https://github.com/abenz1267/bmv/releases/download/v0.0.12/bmv_Linux_x86_64.tar.gz
-sha256sums_x86_64 = 49e058b81225926a3d484d6e68b548bd00d24f283254f22a1c888eb3123bf0d3
-source_aarch64 = https://github.com/abenz1267/bmv/releases/download/v0.0.12/bmv_Linux_arm64.tar.gz
-sha256sums_aarch64 = 594b11e5de5aa8ec6d2b946b1e279a87141fca5a3c29aa8f4ec6fe7ead41b8ed
+source_x86_64 = https://github.com/abenz1267/bmv/releases/download/v0.0.13/bmv_Linux_x86_64.tar.gz
+sha256sums_x86_64 = bc05803cf7464900a9bc8d8278b6ba96d2d7d24066abaece220a7643df68866b
+source_aarch64 = https://github.com/abenz1267/bmv/releases/download/v0.0.13/bmv_Linux_arm64.tar.gz
+sha256sums_aarch64 = fa786fa8d62b68b22c310557ce10c2e8eb2e9b04f9976ed4669e1e5ddfcb17c2
 
 pkgname = bmv-bin
