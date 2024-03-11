@@ -2,7 +2,7 @@
 pkgname=pixelviewer-bin
 _pkgname=PixelViewer
 pkgver=3.0.5.214
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform image viewer which supports reading raw Luminance/YUV/RGB/ARGB/Bayer pixels data from file and rendering it."
 arch=(
     'aarch64'
@@ -28,7 +28,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('4b023d792eb6b929311286a207c6493e18875bd9d320db8f7a996dd5d5716fea'
-            '46c44290e51c6b3f146c244fab112aaa1ff6f5ce4f26415f85820e5eee6a2d11')
+            '259d55437eac40590c6174afa8a3e93ba47e4e4ecb9daad55e07bd5149c56588')
 sha256sums_aarch64=('300682e7d37195868f2a2f8d5cc6a1f5fd44799103a68d5d8430c6868f65f806')
 sha256sums_x86_64=('d44ce2a2af25b5cbb3686fe4f852eecf4527638629b711ae35c8e52c67aa88de')
 build() {

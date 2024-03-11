@@ -1,7 +1,7 @@
 pkgbase = pixelviewer-bin
 	pkgdesc = A cross-platform image viewer which supports reading raw Luminance/YUV/RGB/ARGB/Bayer pixels data from file and rendering it.
 	pkgver = 3.0.5.214
-	pkgrel = 1
+	pkgrel = 2
 	url = https://carina-studio.github.io/PixelViewer/
 	arch = aarch64
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = pixelviewer-bin
 	source = LICENSE-3.0.5.214.md::https://raw.githubusercontent.com/carina-studio/PixelViewer/3.0.5.214/LICENSE.md
 	source = pixelviewer.sh
 	sha256sums = 4b023d792eb6b929311286a207c6493e18875bd9d320db8f7a996dd5d5716fea
-	sha256sums = 46c44290e51c6b3f146c244fab112aaa1ff6f5ce4f26415f85820e5eee6a2d11
+	sha256sums = 259d55437eac40590c6174afa8a3e93ba47e4e4ecb9daad55e07bd5149c56588
 	source_aarch64 = pixelviewer-3.0.5.214-aarch64.zip::https://github.com/carina-studio/PixelViewer/releases/download/3.0.5.214/PixelViewer-3.0.5.214-linux-arm64.zip
 	sha256sums_aarch64 = 300682e7d37195868f2a2f8d5cc6a1f5fd44799103a68d5d8430c6868f65f806
 	source_x86_64 = pixelviewer-3.0.5.214-x86_64.zip::https://github.com/carina-studio/PixelViewer/releases/download/3.0.5.214/PixelViewer-3.0.5.214-linux-x64.zip
