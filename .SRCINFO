@@ -1,6 +1,6 @@
 pkgbase = suscan-git
 	pkgdesc = SUScan is a graphical signal analysis tool
-	pkgver = r1108.38d9282
+	pkgver = r1149.390fb68
 	pkgrel = 1
 	url = https://github.com/BatchDrake/suscan
 	arch = any
