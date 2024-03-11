@@ -1,7 +1,7 @@
 # Maintainer: n00bady <kaz00@vivaldi.net>
 
 pkgname=ttvchecker
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A cli tool to check if your favorite twitch streamers are online written in GO."
 arch=('x86_64')
