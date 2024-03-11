@@ -1,0 +1,13 @@
+pkgbase = shim-systemd-boot-update
+	pkgdesc = Automatically update grubx64.efi with systemd-boot-update.service for shim
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = systemd
+	source = shim-systemd-boot-update.service
+	source = shim-systemd-boot-update.sh
+	sha256sums = a5d21649fc0b7a2ebf6df617fe1eeffd64a97860963956b6259935e0d8c40340
+	sha256sums = acf9c282d4fa43c310a7402028de5d4ae02ad523fe82c6b91d5641ddb2d228d1
+
+pkgname = shim-systemd-boot-update

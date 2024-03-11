@@ -1,0 +1,17 @@
+[Unit]
+Description=Automatic Boot Loader Update (for EFI shim)
+ConditionPathExists=!/etc/initrd-release
+
+DefaultDependencies=no
+After=systemd-boot-update.service
+Before=sysinit.target systemd-update-done.service
+Conflicts=shutdown.target
+Before=shutdown.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/lib/shim-systemd-boot-update/shim-systemd-boot-update.sh
+
+[Install]
+WantedBy=sysinit.target
