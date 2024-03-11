@@ -1,0 +1,16 @@
+pkgbase = resticity
+	pkgdesc = A frontend for restic
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/ad-on-is/resticity
+	arch = any
+	license = GPL3
+	depends = go
+	depends = nodejs
+	depends = restic
+	depends = webkit2gtk
+	provides = resticity
+	source = https://github.com/ad-on-is/resticity/archive/refs/tags/1.0.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = resticity
