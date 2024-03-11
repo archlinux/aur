@@ -1,3 +1,9 @@
+2024-03-02 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.0.0.3-1:
+    [!] ASF V6 comes with modern System.Text.Json replacement of previously used since the very first ASF version, Newtonsoft.Json library. This is core foundation that ASF is based on - while it should be mostly transparent for end-users, it's breaking change for existing ASF plugins, and it also has far bigger scope than usual in terms of ASF codebase, hence V6 major version bump. If you're plugin creator, you can find notes below for technical details in regards to upgrade (@JustArchi #3145 #3061).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2024-02-21 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.5.3.4-1:
     Added support for private games. ASF will now detect and skip private games from farming, as per your privacy preferences (@JustArchi #3109).
