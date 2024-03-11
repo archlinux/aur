@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=story-writer-bin
 _pkgname=Story-writer
-pkgver=8.12.6
-pkgrel=8
+pkgver=8.13.0
+pkgrel=1
 pkgdesc="A very excellent knowledge management software.小书匠是一款非常优秀的知识管理软件."
 arch=(
     'i686'
@@ -19,17 +19,22 @@ depends=(
     'alsa-lib'
     'libxfixes'
     'libxrandr'
+    'nodejs'
+    'libdrm'
 )
 makedenpends=(
     'gendesk'
+)
+options=(
+    '!strip'
 )
 source_i686=("${pkgname%-bin}-${pkgver}-i686.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux32.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux64.zip")
 source=("${pkgname%-bin}.sh")
 noextract=("${pkgname%-bin}-${pkgver}-${CARCH}.zip")
-sha256sums=('87aad073913a72e5fa1c7f4e0f6f695dafc5ba8ea675a62be03c532c701c243a')
-sha256sums_i686=('b8c3bcd2decfa84c2b73e93146c66902448dd77812b6b209559f8f194827d697')
-sha256sums_x86_64=('1d3b117ee364137d1c85ac299969a0484eb7761f3f2496dd654ae338acb37b24')
+sha256sums=('7d80c20ecbd2ef4fdbe18493d26303a28bfbdecb23e722282494fbfb5c080073')
+sha256sums_i686=('b5f7580f4b219e02e653177a7c396ebf1e7fa45001e0ffe148531f071ec5742a')
+sha256sums_x86_64=('242eb853c75168938539fd110ae07a865b9f1a64653a5894e1985728c0e25da4')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
@@ -38,6 +43,7 @@ build() {
     install -Dm755 -d "${srcdir}/opt/${pkgname%-bin}"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.zip" -C "${srcdir}/opt/${pkgname%-bin}"
     find "${srcdir}/opt/${pkgname%-bin}" -type f -exec chmod -R a+r {} \;
+    chmod 755 "${srcdir}/opt/${pkgname%-bin}/"{"${_pkgname}",chrome_crashpad_handler}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
