@@ -7,18 +7,19 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libxcb
 pkgver=1.16.1
-pkgrel=1
+pkgrel=2
 arch=('any')
-pkgdesc="X11 client-side library (Android ${_android_arch})"
+pkgdesc="X11 client-side library (Android, ${_android_arch})"
 url="https://xcb.freedesktop.org/"
+license=('custom')
 depends=("android-${_android_arch}-xcb-proto"
          "android-${_android_arch}-libxdmcp"
          "android-${_android_arch}-libxau")
-makedepends=('python'
+makedepends=('android-configure'
+             'python'
              "android-${_android_arch}-libxslt"
              "android-${_android_arch}-xorg-util-macros"
              "android-${_android_arch}-xorgproto")
-license=('custom')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://xorg.freedesktop.org/archive/individual/lib/libxcb-$pkgver.tar.xz")
 md5sums=('e60f0fd3c06e4628be4141bcb3a27f9a')
