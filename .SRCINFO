@@ -1,0 +1,23 @@
+pkgbase = galaxybudsclient-git
+	pkgdesc = Unofficial manager for the Samsung Galaxy Buds, Buds+, Buds Live and Buds Pro. Master branch.
+	pkgver = r1271.41befe8
+	pkgrel = 1
+	url = https://github.com/ThePBone/GalaxyBudsClient
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = dotnet-sdk
+	depends = gcc-libs
+	depends = zlib
+	depends = bluez
+	provides = galaxybudsclient-git
+	conflicts = galaxybudsclient-bin
+	options = !strip
+	source = galaxybudsclient-git::git+https://github.com/ThePBone/GalaxyBudsClient.git
+	source = galaxybudsclient.desktop
+	sha256sums = SKIP
+	sha256sums = 88677692ff1d7202b9f7aedbb5ec6cc01684041b94220a8da8feb69d9a028f70
+
+pkgname = galaxybudsclient-git
