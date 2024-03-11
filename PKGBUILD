@@ -4,7 +4,7 @@
 # Contributor: Jose Neder <jlneder(at)gmail(dot)com>
 
 pkgname=libhugetlbfs
-pkgver=2.23
+pkgver=2.24
 pkgrel=1
 pkgdesc='A library which provides easy access to huge pages of memory'
 url='https://github.com/libhugetlbfs/libhugetlbfs'
@@ -13,7 +13,7 @@ depends=(perl)
 checkdepends=(python)
 license=(LGPL2.1)
 source=(https://github.com/libhugetlbfs/libhugetlbfs/releases/download/$pkgver/libhugetlbfs-$pkgver.tar.gz)
-sha256sums=('b70672f1e807c61b7eb3adf41c1903b42917951f2e7f8aef6821841700c04479')
+sha256sums=('d501dfa91c8ead1106967a3d3829f2ba738c3fac0a65cb358ed2ab3870ddc5ef')
 
 _options='BUILDTYPE=NATIVEONLY'
 if [ "$CARCH" = "x86_64" ]; then
