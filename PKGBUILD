@@ -3,7 +3,7 @@ pkgname=frappe-books-bin
 _pkgname="Frappe Books"
 pkgver=0.21.2
 _electronversion=22
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern desktop accounting for freelancers and small-businesses."
 arch=('x86_64')
 url="https://frappebooks.com/"
@@ -24,13 +24,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('4d1004552528005e2eda881dc0353fead565a8b9c4cc194f9a045f820d39ae86'
-            '4e61e7cfc13404def7b48f257a0a0dfc4aec3ec2edb6e33a01eeb43020afa74f')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\"|${pkgname%-bin}|g;s|Finance|Utility|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
