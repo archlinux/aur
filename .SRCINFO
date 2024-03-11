@@ -1,12 +1,13 @@
 pkgbase = r-pma
 	pkgdesc = Penalized Multivariate Analysis
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=PMA
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	source = https://cran.r-project.org/src/contrib/PMA_1.2-3.tar.gz
-	sha256sums = e7572f82c159f34058fdec4c8158d394d6cf68b7978953c8893315e298cc6d06
+	md5sums = f4761339585ee1f7a86562b6863cd985
+	b2sums = 689f0a63a3d33599ce54f7f8db557f14e78fddfe6a613ca333a02cde48a401356800a7372873ef8bc0b64bf2f29ccd0f08f43e4a442e50189c5ef33479306a13
 
 pkgname = r-pma
