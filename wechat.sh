@@ -29,7 +29,7 @@ fi
 exec bwrap \
 	--dev-bind / / \
 	--bind "${WECHAT_HOME_DIR}" "${HOME}" \
-	--bind "$HOME/.fontconfig" "${HOME}/.fontconfig" \
+	--ro-bind-try "{$HOME}/.fontconfig" "${HOME}/.fontconfig" \
 	--ro-bind /usr/share/wechat-uos/var/ /var/ \
 	--ro-bind /usr/share/wechat-uos/etc/os-release /etc/os-release \
 	--ro-bind /usr/share/wechat-uos/etc/lsb-release /etc/lsb-release \
