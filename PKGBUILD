@@ -3,8 +3,8 @@
 _pkgbase=vala-panel-extras
 pkgbase=vala-panel-extras-git
 pkgname=('vala-panel-extras-battery-git' 'vala-panel-extras-volume-git' 'vala-panel-extras-xkb-git' 'vala-panel-extras-gtop-git' 'vala-panel-extras-weather-git' 'vala-panel-extras-common-git' 'vala-panel-extras-xkb-flags-git')
-pkgver=0.1.9
-pkgrel=3
+pkgver=0.1.9.r47.ga1291fc
+pkgrel=1
 pkgdesc="Simple StatusNotifierItems for Indicator plugins"
 url="https://gitlab.com/vala-panel-project/vala-panel-extras"
 arch=('i686' 'x86_64')
@@ -30,13 +30,6 @@ build() {
 package_vala-panel-extras-volume-git() {
   pkgdesc="Simple volume indicator"
   depends=('gtk3' 'alsa-lib>=1.0.26' 'libcanberra' 'vala-panel-extras-common-git')
-  optdepends=('xfce4-sntray-plugin: for showing in Xfce'
-            'vala-panel-sntray: for showing in vala-panel'
-            'xfce4-snw-plugin: for showing in Xfce, alternate way'
-            'enlightenment: for showing in E19'
-            'indicator-application: for showing in Indicator Environment, like Pantheon or Unity'
-            'plasma-desktop: for showing in KDE Frameworks'
-            'kdebase-plasma: for showing in KDE4')
             
   DESTDIR="${pkgdir}" meson install -C build
   rm -fr "$pkgdir/usr/share/vala-panel-extras/"
@@ -48,14 +41,6 @@ package_vala-panel-extras-volume-git() {
 package_vala-panel-extras-xkb-git() {
   pkgdesc="Simple keyboard layout indicator/switcher"
   depends=('gtk3' 'libxkbcommon-x11>=0.5' 'libxcb>=1.10' 'libx11' 'vala-panel-extras-common-git')
-  optdepends=('xfce4-sntray-plugin: for showing in Xfce'
-            'vala-panel-sntray: for showing in vala-panel'
-            'xfce4-snw-plugin: for showing in Xfce, alternate way'
-            'enlightenment: for showing in E19'
-            'indicator-application: for showing in Indicator Environment, like Pantheon or Unity'
-            'plasma-desktop: for showing in KDE Frameworks'
-            'kdebase-plasma: for showing in KDE4'
-            'vala-panel-extras-xkb-flags: builtin flags')
 
   DESTDIR="${pkgdir}" meson install -C build
   rm -fr "$pkgdir/usr/share/vala-panel-extras/"
@@ -67,13 +52,6 @@ package_vala-panel-extras-xkb-git() {
 package_vala-panel-extras-gtop-git() {
   pkgdesc="Simple network speed indicator"
   depends=('gtk3' 'libgtop' 'vala-panel-extras-common-git')
-  optdepends=('xfce4-sntray-plugin: for showing in Xfce'
-            'vala-panel-sntray: for showing in vala-panel'
-            'xfce4-snw-plugin: for showing in Xfce, alternate way'
-            'enlightenment: for showing in E19'
-            'indicator-application: for showing in Indicator Environment, like Pantheon or Unity'
-            'plasma-desktop: for showing in KDE Frameworks'
-            'kdebase-plasma: for showing in KDE4')
 
   DESTDIR="${pkgdir}" meson install -C build
   rm -fr "$pkgdir/usr/share/vala-panel-extras/"
@@ -85,13 +63,6 @@ package_vala-panel-extras-gtop-git() {
 package_vala-panel-extras-weather-git() {
   pkgdesc="Simple weather indicator"
   depends=('gtk3' 'libgweather-4>=4.2.0' 'vala-panel-extras-common-git')
-  optdepends=('xfce4-sntray-plugin: for showing in Xfce'
-            'vala-panel-sntray: for showing in vala-panel'
-            'xfce4-snw-plugin: for showing in Xfce, alternate way'
-            'enlightenment: for showing in E19'
-            'indicator-application: for showing in Indicator Environment, like Pantheon or Unity'
-            'plasma-desktop: for showing in KDE Frameworks'
-            'kdebase-plasma: for showing in KDE4')
   
   DESTDIR="${pkgdir}" meson install -C build
   rm -fr "$pkgdir/usr/share/vala-panel-extras/"
@@ -115,13 +86,6 @@ package_vala-panel-extras-xkb-flags-git() {
 package_vala-panel-extras-battery-git() {
   pkgdesc="Simple battery indicator"
   depends=('gtk3' 'upower>=0.99' 'vala-panel-extras-common-git')
-  optdepends=('xfce4-sntray-plugin: for showing in Xfce'
-            'vala-panel-sntray: for showing in vala-panel'
-            'xfce4-snw-plugin: for showing in Xfce, alternate way'
-            'enlightenment: for showing in E19'
-            'indicator-application: for showing in Indicator Environment, like Pantheon or Unity'
-            'plasma-desktop: for showing in KDE Frameworks'
-            'kdebase-plasma: for showing in KDE4')
   
   DESTDIR="${pkgdir}" meson install -C build
   rm -fr "$pkgdir/usr/share/vala-panel-extras/"

@@ -1,7 +1,7 @@
 pkgbase = vala-panel-extras-git
 	pkgdesc = Simple StatusNotifierItems for Indicator plugins
-	pkgver = 0.1.9
-	pkgrel = 3
+	pkgver = 0.1.9.r47.ga1291fc
+	pkgrel = 1
 	url = https://gitlab.com/vala-panel-project/vala-panel-extras
 	arch = i686
 	arch = x86_64
@@ -26,13 +26,6 @@ pkgname = vala-panel-extras-battery-git
 	depends = gtk3
 	depends = upower>=0.99
 	depends = vala-panel-extras-common-git
-	optdepends = xfce4-sntray-plugin: for showing in Xfce
-	optdepends = vala-panel-sntray: for showing in vala-panel
-	optdepends = xfce4-snw-plugin: for showing in Xfce, alternate way
-	optdepends = enlightenment: for showing in E19
-	optdepends = indicator-application: for showing in Indicator Environment, like Pantheon or Unity
-	optdepends = plasma-desktop: for showing in KDE Frameworks
-	optdepends = kdebase-plasma: for showing in KDE4
 
 pkgname = vala-panel-extras-volume-git
 	pkgdesc = Simple volume indicator
@@ -40,13 +33,6 @@ pkgname = vala-panel-extras-volume-git
 	depends = alsa-lib>=1.0.26
 	depends = libcanberra
 	depends = vala-panel-extras-common-git
-	optdepends = xfce4-sntray-plugin: for showing in Xfce
-	optdepends = vala-panel-sntray: for showing in vala-panel
-	optdepends = xfce4-snw-plugin: for showing in Xfce, alternate way
-	optdepends = enlightenment: for showing in E19
-	optdepends = indicator-application: for showing in Indicator Environment, like Pantheon or Unity
-	optdepends = plasma-desktop: for showing in KDE Frameworks
-	optdepends = kdebase-plasma: for showing in KDE4
 
 pkgname = vala-panel-extras-xkb-git
 	pkgdesc = Simple keyboard layout indicator/switcher
@@ -55,40 +41,18 @@ pkgname = vala-panel-extras-xkb-git
 	depends = libxcb>=1.10
 	depends = libx11
 	depends = vala-panel-extras-common-git
-	optdepends = xfce4-sntray-plugin: for showing in Xfce
-	optdepends = vala-panel-sntray: for showing in vala-panel
-	optdepends = xfce4-snw-plugin: for showing in Xfce, alternate way
-	optdepends = enlightenment: for showing in E19
-	optdepends = indicator-application: for showing in Indicator Environment, like Pantheon or Unity
-	optdepends = plasma-desktop: for showing in KDE Frameworks
-	optdepends = kdebase-plasma: for showing in KDE4
-	optdepends = vala-panel-extras-xkb-flags: builtin flags
 
 pkgname = vala-panel-extras-gtop-git
 	pkgdesc = Simple network speed indicator
 	depends = gtk3
 	depends = libgtop
 	depends = vala-panel-extras-common-git
-	optdepends = xfce4-sntray-plugin: for showing in Xfce
-	optdepends = vala-panel-sntray: for showing in vala-panel
-	optdepends = xfce4-snw-plugin: for showing in Xfce, alternate way
-	optdepends = enlightenment: for showing in E19
-	optdepends = indicator-application: for showing in Indicator Environment, like Pantheon or Unity
-	optdepends = plasma-desktop: for showing in KDE Frameworks
-	optdepends = kdebase-plasma: for showing in KDE4
 
 pkgname = vala-panel-extras-weather-git
 	pkgdesc = Simple weather indicator
 	depends = gtk3
 	depends = libgweather-4>=4.2.0
 	depends = vala-panel-extras-common-git
-	optdepends = xfce4-sntray-plugin: for showing in Xfce
-	optdepends = vala-panel-sntray: for showing in vala-panel
-	optdepends = xfce4-snw-plugin: for showing in Xfce, alternate way
-	optdepends = enlightenment: for showing in E19
-	optdepends = indicator-application: for showing in Indicator Environment, like Pantheon or Unity
-	optdepends = plasma-desktop: for showing in KDE Frameworks
-	optdepends = kdebase-plasma: for showing in KDE4
 
 pkgname = vala-panel-extras-common-git
 	pkgdesc = Common files for vala-panel-extras
