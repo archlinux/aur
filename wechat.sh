@@ -29,10 +29,13 @@ fi
 exec bwrap \
 	--dev-bind / / \
 	--bind "${WECHAT_HOME_DIR}" "${HOME}" \
-	--ro-bind-try "{$HOME}/.fontconfig" "${HOME}/.fontconfig" \
-	--ro-bind /usr/share/wechat-uos/var/ /var/ \
-	--ro-bind /usr/share/wechat-uos/etc/os-release /etc/os-release \
-	--ro-bind /usr/share/wechat-uos/etc/lsb-release /etc/lsb-release \
+	--ro-bind-try "${HOME}/.fontconfig"{,} \
+	--ro-bind-try "${HOME}/.fonts"{,} \
+	--ro-bind-try "${HOME}/.config/fontconfig"{,} \
+	--ro-bind-try "${HOME}/.local/share/fonts"{,} \
+	--ro-bind {/usr/share/wechat-uos,}/var/ \
+	--ro-bind {/usr/share/wechat-uos,}/etc/os-release \
+	--ro-bind {/usr/share/wechat-uos,}/etc/lsb-release \
 	--ro-bind-try /usr/lib/snapd-xdg-open/xdg-open /usr/bin/xdg-open \
 	${BWRAP_ENV_APPEND} \
 	/opt/wechat-beta/wechat $@

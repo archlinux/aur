@@ -3,7 +3,7 @@
 
 pkgname=wechat-beta-bwrap
 pkgver=1.0.0.145
-pkgrel=14
+pkgrel=15
 pkgdesc="WeChat Testing with bwrap sandbox"
 arch=('x86_64' 'aarch64')
 url="https://weixin.qq.com"
@@ -43,7 +43,7 @@ for _source in "${source_x86_64[@]}" "${source_aarch64[@]}"; do
 done
 
 md5sums=(
-	'ad1a9fd10d7965b37fa10b120f1dcdf1'
+	'9894bcb03dc7e4151aca9cc245d317df'
 	'4967385a00db424e596263618335411f'
 	'cf971cb2cb01d8a5fd89d3a3555abfaf'
 	'6b159c6e9d21a98925489bc37a9aea43'
@@ -61,7 +61,7 @@ md5sums_aarch64=(
 
 build() {
 	echo "Extract wechat-uos deb file"
-	mkdir wechat-uos
+	mkdir -p wechat-uos
 	bsdtar -xf "${_uos_deb_stem}_${CARCH}.deb" -C wechat-uos
 	bsdtar -xf wechat-uos/data.tar.xz -C wechat-uos ./usr/lib/license/libuosdevicea.so
 
