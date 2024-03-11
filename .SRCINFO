@@ -1,6 +1,6 @@
 pkgbase = anylogic-university
 	pkgdesc = AnyLogic University Edition - for public research in universities
-	pkgver = 8.8.4
+	pkgver = 8.8.6
 	pkgrel = 1
 	url = https://www.anylogic.com
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = anylogic-university
 	provides = anylogic
 	conflicts = anylogic
 	options = !strip
-	source = https://files.anylogic.com/anylogic-university-8.8.4.linux.x86_64.tgz.bin
+	source = https://files.anylogic.com/anylogic-university-8.8.6.linux.x86_64.tgz.bin
 	source = anylogic-university.desktop
-	sha256sums = 3f2b3033063d0d73e6d8d43bb430858a6945a9ce02a79bd30a1470eace4c3110
+	sha256sums = 00787cd27a630410adc1e73c1d6d6541a5eef5e0b14c709147a1d226ecbd52f5
 	sha256sums = f0d4b44dd6f53d0aa940b730d1c0dfac77ab3aea4cca6ab185abc7e458a8c135
 
 pkgname = anylogic-university
