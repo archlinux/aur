@@ -1,0 +1,15 @@
+pkgbase = idris2-filepath-git
+	pkgdesc = Unix style file paths in Idris2
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/stefan-hoeck/idris2-filepath
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	depends = idris2
+	provides = idris2-filepath
+	conflicts = idris2-filepath
+	source = idris2-filepath::git+https://github.com/stefan-hoeck/idris2-filepath.git
+	sha256sums = SKIP
+
+pkgname = idris2-filepath-git
