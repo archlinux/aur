@@ -1,7 +1,7 @@
 # Maintainer: alba4k <blaskoazzolaaaron@gmail.com>
 
 pkgname="hyprcursor"
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="The hyprland cursor format, library and utilities"
 arch=(any)
