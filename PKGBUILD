@@ -7,7 +7,7 @@
 
 _pkgname=neovim
 pkgname="$_pkgname-git"
-pkgver=0.10.0.r2250.g6bba4beced
+pkgver=0.10.0.r2536.g55c9e2c96e
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -61,7 +61,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_BUNDLED=OFF \
     -W no-dev
-  cmake --build build --verbose
+  cmake --build build
 }
 
 check() {
