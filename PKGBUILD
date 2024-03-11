@@ -5,19 +5,19 @@
 
 pkgname=notesnook-bin
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote (binary release)"
-pkgver=2.6.15
+pkgver=2.6.16
 pkgrel=1
-arch=('x86_64' 'aarch64')
 url="https://github.com/streetwriters/notesnook"
-license=('GPL3')
+license=('GPL-3.0-or-later')
+arch=('x86_64' 'aarch64')
 depends=('alsa-lib' 'libappindicator-gtk3' 'libnotify' 'libsodium' 'libxss' 'libxtst' 'mesa' 'nss')
 makedepends=('fuse2')
-conflicts=("notesnook")
 provides=("notesnook")
+conflicts=("notesnook")
 _appimage="notesnook_linux_$CARCH-$pkgver.AppImage"
 source_x86_64=("$_appimage::$url/releases/download/v$pkgver/notesnook_linux_x86_64.AppImage")
 source_aarch64=("$_appimage::$url/releases/download/v$pkgver/notesnook_linux_arm64.AppImage")
-sha256sums_x86_64=('748055525eae8a24df57b9cd20a7f4200f51d930a6e5e7b9e1ee1d1e60c985b0')
+sha256sums_x86_64=('455eb0f715e76b840291ab0bdf537976d2e87dbc65b9367d2fa574739cc3d514')
 sha256sums_aarch64=('SKIP')
 
 _fix_permissions() (
@@ -50,22 +50,22 @@ prepare() {
   sed -i -E "s|Exec=AppRun|Exec=notesnook|g" notesnook.desktop
   sed -i "/X-AppImage-Version=$pkgver/d; /actions=undefined/d" notesnook.desktop
   sed -i 's/--no-sandbox //g' notesnook.desktop
-# Remove folders based on architecture
-  arch=$(uname -m)
-  if [ "$arch" == "x86_64" ]; then
+# Delete a folder based the architecture
+  if [ "$CARCH" == "x86_64" ]; then
     rm -dr resources/app/build/prebuilds/linux-arm64
-  elif [ "$arch" == "aarch64" ]; then
+  elif [ "$CARCH" == "aarch64" ]; then
     rm -dr resources/app/build/prebuilds/linux-x64
 fi
 }
 
 package() {
-# Create folders
+# Create directories
   mkdir -p "$pkgdir/opt/notesnook" "$pkgdir/usr/bin"
 # Install
   cd squashfs-root
   for i in 16 32 48 64 128 256 512 1024; do
-    install -Dm644 usr/share/icons/hicolor/${i}x${i}/apps/notesnook.png -t "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps"
+    mkdir -p "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps"
+    ln -s /opt/notesnook/resources/assets/icons/${i}x${i}.png -t "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps"
   done
   install -Dm644 notesnook.desktop -t "$pkgdir/usr/share/applications"
   rm -dr usr AppRun notesnook.desktop notesnook.png .DirIcon resources/app-update.yml
