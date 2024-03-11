@@ -1,35 +1,30 @@
-# Contributor: qaz <fkxxyz@163.com>
+# Maintainer: yokirinjin <aur.country952@passmail.com>
+# Contributor: yokirinjin <aur.country952@passmail.com>
+
 pkgname=xfce4-mixer
-pkgver=4.11.0
-pkgrel=2
-pkgdesc="A volume control application based on GStreamer"
-arch=('i686' 'x86_64' 'mips64el' 'armv6h' 'armv7h' 'arm' 'aarch64')
-url="https://git.xfce.org/apps/xfce4-mixer/"
+pkgver=4.18.1
+pkgrel=1
+pkgdesc='A volume control application based on GStreamer'
+arch=('x86_64')
+url='https://docs.xfce.org/apps/xfce4-mixer'
 license=('GPL2')
-depends=('xfce4-panel' 'alsa-lib>=1.2.1')
-makedepends=('xfce4-dev-tools')
-source=('git+https://git.xfce.org/apps/xfce4-mixer#commit=ce642ac52e0bed7495261694fd630748bf71157f'
-	xfce4-mixer-alsa-git.patch
-        no-full-debug-default-for-git.patch)
-
-sha256sums=('SKIP'
-            'd044469a259a86e44dfa107f2b8051774848ef43bc72d0d91220dd40641efeb6'
-            '85d5226a930aae0fa43e6ab8b8dab4f28f3555f40b05f0f8f315d7d4cd60d408')
-
-prepare() {
- cd "$srcdir/$pkgname"
- patch -Np1 -i "${srcdir}/xfce4-mixer-alsa-git.patch"
- patch -Np1 -i "${srcdir}/no-full-debug-default-for-git.patch"
-}
+depends=('xfce4-panel' 'alsa-lib>=1.2.1' 'gstreamer')
+makedepends=('intltool')
+source=("https://archive.xfce.org/src/apps/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.bz2")
+sha256sums=('b27f67dccc9dd67d989b405dab02be1299436dd71b58edb88a1d5f82571ead95')
 
 build() {
-  cd "$srcdir/$pkgname"
-  ./autogen.sh --localstatedir=/var --prefix=/usr --sysconfdir=/etc
+  cd $pkgname-$pkgver
+
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --disable-debug
   make
 }
 
-package ()
-{
-  cd "$srcdir/$pkgname"
+package () {
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
