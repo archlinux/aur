@@ -26,7 +26,7 @@ source=(
 	wechat-${pkgver}.deb::"https://cdn4.cnxclm.com/uploads/2024/03/08/85uZHDjz_store.spark-app.wechat-linux-spark_2.2-real1.0.0.0_amd64.deb?attname=store.spark-app.wechat-linux-spark_2.2-real1.0.0.0_amd64.deb"
 )
 noextract=()
-md5sums=('06c82e1ba414bb1b4140dfbc3da4bace'
+md5sums=('1c0c66925be80da7ba1cac7619d8ae4c'
          '4416ba2723325292f2177eec63775f62'
          '600e74549ce2258c045d5c2f7689ea63'
          'caabaa599446f5a23364644f734e2e2c')

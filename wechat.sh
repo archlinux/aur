@@ -1,6 +1,25 @@
 #!/bin/bash
 # https://cdn4.cnxclm.com/uploads/2024/03/08/85uZHDjz_store.spark-app.wechat-linux-spark_2.2-real1.0.0.0_amd64.deb?attname=store.spark-app.wechat-linux-spark_2.2-real1.0.0.0_amd64.deb
 
+BWRAP_ENV_APPEND="--setenv QT_QPA_PLATFORM xcb "
+if [ -z ${QT_IM_MODULE} ]; then
+	BWRAP_ENV_APPEND="${BWRAP_ENV_APPEND} --setenv QT_IM_MODULE fcitx"
+fi
+
+case "$XDG_CURRENT_DESKTOP" in 
+	KDE)
+	SCALE_FACTOR=$(kreadconfig6 --group KScreen --key ScaleFactor --default 1.0)
+	BWRAP_ENV_APPEND="${BWRAP_ENV_APPEND} --setenv QT_SCALE_FACTOR ${SCALE_FACTOR}"
+	;;
+	*)
+	BWRAP_ENV_APPEND="${BWRAP_ENV_APPEND} --setenv QT_AUTO_SCREEN_SCALE_FACTOR ${QT_AUTO_SCREEN_SCALE_FACTOR:-1}"
+	;;
+esac
+
+if [ -z ${GTK_USE_PORTAL} ]; then
+	BWRAP_ENV_APPEND="${BWRAP_ENV_APPEND} --setenv GTK_USE_PORTAL 1"
+fi
+
 function moeDect() {
 	if [[ -f /usr/share/moeOS-Docs/os-release ]]; then
 		osRel="/usr/share/moeOS-Docs/os-release"
@@ -45,10 +64,8 @@ function createWrapIfNotExist() {
 function inputMethod() {
 	if [[ ${XMODIFIERS} =~ fcitx ]]; then
 		export QT_IM_MODULE=fcitx
-		export GTK_IM_MODULE=fcitx
 	elif [[ ${XMODIFIERS} =~ ibus ]]; then
 		export QT_IM_MODULE=ibus
-		export GTK_IM_MODULE=ibus
 		export IBUS_USE_PORTAL=1
 	fi
 }
@@ -78,6 +95,7 @@ function execApp() {
 		--proc /proc \
 		--ro-bind /usr /usr \
 		--bind "${XDG_DOCUMENTS_DIR}"/WeChat_Data "${HOME}" \
+		--ro-bind-try "$HOME/.config/fontconfig" "${HOME}/.config/fontconfig" \
 		--bind "${XDG_DOCUMENTS_DIR}"/WeChat_Downloads "${XDG_DOWNLOAD_DIR}" \
 		--ro-bind-try "${XAUTHORITY}" "${XAUTHORITY}" \
 		--ro-bind /etc /etc \
@@ -90,7 +108,7 @@ function execApp() {
 		--ro-bind /opt/apps/store.spark-app.wechat-linux-spark/files/uos-lsb "${LSB_RELEASE_FILE}" \
 		--ro-bind /opt/apps/store.spark-app.wechat-linux-spark/files/uos-release /usr/lib/os-release \
 		--ro-bind /usr/lib/snapd-xdg-open/xdg-open /usr/bin/xdg-open \
-		--setenv QT_QPA_PLATFORM xcb \
+		${BWRAP_ENV_APPEND} \
 		/opt/apps/store.spark-app.wechat-linux-spark/files/files/wechat
 }
 
@@ -105,4 +123,5 @@ function launch() {
 
 manageDirs
 launch $@
+
 
