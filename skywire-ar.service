@@ -1,0 +1,14 @@
+[Unit]
+Description=Skywire address-resolver service
+Wants=network-online.target redis.service
+
+[Service]
+Type=simple
+ExecStartPre=/bin/bash -c '[[ ! -f /etc/skywire-ar.conf ]] && skywire cli config gen-keys | tee /etc/skywire-ar.conf || true'
+ExecStart=/bin/bash -c "skywire svc ar --sk $$(tail -n1 /etc/skywire-ar.conf)"
+Restart=always
+RestartSec=20
+TimeoutSec=30
+
+[Install]
+WantedBy=multi-user.target

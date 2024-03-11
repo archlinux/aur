@@ -1,0 +1,14 @@
+[Unit]
+Description=Skywire transport-discovery service
+Wants=network-online.target redis.service postgresql.service
+
+[Service]
+Type=simple
+ExecStartPre=/bin/bash -c '[[ ! -f /etc/skywire-tpd.conf ]] && skywire cli config gen-keys | tee /etc/skywire-tpd.conf || true'
+ExecStart=/bin/bash -c "skywire svc tpd --sk $(tail -n1 /etc/skywire-tpd.conf)"
+Restart=always
+RestartSec=20
+TimeoutSec=30
+
+[Install]
+WantedBy=multi-user.target

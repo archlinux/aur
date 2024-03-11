@@ -1,0 +1,14 @@
+[Unit]
+Description=Skywire dmsg-discovery service
+Wants=network-online.target redis.service
+
+[Service]
+Type=simple
+ExecStartPre=/bin/bash -c '[[ ! -f /etc/skywire-dmsgd.conf ]] && skywire cli config gen-keys | tee /etc/skywire-dmsgd.conf || true'
+ExecStart=/bin/bash -c "skywire dmsg disc --sk $$(tail -n1 /etc/skywire-dmsgd.conf)"
+Restart=always
+RestartSec=20
+TimeoutSec=30
+
+[Install]
+WantedBy=multi-user.target

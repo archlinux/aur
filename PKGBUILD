@@ -4,7 +4,7 @@ _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Building a new Internet. Skycoin.com"
 pkgver='1.3.18'
-pkgrel='2'
+pkgrel='3'
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -14,13 +14,16 @@ arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'arm
 url="https://${_pkggopath}"
 provides=( 'skywire' )
 conflicts=( 'skywire' )
+optdepends=('redis: required by address-resolver transport-discovery dmsg-discovery service-discovery'
+'postgresql: required by transport-discovery route-finder service-discovery'
+'jq: config generation for setup-node.service')
 license=('license-free')
 install=skywire.install
 backup=("opt/${_pkgname}/{users.db,skywire.json,local}")
 _script=("skywire-autoconfig")
 _desktop=("skywire.desktop" "skywirevpn.desktop")
 _icon=("skywirevpn.png" "skywire.png")
-_service=("skywire.service" "skywire-autoconfig.service")
+_service=("skywire.service" "skywire-autoconfig.service" "skywire-sn.service" "skywire-ar.service" "skywire-rf.service" "skywire-tpd.service" "skywire-dmsgd.service" "skywire-dmsg.service" "skywire-sd.service")
 _source=("${_script[@]}"
 "${_desktop[@]}"
 "${_icon[@]}"
@@ -38,6 +41,13 @@ sha256sums=('9257dc9cf98b382049b500f646c0005950077cedb83abbb62984983e4dda0874'
             'a6941680b5858ca3e0c85d9bf5824455a0c95524b61e42352462f2abbb750495'
             'bf2876b7c41b204452cca141600af39e5a4e17486e9f09e20069d8f4316e6063'
             '8519d027325dcb34877bb5b0fb0c3c035d7589c0046b53935e2b949d436c4be3'
+            '104f74b445830871fe12f4a179a601d8ea98e731b818a61a2de5df0e51498422'
+            '947c1751c4bdd79b74f3a691b9f5c1de55cc05802c9d5e4859385cb241a5a45b'
+            'f24132456c5bcf0b7acb4e70b477740b19cecb32dea5022967ae13921508badb'
+            'a2c457c8373c2c85df4110ec15080f802ba621ad53e69ad01b34a196bf08864b'
+            '45ed6049df988f042c9a0352d33fef88fc9018398d09252aa4698948ce783c11'
+            'b3a9a422e146fa0583482dc83a0f4e9ae25995ea1cc4fdfebc14c80dc1c596a5'
+            '763c5a4251e819b944cfefeafa56e3d2bdfdd2e7e1198fdf1d369f3143990b5a'
             'd1bbd2b6d141cee8499fe2ae0c8429325d2d80ea895cce3db2db11f0629cc740'
             'e3a1a975138e6778a1e3ea47e98da94088c7c2d945295cd4ccbd0c992d6346c6')
 sha256sums_x86_64=('6c0428fa382e2e15e20d621a5caffd82a7b6c1dbfd81128d8fe8c843de4c6621')

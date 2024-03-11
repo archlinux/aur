@@ -1,0 +1,14 @@
+[Unit]
+Description=Skywire dmsg server
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStartPre=/bin/bash -c '[[ ! -f /etc/skywire-dmsg.json ]] && skywire dmsg server config gen -o /etc/skywire-dmsg.json || true'
+ExecStart=/bin/skywire dmsg server start /etc/skywire-dmsgd.conf
+Restart=always
+RestartSec=20
+TimeoutSec=30
+
+[Install]
+WantedBy=multi-user.target

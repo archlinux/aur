@@ -1,0 +1,14 @@
+[Unit]
+Description=Skywire route-finder service
+Wants=network-online.target postgresql.service
+
+[Service]
+Type=simple
+ExecStartPre=/bin/bash -c '[[ ! -f /etc/skywire-rf.conf ]] && skywire cli config gen-keys | tee /etc/skywire-rf.conf || true'
+ExecStart=/bin/bash -c "skywire svc rf --sk $$(tail -n1 /etc/skywire-rf.conf)"
+Restart=always
+RestartSec=20
+TimeoutSec=30
+
+[Install]
+WantedBy=multi-user.target

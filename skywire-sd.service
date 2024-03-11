@@ -1,0 +1,14 @@
+[Unit]
+Description=Skywire service-discovery service
+Wants=network-online.target redis.service postgresql.service
+
+[Service]
+Type=simple
+ExecStartPre=/bin/bash -c '[[ ! -f /etc/skywire-sd.conf ]] && skywire cli config gen-keys | tee /etc/skywire-sd.conf || true'
+ExecStart=/bin/bash -c 'skywire svc sd --sk $$(tail -n1 /etc/skywire-sd.conf)'
+Restart=always
+RestartSec=20
+TimeoutSec=30
+
+[Install]
+WantedBy=multi-user.target
