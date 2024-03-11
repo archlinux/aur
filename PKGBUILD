@@ -3,7 +3,7 @@
 
 pkgname=metacubexd-bin
 _pkgname=metacubexd
-pkgver=1.135.0
+pkgver=1.135.1
 pkgrel=1
 pkgdesc='Clash.Meta Dashboard, The Official One, XD (Precompiled version)'
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('clash: A rule-based tunnel in Go'
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("${pkgname}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/compressed-dist.tgz")
-sha256sums=('dfbfa800eeefb79ee63b41b62f7f8d70eda7769c6cdcf3f8fa88153675a81817')
+sha256sums=('4fbaa4b18e9e62b4d2a444e88a81eab6d99253b08f44987c1c079bc68d979a98')
 
 package() {
     cd "${srcdir}"
