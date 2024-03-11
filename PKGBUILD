@@ -1,20 +1,24 @@
 # Maintainer: Nixuge
 
 pkgname=gtkpickeradder-hook
-pkgver=1.0.0
+pkgver=v1.0.0.r13.g24f35c2
 pkgrel=1
-pkgdesc='A pacman hook to make numerous apps use the GTK file picker by changing their .desktop file'
-url=https://github.com/Nixuge/GTKPickerAdder
+pkgdesc='A pacman hook to make some apps behave nicer, including using the wayland ozone platform, the gtk file picker & zooming qt apps'
+url=https://github.com/Nixuge/DesktopPatcher
 arch=(any)
 license=(WTFPL)
 depends=('python')
-source=("https://github.com/Nixuge/GTKPickerAdder/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('92418ce77da0a1a04147b2be9b74a9fa49958de9deca6d1d178a5aaf6ed184bc')
+source=("git+https://github.com/Nixuge/DesktopPatcher")
+sha256sums=('SKIP')
 
+pkgver() {
+    cd "${srcdir}/DesktopPatcher"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 package() {
-    cd "GTKPickerAdder-${pkgver}"
-
+    cd "${srcdir}/DesktopPatcher"
+    
     # License
     install -Dm644 \
         "LICENSE" \
@@ -22,11 +26,11 @@ package() {
     
     # Hook
     install -Dm644 \
-        "gtkpicker-adder.hook" \
-        "${pkgdir}/etc/pacman.d/hooks/gtkpicker-adder.hook"
+        "desktop_patcher.hook" \
+        "${pkgdir}/etc/pacman.d/hooks/desktop_patcher.hook"
     
     # Py file going w the hook
     install -Dm644 \
-	     "gtkpicker-adder.py" \
-	     "${pkgdir}/etc/pacman.d/hooks/gtkpicker-adder.py"
+	     "desktop_patcher.py" \
+	     "${pkgdir}/etc/pacman.d/hooks/desktop_patcher.py"
 }

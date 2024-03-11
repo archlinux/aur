@@ -1,12 +1,12 @@
 pkgbase = gtkpickeradder-hook
-	pkgdesc = A pacman hook to make numerous apps use the GTK file picker by changing their .desktop file
-	pkgver = 1.0.0
+	pkgdesc = A pacman hook to make some apps behave nicer, including using the wayland ozone platform, the gtk file picker & zooming qt apps
+	pkgver = v1.0.0.r13.g24f35c2
 	pkgrel = 1
-	url = https://github.com/Nixuge/GTKPickerAdder
+	url = https://github.com/Nixuge/DesktopPatcher
 	arch = any
 	license = WTFPL
 	depends = python
-	source = https://github.com/Nixuge/GTKPickerAdder/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 92418ce77da0a1a04147b2be9b74a9fa49958de9deca6d1d178a5aaf6ed184bc
+	source = git+https://github.com/Nixuge/DesktopPatcher
+	sha256sums = SKIP
 
 pkgname = gtkpickeradder-hook
