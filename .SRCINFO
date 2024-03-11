@@ -21,7 +21,7 @@ pkgbase = wechat-linux-bwrap
 	source = wechat-linux.desktop
 	source = wechat-linux.svg
 	source = wechat-2.2.0.deb::https://cdn4.cnxclm.com/uploads/2024/03/08/85uZHDjz_store.spark-app.wechat-linux-spark_2.2-real1.0.0.0_amd64.deb?attname=store.spark-app.wechat-linux-spark_2.2-real1.0.0.0_amd64.deb
-	md5sums = 06c82e1ba414bb1b4140dfbc3da4bace
+	md5sums = 1c0c66925be80da7ba1cac7619d8ae4c
 	md5sums = 4416ba2723325292f2177eec63775f62
 	md5sums = 600e74549ce2258c045d5c2f7689ea63
 	md5sums = caabaa599446f5a23364644f734e2e2c
