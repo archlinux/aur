@@ -1,16 +1,16 @@
 # Maintainer: Denton Liu <liu.denton@gmail.com>
 
 pkgname=tetrio-desktop
-pkgver=8.0.0
-pkgrel=2
+pkgver=9.0.0
+pkgrel=1
 pkgdesc='TETR.IO desktop client'
 arch=('x86_64')
 license=('custom')
 url='https://tetr.io/'
 depends=('libxss')
-source=("$pkgname-$pkgver::https://tetr.io/about/desktop/builds/TETR.IO%20Setup.deb"
+source=("$pkgname-$pkgver.deb::https://tetr.io/about/desktop/builds/${pkgver%.*.*}/TETR.IO%20Setup.deb"
         LICENSE) # https://tetr.io/about/terms/
-sha256sums=('ae07110f88692e1485f7ef1d3ab5eff95774746631b17833e28cc09ba1a38bda'
+sha256sums=('52b88bc0c07c0fefd3df61f8acf6e4240cbf17f14584da5dfbed0047597011fb'
             '5e721783706e2018878ca127ec6ed5d6a1298ee9cc6a853329e25fafe45265f9')
 
 package() {
