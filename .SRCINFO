@@ -1,0 +1,15 @@
+pkgbase = warp-plus-go-bin
+	pkgdesc = An open-source implementation of Cloudflare's Warp, enhanced with Psiphon integration.
+	pkgver = 1.0.4_rc2
+	pkgrel = 1
+	url = https://github.com/bepass-org/wireguard-go
+	arch = x86_64
+	license = MIT
+	provides = warp-plus-go
+	conflicts = warp-plus-go
+	source = warp-plus-go-bin-1.0.4-rc2.zip::https://github.com/bepass-org/wireguard-go/releases/download/v1.0.4-rc2/warp-linux-amd64.b6d64e.zip
+	source = warp-plus-go.service
+	sha256sums = ae4de0e0928be13abc50a02a1e8edec40202daf59604f2ee59729a2fd2f54c82
+	sha256sums = 8ab87a001c368159f6e8aea1bb49571db04a6114374b794bb0155b437a72bead
+
+pkgname = warp-plus-go-bin

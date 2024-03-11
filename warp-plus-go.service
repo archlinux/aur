@@ -1,0 +1,11 @@
+[Unit]
+Description=Warp-Plus-Go
+After=network.target nss-lookup.target
+
+[Service]
+WorkingDirectory=/etc/warp-plus-go
+ExecStart=/usr/bin/warp-plus-go -gool
+ExecReload=/bin/kill -HUP ${MAINPID}
+
+[Install]
+WantedBy=multi-user.target
