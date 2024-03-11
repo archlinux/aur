@@ -800,3 +800,9 @@ Fixes:
 - Pinned contacts on the sidebar will now be automatically removed if the contact is no longer part of the team.
 - We fixed the condition that hides completed tasks from the calendar to include tasks closed from the sidebar.
 - An issue preventing typing "S" as the name of a new task list (!) has been rectified.
+
+=== Morgen 3.2.6
+Fixes:
+- This release addresses a problem causing read-only calendar subscriptions to count toward the account limit. This was not intended. The Basic plan includes unlimited read-only calendar feeds, which is allowed again.
+- We fixed a problem making it impossible to manually reorder Morgen tasks when subgrouping is on.
+- The links to the original Todoist tasks now redirect to the browser on Windows and Linux. This change is necessary because the Todoist apps for Windows and Linux do not support linking to a specific task in-app.
