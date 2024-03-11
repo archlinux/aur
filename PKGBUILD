@@ -1,7 +1,7 @@
 # Maintainer: Aaron Barany <akb825@gmail.com>
 
-pkgname=('cuttlefish-tool')
-pkgver=2.7.4
+pkgname='cuttlefish-tool'
+pkgver=2.7.5
 pkgrel=1
 pkgdesc='Texture converter tool and library'
 arch=('i686' 'x86_64')
