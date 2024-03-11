@@ -1,0 +1,63 @@
+variables:
+  DOCKER_IMAGE: archlinux:base-devel
+  SCHEDULE_TASK: default
+  PKGDEST: ./build
+
+stages:
+  - build
+  - deploy
+
+makepkg:
+  stage: build
+  image: ${DOCKER_IMAGE}
+  cache:
+    - key:
+        files:
+          - '*'
+      paths:
+        - /var/cache/pacman/pkg
+        - /build
+  before_script:
+      - pacman -Sy --noconfirm --noprogressbar
+      - useradd -d /build -m build
+      - "echo 'build ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers"
+      - su build -c "mkdir -p ./build"
+  script:
+      - export PKGDEST=${PKGDEST}
+      - su build -c "/usr/bin/makepkg -s --noconfirm --noprogressbar"
+  artifacts:
+    paths:
+      - ${PKGDEST}
+    expire_in: 1 week
+  tags: [""]
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+      when: never
+    - when: always
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: always
+    - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
+      when: manual
+
+# Deploys the generated package to Gitlab pages name.gitlab.io/repo_name
+pages:
+  variables:
+    BUILD_OUTPUT_PATH: ${CI_PROJECT_DIR}/repo
+  stage: deploy
+  image: alpine:latest
+  before_script:
+    - apk add rsync
+    # replace html assets relative path with pages absolute path
+    - find $BUILD_OUTPUT_PATH \( -type d -name .git -prune \) -o -type f -print0 | xargs -0 sed -i -e "s#href=\"\/#href=\"$CI_PAGES_URL/#g" -e "s#src=\"\/#src=\"$CI_PAGES_URL/#g"
+  script:
+    - mkdir public || true
+    - rsync -av --exclude='public' --exclude='.git' $BUILD_OUTPUT_PATH/ public
+  artifacts:
+    paths:
+      - public
+    expire_in: 1 week
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+      when: never
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: always
