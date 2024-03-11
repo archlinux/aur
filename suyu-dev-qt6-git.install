@@ -1,0 +1,11 @@
+pre_install() {
+    cat << EOF
+
+==> WARNING: suyu uses a completly different directory to store their data. 
+You will need to copy all the files from the ./local/share/yuzu directory to ./local/share/suyu
+
+You can do it using this command: mkdir -p ~/.local/share/suyu && cp -ra ~/.local/share/yuzu/* ~/.local/share/suyu/*
+
+EOF
+}
+

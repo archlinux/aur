@@ -2,14 +2,15 @@
 
 _pkgname=suyu
 _branch=dev
-pkgname=suyu-dev-git
-pkgver=r27175.bd5bdbe6c
+pkgname=suyu-dev-qt6-git
+pkgver=r27175.bd5bdbe6c7
 pkgrel=1
-pkgdesc="suyu is the afterlife the world's most popular, open-source, Nintendo Switch emulator (dev branch)"
+pkgdesc="suyu is the afterlife the world's most popular, open-source, Nintendo Switch emulator (dev branch with QT6)"
 arch=(x86_64)
 url=https://gitlab.com/suyu-emu/suyu
 license=(GPL-3.0-or-later)
 provides=('suyu')
+conflics=(suyu-dev-git suyu-git)
 install=$pkgname.install
 depends=(
   brotli
@@ -30,9 +31,9 @@ depends=(
   libva.so
   libzstd.so
   lz4
-  qt5-base
-  qt5-multimedia
-  qt5-webengine
+  qt6-base
+  qt6-multimedia
+  qt6-webengine
   sdl2
   zlib
 )
@@ -46,7 +47,7 @@ makedepends=(
   llvm
   ninja
   nlohmann-json
-  qt5-tools
+  qt6-tools
   shaderc
   spirv-headers
   vulkan-headers
