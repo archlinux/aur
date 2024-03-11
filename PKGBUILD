@@ -3,11 +3,11 @@
 
 _pkgname='ferdium'
 pkgname="$_pkgname-bin"
-_electron='electron27'
-_electronpackage='electron27'
+_electron='electron29'
+_electronpackage='electron29'
 pkgverorg='6.7.1'
 pkgver='6.7.1'
-pkgrel='2'
+pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (binary release).'
 arch=('x86_64' 'armv7l' 'aarch64')
 url="https://$_pkgname.org"
@@ -66,6 +66,20 @@ EOF
 	for _size in 16 24 32 48 64 96 128 256 512 1024; do
 		install -Dm644 "usr/share/icons/hicolor/${_size}x${_size}/apps/$_pkgname.png" "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/$_pkgname.png"
 	done
+
+	# Add an extra desktop file to run Ferdium with Wayland
+	cat << EOF > "$pkgdir/usr/share/applications/$_pkgname-wayland.desktop"
+[Desktop Entry]
+Name=${_pkgname^} - Wayland
+Exec=/usr/bin/$_pkgname --enable-features=WaylandWindowDecorations --ozone-platform-hint=wayland %U
+Terminal=falseparu
+Type=Application
+Icon=ferdium
+StartupWMClass=Ferdium
+Comment=Ferdium is your messaging app / former heir to the throne of Austria-Hungary and combines chat & messaging services into one application. Ferdium currently supports Slack, WhatsApp, Gmail, Facebook Messenger, Telegram, Google Hangouts, GroupMe, Skype and many more. You can download Ferdium for free for Mac, Windows, and Linux.
+MimeType=x-scheme-handler/ferdium;
+Categories=Network;InstantMessaging;
+EOF
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
 	for _license in 'LICENSE.electron.txt' 'LICENSES.chromium.html'; do
