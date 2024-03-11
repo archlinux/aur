@@ -3,7 +3,7 @@ src/
 pkg/
 
 # The installer script
-ChomikBox-pl-installer.64.sh
+ChomikBox-pl-installer.*.sh
 
 # Archive files
 *.zip
