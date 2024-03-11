@@ -6,7 +6,7 @@ _gitcommit=64e72f06c9ae9c844b92977e036865d90339b87d
 
 pkgname=octopi-notifier-frameworks-dev
 pkgver=0.16.0.r4.64e72f0
-pkgrel=1
+pkgrel=2
 pkgdesc='Notifier for Octopi with Knotifications support'
 arch=('any')
 url="https://github.com/${_githubuser}/${_githubrepo}"
