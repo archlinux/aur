@@ -134,7 +134,7 @@ build() {
     -DBUILD_REPOSITORY=suyu-emu/suyu \
     -DBUILD_TAG=${_branch}-${pkgver} \
     -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=OFF \
-    -DENABLE_QT6=ON \
+    -DENABLE_QT6=OFF \
     -DENABLE_QT_TRANSLATION=ON \
     -DENABLE_SDL2=ON \
     -DENABLE_WEB_SERVICE=ON \
