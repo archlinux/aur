@@ -1,11 +1,12 @@
 pkgbase = android-x86-libxau
-	pkgdesc = X11 authorisation library (android)
+	pkgdesc = X11 authorisation library (Android, x86)
 	pkgver = 1.0.11
 	pkgrel = 1
 	url = https://xorg.freedesktop.org/
 	arch = any
 	license = custom
 	depends = android-x86-xorgproto
+	depends = android-configure
 	options = !strip
 	options = !buildflags
 	options = staticlibs
