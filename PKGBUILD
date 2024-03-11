@@ -8,7 +8,7 @@ arch=('x86_64')
 license=('MIT')
 url="https://github.com/benoitc/http-parser"
 depends=('python')
-makedepends=('python-setuptools' 'cython')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'cython')
 checkdepends=('python-pytest')
 source=("https://github.com/benoitc/http-parser/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 sha512sums=('75e51bef43d9d7698aad69f8bfe651e24784b97603cac55f33bf4c12c86792c8c71d6206f31847d052e4d8621a5ea65a7b34eca5bebdb8189f58e6d98d33139d')
@@ -19,7 +19,7 @@ prepare() {
 
 build() {
   cd "$srcdir"/http-parser-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -30,6 +30,6 @@ check() {
 
 package() {
   cd http-parser-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
