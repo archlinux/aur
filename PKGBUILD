@@ -6,8 +6,8 @@ pkgdesc='A software energy consumption estimation tool'
 arch=("any")
 url="https://git.sr.ht/~whereswaldon/$_repo"
 _branch='main'
-pkgver=r155.3f4d719
-pkgrel=3
+pkgver=r183.872a2df
+pkgrel=1
 license=("Unlicense")
 makedepends=("git" "go" "gcc" "lm_sensors")
 source=("$_repo::git+$url#branch=$_branch")
