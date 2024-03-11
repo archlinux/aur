@@ -4,10 +4,10 @@
 
 pkgname='perl-starlink-ast'
 pkgver='3.03'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Interface to the Starlink AST library"
 arch=('i686' 'x86_64')
-license=('PerlArtistic' 'GPL')
+license=('GPL-2.0-or-later')
 options=('!emptydirs')
 depends=('perl>=5.008' 'perl-pgplot' 'perl-tk' 'perl-tk-zinc')
 makedepends=('perl-module-build')
