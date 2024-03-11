@@ -1,6 +1,9 @@
 #!/bin/bash
 #https://cdn4.cnxclm.com/uploads/2024/03/05/3VDyAc0x_wechat-beta_1.0.0.145_amd64.deb?attname=wechat-beta_1.0.0.145_amd64.deb
 
+busName=trash.chat.app
+busDir="${XDG_RUNTIME_DIR}/app/${busName}"
+
 function moeDect() {
 	if [[ -f /usr/share/moeOS-Docs/os-release ]]; then
 		osRel="/usr/share/moeOS-Docs/os-release"
@@ -64,7 +67,9 @@ function lnDir() {
 }
 
 function execApp() {
+	touch "${XDG_DOCUMENTS_DIR}"/WeChat_Data/.flatpak-info
 	bwrap \
+		--dir /sandbox \
 		--tmpfs /tmp \
 		--symlink usr/lib /lib \
 		--symlink usr/lib64 /lib64 \
@@ -86,22 +91,52 @@ function execApp() {
 		--unshare-all \
 		--share-net \
 		--bind /usr/bin/true /usr/bin/lsblk \
+		--ro-bind /usr/lib/wechat-uos-bwrap/open /sandbox/dde-file-manager \
 		--ro-bind /usr/share/wechat-uos/var/ /var/ \
 		--ro-bind /usr/share/wechat-uos/etc/os-release "${osRel}" \
 		--ro-bind /usr/share/wechat-uos/etc/lsb-release /etc/lsb-release \
 		--ro-bind /usr/lib/wechat-uos/license/ /usr/lib/license/ \
-		--ro-bind /usr/lib/snapd-xdg-open/xdg-open /usr/bin/xdg-open \
 		--ro-bind-try "${XDG_CONFIG_HOME}"/user-dirs.dirs "${XDG_CONFIG_HOME}"/user-dirs.dirs \
 		--ro-bind-try "${XDG_CONFIG_HOME}"/fontconfig	"${XDG_CONFIG_HOME}"/fontconfig \
 		--ro-bind-try "${XDG_CONFIG_HOME}"/Trolltech.conf "${XDG_CONFIG_HOME}"/Trolltech.conf \
+		--ro-bind-try "${XDG_CONFIG_HOME}"/mimeapps.list "${XDG_CONFIG_HOME}"/mimeapps.list \
 		--ro-bind-try /etc/xdg/Trolltech.conf /etc/xdg/Trolltech.conf \
 		--ro-bind-try "${XDG_CONFIG_HOME}"/kdeglobals "${XDG_CONFIG_HOME}"/kdeglobals \
 		--ro-bind-try /etc/xdg/kdeglobals /etc/xdg/kdeglobals \
+		--ro-bind-try "${XDG_DOCUMENTS_DIR}"/WeChat_Data/.flatpak-info "${XDG_RUNTIME_DIR}/.flatpak-info" \
+		--ro-bind-try "${XDG_DOCUMENTS_DIR}"/WeChat_Data/.flatpak-info /.flatpak-info \
 		--dir "${XDG_DOCUMENTS_DIR}" \
 		--setenv QT_QPA_PLATFORM xcb \
 		--setenv LD_LIBRARY_PATH /opt/wechat-beta:/usr/lib/wechat-uos/license \
 		--setenv QT_AUTO_SCREEN_SCALE_FACTOR 1 \
+		--setenv PATH /sandbox:"${PATH}" \
 		/opt/wechat-beta/wechat
+}
+
+function dbusProxy() {
+	mkdir "${busDir}" -p
+	bwrap \
+		--new-session \
+		--symlink /usr/lib64 /lib64 \
+		--ro-bind /usr/lib /usr/lib \
+		--ro-bind /usr/lib64 /usr/lib64 \
+		--ro-bind /usr/bin /usr/bin \
+		--bind "${XDG_RUNTIME_DIR}" "${XDG_RUNTIME_DIR}" \
+		--ro-bind-try "${XDG_DOCUMENTS_DIR}"/WeChat_Data/.flatpak-info /.flatpak-info \
+		--ro-bind-try "${XDG_DOCUMENTS_DIR}"/WeChat_Data/.flatpak-info "${XDG_RUNTIME_DIR}/.flatpak-info" \
+		--die-with-parent \
+		-- \
+		env -i xdg-dbus-proxy \
+			"${DBUS_SESSION_BUS_ADDRESS}" \
+			"${busDir}/bus" \
+			--filter \
+			--log \
+			--talk=org.freedesktop.portal.Flatpak \
+			--call="org.freedesktop.portal.Desktop=org.freedesktop.portal.Settings.Read@/org/freedesktop/portal/desktop" \
+			--broadcast="org.freedesktop.portal.Desktop=org.freedesktop.portal.Settings.SettingChanged@/org/freedesktop/portal/desktop" 3<<EOF
+[Application]
+name=$busName
+EOF
 }
 
 function execAppUnsafe() {
@@ -125,6 +160,8 @@ function launch() {
 	if [[ ${trashAppUnsafe} = 1 ]]; then
 		execAppUnsafe
 	else
+		dbusProxy &
+		sleep 0.1
 		execApp
 	fi
 }

@@ -19,6 +19,7 @@ source=(
 	wechat.sh
 	wechat-uos-beta.desktop
 	wechat-uos-beta.svg
+	open.sh
 )
 
 source_x86_64=(
@@ -30,9 +31,10 @@ source_aarch64=(
 )
 
 noextract=()
-md5sums=('33be405a7b38028c33b3141165b65f5a'
+md5sums=('76b04e756da65fd6dd8d0b3daed0be1e'
          'b6e6920af829dafb0be82da1c79e46a9'
-         '600e74549ce2258c045d5c2f7689ea63')
+         '600e74549ce2258c045d5c2f7689ea63'
+         'b3acc2c95d35bd2fa41e5a8f1a6339ec')
 md5sums_x86_64=('1da072bd774d1b5c08b9545b409e3fcb')
 md5sums_aarch64=('b9d2d3461964da54eb630ef6f07d4ccc')
 
@@ -44,5 +46,6 @@ function package() {
 	cp opt/wechat-beta "${pkgdir}"/opt/wechat-beta -r
 	install -Dm644 wechat-uos-beta.desktop "${pkgdir}/usr/share/applications/wechat-uos-beta.desktop"
 	install -Dm755 wechat.sh "${pkgdir}/usr/bin/wechat-uos-beta"
+	install -Dm755 open.sh "${pkgdir}/usr/lib/wechat-uos-bwrap/open"
 	install -Dm644 wechat-uos-beta.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/wechat-uos-beta.svg"
 }
