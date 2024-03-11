@@ -17,6 +17,7 @@ pkgbase = linux
 	makedepends = graphviz
 	makedepends = imagemagick
 	makedepends = python-sphinx
+	makedepends = python-yaml
 	makedepends = texlive-latexextra
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.8.tar.xz
