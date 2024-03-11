@@ -1,6 +1,6 @@
 pkgbase = zsh-autopair-git
 	pkgdesc = Auto-close and delete matching delimiters in Zsh
-	pkgver = 1.0.r3.g396c38a
+	pkgver = 1.0.r3.g2ec3fd3c9b950c01dbffbb2a4d191e1d34b8c58a
 	pkgrel = 1
 	url = https://github.com/hlissner/zsh-autopair
 	install = zsh-autopair.install
