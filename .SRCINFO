@@ -1,7 +1,7 @@
 pkgbase = android-armv7a-eabi-openmpi
-	pkgdesc = High performance message passing library (MPI) (android)
+	pkgdesc = High performance message passing library (MPI) (Android, armv7a-eabi)
 	pkgver = 4.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.open-mpi.org
 	arch = any
 	license = BSD-3-Clause AND LicenseRef-MPICH
@@ -11,6 +11,7 @@ pkgbase = android-armv7a-eabi-openmpi
 	makedepends = android-armv7a-eabi-openpmix
 	makedepends = android-armv7a-eabi-prrte
 	makedepends = android-armv7a-eabi-zlib
+	makedepends = android-environment
 	depends = android-armv7a-eabi-hwloc
 	depends = android-armv7a-eabi-libevent
 	depends = android-armv7a-eabi-libfabric
