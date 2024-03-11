@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=f1mv-lights-integration-bin
 _appname=F1MV-Lights-Integration
-pkgver=3.0.0
+pkgver=3.0.2
 _electronversion=29
 pkgrel=1
 pkgdesc="The best way to connect your smart home lights to MultiViewer."
@@ -21,12 +21,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('35688f7545254c8e3b379e111f6d08322f2dfeb37314d33230b39e9357e721f7'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+sha256sums=('d56476b5c726cdc44e0480b3f218b7c75971022d44fa514c3f354f21d43beab0'
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
