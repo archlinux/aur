@@ -1,7 +1,7 @@
 pkgbase = openssh-dotconfig-bin
 	pkgdesc = Premier connectivity tool for remote login with the SSH protocol - but moved $HOME/.ssh to $HOME/.config/ssh (binary version)
-	pkgver = 9.6p1
-	pkgrel = 2
+	pkgver = 9.7p1
+	pkgrel = 1
 	url = https://www.openssh.com/portable.html
 	arch = x86_64
 	license = custom:BSD
@@ -26,7 +26,7 @@ pkgbase = openssh-dotconfig-bin
 	backup = etc/pam.d/sshd
 	backup = etc/ssh/ssh_config
 	backup = etc/ssh/sshd_config
-	source = https://github.com/noahvogt/openssh-dotconfig-aur/releases/download/9.6p1-2/openssh-dotconfig-9.6p1-2-x86_64.pkg.tar.zst
-	sha256sums = 8c518efba80b2ae4cb487f8284c27eb30feb1bbcd9ef3f691a44156ddf5bdda4
+	source = https://github.com/noahvogt/openssh-dotconfig-aur/releases/download/9.7p1-1/openssh-dotconfig-9.7p1-1-x86_64.pkg.tar.zst
+	sha256sums = f4de7edc4ec832ae35b76e1fdf2e3a4db159b48a79a9a286354af6c0e8a5095f
 
 pkgname = openssh-dotconfig-bin
