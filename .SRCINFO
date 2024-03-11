@@ -1,5 +1,5 @@
 pkgbase = lib32-llvm-minimal-git
-	pkgver = 19.0.0_r490073.767433ba8821
+	pkgver = 19.0.0_r492261.9d30f11b8881
 	pkgrel = 1
 	url = http://llvm.org/
 	arch = x86_64
@@ -13,20 +13,21 @@ pkgbase = lib32-llvm-minimal-git
 	makedepends = lib32-libxml2
 	makedepends = lib32-zstd
 	makedepends = llvm-minimal-git
+	options = staticlibs
 	options = !lto
 	source = llvm-project::git+https://github.com/llvm/llvm-project.git
 	md5sums = SKIP
 	sha512sums = SKIP
 
 pkgname = lib32-llvm-minimal-git
-	pkgdesc = Collection of modular and reusable compiler and toolchain technologies, 32-bit trunk version
-	depends = lib32-llvm-libs-minimal-git=19.0.0_r490073.767433ba8821-1
+	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (32-bit)
+	depends = lib32-llvm-libs-minimal-git=19.0.0_r492261.9d30f11b8881-1
 	depends = llvm-minimal-git
 	provides = lib32-llvm
 	conflicts = lib32-llvm
 
 pkgname = lib32-llvm-libs-minimal-git
-	pkgdesc = Low Level Virtual Machine runtime library 32-bit trunk version
+	pkgdesc = Low Level Virtual Machine (runtime library)(32-bit)
 	depends = lib32-libffi
 	depends = lib32-zlib
 	depends = lib32-ncurses
@@ -34,29 +35,3 @@ pkgname = lib32-llvm-libs-minimal-git
 	depends = lib32-gcc-libs
 	optdepends = lib32-llvm-libs: for LLVMgold linker
 	provides = lib32-llvm-libs
-
-pkgname = lib32-clang-minimal-git
-	pkgdesc = C language family frontend for LLVM , 32-bit trunk version
-	depends = llvm-libs-minimal-git
-	depends = clang-libs-minimal-git
-	depends = gcc
-	optdepends = openmp: OpenMP support in clang with -fopenmp
-	optdepends = python: for scan-view, scan-build, git-clang-format, clang-rename and python bindings
-	optdepends = llvm-minimal-git: referenced by some clang headers
-	optdepends = clang-miminal-git: for some headers
-	provides = lib32-clang
-	conflicts = lib32-clang
-
-pkgname = lib32-clang-libs-minimal-git
-	pkgdesc = clang runtime libraries, 32-bit trunk version
-	depends = lib32-llvm-libs-minimal-git=19.0.0_r490073.767433ba8821-1
-	provides = lib32-clang-libs
-	conflicts = lib32-clang<19.0.0_r490073.767433ba8821-1
-	conflicts = lib32-clang-libs
-
-pkgname = lib32-clang-opencl-headers-minimal-git
-	pkgdesc = clang headers & include files for OpenCL, 32-bit trunk version
-	depends = lib32-clang-libs-minimal-git=19.0.0_r490073.767433ba8821-1
-	provides = lib32-clang-opencl-headers
-	conflicts = lib32-clang<19.0.0_r490073.767433ba8821-1
-	conflicts = lib32-clang-opencl-headers

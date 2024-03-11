@@ -18,8 +18,8 @@
 
 
 pkgbase=lib32-llvm-minimal-git
-pkgname=('lib32-llvm-minimal-git' 'lib32-llvm-libs-minimal-git' 'lib32-clang-minimal-git' 'lib32-clang-libs-minimal-git' 'lib32-clang-opencl-headers-minimal-git')
-pkgver=19.0.0_r490073.767433ba8821
+pkgname=('lib32-llvm-minimal-git' 'lib32-llvm-libs-minimal-git')
+pkgver=19.0.0_r492261.9d30f11b8881
 pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
@@ -30,18 +30,18 @@ source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
 )
 md5sums=('SKIP')
 sha512sums=('SKIP')
-options=('!lto')
+options=('staticlibs' '!lto')
 # explicitly disable lto to reduce number of build hangs / test failures
 
-# LIT by default uses all available cores. this can lead to heavy stress on systems making them unresponsive.
+# Both ninja & LIT by default use all available cores. this can lead to heavy stress on systems making them unresponsive.
 # It can also happen that the kernel oom killer interferes and kills important tasks.
 # A reasonable value for them to avoid these issues appears to be 75% of available cores.
-# LITFLAGS is an env vars that can be used to achieve this. They should be set on command line or in files read by your shell on login (like .bashrc ) .
+# NINJAFLAGS and LITFLAGS are env vars that can be used to achieve this. They should be set on command line or in files read by your shell on login (like .bashrc ) .
 # example for systems with 24 cores
+# NINJAFLAGS="-j 18 -l 18"
 # LITFLAGS="-j 18"
 # NOTE: It's your responbility to validate the value of NINJAFLAGS and LITFLAGS. If unsure, don't set it.
 
-_major_ver=19
 _get_distribution_components() {
     local target
     local include
@@ -128,13 +128,9 @@ build() {
         -D LLVM_BINUTILS_INCDIR=/usr/include
         -D LLVM_VERSION_SUFFIX=""
         -D LLVM_ENABLE_BINDINGS=OFF
-        -D LLVM_ENABLE_DUMP=ON
         -D LLVM_LIT_ARGS="$LITFLAGS"" -sv --ignore-fail"
-        -D LLVM_ENABLE_PROJECTS="compiler-rt;clang-tools-extra;clang"
-        -D CLANG_LINK_CLANG_DYLIB=ON
-        -D CLANG_DEFAULT_PIE_ON_LINUX=ON
-        -D ENABLE_LINKER_BUILD_ID=ON
 )
+
         
     cmake -B _build -S "$srcdir"/llvm-project/llvm "${cmake_args[@]}" -Wno-dev
 
@@ -151,110 +147,50 @@ build() {
 
 check() {
     make -C _build check-llvm
-    make -C _build check-clang
-    make -C _build check-clang-tools
 }
 
 package_lib32-llvm-minimal-git() {
-    pkgdesc="Collection of modular and reusable compiler and toolchain technologies, 32-bit trunk version"
+    pkgdesc="Collection of modular and reusable compiler and toolchain technologies (32-bit)"
     depends=(lib32-llvm-libs-minimal-git=$pkgver-$pkgrel llvm-minimal-git)
     provides=('lib32-llvm')
     conflicts=('lib32-llvm')
     
     make -C _build DESTDIR="$pkgdir" install-distribution
 
-    # prepare folders in srcdir to store files that are placed in other package_*() functions
-    mkdir -p "$srcdir"{/llvm-libs/usr/lib32,/clang-libs/usr/lib32,/clang-opencl-headers/usr/{lib32/clang/$_major_ver/include,include/clang/Basic}}
-    
     # Remove files which conflict with lib32-llvm-libs
     rm "$pkgdir"/usr/lib32/{LLVMgold,lib{LLVM,LTO,Remarks}}.so
 
-   # remove files which conflicts with or are already present in clang-minimal-git
-   rm -rf "$pkgdir"/usr/lib32/{libear,libscanbuild}
-   rm -rf "$pkgdir"/usr/lib32/clang/$_major_ver/{lib,share}
-   
-    # The llvm runtime libraries go into lib32-llvm-libs-git
-    mv "$pkgdir"/usr/lib32/lib{LLVM,LTO,Remarks}*.so* "$srcdir"/llvm-libs/usr/lib32
+    # The runtime library goes into lib32-llvm-libs-git
+    mv "$pkgdir"/usr/lib32/lib{LLVM,LTO,Remarks}*.so* "$srcdir"
     
-   # The clang runtime libraries go into lib32-clang-libs-minimal-git
-    mv -f "$pkgdir"/usr/lib32/libclang{,-cpp}.so* "$srcdir"/clang-libs/usr/lib32
+    mv "$pkgdir"/usr/bin/llvm-config "$pkgdir"/usr/lib32/llvm-config
+    mv "$pkgdir"/usr/include/llvm/Config/llvm-config.h \
+        "$pkgdir"/usr/lib32/llvm-config-32.h
 
-    # clang opencl files go to lib32-clang-opencl-headers-git
-    mv -f "$pkgdir"/usr/lib32/clang/$_major_ver/include/opencl* "$srcdir"/clang-opencl-headers/usr/lib32/clang/$_major_ver/include
-    mv -f "$pkgdir"/usr/include/clang/Basic/OpenCL* "$srcdir"/clang-opencl-headers/usr/include/clang/Basic
+    rm -rf "$pkgdir"/usr/{bin,include,share/{doc,man,llvm,opt-viewer}}
 
-   # clang files go to lib32-clang-minimal-git separate package
-    mkdir -p "$srcdir"/clang/usr/{lib32,lib32/cmake}
-    mv -f "$pkgdir"/usr/lib32/clang "$srcdir"/clang/usr/lib32
-    mv -f "$pkgdir"/usr/lib32/cmake/clang "$srcdir"/clang/usr/lib32/cmake/
-   
-    # rename llvm-config to llvm-config32 and remove everyting else in $pkgdir/usr/bin to avoid conflicts with llvm-minimal-git
-   mv "$pkgdir"/usr/bin/llvm-config "$pkgdir"/usr/bin/llvm-config32
-   find "$pkgdir"/usr/bin -type f,l -not -name 'llvm-config32' -delete
-    
-    rm -rf "$pkgdir"/usr/{include,libexec,share}
+    # Needed for multilib (https://bugs.archlinux.org/task/29951)
+    # Header stub is taken from Fedora
+    install -d "$pkgdir"/usr/include/llvm/Config
+    mv "$pkgdir"/usr/lib32/llvm-config-32.h "$pkgdir"/usr/include/llvm/Config/
+
+    mkdir "$pkgdir"/usr/bin
+    mv "$pkgdir"/usr/lib32/llvm-config "$pkgdir"/usr/bin/llvm-config32
 
     install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 package_lib32-llvm-libs-minimal-git() {
-    pkgdesc="Low Level Virtual Machine runtime library 32-bit trunk version"
+    pkgdesc="Low Level Virtual Machine (runtime library)(32-bit)"
     depends=('lib32-libffi' 'lib32-zlib' 'lib32-ncurses' 'lib32-libxml2' 'lib32-gcc-libs')
     provides=('lib32-llvm-libs')
     optdepends=('lib32-llvm-libs: for LLVMgold linker')
     
     install -d "$pkgdir"/usr/lib32
 
-    cp -P --recursive "$srcdir"/llvm-libs/* "$pkgdir"/
+    cp -P \
+        "$srcdir"/lib{LLVM,LTO,Remarks}*.so* \
+        "$pkgdir"/usr/lib32/
 
     install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-
-package_lib32-clang-minimal-git(){
-  pkgdesc='C language family frontend for LLVM , 32-bit trunk version'
-  depends=(llvm-libs-minimal-git clang-libs-minimal-git gcc)
-  optdepends=('openmp: OpenMP support in clang with -fopenmp'
-              'python: for scan-view, scan-build, git-clang-format, clang-rename and python bindings'
-              'llvm-minimal-git: referenced by some clang headers'
-              'clang-miminal-git: for some headers')
-  conflicts=(lib32-clang)
-  provides=(lib32-clang)
-
-    cp -P --recursive "$srcdir"/clang/* "$pkgdir"/
-
-    rm -rf "$pkgdir"/usr/{bin,include,lib,libexec,share}
-
-    install -Dm644 "$srcdir"/llvm-project/compiler-rt/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/compiler-rt-LICENSE.TXT
-    install -Dm644 "$srcdir"/llvm-project/clang-tools-extra/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-tools-extra-LICENSE.TXT
-    install -Dm644 "$srcdir"/llvm-project/clang/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-LICENSE.TXT
-
-}
-
-package_lib32-clang-libs-minimal-git() {
-    pkgdesc="clang runtime libraries, 32-bit trunk version"
-    depends=(lib32-llvm-libs-minimal-git="$pkgver-$pkgrel")
-    # the functionality offered by this package is part of the clang repo pacakge.
-    # TODO: when/if this functionality is split off from repo clang, verify if changes are needed to this package
-
-    provides=('lib32-clang-libs')
-    conflicts=("lib32-clang<$pkgver-$pkgrel" 'lib32-clang-libs')
-    
-    cp -P --recursive "$srcdir"/clang-libs/* "$pkgdir"/
-
-    install -Dm644 "$srcdir"/llvm-project/clang/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.TXT
-}
-
-package_lib32-clang-opencl-headers-minimal-git() {
-    pkgdesc="clang headers & include files for OpenCL, 32-bit trunk version"
-    depends=(lib32-clang-libs-minimal-git="$pkgver-$pkgrel")
-    # the functionality offered by this package is part of the clang repo package.
-    # As far as I know rusticl from mesa is the only known user.
-    # TODO: when/if this functionality is split off from repo clang, verify if changes are needed to this package
-    provides=('lib32-clang-opencl-headers')
-    conflicts=("lib32-clang<$pkgver-$pkgrel" 'lib32-clang-opencl-headers')
-    
-    cp --preserve --recursive "$srcdir"/clang-opencl-headers/* "$pkgdir"/
-
-    install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.TXT
-}
-# vim:set ts=2 sw=2 et:
