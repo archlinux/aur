@@ -3,15 +3,16 @@
 _pkgname=suyu
 _branch=dev
 pkgname=suyu-dev-git
-pkgver=r27175.bd5bdbe6c7
+pkgver=r27175.bd5bdbe6c
 pkgrel=1
 pkgdesc="suyu is the afterlife the world's most popular, open-source, Nintendo Switch emulator (dev branch)"
 arch=(x86_64)
 url=https://gitlab.com/suyu-emu/suyu
-license=(GPL-2.0-or-later)
+license=(GPL-3.0-or-later)
 provides=('suyu')
 install=$pkgname.install
 depends=(
+  brotli
   enet
   llvm-libs
   gcc-libs
@@ -36,7 +37,6 @@ depends=(
   zlib
 )
 makedepends=(
-  brotli
   boost
   clang
   cmake
@@ -53,6 +53,7 @@ makedepends=(
   vulkan-utility-libraries
   catch2
   rapidjson
+  mbedtls
 )
 options=(!debug lto)
 source=(
@@ -63,7 +64,6 @@ source=(
   git+https://github.com/mozilla/cubeb.git
   git+https://gitlab.com/suyu-emu/dynarmic.git
   git+https://github.com/bylaws/libadrenotools.git
-  git+https://gitlab.com/suyu-emu/mbedtls.git
   git+https://github.com/brofield/simpleini.git
   git+https://gitlab.com/suyu-emu/sirit.git
   git+https://github.com/KhronosGroup/SPIRV-Headers.git
@@ -73,7 +73,6 @@ source=(
   git+https://github.com/herumi/xbyak.git
 )
 b2sums=('SKIP'
-        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -101,7 +100,6 @@ prepare() {
   git config submodule.cubeb.url "${srcdir}"/cubeb
   git config submodule.dynarmic.url "${srcdir}"/dynarmic
   git config submodule.libadrenotools.url "${srcdir}"/libadrenotools
-  git config submodule.mbedtls.url "${srcdir}"/mbedtls
   git config submodule.simpleini.url "${srcdir}"/simpleini
   git config submodule.sirit.url "${srcdir}"/sirit
   git config submodule.tzdb_to_nx.url "${srcdir}"/tzdb_to_nx
@@ -126,14 +124,17 @@ prepare() {
 }
 
 build() {
+  if [[ $CXXFLAGS == *"-flto"* ]]; then
+    flags+=("-DSUYU_ENABLE_LTO=ON")
+  fi
   export CXXFLAGS+=' -Wno-switch'
   cmake -S suyu -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_REPOSITORY=suyu-emu/suyu \
     -DBUILD_TAG=${_branch}-${pkgver} \
-    -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
-    -DENABLE_QT6=OFF \
+    -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=OFF \
+    -DENABLE_QT6=ON \
     -DENABLE_QT_TRANSLATION=ON \
     -DENABLE_SDL2=ON \
     -DENABLE_WEB_SERVICE=ON \
@@ -154,6 +155,7 @@ build() {
     -DSUYU_USE_QT_MULTIMEDIA=ON \
     -DSUYU_USE_QT_WEB_ENGINE=ON \
     -DSUYU_TESTS=OFF \
+    "${flags[@]}" \
     -Wno-dev
   cmake --build build
 }
