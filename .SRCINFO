@@ -1,4 +1,4 @@
-pkgbase = bluez
+pkgbase = bluez-ps3
 	pkgver = 5.73
 	pkgrel = 0
 	url = http://www.bluez.org/

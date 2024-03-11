@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Geoffroy Carrier <geoffroy@archlinux.org>
 # Maintainer: Cooky-12 cooky-12@qq.com
-pkgbase=bluez
+
 pkgname=('bluez-ps3')
 pkgver=5.73
 pkgrel=0
@@ -21,7 +21,7 @@ sha256sums=('257e9075ce05c70d48c5defd254e78c418416f7584b45f9dddc884ff88e3fc53'
 
 
 build() {
-  cd "${pkgbase}"-${pkgver} ;  patch --forward --strip=1 --input="${srcdir}/fake-ps3.patch"
+  cd bluez-${pkgver} ;  patch --forward --strip=1 --input="${srcdir}/fake-ps3.patch"
   ./configure \
           --prefix=/usr \
           --mandir=/usr/share/man \
@@ -45,7 +45,7 @@ build() {
   # add missing tools FS#41132, FS#41687, FS#42716
   for files in `find tools/ -type f -perm -755`; do
     filename=$(basename $files)
-    install -Dm755 "${srcdir}"/"${pkgbase}"-${pkgver}/tools/$filename "${srcdir}/fakeinstall"/usr/bin/$filename
+    install -Dm755 "${srcdir}"/bluez-${pkgver}/tools/$filename "${srcdir}/fakeinstall"/usr/bin/$filename
   done
 }
 
@@ -62,7 +62,7 @@ _install() {
 }
 
 check() {
-  cd "$pkgbase"-$pkgver
+  cd bluez-$pkgver
   # fails test-vcp due to lto - https://github.com/bluez/bluez/issues/683
   make check || /bin/true
 }
@@ -86,8 +86,8 @@ package_bluez-ps3() {
   chmod -v 555 "${pkgdir}"/etc/bluetooth
 
   # add basic documention
-  install -dm755 "${pkgdir}"/usr/share/doc/"${pkgbase}"/dbus-apis
-  cp -a "${pkgbase}"-${pkgver}/doc/*.txt "${pkgdir}"/usr/share/doc/"${pkgbase}"/dbus-apis/
+  install -dm755 "${pkgdir}"/usr/share/doc/bluez/dbus-apis
+  cp -a bluez-${pkgver}/doc/*.txt "${pkgdir}"/usr/share/doc/bluez/dbus-apis/
   # fix module loading errors
   install -dm755 "${pkgdir}"/usr/lib/modprobe.d
   install -Dm644 "${srcdir}"/bluetooth.modprobe "${pkgdir}"/usr/lib/modprobe.d/bluetooth-usb.conf
