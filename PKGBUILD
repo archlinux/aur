@@ -5,7 +5,8 @@ _pkgver=v${pkgver}
 pkgrel=1
 pkgdesc="A simulation toolkit for particle physics interactions."
 # https://geant4-userdoc.web.cern.ch/UsersGuides/InstallationGuide/html/gettingstarted.html
-depends=('cmake>=3.16'
+depends=('clhep'
+         'cmake>=3.16'
          'xerces-c>=3'
          'qt6-base' # soqt depends on qt6-base
          'glu'
@@ -63,6 +64,7 @@ build() {
       -DGEANT4_USE_QT=ON \
       -DGEANT4_USE_RAYTRACER_X11=ON \
       -DGEANT4_USE_XM=ON \
+      -DGEANT4_USE_SYSTEM_CLHEP=ON \
       -DGEANT4_USE_SYSTEM_ZLIB=ON \
       -DGEANT4_INSTALL_PACKAGE_CACHE=OFF \
       -DGEANT4_BUILD_TLS_MODEL=global-dynamic \
