@@ -1,12 +1,13 @@
 pkgbase = r-objectsignals
-	pkgdesc = objectSignals
+	pkgdesc = Observer Pattern for S4
 	pkgver = 0.10.3
-	pkgrel = 3
+	pkgrel = 6
 	url = https://cran.r-project.org/package=objectSignals
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	source = https://cran.r-project.org/src/contrib/objectSignals_0.10.3.tar.gz
-	sha256sums = 2d766beade3b0c914f0cd3d4c77ede2d80d87fe2787dd57eeef80f0ebb9df020
+	md5sums = 6b76acd9915ae4bd1e9b84d972810360
+	b2sums = 3f5aaac52de66b72a10eea4da9d40a262f5fb06846e793d010a782e473fd5ebbf9e2e8a9e629126f23d0c275b686b83c5465d3a97136790e4ac661bb875ed9cb
 
 pkgname = r-objectsignals
