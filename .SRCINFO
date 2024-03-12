@@ -1,7 +1,7 @@
 pkgbase = kube-capacity-bin
 	pkgdesc = A simple CLI that provides an overview of the resource requests, limits, and utilization in a Kubernetes cluster
 	pkgver = v0.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/robscott/kube-capacity
 	arch = x86_64
 	arch = arm64

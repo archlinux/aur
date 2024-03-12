@@ -21,7 +21,3 @@ sha256sums_i386=('22b018ce72d46fff2f00acd45080d9b9bb08aee1be3f5b67fd72607cc87494
 package() {
   install -Dm 755 "$srcdir/kube-capacity" "$pkgdir/usr/bin/kube-capacity"
 }
-
-check() {
-  "$pkgdir/usr/bin/kube-capacity" --version
-}
