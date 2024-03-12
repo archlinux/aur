@@ -6,7 +6,7 @@
 _pkgname=lenovolegionlinux
 pkgname=${_pkgname}-git
 pkgver=r255.885b10b
-pkgrel=1
+pkgrel=2
 pkgdesc="LenovoLegionLinux (LLL) brings additional drivers and tools for Lenovo Legion series laptops to Linux. PLEASE READ THE REPO BEFORE INSTALL THIS PACKAGE!!!"
 arch=("x86_64")
 url="https://github.com/johnfanv2/LenovoLegionLinux"
@@ -54,7 +54,7 @@ build() {
  cd "${srcdir}/${_pkgname}/python/legion_linux"
  python -m build --wheel --no-isolation
  # Make legiond daemon
- cd extra/service/legiond
+ cd legion_linux/extra/service/legiond
  make
 }
 package() {
