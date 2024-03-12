@@ -1,5 +1,5 @@
 pkgname=electrs
-pkgver=0.10.0
+pkgver=0.10.3
 pkgrel=1
 pkgdesc="An efficient re-implementation of Electrum Server in Rust"
 arch=(x86_64)
