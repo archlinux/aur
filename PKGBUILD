@@ -68,8 +68,7 @@ prepare() {
 
 build() {
         cd Hyprland
-        cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:STRING=${PREFIX} -S . -B ./build -G Ninja
-	cmake --build ./build --config Release --target all -j`nproc 2>/dev/null || getconf NPROCESSORS_CONF`
+        make PREFIX=/usr all
 }
 
 pkgver() {
@@ -79,5 +78,5 @@ pkgver() {
 
 package() {
         cd Hyprland
-        make PREFIX=$pkgdir/usr/local install
+        make PREFIX=$pkgdir/usr install
 }
