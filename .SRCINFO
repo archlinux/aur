@@ -1,5 +1,5 @@
 pkgbase = notepad--
-	pkgdesc = 个国产跨平台、轻量级的文本编辑器，是替换notepad++的一种选择。其内置强大的代码对比功能，让你丢掉付费的beyond compare。
+	pkgdesc = 一个国产跨平台、轻量级的文本编辑器，是替换notepad++的一种选择。其内置强大的代码对比功能，让你丢掉付费的beyond compare。
 	pkgver = 2.14
 	pkgrel = 1
 	url = https://gitee.com/cxasm/notepad--
