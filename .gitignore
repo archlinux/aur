@@ -1,6 +1,6 @@
-*.pkg.*
 src
 pkg
 *.tar.*
-*.crx
-*.zip
+nohup.out
+ClearUrls/
+*.log

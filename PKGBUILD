@@ -3,30 +3,29 @@
 pkgname='chromium-extension-clearurls'
 _extension='clearurls'
 pkgver=1.27.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a chromium extension to automatically remove tracking elements from URLs to help protect your privacy"
 license=('LGPL3')
 arch=('any')
 url="https://gitlab.com/ClearURLs/ClearUrls"
 depends=('chromium')
-makedepends=('unzip')
-source=("$pkgname-$pkgver.zip::https://gitlab.com/ClearURLs/ClearUrls/-/jobs/4257572768/artifacts/raw/ClearURLs.zip?inline=false"
+makedepends=('git' 'zip' 'unzip' 'jq' 'openssl')
+_commit="14a0832973e137f0cbbbb1e9110c1286bc88e319"
+source=("git+https://gitlab.com/ClearURLs/ClearUrls.git#commit=$_commit"
         "clearurls.pem")
-noextract=("$pkgname-$pkgver.zip")
-sha256sums=('ff2dfa01f616b305129b5fb398beb8daf00732af01cbcf6500ad13f4b2d3fd84'
+sha256sums=('SKIP'
             '81e2b3fc4c621493c9c3e7625064b0ec5cb8e0dc64d8715ffd10c46de0a419d8')
 provides=('chromium-extension-clearurls')
 conflicts=('chromium-extension-clearurls')
 
-package() {
-    install -Dm644 "$pkgname-$pkgver.crx" "$pkgdir/usr/share/$pkgname/$pkgname.crx"
-    install -Dm644 lckanjgmijmafbedllaakclkaicjfmnk.json "$pkgdir/usr/share/chromium/extensions/lckanjgmijmafbedllaakclkaicjfmnk.json"
-}
-
-
 build() {
-    unzip -d "$pkgname-$pkgver" "$pkgname-$pkgver.zip"
+    cd ClearUrls
+    zip ../ClearURLs.zip -r -FS clearurls.js browser-polyfill.js manifest.json img/* external_js/* html/* core_js/* css/* fonts/* _locales/*
+    cd ..
+
+    unzip -d "$pkgname-$pkgver" "ClearURLs.zip"
     cd "$pkgname-$pkgver"
+
     pubkey="$(openssl rsa -in "$srcdir/$_extension.pem" -pubout -outform DER |base64 -w0)"
     # create extension json
     export _id="$(echo $pubkey |base64 -d |sha256sum |head -c32 |tr '0-9a-f' 'a-p')"
