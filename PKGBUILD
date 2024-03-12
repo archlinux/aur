@@ -3,27 +3,30 @@
 _pkgname=qtl
 _pkgver=1.66
 pkgname=r-${_pkgname,,}
-pkgver=1.66
-pkgrel=1
-pkgdesc='Tools for Analyzing QTL Experiments'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Tools for Analyzing QTL Experiments"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
+  blas
+  lapack
   r
 )
 optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d46a7d49f2d0875c0c1cba77c993f995e7cac4db5796dfb1c62d9fa4eb60d681')
+md5sums=('6b196598f827825cf7c9063fb740b61e')
+b2sums=('6595ec110cebe1bcafddaa2e74d11e6ec20ef813bd4ff95b611b32b535af12e45b8b3a6403290b515722412f5f131a0db7f03b8057b2589a0a75d9b998693d6c')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
