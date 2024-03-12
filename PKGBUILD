@@ -1,16 +1,19 @@
 # Maintainer: Noah Vogt (noahvogt) <noah@noahvogt.com>
 # private key generated with `openssl genrsa 2048| openssl pkcs8 -topk8 -nocrypt -traditional`
 
+# binary version of this package (-bin): github.com/noahvogt/chromium-extension-rggl-bin-aur
+
 pkgname=chromium-extension-rggl
 _extension=rggl
 pkgver=6.1.5
 _commit=319553d247b80a7907b108c362e08d4b1759ee8d
-pkgrel=1
+pkgrel=2
 pkgdesc="Remove German Gender Language - chromium extension"
 arch=('any')
 url="https://github.com/motsiw/rggl"
 license=('custom:none')
-makedepends=('chromium' 'openssl' 'jq')
+depends=('chromium')
+makedepends=('git' 'openssl' 'jq')
 source=("$_extension-$pkgver::git+https://github.com/motsiw/rggl.git"
         "rggl.pem")
 sha256sums=('SKIP'

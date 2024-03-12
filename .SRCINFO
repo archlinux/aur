@@ -1,7 +1,7 @@
 pkgbase = chromium-extension-rggl
 	pkgdesc = Remove German Gender Language - chromium extension
 	pkgver = 6.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/motsiw/rggl
 	arch = any
 	license = custom:none
