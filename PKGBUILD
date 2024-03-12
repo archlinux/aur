@@ -10,7 +10,7 @@ url="https://tonelib.net/gfx-overview/"
 depends=('gtk3' 'glib2' 'desktop-file-utils' 'alsa-lib' 'harfbuzz' 'fribidi' 'pango' 'freetype2')
 optdepends=('jack: JACK output')
 source=("${pkgname}-${pkgver}.deb::https://www.tonelib.net/download/ToneLib-GFX-amd64.deb")
-sha256sums=('97573923a9b43741f00b53966a327a39523918eff9b5bbfb3e1e427fb49f5c97')
+sha256sums=('2a482e5a3c3e664873a1b2a00d443d6e572a23df2175f9741b06417e81ec235e')
 
 package () {
     tar xf data.tar.xz -C "${pkgdir}"
