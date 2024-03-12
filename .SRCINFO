@@ -1,0 +1,20 @@
+pkgbase = woniu-ali-bin
+	pkgdesc = 蜗牛云盘PC版
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://snail8.cn/app
+	arch = x86_64
+	license = LicenseRef-unknown
+	depends = gtk3
+	depends = ffmpeg4.4
+	depends = alsa-lib
+	depends = gtk2
+	depends = mpv
+	provides = woniu-ali=1.4.0
+	conflicts = woniu-ali
+	source = woniu-ali-1.4.0.deb::https://github.com/zxp19821005/My_AUR_Files/releases/download/woniu_ali-1.4.0/woniu_ali_linux_x64_1.4.0.deb
+	source = woniu-ali.sh
+	sha256sums = 9279d0419eddf8b083e8952dab9d88f773446e047d622c74c5e2a7675919c0cc
+	sha256sums = 251f65f733d0fee607980dea3de42119be67693c32cbeeb1ba6d502e64fe4b63
+
+pkgname = woniu-ali-bin
