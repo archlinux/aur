@@ -1,13 +1,13 @@
 pkgbase = bulk-rename-plus
 	pkgdesc = Tiny yet Powerful Non-Interactive Bulk Renamer, written in C++
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/siyia2/bulk-rename-plus
 	arch = x86_64
 	license = GPL3
 	depends = bash
 	depends = coreutils
-	source = https://github.com/siyia2/bulk-rename-plus/archive/v1.6.1.tar.gz
-	md5sums = cfe443709566565b2ffd2b1fd6cb0dd0
+	source = https://github.com/siyia2/bulk-rename-plus/archive/v1.6.2.tar.gz
+	md5sums = e1e3dc98831e26e3d6079273203510aa
 
 pkgname = bulk-rename-plus
