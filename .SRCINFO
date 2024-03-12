@@ -1,14 +1,14 @@
 pkgbase = lb-planner-git
 	pkgdesc = a Planning tool for students at the TGM Vienna (unstable version)
 	pkgver = r819.eb9a581
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/necodeIT/lb_planner
 	arch = any
 	license = CC-NC-SA 4.0
 	makedepends = cmake
 	makedepends = clang
 	makedepends = ninja
-	makedepends = fvm-bin
+	makedepends = fvm
 	makedepends = pkgconf
 	makedepends = gtk3
 	makedepends = xz
