@@ -1,23 +1,23 @@
 pkgbase = r-th.data
 	pkgdesc = TH's Data Archive
 	pkgver = 1.1.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://cran.r-project.org/package=TH.data
 	arch = any
-	license = GPL
+	license = GPL-3.0-only
 	depends = r
 	optdepends = r-atr
 	optdepends = r-coin
 	optdepends = r-colorspace
 	optdepends = r-gridextra
 	optdepends = r-knitr
-	optdepends = r-lattice
 	optdepends = r-multcomp
 	optdepends = r-rms
 	optdepends = r-tram
 	optdepends = r-trtf
 	optdepends = r-vcd
 	source = https://cran.r-project.org/src/contrib/TH.data_1.1-2.tar.gz
-	sha256sums = 47f94eb57b6fcef42efa30824c1356bf10529c4b94b0d0acdb787b434dddde73
+	md5sums = 4e6e59fee15e056be3721f7c0d4e017c
+	b2sums = c091698b1761d54e8281b6fc74466ec5f000ccb71e143e9aeef50125154012d391cf93e4b71661301f896ce46d8fcd94459dff8a1596565c1ab705f9a98ddb7b
 
 pkgname = r-th.data
