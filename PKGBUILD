@@ -6,7 +6,7 @@
 _pkgname=lenovolegionlinux
 pkgname=${_pkgname}-git
 pkgver=r255.885b10b
-pkgrel=2
+pkgrel=3
 pkgdesc="LenovoLegionLinux (LLL) brings additional drivers and tools for Lenovo Legion series laptops to Linux. PLEASE READ THE REPO BEFORE INSTALL THIS PACKAGE!!!"
 arch=("x86_64")
 url="https://github.com/johnfanv2/LenovoLegionLinux"
@@ -67,7 +67,6 @@ package() {
 # Systemd service
   cd "${srcdir}/${_pkgname}/extra"
   install -Dm664 service/*.service "${pkgdir}/etc/systemd/system" 
-	install -Dm664 service/*.path "${pkgdir}/etc/systemd/system"
   
 # legiond daemon
   install -Dm775 service/legiond/legiond/legiond "${pkgdir}/usr/bin"
