@@ -1,7 +1,7 @@
 pkgbase = immich
 	pkgdesc = Self-hosted photos and videos backup tool
 	pkgver = 1.98.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/immich-app/immich
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,6 @@ pkgbase = immich
 	depends = redis
 	depends = postgresql
 	depends = nodejs
-	depends = nginx
 	depends = pgvecto.rs=0.2.0
 	depends = zlib
 	depends = glib2
@@ -56,6 +55,7 @@ pkgbase = immich
 	depends = perl-uri
 	depends = perl-mojolicious
 	depends = perl-file-slurper
+	optdepends = nginx: reverse proxy
 	source = immich-1.98.2.tar.gz::https://github.com/immich-app/immich/archive/refs/tags/v1.98.2.tar.gz
 	source = immich-server.service
 	source = immich-microservices.service
