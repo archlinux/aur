@@ -3,6 +3,7 @@ pkgbase = ddh
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/RiddlerXenon/DynamicDisplayHandler
+	install = ddh.install
 	arch = any
 	license = GPL
 	depends = xorg-server
