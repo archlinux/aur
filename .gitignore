@@ -4,4 +4,4 @@ pkg
 *.tar.*
 history-disabler-*
 *.log
-nohup.our
+nohup.out
