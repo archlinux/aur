@@ -1,6 +1,6 @@
 pkgbase = zelus
 	pkgdesc = Ory Kratos user interface written in Go
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://git.sr.ht/~mekyt/zelus
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = zelus
 	makedepends = go
 	depends = glibc
 	backup = etc/zelus/config.env
-	source = zelus-v1.1.0.tar.gz::https://git.sr.ht/~mekyt/zelus/archive/v1.1.0.tar.gz
+	source = zelus-v1.1.1.tar.gz::https://git.sr.ht/~mekyt/zelus/archive/v1.1.1.tar.gz
 	source = zelus.sysusers
 	b2sums = 2423bae9e5da8d1bfaaf1b4b15bbd8ad958a85ecb409eb101d8e7850554b68f6d2a475b59c4cd9d35d83f06df2ee24ea37098038ac3230aa5afd78a82df4efef
 	b2sums = c0adb51100668292e4fa192417232fa5fe396a1b929618fc50191b4c24aeee177476f904d9c3e30a7a98494890feb7cb6a6220b9297a05a6d260a8900c18d5e3
