@@ -16,6 +16,5 @@ package() {
 
     install -Dm755 ddh.sh "$pkgdir/usr/local/bin/ddh.sh"
     install -Dm755 install.sh "$pkgdir/usr/local/bin/install-ddh.sh"
-    install -Dm755 uninstall.sh "$pkgdir/usr/local/bin/uninstall-ddh.sh"
 }
 

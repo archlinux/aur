@@ -9,7 +9,7 @@ post_install() {
 }
 
 post_remove() {
-    sudo systemctl stop ddh
-    sudo systemctl disable ddh
-    sudo rm -f /etc/systemd/system/ddh.service
+    systemctl stop ddh
+    systemctl disable ddh
+    rm -f /etc/systemd/system/ddh.service
 }
