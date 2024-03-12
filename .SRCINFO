@@ -1,10 +1,11 @@
 pkgbase = munt
 	pkgdesc = Software synthesizer emulating pre-GM MIDI devices such as the Roland MT-32, CM-32L, CM-64 and LAPC-I
 	pkgver = 2.7.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://munt.sourceforge.net
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL-2.0 OR LGPL-2.1
 	makedepends = cmake
 	makedepends = qt6-multimedia
