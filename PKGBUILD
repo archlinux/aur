@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=raer
-_pkgver=1.0.0
+_pkgver=1.0.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="RNA editing tools in R"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   curl
   r-biocgenerics
@@ -56,12 +56,12 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg38.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0b5c050626ce21756f90b4f9c967465b')
-sha256sums=('4607eee1ad03f81724d7feae469236b6f7646831309eff928a6bbd9e7e7d8ce9')
+md5sums=('da2d27f76962c7d534f36f05815670d3')
+b2sums=('0079593d5d24b9500788c10e025364972d4d8d0f8eede7ee58a8ace5e9bb0d2f83cdbe89b377936bb855c0302662c82c340a3026ba82266034c380578021a1fa')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
