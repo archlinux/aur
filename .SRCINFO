@@ -1,12 +1,13 @@
 pkgbase = taisei
 	pkgdesc = Open source Touhou clone
-	pkgver = 1.4
-	pkgrel = 3
+	pkgver = 1.4.1
+	pkgrel = 1
 	url = https://taisei-project.org/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = meson
+	makedepends = gamemode
 	makedepends = python-docutils
 	makedepends = python-zstandard
 	depends = opengl-driver
@@ -18,7 +19,7 @@ pkgbase = taisei
 	depends = zstd
 	depends = opusfile
 	depends = hicolor-icon-theme
-	source = https://github.com/taisei-project/taisei/releases/download/v1.4/taisei-1.4.tar.xz
-	sha256sums = cc025ad73246790e1a53978c4612b3aaffc0d3acfbfd181a39e6fbd853ca99be
+	source = https://github.com/taisei-project/taisei/releases/download/v1.4.1/taisei-1.4.1.tar.xz
+	sha256sums = 98a4fcea296e7bd3ef21c23adf065500ee5e41cbc66e6cf611168a20cd539a01
 
 pkgname = taisei
