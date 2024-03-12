@@ -7,7 +7,6 @@ pkgbase = stylish-icon-theme-git
 	license = GPL-3.0-or-later
 	makedepends = git
 	depends = hicolor-icon-theme
-	depends = gtk-update-icon-cache
 	options = !strip
 	source = git+https://github.com/mjkim0727/Stylish-icon-theme.git
 	sha256sums = SKIP
