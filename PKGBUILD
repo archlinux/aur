@@ -12,8 +12,8 @@ groups=('')
 depends=('kmod' 'zlib')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=()
-sha512sums_x86_64=()
+source_x86_64=("file://SentinelAgent_linux_x86_64_v23_3_2_12.deb")
+sha256sums_x86_64=('af81b873ae742ef6135e9f8bfcdb9aaa8d760d54c83f210ac415fd89ba78b4bd')
 
 package(){
 
