@@ -1,8 +1,8 @@
 pkgbase = python-posix_ipc
 	pkgdesc = POSIX IPC primitives (semaphores, shared memory and message queues) for Python
-	pkgver = 1.0.5
+	pkgver = 1.1.1
 	pkgrel = 1
-	url = http://semanchuk.com/philip/posix_ipc/
+	url = https://github.com/osvenskan/posix_ipc
 	arch = x86_64
 	arch = i686
 	arch = aarch64
@@ -10,8 +10,7 @@ pkgbase = python-posix_ipc
 	makedepends = python-distribute
 	depends = python
 	options = !emptydirs
-	source = http://semanchuk.com/philip/posix_ipc/posix_ipc-1.0.5.tar.gz
-	sha1sums = 08b095e560b7514b9e2b7de2d791c4f9d578cda9
+	source = python-posix_ipc-rel1.1.1.tar.gz::https://github.com/osvenskan/posix_ipc/archive/refs/tags/rel1.1.1.tar.gz
+	sha1sums = 8af031b944a05f0928bf5c3405fd514c76066dba
 
 pkgname = python-posix_ipc
-

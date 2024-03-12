@@ -1,27 +1,27 @@
 # Maintainer: Frank Motsch <frank@motschsoft.de>
 pkgname=python-posix_ipc
-pkgver=1.0.5
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="POSIX IPC primitives (semaphores, shared memory and message queues) for Python"
 arch=(x86_64 i686 aarch64)
-url="http://semanchuk.com/philip/posix_ipc/"
+url="https://github.com/osvenskan/posix_ipc"
 license=('BSD')
 groups=()
 depends=('python')
 makedepends=('python-distribute')
 options=(!emptydirs)
-source=("http://semanchuk.com/philip/posix_ipc/posix_ipc-$pkgver.tar.gz")
-sha1sums=('08b095e560b7514b9e2b7de2d791c4f9d578cda9')
+source=("python-posix_ipc-rel${pkgver}.tar.gz::https://github.com/osvenskan/posix_ipc/archive/refs/tags/rel${pkgver}.tar.gz")
+sha1sums=('8af031b944a05f0928bf5c3405fd514c76066dba')
 
 build() {
-    cd "$srcdir/posix_ipc-$pkgver"
+    cd "${srcdir}/posix_ipc-rel${pkgver}"
 
     python setup.py build
 
 }
 
 package() {
-    cd "$srcdir/posix_ipc-$pkgver"
+    cd "${srcdir}/posix_ipc-rel${pkgver}"
 
     python setup.py install --root="$pkgdir/" --optimize=1
 
