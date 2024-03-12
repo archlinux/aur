@@ -1,19 +1,19 @@
 pkgbase = hoverfly-bin
 	pkgdesc = Lightweight service virtualization/API simulation tool for developers and testers
-	pkgver = 1.7.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://hoverfly.io
 	arch = aarch64
 	arch = i686
 	arch = x86_64
 	license = Apache-2.0
-	provides = hoverfly=1.7.0
+	provides = hoverfly=1.8.0
 	conflicts = hoverfly
-	source_aarch64 = hoverfly-bin-1.7.0-aarch64.zip::https://github.com/SpectoLabs/hoverfly/releases/download/v1.7.0/hoverfly_bundle_linux_arm64.zip
-	sha256sums_aarch64 = 26db7d2a4adfd4e8f4a7890e3b5667c7f75255ecd4fd0eff0080bbe430a68c81
-	source_i686 = hoverfly-bin-1.7.0-i686.zip::https://github.com/SpectoLabs/hoverfly/releases/download/v1.7.0/hoverfly_bundle_linux_386.zip
-	sha256sums_i686 = 7bda816ecd4bc3d2eb684dbb9f1851612ba6e9fcc588a45a829b159b931b91f8
-	source_x86_64 = hoverfly-bin-1.7.0-x86_64.zip::https://github.com/SpectoLabs/hoverfly/releases/download/v1.7.0/hoverfly_bundle_linux_amd64.zip
-	sha256sums_x86_64 = 8e662438f712488464e6371c77727020989c8b917b6c94af8f64cccff3207d88
+	source_aarch64 = hoverfly-bin-1.8.0-aarch64.zip::https://github.com/SpectoLabs/hoverfly/releases/download/v1.8.0/hoverfly_bundle_linux_arm64.zip
+	sha256sums_aarch64 = 60f321a59c20c6d4691cfe9bdc02757f8da7eb2bf0de2639c6b23cd2f775427c
+	source_i686 = hoverfly-bin-1.8.0-i686.zip::https://github.com/SpectoLabs/hoverfly/releases/download/v1.8.0/hoverfly_bundle_linux_386.zip
+	sha256sums_i686 = b67d77efaab847d2d3b378fa9407986b715c21c83f925acee135edbf86a0bfec
+	source_x86_64 = hoverfly-bin-1.8.0-x86_64.zip::https://github.com/SpectoLabs/hoverfly/releases/download/v1.8.0/hoverfly_bundle_linux_amd64.zip
+	sha256sums_x86_64 = 0a7729fe9aa4c32ae35631dda5a66eefeecdf0a9bce75024cf9bf3d195f1f6df
 
 pkgname = hoverfly-bin
