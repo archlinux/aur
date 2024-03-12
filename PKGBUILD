@@ -15,6 +15,6 @@ package() {
     cd "$srcdir/DynamicDisplayHandler-$pkgver"
 
     install -Dm755 ddh.sh "$pkgdir/usr/local/bin/ddh.sh"
-    install -Dm755 install.sh "$pkgdir/usr/local/bin/install-ddh.sh"
+    install -Dm755 aur_install.sh "$pkgdir/usr/local/bin/install-ddh.sh"
 }
 
