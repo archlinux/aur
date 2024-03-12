@@ -3,24 +3,25 @@
 _pkgname=NbClust
 _pkgver=3.0.1
 pkgname=r-${_pkgname,,}
-pkgver=3.0.1
-pkgrel=1
-pkgdesc='Determining the Best Number of Clusters in a Data Set'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=6
+pkgdesc="Determining the Best Number of Clusters in a Data Set"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1a9b0e89156fb98ce486f033cb845a6550bfbff80fb22e8c0df791fe3ec9b04c')
+md5sums=('797acb196fb81f0859acd43f08072546')
+b2sums=('e3eab8fa8664689045d4ed9d83855774e5c70613e1ea8e3375e439e399a24293c9490e14212684a3adc4ce60398b0ade7f8d69d2c5cf4f66466fee330815ae3e')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
