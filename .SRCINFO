@@ -1,7 +1,7 @@
 pkgbase = keepassxc-allow-aur-extension-origin-bin
 	pkgdesc = Cross-platform community-driven port of Keepass password manager (binary version)
-	pkgver = 2.7.6
-	pkgrel = 4
+	pkgver = 2.7.7
+	pkgrel = 1
 	url = https://keepassxc.org/
 	arch = x86_64
 	license = GPL
@@ -21,7 +21,7 @@ pkgbase = keepassxc-allow-aur-extension-origin-bin
 	provides = org.freedesktop.secrets
 	provides = keepassxc
 	conflicts = keepassxc
-	source = https://github.com/noahvogt/keepassxc-allow-aur-extension-origin-aur/releases/download/2.7.6-4/keepassxc-allow-aur-extension-origin-2.7.6-4-x86_64.pkg.tar.zst
-	sha256sums = dda605068fa19e4e133234128ecc27da5c3b7f35d0d8341d2613ac788920aa75
+	source = https://github.com/noahvogt/keepassxc-allow-aur-extension-origin-aur/releases/download/2.7.7-1/keepassxc-allow-aur-extension-origin-2.7.7-1-x86_64.pkg.tar.zst
+	sha256sums = c58d2fbc807d10ebe110d9d4a7262199056c47dfa4f246e67552e427cec0502d
 
 pkgname = keepassxc-allow-aur-extension-origin-bin
