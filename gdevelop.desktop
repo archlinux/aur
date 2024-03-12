@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Name=GDevelop
+Comment=GDevelop
+Exec=/usr/bin/gdevelop
+Icon=/usr/share/pixmaps/gdevelop.png
+Categories=Development
+Type=Application
