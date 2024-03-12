@@ -33,7 +33,7 @@ prepare() {
 	./${_appimage} --appimage-extract ${_pkgname}.desktop
 	./${_appimage} --appimage-extract usr/share/icons
 	cd squashfs-root
-	sed -i "s/AppRun --no-sandbox/\/opt\/${pkgname}\/${_appimage}/;s/Categories:Finance;/Categories:Office;Finance;/" "${_pkgname}.desktop"
+	sed -i -e "s/AppRun --no-sandbox/\/opt\/${pkgname}\/${_appimage}/" -e "s/Categories=Finance;/Categories=Office;Finance;/" "${_pkgname}.desktop"
 }
 
 package() {
