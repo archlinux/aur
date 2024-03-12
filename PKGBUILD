@@ -3,7 +3,7 @@
 # Manitor: Bot-wxt1221 <3264117476@qq.com>
 
 pkgname=hmcl-bin
-_ver=3.5.6.240
+_ver=3.5.6.241
 pkgver=${_ver}
 pkgrel=1
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
@@ -19,10 +19,10 @@ source=("hmcl.desktop"
         "LICENSE::https://raw.githubusercontent.com/HMCL-dev/HMCL/javafx/LICENSE"
         "${pkgname}-${pkgver}-${pkgrel}.jar::https://github.com/HMCL-dev/HMCL/releases/download/v${pkgver}/HMCL-${pkgver}.jar")
 sha256sums=('9a561081f8f3ece3da114afd4f6d90565ca0e04716eef4ea88c6b4306566ae9b'
-            '26ed30d5c96f645da00780f71f36e43b1b790d81307b8ee8f98e0d065970433d'
+            'fbea374c820af533b59efa9bbb3918e7d915582e001ab43b00eb1c54e1bb434c'
             '2989a1b5301b8c7b9afdae5696c6a4e5246afa2d4f1f3d3dad5c192f036a9b4c'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            'b67dfecc4f4adf551f707c10ab305ba818ac60e767bf050ece9727a8a4934fb0')
+            '352d051662faa83e7bb29aedd10cd6e7d9a4491804ef16772a599cb620d5be9a')
 
 noextract=("${pkgname}-${pkgver}-${pkgrel}.jar")
 
