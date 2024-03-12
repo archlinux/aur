@@ -5,15 +5,15 @@
 _pkgname=Template-Plugin-JavaScript
 pkgname=perl-template-plugin-javascript
 pkgver=0.02
-pkgrel=1
+pkgrel=2
 pkgdesc="Encodes text to be safe in JavaScript"
 arch=("any")
 license=("PerlArtistic" "GPL")
 options=("!emptydirs")
-depends=('perl')
-url="http://search.cpan.org/~miyagawa/Template-Plugin-JavaScript"
-source=("http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/$_pkgname-$pkgver.tar.gz")
-md5sums=('1e640dc8829a6026bf674b166855b189')
+depends=('perl-template-toolkit')
+url="https://search.cpan.org/~miyagawa/Template-Plugin-JavaScript"
+source=("https://www.cpan.org/authors/id/M/MI/MIYAGAWA/$_pkgname-$pkgver.tar.gz")
+sha256sums=('ea20d806ad652282d0353498e2860df8125c80b6491630c25d263bd880c618d7')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
