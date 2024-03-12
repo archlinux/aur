@@ -1,0 +1,12 @@
+pkgbase = mcabber-module-mucignore-git
+	pkgdesc = mcabber plugin to ignore messages from MUC user
+	pkgver = 1.dc5e4d7
+	pkgrel = 1
+	url = https://github.com/hirthwork/mcabber-mucignore
+	arch = any
+	source = git+https://github.com/hirthwork/mcabber-mucignore
+	source = makefile.patch
+	md5sums = SKIP
+	md5sums = 7219c0feeb45e15e3c7a07724b668f96
+
+pkgname = mcabber-module-mucignore-git

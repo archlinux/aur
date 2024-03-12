@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 54482d8..014007c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,5 +1,7 @@
+ all:
+-	gcc mucignore.c $(CFLAGS) -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include/ -I/usr/include/loudmouth-1.0/ -std=c99 -lglib-2.0 -shared -DMODULES_ENABLE -o libmucignore.so -fPIC
++	gcc mucignore.c $(CFLAGS) \
++		`pkg-config --cflags mcabber` -std=c99 \
++		-shared -DMODULES_ENABLE -o libmucignore.so -fPIC
+ 
+ install: all
+ 	install -D libmucignore.so "$(DESTDIR)"/libmucignore.so
