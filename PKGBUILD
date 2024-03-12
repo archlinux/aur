@@ -3,7 +3,7 @@ pkgname=weektodo-bin
 _pkgname=WeekToDo
 pkgver=2.2.0
 _electronversion=25
-pkgrel=2
+pkgrel=3
 pkgdesc="A Free and Open Source Weekly Planner. Stop prioritizing what's on your schedule and start scheduling your priorities."
 arch=("x86_64")
 url="https://weektodo.me/"
@@ -12,7 +12,7 @@ license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'hicolor-icon-theme'
 )
 source=(
@@ -20,11 +20,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('098a3556bad8d2af812d25f17d1f8ffcf67b8225ebc9816d2631596d722c59af'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
