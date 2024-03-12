@@ -1,7 +1,6 @@
-# Exclude makepkg generated data
-pkg/
-src/
-
-# Exclude downloaded/generated files
-motrix-bin-*
-Motrix_*
+*
+!.gitignore
+!Makefile
+!PKGBUILD
+!.SRCINFO
+!changelog.md

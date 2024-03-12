@@ -1,8 +1,9 @@
 pkgbase = motrix-bin
 	pkgdesc = A full-featured download manager (binary version)
 	pkgver = 1.8.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/agalwood/Motrix
+	changelog = changelog.md
 	arch = x86_64
 	license = MIT
 	depends = gtk3
