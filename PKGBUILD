@@ -5,7 +5,7 @@
 
 _pkgname=lenovolegionlinux
 pkgname=${_pkgname}-git
-pkgver=r255.6269156
+pkgver=r255.885b10b
 pkgrel=1
 pkgdesc="LenovoLegionLinux (LLL) brings additional drivers and tools for Lenovo Legion series laptops to Linux. PLEASE READ THE REPO BEFORE INSTALL THIS PACKAGE!!!"
 arch=("x86_64")
@@ -53,7 +53,9 @@ prepare() {
 build() {
  cd "${srcdir}/${_pkgname}/python/legion_linux"
  python -m build --wheel --no-isolation
-	
+ # Make legiond daemon
+ cd extra/service/legiond
+ make
 }
 package() {
   mkdir -p ${pkgdir}/etc/systemd/system
@@ -66,8 +68,12 @@ package() {
   cd "${srcdir}/${_pkgname}/extra"
   install -Dm664 service/*.service "${pkgdir}/etc/systemd/system" 
 	install -Dm664 service/*.path "${pkgdir}/etc/systemd/system"
+  
+# legiond daemon
+  install -Dm775 service/legiond/legiond "${pkgdir}/usr/bin"
+  install -Dm775 service/legiond/legiond-cli "${pkgdir}/usr/bin"
 	
-# ACPI service
-  install -Dm775 acpi/actions/battery-legion-quiet.sh "${pkgdir}/usr/share/legion_linux/acpi/actions"
-  install -Dm664 acpi/events/ac_adapter_legion-fancurve "${pkgdir}/usr/share/legion_linux/acpi/events/"
+# ACPI events
+  install -Dm775 acpi/events/legion_ppd "${pkgdir}/usr/share/legion_linux/acpi/events/"
+  install -Dm664 acpi/events/legion_ac "${pkgdir}/usr/share/legion_linux/acpi/events/"
 }
