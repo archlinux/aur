@@ -1,7 +1,7 @@
 pkgbase = xorgxrdp
 	pkgdesc = Xorg drivers for xrdp
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/neutrinolabs/xorgxrdp
 	arch = aarch64
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = xorgxrdp
 	makedepends = xorg-server-devel
 	makedepends = xrdp
 	depends = glibc
+	depends = libepoxy
 	options = staticlibs
 	source = https://github.com/neutrinolabs/xorgxrdp/releases/download/v0.10.0/xorgxrdp-0.10.0.tar.gz
 	source = https://github.com/neutrinolabs/xorgxrdp/releases/download/v0.10.0/xorgxrdp-0.10.0.tar.gz.asc

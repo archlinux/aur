@@ -2,12 +2,12 @@
 
 pkgname=xorgxrdp
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Xorg drivers for xrdp"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/neutrinolabs/xorgxrdp"
 license=('MIT')
-depends=('glibc')
+depends=('glibc' 'libepoxy')
 makedepends=('libxfont2' 'nasm' 'xorg-server-devel' 'xrdp')
 options=('staticlibs')
 source=("https://github.com/neutrinolabs/xorgxrdp/releases/download/v$pkgver/xorgxrdp-$pkgver.tar.gz"{,.asc})
