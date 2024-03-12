@@ -1,7 +1,7 @@
 # Maintainer: Mekyt <hello at mek dot yt>
 
 pkgname='zelus'
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Ory Kratos user interface written in Go'
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
   'zelus.sysusers'
 )
 b2sums=(
-  'e18e0a6dd04f08c576950a76b43c80fa701c4898c8d635ce3f09f8063face27635b4ea37377bc518d6e01b4cfca80ded1d09230e84a6a6c2bec84e4d8533d642'
+  'ae53d850a821a313c7925af34f1af8569deb9e8b7504ab798714b20dafa865bed0422584e8fade4c793ebda077dc0c3633ae43b7b62dc2d9057b00d593647af4'
   'c0adb51100668292e4fa192417232fa5fe396a1b929618fc50191b4c24aeee177476f904d9c3e30a7a98494890feb7cb6a6220b9297a05a6d260a8900c18d5e3'
 )
 backup=('etc/zelus/config.env')
