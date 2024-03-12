@@ -1,6 +1,6 @@
 pkgbase = phpunit
 	pkgdesc = A programmer-oriented testing framework for PHP
-	pkgver = 11.0.4
+	pkgver = 11.0.6
 	pkgrel = 1
 	url = https://phpunit.de
 	install = phpunit.install
@@ -11,7 +11,7 @@ pkgbase = phpunit
 	makedepends = composer
 	depends = php>=8.1.0
 	conflicts = phpunit-bin
-	source = git+https://github.com/sebastianbergmann/phpunit.git#tag=11.0.4
+	source = git+https://github.com/sebastianbergmann/phpunit.git#tag=11.0.6
 	sha256sums = SKIP
 
 pkgname = phpunit
