@@ -1,6 +1,8 @@
 #!/hint/bash
 # Maintainer: bartus <arch-user-repoᘓbartus.33mail.com>
 
+## Configuration env vars:
+((ENABLE_QT5)) && qt="qt5" || qt="qt6"
 
 pkgname=openboard-git
 _fragment="#branch=master"
@@ -12,10 +14,11 @@ url="http://openboard.ch/index.en.html"
 license=('GPL3')
 provides=("${pkgname%-git}=${pkgver%%.r*}")
 conflicts=("${pkgname%-git}")
-depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'qt5-webengine' 'qt5-xmlpatterns' 'libpaper' 'bzip2' 'openssl' 'libfdk-aac' 'sdl' 'ffmpeg')
-depends+=(quazip)  #drop internal quazip and use system one.
+depends+=(${qt}-{base,declarative,multimedia,svg,webchannel,webengine})
+depends+=('libpaper' 'bzip2' 'openssl' 'libfdk-aac' 'sdl' 'ffmpeg')
+depends+=(quazip-${qt})  #drop internal quazip and use system one.
 depends+=(poppler) #replace internal xpdf with poppler and drop freetype/xpdf from deps
-makedepends=(git qt5-tools)
+makedepends=(git ${qt}-tools)
 source=("git+https://github.com/OpenBoard-org/OpenBoard.git${_fragment}"
         openboard.desktop)
 source+=(qchar.patch)
@@ -50,6 +53,7 @@ build() {
   export CCACHE_BASEDIR="$srcdir"
   cd "$srcdir"/OpenBoard
 # convert translations to binary form
+  ((ENABLE_QT5)) || export PATH="/usr/lib/qt6/bin/:$PATH"
   lrelease OpenBoard.pro
   qmake OpenBoard.pro -spec linux-g++
   make
