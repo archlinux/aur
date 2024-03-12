@@ -19,9 +19,9 @@ package() {
 }
 
 post_install() {
-    sudo chmod +x /usr/local/bin/install-ddh.sh
-    sudo /usr/local/bin/install-ddh.sh
-    sudo rm /usr/local/bin/install-ddh.sh
+    chmod +x /usr/local/bin/install-ddh.sh
+    /usr/local/bin/install-ddh.sh
+    rm /usr/local/bin/install-ddh.sh
 
     systemctl daemon-reload
     systemctl enable ddh
@@ -29,6 +29,7 @@ post_install() {
 }
 
 post_remove() {
-    sudo /usr/local/bin/uninstall-ddh.sh    
-    sudo rm /usr/local/bin/uninstall-ddh.sh
+    chmod +x /usr/local/bin/uninstall-ddh.sh
+    /usr/local/bin/uninstall-ddh.sh    
+    rm /usr/local/bin/uninstall-ddh.sh
 }
