@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Jive
+Exec=/usr/bin/jive
+Icon=jive.png
+Type=Application
+Categories=Control;
