@@ -6,9 +6,9 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-openpmix
 pkgver=4.2.9
-pkgrel=1
+pkgrel=2
 arch=('any')
-pkgdesc="Extended version of the PMI standard (android)"
+pkgdesc="Extended version of the PMI standard (Android, ${_android_arch})"
 url="https://github.com/openpmix/openpmix"
 license=('BSD-3-Clause')
 depends=("android-${_android_arch}-hwloc"
@@ -16,8 +16,9 @@ depends=("android-${_android_arch}-hwloc"
          "android-${_android_arch}-zlib")
 makedepends=("android-${_android_arch}-hwloc"
              "android-${_android_arch}-zlib"
-             "perl"
-             "python")
+             'android-environment'
+             'perl'
+             'python')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("$url/releases/download/v$pkgver/pmix-$pkgver.tar.gz"
         '0001-Force-32-bits-compile.patch'
