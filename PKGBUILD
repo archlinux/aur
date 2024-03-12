@@ -4,7 +4,7 @@
 _pkgname=guitarix.vst
 pkgname=$_pkgname-git
 pkgver=v0.3.r1.g313edd9
-pkgrel=1
+pkgrel=2
 pkgdesc='A versatile (guitar) amplifier VST3 plugin (git version)'
 arch=(x86_64)
 url='https://github.com/brummer10/guitarix.vst'
@@ -15,6 +15,7 @@ depends=(
   glib2
   glibc
   glibmm
+  graphite
   libsigc++
 )
 makedepends=(
@@ -25,7 +26,6 @@ makedepends=(
   freetype2
   git
   gperf
-  graphite
   intltool
   lilv
   libsndfile
@@ -87,7 +87,6 @@ package() {
     libglib-2.0.so
     libglibmm-2.4.so
     libgobject-2.0.so
-    libgraphite2.so.3
     liblilv-0.so
     libsigc-2.0.so
     libsndfile.so
