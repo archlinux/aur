@@ -65,7 +65,11 @@ package()
 
     # Install the documentation.
     install -Dm644 "${srcdir}"/"${_pkgname}"-"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
+
+    cd "${srcdir}"/"${_pkgname}"-"${pkgver}"/docs/ || exit 1
+    doxygen Doxyfile
     cp -r "${srcdir}"/"${_pkgname}"-"${pkgver}"/docs/* "${pkgdir}"/usr/share/doc/"${pkgname}"/
+
     find "${pkgdir}"/usr/share/doc/"${pkgname}"/ -type d -exec chmod 755 {} +
     find "${pkgdir}"/usr/share/doc/"${pkgname}"/ -type f -exec chmod 644 {} +
 
