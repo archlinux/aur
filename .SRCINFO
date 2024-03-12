@@ -6,7 +6,6 @@ pkgbase = lightly-qt6-git
 	arch = x86_64
 	license = GPL-2.0
 	makedepends = cmake
-	makedepends = qt6ct
 	makedepends = qt6-declarative
 	makedepends = extra-cmake-modules
 	makedepends = git
