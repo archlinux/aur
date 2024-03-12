@@ -1,0 +1,17 @@
+pkgbase = ice9-bluetooth-sniffer
+	pkgdesc = Wireshark-compatible all-channel BLE sniffer for bladeRF, with wideband Bluetooth sniffing for HackRF and USRP
+	pkgver = 23.06.0
+	pkgrel = 1
+	url = https://github.com/mikeryan/ice9-bluetooth-sniffer
+	arch = any
+	license = GPLv2
+	makedepends = cmake
+	depends = liquid-dsp
+	depends = hackrf
+	depends = bladerf
+	depends = libuhd
+	depends = fftw
+	source = https://github.com/mikeryan/ice9-bluetooth-sniffer/archive/refs/tags/v23.06.0.tar.gz
+	sha256sums = 1bb5ffa6494513406c5c482bb0a427c5e1012b103602f325d24827abbc82d6c1
+
+pkgname = ice9-bluetooth-sniffer
