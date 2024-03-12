@@ -3,7 +3,7 @@
 
 _pkgname=libchewing
 pkgname=libchewing-rust-git
-pkgver=0.6.0rc.1.r0.g06b577b
+pkgver=0.6.0.r51.g9bb8512
 pkgrel=1
 epoch=1
 pkgdesc='Intelligent Chinese phonetic input method (experimental Rust implementation)'
@@ -31,11 +31,13 @@ prepare() {
 
 build() {
   cd $_pkgname/build
+  # Specify the existence of ncurses.h manually as FindCurses.cmake cannot identify it
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DBUILD_INFO=ON \
     -DWITH_RUST=ON \
+    -DCURSES_HAVE_NCURSES_H=ON \
     ..
   make
 }

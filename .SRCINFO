@@ -1,6 +1,6 @@
 pkgbase = libchewing-rust-git
 	pkgdesc = Intelligent Chinese phonetic input method (experimental Rust implementation)
-	pkgver = 0.6.0rc.1.r0.g06b577b
+	pkgver = 0.6.0.r51.g9bb8512
 	pkgrel = 1
 	epoch = 1
 	url = https://chewing.im/
