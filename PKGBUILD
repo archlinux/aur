@@ -3,7 +3,7 @@
 
 pkgname=wechat-beta-bwrap
 pkgver=1.0.0.145
-pkgrel=15
+pkgrel=16
 pkgdesc="WeChat Testing with bwrap sandbox"
 arch=('x86_64' 'aarch64')
 url="https://weixin.qq.com"
@@ -11,6 +11,10 @@ license=('proprietary')
 conflicts=('wechat-uos')
 depends=('nss' 'xdg-utils' 'libxss' 'libnotify' 'bubblewrap' 
 	'xdg-user-dirs' 'xdg-desktop-portal' 'openssl-1.1' 'lsb-release')
+optdepends=(
+	'flatpak-xdg-utils: Open files or links with external programs (preferred)'
+	'snapd-xdg-open: Open files or links with external programs (fallback)'
+)
 source=(
 	wechat.sh
 	wechat-beta.desktop
@@ -37,26 +41,23 @@ source_aarch64=(
 	"${_beta_deb_stem}_aarch64.deb::${_beta_deb_url_common}/${_beta_deb_id_aarch64}_wechat-beta_1.0.0.150_arm64.deb" # Upstream provides .150 aarch64 instead of .145
 )
 
-noextract=()
-for _source in "${source_x86_64[@]}" "${source_aarch64[@]}"; do
-	noextract+=("${_source%%::*}")
-done
+noextract=({"${_uos_deb_stem}","${_beta_deb_stem}"}_{x86_64,aarch64}.deb)
 
-md5sums=(
-	'9894bcb03dc7e4151aca9cc245d317df'
-	'4967385a00db424e596263618335411f'
-	'cf971cb2cb01d8a5fd89d3a3555abfaf'
-	'6b159c6e9d21a98925489bc37a9aea43'
+sha256sums=(
+	'360a8888a6d76065f2849dcfcd94dc62ba471a08bb0e667e6df71cdf705e7a0a'
+	'7692acffebe4ac259cae05d2c92355502fa2cb4ccdbaa27c6cc65f2e1f4678b7'
+	'bc13a14c8680daa03c617e71f48419a1b05e2b9d75bb58b15a89d0d191d0fb12'
+	'53760079c1a5b58f2fa3d5effe1ed35239590b288841d812229ef4e55b2dbd69'
 )
 
-md5sums_x86_64=(
-	'27d585e8fc57950ed4f4f3ffc036447f'
-	'1da072bd774d1b5c08b9545b409e3fcb'
+sha256sums_x86_64=(
+	'bd537bc3ea0f5cd4cc27f835469c3f0152c8cad31723e80b89e36e75dcb22181'
+	'fbb1ada447c2595a4ce568eb79852555a724158836c213c7c2ec366164976ebe'
 )
 
-md5sums_aarch64=(
-	'5be8de0d40ad21bcc49ae4bd8041a0bf'
-	'b9d2d3461964da54eb630ef6f07d4ccc'
+sha256sums_aarch64=(
+	'5ef1853d8265b183ea4720f272b046cd07579ffe436b50093f92e0455635a732'
+	'0b8a50f194582a0e659075fadc0632feeb303bde80060b210e05cd8427583071'
 )
 
 build() {
