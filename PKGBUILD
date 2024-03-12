@@ -3,14 +3,18 @@
 # Contributor: Alex Talker
 
 pkgname=okular-git
-pkgver=24.04.70_r10578.g360dd42c5
-pkgrel=2
+pkgver=24.04.70_r10609.gd01acce2
+pkgrel=1
 pkgdesc='Document Viewer'
 arch=($CARCH)
 url="https://kde.org/applications/graphics/okular/"
 license=(GPL-2.0-or-later LGPL-2.0-or-later)
-depends=(discount djvulibre freetype2 gcc-libs glibc plasma-activities-git karchive-git kbookmarks-git kcolorscheme-git kcompletion-git kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git ki18n-git kio-git kitemviews-git kparts-git kpty-git ktextwidgets-git kwallet-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git libjpeg-turbo libkexiv2-git libspectre libtiff phonon-qt6-git poppler-qt6 purpose-git qt6-base qt6-declarative qt6-speech qt6-svg threadweaver-git zlib)
-makedepends=(git ebook-tools extra-cmake-modules-git kdegraphics-mobipocket-git kdoctools-git)
+depends=(discount djvulibre freetype2 gcc-libs glibc plasma-activities karchive kbookmarks
+         kcolorscheme kcompletion kconfig kconfigwidgets kcoreaddons kcrash ki18n kio
+         kitemviews kparts kpty ktextwidgets kwallet kwidgetsaddons kwindowsystem kxmlgui libjpeg-turbo libkexiv2
+         libspectre libtiff phonon-qt6 poppler-qt6 purpose qt6-base qt6-declarative qt6-speech
+         qt6-svg threadweaver zlib)
+makedepends=(git ebook-tools extra-cmake-modules kdegraphics-mobipocket kdoctools)
 groups=(kde-applications-git kde-graphics-git)
 optdepends=('calligra: ODT and ODP support'
             'ebook-tools: mobi and epub support'
