@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=infisical
-pkgver=0.18.1
+pkgver=0.18.2
 pkgrel=1
 pkgdesc="Fetch and inject secrets into any framework in local development"
 url="https://github.com/Infisical/infisical"
@@ -10,7 +10,7 @@ license=(LicenseRef-Custom)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/infisical-cli/v$pkgver.tar.gz")
-sha256sums=('db5a3760d2fa4784bcead0789c04dabd12550bbb3a820cabe50c0d4e748e51b4')
+sha256sums=('b8b019e5f1ecd50f4100a3061b8f5f3bd8035286d7a9558d144111cdff06c314')
 
 _archive="$pkgname-infisical-cli-v$pkgver"
 
@@ -31,7 +31,7 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
   local ld_flags="-linkmode external -X github.com/Infisical/infisical-merge/packages/util.CLI_VERSION=$pkgver"
-  go build -v -o infisical -ldflags "$ld_flags" -buildvcs=false .
+  go build -v -buildvcs=false -ldflags "$ld_flags" -o infisical .
 
   # Completions
   ./infisical completion bash > infisical.bash
