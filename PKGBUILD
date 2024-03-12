@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=edencommon
-pkgver=2024.03.04.00
+pkgver=2024.03.11.00
 pkgrel=1
 pkgdesc="Shared library for Watchman and Eden projects"
 arch=(x86_64)
@@ -31,7 +31,7 @@ source=(
   "fmt-v10.2-compatibility.patch"
 )
 sha256sums=(
-  '9917debba591c2004e5fe5fcf8daff2eaefb80032ff4ca8c83b92e34f9fbc6ec'
+  'f5076de33abdb20feb1693b43b1fc164b09b33e0db20943042d9097228226e6d'
   '000dfb9e316e486cb047fe4c5547b716033a99bb78a9eef0e7e4d860d017a092'
   '019ae5911f839b4ff15c8508ce2824956ac5b2f0bb94182766f76863a81dbb35'
 )
