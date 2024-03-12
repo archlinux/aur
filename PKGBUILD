@@ -1,18 +1,17 @@
-# system requirements: mono-runtime 4.x or higher (including System.Datalibrary) on Linux/macOS, .Net Framework (>= 4.5.1) on MicrosoftWindows.
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rawrr
 _pkgver=1.10.2
 pkgname=r-${_pkgname,,}
-pkgver=1.10.2
-pkgrel=1
-pkgdesc='Direct Access to Orbitrap Data and Beyond'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Direct Access to Orbitrap Data and Beyond"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   mono
+  r
 )
 optdepends=(
   r-biocstyle
@@ -24,14 +23,15 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('105fc356152755d3d6ff893a25c198e7b1b94a4ee632281f47a1507df1e8cff3')
+md5sums=('42213a8a733115af719162fc1a72d6a1')
+b2sums=('b5a4b1cdc4eac1454320b9c4345c0db0c9f1bf0ca0a5dcffc44c726011f723915cffaedbf3dfbcd0bb4b4d44ae1a1528f1f5a5e7ce6cd5c4c36b849dc255a70d')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
