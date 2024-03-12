@@ -2,7 +2,7 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 pkgname=linux-steam-integration
 pkgver=0.7.3
-pkgrel=7
+pkgrel=8
 pkgdesc="Helper for enabling better Steam integration on Linux"
 url="https://github.com/getsolus/linux-steam-integration"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gtk3' 'lib32-gcc-libs' 'lib32-libvpx' 'steam')
 makedepends=('git' 'meson')
 optdepends=('steam-native-runtime: A package for installing all required deps for the native runtime.')
 provides=('liblsi-redirect.so-64' 'liblsi-intercept.so-64' 'liblsi-redirect.so-32' 'liblsi-intercept.so-32')
-_commit=93d6b89129d970b6203a7d6f6396a26bc6ce3fdb  # branch/master
+_commit=dffff457d11ecbbb3852a5f6bae813dcfadb3165  # branch/master
 source=("git+https://github.com/getsolus/linux-steam-integration.git#commit=$_commit"
         'git+https://github.com/intel/libnica.git'
         'partially-revert-2877813.patch'

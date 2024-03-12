@@ -1,7 +1,7 @@
 pkgbase = linux-steam-integration
 	pkgdesc = Helper for enabling better Steam integration on Linux
 	pkgver = 0.7.3
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/getsolus/linux-steam-integration
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -16,7 +16,7 @@ pkgbase = linux-steam-integration
 	provides = liblsi-intercept.so-64
 	provides = liblsi-redirect.so-32
 	provides = liblsi-intercept.so-32
-	source = git+https://github.com/getsolus/linux-steam-integration.git#commit=93d6b89129d970b6203a7d6f6396a26bc6ce3fdb
+	source = git+https://github.com/getsolus/linux-steam-integration.git#commit=dffff457d11ecbbb3852a5f6bae813dcfadb3165
 	source = git+https://github.com/intel/libnica.git
 	source = partially-revert-2877813.patch
 	source = use-steam-runtime.patch
