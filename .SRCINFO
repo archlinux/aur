@@ -1,17 +1,19 @@
 pkgbase = r-amountain
 	pkgdesc = Active modules for multilayer weighted gene co-expression networks: a continuous optimization approach
 	pkgver = 1.28.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/AMOUNTAIN
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
+	makedepends = gsl
+	depends = cblas
 	depends = r
-	depends = gsl
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-qgraph
 	optdepends = r-rmarkdown
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/AMOUNTAIN_1.28.0.tar.gz
-	sha256sums = c5b463ead80f06154c71df1f8107ca10382dc6b447c53463f5ffc33185ddc5b0
+	md5sums = acf007b4bceaa196843cbcf221b762ba
+	b2sums = bde62b1f56ccbca5aa920778fc92dbf8fdc650844db91bf5cfb0480b1dcb72049758c318fa3f906d07d15a537bb541ad35f48290e23da41bf6052103eb0ff246
 
 pkgname = r-amountain
