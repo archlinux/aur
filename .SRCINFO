@@ -1,7 +1,7 @@
 pkgbase = gppcscconnectionplugin
 	pkgdesc = GlobalPlatform pcsc connection plugin
 	pkgver = 1.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kaoh/globalplatform
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = gppcscconnectionplugin
 	makedepends = pkgconf
 	depends = glibc
 	depends = globalplatform
-	source = https://github.com/kaoh/globalplatform/archive/d317cc12d29fe8d38275b8c78d53a2b6a77dd07b.zip
-	md5sums = f08c4f76b5d670246570dd9e18c6709a
+	source = https://github.com/kaoh/globalplatform/archive/9d89e9fda45286fe66c7ae88a30a950bd5320da8.zip
+	md5sums = 65e27ac6d315ef1369dfd3d62792a0d0
 
 pkgname = gppcscconnectionplugin
