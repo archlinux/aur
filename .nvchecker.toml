@@ -1,0 +1,5 @@
+[python-wikitextparser]
+source = "github"
+github = "5j9/wikitextparser"
+use_max_tag = "true"
+prefix = "v"
