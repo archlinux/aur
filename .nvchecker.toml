@@ -1,0 +1,4 @@
+[python-trimesh]
+source = "github"
+github = "mikedh/trimesh"
+use_latest_release = "true"
