@@ -3,7 +3,7 @@
 _pkgname=idris2-pack
 pkgname="$_pkgname-git"
 pkgver=latest
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='An Idris2 package manager with curated package collections'
 arch=('x86_64')
@@ -19,7 +19,8 @@ sha256sums=('SKIP')
 
 prepare() {
 	cd "$srcdir/$_pkgname"
-	sed -i 's/initToml "scheme"/initToml "chez"/g' \
+	sed -i -e 's/initToml "scheme"/initToml "chez"/g' \
+		-e 's|pathExec "pack"|MkF "/usr/bin" "pack"|g' \
 		src/Pack/Config/Environment.idr
 }
 
