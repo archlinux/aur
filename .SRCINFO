@@ -1,12 +1,13 @@
 pkgbase = piper-voices-common
 	pkgdesc = Voices for Piper text to speech system (common files)
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://huggingface.co/rhasspy/piper-voices
 	install = piper-voices-common.install
 	arch = any
 	license = MIT
 	depends = piper-tts
+	depends = alsa-utils
 	optdepends = speech-dispatcher: tts support for third party apps
 	optdepends = piper-voices-minimal: single voice for en-us
 	optdepends = piper-voices: voices for all languages

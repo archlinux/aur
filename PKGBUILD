@@ -3,12 +3,12 @@
 _pkgbase="piper-voices"
 pkgname="$_pkgbase-common"
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Voices for Piper text to speech system (common files)"
 url="https://huggingface.co/rhasspy/$_pkgbase"
 license=("MIT")
 arch=("any")
-depends=("piper-tts")
+depends=("piper-tts" "alsa-utils")
 optdepends=(
  "speech-dispatcher: tts support for third party apps"
  "$_pkgbase-minimal: single voice for en-us"
