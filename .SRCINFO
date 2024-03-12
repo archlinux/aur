@@ -1,6 +1,6 @@
 pkgbase = podman-desktop
 	pkgdesc = Manage Podman and other container engines from a single UI and tray.
-	pkgver = 1.7.1
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/containers/podman-desktop
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = podman-desktop
 	makedepends = yarn
 	makedepends = node-gyp
 	makedepends = npm
-	makedepends = nodejs-lts-hydrogen
+	makedepends = nodejs-lts-iron
 	makedepends = libvips
 	makedepends = lcms2
 	makedepends = openjpeg2
@@ -18,8 +18,8 @@ pkgbase = podman-desktop
 	optdepends = crc: crc plugin
 	optdepends = lima: lima plugin
 	optdepends = docker: docker plugin
-	source = https://github.com/containers/podman-desktop/archive/refs/tags/v1.7.1.tar.gz
-	sha256sums = f7ea6fdb90a8196dbbc5c25eb59a791a29986d88f906bda9a4d002d64280f74c
+	source = https://github.com/containers/podman-desktop/archive/refs/tags/v1.8.0.tar.gz
+	sha256sums = 30035c7603cf25c70fbc1b6370e0982aa95c537e06c6d54d8da02e021351e649
 
 pkgname = podman-desktop
 	depends = c-ares

@@ -2,7 +2,7 @@
 # Contributor: Juliette Cordor 
 
 pkgname=("podman-desktop")
-pkgver=1.7.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Manage Podman and other container engines from a single UI and tray."
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ url=https://github.com/containers/podman-desktop
 license=('Apache-2.0')
 depends=()
 makedepends=(
-    'yarn' 'node-gyp' 'npm' 'nodejs-lts-hydrogen' 'libvips' 'lcms2'
+    'yarn' 'node-gyp' 'npm' 'nodejs-lts-iron' 'libvips' 'lcms2'
     'openjpeg2' 'glib2'
 )
 optdepends=(
@@ -20,7 +20,7 @@ optdepends=(
     "docker: docker plugin"
 )
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f7ea6fdb90a8196dbbc5c25eb59a791a29986d88f906bda9a4d002d64280f74c')
+sha256sums=('30035c7603cf25c70fbc1b6370e0982aa95c537e06c6d54d8da02e021351e649')
 
 build(){
     cd "${srcdir}/podman-desktop-$pkgver"
