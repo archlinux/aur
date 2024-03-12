@@ -31,9 +31,11 @@ optdepends=('python-pyqt5: Qt5 based UI')
 conflicts=('pymol')
 provides=("${_name}=${pkgver}")
 source=(${_name}::"git+https://github.com/schrodinger/pymol-open-source.git"
-		${_name}.png::"https://c.fsdn.com/allura/p/pymol/icon")
+		${_name}.png::"https://c.fsdn.com/allura/p/pymol/icon"
+        "glm_exp.patch")
 md5sums=('SKIP'
-         'a6b62ae41658a772f75b3b123a8e5c0b')
+         'a6b62ae41658a772f75b3b123a8e5c0b'
+         '26b4244b871a55a83bc6f42d761bc6f9')
 
 pkgver() {
     cd "${srcdir}/${_name}"
@@ -41,6 +43,9 @@ pkgver() {
 }
 
 prepare() {
+    # Apply patch
+    patch --directory="${_name}" --forward --strip=1 --input=../glm_exp.patch
+
 	# create desktop file
 	gendesk -f -n \
 			--pkgname "${_name}" \

@@ -26,7 +26,9 @@ pkgbase = pymol-git
 	conflicts = pymol
 	source = pymol::git+https://github.com/schrodinger/pymol-open-source.git
 	source = pymol.png::https://c.fsdn.com/allura/p/pymol/icon
+	source = glm_exp.patch
 	md5sums = SKIP
 	md5sums = a6b62ae41658a772f75b3b123a8e5c0b
+	md5sums = 26b4244b871a55a83bc6f42d761bc6f9
 
 pkgname = pymol-git
