@@ -1,7 +1,6 @@
 --- old/pom.xml
 +++ new/pom.xml
 @@ -119,6 +119,14 @@
- 
      <build>
          <plugins>
 -
