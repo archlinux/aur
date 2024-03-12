@@ -3,7 +3,7 @@
 
 _pkgname=guitarix.vst
 pkgname=$_pkgname-git
-pkgver=v0.2.r4.g2a58bea
+pkgver=v0.3.r1.g313edd9
 pkgrel=1
 pkgdesc='A versatile (guitar) amplifier VST3 plugin (git version)'
 arch=(x86_64)
@@ -15,12 +15,9 @@ depends=(
   glib2
   glibc
   glibmm
-  graphite
   libsigc++
 )
 makedepends=(
-  alsa-lib
-  avahi
   boost
   curl
   eigen
@@ -28,6 +25,7 @@ makedepends=(
   freetype2
   git
   gperf
+  graphite
   intltool
   lilv
   libsndfile
@@ -82,11 +80,6 @@ build() {
 
 package() {
   depends+=(
-    libasound.so
-    libavahi-client.so
-    libavahi-common.so
-    libavahi-glib.so
-    libavahi-gobject.so
     libcurl.so
     libfftw3f.so
     libfreetype.so
@@ -94,6 +87,7 @@ package() {
     libglib-2.0.so
     libglibmm-2.4.so
     libgobject-2.0.so
+    libgraphite2.so.3
     liblilv-0.so
     libsigc-2.0.so
     libsndfile.so
