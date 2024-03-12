@@ -1,6 +1,7 @@
-*.pkg.*
 *.crx
 src
 pkg
 *.tar.*
 history-disabler-*
+*.log
+nohup.our

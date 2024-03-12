@@ -1,7 +1,7 @@
 pkgbase = chromium-extension-history-disabler
 	pkgdesc = disables history by deleting history when responsible tabs are closed - chromium extension
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/aghorler/History-Disabler-for-Chromium
 	arch = any
 	license = APL2
