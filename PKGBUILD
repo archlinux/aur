@@ -2,7 +2,7 @@
 
 pkgname=python-mappy
 _source=minimap2
-pkgver=2.26
+pkgver=2.27
 pkgrel=1
 pkgdesc="Python interface to minimap2, a fast and accurate C program to align genomic and transcribe nucleotide sequences"
 arch=('x86_64')
@@ -18,11 +18,13 @@ makedepends=(
              'python-setuptools'
              'cython'
              'python-wheel'
+             'python-build' 
+             'python-installer'
             )
 
 options=(!emptydirs)
 source=(${_source}-${pkgver}.tar.gz::https://github.com/lh3/minimap2/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('f4c8c3459c7b87e9de6cbed7de019b48d9337c2e46b87ba81b9f72d889420b3c')
+sha256sums=('ca9ceb07e3b388858ebc2d7d91a6c74e996659402d16aa759ecedd63588b1ef7')
 
 prepare() {
     cd ${_source}-${pkgver}
@@ -31,11 +33,11 @@ prepare() {
 
 build() {
     cd ${_source}-${pkgver}
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd ${_source}-${pkgver}
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 "LICENSE.txt"  "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
 }
