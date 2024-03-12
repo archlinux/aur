@@ -1,6 +1,8 @@
 # Maintainer: Noah Vogt (noahvogt) <noah@noahvogt.com>
 # private key generated with `openssl genrsa 2048| openssl pkcs8 -topk8 -nocrypt -traditional`
 
+# binary version of this package (-bin): github.com/noahvogt/chromium-extension-copy-url-on-hover-bin-aur
+
 pkgname=chromium-extension-copy-url-on-hover
 _extension=copy-url-on-hover
 pkgver=0.8.0
