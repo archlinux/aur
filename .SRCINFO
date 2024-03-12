@@ -1,14 +1,17 @@
 pkgbase = r-svd
 	pkgdesc = Interfaces to Various State-of-Art SVD and Eigensolvers
 	pkgver = 0.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=svd
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = gcc-fortran
+	depends = blas
+	depends = lapack
 	depends = r
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/svd_0.5.5.tar.gz
-	sha256sums = e20139794ad1a8c7d7fdffb8dac068c6fbdc8f0b65929341cb5c4d2ff1f98cc6
+	md5sums = bee5e3da2a81e49b797763fa5467f895
+	b2sums = 2ad4a28b2d8c4f5d213ef97be4f877329ca1ac5cf59feff4ad88f80265b0c87f39dc431d88f9c26daddd30dac259bb673d43f20b64d07ec0efcbc51209fa3a68
 
 pkgname = r-svd
