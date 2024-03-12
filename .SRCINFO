@@ -1,7 +1,7 @@
 pkgbase = klassy
 	pkgdesc = Highly customizable binary Window Decoration, Application Style and Global Theme plugin for recent versions of the KDE Plasma desktop.
 	pkgver = 5.0.breeze5.27.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/paulmcauley/klassy
 	arch = x86_64
 	license = GPL-2.0-or-later AND (GPL-2.0-only OR GPL-3.0-only) AND MIT AND BSD-3-Clause
@@ -16,6 +16,6 @@ pkgbase = klassy
 	optdepends = kcmutils5: for klassy-settings
 	replaces = classik
 	source = klassy-5.0.breeze5.27.11.tar.gz::https://github.com/paulmcauley/klassy/archive/refs/tags/5.0.breeze5.27.11.tar.gz
-	sha256sums = e91e9a4695fa8bee0d7b53df59225f96fe1470d8afdc22a28baee5433b2fc0fc
+	sha256sums = 4b2f7ab45291919fbcc2e35ec87c9ed0944ef66a3935fd44c96575a064202282
 
 pkgname = klassy
