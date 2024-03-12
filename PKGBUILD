@@ -3,7 +3,7 @@
 
 pkgname=python-agnpy
 _pkg="${pkgname#python-}"
-pkgver=0.2.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Models Active Galactic Nuclei radiative processes"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('python-sherpa' 'python-gammapy')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 # checkdepends=('python-pytest' 'python-sherpa' 'python-gammapy')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/a/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('9e73ab7ede7c1eb54d1981a3d852fa3739e4265db3d190d08432510e644c37dd')
+sha256sums=('75ae0e2021a025c3d135a1c07b8c01964d8b708f714c2eb57860e1fbc7392509')
 
 prepare() {
 	cd "$_pkg-$pkgver"
