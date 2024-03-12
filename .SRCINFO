@@ -1,6 +1,6 @@
 pkgbase = cellframe-node
 	pkgdesc = Cellframe blockchain node with a powerful SDK
-	pkgver = 5.2.470
+	pkgver = 5.2.474
 	pkgrel = 1
 	url = https://cellframe.net
 	install = cellframe-node.install
@@ -19,10 +19,10 @@ pkgbase = cellframe-node
 	conflicts = cellframe-wallet
 	conflicts = cellframe-node-debug
 	options = !debug
-	source = git+https://gitlab.demlabs.net/cellframe/cellframe-node.git#commit=f035e1989da2ddbc158879361a2e8bcd884fd481
-	source = git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git#commit=4672eea72ef892878f422c2d1c76c268a7718a94
-	source = git+https://gitlab.demlabs.net/dap/dap-sdk.git#commit=452c9ec4ed9c066c1aa56dc06a60606b38308a7b
-	source = git+https://gitlab.demlabs.net/cellframe/python-cellframe.git#commit=884d82a05fc3a8f2774dfc6c96dcd4e287554ed1
+	source = git+https://gitlab.demlabs.net/cellframe/cellframe-node.git#commit=2f00cc4655778b9d81f17dd65df374b3bd03955a
+	source = git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git#commit=05ae607f330089de5790d12d374f2ae0f7ff2f30
+	source = git+https://gitlab.demlabs.net/dap/dap-sdk.git#commit=125d7be6ef918f9b286af9aa4ffb78217988fa96
+	source = git+https://gitlab.demlabs.net/cellframe/python-cellframe.git#commit=7c8626a4f0df5371399d111ad91e55b81faa0641
 	source = cellframe-node.logrotate
 	source = cellframe-node-logrotate.service
 	source = cellframe-node-logrotate.timer
