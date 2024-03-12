@@ -1,7 +1,7 @@
 # Maintainer: Mekyt <hello at mek dot yt>
 
 pkgname='zelus'
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Ory Kratos user interface written in Go'
 arch=('x86_64')
