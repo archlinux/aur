@@ -1,12 +1,12 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=trivia-quiz
-pkgdesc='Respond to endless questions'
-pkgver=0.1.4
+pkgver=0.2.0
 pkgrel=1
-arch=('aarch64' 'x86_64')
+pkgdesc='Respond to endless questions'
 url="https://github.com/Nokse22/trivia-quiz"
-license=('GPL3')
+license=('GPL-3.0-or-later')
+arch=('aarch64' 'x86_64')
 depends=('libadwaita' 'python')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
