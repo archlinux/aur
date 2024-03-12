@@ -6,11 +6,11 @@
 # Contributor: Ricardo Catalinas Jiménez <jimenezrick@gmail.com>
 
 pkgname=erlang-nox
-pkgver=26.2.2
+pkgver=26.2.3
 pkgrel=1
 _docver=26.1
 # https://github.com/erlang/otp/tags
-_commit=b83df13eec5446beab06dd24315d37a5b0633fd2 # OTP-26.2.2
+_commit=928d03e6da416208fce7b9a7dbbfbb4f25d26c37 # OTP-26.2.3
 arch=(x86_64)
 pkgdesc='General-purpose concurrent functional programming language (headless version)'
 url='https://erlang.org/'
@@ -51,8 +51,8 @@ build() {
     --enable-ssl=dynamic-ssl-lib \
     --prefix=/usr \
     --with-odbc
-  make DOC_TARGETS=chunks all
-  make DOC_TARGETS=chunks docs
+  DOC_TARGETS=chunks make all
+  DOC_TARGETS=chunks make docs
 }
 
 package() {
