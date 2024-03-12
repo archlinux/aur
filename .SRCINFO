@@ -1,12 +1,18 @@
 pkgbase = kube-capacity-bin
 	pkgdesc = A simple CLI that provides an overview of the resource requests, limits, and utilization in a Kubernetes cluster
-	pkgver = 0.8.0
-	pkgrel = 1
+	pkgver = v0.8.0
+	pkgrel = 0
 	url = https://github.com/robscott/kube-capacity
 	arch = x86_64
+	arch = arm64
+	arch = i386
 	license = Apache-2.0
 	options = !strip
-	source = https://github.com/robscott/kube-capacity/releases/download/v0.8.0/kube-capacity_v0.8.0_linux_x86_64.tar.gz
-	sha256sums = 610ce6e5d7f528df1c60d3b5e277d00ac43cdfd9ce4d36f0b3132bb68fc12cf3
+	source_x86_64 = https://github.com/robscott/kube-capacity/releases/download/v0.8.0/kube-capacity_v0.8.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 610ce6e5d7f528df1c60d3b5e277d00ac43cdfd9ce4d36f0b3132bb68fc12cf3
+	source_arm64 = https://github.com/robscott/kube-capacity/releases/download/v0.8.0/kube-capacity_v0.8.0_linux_arm64.tar.gz
+	sha256sums_arm64 = ef4ba0c43b57d6efc0472ce465f69a6102bdeeb16541120ea1a510a2d2f98465
+	source_i386 = https://github.com/robscott/kube-capacity/releases/download/v0.8.0/kube-capacity_v0.8.0_linux_i386.tar.gz
+	sha256sums_i386 = 22b018ce72d46fff2f00acd45080d9b9bb08aee1be3f5b67fd72607cc87494d9
 
 pkgname = kube-capacity-bin
