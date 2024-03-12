@@ -1,7 +1,7 @@
 # Maintainer: ccicnce113424 <ccicnce113424@gmail.com>
 pkgname=llin-git
 _pkgname=LLin
-pkgver=2024.304.0.r0.64259af
+pkgver=2024.312.0.r0.0011e3c
 pkgrel=1
 pkgdesc="An in-game music player and download accelerator for osu! lazer."
 arch=('x86_64')
