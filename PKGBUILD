@@ -3,24 +3,25 @@
 _pkgname=smatr
 _pkgver=3.4-8
 pkgname=r-${_pkgname,,}
-pkgver=3.4.8
-pkgrel=4
-pkgdesc='(Standardised) Major Axis Estimation and Testing Routines'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=9
+pkgdesc="(Standardised) Major Axis Estimation and Testing Routines"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3669388f4abc41fac7bf008680c2fa8eddf5dffe20f5c33522b05357cc5b1863')
+md5sums=('61b1d814b07de91043918aea12ca52c0')
+b2sums=('f8f874f057b0189b0a6ff048f7504698dc0d25ccd39542e84d68424bf1a1633333c9fe7837fa6f45bd1def67676c453ee68883c4af1528bcab2b756d8853c452')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

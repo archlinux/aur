@@ -1,12 +1,13 @@
 pkgbase = r-smatr
 	pkgdesc = (Standardised) Major Axis Estimation and Testing Routines
 	pkgver = 3.4.8
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=smatr
 	arch = any
-	license = GPL
+	license = GPL-2.0-only
 	depends = r
 	source = https://cran.r-project.org/src/contrib/smatr_3.4-8.tar.gz
-	sha256sums = 3669388f4abc41fac7bf008680c2fa8eddf5dffe20f5c33522b05357cc5b1863
+	md5sums = 61b1d814b07de91043918aea12ca52c0
+	b2sums = f8f874f057b0189b0a6ff048f7504698dc0d25ccd39542e84d68424bf1a1633333c9fe7837fa6f45bd1def67676c453ee68883c4af1528bcab2b756d8853c452
 
 pkgname = r-smatr
