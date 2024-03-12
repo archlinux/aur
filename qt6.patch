@@ -1,0 +1,24 @@
+diff --git a/tortoisehg/hgqt/commit.py b/tortoisehg/hgqt/commit.py
+--- a/tortoisehg/hgqt/commit.py
++++ b/tortoisehg/hgqt/commit.py
+@@ -504,7 +504,7 @@ class CommitWidget(QWidget, qtlib.TaskWi
+         committb.setPopupMode(QToolButton.ToolButtonPopupMode.MenuButtonPopup)
+         fmk = lambda s: committb.fontMetrics().horizontalAdvance(hglib.tounicode(s[2]))
+         committb._width = (max(pycompat.maplist(fmk, acts))
+-                           + 4*committb.menuButtonWidth())
++                           + committb.width())
+ 
+         class CommitButtonMenu(QMenu):
+             def __init__(self, parent, repo):
+diff --git a/tortoisehg/hgqt/qtlib.py b/tortoisehg/hgqt/qtlib.py
+--- a/tortoisehg/hgqt/qtlib.py
++++ b/tortoisehg/hgqt/qtlib.py
+@@ -939,6 +939,8 @@ class CustomPrompt(QMessageBox):
+                 self.setEscapeButton(btn)
+ 
+     def run(self) -> int:
++        if QT_API == "PyQt6":
++           return self.exec() - 1
+         return self.exec()
+ 
+     def keyPressEvent(self, event: QKeyEvent) -> None:
