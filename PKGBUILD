@@ -9,6 +9,7 @@ license=('GPL')
 depends=('xorg-server' 'systemd' 'awk' 'grep' 'sed')
 source=("$pkgname-$pkgver.tar.gz"::"$url/archive/v$pkgver.tar.gz")
 sha256sums=('336259b5e7b8637bdd81dfe06cac982326b15f015feb21ad5d0da6247790f44a')
+install=ddh.install
 
 package() {
     cd "$srcdir/DynamicDisplayHandler-$pkgver"
@@ -18,18 +19,3 @@ package() {
     install -Dm755 uninstall.sh "$pkgdir/usr/local/bin/uninstall-ddh.sh"
 }
 
-post_install() {
-    chmod +x /usr/local/bin/install-ddh.sh
-    /usr/local/bin/install-ddh.sh
-    rm /usr/local/bin/install-ddh.sh
-
-    systemctl daemon-reload
-    systemctl enable ddh
-    systemctl start ddh
-}
-
-post_remove() {
-    chmod +x /usr/local/bin/uninstall-ddh.sh
-    /usr/local/bin/uninstall-ddh.sh    
-    rm /usr/local/bin/uninstall-ddh.sh
-}
