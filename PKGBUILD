@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/necodeIT/lb_planner'
 license=('CC-NC-SA 4.0')
 depends=('gtk3' 'xz' 'xdg-user-dirs') #TODO: check if xz is actually needed or just a precaution by the flutter devs
-makedepends=('cmake' 'clang' 'ninja' 'fvm' 'pkgconf' 'gtk3' 'xz') #TODO: contact maintainer of fvm-bin to add provides=('fvm')
+makedepends=('cmake' 'clang' 'ninja' 'fvm' 'pkgconf' 'gtk3' 'xz')
 source=(
 	"$pkgname::git+https://github.com/necodeIT/lb_planner.git#branch=app"
 	"lb-planner.desktop"
