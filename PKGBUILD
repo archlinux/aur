@@ -5,12 +5,12 @@
 
 pkgname=io
 pkgver=2017.09.06
-pkgrel=9
+pkgrel=10
 pkgdesc='IO programming language'
 arch=(x86_64)
 url='https://iolanguage.org/'
 license=(BSD)
-depends=(freeglut freetype2 libedit libevent libjpeg-turbo libpng libsndfile libtheora libtiff libxml2 libxmu lzo mariadb-libs pcre python sqlite util-linux yajl)
+depends=(freeglut freetype2 libedit libevent libjpeg-turbo libpng libsndfile libtheora libtiff libxml2 libxmu lzo mariadb-libs pcre2 python sqlite util-linux yajl)
 makedepends=(cmake git)
 options=(!makeflags)
 source=("git+https://github.com/stevedekorte/io#commit=b8a18fc199758ed09cd2f199a9bc821f6821072a" # tag: 2017.09.06
@@ -21,7 +21,7 @@ b2sums=('SKIP'
 prepare() {
   cd $pkgname/libs/iovm/source
   sed -ri "s,20[0-9]+,$pkgver," IoVersion.h
-  sed -i 's,sys/sysctl.h,linux/sysctl.h,g' IoSystem.c
+  sed -i 's,sys/sys,linux/sys,' IoSystem.c
 }
 
 build() {
@@ -46,7 +46,7 @@ package() {
   # Use the statically linked executable instead.
   mv -f "$pkgdir/usr/bin/io_static" "$pkgdir/usr/bin/io"
 
-  # In the next version of io, it's just $pkgname/LICENSE.txt
+  # In the next release of io, it will just be "$pkgname/LICENSE.txt"
   install -Dm644 $pkgname/license/bsd_license.txt \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
