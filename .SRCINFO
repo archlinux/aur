@@ -1,6 +1,6 @@
 pkgbase = papis-git
 	pkgdesc = Command-line document and bibliography manager
-	pkgver = 0.13.r353.geef210ac
+	pkgver = 0.13.r363.gd24ab05e
 	pkgrel = 1
 	url = https://github.com/papis/papis
 	arch = any
@@ -54,6 +54,7 @@ pkgbase = papis-git
 	optdepends = pdfjs: pdf reader in the web app
 	optdepends = python-jinja: jinja formatting
 	optdepends = python-papis-scihub: imports from scihub
+	optdepends = python-markdownify: convert zenodo imports to markdown
 	optdepends = python-whoosh: whoosh database backend
 	provides = papis
 	conflicts = papis
