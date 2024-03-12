@@ -1,14 +1,15 @@
 pkgbase = jive
 	pkgdesc = A standalone JAVA application designed to browse and edit the static TANGO database
 	pkgver = 7.41
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/tango-controls/Jive
 	arch = any
-	license = GPL3
-	makedepends = jre17-openjdk
+	license = GPL-3.0-or-later
 	makedepends = maven
-	depends = jre17-openjdk
+	makedepends = jre17-openjdk
+	depends = java-runtime=17
 	depends = sh
+	depends = hicolor-icon-theme
 	source = https://gitlab.com/tango-controls/jive/-/archive/7.41/jive-7.41.tar.gz
 	source = launcher
 	source = jive.desktop

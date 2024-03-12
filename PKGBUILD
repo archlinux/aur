@@ -4,13 +4,13 @@ _name="Jive"
 pkgname=${_name,,}
 pkgver=7.41
 _jarfile="${_name}-${pkgver}-jar-with-dependencies.jar"
-pkgrel=1
+pkgrel=2
 pkgdesc="A standalone JAVA application designed to browse and edit the static TANGO database"
 arch=("any")
 url="https://gitlab.com/tango-controls/${_name}"
-license=("GPL3")
-depends=(jre17-openjdk sh)
-makedepends=(jre17-openjdk maven)
+license=("GPL-3.0-or-later")
+depends=(java-runtime=17 sh hicolor-icon-theme)
+makedepends=(maven jre17-openjdk)
 source=(
   https://gitlab.com/tango-controls/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz
   launcher
@@ -36,7 +36,7 @@ build() {
 
 package() {
   install -D -m755 ${srcdir}/${pkgname}-${pkgver}/target/${_jarfile} ${pkgdir}/usr/share/java/${pkgname}/${_jarfile}
-  install -D -m755 ${srcdir}/jive.desktop ${pkgdir}/usr/share/applications/jive.desktop
   install -D -m755 ${srcdir}/launcher ${pkgdir}/usr/bin/${pkgname}
+  install -D -m755 ${srcdir}/jive.desktop ${pkgdir}/usr/share/applications/jive.desktop
   install -D -m755 ${srcdir}/${pkgname}-${pkgver}/src/main/resources/jive/jive.png ${pkgdir}/usr/share/icons/hicolor/48x48/apps/jive.png
 }
