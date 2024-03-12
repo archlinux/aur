@@ -50,15 +50,26 @@ optdepends=(
     'python-whoosh: whoosh database backend'
 )
 checkdepends=(
+    # For pytest
+    python-pytest
+    python-pytest-cov
+    # These are optional -- if they're not installed, papis will automatically
+    # skip these tests -- and are only necessary if you intend to use the
+    # optdeps as well
+    python-jinja
+    python-markdownify
+    python-whoosh
+
+    # For flake8
     flake8
-    mypy
     python-flake8-bugbear
     python-flake8-polyfill
     python-flake8-quotes
     python-pep8-naming
     python-pylint
-    python-pytest
-    python-pytest-cov
+
+    # For mypy
+    mypy
     python-pytest-mypy
     python-types-beautifulsoup4
     python-types-pyaml
