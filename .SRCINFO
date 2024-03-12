@@ -1,6 +1,6 @@
 pkgbase = r-seqsetvis
 	pkgdesc = Set Based Visualizations for Next-Gen Sequencing Data
-	pkgver = 1.22.0
+	pkgver = 1.22.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/seqsetvis
 	arch = any
@@ -33,7 +33,7 @@ pkgbase = r-seqsetvis
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/seqsetvis_1.22.0.tar.gz
-	sha256sums = a33b3a4f0a4ec7e0c3cba5d9148a7feb5125cc103320464546c293eec8a41dec
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/seqsetvis_1.22.1.tar.gz
+	sha256sums = b4a2692c890e6419d0a896eebeb5c4c7d90b9cc44f8b4500c7e1ebfaf7457351
 
 pkgname = r-seqsetvis
