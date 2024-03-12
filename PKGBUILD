@@ -18,6 +18,7 @@ makedepends=("cmake" "doxygen")
 checkdepends=("catch2")
 conflicts=("cli11")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+options=("!strip")
 sha512sums=("965290d09977672d3bc3c57ca4b89a88c2c09461da6e866b18217d702d4d5a0977588fcb8fef1a3c3804e61ad80d276029f47469cc83dbfdc7021ee35f6b7269")
 
 _compile()
