@@ -1,18 +1,19 @@
 pkgbase = faustfilters
 	pkgdesc = A collection of virtual-analog filter plugins
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/SpotlightKid/faustfilters
-	arch = i686
 	arch = x86_64
 	groups = pro-audio
+	groups = clap-plugins
 	groups = ladspa-plugins
 	groups = lv2-plugins
 	groups = vst-plugins
+	groups = vst3-plugins
 	license = MIT
+	depends = glibc
 	depends = gcc-libs
-	source = https://github.com/SpotlightKid/faustfilters/releases/download/v0.3.0/faustfilters-0.3.0-source.tar.gz
-	md5sums = 008fc0b7913427d2c8dbbb4bf072af23
+	source = https://github.com/SpotlightKid/faustfilters/releases/download/v0.4.0/faustfilters-0.4.0-source.tar.gz
+	sha256sums = 8dd653ec49a0c47de147236ca469578eb7002156b1633eef981104ad6a6eefd3
 
 pkgname = faustfilters
-
