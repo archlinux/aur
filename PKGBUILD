@@ -2,7 +2,7 @@
 # Maintainer: pikl <me@pikl.uk>
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
-pkgrel=1
+pkgrel=2
 pkgver=1.98.2
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
@@ -12,7 +12,7 @@ arch=(x86_64)
 makedepends=('npm' 'jq' 'python-poetry' 'ts-node')
 # combination of server/CLI deps, see split package functions
 # for individual deps and commentary
-depends=('redis' 'postgresql' 'nodejs' 'nginx'
+depends=('redis' 'postgresql' 'nodejs'
     'pgvecto.rs=0.2.0' 'zlib' 'glib2' 'expat' 'librsvg' 'libexif'
     'libwebp' 'orc' 'libjpeg-turbo' 'libgsf' 'libpng'
     'libjxl' 'libheif' 'lcms2' 'mimalloc' 'openjpeg2'
@@ -24,6 +24,9 @@ depends=('redis' 'postgresql' 'nodejs' 'nginx'
     'perl-test-needs' 'perl-test2-suite' 'perl-sort-versions'
     'perl-path-tiny' 'perl-try-tiny' 'perl-term-table'
     'perl-uri' 'perl-mojolicious' 'perl-file-slurper'
+)
+optdepends=(
+    'nginx: reverse proxy'
 )
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgbase}-server.service"
