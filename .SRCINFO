@@ -1,6 +1,6 @@
 pkgbase = sevi-icon-theme-full
 	pkgdesc = A colorful design icon theme based on Reversal - All versions
-	pkgver = r194.959a351
+	pkgver = r255.0e0a590
 	pkgrel = 1
 	url = https://github.com/TaylanTatli/Sevi
 	arch = any
