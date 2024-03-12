@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=drawio-textconv
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Git textconv helper to extract draw.io diagram sources (mxfiles) from .drawio.svg files'
 arch=('any')
@@ -14,6 +14,7 @@ depends=(
   'libxslt'
   'ruby'
 )
+makedepends=('python-myst-parser' 'python-sphinx')
 options=('!strip')
 
 source=(
@@ -21,7 +22,7 @@ source=(
 )
 
 sha512sums=(
-  'a8ce1f4e4eebc4d43e5a2a4b348b4da976cfcf9b15149c645ad048c41c465156c626615bfb51a6542720a6151d2c8623ff3ecd956f44c70e1a594035bf286d25'
+  'f7e80492f240933c36cadd452777f509010c5794cf6c8610d10cc0b9df51707337746b848419b5ddcc09b8a066427ecccec4a25bcf44e97e827b2e71246702e1'
 )
 
 prepare() {
@@ -36,6 +37,12 @@ prepare() {
   printf > 'binstub' \
     '#!/bin/bash\nexec "/usr/lib/%s/bin/$(basename "${0}")" "$@"\n' \
     "${pkgname}"
+}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  echo >&2 'Generating man page'
+  sphinx-build -aqEW -b man doc/sphinx build/man
 }
 
 package() {
@@ -54,7 +61,11 @@ package() {
       'install -D -m 755 -T "${1}" "${2}/$(basename "${3}")"' \
       _ 'binstub' "${pkgdir}/usr/bin" '{}' ';'
 
-  echo >&2 'Packaging documentation'
+  echo >&2 'Packaging README.md'
   install -D -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
     'README.md'
+
+  echo >&2 'Packaging the man page'
+  install -D -m 644 -t "${pkgdir}/usr/share/man/man1" \
+    build/man/*.1
 }

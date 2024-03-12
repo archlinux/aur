@@ -1,17 +1,19 @@
 pkgbase = drawio-textconv
 	pkgdesc = Git textconv helper to extract draw.io diagram sources (mxfiles) from .drawio.svg files
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/claui/drawio-textconv
 	arch = any
 	license = Apache-2.0
+	makedepends = python-myst-parser
+	makedepends = python-sphinx
 	depends = bash
 	depends = coreutils
 	depends = libxml2
 	depends = libxslt
 	depends = ruby
 	options = !strip
-	source = drawio-textconv-0.1.0.tar.gz::https://github.com/claui/drawio-textconv/archive/v0.1.0.tar.gz
-	sha512sums = a8ce1f4e4eebc4d43e5a2a4b348b4da976cfcf9b15149c645ad048c41c465156c626615bfb51a6542720a6151d2c8623ff3ecd956f44c70e1a594035bf286d25
+	source = drawio-textconv-0.1.1.tar.gz::https://github.com/claui/drawio-textconv/archive/v0.1.1.tar.gz
+	sha512sums = f7e80492f240933c36cadd452777f509010c5794cf6c8610d10cc0b9df51707337746b848419b5ddcc09b8a066427ecccec4a25bcf44e97e827b2e71246702e1
 
 pkgname = drawio-textconv
