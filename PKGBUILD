@@ -9,19 +9,36 @@
 # Contributor: a32633 <brunofernandes@ua.pt>
 
 pkgname='omnetpp'
-pkgver=6.0.1
+pkgver=6.0.3
 pkgrel=1
 pkgdesc='Component-based simulation package designed for modeling communication networks'
+arch=('x86_64')
 url='http://www.omnetpp.org'
 license=('Academic Public License')
-depends=(libxml2 qt5-base tcl jdk-openjdk openmpi libpcap doxygen graphviz clang openscenegraph python-scipy python-pandas python-posix_ipc)
-makedepends=(sh wget cmake bison flex perl python-scipy python-pandas python-posix_ipc)
-arch=('i686' 'x86_64')
+depends=('libxml2'
+         'qt5-base'
+         'tcl'
+         'jdk-openjdk'
+         'openmpi'
+         'libpcap'
+         'doxygen'
+         'graphviz'
+         'openscenegraph'
+         'python-scipy'
+         'python-pandas'
+         'python-posix_ipc')
+makedepends=('wget'
+             'cmake'
+             'clang>=17.0.6'
+             'llvm>=17.0.6'
+             'llvm-libs>=17.0.6'
+             'bison'
+             'flex'
+             'perl')
 optdepends=(
 			'python-numpy: analysing simulation recordings'
 			'python-matplotlib: analysing simulation recordings'
 			'python-pandas: analysing simulation recordings'
-			'python-posix_ipc: analysing simulation recordings'
 			'osgearth: geospatial API with 3D rendering')
 provides=('omnetpp')
 conflicts=('omnetpp')
@@ -32,7 +49,7 @@ source=(
   OMNeT++.desktop
   omnetpp.sh)
 
-sha512sums=('fa9c787c6ecd14b9ea3063ff2f6a73ffda6cfbc94161c90c487bae38e0f3c63ffdeef98d57b5b9f8353b5b94daa83781a0866849d6b4ba9d82b4af7538fc17ba'
+sha512sums=('93cd5068aac8e5579728b304cdd5b593ae8e1a6ee108d80abb394dfb70ecc0c3d2255816f3620a7a80cf1846f031218ddec0d5b66805d1dcd52ba9759cccf281'
   '064bb4747e9985dab8480de69978e2258111a38a7d49bb24c36f1ac070058bb2149bb4d2b2fd15d5a35f0ce02bf47e1d212a74397afd07a40a68b5eab7decfd1'
   'facb711a01c41665c7909f82b4cee65ddee232e0c526f754ce1ab148dbc6c65abb9b24255f985be245fb2c33f91623365eac730ef83cb1a7c595a09726856fa1')
 
@@ -45,7 +62,7 @@ build() {
 	./configure --prefix=/opt --libdir=/opt/lib --libexecdir=/opt/lib
 	PATH=${srcdir}/${pkgname}-${pkgver}/bin:$PATH
 	LD_LIBRARY_PATH=${srcdir}/${pkgname}-${pkgver}/lib:$LD_LIBRARY_PATH
-	make -j${nproc}
+	make -j2
 }
 
 package() {
