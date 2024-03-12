@@ -45,7 +45,7 @@ optdepends=('python-argcomplete: optional CLI completion'
             'python-pyperclip: clipboard manipulations')
 _archive="$_pkgname-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('df36f677ca359356c2113956597016455d3328035f72759efda8778c776ff553')
+sha256sums=('13c8cadbb925384816497e1a1571b890bd30a1feba64b39a3bccf294f7e165e0')
 
 build() {
 	cd "$_archive"
