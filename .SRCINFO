@@ -1,0 +1,18 @@
+pkgbase = rebos-git
+	pkgdesc = NixOS-like repeatability for any Linux distro.
+	pkgver = r81.0aec63e
+	pkgrel = 1
+	url = https://gitlab.com/Oglo12/rebos
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL-3.0-or-later
+	makedepends = rust
+	makedepends = cargo
+	optdepends = flatpak
+	optdepends = cargo
+	source = rebos-git::git+https://gitlab.com/Oglo12/rebos
+	sha256sums = SKIP
+
+pkgname = rebos-git
