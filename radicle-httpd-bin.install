@@ -3,3 +3,9 @@ post_install() {
 	echo "    Enable the radicle http daemon with \`systemctl --user enable --now radicle-httpd.service\`"
 	echo
 }
+
+post_upgrade() {
+	echo
+	echo "    Restart the radicle http daemon with \`systemctl --user restart radicle-httpd.service\` to update"
+	echo
+}
