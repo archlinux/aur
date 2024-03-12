@@ -45,9 +45,9 @@ check() {
   export CLIENT_JAR="$srcdir"/patr-java-profiler-client.jar
 
   echo 'start test'
-  ./patr-java-profiler-start.sh --no-server --no-client --no-defaults -cp "patr-java-profiler-test.jar" de.hechler.patrick.profiler.test.PHPTestMain
+  sh ./patr-java-profiler-start.sh --no-server --no-client --no-defaults -cp "patr-java-profiler-test.jar" de.hechler.patrick.profiler.test.PHPTestMain | true
   echo 'validate test'
-  ./patr-java-profiler-start.sh --only-client --validate patr-java-profiler-output.data
+  sh ./patr-java-profiler-start.sh --only-client --validate patr-java-profiler-output.data
   echo 'finished test'
 }
 
