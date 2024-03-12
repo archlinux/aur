@@ -1,14 +1,14 @@
 pkgbase = slweb
 	pkgdesc = Simple static website generator
-	pkgver = 0.9.4
-	pkgrel = 2
+	pkgver = 0.9.5
+	pkgrel = 1
 	url = https://strahinja.srht.site/slweb
 	arch = x86_64
 	license = GPL3
 	optdepends = katex: For math mode
 	optdepends = git: For {git-log}
 	optdepends = imagemagick: For img tag attributes
-	source = slweb-0.9.4.tar.gz::https://git.sr.ht/~strahinja/slweb/archive/v0.9.4.tar.gz
-	md5sums = 911e6746a510c528c18af38245ac04ec
+	source = slweb-0.9.5.tar.gz::https://git.sr.ht/~strahinja/slweb/archive/v0.9.5.tar.gz
+	md5sums = 5cd6182801c007c3b1b012d048aa4974
 
 pkgname = slweb
