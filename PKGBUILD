@@ -5,7 +5,7 @@
 # Contributor: Maximilian Kindshofer <maximilian@kindshofer.net>
 
 _pkgbase=kitty
-_pkgver=0.32.1
+_pkgver=0.33.0
 _patchver=1
 _patchname=shade-transparency
 _suffix="${_patchname}-patch"
@@ -21,13 +21,13 @@ license=('GPL3')
 depends=('python3' 'freetype2'  'fontconfig' 'wayland' 'libx11'
          'libxkbcommon-x11' 'libxi' 'hicolor-icon-theme' 'libgl' 'dbus' 'lcms2'
          'librsync' 'xxhash')
-makedepends=('libxinerama' 'libxcursor' 'libxrandr' 'wayland-protocols' 'go')
+makedepends=('libxinerama' 'libxcursor' 'libxrandr' 'wayland-protocols' 'go' 'simde')
 source=("${_pkgbase}-${_pkgver}.tar.xz::https://github.com/kovidgoyal/${_pkgbase}/releases/download/v${_pkgver}/${_pkgbase}-${_pkgver}.tar.xz"
         "${_pkgbase}-${_pkgver}.tar.xz.sig::https://github.com/kovidgoyal/${_pkgbase}/releases/download/v${_pkgver}/${_pkgbase}-${_pkgver}.tar.xz.sig"
         "${_patchname}.patch")
-sha512sums=('4be50093b2da7a6536548f8bf36ea86ab47238a1f346e10d4384a90d2d0d0e02f8d98dc6a463ffa7c7a93268202b5a4109f28e2b7ece1d9593f590691e5e1af8'
+sha512sums=('5dad29e7ff0f83dd14138fd32ee3d556214251a5617ef9bd0c8a8b4032e26cf8973752d0b4221e06afd745ae4a12967fc1194f3d053b0e8451cb7ca97360fa35'
             'SKIP'
-            '57fa7f4cd204dcbd6f0c91c0cd728d9a88c6f0bdeaef151e1b6392d5d6330af2ecf2a03a65cc6e58b3bd368bd88a1c0b5ddcad0445d165084f09cbe5a27b5295')
+            'cfdc8251c45ca1e6bd55ac436d26b54cf06ff07d70a445b0a52fc9a8bb2301a56801e9dab7ad18e34bed2f6c4be08428249dec5e14deefd4e44aa4ef2bc3beb6')
 validpgpkeys=('3CE1780F78DD88DF45194FD706BC317B515ACE7C')  # Kovid Goyal
 
 prepare() {

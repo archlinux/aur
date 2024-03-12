@@ -1,17 +1,20 @@
 diff --git a/kitty/boss.py b/kitty/boss.py
-index 010468437..d57e8e606 100644
+index 1d48266f2..ba8382a57 100644
 --- a/kitty/boss.py
 +++ b/kitty/boss.py
-@@ -2526,7 +2526,7 @@ def patch_colors(self, spec: Dict[str, Optional[int]], configured: bool = False)
+@@ -2507,20 +2507,21 @@ def patch_colors(self, spec: Dict[str, Optional[int]], configured: bool = False)
+             if t is not None:
+                 t.relayout_borders()
+             set_os_window_chrome(tm.os_window_id)
          patch_global_colors(spec, configured)
-
+ 
      def apply_new_options(self, opts: Options) -> None:
 -        from .fonts.box_drawing import set_scale
 +        from .fonts.box_drawing import set_scale, set_shade_transparency
          # Update options storage
          set_options(opts, is_wayland(), self.args.debug_rendering, self.args.debug_font_fallback)
          apply_options_update()
-@@ -2534,6 +2534,7 @@ def apply_new_options(self, opts: Options) -> None:
+         set_layout_options(opts)
          set_default_env(opts.env.copy())
          # Update font data
          set_scale(opts.box_drawing_scale)
@@ -19,22 +22,30 @@ index 010468437..d57e8e606 100644
          from .fonts.render import set_font_family
          set_font_family(opts, debug_font_matching=self.args.debug_font_fallback)
          for os_window_id, tm in self.os_window_map.items():
+             if tm is not None:
+                 os_window_font_size(os_window_id, opts.font_size, True)
+                 tm.resize()
 diff --git a/kitty/fonts/box_drawing.py b/kitty/fonts/box_drawing.py
-index 5d760ca8c..dfdcc7f9c 100644
+index 06be38e56..88221596c 100644
 --- a/kitty/fonts/box_drawing.py
 +++ b/kitty/fonts/box_drawing.py
-@@ -13,6 +13,7 @@
- from typing import Any, Callable, Dict, Iterable, Iterator, List, MutableSequence, Optional, Sequence, Tuple
-
+@@ -10,21 +10,27 @@
+ from functools import lru_cache, wraps
+ from functools import partial as p
+ from itertools import repeat
+ from typing import Any, Callable, Dict, Iterable, Iterator, List, Literal, MutableSequence, Optional, Sequence, Tuple
+ 
  scale = (0.001, 1., 1.5, 2.)
 +shade_transparency = True
  _dpi = 96.0
  BufType = MutableSequence[int]
-
-@@ -22,6 +23,11 @@ def set_scale(new_scale: Sequence[float]) -> None:
+ 
+ 
+ def set_scale(new_scale: Sequence[float]) -> None:
+     global scale
      scale = (new_scale[0], new_scale[1], new_scale[2], new_scale[3])
-
-
+ 
+ 
 +def set_shade_transparency(new_value: bool) -> None:
 +    global shade_transparency
 +    shade_transparency = new_value
@@ -43,29 +54,50 @@ index 5d760ca8c..dfdcc7f9c 100644
  def thickness(level: int = 1, horizontal: bool = True) -> int:
      pts = scale[level]
      return int(math.ceil(pts * (_dpi / 72.0)))
-@@ -614,6 +620,17 @@ def inner_corner(buf: BufType, width: int, height: int, which: str = 'tl', level
-
-
- def shade(buf: BufType, width: int, height: int, light: bool = False, invert: bool = False) -> None:
-+    if shade_transparency:
-+        opacity = 128
-+        if light:
-+            opacity -= 64
-+        if invert:
-+            opacity = 255 - opacity
+ 
+ 
+ def draw_hline(buf: BufType, width: int, x1: int, x2: int, y: int, level: int) -> None:
+@@ -665,22 +671,30 @@ def shade(
+         rows = range(number_of_rows//2, number_of_rows)
+     elif which_half == 'left':
+         cols = range(number_of_cols // 2)
+     elif which_half == 'right':
+         cols = range(number_of_cols // 2, number_of_cols)
+ 
++    trans = xnum == 12 and ynum == 0 and shade_transparency
++    opacity = 128
++    if light:
++        opacity -= 64
++    if invert:
++        opacity = 255 - opacity
 +
-+        for i in range(len(buf)):
-+            buf[i] = opacity
-+        return
+     for r in rows:
+         for c in cols:
+-            if invert ^ ((r % 2 != c % 2) or (light and r % 2 == 1)):
++            if not trans and (invert ^ ((r % 2 != c % 2) or (light and r % 2 == 1))):
+                 continue
+             for yr in range(square_height):
+                 y = r * square_height + yr
+                 offset = width * y
+                 for xc in range(square_width):
+                     x = c * square_width + xc
+-                    buf[offset + x] = 255
++                    buf[offset + x] = opacity if trans else 255
 +
-     square_sz = max(1, width // 12)
-     number_of_rows = height // square_sz
-     number_of_cols = width // square_sz
+     if not fill_blank:
+         return
+     if which_half == 'bottom':
+         rows = range(height//2)
+         cols = range(width)
+     elif which_half == 'top':
 diff --git a/kitty/main.py b/kitty/main.py
-index b8f2f60d2..a097b25f8 100644
+index aa65064bf..504a30a12 100644
 --- a/kitty/main.py
 +++ b/kitty/main.py
-@@ -43,7 +43,7 @@
+@@ -40,13 +40,13 @@
+     load_png_data,
+     mask_kitty_signals_process_wide,
+     set_custom_cursor,
      set_default_window_icon,
      set_options,
  )
@@ -74,22 +106,34 @@ index b8f2f60d2..a097b25f8 100644
  from .fonts.render import set_font_family
  from .options.types import Options
  from .options.utils import DELETE_ENV_VAR
-@@ -287,6 +287,7 @@ def __init__(self) -> None:
-
+ from .os_window_size import initial_window_size_func
+ from .session import create_sessions, get_os_window_sizing_data
+ from .shaders import CompileError, load_shader_programs
+@@ -287,12 +287,13 @@ def __init__(self) -> None:
+         self.cached_values_name = 'main'
+         self.first_window_callback = lambda window_handle: None
+         self.initial_window_size_func = initial_window_size_func
+ 
      def __call__(self, opts: Options, args: CLIOptions, bad_lines: Sequence[BadLine] = ()) -> None:
          set_scale(opts.box_drawing_scale)
 +        set_shade_transparency(opts.shade_transparency)
          set_options(opts, is_wayland(), args.debug_rendering, args.debug_font_fallback)
          try:
              set_font_family(opts, debug_font_matching=args.debug_font_fallback)
+             _run_app(opts, args, bad_lines)
+         finally:
+             set_options(None)
 diff --git a/kitty/options/definition.py b/kitty/options/definition.py
-index 1594a6060..56cb6bc65 100644
+index 26f0daed1..337118eba 100644
 --- a/kitty/options/definition.py
 +++ b/kitty/options/definition.py
-@@ -236,6 +236,13 @@
+@@ -233,12 +233,19 @@
+ :code:`(thin|thick)-(sparse|dense)`. Thin and thick control the thickness of the
+ undercurl. Sparse and dense control how often the curl oscillates. With sparse
+ the curl will peak once per character, with dense twice.
  '''
      )
-
+ 
 +opt('shade_transparency', 'yes',
 +    option_type='to_bool',
 +    long_text='''
@@ -100,25 +144,37 @@ index 1594a6060..56cb6bc65 100644
  opt('text_composition_strategy', 'platform',
      ctype='!text_composition_strategy',
      long_text='''
+ Control how kitty composites text glyphs onto the background color. The default
+ value of :code:`platform` tries for text rendering as close to "native" for
+ the platform kitty is running on as possible.
 diff --git a/kitty/options/parse.py b/kitty/options/parse.py
-index 752680382..c4d41cbc4 100644
+index 19515b32b..05c8f4613 100644
 --- a/kitty/options/parse.py
 +++ b/kitty/options/parse.py
-@@ -1190,6 +1190,9 @@ def selection_background(self, val: str, ans: typing.Dict[str, typing.Any]) -> N
+@@ -1190,12 +1190,15 @@ def select_by_word_characters_forward(self, val: str, ans: typing.Dict[str, typi
+     def selection_background(self, val: str, ans: typing.Dict[str, typing.Any]) -> None:
+         ans['selection_background'] = to_color_or_none(val)
+ 
      def selection_foreground(self, val: str, ans: typing.Dict[str, typing.Any]) -> None:
          ans['selection_foreground'] = to_color_or_none(val)
-
+ 
 +    def shade_transparency(self, val: str, ans: typing.Dict[str, typing.Any]) -> None:
 +        ans['shade_transparency'] = to_bool(val)
 +
      def shell(self, val: str, ans: typing.Dict[str, typing.Any]) -> None:
          ans['shell'] = str(val)
-
+ 
+     def shell_integration(self, val: str, ans: typing.Dict[str, typing.Any]) -> None:
+         ans['shell_integration'] = shell_integration(val)
+ 
 diff --git a/kitty/options/types.py b/kitty/options/types.py
-index 6af13d6a1..37d82b8d2 100644
+index 1f48fed4a..1d9571994 100644
 --- a/kitty/options/types.py
 +++ b/kitty/options/types.py
-@@ -404,6 +404,7 @@
+@@ -405,12 +405,13 @@
+  'scrollback_pager',
+  'scrollback_pager_history_size',
+  'select_by_word_characters',
   'select_by_word_characters_forward',
   'selection_background',
   'selection_foreground',
@@ -126,7 +182,13 @@ index 6af13d6a1..37d82b8d2 100644
   'shell',
   'shell_integration',
   'show_hyperlink_targets',
-@@ -562,6 +563,7 @@ class Options:
+  'single_window_margin_width',
+  'single_window_padding_width',
+  'startup_session',
+@@ -564,12 +565,13 @@ class Options:
+     scrollback_pager: typing.List[str] = ['less', '--chop-long-lines', '--RAW-CONTROL-CHARS', '+INPUT_LINE_NUMBER']
+     scrollback_pager_history_size: int = 0
+     select_by_word_characters: str = '@-./_~?&=%+#'
      select_by_word_characters_forward: str = ''
      selection_background: typing.Optional[kitty.fast_data_types.Color] = Color(255, 250, 205)
      selection_foreground: typing.Optional[kitty.fast_data_types.Color] = Color(0, 0, 0)
@@ -134,3 +196,6 @@ index 6af13d6a1..37d82b8d2 100644
      shell: str = '.'
      shell_integration: typing.FrozenSet[str] = frozenset({'enabled'})
      show_hyperlink_targets: bool = False
+     single_window_margin_width: FloatEdges = FloatEdges(left=-1.0, top=-1.0, right=-1.0, bottom=-1.0)
+     single_window_padding_width: FloatEdges = FloatEdges(left=-1.0, top=-1.0, right=-1.0, bottom=-1.0)
+     startup_session: typing.Optional[str] = None
