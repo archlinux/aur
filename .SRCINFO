@@ -1,7 +1,7 @@
 pkgbase = tonelib-gfx-bin
 	pkgdesc = ToneLib GFX – the perfect custom tone with a complete guitar studio in your computer!
 	pkgver = 4.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tonelib.net/gfx-overview/
 	arch = x86_64
 	license = custom

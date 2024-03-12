@@ -2,7 +2,7 @@
 
 pkgname='tonelib-gfx-bin'
 pkgver=4.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ToneLib GFX – the perfect custom tone with a complete guitar studio in your computer!"
 arch=('x86_64')
 license=('custom')
