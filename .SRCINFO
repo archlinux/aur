@@ -1,7 +1,7 @@
 pkgbase = olc-git
 	pkgdesc = Open Lighting Console
-	pkgver = 0.8.5.beta
-	pkgrel = 4
+	pkgver = 0.9.beta
+	pkgrel = 1
 	url = https://mikacousin.github.io/olc/
 	arch = any
 	license = GPL3
@@ -17,7 +17,7 @@ pkgbase = olc-git
 	depends = python-charset-normalizer
 	depends = python-sacn
 	optdepends = ola: ola backend
-	source = olc-0.8.5.beta.tar.gz::https://github.com/mikacousin/olc/archive/refs/tags/0.8.5.beta.tar.gz
-	sha256sums = 06a7dd9b7d2c2695a9f6f439f7fc0f943d2bc5ec43764475ea644e1bf9139b54
+	source = olc-0.9.beta.tar.gz::https://github.com/mikacousin/olc/archive/refs/tags/0.9.beta.tar.gz
+	sha256sums = 9de12032945c11ac96b4c33b4195f74956adfc2bc210fa0219cd9f313cd1d7e2
 
 pkgname = olc-git
