@@ -1,0 +1,14 @@
+[Unit]
+Description=Yet another WebUI for Nginx
+Documentation=https://nginxui.com
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/nginx-ui --config /etc/nginx-ui/config.ini
+Restart=on-failure
+TimeoutStopSec=5
+KillMode=mixed
+
+[Install]
+WantedBy = multi-user.target
