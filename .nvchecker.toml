@@ -1,0 +1,5 @@
+[arch-update]
+source = "github"
+github = "Antiz96/arch-update"
+prefix = "v"
+use_max_tag = true
