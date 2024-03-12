@@ -1,13 +1,13 @@
 # Maintainer: Kazel <address at domain dot tld>
 pkgname=usbguard-applet-qt
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="USBguard QT GUI"
 arch=("x86_64")
 url="https://gitlab.com/WheelchairArtist/usbguard-applet-qt"
 license=('GPL2')
 depends=("usbguard")
-makedepends=("qt5-base")
+makedepends=("qt6-base")
 source=($url/-/archive/$pkgver/usbguard-applet-qt-$pkgver.tar.gz?path=src)
 sha512sums=("SKIP")
 
