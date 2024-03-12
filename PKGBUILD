@@ -43,8 +43,10 @@ build() {
 check() {
   cd $_pkgname-$pkgver
   # test_ldap requires many unpackaged dependencies
+  # test_health contain some flaky tests - https://github.com/hvac/hvac/issues/1141
   PATH="$srcdir/vault-unprivileged:$PATH" pytest tests \
-    --ignore=tests/integration_tests/api/auth_methods/test_ldap.py
+    --ignore=tests/integration_tests/api/auth_methods/test_ldap.py \
+    --ignore=tests/integration_tests/api/system_backend/test_health.py
 }
 
 package() {
