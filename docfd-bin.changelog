@@ -1,23 +1,55 @@
-## 2.2.0
+## 3.0.0
 
-- Restored behaviour of skipping file extension checks for top-level
-  user specified files. This behaviour was likely removed during some
-  previous overhaul.
+- Fixed crash from search result snippet being bigger the content view pane
 
-    - This means, for instance, `docfd bin/docfd.ml` will now open the file
-      just fine without `--add-exts ml`
+    - Crash was from `Content_and_search_result_render.color_word_image_grid`
 
-- Bumped default max word search distance from 20 to 50
+- Added key bindings
 
-- Added consideration for balanced opening closing symbols in search result ranking
+    - `p`: exit and print search result to stderr
+    - `Shift+P`: exit and print file path to stderr
 
-    - Namely symbol pairs: `()`, `[]`, `{}`
+- Changed `--debug-log -` to use stderr instead of stdout
 
-- Fixed crash from reading from stdin
+- Added non-interactive search mode where search results are printed to stdout
 
-    - This was caused by calling `Notty_unix.Term.release` after closing the underlying
-      file descriptor in stdin input mode
+    - `--search EXP` invokes non-interactive search mode with search expression `EXP`
+    - `--search-result-count-per-document` sets the number of top search results printed per document
+    - `--search-result-print-text-width`  sets the text width to use when printing
 
-- Added back handling of optional operator `?` in search expression
+- Added `--start-with-search` to prefill the search field in interactive mode
 
-- Added test corpus to check translation of search expression to search phrases
+- Removed content requirement expression from multi-file view
+
+    - Originally designed for file filtering, but I have almost never used
+      it since its addition in 1.0.0
+
+- Added word based line wrapping to following components of document list in multi-file view
+
+    - Document title
+    - Document path
+    - Document content preview
+
+- Added word breaking in word based line wrapping logic so all of the original characters
+  are displayed even when the terminal width is very small or when a word/token is very long
+
+- Added `--paths-from` to specify a file containing list of paths to (also) be scanned
+
+- Fixed search result centering in presence of line wrapping
+
+- Renamed `--max-fuzzy-edit` to `--max-fuzzy-edit-dist` for consistency
+
+- Changed error messages to not be capitalized to follow Rust's and Go's
+  guidelines on error messages
+
+- Added fallback rendering text so Docfd does not crash from trying
+  to render invalid text.
+
+- Added pandoc integration
+
+- Changed the logic of determining when to use stdin as document source
+
+    - Now if any paths are specified, stdin is ignored
+    - This change mostly came from Dune's cram test mechanism
+      not providing a tty to stdin, so previously Docfd would keep
+      trying to source from stdin even when explicit paths are provided
