@@ -1,7 +1,7 @@
 # Maintainer: Sergey A. <murlakatamenka@disroot.org>
 
 pkgname=cargo-wizard
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Cargo subcommand for configuring Cargo profile'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=(cargo)
 conflicts=(cargo-wizard-bin)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ee030fd78d403b37dbfb971a6c0a98c173a8e4ec92c877ee1a00c2bd9ffe6f7a')
+sha256sums=('86fc230ed1989f36a99686ac7977b3048ef4143393daa26d47febc860486d7f9')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -25,6 +25,7 @@ build() {
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export RUSTFLAGS="--remap-path-prefix=$srcdir=/"
 
     cargo build --release --frozen
 }
