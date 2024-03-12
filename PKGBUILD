@@ -8,7 +8,7 @@ pkgdesc='Python package for writing Value Change Dump (VCD) files'
 arch=('any')
 url='https://github.com/SanDisk-Open-Source/pyvcd'
 license=('MIT')
-makedepends=('python-setuptools-scm')
+makedepends=('python-setuptools-scm' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha512sums=('e6b1fc178a848fa9c8efed5184d09ab0cdf6d5d61ed717aecdbdec1998a0f15a1bcabd92a4191a006a4ee2dc0d4f62e10c82f3561eb3979da4e3a5b728998a6b')
 
@@ -17,13 +17,13 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
 build() {
   cd $_pkgname-$pkgver
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd $_pkgname-$pkgver
 
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm 644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
