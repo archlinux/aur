@@ -40,11 +40,11 @@ pkgver() {
 prepare() {
   cd "$srcdir"/OpenBoard
   msg2 "drop_ThirdParty_repo"
-  patch -p1 < "$srcdir"/drop_ThirdParty_repo.patch
+  patch -f -p1 < "$srcdir"/drop_ThirdParty_repo.patch
   msg2 "qchar"
-  patch -p1 < "$srcdir"/qchar.patch
+  patch -f -p1 < "$srcdir"/qchar.patch
   msg2 "quazip"
-  patch -p1 < "$srcdir"/quazip.patch
+  patch -f -p1 < "$srcdir"/quazip.patch
   msg2 "fix translation issue"
   git revert --no-commit  bc42f702afca517bbf2a3de60ed4827729400537
 }
