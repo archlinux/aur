@@ -1,41 +1,34 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Merged with official ABS kgamma PKGBUILD by João, 2024/03/12 (all respective contributors apply herein)
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
-_gitname=kgamma
-pkgname=$_gitname-git
-pkgver=r286.a973be8
+pkgname=kgamma-git
+pkgver=14.12.3_r267.gfe1ff51
 pkgrel=1
-pkgdesc="Adjust your monitor's gamma settings"
-arch=(i686 x86_64)
-url='https://projects.kde.org/kgamma'
-license=(LGPL)
-depends=(kdelibs4support)
-makedepends=(extra-cmake-modules git kdoctools)
-conflicts=(kgamma kdegraphics-kgamma)
-provides=(kgamma)
-#install=$pkgname.install
-source=("git://anongit.kde.org/$_gitname.git")
-md5sums=('SKIP')
+pkgdesc='Adjust your monitor gamma settings'
+arch=($CARCH)
+url='https://kde.org/plasma-desktop/'
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc kcmutils-git kconfig-git kcoreaddons-git ki18n-git libx11 libxxf86vm qt6-base)
+makedepends=(git extra-cmake-modules-git kdoctools-git)
+conflicts=(${pkgname%-git} kgamma5 kgamma5-git)
+provides=(${pkgname%-git})
+replaces=(kgamma5-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _ver="$(git describe | sed 's/^v//;s/-.*//')"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../$_gitname \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+  cmake -B build  -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
