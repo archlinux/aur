@@ -70,8 +70,8 @@ package() {
 	install -Dm664 service/*.path "${pkgdir}/etc/systemd/system"
   
 # legiond daemon
-  install -Dm775 service/legiond/legiond "${pkgdir}/usr/bin"
-  install -Dm775 service/legiond/legiond-cli "${pkgdir}/usr/bin"
+  install -Dm775 service/legiond/legiond/legiond "${pkgdir}/usr/bin"
+  install -Dm775 service/legiond/legiond/legiond-cli "${pkgdir}/usr/bin"
 	
 # ACPI events
   install -Dm775 acpi/events/legion_ppd "${pkgdir}/usr/share/legion_linux/acpi/events/"
