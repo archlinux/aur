@@ -1,26 +1,25 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=xr-hardware
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Udev rules for accessing XR (VR and AR) hardware devices'
 arch=('any')
 url='https://gitlab.freedesktop.org/monado/utilities/xr-hardware/'
-license=('Boost')
-makedepends=('git' 'python' 'python-attrs')
-checkdepends=('flake8')
+license=('BSL-1.0')
+makedepends=('python')
 provides=('oculus-udev' 'osvr-udev' 'psvr-udev' 'vive-udev')
-source=('git+https://gitlab.freedesktop.org/monado/utilities/xr-hardware.git#commit=8618eed28a3401ae1c657cb6cddfb1ff67155e80')
-sha256sums=('SKIP')
+source=("https://gitlab.freedesktop.org/monado/utilities/xr-hardware/-/archive/1.1.1/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('a177f8e608b71a0cd645b35fc103bfa84878fbcc155d7b36d9ddfa3d4f0a5b23')
 
 build() {
-    make -C xr-hardware clean_package all
+    make -C "${pkgname}-${pkgver}" clean_package all
 }
 
 check() {
-    make -C xr-hardware test
+    make -C "${pkgname}-${pkgver}" test
 }
 
 package() {    
-    make -C xr-hardware DESTDIR="$pkgdir" PREFIX='/usr' install_package
+    make -C "${pkgname}-${pkgver}" DESTDIR="$pkgdir" PREFIX='/usr' install_package
 }
