@@ -1,6 +1,6 @@
 pkgbase = mbdyn-git
 	pkgdesc = The first *free* general purpose Multibody Dynamics analysis software
-	pkgver = r8465.53a8e2a5a
+	pkgver = r8479.eb3297c34
 	pkgrel = 1
 	url = www.mbdyn.org
 	install = mbdyn.install
@@ -17,6 +17,7 @@ pkgbase = mbdyn-git
 	optdepends = ginac: symbolic elements support,
 	optdepends = lapack: eigenanalysis support,
 	optdepends = blas-openblas: eigenanalysis support, openBLAS version
+	options = buildflags
 	source = mbdyn-git::git+https://public.gitlab.polimi.it/DAER/mbdyn.git#branch=develop
 	sha256sums = SKIP
 
