@@ -3,30 +3,30 @@
 _pkgname=proftools
 _pkgver=0.99-3
 pkgname=r-${_pkgname,,}
-pkgver=0.99.3
-pkgrel=4
-pkgdesc='Profile Output Processing Tools for R'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=9
+pkgdesc="Profile Output Processing Tools for R"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
 optdepends=(
-  r-boot
   r-graph
   r-knitr
   r-rgraphviz
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e034eb1531af54013143da3e15229e1d4c2260f8eb79c93846014db3bdefb724')
+md5sums=('d37a9164123380f5ad571d73216ff967')
+b2sums=('6092bdfa613c2e0caa858079f2364f40f5a539a9f495f65c3fafc0a92d90259a10755b81e9763822c44d9f4604a182e3564350fb45d943bfba4d880a63272c8a')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
