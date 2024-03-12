@@ -4,8 +4,8 @@ pkgname=kodi-standalone-service
 pkgver=1.137
 pkgrel=1
 pkgdesc="Systemd services to run kodi in stand-alone mode without a DE"
-# Do NOT attempt to use this package on Arch ARM! This is only for x86_64.
-# You have been warned.
+# This is only for x86_64
+# The kodi-rpi packages for ArchARM provide their own versions of this package
 arch=(x86_64)
 url="https://github.com/graysky2/kodi-standalone-service"
 license=(MIT)
