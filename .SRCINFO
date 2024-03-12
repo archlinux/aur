@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-hwloc
-	pkgdesc = Portable Hardware Locality is a portable abstraction of hierarchical architectures (android)
+	pkgdesc = Portable Hardware Locality is a portable abstraction of hierarchical architectures (Android, x86-64)
 	pkgver = 2.10.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.open-mpi.org/projects/hwloc/
 	arch = any
 	license = BSD
@@ -9,6 +9,7 @@ pkgbase = android-x86-64-hwloc
 	makedepends = android-x86-64-libxml2
 	makedepends = android-x86-64-pciutils
 	makedepends = android-x86-64-libx11
+	makedepends = android-configure
 	depends = android-x86-64-libtool
 	depends = android-x86-64-libpciaccess
 	optdepends = android-x86-64-cairo
