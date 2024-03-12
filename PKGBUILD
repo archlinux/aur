@@ -1,5 +1,4 @@
 # Maintainer: snemc <3112671039@qq.com>
-pkgbase=typora-cn
 pkgname=typora-cn
 _pkgname=typora
 pkgver=1.8.10
