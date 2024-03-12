@@ -1,13 +1,14 @@
 pkgbase = android-x86-prrte
-	pkgdesc = PMIx Reference RunTime Environment (android)
+	pkgdesc = PMIx Reference RunTime Environment (Android, x86)
 	pkgver = 3.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openpmix/prrte
 	arch = any
 	license = BSD-3-Clause
 	makedepends = android-x86-hwloc
 	makedepends = android-x86-libevent
 	makedepends = android-x86-openpmix
+	makedepends = android-environment
 	makedepends = perl
 	depends = android-x86-hwloc
 	depends = android-x86-libevent

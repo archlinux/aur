@@ -6,9 +6,9 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-prrte
 pkgver=3.0.4
-pkgrel=1
+pkgrel=2
 arch=('any')
-pkgdesc="PMIx Reference RunTime Environment (android)"
+pkgdesc="PMIx Reference RunTime Environment (Android, ${_android_arch})"
 url="https://github.com/openpmix/prrte"
 license=('BSD-3-Clause')
 depends=("android-${_android_arch}-hwloc"
@@ -17,6 +17,7 @@ depends=("android-${_android_arch}-hwloc"
 makedepends=("android-${_android_arch}-hwloc"
              "android-${_android_arch}-libevent"
              "android-${_android_arch}-openpmix"
+             'android-environment'
              'perl')
 optdepends=("android-${_android_arch}-openssh: for execution on remote hosts via plm_ssh_agent")
 source=("$url/releases/download/v$pkgver/prrte-$pkgver.tar.gz"
