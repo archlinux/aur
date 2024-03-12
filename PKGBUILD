@@ -3,12 +3,12 @@
 _pkgname=easyPubMed
 _pkgver=2.13
 pkgname=r-${_pkgname,,}
-pkgver=2.13
-pkgrel=4
-pkgdesc='Search and Retrieve Scientific Publication Records from PubMed'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Search and Retrieve Scientific Publication Records from PubMed"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r
 )
@@ -17,14 +17,15 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ad94b76d7386594c1bd6fb008a7c2ee708d49712575632eef36f9e8f7d8ba8f1')
+md5sums=('80c00e06855791697f4890fa86ce1185')
+b2sums=('a1180acc09994ea24d5823dc0fde2ce505ce070815541e4fcd5861bd17b5d75b6846f0a9ca3df8761133f95a5fadbaaf554dc6d82cb1c73ef962b0fb7cd94855')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
