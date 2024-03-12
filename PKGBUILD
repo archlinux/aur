@@ -1,9 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=translationcore-bin
 _pkgname=translationCore
-pkgver=3.6.2
+pkgver=3.6.3
+_subver=MAX-e859026
 _electronversion=25
-pkgrel=4
+pkgrel=1
 pkgdesc="An open source platform for checking and managing Bible translation projects"
 arch=(
     'aarch64'
@@ -18,20 +19,21 @@ depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/tC-linux-arm64-${pkgver}-MAX-d1f76d8.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/tC-linux-x64-${pkgver}-MAX-d1f76d8.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/tC-linux-arm64-${pkgver}-${_subver}.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/tC-linux-x64-${pkgver}-${_subver}.deb")
 source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/unfoldingWord/translationCore/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('a756bd73c46e3e9b85ff0222658f4c63851ebc5af63811adc4333ff618688417'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
-sha256sums_aarch64=('4bd8a2ed2a6e669be107f64137bf085292659672d3e688f65801e747979a9fc3')
-sha256sums_x86_64=('aa7ddffd5769f02270dc55f332bfd606823395176a3de63bb4d6c83dc952f39b')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums_aarch64=('2c9301f1e0866983cc7bae6a3a1cd0836a1b99d266a82b00487c9f59eb7c76d0')
+sha256sums_x86_64=('fd187859b5c081120b2a74c61d85427ca07c4aef1ec0e6acbead8fd141622911')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${pkgname%-bin}/${_pkgname}|${pkgname%-bin}|g;s|unfoldingword-${pkgname%-bin}|${pkgname%-bin}|g" \

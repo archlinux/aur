@@ -1,22 +1,22 @@
 pkgbase = translationcore-bin
 	pkgdesc = An open source platform for checking and managing Bible translation projects
-	pkgver = 3.6.2
-	pkgrel = 4
+	pkgver = 3.6.3
+	pkgrel = 1
 	url = https://www.translationcore.com/
 	arch = aarch64
 	arch = x86_64
 	license = ISC
 	depends = electron25
 	depends = hicolor-icon-theme
-	provides = translationcore=3.6.2
+	provides = translationcore=3.6.3
 	conflicts = translationcore
-	source = LICENSE-3.6.2::https://raw.githubusercontent.com/unfoldingWord/translationCore/v3.6.2/LICENSE
+	source = LICENSE-3.6.3::https://raw.githubusercontent.com/unfoldingWord/translationCore/v3.6.3/LICENSE
 	source = translationcore.sh
 	sha256sums = a756bd73c46e3e9b85ff0222658f4c63851ebc5af63811adc4333ff618688417
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
-	source_aarch64 = translationcore-3.6.2-aarch64.deb::https://github.com/unfoldingWord/translationCore/releases/download/v3.6.2/tC-linux-arm64-3.6.2-MAX-d1f76d8.deb
-	sha256sums_aarch64 = 4bd8a2ed2a6e669be107f64137bf085292659672d3e688f65801e747979a9fc3
-	source_x86_64 = translationcore-3.6.2-x86_64.deb::https://github.com/unfoldingWord/translationCore/releases/download/v3.6.2/tC-linux-x64-3.6.2-MAX-d1f76d8.deb
-	sha256sums_x86_64 = aa7ddffd5769f02270dc55f332bfd606823395176a3de63bb4d6c83dc952f39b
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	source_aarch64 = translationcore-3.6.3-aarch64.deb::https://github.com/unfoldingWord/translationCore/releases/download/v3.6.3/tC-linux-arm64-3.6.3-MAX-e859026.deb
+	sha256sums_aarch64 = 2c9301f1e0866983cc7bae6a3a1cd0836a1b99d266a82b00487c9f59eb7c76d0
+	source_x86_64 = translationcore-3.6.3-x86_64.deb::https://github.com/unfoldingWord/translationCore/releases/download/v3.6.3/tC-linux-x64-3.6.3-MAX-e859026.deb
+	sha256sums_x86_64 = fd187859b5c081120b2a74c61d85427ca07c4aef1ec0e6acbead8fd141622911
 
 pkgname = translationcore-bin
