@@ -45,6 +45,7 @@ check() {
   mvn test
   echo 'finished test'
 
+  export JAVA=java
   export WD="$srcdir"/patr-java-profiler
   export VERSION=$(cat VERSION)
 
@@ -63,7 +64,7 @@ check() {
   export SERVER_JAR=
   export CLIENT_JAR=
 
-  echo 'start test2' # 
+  echo 'start test2'
   ./patr-java-prof.sh --no-server --no-client --no-defaults -cp "patr-java-profiler-test/target/patr-java-profiler-test-$VERSION.jar" de.hechler.patrick.profiler.test.PHPTestMain
   echo 'validate test2'
   ./patr-java-prof.sh --only-client --validate patr-java-profiler-output.data
