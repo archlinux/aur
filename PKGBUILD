@@ -1,6 +1,6 @@
 # Maintainer: Patrick Hechler <patrjprof@ph.anderemails.de>
 pkgname=patrjprof
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="An Open source Java profiler written in Java"
 arch=('any')
@@ -20,35 +20,49 @@ changelog=
 noextract=()
 source=("patr-java-profiler-agent.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-agent/${pkgver}/patr-java-profiler-agent-${pkgver}-jar-with-dependencies.jar"
         "patr-java-profiler-bootstrap.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-bootstrap/${pkgver}/patr-java-profiler-bootstrap-${pkgver}.jar"
+        "patr-java-profiler-server.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-server/${pkgver}/patr-java-profiler-server-${pkgver}.jar"
+        "patr-java-profiler-client.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-client/${pkgver}/patr-java-profiler-client-${pkgver}.jar"
         "patr-java-profiler-test.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-test/${pkgver}/patr-java-profiler-test-${pkgver}.jar"
+        "patr-java-profiler-start.sh::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler/${pkgver}/patr-java-profiler-${pkgver}-start-script"
         )
-md5sums=('e034c1717ad0ae7c5d850743fe1aa31a'
-         '6648203ec0369816b5d7d24259a4b9f1'
-         'ad15430e3f2cd76107723eda8266cb8f'
+md5sums=('e43d1edc698ee2a435ca3025ff78be8b'
+         '42ff09b4441deb2f327bf5c6722a90ff'
+         'ef5c4706cb06296e1ade4fd541211047'
+         '925d1b6a7d0d02bd5c92f4fa1a2b6e76'
+         '14f7b04c0599e01f02cd4384c67bf1d7'
+         '104ad32c6be4e03274a591746d7ace24'
          )
 
 check() {
   cd "$srcdir"
 
+  export VERSION="${pkgver}"
+  export JAVA="java"
+
+  export AGENT_JAR="$srcdir"/patr-java-profiler-agent.jar
+  export BOOTSTRAP_JAR="$srcdir"/patr-java-profiler-bootstrap.jar
+  export SERVER_JAR="$srcdir"/patr-java-profiler-server.jar
+  export CLIENT_JAR="$srcdir"/patr-java-profiler-client.jar
+
   echo 'start test'
-  java \
-    "-javaagent:patr-java-profiler-agent.jar" \
-    "-Xbootclasspath/a:patr-java-profiler-bootstrap.jar" \
-    -cp "patr-java-profiler-test.jar" \
-    de.hechler.patrick.profiler.test.PHPTestMain
-  echo 'finished test:'
-  cat ./patr-java-profiler-output.txt # at least ensure that the file exists, if not something went completly wrong
+  ./patr-java-profiler-start.sh --no-server --no-client --no-defaults -cp "patr-java-profiler-test.jar" de.hechler.patrick.profiler.test.PHPTestMain
+  echo 'validate test'
+  ./patr-java-profiler-start.sh --only-client --validate patr-java-profiler-output.data
+  echo 'finished test'
 }
 
 package() {
   cd "$srcdir"
 
-  VERSION=${pkgver}
+  VERSION="${pkgver}"
 
   # copy original files
   mkdir -p "$pkgdir"/usr/share/java/patrjprof
-  cp -T patr-java-profiler-bootstrap.jar  "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-bootstrap.jar
-  cp -T patr-java-profiler-agent.jar      "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-agent.jar
+  cp -t "$pkgdir"/usr/share/java/patrjprof/ \
+    patr-java-profiler-agent.jar \
+    patr-java-profiler-bootstrap.jar \
+    patr-java-profiler-server.jar \
+    patr-java-profiler-client.jar
 
   # create help script which starts the profiler, the other script is not available
   mkdir -p "$pkgdir"/usr/bin
@@ -56,27 +70,12 @@ package() {
   BOOTSTRAP_JAR=/usr/share/java/patrjprof/patr-java-profiler-bootstrap.jar
   echo -n '#!/bin/sh
 
-AGENT_ARGS=""
-ADD_ARGS_START=1
-if test "$1" = "--agent"; then
-  AGENT_ARGS="=$2"
-  ADD_ARGS_START=3
-elif test "$1" = "--bootstrap"; then
-  exec java -cp '$BOOTSTRAP_JAR' \
-    de.hechler.patrick.profiler.Main "${@:2}"
-fi
+AGENT_JAR=/usr/share/java/patrjprof/patr-java-profiler-agent.jar
+BOOTSTRAP_JAR=/usr/share/java/patrjprof/patr-java-profiler-bootstrap.jar
+SERVER_JAR=/usr/share/java/patrjprof/patr-java-profiler-server.jar
+CLIENT_JAR=/usr/share/java/patrjprof/patr-java-profiler-client.jar
 
-if test $ADD_ARGS_START -gt $# ; then
-  echo -n "missing additional arguments!
-you need to specify what you want to profile!
-
-" >&2
-  AGENT_ARGS="=help"
-fi
-
-exec java \
-  "-javaagent:'$AGENT_JAR'$AGENT_ARGS" \
-  "-Xbootclasspath/a:'$BOOTSTRAP_JAR'" \
-  "${@:$ADD_ARGS_START}"' > "$pkgdir"/usr/bin/patrjprof
+' > "$pkgdir"/usr/bin/patrjprof
+  cat patr-java-profiler-start.sh >> "$pkgdir"/usr/bin/patrjprof
   chmod +x "$pkgdir"/usr/bin/patrjprof
 }
