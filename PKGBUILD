@@ -1,16 +1,18 @@
 # Maintainer: Jonas Heinrich <onny@project-insanity.org>
+# Contributor: Popolon <popolon@popolon.org> (just upgraded to 5.8.1 and added the conflict with nodejs-shelljs)
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nodejs-pkg
-pkgver=4.4.8
+pkgver=5.8.1
 pkgrel=1
 pkgdesc="Package your Node.js project into an executable"
 arch=('x86_64')
 url="https://github.com/zeit/pkg"
 license=('MIT')
 makedepends=('npm')
+conflicts=('nodejs-shelljs')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zeit/pkg/archive/${pkgver}.tar.gz")
-sha512sums=('b051f589c4fba7628c70bf5dde3fe69ac8223b87204ef014a853ae3e2a45b316eb9077a25b8e4a9e9dace80e3ed56f4f2a25c8d5c5bad6459b361d2c3c4858ad')
+sha512sums=('bdf0c04743e338393b8a942c7ae53e531ad260a7bcb1bca2560238b13a55f214a9f384d4d122679a1ccab0f471fef0beb35a5b197563b5e8ee141854d1558086')
 noextract=("${pkgname}-${pkgver}.tar.gz")
 
 package() {

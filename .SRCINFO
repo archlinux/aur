@@ -1,14 +1,14 @@
 pkgbase = nodejs-pkg
 	pkgdesc = Package your Node.js project into an executable
-	pkgver = 4.4.8
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = https://github.com/zeit/pkg
 	arch = x86_64
 	license = MIT
 	makedepends = npm
-	noextract = nodejs-pkg-4.4.8.tar.gz
-	source = nodejs-pkg-4.4.8.tar.gz::https://github.com/zeit/pkg/archive/4.4.8.tar.gz
-	sha512sums = b051f589c4fba7628c70bf5dde3fe69ac8223b87204ef014a853ae3e2a45b316eb9077a25b8e4a9e9dace80e3ed56f4f2a25c8d5c5bad6459b361d2c3c4858ad
+	conflicts = nodejs-shelljs
+	noextract = nodejs-pkg-5.8.1.tar.gz
+	source = nodejs-pkg-5.8.1.tar.gz::https://github.com/zeit/pkg/archive/5.8.1.tar.gz
+	sha512sums = bdf0c04743e338393b8a942c7ae53e531ad260a7bcb1bca2560238b13a55f214a9f384d4d122679a1ccab0f471fef0beb35a5b197563b5e8ee141854d1558086
 
 pkgname = nodejs-pkg
-
