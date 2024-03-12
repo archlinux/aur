@@ -2,7 +2,7 @@
 _pkgname=nitter
 pkgname=nitter-git
 pkgver=latest
-pkgrel=28
+pkgrel=29
 pkgdesc="Alternative Twitter front-end"
 url="https://github.com/zedeus/nitter"
 depends=('redis')
@@ -42,8 +42,6 @@ prepare() {
   mv -v nitter.example.conf nitter.conf
   # Tweak the configuration file
   patch -p1 <"$srcdir/config.patch"
-  # Other Patches
-  patch -p1 <"$srcdir/1164.patch"
 }
 
 build() {
