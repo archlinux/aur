@@ -1,12 +1,13 @@
 pkgbase = android-aarch64-openpmix
-	pkgdesc = Extended version of the PMI standard (android)
+	pkgdesc = Extended version of the PMI standard (Android, aarch64)
 	pkgver = 4.2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openpmix/openpmix
 	arch = any
 	license = BSD-3-Clause
 	makedepends = android-aarch64-hwloc
 	makedepends = android-aarch64-zlib
+	makedepends = android-environment
 	makedepends = perl
 	makedepends = python
 	depends = android-aarch64-hwloc
