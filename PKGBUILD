@@ -4,12 +4,13 @@
 
 pkgname=irpf
 pkgver=2024.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Brazilian physical person income tax (IRPF) program'
 arch=('any')
 url='https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda'
 license=('LicenseRef-custom')
 depends=('sh' 'java-runtime=11' 'hicolor-icon-theme')
+optdepends=('gvfs: for importing pre-filled data from a gov.br account')
 makedepends=('icoutils')
 source=("https://downloadirpf.receita.fazenda.gov.br/irpf/${pkgver%%.*}/irpf/arquivos/IRPF${pkgver%%.*}-${pkgver#*.}.zip"
         'irpf.desktop'
