@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=autorecord-manager
 _pkgname="LAR 直播自动录制"
-pkgver=4.6.1
+pkgver=4.6.2
 _electronversion=20
 _nodeversion=16
 pkgrel=1
