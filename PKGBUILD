@@ -1,7 +1,7 @@
 # Maintainer: Oliver Bandel <oliver _at_ first . in - berlin . de>
 
 pkgname=plio
-pkgver=2023_10_25.0
+pkgver=2024_03_12.0
 pkgrel=1
 pkgdesc='PLIO Image Viewer - the Image Viewer with many sort options'
 arch=('x86_64')

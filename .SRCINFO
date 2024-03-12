@@ -1,6 +1,6 @@
 pkgbase = plio
 	pkgdesc = PLIO Image Viewer - the Image Viewer with many sort options
-	pkgver = 2023_10_25.0
+	pkgver = 2024_03_12.0
 	pkgrel = 1
 	url = https://codeberg.org/klartext/plio
 	arch = x86_64
