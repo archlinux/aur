@@ -1,25 +1,61 @@
-# Maintainer: Daniel Milde <daniel at milde dot cz>
+# Maintainer: Vianney Bouchaud <aur dot vianney at bouchaud dot org>
+# Contributor: Daniel Milde <daniel at milde dot cz>
 
 pkgname=gore
-pkgver=0.5.4
-pkgrel=1
-license=('MIT')
 pkgdesc="Yet another Go REPL that works nicely"
-depends=('go')
+pkgver=0.5.7
+pkgrel=1
 arch=('x86_64')
-url="https://github.com/motemen/gore"
-source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/motemen/gore/archive/v${pkgver}.tar.gz")
-sha256sums=('6c134e6f0d23b524b2a08bbdc74a44b4d7cb9401b62c752fbc6d7a77d4e2cc54')
+_gopkg="github.com/x-motemen/gore"
+url="https://${_gopkg}"
+license=('MIT')
+depends=(
+  'go'
+)
+
+# no idea why --flto=auto is added to the LDFLAGS with a format
+# causing an issue with the compiler.
+options=('!lto')
+
+source=(
+  "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+)
+
+sha256sums=(
+  'bbd06377093dd760f54fbc7ee608e67430f5f005464d92c7cc237bad57490dd0'
+)
+
+prepare(){
+  cd $pkgname-$pkgver
+  mkdir -p build/
+}
 
 build() {
-  cd "$pkgname-$pkgver"
-  make
+    cd $pkgname-$pkgver
+    export GOPATH="$srcdir/gopath"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+
+    go build \
+      -trimpath \
+      -buildmode=pie \
+      -mod=readonly \
+      -modcacherw \
+      -ldflags "\
+        -linkmode=external \
+        -buildid=''
+        -extldflags='${LDFLAGS}' \
+        -X '${_gopkg}/cli.revision=${pkgver}'
+        " \
+      -o build ./cmd/gore
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 $pkgname "${pkgdir}/usr/bin/$pkgname"
-  install -D -m644 LICENSE  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  install -D -m0755 build/gore "${pkgdir}/usr/bin/gore"
+  install -D -m0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:

@@ -1,12 +1,13 @@
 pkgbase = gore
 	pkgdesc = Yet another Go REPL that works nicely
-	pkgver = 0.5.4
+	pkgver = 0.5.7
 	pkgrel = 1
-	url = https://github.com/motemen/gore
+	url = https://github.com/x-motemen/gore
 	arch = x86_64
 	license = MIT
 	depends = go
-	source = gore-0.5.4.tar.gz::https://github.com/motemen/gore/archive/v0.5.4.tar.gz
-	sha256sums = 6c134e6f0d23b524b2a08bbdc74a44b4d7cb9401b62c752fbc6d7a77d4e2cc54
+	options = !lto
+	source = gore-0.5.7.tar.gz::https://github.com/x-motemen/gore/archive/v0.5.7.tar.gz
+	sha256sums = bbd06377093dd760f54fbc7ee608e67430f5f005464d92c7cc237bad57490dd0
 
 pkgname = gore
