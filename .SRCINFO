@@ -1,6 +1,6 @@
 pkgbase = libclc-git
 	pkgdesc = Library requirements of the OpenCL C programming language (git version)
-	pkgver = 18.0.0_r476723.8641cdf397d8
+	pkgver = 19.0.0_r492390.4e3310a8
 	pkgrel = 1
 	epoch = 1
 	url = http://libclc.llvm.org/
