@@ -1,7 +1,7 @@
 # Maintainer:Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kgamma
-pkgver=6.0.1
+pkgver=6.0.2
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='Adjust your monitor gamma settings'
@@ -23,7 +23,7 @@ conflicts=(kgamma5)
 replaces=(kgamma5)
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('fb60953628df9707d7ba83155d5828d5f44d093ed841974c78ee9a74ece3c912'
+sha256sums=('f80db1a6e89504040d51c6b14fa8ba06ac6787dc37c05bc41ec6cbcdb4639990'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
