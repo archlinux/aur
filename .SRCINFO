@@ -1,6 +1,6 @@
 pkgbase = jicofo-nightly
 	pkgdesc = JItsi Meet COnference FOcus nightly build
-	pkgver = 1.0+1067
+	pkgver = 1.0+1075
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	install = install
@@ -17,7 +17,7 @@ pkgbase = jicofo-nightly
 	backup = etc/jicofo-nightly/config
 	backup = etc/jicofo-nightly/logging.properties
 	backup = etc/jicofo-nightly/jicofo.conf
-	source = jicofo-nightly::git+https://github.com/jitsi/jicofo#tag=1067
+	source = jicofo-nightly::git+https://github.com/jitsi/jicofo#tag=1075
 	source = config
 	source = service
 	source = sysusers.conf
