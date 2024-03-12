@@ -1,15 +1,15 @@
 pkgbase = handlr
 	pkgdesc = Powerful alternative to xdg-utils written in Rust
 	pkgver = 0.6.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/chmln/handlr
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	provides = handlr
-	conflicts = handlr-bin
+	depends = shared-mime-info
 	source = handlr-0.6.4.tar.gz::https://github.com/chmln/handlr/archive/v0.6.4.tar.gz
+	source = handlr-bash-completion.patch::https://github.com/chmln/handlr/commit/0e62d1dfa34de844369667a387ba213fe2c1649c.patch
 	sha512sums = 55779ad0c01e065678e1a57f338272f1d38057658fe6b7c54f7bc35595575aafe13aed6ca3d80cc65b912971aac9a2a6c78ac5512315af9f2d676a92c8c395ec
+	sha512sums = 904334cc85286fdfab8f394877d57f7bc8b2bda9a46f6d355b9f3f9ffa1b52a8da8524db5844c975212c4709774e4dfd3e1e75df78cb9eaadc6a32c5d0c101d2
 
 pkgname = handlr
-
