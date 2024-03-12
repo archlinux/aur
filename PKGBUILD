@@ -23,7 +23,7 @@ source+=(drop_ThirdParty_repo.patch)
 sha256sums=('cf5bfb570b9ac4e61e1670c5a433f1dcaf0de1e8dbcbd544f058711690afba79'
             '18ee4fab83b0c92490c81c2aaace98f669d07d7260cc0f83a24acb8d6224e5e7'
             'b40fdab85f5921d0404c07db64628a2428a87d39193d2797bbef2e69b1d51549'
-            '8c0b28ebd6cade0a551b695af9c04a2c45052f2d955357825b3be97bf00d5be7'
+            'da603ed16eb15cb81f641aaf669963553f16c823688eb27b788d36892edb35b2'
             'a6a9bc1f9c9bee0345b735fcf422245ae7946f96f6c34520dd63530a98978c14')
 
 prepare() {
