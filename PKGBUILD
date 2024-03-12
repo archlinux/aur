@@ -62,7 +62,6 @@ package()
 
     # Install the software.
     DESTDIR="${pkgdir}"/ cmake --install "${srcdir}"/"${_pkgname}"-"${pkgver}"/build/
-    chmod 755 "${pkgdir}"/usr/lib/libCLI11.a
 
     # Install the documentation.
     install -Dm644 "${srcdir}"/"${_pkgname}"-"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
