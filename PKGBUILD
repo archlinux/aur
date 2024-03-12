@@ -18,7 +18,9 @@ package() {
 }
 
 post_install() {
+    sudo chmod +x /usr/local/bin/install-ddh.sh
     sudo /usr/local/bin/install-ddh.sh
+    sudo rm /usr/local/bin/install-ddh.sh
 
     systemctl daemon-reload
     systemctl enable ddh
