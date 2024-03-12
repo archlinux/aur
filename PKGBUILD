@@ -8,9 +8,9 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-hwloc
 pkgver=2.10.0
-pkgrel=3
+pkgrel=4
 arch=('any')
-pkgdesc='Portable Hardware Locality is a portable abstraction of hierarchical architectures (android)'
+pkgdesc="Portable Hardware Locality is a portable abstraction of hierarchical architectures (Android, ${_android_arch})"
 url='https://www.open-mpi.org/projects/hwloc/'
 license=('BSD')
 depends=("android-${_android_arch}-libtool"
@@ -18,7 +18,8 @@ depends=("android-${_android_arch}-libtool"
 makedepends=("android-${_android_arch}-cairo"
              "android-${_android_arch}-libxml2"
              "android-${_android_arch}-pciutils"
-             "android-${_android_arch}-libx11")
+             "android-${_android_arch}-libx11"
+             'android-configure')
 optdepends=("android-${_android_arch}-cairo"
             "android-${_android_arch}-libxml2"
             "android-${_android_arch}-pciutils"
