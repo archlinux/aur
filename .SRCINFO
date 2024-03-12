@@ -1,11 +1,11 @@
 pkgbase = trilium-server-cn-bin
 	pkgdesc = Trilium Notes Server Chinese version
-	pkgver = 0.62.6_20240124
+	pkgver = 0.63.3_20240312
 	pkgrel = 1
 	url = https://github.com/Nriver/trilium-translation
 	arch = x86_64
 	license = AGPL3
-	source = trilium-server-cn-bin-0.62.6_20240124.zip::https://github.com/Nriver/trilium-translation/releases/download/v0.62.6_20240124/trilium-cn-linux-x64-server.zip
-	sha256sums = 7092808acb1a4e00b22b25dea93dfd540673aeff6ec39522d35651325ad0947f
+	source = trilium-server-cn-bin-0.63.3_20240312.zip::https://github.com/Nriver/trilium-translation/releases/download/v0.63.3_20240312/trilium-cn-linux-x64-server.zip
+	sha256sums = b097a6e90ac881f9346dbfee31cc95c76c08c41c8eae8908547a7da2ec25b6b5
 
 pkgname = trilium-server-cn-bin
