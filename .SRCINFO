@@ -1,7 +1,7 @@
 pkgbase = woodpecker-agent-sudo
 	pkgdesc = A simple CI engine with great extensibility (agent), patched to use sudo to run local pipelines
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://woodpecker-ci.org
 	arch = x86_64
 	license = Apache

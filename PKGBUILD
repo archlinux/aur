@@ -5,7 +5,7 @@
 _pkgname='woodpecker-agent'
 pkgname=$_pkgname-sudo
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple CI engine with great extensibility (agent), patched to use sudo to run local pipelines'
 arch=('x86_64')
 url='https://woodpecker-ci.org'
@@ -73,7 +73,7 @@ build() {
     -modcacherw \
     -ldflags "-compressdwarf=false \
     -linkmode external \
-    -extldflags ${LDFLAGS}" \
+    -extldflags '${LDFLAGS}'" \
     -o build \
     ./cmd/agent
 
