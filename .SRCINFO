@@ -1,12 +1,13 @@
 pkgbase = android-armv7a-eabi-openpmix
-	pkgdesc = Extended version of the PMI standard (android)
+	pkgdesc = Extended version of the PMI standard (Android, armv7a-eabi)
 	pkgver = 4.2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openpmix/openpmix
 	arch = any
 	license = BSD-3-Clause
 	makedepends = android-armv7a-eabi-hwloc
 	makedepends = android-armv7a-eabi-zlib
+	makedepends = android-environment
 	makedepends = perl
 	makedepends = python
 	depends = android-armv7a-eabi-hwloc
