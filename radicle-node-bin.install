@@ -3,3 +3,8 @@ post_install() {
 	echo "    Enable the radicle node with \`systemctl --user enable --now radicle-node.service\`"
 	echo
 }
+
+post_upgrade() {
+	echo
+	echo "    Restart the radicle node with \`systemctl --user restart radicle-node.service\` to update"
+}
