@@ -1,12 +1,12 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=gromit-mpx
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='On-screen annotation tool'
 arch=('x86_64')
 url='https://github.com/bk138/gromit-mpx/'
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('cairo' 'gdk-pixbuf2' 'glib2' 'gtk3' 'libappindicator-gtk3' 'libx11' 'libxi'
          'hicolor-icon-theme')
 makedepends=('git' 'cmake')
