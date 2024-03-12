@@ -25,10 +25,10 @@ source=("patr-java-profiler-agent.jar::https://nexuspat.hechler.de/repository/ma
         "patr-java-profiler-test.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-test/${pkgver}/patr-java-profiler-test-${pkgver}.jar"
         "patr-java-profiler-start.sh::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler/${pkgver}/patr-java-profiler-${pkgver}.start-script"
         )
-md5sums=('e43d1edc698ee2a435ca3025ff78be8b'
+md5sums=('7394360f275817367f251fda05b891a7'
          '42ff09b4441deb2f327bf5c6722a90ff'
-         'ef5c4706cb06296e1ade4fd541211047'
          '925d1b6a7d0d02bd5c92f4fa1a2b6e76'
+         'ef5c4706cb06296e1ade4fd541211047'
          '14f7b04c0599e01f02cd4384c67bf1d7'
          '104ad32c6be4e03274a591746d7ace24'
          )
