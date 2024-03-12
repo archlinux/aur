@@ -5,13 +5,13 @@
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 
 pkgname=python-pyalsaaudio
-_name=${pkgname#python-}
+_pkgname=${pkgname#python-}
 pkgver=0.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="ALSA wrappers for Python"
 arch=(x86_64 i686 armv7h)
 url="https://github.com/larsimmisch/pyalsaaudio"
-license=(custom:PSF)
+license=(LicenseRef-PSF-For-Python-2.4)
 depends=(
   alsa-lib
   glibc
@@ -22,11 +22,10 @@ makedepends=(
   python-setuptools
   python-wheel
 )
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('6d3555fc4a84d969cfe160b651a3744aa479adb74299aa87a026c9283db19fdf')
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('d63465df6bbeda637dcd1b2a9c713f2035b0b890387258db99f28158886303fe')
-
-_archive="$_name-$pkgver"
+_archive="$_pkgname-$pkgver"
 
 build() {
   cd "$_archive"
@@ -39,5 +38,5 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
