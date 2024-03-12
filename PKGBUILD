@@ -7,7 +7,7 @@ pkgname=(
   $pkgbase-management
   $pkgbase-signal
 )
-pkgver=0.26.2
+pkgver=0.26.3
 pkgrel=1
 url='https://netbird.io'
 arch=(i686 pentium4 x86_64 arm armv7h armv6h aarch64 riscv64)
@@ -23,7 +23,7 @@ source=(
   'netbird-management.env'
   'netbird-management.service'
 )
-sha256sums=('944481996152b3e6fd73836333e93587f06f8653bd83728c6461c91fd6c2c55e'
+sha256sums=('07ff36dae855595c24871c3a39e95bdc07d11b4b0fa7b7c430667ac56bf32c7d'
             '128e36e1f814a12886f3122a1809a404be17f81481275b6624e66937941f5269'
             '3bd6d2692dc6d08cfabce1ba2514c02f4463294ebbdb63828baca5d9e4c9daa9'
             '80cd7b6a22087a83c1332c15693d8a18b780ef5ecf3fbc562af28d1a623eef3b'
