@@ -1,8 +1,5 @@
 /.project
 /patrjprof-*-any.pkg.tar.zst
-/patr-java-profiler-agent.jar
-/patr-java-profiler-bootstrap.jar
-/patr-java-profiler-test.jar
+/patr-java-profiler-*
 /src/
 /pkg/
-/patr-java-profiler-output.txt
