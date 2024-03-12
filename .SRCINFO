@@ -1,6 +1,6 @@
 pkgbase = ruby-bundler-audit
 	pkgdesc = Patch-level verification for Bundler
-	pkgver = 0.7.0.1
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/rubysec/bundler-audit#readme
 	arch = any
@@ -8,10 +8,9 @@ pkgbase = ruby-bundler-audit
 	depends = ruby
 	depends = ruby-thor
 	depends = ruby-bundler
-	noextract = bundler-audit-0.7.0.1.gem
+	noextract = bundler-audit-0.9.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/bundler-audit-0.7.0.1.gem
-	sha1sums = 5e6edce4346a6600dcc0e14367b4c21cf35382da
+	source = https://rubygems.org/downloads/bundler-audit-0.9.1.gem
+	sha1sums = 5430584042b50bc991828c16a589941b9f3400da
 
 pkgname = ruby-bundler-audit
-
