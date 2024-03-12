@@ -1,0 +1,12 @@
+pkgbase = wl-colorpicker-plasma-git
+	pkgdesc = A standalone color picker for Wayland and KDE Plasma.
+	pkgver = r1.1ffb924
+	pkgrel = 1
+	url = https://github.com/SASUPERNOVA/wl-colorpicker-plasma
+	arch = any
+	license = GPL-2.0-or-later
+	depends = python
+	source = wl-colorpicker-plasma-git::git+https://github.com/SASUPERNOVA/wl-colorpicker-plasma
+	sha256sums = SKIP
+
+pkgname = wl-colorpicker-plasma-git
