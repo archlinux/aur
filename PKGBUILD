@@ -1,7 +1,7 @@
 # Maintainer: Toxopeus S. <sam@toxopeus.it>
 pkgname=sevi-icon-theme-full
 _gitname=Sevi
-pkgver=r244.97deef0
+pkgver=r255.0e0a590
 pkgrel=1
 pkgdesc="A colorful design icon theme based on Reversal - All Versions"
 arch=('any')
