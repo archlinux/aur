@@ -3,24 +3,25 @@
 _pkgname=akmbiclust
 _pkgver=0.1.0
 pkgname=r-${_pkgname,,}
-pkgver=0.1.0
-pkgrel=4
-pkgdesc='Alternating K-Means Biclustering'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Alternating K-Means Biclustering"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('dcf98b48d5c94b99484623884edb8142dd4c98e850dbfc9f1acef84cb708b2a5')
+md5sums=('f4d2395f8f433f0b8ca54c31f367e491')
+b2sums=('55000ade7f023aa0d4530f6563d756428b9db90b26338847d961dc5fa1d4c2133f7dce57fc2b38d105f3b9b6a3a26b582ce281546d4883d8bf31878f1f24b88b')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
