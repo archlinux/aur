@@ -1,0 +1,17 @@
+pkgbase = hexpick-bin
+	pkgdesc = A simple color picker app for Linux
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/KartoffelChipss/HexPick
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = electron29
+	depends = imlib2
+	provides = hexpick=1.0.1
+	conflicts = hexpick
+	source = hexpick-1.0.1.deb::https://github.com/KartoffelChipss/HexPick/releases/download/v1.0.1/hexpick-1.0.1.deb
+	source = hexpick.sh
+	sha256sums = 04b1581f8a5440402222425a4af9218a4626a8588a32468cffdc384e0d3d5451
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+
+pkgname = hexpick-bin
