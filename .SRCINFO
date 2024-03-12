@@ -1,17 +1,17 @@
-pkgbase = plasma5-runners-tmux
+pkgbase = plasma-runners-tmux
 	pkgdesc = Searches running tmux sessions and attaches to them
-	pkgver = 0.0.5
-	pkgrel = 4
-	url = https://github.com/Teyras/krunner-tmux-sessions
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/janbuchar/krunner-tmux-sessions
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	depends = tmux
-	depends = krunner5
+	depends = krunner
 	conflicts = plasma-runners-tmux
-	source = https://github.com/Teyras/krunner-tmux-sessions/archive/0.0.5.tar.gz
-	sha1sums = 90c92791ea9eb2fda80c67c2caece5e975a9979b
+	source = https://github.com/janbuchar/krunner-tmux-sessions/archive/0.0.6.tar.gz
+	sha1sums = 5940ec7bbf4a44c4bf1f561a491860034cb4f3e1
 
-pkgname = plasma5-runners-tmux
+pkgname = plasma-runners-tmux

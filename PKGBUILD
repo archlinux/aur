@@ -1,35 +1,35 @@
-pkgname=plasma5-runners-tmux
+pkgname=plasma-runners-tmux
 _srcname=krunner-tmux-sessions
-pkgver=0.0.5
-pkgrel=4
+pkgver=0.0.6
+pkgrel=1
 pkgdesc="Searches running tmux sessions and attaches to them"
 arch=('i686' 'x86_64')
 conflicts=('plasma-runners-tmux')
-depends=('tmux' 'krunner5')
+depends=('tmux' 'krunner')
 makedepends=('cmake' 'extra-cmake-modules')
-url="https://github.com/Teyras/krunner-tmux-sessions"
+url="https://github.com/janbuchar/krunner-tmux-sessions"
 license=('MIT')
-source=(https://github.com/Teyras/krunner-tmux-sessions/archive/${pkgver}.tar.gz)
-sha1sums=('90c92791ea9eb2fda80c67c2caece5e975a9979b')
+source=(https://github.com/janbuchar/krunner-tmux-sessions/archive/${pkgver}.tar.gz)
+sha1sums=('5940ec7bbf4a44c4bf1f561a491860034cb4f3e1')
 
 prepare() {
 	mkdir -p build
 }
-  
+
 build()
 {
 	cd build
-      
+
 	cmake ../${_srcname}-${pkgver} \
-		-DCMAKE_INSTALL_PREFIX=$(kf5-config --prefix) \
-		-DQT_PLUGIN_INSTALL_DIR=$(kf5-config --qt-plugins) \
+		-DCMAKE_INSTALL_LIBEXECDIR='' \
 		-DCMAKE_BUILD_TYPE=Release
-	make
+
+	cmake --build .
 }
-          		  	   
+
 package()
 {
 	cd build
-	make DESTDIR=${pkgdir} install
+	DESTDIR=${pkgdir} cmake --install .
 }
 
