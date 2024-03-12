@@ -1,6 +1,6 @@
 _pkgname=gamescope
 pkgname=${_pkgname}-sk-git
-pkgver=3.14.1.r26.g3e9ab3b
+pkgver=3.14.2.r32.g4e0ce3a
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
@@ -47,7 +47,6 @@ makedepends=(
     glslang
     meson
     ninja
-    openvr-git
     vulkan-headers
     wayland-protocols
 )
@@ -102,6 +101,7 @@ build() {
   arch-meson gamescope build \
     -Dforce_fallback_for=stb,libliftoff,wlroots \
     -Dpipewire=enabled \
+    -Denable_openvr_support=false \
     -Dwlroots:backends=drm,libinput,x11 \
     -Dwlroots:renderers=gles2,vulkan
   ninja -C build
