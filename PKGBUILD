@@ -1,36 +1,89 @@
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 # Maintainer: Niels Martignène <niels.martignene@gmail.com>
 # Contributor: moostik <mooostik_at_gmail.com>
 # Contributor: pressh <pressh funnysymbol gmail dot com>
 # Contributor: vantu5z <vantu5z@mail.ru>
 
-pkgname=convertall
-pkgver=0.8.0
+_pkgname='convertall'
+pkgname=${_pkgname}
+_pkgreponame='ConvertAll'
+_tag='v1.0.0'
+pkgver="${_tag/v/}"
 pkgrel=1
-pkgdesc="Unit conversion program (Qt)"
-arch=('any')
-url="http://convertall.bellz.org/"
-license=('GPL')
-depends=('python-pyqt5' 'desktop-file-utils')
-source=("https://github.com/doug-101/ConvertAll/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        'convertall.desktop')
-sha256sums=('624c8a792b0bc7ff3776499c2c743b32273569efd0567615e570a7e739e8d521'
-            '4f7ac9402580e866b360e07e07bfe1d05311f64f996dcf647094db6de9455212')
+pkgdesc='Convert between units.'
+url='https://github.com/doug-101/ConvertAll'
+arch=('x86_64')
+license=(GPL2)
+depends=(
+	'gtk3'
+	'gstreamer'
+	'gst-plugins-base-libs')
+makedepends=('flutter-engine' 'git' 'yq')
+source=(
+	"git+${url}.git#tag=${_tag}"
+	"flutter::git+https://github.com/flutter/flutter.git"
+	"flutter-engine::git+https://github.com/flutter/engine.git")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
+
+_srcdir="${_pkgreponame}"
+_engine_version=3.19.3
+
+prepare() {
+	cd "${_srcdir}"
+	source '/opt/flutter-engine/pkgbuild-prepare.sh'
+
+	local dartpkg="$(yq -er .name 'pubspec.yaml')"
+	flutter create --project-name="${dartpkg}" --platforms=linux --no-pub --no-overwrite .
+
+	flutter clean
+	flutter pub get
+}
+
+build() {
+	cd "${_srcdir}"
+	source '/opt/flutter-engine/pkgbuild-build.sh'
+
+	flutter build linux --release
+}
 
 package() {
-  cd ConvertAll
+	# Make opt dir
+	install -dm755 "${pkgdir}/opt/${_pkgname}/"
 
-  python install.py -b "${pkgdir}" -p /usr -i /usr/share/pixmaps/convertall
-  rm "${pkgdir}/usr/share/doc/${pkgname}"/{INSTALL,LICENSE}
+	# Executable install
+	cd "${_srcdir}/build/linux/x64/release/bundle"
+	local execfile="$(find . -mindepth 1 -maxdepth 1 -type f -perm /111)"
+	install -Dm755 \
+		"${execfile}" \
+		"${pkgdir}/opt/${_pkgname}/${_pkgname}"
 
-  install -Dm644 icons/convertall-icon.svg \
-    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/convertall.svg"
-  install -Dm644 icons/convertall_lg.png \
-    "${pkgdir}/usr/share/icons/hicolor/64x64/apps/convertall.png"
-  install -Dm644 icons/convertall_med.png \
-    "${pkgdir}/usr/share/icons/hicolor/32x32/apps/convertall.png"
-  install -Dm644 icons/convertall_sm.png \
-    "${pkgdir}/usr/share/icons/hicolor/16x16/apps/convertall.png"
+	# Folders install
+	cp -r 'lib/' "${pkgdir}/opt/${_pkgname}/"
+	cp -r 'data/' "${pkgdir}/opt/${_pkgname}/"
 
-  install -Dm644 "${srcdir}/convertall.desktop" \
-    "${pkgdir}/usr/share/applications/convertall.desktop"
+	# Symlink executable
+	install -dm755 "${pkgdir}/usr/bin"
+	ln -s \
+		"/opt/${_pkgname}/${_pkgname}" \
+		"${pkgdir}/usr/bin/${_pkgname}"
+		
+	# Icon for .desktop
+	install -Dm644 \
+		"${srcdir}/${_srcdir}/assets/launcher/convertall_icon.svg" \
+		"${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
+
+	# .desktop file
+	install -Dm644 <(cat <<- EOF
+		[Desktop Entry]
+		Type=Application
+		Name=ConvertAll
+		Icon=${_pkgname}
+		Exec=/usr/bin/${_pkgname}
+		Comment=${pkgdesc}
+		Categories=Utilities
+		
+		EOF
+	) "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }

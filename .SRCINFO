@@ -1,16 +1,21 @@
 pkgbase = convertall
-	pkgdesc = Unit conversion program (Qt)
-	pkgver = 0.8.0
+	pkgdesc = Convert between units.
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = http://convertall.bellz.org/
-	arch = any
-	license = GPL
-	depends = python-pyqt5
-	depends = desktop-file-utils
-	source = https://github.com/doug-101/ConvertAll/releases/download/v0.8.0/convertall-0.8.0.tar.gz
-	source = convertall.desktop
-	sha256sums = 624c8a792b0bc7ff3776499c2c743b32273569efd0567615e570a7e739e8d521
-	sha256sums = 4f7ac9402580e866b360e07e07bfe1d05311f64f996dcf647094db6de9455212
+	url = https://github.com/doug-101/ConvertAll
+	arch = x86_64
+	license = GPL2
+	makedepends = flutter-engine
+	makedepends = git
+	makedepends = yq
+	depends = gtk3
+	depends = gstreamer
+	depends = gst-plugins-base-libs
+	source = git+https://github.com/doug-101/ConvertAll.git#tag=v1.0.0
+	source = flutter::git+https://github.com/flutter/flutter.git
+	source = flutter-engine::git+https://github.com/flutter/engine.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = convertall
-
