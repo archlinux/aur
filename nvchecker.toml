@@ -1,0 +1,4 @@
+[keepassxc]
+source = "github"
+github = "keepassxreboot/keepassxc"
+use_max_tag = true
