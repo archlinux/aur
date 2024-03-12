@@ -1,14 +1,14 @@
 # Maintainer: Kimiblock Moe
 pkgname=wechat-uos-bwrap
 pkgver=1
-pkgrel=12
+pkgrel=13
 epoch=
 pkgdesc="WeChat Testing with bwrap sandbox"
 arch=('x86_64' 'aarch64')
 url="https://weixin.qq.com/"
 license=('proprietary')
 groups=()
-depends=('snapd-xdg-open-git' 'nss' "wechat-uos" 'libnotify' 'bubblewrap' 'xcb-util-renderutil' 'xcb-util-keysyms' 'xcb-util-image' 'xcb-util-wm' 'libxkbcommon-x11' 'util-linux')
+depends=('nss' "wechat-uos" 'bubblewrap' 'xcb-util-renderutil' 'xcb-util-keysyms' 'xcb-util-image' 'xcb-util-wm' 'libxkbcommon-x11' 'util-linux')
 makedepends=()
 checkdepends=()
 provides=()
