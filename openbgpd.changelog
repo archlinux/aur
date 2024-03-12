@@ -1,3 +1,16 @@
+## 8.4 - 2024-03-07
+    * Rewrite the internal message passing mechanism to use a new
+      memory-safe API.
+
+    * Rewrite most protocol parsers to use the new memory-safe API.
+      Convert the UPDATE parser, all of RTR, as well as both the MRT
+      dump code in bgpd and the parser in bgpctl.
+
+    * Improve RTR logging, error handling and version negotiation.
+
+    * Switch to autoconf 2.71 to generate the supplied configure scripts.
+
+
 ## 8.3 - 2023-10-13
     * bgpd 8.1 and 8.2 could send a bad COMMUNITY attribute when
       non-transitive ext-communities are present. A workaround is to
