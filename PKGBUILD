@@ -2,12 +2,13 @@
 
 pkgname=irpf2023
 pkgver=2023.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Brazilian physical person income tax (IRPF) program (2023 version)'
 arch=('any')
 url='https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda'
 license=('LicenseRef-custom')
 depends=('sh' 'java-runtime=11' 'hicolor-icon-theme')
+optdepends=('gvfs: for importing pre-filled data from a gov.br account')
 makedepends=('icoutils')
 source=("https://downloadirpf.receita.fazenda.gov.br/irpf/${pkgver%%.*}/irpf/arquivos/IRPF${pkgver%%.*}-${pkgver#*.}.zip"
         'irpf.desktop'
