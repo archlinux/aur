@@ -4,16 +4,16 @@
 
 pkgname="pterodactyl-panel"
 pkgver=1.11.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source game server management panel"
 url="https://pterodactyl.io/"
 license=("MIT")
 arch=("any")
-depends=("redis"
-         "mariadb"
-         "php"
+depends=("php"
          "php-gd"
          "php-sodium")
+optdepends=("redis: cache"
+            "mariadb: database")
 makedepends=("composer")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pterodactyl/panel/releases/download/v$pkgver/panel.tar.gz"
         "pterodactyl-queue.service"
