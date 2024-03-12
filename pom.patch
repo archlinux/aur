@@ -1,29 +1,6 @@
 --- old/pom.xml
 +++ new/pom.xml
-@@ -66,11 +66,11 @@
-         <dependency>
-             <groupId>org.tango-controls.atk</groupId>
-             <artifactId>ATKCore</artifactId>
--            <version>[9.3.22, )</version>
-+            <version>[9.3.22, 9.4.3]</version>
-         </dependency>
- 
-         <dependency>
-             <groupId>org.tango-controls.atk</groupId>
-             <artifactId>ATKWidget</artifactId>
--            <version>[9.3.22, )</version>
-+            <version>[9.3.22, 9.4.3]</version>
-         </dependency>
-@@ -102,7 +102,7 @@
-         <dependency>
-             <groupId>org.tango-controls.gui</groupId>
-             <artifactId>ATKPanel</artifactId>
--            <version>[5.11, )</version>
-+            <version>[5.10, 5.11]</version>
-             
-         </dependency>
-     </dependencies>
-@@ -118,7 +118,15 @@
+@@ -119,6 +119,14 @@
  
      <build>
          <plugins>

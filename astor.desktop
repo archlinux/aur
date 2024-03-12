@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Astor
+Exec=/usr/bin/astor
+Icon=astor.png
+Type=Application
+Categories=Control;
