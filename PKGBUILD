@@ -14,7 +14,7 @@ BUILDENV+=(!check)
 pkgname=zed-editor
 pkgver=0.126.2
 _pkgver=$pkgver-pre
-pkgrel=1
+pkgrel=2
 pkgdesc='high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
 url=https://zed.dev
@@ -73,5 +73,5 @@ check() {
 
 package() {
 	cd "$_archive"
-	install -Dm077 -t "$pkgdir/usr/bin/" "target/release/Zed"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/Zed"
 }
