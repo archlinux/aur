@@ -1,0 +1,18 @@
+pkgbase = ttk-themes-breeze-git
+	pkgdesc = Tk version of Breeze and Breeze Dark themes
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/thindil/tkBreeze
+	install = ttk-themes-breeze.install
+	arch = any
+	license = custom:none
+	depends = tcl
+	depends = tk
+	optdepends = ttk-theme-chooser
+	conflicts = ttk-themes
+	conflicts = ttk-themes-breeze
+	replaces = ttk-themes-breeze
+	source = git+https://github.com/thindil/tkBreeze
+	b2sums = SKIP
+
+pkgname = ttk-themes-breeze-git
