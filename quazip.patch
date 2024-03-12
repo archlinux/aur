@@ -1,8 +1,13 @@
 --- OpenBoard-1.7.1rc-240202/OpenBoard.pro	2024-02-02 14:42:21.000000000 +0100
 +++ OpenBoard-1.7.1rc-240202.new/OpenBoard.pro	2024-03-12 15:11:04.682694326 +0100
-@@ -465,8 +465,8 @@
-         LIBS += -lquazip6
-         INCLUDEPATH += "/usr/include/quazip6"
+@@ -462,11 +462,11 @@
+     LIBS += -lX11
+ 
+     greaterThan(QT_MAJOR_VERSION, 5) {
+-        LIBS += -lquazip6
+-        INCLUDEPATH += "/usr/include/quazip6"
++        LIBS += "-lquazip1-qt6"
++        INCLUDEPATH += /usr/include/QuaZip-Qt6-1.4/quazip
      } else {
 -        LIBS += -lquazip5
 -        INCLUDEPATH += "/usr/include/quazip5"
