@@ -9,6 +9,7 @@ pkgbase = cli11-compiled
 	makedepends = cmake
 	makedepends = doxygen
 	conflicts = cli11
+	options = !strip
 	source = cli11-compiled-v2.4.1.tar.gz::https://github.com/CLIUtils/CLI11/archive/refs/tags/v2.4.1.tar.gz
 	sha512sums = 965290d09977672d3bc3c57ca4b89a88c2c09461da6e866b18217d702d4d5a0977588fcb8fef1a3c3804e61ad80d276029f47469cc83dbfdc7021ee35f6b7269
 
