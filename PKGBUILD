@@ -23,6 +23,6 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
   chmod +x "$pkgdir/usr/bin/$pkgname"
 }
