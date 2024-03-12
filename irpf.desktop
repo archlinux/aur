@@ -1,10 +1,11 @@
 [Desktop Entry]
 Version=1.0
-Name=IRPF
+Name=IRPF 2024
 Comment=Programa do Imposto de Renda Pessoa Física
 Path=/usr/bin
 Exec=irpf
 Icon=irpf
+StartupWMClass=serpro-ppgd-app-IRPFPGD
 Terminal=false
 StartupNotify=false
 Type=Application

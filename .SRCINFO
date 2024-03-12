@@ -1,20 +1,20 @@
 pkgbase = irpf
 	pkgdesc = Brazilian physical person income tax (IRPF) program
-	pkgver = 2023.1.5
+	pkgver = 2024.1.0
 	pkgrel = 1
 	url = https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda
 	arch = any
-	license = custom
+	license = LicenseRef-custom
 	makedepends = icoutils
 	depends = sh
 	depends = java-runtime=11
 	depends = hicolor-icon-theme
-	source = https://downloadirpf.receita.fazenda.gov.br/irpf/2023/irpf/arquivos/IRPF2023-1.5.zip
+	source = https://downloadirpf.receita.fazenda.gov.br/irpf/2024/irpf/arquivos/IRPF2024-1.0.zip
 	source = irpf.desktop
 	source = irpf.sh
 	source = LICENSE
-	sha256sums = 88956b8ff78c20e1d9d9ef9aa4f9d1fc7d12422610f739f90419b61fc0db6da4
-	sha256sums = b5026060d73cc78e0c50a8cad2536dc1f186ba0202f1d51551e2411131008430
+	sha256sums = ef6ef96a297783f37cd975cb87c3416c72e69a3410f125b1b944075f17667532
+	sha256sums = 129071a957742e0a3703e3952745b5491698d9cd855daa6c3e174658989e6e90
 	sha256sums = 38a727fe91acce9192fad3cc0235e6110e14279f32ee8efbc45a008cc03eb81f
 	sha256sums = a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67
 
