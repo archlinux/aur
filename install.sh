@@ -88,7 +88,6 @@ fi
 script_name="ddh.sh"
 script_path="/usr/local/bin"
 
-sudo cp ./$script_name $script_path
 sudo chmod +x $script_path/$script_name
 
 echo "Script installed at $script_path/$script_name."
