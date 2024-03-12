@@ -1,21 +1,21 @@
 pkgbase = live2d-kanban-desktop-bin
 	pkgdesc = An AI Based live2d Kanban for Desktop Users Using Electron.基于Electron制作的桌面看板娘，支持日程提醒、小窗模式、ChatGPT集成、网页搜索、本地moc模型加载与独立设置界面等
 	pkgver = 2.8.0
-	pkgrel = 3
-	url = http://studio.zerolite.cn/post/338/waifuproject2-live2d-kanban-desktop/
+	pkgrel = 4
+	url = https://studio.zerolite.cn/2022/07/02/waifuprojv2/
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = gendesk
-	makedepends = asar
 	depends = electron22
-	depends = expat
 	provides = live2d-kanban-desktop
 	conflicts = live2d-kanban-desktop
 	source = live2d-kanban-desktop-2.8.0.tar.gz::https://github.com/JimHans/live2d-kanban-desktop/releases/download/v2.8.0/kanban-desktop-2.8.0-AppImage.tar.gz
 	source = live2dcubismcore.min-2.8.0.js::https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js
+	source = live2d-kanban-desktop-2.8.0.png::https://raw.githubusercontent.com/JimHans/live2d-kanban-desktop/v2.8.0/assets/app.png
 	source = live2d-kanban-desktop.sh
 	sha256sums = ec355432de2d20013c2c80c576dda280da5c4103441f72784a3b998a2af6094f
 	sha256sums = 942783587666a3a1bddea93afd349e26f798ed19dcd7a52449d0ae3322fcff7c
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = 105e68828a678c96212f99c8159ad29c94032f8c2de2a0035af097164b247d7f
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = live2d-kanban-desktop-bin
