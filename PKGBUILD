@@ -138,7 +138,6 @@ _use_lto_suffix=${_use_lto_suffix-y}
 # scheme used by CONFIG_CFI_CLANG. kCFI doesn't require LTO, doesn't
 # alter function references to point to a jump table, and won't break
 # function address equality.
-# ATTENTION!: kCFI is only available in llvm 16
 _use_kcfi=${_use_kcfi-}
 
 # Build the zfs module in to the kernel
@@ -158,18 +157,18 @@ elif [ -n "$_use_llvm_lto" ]  ||  [[ "$_use_lto_suffix" = "n" ]]; then
     pkgsuffix=cachyos
     pkgbase=linux-$pkgsuffix
 fi
-_major=6.7
-_minor=8
+_major=6.8
+_minor=0
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
-_stable=${_major}.${_minor}
-#_stable=${_major}
+#_stable=${_major}.${_minor}
+_stable=${_major}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
-pkgdesc='Linux SCHED-EXT + Cachy Sauce + BORE scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=2
+pkgdesc='Linux SCHED-EXT + Cachy Sauce Kernel by CachyOS with other patches and improvements'
+pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -208,7 +207,7 @@ fi
 # ZFS support
 if [ -n "$_build_zfs" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=c883088df83ced3a2b8b38e6d89a5e63fb153ee4")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=6a58cf0ba7a3db11a5acf041cc503e8b7afb0b56")
 fi
 
 # NVIDIA pre-build module support
@@ -218,9 +217,8 @@ fi
 
 ## List of CachyOS schedulers
 case "$_cpusched" in
-    cachyos) # CachyOS Scheduler (BORE + SCHED-EXT)
-        source+=("${_patchsource}/sched/0001-sched-ext.patch"
-                 "${_patchsource}/sched/0001-bore-cachy.patch");;
+    cachyos|sched-ext) ## SCHED-EXT
+        source+=("${_patchsource}/sched/0001-sched-ext.patch");;
     bore) ## BORE Scheduler
         source+=("${_patchsource}/sched/0001-bore-cachy.patch");;
     rt) ## EEVDF with RT patches
@@ -233,11 +231,7 @@ case "$_cpusched" in
     hardened) ## Hardened Patches with BORE Scheduler
         source+=("${_patchsource}/sched/0001-bore-cachy.patch"
                  "${_patchsource}/misc/0001-hardened.patch");;
-    sched-ext) ## SCHED-EXT
-        source+=("${_patchsource}/sched/0001-sched-ext.patch");;
 esac
-
-
 
 export KBUILD_BUILD_HOST=cachyos
 export KBUILD_BUILD_USER=$pkgbase
@@ -289,12 +283,11 @@ prepare() {
     [ -z "$_cpusched" ] && _die "The value is empty. Choose the correct one again."
 
     case "$_cpusched" in
-        cachyos) scripts/config -e SCHED_BORE -e SCHED_CLASS_EXT;;
+        cachyos|sched-ext) scripts/config -e SCHED_CLASS_EXT;;
         bore|hardened) scripts/config -e SCHED_BORE;;
         eevdf) ;;
         rt) scripts/config -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -e PREEMPT_RT -d PREEMPT_DYNAMIC -d PREEMPT_BUILD;;
         rt-bore) scripts/config -e SCHED_BORE -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -e PREEMPT_RT -d PREEMPT_DYNAMIC -d PREEMPT_BUILD;;
-        sched-ext) scripts/config -e SCHED_CLASS_EXT;;
         *) _die "The value $_cpusched is invalid. Choose the correct one again.";;
     esac
 
@@ -713,9 +706,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('1e0d42507f639eedc3405d08f67d720ecc6fd8d53603886c296d67e51ac6aa89d44e94b2ddef98b3c44f6ea1724ca89db7658efaada025284cd03ffd53e95895'
-        '13ae3342ec770c4fc4a3196379503dcf48e756073b785e20431b039536b85eddf51c33e7be907be3083f78874ebb480fe66d64de31412939a0fc0b1e301131d5'
+b2sums=('c6f17f816cea16e629f63e9379b98888713f57b2c5173306926471f139a9d612a0c74e119341f8075390e55e203d787d9edeb4ad5a064b18870f6f0f7ffaafb2'
+        'd663b890dc2e505a1892b42881bbac4965b7528c7cd8672d153b8659f6b3a8136314c7f5a17b9d1434d55310aae781532238d66f565ce9ae5f74c57e42edf736'
         '43ef7a347878592740d9eb23b40a56083fa747f7700fa1e2c6d039d660c0b876d99bf1a3160e15d041fb13d45906cdb5defef034d4d0ae429911864239c94d8d'
-        '99c37ab91632fd6dd1bab52f4bcb1e243c0ccc0ede860c6cf6523ef62f07b47350f55d613d995bbde51b04f445b975e92d54796050b5c4b52f31e426871a902e'
-        '8d6a5fd99be7f637a2d18f9034ba2298f28f24d706f1a7f6a7afe54cea93752e2acac82b720a5c0d7495a51cdb564f5a1dd43d9c64e7b5a3dc3baeb63f24cf63'
-        '342d9eeeab8a46bad9e744d9e9f857b123f92e1b5dd7af1e9fdcf5f85652ae98de2062545482664278c1bd63682bc71b3ea590d6426ee365518cf2847a19af6d')
+        '5a6eadbd3a69a089eacf46dda698e49e8bd267bb60228d44720e5e1ddc621089d7a29bec16471cfc45b30e4405fd2865964e556cfb36be2d289e609f34947657'
+        '9661b9cb2e3337c59db846aad96944858de6ea3ed5f515c9171a86c68e52b75d5b54302f14d0f766f65daff25dd481edb8d3ee51f379ac8ae96f5585e38c1351')
