@@ -1,0 +1,24 @@
+pkgbase = snappy-player
+	pkgdesc = Powerful media player with a minimalistic interface
+	pkgver = 1.0
+	pkgrel = 9
+	url = https://wiki.gnome.org/Apps/Snappy
+	arch = x86_64
+	license = GPL
+	depends = gst-plugins-base
+	depends = clutter-gst
+	depends = clutter-gtk
+	optdepends = gst-plugins-good: Extra media codecs
+	optdepends = gst-plugins-bad: Extra media codecs
+	optdepends = gst-plugins-ugly: Extra media codecs
+	optdepends = gst-libav: Extra media codecs
+	source = https://download.gnome.org/sources/snappy/1.0/snappy-1.0.tar.xz
+	source = snappy.appdata.xml
+	source = 0001-Set-windowing-backend-to-X11.patch
+	source = clutter-gst3.patch
+	sha256sums = 0d33a05c1ad3cc075b8b9bf38d45634ea5204159454597b0882dd6a8d9763f58
+	sha256sums = 5e92ab0d1517e76160ef828da84826a1b3c6f59139e5f2c1399f33a7a8ceeceb
+	sha256sums = cfd50c1768d206feb3bb7310e53363ca02a78ce200b1e2ba7b16bccd4720b176
+	sha256sums = 0c9e0f5cacd03c204871e301e11e5cc904e7fbece38f0162ff63b3e2b3bbc7bf
+
+pkgname = snappy-player
