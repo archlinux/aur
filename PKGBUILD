@@ -3,8 +3,9 @@
 
 
 pkgname=openboard-develop
-pkgver=1.6.1
-_src_folder="OpenBoard-${pkgver}"
+_pkgver=1.7.1rc-240202
+pkgver=${_pkgver%rc*}
+_src_folder="OpenBoard-${_pkgver}"
 pkgrel=2
 pkgdesc="Interactive whiteboard software for schools and universities (development version)"
 arch=('x86_64' 'i686')
@@ -12,15 +13,15 @@ url="http://openboard.ch/index.en.html"
 license=('GPL3')
 provides=("${pkgname%-develop}=${pkgver}")
 conflicts=("${pkgname%-develop}")
-depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'qt5-script' 'qt5-webkit' 'qt5-tools' 'qt5-xmlpatterns' 'libpaper' 'bzip2' 'openssl' 'libfdk-aac' 'sdl' 'ffmpeg')
+depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'qt5-script' 'qt5-webkit' 'qt5-tools' 'qt5-xmlpatterns' 'qt5-webengine' 'libpaper' 'bzip2' 'openssl' 'libfdk-aac' 'sdl' 'ffmpeg')
 depends+=(quazip-qt5)  #drop internal quazip and use system one.
 depends+=(poppler) #replace internal xpdf with poppler and drop freetype/xpdf from deps
-source=("https://github.com/OpenBoard-org/OpenBoard/archive/v${pkgver}.tar.gz"
+source=("openboard_v${_pkgver}.tar.gz::https://github.com/OpenBoard-org/OpenBoard/archive/v${_pkgver}.tar.gz"
         openboard.desktop)
 source+=(qchar.patch)
 source+=(quazip.patch)
 source+=(drop_ThirdParty_repo.patch)
-sha256sums=('cf5bfb570b9ac4e61e1670c5a433f1dcaf0de1e8dbcbd544f058711690afba79'
+sha256sums=('99cef28d0b40f2f7904552456f26c4c3f8a653088e2f189c5036f4a8bf26e43c'
             '18ee4fab83b0c92490c81c2aaace98f669d07d7260cc0f83a24acb8d6224e5e7'
             'b40fdab85f5921d0404c07db64628a2428a87d39193d2797bbef2e69b1d51549'
             'da603ed16eb15cb81f641aaf669963553f16c823688eb27b788d36892edb35b2'

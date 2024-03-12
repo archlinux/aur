@@ -1,6 +1,6 @@
 pkgbase = openboard-develop
 	pkgdesc = Interactive whiteboard software for schools and universities (development version)
-	pkgver = 1.6.1
+	pkgver = 1.7.1
 	pkgrel = 2
 	url = http://openboard.ch/index.en.html
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = openboard-develop
 	depends = qt5-webkit
 	depends = qt5-tools
 	depends = qt5-xmlpatterns
+	depends = qt5-webengine
 	depends = libpaper
 	depends = bzip2
 	depends = openssl
@@ -21,18 +22,17 @@ pkgbase = openboard-develop
 	depends = ffmpeg
 	depends = quazip-qt5
 	depends = poppler
-	provides = openboard=1.6.1
+	provides = openboard=1.7.1
 	conflicts = openboard
-	source = https://github.com/OpenBoard-org/OpenBoard/archive/v1.6.1.tar.gz
+	source = openboard_v1.7.1rc-240202.tar.gz::https://github.com/OpenBoard-org/OpenBoard/archive/v1.7.1rc-240202.tar.gz
 	source = openboard.desktop
 	source = qchar.patch
 	source = quazip.patch
 	source = drop_ThirdParty_repo.patch
-	sha256sums = cf5bfb570b9ac4e61e1670c5a433f1dcaf0de1e8dbcbd544f058711690afba79
+	sha256sums = 99cef28d0b40f2f7904552456f26c4c3f8a653088e2f189c5036f4a8bf26e43c
 	sha256sums = 18ee4fab83b0c92490c81c2aaace98f669d07d7260cc0f83a24acb8d6224e5e7
 	sha256sums = b40fdab85f5921d0404c07db64628a2428a87d39193d2797bbef2e69b1d51549
 	sha256sums = da603ed16eb15cb81f641aaf669963553f16c823688eb27b788d36892edb35b2
 	sha256sums = a6a9bc1f9c9bee0345b735fcf422245ae7946f96f6c34520dd63530a98978c14
 
 pkgname = openboard-develop
-
