@@ -1,14 +1,14 @@
 pkgbase = walker
 license = MIT
 pkgdesc = wayland application runner
-pkgver = 0.0.3
+pkgver = 0.0.4
 pkgrel = 1
 url = https://github.com/abenz1267/walker
 arch = x86_64
 provides = walker
 conflicts = walker
-source = https://github.com/abenz1267/walker/archive/v0.0.3/walker-0.0.3.tar.gz
-sha256sums = 6b487cbc0dcde7635d2833ecaad05e491efefb6189abb6c6742ad9e9e227f1b0
-b2sums = dd1a6fe8c3958a7ff7a73920f7aa67605c7e6893f33a98d6b057ced06d9c0d4989ba830a36e0ca80fd1cd914636060c261a0da00cdf71e1f378979a4d94a5682
+source = https://github.com/abenz1267/walker/archive/v0.0.4/walker-0.0.4.tar.gz
+sha256sums = e8ff20855450aaf63602bed10ed7a71a9be1b53c711030741c299d57882485da
+b2sums = 239e9da53fff1ad0b2eb56f2a013575eeba9d653f7d52d19b3eebe784cc156140eab18503c32b2ef15871c65d498a8664d5a1660eedce415f95fef8c7f4f05d0
 
 pkgname = walker
