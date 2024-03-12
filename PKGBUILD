@@ -2,22 +2,21 @@
 
 pkgbase=reactphysics3d
 pkgname=(reactphysics3d reactphysics3d-docs)
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Physics engine'
 arch=(x86_64)
 url='https://www.reactphysics3d.com'
-license=(ZLIB)
+license=(Zlib)
 makedepends=(cmake ninja)
-source=("https://github.com/DanielChappuis/reactphysics3d/releases/download/v$pkgver/reactphysics3d-$pkgver.tar.gz"
-        "https://www.reactphysics3d.com/documentation/manual/ReactPhysics3D-UserManual.pdf"
+source=("$url/documentation/manual/ReactPhysics3D-UserManual.pdf"
+        "https://github.com/DanielChappuis/reactphysics3d/releases/download/v$pkgver/reactphysics3d-$pkgver.tar.gz"
         $pkgbase.pc)
-b2sums=('b181f4a4a79d471e04316f84eef3aeefb685c5d1f7ba9eaa8428b04e9da04423848fac9fc668b2a0bc8e931674dd42758817fe929b282a3a9052919f44c81e35'
-        '5f5bc9304b6fc0a7d3e87c2c500ddd9102cf121b91262f37e8ff9843ef22ca6d7621672cd839d18772042a85e0ff4f4cd90d05bf682f851f1ece6838fd78001a'
+b2sums=('e4c03217bf04189b2ecd225af8e1d0b089c61135afbd32d207645936c6adf9902b6390a7da5c19d88945e134b2864f69c7bc96ab12897dc11235cb1906b5a02f'
+        '4aa5807b7f6d4a310c38e6aa315a778822fa54c5e7ebdde7c82a68458b6123b7e33c827d1587b9ccc87c82cca3f8620eab23e2139f15344b87e56f1fe8a25603'
         '05a7ffbe133de300240946ea601cf04df8fa54c8fab26ff087979c76416158c12d3d744055aa784cbc39820a31b534114bdf879380abdae819adea42b5844317')
 
 prepare() {
-  find $pkgbase -name .DS_Store
   find $pkgbase -name .DS_Store -delete
 }
 
@@ -38,6 +37,7 @@ build() {
 
 package_reactphysics3d() {
   depends=(gcc-libs)
+
   DESTDIR="$pkgdir" ninja -C build install
   install -Dm644 $pkgbase.pc \
     "$pkgdir/usr/lib/pkgconfig/$pkgbase.pc"
@@ -47,10 +47,9 @@ package_reactphysics3d() {
 
 package_reactphysics3d-docs() {
   pkgdesc='Physics engine (user manual)'
+
   install -Dm644 ReactPhysics3D-UserManual.pdf \
     "$pkgdir/usr/share/doc/$pkgname/UserManual.pdf"
   install -Dm644 $pkgbase/LICENSE \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# getver: github.com/DanielChappuis/reactphysics3d/releases

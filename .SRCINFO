@@ -1,0 +1,21 @@
+pkgbase = reactphysics3d
+	pkgdesc = Physics engine
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://www.reactphysics3d.com
+	arch = x86_64
+	license = Zlib
+	makedepends = cmake
+	makedepends = ninja
+	source = https://www.reactphysics3d.com/documentation/manual/ReactPhysics3D-UserManual.pdf
+	source = https://github.com/DanielChappuis/reactphysics3d/releases/download/v0.10.0/reactphysics3d-0.10.0.tar.gz
+	source = reactphysics3d.pc
+	b2sums = e4c03217bf04189b2ecd225af8e1d0b089c61135afbd32d207645936c6adf9902b6390a7da5c19d88945e134b2864f69c7bc96ab12897dc11235cb1906b5a02f
+	b2sums = 4aa5807b7f6d4a310c38e6aa315a778822fa54c5e7ebdde7c82a68458b6123b7e33c827d1587b9ccc87c82cca3f8620eab23e2139f15344b87e56f1fe8a25603
+	b2sums = 05a7ffbe133de300240946ea601cf04df8fa54c8fab26ff087979c76416158c12d3d744055aa784cbc39820a31b534114bdf879380abdae819adea42b5844317
+
+pkgname = reactphysics3d
+	depends = gcc-libs
+
+pkgname = reactphysics3d-docs
+	pkgdesc = Physics engine (user manual)
