@@ -1,6 +1,6 @@
-pkgbase = ra-multiplex
-	pkgdesc = allows multiple LSP to share a single rust-analyzer instance per cargo workspace.
-	pkgver = 0.2.0
+pkgbase = ra-multiplex-git
+	pkgdesc = Share one rust-analyzer server instance between multiple LSP clients to save resources
+	pkgver = v0.2.2.r55.g1db8eb0
 	pkgrel = 1
 	url = https://github.com/pr2502/ra-multiplex
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = ra-multiplex
 	makedepends = rustup
 	depends = rust-analyzer
 	provides = ra-multiplex
-	provides = ra-multiplex-server
-	source = ra-multiplex::git+https://github.com/pr2502/ra-multiplex.git#tag=v0.2.0
+	source = ra-multiplex-git::git+https://github.com/pr2502/ra-multiplex.git
 	sha256sums = SKIP
 
-pkgname = ra-multiplex
+pkgname = ra-multiplex-git
