@@ -2,9 +2,9 @@
 # Contributor: GI Jack <GI_Jack@hackermail.com>\
 
 pkgname=python-rich-click
-_name=${pkgname#python-}
-pkgver=1.7.3
-pkgrel=2
+_pkgname=${pkgname#python-}
+pkgver=1.7.4
+pkgrel=1
 pkgdesc="Python module to format click help output nicely with Rich."
 arch=(any)
 url="https://github.com/ewels/rich-click"
@@ -22,10 +22,10 @@ makedepends=(
   python-wheel
 )
 checkdepends=(python-pytest)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a55419359e4b30da0cf3156977885b784530edaf648030f509acb165fb8fb589')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('6cfcc28657c1017acc01d8acdbfba932d494dbc036029253712655fd5409ce62')
 
-_archive="$_name-$pkgver"
+_archive="$_pkgname-$pkgver"
 
 build() {
   cd "$_archive"
