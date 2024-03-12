@@ -1,0 +1,24 @@
+pkgbase = notepad--
+	pkgdesc = 个国产跨平台、轻量级的文本编辑器，是替换notepad++的一种选择。其内置强大的代码对比功能，让你丢掉付费的beyond compare。
+	pkgver = 2.14
+	pkgrel = 1
+	url = https://gitee.com/cxasm/notepad--
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = base-devel
+	makedepends = qt5-tools
+	makedepends = qt5-xmlpatterns
+	makedepends = qscintilla-qt5
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	depends = qt5-base
+	provides = notepad--
+	source = notepad--.git::git+https://gitee.com/cxasm/notepad--.git#tag=v2.14
+	sha256sums = SKIP
+
+pkgname = notepad--
