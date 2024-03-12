@@ -1,4 +1,4 @@
-# Maintainer: Jim Dee Kepeler <jimdee at github dot comm>
+# Maintainer: Jim Dee Kepler <jimdee at github dot comm>
 pkgname=scrolltext
 _name=${pkgname#python-}
 pkgver=0.0.8
