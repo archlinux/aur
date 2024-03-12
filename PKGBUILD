@@ -1,7 +1,7 @@
 # Maintainer: Federico Maria Morrone <aur at morrone dot dev>
 
 pkgname=hyprland-cmake-git
-pkgver=0.36.0.r100.a065b481
+pkgver=0.36.0.r102.g5da95917
 pkgrel=1
 pkgdesc="a highly customizable dynamic tiling Wayland compositor that doesn't sacrifice on its looks."
 arch=(x86_64 aarch64)
@@ -68,34 +68,16 @@ prepare() {
 
 build() {
         cd Hyprland
-        make release
+        cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:STRING=${PREFIX} -S . -B ./build -G Ninja
+	cmake --build ./build --config Release --target all -j`nproc 2>/dev/null || getconf NPROCESSORS_CONF`
 }
 
 pkgver() {
-        git -C Hyprland describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
+        git -C Hyprland describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' |
+                sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
         cd Hyprland
-        find src \( -name '*.h' -o -name '*.hpp' \) -exec install -Dm0644 {} "$pkgdir/usr/include/hyprland/{}" \;
-        pushd subprojects/wlroots/include
-        find . -name '*.h' -exec install -Dm0644 {} "$pkgdir/usr/include/hyprland/wlroots/{}" \;
-        popd
-        pushd subprojects/wlroots/build/include
-        find . -name '*.h' -exec install -Dm0644 {} "$pkgdir/usr/include/hyprland/wlroots/{}" \;
-        popd
-        mkdir -p "$pkgdir/usr/include/hyprland/protocols"
-        cp protocols/*-protocol.h "$pkgdir/usr/include/hyprland/protocols"
-        pushd build
-        cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-        popd
-        install -Dm0644 -t "$pkgdir/usr/share/pkgconfig" build/hyprland.pc
-        install -Dm0644 -t "$pkgdir/usr/share/man/man1" docs/{Hyprland,hyprctl}.1
-        install -Dm0755 -t "$pkgdir/usr/bin/" build/Hyprland build/hyprctl/hyprctl build/hyprpm/hyprpm
-        install -Dm0644 -t "$pkgdir/usr/share/hyprland/" assets/*.png
-        install -Dm0644 -t "$pkgdir/usr/share/wayland-sessions/" "example/hyprland.desktop"
-        install -Dm0644 -t "$pkgdir/usr/share/hyprland/" "example/hyprland.conf"
-        install -Dm0644 -t "$pkgdir/usr/share/licenses/hyprland/" LICENSE
-        find subprojects/wlroots/build -name 'libwlroots.so.*' -type f -execdir \
-                install -Dm0755 -t "$pkgdir/usr/lib/" {} \;
+        make PREFIX=$pkgdir/usr/local install
 }

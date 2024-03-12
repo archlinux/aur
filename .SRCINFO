@@ -1,6 +1,6 @@
 pkgbase = hyprland-cmake-git
 	pkgdesc = a highly customizable dynamic tiling Wayland compositor that doesn't sacrifice on its looks.
-	pkgver = 0.36.0.r93.335506d5
+	pkgver = 0.36.0.r102.g5da95917
 	pkgrel = 1
 	url = https://github.com/hyprwm/Hyprland
 	arch = x86_64
