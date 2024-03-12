@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=IRPF 2023
+Comment=Programa do Imposto de Renda Pessoa Física (versão 2023)
+Path=/usr/bin
+Exec=irpf2023
+Icon=irpf2023
+StartupWMClass=serpro-ppgd-app-IRPFPGD
+Terminal=false
+StartupNotify=false
+Type=Application
+Categories=Application;
