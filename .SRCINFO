@@ -1,15 +1,16 @@
 pkgbase = pipewire-module-xrdp-git
 	pkgdesc = xrdp pipewire module
 	pkgver = r19.ge9c6c05
-	pkgrel = 1
-	url = https://github.com/matt335672/pipewire-module-xrdp
+	pkgrel = 2
+	url = https://github.com/neutrinolabs/pipewire-module-xrdp
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	depends = libpipewire
+	depends = libpipewire>=0.3.58
+	depends = bash
 	provides = pipewire-module-xrdp
 	conflicts = pipewire-module-xrdp
-	source = git+https://github.com/matt335672/pipewire-module-xrdp.git
+	source = git+https://github.com/neutrinolabs/pipewire-module-xrdp.git
 	sha256sums = SKIP
 
 pkgname = pipewire-module-xrdp-git

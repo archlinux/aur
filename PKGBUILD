@@ -1,14 +1,14 @@
 pkgname=pipewire-module-xrdp-git
 pkgver=r19.ge9c6c05
-pkgrel=1
+pkgrel=2
 pkgdesc="xrdp pipewire module"
 license=("MIT")
-depends=("libpipewire")
+depends=("libpipewire>=0.3.58" "bash")
 makedepends=("git")
 conflicts=("pipewire-module-xrdp")
 provides=("pipewire-module-xrdp")
 arch=("x86_64")
-url="https://github.com/matt335672/pipewire-module-xrdp"
+url="https://github.com/neutrinolabs/pipewire-module-xrdp"
 source=("git+$url.git")
 sha256sums=('SKIP')
 
@@ -28,4 +28,5 @@ build(){
 package(){
     cd "$srcdir/pipewire-module-xrdp"
     DESTDIR="$pkgdir" make install
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/pipewire-module-xrdp-git/LICENSE"
 }
