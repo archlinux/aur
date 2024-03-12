@@ -1,0 +1,15 @@
+pkgbase = stylish-icon-theme-git
+	pkgdesc = Modern icon theme for Linux Desktops
+	pkgver = 24.03.r1.gb0e4cb85
+	pkgrel = 1
+	url = https://github.com/mjkim0727/Stylish-icon-theme
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	options = !strip
+	source = git+https://github.com/mjkim0727/Stylish-icon-theme.git
+	sha256sums = SKIP
+
+pkgname = stylish-icon-theme-git
