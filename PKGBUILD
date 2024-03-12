@@ -4,10 +4,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Geoffroy Carrier <geoffroy@archlinux.org>
 # Maintainer: Cooky-12 cooky-12@qq.com
-
+provides=('bluez')
 pkgname=('bluez-ps3')
 pkgver=5.73
-pkgrel=0
+pkgrel=1
 url="http://www.bluez.org/"
 arch=('x86_64')
 license=('GPL-2.0-only')
