@@ -1,0 +1,17 @@
+pkgbase = chatbar-bin
+	pkgdesc = ChatGPT in the menu Bar
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://www.chatbar.top/
+	arch = x86_64
+	license = LicenseRef-unknown
+	makedepends = fuse2
+	depends = electron28
+	provides = chatbar=1.1.1
+	conflicts = chatbar
+	source = chatbar-1.1.1.AppImage::https://github.com/rabrain/chat-bar-site/releases/download/v1.1.1/ChatBar-1.1.1.AppImage
+	source = chatbar.sh
+	sha256sums = c0cea150a76ebb1d19befc00b4238892319b00e647c2ec1d2566bbd98c3ccc56
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+
+pkgname = chatbar-bin
