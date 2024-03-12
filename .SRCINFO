@@ -1,17 +1,17 @@
 pkgbase = cro-chain-desktop
 	pkgdesc = Crypto.com DeFi Desktop Wallet
-	pkgver = 1.4.9
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/crypto-com/chain-desktop-wallet
 	arch = x86_64
 	license = Apache
 	makedepends = yarn
-	makedepends = fnm
+	makedepends = nvm
 	depends = electron19
-	source = chain-desktop-wallet-1.4.9.tar.gz::https://api.github.com/repos/crypto-com/chain-desktop-wallet/tarball/0233a3b204d8eab507cabff8ac3acbde486ff965
+	source = chain-desktop-wallet-1.5.0-b1ead08.tar.gz::https://api.github.com/repos/crypto-com/chain-desktop-wallet/tarball/b1ead085a6afa85f70dd8f334f0bdfc3259d2575
 	source = chain-desktop-wallet.desktop
 	source = chain-desktop-wallet.sh
-	sha512sums = d4ada998afc41543885b284b17d86e6550586d761966e2dc2aa42ce114affe4e0c08127ce67fedd96398bbb7a8d80d9a821af8bacf76db7f5bf26bc833ca778f
+	sha512sums = b7d0f979320736456d98b7333be2665edbd7f6e45f9be54e8308286e7a46ae32404772b00d03a414e95a4e6a2b0a56968dbe0d2e91532673326fe5297e711d7f
 	sha512sums = f7e4d91d7078a1d627995ffec39b4b67239827dbab0651909238a718ac4538bd6316c8f87430b244b13f617214171d6283ae3b1c268827b3d49f8dead5d2d71a
 	sha512sums = ed69cea003c265da10b205a96423a00efc508d29b0ae82a628aa1aca36f76ddc95adcb89150b2f2205d076f5f3189cfbe5a729c034186026105648720ff39960
 
