@@ -2,7 +2,7 @@
 
 pkgname=lightly-qt6-git
 pkgver=0.4.1.r73.g00ca2344
-pkgrel=2
+pkgrel=3
 _branch=qt6
 pkgdesc="A modern style for qt applications. (qt6 branch)"
 url="https://github.com/boehs/Lightly"
