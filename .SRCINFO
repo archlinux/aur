@@ -1,10 +1,12 @@
 pkgbase = chromium-extension-privacybadger
 	pkgdesc = Block third party tracking in your browser
 	pkgver = 2024.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://privacybadger.org/
 	arch = any
 	license = GPL3
+	makedepends = jq
+	makedepends = openssl
 	depends = chromium
 	source = chromium-extension-privacybadger-2024.2.6::https://github.com/EFForg/privacybadger/archive/refs/tags/release-2024.2.6.tar.gz
 	source = privacybadger.pem
