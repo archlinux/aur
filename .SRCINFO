@@ -16,7 +16,7 @@ pkgbase = mesasdk
 	provides = mesasdk
 	options = staticlibs
 	options = !strip
-	source = http://user.astro.wisc.edu/~townsend/resource/download/mesasdk/mesasdk-x86_64-linux-21.4.1.tar.gz
+	source = http://user.astro.wisc.edu/~townsend/resource/download/mesasdk/mesasdk-x86_64-linux-23.7.3.tar.gz
 	sha1sums = e8930565f7bed92b104aeee9186649e4f85d17e0
 
 pkgname = mesasdk
