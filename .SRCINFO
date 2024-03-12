@@ -12,7 +12,6 @@ pkgbase = brave-nightly-bin
 	depends = libxss
 	depends = ttf-font
 	optdepends = cups: Printer support
-	optdepends = pepper-flash: Adobe Flash support
 	optdepends = mesa: Hardware accelerated rendering
 	optdepends = libglvnd: Support multiple different OpenGL drivers at any given time
 	optdepends = libgnome-keyring: gnome keyring support
