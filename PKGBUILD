@@ -22,7 +22,7 @@ sha512sums=("SKIP")
 
 build()
 {
-    for status in "OFF" "ON"; do
+    for status in "ON" "OFF"; do
         cmake -B "${srcdir}"/"${pkgname}"/build/ -D BUILD_BENCHMARK=OFF -D BUILD_TESTING="${status}" -D CMAKE_BUILD_TYPE=None -D CMAKE_INSTALL_PREFIX=/usr/ -D COVERALLS=OFF -D INJA_BUILD_TESTS="${status}" -D INJA_EXPORT=ON -D INJA_INSTALL=ON -D INJA_INSTALL_SINGLE_HEADER=ON -D INJA_USE_EMBEDDED_JSON=OFF -S "${srcdir}"/"${pkgname}"/ -Wno-dev
         cmake --build "${srcdir}"/"${pkgname}"/build/
     done
@@ -31,8 +31,7 @@ build()
 check()
 {
     cd "${srcdir}"/"${pkgname}"/build/ || exit 1
-    ./inja_test
-    ./single_inja_test
+    ctest --output-on-failure --test-dir "${srcdir}"/"${pkgname}"/build/
 }
 
 package()
