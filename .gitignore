@@ -2,3 +2,5 @@ src/
 pkg/
 *.zst
 *.zip
+nohup.out
+*.log

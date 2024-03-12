@@ -3,17 +3,18 @@
 
 _extension=better-mystudies
 pkgname="chromium-extension-$_extension"
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="A chromium extension to improve ETHZ websites Resources"
 arch=('any')
 url="https://github.com/timothelaborie/better_mystudies"
 license=('custom:none')
-makedepends=('chromium' 'openssl' 'jq')
+depends=('chromium')
+makedepends=('openssl' 'jq')
 source=("$_extension-$pkgver.zip::$url/archive/refs/heads/main.zip"
         "$_extension.pem")
 # noextract=("$_extension-$pkgver.zip::$url/archive/refs/heads/main.zip")
-sha256sums=('e5a4b6e6c15ab3361970912226ef7eb53848895d19f98926dca8b73bef081fa3'
+sha256sums=('846969e1a1c93e0c6e20586488ebd86e339515c0efd123a8516887dbf2f0c656'
             'da8247fe2cea25c6a3022ad906e31a8b889cbd5ca9cdb076731973d202eab1ba')
 
 build() {
