@@ -1,6 +1,6 @@
 pkgbase = poi-bin
 	pkgdesc = Scalable KanColle browser and tool
-	pkgver = 11.0.0
+	pkgver = 11.0.0.beta.6
 	pkgrel = 1
 	url = https://github.com/poooi/poi/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = poi-bin
 	provides = poi
 	conflicts = poi
 	options = !strip
-	source = https://github.com/poooi/poi/releases/download/v11.0.0-beta.5/poi_11.0.0-beta.5_amd64.deb
-	sha256sums = 7e979f958dca1aa78852301e1d842c2f05b4170295fcfa1538258865f573dd91
+	source = https://github.com/poooi/poi/releases/download/v11.0.0-beta.6/poi_11.0.0-beta.6_amd64.deb
+	sha256sums = ffc29d129b1dd528c51acdf5ac883f69cfe9ea476e10d0cc77b38d182643ed02
 
 pkgname = poi-bin

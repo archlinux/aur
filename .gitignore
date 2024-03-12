@@ -1,3 +1,4 @@
 src/
 pkg/
-poi*
+*.deb
+*.tar.zst
