@@ -1,11 +1,11 @@
 pkgbase = poe
 	pkgdesc = .po file editor
-	pkgver = 1.7.6
+	pkgver = 1.7.7
 	pkgrel = 1
 	url = https://strahinja.srht.site/poe
 	arch = x86_64
 	license = GPL3
-	source = poe-1.7.6.tar.gz::https://git.sr.ht/~strahinja/poe/archive/v1.7.6.tar.gz
-	md5sums = 0244a6c33817386d62ef9de19a28fd07
+	source = poe-1.7.7.tar.gz::https://git.sr.ht/~strahinja/poe/archive/v1.7.7.tar.gz
+	md5sums = ae4e8e98c8eaf8c5576b0eff5fdc2fee
 
 pkgname = poe
