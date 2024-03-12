@@ -6,11 +6,11 @@
 _pkgname="wings3d"
 pkgname="$_pkgname"
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='3D modeler using the winged edge data structure'
-arch=(x86_64)
 url='http://www.wings3d.com/' # https is not available
-license=(GPL)
+license=('GPL-2.0-or-later')
+arch=('x86_64')
 
 depends=(
   erlang
@@ -24,18 +24,23 @@ optdepends=(
   'povray: render scenes with POV-Ray'
 )
 
-_pkgext="tar.bz2"
 _pkgsrc="${_pkgname%3d}-$pkgver"
+_pkgext="tar.bz2"
 source=(
   "$_pkgname-$pkgver.$_pkgext"::"https://sourceforge.net/projects/wings/files/wings/$pkgver/wings-$pkgver.$_pkgext"
-  wings.sh
 )
 sha256sums=(
   '7447fa88f6cf08b98caaf5a3be0111395002656f120ac5ca8b74d696273e6f0b'
-  '3f0186e59ea13d5de7fd882e148189cc233c5898903e83fcb01fb7bb6fa998b0'
 )
 
 prepare() {
+  cat > "$_pkgname.sh" <<'END'
+#!/usr/bin/env bash
+GDK_BACKEND=x11 exec /usr/bin/erl -noinput -smp \
+  -pa /usr/lib/wings3d/ebin \
+  -run wings_start start_halt "$@"
+END
+
   local _gendesk_options=(
     -f
     -n
@@ -59,13 +64,11 @@ build() {
 }
 
 package() {
-  install -Dm755 "wings.sh" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 "$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
 
   cd "$_pkgsrc"
-  for i in 48 256 ; do
-    install -Dm644 "icons/wings_icon_${i}x${i}.png" "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
-  done
+  install -Dm644 "icons/wings_icon_379x379.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
   install -Dm644 unix/wings.appdata.xml "$pkgdir/usr/share/metainfo/$pkgname.appdata.xml"
 
@@ -74,5 +77,5 @@ package() {
   cp --reflink=auto -r "$_pkgsrc-linux/lib/$_pkgsrc"/* "$pkgdir/usr/lib/$_pkgname/"
 
   # fix permissions
-  chmod -R u=rwX,go=rX "$pkgdir"
+  chmod -R u=rwX,go=rX,go-w "$pkgdir"
 }
