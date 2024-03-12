@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=BioNAR
-_pkgver=1.4.1
+_pkgver=1.4.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Biological Network Analysis in R"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(Artistic2.0)
+license=('Artistic-2.0')
 depends=(
   r-annotationdbi
   r-clustercons
@@ -50,9 +50,17 @@ optdepends=(
   r-testthat
   r-vdiffr
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cce2273d564095b70d5b18aa6d134612')
-b2sums=('38bb15d26fa8dfa321e9ea801f949c39ac51189faf62aaa703e3ee2431261771e3485562f4b6ce6fe2311bbeec25875fd2b5a108911c84f16942805bb28752ae')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
+        "fix-tests.patch")
+md5sums=('60ea801489d5db3a2bb2e00d1acc1056'
+         '4a0d1366b4a7d786d07d1553c9a7899e')
+b2sums=('9a2a1a98ccff8e9d8054295f5b53321dcd03f9d996a1931f4e6a51c98af378ac2d0e0ef9a1ff51e43b15ff795ac523305037197d6b0e63ddd2f4aeeb28f6ff34'
+        '5bcc25f82c45ce8442351f73a851f34bf2c76b286dd708141882f928876d02fba213e8760146cd3115d298985aa062fb67d9a5d89ea7a62687d65fdfb3349a84')
+
+prepare() {
+  # fix test snapshots
+  patch -Np1 -i fix-tests.patch
+}
 
 build() {
   mkdir build
