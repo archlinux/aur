@@ -3,12 +3,12 @@
 _pkgname=clValid
 _pkgver=0.7
 pkgname=r-${_pkgname,,}
-pkgver=0.7
-pkgrel=4
-pkgdesc='Validation of Clustering Results'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('LGPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Validation of Clustering Results"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('LGPL-3.0-only')
 depends=(
   r
 )
@@ -22,14 +22,15 @@ optdepends=(
   r-rankaggreg
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('037da469891462021eb177f9c9e18caefa8532f08c68fb576fae1668a1f451a1')
+md5sums=('9e7b76ee97d9027dbcaeb5931d583bc9')
+b2sums=('53fc62181c0adf5adc9f72652aa43ed08ea4dae47fb58e98718b9a465901d683816f104b1a11ee95989ed2e55add63526e399c9efc13fe9e6d08d495d7b5d622')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

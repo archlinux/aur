@@ -1,10 +1,10 @@
 pkgbase = r-clvalid
 	pkgdesc = Validation of Clustering Results
 	pkgver = 0.7
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=clValid
 	arch = any
-	license = LGPL
+	license = LGPL-3.0-only
 	depends = r
 	optdepends = r-annotate
 	optdepends = r-biobase
@@ -14,6 +14,7 @@ pkgbase = r-clvalid
 	optdepends = r-moe430a.db
 	optdepends = r-rankaggreg
 	source = https://cran.r-project.org/src/contrib/clValid_0.7.tar.gz
-	sha256sums = 037da469891462021eb177f9c9e18caefa8532f08c68fb576fae1668a1f451a1
+	md5sums = 9e7b76ee97d9027dbcaeb5931d583bc9
+	b2sums = 53fc62181c0adf5adc9f72652aa43ed08ea4dae47fb58e98718b9a465901d683816f104b1a11ee95989ed2e55add63526e399c9efc13fe9e6d08d495d7b5d622
 
 pkgname = r-clvalid
