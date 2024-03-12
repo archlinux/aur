@@ -9,7 +9,7 @@ post_install() {
 }
 
 post_remove() {
-    chmod +x /usr/local/bin/uninstall-ddh.sh
-    /usr/local/bin/uninstall-ddh.sh    
-    rm /usr/local/bin/uninstall-ddh.sh
+    sudo systemctl stop ddh
+    sudo systemctl disable ddh
+    sudo rm -f /etc/systemd/system/ddh.service
 }
