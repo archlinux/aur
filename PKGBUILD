@@ -11,7 +11,7 @@ conflicts=('python-zeep')
 provides=('python-zeep')
 depends=('python-attrs' 'python-isodate' 'python-lxml' 'python-platformdirs' 'python-requests'
          'python-requests-toolbelt' 'python-requests-file' 'python-pytz')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 checkdepends=('python-pytest' 'python-freezegun' 'python-pretend' 'python-pytest-cov'
               'python-pytest-httpx' 'python-pytest-asyncio' 'python-requests-mock')
 source=("https://github.com/softlayer/softlayer-zeep/archive/$pkgver/$pkgname-$pkgver.tar.gz")
@@ -19,7 +19,7 @@ sha512sums=('354126cc6f133624db953efd6cd17b6aefc64681c0f13a76afdcb8839c13f11712d
 
 build() {
   cd softlayer-zeep-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -29,7 +29,7 @@ check() {
 
 package() {
   cd softlayer-zeep-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
