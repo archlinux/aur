@@ -1,8 +1,8 @@
-# Maintainer: Mario Blättermann <mario.blaettermann@gmail.com>
+# Maintainer: WhitedonSAP <ayrtonarantes0987654321ayrt008 at gmail dot com>
 
 pkgname=man-pages-pt_br-git
 _gitname=manpages-l10n
-pkgver=r20130.579aa790b4
+pkgver=r27142.83e16d6348
 pkgrel=1
 pkgdesc="Brazilian Portuguese man pages (Git version)"
 arch=('any')
