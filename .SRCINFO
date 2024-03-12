@@ -19,7 +19,7 @@ pkgbase = openboard-develop
 	depends = libfdk-aac
 	depends = sdl
 	depends = ffmpeg
-	depends = quazip
+	depends = quazip-qt5
 	depends = poppler
 	provides = openboard=1.6.1
 	conflicts = openboard
