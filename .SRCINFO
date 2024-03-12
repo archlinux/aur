@@ -1,0 +1,16 @@
+pkgbase = blueknight-bin
+	pkgdesc = A Minecraft Launcher made with electron, that uses the Modrinth api to make installing mods as easy as possible.
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/KartoffelChipss/blueknight
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = electron28
+	provides = blueknight=1.1.2
+	conflicts = blueknight
+	source = blueknight-1.1.2.deb::https://github.com/KartoffelChipss/blueknight/releases/download/v1.1.2-beta/blueknight-launcher-deb-1.1.2.deb
+	source = blueknight.sh
+	sha256sums = b20ad73332f37aa956c0656fb033848cfe3985a61866600c1f6092a19ba7c1b6
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+
+pkgname = blueknight-bin
