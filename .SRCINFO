@@ -1,13 +1,13 @@
 pkgbase = chromium-extension-copy-url-on-hover-bin
 	pkgdesc = Copy URL On Hover - chromium extension (binary version)
 	pkgver = 0.8.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/noahvogt/chromium-extension-copy-url-on-hover-aur
 	arch = any
 	license = custom:none
 	provides = chromium-extension-copy-url-on-hover
 	conflicts = chromium-extension-copy-url-on-hover
-	source = https://github.com/noahvogt/chromium-extension-copy-url-on-hover-aur/releases/download/0.8.0-2/chromium-extension-copy-url-on-hover-0.8.0-2-any.pkg.tar.zst
-	sha256sums = 07d99a892338e90f59185ada485118790ad7e1c792df0ad45b25bc6918f69672
+	source = https://github.com/noahvogt/chromium-extension-copy-url-on-hover-aur/releases/download/0.8.0-1/chromium-extension-copy-url-on-hover-0.8.0-1-any.pkg.tar.zst
+	sha256sums = 4755a856b50906baa1aeac95d03cd72e67806579cdb7308b0936e3d6baab873a
 
 pkgname = chromium-extension-copy-url-on-hover-bin
