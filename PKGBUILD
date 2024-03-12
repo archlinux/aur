@@ -1,5 +1,9 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 # Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
+
+## Configuration env vars:
+((ENABLE_QT5)) && qt="qt5" || qt="qt6"
+
 pkgname=openboard
 pkgver=1.7.0
 _src_folder="OpenBoard-${pkgver}"
@@ -8,10 +12,14 @@ pkgdesc="Interactive whiteboard software for schools and universities"
 arch=('x86_64' 'i686')
 url="http://openboard.ch/index.en.html"
 license=('GPL3')
-depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'qt5-script' 'qt5-tools' 'qt5-xmlpatterns' 'qt5-webengine' 'libpaper' 'bzip2' 'openssl' 'libfdk-aac' 'sdl' 'ffmpeg')
-depends+=('quazip-qt5')  #drop internal quazip and use system one.
+# qt{5,6} libraries probed wiht `ldd -r /opt/openboard/OpenBoard` for both builds
+#             qt5-base qt5-declarative qt5-location qt5-multimedia                 qt5-svg qt5-webchannel qt5-webengine
+# qt6-5compat qt6-base qt6-declarative              qt6-multimedia qt6-positioning qt6-svg qt6-webchannel qt6-webengine
+depends+=(${qt}-{base,declarative,multimedia,svg,webchannel,webengine})
+depends+=('libpaper' 'bzip2' 'openssl' 'libfdk-aac' 'sdl' 'ffmpeg')
+depends+=(quazip-${qt})  #drop internal quazip and use system one.
 depends+=(poppler) #replace internal xpdf with poppler and drop freetype/xpdf from deps
-makedepends=('patch')
+makedepends=('patch' ${qt}-tools)
 source=("https://github.com/OpenBoard-org/OpenBoard/archive/v${pkgver}.tar.gz"
         openboard.desktop)
 source+=(qchar.patch)
@@ -38,6 +46,7 @@ prepare() {
 build() {
   cd "$srcdir"/$_src_folder
 # convert translations to binary form
+  ((ENABLE_QT5)) || export PATH="/usr/lib/qt6/bin/:$PATH"
   lrelease OpenBoard.pro
   qmake OpenBoard.pro -spec linux-g++
   make
