@@ -1,6 +1,6 @@
 pkgbase = libpamac
 	pkgdesc = Library for Pamac package manager based on libalpm
-	pkgver = 11.6.4
+	pkgver = 11.6.3
 	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/libpamac
 	arch = i686
@@ -19,15 +19,16 @@ pkgbase = libpamac
 	makedepends = gobject-introspection
 	makedepends = xorgproto
 	makedepends = asciidoc
-	depends = pacman-git
+	depends = pacman>=6.0
+	depends = pacman<6.4
 	depends = appstream-glib
 	depends = polkit
 	depends = archlinux-appstream-data
 	conflicts = libpamac-aur
 	conflicts = libpamac-full
 	options = !emptydirs
-	source = https://gitlab.manjaro.org/applications/libpamac/-/archive/11.6.4/libpamac-11.6.4.tar.bz2
-	sha256sums = 4ac54679e25004d6af8154340bac2e060c3a109a6bcb336f54ce025b2d68f080
+	source = https://gitlab.manjaro.org/applications/libpamac/-/archive/11.6.3/libpamac-11.6.3.tar.bz2
+	sha256sums = f8f27b8427e421c24b3a6bfb5792a37abe9cf60fe25c3f6e6dba5c66198a497a
 
 pkgname = libpamac
 	backup = etc/pamac.conf
