@@ -1,13 +1,14 @@
 pkgbase = android-armv7a-eabi-prrte
-	pkgdesc = PMIx Reference RunTime Environment (android)
+	pkgdesc = PMIx Reference RunTime Environment (Android, armv7a-eabi)
 	pkgver = 3.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openpmix/prrte
 	arch = any
 	license = BSD-3-Clause
 	makedepends = android-armv7a-eabi-hwloc
 	makedepends = android-armv7a-eabi-libevent
 	makedepends = android-armv7a-eabi-openpmix
+	makedepends = android-environment
 	makedepends = perl
 	depends = android-armv7a-eabi-hwloc
 	depends = android-armv7a-eabi-libevent
