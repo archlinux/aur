@@ -1,7 +1,7 @@
 # Maintainer: Federico Maria Morrone <aur at morrone dot dev>
 
 pkgname=hyprland-cmake-git
-pkgver=0.36.0.r93.335506d5
+pkgver=0.36.0.r100.a065b481
 pkgrel=1
 pkgdesc="a highly customizable dynamic tiling Wayland compositor that doesn't sacrifice on its looks."
 arch=(x86_64 aarch64)
@@ -68,7 +68,7 @@ prepare() {
 
 build() {
         cd Hyprland
-        make all
+        make release
 }
 
 pkgver() {
