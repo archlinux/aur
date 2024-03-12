@@ -2,7 +2,7 @@
 
 pkgname=gameoftrees
 pkgver=0.97
-pkgrel=1
+pkgrel=2
 pkgdesc='A version control system which prioritizes ease of use and simplicity over flexibility'
 arch=(x86_64)
 url="https://gameoftrees.org"
@@ -16,7 +16,8 @@ b2sums=(SKIP)
 build () {
 	cd "$pkgname"
 	autoreconf -f -i -v
-	./configure --prefix=/usr --sbindir=/usr/bin --libexecdir=/usr/lib/$pkgname
+	./configure --prefix=/usr --sbindir=/usr/bin --libexecdir=/usr/lib/$pkgname \
+		--enable-gotd --with-gotd-empty-path=/var/empty
 	make
 }
 
@@ -38,4 +39,6 @@ check () {
 
 package () {
 	make -C "$pkgname" DESTDIR="$pkgdir" install
+	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" \
+		README README.portable TODO
 }
