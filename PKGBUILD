@@ -22,7 +22,8 @@ sha512sums=("965290d09977672d3bc3c57ca4b89a88c2c09461da6e866b18217d702d4d5a09775
 
 build()
 {
-    for status in "ON" "OFF"; do
+    # The order needs to be like this.
+    for status in "OFF" "ON"; do
         cmake -B "${srcdir}"/"${_pkgname}"-"${pkgver}"/build/ \
             -D CLI11_BUILD_DOCS=ON \
             -D CLI11_BUILD_EXAMPLES=OFF \
