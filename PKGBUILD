@@ -3,8 +3,8 @@
 
 _pkgname=nextpnr-xilinx
 pkgname=$_pkgname-git
-pkgver=r2851.19fa4e64
-pkgrel=2
+pkgver=r2994.f7938759
+pkgrel=1
 epoch=2
 pkgdesc="nextpnr portable FPGA place and route tool - for Xilinx"
 arch=(x86_64)
@@ -65,7 +65,7 @@ build() {
 	for i in "${_DEVICES[@]}"; do
 		echo "### Generating device $i ###"
 		pypy3 "$_pkgname"/xilinx/python/bbaexport.py --xray /usr/share/xray/database/artix7 --meta "$srcdir/nextpnr-xilinx-meta/artix7" --device "$i" --bba "devicedbs/$i.bba"
-		build/bbasm --le "devicedbs/$i.bba" "devicedbs/$i.bin"
+		build/bba/bbasm --le "devicedbs/$i.bba" "devicedbs/$i.bin"
 	done
 }
 

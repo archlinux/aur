@@ -1,7 +1,7 @@
 pkgbase = nextpnr-xilinx-git
 	pkgdesc = nextpnr portable FPGA place and route tool - for Xilinx
-	pkgver = r2851.19fa4e64
-	pkgrel = 2
+	pkgver = r2994.f7938759
+	pkgrel = 1
 	epoch = 2
 	url = https://github.com/gatecat/nextpnr-xilinx
 	arch = x86_64
