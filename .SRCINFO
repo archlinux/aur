@@ -1,6 +1,6 @@
 pkgbase = fig-beta
 	pkgdesc = Adds IDE-style autocomplete to your existing terminal.
-	pkgver = 2.18.0_beta.4
+	pkgver = 2.18.1_beta.1
 	pkgrel = 1
 	url = https://fig.io
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = fig-beta
 	depends = xdg-utils
 	provides = fig
 	conflicts = fig
-	source = fig-beta-2.18.0-beta.4.tar.xz::https://repo.fig.io/generic/beta/asset/2.18.0-beta.4/x86_64/fig.tar.xz
-	sha256sums = 80f4c1a50eb8d4e1691869c4381b55ec2dadd4c02f1d9507166ff6b9174da681
+	source = fig-beta-2.18.1-beta.1.tar.xz::https://repo.fig.io/generic/beta/asset/2.18.1-beta.1/x86_64/fig.tar.xz
+	sha256sums = d46902d9aa3e16032ccae0fcc362e7d99c52f1dcf1a1882bd374edbdda91d73d
 
 pkgname = fig-beta
