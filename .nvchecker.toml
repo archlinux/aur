@@ -1,0 +1,5 @@
+[python-uqbar]
+source = "github"
+github = "josiah-wolf-oberholtzer/uqbar"
+use_latest_release = "true"
+prefix = "v"
