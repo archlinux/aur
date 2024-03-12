@@ -15,6 +15,7 @@ package() {
 
     install -Dm755 ddh.sh "$pkgdir/usr/local/bin/ddh.sh"
     install -Dm755 install.sh "$pkgdir/usr/local/bin/install-ddh.sh"
+    install -Dm755 uninstall.sh "$pkgdir/usr/local/bin/uninstall-ddh.sh"
 }
 
 post_install() {
@@ -25,4 +26,9 @@ post_install() {
     systemctl daemon-reload
     systemctl enable ddh
     systemctl start ddh
+}
+
+post_remove() {
+    sudo /usr/local/bin/uninstall-ddh.sh    
+    sudo rm /usr/local/bin/uninstall-ddh.sh
 }
