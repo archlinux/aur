@@ -25,7 +25,6 @@ build() {
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    export RUSTFLAGS="--remap-path-prefix=$srcdir=/"
 
     cargo build --release --frozen
 }
