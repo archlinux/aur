@@ -25,7 +25,7 @@ if [ -z ${GTK_USE_PORTAL} ]; then
 fi
 
 mkdir -p "${WECHAT_FILES_DIR}" "${WECHAT_HOME_DIR}"
-ln -sf "${WECHAT_FILES_DIR}" "${WECHAT_HOME_DIR}/xwechat_files"
+ln -snf "${WECHAT_FILES_DIR}" "${WECHAT_HOME_DIR}/xwechat_files"
 
 exec bwrap \
 	--dev-bind / / \
