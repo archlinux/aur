@@ -71,6 +71,17 @@ source=(
 	license.tar.gz
 )
 
+source_x86_64=(
+	wechat-x86-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_1.0.0.236_amd64.deb"
+)
+
+source_aarch64=(
+	wechat-arm-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_1.0.0.236_arm64.deb"
+)
+
+md5sums_x86_64=('c9eeb10d8e4a534d184e76ed87a71545')
+md5sums_aarch64=('e8f354ab8d14f3aa499219a1d1840803')
+
 md5sums=(
 	'ff72c19fab2405f0405e0b669e22a992'
 	'b6e6920af829dafb0be82da1c79e46a9'
