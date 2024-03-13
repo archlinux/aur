@@ -1,7 +1,7 @@
 pkgbase = csview-bin
 	pkgdesc = High performance CSV viewer with CJK/emoji support
-	pkgver = 1.2.2
-	pkgrel = 2
+	pkgver = 1.2.4
+	pkgrel = 1
 	url = https://github.com/wfxr/csview
 	arch = i686
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = csview-bin
 	license = MIT
 	depends = glibc
 	depends = gcc-libs
-	provides = csview=1.2.2
+	provides = csview=1.2.4
 	conflicts = csview
-	source = https://github.com/wfxr/csview/releases/download/v1.2.2/csview-v1.2.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = a90854eae7777006b27eb9d787a2aaa81f8188a19dcf09dd8caff3a0ae090709
+	source = https://github.com/wfxr/csview/releases/download/v1.2.4/csview-v1.2.4-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 623383158409577e638e38b742b68051d584b6aeed9dc30ec497293e4c8f31e7
 
 pkgname = csview-bin

@@ -3,8 +3,8 @@
 
 _pkgname=csview
 pkgname="$_pkgname-bin"
-pkgver=1.2.2
-pkgrel=2
+pkgver=1.2.4
+pkgrel=1
 pkgdesc='High performance CSV viewer with CJK/emoji support'
 arch=(i686 x86_64)
 url="https://github.com/wfxr/$_pkgname"
@@ -13,7 +13,7 @@ depends=(glibc gcc-libs)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("$url/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('a90854eae7777006b27eb9d787a2aaa81f8188a19dcf09dd8caff3a0ae090709')
+sha256sums=('623383158409577e638e38b742b68051d584b6aeed9dc30ec497293e4c8f31e7')
 
 package() {
 	cd $_pkgname-v$pkgver-x86_64-unknown-linux-gnu
