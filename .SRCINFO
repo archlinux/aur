@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-spinnaker-camera-driver
 	pkgdesc = ROS - Spinnaker camera driver based on Spinnaker
 	pkgver = 0.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ros-drivers/flir_camera_driver/tree/noetic-devel
 	arch = i686
 	arch = x86_64

@@ -4,7 +4,7 @@ url='https://github.com/ros-drivers/flir_camera_driver/tree/noetic-devel'
 pkgname='ros-noetic-spinnaker-camera-driver'
 pkgver='0.2.5'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=("BSD")
 
 ros_makedepends=(
