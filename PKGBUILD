@@ -94,16 +94,16 @@ package() {
   # create script which starts the profiler
   mkdir -p "$pkgdir"/usr/bin
   echo '#!/bin/sh' > "$pkgdir"/usr/bin/patrjprof
-  # automatically use the same SPDX license Identifier
+  # do not change the SPDX license Identifier
   head -1 patr-java-prof-help.sh >> "$pkgdir"/usr/bin/patrjprof
   echo -n "
-#set values needed for the script
+# set the values needed for the script
 AGENT_JAR=/usr/share/java/patrjprof/patr-java-profiler-agent.jar
 BOOTSTRAP_JAR=/usr/share/java/patrjprof/patr-java-profiler-bootstrap.jar
 SERVER_JAR=/usr/share/java/patrjprof/patr-java-profiler-server.jar
 CLIENT_JAR=/usr/share/java/patrjprof/patr-java-profiler-client.jar
 
-#helper script from git
+# helper script from git
 " >> "$pkgdir"/usr/bin/patrjprof
   tail +2 patr-java-prof-help.sh >> "$pkgdir"/usr/bin/patrjprof
   chmod +x "$pkgdir"/usr/bin/patrjprof
