@@ -3,7 +3,7 @@
 _pkgname="como"
 pkgname="$_pkgname"
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Library collection to easily create Wayland and X11 compositors'
 url="https://github.com/winft/como"
 license=('LGPL-2.1-only')
@@ -11,9 +11,15 @@ arch=('x86_64' 'aarch64')
 
 depends=(
   kauth
+  kcmutils
   kconfigwidgets
   kdecoration
+  kglobalaccel
+  kidletime
+  kpackage
   kquickcharts
+  kservice
+  ksvg
   libepoxy
   libqaccessibilityclient-qt6
   qt6-5compat
@@ -26,17 +32,11 @@ depends=(
 
   ## implicit
   #hicolor-icon-theme
-  #kcmutils
   #kcolorscheme
   #kconfig
   #kcoreaddons
-  #kglobalaccel
   #ki18n
-  #kidletime
   #kirigami
-  #kpackage
-  #kservice
-  #ksvg
   #kwidgetsaddons
   #kwindowsystem
   #libinput
@@ -50,10 +50,20 @@ depends=(
   #xcb-util-keysyms
 )
 makedepends=(
+  breeze
   extra-cmake-modules
   git
+  kcrash
+  kdeclarative
   kdoctools
+  knewstuff
+  knotifications
+  kscreenlocker
+  kxmlgui
+  microsoft-gsl
   ninja
+  qt6-multimedia
+  xorg-xwayland
 )
 
 provides=("kwin")
