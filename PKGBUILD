@@ -2,7 +2,7 @@
 
 pkgname=ss14.launcher
 pkgver=0.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Space Station 14 launcher"
 arch=('x86_64')
 url='https://spacestation14.io'
@@ -53,7 +53,7 @@ package() {
     chmod +x "$pkgdir/opt/$pkgname/bin/loader/SS14.Loader"
 
     mkdir -p "${pkgdir}/usr/bin"
-    ln -s "$pkgdir/opt/$pkgname/bin/SS14.Launcher" "${pkgdir}/usr/bin/ss14.launcher"
+    ln -s "/opt/$pkgname/bin/SS14.Launcher" "${pkgdir}/usr/bin/ss14.launcher"
     chmod +x "${pkgdir}/usr/bin/ss14.launcher"
 
     mkdir -p "${pkgdir}/usr/share/applications"
