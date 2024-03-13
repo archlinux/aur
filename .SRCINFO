@@ -1,7 +1,7 @@
 pkgbase = typesense-dashboard-bin
 	pkgdesc = A Typesense Dashboard to manage and browse collections.
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bfritscher.github.io/typesense-dashboard/
 	arch = x86_64
 	license = GPL-3.0-only
@@ -14,6 +14,6 @@ pkgbase = typesense-dashboard-bin
 	source = typesense-dashboard.sh
 	sha256sums = 2dd03bede99216f534b34bd0d2278a8ae6f51b6b3953d0a95e465732bf0a1c2d
 	sha256sums = ce61a0d27e9167938ce2083e1391de1ee514b40d8a0f5c3602a7a04f449f6779
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = typesense-dashboard-bin

@@ -3,7 +3,7 @@ pkgname=typesense-dashboard-bin
 _pkgname="Typesense-Dashboard"
 pkgver=1.6.1
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="A Typesense Dashboard to manage and browse collections."
 arch=('x86_64')
 url="https://bfritscher.github.io/typesense-dashboard/"
@@ -24,11 +24,12 @@ source=(
 )
 sha256sums=('2dd03bede99216f534b34bd0d2278a8ae6f51b6b3953d0a95e465732bf0a1c2d'
             'ce61a0d27e9167938ce2083e1391de1ee514b40d8a0f5c3602a7a04f449f6779'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${_pkgname} %U"
 }
