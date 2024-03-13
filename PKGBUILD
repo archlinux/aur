@@ -2,16 +2,17 @@
 
 pkgname=chromium-extension-clearurls-bin
 pkgver=1.27.0
-pkgrel=2
+pkgrel=3
 pkgdesc="a chromium extension to automatically remove tracking elements from URLs to help protect your privacy (binary version)"
 arch=('any')
 url="https://github.com/noahvogt/chromium-extension-clearurls-aur"
 license=('custom:none')
 source=("$url/releases/download/$pkgver-$pkgrel/${pkgname%-*}-$pkgver-$pkgrel-any.pkg.tar.zst")
-sha256sums=('9a01efd835648cbbd2f3e08e88d323fcb53dcc3df600775f0945385cb019dad3')
+sha256sums=('5233fc507a70ccb6e2d8d4bc8fe25c6ddb08b454dc7b25ef642b4f027db29953')
+depends=('chromium')
 provides=('chromium-extension-clearurls')
 conflicts=('chromium-extension-clearurls')
 
 package() {
-    cp -R "${srcdir}/usr/" "${pkgdir}/usr"
+    cp -R "$srcdir/usr/" "$pkgdir/usr"
 }
