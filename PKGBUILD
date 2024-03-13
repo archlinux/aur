@@ -3,7 +3,7 @@ pkgname=quicknote
 pkgver=2.0.1
 _electronversion=22
 _nodeversion=18
-pkgrel=4
+pkgrel=5
 pkgdesc="Helps to paste some random text or take some notes right from your taskbar!"
 arch=('any')
 url="https://srilakshmikanthanp.github.io/quicknote/"
@@ -25,7 +25,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -36,6 +36,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --categories="Utility" --name="${pkgname}" --exec="${pkgname}"
@@ -47,9 +48,18 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
+    mkdir -p "${srcdir}/.electron-gyp"
+    touch "${srcdir}/.electron-gyp/.yarnrc"
+    if [ `curl ifconfig.co/country` = "China" ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
+    sed "s|\"${pkgname}.png\"|\"..\/..\/${pkgname}\/${pkgname}.png\"|g" -i src/electron/constants/constants.ts
     yarn install --no-lockfile --cache-folder "${srcdir}/.yarn_cache"
-    yarn package
-    cp -r "${srcdir}/${pkgname}.git/assets" "${srcdir}/${pkgname}.git/out/quicknote-linux-x64/resources/app"
+    yarn run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
