@@ -1,4 +1,5 @@
-# Maintainer: Trevor Bergeron <aur@sec.gd>
+# Maintainer: iamawacko <iamawacko@protonmail.com>
+# Contributor: Trevor Bergeron <aur@sec.gd>
 
 _pkgname=cwtch-server
 pkgname=cwtch-server-git
