@@ -1,0 +1,5 @@
+[python-oct2py]
+source = "github"
+github = "blink1073/oct2py"
+use_latest_release = "true"
+prefix = "v"
