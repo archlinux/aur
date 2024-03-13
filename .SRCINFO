@@ -6,7 +6,7 @@ pkgbase = kiibohd-configurator-git
 	arch = x86_64
 	license = GPL3
 	makedepends = yarn
-	makedepends = nodejs-lts-erbium
+	makedepends = nodejs-lts-hydrogen
 	depends = dfu-util
 	provides = kiibohd-configurator
 	conflicts = kiibohd-configurator
@@ -14,4 +14,3 @@ pkgbase = kiibohd-configurator-git
 	sha256sums = SKIP
 
 pkgname = kiibohd-configurator-git
-
