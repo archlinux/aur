@@ -9,7 +9,7 @@ pkgbase = plasma6-applets-breeze-alphablack
 	depends = breeze
 	depends = kdeplasma-addons
 	depends = plasma5support
-	source = plasma6-applets-breeze-alphablack::https://github.com/dhruv8sh/plasma-applet-alphablackcontrol/archive/refs/tags/v0.1.tar.gz
+	source = https://github.com/dhruv8sh/plasma-applet-alphablackcontrol/archive/refs/tags/v0.1.tar.gz
 	sha256sums = 22c7b3eef13583dd834b7ef362493236d95f4a35fc962596f733364826c10d84
 
 pkgname = plasma6-applets-breeze-alphablack
