@@ -2,7 +2,7 @@
 _pkgname=muse-sounds-manager
 pkgname="$_pkgname-bin"
 pkgver=1.1.0.587
-pkgrel=4
+pkgrel=3
 pkgdesc="Manage MuseScore Libraries"
 arch=('x86_64')
 url='https://www.musehub.com/'
@@ -23,6 +23,4 @@ package(){
   tar -xJ -f data.tar.xz -C "$pkgdir"
 
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/muse-sounds-manager" 
-
-  mkdir -p "${pkgdir}/srv/muse-hub"
 }

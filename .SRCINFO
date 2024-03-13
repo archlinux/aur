@@ -1,7 +1,7 @@
 pkgbase = muse-sounds-manager-bin
 	pkgdesc = Manage MuseScore Libraries
 	pkgver = 1.1.0.587
-	pkgrel = 4
+	pkgrel = 3
 	url = https://www.musehub.com/
 	install = muse-sounds-manager.install
 	arch = x86_64
