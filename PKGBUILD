@@ -2,8 +2,8 @@
 
 pkgname=niri-bin
 pkgver=0.1.3
-pkgrel=1
-_buildid=07129488
+pkgrel=2
+_buildid=07131935
 pkgdesc="Scrollable-tiling Wayland compositor"
 arch=(aarch64 x86_64)
 url="https://github.com/YaLTeR/${pkgname%-bin}"
@@ -25,10 +25,10 @@ provides=(${pkgname%-bin})
 conflicts=(${pkgname%-bin})
 options=(!debug)
 install=${pkgname%-bin}.install
-source_aarch64=($_buildurl/${pkgname%-bin}/fedora-40-$CARCH/$_buildid-${pkgname%-bin}/${pkgname%-bin}-$pkgver-1.fc40.$CARCH.rpm)
-source_x86_64=($_buildurl/${pkgname%-bin}/fedora-40-$CARCH/$_buildid-${pkgname%-bin}/${pkgname%-bin}-$pkgver-1.fc40.$CARCH.rpm)
-b2sums_aarch64=('63eaca621539bd7d3aa8931f144189ed06ab2971bd89a99aff00a65bc5e29d1dd61ff6a9f96994d6295444180dc5dbd12905d111773f1c82fcfb2920f7f80f32')
-b2sums_x86_64=('052cd5a7e51b56f82284a0109c5a244e62458474e3d3ea670e2f813873369683f8f0b462214195980305c46c9d5aa632f07e4c3354535f48f9414c88a2ffffa3')
+source_aarch64=($_buildurl/${pkgname%-bin}/fedora-40-aarch64/$_buildid-${pkgname%-bin}/${pkgname%-bin}-$pkgver-2.fc40.aarch64.rpm)
+source_x86_64=($_buildurl/${pkgname%-bin}/fedora-40-x86_64/$_buildid-${pkgname%-bin}/${pkgname%-bin}-$pkgver-2.fc40.x86_64.rpm)
+b2sums_aarch64=('1c0e40a1748a5232645088c4873c167ebb4443ae154f0c4b0658c3db75f3edbd6b4cfe9d2a66d04075a171601e0a8625b24c329278ab2b3795d8a2b6ba9fd747')
+b2sums_x86_64=('606be9d590b3547e3e812141a99abbc2fa40abdd6ff8175bbf95fcfcc681c296f1ff5c4ad8bdad251dd425d8915409465855dab9d55b5b2a73b127c77760fd08')
 
 package() {
     install -Dm755 usr/bin/${pkgname%-bin}{,-session}                              -t $pkgdir/usr/bin/
