@@ -1,4 +1,5 @@
-#Maintainer: Trevor Bergeron <mal@sec.gd>
+# Maintainer: iamawacko <iamawacko@protonmail.com>
+# Contributor: Trevor Bergeron <mal@sec.gd>
 
 _pkgname=autobindings
 pkgname=cwtch-$_pkgname-git
