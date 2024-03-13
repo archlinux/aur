@@ -5,7 +5,7 @@ _bin_name=devtunnel
 
 # there's no url versioning, so this will install the latest published version
 # regardless what the `pkgver` is set to
-pkgver='1.0.1217+9b9f4aa22d'
+pkgver='1.0.1230+5abf679d5f'
 pkgrel=1
 pkgdesc="Microsoft Dev Tunnels cli client"
 
@@ -32,8 +32,8 @@ source_x86_64=(devtunnel_x86::https://tunnelsassets$_env.blob.core.windows.net/c
 source_aarch64=(devtunnel_arm64::https://tunnelsassets$_env.blob.core.windows.net/cli/linux-arm64-devtunnel)
 noextract=(devtunnel_x86 devtunnel_arm64)
 
-sha256sums_x86_64=('d6e63b330b788556ef3aea8b301f5b446742f9ad4c98e821d52dddf13eda9829')
-sha256sums_aarch64=('e2a6d1dbeb9d1af343a2c5251cf49d30820380a82ae46699471b716c8b54c523')
+sha256sums_x86_64=('4a772ea955a4c74c106a8547fd58e4c70599335cd1e5252b51c708d882379229')
+sha256sums_aarch64=('dbd9fa0ab3d2359403c602763104f45b3d52657a436679835252d0e64648add5')
 validpgpkeys=()
 
 # stripping symbols causes an error on execution:
