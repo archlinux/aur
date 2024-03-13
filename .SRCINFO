@@ -1,7 +1,7 @@
 pkgbase = slweb
 	pkgdesc = Simple static website generator
 	pkgver = 0.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://strahinja.srht.site/slweb
 	arch = x86_64
 	license = GPL3
