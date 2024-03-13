@@ -2,14 +2,14 @@
 pkgname=apk-installer
 pkgver=1.6.0
 _electronversion=10
-pkgrel=6
+pkgrel=7
 pkgdesc="一款Apk安装器软件,快速安装Apk至手机。"
 arch=('any')
 url="https://github.com/zhujiaming/apk-installer"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'java-runtime'
 )
 mkdenpends=(
@@ -23,11 +23,12 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     gendesk -f -n -q --categories "Utility" --name "${pkgname}" --exec "${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
@@ -39,12 +40,15 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    sed -e 's|"author": "ah_zjm@163.com"|"author": "zhujiaming <ah_zjm@163.com>"|g' \
-        -e '4i\  "homepage": "https://github.com/zhujiaming/apk-installer",' \
-        -i "${srcdir}/${pkgname}.git/package.json"
-    sed 's|"deb", "rpm", "AppImage"|"AppImage"|g' -i "${srcdir}/${pkgname}.git/build.config.js"
-    npm install --force
-    npx electron-builder --config build.config.js -l
+    if [ `curl ifconfig.co/country` = "China" ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/v"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
+    npm install
+    npx electron-builder build --dir --config build.config.js
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
