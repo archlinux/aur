@@ -4,10 +4,7 @@ if [[ -z "${XDG_DOCUMENTS_DIR}" ]]; then
 	echo 'Error: Failed to get XDG_DOCUMENTS_DIR, refuse to continue'
 	exit 1
 fi
-if [[ -z "${XAUTHORITY}" ]]; then
-	echo 'Error: Xauthority not set, no X server running?'
-	exit 1
-fi
+export XAUTHORITY="${XAUTHORITY:-${HOME}/.Xauthority}"
 WECHAT_DATA_DIR="${XDG_DOCUMENTS_DIR}/WeChat_Data"
 WECHAT_FILES_DIR="${WECHAT_DATA_DIR}/xwechat_files"
 WECHAT_HOME_DIR="${WECHAT_DATA_DIR}/home"
@@ -50,7 +47,6 @@ BWRAP_ARGS=(
 	--symlink usr/bin /sbin
 	--bind /usr/bin/{true,lsblk}
 	# /sandbox
-	--dir /sandbox
 	--ro-bind /{usr/lib/flatpak-xdg-utils,sandbox}/xdg-open
 	--ro-bind /{usr/share/wechat-beta/usr/bin,sandbox}/dde-file-manager
 	# /dev

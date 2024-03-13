@@ -3,7 +3,7 @@
 
 pkgname=wechat-beta-bwrap
 pkgver=1.0.0.145
-pkgrel=20
+pkgrel=21
 pkgdesc="WeChat Testing with bwrap sandbox"
 arch=('x86_64' 'aarch64')
 url="https://weixin.qq.com"
@@ -44,7 +44,7 @@ noextract=({"${_uos_deb_stem}","${_beta_deb_stem}"}_{x86_64,aarch64}.deb)
 
 sha256sums=(
 	'201d904c7a0e38a6ed7dd12f9300c71babd685b26cf2fce65f76126e23f38c4a'
-	'4d0cae0a7a3dd2e609b9885e7d5b8a1ca56c1adbfb154b2a1a0a7c2faa471f01'
+	'b5acb754a7fcc80925bcd72492873604afc4c623e0d11c21e3c8298a43bfa18c'
 	'7692acffebe4ac259cae05d2c92355502fa2cb4ccdbaa27c6cc65f2e1f4678b7'
 	'bc13a14c8680daa03c617e71f48419a1b05e2b9d75bb58b15a89d0d191d0fb12'
 	'53760079c1a5b58f2fa3d5effe1ed35239590b288841d812229ef4e55b2dbd69'
