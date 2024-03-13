@@ -2,11 +2,11 @@
 
 pkgname=eclipse-cpp
 epoch=2
-pkgver=4.30
+pkgver=4.31
 pkgrel=1
-_release=2023-12/R
+_release=2024-03/R
 pkgdesc="Highly extensible IDE (C/C++ version)"
-arch=(x86_64)
+arch=('x86_64' 'aarch64')
 url="https://www.eclipse.org/"
 license=('EPL')
 depends=('java-runtime>=17' webkit2gtk unzip)
@@ -14,11 +14,17 @@ makedepends=()
 provides=(eclipse=$pkgver-$pkgrel)
 conflicts=(eclipse)
 
-_srcfilename="$pkgname-${_release//\//-}-linux-gtk-$CARCH.tar.gz"
-source=("$_srcfilename::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename&r=1"
-        "eclipse.desktop")
-sha512sums=('c260d1f97350ae772ed16cb72ea0e9112d10d0ec4f26865751662e04b80041e7c0aeffe5675c157aff0fc5fdd3ce33ee3948c109e6500e5fe6e09586f98aa98c'
-            '96a532509459056c470e18bc5fde639cd9725b831ff69864a444ed8282dd87aefe71b23be92280f22a480f2321794c4e3f7b8026925fb03625f0bb954a06e139')
+_srcfilename_x86_64="$pkgname-${_release//\//-}-linux-gtk-x86_64.tar.gz"
+_srcfilename_aarch64="$pkgname-${_release//\//-}-linux-gtk-aarch64.tar.gz"
+
+source_x86_64=("$_srcfilename_x86_64::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename_x86_64&r=1")
+source_aarch64=("$_srcfilename_aarch64::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename_aarch64&r=1")
+
+sha512sums_x86_64=('ebbde32b16fbd49716c3d5fef40fe6e510115f1698cf35f9fde23f11ba2be11a524d6e5179b15a1cf30af135b8f27a3efac301111b6160e6cdac9977a42082fd')
+sha512sums_aarch64=('40a5b0f31de779579ccf39653fffd158fdf710b3a06340a81d018e9fbc1257ebd23f70a600838868e18b931a81b7bc8abe0974b0cb37a9eb08b9e6a143bc42f2')
+
+source=("eclipse.desktop")
+sha512sums=('96a532509459056c470e18bc5fde639cd9725b831ff69864a444ed8282dd87aefe71b23be92280f22a480f2321794c4e3f7b8026925fb03625f0bb954a06e139')
 
 #backup=('usr/lib/eclipse/eclipse.ini')
 
