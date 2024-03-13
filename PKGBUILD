@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='python-xsdata'
 _pkgname='xsdata'
-pkgver=24.1
+pkgver=24.3.1
 pkgrel=1
 pkgdesc='Naive XML bindings for python'
 url='https://xsdata.readthedocs.io'
@@ -22,7 +22,7 @@ optdepends=(ruff)
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('e36fc8b4624bbbaf2d34d0857c6d78ede99ec1d3240cc7dd50546177fbb52442')
+sha256sums=('cf6c6895616260cbe2a4eff6f8f906cd16f9c1dba8fd8561e500b91269b86616')
 
 build() {
     cd "${_pkgname}-${pkgver}"
