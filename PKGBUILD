@@ -73,7 +73,7 @@ package() {
   BOOTSTRAP_JAR=/usr/share/java/patrjprof/patr-java-profiler-bootstrap.jar
   echo '#!/bin/sh'
   echo -n '
-c# set the values for the script
+# set the values for the script
 AGENT_JAR=/usr/share/java/patrjprof/patr-java-profiler-agent.jar
 BOOTSTRAP_JAR=/usr/share/java/patrjprof/patr-java-profiler-bootstrap.jar
 SERVER_JAR=/usr/share/java/patrjprof/patr-java-profiler-server.jar
