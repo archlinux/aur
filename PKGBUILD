@@ -3,7 +3,7 @@
 # Contributor: SingYan <singyan@tuta.io>
 
 pkgname=mydumper
-pkgver=0.16.1_1
+pkgver=0.16.1_2
 pkgrel=1
 pkgdesc="A high performance MySQL backup tool."
 arch=("i686" "x86_64")
@@ -14,7 +14,7 @@ makedepends=("cmake")
 
 source=("https://github.com/mydumper/mydumper/archive/v${pkgver//_/-}/$pkgname-${pkgver//_/-}.tar.gz")
 
-sha256sums=('3219b7c2a16f4ce1848315583090a0b05c1dc781b8cebc2948441c247eb28deb')
+sha256sums=('4a347fbfa84efa2d20427ee36883bf6f288fe59c552c95468e7a320e72814774')
 
 build() {
 	cmake -B build -S "$srcdir/$pkgname-${pkgver//_/-}" \
