@@ -2,7 +2,7 @@
 # Contributor: Wenxuan Zhang <wenxuangm at gmail dot com>
 
 pkgname=csview
-pkgver=1.2.2
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="A high performance csv viewer with cjk/emoji support"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ url="https://github.com/wfxr/$pkgname"
 license=(Apache MIT)
 depends=(gcc-libs)
 makedepends=(cargo git)
-source=("git+$url.git?signed#commit=d1991e60b2126763fb6ee935c9324baf77b9dcd8")
+source=("git+$url.git?signed#commit=9672456e4660282fac66c1a70e3c564b375427ff")
 b2sums=('SKIP')
 validpgpkeys=(DC6FB7FC761E848F76E98B4FCCAF35548C65530F) # Wenxuan Zhang <wenxuangm@gmail.com>
 
