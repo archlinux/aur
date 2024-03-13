@@ -8,5 +8,6 @@ post_remove() {
     if [ $1 = "remove" ]; then
         rm -rf /tmp/muse-hub
         rm -rf /tmp/muse-sounds-manager  
+        rm -rf /srv/muse-hub
     fi
 }
