@@ -1,7 +1,7 @@
 pkgbase = spotbar
 	pkgdesc = Small applications that provides Spotify media controls in a window that runs in your macOS/Windows/Linux menu bar
 	pkgver = 1.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/levarr/Spotbar
 	arch = any
 	license = MIT
@@ -9,13 +9,13 @@ pkgbase = spotbar
 	makedepends = npm
 	makedepends = nvm
 	makedepends = git
-	depends = electron24
+	depends = electron24-bin
 	conflicts = spotbar
 	source = spotbar.git::git+https://github.com/levarr/Spotbar.git#tag=v1.0.0
 	source = LICENSE-1.0.0::https://raw.githubusercontent.com/levarr/Spotbar/main/LICENSE
 	source = spotbar.sh
 	sha256sums = SKIP
 	sha256sums = 71223174d5542c21fae43d3a237be929f13acb70bed52c43e3a870328e698f97
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = spotbar
