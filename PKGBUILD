@@ -7,7 +7,7 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=2024.2.3
+pkgver=2024.3.0
 pkgrel=1
 epoch=1
 arch=(any)
@@ -33,7 +33,7 @@ makedepends=(
   python-setuptools
   python-wheel
 )
-_tag=1ee39275fc528e1260eb064bc2bd134bd262c313
+_tag=1aa5a07501b10715bd3ea36ef3f0b78edba6b3b8
 source=(
   "$pkgname::git+https://github.com/home-assistant/core.git#tag=${_tag}"
   home-assistant.service
