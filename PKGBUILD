@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=budgeted
 pkgname="${_pkgname}-ui-bin"
-pkgver=1.2.7
+pkgver=1.2.8
 _electronversion=28
 pkgrel=1
 pkgdesc="A data pipeline for budget data and so much more"
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('524c443dbff4d0856f5a7daa723bc83e161c4b41925f127c3113da02c6ad2383'
+sha256sums=('c7d460804b88213360c01277424d24df8bb51741c083f32ca833352599083b82'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
