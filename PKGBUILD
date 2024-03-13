@@ -6,7 +6,7 @@ _bin_name=devtunnel
 # there's no url versioning, so this will install the latest published version
 # regardless what the `pkgver` is set to
 pkgver='1.0.1230+5abf679d5f'
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft Dev Tunnels cli client"
 
 # dev, ppe, prod
@@ -27,10 +27,13 @@ depends=(
 provides=($_bin_name)
 conflicts=($_bin_name)
 
+_source_x86=devtunnel_${pkgver}_x86
+_source_arm=devtunnel_${pkgver}_arm64
+
 source=()
-source_x86_64=(devtunnel_x86::https://tunnelsassets$_env.blob.core.windows.net/cli/linux-x64-devtunnel)
-source_aarch64=(devtunnel_arm64::https://tunnelsassets$_env.blob.core.windows.net/cli/linux-arm64-devtunnel)
-noextract=(devtunnel_x86 devtunnel_arm64)
+source_x86_64=($_source_x86::https://tunnelsassets$_env.blob.core.windows.net/cli/linux-x64-devtunnel)
+source_aarch64=($_source_arm::https://tunnelsassets$_env.blob.core.windows.net/cli/linux-arm64-devtunnel)
+noextract=($_source_x86 $_source_arm)
 
 sha256sums_x86_64=('4a772ea955a4c74c106a8547fd58e4c70599335cd1e5252b51c708d882379229')
 sha256sums_aarch64=('dbd9fa0ab3d2359403c602763104f45b3d52657a436679835252d0e64648add5')
@@ -44,9 +47,9 @@ options=(!strip)
 
 package() {
 
-    _pkg=devtunnel_x86
+    _pkg=$_source_x86
     if [ "${CARCH}" = "aarch64" ]; then
-        _pkg=devtunnel_arm64
+        _pkg=$_source_arm
     fi
 
     install -d "${pkgdir}/usr/bin"
