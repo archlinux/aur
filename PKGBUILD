@@ -3,7 +3,7 @@ pkgname=orature-bin
 _pkgname=Orature
 pkgver=1.9.3
 _subver=8693
-pkgrel=1
+pkgrel=2
 pkgdesc="An application for creating Narrations and Translations of Audio Bibles, Books, Resources, Commentaries, etc."
 arch=("x86_64")
 url="https://github.com/Bible-Translation-Tools/Orature"
@@ -23,7 +23,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c7b80629fc7fff701cf728923fec66f7bbb6def70d3720aeb59757aa1efcd8e6'
-            '231754c2d14734679c40adcc321ea5413c6406f9ce2cf883a2c53c951dc1e491')
+            '8e0043b31ea7234b44d4aeb8fa22ac8528073a4f95180700704aef924b81389c')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
