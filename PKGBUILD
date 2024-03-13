@@ -1,8 +1,8 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
 pkgname=obs-studio-tytan652
-pkgver=30.0.2
-pkgrel=7
+pkgver=30.1.0
+pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus V4L2 devices by paths, my bind interface PR, and sometimes backported fixes"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -122,10 +122,10 @@ sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
-  "23a0bd9f5e36d333b230ed8dfdfd06c3b4826187e3f858cde93200f5e0da2334"
+  "91ec5b6bec66c6d85c1f88f7f5fbdbe4bdbb820be5c2e7828f328f570bfdc845"
   "ee54b9c6f7e17fcc62c6afc094e65f18b2e97963c2fe92289b2b91972ac206e5"
   "f4a56021a7f1c564f95b588d7c09b60a89efa2c1954c8a418cf6320b5a818542"
-  "874456110d17d2efe02f8a1f47f58c877922d8bdab6435df334b9e6460b26bf8"
+  "82b14439697b5c5947117afa1b973bad7ddd9ee2f09e5d1ac56a96d10e01c6b1"
   "a7149e1d9a07270132cf8085d52225ed3200a78ea943cbf52d64b1b8f293e117"
 )
 
@@ -166,7 +166,7 @@ build() {
     -DCALM_DEPRECATION=ON \
     -Wno-dev
 
-    sed -i "s|#define OBS_VERSION |#define OBS_VERSION \"$pkgver-tytan652-$pkgrel\" //|" build/config/obsconfig.h
+  sed -i "s|OBS_VERSION =|OBS_VERSION = \"$_pkgver-tytan652-$pkgrel\"; //|" build/libobs/obsversion.c
 
   cmake --build build
 }

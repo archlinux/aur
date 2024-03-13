@@ -1,7 +1,7 @@
 pkgbase = obs-studio-tytan652
 	pkgdesc = Free and open source software for video recording and live streaming. With everything except service integrations. Plus V4L2 devices by paths, my bind interface PR, and sometimes backported fixes
-	pkgver = 30.0.2
-	pkgrel = 7
+	pkgver = 30.1.0
+	pkgrel = 1
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
 	arch = aarch64
@@ -87,7 +87,7 @@ pkgbase = obs-studio-tytan652
 	optdepends = libdatachannel>=0.20: WHIP Support
 	optdepends = libajantv2>=17.0.1: AJA support
 	optdepends = decklink: Blackmagic Design DeckLink support
-	provides = obs-studio=30.0.2
+	provides = obs-studio=30.1.0
 	provides = obs-vst
 	provides = obs-websocket
 	provides = obs-browser
@@ -98,7 +98,7 @@ pkgbase = obs-studio-tytan652
 	conflicts = obs-linuxbrowser
 	conflicts = libva-vdpau-driver
 	options = debug
-	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=30.0.2
+	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=30.1.0
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
 	source = bind_iface_eyeballed.patch
@@ -109,10 +109,10 @@ pkgbase = obs-studio-tytan652
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 23a0bd9f5e36d333b230ed8dfdfd06c3b4826187e3f858cde93200f5e0da2334
+	sha256sums = 91ec5b6bec66c6d85c1f88f7f5fbdbe4bdbb820be5c2e7828f328f570bfdc845
 	sha256sums = ee54b9c6f7e17fcc62c6afc094e65f18b2e97963c2fe92289b2b91972ac206e5
 	sha256sums = f4a56021a7f1c564f95b588d7c09b60a89efa2c1954c8a418cf6320b5a818542
-	sha256sums = 874456110d17d2efe02f8a1f47f58c877922d8bdab6435df334b9e6460b26bf8
+	sha256sums = 82b14439697b5c5947117afa1b973bad7ddd9ee2f09e5d1ac56a96d10e01c6b1
 	sha256sums = a7149e1d9a07270132cf8085d52225ed3200a78ea943cbf52d64b1b8f293e117
 
 pkgname = obs-studio-tytan652
