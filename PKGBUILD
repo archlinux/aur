@@ -13,6 +13,7 @@ pkgrel="1"
 pkgdesc="CLI to manage multi-tenant deployments for Frappe apps."
 arch=("any")
 url="https://github.com/frappe/${_pkgname}"
+license=("GPL-3.0-or-later")
 makedepends=("python-build" "python-hatchling" "python-installer" "python-wheel")
 depends=("cronie" "git" "nodejs" "python" "python-click" "python-gitpython" "python-jinja" "python-pip" "python-python-crontab" "python-requests" "python-semantic-version" "python-setuptools" "python-tomli" "redis" "ruby-foreman" "supervisor" "yarn")
 optdepends=("mariadb: Database"

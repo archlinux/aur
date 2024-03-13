@@ -4,6 +4,7 @@ pkgbase = frappe-bench
 	pkgrel = 1
 	url = https://github.com/frappe/bench
 	arch = any
+	license = GPL-3.0-or-later
 	makedepends = python-build
 	makedepends = python-hatchling
 	makedepends = python-installer
