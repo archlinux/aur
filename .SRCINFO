@@ -1,7 +1,7 @@
 pkgbase = screen-recorder-app
 	pkgdesc = A small video recorder application, built with Electron and tailwindcss.
 	pkgver = 1.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/petya0927/screen-recorder-app
 	arch = any
 	license = MIT
@@ -9,12 +9,12 @@ pkgbase = screen-recorder-app
 	makedepends = npm
 	makedepends = nodejs
 	makedepends = git
-	depends = electron25
+	depends = electron25-bin
 	depends = hicolor-icon-theme
 	conflicts = screen-recorder-app
 	source = screen-recorder-app.git::git+https://github.com/petya0927/screen-recorder-app.git#tag=v1.0.0
 	source = screen-recorder-app.sh
 	sha256sums = SKIP
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = screen-recorder-app
