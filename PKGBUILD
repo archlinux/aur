@@ -3,7 +3,7 @@
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=wasm-micro-runtime
-pkgver=1.3.0
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Standalone WebAssembly (WASM) runtime with small footprint"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=("wasm-micro-runtime")
 conflicts=("wasm-micro-runtime-git")
 changelog="RELEASE_NOTES.md"
 source=("$url/archive/WAMR-$pkgver.tar.gz")
-sha512sums=("b212208fbbf5613f169447e6d3a079edec7321c892c44e9c51734b41c1c9bd45a83afd38b16e01c0850252a5072b566cff45ab4cecd3eed19705bef3a616385f")
+sha512sums=('8d39230e41b8acf0d69b1cc1968c1eaeaa06ea0083e0a910d731d30f50e5807bc1ed4b0f46545a02fe392fbd62fb867a585dc91ffddcfce1dd9b007957a6cc7a')
 
 prepare() {
 	sed -i 's/${LLVM_AVAILABLE_LIBS}/LLVM/g' "$pkgname-WAMR-$pkgver/product-mini/platforms/linux/CMakeLists.txt"
@@ -46,6 +46,9 @@ build() {
 		-DWAMR_BUILD_TAIL_CALL=1 \
 		-DWAMR_BUILD_SIMD=1 \
 		-DWAMR_BUILD_REF_TYPES=1 \
+		-DWAMR_BUILD_STATIC_PGO=1 \
+		-DWAMR_BUILD_MODULE_INST_CONTEXT=1 \
+		-DWAMR_BUILD_QUICK_AOT_ENTRY=1 \
 	"
 
 	cmake \
