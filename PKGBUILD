@@ -1,37 +1,55 @@
-# Author: Roman Gilg <subdiff@gmail.com>
 # Maintainer: abelian424
 
-pkgname=wrapland-kwinft
+_pkgname="wrapland"
+pkgname="$_pkgname-kwinft"
 pkgver=0.600.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt/C++ library wrapping libwayland'
-arch=(x86_64 aarch64)
 url="https://github.com/winft/wrapland"
-license=(LGPL)
-depends=(libglvnd wayland glibc gcc-libs microsoft-gsl qt6-base)
-provides=('wrapland')
-conflicts=('wrapland')
-makedepends=(doxygen appstream extra-cmake-modules git wayland-protocols)
-optdepends=('weston: allows extra autotests to be run during compile'
-            'graphviz: provides dot for doxygen'
-            'qt6-tools' 'kdoctools' 'qt6-doc')
-source=("https://github.com/winft/wrapland/archive/refs/tags/v$pkgver.tar.gz")
-sha1sums=('e30668661640d98a28bd5b330ae3bda5d55b8a03')
+license=('LGPL-2.1-only')
+arch=('x86_64' 'aarch64')
 
-prepare() {
-  mkdir -p $pkgname
-  cd $pkgname
-  tar -xvf ../v$pkgver.tar.gz --strip-components=1
-}
+depends=(
+  libglvnd
+  qt6-base
+  wayland
+)
+makedepends=(
+  doxygen
+  extra-cmake-modules
+  git
+  microsoft-gsl
+  ninja
+  wayland-protocols
+)
+
+provides=("wrapland=$pkgver")
+conflicts=("wrapland")
+
+_pkgsrc="$_pkgname-$pkgver"
+_pkgext="tar.gz"
+source=(
+  "$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext"
+)
+sha256sums=(
+  '2a07b69b6489c2c83f75c346a3aeecf28cc79a7f5040ace467022f554290287e'
+)
 
 build() {
-  mkdir -p build
-  cd build
-  cmake ../$pkgname \
-    -DCMAKE_BUILD_TYPE=Release
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DBUILD_TESTING=OFF
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
