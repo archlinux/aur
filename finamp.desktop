@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Finamp
+Exec=/opt/finamp/finamp
+Type=Application
+Terminal=false
+Categories=Audio;Player;
+Comment=A Jellyfin music client for mobile and desktop
