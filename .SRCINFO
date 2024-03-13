@@ -1,7 +1,7 @@
 pkgbase = dtree
 	pkgdesc = Command line program to draw trees
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://strahinja.srht.site/dtree
 	arch = x86_64
 	license = GPL3
