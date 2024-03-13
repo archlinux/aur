@@ -1,7 +1,7 @@
 pkgbase = wechat-uos-bwrap
 	pkgdesc = WeChat UOS with bwrap sandbox
 	pkgver = 1.0.0.236
-	pkgrel = 3
+	pkgrel = 4
 	url = https://weixin.qq.com/
 	arch = x86_64
 	arch = aarch64
@@ -45,6 +45,7 @@ pkgbase = wechat-uos-bwrap
 	depends = mesa
 	depends = hicolor-icon-theme
 	depends = bash
+	depends = lsb-release
 	optdepends = qt5-base: iBus support
 	provides = wechat-uos
 	source = wechat.sh
@@ -57,5 +58,9 @@ pkgbase = wechat-uos-bwrap
 	md5sums = 600e74549ce2258c045d5c2f7689ea63
 	md5sums = b3acc2c95d35bd2fa41e5a8f1a6339ec
 	md5sums = 6b159c6e9d21a98925489bc37a9aea43
+	source_x86_64 = wechat-x86-1.0.0.236.deb::https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_1.0.0.236_amd64.deb
+	md5sums_x86_64 = c9eeb10d8e4a534d184e76ed87a71545
+	source_aarch64 = wechat-arm-1.0.0.236.deb::https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_1.0.0.236_arm64.deb
+	md5sums_aarch64 = e8f354ab8d14f3aa499219a1d1840803
 
 pkgname = wechat-uos-bwrap

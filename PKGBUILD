@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=wechat-uos-bwrap
 pkgver=1.0.0.236
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="WeChat UOS with bwrap sandbox"
 arch=('x86_64' 'aarch64')
@@ -48,6 +48,7 @@ depends=(
 	"mesa"
 	"hicolor-icon-theme"
 	"bash"
+	"lsb-release"
 )
 
 optdepends=(
