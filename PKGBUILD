@@ -3,7 +3,7 @@
 pkgname=loudness-scanner-git
 pkgver=v0.6.0.r2.g3e38b3e
 pkgrel=1
-pkgdesc="EBU R128 loudness normalization tool"
+pkgdesc="EBUR128 ReplayGain loudness normalization tool"
 arch=('armv6h' 'armv7h' 'aarch64' 'x86_64')
 url="https://github.com/jiixyj/loudness-scanner"
 license=('MIT')
