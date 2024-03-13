@@ -2,7 +2,7 @@
 
 _pkgname=gBar
 pkgname=gbar-git
-pkgver=r173.d811b14
+pkgver=r221.d3f46bc
 pkgrel=1
 # Architectures which are atleast confirmed to somewhat work.
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ pkgdesc='Blazingly fast status bar written with GTK'
 url='https://github.com/scorpion-26/gBar'
 source=("$_pkgname::git+$url")
 license=('MIT')
-depends=('gtk-layer-shell' 'pulseaudio' 'libdbusmenu-gtk3' 'pamixer')
+depends=('gtk-layer-shell' 'pulseaudio' 'libdbusmenu-gtk3' 'pamixer' 'libsass')
 optdepends=('bluez-utils: Bluetooth support'
             'hyprland: Workspace widgets'
             'nvidia-utils: Nvidia GPU support'
