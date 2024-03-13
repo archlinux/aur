@@ -20,24 +20,16 @@ BWRAP_ENV_APPEND=()
 env_add QT_QPA_PLATFORM xcb
 [[ -z "${QT_IM_MODULE}" ]] && env_add QT_IM_MODULE fcitx
 [[ -z "${GTK_USE_PORTAL}" ]] && env_add GTK_USE_PORTAL 1
-
-case "${XDG_CURRENT_DESKTOP}" in 
-	KDE)
-		SCALE_FACTOR=$(kreadconfig6 --group KScreen --key ScaleFactor --default 1.0)
-		if [[ -z "${SCALE_FACTOR}" ]]; then
-			echo 'Warning: Failed to read KDE config ScaleFactor using kreadconfig6, falling back to kreadconfig5'
-			SCALE_FACTOR=$(kreadconfig5 --group KScreen --key ScaleFactor --default 1.0)
-			if [[ -z "${SCALE_FACTOR}" ]]; then
-				echo 'Error: Failed to read KDE config ScaleFactor even with fallback'
-				exit 1
-			fi
-		fi
-		env_add QT_SCALE_FACTOR "${SCALE_FACTOR}"
-		;;
-	*)
-		env_add QT_AUTO_SCREEN_SCALE_FACTOR "${QT_AUTO_SCREEN_SCALE_FACTOR:-1}"
-		;;
-esac
+# KDE won't use QT_AUTO_SCREEN_SCALE_FACTOR, but use QT_SCALE_FACTOR
+if [[ "${XDG_CURRENT_DESKTOP}" == KDE ]]; then
+	[[ -z "${QT_SCALE_FACTOR}" ]] && 
+		env_add QT_SCALE_FACTOR $(
+			kreadconfig6 --group KScreen --key ScaleFactor --default 1.0 ||
+			kreadconfig5 --group KScreen --key ScaleFactor --default 1.0 ||
+			echo 1.0)
+else
+	[[ -z "${QT_AUTO_SCREEN_SCALE_FACTOR}" ]] && env_add QT_AUTO_SCREEN_SCALE_FACTOR 1
+fi
 
 mkdir -p "${WECHAT_FILES_DIR}" "${WECHAT_HOME_DIR}"
 ln -snf "${WECHAT_FILES_DIR}" "${WECHAT_HOME_DIR}/xwechat_files"
@@ -48,6 +40,7 @@ BWRAP_ARGS=(
 	--unshare-all
 	--share-net
 	--cap-drop ALL
+	--die-with-parent
 	# /usr
 	--ro-bind /usr{,}
 	--symlink usr/lib /lib
@@ -69,6 +62,7 @@ BWRAP_ARGS=(
 	--ro-bind "${XDG_RUNTIME_DIR}/bus"{,}
 	--ro-bind "${XDG_RUNTIME_DIR}/pulse"{,}
 	--ro-bind-try /run/systemd/resolve/resolv.conf{,}
+	--ro-bind-try /run/systemd/resolve/stub-resolv.conf{,}
 	# /opt, Wechat-beta itself
 	--ro-bind /opt/wechat-beta{,}
 	# license fixups in various places

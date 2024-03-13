@@ -1,7 +1,7 @@
 pkgbase = wechat-beta-bwrap
 	pkgdesc = WeChat Testing with bwrap sandbox
 	pkgver = 1.0.0.145
-	pkgrel = 18
+	pkgrel = 19
 	url = https://weixin.qq.com
 	arch = x86_64
 	arch = aarch64
@@ -29,7 +29,7 @@ pkgbase = wechat-beta-bwrap
 	source = wechat-beta.desktop
 	source = wechat-beta.png
 	source = license.tar.gz
-	sha256sums = e891225fa2545f8c17fa27e35411e6246701f250d806688925102038e1083e91
+	sha256sums = 81385310366bb1d62604cc9bd7b8522e4ea9aa92ed3c30dd9343fd4539dd5d43
 	sha256sums = 7692acffebe4ac259cae05d2c92355502fa2cb4ccdbaa27c6cc65f2e1f4678b7
 	sha256sums = bc13a14c8680daa03c617e71f48419a1b05e2b9d75bb58b15a89d0d191d0fb12
 	sha256sums = 53760079c1a5b58f2fa3d5effe1ed35239590b288841d812229ef4e55b2dbd69
