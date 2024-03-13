@@ -19,6 +19,7 @@ pkgbase = gamescope-git
 	depends = hwdata
 	depends = libavif
 	depends = libcap.so
+	depends = libdecor
 	depends = libdisplay-info.so
 	depends = libdrm
 	depends = libliftoff.so
