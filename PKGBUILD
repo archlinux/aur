@@ -8,8 +8,56 @@ arch=('x86_64' 'aarch64')
 url="https://weixin.qq.com/"
 license=('proprietary')
 groups=()
-depends=('nss' 'bubblewrap' 'xcb-util-renderutil' 'xcb-util-keysyms' 'xcb-util-image' 'xcb-util-wm' 'libxkbcommon-x11' 'util-linux' "openssl-1.1")
-makedepends=()
+
+depends=(
+	"nss"
+	"bubblewrap"
+	"xcb-util-renderutil"
+	"xcb-util-keysyms"
+	"xcb-util-image"
+	"xcb-util-wm"
+	"libxkbcommon-x11"
+	"libxkbcommon"
+	"libxcb"
+	"util-linux"
+	"openssl-1.1"
+	"libxcb"
+	"gcc-libs"
+	"nspr"
+	"bzip2"
+	"glibc"
+	"zlib"
+	"libxcomposite"
+	"glib2"
+	"wayland"
+	"libxrender"
+	"libxext"
+	"alsa-lib"
+	"dbus"
+	"libxrandr"
+	"fontconfig"
+	"pango"
+	"freetype2"
+	"libxfixes"
+	"cairo"
+	"libx11"
+	"expat"
+	"at-spi2-core"
+	"libxdamage"
+	"libdrm"
+	"mesa"
+	"hicolor-icon-theme"
+	"bash"
+)
+
+optdepends=(
+	"qt5-base: iBus support"
+)
+
+makedepends=(
+	"libarchive"
+)
+
 checkdepends=()
 provides=("wechat-uos")
 conflicts=()
@@ -23,11 +71,13 @@ source=(
 	license.tar.gz
 )
 
-md5sums=('ff72c19fab2405f0405e0b669e22a992'
-         'b6e6920af829dafb0be82da1c79e46a9'
-         '600e74549ce2258c045d5c2f7689ea63'
-         'b3acc2c95d35bd2fa41e5a8f1a6339ec'
-         '6b159c6e9d21a98925489bc37a9aea43')
+md5sums=(
+	'ff72c19fab2405f0405e0b669e22a992'
+	'b6e6920af829dafb0be82da1c79e46a9'
+	'600e74549ce2258c045d5c2f7689ea63'
+	'b3acc2c95d35bd2fa41e5a8f1a6339ec'
+	'6b159c6e9d21a98925489bc37a9aea43'
+)
 
 function prepare() {
 	tar -xf data.tar.xz ./opt/apps/com.tencent.wechat
