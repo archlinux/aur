@@ -2,7 +2,7 @@
 # Maintainer: pikl <me@pikl.uk>
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
-pkgrel=3
+pkgrel=4
 pkgver=1.98.2
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
@@ -125,7 +125,7 @@ package_immich-server() {
 
     # dependencies generated from base-images repository
     # https://github.com/immich-app/base-images/blob/main/server/Dockerfile
-    depends=('redis' 'postgresql' 'nodejs' 'nginx'
+    depends=('redis' 'postgresql' 'nodejs'
         'pgvecto.rs=0.2.0'  # aur
         'zlib'
         'glib2'
