@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=blueknight-bin
 _pkgname=BlueKnight
-pkgver=1.1.2
+pkgver=1.1.3
 _electronversion=28
 pkgrel=1
-pkgdesc="A Minecraft Launcher made with electron, that uses the Modrinth api to make installing mods as easy as possible."
+pkgdesc="A Minecraft Launcher made with electron, that uses the Modrinth api to make installing mods as easy as possible.Beta version."
 arch=('x86_64')
 url="https://github.com/KartoffelChipss/blueknight"
 license=('GPL-3.0-only')
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}-beta/${pkgname%-bin}-launcher-deb-${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b20ad73332f37aa956c0656fb033848cfe3985a61866600c1f6092a19ba7c1b6'
+sha256sums=('9e67bde47df786db286b9b8ebb46ed2e79603f8c11bd7bcc0b19cf20970b42fe'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
