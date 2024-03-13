@@ -3,7 +3,7 @@
 pkgname=kgamma
 pkgver=6.0.2
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=2
+pkgrel=3
 pkgdesc='Adjust your monitor gamma settings'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
