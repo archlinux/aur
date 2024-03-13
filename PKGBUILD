@@ -43,6 +43,8 @@ prepare() {
   git apply -v "$srcdir"/qchar.patch
   msg2 "quazip"
   git apply -v "$srcdir"/quazip.patch
+  msg2 "fix translation issue"
+  git revert --no-commit  bc42f702afca517bbf2a3de60ed4827729400537
 }
 
 build() {
