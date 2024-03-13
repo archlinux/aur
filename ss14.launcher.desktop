@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Space Station 14
+Version=<VERSION>
+Type=Application
+Icon=spacestation14
+Comment=Space Station 14 Launcher
+Categories=Game;
+Keywords=gaming;launcher;
+Terminal=false
+Exec=env DOTNET_ROOT=/opt/ss14.launcher/dotnet ss14.launcher %u
