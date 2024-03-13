@@ -1,14 +1,14 @@
 pkgbase = browsers-bin
 	pkgdesc = Open the right browser at the right time
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://browsers.software
 	arch = x86_64
 	license = Apache
 	license = MIT
-	provides = browsers=0.5.3
+	provides = browsers=0.5.4
 	conflicts = browsers-git
-	source = browsers_linux-0.5.3.tar.xz::https://github.com/Browsers-software/browsers/releases/download/0.5.3/browsers_linux.tar.xz
-	sha256sums = ad1734e992a9a403c8af5d3bc8fa5081bc972f25c2e10b631de530b014a67655
+	source = browsers_linux-0.5.4.tar.xz::https://github.com/Browsers-software/browsers/releases/download/0.5.4/browsers_linux.tar.xz
+	sha256sums = c64c4bd5f0f0e1119e9a37a6e0a51b1033711363c365fd43dd4514f15598119b
 
 pkgname = browsers-bin
