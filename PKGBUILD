@@ -1,9 +1,10 @@
-#Maintainer: Trevor Bergeron <mal@sec.gd>
+#Maintainer: iamawacko <iamawacko@protonmail.com>
+#Contributor: Trevor Bergeron <mal@sec.gd>
 
 _pkgname=cwtch
 pkgname=$_pkgname-bin
 
-_pkgver=1.13.1
+_pkgver=1.14.7
 pkgver="${_pkgver//-/_}"
 pkgrel=1
 
@@ -16,8 +17,8 @@ license=('MIT')
 optdepends=(
     'tor: use system tor instead of packaged'
 )
-source_x86_64=("$url/releases/$_pkgname-v${_pkgver%.0}/$_pkgname-v$_pkgver.tar.gz")
-sha512sums_x86_64=('06662539ebbc0c338ce9331b1a9da5c6d0b06c3a6db2b7896b7a14ab6263325b237e5e76f342e3ff152234c2180c3e92cc6985a5e33e5d0726f281384b1b029d')
+source_x86_64=("https://git.openprivacy.ca/$_pkgname.im/$_pkgname-ui/releases/download/v$_pkgver/cwtch-v$_pkgver.tar.gz")
+sha512sums_x86_64=('465e741781bf342c0bb810dd2f67145628336c05f9e57390045d47d7f3e24be2bf3bc882b6595aade24d7668e46c713ce1b9b66d4b61dac32b80a0dc1c1e9e84')
 
 package() {
     cd "$srcdir/$_pkgname"
