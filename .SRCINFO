@@ -1,7 +1,7 @@
 pkgbase = plasma-vault
 	pkgdesc = Plasma applet and services for creating encrypted vaults
 	pkgver = 6.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	groups = plasma
