@@ -16,6 +16,7 @@ pkgbase = corectrl-git
 	depends = qt5-quickcontrols2
 	depends = qt5-charts
 	depends = qt5-svg
+  depends = qt5-declarative
   depends = quazip-qt5
 	depends = procps-ng
 	depends = hwdata
