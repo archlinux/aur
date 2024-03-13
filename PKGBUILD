@@ -14,7 +14,7 @@ pkgrel="1"
 pkgdesc="Software for medical practices."
 arch=("x86_64")
 url="https://github.com/elexis/${_pkgname}"
-license=("EPL")
+license=("EPL-1.0")
 depends=("alsa-lib" "at-spi2-core" "dbus-glib" "freetype2" "java-runtime>=11" "java-runtime<=17" "libcups" "libnet" "libxcomposite" "libxkbcommon" "libxrandr" "mesa" "nss")
 makedepends=("git" "java-environment>=11" "java-environment<=17" "maven")
 # The git repository is needed for the build.

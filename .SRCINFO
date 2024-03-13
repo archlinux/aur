@@ -4,7 +4,7 @@ pkgbase = elexis
 	pkgrel = 1
 	url = https://github.com/elexis/elexis-3-core
 	arch = x86_64
-	license = EPL
+	license = EPL-1.0
 	makedepends = git
 	makedepends = java-environment>=11
 	makedepends = java-environment<=17
