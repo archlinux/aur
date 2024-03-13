@@ -1,7 +1,7 @@
 pkgbase = string-file-manager-bin
 	pkgdesc = File manager for Linux - Built with Electron
 	pkgver = 1.0.73
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Michael-Vanderford/electron-file-manager
 	arch = x86_64
 	license = GPL-3.0-only
@@ -13,6 +13,6 @@ pkgbase = string-file-manager-bin
 	source = string-file-manager-1.0.73.deb::https://github.com/Michael-Vanderford/electron-file-manager/releases/download/string-file-manager-v1.073/string-file-manager_1.0.73_amd64.deb
 	source = string-file-manager.sh
 	sha256sums = 131f368b8cb8bf34c389af2900d20e8d1ea4f01ddadcb6d8fceec84cf8ff641c
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = string-file-manager-bin
