@@ -1,7 +1,7 @@
 pkgbase = pylyzer-bin
 	pkgdesc = A fast static code analyzer & language server for Python
 	pkgver = 0.0.51
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mtshiba/pylyzer
 	arch = x86_64
 	license = MIT
