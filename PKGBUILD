@@ -3,7 +3,7 @@
 _pkgname=suyu
 _branch=dev
 pkgname=suyu-dev-qt6-git
-pkgver=r27175.bd5bdbe6c7
+pkgver=r27187.9895cc94d0
 pkgrel=1
 pkgdesc="suyu is the afterlife the world's most popular, open-source, Nintendo Switch emulator (dev branch with QT6)"
 arch=(x86_64)
