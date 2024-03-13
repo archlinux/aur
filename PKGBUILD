@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=hancho
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc='Simple pleasant build system in Python'
 arch=('any')
@@ -19,7 +19,7 @@ source=(
 )
 
 sha512sums=(
-  'c689a935da04329034ec8b875da3ec45e067277890f97ed5f659aadd98fdb8da1aa022ef72c8419a74e1637300aae4bdbd04f9bc39d81e2bfc7dd45a043b1562'
+  '19678595e4dc5551764cbd2c5f96016ad38d955319aaff798bb15cfac4dffd5cc5cea23fc776924583bbe7f58e375febcc2b0db6c677b1e260c0acf4045ad942'
 )
 
 prepare() {
