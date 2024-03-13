@@ -1,10 +1,10 @@
 pkgbase = routeros-upgrader-bin
 	pkgdesc = Mass-Upgrade Mikrotik RouterOS devices synchronized
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/Marco98/routeros-upgrader
 	arch = x86_64
-	source = https://github.com/Marco98/routeros-upgrader/releases/download/v0.3.3/routeros-upgrader_0.3.3_linux_amd64
-	sha256sums = 32f9c08e185344913a6b978ba9b2fa36f01d26a3b06403627183c60288dc5c25
+	source = https://github.com/Marco98/routeros-upgrader/releases/download/v0.3.4/routeros-upgrader_0.3.4_linux_amd64
+	sha256sums = a95a9e089fbe814e9c69f81e5d22cc4ce0dccca1266bd81cae4b4661d94abd16
 
 pkgname = routeros-upgrader-bin
