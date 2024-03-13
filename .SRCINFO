@@ -1,7 +1,7 @@
 pkgbase = python-freqtrade
 	pkgdesc = Free, open source crypto trading bot.
-	pkgver = 2024.1
-	pkgrel = 2
+	pkgver = 2024.2
+	pkgrel = 1
 	url = https://github.com/freqtrade/freqtrade
 	arch = any
 	license = GPL-3.0-or-later
@@ -74,8 +74,8 @@ pkgbase = python-freqtrade
 	depends = tensorboard
 	depends = uvicorn
 	conflicts = python-freqtrade-git
-	source = python-freqtrade-v2024.1.tar.gz::https://github.com/freqtrade/freqtrade/archive/refs/tags/2024.1.tar.gz
-	source = frequi-v1.2.4.zip::https://github.com/freqtrade/frequi/releases/download/1.2.4/freqUI.zip
+	source = python-freqtrade-v2024.2.tar.gz::https://github.com/freqtrade/freqtrade/archive/refs/tags/2024.2.tar.gz
+	source = frequi-v1.2.5.zip::https://github.com/freqtrade/frequi/releases/download/1.2.5/freqUI.zip
 	sha512sums = 2ae4d2396bc6ae12623c43c7fc76554032da1c1f9fd84ac6c55964c8775f81cd73cd59618e26f8ad98a88ba9d428883cc8607e09da3f519d26bb3de32f1ca3ee
 	sha512sums = 3c39924b456fac98175a357a3d6dc44e458ab9518f1003c22e40360bebd03b6ad0d239ac37094e4c80e63be28d84d218d7ffbeab0b55c167e3e575ad404d9477
 
