@@ -1,9 +1,10 @@
-#Maintainer: Trevor Bergeron <mal@sec.gd>
+# Maintainer: iamawacko <iamawacko@protonmail.com>
+# Contributor: Trevor Bergeron <mal@sec.gd>
 
 _pkgname=autobindings
 pkgname=cwtch-$_pkgname
 
-pkgver=0.0.10
+pkgver=0.0.14
 pkgrel=1
 
 pkgdesc="Automatically-generated C bindings for the Cwtch library"
@@ -15,7 +16,7 @@ arch=('x86_64')
 url='https://cwtch.im'
 license=('MIT')
 source=("$_pkgname-v$pkgver.tar.gz::https://git.openprivacy.ca/api/v1/repos/cwtch.im/$_pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('f180b2af9da7a8be36314cca61c233ed7a60a4dc75c96f9e486a595a949fb945')
+sha256sums=('20c5af1b4eba9c61db1d86c86ab3ffb23eb12f979c8cb94746f68bd0e62b4e91')
 
 prepare() {
     cd "$srcdir/$_pkgname"

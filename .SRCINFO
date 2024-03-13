@@ -1,6 +1,6 @@
 pkgbase = cwtch-autobindings
 	pkgdesc = Automatically-generated C bindings for the Cwtch library
-	pkgver = 0.0.10
+	pkgver = 0.0.14
 	pkgrel = 1
 	url = https://cwtch.im
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = cwtch-autobindings
 	makedepends = git
 	depends = tor
 	provides = libcwtch-go
-	source = autobindings-v0.0.10.tar.gz::https://git.openprivacy.ca/api/v1/repos/cwtch.im/autobindings/archive/v0.0.10.tar.gz
-	sha256sums = f180b2af9da7a8be36314cca61c233ed7a60a4dc75c96f9e486a595a949fb945
+	source = autobindings-v0.0.14.tar.gz::https://git.openprivacy.ca/api/v1/repos/cwtch.im/autobindings/archive/v0.0.14.tar.gz
+	sha256sums = 20c5af1b4eba9c61db1d86c86ab3ffb23eb12f979c8cb94746f68bd0e62b4e91
 
 pkgname = cwtch-autobindings
