@@ -5,7 +5,7 @@ pkgrel=2
 pkgdesc="The debug server implementation for Java."
 arch=(any)
 url="https://github.com/microsoft/java-debug"
-lisence=('EPL 1.0')
+license=('EPL-1.0')
 
 depends=('java-runtime>=17')
 makedepends=('java-environment-openjdk')
