@@ -1,9 +1,10 @@
 pkgbase = java-debug
 	pkgdesc = The debug server implementation for Java.
 	pkgver = 0.51.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/java-debug
 	arch = any
+	license = EPL-1.0
 	makedepends = java-environment-openjdk
 	depends = java-runtime>=17
 	source = java-debug-0.51.1.tar.gz::https://github.com/microsoft/java-debug/archive/refs/tags/0.51.1.tar.gz
