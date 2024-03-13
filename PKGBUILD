@@ -17,6 +17,5 @@ md5sums=('SKIP'
 	 'SKIP')
 
 package() {
-	install -Dm644 *.ttf -t $pkgdir/usr/share/fonts/shanggu/
-	install -Dm644 LICENSE.txt -t $pkgdir/usr/share/licenses/$pkgname/
+	install -Dm644 */*.ttf -t $pkgdir/usr/share/fonts/shanggu/
 }
