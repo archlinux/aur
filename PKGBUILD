@@ -1,15 +1,14 @@
-# Don't bump to 2.X until we have Anki >= 2.1.41
 pkgname=python-mypy-protobuf
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Generate mypy stub files from protobuf specs'
-url='https://github.com/dropbox/mypy-protobuf'
+url='https://github.com/nipunn1313/mypy-protobuf'
 arch=('any')
 license=('Apache')
 
 depends=('mypy' 'protobuf' 'python' 'python-protobuf')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 
 source=("https://files.pythonhosted.org/packages/source/m/mypy-protobuf/mypy-protobuf-$pkgver.tar.gz")
 
