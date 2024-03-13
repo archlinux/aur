@@ -1,14 +1,17 @@
 pkgbase = disman-kwinft
 	pkgdesc = Qt/C++ display management library
 	pkgver = 0.600.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/winft/disman
 	arch = x86_64
 	arch = aarch64
 	license = LGPL-2.1-only
 	makedepends = extra-cmake-modules
 	makedepends = git
+	makedepends = kcoreaddons
+	makedepends = microsoft-gsl
 	makedepends = ninja
+	depends = qt6-base
 	depends = wrapland
 	provides = disman=0.600.0
 	conflicts = disman
