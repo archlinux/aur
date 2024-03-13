@@ -3,7 +3,7 @@ pkgname=bluebubbles-bin
 _pkgname=BlueBubbles
 pkgver=1.12.7
 _subver=2B61
-pkgrel=3
+pkgrel=4
 pkgdesc="A cross-platform app ecosystem, bringing iMessage to Android, PC (Windows, Linux, & even macOS), and Web!"
 arch=(
     'aarch64'
@@ -15,19 +15,13 @@ license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'libepoxy'
     'webkit2gtk-4.1'
-    'at-spi2-core'
     'gdk-pixbuf2'
-    'cairo'
     'mpv'
-    'harfbuzz'
-    'pango'
     'libdbusmenu-glib'
     'libnotify'
     'libappindicator-gtk3'
     'gtk3'
-    'libsoup3'
 )
 makedepends=(
     'gendesk'

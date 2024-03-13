@@ -1,25 +1,19 @@
 pkgbase = bluebubbles-bin
 	pkgdesc = A cross-platform app ecosystem, bringing iMessage to Android, PC (Windows, Linux, & even macOS), and Web!
 	pkgver = 1.12.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://bluebubbles.app/
 	arch = aarch64
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = gendesk
-	depends = libepoxy
 	depends = webkit2gtk-4.1
-	depends = at-spi2-core
 	depends = gdk-pixbuf2
-	depends = cairo
 	depends = mpv
-	depends = harfbuzz
-	depends = pango
 	depends = libdbusmenu-glib
 	depends = libnotify
 	depends = libappindicator-gtk3
 	depends = gtk3
-	depends = libsoup3
 	provides = bluebubbles=1.12.7
 	conflicts = bluebubbles
 	source = bluebubbles.sh
