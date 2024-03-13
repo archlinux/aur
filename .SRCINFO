@@ -1,7 +1,7 @@
 pkgbase = emmet-language-server
 	pkgdesc = A language server for emmet.io
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.npmjs.com/package/@olrtg/emmet-language-server
 	arch = any
 	license = MIT
