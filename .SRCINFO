@@ -1,6 +1,6 @@
 pkgbase = asusctl
 	pkgdesc = A control daemon, tools, and a collection of crates for interacting with ASUS ROG laptops
-	pkgver = 5.0.8
+	pkgver = 5.0.10
 	pkgrel = 0.1
 	url = https://asus-linux.org
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = asusctl
 	makedepends = npm
 	makedepends = unzip
 	makedepends = yarn
-	source = git+https://gitlab.com/asus-linux/asusctl.git#commit=bb7b3a81fb650b7f1e0e773b7eeb6a8d75412df5
+	source = git+https://gitlab.com/asus-linux/asusctl.git#commit=9faebe9e389ef06b81bca201bb007b740b4be984
 	sha256sums = SKIP
 
 pkgname = asusctl
