@@ -4,7 +4,7 @@ _pkgname=HireGPT
 pkgver=0.2.0
 _electronversion=23
 _nodeversion=16
-pkgrel=6
+pkgrel=7
 pkgdesc="Job application made easy with OpenAI GPT model"
 arch=('any')
 url="https://github.com/jaejaywoo/HireGPT"
@@ -25,7 +25,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -36,6 +36,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -f -q -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
@@ -48,6 +49,13 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
+    if [ `curl ifconfig.co/country` = "China" ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
     npm install
     npm run package
 }

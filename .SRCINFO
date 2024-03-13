@@ -1,7 +1,7 @@
 pkgbase = hiregpt
 	pkgdesc = Job application made easy with OpenAI GPT model
 	pkgver = 0.2.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/jaejaywoo/HireGPT
 	arch = any
 	license = MIT
@@ -14,6 +14,6 @@ pkgbase = hiregpt
 	source = hiregpt.git::git+https://github.com/jaejaywoo/HireGPT.git#tag=v0.2.0
 	source = hiregpt.sh
 	sha256sums = SKIP
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = hiregpt
