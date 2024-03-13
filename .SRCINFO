@@ -1,0 +1,17 @@
+pkgbase = convertall-py
+	pkgdesc = Unit conversion program (Qt). Python version.
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = http://convertall.bellz.org/
+	arch = any
+	license = GPL
+	depends = python-pyqt5
+	depends = desktop-file-utils
+	conflicts = convertall
+	conflicts = convertall-git
+	source = git+https://github.com/doug-101/ConvertAll-py.git#tag=v0.8.0
+	source = convertall.desktop
+	sha256sums = SKIP
+	sha256sums = de48914e795340481c14e00c4a1d58d22f717fc6ec171edb6bf855488c92d9a4
+
+pkgname = convertall-py
