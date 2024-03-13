@@ -6,7 +6,9 @@ pkgbase = patrjprof
 	arch = any
 	license = AGPL-3.0-or-later
 	depends = java-runtime-headless>=8
-	conflicts = patrjprof
+	optdepends = java-runtime-headless>=16: support for socket files for server/client communication
+	optdepends = java-runtime>=8: graphical user interface
+	optdepends = java-runtime>=16: socket files + graphical user interface
 	source = patr-java-profiler-agent.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-agent/1.2.0/patr-java-profiler-agent-1.2.0-jar-with-dependencies.jar
 	source = patr-java-profiler-bootstrap.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-bootstrap/1.2.0/patr-java-profiler-bootstrap-1.2.0.jar
 	source = patr-java-profiler-server.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-server/1.2.0/patr-java-profiler-server-1.2.0.jar
