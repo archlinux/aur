@@ -1,7 +1,7 @@
 pkgbase = lightdm-gtk-greeter-cancellable-autologin
 	pkgdesc = GTK+ greeter for LightDM with cancellable autologin patch
 	pkgver = 2.0.9
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/pezcurrel/lightdm-gtk-greeter
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = lightdm-gtk-greeter-cancellable-autologin
 	conflicts = lightdm-gtk-greeter
 	conflicts = lightdm-gtk-greeter-git
 	backup = etc/lightdm/lightdm-gtk-greeter.conf
-	source = git+https://github.com/pezcurrel/lightdm-gtk-greeter#tag=lightdm-gtk-greeter-2.0.9-cancellable-autologin-1
+	source = git+https://github.com/pezcurrel/lightdm-gtk-greeter.git#tag=lightdm-gtk-greeter-2.0.9-cancellable-autologin-1
 	sha256sums = SKIP
 
 pkgname = lightdm-gtk-greeter-cancellable-autologin
