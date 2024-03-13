@@ -8,7 +8,7 @@ pkgver=1.3.0.r138.g3ff1f2d
 pkgrel=1
 pkgdesc="Application to control your hardware with ease using application profiles"
 url="https://gitlab.com/corectrl/corectrl"
-license=(GPL3)
+license=(GPL-3.0-or-later)
 arch=(i686 x86_64)
 depends=('botan>=2.2.0' 'qt5-base>=5.15' qt5-quickcontrols2 qt5-charts qt5-svg procps-ng hwdata quazip-qt5 dbus polkit)
 makedepends=(git 'cmake>=3.3' extra-cmake-modules 'gcc>=8' qt5-tools 'spdlog>=1.4')
