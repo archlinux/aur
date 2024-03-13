@@ -13,7 +13,7 @@ pkgrel="1"
 pkgdesc="Decentralised exchange."
 arch=("any")
 url="https://github.com/serai-dex/${pkgname}"
-license=("AGPL3")
+license=("AGPL-3.0-or-later")
 depends=("solidity")
 makedepends=("git" "rust")
 source=("${pkgname}::git+${url}.git#tag=${_tag}"
