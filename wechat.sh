@@ -18,6 +18,7 @@ env_add() {
 BWRAP_ENV_APPEND=()
 # wechat-beta only support xcb
 env_add QT_QPA_PLATFORM xcb
+env_add PATH "/sandbox:${PATH}"
 [[ -z "${QT_IM_MODULE}" ]] && env_add QT_IM_MODULE fcitx
 [[ -z "${GTK_USE_PORTAL}" ]] && env_add GTK_USE_PORTAL 1
 # KDE won't use QT_AUTO_SCREEN_SCALE_FACTOR, but use QT_SCALE_FACTOR
@@ -48,8 +49,10 @@ BWRAP_ARGS=(
 	--symlink usr/bin /bin
 	--symlink usr/bin /sbin
 	--bind /usr/bin/{true,lsblk}
-	--ro-bind-try /usr/{lib/snapd-xdg-open,bin}/xdg-open
-	--ro-bind-try /usr/{lib/flatpak-xdg-utils,bin}/xdg-open
+	# /sandbox
+	--dir /sandbox
+	--ro-bind /{usr/lib/flatpak-xdg-utils,sandbox}/xdg-open
+	--ro-bind /{usr/share/wechat-beta/usr/bin,sandbox}/dde-file-manager
 	# /dev
 	--dev /dev
 	--dev-bind /dev/dri{,}
