@@ -2,12 +2,12 @@
 
 pkgname=yin-yang
 pkgver=3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Light/dark theme switcher for Linux. Supports popular Desktops, text editors and more!"
 arch=('any')
 url="https://github.com/oskarsh/Yin-Yang"
 license=('MIT')
-depends=('hicolor-icon-theme' 'python3' 'python-numpy' 'python-psutil' 'pyside6' 'python-pyqt6' 'qt6-positioning' 'python-requests' 'python-suntime<1.3.0' 'python-systemd')
+depends=('hicolor-icon-theme' 'python3' 'python-numpy' 'python-psutil' 'pyside6' 'python-pyqt6' 'qt6-positioning' 'python-requests' 'python-suntime<1.3.0' 'python-suntime>=1.3.2' 'python-systemd')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("$pkgname-$pkgver.zip::https://github.com/oskarsh/Yin-Yang/archive/refs/tags/v$pkgver.zip")
