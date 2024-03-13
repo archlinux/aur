@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chain-desktop-wallet-bin
 _appname="Crypto.com-DeFi-Desktop-Wallet"
-pkgver=1.4.9
+pkgver=1.5.0
 _electronversion=19
 pkgrel=1
 pkgdesc="Crypto.com DeFi Desktop Wallet"
@@ -21,12 +21,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4b73eae96cae1461f29afe812d60925786337a2b873368604f96de7c0278dba2'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+sha256sums=('4769a940ff0c46852a2cf0ca2f1c87f8234d8ecb40a1f35e8a5896bda35ad818'
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
