@@ -6,11 +6,11 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 declare -r _pkgname="lightning"
-declare -r _tag="8418989f9bf3563a67ac91602500672b51628579"
+declare -r _tag="7cbff8a2c096bd171337efd3c84e61762465efcb"
 
 pkgname="core-lightning"
-pkgver="24.02"
-pkgrel="2"
+pkgver="24.02.1"
+pkgrel="1"
 pkgdesc="Lightning Network implementation focusing on specification compliance and performance."
 arch=("x86_64")
 url="https://github.com/ElementsProject/${_pkgname}"

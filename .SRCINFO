@@ -1,7 +1,7 @@
 pkgbase = core-lightning
 	pkgdesc = Lightning Network implementation focusing on specification compliance and performance.
-	pkgver = 24.02
-	pkgrel = 2
+	pkgver = 24.02.1
+	pkgrel = 1
 	url = https://github.com/ElementsProject/lightning
 	arch = x86_64
 	license = custom:BSD-MIT
@@ -31,7 +31,7 @@ pkgbase = core-lightning
 	optdepends = shellcheck: Shell script analysis
 	optdepends = valgrind: Tool for memory management problems
 	conflicts = core-lightning-git
-	source = core-lightning::git+https://github.com/ElementsProject/lightning.git#tag=8418989f9bf3563a67ac91602500672b51628579
+	source = core-lightning::git+https://github.com/ElementsProject/lightning.git#tag=7cbff8a2c096bd171337efd3c84e61762465efcb
 	source = git+https://github.com/ElementsProject/libwally-core.git
 	source = git+https://github.com/ianlancetaylor/libbacktrace.git
 	source = git+https://github.com/jedisct1/libsodium.git
