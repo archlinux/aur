@@ -9,7 +9,10 @@ license=('AGPL-3.0-or-later')
 groups=()
 depends=('java-runtime-headless>=8')
 makedepends=()
-optdepends=()
+optdepends=('java-runtime-headless>=16: support for socket files for server/client communication'
+           'java-runtime>=8: graphical user interface'
+           'java-runtime>=16: socket files + graphical user interface'
+           )
 provides=()
 conflicts=()
 replaces=()
