@@ -3,7 +3,7 @@ Type=Application
 Name=Slack (Ozone)
 Comment=Slack Desktop on OzonePlatform (for native Wayland)
 Icon=slack
-Exec=/usr/bin/electron /usr/lib/slack/app.asar --ozone-platform-hint=auto --enable-features=WebRTCPipeWireCapturer -s %U
+Exec=/usr/bin/electron /usr/lib/slack/resources/app.asar --ozone-platform-hint=auto --enable-features=WebRTCPipeWireCapturer -s %U
 MimeType=x-scheme-handler/slack;
 Categories=Network;InstantMessaging;
 StartupNotify=true
