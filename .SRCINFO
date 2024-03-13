@@ -1,0 +1,12 @@
+pkgbase = lustre-tools-6
+	pkgdesc = The Lustre developpment tools free distribution version 6.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www-verimag.imag.fr/DIST-TOOLS/SYNCHRONE/lustre-v4/distrib/
+	arch = x86_64
+	license = Free Distribution of the Lustre/Lesar Software
+	depends = findutils
+	source = https://www-verimag.imag.fr/DIST-TOOLS/SYNCHRONE/lustre-v6/pre-compiled/x86_64-Linux-lv6-bin-dist.tgz
+	sha256sums = 8eb998ac91719a93477864337757d645320e6e8c476dd0d9a3d2df1ae00492c1
+
+pkgname = lustre-tools-6
