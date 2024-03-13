@@ -1,0 +1,15 @@
+pkgbase = python-bounded-pool-executor
+	pkgdesc = Bounded Process&Thread Pool Executor
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/mowshon/bounded_pool_executor
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/b/bounded_pool_executor/bounded_pool_executor-0.0.3.tar.gz
+	source = https://raw.githubusercontent.com/mowshon/bounded_pool_executor/master/LICENSE
+	sha256sums = e092221bc38ade555e1064831f9ed800580fa34a4b6d8e9dd3cd961549627f6e
+	sha256sums = 3fb94f992f1e1a2bf74952b7fafe515c1520fd13696788b1f1d004a573740d15
+
+pkgname = python-bounded-pool-executor
