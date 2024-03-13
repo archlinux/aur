@@ -1,0 +1,14 @@
+pkgbase = sd-inhibit-bridge
+	pkgdesc = A daemon implementing the Idle Inhibition D-Bus API that forwards inhibitor locks to systemd-logind
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/notpeelz/sd-inhibit-bridge
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	depends = systemd
+	source = sd-inhibit-bridge::git+https://github.com/notpeelz/sd-inhibit-bridge.git#commit=e7db47c510fb66243d63c677ed7010f5d0e20744
+	sha256sums = SKIP
+
+pkgname = sd-inhibit-bridge
