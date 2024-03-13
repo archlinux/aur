@@ -1,11 +1,10 @@
 pkgbase = python-myokit
 	pkgdesc = A modeling and simulation tool for cardiac cellular electrophysiology
 	pkgver = 1.35.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/myokit/myokit
 	arch = any
 	license = BSD-3-Clause
-	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
