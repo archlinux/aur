@@ -1,6 +1,6 @@
 pkgbase = escrcpy-bin
 	pkgdesc = 使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动
-	pkgver = 1.17.2
+	pkgver = 1.17.3
 	pkgrel = 1
 	url = https://github.com/viarotel-org/escrcpy
 	arch = aarch64
@@ -9,13 +9,13 @@ pkgbase = escrcpy-bin
 	depends = electron27
 	depends = hicolor-icon-theme
 	depends = scrcpy
-	provides = escrcpy=1.17.2
+	provides = escrcpy=1.17.3
 	conflicts = escrcpy
 	source = escrcpy.sh
 	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
-	source_aarch64 = escrcpy-1.17.2-aarch64.deb::https://github.com/viarotel-org/escrcpy/releases/download/v1.17.2/Escrcpy-1.17.2-linux-arm64.deb
-	sha256sums_aarch64 = 0bbf84750382765c81e792c3801828823d3061362d5feb92ad3a24985fe8bd3a
-	source_x86_64 = escrcpy-1.17.2-x86_64.deb::https://github.com/viarotel-org/escrcpy/releases/download/v1.17.2/Escrcpy-1.17.2-linux-amd64.deb
-	sha256sums_x86_64 = 7fdd2a7c7ad0d99843307199186efbb0d9ac13cc3f88d668e40773f13a325428
+	source_aarch64 = escrcpy-1.17.3-aarch64.deb::https://github.com/viarotel-org/escrcpy/releases/download/v1.17.3/Escrcpy-1.17.3-linux-arm64.deb
+	sha256sums_aarch64 = 7d02047c72589c1cbb0d6e25b41d594d037baf94152def1a8284e082051da464
+	source_x86_64 = escrcpy-1.17.3-x86_64.deb::https://github.com/viarotel-org/escrcpy/releases/download/v1.17.3/Escrcpy-1.17.3-linux-amd64.deb
+	sha256sums_x86_64 = 89dd94acb1aa1778a2106506050026bb34fd9816be1f7001a96fc62bf3a1fb94
 
 pkgname = escrcpy-bin
