@@ -1,6 +1,6 @@
 pkgbase = pcsx2
 	pkgdesc = A Sony PlayStation 2 emulator
-	pkgver = 1.7.5577
+	pkgver = 1.7.5611
 	pkgrel = 1
 	url = https://www.pcsx2.net
 	install = pcsx2.install
@@ -44,7 +44,7 @@ pkgbase = pcsx2
 	optdepends = libpipewire: Pipewire support
 	optdepends = libpulse: PulseAudio support
 	options = !lto
-	source = git+https://github.com/PCSX2/pcsx2.git#tag=4442ff72211bbb04bfe7fea37491f3e0809dbf45
+	source = git+https://github.com/PCSX2/pcsx2.git#tag=b4992856f7e475b0a4a26aafb997baa69278ec13
 	source = git+https://github.com/PCSX2/pcsx2_patches.git
 	source = lz4-pcsx2::git+https://github.com/lz4/lz4.git
 	source = xz-pcsx2::git+https://github.com/tukaani-project/xz.git
@@ -59,8 +59,6 @@ pkgbase = pcsx2
 	source = git+https://github.com/webmproject/libwebp.git
 	source = vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	source = git+https://github.com/facebook/zstd.git
-	source = git+https://github.com/RetroAchievements/rcheevos.git
-	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP

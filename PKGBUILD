@@ -7,7 +7,7 @@
 # Contributor: vEX <vex at niechift dot com>
 
 pkgname=pcsx2
-pkgver=1.7.5577
+pkgver=1.7.5611
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -57,7 +57,7 @@ optdepends=('qt6-wayland: Wayland support'
             'libpipewire: Pipewire support'
             'libpulse: PulseAudio support')
 
-_tag=4442ff72211bbb04bfe7fea37491f3e0809dbf45
+_tag=b4992856f7e475b0a4a26aafb997baa69278ec13
 options=(!lto)
 source=(
 	"git+https://github.com/PCSX2/pcsx2.git#tag=${_tag}"
@@ -75,10 +75,8 @@ source=(
 	git+https://github.com/webmproject/libwebp.git
 	vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	git+https://github.com/facebook/zstd.git
-	git+https://github.com/RetroAchievements/rcheevos.git
 )
 b2sums=('SKIP'
-        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -108,7 +106,6 @@ prepare() {
 		glslang::3rdparty/glslang/glslang
 		vulkan-headers::3rdparty/vulkan-headers
 		zstd::3rdparty/zstd/zstd
-		rcheevos::3rdparty/rcheevos/rcheevos
 	)
 	# must be done this way due to recursive submodules
 	for submodule in ${_pcsx2_submodules[@]}; do
