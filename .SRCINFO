@@ -1,29 +1,20 @@
 pkgbase = kwinft
-	pkgdesc = theseus-ship: Wayland and X11 Compositor for the KDE Plasma desktop formerly named kwinft
+	pkgdesc = Wayland and X11 Compositor for the KDE Plasma desktop (theseus-ship)
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/winft/theseus-ship
 	install = kwinft.install
 	arch = x86_64
 	arch = aarch64
-	license = LGPL
+	license = LGPL-2.1-only
 	makedepends = extra-cmake-modules
 	makedepends = git
-	makedepends = kdoctools
-	depends = breeze
-	depends = kscreenlocker
-	depends = libplasma
-	depends = python
-	depends = qt6-tools
-	depends = xcb-util-cursor
-	depends = wayland
-	depends = xorg-xwayland
-	depends = wlroots
-	depends = kdecoration
+	makedepends = ninja
 	depends = como
 	optdepends = qt6-virtualkeyboard: virtual keyboard support for kwin-wayland
-	optdepends = qt6-tools
-	source = https://github.com/winft/theseus-ship/archive/refs/tags/v6.0.0.tar.gz
+	provides = theseus-ship=6.0.0
+	conflicts = theseus-ship
+	source = theseus-ship-6.0.0.tar.gz::https://github.com/winft/theseus-ship/archive/refs/tags/v6.0.0.tar.gz
 	sha256sums = ffd8cf6c0b48cda918a74df372c55f42e00c9151420b4148b5e9f67ae05a05d5
 
 pkgname = kwinft
