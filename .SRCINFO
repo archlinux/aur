@@ -1,21 +1,18 @@
 pkgbase = casterr-bin
 	pkgdesc = Screen recorder with the main goal of easing the process of recording and clipping your best moments in-game.
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://casterr.sbond.co/
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = squashfuse
+	makedepends = fuse2
 	depends = electron28
 	depends = hicolor-icon-theme
-	depends = dbus-glib
-	depends = libdbusmenu-glib
-	depends = gtk2
 	provides = casterr=2.0.0
 	conflicts = casterr
 	source = casterr-2.0.0.AppImage::https://github.com/sbondCo/Casterr/releases/download/v2.0.0/Casterr-2.0.0.AppImage
 	source = casterr.sh
 	sha256sums = f16e66d01a528fb47fde57cb547e7668d434b6af8de83d3acf58753938aabb82
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = casterr-bin
