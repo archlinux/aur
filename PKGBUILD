@@ -3,21 +3,20 @@ pkgname=super-controller
 pkgver=1.3.5
 _electronversion=19
 _nodeversion=14
-pkgrel=5
+pkgrel=6
 pkgdesc="Give your MIDI devices super powers: take control of the lights, messages, and communication between controllers."
 arch=('any')
 url="https://github.com/aolsenjazz/super-controller"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'gendesk'
     'npm'
     'nvm'
     'git'
-    'node-gyp'
     'gcc'
     'base-devel'
 )
@@ -26,7 +25,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -38,8 +37,8 @@ build() {
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
-    gendesk -q -f -n --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
     _ensure_local_nvm
+    gendesk -q -f -n --categories="Development" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -49,7 +48,14 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    sed "s|app.isPackaged|!app.isPackaged|g" -i src/main/main.ts
+    if [ `curl ifconfig.co/country` = "China" ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
+    sed "s|--publish never|--dir|g" -i package.json
     npm run post-clone
     npm run package
 }
