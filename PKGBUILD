@@ -2,7 +2,7 @@
 
 pkgname='python-django-icons'
 _name='django-icons'
-pkgver=23.4
+pkgver=23.5
 pkgrel=1
 pkgdesc='Icons for Django'
 arch=('any')
@@ -18,9 +18,10 @@ makedepends=(
 	'python-wheel'
 	'python-hatchling'
 	'python-setuptools'
+	'python-setuptools-scm'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('dc457c7297452c4f117ae8feb65dd571448c2fcbf4b14fe57eb7a96dd9e929b2')
+sha256sums=('8ef5e27c069db9051a10f2d6d20aa276261d7dc13dbf7e85feb370cad18eafa8')
 
 build() {
 	cd "$_name-$pkgver"
