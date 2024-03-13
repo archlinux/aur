@@ -1,0 +1,13 @@
+pkgbase = janus
+	pkgdesc = Simple gtk notepad written in C
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/gholmann16/janus
+	arch = x86_64
+	license = GPL3
+	depends = gtk3
+	depends = gtksourceview4
+	source = https://github.com/gholmann16/janus/archive/refs/tags/v0.9.3.tar.gz
+	sha256sums = 056a4ff1488d35f255949b74de24e88dfbf48d07b48acb3b617bc97f6b2ae08a
+
+pkgname = janus
