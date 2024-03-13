@@ -23,6 +23,7 @@ pkgbase = corectrl-git
   depends = polkit
   depends = pugixml
   depends = spdlog
+  depends = fmt>=5.0
 	optdepends = vulkan-tools: for vulkaninfo
 	optdepends = mesa-utils: for glxinfo
 	optdepends = util-linux: for lscpu
