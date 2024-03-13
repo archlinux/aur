@@ -3,11 +3,11 @@
 
 _pkgname=decibels
 pkgname=decibels-git
-pkgver=r204.57aa61b
+pkgver=r235.a50297a
 pkgrel=1
 pkgdesc="Play audio files"
 arch=('x86_64')
-url="https://github.com/vixalien/decibels"
+url="https://gitlab.gnome.org/GNOME/Incubator/decibels"
 license=(GPL-3.0)
 depends=(
   'gjs'
@@ -27,7 +27,7 @@ makedepends=(
 checkdepends=(
   'appstream-glib'
 )
-source=("git+https://github.com/vixalien/${_pkgname}.git"
+source=("git+https://gitlab.gnome.org/GNOME/Incubator/${_pkgname}.git"
         'git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions.git')
 sha256sums=('SKIP'
             'SKIP')
