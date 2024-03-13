@@ -1,10 +1,10 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
 pkgname=obs-studio-rc
-_pkgver=30.1.0-rc1
+_pkgver=30.1.0
 pkgver=${_pkgver//-/_}
-pkgrel=2
-epoch=7
+pkgrel=1
+epoch=8
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -153,11 +153,11 @@ build() {
     -DENABLE_SNDIO=ON \
     -DENABLE_BROWSER=ON \
     -DCEF_ROOT_DIR=/opt/cef-obs \
-    -Wno-dev \
     -DCALM_DEPRECATION=ON \
-    -DRELEASE_CANDIDATE="$_pkgver"
+    -Wno-dev \
+    -DOBS_VERSION_OVERRIDE="$_pkgver"
+#    -DRELEASE_CANDIDATE="$_pkgver"
 #    -DBETA="$_pkgver"
-#    -DOBS_VERSION_OVERRIDE="$_pkgver"
 
   sed -i "s|OBS_VERSION =|OBS_VERSION = \"$_pkgver-rc-$pkgrel\"; //|" build/libobs/obsversion.c
 

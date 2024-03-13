@@ -1,8 +1,8 @@
 pkgbase = obs-studio-rc
 	pkgdesc = Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration
-	pkgver = 30.1.0_rc1
-	pkgrel = 2
-	epoch = 7
+	pkgver = 30.1.0
+	pkgrel = 1
+	epoch = 8
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
 	arch = aarch64
@@ -88,7 +88,7 @@ pkgbase = obs-studio-rc
 	optdepends = libdatachannel>=0.20: WHIP Support
 	optdepends = libajantv2>=17.0.1: AJA support
 	optdepends = decklink: Blackmagic Design DeckLink support
-	provides = obs-studio=30.1.0_rc1
+	provides = obs-studio=30.1.0
 	provides = obs-vst
 	provides = obs-websocket
 	provides = obs-browser
@@ -99,7 +99,7 @@ pkgbase = obs-studio-rc
 	conflicts = obs-linuxbrowser
 	conflicts = libva-vdpau-driver
 	options = debug
-	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=30.1.0-rc1
+	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=30.1.0
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
 	source = 0001-Add_finder_for_uthash.patch
