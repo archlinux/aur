@@ -3,7 +3,7 @@ pkgname=another-redis-desktop-manager-bin
 _pkgname=Another-Redis-Desktop-Manager
 pkgver=1.6.3
 _electronversion=12
-pkgrel=1
+pkgrel=2
 pkgdesc="A faster, better and more stable Redis desktop manager [GUI client]"
 arch=('x86_64')
 url="https://github.com/qishibo/AnotherRedisDesktopManager"
@@ -11,8 +11,11 @@ license=('MIT')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'java-runtime'
+)
+makedepends=(
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}.${pkgver}.AppImage"
@@ -21,11 +24,12 @@ source=(
 )
 sha256sums=('b06f971f5a15211448d3af7439df05dcc176e17a45f98a431c79179e8c2fb32f'
             '49e1afe88ff863df075233daa348d313c1f77110de7d89794a6a9ae45b38c1b3'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null

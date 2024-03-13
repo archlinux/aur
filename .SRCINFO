@@ -1,11 +1,12 @@
 pkgbase = another-redis-desktop-manager-bin
 	pkgdesc = A faster, better and more stable Redis desktop manager [GUI client]
 	pkgver = 1.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qishibo/AnotherRedisDesktopManager
 	arch = x86_64
 	license = MIT
-	depends = electron12
+	makedepends = fuse2
+	depends = electron12-bin
 	depends = java-runtime
 	provides = another-redis-desktop-manager=1.6.3
 	conflicts = another-redis-desktop-manager
@@ -14,6 +15,6 @@ pkgbase = another-redis-desktop-manager-bin
 	source = another-redis-desktop-manager.sh
 	sha256sums = b06f971f5a15211448d3af7439df05dcc176e17a45f98a431c79179e8c2fb32f
 	sha256sums = 49e1afe88ff863df075233daa348d313c1f77110de7d89794a6a9ae45b38c1b3
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = another-redis-desktop-manager-bin
