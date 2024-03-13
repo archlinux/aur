@@ -93,7 +93,6 @@ build() {
     makeflags="$makeflags -j$(grep -E '^processor\W' < /proc/cpuinfo | wc -l)"
   fi
   make LLVM=1 ${makeflags} all
-  make LLVM=1 -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
 }
 
 _package() {
@@ -186,7 +185,7 @@ _package-headers() {
 
   echo "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
-    version vmlinux tools/bpf/bpftool/vmlinux.h
+    version vmlinux
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
