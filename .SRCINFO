@@ -12,7 +12,6 @@ pkgbase = corectrl-git
 	makedepends = gcc>=8
 	makedepends = qt5-tools
   makedepends = spdlog
-  makedepends = pugixml
 	depends = botan>=2.2.0
 	depends = qt5-base>=5.15
 	depends = qt5-quickcontrols2
@@ -23,6 +22,7 @@ pkgbase = corectrl-git
 	depends = hwdata
   depends = dbus
   depends = polkit
+  depends = pugixml
 	optdepends = vulkan-tools: for vulkaninfo
 	optdepends = mesa-utils: for glxinfo
 	optdepends = util-linux: for lscpu
