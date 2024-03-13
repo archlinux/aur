@@ -3,8 +3,8 @@
 
 
 pkgname=openboard-develop-git
-_fragment="#branch=dev-qt5.1x"
-pkgver=1.6.1rc.0309.r10.gf3f07f99
+_fragment="#branch=1.7.2-dev"
+pkgver=1.7.1rc.240202.r40.ga9f6a771
 pkgrel=1
 pkgdesc="Interactive whiteboard software for schools and universities (development version current master)"
 arch=('x86_64' 'i686')
@@ -56,7 +56,7 @@ package() {
   cd "$srcdir"/OpenBoard
 
   install -Dm755 build/linux/release/product/OpenBoard -t "$pkgdir"/opt/openboard/
-  cp -rp "$srcdir"/OpenBoard/resources/{customizations,etc,i18n,library} -t "$pkgdir"/opt/openboard/
+  cp -rp "$srcdir"/OpenBoard/resources/{customizations,etc,i18n,library,startupHints} -t "$pkgdir"/opt/openboard/
   install -Dm644 "$srcdir"/OpenBoard/resources/images/OpenBoard.png -t "$pkgdir"/usr/share/icons/hicolor/64x64/apps/
   install -Dm644 "$srcdir"/openboard.desktop -t "$pkgdir"/usr/share/applications/
   install -dm755 "$pkgdir"/usr/bin/
