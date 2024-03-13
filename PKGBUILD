@@ -1,33 +1,66 @@
-# Author: Roman Gilg <subdiff@gmail.com>
 # Maintainer: abelian424
 
-pkgname=kdisplay-kwinft
+_pkgname="kdisplay"
+pkgname="$_pkgname-kwinft"
 pkgver=6.0.0
-pkgrel=1
-pkgdesc='App and daemon for display managing'
-arch=(x86_64 aarch64)
+pkgrel=2
+pkgdesc='Display management app and daemon'
 url="https://github.com/winft/kdisplay"
-license=(LGPL)
-depends=('disman' kcmutils5 plasma-framework5 qt6-sensors)
-provides=(kscreen)
-makedepends=(extra-cmake-modules git appstream)
-source=("https://github.com/winft/kdisplay/archive/refs/tags/v$pkgver.tar.gz")
+license=('LGPL-2.1-only')
+arch=('x86_64' 'aarch64')
+
+depends=(
+  kdeclarative
+  layer-shell-qt
+  libplasma
+  plasma5support
+  qt6-sensors
+
+  # AUR
+  disman
+
+  ## implicit
+  #kcmutils
+  #kconfig
+  #kcoreaddons
+  #kdbusaddons
+  #kglobalaccel
+  #ki18n
+  #kirigami
+  #ksvg
+  #kwindowsystem
+  #kxmlgui
+  #qt6-declarative
+)
+makedepends=(
+  extra-cmake-modules
+  git
+  ninja
+)
+
+provides=("kscreen=$pkgver")
+conflicts=("kscreen")
+
+_pkgsrc="$_pkgname-$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
 sha256sums=('b1da715f9eb0cffb116ea9d0f756668da96848db562b4a2de5a524f321759537')
 
-prepare() {
-  mkdir -p $pkgname
-  cd $pkgname
-  tar -xvf ../v$pkgver.tar.gz --strip-components=1
-}
-
 build() {
-  mkdir -p build
-  cd build
-  cmake ../$pkgname \
-    -DCMAKE_BUILD_TYPE=Release
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DBUILD_TESTING=OFF
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
