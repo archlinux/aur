@@ -4,7 +4,7 @@
 _base=basix
 pkgname=python-"${_base}"-git
 pkgdesc="Python interface of FEniCS for ordinary and partial differential equations."
-pkgver=0.8.0.dev0_r1018.6261e98
+pkgver=0.8.0.dev0_r1019.c9ca4e5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/FEniCS/${_base}"
