@@ -1,18 +1,17 @@
 pkgbase = morpheus
 	pkgdesc = A mass spectrometry–based proteomics database search algorithm
-	pkgver = 287
+	pkgver = 288
 	pkgrel = 1
 	url = http://cwenger.github.io/Morpheus/
 	install = morpheus.install
 	arch = any
 	license = MIT
 	depends = mono
-	source = morpheus-287-1.tar.gz::https://github.com/cwenger/Morpheus/releases/download/r287/Morpheus_mzML_Mono.tar.gz
+	source = morpheus-288-1.tar.gz::https://github.com/cwenger/Morpheus/releases/download/r288/Morpheus_mzML_Mono.tar.gz
 	source = morpheus_cl
 	source = morpheus
-	md5sums = 28bd19390c72738e3d136133398f6739
+	md5sums = f683128d293bb37402a9e5a3e139dfb9
 	md5sums = 71ab85a987af41daf56c3b806c53c49b
 	md5sums = 13af6d888daf9c4a30ec7253312a67b3
 
 pkgname = morpheus
-
