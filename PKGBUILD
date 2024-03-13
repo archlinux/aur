@@ -14,7 +14,7 @@ pkgrel="1"
 pkgdesc="Plugins for Elexis."
 arch=("any")
 url="https://github.com/elexis/${_pkgname}"
-license=("EPL")
+license=("EPL-1.0")
 depends=("java-runtime>=11" "java-runtime<=17")
 makedepends=("git" "java-environment>=11" "java-environment<=17" "maven")
 # The git repository is needed for the build.
