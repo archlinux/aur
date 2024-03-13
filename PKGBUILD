@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=arrow
-_pkgver=14.0.2.1
+_pkgver=15.0.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -62,10 +62,10 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-build.patch")
-md5sums=('aaf2deb867c78ca49e5cb4e5931a42b4'
-         '583d52743ac4b0c6fc0d9b9dd3ebce49')
-b2sums=('db02956a4fca2bf7218d6f580cafaf2cacf27650a602cc04b72a3c6d1cfecb6951b9becce01fc88723fa6175b80d851fcaeae80346ed1bf1f23909b41463e432'
-        '8d44a056f4885e03bf97b30066302d6ccfef738baeb761ba7e6c32ec547b83c5a3d202ff8e44e98de4afa786240e937e9a0bd9eb2dcaa3992226607953939e2d')
+md5sums=('f5e2d244a409b3272d5539f77c40f2c3'
+         '905a328d53b0b7591f769e07c29c3937')
+b2sums=('ea2549aa18a68dcb87a2241f904def216035cb19d080cf97b2343565894040d16f2a88fd3c4706c314e55d82b3c9779bc76d394ae4191b294cf79e903782d0e7'
+        '6feffc1a3ff38014a9f644de778f0056f0f48787ce9a4d40bff8d27d8e42df2b05f258638150cadbd5b1a18d4697f35bf07cb8d9a78ba6357b8d94ef9d714874')
 
 prepare() {
   # fix build with system arrow, skip failing tests
