@@ -2,7 +2,7 @@
 _author=olrtg
 pkgname=emmet-language-server
 pkgver=2.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A language server for emmet.io"
 arch=("any")
 url="https://www.npmjs.com/package/@$_author/$pkgname"
@@ -20,5 +20,5 @@ package() {
 	npm install -g --prefix "$pkgdir/usr" "@${_author}/${pkgname}@${pkgver}"
 	chown -R root:root "$pkgdir"
 
-	install -Dm644 "$srcdir/package/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$srcdir/../LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
