@@ -1,7 +1,7 @@
 pkgbase = vega-video-editor
 	pkgdesc = Vega is a video editing software.
 	pkgver = 4.0.3_beta.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/toshusai/Vega
 	arch = any
 	license = MIT
@@ -10,11 +10,11 @@ pkgbase = vega-video-editor
 	makedepends = nvm
 	makedepends = npm
 	makedepends = git
-	depends = electron13
+	depends = electron13-bin
 	conflicts = vega-video-editor
 	source = vega-video-editor.git::git+https://github.com/toshusai/Vega.git#tag=v4.0.3-beta.3
 	source = vega-video-editor.sh
 	sha256sums = SKIP
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = vega-video-editor
