@@ -4,7 +4,7 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=python-m2crypto
-pkgver=0.40.1
+pkgver=0.41.0
 pkgrel=1
 pkgdesc="A crypto and SSL toolkit for Python"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('python' 'openssl')
 makedepends=('python-setuptools' 'swig')
 source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/m2crypto/m2crypto/-/archive/${pkgver}/${pkgname#python-}-${pkgver}.tar.gz"
         "LICENSE")
-sha256sums=('b5b6610919c43dcb28c34ba3a2d156ec84fbd5e17228349dddbec58f72ca5fd6'
+sha256sums=('468e1cef531935e2697118ec34b7f247b89869dce71cff64ba4734f00cce682a'
             '4eca478396f4b2b020729a111fce3f096456d74500bfd8f2b0388c3c69f997c0')
 
 build(){
