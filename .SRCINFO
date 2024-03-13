@@ -1,7 +1,7 @@
 pkgbase = paru-alpm-v3-git
 	pkgdesc = Feature packed AUR helper (with ALPM v3 patches)
 	pkgver = 2.0.1.r25.g2a8e257
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/morganamilo/paru
 	arch = i686
 	arch = pentium4
@@ -19,6 +19,7 @@ pkgbase = paru-alpm-v3-git
 	optdepends = devtools: build in chroot and downloading pkgbuilds
 	provides = paru
 	conflicts = paru
+	conflicts = paru-git
 	backup = etc/paru.conf
 	source = git+https://github.com/morganamilo/paru.git#branch=alpm-v3
 	sha256sums = SKIP
