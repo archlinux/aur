@@ -1,0 +1,19 @@
+pkgbase = rime-japanese
+	pkgdesc = Input method for typing Japanese with RIME
+	pkgver = 0.0.0.20230204
+	pkgrel = 1
+	url = https://github.com/gkovacs/rime-japanese
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = custom
+	makedepends = git
+	makedepends = librime
+	makedepends = rime-prelude
+	makedepends = rime-essay
+	depends = rime-stroke
+	source = git+https://github.com/gkovacs/rime-japanese#commit=4c1e65135459175136f380e90ba52acb40fdfb2d
+	sha512sums = SKIP
+
+pkgname = rime-japanese
