@@ -16,10 +16,10 @@ options=(!emptydirs)
 source=("git+${url}#branch=main")
 sha512sums=('SKIP')
 
-provides=("${_base}"
-          "fenics-${_base}")
+provides=("${_base}=${pkgver}"
+          "fenics-${_base}=${pkgver}")
 replaces=("${provides}")
-conflicts=("${_base}")
+conflicts=("${_base}" "fenics-${_base}")
 #  From UPC: Building And Using Static And Shared "C"
 #  Libraries.html
 # #+begin_QUOTE
