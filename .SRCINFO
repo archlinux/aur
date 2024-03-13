@@ -1,6 +1,6 @@
 pkgbase = patrjprof-git
 	pkgdesc = An Open source Java profiler written in Java
-	pkgver = 1.2.0.snapshotr115.5eb3ddc
+	pkgver = 1.2.1r138.81edcfa
 	pkgrel = 1
 	url = https://git.rwth-aachen.de/patrick_laszlo.hechler/patr-java-profiler
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = patrjprof-git
 	optdepends = java-runtime-headless>=16: support for socket files for server/client communication
 	optdepends = java-runtime>=8: graphical user interface
 	optdepends = java-runtime>=16: socket files + graphical user interface
-	provides = patrjprof=1.2.0.snapshotr115.5eb3ddc
+	provides = patrjprof=1.2.1r138.81edcfa
 	conflicts = patrjprof
 	source = git+https://git.rwth-aachen.de/patrick_laszlo.hechler/patr-java-profiler.git#branch=latest-snapshot
 	md5sums = SKIP

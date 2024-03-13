@@ -1,6 +1,6 @@
 # Maintainer: Patrick Hechler <patrjprof-git@ph.anderemails.de>
 pkgname=patrjprof-git
-pkgver=1.2.0.snapshotr115.5eb3ddc
+pkgver=1.2.1r138.81edcfa
 pkgrel=1
 pkgdesc="An Open source Java profiler written in Java"
 arch=('any')
@@ -93,7 +93,10 @@ package() {
 
   # create script which starts the profiler
   mkdir -p "$pkgdir"/usr/bin
-  echo -n "#!/bin/sh
+  echo '#!/bin/sh' > "$pkgdir"/usr/bin/patrjprof
+  # automatically use the same SPDX license Identifier
+  head -1 patr-java-prof-help.sh >> "$pkgdir"/usr/bin/patrjprof
+  echo -n "
 #set values needed for the script
 AGENT_JAR=/usr/share/java/patrjprof/patr-java-profiler-agent.jar
 BOOTSTRAP_JAR=/usr/share/java/patrjprof/patr-java-profiler-bootstrap.jar
@@ -101,7 +104,7 @@ SERVER_JAR=/usr/share/java/patrjprof/patr-java-profiler-server.jar
 CLIENT_JAR=/usr/share/java/patrjprof/patr-java-profiler-client.jar
 
 #helper script from git
-" > "$pkgdir"/usr/bin/patrjprof
-  cat patr-java-prof-help.sh >> "$pkgdir"/usr/bin/patrjprof
+" >> "$pkgdir"/usr/bin/patrjprof
+  tail +2 patr-java-prof-help.sh >> "$pkgdir"/usr/bin/patrjprof
   chmod +x "$pkgdir"/usr/bin/patrjprof
 }
