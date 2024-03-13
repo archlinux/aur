@@ -5,7 +5,7 @@
 
 pkgname=nzbget-git
 pkgver=23.0.r2417.c93b551b
-pkgrel=1
+pkgrel=2
 pkgdesc="Download from Usenet using .nzb files"
 arch=('x86_64')
 url="https://github.com/nzbgetcom/nzbget"

@@ -1,7 +1,7 @@
 pkgbase = nzbget-git
 	pkgdesc = Download from Usenet using .nzb files
 	pkgver = 23.0.r2417.c93b551b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nzbgetcom/nzbget
 	install = nzbget.install
 	arch = x86_64
