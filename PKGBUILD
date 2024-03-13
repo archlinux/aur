@@ -3,7 +3,7 @@
 _pkgname=chwp
 pkgname=${_pkgname}-bin
 url="https://github.com/RouHim/chwp"
-pkgver=1.239.0
+pkgver=1.239.1
 pkgrel=1
 pkgdesc="Changes the background wallpaper and lockscreen from the command line."
 arch=('x86_64')
