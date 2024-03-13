@@ -1,0 +1,16 @@
+pkgbase = mac-fan-control
+	pkgdesc = Fan control for Mac devices
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = mac-fan-control
+	options = !strip
+	options = !emptydirs
+	backup = etc/mac-fan-control.conf
+	source = mac-fan-control::git+https://git.ogenos.org/wilssonmartee/mac-fan-control
+	sha256sums = SKIP
+
+pkgname = mac-fan-control
+	install = post.install

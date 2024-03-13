@@ -1,0 +1,8 @@
+#!/bin/sh
+
+post_install() {
+echo "************************************"
+echo "Enable the service"
+echo "systemctl enable --now mac-fan-control"
+echo "************************************"
+}
