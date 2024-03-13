@@ -1,21 +1,18 @@
 pkgname=lexido
-pkgver=1.1
+pkgver=v1.2
 pkgrel=1
-pkgdesc="Lexido is a smart assistant for the Linux command line, powered by Gemini Pro 1.0."
-arch=("x86_64")
-url="https://github.com/micr0-dev/lexido"
-license=('AGPL3')
-depends=('glibc')
+arch=('x86_64')
+url="Your project URL here"
+license=('MIT')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/micr0-dev/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('5d19e7ac0e7ed59043e1d2759db38bca64f4c0981404b3fd5adfa478d2bb5547')
+source=("$pkgname-$pkgver.tar.gz")
+sha256sums=('SKIP') # Consider using actual sha256sums for source validation
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  go build .
+    cd "$srcdir/$pkgname-$pkgver"
+    go build -o $pkgname
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "$srcdir/$pkgname-$pkgver/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }

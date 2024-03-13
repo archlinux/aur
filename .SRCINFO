@@ -1,13 +1,11 @@
 pkgbase = lexido
-	pkgdesc = Lexido is a smart assistant for the Linux command line, powered by Gemini Pro 1.0.
-	pkgver = 1.1
+	pkgver = v1.2
 	pkgrel = 1
-	url = https://github.com/micr0-dev/lexido
+	url = Your project URL here
 	arch = x86_64
-	license = AGPL3
+	license = MIT
 	makedepends = go
-	depends = glibc
-	source = lexido-1.1.tar.gz::https://github.com/micr0-dev/lexido/archive/v1.1.tar.gz
-	sha256sums = 5d19e7ac0e7ed59043e1d2759db38bca64f4c0981404b3fd5adfa478d2bb5547
+	source = lexido-v1.2.tar.gz
+	sha256sums = SKIP
 
 pkgname = lexido
