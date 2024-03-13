@@ -1,19 +1,19 @@
 pkgbase = agendapp
 	pkgdesc = One of the best software to simplify school calendar management and facilitate classroom notes.
 	pkgver = 1.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/johan-perso/agendapp
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = gendesk
 	makedepends = npm
 	makedepends = nodejs
 	makedepends = git
-	depends = electron20
+	depends = electron20-bin
 	conflicts = agendapp
 	source = agendapp.git::git+https://github.com/johan-perso/agendapp.git#tag=1.4.0
 	source = agendapp.sh
 	sha256sums = SKIP
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = agendapp
