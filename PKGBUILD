@@ -3,7 +3,7 @@
 pkgname=wacomtablet
 pkgver=6.0.2
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=1
+pkgrel=2
 pkgdesc='GUI for Wacom Linux drivers that supports different button/pen layout profiles'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
