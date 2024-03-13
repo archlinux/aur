@@ -1,13 +1,14 @@
 pkgbase = simple-live-app-bin
 	pkgdesc = 简简单单的看直播
-	pkgver = 1.4.9.10409
-	pkgrel = 2
+	pkgver = 1.5.2.10502
+	pkgrel = 1
 	url = https://github.com/xiaoyaocz/dart_simple_live
 	arch = x86_64
 	license = GPL3
 	depends = libmpv.so
+	depends = xdg-user-dirs
 	options = !debug
-	source_x86_64 = simple-live-app-bin-1.4.9.10409.deb::https://github.com/xiaoyaocz/dart_simple_live/releases/download/v1.4.9/simple_live_app-1.4.9+10409-linux.deb
-	sha256sums_x86_64 = 1493bdf472512deb221e64e769a90030532528aa927270817d54fd1afb31edef
+	source_x86_64 = simple-live-app-bin-1.5.2.10502.deb::https://github.com/xiaoyaocz/dart_simple_live/releases/download/v1.5.2/simple_live_app-1.5.2+10502-linux.deb
+	sha256sums_x86_64 = c2e772c5091965a066599554fa3ad7276fb5ebd855721b6ef6cf953afe3c41cc
 
 pkgname = simple-live-app-bin
