@@ -56,7 +56,6 @@ function inputMethod() {
 		export QT_IM_MODULE=ibus
 		export GTK_IM_MODULE=ibus
 		export IBUS_USE_PORTAL=1
-		echo "[Warn] iBus is untested!"
 	fi
 }
 
@@ -69,45 +68,42 @@ function lnDir() {
 function execApp() {
 	touch "${XDG_DOCUMENTS_DIR}"/WeChat_Data/.flatpak-info
 	bwrap \
-		--dir /sandbox \
-		--tmpfs /tmp \
-		--symlink usr/lib /lib \
-		--symlink usr/lib64 /lib64 \
-		--symlink usr/bin /bin \
-		--symlink usr/bin /sbin \
-		--ro-bind /opt /opt \
-		--ro-bind "$XDG_RUNTIME_DIR/bus" "$XDG_RUNTIME_DIR/bus" \
-		--ro-bind "$XDG_RUNTIME_DIR/pulse" "$XDG_RUNTIME_DIR/pulse" \
 		--dev /dev \
 		--dev-bind /dev/dri /dev/dri \
 		--dev-bind /dev/shm /dev/shm \
 		--ro-bind /sys/dev/char /sys/dev/char \
 		--ro-bind /sys/devices /sys/devices \
 		--proc /proc \
-		--ro-bind /usr /usr \
+		--dir /sandbox \
+		--tmpfs /tmp \
+		--bind /usr /usr \
+		--ro-bind /etc /etc \
+		--symlink usr/lib /lib \
+		--symlink usr/lib64 /lib64 \
+		--symlink usr/bin /bin \
+		--symlink usr/bin /sbin \
+		--ro-bind /usr/bin/true /usr/bin/lsblk \
+		--bind /opt /opt \
+		--ro-bind "${XDG_RUNTIME_DIR}/bus" "${XDG_RUNTIME_DIR}/bus" \
+		--ro-bind "${XDG_RUNTIME_DIR}/pulse" "${XDG_RUNTIME_DIR}/pulse" \
 		--bind "${XDG_DOCUMENTS_DIR}"/WeChat_Data "${HOME}" \
 		--ro-bind-try "${XAUTHORITY}" "${XAUTHORITY}" \
-		--ro-bind /etc /etc \
 		--unshare-all \
 		--share-net \
-		--bind /usr/bin/true /usr/bin/lsblk \
 		--ro-bind /usr/lib/wechat-uos-bwrap/open /sandbox/dde-file-manager \
-		--ro-bind /usr/share/wechat-uos/var/ /var/ \
-		--ro-bind /usr/share/wechat-uos/etc/os-release "${osRel}" \
-		--ro-bind /usr/share/wechat-uos/etc/lsb-release /etc/lsb-release \
-		--ro-bind /usr/lib/wechat-uos/license/ /usr/lib/license/ \
+		--ro-bind /usr/share/wechat-uos-bwrap/license/var/ /var/ \
+		--ro-bind /usr/share/wechat-uos-bwrap/license/etc/os-release "${osRel}" \
+		--ro-bind /usr/share/wechat-uos-bwrap/license/etc/lsb-release /etc/lsb-release \
 		--ro-bind-try "${XDG_CONFIG_HOME}"/user-dirs.dirs "${XDG_CONFIG_HOME}"/user-dirs.dirs \
 		--ro-bind-try "${XDG_CONFIG_HOME}"/fontconfig	"${XDG_CONFIG_HOME}"/fontconfig \
 		--ro-bind-try "${XDG_CONFIG_HOME}"/Trolltech.conf "${XDG_CONFIG_HOME}"/Trolltech.conf \
 		--ro-bind-try "${XDG_CONFIG_HOME}"/mimeapps.list "${XDG_CONFIG_HOME}"/mimeapps.list \
-		--ro-bind-try /etc/xdg/Trolltech.conf /etc/xdg/Trolltech.conf \
 		--ro-bind-try "${XDG_CONFIG_HOME}"/kdeglobals "${XDG_CONFIG_HOME}"/kdeglobals \
-		--ro-bind-try /etc/xdg/kdeglobals /etc/xdg/kdeglobals \
 		--ro-bind-try "${XDG_DOCUMENTS_DIR}"/WeChat_Data/.flatpak-info "${XDG_RUNTIME_DIR}/.flatpak-info" \
 		--ro-bind-try "${XDG_DOCUMENTS_DIR}"/WeChat_Data/.flatpak-info /.flatpak-info \
 		--dir "${XDG_DOCUMENTS_DIR}" \
 		--setenv QT_QPA_PLATFORM xcb \
-		--setenv LD_LIBRARY_PATH /opt/wechat-uos-bwrap/files:/usr/lib/wechat-uos/license \
+		--setenv LD_LIBRARY_PATH /opt/wechat-uos-bwrap/files:/usr/lib/wechat-uos-bwrap/so \
 		--setenv QT_AUTO_SCREEN_SCALE_FACTOR 1 \
 		--setenv PATH /sandbox:"${PATH}" \
 		--setenv QT_PLUGIN_PATH "/usr/lib/qt/plugins /opt/wechat-uos-bwrap/files/wechat" \
@@ -143,12 +139,14 @@ EOF
 function execAppUnsafe() {
 	bwrap \
 		--dev-bind / / \
-		--ro-bind /usr/share/wechat-uos/var/ /var/ \
-		--ro-bind /usr/share/wechat-uos/etc/os-release "${osRel}" \
-		--ro-bind /usr/share/wechat-uos/etc/lsb-release /etc/lsb-release \
-		--ro-bind /usr/lib/wechat-uos/license/ /usr/lib/license/ \
+		--ro-bind /usr/share/wechat-uos-bwrap/license/var/ /var/ \
+		--ro-bind /usr/share/wechat-uos-bwrap/license/etc/os-release "${osRel}" \
+		--ro-bind /usr/share/wechat-uos-bwrap/license/etc/lsb-release /etc/lsb-release \
 		--setenv QT_QPA_PLATFORM xcb \
-		--setenv LD_LIBRARY_PATH /opt/wechat-uos-bwrap/files:/usr/lib/wechat-uos/license \
+		--setenv LD_LIBRARY_PATH /opt/wechat-uos-bwrap/files:/usr/lib/wechat-uos-bwrap/so \
+		--setenv QT_AUTO_SCREEN_SCALE_FACTOR 1 \
+		--setenv PATH /sandbox:"${PATH}" \
+		--setenv QT_PLUGIN_PATH "/usr/lib/qt/plugins /opt/wechat-uos-bwrap/files/wechat" \
 		/opt/wechat-uos-bwrap/files/wechat
 }
 
