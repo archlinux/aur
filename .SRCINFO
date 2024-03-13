@@ -13,8 +13,6 @@ pkgbase = python-assimulo
 	depends = lapack
 	depends = sundials
 	source = https://github.com/modelon-community/Assimulo/archive/Assimulo-3.4.3.tar.gz
-	source = sundials6.patch
 	sha256sums = 1f4d6fdde384c36bc8297e639cc5ece98817e6bbbe7e54e21ed20b1ff8f6fe7f
-	sha256sums = SKIP
 
 pkgname = python-assimulo
