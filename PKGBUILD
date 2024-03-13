@@ -4,13 +4,13 @@
 pkgname=kiibohd-configurator-git
 _pkgname=kiibohd-configurator
 pkgver=r286.2e12869
-pkgrel=1
+pkgrel=2
 pkgdesc="Client Side Configuration & Flashing Software for Kiibohd compatible keyboards"
 arch=('x86_64')
 url="https://github.com/kiibohd/configurator"
 license=('GPL3')
 depends=('dfu-util')
-makedepends=('yarn' 'nodejs-lts-hydrogen')
+makedepends=('git' 'yarn' 'nodejs-lts-fermium')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("${pkgname}::git+https://github.com/kiibohd/configurator.git")
