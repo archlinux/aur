@@ -38,13 +38,11 @@ pkgver() {
 prepare() {
   cd "$srcdir"/OpenBoard
   msg2 "drop_ThirdParty_repo"
-  patch -p1 < "$srcdir"/drop_ThirdParty_repo.patch
+  git apply -v "$srcdir"/drop_ThirdParty_repo.patch
   msg2 "qchar"
-  patch -p1 < "$srcdir"/qchar.patch
+  git apply -v "$srcdir"/qchar.patch
   msg2 "quazip"
-  patch -p1 < "$srcdir"/quazip.patch
-  msg2 "gcc11"
-  sed 's/_serialize/serialize/g' -i src/pdf-merger/Object.{h,cpp}
+  git apply -v "$srcdir"/quazip.patch
 }
 
 build() {
