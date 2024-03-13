@@ -1,14 +1,16 @@
-#!/bin/sh
+#!/bin/bash
 set -e
-_appdir="/usr/lib/@appname@"
-_runname="${_appdir}/@runname@"
-export path="${_appdir}:${path}"
-export ld_library_path="${_appdir}/swiftshader:${_appdir}/lib:${ld_library_path}"
-export electron_is_dev=0
-export node_env=production
-cd "${_appdir}"
-if [[ $euid -ne 0 ]] || [[ $electron_run_as_node ]]; then
-    exec electron@electronversion@ "${_runname}" "$@" || exit $?
+_APPDIR="/usr/lib/@appname@"
+_RUNNAME="${_APPDIR}/@runname@"
+_OPTIONS="@options@"
+export PATH="${_APPDIR}:${PATH}"
+export LD_LIBRARY_PATH="${_APPDIR}/swiftshader:${_APPDIR}/lib:${LD_LIBRARY_PATH}"
+export ELECTRON_IS_DEV=0
+export ELECTRON_FORCE_IS_PACKAGED=true
+export NODE_ENV=production
+cd "${_APPDIR}"
+if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
+    exec electron@electronversion@ "${_RUNNAME}" "${_OPTIONS}" "$@" || exit $?
 else
-    exec electron@electronversion@ "${_runname}" --no-sandbox "$@" || exit $?
+    exec electron@electronversion@ "${_RUNNAME}" "${_OPTIONS}" --no-sandbox "$@" || exit $?
 fi
