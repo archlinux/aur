@@ -1,6 +1,6 @@
 pkgbase = libgbinder
 	pkgdesc = GLib-style interface to binder
-	pkgver = 1.1.36
+	pkgver = 1.1.38
 	pkgrel = 1
 	url = https://github.com/mer-hybris/libgbinder.git
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = libgbinder
 	license = BSD
 	depends = libglibutil
 	depends = glib2
-	source = libgbinder-1.1.36.tar.gz::https://github.com/mer-hybris/libgbinder/archive/refs/tags/1.1.36.tar.gz
-	sha512sums = 5727b25299286e8238a9b526fec9f72d631f584cabb21021d9f12e550059fe746e1165d5bb47ba79db52e2ccb5a3ce96dbd97761df78f13cf7e9a1554d1c3876
+	source = libgbinder-1.1.38.tar.gz::https://github.com/mer-hybris/libgbinder/archive/refs/tags/1.1.38.tar.gz
+	sha512sums = 610dbe962287278de0e3549b4f7d15f6af0017afa0da356f6a72550c8d5c9925960527a30fd4d4e66c64f9cfd63915ba60b990220e350fee935bef5bf5a17710
 
 pkgname = libgbinder
