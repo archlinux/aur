@@ -1,4 +1,5 @@
 *.pkg.*
+*.zip
 src
 rggl-*
 pkg
