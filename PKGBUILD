@@ -3,7 +3,7 @@ pkgname=live2d-kanban-desktop
 pkgver=2.8.0
 _electronversion=22
 _nodeversion=16
-pkgrel=3
+pkgrel=4
 pkgdesc="An AI Based live2d Kanban for Desktop Users Using Electron.基于Electron制作的桌面看板娘，支持日程提醒、小窗模式、ChatGPT集成、网页搜索、本地moc模型加载与独立设置界面等"
 arch=('any')
 url="http://studio.zerolite.cn/post/338/waifuproject2-live2d-kanban-desktop/"
@@ -12,7 +12,7 @@ license=('GPL-3.0-only')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
-    'python'
+    'python>=3'
 )
 makedepends=(
     'gendesk'
@@ -27,7 +27,7 @@ source=(
 )
 sha256sums=('SKIP'
             '942783587666a3a1bddea93afd349e26f798ed19dcd7a52449d0ae3322fcff7c'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -50,9 +50,16 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
+    if [ `curl ifconfig.co/country` = "China" ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
     cp assets/applogo256.png assets/applogo.png
     npm install --no-package-lock
-    npm run pack-linux
+    npm run pack #-linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
