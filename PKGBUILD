@@ -2,7 +2,7 @@
 
 _pkgname=vault-gui
 pkgname=$_pkgname-bin
-pkgver="0.0.0"
+pkgver="0.3.1"
 pkgrel=1
 pkgdesc="GUI for Hashicorps Vault"
 arch=('x86_64')
