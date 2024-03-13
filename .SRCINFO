@@ -1,6 +1,6 @@
 pkgbase = gitu-git
 	pkgdesc = A TUI Git client inspired by Magit
-	pkgver = r428.5c4c80b
+	pkgver = r521.7c0f628
 	pkgrel = 1
 	url = https://github.com/altsem/gitu
 	arch = x86_64
