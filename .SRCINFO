@@ -1,20 +1,23 @@
 pkgbase = quasselgrep-git
 	pkgdesc = Tool for searching quassel logs from the commandline
 	pkgver = r95.g9b6b0bc
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/fish-face/quasselgrep
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = git
 	depends = python
 	depends = python-setuptools
 	depends = python-dateutil
-	depends = python-future
 	depends = python-pycryptodome
 	optdepends = python-psycopg2: Connect to postgres databases
 	provides = quasselgrep=r95.g9b6b0bc
 	conflicts = quasselgrep
 	source = git+https://github.com/fish-face/quasselgrep.git
+	source = quasselgrep-timestamps.patch::https://patch-diff.githubusercontent.com/raw/fish-face/quasselgrep/pull/22.patch
+	source = quasselgrep-py3.7.patch::https://patch-diff.githubusercontent.com/raw/fish-face/quasselgrep/pull/26.patch
 	sha256sums = SKIP
+	sha256sums = 398faf15be411720f2859453a3c16ddbe8cb708c35899dfbf694dbeff6ad6598
+	sha256sums = e45de4a40ef349d1c53442c69d1c5f139d1d3ec5e5d4d807e9defec4487cb8c5
 
 pkgname = quasselgrep-git
