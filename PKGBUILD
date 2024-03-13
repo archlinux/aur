@@ -1,14 +1,14 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc
 pkgver=2.8.1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Advanced ComputerCraft emulator written in C++"
 arch=('x86_64' 'i386' 'armv7l' 'aarch64')
 url="https://www.craftos-pc.cc/"
 license=('MIT')
 groups=()
-depends=('craftos-pc-data>=2.5' 'sdl2>=2.0.8' 'sdl2_mixer' 'poco')
+depends=('craftos-pc-data>=2.8' 'sdl2>=2.0.8' 'sdl2_mixer' 'poco')
 makedepends=('unzip' 'patchelf')
 optdepends=('libharu: PDF output support' 'png++: PNG screenshot support' 'ncurses: CLI mode support' 'libwebp: WebP screenshot/recording support')
 checkdepends=()

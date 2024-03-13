@@ -1,7 +1,7 @@
 pkgbase = craftos-pc
 	pkgdesc = Advanced ComputerCraft emulator written in C++
 	pkgver = 2.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.craftos-pc.cc/
 	arch = x86_64
 	arch = i386
@@ -10,7 +10,7 @@ pkgbase = craftos-pc
 	license = MIT
 	makedepends = unzip
 	makedepends = patchelf
-	depends = craftos-pc-data>=2.5
+	depends = craftos-pc-data>=2.8
 	depends = sdl2>=2.0.8
 	depends = sdl2_mixer
 	depends = poco
