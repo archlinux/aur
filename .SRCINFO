@@ -1,0 +1,20 @@
+pkgbase = envkey-cli-bin
+	pkgdesc = Secure, human-friendly, cross-platform secrets and config.CLI version.
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://www.envkey.com/
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	depends = glibc>=2.38
+	depends = gcc-libs
+	provides = envkey-cli=2.5.0
+	conflicts = envkey-cli
+	source = LICENSE-2.5.0::https://raw.githubusercontent.com/envkey/envkey/cli-v2.5.0/LICENSE
+	sha256sums = d3e78cbc2e92dfabac2dc9c8a5cd22e702cba2a65455c265e5bed3a1d447a704
+	source_aarch64 = envkey-cli-2.5.0-aarch64.tar.gz::https://envkey-releases.s3.amazonaws.com/cli/release_artifacts/2.5.0/envkey-cli_2.5.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 663478e4d6f0f5cf921b580b50dc3708288f1d45dd15d1cc496b221b2fa4f117
+	source_x86_64 = envkey-cli-2.5.0-x86_64.tar.gz::https://envkey-releases.s3.amazonaws.com/cli/release_artifacts/2.5.0/envkey-cli_2.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = bd23f646dbc1fa2c87ad4586338fffe3c09ea42b64237031c5f3a580c27f30dd
+
+pkgname = envkey-cli-bin
