@@ -10,7 +10,7 @@ url="https://github.com/taj-ny/$_reponame"
 license=(GPL3)
 depends=(kio knotifications kwin kcrash kglobalaccel)
 makedepends=(git extra-cmake-modules qt6-tools)
-source=("$pkgname::$url/archive/refs/tags/v$pkgver.tar.gz")
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 install="$pkgname.install"
 sha256sums=('63502d3da698b3554c2870f587660d7850fd8b95d6f7aadc67b847ce3b185fe9')
 
