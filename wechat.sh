@@ -63,6 +63,7 @@ function lnDir() {
 	if [ ! -d "${HOME}"/xwechat_files ]; then
 		ln -s "${XDG_DOCUMENTS_DIR}"/WeChat_Data/xwechat_files "${HOME}"/xwechat_files
 	fi
+	ln -sf "${XDG_DOCUMENTS_DIR}"/WeChat_Data/Documents/xwechat_files "${XDG_DOCUMENTS_DIR}"/xwechat_files
 }
 
 function execApp() {
