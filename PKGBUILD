@@ -11,7 +11,7 @@ pkgrel="1"
 pkgdesc="Decentralised P2P exchange built on Monero and Tor."
 arch=("any")
 url="https://github.com/haveno-dex/${pkgname}"
-license=("AGPL3")
+license=("AGPL-3.0-or-later")
 depends=("bash" "java-runtime>=11")
 makedepends=("java-environment>=11")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
