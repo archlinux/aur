@@ -6,16 +6,16 @@
 : ${_build_git:=true}
 
 unset _pkgtype
-: ${_pkgtype:=git}
+[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
 # basic info
 _pkgname="mozillavpn"
-pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
-pkgver=2.20.0.r86.g07dcec47
+pkgname="$_pkgname${_pkgtype:-}"
+pkgver=2.20.0.r89.g9e2c028
 pkgrel=1
 pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
 url="https://github.com/mozilla-mobile/mozilla-vpn-client"
-license=('MPL2')
+license=('MPL-2.0')
 arch=('x86_64')
 
 # main package
@@ -71,8 +71,10 @@ _main_package() {
 
 # stable package
 _main_stable() {
+  : ${_pkgver:=${pkgver%%.r*}}
+
   _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git#tag=v${pkgver%%.r*}")
+  source+=("$_pkgsrc"::"git+$url.git#tag=v$_pkgver")
   sha256sums+=('SKIP')
 
   _prepare() {
@@ -80,8 +82,8 @@ _main_stable() {
     local _tag=$(git tag | grep -Ev '^.*[A-Za-z]{2}.*$' | sort -rV | head -1)
     _pkgver="${_tag#v}"
 
-    if [[ "$_tag" != "v${pkgver%%.r*}" ]] ; then
-      git checkout -f "$_tag"
+    if [[ "${_pkgver:?}" != "${pkgver%%.r*}" ]] ; then
+      git checkout -f "${_tag:?}"
     fi
     popd
   }
@@ -93,7 +95,6 @@ _main_stable() {
 
 # git package
 _main_git() {
-  # git package
   provides=("$_pkgname=${pkgver%%.r*}")
   conflicts=("$_pkgname")
 
@@ -109,7 +110,7 @@ _main_git() {
     cd "$_pkgsrc"
     local _tag=$(git tag | sort -rV | head -1)
     local _revision=$(git rev-list --count --cherry-pick $_tag...HEAD)
-    local _hash=$(git rev-parse --short=8 HEAD)
+    local _hash=$(git rev-parse --short=7 HEAD)
 
     local _pkgver=$(
       printf '%s.r%s.g%s' \
