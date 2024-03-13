@@ -1,7 +1,7 @@
 # Maintainer: Klaus Alexander Seiﬆrup <klaus at seistrup dot dk>
 pkgname=dooble-git
 _pkgname=Dooble
-pkgver=2024.01.25.r7.gaa2dfc1b
+pkgver=2024.01.25.r25.gd1fdfdcf
 pkgrel=1
 pkgdesc="Web browser based on QtWebEngine"
 arch=("x86_64")
@@ -11,9 +11,9 @@ license=('LicenseRef-custom')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 depends=(
+    'gpgme'
     'qt5-base'
     'qt5-declarative'
-    'gpgme'
     'qt5-webengine'
 )
 optdependes=(
@@ -25,6 +25,7 @@ makedepends=(
     'qt6-base'
     'qt6-charts'
     'gcc'
+    'base-devel'
     'fakeroot'
 )
 source=(
@@ -32,7 +33,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'cf538a21b1ba4fbdde585c2b0334790bb0929f890542a6323de66bac3dbfa028')
+            '8c1c658ce21dc1f5fe8687c7406b3f263dc53e2498662c538d963644e9dacdf1')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
