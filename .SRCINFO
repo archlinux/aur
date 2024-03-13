@@ -1,0 +1,17 @@
+pkgbase = ttf-shanggu
+	pkgdesc = 基於思源的傳承字形（舊字形）字體 尚古 Shanggu Fonts
+	pkgver = 1.020
+	pkgrel = 1
+	url = https://github.com/GuiWonder/Shanggu
+	arch = any
+	license = OFL-1.1
+	source = https://github.com/GuiWonder/Shanggu/releases/download/1.020/ShangguMonoTTFs.7z
+	source = https://github.com/GuiWonder/Shanggu/releases/download/1.020/ShangguRoundTTFs.7z
+	source = https://github.com/GuiWonder/Shanggu/releases/download/1.020/ShangguSansTTFs.7z
+	source = https://github.com/GuiWonder/Shanggu/releases/download/1.020/ShangguSerifTTFs.7z
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = ttf-shanggu
