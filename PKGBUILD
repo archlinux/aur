@@ -14,7 +14,7 @@ _fragment="${FRAGMENT:-#branch=master}"
 : ${BITMAP_BACKEND:=imagemagick} # select imagemagick implementation {imagemagick,graphicsmagick}
 
 pkgname=inkscape-git
-pkgver=1.3.alpha.r922.gf055ee0d9f
+pkgver=1.3.alpha.r987.g07fdc5641e
 pkgrel=1
 epoch=5
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
@@ -77,9 +77,9 @@ prepare() {
 # fix track_obj deprecated in libsigc
   sed '/DSIGCXX_DISABLE_DEPRECATED/d' -i CMakeScripts/DefineDependsandFlags.cmake
 # fix lib2geom header location
-  sed -E '/^#include/s/"(point.h)/"2geom\/\1/' -i src/path/splinefit/bezier-fit.cpp src/ui/{tool/path-manipulator,dialog/{symbols,extensions-gallery}}.cpp
+  sed -E '/^#include/s/"(point.h)/"2geom\/\1/' -i src/path/splinefit/bezier-fit.cpp src/ui/{tool{/path-manipulator,s/object-picker-tool},dialog/{symbols,extensions-gallery}}.cpp
 # sed -E '/^#include/s/(forward.h)/2geom\/\1/' -i src/ui/tool/path-manipulator.cpp
-  sed -E '/^#include/s/"(rect.h)/"2geom\/\1/' -i src/ui/dialog/{object-attributes,extensions-gallery}.cpp
+  sed -E '/^#include/s/"(rect.h)/"2geom\/\1/' -i src/ui/{dialog/{object-attributes,extensions-gallery},tools/object-picker-tool}.cpp
   sed -E '/^#include/s/"(angle.h)/"2geom\/\1/' -i src/ui/dialog/document-properties.cpp
   sed -E '/^#include/s/"(transforms.h)/"2geom\/\1/' -i src/ui/widget/gradient-editor.cpp
 }
