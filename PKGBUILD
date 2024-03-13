@@ -3,7 +3,7 @@ pkgname=picturama-bin
 _pkgname=Picturama
 pkgver=1.3.0
 _electronversion=9
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital image organizer powered by the web"
 arch=("x86_64")
 url="https://picturama.github.io/"
@@ -12,7 +12,7 @@ license=("MIT")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'asar'
@@ -24,19 +24,20 @@ source=(
 )
 sha256sums=('a40fc27395841cf3220ed7db3ba98717d3b3a24fc1733b81759218fbd28c3e3a'
             'b8ff1b44d19d011a234dc2490176e17231321a397f742088679c6c96555aba25'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun|${pkgname%-bin} %U|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
-    rm -rf "${srcdir}/app.asar.unpacked"
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
     cp -r "${srcdir}/app.asar.unpacked/node_modules/sqlite3/lib/binding/electron-v9.0-linux-x64" \
         "${srcdir}/app.asar.unpacked/node_modules/sqlite3/lib/binding/electron-v9.4-linux-x64"
+    rm -rf "${srcdir}/app.asar.unpacked/node_modules/sqlite3/lib/binding/electron-v9.0-linux-x64"
     sed "s|dbMigrationsFolder:a+\"\/migrations|dbMigrationsFolder:a+\"\/..\/..\/..\/${pkgname%-bin}/app/migrations|g" \
         -i "${srcdir}/app.asar.unpacked/dist/background.js"
     sed "s|dbMigrationsFolder:a+\"\/migrations|dbMigrationsFolder:a+\"\/..\/..\/..\/${pkgname%-bin}/app/migrations|g" \
