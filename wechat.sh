@@ -107,10 +107,10 @@ function execApp() {
 		--ro-bind-try "${XDG_DOCUMENTS_DIR}"/WeChat_Data/.flatpak-info /.flatpak-info \
 		--dir "${XDG_DOCUMENTS_DIR}" \
 		--setenv QT_QPA_PLATFORM xcb \
-		--setenv LD_LIBRARY_PATH /opt/wechat-beta:/usr/lib/wechat-uos/license \
+		--setenv LD_LIBRARY_PATH /opt/wechat-uos-bwrap/files:/usr/lib/wechat-uos/license \
 		--setenv QT_AUTO_SCREEN_SCALE_FACTOR 1 \
 		--setenv PATH /sandbox:"${PATH}" \
-		/opt/wechat-beta/wechat
+		/opt/wechat-uos-bwrap/files/wechat
 }
 
 function dbusProxy() {
@@ -147,8 +147,8 @@ function execAppUnsafe() {
 		--ro-bind /usr/share/wechat-uos/etc/lsb-release /etc/lsb-release \
 		--ro-bind /usr/lib/wechat-uos/license/ /usr/lib/license/ \
 		--setenv QT_QPA_PLATFORM xcb \
-		--setenv LD_LIBRARY_PATH /opt/wechat-beta:/usr/lib/wechat-uos/license \
-		/opt/wechat-beta/wechat
+		--setenv LD_LIBRARY_PATH /opt/wechat-uos-bwrap/files:/usr/lib/wechat-uos/license \
+		/opt/wechat-uos-bwrap/files/wechat
 }
 
 function launch() {
