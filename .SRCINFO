@@ -1,11 +1,11 @@
 pkgbase = qrocrown-bin
 	pkgdesc = An enhanced launcher for keeping your games. By QRodEX for QRodEXers.
 	pkgver = 1.2.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Qrodex/QroCrown
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = electron20
+	depends = electron20-bin
 	depends = wine
 	depends = winetricks
 	provides = qrocrown=1.2.9
@@ -13,6 +13,6 @@ pkgbase = qrocrown-bin
 	source = qrocrown-1.2.9.deb::https://github.com/Qrodex/QroCrown/releases/download/v1.2.9/qrocrown_1.2.9_amd64.deb
 	source = qrocrown.sh
 	sha256sums = da0014753835e68b36bc41bb84fa87cfd54d7cf68ad31565e071350d87098009
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = qrocrown-bin
