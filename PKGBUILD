@@ -1,34 +1,47 @@
-# Author: Roman Gilg <subdiff@gmail.com>
 # Maintainer: abelian424
 
-pkgname=disman-kwinft
+_pkgname="disman"
+pkgname="$_pkgname-kwinft"
 pkgver=0.600.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt/C++ display management library'
-arch=(x86_64 aarch64)
 url="https://github.com/winft/disman"
-license=(LGPL)
-depends=('wrapland' kcoreaddons kwayland)
-provides=('disman')
-conflicts=('disman')
-makedepends=(extra-cmake-modules git appstream)
-source=("https://github.com/winft/disman/archive/refs/tags/v$pkgver.tar.gz")
-sha1sums=('d22b6f94204d35c003980c1b7baa2a3beaa98cc3')
+license=('LGPL-2.1-only')
+arch=('x86_64' 'aarch64')
 
-prepare() {
-  mkdir -p $pkgname
-  cd $pkgname
-  tar -xvf ../v$pkgver.tar.gz --strip-components 1
-}
-  
+depends=(
+  # AUR
+  wrapland
+)
+makedepends=(
+  extra-cmake-modules
+  git
+  ninja
+)
+
+provides=("disman=$pkgver")
+conflicts=("disman")
+
+_pkgsrc="$_pkgname-$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
+sha256sums=('bf584ab99b585f4d88a6e0310b71d5aab500361ae8369acab0d2a0cd1abe784c')
+
 build() {
-  mkdir -p build
-  cd build
-  cmake ../$pkgname \
-    -DCMAKE_BUILD_TYPE=Release
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DBUILD_TESTING=OFF
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
