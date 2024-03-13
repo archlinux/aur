@@ -1,14 +1,16 @@
 pkgbase = typos-lsp-bin
 	pkgdesc = Source code spell checker for Visual Studio Code and LSP clients
 	pkgver = 0.1.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tekumara/typos-lsp
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	depends = gcc-libs
+	depends = glibc
 	source_x86_64 = https://github.com/tekumara/typos-lsp/releases/download/v0.1.15/typos-lsp-v0.1.15-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = a45aa8fa6c31b420c1398f3ed88f0e547394a427e001236f7d6dfa9ed06c2605
+	sha256sums_x86_64 = 1359306b2af1583100441d981eebb88a3c2e0fdd8a1817d7b7df100bce2e549d
 	source_aarch64 = https://github.com/tekumara/typos-lsp/releases/download/v0.1.15/typos-lsp-v0.1.15-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 1359306b2af1583100441d981eebb88a3c2e0fdd8a1817d7b7df100bce2e549d
+	sha256sums_aarch64 = a45aa8fa6c31b420c1398f3ed88f0e547394a427e001236f7d6dfa9ed06c2605
 
 pkgname = typos-lsp-bin
