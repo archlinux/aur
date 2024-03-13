@@ -5,8 +5,8 @@ arch=('any')
 url="https://github.com/micr0-dev/lexido"
 license=('GAPL')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz")
-sha256sums=('SKIP') # Consider using actual sha256sums for source validation
+source=("lexido-v1.2.tar.gz::https://github.com/micr0-dev/lexido/archive/refs/tags/vv1.2.tar.gz")  # Corrected syntax
+sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
