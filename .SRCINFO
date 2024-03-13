@@ -1,7 +1,7 @@
 pkgbase = hyprlock
 	pkgdesc = Hyprland's GPU-accelerated screen locking utility
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/hyprwm/hyprlock
 	arch = any
 	license = BSD
@@ -24,7 +24,8 @@ pkgbase = hyprlock
 	depends = mesa
 	provides = hyprlock
 	conflicts = hyprlock-git
-	source = hyprlock-0.1.0.tar.gz::https://github.com/hyprwm/hyprlock/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 5d0e6547ac073c78e95d4f086a258e1e5713168827c38ccb2466f2c4d96bd1df
+	backup = etc/pam.d/hyprlock
+	source = hyprlock-0.2.0.tar.gz::https://github.com/hyprwm/hyprlock/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 3d56220ac03016163e196bc2c08e5b16e83583fa9446ad52e32ddbb56c293994
 
 pkgname = hyprlock

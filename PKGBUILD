@@ -2,9 +2,9 @@
 # Contributor: alba4k <blaskoazzolaaaron@gmail.com>
 
 pkgname="hyprlock"
-pkgver=0.1.0
-pkgrel=2
-pkgdesc=" Hyprland's GPU-accelerated screen locking utility "
+pkgver=0.2.0
+pkgrel=1
+pkgdesc=" Hyprland's GPU-accelerated screen locking utility"
 arch=(any)
 url="https://github.com/hyprwm/hyprlock"
 license=('BSD')
@@ -14,7 +14,10 @@ _archive="${pkgname}-$pkgver"
 source=("$_archive.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 provides=(hyprlock)
 conflicts=(hyprlock-git)
-sha256sums=('5d0e6547ac073c78e95d4f086a258e1e5713168827c38ccb2466f2c4d96bd1df')
+sha256sums=('3d56220ac03016163e196bc2c08e5b16e83583fa9446ad52e32ddbb56c293994')
+
+
+backup=('etc/pam.d/hyprlock')
 
 build() {
 	cd "$_archive"
