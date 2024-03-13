@@ -9,7 +9,6 @@ pkgbase = corectrl-git
 	makedepends = git
 	makedepends = cmake>=3.3
 	makedepends = extra-cmake-modules
-	makedepends = gcc>=8
 	makedepends = qt5-tools
 	depends = botan>=2.2.0
 	depends = qt5-base>=5.15
