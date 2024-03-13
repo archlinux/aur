@@ -1,12 +1,12 @@
 pkgbase = persepolis-git
 	pkgdesc = Qt front-end for aria2 download manager (Github version).
-	pkgver = 4.0.0.r1.gb263b1f
+	pkgver = 4.0.0.r20.geceb3b2
 	pkgrel = 1
 	url = https://persepolisdm.github.io/
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = python-setuptools
+	makedepends = meson
 	depends = aria2
 	depends = ffmpeg
 	depends = libnotify
