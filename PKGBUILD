@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=cfspeedtest
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial CLI for speed.cloudflare.com"
 arch=('x86_64')
 url="https://github.com/code-inflation/cfspeedtest"
@@ -19,7 +19,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname"
-	#export RUSTFLAGS="-C opt-level=3 -C target-cpu=native"
+	export RUSTFLAGS="-C opt-level=3 -C target-cpu=native"
     	cargo build --frozen --release --target-dir target
 }
 
