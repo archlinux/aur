@@ -1,7 +1,7 @@
 pkgbase = patrjprof
 	pkgdesc = An Open source Java profiler written in Java
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.rwth-aachen.de/patrick_laszlo.hechler/patr-java-profiler
 	arch = any
 	license = AGPL-3.0-or-later
