@@ -33,6 +33,7 @@ ros_depends=(
     ros-noetic-roslaunch
     ros-noetic-roslint
     libusb
+    libspinnaker-dev
 )
 
 depends=(
