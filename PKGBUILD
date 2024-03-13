@@ -2,14 +2,15 @@
 # -*- sh -*-
 
 pkgname='makesure'
-pkgver=0.9.22
+pkgver=0.9.23
 pkgrel=1
 pkgdesc='Simple AWK-based task/command runner with declarative goals and dependencies'
 arch=('any')
 url='https://github.com/xonixx/makesure'
-license=('MIT')
+license=('MIT')  # SPDX-License-Identifier: MIT
 depends=('awk' 'sh')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+changelog="$pkgname.changelog"
 
 package() {
   cd "$pkgname-$pkgver"
@@ -25,10 +26,10 @@ package() {
 }
 
 sha256sums=(
-  '5d04967232d27e371ebe50f42ac7799e602c313be25012be8a0a275e0dac33ef'
+  'd9f7f1ca17bc584ee312f2d597546813a6577235ef24cdd0f15fa7c0a1b52b15'
 )
 b2sums=(
-  'dfe468df43753019a9d35d2a73583b92b8acad8e3714b7043e2e42b64ae097fa3341d30533459b8923b289a6112b63467ea15e035a4541806e0830e5af32a522'
+  '80192bd71555182f21a3fff2333c7f984642d58af532acc614f23b7813e98d6ac27d4858951f9e81e64dc1d161bd8f7f79b591c263f1e452389987c463961e9c'
 )
 
 # eof

@@ -1,0 +1,4 @@
+## v0.9.23
+
+- Allow glob to be interpolated string to facilitate reuse [#165](https://github.com/xonixx/makesure/issues/165)
+- Minor improvements and fixes.
