@@ -1,18 +1,16 @@
 pkgbase = splayer-bin
 	pkgdesc = A minimalist music player.一个简约的在线音乐播放器，支持网易云音乐账号登录，逐字歌词，下载歌曲，展示评论区，音乐云盘及歌单管理
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://music.imsyy.top/
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = gtk3
-	depends = nspr
-	depends = nss
-	depends = alsa-lib
+	depends = electron28
 	provides = splayer=2.0.4
 	conflicts = splayer
-	options = !strip
 	source = splayer-2.0.4.deb::https://github.com/imsyy/SPlayer/releases/download/v2.0.4/splayer_2.0.4_amd64.deb
+	source = splayer.sh
 	sha256sums = 337b7ba10fdadf54e015f642e6fb5c27688ca7308b1a0888e93db591ddcb888c
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = splayer-bin
