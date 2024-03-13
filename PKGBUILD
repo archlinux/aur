@@ -1,35 +1,44 @@
 # shellcheck shell=bash
+# Tests assume interactive terminal
+BUILDENV+=(!check)
+
 pkgname=gitu
-pkgver=0.5.4
-pkgrel=2
-pkgdesc="A TUI Git client inspired by Magit"
-arch=('x86_64')
-url="https://github.com/altsem/gitu"
-license=('MIT')
-depends=('gcc-libs')
-makedepends=('cargo' 'git')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('SKIP')
-options=('!lto')
+pkgver=0.6.2
+pkgrel=1
+pkgdesc='A TUI Git client inspired by Magit'
+url='https://github.com/altsem/gitu'
+arch=(x86_64 i686)
+license=(MIT)
+depends=(gcc-libs glibc libgit2)
+makedepends=(cargo)
+_archive="$pkgname-$pkgver"
+source=("$url/archive/v$pkgver/$_archive.tar.gz")
+sha256sums=('f8fd08385906e3c1a20349518ff5dde3418e183eba5b7083c54d01433a2609a2')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cd "$_archive"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+_srcenv() {
+    cd "$_archive"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    export LIBGIT2_SYS_USE_PKG_CONFIG=1
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  cargo build --release --frozen
+    _srcenv
+    cargo build --frozen --release
 }
 
 check() {
-  cd "${pkgname}-${pkgver}"
-  cargo test --frozen
+    _srcenv
+    cargo test --frozen --release
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+    cd "$_archive"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+    install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
