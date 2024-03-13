@@ -1,7 +1,7 @@
 pkgbase = xraygui-bin
 	pkgdesc = A small and nimble GUI for XRay
 	pkgver = 1.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/AKotov-dev/XRayGUI
 	arch = x86_64
 	license = GPL-3.0-only
@@ -18,6 +18,6 @@ pkgbase = xraygui-bin
 	source = xraygui-1.8.deb::https://github.com/AKotov-dev/XRayGUI/releases/download/v1.8/xraygui_1.8-0.mrx9_amd64.deb
 	source = xraygui.sh
 	sha256sums = 5790a63bad60a2722409dfb4165f5db0dade46555e0ca6c0d4553d556bf9aa14
-	sha256sums = a309fe22af7140f6be0fd1475247a44a974503bdf5428aedce123ed100cb2350
+	sha256sums = b83af9da8cfc860e72f06d4e0812bd487951f799c46c1ebfc5634e29c9134260
 
 pkgname = xraygui-bin
