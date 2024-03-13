@@ -1,14 +1,14 @@
 pkgbase = ruby-google-cloud-errors
 	pkgdesc = google-cloud-errors defines error classes for google-cloud-ruby.
-	pkgver = 1.3.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://rubygems.org/gems/google-cloud-errors
 	arch = any
 	license = MIT
 	depends = ruby
-	noextract = google-cloud-errors-1.3.1.gem
+	noextract = google-cloud-errors-1.4.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/google-cloud-errors-1.3.1.gem
-	sha256sums = c0691d480c9770ab7e71d84898895fe022c9643e4b7ad2b1ee839914f691973a
+	source = https://rubygems.org/downloads/google-cloud-errors-1.4.0.gem
+	sha256sums = 0b4e2e0f563db1708732ab4037421d9f26de5cbbbc04be710f2c9cf358e2de14
 
 pkgname = ruby-google-cloud-errors

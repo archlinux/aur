@@ -4,7 +4,7 @@ _name=google-cloud-errors
 _r=1
 
 pkgname=ruby-$_name
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=$_r
 _gem=$_name-$pkgver.gem
 pkgdesc="google-cloud-errors defines error classes for google-cloud-ruby."
@@ -17,7 +17,7 @@ noextract=($_gem)
 options=(!emptydirs)
 license=('MIT')
 source=(https://rubygems.org/downloads/$_gem)
-sha256sums=('c0691d480c9770ab7e71d84898895fe022c9643e4b7ad2b1ee839914f691973a')
+sha256sums=('0b4e2e0f563db1708732ab4037421d9f26de5cbbbc04be710f2c9cf358e2de14')
 
 package() {
   local _gemdir="$pkgdir/$(ruby -e'puts Gem.default_dir')"
