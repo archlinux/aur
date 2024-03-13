@@ -27,6 +27,7 @@ build() {
 }
 
 package() {
-  install -Dm644 "$srcdir/$_reponame-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm755 "$srcdir/$_reponame-$pkgver/Build/Swig/Linux/Swig.Console" "$pkgdir/usr/bin/swig-cli"
+  cd "$srcdir/$_reponame-$pkgver"
+  install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "Build/Swig/Linux/Swig.Console" "$pkgdir/usr/bin/swig-cli"
 }
