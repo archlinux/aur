@@ -1,0 +1,11 @@
+--- a/premake5.lua	2024-03-14 00:11:45.561149745 +0200
++++ b/premake5.lua	2024-03-14 00:11:45.564483139 +0200
+@@ -374,8 +374,6 @@
+ 			["dontWrite"] = function (cfg)
+ 				check_symbol_exists(cfg, "haveX11", "glfwGetX11Display", { "X11/Xlib.h", "X11/XKBlib.h", "GLFW/glfw3.h", "GLFW/glfw3native.h" }, "GLFW_EXPOSE_NATIVE_X11")
+ 				if cfg.autoconf["haveX11"] ~= nil and cfg.autoconf["haveX11"] == 1 then
+-					table.insert(cfg.links, "X11")
+-					table.insert(cfg.defines, "GET_KEYBOARD_INPUT_FROM_X11")
+ 				end
+ 			end
+ 		}
