@@ -3,7 +3,7 @@ pkgname=panfu-desktop-bin
 _pkgname="Panfu Desktop"
 pkgver=1.4.3
 _electronversion=11
-pkgrel=2
+pkgrel=3
 pkgdesc="The desktop application for Panfu with integrated Flash Player"
 arch=(
     "i686"
@@ -15,7 +15,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'hicolor-icon-theme'
 )
 source_i686=("${pkgname%-bin}-${pkgver}-i686.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_i386.deb")
@@ -25,15 +25,16 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('a8770b3f8133c0d98066fe1e96540b4dbe176f5d21b966f0373236280d1d1761'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 sha256sums_i686=('1fd6571897ed19eddacd0cea9e3800361d4ad9e9347bed517528018b3eb46e25')
 sha256sums_x86_64=('9c8c10a07a92c6a0d0a199a27ae011bed940b103b0036845fa875f22da4d4813')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
