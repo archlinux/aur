@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=1.17.2
+pkgver=1.17.3
 _electronversion=27
 _nodeversion=18
 pkgrel=1
