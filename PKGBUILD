@@ -2,7 +2,7 @@
 
 pkgname=keepassxc-cryptomator
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Store Cryptomator vault passwords in KeePassXC"
 arch=('x86_64')
 url="https://plugin.purejava.org/"
@@ -29,7 +29,7 @@ prepare() {
     local _COL_DEFAULT_='\e[0m'
   fi
 
-  if ! archlinux-java get | grep -E "17|18|19|20|21" ; then
+  if ! archlinux-java get | grep -Eo '[0-9]{1,2}' | awk '$1>16' ; then
     echo -e "\n  ${_COL_BBLUE_}->${_COL_DEFAULT_} ${_COL_BRED_}Configuration hint:${_COL_DEFAULT_} You don't have a ${_COL_BWHITE_}Java 17 JDK (or later)${_COL_DEFAULT_} selected as your Java environment but the following installed on your system:"
     echo -e "${_COL_BWHITE_}`archlinux-java status | sed '1,${/^Available Java environments/d}' | sed 's/^/     /'`${_COL_DEFAULT_}\n"
     echo -e "     Select a Java 17 JDK or later using ${_COL_LIGHTGREY_}\"sudo archlinux-java set <name from the list above>\"${_COL_DEFAULT_}\n"
