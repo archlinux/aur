@@ -1,0 +1,15 @@
+pkgbase = cfspeedtest
+	pkgdesc = Unofficial CLI for speed.cloudflare.com
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/code-inflation/cfspeedtest
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
+	options = !buildflags
+	source = git+https://github.com/code-inflation/cfspeedtest.git#tag=v1.2.2
+	sha256sums = SKIP
+
+pkgname = cfspeedtest
