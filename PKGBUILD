@@ -2,13 +2,13 @@
 
 pkgname=chromium-extension-rggl-bin
 pkgver=6.1.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Remove German Gender Language - chromium extension (binary version)"
 arch=('any')
 url="https://github.com/noahvogt/chromium-extension-rggl-aur"
 license=('custom:none')
 source=("$url/releases/download/$pkgver-$pkgrel/${pkgname%-*}-$pkgver-$pkgrel-any.pkg.tar.zst")
-sha256sums=('7c4ecfe3f81ebbae6d99defb92d3d284e88bae2533508c258dd4bcf142a31047')
+sha256sums=('180dede338a30fd680cf4113b9c0500ee5d0825ea52ecbd3bd377bee107846f3')
 depends=('chromium')
 provides=('chromium-extension-rggl')
 conflicts=('chromium-extension-rggl')
