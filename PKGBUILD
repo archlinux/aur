@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://spacestation14.io'
 license=('MIT')
 depends=('gtk3')
-makedepends=('dotnet-sdk' 'python')
+makedepends=('dotnet-sdk>=8.0.0' 'python')
 optdepends=('fluidsynth: for in-game MIDI instruments')
 _robust_loader="99a2f4b88077629f69fb66f74f50e88dbe43e0e8" # the submodule must be separately aquired
 source=(
