@@ -3,7 +3,7 @@
 pkgname=dosbox-x-sdl2
 _pkgname=dosbox-x
 pkgver=2024.03.01
-pkgrel=1
+pkgrel=2
 pkgdesc="x86 emulator with builtin DOS, with patches and more features"
 arch=(i686 x86_64 aarch64)
 url="http://dosbox-x.com"
@@ -20,18 +20,12 @@ build() {
    
   ./autogen.sh
   
-  # Working around bug 4436: https://github.com/joncampbell123/dosbox-x/issues/4436
-  # We need to deactivate -Werror=format-security
-  
-  export CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions \
-        -Wp,-D_FORTIFY_SOURCE=2 -Wformat \
-        -fstack-clash-protection -fcf-protection"
-  export CXXFLAGS="$CFLAGS -Wp,-D_GLIBCXX_ASSERTIONS"
+  export CFLAGS="${CFLAGS/-Werror=format-security/}"
   export LDFLAGS="${LDFLAGS//,--as-needed}"
-  
-  chmod +x configure
+  export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
+    
   ./configure --enable-core-inline --enable-debug --enable-avcodec --prefix=/usr --enable-sdl2
-  make -j$(nproc)
+  make
   
 }
 
