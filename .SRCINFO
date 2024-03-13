@@ -1,7 +1,7 @@
 pkgbase = tjmc-launcher-bin
 	pkgdesc = A simple to use, extremely fast, and well supported app, that allows you to install pure and modded versions of Java Minecraft.
 	pkgver = 0.2.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launcher.tjmc.ru/
 	arch = aarch64
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = tjmc-launcher-bin
 	source = LICENSE-0.2.7::https://raw.githubusercontent.com/tjmcraft/TJMC-Launcher/v0.2.7/LICENSE
 	source = tjmc-launcher.sh
 	sha256sums = 1a25e3b0f4bf16543e5f802cf6d9d189bcae27617ca8be936ad866a8955d9ce6
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 	source_aarch64 = tjmc-launcher-0.2.7-aarch64.deb::https://github.com/tjmcraft/TJMC-Launcher/releases/download/v0.2.7/TJMC-Launcher-setup-arm64.deb
 	sha256sums_aarch64 = 56b47b4d68367661f3e0b6a42b96c916b091908b420158e5b3d0df1e04941358
 	source_x86_64 = tjmc-launcher-0.2.7-x86_64.deb::https://github.com/tjmcraft/TJMC-Launcher/releases/download/v0.2.7/TJMC-Launcher-setup-amd64.deb

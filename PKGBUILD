@@ -3,7 +3,7 @@ pkgname=tjmc-launcher-bin
 _pkgname=TJMC-Launcher
 pkgver=0.2.7
 _electronversion=23
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple to use, extremely fast, and well supported app, that allows you to install pure and modded versions of Java Minecraft."
 arch=(
     'aarch64'
@@ -25,13 +25,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1a25e3b0f4bf16543e5f802cf6d9d189bcae27617ca8be936ad866a8955d9ce6'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 sha256sums_aarch64=('56b47b4d68367661f3e0b6a42b96c916b091908b420158e5b3d0df1e04941358')
 sha256sums_x86_64=('b4a0666c537e9e172748d785196a8d99698244ba25d9dffc5c0f55375a188ce9')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
