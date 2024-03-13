@@ -2,7 +2,7 @@
 
 pkgname=mintstick
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical tool that allows you to format USB sticks and create bootable USB sticks."
 arch=('any')
 url="http://packages.linuxmint.com/pool/main/m/${pkgname}"
@@ -23,6 +23,7 @@ depends=(
     'python'
     'python-gobject'
     'python-pyparted'
+    'python-unidecode'
     'python-xapp'
     'udisks2'
     'util-linux'
