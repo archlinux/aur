@@ -1,20 +1,21 @@
 pkgbase = mypy-git
-	pkgdesc = Optional static typing for Python
-	pkgver = v0.520.r2526.g9101707bd
+	pkgdesc = Optional static typing for Python 2 and 3 (PEP484)
+	pkgver = 1.9.0.r40.ga00fcba
 	pkgrel = 1
-	url = http://www.mypy-lang.org
+	url = https://github.com/JukkaL/mypy
 	arch = any
 	license = MIT
-	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-psutil
-	depends = python-typed-ast
-	provides = mypy
+	depends = python-mypy_extensions
+	depends = python-typing_extensions
+	depends = python-tomli
+	provides = mypy=1.9.0
 	conflicts = mypy
-	source = git+https://github.com/JukkaL/mypy
-	source = git+https://github.com/python/typeshed
-	md5sums = SKIP
-	md5sums = SKIP
+	source = mypy::git+https://github.com/JukkaL/mypy.git
+	sha256sums = SKIP
 
 pkgname = mypy-git
-

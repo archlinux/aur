@@ -1,16 +1,4 @@
 *
-!*.conf
-!*.desktop
-!*.install
-!*.patch
-!*.rules
-!*.service
-!*.sh
-!*.sysusers
-!*.tmpfiles
+!PKGBUILD
 !.SRCINFO
 !.gitignore
-!COPYRIGHT
-!LICENSE
-!PKGBUILD
-libinjection_python_port.patch
