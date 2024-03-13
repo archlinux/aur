@@ -3,7 +3,7 @@ and added more support for the community on the github repository
 
 **Bug fixes**
 fixed the bug that did not resize the editor in jura when the terminal changes, but it does require a keypress to update
-fixed a visual bug that made the terminal layout look weird when using print statements in the code
+fixed a visual bug that made the terminal layout look weird when using print statements with the C programming language in the code
 
 ## What's Changed
 * Update issue templates by @Nooberieno in https://github.com/Nooberieno/jura/pull/1
