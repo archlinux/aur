@@ -1,19 +1,19 @@
 pkgbase = maduchat-frontend-bin
 	pkgdesc = A chat application which has a global chat, friend system, settings and lots of other features
 	pkgver = 1.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Madu-de/MaduChat
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = gendesk
-	depends = electron26
+	depends = electron26-bin
 	depends = nodejs
 	provides = maduchat-frontend=1.2.1
 	conflicts = maduchat-frontend
 	source = maduchat-frontend.sh
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 	source_aarch64 = maduchat-frontend-1.2.1-aarch64.zip::https://github.com/Madu-de/MaduChat/releases/download/v1.2.1/maduchat-frontend-1.2.1-linux-arm64.zip
 	sha256sums_aarch64 = 2325d628fc42a78a9ecd475b116c69a0c17b4d970ebe69dad83bc03c74797ffc
 	source_armv7h = maduchat-frontend-1.2.1-armv7h.zip::https://github.com/Madu-de/MaduChat/releases/download/v1.2.1/maduchat-frontend-1.2.1-linux-armv7l.zip
