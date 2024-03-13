@@ -1,0 +1,18 @@
+pkgbase = python-pqdm
+	pkgdesc = Comfortable parallel TQDM using concurrent.futures
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/niedakh/pqdm
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-bounded-pool-executor
+	depends = python-tqdm
+	depends = python-typing-extensions
+	source = https://files.pythonhosted.org/packages/source/p/pqdm/pqdm-0.2.0.tar.gz
+	source = https://raw.githubusercontent.com/niedakh/pqdm/master/LICENSE
+	sha256sums = d99d01fe498d327b440ebfe08c14c84e0dc9ecce6172ef9a31f96bb1aaf4e9e3
+	sha256sums = 26eb7ffd30fbb27cc167fea075b88087c6fa661b9469da1de8b2d4d1aba96f79
+
+pkgname = python-pqdm
