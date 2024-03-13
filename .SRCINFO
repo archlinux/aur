@@ -1,6 +1,6 @@
 pkgbase = patrjprof
 	pkgdesc = An Open source Java profiler written in Java
-	pkgver = 1.2.0
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://git.rwth-aachen.de/patrick_laszlo.hechler/patr-java-profiler
 	arch = any
@@ -9,17 +9,17 @@ pkgbase = patrjprof
 	optdepends = java-runtime-headless>=16: support for socket files for server/client communication
 	optdepends = java-runtime>=8: graphical user interface
 	optdepends = java-runtime>=16: socket files + graphical user interface
-	source = patr-java-profiler-agent.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-agent/1.2.0/patr-java-profiler-agent-1.2.0-jar-with-dependencies.jar
-	source = patr-java-profiler-bootstrap.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-bootstrap/1.2.0/patr-java-profiler-bootstrap-1.2.0.jar
-	source = patr-java-profiler-server.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-server/1.2.0/patr-java-profiler-server-1.2.0.jar
-	source = patr-java-profiler-client.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-client/1.2.0/patr-java-profiler-client-1.2.0.jar
-	source = patr-java-profiler-test.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-test/1.2.0/patr-java-profiler-test-1.2.0.jar
-	source = patr-java-profiler-start.sh::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler/1.2.0/patr-java-profiler-1.2.0.start-script
-	md5sums = 7394360f275817367f251fda05b891a7
-	md5sums = 42ff09b4441deb2f327bf5c6722a90ff
-	md5sums = 925d1b6a7d0d02bd5c92f4fa1a2b6e76
-	md5sums = ef5c4706cb06296e1ade4fd541211047
-	md5sums = 14f7b04c0599e01f02cd4384c67bf1d7
-	md5sums = 104ad32c6be4e03274a591746d7ace24
+	source = patr-java-profiler-agent.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-agent/1.2.2/patr-java-profiler-agent-1.2.2-jar-with-dependencies.jar
+	source = patr-java-profiler-bootstrap.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-bootstrap/1.2.2/patr-java-profiler-bootstrap-1.2.2.jar
+	source = patr-java-profiler-server.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-server/1.2.2/patr-java-profiler-server-1.2.2.jar
+	source = patr-java-profiler-client.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-client/1.2.2/patr-java-profiler-client-1.2.2.jar
+	source = patr-java-profiler-test.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-test/1.2.2/patr-java-profiler-test-1.2.2.jar
+	source = patr-java-profiler-start.sh::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler/1.2.2/patr-java-profiler-1.2.2.start-script
+	md5sums = e6b77e1d61b5bcffb8d5d328521883b7
+	md5sums = 38c0be0018ca6dbe513836591c1ed503
+	md5sums = bab5fc52dddc17c436d84bcc9785f7cf
+	md5sums = 4037ab20fa4133b9204d8eb9aa86d864
+	md5sums = 12d89bd966bf8d5f31386f581c91847e
+	md5sums = 7b89dd802897987cedd7636d94571a82
 
 pkgname = patrjprof
