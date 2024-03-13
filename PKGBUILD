@@ -4,7 +4,7 @@
 pkgname=spotiflyer-bin
 _pkgname=SpotiFlyer
 pkgver=3.6.3
-pkgrel=7
+pkgrel=8
 pkgdesc="Kotlin Multiplatform Music Downloader, Supports Spotify / Gaana / Youtube Music / Jio Saavn / SoundCloud."
 arch=('x86_64')
 url="https://soundbound.shabinder.in/install"
@@ -13,6 +13,7 @@ license=('GPL-3.0-only')
 conflicts=("${pkgname%-bin}")
 depends=(
     'alsa-lib'
+    'ffmpeg'
     'fontconfig'
     'libx11'
     'libxtst'
@@ -27,7 +28,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('9038e09d4e4d0eff02bbb10fc02728f11e73e46973e23297d0ff189dfdce0aae'
-            '0cbb79afdcd64a665fab07a14cd8684d642f3bafcfada705e0f9b4aaf86174b0')
+            'cd091431c99c2b54d820b854b96b6986831eba021ae2cc20b6526f58dfcc7e34')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
