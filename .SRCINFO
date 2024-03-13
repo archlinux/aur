@@ -1,11 +1,11 @@
 pkgbase = somafm-desktop-player-bin
 	pkgdesc = SomaFM desktop player built with Electron and React
 	pkgver = 0.0.24
-	pkgrel = 5
+	pkgrel = 6
 	url = https://alechko.github.io/somafm-desktop-player/
 	arch = x86_64
 	license = MIT
-	depends = electron16
+	depends = electron16-bin
 	provides = somafm-desktop-player=0.0.24
 	conflicts = somafm-desktop-player
 	source = somafm-desktop-player-0.0.24.deb::https://github.com/alechko/somafm-desktop-player/releases/download/v0.0.24/somafm-desktop-player_0.0.24_amd64.deb
@@ -13,6 +13,6 @@ pkgbase = somafm-desktop-player-bin
 	source = somafm-desktop-player.sh
 	sha256sums = e5790fbe31508202725c3580466baad18cd90ac9c032f8c73ae63e10024fa8f7
 	sha256sums = 5e404eae8a20b20c3e2ab7e0a08d04012d2cf8d5bf266849a22d7aa810409381
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = somafm-desktop-player-bin
