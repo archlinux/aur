@@ -110,6 +110,7 @@ function execApp() {
 		--setenv LD_LIBRARY_PATH /opt/wechat-uos-bwrap/files:/usr/lib/wechat-uos/license \
 		--setenv QT_AUTO_SCREEN_SCALE_FACTOR 1 \
 		--setenv PATH /sandbox:"${PATH}" \
+		--setenv QT_PLUGIN_PATH "/usr/lib/qt/plugins /opt/wechat-uos-bwrap/files/wechat" \
 		/opt/wechat-uos-bwrap/files/wechat
 }
 
