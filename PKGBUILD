@@ -3,7 +3,7 @@
 _pkgname=kubectl-argo-rollouts
 _pkgname_upstream_suffix=-linux-amd64
 pkgname=$_pkgname-bin
-pkgver=1.6.4
+pkgver=1.6.6
 pkgrel=1
 pkgdesc="Kubectl plugin for argo rollouts"
 arch=(x86_64)
