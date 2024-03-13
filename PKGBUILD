@@ -2,7 +2,7 @@
 # Co-Maintainer: Jesse R Codling <codling[at]umich.edu>
 
 pkgname=visual-studio-code-cli-bin
-pkgver=1.87.1
+pkgver=1.87.2
 pkgrel=1
 pkgdesc="The Visual Studio Code Server is a service you can run on a remote development machine, like your desktop PC or a virtual machine (VM)."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -13,9 +13,9 @@ conflicts=('code' 'vscode')
 source_x86_64=(code_cli_x64_${pkgver}.tar.gz::https://update.code.visualstudio.com/${pkgver}/cli-linux-x64/stable)
 source_aarch64=(code_cli_arm64_${pkgver}.tar.gz::https://update.code.visualstudio.com/${pkgver}/cli-linux-arm64/stable)
 source_armv7h=(code_cli_armhf_${pkgver}.tar.gz::https://update.code.visualstudio.com/${pkgver}/cli-linux-armhf/stable)
-sha256sums_x86_64=('a47f62e9c8e908721eef66a6df7a5bfcdfa1b9515776e941f3aa5b2adc520dac')
-sha256sums_aarch64=('7f4ae7a0a7e48d213e942dd48a2b0cf30c0c651a6e493a42b2b3fd270ea516d0')
-sha256sums_armv7h=('0f797a93682fa1d44542d1a993674abe612baeac0873c4e271462046d52b3573')
+sha256sums_x86_64=('e40aa60769328ca18a7f49df91583708d57de2cc125c30b1c4c4a430cd27e7b5')
+sha256sums_aarch64=('a362c54f799a0966ca983809d1c6278279b4cc189a5d72a29bbd2d67566888c4')
+sha256sums_armv7h=('17de38340671bd5e55db2d5cf55ea3f45a04858707aeadc631f829fcb6a08a3a')
 
 
 package() {
