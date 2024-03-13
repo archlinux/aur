@@ -1,0 +1,19 @@
+pkgbase = python-ethtool
+	pkgdesc = Python bindings for the ethtool kernel interface.
+	pkgver = 0.15
+	pkgrel = 4
+	url = https://github.com/fedora-python/python-ethtool
+	arch = x86_64
+	license = GPL
+	checkdepends = net-tools
+	checkdepends = python-pytest
+	makedepends = asciidoc
+	makedepends = libnl
+	makedepends = python-setuptools
+	depends = python
+	depends = libnl
+	source = https://files.pythonhosted.org/packages/source/e/ethtool/ethtool-0.15.tar.gz
+	sha512sums = 6789dbbefcde4881a6adad194cd01586c5dad8aecc5c89c368109d96acfed96e994df6050a37ab0c575ca4266d0aeb62ec7008679a7c68fae5f8f8f91978ffa5
+	b2sums = dd2fd2c7abf07f0a5fb32dfce7bf34f7a8e6300000250447fb56f0dfcd467509c5a8c86860f54650ec08ce4360bd56bd08fcbb2b70c06b13115d7416f4e3d230
+
+pkgname = python-ethtool
