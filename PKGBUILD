@@ -7,11 +7,13 @@ arch=('x86_64')
 license=('LGPL')
 makedepends=('python-setuptools' 'cython0' 'gcc-fortran')
 depends=('python-scipy' 'python-matplotlib' 'lapack' 'sundials')
-source=("https://github.com/modelon-community/Assimulo/archive/Assimulo-${pkgver}.tar.gz")
-sha256sums=('1f4d6fdde384c36bc8297e639cc5ece98817e6bbbe7e54e21ed20b1ff8f6fe7f')
+source=("https://github.com/modelon-community/Assimulo/archive/Assimulo-${pkgver}.tar.gz" sundials6.patch)
+sha256sums=('1f4d6fdde384c36bc8297e639cc5ece98817e6bbbe7e54e21ed20b1ff8f6fe7f' SKIP)
 
 prepare() {
   cd "${srcdir}"/Assimulo-Assimulo-$pkgver
+
+  patch -p1 -i "${srcdir}"/sundials6.patch
 
   # use shared lib
   sed -i "s|BLASname_t+'.a'|BLASname_t+'.so'|g" setup.py
