@@ -1,0 +1,14 @@
+pkgbase = xsneak-git
+	pkgdesc = Simple utility for dumping linux processes using process_vm_readv
+	pkgver = r3.17dbecf
+	pkgrel = 1
+	url = https://github.com/blendin/xsneak
+	arch = any
+	license = MIT
+	makedepends = gcc
+	makedepends = git
+	provides = xsneak
+	source = git+https://github.com/blendin/xsneak
+	sha256sums = SKIP
+
+pkgname = xsneak-git
