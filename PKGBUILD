@@ -18,16 +18,20 @@ prepare() {
   cd "$srcdir/$_reponame-$pkgver/Build"
   # modify build.sh to remove dotnet publish lines which do not contain linux
   sed -i '/linux/! s/^dotnet publish/#dotnet publish/' build.sh
+  # add missing executable permission
   chmod +x build.sh
 }
 
 build() {
   cd "$srcdir/$_reponame-$pkgver/Build"
+  # build, ignoring errors is required as of now
   ./build.sh || true
 }
 
 package() {
   cd "$srcdir/$_reponame-$pkgver"
+  # install license
   install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # install binary
   install -Dm755 "Build/Swig/Linux/Swig.Console" "$pkgdir/usr/bin/swig-cli"
 }
