@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=vtsls
-pkgver=0.1.25
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='LSP wrapper for the TypeScript extension from Visual Studio Code'
 url='https://github.com/yioneko/vtsls'
@@ -11,7 +11,7 @@ depends=(nodejs)
 makedepends=(npm)
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/@vtsls/language-server/-/language-server-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-b2sums=('89d01c9f561e458d4459bc3a7f982bd18ca0339de9bfba56c029d40c1110cf8399bbd461b185da61568c23a74dbb60f95ff3e60a9a6197d828bc5895e6d67364')
+b2sums=('778883a6e76ddb2b7729cf103fa9977e80bf501526243a8072620945909c0e023d85c39a2b30f16d9ac4d41012307f6bd85709d79e8026b448dc1211794cc1f1')
 
 package() {
   npm install --global \
