@@ -3,16 +3,15 @@
 
 _pkgname=libsoundio
 pkgname=${_pkgname}-git
-pkgver=1.1.0.14.g9c90c0b
+pkgver=2.0.0.5.g49a1f78
 pkgrel=1
 pkgdesc='A C99 library providing cross-platform audio input and output'
 arch=('i686' 'x86_64')
 url='https://www.github.com/andrewrk/libsoundio'
 license=('MIT')
-source=('git://github.com/andrewrk/libsoundio')
-options=('!buildflags')
-depends=('jack2')
-makedepends=('cmake')
+source=('git+https://github.com/andrewrk/libsoundio.git')
+depends=('alsa-lib' 'glibc' 'jack')
+makedepends=('git' 'cmake')
 provides=('libsoundio')
 conflicts=('libsoundio')
 md5sums=('SKIP')
@@ -41,4 +40,6 @@ package() {
     make \
         -C "$_pkgname.build" \
         install DESTDIR="$pkgdir"
+
+    install -Dm644 "$srcdir/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

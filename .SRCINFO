@@ -1,18 +1,19 @@
 pkgbase = libsoundio-git
 	pkgdesc = A C99 library providing cross-platform audio input and output
-	pkgver = 1.1.0.14.g9c90c0b
+	pkgver = 2.0.0.5.g49a1f78
 	pkgrel = 1
 	url = https://www.github.com/andrewrk/libsoundio
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = cmake
-	depends = jack2
+	depends = alsa-lib
+	depends = glibc
+	depends = jack
 	provides = libsoundio
 	conflicts = libsoundio
-	options = !buildflags
-	source = git://github.com/andrewrk/libsoundio
+	source = git+https://github.com/andrewrk/libsoundio.git
 	md5sums = SKIP
 
 pkgname = libsoundio-git
-
