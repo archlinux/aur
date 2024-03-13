@@ -7,7 +7,7 @@ pkgname=chromium-extension-rggl
 _extension=rggl
 pkgver=6.1.5
 _commit=319553d247b80a7907b108c362e08d4b1759ee8d
-pkgrel=3
+pkgrel=4
 pkgdesc="Remove German Gender Language - chromium extension"
 arch=('any')
 url="https://github.com/motsiw/rggl"
@@ -17,7 +17,7 @@ makedepends=('unzip' 'openssl' 'jq')
 source=("https://github.com/motsiw/rggl/archive/refs/heads/main.zip"
         "rggl.pem")
 noextract=("https://github.com/motsiw/rggl/archive/refs/heads/main.zip")
-sha256sums=('SKIP'
+sha256sums=('ba0ef0ab20410c11fefce05164a78a3a60cbcacd9bdcaa71f47b7c484ce73c77'
             'a1277e90fc36ecbc5700868f6194c66e8950dbbac192df16ad04c29075c1abfd')
 
 build() {
