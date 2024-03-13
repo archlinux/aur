@@ -2,7 +2,7 @@
 pkgname=bilibili
 pkgver=1.13.0_2
 _electronversion=21
-pkgrel=3
+pkgrel=4
 pkgdesc="基于哔哩哔哩官方客户端移植的Linux版本 支持漫游"
 arch=(
     'aarch64'
@@ -15,7 +15,7 @@ conflicts=(
     "${pkgname}"
 )
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'hicolor-icon-theme'
 )
 makedepends=(
@@ -31,11 +31,12 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     cd "${srcdir}/${pkgname}.git"
     sh "tools/setup-${pkgname}"
