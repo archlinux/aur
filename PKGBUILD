@@ -1,4 +1,5 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer:
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 
 _pipname=straight.plugin
 pkgname=python-$_pipname
@@ -23,7 +24,7 @@ build() {
 
 check() {
 	cd "$_archive"
-    PYTHON_PATH=. python tests.py
+	PYTHON_PATH=. python tests.py
 }
 
 package() {
