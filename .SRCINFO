@@ -1,39 +1,41 @@
 pkgbase = alire
 	pkgdesc = A catalog of ready-to-use Ada libraries plus a command-line tool (alr) to obtain, build, and incorporate them into your own projects. It aims to fulfill a similar role to Rust's cargo or OCaml's opam.
-	pkgver = 1.2.2
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://alire.ada.dev/
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	checkdepends = python-e3-testsuite
 	makedepends = git
 	makedepends = gprbuild
-	depends = gnatcoll-core
 	depends = unzip
-	source = alire-1.2.2.tar.gz::https://github.com/alire-project/alire/archive/refs/tags/v1.2.2.tar.gz
+	source = alire-2.0.0.tar.gz::https://github.com/alire-project/alire/archive/refs/tags/v2.0.0.tar.gz
 	source = alire.patch
-	source = gcc13.1.patch
-	source = toml_slicer.gcc13.1.patch
 	source = git+https://github.com/alire-project/xmlezout.git#commit=1fcbd0b9303d044d8f09a8ef652afa8c0400ee8b
 	source = git+https://github.com/mosteo/ajunitgen.git#commit=e5d01db5e7834d15c4066f0a8e33d780deae3cc9
-	source = git+https://github.com/mosteo/aaa.git#commit=906d9eaf4fb8efabfbc3d8cfb34d04ceec340e13
-	source = git+https://github.com/alire-project/semantic_versioning.git#commit=fe4e72e40786589a66d53662639f894fcdb3419c
-	source = git+https://github.com/alire-project/simple_logging.git#commit=02a7de7568af6af7cedd1048901fae8e9477b1d9
-	source = git+https://github.com/pmderodat/ada-toml.git#commit=2a671ffb1039a036f2bb68bdc88afc8d3dc68c10
-	source = git+https://github.com/alire-project/gnatcoll-core.git#commit=403efe11405113cf12ae3d014df474cf7a046176
-	source = git+https://github.com/mosteo/ansi-ada#commit=acf9afca3afe1f8b8843c061f3cef860d7567307
-	source = git+https://github.com/mosteo/uri-ada.git#commit=b61eba59099b3ab39e59e228fe4529927f9e849e
-	source = git+https://github.com/mosteo/minirest#commit=4550aa356d55b9cd55f26acd34701f646021c5ff
+	source = git+https://github.com/mosteo/aaa.git#commit=dff61d2615cc6332fa6205267bae19b4d044b9da
+	source = git+https://github.com/alire-project/semantic_versioning.git#commit=cc2148cf9c8934fb557b5ae49a3f7947194fa7ee
+	source = git+https://github.com/alire-project/simple_logging.git#commit=3505dc645f3eef6799a486aae223d37e88cfc4d5
+	source = git+https://github.com/pmderodat/ada-toml.git#commit=da4e59c382ceb0de6733d571ecbab7ea4919b33d
+	source = git+https://github.com/alire-project/gnatcoll-core.git#commit=4e663b87a028252e7e074f054f8f453661397166
+	source = git+https://github.com/mosteo/ansi-ada#commit=dc770a5a6cdaad8668c32b0cd4625a7d648f8ca2
+	source = git+https://github.com/mosteo/uri-ada.git#commit=02a0780d7757e9e79b3410c3a34960655cacea3d
+	source = git+https://github.com/mosteo/minirest#commit=9a9c660f9c6f27f5ef75417e7fac7061dff14d78
 	source = git+https://github.com/Fabien-Chouteau/spdx_ada#commit=2df9b1182544359c751544e52e14c94830d99fa6
-	source = git+https://github.com/HeisenbugLtd/si_units#commit=39de6478ba6d63c24dd34dd7205a6ce2cb971703
-	source = git+https://github.com/alire-project/clic#commit=185519d65b089c3238e24cfe87f1d22db1f3e0d9
+	source = git+https://github.com/alire-project/clic#commit=56bbdc008e16996b6f76e443fd0165a240de1b13
 	source = git+https://github.com/mosteo/optional#commit=0c7d20c0c8b48ccb6b25fb648d48382e598c25c3
-	source = git+https://github.com/mosteo/stopwatch#commit=86e7302d29f360f98f568b6015755229949b2194
-	source = git+https://github.com/mosteo/toml_slicer#commit=8b9dff0f450394b07ea71f0eb9b39d9c20e21f9c
-	b2sums = fc70ab6ba89dbe9d949700ad57dd9dce2f215c92731010a1bd255ef63e1beaddae852183a9cf2018eb2b054c69504d7785441356ab4299b1d0043896265ee8a7
-	b2sums = 15799818a362547fa67bc9e614a3ff5b4645e268f48a8a2fe451592410be3d1fae0ff0cc96853e22813e6aa5a2a9a434f8585e26cb4bb1d5b75263177b7b81a6
-	b2sums = aa6e4b91e7445eadf9ed4df1198a68067e590ebb4e394fe2ad476a7467b6c6dffe4fa22b6c12c0d94ae9e248f4ab93587dd948543c7d92da3a515558f221e323
-	b2sums = c1a012f0e421ea5fc1e07eea74920d64b5abd04a5073b346be9a3322ce489803c17f163377756398f0b592773e11befc9a505506ddbf53db138a5efec1142865
+	source = git+https://github.com/mosteo/stopwatch#commit=f607a63b714f09bbf6126de9851cbc21cf8666c9
+	source = git+https://github.com/mosteo/toml_slicer#branch=alire
+	source = git+https://github.com/mosteo/dirty_booleans#branch=alire
+	source = git+https://github.com/mosteo/diskflags#branch=alire
+	source = git+https://github.com/mosteo/si_units#branch=alire
+	source = git+https://github.com/mosteo/umwi.git#commit=34abe38402431ced3e2f2018acecc6dfa1ab860e
+	b2sums = 1323435d5a3591cbbf9e27d017caf3c426fe9aa571f8a092784acf8b85f350c885fc07f32c9670b0e32250bac4490387e0f022a3312b3cd7c0c2831d9d5c1a2a
+	b2sums = f817589eaa80cddff6b41154c57955e1698af8562b56edce8fccac9924d3f61be67ef26b7253fa77cf1e99f51a265208240a7c0984ceb44662d4da9223efa2e4
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP

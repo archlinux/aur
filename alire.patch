@@ -1,8 +1,8 @@
-Index: alire-1.2.0/alr_env.gpr
+Index: src/alire-2.0.0/alr_env.gpr
 ===================================================================
---- alire-1.2.0.orig/alr_env.gpr
-+++ alire-1.2.0/alr_env.gpr
-@@ -3,22 +3,22 @@ aggregate project Alr_Env is
+--- src.orig/alire-2.0.0/alr_env.gpr
++++ src/alire-2.0.0/alr_env.gpr
+@@ -9,25 +9,25 @@ aggregate project Alr_Env is
     for Create_Missing_Dirs use "True";
  
     for Project_Path use (
@@ -11,6 +11,8 @@ Index: alire-1.2.0/alr_env.gpr
 -                         "deps/ajunitgen",
 -                         "deps/ansi",
 -                         "deps/clic",
+-                         "deps/dirty_booleans",
+-                         "deps/diskflags",
 -                         "deps/gnatcoll-slim",
 -                         "deps/minirest",
 -                         "deps/optional",
@@ -20,6 +22,7 @@ Index: alire-1.2.0/alr_env.gpr
 -                         "deps/spdx",
 -                         "deps/stopwatch",
 -                         "deps/toml_slicer",
+-                         "deps/umwi",
 -                         "deps/uri-ada",
 -                         "deps/xmlezout"
 +                         "../aaa",
@@ -27,6 +30,8 @@ Index: alire-1.2.0/alr_env.gpr
 +                         "../ajunitgen",
 +                         "../ansi-ada",
 +                         "../clic",
++                         "../dirty_booleans",
++                         "../diskflags",
 +                         "../gnatcoll-core",
 +                         "../minirest",
 +                         "../optional",
@@ -36,6 +41,7 @@ Index: alire-1.2.0/alr_env.gpr
 +                         "../spdx_ada",
 +                         "../stopwatch",
 +                         "../toml_slicer",
++                         "../umwi",
 +                         "../uri-ada",
 +                         "../xmlezout"
                          );
