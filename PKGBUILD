@@ -12,7 +12,7 @@
 
 pkgname=niri
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Scrollable-tiling Wayland compositor"
 arch=(aarch64 x86_64)
 url="https://github.com/YaLTeR/$pkgname"
@@ -39,25 +39,24 @@ b2sums=('c28bb7ef1a71f352f199cbfe3c0eab3cde4432c357e4bb16eed026e68b48215087da723
 
 prepare() {
     cd $pkgname-$pkgver
-    export CARGO_HOME=$srcdir/.cargo                             # Download all to src directory, not in ~/.cargo
+    export CARGO_HOME=$srcdir/.cargo                                     # Download all to src directory, not in ~/.cargo
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd $pkgname-$pkgver
-    [[ -n $_sccache ]] && export RUSTC_WRAPPER=sccache           # If $_sccache not empty, build using binary cache
-    export RUSTFLAGS="--remap-path-prefix=$srcdir=/"             # Prevent warning: 'Package contains reference to $srcdir'
-    export CARGO_HOME=$srcdir/.cargo                             # Use downloaded earlier from src directory, not from ~/.cargo
-    export CARGO_TARGET_DIR=target                               # Place the output in target relative to the current directory
+    [[ -n $_sccache ]] && export RUSTC_WRAPPER=sccache                   # If $_sccache not empty, build using binary cache
+    export RUSTFLAGS="--remap-path-prefix=$srcdir=/"                     # Prevent warning: 'Package contains reference to $srcdir'
+    export CARGO_HOME=$srcdir/.cargo                                     # Use downloaded earlier from src directory, not from ~/.cargo
+    export CARGO_TARGET_DIR=target                                       # Place the output in target relative to the current directory
     cargo build --frozen --release
 }
 
 package() {
     cd $pkgname-$pkgver
-    install -Dm755 target/release/$pkgname                       -t $pkgdir/usr/bin/
-    install -Dm755 resources/$pkgname-session                    -t $pkgdir/usr/bin/
-    install -Dm644 {resources/default-config.kdl,README.md}      -t $pkgdir/usr/lib/doc/$pkgname
-    install -Dm644 resources/$pkgname{.service,-shutdown.target} -t $pkgdir/usr/lib/systemd/user/
-    install -Dm644 resources/$pkgname.desktop                    -t $pkgdir/usr/share/wayland-sessions/
-    install -Dm644 resources/$pkgname-portals.conf               -t $pkgdir/usr/share/xdg-desktop-portal/
+    install -Dm755 {target/release/$pkgname,resources/$pkgname-session} -t $pkgdir/usr/bin/
+    install -Dm644 resources/$pkgname{.service,-shutdown.target}        -t $pkgdir/usr/lib/systemd/user/
+    install -Dm644 {resources/default-config.kdl,README.md}             -t $pkgdir/usr/share/doc/$pkgname/
+    install -Dm644 resources/$pkgname.desktop                           -t $pkgdir/usr/share/wayland-sessions/
+    install -Dm644 resources/$pkgname-portals.conf                      -t $pkgdir/usr/share/xdg-desktop-portal/
 }
