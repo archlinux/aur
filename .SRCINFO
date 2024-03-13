@@ -1,0 +1,16 @@
+pkgbase = gnome-screenshot-stub
+	pkgdesc = Wrapper for grim implementing only -f|--file and -p.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/gnome-screenshot-stub
+	arch = any
+	license = GPL-3.0-or-later
+	depends = grim
+	depends = bash
+	depends = ncurses
+	provides = gnome-screenshot
+	conflicts = gnome-screenshot
+	source = stub.sh
+	sha256sums = b9e0115110d051a124d44ab9cf524a4efac4b9d753fdf8cb76b3fbcd7ae6c0e5
+
+pkgname = gnome-screenshot-stub
