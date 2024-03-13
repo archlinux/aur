@@ -15,19 +15,13 @@ pkgname=(
   "${_pkgbase}-demos-git"
   "${_pkgbase}-docs-git"
 )
-pkgver=3.24.41.r1.g40fe0985
+pkgver=3.24.41.r22.gc4dd8d0125
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (GIT Version)"
-arch=(
-  'i686'
-  'x86_64'
-  'arm'
-  'armv7h'
-  'aarch64'
-)
+arch=($CARCH)
 url="http://www.${_pkg}.org/"
 license=(
-  'LGPL-2.0-Only')
+  'LGPL-2.0-only')
 depends=(
   'at-spi2-atk'
   'atk'
@@ -48,19 +42,16 @@ depends=(
   'shared-mime-info'
   'wayland'
   'wayland-protocols'
+  'iso-codes'
+  'tracker3'
+  'libcloudproviders'
 )
 makedepends=(
-  'gobject-introspection')
+  'gobject-introspection' 'git' 'meson' 'libxslt' 'glib2-docs' 'sassc' 'docbook-xsl')
 optdepends=(
   "${_project}-icon-theme: Default icon theme"
   "${_project}-themes-standard: Default widget theme")
-conflicts=('gtk3' )
-provides=(
-  "${_pkgbase}=${pkgver}"
-  "${_pkgbase}-print-backends"
-  "lib${_pkg}-3.so"
-  "libgdk-3.so"
-  "libgailutil-3.so")
+conflicts=('gtk3')
 backup=("usr/share/${_pkg}-3.0/settings.ini")
 _http="https://gitlab.${_project}.org"
 _ns="GNOME"
@@ -107,24 +98,6 @@ build() {
     compile \
     -C build
 }
-
-# build() {
-#   cd "${_pkg}"
-# 
-#   ./autogen.sh --disable-schemas-compile \
-#                --enable-broadway-backend \
-#                --enable-gtk2-dependency \
-#                --enable-wayland-backend \
-#                --enable-x11-backend \
-#                --localstatedir=/var \
-#                --prefix=/usr \
-#                --sysconfdir=/etc
-# 
-#   # https://bugzilla.gnome.org/show_bug.cgi?id=655517
-#   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-# 
-#   make
-# }
 
 _pick() {
   local p="$1" f d; shift
@@ -186,21 +159,11 @@ END
   cd \
     "${pkgdir}"
 
-  _pick \
-    demo \
-    "usr/bin/${_pkgbase}-"{demo,demo-application,icon-browser,widget-factory}
-  _pick \
-    demo \
-    "usr/share/applications/${_pkgbase}-"{demo,icon-browser,widget-factory}".desktop"
-  _pick \
-    demo \
-    "usr/share/glib-2.0/schemas/org.${_pkg}."{Demo,exampleapp}".gschema.xml"
-  _pick \
-    demo \
-    "usr/share/icons/hicolor/"*"/apps/${_pkgbase}-"{demo,widget-factory}[-.]*
-  _pick \
-    demo 
-    "usr/share/man/man1/${_pkgbase}-"{demo,demo-application,icon-browser,widget-factory}.1
+  _pick demo "usr/bin/${_pkgbase}-"{demo,demo-application,icon-browser,widget-factory}
+  _pick demo "usr/share/applications/${_pkgbase}-"{demo,icon-browser,widget-factory}".desktop"
+  _pick demo "usr/share/glib-2.0/schemas/org.${_pkg}."{Demo,exampleapp}".gschema.xml"
+  _pick demo "usr/share/icons/hicolor/"*"/apps/${_pkgbase}-"{demo,widget-factory}[-.]*
+  _pick demo "usr/share/man/man1/${_pkgbase}-"{demo,demo-application,icon-browser,widget-factory}.1
 
   if [[ " ${_meson_options[*]} " =~ " gtk_doc=true "  ]]; then
     _pick \
@@ -217,8 +180,7 @@ END
 
 package_gtk3-demos-git() {
   pkgdesc+=" (demo applications)"
-  depends=(
-    "${_pkgbase}")
+  depends=(gtk3-git)
   mv \
     demo/* \
     "${pkgdir}"
