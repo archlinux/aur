@@ -1,0 +1,19 @@
+pkgbase = libcurl-julia-bin
+	pkgdesc = command line tool and library for transferring data with URLs - Julia fork
+	pkgver = 1.10
+	pkgrel = 1
+	url = https://julialang.org/
+	arch = x86_64
+	license = MIT
+	depends = julia
+	provides = libcurl-julia
+	conflicts = libcurl-julia
+	options = !debug
+	source = https://julialang-s3.julialang.org/bin/linux/x64/1.10/julia-1.10-latest-linux-x86_64.tar.gz
+	source = libcurl-julia-update.hook
+	source = libcurl-julia-remove.hook
+	sha256sums = SKIP
+	sha256sums = fefa5ae85d68d5de385f16ac82fdebef3cda26eddbc3e78d7c7a52b69c64a462
+	sha256sums = 65a3ce6bb0ac3a9cff1128f75c024bd56bb5adc5e6c40fe5edb19278256e57aa
+
+pkgname = libcurl-julia-bin
