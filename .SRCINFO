@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-dlib
 	pkgdesc = A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques (mingw-w64)
-	pkgver = 19.24.2
+	pkgver = 19.24.3
 	pkgrel = 1
 	url = http://dlib.net
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = mingw-w64-dlib
 	options = !strip
 	options = staticlibs
 	options = !buildflags
-	source = https://codeload.github.com/davisking/dlib/tar.gz/refs/tags/v19.24.2
-	sha256sums = 0f5c7e3de6316a513635052c5f0a16a84e1cef26a7d233bf00c21348462b6d6f
+	source = https://codeload.github.com/davisking/dlib/tar.gz/refs/tags/v19.24.3
+	sha256sums = 4b1f28e76020775334e67cc348ceb26a4f5161df6659848be0d3b300406400a3
 
 pkgname = mingw-w64-dlib
