@@ -1,14 +1,14 @@
 pkgbase = mod-desktop-bin
 	pkgdesc = MOD Desktop Application
-	pkgver = 0.0.11
-	pkgrel = 2
+	pkgver = 0.0.12
+	pkgrel = 1
 	url = https://github.com/moddevices/mod-desktop
 	arch = x86_64
 	license = AGPLv3+
 	provides = mod-desktop
 	conflicts = mod-desktop
 	conflicts = mod-desktop-git
-	source = mod-desktop-0.0.11-linux-x86_64.tar.xz::https://github.com/moddevices/mod-desktop/releases/download/0.0.11/mod-desktop-0.0.11-linux-x86_64.tar.xz
-	sha256sums = 239ce464e7fe24fc7f1c5bf2ad3e5095a3ef202c735aced9dd395f632eb71f2a
+	source = mod-desktop-0.0.12-linux-x86_64.tar.xz::https://github.com/moddevices/mod-desktop/releases/download/0.0.12/mod-desktop-0.0.12-linux-x86_64.tar.xz
+	sha256sums = d1faf2094641d5ef527ee9b6012f13f1255e3c2783773939b1c2449848c7c50c
 
 pkgname = mod-desktop-bin

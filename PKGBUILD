@@ -2,8 +2,8 @@
 
 pkgname=mod-desktop-bin
 provides=(${pkgname//-bin/""})
-pkgver=0.0.11
-pkgrel=2
+pkgver=0.0.12
+pkgrel=1
 pkgdesc="MOD Desktop Application"
 arch=('x86_64')
 url="https://github.com/moddevices/mod-desktop"
@@ -12,7 +12,7 @@ conflicts=("$provides" "$provides-git")
 
 source=("$provides-$pkgver-linux-$arch.tar.xz::$url/releases/download/$pkgver/$provides-$pkgver-linux-$arch.tar.xz")
 
-sha256sums=('239ce464e7fe24fc7f1c5bf2ad3e5095a3ef202c735aced9dd395f632eb71f2a')
+sha256sums=('d1faf2094641d5ef527ee9b6012f13f1255e3c2783773939b1c2449848c7c50c')
 
 package() {
   # Replace the path in mod-desktop.desktop
