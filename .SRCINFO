@@ -1,24 +1,24 @@
 pkgbase = he3-tools-bin
 	pkgdesc = Open, Intelligent, Efficient Developer Toolbox
 	pkgver = 2.0.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://he3app.com
 	arch = aarch64
 	arch = x86_64
 	license = LicenseRef-custom
+	depends = electron22
 	depends = nodejs
 	depends = python>=3
 	depends = python-setuptools
 	depends = java-runtime
-	depends = nss
 	depends = hicolor-icon-theme
-	depends = gtk3
-	depends = alsa-lib
 	provides = he3-tools=2.0.20
 	conflicts = he3-tools
 	options = !strip
 	source = LICENSE-2.0.20.html::https://he3app.com/en/terms
-	sha256sums = 0b086ae5efee6de2671fc31402003016ab52360bdc9333e9c1dfe05c8471a1db
+	source = he3-tools.sh
+	sha256sums = 92eb03e0339af737f930be9f3f95fe74ebce8eeca4835fbe7b50dc7c5fa94601
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 	source_aarch64 = he3-tools-2.0.20-aarch64.deb::https://he3-1309519128.cos.accelerate.myqcloud.com/2.0.20/He3_linux_arm64_2.0.20.deb
 	sha256sums_aarch64 = f439cd9fe1b60bf407dd0e08ab506c60148f06b7c8e1292ce180c1b1bf4d0d6b
 	source_x86_64 = he3-tools-2.0.20-x86_64.deb::https://he3-1309519128.cos.accelerate.myqcloud.com/2.0.20/He3_linux_amd64_2.0.20.deb
