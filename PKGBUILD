@@ -4,7 +4,7 @@
 _pkgname=autobindings
 pkgname=cwtch-$_pkgname-git
 
-pkgver=0.0.10.r0.g7ddf09c
+pkgver=0.0.14.r1.g7a65efa
 pkgrel=1
 
 pkgdesc="Automatically-generated C bindings for the Cwtch library (git)"
