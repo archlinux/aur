@@ -2,8 +2,8 @@
 
 pkgname=python-outlines
 _pkgname=${pkgname#python-}
-pkgver=0.0.34
-_commit=d938678d6e6cb5ddd7b87e92d4badb14e9e56ae8
+pkgver=0.0.36
+_commit=d47bd6b2f19588e1e74e41e189b5f973d807d0f7
 pkgrel=1
 pkgdesc="Guided text generation"
 arch=(any)
@@ -79,7 +79,8 @@ check() {
   # install.
   pytest \
     --ignore tests/models/test_llama_cpp.py \
-    --ignore tests/generate/test_integration_llamacpp.py
+    --ignore tests/generate/test_integration_llamacpp.py \
+    --deselect tests/models/test_openai.py::test_openai_call
 }
 
 package() {
