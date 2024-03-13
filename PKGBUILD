@@ -3,13 +3,24 @@
 _pkgname="kwinft"
 pkgname="$_pkgname"
 pkgver=6.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Wayland and X11 Compositor for the KDE Plasma desktop (theseus-ship)'
 url="https://github.com/winft/theseus-ship"
 license=("LGPL-2.1-only")
 arch=('x86_64' 'aarch64')
 
 depends=(
+  kcrash
+  kdbusaddons
+  kdecoration
+  knewstuff
+  kscreenlocker
+  libepoxy
+  pixman
+  qt6-multimedia
+  qt6-tools
+  wlroots
+
   # AUR
   como
 
@@ -18,40 +29,33 @@ depends=(
   #kcolorscheme
   #kconfig
   #kcoreaddons
-  #kcrash
-  #kdbusaddons
-  #kdecoration
   #kglobalaccel
   #ki18n
   #kirigami
-  #knewstuff
   #knotifications
   #kpackage
-  #kscreenlocker
   #ksvg
   #kwidgetsaddons
   #kwindowsystem
   #kxmlgui
-  #libepoxy
   #libx11
   #libxcb
   #libxi
   #libxkbcommon
   #libxkbcommon-x11
-  #pixman
   #qt6-base
   #qt6-declarative
-  #qt6-multimedia
-  #qt6-tools
   #wayland
-  #wlroots
   #xcb-util-cursor
   #xcb-util-keysyms
   #xcb-util-wm
 )
 makedepends=(
+  breeze
   extra-cmake-modules
   git
+  kdeclarative
+  microsoft-gsl
   ninja
 )
 optdepends=(
