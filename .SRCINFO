@@ -1,20 +1,20 @@
 pkgbase = hype
 	pkgdesc = Find Hype-moments from Twitch.tv
 	pkgver = 1.0.16
-	pkgrel = 3
+	pkgrel = 4
 	url = https://hype.lol/
 	arch = any
 	license = MIT
 	makedepends = gendesk
 	makedepends = npm
 	makedepends = git
-	depends = electron25
+	depends = electron25-bin
 	depends = hicolor-icon-theme
 	depends = nodejs
 	conflicts = hype
 	source = hype.git::git+https://github.com/TimIsOverpowered/Hype.git#tag=v1.0.16
 	source = hype.sh
 	sha256sums = SKIP
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = hype
