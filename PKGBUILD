@@ -1,6 +1,6 @@
 # Maintainer: Patrick Hechler <patrjprof@ph.anderemails.de>
 pkgname=patrjprof
-pkgver=1.2.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="An Open source Java profiler written in Java"
 arch=('any')
@@ -28,12 +28,12 @@ source=("patr-java-profiler-agent.jar::https://nexuspat.hechler.de/repository/ma
         "patr-java-profiler-test.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-test/${pkgver}/patr-java-profiler-test-${pkgver}.jar"
         "patr-java-profiler-start.sh::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler/${pkgver}/patr-java-profiler-${pkgver}.start-script"
         )
-md5sums=('7394360f275817367f251fda05b891a7'
-         '42ff09b4441deb2f327bf5c6722a90ff'
-         '925d1b6a7d0d02bd5c92f4fa1a2b6e76'
-         'ef5c4706cb06296e1ade4fd541211047'
-         '14f7b04c0599e01f02cd4384c67bf1d7'
-         '104ad32c6be4e03274a591746d7ace24'
+md5sums=('e6b77e1d61b5bcffb8d5d328521883b7'
+         '38c0be0018ca6dbe513836591c1ed503'
+         'bab5fc52dddc17c436d84bcc9785f7cf'
+         '4037ab20fa4133b9204d8eb9aa86d864'
+         '12d89bd966bf8d5f31386f581c91847e'
+         '7b89dd802897987cedd7636d94571a82'
          )
 
 check() {
@@ -67,17 +67,19 @@ package() {
     patr-java-profiler-server.jar \
     patr-java-profiler-client.jar
 
-  # create help script which starts the profiler, the other script is not available
+  # create help script which starts the profiler
   mkdir -p "$pkgdir"/usr/bin
   AGENT_JAR=/usr/share/java/patrjprof/patr-java-profiler-agent.jar
   BOOTSTRAP_JAR=/usr/share/java/patrjprof/patr-java-profiler-bootstrap.jar
-  echo -n '#!/bin/sh
-
+  echo '#!/bin/sh'
+  echo -n '
+c# set the values for the script
 AGENT_JAR=/usr/share/java/patrjprof/patr-java-profiler-agent.jar
 BOOTSTRAP_JAR=/usr/share/java/patrjprof/patr-java-profiler-bootstrap.jar
 SERVER_JAR=/usr/share/java/patrjprof/patr-java-profiler-server.jar
 CLIENT_JAR=/usr/share/java/patrjprof/patr-java-profiler-client.jar
 
+# the script
 ' > "$pkgdir"/usr/bin/patrjprof
   cat patr-java-profiler-start.sh >> "$pkgdir"/usr/bin/patrjprof
   chmod +x "$pkgdir"/usr/bin/patrjprof
