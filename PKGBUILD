@@ -2,10 +2,10 @@
 # Maintainer: qlrd <qlrddev at gmail dot com>
 pkgname=krux-installer-bin
 _pkgname="org.selfcustody.${pkgname%-bin}"
-pkgver=0.0.11
-_electronversion=28
-pkgrel=2
-pkgdesc="A GUI based application to flash Krux firmware on K210 based devices"
+pkgver=0.0.12
+_electronversion=29
+pkgrel=1
+pkgdesc="A GUI based application to flash Krux firmware on K210 based devices.Use system-wide electron."
 arch=('x86_64')
 url="https://github.com/selfcustody/krux-installer"
 license=('MIT')
@@ -25,13 +25,14 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/selfcustody/krux-installer/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('89fc4065390ac578195e7fc01e85bf2acc17e53193c3262114b03fbd82459dae'
+sha256sums=('125a49b11c50a09738a84de8265e35efb44addd658a84d19022d6378fe826a9f'
             '29eee3e9d9c5dd67213ec3ab4a7eef57a1224750e2e9aab3a278177a9444a355'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${pkgname%-bin}/||g;s|org.selfcustody.${pkgname%-bin}|${pkgname%-bin}|g" \
