@@ -5,7 +5,7 @@
 # Contributor: Oleg Smirnov <oleg.smirnov@gmail.com>
 
 _pkgname=igraph
-_pkgver=2.0.2
+_pkgver=2.0.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -34,6 +34,7 @@ makedepends=(
 )
 checkdepends=(
   r-graph
+  r-rgl
   r-testthat
   r-vdiffr
 )
@@ -54,10 +55,10 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "igraph-system-libs.patch")
-md5sums=('5ec60d660bedd8242751ed0b8720280f'
-         '6c7d29860961ff06147a1ca2819dcad5')
-b2sums=('5ac558f237ce339c2e27a349eae6651c0b38333e2fb902b9378bde72773989520f48fb83b5ddccbb7c9aa1f93e0b211fee6489537d45a4a1ec8ab2ad5e8c5cfe'
-        'b7547dbd5d8bd30bb59fc15937fb99df18f17025d8f4fc8ba5164b5257a7dbcf46271eb7d262aa0e6d17868007e15f2fa1aebc43cb7f85c377a109b87b963f3b')
+md5sums=('36b28af2a8910060551629b306165f75'
+         '5a958a08aa13c94de5820924a5e964ad')
+b2sums=('3cc8510e01db17a4f5dffd43b9dbbe2e01d9e631289efcadcacecd8a577555cca2848eebb68299147e22618bd0e96691b2fc0a5eb0a59c549af66dc5c0d7ef25'
+        'd2bd23dc816abfc33908b5583ee1129981fdccb8cd8b067cfb46e41f89d346135353ed6525467f14333064b601ae8544d0fa14931c34594bfdbcbcf45edf7c4b')
 
 prepare() {
   # Build using system libraries
