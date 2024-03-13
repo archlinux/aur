@@ -1,6 +1,6 @@
 pkgbase = wine-wow64-for-wechat
 	pkgdesc = A compatibility layer for running Windows programs
-	pkgver = 9.3
+	pkgver = 9.4
 	pkgrel = 1
 	url = https://www.winehq.org
 	install = wine.install
@@ -52,16 +52,16 @@ pkgbase = wine-wow64-for-wechat
 	optdepends = libgphoto2
 	optdepends = samba
 	optdepends = sane
-	provides = wine=9.3
+	provides = wine=9.4
 	conflicts = wine
 	options = staticlibs
 	options = !lto
-	source = https://mirrors.ustc.edu.cn/wine/wine/source/9.x/wine-9.3.tar.xz
+	source = https://mirrors.ustc.edu.cn/wine/wine/source/9.x/wine-9.4.tar.xz
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
 	source = 0001-winex11.drv-Update-a-candidate-window-s-position-wit.patch
 	source = 0002-wine-wechat.patch
-	sha256sums = 148b2e34147d1fa148415637c723c99f4376e92c84e90cc1d0e00ad4ed3b1793
+	sha256sums = c55ff9957612549b8c7df7cddc79d7a00d19157d05b371148bf08d4ddf768ec6
 	sha256sums = 9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7
 	sha256sums = 6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4
 	sha256sums = d62ea49462e4f6cf40ec37d34c6690cf81b7cf0816c0464257910acab57dd416
