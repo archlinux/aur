@@ -11,7 +11,7 @@ groups=()
 depends=('nss' 'bubblewrap' 'xcb-util-renderutil' 'xcb-util-keysyms' 'xcb-util-image' 'xcb-util-wm' 'libxkbcommon-x11' 'util-linux' "openssl-1.1")
 makedepends=()
 checkdepends=()
-provides=()
+provides=("wechat-uos")
 conflicts=()
 replaces=()
 

@@ -15,6 +15,7 @@ pkgbase = wechat-uos-bwrap
 	depends = libxkbcommon-x11
 	depends = util-linux
 	depends = openssl-1.1
+	provides = wechat-uos
 	source = wechat.sh
 	source = wechat-uos-beta.desktop
 	source = wechat-uos-beta.svg
