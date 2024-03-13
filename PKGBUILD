@@ -1,4 +1,4 @@
-# Maintainer: Patrick Hechler <patrjprof@ph.anderemails.de>
+# Maintainer: Patrick Hechler <patrjprof.aur@ph.anderemails.de>
 pkgname=patrjprof
 pkgver=1.2.2
 pkgrel=1
@@ -67,20 +67,20 @@ package() {
     patr-java-profiler-server.jar \
     patr-java-profiler-client.jar
 
-  # create help script which starts the profiler
+  # create script which starts the profiler
   mkdir -p "$pkgdir"/usr/bin
-  AGENT_JAR=/usr/share/java/patrjprof/patr-java-profiler-agent.jar
-  BOOTSTRAP_JAR=/usr/share/java/patrjprof/patr-java-profiler-bootstrap.jar
-  echo '#!/bin/sh'
+  echo '#!/bin/sh' > "$pkgdir"/usr/bin/patrjprof
+  # do not change the SPDX license Identifier
+  head -1 patr-java-prof-help.sh >> "$pkgdir"/usr/bin/patrjprof
   echo -n '
-# set the values for the script
+# set the values needed for the script
 AGENT_JAR=/usr/share/java/patrjprof/patr-java-profiler-agent.jar
 BOOTSTRAP_JAR=/usr/share/java/patrjprof/patr-java-profiler-bootstrap.jar
 SERVER_JAR=/usr/share/java/patrjprof/patr-java-profiler-server.jar
 CLIENT_JAR=/usr/share/java/patrjprof/patr-java-profiler-client.jar
 
-# the script
-' > "$pkgdir"/usr/bin/patrjprof
-  cat patr-java-profiler-start.sh >> "$pkgdir"/usr/bin/patrjprof
+# helper script
+' >> "$pkgdir"/usr/bin/patrjprof
+  tail +2 patr-java-prof-help.sh >> "$pkgdir"/usr/bin/patrjprof
   chmod +x "$pkgdir"/usr/bin/patrjprof
 }
