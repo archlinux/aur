@@ -11,7 +11,7 @@ url="https://gitlab.com/corectrl/corectrl"
 license=(GPL3)
 arch=(i686 x86_64)
 depends=('botan>=2.2.0' 'qt5-base>=5.15' qt5-quickcontrols2 qt5-charts qt5-svg procps-ng hwdata quazip-qt5 dbus polkit)
-makedepends=(git 'cmake>=3.3' extra-cmake-modules 'gcc>=8' qt5-tools)
+makedepends=(git 'cmake>=3.3' extra-cmake-modules 'gcc>=8' qt5-tools 'pugixml>=1.11' 'spdlog>=1.4')
 optdepends=(
     'vulkan-tools: for vulkaninfo'
     'mesa-utils: for glxinfo'
