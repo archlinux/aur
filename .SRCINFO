@@ -1,7 +1,7 @@
 pkgbase = kgamma
 	pkgdesc = Adjust your monitor gamma settings
 	pkgver = 6.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	groups = plasma
