@@ -1,1 +1,2 @@
 d /var/lib/fangfrisch 0700 clamav clamav -
+z /etc/fangfrisch/fangfrisch-has-news.sh 750 root clamav

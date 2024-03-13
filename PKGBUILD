@@ -2,7 +2,7 @@
 pkgname=python-fangfrisch
 _name=${pkgname#python-}
 pkgver=1.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Freshclam like utility that allows downloading unofficial virus definition files"
 arch=('any')
 license=('GPL')
@@ -22,8 +22,8 @@ sha512sums=('08cc36f20884fedb553de905b8faafce99fcef80e3bce7c0b264691b1a8d83b91a5
             '08cc36f20884fedb553de905b8faafce99fcef80e3bce7c0b264691b1a8d83b91a582c095b684f6f7a6af77fd4ed0405fa771a74bbeee3f1b255ff74a161d37e'
             'd36db5093a4a0187a7bbc8e6cbb4f5a029e369fbf3b129da0ebe6b5be5851b2b58df4e6986f303b3c6d37b921740e1d9707eabafa28dac01a028a61a420ce05a'
             '266df243ac0a23efc2797583b9c1e09855aa43b9decabd78bc1ca8a5158c5a71ceee9f77ededc374bd17be094595acd84bea729fc7459cc71337d1029911591f'
-            '22462dbb76e9b1df0717efff6c94a49b1db33c150380abc0d66bccc72215eab89ab871ba6e359db817543130ae45844665fc106cae8990dbf92f8a27851d15da'
-            'f421c4f2618422957cd203bf8f50bae1e5656d6208774244092987c07427ca86bf587884510c9180a0cb554200fdc996b0fad382671c913e6729b215b6f8e651'
+            '5f84e0009ae2f72387c1883e3cf35c1d62568863b37326de870d2320fd122a92f38d91ef3bdd9cf959e30571ed51ce1c092da589a19a2da16617ccebca58dd53'
+            '9a875fc1ceeb29f5cc798123db845922ddb1b3c77dd03753f9daf39a2c3019d075ac86c82630386476ef828ebc67876842b8d3be22b90aba5b082540bfd024fd'
             'a38ceae123732602eb1206572052a7f548a8950a608e8c07c1e7ae61123eaabbd33caa8c3b548020a8f57d842ef230b2a90aab81edb2d5db74068ca925a73413')
 backup=('etc/fangfrisch/fangfrisch.conf')
 install=fangfrisch.install
@@ -59,5 +59,5 @@ package() {
 	install -Dm0644 "${srcdir}/${_name}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_name}.conf"
 	install -Dm0644 -t "${pkgdir}/usr/lib/systemd/system" "${srcdir}/${_name}".{service,timer}
 	install -Dm0644 -t "${pkgdir}/etc/fangfrisch" "${srcdir}/${_name}.conf"
-	install -Dm0750 -g clamav -t "${pkgdir}/etc/fangfrisch" "${srcdir}/fangfrisch-has-news.sh"
+	install -Dm0750 -t "${pkgdir}/etc/fangfrisch" "${srcdir}/fangfrisch-has-news.sh"
 }

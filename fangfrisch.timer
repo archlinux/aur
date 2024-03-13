@@ -9,7 +9,6 @@ Requires=fangfrisch.service
 OnCalendar=*:0/10
 RandomizedDelaySec=90
 Unit=fangfrisch.service
-Persistent=true
 
 [Install]
 WantedBy=timers.target
