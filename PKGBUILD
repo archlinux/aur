@@ -12,7 +12,7 @@ pkgver=2.1.9
 pkgrel=1
 pkgdesc='Nintendo GameBoy Advance emulator'
 arch=(x86_64)
-url=https://visualboyadvance-m.org
+url='https://visualboyadvance-m.org'
 license=(GPL2)
 depends=(
   glu
@@ -35,7 +35,7 @@ makedepends=(
   zip
 )
 source=("git+https://github.com/${_pkgname}/${_pkgname}.git?signed#tag=v${pkgver}")
-b2sums=('SKIP')
+b2sums=('dc81587a63b823217d86274e79d78f764a82c1244965646be41e9bfd382d9b457f695d95ba873c6a5150184dc0555d482d8db1f4aa0917e4342d9baa2c36def1')
 validpgpkeys=(A0C0E526E36FD2138C149D4D08AB596679D86240) # Rafael Kitover <rkitover@gmail.com>
 
 prepare() {
