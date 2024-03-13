@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nostr-relay-tray-bin
-pkgver=1.2.1
+pkgver=1.2.2
 _electronversion=28
-pkgrel=2
+pkgrel=1
 pkgdesc="A simple nostr relay tray."
 arch=('x86_64')
 url="https://github.com/CodyTseng/nostr-relay-tray"
@@ -17,13 +17,14 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/CodyTseng/nostr-relay-tray/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b867625899bb3c9267b063a7d86ca961f05a41a385a9a052b14996eb8c9b12f6'
+sha256sums=('29a9c517b1320d2796416a17c3eaf7eccc246180b3fe725d536687df8a7faf81'
             '6aa57f1ed1b76d69cf0dbd1d68048c6a718a80589d762a8e2f2f2a389c802083'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
 }
