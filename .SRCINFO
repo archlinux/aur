@@ -1,6 +1,6 @@
 pkgbase = klassy-git
 	pkgdesc = Highly customizable binary Window Decoration, Application Style and Global Theme plugin for recent versions of the KDE Plasma desktop.
-	pkgver = 4.3.breeze5.27.5.r338.g628f14bd
+	pkgver = 4.3.breeze5.27.5.r344.g20c57871
 	pkgrel = 1
 	url = https://github.com/paulmcauley/klassy
 	arch = x86_64
@@ -57,5 +57,4 @@ pkgname = klassy-qt5-git
 	depends = qt5-declarative
 	depends = qt5-svg
 	provides = klassy-qt5
-	conflicts = klassy
 	conflicts = klassy-qt5

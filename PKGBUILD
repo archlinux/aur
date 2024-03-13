@@ -5,7 +5,7 @@ _pkgname=klassy
 pkgbase="${_pkgname}-git"
 pkgname=("${_pkgname}-git"
          "${_pkgname}-qt5-git")
-pkgver=4.3.breeze5.27.5.r338.g628f14bd
+pkgver=4.3.breeze5.27.5.r344.g20c57871
 pkgrel=1
 pkgdesc='Highly customizable binary Window Decoration, Application Style and Global Theme plugin for recent versions of the KDE Plasma desktop.'
 arch=(x86_64)
@@ -69,7 +69,7 @@ package_klassy-git() {
 
 package_klassy-qt5-git() {
   provides=("${_pkgname}-qt5")
-  conflicts=("${_pkgname}" "${_pkgname}-qt5")
+  conflicts=("${_pkgname}-qt5")
   depends=("${_pkgname}-git"
            breeze-icons
            gcc-libs
