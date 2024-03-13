@@ -17,18 +17,19 @@ makedepends=(
     'npm'
     'pnpm'
     'nodejs'
-    'imagemagick'
+    'icoutils'
 )
 source=(
     "${pkgname}.git::git+${url}.git#tag=perfect-lyric"
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     gendesk -q -f -n --categories="AudioVideo" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
@@ -42,12 +43,18 @@ build() {
     pnpm config set store-dir "${srcdir}/.pnpm_store"
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
     pnpm config set link-workspace-packages true
-    convert preview/${pkgname}.ico preview/${pkgname}.png
-    sed "34,37d;s|${pkgname}.ico|${pkgname}.png|g" -i forge.config.js
+    if [ `curl ifconfig.co/country` = "China" ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
+    icotool -x preview/"${pkgname}.ico" -o preview/"${pkgname}.png"
+    sed "s|${pkgname}.ico|${pkgname}.png|g" -i forge.config.js
     sed "s|process.env.APPDATA|'/home/${USER}'|g" -i app/main/src/constant.ts
     pnpm install
-    pnpm run build
-    pnpm run make
+    pnpm run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
