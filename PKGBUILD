@@ -2,7 +2,7 @@
 # Maintainer: pikl <me@pikl.uk>
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
-pkgrel=2
+pkgrel=3
 pkgver=1.98.2
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
@@ -24,9 +24,6 @@ depends=('redis' 'postgresql' 'nodejs'
     'perl-test-needs' 'perl-test2-suite' 'perl-sort-versions'
     'perl-path-tiny' 'perl-try-tiny' 'perl-term-table'
     'perl-uri' 'perl-mojolicious' 'perl-file-slurper'
-)
-optdepends=(
-    'nginx: reverse proxy'
 )
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgbase}-server.service"
@@ -182,6 +179,7 @@ package_immich-server() {
     install=${pkgname}.install
     optdepends=(
         'libva-mesa-driver: GPU acceleration'
+        'nginx: reverse proxy'
     )
 
     cd "${srcdir}/${pkgbase}-${pkgver}"
