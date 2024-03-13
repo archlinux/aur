@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=xorgxrdp-devel-git
-pkgver=0.9.19.r18.g3f7ed8d
+pkgver=0.10.0.r10.g728cf99
 pkgrel=1
 pkgdesc="Xorg drivers for xrdp"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/neutrinolabs/xorgxrdp"
-license=('MIT')
-depends=('glibc')
+license=('X11')
+depends=('glibc' 'libepoxy')
 makedepends=('git' 'libxfont2' 'nasm' 'xorg-server-devel' 'xrdp')
 provides=("xorgxrdp=$pkgver")
 conflicts=('xorgxrdp')
@@ -29,8 +29,10 @@ build() {
   cd "xorgxrdp"
 
   ./bootstrap
+  CFLAGS="$CFLAGS -I/usr/include/libdrm" \
   ./configure \
-    --prefix="/usr"
+    --prefix="/usr" \
+    --enable-glamor
   make
 }
 
