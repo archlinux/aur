@@ -1,7 +1,7 @@
 pkgbase = obs-studio-browser
 	pkgdesc = Free and open source software for video recording and live streaming. With everything except service integration
-	pkgver = 30.0.2
-	pkgrel = 7
+	pkgver = 30.1.0
+	pkgrel = 1
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
 	arch = aarch64
@@ -87,7 +87,7 @@ pkgbase = obs-studio-browser
 	optdepends = libdatachannel>=0.20: WHIP Support
 	optdepends = libajantv2>=17.0.1: AJA support
 	optdepends = decklink: Blackmagic Design DeckLink support
-	provides = obs-studio=30.0.2
+	provides = obs-studio=30.1.0
 	provides = obs-vst
 	provides = obs-websocket
 	provides = obs-browser
@@ -98,7 +98,7 @@ pkgbase = obs-studio-browser
 	conflicts = obs-linuxbrowser
 	conflicts = libva-vdpau-driver
 	options = debug
-	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=30.0.2
+	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=30.1.0
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
 	source = 0001-Add_finder_for_uthash.patch
@@ -108,7 +108,7 @@ pkgbase = obs-studio-browser
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = f4a56021a7f1c564f95b588d7c09b60a89efa2c1954c8a418cf6320b5a818542
-	sha256sums = 874456110d17d2efe02f8a1f47f58c877922d8bdab6435df334b9e6460b26bf8
+	sha256sums = 82b14439697b5c5947117afa1b973bad7ddd9ee2f09e5d1ac56a96d10e01c6b1
 	sha256sums = a7149e1d9a07270132cf8085d52225ed3200a78ea943cbf52d64b1b8f293e117
 
 pkgname = obs-studio-browser

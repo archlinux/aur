@@ -6,8 +6,8 @@
 # Contributor: ledti <antergist at gmail dot com>
 
 pkgname=obs-studio-browser
-pkgver=30.0.2
-pkgrel=7
+pkgver=30.1.0
+pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -126,7 +126,7 @@ sha256sums=(
   "SKIP"
   "SKIP"
   "f4a56021a7f1c564f95b588d7c09b60a89efa2c1954c8a418cf6320b5a818542"
-  "874456110d17d2efe02f8a1f47f58c877922d8bdab6435df334b9e6460b26bf8"
+  "82b14439697b5c5947117afa1b973bad7ddd9ee2f09e5d1ac56a96d10e01c6b1"
   "a7149e1d9a07270132cf8085d52225ed3200a78ea943cbf52d64b1b8f293e117"
 )
 
@@ -160,7 +160,7 @@ build() {
     -DCALM_DEPRECATION=ON \
     -Wno-dev
 
-    sed -i "s|#define OBS_VERSION |#define OBS_VERSION \"$pkgver-browser-$pkgrel\" //|" build/config/obsconfig.h
+  sed -i "s|OBS_VERSION =|OBS_VERSION = \"$_pkgver-browser-$pkgrel\"; //|" build/libobs/obsversion.c
 
   cmake --build build
 }

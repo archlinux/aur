@@ -1,4 +1,4 @@
-From e1e12d2acda6f511a5f70ed6b6e10d1b8c83708a Mon Sep 17 00:00:00 2001
+From a9b4aa58a08f0127878b8c396b7ddbb705211bfe Mon Sep 17 00:00:00 2001
 From: tytan652 <tytan652@tytanium.xyz>
 Date: Mon, 24 Jul 2023 10:52:05 +0200
 Subject: [PATCH] deps,libobs: Replace uthash with prefix/system install
@@ -9,25 +9,24 @@ Subject: [PATCH] deps,libobs: Replace uthash with prefix/system install
  deps/uthash/CMakeLists.txt  |    8 -
  deps/uthash/uthash/LICENSE  |   21 -
  deps/uthash/uthash/uthash.h | 1136 -----------------------------------
- libobs/CMakeLists.txt       |    4 +-
+ libobs/CMakeLists.txt       |    7 +-
  libobs/cmake/legacy.cmake   |    3 +-
  libobs/util/uthash.h        |    2 +-
- 8 files changed, 5 insertions(+), 1173 deletions(-)
+ 8 files changed, 5 insertions(+), 1176 deletions(-)
  delete mode 100644 deps/uthash/.clang-format
  delete mode 100644 deps/uthash/CMakeLists.txt
  delete mode 100644 deps/uthash/uthash/LICENSE
  delete mode 100644 deps/uthash/uthash/uthash.h
 
 diff --git a/deps/CMakeLists.txt b/deps/CMakeLists.txt
-index d093e29df0883..8e4cb2d412320 100644
+index a408eaa1e8a93..f046aba690e22 100644
 --- a/deps/CMakeLists.txt
 +++ b/deps/CMakeLists.txt
-@@ -12,5 +12,4 @@ add_subdirectory(file-updater)
+@@ -11,4 +11,3 @@ add_subdirectory(libcaption)
+ add_subdirectory(media-playback)
  add_subdirectory(obs-scripting)
  add_subdirectory(opts-parser)
- add_subdirectory(libcaption)
 -add_subdirectory(uthash)
- add_subdirectory(happy-eyeballs)
 diff --git a/deps/uthash/.clang-format b/deps/uthash/.clang-format
 deleted file mode 100644
 index 6420a46881e05..0000000000000
@@ -39,7 +38,7 @@ index 6420a46881e05..0000000000000
 -DisableFormat: true
 diff --git a/deps/uthash/CMakeLists.txt b/deps/uthash/CMakeLists.txt
 deleted file mode 100644
-index aecb0d74e49a5..0000000000000
+index c82ba4b543036..0000000000000
 --- a/deps/uthash/CMakeLists.txt
 +++ /dev/null
 @@ -1,8 +0,0 @@
@@ -50,7 +49,7 @@ index aecb0d74e49a5..0000000000000
 -
 -target_sources(uthash INTERFACE uthash/uthash.h)
 -
--set_target_properties(uthash PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_CURRENT_SOURCE_DIR}")
+-target_include_directories(uthash INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}")
 diff --git a/deps/uthash/uthash/LICENSE b/deps/uthash/uthash/LICENSE
 deleted file mode 100644
 index e75a243af9b99..0000000000000
@@ -1221,26 +1220,29 @@ index ac78fdab5a4f5..0000000000000
 -
 -#endif /* UTHASH_H */
 diff --git a/libobs/CMakeLists.txt b/libobs/CMakeLists.txt
-index 46112abe71f9d..185a0b6560fac 100644
+index 1e2e02d28fa5b..ddf7de1139695 100644
 --- a/libobs/CMakeLists.txt
 +++ b/libobs/CMakeLists.txt
-@@ -16,6 +16,7 @@ add_library(OBS::libobs ALIAS libobs)
- find_package(Threads REQUIRED)
- find_package(FFmpeg REQUIRED avformat avutil swscale swresample OPTIONAL_COMPONENTS avcodec)
+@@ -23,6 +23,7 @@ find_package(
+ # cmake-format: on
+ 
  find_package(ZLIB REQUIRED)
 +find_package(Uthash REQUIRED)
  
  if(ENABLE_UI)
-   find_qt(COMPONENTS Core)
-@@ -23,7 +24,6 @@ endif()
+   find_package(Qt6 REQUIRED Core)
+@@ -33,10 +34,6 @@ if(NOT TARGET OBS::caption)
+   add_subdirectory("${CMAKE_SOURCE_DIR}/deps/libcaption" "${CMAKE_BINARY_DIR}/deps/libcaption")
+ endif()
  
- find_package(jansson REQUIRED)
- add_subdirectory("${CMAKE_SOURCE_DIR}/deps/libcaption" "${CMAKE_BINARY_DIR}/deps/libcaption")
--add_subdirectory("${CMAKE_SOURCE_DIR}/deps/uthash" "${CMAKE_BINARY_DIR}/deps/uthash")
+-if(NOT TARGET OBS::uthash)
+-  add_subdirectory("${CMAKE_SOURCE_DIR}/deps/uthash" "${CMAKE_BINARY_DIR}/deps/uthash")
+-endif()
+-
+ add_library(libobs SHARED)
+ add_library(OBS::libobs ALIAS libobs)
  
- target_sources(
-   libobs
-@@ -232,7 +232,6 @@ target_compile_definitions(
+@@ -250,7 +247,6 @@ target_compile_definitions(
  target_link_libraries(
    libobs
    PRIVATE OBS::caption
@@ -1248,7 +1250,7 @@ index 46112abe71f9d..185a0b6560fac 100644
            OBS::libobs-version
            FFmpeg::avcodec
            FFmpeg::avformat
-@@ -240,6 +239,7 @@ target_link_libraries(
+@@ -258,6 +254,7 @@ target_link_libraries(
            FFmpeg::swscale
            FFmpeg::swresample
            jansson::jansson
@@ -1257,7 +1259,7 @@ index 46112abe71f9d..185a0b6560fac 100644
    PUBLIC Threads::Threads)
  
 diff --git a/libobs/cmake/legacy.cmake b/libobs/cmake/legacy.cmake
-index 5f13c4c0f04ab..81d82e747bfd9 100644
+index 8922c3e31e79e..5e92972e53c84 100644
 --- a/libobs/cmake/legacy.cmake
 +++ b/libobs/cmake/legacy.cmake
 @@ -20,6 +20,7 @@ find_package(
@@ -1268,7 +1270,7 @@ index 5f13c4c0f04ab..81d82e747bfd9 100644
  
  add_library(libobs SHARED)
  add_library(OBS::libobs ALIAS libobs)
-@@ -252,8 +253,8 @@ target_link_libraries(
+@@ -254,8 +255,8 @@ target_link_libraries(
            FFmpeg::swresample
            Jansson::Jansson
            OBS::caption
