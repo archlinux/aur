@@ -1,9 +1,9 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=licensee
-pkgver=9.16.1
-_commit=7a206e936e479bf7dfaf396d7f6658f07319d6bd
-pkgrel=2
+pkgver=9.17.0
+_commit=9882a65744c7cea0f586d09986925c7ff948c89e
+pkgrel=1
 pkgdesc="Detect under what license a project is distributed"
 arch=(any)
 url="https://github.com/licensee/licensee"
@@ -110,7 +110,7 @@ check() {
 package() {
   cd "$_archive"
 
-  cp --archive tmp_install/* "$pkgdir"
+  cp -a -t "$pkgdir" tmp_install/*
 
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.md

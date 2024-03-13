@@ -1,7 +1,7 @@
 pkgbase = licensee
 	pkgdesc = Detect under what license a project is distributed
-	pkgver = 9.16.1
-	pkgrel = 2
+	pkgver = 9.17.0
+	pkgrel = 1
 	url = https://github.com/licensee/licensee
 	arch = any
 	license = MIT
@@ -18,7 +18,7 @@ pkgbase = licensee
 	depends = ruby-rugged
 	depends = ruby-thor
 	options = !emptydirs
-	source = git+https://github.com/licensee/licensee.git#commit=7a206e936e479bf7dfaf396d7f6658f07319d6bd
+	source = git+https://github.com/licensee/licensee.git#commit=9882a65744c7cea0f586d09986925c7ff948c89e
 	sha256sums = SKIP
 
 pkgname = licensee
