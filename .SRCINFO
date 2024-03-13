@@ -1,6 +1,6 @@
 pkgbase = horen-git
 	pkgdesc = A music player by Electron
-	pkgver = 0.9.0.r22.gf999c97
+	pkgver = 0.9.0.r30.g86d4052
 	pkgrel = 1
 	url = https://github.com/horenjs/horen
 	arch = any
@@ -10,13 +10,13 @@ pkgbase = horen-git
 	makedepends = npm
 	makedepends = pnpm
 	makedepends = nodejs
-	makedepends = imagemagick
+	makedepends = icoutils
 	depends = electron28
 	provides = horen
 	conflicts = horen
 	source = horen.git::git+https://github.com/horenjs/horen.git
 	source = horen.sh
 	sha256sums = SKIP
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = horen-git

@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=horen-git
-pkgver=0.9.0.r22.gf999c97
+pkgver=0.9.0.r30.g86d4052
 _electronversion=28
 pkgrel=1
 pkgdesc="A music player by Electron"
@@ -18,14 +18,14 @@ makedepends=(
     'npm'
     'pnpm'
     'nodejs'
-    'imagemagick'
+    'icoutils'
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -47,12 +47,18 @@ build() {
     pnpm config set store-dir "${srcdir}/.pnpm_store"
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
     pnpm config set link-workspace-packages true
-    convert preview/${pkgname%-git}.ico preview/${pkgname%-git}.png
-    sed '34,37d' -i forge.config.js
+    if [ `curl ifconfig.co/country` = "China" ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
+    icotool -x preview/"${pkgname}.ico" -o preview/"${pkgname}.png"
+    sed "s|${pkgname}.ico|${pkgname}.png|g" -i forge.config.js
     sed "s|process.env.APPDATA|'/home/${USER}'|g" -i app/main/src/constant.ts
     pnpm install
-    pnpm run build
-    pnpm run make
+    pnpm run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
