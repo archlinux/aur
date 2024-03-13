@@ -11,6 +11,10 @@ makedepends=(
     'go'
 )
 
+# no idea why --flto=auto is added to the LDFLAGS with a format
+# causing an issue with the compiler.
+options=('!lto')
+
 _latest() {
     curl -s https://api.github.com/repos/kubeshark/kubeshark/releases | jq -r '.[0].tag_name'
 }
