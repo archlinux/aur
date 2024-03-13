@@ -1,11 +1,11 @@
 # Maintainer: Morgan <morganamilo@archlinux.org>
-pkgname=paru-git
+pkgname=paru-alpm-v3-git
 _pkgname=paru
-pkgver=2.0.1.r1.g584fb75
+pkgver=2.0.1.r25.g2a8e257
 pkgrel=1
-pkgdesc='Feature packed AUR helper'
+pkgdesc='Feature packed AUR helper (with ALPM v3 patches)'
 url='https://github.com/morganamilo/paru'
-source=("git+https://github.com/morganamilo/paru")
+source=("git+https://github.com/morganamilo/paru.git#branch=alpm-v3")
 backup=("etc/paru.conf")
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 license=('GPL3')
@@ -14,7 +14,7 @@ depends=('glibc' 'git' 'pacman')
 optdepends=('bat: colored pkgbuild printing' 'devtools: build in chroot and downloading pkgbuilds')
 conflicts=('paru')
 provides=('paru')
-sha256sums=(SKIP)
+sha256sums=('SKIP')
 
 prepare() {
   cd "$_pkgname"

@@ -1,6 +1,6 @@
-pkgbase = paru-git
-	pkgdesc = Feature packed AUR helper
-	pkgver = 2.0.1.r1.g584fb75
+pkgbase = paru-alpm-v3-git
+	pkgdesc = Feature packed AUR helper (with ALPM v3 patches)
+	pkgver = 2.0.1.r25.g2a8e257
 	pkgrel = 1
 	url = https://github.com/morganamilo/paru
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = paru-git
 	provides = paru
 	conflicts = paru
 	backup = etc/paru.conf
-	source = git+https://github.com/morganamilo/paru
+	source = git+https://github.com/morganamilo/paru.git#branch=alpm-v3
 	sha256sums = SKIP
 
-pkgname = paru-git
+pkgname = paru-alpm-v3-git
