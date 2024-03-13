@@ -3,14 +3,14 @@
 _pkgname=suyu
 _branch=dev
 pkgname=suyu-dev-git
-pkgver=r27175.bd5bdbe6c
+pkgver=r27187.9895cc94d0
 pkgrel=1
 pkgdesc="suyu is the afterlife the world's most popular, open-source, Nintendo Switch emulator (dev branch)"
 arch=(x86_64)
 url=https://gitlab.com/suyu-emu/suyu
 license=(GPL-3.0-or-later)
 provides=('suyu')
-conflics=(suyu-git suyu-dev-qt6-git)
+conflicts=(suyu-git suyu-dev-qt6-git)
 install=$pkgname.install
 depends=(
   brotli
@@ -56,7 +56,7 @@ makedepends=(
   rapidjson
   mbedtls
 )
-options=(!debug lto)
+options=(!debug lto strip)
 source=(
   git+https://gitlab.com/suyu-emu/suyu.git#branch=${_branch}
   git+https://github.com/arsenm/sanitizers-cmake.git
