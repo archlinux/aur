@@ -18,6 +18,7 @@ optdepends=(
     'vulkan-tools: for vulkaninfo'
     'mesa-utils: for glxinfo'
     'util-linux: for lscpu'
+    'hicolor-icon-theme: for hicolor theme hierarchy'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")

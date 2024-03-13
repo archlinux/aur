@@ -27,6 +27,7 @@ pkgbase = corectrl-git
 	optdepends = vulkan-tools: for vulkaninfo
 	optdepends = mesa-utils: for glxinfo
 	optdepends = util-linux: for lscpu
+  optdepends = hicolor-icon-theme: for hicolor theme hierarchy
 	provides = corectrl
 	conflicts = corectrl
 	source = git+https://gitlab.com/corectrl/corectrl.git
