@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=cfspeedtest
 pkgver=1.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Unofficial CLI for speed.cloudflare.com"
 arch=('x86_64')
 url="https://github.com/code-inflation/cfspeedtest"
@@ -14,12 +14,14 @@ sha256sums=('SKIP')
 
 prepare() {
 	cd "$srcdir/$pkgname"
+    	export RUSTUP_TOOLCHAIN=stable
     	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
 	cd "$srcdir/$pkgname"
-	export RUSTFLAGS="-C opt-level=3 -C target-cpu=native"
+    	export RUSTUP_TOOLCHAIN=stable
+    	export CARGO_TARGET_DIR=target
     	cargo build --frozen --release --target-dir target
 }
 
