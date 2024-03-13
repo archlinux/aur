@@ -1,6 +1,6 @@
 pkgbase = clash-verge-rev-bin
 	pkgdesc = Continuation of Clash Verge | A Clash Meta GUI based on Tauri
-	pkgver = 1.5.7
+	pkgver = 1.5.8
 	pkgrel = 1
 	url = https://github.com/clash-verge-rev/clash-verge-rev
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = clash-verge-rev-bin
 	conflicts = clash-nyanpasu-bin
 	conflicts = clash-nyanpasu-git
 	conflicts = clash-meta
-	source_x86_64 = clash-verge-rev-1.5.7-x86_64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v1.5.7/clash-verge_1.5.7_amd64.deb
-	sha512sums_x86_64 = 23bebd1b1821bcd9d86ce056f695d74b7159e81824558b4ae90c98e2a8fd694d03c49c00436903ca5f60f381f7b5d6c70e1af9528f73bc7467f0ea724fccb25e
-	source_aarch64 = clash-verge-rev-1.5.7-aarch64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v1.5.7/clash-verge_1.5.7_arm64.deb
-	sha512sums_aarch64 = 4694761cdfc1f4088dc5066a75d0a04efb828f18458aca06043b7952d599706fa04e398a8adf8c828c46a197b47b7a9d1c6a123be925b702d2a7acc40ca0c165
+	source_x86_64 = clash-verge-rev-1.5.8-x86_64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v1.5.8/clash-verge_1.5.8_amd64.deb
+	sha512sums_x86_64 = a1293a32ea968a0a900888aebd31a93087b0b79a39a36f2154752c20d05f48d18ade56e984a7ba23e994b1d1c36d1eac7612860d74d5c983baa8a669c9f7fd6c
+	source_aarch64 = clash-verge-rev-1.5.8-aarch64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v1.5.8/clash-verge_1.5.8_arm64.deb
+	sha512sums_aarch64 = c1c381386b947e2cd7bace34ac7016a8d957604c85b0a05b673093c08e168f6c1145cfc20a1a61bc3cb33b6d6b556bcfc1fb37efee95747db6027535a05d8870
 
 pkgname = clash-verge-rev-bin
