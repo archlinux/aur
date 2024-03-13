@@ -2,7 +2,7 @@
 
 _pkgname=amass
 pkgname=${_pkgname}-bin
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="In-depth Attack Surface Mapping and Asset Discovery"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/OWASP/Amass"
 license=('Apache')
 conflicts=('amass')
 source=(https://github.com/OWASP/Amass/releases/download/v${pkgver}/${_pkgname}_Linux_amd64.zip)
-sha512sums=('45fa444a9186362d30f1abe8502fa4875c50521a6f7019d4453649f3ca9a800b5e04184ee777ad1e86dd1f12847dddf666b7c575c6563e5bf12ded598973f504')
+sha512sums=('a128655326550c984077fb23de84cc5af7b7dbd5763e7e278b6e76dc2a4d60401814bf8cd28183afe898472cd8cc62aa68950c12002083345e3898ec1929c40a')
 
 package() {
   cd "${_pkgname}_Linux_amd64"
