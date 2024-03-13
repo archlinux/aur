@@ -3,13 +3,13 @@
 
 pkgname=wechat-beta-bwrap
 pkgver=1.0.0.145
-pkgrel=17
+pkgrel=18
 pkgdesc="WeChat Testing with bwrap sandbox"
 arch=('x86_64' 'aarch64')
 url="https://weixin.qq.com"
 license=('proprietary')
-provides=('wechat-uos')
-conflicts=('wechat-uos')
+provides=('wechat-beta')
+conflicts=('wechat-beta')
 depends=('nss' 'xdg-utils' 'libxss' 'libnotify' 'bubblewrap' 
 	'xdg-user-dirs' 'xdg-desktop-portal' 'openssl-1.1' 'lsb-release')
 optdepends=(
@@ -46,7 +46,7 @@ source_aarch64=(
 noextract=({"${_uos_deb_stem}","${_beta_deb_stem}"}_{x86_64,aarch64}.deb)
 
 sha256sums=(
-	'0eba64cf590b607f276be85f30ae038440caff4edee3aab6f326c940e08052c9'
+	'e891225fa2545f8c17fa27e35411e6246701f250d806688925102038e1083e91'
 	'7692acffebe4ac259cae05d2c92355502fa2cb4ccdbaa27c6cc65f2e1f4678b7'
 	'bc13a14c8680daa03c617e71f48419a1b05e2b9d75bb58b15a89d0d191d0fb12'
 	'53760079c1a5b58f2fa3d5effe1ed35239590b288841d812229ef4e55b2dbd69'
@@ -62,31 +62,29 @@ sha256sums_aarch64=(
 	'0b8a50f194582a0e659075fadc0632feeb303bde80060b210e05cd8427583071'
 )
 
-build() {
-	echo 'Extracting data from wechat-uos deb file...'
-	bsdtar -xOf "${_uos_deb_stem}_${CARCH}.deb" ./data.tar.xz > uos_data.tar.xz
-
-	echo 'Extracting libuosdevicea.so from wechat-uos data...'
-	bsdtar -xOf uos_data.tar.xz ./usr/lib/license/libuosdevicea.so > libuosdevicea.so
-
-	echo 'Extracting data from wechat-beta deb file...'
-	bsdtar -xOf "${_beta_deb_stem}_${CARCH}.deb" ./data.tar.xz > beta_data.tar.xz
-}
-
 package() {
-	echo "Popupating pkgdir with wechat-beta data..."
-	bsdtar -xpf beta_data.tar.xz -C "${pkgdir}"
-	
-	echo "Fixing licenses..."
-	mkdir -p "${pkgdir}"/usr/share/wechat-uos
-	cp -ra license/etc "${pkgdir}"/usr/share/wechat-uos
-	cp -ra license/var "${pkgdir}"/usr/share/wechat-uos
-	install -Dm644 libuosdevicea.so "${pkgdir}"/usr/lib/license/libuosdevicea.so
+	echo 'Popupating pkgdir with data from wechat-beta deb file...'
+	bsdtar -xOf "${_beta_deb_stem}_${CARCH}.deb" ./data.tar.xz |
+		xz -cdT0 |
+		bsdtar -xpC "${pkgdir}"
 
-	echo "Cleaning unused file..."
+	local _wechat_root="${pkgdir}"/usr/share/wechat-beta
+	echo 'Extracting libuosdevicea.so from wechat-uos deb file...'
+	bsdtar -xOf "${_uos_deb_stem}_${CARCH}.deb" ./data.tar.xz |
+		xz -cdT0 |
+		tar -xO ./usr/lib/license/libuosdevicea.so |
+		install -Dm644 /dev/stdin \
+			"${_wechat_root}"/usr/lib/license/libuosdevicea.so
+	install -dm755 "${pkgdir}/usr/lib/license"
+
+	echo 'Fixing licenses...'
+	cp -ra license/etc "${_wechat_root}"
+	cp -ra license/var "${_wechat_root}"
+
+	echo 'Cleaning unused file...'
 	rm -f "${pkgdir}"/usr/share/applications/wechat.desktop
 
-	echo "Installing desktop files..."
+	echo 'Installing desktop files...'
 	install -Dm644 wechat-beta.desktop "${pkgdir}"/usr/share/applications/wechat-beta.desktop
 	install -Dm755 wechat.sh "${pkgdir}"/usr/bin/wechat-beta
 	install -Dm644 wechat-beta.png "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/wechat-beta.png
