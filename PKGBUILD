@@ -16,9 +16,10 @@ checkdepends=("python-pytest")
 options=(!emptydirs)
 source=("git+${url}#branch=main")
 sha512sums=('SKIP')
-
-provides=("python-${_base}"
-          "python-fenics-${_base}")
+provides=("python-${_base}=${pkgver}"
+          "python-fenics-${_base}=${pkgver}")
+conflicts=("python-${_base}"
+           "python-fenics-${_base}")
 replaces=("${provides}")
 
 #  From UPC: Building And Using Static And Shared "C"
