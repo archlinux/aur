@@ -6,7 +6,7 @@ _githuborg=${FORK:-$_projectname}
 pkgdesc="Skywire node implementation + deployment services, service discovery, & dmsg utilities. Skycoin.com"
 _pkggopath=github.com/${_githuborg}/${_pkgname}
 pkgver='1.3.18'
-pkgrel='1'
+pkgrel='3'
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -20,7 +20,7 @@ install=skywire.install
 _script=("skywire-autoconfig")
 _desktop=("skywire.desktop" "skywirevpn.desktop")
 _icon=("skywirevpn.png" "skywire.png")
-_service=("skywire.service" "skywire-autoconfig.service")
+_service=("skywire.service" "skywire-autoconfig.service" "skywire-sn.service" "skywire-ar.service" "skywire-rf.service" "skywire-tpd.service" "skywire-dmsgd.service" "skywire-dmsg.service" "skywire-sd.service")
 _source=("skywire-bin::git+https://aur.archlinux.org/skywire-bin")
 source=("skywire-${_tag_ver}.tar.gz::${url}/archive/refs/tags/${_tag_ver}.tar.gz"
 "${_source[@]}")
@@ -28,8 +28,7 @@ source=("skywire-${_tag_ver}.tar.gz::${url}/archive/refs/tags/${_tag_ver}.tar.gz
 #"all_servers.json"::"https://dmsgd.skywire.skycoin.com/dmsg-discovery/all_servers")
 sha256sums=('ebfec5cc8c082307e24d502b0f305cda1201e6372af300fc6517598caf15a176'
             'SKIP')
-#            'SKIP'
-#            'SKIP')
+
 _binaryscript=("skywire-cli" "skywire-visor")
 _appscript=("skychat" "skysocks" "skysocks-client" "vpn-client" "vpn-server")
 
