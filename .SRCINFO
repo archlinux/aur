@@ -1,6 +1,6 @@
 pkgbase = r-nnsvg
 	pkgdesc = Scalable identification of spatially variable genes in spatially-resolved transcriptomics data
-	pkgver = 1.6.0
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://bioconductor.org/packages/nnSVG
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = r-nnsvg
 	optdepends = r-stexampledata
 	optdepends = r-testthat
 	optdepends = r-weberdivechalcdata
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/nnSVG_1.6.0.tar.gz
-	md5sums = 4af169b12d944eff8ee9d9e3063ff5ea
-	sha256sums = 6b758eb69964a2a061f2e5bf9746a364e994902540dab9eb4f80e9b1c0348d04
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/nnSVG_1.6.3.tar.gz
+	md5sums = 49d0a36bf0af2e733dc383e6b2dbe333
+	b2sums = 817e60e9f92183f1a4695eff5f9c4469d0bd5b31222e1ea05622fe6ef13df0a48eaaaa52f0a00b8854e35c22518a86517331b5778871892a6c63d9515f62e7fb
 
 pkgname = r-nnsvg
