@@ -1,18 +1,14 @@
 pkgbase = chromium-extension-clearurls
 	pkgdesc = a chromium extension to automatically remove tracking elements from URLs to help protect your privacy
 	pkgver = 1.27.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/ClearURLs/ClearUrls
 	arch = any
 	license = LGPL3
 	makedepends = git
-	makedepends = zip
-	makedepends = unzip
 	makedepends = jq
 	makedepends = openssl
 	depends = chromium
-	provides = chromium-extension-clearurls
-	conflicts = chromium-extension-clearurls
 	source = git+https://gitlab.com/ClearURLs/ClearUrls.git#commit=14a0832973e137f0cbbbb1e9110c1286bc88e319
 	source = clearurls.pem
 	sha256sums = SKIP
