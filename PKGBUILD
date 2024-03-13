@@ -1,8 +1,9 @@
-# Maintainer: Trevor Bergeron <aur@sec.gd>
+# Maintainer: iamawacko <iamawacko@protonmail.com>
+# Contributor: Trevor Bergeron <aur@sec.gd>
 
 _pkgname=cwtch
 pkgname=$_pkgname-git
-pkgver=1.13.1.r0.g69b7ddb2
+pkgver=1.14.7.r0.g69b7ddb2
 pkgrel=1
 pkgdesc="UI for Privacy Preserving Infrastructure for Asynchronous, Decentralized and Metadata Resistant Applications (git)"
 arch=('x86_64')
