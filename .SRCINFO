@@ -1,12 +1,12 @@
 pkgbase = xorgxrdp
 	pkgdesc = Xorg drivers for xrdp
 	pkgver = 0.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/neutrinolabs/xorgxrdp
 	arch = aarch64
 	arch = i686
 	arch = x86_64
-	license = MIT
+	license = X11
 	makedepends = libxfont2
 	makedepends = nasm
 	makedepends = xorg-server-devel
