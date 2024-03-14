@@ -1,16 +1,16 @@
-From 40e91103bf26385931439626578349ab907e6b9c Mon Sep 17 00:00:00 2001
+From f71b072bfdaa97a478d119b6615ebd6f48c57b7b Mon Sep 17 00:00:00 2001
 From: tokyo4j <hrak1529@gmail.com>
 Date: Fri, 23 Feb 2024 03:57:01 +0900
-Subject: [PATCH 2/2] IME: support text-input-v1
+Subject: [PATCH] IME: support text-input-v1
 
 ---
  include/input/ime.h   |   1 +
  protocols/meson.build |   1 +
- src/input/ime.c       | 335 +++++++++++++++++++++++++++++++++++++++++-
- 3 files changed, 336 insertions(+), 1 deletion(-)
+ src/input/ime.c       | 337 +++++++++++++++++++++++++++++++++++++++++-
+ 3 files changed, 338 insertions(+), 1 deletion(-)
 
 diff --git a/include/input/ime.h b/include/input/ime.h
-index 97d5444..0e13f38 100644
+index 06dd16f..2463809 100644
 --- a/include/input/ime.h
 +++ b/include/input/ime.h
 @@ -50,6 +50,7 @@ struct input_method_relay {
@@ -34,10 +34,10 @@ index acaf021..ffb371a 100644
  	'wlr-input-inhibitor-unstable-v1.xml',
  	'wlr-output-power-management-unstable-v1.xml',
 diff --git a/src/input/ime.c b/src/input/ime.c
-index 29a8f9c..4e35400 100644
+index bb08f6d..7c44d20 100644
 --- a/src/input/ime.c
 +++ b/src/input/ime.c
-@@ -6,11 +6,275 @@
+@@ -6,11 +6,277 @@
  #include "input/ime.h"
  #include "node.h"
  #include "view.h"
@@ -47,7 +47,8 @@ index 29a8f9c..4e35400 100644
  	(wl_resource_get_client((wlr_obj1)->resource) \
  	== wl_resource_get_client((wlr_obj2)->resource))
  
-+/* ----------------------------------------------------------------------------
++/*
++ * ----------------------------------------------------------------------------
 + *                 text-input-unstable-v1 protocol support
 + * ----------------------------------------------------------------------------
 + * To reuse code for text-input-unstable-v3, zwp_text_input_v1 interface is
@@ -268,7 +269,8 @@ index 29a8f9c..4e35400 100644
 +		manager_v1, NULL);
 +}
 +
-+static void handle_display_destroy(struct wl_listener *listener, void *data)
++static void
++handle_display_destroy(struct wl_listener *listener, void *data)
 +{
 +	struct text_input_manager_v1 *manager_v1 =
 +		wl_container_of(listener, manager_v1, display_destroy);
@@ -313,7 +315,7 @@ index 29a8f9c..4e35400 100644
  /*
   * Get keyboard grab of the seat from keyboard if we should forward events
   * to it.
-@@ -144,9 +408,16 @@ update_text_inputs_focused_surface(struct input_method_relay *relay)
+@@ -144,9 +410,16 @@ update_text_inputs_focused_surface(struct input_method_relay *relay)
  			continue;
  		}
  		if (input->focused_surface) {
@@ -325,12 +327,12 @@ index 29a8f9c..4e35400 100644
  		if (new_focused_surface) {
 +			if (text_input->v1)
 +				text_input_v1_send_enter(input,
-+					relay->focused_surface);
++					new_focused_surface);
 +			else
  			wlr_text_input_v3_send_enter(input, new_focused_surface);
  		}
  	}
-@@ -249,6 +520,62 @@ handle_input_method_commit(struct wl_listener *listener, void *data)
+@@ -253,6 +526,62 @@ handle_input_method_commit(struct wl_listener *listener, void *data)
  		return;
  	}
  
@@ -393,7 +395,7 @@ index 29a8f9c..4e35400 100644
  	if (input_method->current.preedit.text) {
  		wlr_text_input_v3_send_preedit_string(
  			text_input->input,
-@@ -490,11 +817,14 @@ handle_new_text_input(struct wl_listener *listener, void *data)
+@@ -505,11 +834,14 @@ handle_new_text_input(struct wl_listener *listener, void *data)
  	struct input_method_relay *relay =
  		wl_container_of(listener, relay, new_text_input);
  	struct wlr_text_input_v3 *wlr_text_input = data;
@@ -409,9 +411,9 @@ index 29a8f9c..4e35400 100644
  	text_input->input = wlr_text_input;
  	text_input->relay = relay;
  	wl_list_insert(&relay->text_inputs, &text_input->link);
-@@ -550,6 +880,9 @@ input_method_relay_create(struct seat *seat)
- 
- 	relay->popup_tree = wlr_scene_tree_create(&seat->server->scene->tree);
+@@ -563,6 +895,9 @@ input_method_relay_create(struct seat *seat)
+ 	relay->popup_surface_destroy.notify = handle_popup_surface_destroy;
+ 	relay->popup_surface_commit.notify = handle_popup_surface_commit;
  
 +	text_input_manager_v1_init(seat->server->wl_display,
 +		seat->server->text_input_manager);
