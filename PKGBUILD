@@ -7,7 +7,7 @@ arch=('any')
 url="https://codeberg.org/johndovern/comicthumb"
 license=('GPL3')
 depends=('python')
-source=("https://codeberg.org/johndovern/comicthumb/releases/download/0.0.1/$pkgname-$pkgver.tar.gz")
+source=("https://codeberg.org/johndovern/comicthumb/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('08fe737b0bb6d4d1ef9dec8356eb513d91a691edff7ce247f80f604151cac462')
 
 build() {
