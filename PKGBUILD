@@ -1,18 +1,14 @@
 # Maintainer:
 # Contributor: ThatOneCalculator <kainoa@t1c.dev>
 
-# options
-_pkgtype+='-git'
-
-# basic info
 _pkgname="hyprpaper"
-pkgname="$_pkgname${_pkgtype}"
-pkgver=0.6.0.r3.g43b6e9d
+pkgname="$_pkgname-git"
+pkgver=0.6.0.r11.gf57d991
 pkgrel=1
 pkgdesc="a blazing fast wayland wallpaper utility with IPC controls"
 url="https://github.com/hyprwm/hyprpaper"
-license=('BSD')
-arch=(x86_64)
+license=('BSD-3-Clause')
+arch=('x86_64')
 
 depends=(
   hyprlang
@@ -40,7 +36,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
@@ -60,7 +56,6 @@ build() {
 }
 
 package() {
-  cd "$_archive"
   # DESTDIR="$pkgdir" cmake --install build
   install -Dm0755 "build/$_pkgname" -t "$pkgdir/usr/bin/"
   install -Dm0644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
