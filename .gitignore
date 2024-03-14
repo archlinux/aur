@@ -1,6 +1,1 @@
-*.gz
-*.xz
-/pkg
-/src
-*.jar
-*.log*
+*
