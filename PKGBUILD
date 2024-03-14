@@ -3,24 +3,25 @@
 _pkgname=cMAP
 _pkgver=1.15.1
 pkgname=r-${_pkgname,,}
-pkgver=1.15.1
-pkgrel=5
-pkgdesc='A data package containing annotation data for cMAP'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('LGPL')
+pkgver=${_pkgver//-/.}
+pkgrel=10
+pkgdesc="A data package containing annotation data for cMAP"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('LGPL-2.0-or-later')
 depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3bf24aca1ce63ebff4ac0172467ecd8acbb0c1f8a240cd0f8b8abd7c44fdf15f')
+md5sums=('dbf8df4d4540151936884e1c5d747bcf')
+b2sums=('3cab3a02bddfffa13f06049718f4c4f3d8366fcfa942b066c7884b055b5474884fa9341ef343231781022a75256901d74b5fcde2c3be8cdc7122e59c06261a8d')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
