@@ -1,26 +1,28 @@
 # Maintainer: Alexander Beck <dev@daallexx.eu>
 
 pkgname=monocle
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc='See through all BGP data with a monocle'
 arch=('x86_64')
 url='https://github.com/bgpkit/monocle'
 license=('MIT')
 depends=('gcc-libs' 'openssl')
-makedepends=('cargo')
+makedepends=('cargo' 'cmake')
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )
 sha512sums=(
-  'b3b9ab1c6ee0d878f90cacfbf90e2e6897f4f0d1c23e3161bfd155a63373fe4d9dfcee6696fb071b21b22d51ea274da3c63e9ffd3d8c3fab266f957d65020e29'
+  '79183dc3bb799cc518923bc8f292aa41a2d0afa36bde3fb28cb04d33c2b1bf3439da8c3c986559c90a2250c1c91da03a5554e32cbbfc9fef311973ecbffebf58'
 )
+
+options=(!debug !lto)
 
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   cargo update
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
