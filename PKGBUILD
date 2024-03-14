@@ -1,7 +1,7 @@
 # Maintainer: Connor McFarlane <cm at semtex dot net>
 
 pkgname=flexoptix
-pkgver=5.19.0
+pkgver=5.21.0
 pkgrel=1
 pkgdesc='Flexoptix Flexbox transceiver programmer'
 arch=('any')
@@ -13,9 +13,9 @@ install=flexoptix.install
 source=("flexoptix-${pkgver}.AppImage::https://flexbox.reconfigure.me/download/electron/linux/x64/FLEXOPTIX%20App.${pkgver}-latest.AppImage"
         'https://www.flexoptix.net/skin/udev_rules/99-tprogrammer.rules'
         'disable-autoupdate.patch')
-sha256sums=('c7f7832f873d5196e45d6837e97fbdc573d5876e5d36d694f1e26765885d3e4a'
+sha256sums=('6910cae629c02faaf34b6ee7ccffa69ee59cc2f66432a79dfff230fa9acab7ab'
             '3997b9755e74c6af7da252266e8ec94313e345dee11b204857016fb51f5c2157'
-            'b26dfbfd855bccb06d75cdb101c3ff378d58f9277ac35c283323144febba542e')
+            'f1ae709af8a4c26d177d9339084b7dc73fd9bbb988f4e7601e0969f5f0121612')
 
 prepare() {
   _appdir="${srcdir}/squashfs-root"
