@@ -1,0 +1,4 @@
+[python-niaarm]
+source = "github"
+github = "firefly-cpp/NiaARM"
+use_latest_release = "true"
