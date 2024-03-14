@@ -8,13 +8,13 @@ pkgname=prepros-bin
 _pkgname=Prepros
 pkgver=7.22.0
 _electronversion=25
-pkgrel=2
+pkgrel=3
 pkgdesc="Prepros compiles your files, transpiles your JavaScript, reloads your browsers and makes it really easy to develop & test your websites so you can focus on making them perfect."
 arch=('x86_64')
 url="https://prepros.io"
 license=('LicenseRef-custom')
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'perl'
     'ruby'
     'java-runtime'
@@ -27,11 +27,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('cf0b777df08b66173911a326d90d032d06b614189aae08c42c5c6bcee6d62cd7'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
 }
