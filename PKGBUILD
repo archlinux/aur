@@ -1,11 +1,11 @@
 pkgname=lexido
-pkgver=v1.2
+pkgver=1.2
 pkgrel=1
 arch=('any')
 url="https://github.com/micr0-dev/lexido"
 license=('GAPL')
 makedepends=('go')
-source=("lexido-v1.2.tar.gz::https://github.com/micr0-dev/lexido/archive/refs/tags/v1.2.tar.gz")
+source=("lexido-1.2.tar.gz::https://github.com/micr0-dev/lexido/archive/refs/tags/v1.2.tar.gz")
 sha256sums=('SKIP')
 
 build() {
