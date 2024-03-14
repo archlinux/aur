@@ -9,7 +9,7 @@ pkgname=notesnook
 pkgver=2.6.16
 _electronversion=25
 _nodeversion=16
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote"
 arch=(
     'aarch64'
@@ -21,7 +21,7 @@ license=('GPL-3.0-or-later')
 provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'nvm'
@@ -39,7 +39,7 @@ source=(
 )
 sha256sums=('SKIP'
             '102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -50,6 +50,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     export npm_config_build_from_source=true
@@ -62,10 +63,12 @@ build() {
     HOME="${srcdir}/.electron-gyp"
     #build
     cd "${srcdir}/${pkgname}.git"
-    if [ `curl ifconfig.co/country` == "China" ];then
+    if [ `curl ifconfig.co/country` = "China" ];then
         echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
         echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
         echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
     fi
     # Install packages
     npm ci --ignore-scripts --prefer-offline --no-audit
@@ -76,8 +79,7 @@ build() {
     # Build Electron wrapper
     cd "${srcdir}/${pkgname}.git/apps/desktop"
     npx nx run release --project @notesnook/desktop
-    # Build AppImage
-    npx electron-builder -l AppImage -p never
+    npx electron-builder --dir
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
