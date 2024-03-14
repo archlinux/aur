@@ -1,5 +1,5 @@
 # Maintainer: grufo <madmurphy333 AT gmail DOT com>
-# Contributor: TheJackiMonster <thejackimonster AT gmail DOT com>
+# Contributor: TheJackiMonster <jacki AT thejackimonster DOT de>
 
 _framework='gnunet'
 _appname='messenger-gtk'
