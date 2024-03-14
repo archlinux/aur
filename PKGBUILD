@@ -3,7 +3,7 @@
 
 pkgname=qt5-virtualkeyboard
 _basever=5.15.13
-pkgver=5.15.12
+pkgver=5.15.13
 pkgrel=1
 _commit=80565aa7fc37ecdb1c08e585d4ae3060618e3338
 arch=('x86_64')
