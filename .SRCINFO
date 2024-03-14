@@ -1,16 +1,16 @@
 pkgbase = spx-translation-bin
 	pkgdesc = 聚合翻译程序(谷歌+deepl)
 	pkgver = 2.0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/mlmdflr/spx-translation
 	arch = x86_64
 	license = MIT
-	depends = electron25
+	depends = electron25-bin
 	provides = spx-translation=2.0.5
 	conflicts = spx-translation
 	source = spx-translation-2.0.5.deb::https://github.com/mlmdflr/spx-translation/releases/download/vv2.0.5-1/spx-translation_2.0.5_amd64.deb
 	source = spx-translation.sh
 	sha256sums = 533fe4d722f3b7edf6d295df6c8807be1960647c01e45c6cf95eeab7f8338376
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = spx-translation-bin
