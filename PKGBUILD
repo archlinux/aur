@@ -4,7 +4,7 @@ pkgname="${_pkgname//_/-}-bin"
 _appname="Bitshares NFT issuance tool"
 pkgver=1.7.2
 _electronversion=25
-pkgrel=7
+pkgrel=8
 pkgdesc="A tool for creating and editing NFTs on the Bitshares blockchain"
 arch=('x86_64')
 url="https://github.com/BTS-CM/Bitshares_NFT_Issuance_Tool"
@@ -12,7 +12,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}.deb"
@@ -21,11 +21,12 @@ source=(
 )
 sha256sums=('87323c333009c7c19b9e904342f180ec9cc66f1d26ac6776fff5806a6193af68'
             '48ecd55adc52c7a1ad9e3f699b9e2348bca9bb6797ce8ad4e9cbe38f7aa11c8a'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_appname}/${_pkgname}\"|${pkgname%-bin}|g;s|=${_pkgname}|=${pkgname%-bin}|g" \
