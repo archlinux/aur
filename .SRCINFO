@@ -1,0 +1,14 @@
+pkgbase = quatracker-bin
+	pkgdesc = A score tracker for the rhythm game Quaver.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Cyan903/Quatracker
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk
+	provides = quatracker
+	conflicts = quatracker
+	source = quatracker-bin-0.1.0::https://github.com/Cyan903/Quatracker/releases/download/v0.1.0/quatracker-0.1.0-amd64.tar.gz
+	sha256sums = e2a9c9cb7ea5ba85b4a27fb704770b17cfde87e85f72b8ce0bb1f7ad1d62c2cd
+
+pkgname = quatracker-bin
