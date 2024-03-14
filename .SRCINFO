@@ -1,14 +1,14 @@
 pkgbase = r-naivebayes
 	pkgdesc = High Performance Implementation of the Naive Bayes Algorithm
 	pkgver = 0.9.7
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=naivebayes
 	arch = any
-	license = GPL
+	license = GPL-2.0-only
 	depends = r
 	optdepends = r-knitr
-	optdepends = r-matrix
 	source = https://cran.r-project.org/src/contrib/naivebayes_0.9.7.tar.gz
-	sha256sums = 4fe9e5e947faaa3cbec14ae3db1cb6dfbf90e0dee89975d5727869881a3a151c
+	md5sums = 7f3467dcef693166e74c96ecd1b85d46
+	b2sums = 0ffdf44e64864996ce52a8da30bd891022cf99e2c13465cf2e610eda86e75b43c861bb56bcf3e90a9feba215e1a44306078ebfae1e4cb6d6c79db2b11403ea01
 
 pkgname = r-naivebayes
