@@ -1,6 +1,6 @@
 pkgbase = python-rustworkx
 	pkgdesc = A high performance Python graph library implemented in Rust
-	pkgver = 0.14.1
+	pkgver = 0.14.2
 	pkgrel = 1
 	url = https://github.com/Qiskit/rustworkx
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = python-rustworkx
 	optdepends = python-matplotlib: matplotlib based drawer function
 	optdepends = python-pillow: also required for graphviz based drawer function
 	conflicts = python-retworkx
-	source = rustworkx-0.14.1.tar.gz::https://github.com/Qiskit/rustworkx/archive/refs/tags/0.14.1.tar.gz
-	b2sums = 03ebbd55762ef3f8834ed688782580a2ffb05dc34410c9970337d776bcc52afb2ee474860cbcd173d57c3736b8562a1848df558d304de872d4f0e98522c57d46
+	source = rustworkx-0.14.2.tar.gz::https://github.com/Qiskit/rustworkx/archive/refs/tags/0.14.2.tar.gz
+	b2sums = 479510c4e132eda5af7a0301e760fe05daa26dd88c3299ca159ce0f87744d63cebfa33b6a1a6b43541b4c22607ea78352f36288e50d3f6535a6337be4edbf5c6
 
 pkgname = python-rustworkx
