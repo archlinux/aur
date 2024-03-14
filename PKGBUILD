@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=1.17.3
+pkgver=1.17.4
 _electronversion=27
 _nodeversion=18
 pkgrel=1
@@ -51,7 +51,8 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    sed "s|--linux|-l AppImage|g" -i package.json
+    # .npmrc already existed,pointed to China's mirrors.
+    sed "s|--linux|build --dir|g" -i package.json
     icotool -i 1 -x  public/logo.ico -o public/logo.png
     sed "s|logo.icns|logo.png|g" -i electron-builder.json
     npm install

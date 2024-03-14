@@ -1,6 +1,6 @@
 pkgbase = escrcpy
 	pkgdesc = 使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动
-	pkgver = 1.17.3
+	pkgver = 1.17.4
 	pkgrel = 1
 	url = https://github.com/viarotel-org/escrcpy
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = escrcpy
 	makedepends = icoutils
 	depends = electron27
 	conflicts = escrcpy
-	source = escrcpy.git::git+https://github.com/viarotel-org/escrcpy.git#tag=v1.17.3
+	source = escrcpy.git::git+https://github.com/viarotel-org/escrcpy.git#tag=v1.17.4
 	source = escrcpy.sh
 	sha256sums = SKIP
 	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
