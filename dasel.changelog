@@ -1,0 +1,9 @@
+## [v2.7.0] - 2024-03-14
+
+### Added
+
+- `null()` function. [See docs](https://daseldocs.tomwright.me/functions/null)
+
+### Fixed
+
+- Dasel now correctly handles `null` values.
