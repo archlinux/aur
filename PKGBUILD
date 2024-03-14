@@ -5,7 +5,7 @@
 
 _pkgname=solidity
 pkgname="${_pkgname}-bin"
-pkgver=0.8.24
+pkgver=0.8.25
 pkgrel=1
 pkgdesc='Contract-Oriented Programming Language'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('glibc')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}.bin::${url}/releases/download/v${pkgver}/solc-static-linux")
-sha512sums=('162ce4e6f135676d626b10dbac975df07b3705e36c3170347e09bc211c5d352b663e78452516ff1acba0c91c97bb9d498a31e0848e3cec1ecf6312cd5b1869c5')
+sha512sums=('8f3d06b3d02002238233fc383538aa3474cc1999b6602a74abccf60698f3b3a29b4799c8127ff3cdaf592fa2ffb1dd078449a776e01d8ec390d3060dd55d3efd')
 
 package() {
   install -Dm755 "${_pkgname}-${pkgver}.bin" "${pkgdir}/usr/bin/solc"
