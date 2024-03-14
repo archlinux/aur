@@ -39,6 +39,9 @@ BWRAP_ARGS=(
     # /dev
     --dev /dev
     --dev-bind /dev/dri{,}
+    --dev-bind-try /dev/nvidiactl{,}
+    --dev-bind-try /dev/nvidia0{,}
+    --dev-bind-try /dev/nvidia-uvm{,}
     --tmpfs /dev/shm
     # /proc
     --proc /proc
@@ -49,12 +52,6 @@ BWRAP_ARGS=(
     --ro-bind /etc/resolv.conf{,}
     --ro-bind /etc/localtime{,}
     --ro-bind-try /etc/fonts{,}
-    # /run
-    --dev-bind /run/dbus{,}
-    --ro-bind /run/systemd/userdb{,}
-    --ro-bind-try "${XAUTHORITY}"{,}
-    --ro-bind "${XDG_RUNTIME_DIR}/bus"{,}
-    --ro-bind "${XDG_RUNTIME_DIR}/pulse"{,}
     # /sys, for va-api: https://aur.archlinux.org/packages/wechat-universal-bwrap#comment-961215
     --ro-bind /sys/dev/char /sys/dev/char
     --ro-bind /sys/devices /sys/devices
@@ -75,6 +72,12 @@ BWRAP_ARGS=(
     --ro-bind-try "${HOME}/.fonts"{,}
     --ro-bind-try "${HOME}/.config/fontconfig"{,}
     --ro-bind-try "${HOME}/.local/share/fonts"{,}
+    # /run
+    --dev-bind /run/dbus{,}
+    --ro-bind /run/systemd/userdb{,}
+    --ro-bind-try "${XAUTHORITY}"{,}
+    --ro-bind "${XDG_RUNTIME_DIR}/bus"{,}
+    --ro-bind "${XDG_RUNTIME_DIR}/pulse"{,}
 )
 
 exec bwrap "${BWRAP_ARGS[@]}" "${BWRAP_ENV_APPEND[@]}" /opt/wechat-universal/wechat "$@"

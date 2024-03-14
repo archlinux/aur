@@ -1,7 +1,7 @@
 pkgbase = wechat-universal-bwrap
 	pkgdesc = WeChat (Universal) with bwrap sandbox
 	pkgver = 1.0.0.238
-	pkgrel = 2
+	pkgrel = 3
 	url = https://weixin.qq.com
 	arch = x86_64
 	arch = aarch64
@@ -42,7 +42,7 @@ pkgbase = wechat-universal-bwrap
 	source = wechat-universal.desktop
 	sha256sums = 201d904c7a0e38a6ed7dd12f9300c71babd685b26cf2fce65f76126e23f38c4a
 	sha256sums = 53760079c1a5b58f2fa3d5effe1ed35239590b288841d812229ef4e55b2dbd69
-	sha256sums = 425eb7c675f95f3cc0213ee64ef68dc60d655befb3bf1faaa449a83b7db466e0
+	sha256sums = 32c20acb74520de90db5962c7e417c77102f4f67bc1732ebee907e5510a7d8d1
 	sha256sums = b783b7b0035efb5a0fcb4ddba6446f645a4911e4a9f71475e408a5c87ef04c30
 	source_x86_64 = wechat-universal_1.0.0.238_x86_64.deb::https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_1.0.0.238_amd64.deb
 	sha256sums_x86_64 = 371026679dba25a033023b4077dc527059d906ec03ea2db05f6fc012ab40c96b
