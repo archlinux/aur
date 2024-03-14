@@ -2,7 +2,7 @@
 pkgname=('rose-pine-cursor-hyprcursor')
 pkgbase=rose-pine-cursor-hyprcursor
 pkgver=v0.2.0.r0.g795c63a
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/ndom91/rose-pine-cursor-hyprcursor"
 license=('GPL-3.0-or-later')
@@ -17,9 +17,9 @@ pkgver() {
 
 package() {
   cd rose-pine-cursor-hyprcursor || return
-  install -d "$pkgdir/usr/share/icons"
+  install -d "$pkgdir/usr/share/icons/rose-pine-cursor-hyprcursor"
   cp -ar --no-preserve=ownership \
     hyprcursors \
     manifest.hl \
-    "$pkgdir/usr/share/icons"
+    "$pkgdir/usr/share/icons/rose-pine-cursor-hyprcursor"
 }
