@@ -1,12 +1,13 @@
 pkgbase = r-paintmap
 	pkgdesc = Plotting Paintmaps
 	pkgver = 1.0
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=paintmap
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	source = https://cran.r-project.org/src/contrib/paintmap_1.0.tar.gz
-	sha256sums = 730f6a91a8c089e2eacf1d658e0f3b83c85f17255d62e7a0abbd7ae98b3885e3
+	md5sums = dfea07c16287fce1eca4d238b3b2a46e
+	b2sums = c1ad345649427cb3436874e70118d81414b2b8c21ab8203da798cac0184ee54e8c66188d8a56f2036fa08fe0c5b397f776778305027df6450eea08aa833e3a3d
 
 pkgname = r-paintmap
