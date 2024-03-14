@@ -1,11 +1,11 @@
 pkgbase = mbcord-bin
 	pkgdesc = An Emby/Jellyfin rich presence client for Discord
 	pkgver = 3.0.7
-	pkgrel = 7
+	pkgrel = 8
 	url = https://mbcord.sandwichfox.de/
 	arch = x86_64
 	license = MIT
-	depends = electron25
+	depends = electron25-bin
 	provides = mbcord=3.0.7
 	conflicts = mbcord
 	source = mbcord-3.0.7.deb::https://github.com/SandwichFox/MBCord/releases/download/3.0.7/mbcord_3.0.7_amd64.deb
@@ -13,6 +13,6 @@ pkgbase = mbcord-bin
 	source = mbcord.sh
 	sha256sums = f93b47d1384c217115373c2e6a4cb93f000aa54687fed7013d8bc91eecc386cd
 	sha256sums = 25f147af5b79f33fbdfbc0b16dcae3db7d19fa67b58f7a95c3d5cabe8638d011
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = mbcord-bin
