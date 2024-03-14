@@ -1,11 +1,11 @@
 pkgbase = rompr
 	pkgdesc = A php web frontend to MPD and Mopidy
-	pkgver = 2.10
+	pkgver = 2.14
 	pkgrel = 1
 	url = https://github.com/fatg3erman/RompR/
 	install = rompr.install
 	arch = any
-	license = custom
+	license = LicenseRef-rompr
 	depends = imagemagick
 	depends = php
 	depends = php-sqlite
@@ -20,7 +20,7 @@ pkgbase = rompr
 	options = emptydirs
 	backup = var/lib/rompr/albumart
 	backup = var/lib/rompr/prefs
-	source = https://github.com/fatg3erman/RompR/releases/download/2.10/rompr-2.10.zip
-	sha256sums = 777831095fa35dc827c274a6f869c2cc2633a70e36e498ad3d8f8b218e6c4c65
+	source = https://github.com/fatg3erman/RompR/releases/download/2.14/rompr-2.14.zip
+	sha256sums = 3e34efcf6853727a031f0bc33b4b0d44d358d283d14b08af9084ac07ca2a66c8
 
 pkgname = rompr
