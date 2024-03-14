@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wayfire
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="3D wayland compositor"
 arch=(x86_64 aarch64)
 url=https://wayfire.org
@@ -14,7 +14,6 @@ b2sums=('1b596b28878789ca26eeb57c6c24e0b69508731de2144e1477f8071b41f17757b2125f2
 
 build() {
 	rm -rf build
-	PKG_CONFIG_PATH=/usr/lib/wlroots0.16/pkgconfig \
 	arch-meson "${pkgname}-${pkgver}" build \
 		--auto-features=disabled \
 		-Duse_system_wfconfig=enabled \
