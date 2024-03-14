@@ -4,7 +4,7 @@ _pkgname=translationCore
 pkgver=3.6.3
 _subver=MAX-e859026
 _electronversion=25
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source platform for checking and managing Bible translation projects"
 arch=(
     'aarch64'
@@ -16,7 +16,7 @@ license=('ISC')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'hicolor-icon-theme'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/tC-linux-arm64-${pkgver}-${_subver}.deb")

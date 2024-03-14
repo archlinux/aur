@@ -1,12 +1,12 @@
 pkgbase = translationcore-bin
 	pkgdesc = An open source platform for checking and managing Bible translation projects
 	pkgver = 3.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.translationcore.com/
 	arch = aarch64
 	arch = x86_64
 	license = ISC
-	depends = electron25
+	depends = electron25-bin
 	depends = hicolor-icon-theme
 	provides = translationcore=3.6.3
 	conflicts = translationcore
