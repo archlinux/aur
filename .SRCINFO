@@ -1,0 +1,27 @@
+pkgbase = android-x86-64-libsasl-bootstrap
+	pkgdesc = Cyrus Simple Authentication Service Layer (SASL) library (Android, x86-64)
+	pkgver = 2.1.28
+	pkgrel = 1
+	url = https://www.cyrusimap.org/sasl/
+	arch = any
+	license = custom
+	makedepends = android-configure
+	makedepends = android-x86-64-sqlite
+	depends = android-x86-64-gdbm
+	depends = android-x86-64-openssl
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-2.1.28/cyrus-sasl-2.1.28.tar.gz
+	source = https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-2.1.28/cyrus-sasl-2.1.28.tar.gz.sig
+	source = 0001-Add-missing-headers.patch
+	source = 0002-Disable-endpwent.patch
+	validpgpkeys = 829F339F8C296FE80F409D93E3D7C118C7B9F46A
+	validpgpkeys = DEA1999F0CDB1AAEBA001E0DBEE3E3B4D2F06546
+	md5sums = 6f228a692516f5318a64505b46966cfa
+	md5sums = SKIP
+	md5sums = 15c03fcc850a6282adabc4f4d17cd517
+	md5sums = f4ff7c553efe884ee328167893005e11
+
+pkgname = android-x86-64-libsasl-bootstrap
