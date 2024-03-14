@@ -78,6 +78,9 @@ _binaryscript=("skywire-cli" "skywire-visor")
 _appscript=("skychat" "skysocks" "skysocks-client" "vpn-client" "vpn-server")
 
 build() {
+  _build
+}
+_build() {
   GOBIN="${srcdir}"
   _GOAPPS="${GOBIN}/apps"
   mkdir -p ${_GOAPPS}

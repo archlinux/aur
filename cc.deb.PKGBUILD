@@ -63,6 +63,7 @@ build() {
   done
   echo -e '#!/bin/bash\n[[ -f /opt/skywire/scripts/skywire-autoconfig ]]  && /opt/skywire/scripts/skywire-autoconfig || echo "error: /opt/skywire/skywire-autoconfig missing"' | tee "${srcdir}/postinst.sh"
   echo -e '#!/bin/bash\n[[ -d /opt/skywire ]]  && rm /opt/skywire || echo "error: directory /opt/skywire not present so not removed"' | tee "${srcdir}/prerm.sh"
+  _build
 }
 
 package() {
@@ -75,16 +76,18 @@ if [[ ${_pkgarch} == "armel" || ${_pkgarch} == "armhf" ]] ; then
   local _pkgarch1=arm
 fi
 
-local _binaryarchive="${_pkgname}-${_tag_ver}-linux-${_pkgarch1}.tar.gz"
-[[ -f "${srcdir}/${_pkgname}-visor" ]] && rm -rf "${srcdir}/${_pkgname}-visor"
-[[ -f "${srcdir}/${_pkgname}-cli" ]] && rm -rf "${srcdir}/${_pkgname}-cli"
-[[ -d "${srcdir}/apps" ]] && rm -rf "${srcdir}/apps"
-[[ -d ${pkgdir}/test ]] && rm -rf ${pkgdir}/test
+local _binaryarchive="${_pkgname}-deployment-${_tag_ver}-linux-${_pkgarch1}.tar.gz"
+[[ -f "${srcdir}/${_pkgname}" ]] && rm -rf "${srcdir}/${_pkgname}" || true
+#[[ -d "${srcdir}/apps" ]] && rm -rf "${srcdir}/apps" || true
+[[ -d "${pkgdir}/test" ]] && rm -rf "${pkgdir}/test" || true
 mkdir -p "${pkgdir}/test" && cd "${pkgdir}/test"
 tar -xf "${srcdir}/${_binaryarchive}"
 
 GOBIN="${pkgdir}/test"
 _GOAPPS="${GOBIN}/apps"
+cp "${srcdir}/skywire-cli" "${pkgdir}/test/"
+cp "${srcdir}/skywire-visor" "${pkgdir}/test/"
+cp -r "${srcdir}/apps" "${_GOAPPS}"
 #set up to create a .deb package
 _debpkgdir="${pkgname}-${pkgver}-${pkgrel}-${_pkgarch}"
 _pkgdir="${pkgdir}/${_debpkgdir}"
