@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/picotron">
+    <comment>Picotron cartridge</comment>
+    <comment xml:lang="en">Picotron cartridge</comment>
+    <magic priority="50">
+      <match type="string" value="picotron cartridge" offset="0"/>
+    </magic>
+    <glob-deleteall/>
+    <glob pattern="*.p64"/>
+    <glob pattern="*.p64.png"/>
+  </mime-type>
+</mime-info>

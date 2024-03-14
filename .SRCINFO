@@ -1,0 +1,17 @@
+pkgbase = picotron
+	pkgdesc = A fantasy workstation for making pixelart games, animations, music, demos and other curiosities.
+	pkgver = 0.1.0a
+	pkgrel = 1
+	url = https://www.lexaloffle.com/picotron.php
+	arch = x86_64
+	license = custom:commercial
+	depends = sdl2
+	provides = picotron
+	source = picotron.desktop
+	source = picotron.xml
+	sha256sums = 04862c5d2f4ec10f4979ec316c4e14b01e073806d90bc23290e8420e142f710a
+	sha256sums = 45525e5ff68d3380492e188e626cf2208491ba0df79cc246aa8560e05f5b3100
+	source_x86_64 = file://picotron_0.1.0a_amd64.zip
+	sha256sums_x86_64 = ab49b393d94179ec02f3cb7e1aef4f5e7c2c21c665c011764dbc1882c82af701
+
+pkgname = picotron

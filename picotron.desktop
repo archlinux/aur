@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Picotron
+GenericName=Fantasy Console
+Comment=A fantasy workstation for making pixelart games, animations, music, demos and other curiosities.
+Exec=/usr/bin/picotron
+MimeType=application/picotron
+StartupWMClass=picotron
+Icon=picotron
+Terminal=false
+Categories=Game;Development;
