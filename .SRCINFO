@@ -1,11 +1,11 @@
 pkgbase = mic-mutebar-bin
 	pkgdesc = Tiny GUI app that show microphone status
 	pkgver = 1.4.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/azu/mic-mutebar
 	arch = x86_64
 	license = MIT
-	depends = electron25
+	depends = electron25-bin
 	depends = nodejs
 	provides = mic-mutebar=1.4.1
 	conflicts = mic-mutebar
@@ -14,6 +14,6 @@ pkgbase = mic-mutebar-bin
 	source = mic-mutebar.sh
 	sha256sums = 53e36e4a720c402da1e6eb7aaef7e24f55aae79783ce24046f576418c101a2c2
 	sha256sums = 7d6cda6b7bbd66549dca436fbb5b95e87d019066b97dec00cd7cac5d21115d69
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = mic-mutebar-bin
