@@ -1,0 +1,13 @@
+pkgbase = sskit-dinit
+	pkgdesc = SSKit Dinit service for making snapshots.
+	pkgver = 0.8.1b
+	pkgrel = 1
+	url = https://github.com/mdomlop/sskit
+	arch = any
+	groups = dinit-world
+	license = GPLv3+
+	depends = sskit
+	source = https://github.com/mdomlop/sskit-dinit/archive/refs/tags/0.8.1b.tar.gz
+	md5sums = 752901711811f0711582ab3ddddc7a07
+
+pkgname = sskit-dinit
