@@ -2,10 +2,10 @@
 # Maintainer: leaeasy <leaeasy at gmail dot com>
 # Contributor: devome <evinedeng at hotmail dot com>
 
-pkgname=wechat-universal-bwrap
-_pkgname=${pkgname%-*}
+_pkgname=wechat-universal
+pkgname=${_pkgname}-bwrap
 pkgver=1.0.0.238
-pkgrel=1
+pkgrel=2
 pkgdesc="WeChat (Universal) with bwrap sandbox"
 arch=('x86_64' 'aarch64' 'loong64')
 url="https://weixin.qq.com"
@@ -18,6 +18,7 @@ depends=(
     'at-spi2-core'
     'bash'
     'bubblewrap'
+    'flatpak-xdg-utils'
     'libxcomposite'
     'libxkbcommon-x11'
     'libxrender'
