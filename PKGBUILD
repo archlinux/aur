@@ -80,6 +80,6 @@ package() {
    
     cat >>"${pkgdir}/usr/bin/$pkgname" <<EOD
 #!/usr/bin/bash
-exec env ELECTRON_FORCE_IS_PACKAGED=true env CUSTOM_APP_NAME=telegram-a env CUSTOM_WINDOW_TITLE="Telegram A" $_electron /usr/lib/telegram-a "\$@"
+exec env ELECTRON_FORCE_IS_PACKAGED=true env CUSTOM_APP_NAME=telegram-a env CUSTOM_WINDOW_TITLE="Telegram A" $_electron /usr/lib/telegram-a --ozone-platform-hint=auto --enable-features=WaylandWindowDecorations "\$@"
 EOD
 }
