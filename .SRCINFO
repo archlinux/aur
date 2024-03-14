@@ -8,6 +8,7 @@ pkgbase = chunkcleaner-git
 	makedepends = go
 	makedepends = git
 	depends = glibc
+	provides = chunkcleaner
 	conflicts = chunkcleaner
 	source = git+https://github.com/zeroBzeroT/ChunkCleaner.git
 	sha256sums = SKIP

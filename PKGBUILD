@@ -9,6 +9,7 @@ depends=("glibc")
 makedepends=("go" "git")
 conflicts=("chunkcleaner")
 backup=()
+provides=("chunkcleaner")
 source=("git+https://github.com/zeroBzeroT/ChunkCleaner.git")
 sha256sums=('SKIP')
 
