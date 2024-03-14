@@ -72,6 +72,8 @@ BWRAP_ARGS=(
     --ro-bind-try "${HOME}/.fonts"{,}
     --ro-bind-try "${HOME}/.config/fontconfig"{,}
     --ro-bind-try "${HOME}/.local/share/fonts"{,}
+    --ro-bind-try "${HOME}/.icons"{,}
+    --ro-bind-try "${HOME}/.local/share/.icons"{,}
     # /run
     --dev-bind /run/dbus{,}
     --ro-bind /run/systemd/userdb{,}
