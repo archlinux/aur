@@ -7,6 +7,7 @@ pkgbase = python-rdt
 	license = BUSL-1.1
 	checkdepends = python-pytest-subtests
 	checkdepends = python-copulas
+	checkdepends = python-invoke
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
