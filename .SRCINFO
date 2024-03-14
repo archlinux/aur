@@ -1,0 +1,19 @@
+pkgbase = quatracker-git
+	pkgdesc = A score tracker for the rhythm game Quaver.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/Cyan903/Quatracker
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = jq
+	makedepends = go
+	makedepends = nodejs
+	makedepends = pnpm
+	depends = webkit2gtk
+	provides = quatracker
+	conflicts = quatracker
+	source = quatracker-git::git+https://github.com/Cyan903/Quatracker.git
+	md5sums = SKIP
+
+pkgname = quatracker-git
