@@ -3,10 +3,10 @@
 # Contributer: TryA -  https://bbs.archlinux.org/viewtopic.php?id=114996
 
 pkgname=mprime
-pkgver=30.8.15
-epoch=2
-_pkgver=308b15
-pkgrel=2
+pkgver=30.19.13
+epoch=1
+_pkgver=3019b13
+pkgrel=1
 pkgdesc="A GIMPS, distributed computing project client, dedicated to finding Mersenne primes."
 arch=(x86_64)
 url="http://www.mersenne.org"
@@ -14,10 +14,10 @@ license=('custom')
 depends=(curl hwloc boost-libs)
 makedepends=(boost)
 conflicts=(mprime-bin)
-source=("https://www.mersenne.org/download/software/v30/30.8/p95v${_pkgver}.source.zip"
+source=("https://www.mersenne.org/download/software//v${pkgver%%.*}/${pkgver%.*}/p95v${_pkgver}.source.zip"
         0001-makefile-fix-build-for-Arch-Linux.patch)
-b2sums=('9ec5da2125b62630da84cad91b2293403fbdc9d86eb3b03a3b943256417f816cdfff1d8c5af9f6e7604c5cc628c65c13161437e19468985b7b037562fc1050da'
-        '8b6f218b70d89d76b555e0955d480e7112279dd87f8f6101dd10eaf9b8de846d9fd469a7ba0ba7685ed68aa40fff240e0c7a9002380e4482ddf44d69b285587c')
+b2sums=('d0dbc36269585321a4cef44298b6438ab75f255a5ada5f35aea1218173da5ff04a8593d70cccc3776f45c415b9c1ed4152f3dda23710758ae21be66a94524bf3'
+        '630b854d53db06980dddb5b4489cb6192cba9205839ced97397ef2cff5c7cc1905443f3bf37608233b84d2a84634dc38a46a40d4239d844cba424fa3a34de15b')
 
 prepare () {
 	patch -Np1 -i 0001-makefile-fix-build-for-Arch-Linux.patch
