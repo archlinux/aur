@@ -9,8 +9,9 @@ source=("lexido-v1.2.tar.gz::https://github.com/micr0-dev/lexido/archive/refs/ta
 sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
-    go build -o $pkgname
+    cd "$srcdir"
+    cd "$pkgname-$pkgver"
+    go build -o "$pkgname"
 }
 
 package() {
