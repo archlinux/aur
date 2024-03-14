@@ -1,19 +1,17 @@
 pkgbase = stampnyaa-bin
 	pkgdesc = A simple desktop app for downloading and using LINE stickers in chat apps like Discord.
 	pkgver = 1.6.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/MarvNC/StampNyaa
 	arch = x86_64
 	license = MIT
 	depends = electron25
 	depends = java-runtime
-	depends = libxtst
-	depends = libx11
 	provides = stampnyaa=1.6.0
 	conflicts = stampnyaa
 	source = stampnyaa-1.6.0.deb::https://github.com/MarvNC/StampNyaa/releases/download/v1.6.0/stampnyaa_1.6.0_amd64.deb
 	source = stampnyaa.sh
 	sha256sums = ea6341d72dc717c8fa0fd9a41e0ea871e23852eae93cc3318144ba3417920d64
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = stampnyaa-bin
