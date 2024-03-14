@@ -3,7 +3,7 @@
 
 pkgname=qt5-remoteobjects
 _basever=5.15.13
-pkgver=5.15.12
+pkgver=5.15.13
 pkgrel=1
 _commit=18ef1cdce7bc4c93415f38f1c220ab697aa75908
 arch=(x86_64)
