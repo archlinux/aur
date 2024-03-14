@@ -1,11 +1,11 @@
 pkgbase = lexido
-	pkgver = 1.2
+	pkgver = v1.2
 	pkgrel = 1
 	url = https://github.com/micr0-dev/lexido
 	arch = any
 	license = GAPL
 	makedepends = go
-	source = lexido-1.2.tar.gz::https://github.com/micr0-dev/lexido/archive/refs/tags/1.2.tar.gz
+	source = lexido-v1.2.tar.gz::https://github.com/micr0-dev/lexido/archive/refs/tags/v1.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = lexido
