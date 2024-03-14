@@ -2,7 +2,7 @@
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
 # Updated by https://github.com/Freed-Wu/zathura-language-server/blob/main/.github/workflows/main.yml
 pkgname=zathura-language-server
-pkgver=0.0.8
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="zathura's language server"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=(python-installer)
 license=(GPL3)
 _py=py3
 source=("https://files.pythonhosted.org/packages/$_py/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('cf3d16b138710f9eb467f5ad7db0bad21666ca699c51493062bd6b23fbfb180c')
+sha256sums=('a5f8855dcbdbb19f9ea194cd4bc2d1a736052abc14d9bdfec0d4fb7cb1679755')
 
 package() {
 	python -m installer -d "$pkgdir" ./*.whl
