@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bigrquery
-_pkgver=1.5.0
+_pkgver=1.5.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -49,8 +49,8 @@ optdepends=(
   r-wk
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3e011bbd218921b16f42c1147d66b118')
-b2sums=('e808a229740407a387ee2384bc30b944394d8cc85511fe2ebbe187c7a6368a554415fda7beb3ac3b3e889ec18f128f593c6177ebba461dcf2ab9a52b467e959a')
+md5sums=('376d3dd9cc24238405bea427af4bab97')
+b2sums=('a33316684152a954f002b5350ff772f2333b1a6ab0f202a4782eb7199a3a83ee848f2aab38266ea0ee6aaec0927a5f7b6a8509a3c4ec56157bde12a5867a83ec')
 
 build() {
   mkdir build
