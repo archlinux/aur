@@ -3,7 +3,7 @@ pkgname=station-bin
 _pkgname=Station
 pkgver=2.7.3
 _electronversion=25
-pkgrel=1
+pkgrel=2
 pkgdesc="The first open-source smart browser for busy people. A single place for all of your web applications."
 arch=('x86_64')
 url="https://getstation.com/"
@@ -12,7 +12,7 @@ license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'hicolor-icon-theme'
 )
 makedepends=(
@@ -23,11 +23,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('6b420c84cfcfcf0f01729381c042202bc941a90bd5bdcf91241e9dc99fadbbdd'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
