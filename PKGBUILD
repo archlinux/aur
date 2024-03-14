@@ -1,8 +1,8 @@
 _kompute_hash=d1e3b0953cf66acc94b2e29693e221427b2c1f3f
-_llama_cpp_hash=b61ee89fca2038e9937317a794e28e08391b7888
+_llama_cpp_hash=2a086f71f5b570a0f047f88d88cf5704aae7ec7c
 pkgname=gpt4all-chat
-pkgver=2.7.1
-pkgrel=2
+pkgver=2.7.3
+pkgrel=1
 pkgdesc="open-source LLM chatbots that you can run anywhere"
 arch=("x86_64")
 url="https://github.com/nomic-ai/gpt4all"
@@ -18,11 +18,11 @@ source=(
     "kompute-$_kompute_hash.tar.gz::https://github.com/nomic-ai/kompute/archive/$_kompute_hash.tar.gz"
     "llama.cpp-$_llama_cpp_hash.tar.gz::https://github.com/nomic-ai/llama.cpp/archive/$_llama_cpp_hash.tar.gz"
 )
-sha256sums=('54373cd1a83ab94626e7ebaea04b180b25d4a56d7f89f81da57d441032d6997a'
+sha256sums=('4c7b072d93a4ba7692e65e3551ab5cb9593b29865869fd4aae26e3eecf0d24ff'
             'd9198b1ee584becf5b06622038619511dd5b0f78a71441d034dbf7324dd1439b'
             '4ed3904195fc4a281a016ec611d43630c44fc1aee06916f7a7fb8bc0a19905b5'
             'b47b1d8154a99304a406d564dfaad6dc91332b8bccc4ef15f1b2d2cce332b84b'
-            '823a3f2bcf0131a8849e72fa3cddd42844b0c9a7a3d7b31b52cd5f8eeec81e73')
+            '3a0be674de0d056c229f7e5bafd00b1856ed06709d85f6368a8d1abade1d6f03')
 
 prepare() {
     cd "$srcdir/gpt4all-$pkgver"
