@@ -4,8 +4,8 @@
 
 pkgname=ruby-excon
 _gemname="${pkgname#ruby-}"
-pkgver=0.109.0
-_commit='1999ce9ea5c923b5dbbbd71ce41bd1f8548d0f09'
+pkgver=0.110.0
+_commit='1970dee29bd3045962dbc7278a822bfca754e9e'
 pkgrel=1
 pkgdesc='EXtended http(s) CONnections'
 arch=('any')
