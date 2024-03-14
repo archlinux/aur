@@ -1,11 +1,11 @@
 pkgbase = musicfree-desktop-bin
 	pkgdesc = 插件化、定制化、无广告的免费音乐播放器
 	pkgver = 0.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://musicfree.upup.fun/
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = electron25
+	depends = electron25-bin
 	depends = nodejs
 	provides = musicfree-desktop=0.0.3
 	conflicts = musicfree-desktop
@@ -14,6 +14,6 @@ pkgbase = musicfree-desktop-bin
 	source = musicfree-desktop-bin-0.0.3.deb::https://github.com/maotoumao/MusicFreeDesktop/releases/download/v0.0.3/MusicFree-0.0.3-linux-amd64.deb
 	source = musicfree-desktop.sh
 	sha256sums = 49341709db01fae878cb1df11c7e90cb131fd830ce2ea0bf74c2d8d5890a8671
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = musicfree-desktop-bin
