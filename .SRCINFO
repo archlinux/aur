@@ -5,7 +5,7 @@ pkgbase = stampnyaa-bin
 	url = https://github.com/MarvNC/StampNyaa
 	arch = x86_64
 	license = MIT
-	depends = electron25
+	depends = electron25-bin
 	depends = java-runtime
 	provides = stampnyaa=1.6.0
 	conflicts = stampnyaa
