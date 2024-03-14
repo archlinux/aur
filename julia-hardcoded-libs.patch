@@ -1,16 +1,3 @@
-diff --git a/stdlib/libLLVM_jll/src/libLLVM_jll.jl b/stdlib/libLLVM_jll/src/libLLVM_jll.jl
-index fa45e754e5..b51812e3a8 100644
---- a/stdlib/libLLVM_jll/src/libLLVM_jll.jl
-+++ b/stdlib/libLLVM_jll/src/libLLVM_jll.jl
-@@ -23,7 +23,7 @@ if Sys.iswindows()
- elseif Sys.isapple()
-     const libLLVM = "@rpath/libLLVM.dylib"
- else
--    const libLLVM = "libLLVM-14jl.so"
-+    const libLLVM = "libLLVM-15.so"
- end
- 
- function __init__()
 diff --git a/stdlib/nghttp2_jll/src/nghttp2_jll.jl b/stdlib/nghttp2_jll/src/nghttp2_jll.jl
 index 8b98c76ac5..77ad9e3800 100644
 --- a/stdlib/nghttp2_jll/src/nghttp2_jll.jl
@@ -30,9 +17,9 @@ index f0d4b5dda6..2ed3017b51 100644
 +++ b/stdlib/LibGit2_jll/src/LibGit2_jll.jl
 @@ -23,7 +23,7 @@ if Sys.iswindows()
  elseif Sys.isapple()
-     const libgit2 = "@rpath/libgit2.1.5.dylib"
+     const libgit2 = "@rpath/libgit2.1.6.dylib"
  else
--    const libgit2 = "libgit2.so.1.5"
+-    const libgit2 = "libgit2.so.1.6"
 +    const libgit2 = "libgit2.so"
  end
  
@@ -58,18 +45,18 @@ index 2940970cef..359dbd9065 100644
      const libsuitesparseconfig = "@rpath/libsuitesparseconfig.5.dylib"
      const libumfpack = "@rpath/libumfpack.5.dylib"
  else
--    const libamd = "libamd.so.2"
--    const libbtf = "libbtf.so.1"
--    const libcamd = "libcamd.so.2"
--    const libccolamd = "libccolamd.so.2"
--    const libcholmod = "libcholmod.so.3"
--    const libcolamd = "libcolamd.so.2"
--    const libklu = "libklu.so.1"
--    const libldl = "libldl.so.2"
--    const librbio = "librbio.so.2"
--    const libspqr = "libspqr.so.2"
--    const libsuitesparseconfig = "libsuitesparseconfig.so.5"
--    const libumfpack = "libumfpack.so.5"
+-    const libamd = "libamd.so.3"
+-    const libbtf = "libbtf.so.2"
+-    const libcamd = "libcamd.so.3"
+-    const libccolamd = "libccolamd.so.3"
+-    const libcholmod = "libcholmod.so.4"
+-    const libcolamd = "libcolamd.so.3"
+-    const libklu = "libklu.so.2"
+-    const libldl = "libldl.so.3"
+-    const librbio = "librbio.so.4"
+-    const libspqr = "libspqr.so.4"
+-    const libsuitesparseconfig = "libsuitesparseconfig.so.7"
+-    const libumfpack = "libumfpack.so.6"
 +    const libamd = "libamd.so"
 +    const libbtf = "libbtf.so"
 +    const libcamd = "libcamd.so"
