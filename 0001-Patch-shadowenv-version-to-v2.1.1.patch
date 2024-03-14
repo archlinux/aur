@@ -1,25 +1,25 @@
-From e693ae3b9c8d3ea27a99b88aa51b535c1f1bddcf Mon Sep 17 00:00:00 2001
+From edd0ff0d7858ef08ae236617816848d5307eabdc Mon Sep 17 00:00:00 2001
 From: Michael Herold <opensource@michaeljherold.com>
-Date: Thu, 10 Nov 2022 21:21:21 -0600
-Subject: [PATCH] Patch shadowenv version to v2.0.7
+Date: Wed, 13 Mar 2024 20:21:11 -0500
+Subject: [PATCH] Patch shadowenv version to v2.1.1
 
 ---
  Cargo.lock | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Cargo.lock b/Cargo.lock
-index b6dd491..3de0610 100644
+index fb6ef6e..347b404 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -1141,7 +1141,7 @@ dependencies = [
+@@ -1168,7 +1168,7 @@ dependencies = [
  
  [[package]]
  name = "shadowenv"
--version = "2.0.6"
-+version = "2.0.7"
+-version = "2.1.0"
++version = "2.1.1"
  dependencies = [
   "atty",
   "blake2",
 -- 
-2.37.0
+2.44.0
 
