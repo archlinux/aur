@@ -2,7 +2,7 @@
 
 pkgname=kafkactl
 pkgver=5.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Command Line Tool for managing Apache Kafka"
 url="https://github.com/deviceinsight/kafkactl/"
 arch=("i686" "x86_64" "aarch64")
@@ -16,7 +16,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/deviceinsight/kafkactl/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  c632cca41dbbd410a5084a1350fc7e0d2eaed5fe0b72ad8fa8b73e05dbb3e40d
+  66745092f124995f358f236e80b1fe0d60232d4bd9a1d457d8b7011ed95d5a00
 )
 
 build() {
