@@ -6,7 +6,7 @@ pkgbase = qcalc-bin
 	arch = x86_64
 	license = MIT
 	makedepends = fuse2
-	depends = electron25
+	depends = electron25-bin
 	provides = qcalc=0.7.2_fix1
 	conflicts = qcalc
 	source = qcalc-0.7.2_fix1.AppImage::https://github.com/from104/qcalc/releases/download/v0.7.2fix1/Q.Calc-0.7.2-fix1.AppImage
