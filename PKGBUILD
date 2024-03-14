@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wf-shell
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='GTK3-based panel for the Wayfire compositor'
 url=https://wayfire.org
 arch=(x86_64 aarch6)
@@ -14,7 +14,6 @@ b2sums=('d778b2ed214dbb1b072400a85021d3ef4e590bc707417cf2de486c9211fdf3d1fa1c14d
 
 build () {
 	rm -rf build
-	PKG_CONFIG_PATH=/usr/lib/wlroots0.16/pkgconfig \
 	arch-meson "${pkgname}-${pkgver}" build \
 		--auto-features=disabled \
 		-Dpulse=enabled
