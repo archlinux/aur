@@ -1,11 +1,10 @@
 pkgbase = terminus-font-italic
 	pkgdesc = Monospace bitmap font (for X11 and console, Italic version)
 	pkgver = 4.49.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://terminus-font.sourceforge.net/
 	arch = any
-	license = OFL-1.1
-	license = GPL-2.0-or-later
+	license = OFL-1.1 AND GPL-2.0-or-later
 	makedepends = xorg-bdftopcf
 	makedepends = python
 	makedepends = mkbold-mkitalic

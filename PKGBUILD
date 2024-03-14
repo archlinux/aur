@@ -2,11 +2,11 @@
 _pkgname=terminus-font
 pkgname="$_pkgname-italic"
 pkgver=4.49.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Monospace bitmap font (for X11 and console, Italic version)"
 arch=('any')
 url="https://terminus-font.sourceforge.net/"
-license=('OFL-1.1' 'GPL-2.0-or-later')
+license=('OFL-1.1 AND GPL-2.0-or-later')
 makedepends=('xorg-bdftopcf' 'python' 'mkbold-mkitalic')
 source=("https://downloads.sourceforge.net/project/terminus-font/terminus-font-${pkgver%.1}/terminus-font-$pkgver.tar.gz")
 sha256sums=('d961c1b781627bf417f9b340693d64fc219e0113ad3a3af1a3424c7aa373ef79')
