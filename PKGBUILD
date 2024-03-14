@@ -80,7 +80,7 @@ source_aarch64=(
 	wechat-arm-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_1.0.0.236_arm64.deb"
 )
 
-md5sums=('09c6bb147d0e9803bd613c646dcc3722'
+md5sums=('e9efd1f5273a4e2359375942d7ed9626'
          'b6e6920af829dafb0be82da1c79e46a9'
          '600e74549ce2258c045d5c2f7689ea63'
          'e49130d3e6185335db9a60f31d4b7429'

@@ -79,6 +79,7 @@ function execApp() {
 	touch "${XDG_DOCUMENTS_DIR}"/WeChat_Data/.flatpak-info
 	cameraDect
 	bwrap \
+		--cap-drop ALL \
 		--dev /dev \
 		--dev-bind /dev/dri /dev/dri \
 		--dev-bind /dev/shm /dev/shm \
