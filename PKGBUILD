@@ -3,29 +3,29 @@
 _pkgname=Matching
 _pkgver=4.10-14
 pkgname=r-${_pkgname,,}
-pkgver=4.10.14
-pkgrel=1
-pkgdesc='Multivariate and Propensity Score Matching with Balance Optimization'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Multivariate and Propensity Score Matching with Balance Optimization"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r
 )
 optdepends=(
-  r-parallel
   r-rgenoud
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bfb4286a5da29dcfcc4ddee6299e2d91c0de177720b060b8946fd16f32f6a6b0')
+md5sums=('c7cff83f8723c0f24c2c985a3a776ac7')
+b2sums=('f4a6c20435fcc9b640040fbc2a5943b5ac94bab97c67d0ab5e8b7cfeab9c8a8ca764e756020aa419d7a8dfd3ba0aa45aacf0af5ceedcc2e060bc49347f5facbb')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
