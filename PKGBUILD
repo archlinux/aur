@@ -5,7 +5,7 @@ arch=('any')
 url="https://github.com/micr0-dev/lexido"
 license=('GAPL')
 makedepends=('go')
-source=("lexido-v1.2.tar.gz::https://github.com/micr0-dev/lexido/archive/refs/tags/v1.2.tar.gz")  # Corrected syntax
+source=("lexido-v1.2.tar.gz::https://github.com/micr0-dev/lexido/archive/refs/tags/v1.2.tar.gz")
 sha256sums=('SKIP')
 
 build() {
