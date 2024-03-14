@@ -1,11 +1,11 @@
 pkgbase = wf-shell
 	pkgdesc = GTK3-based panel for the Wayfire compositor
 	pkgver = 0.8.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wayfire.org
 	arch = x86_64
 	arch = aarch6
-	license = custom:MIT
+	license = MIT
 	makedepends = wayland
 	makedepends = wayland-protocols
 	makedepends = meson
