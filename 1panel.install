@@ -1,0 +1,53 @@
+#!/bin/bash
+
+pre_install() {
+    echo -e "================== installing 1Panel =================="
+}
+
+post_install() {
+    echo -e "If you are not Chinese user, please click \033[32m'中文（简体）'\033[0m and switch it to English."
+    # Detecting if docker and docker-compose are successfully installed.
+    if pacman -Qs docker >/dev/null 2>&1; then
+        echo -e "\033[32mDocker is installed correctly.\033[0m"
+    else
+        echo -e "\033[33mWarning: Docker is not installed, please install it, or most of the features of this package will not be available.\033[0m"
+    fi
+    if pacman -Qs docker-compose >/dev/null 2>&1; then
+        echo -e "\033[32mDocker-compose is installed correctly.\033[0m"
+    else
+        echo -e "\033[33mWarning: Docker Compose is not installed, please install it, or 1Panel application store will not be avaliable.\033[0m"
+    fi
+    echo -e "\033[31mUsing the default username, password, port number and security entry is very risky behavior!\033[0m."
+    echo -e "Please run \033[34m1pinit\033[0m to set your username and password before start 1panel.service."
+}
+
+pre_remove() {
+    echo -e "================= Uninstalling 1Panel ================="
+    echo -e "\033[34mStopping systemd service...\033[0m"
+    systemctl disable --now 1panel
+}
+
+post_remove() {
+    echo -e "Please backup \033[34m/var/lib/1p/1panel\033[0m directory manually, and then you can delete it."
+    echo -e "================= 1Panel uninstalled =================="
+}
+
+pre_upgrade() {
+    export no_need_start="false"
+    echo -e "================== Upgrading 1Panel ==================="
+    if systemctl is-active --quiet 1panel; then
+        echo -e "Temporarily stoping 1Panel service..."
+        systemctl stop 1panel
+        export _restart_1panel_service=true
+    fi
+}
+
+
+post_upgrade() {
+    if [ -n "${_restart_1panel_service+x}" ]; then
+        echo -e "Restarting..."
+        systemctl start 1panel
+        unset _restart_1panel_service
+    fi
+    echo -e "================== 1Panel upgraded ===================="
+}

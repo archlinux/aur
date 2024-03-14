@@ -1,0 +1,281 @@
+#!/bin/bash
+
+echo -e "======================= Initializing ======================="
+
+function Check_Root() {
+  if [[ $EUID -eq 0 ]]; then
+    echo "Please do not run it as root."
+    exit 1
+  fi
+}
+
+function Check_1Panel() {
+    if pacman -Ql 1panel &> /dev/null; then
+        echo -e "1Panel has been installed."
+    else
+        echo -e "\033[31mError:\033[9m 1Panel has not been installed, please install it using AUR"
+        echo -e "Please visit \033[33m https://aur.archlinux.org/packages/1panel/ \033[0mto install it."
+    fi
+}
+
+function Check_Docker(){
+    echo -e "Checking Docker Service."
+    if pacman -Ql docker >/dev/null 2>&1; then
+        echo -e "Docker is installed, checking docker service status..."
+        if sudo systemctl status docker >/dev/null 2>&1; then
+            echo -e "Docker Service is running."
+        else
+            read -p "Docker Service is not running, do you want to start it? [Y/n] " start_docker
+            if [[ $start_docker != "N" ]] && [[ $start_docker != "n" ]]; then
+                sudo systemctl start docker
+                echo -e "Waiting for Docker Service startup..."
+                for b in {1..30}
+                do
+                    sleep 3
+                    service_status=`sudo systemctl status docker 2>&1 | grep Active`
+                    if [[ $service_status == *running* ]];then
+                        echo -e "Docker Service is running now."
+                        break;
+                    else
+                        echo -e "Docker Service is not running yet."
+                    fi
+                done
+            else
+                echo -e "Docker will not start, you can manually run \033[34msudo systemctl enable --now docker.service\033[0mto start it."
+            fi
+        fi
+    else
+        echo -e "Docker is not installed, do you want to install Docker? [Y/n] "
+        read -r install_docker
+        if [[ $install_docker != "N" ]] && [[ $install_docker != "n" ]]; then
+            echo -e "Installing Docker..."
+            sudo pacman -Sy docker
+        else
+            echo -e "\033[33mWarning:\033[0m if you do not install docker, you will not be able to use 1Panel app store and docker manager."
+        fi
+    fi
+}
+
+function Check_Docker_Compose(){
+    echo -e "Checking Docker Compose..."
+    if sudo docker-compose version >/dev/null 2>&1; then
+        echo -e "Docker Compose is installed."
+    else
+        read -p "Docker Compose is not installed, do you want to install Docker Compose? [Y/n] " install_docker_compose
+        if [[ $install_docker_compose != "N" ]] && [[ $install_docker_compose != "n" ]]; then
+            echo -e "Installing Docker Compose..."
+            sudo pacman -Sy docker-compose
+        else
+            echo -e "\033[33mWarning:\033[0m if you do not install docker compose, you will not be able to use 1Panel app store and docker manager."
+        fi
+    fi
+}
+
+function Set_Port(){
+    DEFAULT_PORT=`expr $RANDOM % 55535 + 10000`
+
+    while true; do
+    echo -e "Please set your 1Panel port, empty for default port: $DEFAULT_PORT"
+        echo -n -e "\033[32mPORT: \033[0m"
+        read PANEL_PORT
+
+        if [[ "$PANEL_PORT" == "" ]];then
+            PANEL_PORT=$DEFAULT_PORT
+        fi
+
+        if ! [[ "$PANEL_PORT" =~ ^[1-9][0-9]{0,4}$ && "$PANEL_PORT" -le 65535 ]]; then
+            echo "\033[31mError:\033[0m Port must between 1 and 65535."
+            continue
+        fi
+        # Check if the port is occupied.
+        if ss -lntup | grep -q ":$PANEL_PORT "; then
+            echo "\033[31mError:\033[0m Port $PANEL_PORT occupied, please set another port."
+            continue
+        fi
+        echo -e "Your 1Panel port is $PANEL_PORT"
+        break
+    done
+}
+
+function Set_Firewall(){
+    if pacman -Ql firewalld >/dev/null 2>&1; then
+        if sudo systemctl status firewalld | grep -q "Active: active" >/dev/null 2>&1;then
+            echo -e "Port $PANEL_PORT has been opened by firewalld."
+            firewall-cmd --zone=public --add-port=$PANEL_PORT/tcp --permanent
+            firewall-cmd --reload
+        else
+            echo -e "Service firewalld is not running, ignore port opening."
+        fi
+    fi
+
+    if pacman -Ql ufw >/dev/null 2>&1; then
+        if sudo systemctl status ufw | grep -q "Active: active" >/dev/null 2>&1;then
+            echo -e "Port $PANEL_PORT has been opened by ufw."
+            ufw reload
+        else
+            echo -e "Service ufw is not running, ignore port opening."
+        fi
+    fi
+}
+
+function Set_Username(){
+    DEFAULT_USERNAME=`cat /dev/urandom | head -n 16 | md5sum | head -c 10`
+
+    while true; do
+        echo -e "Please input your 1Panel username, empty for default username: $DEFAULT_USERNAME"
+        echo -n -e "\033[32mUSERNAME: \033[0m"
+        read PANEL_USERNAME
+
+        if [[ "$PANEL_USERNAME" == "" ]];then
+            PANEL_USERNAME=$DEFAULT_USERNAME
+        fi
+
+        if [[ ! "$PANEL_USERNAME" =~ ^[a-zA-Z0-9_]{3,30}$ ]]; then
+            echo -e "\033[31mError:\033[0m 1Panel username only supports letters, numbers, underscores, length 3-30"
+            continue
+        fi
+
+        echo -e "Your 1Panel username is $PANEL_USERNAME"
+        break
+    done
+}
+
+function Set_Password(){
+    DEFAULT_PASSWORD=`cat /dev/urandom | head -n 16 | md5sum | head -c 10`
+
+    while true; do
+        echo -e "Please setup your 1Panel password, empty for default password."
+        echo -n -e "\033[32mPASSWORD: \033[0m"
+        read -s PANEL_PASSWORD
+        echo ""
+        echo -n -e "\033[32mCONFIRM PASSWORD: \033[0m"
+        read -s PANEL_PASSWORD_CONFIRM
+        echo ""
+        if [[ "$PANEL_PASSWORD" != "$PANEL_PASSWORD_CONFIRM" ]];then
+            echo -e "\033[31mError:\033[0m The password confirmation is incorrect"
+            continue
+        fi
+        if [[ "$PANEL_PASSWORD" == "" ]];then
+            PANEL_PASSWORD=$DEFAULT_PASSWORD
+        fi
+
+        if [[ ! "$PANEL_PASSWORD" =~ ^[a-zA-Z0-9_!@#$%*,.?]{8,30}$ ]]; then
+            echo "\033[31mError:\033[0m 1Panel password only supports letters, numbers, special characters(!@#$%*_,.?), length 8-30"
+            continue
+        fi
+
+        break
+    done
+}
+
+function Set_Entrance(){
+    DEFAULT_ENTRANCE=`cat /dev/urandom | head -n 16 | md5sum | head -c 10`
+    while true; do
+        echo -e "Please setup your 1Panel secure entrance, empty for default entrance: $DEFAULT_ENTRANCE"
+        echo -n -e "\033[32mENTRANCE: \033[0m"
+        read PANEL_ENTRANCE
+        if [[ "$PANEL_ENTRANCE" == "" ]]; then
+            PANEL_ENTRANCE=$DEFAULT_ENTRANCE
+        fi
+
+        if [[ ! "$PANEL_ENTRANCE" =~ ^[a-zA-Z0-9_]{5,30}$ ]]; then
+            echo "\033[31mError:\033[0m 1Panel entrance only supports letters, numbers, special characters(_), length 5-30"
+            continue
+        fi
+        echo -e "Your 1Panel entrance is $PANEL_ENTRANCE"
+        break
+    done
+}
+
+function Init_Panel(){
+    echo -e "Configuring 1Panel Service."
+
+    sudo rm -rf /var/lib/1p/*
+    sudo sed -i -e "s#ORIGINAL_PORT=.*#ORIGINAL_PORT=${PANEL_PORT}#g" /usr/bin/1pctl
+    sudo sed -i -e "s#ORIGINAL_USERNAME=.*#ORIGINAL_USERNAME=${PANEL_USERNAME}#g" /usr/bin/1pctl
+    ESCAPED_PANEL_PASSWORD=$(echo "$PANEL_PASSWORD" | sed 's/[!@#$%*_,.?]/\\&/g')
+    sudo sed -i -e "s#ORIGINAL_PASSWORD=.*#ORIGINAL_PASSWORD=${ESCAPED_PANEL_PASSWORD}#g" /usr/bin/1pctl
+    sudo sed -i -e "s#ORIGINAL_ENTRANCE=.*#ORIGINAL_ENTRANCE=${PANEL_ENTRANCE}#g" /usr/bin/1pctl
+    read -p "Do you want to start 1Panel now? [Y/n]:" start_1panel
+    if [[ $start_1panel != "N" ]] && [[ $start_1panel != "n" ]]; then
+        sudo systemctl enable 1panel; sudo systemctl daemon-reload 2>&1
+
+        echo -e "Starting 1Panel service..."
+        sudo systemctl start 1panel
+        echo -e "Waiting for 1Panel service startup..."
+        for b in {1..30}
+        do
+            sleep 3
+            service_status=`sudo systemctl status 1panel 2>&1 | grep Active`
+            if [[ $service_status == *running* ]];then
+                echo -e "1Panel Service is running now."
+                break;
+            else
+                echo -e "\033[31mError:\033[0m 1Panel Service is not running yet."
+                exit 1
+            fi
+        done
+    else
+        echo -e "1Panel will not start, you can manually run \033[34msudo systemctl enable --now 1panel.service\033[0m to start it."
+    fi
+}
+
+function Get_Ip(){
+    echo -e "Acquiring the local IP address."
+    active_interface=$(ip route get 8.8.8.8 | awk 'NR==1 {print $5}')
+    if [[ -z $active_interface ]]; then
+        LOCAL_IP="127.0.0.1"
+    else
+        LOCAL_IP=`ip -4 addr show dev "$active_interface" | grep -oP '(?<=inet\s)\d+(\.\d+){3}'`
+    fi
+    echo -e "Local IP address aquired successfully."
+    echo -e "Acquiring the public IP address."
+    PUBLIC_IP=`curl -s https://api64.ipify.org`
+    if [[ -z "$PUBLIC_IP" ]]; then
+        PUBLIC_IP="N/A"
+    fi
+    if echo "$PUBLIC_IP" | grep -q ":"; then
+        PUBLIC_IP=[${PUBLIC_IP}]
+        1panel listen-ip ipv6
+    fi
+    if [ $PUBLIC_IP != "N/A" ]; then
+        echo -e "Public IP address aquired successfully."
+    else
+        echo -e "\033[33mWarning:\033[0m Failed to acquire the public IP address, maybe 1Panel is not running at a cloud server."
+    fi
+}
+
+function Show_Result(){
+    echo -e ""
+    echo -e "================= Thanks for waiting, the initialization has been finished. =================="
+    echo -e ""
+    echo -e "Please access 1Panel using the web browser:"
+    echo -e "Public IP:      \033[34m http://$PUBLIC_IP:$PANEL_PORT/$PANEL_ENTRANCE \033[0m"
+    echo -e "Local IP:       \033[34m http://$LOCAL_IP:$PANEL_PORT/$PANEL_ENTRANCE \033[0m"
+    echo -e "1Panel User:     $PANEL_USERNAME"
+    if [[ $PANEL_PASSWORD == $DEFAULT_PASSWORD ]]; then
+        echo -e "1Panel Password: $PANEL_PASSWORD"
+    else
+        echo -e "1Panel Password ********"
+    fi
+    echo -e ""
+    echo -e "If you are using a cloud server, please open port \033[34m$PANEL_PORT\033[0m in the security group"
+    echo -e ""
+    echo -e "==============================================================================================="
+}
+
+function main(){
+    Check_Root
+    Check_Docker
+    Check_Docker_Compose
+    Set_Port
+    Set_Firewall
+    Set_Username
+    Set_Password
+    Set_Entrance
+    Init_Panel
+    Get_Ip
+    Show_Result
+    sudo rm /usr/bin/1pinit
+}
+main

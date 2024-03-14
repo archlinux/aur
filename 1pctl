@@ -1,0 +1,8 @@
+#!/bin/bash
+BASE_DIR=/var/lib/1p
+ORIGINAL_PORT=8888
+ORIGINAL_VERSION=v${pkgver//_/-}
+ORIGINAL_ENTRANCE=entrance
+ORIGINAL_USERNAME=username
+ORIGINAL_PASSWORD=password
+1panel \$@
