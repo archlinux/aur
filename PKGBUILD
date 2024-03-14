@@ -7,7 +7,7 @@
 
 pkgname=conky-lua-nv
 _pkgname=conky
-pkgver=1.19.7
+pkgver=1.19.8
 pkgrel=1
 pkgdesc="Lightweight system monitor for X with lua and nvidia enabled"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ optdepends=('nvidia: for NV11 and newer GPUs',
   'nvidia-390xx-dkms: for NVC0 and GF1XX (Fermi) GPUs'
   'nvidia-340xx-dkms: for NV40 and G70 (Curie) GPUs')
 source=("https://github.com/brndnmtthws/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha1sums=('876ff3e3602cb5beb00d233bbff3b1a808769ecb')
+sha1sums=('acd122047f7c1b273192e599f25fcb99e1eccb81')
 install='conky-lua-nv.install'
 
 prepare() {
