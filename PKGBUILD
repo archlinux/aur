@@ -2,12 +2,12 @@
 
 pkgname=xorgxrdp
 pkgver=0.10.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Xorg drivers for xrdp"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/neutrinolabs/xorgxrdp"
 license=('X11')
-depends=('glibc' 'libepoxy')
+depends=('glibc' 'xorg-server')
 makedepends=('libxfont2' 'nasm' 'xorg-server-devel' 'xrdp')
 options=('staticlibs')
 source=("https://github.com/neutrinolabs/xorgxrdp/releases/download/v$pkgver/xorgxrdp-$pkgver.tar.gz"{,.asc})
@@ -19,6 +19,7 @@ validpgpkeys=('61ECEABBF2BB40E3A35DF30A9F72CDBC01BF10EB')  # Koichiro IWAO <meta
 build() {
   cd "$pkgname-$pkgver"
 
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
   ./configure \
     --prefix="/usr"
   make
