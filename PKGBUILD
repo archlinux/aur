@@ -3,14 +3,14 @@ pkgname=any-sync-gui
 _appname="Lan同步"
 pkgver=1.6.0
 _electronversion=25
-pkgrel=3
+pkgrel=4
 pkgdesc="一款支持在pc与pc或移动设备之间同步文本信息或文件的应用"
 arch=('any')
 url="https://github.com/easyhutu/any-sync-gui"
 license=('ISC')
 conflicts=("${pkgname}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'hicolor-icon-theme'
 )
 makedepends=(
@@ -24,11 +24,12 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     gendesk -f -n -q --categories="Utility" --name="${_appname}" --exec="${pkgname} %U"
     export npm_config_build_from_source=true
@@ -44,7 +45,6 @@ build() {
     npm run build
     cd "${srcdir}/${pkgname}.git/electron_gui"
     sed "s|${_appname}|${pkgname%-bin}|g" -i package.json
-    sed '24,27d' -i forge.config.js
     npm install --force
     npm run package
 }
