@@ -1,14 +1,14 @@
 fontname=consolas-ligaturized
 pkgname="ttf-${fontname}"
-pkgver=2
-pkgrel=2
+pkgver=3.1
+pkgrel=1
 pkgdesc='Standard Consolas font with FiraCode ligatures. Versions 1 and 2 are included'
 arch=(any)
 license=(CUSTOM)
 url="https://github.com/somq/${fontname}"
 depends=(fontconfig xorg-mkfontdir)
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=(968eaab67578feae22f09e894e4b36f2ef0f13a777ff9f43d11e10bda4b640e7)
+sha256sums=(b8c7600c76698efda88441e5e016daee9f1cff1340ba4f360fce0db8f6cc0e65)
 
 package() {
   mkdir -p "$pkgdir/usr/share/fonts/${fontname}"
