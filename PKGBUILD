@@ -2,9 +2,9 @@
 _appname=music-player
 pkgname="tenpi-${_appname}-bin"
 _pkgname=Music-Player
-pkgver=0.2.4
+pkgver=0.2.5
 _electronversion=28
-pkgrel=2
+pkgrel=1
 pkgdesc="A music player with real-time pitch shifting, time stretching, and reversing effects."
 arch=('x86_64')
 url="https://musicplayer.moe/"
@@ -23,12 +23,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f37e4b3ff235b203b6a43444a9d8e9d602a41d91dd3495b5aa1ea0ee29742ce4'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+sha256sums=('ee51dd22149c4e4a07e1aec894607923b0674fe5e9e299bfb1ec3fdd0089e4ce'
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
