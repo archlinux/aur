@@ -2,7 +2,7 @@
 
 _pkgname=codegpt
 pkgname=${_pkgname}-bin
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A CLI written in Go language that writes git commit messages or do a code review brief for you using ChatGPT AI (gpt-4, gpt-3.5-turbo model) and automatically installs a git prepare-commit-msg hook"
 arch=('x86_64' 'aarch64')
