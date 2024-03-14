@@ -2,10 +2,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-serialbus
-_basever=5.15.12
+_basever=5.15.13
 pkgver=5.15.12
 pkgrel=1
-_commit=c64de6ad9f646aaa66fca0500d21cde802a7bb17
+_commit=5efce7d821bad2f5db95ff3ada5eeddccbb58920
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
