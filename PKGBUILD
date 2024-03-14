@@ -1,11 +1,8 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
-# Contributor: Elmar Klausmeier <Elmar.Klausmeier@gmail.com>
-
 pkgname=sundials-seq
 _pkgname=sundials
 pkgver=7.0.0
 pkgrel=1
-pkgdesc='Suite of nonlinear differential/algebraic equation solvers'
+pkgdesc='Suite of nonlinear differential/algebraic equation solvers (sequential version)'
 arch=(x86_64)
 url='https://computing.llnl.gov/projects/sundials'
 license=(BSD)

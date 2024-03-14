@@ -1,5 +1,5 @@
 pkgbase = sundials-seq
-	pkgdesc = Suite of nonlinear differential/algebraic equation solvers
+	pkgdesc = Suite of nonlinear differential/algebraic equation solvers (sequential version)
 	pkgver = 7.0.0
 	pkgrel = 1
 	url = https://computing.llnl.gov/projects/sundials
