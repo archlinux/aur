@@ -1,6 +1,6 @@
 pkgbase = qt5-datavis3d
 	pkgdesc = Qt Data Visualization module
-	pkgver = 5.15.12
+	pkgver = 5.15.13
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = qt5-datavis3d
 	makedepends = git
 	depends = qt5-base
 	optdepends = qt5-declarative: QML bindings
-	source = git+https://invent.kde.org/qt/qt/qtdatavis3d#commit=c887477198cae44585fe9db371db0ddf4c3b205e
+	source = git+https://invent.kde.org/qt/qt/qtdatavis3d#commit=6ac6d23a8f558f36f1162b419858cc44dccd4d2b
 	sha256sums = SKIP
 
 pkgname = qt5-datavis3d
