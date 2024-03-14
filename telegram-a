@@ -1,3 +1,0 @@
-#!/usr/bin/bash
-
-exec env ELECTRON_FORCE_IS_PACKAGED=true env CUSTOM_APP_NAME=telegram-a env CUSTOM_WINDOW_TITLE="Telegram A" electron /usr/lib/telegram-a "$@"
