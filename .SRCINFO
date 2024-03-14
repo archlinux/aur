@@ -21,6 +21,7 @@ pkgbase = vinegar-git
 	optdepends = gamemode: Gamemode integration
 	optdepends = vulkan-driver: Vulkan support in GUI
 	optdepends = wine: A required dependency (made optional for flexbility)
+	provides = vinegar-git=1.7.4.r1.g837cda9
 	conflicts = vinegar
 	source = git+https://github.com/vinegarhq/vinegar
 	sha256sums = SKIP

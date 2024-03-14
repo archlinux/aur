@@ -1,4 +1,4 @@
-# Maintainer: Echo J. <aidas957 at gmail dot com>
+# Maintainer: imskyyc <sky at imskyyc dot com>
 # shellcheck shell=bash disable=SC2034
 
 _pkgname=vinegar
@@ -18,6 +18,7 @@ optdepends=("gamemode: Gamemode integration"
 conflicts=("vinegar")
 source=("git+${url}")
 sha256sums=("SKIP")
+provides=("${pkgname}=${pkgver}");
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
