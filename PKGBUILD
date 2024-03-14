@@ -8,14 +8,14 @@ _rlottie_commit=8c69fc20cf2e150db304311f1233a4b55a8892d7
 _lz4_commit=5ff839680134437dbf4678f3d0c7b371d84f4964
 _lib_crl_commit=078006d29af0002e6cd8c61a405cdeaf65b37142
 _lib_rpl_commit=8b1015d1bd57ef03fcd07a3eeddd3f5a9b688ade
-_lib_base_commit=888a19075b569eda3d18a977543320823b984ae0
+_lib_base_commit=5b9556fddb9a67e514d0bed2c123e18cbe1663b7
 _codegen_commit=afed06a4c04d1a1cf7cfce4faca273e1f574462e
-_lib_ui_commit=2d3938788255619ca885a3828dee75aa2d4dd04d
+_lib_ui_commit=db1b039982d7b48d46df54347a3bd10e7dcafbcf
 _lib_lottie_commit=1a700e5a0d7c3e2f617530354ff2a47c5c72bb4a
 _lib_tl_commit=11c8ae47ff9c9d69b0470700fff9ed924a97acd3
-_lib_spellcheck_commit=96543c1716d3790ef12bdec6b113958427710441
+_lib_spellcheck_commit=9b52030bfcd7e90e3e550231a3783ad1982fda78
 _lib_storage_commit=0971b69ca90f1697ef81276d9820dcd6d26de4ac
-_cmake_helpers_commit=a46279fcfe69ebcc806bb31679ccece5f7c07508
+_cmake_helpers_commit=5a61112d6d025b56573ad48bcc1331ac65c4a927
 _cmake_cppgir_commit=748a04795616f792f6fe91edf24620f78a2ef65c
 _cmake_cppgir_expected_lite_commit=95b9cb015fa17baa749c2b396b335906e1596a9e
 _cmake_implib_so_commit=0ddaa715d2572b100f8248c0fa4450fbf895be14
@@ -26,10 +26,10 @@ _hunspell_commit=22c3381e2066bed616250d373fc5c935598b564a
 _range_v3_commit=a81477931a8aa2ad025c6bda0609f38e09e4d7ec
 _nimf_commit=955ee48b4f4020b317ece1e3b1e58c0b7f4bd0f3
 _hime_commit=9b3e6f9ab59d1fe4d9de73d3bf0fed7789f921c5
-_fcitx5_qt_commit=413747e761b13bacc5ebd01e20810c64c2f3b6dc
+_fcitx5_qt_commit=cc77e32c0ab675a663a7c019b3bb8cfcc60c5ec3
 _lib_webrtc_commit=5493af61df5cb90a30b686296521961763a009e0
 _tgcalls_commit=b9fa8b84d8abe741183f157218ac038c596a54a5
-_lib_webview_commit=4fce8b1971721da739619acf36da0fe79d614a23
+_lib_webview_commit=fbf9dd54787df90c98cf230cb53323527e0b0639
 _swift_corelibs_libdispatch_commit=ee39300b12a77efd3f2f020e009e42d557adbb29
 _plasma_wayland_protocols_commit=78fc6ee77334a147986f01c6d3c6e1b99af1a333
 _wayland_protocols_commit=4624cfaaf563cd7be5e2e2087c8de6d3a48ea867
@@ -38,9 +38,10 @@ _kcoreaddons_commit=79b99f162b200413671dbabe21c73356d9956e35
 _cld3_commit=b48dc46512566f5a2d41118c8c1116c4f96dc661
 _wayland_commit=b2649cb3ee6bd70828a17e50beb16591e6066288
 _libprisma_commit=adf35ba88160777ce5b8d122630852394c58279f
+_xdg_desktop_portal_commit=fa8d41a2f9a5d30a1e41568b6fb53b046dce14dc
 
 pkgname=ayugram-desktop
-pkgver=4.15
+pkgver=4.15.2
 pkgrel=1
 pkgdesc="Desktop Telegram client with good customization and Ghost mode."
 arch=("x86_64")
@@ -50,7 +51,7 @@ depends=(
     "hunspell" "ffmpeg" "hicolor-icon-theme" "lz4" "minizip" "openal" "ttf-opensans"
     "qt6-imageformats" "qt6-svg" "qt6-wayland" "xxhash" "rnnoise" "pipewire" "libxtst"
     "libxrandr" "libxcomposite" "jemalloc" "abseil-cpp" "libdispatch" "openssl" "protobuf"
-    "glib2" "libsigc++-3.0" "glibmm-2.68"
+    "glib2" "libsigc++-3.0" "glibmm-2.68" "kcoreaddons"
 )
 makedepends=(
     "cmake" "ninja" "python" "range-v3" "tl-expected" "microsoft-gsl" "meson"
@@ -101,30 +102,31 @@ source=(
     "wayland-$_wayland_commit.tar.gz::https://github.com/gitlab-freedesktop-mirrors/wayland/archive/$_wayland_commit.tar.gz"
     "wayland-protocols-$_wayland_protocols_commit.tar.gz::https://github.com/gitlab-freedesktop-mirrors/wayland-protocols/archive/$_wayland_protocols_commit.tar.gz"
     "xxHash-$_xxhash_commit.tar.gz::https://github.com/Cyan4973/xxHash/archive/$_xxhash_commit.tar.gz"
+    "xdg-desktop-portal-$_xdg_desktop_portal_commit.tar.gz::https://github.com/flatpak/xdg-desktop-portal/archive/$_xdg_desktop_portal_commit.tar.gz"
 )
-sha256sums=('c1fc388e43328e9b4728a99b1dcd62100e331a9aff718a09fbd6880a606d7d38'
-            '3699666503ea841b3d1ea511d4f431dcdba3a821eb91919c86df3addf4f70ef6'
+sha256sums=('c4f56a1a0f69a42f17d8bb0934c89b04ad0a69acefbf8ed8d6d7ce1c15f7c1f2'
+            'b26d5e39e0e0e9b284888132e87cc5c9799798b9cb5625328b46b4c034b1ffb8'
             '15a9981ab5e6a01f301609017aee11e000c22880d38b3be4e3da58c338f9b2fc'
             '47e0816b744e7aa4dfbd5862676110773737f7ecab3afdbb4f33af223ad50e32'
             '7238a966ee6b93fdbf2669736ddd35a6103967eb9d5369af8b740bff2401615c'
             'c7083f7621d873d0734b1a68c8370faf45b44c04aa7465c63a3b1a48ff536057'
-            '8244838549aa6180b47e9ae8b498fbf5ce8ec54369c88e21090d0182d00719b4'
+            '9c05f2895e8ed66486ad2b119a96c460bb82eef86505760e152a2983e5622adb'
             '4fed49839e82c934def32d5890770d34815f0a94a87868ba6848379cc841f110'
             'c9aa4e32eb5e475d0826154055ff4749c07bb46d83b12f1641d31557e944a16f'
             '855997c49f5f7263b8270662d03c8a1d5ba1868664a150e0f837679e2629a5ab'
             '8b4ba7258685e49c9b7f2c60925264c3b2713805ad21304404d5f6b77cd5582b'
-            '63cdb4f69550921320ecc3bd1ec88080ff081b3a11f62ba00148dbbb5bb5e7b4'
+            'fbc6c37bd4b8e14ea8a2dbbd1a653de62471e0f9b29d49b2c58c7fca127518d7'
             '22a1bfb607c1f6475834e774d9030f54161371dfbcc86108511bc63cbaaae24e'
             '996fdbcc6f99f44963c867a701bf8ab4179f32f3536ed32895a009ab569a4d66'
-            '743a0a4ec2c3cc11a5a614ee2a12191dd7a78c80e6de8858116c245c74827568'
+            '3769b5ec854577570d48563877335848b5fe6d34296631dba9f5e194162104e4'
             'a8f696fcf6bc85b0e9bfa898f85db94267c1e3c17ee80e5d857d9fe10efec3c2'
-            '7735beba2c8cbbc1bb4671cf94e8ae72feabb3b27c8d568ad8df5bf56e623508'
+            'a2bbaf9fab5bbc243b37d8e119d0e06f9781ef3b97935e6534282510a32a924b'
             '29bcc3c359378b83fda299ef1a0930886cb7937b893856ca476c47f90002ffa7'
             'd80795686f3e58448c7b76830bb5c40847b7eaae1996c28f0422a029b66c2bb0'
             'd0d4ea2fddcbc7d10ace2c37309feb09da87e8ce7ced6ce73592da1359f4765f'
             '1142f3ccaf7750e4cf452aa9c39336b7029f2aee337957ef646da23a7b08ac62'
             'fe3b18aecb849029b6af94922be0c25eee1b7b86565b1c8350692ed776cf42fb'
-            '31c329173d5259b5855b63edb4423f0c9910481418017f2ce49b1a8278b600b8'
+            '7769897990f5fef925c45db7df19c8ae2ab6744d387f750bd20f4d4b6c8d1420'
             '52a2e052beb67492225a38213108f1d7edd1940fd025cad3a4ae28c57d428419'
             '3e7253b2cc31bdf68fa50d105715158e649812e5ad6b4f1f6e5fd1e89b3ffdfd'
             '39a635a5a0f4e7d3887a1d7207892be5af5adcf1bc135062f3af72fe5ab7b470'
@@ -140,14 +142,15 @@ sha256sums=('c1fc388e43328e9b4728a99b1dcd62100e331a9aff718a09fbd6880a606d7d38'
             '0de97c65d3833051ead485c2130d20049b32e0190a7bf965c8696544e749949c'
             '3454ad000136aef5d51a74a9c4714ed7e39914e30957f77ea18e8953ebe6cb78'
             'c9c7364bc59fb9421e3f87c421b87ef910e140b4b8144511106dee4bf5f78f18'
-            '716fbe4fc85ecd36488afbbc635b59b5ab6aba5ed3b69d4a32a46eae5a453d38')
+            '716fbe4fc85ecd36488afbbc635b59b5ab6aba5ed3b69d4a32a46eae5a453d38'
+            '23afa0a99c984037d926df4e3e0328d527761ebfff3b4c5fe8bea7e5fff6e11a')
 
 prepare() {
     cd "$srcdir/AyuGramDesktop-$pkgver"
     _modules=(
         cmake cmake/external/Implib.so cmake/external/glib/cppgir cmake/external/glib/cppgir/expected-lite
         Telegram/codegen Telegram/lib_{base,crl,lottie,qr,rpl,spellcheck,storage,tl,ui,webrtc,webview}
-        Telegram/ThirdParty/{GSL,QR,cld3,dispatch,expected,fcitx5-qt,hime,hunspell,kcoreaddons,kimageformats,libprisma,libtgvoip{,/cmake},lz4,nimf,plasma-wayland-protocols,range-v3,rlottie,tgcalls,wayland,wayland-protocols,xxHash}
+        Telegram/ThirdParty/{GSL,QR,cld3,dispatch,expected,fcitx5-qt,hime,hunspell,kcoreaddons,kimageformats,libprisma,libtgvoip{,/cmake},lz4,nimf,plasma-wayland-protocols,range-v3,rlottie,tgcalls,wayland,wayland-protocols,xxHash,xdg-desktop-portal}
     )
     for module in "${_modules[@]}"
     do
