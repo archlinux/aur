@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Service
+MimeType=audio/*;video/*;image/*;application/x-flash-video
+Actions=mediainfo-gui
+
+[Desktop Action mediainfo-gui]
+Name=MediaInfo
+Icon=mediainfo
+Exec=mediainfo-gui %u
