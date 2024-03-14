@@ -1,6 +1,6 @@
 pkgbase = suyu-dev-git
 	pkgdesc = suyu is the afterlife the world's most popular, open-source, Nintendo Switch emulator (dev branch)
-	pkgver = r27189.8b8aa84e70
+	pkgver = r27191.e29c55dd98
 	pkgrel = 1
 	url = https://gitlab.com/suyu-emu/suyu
 	install = suyu-dev-git.install

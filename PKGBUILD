@@ -4,7 +4,7 @@
 _pkgname=suyu
 _branch=dev
 pkgname=suyu-dev-git
-pkgver=r27189.8b8aa84e70
+pkgver=r27191.e29c55dd98
 pkgrel=1
 pkgdesc="suyu is the afterlife the world's most popular, open-source, Nintendo Switch emulator (dev branch)"
 arch=(x86_64)
@@ -131,7 +131,6 @@ prepare() {
     git config submodule.$submodule.url "${srcdir}"/$submodule
   done
   git -c protocol.file.allow=always submodule update
-  git -c protocol.file.allow=always submodule update
 
   pushd externals/cubeb
   git config submodule.cmake/sanitizers-cmake.url "${srcdir}"/sanitizers-cmake
@@ -201,7 +200,7 @@ package() {
   install -Dm644 ${_pkgname}/dist/72-suyu-input.rules -t "${pkgdir}"/usr/lib/udev/rules.d/
 
   cd "${pkgdir}"/usr/share/applications
-  sed -i '12s/Exec=suyu/Exec=env QT_QPA_PLATFORM=xcb yuzu/' org.suyu_emu.suyu.desktop
+  sed -i '12s/Exec=suyu/Exec=env QT_QPA_PLATFORM=xcb suyu/' org.suyu_emu.suyu.desktop
 }
 
 # vim: ts=2 sw=2 et
