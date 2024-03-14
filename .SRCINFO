@@ -1,0 +1,12 @@
+pkgbase = slurp-go
+	pkgdesc = tool for exporting data from and importing data to Fediverse instances written in Go
+	pkgver = 0.1.0
+	pkgrel = 0
+	url = https://github.com/VyrCossont/slurp
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	source = https://github.com/VyrCossont/slurp/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = a730289eea1d1486dbe28f79b20a3a1039855fde00c2ba1f2151924011c72716
+
+pkgname = slurp-go
