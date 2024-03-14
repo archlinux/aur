@@ -1,2 +1,6 @@
 .directory
 *.pkg.tar.zst
+
+src/
+rehex*/
+pkg/
