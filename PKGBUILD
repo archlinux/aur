@@ -3,7 +3,7 @@
 _pkgbase="piper-voices"
 pkgname="$_pkgbase-common"
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Voices for Piper text to speech system (common files)"
 url="https://huggingface.co/rhasspy/$_pkgbase"
 license=("MIT")
@@ -19,7 +19,7 @@ source=(
  "piper-dispatcher"
 )
 b2sums=('SKIP'
-        '8f0578959ec6c859f807b255e89baec595016553b4ca7e9ec91faf012a9c8d99ada5613eb6e4f3e01a97f7eb938bcaae23f0636bab7bd854087e865258a94029'
+        '96c0975b956a4c878fcfa5a933fe6e157b0bc40e1973e47b68fd63032bd2112c2c9f712277aac8d1cf9dea833d092c38d3dbb446676e4328855134854219d0b5'
         '2b5129e2e2fd4cb48602bf5d18052b124b31886cf02268de83d7b687f7e681ab83dc8baeb683c905664d26f4ddab6f86d95fbe3849113c26e5be5c557642810f')
 options=("!strip")
 install="$pkgname.install"
