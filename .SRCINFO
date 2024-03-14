@@ -1,6 +1,6 @@
 pkgbase = sskit
 	pkgdesc = Make snapshots in a Btrfs filesystem.
-	pkgver = 0.6b
+	pkgver = 0.8.1b
 	pkgrel = 1
 	url = https://github.com/mdomlop/sskit
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = sskit
 	license = GPLv3+
 	makedepends = btrfs-progs
 	backup = etc/sstab
-	source = https://github.com/mdomlop/sskit/archive/refs/tags/0.6b.tar.gz
-	md5sums = c64b9632678dba5261afcfd7d006daf6
+	source = https://github.com/mdomlop/sskit/archive/refs/tags/0.8.1b.tar.gz
+	md5sums = 752901711811f0711582ab3ddddc7a07
 
 pkgname = sskit

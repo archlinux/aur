@@ -3,7 +3,7 @@ _pkgver_year=2023
 _pkgver_month=02
 _pkgver_day=27
 pkgname=sskit
-pkgver=0.6b
+pkgver=0.8.1b
 pkgrel=1
 pkgdesc="Make snapshots in a Btrfs filesystem."
 license=("GPLv3+")
@@ -22,4 +22,4 @@ package() {
 	cd $pkgname-$pkgver
 	make install DESTDIR=$pkgdir
 }
-md5sums=('c64b9632678dba5261afcfd7d006daf6')
+md5sums=('752901711811f0711582ab3ddddc7a07')
