@@ -4,7 +4,7 @@
 _framework='gnunet'
 pkgname='libgnunetchat'
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='GNUnet chat library'
 arch=('i686' 'x86_64')
 url="http://${_framework}.org"
@@ -24,7 +24,7 @@ prepare() {
 	# Fix missing dependency from gnunet meson build
 	sed -i '40d' meson.build
 	
-	meson setup --buildtype release build
+	meson setup --prefix /usr --buildtype release build
 }
 
 build() {
