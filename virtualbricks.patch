@@ -1,18 +1,6 @@
-diff --unified --recursive --text virtualbricks.old/virtualbricks/brickfactory.py virtualbricks/virtualbricks/brickfactory.py
---- virtualbricks.old/virtualbricks/brickfactory.py	2023-09-21 02:01:32.313218823 +0200
-+++ virtualbricks/virtualbricks/brickfactory.py	2023-09-20 23:48:52.203041473 +0200
-@@ -589,7 +589,7 @@
-         locale.setlocale(locale.LC_ALL, '')
-         import gettext
- 
--        gettext.install('virtualbricks', codeset='utf8', names=["gettext"])
-+        gettext.install('virtualbricks', names=["gettext"])
- 
-     def install_settings(self):
-         settings.load()
-diff --unified --recursive --text virtualbricks.old/virtualbricks/gui/dialogs.py virtualbricks/virtualbricks/gui/dialogs.py
---- virtualbricks.old/virtualbricks/gui/dialogs.py	2023-09-21 01:58:37.176555558 +0200
-+++ virtualbricks/virtualbricks/gui/dialogs.py	2023-09-21 02:03:33.963216460 +0200
+diff --unified --recursive --text virtualbricks.orig/virtualbricks/gui/dialogs.py virtualbricks.new/virtualbricks/gui/dialogs.py
+--- virtualbricks.orig/virtualbricks/gui/dialogs.py	2024-03-14 05:18:43.483389522 +0100
++++ virtualbricks.new/virtualbricks/gui/dialogs.py	2024-03-14 05:20:20.271336337 +0100
 @@ -2224,12 +2224,12 @@
          vbox.foreach(vbox.remove)
          for i, (name, dest) in enumerate(iter_model(store)):
@@ -30,9 +18,9 @@ diff --unified --recursive --text virtualbricks.old/virtualbricks/gui/dialogs.py
              dlabel.set_ellipsize(Pango.EllipsizeMode.MIDDLE)
              box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=5)
              box.pack_start(nlabel, False, True, 0)
-diff --unified --recursive --text virtualbricks.old/virtualbricks/_settings.py virtualbricks/virtualbricks/_settings.py
---- virtualbricks.old/virtualbricks/_settings.py	2023-09-21 02:01:32.316552156 +0200
-+++ virtualbricks/virtualbricks/_settings.py	2023-09-20 23:48:52.203041473 +0200
+diff --unified --recursive --text virtualbricks.orig/virtualbricks/_settings.py virtualbricks.new/virtualbricks/_settings.py
+--- virtualbricks.orig/virtualbricks/_settings.py	2024-03-14 05:18:43.483389522 +0100
++++ virtualbricks.new/virtualbricks/_settings.py	2024-03-14 05:20:40.831607944 +0100
 @@ -40,7 +40,7 @@
  DEFAULT_CONF = {
      "term": "/usr/bin/xterm",

@@ -1,6 +1,6 @@
 pkgbase = virtualbricks-develop-git
 	pkgdesc = Qemu/KVM and VDE frontend (git development branch)
-	pkgver = r2165.f21d01c
+	pkgver = r2169.1017943
 	pkgrel = 1
 	url = https://github.com/virtualsquare/virtualbricks
 	arch = any
@@ -18,11 +18,11 @@ pkgbase = virtualbricks-develop-git
 	depends = vde2
 	depends = qemu-full
 	optdepends = vde-netemu-git: channel emulator support
-	provides = virtualbricks=r2165.f21d01c
+	provides = virtualbricks=r2169.1017943
 	conflicts = virtualbricks
 	source = virtualbricks::git+https://github.com/virtualsquare/virtualbricks.git#branch=develop
 	source = virtualbricks.patch
 	sha256sums = SKIP
-	sha256sums = 5c7789b1abeb9e65a062d0a12b71b5a53559409ebe8da97309f68410e2a1501c
+	sha256sums = 0872b5032ec2a9208053fc48feb56930c62650573baba8265e7a2ddff6877471
 
 pkgname = virtualbricks-develop-git

@@ -1,6 +1,7 @@
 # Maintainer: Mattia Moffa <mattia@moffa.xyz>
+
 pkgname=virtualbricks-develop-git
-pkgver=r2165.f21d01c
+pkgver=r2169.1017943
 pkgrel=1
 pkgdesc="Qemu/KVM and VDE frontend (git development branch)"
 arch=('any')
@@ -14,7 +15,7 @@ conflicts=("virtualbricks")
 source=('virtualbricks::git+https://github.com/virtualsquare/virtualbricks.git#branch=develop'
         'virtualbricks.patch')
 sha256sums=('SKIP'
-            '5c7789b1abeb9e65a062d0a12b71b5a53559409ebe8da97309f68410e2a1501c')
+            '0872b5032ec2a9208053fc48feb56930c62650573baba8265e7a2ddff6877471')
 
 pkgver() {
   cd virtualbricks
