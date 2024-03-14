@@ -1,13 +1,13 @@
 # Maintainer: steve finkel <mrsteve0924 at verizon dot net>
 
 pkgname=wstroke-git
-pkgver=20231004.e7a0041
+pkgver=20231112.de90ba4
 pkgrel=1
 pkgdesc="a mouse gesture plug-in for wayfire. port of easystroke"
 arch=('x86_64')
 url="https://github.com/dkondor/wstroke"
 license=('ISC')
-depends=('wayfire-git' 'nlohmann-json' 'glib2' 'gtk3' 'gtkmm3' 'boost-libs')
+depends=('wayfire>=0.8.0' 'nlohmann-json' 'glib2' 'gtk3' 'gtkmm3' 'boost-libs')
 makedepends=('git' 'meson' 'ninja')
 optdepends=('wcm-git' 'libinput>=1.70')
 provides=("${pkgname%-git}")
