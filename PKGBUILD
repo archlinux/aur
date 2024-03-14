@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gamlss.data
-_pkgver=6.0-2
+_pkgver=6.0-6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=1
 pkgdesc="Data for Generalised Additive Models for Location Scale and Shape"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5b64ed3f16e92d61d45b105135ed168f')
-b2sums=('5ddf1fbecae44baabbdb289b51b7f9fc24ea573cf6dc7712af0cfebeb50e05c37b4ff24bbd85e4def3a8728f757081d0cfbeff853832754f1b1a4323f8c83998')
+md5sums=('29afc2b91307aae87df4f9d2ef626f94')
+b2sums=('43e186449e22d9fc186e66c197fb6a8e005894a76ebd7ab298de149c716dce6ae874db548d6658cde43507a7349712772d8154454677b8b9f065310930d148b0')
 
 build() {
   mkdir build
