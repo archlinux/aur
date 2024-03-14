@@ -1,0 +1,12 @@
+pkgbase = utc-latex-report
+	pkgdesc = UTC LaTeX Beamer theme
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/qaniere/utc-latex
+	arch = any
+	license = BSD2
+	depends = texlive-basic
+	source = utc-latex-report-1.0.0.tar.gz::https://github.com/qaniere/utc-latex/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = 301caddeb14d382d7568fb789bcb1e34edec6c520d63fdfba33552b37632c556
+
+pkgname = utc-latex-report
