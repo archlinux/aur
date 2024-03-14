@@ -13,7 +13,7 @@ tasks:
     git clone https://aur.archlinux.org/gprbuild.git
     cd gprbuild
     makepkg
-    yay -R --noconfirm gprbuild-bootstrap
+    yay -R --noconfirm gprbuild-bootstrap gprbuild-bootstrap-debug
     makepkg -i --noconfirm
 - build: |
     cd aur-alire
