@@ -1,6 +1,7 @@
-# Maintainer: Mistle <tehmistle [at] gmx.com>
+# Maintainer: David Vick <david@failedstatic.click>
+# Contributer: Mistle <tehmistle [at] gmx.com>
 pkgname=stash
-pkgver=0.20.2
+pkgver=0.25.1
 pkgrel=1
 pkgdesc="Locally hosted web-based app written in Go which organizes and serves your Adult Video"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -10,9 +11,8 @@ depends=('glibc' 'ffmpeg')
 makedepends=('go>=2:1.19' 'golangci-lint' 'yarn')
 conflicts=('stash-bin')
 backup=(etc/conf.d/${pkgname})
+options=(!buildflags)
 source=("$pkgname::git+$url.git#tag=v${pkgver}"
-"0001-Fix-build-with-extldflags.patch"
-"0002-Add-Arch-specific-build-flags.patch"
 "stash.service"
 "stash-user.service"
 "stash.sysusers"
@@ -20,8 +20,6 @@ source=("$pkgname::git+$url.git#tag=v${pkgver}"
 "stash.env"
 )
 sha256sums=('SKIP'
-            '70225e5691038d623c6cff3ebc8fa9682305670cb6cedb5e539a30b2090bcdef'
-            '5ff482cf77c6b053051fad6255ece848db3a60882201eaf29945dbea920bc399'
             'bf30830e85fd7cf0cc2d0f4e1037b20cd407da80c47c4f33048ddd616bbbbc84'
             '41f79ebc8d24cb1ae87ba55923d56e6d5c6bff9fa62433070fdf37ff5a52f7fd'
             'de94761e4a705c6fa7216359d5286c4724c985818b21ed071d3866246fffd870'
@@ -30,8 +28,6 @@ sha256sums=('SKIP'
 
 prepare() {
         cd "$pkgname"
-        patch -Np1 -i "${srcdir}/0001-Fix-build-with-extldflags.patch"
-        patch -Np1 -i "${srcdir}/0002-Add-Arch-specific-build-flags.patch"
         mkdir -p build
         make pre-ui
         make generate
