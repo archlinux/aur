@@ -1,0 +1,5 @@
+[python-rdt]
+source = "github"
+github = "sdv-dev/RDT"
+use_latest_release = "true"
+prefix = "v"

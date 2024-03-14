@@ -1,17 +1,18 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=RDT
 pkgname=python-${_base,,}
-pkgver=1.9.2
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Reversible Data Transforms"
 arch=(x86_64)
 url="https://github.com/sdv-dev/${_base}"
-license=('custom')
-depends=(python-pandas python-scikit-learn python-psutil python-faker)
-makedepends=(python-build python-installer python-pytest-runner python-wheel)
+license=(BUSL-1.1)
+depends=(python-pandas python-scikit-learn python-faker)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest-subtests python-copulas)
+optdepends=('python-copulas')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('631627d2f8c01f2b572d17f3f3366d1139b4f02d87e55bf196ec2fbe76b30705d43a59fb08561967d9b6ee425622b35852b16803a2fc2848f4bbd373d360534e')
+sha512sums=('f357f687f0c598cca0f202228b1650d7eed338cbd3f247d2f1b11724d66611f1c94559a53f8261fd2bbded55a793e7651a452980b669c0a00d0cc3b00641b87b')
 
 build() {
   cd ${_base}-${pkgver}
@@ -22,7 +23,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest -k 'not performance'
+  test-env/bin/python -m pytest
 }
 
 package() {

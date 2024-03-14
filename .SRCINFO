@@ -1,21 +1,21 @@
 pkgbase = python-rdt
 	pkgdesc = Reversible Data Transforms
-	pkgver = 1.9.2
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/sdv-dev/RDT
 	arch = x86_64
-	license = custom
+	license = BUSL-1.1
 	checkdepends = python-pytest-subtests
 	checkdepends = python-copulas
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-pytest-runner
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-pandas
 	depends = python-scikit-learn
-	depends = python-psutil
 	depends = python-faker
-	source = RDT-1.9.2.tar.gz::https://github.com/sdv-dev/RDT/archive/v1.9.2.tar.gz
-	sha512sums = 631627d2f8c01f2b572d17f3f3366d1139b4f02d87e55bf196ec2fbe76b30705d43a59fb08561967d9b6ee425622b35852b16803a2fc2848f4bbd373d360534e
+	optdepends = python-copulas
+	source = RDT-1.10.0.tar.gz::https://github.com/sdv-dev/RDT/archive/v1.10.0.tar.gz
+	sha512sums = f357f687f0c598cca0f202228b1650d7eed338cbd3f247d2f1b11724d66611f1c94559a53f8261fd2bbded55a793e7651a452980b669c0a00d0cc3b00641b87b
 
 pkgname = python-rdt
