@@ -1,11 +1,11 @@
 pkgbase = footage
 	pkgdesc = Polish your videos
-	pkgver = 1.3.1
-	pkgrel = 2
+	pkgver = 1.3.2
+	pkgrel = 1
 	url = https://gitlab.com/adhami3310/Footage
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = appstream-glib
 	makedepends = blueprint-compiler
 	makedepends = cargo
@@ -13,16 +13,21 @@ pkgbase = footage
 	makedepends = meson
 	depends = a52dec
 	depends = fdkaac
+	depends = ffmpeg
 	depends = gst-editing-services
-	depends = gst-plugins-rs
+	depends = gst-plugin-gif
+	depends = gst-plugin-gtk4
+	depends = gst-plugins-bad
+	depends = gst-plugins-ugly
 	depends = gstreamer-svt-av1
+	depends = gstreamer-vaapi
 	depends = libadwaita
 	depends = libmpeg2
 	depends = svt-av1
 	depends = vo-aacenc
 	depends = x264
 	depends = x265
-	source = git+https://gitlab.com/adhami3310/Footage.git#tag=v1.3.1
+	source = git+https://gitlab.com/adhami3310/Footage.git#tag=v1.3.2
 	sha256sums = SKIP
 
 pkgname = footage
