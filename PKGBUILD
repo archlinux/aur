@@ -2,14 +2,14 @@
 pkgname=spx-translation
 pkgver=2.0.5_1
 _electronversion=25
-pkgrel=3
+pkgrel=4
 pkgdesc="聚合翻译程序(谷歌+deepl)"
 arch=('x86_64')
 url="https://github.com/mlmdflr/spx-translation"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'gendesk'
@@ -17,8 +17,7 @@ makedepends=(
     'npm'
     'nodejs'
     'git'
-    'python'
-    'node-gyp'
+    'python>3'
     'base-devel'
     'gcc'
 )
@@ -27,11 +26,12 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     gendesk -f -n -q --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
@@ -42,6 +42,15 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
+    mkdir -p "${srcdir}/.electron-gyp"
+    touch "${srcdir}/.electron-gyp/.yarnrc"
+    if [ `curl ifconfig.co/country` = "China" ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
     sed "s|, 'snap', 'deb', 'rpm', 'pacman'||g" -i scripts/cfg.js
     sed "s|, 'snap', 'deb', 'rpm', 'pacman'||g" -i scripts/build.js
     sed "14,22d" -i scripts/build.js
