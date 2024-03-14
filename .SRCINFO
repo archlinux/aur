@@ -1,0 +1,12 @@
+pkgbase = rose-pine-cursor-hyprcursor
+  pkgdesc = A remix of BreezeX with Rose-Pine colors, packaged for Hyprcursor
+	pkgver = v0.2.0.r0.g795c63a
+	pkgrel = 1
+	url = https://github.com/ndom91/rose-pine-cursor-hyprcursor
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	source = git+https://github.com/ndom91/rose-pine-cursor-hyprcursor.git
+	sha256sums = SKIP
+
+pkgname = rose-pine-cursor-hyprcursor
