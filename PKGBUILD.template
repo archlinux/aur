@@ -1,0 +1,13 @@
+#Maintainer: Cyan Lin <xusine at outlook dot com>
+
+pkgbase=surfer-waveform
+pkgname=surfer-waveform-git-bin
+pkgver=0.2.0.r{}.{}
+pkgrel=1
+pkgdesc='A waveform viewer with a focus on a snappy usable interface, and extensibility.'
+arch=('x86_64')
+url='https://gitlab.com/surfer-project/surfer'
+license=('EUPL')
+depends=('openssl')
+source=("$pkgname-$pkgver.zip::{}")
+sha256sums=('SKIP')
