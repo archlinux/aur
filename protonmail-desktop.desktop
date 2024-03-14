@@ -1,8 +1,0 @@
-[Desktop Entry]
-Version=1.0.6
-Type=Application
-Name=Protonmail Desktop
-Comment=Unofficial desktop app for ProtonMail email
-Exec=protonmail-desktop
-Icon=protonmail-desktop
-Categories=Network;Email;
