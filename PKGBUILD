@@ -3,7 +3,7 @@ pkgname=modv-bin
 _pkgname=modV
 pkgver=3.29.1
 _electronversion=25
-pkgrel=6
+pkgrel=7
 pkgdesc="modular audio visualisation powered by JavaScript"
 arch=("x86_64")
 url="https://modv.vcync.gl/"
@@ -12,7 +12,7 @@ license=("MIT")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'fuse2'
@@ -24,11 +24,12 @@ source=(
 )
 sha256sums=('987b13cbd076f0113a4a11df8cd132e1580dec7abe5ea69fa12a6e5e5a5f7992'
             '4ff9462e56a52889b0005f007e0a66930c6b19687751f551bf7316b6ee35119e'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
