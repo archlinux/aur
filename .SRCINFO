@@ -1,13 +1,14 @@
 pkgbase = r-pcxndata
 	pkgdesc = Correlation coefficients and p values between pre-defined pathway/gene sets
 	pkgver = 2.24.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/pcxnData
 	arch = any
 	license = MIT
 	depends = r
 	optdepends = r-pcxn
 	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/pcxnData_2.24.0.tar.gz
-	sha256sums = 124c63d4ed955a4d161351041adf5a4e9e8f23db78c04494159d5982627c1856
+	md5sums = 7814b1a6f5dbd08e71df1e92ea4328f6
+	b2sums = 72416295922d60f8932329bb0aa7c2cdbafcf4e55b7483f53245bae94cd7a3859d3932dad9fd4509169779707e52dd34a8ac44261f81704bfe29e82937aa0b0a
 
 pkgname = r-pcxndata
