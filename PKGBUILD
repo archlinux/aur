@@ -1,38 +1,34 @@
 # Maintainer: Obscurely <adrian.obscurely@protonmail.com>
-
 pkgname=falion
-_pkgname=falion
-pkgver=0.2.0.58.g19e0f8e
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="A fast, asynchronous tool for getting and reading various programming resources."
+pkgdesc="An open source, programmed in rust, privacy focused tool for scraping programming resources (like stackoverflow) fast, efficient and asynchronous/parallel using the CLI or GUI. "
+arch=('x86_64')
 url="https://github.com/Obscurely/falion"
-license=("GPL-3.0-only")
-depends=()
-optdepends=()
-makedepends=("rust" "cargo" "git")
-arch=("x86_64")
-provides=("falion")
-conflicts=("falion-bin" "falion-git")
-source=("$_pkgname::git+https://github.com/Obscurely/falion.git")
-sha256sums=("SKIP")
+license=('GPL3')
+makedepends=('git' 'rust' 'cargo' 'binutils')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver-stable.tar.gz")
+sha256sums=('SKIP')
 
-pkgver() {
-    cd "$_pkgname"
-    echo "$(grep '^version =' Cargo.toml | head -n1 | cut -d\" -f2).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+prepare() {
+  cd "$srcdir/falion-$pkgver-stable"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd $_pkgname
-    export SHELL_COMPLETIONS_DIR="$PWD/completions"
-    cargo build --release
-}
-
-check() {
-    cd $_pkgname
-    cargo test --release
+  cd "$srcdir/falion-$pkgver-stable"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --release --frozen
 }
 
 package() {
-    cd "$srcdir/$_pkgname"
-    install -Dm755 target/release/$_pkgname "$pkgdir/usr/bin/$_pkgname"
+  cd "$srcdir/falion-$pkgver-stable"
+  install -Dm 755 "target/release/falion" -t "$pkgdir/usr/bin"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm0644 -t "$pkgdir/usr/share/applications/" "resources/linux/desktop/falion.desktop"
+  for size in 16x16 32x32 64x64 128x128 256x256 512x512; do
+		install -Dm0644 "resources/linux/desktop/icons/hicolor/$size/apps/falion.png" \
+			"$pkgdir/usr/share/icons/hicolor/$size/apps/falion.png"
+	done
 }
