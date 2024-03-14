@@ -1,6 +1,6 @@
 pkgbase = leftwm-config-git
 	pkgdesc = Config manager for LeftWM
-	pkgver = r53.3a2f422
+	pkgver = r54.a9f2f21
 	pkgrel = 2
 	url = https://github.com/leftwm/leftwm-config
 	arch = i686
