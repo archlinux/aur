@@ -1,16 +1,17 @@
 pkgbase = streambop-bin
 	pkgdesc = A software that allows you to play music on your livestreams, credit currently playing music, avoid legal issues, allow audio mixing, customizability and more..
 	pkgver = 1.6.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/snaildos/StreamBop
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = electron25
+	makedepends = fuse2
+	depends = electron25-bin
 	provides = streambop=1.6.1
 	conflicts = streambop
 	source = streambop-1.6.1.AppImage::https://github.com/snaildos/StreamBop/releases/download/v1.6.1/StreamBop-1.6.1.AppImage
 	source = streambop.sh
 	sha256sums = b6c79450f75a8802f0b51744d118437dcab72bb05af3fa36414a1c29ede6387f
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = streambop-bin
