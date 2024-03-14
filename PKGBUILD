@@ -20,8 +20,8 @@ package() {
     install -Dm644 "${srcdir}/utc-latex-${pkgver}/${latexpkgname}"/* -t "${pkgdir}/${TEXMFDIST}/tex/latex/${latexpkgname}"
 
     # Fix folder permissions (TODO: Figure out why ?)
-    chmod 644 "${pkgdir}/${TEXMFDIST}/tex/latex/${latexpkgname}"
+    chmod -R 755 "${pkgdir}/${TEXMFDIST}/tex/latex/${latexpkgname}"
 
     # Install the license
-    install -Dm644 "${srcdir}/utc-latex-${pkgver}/licenses/${latexpkgname}.txt" -t "${pkgdir}/usr/share/licenses/${latexpkgname}/LICENSE"
+    install -Dm644 "${srcdir}/utc-latex-${pkgver}/licenses/${latexpkgname}.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/${latexpkgname}.txt"
 }
