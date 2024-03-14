@@ -1,65 +1,63 @@
 pkgname=riseup-vpn-git
-pkgver() {
-   cd "bitmask-vpn"
-   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
 pkgrel=1
-pkgver=0.21.11.r78.gec3f271
+pkgver=0.24.03.rc.1.r1.g316e632
 pkgdesc="RiseupVPN is a branded build of Bitmask VPN. Bitmask VPN is a minimal rewrite of the Bitmask VPN Client, written in golang, that for now lacks client authentication, and is preconfigured to use a single provider."
 url="https://0xacab.org/leap/bitmask-vpn"
 arch=('x86_64')
 license=('GPL3')
-depends=(
-    'python'
-    'openvpn'
-    'qt5-declarative'
-    'qt5-quickcontrols'
-    'qt5-quickcontrols2'
-    'qt5-graphicaleffects'
-    'hicolor-icon-theme'
-    'qt5-svg'
-)
-makedepends=(
-    'go'
-    'qt5-base'
-    'qt5-tools'
-    'qt5-svg'
-    'git'
-    'qt-installer-framework'
-    'pkgconf'
-    'cmake'
-    'fakeroot'
-)
-conflicts=(
-    'riseup-vpn'
-)
+conflicts=('riseup-vpn')
 source=(
     "git+https://0xacab.org/leap/bitmask-vpn.git"
     "riseup-vpn_launcher.desktop"
     "riseup-vpn.png"
 )
-sha1sums=(
-    'SKIP'
-    '17e503a9c0a119c4eb78f0eee243ffc7f85095b5'
-    '7cb4d92288febba7de7da27c5ee8f7d867a0b221'
+
+sha256sums=('SKIP'
+            'e21a0d99dcea6b849f80960fccc488e6294e3e794b0033fdc163291ecc8595ff'
+            '18cdea88cb7feb3de898918a78f612318b066d18c174d2a9addaa448f58de15c')
+
+pkgver() {
+   cd "bitmask-vpn"
+   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+makedepends=(
+    'git'
+    'cmake'
+    'make'
+    'which'
+    'gcc'
+    'go'
 )
+
+depends=(
+    'qt6-base'
+    'qt6-tools'
+    'qt6-quickcontrols2'
+    'qt6-svg'
+    'openvpn'
+    'python'
+    'lxsession'
+)
+
+prepare() {
+        cd "bitmask-vpn"
+        PROVIDER=riseup make vendor
+}
+
 build() {
     cd "bitmask-vpn"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-    make generate
-
-    go build -buildmode=c-archive -o lib/libgoshim.a gui/backend.go
-
-    PROVIDER=riseup make build
+    PROVIDER=riseup QMAKE=qmake6 LRELEASE=/usr/lib/qt6/bin/lrelease make build -j $(nproc)
 }
 
 check() {
-	cd "bitmask-vpn"
-
+    cd "bitmask-vpn"
     make test
 }
 
@@ -72,3 +70,4 @@ package() {
     install -Dm644 helpers/se.leap.bitmask.policy "${pkgdir}/usr/share/polkit-1/actions/se.leap.bitmask.policy"
     install -Dm755 build/qt/release/riseup-vpn "${pkgdir}/usr/bin/riseup-vpn"
 }
+
