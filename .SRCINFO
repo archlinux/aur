@@ -1,5 +1,5 @@
 pkgbase = ungoogled-chromium-xdg-bin
-	pkgdesc = A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory (binary version)
+	pkgdesc = A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory (using pre-releases), (binary version)
 	pkgver = 122.0.6261.128
 	pkgrel = 1
 	url = https://github.com/Eloston/ungoogled-chromium
