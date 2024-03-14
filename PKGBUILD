@@ -33,11 +33,10 @@ package() {
   install -Dm755 build/$_pkgname "$pkgdir/usr/bin/$_pkgname"
 
   # Create and move the launcher.
-  printf "[Desktop Entry]\nVersion=1.0.1.Preview_1\nType=Application\nName=RespeQt\nGenericName=RespeQt\nComment=RespeQt emulates Atari SIO peripherals when connected to an Atari 8-bit computer with an SIO2PC cable.\nTryExec=RespeQt\nExec=RespeQt\nIcon=/usr/share/icons/hicolor/49x48/apps/RespeQt.png\nCategories=Application;Game;\nTerminal=false\nMimeType=application/x-respeqt;" > RespeQt.desktop
+  printf "[Desktop Entry]\nVersion=1.0.1.Preview_1\nType=Application\nName=RespeQt\nGenericName=RespeQt\nComment=RespeQt emulates Atari SIO peripherals when connected to an Atari 8-bit computer with an SIO2PC cable.\nTryExec=RespeQt\nExec=RespeQt\nIcon=/usr/share/icons/hicolor/apps/RespeQt.png\nCategories=Application;Game;\nTerminal=false\nMimeType=application/x-respeqt;" > RespeQt.desktop
   install -Dm644 RespeQt.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
   # Get icon size and then move the icon to folder named after it's size.
   cd ./resources/main-icon
-  _size=$(file RespeQt.png | cut -f 5 -d " ")$(file RespeQt.png | cut -f 6 -d " ")$(file RespeQt.png | cut -f 7 -d " " | tr -d '[:punct:]')
-  install -Dm644 RespeQt.png "$pkgdir/usr/share/icons/hicolor/$_size/apps/$_pkgname.png"
+  install -Dm644 RespeQt.png "$pkgdir/usr/share/icons/hicolor/apps/$_pkgname.png"
 }
