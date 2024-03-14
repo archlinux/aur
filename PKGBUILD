@@ -15,7 +15,7 @@ optdepends=('kcmutils5: for klassy-settings')
 provides=()
 conflicts=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('4b2f7ab45291919fbcc2e35ec87c9ed0944ef66a3935fd44c96575a064202282')
+sha256sums=('e91e9a4695fa8bee0d7b53df59225f96fe1470d8afdc22a28baee5433b2fc0fc')
 
 build() {
   export CMAKE_PREFIX_PATH="/usr/lib/cmake/plasma5"
