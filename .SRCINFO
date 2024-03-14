@@ -1,6 +1,6 @@
 pkgbase = zed-editor
 	pkgdesc = high-performance, multiplayer code editor from the creators of Atom and Tree-sitter (linux pre-release series)
-	pkgver = 0.127.0
+	pkgver = 0.127.1
 	pkgrel = 1
 	url = https://zed.dev
 	arch = x86_64
@@ -34,9 +34,9 @@ pkgbase = zed-editor
 	depends = wayland
 	depends = zlib
 	depends = libz.so
-	source = https://github.com/zed-industries/zed/archive/v0.127.0-pre/zed-0.127.0-pre.tar.gz
+	source = https://github.com/zed-industries/zed/archive/v0.127.1-pre/zed-0.127.1-pre.tar.gz
 	source = https://github.com/livekit/protocol/archive/8645a138fb2ea72c4dab13e739b1f3c9ea29ac84/protocol-8645a138fb2ea72c4dab13e739b1f3c9ea29ac84.tar.gz
-	sha256sums = 887a1804c756b219e4d4c0d0b93185465c4bd0599d0d9bcdddee8e22992036cb
+	sha256sums = e2242ac07df58853c52063fa0661ca164ecb41ee9ef246f253d8557d95332f4d
 	sha256sums = cd26bc1015fa0b79154c23a385441ae81e9a4385211cf2989eb939ae83d0e414
 
 pkgname = zed-editor
