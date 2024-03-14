@@ -1,7 +1,7 @@
 pkgbase = wechat-universal-bwrap
 	pkgdesc = WeChat (Universal) with bwrap sandbox
 	pkgver = 1.0.0.236
-	pkgrel = 1
+	pkgrel = 2
 	url = https://weixin.qq.com
 	arch = x86_64
 	arch = aarch64
@@ -32,7 +32,7 @@ pkgbase = wechat-universal-bwrap
 	source = wechat-universal.png
 	source = license.tar.gz
 	sha256sums = 201d904c7a0e38a6ed7dd12f9300c71babd685b26cf2fce65f76126e23f38c4a
-	sha256sums = 6b20d1951044cf614444b42a25295488225c02d1928754db37e62e978c479c96
+	sha256sums = 3996ad25f95eb2ac73fb536a6080a20802dd4e5eb155d8f329fa0e568bfbc00f
 	sha256sums = b783b7b0035efb5a0fcb4ddba6446f645a4911e4a9f71475e408a5c87ef04c30
 	sha256sums = bc13a14c8680daa03c617e71f48419a1b05e2b9d75bb58b15a89d0d191d0fb12
 	sha256sums = 53760079c1a5b58f2fa3d5effe1ed35239590b288841d812229ef4e55b2dbd69
@@ -40,7 +40,7 @@ pkgbase = wechat-universal-bwrap
 	sha256sums_x86_64 = 958c2705d3b37470f7272737379d5ed7d3809cf51f9a9ac94f81cbbc9346541a
 	source_aarch64 = wechat-universal_1.0.0.236_aarch64.deb::https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_1.0.0.236_arm64.deb
 	sha256sums_aarch64 = 0c57d85184dff673d4f50cfa0c2980ac01316c12e3e5a2beed2c2a3c3a954863
-	source_loong64 = wechat-universal_1.0.0.236_loong64.deb::https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_1.0.0.236_arm64.deb
+	source_loong64 = wechat-universal_1.0.0.236_loong64.deb::https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_1.0.0.236_loongarch64.deb
 	sha256sums_loong64 = abc9209859990a359c690faccea589ee69aa488a9dbfae693b89055cec341a52
 
 pkgname = wechat-universal-bwrap
