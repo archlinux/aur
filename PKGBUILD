@@ -1,11 +1,11 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wf-config
 pkgver=0.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A library for managing configuration files, written for wayfire"
 arch=(x86_64 aarch64)
 url=https://wayfire.org
-license=(custom:MIT)
+license=(MIT)
 depends=(libevdev libxml2)
 makedepends=(meson ninja pkg-config wayland-protocols glm doctest cmake)
 conflicts=("${pkgname}-git")
