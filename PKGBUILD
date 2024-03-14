@@ -3,7 +3,7 @@
 pkgname=dbgate-bin
 pkgver=5.2.7
 _electronversion=25
-pkgrel=5
+pkgrel=6
 pkgdesc="Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others. Runs under Windows, Linux, Mac or as web application"
 arch=(
     'aarch64'
@@ -16,7 +16,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'hicolor-icon-theme'
 )
 makedepends=(
@@ -30,7 +30,7 @@ source=(
 	"${pkgname%-bin}.sh"
 )
 sha256sums=('4ba7d897a31d45781b6bbc0b87e9a241873d61fff657af2f0c54608f652d235b'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 sha256sums_aarch64=('c0f659c4feb350067b29c202656669b3dabb19a9626f6a2df3a51a7116a56a22')
 sha256sums_armv7h=('cc0c7b59475a254bda665b835dcf7f145813f2daa5687dc41e2116b13195fd04')
 sha256sums_x86_64=('75801a25bcd13b1f1073f2c8c048f49c7ebe58eb1162f5105b486a0ce99a8696')
@@ -38,6 +38,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
