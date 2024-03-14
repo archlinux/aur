@@ -1,11 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=numara-bin
 _appname=Numara
-pkgver=4.5.6
+pkgver=4.5.7
 _electronversion=29
 pkgrel=1
 pkgdesc="Simple notepad calculator built on Electron, powered by Math.js"
-arch=('x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://numara.io/"
 _ghurl="https://github.com/bornova/numara-calculator"
 license=('MIT')
@@ -16,13 +19,15 @@ depends=(
     'hicolor-icon-theme'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/bornova/numara-calculator/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4bec2dc651f210108bbcb50f87213fe1974788828507dc1246d361140f1eb595'
-            'b944c7642b6a0ccf0c24e98d199d8bf4c8d556ebc7d87ddb9af98cab67b378b5'
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-amd64.deb")
+sha256sums=('b944c7642b6a0ccf0c24e98d199d8bf4c8d556ebc7d87ddb9af98cab67b378b5'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums_aarch64=('b640ea5bcdcd3e98b9b00b4f5b531d79626d1eb6de084bc66b51e53470d82b7c')
+sha256sums_x86_64=('9987e3288724ebdfc9f1944d171bb21aa22450c345d8c5b8c635353ab4b617b2')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
