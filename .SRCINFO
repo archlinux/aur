@@ -1,0 +1,14 @@
+pkgbase = tlm
+	pkgdesc = Local CLI Copilot, powered by CodeLLaMa.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/yusufcanb/tlm
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	depends = ollama
+	depends = glibc
+	source = tlm-1.1.tar.gz::https://github.com/yusufcanb/tlm/archive/refs/tags/1.1.tar.gz
+	b2sums = fde1d7f1213895aea8730d4f2903950b89330b059aa0bdf8ca2aa581c3f72051167b51562c6f36cc16f314cb9ecc209b130a71a051cdb338d4057651aa9b0156
+
+pkgname = tlm
