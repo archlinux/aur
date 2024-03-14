@@ -1,0 +1,251 @@
+From dd85d0cd98c16eb00c1152cf982c7a60c852d292 Mon Sep 17 00:00:00 2001
+From: Scott Moreau <oreaus@gmail.com>
+Date: Sun, 8 Oct 2023 13:26:41 -0600
+Subject: [PATCH] background-view: Disconnect pre-mapped handler after setting
+ up view (#198)
+
+If we don't do this and the view is killed or dies, new views might be matched
+and set unintentionally as a background view.
+---
+ src/background-view.cpp | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/background-view.cpp b/src/background-view.cpp
+index b96733b..729eb5b 100644
+--- a/src/background-view.cpp
++++ b/src/background-view.cpp
+@@ -253,7 +253,6 @@ class wayfire_background_view : public wf::plugin_interface_t
+     {
+         command.set_callback(option_changed);
+         file.set_callback(option_changed);
+-        wf::get_core().connect(&on_view_pre_map);
+         option_changed();
+ 
+         on_new_inhibitor.set_callback([=] (auto) { remove_idle_inhibitors(); });
+@@ -320,6 +319,11 @@ class wayfire_background_view : public wf::plugin_interface_t
+             return;
+         }
+ 
++        if (!on_view_pre_map.is_connected())
++        {
++            wf::get_core().connect(&on_view_pre_map);
++        }
++
+         for (auto & o : wf::get_core().output_layout->get_outputs())
+         {
+             views[o].pid = wf::get_core().run(std::string(command) + add_arg_if_not_empty(file));
+@@ -362,6 +366,7 @@ class wayfire_background_view : public wf::plugin_interface_t
+ 
+         // Remove any idle inhibitors which were already set
+         remove_idle_inhibitors();
++        on_view_pre_map.disconnect();
+     }
+ 
+     wf::signal::connection_t<wf::view_pre_map_signal> on_view_pre_map = [=] (wf::view_pre_map_signal *ev)
+From 11717c418818dcbcfd14ec4c69e83a99c3b30210 Mon Sep 17 00:00:00 2001
+From: Scott Moreau <oreaus@gmail.com>
+Date: Sun, 8 Oct 2023 14:53:59 -0600
+Subject: [PATCH] background-view: Disconnect the pre_map handler after all
+ outputs have been handled (#199)
+
+---
+ src/background-view.cpp | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/src/background-view.cpp b/src/background-view.cpp
+index 729eb5b..c7bd293 100644
+--- a/src/background-view.cpp
++++ b/src/background-view.cpp
+@@ -247,6 +247,7 @@ class wayfire_background_view : public wf::plugin_interface_t
+ 
+     wf::wl_listener_wrapper on_new_inhibitor;
+     wf::wl_idle_call idle_cleanup_inhibitors;
++    size_t output_count;
+ 
+   public:
+     void init() override
+@@ -324,6 +325,7 @@ class wayfire_background_view : public wf::plugin_interface_t
+             wf::get_core().connect(&on_view_pre_map);
+         }
+ 
++        output_count = 0;
+         for (auto & o : wf::get_core().output_layout->get_outputs())
+         {
+             views[o].pid = wf::get_core().run(std::string(command) + add_arg_if_not_empty(file));
+@@ -364,9 +366,14 @@ class wayfire_background_view : public wf::plugin_interface_t
+         });
+         views[o].view = new_view;
+ 
+-        // Remove any idle inhibitors which were already set
++        /* Remove any idle inhibitors which were already set */
+         remove_idle_inhibitors();
+-        on_view_pre_map.disconnect();
++        /* Disconnect the pre_map handler in case the view goes away,
++         * we don't want to background-view the wrong view. */
++        if (++output_count == wf::get_core().output_layout->get_outputs().size())
++        {
++            on_view_pre_map.disconnect();
++        }
+     }
+ 
+     wf::signal::connection_t<wf::view_pre_map_signal> on_view_pre_map = [=] (wf::view_pre_map_signal *ev)
+From 9a3d548a000948bf337f2ba39a911ef427ce16c9 Mon Sep 17 00:00:00 2001
+From: Scott Moreau <oreaus@gmail.com>
+Date: Sat, 25 Nov 2023 15:02:55 -0700
+Subject: [PATCH] Track wlroots 0.17 changes (#206)
+
+---
+ .github/workflows/ci.yaml |  4 ++--
+ src/background-view.cpp   | 21 ++++++++-------------
+ src/bench.cpp             | 15 ++++++---------
+ src/water.cpp             |  8 ++++++++
+ 4 files changed, 24 insertions(+), 24 deletions(-)
+
+diff --git a/src/background-view.cpp b/src/background-view.cpp
+index c7bd293..3de74dd 100644
+--- a/src/background-view.cpp
++++ b/src/background-view.cpp
+@@ -335,22 +335,21 @@ class wayfire_background_view : public wf::plugin_interface_t
+     void set_view_for_output(wayfire_toplevel_view view, wlr_surface *surface, wf::output_t *o)
+     {
+         std::shared_ptr<unmappable_view_t> new_view;
+-        if (wlr_surface_is_xdg_surface(surface))
++        if (wlr_xdg_surface *surf = wlr_xdg_surface_try_from_wlr_surface(surface))
+         {
+-            auto toplevel = wlr_xdg_surface_from_wlr_surface(surface)->toplevel;
++            auto toplevel = surf->toplevel;
+             wlr_xdg_toplevel_set_size(toplevel, o->get_screen_size().width, o->get_screen_size().height);
+             new_view = unmappable_view_t::create<wayfire_background_view_xdg>(toplevel, o);
+-            new_view->on_unmap.connect(&toplevel->base->events.unmap);
++            new_view->on_unmap.connect(&toplevel->base->surface->events.unmap);
+         }
+ 
+ #if WF_HAS_XWAYLAND
+-        else if (wlr_surface_is_xwayland_surface(surface))
++        else if (wlr_xwayland_surface *surf = wlr_xwayland_surface_try_from_wlr_surface(surface))
+         {
+-            auto xw = wlr_xwayland_surface_from_wlr_surface(surface);
+-            wlr_xwayland_surface_configure(xw, o->get_layout_geometry().x, o->get_layout_geometry().y,
++            wlr_xwayland_surface_configure(surf, o->get_layout_geometry().x, o->get_layout_geometry().y,
+                 o->get_layout_geometry().width, o->get_layout_geometry().height);
+-            new_view = unmappable_view_t::create<wayfire_background_view_xwl>(xw, o);
+-            new_view->on_unmap.connect(&xw->events.unmap);
++            new_view = unmappable_view_t::create<wayfire_background_view_xwl>(surf, o);
++            new_view->on_unmap.connect(&surf->surface->events.unmap);
+         }
+ #endif
+         else
+@@ -391,11 +390,7 @@ class wayfire_background_view : public wf::plugin_interface_t
+ 
+ #if WF_HAS_XWAYLAND
+         wlr_surface *wlr_surface = ev->surface;
+-        wlr_xwayland_surface *xwayland_surface = nullptr;
+-        if (wlr_surface && wlr_surface_is_xwayland_surface(wlr_surface))
+-        {
+-            xwayland_surface = wlr_xwayland_surface_from_wlr_surface(wlr_surface);
+-        }
++        wlr_xwayland_surface *xwayland_surface = wlr_xwayland_surface_try_from_wlr_surface(wlr_surface);
+ 
+         if (xwayland_surface)
+         {
+diff --git a/src/bench.cpp b/src/bench.cpp
+index 95ff3f2..e33799c 100644
+--- a/src/bench.cpp
++++ b/src/bench.cpp
+@@ -46,7 +46,6 @@ class wayfire_bench_screen : public wf::per_output_plugin_instance_t
+     double max_fps = 0;
+     double widget_xc;
+     uint32_t last_time = wf::get_current_time();
+-    double current_fps;
+     double widget_radius;
+     wf::wl_timer<false> timer;
+     wf::simple_texture_t bench_tex;
+@@ -83,9 +82,9 @@ class wayfire_bench_screen : public wf::per_output_plugin_instance_t
+ 
+         last_frame_times.push_back(elapsed);
+ 
+-        render_bench();
+-
+         reset_timeout();
++
++        render_bench();
+     }
+ 
+     void reset_timeout()
+@@ -118,7 +117,7 @@ class wayfire_bench_screen : public wf::per_output_plugin_instance_t
+             CAIRO_FONT_WEIGHT_BOLD);
+         cairo_set_font_size(cr, font_size);
+ 
+-        cairo_text_extents(cr, "234.5", &text_extents);
++        cairo_text_extents(cr, "1000.0", &text_extents);
+ 
+         widget_xc = text_extents.width / 2 + text_extents.x_bearing + WIDGET_PADDING;
+         text_y    = text_extents.height + WIDGET_PADDING;
+@@ -230,14 +229,11 @@ class wayfire_bench_screen : public wf::per_output_plugin_instance_t
+             last_frame_times.begin(), last_frame_times.end(), 0.0);
+         average /= last_frame_times.size();
+ 
+-        current_fps = 1000 / average;
++        double current_fps = 1000 / average;
+ 
+         if (current_fps > max_fps)
+         {
+             max_fps = current_fps;
+-        } else
+-        {
+-            max_fps -= 1;
+         }
+ 
+         sprintf(fps_buf, "%.1f", current_fps);
+@@ -295,9 +291,10 @@ class wayfire_bench_screen : public wf::per_output_plugin_instance_t
+     {
+         if (!output->render->get_scheduled_damage().empty())
+         {
+-            output->render->damage(cairo_geometry);
+             compute_timing();
+         }
++
++        output->render->damage(cairo_geometry, false);
+     };
+ 
+     wf::effect_hook_t overlay_hook = [=] ()
+diff --git a/src/water.cpp b/src/water.cpp
+index d89c758..a3da9e5 100644
+--- a/src/water.cpp
++++ b/src/water.cpp
+@@ -247,6 +247,7 @@ class wayfire_water_screen : public wf::per_output_plugin_instance_t, public wf:
+ 
+         if (!hook_set)
+         {
++            output->render->add_effect(&damage_hook, wf::OUTPUT_EFFECT_DAMAGE);
+             output->render->add_post(&render);
+             hook_set = true;
+         }
+@@ -266,6 +267,11 @@ class wayfire_water_screen : public wf::per_output_plugin_instance_t, public wf:
+         animation.animate(animation, 0);
+     };
+ 
++    wf::effect_hook_t damage_hook = [=] ()
++    {
++        output->render->damage_whole();
++    };
++
+     wf::post_hook_t render = [=] (const wf::framebuffer_t& source,
+                                   const wf::framebuffer_t& destination)
+     {
+@@ -396,6 +402,7 @@ class wayfire_water_screen : public wf::per_output_plugin_instance_t, public wf:
+         if (!button_down && !timer.is_connected() && !animation.running())
+         {
+             hook_set = false;
++            output->render->rem_effect(&damage_hook);
+             output->render->rem_post(&render);
+             OpenGL::render_begin();
+             buffer[0].release();
+@@ -414,6 +421,7 @@ class wayfire_water_screen : public wf::per_output_plugin_instance_t, public wf:
+         timer.disconnect();
+         if (hook_set)
+         {
++            output->render->rem_effect(&damage_hook);
+             output->render->rem_post(&render);
+         }
+ 

@@ -1,21 +1,27 @@
 pkgbase = wayfire-plugins-extra
 	pkgdesc = Additional plugins for Wayfire
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wayfire.org
 	arch = x86_64
-	license = custom:MIT
+	license = MIT
 	makedepends = meson
 	makedepends = ninja
 	makedepends = glm
 	makedepends = git
 	makedepends = wayland-protocols
-	depends = wayfire>=0.7
+	depends = wayfire>=0.8.1
 	depends = cairo
 	depends = glibmm
 	depends = iio-sensor-proxy
+	depends = librsvg
 	conflicts = wayfire-plugins-extra-git
+	conflicts = wayfire-plugins-focus-request
+	conflicts = wayfire-plugins-windecor
+	conflicts = wayfire-plugins-shadows-git
 	source = https://github.com/WayfireWM/wayfire-plugins-extra/releases/download/v0.8.0/wayfire-plugins-extra-0.8.0.tar.xz
+	source = wlroots-0.17-changes.patch
 	b2sums = f8f46782e31f170eb566567f50d302df4db23fbeb29c71569624a7f79c2bbcfcf48b070e7b55bf1880a9cd02afe78783d6680c457e466d765eb0db72f4b1f61b
+	b2sums = a0d8815f27b695baf0f46de25654388783bdc886d9d43922a1fb4d6a92cfe261ecc9f04e2bccc458081ac242e21612b4fe5a8ad71cc1ac06180039650aa3d97a
 
 pkgname = wayfire-plugins-extra
