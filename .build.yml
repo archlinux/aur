@@ -8,6 +8,7 @@ packages:
     - unzip
     - python-e3-testsuite
     - python-sphinx
+    - python-pexpect
 tasks:
 - prepare: |
     git clone https://aur.archlinux.org/gprbuild.git
