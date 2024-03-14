@@ -12,7 +12,7 @@ pkgbase = electron-music-player
 	makedepends = git
 	makedepends = base-devel
 	makedepends = gcc
-	depends = electron25
+	depends = electron25-bin
 	depends = hicolor-icon-theme
 	conflicts = electron-music-player
 	source = electron-music-player.git::git+https://github.com/kevinfrei/EMP.git#tag=v0.8.8

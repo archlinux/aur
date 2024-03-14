@@ -12,7 +12,7 @@ url="https://github.com/kevinfrei/EMP"
 license=("CC0-1.0")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'hicolor-icon-theme'
 )
 makedepends=(
