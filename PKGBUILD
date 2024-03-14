@@ -3,15 +3,15 @@
 _pkgname=RespeQt
 pkgbase=respeqt-git
 pkgname=respeqt-git
-pkgver=r5.3.r16.gc7489af
+pkgver=r5.4RC3.r2.g48bdc24
 pkgrel=1
 pkgdesc="RespeQt emulates Atari SIO peripherals when connected to an Atari 8-bit computer with an SIO2PC cable."
-url="https://github.com/RespeQt/RespeQt"
+url="https://github.com/josch1710/RespeQt"
 arch=('i686' 'x86_64' 'aarch64')
-license=('GPL2')
-depends=('zlib' 'qt5-base' 'glibc' 'hicolor-icon-theme' 'qt5-serialport' 'qt5-svg')
-makedepends=('git' 'qt5-tools')
-source=("$_pkgname::git+https://github.com/RespeQt/RespeQt")
+license=('GPL-2.0-only')
+depends=('zlib' 'qt5-base' 'glibc' 'hicolor-icon-theme' 'qt5-serialport' 'qt5-svg' 'libcups')
+makedepends=('git' 'qt5-tools' 'cmake' 'debugedit')
+source=("$_pkgname::git+https://github.com/josch1710/RespeQt")
 md5sums=('SKIP')
 
 pkgver() {
@@ -23,12 +23,12 @@ build() {
   cd $_pkgname
   install -d build
   cd build
-  qmake-qt5 ..
+  cmake ..
   make
 }
 
 package() {
-  # Move program to /user/bin/.
+  # Move program to /usr/bin/.
   cd $_pkgname
   install -Dm755 build/$_pkgname "$pkgdir/usr/bin/$_pkgname"
 
@@ -37,7 +37,7 @@ package() {
   install -Dm644 RespeQt.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
   # Get icon size and then move the icon to folder named after it's size.
-  cd ./main-icon
+  cd ./resources/main-icon
   _size=$(file RespeQt.png | cut -f 5 -d " ")$(file RespeQt.png | cut -f 6 -d " ")$(file RespeQt.png | cut -f 7 -d " " | tr -d '[:punct:]')
   install -Dm644 RespeQt.png "$pkgdir/usr/share/icons/hicolor/$_size/apps/$_pkgname.png"
 }
