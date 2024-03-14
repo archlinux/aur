@@ -1,0 +1,14 @@
+pkgbase = python-luma-core
+	pkgdesc = Pillow-compatible library to support drawing and text-rendering for small displays
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = https://github.com/rm-hull/luma.core
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-pillow
+	depends = python-smbus2
+	source = python-luma-core-2.4.2.tar.gz::https://github.com/rm-hull/luma.core/archive/refs/tags/2.4.2.tar.gz
+	sha256sums = 8ad1ac035a82fc729a4f5bb70ec7501322bd458af4888ed8c225b99a30c428f9
+
+pkgname = python-luma-core
