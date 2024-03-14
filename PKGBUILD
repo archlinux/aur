@@ -2,7 +2,7 @@
 
 _pkgname="surface-dtx-daemon"
 pkgname="${_pkgname}-bin"
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 _pkgrel=1
 pkgdesc="Surface Detachment System (DTX) Daemon"
@@ -19,7 +19,7 @@ source=(
     "https://github.com/linux-surface/surface-dtx-daemon/releases/download/v${pkgver}-${_pkgrel}/surface-dtx-daemon-${pkgver}.${_pkgrel}-${CARCH}.bin.tar.xz"
 )
 
-sha256sums=('5b35627910e9a5e8ff721f7298bc506229f3cb18e12391a843023e2782533a0b')
+sha256sums=('a7662aa8a7ddef829a2a062a6b0bba9181a6a4fb61cc73028312c6796f4d9e1e')
 
 backup=(
     'etc/surface-dtx/surface-dtx-daemon.conf'
@@ -54,8 +54,8 @@ package() {
     install -D -m644 "shell-completions/surface-dtx-userd.bash" "$pkgdir/usr/share/bash-completion/completions/surface-dtx-userd"
     install -D -m644 "shell-completions/surface-dtx-daemon.zsh" "$pkgdir/usr/share/zsh/site-functions/_surface-dtx-daemon"
     install -D -m644 "shell-completions/surface-dtx-userd.zsh" "$pkgdir/usr/share/zsh/site-functions/_surface-dtx-userd"
-    install -D -m644 "shell-completions/surface-dtx-daemon.fish" "$pkgdir/usr/share/fish/completions/surface-dtx-daemon.fish"
-    install -D -m644 "shell-completions/surface-dtx-userd.fish" "$pkgdir/usr/share/fish/completions/surface-dtx-userd.fish"
+    install -D -m644 "shell-completions/surface-dtx-daemon.fish" "$pkgdir/usr/share/fish/vendor_completions.d/surface-dtx-daemon.fish"
+    install -D -m644 "shell-completions/surface-dtx-userd.fish" "$pkgdir/usr/share/fish/vendor_completions.d/surface-dtx-userd.fish"
 
     # license
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/surface-dtx-daemon/LICENSE"
