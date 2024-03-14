@@ -1,8 +1,9 @@
 pkgbase = dasel
 	pkgdesc = Select, put and delete data from JSON, TOML, YAML, XML and CSV files with a single command-line tool
-	pkgver = 2.6.0
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://github.com/TomWright/dasel
+	changelog = dasel.changelog
 	arch = aarch64
 	arch = arm
 	arch = armv6h
@@ -13,8 +14,8 @@ pkgbase = dasel
 	makedepends = go
 	depends = glibc
 	options = lto
-	source = dasel-2.6.0.tar.gz::https://github.com/TomWright/dasel/archive/v2.6.0.tar.gz
-	sha256sums = 1428a0ddbe93175215f25d4dea71fb96f654fc60723b276c296ea82eca26b014
-	b2sums = 7f60276adf6e763b29dfbdd3bd1f9ed253386596cf0c875df680a76a7d81aba75f98a1812aac8566dd399750e592d975c931d76b1f2923c8e6a6c41da8186e93
+	source = dasel-2.7.0.tar.gz::https://github.com/TomWright/dasel/archive/v2.7.0.tar.gz
+	sha256sums = 93546e10971ca74c3192940fe9435b48368cefa677cef8a7532b214c6d8b6c39
+	b2sums = 27fdc70f998c389453c7b6c6ec59491f3482ff7df1a043499e985179c5a51f6b58328272d733eddb28009ada0dd206b0e4fed37ec6bc43229314a0c1906e215e
 
 pkgname = dasel
