@@ -6,7 +6,7 @@
 
 pkgname=rambox-pro-bin
 _pkgname=rambox
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='Workspace browser to manage many web applications in one place'
 arch=('x86_64')
@@ -25,11 +25,11 @@ conflicts=('rambox' 'rambox-bin' 'rambox-pro-bin-beta')
 #    html2text --body-width=80 file.html | awk '/^# .*EULA/,/^## If/ { print }' | head -n -1
 # 5. Update the timestamp in step #2.
 source=("${_pkgname}-EULA"
-        "${_pkgname}-${pkgver}.deb::https://github.com/ramboxapp/download/releases/download/v${pkgver}/Rambox-${pkgver}-linux-x64.deb")
+"${_pkgname}-${pkgver}.deb::https://github.com/ramboxapp/download/releases/download/v${pkgver}/Rambox-${pkgver}-linux-x64.deb")
 
 sha256sums=(
     '0c94e0c1690afe9414a7ead793bb63417da16b143209d3fed8999370a237d137'
-    '58754a16fbf3c50e1c140816591d70cc7339d97fc2f71db925cfe5d78056ecaf'
+    'a1d7406f60e403ad7d730c6df9f7e9ba56658a4a276feb05113f4a40b7bd60a1'
 )
 
 build() {
