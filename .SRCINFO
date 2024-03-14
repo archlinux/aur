@@ -1,6 +1,6 @@
 pkgbase = qt5-location
 	pkgdesc = Provides access to position, satellite and area monitoring classes
-	pkgver = 5.15.12+kde+r6
+	pkgver = 5.15.13+kde+r6
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = qt5-location
 	license = custom
 	makedepends = git
 	depends = qt5-declarative
-	source = git+https://invent.kde.org/qt/qt/qtlocation#commit=5b27b8921f1f2de93573df903c47aee634209f80
+	source = git+https://invent.kde.org/qt/qt/qtlocation#commit=c576985da4e6a4a0b85d5229263777e7197494e0
 	source = git+https://invent.kde.org/qt/qt/qtlocation-mapboxgl.git
 	sha256sums = SKIP
 	sha256sums = SKIP
