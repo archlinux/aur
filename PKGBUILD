@@ -6,15 +6,18 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-libsasl-bootstrap
 pkgver=2.1.28
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Cyrus Simple Authentication Service Layer (SASL) library (Android, ${_android_arch})"
 url="https://www.cyrusimap.org/sasl/"
 license=('custom')
+groups=('android-libsasl-bootstrap')
 depends=("android-${_android_arch}-gdbm"
          "android-${_android_arch}-openssl")
 makedepends=('android-configure'
              "android-${_android_arch}-sqlite")
+provides=("android-${_android_arch}-libsasl")
+conflicts=("android-${_android_arch}-libsasl")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-$pkgver/cyrus-sasl-$pkgver.tar.gz"{,.sig}
         '0001-Add-missing-headers.patch'
