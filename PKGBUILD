@@ -3,7 +3,7 @@
 
 pkgname=qt5-lottie
 _basever=5.15.13
-pkgver=5.15.12
+pkgver=5.15.13
 pkgrel=1
 _commit=62f17bbc0ae8649178ac484afc434dbad16d6351
 arch=('x86_64')
