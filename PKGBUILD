@@ -4,7 +4,7 @@
 _program_name=GalaxyBudsClient
 _pkgname="${_program_name,,}"
 pkgname="${_pkgname}-bin"
-pkgver=4.5.4
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="Unofficial manager for the Samsung Galaxy Buds, Buds+, Buds Live and Buds Pro"
 arch=('x86_64'
@@ -21,9 +21,9 @@ source=("${_pkgname}.desktop" "icon_white.png")
 _source_url_common="${url}/releases/download/${pkgver}"
 
 # template used for the names of the binaries
-_source_binary_common="${_program_name}_Linux_ARCH_Portable.bin"
+_source_binary_common="${_program_name}_Linux-ARCH_portable.zip"
 
-_source_binary_x86_64="${_source_binary_common/ARCH/64bit}"
+_source_binary_x86_64="${_source_binary_common/ARCH/amd64}"
 _source_binary_armv7h="${_source_binary_common/ARCH/arm}"
 _source_binary_aarch64="${_source_binary_common/ARCH/arm64}"
 
@@ -36,7 +36,7 @@ package() {
     dest="${pkgdir}/usr/bin/${_pkgname}"
 
     if [ $CARCH == "x86_64" ]; then
-        install -Dm755 $_source_binary_x86_64 $dest
+        install -Dm755 GalaxyBudsClient $dest
     elif [ $CARCH == "armv7h" ]; then
         install -Dm755 $_source_binary_armv7h $dest
     elif [ $CARCH == "aarch64" ]; then
@@ -48,6 +48,6 @@ package() {
 }
 sha256sums=('88677692ff1d7202b9f7aedbb5ec6cc01684041b94220a8da8feb69d9a028f70'
             '17c7fa91678d1ba8cac08dcfda613735bfab97f4488909c8ac98a5aaa2c94214')
-sha256sums_x86_64=('d1d859ade65e87bcb4acae6e97661cbb1941d2630093ca9e6ee92f1ec2b13fa7')
-sha256sums_armv7h=('49c836631b9408cc737f9de91c41c48f73d0703655adeba9cbecda4387f0bfef')
-sha256sums_aarch64=('9476e7f93f6b60c1922e4a5fa51bc867326ddd5f9d43792d3aea07d65174506a')
+sha256sums_x86_64=('b3c4af4c56b2a023e289a1eb379e939c8cb786376adf971ac011a3060ff7f8db')
+sha256sums_armv7h=('e6842fc6392312f8de568eb268aaf38d672f904995ba5c215dc23eddbff28d9f')
+sha256sums_aarch64=('f467063efd0344798564830e6ce1231380a960af715f6e7b1264d0223aaa7362')
