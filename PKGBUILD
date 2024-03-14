@@ -3,7 +3,7 @@
 
 pkgname=qt5-websockets
 _basever=5.15.13
-pkgver=5.15.12+kde+r2
+pkgver=5.15.13+kde+r2
 pkgrel=1
 _commit=2c2b7691ae231f43129d7f2b43984c30883ca4b1
 arch=('x86_64')
