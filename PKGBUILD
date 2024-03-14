@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=xorgxrdp-devel-git
-pkgver=0.10.0.r10.g728cf99
+pkgver=0.10.0.r12.gdd04d2b
 pkgrel=1
 pkgdesc="Xorg drivers for xrdp"
 arch=('aarch64' 'i686' 'x86_64')
@@ -29,7 +29,7 @@ build() {
   cd "xorgxrdp"
 
   ./bootstrap
-  CFLAGS="$CFLAGS -I/usr/include/libdrm" \
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
   ./configure \
     --prefix="/usr" \
     --enable-glamor
