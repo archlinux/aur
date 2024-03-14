@@ -6,11 +6,11 @@
 pkgname=osu-lazer
 _pkgname=osu
 pkgver=2024.312.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A free-to-win rhythm game. Rhythm is just a *click* away!"
 arch=('x86_64')
 url="https://osu.ppy.sh/"
-license=('MIT' 'CC-BY-NC-4.0')
+license=('MIT AND CC-BY-NC-4.0')
 depends=('ffmpeg' 'libgl' 'sdl2' 'dotnet-runtime')
 makedepends=('dotnet-sdk')
 source=("https://github.com/ppy/osu/archive/$pkgver.tar.gz"

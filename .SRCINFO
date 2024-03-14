@@ -1,11 +1,10 @@
 pkgbase = osu-lazer
 	pkgdesc = A free-to-win rhythm game. Rhythm is just a *click* away!
 	pkgver = 2024.312.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osu.ppy.sh/
 	arch = x86_64
-	license = MIT
-	license = CC-BY-NC-4.0
+	license = MIT AND CC-BY-NC-4.0
 	makedepends = dotnet-sdk
 	depends = ffmpeg
 	depends = libgl
