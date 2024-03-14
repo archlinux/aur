@@ -21,7 +21,7 @@ depends=(
     'flatpak-xdg-utils'
     'libxcomposite'
     'libxkbcommon-x11'
-    'libxrender'
+    'libxrandr'
     'lsb-release'
     'mesa'
     'nss'
@@ -31,8 +31,8 @@ depends=(
     'xcb-util-keysyms'
     'xcb-util-renderutil'
     'xcb-util-wm'
-    'xdg-user-dirs'
     'xdg-desktop-portal'
+    'xdg-user-dirs'
 )
 options=(!strip !debug emptydirs)
 source=(
@@ -60,7 +60,7 @@ source_loong64=(
 noextract=("${_deb_stem}"_{x86_64,aarch64,loong64}.deb)
 
 sha256sums=(
-    '201d904c7a0e38a6ed7dd12f9300c71babd685b26cf2fce65f76126e23f38c4a'
+    'fcfa289c30685d9adb5d051f2d9e9883a4940655f2ce38c2db6241b78228a1d5'
     '53760079c1a5b58f2fa3d5effe1ed35239590b288841d812229ef4e55b2dbd69'
     'ec2494d2cce2bd05d47136329bdb2b9173d9951480c6ef16baf791dd8d0edbf4'
     'b783b7b0035efb5a0fcb4ddba6446f645a4911e4a9f71475e408a5c87ef04c30'
@@ -83,7 +83,7 @@ package() {
         bsdtar -xpC "${pkgdir}" ./opt/apps/com.tencent.wechat
     mv "${pkgdir}"/opt/{apps/com.tencent.wechat/files,"${_pkgname}"}
 
-    echo 'Install icons...'
+    echo 'Installing icons...'
     for res in 16 32 48 64 128 256; do
         install -Dm644 \
             "${pkgdir}/opt/apps/com.tencent.wechat/entries/icons/hicolor/${res}x${res}/apps/com.tencent.wechat.png" \

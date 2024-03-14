@@ -4,16 +4,16 @@
 _show_item=''
 _item=''
 for _arg in "$@"; do
-	if [[ "${_arg}" == --show-item ]]; then
-		_show_item='y'
-	else
-		[[ -z "${_item}" ]] && _item="${_arg}"
-	fi
+    if [[ "${_arg}" == --show-item ]]; then
+        _show_item='y'
+    else
+        [[ -z "${_item}" ]] && _item="${_arg}"
+    fi
 done
 
 if [[ "${_show_item}" ]]; then
-	echo "Fake deepin file manager: xdg-open to show '${_item}' in file manager"
-	exec xdg-open $(dirname -- "${_item}")
+    echo "Fake deepin file manager: xdg-open to show '${_item}' in file manager"
+    exec xdg-open $(dirname -- "${_item}")
 fi
 
 echo "Fake deepin file manager: xdg-open with args $@"
