@@ -3,7 +3,7 @@ pkgname=lumen-bin
 _pkgname=Project.L.U.M.E.N.
 pkgver=1.2.2
 _electronversion=25
-pkgrel=7
+pkgrel=8
 pkgdesc="A simple and modulable personal assistant built on Electron."
 arch=('x86_64')
 url="https://github.com/L-U-M-E-N/lumen-desktop"
@@ -11,7 +11,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'gendesk'
@@ -22,11 +22,12 @@ source=(
 )
 noextract=("${pkgname%-bin}-${pkgver}.zip")
 sha256sums=('37e1d2848757207cf3bb29fe43fe63e1791e31211eb9f5f1a209828653818843'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
     install -Dm755 -d "${srcdir}/${pkgname%-bin}"
