@@ -1,0 +1,5 @@
+[python-trame-vuetify]
+source = "github"
+github = "Kitware/trame-vuetify"
+use_latest_release = "true"
+prefix = "v"
