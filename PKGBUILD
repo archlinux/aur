@@ -2,7 +2,7 @@
 _pkgname='mongodb-compass-beta'
 _edition=' Beta'
 pkgname="$_pkgname-bin"
-_pkgver='1.42.3-beta.2'
+_pkgver='1.42.3-beta.3'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - beta version - binary version'
@@ -24,7 +24,7 @@ source=(
 	"$pkgname-$pkgver.rpm::https://downloads.mongodb.com/compass/$_betaprefix$_pkgname-$_pkgver.x86_64.rpm"
 	'mongodb-compass.conf'
 )
-sha512sums=('1bf868f2484ba0b15c3e9ec696399f025e569e7a6c16b862a21f4ba381bdf8f71092f260c7a30fb57e91adf6c55c6eed19bd2503daeca4149132b04a7591b397'
+sha512sums=('526b5d5b3002f1270bec4f918a2894b696f3b0f4d879bf839eb01e836eda166051335d4e733fa4d77946cde7d3a2f0c9a9f2795a43668b7590de2678d2bc7cca'
             'f09a6026e8b963f4821454fa8c2da8c750c765f26010fbf54dfbecfd7451dda5466464bb15fada1252545366c94bf448dc0529c8bd8114f6f3834ae00176d3f1')
 
 check() {
