@@ -1,9 +1,10 @@
 # Maintainer: grufo <madmurphy333 AT gmail DOT com>
+# Contributor: TheJackiMonster <jacki AT thejackimonster DOT de>
 
 _framework='gnunet'
 pkgname='messenger-cli'
 pkgver='0.2.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line interface for GNUnet Messenger'
 arch=('i686' 'x86_64')
 url="https://${_framework}.org"
