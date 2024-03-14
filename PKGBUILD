@@ -1,6 +1,7 @@
 pkgname=snotify-git
-pkgver=r25.6ae844f
+pkgver=0.0.2.r14.gd7e39399
 pkgrel=1
+epoch=1
 pkgdesc="Play sounds when reciving a notification."
 arch=("any")
 url="https://github.com/Kimiblock/snotify"
@@ -15,7 +16,7 @@ install="snotify.install"
 
 function pkgver() {
 	cd "${srcdir}/snotify"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 function prepare() {
