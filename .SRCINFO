@@ -1,5 +1,5 @@
 pkgbase = utc-latex-report
-	pkgdesc = UTC LaTeX Beamer theme
+	pkgdesc = UTC LaTeX Report theme
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/qaniere/utc-latex
