@@ -1,13 +1,13 @@
 pkgbase = maa-x-bin
 	pkgdesc = MAA GUI with Electron & Vue3
 	pkgver = 2.0.0_beta.14
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.maa.plus/
 	arch = aarch64
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = gendesk
-	depends = electron25
+	depends = electron25-bin
 	depends = android-sdk-platform-tools
 	depends = python>3
 	depends = perl
@@ -15,7 +15,7 @@ pkgbase = maa-x-bin
 	provides = maa-x=2.0.0_beta.14
 	conflicts = maa-x
 	source = maa-x.sh
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 	source_aarch64 = maa-x-2.0.0_beta.14-aarch64.zip::https://github.com/MaaAssistantArknights/MaaX/releases/download/v2.0.0-beta.14/maa-x-linux-arm64-2.0.0-beta.14.zip
 	sha256sums_aarch64 = d0a59e9b51e9087fe5ed4a26255bb55cf8a7c373bbfba0b22b76b2249e50f171
 	source_x86_64 = maa-x-2.0.0_beta.14-x86_64.zip::https://github.com/MaaAssistantArknights/MaaX/releases/download/v2.0.0-beta.14/maa-x-linux-x64-2.0.0-beta.14.zip
