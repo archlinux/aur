@@ -13,7 +13,7 @@ env_add() {
 	BWRAP_ENV_APPEND+=(--setenv "$1" "$2")
 }
 BWRAP_ENV_APPEND=()
-# wechat-beta only support xcb
+# wechat-universal only support xcb
 env_add QT_QPA_PLATFORM xcb
 env_add PATH "/sandbox:${PATH}"
 [[ -z "${QT_IM_MODULE}" ]] && env_add QT_IM_MODULE fcitx
@@ -32,6 +32,14 @@ fi
 mkdir -p "${WECHAT_FILES_DIR}" "${WECHAT_HOME_DIR}"
 ln -snf "${WECHAT_FILES_DIR}" "${WECHAT_HOME_DIR}/xwechat_files"
 
+# resolv.con
+REAL_RESOLV=$(readlink -f /etc/resolv.conf)
+if [[ "${REAL_RESOLV}" != /etc/resolv.conf ]]; then
+	BWRAP_RESOLV=(--ro-bind "${REAL_RESOLV}"{,})
+else
+	BWRAP_RESOLV=()
+fi
+
 # 7Ji: adapted from Kimiblock's aur/wechat-uos-bwrap, thanks :)
 BWRAP_ARGS=(
 	# Drop privileges
@@ -48,7 +56,7 @@ BWRAP_ARGS=(
 	--bind /usr/bin/{true,lsblk}
 	# /sandbox
 	--ro-bind /{usr/lib/flatpak-xdg-utils,sandbox}/xdg-open
-	--ro-bind /{usr/share/wechat-beta/usr/bin,sandbox}/dde-file-manager
+	--ro-bind /{usr/share/wechat-universal/usr/bin,sandbox}/dde-file-manager
 	# /dev
 	--dev /dev
 	--dev-bind /dev/dri{,}
@@ -60,15 +68,13 @@ BWRAP_ARGS=(
 	--ro-bind-try "${XAUTHORITY}"{,}
 	--ro-bind "${XDG_RUNTIME_DIR}/bus"{,}
 	--ro-bind "${XDG_RUNTIME_DIR}/pulse"{,}
-	--ro-bind-try /run/systemd/resolve/resolv.conf{,}
-	--ro-bind-try /run/systemd/resolve/stub-resolv.conf{,}
 	# /opt, Wechat-beta itself
-	--ro-bind /opt/wechat-beta{,}
+	--ro-bind /opt/wechat-universal{,}
 	# license fixups in various places
-	--ro-bind {/usr/share/wechat-beta,}/usr/lib/license
-	--ro-bind {/usr/share/wechat-beta,}/var/
-	--ro-bind {/usr/share/wechat-beta,}/etc/os-release
-	--ro-bind {/usr/share/wechat-beta,}/etc/lsb-release
+	--ro-bind {/usr/share/wechat-universal,}/usr/lib/license
+	--ro-bind {/usr/share/wechat-universal,}/var/
+	--ro-bind {/usr/share/wechat-universal,}/etc/os-release
+	--ro-bind {/usr/share/wechat-universal,}/etc/lsb-release
 	# /home
 	--bind "${WECHAT_HOME_DIR}" "${HOME}"
 	--bind "${WECHAT_FILES_DIR}"{,}
@@ -78,4 +84,4 @@ BWRAP_ARGS=(
 	--ro-bind-try "${HOME}/.local/share/fonts"{,}
 )
 
-exec bwrap "${BWRAP_ARGS[@]}" "${BWRAP_ENV_APPEND[@]}" /opt/wechat-beta/wechat "$@"
+exec bwrap "${BWRAP_ARGS[@]}" "${BWRAP_RESOLV[@]}" "${BWRAP_ENV_APPEND[@]}" /opt/wechat-universal/wechat "$@"

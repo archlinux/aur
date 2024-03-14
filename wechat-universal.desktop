@@ -1,11 +1,11 @@
 [Desktop Entry]
-Comment=WeChat Beta
+Comment=WeChat Universal
 Comment[zh_CN]=
-TryExec=wechat-beta
-Exec=wechat-beta %u
-Icon=wechat-beta
-Name=WeChat (Beta)
-Name[zh_CN]=微信 Beta
+TryExec=wechat-universal
+Exec=wechat-universal %u
+Icon=wechat-universal
+Name=WeChat (Universal)
+Name[zh_CN]=微信 Universal
 Categories=Utility;Network;InstantMessaging;Chat;
 Terminal=false
 Type=Application
