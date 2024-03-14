@@ -1,4 +1,5 @@
-*.zst
+src
+pkg
 *.tar.gz
-pkg/
-src/
+*.tar.zst
+*.xsl

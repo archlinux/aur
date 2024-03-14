@@ -1,7 +1,7 @@
 pkgbase = stream-overlay
 	pkgdesc = Borderless, transparent, click-through browser windows for streaming
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hperrin/stream-overlay/
 	arch = any
 	license = Apache
@@ -16,6 +16,6 @@ pkgbase = stream-overlay
 	sha256sums = 980249bacb4bb6871d0418ce63f5e3a5078c589b625a7521aa4a3921ae05e42f
 	sha256sums = f2f99d2aed697ee813c0e351f949979148ac22d73271f667f0a7f5690124635e
 	sha256sums = b936d6454c941232565e282f566845b8de2ee133bdcfeaff127a8f7e43f5b28e
-	sha256sums = 12d088ff050b93138488d5cf6322b67d76b04e2b69538b1fb8f09f945c738a26
+	sha256sums = 85dfd699c65ba774343def1522c1d929b63ca90af8dd1c3c17e6a6f0fb6f4191
 
 pkgname = stream-overlay
