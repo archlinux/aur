@@ -5,7 +5,7 @@ _pkgname=emp
 pkgver=0.8.8
 _electronversion=25
 _nodeversion=20
-pkgrel=6
+pkgrel=7
 pkgdesc="A functional music player for FLAC, mp3, and m4a audio. "
 arch=("any")
 url="https://github.com/kevinfrei/EMP"
@@ -29,7 +29,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -40,6 +40,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --categories="AudioVideo" --name="${_appname}: Electron Music Player" --exec="${pkgname} %U"
@@ -51,10 +52,9 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    sed -e '9i\  "repository": "github:kevinfrei/EMP",' \
-        -e "s|\"./\"|\"https://github.com/kevinfrei/EMP\"|g" \
-        -e 's|electron-builder",|electron-builder -l AppImage",|g' \
-        -i package.json
+    mkdir -p "${srcdir}/.electron-gyp"
+    touch "${srcdir}/.electron-gyp/.yarnrc"
+    sed "s|electron-builder\",|electron-builder --dir\",|g" -i package.json
     sed "s|\/\${version}||g" -i electron-builder.json5
     # .yarnrc.yml existed
     yarn install
