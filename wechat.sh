@@ -66,8 +66,18 @@ function lnDir() {
 	ln -sf "${XDG_DOCUMENTS_DIR}"/WeChat_Data/Documents/xwechat_files "${XDG_DOCUMENTS_DIR}"/xwechat_files
 }
 
+function cameraDect() {
+	export bwCamPar="--dev-bind-try /dev/video /dev/video"
+	for camera in $(ls /dev/video*); do
+		echo "[Info] Binding camera ${camera}"
+		bwCamPar="${bwCamPar} --dev-bind ${camera} ${camera}"
+	done
+	echo "[Debug] bwCamPar=${bwCamPar}"
+}
+
 function execApp() {
 	touch "${XDG_DOCUMENTS_DIR}"/WeChat_Data/.flatpak-info
+	cameraDect
 	bwrap \
 		--dev /dev \
 		--dev-bind /dev/dri /dev/dri \
@@ -103,6 +113,7 @@ function execApp() {
 		--ro-bind-try "${XDG_DOCUMENTS_DIR}"/WeChat_Data/.flatpak-info "${XDG_RUNTIME_DIR}/.flatpak-info" \
 		--ro-bind-try "${XDG_DOCUMENTS_DIR}"/WeChat_Data/.flatpak-info /.flatpak-info \
 		--dir "${XDG_DOCUMENTS_DIR}" \
+		${bwCamPar} \
 		--setenv QT_QPA_PLATFORM xcb \
 		--setenv LD_LIBRARY_PATH /opt/wechat-uos-bwrap/files:/usr/lib/wechat-uos-bwrap/so \
 		--setenv QT_AUTO_SCREEN_SCALE_FACTOR 1 \

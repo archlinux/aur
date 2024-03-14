@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=wechat-uos-bwrap
 pkgver=1.0.0.236
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="WeChat UOS with bwrap sandbox"
 arch=('x86_64' 'aarch64')
@@ -80,10 +80,10 @@ source_aarch64=(
 	wechat-arm-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_1.0.0.236_arm64.deb"
 )
 
-md5sums=('1aac75c1537145e8abcac74b7695c58b'
+md5sums=('09c6bb147d0e9803bd613c646dcc3722'
          'b6e6920af829dafb0be82da1c79e46a9'
          '600e74549ce2258c045d5c2f7689ea63'
-         'b3acc2c95d35bd2fa41e5a8f1a6339ec'
+         'e49130d3e6185335db9a60f31d4b7429'
          '6b159c6e9d21a98925489bc37a9aea43')
 md5sums_x86_64=('c9eeb10d8e4a534d184e76ed87a71545')
 md5sums_aarch64=('e8f354ab8d14f3aa499219a1d1840803')
