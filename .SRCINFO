@@ -1,12 +1,14 @@
 pkgbase = comicthumb
 	pkgdesc = Replacement of the comicthumb utility from comix.
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/johndovern/comicthumb
 	arch = any
 	license = GPL3
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	depends = python-pillow
 	source = https://codeberg.org/johndovern/comicthumb/releases/download/0.0.3/comicthumb-0.0.3.tar.gz
