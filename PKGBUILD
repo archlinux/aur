@@ -2,7 +2,7 @@
 
 _pkgname="surface-dtx-daemon"
 pkgname="${_pkgname}-git"
-pkgver=0.3.6.1.r0.g2048dbd
+pkgver=0.3.7.1.r1.g19e5763
 pkgrel=1
 pkgdesc="Surface Detachment System (DTX) Daemon"
 url="https://github.com/linux-surface/surface-dtx-daemon"
@@ -70,8 +70,8 @@ package() {
     install -D -m644 "target/_surface-dtx-daemon" "$pkgdir/usr/share/zsh/site-functions/_surface-dtx-daemon"
     install -D -m644 "target/_surface-dtx-userd" "$pkgdir/usr/share/zsh/site-functions/_surface-dtx-userd"
 
-    install -D -m644 "target/surface-dtx-daemon.fish" "$pkgdir/usr/share/fish/completions/surface-dtx-daemon.fish"
-    install -D -m644 "target/surface-dtx-userd.fish" "$pkgdir/usr/share/fish/completions/surface-dtx-userd.fish"
+    install -D -m644 "target/surface-dtx-daemon.fish" "$pkgdir/usr/share/fish/vendor_completions.d/surface-dtx-daemon.fish"
+    install -D -m644 "target/surface-dtx-userd.fish" "$pkgdir/usr/share/fish/vendor_completions.d/surface-dtx-userd.fish"
 
     # license
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/surface-dtx-daemon/LICENSE"
