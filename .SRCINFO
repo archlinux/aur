@@ -1,0 +1,16 @@
+pkgbase = gst-plugin-gif
+	pkgdesc = GStreamer GIF plugin
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://crates.io/crates/gst-plugin-gif
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	makedepends = cargo
+	depends = gstreamer
+	provides = libgstgif.so
+	conflicts = gst-plugins-rs
+	source = gst-plugin-gif-0.12.0.tar.gz::https://static.crates.io/crates/gst-plugin-gif/gst-plugin-gif-0.12.0.crate
+	sha256sums = 19c655ca8e32df099d13265f7ec7ab30a4a53b0753194d9391e64a1536c846f0
+
+pkgname = gst-plugin-gif
