@@ -5,29 +5,29 @@
 _pkgname=chron
 _pkgver=2.3-61
 pkgname=r-${_pkgname,,}
-pkgver=2.3.61
-pkgrel=1
-pkgdesc='Chronological Objects which can Handle Dates and Times'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Chronological Objects which Can Handle Dates and Times"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r
 )
 optdepends=(
   r-ggplot2
   r-scales
-  r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a096957625a0438075b3486322ee07c753c7c4ba3efcd04a3ac92476d6c43b9b')
+md5sums=('5eaa5b818bc0f0dd7eeba9478bd9da88')
+b2sums=('fd42824b2858e29420fb6c8a0f883da77265f03a32c60de6d3bbb8a1095ad9324ba3fcb9cf66c1f9dec2d267d7f0f88741fd6faf8fda58c96cc05e5ad535259a')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
