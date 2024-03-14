@@ -1,16 +1,15 @@
 pkgbase = xalan-java
 	pkgdesc = XSLT processor for transforming XML documents into HTML, text, or other XML document types
-	pkgver = 2.7.2
-	pkgrel = 3
-	url = https://xalan.apache.org/xalan-j/index.html
+	pkgver = 2.7.3
+	pkgrel = 1
+	url = https://xalan.apache.org
 	arch = any
-	license = APACHE
-	depends = xerces2-java
-	source = https://archive.apache.org/dist/xalan/xalan-j/binaries/xalan-j_2_7_2-bin-2jars.tar.gz
-	source = https://archive.apache.org/dist/xalan/xalan-j/binaries/xalan-j_2_7_2-bin-2jars.tar.gz.asc
-	validpgpkeys = 2DB4F1EF0FA761ECC4EA935C86FDC7E2A11262CB
-	sha512sums = 6fd7700e2abce4038224a953682b623f46cfa5642bf836de07f2986f8432f1113c23f2d84d478d34b329f0c7e6fd65b9d614efe6ad8bc2e5b46b29fedac4f503
+	license = Apache-2.0
+	depends = java-runtime-headless
+	source = https://dlcdn.apache.org/xalan/xalan-j/binaries/xalan-j_2_7_3-bin.tar.gz
+	source = https://dlcdn.apache.org/xalan/xalan-j/binaries/xalan-j_2_7_3-bin.tar.gz.asc
+	validpgpkeys = 4D8FB572FB6ADCFD69CBFE0D7B2586A6B5E25C3D
+	sha512sums = 18373698936776e9ce5818e9ffbf4efe56c44d52ca094b85fa438a59528c369acb27d07afbc85295bbc44698876887616f65d7bc6364defa08b36561e8b3ddc7
 	sha512sums = SKIP
 
 pkgname = xalan-java
-
