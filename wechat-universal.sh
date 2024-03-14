@@ -53,7 +53,7 @@ BWRAP_ARGS=(
     --ro-bind /etc/localtime{,}
     --ro-bind-try /etc/fonts{,}
     # /sys, for va-api: https://aur.archlinux.org/packages/wechat-universal-bwrap#comment-961215
-    --ro-bind /sys/dev/char /sys/dev/char
+    --ro-bind /sys/dev /sys/dev
     --ro-bind /sys/devices /sys/devices
     # /tmp
     --tmpfs /tmp
