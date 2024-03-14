@@ -1,0 +1,5 @@
+[ovito]
+source = "gitlab"
+gitlab = "stuko/ovito"
+use_max_tag = true
+prefix = "v"
