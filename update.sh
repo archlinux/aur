@@ -1,6 +1,7 @@
 # /bin/bash
 set +e
 sudo pacman -R symfony-cli-bin --noconfirm
+sudo pacman -R symfony-cli-bin-debug --noconfirm
 set -e
 rm -rf src
 rm -rf pkg
