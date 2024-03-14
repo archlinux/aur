@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=musicfree-desktop-git
-_appname=MusicFreeDesktop
+_pkgname=MusicFreeDesktop
 pkgver=0.0.3.r2.gba906a2
 _electronversion=25
 _nodeversion=16
@@ -13,14 +13,17 @@ _pluginurl="https://gitee.com/maotoumao/MusicFreePlugins/raw/master/plugins.json
 license=('GPL-3.0-only')
 conflicts=("${pkgname%-git}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'libvips'
+    'nodejs'
 )
 makedepends=(
     'gendesk'
     'npm'
     'nvm'
     'git'
+    'gcc'
+    'base-devel'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
@@ -28,7 +31,7 @@ source=(
 )
 options=('!strip')
 sha256sums=('SKIP'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -43,9 +46,10 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -f -q -n --categories="AudioVideo" --name="${_appname}" --exec="${pkgname%-git} %U"
+    gendesk -f -q -n --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -61,7 +65,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -r "${srcdir}/${pkgname%-git}.git/out/${_appname%Desktop}-linux-"*/resources/{app,res} "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -r "${srcdir}/${pkgname%-git}.git/out/${_pkgname%Desktop}-linux-"*/resources/{app,res} "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/res/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
 }
