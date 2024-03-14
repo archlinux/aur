@@ -4,7 +4,7 @@ _appname=MusicFreeDesktop
 pkgver=0.0.3
 _electronversion=25
 _nodeversion=16
-pkgrel=3
+pkgrel=4
 pkgdesc="插件化、定制化、无广告的免费音乐播放器"
 arch=('any')
 url="http://musicfree.upup.fun/"
@@ -13,21 +13,24 @@ _pluginurl="https://gitee.com/maotoumao/MusicFreePlugins/raw/master/plugins.json
 license=('GPL-3.0-only')
 conflicts=("${pkgname}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'libvips'
+    'nodejs'
 )
 makedepends=(
     'gendesk'
     'npm'
     'nvm'
     'git'
+    'base-devel'
+    'gcc'
 )
 source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -38,6 +41,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -f -q -n --categories="AudioVideo" --name="${_appname}" --exec="${pkgname} %U"
