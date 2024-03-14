@@ -1,5 +1,6 @@
 # Maintainer: Kien Dang <mail at kien dot ai>
 # Contributor: Chuah Chee Shian <shian15810@gmail.com>
+# Contributor: Techcable <aur at email dot techcable dot net>
 
 pkgname=scala-cli
 pkgver=1.2.0
