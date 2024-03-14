@@ -1,11 +1,11 @@
 pkgbase = ecency-surfer-bin
 	pkgdesc = Immutable, decentralized, uncensored, rewarding communities built, owned and operated by its users
 	pkgver = 3.0.35
-	pkgrel = 6
+	pkgrel = 7
 	url = https://ecency.com/
 	arch = x86_64
 	license = MIT
-	depends = electron25
+	depends = electron25-bin
 	provides = ecency-surfer=3.0.35
 	conflicts = ecency-surfer
 	source = ecency-surfer-3.0.35.deb::https://github.com/ecency/ecency-vision/releases/download/3.0.35/ecency-surfer_3.0.35_amd64.deb
@@ -13,6 +13,6 @@ pkgbase = ecency-surfer-bin
 	source = ecency-surfer.sh
 	sha256sums = 95d6ef6078caef72715ce3e248d2e0be8dfbef9d996c3016f1f99902f7159879
 	sha256sums = 4f2d94ac09ba20ec3861cf9fbb2b52ee17592b64b6fb812f04d7b71417da494d
-	sha256sums = f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = ecency-surfer-bin
