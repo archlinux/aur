@@ -9,21 +9,19 @@ arch=('any')
 license=('license-free')
 makedepends=('dpkg')
 _debdeps=""
-_binarchive=("${_pkgname}-${_tag_ver}-linux")
-_release_url=("${url}/releases/download/${_tag_ver}/${_binarchive}")
 source=("${_source[@]}"
-"${_release_url}-amd64.tar.gz"
-"${_release_url}-arm64.tar.gz"
-"${_release_url}-armhf.tar.gz"
-"${_release_url}-arm.tar.gz"
-"${_release_url}-riscv64.tar.gz"
+"${source_x86_64[@]}"
+"${source_aarch64[@]}"
+"${source_armv7[@]}"
+"${source_arm[@]}"
+"${source_riscv64[@]}"
 )
 noextract=(
-"${_binarchive}-amd64.tar.gz"
-"${_binarchive}-arm64.tar.gz"
-"${_binarchive}-armhf.tar.gz"
-"${_binarchive}-arm.tar.gz"
-"${_binarchive}-riscv64.tar.gz"
+"${source_x86_64[@]}"
+"${source_aarch64[@]}"
+"${source_armv7[@]}"
+"${source_arm[@]}"
+"${source_riscv64[@]}"
 )
 sha256sums=('9257dc9cf98b382049b500f646c0005950077cedb83abbb62984983e4dda0874'
             '40c80ccce9e89ae559050b943be1f09d905476c614a72d74fac2a58c821ac058'
@@ -39,13 +37,13 @@ sha256sums=('9257dc9cf98b382049b500f646c0005950077cedb83abbb62984983e4dda0874'
             '45ed6049df988f042c9a0352d33fef88fc9018398d09252aa4698948ce783c11'
             'b3a9a422e146fa0583482dc83a0f4e9ae25995ea1cc4fdfebc14c80dc1c596a5'
             '763c5a4251e819b944cfefeafa56e3d2bdfdd2e7e1198fdf1d369f3143990b5a'
-            'd1bbd2b6d141cee8499fe2ae0c8429325d2d80ea895cce3db2db11f0629cc740'
+            'd9a0a4ae8acecb9d35944c5376520c734c042c6d8820c7ff75f2c6a5f0c48f82'
             'e3a1a975138e6778a1e3ea47e98da94088c7c2d945295cd4ccbd0c992d6346c6'
-            '4fecdc5cd014b1bd2910c9f9f29cc43e91d164d0645a30403857807f338df73a'
-            'b7cdc7c1f93789840b8fe820e8db280fbd7c5a27f109362290a80a1c204f5e97'
-            '41198d1129bba9fca1bc3a90fcca7edec6bef71d89b82d44d5376f288df282e6'
-            '33f05c8cce4fe45b727a4c936f00172353581180fc72dcd0ae98277ac8ab964a'
-            '7727290e1fdb89dcb6f51510d36692cfa8077bf08d0b84732512e06cb378366e')
+            '480cb21293902b18584d6b0da2254f12b3f08176c52ce8c106c538df59e2d723'
+            '460e23ee28722335b7925ea6f960cac5623081d149cf4b964ab300cf1f8b01d9'
+            'de66e64e01b0058dc31bb78865b167816bc949598a774bd58b3b772c3ac6428f'
+            '2796332b21f6503ef4b28b3475aedcd8f2ccde806ce47f7b0483a097b134052c'
+            '5b89faf8c27dc7bf091fcf98bde504182060a7a1ddbd04f04030097bd175e53a')
 
 build() {
   _msg2 'creating the DEBIAN/control files'
