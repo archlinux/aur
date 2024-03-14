@@ -1,6 +1,6 @@
 pkgbase = vrf-decompiler
 	pkgdesc = File data viewer and decompiler for Valve's Source 2 resource file format
-	pkgver = 8.1
+	pkgver = 9.0
 	pkgrel = 1
 	url = https://github.com/ValveResourceFormat/ValveResourceFormat
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = vrf-decompiler
 	depends = dotnet-runtime>=8.0.0
 	depends = skia-sharp
 	options = !strip
-	source = vrf-decompiler-8.1::git+https://github.com/ValveResourceFormat/ValveResourceFormat#tag=8.1?signed
+	source = vrf-decompiler-9.0::git+https://github.com/ValveResourceFormat/ValveResourceFormat#tag=9.0?signed
 	validpgpkeys = E58081FB804DF24DF217AB772B6E7BF31D171C61
 	sha512sums = SKIP
 
