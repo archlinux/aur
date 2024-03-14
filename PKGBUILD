@@ -1,9 +1,9 @@
-# Maintainer: taotieren <admin@taotieren.com>
 # Maintainer: wh201906 <wh201906@yandex.com>
+# Maintainer: taotieren <admin@taotieren.com>
 
 _pkgname=SerialTest
 pkgname=serialtest
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="A cross-platform test tool for serial port, Bluetooth, TCP and UDP."
 arch=('any')
@@ -39,7 +39,7 @@ _get_mirror() {
 
 source=("${_pkgname}-${pkgver}.tar.gz::$(_get_mirror _pkg_mirrors)"
         "${pkgname}.install")
-sha256sums=('09d56e7f88cfd4d85c92357c8e03df10a11286e6fcd4785c362ac4f63fd2c5b8'
+sha256sums=('a8ab4142e2c04b35e7218a83a3aeca573fcf9b028d1f8360d9b2957bbad59a9b'
             '303f34246c0d341e1093d6e486e2cbfdbbb0d122d751de649f562ebac37777b4')
 
 build() {
