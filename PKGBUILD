@@ -3,7 +3,7 @@
 
 pkgname=qt5-charts
 _basever=5.15.13
-pkgver=5.15.12
+pkgver=5.15.13
 pkgrel=1
 _commit=3f3f14d69a509c3e8027bfb5d7ffca9b4f3ef003
 arch=('x86_64')
