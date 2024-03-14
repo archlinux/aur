@@ -2,7 +2,7 @@
 
 pkgname=protonmail-desktop-bin-beta
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 _pkgrel=1
 pkgdesc="Official native ProtonMail desktop application with calendar support"
 arch=('x86_64')
