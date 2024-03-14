@@ -1,6 +1,6 @@
 pkgbase = unifetch
 	pkgdesc = An unofficial inheritor of neofetch.
-	pkgver = 1.3.2
+	pkgver = 1.3.3
 	pkgrel = 1
 	url = https://github.com/njb-fm/unifetch
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = unifetch
 	optdepends = xorg-xwininfo: See https://github.com/dylanaraps/neofetch/wiki/Images-in-the-terminal
 	provides = neofetch
 	conflicts = neofetch
-	source = unifetch-1.3.2.tar.gz::https://github.com/njb-fm/unifetch/archive/refs/tags/1.3.2.tar.gz
-	md5sums = d89927260877375f1aa20b7960e53240
+	source = unifetch-1.3.3.tar.gz::https://github.com/njb-fm/unifetch/archive/refs/tags/1.3.3.tar.gz
+	md5sums = 6dcd9f0608b293e0fdfd31093ad98dfa
 
 pkgname = unifetch

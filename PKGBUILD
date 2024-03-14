@@ -1,6 +1,6 @@
 # Maintainer: Hayate Nakamura <hayatehay.njb at gmail dot com>
 pkgname=unifetch
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="An unofficial inheritor of neofetch."
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
 conflicts=("neofetch")
 provides=("neofetch")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-md5sums=('d89927260877375f1aa20b7960e53240')
+md5sums=('6dcd9f0608b293e0fdfd31093ad98dfa')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/"
