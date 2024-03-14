@@ -1,25 +1,20 @@
 # Maintainer: Nico Domino <yo at ndo dot dev>
-pkgname=('rose-pine-cursor-hyprcursor')
-pkgbase=rose-pine-cursor-hyprcursor
-pkgver=v0.2.0.r0.g795c63a
+pkgname=('rose-pine-hyprcursor')
+pkgbase=rose-pine-hyprcursor
+pkgver=v0.3.0.r0.g4d59124
 pkgrel=2
 arch=('any')
-url="https://github.com/ndom91/rose-pine-cursor-hyprcursor"
+url="https://github.com/ndom91/rose-pine-hyprcursor"
 license=('GPL-3.0-or-later')
 makedepends=('git')
-source=('git+https://github.com/ndom91/rose-pine-cursor-hyprcursor')
+source=('git+https://github.com/ndom91/rose-pine-hyprcursor')
 sha256sums=('SKIP')
 
-pkgver() {
-  cd rose-pine-cursor-hyprcursor || return
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 package() {
-  cd rose-pine-cursor-hyprcursor || return
-  install -d "$pkgdir/usr/share/icons/rose-pine-cursor-hyprcursor"
+  cd rose-pine-hyprcursor || return
+  install -d "$pkgdir/usr/share/icons/rose-pine-hyprcursor"
   cp -ar --no-preserve=ownership \
     hyprcursors \
     manifest.hl \
-    "$pkgdir/usr/share/icons/rose-pine-cursor-hyprcursor"
+    "$pkgdir/usr/share/icons/rose-pine-hyprcursor"
 }
