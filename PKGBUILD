@@ -1,6 +1,6 @@
 pkgname=neovim-formatter-git
-pkgver=r149.44c89f0
-pkgrel=1
+pkgver=r174.cb4778b
+pkgrel=2
 pkgdesc="A format runner for Neovim"
 arch=("any")
 url="https://github.com/mhartington/formatter.nvim"
@@ -28,6 +28,6 @@ pkgver() {
 
 package() {
   cd formatter.nvim
-  find lua plugin doc -type f -exec install -D -m644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+  find lua plugin doc -type f -exec install -D -m644 '{}' "$pkgdir/usr/share/nvim/site/pack/dist/start/${pkgname}/{}" \;
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
