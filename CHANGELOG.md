@@ -1,3 +1,39 @@
+# [5.4.1](https://github.com/olets/zsh-abbr/compare/v5.4.0...v5.4.1) (2024-03-08)
+
+
+### Bug Fixes
+
+* **abbr-expand-and-space:** available to zle while deprecated ([bb4ac60](https://github.com/olets/zsh-abbr/commit/bb4ac6011e73579b6f1e10bb08d7e291d6746be8))
+
+
+
+# [5.4.0](https://github.com/olets/zsh-abbr/compare/v5.3.0...v5.4.0) (2024-03-08)
+
+### Features
+
+Cursor placement! With thanks to [@burneyy](https://github.com/burneyy) (see [#63](https://github.com/olets/zsh-abbr/pull/63))
+
+* **abbr-expand widget:** support placing cursor [[#110](https://github.com/olets/zsh-abbr/issues/110)] ([6c688e0](https://github.com/olets/zsh-abbr/commit/6c688e019852df16b70c928bbd87c1b5d3f0382b))
+  - If `ABBR_SET_EXPANSION_CURSOR` (default `0`) is non-zero, the expansion's first instance of `ABBR_EXPANSION_CURSOR_MARKER` (default `$ABBR_CURSOR_MARKER` (see below)) will be replaced with the cursor
+* **abbr-expand-and-insert:**
+  - replaces deprecated `abbr-expand-and-space` ([36667ce](https://github.com/olets/zsh-abbr/commit/36667cecd26a50ad082f6b83df6c5913e52d6e59))
+  - support checking buffer for cursor stops ([52c9d3a](https://github.com/olets/zsh-abbr/commit/52c9d3a1e029dc17214716dbc63bd658e861682f))
+    - If `ABBR_SET_LINE_CURSOR` (default `0`) is non-zero and the cursor wasn't placed during expansion, the buffer's first instance of `ABBR_LINE_CURSOR_MARKER` (default `%`) will be replaced with the cursor
+
+
+
+# [5.3.0](https://github.com/olets/zsh-abbr/compare/v5.2.0...v5.3.0) (2024-01-02)
+
+### Features
+
+With this release, running tests requires zsh-test-runner v2.x
+
+* **jobs:** use zsh epoch time instead of date command [[#106](https://github.com/olets/zsh-abbr/issues/106)] ([f3dcaf5](https://github.com/olets/zsh-abbr/commit/f3dcaf5e73306a6b201100962400e04667a4033d))
+* **tests:** support current shell and subshell ([070e903](https://github.com/olets/zsh-abbr/commit/070e90360af65fe092eccecb1f91e4dcb60cc182))
+* **tests:** temp file is deleted ([7c02ea5](https://github.com/olets/zsh-abbr/commit/7c02ea51f8f66cdb5b4756e04d30f8c8376a34ea))
+* **tests:** temp file is deleted ([7c02ea5](https://github.com/olets/zsh-abbr/commit/7c02ea51f8f66cdb5b4756e04d30f8c8376a34ea))
+
+
 # [5.2.0](https://github.com/olets/zsh-abbr/compare/v5.1.0...v5.2.0) (2023-10-19)
 
 Adds command completion and deprecates access to some internal functions.
@@ -297,7 +333,7 @@ _In this version `abbr -v` gives `zsh-abbr version 4.4.0`_
 ### Features
 
 * **add:** use --quieter to silence 'command expands' logs, idea from [@knu](https://github.com/olets/zsh-abbr/commits?author=knu) in [#38](https://github.com/olets/zsh-abbr/issues/38) ([8c02d9a](https://github.com/olets/zsh-abbr/commit/8c02d9affd1820be9dad9df9f8c3e992d5725b5b))
- 
+
 
 ### Bug Fixes
 
