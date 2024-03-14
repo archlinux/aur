@@ -1,7 +1,7 @@
 # Maintainer: John Dovern <92282293+johndovern@users.noreply.github.com>
 pkgname=comicthumb
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Replacement of the comicthumb utility from comix."
 arch=('any')
 url="https://codeberg.org/johndovern/comicthumb"

@@ -1,7 +1,7 @@
 pkgbase = comicthumb
 	pkgdesc = Replacement of the comicthumb utility from comix.
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/johndovern/comicthumb
 	arch = any
 	license = GPL3
