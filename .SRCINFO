@@ -1,6 +1,6 @@
 pkgbase = candy
 	pkgdesc = Another virtual private network that supports peer-to-peer connections
-	pkgver = 5.2
+	pkgver = 5.3
 	pkgrel = 1
 	url = https://github.com/lanthora/candy
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = candy
 	depends = spdlog
 	depends = poco
 	backup = etc/candy.conf
-	source = candy-5.2.tar.gz::https://github.com/lanthora/candy/archive/refs/tags/v5.2.tar.gz
-	sha256sums = 13fb99084824c59d7d0ede12f5aff58358bc9d832f3dd22c695aad9711e69371
+	source = candy-5.3.tar.gz::https://github.com/lanthora/candy/archive/refs/tags/v5.3.tar.gz
+	sha256sums = ae13db69d9e908bc16b1a01bd9c8729270d61062e999790f89bd1b83e692dff7
 
 pkgname = candy
