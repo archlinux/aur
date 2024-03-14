@@ -1,4 +1,4 @@
-# Maintainer: Thaodan <theodorstormgrade@gmail.com>
+# Contributor: Thaodan <theodorstormgrade@gmail.com>
 
 pkgname=qremotecontrol-server
 _pkgname=qremotecontrol
@@ -6,7 +6,7 @@ pkgver=2.4.1
 pkgrel=1
 pkgdesc="QRemoteControl is a remote control application for your mobile phone. This is the server part of QRemoteControl."
 arch=('i686' 'x86_64')
-url="http://qt-apps.org/content/show.php?content=150421"
+url="https://sourceforge.net/projects/qrc/"
 license=('GPL')
 depends=('qt4')
 #makedepends=('qmake')

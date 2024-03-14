@@ -2,7 +2,7 @@ pkgbase = qremotecontrol-server
 	pkgdesc = QRemoteControl is a remote control application for your mobile phone. This is the server part of QRemoteControl.
 	pkgver = 2.4.1
 	pkgrel = 1
-	url = http://qt-apps.org/content/show.php?content=150421
+	url = https://sourceforge.net/projects/qrc/
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -11,4 +11,3 @@ pkgbase = qremotecontrol-server
 	md5sums = d983adcfc471c44edab8d53964fe9489
 
 pkgname = qremotecontrol-server
-
