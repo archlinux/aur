@@ -1,0 +1,20 @@
+pkgbase = python-srt_equalizer
+	pkgdesc = A tool to transform subtitle lengths, splitting into multiple fragments if necessary
+	pkgver = v0.1.3
+	pkgrel = 1
+	url = https://github.com/peterk/srt_equalizer
+	arch = any
+	license = MIT
+	checkdepends = python-hypothesis
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-nose
+	makedepends = python-poetry
+	depends = python-srt
+	source = https://github.com/peterk/srt_equalizer/archive/refs/tags/v0.1.3.zip
+	sha256sums = e580ad874cf76044ac0232ae33d3ecfe80cd0dfaf552230a4370598b270c70b6
+
+pkgname = python-srt_equalizer
