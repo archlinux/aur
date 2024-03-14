@@ -1,2 +1,5 @@
-新增汉字和其他字符，见 https://github.com/lxgw/LxgwNeoXiHei/blob/main/documentation/changelog/20240228.md；
-调整以下汉字字形：埿。
+新增汉字「𢁉」。
+调整汉字「蛢」的字形。
+以下为较早版本的更新日志：
+    新增汉字和其他字符，详情点此查看；
+    调整以下汉字字形：埿。
