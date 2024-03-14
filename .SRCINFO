@@ -1,6 +1,6 @@
 pkgbase = persepolis-git
 	pkgdesc = Qt front-end for aria2 download manager (Github version).
-	pkgver = 4.0.0.r20.geceb3b2
+	pkgver = 4.0.1.r0.g57dc9d4
 	pkgrel = 1
 	url = https://persepolisdm.github.io/
 	arch = any
