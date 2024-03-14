@@ -14,10 +14,3 @@ Keywords[zh_CN]=微;微信;wechat;weixin;we;
 StartupWMClass=wechat
 X-GNOME-SingleWindow=true
 SingleMainWindow=true
-Actions=quit;
-
-[Desktop Action quit]
-Name=Quit WeChat
-Name[zh_CN]=退出
-Exec=bash -c '/usr/bin/killall wechat'
-Icon=application-exit
