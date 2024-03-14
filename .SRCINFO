@@ -1,6 +1,6 @@
 pkgbase = bitwig-studio
 	pkgdesc = Digital audio workstation for music production, remixing and live performance
-	pkgver = 5.1.4
+	pkgver = 5.1.5
 	pkgrel = 1
 	url = https://www.bitwig.com/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = bitwig-studio
 	conflicts = bitwig-studio-legacy
 	conflicts = bitwig-8-track
 	options = !strip
-	source = https://downloads.bitwig.com/stable/5.1.4/bitwig-studio-5.1.4.deb
-	sha256sums = 2b624c9e7d6b08c6b2ed30c6052e0c5ccc9aa50a322eb8f434d9b4747f2be4f1
+	source = https://downloads.bitwig.com/stable/5.1.5/bitwig-studio-5.1.5.deb
+	sha256sums = 9aa15243984d92c7b4a4ec14939840be253146390ac44ec1f420655e8d339807
 
 pkgname = bitwig-studio
