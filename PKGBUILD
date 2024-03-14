@@ -18,8 +18,8 @@ pkgdesc='High-level, high-performance, dynamic programming language'
 url='https://julialang.org/'
 license=(MIT)
 depends=(fftw hicolor-icon-theme libgit2 libunwind libutf8proc blas64-openblas
-         suitesparse mbedtls2 openlibm pcre2 llvm15-libs p7zip libblastrampoline lld)
-makedepends=(git cmake gcc-fortran python llvm15 patchelf libwhich)
+         suitesparse mbedtls2 openlibm pcre2 llvm-julia-libs p7zip libblastrampoline lld)
+makedepends=(git cmake gcc-fortran python llvm-julia patchelf libwhich)
 optdepends=('gnuplot: If using the Gaston Package from julia')
 provides=('julia')
 conflicts=('julia')
