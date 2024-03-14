@@ -1,12 +1,13 @@
 pkgbase = r-envipat
 	pkgdesc = Isotope Pattern, Profile and Centroid Calculation for Mass Spectrometry
 	pkgver = 2.6
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=enviPat
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
 	depends = r
 	source = https://cran.r-project.org/src/contrib/enviPat_2.6.tar.gz
-	sha256sums = fc6756c465a47337ccbd715bf84e4c8cdfe9eb38623cd6c37ca799e590a7199f
+	md5sums = b3bf71eccf0c915ddeadd2e0bfbfa3d5
+	b2sums = 34f621614d95c312041b83c21515dd7278ccd7fae0703638c0e0eb0905840709ac2277185e69f27467ab3af2e110c4f5b2d7c44c86a7e4ef3e910ffa9962bcde
 
 pkgname = r-envipat
