@@ -3,7 +3,7 @@ pkgname=spacemesh-bin
 _pkgname=Spacemesh
 pkgver=1.3.12
 _electronversion=25
-pkgrel=1
+pkgrel=2
 pkgdesc="Spacemesh App (Smesher + Wallet)"
 arch=(
     'aarch64'
@@ -25,13 +25,14 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_downurl}/v${pkgver}/${p
 source=(
     "${pkgname%-bin}.sh"
 )
-sha256sums=('50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+sha256sums=('dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 sha256sums_aarch64=('af2d3df208699a47cbd4b9b37925574e6bfe2fd1b1b496a5c64c1910f424d52b')
 sha256sums_x86_64=('fec4ccc6e4890e324e54e4ad80fa6b34a5f631ff44a501fd6bc3431addb1833f')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}_app|${pkgname%-bin}|g;s|${pkgname%-bin}_app|${pkgname%-bin}|g" \
