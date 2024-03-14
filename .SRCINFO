@@ -1,7 +1,7 @@
 pkgbase = devbox-bin
 	pkgdesc = A cli tool to easily create isolated shells and containers with nix.
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetpack.io/devbox/
 	arch = aarch64
 	arch = armv7h
