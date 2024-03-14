@@ -5,13 +5,13 @@
 # AUR Category: devel
 pkgname=tortoisehg
 pkgver=6.6.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Graphical tools for Mercurial"
 arch=('any')
 url="https://foss.heptapod.net/mercurial/tortoisehg/thg"
 license=("GPL")
 makedepends=(python-build python-installer python-wheel python-setuptools)
-depends=('python' 'mercurial>=6.0' 'python-qscintilla-qt6' 'python-iniparse' 'qt6-svg' 'python-pyqt6')
+depends=('python' 'mercurial>=6.0' 'python-qscintilla-qt5' 'python-iniparse' 'qt5-svg' 'python-pyqt5')
 optdepends=('python-pygments: syntax highlighting'
             'python-nautilus: Python binding for Nautilus components')
 source=("https://www.mercurial-scm.org/release/tortoisehg/targz/tortoisehg-$pkgver.tar.gz"
