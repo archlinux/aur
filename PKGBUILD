@@ -5,14 +5,14 @@ _appname="AI Image Stitcher"
 pkgver=1.1.0
 _electronversion=25
 _nodeversion=14
-pkgrel=5
+pkgrel=6
 pkgdesc="This Image Stitcher was specifically built to stitch images in a horizontal layout one after the other from left to right. Primarily used for stitching multiple seperate images of a single scratch together."
 arch=('any')
 url="https://github.com/DevanshuSawant/image-stitching-electron-app"
 license=('LicenseRef-custom')
 conflicts=("${pkgname}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'python'
     'python-setuptools'
     'nodejs'
@@ -28,7 +28,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -39,8 +39,9 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
-    _ensure_local_nvm
+    1_ensure_local_nvm
     gendesk -q -f -n --categories="Graphics;Utility" --name="${_appname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
@@ -51,8 +52,6 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    sed '23,26d' -i forge.config.js
-    sed "s|AI Image Stitcher|${pkgname}|g" -i package.json
     npm install
     npm run package
 }
