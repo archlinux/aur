@@ -3,7 +3,7 @@ pkgname=xilinota-bin
 _pkgname=Xilinota
 pkgver=2.13.5_beta4
 _electronversion=25
-pkgrel=3
+pkgrel=4
 pkgdesc="A free and open source (FOSS) note-taking and to-do project delivering applications,capable of handling large number of notes organised in notebooks, and syncing notes across the platforms in various ways."
 arch=("x86_64")
 url="https://github.com/XilinJia/Xilinota"
@@ -14,16 +14,20 @@ depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
 )
+makedepends=(
+    'fuse2'
+)
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver//_/.}/${_pkgname}-2.13.6.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1cccb8f2698cfef138e673e16993ff88acc93b352672c3e7ba9beb6422f8f6b6'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
