@@ -12,6 +12,7 @@ pkgbase = snotify-git
 	depends = mpv
 	depends = dbus
 	depends = glibc
+	provides = snotify
 	conflicts = snotify
 	source = git+https://github.com/Kimiblock/snotify.git
 	sha256sums = SKIP
