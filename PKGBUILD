@@ -1,6 +1,6 @@
 # Maintainer: Wryn (yage) Wagner yage@yage.io
 pkgname='scwrypts'
-pkgver=4.1.4
+pkgver=4.1.5
 pkgrel=1
 pkgdesc='devops script runner for local and CI'
 url='https://github.com/wrynegade/scwrypts.git'
@@ -48,4 +48,4 @@ package() {
 	ln -s "/usr/share/scwrypts/scwrypts" "$pkgdir/usr/bin/scwrypts"
 }
 
-sha256sums=('ebcea6f14e02d985377c0bfec23ee180a5229aeaa9c96df1dce84e3a5e51893e')
+sha256sums=('bd236de6a637b33abe6731ae7ab75db4b78d0910738e18d0b82ea38a207e55b3')
