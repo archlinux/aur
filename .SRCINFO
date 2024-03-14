@@ -1,11 +1,11 @@
 pkgbase = houdunren-camera
 	pkgdesc = Desktop camera software that can be used for online live streaming, distance learning, and video conferencing.桌面摄像头软件，可用于在线直播、远程教学、视频会议
 	pkgver = 1.0.83
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.houdunren.com/
 	arch = any
 	license = MIT
-	depends = electron25
+	depends = electron25-bin
 	conflicts = houdunren-camera
 	source = houdunren-camera.git::git+https://github.com/houdunwang/camera.git#tag=v1.0.83
 	source = houdunren-camera.sh
