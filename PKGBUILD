@@ -4,11 +4,11 @@
 
 pkgname=albert
 pkgver=0.23.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
 url="https://github.com/albertlauncher"
-license=('GPL')
+license=('custom')
 depends=('hicolor-icon-theme' 'qt6-5compat' 'qt6-declarative' 'qt6-scxml' 'qt6-shadertools' 'qt6-svg')
 makedepends=('cmake' 'git' 'libqalculate' 'pybind11' 'python' 'qt6-tools')
 optdepends=('ddgr: duckduckgo search plugin'
@@ -59,7 +59,8 @@ build() {
 package() {
   cd build
 
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir" install
+  install -Dm644 "$srcdir/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 sha512sums=('8aae88d69081a1f24b52c682be9e16d8f13eac1136dfdca884ed55c7408a758fb571161c88422187070cdc05fb00a5846d6729b49a35f9c52db575a96cf87c15')

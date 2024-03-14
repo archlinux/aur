@@ -1,10 +1,10 @@
 pkgbase = albert
 	pkgdesc = A sophisticated standalone keyboard launcher
 	pkgver = 0.23.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/albertlauncher
 	arch = x86_64
-	license = GPL
+	license = custom
 	makedepends = cmake
 	makedepends = git
 	makedepends = libqalculate
