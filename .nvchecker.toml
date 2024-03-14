@@ -1,0 +1,5 @@
+[python-copulas]
+source = "github"
+github = "sdv-dev/Copulas"
+use_latest_release = "true"
+prefix = "v"
