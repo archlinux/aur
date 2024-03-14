@@ -1,4 +1,4 @@
-From ff253e558ddc2cafed7ba1cf2bd93e3544debb30 Mon Sep 17 00:00:00 2001
+From 4348064ccdd80d1ded743bf63369116ccb165add Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Sat, 1 Jun 2019 21:17:15 +0200
 Subject: [PATCH 02/16] Add support for Intel Management Engine bus
@@ -37,7 +37,7 @@ index 090d5aa..5a749c9 100644
  	g_assert_not_reached ();
  }
 diff --git a/libwacom/libwacom.c b/libwacom/libwacom.c
-index 1ba0740..1de4dc3 100644
+index 2f6bddd..c838c6d 100644
 --- a/libwacom/libwacom.c
 +++ b/libwacom/libwacom.c
 @@ -152,6 +152,10 @@ get_bus_vid_pid (GUdevDevice  *device,
@@ -96,5 +96,5 @@ index 8ab1fea..a3f1d9d 100755
          assert re.match(
              "[0-9a-f]{4}", vid
 -- 
-2.43.0
+2.43.2
 

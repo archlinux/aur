@@ -1,4 +1,4 @@
-From 808f74da665bb932664b4950fe86e05910c77537 Mon Sep 17 00:00:00 2001
+From 2d6eb3775056be6c00993aa55eac79cac7678d6d Mon Sep 17 00:00:00 2001
 From: Dorian Stoll <dorian.stoll@tmsp.io>
 Date: Sat, 27 Jun 2020 18:21:11 +0200
 Subject: [PATCH 01/16] Add support for BUS_VIRTUAL
@@ -42,7 +42,7 @@ index 2c17e0d..090d5aa 100644
  	g_assert_not_reached ();
  }
 diff --git a/libwacom/libwacom.c b/libwacom/libwacom.c
-index d220d14..1ba0740 100644
+index c606e48..2f6bddd 100644
 --- a/libwacom/libwacom.c
 +++ b/libwacom/libwacom.c
 @@ -148,6 +148,10 @@ get_bus_vid_pid (GUdevDevice  *device,
@@ -101,5 +101,5 @@ index 4cca787..8ab1fea 100755
          assert re.match(
              "[0-9a-f]{4}", vid
 -- 
-2.43.0
+2.43.2
 

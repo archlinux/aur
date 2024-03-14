@@ -2,7 +2,7 @@
 # Based on official Arch Linux PKGBUILD
 
 pkgname=libwacom-surface
-pkgver=2.9.0
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="Library to identify Wacom tablets and their features - Patched for Microsoft Surface devices"
 arch=('x86_64')
@@ -39,24 +39,24 @@ source=(
     "0015-data-Add-Microsoft-Surface-Book-3-15.patch"
     "0016-data-Add-Microsoft-Surface-Laptop-Studio.patch"
 )
-sha256sums=('6f678156797becc4f1537a19aadcc48ed7a54e1ff3cbf591d1233f8a2d82e242'
+sha256sums=('3f8ef37de78ac3d08af1bdcb5d5828ec8284dcb7154bbec4995238728914aa0e'
             'SKIP'
-            '7db8188ca1afd8655fd79b606428e403baefdec13484d4807ace4b992bed6807'
-            '5ec7cf7f5e0a4e0278563cb05e6a446c3a26ca82cd2e2a6c129d5d8cc35828e5'
-            'f14740304f43c336bdf7e1d78991717b504331f48c577d2c512ae276981c8f1e'
-            '649bfef25ae14d9cc44818ad466f1bcfab56b890acfbdbddd5f8a546cbfecebb'
-            'd54044d69ee002d891e554149d350462618329477d0e1900528c34973bcb315e'
-            '634e552757df946f997f0f682802828f6540b5eff9eb60965714e4c9a8c3a3f5'
-            'b3d7197f92d7e02e73b2f06a0b7770164f5052d38afa36843099468dd5eafafa'
-            'bd8ae40ec5e3214fab8a92861a1e07ba92c89aebd2ecfbe59f2649a92150d1fb'
-            '9dee7840ac3231adbd5c23c57a09a289e3cc3fe4a24fcb2c56e78ab2c86f86cd'
-            '101e8ba35a6493359667a3c119e6f792bde16e77c04642127e7dd81bc2d56d41'
-            '0b38005851833200cf31a4bc99a4bac40a560db14bf32f4c4ebcfe77f635e06b'
-            'f1236857310a8362abb8fc55e67a7013b61f03d593a89acf6ceae86cefc4ec37'
-            '5da915726aba84add16f5c509dc1be343db66f70a294b411759353b0ffaef0c2'
-            '8bb8c1aab143185a05b91cacaf600e147fcee55fc1abe67af0e1d6fed0b6e99f'
-            'bd6c8a319845ec161106b85859ab42b22ded1f6515676449a00bb3cc776acb43'
-            'bc4398d29b3a49e617cb7d9acd7a045c2a8c248c2065c96fd38ecc59e1a6d86f')
+            'a48d8009135e34b5a6e5ce7655167ff0cf371bc33610c49132bd1cd8922a3ba7'
+            '79ca3bca1c0635b0d49dfa189b36e9ee198a1b7ef7b6688dd473864f496ea7d2'
+            '2c6ccc2555829085482a9ac07db3be3970da39febaebdc4f5e1ee72ec8ee4090'
+            'be00652d92d8883c01fe0caeaab2ce0c2601dd8c5364e17768e56130c883e2a0'
+            '636e8b724b694eb33066cb486f62c10ae490fc22c76d82a4bd43c1b1705fec9d'
+            '96ceafb79ed3247c3008d51b4ff84b00fc59b3ae2c4a1147b747e04e3e186826'
+            '98c30e7e336d3ee99251ec95332a3940fbb70208e302a430d6c4821c5524f784'
+            '09cb5fcf17185e7c9f51bef673f1c2046b8c9890fafe6ab4fd8b47f196c7dd47'
+            '94125d8059d6f093c13c8ed1a4af000476701760d1478703f325feb751a46783'
+            '9e75a46ec9a68662842b61ce7525b5498515a9ec6cb0cf7f3beb93e1d54dd75c'
+            '38ba71d545cc3a087db2dc736b54a0207ac790d1cc07d5081418ffcada1074db'
+            'add6714be40db235e869599bf19c5120c53ad002bd24506f0ef32781df92835f'
+            'e47f4ed69a4b5a16d609185a20acb950bad14a3b6e3d024a37b350d9328b6d40'
+            '058a476aaa2799a4cfcd04b8ddd67bd3770df2b812b42bc8df1ea5b286d8c652'
+            '4284e113f1f34f7139805692fdb11c6b75ef1b647eaabc75af50f7acd23300a1'
+            'a9aca842b9372e3f4a397110a0768250b001dc4a5be1715af1081681ec7ebf4b')
 
 prepare() {
     cd "libwacom-${pkgver}"

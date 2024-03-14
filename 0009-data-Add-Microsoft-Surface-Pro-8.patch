@@ -1,4 +1,4 @@
-From ed65256b6fe211840687af577c2e79961ba9827b Mon Sep 17 00:00:00 2001
+From b5bc8bc86d599a204bfb045ee10baaceb0fa5ed1 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Sun, 11 Jun 2023 21:29:52 +0200
 Subject: [PATCH 09/16] data: Add Microsoft Surface Pro 8
@@ -30,5 +30,5 @@ index 0000000..fe779af
 +Touch=true
 +Buttons=0
 -- 
-2.43.0
+2.43.2
 
