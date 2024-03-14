@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='Your Al-Powered Toolbox for Tomorrow'
 arch=(x86_64)
 url=https://botgem.com
-license=(private)
+license=(LicenseRef-UNLICENSED)
 depends=(
 	hicolor-icon-theme
 	electron29
