@@ -2,7 +2,7 @@
 
 pkgname='pbpctrl'
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Control Google Pixel Buds Pro from the Linux command line.'
 url='https://github.com/qzed/pbpctrl'
 license=('MIT' 'Apache')
@@ -28,7 +28,7 @@ package() {
     # completion files
     install -D -m644 "${srcdir}/${pkgname}-${pkgver}/target/pbpctrl.bash" "${pkgdir}/usr/share/bash-completion/completions/pbpctrl"
     install -D -m644 "${srcdir}/${pkgname}-${pkgver}/target/_pbpctrl" "${pkgdir}/usr/share/zsh/site-functions/_pbpctrl"
-    install -D -m644 "${srcdir}/${pkgname}-${pkgver}/target/pbpctrl.fish" "${pkgdir}/usr/share/fish/completions/pbpctrl.fish"
+    install -D -m644 "${srcdir}/${pkgname}-${pkgver}/target/pbpctrl.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/pbpctrl.fish"
 
     # license
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE-MIT" "${pkgdir}/usr/share/licenses/pbpctrl/LICENSE-MIT"
