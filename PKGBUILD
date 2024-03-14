@@ -2,16 +2,13 @@
 
 pkgname=mautrix-meta
 _name=meta
-pkgver=r96.ee8c84d
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="A Matrix-WhatsApp puppeting bridge"
 arch=('x86_64' 'aarch64')
 license=('AGPL-3.0-or-later')
-# mautrix-meta can be build without encription support.
-# For that libolm has to be removed from the makedepends and depends
 makedepends=(
   go
-  git # waiting for first release to make it non-git dependent
 )
 depends=(
   glibc
@@ -19,43 +16,44 @@ depends=(
 )
 optdepends=('ffmpeg: If you want to send gifs from Matrix')
 url="https://github.com/mautrix/meta"
-source=("${_name}::git+${url}"
-        sysusers-mautrix-meta.conf
-        mautrix-meta.tmpfiles
-        mautrix-meta.service
-        log-path.diff)
-backup=("etc/${pkgname}/mautrix-meta.yaml")
-sha256sums=('SKIP'
+source=(
+  "${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
+  sysusers-${pkgname}.conf
+  ${pkgname}.tmpfiles
+  ${pkgname}.service
+  log-path.diff
+)
+backup=("etc/${pkgname}/${pkgname}.yaml")
+sha256sums=('82038ab59e709ce0ba505fa2ca681f0fb0048cb88ba4488007c7094bf5562f15'
             '6888d152b7b6b0175160a452009b866eba53244ff844da9f6abeb02654e28be5'
             '7dfa012f34ec7f940b1c4111de701b97273b1c2f4075b2f5e67a4c2327f8fb2f'
             '221814dbeab867bcb5217e22cbdd2d4ba0031ac594bea5a79134f137ef302d22'
             '7dc76380ffd9541f4508e834f32c51766505ac9bc285525063b3336c304967ca')
 
-pkgver() {
-  cd "$_name"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+prepare() {
+  cd "${srcdir}/${_name}-${pkgver}"
+  echo "Applying fix for log path"
+  patch -Np1 < "$srcdir/log-path.diff"
 }
 
 build() {
-  cd "${srcdir}/$_name"
-  patch -Np1 < "$srcdir/log-path.diff"
-
+  cd "${srcdir}/${_name}-${pkgver}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  ./build.sh
+  export MAUTRIX_VERSION=$(cat go.mod | grep 'maunium.net/go/mautrix ' | awk '{ print $2 }')
+  export GO_LDFLAGS="-s -w -X main.Tag="v${_pkgver}" -X 'maunium.net/go/mautrix.GoModVersion=$MAUTRIX_VERSION'"
+  go build -ldflags "$GO_LDFLAGS" -o "$pkgname"
 }
 
 package() {
-  cd "${srcdir}/$_name"
-  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-
-  install -Dm644 "$srcdir/sysusers-mautrix-meta.conf" "$pkgdir/usr/lib/sysusers.d/mautrix-meta.conf"
-  install -Dm644 "$srcdir/mautrix-meta.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/mautrix-meta.conf"
-
-  install -Dm644 "example-config.yaml" "$pkgdir/etc/$pkgname/mautrix-meta.yaml"
-  install -Dm644 "$srcdir/mautrix-meta.service" "$pkgdir/usr/lib/systemd/system/mautrix-meta.service"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_full_name/LICENSE"
+  cd "${srcdir}/${_name}-${pkgver}"
+  install -Dm755 "$pkgname" "${pkgdir}/usr/bin/$pkgname"
+  install -Dm644 "${srcdir}/sysusers-${pkgname}.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+  install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+  install -Dm644 "example-config.yaml" "${pkgdir}/etc/${pkgname}/${pkgname}.yaml"
+  install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -Dm644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
