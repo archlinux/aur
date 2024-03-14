@@ -6,12 +6,12 @@ _pname=${pkgbase#python-}
 _pyname=${_pname}
 pkgname=("python-${_pname}")
 #"python-${_pname}-doc")
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="ASDF serialization support for astropy"
 arch=('any')
 url="https://asdf-astropy.readthedocs.io"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
@@ -19,7 +19,6 @@ makedepends=('python-setuptools-scm'
 ##            'python-sphinx-astropy'
 ##            'python-astropy'
 #             'python-sphinx-asdf'
-#             'python-mistune>=3'
 #             'python-asdf_coordinates_schemas'
 #             'graphviz')    # avoid cascading dep of sphinx-asdf
 checkdepends=('python-pytest-astropy-header'
@@ -29,7 +28,7 @@ checkdepends=('python-pytest-astropy-header'
               'python-scipy'
               'python-asdf_coordinates_schemas')   # 'python-asdf' 'python-astropy' by sphinx-asdf
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('b1160e88fc079a48a86caf40ce461c6d')
+md5sums=('93ae9920bab7ea5afa162777a1a0eaf6')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -48,15 +47,15 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    PYTHONPATH="build/lib:${PYTHONPATH}" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-asdf-astropy() {
     depends=('python>=3.9'
              'python-astropy>=5.0.4'
              'python-asdf>=2.13'
-             'python-asdf_coordinates_schemas>=0.1'
-             'python-asdf_transform_schemas>=0.2.2'
+             'python-asdf_coordinates_schemas>=0.3'
+             'python-asdf_transform_schemas>=0.5'
              'python-packaging>=19')
     optdepends=('python-asdf-astropy-doc: Documentation for Python ASDF-AstroPy')
     cd ${srcdir}/${_pyname}-${pkgver}
