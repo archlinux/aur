@@ -12,7 +12,7 @@ license=('MIT')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'nodejs'
 )
 makedepends=(
