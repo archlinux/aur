@@ -1,7 +1,7 @@
 pkgbase = wf-shell
 	pkgdesc = GTK3-based panel for the Wayfire compositor
-	pkgver = 0.8.0
-	pkgrel = 3
+	pkgver = 0.8.1
+	pkgrel = 1
 	url = https://wayfire.org
 	arch = x86_64
 	arch = aarch6
@@ -19,7 +19,7 @@ pkgbase = wf-shell
 	depends = alsa-lib
 	depends = libdbusmenu-gtk3
 	conflicts = wf-shell-git
-	source = https://github.com/WayfireWM/wf-shell/releases/download/v0.8.0/wf-shell-0.8.0.tar.xz
-	b2sums = 0867f9968fca25d183fb912e01afc55ae6c9e3a0645eb63b2622ed53bb5d6538827a8e1bb6c68be4885f0c1513e76f0fd8f580402885bfa49dcbc7a0b8b02b49
+	source = https://github.com/WayfireWM/wf-shell/releases/download/v0.8.1/wf-shell-0.8.1.tar.xz
+	b2sums = d778b2ed214dbb1b072400a85021d3ef4e590bc707417cf2de486c9211fdf3d1fa1c14d786363bc7dd4daeeb39406d6aa2e2c3c0b607cb9b6c87151d330a3983
 
 pkgname = wf-shell
