@@ -1,7 +1,8 @@
 # Maintainer: 
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=protonmail-desktop
-pkgver=1.0.0
+_pkgver=1.0.0-beta
+pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Proton official desktop application for Proton Mail and Proton Calendar"
 arch=('x86_64')
@@ -19,7 +20,7 @@ optdepends=(
   'trash-cli: file deletion support (trash-put)'
   'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)'
 )
-source=("ProtonMail-desktop-$pkgver-beta.deb::https://proton.me/download/mail/linux/ProtonMail-desktop-beta.deb")
+source=("ProtonMail-desktop-${_pkgver}.deb::https://proton.me/download/mail/linux/ProtonMail-desktop-beta.deb")
 sha256sums=('dc5466d36130f46b8631714093048bf856de2f2688d529a90d4dc0e5e261e935')
 
 package() {
