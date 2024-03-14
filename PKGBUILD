@@ -2,7 +2,7 @@
 pkgname=electron-netease-cloud-music-bin
 pkgver=0.9.38
 _electronversion=25
-pkgrel=7
+pkgrel=8
 pkgdesc="UNOFFICIAL client for music.163.com . Powered by Electron, Vue, and Muse-UI."
 arch=('x86_64')
 url="https://dl.encm.cf/"
@@ -11,7 +11,7 @@ license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'gendesk'
@@ -23,11 +23,12 @@ source=(
 )
 sha256sums=('9171b1858e8d5b4faef7c0be1cf786c3b824dec5ffe2a4014b1c8239e63cabcc'
             'af1edb0435906e7603db02b8622876fb462cbd1135d54c2d74a9c54b4f1c131d'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories="AudioVideo" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
 }
