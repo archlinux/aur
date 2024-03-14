@@ -3,12 +3,12 @@
 _pkgname=optimalFlowData
 _pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
-pkgrel=1
-pkgdesc='optimalFlowData'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="optimalFlowData"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r
 )
@@ -19,14 +19,15 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('983f078b48e97424add5558ca7ad5c00e1f3a7259659defa983f6c0de956ea29')
+md5sums=('790ea8af88ecf90abafdef9a7c4abb08')
+b2sums=('e3aa160f2f4d8fbcb3e482ab254a739b302b8e5a07828ad05f4eb92bf30d6f56a50d0fb9bad2b1e40a066287781a89ffaa2c26fe122624bbdaa6ff92ab4b2ade')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
