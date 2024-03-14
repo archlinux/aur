@@ -3,7 +3,7 @@ pkgname=rebaslight-bin
 _pkgname="Rebaslight"
 pkgver=3.7.3
 _electronversion=25
-pkgrel=5
+pkgrel=6
 pkgdesc="An easy to use special effects editor"
 arch=("x86_64")
 url="http://www.rebaslight.com/"
@@ -12,7 +12,7 @@ license=('AGPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'gendesk'

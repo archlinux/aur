@@ -1,12 +1,12 @@
 pkgbase = rebaslight-bin
 	pkgdesc = An easy to use special effects editor
 	pkgver = 3.7.3
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.rebaslight.com/
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = gendesk
-	depends = electron25
+	depends = electron25-bin
 	provides = rebaslight=3.7.3
 	conflicts = rebaslight
 	source = rebaslight-3.7.3.tar.bz2::https://github.com/rebaslight/rebaslight/releases/download/v3.7.3/rebaslight-3.7.3.tar.bz2
