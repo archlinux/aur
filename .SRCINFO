@@ -6,6 +6,7 @@ pkgbase = python-copulas
 	arch = x86_64
 	license = BUSL-1.1
 	checkdepends = python-pytest
+	checkdepends = python-invoke
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools

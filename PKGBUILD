@@ -10,7 +10,7 @@ license=(BUSL-1.1)
 depends=(python-pandas python-plotly python-scipy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 optdepends=('python-markupsafe' 'python-scikit-learn' 'jupyter-notebook')
-checkdepends=(python-pytest)
+checkdepends=(python-pytest python-invoke)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('6b05cc4b638f3d3388604e063a574cd44264d7fd045a71e3f37edaeab0babae5e0316ad6491b1eb3f9f3099d3f5befef46e28ba57a0e5ac1847510cf764f9782')
 
