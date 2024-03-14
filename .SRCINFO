@@ -6,7 +6,7 @@ pkgbase = xilinota-bin
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = fuse2
-	depends = electron25
+	depends = electron25-bin
 	depends = hicolor-icon-theme
 	provides = xilinota=2.13.5_beta4
 	conflicts = xilinota
