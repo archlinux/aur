@@ -1,7 +1,7 @@
 pkgbase = protonmail-desktop-bin-beta
 	pkgdesc = Official native ProtonMail desktop application with calendar support
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://proton.me/mail/download
 	arch = x86_64
 	license = GPL3
