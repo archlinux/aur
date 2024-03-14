@@ -5,6 +5,7 @@ pkgbase = openglide-git
 	url = https://github.com/voyageur/openglide
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL2
 	makedepends = git
 	depends = mesa
