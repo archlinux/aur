@@ -6,10 +6,10 @@
 # Contributor: Matthew Gyurgyik <matthew@pyther.net>
 # Contributor: Giorgio Azzinnaro <giorgio@azzinna.ro>
 
-pkgver=23.11.0.82
+pkgver=24.2.0.65
 pkgname=icaclient-beta
-pkgrel=3
-arch=('x86_64' 'i686' 'armv7h')
+pkgrel=1
+arch=('x86_64' 'armv7h')
 license=('custom:Citrix')
 depends=('alsa-lib' 'curl' 'gst-plugins-base-libs' 'gtk2' 'libc++' 'libc++abi' 'libidn11'
          'libjpeg6-turbo' 'libpng12' 'libsecret' 'libsoup' 'libvorbis' 'libxaw' 'libxp'
@@ -34,9 +34,6 @@ sha256sums=('643427b6e04fc47cd7d514af2c2349948d3b45f536c434ba8682dcb1d4314736'
             'cdfb3a2ef3bf6b0dd9d17c7a279735db23bc54420f34bfd43606830557a922fe'
             'fe0b92bb9bfa32010fe304da5427d9ca106e968bad0e62a5a569e3323a57443f'
             'a3bd74aaf19123cc550cde71b5870d7dacf9883b7e7a85c90e03b508426c16c4')
-sha256sums_x86_64=('SKIP')
-sha256sums_i686=('SKIP')
-sha256sums_armv7h=('SKIP')
 install=citrix-client.install
 
 pkgver() {
@@ -58,10 +55,9 @@ pkgver() {
 
     if [[ -n "${_pkgver}" ]]; then
         if [[ "$1" == "init" ]]; then
-            _s32=https:"$(sed -En 's|^.*rel="(//.*/linuxx86-[^"]*)".*$|\1|p' <<< "${_dl_urls}")"
             _s64=https:"$(sed -En 's|^.*rel="(//.*/linuxx64-[^"]*)".*$|\1|p' <<< "${_dl_urls}")"
             _sarmhf=https:"$(sed -En 's|^.*rel="(//.*/linuxarmhf-[^"]*)".*$|\1|p' <<< "${_dl_urls}")"
-            printf "%s %s %s %s %s %s" "${_pkgver}" "${_s32}" "${_s64}" "${_sarmhf}" "${_type}" "${_url}"
+            printf "%s %s %s %s" "${_s64}" "${_sarmhf}" "${_type}" "${_url}"
         else
             printf "%s" "${_pkgver}"
         fi
@@ -70,21 +66,18 @@ pkgver() {
         exit 1
     fi
 }
-read -r _pkgver _source32 _source64 _sourcearmhf _pkgtype _url <<< $(pkgver init)
-source_x86_64=("$_artefactid-x64-$_pkgver.tar.gz::$_source64")
-source_i686=("$_artefactid-x86-$_pkgver.tar.gz::$_source32")
-source_armv7h=("$_artefactid-armhf-$_pkgver.tar.gz::$_sourcearmhf")
+read -r _source64 _sourcearmhf _pkgtype _url <<< $(pkgver init)
+source_x86_64=("$_artefactid-x64-$pkgver.tar.gz::$_source64")
+source_armv7h=("$_artefactid-armhf-$pkgver.tar.gz::$_sourcearmhf")
+sha256sums_x86_64=('SKIP')
+sha256sums_armv7h=('SKIP')
 pkgdesc="Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver) [$_pkgtype]"
 url="$_url"
 
 package() {
     cd "${srcdir}"
     ICAROOT=/opt/Citrix/ICAClient
-    if [[ $CARCH == 'i686' ]]
-    then
-        ICADIR="$srcdir/linuxx86/linuxx86.cor"
-        PKGINF="Ver.core.linuxx86"
-    elif [[ $CARCH == 'x86_64' ]]
+    if [[ $CARCH == 'x86_64' ]]
     then
         ICADIR="$srcdir/linuxx64/linuxx64.cor"
         PKGINF="Ver.core.linuxx64"
