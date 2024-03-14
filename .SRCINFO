@@ -1,7 +1,7 @@
 pkgbase = libgnunetchat
 	pkgdesc = GNUnet chat library
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gnunet.org
 	arch = i686
 	arch = x86_64

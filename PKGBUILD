@@ -1,10 +1,10 @@
 # Maintainer: grufo <madmurphy333 AT gmail DOT com>
-# Contributor: TheJackiMonster <thejackimonster AT gmail DOT com>
+# Contributor: TheJackiMonster <jacki AT thejackimonster DOT de>
 
 _framework='gnunet'
 pkgname='libgnunetchat'
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='GNUnet chat library'
 arch=('i686' 'x86_64')
 url="http://${_framework}.org"
