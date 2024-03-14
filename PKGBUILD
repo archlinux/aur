@@ -2,7 +2,7 @@
 
 pkgname=android-sdk-cmdline-tools-latest
 pkgver=13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Android SDK Command-line Tools (latest)'
 arch=('x86_64' 'i686')
 url='https://developer.android.com/studio'
@@ -24,7 +24,7 @@ sha1sums=('2e1a11866ce7146dee1456152ff64d6c8158b2c0'
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/cmdline-tools/"
   cp -a cmdline-tools "${pkgdir}/opt/android-sdk/cmdline-tools/latest"
-  install -Dm755 'package.xml' "${pkgdir}/opt/android-sdk/cmdline-tools/package.xml"
+  install -Dm755 'package.xml' "${pkgdir}/opt/android-sdk/cmdline-tools/latest/package.xml"
   install -Dm755 "${pkgname}.sh" "${pkgdir}/etc/profile.d/${pkgname}.sh"
   install -Dm755 "${pkgname}.csh" "${pkgdir}/etc/profile.d/${pkgname}.csh"
 }

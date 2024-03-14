@@ -1,7 +1,7 @@
 pkgbase = android-sdk-cmdline-tools-latest
 	pkgdesc = Android SDK Command-line Tools (latest)
 	pkgver = 13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.android.com/studio
 	install = android-sdk-cmdline-tools-latest.install
 	arch = x86_64
