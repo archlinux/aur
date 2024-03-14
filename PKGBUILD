@@ -1,6 +1,6 @@
 # Maintainer: k0kubun <takashikkbn@gmail.com>
 pkgname=xremap-wlroots-bin
-pkgver=0.8.14
+pkgver=0.8.15
 pkgrel=1
 pkgdesc='Dynamic key remapper for X11 and Wayland'
 url='https://github.com/k0kubun/xremap'
@@ -8,7 +8,7 @@ source_x86_64=("$pkgname-$pkgver.zip::https://github.com/k0kubun/xremap/releases
 arch=('x86_64')
 license=('MIT')
 provides=('xremap')
-sha256sums_x86_64=('ec3fb5b0c1163cf6876b4e93cf61c541c7d0280e34877465d18e48d23bc70b52')
+sha256sums_x86_64=('fc320838cdcbd05ec492a5d201f4213f154a4a770dc1e88d88d7a99945a89bb3')
 
 package() {
   cd "$srcdir/"
