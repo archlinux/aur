@@ -1,6 +1,6 @@
 pkgbase = mesa-enable-h264
 	pkgdesc = An open-source implementation of the OpenGL specification
-	pkgver = 24.0.2
+	pkgver = 24.0.3
 	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = x86_64
@@ -96,7 +96,7 @@ pkgbase = mesa-enable-h264
 	conflicts = vulkan-mesa-layer
 	conflicts = vulkan-mesa
 	conflicts = mesa-libgl
-	source = https://mesa.freedesktop.org/archive/mesa-24.0.2.tar.xz
+	source = https://mesa.freedesktop.org/archive/mesa-24.0.3.tar.xz
 	source = LICENSE
 	sha256sums = SKIP
 	sha256sums = 7052ba73bb07ea78873a2431ee4e828f4e72bda7d176d07f770fa48373dec537
