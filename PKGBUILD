@@ -13,6 +13,7 @@ backup=()
 source=("git+https://github.com/Kimiblock/snotify.git")
 sha256sums=('SKIP')
 install="snotify.install"
+provides=("snotify")
 
 function pkgver() {
 	cd "${srcdir}/snotify"
