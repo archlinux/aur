@@ -14,7 +14,7 @@ pkgbase = wstroke-git
 	depends = gtk3
 	depends = gtkmm3
 	depends = boost-libs
-	optdepends = wcm-git
+	optdepends = wcm
 	optdepends = libinput>=1.70
 	provides = wstroke
 	conflicts = wstroke
