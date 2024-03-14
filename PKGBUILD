@@ -17,7 +17,7 @@ validpgpkeys=('4D8FB572FB6ADCFD69CBFE0D7B2586A6B5E25C3D') # Mukul Gandhi (CODE S
 package() {
   cd xalan-j_${pkgver//./_}
   install -m755 -d "${pkgdir}"/usr/share/java
-  install -m644 serializer.jar.jar "${pkgdir}"/usr/share/java
+  install -m644 serializer.jar "${pkgdir}"/usr/share/java
   install -m644 xalan.jar "${pkgdir}"/usr/share/java
   install -m644 xercesImpl.jar "${pkgdir}"/usr/share/java
   install -m644 xml-apis.jar "${pkgdir}"/usr/share/java
