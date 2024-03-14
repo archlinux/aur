@@ -1,6 +1,6 @@
 pkgbase = gamescope-sk
 	pkgdesc = SteamOS session compositing window manager
-	pkgver = 3.14.2.sk.r0.g6ed7472
+	pkgver = 3.14.2.sk.2.r0.gad2ac36
 	pkgrel = 1
 	url = https://github.com/ValveSoftware/gamescope
 	arch = x86_64
@@ -47,7 +47,7 @@ pkgbase = gamescope-sk
 	depends = xorg-server-xwayland
 	provides = gamescope
 	conflicts = gamescope
-	source = git+https://github.com/3003n/gamescope.git#commit=6ed7472419b6310f27ccf7af846fea656467f731
+	source = git+https://github.com/3003n/gamescope.git#commit=ad2ac3683a36fcc50c76537696aac7bbf8da3753
 	source = git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a
 	source = git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1
 	source = git+https://github.com/Joshua-Ashton/reshade.git
