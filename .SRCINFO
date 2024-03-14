@@ -1,11 +1,11 @@
 pkgbase = wcm
 	pkgdesc = Wayfire Configuration Manager
 	pkgver = 0.8.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://wayfire.org
 	arch = x86_64
 	arch = aarch64
-	license = custom:MIT
+	license = MIT
 	makedepends = wayland-protocols
 	makedepends = meson
 	makedepends = ninja

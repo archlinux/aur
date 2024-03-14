@@ -2,10 +2,10 @@
 pkgdesc='Wayfire Configuration Manager'
 pkgname=wcm
 pkgver=0.8.0
-pkgrel=4
+pkgrel=5
 arch=(x86_64 aarch64)
 url=https://wayfire.org
-license=(custom:MIT)
+license=(MIT)
 depends=("wayfire>=${pkgver%.*}" "wayfire<0.9" "wf-shell>=${pkgver%.*}" "wf-shell<0.9" gtkmm3 wdisplays)
 makedepends=(wayland-protocols meson ninja glm)
 source=("https://github.com/WayfireWM/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
