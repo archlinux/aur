@@ -1,7 +1,7 @@
 pkgbase = wayfire
 	pkgdesc = 3D wayland compositor
-	pkgver = 0.8.0
-	pkgrel = 5
+	pkgver = 0.8.1
+	pkgrel = 1
 	url = https://wayfire.org
 	arch = x86_64
 	arch = aarch64
@@ -15,16 +15,12 @@ pkgbase = wayfire
 	makedepends = nlohmann-json
 	depends = cairo
 	depends = pango
-	depends = wf-config>=0.8
+	depends = wf-config>=0.8.0
 	depends = libjpeg
 	depends = libinput
-	depends = wlroots0.16
+	depends = wlroots>=0.17
 	conflicts = wayfire-git
-	source = https://github.com/WayfireWM/wayfire/releases/download/v0.8.0/wayfire-0.8.0.tar.xz
-	source = meson-ignore-git-return-values.patch
-	source = fix-output-mirroring.patch
-	b2sums = 4d80a0d43061a4564d45f7c077fd97737b426c4036c12f004815dbad120f51b38b2fac9a010e2df27a6a96205cd0dcceb81864bdccbd6e337d81f6c37926e019
-	b2sums = 133844b43d93da3f7238204575d2ac0ef354d0728ff1e09c885ee84af59e6d3d3aad747b4cc721b6e0a63ebf73dd7fe133101a47bd4b2d92f00602320268a84f
-	b2sums = 781697f867d92deabe816d6c11ccaedf4ab791ce79141b011bbdc765875b874c4787b07ebde1a60727ce5fbaa0b124e0c537154e745dcfde6092d6e2abe8f729
+	source = https://github.com/WayfireWM/wayfire/releases/download/v0.8.1/wayfire-0.8.1.tar.xz
+	b2sums = 1b596b28878789ca26eeb57c6c24e0b69508731de2144e1477f8071b41f17757b2125f2f4f99670ca8b7f85172a9f641b9be1f9190eeff5b261bcc2df1bec4ab
 
 pkgname = wayfire
