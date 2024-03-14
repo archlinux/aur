@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
+
+# Allow users to override command-line options
+if [[ -f $XDG_CONFIG_HOME/botgem-flags.conf ]]; then
+    BOTGEM_USER_FLAGS="$(grep -v '^#' $XDG_CONFIG_HOME/botgem-flags.conf)"
+fi
+
+# Launch
+exec electron29 /usr/lib/botgem $BOTGEM_USER_FLAGS "$@"

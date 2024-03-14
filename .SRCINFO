@@ -1,0 +1,21 @@
+pkgbase = botgem-electron
+	pkgdesc = Your Al-Powered Toolbox for Tomorrow
+	pkgver = 1.4.1.0
+	pkgrel = 1
+	url = https://botgem.com
+	install = .install
+	arch = x86_64
+	license = private
+	makedepends = asar
+	makedepends = nodejs
+	makedepends = npm
+	depends = hicolor-icon-theme
+	depends = electron29
+	source = botgem-1.4.1.0.appx::https://github.com/Pylogmon/botgem-package-archive/releases/download/1.4.1.0/botgem-1.4.1.0.appx
+	source = botgem
+	source = botgem.desktop
+	sha256sums = fef3ba66dc8c573aaeb01c323c55bebe0e65437b63968ed83e05dbea227d36ce
+	sha256sums = a72f10d8e9b566a35934b3f66508acee75efa5f55ef0754c4d9e3757c450a899
+	sha256sums = 0ec4084e396a91623e88130ea19a104d05969d1d521b7d228898528b9e6c6942
+
+pkgname = botgem-electron

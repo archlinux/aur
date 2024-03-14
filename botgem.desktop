@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=BotGem
+GenericName=BotGem
+Comment=Your Al-Powered Toolbox for Tomorrow
+Keywords=bot;botgem;AMA;ama;
+Exec=botgem %U
+Icon=/usr/share/icons/botgem.png
+Categories=Utility;
