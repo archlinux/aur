@@ -1,6 +1,6 @@
 pkgbase = intellij-idea-community-edition-jre
 	pkgdesc = Intellij Idea Community Edition with bundled JRE
-	pkgver = 2023.3.4
+	pkgver = 2023.3.5
 	pkgrel = 1
 	url = http://www.jetbrains.com/idea/
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = intellij-idea-community-edition-jre
 	depends = libdbusmenu-glib
 	provides = jetbrains-idea-ce
 	conflicts = jetbrains-idea-ce
-	source = https://download.jetbrains.com/idea/ideaIC-2023.3.4.tar.gz
+	source = https://download.jetbrains.com/idea/ideaIC-2023.3.5.tar.gz
 	source = jetbrains-idea-ce.desktop
-	sha256sums = 11c1e785dedcf0b03170120438d513d12a5aab412217db1725827113b7804e9b
+	sha256sums = 869e534533de1dbce095db6e3fee4a63a3c8fd654052089b83d08b7808495634
 	sha256sums = 91aa66e16e428d595c9f76a02f5a6d54d6fb0b1d1ccac4159cfb7070cff26a4b
 
 pkgname = intellij-idea-community-edition-jre
