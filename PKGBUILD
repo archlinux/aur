@@ -3,7 +3,7 @@ pkgname=gui-butler
 pkgver=2.3.1
 _electronversion=25
 _nodeversion=18
-pkgrel=6
+pkgrel=7
 pkgdesc="A wrapper for itch.io's butler which lets you take advantage of the basic features without having to go through a CLI or set up build scripts for each new project."
 arch=('x86_64')
 url="https://seansleblanc.itch.io/gui-butler"
@@ -12,7 +12,7 @@ license=('MIT')
 conflicts=("${pkgname}")
 noextract=("butler-${pkgver}.zip")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'nodejs'
 )
 makedepends=(
