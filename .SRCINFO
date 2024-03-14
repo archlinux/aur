@@ -1,6 +1,6 @@
 pkgbase = ttf-lxgw-neo-xihei-screen-full
 	pkgdesc = 霞鹜新晰黑屏幕阅读版Droid Sans Fallback打底补全版，更适合 PC 及 Android 手机屏幕显示。
-	pkgver = 1.120
+	pkgver = 1.120.1
 	pkgrel = 1
 	url = https://github.com/lxgw/LxgwNeoXiHei-Screen
 	changelog = changelog.txt
@@ -8,10 +8,10 @@ pkgbase = ttf-lxgw-neo-xihei-screen-full
 	license = custom:IPA
 	provides = ttf-lxgw-neo-xihei-screen
 	conflicts = ttf-lxgw-neo-xihei-screen
-	source = ttf-lxgw-neo-xihei-screen-full-1.120-1.ttf::https://github.com/lxgw/LxgwNeoXiHei-Screen/releases/download/v1.120/LXGWNeoXiHeiScreenFull.ttf
+	source = ttf-lxgw-neo-xihei-screen-full-1.120.1-1.ttf::https://github.com/lxgw/LxgwNeoXiHei-Screen/releases/download/v1.120.1/LXGWNeoXiHeiScreenFull.ttf
 	source = LICENSE_CHS.md
 	source = LICENSE.md
-	sha256sums = 3baf673d351f954fcceda47bdfcdbb9bbd37abdb18275d2651cb3e99b89c6b7c
+	sha256sums = 777456b7db36408abf4e7ec4862f7df6b939c99f19864e090f8f6f01ef9f88ca
 	sha256sums = bdadacd0751cbb3c9f040d1314ab9b855c3ebf1b540fa6dcf44524cd49819fa1
 	sha256sums = 1483c7de02dcf8b9c54b3b1aacabf7d6bdf32d412ca6724c0292ea68e862d8cf
 
