@@ -3,24 +3,25 @@
 _pkgname=Icens
 _pkgver=1.74.0
 pkgname=r-${_pkgname,,}
-pkgver=1.74.0
-pkgrel=1
-pkgdesc='NPMLE for Censored and Truncated Data'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="NPMLE for Censored and Truncated Data"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5c5d26401cf01ac83b05e59516e911efb8116f6e4807bdd4fb321007d932e63b')
+md5sums=('07481f23c5b4fdfe9ff465e5a57e33c2')
+b2sums=('aeaaabc4470b3715356784f5597b082a3c220631733f283a3dde70151559739c8cd7e19278aa644dd9bb58f6002be5b1b8df285d0b4ff6dc30afb9f708562b28')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
