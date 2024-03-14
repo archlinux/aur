@@ -28,10 +28,11 @@ package() {
   install -Dm644 ${pkgdir}/opt/lzc-client-desktop/lzc-client.desktop ${pkgdir}/usr/share/applications/lzc-client-desktop.desktop
   install -Dm644 ${pkgdir}/opt/lzc-client-desktop/icon.png ${pkgdir}/usr/share/icons/lzc-client-desktop.png
 
+  sed -i '/chmod/d' ${pkgdir}/opt/lzc-client-desktop/runcore.sh
   chmod +x ${pkgdir}/opt/lzc-client-desktop/core/lzc-core
+  chmod +x ${pkgdir}/opt/lzc-client-desktop/rclone
 
   sed -i 's|Exec=.*|Exec=lzc-client-desktop|' ${pkgdir}/usr/share/applications/lzc-client-desktop.desktop
   sed -i 's|Icon=.*|Icon=lzc-client-desktop|' ${pkgdir}/usr/share/applications/lzc-client-desktop.desktop
-  sed -i '/chmod/d' ${pkgdir}/opt/lzc-client-desktop/runcore.sh
 
 }
