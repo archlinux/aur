@@ -1,7 +1,7 @@
 pkgbase = tithree
 	pkgdesc = Tutor's Time Tally.An app for tallying tutor's time spent on tutoring
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wpwwhimself/tithree
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = tithree
 	makedepends = gcc
 	makedepends = base-devel
 	makedepends = icoutils
-	depends = electron25
+	depends = electron25-bin
 	depends = python>=3
 	depends = python-setuptools
 	depends = nodejs

@@ -4,14 +4,14 @@ _pkgname=Tithree
 pkgver=1.4.0
 _electronversion=25
 _nodeversion=18
-pkgrel=1
+pkgrel=2
 pkgdesc="Tutor's Time Tally.An app for tallying tutor's time spent on tutoring"
 arch=('any')
 url="https://github.com/wpwwhimself/tithree"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'python>=3'
     'python-setuptools'
     'nodejs'
@@ -49,19 +49,20 @@ build() {
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
-    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    if [ `curl ifconfig.co/country` == "China" ];then
+    if [ `curl ifconfig.co/country` = "China" ];then
         echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
         echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
         echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
     fi
-    sed "4i\  \"homepage\": \"${url}\"," -i package.json
-    sed "s|target: 'deb',|target: 'AppImage'|g;s|icon.ico|icon.png|g" -i .electron-builder.config.js
+    sed "s|build --config|build --dir --config|g" -i package.json
     icotool -i 1 -x  buildResources/icon.ico -o buildResources/icon.png
     npm install
     npm run compile
