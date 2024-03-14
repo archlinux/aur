@@ -2,7 +2,7 @@
 _pkgname=godot
 pkgname=godot3-bin
 pkgver=3.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Advanced cross-platform 2D and 3D game engine (3.X Branch)"
 arch=("x86_64")
 url='https://godotengine.org'
@@ -44,8 +44,7 @@ package() {
 
 	cat >> "${pkgdir}/usr/bin/godot3-bin" <<-EOF
 #!/bin/sh
-/opt/godot3-bin/Godot_v${pkgver}-stable_x11.64
+/opt/godot3-bin/Godot_v${pkgver}-stable_x11.64 "\$@"
 EOF
-	echo '"$@"' >> "${pkgdir}/usr/bin/godot3-bin"
 	chmod +x "${pkgdir}/usr/bin/godot3-bin"
 }
