@@ -1,10 +1,11 @@
 pkgbase = android-armv7a-eabi-sqlite
-	pkgdesc = A C library that implements an SQL database engine (android)
-	pkgver = 3.45.1
+	pkgdesc = A C library that implements an SQL database engine (Android, armv7a-eabi)
+	pkgver = 3.45.2
 	pkgrel = 1
 	url = https://www.sqlite.org/
 	arch = any
 	license = LicenseRef-Sqlite
+	makedepends = android-configure
 	makedepends = android-armv7a-eabi-tcl
 	makedepends = android-armv7a-eabi-readline
 	makedepends = android-armv7a-eabi-zlib
@@ -12,14 +13,14 @@ pkgbase = android-armv7a-eabi-sqlite
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://www.sqlite.org/2024/sqlite-src-3450100.zip
-	sha256sums = 7f7b14a68edbcd4a57df3a8c4dbd56d2d3546a6e7cdd50de40ceb03af33d34ba
+	source = https://www.sqlite.org/2024/sqlite-src-3450200.zip
+	sha256sums = 4a45a3577cc8af683c4bd4c6e81a7c782c5b7d5daa06175ea2cb971ca71691b1
 
 pkgname = android-armv7a-eabi-sqlite
-	pkgdesc = A C library that implements an SQL database engine (android)
+	pkgdesc = A C library that implements an SQL database engine (Android, armv7a-eabi)
 	depends = android-armv7a-eabi-readline
 	depends = android-armv7a-eabi-zlib
 
 pkgname = android-armv7a-eabi-sqlite-tcl
-	pkgdesc = sqlite Tcl Extension Architecture (TEA) (android)
+	pkgdesc = sqlite Tcl Extension Architecture (TEA) (Android, armv7a-eabi)
 	depends = android-armv7a-eabi-sqlite
