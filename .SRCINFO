@@ -1,12 +1,13 @@
 pkgbase = r-elitism
 	pkgdesc = Equipment for Logarithmic and Linear Time Stepwise Multiple Hypothesis Testing
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=elitism
 	arch = any
-	license = GPL
+	license = GPL-3.0-only
 	depends = r
 	source = https://cran.r-project.org/src/contrib/elitism_1.1.1.tar.gz
-	sha256sums = 20a32d1f80fabf7981e7c38476a2bb4662c4f3ac362a448843395a3b24fbf8aa
+	md5sums = 424762eec20ce983d5f5a24fa7af4f57
+	b2sums = 8e2ac1d8ea8b9b5c13d0d57ad5c7339c4694764a45f16436441b04da523794166edea89235aabb602d9b6eadbe59604f28279b3d3a4f73abbb1ef162907e9a6f
 
 pkgname = r-elitism
