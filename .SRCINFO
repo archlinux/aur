@@ -1,7 +1,7 @@
 pkgbase = octa-electron
 	pkgdesc = Svelte-based app for developing vocabulary wrapped in electron
 	pkgver = 2.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/MeroVinggen/octa-electron
 	arch = any
 	license = LicenseRef-custom
@@ -10,12 +10,12 @@ pkgbase = octa-electron
 	makedepends = npm
 	makedepends = git
 	makedepends = pnpm
-	makedepends = imagemagick
-	depends = electron24
+	makedepends = icoutils
+	depends = electron24-bin
 	conflicts = octa-electron
 	source = octa-electron.git::git+https://github.com/MeroVinggen/octa-electron.git#tag=v2.0.1
 	source = octa-electron.sh
 	sha256sums = SKIP
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = octa-electron
