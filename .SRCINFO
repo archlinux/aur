@@ -1,7 +1,7 @@
 pkgbase = atmos-weather-bin
 	pkgdesc = A lightweight weather app for receiving alerts and forecasts in the US.
 	pkgver = 2.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://atticuscornett.github.io/AtmosWeather/
 	arch = aarch64
 	arch = armv7h
@@ -11,7 +11,7 @@ pkgbase = atmos-weather-bin
 	provides = atmos-weather=2.0.2
 	conflicts = atmos-weather
 	source = atmos-weather.sh
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 	source_aarch64 = atmos-weather-2.0.2-aarch64.deb::https://github.com/atticuscornett/AtmosWeather/releases/download/v2.0.2/atmos-weather-linux-arm64.deb
 	sha256sums_aarch64 = daa9d166b30855842d0a54ec4bff41539061d08274a3b386623ce72520dc74fc
 	source_armv7h = atmos-weather-2.0.2-armv7h.deb::https://github.com/atticuscornett/AtmosWeather/releases/download/v2.0.2/atmos-weather-linux-armv7l.deb
