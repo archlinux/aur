@@ -1,7 +1,7 @@
 # Maintainer: Pylogmon <pylogmon@outlook.com>
 
 pkgname=botgem-electron
-pkgver=1.4.1.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Your Al-Powered Toolbox for Tomorrow'
 arch=(x86_64)

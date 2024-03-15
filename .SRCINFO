@@ -1,6 +1,6 @@
 pkgbase = botgem-electron
 	pkgdesc = Your Al-Powered Toolbox for Tomorrow
-	pkgver = 1.4.1.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://botgem.com
 	install = .install
@@ -8,7 +8,7 @@ pkgbase = botgem-electron
 	license = LicenseRef-UNLICENSED
 	makedepends = asar
 	depends = electron29
-	source = botgem-1.4.1.0.appx::https://github.com/Pylogmon/botgem-package-archive/releases/download/1.4.1.0/botgem-1.4.1.0.appx
+	source = botgem-1.4.1.appx::https://github.com/Pylogmon/botgem-package-archive/releases/download/1.4.1/botgem-1.4.1.appx
 	source = sqlite3-x86_64.tar.gz::https://github.com/TryGhost/node-sqlite3/releases/download/v5.1.7/sqlite3-v5.1.7-napi-v6-linux-x64.tar.gz
 	source = botgem
 	source = botgem.desktop
