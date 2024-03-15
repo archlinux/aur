@@ -2,4 +2,5 @@ post_install () {
   echo ">>> To enable the mate-wayland-session for your user wayfire run this command to copy the config:"
   echo "cp /usr/share/doc/wayfire/wayfire-mate-wayland.ini ~/.config/mate/wayfire.ini"
   echo "then you can fire up a mate wayland session with 'mate-wayland.sh'"
+  echo "Its also generally recommended you use a seperate linux user for this"
 }

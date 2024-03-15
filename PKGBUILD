@@ -3,12 +3,12 @@
 pkgbase=mate-wayland-session-git
 _srcname=mate-wayland-session
 install=matewayland.install
-pkgver=0.01
+pkgver=1.28.0
 pkgrel=2
 arch=('x86_64')
 url="https://github.com/mate-desktop/mate-desktop"
 license=('GNU GENERAL PUBLIC LICENSE Version 2')
-depends=('dconf' 'gtk3' 'startup-notification' 'wayfire')
+depends=('dconf' 'gtk3' 'startup-notification' 'wayfire' 'xorg-xwayland')
 makedepends=('mate-common-git' 'yelp-tools' 'gtk-doc' 'gobject-introspection' 'autoconf-archive' 'meson')
 
 # We all love colors. Stop pretending you don't.
