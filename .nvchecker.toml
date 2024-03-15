@@ -1,0 +1,5 @@
+[python-gotranx]
+source = "github"
+github = "finsberg/gotranx"
+use_max_tag = "true"
+prefix = "v"
