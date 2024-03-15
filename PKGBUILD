@@ -2,10 +2,10 @@
 
 pkgname=harp
 pkgver=1.20.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Data harmonization toolset for scientific earth observation data"
 arch=('x86_64')
-url="https://www.stcorp.nl"
+url="https://github.com/stcorp/harp"
 license=('BSD')
 depends=('python' 'hdf4' 'hdf5' 'r' 'stc-coda')
 provides=('harp')
