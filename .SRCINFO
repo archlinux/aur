@@ -1,11 +1,12 @@
 pkgbase = edgetx-buddy-bin
 	pkgdesc = The next generation tool for EdgeTX. A cross platform app, with browser compatibility.
 	pkgver = 0.1.0
-	pkgrel = 10
+	pkgrel = 11
 	url = https://buddy.edgetx.org/
 	arch = x86_64
 	license = MIT
-	depends = electron16
+	makedepends = fuse2
+	depends = electron16-bin
 	provides = edgetx-buddy=0.1.0
 	conflicts = edgetx-buddy
 	source = edgetx-buddy-0.1.0.AppImage::https://github.com/EdgeTX/buddy/releases/download/latest/edgetx-buddy-0.1.0.AppImage
@@ -13,6 +14,6 @@ pkgbase = edgetx-buddy-bin
 	source = edgetx-buddy.sh
 	sha256sums = 1ebe11f1c701b976b9c13bd9800ad016305f60dde32e5d94bc21ae15ba7c1d54
 	sha256sums = b439e9847dce86ac976ddeb9949eb190c53322569f05f43d1cb4278ef1d90167
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = edgetx-buddy-bin
