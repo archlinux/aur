@@ -75,20 +75,9 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    case "${CARCH}" in
-        x86_64)
-            _architecture="linux-unpacked"
-        ;;
-        aarch64)
-            _architecture="linux-arm64-unpacked"
-        ;;
-        armv7h)
-            _architecture="linux-armv7l-unpacked"
-        ;;
-    esac
-    install -Dm644 "${srcdir}/${pkgname//-/.}/release/${_architecture}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    install -Dm755 "${srcdir}/${pkgname//-/.}/release/${_architecture}/resources/engine/aria2c" -t "${pkgdir}/usr/lib/${pkgname%-git}/engine"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/release/${_architecture}/resources/engine/aria2.conf" -t "${pkgdir}/usr/lib/${pkgname%-git}/engine"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm755 "${srcdir}/${pkgname//-/.}/release/linux-"*/resources/engine/aria2c -t "${pkgdir}/usr/lib/${pkgname%-git}/engine"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/release/linux-"*/resources/engine/aria2.conf -t "${pkgdir}/usr/lib/${pkgname%-git}/engine"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/static/512x512.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
