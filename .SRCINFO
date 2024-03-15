@@ -1,6 +1,6 @@
 pkgbase = bluetui
 	pkgdesc = TUI for managing bluetooth devices
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/pythops/bluetui
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = bluetui
 	depends = gcc-libs
 	depends = dbus
 	depends = bluez
-	source = bluetui-0.3.tar.gz::https://github.com/pythops/bluetui/archive/v0.3.tar.gz
-	sha512sums = d956b88382e09274431945166c44de30c9cb6a0ff901d54f5ac682174c35323b4ff2326bb29d41b414ea4080486152ddf4d6f6be39ccb34d1f68f2c4382e98f4
+	source = bluetui-0.4.tar.gz::https://github.com/pythops/bluetui/archive/v0.4.tar.gz
+	sha512sums = 696959b9e5b48e214599e217ad9d7e75441f50ebc38790b6fb31982afa913e4aa26bd9247cb1d1e74ca20681984ec4260970e09530566f7d8e2b1cee3d83c58f
 
 pkgname = bluetui
