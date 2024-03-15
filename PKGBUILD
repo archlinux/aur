@@ -3,7 +3,7 @@ pkgname=yuview-bin
 _pkgname=YUView
 _appname="de.rwth_aachen.ient.${_pkgname}"
 pkgver=2.13
-pkgrel=2
+pkgrel=3
 pkgdesc="The Free and Open Source Cross Platform YUV Viewer with an advanced analytics toolset"
 arch=('x86_64')
 url="http://ient.github.io/YUView"
@@ -21,13 +21,16 @@ depends=(
     'libsm'
     'libglvnd'
 )
+makedepends=(
+    'fuse2'
+)
 options=("!strip")
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('91b521f1b55fb396e5b873c633d464d4fd33fb1ca95eeaedff3a7b8a06cf774f'
-            '2bb166f660981dbadbeb2d3cf32abbff9000778ce8e434f89db86e0359b45a49')
+            '784ca9d77a7a1f88e5f544e244ca5b724ac4adb6fcf881c524a78d75494e07c0')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \

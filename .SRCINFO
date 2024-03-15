@@ -1,10 +1,11 @@
 pkgbase = yuview-bin
 	pkgdesc = The Free and Open Source Cross Platform YUV Viewer with an advanced analytics toolset
 	pkgver = 2.13
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ient.github.io/YUView
 	arch = x86_64
 	license = GPL-3.0-only
+	makedepends = fuse2
 	depends = hicolor-icon-theme
 	depends = libgpg-error
 	depends = harfbuzz
@@ -19,6 +20,6 @@ pkgbase = yuview-bin
 	source = yuview-2.13.AppImage::https://github.com/IENT/YUView/releases/download/v2.13/YUView.AppImage
 	source = yuview.sh
 	sha256sums = 91b521f1b55fb396e5b873c633d464d4fd33fb1ca95eeaedff3a7b8a06cf774f
-	sha256sums = 2bb166f660981dbadbeb2d3cf32abbff9000778ce8e434f89db86e0359b45a49
+	sha256sums = 784ca9d77a7a1f88e5f544e244ca5b724ac4adb6fcf881c524a78d75494e07c0
 
 pkgname = yuview-bin
