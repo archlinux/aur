@@ -3,7 +3,7 @@
 pkgbase=vcutil
 pkgname=(ipmikvm)
 pkgver=1.43
-pkgrel=2
+pkgrel=3
 pkgdesc="Misc. simple utilities to aid version control and host maintenance."
 license=()
 arch=('any')
@@ -13,7 +13,7 @@ source=("$pkgbase::git+$url#tag=v$pkgver")
 sha512sums=('SKIP')
 
 pkgdescs=( [ipmikvm]="A wrapper to call the SuperMicro iKVM console bypassing Java browser plugins.")
-pkgdepends=( [ipmikvm]="java-runtime-headless=8 unzip curl awk coreutils")
+pkgdepends=( [ipmikvm]="jre8-openjdk-headless unzip curl awk coreutils")
 
 for package in "${pkgname[@]}"; do
   read -r -d '' pkgfun <<EOF
