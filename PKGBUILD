@@ -3,7 +3,7 @@ _appname=habit_tracker
 pkgname="${_appname//_/-}-bin"
 _pkgname=HabitTracker
 pkgver=0.0.5
-pkgrel=5
+pkgrel=6
 pkgdesc="Cross platform habit tracker"
 arch=('x86_64')
 url="https://github.com/accountability-tracker/habit_tracker"
@@ -23,7 +23,7 @@ source=(
 )
 sha256sums=('f3410365ea1b1b96a2778df526509c983af8bea0e7502dc9d2ff146cff3f8cc4'
             '90c1ffebcd4b680811b4ded5aaedccd21b1b5d86b79144584c979815940a0f0f'
-            'd0d51013ae1b90ca721c0f8a6ee1715b4556a5870e495755dc86d45d36e9cd47')
+            'ac9e73f37ffc74e76f343c9c8b5221b67e14dd372741c9df6d49101446ae4f8f')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_appname}|g" \
