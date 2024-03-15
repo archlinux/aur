@@ -1,0 +1,2 @@
+#!/bin/sh
+exec chpst -u prowlarr:prowlarr /usr/lib/prowlarr/bin/Prowlarr -nobrowser -data=/var/lib/prowlarr 2>&1
