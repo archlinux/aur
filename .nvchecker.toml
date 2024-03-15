@@ -1,0 +1,5 @@
+[python-textual-universal-directorytree]
+source = "github"
+github = "juftin/textual-universal-directorytree"
+use_latest_release = "true"
+prefix = "v"
