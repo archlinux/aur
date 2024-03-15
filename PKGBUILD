@@ -3,7 +3,7 @@ pkgname=winggifeditor-bin
 _pkgname=WingGifEditor
 _appname="com.wingsummer.${pkgname%-bin}"
 pkgver=1.1.2
-pkgrel=6
+pkgrel=7
 pkgdesc="基于 QT 编写的 GIF 编辑器，采用 C++ 进行开发"
 arch=('x86_64')
 url="https://github.com/Wing-summer/WingGifEditor"
@@ -23,7 +23,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c2e56a4478a7540afa7d52819d37e9d6b30d7afb577002dd3825b928d83125b2'
-            '0d6a89f6285fc5e87e5af0dec3697e221c6730130c0eab33826240270735e3bc')
+            '6e4ce8626e9821a55a253bb68db316536b43cc2b4ed0d154d1495a928fb2603f')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
