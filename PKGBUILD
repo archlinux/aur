@@ -3,7 +3,7 @@
 # Contributor: Tanel K <tanel.kiis@gmail.com>
 _base=pomegranate
 pkgname=python-${_base}
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="A PyTorch implementation of probabilistic models"
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(python-scikit-learn python-pytorch python-apricot-select python-network
 makedepends=(python-build python-installer python-setuptools python-wheel)
 # checkdepends=(python-pytest python-nose)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('ae51a0de594340ce87331d9460e1aa6d69983d8ebb4553163cea4a8bad534c2e50568fd23ab95a65fab816ab89d69f7a28e30fc26bd4afb98f0ccd76fd13158a')
+sha512sums=('8943c0c00b119087ac26173d5651a24ab6e3909f27d08ad0e3decbf719be3b0fed17f63a9d1bdb69f545f0e4a3aae2e89b95f888ba4b7e3456abb15ddeb0b133')
 
 build() {
   cd ${_base}-${pkgver}
@@ -24,7 +24,7 @@ build() {
 #   cd ${_base}-${pkgver}
 #   python -m venv --system-site-packages test-env
 #   test-env/bin/python -m installer dist/*.whl
-#   test-env/bin/python -m pytest #-k 'not sample and not learn_structure_chow_liu and not learn_structure_exact and not categorical_chow_liu and not categorical_chow_liu_weighted and not categorical_chow_liu_large and not categorical_chow_liu_large_pseudocount and not categorical_exact and not categorical_exact_weighted and not categorical_exact_exclude_parents and not categorical_exact_large and not categorical_exact_large_pseudocount and not categorical_learn_structure_chow_liu and not categorical_learn_structure_exact and not serialization'
+#   test-env/bin/python -m pytest tests
 # }
 
 package() {
