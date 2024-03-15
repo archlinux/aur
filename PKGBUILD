@@ -3,7 +3,8 @@ pkgname=swarm-desktop
 _pkgname="Swarm Desktop"
 pkgver=0.36.0
 _electronversion=18
-pkgrel=4
+_nodeversion=18
+pkgrel=5
 pkgdesc="Electron Desktop app that helps you easily spin up and manage Swarm node"
 arch=('any')
 url="https://desktop.ethswarm.org/"
@@ -11,7 +12,7 @@ _ghurl="https://github.com/ethersphere/swarm-desktop"
 license=('BSD-3-Clause')
 conflicts=("${pkgname}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'gendesk'
@@ -24,12 +25,20 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
+}
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
+    _ensure_local_nvm
     gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -40,8 +49,22 @@ build() {
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     cd "${srcdir}/${pkgname}.git"
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
     npm ci
     cd "${srcdir}/${pkgname}.git/ui"
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
     npm ci
     cd "${srcdir}/${pkgname}.git"
     npm run build
