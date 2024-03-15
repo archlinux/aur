@@ -6,7 +6,7 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-openpmix
 pkgver=4.2.9
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="Extended version of the PMI standard (Android, ${_android_arch})"
 url="https://github.com/openpmix/openpmix"
@@ -64,15 +64,6 @@ build() {
         *)
             ;;
     esac
-
-    default_android_pp_flags="-D_FORTIFY_SOURCE=2 -I${ANDROID_PREFIX_INCLUDE}"
-    default_android_compiler_flags="-O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4"
-    default_android_linker_flags="-Wl,-O1,--sort-common,--as-needed"
-
-    export CPPFLAGS="${CPPFLAGS} $default_android_pp_flags"
-    export CFLAGS="${CFLAGS} $default_android_compiler_flags"
-    export CXXFLAGS="${CXXFLAGS} $default_android_compiler_flags"
-    export LDFLAGS="${LDFLAGS} $default_android_linker_flags"
 
     ./configure \
         --host=${host} \
