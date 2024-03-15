@@ -35,6 +35,7 @@ _makegconfig=${_makegconfig-}
 # NUMA is optimized for multi-socket motherboards.
 # A single multi-core CPU actually runs slower with NUMA enabled.
 # See, https://bugs.archlinux.org/task/31187
+# It seems that in 2023 this is not really a huge regression anymore
 _NUMAdisable=${_NUMAdisable-}
 
 # Compile ONLY used modules to VASTLYreduce the number of modules built
@@ -71,7 +72,7 @@ _per_gov=${_per_gov-}
 _tcp_bbr3=${_tcp_bbr3-y}
 
 ### Running with a 1000HZ, 750Hz, 600 Hz, 500Hz, 300Hz, 250Hz and 100Hz tick rate
-_HZ_ticks=${_HZ_ticks-500}
+_HZ_ticks=${_HZ_ticks-1000}
 
 ## Choose between perodic, idle or full
 ### Full tickless can give higher performances in various cases but, depending on hardware, lower consistency.
@@ -105,11 +106,8 @@ _hugepage=${_hugepage-always}
 ## Enable DAMON
 _damon=${_damon-}
 
-## Enable Linux Random Number Generator
-_lrng_enable=${_lrng_enable-}
-
 # CPU compiler optimizations - Defaults to prompt at kernel config if left empty
-# AMD CPUs : "k8" "k8sse3" "k10" "barcelona" "bobcat" "jaguar" "bulldozer" "piledriver" "steamroller" "excavator" "zen" "zen2" "zen3"
+# AMD CPUs : "k8" "k8sse3" "k10" "barcelona" "bobcat" "jaguar" "bulldozer" "piledriver" "steamroller" "excavator" "zen" "zen2" "zen3" "zen4"
 # Intel CPUs : "mpsc"(P4 & older Netburst based Xeon) "atom" "core2" "nehalem" "westmere" "silvermont" "sandybridge" "ivybridge" "haswell" "broadwell" "skylake" "skylakex" "cannonlake" "icelake" "goldmont" "goldmontplus" "cascadelake" "cooperlake" "tigerlake" "sapphirerapids" "rocketlake" "alderlake"
 # Other options :
 # - "native_amd" (use compiler autodetection - Selecting your arch manually in the list above is recommended instead of this option)
@@ -133,7 +131,8 @@ _use_llvm_lto=${_use_llvm_lto-none}
 
 # Use suffix -lto only when requested by the user
 # Enabled by default.
-# If you do not want the suffix -lto remove the "y" sign next to the flag.
+# y - enable -lto suffix
+# n - disable -lto suffix
 # https://github.com/CachyOS/linux-cachyos/issues/36
 _use_lto_suffix=${_use_lto_suffix-y}
 
@@ -157,16 +156,16 @@ _build_nvidia=${_build_nvidia-}
 # Enable bcachefs
 _bcachefs=${_bcachefs-}
 
-if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] && [ -n "$_use_lto_suffix" ]; then
+if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] && [ "$_use_lto_suffix" = "y"  ]; then
     pkgsuffix=cachyos-lts-lto
     pkgbase=linux-$pkgsuffix
 
-else
+elif [ -n "$_use_llvm_lto" ]  ||  [[ "$_use_lto_suffix" = "n" ]]; then
     pkgsuffix=cachyos-lts
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.6
-_minor=14
+_minor=22
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -195,7 +194,7 @@ if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_k
 fi
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=545.29.06
+_nv_ver=550.54.14
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 source=(
     "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz"
@@ -211,13 +210,13 @@ fi
 # ZFS support
 if [ -n "$_build_zfs" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=d38565b5ac3ecbf9dde7e8f7d71f4620a9cea9f9")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=6a58cf0ba7a3db11a5acf041cc503e8b7afb0b56")
 fi
 
 # NVIDIA pre-build module support
 if [ -n "$_build_nvidia" ]; then
     source+=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${_nv_ver}/${_nv_pkg}.run"
-             "$_patchsource/misc/nvidia/nvidia-drm-hotplug-workqueue.patch")
+             "${_patchsource}/misc/nvidia/0001-NVIDIA-take-modeset-ownership-early.patch")
 fi
 
 ## ToDo: Adjust for new Scheduler Changes
@@ -245,10 +244,7 @@ esac
 if [ -n "$_bcachefs" ]; then
     source+=("${_patchsource}/misc/0001-bcachefs.patch")
 fi
-## lrng patchset
-if [ -n "$_lrng_enable" ]; then
-    source+=("${_patchsource}/misc/0001-lrng.patch")
-fi
+
 
 export KBUILD_BUILD_HOST=cachyos
 export KBUILD_BUILD_USER=$pkgbase
@@ -269,7 +265,7 @@ prepare() {
         src="${src%%::*}"
         src="${src##*/}"
         src="${src%.zst}"
-        [[ $src = nvidia-drm-hotplug-workqueue.patch ]] && continue
+        [[ $src = 0001-NVIDIA-take-modeset-ownership-early.patch ]] && continue
         [[ $src = *.patch ]] || continue
         echo "Applying patch $src..."
         patch -Np1 < "../$src"
@@ -479,79 +475,7 @@ prepare() {
             -e DAMON_LRU_SORT
     fi
 
-    ### Enable LRNG
-    if [ -n "$_lrng_enable" ]; then
-        echo "Enabling Linux Random Number Generator ..."
-        scripts/config -d RANDOM_DEFAULT_IMPL \
-            -e LRNG \
-            -e LRNG_SHA256 \
-            -e LRNG_COMMON_DEV_IF \
-            -e LRNG_DRNG_ATOMIC \
-            -e LRNG_SYSCTL \
-            -e LRNG_RANDOM_IF \
-            -e LRNG_AIS2031_NTG1_SEEDING_STRATEGY \
-            -m LRNG_KCAPI_IF \
-            -m LRNG_HWRAND_IF \
-            -e LRNG_DEV_IF \
-            -e LRNG_RUNTIME_ES_CONFIG \
-            -e LRNG_IRQ_DFLT_TIMER_ES \
-            -d LRNG_SCHED_DFLT_TIMER_ES \
-            -e LRNG_TIMER_COMMON \
-            -d LRNG_COLLECTION_SIZE_256 \
-            -d LRNG_COLLECTION_SIZE_512 \
-            -e LRNG_COLLECTION_SIZE_1024 \
-            -d LRNG_COLLECTION_SIZE_2048 \
-            -d LRNG_COLLECTION_SIZE_4096 \
-            -d LRNG_COLLECTION_SIZE_8192 \
-            --set-val LRNG_COLLECTION_SIZE 1024 \
-            -e LRNG_HEALTH_TESTS \
-            --set-val LRNG_RCT_CUTOFF 31 \
-            --set-val LRNG_APT_CUTOFF 325 \
-            -e LRNG_IRQ \
-            -e LRNG_CONTINUOUS_COMPRESSION_ENABLED \
-            -d LRNG_CONTINUOUS_COMPRESSION_DISABLED \
-            -e LRNG_ENABLE_CONTINUOUS_COMPRESSION \
-            -e LRNG_SWITCHABLE_CONTINUOUS_COMPRESSION \
-            --set-val LRNG_IRQ_ENTROPY_RATE 256 \
-            -e LRNG_JENT \
-            --set-val LRNG_JENT_ENTROPY_RATE 16 \
-            -e LRNG_CPU \
-            --set-val LRNG_CPU_FULL_ENT_MULTIPLIER 1 \
-            --set-val LRNG_CPU_ENTROPY_RATE 8 \
-            -e LRNG_SCHED \
-            --set-val LRNG_SCHED_ENTROPY_RATE 4294967295 \
-            -e LRNG_DRNG_CHACHA20 \
-            -m LRNG_DRBG \
-            -m LRNG_DRNG_KCAPI \
-            -e LRNG_SWITCH \
-            -e LRNG_SWITCH_HASH \
-            -m LRNG_HASH_KCAPI \
-            -e LRNG_SWITCH_DRNG \
-            -m LRNG_SWITCH_DRBG \
-            -m LRNG_SWITCH_DRNG_KCAPI \
-            -e LRNG_DFLT_DRNG_CHACHA20 \
-            -d LRNG_DFLT_DRNG_DRBG \
-            -d LRNG_DFLT_DRNG_KCAPI \
-            -e LRNG_TESTING_MENU \
-            -d LRNG_RAW_HIRES_ENTROPY \
-            -d LRNG_RAW_JIFFIES_ENTROPY \
-            -d LRNG_RAW_IRQ_ENTROPY \
-            -d LRNG_RAW_RETIP_ENTROPY \
-            -d LRNG_RAW_REGS_ENTROPY \
-            -d LRNG_RAW_ARRAY \
-            -d LRNG_IRQ_PERF \
-            -d LRNG_RAW_SCHED_HIRES_ENTROPY \
-            -d LRNG_RAW_SCHED_PID_ENTROPY \
-            -d LRNG_RAW_SCHED_START_TIME_ENTROPY \
-            -d LRNG_RAW_SCHED_NVCSW_ENTROPY \
-            -d LRNG_SCHED_PERF \
-            -d LRNG_ACVT_HASH \
-            -d LRNG_RUNTIME_MAX_WO_RESEED_CONFIG \
-            -d LRNG_TEST_CPU_ES_COMPRESSION \
-            -e LRNG_SELFTEST \
-            -d LRNG_SELFTEST_PANIC \
-            -d LRNG_RUNTIME_FORCE_SEEDING_DISABLE
-    fi
+
 
     ### Disable DEBUG
     # Doesn't work with sched-ext
@@ -634,15 +558,15 @@ prepare() {
         cd "${srcdir}"
         sh "${_nv_pkg}.run" --extract-only
 
-        # Temporary fix for fbdev=1
-        # https://forums.developer.nvidia.com/t/545-29-06-18-1-flip-event-timeout-error-on-startup-shutdown-and-sometimes-suspend-wayland-unusable/274788/21
-        patch -Np0 -i "${srcdir}/nvidia-drm-hotplug-workqueue.patch" -d "${srcdir}/${_nv_pkg}"
+        # Temporary fix for nvidia module
+        patch -Np2 --no-backup-if-mismatch -i "${srcdir}/0001-NVIDIA-take-modeset-ownership-early.patch" -d "${srcdir}/${_nv_pkg}/kernel"
     fi
 }
 
 build() {
     cd ${srcdir}/${_srcname}
     make ${BUILD_FLAGS[*]} -j$(nproc) all
+    make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
 
     if [ -n "$_build_nvidia" ]; then
         cd "${srcdir}/${_nv_pkg}/kernel"
@@ -670,6 +594,7 @@ build() {
             --with-linux=${srcdir}/$_srcname
         make ${BUILD_FLAGS[*]}
     fi
+
 }
 
 _package() {
@@ -710,7 +635,7 @@ _package-headers() {
 
     echo "Installing build files..."
     install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
-        localversion.* version vmlinux
+        localversion.* version vmlinux tools/bpf/bpftool/vmlinux.h
     install -Dt "$builddir/kernel" -m644 kernel/Makefile
     install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
     cp -t "$builddir" -a scripts
@@ -820,8 +745,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('fbe96b2db3f962cd2a96a849d554300e7a4555995160082d4f323c2a1dfa1584'
+sha256sums=('23e3e7b56407250f5411bdab95763d0bc4e3a19dfa431d951df7eacabd61a2f4'
             '01e0933bd6fd3e5fcd667ecb3c692b94d2d57dff79d64512dc2e0badac00446c'
             '3f3233256725683aa95c29ee423932a5bcc74c0653e09d502240601387c3edec'
-            'd9e0ba3fd2dc64f96544bb781c60993ad149b9446125b42c4d6e1a180a7f6e85'
-            'a5bd81c759757ae46c809de0c39b84a52c8646ef1cb9469c220774ecb81aa788')
+            '314d5b436420ff1611e9fbcfe5389446f50846ad556bdf12c37498b14cd04cfc'
+            'd43061bf76f06835a7b400b06b3db876d336e871d654854a515899b84e6c9c01')
