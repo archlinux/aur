@@ -2,12 +2,12 @@
 
 pkgname=shrinko8
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Shrink (minify) Pico-8 carts, as well as other tools (e.g. linting, format conversion)'
 arch=('any')
 url='https://github.com/thisismypassport/shrinko8'
 license=('MIT')
-depends=('python-pillow')
+depends=('python-pillow' 'python-qualify')
 makedepends=(
   'python-build'
   'python-installer'
@@ -19,6 +19,7 @@ options=('!strip')
 
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/thisismypassport/shrinko8/archive/v${pkgver}.tar.gz"
+  '__init__.py.template'
   'pyproject.toml.template'
   'shrinko8.py.template'
   'test_cart.p8'
@@ -26,8 +27,9 @@ source=(
 
 sha512sums=(
   '79dfea0a1322a81073cfbd51785f78eafcb62b070154eb8b4878a1482b80257317ae47e39f6b51c4a14f046588bd59307278dfdc1a93983e671e598e0594baa5'
+  'e484cb3881923665ff3bf7cb7522f897227896b81d8c8b094f7be8c49d79f1ed6d069bb82d878be36210df80ddf75cb009eb92ea03a2bc9cd3988f651e0bee57'
   'f10fb1b15dfe370ae85eb8d80065929591d06f3626e5ff69930b491bc3c781cb4b8485af130bbb892b70fb54f0eee70e3aadce28cdc1a40993c7620ad449fc9e'
-  'e0b80e28bd6253a31647038d20acb362a826592b8ef68596d837e16cad0c11e22c12e5bcd14b94055010bda70423c9e5339a0f80ee4ff774955e10cf3802ceec'
+  'c00dc0e42044d30c5b99888ac4d6f1a563decfbc357b0f6057c6417b0c0c2d225a64ad3e5bd3f7017b97c92384cca8e48e240778654e0bb516d89776c1ca24a7'
   'b51c0ed94ffec9f0aa93d09bd6e4fcb155c69dd5dcfc5e155156227e5574f872bd61d541bfe6b98150c78bd8d4142f964c9bbd3c304c8daf58c9f8f21b59f2e6'
 )
 
@@ -37,12 +39,17 @@ prepare() {
   # pyinstaller bundles dependencies and the Python runtime, so we
   # use setuptools instead
   echo >&2 'Preparing setuptools'
-  j2 -f env -o 'pyproject.toml' '../pyproject.toml.template' - <<< \
-    "pkgver=${pkgver}"
+  j2 -f env -o 'pyproject.toml' '../pyproject.toml.template' - \
+    <<< "pkgver=${pkgver}"
+
+  echo >&2 'Preparing Python namespace compatibility fix'
+  mkdir -pv shrinko8
+  j2 -f env -o 'shrinko8/__init__.py' '../__init__.py.template' - \
+    <<< "pkgver=${pkgver}"
 
   echo >&2 'Preparing Python packages'
-  mkdir -pv shrinko8 tests
   xargs < 'files.lst' bash -c 'mv -v $@ shrinko8/' _
+  mkdir -pv tests
   mv -v run_tests.py test_utils.py test_input test_compare \
     tests/
 }
@@ -69,7 +76,7 @@ check() {
   python -m installer --destdir=. \
     "${srcdir}/${pkgname}-${pkgver}/dist"/*.whl
 
-  PYTHONPATH="${PWD}/$(_site_packages)/${pkgname}"
+  PYTHONPATH="${PWD}/$(_site_packages)"
   export PYTHONPATH
 
   echo >&2 'Running minification test'
