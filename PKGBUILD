@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=words-picker-bin
 pkgver=53.8.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Hope to become a good word retrieval application.希望成为一款好的取词应用"
 arch=("x86_64")
 url="https://github.com/ziqiangxu/words-picker"
@@ -10,10 +10,10 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'libxext'
-    'qt5-x11extras'
     'libxtst'
     'libx11'
     'qt5-base'
+    'qt5-x11extras'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-deepin-20.6.deb"
@@ -22,7 +22,7 @@ source=(
 )
 sha256sums=('be666577f86f12afde1ec40a4283ca6e0b5d724e813faa9769261f9b05870596'
             '15c866670d9927e3c1dfe818f42be61b5e479ce7d63edb75471bf4a464be17e0'
-            'a9783526d93e6c72c7e1551cc5cc513fd6056dcc4593abe8fac815721d32dd5a')
+            '6c6b87b5416a785adc4f4998d35629ae7304222f754c9bfdd717fa9f8d94ed8a')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
