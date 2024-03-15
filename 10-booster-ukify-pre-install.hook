@@ -2,6 +2,7 @@
 Type = Path
 Operation = Install
 Operation = Upgrade
+Operation = Remove
 Target = usr/lib/modules/*/pkgbase
 Target = usr/lib/booster/*
 Target = usr/lib/systemd/systemd

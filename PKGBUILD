@@ -1,7 +1,7 @@
 # Maintainer: Sergey Shatunov <me@aur.rocks>
 
 pkgname=booster-ukify
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="Integration layer for booster and systemd's ukify tool for Arch Linux"
 url="https://aur.archlinux.org/packages/booster-ukify"
@@ -12,20 +12,23 @@ optdepends=(
 	'sbsigntools: secureboot support'
 )
 source=('10-booster-ukify-pre-install.hook'
-        '90-booster-ukify-install.hook'
         '60-booster-ukify-remove.hook'
+        '90-booster-ukify-dkms-remove.hook'
+        '90-booster-ukify-install.hook'
         'booster-ukify'
         'booster-ukify.conf')
-sha256sums=('87d08ea560f3e0f23c9e7ea75c6ff366f1f7e83e1ecdbce296f6b327b79817e3'
-            'a7bfd82f243b90d9acda5eaee23831ffd92ecbc69fbf633f48da00dcffa55925'
-            '368d9c735eb7e015e371d04a7261dba0b7ad105b7192a3c2ee48511283e06dd8'
-            'b12579e141f2e29caf677bb8f1f02a3caa730230ec5b89c1d891cd3828a362bf'
-            'e9f964ad0c4314dcbe5d8ba63f503877ce4ad75299833097073549d26a02e931')
+sha256sums=('6815b3ef4b969318d40251a655a52aec73a037c3db3fcdf33e921f230c23330a'
+            'f142f5d1f4075a7ebaeb4d97d77843d7d547c627884847ee4df07d9a2a076356'
+            '2e2596c9d5296a4df20f68ee9d2a7c96f4f51308c714d238309a3fbce0964fc2'
+            '337a81f0429e50fe29d30077c14f413af80f31c8914c1e29076820eb5b5a6185'
+            'ba3e3b8c57c0604149d2a9d1eccf3ecda1542023d897f7492f7c21c9d2953656'
+            '7cd9c9107682fc06cab79d29f98ffc9a9544decb47cd46dc7467818f54189e41')
 backup=(etc/booster-ukify.conf)
 
 package() {
   install -Dm644 "${srcdir}/10-booster-ukify-pre-install.hook" "${pkgdir}/usr/share/libalpm/hooks/10-booster-ukify-pre-install.hook"
   install -Dm644 "${srcdir}/60-booster-ukify-remove.hook"      "${pkgdir}/usr/share/libalpm/hooks/60-booster-ukify-remove.hook"
+  install -Dm644 "${srcdir}/90-booster-ukify-dkms-remove.hook" "${pkgdir}/usr/share/libalpm/hooks/90-booster-ukify-dkms-remove.hook"
   install -Dm644 "${srcdir}/90-booster-ukify-install.hook"     "${pkgdir}/usr/share/libalpm/hooks/90-booster-ukify-install.hook"
   install -Dm755 "${srcdir}/booster-ukify"                     "${pkgdir}/usr/bin/booster-ukify"
   install -Dm644 "${srcdir}/booster-ukify.conf"                "${pkgdir}/etc/booster-ukify.conf"

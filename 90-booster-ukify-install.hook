@@ -11,7 +11,7 @@ Target = usr/bin/booster-ukify
 Target = usr/src/*/dkms.conf
 
 [Action]
-Description = Updating linux images...
+Description = Generating UKI images...
 When = PostTransaction
 Exec = /usr/bin/booster-ukify -z
 NeedsTargets

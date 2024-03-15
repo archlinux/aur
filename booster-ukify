@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+source /usr/share/makepkg/util/message.sh
+
 function usage {
   echo "$(basename "$0") [OPTIONS]"
   echo "  -h            shows usage"
@@ -21,8 +23,18 @@ fi
 declare -a ukify_global_args=()
 declare -A ukify_variants=()
 declare -A ukify_install_path=()
+declare -A ukify_cmdline=()
 
 [ -f "/etc/booster-ukify.conf" ] && source /etc/booster-ukify.conf
+
+case "$colorize" in
+  "true")
+    colorize
+    ;;
+  "auto")
+    grep -q -e '^\w*Color\w*$' /etc/pacman.conf && colorize
+    ;;
+esac
 
 [ ${#ukify_variants[@]} -eq 0 ] && {
   # Fallback to default image if ukify_variants isn't specified
@@ -96,11 +108,11 @@ function sanity_check() {
     for variant in "${!ukify_variants[@]}"; do
       local path=$(uki_path "$kernel" "${sanity_kernel[$kernel]}" "$variant")
       if [ $verbose -ne 0 ]; then
-        printf "=> Resolved UKI path for package %s %s in variant %s: %s\n" "$kernel" "${sanity_kernel[$kernel]}" "$variant" "$path"
+        msg "Resolved UKI path for package %s %s in variant %s: %s\n" "$kernel" "${sanity_kernel[$kernel]}" "$variant" "$path"
       fi
 
       if [ ${uki_path[$path]+_} ]; then
-        printf "=> Found UKI path clash: %s-%s and %s points to the same path: %s\n" "$kernel" "$variant" "${uki_path[$path]}" "$path" >&2
+        error "Found UKI path clash: %s-%s and %s points to the same path: %s\n" "$kernel" "$variant" "${uki_path[$path]}" "$path"
         result=1
       fi
       uki_path[$path]="$kernel-$variant"
@@ -128,7 +140,7 @@ while getopts ":hag:sxyz" arg; do
         fi
       done
       if (( ! found )); then
-        echo "Error occurred during '$OPTARG' package traversal" >&2
+        error "Error occurred during '$OPTARG' package traversal"
         exit 1
       fi
       ;;
@@ -153,7 +165,7 @@ while getopts ":hag:sxyz" arg; do
           for variant in "${!ukify_variants[@]}"; do
             IMAGE="${ESP_PATH}/$(uki_path "$pkgbase" "$version" "$variant")"
             if [ -f "$IMAGE" ]; then
-              echo "==> Removing $IMAGE..."
+              msg "Removing $IMAGE..."
               rm -f "$IMAGE"
             fi
           done
@@ -204,18 +216,20 @@ function gen_image() {
   local path="/usr/lib/modules/${version}/pkgbase"
   local vmlinuz="/usr/lib/modules/${version}/vmlinuz"
 
+  msg "booster-ukify -g %s" "$kernel"
+
   for variant in "${!ukify_variants[@]}"; do
     local image="${ESP_PATH}/$(uki_path "$kernel" "$version" "$variant")"
     local version_name=$(variant_name "$version" "$variant")
 
     read -r pkgbase < "$path"
 
-    local initrd=$(mktemp)
+    local initrd=$(mktemp ukify.XXXXXXXXXX)
 
-    echo "==> Building initrd image $kernel ($version_name)"
+    msg2 "Building initrd image %s (%s)" "$kernel" "$version_name"
     booster build --force "--kernel-version=${version}" ${ukify_variants[$variant]} "$initrd"
 
-    local os_release=$(mktemp)
+    local os_release=$(mktemp ukify.XXXXXXXXXX)
     grep -v '^BUILD_ID=' /etc/os-release > "$os_release"
     echo "BUILD_ID=\"$version_name\"" >> "$os_release"
     echo "VERSION_ID=\"$(variant_name "$pkgbase" "$variant")\"" >> "$os_release"
@@ -228,6 +242,20 @@ function gen_image() {
     ukify_args+=(--uname "$version")
     ukify_args+=(--os-release "@$os_release")
     ukify_args+=(--output "$image")
+
+    if [ ! -z "${ukify_cmdline["$variant"]}" ]; then
+      for i in "${!ukify_args[@]}"; do
+         [[ "${ukify_args[$i]}" = "--cmdline" ]] && break
+      done
+      if [ "${ukify_args[$i]}" == "--cmdline" ]; then
+        # Global args contains cmdline, override it
+        ukify_args[$((i + 1))]="${ukify_cmdline["$variant"]}"
+      else
+        # There is no global cmdline, append it
+        ukify_args+=("--cmdline" "${ukify_cmdline["$variant"]}")
+      fi
+    fi
+
     if ukify_obsolete_syntax; then
       ukify_args+=("$vmlinuz" "$initrd")
     else
@@ -235,7 +263,7 @@ function gen_image() {
       ukify_args+=(--initrd "$initrd")
     fi
 
-    echo "==> Ukify image $kernel ($version_name)"
+    msg2 "Ukify image %s (%s)" "$kernel" "$version_name"
 
     /usr/lib/systemd/ukify "${ukify_args[@]}"
 
@@ -246,11 +274,11 @@ function gen_image() {
     # Mark image as default if needed
     if [[ "$pkgbase" == "$default_kernel_package" && "$variant" == "default" ]]; then
       if ! bootctl is-installed --quiet; then
-        echo "==> systemd-boot is not installed, unable to mark image as default" >&2
+        warning "systemd-boot is not installed, unable to mark image as default"
       else
-        echo "===> Mark linux image $kernel ($version) as default"
+        msg2 "Mark linux image %s (%s) as default" "$kernel" "$version"
         bootctl set-default "$(basename "$image")" || {
-          echo "==> Unable to mark linux image $kernel ($version) as default due to error" >&2
+          error "Unable to mark linux image $kernel ($version) as default due to error"
         }
       fi
     fi
