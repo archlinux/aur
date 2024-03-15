@@ -1,0 +1,2 @@
+#!/bin/sh
+exec chpst -u autobrr:autobrr autobrr --config=/var/lib/autobrr 2>&1
