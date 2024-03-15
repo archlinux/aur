@@ -1,0 +1,23 @@
+pkgbase = android-armv7a-eabi-openldap
+	pkgdesc = Lightweight Directory Access Protocol (LDAP) (Android, armv7a-eabi)
+	pkgver = 2.6.7
+	pkgrel = 1
+	url = https://www.openldap.org/
+	arch = any
+	groups = android-openldap-bootstrap
+	license = custom
+	makedepends = android-configure
+	makedepends = util-linux
+	makedepends = chrpath
+	depends = android-armv7a-eabi-libsasl
+	depends = android-armv7a-eabi-libtool
+	depends = android-armv7a-eabi-unixodbc
+	depends = android-armv7a-eabi-libsodium
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.7.tgz
+	sha256sums = cd775f625c944ed78a3da18a03b03b08eea73c8aabc97b41bb336e9a10954930
+
+pkgname = android-armv7a-eabi-openldap
