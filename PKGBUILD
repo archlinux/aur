@@ -2,7 +2,7 @@
 pkgname=monolith-code-bin
 pkgver=2.2.7
 _electronversion=26
-pkgrel=2
+pkgrel=3
 pkgdesc="minimalistic but powerful code editor"
 arch=("x86_64")
 url="https://haeri.github.io/monolith-code"
@@ -11,7 +11,10 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
+)
+makedepends=(
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
@@ -20,11 +23,12 @@ source=(
 )
 sha256sums=('19a67b273d64ba779c83826089cc4d40915da90ad96f95a123bba36ca4645789'
             '08712c74fe995972923ce4a30fa74bad068779afdf9d3b877c525e86c617adcc'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
