@@ -1,8 +1,8 @@
-# Maintainer: Denis Kasak <dkasak|AT|termina.org.uk>
+# Contributor: Denis Kasak <dkasak|AT|termina.org.uk>
 
 pkgname=python-pysocks-git
 _projectname=pysocks
-pkgver=20150605
+pkgver=20190919
 pkgrel=1
 pkgdesc='Routes sockets of any TCP service through a SOCKS4, SOCKS5 or HTTP proxy (Anorov fork of socksipy)'
 arch=('any')
@@ -13,7 +13,7 @@ provides=('socksipy')
 conflicts=('socksipy')
 makedepends=('git')
 source=('setup.py'
-        "$_projectname::git+git://github.com/Anorov/PySocks.git")
+        "$_projectname::git+https://github.com/Anorov/PySocks.git")
 md5sums=('46900e68be3f54a3bba2199faba326df'
          'SKIP')
 
