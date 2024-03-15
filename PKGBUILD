@@ -3,12 +3,12 @@
 _pkgname=SNAGEEdata
 _pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
-pkgrel=1
-pkgdesc='SNAGEE data'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="SNAGEE data"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r
 )
@@ -18,14 +18,15 @@ optdepends=(
   r-snagee
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('76ded9fe3edf46e0f928499e701a7a11581a97dcf39479e5f7794aaa3b718b9f')
+md5sums=('bfd0a2689cb9ac612cb2f8995c3a03d5')
+b2sums=('1b018761b8c831bfdae16420591fb78f6c2966f9b3f61007c612a6d79852814bb96ab3ec75a79056b3eafdab56534b15f739a44921ac498379e2f73767990b10')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
