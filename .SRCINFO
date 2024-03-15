@@ -1,9 +1,10 @@
 pkgbase = kcbench
 	pkgdesc = Linux kernel compile benchmark
-	pkgver = 0.9.5
+	pkgver = 0.9.10
 	pkgrel = 1
 	url = https://gitlab.com/knurd42/kcbench
 	arch = any
+	license = MIT
 	makedepends = git
 	depends = bc
 	depends = binutils
@@ -17,7 +18,7 @@ pkgbase = kcbench
 	depends = perl
 	depends = pkg-config
 	depends = time
-	source = git+https://gitlab.com/knurd42/kcbench.git#commit=400de84e91e0042e81579cc1a15b982b3f875e23
+	source = git+https://gitlab.com/knurd42/kcbench.git#commit=901a4f659d6df3cdf1d5e5db21010e5d170a9386
 	sha256sums = SKIP
 
 pkgname = kcbench
