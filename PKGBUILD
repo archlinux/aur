@@ -3,14 +3,19 @@ pkgname=planes-bin
 _pkgname=Planes
 _runname="${_pkgname}GraphicsScene"
 pkgver=0.4.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Variant of battleships game"
 arch=('x86_64')
 url="https://github.com/xxxcucus/planes"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=()
+depends=(
+    'glibc'
+)
+makedepends=(
+    'fuse2'
+)
 options=('!strip')
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-Multiplayer-${pkgver}-${CARCH}.AppImage"
@@ -19,7 +24,7 @@ source=(
 )
 sha256sums=('18876b9db94cbe854f6a39cd8856b067581fd9c6ed0ba533de18dd84d86acf41'
             '1e81694af5e5793ffbe17076d953c0b585cc9a3baf9b7c2d9c21e1297e9caf23'
-            'ff68db46301feeff0e192907afd1100194482fbc285881c13e3780b05c01d20a')
+            '3bf16c5e31b896ddb63b63fd4c0f3392b1c85944a605c9968dd1138033c40194')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_runname}|g" \
