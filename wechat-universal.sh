@@ -33,7 +33,6 @@ BWRAP_ENV_APPEND=()
 # wechat-universal only supports xcb
 env_add QT_QPA_PLATFORM xcb
 env_add PATH "/sandbox:${PATH}"
-env_add LC_ALL C
 
 case "${XMODIFIERS}" in 
     *@im=fcitx*)
