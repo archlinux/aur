@@ -1,0 +1,14 @@
+pkgbase = neovim-cmp-tags-git
+	pkgdesc = Tags completion source for nvim-cmp
+	pkgver = r21.30bdc2e
+	pkgrel = 2
+	url = https://github.com/quangnguyen30192/cmp-nvim-tags
+	arch = any
+	groups = neovim-plugins
+	license = Apache
+	makedepends = git
+	source = git+https://github.com/quangnguyen30192/cmp-nvim-tags.git
+	sha512sums = SKIP
+
+pkgname = neovim-cmp-tags-git
+	depends = neovim
