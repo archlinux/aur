@@ -16,7 +16,7 @@ pkgname=(
   java17-openjfx-doc
   java17-openjfx-src
 )
-pkgver=17.0.11.u1
+pkgver=17.0.11.u2
 pkgrel=1
 pkgdesc="Java OpenJFX 17 client application platform (open-source implementation of JavaFX)"
 arch=(x86_64)
@@ -55,7 +55,7 @@ source=(
   java-openjfx-no-xlocale.patch
   java-openjfx-gstreamer-lite-gcc10-compat.patch
 )
-b2sums=('c5e04c1a1dd853c1d1b120307c7b937eb53180467d92526c2ec7ea24ac732bb969908cd5ab1ad4dad93256c8a76dad0438542d04e2d871cdebbbe5b357b0a0f9'
+b2sums=('e7cf33adca84fff2d079e253b7d3051f1cc73eaab006ec4912bae069dfbe13db66ff23ff3b39f2912570cd388179600d61f3ae946245eea25ca0d33e961ed4ba'
         'a77fd8814a5978827de01a652f7b945f3439df04606434ced8998c8d77a82985292490e6965299aeb52f9da3d8069b4091d75519bd4ec8a15f70bc6d28b13498'
         'a56a5cfebb44cdbe3ada9c6da88fda6427a5bd1bf9fcc491df289c4f5c0e96ac3614c619aaf9428340f11e9dabf0a85fc7db4f49754c2700587cc66fc15372fd'
         '13216615c01b8d48d17889ffa22668c38568870d83ab30c542eb5b5620db305f02efb1acb99d9b5e89eb0a73a134bb336cb301f4de4e8855cae50efb099e384e'
