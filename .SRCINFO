@@ -1,11 +1,12 @@
 pkgbase = bdash-bin
 	pkgdesc = Simple SQL Client for lightweight data analysis.
 	pkgver = 1.16.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bdash-app/bdash
 	arch = x86_64
 	license = MIT
-	depends = electron14
+	makedepends = fuse2
+	depends = electron14-bin
 	depends = hicolor-icon-theme
 	provides = bdash=1.16.3
 	conflicts = bdash
@@ -14,6 +15,6 @@ pkgbase = bdash-bin
 	source = bdash.sh
 	sha256sums = 0af51b09eac9657d7b80e07ceabeece495edbaa0d5425de387672e489dbd8a40
 	sha256sums = 44e997a14d296ed01f24a68d2071280936534e98f4613fa8b875c9922e6b22d8
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = bdash-bin
