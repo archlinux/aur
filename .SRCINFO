@@ -1,6 +1,6 @@
 pkgbase = spirv-llvm-translator-minimal-git
 	pkgdesc = Tool and a library for bi-directional translation between SPIR-V and LLVM IR, trunk version
-	pkgver = r1929.8e6f467
+	pkgver = r2000.d54f77c
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/KhronosGroup/SPIRV-LLVM-Translator
@@ -21,7 +21,10 @@ pkgbase = spirv-llvm-translator-minimal-git
 	provides = spirv-llvm-translator
 	conflicts = spirv-llvm-translator
 	source = git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git
+	source = https://github.com/KhronosGroup/SPIRV-LLVM-Translator/pull/2433/commits/e0a1508be91faffe433038fd5e50cc87d85d02d6.patch
 	md5sums = SKIP
+	md5sums = 8a631e88ff35ae282ebfd48b8276d581
 	sha512sums = SKIP
+	sha512sums = 83b3c49f74e0a8692601efe204d74b14276c885e846a4f88116caa4276e1de559ecb571c9f31f5bfd954eee65d17237ad0b6deec94bb3d2b20a8bbd2274e1e42
 
 pkgname = spirv-llvm-translator-minimal-git
