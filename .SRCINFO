@@ -1,0 +1,21 @@
+pkgbase = python-qualify
+	pkgdesc = Import top-level modules from a directory not on `sys.path`
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/claui/qualify
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-myst-parser
+	makedepends = python-poetry-core
+	makedepends = python-sphinx
+	makedepends = python-wheel
+	depends = python-colorama
+	depends = python-wrapt
+	options = !strip
+	source = qualify-0.1.1.tar.gz::https://github.com/claui/qualify/archive/v0.1.1.tar.gz
+	sha512sums = ed7acebcda0c0e144b16b653dc99fdc259353081a52b5fb5846fbc2fb1f1eb9e506e267dd207c6059fc52b442d5b488cb4eea8d7a8118fe61eb5875da20db197
+
+pkgname = python-qualify
