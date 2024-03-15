@@ -8,13 +8,20 @@ arch=('any')
 url="https://github.com/anthonyharrison/lib4sbom"
 license=('Apache-2.0')
 depends=('python' 'python-yaml' 'python-semantic-version' 'python-defusedxml')
-makedepends=(python-setuptools)
+makedepends=(python-setuptools python-pytest)
 source=("${_name}-${pkgver}.tar.gz::https://github.com/anthonyharrison/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('3b208c17ad36d206d3880bb77eb07892cbbe87855f5577fc3929da5a4295fe92')
 
 build() {
     cd "${_name}-${pkgver}"
     python setup.py build
+}
+
+check(){
+    cd "${_name}-${pkgver}"
+
+    # For pytest
+    pytest
 }
 
 package() {

@@ -6,6 +6,7 @@ pkgbase = python-lib4sbom
 	arch = any
 	license = Apache-2.0
 	makedepends = python-setuptools
+	makedepends = python-pytest
 	depends = python
 	depends = python-yaml
 	depends = python-semantic-version
