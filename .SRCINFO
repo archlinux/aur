@@ -1,7 +1,7 @@
 pkgbase = walker
 license = MIT
 pkgdesc = wayland application runner
-pkgver = 0.0.11
+pkgver = 0.0.12
 pkgrel = 1
 url = https://github.com/abenz1267/walker
 arch = x86_64
