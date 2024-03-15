@@ -1,17 +1,14 @@
 pkgbase = neovim-cmp-nvim-lsp-git
 	pkgdesc = neovim-cmp source for Neovim's builtin LSP client
-	pkgver = r19.f93a6cf
+	pkgver = r37.5af77f5
 	pkgrel = 1
 	url = https://github.com/hrsh7th/cmp-nvim-lsp
-	install = cmp-nvim-lsp.install
 	arch = any
-	groups = neovim-plugin
-	license = custom:unknown
+	groups = neovim-plugins
+	license = MIT
 	makedepends = git
-	depends = neovim-cmp
-	provides = neovim-cmp-nvim-lsp
-	conflicts = neovim-cmp-nvim-lsp
-	source = neovim-cmp-nvim-lsp-git::git+https://github.com/hrsh7th/cmp-nvim-lsp
-	md5sums = SKIP
+	source = git+https://github.com/hrsh7th/cmp-nvim-lsp.git
+	sha512sums = SKIP
 
 pkgname = neovim-cmp-nvim-lsp-git
+	depends = neovim
