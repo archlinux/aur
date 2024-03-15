@@ -3,7 +3,7 @@ pkgname=lagrange-bin
 _pkgname=Lagrange
 _appname="fi.skyjake.${_pkgname}"
 pkgver=1.17.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A Beautiful Gemini Client"
 arch=(
     'armv7h'
@@ -20,6 +20,9 @@ depends=(
     'libgpg-error'
     'mesa'
 )
+makedepends=(
+    'fuse2'
+)
 options=('!strip')
 source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/skyjake/lagrange/v${pkgver}/LICENSE.md"
@@ -28,7 +31,7 @@ source=(
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.AppImage")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-armhf.AppImage")
 sha256sums=('d8dd2acc4ba121ca7da3c899c8c443484ab54526ed5933e34fffae2cedb28fbe'
-            '6023b57d0e81fa219ed96f4b8a6fccb401886ff00ab341a0976959ea4ca2fb8a')
+            'b6ecb830280091f98d2466ac7f8eea900a40f0cae942738849aeae278216fc95')
 sha256sums_armv7h=('bff1fb177512cc2fb167495c5986d6208f18d2d7a99fdd7bf37c20c947d92cb2')
 sha256sums_x86_64=('1cf5a52cff5b19f1cb7269b716279610d6b9483933b0e70743bb6f00e2124628')
 build() {
