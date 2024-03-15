@@ -1,6 +1,6 @@
 pkgbase = pyside2
-	pkgver = 5.15.12
-	pkgrel = 2
+	pkgver = 5.15.13
+	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
 	license = LGPL
@@ -40,8 +40,8 @@ pkgbase = pyside2
 	optdepends = qt5-remoteobjects: QtRemoteObjects bindings
 	optdepends = qt5-serialport: QtSerialPort bindings
 	optdepends = qt5-quickcontrols2: QtQuickControls2 bindings
-	source = https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.15.12-src/pyside-setup-opensource-src-5.15.12.tar.xz
-	sha256sums = 9c53a111ca5779064593e690db0da43ce0d5dad25369931b7a4f593886259ff4
+	source = https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.15.13-src/pyside-setup-opensource-src-5.15.13.tar.xz
+	sha256sums = 7a57797b20268d6ebcb39deba48c754a69abf9221aee03e1f3dca6f6565b7da9
 
 pkgname = shiboken2
 	pkgdesc = Generates bindings for C++ libraries using CPython source code
