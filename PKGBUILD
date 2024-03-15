@@ -1,7 +1,7 @@
 # Maintainer: Jax Young <jaxvanyang@gmail.com>
 pkgname=bdebstrap
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="YAML config based multi-mirror Debian chroot creation tool"
 arch=('any')
 url="https://github.com/bdrung/bdebstrap"
@@ -23,7 +23,7 @@ optdepends=(
 source=(
 	"https://github.com/bdrung/bdebstrap/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz"
 )
-sha256sums=('dd85a448b533dac5d8ab418bc6060cd1b5fb5ff6ee6fd20098550ebf088a5b39')
+sha256sums=('e031d542da3b8163e7570e60dfca895314ca50a15a2e5f6e63737cda61ea5289')
 
 build() {
 	cd "$pkgname-$pkgver"

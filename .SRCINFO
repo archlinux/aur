@@ -1,7 +1,7 @@
 pkgbase = bdebstrap
 	pkgdesc = YAML config based multi-mirror Debian chroot creation tool
-	pkgver = 0.6.0
-	pkgrel = 2
+	pkgver = 0.6.1
+	pkgrel = 1
 	url = https://github.com/bdrung/bdebstrap
 	arch = any
 	license = ISC
@@ -21,7 +21,7 @@ pkgbase = bdebstrap
 	optdepends = qemu-user-static: foreign-architecture support
 	optdepends = qemu-user-static-binfmt: foreign-architecture support
 	optdepends = arch-test: foreign-architecture support
-	source = https://github.com/bdrung/bdebstrap/releases/download/v0.6.0/bdebstrap-0.6.0.tar.xz
-	sha256sums = dd85a448b533dac5d8ab418bc6060cd1b5fb5ff6ee6fd20098550ebf088a5b39
+	source = https://github.com/bdrung/bdebstrap/releases/download/v0.6.1/bdebstrap-0.6.1.tar.xz
+	sha256sums = e031d542da3b8163e7570e60dfca895314ca50a15a2e5f6e63737cda61ea5289
 
 pkgname = bdebstrap
