@@ -1,14 +1,15 @@
 pkgbase = r-gclus
 	pkgdesc = Clustering Graphics
 	pkgver = 1.3.2
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=gclus
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	source = https://cran.r-project.org/src/contrib/gclus_1.3.2.tar.gz
-	sha256sums = 9cc61cdff206c11213e73afca3d570a7234250cf6044a9202c2589932278e0b3
+	md5sums = 3ff6434ccb88afcfc6628374a21e7338
+	b2sums = 1a09b086c13e3e7995ba4a8f646139f968b72532c07cb7077b9922720844007d9f44c96be69894cf976faadb15a0c8d4d75c4cbb3b7d2a02f316f90a77de960a
 
 pkgname = r-gclus
