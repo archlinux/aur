@@ -5,7 +5,7 @@
 # Contributor: Fabio Castelli (muflone) <webreg@muflone.com>
 
 pkgname=mediascan
-pkgver=1
+pkgver=0.1.1
 pkgrel=2
 _pkgdesc=(
   "Scan a directory for media files"
@@ -34,7 +34,7 @@ checkdepends=(
   shellcheck
 )
 source=(
-  "git+${url}"
+  "git+${url}#tag=${pkgver}"
 )
 sha256sums=(
   SKIP
@@ -47,7 +47,6 @@ check() {
     -k \
     check
 }
-
 
 package() {
   cd \
