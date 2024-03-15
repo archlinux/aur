@@ -3,7 +3,7 @@ _pkgname=chengla
 pkgname="${_pkgname}-linux-unofficial-bin"
 pkgver=1.0.8
 _electronversion=27
-pkgrel=4
+pkgrel=5
 pkgdesc="橙啦平台的非官方 Linux 客户端"
 arch=("x86_64")
 url="https://github.com/pokon548/chengla-for-linux"
@@ -18,13 +18,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('a52a2119aeb19c468e29315bb01546e4c306c7aca8a580de1f1924c12f10bdd5'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
