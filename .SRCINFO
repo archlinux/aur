@@ -1,6 +1,6 @@
 pkgbase = hyprland-cmake-git
 	pkgdesc = a highly customizable dynamic tiling Wayland compositor that doesn't sacrifice on its looks.
-	pkgver = 0.36.0.r108.g164e92f8
+	pkgver = 0.36.0.r116.ga958884b
 	pkgrel = 1
 	url = https://github.com/hyprwm/Hyprland
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = hyprland-cmake-git
 	makedepends = ninja
 	makedepends = vulkan-headers
 	makedepends = xorgproto
+	depends = cpio
 	depends = cairo
 	depends = gcc-libs
 	depends = glibc
@@ -68,7 +69,6 @@ pkgbase = hyprland-cmake-git
 	depends = xorg-xinput
 	depends = xorg-xwayland
 	optdepends = cmake: to build and install plugins using hyprpm
-	optdepends = cpio: to build and install plugins using hyprpm
 	optdepends = meson: to build and install plugins using hyprpm
 	provides = hyprland=0.36.0
 	conflicts = hyprland

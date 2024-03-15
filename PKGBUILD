@@ -1,13 +1,15 @@
 # Maintainer: Federico Maria Morrone <aur at morrone dot dev>
 
 pkgname=hyprland-cmake-git
-pkgver=0.36.0.r108.g164e92f8
+pkgver=0.36.0.r116.ga958884b
 pkgrel=1
 pkgdesc="a highly customizable dynamic tiling Wayland compositor that doesn't sacrifice on its looks."
 arch=(x86_64 aarch64)
 url="https://github.com/hyprwm/Hyprland"
 license=(BSD-3-Clause)
-depends=(cairo   # libcairo.so
+depends=(
+        cpio     # needed by hyprpm
+        cairo    # libcairo.so
         gcc-libs # libgcc_s.so libstdc++.so
         glibc    # libc.so libm.so
         glib2 libgobject-2.0.so
@@ -52,7 +54,6 @@ makedepends=(cmake
         vulkan-headers
         xorgproto)
 optdepends=('cmake: to build and install plugins using hyprpm'
-        'cpio: to build and install plugins using hyprpm'
         'meson: to build and install plugins using hyprpm')
 
 provides=("hyprland=${pkgver%%.r*}")
