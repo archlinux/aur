@@ -2,7 +2,7 @@
 pkgname=giada-bin
 _pkgname=Giada
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source, minimalistic and hardcore music production tool. Designed for DJs, live performers and electronic musicians."
 arch=('x86_64')
 url="https://www.giadamusic.com"
@@ -17,12 +17,15 @@ depends=(
     'freetype2'
     'fontconfig'
 )
+makedepends=(
+    'fuse2'
+)
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/data/${_pkgname}-${pkgver}-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('b013c85663e9582c1fb3652b45159d2f3474af8dac80899056074a7355e192df'
-            '6023b57d0e81fa219ed96f4b8a6fccb401886ff00ab341a0976959ea4ca2fb8a')
+            'b6ecb830280091f98d2466ac7f8eea900a40f0cae942738849aeae278216fc95')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
