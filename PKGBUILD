@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Kevin Maris <aur@kmaris.net>
 pkgname=devbox-bin
-pkgver=0.9.1
-pkgrel=2
+pkgver=0.10.0
+pkgrel=1
 pkgdesc="A cli tool to easily create isolated shells and containers with nix."
 arch=(
     'aarch64'
@@ -23,14 +23,14 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/do
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.tar.gz::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_linux_arm64.tar.gz")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.tar.gz::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_linux_386.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.tar.gz")
-sha256sums_aarch64=('75257969b07f1c02ab1ab8ee12c4be6b3643fc8090bdc8f82012ba1f05d32e07')
-sha256sums_armv7h=('75257969b07f1c02ab1ab8ee12c4be6b3643fc8090bdc8f82012ba1f05d32e07')
-sha256sums_i686=('369c469530e3b1defeeeb5d9868e2aed8c67cafdf48d1de50cda4a5147f3ba39')
-sha256sums_x86_64=('05472c8e5052041f452f487ba1acbabb660fdbb67972f3f5b89ecaf7da8ceec3')
+sha256sums_aarch64=('9a0cd696c108b7d81310683631eff7cdc9e96cd4b227bd6c408d77dc96719b99')
+sha256sums_armv7h=('9a0cd696c108b7d81310683631eff7cdc9e96cd4b227bd6c408d77dc96719b99')
+sha256sums_i686=('5688ad5bce28871c518e42b7d49f096970a166732ab15f7cc00b43f02bb7e255')
+sha256sums_x86_64=('44b8ebc6727257a1ea8f16f53f0a223f0e05b7ffe82283d93c03cc4593481df0')
 build() {
-    exec "${srcdir}/${pkgname%-bin}" completion bash > "${srcdir}/bash.completion"
-    exec "${srcdir}/${pkgname%-bin}" completion fish > "${srcdir}/fish.completion"
-    exec "${srcdir}/${pkgname%-bin}" completion zsh > "${srcdir}/zsh.completion"
+    "${srcdir}/${pkgname%-bin}" completion bash > "${srcdir}/bash.completion"
+    "${srcdir}/${pkgname%-bin}" completion fish > "${srcdir}/fish.completion"
+    "${srcdir}/${pkgname%-bin}" completion zsh > "${srcdir}/zsh.completion"
 }
 
 package() {
