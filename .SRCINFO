@@ -1,7 +1,7 @@
 pkgbase = android-meson
 	pkgdesc = Meson wrapper for Android
 	pkgver = 2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mesonbuild.com/
 	arch = any
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = android-meson
 	depends = android-pkg-config
 	source = toolchain_generator.py
 	source = meson-android-wrapper
-	sha256sums = SKIP
-	sha256sums = SKIP
+	md5sums = 7538d07b82df15601d58bfb366cdcf47
+	md5sums = cc924c913c257888b7ff54094fa71e27
 
 pkgname = android-meson
