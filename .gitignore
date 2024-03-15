@@ -1,4 +1,4 @@
-pkg/
-src/
-gcsfuse-*
-*.pkg.tar*
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
