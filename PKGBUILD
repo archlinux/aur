@@ -9,7 +9,7 @@ pkgdesc="An elegant Microsoft ToDo desktop client for Linux (a fork of Ao)"
 arch=('x86_64')
 url="https://github.com/davidsmorais/kuro"
 license=('MIT')
-provides=("${pkgname%-git}")
+provides=("${pkgname%-git}=${pkgver%.r*}")
 conflicts=("${pkgname%-git}")
 depends=(
     "electron${_electronversion}"
@@ -26,7 +26,7 @@ source=(
     "${pkgname//-/.}::git+${url}.git"
     "${pkgname%-git}.sh")
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -52,7 +52,9 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    sed "s|--publish never|-l AppImage --publish never|g" -i package.json
+    mkdir -p "${srcdir}/.electron-gyp"
+    touch "${srcdir}/.electron-gyp/.yarnrc"
+    sed "s|--publish never|--dir --publish never|g" -i package.json
     yarn install --cache-folder "${srcdir}/.yarn_cache"
     yarn run release
 }
