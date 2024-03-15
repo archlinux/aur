@@ -21,8 +21,8 @@ sha256sums=('193c80fd45610db166ed792a8f3f635fb8012e89b9d94d0055c9e96d3cf94962'
 noextract=("wofi-pass.1.gz")
 
 package() {
-    install -Dm755 "${pkgname}" -t "${pkgdir}/usr/bin"
-    install -Dm644 "${pkgname}.conf" -t "${pkgdir}/etc"
-    install -Dm644 "${pkgname}.1.gz" -t "${pkgdir}/usr/share/man/man1"
-    install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}" -t "${pkgdir}/usr/bin"
+    install -Dm644 "${srcdir}/${pkgname}.conf" -t "${pkgdir}/etc"
+    install -Dm644 "${srcdir}/${pkgname}.1.gz" -t "${pkgdir}/usr/share/man/man1"
+    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
