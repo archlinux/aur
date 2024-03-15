@@ -1,4 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0
+#
 # Maintainer: Truocolo <truocolo@aol.com>
 # Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
 # Contributor: Fabio Castelli (muflone) <webreg@muflone.com>
@@ -8,34 +9,53 @@ pkgver=1
 pkgrel=2
 _pkgdesc=(
   "Scan a directory for media files"
-  "using Android media library.")
+  "using Android media library."
+)
 pkgdesc="${_pkgdesc[*]}"
 arch=(
-  any)
-url="https://aur.archlinux.org/packages/${pkgname}"
+  any
+)
+_http="https://github.com"
+_ns="themartiancompany"
+url="${_http}/${_ns}/${pkgname}"
 license=(
-  AGPL3)
-depends=()
-makedepends=()
+  AGPL3
+)
+depends=(
+  bash
+)
+makedepends=(
+  git
+)
 optdepends=(
-  'termux-api: to run in termux')
+  'termux-api: to run in termux'
+)
 checkdepends=(
-  shellcheck)
+  shellcheck
+)
 source=(
-  mediascan
-  Makefile)
+  "git+${_url}"
+  Makefile
+)
 sha256sums=(
-  1f404a86aa9bafc5570557e631d5a629bd9cdbac89540a55221874041f25b6a9
+  SKIP
   77eb4eb49bc286f772ce32721713e86836afa66547931a6e104414d100957f6e)
 
+check() {
+  cd \
+    "${pkgname}"
+  make \
+    -k \
+    check
+}
+
+
 package() {
-  local \
-    _pkgdir="${pkgdir}"
-  [ ! -n "${terdir}" ] && \
-    _pkgdir="${terdir}"
+  cd \
+    "${pkgname}"
   make \
     PREFIX="/usr" \
-    DESTDIR="${_pkgdir}" \
+    DESTDIR="${pkgdir}" \
     install
 }
 
