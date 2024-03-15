@@ -1,13 +1,30 @@
 #!/bin/bash
-XDG_DOCUMENTS_DIR="${XDG_DOCUMENTS_DIR:-$(xdg-user-dir DOCUMENTS)}"
-if [[ -z "${XDG_DOCUMENTS_DIR}" ]]; then
-    echo 'Error: Failed to get XDG_DOCUMENTS_DIR, refuse to continue'
-    exit 1
+# Data folder setup
+# If user has declared a custom data dir, no need to query xdg for documents dir, but always resolve that to absolute path
+if [[ "${WECHAT_DATA_DIR}" ]]; then
+    WECHAT_DATA_DIR=$(readlink -f -- "${WECHAT_DATA_DIR}")
+else
+    XDG_DOCUMENTS_DIR="${XDG_DOCUMENTS_DIR:-$(xdg-user-dir DOCUMENTS)}"
+    if [[ -z "${XDG_DOCUMENTS_DIR}" ]]; then
+        echo 'Error: Failed to get XDG_DOCUMENTS_DIR, refuse to continue'
+        exit 1
+    fi
+    WECHAT_DATA_DIR="${XDG_DOCUMENTS_DIR}/WeChat_Data"
 fi
-export XAUTHORITY="${XAUTHORITY:-${HOME}/.Xauthority}"
-WECHAT_DATA_DIR="$(readlink -f -- "${WECHAT_DATA_DIR:-${XDG_DOCUMENTS_DIR}/WeChat_Data}")"
 WECHAT_FILES_DIR="${WECHAT_DATA_DIR}/xwechat_files"
 WECHAT_HOME_DIR="${WECHAT_DATA_DIR}/home"
+
+# Runtime folder setup
+XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$(xdg-user-dir RUNTIME)}"
+if [[ -z "${XDG_RUNTIME_DIR}" ]]; then
+    echo 'Error: Failed to get XDG_RUNTIME_DIR, refuse to continue'
+    exit 1
+fi
+if [[ -z "${XAUTHORITY}" ]]; then
+    echo 'Warning: No XAUTHORITY set, runnning in no-X environment? Generating it'
+    export XAUTHORITY=$(mktemp "${XDG_RUNTIME_DIR}"/xauth_XXXXXX)
+    echo "Info: Generated XAUTHORITY at '${XAUTHORITY}'"
+fi
 
 env_add() {
     BWRAP_ENV_APPEND+=(--setenv "$1" "$2")
