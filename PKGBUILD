@@ -3,7 +3,7 @@ pkgname=less-player-bin
 _appname="Less Player"
 pkgver=0.1.20
 _electronversion=22
-pkgrel=3
+pkgrel=4
 pkgdesc="Less is More~ All for One, One for All ! Less Player, 基于Electron + Vue3开发、插件化的播放器"
 arch=('x86_64')
 url="https://github.com/GeekLee2012/Less-Player-Desktop"
@@ -23,11 +23,12 @@ source=(
 )
 sha256sums=('bec09b6d1dfbe71ae8c42f90589aafda5e73379ad121834c0a6ae92c90d75d92'
             'fb0c18a25174bf87a2fd5b445b8c2b78a0a90e1cc040b7f0b289e08e05c882af'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories="AudioVideo" --name="${_appname}" --exec="${pkgname%-bin} %U"
 }
