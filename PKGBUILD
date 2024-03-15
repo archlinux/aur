@@ -2,7 +2,7 @@
 # Contributor: Severin Glöckner (severin.gloeckner@stud.htwk-leipzig.de)
 
 pkgname=pgmodeler
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 epoch=3
 pkgdesc="PostgreSQL Database Modeler: an open source CASE tool for modeling PostgreSQL databases"
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v
         'pgmodeler.install'
         'patch_no_check_update.diff'
         'pgmodeler.appdata.xml')
-sha256sums=('a72fd207a89eef0e1e05938e1b89b94b72cc9ae31364b35409ddfc10bc5ad8d7'
+sha256sums=('9891e3a86a927a31c74c59ca45fee4a4cac59941b5ffbcccb97edad3e4a5a000'
             '91c6ab0df840823a4de21a953592134fb7b4367565eebff8523dc08ea6c7cd36'
             'fed8d615a3b732a83e1bd9c9562c81f3bfcb0ce5a4abba96191bca0d602bdd33'
             '208a17f95189d032808a2ff5bc04b181c92a524d6ce87c914264a93c594c1d35'
