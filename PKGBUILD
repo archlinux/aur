@@ -37,7 +37,7 @@ source=(
     "LICENSE.md::https://raw.githubusercontent.com/Alex313031/quark-player/v${pkgver}/LICENSE.md"
 )
 sha256sums=('844062382a7406c7758cc516749420d3c5bcc5fddad918602f1474d8b9960286'
-            '5a32ae8d087f9c0efaddb5023680ceba32c31f55dd956f75778372e2de234c0a')
+            'c4fe7e3a4559feeb6d7f78a50ba0850e1c61854be4f4c2e674dbb060de88eae2')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\" %U|${pkgname%-bin} --no-sandbox %U|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
