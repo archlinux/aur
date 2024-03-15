@@ -1,0 +1,13 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools"]
+
+[project]
+name = "hancho"
+version = "{{ pkgver }}"
+
+[project.scripts]
+hancho = "hancho:app.main"
+
+[tool.setuptools]
+packages = ["hancho"]
