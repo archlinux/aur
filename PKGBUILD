@@ -17,8 +17,8 @@
 
 pkgbase=llvm-minimal-git
 pkgname=(llvm-minimal-git llvm-libs-minimal-git clang-minimal-git clang-libs-minimal-git clang-opencl-headers-minimal-git)
-pkgver=19.0.0_r490673.1901f442ca63
-pkgrel=2
+pkgver=19.0.0_r492907.047b2b241def
+pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -87,8 +87,8 @@ done
 
 
 pkgver() {
-    cd llvm-project/llvm
-
+    cd llvm-project/cmake/Modules
+    
     # This will almost match the output of `llvm-config --version` when the
     # LLVM_APPEND_VC_REV cmake flag is turned on. The only difference is
     # dash being replaced with underscore because of Pacman requirements.
@@ -132,8 +132,9 @@ build() {
         -D LLVM_ENABLE_DUMP=ON
         -D LLVM_LIT_ARGS="$LITFLAGS"" -sv --ignore-fail"
   )
-
-
+    # build aborts with FORTIFY_SOURCE=3
+    export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+    
     cmake -B _build -S "$srcdir"/llvm-project/llvm "${cmake_args[@]}" -Wno-dev
     
     pushd "$srcdir"/_build
@@ -143,6 +144,7 @@ build() {
     cmake_args+=(-D LLVM_DISTRIBUTION_COMPONENTS="$distribution_components")
     
     cmake -B _build -S "$srcdir"/llvm-project/llvm "${cmake_args[@]}" -Wno-dev
+   
     make  -C _build
 }
 

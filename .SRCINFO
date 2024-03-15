@@ -1,6 +1,6 @@
 pkgbase = llvm-minimal-git
-	pkgver = 19.0.0_r490673.1901f442ca63
-	pkgrel = 2
+	pkgver = 19.0.0_r492907.047b2b241def
+	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
@@ -20,7 +20,7 @@ pkgbase = llvm-minimal-git
 
 pkgname = llvm-minimal-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies
-	depends = llvm-libs-minimal-git=19.0.0_r490673.1901f442ca63-2
+	depends = llvm-libs-minimal-git=19.0.0_r492907.047b2b241def-1
 	optdepends = python: for using lit (LLVM Integrated Tester)
 	optdepends = python-setuptools: for using lit
 	provides = llvm
@@ -53,14 +53,14 @@ pkgname = clang-minimal-git
 
 pkgname = clang-libs-minimal-git
 	pkgdesc = clang runtime libraries, trunk version
-	depends = llvm-libs-minimal-git=19.0.0_r490673.1901f442ca63-2
+	depends = llvm-libs-minimal-git=19.0.0_r492907.047b2b241def-1
 	provides = clang-libs
-	conflicts = clang<19.0.0_r490673.1901f442ca63-2
+	conflicts = clang<19.0.0_r492907.047b2b241def-1
 	conflicts = clang-libs
 
 pkgname = clang-opencl-headers-minimal-git
 	pkgdesc = clang headers & include files for OpenCL, trunk version
-	depends = clang-libs-minimal-git=19.0.0_r490673.1901f442ca63-2
+	depends = clang-libs-minimal-git=19.0.0_r492907.047b2b241def-1
 	provides = clang-opencl-headers
-	conflicts = clang<19.0.0_r490673.1901f442ca63-2
+	conflicts = clang<19.0.0_r492907.047b2b241def-1
 	conflicts = clang-opencl-headers
