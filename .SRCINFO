@@ -1,7 +1,7 @@
 pkgbase = kiibohd-configurator-git
 	pkgdesc = Client Side Configuration & Flashing Software for Kiibohd compatible keyboards
 	pkgver = r286.2e12869
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kiibohd/configurator
 	arch = x86_64
 	license = GPL3
@@ -12,6 +12,8 @@ pkgbase = kiibohd-configurator-git
 	provides = kiibohd-configurator
 	conflicts = kiibohd-configurator
 	source = kiibohd-configurator-git::git+https://github.com/kiibohd/configurator.git
+	source = node-lts-fermium-dep.patch
 	sha256sums = SKIP
+	sha256sums = f85d77db6ba1f7e5b0fa32c4b933c187bbfb3cee70502ac2a4aed2ac5bfc8656
 
 pkgname = kiibohd-configurator-git
