@@ -1,0 +1,5 @@
+[python-trame]
+source = "github"
+github = "Kitware/trame"
+use_latest_release = "true"
+prefix = "v"
