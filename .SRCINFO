@@ -1,6 +1,6 @@
 pkgbase = mattermost-desktop-bin
 	pkgdesc = Mattermost Desktop for Linux (binary)
-	pkgver = 5.6.0
+	pkgver = 5.7.0
 	pkgrel = 1
 	url = https://github.com/mattermost/desktop
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = mattermost-desktop-bin
 	source = icon.svg
 	sha256sums = 8659351ccebf1fa46bf0ecae0f12261f003edd7cbab21a0a53628efbec02e141
 	sha256sums = cc5507133b6ef1ccaf130263f4e2527b55eecf6427eb36a899bab695bcb3803c
-	source_x86_64 = https://releases.mattermost.com/desktop/5.6.0/mattermost-desktop-5.6.0-linux-x64.tar.gz
-	sha256sums_x86_64 = 29417fcc7d7c5fe452f0020206fe7725306971aa24ce8f76a6cca840d98b17f4
-	source_aarch64 = https://releases.mattermost.com/desktop/5.6.0/mattermost-desktop-5.6.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = 665e4f6a50257acdfda9232db75732b5fbb83217ae778fbc4d392dece85d7ffa
+	source_x86_64 = https://releases.mattermost.com/desktop/5.7.0/mattermost-desktop-5.7.0-linux-x64.tar.gz
+	sha256sums_x86_64 = d717d4f7e5738e14955ac3f50188b3a61850db4d7419b401810e1dc6f6374c15
+	source_aarch64 = https://releases.mattermost.com/desktop/5.7.0/mattermost-desktop-5.7.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 46b1fe47d22ea2428afb37e60a63addfc843d47bd625b2aa9b14c5850dd172a4
 
 pkgname = mattermost-desktop-bin
