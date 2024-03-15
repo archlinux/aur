@@ -1,7 +1,7 @@
 pkgbase = paru-bin
 	pkgdesc = Feature packed AUR helper
 	pkgver = 2.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/morganamilo/paru
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = paru-bin
 	depends = git
 	depends = pacman
 	depends = libalpm.so>=14-64
+	depends = openssl-1.1
 	optdepends = bat: colored pkgbuild printing
 	optdepends = devtools: build in chroot and downloading pkgbuilds
 	provides = paru

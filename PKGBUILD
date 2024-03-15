@@ -1,7 +1,7 @@
 # Maintainer: Morgan <morganamilo@archlinux.org>
 pkgname=paru-bin
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Feature packed AUR helper'
 url='https://github.com/morganamilo/paru'
 source_x86_64=("https://github.com/Morganamilo/paru/releases/download/v$pkgver/paru-v$pkgver-x86_64.tar.zst")
@@ -10,7 +10,7 @@ source_armv7h=("https://github.com/Morganamilo/paru/releases/download/v$pkgver/p
 backup=("etc/paru.conf")
 arch=('x86_64' 'aarch64' 'armv7h')
 license=('GPL-3.0-or-later')
-depends=('git' 'pacman' 'libalpm.so>=14-64')
+depends=('git' 'pacman' 'libalpm.so>=14-64' 'openssl-1.1')
 optdepends=('bat: colored pkgbuild printing' 'devtools: build in chroot and downloading pkgbuilds')
 conflicts=('paru')
 provides=('paru')
