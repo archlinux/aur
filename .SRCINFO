@@ -1,14 +1,15 @@
 pkgbase = r-chromhmmdata
 	pkgdesc = Chromosome Size, Coordinates and Anchor Files
 	pkgver = 0.99.2
-	pkgrel = 4
+	pkgrel = 7
 	url = https://bioconductor.org/packages/chromhmmData
 	arch = any
-	license = GPL
+	license = GPL-3.0-only
 	depends = r
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/chromhmmData_0.99.2.tar.gz
-	sha256sums = f23b04ecd03c29a7fbf1c01f461101f9d1f8f443fa9aeccfc6e9cffae9e9e68d
+	md5sums = eec85c20139b3d826f00264c7b28207c
+	b2sums = 807d3e4f6b477f6fd7afc977a17f7187203a1da053c73176ae4c49f31910739404186f7b1bec8d0cc74dd717eb4f45a3ca9f528acdc1d6c2249d716e8ec213c3
 
 pkgname = r-chromhmmdata
