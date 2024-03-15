@@ -1,0 +1,5 @@
+[python-rocket-fft]
+source = "github"
+github = "styfenschaer/rocket-fft"
+use_latest_release = "true"
+prefix = "v"
