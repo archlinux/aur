@@ -1,13 +1,13 @@
 pkgbase = ss14.launcher
 	pkgdesc = Space Station 14 launcher
 	pkgver = 0.26.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://spacestation14.io
 	arch = x86_64
 	license = MIT
-	makedepends = dotnet-sdk>=8.0.0
-	makedepends = python
+	makedepends = dotnet-sdk-8.0
 	depends = gtk3
+	depends = dotnet-runtime-8.0
 	optdepends = fluidsynth: for in-game MIDI instruments
 	options = !debug
 	source = ss14.launcher.v0.26.0.tar.gz::https://github.com/space-wizards/SS14.Launcher/archive/refs/tags/v0.26.0.tar.gz
@@ -17,6 +17,6 @@ pkgbase = ss14.launcher
 	sha256sums = 8784bdcdf2b48b9cecd44dc6a16f74e82b8260495f8c1de42cd41bbe07629840
 	sha256sums = eff77547bbdfe9d9bb633926b6763ca72793bad58adeda2cc33c15defe593ad3
 	sha256sums = a047c810a26088cc1fd1df73036bd5b4cfb441c0697a2cbd583733d08474f37e
-	sha256sums = f94f7ced2236c305750f896b8eaf4134934908f73d0381cb8a64133a539c1804
+	sha256sums = 4d68643cccbbb78dd92a14b37edf5476eaa48d5d523ef0d3fbf78f591b1f9ac2
 
 pkgname = ss14.launcher

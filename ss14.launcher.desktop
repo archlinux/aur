@@ -5,6 +5,6 @@ Type=Application
 Icon=spacestation14
 Comment=Space Station 14 Launcher
 Categories=Game;
-Keywords=gaming;launcher;
+Keywords=game;gaming;launcher;multiplayer;ss14
 Terminal=false
-Exec=env DOTNET_ROOT=/opt/ss14.launcher/dotnet ss14.launcher %u
+Exec=env ss14.launcher %u
