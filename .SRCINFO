@@ -8,7 +8,7 @@ pkgbase = tippecanoe
 	license = BSD
 	provides = tippecanoe
 	source = https://github.com/felt/tippecanoe/archive/2.45.0.tar.gz
-	md5sums = a798157b7116a69aec626b3d534e1baa
+	md5sums = e5c9abfa23fbdcf7f5beac9e7efc70c9
 
 pkgname = tippecanoe
 
