@@ -2,7 +2,7 @@
 pkgname=vgmtrans-bin
 _pkgname=VGMTrans
 pkgver=1.1_preview
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to convert proprietary, sequenced videogame music to industry-standard formats"
 arch=('x86_64')
 url="https://github.com/vgmtrans/vgmtrans"
@@ -15,7 +15,9 @@ depends=(
     'libx11'
     'harfbuzz'
     'libsm'
-    'fontconfig'
+)
+makedepends=(
+    'fuse2'
 )
 options=("!strip")
 source=(
@@ -25,7 +27,7 @@ source=(
 )
 sha256sums=('a9d94aedde9992602fb1b93093783d236a8310a71227b2dd0597914deb4a89bc'
             '3204441b667402c3720e32139a48fcb32d4c5dc7c2e464de415b24b9185adb7c'
-            '8198e0aa11e6c73f6e57584b3a52b025d438b15be9b16a5def5d140fb9990926')
+            '8515e41f67b77357316df164d2d81c0bc2d89cf6695621246df3fa3263628e19')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
