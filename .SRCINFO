@@ -14,6 +14,7 @@ pkgbase = appcsxcad-git
 	depends = vtk
 	depends = qt5-base
 	depends = qt5-x11extras
+	depends = libxcursor
 	provides = appcsxcad
 	conflicts = appcsxcad
 	source = git+https://github.com/thliebig/AppCSXCAD
