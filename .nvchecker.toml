@@ -1,0 +1,5 @@
+[python-trame-client]
+source = "github"
+github = "Kitware/trame-client"
+use_latest_release = "true"
+prefix = "v"
