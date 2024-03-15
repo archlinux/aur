@@ -3,12 +3,12 @@
 _pkgname=bmp
 _pkgver=0.3
 pkgname=r-${_pkgname,,}
-pkgver=0.3
-pkgrel=4
-pkgdesc='Read Windows Bitmap (BMP) Images'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=9
+pkgdesc="Read Windows Bitmap (BMP) Images"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
@@ -17,14 +17,15 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bdf790249b932e80bc3a188a288fef079d218856cf64ffb88428d915423ea649')
+md5sums=('8602a66ba473b9648f7ae87fecaf43bb')
+b2sums=('57e7d94dba79b34efedf89a42e83345cfd426c58ce9167ddef291734c6217ca9c974e90e491438fc429ac05e17137616e6a925aeef572d3755a782bbe99c542a')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
