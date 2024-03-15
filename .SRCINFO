@@ -1,0 +1,18 @@
+pkgbase = omniglass-git
+	pkgdesc = touchpad gestures library based on evdev
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/guarapicci/omniGlass
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	depends = glibc
+	depends = libevdev
+	depends = lua51
+	provides = omniglass
+	source = git+https://github.com/guarapicci/omniGlass
+	sha256sums = SKIP
+
+pkgname = omniglass-git
