@@ -15,9 +15,9 @@ sed -i "s|sha512sums.*|sha512sums=('${CHECKSUM_app}\n             ${CHECKSUM_man
 rm app manpage
 
 # Increase pkgrel if version is not changed
-CURRENT_VERSION="$(cat .SRCINFO | grep pkgver | cut -d "=" -f 2 | sed "s|^[[:space:]]*||")"
+CURRENT_VERSION="$(grep pkgver .SRCINFO | cut -d "=" -f 2 | sed "s|^[[:space:]]*||")"
 if [[ "${VERSION}" == "${CURRENT_VERSION}" ]]; then
-    CURRENT_PKGREL=$(cat .SRCINFO | grep pkgrel | cut -d "=" -f 2 | sed "s|^[[:space:]]*||")
+    CURRENT_PKGREL=$(grep pkgrel .SRCINFO | cut -d "=" -f 2 | sed "s|^[[:space:]]*||")
     sed -i "s|pkgrel.*|pkgrel=$((CURRENT_PKGREL + 1))|" PKGBUILD
 fi
 
