@@ -2,8 +2,8 @@
 # Contributor: Edgar Luque <git@edgarluque.com>
 
 pkgname=ddnet
-pkgver=18.0.3
-pkgrel=2
+pkgver=18.1
+pkgrel=1
 pkgdesc="A Teeworlds modification with a unique cooperative gameplay."
 arch=('x86_64')
 url="https://ddnet.org"
@@ -18,7 +18,7 @@ source=("https://ddnet.org/downloads/DDNet-$pkgver.tar.xz"
         "ddnet-server.service" "ddnet-sysusers.conf" "ddnet-tmpfiles.conf"
         # Licenses extracted from license.txt
         "Zlib.txt" "OFL-1.1.txt" "Bitstream-Vera.txt" "Arev.txt")
-sha256sums=('68d62635194a87f35c16077f3b65dd0b56877b74bd0776f4c3f3196fa79b87c8'
+sha256sums=('16e8cac1c3710239e5d3bec9f31389c169ea123c00a7959a01653cdb54e9f794'
             '9377a9d7c87abae166c8fa98cd79a61c74482f80f80bc930ae043349e9a84965'
             '70034f237270b38bf312238a26cfd322e212ca5714bfea4ae91e80c639ce8738'
             '043452f4de3c86d903973009bb3e59b3492a6669b86d0b1410e59a1476a87369'
@@ -33,7 +33,7 @@ build() {
     # https://bbs.archlinux.org/viewtopic.php?id=293078
     CXXFLAGS+=' -ffat-lto-objects'
     cmake ../DDNet-$pkgver          \
-        -DCMAKE_BUILD_TYPE=Release  \
+        -DCMAKE_BUILD_TYPE=None     \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DAUTOUPDATE=OFF            \
         -DDISCORD=ON                \
