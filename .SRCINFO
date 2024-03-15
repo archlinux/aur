@@ -1,10 +1,11 @@
 pkgbase = android-x86-sqlite
-	pkgdesc = A C library that implements an SQL database engine (android)
-	pkgver = 3.45.1
+	pkgdesc = A C library that implements an SQL database engine (Android, x86)
+	pkgver = 3.45.2
 	pkgrel = 1
 	url = https://www.sqlite.org/
 	arch = any
 	license = LicenseRef-Sqlite
+	makedepends = android-configure
 	makedepends = android-x86-tcl
 	makedepends = android-x86-readline
 	makedepends = android-x86-zlib
@@ -12,14 +13,14 @@ pkgbase = android-x86-sqlite
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://www.sqlite.org/2024/sqlite-src-3450100.zip
-	sha256sums = 7f7b14a68edbcd4a57df3a8c4dbd56d2d3546a6e7cdd50de40ceb03af33d34ba
+	source = https://www.sqlite.org/2024/sqlite-src-3450200.zip
+	sha256sums = 4a45a3577cc8af683c4bd4c6e81a7c782c5b7d5daa06175ea2cb971ca71691b1
 
 pkgname = android-x86-sqlite
-	pkgdesc = A C library that implements an SQL database engine (android)
+	pkgdesc = A C library that implements an SQL database engine (Android, x86)
 	depends = android-x86-readline
 	depends = android-x86-zlib
 
 pkgname = android-x86-sqlite-tcl
-	pkgdesc = sqlite Tcl Extension Architecture (TEA) (android)
+	pkgdesc = sqlite Tcl Extension Architecture (TEA) (Android, x86)
 	depends = android-x86-sqlite
