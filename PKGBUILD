@@ -1,4 +1,4 @@
-# Maintainer: denkijin < dandenkijin at gmail dot com >
+# Maintainer: raininja < dandenkijin at gmail dot com >
 
 pkgname=clipse
 pkgver=0.0.6
