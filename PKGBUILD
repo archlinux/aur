@@ -96,7 +96,7 @@ pkgver() {
             'BEGIN { ORS="." ; i=0 } \
              /set\(LLVM_VERSION_/ { print $2 ; i++ ; if (i==2) ORS="" } \
              END { print "\n" }' \
-             CMakeLists.txt)_r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+             LLVMVersion.cmake)_r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
     echo "${_pkgver}"
 }
 
