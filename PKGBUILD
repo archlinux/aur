@@ -2,8 +2,8 @@
 # Contributor: moyiz <8603313+moyiz@users.noreply.github.com>
 
 pkgname=wander
-pkgver=0.14.1
-_commit=4172951d37d915e7f02b2660980130992f168e8e  # tags/v0.14.1
+pkgver=1.1.0
+_commit=02551ed16346ef3dcabb06702b61c3e2abf8020d  # tags/v0.14.1
 pkgrel=1
 pkgdesc="An efficient terminal application/TUI for your HashiCorp Nomad cluster."
 arch=('i686' 'x86_64' 'aarch64')
