@@ -1,0 +1,4 @@
+pkg/
+src/
+evdev*
+build.sh

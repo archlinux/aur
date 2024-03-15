@@ -1,0 +1,13 @@
+pkgbase = evdev-keepalive
+	pkgdesc = Workaround for fauty 8BitDo and other controller firmwares.
+	pkgver = v0.0.2.r0.ge45caf7
+	pkgrel = 1
+	url = https://github.com/pastaq/evdev-keepalive
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = clang
+	source = evdev-keepalive::git+https://github.com/pastaq/evdev-keepalive
+	sha256sums = SKIP
+
+pkgname = evdev-keepalive
