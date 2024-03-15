@@ -12,10 +12,10 @@ provides=('talhelper')
 conflicts=('talhelper')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/budimanjojo/talhelper/releases/download/v2.3.5/talhelper_linux_arm64.tar.gz")
-sha256sums_aarch64=('e5872e0b48dfb5fc8b340b696bd695a6f96439a674687b129ae2a6ba7ca4faaa')
+sha256sums_aarch64=('62320833561a027178e9e7f2426a13febbeb408861133d0c3118a5bb81a15134')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/budimanjojo/talhelper/releases/download/v2.3.5/talhelper_linux_amd64.tar.gz")
-sha256sums_x86_64=('ccc559931cd3910d3cabd26326bc843642fe07bcdbd3e5ba24f3e3ebcb583413')
+sha256sums_x86_64=('cdb478bfaf199dab4a49ac6af464504f8fb12a7e8fc62b8c4b8c27ed3832e22c')
 
 package() {
   # bin
