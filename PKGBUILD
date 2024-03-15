@@ -6,7 +6,7 @@
 pkgname=python-autoflake
 _pkgname="${pkgname#python-}"
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Removes unused imports and unused variables'
 arch=(any)
 url="https://github.com/PyCQA/autoflake"
@@ -14,8 +14,6 @@ license=("MIT")
 depends=(
     'python'
     'python-pyflakes'
-    # required for python<3.11
-    'python-tomli'
 )
 makedepends=(
     'python-build'
