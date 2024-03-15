@@ -15,7 +15,7 @@ md5sums=('SKIP')
 options=('!lto')
 
 pkgver() {
-    	cd $_pkgbase
+    cd $_pkgbase
 	echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
 }
 
@@ -27,7 +27,11 @@ prepare() {
 
 build() {
   	cd "${_pkgbase}"
-	PACWRAP_SCHEMA_BUILT=1 \
+
+    # Uncomment this line below if core-testing/pacman-6.1 is installed
+    #git switch alpm14 
+    
+    PACWRAP_SCHEMA_BUILT=1 \
 	cargo build --release --frozen \
 	&& ./dist/tools/package.sh release
 }
