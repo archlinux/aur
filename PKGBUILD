@@ -6,7 +6,7 @@ pkgdesc="A convenient tool, designed to simplify repository management and mirro
 arch=(any)
 url="https://codeberg.org/Application-Maker/pacman-mirrors-helper"
 license=(GPL-3.0-or-later)
-depends=(bash coreutils curl ncurses pacman sed util-linux)
+depends=(bash coreutils curl jq ncurses pacman sed util-linux)
 makedepends=(git)
 source=("git+https://codeberg.org/Application-Maker/pacman-mirrors-helper.git#branch=main")
 sha256sums=(SKIP)
