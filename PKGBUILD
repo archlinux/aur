@@ -13,6 +13,7 @@ groups=(
 makedepends=(
   'git'
 )
+
 source=(
   "git+https://github.com/mhartington/formatter.nvim.git"
 )
@@ -27,7 +28,12 @@ pkgver() {
 }
 
 package() {
+  depends+=(
+    'neovim'
+  )
+
   cd formatter.nvim
   find lua plugin doc -type f -exec install -D -m644 '{}' "$pkgdir/usr/share/nvim/site/pack/dist/start/${pkgname}/{}" \;
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }

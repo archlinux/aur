@@ -11,3 +11,4 @@ pkgbase = neovim-formatter-git
 	sha512sums = SKIP
 
 pkgname = neovim-formatter-git
+	depends = neovim
