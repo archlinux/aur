@@ -1,4 +1,4 @@
-pkgbase = clangd-opt
+pkgbase = clangd-opt-git
 	pkgdesc = Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)
 	pkgver = 19.r4743.gcb6ff746e0c7
 	pkgrel = 1
@@ -60,4 +60,4 @@ pkgbase = clangd-opt
 	sha256sums = a05f3894ddb881ef77146da6955fc0612de684d7bc09a2ef9b9fc6aa750efcac
 	sha256sums = 020e5509e2e13578abb6943ccf228feaa0083dd27cc611fa62c7cd3d700d82f7
 
-pkgname = clangd-opt
+pkgname = clangd-opt-git
