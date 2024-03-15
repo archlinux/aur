@@ -2,4 +2,4 @@
 source = "github"
 github = "OpenIDC/mod_auth_openidc"
 prefix = "v"
-use_max_tag = true
+use_latest_release = true
