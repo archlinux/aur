@@ -2,28 +2,32 @@
 # Maintainer: Carlos A Becker <carlos@charm.sh>
 
 pkgname='melt-bin'
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Backup and restore Ed25519 SSH keys with seed words'
 url='https://charm.sh/'
-arch=('aarch64' 'armv7h' 'i686' 'x86_64')
+arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 license=('MIT')
 provides=('melt')
 conflicts=('melt')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/melt/releases/download/v0.6.0/melt_0.6.0_Linux_arm64.tar.gz")
-sha256sums_aarch64=('221309b26ee449876824f6099dcd3c23557696e8c4777ecb76c8c99d0830e5c2')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/melt/releases/download/v0.6.1/melt_0.6.1_Linux_arm64.tar.gz")
+sha256sums_aarch64=('48421396d9daf065ed5dfafd0c52377407fad12108f4d8ffba3a40365471163d')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/melt/releases/download/v0.6.0/melt_0.6.0_Linux_arm.tar.gz")
-sha256sums_armv7h=('6214cedf2395c37f7c39b1ece6aca6d8c7ee3affb591cc32e9062e010fc3e49b')
+source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/charmbracelet/melt/releases/download/v0.6.1/melt_0.6.1_Linux_armv6.tar.gz")
+sha256sums_armv6h=('1828cb5b74f3de5b9a4546b1a7bfea1c85dd576ac78b2f9f7faa55fff825c2b6')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/melt/releases/download/v0.6.0/melt_0.6.0_Linux_i386.tar.gz")
-sha256sums_i686=('a23e8d6f057d496ad7b363e7e7306273e430656f04861ff45a877fb9732d65d1')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/melt/releases/download/v0.6.1/melt_0.6.1_Linux_armv7.tar.gz")
+sha256sums_armv7h=('29630f5542281977528e9b8e050e526c120cf2256f45918e228319438220b499')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/melt/releases/download/v0.6.0/melt_0.6.0_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('9a29bfe6d03ecb8cb16731643ca8c72541a58e786ae681410abf969b0d5bfe8d')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/melt/releases/download/v0.6.1/melt_0.6.1_Linux_i386.tar.gz")
+sha256sums_i686=('1b70fa17eecf0bf8c855850e6ad007adc88f3c31d0e1b0b69e14b822ce70c6ad')
+
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/melt/releases/download/v0.6.1/melt_0.6.1_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('84c2a77731ee71a4705e022f644ae95daa2e72c888ee398bebc555417add5caa')
 
 package() {
+  cd "${srcdir}/melt_${pkgver}_Linux_${CARCH}"
   # bin
   install -Dm755 "./melt" "${pkgdir}/usr/bin/melt"
   # license
