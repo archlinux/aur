@@ -2,7 +2,7 @@
 pkgname=quaternion-bin
 _appname="com.github.${pkgname%-bin}"
 pkgver=0.0.95.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Qt5-based IM client for Matrix"
 arch=('x86_64')
 url="https://matrix.org/docs/projects/client/quaternion.html"
@@ -16,13 +16,16 @@ depends=(
     'gtk3'
     'alsa-lib'
 )
+makedepends=(
+    'fuse2'
+)
 options=('!strip')
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('43936b9bf37539051e438ef28b111261410ab5ae59d2a2fb84f130a76ef6336b'
-            'db8945878d7f1cfbefc6adb9626b7bb6e29b67177e9c3f0c0461ff2f9496eeac')
+            'd40ffcc1141938516e3caa7f731527d7e8beace1782be6ced2820660a7450f25')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
