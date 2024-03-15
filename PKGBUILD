@@ -23,7 +23,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest -k 'performance'
+  test-env/bin/python -m pytest --ignore=tests/performance/test_performance.py
 }
 
 package() {
