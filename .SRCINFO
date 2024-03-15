@@ -1,6 +1,6 @@
 pkgbase = sk-chos-addon
 	pkgdesc = Addon for sk-chimeros
-	pkgver = 1.2.5
+	pkgver = 1.2.6
 	pkgrel = 1
 	url = https://github.com/honjow/sk-holoiso-config.git
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = sk-chos-addon
 	replaces = sk-chos-addon-git
 	options = !strip
 	backup = etc/sk-chos-tool/github_cdn.conf
-	source = sk-chos-addon-1.2.5.tar.gz::https://github.com/honjow/sk-holoiso-config/archive/refs/tags/v1.2.5.tar.gz
+	source = sk-chos-addon-1.2.6.tar.gz::https://github.com/honjow/sk-holoiso-config/archive/refs/tags/v1.2.6.tar.gz
 	sha256sums = SKIP
 
 pkgname = sk-chos-addon
