@@ -1,13 +1,13 @@
 pkgbase = runiq
 	pkgdesc = An efficient way to filter duplicate lines from input, à la uniq
-	pkgver = 1.2.2
+	pkgver = 2.0.0
 	pkgrel = 1
-	url = https://crates.io/crates/runiq
+	url = https://github.com/whitfin/runiq
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = runiq-1.2.2.tar.gz::https://static.crates.io/crates/runiq/runiq-1.2.2.crate
-	sha256sums = f3fd0f7fae68284f64d76a05afcb4469049ac8933737078045e730855c221293
+	source = runiq-2.0.0.tar.gz::https://github.com/whitfin/runiq/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = c08261db5349b607afcfc0d9c0630ef3cd0219ccd99cddf63cc7c06982cade5f
 
 pkgname = runiq
