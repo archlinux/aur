@@ -1,31 +1,31 @@
 # Maintainer: Oliver Kahrmann <oliver.kahrmann@gmail.com>
 # Contributor: David Baum <david.baum@naraesk.eu>
 pkgname=eclipse-installer
-pkgver=2023.12
-pkgrel=2
+pkgver=2024.03
+pkgrel=1
 pkgdesc="Automates the installation and update of Eclipse development environments"
 arch=('aarch64' 'x86_64')
 url="https://wiki.eclipse.org/Eclipse_Installer"
 license=("EPL")
-depends=("java-runtime>=8" "unzip" "webkit2gtk")
+depends=("java-runtime>=17" "unzip" "webkit2gtk")
 options=(!strip)
 source=(
 	'eclipse-installer.desktop'
 )
 source_x86_64=(
-    'https://mirrors.dotsrc.org/eclipse/oomph/epp/2023-12/R/eclipse-inst-linux64.tar.gz'
+    'https://mirrors.dotsrc.org/eclipse/oomph/epp/2024-03/R/eclipse-inst-linux64.tar.gz'
 )
 source_aarch64=(
-    'https://mirrors.dotsrc.org/eclipse/oomph/epp/2023-12/R/eclipse-inst-linux-aarch64.tar.gz'
+    'https://mirrors.dotsrc.org/eclipse/oomph/epp/2024-03/R/eclipse-inst-linux-aarch64.tar.gz'
 )
 sha256sums=(
 	'c7d6a0bd5dad627dd15ac9d7e6e04c8c8a4b811ce4b0744212a487bc4f6c0cdf'
 )
 sha256sums_x86_64=(
-    '8a9e34d9e5a72b665f23add070c01e602da4d3ff37ce777c9c8f7dbb40cbdb21'
+    '33f1721ab46177266291d57610bed27ff81aaf3551ea97e3ef7f08fc24971af6'
 )
 sha256sums_aarch64=(
-    'fbdf4c3aa89f97831f8617ce82262596cfac1bf82484170b0a2096dddf4cddd3'
+    '704f888ab4bf476de4b0532f47aa15bd2a96c2717ffcf7169ad98d321e194d45'
 )
 
 package() {
