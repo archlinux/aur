@@ -3,24 +3,25 @@
 _pkgname=ada
 _pkgver=2.0-5
 pkgname=r-${_pkgname,,}
-pkgver=2.0.5
-pkgrel=4
-pkgdesc='The R Package Ada for Stochastic Boosting'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="The R Package Ada for Stochastic Boosting"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d900172059eebeef30c27944fc29737a231fc4f92e3c2661868383fbd9016ac0')
+md5sums=('25ac0dc2650fba9e19f3d15c7c6721c1')
+b2sums=('4e92714b8467b2d1ac9599a337c861e12ce3aad051e438310ff17fc2f3e1d3f44eb05d43d146ae27e9806bd4cdcc1545b3e8d94e6c860f9b30b2a2fd27d26ee7')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
