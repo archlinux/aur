@@ -1,4 +1,5 @@
-# Maintainer: Adrian Perez de Castro <aperez@igalia.com>
+# Maintainer: Christopher Snowhill <kode54@gmail.com>
+# Contributor: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wf-shell-git
 pkgver=r180.a7b1f20
 pkgrel=1
