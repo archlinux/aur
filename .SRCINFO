@@ -1,12 +1,13 @@
 pkgbase = r-lisreltor
-	pkgdesc = Import Output from 'LISREL' into 'R'
+	pkgdesc = Import Output from LISREL into R
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=lisrelToR
 	arch = any
-	license = GPL
+	license = GPL-2.0-only
 	depends = r
 	source = https://cran.r-project.org/src/contrib/lisrelToR_0.3.tar.gz
-	sha256sums = 6bbebbdd6f78ae5d503a4d53558c709233e6e94fe8206f62d5edca3d5b41b4a7
+	md5sums = 23515b702dfcfbf8e2b1284f2d908cda
+	b2sums = a71f03f3500c4aa08301d36b05badfd3dd58dfa7242977628b4a3e42ec0c6c87c29963b7a52f7d48eca9c3472b67e01b5c624376aaab05a11763d151fad9c94f
 
 pkgname = r-lisreltor
