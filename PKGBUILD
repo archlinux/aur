@@ -3,12 +3,12 @@
 _pkgname=RGMQLlib
 _pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
-pkgrel=1
-pkgdesc='RGMQLlib, java libraries to run GMQL scala API'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="java libraries to run GMQL scala API"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r
 )
@@ -18,14 +18,15 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9ed38960d0e55c3e80cd8480f0cf2c99aa6c36f704f90f4068b38213e546daeb')
+md5sums=('d8ad27b1fe0c5eff6135285db972cab2')
+b2sums=('1a587febdadde7829d62a07953392f87832ab6c927d5eb835a8d3919b5b5cd2def82666e1b7700340f2dd6ac62aa9a2669cc2121fe0e723ac4e9d7de498365cc')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
