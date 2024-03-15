@@ -5,8 +5,8 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-kmod
 pkgver=32
-pkgrel=2
-pkgdesc="Linux kernel module management tools and library (Android ${_android_arch})"
+pkgrel=3
+pkgdesc="Linux kernel module management tools and library (Android, ${_android_arch})"
 arch=('any')
 url='https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git'
 license=('GPL2')
@@ -32,11 +32,6 @@ prepare() {
 build() {
     cd "${srcdir}/kmod-$pkgver"
     source android-env ${_android_arch}
-
-    export CPPFLAGS="${CPPFLAGS} -D_FORTIFY_SOURCE=2"
-    export CFLAGS="${CFLAGS} -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4"
-    export CXXFLAGS="${CXXFLAGS} -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4"
-    export LDFLAGS="${LDFLAGS} -Wl,-O1,--sort-common,--as-needed"
 
     ./configure \
         --host=aarch64-linux-android \
