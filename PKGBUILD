@@ -3,12 +3,13 @@
 # Maintainer: Tuure Piitulainen <tuure.piitulainen@gmail.com>
 
 pkgname=brightnessctl-git
-pkgver=0.5.1.r17.gef49d47
+pkgver=0.5.1.r32.g3152968
 pkgrel=1
 pkgdesc="Lightweight brightness control tool"
 arch=('i686' 'x86_64')
 url="https://github.com/Hummer12007/brightnessctl"
 license=('MIT')
+depends=('systemd-libs')
 makedepends=('git')
 provides=('brightnessctl')
 conflicts=('brightnessctl')
@@ -23,11 +24,11 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
   ./configure --prefix=/usr --enable-logind
-  make
+  make ENABLE_SYSTEMD=1
 }
 
 package() {
   cd "$srcdir/$pkgname"
-  make DESTDIR="$pkgdir" install
+  make ENABLE_SYSTEMD=1 DESTDIR="$pkgdir" install
 }
 
