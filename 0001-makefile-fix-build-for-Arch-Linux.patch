@@ -30,7 +30,7 @@ index 61d130e..639c1bd 100644
 -LFLAGS = -Wl,-M -Wl,-L/usr/local/lib
  #LIBS = ../gwnum/gwnum.a ../gwnum/polymult.a -lm -lpthread -Wl,-Bstatic -lhwloc -Wl,-Bstatic -lcurl -Wl,-Bdynamic -lrt -lstdc++ -lz -lxml2 -ldl -lgmp
 -LIBS = ../gwnum/gwnum.a ../gwnum/polymult.a -lm -lpthread -Wl,-Bstatic -lhwloc -Wl,-Bstatic -lcurl -Wl,-Bdynamic -lrt -lstdc++ -ldl -lgmp
-+LIBS = ../gwnum/gwnum.a ../gwnum/gwnum.ld ../gwnum/polymult.a -lm -lpthread $(shell pkg-config --libs libcurl) -lstdc++ $(shell pkg-config --static --libs hwloc) -lgmp
++LIBS = ../gwnum/gwnum.a ../gwnum/polymult.a -lm -lpthread $(shell pkg-config --libs libcurl) -lstdc++ $(shell pkg-config --static --libs hwloc) -lgmp
 +
 +ALFLAGS = -I.. -I../gwnum -march=x86-64 -DX86_64 -O2 -Wno-unused-result -march=x86-64 -DPORT=8
  
