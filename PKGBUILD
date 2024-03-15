@@ -4,7 +4,7 @@
 # Maintainer: Michael Bolden Jnr / SM9(); <me@sm9.dev>
 
 pkgname="glaze"
-pkgver=2.2.2
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="An Extremely fast, In-Memory JSON and Interface Library for Modern C++"
 arch=('any')
@@ -19,7 +19,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
-sha512sums=('c67961104d8b7fd1807df138349af86459bd21a9c3889e7ca044380368c2eccc51cf3da6726130b973001754eff510129f62adae9cafcc977d9c6bdaa1e2f2f2')
+sha512sums=('3f0fbeccb44e2218d1a75511071e1019b2ba6707643afb2a922794841b3ba63b6a8b7b61991bda4d2c42415deb432b387f4c65bad51569bb5fd3932c4bb0229d')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}" || return 1
