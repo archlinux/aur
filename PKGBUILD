@@ -3,7 +3,7 @@
 pkgname=quark-player-bin
 _pkgname="Quark Player"
 pkgver=3.4.1
-pkgrel=2
+pkgrel=1
 pkgdesc="An Electron based Web Video Services Player, supporting Netflix, Youtube, Twitch, Floatplane, Hulu and More!"
 arch=('x86_64')
 url="https://github.com/Alex313031/quark-player"
