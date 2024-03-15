@@ -3,21 +3,21 @@ pkgname=seven-waves
 _pkgname=7-Waves
 pkgver=1.2.0
 _electronversion=9
-pkgrel=5
+pkgrel=6
 pkgdesc="A dodging game with 7 levels of increasing difficulty"
 arch=('any')
 url="https://github.com/Togohogo1/7-Waves"
 license=("CC0-1.0")
 conflicts=("${pkgname}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'gendesk'
     'npm'
     'nodejs'
     'yarn'
-    'imagemagick'
+    'icoutils'
     'git'
 )
 source=(
@@ -25,11 +25,12 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     gendesk -q -f -n --categories="Game" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
@@ -40,16 +41,24 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    sed "s|builder build|builder --linux AppImage|g" -i package.json
+    mkdir -p "${srcdir}/.electron-gyp"
+    touch "${srcdir}/.electron-gyp/.yarnrc"
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/v"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
+    icotool -i 9 -x assets/flag.ico -o "${pkgname}.png"
     yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn run dist
-    convert "${srcdir}/${pkgname}.git/assets/flag.ico" "${srcdir}/${pkgname}.png"
+    npx electron-builder build --dir
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.git/dist/linux-"*/swiftshader/* -t "${pkgdir}/usr/lib/${pkgname}/swiftshader"
-    install -Dm644 "${srcdir}/${pkgname}-8.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}.git/${pkgname}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
