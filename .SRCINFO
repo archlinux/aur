@@ -1,0 +1,15 @@
+pkgbase = jellyfin-runit
+	pkgdesc = Runit service script for jellyfin.
+	pkgver = 20240313
+	pkgrel = 1
+	url = https://jellyfin.org
+	arch = any
+	license = GPL-2.0
+	depends = jellyfin-server
+	depends = runit
+	source = jellyfin.run
+	source = jellyfin.log.run
+	sha256sums = ee6e41967280b1edfd1d0395735f510890a66813492d6ffacb7096117c0faca6
+	sha256sums = d1cac930ecaec203c6c7beecf7593a275a829dd98a4b74a49434652009f551f5
+
+pkgname = jellyfin-runit

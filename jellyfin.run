@@ -1,0 +1,2 @@
+#!/bin/sh
+exec chpst -u jellyfin:jellyfin jellyfin --datadir "/var/lib/jellyfin" --cachedir "/var/cache/jellyfin" "--webdir=/usr/share/jellyfin-web" 2>&1
