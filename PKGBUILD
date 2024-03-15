@@ -7,11 +7,7 @@ _electronversion=22
 _nodeversion=18
 pkgrel=1
 pkgdesc="A full-featured download manager that supports downloading HTTP, FTP, BitTorrent, Magnet, etc."
-arch=(
-    'aarch64'
-    'armv7h'
-    'x86_64'
-)
+arch=('any')
 url="https://motrix.app/"
 _ghurl="https://github.com/agalwood/Motrix"
 _giteeurl="https://gitee.com/mirrors/motrix"
