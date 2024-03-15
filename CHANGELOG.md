@@ -1,19 +1,14 @@
-## Release 0.18.1 on 2022-05-23
+## Release 1.0.0 on 2024-03-15
 
-- Add missing desktop file to autostart the notifier.
-
-## Release 0.18.0 on 2022-05-23
-
-- pacautomation's functionality was split in two systems: `pacautomation` 
-  handles the various automated service tasks in the background and is run with
-  root privileges. It's triggered by a persistent systemd timer.
-  `pacautomation-notify` checks for and displays pending desktop notifications.
-  It is run for each user upon login or triggered after `pacautomation` 
-  completes. This allows users to receive notifications even if they weren't
-  logged in while `pacautomation` was run.
-- Restrict the privileges and capabilities of the included systemd services.
-  E.g. this prevents access to directories such as `/home` or `/root` for 
-  `pacautomation.service`.
-- Make pacautomation available as an Python package in the system's Python
-  environment.
-- Add a new desktop notification type for warnings.
+- Update format and options of the configuration file. `pacautomation.conf` now
+  uses the TOML format. New switches to control whether pacautomation checks
+  for orphans or pacfiles were added. Checking for package updates and
+  downloading them can now be independently configured. The option `tmp_db` to
+  set the location of the temporary package database was removed.
+- Warn if an unmerged `pacautomation.conf.pacnew` is found.
+- Include more information in error messages. This applies to both, desktop
+  notifications and the logged output.
+- Use more fine-grained `ReadWritePaths` and restrict the main service to the
+  files and directories it actually needs.
+- Also, quite a bit refactoring was done on internals and the test suite was
+  expanded.
