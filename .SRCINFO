@@ -1,0 +1,20 @@
+pkgbase = halloy-git
+	pkgdesc = An open-source IRC client written in Rust, with the Iced GUI library
+	pkgver = 2024.3.r61.gea3ff04
+	pkgrel = 1
+	url = https://github.com/squidowl/halloy
+	arch = x86_64
+	license = GPL-3.0-or-later
+	checkdepends = cargo
+	makedepends = git
+	makedepends = cargo
+	depends = openssl
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	provides = halloy
+	conflicts = halloy
+	source = git+https://github.com/squidowl/halloy
+	sha256sums = SKIP
+
+pkgname = halloy-git
