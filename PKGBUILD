@@ -2,7 +2,7 @@
 # Maintainer: Fabian Bornschein <fabiscafe@archlinux.org>
 
 pkgname=glib-networking
-pkgver=2.80rc
+pkgver=2.80.0
 pkgrel=1
 epoch=1
 pkgdesc="Network extensions for GLib"
@@ -21,7 +21,7 @@ makedepends=(
   meson
 )
 checkdepends=(ca-certificates)
-_commit=dc18aced15f4b1ec885eada7f0ec12d09693fb95  # tags/2.80.rc^0
+_commit=3ae624d21b586ec33543004b037fd343042cb04b  # tags/2.80.0^0
 source=("git+https://gitlab.gnome.org/GNOME/glib-networking.git#commit=$_commit")
 b2sums=('SKIP')
 
