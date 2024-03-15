@@ -2,29 +2,29 @@
 # Contributor: Oleg Antonyan <oleg.b.antonyan@gmail.com>
 
 pkgname=mpz
-pkgver=1.0.23
-pkgrel=0
+pkgver=1.0.24
+pkgrel=14
 pkgdesc='Music player for the large local collections'
 arch=('x86_64')
 url="https://github.com/olegantonyan/mpz"
 license=('GPL3')
-depends=('qt5-multimedia' 'qt5-x11extras' 'hicolor-icon-theme' 'yaml-cpp' 'taglib')
+depends=('qt6-multimedia' 'hicolor-icon-theme' 'yaml-cpp' 'taglib')
 provides=('mpz')
-source=("$pkgname-$pkgver-$pkgrel.zip::https://github.com/olegantonyan/mpz/archive/d76a0d1fdded0ee8a144f752ac63d225218564b6.zip")
-sha256sums=('7e617484191840bb4ba2c6750671d589e7394b61f6c2461fa76b4a39e41646fa')
+source=("$pkgname-$pkgver-$pkgrel.zip::https://github.com/olegantonyan/mpz/archive/3725435b8ac95eab80849fa28e6c8ac0f24bedc6.zip")
+sha256sums=('6df4aaddcc3d56557ff175d9d9627e87fbb343ceea976137cf4f77e151c025e8')
 
 build() {
-    cd mpz-d76a0d1fdded0ee8a144f752ac63d225218564b6
+    cd mpz-3725435b8ac95eab80849fa28e6c8ac0f24bedc6
 
     rm -rf build
     mkdir build
     cd build
-    qmake-qt5 CONFIG+=release DEFINES+=USE_SYSTEM_TAGLIB DEFINES+=USE_SYSTEM_YAMLCPP ..
+    qmake6 CONFIG+=release DEFINES+=USE_SYSTEM_TAGLIB DEFINES+=USE_SYSTEM_YAMLCPP ..
     make
 }
 
 package() {
-    cd mpz-d76a0d1fdded0ee8a144f752ac63d225218564b6
+    cd mpz-3725435b8ac95eab80849fa28e6c8ac0f24bedc6
 
     cd build
     make install INSTALL_ROOT=$pkgdir
