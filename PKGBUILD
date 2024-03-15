@@ -2,8 +2,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=cjose
-pkgver=0.6.2.1
-pkgrel=2
+pkgver=0.6.2.2
+pkgrel=1
 pkgdesc='C library implementing the Javascript Object Signing and Encryption (JOSE)'
 arch=(x86_64)
 url="https://github.com/OpenIDC/$pkgname"
@@ -11,8 +11,8 @@ license=(MIT)
 depends=(openssl
          jansson)
 _archive="$pkgname-$pkgver"
-source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('90924f021878bfdb53536f8e3495876047d5b5ec34de96b431883c85f12c459a')
+source=("$url/releases/download/v$pkgver/$_archive.tar.gz")
+sha256sums=('2de8652b23ee3e15398176e8b2aaa513aa89635368f2748fbc304f8aefe910a4')
 
 build() {
 	cd "$_archive"

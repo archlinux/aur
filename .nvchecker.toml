@@ -1,0 +1,5 @@
+[cjose]
+source = "github"
+github = "OpenIDC/cjose"
+prefix = "v"
+use_latest_release = true
