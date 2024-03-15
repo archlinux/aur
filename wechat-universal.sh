@@ -52,8 +52,9 @@ BWRAP_ARGS=(
     --ro-bind /etc/resolv.conf{,}
     --ro-bind /etc/localtime{,}
     --ro-bind-try /etc/fonts{,}
-    # /sys, for va-api: https://aur.archlinux.org/packages/wechat-universal-bwrap#comment-961215
-    --ro-bind /sys/dev{,}
+    # /sys
+    --dir /sys/dev # hack for Intel / AMD graphics, mesa calling virtual nodes needs /sys/dev being 0755
+    --ro-bind /sys/dev/char{,}
     --ro-bind /sys/devices{,}
     # /tmp
     --tmpfs /tmp
