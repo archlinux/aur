@@ -1,0 +1,15 @@
+pkgbase = sonarr-runit
+	pkgdesc = Runit service script for sonarr.
+	pkgver = 20240312
+	pkgrel = 1
+	url = https://sonarr.tv
+	arch = any
+	license = GPL-3.0
+	depends = sonarr
+	depends = runit
+	source = sonarr.run
+	source = sonarr.log.run
+	sha256sums = aca6062b6142c2c0b2e86c8ae241c6c4a48df813cf0f06e4067258bf4c551d12
+	sha256sums = 264bdf53fc0f1ba5ff98a673b7227277dd6d4e6a45eb4e8c7458cc89a4b6b0e9
+
+pkgname = sonarr-runit

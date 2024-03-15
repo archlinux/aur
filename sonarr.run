@@ -1,0 +1,2 @@
+#!/bin/sh
+exec chpst -u sonarr:sonarr /usr/lib/sonarr/bin/Sonarr -nobrowser -data=/var/lib/sonarr 2>&1
