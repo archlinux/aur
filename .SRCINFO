@@ -4,12 +4,14 @@ pkgbase = sigma-file-manager-git
 	pkgrel = 1
 	url = https://sigma-file-manager.vercel.app
 	arch = any
-	license = GPL-3.0-or-Later
+	license = GPL-3.0-or-later
 	makedepends = gendesk
 	makedepends = git
 	makedepends = nvm
 	makedepends = npm
 	makedepends = python>=3
+	makedepends = base-devel
+	makedepends = gcc
 	depends = alsa-lib
 	depends = nss
 	depends = gtk3

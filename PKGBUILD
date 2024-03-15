@@ -10,7 +10,7 @@ pkgdesc="A free, open-source, quickly evolving, modern file manager (explorer / 
 arch=('any')
 url="https://sigma-file-manager.vercel.app"
 _ghurl="https://github.com/aleksey-hoffman/sigma-file-manager"
-license=('GPL-3.0-or-Later')
+license=('GPL-3.0-or-later')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 depends=(
@@ -25,6 +25,8 @@ makedepends=(
     'nvm'
     'npm'
     'python>=3'
+    'base-devel'
+    'gcc'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
@@ -47,13 +49,19 @@ build() {
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
-    install -Dm755 -d "${srcdir}/.electron-gyp"
     HOME="${srcdir}/.electron-gyp"
-    npm add node-gyp@8.4.0 electron-builder
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
+    npm add -D node-gyp@8.4.0
     npm install
     npm run build
 }
