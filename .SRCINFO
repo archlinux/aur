@@ -1,6 +1,6 @@
 pkgbase = gptscript
 	pkgdesc = Scripting AI for fun and profit
-	pkgver = v0.1.4
+	pkgver = v0.2.1
 	pkgrel = 1
 	url = https://gptscript.ai/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = gptscript
 	makedepends = npm
 	makedepends = yarn
 	conflicts = gptscript-git
-	source = gptscript-v0.1.4::git+https://github.com/gptscript-ai/gptscript#tag=v0.1.4
+	source = gptscript-v0.2.1::git+https://github.com/gptscript-ai/gptscript#tag=v0.2.1
 	md5sums = SKIP
 
 pkgname = gptscript
