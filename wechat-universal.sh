@@ -54,6 +54,15 @@ for DEV_NODE in /dev/{nvidia{-uvm,ctl,*[0-9]},video*[0-9]}; do
     [[ -e "${DEV_NODE}" ]] && BWRAP_DEV_BINDS+=(--dev-bind "${DEV_NODE}"{,})
 done
 
+# Custom exposed folders
+echo "Hint: Custom binds could be declared in '~/.config/wechat-universal/binds.list', each line a path, absolute or relative to your HOME"
+BWRAP_CUSTOM_BINDS=()
+while IFS='' read -r CUSTOM_BIND || [[ "${CUSTOM_BIND}" ]]; do
+    CUSTOM_BIND=$(readlink -f -- "${CUSTOM_BIND}")
+    echo "Custom bind: '${CUSTOM_BIND}'"
+    BWRAP_CUSTOM_BINDS+=(--bind "${CUSTOM_BIND}"{,})
+done < ~/.config/wechat-universal/binds.list
+
 mkdir -p "${WECHAT_FILES_DIR}" "${WECHAT_HOME_DIR}"
 ln -snf "${WECHAT_FILES_DIR}" "${WECHAT_HOME_DIR}/xwechat_files"
 
@@ -128,4 +137,4 @@ BWRAP_ARGS=(
     --ro-bind "${XDG_RUNTIME_DIR}/pulse"{,}
 )
 
-exec bwrap "${BWRAP_ARGS[@]}" "${BWRAP_DEV_BINDS[@]}" "${BWRAP_ENV_APPEND[@]}" /opt/wechat-universal/wechat "$@"
+exec bwrap "${BWRAP_ARGS[@]}" "${BWRAP_CUSTOM_BINDS[@]}" "${BWRAP_DEV_BINDS[@]}" "${BWRAP_ENV_APPEND[@]}" /opt/wechat-universal/wechat "$@"
