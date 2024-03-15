@@ -5,7 +5,7 @@ if [[ -z "${XDG_DOCUMENTS_DIR}" ]]; then
     exit 1
 fi
 export XAUTHORITY="${XAUTHORITY:-${HOME}/.Xauthority}"
-WECHAT_DATA_DIR="${XDG_DOCUMENTS_DIR}/WeChat_Data"
+WECHAT_DATA_DIR="$(readlink -f ${WECHAT_DATA_DIR:-${XDG_DOCUMENTS_DIR}/WeChat_Data})"
 WECHAT_FILES_DIR="${WECHAT_DATA_DIR}/xwechat_files"
 WECHAT_HOME_DIR="${WECHAT_DATA_DIR}/home"
 
