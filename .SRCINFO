@@ -1,0 +1,16 @@
+pkgbase = vcutil
+	pkgdesc = Misc. simple utilities to aid version control and host maintenance.
+	pkgver = 1.43.0
+	pkgrel = 1
+	url = https://github.com/ossobv/vcutil/
+	arch = any
+	source = vcutil::git+https://github.com/ossobv/vcutil/#tag=v1.43
+	sha512sums = SKIP
+
+pkgname = ipmikvm
+	pkgdesc = A wrapper to call the SuperMicro iKVM console bypassing Java browser plugins.
+	depends = jre8-openjdk-headless
+	depends = unzip
+	depends = curl
+	depends = awk
+	depends = coreutils
