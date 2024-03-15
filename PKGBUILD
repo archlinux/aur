@@ -1,39 +1,39 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-
 pkgname=neovim-cmp-git
-_pkg="${pkgname%-git}"
-pkgver=0.0.1.r3.gb1ebdb0
+pkgver=0.0.1.r161.g04e0ca3
 pkgrel=1
 pkgdesc="Autocompletion plugin for Neovim"
 arch=('any')
 url="https://github.com/hrsh7th/nvim-cmp"
 license=('MIT')
-groups=('neovim-plugins')
-depends=('neovim')
-optdepends=(
-	'neovim-cmp-nvim-lsp: source for Neovim builtin LSP client'
-	'neovim-cmp-buffer: buffer autocompletion'
-	'neovim-cmp-path: path autocompletion'
-	'neovim-cmp-emoji: emoji autocompletion'
-	'neovim-cmp-latex-symbols: LaTeX symbol autocompletion'
-	'neovim-cmp-omni: omnifunc autocompletion'
-	'neovim-cmp-vsnip: vsnip autocompletion')
-makedepends=('git')
-provides=("$_pkg")
-conflicts=("$_pkg")
-install=cmp.install
-source=("$pkgname::git+$url")
-sha256sums=('SKIP')
+
+groups=(
+  'neovim-plugins'
+)
+
+makedepends=(
+  'git'
+)
+
+source=(
+  "git+https://github.com/hrsh7th/nvim-cmp.git"
+)
+
+sha512sums=(
+  'SKIP'
+)
 
 pkgver() {
-	git -C "$pkgname" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+  cd nvim-cmp
+  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 package() {
-	cd "$pkgname"
-	find autoload lua plugin \
-		-type f \
-		-exec install -Dm644 '{}' "$pkgdir/usr/share/nvim/runtime/pack/dist/start/$pkgname/{}" \;
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  depends+=(
+    'neovim'
+  )
+
+  cd nvim-cmp
+  find autoload doc lua plugin -type f -exec install -D -m644 '{}' "$pkgdir/usr/share/nvim/site/pack/dist/start/${pkgname}/{}" \;
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
