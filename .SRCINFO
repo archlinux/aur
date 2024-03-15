@@ -1,6 +1,6 @@
 pkgbase = linux-amd
-	pkgver = 6.8.v.0
-	pkgrel = 2
+	pkgver = 6.8.v.1
+	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -14,12 +14,12 @@ pkgbase = linux-amd
 	makedepends = lzop
 	makedepends = gcc>=10.3
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v6.8
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v6.8.1
 	source = config.x86_64
 	source = linux-amd.preset
 	source = https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/20240221.2/more-uarches-for-kernel-6.8-rc4+.patch
 	sha256sums = SKIP
-	sha256sums = d6b6b2b3ee7c75048ed83e2cbed45d9a86c273db7995e42a9d8a26ee7b19e559
+	sha256sums = 15d0643bfcd2f3b54d800294de22b093509be779ea1d80d2d0ded09ef1cb614c
 	sha256sums = 60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c
 	sha256sums = d69232afd0dd6982ae941cf2d1f577f4be2011e3bb847d1db37952acf416b5d3
 
