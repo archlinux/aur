@@ -1,55 +1,27 @@
 # Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 _pkgname=SteamTokenDumper
-pkgname=${_pkgname,,}-git
-pkgver=r213.1d231aa
+pkgname=${_pkgname,,}-bin
+# Hash from bottom of https://steamdb.info/tokendumper/
+_source_hash=3eadaaacb713b2faa3f7498fe69dd7c2c4ea46dd588e9e3611f55916e9723e81
+pkgver=r0.${_source_hash:0:7}
 pkgrel=1
 pkgdesc='Steam token dumper for SteamDB'
 arch=('x86_64' 'x86_64_v3')
 url='https://steamdb.info/tokendumper/'
 license=('MIT')
-depends=('dotnet-runtime-8.0')
-makedepends=('git' 'dotnet-sdk-8.0')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+backup=("opt/${pkgname%-bin}/$_pkgname.config.ini")
+makedepends=('coreutils')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
 options=(!strip)
-source=("git+https://github.com/SteamDatabase/${_pkgname}.git")
-b2sums=('SKIP')
-
-pkgver() {
-  cd ${_pkgname}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-}
-
-prepare() {
-  cd ${_pkgname}
-  # Remove potential old build artifacts
-  rm -rf bin/ obj/
-}
-
-build() {
-  cd ${_pkgname}
-
-  # Follow steps of build.bat for Linux
-
-  echo ':: PREPARING'
-  export DOTNET_CLI_TELEMETRY_OPTOUT=1
-
-  #_build_token=''  # Where do I get this?
-  #mv ApiClient.cs ApiClient_build.cs.tmp
-  #grep 'STEAMDB_BUILD_TOKEN' ApiClient_build.cs.tmp
-  #sed -i "s/@STEAMDB_BUILD_TOKEN@/${_build_token}/g" ApiClient_build.cs.tmp
-
-  echo ':: BUILDING LINUX'
-  dotnet publish -c Release --runtime linux-x64 --self-contained true --output bin/SteamTokenDumper \
-    /p:PublishSingleFile=true /p:PublishTrimmed=true /p:IncludeNativeLibrariesForSelfExtract=true \
-    SteamTokenDumper.csproj
-}
+source=("$_pkgname-linux-$pkgver.tar.gz::https://tokendumper.steamdb.info/SteamTokenDumper-linux.tar.gz?hash=$_source_hash")
+sha256sums=($_source_hash)
 
 package(){
-  cd ${_pkgname}
-
-  install -Dm755 bin/SteamTokenDumper/SteamTokenDumper "${pkgdir}"/usr/bin/SteamTokenDumper
-  install -Dm644 bin/SteamTokenDumper/SteamTokenDumper.config.ini "${pkgdir}"/usr/share/doc/${pkgname%-git}/SteamTokenDumper.config.ini
-  install -Dm644 README.md "${pkgdir}"/usr/share/doc/${pkgname%-git}/README.md
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname%-git}/LICENSE
+  depends=('libz.so=1-64' 'glibc' 'gcc-libs')  # TODO: Depend on .so files instead of packages
+  install -Dm755 SteamTokenDumper "$pkgdir"/opt/${pkgname%-bin}/SteamTokenDumper
+  install -Dm644 SteamTokenDumper.config.ini "$pkgdir"/opt/${pkgname%-bin}/SteamTokenDumper.config.ini
+  install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/${pkgname%-bin}/LICENSE.txt
+  install -d "$pkgdir"/usr/bin
+  ln -s ../../opt/${pkgname%-bin}/SteamTokenDumper "$pkgdir"/usr/bin/$_pkgname
 }

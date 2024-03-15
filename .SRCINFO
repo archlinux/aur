@@ -1,18 +1,20 @@
-pkgbase = steamtokendumper-git
+pkgbase = steamtokendumper-bin
 	pkgdesc = Steam token dumper for SteamDB
-	pkgver = r213.1d231aa
+	pkgver = r0.3eadaaa
 	pkgrel = 1
 	url = https://steamdb.info/tokendumper/
 	arch = x86_64
 	arch = x86_64_v3
 	license = MIT
-	makedepends = git
-	makedepends = dotnet-sdk-8.0
-	depends = dotnet-runtime-8.0
+	makedepends = coreutils
 	provides = steamtokendumper
 	conflicts = steamtokendumper
 	options = !strip
-	source = git+https://github.com/SteamDatabase/SteamTokenDumper.git
-	b2sums = SKIP
+	backup = opt/steamtokendumper/SteamTokenDumper.config.ini
+	source = SteamTokenDumper-linux-r0.3eadaaa.tar.gz::https://tokendumper.steamdb.info/SteamTokenDumper-linux.tar.gz?hash=3eadaaacb713b2faa3f7498fe69dd7c2c4ea46dd588e9e3611f55916e9723e81
+	sha256sums = 3eadaaacb713b2faa3f7498fe69dd7c2c4ea46dd588e9e3611f55916e9723e81
 
-pkgname = steamtokendumper-git
+pkgname = steamtokendumper-bin
+	depends = libz.so=1-64
+	depends = glibc
+	depends = gcc-libs
