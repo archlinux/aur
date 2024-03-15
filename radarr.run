@@ -1,0 +1,2 @@
+#!/bin/sh
+exec chpst -u radarr:radarr /usr/lib/radarr/bin/Radarr -nobrowser -data=/var/lib/radarr 2>&1

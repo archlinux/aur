@@ -1,0 +1,6 @@
+#!/bin/sh
+exec 2>&1; set -e
+
+[ -d /var/log/radarr ] || install -dm 755 /var/log/radarr
+
+exec svlogd -tt /var/log/radarr

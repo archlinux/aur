@@ -1,0 +1,15 @@
+pkgbase = radarr-runit
+	pkgdesc = Runit service script for radarr.
+	pkgver = 20240313
+	pkgrel = 1
+	url = https://radarr.video
+	arch = any
+	license = GPL-3.0
+	depends = radarr
+	depends = runit
+	source = radarr.run
+	source = radarr.log.run
+	sha256sums = 22b13bc1d2db05134e96d6d8d1be8d1488d610599c4a1c8ad9ad2c9e7be73d37
+	sha256sums = 63143f6eb852d9e0fb0b2cb48eea7918b2a225d9bb228a0df562237f95a015fe
+
+pkgname = radarr-runit
