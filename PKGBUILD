@@ -1,6 +1,6 @@
 # Maintainer: Daniel Wilhelm <concat(shield, wed) @ outlook.com>
 pkgname=easytaxag
-pkgver=2023.1.0
+pkgver=2023.1.1
 pkgrel=1
 pkgdesc="EasyTax Applikation zur Steuererklärung 2023 für den Kanton Aargau"
 arch=('any')
@@ -20,7 +20,7 @@ source=(
 )
 
 sha256sums=(
-  '5540c7464bc716c76f62765e331bd9faedca258e0d9fbec8723619be2300ccdd'
+  '6a47a7cff7232fe88f3661305464e18319b4a104233b36cdf28a2a5e52cdef70'
   '253d315b20371cd9add777dc990f96545c60d5d07a3f34cd33720d5148e82486'
   'caf1ddd0e3dfbc4c25ed2f90033587a8ff9872f5c51791893448a651e3a22b2e'
   'ae25c2210ddb59098400c5cc70896e8a696b209da3061931d633d04d05dee477'
