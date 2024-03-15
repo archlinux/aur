@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=devbox
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='A cli tool to easily create isolated shells and containers'
 arch=(x86_64)
@@ -12,7 +12,7 @@ makedepends=(go)
 optdepends=('docker: for container support')
 _archive="$pkgname-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('e7dc460100839b7d5e756da09e647ed939acfa63359a52afee97dc79296a3101')
+sha256sums=('58dff2eb5475322a8dcba6fc671df73ee8283729ee4a24daf1a3d84bdae149e0')
 
 prepare(){
 	cd "$_archive"
@@ -23,7 +23,6 @@ prepare(){
 build() {
 	cd "$_archive"
 	export GOPATH="$srcdir"
-	export CGO_ENABLED=0
 	local _prefix=go.jetpack.io/devbox/build
 	go build \
 		-trimpath \
