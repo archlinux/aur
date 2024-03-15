@@ -1,18 +1,14 @@
 pkgbase = neovim-cmp_luasnip-git
 	pkgdesc = nvim-cmp source for LuaSnip
-	pkgver = r32.9674906
+	pkgver = r66.05a9ab2
 	pkgrel = 1
 	url = https://github.com/saadparwaiz1/cmp_luasnip
-	install = cmp_luasnip.install
 	arch = any
-	groups = neovim-plugin
-	license = custom:unknown
+	groups = neovim-plugins
+	license = Apache
 	makedepends = git
-	depends = neovim-cmp
-	depends = neovim-luasnip
-	provides = neovim-cmp_luasnip
-	conflicts = neovim-cmp_luasnip
-	source = neovim-cmp_luasnip-git::git+https://github.com/saadparwaiz1/cmp_luasnip
-	md5sums = SKIP
+	source = git+https://github.com/saadparwaiz1/cmp_luasnip.git
+	sha512sums = SKIP
 
 pkgname = neovim-cmp_luasnip-git
+	depends = neovim
