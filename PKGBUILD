@@ -2,7 +2,7 @@
 
 _pkgname=pacwrap
 pkgname=('pacwrap-git' 'pacwrap-dist-git')
-pkgver=0.7.2.r17.7ef03e3
+pkgver=0.7.2.r20.4c76ab0
 pkgrel=1
 _pkgbase=$_pkgname
 pkgdesc="Facilitates the creation, management, and execution of unprivileged Arch-based bubblewrap containers."
@@ -39,7 +39,7 @@ build() {
 package_pacwrap-git() {
 	provides=("${_pkgname}")
 	conflicts=("${_pkgname}")
-	depends=('bash' 'bubblewrap' 'gnupg' 'pacman' 'libseccomp' "${pkgname[1]}=$pkgver" 'zstd')
+	depends=('bash' 'bubblewrap' 'gnupg' 'pacman' 'libseccomp' "pacwrap-dist-git=$pkgver" 'zstd')
 	optdepends=('xdg-dbus-proxy')
 
   	cd "${_pkgbase}"
