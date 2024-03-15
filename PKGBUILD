@@ -34,7 +34,7 @@ checkdepends=(
   shellcheck
 )
 source=(
-  "git+${_url}"
+  "git+${url}"
   Makefile
 )
 sha256sums=(
