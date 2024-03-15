@@ -1,7 +1,7 @@
 pkgbase = r-randomizr
 	pkgdesc = Easy-to-Use Tools for Common Forms of Random Assignment and Sampling
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=randomizr
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = r-randomizr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/randomizr_1.0.0.tar.gz
-	sha256sums = 56468c08167d5425cbf003777e33028ab7374f71097c6a6de4aadb462057fe64
+	md5sums = 7860c9a6c26008f6d4ebbcfc01ce911b
+	b2sums = 6c019790940fb069a2b0ea6090d248c5cd6d38c0e28b52fbf516400b42164ba57dacfec3b85cb98dc1179ac1f47e7eb3f88ba124fd9b60f8d1916da7c961ca91
 
 pkgname = r-randomizr
