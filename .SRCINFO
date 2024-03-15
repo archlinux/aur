@@ -1,7 +1,7 @@
 pkgbase = hyperion.ng-git
 	pkgdesc = The reworked version (next generation) of Hyperion, ambient light software
-	pkgver = 2.0.15.r97.fd5a94a3
-	pkgrel = 3
+	pkgver = 2.0.15.r99.806206ec
+	pkgrel = 1
 	url = https://github.com/hyperion-project/hyperion.ng
 	arch = i686
 	arch = x86_64
