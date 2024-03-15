@@ -1,7 +1,8 @@
-# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Maintainer: CristianCYAC <cristianyasprillac at gmail dot com>
+# Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=quark-player-bin
 _pkgname="Quark Player"
-pkgver=3.2.5
+pkgver=3.4.1
 pkgrel=2
 pkgdesc="An Electron based Web Video Services Player, supporting Netflix, Youtube, Twitch, Floatplane, Hulu and More!"
 arch=('x86_64')
@@ -35,8 +36,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE.md::https://raw.githubusercontent.com/Alex313031/quark-player/v${pkgver}/LICENSE.md"
 )
-sha256sums=('2147ecb0de939130eb53f2619bc2747e47537814e2d016da172db97aeb1e978b'
-            'f60c2918d56a97a03b92e13e9fc479e81db309476ec26f7c8c0df82007612117')
+sha256sums=('844062382a7406c7758cc516749420d3c5bcc5fddad918602f1474d8b9960286'
+            '5a32ae8d087f9c0efaddb5023680ceba32c31f55dd956f75778372e2de234c0a')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\" %U|${pkgname%-bin} --no-sandbox %U|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
