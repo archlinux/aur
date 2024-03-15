@@ -126,7 +126,7 @@ export CXX=${ANDROID_CXX}
 [[ "${CXXFLAGS}" != *-fexceptions* ]] && export CXXFLAGS="${CXXFLAGS} -fexceptions"
 [[ "${CXXFLAGS}" != *-I${ANDROID_PREFIX_INCLUDE}* ]] && export CXXFLAGS="${CXXFLAGS} -I${ANDROID_PREFIX_INCLUDE}"
 [[ "${LDFLAGS}" != *-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now* ]] && export LDFLAGS="${LDFLAGS} -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now"
-[[ "${LDFLAGS}" != *-I${ANDROID_PREFIX_LIB}* ]] && export LDFLAGS="${LDFLAGS} -L${ANDROID_PREFIX_LIB}"
+[[ "${LDFLAGS}" != *-L${ANDROID_PREFIX_LIB}* ]] && export LDFLAGS="${LDFLAGS} -L${ANDROID_PREFIX_LIB}"
 
 export AR=${ANDROID_AR}
 export OBJDUMP=${ANDROID_OBJDUMP}
