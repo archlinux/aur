@@ -1,6 +1,6 @@
 # Maintainer: Sam Therapy <sam at samtherapy dot net>
 pkgname=awl-dns-git
-pkgver=0.6.7.r4.g45d1aaf
+pkgver=0.6.10.r16.g2104727
 pkgrel=1
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="A DNS client"
@@ -38,5 +38,5 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   make VERSION=$pkgver DESTDIR="$pkgdir" PREFIX="/usr" install
-  install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
