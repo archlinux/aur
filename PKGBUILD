@@ -6,21 +6,21 @@ pkgbase=linux-firmware-git
 pkgname=(linux-firmware-whence-git linux-firmware-git amd-ucode-git
          linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}-git
 )
-pkgver=20240220.97b693d2
+pkgver=20240312.3b128b60
 pkgrel=1
 pkgdesc="Firmware files for Linux"
-url="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
+url="https://gitlab.com/kernel-firmware/linux-firmware"
 license=('GPL2' 'GPL3' 'custom')
 arch=('any')
 makedepends=('git' 'rdfind')
 options=(!strip)
-#source=("${pkgbase}::git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git?signed")
+#source=("${pkgbase}::git+${url}.git?signed")
 # NOTE: upstream doesn't sign most commits anymore, but still signs all tags.
 # Packages in the official repos package tags.
 # You can check signatures with the following commands:
 #git log --format=raw --show-signature main
 #git tag -v $(git tag)
-source=("${pkgbase}::git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git")
+source=("${pkgbase}::git+${url}.git")
 sha256sums=('SKIP')
 validpgpkeys=('4CDE8575E547BF835FE15807A31B6BD72486CFD6') # Josh Boyer <jwboyer@fedoraproject.org>
 
