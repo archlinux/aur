@@ -3,12 +3,12 @@
 _pkgname=ore
 _pkgver=1.7.4.1
 pkgname=r-${_pkgname,,}
-pkgver=1.7.4.1
-pkgrel=1
-pkgdesc='An R Interface to the Onigmo Regular Expression Library'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('BSD')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="An R Interface to the Onigmo Regular Expression Library"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('BSD-3-Clause')
 depends=(
   r
 )
@@ -19,15 +19,18 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('12f46d7645b572673d5f39b9bd90ff824c50c95de77229e88935ab25bddc5e05')
+md5sums=('cae052db6dbce48bb12fae5dc7c11343')
+b2sums=('62129a64261c37ba774ea527fd80940abaa160485157634c218d7b3ed32ce29c1f8472a6dc814b751150f1fc8eb69248504d169576028abc6380ac52c26e9643')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENCE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENCE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
