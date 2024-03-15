@@ -1,12 +1,13 @@
 pkgbase = r-rngwell
 	pkgdesc = Toolbox for WELL Random Number Generators
 	pkgver = 0.10.9
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=rngWELL
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	depends = r
 	source = https://cran.r-project.org/src/contrib/rngWELL_0.10-9.tar.gz
-	sha256sums = 9969cc10be6d18155d2b2de93381c52e7f720c2b1b3f2554fa8bfa84ceb7cacb
+	md5sums = 30a683f8002c1aa17ca20be5ab1dcdb6
+	b2sums = 62a5ef936a325fad9e8618880fbc8a0ab4e4860431d5e50c18d7538657a4de61492deab4f18c1eb8f070fb92a9305fc85325c7919f9210f5def86cafba34051c
 
 pkgname = r-rngwell
