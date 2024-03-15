@@ -1,7 +1,7 @@
 # Maintainer: B.C. van Zuiden <zuiden@ilorentz.org>
 _pkgname=aflplusplus
 pkgname=${_pkgname}-git
-pkgver=4.01c.r49.gc57988e6
+pkgver=v4.10c.r0.g775861ea
 pkgrel=1
 pkgdesc="The fuzzer afl++ is afl with community patches, qemu 5.1 upgrade, collision-free coverage, enhanced laf-intel & redqueen, AFLfast++ power schedules, MOpt mutators, unicorn_mode, and a lot more!"
 arch=('x86_64')
