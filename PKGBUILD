@@ -3,24 +3,25 @@
 _pkgname=seq2pathway.data
 _pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
-pkgrel=1
-pkgdesc='data set for R package seq2pathway'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="data set for R package seq2pathway"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0a38cb8d260a674171454b2863b6564b2b4c602ab5f3bb44547067f54a245f45')
+md5sums=('b0035ff986391159c1329eac9fb96661')
+b2sums=('c3d45ba5e1510ead55b70a68fd1b2efcbce5111aaf7c40c575dfe14c4dc4bd3b5915524ae67a469914db5535aae5ad27a71192bcc09010122a758f9824441ae6')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
