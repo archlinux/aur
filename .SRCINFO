@@ -1,17 +1,14 @@
 pkgbase = neovim-cmp-buffer-git
 	pkgdesc = neovim-cmp source for buffer words
-	pkgver = r13.5dde543
+	pkgver = r53.3022dbc
 	pkgrel = 1
 	url = https://github.com/hrsh7th/cmp-buffer
-	install = cmp-buffer.install
 	arch = any
-	groups = neovim-plugin
-	license = custom:unknown
+	groups = neovim-plugins
+	license = MIT
 	makedepends = git
-	depends = neovim-cmp
-	provides = neovim-cmp-buffer
-	conflicts = neovim-cmp-buffer
-	source = neovim-cmp-buffer-git::git+https://github.com/hrsh7th/cmp-buffer
-	md5sums = SKIP
+	source = git+https://github.com/hrsh7th/cmp-buffer.git
+	sha512sums = SKIP
 
 pkgname = neovim-cmp-buffer-git
+	depends = neovim
