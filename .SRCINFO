@@ -1,10 +1,11 @@
 pkgbase = serial-studio-bin
 	pkgdesc = Multi-purpose serial data visualization & processing program
 	pkgver = 1.1.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://serial-studio.github.io/
 	arch = x86_64
 	license = custom
+	makedepends = fuse2
 	depends = e2fsprogs
 	depends = libp11-kit
 	depends = gmp
@@ -19,6 +20,6 @@ pkgbase = serial-studio-bin
 	source = serial-studio.sh
 	sha256sums = 22b6a9465b9b56bb321956991f6746117f7f084d56082b28000bed0908919be8
 	sha256sums = 2bd1d916e395ee261da269285a9cb803e6f594b0cb97b50e01b43e0911004d17
-	sha256sums = 29b844cd3caadeb5ff4fb94ab550ccc7fb8241490e3f3e8ac33c24c769d90c36
+	sha256sums = 9b0fc0eb27805a22012ca316cc9d2b04168067b89802a2818ff5f5fd241159e4
 
 pkgname = serial-studio-bin

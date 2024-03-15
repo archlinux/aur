@@ -2,7 +2,7 @@
 pkgname=serial-studio-bin
 _pkgname=SerialStudio
 pkgver=1.1.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Multi-purpose serial data visualization & processing program"
 arch=('x86_64')
 url="https://serial-studio.github.io/"
@@ -18,6 +18,9 @@ depends=(
     'qt6-declarative'
     'libgpg-error'
 )
+makedepends=(
+    'fuse2'
+)
 options=('!strip')
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-Linux.AppImage"
@@ -26,7 +29,7 @@ source=(
 )
 sha256sums=('22b6a9465b9b56bb321956991f6746117f7f084d56082b28000bed0908919be8'
             '2bd1d916e395ee261da269285a9cb803e6f594b0cb97b50e01b43e0911004d17'
-            '29b844cd3caadeb5ff4fb94ab550ccc7fb8241490e3f3e8ac33c24c769d90c36')
+            '9b0fc0eb27805a22012ca316cc9d2b04168067b89802a2818ff5f5fd241159e4')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
