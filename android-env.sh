@@ -106,22 +106,28 @@ export ANDROID_PREFIX_INCLUDE=${ANDROID_PREFIX}/include
 export ANDROID_PREFIX_LIB=${ANDROID_PREFIX}/lib
 export ANDROID_PREFIX_ETC=${ANDROID_PREFIX}/etc
 export ANDROID_PREFIX_SHARE=${ANDROID_PREFIX}/share
+export ANDROID_PREFIX_VAR=${ANDROID_PREFIX}/var
 export PKG_CONFIG_SYSROOT_DIR=${ANDROID_PREFIX}
 export PKG_CONFIG_LIBDIR=${ANDROID_PREFIX_LIB}/pkgconfig:${ANDROID_PREFIX_SHARE}/pkgconfig
 
 export CC=${ANDROID_CC}
 export CXX=${ANDROID_CXX}
-export CFLAGS="-O2 \
-               -Werror=format-security \
-               -Wformat \
-               -Wp,-D_FORTIFY_SOURCE=2 \
-               -fexceptions \
-               -fno-plt \
-               -pipe \
-               -I${ANDROID_PREFIX_INCLUDE}"
-export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
-export LDFLAGS="-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now \
-                -L${ANDROID_PREFIX_LIB}"
+
+[[ "${CFLAGS}" != *-O2* ]] && export CFLAGS="${CFLAGS} -O2"
+[[ "${CFLAGS}" != *-pipe* ]] && export CFLAGS="${CFLAGS} -pipe"
+[[ "${CFLAGS}" != *-fno-plt* ]] && export CFLAGS="${CFLAGS} -fno-plt"
+[[ "${CFLAGS}" != *-fexceptions* ]] && export CFLAGS="${CFLAGS} -fexceptions"
+[[ "${CFLAGS}" != *-I${ANDROID_PREFIX_INCLUDE}* ]] && export CFLAGS="${CFLAGS} -I${ANDROID_PREFIX_INCLUDE}"
+[[ "${CPPFLAGS}" != *-D_FORTIFY_SOURCE=* ]] && export CPPFLAGS="${CPPFLAGS} -D_FORTIFY_SOURCE=2"
+[[ "${CPPFLAGS}" != *-I${ANDROID_PREFIX_INCLUDE}* ]] && export CPPFLAGS="${CPPFLAGS} -I${ANDROID_PREFIX_INCLUDE}"
+[[ "${CXXFLAGS}" != *-O2* ]] && export CCXXFLAGS="${CCXXFLAGS} -O2"
+[[ "${CXXFLAGS}" != *-pipe* ]] && export CCXXFLAGS="${CCXXFLAGS} -pipe"
+[[ "${CXXFLAGS}" != *-fno-plt* ]] && export CCXXFLAGS="${CCXXFLAGS} -fno-plt"
+[[ "${CXXFLAGS}" != *-fexceptions* ]] && export CCXXFLAGS="${CCXXFLAGS} -fexceptions"
+[[ "${CXXFLAGS}" != *-I${ANDROID_PREFIX_INCLUDE}* ]] && export CCXXFLAGS="${CCXXFLAGS} -I${ANDROID_PREFIX_INCLUDE}"
+[[ "${LDFLAGS}" != *-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now* ]] && export LDFLAGS="${LDFLAGS} -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now"
+[[ "${LDFLAGS}" != *-I${ANDROID_PREFIX_LIB}* ]] && export LDFLAGS="${LDFLAGS} -L${ANDROID_PREFIX_LIB}"
+
 export AR=${ANDROID_AR}
 export OBJDUMP=${ANDROID_OBJDUMP}
 export RANLIB=${ANDROID_RANLIB}
