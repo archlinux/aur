@@ -1,10 +1,10 @@
 pkgbase = clangd-opt
 	pkgdesc = DEPRECATED: Install `clangd-opt-git` instead
 	pkgver = 19.r4743.gcb6ff746e0c7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://llvm.org/
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
 
 pkgname = clangd-opt
-	depends = clangd-opt-git
+	replaces = clangd-opt-git
