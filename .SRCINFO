@@ -1,0 +1,37 @@
+pkgbase = clipse
+	pkgdesc = A configurable TUI clipboard manager for Unix.
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/savedra1/clipse
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	arch = riscv64
+	license = GPL-3.0-or-later
+	makedepends = go
+	depends = go
+	depends = git
+	optdepends = xclip
+	optdepends = wl-clipboard
+	source = clipse-0.0.6.tar.gz::https://github.com/savedra1/clipse/archive/refs/tags/v0.0.6.tar.gz
+	sha256sums = 19901c92d2a7286e3fc5dac52c5f5e6ee709f1489ca8a0f5f2b4d9f6b5f92cef
+
+pkgname = clipse
+pkgbase = clipse
+	pkgdesc = A configurable TUI clipboard manager for Unix.
+	pkgver = 0.0.6
+	pkgrel = 2
+	url = https://github.com/savedra1/clipse
+	arch = any
+	license = GPL-3.0-or-later
+	depends = go
+	optdepends = xclip
+	optdepends = wl-clipboard
+	source = clipse-0.0.6.tar.gz::https://github.com/savedra1/clipse/archive/refs/tags/v0.0.6.tar.gz
+	sha256sums = 19901c92d2a7286e3fc5dac52c5f5e6ee709f1489ca8a0f5f2b4d9f6b5f92cef
+
+pkgname = clipse
