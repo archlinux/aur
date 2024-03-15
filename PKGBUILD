@@ -1,7 +1,7 @@
 # Maintainer: schmidtandreas <mail@schmidt-andreas.de>
 
 pkgname=wofi-pass
-pkgver="v24.0.0"
+pkgver="v24.0.2"
 pkgrel=1
 pkgdesc="A Wayland-native interface for conveniently using pass"
 arch=('any')
@@ -14,9 +14,9 @@ source=("${url}/releases/download/${pkgver}/wofi-pass"
         "${url}/releases/download/${pkgver}/wofi-pass.conf"
         "${url}/releases/download/${pkgver}/wofi-pass.1.gz"
         "${url}/releases/download/${pkgver}/LICENSE")
-sha256sums=('0d609958635672b23d7caccf887fcda913fb6132f008efb2a8cf61f922a2385b'
+sha256sums=('193c80fd45610db166ed792a8f3f635fb8012e89b9d94d0055c9e96d3cf94962'
             'de9159969fca39ce888a6350660bbae418be1a26016c6c421bf90719e733a1a3'
-            '895f5821423a480b5f96ac53869e087129c010ed05998006ccf1b3ea11530d59'
+            'ae04e662027adc49b8b692567b3a85255bfa05a06d64951935f3427c7fe38d82'
             '8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643')
 noextract=("wofi-pass.1.gz")
 
