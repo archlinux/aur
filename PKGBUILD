@@ -2,7 +2,7 @@
 
 _pkgname=pacwrap
 pkgname=('pacwrap-git' 'pacwrap-dist-git')
-pkgver=0.7.2.r20.4c76ab0
+pkgver=0.7.2.r21.89d8109
 pkgrel=1
 _pkgbase=$_pkgname
 pkgdesc="Facilitates the creation, management, and execution of unprivileged Arch-based bubblewrap containers."
@@ -27,10 +27,6 @@ prepare() {
 
 build() {
   	cd "${_pkgbase}"
-
-    # Uncomment this line below if core-testing/pacman-6.1 is installed
-    #git switch alpm14 
-    
     PACWRAP_SCHEMA_BUILT=1 \
 	cargo build --release --frozen \
 	&& ./dist/tools/package.sh release
