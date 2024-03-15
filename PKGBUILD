@@ -2,7 +2,7 @@
 pkgname=lyricistant-bin
 pkgver=3.3.1
 _electronversion=27
-pkgrel=4
+pkgrel=5
 pkgdesc="A helpful writing assistant for lyricists!"
 arch=(
     'aarch64'
@@ -16,16 +16,20 @@ depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
 )
+makedepends=(
+    'fuse2'
+)
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}%2Belectron.ios/${pkgname%-bin}-linux_arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}%2Belectron.ios/${pkgname%-bin}-linux_x86_64.AppImage")
 source=("${pkgname%-bin}.sh")
-sha256sums=('0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+sha256sums=('dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 sha256sums_aarch64=('7c4defe5dd8f241ad09e2a62ef53d0e463ae050f0f22eeccc67d1316fc81dd54')
 sha256sums_x86_64=('b1d03148affb5f54d381e69fadef8b1d55cb46d351dcdac39bad8ab1e6bed6c7')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
