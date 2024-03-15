@@ -1,0 +1,17 @@
+pkgbase = bisq2
+	pkgdesc = The Decentralized Trading Platform
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://bisq.network
+	arch = any
+	license = AGPL3
+	makedepends = zulu-17-bin
+	makedepends = git
+	depends = zulu-17-bin
+	provides = bisq2
+	source = git+https://github.com/bisq-network/bisq2#tag=v2.0.1
+	source = bisq2.desktop
+	sha256sums = SKIP
+	sha256sums = 5a7cbc21d30ebd7b9396f2dd012ccc9f79af76c5651586ec6c6bc6f2d514ac29
+
+pkgname = bisq2

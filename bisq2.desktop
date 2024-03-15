@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Bisq2
+GenericName=Bisq2
+Comment=The Decentralized Trading Platform
+Exec=/usr/bin/bisq2-desktop
+Icon=bisq2
+Terminal=false
+Type=Application
+Categories=Utility;Finance;
