@@ -25,7 +25,7 @@ pkgbase = quark-player-bin
 	depends = libcups
 	depends = libxcomposite
 	depends = alsa-lib
-	provides = quark-player=3.2.5
+	provides = quark-player=3.4.1
 	conflicts = quark-player
 	source = quark-player-3.4.1.deb::https://github.com/Alex313031/quark-player/releases/download/v3.4.1/quark-player_3.4.1_amd64.deb
 	source = LICENSE.md::https://raw.githubusercontent.com/Alex313031/quark-player/v3.4.1/LICENSE.md
