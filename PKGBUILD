@@ -3,12 +3,12 @@
 _pkgname=VAM
 _pkgver=1.1.0
 pkgname=r-${_pkgname,,}
-pkgver=1.1.0
-pkgrel=1
-pkgdesc='Variance-Adjusted Mahalanobis'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Variance-Adjusted Mahalanobis"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
@@ -18,14 +18,15 @@ optdepends=(
   r-seuratobject
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('703649a81d2691179bf1dc03c395d0740b721c4d16dd528d67441039ee9f84da')
+md5sums=('2583e8a4fe9ceedc14cb233e3a7b16b5')
+b2sums=('58be1d9e5efdcacee377d5d1e15a8f0c49a44c3e3c6c7308af9bb5c498322d2c231666c9f2926a4b53883457f7af62c3db1bb35c55d95ab79e195bbce59a6da0')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
