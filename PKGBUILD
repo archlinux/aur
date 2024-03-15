@@ -35,11 +35,10 @@ checkdepends=(
 )
 source=(
   "git+${url}"
-  Makefile
 )
 sha256sums=(
   SKIP
-  77eb4eb49bc286f772ce32721713e86836afa66547931a6e104414d100957f6e)
+)
 
 check() {
   cd \
