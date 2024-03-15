@@ -1,13 +1,15 @@
 pkgbase = r-polspline
 	pkgdesc = Polynomial Spline Routines
 	pkgver = 1.1.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=polspline
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = gcc-fortran
+	depends = blas
 	depends = r
 	source = https://cran.r-project.org/src/contrib/polspline_1.1.24.tar.gz
-	sha256sums = 6641c3666727841d291e3bbeda548ca422e4f04e7ba92e806486ca741c3a5455
+	md5sums = 7425c2c2ac60df9780e13876a94de9b9
+	b2sums = 5791eeb9a6008f5c5458996e54584b96eb8e093114fc9e837be8a8dbc1e48b291e595edd8c022501ba8ba2fea5d9db606af652301f6b608e45934176a1b87c30
 
 pkgname = r-polspline
