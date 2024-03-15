@@ -14,7 +14,7 @@
 pkgname=gnome-control-center-x11-scaling
 _pkgname=gnome-control-center
 pkgver=45.3
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME's main interface to configure various aspects of the desktop with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 license=(GPL-2.0-or-later)
@@ -27,9 +27,11 @@ depends=(
   cups-pk-helper
   dconf
   fontconfig
+  gcc-libs
   gcr
   gdk-pixbuf2
   glib2
+  glibc
   gnome-bluetooth-3.0
   gnome-color-manager
   gnome-desktop-4
@@ -107,24 +109,30 @@ source=(
   "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
   "https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/master/gnome-control-center-45.0-display-Allow-fractional-scaling-to-be-enabled.patch"
   "https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/master/gnome-control-center-45.0-display-Support-UI-scaled-logical-monitor-mode.patch"
-  "https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/4ce2029df691061d71b99a77c56b09376652dc09/pixmaps-dir.diff"
+  "https://gitlab.archlinux.org/archlinux/packaging/packages/gnome-control-center/-/raw/5549a8fdee89db942c46cae91a7e7dbfc8d41baf/0001-info-overview-Install-bare-logos-into-pixmaps-not-ic.patch"
+  "https://gitlab.archlinux.org/archlinux/packaging/packages/gnome-control-center/-/raw/5549a8fdee89db942c46cae91a7e7dbfc8d41baf/0002-subprojects-Update-gvc-to-latest-commit.patch"
 )
 b2sums=('SKIP'
         'SKIP'
         '968494b571fa09217b45ac94e02e931b0761a73cfcadde879d7a5d66f5ccd420d521b39d2eaf6dcfcf77ac7edbf3e7e3cabee54323ab641f2dbf6c6a04b122e3'
         '7d0cd2fd2faa08ff5608b2e3965b6dafb829ff4de97c41b45a575126d926cb9c78197b0dc125e67d3007a5529559dbfba14039e64b658c788f7552af7c3146c1'
-        'a133d524de9e8a2a27b61dd68b95238fa916c30d60e092f7ed3a371edb1e4ca233f46941d004dbfa2b8c13f464dab2e2729bb023ddd0e8c4d7e147b11e8e82ef')
+        'ae1401e0811658e10ff2317065aace8d4172530a322a4f71639737c6bc07621fdb9dae23ccabbee8a57cb00cadf93ea9c2cef2948aee432e2202dff070a95e4b'
+        '587186a917094d98abb79adc031b463fb33d5f06f441b1895804510e13f83e8bfed2d9cebd6b013e2674f83c829cef4be97bda7dbd8d9ff5bf56d72235a0df6c')
 
 pkgver() {
   cd $_pkgname
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+  git describe --tags | sed -r 's/\.([a-z])/\1/;s/([a-z])\./\1/;s/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
   cd $_pkgname
 
   # Install bare logos into pixmaps, not icons
-  git apply -3 ../pixmaps-dir.diff
+  git apply -3 ../0001-info-overview-Install-bare-logos-into-pixmaps-not-ic.patch
+
+  # Update libgnome-volume-control
+  # Related to https://gitlab.archlinux.org/archlinux/packaging/packages/gnome-shell/-/issues/3
+  git apply -3 ../0002-subprojects-Update-gvc-to-latest-commit.patch
 
   git submodule init subprojects/gvc
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
