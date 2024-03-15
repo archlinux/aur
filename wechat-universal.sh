@@ -32,6 +32,7 @@ env_add() {
 BWRAP_ENV_APPEND=()
 # wechat-universal only supports xcb
 env_add QT_QPA_PLATFORM xcb
+env_add QT_AUTO_SCREEN_SCALE_FACTOR 1
 env_add PATH "/sandbox:${PATH}"
 
 case "${XMODIFIERS}" in 
