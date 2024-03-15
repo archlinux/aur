@@ -1,0 +1,5 @@
+#!/bin/sh
+[ -r /etc/conf.d/jellyseerr ] . /etc/conf.d/jellyseerr
+
+cd /usr/lib/jellyseerr
+PORT="$PORT" HOST="$HOST" JELLYFIN_TYPE="$JELLYFIN_TYPE" exec chpst -u jellyseerr:jellyseerr yarn start

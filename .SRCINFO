@@ -1,0 +1,15 @@
+pkgbase = jellyseerr-runit
+	pkgdesc = Runit service script for jellyseerr.
+	pkgver = 20240313
+	pkgrel = 1
+	url = https://github.com/Fallenbagel/jellyseerr
+	arch = any
+	license = MIT
+	depends = jellyseerr
+	depends = runit
+	source = jellyseerr.run
+	source = jellyseerr.log.run
+	sha256sums = a38cb12a18141009fb930eade546f8c47b66cd34312072b816af33b76eeff2d6
+	sha256sums = 92ded2c720cb4da64788157222abeae853b589c58e3eaeae743d938225a7958e
+
+pkgname = jellyseerr-runit
