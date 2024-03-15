@@ -5,7 +5,7 @@ if [[ -z "${XDG_DOCUMENTS_DIR}" ]]; then
     exit 1
 fi
 export XAUTHORITY="${XAUTHORITY:-${HOME}/.Xauthority}"
-WECHAT_DATA_DIR="$(readlink -f ${WECHAT_DATA_DIR:-${XDG_DOCUMENTS_DIR}/WeChat_Data})"
+WECHAT_DATA_DIR="$(readlink -f -- "${WECHAT_DATA_DIR:-${XDG_DOCUMENTS_DIR}/WeChat_Data}")"
 WECHAT_FILES_DIR="${WECHAT_DATA_DIR}/xwechat_files"
 WECHAT_HOME_DIR="${WECHAT_DATA_DIR}/home"
 
@@ -53,8 +53,8 @@ BWRAP_ARGS=(
     --ro-bind /etc/localtime{,}
     --ro-bind-try /etc/fonts{,}
     # /sys, for va-api: https://aur.archlinux.org/packages/wechat-universal-bwrap#comment-961215
-    --ro-bind /sys/dev /sys/dev
-    --ro-bind /sys/devices /sys/devices
+    --ro-bind /sys/dev{,}
+    --ro-bind /sys/devices{,}
     # /tmp
     --tmpfs /tmp
     # /opt, Wechat-beta itself
