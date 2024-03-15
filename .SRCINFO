@@ -1,18 +1,18 @@
 pkgbase = eclipse-rcp
 	pkgdesc = IDE for Rich Client Platform (RCP) and Remote Application Platform (RAP)
-	pkgver = 4.30
+	pkgver = 4.31
 	pkgrel = 1
 	epoch = 2
 	url = https://eclipse.org/ide
 	arch = x86_64
 	license = EPL
 	depends = java-environment>=17
-	provides = eclipse=4.30-1
+	provides = eclipse=4.31-1
 	conflicts = eclipse
 	backup = usr/lib/eclipse/eclipse.ini
-	source = eclipse-rcp-2023-12-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2023-12/R/eclipse-rcp-2023-12-R-linux-gtk-x86_64.tar.gz&r=1
+	source = eclipse-rcp-2024-03-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2024-03/R/eclipse-rcp-2024-03-R-linux-gtk-x86_64.tar.gz&r=1
 	source = eclipse.desktop::https://git.eclipse.org/c/linuxtools/org.eclipse.linuxtools.eclipse-build.git/plain/desktopintegration/eclipse.desktop?h=f20
-	sha512sums = bd4be0c9c86892975088a50281cc07adda74ba79196808c96fc98e1b3b560bcce9039940bed6b730f7f367501fa6c7049fc2311dc6d30f6ad439d1ed014f4a7d
+	sha512sums = c3bbe979e62e599a44d65d49223f0c7a537b9a48977b827816ca1d0925ea8d8bf12d7ed206a4a287432fe3af7710ac96ab2fd461c9855d8202696bd547d76cad
 	sha512sums = e1ef156793d844ab20e38b0ea055836a0732005657556eee85ae337d0ed4242cd204a0c62709b505454ac7ae7c2235d2ef286252855728c79cf66e77b97041a0
 
 pkgname = eclipse-rcp
