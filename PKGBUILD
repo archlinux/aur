@@ -2,7 +2,7 @@
 
 pkgname=pix
 pkgver=3.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Image viewer and browser based on gthumb. X-Apps Project."
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
