@@ -1,6 +1,6 @@
 pkgbase=linux-dfsg
 pkgname=(linux{,-headers}-bin)
-pkgver=6.7.9_1
+pkgver=6.7.9_2
 pkgrel=1
 arch=(x86_64 aarch64)
 url=https://packages.debian.org/source/sid/linux
@@ -8,24 +8,24 @@ license=(GPL2)
 options=(!strip)
 _url=https://ftp.debian.org/debian/pool/main/l/linux
 source_x86_64=(
-	$_url/linux-image-6.7.9-amd64-unsigned_6.7.9-1_amd64.deb
-	$_url/linux-headers-6.7.9-amd64_6.7.9-1_amd64.deb
-	$_url/linux-headers-6.7.9-common_6.7.9-1_all.deb
-	$_url/linux-kbuild-6.7.9_6.7.9-1_amd64.deb)
+	$_url/linux-image-6.7.9-amd64-unsigned_6.7.9-2_amd64.deb
+	$_url/linux-headers-6.7.9-amd64_6.7.9-2_amd64.deb
+	$_url/linux-headers-6.7.9-common_6.7.9-2_all.deb
+	$_url/linux-kbuild-6.7.9_6.7.9-2_amd64.deb)
 source_aarch64=(`sed s/md/rm/g<<<${source_x86_64[@]}`)
 noextract=(
 	${source_x86_64[@]##*/}
 	${source_aarch64[@]##*/})
 sha256sums_x86_64=(
-	e7480b399a8e7614499c2c70e252b60b9a63330d705df539d4feff5592c54e80
-	8e8128fe8f2e7d803ac498f568f67f1a4d1578e7cde2cd479a95f68bc1290960
-	205c07e2453aa8e3ec1016faec1624750827584546ca2e544b94badf6fce686a
-	c6ec5002464661c7b7b1dd65fbfe36e5c904f29035bcc1aa5654cf8451065f50)
+	bd6f5414588cd926adbdc71425cd77809cd5484aea7a19284a621f646292a507
+	aa65dd1f6596ddeb103803fc6b4be2585aa364899b9f26744accea573af92e97
+	e06b04addc4c6dba4b5a600398977eaec786401a94081b154986e0c198e92bc9
+	78640a4f27512f03e808368f0094d88c8e90ed593b769215f7c3b60f3e58342d)
 sha256sums_aarch64=(
-	e2326128e587a7de8247c3bee95bb12a1e3ad56a07051c524045de02741dd901
-	1e45bd24b9f8c23ac35d682690a4fc10ea1b2d53a74fdd017ce2fa861d85be9b
+	bfe3a6ba2753d093ce7dcf57319b755cdc20919efa86a667e510fc8a503c29b4
+	85c7d3bdcbe600563e522f86e4f334adc880b8295574eb3ba2073e1e2f7d9e91
 	${sha256sums_x86_64[2]}
-	abf3ad70c600a5dc265d0feb482b03684fe286bfaf85085a9cf2ce0655bc66a0)
+	9d9287871ce31b654a90cbc8ab446e1aab676e85733ef132a155be1980af79f1)
 _arch=${CARCH/x86_/amd} _arch=${_arch/arch/rm}
 _source=(${source_x86_64[@]});[ $_arch = arm64 ] && _source=(${source_aarch64[@]})
 _pkgver=6.7.9
