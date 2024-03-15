@@ -1,6 +1,6 @@
 # Maintainer: Morgan <morganamilo@archlinux.org>
 pkgname=paru-bin
-pkgver=2.0.1
+pkgver=2.0.3
 pkgrel=1
 pkgdesc='Feature packed AUR helper'
 url='https://github.com/morganamilo/paru'
@@ -9,14 +9,14 @@ source_aarch64=("https://github.com/Morganamilo/paru/releases/download/v$pkgver/
 source_armv7h=("https://github.com/Morganamilo/paru/releases/download/v$pkgver/paru-v$pkgver-armv7h.tar.zst")
 backup=("etc/paru.conf")
 arch=('x86_64' 'aarch64' 'armv7h')
-license=('GPL3')
-depends=('git' 'pacman')
+license=('GPL-3.0-or-later')
+depends=('git' 'pacman' 'libalpm.so>=14-64')
 optdepends=('bat: colored pkgbuild printing' 'devtools: build in chroot and downloading pkgbuilds')
 conflicts=('paru')
 provides=('paru')
-sha256sums_x86_64=('5f573eaf97804da238c611f312670f7fe1895686f127ab2b993ea42733bb0a42')
-sha256sums_aarch64=('86e4ca258a5cb83e252cf112171038145cfb940b21a55257a2a42196258dda83')
-sha256sums_armv7h=('be1c638ead616f63d86bde0f8982ba4811727b3dec5f33b26492ec2b94a02f1c')
+sha256sums_x86_64=('c388283927db4c30dd54cdd4fd86706e8312397552b634c8543e9754d323482d')
+sha256sums_aarch64=('f7ca6c700e47dbf52f6659e22c6361c12c766130c1bec22cf3c58dbcece8381d')
+sha256sums_armv7h=('a965386fbe6c925a9843c3ecaac53ad2a4a2a070924e898044f933facf4064e3')
 
 package() {
   cd "$srcdir/"
