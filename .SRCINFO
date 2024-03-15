@@ -1,0 +1,18 @@
+pkgbase = mpv-omniglass-git
+	pkgdesc = touchpad gestures for mpv using omniglass backend
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/guarapicci/mpv-omniGlass
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = gcc
+	makedepends = mpv
+	depends = glibc
+	depends = omniglass-git
+	depends = mpv
+	provides = mpv-omniglass
+	source = git+https://github.com/guarapicci/mpv-omniGlass
+	sha256sums = SKIP
+
+pkgname = mpv-omniglass-git
