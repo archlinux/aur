@@ -1,7 +1,7 @@
 pkgbase = android-x86-openpmix
 	pkgdesc = Extended version of the PMI standard (Android, x86)
 	pkgver = 4.2.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/openpmix/openpmix
 	arch = any
 	license = BSD-3-Clause
