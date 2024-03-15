@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-pcre2
-	pkgdesc = A library that implements Perl 5-style regular expressions (android)
-	pkgver = 10.42
+	pkgdesc = A library that implements Perl 5-style regular expressions (Android, aarch64)
+	pkgver = 10.43
 	pkgrel = 1
 	url = http://www.pcre.org/
 	arch = any
@@ -14,10 +14,7 @@ pkgbase = android-aarch64-pcre2
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/PhilipHazel/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.bz2
-	source = https://github.com/PhilipHazel/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.bz2.sig
-	validpgpkeys = 45F68D54BBE23FB3039B46E59766E084FB0F43D8
-	sha512sums = 72fbde87fecec3aa4b47225dd919ea1d55e97f2cbcf02aba26e5a0d3b1ffb58c25a80a9ef069eb99f9cf4e41ba9604ad06a7ec159870e1e875d86820e12256d3
-	sha512sums = SKIP
+	source = https://github.com/PhilipHazel/pcre2/releases/download/pcre2-10.43/pcre2-10.43.tar.bz2
+	md5sums = c8e2043cbc4abb80e76dba323f7c409f
 
 pkgname = android-aarch64-pcre2
