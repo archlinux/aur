@@ -1,7 +1,7 @@
 pkgbase = steamtokendumper-bin
 	pkgdesc = Steam token dumper for SteamDB
 	pkgver = r0.3eadaaa
-	pkgrel = 1
+	pkgrel = 2
 	url = https://steamdb.info/tokendumper/
 	arch = x86_64
 	arch = x86_64_v3
@@ -12,9 +12,13 @@ pkgbase = steamtokendumper-bin
 	options = !strip
 	backup = opt/steamtokendumper/SteamTokenDumper.config.ini
 	source = SteamTokenDumper-linux-r0.3eadaaa.tar.gz::https://tokendumper.steamdb.info/SteamTokenDumper-linux.tar.gz?hash=3eadaaacb713b2faa3f7498fe69dd7c2c4ea46dd588e9e3611f55916e9723e81
+	source = steamtokendumper.sh
 	sha256sums = 3eadaaacb713b2faa3f7498fe69dd7c2c4ea46dd588e9e3611f55916e9723e81
+	sha256sums = SKIP
 
 pkgname = steamtokendumper-bin
 	depends = libz.so=1-64
 	depends = glibc
 	depends = gcc-libs
+	depends = sh
+	optdepends = unionfs-fuse: mounting user writable settings etc. directory
