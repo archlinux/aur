@@ -3,12 +3,12 @@
 _pkgname=smoothie
 _pkgver=1.0-3
 pkgname=r-${_pkgname,,}
-pkgver=1.0.3
-pkgrel=4
-pkgdesc='Two-Dimensional Field Smoothing'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Two-Dimensional Field Smoothing"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
@@ -17,14 +17,15 @@ optdepends=(
   r-spatialvx
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('086f2ed935ec2a26865f8776da91c7ba4f50988b4e6f535e57cdeb4db62231ab')
+md5sums=('55e5de4a42d4e85033840cb9734b6572')
+b2sums=('f242146e75b0aefad9c3e23d79fa8ba3cce13653e21980a6ee993055e8f5f52dcb0cabb11eb16d0d6634c89c1ade33e4aa8ec567d03161942e101465b97044b2')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
