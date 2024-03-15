@@ -1,6 +1,6 @@
 pkgbase = linux-clear
 	pkgdesc = Clear Linux
-	pkgver = 6.7.9
+	pkgver = 6.7.10
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
@@ -14,14 +14,14 @@ pkgbase = linux-clear
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.7.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.7.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-6.7.9.xz
-	source = linux-clear::git+https://github.com/clearlinux-pkgs/linux.git#tag=6.7.8-1413
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-6.7.10.xz
+	source = linux-clear::git+https://github.com/clearlinux-pkgs/linux.git#tag=6.7.9-1414
 	source = more-uarches-20240221.2.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20240221.2.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = ef31144a2576d080d8c31698e83ec9f66bf97c677fa2aaf0d5bbb9f3345b1069
 	sha256sums = SKIP
-	sha256sums = e7562c6344c936de81e49e8613d4ac1be5f8941332e4dcf58caab8591c10f8c1
+	sha256sums = ad29958911035980290078c708a0a144943484a2f8c2ac408c040a81500393aa
 	sha256sums = SKIP
 	sha256sums = 1d3ac3e581cbc5108f882fcdc75d74f7f069654c71bad65febe5ba15a7a3a14f
 
