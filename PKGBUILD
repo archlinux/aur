@@ -3,12 +3,12 @@
 _pkgname=glmpca
 _pkgver=0.2.0
 pkgname=r-${_pkgname,,}
-pkgver=0.2.0
-pkgrel=4
-pkgdesc='Dimension Reduction of Non-Normally Distributed Data'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('LGPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Dimension Reduction of Non-Normally Distributed Data"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('LGPL-3.0-or-later')
 depends=(
   r
 )
@@ -18,18 +18,18 @@ optdepends=(
   r-knitr
   r-logisticpca
   r-markdown
-  r-matrix
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('048a9cdb303279275aa2b23bb01777dffdeaec0752709b382c2289f21e70b20b')
+md5sums=('66fdfc9cea90e82dadd1d47703ff50d2')
+b2sums=('4ad691ca0b3d4b594b8a665af495e170890dffdbbe4541f55ad4fcca11c5f0cbbf7242d95f3e1d200589482894437589ae9082e7e39529d818c49a1658ce78e9')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
