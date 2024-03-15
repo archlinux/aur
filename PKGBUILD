@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=houdoku-appimage
 pkgver=2.14.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Manga reader and library manager for the desktop"
 arch=('x86_64')
 url="https://houdoku.org/"
@@ -9,7 +9,12 @@ _ghurl="https://github.com/xgi/houdoku"
 license=("MIT")
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
-depends=()
+depends=(
+    'glibc'
+)
+makedepends=(
+    'fuse2'
+)
 options=('!strip')
 _install_path="/opt/appimages"
 source=(
