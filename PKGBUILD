@@ -4,11 +4,11 @@
 # shellcheck disable=SC2034,2164,2154
 pkgname=auto-cpufreq
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic CPU speed & power optimizer"
 arch=('any')
 url="https://github.com/AdnanHodzic/auto-cpufreq"
-license=('LGPL3')
+license=('LGPL-3.0-or-later')
 depends=('python' 'python-setuptools' 'python-psutil' 'python-click' 'python-distro' 'python-requests' 'python-gobject' 'dmidecode' 'gobject-introspection' 'gtk3')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry-core' 'python-poetry-dynamic-versioning' )
 
@@ -33,9 +33,6 @@ sha256sums=('d84d45a1638f5bff72b5ce7c1653886143cdbb4c6b198e63e054b6a18f7ade68'
             'b9233e3ae649cd1a0f91cb2d1f3ddc8eb48e475882a0d3ff5ab51295f0a30d56'
             'afe7e64dbde2ea599b319e8632d72a3c237b5c4275dd31d0f40e39719193a67b'
             '1f6ee3f549a0fe4d818c8301d9e6a893bfb473ad3c0d9d0b93d38fd4a6635dc5')
-
-
-
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
