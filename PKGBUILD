@@ -7,12 +7,12 @@
 
 _pkgname=digikam
 pkgname=digikam-without-akonadi
-_pkgver=8.2.0
+_pkgver=8.3.0
 pkgver=${_pkgver//-/} # for beta versions
 pkgrel=1
 pkgdesc='An advanced digital photo management application - without akonadi & mariadb'
 arch=(x86_64)
-license=(GPL)
+license=(GPL-2.0-or-later)
 url='https://www.digikam.org/'
 depends=(exiv2
          expat
@@ -22,78 +22,73 @@ depends=(exiv2
          glibc
          imagemagick
          jasper
-         kcalendarcore5
-         kconfig5
-         kconfigwidgets5
-         kcoreaddons5
-         kfilemetadata5
-         ki18n5
-         kiconthemes5
-         kio5
-         knotifications5
-         knotifyconfig5
-         kservice5
-         kwidgetsaddons5
-         kxmlgui5
+         kcalendarcore
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kfilemetadata
+         ki18n
+         kiconthemes
+         kio
+         knotifications
+         knotifyconfig
+         kservice
+         kwidgetsaddons
+         kxmlgui
          lcms2
          lensfun
-         libass
          libglvnd
          libgphoto2
          libheif
          libjpeg-turbo
          libksane
          libpng
-         libpulse
          libtiff
          libx11
-         libxext
          libxml2
          libxslt
-         libxv
-         marble-common
          opencv
          perl
          perl-image-exiftool
-         portaudio
-         qt5-base
-         qt5-networkauth
-         qt5-webengine
-         qt5-x11extras
-         qt5-xmlpatterns
+         qt6-base
+         qt6-multimedia
+         qt6-networkauth
+         qt6-scxml
+         qt6-svg
+         qt6-webengine
          sh
-         solid5
-         sonnet5
-         threadweaver5 
+         solid
+         sonnet
+         threadweaver
          x265
          zlib)
 makedepends=(boost
              doxygen
              eigen
              extra-cmake-modules
-             kdoctools5)
+             kdoctools)
 conflicts=('digikam')
 replaces=('digikam-without-akonadi-mediawiki-vkontakte')
 provides=('digikam')
 optdepends=('darktable: RAW import'
             'hugin: panorama tool'
-            'qt5-imageformats: support for additional image formats (WEBP, TIFF)'
+            'qt6-imageformats: support for additional image formats (WEBP, TIFF)'
             'rawtherapee: RAW import')
 source=(https://download.kde.org/stable/$_pkgname/${_pkgver%-*}/digiKam-$_pkgver.tar.xz{,.sig})
-sha256sums=('2f7fcb559b123ed9ecae5a5aef6f4560eee5f49206d9d1746dec9ab6c8fb38bf'
+sha256sums=('74107a2bff8375cddef78da05662af4fa9517acabfa0cf53692a2a338a8bf173'
             'SKIP')
 validpgpkeys=(D1CF2444A7858C5F2FB095B74A77747BC2386E50) # digiKam.org (digiKam project) <digikamdeveloper@gmail.com>
 
 build() {
   cmake -B build -S $_pkgname-$_pkgver \
     -DBUILD_TESTING=OFF \
+    -DBUILD_WITH_QT6=ON \
     -DENABLE_KFILEMETADATASUPPORT=ON \
     -DENABLE_MEDIAPLAYER=ON \
     -DENABLE_AKONADICONTACTSUPPORT=OFF \
     -DENABLE_MYSQLSUPPORT=ON \
     -DENABLE_APPSTYLES=ON \
-    -DENABLE_QWEBENGINE=ON \
-    -DSSE4_1_FOUND=OFF
+    -DENABLE_QWEBENGINE=ON
   cmake --build build
 }
 
