@@ -1,7 +1,7 @@
 pkgbase = certbox-bin
 	pkgdesc = A X.509 certificate toolbox on your desktop or in your browser. It allows you to easily generate entire certificate chains, issue certificates from existing roots, clone certificates, and more.
 	pkgver = 1.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://certbox.io/
 	arch = aarch64
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = certbox-bin
 	source = LICENSE-1.8.0::https://raw.githubusercontent.com/tls-inspector/certbox/1.8.0/LICENSE
 	source = certbox.sh
 	sha256sums = 6b2fa2b36ced9533ff04ff21bd9c7d22b4fd1747bcdc8a840f009943a51b628e
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 	source_aarch64 = certbox-1.8.0-aarch64.deb::https://github.com/tls-inspector/certbox/releases/download/1.8.0/certbox_1.8.0_arm64.deb
 	sha256sums_aarch64 = 4eb01791f546c9af026054bde32249e16d35ab04110f50583f3e1696eeeaf673
 	source_x86_64 = certbox-1.8.0-x86_64.deb::https://github.com/tls-inspector/certbox/releases/download/1.8.0/certbox_1.8.0_x64.deb
