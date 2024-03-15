@@ -1,11 +1,9 @@
 pkgbase = macchatgpt
 	pkgdesc = A desktop application which runs ChatGPT easily and free of charge.
 	pkgver = 1.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/justinhartman/MacChatGPT
-	arch = aarch64
-	arch = armv7h
-	arch = x86_64
+	arch = any
 	license = LicenseRef-custom
 	makedepends = gendesk
 	makedepends = npm
@@ -13,9 +11,10 @@ pkgbase = macchatgpt
 	makedepends = git
 	depends = electron23
 	conflicts = macchatgpt
+	options = !emptydirs
 	source = macchatgpt.git::git+https://github.com/justinhartman/MacChatGPT.git#tag=1.0.0
 	source = macchatgpt.sh
 	sha256sums = SKIP
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = macchatgpt
