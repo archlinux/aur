@@ -4,7 +4,7 @@ pkgver=1.0.0.238
 pkgrel=1
 epoch=
 pkgdesc="WeChat UOS with bwrap sandbox"
-arch=('x86_64' 'aarch64')
+arch=('x86_64' 'aarch64' 'loong64')
 url="https://weixin.qq.com/"
 license=('proprietary')
 groups=()
@@ -80,13 +80,18 @@ source_aarch64=(
 	wechat-arm-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_1.0.0.238_arm64.deb"
 )
 
-md5sums=('e9efd1f5273a4e2359375942d7ed9626'
+source_loong64=(
+	wechat-loong64-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_1.0.0.238_arm64.deb"
+)
+
+md5sums=('09bb2ace24d1399dbe60025f9dd8026d'
          'b6e6920af829dafb0be82da1c79e46a9'
          '600e74549ce2258c045d5c2f7689ea63'
          'e49130d3e6185335db9a60f31d4b7429'
          '6b159c6e9d21a98925489bc37a9aea43')
 md5sums_x86_64=('aa52e39afd9c16eee7f924093ce4c5b6')
 md5sums_aarch64=('280d9b202390954c011dbd12e28f892d')
+md5sums_loong64=('280d9b202390954c011dbd12e28f892d')
 
 
 function prepare() {
