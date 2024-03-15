@@ -2,7 +2,7 @@
 # Maintainer: Bug <bug2000@gmail.com>
 pkgname=dexed-ide
 _pkgname=dexed
-pkgver=3.9.24
+pkgver=3.9.26
 pkgrel=1
 pkgdesc="IDE for the D programming language, its compilers, tools and libraries"
 arch=(x86_64)

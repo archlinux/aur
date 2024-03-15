@@ -1,6 +1,6 @@
 pkgbase = dexed-ide
 	pkgdesc = IDE for the D programming language, its compilers, tools and libraries
-	pkgver = 3.9.24
+	pkgver = 3.9.26
 	pkgrel = 1
 	url = https://gitlab.com/basile.b/dexed
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = dexed-ide
 	depends = dscanner
 	depends = vte-legacy
 	conflicts = dexed-ide-bin
-	source = git+https://gitlab.com/basile.b/dexed.git#tag=v3.9.24
+	source = git+https://gitlab.com/basile.b/dexed.git#tag=v3.9.26
 	md5sums = SKIP
 
 pkgname = dexed-ide
