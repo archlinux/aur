@@ -1,6 +1,6 @@
 # Maintainer: Adis Durakovic <aur@mail.adisdurakovic.com>
 pkgname=resticity
-pkgver=1.0.15
+pkgver=1.0.16
 pkgrel=1
 epoch=
 pkgdesc="A frontend for restic"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
 noextract=()
-sha256sums=('7c569ae111f271f5b53693f458c5f8e0f886bc19a183086e3cd062d1b2a3ea1c')
+sha256sums=('51039b59acd24873f6ccb2fdf2fa27058be0d54664b0c1c59df0db6deeb516a5')
 validpgpkeys=()
 
 prepare() {
