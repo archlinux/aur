@@ -1,12 +1,15 @@
 pkgbase = python-imagehash
 	pkgdesc = A Python Perceptual Image Hashing Module
 	pkgver = 4.3.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/JohannesBuchner/imagehash
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-numpy
 	depends = python-pillow
 	depends = python-pywavelets
