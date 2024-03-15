@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xunscore-bin
 _pkgname=Xunscore
-pkgver=1.3.13
-pkgrel=4
+pkgver=1.3.13.02
+pkgrel=5
 pkgdesc='A music notation software, let you easily create and share sheet music. The editor is called "xūn", is hoping it will be a better balance between the Chinese national music'
 arch=('x86_64')
 url="https://www.xunscore.cn/"
@@ -32,7 +32,7 @@ makedepends=(
 )
 noextract=("${pkgname%-bin}-${pkgver}.zip")
 source=(
-    "${pkgname%-bin}-${pkgver}.zip::${_giteeurl}/releases/download/${pkgver}/${pkgname%-bin}-ubt-${pkgver}.02.zip"
+    "${pkgname%-bin}-${pkgver}.zip::${_giteeurl}/releases/download/${pkgver%.02}/${pkgname%-bin}-ubt-${pkgver}.zip"
     "LICENSE-${pkgver}::${_giteeurl}/blob/${pkgver}/README.md"
     "${pkgname%-bin}-${pkgver}.png::https://foruda.gitee.com/avatar/1677181395504012245/9611953_xunscore_1629422881.png"
     "${pkgname%-bin}.sh"
@@ -40,7 +40,7 @@ source=(
 sha256sums=('53027cd57be24ed6b41c870830a3a10b5a8558c0064f3f20caff5fc03d5b2d2d'
             '58218adbfdf61f32c1648f4d587df6a871f8102f6e3964805acac2048b719365'
             '025373ba75679076a9a681b69057b632b17195cc9c3ece1192104efabbcae324'
-            'a6a347158c5b509fb187ac340639b9c5f041c5fd39e936f1f05cfc1d28b02e40')
+            '6861d547ea70d70e42432abfacf3e5003683532271322e0a6e2985521bec9e3c')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
