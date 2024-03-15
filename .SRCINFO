@@ -1,14 +1,13 @@
 pkgbase = bdebstrap
 	pkgdesc = YAML config based multi-mirror Debian chroot creation tool
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bdrung/bdebstrap
 	arch = any
 	license = ISC
 	checkdepends = python-black
 	checkdepends = python-isort
 	checkdepends = python-pylint
-	checkdepends = python-coverage
 	checkdepends = flake8
 	checkdepends = shellcheck
 	makedepends = pandoc

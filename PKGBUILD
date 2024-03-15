@@ -1,7 +1,7 @@
 # Maintainer: Jax Young <jaxvanyang@gmail.com>
 pkgname=bdebstrap
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="YAML config based multi-mirror Debian chroot creation tool"
 arch=('any')
 url="https://github.com/bdrung/bdebstrap"
@@ -12,7 +12,6 @@ checkdepends=(
 	'python-black'
 	'python-isort'
 	'python-pylint'
-	'python-coverage'
 	'flake8'
 	'shellcheck')
 optdepends=(
@@ -33,7 +32,7 @@ build() {
 
 check() {
 	cd "$pkgname-$pkgver"
-	python -m coverage run -m unittest discover -v
+	python -m unittest discover -v
 }
 
 package() {
