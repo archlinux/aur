@@ -2,15 +2,6 @@
 
 source android-env @TRIPLE@
 
-default_android_pp_flags="-D_FORTIFY_SOURCE=2"
-default_android_compiler_flags="$default_android_pp_flags -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4"
-default_android_linker_flags="-Wl,-O1,--sort-common,--as-needed"
-
-export CPPFLAGS="${ANDROID_CPPFLAGS:-$default_android_pp_flags $CPPFLAGS}"
-export CFLAGS="${ANDROID_CFLAGS:-$default_android_compiler_flags $CFLAGS}"
-export CXXFLAGS="${ANDROID_CXXFLAGS:-$default_android_compiler_flags $CXXFLAGS}"
-export LDFLAGS="${ANDROID_LDFLAGS:-$default_android_linker_flags $LDFLAGS}"
-
 PATH=${ANDROID_PREFIX_BIN}:$PATH cmake \
     -DCMAKE_INSTALL_PREFIX:PATH=${ANDROID_PREFIX} \
     -DCMAKE_INSTALL_LIBDIR:PATH=lib \

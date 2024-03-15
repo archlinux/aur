@@ -1,7 +1,7 @@
 pkgbase = android-cmake
-	pkgdesc = CMake wrapper for Android (android)
+	pkgdesc = CMake wrapper for Android
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cmake.org/
 	arch = any
 	license = custom
@@ -10,8 +10,7 @@ pkgbase = android-cmake
 	depends = android-pkg-config
 	source = android-cmake.sh
 	source = android-cmake-py.sh
-	sha256sums = SKIP
-	sha256sums = SKIP
+	md5sums = 2fe40ad0f9351c9bd202b25b6919b662
+	md5sums = 8e068ffe8d39fea8f7f0c03bf62ab074
 
 pkgname = android-cmake
-
