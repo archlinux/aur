@@ -1,12 +1,13 @@
 pkgbase = r-gsmoothr
 	pkgdesc = Smoothing tools
 	pkgver = 0.1.7
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=gsmoothr
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.0-or-later
 	depends = r
 	source = https://cran.r-project.org/src/contrib/gsmoothr_0.1.7.tar.gz
-	sha256sums = b75ffd2a4a0f357762e02e46e355b45cc90ea637830f0a1b01f216bb4541e903
+	md5sums = d90da237ee71eb665b8d59f210c5b6ee
+	b2sums = a7b049971344680fae97daffb8c3f19de51871fc5dd8de640103b5706e6956494503b60b3ec2b78ef132b09c68342889cd1d16dcc31573d42fb2e5bbf16efda2
 
 pkgname = r-gsmoothr
