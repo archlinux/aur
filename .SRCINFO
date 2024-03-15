@@ -1,6 +1,6 @@
 pkgbase = webstorm
 	pkgdesc = JavaScript IDE and HTML editor
-	pkgver = 2023.3.4
+	pkgver = 2023.3.5
 	pkgrel = 1
 	url = https://www.jetbrains.com/webstorm/
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = webstorm
 	license = custom:jetbrains
 	depends = glib2
 	options = !strip
-	source = https://download-cf.jetbrains.com/webstorm/WebStorm-2023.3.4.tar.gz
+	source = https://download-cf.jetbrains.com/webstorm/WebStorm-2023.3.5.tar.gz
 	source = jetbrains-webstorm.desktop
 	source = LICENSE
-	b2sums = b3f6189cc8f2a5f20f7d7ba5fa8ef232fe713f10c57a8637cfda63c7fd4cf903b6c269d497de6c40c6dbc34f706ea327a714e75c2bf52eebe9b595e08cb2399c
+	b2sums = 855a0aa33e560113e65ee050a8737ae644c1596118966abc644399c1504c31dee7df93684163512f579c6e23b8d2b73822749a9e088c4cc428443141ef9b8a03
 	b2sums = 0d4e900eb8c78abf7acbbcc86400065d63d9cd3fec77299d7d6abf540a9bf589f879b274f9bb23573f6ef78592b8987414816a56397b9d8d80d6bad29ad4440d
 	b2sums = dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77
 
