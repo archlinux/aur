@@ -17,7 +17,7 @@ install=.install
 
 source=(
 	"botgem-${pkgver}.appx::https://github.com/Pylogmon/botgem-package-archive/releases/download/${pkgver}/botgem-${pkgver}.appx"
-	"sqlite3-x86_64.tar.gz::https://github.com/TryGhost/node-sqlite3/releases/download/v5.1.7/sqlite3-v5.1.7-napi-v3-linux-x64.tar.gz"
+	"sqlite3-x86_64.tar.gz::https://github.com/TryGhost/node-sqlite3/releases/download/v5.1.7/sqlite3-v5.1.7-napi-v6-linux-x64.tar.gz"
 	botgem
 	botgem.desktop
 )
