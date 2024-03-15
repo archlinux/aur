@@ -1,11 +1,11 @@
 pkgbase = android-environment
 	pkgdesc = Script providing common environment variables and functions for Android builds.
 	pkgver = 4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://aur.archlinux.org/packages/android-evironment
 	arch = any
 	license = MIT
 	source = android-env.sh
-	md5sums = SKIP
+	md5sums = 7be36fb56e0433dcd6e7ba7758071c67
 
 pkgname = android-environment

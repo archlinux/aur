@@ -111,9 +111,21 @@ export PKG_CONFIG_LIBDIR=${ANDROID_PREFIX_LIB}/pkgconfig:${ANDROID_PREFIX_SHARE}
 
 export CC=${ANDROID_CC}
 export CXX=${ANDROID_CXX}
-export CFLAGS="-I${ANDROID_PREFIX_INCLUDE} ${CFLAGS}"
-export CXXFLAGS="-I${ANDROID_PREFIX_INCLUDE} ${CXXFLAGS}"
-export LDFLAGS="-L${ANDROID_PREFIX_LIB} ${LDFLAGS}"
+export CFLAGS="-O2 \
+               -Werror=format-security \
+               -Wformat \
+               -Wp,-D_FORTIFY_SOURCE=2 \
+               -fexceptions \
+               -fno-plt \
+               -pipe \
+               -I${ANDROID_PREFIX_INCLUDE}"
+export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
+export LDFLAGS="-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now \
+                -L${ANDROID_PREFIX_LIB}"
+export AR=${ANDROID_AR}
+export OBJDUMP=${ANDROID_OBJDUMP}
+export RANLIB=${ANDROID_RANLIB}
+export STRIP=${ANDROID_STRIP}
 
 ndk_version() {
     grep 'Pkg.Revision' ${ANDROID_NDK_HOME}/source.properties | awk '{print $3}'
