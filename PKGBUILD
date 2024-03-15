@@ -2,7 +2,7 @@
 
 pkgname=python-validio-sdk
 _name=validio_sdk
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="SDK for the Validio platform"
 url="https://pypi.org/project/validio-sdk/"
@@ -19,7 +19,7 @@ makedepends=(
 license=('Apache-2.0')
 arch=(any)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('f0ef449ee6acaf52fe3e9fb7d41940d6c8bd80e523b655cff481640e4b1bfb41')
+sha256sums=('9d3a858ffff6ed5f2506bbdc205842f4619532be673308949a7a43232571f286')
 
 build() {
     cd "$_name-$pkgver"
