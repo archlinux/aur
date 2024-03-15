@@ -1,0 +1,23 @@
+[Desktop Entry]
+Name=Notesnook
+Exec=notesnook %U
+Terminal=false
+Type=Application
+Icon=notesnook
+StartupWMClass=Notesnook
+actions=undefined
+Comment=Your private note taking space
+Categories=Office;
+Actions=new-note;new-notebook;new-reminder;
+ 
+[Desktop Action new-note]
+Name=New note
+Exec=notesnook %U new note
+ 
+[Desktop Action new-notebook]
+Name=New notebook
+Exec=notesnook %U new notebook
+ 
+[Desktop Action new-reminder]
+Name=New reminder
+Exec=notesnook %U new reminder

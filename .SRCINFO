@@ -1,13 +1,26 @@
 pkgbase = notesnook-git
-	pkgdesc = Take private notes, capture ideas, make lists & sync them anywhere
-	pkgver = 1.6.11
+	pkgdesc = A fully open source & end-to-end encrypted note taking alternative to Evernote
+	pkgver = 2.6.16.r12.ga3b590bcb
 	pkgrel = 1
 	url = https://notesnook.com/
+	arch = aarch64
 	arch = x86_64
-	license = Unknown
-	depends = gtk3
-	depends = nss
-	source = notesnook-git_1.6.11_amd64.deb::https://github.com/streetwriters/notesnook-git/releases/download/v1.6.11/notesnook-git_amd64.deb
-	sha256sums = 1633b7989f49c4cb119cff2aeaa696b9252cae4f43361a0bd0dce64fbb1ac674
+	license = GPL-3.0-or-later
+	makedepends = nvm
+	makedepends = npm
+	makedepends = git
+	makedepends = zip
+	makedepends = base-devel
+	makedepends = gcc
+	makedepends = curl
+	depends = electron25-bin
+	provides = notesnook=2.6.16
+	conflicts = notesnook
+	source = notesnook.git::git+https://github.com/streetwriters/notesnook.git
+	source = notesnook.desktop
+	source = notesnook.sh
+	sha256sums = SKIP
+	sha256sums = efc8a6cea79ed0203dcbadf17632b5341952a49704f99e3ea0ddc573b06748f4
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = notesnook-git
