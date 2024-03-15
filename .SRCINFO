@@ -1,7 +1,7 @@
 pkgbase = walker
 license = MIT
 pkgdesc = wayland application runner
-pkgver = 0.0.18
+pkgver = 0.0.19
 pkgrel = 1
 url = https://github.com/abenz1267/walker
 arch = x86_64
@@ -9,8 +9,8 @@ provides = walker
 conflicts = walker
 makedepends = go
 depends = gtk4-layer-shell
-source = https://github.com/abenz1267/walker/archive/v0.0.18/walker-0.0.18.tar.gz
-sha256sums = 304c0f040d7618ac5a5ef4bf731e43bf3b34296d43ff9215ac4cc29e0d02befd
-b2sums = f3d7ce686357988cda124a1293b43997828a5e6125f6cd75018fd2b18778472baabae0ee7d9e7cb23c02bfa7d0af3726e7205f3cb25101b159b0e23d0672ef92
+source = https://github.com/abenz1267/walker/archive/v0.0.19/walker-0.0.19.tar.gz
+sha256sums = 483318f2b5b60405f0f5774f505c32863ad23dd5d1576e19446ede3caf63bbbd
+b2sums = 1eb6b16ead9c4ecd282da7e1e71e5b0f48220fb151e1d415f4d11d807efb5e8cc9b4a4065e26ab79e620cf42103ab711f3f74b04dfd46f5d577f4c71d6e4a999
 
 pkgname = walker
