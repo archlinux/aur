@@ -1,6 +1,0 @@
-post_install() {
-	echo
-	echo ':: You MUST have a valid API authentication key to use this package.'
-	echo ':: Check upstream for more information.'
-	echo
-}
