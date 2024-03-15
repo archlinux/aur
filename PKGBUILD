@@ -1,6 +1,6 @@
 # Maintainer: Sandro-Alessio Gierens <sandro@gierens.de>
 pkgname=wikijs-rs
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
