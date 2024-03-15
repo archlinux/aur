@@ -1,0 +1,6 @@
+#!/bin/sh
+exec 2>&1; set -e
+
+[ -d /var/log/bazarr ] || install -dm 755 /var/log/bazarr
+
+exec svlogd -tt /var/log/bazarr

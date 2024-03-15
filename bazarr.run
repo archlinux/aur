@@ -1,0 +1,2 @@
+#!/bin/sh
+exec chpst -u bazarr:bazarr python /usr/lib/bazarr/bazarr.py --no-update --config /var/lib/bazarr 2>&1
