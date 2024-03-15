@@ -7,19 +7,20 @@ _android_arch=x86-64
 pkgbase=android-${_android_arch}-sqlite
 pkgname=("android-${_android_arch}-sqlite"
          "android-${_android_arch}-sqlite-tcl")
-pkgver=3.45.1
-_srcver=3450100
+pkgver=3.45.2
+_srcver=3450200
 pkgrel=1
 arch=('any')
-pkgdesc="A C library that implements an SQL database engine (android)"
+pkgdesc="A C library that implements an SQL database engine (Android, ${_android_arch})"
 license=('LicenseRef-Sqlite')
 url="https://www.sqlite.org/"
-makedepends=("android-${_android_arch}-tcl"
+makedepends=('android-configure'
+             "android-${_android_arch}-tcl"
              "android-${_android_arch}-readline"
              "android-${_android_arch}-zlib")
 options=(!strip !buildflags staticlibs !emptydirs)
-source=(https://www.sqlite.org/2024/sqlite-src-${_srcver}.zip)
-sha256sums=('7f7b14a68edbcd4a57df3a8c4dbd56d2d3546a6e7cdd50de40ceb03af33d34ba')
+source=("https://www.sqlite.org/2024/sqlite-src-${_srcver}.zip")
+sha256sums=('4a45a3577cc8af683c4bd4c6e81a7c782c5b7d5daa06175ea2cb971ca71691b1')
 
 prepare() {
     cd "${srcdir}/sqlite-src-$_srcver"
@@ -49,8 +50,6 @@ build() {
         -DSQLITE_MAX_EXPR_DEPTH=10000 \
         -DSQLITE_ENABLE_MATH_FUNCTIONS"
 
-  #   CFLAGS+=" -fexceptions -DSQLITE_ENABLE_COLUMN_METADATA=1 -DSQLITE_USE_MALLOC_H=1 -DSQLITE_USE_MSIZE=1 -DSQLITE_DISABLE_DIRSYNC=1 -DSQLITE_ENABLE_RTREE=1 -fno-strict-aliasing"
-
     android-${_android_arch}-configure \
         --enable-threadsafe \
         --enable-readline \
@@ -65,7 +64,7 @@ build() {
 }
 
 package_android-x86-64-sqlite() {
-    pkgdesc="A C library that implements an SQL database engine (android)"
+    pkgdesc="A C library that implements an SQL database engine (Android, ${_android_arch})"
     depends=("android-${_android_arch}-readline"
              "android-${_android_arch}-zlib")
 
@@ -83,7 +82,7 @@ package_android-x86-64-sqlite() {
 }
 
 package_android-x86-64-sqlite-tcl() {
-    pkgdesc="sqlite Tcl Extension Architecture (TEA) (android)"
+    pkgdesc="sqlite Tcl Extension Architecture (TEA) (Android, ${_android_arch})"
     depends=("android-${_android_arch}-sqlite")
 
     cd "${srcdir}/sqlite-src-$_srcver"
