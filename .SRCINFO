@@ -1,0 +1,18 @@
+pkgbase = getnf
+	pkgdesc = Simple utility to install nerd fonts in system.
+	pkgver = r75.433810e
+	pkgrel = 1
+	url = https://github.com/getnf/getnf
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = curl
+	depends = fontconfig
+	depends = ncurses
+	depends = unzip
+	provides = getnf
+	conflicts = getnf
+	source = git+https://github.com/getnf/getnf.git
+	md5sums = SKIP
+
+pkgname = getnf
