@@ -1,10 +1,10 @@
 pkgbase = vcutil
 	pkgdesc = Misc. simple utilities to aid version control and host maintenance.
 	pkgver = 1.43
-	pkgrel = 3
-	url = https://github.com/ossobv/vcutil/
+	pkgrel = 4
+	url = https://github.com/ossobv/vcutil
 	arch = any
-	source = vcutil::git+https://github.com/ossobv/vcutil/#tag=v1.43
+	source = vcutil::git+https://github.com/ossobv/vcutil#tag=v1.43
 	sha512sums = SKIP
 
 pkgname = ipmikvm
