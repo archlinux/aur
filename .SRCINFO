@@ -1,19 +1,14 @@
 pkgbase = neovim-lint-git
 	pkgdesc = Asynchronous linter plugin
-	pkgver = r93.214b3d9
+	pkgver = r362.03b1fc5
 	pkgrel = 1
 	url = https://github.com/mfussenegger/nvim-lint
-	install = lint.install
 	arch = any
 	groups = neovim-plugins
-	license = unknown
-	checkdepends = neovim-plenary
-	checkdepends = python
+	license = GPL
 	makedepends = git
-	depends = neovim>=0.5.0
-	provides = neovim-lint
-	conflicts = neovim-lint
-	source = neovim-lint-git::git+https://github.com/mfussenegger/nvim-lint
-	md5sums = SKIP
+	source = git+https://github.com/mfussenegger/nvim-lint.git
+	sha512sums = SKIP
 
 pkgname = neovim-lint-git
+	depends = neovim
