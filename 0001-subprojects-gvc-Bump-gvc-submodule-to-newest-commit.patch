@@ -1,0 +1,20 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20Dre=C3=9Fler?= <verdre@v0yd.nl>
+Date: Tue, 12 Mar 2024 18:24:44 +0100
+Subject: [PATCH] subprojects/gvc: Bump gvc submodule to newest commit
+
+A few fixes have landed in gvc recently that should fix a crash,
+so bump the submodule to include those.
+
+Part-of: <https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/3233>
+---
+ subprojects/gvc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/subprojects/gvc b/subprojects/gvc
+index 000046e88714..91f3f4149066 160000
+--- a/subprojects/gvc
++++ b/subprojects/gvc
+@@ -1 +1 @@
+-Subproject commit 000046e88714de77db320b0711af3baacb2813a2
++Subproject commit 91f3f41490666a526ed78af744507d7ee1134323
