@@ -3,24 +3,25 @@
 _pkgname=laeken
 _pkgver=0.5.3
 pkgname=r-${_pkgname,,}
-pkgver=0.5.3
-pkgrel=1
-pkgdesc='Estimation of Indicators on Social Exclusion and Poverty'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Estimation of Indicators on Social Exclusion and Poverty"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('60495f494f2a41b2ca94e11e3d0224843b7282cf8b2a859dbf6077a3bc97e80b')
+md5sums=('53ce6fcbfb5e1ba2ecaafa353665bbaf')
+b2sums=('d8b798c7da92b82a507e640ae3a0c80d71f3ed4a7514f0a25845045dccad406724fa52dea82ad340b95e90be016acd42522306bdddd32258e07bb35b0231d636')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
