@@ -2,11 +2,11 @@
 
 _githubuser=aarnt
 _githubrepo=octopi
-_gitcommit=4f6101f1af06ec64e81d805c84716b24254b670f
+_gitcommit=69e85dddd2384bdc532f0860e4d550acfac8ea83
 
 pkgname=octopi-notifier-qt5-dev
-pkgver=0.16.0.r5.4f6101f
-pkgrel=1
+pkgver=0.16.0.r6.69e85dd
+pkgrel=2
 pkgdesc='Notifier for Octopi using Qt5 libs'
 arch=('any')
 url="https://github.com/${_githubuser}/${_githubrepo}"
