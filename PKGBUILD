@@ -1,7 +1,7 @@
 pkgbase=harrison-drum-flow
 pkgname=("${pkgbase}-vst-bin" "${pkgbase}-vst3-bin")
 pkgver=2.0.1.2cc954a5
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://store.harrisonaudio.com/all-products/drum-flow"
 license=('EULA')
@@ -22,5 +22,6 @@ package_harrison-drum-flow-vst-bin() {
 
 package_harrison-drum-flow-vst3-bin() {
 	pkgdesc="Harrison Drum Flow (VST3)"
+	groups=("vst3-plugins")
 	install -Dm755 "$srcdir/Harrison_DrumFlow/vst3/Harrison_DrumFlow.vst3/Contents/x86_64-linux/Harrison_DrumFlow.so" "$pkgdir/usr/lib/vst3/Harrison_DrumFlow.vst3/Contents/x86_64-linux/Harrison_DrumFlow.so"
 }

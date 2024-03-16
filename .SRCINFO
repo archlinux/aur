@@ -1,6 +1,6 @@
 pkgbase = harrison-drum-flow
 	pkgver = 2.0.1.2cc954a5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://store.harrisonaudio.com/all-products/drum-flow
 	arch = x86_64
 	groups = pro-audio
@@ -48,3 +48,4 @@ pkgname = harrison-drum-flow-vst-bin
 
 pkgname = harrison-drum-flow-vst3-bin
 	pkgdesc = Harrison Drum Flow (VST3)
+	groups = vst3-plugins
