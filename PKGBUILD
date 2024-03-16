@@ -1,9 +1,8 @@
 pkgbase=tal-vocoder
 pkgname=("${pkgbase}-clap-bin" "${pkgbase}-vst-bin" "${pkgbase}-vst3-bin")
 pkgver=3.0.3
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
-groups=('pro-audio')
 pkgdesc="A Phase Vocoder By TAL Software"
 url="https://tal-software.com/products/tal-vocoder"
 license=('EULA')
@@ -13,7 +12,7 @@ md5sums=('1f0e553b20c7d04da55a76c224667372')
 
 package_tal-vocoder-clap-bin() {
   ## CLAP Plugin
-  groups=("clap-plugins")
+  groups=("clap-plugins" 'pro-audio')
   replaces=("tal-vocoder-bin")
   conflicts=("tal-vocoder-bin")
   provides=("tal-vocoder-clap-bin")
@@ -22,7 +21,7 @@ package_tal-vocoder-clap-bin() {
 
 package_tal-vocoder-vst-bin() {
   ## VST2 Plugin
-  groups=("vst-plugins")
+  groups=('pro-audio' "vst-plugins")
   replaces=("tal-vocoder-bin")
   conflicts=("tal-vocoder-bin")
   provides=("tal-vocoder-vst-bin")
@@ -31,7 +30,7 @@ package_tal-vocoder-vst-bin() {
 
 package_tal-vocoder-vst3-bin() {
   ## VST3 Plugin
-  groups=("vst3-plugins")
+  groups=('pro-audio' "vst3-plugins")
   replaces=("tal-vocoder-bin")
   conflicts=("tal-vocoder-bin")
   provides=("tal-vocoder-vst3-bin")
