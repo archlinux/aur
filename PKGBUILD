@@ -3,7 +3,7 @@
 _pkgname=windecor
 pkgname=wayfire-plugins-windecor
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A window decoration plugin for wayfire - a more sophisticated alternative to the inbuilt decoration plugin"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/wayfireplugins/${_pkgname}"
@@ -15,7 +15,7 @@ md5sums=('f055d263b55eb8250fc25aa72fcbdd68')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
-  PKG_CONFIG_PATH=/usr/lib/wlroots0.16/pkgconfig meson setup .build --prefix=/usr --buildtype=release
+  meson setup .build --prefix=/usr --buildtype=release
   ninja -C .build
 }
 

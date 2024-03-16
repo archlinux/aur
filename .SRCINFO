@@ -1,7 +1,7 @@
 pkgbase = wayfire-plugins-windecor
 	pkgdesc = A window decoration plugin for wayfire - a more sophisticated alternative to the inbuilt decoration plugin
 	pkgver = 0.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/wayfireplugins/windecor
 	arch = x86_64
 	arch = aarch64
