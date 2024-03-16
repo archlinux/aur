@@ -1,0 +1,5 @@
+# artifacts from building
+pkg/
+src/
+lightburn-*
+LightBurn-*
