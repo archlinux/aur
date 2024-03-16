@@ -9,7 +9,7 @@
 
 _qt_module=qtremoteobjects
 pkgname=mingw-w64-qt5-remoteobjects
-pkgver=5.15.12
+pkgver=5.15.13
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Inter-process communication (IPC) module developed for Qt (mingw-w64)"
@@ -17,7 +17,7 @@ depends=('mingw-w64-qt5-base')
 optdepends=('mingw-w64-qt5-declarative: QML bindings')
 makedepends=('mingw-w64-gcc' 'mingw-w64-qt5-declarative')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-_commit=f64e34be9ac4b7e92c63e47235c04471a1d40c93
+_commit=18ef1cdce7bc4c93415f38f1c220ab697aa75908
 _basever=${pkgver%%+*}
 makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
@@ -25,7 +25,7 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn=${_qt_module}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('SKIP')
+sha256sums=('686ae571e32dac732903c8070a26867b19bf6d387c24cc6726aadabba286883b')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -60,7 +60,7 @@ build() {
       # avoid `.obj/release/qconnectionfactories.o:qconnectionfactories.cpp:(.text.unlikely+0xf): relocation truncated to fit: IMAGE_REL_AMD64_REL32 against undefined symbol `__cxa_pure_virtual'`
       [[ $_arch == x86_64-w64-mingw32 ]] && find . -type f -iname 'Makefile*' -exec sed -i 's|\(CXX.*\)\( -o .obj/release/qconnectionfactories.o\)|\1 -mcmodel=large \2|g' {} \;
 
-      make
+      make -j$(nproc)
       popd
     done
   done
@@ -73,7 +73,7 @@ package() {
     for _config in "${_configurations[@]}"; do
       pushd build-${_arch}-${_config##*=}
 
-      make INSTALL_ROOT="$pkgdir" install
+      make -j$(nproc) INSTALL_ROOT="$pkgdir" install
 
       # use prl files from build directory since installed prl files seem to have incorrect QMAKE_PRL_LIBS_FOR_CMAKE
       if [[ -d 'lib' ]]; then
