@@ -1,7 +1,7 @@
 # Maintainer: Stefan Biereigel <stefan@biereigel.de>
 
 pkgname=fparser-git
-pkgver=r10.a59e1f5
+pkgver=r12.a952179
 pkgrel=1
 pkgdesc="Function Parser for C++, Fork from http://warp.povusers.org/FunctionParser/"
 url="https://github.com/thliebig/fparser"
@@ -9,6 +9,7 @@ arch=('i686' 'x86_64')
 license=('LGPL3')
 provides=('fparser')
 conflicts=('fparser')
+makedepends=('cmake')
 
 source=(git+https://github.com/thliebig/fparser 'fix-libdir.patch')
 md5sums=('SKIP' 'SKIP')
