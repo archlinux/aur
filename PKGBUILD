@@ -11,9 +11,9 @@
 
 _qt_module=qtscript
 pkgname=mingw-w64-qt5-script-static
-_basever=5.15.12
+_basever=5.15.13
 pkgver=5.15.16
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Classes for making Qt applications scriptable. Provided for Qt 4.x compatibility (mingw-w64)"
 depends=('mingw-w64-qt5-base-static')
@@ -27,7 +27,7 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn=${_qt_module}
 source=(git+https://code.qt.io/qt/$_pkgfqn.git#tag=v${pkgver}-lts)
-sha256sums=('SKIP')
+sha256sums=('3e8214db546f139618ccf5ca561b70fcb4ae1c98976d4e58af5c4ca505e113a7')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -42,7 +42,7 @@ build() {
       msg2 "Building ${_config##*=} version for ${_arch}"
       mkdir -p build-${_arch}-${_config##*=} && pushd build-${_arch}-${_config##*=}
       ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config} ${_additional_qmake_args}
-      make
+      make -j$(nproc)
       popd
     done
   done
@@ -55,7 +55,7 @@ package() {
     for _config in "${_configurations[@]}"; do
       pushd build-${_arch}-${_config##*=}
 
-      make INSTALL_ROOT="$pkgdir" install
+      make -j$(nproc) INSTALL_ROOT="$pkgdir" install
 
       # use prl files from build directory since installed prl files seem to have incorrect QMAKE_PRL_LIBS_FOR_CMAKE
       if [[ -d 'lib' ]]; then
