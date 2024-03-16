@@ -1,9 +1,8 @@
 pkgbase = harrison-de-esser
 	pkgver = 5.0.0.1557034b
-	pkgrel = 3
+	pkgrel = 4
 	url = https://store.harrisonaudio.com/all-products/deesser
 	arch = x86_64
-	groups = pro-audio
 	license = EULA
 	makedepends = xdg-user-dirs
 	makedepends = unzip
@@ -39,6 +38,7 @@ pkgbase = harrison-de-esser
 
 pkgname = harrison-de-esser-vst-bin
 	pkgdesc = Harrison De-Esser (VST)
+	groups = pro-audio
 	groups = vst-plugins
 	provides = harrison-de-esser-vst-bin
 	conflicts = harrison-ava-ds-vst
@@ -48,4 +48,5 @@ pkgname = harrison-de-esser-vst-bin
 
 pkgname = harrison-de-esser-vst3-bin
 	pkgdesc = Harrison De-Esser (VST3)
+	groups = pro-audio
 	groups = vst3-plugins
