@@ -2,7 +2,7 @@
 
 pkgname=risor-bin
 _pkgname=risor
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Fast and flexible scripting for Go developers and DevOps.'
 arch=('x86_64' 'i386' 'aarch64')
@@ -12,9 +12,9 @@ makedepends=('go')
 source_x86_64=("${_pkgname}-${pkgver}_x86_64.tar.gz::$url/releases/download/v$pkgver/${_pkgname}_$(uname -s)_x86_64.tar.gz")
 source_i386=("${_pkgname}-${pkgver}_i386.tar.gz::$url/releases/download/v$pkgver/${_pkgname}_$(uname -s)_i386.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}_aarch64.tar.gz::$url/releases/download/v$pkgver/${_pkgname}_$(uname -s)_arm64.tar.gz")
-sha256sums_x86_64=('2c598706dad5c3b6fa2acd80526e1d3d8e81aec8428de27bf50eb4d835e8f6bd')
-sha256sums_i386=('f8028f3d20b33b00e27b587ce0f621c69c8d5f51cc2e79b1d29d46fe97f23249')
-sha256sums_aarch64=('31987b32e691d2f91bfa714252bc72851521839fe35459802b6bb3a7e884335d')
+sha256sums_x86_64=('8dca5181b8de85b0d804fff5b9c48c5b9ebe1b0edba264c285a7be2038385feb')
+sha256sums_i386=('a825609c056fa3b608bcd096f413f9d5edb87dc0c7289343d4c78cb7aaad7dea')
+sha256sums_aarch64=('87ab6755ea1275e98c722d7e1adb06ed214497b164bc09aae9e1c5480e2c210e')
 
 package() {
 	install -Dm755 ${_pkgname} "$pkgdir"/usr/bin/${_pkgname}
