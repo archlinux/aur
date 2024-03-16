@@ -1,6 +1,6 @@
 pkgbase = klassy-git
 	pkgdesc = Highly customizable binary Window Decoration, Application Style and Global Theme plugin for recent versions of the KDE Plasma desktop.
-	pkgver = 4.3.breeze5.27.5.r344.g20c57871
+	pkgver = 6.0.breeze6.0.2.r2.g58c38f60
 	pkgrel = 1
 	url = https://github.com/paulmcauley/klassy
 	arch = x86_64

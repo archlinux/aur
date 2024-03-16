@@ -5,7 +5,7 @@ _pkgname=klassy
 pkgbase="${_pkgname}-git"
 pkgname=("${_pkgname}-git"
          "${_pkgname}-qt5-git")
-pkgver=4.3.breeze5.27.5.r344.g20c57871
+pkgver=6.0.breeze6.0.2.r2.g58c38f60
 pkgrel=1
 pkgdesc='Highly customizable binary Window Decoration, Application Style and Global Theme plugin for recent versions of the KDE Plasma desktop.'
 arch=(x86_64)
@@ -65,6 +65,7 @@ package_klassy-git() {
   provides=("${_pkgname}")
   conflicts=("${_pkgname}")
   DESTDIR="${pkgdir}" cmake --install build
+  install -Dm644 "${_pkgname}/LICENSES/MIT.txt" "${pkgdir}/usr/share/licenses/${_pkgname}-git/MIT.txt"
 }
 
 package_klassy-qt5-git() {
@@ -86,4 +87,5 @@ package_klassy-qt5-git() {
            qt5-svg)
   DESTDIR="${pkgdir}" cmake --install build5
   rm -r "${pkgdir}/usr/share/"{color-schemes,kstyle}
+  install -Dm644 "${_pkgname}/LICENSES/MIT.txt" "${pkgdir}/usr/share/licenses/${_pkgname}-qt5-git/MIT.txt"
 }
