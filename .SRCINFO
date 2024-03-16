@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-graphicaleffects-static
 	pkgdesc = Graphical effects for use with Qt Quick 2 (mingw-w64)
-	pkgver = 5.15.12
+	pkgver = 5.15.13
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = mingw-w64-qt5-graphicaleffects-static
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://invent.kde.org/qt/qt/qtgraphicaleffects#commit=e33716bd6bb8926688fef20cb568e11618d08a35
-	sha256sums = SKIP
+	source = git+https://invent.kde.org/qt/qt/qtgraphicaleffects#commit=895f9753940156dda05aa83d3c7655571514407e
+	sha256sums = b20bc1219886877130e9ed907674ae8824a949b5ec3f53b4b1994c077e38b528
 
 pkgname = mingw-w64-qt5-graphicaleffects-static
