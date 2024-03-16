@@ -1,6 +1,6 @@
 # Maintainer: Jan Kohnert <bughunter@jan.kohnert.de>
 pkgname=klepto
-pkgver=0.4.2
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="A tool that copies and anonymises data from other sources."
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=("MIT")
 depends=("glibc")
 makedepends=("go")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hellofresh/klepto/archive/v${pkgver}.tar.gz")
-sha512sums=("8db0870551da2c93964a6bcc69dacf52a46e309486d08697b54d2fd452bdebeb705b324217134f3dac2b58e72815f774c77a7c9590f60579cfae067dc648ccba")
+sha512sums=("9da0b12a64242e26db4b79f63a28c41e325881be6d9b6a74b48974be996b406c700f91d1451136d136b9b5bac28a26c0ee88e76b1fc407b06d29374a2d05142b")
 
 build() {
     export CGO_ENABLED=1
