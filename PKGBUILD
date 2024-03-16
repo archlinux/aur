@@ -1,10 +1,10 @@
 #Maintainer: Sam Peters <dev at libertycloud dot de>
 # Contributor: Dan McCurry <dan.mc at protonmail dot com>
 pkgname=profex
-pkgver=5.2.7
+pkgver=5.2.8
 pkgrel=1
 year=2024
-month=02
+month=03
 pkgdesc="A program for Rietveld refinement of powder X-ray diffraction data."
 arch=('i686' 'x86_64')
 url="https://profex.doebelin.org"
@@ -18,7 +18,7 @@ provides=('profex')
 conflicts=('profex')
 source=("https://www.profex-xrd.org/wp-content/uploads/${year}/${month}/${pkgname}-${pkgver}.tar.gz"
 	'profex.desktop')
-sha256sums=('bfb6ba22fd922c9eb96773923ba5205163e2d115da7f81420949398acafe0444'
+sha256sums=('9e7b0fb4db882d786f802405c13fdfcf14690eb01bfd746f64c5c33745e23924'
             '8d4e73987458eb9d1453c3bfe839a90ea1f5c15a0872ea5a35d0b532231d9194')
 makeprepare() {
 	cd "$pkgname-$pkgver"
