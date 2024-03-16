@@ -1,15 +1,16 @@
 pkgbase = r-blandaltmanleh
 	pkgdesc = Plots (Slightly Extended) Bland-Altman Plots
 	pkgver = 0.3.1
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=BlandAltmanLeh
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	optdepends = r-ggextra
 	optdepends = r-ggplot2
 	optdepends = r-knitr
 	source = https://cran.r-project.org/src/contrib/BlandAltmanLeh_0.3.1.tar.gz
-	sha256sums = 9522d321668b2cc61087c73f2ffb2f9f328dc2bbbaa1b0c77431b9b1f007e386
+	md5sums = 50d200b7bd2d9634112aaa9e49effd2d
+	b2sums = 753dac0088861100f1aab4aa5d1728ac360b2527c33d6178880c6c39319415ca4050246943ab7c037109d50dac891d053f391d85d04b8e7dfe2eaccbd5cb1475
 
 pkgname = r-blandaltmanleh
