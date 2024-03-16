@@ -1,7 +1,7 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 
 pkgname=munge-git
-pkgver=0.5.14.r53.g0c37cc0
+pkgver=0.5.16.r0.g4799418
 pkgrel=1
 pkgdesc="An authentication service for creating and validating credentials. It is designed to be highly scalable for use in an HPC cluster environment."
 arch=('i686' 'x86_64' 'armv7h')

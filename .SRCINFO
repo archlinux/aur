@@ -1,6 +1,6 @@
 pkgbase = munge-git
 	pkgdesc = An authentication service for creating and validating credentials. It is designed to be highly scalable for use in an HPC cluster environment.
-	pkgver = 0.5.14.r53.g0c37cc0
+	pkgver = 0.5.16.r0.g4799418
 	pkgrel = 1
 	url = https://github.com/dun/munge/wiki
 	install = munge-git.install
