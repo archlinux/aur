@@ -25,7 +25,7 @@
 #define DEF_DUR  0.1F
 #define DEF_NOTE 48
 #define MAX_NOTE 87
-#define MODNAME "@_PKGBASE@"
+#define MODNAME "alsabeep"
 #define HELPER_PID "/sys/module/"MODNAME"/parameters/helper_pid"
 
 static unsigned char buffer[BUF_LEN];
@@ -228,7 +228,7 @@ pid_t wait_for_signals(void){
 			exit(1);	//another daemon is already in play
 		}
 		pid = getpid();
-		LPRINTF("detached pid=%d\n", pid);
+		LPRINTF("waiting pid=%d\n", pid);
 		write_helper(pid);
 		if(evdev && helper_written) {
 			ensure_dir("/dev", 0755);

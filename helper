@@ -1,57 +1,312 @@
 #!/usr/bin/bash
-source /etc/@_PKGBASE@-helper.conf
-if [ -n "$LOG" ]; then
-	PROG="$(basename $0)"
-	eval "$LOG"
-	echo "###### $PROG $@"
-fi
+PROG="$(basename $0)"
+usage(){
+	local m w x
+	if [ -n "$1" ]; then
+		w="2>&1"
+		x="-1"
+		m="!!!!! $PROG: error $1
 
-stop(){
-	modprobe -r @_PKGBASE@
-	killall @_PKGBASE@-daemon
-	rm -rf /dev/input/by-path/platform-pcspkr-event-spkr
+"
+	else
+		w=""
+		x="0"
+	fi
+	m="$m$PROG assists the alsabeep module
+it takes a single argument help|install|remove|status|start|stop
+
+help give this message
+
+install is used to set up and start any service scripts should normally be
+called from pre_install.
+
+remove is the opposite of install, shuts down and removes any service scripts
+normally used in pre_remove script.
+
+status reports on the status of the alsabeep module and alsabeep-daemon.
+
+start insmods the alsabeep module and starts alsabeep-daemon. Will normally
+be invoked from a service script. A -L<div> argument can be used to modify
+stdout/err diversion. The -D<int> argument can control the alsabeep module's
+debug value. The a s f t v l n arguments see /etc/alsabeep-helper.conf can
+also be overridden.
+
+stop rmmods the alsabeep module and kills alsabeep-daemon. Will normally
+be invoked from a service script. The stdout/err diversion can also be
+altered using -L<div>.
+"
+	if [ "$x" = "0" ]; then
+		echo "$m"
+	else
+		echo "$m" 1>&2
+	fi
+	exit $x
 }
 
-case "$1" in
-	(start)
-		stop
-		echo "##### modprobe @_PKGBASE@ debug=${@_PKGBASE@_debug:0}"
-		modprobe @_PKGBASE@ debug="${@_PKGBASE@_debug:0}"
+getArg(){
+	declare -g arg
+	local a
+	for a in "$@"; do
+		case "$a" in
+			(help|install|remove|status|start|stop)
+				[ -n "$arg" ] && usage "additional argument '$a' unwanted after '$arg'"
+				arg="$a";;
+			(*);;
+		esac
+	done
+	[ -z "$arg" ] && usage "no positional argument found"
+}
 
-		if lsmod | grep -sq @_PKGBASE@; then
-			for x in $(find /sys/devices/virtual/input -name name); do
-				if [ "$(cat $x)" = "@_PKGBASE@" ]; then
-					#we found our device
-					d="$(dirname $x)"
-					d=$(ls -d $d/event*)
-					[ -n "$d" ] && r="-r/dev/input/$(basename $d)"
-					break
-				fi
-			done
-			if [ -z "$r" ]; then
-				echo "!!!!! cannot find @_PKGBASE@ /dev/input/ device"
-				exit 1
-			fi
+getArg "$@"
+
+checkRoot(){
+	[ "`id -un`" != "root" ] && usage "needs to be run as root"
+}
+
+parseArgs(){
+	declare -g alsabeep_exe alsabeep_debug alsabeep_log
+	local opt opts="$1" nargs=0
+	shift
+	while [ $OPTIND -le "$#" ]; do
+		if getopts "$opts" opt; then
+			case $opt in
+				(a|s|f|t|v|l|n) eval "alsabeep_$opt='$OPTARG'";;
+				(L) alsabeep_log="$OPTARG";;
+				(D) alsabeep_debug="$OPTARG";;
+				(\?) usage "unexpected -$OPTARG";;
+				(*) usage "option -$OPTARG requires an argument.";;
+			esac
 		else
-			echo "!!!!! failed to load @_PKGBASE@"
-			exit 1
+			[ "$nargs" != 0 ] && usage "unexpected positional argument '${!OPTIND}'"
+			((OPTIND++))
+			((nargs++))
 		fi
+	done
+	source /etc/alsabeep.conf
+}
 
-		echo "# about to exec
-${exe} $r $LFLAG"
-		eval "exec $exe $r $LFLAG"
+divert(){
+	if [ -n "$alsabeep_log" ]; then
+		eval "exec &>> $alsabeep_log"
+		echo "###### $PROG $@"
+	fi
+}
+
+header(){
+	echo "##### alsabeep-helper $1 @ `date -u '+%Y%m%d%H%M%S'`"
+}
+
+stop(){
+	header "stop"
+	if lsmod | grep -qs alsabeep; then rmmod alsabeep && echo "unloaded module alsabeep"; fi
+	killall -q alsabeep-daemon && echo "killed alsabeep-daemon"
+	rm -rf /dev/input/by-path/platform-pcspkr-event-spkr && echo "removed platform-pcspkr-event-spkr"
+}
+
+start(){
+	header "start"
+	if modprobe alsabeep debug="${alsabeep_debug:0}"; then
+		echo "modprobe alsabeep debug=${alsabeep_debug:0}"
+	fi
+
+	if lsmod | grep -sq alsabeep; then
+		for x in $(find /sys/devices/virtual/input -name name); do
+			if [ "$(cat $x)" = "alsabeep" ]; then
+				#we found our device
+				d="$(dirname $x)"
+				d=$(ls -d $d/event*)
+				[ -n "$d" ] && r="-r/dev/input/$(basename $d)"
+				break
+			fi
+		done
+		if [ -z "$r" ]; then
+			usage "cannot find alsabeep /dev/input/ device"
+		fi
+	else
+		usage "failed to load alsabeep"
+	fi
+
+	echo "# about to exec
+${alsabeep_exe} $r $LFLAG"
+	eval "exec $alsabeep_exe $r $LFLAG"
+}
+
+unknown_init(){
+	usage "unknown init '`readlink /usr/bin/init`'"
+}
+
+install(){
+	header "install"
+	rmmod pcspkr 2>/dev/null
+	rmmod fancybeep 2>/dev/null
+	#set up service files
+	case "`readlink /usr/bin/init`" in
+		(*systemd)
+			cat > /lib/systemd/system/alsabeep.service <<\EOF
+[Unit]
+Description=Alsa based beep replacement for systems without a PC Speaker
+
+[Service]
+ExecStart=/usr/bin/alsabeep-helper start
+ExecStop=/usr/bin/alsabeep-helper stop
+
+[Install]
+WantedBy=default.target
+EOF
+			systemctl enable alsabeep
+			systemctl start alsabeep
+			systemctl daemon-reload
+			;;
+		(runit-init)
+			mkdir /etc/runit/sv/alsabeep
+			cat >/etc/runit/sv/alsabeep/run <<\EOF
+#!/usr/bin/sh
+exec /usr/bin/alsabeep-helper start
+EOF
+			cat >/etc/runit/sv/alsabeep/finish <<\EOF
+#!/usr/bin/sh
+exec /usr/bin/alsabeep-helper stop
+EOF
+			chmod a+x /etc/runit/sv/alsabeep/*
+			ln -s ../../sv/alsabeep /run/runit/service/
+			;;
+		(openrc-init)
+			cat >/etc/init.d/alsabeep <<\EOF
+#!/sbin/openrc-run
+name=alsabeep
+description="Alsa based beep replacement for systems without a PC Speaker"
+start() {
+		ebegin "Starting alsabeep"
+		/usr/bin/alsabeep-helper -n0 start
+		eend 0
+}
+stop() {
+		ebegin "Stopping alsabeep"
+		/usr/bin/alsabeep-helper stop
+		eend 0
+}
+status() {
+		p="`pidof alsabeep-daemon`"
+		if [ -d /sys/module/alsabeep ]; then
+			m='is running'
+			[ -n "$p" ] && m="$m with alsabeep-daemon[$p]" || m="$m without alsdabeep-daemon"
+		else
+			m='is stopped'
+			[ -n "$p" ] && m="$m, but alsabeep-daemon[$p] runs" || true
+		fi
+		einfo "Status alsabeep $m"
+}
+EOF
+			chmod a+x /etc/init.d/alsabeep
+			rc-update add alsabeep default
+			rc-service alsabeep start
+			rc-update -u
+			;;
+		(dinit-init)
+			cat > /etc/dinit.d/alsabeep <<\EOF
+type         = scripted
+command      = /bin/alsabeep-helper -n0 -L/var/log/dinit/alsabeep.log start
+stop-command = /bin/alsabeep-helper stop
+restart      = false
+waits-for    = loginready
+EOF
+			dinitctl enable alsabeep
+			dinitctl start alsabeep
+			dinitcheck
+			;;
+		(s6-init)
+			mkdir /etc/s6/sv/alsabeep
+			echo "longrun" > /etc/s6/sv/alsabeep/type
+			cat >/etc/s6/sv/alsabeep/run <<\EOF
+#!/usr/bin/sh
+exec /usr/bin/alsabeep-helper start
+EOF
+			cat >/etc/s6/sv/alsabeep/finish <<\EOF
+#!/usr/bin/sh
+exec /usr/bin/alsabeep-helper stop
+EOF
+			chmod a+x /etc/s6/sv/alsabeep/*
+			touch /etc/s6/adminsv/default/contents.d/alsabeep
+			s6-db-reload
+			s6-rc -u change /run/service/alsabeep
+			;;
+		(*) unknown_init;;
+	esac
+	echo "users need to be in the input group for alsabeep to work properly
+use groups command to check and then sudo usermod -a -G input <username> if 
+needed"
+}
+
+remove(){
+	header "remove"
+	case "`readlink /usr/bin/init`" in
+		(*systemd)
+			systemctl stop alsabeep
+			systemctl disable alsabeep
+			systemctl daemon-reload
+			;;
+		(runit-init)
+			rm -f /run/runit/service/alsabeep
+			;;
+		(openrc-init)
+			rc-service alsabeep stop
+			rc-update delete alsabeep default
+			rc-update -u
+			;;
+		(dinit-init)
+			dinitctl stop alsabeep
+			dinitctl disable alsabeep
+			dinitcheck
+			;;
+		(s6-init)
+			s6-rc -d change /run/service/alsabeep
+			rm -f /etc/s6/adminsv/default/contents.d/alsabeep
+			s6-db-reload
+			;;
+		(*) unknown_init;;
+	esac
+	stop
+	rm -rf	/lib/systemd/system/alsabeep.service \
+			/etc/runit/sv/alsabeep \
+			/etc/init.d/alsabeep \
+			/etc/dinit.d/alsabeep \
+			/etc/s6/*/*/*/alsabeep \
+			|| true
+}
+
+case "$arg" in
+	(help)
+		usage
+		;;
+	(install)
+		checkRoot
+		install
+		exit
+		;;
+	(remove)
+		checkRoot
+		remove
+		exit
+		;;
+	(start)
+		checkRoot
+		parseArgs ":a:d:f:l:n:t:v:L:D:" "$@"
+		divert
+		stop
+		start
 		;;
 	(stop)
+		checkRoot
+		parseArgs ":L:" "$@"
+		divert
 		stop
 		;;
 	(status)
-		if [ -d "/sys/module/@_PKGBASE@" ]; then
-			echo "@_PKGBASE@ is loaded"
+		if [ -d "/sys/module/alsabeep" ]; then
+			echo "module alsabeep is loaded"
 		else
-			echo "@_PKGBASE@ is not loaded"
+			echo "module alsabeep is not loaded"
 		fi
-		for x in $(pidof @_PKGBASE@-daemon); do
-			ps -hp $x
-		done
+		pidof -q alsabeep-daemon && echo "alsabeep-daemon is running" || echo "alsabeep-daemon is not running"
 		;;
 esac

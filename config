@@ -1,0 +1,46 @@
+#alsa defice
+alsabeep_a="${alsabeep_a:-default}"
+
+#duration in seconds
+alsabeep_d="${alsabeep_d:-0.10}"
+
+#frequency in Hz.
+alsabeep_f="${alsabeep_f:-400}"
+
+#kind sine/wave
+alsabeep_t="${alsabeep_t:-square}"
+
+#volume
+alsabeep_v="${alsabeep_v:-0.025}"
+
+#module debug
+alsabeep_debug="${alsabeep_debug:-0}"
+
+#turn on daemon output
+alsabeep_l="${alsabeep_l:-1}"
+
+#nodaemonize if we find an r value
+alsabeep_n="${alsabeep_n:-1}"
+
+#LOG will be evaluated in the alsabeep-helper script to show logs
+alsabeep_log=${alsabeep_log:-">(logger -t \"\$PROG\")"}
+
+#dont change these ;)
+_flag(){
+	case "$1" in
+		(1) echo -ne "$2";;
+		(0) echo -n "";;
+		(*) echo "!!!!! invalid value '$1' for '$2' setup" && exit 1;;
+	esac
+}
+
+alsabeep_exe="/usr/bin/alsabeep-daemon \
+-a'$alsabeep_a' \
+-d'$alsabeep_d' \
+-f'$alsabeep_f' \
+-t'$alsabeep_t' \
+-v'$alsabeep_v' \
+$(_flag $alsabeep_l '-l') \
+$(_flag $alsabeep_n '\x2dn')"
+
+unset -f _flag
