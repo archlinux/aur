@@ -138,7 +138,6 @@ export CXX=${ANDROID_CXX}
 [[ "${LDFLAGS}" != *-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now* ]] && export LDFLAGS="${LDFLAGS} -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now"
 [[ "${LDFLAGS}" != *-L${ANDROID_PREFIX_LIB}* ]] && export LDFLAGS="${LDFLAGS} -L${ANDROID_PREFIX_LIB}"
 
-export AS=${ANDROID_AS}
 export AR=${ANDROID_AR}
 export LD=${ANDROID_LD}
 export NM=${ANDROID_NM}
