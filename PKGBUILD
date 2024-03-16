@@ -1,6 +1,6 @@
 # Maintainer: Adis Durakovic <aur@mail.adisdurakovic.com>
 pkgname=resticity
-pkgver=1.0.30
+pkgver=1.0.31
 pkgrel=1
 epoch=
 pkgdesc="A frontend for restic"
@@ -8,7 +8,7 @@ arch=("any")
 url="https://github.com/ad-on-is/resticity"
 license=('GPL3')
 groups=()
-depends=(go nodejs npm pnpm restic webkit2gtk)
+depends=(go nodejs npm pnpm restic webkit2gtk rclone openssh)
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
 noextract=()
-sha256sums=('d596b10ea45697c36d6c094615ebdcf99962d37a9ed5100bb04b6115f715b7a8')
+sha256sums=('138bb17272ff4f8ee2a3376d990362a29f89b01a78e39dcc47bcc06b98c54796')
 validpgpkeys=()
 
 prepare() {
