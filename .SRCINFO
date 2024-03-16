@@ -1,6 +1,6 @@
 pkgbase = ghdl-gcc-git
 	pkgdesc = VHDL simulator - GCC back-end
-	pkgver = 3.0.0dev.r7048.g7028d03e5
+	pkgver = 5.0.0dev.r9326.gec7cd5909
 	pkgrel = 1
 	url = https://github.com/ghdl/ghdl
 	install = ghdl.install
@@ -14,13 +14,14 @@ pkgbase = ghdl-gcc-git
 	license = GPL2
 	makedepends = git
 	depends = gcc-ada
-	provides = ghdl=3.0.0dev.r7048.g7028d03e5
-	provides = ghdl-git=3.0.0dev.r7048.g7028d03e5
+	provides = ghdl=5.0.0dev.r9326.gec7cd5909
+	provides = ghdl-git=5.0.0dev.r9326.gec7cd5909
 	conflicts = ghdl
 	conflicts = ghdl-llvm-git
 	conflicts = ghdl-mcode-git
 	options = !emptydirs
 	options = staticlibs
+	options = !lto
 	source = ghdl::git+https://github.com/ghdl/ghdl.git
 	source = https://gcc.gnu.org/pub/gcc/releases/gcc-11.2.0/gcc-11.2.0.tar.xz
 	source = https://gcc.gnu.org/pub/gcc/infrastructure/isl-0.24.tar.bz2
