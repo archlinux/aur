@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=stable-diffusion.cpp-git
-pkgver=r92.349439f
+pkgver=r107.a469688
 pkgrel=1
 pkgdesc="Stable Diffusion in pure C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
