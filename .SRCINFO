@@ -1,6 +1,6 @@
 pkgbase = harrison-de-esser
 	pkgver = 5.0.0.1557034b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://store.harrisonaudio.com/all-products/deesser
 	arch = x86_64
 	groups = pro-audio
@@ -48,3 +48,4 @@ pkgname = harrison-de-esser-vst-bin
 
 pkgname = harrison-de-esser-vst3-bin
 	pkgdesc = Harrison De-Esser (VST3)
+	groups = vst3-plugins

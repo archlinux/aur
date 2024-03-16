@@ -1,7 +1,7 @@
 pkgbase=harrison-de-esser
 pkgname=("${pkgbase}-vst-bin" "${pkgbase}-vst3-bin")
 pkgver=5.0.0.1557034b
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://store.harrisonaudio.com/all-products/deesser"
 license=('EULA')
@@ -22,5 +22,6 @@ package_harrison-de-esser-vst-bin() {
 
 package_harrison-de-esser-vst3-bin() {
 	pkgdesc="Harrison De-Esser (VST3)"
+	groups=("vst3-plugins")
 	install -Dm755 "$srcdir/Harrison_De-Esser/vst3/Harrison_De-Esser.vst3/Contents/x86_64-linux/Harrison_De-Esser.so" "$pkgdir/usr/lib/vst3/Harrison_De-Esser.vst3/Contents/x86_64-linux/Harrison_De-Esser.so"
 }
