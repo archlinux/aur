@@ -3,24 +3,25 @@
 _pkgname=DynDoc
 _pkgver=1.80.0
 pkgname=r-${_pkgname,,}
-pkgver=1.80.0
-pkgrel=1
-pkgdesc='Dynamic document tools'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Dynamic document tools"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c115174fcf50197ccb7b57d90f48b7a354707e687093e70f89371fffb5ea4a34')
+md5sums=('1d5ea2c0b36289466bdb8095b39634fd')
+b2sums=('94d74e2b10ca6e65f0b6ef360bc95039ab12b00bde38de57eb248a882dfe101de40eb35d984ad71962583e4a9dda641653709ae74cf20a5340a528601a43666f')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

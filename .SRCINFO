@@ -1,12 +1,13 @@
 pkgbase = r-dyndoc
 	pkgdesc = Dynamic document tools
 	pkgver = 1.80.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/DynDoc
 	arch = any
-	license = Artistic2.0
+	license = Artistic-2.0
 	depends = r
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/DynDoc_1.80.0.tar.gz
-	sha256sums = c115174fcf50197ccb7b57d90f48b7a354707e687093e70f89371fffb5ea4a34
+	md5sums = 1d5ea2c0b36289466bdb8095b39634fd
+	b2sums = 94d74e2b10ca6e65f0b6ef360bc95039ab12b00bde38de57eb248a882dfe101de40eb35d984ad71962583e4a9dda641653709ae74cf20a5340a528601a43666f
 
 pkgname = r-dyndoc
