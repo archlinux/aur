@@ -1,7 +1,7 @@
 pkgbase = octopi
 	pkgdesc = This is Octopi, a powerful Pacman frontend using Qt libs
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tintaescura.com/projects/octopi/
 	arch = any
 	license = GPL2
