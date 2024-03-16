@@ -1,0 +1,22 @@
+pkgbase = python-darkgraylib
+	pkgdesc = Filter linter messages from various Python linters to only those which were caused by recent changes to the code base being linted
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/akaihola/darkgraylib
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pytest
+	checkdepends = python-pygments
+	checkdepends = python-pytest-kwparametrize
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-toml
+	optdepends = python-pygments: syntax highlighting
+	source = python-darkgraylib::git+https://github.com/akaihola/darkgraylib.git#commit=4413a5234ed8e8c51bf4cf3a3301e5f65fbef965
+	sha256sums = SKIP
+
+pkgname = python-darkgraylib
