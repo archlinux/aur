@@ -21,7 +21,7 @@ ac_add_options --disable-necko-wifi
 ac_add_options --disable-updater
 ac_add_options --disable-gconf
 ac_add_options --with-pthreads
-  
+ac_add_options --disable-gold
 ac_add_options --x-libraries=/usr/lib
 
 # Use python2

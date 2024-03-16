@@ -10,7 +10,7 @@ epoch=1
 pkgver=33.0.1
 # Commit can be found at https://repo.palemoon.org/MoonchildProductions/Pale-Moon/tags
 _commit=d2b24ace7a
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
 url="https://www.palemoon.org/"
@@ -30,7 +30,7 @@ validpgpkeys=('3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC'
               '3059E09144F56804F0FBF4E126B40624BDBFD9F3')
 sha1sums=('SKIP'
           'SKIP'
-          'bc6bfbbe499ff8b2c846208ac6627c52d021201a')
+          '376df24c646066d522547c275607e5ecdcca6c3e')
 
 prepare() {
   sed 's#%SRCDIR%#'"${srcdir}"'#g' mozconfig.in > mozconfig
