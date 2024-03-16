@@ -42,8 +42,7 @@ makedepends=(
 checkdepends=(
   'inetutils'     'xmlstarlet'
 
-  'python-mock'   'python-nose'   'python-pycodestyle'   'python-pylint'   'python-pytest'
-  'python-pytest-cov'
+  'python-nose'   'python-pycodestyle'   'python-pylint'   'python-pytest'   'python-pytest-cov'
 )
 
 # Despite the upstream suggesting that LTO is now possible, I still am unable
