@@ -20,7 +20,7 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-	export RUSTUP_TOOLCHAIN=stable
+  export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 }
@@ -33,7 +33,7 @@ check() {
 
 package() {
   cd $pkgname-$pkgver
-	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${pkgname%-*}"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${pkgname%-*}"
   install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/$pkgname
   install -Dm 644 LICENSE.md -t "$pkgdir"/usr/share/licenses/$pkgname
 }
