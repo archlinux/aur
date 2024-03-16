@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.6.0.0
+Name=MCEdit Unified
+Comment=A versatile map utility, designed for editing Minecraft maps.
+Exec=mcedit
+Icon=mcedit
+Terminal=false

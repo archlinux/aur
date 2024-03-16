@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cd /opt/mcedit-unified
+source venv/bin/activate
+python mcedit.py
+deactivate
