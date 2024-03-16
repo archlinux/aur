@@ -1,27 +1,38 @@
 # Maintainer: Jake Stanger <mail@jstanger.dev>
 
-pkgname=mpd-discord-rpc-git
-pkgver=v1.7.2.r0.fd242da
-pkgrel=2
-makedepends=('rust' 'cargo' 'git')
+_pkgname="mpd-discord-rpc"
+pkgname="$_pkgname"
+pkgver=1.7.2
+pkgrel=1
+pkgdesc="Displays metadata from currently playing song from MPD in Discord using Rich Presence"
+url="https://github.com/JakeStanger/mpd-discord-rpc"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-pkgdesc="Displays your currently playing song / album / artist from MPD in Discord using Rich Presence."
 license=('MIT')
-source=('git+https://github.com/JakeStanger/mpd-discord-rpc')
-md5sums=('SKIP')
 
+makedepends=(
+  'cargo'
+  'git'
+  'rust'
+)
 
-pkgver() {
-    cd "$srcdir/mpd-discord-rpc"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+_pkgsrc="$_pkgname-$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
+sha256sums=('9dfe7dbdda36d39c034c10e0787f642af12f3898e9b313f98df266b2e9939076')
 
 build() {
-    cd "$srcdir/mpd-discord-rpc"
-    cargo build --release --locked --target-dir target
+  export CARGO_HOME="${CARGO_HOME:-$SRCDEST/cargo-home}"
+  export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
+  export CARGO_TARGET_DIR=target
+
+  cd "$_pkgsrc"
+  cargo build --release --locked --target-dir target
 }
 
 package() {
-  install -Dm 755 "$srcdir/mpd-discord-rpc/target/release/mpd-discord-rpc" "$pkgdir/usr/bin/mpd-discord-rpc"
-  install -Dm 644 "$srcdir/mpd-discord-rpc/mpd-discord-rpc.service" "$pkgdir/usr/lib/systemd/user/mpd-discord-rpc.service"
+  cd "$_pkgsrc"
+  install -Dm755 "target/release/mpd-discord-rpc" "$pkgdir/usr/bin/mpd-discord-rpc"
+  install -Dm644 "mpd-discord-rpc.service" -t "$pkgdir/usr/lib/systemd/user/"
+
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
