@@ -11,9 +11,9 @@
 % end
 % stash(is_lts => 1);
 \
-_basever=5.15.12
+_basever=5.15.13
 pkgver=5.15.16
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Classes for making Qt applications scriptable. Provided for Qt 4.x compatibility (mingw-w64)"
 depends=(<%== qt5deps qw(base) %>)
