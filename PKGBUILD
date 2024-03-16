@@ -1,7 +1,7 @@
 pkgbase=aeolus-next
 pkgname=("${pkgbase}-standalone-bin" "${pkgbase}-vst3-bin")
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 url="https://github.com/Archie3d/aeolus_plugin"
 license=('GPL')
 arch=('x86_64')
@@ -18,7 +18,7 @@ sha256sums=('fd0f8c0a7a6112ac68412301979ad934cd97afa03adbaee29a39875097a3ad06'
 
 package_aeolus-next-standalone-bin() {
 	# Install Standalone App
-	groups=('pro-audio')
+	groups=('pro-audio' 'vst-plugins')
 	pkgdesc="Aeolus Organ Synth NEXT (Standalone)"
 	install -Dm755 "$srcdir/Standalone/Aeolus" "$pkgdir/usr/bin/Aeolus Next"
 	install -Dm644 "$srcdir/aeolus-next.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/aeolus-next.png"

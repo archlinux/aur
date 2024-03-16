@@ -1,6 +1,6 @@
 pkgbase = aeolus-next
 	pkgver = 0.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Archie3d/aeolus_plugin
 	arch = x86_64
 	license = GPL
@@ -26,6 +26,7 @@ pkgbase = aeolus-next
 pkgname = aeolus-next-standalone-bin
 	pkgdesc = Aeolus Organ Synth NEXT (Standalone)
 	groups = pro-audio
+	groups = vst-plugins
 
 pkgname = aeolus-next-vst3-bin
 	pkgdesc = Aeolus Organ Synth NEXT (VST3)
