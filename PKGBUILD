@@ -2,24 +2,33 @@
 
 pkgname=python-daphne
 _pypi_pkgname=daphne
-pkgver=4.0.0
-pkgrel=1
+pkgver=4.1.0
+pkgrel=0
 pkgdesc="HTTP, HTTP2 and WebSocket protocol server for ASGI, and developed to power Django Channels"
 arch=(any)
 url="https://github.com/django/daphne"
 license=('BSD')
-makedepends=('python-setuptools' 'python-pytest-runner')
-depends=('python' 'python-asgiref' 'python-twisted' 'python-autobahn')
+makedepends=(
+'python-build'
+'python-pytest-runner'
+)
+depends=(
+'python'
+'python-asgiref'
+'python-twisted'
+'python-autobahn'
+)
 optdepends=()
 source=("https://pypi.io/packages/source/d/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('cce9afc8f49a4f15d4270b8cfb0e0fe811b770a5cc795474e97e4da287497666')
+sha256sums=('882fab39d0b90c6b2709b38116c95f660b6cf236600115dd7c13161fb98b3448')
 
 build() {
-    cd "${srcdir}/daphne-${pkgver}"
-    python setup.py build || return 1
+    cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/daphne-${pkgver}"
-    python setup.py install --root=${pkgdir} --optimize=1 || return 1
+    cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -vDm644 -t "$pkgdir/usr/share/license/$pkgname" LICENSE
 }
