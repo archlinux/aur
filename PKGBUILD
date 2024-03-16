@@ -4,14 +4,16 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-zlib
 pkgver=1.3.1
-pkgrel=1
-pkgdesc="A compression/decompression Library (android)"
+pkgrel=2
 arch=('any')
+pkgdesc="A compression/decompression Library (Android, ${_android_arch})"
 url="http://www.zlib.net/"
 license=('custom:zlib')
 depends=('android-ndk')
+makedepends=('android-environment'
+             'android-pkg-config'
+             'android-sdk-build-tools')
 options=(!strip !buildflags staticlibs !emptydirs)
-makedepends=('android-environment' 'android-pkg-config' 'android-sdk-build-tools')
 source=("https://github.com/madler/zlib/releases/download/v$pkgver/zlib-$pkgver.tar.xz"
         "0001-Disable-versioning.patch"
         "0002-Fix-CC-definition.patch"
@@ -23,7 +25,6 @@ md5sums=('5e6af153311327e516690d300527ec9e'
 
 prepare() {
     cd "${srcdir}"/zlib-${pkgver}
-    source android-env ${_android_arch}
 
     patch -Np1 -i ../0001-Disable-versioning.patch
     patch -Np1 -i ../0002-Fix-CC-definition.patch
@@ -33,9 +34,6 @@ prepare() {
 build() {
     cd "${srcdir}"/zlib-${pkgver}
     source android-env ${_android_arch}
-
-    export CC=${ANDROID_CC}
-    export CXX=${ANDROID_CXX}
 
     # Platform specific patches
     case "$_android_arch" in
