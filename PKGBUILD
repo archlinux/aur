@@ -73,12 +73,12 @@ _subarch=39
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=6.7.8
+pkgver=6.8.1
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
 arch=(x86_64)
-license=(GPL2)
+license=(GPL-2.0-only)
 makedepends=(
   bc
   cpio
@@ -92,12 +92,15 @@ makedepends=(
   xz
 )
 [[ -n "$_clangbuild" ]] && makedepends+=(clang llvm lld)
-options=('!strip')
+options=(
+  !debug
+  !strip
+)
 _srcname=linux-${pkgver}
-_kernel_base_commit=d6d6c49dbf4512f1421f5e42896e2d70dc121f9a
+_kernel_base_commit=8a8b2a057ed9684704792b5d4b333616769002c2
 _kernel_arch_tag=${pkgver}-arch1
-_arch_config_commit=3ee8900562726ca75feddde13bef02b5d046938d
-_prjc_version=6.7-r2
+_arch_config_commit=242ea4a023d5f190515cdcc15667f34209416ca8
+_prjc_version=6.8-r1
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20240221.2
 source=(
@@ -113,12 +116,12 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('1e0d42507f639eedc3405d08f67d720ecc6fd8d53603886c296d67e51ac6aa89d44e94b2ddef98b3c44f6ea1724ca89db7658efaada025284cd03ffd53e95895'
+b2sums=('2b518f8f39b4dcea1c580cb0664d59c165db989422fd6fd6b65d3dd1e4548bc6e0cedfc95c2584ae56f69ac1a1d3de6552ee61e77b08799a5275934a453ab929'
         'SKIP'
-        '21083151bdcd0fc2bcc0475b9cd73bab5666a71f043eedd67b19a3a4c09c8253a5a06794ce9270215782f5885e05e70b5e424123f1bded7aa7a6d3f30d02a4b3'
-        '8913572c6d14fd0079f8e7c109982746828c12c1e447701e8f60076c21a32c1b57efed16f3e1925edf63489ded99cda04c77319b8ae18ddb06e525eee37143d3'
+        '7bcda4c4c80af28160dae20dac00eaffff41b1e4f1a053893b2394d99b2a0f7ec694fbe8a2b7a3c293f541ec17098f1cbffc11c1557e3a628239b1c7a62a00e2'
+        'e3efb0e53f66914e0da53c64775f9f07f802a635bbdc222b3e22b29a282be4751095dc5e41a494fc1b5843aeaaf35421ac94634a85f806d18a84604f423e73c4'
         '221de3283857198a908a28b837cb542c5cf4e29868539f3f3c2c783c07c59a6868f3b1d4fe1e023e986fd3f9d17bd2e4f68b7c86fa5da76fcde25e5955b3c74d'
-        'aef57cad93840a13ec58a9368f4cc7fe6efb5981a94e1cc8e75cfdfdcc5dbffd08a106683e805295502dc60e9bf3b46707edc3297ff36a9e11c3bd189a9fd69e'
+        'a22ca4a3e726d3dd6d8d8a5be223f214c30e0857789250a7c7a2c63e2d6631c2acefe6d587a9ee68a351f7abfc5c55850cc9cfa41539aaa616440c3ffa50b627'
         '07318d94a39ffe5fd252836a7a0d872c217bf57da25cab0411f04676273027763237b9eb8c83bf808c77e2f1b211469f740baf28fe8b6b739dcaf556b54a4ddb')
 
 _kernelname=${pkgbase#linux}
@@ -170,7 +173,7 @@ prepare() {
   patch -Np1 -i "$srcdir/${_prjc_patch}"
 
   # https://gitlab.com/alfredchen/linux-prjc/-/merge_requests/33
-  patch -Np1 -i "$srcdir/sched_numa_hop_mask.patch"
+  #patch -Np1 -i "$srcdir/sched_numa_hop_mask.patch"
 
   if [[ -n "$_clangbuild" ]]; then
     scripts/config -e LTO_CLANG_THIN
@@ -189,7 +192,7 @@ prepare() {
   # https://github.com/graysky2/kernel_gcc_patch
   # make sure to apply after olddefconfig to allow the next section
   echo "Patching to enable GCC optimization for other uarchs..."
-  patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-6.1.79-6.8-rc3.patch"
+  patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-6.8-rc4+.patch"
 
   if [ -n "$_subarch" ]; then
     # user wants a subarch so apply choice defined above interactively via 'yes'
