@@ -1,9 +1,8 @@
 pkgbase = harrison-32-bus
 	pkgver = 2.0.1.f8ffbf84
-	pkgrel = 2
+	pkgrel = 3
 	url = https://store.harrisonaudio.com/all-products/harrison-32-bus
 	arch = x86_64
-	groups = pro-audio
 	license = EULA
 	makedepends = xdg-user-dirs
 	makedepends = unzip
@@ -39,6 +38,7 @@ pkgbase = harrison-32-bus
 
 pkgname = harrison-32-bus-vst-bin
 	pkgdesc = Harrison 32 Bus Channel Strip (VST)
+	groups = pro-audio
 	groups = vst-plugins
 	provides = harrison-32-bus-vst-bin
 	conflicts = harrison-32c-plugins-bin
@@ -46,4 +46,5 @@ pkgname = harrison-32-bus-vst-bin
 
 pkgname = harrison-32-bus-vst3-bin
 	pkgdesc = Harrison 32 Bus Channel Strip (VST3)
+	groups = pro-audio
 	groups = vst3-plugins
