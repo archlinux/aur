@@ -2,7 +2,7 @@
 _name=dae
 pkgname=$_name-git
 pkgver=0.5.1.r9.gd31d880
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux lightweight and high-performance transparent proxy solution based on eBPF."
 arch=('x86_64' 'aarch64')
 url="https://github.com/daeuniverse/dae"
@@ -10,7 +10,7 @@ license=('AGPL')
 provides=("$_name")
 conflicts=("$_name")
 depends=('glibc')
-makedepends=('clang' 'go')
+makedepends=('clang' 'go' 'git')
 backup=("etc/dae/config.dae")
 source=(
 	"git+https://github.com/daeuniverse/dae.git"
