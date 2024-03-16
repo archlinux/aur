@@ -3,13 +3,14 @@
 pkgname=python-daphne
 _pypi_pkgname=daphne
 pkgver=4.1.0
-pkgrel=0
+pkgrel=1
 pkgdesc="HTTP, HTTP2 and WebSocket protocol server for ASGI, and developed to power Django Channels"
 arch=(any)
 url="https://github.com/django/daphne"
 license=('BSD')
 makedepends=(
 'python-build'
+'python-wheel'
 'python-installer'
 'python-pytest-runner'
 )
