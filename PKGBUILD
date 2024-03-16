@@ -6,7 +6,7 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-prrte
 pkgver=3.0.4
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="PMIx Reference RunTime Environment (Android, ${_android_arch})"
 url="https://github.com/openpmix/prrte"
@@ -20,13 +20,13 @@ makedepends=("android-${_android_arch}-hwloc"
              'android-environment'
              'perl')
 optdepends=("android-${_android_arch}-openssh: for execution on remote hosts via plm_ssh_agent")
+options=(!strip !buildflags staticlibs !emptydirs)
 source=("$url/releases/download/v$pkgver/prrte-$pkgver.tar.gz"
         'prte-mca-params.conf'
         'prrte-ssh'
         '0001-Force-32-bits-compile.patch'
         '0002-Unversioned-libs.patch'
         '0003-Remove-getdtablesize.patch')
-options=(!strip !buildflags staticlibs !emptydirs)
 md5sums=('0ad393b5f180c78858d4deb16123af4c'
          '846d0affc94d41dafa76adb72abe210b'
          'aed50d2a9dae9f25179547c76332eae2'
@@ -87,15 +87,6 @@ build() {
         *)
             ;;
     esac
-
-    default_android_pp_flags="-D_FORTIFY_SOURCE=2 -I${ANDROID_PREFIX_INCLUDE}"
-    default_android_compiler_flags="-O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4"
-    default_android_linker_flags="-Wl,-O1,--sort-common,--as-needed"
-
-    export CPPFLAGS="${CPPFLAGS} $default_android_pp_flags"
-    export CFLAGS="${CFLAGS} $default_android_compiler_flags"
-    export CXXFLAGS="${CXXFLAGS} $default_android_compiler_flags"
-    export LDFLAGS="${LDFLAGS} $default_android_linker_flags"
 
     ./configure \
         --host=${host} \
