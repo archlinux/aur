@@ -1,0 +1,33 @@
+pkgbase = aeolus-next
+	pkgver = 0.2.0
+	pkgrel = 3
+	url = https://github.com/Archie3d/aeolus_plugin
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	depends = alsa-lib
+	depends = bzip2
+	depends = brotli
+	depends = freetype2
+	depends = glibc
+	depends = graphite
+	depends = harfbuzz
+	depends = libpng
+	depends = pcre2
+	provides = aeolus-vst3
+	options = !strip
+	source = https://github.com/Archie3d/aeolus_plugin/releases/download/v0.2.0/Aeolus-standalone-vst3-linux-0.2.0.zip
+	source = aeolus-next.png
+	source = Aeolus Next.desktop
+	sha256sums = fd0f8c0a7a6112ac68412301979ad934cd97afa03adbaee29a39875097a3ad06
+	sha256sums = 4d2df74407d2f2fd7489bc8cd22d3fb644cdc16f4ac6a52eae1ec26ac0666417
+	sha256sums = 84457ab146c11fa03f53a6924495c15d2df276d4a60d7fa0320596b3611c16d3
+
+pkgname = aeolus-next-standalone-bin
+	pkgdesc = Aeolus Organ Synth NEXT (Standalone)
+	groups = pro-audio
+
+pkgname = aeolus-next-vst3-bin
+	pkgdesc = Aeolus Organ Synth NEXT (VST3)
+	groups = pro-audio
+	groups = vst3-plugins
