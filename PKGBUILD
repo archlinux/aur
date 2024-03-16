@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 pkgname=local-ai
 _pkgname=LocalAI
-pkgver=2.8.2
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first."
 arch=('aarch64' 'x86_64')
@@ -40,6 +40,8 @@ package() {
   install -D -m644 "${srcdir}/${pkgname}.conf" \
     "${pkgdir}/etc/conf.d/${pkgname}.conf"
 
+  mkdir -p "${pkgdir}/etc/local-ai"
+
   # systemd
   install -D -m644 "${srcdir}/${pkgname}.service" \
     -t "${pkgdir}/usr/lib/systemd/system"
@@ -49,8 +51,8 @@ package() {
     "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }
 
-sha256sums=('bd104536c6438f02456a689ae48c7f171281860254f5620387b63127c87d182a'
-  'a642a3eda0fe24fa2ebffc5ec997fdbcc2ee74b615045fe5f0e40c4efc7b8399'
-  '90e042d0f5885b63a6aa4db7f87d6b931956f6c9b022407593466f61f6973312'
-  '97ba21355c50ec658e220bc0558f506227b3dc77cc51f343b6f5657b0d77a19b'
-  'affefb565e63f19fbdad53032c090fc33c2aa8ce986ba9cf678ccf071c2d67bf')
+sha256sums=('e5711ba3dc2e697e77cec6e996c8b96877d54ef54393fe81f44707f5762107c0'
+            '095c6f530c0c2f864d7aa1c22b88e111b1adc54c85e3510156dcc5b6675de00c'
+            '90e042d0f5885b63a6aa4db7f87d6b931956f6c9b022407593466f61f6973312'
+            '97ba21355c50ec658e220bc0558f506227b3dc77cc51f343b6f5657b0d77a19b'
+            'affefb565e63f19fbdad53032c090fc33c2aa8ce986ba9cf678ccf071c2d67bf')
