@@ -1,9 +1,8 @@
 pkgbase = harrison-legacy-eq
 	pkgver = 5.0.0.aacf6c6a
-	pkgrel = 3
+	pkgrel = 4
 	url = https://store.harrisonaudio.com/all-products/legacy-eq
 	arch = x86_64
-	groups = pro-audio
 	license = EULA
 	makedepends = xdg-user-dirs
 	makedepends = unzip
@@ -39,6 +38,7 @@ pkgbase = harrison-legacy-eq
 
 pkgname = harrison-legacy-eq-vst-bin
 	pkgdesc = Harrison Legacy EQ (VST)
+	groups = pro-audio
 	groups = vst-plugins
 	provides = harrison-legacy-eq-vst-bin
 	conflicts = harrison-ava-legacyq-vst
@@ -48,4 +48,5 @@ pkgname = harrison-legacy-eq-vst-bin
 
 pkgname = harrison-legacy-eq-vst3-bin
 	pkgdesc = Harrison Legacy EQ (VST3)
+	groups = pro-audio
 	groups = vst3-plugins
