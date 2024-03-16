@@ -3,7 +3,7 @@
 # Maintainer: David Hummel <david dot hummel at gmail point com>
 
 pkgname=('mod_tile-git' 'renderd-git')
-pkgver=0.7.0.r35.gdd90553
+pkgver=0.7.0.r43.g4f04956
 pkgrel=1
 pkgdesc='A daemon and apache module for rendering and serving Mapnik raster tiles'
 arch=('i686' 'x86_64')
@@ -37,6 +37,10 @@ build() {
   export CMAKE_BUILD_PARALLEL_LEVEL=${CMAKE_BUILD_PARALLEL_LEVEL:-$(nproc)}
   cmake -B build -S mod_tile \
     -DCMAKE_BUILD_TYPE:STRING=Release \
+    -DCMAKE_INSTALL_LOCALSTATEDIR=/var \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_RUNSTATEDIR=/run \
+    -DCMAKE_INSTALL_SYSCONFDIR=/etc \
     -DENABLE_TESTS:BOOL=ON
   cmake --build build
 }
@@ -55,7 +59,7 @@ package_mod_tile-git() {
   pkgdesc='An Apache 2 module to deliver map tiles'
   provides=('mod_tile')
 
-  DESTDIR="$pkgdir" cmake --install build --prefix /usr --strip
+  DESTDIR="$pkgdir" cmake --install build --strip
 
   # License
   install -Dm644 "$srcdir"/mod_tile/COPYING "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
@@ -77,7 +81,7 @@ package_renderd-git() {
   pkgdesc='A daemon that renders map tiles using mapnik'
   provides=('renderd')
 
-  DESTDIR="$pkgdir" cmake --install build --prefix /usr --strip
+  DESTDIR="$pkgdir" cmake --install build --strip
 
   # Systemd service units, sysusers.d & tmpfiles.d configuration files
   install -Dm644 -t "$pkgdir"/usr/lib/systemd/system/ "$srcdir"/renderd-postgresql.service "$srcdir"/renderd.service
