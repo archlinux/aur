@@ -1,7 +1,7 @@
 # Maintainer: Herbert Knapp <herbert.knapp@edu.uni-graz.at>
 pkgname=gtk-gnutella-git
 pkgver=1.2.3.r8.g0cbba2f8b
-pkgrel=1
+pkgrel=2
 pkgdesc='Efficient Gnutella 2 client (latest git version)'
 arch=('i686' 'x86_64')
 url='http://gtk-gnutella.sourceforge.net/'
@@ -12,7 +12,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
 backup=()
-options=('strip')
+options=('strip' '!buildflags')
 install="${pkgname}.install"
 _repo='https://github.com/gtk-gnutella/gtk-gnutella'
 _branch='devel'
