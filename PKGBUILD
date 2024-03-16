@@ -1,5 +1,5 @@
 pkgname=msvc-wine-git
-pkgver=17.8.r6
+pkgver=17.9.r3
 pkgrel=1
 pkgdesc='MSVC compiler with CMake toolchains. Compiler work in Wine64'
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=(
 	'samba: Need to generate debug symbols (Debug and RelWithDebInfo build types)'
 )
 provides=(msvc-x86-cmake msvc-x64-cmake msvc-arm-cmake msvc-arm64-cmake)
-conflicts=(msvc-wine msvc-wine-git)
+conflicts=(msvc-wine)
 source=('git+https://github.com/mstorsjo/msvc-wine.git'
 		'msvc-cmake.sh'
 		'toolchain-msvc.cmake'
