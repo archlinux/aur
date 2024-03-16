@@ -1,24 +1,21 @@
 pkgbase = gtk-gnutella-git
 	pkgdesc = Efficient Gnutella 2 client (latest git version)
 	pkgver = 1.2.3.r8.g0cbba2f8b
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gtk-gnutella.sourceforge.net/
 	install = gtk-gnutella-git.install
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = git
 	depends = gtk2
 	depends = desktop-file-utils
 	provides = gtk-gnutella
 	conflicts = gtk-gnutella
-	options = strip
-	options = !buildflags
+	options = !lto
 	source = gtk-gnutella-git.install
-	source = connections-hmk.patch
-	source = timeout-hmk.patch
+	source = gtk-gnutella-git::git+https://github.com/gtk-gnutella/gtk-gnutella.git#branch=devel
 	md5sums = 0b6211b511da48346cecdc1d2f963c76
-	md5sums = 126734defaa7c5b77cf0baef19c47d2c
-	md5sums = 6f0401e9241df4f28b3fbe1bde954651
+	md5sums = SKIP
 
 pkgname = gtk-gnutella-git
