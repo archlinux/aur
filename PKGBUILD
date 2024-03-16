@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Samuel Walladge <samuel at swalladge dot net>
 pkgname=tagspaces-bin
-pkgver=5.7.8
+pkgver=5.7.9
 pkgrel=1
 pkgdesc="An offline, open source, document manager with tagging support"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('alsa-lib' 'gtk3' 'libnotify' 'libsecret' 'nss' 'xdg-utils')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("https://github.com/tagspaces/tagspaces/releases/download/v$pkgver/${pkgname%-bin}-linux-amd64-$pkgver.deb")
-sha256sums=('6b38725864df4adafe56c3b27378fe9dda1617858b3919df1ae63b0ffd54257e')
+sha256sums=('4b13f16da1e1f039abb9cbfce34669fa56d82ccab42eb6ef8d5783eb9bbd0f5e')
 
 package() {
   bsdtar -xvf data.tar.xz -C "$pkgdir/"
