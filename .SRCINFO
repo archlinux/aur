@@ -1,9 +1,8 @@
 pkgbase = harrison-fastrack
 	pkgver = 2.0.1.a587504f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://store.harrisonaudio.com/all-products/fastrack
 	arch = x86_64
-	groups = pro-audio
 	license = EULA
 	makedepends = xdg-user-dirs
 	makedepends = unzip
@@ -39,9 +38,11 @@ pkgbase = harrison-fastrack
 
 pkgname = harrison-fastrack-vst-bin
 	pkgdesc = Harrison Fastrack (VST)
+	groups = pro-audio
 	groups = vst-plugins
 	provides = harrison-fastrack-vst-bin
 
 pkgname = harrison-fastrack-vst3-bin
 	pkgdesc = Harrison Fastrack (VST3)
+	groups = pro-audio
 	groups = vst3-plugins
