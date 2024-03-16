@@ -3,29 +3,29 @@
 _pkgname=english
 _pkgver=1.2-6
 pkgname=r-${_pkgname,,}
-pkgver=1.2.6
-pkgrel=4
-pkgdesc='Translate Integers into English'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=10
+pkgdesc="Translate Integers into English"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r
 )
 optdepends=(
   r-knitr
   r-rmarkdown
-  r-utils
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('49578a39b813d3497a960cb50a78d611fb367c9d1587bb438f4372748baf76bc')
+md5sums=('1215268b9fabf76a6e2c7c150af7e6d8')
+b2sums=('0043a499f07c79ae1783a51fddb72c23b3d553c5da7df93ee5c1d8083e08cb41ae67fb7e85607d3333debee67c97cdaefce88139a7f390aa7c8a7236177d00f5')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

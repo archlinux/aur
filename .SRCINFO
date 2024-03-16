@@ -1,15 +1,15 @@
 pkgbase = r-english
 	pkgdesc = Translate Integers into English
 	pkgver = 1.2.6
-	pkgrel = 4
+	pkgrel = 10
 	url = https://cran.r-project.org/package=english
 	arch = any
-	license = GPL
+	license = GPL-2.0-only
 	depends = r
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	optdepends = r-utils
 	source = https://cran.r-project.org/src/contrib/english_1.2-6.tar.gz
-	sha256sums = 49578a39b813d3497a960cb50a78d611fb367c9d1587bb438f4372748baf76bc
+	md5sums = 1215268b9fabf76a6e2c7c150af7e6d8
+	b2sums = 0043a499f07c79ae1783a51fddb72c23b3d553c5da7df93ee5c1d8083e08cb41ae67fb7e85607d3333debee67c97cdaefce88139a7f390aa7c8a7236177d00f5
 
 pkgname = r-english
