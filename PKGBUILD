@@ -10,8 +10,8 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=122.0.6261.128
-pkgrel=2
+pkgver=123.0.6312.46
+pkgrel=1
 _launcher_ver=8
 _manual_clone=0
 _system_clang=1
@@ -34,14 +34,12 @@ options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
-        support-ICU-74-in-LazyTextBreakIterator.patch
         drop-flag-unsupported-by-clang17.patch
         compiler-rt-adjust-paths.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('51757e7ecf5bb1db4881562d021547be5f8065e4f22a6ba9bf6e9a3a0d32c2ea'
+sha256sums=('23f98adabeb040e002fb8aae17efb3e23a3036b2d14a75d03debf8644dab02e7'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            '1f6acf165578288dc84edc7d9dcfabf7d38f55153b63a37ee5afa929f0e2baad'
-            '8c256b2a9498a63706a6e7a55eadbeb8cc814be66a75e49aec3716c6be450c6c'
+            '488f02af92b148eaa91ad5015b3bf383dfc8618ebafe9c3c250cd4c7f4e27b19'
             '3bd35dab1ded5d9e1befa10d5c6c4555fe0a76d909fb724ac57d0bf10cb666c1'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
@@ -70,14 +68,15 @@ _uc_ver="$pkgver-$_uc_rel"
 optdepends=("${optdepends[@]}"
             'chromium-extension-web-store: Web Store Functionality')
 source=(${source[@]}
-        ${pkgname%-*}-$_uc_ver.zip::https://github.com/noahvogt/${pkgname%-*}/archive/refs/heads/update.zip
+        ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/noahvogt/${pkgname%-*}/archive/refs/tags/$_uc_ver.tar.gz
+        # ${pkgname%-*}-$_uc_ver.zip::https://github.com/noahvogt/${pkgname%-*}/archive/refs/heads/update.zip
         # ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/${pkgname%-*}/archive/refs/tags/$_uc_ver.tar.gz
         0001-adjust-buffer-format-order.patch
         0001-enable-linux-unstable-deb-target.patch
         0001-ozone-wayland-implement-text_input_manager_v3.patch
         0001-ozone-wayland-implement-text_input_manager-fixes.patch)
 sha256sums=(${sha256sums[@]}
-            'abad2fd41e95ecb704dd2f33d4d175f21ea0064784342d2c23f02b5ec8ed1220'
+            '64745d76954ffcaa91e590db2b385eb10251f9aed5a28087d119e63662834f08'
             '8ba5c67b7eb6cacd2dbbc29e6766169f0fca3bbb07779b1a0a76c913f17d343f'
             '2a44756404e13c97d000cc0d859604d6848163998ea2f838b3b9bb2c840967e3'
             'd9974ddb50777be428fd0fa1e01ffe4b587065ba6adefea33678e1b3e25d1285'
@@ -86,7 +85,7 @@ sha256sums=(${sha256sums[@]}
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
-  #[brotli]=brotli
+  [brotli]=brotli
   [dav1d]=dav1d
   #[ffmpeg]=ffmpeg    # YouTube playback stopped working in Chromium 120
   [flac]=flac
@@ -146,7 +145,6 @@ prepare() {
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
   # Upstream fixes
-  patch -Np1 -i ../support-ICU-74-in-LazyTextBreakIterator.patch
 
   # Drop compiler flag that needs newer clang
   patch -Np1 -i ../drop-flag-unsupported-by-clang17.patch
@@ -155,7 +153,6 @@ prepare() {
   patch -Np1 -i ../compiler-rt-adjust-paths.patch
 
   # Fixes for building with libstdc++ instead of libc++
-  patch -Np1 -i ../chromium-patches-*/chromium-114-ruy-include.patch
   patch -Np1 -i ../chromium-patches-*/chromium-117-material-color-include.patch
 
 
@@ -200,8 +197,8 @@ prepare() {
 
 
   # Ungoogled Chromium changes
-  _ungoogled_repo="$srcdir/ungoogled-chromium-update"
-  # _ungoogled_repo="$srcdir/${pkgname%-*}-$_uc_ver"
+  # _ungoogled_repo="$srcdir/ungoogled-chromium-update"
+  _ungoogled_repo="$srcdir/${pkgname%-*}-$_uc_ver"
 
   _utils="${_ungoogled_repo}/utils"
   msg2 'Pruning binaries'
@@ -295,8 +292,8 @@ build() {
   fi
 
   # Append ungoogled chromium flags to _flags array
-  _ungoogled_repo="$srcdir/ungoogled-chromium-update"
-  # _ungoogled_repo="$srcdir/${pkgname%-*}-$_uc_ver"
+  # _ungoogled_repo="$srcdir/ungoogled-chromium-update"
+  _ungoogled_repo="$srcdir/${pkgname%-*}-$_uc_ver"
   readarray -t -O ${#_flags[@]} _flags < "${_ungoogled_repo}/flags.gn"
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
