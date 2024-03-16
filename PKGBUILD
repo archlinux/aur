@@ -29,4 +29,7 @@ build() {
 package() {
 	make -C "build" DESTDIR="$pkgdir" install
 	install -D -m644 "${pkgname}-${_pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+	mkdir -p "${pkgdir}/usr/lib/" # temp fix
+	ln -s "/usr/lib/libunibreak.so" "${pkgdir}/usr/lib/libunibreak.so.5" # temp fix
 }
