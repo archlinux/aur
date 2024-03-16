@@ -3,12 +3,12 @@
 _pkgname=svGUI
 _pkgver=1.0.1
 pkgname=r-${_pkgname,,}
-pkgver=1.0.1
-pkgrel=4
-pkgdesc='SciViews - Manage GUIs in R'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=9
+pkgdesc="SciViews - Manage GUIs in R"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r
 )
@@ -20,14 +20,15 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e9a477b41276b8c4b5040b594fad1ddf8173481ff5f63d78929d0c345d7b0532')
+md5sums=('1f6b7f275fda2066db762a0d1791ec56')
+b2sums=('70fd0ad048d79f79a417119a3b7dabf7081aab339aa79004c1cf16c702fc891552693e66985e03e6b642a0131cc9d074af1007ad8e60ca6e4bbc79eb1e7deff8')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
