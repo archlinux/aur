@@ -1,7 +1,7 @@
 pkgbase = create-tauri-app
 	pkgdesc = Rapidly scaffold out a new tauri app project.
 	pkgver = 3.13.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://crates.io/crates/create-tauri-app
 	arch = aarch64
 	arch = i686
@@ -9,17 +9,7 @@ pkgbase = create-tauri-app
 	license = Apache
 	license = MIT
 	makedepends = cargo
-	depends = gcc-libs
-	depends = cargo
-	depends = webkit2gtk-4.1
-	depends = base-devel
-	depends = curl
-	depends = wget
-	depends = file
-	depends = openssl
-	depends = appmenu-gtk-module
-	depends = libappindicator-gtk3
-	depends = librsvg
+	depends = tauri-cli
 	source = create-tauri-app-3.13.14.tar.gz::https://crates.io/api/v1/crates/create-tauri-app/3.13.14/download
 	sha512sums = e960e73d951a7decaafe9dce15123d6d5a6284388011a38e446e00a8e09393b0879a2382f85320aed68d34a936e00f5cac4df046a73adb77299b1bb4d1f3cda9
 

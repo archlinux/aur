@@ -4,12 +4,12 @@
 _crate="create-tauri-app"
 pkgname="create-tauri-app"
 pkgver=3.13.14
-pkgrel=1
+pkgrel=2
 pkgdesc='Rapidly scaffold out a new tauri app project.'
 url='https://crates.io/crates/create-tauri-app'
 license=('Apache' 'MIT')
 
-depends=('gcc-libs' 'cargo' 'webkit2gtk-4.1' 'base-devel' 'curl' 'wget' 'file' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg')
+depends=('tauri-cli')
 makedepends=('cargo')
 
 source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/create-tauri-app/3.13.14/download")
