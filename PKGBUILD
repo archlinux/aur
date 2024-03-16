@@ -3,12 +3,12 @@
 _pkgname=TCGAbiolinksGUI.data
 _pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
-pkgrel=1
-pkgdesc='Data for the TCGAbiolinksGUI package'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Data for the TCGAbiolinksGUI package"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r
 )
@@ -20,14 +20,15 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cad5d078da2d9df521a4bc5398324849caf4d73c6d3c46dda362e59214b6d511')
+md5sums=('bd2042c0064583d666364a52ce3be17e')
+b2sums=('5edc59058f70ccfd93988d296975dd70214f5f822086d9f9a861d38babd763b27ebf46f2f73014f0e1dd716bffbba53a8a7f6c834531873e72a14f362342c95e')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
