@@ -1,13 +1,11 @@
 pkgname=carla-bridges-linux32
 pkgver=6939.66afe24a0
-pkgrel=1
+pkgrel=2
 pkgdesc="Carla Linux VST 32-Bit Bridge"
 arch=(x86_64)
 url="https://kxstudio.linuxaudio.org/Applications:Carla"
 license=(GPL2)
-groups=(pro-audio)
-provides=('carla-bridges-linux32')
-conflicts=('carla-bridges-linux32')
+groups=('pro-audio')
 depends=('carla')
 makedepends=("git" "gcc-multilib")
 source=("$pkgname"::'git+https://github.com/falkTX/Carla.git')
