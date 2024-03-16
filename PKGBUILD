@@ -2,14 +2,12 @@
 pkgname=novanav
 pkgver=0.0.6
 pkgrel=1
-pkgdesc="NovaNav written in C++: Lightweight browser for Linux and macOS, delivering fast, distraction-free browsing experience."
+pkgdesc="NovaNav: Lightweight browser for Linux written in C++, delivering fast, distraction-free browsing experience."
 arch=('x86_64')
 url="https://github.com/felipealfonsog/NovaNav"
 license=('BSD-3-Clause')
 depends=('qt5-base' 'qt5-webengine')
-
 source=("https://github.com/felipealfonsog/NovaNav/archive/refs/tags/v.${pkgver}.tar.gz")
-
 sha256sums=('63787782dfdc8b0c9d6a5220408189402acb71e99d1050142c5569da5f8ab89b')
 
 prepare() {
