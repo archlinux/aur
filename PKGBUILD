@@ -1,7 +1,7 @@
 pkgbase=harrison-legacy-eq
 pkgname=("${pkgbase}-vst-bin" "${pkgbase}-vst3-bin")
 pkgver=5.0.0.aacf6c6a
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://store.harrisonaudio.com/all-products/legacy-eq"
 license=('EULA')
@@ -22,5 +22,6 @@ package_harrison-legacy-eq-vst-bin() {
 
 package_harrison-legacy-eq-vst3-bin() {
 	pkgdesc="Harrison Legacy EQ (VST3)"
+	groups=("vst3-plugins")
 	install -Dm755 "$srcdir/Harrison_LegacyEQ/vst3/Harrison_LegacyEQ.vst3/Contents/x86_64-linux/Harrison_LegacyEQ.so" "$pkgdir/usr/lib/vst3/Harrison_LegacyEQ.vst3/Contents/x86_64-linux/Harrison_LegacyEQ.so"
 }
