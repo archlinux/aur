@@ -2,9 +2,9 @@
 
 _pkgname="mpd-discord-rpc"
 pkgname="$_pkgname-git"
-pkgver=1.7.2.r1.gf0303b3
+pkgver=1.7.2.r2.g0fd70aa
 pkgrel=1
-pkgdesc="Displays metadata from currently playing song from MPD in Discord using Rich Presence"
+pkgdesc="Displays metadata of currently playing song from MPD in Discord using Rich Presence"
 url="https://github.com/JakeStanger/mpd-discord-rpc"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('MIT')
@@ -14,6 +14,9 @@ makedepends=(
   'git'
   'rust'
 )
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
