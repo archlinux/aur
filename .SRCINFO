@@ -1,6 +1,6 @@
 pkgbase = netron-bin
 	pkgdesc = Visualizer for neural network, deep learning and machine learning models
-	pkgver = 7.5.0
+	pkgver = 7.5.5
 	pkgrel = 1
 	url = https://www.lutzroeder.com/ai
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = netron-bin
 	depends = libdbusmenu-gtk2
 	depends = alsa-lib
 	provides = netron
-	noextract = netron-bin-7.5.0.AppImage
+	noextract = netron-bin-7.5.5.AppImage
 	options = !strip
-	source = netron-bin-7.5.0.AppImage::https://github.com/lutzroeder/netron/releases/download/v7.5.0/Netron-7.5.0.AppImage
+	source = netron-bin-7.5.5.AppImage::https://github.com/lutzroeder/netron/releases/download/v7.5.5/Netron-7.5.5.AppImage
 	source = LICENSE::https://github.com/lutzroeder/netron/raw/main/LICENSE
-	sha256sums = 3866708dc0da3441d409660aca647357acebb2b630d0cb94225fbd55a37e0b46
+	sha256sums = 196d5300e15a05bf586faa5094392fb448b0c7b79f3213f797751bee590864a6
 	sha256sums = 535cb2c7c8990f967c106e3035e4df8d3e070144af1163b86c8bb58b65fe5e88
 
 pkgname = netron-bin
