@@ -1,19 +1,18 @@
 pkgbase = repoctl
 	pkgdesc = An AUR helper that also simplifies managing local Pacman repositories
-	pkgver = 0.21
-	pkgrel = 3
+	pkgver = 0.22
+	pkgrel = 1
 	url = https://github.com/cassava/repoctl
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = MIT
-	makedepends = go
+	makedepends = go>=1.22.1
 	makedepends = xz
 	depends = pacman
 	options = !strip
-	source = https://github.com/cassava/repoctl/releases/download/v0.21/repoctl-0.21.tar.gz
-	md5sums = 99e172a3734a0269435710adaf449f3e
+	source = https://github.com/cassava/repoctl/releases/download/v0.22/repoctl-0.22.tar.gz
+	md5sums = 634e2261b000dd6f614faae230287940
 
 pkgname = repoctl
-
