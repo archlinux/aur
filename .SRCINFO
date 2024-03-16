@@ -1,6 +1,6 @@
 pkgbase = pyprland
 	pkgdesc = Customize your Hyprland with scratchpads, menus, easy monitor layout and other extensions
-	pkgver = 2.0.8
+	pkgver = 2.0.9
 	pkgrel = 1
 	url = https://github.com/fdev31/pyprland
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = pyprland
 	depends = python-aiofiles
 	provides = pyprland
 	conflicts = pyprland
-	source = git+https://github.com/fdev31/pyprland.git#tag=2.0.8
+	source = git+https://github.com/fdev31/pyprland.git#tag=2.0.9
 	md5sums = SKIP
 
 pkgname = pyprland
