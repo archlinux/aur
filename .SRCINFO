@@ -1,7 +1,7 @@
 pkgbase = harrison-xt-plugins-bin
 	pkgdesc = Harrison Consoles LV2 XT Plugin Suite
 	pkgver = 9.2.172
-	pkgrel = 1
+	pkgrel = 2
 	url = https://harrisonconsoles.com/mixbus-plugins/
 	arch = x86_64
 	groups = lv2-plugins
@@ -10,6 +10,10 @@ pkgbase = harrison-xt-plugins-bin
 	makedepends = xdg-user-dirs
 	depends = glibc
 	depends = libcurl-gnutls
+	depends = libx11
+	depends = libxau
+	depends = libxcb
+	depends = libxdmcp
 	source = https://s3.eu-west-1.amazonaws.com/eu1.download.solidstatelogic.com/Harrison/Mixbus-9.2.172-x86_64.run
 	sha256sums = cb6255b757f876477d60269ca3198097a36dfbac537f0e47b9c8f3c76c2acd78
 
