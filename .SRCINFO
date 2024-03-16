@@ -1,9 +1,8 @@
 pkgbase = harrison-micro-glide
 	pkgver = 1.0.0.c01d1d08
-	pkgrel = 2
+	pkgrel = 3
 	url = https://store.harrisonaudio.com/all-products/micro-glide
 	arch = x86_64
-	groups = pro-audio
 	license = EULA
 	makedepends = xdg-user-dirs
 	makedepends = unzip
@@ -39,9 +38,11 @@ pkgbase = harrison-micro-glide
 
 pkgname = harrison-micro-glide-vst-bin
 	pkgdesc = Harrison Drum Flow (VST)
+	groups = pro-audio
 	groups = vst-plugins
 	provides = harrison-micro-glide-vst-bin
 
 pkgname = harrison-micro-glide-vst3-bin
 	pkgdesc = Harrison Drum Flow (VST3)
+	groups = pro-audio
 	groups = vst3-plugins
