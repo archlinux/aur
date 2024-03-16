@@ -1,6 +1,6 @@
 pkgbase = bin-cpuflags-x86-bin
 	pkgdesc = A small CLI tool to detect CPU flags (instruction sets) of X86 binaries (binary release)
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/HanabishiRecca/bin-cpuflags-x86
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = bin-cpuflags-x86-bin
 	provides = bin-cpuflags-x86
 	conflicts = bin-cpuflags-x86
 	options = !strip
-	source = https://github.com/HanabishiRecca/bin-cpuflags-x86/releases/download/1.0.1/bin-cpuflags-x86-1.0.1-linux-x86_64.tar.xz
-	sha256sums = 10d6553b4592c4e7da0ab522c08ce1ede6eb94f578c0bdd4faa1bb724525a7af
+	source = https://github.com/HanabishiRecca/bin-cpuflags-x86/releases/download/1.0.2/bin-cpuflags-x86-1.0.2-linux-x86_64.tar.xz
+	sha256sums = 1e2719138dcbf7d9dd1085fccdf80a5cf1f91e2d62e7e8551db71c7740159244
 
 pkgname = bin-cpuflags-x86-bin
