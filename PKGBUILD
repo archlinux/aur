@@ -10,6 +10,7 @@ url="https://github.com/django/daphne"
 license=('BSD')
 makedepends=(
 'python-build'
+'python-installer'
 'python-pytest-runner'
 )
 depends=(
