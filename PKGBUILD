@@ -3,8 +3,8 @@
 _pkgname="mpd-discord-rpc"
 pkgname="$_pkgname"
 pkgver=1.7.2
-pkgrel=1
-pkgdesc="Displays metadata from currently playing song from MPD in Discord using Rich Presence"
+pkgrel=2
+pkgdesc="Displays metadata of currently playing song from MPD in Discord using Rich Presence"
 url="https://github.com/JakeStanger/mpd-discord-rpc"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('MIT')
