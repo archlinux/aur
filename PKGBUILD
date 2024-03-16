@@ -4,14 +4,17 @@
 _pkgname=dotCall64
 _pkgver=1.1-1
 pkgname=r-${_pkgname,,}
-pkgver=1.1.1
-pkgrel=1
-pkgdesc='Enhanced Foreign Function Interface Supporting Long Vectors'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Enhanced Foreign Function Interface Supporting Long Vectors"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
+)
+makedepends=(
+  gcc-fortran
 )
 optdepends=(
   r-microbenchmark
@@ -21,18 +24,16 @@ optdepends=(
   r-spam
   r-testthat
 )
-makedepends=(
-  gcc-fortran
-)
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('21b8d7d747c07aaf8a82d61ec98fe0539afcaa5a565d9c2fc55be65b6af2c91b')
+md5sums=('daf0febb534609e779c515d35795175c')
+b2sums=('898a974de53f98672fbd3365b1ba433529dd82c6f7ad1cfc9a645b2c724afbc7ffec6e0f0185b9391d054728e9d230ac0a4204c13c8915a9f6ece637e2e40b0b')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
