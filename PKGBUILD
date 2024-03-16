@@ -7,12 +7,12 @@
 
 pkgname=gargoyle
 pkgver=2023.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive Fiction multi-interpreter that supports all major IF formats."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://ccxvii.net/gargoyle/"
 license=('GPL2' 'GPL3' 'custom:BSD-2-Clause' 'custom:BSD-3-Clause' 'Artistic2.0' 'MIT' 'custom:OFL-1.1')
-depends=('sdl2_mixer' 'sdl2' 'freetype2' 'qt5-base' 'fontconfig' 'libjpeg' 'libpng' 'zlib'
+depends=('sdl2_mixer' 'sdl2' 'freetype2' 'qt6-base' 'fontconfig' 'libjpeg' 'libpng' 'zlib'
          'hicolor-icon-theme')
 makedepends=('cmake' 'pkgconfig' 'desktop-file-utils')
 optdepends=('speech-dispatcher: Text-to-Speech')
@@ -42,7 +42,7 @@ build() {
 	cd build
 	# the Arch package guidelines say to use
 	# /usr/lib instead of /usr/libexec.
-	cmake .. -DWITH_TTS=DYNAMIC -DCMAKE_INSTALL_LIBEXECDIR=lib -DCMAKE_INSTALL_PREFIX=/usr
+	cmake .. -DWITH_QT6=true -DWITH_TTS=DYNAMIC -DCMAKE_INSTALL_LIBEXECDIR=lib -DCMAKE_INSTALL_PREFIX=/usr
 	make
 }
 
