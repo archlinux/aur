@@ -1,7 +1,7 @@
 pkgbase = dotter-rs-bin
 	pkgdesc = A dotfile manager and templater written in Rust
 	pkgver = 0.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SuperCuber/dotter
 	arch = x86_64
 	arch = aarch64
@@ -18,7 +18,7 @@ pkgbase = dotter-rs-bin
 	source_aarch64 = dotter-rs-bin-0.13.1::https://github.com/SuperCuber/dotter/releases/download/v0.13.1/dotter-linux-arm64-musl
 	source_aarch64 = dotter-rs-bin-0.13.1-completions.zip::https://github.com/SuperCuber/dotter/releases/download/v0.13.1/completions.zip
 	source_aarch64 = dotter-rs-bin-0.13.1-README.md::https://github.com/SuperCuber/dotter/raw/v0.13.1/README.md
-	sha512sums_aarch64 = a4f82b0bacc3522f6f76ed3837cf7b97c45e9d318a456fdfbfdbd94c6be82099480e235db99ac2ff3ae418d5c831bccd16ddcebc2f19e99bb4ab8fab444a8b79
+	sha512sums_aarch64 = 9b3cc95bc920468cb94c3eb6a80f1de4d2e43c9b7633ec8c4d33d11bd64784a2fcb4716b1367a41e18fffbd8f2b20821b6c913e858ace848aa18def6251c2bb8
 	sha512sums_aarch64 = 965ba3d26a1ec831e526641adcbcd43ba653b9521c15f1e64ad039f75d997fa87766139e0f14e620df22e0c2a58b890e64b94a85ec2ad2e6b9039a6181445bd4
 	sha512sums_aarch64 = a7c39dae7e73fc3e8aa52b10135967478543259efb8cb66dcacb783cb5976000d41b82bfe875a22a51c96027f4a7828ed2945fbefb6dc3a242ee65959295924f
 
