@@ -1,9 +1,8 @@
 pkgbase = harrison-multiband-compressor
 	pkgver = 4.0.1.8ec4d54b
-	pkgrel = 3
+	pkgrel = 4
 	url = https://store.harrisonaudio.com/all-products/multiband-compressor
 	arch = x86_64
-	groups = pro-audio
 	license = EULA
 	makedepends = xdg-user-dirs
 	makedepends = unzip
@@ -39,6 +38,7 @@ pkgbase = harrison-multiband-compressor
 
 pkgname = harrison-multiband-compressor-vst-bin
 	pkgdesc = Harrison MultiBand Compressor (VST)
+	groups = pro-audio
 	groups = vst-plugins
 	provides = harrison-multiband-compressor-vst-bin
 	conflicts = harrison-ava-mc-vst
@@ -48,4 +48,5 @@ pkgname = harrison-multiband-compressor-vst-bin
 
 pkgname = harrison-multiband-compressor-vst3-bin
 	pkgdesc = Harrison MultiBand Compressor (VST3)
+	groups = pro-audio
 	groups = vst3-plugins
