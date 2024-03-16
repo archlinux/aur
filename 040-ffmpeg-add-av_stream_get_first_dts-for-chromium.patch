@@ -1,6 +1,6 @@
 --- a/libavformat/avformat.h
 +++ b/libavformat/avformat.h
-@@ -1030,6 +1030,10 @@ attribute_deprecated
+@@ -1107,6 +1107,10 @@ attribute_deprecated
  int64_t    av_stream_get_end_pts(const AVStream *st);
  #endif
  

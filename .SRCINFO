@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-amd-full-git
 	pkgdesc = Complete solution to record, convert and stream audio and video (all possible features for AMD; git version)
-	pkgver = 6.2.r112865.g3bca828d39
+	pkgver = 6.2.r114211.gaca7037e01
 	pkgrel = 1
 	url = https://www.ffmpeg.org/
 	arch = x86_64
@@ -79,6 +79,7 @@ pkgbase = ffmpeg-amd-full-git
 	depends = openjpeg2
 	depends = libopenmpt
 	depends = opus
+	depends = qrencode
 	depends = rav1e
 	depends = rubberband
 	depends = rtmpdump
@@ -144,7 +145,7 @@ pkgbase = ffmpeg-amd-full-git
 	sha256sums = 7d7a53ee6826acf44d6729d337f30fa8ebb85011a2793261575b7bad230835cb
 	sha256sums = e8fdc940474f3819b9a8d30cab8164774584c051322acb6194bcb03d56e8175a
 	sha256sums = 0433016c8523c7ce159523946a76c8fa06a926f33f94b70e8de7c2082d14178c
-	sha256sums = 7d5ce8058b143bae1be10a06d79ac0f1a72daf00cf648309450d83bea249a6b1
+	sha256sums = 06afdb3bc83b670c213f508f4f9fd27d0b4f9005fa00c3f5cf9b648dd8ec2d48
 	sha256sums = 0e277c0d5e33612ca7a11025958133b17bfbe23168b0aee5bd07f674f6fd7440
 	sha256sums = 04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36
 
