@@ -2,8 +2,8 @@
 # Contributor: Mr.Smith1974
 
 pkgname=cytopia-git
-pkgver=r2837.81d407f6
-pkgrel=2
+pkgver=r2838.2c670ec2
+pkgrel=1
 pkgdesc='A city building simulation game'
 arch=('x86_64')
 url='https://www.cytopia.net/'
@@ -24,8 +24,8 @@ build() {
     cd build
 
     ### NOTE
-    # In the future we should use CMAKE_INSTALL_PREFIX=/bin
-    # However, as of 2024-04-15, this does not work as expected.
+    # In the future we should use CMAKE_INSTALL_PREFIX=/usr
+    # However, as of 2024-04-16, this does not work as expected.
     cmake .. \
         -DCMAKE_INSTALL_PREFIX=/opt/cytopia \
         -DCMAKE_BUILD_TYPE=Release \
@@ -40,15 +40,10 @@ check() {
 
 package() {
     cd Cytopia/build
+    DESTDIR="$pkgdir" cmake --build . --target install
 
-    # Doesn't work as of 2024-04-15.
-    #DESTDIR="$pkgdir" cmake --build . --target install
-
-    ### REMOVE this section once the cmake install is working
-    mkdir -p "$pkgdir/opt"
-    cp -r bin "$pkgdir/opt/cytopia"
+    ### REMOVE next line once installing to /usr works correctly
     mkdir -p "$pkgdir/usr/bin"
-    ln -s /opt/cytopia/Cytopia "$pkgdir/usr/bin/cytopia"
-    ### END REMOVE
+    ln -sf /opt/cytopia/Cytopia "$pkgdir/usr/bin/cytopia"
 }
 

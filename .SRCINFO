@@ -1,7 +1,7 @@
 pkgbase = cytopia-git
 	pkgdesc = A city building simulation game
-	pkgver = r2837.81d407f6
-	pkgrel = 2
+	pkgver = r2838.2c670ec2
+	pkgrel = 1
 	url = https://www.cytopia.net/
 	arch = x86_64
 	license = GPL-3.0-only
