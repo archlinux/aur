@@ -1,7 +1,7 @@
 pkgbase = wallpaperdownloader
 	pkgdesc = Download, manage and change automatically your favorite wallpapers from the Internet
 	pkgver = 4.4.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://bitbucket.org/eloy_garcia_pca/wallpaperdownloader
 	arch = any
 	license = GPL3
@@ -11,6 +11,6 @@ pkgbase = wallpaperdownloader
 	depends = xdg-utils
 	noextract = wallpaperdownloader-4.4.0.tar.gz
 	source = wallpaperdownloader-4.4.0.tar.gz::https://bitbucket.org/eloy_garcia_pca/wallpaperdownloader/get/v4.4.0.tar.gz
-	sha256sums = 6e3d1038eafd8c44b862ae8c80619c07facb7b94732e190836be03a8dd2f7c0b
+	sha256sums = b4fde93fbe7138fb053092f6e4e4d11eefc102085708f27443cd0936bea57d8e
 
 pkgname = wallpaperdownloader

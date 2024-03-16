@@ -2,7 +2,7 @@
 # Contributor: gbr <gbr@protonmail.com>
 pkgname=wallpaperdownloader
 pkgver=4.4.0
-pkgrel=0
+pkgrel=1
 pkgdesc='Download, manage and change automatically your favorite wallpapers from the Internet'
 arch=('any')
 url='https://bitbucket.org/eloy_garcia_pca/wallpaperdownloader'
@@ -11,7 +11,7 @@ depends=('java-runtime>=8' 'xdg-utils')
 makedepends=('java-environment>=8' 'maven')
 source=("$pkgname-$pkgver.tar.gz::$url/get/v$pkgver.tar.gz")
 noextract=("${source[@]%%::*}")
-sha256sums=('6e3d1038eafd8c44b862ae8c80619c07facb7b94732e190836be03a8dd2f7c0b')
+sha256sums=('b4fde93fbe7138fb053092f6e4e4d11eefc102085708f27443cd0936bea57d8e')
 
 prepare() {
     mkdir -p "$pkgname-$pkgver"
