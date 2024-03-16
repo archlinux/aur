@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=CollaB3
+Comment=CollaB3 Tone Wheel Organ (Standalone)
+Exec=/usr/bin/CollaB3
+Icon=/usr/share/icons/hicolor/512x512/apps/collab3.png
+Categories=AudioVideo;Audio;X-Jack;Midi;X-MIDI;
+Terminal=false
+Categories=Audio;Video;Multimedia;
+Type=Application
+Keywords=Audio;Synth;Organ;Whirl;Midi;Jack
