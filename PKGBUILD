@@ -2,11 +2,11 @@
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 pkgname=jaxb-api
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Java Architecture for XML Binding (JAXB) API"
 arch=(any)
 url="https://github.com/eclipse-ee4j/${pkgname}"
-license=('custom:BSD-3-clause')
+license=(BSD-3-Clause)
 depends=(java-runtime)
 makedepends=(java-environment maven)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
@@ -30,12 +30,8 @@ check() {
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
-
-  install -dm755 "${pkgdir}/usr/share/java/"
-  install -m544 "api/target/jakarta.xml.bind-api-${pkgver}.jar" "${pkgdir}/usr/share/java/"
-  install -Dm644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  cd "${pkgdir}/usr/share/java"
-  ln -s "./jakarta.xml.bind-api-${pkgver}.jar" "${pkgname}-${pkgver}.jar"
-  ln -s "./${pkgname}-${pkgver}.jar" "${pkgname}.jar"
+  cd ${pkgname}-${pkgver}/api
+  install -Dm 644 target/jakarta.xml.bind-api-${pkgver}.jar -t "${pkgdir}"/usr/share/java
+  ln -s jakarta.xml.bind-api-${pkgver}.jar "${pkgdir}"/usr/share/java/jakarta.xml.bind-api.jar
+  install -Dm644 ${srcdir}/${pkgname}-${pkgver}/LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

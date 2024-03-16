@@ -1,10 +1,10 @@
 pkgbase = jaxb-api
 	pkgdesc = Java Architecture for XML Binding (JAXB) API
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eclipse-ee4j/jaxb-api
 	arch = any
-	license = custom:BSD-3-clause
+	license = BSD-3-Clause
 	makedepends = java-environment
 	makedepends = maven
 	depends = java-runtime
