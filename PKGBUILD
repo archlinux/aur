@@ -15,14 +15,14 @@
 
 _qt_module=qtactiveqt
 pkgname=mingw-w64-qt5-activeqt
-pkgver=5.15.12
+pkgver=5.15.13
 pkgrel=1
 arch=('any')
 pkgdesc="ActiveX integration framework (mingw-w64)"
 depends=('mingw-w64-qt5-base')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'python')
 license=('GPL3' 'LGPL3' 'LGPL2.1' 'FDL' 'custom')
-_commit=4fc1cba4c415d84a5879da29f7c459b70fbc15e9
+_commit=014285857ef1cfb2d9965cf7bad871bbc336ce60
 _basever=${pkgver%%+*}
 makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
@@ -32,7 +32,7 @@ _pkgfqn=${_qt_module}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         '0001-Don-t-require-windows.h-when-using-native-Linux-gcc.patch'
         '0002-Handle-win64-in-dumpcpp-and-MetaObjectGenerator-read.patch')
-sha256sums=('SKIP'
+sha256sums=('c5a635be320e3ba9cbc20e04901f660d46541e4943a98cf2e5d42d0f09562c17'
             '05443c9a67b30160a7d4264da9c57b1a2fdbc3c74bab8e9f69c51ac8feeac2cb'
             '06aa9413f31edd4f8c51d65cf6a8e1add8d5a6af2588f18bdc2e67164ebdaea7')
 
@@ -65,7 +65,7 @@ build() {
       msg2 "Building ${_config##*=} version for ${_arch}"
       mkdir -p build-${_arch}-${_config##*=} && pushd build-${_arch}-${_config##*=}
       ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config} ${_additional_qmake_args}
-      make
+      make -j$(nproc)
       popd
     done
   done
@@ -78,7 +78,7 @@ package() {
     for _config in "${_configurations[@]}"; do
       pushd build-${_arch}-${_config##*=}
 
-      make INSTALL_ROOT="$pkgdir" install
+      make -j$(nproc) INSTALL_ROOT="$pkgdir" install
 
       # use prl files from build directory since installed prl files seem to have incorrect QMAKE_PRL_LIBS_FOR_CMAKE
       if [[ -d 'lib' ]]; then

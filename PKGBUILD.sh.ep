@@ -10,7 +10,7 @@
 
 % end
 \
-pkgver=5.15.12
+pkgver=5.15.13
 pkgrel=1
 arch=('any')
 pkgdesc="ActiveX integration framework (mingw-w64)"
