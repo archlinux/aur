@@ -3,30 +3,29 @@
 _pkgname=mefa
 _pkgver=3.2-8
 pkgname=r-${_pkgname,,}
-pkgver=3.2.8
-pkgrel=4
-pkgdesc='Multivariate Data Handling in Ecology and Biogeography'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Multivariate Data Handling in Ecology and Biogeography"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r
 )
 optdepends=(
-  r-mass
-  r-matrix
   r-mefa4
   r-vegan
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('aa149f710bfe510403fe052e5add294b22a797a734cef1e935f1f006e61ef829')
+md5sums=('c6ab090090a592167dd5ead38703e19b')
+b2sums=('5a9469896668120e78017f20dc1c431fc20fccf53764761ed72b6b1e304bda7fdbe969d9f886ec5b87e1ac4647345ed5e61861d475d5b0c92b6a4c5e517e9f5f')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
