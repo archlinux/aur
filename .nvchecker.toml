@@ -1,0 +1,4 @@
+[python-ipyopt]
+source = "gitlab"
+gitlab = "ipyopt-devs/ipyopt"
+use_max_tag = true
