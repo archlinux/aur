@@ -1,7 +1,7 @@
 pkgbase = virtualfish
 	pkgdesc = Fish shell tool for managing Python virtual environments
-	pkgver = 2.5.5
-	pkgrel = 3
+	pkgver = 2.5.7
+	pkgrel = 1
 	url = https://github.com/justinmayer/virtualfish
 	arch = any
 	license = custom:MIT
@@ -12,7 +12,7 @@ pkgbase = virtualfish
 	depends = python-psutil
 	depends = python-virtualenv
 	depends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/v/virtualfish/virtualfish-2.5.5.tar.gz
-	sha256sums = 6b654995f151af8fca62646d49a62b5bf646514250f1461df6d42147995a0db2
+	source = https://files.pythonhosted.org/packages/source/v/virtualfish/virtualfish-2.5.7.tar.gz
+	sha256sums = f507d8cd281cb1c1ebf6021fc18ac20a85d8afbfc5ea4fe8eb0a3f54349bc9ba
 
 pkgname = virtualfish
