@@ -8,7 +8,7 @@ url="https://github.com/RiddlerXenon/DynamicDisplayHandler"
 license=('GPL')
 depends=('xorg-server' 'systemd' 'awk' 'grep' 'sed')
 source=("$pkgname-$pkgver.tar.gz"::"$url/archive/v$pkgver.tar.gz")
-sha256sums=('79622e367db8e230a7a96599a36c904e4865d84ebe7c1fbff08a4edfb9515bbf')
+sha256sums=('2ad6a89b90cc92378aa1ec612e8d573babc0902edab2d2423b3abb704f85fd56')
 install=ddh.install
 
 package() {
