@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-translations
 	pkgdesc = A cross-platform application and UI framework (translations, mingw-w64)
-	pkgver = 5.15.12
+	pkgver = 5.15.13
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = mingw-w64-qt5-translations
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://invent.kde.org/qt/qt/qttranslations#commit=f7745c117041e7adf9705e1de8d71086c160dd9f
-	sha256sums = SKIP
+	source = git+https://invent.kde.org/qt/qt/qttranslations#commit=40aabebd04a30ccef374bf20a7bfaa1d8d665b7f
+	sha256sums = a57dc54f83106ce0c9f4cb3a6101b55dfae107c1aff6589872738fd0b65bd56a
 
 pkgname = mingw-w64-qt5-translations

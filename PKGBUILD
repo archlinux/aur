@@ -11,14 +11,14 @@
 
 _qt_module=qttranslations
 pkgname=mingw-w64-qt5-translations
-pkgver=5.15.12
+pkgver=5.15.13
 pkgrel=1
 arch=('any')
 pkgdesc="A cross-platform application and UI framework (translations, mingw-w64)"
 depends=('mingw-w64-qt5-base')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-qt5-tools')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
-_commit=f7745c117041e7adf9705e1de8d71086c160dd9f
+_commit=40aabebd04a30ccef374bf20a7bfaa1d8d665b7f
 _basever=${pkgver%%+*}
 makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
@@ -26,7 +26,7 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn=${_qt_module}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('SKIP')
+sha256sums=('a57dc54f83106ce0c9f4cb3a6101b55dfae107c1aff6589872738fd0b65bd56a')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -49,7 +49,7 @@ build() {
       msg2 "Building ${_config##*=} version for ${_arch}"
       mkdir -p build-${_arch}-${_config##*=} && pushd build-${_arch}-${_config##*=}
       ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config} ${_additional_qmake_args}
-      make
+      make -j$(nproc)
       popd
     done
   done
@@ -62,7 +62,7 @@ package() {
     for _config in "${_configurations[@]}"; do
       pushd build-${_arch}-${_config##*=}
 
-      make INSTALL_ROOT="$pkgdir" install
+      make -j$(nproc) INSTALL_ROOT="$pkgdir" install
       popd
     done
   done
