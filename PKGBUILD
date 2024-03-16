@@ -5,8 +5,8 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libtool
 pkgver=2.4.7
-pkgrel=1
-pkgdesc="A generic library support script (android)"
+pkgrel=2
+pkgdesc="A generic library support script (Android, ${_android_arch})"
 arch=('any')
 url="https://www.gnu.org/software/libtool"
 license=('GPL')
@@ -14,12 +14,9 @@ depends=('android-ndk'
          'tar')
 makedepends=('android-configure'
              'help2man')
-provides=("android-${_android_arch}-libltdl=$pkgver"
-          "android-${_android_arch}-libtool-multilib=$pkgver")
-conflicts=("android-${_android_arch}-libltdl"
-           "android-${_android_arch}-libtool-multilib")
-replaces=("android-${_android_arch}-libltdl"
-          "android-${_android_arch}-libtool-multilib")
+provides=("android-${_android_arch}-libltdl=$pkgver")
+conflicts=("android-${_android_arch}-libltdl")
+replaces=("android-${_android_arch}-libltdl")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://ftpmirror.gnu.org/libtool/libtool-${pkgver}.tar.gz"
         "gnulib.tgz::https://git.savannah.gnu.org/gitweb/?p=gnulib.git;a=snapshot;h=HEAD;sf=tgz"

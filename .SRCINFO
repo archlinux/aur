@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-libtool
-	pkgdesc = A generic library support script (android)
+	pkgdesc = A generic library support script (Android, x86-64)
 	pkgver = 2.4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/libtool
 	arch = any
 	license = GPL
@@ -10,11 +10,8 @@ pkgbase = android-x86-64-libtool
 	depends = android-ndk
 	depends = tar
 	provides = android-x86-64-libltdl=2.4.7
-	provides = android-x86-64-libtool-multilib=2.4.7
 	conflicts = android-x86-64-libltdl
-	conflicts = android-x86-64-libtool-multilib
 	replaces = android-x86-64-libltdl
-	replaces = android-x86-64-libtool-multilib
 	options = !strip
 	options = !buildflags
 	options = staticlibs
