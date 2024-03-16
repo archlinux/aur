@@ -1,7 +1,7 @@
 pkgbase = android-armv7a-eabi-libtool
-	pkgdesc = A generic library support script (android)
+	pkgdesc = A generic library support script (Android, armv7a-eabi)
 	pkgver = 2.4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/libtool
 	arch = any
 	license = GPL
@@ -10,11 +10,8 @@ pkgbase = android-armv7a-eabi-libtool
 	depends = android-ndk
 	depends = tar
 	provides = android-armv7a-eabi-libltdl=2.4.7
-	provides = android-armv7a-eabi-libtool-multilib=2.4.7
 	conflicts = android-armv7a-eabi-libltdl
-	conflicts = android-armv7a-eabi-libtool-multilib
 	replaces = android-armv7a-eabi-libltdl
-	replaces = android-armv7a-eabi-libtool-multilib
 	options = !strip
 	options = !buildflags
 	options = staticlibs
