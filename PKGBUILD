@@ -14,16 +14,16 @@
 
 _qt_module=qtdeclarative
 pkgname=mingw-w64-qt5-declarative-static
-pkgver=5.15.12
+pkgver=5.15.13
 pkgrel=1
 arch=('any')
 pkgdesc='Classes for QML and JavaScript languages (mingw-w64)'
 depends=('mingw-w64-qt5-base-static')
 makedepends=('mingw-w64-gcc' 'mingw-w64-vulkan-headers' 'mingw-w64-pkg-config' 'python')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
-_commit=792a55bb701d233116c3731c7a53ffdb8c67e407
+_commit=b99568135aa60de96ca2e121dc2e8d83fb1ca886
 _basever=${pkgver%%+*}
-pkgver+=+kde+r31
+pkgver+=+kde+r30
 makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
@@ -33,10 +33,10 @@ source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         '0001-Ensure-static-plugins-are-exported.patch'
         '0002-Prevent-exporting-QML-parser-symbols-on-static-build.patch'
         '0003-Disable-d3d12-requiring-fxc.exe.patch')
-sha256sums=('SKIP'
-            'bf3bf0817e05b54f8e09cc7d1ca6d048bdaf5288fd8c44e6f47d14d67d82a9ca'
-            'cd888659520aa08abc677013be985c578b1b623d07616a3b2acaa680fa8b1000'
-            '883de3bb703214511c760c2cfa6cec796bc9d1b8197de944864c7a4a31277e40')
+sha256sums=('7ed5dd98f8123b7678d347ff6b55d7475a1af00b3f5d4d7476029c12a241df41'
+            '4504b8402891188e8a7274489e241b886648079e61270b0a95e37473bf0970af'
+            '996d4fa1c19d0fe14d10de09f5017e7194d21877611d407da9908888d345e3f0'
+            'c0cf74107f30d2a6d735aa5466a1f57c08ca0fa2f800765b8e684877271e9ddc')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -65,7 +65,7 @@ build() {
       msg2 "Building ${_config##*=} version for ${_arch}"
       mkdir -p build-${_arch}-${_config##*=} && pushd build-${_arch}-${_config##*=}
       ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config} ${_additional_qmake_args}
-      make
+      make -j$(nproc)
       popd
     done
   done
@@ -78,7 +78,7 @@ package() {
     for _config in "${_configurations[@]}"; do
       pushd build-${_arch}-${_config##*=}
 
-      make INSTALL_ROOT="$pkgdir" install
+      make -j$(nproc) INSTALL_ROOT="$pkgdir" install
 
       # use prl files from build directory since installed prl files seem to have incorrect QMAKE_PRL_LIBS_FOR_CMAKE
       if [[ -d 'lib' ]]; then
