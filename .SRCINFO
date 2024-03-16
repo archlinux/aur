@@ -1,23 +1,8 @@
 pkgbase = wrapland-kwinft
-	pkgdesc = Qt/C++ library wrapping libwayland
+	pkgdesc = metapackage - migrate to wrapland
 	pkgver = 0.600.0
-	pkgrel = 2
-	url = https://github.com/winft/wrapland
-	arch = x86_64
-	arch = aarch64
-	license = LGPL-2.1-only
-	makedepends = doxygen
-	makedepends = extra-cmake-modules
-	makedepends = git
-	makedepends = microsoft-gsl
-	makedepends = ninja
-	makedepends = wayland-protocols
-	depends = libglvnd
-	depends = qt6-base
-	depends = wayland
-	provides = wrapland=0.600.0
-	conflicts = wrapland
-	source = wrapland-0.600.0.tar.gz::https://github.com/winft/wrapland/archive/refs/tags/v0.600.0.tar.gz
-	sha256sums = 2a07b69b6489c2c83f75c346a3aeecf28cc79a7f5040ace467022f554290287e
+	pkgrel = 6
+	arch = any
 
 pkgname = wrapland-kwinft
+	depends = wrapland
