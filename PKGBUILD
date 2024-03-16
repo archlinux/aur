@@ -1,23 +1,24 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: cleanrock (AT gmail DOT com)
 # Contributor: Erdbeerkaese (erdbeerkaese AT gawab DOT com)
 # Contributor: DuGi <dugi@irc.pl>
 
 pkgname=springlobby-git
 pkgver=0.274.4.g290f1fa73
-pkgrel=1
+pkgrel=2
 pkgdesc="A free cross-platform lobby client for the Spring RTS project, development version."
 arch=('i686' 'x86_64')
 url="https://github.com/springlobby/springlobby/wiki"
 license=('GPL2')
-depends=('wxwidgets-gtk3' 'boost-libs' 'libnotify' 'curl' 'hicolor-icon-theme' 'alure')
+depends=('wxwidgets-gtk3' 'libnotify' 'curl' 'hicolor-icon-theme' 'alure' 'minizip')
 optdepends=() 
 makedepends=('git' 'cmake' 'boost')
 conflicts=('springlobby')
 provides=('springlobby')
-install=springlobby.install
-source=('git+https://github.com/springlobby/springlobby.git')
+source=('git+https://github.com/springlobby/springlobby.git'
+        'git+https://github.com/spring/pr-downloader.git')
 noextract=()
-md5sums=('SKIP')
+md5sums=('SKIP' 'SKIP')
 # options=('!strip' 'debug' '!buildflags')
 
 _gitname="springlobby"
@@ -31,7 +32,8 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_gitname"
   git submodule init
-  git submodule update
+  git config submodule.src/downloader/lib.url "${srcdir}/pr-downloader"
+  git submodule--helper update
 }
 
 build() {
