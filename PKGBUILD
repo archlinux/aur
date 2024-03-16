@@ -11,14 +11,14 @@ _qt_module=qtvirtualkeyboard
 pkgname=mingw-w64-qt5-virtualkeyboard
 #_fix_deps_of_static_3rdparty_libs='s:\(-L\/.*\/lib.*\.a\) \(\/.*\/libqt\)\(openwnn\|pinyin\|tcime\)\(d*\.a\)\(.*\):\2\3\4 \1 \5:g'        # -L is used (pre Qt 5.13)
 _fix_deps_of_static_3rdparty_libs='s:\(LIBS *= *\)\(.*\)\(\/build\/.*\/libqt\)\(openwnn\|pinyin\|tcime\)\(d*\.a\)\(.*\):\1 \3\4\5 \2 \6:g' # absolute paths are used (Qt 5.13 and above)
-pkgver=5.15.12
+pkgver=5.15.13
 pkgrel=1
 arch=('any')
 pkgdesc="Virtual keyboard framework (translations, mingw-w64)"
 depends=('mingw-w64-pkg-config' 'mingw-w64-qt5-declarative' 'mingw-w64-qt5-svg')
 makedepends=('mingw-w64-gcc')
 license=('GPL3')
-_commit=8b885af5ad3c2f2ff500c060a41e312ea7276e50
+_commit=80565aa7fc37ecdb1c08e585d4ae3060618e3338
 _basever=${pkgver%%+*}
 makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
@@ -26,7 +26,7 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn=${_qt_module}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('SKIP')
+sha256sums=('f7e2ef185a99fa29777b86022d1b8fe866588ad3f64b5abd6d462b4ea8b4bb09')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -58,7 +58,7 @@ build() {
       make qmake_all
       find . \( -type f -name 'Makefile*' -o -name '*.prl' \) -exec sed -i "$_fix_deps_of_static_3rdparty_libs" {} \; -exec touch -d 300101 {} \;
 
-      make
+      make -j$(nproc)
       popd
     done
   done
@@ -71,7 +71,7 @@ package() {
     for _config in "${_configurations[@]}"; do
       pushd build-${_arch}-${_config##*=}
 
-      make INSTALL_ROOT="$pkgdir" install
+      make -j$(nproc) INSTALL_ROOT="$pkgdir" install
 
       # apply the fix for the dependency order like in build
       find "${pkgdir}/usr/${_arch}/lib" \( -type f -name '*.prl' -o -name '*.pc' \) -exec sed -i -e "$_fix_deps_of_static_3rdparty_libs" {} \;
