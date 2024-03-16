@@ -1,9 +1,0 @@
-"custom/gsconnect" : {
-  "format": "{}",
-  "escape": true,
-  "exec": "python3 /usr/share/gsconnect/gsconnect-status.py",
-  "return-type": "json",
-  "tooltip": "{tooltip}",
-  "interval": 30,
-  "on-click": "gsconnect-preferences",
-}
