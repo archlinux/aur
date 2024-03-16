@@ -4,7 +4,7 @@
 # Contributor: ant32 <antreimer@gmail.com>
 % end
 \
-pkgver=5.15.12
+pkgver=5.15.13
 pkgrel=1
 arch=('any')
 pkgdesc="Provides access to hardware and virtual serial ports (mingw-w64)"
