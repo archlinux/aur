@@ -1,13 +1,13 @@
 # Maintainer: Stefan Biereigel <stefan@biereigel.de>
 
 pkgname=openems-git
-pkgver=v0.0.35.r62.gbb235b2
+pkgver=v0.0.36.r15.g1ccf094
 pkgrel=1
 pkgdesc="a free and open source EC-FDTD solver"
 url="https://github.com/thliebig/openEMS"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('cmake' 'qt5-base' 'tinyxml' 'hdf5' 'boost' 'vtk' 'unixodbc' 'cgal' 'openmpi' 'csxcad')
+depends=('cmake' 'qt5-base' 'tinyxml' 'hdf5' 'boost' 'vtk' 'unixodbc' 'cgal' 'openmpi' 'csxcad' 'verdict' 'fmt')
 provides=('openems')
 conflicts=('openems')
 

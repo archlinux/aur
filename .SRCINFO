@@ -1,6 +1,6 @@
 pkgbase = openems-git
 	pkgdesc = a free and open source EC-FDTD solver
-	pkgver = v0.0.35.r62.gbb235b2
+	pkgver = v0.0.36.r15.g1ccf094
 	pkgrel = 1
 	url = https://github.com/thliebig/openEMS
 	arch = i686
@@ -16,10 +16,11 @@ pkgbase = openems-git
 	depends = cgal
 	depends = openmpi
 	depends = csxcad
+	depends = verdict
+	depends = fmt
 	provides = openems
 	conflicts = openems
 	source = git+https://github.com/thliebig/openEMS
 	md5sums = SKIP
 
 pkgname = openems-git
-
