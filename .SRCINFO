@@ -1,15 +1,16 @@
 pkgbase = r-rcppthread
 	pkgdesc = R-Friendly Threading in C++
 	pkgver = 2.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=RcppThread
-	arch = any
+	arch = x86_64
 	license = MIT
 	depends = r
 	optdepends = r-r.rsp
 	optdepends = r-rcpp
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/RcppThread_2.1.7.tar.gz
-	sha256sums = 88debafefb13a77e507eeb2ae2a9e53f717e8cff071fcb4063b2be549423bbe8
+	md5sums = 846c28d124e57d8158112db1ab59a909
+	b2sums = ebe21b7753cde88b5f36b79a9b8cc30946d3fb4cbce54a17ad0f9978080113b9f83706ce58f68d94a67bfb1a08a1178fb0a5eb617bce5fcde18604376ce56f99
 
 pkgname = r-rcppthread

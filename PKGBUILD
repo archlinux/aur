@@ -1,14 +1,13 @@
-# system requirements: C++11
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RcppThread
 _pkgver=2.1.7
 pkgname=r-${_pkgname,,}
-pkgver=2.1.7
-pkgrel=1
-pkgdesc='R-Friendly Threading in C++'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="R-Friendly Threading in C++"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
 license=('MIT')
 depends=(
   r
@@ -19,15 +18,18 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('88debafefb13a77e507eeb2ae2a9e53f717e8cff071fcb4063b2be549423bbe8')
+md5sums=('846c28d124e57d8158112db1ab59a909')
+b2sums=('ebe21b7753cde88b5f36b79a9b8cc30946d3fb4cbce54a17ad0f9978080113b9f83706ce58f68d94a67bfb1a08a1178fb0a5eb617bce5fcde18604376ce56f99')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
