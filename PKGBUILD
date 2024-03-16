@@ -22,12 +22,14 @@ build() {
 
 package() {
   cd "${srcdir}/NovaNav-v.${pkgver}/src/cpp"
-  make INSTALL_ROOT="${pkgdir}" install
+
+  # Install the binary
+  install -Dm755 novanav "${pkgdir}/usr/bin/novanav"
 
   # Install the icon
-  install -Dm644 -p "${srcdir}/NovaNav-v.${pkgver}/src/nnav-iconlogo.png" "${pkgdir}/usr/share/pixmaps/novanav.png"
+  install -Dm644 "${srcdir}/NovaNav-v.${pkgver}/src/nnav-iconlogo.png" "${pkgdir}/usr/share/pixmaps/novanav.png"
 
   # Install the .desktop file
-  install -Dm644 -p "${srcdir}/NovaNav-v.${pkgver}/src/novanav.desktop" "${pkgdir}/usr/share/applications/novanav.desktop"
+  install -Dm644 "${srcdir}/NovaNav-v.${pkgver}/src/novanav.desktop" "${pkgdir}/usr/share/applications/novanav.desktop"
 }
 
