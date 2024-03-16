@@ -1,0 +1,64 @@
+#!/bin/python
+
+import re
+import sys
+b=0
+if len(sys.argv) > 1:
+	b=sys.argv[1:]			
+	a=b[0]
+	b=b[1:]
+	while len(b) > 0:
+		a=a+' '+b[0]
+		b=b[1:]		
+	a=re.sub("thats","nyas",a)
+	a=re.sub("pretty|beautiful","pwetti",a)
+	a=re.sub("rl","w",a)
+	a=re.sub("r","w",a)
+	a=re.sub("l","w",a)
+	a=re.sub("ow","ao",a)
+	a=re.sub("tha","nya",a)
+	a=re.sub("(?<=\b)this(?=\b)","dis",a)
+	a=re.sub("na","nya",a)
+	a=re.sub("th","f",a)
+	a=re.sub("(?<![b-df-hj-np-tv-xzB-DF-HJ-NP-TV-XZ])u","wu",a)
+	a=re.sub("y","yie",a)
+	a=re.sub("(?<![aeiouAEIOU])e[iya]","yei",a)
+	a=re.sub("(?<![aeiouAEIOU])ie","yie",a)
+	a=re.sub("(?<![aeiouAEIOU])a[e]","yae",a)
+	a=re.sub("(?<![aeiouAEIOU])ai","yai",a)
+	a=re.sub("(?<![aeiouAEIOU])o[ou]","yu",a)
+	a=re.sub("(?<![aeiouAEIOU])oe","yo",a)
+	a=re.sub("(?<![aeiouAEIOU])u[eu]","uwu",a)
+	a=re.sub("(?<![aeiouAEIOU])e[u]","uwu",a)
+	a=re.sub("o[uo]","ew",a)
+	print(a)
+	exit()
+
+while b==0:
+		try:
+			a=input()
+			a=re.sub("thats","nyas",a)
+			a=re.sub("pretty|beautiful","pwetti",a)
+			a=re.sub("rl","w",a)
+			a=re.sub("r","w",a)
+			a=re.sub("l","w",a)
+			a=re.sub("ow","ao",a)
+			a=re.sub("tha","nya",a)
+			a=re.sub("(?<=\b)this(?=\b)","dis",a)
+			a=re.sub("na","nya",a)
+			a=re.sub("th","f",a)
+			a=re.sub("(?<![b-df-hj-np-tv-xzB-DF-HJ-NP-TV-XZ])u","wu",a)
+			a=re.sub("y","yie",a)
+			a=re.sub("(?<![aeiouAEIOU])e[iya]","yei",a)
+			a=re.sub("(?<![aeiouAEIOU])ie","yie",a)
+			a=re.sub("(?<![aeiouAEIOU])a[e]","yae",a)
+			a=re.sub("(?<![aeiouAEIOU])ai","yai",a)
+			a=re.sub("(?<![aeiouAEIOU])o[ou]","yu",a)
+			a=re.sub("(?<![aeiouAEIOU])oe","yo",a)
+			a=re.sub("(?<![aeiouAEIOU])u[eu]","uwu",a)
+			a=re.sub("(?<![aeiouAEIOU])e[u]","uwu",a)
+			a=re.sub("o[uo]","ew",a)
+			print(a)
+		except EOFError:
+			b=1
+
