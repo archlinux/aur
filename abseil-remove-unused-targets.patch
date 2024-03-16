@@ -1,8 +1,8 @@
 These targets are dead code and they aren't available with system Abseil. Based on:
 https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electron
 
---- third_party/abseil-cpp/BUILD.gn	2024-02-14 20:53:30.728170900 +0100
-+++ third_party/abseil-cpp/BUILD.gn	2024-02-15 14:47:42.411996148 +0100
+--- third_party/abseil-cpp/BUILD.gn	2024-03-13 20:35:54.618683000 +0100
++++ third_party/abseil-cpp/BUILD.gn	2024-03-16 12:55:25.440050645 +0100
 @@ -61,9 +61,6 @@
      "//third_party/abseil-cpp/absl/base",
      "//third_party/abseil-cpp/absl/base:config",
@@ -38,7 +38,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
      "//third_party/abseil-cpp/absl/synchronization",
      "//third_party/abseil-cpp/absl/time",
      "//third_party/abseil-cpp/absl/types:optional",
-@@ -194,36 +184,22 @@
+@@ -194,37 +184,22 @@
          "absl/algorithm:algorithm_test",
          "absl/algorithm:container_test",
          "absl/base:config_test",
@@ -53,6 +53,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
 -        "absl/container:fixed_array_test",
 -        "absl/container:flat_hash_map_test",
 -        "absl/container:flat_hash_set_test",
+-        "absl/container:hash_function_defaults_test",
          "absl/container:inlined_vector_test",
          "absl/container:node_slot_policy_test",
 -        "absl/container:raw_hash_set_allocator_test",
@@ -75,7 +76,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/log:die_if_null_test",
          "absl/log:flags_test",
          "absl/log:globals_test",
-@@ -235,19 +211,13 @@
+@@ -236,19 +211,13 @@
          "absl/log:log_streamer_test",
          "absl/log:scoped_mock_log_test",
          "absl/log:stripping_test",
@@ -95,7 +96,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/strings:cord_buffer_test",
          "absl/strings:cord_data_edge_test",
          "absl/strings:cord_rep_btree_navigator_test",
-@@ -260,26 +230,11 @@
+@@ -261,26 +230,11 @@
          "absl/strings:cordz_test",
          "absl/strings:cordz_update_scope_test",
          "absl/strings:cordz_update_tracker_test",
@@ -122,8 +123,8 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "//third_party/googletest:gtest_main",
        ]
      }
---- third_party/abseil-cpp/absl/crc/BUILD.gn	2024-02-14 20:53:30.756173400 +0100
-+++ third_party/abseil-cpp/absl/crc/BUILD.gn	2024-02-15 14:47:42.511991939 +0100
+--- third_party/abseil-cpp/absl/crc/BUILD.gn	2024-03-13 20:35:54.646685100 +0100
++++ third_party/abseil-cpp/absl/crc/BUILD.gn	2024-03-16 12:55:25.533373392 +0100
 @@ -28,9 +28,6 @@
      ":cpu_detect",
      "//third_party/abseil-cpp/absl/base:config",
@@ -163,8 +164,16 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
    ]
  }
  
---- third_party/fuzztest/BUILD.gn	2024-02-14 20:53:49.265724400 +0100
-+++ third_party/fuzztest/BUILD.gn	2024-02-15 14:47:42.535324290 +0100
+@@ -112,7 +103,6 @@
+   deps = [
+     ":crc32c",
+     "//third_party/abseil-cpp/absl/base:config",
+-    "//third_party/abseil-cpp/absl/base:no_destructor",
+     "//third_party/abseil-cpp/absl/numeric:bits",
+   ]
+   visibility = [
+--- third_party/fuzztest/BUILD.gn	2024-03-13 20:36:14.852145700 +0100
++++ third_party/fuzztest/BUILD.gn	2024-03-16 12:55:25.553371123 +0100
 @@ -74,7 +74,6 @@
      deps = [
        "//third_party/abseil-cpp:absl",
@@ -181,7 +190,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
      ]
      configs += [ ":fuzztest_internal_config" ]
      configs -= fuzzing_engine_remove_configs
-@@ -204,7 +202,6 @@
+@@ -201,7 +199,6 @@
        "//third_party/abseil-cpp:absl",
        "//third_party/abseil-cpp/absl/flags:flag",
        "//third_party/abseil-cpp/absl/log:check",
@@ -189,7 +198,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
      ]
      sources = [
        "src/centipede/centipede_main.cc",
-@@ -292,7 +289,6 @@
+@@ -289,7 +286,6 @@
    deps = [
      "//testing/gtest",
      "//third_party/abseil-cpp/absl/flags:flag",
@@ -197,7 +206,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
    ]
  
    if (build_with_chromium) {
-@@ -337,7 +333,6 @@
+@@ -334,7 +330,6 @@
    deps = [
      "//testing/gtest",
      "//third_party/abseil-cpp/absl/flags:flag",

@@ -4,7 +4,7 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=122.0.6261.128
+pkgver=123.0.6312.46
 pkgrel=1
 _manual_clone=0
 _system_clang=1
@@ -16,7 +16,7 @@ depends=('nss' 'libffi')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'rust' 'git')
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
-        https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
+        https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/122/chromium-patches-122.tar.bz2
         drop-flag-unsupported-by-clang17.patch
         compiler-rt-adjust-paths.patch
         abseil-remove-unused-targets.patch
@@ -24,7 +24,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         fix-no-matching-strcat.patch
         fix-numeric_limits.patch
         fix-undeclared-isnan.patch)
-sha256sums=('51757e7ecf5bb1db4881562d021547be5f8065e4f22a6ba9bf6e9a3a0d32c2ea'
+sha256sums=('23f98adabeb040e002fb8aae17efb3e23a3036b2d14a75d03debf8644dab02e7'
             '1f6acf165578288dc84edc7d9dcfabf7d38f55153b63a37ee5afa929f0e2baad'
             '3bd35dab1ded5d9e1befa10d5c6c4555fe0a76d909fb724ac57d0bf10cb666c1'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
@@ -230,7 +230,9 @@ build() {
     'symbol_level=0' # sufficient for backtraces on x86(_64)
     'treat_warnings_as_errors=false'
     'disable_fieldtrial_testing_config=true'
-    'use_custom_libcxx=true' # Fixes `excess elements in struct initializer` error
+    # Custom libc++ fixes the following error:
+    # ld.lld: error: undefined symbol: partition_alloc::internal::InternalAllocator<char>::deallocate(char*, unsigned long)
+    'use_custom_libcxx=true'
     'use_sysroot=false'
     'use_system_libffi=true'
     'enable_nacl=false'
