@@ -1,12 +1,11 @@
 pkgname=carla-bridges-win32
 pkgver=6939.66afe24a0
-pkgrel=1
+pkgrel=2
 pkgdesc="Carla Win32 Bridge"
 arch=('i686' 'x86_64')
 url="http://kxstudio.sf.net/carla"
 license=('GPL2')
-conflicts=('carla-bridges-win32')
-provides=('carla-bridges-win32')
+groups=('pro-audio')
 depends=('wine' 'carla')
 makedepends=('git' 'gcc-multilib' 'mingw-w64-crt' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-winpthreads')
 source=("$pkgname"::'git+https://github.com/falkTX/Carla.git')
