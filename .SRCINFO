@@ -1,7 +1,7 @@
 pkgbase = octopi-notifier-qt5
 	pkgdesc = Notifier for Octopi using Qt5 libs
 	pkgver = 0.15.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tintaescura.com/projects/octopi/
 	arch = any
 	license = GPL2
