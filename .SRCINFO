@@ -1,6 +1,6 @@
 pkgbase = tagspaces
 	pkgdesc = An offline, open source, document manager with tagging support
-	pkgver = 5.7.8
+	pkgver = 5.7.9
 	pkgrel = 1
 	url = https://www.tagspaces.org
 	arch = x86_64
@@ -8,14 +8,14 @@ pkgbase = tagspaces
 	makedepends = git
 	makedepends = libxcrypt-compat
 	makedepends = npm
-	depends = electron29
+	depends = electron27
 	depends = libnotify
 	depends = libsecret
 	depends = xdg-utils
-	source = tagspaces-5.7.8.tar.gz::https://github.com/tagspaces/tagspaces/archive/refs/tags/v5.7.8.tar.gz
+	source = tagspaces-5.7.9.tar.gz::https://github.com/tagspaces/tagspaces/archive/refs/tags/v5.7.9.tar.gz
 	source = tagspaces.desktop
 	source = tagspaces.sh
-	sha256sums = 8af74a8a5860f2c685fe074946425e74726d38b39b4b8523bbf0676e8461c498
+	sha256sums = 8ab1bfd8920795a09499ca87b1c159e99b5e14c1ffdbf815ab13423d5e322c78
 	sha256sums = a548e2b62a61a93d80482ebe43ef11e33e2c2bfef9db641fc583bd5539ac6948
 	sha256sums = 6a0d3ca0f31afdd7587b3dc0ed819f252c350eaeafb17472fe4b7031d4130118
 
