@@ -1,0 +1,105 @@
+From 07c89ec8e612ab01805fa8a4876b63220070170d Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Sat, 16 Mar 2024 20:40:54 +0100
+Subject: [PATCH 1/2] Fix call to non-existent method
+
+In a mock object, there is no method named `called_once_with`.
+
+Because the object is mocked, the non-existing method would get called
+but have no effect.
+
+Fixing the call reveals more underlying errors, breaking the tests.
+These errors are going to be fixed in the next commits.
+---
+ test/test_utils/test_message.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/test_utils/test_message.py b/test/test_utils/test_message.py
+index 4c6cd58..1024cf0 100644
+--- a/test/test_utils/test_message.py
++++ b/test/test_utils/test_message.py
+@@ -18,7 +18,7 @@ def test_init(self, m_errormsg):
+ 
+         logger.info(a_message)
+ 
+-        m_errormsg.error_msg.called_once_with(a_message) # message is unchanged (default formatter)
++        m_errormsg.error_msg.assert_called_once_with(a_message) # message is unchanged (default formatter)
+ 
+     def test_init_w_formatter(self, m_errormsg):
+         logger = logging.getLogger('test_init_w_formatter')
+@@ -28,7 +28,7 @@ def test_init_w_formatter(self, m_errormsg):
+ 
+         logger.info("WEEEOOOWEEEOOOWEEEOOO")
+ 
+-        m_errormsg.error_msg.called_once_with(format_string)
++        m_errormsg.error_msg.assert_called_once_with(format_string)
+ 
+     @patch.object(message.UserMessageHandler, "format")
+     @patch.object(message, "emit")
+
+From 572f1f68b4999fb3bbdf81123cfacce97cf654e8 Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Sat, 16 Mar 2024 21:00:29 +0100
+Subject: [PATCH 2/2] Fix failing message tests
+
+1. Mocking `inkex.errormsg` has no effect because the code in
+   `message.py` keeps its own reference to `inkex.errormsg`, which it
+   saved to the `emit` alias before patching occurs.
+   This causes the code in `message.py` to bypass the mock object
+   altogether.
+
+   Fix this by mocking `message.emit` directly.
+
+2. Enable the `INFO` log level so the logging handler actually lets the
+   message through.
+
+The combination of 1 and 2 fixes the failing tests.
+---
+ test/test_utils/test_message.py | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/test/test_utils/test_message.py b/test/test_utils/test_message.py
+index 1024cf0..caa43b3 100644
+--- a/test/test_utils/test_message.py
++++ b/test/test_utils/test_message.py
+@@ -7,32 +7,33 @@
+ 
+ # python -m unittest discover in top-level package dir
+ 
+-@patch.object(message.inkex, "errormsg")
++@patch.object(message, "emit")
+ class UserMessageHandlerTestCase(unittest.TestCase):
+ 
+-    def test_init(self, m_errormsg):
++    def test_init(self, m_emit):
+         logger = logging.getLogger('test_init')
+         a_message = "a message"        
+         handler = message.UserMessageHandler()
+         logger.addHandler(handler)
++        logger.setLevel(logging.INFO)
+ 
+         logger.info(a_message)
+ 
+-        m_errormsg.error_msg.assert_called_once_with(a_message) # message is unchanged (default formatter)
++        m_emit.assert_called_once_with(a_message) # message is unchanged (default formatter)
+ 
+-    def test_init_w_formatter(self, m_errormsg):
++    def test_init_w_formatter(self, m_emit):
+         logger = logging.getLogger('test_init_w_formatter')
+         format_string = 'a really silly format that discards the actual message'
+         handler = message.UserMessageHandler(logging.Formatter(format_string, validate=False))
+         logger.addHandler(handler)
++        logger.setLevel(logging.INFO)
+ 
+         logger.info("WEEEOOOWEEEOOOWEEEOOO")
+ 
+-        m_errormsg.error_msg.assert_called_once_with(format_string)
++        m_emit.assert_called_once_with(format_string)
+ 
+     @patch.object(message.UserMessageHandler, "format")
+-    @patch.object(message, "emit")
+-    def test_handler(self, m_emit, m_format, m_errormsg):
++    def test_handler(self, m_format, m_emit):
+         handler = message.UserMessageHandler()
+         a_message = "a message"
+         record = logging.LogRecord("", 0, "", 0, a_message, {}, {})
