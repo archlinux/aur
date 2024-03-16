@@ -1,0 +1,14 @@
+pkgbase = goldboot-registry
+	pkgdesc = Immutable infrastructure for the desktop!
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/fossable/goldboot
+	arch = x86_64
+	license = GNU Affero General Public License v3.0
+	makedepends = cargo
+	depends = edk2-ovmf
+	depends = qemu-base
+	source = goldboot-registry-0.0.1.tar.gz::https://static.crates.io/crates/goldboot-registry/goldboot-registry-0.0.1.crate
+	sha512sums = SKIP
+
+pkgname = goldboot-registry
