@@ -3,24 +3,25 @@
 _pkgname=nnlasso
 _pkgver=0.3
 pkgname=r-${_pkgname,,}
-pkgver=0.3
-pkgrel=4
-pkgdesc='Non-Negative Lasso and Elastic Net Penalized Generalized Linear Models'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=9
+pkgdesc="Non-Negative Lasso and Elastic Net Penalized Generalized Linear Models"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('646250cba6189cdc83fcea7f7b9b07a4f7ba79593d75c77dfac1e0576956f3d8')
+md5sums=('e450efa4bc9b9ca55fb60e8f4ba6d5de')
+b2sums=('840c7e17ed2b434139e2a688bddb270ec13dd0c3b7d0517b8a629c1994d12b89c53ec4c49ab5771337bc4cd5ad01fef9fc064f40df8a7554a83b28f730a6e26c')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
