@@ -21,16 +21,18 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/NovaNav-v.${pkgver}/src/cpp"  # Cambia al directorio donde se encuentra el código fuente
-  make INSTALL_ROOT="${pkgdir}" install  # Instala el binario en el directorio de destino del paquete
+  # Crea los directorios necesarios en el paquete
+  mkdir -p "${pkgdir}/usr/local/bin"
+  mkdir -p "${pkgdir}/usr/share/pixmaps"
+  mkdir -p "${pkgdir}/usr/share/applications"
+
+  # Mueve el binario a /usr/local/bin
+  install -Dm755 -p "${srcdir}/NovaNav-v.${pkgver}/src/cpp/novanav" "${pkgdir}/usr/local/bin/novanav"
 
   # Instala el icono
   install -Dm644 -p "${srcdir}/NovaNav-v.${pkgver}/src/nnav-iconlogo.png" "${pkgdir}/usr/share/pixmaps/novanav.png"
 
   # Instala el archivo .desktop
   install -Dm644 -p "${srcdir}/NovaNav-v.${pkgver}/src/novanav.desktop" "${pkgdir}/usr/share/applications/novanav.desktop"
-
-  # Mueve el binario a /usr/local/bin
-  install -Dm755 -p "${srcdir}/NovaNav-v.${pkgver}/src/cpp/novanav" "${pkgdir}/usr/local/bin/novanav"
 }
 
