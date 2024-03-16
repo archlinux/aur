@@ -2,7 +2,7 @@
 
 pkgname=pacseek
 pkgver=1.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A terminal user interface for searching and installing Arch Linux packages'
 arch=('any')
 url="https://github.com/moson-mo/$pkgname"
@@ -26,7 +26,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw -tags=next"
 
   go build -o build .
 }
