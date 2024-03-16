@@ -1,9 +1,8 @@
 pkgbase = harrison-bass-flow
 	pkgver = 3.0.1.3a9f39a4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://store.harrisonaudio.com/all-products/bass-flow
 	arch = x86_64
-	groups = pro-audio
 	license = EULA
 	makedepends = xdg-user-dirs
 	makedepends = unzip
@@ -39,6 +38,7 @@ pkgbase = harrison-bass-flow
 
 pkgname = harrison-bass-flow-vst-bin
 	pkgdesc = Harrison Bass Flow (VST)
+	groups = pro-audio
 	groups = vst-plugins
 	provides = harrison-bass-flow-vst-bin
 	conflicts = harrison-ava-bf-vst
