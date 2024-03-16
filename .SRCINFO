@@ -1,18 +1,18 @@
 pkgbase = saxon-he
 	pkgdesc = XSLT 3.0, XQuery 3.1, and XPath 3.1 processor for Java - Home Edition
-	pkgver = 12.3
+	pkgver = 12.4
 	pkgrel = 1
-	url = http://saxon.sourceforge.net
+	url = https://github.com/Saxonica/Saxon-HE
 	arch = any
-	license = MPL
+	license = MPL-2.0
 	depends = java-runtime-headless
 	provides = java-saxon
 	conflicts = java-saxon
-	source = https://github.com/Saxonica/Saxon-HE/releases/download/SaxonHE12-3/SaxonHE12-3J.zip
+	source = https://github.com/Saxonica/Saxon-HE/releases/download/Saxon-HE12-4/SaxonHE12-4J.zip
 	source = saxon-xslt.sh
 	source = saxon-xquery.sh
-	sha256sums = 3b69ea2f817cab49072f9e85dae5e01979515f2458844f7334d26025f5ec9418
-	sha256sums = 0ad3cae41f7a351e5311ddea5ac0bc27bb19197f0ce9c552a7aa209864089c2b
-	sha256sums = 00447c1917a5ef5531dfa76d8779e4da21609b4d2b45dbb0dd4227d2299ebde8
+	sha512sums = 1392a39d1e63d6571aa51624b2ec2162293cf21b7eb18221e6174d5a601097a54665afa5cd2e2d15a17ee0184a53bc008827a1f310a7be137060300589e06957
+	sha512sums = 365eba91dc83600231b1c54c427eca9e076003ed9204c37fe5da777443d190afb22bdc45c305e16181f2738254f6e016a136d9688ddb2d47a6de873245f64f21
+	sha512sums = b44d1ea24ae6f1e0d34cf86ecc3c83642e2ed3c89230683cc04c7c8992e3a2fc9f191bb565437700a2dcbb56980bbb3c0540e628ad28df43095688da344a9429
 
 pkgname = saxon-he
