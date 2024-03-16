@@ -2,8 +2,8 @@
 # Contributor: <kfgz at interia dot pl>
 
 pkgname=nwipe
-pkgver=0.35
-pkgrel=3
+pkgver=0.36
+pkgrel=1
 pkgdesc="A fork of the dwipe command that will securely erase disks using a variety of recognised methods"
 arch=('i686' 'x86_64' 'aarch64')
 url="http://www.andybev.com/index.php/Nwipe"
@@ -24,4 +24,4 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('323e79a4861f96aed75369a5b9048791a8aca1e72c9d8e1c87531346cba6a7ab')
+sha256sums=('4165a02fdfbf91a22bf862b35f057d7672052ef02509c97387068b5df6bb5c5b')
