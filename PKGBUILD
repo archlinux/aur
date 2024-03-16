@@ -111,6 +111,10 @@ source=(
   # python-pyjwt -> python-cryptography (-> pyo3)
   # See https://github.com/bazaah/aur-ceph/issues/20 for more
   'ceph-18.2.2-backport-mgr-dashboard-simplify-authentication-protocol.patch'
+
+  # Fix a change in behavior between python 3.11.5 and 3.11.8, which prevents
+  # importing type stub (.pyi) files directly, without a .py skeleton
+  'ceph-18.2.2-mgr-ceph-module-stub.patch'
 )
 sha512sums=('88e1c18bc6c824b6203cf026cca4c9409000e7cf5b2b986e22ab74d2790d8b93d91556bd3af15a320dbdd0cf2302308f0b2c75fd1243bc5a65f76fc6b3d70736'
             '4354001c1abd9a0c385ba7bd529e3638fb6660b6a88d4e49706d4ac21c81b8e829303a20fb5445730bdac18c4865efb10bc809c1cd56d743c12aa9a52e160049'
@@ -130,7 +134,8 @@ sha512sums=('88e1c18bc6c824b6203cf026cca4c9409000e7cf5b2b986e22ab74d2790d8b93d91
             '4613232e5a0003c08d233e40fe3ac1cd00e1195d29bdd9892188587b4a782d6979004232927c0a1bff554eabf2fb9b18eb751682b7ad90762292b63891f3b301'
             '9a1183c08f8799b14235c9271519203cbf93e48ca3a8607d3a0500910efca5379c8a08421c377227f93d8436a850f5ca99784f28aaa920e55f0457c657511f17'
             'e238b326609636bc7dd10cec59290e22898948ef105c49643c38d2621abf16c2efcf9581b0b6bad65066607510c9827d00a7abdb14f2054701cc33b7101ea054'
-            '965f1174ed682409f5aebfe689ccc870a860f323b00dcd4c9ee079839108ee27ed4d8b42d8b59c7e3cc5fb61d554929d9f779ce224691d20b868acf7f15adb2c')
+            '965f1174ed682409f5aebfe689ccc870a860f323b00dcd4c9ee079839108ee27ed4d8b42d8b59c7e3cc5fb61d554929d9f779ce224691d20b868acf7f15adb2c'
+            '494290871b12be79a3e74618912d552f4802a7580abcd8e174b890944917ac04e1a52ddd7c039fa230cf43463ed479f9abf6f9a7d403d4ba5b522297184b09a5')
 __version="${pkgver}-${pkgrel}"
 
 # -fno-plt causes linker errors (undefined reference to internal methods)
