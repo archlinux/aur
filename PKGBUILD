@@ -23,14 +23,14 @@
 
 _qt_module=qttools
 pkgname=mingw-w64-qt5-tools-static
-pkgver=5.15.12
+pkgver=5.15.13
 pkgrel=1
 arch=('any')
 pkgdesc="A cross-platform application and UI framework (Development Tools, QtHelp; mingw-w64)"
 depends=('mingw-w64-qt5-declarative-static')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-postgresql' 'mingw-w64-mariadb-connector-c' 'mingw-w64-vulkan-headers')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
-_commit=bd0ceb7de5d0c918ae596150e95b069dca8b9150
+_commit=ba4c633c4a4731ead0c376b908bf5449796f7de1
 _basever=${pkgver%%+*}
 pkgver+=+kde+r4
 makedepends+=('git')
@@ -40,8 +40,8 @@ url='https://www.qt.io/'
 _pkgfqn=${_qt_module}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         '0001-Fix-linguist-macro.patch')
-sha256sums=('SKIP'
-            'd4500aad5ae74b538e307812861391da0df69d74bfff8e18f4a1fb15aaa3c73b')
+sha256sums=('52080466c7d03c6a6fd007940ed9cd42b2c73192ea2e76edf81619edff2adecf'
+            '3c8c553909b394a9d4833116be8a6a6f4a1e267e894fabd925c2519933b25e43')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -70,7 +70,7 @@ build() {
       msg2 "Building ${_config##*=} version for ${_arch}"
       mkdir -p build-${_arch}-${_config##*=} && pushd build-${_arch}-${_config##*=}
       ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config} ${_additional_qmake_args}
-      make
+      make -j$(nproc)
       popd
     done
   done
@@ -83,7 +83,7 @@ package() {
     for _config in "${_configurations[@]}"; do
       pushd build-${_arch}-${_config##*=}
 
-      make INSTALL_ROOT="$pkgdir" install
+      make -j$(nproc) INSTALL_ROOT="$pkgdir" install
 
       # use prl files from build directory since installed prl files seem to have incorrect QMAKE_PRL_LIBS_FOR_CMAKE
       if [[ -d 'lib' ]]; then
