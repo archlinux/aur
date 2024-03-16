@@ -1,0 +1,5 @@
+#!/bin/sh
+if [ ! -d "/opt/Audio Assault/AmpLockerData" ]; then
+    pkexec --user root mkdir -p /opt/Audio\ Assault
+    pkexec --user root ln -sf /home/$USER/.config/Amp\ Locker /opt/Audio\ Assault/AmpLockerData
+fi

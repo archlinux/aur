@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Amp Locker
+Comment=Audio Assault Multiamp Simulator (Standalone)
+Exec="/usr/bin/Amp Locker Standalone"
+Icon=/usr/share/icons/hicolor/192x192/apps/amp-locker.png
+Categories=AudioVideo;Audio;X-Jack;Midi;X-MIDI;
+Terminal=false
+Type=Application
+Keywords=Audio;Guitar;Amplifier;Midi;Jack
