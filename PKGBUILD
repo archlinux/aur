@@ -3,13 +3,13 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.7.9.arch1
+pkgver=6.8.1.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
 _url='https://github.com/archlinux/linux'
 arch=(x86_64)
-license=(GPL2)
+license=(GPL-2.0-only)
 makedepends=(
   bc
   cpio
@@ -23,7 +23,7 @@ makedepends=(
   xz
 #  modprobed-db
 )
-options=('!strip')
+options=('!strip' '!debug')
 _srcname=linux-${pkgver%.*}
 _srctag=v${pkgver%.*}-${pkgver##*.}
 source=(
@@ -33,7 +33,7 @@ source=(
 #  modprobed.db
   "choose-gcc-optimization.sh"
 
-  "sys-kernel_arch-sources-g14-6.1+--more-uarches-for-kernel.patch"::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-6.1.79-6.8-rc3.patch"
+  "sys-kernel_arch-sources-g14-6.8+--more-uarches-for-kernel.patch"::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-6.8-rc4%2B.patch"
 
   0001-acpi-proc-idle-skip-dummy-wait.patch
 
@@ -69,13 +69,13 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('0fd733fc0778f8da1fdf66df1698d394248807de71eef83a4d1218bcb3dfd346'
+sha256sums=('8d0c8936e3140a0fbdf511ad7a9f21121598f3656743898f47bb9052d37cff68'
             'SKIP'
-            '16b6541d9aad469faf325a354c1b7cdff5df402a8073317d548b93dd1c184a4f'
+            '376db82b4613c3942932fde99d54c3dea1e4b29ab23d8b86daa6414327e6244d'
             'SKIP'
-            '153e7d5193cc7ce0dbf005304175c116c3abf4bb9b885cfc675bb735400a933e'
+            'c2b00c84c4b543db431e06604d939a62f93107d18369f4d9860dc8062b01ab45'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
-            '1a3825b790413d09806c9a2115f679be28e434cfcc69c01dc069b634d1e8007a'
+            'd69232afd0dd6982ae941cf2d1f577f4be2011e3bb847d1db37952acf416b5d3'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             'ed242f4be3f8eaade2a1d42157c5c6c86281917a08ae43221b088fafdc775ee7'
             '6e0b648637a0925df4bb43f5eb5144838415e02c43ff8fddbf82f6813b0f132c'
