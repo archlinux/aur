@@ -3,9 +3,9 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=calls
-pkgver=45.0
-_commit=936d36287324163b958c6ea0c4297c7a607ee18c
-pkgrel=2
+pkgver=46.0
+_commit=32c24f5468b157d8c755c79295a14958dc2f86fa
+pkgrel=1
 pkgdesc="Phone dialer and call handler"
 arch=(x86_64 aarch64)
 url="https://gitlab.gnome.org/GNOME/calls"
@@ -42,7 +42,6 @@ checkdepends=(
   gst-plugins-good
   gst-plugins-ugly
 )
-
 source=(
   "git+$url.git#commit=$_commit"
   "git+https://gitlab.gnome.org/World/Phosh/libcall-ui.git"
