@@ -1,13 +1,14 @@
 pkgbase = r-kriging
 	pkgdesc = Ordinary Kriging
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 6
 	url = https://cran.r-project.org/package=kriging
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
 	depends = r
 	optdepends = r-maps
 	source = https://cran.r-project.org/src/contrib/kriging_1.2.tar.gz
-	sha256sums = c8238db37ba0efba2ec874a25b5738a0fa554800606b08486e94838710db0ce9
+	md5sums = 2ab6d7b85113ece6f21847a6d2968aac
+	b2sums = 5fe400f06350cd918e367180b4f8d88560782005d50ce24aac10b099fd9ce6a6d0b8aa2cdc54d2393747c79b820bdf4eff75a5dad83cadd3a3e73727682ebf87
 
 pkgname = r-kriging

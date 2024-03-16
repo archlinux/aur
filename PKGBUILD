@@ -3,12 +3,12 @@
 _pkgname=kriging
 _pkgver=1.2
 pkgname=r-${_pkgname,,}
-pkgver=1.2
-pkgrel=1
-pkgdesc='Ordinary Kriging'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=6
+pkgdesc="Ordinary Kriging"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r
 )
@@ -16,14 +16,15 @@ optdepends=(
   r-maps
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c8238db37ba0efba2ec874a25b5738a0fa554800606b08486e94838710db0ce9')
+md5sums=('2ab6d7b85113ece6f21847a6d2968aac')
+b2sums=('5fe400f06350cd918e367180b4f8d88560782005d50ce24aac10b099fd9ce6a6d0b8aa2cdc54d2393747c79b820bdf4eff75a5dad83cadd3a3e73727682ebf87')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
