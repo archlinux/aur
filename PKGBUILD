@@ -3,24 +3,25 @@
 _pkgname=dtt
 _pkgver=0.1-2
 pkgname=r-${_pkgname,,}
-pkgver=0.1.2
-pkgrel=4
-pkgdesc='Discrete Trigonometric Transforms'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=9
+pkgdesc="Discrete Trigonometric Transforms"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b6ee86fb571b3ee04ac1d8d04fbc76b12515c09afee688d56a4f39ea63910f59')
+md5sums=('7707b3ca36465854b99e29729eefd50e')
+b2sums=('7976130e22335d4347c477358d8a3ac8f303171a409dc13b051b38ea027337c22db85089330a79054507be08799ca9bcee62c031927da2062d33a610e03c5550')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
