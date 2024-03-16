@@ -19,15 +19,15 @@ provides=('getnf')
 conflicts=('getnf')
 
 pkgver() {
-	cd "$pkgname"
+  cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$pkgname"
-	install -Dm755 ./getnf "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 ./README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-	install -Dm644 ./LICENSE.md $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  cd "$pkgname"
+  install -Dm755 ./getnf "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 ./README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 ./LICENSE.md $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
 # vim: ft=PKGBUILD
