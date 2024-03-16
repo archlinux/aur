@@ -1,7 +1,7 @@
 # Maintainer: spyophobia <76800505+spyophobia@users.noreply.github.com>
 pkgname=cloak-obfuscation
 _pkgname=Cloak
-pkgver=2.7.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='A pluggable transport that works alongside traditional proxy tools like OpenVPN to evade deep-packet-inspection based censorship'
 arch=('i686' 'x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('go')
 conflicts=('cloak-obfuscation-bin' 'cloak-obfuscation-git')
 source=(cloak-obfuscation-${pkgver}.tar.gz::"${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('7c38cccacadc98faf13aaddca7c98094eacc7ba0cad816ba7bfdde95e453bf2699a95287ac6d9da6f288fedb6277812979e78c595782cd871e54c753ef501e54')
+sha512sums=('0524f4c64dfc3d1316e4621553b2d326f2b185583291b6aa514269e2091052915673d300921da0ac2cc2d2557e5248e29ffab2ecb8f317fe0537b5aceaad0fe9')
 backup=(
     "etc/cloak/ckclient.json"
     "etc/cloak/ckserver.json"
