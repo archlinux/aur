@@ -1,7 +1,7 @@
 pkgbase=harrison-multiband-compressor
 pkgname=("${pkgbase}-vst-bin" "${pkgbase}-vst3-bin")
 pkgver=4.0.1.8ec4d54b
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://store.harrisonaudio.com/all-products/multiband-compressor"
 license=('EULA')
@@ -22,5 +22,6 @@ package_harrison-multiband-compressor-vst-bin() {
 
 package_harrison-multiband-compressor-vst3-bin() {
 	pkgdesc="Harrison MultiBand Compressor (VST3)"
+	groups=("vst3-plugins")
 	install -Dm755 "$srcdir/Harrison_MultiBandCompressor/vst3/Harrison_MultiBandCompressor.vst3/Contents/x86_64-linux/Harrison_MultiBandCompressor.so" "$pkgdir/usr/lib/vst3/Harrison_MultiBandCompressor.vst3/Contents/x86_64-linux/Harrison_MultiBandCompressor.so"
 }
