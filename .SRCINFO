@@ -1,12 +1,13 @@
 pkgbase = r-km.ci
-	pkgdesc = Confidence intervals for the Kaplan-Meier estimator
+	pkgdesc = Confidence Intervals for the Kaplan-Meier Estimator
 	pkgver = 0.5.6
-	pkgrel = 3
+	pkgrel = 8
 	url = https://cran.r-project.org/package=km.ci
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	source = https://cran.r-project.org/src/contrib/km.ci_0.5-6.tar.gz
-	sha256sums = 81715339f9c711704b75c3507884904422e8d59cdd593121457abeb6e04e4ca3
+	md5sums = 557066a7ceeca9074229b12c111c0e27
+	b2sums = 49de997959eb291b9864b6b205639a2d6ac5f711a8672fd830a44d821863e9d98dedf7dc315a1f454ba833de2abf6d6f65344c77f0d118894f367abb12ee6cbd
 
 pkgname = r-km.ci
