@@ -1,41 +1,278 @@
-# Maintainer: Manuel <mdomlop@gmail.com>
+# Maintainer:
+# Contributor: Manuel <mdomlop@gmail.com>
 
+# options
+: ${_autoupdate:=false}
+
+: ${_build_clang:=true}
+
+: ${_build_avx:=false}
+: ${_build_git:=true}
+
+unset _pkgtype
+[[ "${_build_avx::1}" == "t" ]] && _pkgtype+="-avx"
+[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
+
+# basic info
 _pkgname=flycast
-pkgname=$_pkgname-git
-pkgver=r5251.1dd006d8
+pkgname="$_pkgname${_pkgtype:-}"
+pkgver=2.2.r217.g966ff37
 pkgrel=1
-pkgdesc='A multi-platform Sega Dreamcast, Naomi and Atomiswave emulator'
-arch=('x86_64' 'i686')
+pkgdesc='Sega Dreamcast, Naomi, and Atomiswave emulator'
 url="https://github.com/flyinghead/flycast"
-license=('GPL2')
-depends=('libgl' 'libzip' 'xxhash' 'zlib' 'alsa-lib')
-makedepends=('git' 'cmake' 'python' 'systemd')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("$_pkgname::git+$url.git")
-md5sums=('SKIP')
+license=('GPL-2.0-only')
+arch=('x86_64' 'i686')
 
-prepare() {
-	cd $_pkgname
-	git submodule update --init --recursive
+# main package
+_main_package() {
+  depends=(
+    'alsa-lib'
+    'libgl'
+    'libzip'
+  )
+  makedepends=(
+    'cmake'
+    'git'
+    'python'
+  )
+
+  if [[ "${_build_clang::1}" == "t" ]] ; then
+    makedepends+=(
+      'clang'
+      'lld'
+      'llvm'
+    )
+  fi
+
+  if [ "${_build_git::1}" != "t" ] ; then
+    _main_stable
+    _source_flycast_stable
+  else
+    _main_git
+    _source_flycast_git
+  fi
+
+  source+=("breakpad-disable.patch")
+  sha256sums+=('SKIP')
+
+  _source_flycast
+  #_source_vinniefalco_luabridge
 }
 
+# stable package
+_main_stable() {
+  _update_version
 
-pkgver() {
-	cd $_pkgname
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  _pkgsrc="$_pkgname"
+  source+=("$_pkgsrc"::"git+$url.git#tag=v$_pkgver")
+  sha256sums+=('SKIP')
+
+  _prepare() {
+    _prepare_flycast_stable
+  }
+
+  pkgver() {
+    echo "${_pkgver:?}"
+  }
+}
+
+# git package
+_main_git() {
+  provides+=("$_pkgname=${pkgver%%.r*}")
+  conflicts+=("$_pkgname")
+
+  _pkgsrc="$_pkgname"
+  source+=("$_pkgsrc"::"git+$url.git")
+  sha256sums+=('SKIP')
+
+  _prepare() {
+    _prepare_flycast_git
+  }
+
+  pkgver() {
+    cd "$_pkgsrc"
+    git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+      | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+  }
+}
+
+# submodules
+_source_flycast() {
+  source+=(
+    'flyinghead.mingw-breakpad'::'git+https://github.com/flyinghead/mingw-breakpad.git'
+    'google.oboe'::'git+https://github.com/google/oboe.git'
+    'gpuopen-librariesandsdks.vulkanmemoryallocator'::'git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'
+    'khronosgroup.glslang'::'git+https://github.com/KhronosGroup/glslang.git'
+    'khronosgroup.vulkan-headers'::'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
+    'libsdl-org.sdl'::'git+https://github.com/libsdl-org/SDL.git'
+    'vinniefalco.luabridge'::'git+https://github.com/vinniefalco/LuaBridge.git'
+    'vkedwardli.spout2'::'git+https://github.com/vkedwardli/Spout2.git'
+    'vkedwardli.syphon-framework'::'git+https://github.com/vkedwardli/Syphon-Framework.git'
+  )
+  sha256sums+=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+  )
+
+  _prepare_flycast() (
+    cd "$srcdir/$_pkgsrc"
+    local -A _submodules=(
+      ['flyinghead.mingw-breakpad']='core/deps/breakpad'
+      ['google.oboe']='core/deps/oboe'
+      ['gpuopen-librariesandsdks.vulkanmemoryallocator']='core/deps/VulkanMemoryAllocator'
+      ['khronosgroup.glslang']='core/deps/glslang'
+      ['khronosgroup.vulkan-headers']='core/deps/Vulkan-Headers'
+      ['libsdl-org.sdl']='core/deps/SDL'
+      ['vinniefalco.luabridge']='core/deps/luabridge'
+      ['vkedwardli.spout2']='core/deps/Spout'
+      ['vkedwardli.syphon-framework']='core/deps/Syphon'
+    )
+    _submodule_update
+  )
+}
+
+_source_flycast_stable() {
+  source+=(
+    'flyinghead.libchdr'::'git+https://github.com/flyinghead/libchdr.git'
+  )
+  sha256sums+=(
+    'SKIP'
+  )
+
+  _prepare_flycast_stable() (
+    cd "$srcdir/$_pkgsrc"
+    local -A _submodules=(
+      ['flyinghead.libchdr']='core/deps/libchdr'
+    )
+    _submodule_update
+  )
+}
+
+_source_flycast_git() {
+  source+=(
+    'rtissera.libchdr'::'git+https://github.com/rtissera/libchdr.git'
+  )
+  sha256sums+=(
+    'SKIP'
+  )
+
+  _prepare_flycast_git() (
+    cd "$srcdir/$_pkgsrc"
+    local -A _submodules=(
+      ['rtissera.libchdr']='core/deps/libchdr'
+    )
+    _submodule_update
+  )
+}
+
+_source_vinniefalco_luabridge() {
+  source+=(
+    'google.googletest'::'git+https://github.com/google/googletest.git'
+  )
+  sha256sums+=(
+    'SKIP'
+  )
+
+  _prepare_vinniefalco_luabridge() (
+    cd "$srcdir/$_pkgsrc"
+    cd 'core/deps/luabridge'
+    local -A _submodules=(
+      ['google.googletest']='third_party/gtest'
+    )
+    _submodule_update
+  )
+}
+
+# common functions
+prepare() {
+  _submodule_update() {
+    local key;
+    for key in ${!_submodules[@]} ; do
+      git submodule init "${_submodules[${key}]}"
+      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
+      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+    done
+  }
+
+  apply-patch() {
+    if patch -Np1 -F100 --dry-run -i "$1" &>/dev/null ; then
+      printf '\nApplying patch: %s\n' "$1"
+      patch -Np1 -F100 -i "$1"
+    else
+      printf '\nPatch already applied: %s\n' "$1"
+    fi
+  }
+
+  _prepare_flycast
+  #_prepare_vinniefalco_luabridge
+
+  _prepare
+
+  cd "$_pkgsrc"
+  apply-patch "$srcdir/breakpad-disable.patch"
 }
 
 build() {
-	cmake -B build -S $_pkgname \
-		-DCMAKE_INSTALL_PREFIX='/usr'
-	make -C build
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_BUILD_TYPE=Release
+    -Wno-dev
+  )
+
+  if [[ "${_build_clang::1}" == "t" ]] ; then
+    export CC=clang
+    export CXX=clang++
+    export LDFLAGS+=" -fuse-ld=lld"
+  fi
+
+  if [[ "${_build_avx::1}" == "t" ]] ; then
+    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+  fi
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-	install -Dm755 build/$_pkgname "$pkgdir"/usr/bin/$_pkgname
-	cd $_pkgname/shell/linux
-	install -Dm644 $_pkgname.png "$pkgdir"/usr/share/pixmaps/$_pkgname.png
-	install -Dm644 $_pkgname.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop
+  depends+=(
+    'hicolor-icon-theme'
+  )
+
+  DESTDIR="$pkgdir" cmake --install build
 }
-md5sums=('SKIP')
+
+# update version
+_update_version() {
+  : ${_pkgver:=${pkgver%%.r*}}
+
+  if [[ "${_autoupdate::1}" != "t" ]] ; then
+    return
+  fi
+
+  local _response=$(curl -Ssf "$url/releases.atom")
+  local _tag=$(
+    printf '%s' "$_response" \
+      | grep '/releases/tag/' \
+      | sed -E 's@^.*/releases/tag/(.*)".*$@\1@' \
+      | grep -Ev '[a-z]{2}' | sort -V | tail -1
+  )
+  local _pkgver_new="${_tag#v}"
+
+  # update _pkgver
+  if [ "$_pkgver" != "${_pkgver_new:?}" ] ; then
+    _pkgver="$_pkgver_new"
+  fi
+}
+
+# execute
+_main_package
