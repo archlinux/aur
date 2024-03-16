@@ -11,13 +11,16 @@
 pkgname=ace
 _pkgver=7_1_3
 pkgver=7.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Framework that provides many components and patterns for developing high-performance, distributed real-time and embedded systems."
 arch=('x86_64')
 url="https://www.dre.vanderbilt.edu/~schmidt/ACE.html"
-license=('LicenseRef-DOC')
+license=('DOC')
 depends=('gcc-libs' 'glibc')
 makedepends=('perl')
+optdepends=(
+    'perl: MPC support'
+)
 provides=('libACE.so' 'libACEXML.so' 'libACEXML_Parser.so'
     'libACEXML_XML_Svc_Conf_Parser.so' 'libACE_Compression.so'
     'libACE_ETCL.so'  'libACE_ETCL_Parser.so' 'libACE_HTBP.so' 'libACE_INet.so'
@@ -25,17 +28,19 @@ provides=('libACE.so' 'libACEXML.so' 'libACEXML_Parser.so'
     'libACE_TMCast.so' 'libKokyu.so'
 )
 
-
-source=("https://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-${_pkgver}/ACE-src-${pkgver}.tar.gz")
+source=("https://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-$_pkgver/ACE-src-$pkgver.tar.gz")
 sha256sums=('105a2705dddb3c93e486028f63a33ec0f3f6dbcd63cdd166f34f5d5da35ab5ac')
 
 prepare() {
     export ACE_ROOT="$srcdir/ACE_wrappers"
     cd "$ACE_ROOT"
 
+    # Disable expandtab if modifying these here-strings
+    # Indentation in resulted file is wrong if indented with spaces
+
     # Built a select subset of components in the ACE release
     # Inspired by Debian
-    cat <<-EOF > "$ACE_ROOT/ACE.mwc"
+	cat <<-EOF > "$ACE_ROOT/ACE.mwc"
 	workspace {
 	    exclude {
 	        apps/gperf/tests
@@ -54,7 +59,6 @@ prepare() {
 	        protocols/examples
 
 	        ASNMP
-	        MPC
 	        examples
 	        performance-tests
 	        websvcs
@@ -67,48 +71,57 @@ build() {
     export ACE_ROOT="$srcdir/ACE_wrappers"
     cd "$ACE_ROOT"
 
-    cat <<-EOF > "$ACE_ROOT/ace/config.h"
+	cat <<-EOF > "$ACE_ROOT/ace/config.h"
 	#include "ace/config-linux.h"
 	EOF
 
-    cat <<-EOF > "$ACE_ROOT/include/makeinclude/platform_macros.GNU"
+	cat <<-EOF > "$ACE_ROOT/include/makeinclude/platform_macros.GNU"
 	INSTALL_PREFIX = /usr
 	include \$(ACE_ROOT)/include/makeinclude/platform_linux.GNU
 	EOF
 
-    #cat <<-EOF > "$ACE_ROOT/bin/MakeProjectCreator/config/default.features"
+	#cat <<-EOF > "$ACE_ROOT/bin/MakeProjectCreator/config/default.features"
 	#EOF
 
+    export LD_LIBRARY_PATH="$ACE_ROOT/lib:$LD_LIBRARY_PATH"
     "$ACE_ROOT/bin/mwc.pl" -type gnuace ACE.mwc
     make
 }
 
-# Some of these tests can fail due to network configuration
-# E.g. multicast blocked in firewall
-#check() {
-#    export ACE_ROOT="$srcdir/ACE_wrappers"
-#    export LD_LIBRARY_PATH="$ACE_ROOT/lib:$LD_LIBRARY_PATH"
-#    cd "$ACE_ROOT"
-#
-#    "$ACE_ROOT/bin/auto_run_tests.pl" -Config FIXED_BUGS_ONLY 2>&1 | tee tests.log
-#
-#    local status=0
-#
-#    echo "--- Failed tests:"
-#    if grep "auto_run_tests_finished" tests.log | grep -v "Result:0"; then
-#        status=1
-#    fi
-#    echo "---"
-#
-#    return "$status"
-#}
+check() {
+    export ACE_ROOT="$srcdir/ACE_wrappers"
+    export LD_LIBRARY_PATH="$ACE_ROOT/lib:$LD_LIBRARY_PATH"
+    cd "$ACE_ROOT"
+
+    "$ACE_ROOT/bin/auto_run_tests.pl" -Config FIXED_BUGS_ONLY 2>&1 | tee tests.log
+
+    local status=0
+
+    echo "--- Failed tests:"
+    if grep "auto_run_tests_finished" tests.log |
+        # Tests that are failing on my system
+        # (Clean chroot, kernel defaults sysctl, limits)
+        grep -v "Bug_2610_Regression_Test" |
+        grep -v "Bug_2740_Regression_Test" |
+        grep -v "Bug_3943_Regression_Test" |
+        grep -v "MT_Reference_Counted_Event_Handler_Test" |
+        grep -v "INET_Addr_Test_IPV6" |
+        grep -v "Multicast_Test_IPV6" |
+
+        # Tests that should not fail are left
+        grep -v "Result:0"; then
+            status=1
+    else
+        echo "None."
+    fi
+    echo "---"
+
+    return "$status"
+}
 
 package() {
     export ACE_ROOT="$srcdir/ACE_wrappers"
     cd "$ACE_ROOT"
     make DESTDIR="$pkgdir/" install
-    rm -rf "$pkgdir/usr/share/ace/include"
-    rm -rf "$pkgdir/usr/share/ace/bin"
-    rm "$pkgdir/usr/share/ace/ace-devel.sh"
     install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }

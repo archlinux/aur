@@ -1,13 +1,14 @@
 pkgbase = ace
 	pkgdesc = Framework that provides many components and patterns for developing high-performance, distributed real-time and embedded systems.
 	pkgver = 7.1.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.dre.vanderbilt.edu/~schmidt/ACE.html
 	arch = x86_64
-	license = LicenseRef-DOC
+	license = DOC
 	makedepends = perl
 	depends = gcc-libs
 	depends = glibc
+	optdepends = perl: MPC support
 	provides = libACE.so
 	provides = libACEXML.so
 	provides = libACEXML_Parser.so
