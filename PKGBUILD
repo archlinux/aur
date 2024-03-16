@@ -1,7 +1,7 @@
 pkgbase=harrison-vocal-flow
 pkgname=("${pkgbase}-vst-bin" "${pkgbase}-vst3-bin")
 pkgver=3.0.0.e8e07e48
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://store.harrisonaudio.com/all-products/vocal-flow"
 license=('EULA')
@@ -22,5 +22,6 @@ package_harrison-vocal-flow-vst-bin() {
 
 package_harrison-vocal-flow-vst3-bin() {
 	pkgdesc="Harrison Vocal Flow (VST3)"
+	groups=("vst3-plugins")
 	install -Dm755 "$srcdir/Harrison_VocalFlow/vst3/Harrison_VocalFlow.vst3/Contents/x86_64-linux/Harrison_VocalFlow.so" "$pkgdir/usr/lib/vst3/Harrison_VocalFlow.vst3/Contents/x86_64-linux/Harrison_VocalFlow.so"
 }

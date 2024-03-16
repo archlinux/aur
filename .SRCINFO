@@ -1,6 +1,6 @@
 pkgbase = harrison-vocal-flow
 	pkgver = 3.0.0.e8e07e48
-	pkgrel = 2
+	pkgrel = 3
 	url = https://store.harrisonaudio.com/all-products/vocal-flow
 	arch = x86_64
 	groups = pro-audio
@@ -48,3 +48,4 @@ pkgname = harrison-vocal-flow-vst-bin
 
 pkgname = harrison-vocal-flow-vst3-bin
 	pkgdesc = Harrison Vocal Flow (VST3)
+	groups = vst3-plugins
