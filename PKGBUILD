@@ -2,7 +2,7 @@
 
 pkgname=halloy-git
 _pkgname="${pkgname/-git}"
-pkgver=2024.3.r61.gea3ff04
+pkgver=2024.4.r0.g8378f04
 pkgrel=1
 pkgdesc='An open-source IRC client written in Rust, with the Iced GUI library'
 arch=('x86_64')
@@ -54,5 +54,5 @@ package() {
 
     install -Dm644 "assets/linux/org.squidowl.${_pkgname}.appdata.xml" -t "${pkgdir}/usr/share/appdata/metainfo"
     install -Dm644 "assets/linux/org.squidowl.${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "assets/linux/org.squidowl.${_pkgname}.png" -t "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
+    cp -r "assets/linux/icons" "${pkgdir}/usr/share/"
 }
