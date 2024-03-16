@@ -3,7 +3,7 @@
 
 pkgname=1panel
 pkgver=1.10.1_lts
-pkgrel=1
+pkgrel=2
 pkgdesc="1Panel, a modern open source linux panel."
 arch=('x86_64' 'aarch64')
 url="https://1panel.cn"

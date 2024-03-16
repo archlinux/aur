@@ -189,8 +189,8 @@ function Set_Entrance(){
 
 function Init_Panel(){
     echo -e "Configuring 1Panel Service."
-
-    sudo rm -rf /var/lib/1p/*
+    sudo mkdir -p /var/lib/1p/1panel
+    sudo rm -rvf /var/lib/1p/1panel/*
     sudo sed -i -e "s#ORIGINAL_PORT=.*#ORIGINAL_PORT=${PANEL_PORT}#g" /usr/bin/1pctl
     sudo sed -i -e "s#ORIGINAL_USERNAME=.*#ORIGINAL_USERNAME=${PANEL_USERNAME}#g" /usr/bin/1pctl
     ESCAPED_PANEL_PASSWORD=$(echo "$PANEL_PASSWORD" | sed 's/[!@#$%*_,.?]/\\&/g')
@@ -265,6 +265,16 @@ function Show_Result(){
 }
 
 function main(){
+    
+    echo
+    cat << EOF
+ ██╗    ██████╗  █████╗ ███╗   ██╗███████╗██╗     
+███║    ██╔══██╗██╔══██╗████╗  ██║██╔════╝██║     
+╚██║    ██████╔╝███████║██╔██╗ ██║█████╗  ██║     
+ ██║    ██╔═══╝ ██╔══██║██║╚██╗██║██╔══╝  ██║     
+ ██║    ██║     ██║  ██║██║ ╚████║███████╗███████╗
+ ╚═╝    ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚══════╝
+EOF
     Check_Root
     Check_Docker
     Check_Docker_Compose
