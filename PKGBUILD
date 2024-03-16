@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=gitlab-ci-local
-pkgver=4.46.1
+pkgver=4.47.0
 pkgrel=1
 pkgdesc="Run gitlab pipelines locally as shell executor or docker executor"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(nodejs)
 makedepends=(npm)
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('ac55131153df206b558a0d4fad8f9c3588433fca24ad41bafd7cd8e9174d9ef0')
+sha256sums=('54979ce76f9539651bcb2597007861be7ee7578e2b19f7e6f91a1cd34b5cb730')
 
 package() {
   npm install --global \
