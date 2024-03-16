@@ -9,14 +9,14 @@
 
 _qt_module=qtwebchannel
 pkgname=mingw-w64-qt5-webchannel
-pkgver=5.15.12
+pkgver=5.15.13
 pkgrel=1
 arch=('any')
 pkgdesc='Provides access to QObject or QML objects from HTML clients for seamless integration of Qt applications with HTML/JavaScript clients (mingw-w64)'
 depends=('mingw-w64-qt5-declarative')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-_commit=6d2f0c3a36d9b2cdcd759a464c608365a0afda98
+_commit=c78ad286a90e3d7986292b4a6036a9927bbc155f
 _basever=${pkgver%%+*}
 pkgver+=+kde+r3
 makedepends+=('git')
@@ -25,7 +25,7 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn=${_qt_module}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('SKIP')
+sha256sums=('fd1e7f99e4aaffd78976f8ec913c598f23cf2d2b0ccdd1eb3d62761a66b2c42c')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -48,7 +48,7 @@ build() {
       msg2 "Building ${_config##*=} version for ${_arch}"
       mkdir -p build-${_arch}-${_config##*=} && pushd build-${_arch}-${_config##*=}
       ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config} ${_additional_qmake_args}
-      make
+      make -j$(nproc)
       popd
     done
   done
@@ -61,7 +61,7 @@ package() {
     for _config in "${_configurations[@]}"; do
       pushd build-${_arch}-${_config##*=}
 
-      make INSTALL_ROOT="$pkgdir" install
+      make -j$(nproc) INSTALL_ROOT="$pkgdir" install
 
       # use prl files from build directory since installed prl files seem to have incorrect QMAKE_PRL_LIBS_FOR_CMAKE
       if [[ -d 'lib' ]]; then
