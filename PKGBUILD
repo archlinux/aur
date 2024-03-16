@@ -15,19 +15,22 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/NovaNav-v.${pkgver}/src/cpp"  # Cambiar al directorio donde se encuentra el código fuente
-  qmake  # Ejecutar qmake en el directorio actual
-  make  # Compilar el código
+  cd "${srcdir}/NovaNav-v.${pkgver}/src/cpp"  # Change to the directory where your source code is located
+  qmake PREFIX=/usr/local  # Run qmake, you can adjust parameters as needed
+  make  # Compile the code
 }
 
 package() {
-  cd "${srcdir}/NovaNav-v.${pkgver}/src/cpp"  # Cambia al directorio donde se encuentra el código fuente
-  make install INSTALL_ROOT="${pkgdir}/usr/local/bin"  # Instala el binario en /usr/local/bin
+  cd "${srcdir}/NovaNav-v.${pkgver}/src/cpp"  # Change to the directory where your source code is located
+  make INSTALL_ROOT="${pkgdir}" install  # Install the binary into the package destination directory
 
-  # Instala el icono
+  # Install the icon
   install -Dm644 -p "${srcdir}/NovaNav-v.${pkgver}/src/nnav-iconlogo.png" "${pkgdir}/usr/share/pixmaps/novanav.png"
 
-  # Instala el archivo .desktop
+  # Install the .desktop file
   install -Dm644 -p "${srcdir}/NovaNav-v.${pkgver}/src/novanav.desktop" "${pkgdir}/usr/share/applications/novanav.desktop"
+
+  # Move the binary to /usr/local/bin
+  install -Dm755 -p "${srcdir}/NovaNav-v.${pkgver}/src/cpp/novanav" "${pkgdir}/usr/local/bin/novanav"
 }
 
