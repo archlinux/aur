@@ -4,7 +4,7 @@ _pkgname=mimic
 _pkgbase=$_pkgname-bpf
 pkgname=($_pkgbase $_pkgbase-dkms)
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="eBPF UDP -> TCP obfuscator"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/hack3ric/$_pkgname"
@@ -21,15 +21,13 @@ build() {
 
 package_mimic-bpf() {
   depends=('glibc' 'libbpf' $_pkgbase-modules=$pkgver-$pkgrel)
-  provides=($_pkgbase)
-  conflicts=($_pkgbase)
   install -Dm755 "$srcdir/$_pkgname/out/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
 
 package_mimic-bpf-dkms() {
   depends=('dkms')
-  provides=($_pkgbase-modules=$pkgver-$pkgrel $_pkgbase-dkms)
-  conflicts=($_pkgbase-modules=$pkgver-$pkgrel $_pkgbase-dkms)
+  provides=($_pkgbase-modules=$pkgver-$pkgrel)
+  conflicts=($_pkgbase-modules=$pkgver-$pkgrel)
   install -d "$pkgdir/usr/src/$_pkgname-$pkgver"
   cp -r "$srcdir/$_pkgname/src/kmod/"* "$pkgdir/usr/src/$_pkgname-$pkgver/"
 }
