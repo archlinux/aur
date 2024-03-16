@@ -1,7 +1,7 @@
 pkgbase=amp-locker
 pkgname=('amp-locker-standalone-bin' 'amp-locker-vst-bin' 'amp-locker-vst3-bin')
-pkgver=1.0.8
-pkgrel=4
+pkgver=1.0.8a
+pkgrel=1
 arch=('x86_64')
 url="https://audioassault.mx/collections/amp-locker-gear/products/amp-locker"
 license=('EULA')
