@@ -28,7 +28,7 @@ optdepends=('sshpass: for ssh connections with password'
             'python-jmespath: json_query support'
             'python-pip: for module to manage Python libarary dependencies'
             'python-setuptools: for module to manage Python libarary dependencies')
-makedepends=('python-build' 'python-docutils' 'python-installer' 'python-setuptools' 'python-straight.plugin' 'python-wheel' 'git')
+makedepends=('python-build' 'python-docutils' 'python-installer' 'python-setuptools' 'python-wheel' 'git')
 source=($pkgname::git+https://github.com/ansible/ansible.git)
 sha512sums=('SKIP')
 

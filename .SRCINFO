@@ -9,7 +9,6 @@ pkgbase = ansible-core-git
 	makedepends = python-docutils
 	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python-straight.plugin
 	makedepends = python-wheel
 	makedepends = git
 	depends = python
