@@ -11,14 +11,14 @@
 
 _qt_module=qtwebglplugin
 pkgname=mingw-w64-qt5-webglplugin-static
-pkgver=5.15.12
+pkgver=5.15.13
 pkgrel=1
 arch=('any')
 pkgdesc="QPA plugin for running an application via a browser using streamed WebGL commands (mingw-w64)"
 depends=('mingw-w64-qt5-declarative-static' 'mingw-w64-qt5-websockets-static')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
-_commit=8f879e6bcf941a612c568fbfe2b49ddb1bb409cd
+_commit=80257933d3bf3a026455d71106e6b3e70dead765
 _basever=${pkgver%%+*}
 makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
@@ -27,7 +27,7 @@ url='https://www.qt.io/'
 _pkgfqn=${_qt_module}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         '0001-Hardcode-linker-flags-for-platform-plugin.patch')
-sha256sums=('SKIP'
+sha256sums=('a6d7cd830f7ed5a0ab9faa1c38189f501450addeff723d0d37c6f3d1d779bdb7'
             'c855d5b15171ed0f8d730898a62621462a71dbdb0b296d1e0ba2d3cfa87a8bcb')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
@@ -58,7 +58,7 @@ build() {
       mkdir -p build-${_arch}-${_config##*=} && pushd build-${_arch}-${_config##*=}
       _additional_qmake_args=QT_INSTALL_PREFIX=/usr/${_arch}
       ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config} ${_additional_qmake_args}
-      make
+      make -j$(nproc)
       popd
     done
   done
@@ -71,7 +71,7 @@ package() {
     for _config in "${_configurations[@]}"; do
       pushd build-${_arch}-${_config##*=}
 
-      make INSTALL_ROOT="$pkgdir" install
+      make -j$(nproc) INSTALL_ROOT="$pkgdir" install
 
       # use prl files from build directory since installed prl files seem to have incorrect QMAKE_PRL_LIBS_FOR_CMAKE
       if [[ -d 'lib' ]]; then
