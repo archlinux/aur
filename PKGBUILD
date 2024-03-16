@@ -10,14 +10,14 @@
 
 _qt_module=qt3d
 pkgname=mingw-w64-qt5-3d
-pkgver=5.15.12
+pkgver=5.15.13
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="C++ and QML APIs for easy inclusion of 3D graphics (mingw-w64)"
 depends=('mingw-w64-qt5-declarative' 'mingw-w64-assimp')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-vulkan-headers' 'assimp')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
-_commit=e1b1a0d2970fd384bd52c734a72536d8452ad070
+_commit=67bee4599a28e1cadc14ed9ea4adc7061e250b90
 _basever=${pkgver%%+*}
 makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
@@ -25,7 +25,7 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn=${_qt_module}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('SKIP')
+sha256sums=('cf08bc14ebdf811643a0d07e1d7168fdc2d46d40d95041d27707ddf51fcc6783')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -59,7 +59,7 @@ build() {
       make qmake_all
       find ./tools -type f -iname 'Makefile' -exec sed -i "s|-lQt5Bootstrap|-L/usr/$_arch/lib -lQt5Bootstrap|g" {} \;
 
-      make
+      make -j$(nproc)
       popd
     done
   done
@@ -72,7 +72,7 @@ package() {
     for _config in "${_configurations[@]}"; do
       pushd build-${_arch}-${_config##*=}
 
-      make INSTALL_ROOT="$pkgdir" install
+      make -j$(nproc) INSTALL_ROOT="$pkgdir" install
 
       # use prl files from build directory since installed prl files seem to have incorrect QMAKE_PRL_LIBS_FOR_CMAKE
       if [[ -d 'lib' ]]; then

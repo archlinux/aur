@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-3d
 	pkgdesc = C++ and QML APIs for easy inclusion of 3D graphics (mingw-w64)
-	pkgver = 5.15.12
+	pkgver = 5.15.13
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = mingw-w64-qt5-3d
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://invent.kde.org/qt/qt/qt3d#commit=e1b1a0d2970fd384bd52c734a72536d8452ad070
-	sha256sums = SKIP
+	source = git+https://invent.kde.org/qt/qt/qt3d#commit=67bee4599a28e1cadc14ed9ea4adc7061e250b90
+	sha256sums = cf08bc14ebdf811643a0d07e1d7168fdc2d46d40d95041d27707ddf51fcc6783
 
 pkgname = mingw-w64-qt5-3d
