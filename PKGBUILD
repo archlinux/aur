@@ -3,10 +3,10 @@
 # Contributor: giantdwarf <17hoehbr@gmail.com>
 # Contributor: Ewout van Mansom <ewout@vanmansom.name>
 
-pkgname=dxvk-gplasync-bin
-pkgver=2.3
+pkgname=dxvk-gplasync-bin-git
+pkgver=6389635175
 pkgrel=1
-pkgdesc="A Vulkan-based compatibility layer for Direct3D 9/10/11 (with gplasync patch)"
+pkgdesc="A Vulkan-based compatibility layer for Direct3D 9/10/11 (with gplasync patch) (CI BUILD)"
 arch=('x86_64')
 url="https://gitlab.com/Ph42oN/dxvk-gplasync"
 license=('zlib-acknowledgement')
@@ -15,17 +15,21 @@ optdepends=('wine' 'proton')
 provides=("dxvk=$pkgver" 'd9vk')
 conflicts=('dxvk' 'd9vk')
 options=(!strip)
-source=("$url/-/raw/main/releases/dxvk-gplasync-v$pkgver-$pkgrel.tar.gz"
+source=("$pkgname.zip::https://gitlab.com/Ph42oN/dxvk-gplasync/-/jobs/artifacts/test/download?job=build"
         'dxvk-gplasync-env.conf'
         'setup_dxvk_proton.sh'
         'https://raw.githubusercontent.com/doitsujin/dxvk/4f90d7bf5f9ad785660507e0cb459a14dab5ac75/setup_dxvk.sh')
-sha256sums=('1e1f6db95f4a7f02d372012f4a723a161d732a39b3b3efcf8159e03cdff2dc1e'
+sha256sums=('SKIP'
             '2bce3bf5dc5a3c7312bbaae96daf82e0fe6c370e96017ce5a0c49f40901866e3'
             '64fbbf9f30f2f4e8d1d82b088ade92f1bf8817a4bf6e21d7dd978f4276abe1a6'
             '0f688815530ab5e8cc89b9b45d9b1d66cd8cd5a7770fb8249339af555a30dfe7')
 
+pkgver() {
+  curl -f "https://gitlab.com/Ph42oN/dxvk-gplasync/-/jobs/artifacts/test/download?job=build" | grep -oP '(?<=jobs\/)\d+'
+}
+
 package() {
-  cd "dxvk-gplasync-v$pkgver-$pkgrel" || exit 1
+  cd "dxvk-gplasync-test" || exit 1
 
   install -dm755 "$pkgdir/usr/share"
   cp -dr --preserve=mode,timestamp . "$pkgdir/usr/share/dxvk"
