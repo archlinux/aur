@@ -1,7 +1,7 @@
 pkgbase = python-adafruit-blinka
 	pkgdesc = CircuitPython APIs for non-CircuitPython versions of Python such as CPython on Linux and MicroPython
-	pkgver = 8.30.0
-	pkgrel = 1
+	pkgver = 8.35.0
+	pkgrel = 0
 	url = https://github.com/adafruit/Adafruit_Blinka
 	arch = armv6h
 	arch = armv7h
@@ -16,7 +16,7 @@ pkgbase = python-adafruit-blinka
 	depends = python-adafruit-platformdetect
 	depends = python-gpiod
 	depends = python-adafruit-pureio
-	source = https://pypi.io/packages/source/A/Adafruit-Blinka/Adafruit-Blinka-8.30.0.tar.gz
-	sha256sums = db968c4efa84aac6bec9f4788ae214bfed97748dfd5c3985b72cf80b0162a4fe
+	source = https://pypi.io/packages/source/A/Adafruit-Blinka/Adafruit-Blinka-8.35.0.tar.gz
+	sha256sums = 382d8a01a31fc427096bd0f3759e59560990bf8fc43f4e3b2ec5fb841427d718
 
 pkgname = python-adafruit-blinka
