@@ -1,5 +1,5 @@
 pkgbase = android-armv7a-eabi-x264-bootstrap
-	pkgdesc = Free library for encoding H264/AVC video streams (android)
+	pkgdesc = Free library for encoding H264/AVC video streams (Android, armv7a-eabi)
 	pkgver = 157.r72db4377
 	pkgrel = 2
 	url = https://www.videolan.org/developers/x264.html
@@ -17,8 +17,12 @@ pkgbase = android-armv7a-eabi-x264-bootstrap
 	options = staticlibs
 	options = !emptydirs
 	source = git+https://code.videolan.org/videolan/x264.git#commit=72db437770fd1ce3961f624dd57a8e75ff65ae0b
-	source = soname.patch
+	source = 0001-Fix-soname.patch
+	source = 0002-Remove-lpthread.patch
+	source = 0003-Do-not-replace-ftell-and-fseek.patch
 	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = e8322f7da77816cd721183ed42f8a1bc
+	md5sums = ef45412614fcd0fe1a186672fcbbf47d
+	md5sums = 8114198c19f2abd3503af34030604225
 
 pkgname = android-armv7a-eabi-x264-bootstrap
