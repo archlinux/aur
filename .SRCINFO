@@ -1,6 +1,6 @@
 pkgbase = inkscape-axidraw-bin
 	pkgdesc = Inkscape extension for Axidraw
-	pkgver = 3.9.4
+	pkgver = 3.9.5
 	pkgrel = 1
 	url = https://wiki.evilmadscientist.com/Axidraw_Software_Installation#Linux
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = inkscape-axidraw-bin
 	provides = inkscape-eggbot
 	conflicts = inkscape-axidraw
 	conflicts = inkscape-eggbot
-	source = https://cdn.evilmadscientist.com/dl/ad/public/394/AxiDraw_394_LinX86.zip
-	sha256sums = 14e49a4cf0520d2a6da73c248c88cba8b1a5100581457e156e29e4d6b14a26fb
+	source = https://cdn.evilmadscientist.com/dl/ad/public/395/AxiDraw_395_LinX86.zip
+	sha256sums = d3d53e90dd92bf5e0e1a2042500996e1806bd933edcb839087dddcd6d31d783d
 
 pkgname = inkscape-axidraw-bin

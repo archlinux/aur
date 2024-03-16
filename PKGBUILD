@@ -2,7 +2,7 @@
 # Contributor: Alex Leray <alexandre@stdin.fr>
 
 pkgname=inkscape-axidraw-bin
-pkgver=3.9.4
+pkgver=3.9.5
 _zipname="AxiDraw_${pkgver//./}_LinX86"
 pkgrel=1
 pkgdesc='Inkscape extension for Axidraw'
@@ -16,7 +16,7 @@ source=(
   "https://cdn.evilmadscientist.com/dl/ad/public/${pkgver//./}/${_zipname}.zip"
 )
 sha256sums=(
-  '14e49a4cf0520d2a6da73c248c88cba8b1a5100581457e156e29e4d6b14a26fb'
+  'd3d53e90dd92bf5e0e1a2042500996e1806bd933edcb839087dddcd6d31d783d'
 )
 
 package() {
