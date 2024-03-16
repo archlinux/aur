@@ -1,6 +1,6 @@
 pkgbase = prometheus-pve-exporter
 	pkgdesc = Proxmox VE exporter for the Prometheus monitoring system
-	pkgver = 2.3.1
+	pkgver = 3.2.2
 	pkgrel = 1
 	url = https://github.com/prometheus-pve/prometheus-pve-exporter
 	arch = any
@@ -13,15 +13,15 @@ pkgbase = prometheus-pve-exporter
 	depends = python-requests
 	depends = python-werkzeug
 	backup = etc/prometheus/pve.yml
-	source = prometheus-pve-exporter-2.3.1.tar.gz::https://github.com/prometheus-pve/prometheus-pve-exporter/archive/refs/tags/v2.3.1.tar.gz
+	source = prometheus-pve-exporter-3.2.2.tar.gz::https://github.com/prometheus-pve/prometheus-pve-exporter/archive/refs/tags/v3.2.2.tar.gz
 	source = prometheus-pve-exporter.service
 	source = prometheus-pve-exporter.sysusers
 	source = prometheus-pve-exporter.tmpfiles
-	source = https://raw.githubusercontent.com/prometheus-pve/prometheus-pve-exporter/v2.3.1/pve.yml
-	sha256sums = 38e8e921209473da55772e31dbbd9180ab791ea7330d36d3b6c56c99e63f5642
+	source = https://raw.githubusercontent.com/prometheus-pve/prometheus-pve-exporter/v3.2.2/pve.yml
+	sha256sums = 733071efe5ba6b89fc6bc6ebe1036c1b510a0483c3e4383f24886d915351f219
 	sha256sums = 5d1227b6e2fdaa27d8ec4ceafebc95074e2f5a1c27df313c3f00f2f85ef3ee34
 	sha256sums = d230b99e6ec3663ba8785cc61b8b8983a04596eaf0271bfea0d64189eabbd97f
 	sha256sums = c9eb4acf94e5a7851e90e721e1baa9b77ae0a276975a2f21e74c569a159358a7
-	sha256sums = 20e03690f199f360eef66cbf11d54b26eac024563a9a3d9cbe777d6b718c2d61
+	sha256sums = ce67d32c0ea739662659dae152fc3735f1f6bcb7c761ba09ac7fa14b643a32be
 
 pkgname = prometheus-pve-exporter
