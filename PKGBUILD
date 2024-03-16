@@ -14,7 +14,7 @@
 pkgname=labymod-appimage
 _pkgname=labymodlauncher
 pkgver=2.0.12
-pkgrel=4
+pkgrel=5
 pkgdesc='LabyMod Launcher for launching LabyMod, which is a Minecraft client that adds bunch of useful features'
 url=https://www.labymod.net
 arch=(x86_64)
@@ -49,6 +49,26 @@ package() {
         install -Dm644 \
                 "/opt/${_pkgname}/${_pkgname}.desktop" \
                 "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+
+        # Replace default Electron icons with LabyMod icons
+        convert -resize 16x16 \
+                "/opt/${_pkgname}/resources/icons/icon.png" \
+                "/opt/${_pkgname}/usr/share/icons/hicolor/16x16/apps/${_pkgname}.png"
+        convert -resize 32x32 \
+                "/opt/${_pkgname}/resources/icons/icon.png" \
+                "/opt/${_pkgname}/usr/share/icons/hicolor/32x32/apps/${_pkgname}.png"
+        convert -resize 48x48 \
+                "/opt/${_pkgname}/resources/icons/icon.png" \
+                "/opt/${_pkgname}/usr/share/icons/hicolor/48x48/apps/${_pkgname}.png"
+        convert -resize 64x64 \
+                "/opt/${_pkgname}/resources/icons/icon.png" \
+                "/opt/${_pkgname}/usr/share/icons/hicolor/64x64/apps/${_pkgname}.png"
+        convert -resize 128x128 \
+                "/opt/${_pkgname}/resources/icons/icon.png" \
+                "/opt/${_pkgname}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
+        convert -resize 256x256 \
+                "/opt/${_pkgname}/resources/icons/icon.png" \
+                "/opt/${_pkgname}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
 
         # Icon images
         install -dm755 "${pkgdir}/usr/share/"
