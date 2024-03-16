@@ -1,10 +1,9 @@
 pkgbase = tal-noisemaker-bin
 	pkgdesc = A Free Soft Synth By TAL Software
 	pkgver = 5.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tal-software.com/products/tal-noisemaker
 	arch = x86_64
-	groups = pro-audio
 	license = EULA
 	depends = alsa-lib
 	depends = bzip2
@@ -22,17 +21,20 @@ pkgbase = tal-noisemaker-bin
 
 pkgname = tal-noisemaker-clap-bin
 	groups = clap-plugins
+	groups = pro-audio
 	provides = tal-noisemaker-clap-bin
 	conflicts = tal-noisemaker-bin
 	replaces = tal-noisemaker-bin
 
 pkgname = tal-noisemaker-vst-bin
+	groups = pro-audio
 	groups = vst-plugins
 	provides = tal-noisemaker-vst-bin
 	conflicts = tal-noisemaker-bin
 	replaces = tal-noisemaker-bin
 
 pkgname = tal-noisemaker-vst3-bin
+	groups = pro-audio
 	groups = vst3-plugins
 	provides = tal-noisemaker-vst3-bin
 	conflicts = tal-noisemaker-bin

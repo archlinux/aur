@@ -1,9 +1,8 @@
 pkgbase=tal-noisemaker-bin
 pkgname=("${pkgbase/-bin}-clap-bin" "${pkgbase/-bin}-vst-bin" "${pkgbase/-bin}-vst3-bin")
 pkgver=5.0.6
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
-groups=('pro-audio')
 pkgdesc="A Free Soft Synth By TAL Software"
 url="https://tal-software.com/products/tal-noisemaker"
 license=('EULA')
@@ -15,7 +14,7 @@ sha256sums=('328565e646f98f14dd931a33fa438a4c9eddc451e759b92d1005f4336fa3fd20')
 
 package_tal-noisemaker-clap-bin() {
   ## CLAP Plugin
-  groups=("clap-plugins")
+  groups=("clap-plugins" 'pro-audio')
   replaces=("tal-noisemaker-bin")
   conflicts=("tal-noisemaker-bin")
   provides=("tal-noisemaker-clap-bin")
@@ -24,7 +23,7 @@ package_tal-noisemaker-clap-bin() {
 
 package_tal-noisemaker-vst-bin() {
   ## VST2 Plugin
-  groups=("vst-plugins")
+  groups=('pro-audio' "vst-plugins")
   replaces=("tal-noisemaker-bin")
   conflicts=("tal-noisemaker-bin")
   provides=("tal-noisemaker-vst-bin")
@@ -33,7 +32,7 @@ package_tal-noisemaker-vst-bin() {
 
 package_tal-noisemaker-vst3-bin() {
   ## VST3 Plugin
-  groups=("vst3-plugins")
+  groups=('pro-audio' "vst3-plugins")
   replaces=("tal-noisemaker-bin")
   conflicts=("tal-noisemaker-bin")
   provides=("tal-noisemaker-vst3-bin")
