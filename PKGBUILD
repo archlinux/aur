@@ -1,17 +1,16 @@
 pkgname=carla-bridges-win64
-pkgver=2.5.8
+pkgver=6939.66afe24a0
 pkgrel=1
-pkgdesc="Carla Windows VST 64-Bit Bridge (Stable)"
-arch=('x86_64')
+pkgdesc="Carla Win64 Bridge"
+arch=('i686' 'x86_64')
 url="http://kxstudio.sf.net/carla"
 license=('GPL2')
-conflicts=('carla-bridges-win64' 'carla-bridges-win')
+conflicts=('carla-bridges-win64')
 provides=('carla-bridges-win64')
 depends=('wine' 'carla')
-makedepends=('git' 'gcc-multilib' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-winpthreads')
-source=("https://github.com/falkTX/Carla/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('0f87ebe053d29a4a455532cc90e66ca7978f0f3678d0814bd5fb3343e852e2a28d0f5e170e67a71bf64fec1c9bd696dd7aa01627b02edd23cfe4994dc357b857')
-b2sums=('26adbf24abecab04810b82d550b7f598747c80a29c0a9d66e9799cee94aba2c384852e2aa31dee0ef949697c089c379575f9c1919646a8513313429d6c391c50')
+makedepends=('git' 'mingw-w64-crt' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-winpthreads')
+source=("$pkgname"::'git+https://github.com/falkTX/Carla.git')
+md5sums=('SKIP')
 
   _path=$PATH
   _cflags=$CFLAGS
@@ -24,8 +23,12 @@ b2sums=('26adbf24abecab04810b82d550b7f598747c80a29c0a9d66e9799cee94aba2c384852e2
   _win32=$WIN32
   _win64=$WIN64
 
+pkgver() {
+  cd "$srcdir/$pkgname"
+  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
-  cd "$srcdir/Carla-${pkgver}"
   export PATH=/usr/x86_64-w64-mingw32/bin:$PATH
   export AR=x86_64-w64-mingw32-ar
   export CC=x86_64-w64-mingw32-gcc
@@ -37,6 +40,7 @@ build() {
   unset CXXFLAGS
   unset LDFLAGS
   export LDFLAGS="-static"
+  cd "$srcdir/$pkgname"
   make -j$(nproc) win64 HAVE_LIBLO=false
   export PATH=$_path
   export AR=$_ar
@@ -53,7 +57,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/Carla-${pkgver}"
+  cd "$srcdir/$pkgname"
   mkdir -p "$pkgdir/usr/lib/carla"
   cp bin/*.exe "$pkgdir/usr/lib/carla/"
   cp bin/*.dll "$pkgdir/usr/lib/carla/"
