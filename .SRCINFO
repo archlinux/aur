@@ -1,7 +1,7 @@
 pkgbase = labymod-appimage
-	pkgdesc = A minecraft Launcher & modpack that optimizes the game and adds a bunch of useful features ! (1.8.9->1.20.4)
+	pkgdesc = LabyMod Launcher for launching LabyMod, which is a Minecraft client that adds bunch of useful features
 	pkgver = 2.0.12
-	pkgrel = 3 
+	pkgrel = 4
 	url = https://www.labymod.net
 	arch = x86_64
 	license = unknown

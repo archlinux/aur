@@ -14,8 +14,8 @@
 pkgname=labymod-appimage
 _pkgname=labymodlauncher
 pkgver=2.0.12
-pkgrel=3
-pkgdesc='A minecraft Launcher & modpack that optimizes the game and adds a bunch of useful features ! (1.8->1.20.1)'
+pkgrel=4
+pkgdesc='LabyMod Launcher for launching LabyMod, which is a Minecraft client that adds bunch of useful features'
 url=https://www.labymod.net
 arch=(x86_64)
 license=(unknown)
@@ -52,10 +52,10 @@ package() {
 
         # Icon images
         install -dm755 "${pkgdir}/usr/share/"
-        #cp -a \
-        #        "${pkgdir}/usr/share" \
-        #        "/opt/${_pkgname}/usr/share/icons"
-
+	cp -a \
+		"/opt/${_pkgname}/usr/share/icons" \
+                "${pkgdir}/usr/share"
+                
 	# Symlink executable
         install -dm755 "${pkgdir}/usr/bin"
         ln -s \
