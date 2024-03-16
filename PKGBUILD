@@ -3,14 +3,14 @@
 
 pkgname=python-playwright
 _name=playwright-python
-pkgver=1.41.2
+pkgver=1.42.0
 pkgrel=1
 pkgdesc="a Python library to automate Chromium, Firefox and WebKit browsers with a single API"
 arch=(x86_64)
 url=https://github.com/microsoft/playwright-python
 license=(Apache-2.0)
 makedepends=('git' 'python-auditwheel' 'python-build' 'python-installer' 'python-wheel')
-depends=('nodejs' 'python' 'python-greenlet' 'python-pyee' 'python-typing_extensions')
+depends=('nodejs' 'python' 'python-greenlet' 'python-pyee')
 source=("git+https://github.com/microsoft/${_name}#tag=v${pkgver}")
 sha256sums=('SKIP')
 
