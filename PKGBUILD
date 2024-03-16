@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=mirrord
-pkgver=3.86.0
+pkgver=3.92.0
 pkgrel=1
 pkgdesc="Connect your local process and your cloud environment, and run local code in cloud conditions"
 url="https://github.com/metalbear-co/mirrord"
@@ -17,9 +17,8 @@ makedepends=(
   protobuf
 )
 options=(!lto)
-
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('7ae1b0cac74a00c2194887ed020cdd4cd70e3d6b5f2b70720e5d3766e9c592da')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('b5643eb57e99a6140b358fc98d758481fa082c07845d44096cb7db519939c682')
 
 _archive="$pkgname-$pkgver"
 
@@ -27,6 +26,11 @@ prepare() {
   cd "$_archive"
 
   export RUSTUP_TOOLCHAIN=nightly
+
+  # Update ahash to avoid the following compilation error in v0.8.6:
+  # error[E0635]: unknown feature `stdsimd`
+  cargo update --package ahash --precise 0.8.7
+
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
@@ -42,14 +46,6 @@ build() {
   ./target/release/mirrord completions fish > mirrord.fish
   ./target/release/mirrord completions zsh > mirrord.zsh
 }
-
-# Tests require running a Minikube cluster as far as am aware.
-# check() {
-#   cd "$_archive"
-
-#   export RUSTUP_TOOLCHAIN=nightly
-#   cargo test --frozen --all-features
-# }
 
 package() {
   cd "$_archive"
