@@ -1,6 +1,6 @@
 pkgbase = harrison-mastering-eq
 	pkgver = 5.0.0.074d2374
-	pkgrel = 3
+	pkgrel = 4
 	url = https://store.harrisonaudio.com/all-products/mastering-eq
 	arch = x86_64
 	groups = pro-audio
@@ -48,4 +48,4 @@ pkgname = harrison-mastering-eq-vst-bin
 
 pkgname = harrison-mastering-eq-vst3-bin
 	pkgdesc = Harrison Mastering EQ (VST3)
-	groups = vst-plugins
+	groups = vst3-plugins
