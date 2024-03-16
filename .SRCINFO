@@ -1,6 +1,6 @@
 pkgbase = vdr-softhdcuvid
 	pkgdesc = VDR output plugin with CUDA and Opengl
-	pkgver = 3.16
+	pkgver = 3.22
 	pkgrel = 1
 	url = https://github.com/jojo61/vdr-plugin-softhdcuvid
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = vdr-softhdcuvid
 	makedepends = vulkan-headers
 	makedepends = ffnvcodec-headers
 	makedepends = freetype2
-	source = vdr-softhdcuvid-3.16.tar.gz::https://github.com/jojo61/vdr-plugin-softhdcuvid/archive/refs/tags/V3.16.tar.gz
+	source = vdr-softhdcuvid-3.22.tar.gz::https://github.com/jojo61/vdr-plugin-softhdcuvid/archive/refs/tags/V3.22.tar.gz
 	source = 50-softhdcuvid.conf
-	sha256sums = ec889d9ab7b23613b46414187ea0e71d94b9e633269571ecfb8225f4df333eb3
+	sha256sums = 6c1d5ba564d7d5f7a9efdc4cb4d4d3ff83c5d38974965859f59c3fde0d1bb710
 	sha256sums = ad30dd72260a25663e8ea46ca941c4d55d11fef7b936791cdf51de4fd91cb3af
 
 pkgname = vdr-softhdcuvid

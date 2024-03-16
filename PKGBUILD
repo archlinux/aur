@@ -1,7 +1,7 @@
 # This PKGBUILD is part of the VDR4Arch project [https://github.com/vdr4arch]
 pkgbase=vdr-softhdcuvid
 pkgname=(vdr-softhdcuvid vdr-softhdvaapi vdr-softhddrm)
-pkgver=3.16
+pkgver=3.22
 pkgrel=1
 _vdrapi=2.6.6
 pkgdesc="VDR output plugin with CUDA and Opengl"
@@ -12,7 +12,7 @@ makedepends=('ffmpeg' 'freeglut' 'glew' 'mesa' "vdr-api=${_vdrapi}" 'xcb-util-wm
 _plugname=${pkgbase//vdr-/}
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/V${pkgver}.tar.gz"
         "50-$_plugname.conf")
-sha256sums=('ec889d9ab7b23613b46414187ea0e71d94b9e633269571ecfb8225f4df333eb3'
+sha256sums=('6c1d5ba564d7d5f7a9efdc4cb4d4d3ff83c5d38974965859f59c3fde0d1bb710'
             'ad30dd72260a25663e8ea46ca941c4d55d11fef7b936791cdf51de4fd91cb3af')
 
 prepare() {
@@ -27,9 +27,9 @@ prepare() {
 
 build() {
   cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
-  make CUVID=1 libvdr-softhdcuvid.so
+  make CUVID=1 LIBPLACEBO=1 libvdr-softhdcuvid.so
   make clean
-  make VAAPI=1 libvdr-softhdvaapi.so
+  make VAAPI=1 LIBPLACEBO=1 libvdr-softhdvaapi.so
   make clean
   make DRM=1 LIBPLACEBO=0 libvdr-softhddrm.so
   make clean
