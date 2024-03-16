@@ -1,14 +1,14 @@
 # Maintainer: Stefan Biereigel <stefan@biereigel.de>
 
 pkgname=python-csxcad-git
-pkgver=v0.6.2.r83.g21a0ea1
+pkgver=v0.6.3.r2.gc6a1587
 pkgrel=1
 pkgdesc="A C++ library to describe geometrical objects and their physical or non-physical properties."
 url="https://github.com/thliebig/CSXCAD"
 arch=('i686' 'x86_64')
 license=('LGPL3')
 depends=('csxcad')
-makedepends=('cython')
+makedepends=('cython' 'python-setuptools')
 provides=('python-csxcad')
 conflicts=('python-csxcad')
 
