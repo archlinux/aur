@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage
 
 pkgname=python-metpy
-pkgver=1.5.1
+pkgver=1.6.1
 pkgrel=1
 _basename="MetPy"
 _dirname="${_basename}-${pkgver}"
@@ -19,10 +19,10 @@ optdepends=(
 )
 # documentation dependencies
 #makedepends+=('python-sphinx' 'python-sphinx-gallery' 'python-myst-parser' 'python-netcdf4')
-makedepends+=(python-build python-installer python-wheel)
+makedepends+=(python-build python-installer python-wheel python-setuptools-scm)
 checkdepends=('python-pytest' 'python-pytest-mpl' 'python-cartopy' 'python-shapely' 'python-netcdf4' 'python-packaging')
 source=("${pkgname}-${pkgver}::https://files.pythonhosted.org/packages/source/${_basename::1}/${_basename}/${_basename}-${pkgver}.tar.gz")
-sha256sums=('abee94033642c06efecac3aabc224449124f14fdb01de12001f324da54ce46c7')
+sha256sums=('55bbcaaaef41027e67e051e3d2c029917217a2dd8768498d9dfca4939555ffdf')
 
 
 build() {
@@ -41,9 +41,9 @@ package() {
 }
 
 
-#check() {
-#	cd "${srcdir}/${_dirname}"
-#	# we need to prepend system's installation because the package is dumb and would otherwise override the io core module by name collision
-#	export PYTHONPATH="$(python -c 'import sys; print(":".join(sys.path))'):${srcdir}/${_dirname}/build/lib/${_basename,,}"
-#	pytest
-#}
+# check() {
+# 	cd "${srcdir}/${_dirname}"
+# 	# we need to prepend system's installation because the package is dumb and would otherwise override the io core module by name collision
+# 	export PYTHONPATH="$(python -c 'import sys; print(":".join(sys.path))'):${srcdir}/${_dirname}/build/lib/${_basename,,}"
+# 	pytest
+# }
