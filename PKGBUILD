@@ -4,7 +4,7 @@
 _pkgname=themix-theme-oomox
 _reponame=oomox-gtk-theme
 pkgname="${_pkgname}-git"
-pkgver=1.12.4
+pkgver=1.12.5
 pkgrel=1
 pkgdesc="Oomox theme plugin
  (GTK2, GTK3, Cinnamon, Metacity, Openbox, Qt5ct, Qt6ct, Unity, Xfwm) for Themix GUI designer.
@@ -20,8 +20,6 @@ depends=(
 	'gtk3'
 	'glib2'
 	'gdk-pixbuf2'
-	'gtk-engine-murrine'
-	'gtk-engines'
 	'sassc'
 	'librsvg'
 	'sed'
@@ -35,6 +33,8 @@ makedepends=(
 )
 optdepends=(
 	'themix-gui: GUI'
+	'gtk-engine-murrine: for using GTK2 theme'
+	'gtk-engines: for using GTK2 theme'
 )
 options=(
 	'!strip'
