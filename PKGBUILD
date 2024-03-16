@@ -3,12 +3,12 @@
 _pkgname=ROCit
 _pkgver=2.1.1
 pkgname=r-${_pkgname,,}
-pkgver=2.1.1
-pkgrel=4
-pkgdesc='Performance Assessment of Binary Classifier with Visualization'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=9
+pkgdesc="Performance Assessment of Binary Classifier with Visualization"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r
 )
@@ -18,14 +18,15 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a5287c111b028d15ef00e4ae0af2a27380769e710e8ffb3fe458a179e064a669')
+md5sums=('4c3fabfdc2925c5a5c27ebeedecfbb90')
+b2sums=('0ecf098496b766b904b521ee015d262c4d74b101377dcae36cfc3e87c4b09e899a00dfaf65e82b23beeca2e77e4bbba9c9c6a8c2f6356d6e5f9e02258053a326')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
