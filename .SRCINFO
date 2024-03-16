@@ -1,13 +1,20 @@
 pkgbase = tal-chorus-lx
 	pkgdesc = A Simple Algorithmic Chorus By TAL Software
 	pkgver = 1.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tal-software.com/products/tal-chorus-lx
 	arch = x86_64
 	groups = pro-audio
 	license = EULA
-	depends = libcurl-gnutls
+	depends = alsa-lib
+	depends = bzip2
+	depends = brotli
+	depends = freetype2
 	depends = glibc
+	depends = graphite
+	depends = harfbuzz
+	depends = libpng
+	depends = pcre2
 	source = https://tal-software.com/downloads/plugins/Tal-Chorus-LX_64_linux.zip
 	sha256sums = 176396c83a3f43d3ec0ae0b1483c2ef7b9480952699cc999f393993fba786a0e
 

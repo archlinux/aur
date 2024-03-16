@@ -1,13 +1,13 @@
 pkgbase=tal-chorus-lx
 pkgname=("${pkgbase}-clap-bin" "${pkgbase}-vst-bin" "${pkgbase}-vst3-bin")
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="A Simple Algorithmic Chorus By TAL Software"
 groups=('pro-audio')
 url="https://tal-software.com/products/tal-chorus-lx"
 license=('EULA')
-depends=('libcurl-gnutls' 'glibc')
+depends=('alsa-lib' 'bzip2' 'brotli' 'freetype2' 'glibc' 'graphite' 'harfbuzz' 'libpng' 'pcre2')
 source=('https://tal-software.com/downloads/plugins/Tal-Chorus-LX_64_linux.zip')
 sha256sums=('176396c83a3f43d3ec0ae0b1483c2ef7b9480952699cc999f393993fba786a0e')
 
