@@ -1,0 +1,20 @@
+--- a/configure
++++ b/configure
+@@ -1289,17 +1289,6 @@
+     cc_check '' -fno-zero-initialized-in-bss && CFLAGS="$CFLAGS -fno-zero-initialized-in-bss"
+ fi
+ 
+-if cc_check "stdio.h" "" "fseeko(stdin,0,0);" ; then
+-    define fseek fseeko
+-    define ftell ftello
+-elif cc_check "stdio.h" "" "fseeko64(stdin,0,0);" ; then
+-    define fseek fseeko64
+-    define ftell ftello64
+-elif cc_check "stdio.h" "" "_fseeki64(stdin,0,0);" ; then
+-    define fseek _fseeki64
+-    define ftell _ftelli64
+-fi
+-
+ if cc_check '' -Wshadow ; then
+     CFLAGS="-Wshadow $CFLAGS"
+ fi
