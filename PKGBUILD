@@ -69,7 +69,7 @@ package_mod_tile-git() {
   install -dm755 "$pkgdir"/usr/share/renderd
   cp -av "$srcdir"/mod_tile/utils/example-map "$pkgdir"/usr/share/renderd/example-map
 
-  # "/etc/renderd.conf", "/usr/bin", "/usr/share/man", "/var/cache/renderd/tiles" & "/var/run/renderd" are contained in "renderd" package
+  # "/etc/renderd.conf", "/usr/bin", "/usr/share/man", "/var/cache/renderd/tiles" & "/run/renderd" are contained in "renderd" package
   cd "$pkgdir" || return
   rm -rf etc/renderd.conf usr/bin usr/share/man var
 }
@@ -91,7 +91,7 @@ package_renderd-git() {
   # License
   install -Dm644 "$srcdir"/mod_tile/COPYING "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 
-  # "/var/cache/renderd/tiles" & "/var/run/renderd" will be handled by "renderd.tmpfiles"
+  # "/var/cache/renderd/tiles" & "/run/renderd" will be handled by "renderd.tmpfiles"
   # "/etc/httpd" & "/usr/lib/httpd" are contained in "mod_tile" package
   cd "$pkgdir" || return
   rm -rf var etc/httpd usr/lib/httpd
