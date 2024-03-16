@@ -2,7 +2,7 @@
 # Contributor: Philipp A. <flying-sheep@web.de>
 
 pkgname=python-stdlib-list
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='A list of Python Standard Libraries'
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=(
   'python-flit-core'
 )
 checkdepends=('python-pytest')
-_commit='741c4e2d4f67ec85ef45e3a2e6823d4832ecbde7'
+_commit='21e67eef5898d27004442f68e84f2b8a847e319a'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 
