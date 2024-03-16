@@ -4,7 +4,7 @@
 
 _pkgname=libpamac
 pkgname=$_pkgname-nosnap
-pkgver=11.6.3
+pkgver=11.6.4
 pkgrel=1
 epoch=1
 _srcdir="$_pkgname-$pkgver"
@@ -48,7 +48,7 @@ options=(!emptydirs !strip)
 backup=('etc/pamac.conf')
 install='pamac.install'
 source=($_pkgname-$pkgver.tar.bz2::$url/-/archive/$pkgver/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('f8f27b8427e421c24b3a6bfb5792a37abe9cf60fe25c3f6e6dba5c66198a497a')
+sha256sums=('4ac54679e25004d6af8154340bac2e060c3a109a6bcb336f54ce025b2d68f080')
 #source=(
 #    "git+https://gitlab.manjaro.org/applications/libpamac.git#commit=e74fe0e1c15f4fd14d02ff12650be3fde47287d7"
 #    "${pkgname}-appstream-1.0.patch"    
