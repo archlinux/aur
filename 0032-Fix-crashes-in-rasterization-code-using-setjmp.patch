@@ -1,4 +1,4 @@
-From 5f254a0f2f5857a6c1da88166549b38a3864a38c Mon Sep 17 00:00:00 2001
+From 1690bb85bf77a77a80abf2d369b6ec17b87ab4f8 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 26 Jun 2021 22:24:12 +0200
 Subject: [PATCH 32/32] Fix crashes in rasterization code using setjmp
@@ -28,7 +28,7 @@ Change-Id: I01937d13569dd01ab4cb1f608020544c93bc343c
  rename src/gui/painting/{qgrayraster.c => qgrayraster.cpp} (98%)
 
 diff --git a/src/gui/painting/painting.pri b/src/gui/painting/painting.pri
-index bb0fc0ffba..72decdefbf 100644
+index bb0fc0ffbae..72decdefbf2 100644
 --- a/src/gui/painting/painting.pri
 +++ b/src/gui/painting/painting.pri
 @@ -1,5 +1,7 @@
@@ -52,7 +52,7 @@ diff --git a/src/gui/painting/qgrayraster.c b/src/gui/painting/qgrayraster.cpp
 similarity index 98%
 rename from src/gui/painting/qgrayraster.c
 rename to src/gui/painting/qgrayraster.cpp
-index 0143e9b602..803a676e1a 100644
+index 0143e9b6027..803a676e1af 100644
 --- a/src/gui/painting/qgrayraster.c
 +++ b/src/gui/painting/qgrayraster.cpp
 @@ -39,7 +39,7 @@
@@ -231,7 +231,7 @@ index 0143e9b602..803a676e1a 100644
          *araster = 0;
          return ErrRaster_Memory_Overflow;
 diff --git a/src/gui/painting/qt_attribution.json b/src/gui/painting/qt_attribution.json
-index 1a2b907606..746a41efa8 100644
+index 1a2b907606a..746a41efa8e 100644
 --- a/src/gui/painting/qt_attribution.json
 +++ b/src/gui/painting/qt_attribution.json
 @@ -4,7 +4,7 @@
@@ -244,5 +244,5 @@ index 1a2b907606..746a41efa8 100644
          "Description": "FreeType is a freely available software library to render fonts.",
          "Homepage": "http://www.freetype.org",
 -- 
-2.43.0
+2.44.0
 

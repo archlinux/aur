@@ -1,4 +1,4 @@
-From a4cd073cad8030792dd7822ff3a4317441ec3824 Mon Sep 17 00:00:00 2001
+From 0dc529641264921bd859fabdf4a6d082b253fcdc Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 17:59:27 +0200
 Subject: [PATCH 16/32] Enable rpath for build tools
@@ -13,7 +13,7 @@ Change-Id: I9808062a66406cdec7446a75150b40b2f30038c7
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/mkspecs/features/qt_app.prf b/mkspecs/features/qt_app.prf
-index 8354f30eea..30e8cf18c5 100644
+index 8354f30eea2..30e8cf18c51 100644
 --- a/mkspecs/features/qt_app.prf
 +++ b/mkspecs/features/qt_app.prf
 @@ -21,6 +21,7 @@ isEmpty(QMAKE_TARGET_DESCRIPTION): \
@@ -33,5 +33,5 @@ index 8354f30eea..30e8cf18c5 100644
  INSTALLS += target
  
 -- 
-2.43.0
+2.44.0
 

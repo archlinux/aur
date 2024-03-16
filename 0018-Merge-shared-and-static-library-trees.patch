@@ -1,4 +1,4 @@
-From 2171c0bfb817495fb64d7a0b31ced2a4fa9c4f4f Mon Sep 17 00:00:00 2001
+From 2029f79155af8b3fdff3b9a66ee25b7ff274c327 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:45:08 +0200
 Subject: [PATCH 18/32] Merge shared and static library trees
@@ -17,7 +17,7 @@ Change-Id: I1de08df42d83d411aae519691cd3cde1fd6f3d1d
  7 files changed, 74 insertions(+), 11 deletions(-)
 
 diff --git a/configure.pri b/configure.pri
-index 365a16403e..85acb3757a 100644
+index 365a16403eb..85acb3757aa 100644
 --- a/configure.pri
 +++ b/configure.pri
 @@ -668,7 +668,12 @@ defineTest(qtConfOutput_machineTuple) {
@@ -48,7 +48,7 @@ index 365a16403e..85acb3757a 100644
 +    CONFIG += no_smart_library_merge
 +}
 diff --git a/mkspecs/features/default_post.prf b/mkspecs/features/default_post.prf
-index ac799047ab..60b6392267 100644
+index ac799047ab8..60b63922670 100644
 --- a/mkspecs/features/default_post.prf
 +++ b/mkspecs/features/default_post.prf
 @@ -1,5 +1,16 @@
@@ -69,7 +69,7 @@ index ac799047ab..60b6392267 100644
  
  !have_target:!force_qt: CONFIG -= qt
 diff --git a/mkspecs/features/device_config.prf b/mkspecs/features/device_config.prf
-index c15559e174..dd09ac749d 100644
+index c15559e1740..dd09ac749d8 100644
 --- a/mkspecs/features/device_config.prf
 +++ b/mkspecs/features/device_config.prf
 @@ -4,7 +4,14 @@
@@ -89,7 +89,7 @@ index c15559e174..dd09ac749d 100644
  unset(DEVICE_PRI)
  
 diff --git a/mkspecs/features/qt.prf b/mkspecs/features/qt.prf
-index da1f44a88a..8096d01c34 100644
+index da1f44a88a1..8096d01c341 100644
 --- a/mkspecs/features/qt.prf
 +++ b/mkspecs/features/qt.prf
 @@ -254,6 +254,23 @@ for(ever) {
@@ -117,7 +117,7 @@ index da1f44a88a..8096d01c34 100644
      !isEmpty(BAD_QT):error("Unknown module(s) in QT$$var_sfx: $$replace(BAD_QT, _private$, -private)")
  
 diff --git a/mkspecs/features/spec_pre.prf b/mkspecs/features/spec_pre.prf
-index 51ea3a8321..275e080ae4 100644
+index 51ea3a8321a..275e080ae4e 100644
 --- a/mkspecs/features/spec_pre.prf
 +++ b/mkspecs/features/spec_pre.prf
 @@ -14,9 +14,14 @@ QMAKE_EXT_H             = .h .hpp .hh .hxx
@@ -139,7 +139,7 @@ index 51ea3a8321..275e080ae4 100644
  QMAKE_EXT_YACC          = .y
  
 diff --git a/qmake/generators/makefile.cpp b/qmake/generators/makefile.cpp
-index 23ac736fc0..16531d556e 100644
+index 23ac736fc06..16531d556e0 100644
 --- a/qmake/generators/makefile.cpp
 +++ b/qmake/generators/makefile.cpp
 @@ -3259,6 +3259,9 @@ MakefileGenerator::pkgConfigFileName(bool fixify, bool onlyPrependDestdir)
@@ -169,7 +169,7 @@ index 23ac736fc0..16531d556e 100644
  }
  
 diff --git a/qtbase.pro b/qtbase.pro
-index c0ce0972ef..5a2deaf31d 100644
+index c0ce0972ef4..5a2deaf31d2 100644
 --- a/qtbase.pro
 +++ b/qtbase.pro
 @@ -20,6 +20,12 @@ CLEAN_DEPS += qmake-clean
@@ -204,5 +204,5 @@ index c0ce0972ef..5a2deaf31d 100644
  mkspecs.files -= $$PWD/mkspecs/modules $$PWD/mkspecs/modules-inst
  INSTALLS += mkspecs
 -- 
-2.43.0
+2.44.0
 

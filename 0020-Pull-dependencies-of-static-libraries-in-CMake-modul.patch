@@ -1,4 +1,4 @@
-From 52e0f0689c9bfc6f10e5b5eeaf51181fea9beb25 Mon Sep 17 00:00:00 2001
+From 8d7db460bee900348d29fb86784de1a79312bc19 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:32:00 +0200
 Subject: [PATCH 20/32] Pull dependencies of static libraries in CMake modules
@@ -35,7 +35,7 @@ Change-Id: I9a1a384aeb39f9185342e3581ab98feb8ad103a0
  2 files changed, 133 insertions(+), 201 deletions(-)
 
 diff --git a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
-index db18dbece6..5a5bc4d61d 100644
+index db18dbece64..5a5bc4d61d6 100644
 --- a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
 +++ b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
 @@ -52,6 +52,10 @@ function(_qt5_$${CMAKE_MODULE_NAME}_process_prl_file prl_file_location Configura
@@ -384,7 +384,7 @@ index db18dbece6..5a5bc4d61d 100644
      include(\"${CMAKE_CURRENT_LIST_DIR}/Qt5$${CMAKE_MODULE_NAME}ConfigExtras.cmake\")
  !!ENDIF
 diff --git a/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in b/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in
-index b465a7fa89..eaf9011c3d 100644
+index b465a7fa898..eaf9011c3d9 100644
 --- a/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in
 +++ b/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in
 @@ -1,5 +1,6 @@
@@ -499,5 +499,5 @@ index b465a7fa89..eaf9011c3d 100644
  set_property(TARGET Qt5::$${CMAKE_PLUGIN_NAME} PROPERTY QT_PLUGIN_CLASS_NAME \"$$CMAKE_PLUGIN_NAME\")
 +endif()
 -- 
-2.43.0
+2.44.0
 

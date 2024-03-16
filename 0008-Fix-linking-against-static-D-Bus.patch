@@ -1,4 +1,4 @@
-From 5fa0a841ce62337e7280279b8aa70874b12148a4 Mon Sep 17 00:00:00 2001
+From a1cd8b87b57eee2b9724d64a2c3b2c949981c544 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 19:36:25 +0100
 Subject: [PATCH 08/32] Fix linking against static D-Bus
@@ -9,7 +9,7 @@ Subject: [PATCH 08/32] Fix linking against static D-Bus
  2 files changed, 11 insertions(+), 2 deletions(-)
 
 diff --git a/configure.json b/configure.json
-index 4763ff645f..e97969ab25 100644
+index 4763ff645f0..e97969ab25c 100644
 --- a/configure.json
 +++ b/configure.json
 @@ -190,18 +190,23 @@
@@ -39,7 +39,7 @@ index 4763ff645f..e97969ab25 100644
                  { "libs": "-ldbus-1", "condition": "!config.win32" }
              ]
 diff --git a/src/dbus/qdbus_symbols_p.h b/src/dbus/qdbus_symbols_p.h
-index accaa4f5ed..4b11c74caa 100644
+index accaa4f5ed5..4b11c74caa7 100644
 --- a/src/dbus/qdbus_symbols_p.h
 +++ b/src/dbus/qdbus_symbols_p.h
 @@ -57,6 +57,10 @@
@@ -54,5 +54,5 @@ index accaa4f5ed..4b11c74caa 100644
  #  include <dbus/dbus.h>
  #else
 -- 
-2.43.0
+2.44.0
 

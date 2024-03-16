@@ -1,4 +1,4 @@
-From 9858a911afe59c3768b5eb76f7c9cb1d7ea2f06c Mon Sep 17 00:00:00 2001
+From c08a720e1cd51c0015ec02143cd65b17e5e69b64 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 23:42:30 +0100
 Subject: [PATCH 29/32] Hardcode linker flags for platform plugins
@@ -18,7 +18,7 @@ Change-Id: I1863d184cff744d2c02e15875e1d108d32ea7861
  4 files changed, 93 insertions(+), 19 deletions(-)
 
 diff --git a/src/plugins/platforms/direct2d/direct2d.pro b/src/plugins/platforms/direct2d/direct2d.pro
-index 6e73bd14f9..8046e73d61 100644
+index 6e73bd14f9d..8046e73d61d 100644
 --- a/src/plugins/platforms/direct2d/direct2d.pro
 +++ b/src/plugins/platforms/direct2d/direct2d.pro
 @@ -1,12 +1,41 @@
@@ -69,7 +69,7 @@ index 6e73bd14f9..8046e73d61 100644
  LIBS += -ldwmapi -lversion
  QMAKE_USE_PRIVATE += gdi32 dwrite_1 d2d1_1 d3d11_1 dxgi1_2
 diff --git a/src/plugins/platforms/minimal/minimal.pro b/src/plugins/platforms/minimal/minimal.pro
-index a1a2da547b..9fd5c4fca2 100644
+index a1a2da547b3..9fd5c4fca2f 100644
 --- a/src/plugins/platforms/minimal/minimal.pro
 +++ b/src/plugins/platforms/minimal/minimal.pro
 @@ -1,8 +1,21 @@
@@ -97,7 +97,7 @@ index a1a2da547b..9fd5c4fca2 100644
  DEFINES += QT_NO_FOREACH
  
 diff --git a/src/plugins/platforms/offscreen/offscreen.pro b/src/plugins/platforms/offscreen/offscreen.pro
-index f226132592..592fa7406f 100644
+index f226132592d..592fa7406f0 100644
 --- a/src/plugins/platforms/offscreen/offscreen.pro
 +++ b/src/plugins/platforms/offscreen/offscreen.pro
 @@ -1,8 +1,20 @@
@@ -124,7 +124,7 @@ index f226132592..592fa7406f 100644
  DEFINES += QT_NO_FOREACH
  
 diff --git a/src/plugins/platforms/windows/windows.pro b/src/plugins/platforms/windows/windows.pro
-index 50a3bb41a9..02f74650a9 100644
+index 50a3bb41a92..02f74650a9b 100644
 --- a/src/plugins/platforms/windows/windows.pro
 +++ b/src/plugins/platforms/windows/windows.pro
 @@ -1,15 +1,35 @@
@@ -174,5 +174,5 @@ index 50a3bb41a9..02f74650a9 100644
  include(windows.pri)
  
 -- 
-2.43.0
+2.44.0
 

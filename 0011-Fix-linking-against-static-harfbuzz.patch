@@ -1,4 +1,4 @@
-From 2fb25bad89b6df6903f81d9efac2aa000513d02d Mon Sep 17 00:00:00 2001
+From d5ca57cecd935d1475d5b5677391e703a9733989 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:22:56 +0200
 Subject: [PATCH 11/32] Fix linking against static harfbuzz
@@ -8,7 +8,7 @@ Subject: [PATCH 11/32] Fix linking against static harfbuzz
  1 file changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/src/gui/configure.json b/src/gui/configure.json
-index 6c5e99fa9a..d8afe79b0b 100644
+index d9b540ce428..69cb564e868 100644
 --- a/src/gui/configure.json
 +++ b/src/gui/configure.json
 @@ -305,7 +305,11 @@
@@ -25,5 +25,5 @@ index 6c5e99fa9a..d8afe79b0b 100644
          },
          "imf": {
 -- 
-2.43.0
+2.44.0
 

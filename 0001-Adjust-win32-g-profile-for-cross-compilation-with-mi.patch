@@ -1,4 +1,4 @@
-From b6ccf3e66d2a7988a4ffe3407feb56ad782ed586 Mon Sep 17 00:00:00 2001
+From c134da249ee5459358292e1665b69aede5035c5b Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 18:30:51 +0100
 Subject: [PATCH 01/32] Adjust win32-g++ profile for cross compilation with
@@ -21,7 +21,7 @@ Change-Id: I94f5a6c44c112bd44a84f802712077bc14782b4c
  3 files changed, 38 insertions(+), 21 deletions(-)
 
 diff --git a/mkspecs/common/g++-win32.conf b/mkspecs/common/g++-win32.conf
-index c3a1f3a373..0cc6e93c93 100644
+index c3a1f3a3732..0cc6e93c93e 100644
 --- a/mkspecs/common/g++-win32.conf
 +++ b/mkspecs/common/g++-win32.conf
 @@ -8,18 +8,24 @@
@@ -126,7 +126,7 @@ index c3a1f3a373..0cc6e93c93 100644
 -include(angle.conf)
 -include(windows-vulkan.conf)
 diff --git a/mkspecs/win32-clang-g++/qmake.conf b/mkspecs/win32-clang-g++/qmake.conf
-index 59d42176f0..f8cb9859f2 100644
+index 59d42176f03..f8cb9859f28 100644
 --- a/mkspecs/win32-clang-g++/qmake.conf
 +++ b/mkspecs/win32-clang-g++/qmake.conf
 @@ -14,11 +14,11 @@ include(../common/g++-win32.conf)
@@ -144,7 +144,7 @@ index 59d42176f0..f8cb9859f2 100644
  
  QMAKE_LINK              = $${CROSS_COMPILE}clang++
 diff --git a/mkspecs/win32-g++/qmake.conf b/mkspecs/win32-g++/qmake.conf
-index 5de482f23b..3c3d22c699 100644
+index 5de482f23b5..3c3d22c6993 100644
 --- a/mkspecs/win32-g++/qmake.conf
 +++ b/mkspecs/win32-g++/qmake.conf
 @@ -13,11 +13,11 @@ include(../common/windows-desktop.conf)
@@ -162,5 +162,5 @@ index 5de482f23b..3c3d22c699 100644
  
  QMAKE_LINK              = $${CROSS_COMPILE}g++
 -- 
-2.43.0
+2.44.0
 

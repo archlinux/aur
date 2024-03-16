@@ -1,4 +1,4 @@
-From 4e95aba534172824d9756ec22bfe903d29d98e54 Mon Sep 17 00:00:00 2001
+From 4d24aaff9e4e144e320a964c2c21060b41c3039f Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:50:21 +0200
 Subject: [PATCH 23/32] Use correct pkg-config --static flag
@@ -8,7 +8,7 @@ Subject: [PATCH 23/32] Use correct pkg-config --static flag
  1 file changed, 3 insertions(+)
 
 diff --git a/configure.pri b/configure.pri
-index 85acb3757a..0a4db10dfc 100644
+index 85acb3757aa..0a4db10dfca 100644
 --- a/configure.pri
 +++ b/configure.pri
 @@ -360,6 +360,9 @@ defineTest(qtConfTest_detectPkgConfig) {
@@ -22,5 +22,5 @@ index 85acb3757a..0a4db10dfc 100644
      $$qtConfEvaluate("features.cross_compile") {
          # cross compiling, check that pkg-config is set up sanely
 -- 
-2.43.0
+2.44.0
 

@@ -1,4 +1,4 @@
-From a7a3f6a64e90aee5a0024f9b8b1d6d4876d25d7e Mon Sep 17 00:00:00 2001
+From 5a1f5a3b43cfc29cd8ec1ce8791ef4029f5e2f96 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 24 Jun 2019 13:51:02 +0200
 Subject: [PATCH 31/32] Prevent 'Cannot find feature windows_vulkan_sdk'
@@ -10,7 +10,7 @@ See https://bugreports.qt.io/browse/QTBUG-76660
  2 files changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/mkspecs/common/windows-vulkan.conf b/mkspecs/common/windows-vulkan.conf
-index da061422dc..a5a8ec68d2 100644
+index da061422dca..a5a8ec68d2f 100644
 --- a/mkspecs/common/windows-vulkan.conf
 +++ b/mkspecs/common/windows-vulkan.conf
 @@ -1,2 +1,2 @@
@@ -18,7 +18,7 @@ index da061422dc..a5a8ec68d2 100644
 +load(win32/windows_vulkan_sdk)
  QMAKE_LIBS_VULKAN       =
 diff --git a/mkspecs/features/qmake_use.prf b/mkspecs/features/qmake_use.prf
-index 8475e4111a..c0eb8faa17 100644
+index 8475e4111a7..c0eb8faa17d 100644
 --- a/mkspecs/features/qmake_use.prf
 +++ b/mkspecs/features/qmake_use.prf
 @@ -15,7 +15,9 @@ for(ever) {
@@ -33,5 +33,5 @@ index 8475e4111a..c0eb8faa17 100644
      LD_USES = $$resolve_depends(LD_USES, QMAKE_DEPENDS_, _LD)
      for (nu, LD_USES) {
 -- 
-2.43.0
+2.44.0
 
