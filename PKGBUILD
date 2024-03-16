@@ -3,11 +3,11 @@
 _pkgname=janeaustenr
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
-pkgver=1.0.0
-pkgrel=1
+pkgver=${_pkgver//-/.}
+pkgrel=3
 pkgdesc="Jane Austen's Complete Novels"
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
 license=('MIT')
 depends=(
   r
@@ -17,15 +17,18 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b4c32ee1395ee4a8efe714c535c0fe578b0dbf5f3bb85b41fa5cc87569b8e8aa')
+md5sums=('1e7274a698306174dd9c405b4043ec71')
+b2sums=('5a0926788195b9af36bb633ea1373092a070aaa06e47938cb6a43f4430502baa51b04f38aa44a8324350d2ad72a680abfba62b1765eced7f8e89e9a3a2079c73')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:

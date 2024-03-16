@@ -1,7 +1,7 @@
 pkgbase = r-janeaustenr
 	pkgdesc = Jane Austen's Complete Novels
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=janeaustenr
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = r-janeaustenr
 	optdepends = r-dplyr
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/janeaustenr_1.0.0.tar.gz
-	sha256sums = b4c32ee1395ee4a8efe714c535c0fe578b0dbf5f3bb85b41fa5cc87569b8e8aa
+	md5sums = 1e7274a698306174dd9c405b4043ec71
+	b2sums = 5a0926788195b9af36bb633ea1373092a070aaa06e47938cb6a43f4430502baa51b04f38aa44a8324350d2ad72a680abfba62b1765eced7f8e89e9a3a2079c73
 
 pkgname = r-janeaustenr
