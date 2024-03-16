@@ -1,14 +1,17 @@
 pkgbase = python-mock
 	pkgdesc = Mocking and Patching Library for Testing
-	pkgver = 3.0.5
-	pkgrel = 11
-	url = http://www.voidspace.org.uk/python/mock/
+	pkgver = 5.1.0
+	pkgrel = 1
+	url = https://mock.readthedocs.io/en/latest/
 	arch = any
-	license = BSD
+	license = BSD-2-Clause
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
-	depends = python-six
-	depends = python-pbr
-	source = mock-3.0.5.tar.gz::https://github.com/testing-cabal/mock/archive/3.0.5.tar.gz
-	sha512sums = 9ab4f0c794f5701ba1367d982cf79a5662d4233753d12ed9c88ae20282db1f44be73f84c4d9f6d03ff64926b8c1b6d0c9a79b2a4724a3eb36c247ffd4ab03e2d
+	source = mock-5.1.0.tar.gz::https://github.com/testing-cabal/mock/archive/5.1.0.tar.gz
+	b2sums = 4dd8e69678424a0ea9c301e0b627ac7d981196f3deb4b622b0724896f10b0c1a84f28349f7fd27603f30c1470cf89f2436ff85195d3f42073d08f56076f9e9fd
 
 pkgname = python-mock
