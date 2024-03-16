@@ -6,9 +6,9 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libevent
 pkgver=2.1.12
-pkgrel=2
+pkgrel=3
 arch=('any')
-pkgdesc="Event notification library (android)"
+pkgdesc="Event notification library (Android, ${_android_arch})"
 url="https://libevent.org/"
 license=('BSD')
 depends=("android-${_android_arch}-openssl")

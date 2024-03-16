@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-libevent
-	pkgdesc = Event notification library (android)
+	pkgdesc = Event notification library (Android, aarch64)
 	pkgver = 2.1.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://libevent.org/
 	arch = any
 	license = BSD
