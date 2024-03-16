@@ -1,4 +1,4 @@
-From 446017c200c59d2332a0b17c24a897d3165b8de9 Mon Sep 17 00:00:00 2001
+From b4037f482107b0bde253b487487501b8bc82db55 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 20:59:54 +0100
 Subject: [PATCH 25/32] Ignore errors about missing feature static
@@ -10,7 +10,7 @@ Not sure why this error occurs, let's hope for the best
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/mkspecs/features/qt_build_config.prf b/mkspecs/features/qt_build_config.prf
-index 511b158b91..39760d5ce4 100644
+index 511b158b917..39760d5ce44 100644
 --- a/mkspecs/features/qt_build_config.prf
 +++ b/mkspecs/features/qt_build_config.prf
 @@ -153,5 +153,5 @@ defineTest(qtConfig) {
@@ -21,7 +21,7 @@ index 511b158b91..39760d5ce4 100644
 +    !equals($$1, "static"): error("Could not find feature $${1}.")
  }
 diff --git a/mkspecs/features/qt_functions.prf b/mkspecs/features/qt_functions.prf
-index 7777e615bd..5f30366660 100644
+index 7777e615bda..5f30366660b 100644
 --- a/mkspecs/features/qt_functions.prf
 +++ b/mkspecs/features/qt_functions.prf
 @@ -370,5 +370,5 @@ defineTest(qtConfig) {
@@ -32,5 +32,5 @@ index 7777e615bd..5f30366660 100644
 +    !equals($$1, "static"): error("Could not find feature $${1}.")
  }
 -- 
-2.43.0
+2.44.0
 

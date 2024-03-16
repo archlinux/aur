@@ -1,4 +1,4 @@
-From b90b122dde2818d7c43c2400ec5aad542909ec67 Mon Sep 17 00:00:00 2001
+From d5bbf09f6dd16ada912feae0a1a63cf22ecd5f71 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:26:18 +0200
 Subject: [PATCH 19/32] Use *.dll.a as import lib extension
@@ -14,7 +14,7 @@ Change-Id: Ic8915ea40b4db3d9f60533d21daf8ff1ec1bd803
  3 files changed, 28 insertions(+), 30 deletions(-)
 
 diff --git a/mkspecs/features/create_cmake.prf b/mkspecs/features/create_cmake.prf
-index 6cd94f8058..ac089a2f9f 100644
+index 6cd94f8058a..ac089a2f9f0 100644
 --- a/mkspecs/features/create_cmake.prf
 +++ b/mkspecs/features/create_cmake.prf
 @@ -339,8 +339,9 @@ mac {
@@ -30,7 +30,7 @@ index 6cd94f8058..ac089a2f9f 100644
          CMAKE_WINMAIN_FILE_LOCATION_DEBUG = qt5main$${QT_LIBINFIX}$${debug_suffix}.lib
          CMAKE_WINMAIN_FILE_LOCATION_RELEASE = qt5main$${QT_LIBINFIX}.lib
 diff --git a/mkspecs/features/qt.prf b/mkspecs/features/qt.prf
-index 8096d01c34..b79b324b88 100644
+index 8096d01c341..b79b324b887 100644
 --- a/mkspecs/features/qt.prf
 +++ b/mkspecs/features/qt.prf
 @@ -215,32 +215,22 @@ for(ever) {
@@ -81,7 +81,7 @@ index 8096d01c34..b79b324b88 100644
              }
          }
 diff --git a/qmake/generators/win32/winmakefile.cpp b/qmake/generators/win32/winmakefile.cpp
-index 183cef2908..03732df4a8 100644
+index 183cef29089..03732df4a84 100644
 --- a/qmake/generators/win32/winmakefile.cpp
 +++ b/qmake/generators/win32/winmakefile.cpp
 @@ -99,9 +99,13 @@ private:
@@ -116,5 +116,5 @@ index 183cef2908..03732df4a8 100644
                  + project->first("QMAKE_EXTENSION_SHLIB"));
          project->values("TARGET").first() = project->first("QMAKE_PREFIX_SHLIB") + project->first("TARGET");
 -- 
-2.43.0
+2.44.0
 

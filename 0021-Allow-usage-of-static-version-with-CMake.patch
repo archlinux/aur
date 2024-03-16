@@ -1,4 +1,4 @@
-From c748cb3cc99435da4123f5822c544dc8a4a0960f Mon Sep 17 00:00:00 2001
+From a32c64f42900b052b017795255511cf5d1ea019d Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 5 Aug 2017 21:14:26 +0200
 Subject: [PATCH 21/32] Allow usage of static version with CMake
@@ -24,7 +24,7 @@ Change-Id: I410d22d1bee9dd66b90e07461c85fdb74ef621c1
  create mode 100644 mkspecs/features/data/cmake/Qt5StaticOnlyRedirection.cmake.in
 
 diff --git a/mkspecs/features/create_cmake.prf b/mkspecs/features/create_cmake.prf
-index ac089a2f9f..ceae7c1f8c 100644
+index ac089a2f9f0..ceae7c1f8c6 100644
 --- a/mkspecs/features/create_cmake.prf
 +++ b/mkspecs/features/create_cmake.prf
 @@ -68,7 +68,7 @@ split_incpath {
@@ -252,7 +252,7 @@ index ac089a2f9f..ceae7c1f8c 100644
  # We are generating cmake files. Most developers of Qt are not aware of cmake,
  # so we require automatic tests to be available. The only module which should
 diff --git a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
-index 5a5bc4d61d..97150fb244 100644
+index 5a5bc4d61d6..97150fb2448 100644
 --- a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
 +++ b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
 @@ -2,6 +2,33 @@ if (CMAKE_VERSION VERSION_LESS 3.1.0)
@@ -887,7 +887,7 @@ index 5a5bc4d61d..97150fb244 100644
      )
  endif()
 diff --git a/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in b/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in
-index eaf9011c3d..de09c85b90 100644
+index eaf9011c3d9..de09c85b90f 100644
 --- a/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in
 +++ b/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in
 @@ -1,13 +1,13 @@
@@ -945,7 +945,7 @@ index eaf9011c3d..de09c85b90 100644
  endif()
 diff --git a/mkspecs/features/data/cmake/Qt5StaticOnlyRedirection.cmake.in b/mkspecs/features/data/cmake/Qt5StaticOnlyRedirection.cmake.in
 new file mode 100644
-index 0000000000..0091940fd2
+index 00000000000..0091940fd26
 --- /dev/null
 +++ b/mkspecs/features/data/cmake/Qt5StaticOnlyRedirection.cmake.in
 @@ -0,0 +1,11 @@
@@ -961,7 +961,7 @@ index 0000000000..0091940fd2
 +set(OVERRIDE_QT_VARIANT_PREFIX "${ORIGINAL_OVERRIDE_QT_VARIANT_PREFIX}")
 +
 diff --git a/src/corelib/Qt5CoreConfigExtras.cmake.in b/src/corelib/Qt5CoreConfigExtras.cmake.in
-index 0d02edb41c..9da1361c95 100644
+index 0d02edb41c3..9da1361c95a 100644
 --- a/src/corelib/Qt5CoreConfigExtras.cmake.in
 +++ b/src/corelib/Qt5CoreConfigExtras.cmake.in
 @@ -2,6 +2,8 @@ if(NOT DEFINED QT_DEFAULT_MAJOR_VERSION)
@@ -1048,7 +1048,7 @@ index 0d02edb41c..9da1361c95 100644
                      $<$<AND:${_isExe},${_isWin32},${_isNotExcluded},${_isPolicyNEW}>:Qt5::WinMain>
              )
 diff --git a/src/gui/Qt5GuiConfigExtras.cmake.in b/src/gui/Qt5GuiConfigExtras.cmake.in
-index 84dbbfebd4..31fa875b6c 100644
+index 84dbbfebd47..31fa875b6c7 100644
 --- a/src/gui/Qt5GuiConfigExtras.cmake.in
 +++ b/src/gui/Qt5GuiConfigExtras.cmake.in
 @@ -1,4 +1,6 @@
@@ -1080,7 +1080,7 @@ index 84dbbfebd4..31fa875b6c 100644
          ${Qt5Gui_EGL_LIBRARIES} ${Qt5Gui_OPENGL_LIBRARIES}
      )
 diff --git a/src/testlib/Qt5TestConfigExtras.cmake.in b/src/testlib/Qt5TestConfigExtras.cmake.in
-index 2a575958ae..ca0e3be3b5 100644
+index 2a575958ae4..ca0e3be3b56 100644
 --- a/src/testlib/Qt5TestConfigExtras.cmake.in
 +++ b/src/testlib/Qt5TestConfigExtras.cmake.in
 @@ -1,5 +1,5 @@
@@ -1091,5 +1091,5 @@ index 2a575958ae..ca0e3be3b5 100644
      INTERFACE_COMPILE_DEFINITIONS QT_TESTCASE_BUILDDIR=\\\"\${CMAKE_BINARY_DIR}\\\"
  )
 -- 
-2.43.0
+2.44.0
 

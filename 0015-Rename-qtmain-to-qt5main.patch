@@ -1,4 +1,4 @@
-From ff832ccc532edcd8ed520ee84db3b00454f33651 Mon Sep 17 00:00:00 2001
+From 41e6e4c93cc8cbe45305458bc87573ad5a630601 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:25:40 +0200
 Subject: [PATCH 15/32] Rename qtmain to qt5main
@@ -12,7 +12,7 @@ Prevents conflict with mingw-w64-qt4 package
  4 files changed, 8 insertions(+), 8 deletions(-)
 
 diff --git a/mkspecs/common/g++-win32.conf b/mkspecs/common/g++-win32.conf
-index 0cc6e93c93..c2882d0b2c 100644
+index 0cc6e93c93e..c2882d0b2c4 100644
 --- a/mkspecs/common/g++-win32.conf
 +++ b/mkspecs/common/g++-win32.conf
 @@ -83,7 +83,7 @@ QMAKE_LIBS_OPENGL       = -lglu32 -lopengl32 -lgdi32 -luser32
@@ -25,7 +25,7 @@ index 0cc6e93c93..c2882d0b2c 100644
  QMAKE_IDL               = $${CROSS_COMPILE}widl
  QMAKE_LIB               = $${CROSS_COMPILE}ar -rc
 diff --git a/mkspecs/features/create_cmake.prf b/mkspecs/features/create_cmake.prf
-index 64639f177d..6cd94f8058 100644
+index 64639f177df..6cd94f8058a 100644
 --- a/mkspecs/features/create_cmake.prf
 +++ b/mkspecs/features/create_cmake.prf
 @@ -336,14 +336,14 @@ mac {
@@ -48,7 +48,7 @@ index 64639f177d..6cd94f8058 100644
          CMAKE_IMPLIB_FILE_LOCATION_DEBUG = $${CMAKE_QT_STEM}$${debug_suffix}.lib
          CMAKE_IMPLIB_FILE_LOCATION_RELEASE = $${CMAKE_QT_STEM}.lib
 diff --git a/mkspecs/features/win32/windows.prf b/mkspecs/features/win32/windows.prf
-index 272170d428..17f3ef9c2d 100644
+index 272170d4280..17f3ef9c2dd 100644
 --- a/mkspecs/features/win32/windows.prf
 +++ b/mkspecs/features/win32/windows.prf
 @@ -5,8 +5,8 @@ contains(TEMPLATE, ".*app") {
@@ -63,7 +63,7 @@ index 272170d428..17f3ef9c2d 100644
              QMAKE_LIBS += $$lib
          } else {
 diff --git a/src/winmain/winmain.pro b/src/winmain/winmain.pro
-index 1f54c846ec..162e7a4b1b 100644
+index 1f54c846eca..162e7a4b1b4 100644
 --- a/src/winmain/winmain.pro
 +++ b/src/winmain/winmain.pro
 @@ -2,7 +2,7 @@
@@ -76,5 +76,5 @@ index 1f54c846ec..162e7a4b1b 100644
  
  CONFIG += static
 -- 
-2.43.0
+2.44.0
 

@@ -1,4 +1,4 @@
-From 1ebf69214e4ef2269ab0135d126ce5d9bba2fa04 Mon Sep 17 00:00:00 2001
+From 5cdbce5a33f7881eee348250b1b9867c64ea686d Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:56:55 +0200
 Subject: [PATCH 13/32] Fix linking against shared/static MariaDB
@@ -9,7 +9,7 @@ Change-Id: I9722c154d845f288a2d4d1ab14a014066b28819b
  1 file changed, 2 insertions(+)
 
 diff --git a/src/plugins/sqldrivers/configure.json b/src/plugins/sqldrivers/configure.json
-index 28ccbeadcd..a5e3001bf6 100644
+index 28ccbeadcde..a5e3001bf60 100644
 --- a/src/plugins/sqldrivers/configure.json
 +++ b/src/plugins/sqldrivers/configure.json
 @@ -67,6 +67,8 @@
@@ -22,5 +22,5 @@ index 28ccbeadcd..a5e3001bf6 100644
                  { "type": "mysqlConfig", "query": "--libs", "cleanlibs": true },
                  { "type": "mysqlConfig", "query": "--libs_r", "cleanlibs": false },
 -- 
-2.43.0
+2.44.0
 

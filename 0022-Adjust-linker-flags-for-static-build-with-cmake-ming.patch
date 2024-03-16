@@ -1,4 +1,4 @@
-From 3fb4f9b9186af92e95cd35ba994ee9e9fa3be4d6 Mon Sep 17 00:00:00 2001
+From 1e0190cb9b33cd6aaef745da13d8e4de85a50775 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 2 Jun 2017 16:42:07 +0200
 Subject: [PATCH 22/32] Adjust linker flags for static build with
@@ -13,7 +13,7 @@ Change-Id: Iad665f18da5b4540f0899829a0165e1d3aa4ea60
  1 file changed, 6 insertions(+)
 
 diff --git a/src/corelib/Qt5CoreConfigExtras.cmake.in b/src/corelib/Qt5CoreConfigExtras.cmake.in
-index 9da1361c95..5e802dea4c 100644
+index 9da1361c95a..5e802dea4c5 100644
 --- a/src/corelib/Qt5CoreConfigExtras.cmake.in
 +++ b/src/corelib/Qt5CoreConfigExtras.cmake.in
 @@ -206,3 +206,9 @@ if(NOT \"${QT_NO_CREATE_VERSIONLESS_TARGETS}\" AND NOT TARGET Qt::WinMain)
@@ -27,5 +27,5 @@ index 9da1361c95..5e802dea4c 100644
 +set_target_properties(${IMPORTED_TARGET_NAME} PROPERTIES \"INTERFACE_LINK_LIBRARIES\" \"$<${_isExe}:-static;ws2_32>\")
 +unset(_isExe)
 -- 
-2.43.0
+2.44.0
 
