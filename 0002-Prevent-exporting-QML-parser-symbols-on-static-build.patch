@@ -1,4 +1,4 @@
-From 8138c7d1842d6377148e2bb093bc6dca3103be59 Mon Sep 17 00:00:00 2001
+From a410a84f1c73fc15e80bad994a975271e2ec58ee Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 4 Feb 2017 01:59:59 +0100
 Subject: [PATCH 2/3] Prevent exporting QML parser symbols on static build
@@ -33,5 +33,5 @@ index bf8155c6ec..2bfa230bcc 100644
  #      define QML_PARSER_EXPORT
  #    elif defined(QT_BUILD_QML_LIB)
 -- 
-2.43.0
+2.44.0
 
