@@ -2,7 +2,7 @@
 
 pkgname=alpm_octopi_utils
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Alpm utils for Octopi"
 arch=('any')
 url="https://tintaescura.com/projects/octopi/"
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('pacman-contrib')
 makedepends=('git' 'vala')
 source=("git+https://github.com/aarnt/alpm_octopi_utils.git#commit=1e735c3a27803ca5b6470e946f9cac708143dfd9")
-sha256sums=('SKIP')
+sha256sums=('006ba126ed4ed99de6f3be8fba152cdeebd1048724d902d7e98f1a9eb98d4ca4')
 
 build() {
 	cd "$pkgname"
