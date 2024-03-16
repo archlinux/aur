@@ -1,8 +1,8 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=firefox-tab-unloader-for-tree-style-tab
-pkgver=6.15
-_commit=3d0ed09fc66f397494bad7619618dcf61cc05ce3
+_commit=b224a6765492f41f1169b7a059cd9c9edf6e2537
+pkgver=6.16
 pkgrel=1
 pkgdesc='Tab unload options for Tree Style Tab'
 arch=('any')

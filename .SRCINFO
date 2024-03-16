@@ -1,14 +1,15 @@
 pkgbase = firefox-tab-unloader-for-tree-style-tab
 	pkgdesc = Tab unload options for Tree Style Tab
-	pkgver = 6.15
+	pkgver = 6.16
 	pkgrel = 1
 	url = https://github.com/Lej77/tab-unloader-for-tree-style-tab
 	arch = any
 	groups = firefox-addons
 	license = GPL3
+	makedepends = git
 	makedepends = strip-nondeterminism
 	makedepends = zip
-	source = git+https://github.com/Lej77/tab-unloader-for-tree-style-tab.git#commit=3d0ed09fc66f397494bad7619618dcf61cc05ce3
+	source = git+https://github.com/Lej77/tab-unloader-for-tree-style-tab.git#commit=b224a6765492f41f1169b7a059cd9c9edf6e2537
 	b2sums = SKIP
 
 pkgname = firefox-tab-unloader-for-tree-style-tab
