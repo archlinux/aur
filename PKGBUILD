@@ -4,7 +4,7 @@ _repo=coreutils
 _pkgname=bonsai-$_repo
 pkgname=$_pkgname-git
 pkgver=r173.c97201f
-pkgrel=5
+pkgrel=6
 pkgdesc="New core utilities for a new era."
 arch=('any')
 url="https://git.tebibyte.media/bonsai/coreutils"
@@ -15,7 +15,7 @@ provides=('bonsai-coreutils')
 source=("git+https://git.tebibyte.media/bonsai/coreutils.git" "bonsai.sh")
 md5sums=(
 	SKIP
-	ae956a4af74f13b3ec522d16420e608b
+	da0c6fdb4cf0bcf99387518a83978b4e
 )
 
 pkgver() {
