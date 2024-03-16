@@ -1,7 +1,7 @@
 # Maintainer: Harrison <htv04rules at gmail com>
 
 pkgname=picotron
-pkgver=0.1.0a
+pkgver=0.1.0b2
 pkgrel=1
 pkgdesc="A fantasy workstation for making pixelart games, animations, music, demos and other curiosities."
 arch=("x86_64")
@@ -17,7 +17,7 @@ source_x86_64=("file://${pkgname}_${pkgver}_amd64.zip")
 
 sha256sums=("04862c5d2f4ec10f4979ec316c4e14b01e073806d90bc23290e8420e142f710a"
             "45525e5ff68d3380492e188e626cf2208491ba0df79cc246aa8560e05f5b3100")
-sha256sums_x86_64=("ab49b393d94179ec02f3cb7e1aef4f5e7c2c21c665c011764dbc1882c82af701")
+sha256sums_x86_64=("e71d5be8979d6af9f0d5994133046ce3c3c21fc837836508e2db0351fd7dcc05")
 
 package() {
   pushd "${srcdir}/picotron" > /dev/null
