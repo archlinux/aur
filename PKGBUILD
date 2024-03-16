@@ -1,7 +1,7 @@
 # Contributer: abcfy2 <abcfy2@163.com>
 
 pkgname='deepin-wine8-stable'
-_pkgver=8.16-deepin16
+_pkgver=8.16deepin16-1
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc="Deepin wine8 stable"
@@ -10,12 +10,12 @@ url="http://www.deepin.org"
 license=('Proprietary')
 makedepends=('tar')
 source=(
-    "https://com-store-packages.uniontech.com/appstore/pool/appstore/w/wine/deepin-wine8-stable_${_pkgver}_amd64.deb"
+    "https://com-store-packages.uniontech.com/appstore/pool/appstore/d/deepin-wine8-stable/deepin-wine8-stable_${_pkgver}_amd64.deb"
 )
 noextract=(
     "deepin-wine8-stable_${_pkgver}_amd64.deb"
 )
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('cf8dc82adfc1e210ae2b0d9658efd645d2f6b3f4a9dd0da6365c2057d65ed145')
 depends=(
     alsa-lib                   # libasound2 (>= 1.0.16)
     glibc                       # libc6 (>= 2.26)
