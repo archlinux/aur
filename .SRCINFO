@@ -1,0 +1,22 @@
+pkgbase = dae-git
+	pkgdesc = A Linux lightweight and high-performance transparent proxy solution based on eBPF.
+	pkgver = 0.5.1.r9.gd31d880
+	pkgrel = 1
+	url = https://github.com/daeuniverse/dae
+	arch = x86_64
+	arch = aarch64
+	license = AGPL
+	makedepends = clang
+	makedepends = go
+	depends = glibc
+	provides = dae
+	conflicts = dae
+	backup = etc/dae/config.dae
+	source = git+https://github.com/daeuniverse/dae.git
+	source = geoip.dat::https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat
+	source = geosite.dat::https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = dae-git
