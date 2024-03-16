@@ -2,7 +2,7 @@
 
 pkgname=pacseek
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal user interface for searching and installing Arch Linux packages'
 arch=('any')
 url="https://github.com/moson-mo/$pkgname"
