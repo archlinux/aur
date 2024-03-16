@@ -2,7 +2,7 @@
 # Contributor: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=typst-lsp
-pkgver=0.12.1
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Language server for Typst'
 arch=(i686 x86_64)
@@ -15,7 +15,7 @@ depends=(gcc-libs
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('88c2053678147e6a3a01389644892f32244317f763622d19eaf7a64fe7e7e2dc')
+sha256sums=('860d56653b719402736b00ac9bc09e5e418dea2577cead30644252e85ab5d1a1')
 
 _features='remote-packages,native-tls,fontconfig'
 
