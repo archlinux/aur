@@ -1,6 +1,6 @@
 pkgbase = libclc-minimal-git
 	pkgdesc = companion package to llvm-minimal-git, Library requirements of the OpenCL C programming language
-	pkgver = 19.0.0_r492187.b4001e32b1aa
+	pkgver = 19.0.0_r492907.047b2b241def
 	pkgrel = 1
 	url = https://libclc.llvm.org/
 	arch = any
