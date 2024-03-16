@@ -12,6 +12,7 @@ license=('Apache' 'MIT')
 depends=('gcc-libs' 'cargo' 'webkit2gtk-4.1' 'base-devel' 'curl' 'wget' 'file' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg')
 makedepends=('cargo')
 conflicts=('tauri-cli')
+provides=('tauri-cli=2.0.0_beta.9')
 
 source=("$_crate-2.0.0-beta.9.tar.gz::https://crates.io/api/v1/crates/tauri-cli/2.0.0-beta.9/download")
 sha512sums=('8db26b69dbc93301095b85d80a1371d5fbd7fcc9512cdba33afbd9dcfe6a5d2fe684185379d7225a97aa5ee68bb60e6429fb759c2c6991c478717ebe230473be')
