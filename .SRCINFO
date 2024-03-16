@@ -1,7 +1,7 @@
 pkgbase = rustytube-bin
 	pkgdesc = A rusty Youtube client
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/opensourcecheemsburgers/RustyTube
 	arch = x86_64
 	license = AGPL3
@@ -16,7 +16,7 @@ pkgbase = rustytube-bin
 	depends = gtk3
 	provides = rustytube
 	conflicts = rustytube
-	source = https://github.com/opensourcecheemsburgers/RustyTube/releases/download/0.1.1-alpha/RustyTube_0.1.1_amd64.deb
+	source = https://github.com/opensourcecheemsburgers/RustyTube/releases/download/v0.1.1/rustytube_v0.1.1_amd64.deb
 	sha256sums = aa22a5290d6cdb486e6c3f12ad82594f54012df339e9ba9d447e61059528a46b
 
 pkgname = rustytube-bin

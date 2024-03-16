@@ -1,7 +1,7 @@
 # Contributor: Asuka Minato
 pkgname=rustytube-bin
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A rusty Youtube client"
 arch=(x86_64)
 url="https://github.com/opensourcecheemsburgers/RustyTube"
@@ -18,7 +18,8 @@ depends=(webkit2gtk
 )
 provides=(rustytube)
 conflicts=(rustytube)
-source=("https://github.com/opensourcecheemsburgers/RustyTube/releases/download/${pkgver}-alpha/RustyTube_${pkgver}_amd64.deb")
+source=(
+	"https://github.com/opensourcecheemsburgers/RustyTube/releases/download/v${pkgver}/rustytube_v${pkgver}_amd64.deb")
 sha256sums=('aa22a5290d6cdb486e6c3f12ad82594f54012df339e9ba9d447e61059528a46b')
 
 package() {
