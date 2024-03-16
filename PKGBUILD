@@ -3,7 +3,7 @@
 pkgname=bruno-git
 _pkgname=bruno
 pkgdesc="Opensource API Client for Exploring and Testing APIs"
-pkgver=0.27.1.r2.g586e26fa
+pkgver=1.11.0.r2.g410eecc8
 pkgrel=1
 arch=('x86_64')
 url="https://www.usebruno.com/"
@@ -66,6 +66,7 @@ build() {
     cd "${_pkgname}"
 
     npm run build:bruno-query
+    npm run build:bruno-common
     npm run build:graphql-docs
     npm run build:web
 

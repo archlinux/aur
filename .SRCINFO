@@ -1,6 +1,6 @@
 pkgbase = bruno-git
 	pkgdesc = Opensource API Client for Exploring and Testing APIs
-	pkgver = 0.27.1.r2.g586e26fa
+	pkgver = 1.11.0.r2.g410eecc8
 	pkgrel = 1
 	url = https://www.usebruno.com/
 	arch = x86_64
