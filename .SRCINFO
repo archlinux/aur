@@ -1,6 +1,6 @@
 pkgbase = mogan
 	pkgdesc = A structured wysiwyg scientific text editor
-	pkgver = 1.2.5
+	pkgver = 1.2.5.1
 	pkgrel = 1
 	url = https://github.com/XmacsLabs/mogan
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = mogan
 	optdepends = ghostscript: Rendering ps files
 	optdepends = imagemagick: Convert images
 	optdepends = aspell: Spell checking
-	source = mogan::git+https://github.com/XmacsLabs/mogan.git#tag=v1.2.5
+	source = mogan::git+https://github.com/XmacsLabs/mogan.git#tag=v1.2.5.1
 	source = mogan.desktop
 	source = mogan.xml
 	sha256sums = SKIP
