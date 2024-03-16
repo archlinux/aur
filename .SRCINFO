@@ -1,7 +1,7 @@
 pkgbase = wayfire-plugins-focus-request
 	pkgdesc = The wayfire plugin provides a mechanism to grant focus to views that make a focus self-request (request-activate). To be used with gtk-shell and qt-shell plugins
 	pkgver = 0.8.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/wayfireplugins/focus-request
 	arch = x86_64
 	arch = aarch64
