@@ -1,0 +1,18 @@
+# Colored makepkg-like functions
+msg_blue() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+pre_remove() {
+    note 'You probably want to remove the following file.'
+    msg_blue "\${XDG_DATA_HOME:-"\$HOME/.local/share"}/icons/hicolor/256x256/apps/PINCE.png"
+}

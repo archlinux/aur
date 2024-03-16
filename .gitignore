@@ -3,3 +3,4 @@
 !PKGBUILD
 !.gitignore
 !PINCE.*
+!*.install

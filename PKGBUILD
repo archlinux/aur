@@ -4,7 +4,7 @@
 
 # shellcheck disable=SC1090,SC2207
 pkgname=pince-git
-pkgver=r1382.a0f99b5
+pkgver=r1472.a548c73
 pkgrel=1
 pkgdesc="A Linux reverse engineering tool inspired by Cheat Engine."
 arch=('any')
@@ -16,7 +16,8 @@ optdepends=(
 	'qt6-wayland: wayland support'
 )
 source=("$pkgname::git+$url.git" 'PINCE.desktop')
-sha256sums=('SKIP' '33f145e61784d9f50b391e880d14a9d31a13d7b86cef0c8620f8f57fec0978bd')
+install="note.install"
+sha1sums=('SKIP' '719d18d69abc299f739cc04041967e9d05a34104')
 _installpath='/usr/share/PINCE'
 _installsh='install_pince.sh'
 
@@ -30,10 +31,26 @@ prepare() {
 	sed -i '/^if \[ ! -d "\.venv\/PINCE" \]; /,/activate$/ s/^/# /' "./$pkgname/PINCE.sh"
 	# Create a simple start script
 	cat > pince <<- SHELL
-		#!/bin/bash
+		#!/usr/bin/env bash
+
+		syncicon() {
+		    local logo_path iconpath destpath
+		    . <(grep '^logo_path=.*' "\${XDG_CONFIG_HOME:-"\$HOME/.config"}/PINCE/PINCE.conf")
+		    iconpath="/usr/share/PINCE/media/logo/\$logo_path"
+		    destpath="\${XDG_DATA_HOME:-"\$HOME/.local/share"}/icons/hicolor/256x256/apps/PINCE.png"
+		    mkdir -p "\$(dirname "\$destpath")"
+		    ln -sf "\$iconpath" "\$destpath"
+		    echo -e "\nDesktop icon updated: \$destpath"
+		    echo "If the setting of icon changed, Re-login for setting to take effect."
+		}
+
 		pushd "$_installpath" || exit
 		sh PINCE.sh "\$@"
+		syncicon
 		popd || exit
+
+		read -p "Press enter to exit..."
+
 	SHELL
 }
 
@@ -95,9 +112,7 @@ package() {
 	python -m compileall -s "$pkgdir" -p / "$pkgdir"/usr/share
 
 	# Install desktop entity
-	install -d "$pkgdir"/usr/share/{applications,pixmaps}
-	#ln -s '/usr/share/PINCE/media/logo/ozgurozbek/pince_big_white.png' \
-	#	"$pkgdir/usr/share/pixmaps/PINCE.png"
+	install -d "$pkgdir"/usr/share/applications
 	install -Dm755 PINCE.desktop "$pkgdir/usr/share/applications"
 
 }

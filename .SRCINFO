@@ -1,8 +1,9 @@
 pkgbase = pince-git
 	pkgdesc = A Linux reverse engineering tool inspired by Cheat Engine.
-	pkgver = r1360.161758a
+	pkgver = r1472.a548c73
 	pkgrel = 1
 	url = https://github.com/korcankaraokcu/PINCE
+	install = note.install
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -14,8 +15,8 @@ pkgbase = pince-git
 	optdepends = qt6-wayland: wayland support
 	source = pince-git::git+https://github.com/korcankaraokcu/PINCE.git
 	source = PINCE.desktop
-	sha256sums = SKIP
-	sha256sums = 33f145e61784d9f50b391e880d14a9d31a13d7b86cef0c8620f8f57fec0978bd
+	sha1sums = SKIP
+	sha1sums = 719d18d69abc299f739cc04041967e9d05a34104
 
 pkgname = pince-git
 	depends = base-devel
