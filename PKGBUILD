@@ -1,7 +1,7 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=halloy
-pkgver=2024.3
+pkgver=2024.4
 pkgrel=1
 pkgdesc='An open-source IRC client written in Rust, with the Iced GUI library'
 arch=('x86_64')
@@ -13,7 +13,7 @@ checkdepends=('cargo')
 provides=('halloy')
 conflicts=('halloy')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/squidowl/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('49ea53780037a27e71603f14e92da18cfadd5ee7b7725a697a096dfa2e07d184')
+sha256sums=('d051692b053ee425a7cbffe08f3dd6737f396682031823062a1c621de5a3583f')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -47,5 +47,5 @@ package() {
 
     install -Dm644 "assets/linux/org.squidowl.${pkgname}.appdata.xml" -t "${pkgdir}/usr/share/appdata/metainfo"
     install -Dm644 "assets/linux/org.squidowl.${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "assets/linux/org.squidowl.${pkgname}.png" -t "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
+    cp -r "assets/linux/icons" "${pkgdir}/usr/share"
 }
