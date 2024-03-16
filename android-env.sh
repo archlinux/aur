@@ -10,19 +10,27 @@ if [ -z "${_android_arch}" ]; then
     _android_arch=armv7a-eabi
 fi
 
-# Minimum Android platform based on:
-#
-# http://gs.statcounter.com/os-version-market-share/android/mobile-tablet/worldwide
-if [ -z "${ANDROID_MINIMUM_PLATFORM}" ]; then
-    export ANDROID_MINIMUM_PLATFORM=24
-fi
-
 if [ -z "${ANDROID_HOME}" ]; then
     export ANDROID_HOME=/opt/android-sdk
 fi
 
 if [ -z "${ANDROID_NDK_HOME}" ]; then
     export ANDROID_NDK_HOME=/opt/android-ndk
+fi
+
+export ANDROID_TOOLCHAIN=${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64
+export ANDROID_SYSROOT=${ANDROID_TOOLCHAIN}/sysroot
+export ANDROID_SYSROOT_INCLUDE=${ANDROID_SYSROOT}/usr/include
+export ANDROID_CROSS_PREFIX=${ANDROID_TOOLCHAIN}/bin
+
+# Minimum Android platform based on:
+#
+# http://gs.statcounter.com/os-version-market-share/android/mobile-tablet/worldwide
+if [ -z "${ANDROID_MINIMUM_PLATFORM}" ]; then
+    export ANDROID_MINIMUM_PLATFORM=$(find "${ANDROID_CROSS_PREFIX}" -type f -name '*-linux-*-clang*' -exec basename {} \; \
+                                      | awk -F '-' '{print $3}' | sed 's/android//g' | sed 's/eabi//g' | sort -V | uniq | head -n 1)
+
+    [ -z "${ANDROID_MINIMUM_PLATFORM}" ] && export ANDROID_MINIMUM_PLATFORM=24
 fi
 
 get_last() {
@@ -43,13 +51,9 @@ fi
 
 export ANDROID_SDK_PLATFORM=${ANDROID_HOME}/platforms/$ANDROID_API_VERSION
 export ANDROID_PLATFORM=${ANDROID_NDK_HOME}/platforms/$ANDROID_NDK_PLATFORM
-export ANDROID_TOOLCHAIN=${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64
-export ANDROID_SYSROOT=${ANDROID_TOOLCHAIN}/sysroot
-export ANDROID_SYSROOT_INCLUDE=${ANDROID_SYSROOT}/usr/include
-export ANDROID_CROSS_PREFIX=$ANDROID_TOOLCHAIN/bin
 export ANDROID_PKGCONFIG=android-${_android_arch}-pkg-config
 
-case "$_android_arch" in
+case "${_android_arch}" in
     aarch64)
         export ANDROID_SYSROOT_INCLUDE_ABI=${ANDROID_SYSROOT_INCLUDE}/aarch64-linux-android
         export ANDROID_SYSROOT_LIB=${ANDROID_SYSROOT}/usr/lib/aarch64-linux-android
@@ -79,6 +83,12 @@ case "$_android_arch" in
         export ANDROID_SYSROOT_LIB=${ANDROID_SYSROOT}/usr/lib/x86_64-linux-android
         export ANDROID_TOOLS_COMPILER_PREFIX=${ANDROID_CROSS_PREFIX}/x86_64-linux-android${ANDROID_MINIMUM_PLATFORM}-
         export ANDROID_ABI=x86_64
+        ;;
+    *)
+        export ANDROID_SYSROOT_INCLUDE_ABI=${ANDROID_SYSROOT_INCLUDE}/${_android_arch}-linux-android
+        export ANDROID_SYSROOT_LIB=${ANDROID_SYSROOT}/usr/lib/${_android_arch}-linux-android
+        export ANDROID_TOOLS_COMPILER_PREFIX=${ANDROID_CROSS_PREFIX}/${_android_arch}-linux-android${ANDROID_MINIMUM_PLATFORM}-
+        export ANDROID_ABI=${_android_arch}
         ;;
 esac
 
@@ -128,7 +138,11 @@ export CXX=${ANDROID_CXX}
 [[ "${LDFLAGS}" != *-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now* ]] && export LDFLAGS="${LDFLAGS} -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now"
 [[ "${LDFLAGS}" != *-L${ANDROID_PREFIX_LIB}* ]] && export LDFLAGS="${LDFLAGS} -L${ANDROID_PREFIX_LIB}"
 
+export AS=${ANDROID_AS}
 export AR=${ANDROID_AR}
+export LD=${ANDROID_LD}
+export NM=${ANDROID_NM}
+export OBJCOPY=${ANDROID_OBJCOPY}
 export OBJDUMP=${ANDROID_OBJDUMP}
 export RANLIB=${ANDROID_RANLIB}
 export STRIP=${ANDROID_STRIP}
