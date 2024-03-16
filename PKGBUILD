@@ -6,13 +6,14 @@ _gitcommit=1e735c3a27803ca5b6470e946f9cac708143dfd9
 
 pkgname=alpm_octopi_utils-dev
 pkgver=1.0.2.r1.1e735c3
-pkgrel=1
+pkgrel=2
 pkgdesc='Alpm utils for Octopi'
 arch=('any')
 url="https://github.com/${_githubuser}/${_githubrepo}"
 license=('GPL3')
 depends=('pacman-contrib')
 makedepends=('git' 'vala')
+provides=('alpm_octopi_utils')
 source=("git+https://github.com/${_githubuser}/${_githubrepo}.git#commit=${_gitcommit}")
 sha256sums=('SKIP')
 
