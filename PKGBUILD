@@ -1,7 +1,7 @@
 # Maintainer: Kevin Schoon <me at kevinschoon dot com>
 
 pkgname=tree-sitter-python
-pkgver=0.20.4
+pkgver=0.21.0
 pkgrel=2
 pkgdesc="python grammar for tree-sitter"
 arch=('x86_64')
@@ -11,7 +11,7 @@ groups=('tree-sitter-grammars')
 makedepends=('tree-sitter' 'tree-sitter-cli' 'npm')
 provides=('libtree-sitter-python')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1e38c991832f461c0da8ca222fbe5be3b82b868fe34025f0295206b5e5789d7a')
+sha256sums=('720304a603271fa89e4430a14d6a81a023d6d7d1171b1533e49c0ab44f1e1c13')
 
 prepare() {
 	cd "$pkgname-$pkgver"
