@@ -1,13 +1,13 @@
 pkgbase=tal-reverb4
 pkgname=("${pkgbase}-clap-bin" "${pkgbase}-vst-bin" "${pkgbase}-vst3-bin")
 pkgver=4.0.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 groups=('pro-audio')
 pkgdesc="A Simple Algorithmic Reverb V4 By TAL Software"
 url="https://tal-software.com/tal-reverb-4"
 license=('EULA')
-depends=('libcurl-gnutls' 'glibc')
+depends=('alsa-lib' 'bzip2' 'brotli' 'freetype2' 'glibc' 'graphite' 'harfbuzz' 'libpng' 'pcre2')
 source=('https://tal-software.com/downloads/plugins/TAL-Reverb-4_64_linux.zip')
 md5sums=('8b38e6e18add8f8754847c0e27736c7f')
 
