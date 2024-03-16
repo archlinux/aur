@@ -1,12 +1,12 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=aio-remote-neo
-pkgver=1.88.0
+pkgver=1.89.0
 pkgrel=1
 pkgdesc='Smart home app that hosts your custom remote control designs from AIO CREATOR NEO'
 arch=('x86_64')
 url='https://shop.mediola.com/aio-creator-neo'
-license=('custom')
+license=('LicenseRef-eula')
 depends=(
   'alsa-lib'
   'at-spi2-core'
@@ -26,7 +26,7 @@ source=(
 )
 
 sha512sums=(
-  '185b4ed0bc27d8d8ce2d0a6abdbfad47f333d144c1b8991dac56d89b7fca548ff7442591671efa43ddd21a558548401330c5ed8c66be9b5388ec50f9ab622e8b'
+  '814d866d8e2609256d751f59d604b38a89cc923e92a2218339c9ce9e2d43a7891e22e0dab3d1c397022e53b9c7ee13214374dfcce386fe415522cc6db57622b3'
   '802c2e819ff1964cf37f9b0198261943c922f0e34dff4f077c481fdd7670a6e8f5061c7fcfd08e0de30ba60519ce2de33c2640c270c5adfcc7635a175bc0df32'
 )
 
