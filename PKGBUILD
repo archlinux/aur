@@ -2,7 +2,7 @@
 
 _pkgname=pacseek
 pkgname=pacseek-git
-pkgver=1.7.10.217.50aecf6
+pkgver=1.8.2.238.36a078a
 pkgrel=1
 pkgdesc='A terminal user interface for searching and installing Arch Linux packages (git version)'
 arch=('any')
@@ -32,7 +32,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw -tags=next"
 
   go build -o ../build .
 }

@@ -1,6 +1,6 @@
 pkgbase = pacseek-git
 	pkgdesc = A terminal user interface for searching and installing Arch Linux packages (git version)
-	pkgver = 1.7.10.217.50aecf6
+	pkgver = 1.8.2.238.36a078a
 	pkgrel = 1
 	url = https://github.com/moson-mo/pacseek
 	arch = any
