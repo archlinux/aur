@@ -1,7 +1,7 @@
 pkgbase = fluentd
 	pkgdesc = Data collector designed to scale and simplify log management
-	pkgver = 1.16.3
-	pkgrel = 2
+	pkgver = 1.16.4
+	pkgrel = 1
 	url = https://github.com/fluent/fluentd
 	install = fluentd.install
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = fluentd
 	optdepends = ruby-oj: for a faster json parser
 	options = !emptydirs
 	backup = etc/fluent/fluentd.conf
-	source = git+https://github.com/fluent/fluentd.git#commit=d3cf2e0f95a0ad88b9897197db6c5152310f114f
+	source = git+https://github.com/fluent/fluentd.git#commit=9e4b91bb056fe93332918d1a9949cc5dfbd923fe
 	source = systemd.service
 	source = tmpfiles.conf
 	source = sysusers.conf

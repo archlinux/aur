@@ -4,9 +4,9 @@
 # Contributor: kusakata <shohei atmark kusakata period com>
 
 pkgname=fluentd
-pkgver=1.16.3
-_commit=d3cf2e0f95a0ad88b9897197db6c5152310f114f
-pkgrel=2
+pkgver=1.16.4
+_commit=9e4b91bb056fe93332918d1a9949cc5dfbd923fe
+pkgrel=1
 pkgdesc="Data collector designed to scale and simplify log management"
 arch=(any)
 url="https://github.com/fluent/fluentd"
