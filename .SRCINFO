@@ -1,9 +1,8 @@
 pkgbase = harrison-vocal-flow
 	pkgver = 3.0.0.e8e07e48
-	pkgrel = 3
+	pkgrel = 4
 	url = https://store.harrisonaudio.com/all-products/vocal-flow
 	arch = x86_64
-	groups = pro-audio
 	license = EULA
 	makedepends = xdg-user-dirs
 	makedepends = unzip
@@ -39,6 +38,7 @@ pkgbase = harrison-vocal-flow
 
 pkgname = harrison-vocal-flow-vst-bin
 	pkgdesc = Harrison Vocal Flow (VST)
+	groups = pro-audio
 	groups = vst-plugins
 	provides = harrison-vocal-flow-vst-bin
 	conflicts = harrison-ava-vf-vst
@@ -48,4 +48,5 @@ pkgname = harrison-vocal-flow-vst-bin
 
 pkgname = harrison-vocal-flow-vst3-bin
 	pkgdesc = Harrison Vocal Flow (VST3)
+	groups = pro-audio
 	groups = vst3-plugins
