@@ -1,0 +1,50 @@
+pkgbase = vital-synth-bin
+	pkgver = 1.5.5
+	pkgrel = 1
+	url = https://vital.audio
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	depends = alsa-lib
+	depends = bzip2
+	depends = brotli
+	depends = freetype2
+	depends = glibc
+	depends = graphite
+	depends = harfbuzz
+	depends = krb5
+	depends = libpng
+	depends = libxau
+	depends = libxext
+	depends = libice
+	depends = libsm
+	depends = libxcb
+	depends = libx11
+	depends = pcre2
+	depends = util-linux-libs
+	depends = zlib
+	provides = vital-synth
+	replaces = vital-synth
+	source = Vital Synth.desktop
+	source = vital-synth.png
+	sha256sums = 821df7c83276bf54e0826e8059fa6417c959821e9e2b9b01d479079e1c4751a3
+	sha256sums = 905b2696b7ca634707629433f5d17d2f35b55594e3a63e4a767c17e3d7865f57
+
+pkgname = vital-synth-standalone-bin
+	pkgdesc = Spectral warping wavetable synth (Standalone)
+	groups = pro-audio
+
+pkgname = vital-synth-clap-bin
+	pkgdesc = Spectral warping wavetable synth (CLAP)
+	groups = pro-audio
+	groups = clap-plugins
+
+pkgname = vital-synth-vst-bin
+	pkgdesc = Spectral warping wavetable synth (VST)
+	groups = pro-audio
+	groups = vst-plugins
+
+pkgname = vital-synth-vst3-bin
+	pkgdesc = Spectral warping wavetable synth (VST)
+	groups = pro-audio
+	groups = vst3-plugins
