@@ -1,17 +1,18 @@
 pkgbase = python-openems-git
 	pkgdesc = a free and open source EC-FDTD solver
-	pkgver = v0.0.35.r28.g6133dea
+	pkgver = v0.0.36.r15.g1ccf094
 	pkgrel = 1
 	url = https://github.com/thliebig/openEMS
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cython
+	makedepends = python-setuptools
 	depends = openems
+	depends = python-csxcad
 	provides = python-openems
 	conflicts = python-openems
 	source = git+https://github.com/thliebig/openEMS
 	md5sums = SKIP
 
 pkgname = python-openems-git
-

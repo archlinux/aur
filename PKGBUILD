@@ -1,14 +1,14 @@
 # Maintainer: Stefan Biereigel <stefan@biereigel.de>
 
 pkgname=python-openems-git
-pkgver=v0.0.35.r28.g6133dea
+pkgver=v0.0.36.r15.g1ccf094
 pkgrel=1
 pkgdesc="a free and open source EC-FDTD solver"
 url="https://github.com/thliebig/openEMS"
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('openems' 'python-csxcad')
-makedepends=('cython')
+makedepends=('cython' 'python-setuptools')
 provides=('python-openems')
 conflicts=('python-openems')
 
