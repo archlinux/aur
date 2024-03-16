@@ -15,7 +15,7 @@ arch=("x86_64")
 url="https://github.com/frappe/${pkgname}"
 license=("GPL-3.0-or-later")
 depends=("frappe-bench" "libmaxminddb" "mariadb" "nodejs" "python" "python-pycups" "wkhtmltopdf")
-makedepends=("npm" "python-build" "python-installer" "python-virtualenv" "tmux")
+makedepends=("npm" "python-build" "python-installer" "python-virtualenv")
 optdepends=("apache: HTTP server"
     "certbot: Creates SSL certificates."
     "nginx: HTTP server"
