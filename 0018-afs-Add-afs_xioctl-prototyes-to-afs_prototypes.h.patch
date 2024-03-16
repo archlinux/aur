@@ -1,0 +1,162 @@
+From 3c7e96e5c163597ec65d238d3357881346ab2dd3 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Mon, 12 Feb 2024 08:59:32 -0700
+Subject: [PATCH 18/29] afs: Add afs_xioctl prototyes to afs_prototypes.h
+
+Several .c files have external function prototypes for the afs_xioctl
+function, while the implementing files do not have the prototype.
+
+Move these prototypes into afs_prototypes.h so that the prototypes are
+available to both the caller and the implementation.
+
+Because the file holding the implementation does not have a prototypes,
+afs_xioctl() is being flagged when building against a Linux 6.8 kernel
+(which sets the -Wmissing-declarations and -Wmissing-prototypes compiler
+flags as default). Linux 6.8 commit:
+ 'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
+
+When building against a Linux kernel with CONFIG_WERROR=y, the build
+fails.
+
+Note that the function afs_xioctl() has platform specific
+implementations.
+
+Reviewed-on: https://gerrit.openafs.org/15643
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 575d986aa6c18ac27ea42fb66ae8b8cb0e27fe6c)
+
+Change-Id: If746111fdcf6a00459f524711623d322d5fc7942
+---
+ src/afs/FBSD/osi_vfsops.c    |  1 -
+ src/afs/HPUX/osi_vfsops.c    |  2 +-
+ src/afs/LINUX/osi_vnodeops.c |  4 ----
+ src/afs/NBSD/osi_kmod.c      |  1 -
+ src/afs/NBSD/osi_vfsops.c    |  1 -
+ src/afs/OBSD/osi_vfsops.c    |  2 +-
+ src/afs/SOLARIS/osi_vfsops.c |  1 -
+ src/afs/afs_prototypes.h     | 17 +++++++++++++++++
+ 8 files changed, 19 insertions(+), 10 deletions(-)
+
+diff --git a/src/afs/FBSD/osi_vfsops.c b/src/afs/FBSD/osi_vfsops.c
+index 6044bbed1..8a979db6d 100644
+--- a/src/afs/FBSD/osi_vfsops.c
++++ b/src/afs/FBSD/osi_vfsops.c
+@@ -18,7 +18,6 @@ struct mount *afs_globalVFS = NULL;
+ int afs_pbuf_freecnt = -1;
+ 
+ extern int Afs_xsetgroups();
+-extern int afs_xioctl();
+ 
+ static struct syscall_helper_data afs_syscalls[] = {
+     {
+diff --git a/src/afs/HPUX/osi_vfsops.c b/src/afs/HPUX/osi_vfsops.c
+index 0ddc227c7..46faca743 100644
+--- a/src/afs/HPUX/osi_vfsops.c
++++ b/src/afs/HPUX/osi_vfsops.c
+@@ -290,7 +290,7 @@ int afs_vfs_slot = -1;
+ 
+ afsc_link()
+ {
+-    extern int Afs_syscall(), afs_xioctl(), Afs_xsetgroups();
++    extern int Afs_syscall(), Afs_xsetgroups();
+ 
+     /* For now nothing special is required during AFS initialization. */
+     AFS_STATCNT(afsc_link);
+diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
+index 08fccb1b2..8aeeafa9b 100644
+--- a/src/afs/LINUX/osi_vnodeops.c
++++ b/src/afs/LINUX/osi_vnodeops.c
+@@ -613,10 +613,6 @@ out1:
+ }
+ 
+ 
+-/* in afs_pioctl.c */
+-extern int afs_xioctl(struct inode *ip, struct file *fp, unsigned int com,
+-		      unsigned long arg);
+-
+ static long afs_unlocked_xioctl(struct file *fp, unsigned int com,
+                                unsigned long arg) {
+     return afs_xioctl(FILE_INODE(fp), fp, com, arg);
+diff --git a/src/afs/NBSD/osi_kmod.c b/src/afs/NBSD/osi_kmod.c
+index f6585651e..eefaf5617 100644
+--- a/src/afs/NBSD/osi_kmod.c
++++ b/src/afs/NBSD/osi_kmod.c
+@@ -44,7 +44,6 @@
+ #include "afs/afsincludes.h"    /* Afs-based standard headers */
+ 
+ extern int afs3_syscall(struct lwp *, const void *, register_t *);
+-extern int afs_xioctl(struct lwp *, const void *, register_t *);
+ extern int Afs_xsetgroups(struct lwp *, const void *, register_t *);
+ 
+ #if !defined(AFS_NBSD60_ENV)
+diff --git a/src/afs/NBSD/osi_vfsops.c b/src/afs/NBSD/osi_vfsops.c
+index 7679ff169..5032a1dd9 100644
+--- a/src/afs/NBSD/osi_vfsops.c
++++ b/src/afs/NBSD/osi_vfsops.c
+@@ -110,7 +110,6 @@ VFS_PROTOS(afs);
+ #ifndef AFS_NBSD60_ENV
+ extern int sys_lkmnosys(struct lwp *, const void *, register_t *);
+ extern int afs3_syscall(struct lwp *, const void *, register_t *);
+-extern int afs_xioctl(struct lwp *, const void *, register_t *);
+ extern int Afs_xsetgroups(struct lwp *, const void *, register_t *);
+ static int afs_badcall(struct lwp *, const void *, register_t *);
+ 
+diff --git a/src/afs/OBSD/osi_vfsops.c b/src/afs/OBSD/osi_vfsops.c
+index 830906cc3..e7729261e 100644
+--- a/src/afs/OBSD/osi_vfsops.c
++++ b/src/afs/OBSD/osi_vfsops.c
+@@ -108,7 +108,7 @@ NONINFRINGEMENT.
+ /* from /usr/src/sys/kern/vfs_subr.c */
+ extern void insmntque(struct vnode *, struct mount *);
+ 
+-extern int sys_lkmnosys(), afs_xioctl(), Afs_xsetgroups();
++extern int sys_lkmnosys(), Afs_xsetgroups();
+ 
+ static int lkmid = -1;
+ static int afs_badcall(struct proc *p, void *xx, register_t * yy);
+diff --git a/src/afs/SOLARIS/osi_vfsops.c b/src/afs/SOLARIS/osi_vfsops.c
+index c6c9ddf56..f3f9bd33c 100644
+--- a/src/afs/SOLARIS/osi_vfsops.c
++++ b/src/afs/SOLARIS/osi_vfsops.c
+@@ -389,7 +389,6 @@ afsinit(int fstype, char *dummy)
+ afsinit(struct vfssw *vfsswp, int fstype)
+ #endif
+ {
+-    extern int afs_xioctl();
+     extern int afs_xsetgroups();
+ 
+     AFS_STATCNT(afsinit);
+diff --git a/src/afs/afs_prototypes.h b/src/afs/afs_prototypes.h
+index 9b3b1afec..d7894dd67 100644
+--- a/src/afs/afs_prototypes.h
++++ b/src/afs/afs_prototypes.h
+@@ -812,6 +812,23 @@ extern int afs_syscall_pioctl(char *path, unsigned int com, caddr_t cmarg,
+ extern int HandleIoctl(struct vcache *avc, afs_int32 acom,
+ 		       struct afs_ioctl *adata);
+ 
++#if defined(AFS_SUN5_ENV)
++struct afs_ioctl_sys;
++extern int afs_xioctl(struct afs_ioctl_sys *uap, rval_t *rvp);
++#elif defined(AFS_LINUX_ENV)
++extern int afs_xioctl(struct inode *ip, struct file *fp, unsigned int com, unsigned long arg);
++#elif defined(AFS_DAWRIN_ENV) & !defined(AFS_DARWIN80)
++extern int afs_xioctl(afs_proc_t *p, struct ioctl_args *uap, register_t *retval);
++#elif defined(AFS_FBSD_ENV)
++extern int afs_xioctl(struct thread *td, struct ioctl_args *uap, register_t *retval);
++#elif defined(AFS_NBSD_ENV)
++extern int afs_xioctl(afs_proc_t *p, const struct sys_ioctl_args *uap, register_t *retval);
++#elif defined(AFS_XBSD_ENV)
++extern int afs_xioctl(afs_proc_t *p, const struct ioctl_args *uap, register_t *retval);
++#elif defined(UKERNEL)
++extern int afs_xioctl(void);
++#endif
++
+ 
+ /* afs_segments.c */
+ extern int afs_StoreAllSegments(struct vcache *avc,
+-- 
+2.44.0
+

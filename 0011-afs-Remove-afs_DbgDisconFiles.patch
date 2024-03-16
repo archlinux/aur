@@ -1,0 +1,76 @@
+From 3479efd57fb4ca488061301f2770905fd5c1d90f Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Thu, 8 Feb 2024 16:10:57 -0700
+Subject: [PATCH 11/29] afs: Remove afs_DbgDisconFiles()
+
+The function afs_DbgDisconFiles() is not referenced anywhere within the
+source tree.
+
+Remove the function afs_DbgDisconFiles().
+
+The commit: 'disconnected-rw-20080922' (433afd4779) introduced
+afs_DbgDisconFiles(), but the function was never used.
+
+This function is flagged due to a missing prototype when building
+against a Linux 6.8 kernel (which sets the -Wmissing-declarations and
+-Wmissing-prototypes compiler flags as default). Linux 6.8 commit:
+ 'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
+
+When building against a kernel with CONFIG_WERROR=y, the build fails.
+
+Reviewed-on: https://gerrit.openafs.org/15640
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 32bb90047782f41df521bba5ab4aba8b4ed34203)
+
+Change-Id: I61d06515845dbb18a370f7856285596514242e99
+---
+ src/afs/afs_disconnected.c | 31 -------------------------------
+ 1 file changed, 31 deletions(-)
+
+diff --git a/src/afs/afs_disconnected.c b/src/afs/afs_disconnected.c
+index 3b8858539..1aaabd905 100644
+--- a/src/afs/afs_disconnected.c
++++ b/src/afs/afs_disconnected.c
+@@ -1334,37 +1334,6 @@ afs_DisconDiscardAll(afs_ucred_t *acred)
+     ReleaseWriteLock(&afs_disconDirtyLock);
+ }
+ 
+-/*!
+- * Print list of disconnected files.
+- *
+- * \note Call with afs_DDirtyVCListLock read locked.
+- */
+-void
+-afs_DbgDisconFiles(void)
+-{
+-    struct vcache *tvc;
+-    struct afs_q *q;
+-    int i = 0;
+-
+-    afs_warn("List of dirty files: \n");
+-
+-    ObtainReadLock(&afs_disconDirtyLock);
+-    for (q = QPrev(&afs_disconDirty); q != &afs_disconDirty; q = QPrev(q)) {
+-        tvc = QEntry(q, struct vcache, dirtyq);
+-
+-	afs_warn("Cell=%u Volume=%u VNode=%u Unique=%u\n",
+-		tvc->f.fid.Cell,
+-		tvc->f.fid.Fid.Volume,
+-		tvc->f.fid.Fid.Vnode,
+-		tvc->f.fid.Fid.Unique);
+-
+-	i++;
+-	if (i >= 30)
+-	    osi_Panic("afs_DbgDisconFiles: loop in dirty list\n");
+-    }
+-    ReleaseReadLock(&afs_disconDirtyLock);
+-}
+-
+ /*!
+  * Generate a fake fid for a disconnected shadow dir.
+  * Similar to afs_GenFakeFid, only that it uses the dhash
+-- 
+2.44.0
+

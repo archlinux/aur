@@ -1,0 +1,86 @@
+From f9f074e6f9a3114b1926a90bd7810bfa192f9886 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Tue, 5 Mar 2024 08:37:47 -0700
+Subject: [PATCH 27/29] Linux 6.8: Remove ctl_table sentinels
+
+The Linux 6.8 commit 'sysctl: Remove the now superfluous sentinel
+elements from ctl_table array' (c8a65501d3) was a clean up commit
+that removed the sentinel entry in the ctl_table array (e.g. the
+"null" entry at the end of the table).
+
+As of Linux 6.8, including the sentinel entry (.procname =) in the
+ctl_table is unnecessary, but doesn't yet break anything.  But it is
+likely that including the sentinel will start to cause runtime errors in
+future Linux versions very soon, so avoid the sentinel when we can, to
+avoid possible problems in the future.
+
+Define a new macro that can be used as the last entry of a ctl_table
+that will either add a "null" entry, or nothing.
+
+There is not a specific build test we can use within configure, so we
+must explicitly test the Linux version to decide if we need to use a
+sentinel or not when defining the macro.  We are selecting 6.8 to match
+the version where the Linux kernel is removing the sentinels from the in
+kernel filesystems.
+
+Note: See the Linux merge commits 'Merge tag 'sysctl-6.8-rc1' of
+git://git.kernel.org/pub/scm/linux/kernel/git/mcgrof/linux' (a05aea98d4)
+for more details behind the staged removal of the sentinels in the
+ctl_table structures and the potential future change for removing the
+actual check for the sentinel within the Linux kernel.
+
+Reviewed-on: https://gerrit.openafs.org/15645
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 35c8c1bf0b1cb48178f676ba5bcf16ad59c5a33b)
+
+Change-Id: I34cb7586003e10a6c7438d7205123d57af30585e
+---
+ src/afs/LINUX/osi_sysctl.c | 16 ++++++++++------
+ 1 file changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/src/afs/LINUX/osi_sysctl.c b/src/afs/LINUX/osi_sysctl.c
+index a0a039892..c1116fc79 100644
+--- a/src/afs/LINUX/osi_sysctl.c
++++ b/src/afs/LINUX/osi_sysctl.c
+@@ -54,6 +54,14 @@ extern afs_int32 afs_pct2;
+ # define AFS_SYSCTL_INT(num, perms, var) \
+ 	AFS_SYSCTL_INT2(num, perms, #var, var)
+ 
++# if LINUX_VERSION_CODE >= KERNEL_VERSION(6,8,0)
++/* end of list sentinel not needed */
++#  define AFS_SYSCTL_SENTINEL
++# else
++/* NULL entry to mark the end of the list */
++#  define AFS_SYSCTL_SENTINEL { .procname = NULL }
++# endif
++
+ static struct ctl_table_header *afs_sysctl = NULL;
+ 
+ static struct ctl_table afs_sysctl_table[] = {
+@@ -75,9 +83,7 @@ static struct ctl_table afs_sysctl_table[] = {
+     AFS_SYSCTL_INT( 13, 0644, afs_cacheBlocks),
+     AFS_SYSCTL_INT2(14, 0644, "md5inum", afs_md5inum),
+ 
+-    {
+-	.procname	= 0
+-    }
++    AFS_SYSCTL_SENTINEL
+ };
+ # if !defined(HAVE_LINUX_REGISTER_SYSCTL)
+ static struct ctl_table fs_sysctl_table[] = {
+@@ -87,9 +93,7 @@ static struct ctl_table fs_sysctl_table[] = {
+ 	.mode		= 0555,
+ 	.child		= afs_sysctl_table
+     },
+-    {
+-	.procname	= 0
+-    }
++    AFS_SYSCTL_SENTINEL
+ };
+ # endif
+ int
+-- 
+2.44.0
+

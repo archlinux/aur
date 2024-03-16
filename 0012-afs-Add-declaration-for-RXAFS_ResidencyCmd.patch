@@ -1,0 +1,48 @@
+From ae193277f1e2af7137e86ab5e96673c6d9fae217 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Fri, 12 Jan 2024 15:52:57 -0700
+Subject: [PATCH 12/29] afs: Add declaration for RXAFS_ResidencyCmd()
+
+The function RXAFS_ResidencyCmd() is 'manually' defined within the
+afsint.xg, so a prototype for the function is not defined.
+
+This function is flagged due to a missing prototype when building
+against a Linux 6.8 kernel (which sets the -Wmissing-declarations and
+-Wmissing-prototypes compiler flags as default). Linux 6.8 commit:
+ 'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
+
+When building against a kernel with CONFIG_WERROR=y, the build fails.
+
+Add a prototype for RXAFS_ResidencyCmd
+
+There are no functional changes with this commit
+
+The function RXAFS_ResidencyCmd() was introduced with commit:
+'rename-residency-from-mrafs-to-osd-20090427' (8655541d1e)
+
+Reviewed-on: https://gerrit.openafs.org/15619
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 1d6cfbc5f627abf3808aae97afb72662301483b5)
+
+Change-Id: I42d0868b83e119b0c3348a3af8aaf5961c040bb2
+---
+ src/fsint/afsint.xg | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/fsint/afsint.xg b/src/fsint/afsint.xg
+index 9fe4980c6..cdcd07a29 100644
+--- a/src/fsint/afsint.xg
++++ b/src/fsint/afsint.xg
+@@ -664,6 +664,7 @@ FsCmd(
+ ) = 220;
+ 
+ #ifdef RPC_CLIENT
++%int RXAFS_ResidencyCmd(struct rx_connection *z_conn, AFSFid *Fid, struct FsCmdInputs *Inputs, struct FsCmdOutputs *Outputs);
+ %int RXAFS_ResidencyCmd(struct rx_connection *z_conn, AFSFid *Fid, struct FsCmdInputs *Inputs, struct FsCmdOutputs *Outputs)
+ %{
+ %  return RXAFS_FsCmd(z_conn, Fid, Inputs, Outputs);
+-- 
+2.44.0
+

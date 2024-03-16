@@ -1,0 +1,132 @@
+From 2501655e438f65523f5250b26a2074bdbd56bc16 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Thu, 8 Feb 2024 12:22:13 -0700
+Subject: [PATCH 10/29] afs: Remove SRXAFSCB_FetchData/StoreData
+
+Commit 'client-64bit-file-size-support-20011031' (971b18bc42) introduced
+the RPC functions SRXAFSCB_FetchData() and SRXAFSCB_StoreData with RPC
+numbers of 65536 and 65537 respectively.
+
+Commit 'more-64bit-file-size-support-20011031' (c5b1a3775f) removed the
+references from afscbint.xg, but did not remove the actual code. The
+65536 RPC number was reassigned to SRXAFSCB_GetCE64, and the commit:
+'This is mostly a rewrite of src/afs/afs_cell.c, and associated changes'
+(629d08065) assigned the 65537 RPC to SRXAFSCB_GetCellByNum.
+
+Remove the 2 functions since there are no references other than the
+prototype in afs_prototypes.h.
+
+This function is flagged due to a missing prototype when building
+against a Linux 6.8 kernel (which sets the -Wmissing-declarations and
+-Wmissing-prototypes compiler flags as default). Linux 6.8 commit:
+ 'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
+
+Reviewed-on: https://gerrit.openafs.org/15639
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 379f7fc51d411990189ec28e48c91edc87d76120)
+
+Change-Id: I1a3539227d22e6df89d78245634dfeb14943035a
+---
+ src/afs/afs_callback.c   | 65 ----------------------------------------
+ src/afs/afs_prototypes.h |  7 -----
+ 2 files changed, 72 deletions(-)
+
+diff --git a/src/afs/afs_callback.c b/src/afs/afs_callback.c
+index 22edefb3f..56e8cd2cc 100644
+--- a/src/afs/afs_callback.c
++++ b/src/afs/afs_callback.c
+@@ -1472,71 +1472,6 @@ SRXAFSCB_GetCacheConfig(struct rx_call *a_call, afs_uint32 callerVersion,
+     return 0;
+ }
+ 
+-/*------------------------------------------------------------------------
+- * EXPORTED SRXAFSCB_FetchData
+- *
+- * Description:
+- *      Routine to do third party move from a remioserver to the original
+- *      issuer of an ArchiveData request. Presently supported only by the
+- *      "fs" command, not by the AFS client.
+- *
+- * Arguments:
+- *      rxcall:        Ptr to Rx call on which this request came in.
+- *      Fid:           pointer to AFSFid structure.
+- *      Fd:            File descriptor inside fs command.
+- *      Position:      Offset in the file.
+- *      Length:        Data length to transfer.
+- *      TotalLength:   Pointer to total file length field
+- *
+- * Returns:
+- *      0 on success
+- *
+- * Environment:
+- *      Nothing interesting.
+- *
+- * Side Effects:
+- *------------------------------------------------------------------------*/
+-int
+-SRXAFSCB_FetchData(struct rx_call *rxcall, struct AFSFid *Fid, afs_int32 Fd,
+-		   afs_int64 Position, afs_int64 Length,
+-		   afs_int64 * TotalLength)
+-{
+-    return ENOSYS;
+-}
+-
+-/*------------------------------------------------------------------------
+- * EXPORTED SRXAFSCB_StoreData
+- *
+- * Description:
+- *      Routine to do third party move from a remioserver to the original
+- *      issuer of a RetrieveData request. Presently supported only by the
+- *      "fs" command, not by the AFS client.
+- *
+- * Arguments:
+- *      rxcall:        Ptr to Rx call on which this request came in.
+- *      Fid:           pointer to AFSFid structure.
+- *      Fd:            File descriptor inside fs command.
+- *      Position:      Offset in the file.
+- *      Length:        Data length to transfer.
+- *      TotalLength:   Pointer to total file length field
+- *
+- * Returns:
+- *      0 on success
+- *
+- * Environment:
+- *      Nothing interesting.
+- *
+- * Side Effects:
+- *      As advertised.
+- *------------------------------------------------------------------------*/
+-int
+-SRXAFSCB_StoreData(struct rx_call *rxcall, struct AFSFid *Fid, afs_int32 Fd,
+-		   afs_int64 Position, afs_int64 Length,
+-		   afs_int64 * TotalLength)
+-{
+-    return ENOSYS;
+-}
+-
+ /*------------------------------------------------------------------------
+  * EXPORTED SRXAFSCB_GetCellByNum
+  *
+diff --git a/src/afs/afs_prototypes.h b/src/afs/afs_prototypes.h
+index ed43635aa..208bd0338 100644
+--- a/src/afs/afs_prototypes.h
++++ b/src/afs/afs_prototypes.h
+@@ -103,13 +103,6 @@ extern int SRXAFSCB_GetCacheConfig(struct rx_call *a_call,
+ 				   afs_uint32 * serverVersion,
+ 				   afs_uint32 * configCount,
+ 				   cacheConfig * config);
+-extern int SRXAFSCB_FetchData(struct rx_call *rxcall, struct AFSFid *Fid,
+-			      afs_int32 Fd, afs_int64 Position,
+-			      afs_int64 Length, afs_int64 * TotalLength);
+-extern int SRXAFSCB_StoreData(struct rx_call *rxcall, struct AFSFid *Fid,
+-			      afs_int32 Fd, afs_int64 Position,
+-			      afs_int64 Length, afs_int64 * TotalLength);
+-
+ 
+ /* afs_cbqueue.c */
+ extern afs_rwlock_t afs_xcbhash;
+-- 
+2.44.0
+

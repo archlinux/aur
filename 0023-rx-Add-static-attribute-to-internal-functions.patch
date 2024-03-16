@@ -1,0 +1,76 @@
+From 5c40a30514681080a304c9a284e991371ad33689 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Fri, 12 Jan 2024 15:30:23 -0700
+Subject: [PATCH 23/29] rx: Add static attribute to internal functions
+
+When building against a Linux 6.8 kernel, functions that are missing
+prototypes or declarations are flagged.
+
+We can add the static attribute to functions that are not referenced
+outside of the file that implements them to avoid having these functions
+flagged by the compiler.
+
+These functions are flagged due to missing prototypes when building
+against a Linux 6.8 kernel (which sets the -Wmissing-declarations and
+-Wmissing-prototypes compiler flags as default). Linux 6.8 commit:
+ 'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
+
+When building against a kernel with CONFIG_WERROR=y, the build fails.
+
+There are no functional changes in this commit.
+
+Reviewed-on: https://gerrit.openafs.org/15626
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 55adceba2d561ec4e89235de329782a68e603a11)
+
+Change-Id: I1b2a6e1c07bd4b75b7b83e177f17865eb903e488
+---
+ src/rx/rx.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/rx/rx.c b/src/rx/rx.c
+index aaec60907..d6c52c369 100644
+--- a/src/rx/rx.c
++++ b/src/rx/rx.c
+@@ -6513,7 +6513,7 @@ mtuout:
+     return -1;
+ }
+ 
+-void
++static void
+ rxi_NatKeepAliveEvent(struct rxevent *event, void *arg1,
+ 		      void *dummy, int dummy2)
+ {
+@@ -6615,7 +6615,7 @@ rx_SetConnSecondsUntilNatPing(struct rx_connection *conn, afs_int32 seconds)
+  * declared dead; if nothing has been sent for a while, we send a
+  * keep-alive packet (if we're actually trying to keep the call alive)
+  */
+-void
++static void
+ rxi_KeepAliveEvent(struct rxevent *event, void *arg1, void *dummy,
+ 		   int dummy2)
+ {
+@@ -6656,7 +6656,7 @@ rxi_KeepAliveEvent(struct rxevent *event, void *arg1, void *dummy,
+ }
+ 
+ /* Does what's on the nameplate. */
+-void
++static void
+ rxi_GrowMTUEvent(struct rxevent *event, void *arg1, void *dummy, int dummy2)
+ {
+     struct rx_call *call = arg1;
+@@ -8266,7 +8266,7 @@ static int rxi_monitor_processStats = 0;
+ static int rxi_monitor_peerStats = 0;
+ 
+ 
+-void
++static void
+ rxi_ClearRPCOpStat(rx_function_entry_v1_p rpc_stat)
+ {
+     rpc_stat->invocations = 0;
+-- 
+2.44.0
+

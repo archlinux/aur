@@ -1,0 +1,95 @@
+From e5d980ec4a4d41f965fcfe968a2cf00e0b99a3e1 Mon Sep 17 00:00:00 2001
+From: Andrew Deason <adeason@sinenomine.net>
+Date: Tue, 30 Jan 2024 20:44:48 -0600
+Subject: [PATCH 13/29] roken: Declare ct_memcmp in hcrypto kernel roken.h
+
+Currently, we build roken's ct.c for our kernel module to provide
+ct_memcmp(). We declare a prototype for ct_memcmp() in krb5_locl.h,
+and all of our kernel callers of ct_memcmp() include krb5_locl.h, so
+all callers get a prototype and avoid "implicit declaration" compiler
+warnings.
+
+However, roken's ct.c itself does not include krb5_locl.h, so it
+doesn't get a prototype for ct_memcmp(). This is dangerous, since if
+the prototype ever slightly differs from the implementation for any
+reason, it could cause a variety of issues.
+
+This also causes warnings when building against a Linux 6.8 kernel
+(which sets the -Wmissing-declarations and -Wmissing-prototypes
+compiler flags as default). Linux 6.8 commit:
+ 'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
+
+When building against a kernel with CONFIG_WERROR=y, the build fails.
+
+We cannot change ct.c, since it is an external source file. To fix
+this, instead move the prototype of ct_memcmp() to our stub
+kernel-only roken.h header, which is included by ct.c. Make
+krb5_locl.h also include roken.h when building kernel code, so all of
+the ct_memcmp() callers also get the prototype.
+
+While we're here, add some informative comments and an include guard
+to our previously-blank roken.h stub.
+
+Written in collaboration with cwills@sinenomine.net.
+
+Reviewed-on: https://gerrit.openafs.org/15620
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit be236069e9d26339ed5f9939965bca0dd3f8bf4e)
+
+Change-Id: I1112881938b0585263871f8f83d63b8909b12f0d
+---
+ src/crypto/hcrypto/kernel/roken.h | 17 +++++++++++++++++
+ src/crypto/rfc3961/krb5_locl.h    |  6 +-----
+ 2 files changed, 18 insertions(+), 5 deletions(-)
+
+diff --git a/src/crypto/hcrypto/kernel/roken.h b/src/crypto/hcrypto/kernel/roken.h
+index e69de29bb..f8c233468 100644
+--- a/src/crypto/hcrypto/kernel/roken.h
++++ b/src/crypto/hcrypto/kernel/roken.h
+@@ -0,0 +1,17 @@
++#ifndef OPENAFS_HCRYPTO_KERNEL_ROKEN_H
++#define OPENAFS_HCRYPTO_KERNEL_ROKEN_H
++
++/*
++ * This is a stub roken.h used for building roken code (or roken-using code) in
++ * the kernel. For userspace code, use a real roken.h. This just contains a few
++ * prototypes of roken functions we actually use in kernel code.
++ */
++
++#ifndef KERNEL
++# error "This header is for kernel code only"
++#endif
++
++/* ct.c */
++int ct_memcmp(const void *p1, const void *p2, size_t len);
++
++#endif /* OPENAFS_HCRYPTO_KERNEL_ROKEN_H */
+diff --git a/src/crypto/rfc3961/krb5_locl.h b/src/crypto/rfc3961/krb5_locl.h
+index eb279a95f..6e706737c 100644
+--- a/src/crypto/rfc3961/krb5_locl.h
++++ b/src/crypto/rfc3961/krb5_locl.h
+@@ -5,6 +5,7 @@
+ #ifdef KERNEL
+ 
+ #include "config.h"
++#include <roken.h>
+ 
+ #else
+ #include <afsconfig.h>
+@@ -285,11 +286,6 @@ int copy_EncryptionKey(const krb5_keyblock *, krb5_keyblock *);
+ krb5_error_code krb5_enctype_to_string(krb5_context context,
+ 				       krb5_enctype etype,
+ 				       char **string);
+-#ifdef KERNEL
+-/* Roken provides this in userspace, but we're on our own in the kernel. */
+-int ct_memcmp(const void *p1, const void *p2, size_t len);
+-#endif
+-
+ 
+ #include "crypto.h"
+ 
+-- 
+2.44.0
+

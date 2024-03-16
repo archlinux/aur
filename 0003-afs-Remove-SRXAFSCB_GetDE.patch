@@ -1,0 +1,52 @@
+From fb336c461e9c212d450ce5e00890e8bbb2d9a4f7 Mon Sep 17 00:00:00 2001
+From: Andrew Deason <adeason@sinenomine.net>
+Date: Sat, 9 Jan 2021 12:50:03 -0600
+Subject: [PATCH 03/29] afs: Remove SRXAFSCB_GetDE
+
+The GetDE RPC has been commented out from afscbint.xg effectively
+since it was introduced, but we still define the SRXAFSCB_GetDE server
+stub for it.
+
+This is useless, but also potentially dangerous, since the stub
+routine just returns success, without populating the output arguments.
+One of the output arguments is a string, and so if this RPC is
+actually run, the rxgen-generated server code will try to xdr_string()
+that string. Since we never set it to anything, this will result in
+xdr_string trying to dereference a NULL pointer.
+
+None of this actually happens currently, since the GetDE RPC is
+commented out. But to avoid the above situation if it's ever
+uncommented, remove the useless SRXAFSCB_GetDE function.
+
+Reviewed-on: https://gerrit.openafs.org/14488
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 444a971edc47c34efbefed6e332ee6e843ae072b)
+
+Change-Id: I83846d79ce3143571923cb6023075620091f093d
+---
+ src/afs/afs_callback.c | 11 -----------
+ 1 file changed, 11 deletions(-)
+
+diff --git a/src/afs/afs_callback.c b/src/afs/afs_callback.c
+index e7d8ab5d4..22edefb3f 100644
+--- a/src/afs/afs_callback.c
++++ b/src/afs/afs_callback.c
+@@ -1636,14 +1636,3 @@ SRXAFSCB_TellMeAboutYourself(struct rx_call *a_call,
+ 
+     return code;
+ }
+-
+-
+-int
+-SRXAFSCB_GetDE(struct rx_call *a_call, afs_int32 a_index, afs_int32 *addr,
+-	       afs_int32 *inode, afs_int32 *flags, afs_int32 *time,
+-	       char ** fileName)
+-{ /*SRXAFSCB_GetDE*/
+-    int code = 0;				/*Return code*/
+-    return(code);
+-
+-} /*SRXAFSCB_GetDE*/
+-- 
+2.44.0
+

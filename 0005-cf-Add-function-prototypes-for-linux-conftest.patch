@@ -1,0 +1,108 @@
+From 55e30ae5560063b8141b3696b0c67f355dcefc54 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Wed, 7 Feb 2024 14:51:23 -0700
+Subject: [PATCH 05/29] cf: Add function prototypes for linux conftest
+
+The Linux 6.8 commit:
+  'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f)
+
+added the compiler flags -Wmissing-declarations and -Wmissing-prototypes
+as defaults for all kernel modules builds.  This change causes configure
+to fail for various Linux kernel tests.
+
+Update the template used to create the conftest.c file to provide a
+function declaration for conftest().
+
+Use a 'static' attribute when defining functions used within tests.
+
+Note: 2 configure tests (LINUX_INIT_WORK_AS_DATA and
+LINUX_IOP_CREATE_TAKES_MODE_T) defined nested functions.  Relocate the
+nested functions to outside the body of conftest() to avoid compiler
+errors due to nested function definitions.
+
+Reviewed-on: https://gerrit.openafs.org/15614
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 1440843b80e28db908bd8c264b8adbfb2c95b4d9)
+
+Change-Id: I38acb7b0cb08dec8e9bca5f3792fbf981884a74c
+---
+ src/cf/linux-test1.m4 |  4 ++--
+ src/cf/linux-test4.m4 | 16 ++++++++--------
+ 2 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/src/cf/linux-test1.m4 b/src/cf/linux-test1.m4
+index 7bb5a677c..010a4464f 100644
+--- a/src/cf/linux-test1.m4
++++ b/src/cf/linux-test1.m4
+@@ -16,7 +16,7 @@ _ACEOF
+ /* end confdefs.h */
+ #include <linux/module.h>
+ $1
+-
++void conftest(void);
+ void conftest(void)
+ { 
+ $2
+@@ -201,7 +201,7 @@ AC_DEFUN([AC_CHECK_LINUX_OPERATION],
+      CPPFLAGS="$CPPFLAGS -Werror"
+      AC_TRY_KBUILD(
+       [$4
+-       $5 op($6) { return ($5)0; };],
++       static $5 op($6) { return ($5)0; };],
+       [static struct $1 ops;  ops.$2 = op;],
+ 		   AS_VAR_SET([ac_linux_operation], [yes]),
+ 		   AS_VAR_SET([ac_linux_operation], [no]))
+diff --git a/src/cf/linux-test4.m4 b/src/cf/linux-test4.m4
+index 3596b6aad..7889c904a 100644
+--- a/src/cf/linux-test4.m4
++++ b/src/cf/linux-test4.m4
+@@ -400,9 +400,9 @@ AC_DEFUN([LINUX_INIT_WORK_HAS_DATA], [
+   AC_CHECK_LINUX_BUILD([whether INIT_WORK has a _data argument],
+ 		       [ac_cv_linux_init_work_has_data],
+ [#include <linux/kernel.h>
+-#include <linux/workqueue.h>],
+-[ 
+-void f(struct work_struct *w) {}
++#include <linux/workqueue.h>
++static void f(struct work_struct *w) {}],
++[
+ struct work_struct *w;
+ int *i;
+ INIT_WORK(w,f,i);],
+@@ -493,7 +493,7 @@ AC_DEFUN([LINUX_KMEM_CACHE_CREATE_CTOR_TAKES_VOID],[
+   AC_CHECK_LINUX_BUILD([whether kmem_cache_create constructor takes a void pointer],
+ 			[ac_cv_linux_kmem_cache_create_ctor_takes_void],
+ 			[#include <linux/slab.h>
+-			 void _ctor(void *v) { };],
++			 static void _ctor(void *v) { };],
+ 			[kmem_cache_create(NULL, 0, 0, 0, _ctor);],
+ 			[KMEM_CACHE_CTOR_TAKES_VOID],
+ 			[define if kmem_cache_create constructor takes a single void ptr],
+@@ -667,7 +667,7 @@ AC_DEFUN([LINUX_IOP_GETATTR_TAKES_PATH_STRUCT], [
+   AC_CHECK_LINUX_BUILD([whether 4.11+ inode.i_op->getattr takes a struct path argument],
+                         [ac_cv_linux_iop_getattr_takes_path_struct],
+                         [#include <linux/fs.h>
+-                        int _getattr(const struct path *path, struct kstat *stat, u32 request_mask,
++                        static int _getattr(const struct path *path, struct kstat *stat, u32 request_mask,
+                           unsigned int sync_mode) {return 0;};
+                         struct inode_operations _i_ops;],
+                         [_i_ops.getattr = _getattr;],
+@@ -692,10 +692,10 @@ AC_DEFUN([LINUX_IOP_MKDIR_TAKES_UMODE_T], [
+ AC_DEFUN([LINUX_IOP_CREATE_TAKES_UMODE_T], [
+   AC_CHECK_LINUX_BUILD([whether inode.i_op->create takes a umode_t argument],
+ 			[ac_cv_linux_iop_create_takes_umode_t],
+-			[#include <linux/fs.h>],
++			[#include <linux/fs.h>
++			 static int _create(struct inode *i, struct dentry *d, umode_t m, struct nameidata *n)
++			 {return 0;};],
+ 			[static struct inode_operations _i_ops;
+-			int _create(struct inode *i, struct dentry *d, umode_t m, struct nameidata *n)
+-				{return 0;};
+ 			_i_ops.create = _create;],
+ 			[IOP_CREATE_TAKES_UMODE_T],
+ 			[define if inode.i_op->create takes a umode_t argument],
+-- 
+2.44.0
+

@@ -1,0 +1,80 @@
+From 2f5309a7fa3ee187c18a8930b96e89e4e31cf03e Mon Sep 17 00:00:00 2001
+From: Andrew Deason <adeason@sinenomine.net>
+Date: Tue, 24 Jul 2018 23:22:01 -0500
+Subject: [PATCH 02/29] LINUX: Minor osi_vfsop.c cleanup
+
+- Fix the formatting on afs_mount/afs_get_sb definitions
+
+- Declare a couple of functions static that are not referenced outside
+  of this file
+
+Reviewed-on: https://gerrit.openafs.org/13282
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit fa15fbda0aa0c3810695d9b867d3258b60e76b7c)
+
+Change-Id: I8a32475bf2ddb9c7206aef679947021925697c5a
+---
+ src/afs/LINUX/osi_vfsops.c | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
+
+diff --git a/src/afs/LINUX/osi_vfsops.c b/src/afs/LINUX/osi_vfsops.c
+index b85ab3fdf..bb49a5ce2 100644
+--- a/src/afs/LINUX/osi_vfsops.c
++++ b/src/afs/LINUX/osi_vfsops.c
+@@ -40,7 +40,7 @@ extern struct dentry_operations afs_dentry_operations;
+ 
+ /* Forward declarations */
+ static int afs_root(struct super_block *afsp);
+-int afs_fill_super(struct super_block *sb, void *data, int silent);
++static int afs_fill_super(struct super_block *sb, void *data, int silent);
+ 
+ 
+ /*
+@@ -52,19 +52,22 @@ int afs_fill_super(struct super_block *sb, void *data, int silent);
+ #if defined(STRUCT_FILE_SYSTEM_TYPE_HAS_MOUNT)
+ static struct dentry *
+ afs_mount(struct file_system_type *fs_type, int flags,
+-           const char *dev_name, void *data) {
++	  const char *dev_name, void *data)
++{
+     return mount_nodev(fs_type, flags, data, afs_fill_super);
+ }
+ #elif defined(GET_SB_HAS_STRUCT_VFSMOUNT)
+ static int
+ afs_get_sb(struct file_system_type *fs_type, int flags,
+-	   const char *dev_name, void *data, struct vfsmount *mnt) {
++	   const char *dev_name, void *data, struct vfsmount *mnt)
++{
+     return get_sb_nodev(fs_type, flags, data, afs_fill_super, mnt);
+ }
+ #else
+ static struct super_block *
+ afs_get_sb(struct file_system_type *fs_type, int flags,
+-	   const char *dev_name, void *data) {
++	   const char *dev_name, void *data)
++{
+     return get_sb_nodev(fs_type, flags, data, afs_fill_super);
+ }
+ #endif
+@@ -83,7 +86,7 @@ struct file_system_type afs_fs_type = {
+ 
+ struct backing_dev_info *afs_backing_dev_info;
+ 
+-int
++static int
+ afs_fill_super(struct super_block *sb, void *data, int silent)
+ {
+     int code = 0;
+@@ -372,7 +375,7 @@ afs_put_super(struct super_block *sbp)
+  * statp is in user space, so we need to cobble together a statfs, then
+  * copy it.
+  */
+-int
++static int
+ #if defined(STATFS_TAKES_DENTRY)
+ afs_statfs(struct dentry *dentry, struct kstatfs *statp)
+ #else
+-- 
+2.44.0
+

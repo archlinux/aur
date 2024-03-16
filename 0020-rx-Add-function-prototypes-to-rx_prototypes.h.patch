@@ -1,0 +1,84 @@
+From 46608e2f629b8742d31752cc0b021420231e6f45 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Wed, 7 Feb 2024 19:34:29 -0700
+Subject: [PATCH 20/29] rx: Add function prototypes to rx_prototypes.h
+
+The prototype for rxk_NewSocketHost() is not in a header file, but is
+defined in the referencing .c file. The ARCH/rx_knet.c files that
+implement rxk_NewSocketHost() do not have a prototype (but when the
+rx_kcommon.c implementation is used it does have a prototype, since
+rx_kcommon.c is the "referencing .c file").
+
+Add the prototype for rxk_NewSocketHost() to rx_prototypes.h and
+remove the prototype from rx_kcommon.c
+
+The prototypes for the functions rx_DebugOnOff() and rx_StatsOnOff()
+are defined within rx_prototypes.h, but are within a preprocessor
+conditional for AFS_NT40_ENV, however the implementation for these
+2 functions do not have the preprocessor conditional.
+
+Rearrange the prototypes for rx_DebugOnOff() and rx_StatsOnOff() so they
+are outside the AFS_NT40_ENV preprocessor conditional.
+
+These functions are flagged due to missing prototypes when building
+against a Linux 6.8 kernel (which sets the -Wmissing-declarations and
+-Wmissing-prototypes compiler flags as default). Linux 6.8 commit:
+ 'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
+
+When building against a kernel with CONFIG_WERROR=y, the build fails.
+
+There are no functional changes in this commit.
+
+Reviewed-on: https://gerrit.openafs.org/15624
+Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 8528c36b96fe2935f42188caabf4feed0d5dbcbd)
+
+Change-Id: Ieae8be7f89f5c675c6580d8cfb02ea77ce4088f7
+---
+ src/rx/rx_kcommon.c    | 1 -
+ src/rx/rx_prototypes.h | 5 ++++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/rx/rx_kcommon.c b/src/rx/rx_kcommon.c
+index b6a069c1d..c90df3d36 100644
+--- a/src/rx/rx_kcommon.c
++++ b/src/rx/rx_kcommon.c
+@@ -33,7 +33,6 @@ int (*rxk_PacketArrivalProc) (struct rx_packet * ahandle, struct sockaddr_in * a
+ int (*rxk_GetPacketProc) (struct rx_packet **ahandle, int asize);
+ #endif
+ 
+-osi_socket *rxk_NewSocketHost(afs_uint32 ahost, short aport);
+ extern struct interfaceAddr afs_cb_interface;
+ 
+ rxk_ports_t rxk_ports;
+diff --git a/src/rx/rx_prototypes.h b/src/rx/rx_prototypes.h
+index 87a1049f7..6e1ae566c 100644
+--- a/src/rx/rx_prototypes.h
++++ b/src/rx/rx_prototypes.h
+@@ -24,9 +24,10 @@ extern void rx_rto_setPeerTimeoutSecs(struct rx_peer *, int secs);
+ 
+ extern int rx_Init(u_int port);
+ extern int rx_InitHost(u_int host, u_int port);
+-#ifdef AFS_NT40_ENV
++
+ extern void rx_DebugOnOff(int on);
+ extern void rx_StatsOnOff(int on);
++#ifdef AFS_NT40_ENV
+ extern void rx_StartClientThread(void);
+ #endif
+ extern void rx_StartServer(int donateMe);
+@@ -332,6 +333,8 @@ extern void rxi_ListenerProc(osi_socket usockp, int *tnop,
+ extern void rxk_init(void);
+ # endif
+ 
++extern osi_socket *rxk_NewSocketHost(afs_uint32 ahost, short aport);
++
+ /* UKERNEL/rx_knet.c */
+ # ifdef UKERNEL
+ extern void afs_rxevent_daemon(void);
+-- 
+2.44.0
+

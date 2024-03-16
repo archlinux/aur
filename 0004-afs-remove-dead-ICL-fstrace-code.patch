@@ -1,0 +1,265 @@
+From 7d45e9f76541e2d0b57984b9ba272a86bbd9791b Mon Sep 17 00:00:00 2001
+From: Mark Vitale <mvitale@sinenomine.net>
+Date: Thu, 11 Mar 2021 15:36:54 -0500
+Subject: [PATCH 04/29] afs: remove dead ICL (fstrace) code
+
+The ICL code (afs/afs_icl.c) which supports fstrace includes a number of
+functions that have been dead code since the original IBM code import.
+Some of these seem to have been intended to support fine-grained event
+tracing, but the implementation was never completed.
+
+Remove the dead code.  No functional change is incurred by this commit.
+
+Reviewed-on: https://gerrit.openafs.org/14555
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit ba58d9912cff07a6f2af7275017cf70115f1a88d)
+
+Change-Id: Ic0a6d5dac200e7e130fa8df66005bdaf291cf088
+---
+ src/afs/afs_icl.c        | 147 ---------------------------------------
+ src/afs/afs_prototypes.h |  19 -----
+ 2 files changed, 166 deletions(-)
+
+diff --git a/src/afs/afs_icl.c b/src/afs/afs_icl.c
+index 8d09113dc..42b4a0ccb 100644
+--- a/src/afs/afs_icl.c
++++ b/src/afs/afs_icl.c
+@@ -538,18 +538,6 @@ afs_icl_AppendString(struct afs_icl_log *logp, char *astr)
+ #define ICL_APPENDLONG(lp, x) ICL_APPENDINT32((lp), (x))
+ #endif
+ 
+-/* routine to tell whether we're dealing with the address or the
+- * object itself
+- */
+-int
+-afs_icl_UseAddr(int type)
+-{
+-    if (type == ICL_TYPE_HYPER || type == ICL_TYPE_STRING
+-	|| type == ICL_TYPE_FID || type == ICL_TYPE_INT64)
+-	return 1;
+-    else
+-	return 0;
+-}
+ 
+ void
+ afs_icl_AppendOne(struct afs_icl_log *logp, int type, long parm)
+@@ -884,19 +872,6 @@ afs_icl_CopyOut(struct afs_icl_log *logp, afs_int32 * bufferp,
+     return code;
+ }
+ 
+-/* return basic parameter information about a log */
+-int
+-afs_icl_GetLogParms(struct afs_icl_log *logp, afs_int32 * maxSizep,
+-		    afs_int32 * curSizep)
+-{
+-    ObtainReadLock(&logp->lock);
+-    *maxSizep = logp->logSize;
+-    *curSizep = logp->logElements;
+-    ReleaseReadLock(&logp->lock);
+-    return 0;
+-}
+-
+-
+ /* hold and release logs */
+ int
+ afs_icl_LogHold(struct afs_icl_log *logp)
+@@ -907,14 +882,6 @@ afs_icl_LogHold(struct afs_icl_log *logp)
+     return 0;
+ }
+ 
+-/* hold and release logs, called with lock already held */
+-int
+-afs_icl_LogHoldNL(struct afs_icl_log *logp)
+-{
+-    logp->refCount++;
+-    return 0;
+-}
+-
+ /* keep track of how many sets believe the log itself is allocated */
+ int
+ afs_icl_LogUse(struct afs_icl_log *logp)
+@@ -1070,32 +1037,6 @@ afs_icl_FindLog(char *name)
+     return tp;
+ }
+ 
+-int
+-afs_icl_EnumerateLogs(int (*aproc)
+-		        (char *name, char *arock, struct afs_icl_log * tp),
+-		      char *arock)
+-{
+-    struct afs_icl_log *tp;
+-    afs_int32 code;
+-
+-    code = 0;
+-    ObtainWriteLock(&afs_icl_lock, 195);
+-    for (tp = afs_icl_allLogs; tp; tp = tp->nextp) {
+-	tp->refCount++;		/* hold this guy */
+-	ReleaseWriteLock(&afs_icl_lock);
+-	ObtainReadLock(&tp->lock);
+-	code = (*aproc) (tp->name, arock, tp);
+-	ReleaseReadLock(&tp->lock);
+-	ObtainWriteLock(&afs_icl_lock, 196);
+-	if (--tp->refCount == 0)
+-	    afs_icl_ZapLog(tp);
+-	if (code)
+-	    break;
+-    }
+-    ReleaseWriteLock(&afs_icl_lock);
+-    return code;
+-}
+-
+ struct afs_icl_set *afs_icl_allSets = 0;
+ 
+ int
+@@ -1198,46 +1139,6 @@ afs_icl_CreateSetWithFlags(char *name, struct afs_icl_log *baseLogp,
+     return 0;
+ }
+ 
+-/* function to change event enabling information for a particular set */
+-int
+-afs_icl_SetEnable(struct afs_icl_set *setp, afs_int32 eventID, int setValue)
+-{
+-    char *tp;
+-
+-    ObtainWriteLock(&setp->lock, 200);
+-    if (!ICL_EVENTOK(setp, eventID)) {
+-	ReleaseWriteLock(&setp->lock);
+-	return -1;
+-    }
+-    tp = &setp->eventFlags[ICL_EVENTBYTE(eventID)];
+-    if (setValue)
+-	*tp |= ICL_EVENTMASK(eventID);
+-    else
+-	*tp &= ~(ICL_EVENTMASK(eventID));
+-    ReleaseWriteLock(&setp->lock);
+-    return 0;
+-}
+-
+-/* return indication of whether a particular event ID is enabled
+- * for tracing.  If *getValuep is set to 0, the event is disabled,
+- * otherwise it is enabled.  All events start out enabled by default.
+- */
+-int
+-afs_icl_GetEnable(struct afs_icl_set *setp, afs_int32 eventID, int *getValuep)
+-{
+-    ObtainReadLock(&setp->lock);
+-    if (!ICL_EVENTOK(setp, eventID)) {
+-	ReleaseWriteLock(&setp->lock);
+-	return -1;
+-    }
+-    if (setp->eventFlags[ICL_EVENTBYTE(eventID)] & ICL_EVENTMASK(eventID))
+-	*getValuep = 1;
+-    else
+-	*getValuep = 0;
+-    ReleaseReadLock(&setp->lock);
+-    return 0;
+-}
+-
+ /* hold and release event sets */
+ int
+ afs_icl_SetHold(struct afs_icl_set *setp)
+@@ -1340,54 +1241,6 @@ afs_icl_ZeroSet(struct afs_icl_set *setp)
+     return code;
+ }
+ 
+-int
+-afs_icl_EnumerateSets(int (*aproc)
+-		        (char *name, char *arock, struct afs_icl_log * tp),
+-		      char *arock)
+-{
+-    struct afs_icl_set *tp, *np;
+-    afs_int32 code;
+-
+-    code = 0;
+-    ObtainWriteLock(&afs_icl_lock, 205);
+-    for (tp = afs_icl_allSets; tp; tp = np) {
+-	tp->refCount++;		/* hold this guy */
+-	ReleaseWriteLock(&afs_icl_lock);
+-	code = (*aproc) (tp->name, arock, (struct afs_icl_log *)tp);
+-	ObtainWriteLock(&afs_icl_lock, 206);
+-	np = tp->nextp;		/* tp may disappear next, but not np */
+-	if (--tp->refCount == 0 && (tp->states & ICL_SETF_DELETED))
+-	    afs_icl_ZapSet(tp);
+-	if (code)
+-	    break;
+-    }
+-    ReleaseWriteLock(&afs_icl_lock);
+-    return code;
+-}
+-
+-int
+-afs_icl_AddLogToSet(struct afs_icl_set *setp, struct afs_icl_log *newlogp)
+-{
+-    int i;
+-    int code = -1;
+-
+-    ObtainWriteLock(&setp->lock, 207);
+-    for (i = 0; i < ICL_LOGSPERSET; i++) {
+-	if (!setp->logs[i]) {
+-	    setp->logs[i] = newlogp;
+-	    code = i;
+-	    afs_icl_LogHold(newlogp);
+-	    if (!(setp->states & ICL_SETF_FREED)) {
+-		/* bump up the number of sets using the log */
+-		afs_icl_LogUse(newlogp);
+-	    }
+-	    break;
+-	}
+-    }
+-    ReleaseWriteLock(&setp->lock);
+-    return code;
+-}
+-
+ int
+ afs_icl_SetSetStat(struct afs_icl_set *setp, int op)
+ {
+diff --git a/src/afs/afs_prototypes.h b/src/afs/afs_prototypes.h
+index e9a655e65..ed43635aa 100644
+--- a/src/afs/afs_prototypes.h
++++ b/src/afs/afs_prototypes.h
+@@ -364,10 +364,7 @@ extern int afs_icl_CreateLogWithFlags(char *name, afs_int32 logSize,
+ extern int afs_icl_CopyOut(struct afs_icl_log *logp,
+ 			   afs_int32 * bufferp, afs_int32 * bufSizep,
+ 			   afs_uint32 * cookiep, afs_int32 * flagsp);
+-extern int afs_icl_GetLogParms(struct afs_icl_log *logp, afs_int32 * maxSizep,
+-			       afs_int32 * curSizep);
+ extern int afs_icl_LogHold(struct afs_icl_log *logp);
+-extern int afs_icl_LogHoldNL(struct afs_icl_log *logp);
+ extern int afs_icl_LogUse(struct afs_icl_log *logp);
+ extern int afs_icl_LogFreeUse(struct afs_icl_log *logp);
+ extern int afs_icl_LogSetSize(struct afs_icl_log *logp,
+@@ -378,11 +375,6 @@ extern int afs_icl_LogReleNL(struct afs_icl_log *logp);
+ extern int afs_icl_ZeroLog(struct afs_icl_log *logp);
+ extern int afs_icl_LogFree(struct afs_icl_log *logp);
+ extern struct afs_icl_log *afs_icl_FindLog(char *name);
+-extern int
+-  afs_icl_EnumerateLogs(int (*aproc)
+-
+-			  (char *name, char *arock, struct afs_icl_log * tp),
+-			char *arock);
+ extern int afs_icl_CreateSet(char *name, struct afs_icl_log *baseLogp,
+ 			     struct afs_icl_log *fatalLogp,
+ 			     struct afs_icl_set **outSetpp);
+@@ -391,18 +383,7 @@ extern int afs_icl_CreateSetWithFlags(char *name,
+ 				      struct afs_icl_log *fatalLogp,
+ 				      afs_uint32 flags,
+ 				      struct afs_icl_set **outSetpp);
+-extern int afs_icl_SetEnable(struct afs_icl_set *setp, afs_int32 eventID,
+-			     int setValue);
+-extern int afs_icl_GetEnable(struct afs_icl_set *setp, afs_int32 eventID,
+-			     int *getValuep);
+ extern int afs_icl_ZeroSet(struct afs_icl_set *setp);
+-extern int
+-  afs_icl_EnumerateSets(int (*aproc)
+-
+-			  (char *name, char *arock, struct afs_icl_log * tp),
+-			char *arock);
+-extern int afs_icl_AddLogToSet(struct afs_icl_set *setp,
+-			       struct afs_icl_log *newlogp);
+ extern int afs_icl_SetSetStat(struct afs_icl_set *setp, int op);
+ extern int afs_icl_SetHold(struct afs_icl_set *setp);
+ extern int afs_icl_ZapSet(struct afs_icl_set *setp);
+-- 
+2.44.0
+

@@ -1,0 +1,362 @@
+From 35c339ec6b648deb02f7598c02df07b0c2ad0021 Mon Sep 17 00:00:00 2001
+From: Andrew Deason <adeason@dson.org>
+Date: Sun, 3 May 2020 10:33:28 -0500
+Subject: [PATCH 29/29] afs: Drop GLOCK for various Rx calls
+
+Most calls into Rx from libafs do so without the AFS_GLOCK, but a few
+pieces of code still hold AFS_GLOCK while making some Rx calls. A few
+calls into Rx also currently require AFS_GLOCK, but drop AFS_GLOCK
+internally, which is somewhat confusing/inconsistent. Calling Rx
+functions with AFS_GLOCK held can potentially cause locking/allocation
+problems on various platforms, such as FreeBSD where we get WITNESS
+warnings about acquiring sleepable Rx locks while holding the
+non-sleepable AFS_GLOCK.
+
+Fix a variety of Rx calls from libafs to drop AFS_GLOCK before calling
+into Rx. Specifically, this commit handles calls to rxi_GetIFInfo,
+rx_InitHost, rx_StartServer, rx_ServerProc, rx_GetConnection,
+rx_DestroyConnection/rx_PutConnection, and
+rx_SetConnSecondsUntilNatPing.
+
+For calls made via afs_start_thread, adjust afs_start_thread to accept
+a new argument that says whether to acquire AFS_GLOCK for the relevant
+function or not.
+
+For a call to rx_InitHost inside afs_InitSetup, dropping GLOCK makes
+it possible for another thread to also enter afs_InitSetup while we're
+running, before afs_InitSetup_done is set. To prevent two threads from
+running afs_InitSetup in parallel, introduce afs_InitSetup_running
+(which is set while afs_InitSetup is running), and simply wait for it
+to be cleared if it is set when we enter afs_InitSetup.
+
+This commit does not handle strictly all calls into Rx from libafs,
+since many Rx calls don't do anything interesting besides set some
+internal variables, and so AFS_GLOCK doesn't really matter for them,
+and dropping/reacquiring it around those calls may have performance
+impact.
+
+Reviewed-on: https://gerrit.openafs.org/14184
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+(cherry picked from commit d5e1428a3bd4a7fbb4401cf17176474f0c1825d3)
+
+ Conflicts:
+	src/afs/afs_call.c - context only due to not having commit:
+	   'Log binding ip address and port during startup' (02dede5d40)
+
+Change-Id: I0d14105d5dc8bfd4740c7a9adfc61c36f8a2318c
+---
+ src/afs/LINUX/osi_misc.c       | 22 +++++++++++++++++++---
+ src/afs/LINUX/osi_prototypes.h |  2 +-
+ src/afs/afs_call.c             | 19 ++++++++++++++++++-
+ src/afs/afs_callback.c         |  2 ++
+ src/afs/afs_conn.c             |  6 ++++++
+ src/afs/afs_daemons.c          | 14 ++++++++------
+ src/afs/afs_init.c             |  2 ++
+ src/afs/afs_pag_call.c         | 15 ++++++++++-----
+ src/rx/rx_kcommon.c            | 10 ----------
+ 9 files changed, 66 insertions(+), 26 deletions(-)
+
+diff --git a/src/afs/LINUX/osi_misc.c b/src/afs/LINUX/osi_misc.c
+index aa5d5fc93..be6984661 100644
+--- a/src/afs/LINUX/osi_misc.c
++++ b/src/afs/LINUX/osi_misc.c
+@@ -155,7 +155,18 @@ int osi_abspath(char *aname, char *buf, int buflen,
+ 
+ 
+ /* This could use some work, and support on more platforms. */
+-int afs_thread_wrapper(void *rock)
++static int
++afs_thread_wrapper(void *rock)
++{
++    void (*proc)(void) = rock;
++    __module_get(THIS_MODULE);
++    (*proc)();
++    module_put(THIS_MODULE);
++    return 0;
++}
++
++static int
++afs_thread_wrapper_glock(void *rock)
+ {
+     void (*proc)(void) = rock;
+     __module_get(THIS_MODULE);
+@@ -166,7 +177,12 @@ int afs_thread_wrapper(void *rock)
+     return 0;
+ }
+ 
+-void afs_start_thread(void (*proc)(void), char *name)
++void
++afs_start_thread(void (*proc)(void), char *name, int needs_glock)
+ {
+-    kthread_run(afs_thread_wrapper, proc, "%s", name);
++    if (needs_glock) {
++	kthread_run(afs_thread_wrapper_glock, proc, "%s", name);
++    } else {
++	kthread_run(afs_thread_wrapper, proc, "%s", name);
++    }
+ }
+diff --git a/src/afs/LINUX/osi_prototypes.h b/src/afs/LINUX/osi_prototypes.h
+index 130b5660e..2ed054339 100644
+--- a/src/afs/LINUX/osi_prototypes.h
++++ b/src/afs/LINUX/osi_prototypes.h
+@@ -50,7 +50,7 @@ extern int osi_lookupname(char *aname, uio_seg_t seg, int followlink,
+ 			  struct dentry **dpp);
+ extern int osi_abspath(char *aname, char *buf, int buflen,
+ 		       int followlink, char **pathp);
+-extern void afs_start_thread(void (*proc)(void), char *name);
++extern void afs_start_thread(void (*proc)(void), char *name, int needs_glock);
+ 
+ /* osi_probe.c */
+ extern void *osi_find_syscall_table(int which);
+diff --git a/src/afs/afs_call.c b/src/afs/afs_call.c
+index 4ac63b187..7fb323c29 100644
+--- a/src/afs/afs_call.c
++++ b/src/afs/afs_call.c
+@@ -104,11 +104,19 @@ extern afs_int32 afs_md5inum;
+ static int
+ afs_InitSetup(int preallocs)
+ {
++    static int afs_InitSetup_running;
++
+     int code;
+ 
++    while (afs_InitSetup_running) {
++	afs_osi_Sleep(&afs_InitSetup_running);
++    }
++
+     if (afs_InitSetup_done)
+ 	return EAGAIN;
+ 
++    afs_InitSetup_running = 1;
++
+ #ifdef AFS_SUN510_ENV
+     /* Initialize a RW lock for the ifinfo global array */
+     rw_init(&afsifinfo_lock, NULL, RW_DRIVER, NULL);
+@@ -133,10 +141,12 @@ afs_InitSetup(int preallocs)
+     /* start RX */
+     if(!afscall_set_rxpck_received)
+     rx_extraPackets = AFS_NRXPACKETS;	/* smaller # of packets */
++    AFS_GUNLOCK();
+     code = rx_InitHost(rx_bindhost, htons(7001));
++    AFS_GLOCK();
+     if (code) {
+ 	afs_warn("AFS: RX failed to initialize %d).\n", code);
+-	return code;
++	goto done;
+     }
+     rx_SetRxDeadTime(afs_rx_deadtime);
+     /* resource init creates the services */
+@@ -145,6 +155,9 @@ afs_InitSetup(int preallocs)
+     afs_InitSetup_done = 1;
+     afs_osi_Wakeup(&afs_InitSetup_done);
+ 
++ done:
++    afs_InitSetup_running = 0;
++    afs_osi_Wakeup(&afs_InitSetup_running);
+     return code;
+ }
+ 
+@@ -1703,7 +1716,9 @@ afs_shutdown(enum afs_shutdown_type cold_flag)
+     afs_warn("CB... ");
+ 
+     afs_termState = AFSOP_STOP_RXCALLBACK;
++    AFS_GUNLOCK();
+     rx_WakeupServerProcs();
++    AFS_GLOCK();
+ #ifdef AFS_AIX51_ENV
+     shutdown_rxkernel();
+ #endif
+@@ -1756,7 +1771,9 @@ afs_shutdown(enum afs_shutdown_type cold_flag)
+     afs_warn("NetIfPoller... ");
+     osi_StopNetIfPoller();
+ #endif
++    AFS_GUNLOCK();
+     rxi_FreeAllPackets();
++    AFS_GLOCK();
+ 
+     afs_termState = AFSOP_STOP_COMPLETE;
+ 
+diff --git a/src/afs/afs_callback.c b/src/afs/afs_callback.c
+index 1fe990edf..7cffef6ff 100644
+--- a/src/afs/afs_callback.c
++++ b/src/afs/afs_callback.c
+@@ -985,7 +985,9 @@ afs_RXCallBackServer(void)
+     /*
+      * Donate this process to Rx.
+      */
++    AFS_GUNLOCK();
+     rx_ServerProc(NULL);
++    AFS_GLOCK();
+     return (0);
+ 
+ }				/*afs_RXCallBackServer */
+diff --git a/src/afs/afs_conn.c b/src/afs/afs_conn.c
+index 2a3a513b2..8728ce518 100644
+--- a/src/afs/afs_conn.c
++++ b/src/afs/afs_conn.c
+@@ -532,7 +532,9 @@ afs_ConnBySA(struct srvAddr *sap, unsigned short aport, afs_int32 acell,
+ 	 */
+ 	if ((service != 52) && (sap->natping == NULL)) {
+ 	    sap->natping = tc;
++	    AFS_GUNLOCK();
+ 	    rx_SetConnSecondsUntilNatPing(tc->id, 20);
++	    AFS_GLOCK();
+ 	}
+ 
+ 	tc->forceConnectFS = 0;	/* apparently we're appropriately connected now */
+@@ -542,7 +544,9 @@ afs_ConnBySA(struct srvAddr *sap, unsigned short aport, afs_int32 acell,
+     } /* end of if (tc->forceConnectFS)*/
+ 
+     *rxconn = tc->id;
++    AFS_GUNLOCK();
+     rx_GetConnection(*rxconn);
++    AFS_GLOCK();
+ 
+     ReleaseSharedLock(&afs_xconn);
+     return tc;
+@@ -672,7 +676,9 @@ afs_PutConn(struct afs_conn *ac, struct rx_connection *rxconn,
+ 	          (unsigned long)(uintptrsz)ac, (int)ac->refCount);
+     }
+     ac->parent->refCount--;
++    AFS_GUNLOCK();
+     rx_PutConnection(rxconn);
++    AFS_GLOCK();
+ }				/*afs_PutConn */
+ 
+ 
+diff --git a/src/afs/afs_daemons.c b/src/afs/afs_daemons.c
+index 1879772fb..632aa849b 100644
+--- a/src/afs/afs_daemons.c
++++ b/src/afs/afs_daemons.c
+@@ -223,19 +223,21 @@ afs_Daemon(void)
+ 	    }
+ 	}
+ 	if (last10MinCheck + 600 < now) {
++	    int addrs_changed;
+ #ifdef AFS_USERSPACE_IP_ADDR
+ 	    extern int rxi_GetcbiInfo(void);
+ #endif
+ 	    afs_Trace1(afs_iclSetp, CM_TRACE_PROBEUP, ICL_TYPE_INT32, 600);
+ #ifdef AFS_USERSPACE_IP_ADDR
+-	    if (rxi_GetcbiInfo()) {	/* addresses changed from last time */
+-		afs_FlushCBs();
+-	    }
+-#else /* AFS_USERSPACE_IP_ADDR */
+-	    if (rxi_GetIFInfo()) {	/* addresses changed from last time */
++	    addrs_changed = rxi_GetcbiInfo();
++#else
++	    AFS_GUNLOCK();
++	    addrs_changed = rxi_GetIFInfo();
++	    AFS_GLOCK();
++#endif
++	    if (addrs_changed) {	/* addresses changed from last time */
+ 		afs_FlushCBs();
+ 	    }
+-#endif /* else AFS_USERSPACE_IP_ADDR */
+ 	    if (!afs_CheckServerDaemonStarted)
+ 		afs_CheckServers(0, NULL);
+ 	    afs_GCUserData();	/* gc old conns */
+diff --git a/src/afs/afs_init.c b/src/afs/afs_init.c
+index bdb791c1a..efa513256 100644
+--- a/src/afs/afs_init.c
++++ b/src/afs/afs_init.c
+@@ -554,7 +554,9 @@ afs_ResourceInit(int preallocs)
+     afs_server =
+ 	rx_NewService(0, RX_STATS_SERVICE_ID, "rpcstats", &secobj, 1,
+ 		      RXSTATS_ExecuteRequest);
++    AFS_GUNLOCK();
+     rx_StartServer(0);
++    AFS_GLOCK();
+     afs_osi_Wakeup(&afs_server);	/* wakeup anyone waiting for it */
+     return 0;
+ 
+diff --git a/src/afs/afs_pag_call.c b/src/afs/afs_pag_call.c
+index 610cfb3a8..9b7a90631 100644
+--- a/src/afs/afs_pag_call.c
++++ b/src/afs/afs_pag_call.c
+@@ -91,10 +91,13 @@ afspag_Init(afs_int32 nfs_server_addr)
+     afs_uuid_create(&afs_cb_interface.uuid);
+ 
+     AFS_GLOCK();
+-
+     afs_InitStats();
++    AFS_GUNLOCK();
++
+     rx_Init(htons(7001));
+ 
++    AFS_GLOCK();
++
+     AFS_STATCNT(afs_ResourceInit);
+     AFS_RWLOCK_INIT(&afs_xuser, "afs_xuser");
+     AFS_RWLOCK_INIT(&afs_xpagcell, "afs_xpagcell");
+@@ -117,18 +120,20 @@ afspag_Init(afs_int32 nfs_server_addr)
+ 			      1, RXSTATS_ExecuteRequest);
+     pagcb_svc = rx_NewService(0, PAGCB_SERVICEID, "pagcb", &srv_secobj,
+ 			      1, PAGCB_ExecuteRequest);
++    AFS_GUNLOCK();
+     rx_StartServer(0);
++    AFS_GLOCK();
+ 
+     clt_secobj = rxnull_NewClientSecurityObject();
+     rmtsys_conn = rx_NewConnection(nfs_server_addr, htons(7009),
+ 				   RMTSYS_SERVICEID, clt_secobj, 0);
+ 
+ #ifdef RXK_LISTENER_ENV
+-    afs_start_thread(rxk_Listener,       "Rx Listener");
++    afs_start_thread(rxk_Listener, "Rx Listener", 1);
+ #endif
+-    afs_start_thread((void *)(void *)rx_ServerProc,      "Rx Server Thread");
+-    afs_start_thread(afs_rxevent_daemon, "Rx Event Daemon");
+-    afs_start_thread(afs_Daemon,         "AFS PAG Daemon");
++    afs_start_thread((void *)(void *)rx_ServerProc, "Rx Server Thread", 0);
++    afs_start_thread(afs_rxevent_daemon, "Rx Event Daemon", 1);
++    afs_start_thread(afs_Daemon, "AFS PAG Daemon", 1);
+ 
+     afs_icl_InitLogs();
+ 
+diff --git a/src/rx/rx_kcommon.c b/src/rx/rx_kcommon.c
+index c90df3d36..239cf1607 100644
+--- a/src/rx/rx_kcommon.c
++++ b/src/rx/rx_kcommon.c
+@@ -267,13 +267,7 @@ rx_ServerProc(void *unused)
+     threadID = rxi_availProcs++;
+     MUTEX_EXIT(&rx_quota_mutex);
+ 
+-# ifdef RX_ENABLE_LOCKS
+-    AFS_GUNLOCK();
+-# endif /* RX_ENABLE_LOCKS */
+     rxi_ServerProc(threadID, NULL, NULL);
+-# ifdef RX_ENABLE_LOCKS
+-    AFS_GLOCK();
+-# endif /* RX_ENABLE_LOCKS */
+ 
+     return NULL;
+ }
+@@ -856,8 +850,6 @@ rxk_NewSocketHost(afs_uint32 ahost, short aport)
+ #  if (defined(AFS_DARWIN_ENV) || defined(AFS_XBSD_ENV)) && defined(KERNEL_FUNNEL)
+     thread_funnel_switch(KERNEL_FUNNEL, NETWORK_FUNNEL);
+ #  endif
+-    AFS_ASSERT_GLOCK();
+-    AFS_GUNLOCK();
+ #  if	defined(AFS_HPUX102_ENV)
+ #   if     defined(AFS_HPUX110_ENV)
+     /* we need a file associated with the socket so sosend in NetSend
+@@ -997,14 +989,12 @@ rxk_NewSocketHost(afs_uint32 ahost, short aport)
+ #   endif /* else defined(AFS_DARWIN_ENV) || defined(AFS_FBSD_ENV) */
+ #  endif /* else AFS_HPUX110_ENV */
+ 
+-    AFS_GLOCK();
+ #  if defined(AFS_DARWIN_ENV) && defined(KERNEL_FUNNEL)
+     thread_funnel_switch(NETWORK_FUNNEL, KERNEL_FUNNEL);
+ #  endif
+     return (osi_socket *)newSocket;
+ 
+   bad:
+-    AFS_GLOCK();
+ #  if defined(AFS_DARWIN_ENV) && defined(KERNEL_FUNNEL)
+     thread_funnel_switch(NETWORK_FUNNEL, KERNEL_FUNNEL);
+ #  endif
+-- 
+2.44.0
+
