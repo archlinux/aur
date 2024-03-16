@@ -3,24 +3,25 @@
 _pkgname=ISOcodes
 _pkgver=2024.02.12
 pkgname=r-${_pkgname,,}
-pkgver=2024.02.12
-pkgrel=1
-pkgdesc='Selected ISO Codes'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Selected ISO Codes"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('02cb7b918034085dffcba0d329a2bc52514873f898a3a716560ebf17b57ae2e6')
+md5sums=('65379246fbe90371859da3d4df8b8ad0')
+b2sums=('a5d47633891cebfd34ea922667d1e94f8fdaa54654a50a9febc87e01d41146d43c7f7bf9f1fe94b918f87c4be9f005cdac6dc4d2bc2ee9bbd166e7729d430e87')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
