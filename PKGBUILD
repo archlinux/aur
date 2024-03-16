@@ -6,7 +6,7 @@ _pkgtagname=v0.15.0
 
 pkgname=octopi-notifier-frameworks
 pkgver=0.15.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Notifier for Octopi with Knotifications support'
 arch=('any')
 url="https://tintaescura.com/projects/octopi/"

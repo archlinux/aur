@@ -1,7 +1,7 @@
 pkgbase = octopi-notifier-frameworks
 	pkgdesc = Notifier for Octopi with Knotifications support
 	pkgver = 0.15.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tintaescura.com/projects/octopi/
 	arch = any
 	license = GPL2
