@@ -1,7 +1,7 @@
 pkgbase=harrison-micro-glide
 pkgname=("${pkgbase}-vst-bin" "${pkgbase}-vst3-bin")
 pkgver=1.0.0.c01d1d08
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://store.harrisonaudio.com/all-products/micro-glide"
 license=('EULA')
@@ -13,13 +13,13 @@ sha256sums=('62ed9f5be4a55702c1eff3ac1fc0c357b334a55c3453663f0110787d01a72697')
 
 package_harrison-micro-glide-vst-bin() {
 	pkgdesc="Harrison Drum Flow (VST)"
-	groups=("pro-aduio" "vst-plugins")
+	groups=("vst-plugins")
 	provides=("${pkgbase}-vst-bin")
 	install -Dm755 "$srcdir/Harrison_MicroGlide/vst/Harrison_MicroGlide.so" "$pkgdir/usr/lib/vst/Harrison_MicroGlide.so"
 }
 
 package_harrison-micro-glide-vst3-bin() {
 	pkgdesc="Harrison Drum Flow (VST3)"
-	groups=("pro-aduio" "vst3-plugins")
+	groups=("vst3-plugins")
 	install -Dm755 "$srcdir/Harrison_MicroGlide/vst3/Harrison_MicroGlide.vst3/Contents/x86_64-linux/Harrison_MicroGlide.so" "$pkgdir/usr/lib/vst3/Harrison_MicroGlide.vst3/Contents/x86_64-linux/Harrison_MicroGlide.so"
 }
