@@ -2,7 +2,7 @@
 
 pkgname=klipper-estimator
 _pkgname=${pkgname/-/_}
-pkgver=3.6.0
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="A tool for estimating the time a print will take on a 3D printer running Klipper firmware"
 url="https://github.com/Annex-Engineering/klipper_estimator"
@@ -11,12 +11,14 @@ license=("custom:MIT")
 options=("!lto")
 makedepends=(cargo)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Annex-Engineering/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('703a5b187fa5a6d26b71a197391df1a8d77b12560867c985882dc32c22c4907f43ffee3a1c9c040911d4278922797d7b5ec08eb6c36cdfd267f49eecd5cd4ec3')
+sha512sums=('a6b8030e9da20a8d0e49e35107b9f4960ba7722d962f91f2eef24e4b61a1119f80d35274eef47edaa1ca21ee0815ecc7c0a16e297732d82275af02859ad51da5')
 
 prepare() {
   cd "$_pkgname-$pkgver"
 
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  export RUSTUP_TOOLCHAIN=stable
+
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -35,8 +37,8 @@ build() {
 package() {
   cd "$_pkgname-$pkgver"
 
-  install -Dm755 target/release/$_pkgname -T "${pkgdir}/usr/bin/$pkgname"
-  install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm644 compat/CuraPostProcessing/KlipperEstimator.py "${pkgdir}/usr/lib/cura/plugins/PostProcessingPlugin/scripts/KlipperEstimator.py"
-  install -Dm755 contrib/klipper_estimator.sh "${pkgdir}/usr/share/klipper-estimator/contrib/klipper_estimator.sh"
+  install -Dm0755 target/release/$_pkgname -T "${pkgdir}/usr/bin/$pkgname"
+  install -Dm0644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm0644 compat/CuraPostProcessing/KlipperEstimator.py "${pkgdir}/usr/lib/cura/plugins/PostProcessingPlugin/scripts/KlipperEstimator.py"
+  install -Dm0755 contrib/klipper_estimator.sh "${pkgdir}/usr/share/klipper-estimator/contrib/klipper_estimator.sh"
 }
