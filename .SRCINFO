@@ -1,6 +1,6 @@
 pkgbase = thorium-browser-bin
 	pkgdesc = Chromium fork focused on high performance and security
-	pkgver = 121.0.6167.204
+	pkgver = 122.0.6261.132
 	pkgrel = 1
 	url = https://github.com/Alex313031/Thorium
 	install = thorium-browser.install
@@ -10,10 +10,10 @@ pkgbase = thorium-browser-bin
 	optdepends = kdialog: for file dialogs in KDE
 	optdepends = kwallet5: for storing passwords in KWallet
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
-	noextract = thorium-browser_121.0.6167.204_SSE3.deb
+	noextract = thorium-browser_122.0.6261.132_SSE3.deb
 	options = !emptydirs
 	options = !strip
-	source = https://github.com/Alex313031/Thorium/releases/download/M121.0.6167.204/thorium-browser_121.0.6167.204_SSE3.deb
+	source = https://github.com/Alex313031/Thorium/releases/download/M122.0.6261.132/thorium-browser_122.0.6261.132_SSE3.deb
 	sha256sums = SKIP
 
 pkgname = thorium-browser-bin

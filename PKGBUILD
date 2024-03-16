@@ -12,7 +12,7 @@ fi
 # basic info
 _pkgname="thorium-browser"
 pkgname="$_pkgname-bin"
-pkgver=121.0.6167.204
+pkgver=122.0.6261.132
 pkgrel=1
 pkgdesc="Chromium fork focused on high performance and security"
 url="https://github.com/Alex313031/Thorium"
