@@ -3,7 +3,7 @@
 
 pkgname=python-pymc
 _pkgname=${pkgname#python-}
-pkgver=5.10.4
+pkgver=5.11.0
 pkgrel=1
 pkgdesc="Markov chain Monte Carlo for Python"
 arch=(any)
@@ -33,8 +33,8 @@ makedepends=(
   python-setuptools
   python-wheel
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d67679a49e3d4e1827daa9bf02e4999756ca9364bfc277e8128a627dfb804aee')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('96d137933542cfd133154956969625d40780f9e29ad00904c206170490fac2b5')
 
 _archive="$_pkgname-$pkgver"
 
@@ -48,7 +48,7 @@ check() {
   cd "$_archive"
 
   local ignore_test_args=(
-    # Requires https://github.com/pyro-ppl/numpyro which is not yet pacakged.
+    # Requires https://github.com/pyro-ppl/numpyro which is not yet packaged.
     --ignore=tests/sampling/test_jax.py
     --ignore=tests/sampling/test_mcmc_external.py
 
