@@ -2,14 +2,14 @@
 
 pkgname=alire
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A catalog of ready-to-use Ada libraries plus a command-line tool (alr) to obtain, build, and incorporate them into your own projects. It aims to fulfill a similar role to Rust's cargo or OCaml's opam."
 arch=('i686' 'x86_64')
 url="https://alire.ada.dev/"
 license=(GPL3)
 depends=(unzip)
 makedepends=(git gprbuild)
-checkdepends=(python-e3-testsuite)
+checkdepends=(python-e3-testsuite python-pexpect)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alire-project/alire/archive/refs/tags/v$pkgver.tar.gz"
 alire.patch
 git+https://github.com/alire-project/xmlezout.git#commit=1fcbd0b9303d044d8f09a8ef652afa8c0400ee8b
