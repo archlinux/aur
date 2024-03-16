@@ -2,19 +2,21 @@
 # Contributor: Frédéric Tobias Christ <dev+mautrix-signal@ntr.li> <ftchrist:matrix.org>
 pkgname='mautrix-signal'
 _name='signal'
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A Matrix-Signal puppeting bridge (go rewrite)"
-arch=('any')
+arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/mautrix/signal"
-license=('AGPL')
-depends=()
+license=('AGPL-3.0-or-later')
+depends=(
+  'glibc'
+  'gcc-libs'
+  'libolm'
+)
 makedepends=(
   'go'
-  'libolm'
   'libsignal-ffi' # AUR
 )
-optdepends=()
 backup=(
   "etc/${pkgname}/config.yaml"
   "etc/${pkgname}/registration.yaml"
@@ -26,7 +28,7 @@ source=(
   "${pkgname}.sysusers"
   "${pkgname}.tmpfiles"
 )
-sha256sums=('b41195f29d615d26a8d572c4b4cc331cff6f225dc3c200f3cf603ce101e29fa8'
+sha256sums=('646736a97421b4a3e25afa4410ef3168cba66b4964b3df0d2468d36ca409b193'
             'fcdda5af56e07faa8b0ff127ccb560ae97e60945531b7bcf696100825d824324'
             'b47c0829a9f285e0a4bd7852e601f325e1fa8385ea96eaa92cad204c0e583adf'
             '5badc8727dfbf4531f93e86ae475c64753952ee60090a043be22b9dd9a124ca5')
