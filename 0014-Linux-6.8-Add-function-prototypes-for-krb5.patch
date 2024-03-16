@@ -1,0 +1,182 @@
+From e8e23ccf9d81e5c7df49d4e28441d7c986e47886 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Wed, 7 Feb 2024 15:25:10 -0700
+Subject: [PATCH 14/29] Linux 6.8: Add function prototypes for krb5
+
+The external files for heimdal/krb5 do not provide function prototypes
+in a header file that is used when building files that we use from
+heimdal/krb5 (e.g. crypto.c).
+
+These functions are flagged due to missing prototypes when building
+against a Linux 6.8 kernel (which sets the -Wmissing-declarations and
+-Wmissing-prototypes compiler flags as default). Linux 6.8 commit:
+ 'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
+
+When building against a kernel with CONFIG_WERROR=y, the build fails.
+
+We cannot modify the external source files, however there is the local
+OpenAFS include file, krb5_locl.h, that does contain OpenAFS specific
+changes.
+
+Add declarations to krb5_locl.h for the functions defined in the
+heimdal/krb5 source.
+
+There are no functional changes with this commit.
+
+Reviewed-on: https://gerrit.openafs.org/15621
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 612927dd1dd44bbd08eda790de12b24213583156)
+
+Change-Id: Iaae28186a24c3c5ca4407de9563c8cfed9644921
+---
+ src/crypto/rfc3961/krb5_locl.h | 132 +++++++++++++++++++++++++++++++++
+ 1 file changed, 132 insertions(+)
+
+diff --git a/src/crypto/rfc3961/krb5_locl.h b/src/crypto/rfc3961/krb5_locl.h
+index 6e706737c..04292eefa 100644
+--- a/src/crypto/rfc3961/krb5_locl.h
++++ b/src/crypto/rfc3961/krb5_locl.h
+@@ -287,6 +287,138 @@ krb5_error_code krb5_enctype_to_string(krb5_context context,
+ 				       krb5_enctype etype,
+ 				       char **string);
+ 
++/*
++ * Unused prototypes from heimdal/krb5.  These are functions that are not used
++ * outside of their compilation unit at all, but we may need to declare them to
++ * avoid compiler warnings.
++ */
++struct _krb5_key_data;
++struct _krb5_encryption_type;
++/* heimdal/krb5/crypto.c */
++KRB5_LIB_FUNCTION krb5_error_code _krb5_derive_key(krb5_context context,
++						   struct _krb5_encryption_type *et,
++						   struct _krb5_key_data *key,
++						   const void *constant,
++						   size_t len);
++KRB5_LIB_FUNCTION krb5_error_code krb5_allow_weak_crypto(krb5_context context,
++							 krb5_boolean enable);
++KRB5_LIB_FUNCTION krb5_error_code krb5_checksum_disable(krb5_context context,
++							krb5_cksumtype type);
++KRB5_LIB_FUNCTION krb5_boolean krb5_checksum_is_keyed(krb5_context context,
++						      krb5_cksumtype type);
++KRB5_LIB_FUNCTION krb5_error_code krb5_cksumtype_valid(krb5_context context,
++						       krb5_cksumtype ctype);
++KRB5_LIB_FUNCTION krb5_error_code krb5_create_checksum_iov(krb5_context context,
++							   krb5_crypto crypto,
++							   unsigned usage,
++							   krb5_crypto_iov *data,
++							   unsigned int num_data,
++							   krb5_cksumtype *type);
++KRB5_LIB_FUNCTION krb5_error_code krb5_crypto_getblocksize(krb5_context context,
++							   krb5_crypto crypto,
++							   size_t *blocksize);
++KRB5_LIB_FUNCTION krb5_error_code krb5_crypto_getenctype(krb5_context context,
++							 krb5_crypto crypto,
++							 krb5_enctype *enctype);
++KRB5_LIB_FUNCTION krb5_error_code krb5_crypto_getpadsize(krb5_context context,
++							 krb5_crypto crypto,
++							 size_t *padsize);
++KRB5_LIB_FUNCTION krb5_error_code krb5_crypto_length(krb5_context context,
++						     krb5_crypto crypto,
++						     int type,
++						     size_t *len);
++KRB5_LIB_FUNCTION krb5_error_code krb5_crypto_length_iov(krb5_context context,
++							 krb5_crypto crypto,
++							 krb5_crypto_iov *data,
++							 unsigned int num_data);
++KRB5_LIB_FUNCTION krb5_error_code krb5_decrypt_iov_ivec(krb5_context context,
++							krb5_crypto crypto,
++							unsigned usage,
++							krb5_crypto_iov *data,
++							unsigned int num_data,
++							void *ivec);
++KRB5_LIB_FUNCTION krb5_error_code krb5_decrypt_ivec(krb5_context context,
++						    krb5_crypto crypto,
++						    unsigned usage,
++						    void *data,
++						    size_t len,
++						    krb5_data *result,
++						    void *ivec);
++KRB5_LIB_FUNCTION krb5_error_code krb5_encrypt_iov_ivec(krb5_context context,
++							krb5_crypto crypto,
++							unsigned usage,
++							krb5_crypto_iov *data,
++							int num_data,
++							void *ivec);
++KRB5_LIB_FUNCTION krb5_error_code krb5_encrypt_ivec(krb5_context context,
++						    krb5_crypto crypto,
++						    unsigned usage,
++						    const void *data,
++						    size_t len,
++						    krb5_data *result,
++						    void *ivec);
++KRB5_LIB_FUNCTION krb5_error_code krb5_enctype_disable(krb5_context context,
++						       krb5_enctype enctype);
++KRB5_LIB_FUNCTION krb5_error_code krb5_enctype_enable(krb5_context context,
++						      krb5_enctype enctype);
++KRB5_LIB_FUNCTION krb5_error_code krb5_enctype_to_keytype(krb5_context context,
++							  krb5_enctype etype,
++							  krb5_keytype *keytype);
++KRB5_LIB_FUNCTION size_t krb5_get_wrapped_length (krb5_context context,
++						  krb5_crypto  crypto,
++						  size_t       data_len);
++KRB5_LIB_FUNCTION krb5_error_code krb5_hmac(krb5_context context,
++					    krb5_cksumtype cktype,
++					    const void *data,
++					    size_t len,
++					    unsigned usage,
++					    krb5_keyblock *key,
++					    Checksum *result);
++KRB5_LIB_FUNCTION krb5_boolean krb5_is_enctype_weak(krb5_context context,
++						    krb5_enctype enctype);
++KRB5_LIB_FUNCTION krb5_error_code krb5_string_to_enctype(krb5_context context,
++							 const char *string,
++							 krb5_enctype *etype);
++KRB5_LIB_FUNCTION krb5_error_code krb5_verify_checksum_iov(krb5_context context,
++							   krb5_crypto crypto,
++							   unsigned usage,
++							   krb5_crypto_iov *data,
++							   unsigned int num_data,
++							   krb5_cksumtype *type);
++KRB5_LIB_FUNCTION krb5_error_code krb5_generate_random_keyblock(krb5_context context,
++								krb5_enctype type,
++								krb5_keyblock *key);
++KRB5_LIB_FUNCTION krb5_boolean krb5_checksum_is_collision_proof(krb5_context context,
++								krb5_cksumtype type);
++
++KRB5_LIB_FUNCTION krb5_error_code krb5_cksumtype_to_enctype(krb5_context context,
++							    krb5_cksumtype ctype,
++							    krb5_enctype *etype);
++KRB5_LIB_FUNCTION krb5_error_code krb5_encrypt_EncryptedData(krb5_context context,
++							     krb5_crypto crypto,
++							     unsigned usage,
++							     void *data,
++							     size_t len,
++							     int kvno,
++							     EncryptedData *result);
++KRB5_LIB_FUNCTION krb5_error_code krb5_crypto_getconfoundersize(krb5_context context,
++								krb5_crypto crypto,
++								size_t *confoundersize);
++
++KRB5_LIB_FUNCTION krb5_error_code krb5_decrypt_EncryptedData(krb5_context context,
++							     krb5_crypto crypto,
++							     unsigned usage,
++							     const EncryptedData *e,
++							     krb5_data *result);
++/* heimdal/krb5/data.c */
++KRB5_LIB_FUNCTION krb5_error_code krb5_data_realloc(krb5_data *p, int len);
++KRB5_LIB_FUNCTION krb5_error_code krb5_copy_data(krb5_context context,
++						 const krb5_data *indata,
++						 krb5_data **outdata);
++KRB5_LIB_FUNCTION int krb5_data_cmp(const krb5_data *data1, const krb5_data *data2);
++/* heimdal/krb5/store-int.c */
++KRB5_LIB_FUNCTION krb5_ssize_t _krb5_get_int(void *buffer, unsigned long *value, size_t size);
++
+ #include "crypto.h"
+ 
+ struct _krb5_checksum_type * _krb5_find_checksum (krb5_cksumtype);
+-- 
+2.44.0
+

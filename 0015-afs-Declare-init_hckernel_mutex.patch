@@ -1,0 +1,63 @@
+From c3f5353b03396d89b2a1595ca3a38d4312cb62cf Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Thu, 8 Feb 2024 11:50:16 -0700
+Subject: [PATCH 15/29] afs: Declare init_hckernel_mutex()
+
+The function init_hckernel_mutex() (in rand.c) is flagged due to a
+missing prototype when building against a Linux 6.8 kernel (which sets
+the -Wmissing-declarations and -Wmissing-prototypes compiler flags as
+default). Linux 6.8 commit:
+ 'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
+
+When building against a kernel with CONFIG_WERROR=y, the build fails.
+
+Add a function prototype for init_hckernel_mutex() to afs_osi.h and
+remove the prototype from afs_osi.c
+
+There are no functional changes with this commit.
+
+Reviewed-on: https://gerrit.openafs.org/15622
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit ccc2af429710104793fb4659b10697cceab182b3)
+
+Change-Id: Ic5eb4584a980657a01a1cb4411c0c1f03b1f3560
+---
+ src/afs/afs_osi.c | 5 -----
+ src/afs/afs_osi.h | 5 +++++
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/afs/afs_osi.c b/src/afs/afs_osi.c
+index 6f54c63c7..e8f852e2e 100644
+--- a/src/afs/afs_osi.c
++++ b/src/afs/afs_osi.c
+@@ -25,11 +25,6 @@
+  *     -- On HP called from afsc_link.
+  *     -- On SGI called from afs_init. */
+ 
+-/* No hckernel-specific header for this prototype. */
+-#ifndef UKERNEL
+-extern void init_hckernel_mutex(void);
+-#endif
+-
+ afs_lock_t afs_ftf;		/* flush text lock */
+ 
+ #ifdef AFS_SGI_ENV
+diff --git a/src/afs/afs_osi.h b/src/afs/afs_osi.h
+index 79c44a985..e3f0e0ccb 100644
+--- a/src/afs/afs_osi.h
++++ b/src/afs/afs_osi.h
+@@ -458,4 +458,9 @@ extern int osi_ShouldDeferRemunlink(struct vcache *avc);
+ # define osi_ShouldDeferRemunlink(avc) 0
+ #endif
+ 
++/* No hckernel-specific header for this prototype. */
++#ifndef UKERNEL
++extern void init_hckernel_mutex(void);
++#endif
++
+ #endif /* _AFS_OSI_ */
+-- 
+2.44.0
+

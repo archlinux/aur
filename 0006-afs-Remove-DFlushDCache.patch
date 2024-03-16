@@ -1,0 +1,72 @@
+From 177c84e86d65936636a4db5548f4424f04a1b33c Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Fri, 12 Jan 2024 08:56:31 -0700
+Subject: [PATCH 06/29] afs: Remove DFlushDCache()
+
+The function DFlushDcache() is not referenced anywhere within the
+source tree.
+
+Remove the function DFlushDCache().
+
+The commit: 'disconnected-shadow-directory-fixes-20090121' (4045f3d535)
+removed the code reference to DFlushDCache() and the commit:
+"dir: Prototype and function name cleanup" (5ad1e6cb90) removed the
+function prototype.  The function was introduced in the commit:
+"disconnected-flush-before-shadowing-20090119" (e1cc987ea5).
+
+This function is flagged due to a missing prototype when building
+against a Linux 6.8 kernel (which sets the -Wmissing-declarations and
+-Wmissing-prototypes compiler flags as default). Linux 6.8 commit:
+ "Makefile.extrawarn: turn on missing-prototypes globally" (0fcb70851f).
+
+When building against a kernel with CONFIG_WERROR=y, the build fails.
+
+Reviewed-on: https://gerrit.openafs.org/15615
+Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 432ac5810e51bb5bb2cf1df0bfebc64d1c4d7a39)
+
+Change-Id: Ib8ab79c76c633632215e02235f47fdb1d744e721
+---
+ src/afs/afs_buffer.c | 25 -------------------------
+ 1 file changed, 25 deletions(-)
+
+diff --git a/src/afs/afs_buffer.c b/src/afs/afs_buffer.c
+index 5552d1c21..9538c6806 100644
+--- a/src/afs/afs_buffer.c
++++ b/src/afs/afs_buffer.c
+@@ -516,31 +516,6 @@ DFlushBuffer(struct buffer *ab)
+     afs_CFileClose(tfile);
+ }
+ 
+-void
+-DFlushDCache(struct dcache *adc)
+-{
+-    int i;
+-    struct buffer *tb;
+-
+-    ObtainReadLock(&afs_bufferLock);
+-
+-    for (i = 0; i <= PHPAGEMASK; i++)
+-        for (tb = phTable[pHash(adc->index, i)]; tb; tb = tb->hashNext)
+-	    if (tb->fid == adc->index) {
+-		ObtainWriteLock(&tb->lock, 701);
+-		tb->lockers++;
+-		ReleaseReadLock(&afs_bufferLock);
+-		if (tb->dirty) {
+-		    DFlushBuffer(tb);
+-		}
+-		tb->lockers--;
+-		ReleaseWriteLock(&tb->lock);
+-		ObtainReadLock(&afs_bufferLock);
+-	    }
+-
+-    ReleaseReadLock(&afs_bufferLock);
+-}
+-
+ int
+ DFlush(void)
+ {
+-- 
+2.44.0
+

@@ -1,0 +1,144 @@
+From 1505e0d19cba9b66d0e357f6eafdde15f638eb2e Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Thu, 15 Feb 2024 09:00:05 -0700
+Subject: [PATCH 17/29] afs: Move function prototypes into headers
+
+Several .c files contain external function prototypes, while the
+implementing files do not have these prototypes.
+
+Move these prototypes into header files so that the prototypes are
+available to both the caller and the implementation.
+
+Because the file holding the implementation does not have prototypes,
+these functions are flagged when building against a Linux 6.8 kernel
+(which sets the -Wmissing-declarations and -Wmissing-prototypes compiler
+flags as default). Linux 6.8 commit:
+ 'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
+
+When building against a kernel with CONFIG_WERROR=y, the build fails.
+
+Add the prototypes for the following to afs_prototypes.h:
+  exporter_add
+  afs_syscall (AFS_LINUX_ENV)
+  BlobScan
+
+Remove the prototypes from the .c files where they are referenced.
+
+Reviewed-on: https://gerrit.openafs.org/15642
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 85781d7e83ae4501d8ab267bf55ef63f90f63101)
+
+Change-Id: I74333e99e08af88bebdcbff4767d79397acac358
+---
+ src/afs/LINUX/osi_ioctl.c       | 3 ---
+ src/afs/LINUX/osi_syscall.c     | 3 ---
+ src/afs/LINUX/osi_vnodeops.c    | 2 --
+ src/afs/VNOPS/afs_vnop_lookup.c | 2 --
+ src/afs/afs_nfsclnt.c           | 1 -
+ src/afs/afs_prototypes.h        | 7 +++++++
+ 6 files changed, 7 insertions(+), 11 deletions(-)
+
+diff --git a/src/afs/LINUX/osi_ioctl.c b/src/afs/LINUX/osi_ioctl.c
+index fbdee29cb..3e797745c 100644
+--- a/src/afs/LINUX/osi_ioctl.c
++++ b/src/afs/LINUX/osi_ioctl.c
+@@ -34,9 +34,6 @@
+ 
+ extern struct proc_dir_entry *openafs_procfs;
+ 
+-extern asmlinkage long
+-afs_syscall(long syscall, long parm1, long parm2, long parm3, long parm4);
+-
+ static int
+ afs_ioctl(struct inode *inode, struct file *file, unsigned int cmd,
+ 	  unsigned long arg)
+diff --git a/src/afs/LINUX/osi_syscall.c b/src/afs/LINUX/osi_syscall.c
+index 5e9e5194a..dc78da874 100644
+--- a/src/afs/LINUX/osi_syscall.c
++++ b/src/afs/LINUX/osi_syscall.c
+@@ -91,9 +91,6 @@ osi_syscall_clean(void)
+ 
+ 
+ /***** ALL PLATFORMS *****/
+-extern asmlinkage long
+-afs_syscall(long syscall, long parm1, long parm2, long parm3, long parm4);
+-
+ static SYSCALLTYPE *afs_sys_call_table;
+ static SYSCALLTYPE afs_ni_syscall = 0;
+ 
+diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
+index 7e85aa552..08fccb1b2 100644
+--- a/src/afs/LINUX/osi_vnodeops.c
++++ b/src/afs/LINUX/osi_vnodeops.c
+@@ -407,8 +407,6 @@ afs_linux_write(struct file *fp, const char *buf, size_t count, loff_t * offp)
+ }
+ #endif
+ 
+-extern int BlobScan(struct dcache * afile, afs_int32 ablob, afs_int32 *ablobOut);
+-
+ /* This is a complete rewrite of afs_readdir, since we can make use of
+  * filldir instead of afs_readdir_move. Note that changes to vcache/dcache
+  * handling and use of bulkstats will need to be reflected here as well.
+diff --git a/src/afs/VNOPS/afs_vnop_lookup.c b/src/afs/VNOPS/afs_vnop_lookup.c
+index e1796c54f..0fbe4e8f9 100644
+--- a/src/afs/VNOPS/afs_vnop_lookup.c
++++ b/src/afs/VNOPS/afs_vnop_lookup.c
+@@ -667,8 +667,6 @@ afs_CheckBulkStatus(struct afs_conn *tc, int nFids, AFSBulkStats *statParm,
+     return 0;
+ }
+ 
+-extern int BlobScan(struct dcache * afile, afs_int32 ablob, afs_int32 *ablobOut);
+-
+ /* called with an unlocked directory and directory cookie.  Areqp
+  * describes who is making the call.
+  * Scans the next N (about 30, typically) directory entries, and does
+diff --git a/src/afs/afs_nfsclnt.c b/src/afs/afs_nfsclnt.c
+index fbb5006ce..4c7806d24 100644
+--- a/src/afs/afs_nfsclnt.c
++++ b/src/afs/afs_nfsclnt.c
+@@ -160,7 +160,6 @@ afs_nfsclient_init(void)
+     osi_Assert(ISAFS_GLOCK());
+ #endif
+     if (!init_nfsexporter) {
+-	extern struct afs_exporter *exporter_add();
+ 
+ 	init_nfsexporter = 1;
+ 	LOCK_INIT(&afs_xnfspag, "afs_xnfspag");
+diff --git a/src/afs/afs_prototypes.h b/src/afs/afs_prototypes.h
+index 208bd0338..9b3b1afec 100644
+--- a/src/afs/afs_prototypes.h
++++ b/src/afs/afs_prototypes.h
+@@ -331,6 +331,8 @@ extern void init_sys_error_to_et(void);
+ 
+ /* afs_exporter.c */
+ extern struct afs_exporter *root_exported;
++extern struct afs_exporter * exporter_add(afs_int32 size, struct exporterops *ops,
++					  afs_int32 state, afs_int32 type, char *data);
+ extern struct afs_exporter *exporter_find(int type);
+ extern void shutdown_exporter(void);
+ 
+@@ -923,6 +925,10 @@ extern int afs3_syscall(afs_proc_t *p, void *args, long *retval);
+ extern int Afs_syscall(void);
+ #endif
+ 
++#if defined(AFS_LINUX_ENV)
++extern asmlinkage long afs_syscall(long syscall, long parm1, long parm2, long parm3, long parm4);
++#endif
++
+ /* afs_tokens.c */
+ struct ktc_tokenUnion;
+ struct ktc_setTokenData;
+@@ -1292,6 +1298,7 @@ extern void afs_PrefetchChunk(struct vcache *avc, struct dcache *adc,
+ 
+ /* VNOPS/afs_vnop_readdir.c */
+ extern int afs_rd_stash_i;
++extern int BlobScan(struct dcache * afile, afs_int32 ablob, int *ablobOut);
+ #if defined(AFS_SUN5_ENV) || defined(AFS_SGI_ENV) || defined(AFS_DARWIN_ENV) || defined(AFS_XBSD_ENV)
+ extern int afs_readdir(OSI_VC_DECL(avc), struct uio *auio,
+ 		       afs_ucred_t *acred, int *eofp);
+-- 
+2.44.0
+

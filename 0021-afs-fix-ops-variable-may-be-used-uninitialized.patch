@@ -1,0 +1,80 @@
+From 216078c99ab6d65ba607d5d7522fdb154048ea59 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Fri, 9 Feb 2024 09:01:33 -0700
+Subject: [PATCH 21/29] afs: fix 'ops' variable may be used uninitialized
+
+When the function rxfs_storeInit() has the static attribute, gcc flags
+the variable 'ops' as possibly uninitialized.
+
+In function 'afs_CacheStoreDCaches',
+    inlined from 'afs_CacheStoreVCache' at
+     .../src/afs/afs_fetchstore.c:630:14:
+     .../afs/afs_fetchstore.c:535:17: error: 'ops' may be used
+     uninitialized [-Werror=maybe-uninitialized]
+      535 |         code = (*ops->destroy)(&rock, code);
+          |                ~^~~~~~~~~~~~~~
+     ...src/afs/afs_fetchstore.c: In function 'afs_CacheStoreVCache':
+     ...src/afs/afs_fetchstore.c:567:22: note: 'ops' was declared here
+      567 |     struct storeOps *ops;
+          |                      ^~~
+     cc1: all warnings being treated as errors
+
+This is a false positive report by the gcc compiler.
+
+The function rxfs_storeInit() returns a 0 only when it has successfully
+assigned a value to the ops variable, and afs_CacheStoreDcaches() is
+only called if the return value from rxfs_storeInit() is 0.
+
+The ops variable is only used within a block that is within a for loop,
+which could leave a stray value if the variable isn't initialized within
+that loop.
+
+Assigning a NULL to ops is sufficient to avoid the compiler error, and
+relocating the declaration of the ops variable into the block where it
+is actually used ensures that it's always initialized before its use
+within the loop.
+
+Clean up whitespace in the statement that follows the new location for
+the ops variable.
+
+Note, this commit is being added before a commit that adds the static
+attribute to the rxfs_storeInit() function which also "fixes" the
+compiler error (see: afs: Add static attribute to internal functions).
+
+Reviewed-on: https://gerrit.openafs.org/15630
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 36e4c02ff27b9d66755b9544778896b9b1e5c391)
+
+Change-Id: I9d8a07e576c6bf889f8f182c6fc0d34dc997c004
+---
+ src/afs/afs_fetchstore.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/afs/afs_fetchstore.c b/src/afs/afs_fetchstore.c
+index 7b35b8f7f..63b370dae 100644
+--- a/src/afs/afs_fetchstore.c
++++ b/src/afs/afs_fetchstore.c
+@@ -564,7 +564,6 @@ afs_CacheStoreVCache(struct dcache **dcList, struct vcache *avc,
+ 		     afs_hyper_t *anewDV, afs_size_t *amaxStoredLength)
+ {
+     afs_int32 code = 0;
+-    struct storeOps *ops;
+     void * rock = NULL;
+     unsigned int i, j;
+ 
+@@ -619,7 +618,8 @@ afs_CacheStoreVCache(struct dcache **dcList, struct vcache *avc,
+ 		       ICL_HANDLE_OFFSET(length));
+ 
+ 	    do {
+-	        tc = afs_Conn(&avc->f.fid, areq, 0, &rxconn);
++		struct storeOps *ops = NULL;
++		tc = afs_Conn(&avc->f.fid, areq, 0, &rxconn);
+ 
+ #ifdef AFS_64BIT_CLIENT
+ 	      restart:
+-- 
+2.44.0
+

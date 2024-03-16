@@ -1,0 +1,156 @@
+From b6458796f2deef285fd0ad06480b5fc35cd8acb3 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Mon, 11 Mar 2024 09:05:33 -0600
+Subject: [PATCH 28/29] Linux 6.8: Use roken's strlcpy() in kernel module
+
+The Linux 6.8 commit 'string: Remove strlcpy()' (d26270061a) removed the
+the strlcpy function from the Linux kernel.  The replacement function,
+strscpy(), cannot be used as a drop-in replacement as its currently a
+Linux kernel specific function and there are differences in the returned
+value.
+
+We can use roken's strlcpy() (provided in roken/strlcpy.c).
+
+Create a configure test to that defines its own strlcpy() to test
+if the kernel doesn't provide one itself. Note, we need to use a
+different function signature for strlcpy() from what the kernel might
+have otherwise the test build succeeds when the kernel does provide a
+strlcpy().
+
+Update the OpenAFS kernel specific roken.h to define the prototype for
+strlcpy when it's not present in the Linux kernel.  We need to match the
+defines used in the 'real' roken.h so the roken/strlcpy.c can build
+properly. Add defines for ROKEN_LIB_FUNCTION, ROKEN_LIB_CALL and
+ROKEN_LIB_VARIABLE to the kernel roken.h
+
+Update Linux's osi_machdep.h to include roken.h so the strlcpy protoype
+is available.
+
+Update the Linux MakefileProto to include the strcpy-kernel object
+when building the kernel module.
+
+Reviewed-on: https://gerrit.openafs.org/15646
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 30b18c165752e6d0ce7b6daa6a90453f5e5e6d17)
+
+Change-Id: I8013623e8f735d15bb7d4ac84ed0867f12b77783
+---
+ src/afs/LINUX/osi_machdep.h       |  1 +
+ src/cf/linux-kernel-func.m4       | 11 +++++++++++
+ src/crypto/hcrypto/kernel/roken.h | 29 +++++++++++++++++++++++++++++
+ src/external/libafsdep            |  1 +
+ src/libafs/MakefileProto.LINUX.in |  6 ++++--
+ 5 files changed, 46 insertions(+), 2 deletions(-)
+
+diff --git a/src/afs/LINUX/osi_machdep.h b/src/afs/LINUX/osi_machdep.h
+index 916a1dfed..263c8633c 100644
+--- a/src/afs/LINUX/osi_machdep.h
++++ b/src/afs/LINUX/osi_machdep.h
+@@ -77,6 +77,7 @@
+ #endif
+ 
+ #include "afs/sysincludes.h"
++#include "roken.h"
+ 
+ #if !defined(HAVE_LINUX_TIME_T)
+ typedef time64_t time_t;
+diff --git a/src/cf/linux-kernel-func.m4 b/src/cf/linux-kernel-func.m4
+index 7f3000fc1..6f9d35022 100644
+--- a/src/cf/linux-kernel-func.m4
++++ b/src/cf/linux-kernel-func.m4
+@@ -252,6 +252,17 @@ AC_CHECK_LINUX_FUNC([inode_atime_mtime_accessors],
+ 		    [inode_set_atime(NULL, 0, 0);
+ 		     inode_set_mtime(NULL, 0, 0);])
+ 
++dnl Linux 6.8 removed the strlcpy() function.  We test to see if we can redefine
++dnl a strlcpy() function.  We use a totally different function signature to
++dnl to ensure that this fails when the kernel does provide strlcpy().
++AC_CHECK_LINUX_FUNC([no_strlcpy],
++		    [[#include <linux/string.h>
++		     size_t strlcpy(char *d);
++		     size_t strlcpy(char *d) { return strlen(d); }]],
++		    [[static char buff[10];
++		     size_t s;
++		     s = strlcpy(buff);]])
++
+ dnl Consequences - things which get set as a result of the
+ dnl                above tests
+ AS_IF([test "x$ac_cv_linux_func_d_alloc_anon" = "xno"],
+diff --git a/src/crypto/hcrypto/kernel/roken.h b/src/crypto/hcrypto/kernel/roken.h
+index f8c233468..6cb060131 100644
+--- a/src/crypto/hcrypto/kernel/roken.h
++++ b/src/crypto/hcrypto/kernel/roken.h
+@@ -11,6 +11,35 @@
+ # error "This header is for kernel code only"
+ #endif
+ 
++/*
++ * The following function annotations are not needed when building for kernel
++ * space
++ */
++#define ROKEN_LIB_FUNCTION
++#define ROKEN_LIB_CALL
++#define ROKEN_LIB_VARIABLE
++
++/*
++ * Our HAVE_STRLCPY from autoconf refers to whether strlcpy() is available in
++ * userspace. Whether it's available in the kernel is another question, so
++ * override HAVE_STRLCPY here. Usually it is available (only a few cases lack
++ * it), so turn it on by default, and turn it off for a few cases below.
++ */
++#undef HAVE_STRLCPY
++#define HAVE_STRLCPY 1
++
++#ifdef AFS_AIX_ENV
++# undef HAVE_STRLCPY
++#elif defined(AFS_LINUX_ENV) && defined(HAVE_LINUX_NO_STRLCPY)
++# undef HAVE_STRLCPY
++#endif
++
++/* strlcpy.c */
++#if defined (AFS_LINUX_ENV) && !defined(HAVE_STRLCPY)
++# define strlcpy rk_strlcpy
++ROKEN_LIB_FUNCTION size_t ROKEN_LIB_CALL strlcpy (char *, const char *, size_t);
++#endif
++
+ /* ct.c */
+ int ct_memcmp(const void *p1, const void *p2, size_t len);
+ 
+diff --git a/src/external/libafsdep b/src/external/libafsdep
+index fb365df2d..9d36a30c0 100644
+--- a/src/external/libafsdep
++++ b/src/external/libafsdep
+@@ -24,3 +24,4 @@ heimdal/krb5/crypto-evp.c
+ heimdal/krb5/keyblock.c
+ heimdal/krb5/store-int.c
+ heimdal/roken/ct.c
++heimdal/roken/strlcpy.c
+\ No newline at end of file
+diff --git a/src/libafs/MakefileProto.LINUX.in b/src/libafs/MakefileProto.LINUX.in
+index 8744ab8b6..6e62c8c97 100644
+--- a/src/libafs/MakefileProto.LINUX.in
++++ b/src/libafs/MakefileProto.LINUX.in
+@@ -42,7 +42,8 @@ AFS_OS_OBJS = \
+ 	osi_ioctl.o \
+ 	osi_proc.o \
+ 	osi_vnodeops.o \
+-	osi_pagecopy.o
++	osi_pagecopy.o \
++	strlcpy-kernel.o
+ 
+ AFS_OS_PAGOBJS = \
+ 	osi_alloc.o \
+@@ -59,7 +60,8 @@ AFS_OS_PAGOBJS = \
+ 	osi_flush.o \
+ <all>
+ 	osi_ioctl.o \
+-	osi_pag_module.o 
++	osi_pag_module.o \
++	strlcpy-kernel.o
+ 
+ AFS_OS_NFSOBJS =
+ 
+-- 
+2.44.0
+

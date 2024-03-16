@@ -1,0 +1,58 @@
+From ca64798e8baf3378e3cc7a619b9e02a715a39ddc Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Fri, 12 Jan 2024 09:09:39 -0700
+Subject: [PATCH 07/29] afs: Remove afs_MemExtendEntry()
+
+The function afs_MemExtendEntry() is not referenced anywhere within
+the source tree.
+
+Remove the function afs_MemExtendEntry().
+
+The commit: 'memcache: add extend-entry function' (f821c7e5c8)
+introduced the function, but afs_MemExtendEntry() has never been
+referenced or defined within a header file.
+
+This function is flagged due to a missing prototype when building
+against a Linux 6.8 kernel (which sets the -Wmissing-declarations and
+-Wmissing-prototypes compiler flags as default). Linux 6.8 commit:
+ 'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
+
+When building against a kernel with CONFIG_WERROR=y, the build fails.
+
+Note, afsMemExtendedEntry() was a wrapper for the function
+_afs_MemExtendedEntry(), which is still used.
+
+Reviewed-on: https://gerrit.openafs.org/15616
+Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit eab2a4ae758876bb7547d289f936f9cfc4227cf5)
+
+Change-Id: I37f241a6df33ab15249c6708d5ca820353c8b413
+---
+ src/afs/afs_memcache.c | 10 ----------
+ 1 file changed, 10 deletions(-)
+
+diff --git a/src/afs/afs_memcache.c b/src/afs/afs_memcache.c
+index 936cbe927..419083da2 100644
+--- a/src/afs/afs_memcache.c
++++ b/src/afs/afs_memcache.c
+@@ -302,16 +302,6 @@ afs_MemCacheTruncate(struct osi_file *fP, int size)
+     return 0;
+ }
+ 
+-int
+-afs_MemExtendEntry(struct memCacheEntry *mceP, afs_uint32 size)
+-{
+-    int code = 0;
+-    ObtainWriteLock(&mceP->afs_memLock, 560);
+-    code = _afs_MemExtendEntry(mceP, size);
+-    ReleaseWriteLock(&mceP->afs_memLock);
+-    return code;
+-}
+-
+ void
+ shutdown_memcache(void)
+ {
+-- 
+2.44.0
+

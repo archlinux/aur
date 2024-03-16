@@ -1,0 +1,35 @@
+From 78e644655a3858113f33f534d018220ab2eaabc0 Mon Sep 17 00:00:00 2001
+From: Andrew Deason <adeason@sinenomine.net>
+Date: Thu, 28 Jun 2018 12:50:52 -0500
+Subject: [PATCH 01/29] afs: Make afs_AllocDCache static
+
+Nothing using afs_AllocDCache outside of afs_dcache.c. Declare the
+function static, to ensure that nobody else uses it, and to maybe
+allow for more compiler optimization.
+
+Reviewed-on: https://gerrit.openafs.org/13226
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 4ab70de9641807bd06056f0c1ac79550453b9574)
+
+Change-Id: I6fd9e31c4b2e862174402f731a77c91599893223
+---
+ src/afs/afs_dcache.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/afs/afs_dcache.c b/src/afs/afs_dcache.c
+index 3572f2f23..46d0bdba5 100644
+--- a/src/afs/afs_dcache.c
++++ b/src/afs/afs_dcache.c
+@@ -1674,7 +1674,7 @@ afs_AllocDiscardDSlot(afs_int32 lock)
+  *
+  * \return The new dcache.
+  */
+-struct dcache *
++static struct dcache *
+ afs_AllocDCache(struct vcache *avc, afs_int32 chunk, afs_int32 lock,
+ 		struct VenusFid *ashFid)
+ {
+-- 
+2.44.0
+

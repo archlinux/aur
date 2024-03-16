@@ -1,0 +1,52 @@
+From 8b9831622af6da269d12668e1b50816872dafcc7 Mon Sep 17 00:00:00 2001
+From: Andrew Deason <adeason@sinenomine.net>
+Date: Tue, 7 Dec 2021 15:43:35 -0600
+Subject: [PATCH 24/29] rxgen: Declare generated PKG_TranslateOpCode()
+
+Ever since commit 5c77a6ca (rxgen: add *TranslateOpcode functions to
+XDR code), rxgen generates a PKG_TranslateOpCode function in the
+relevant .xdr.c source, which can translate an RPC opcode into the RPC
+name. But we never declare this function in a header file, making it
+impossible to use without compiler warnings (unless the caller
+declares the function itself).
+
+To make it possible to actually use this function, declare this
+function in the generated header file.
+
+Reviewed-on: https://gerrit.openafs.org/14871
+Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 9b2c27fc6d299cb0b23eca3e8cb25b7e0c41b11a)
+
+Change-Id: I2479ff7f6579769b3319b2939ffde60fe570c880
+---
+ src/rxgen/rpc_parse.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/rxgen/rpc_parse.c b/src/rxgen/rpc_parse.c
+index 768e42f3b..59854f4d5 100644
+--- a/src/rxgen/rpc_parse.c
++++ b/src/rxgen/rpc_parse.c
+@@ -2150,6 +2150,8 @@ h_ProcMainBody_setup(void)
+ {
+     f_print(fout,"\nextern int %s%sExecuteRequest(struct rx_call *);\n",
+ 	    prefix, PackagePrefix[PackageIndex]);
++    f_print(fout,"extern char * %s%sTranslateOpCode(int op);\n", prefix,
++	    PackagePrefix[PackageIndex]);
+ }
+ 
+ static void
+@@ -2161,6 +2163,8 @@ h_HeadofOldStyleProc_setup(void)
+     f_print(fout,"\nextern int %s%sExecuteRequest(struct rx_call *);\n",
+ 	    prefix, pprefix);
+     f_print(fout,"\nextern int %sOpCodeIndex(int op);\n", PackagePrefix[PackageIndex]);
++    f_print(fout, "extern char * %s%sTranslateOpCode(int op);\n",
++	    prefix, pprefix);
+ }
+ 
+ void
+-- 
+2.44.0
+

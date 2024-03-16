@@ -1,0 +1,51 @@
+From bc446c8fa62df6ce9ab4be50b8b1da54901863ad Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Fri, 12 Jan 2024 09:28:02 -0700
+Subject: [PATCH 09/29] afs: Remove dummy_PSetAcl()
+
+The function dummy_PSetAcl() is not referenced anywhere within the
+source tree.
+
+Remove the function dummy_PSetAcl().
+
+The commit: 'doxygen-comments-20081010' (4b72f8765c)
+introduced the function, but dummy_PSetAcl() has never been referenced
+or defined within a header file.
+
+This function is flagged due to a missing prototype when building
+against a Linux 6.8 kernel (which sets the -Wmissing-declarations and
+-Wmissing-prototypes compiler flags as default). Linux 6.8 commit:
+ 'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
+
+When building against a kernel with CONFIG_WERROR=y, the build fails.
+
+Reviewed-on: https://gerrit.openafs.org/15618
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 05ca98687d882c72915e91430e29a4f2a36c502c)
+
+Change-Id: Ie4420a365e07d2d8564530e004df75330e86bea5
+---
+ src/afs/afs_pioctl.c | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/src/afs/afs_pioctl.c b/src/afs/afs_pioctl.c
+index 9182a4b52..7ddb5add2 100644
+--- a/src/afs/afs_pioctl.c
++++ b/src/afs/afs_pioctl.c
+@@ -1426,12 +1426,6 @@ DECL_PIOCTL(PGetFID)
+  *
+  * \post Changed ACL, via direct writing to the wire
+  */
+-int
+-dummy_PSetAcl(char *ain, char *aout)
+-{
+-    return 0;
+-}
+-
+ DECL_PIOCTL(PSetAcl)
+ {
+     afs_int32 code;
+-- 
+2.44.0
+

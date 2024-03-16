@@ -1,0 +1,54 @@
+From fb3a69c84ced6db6aa9aeb506bfb64ac18745a92 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Fri, 12 Jan 2024 09:13:27 -0700
+Subject: [PATCH 08/29] afs: Remove afs_osi_UnmaskUserLoop()
+
+The function afs_osi_UnmaskUserLoop() is not referenced anywhere within
+the source tree.
+
+Remove the function afs_osi_UnmaskUserLoop().
+
+The commit: 'darwin-afsdb-handler-signal-mask-20040728' (9728182c00)
+introduced the function, but afs_osi_UnmaskUserLoop() has never been
+referenced or defined within a header file.
+
+This function is flagged due to a missing prototype when building
+against a Linux 6.8 kernel (which sets the -Wmissing-declarations and
+-Wmissing-prototypes compiler flags as default). Linux 6.8 commit:
+ 'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
+
+When building against a kernel with CONFIG_WERROR=y, the build fails.
+
+Reviewed-on: https://gerrit.openafs.org/15617
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 587cfce29cb4e014e5b8d96e0433c5e7d2c6729a)
+
+Change-Id: I0fe91a41e8f00773cb1d5976a8c3e39e4415f6bc
+---
+ src/afs/afs_osi.c | 8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/src/afs/afs_osi.c b/src/afs/afs_osi.c
+index 18732d1a3..6f54c63c7 100644
+--- a/src/afs/afs_osi.c
++++ b/src/afs/afs_osi.c
+@@ -152,14 +152,6 @@ afs_osi_MaskUserLoop(void)
+ #endif
+ }
+ 
+-void
+-afs_osi_UnmaskUserLoop(void)
+-{
+-#ifdef AFS_DARWIN_ENV
+-    afs_osi_fullSigRestore();
+-#endif
+-}
+-
+ /* register rxk listener proc info */
+ void
+ afs_osi_RxkRegister(void)
+-- 
+2.44.0
+

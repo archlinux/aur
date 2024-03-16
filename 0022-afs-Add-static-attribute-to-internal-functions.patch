@@ -1,0 +1,487 @@
+From d82082f27ba7308c41c7e2ef7585ed33d384bad7 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Thu, 29 Feb 2024 17:53:31 -0700
+Subject: [PATCH 22/29] afs: Add static attribute to internal functions
+
+When building against a Linux 6.8 kernel, functions that are missing
+prototypes or declarations are flagged.
+
+We can add the static attribute to functions that are not referenced
+outside of the file that implements them to avoid having these functions
+flagged by the compiler.
+
+These functions are flagged due to missing prototypes when building
+against a Linux 6.8 kernel (which sets the -Wmissing-declarations and
+-Wmissing-prototypes compiler flags as default). Linux 6.8 commit:
+ 'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
+
+When building against a kernel with CONFIG_WERROR=y, the build fails.
+
+There are no functional changes in this commit.
+
+Reviewed-on: https://gerrit.openafs.org/15625
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit efee796f28b53bf3ffc03186f81790c36c23c94c)
+
+Change-Id: I0d923a65731f825d6c190056b0ccc3d362236706
+---
+ src/afs/LINUX/osi_file.c       |  2 +-
+ src/afs/LINUX/osi_module.c     |  4 ++--
+ src/afs/LINUX/osi_pag_module.c |  4 ++--
+ src/afs/afs_call.c             |  6 ++---
+ src/afs/afs_disconnected.c     | 20 ++++++++--------
+ src/afs/afs_fetchstore.c       | 42 +++++++++++++++++-----------------
+ src/afs/afs_icl.c              |  4 ++--
+ src/afs/afs_pag_cred.c         |  4 ++--
+ src/afs/afs_server.c           |  2 +-
+ src/afs/afs_vcache.c           |  2 +-
+ 10 files changed, 45 insertions(+), 45 deletions(-)
+
+diff --git a/src/afs/LINUX/osi_file.c b/src/afs/LINUX/osi_file.c
+index e8c298068..cb91ecb0a 100644
+--- a/src/afs/LINUX/osi_file.c
++++ b/src/afs/LINUX/osi_file.c
+@@ -47,7 +47,7 @@ extern struct cred *cache_creds;
+ #endif
+ 
+ /* Old export ops: decode_fh will call back here. Accept any dentry it suggests */
+-int
++static int
+ afs_fh_acceptable(void *context, struct dentry *dp)
+ {
+     return 1;
+diff --git a/src/afs/LINUX/osi_module.c b/src/afs/LINUX/osi_module.c
+index fdc347d2c..30ac048d3 100644
+--- a/src/afs/LINUX/osi_module.c
++++ b/src/afs/LINUX/osi_module.c
+@@ -64,7 +64,7 @@ afs_init_idmap(void)
+ }
+ #endif
+ 
+-int __init
++static int __init
+ afs_init(void)
+ {
+     int err;
+@@ -114,7 +114,7 @@ afs_init(void)
+     return 0;
+ }
+ 
+-void __exit
++static void __exit
+ afs_cleanup(void)
+ {
+     afs_shutdown_pagecopy();
+diff --git a/src/afs/LINUX/osi_pag_module.c b/src/afs/LINUX/osi_pag_module.c
+index e832c5abd..24b938f0e 100644
+--- a/src/afs/LINUX/osi_pag_module.c
++++ b/src/afs/LINUX/osi_pag_module.c
+@@ -58,7 +58,7 @@ int afs_global_owner = 0;
+ struct user_namespace *afs_ns;
+ #endif
+ 
+-int __init
++static int __init
+ afspag_init(void)
+ {
+ #if !defined(EXPORTED_PROC_ROOT_FS)
+@@ -90,7 +90,7 @@ afspag_init(void)
+     return 0;
+ }
+ 
+-void __exit
++static void __exit
+ afspag_cleanup(void)
+ {
+ #if !defined(EXPORTED_PROC_ROOT_FS)
+diff --git a/src/afs/afs_call.c b/src/afs/afs_call.c
+index ba78bce6e..4ac63b187 100644
+--- a/src/afs/afs_call.c
++++ b/src/afs/afs_call.c
+@@ -267,7 +267,7 @@ afsd_thread(int *rock)
+     }
+ }
+ 
+-void
++static void
+ afs_DaemonOp(long parm, long parm2, long parm3, long parm4, long parm5,
+ 	     long parm6)
+ {
+@@ -436,7 +436,7 @@ afsd_thread(void *rock)
+     return 0;
+ }
+ 
+-void
++static void
+ # if defined(AFS_LINUX_ENV) && !defined(INIT_WORK_HAS_DATA)
+ afsd_launcher(struct work_struct *work)
+ # else
+@@ -457,7 +457,7 @@ afsd_launcher(void *rock)
+ # endif /* !HAVE_LINUX_KTHREAD_RUN */
+ }
+ 
+-void
++static void
+ afs_DaemonOp(long parm, long parm2, long parm3, long parm4, long parm5,
+ 	     long parm6)
+ {
+diff --git a/src/afs/afs_disconnected.c b/src/afs/afs_disconnected.c
+index 1aaabd905..03ff90f7e 100644
+--- a/src/afs/afs_disconnected.c
++++ b/src/afs/afs_disconnected.c
+@@ -102,7 +102,7 @@ afs_FindDCacheByFid(struct VenusFid *afid)
+  *
+  * \return Mask of operations.
+  */
+-int
++static int
+ afs_GenStoreStatus(struct vcache *avc, struct AFSStoreStatus *astat)
+ {
+     if (!avc || !astat || !avc->f.ddirty_flags)
+@@ -157,7 +157,7 @@ get_parent_dir_fid_hook(void *hdata, char *aname, afs_int32 vnode,
+  *
+  * \return 0 on success, -1 on failure
+  */
+-int
++static int
+ afs_GetParentDirFid(struct vcache *avc, struct VenusFid *afid)
+ {
+     struct dcache *tdc;
+@@ -234,7 +234,7 @@ get_vnode_name_hook(void *hdata, char *aname, afs_int32 vnode,
+  * \param deleted Has this file been deleted? If yes, use the shadow
+  * dir for looking up the name.
+  */
+-int
++static int
+ afs_GetVnodeName(struct vcache *avc, struct VenusFid *afid, char *aname,
+ 		 int deleted)
+ {
+@@ -358,7 +358,7 @@ chk_del_children_hook(void *hdata, char *aname, afs_int32 vnode,
+  *
+  * \note afs_DDirtyVCListLock must be write locked.
+  */
+-int
++static int
+ afs_CheckDeletedChildren(struct vcache *avc)
+ {
+     struct dcache *tdc;
+@@ -452,7 +452,7 @@ fix_children_fids_hook(void *hdata, char *aname, afs_int32 vnode,
+  * \param old_fid The current dir's fid.
+  * \param new_fid The new dir's fid.
+  */
+-void
++static void
+ afs_FixChildrenFids(struct VenusFid *old_fid, struct VenusFid *new_fid)
+ {
+     struct dcache *tdc;
+@@ -499,7 +499,7 @@ afs_DbgListDirEntries(struct VenusFid *afid)
+  * 	   be deferred to later in the resync process
+  */
+ 
+-int
++static int
+ afs_GetParentVCache(struct vcache *avc, int deleted, struct VenusFid *afid,
+ 		    char *aname, struct vcache **adp)
+ {
+@@ -548,7 +548,7 @@ end:
+  * - Get the new name from the current dir.
+  * - Old dir fid and new dir fid are collected along the way.
+  * */
+-int
++static int
+ afs_ProcessOpRename(struct vcache *avc, struct vrequest *areq)
+ {
+     struct VenusFid old_pdir_fid, new_pdir_fid;
+@@ -651,7 +651,7 @@ done:
+  * - Handle errors.
+  * - Reorder vhash and dcaches in their hashes, using the newly acquired fid.
+  */
+-int
++static int
+ afs_ProcessOpCreate(struct vcache *avc, struct vrequest *areq,
+ 		    afs_ucred_t *acred)
+ {
+@@ -921,7 +921,7 @@ end:
+  *
+  * \note avc must be write locked.
+  */
+-int
++static int
+ afs_ProcessOpRemove(struct vcache *avc, struct vrequest *areq)
+ {
+     char *tname = NULL;
+@@ -1022,7 +1022,7 @@ end:
+  *
+  * \return 0 for success. On failure, other error codes.
+  */
+-int
++static int
+ afs_SendChanges(struct vcache *avc, struct vrequest *areq)
+ {
+     struct afs_conn *tc;
+diff --git a/src/afs/afs_fetchstore.c b/src/afs/afs_fetchstore.c
+index 63b370dae..97d067181 100644
+--- a/src/afs/afs_fetchstore.c
++++ b/src/afs/afs_fetchstore.c
+@@ -77,14 +77,14 @@ FillStoreStats(int code, int idx, osi_timeval32_t xferStartTime,
+ 
+ 
+ 
+-afs_int32
++static afs_int32
+ rxfs_storeUfsPrepare(void *r, afs_uint32 size, afs_uint32 *tlen)
+ {
+     *tlen = (size > AFS_LRALLOCSIZ ?  AFS_LRALLOCSIZ : size);
+     return 0;
+ }
+ 
+-afs_int32
++static afs_int32
+ rxfs_storeMemPrepare(void *r, afs_uint32 size, afs_uint32 *tlen)
+ {
+     afs_int32 code;
+@@ -105,7 +105,7 @@ rxfs_storeMemPrepare(void *r, afs_uint32 size, afs_uint32 *tlen)
+     return code;
+ }
+ 
+-afs_int32
++static afs_int32
+ rxfs_storeUfsRead(void *r, struct osi_file *tfile, afs_uint32 offset,
+ 		  afs_uint32 tlen, afs_uint32 *bytesread)
+ {
+@@ -126,7 +126,7 @@ rxfs_storeUfsRead(void *r, struct osi_file *tfile, afs_uint32 offset,
+     return 0;
+ }
+ 
+-afs_int32
++static afs_int32
+ rxfs_storeMemRead(void *r, struct osi_file *tfile, afs_uint32 offset,
+ 		  afs_uint32 tlen, afs_uint32 *bytesread)
+ {
+@@ -142,7 +142,7 @@ rxfs_storeMemRead(void *r, struct osi_file *tfile, afs_uint32 offset,
+     return 0;
+ }
+ 
+-afs_int32
++static afs_int32
+ rxfs_storeMemWrite(void *r, afs_uint32 l, afs_uint32 *byteswritten)
+ {
+     afs_int32 code;
+@@ -159,7 +159,7 @@ rxfs_storeMemWrite(void *r, afs_uint32 l, afs_uint32 *byteswritten)
+     return 0;
+ }
+ 
+-afs_int32
++static afs_int32
+ rxfs_storeUfsWrite(void *r, afs_uint32 l, afs_uint32 *byteswritten)
+ {
+     afs_int32 code;
+@@ -179,7 +179,7 @@ rxfs_storeUfsWrite(void *r, afs_uint32 l, afs_uint32 *byteswritten)
+     return 0;
+ }
+ 
+-afs_int32
++static afs_int32
+ rxfs_storePadd(void *rock, afs_uint32 size)
+ {
+     afs_int32 code = 0;
+@@ -203,7 +203,7 @@ rxfs_storePadd(void *rock, afs_uint32 size)
+     return 0;
+ }
+ 
+-afs_int32
++static afs_int32
+ rxfs_storeStatus(void *rock)
+ {
+     struct rxfs_storeVariables *v = (struct rxfs_storeVariables *)rock;
+@@ -213,7 +213,7 @@ rxfs_storeStatus(void *rock)
+     return 1;
+ }
+ 
+-afs_int32
++static afs_int32
+ rxfs_storeClose(void *r, struct AFSFetchStatus *OutStatus, int *doProcessFS)
+ {
+     afs_int32 code;
+@@ -236,7 +236,7 @@ rxfs_storeClose(void *r, struct AFSFetchStatus *OutStatus, int *doProcessFS)
+     return code;
+ }
+ 
+-afs_int32
++static afs_int32
+ rxfs_storeDestroy(void **r, afs_int32 code)
+ {
+     struct rxfs_storeVariables *v = (struct rxfs_storeVariables *)*r;
+@@ -255,7 +255,7 @@ rxfs_storeDestroy(void **r, afs_int32 code)
+     return code;
+ }
+ 
+-afs_int32
++static afs_int32
+ afs_GenericStoreProc(struct storeOps *ops, void *rock,
+ 		     struct dcache *tdc, int *shouldwake,
+ 		     afs_size_t *bytesXferred)
+@@ -353,7 +353,7 @@ struct storeOps rxfs_storeMemOps = {
+ #endif
+ };
+ 
+-afs_int32
++static afs_int32
+ rxfs_storeInit(struct vcache *avc, struct afs_conn *tc,
+                 struct rx_connection *rxconn, afs_size_t base,
+ 		afs_size_t bytes, afs_size_t length,
+@@ -437,7 +437,7 @@ unsigned int storeallmissing = 0;
+  * \param ops pointer to the block of storeOps to be used for this operation
+  * \param rock pointer to the opaque protocol-specific data of this operation
+  */
+-afs_int32
++static afs_int32
+ afs_CacheStoreDCaches(struct vcache *avc, struct dcache **dclist,
+ 		      afs_size_t bytes, afs_hyper_t *anewDV, int *doProcessFS,
+ 		      struct AFSFetchStatus *OutStatus, afs_uint32 nchunks,
+@@ -720,7 +720,7 @@ struct rxfs_fetchVariables {
+     afs_int32 iovmax;
+ };
+ 
+-afs_int32
++static afs_int32
+ rxfs_fetchUfsRead(void *r, afs_uint32 size, afs_uint32 *bytesread)
+ {
+     afs_int32 code;
+@@ -738,7 +738,7 @@ rxfs_fetchUfsRead(void *r, afs_uint32 size, afs_uint32 *bytesread)
+     return 0;
+ }
+ 
+-afs_int32
++static afs_int32
+ rxfs_fetchMemRead(void *r, afs_uint32 tlen, afs_uint32 *bytesread)
+ {
+     afs_int32 code;
+@@ -755,7 +755,7 @@ rxfs_fetchMemRead(void *r, afs_uint32 tlen, afs_uint32 *bytesread)
+ }
+ 
+ 
+-afs_int32
++static afs_int32
+ rxfs_fetchMemWrite(void *r, struct osi_file *fP, afs_uint32 offset,
+ 		   afs_uint32 tlen, afs_uint32 *byteswritten)
+ {
+@@ -771,7 +771,7 @@ rxfs_fetchMemWrite(void *r, struct osi_file *fP, afs_uint32 offset,
+     return 0;
+ }
+ 
+-afs_int32
++static afs_int32
+ rxfs_fetchUfsWrite(void *r, struct osi_file *fP, afs_uint32 offset,
+ 		   afs_uint32 tlen, afs_uint32 *byteswritten)
+ {
+@@ -787,7 +787,7 @@ rxfs_fetchUfsWrite(void *r, struct osi_file *fP, afs_uint32 offset,
+ }
+ 
+ 
+-afs_int32
++static afs_int32
+ rxfs_fetchClose(void *r, struct vcache *avc, struct dcache * adc,
+ 		struct afs_FetchOutput *o)
+ {
+@@ -814,7 +814,7 @@ rxfs_fetchClose(void *r, struct vcache *avc, struct dcache * adc,
+     return code;
+ }
+ 
+-afs_int32
++static afs_int32
+ rxfs_fetchDestroy(void **r, afs_int32 code)
+ {
+     struct rxfs_fetchVariables *v = (struct rxfs_fetchVariables *)*r;
+@@ -833,7 +833,7 @@ rxfs_fetchDestroy(void **r, afs_int32 code)
+     return code;
+ }
+ 
+-afs_int32
++static afs_int32
+ rxfs_fetchMore(void *r, afs_int32 *length, afs_uint32 *moredata)
+ {
+     afs_int32 code;
+@@ -882,7 +882,7 @@ struct fetchOps rxfs_fetchMemOps = {
+     rxfs_fetchDestroy
+ };
+ 
+-afs_int32
++static afs_int32
+ rxfs_fetchInit(struct afs_conn *tc, struct rx_connection *rxconn,
+                struct vcache *avc, afs_offs_t base,
+ 	       afs_uint32 size, afs_int32 *alength, struct dcache *adc,
+diff --git a/src/afs/afs_icl.c b/src/afs/afs_icl.c
+index 42b4a0ccb..08a166020 100644
+--- a/src/afs/afs_icl.c
++++ b/src/afs/afs_icl.c
+@@ -34,7 +34,7 @@ int afs_icl_sizeofLong = ICL_LONG;
+ int afs_icl_inited = 0;
+ 
+ /* init function, called once, under afs_icl_lock */
+-int
++static int
+ afs_icl_Init(void)
+ {
+     afs_icl_inited = 1;
+@@ -539,7 +539,7 @@ afs_icl_AppendString(struct afs_icl_log *logp, char *astr)
+ #endif
+ 
+ 
+-void
++static void
+ afs_icl_AppendOne(struct afs_icl_log *logp, int type, long parm)
+ {
+     if (type) {
+diff --git a/src/afs/afs_pag_cred.c b/src/afs/afs_pag_cred.c
+index 3dce8543b..e77cf8ae3 100644
+--- a/src/afs/afs_pag_cred.c
++++ b/src/afs/afs_pag_cred.c
+@@ -32,7 +32,7 @@ static struct afspag_cell *cells = 0;
+ static struct afspag_cell *primary_cell = 0;
+ 
+ 
+-struct afspag_cell *
++static struct afspag_cell *
+ afspag_GetCell(char *acell)
+ {
+     struct afspag_cell *tcell;
+@@ -66,7 +66,7 @@ out:
+ }
+ 
+ 
+-struct afspag_cell *
++static struct afspag_cell *
+ afspag_GetPrimaryCell(void)
+ {
+     struct afspag_cell *tcell;
+diff --git a/src/afs/afs_server.c b/src/afs/afs_server.c
+index 3674eff43..9d2d93cde 100644
+--- a/src/afs/afs_server.c
++++ b/src/afs/afs_server.c
+@@ -556,7 +556,7 @@ CkSrv_MarkUpDown(struct afs_conn **conns, struct rx_connection **rxconns,
+     }
+ }
+ 
+-void
++static void
+ CkSrv_GetCaps(int nconns, struct rx_connection **rxconns,
+ 	      struct afs_conn **conns)
+ {
+diff --git a/src/afs/afs_vcache.c b/src/afs/afs_vcache.c
+index e72b45ea4..f500b65a3 100644
+--- a/src/afs/afs_vcache.c
++++ b/src/afs/afs_vcache.c
+@@ -727,7 +727,7 @@ afs_FlushReclaimedVcaches(void)
+ #endif
+ }
+ 
+-void
++static void
+ afs_PostPopulateVCache(struct vcache *avc, struct VenusFid *afid, int seq)
+ {
+     /*
+-- 
+2.44.0
+

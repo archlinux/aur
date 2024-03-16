@@ -1,0 +1,72 @@
+From 9befccd11d338dfc7220a3ae3695634cefd2c359 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Mon, 12 Feb 2024 12:31:30 -0700
+Subject: [PATCH 26/29] Linux 6.8: use hlist iteration for dentry children
+
+Linux 6.8 commit 'dentry: switch the lists of children to hlist'
+(da549bdd15) replaces the dentry lists d_subdirs/d_child with the hlist
+d_children/d_sib.
+
+Add an autoconf test for a d_children member in the dentry structure.
+
+Define a macro that uses the applicable Linux function for iterating
+over a dentry's children.
+
+Reviewed-on: https://gerrit.openafs.org/15632
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 8e0bbe6a07523dd2e7efb3c9d1b4ad9e19fc9bb7)
+
+Change-Id: Ief4c334c4ef3e54822e068dcdf654541e86b9176
+---
+ src/afs/LINUX/osi_vcache.c    | 10 +++++++++-
+ src/cf/linux-kernel-struct.m4 |  3 +++
+ 2 files changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/src/afs/LINUX/osi_vcache.c b/src/afs/LINUX/osi_vcache.c
+index 897fd37ab..43644f44b 100644
+--- a/src/afs/LINUX/osi_vcache.c
++++ b/src/afs/LINUX/osi_vcache.c
+@@ -15,6 +15,14 @@
+ 
+ #include "osi_compat.h"
+ 
++#if defined(STRUCT_DENTRY_HAS_D_CHILDREN)
++# define afs_for_each_child(child, parent) \
++	 hlist_for_each_entry((child), &(parent)->d_children, d_sib)
++#else
++# define afs_for_each_child(child, parent) \
++	 list_for_each_entry((child), &(parent)->d_subdirs, d_child)
++#endif
++
+ static void
+ TryEvictDirDentries(struct inode *inode)
+ {
+@@ -312,7 +320,7 @@ osi_ResetVCache(struct vcache *avc)
+ 	     * because 'dp' is an ancestor of 'child'.
+ 	     */
+ 	    struct dentry *child;
+-	    list_for_each_entry(child, &dp->d_subdirs, d_child) {
++	    afs_for_each_child(child, dp) {
+ 		spin_lock(&child->d_lock);
+ 		child->d_time = 0;
+ 		spin_unlock(&child->d_lock);
+diff --git a/src/cf/linux-kernel-struct.m4 b/src/cf/linux-kernel-struct.m4
+index 2824ec198..5cd346fb5 100644
+--- a/src/cf/linux-kernel-struct.m4
++++ b/src/cf/linux-kernel-struct.m4
+@@ -17,6 +17,9 @@ AC_CHECK_LINUX_STRUCT([dentry], [d_u.d_alias], [dcache.h])
+ dnl linux 2.6.16 moved dentry->d_child to dentry->d_u.d_child
+ dnl linux 3.19 moved it back to dentry->d_child
+ AC_CHECK_LINUX_STRUCT([dentry], [d_u.d_child], [dcache.h])
++dnl linux 6.8 uses hlist for dentry children and renamed
++dnl d_subdirs/d_child to d_childern/d_sib
++AC_CHECK_LINUX_STRUCT([dentry], [d_children], [dcache.h])
+ AC_CHECK_LINUX_STRUCT([dentry_operations], [d_automount], [dcache.h])
+ AC_CHECK_LINUX_STRUCT([group_info], [gid], [cred.h])
+ AC_CHECK_LINUX_STRUCT([inode], [i_alloc_sem], [fs.h])
+-- 
+2.44.0
+

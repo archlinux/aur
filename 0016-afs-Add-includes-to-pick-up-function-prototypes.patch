@@ -1,0 +1,120 @@
+From 5e3f30520ee000690b7097bdea7d3f35fe0fcfd3 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Mon, 12 Feb 2024 08:25:47 -0700
+Subject: [PATCH 16/29] afs: Add includes to pick up function prototypes
+
+The functions defined in LINUX/osi_crypto.c, osi_pagecopy.c,
+osi_probe.c, and osi_syscall.c have function prototypes defined in
+existing header files, however either due to missing includes or
+preprocessor conditionals that skip the includes, these function
+prototypes are not being pulled in.
+
+These functions are flagged due to missing prototypes when building
+against a Linux 6.8 kernel (which sets the -Wmissing-declarations and
+-Wmissing-prototypes compiler flags as default). Linux 6.8 commit:
+ 'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
+
+When building against a kernel with CONFIG_WERROR=y, the build fails.
+
+Add the necessary includes to osi_crypto.c and osi_pagecopy.c and
+re-arrange the includes in osi_probe.c and osi_syscall.c to ensure that
+the function prototypes are present when building the Linux kernel
+module.
+
+Reviewed-on: https://gerrit.openafs.org/15641
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 3683f15278e34e13d7272928eaf666f0acc4e1e9)
+
+Change-Id: Iac704fc98d0d685358224049f383d68aa7a105f8
+---
+ src/afs/LINUX/osi_crypto.c   | 3 +++
+ src/afs/LINUX/osi_pagecopy.c | 1 +
+ src/afs/LINUX/osi_probe.c    | 8 ++++----
+ src/afs/LINUX/osi_syscall.c  | 7 ++++---
+ 4 files changed, 12 insertions(+), 7 deletions(-)
+
+diff --git a/src/afs/LINUX/osi_crypto.c b/src/afs/LINUX/osi_crypto.c
+index ead19161c..7f8435c65 100644
+--- a/src/afs/LINUX/osi_crypto.c
++++ b/src/afs/LINUX/osi_crypto.c
+@@ -25,6 +25,9 @@
+ #include <afsconfig.h>
+ #include "afs/param.h"
+ 
++#include "afs/sysincludes.h"
++#include "afsincludes.h"
++
+ #include <linux/random.h>
+ 
+ int
+diff --git a/src/afs/LINUX/osi_pagecopy.c b/src/afs/LINUX/osi_pagecopy.c
+index 7142a1b06..42f5e38e0 100644
+--- a/src/afs/LINUX/osi_pagecopy.c
++++ b/src/afs/LINUX/osi_pagecopy.c
+@@ -61,6 +61,7 @@
+ #include <linux/wait.h>
+ #include <linux/workqueue.h>
+ #include <linux/slab.h>
++#include "osi_pagecopy.h"
+ 
+ static DECLARE_WAIT_QUEUE_HEAD (afs_pagecopy_wq);
+ static spinlock_t afs_pagecopy_lock;
+diff --git a/src/afs/LINUX/osi_probe.c b/src/afs/LINUX/osi_probe.c
+index 9b06fa7b1..be42ecf85 100644
+--- a/src/afs/LINUX/osi_probe.c
++++ b/src/afs/LINUX/osi_probe.c
+@@ -48,9 +48,13 @@
+ #ifdef OSI_PROBE_STANDALONE
+ # define OSI_PROBE_DEBUG
+ #endif
++
+ #ifndef OSI_PROBE_STANDALONE
+ # include <afsconfig.h>
+ # include "afs/param.h"
++
++# include "afs/sysincludes.h"
++# include "afsincludes.h"
+ #endif
+ 
+ #include <linux/version.h>
+@@ -61,10 +65,6 @@
+ /* Slightly kludgy, but too bad */
+ #define scsi_command_size scsi_command_size_tbl
+ #endif
+-#ifndef OSI_PROBE_STANDALONE
+-# include "afs/sysincludes.h"
+-# include "afsincludes.h"
+-#endif
+ #include <linux/sched.h>
+ #ifdef HAVE_LINUX_CONFIG_H
+ # include <linux/config.h>
+diff --git a/src/afs/LINUX/osi_syscall.c b/src/afs/LINUX/osi_syscall.c
+index 836491c29..5e9e5194a 100644
+--- a/src/afs/LINUX/osi_syscall.c
++++ b/src/afs/LINUX/osi_syscall.c
+@@ -14,6 +14,10 @@
+ #include <afsconfig.h>
+ #include "afs/param.h"
+ 
++#include <linux/module.h> /* early to avoid printf->printk mapping */
++#include "afs/sysincludes.h"
++#include "afsincludes.h"
++
+ #ifdef LINUX_KEYRING_SUPPORT
+ /* The syscall probing stuff is unnecessary (and is never called) if we have
+  * keyrings support; we rely on keyrings instead of group ids to track PAGs.
+@@ -31,9 +35,6 @@ osi_syscall_clean(void)
+ 
+ #else /* LINUX_KEYRING_SUPPORT */
+ 
+-#include <linux/module.h> /* early to avoid printf->printk mapping */
+-#include "afs/sysincludes.h"
+-#include "afsincludes.h"
+ #include <linux/unistd.h>		/* For syscall numbers. */
+ #include <linux/mm.h>
+ 
+-- 
+2.44.0
+
