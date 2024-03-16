@@ -3,13 +3,13 @@
 
 pkgname=bisq2
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Decentralized Trading Platform"
 arch=('any')
 url="https://bisq.network"
 license=('AGPL3')
-depends=('zulu-17-bin')
-makedepends=('zulu-17-bin' 'git')
+depends=('java-runtime=17')
+makedepends=('java-environment=17' 'git')
 source=("git+https://github.com/bisq-network/bisq2#tag=v$pkgver"
 	"bisq2.desktop")
 sha256sums=('SKIP'
