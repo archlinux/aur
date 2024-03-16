@@ -1,8 +1,8 @@
 # Maintainer: ich <remove dashes in s-c--25-ni at gmail dot com>
 
 pkgname=voicevox-appimage
-pkgver=0.14.10
-pkgrel=18
+pkgver=0.17.2
+pkgrel=19
 pkgdesc='Offical Frontend for the free VOICEVOX TTS Engine'
 arch=('x86_64')
 license=('LGPLv3' 'custom')
@@ -20,9 +20,9 @@ source=(
     'voicevox.sh'
 )
 sha512sums=(
-    664b233d7a0ec1a9e434ea8a7942b5413fa03506a38507e4728e9517162bf2e24ecadc8672c7d251d58b1da624323f096cd96f2074252804f548d9888a199d49
-    4fe972bdf8746960357f8d84fc5ebcddcc862e1024110b15539c086de676fca05affec892c6b316259943c44baccae2647848cfc5bf10b8c2ff3b157f038a75a
-    cac7e706c97961142e202248c2c68848f52812272f572e5d07c0431ab8a37fd4382d4e578cc55e26eca5e5bd4a1d42589bab132d7cf22c55dc8562814395c1dd
+    fd06a16c8a67611bfec96f7444431f726cbc9dfefeb4ea08a9641bc05392eedb95c7ab31193f909f8fdfb5f6489b0d4511d94469ce13299ca40f20cb1d04d944
+    e2a859ecf954298444c129702e479e24cdf0dcdf1c362c39892074a5620b5b8b0f3d5b539aae619942f6bfb26d3f267ff70c8b360b396a786278a4b325f54b6c
+    238aefac604bf5396897419bc71a0184d8c2f4b92e0f4263c5feaf1bbf1e411ad68a5f46a9788a7aedf503c5db34bfb4922918db5aa8346239c0406e7b7f1611
     SKIP
 )
 depends=( # according to the official install script
@@ -45,9 +45,10 @@ prepare() {
 
     # Unfortunately, since version 0.14.3, voicevox started to package a version of libstdc++ that is incompatible with the system libraries,
     # So we need to rip it out
-    ./${_pkgname} --appimage-extract
-    rm squashfs-root/libstdc++.so.6   
-    unset SOURCE_DATE_EPOCH; appimagetool squashfs-root ${_pkgname}
+    # XXX: as of 0.17.2, this is no longer an issue
+    # ./${_pkgname} --appimage-extract
+    # rm squashfs-root/libstdc++.so.6   
+    # unset SOURCE_DATE_EPOCH; appimagetool squashfs-root ${_pkgname}
 
     sed -i "s|Exec=.*|Exec=${_installdir}/${_pkgname}|" squashfs-root/voicevox.desktop
 }
