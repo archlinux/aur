@@ -2,7 +2,7 @@
 
 pkgname=cabal-fmt-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.1.6.r5.g38dfdf0
+pkgver=0.1.11.r0.gce46d2a
 pkgrel=1
 pkgdesc="Format .cabal files"
 arch=('i686' 'x86_64')
@@ -18,9 +18,11 @@ sha256sums=('SKIP')
 # have to create them for them
 pkgver() {
   cd "$pkgname"
-  git tag -f \
-    v"$(sed -n '/^version:/{s/^version:\s*//;p}' *.cabal)" \
-    "$(git blame -L /^version:/,+1 *.cabal -p | head -n1 | cut -d' ' -f1)"
+  cabalVer=v"$(awk -F' *: *' '$1 ~ /^[Vv]ersion/ { print $2 }' *.cabal)"
+  if ! git show-ref --tags "$cabalVer" --quiet; then
+    git tag "$cabalVer" \
+      "$(git blame -L /^version:/,+1 *.cabal -p | head -n1 | cut -d' ' -f1)"
+  fi
   git describe --long --tags --match='v*' \
     | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
