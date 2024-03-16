@@ -7,29 +7,29 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libtiff
 pkgver=4.6.0
-pkgrel=1
-pkgdesc="Library for manipulation of TIFF images (android)"
+pkgrel=2
+pkgdesc="Library for manipulation of TIFF images (Android, ${_android_arch})"
 arch=('any')
 url="http://www.simplesystems.org/libtiff/"
 license=('custom')
 depends=("android-${_android_arch}-libjpeg-turbo"
          "android-${_android_arch}-zlib"
          "android-${_android_arch}-xz")
-options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-configure')
+options=(!strip !buildflags staticlibs !emptydirs)
 source=("http://download.osgeo.org/libtiff/tiff-${pkgver}.tar.gz")
 md5sums=('fc7d49a9348b890b29f91a4ecadd5b49')
 
 build() {
     cd "${srcdir}/tiff-${pkgver}"
     source android-env ${_android_arch}
-    export CFLAGS="-fno-strict-aliasing"
-    export CXXFLAGS="-fno-strict-aliasing"
+
+    export CFLAGS="${CFLAGS} -fno-strict-aliasing"
+    export CXXFLAGS="${CXXFLAGS} -fno-strict-aliasing"
 
     android-${_android_arch}-configure \
         --disable-jbig \
         --without-x
-
     make $MAKEFLAGS
 }
 

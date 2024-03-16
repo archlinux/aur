@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-libtiff
-	pkgdesc = Library for manipulation of TIFF images (android)
+	pkgdesc = Library for manipulation of TIFF images (Android, x86-64)
 	pkgver = 4.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.simplesystems.org/libtiff/
 	arch = any
 	license = custom
