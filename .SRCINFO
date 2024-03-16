@@ -1,17 +1,17 @@
 pkgbase = comicthumb
 	pkgdesc = Python3 reimplementation of comix's comicthumb for generating comic thumbnails
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://codeberg.org/johndovern/comicthumb
 	arch = any
-	license = GPL3
+	license = GPL2
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
 	depends = python-pillow
-	source = https://codeberg.org/johndovern/comicthumb/releases/download/0.0.4/comicthumb-0.0.4.tar.gz
-	sha256sums = 52d78eb4441283c705899b070652159788c8985af379374ec0df4d9f6e272a67
+	source = https://codeberg.org/johndovern/comicthumb/releases/download/0.0.5/comicthumb-0.0.5.tar.gz
+	sha256sums = 551e6295387c1618ae5b25d844041500c1bd3c4066215c0303e27ab0906b66fd
 
 pkgname = comicthumb
