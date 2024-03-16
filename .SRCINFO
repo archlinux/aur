@@ -1,7 +1,7 @@
 pkgbase = tal-chorus-lx
 	pkgdesc = A Simple Algorithmic Chorus By TAL Software
 	pkgver = 1.6.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tal-software.com/products/tal-chorus-lx
 	arch = x86_64
 	groups = pro-audio
@@ -20,17 +20,20 @@ pkgbase = tal-chorus-lx
 
 pkgname = tal-chorus-lx-clap-bin
 	groups = clap-plugins
+	groups = pro-audio
 	provides = tal-chorus-lx-clap-bin
 	conflicts = tal-chorus-lx-bin
 	replaces = tal-chorus-lx-bin
 
 pkgname = tal-chorus-lx-vst-bin
+	groups = pro-audio
 	groups = vst-plugins
 	provides = tal-chorus-lx-vst-bin
 	conflicts = tal-chorus-lx-bin
 	replaces = tal-chorus-lx-bin
 
 pkgname = tal-chorus-lx-vst3-bin
+	groups = pro-audio
 	groups = vst3-plugins
 	provides = tal-chorus-lx-vst3-bin
 	conflicts = tal-chorus-lx-bin
