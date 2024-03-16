@@ -1,15 +1,13 @@
 pkgbase = r-nlp
 	pkgdesc = Natural Language Processing Infrastructure
 	pkgver = 0.2.1
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=NLP
 	arch = any
-	license = GPL
+	license = GPL-3.0-only
 	depends = r
-	optdepends = r-cleannlp
-	optdepends = r-spacyr
-	optdepends = r-udpipe
 	source = https://cran.r-project.org/src/contrib/NLP_0.2-1.tar.gz
-	sha256sums = 05eaa453ad2757311c073fd30093c738b20a977c5089031eb454345a1d01f2b6
+	md5sums = 91387f382da64f6e93b6c85ee6b06aa1
+	b2sums = 192b6889e3356b973b8fcc639388292cfeb5fd0da197c634426155cb6d338f4197f3a3da1c39ae9fe68990aba25513fa83a75a90cc7db164a7b55a07de75dd32
 
 pkgname = r-nlp
