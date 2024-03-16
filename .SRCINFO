@@ -11,6 +11,6 @@ pkgbase = haveno
 	source = haveno-v0.0.19.tar.gz::https://github.com/haveno-dex/haveno/archive/refs/tags/v0.0.19.tar.gz
 	source = haveno.desktop
 	sha512sums = 295b23824e4280d7a2e4f1c31b05eb0f30dc6b11e7a272ddb114bfc7dd1ab908a5f89b0cd38c37255d674926d8e24c379f430d40f20ac9518dce2cc646db8ff0
-	sha512sums = ad15f8a5fa39c1db3b83fd3771ff0721dd4993d2278bd20713bef62100cf8eda0a86cc5ea781623ea0cf102bf0c7f15ebd0158509d37c54164e9e3e0430d4142
+	sha512sums = 046e32ecc69058d270b5660d55c323d1458b91989f1a3ddc8a107edc28c196029d25b5a5f5f46b754a778919cca13d016ef3e17813578605938c2b3b289b8e93
 
 pkgname = haveno
