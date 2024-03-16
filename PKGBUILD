@@ -7,7 +7,7 @@ pkgdesc='QMPlay2 is a video and audio player which can play most formats and cod
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/zaps166/QMPlay2'
 license=('LGPL')
-depends=('qt6-base' 'qt6-svg' 'qt6-declarative' 'ffmpeg' 'libass' 'libgl' 'libva' 'libxv' 'alsa-lib' 'libcdio' 'taglib' 'libcddb' 'libpulse' 'libgme' 'libsidplayfp' 'pipewire' 'rubberband')
+depends=('qt6-base' 'qt6-svg' 'qt6-declarative' 'qt6-5compat' 'ffmpeg' 'libass' 'libgl' 'libva' 'libxv' 'alsa-lib' 'libcdio' 'taglib' 'libcddb' 'libpulse' 'libgme' 'libsidplayfp' 'pipewire' 'rubberband')
 optdepends=('pulseaudio: PulseAudio support'
             'game_music_emu-kode54-git: Better chiptune support (less bugs in sound, AUR package)')
 makedepends=('ninja' 'clang' 'pkg-config' 'qt6-tools' 'cmake' 'fakeroot' 'patch')
