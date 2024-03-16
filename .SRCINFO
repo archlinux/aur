@@ -1,6 +1,6 @@
 pkgbase = walker
 license = MIT
-pkgdesc = wayland application runner
+pkgdesc = extensible and fast wayland application runner
 pkgver = 0.0.20
 pkgrel = 1
 url = https://github.com/abenz1267/walker
