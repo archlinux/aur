@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-datavis3d-static
 	pkgdesc = Qt Data Visualization module (mingw-w64)
-	pkgver = 5.15.12
+	pkgver = 5.15.13
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = mingw-w64-qt5-datavis3d-static
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://invent.kde.org/qt/qt/qtdatavis3d#commit=c887477198cae44585fe9db371db0ddf4c3b205e
-	sha256sums = SKIP
+	source = git+https://invent.kde.org/qt/qt/qtdatavis3d#commit=6ac6d23a8f558f36f1162b419858cc44dccd4d2b
+	sha256sums = 649c0c535c76f781aeda6a7a262904c71dd438e4a4762dd2e507f696544c8c35
 
 pkgname = mingw-w64-qt5-datavis3d-static
