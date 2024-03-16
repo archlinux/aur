@@ -1,7 +1,7 @@
 pkgbase=harrison-mastering-eq
 pkgname=("${pkgbase}-vst-bin" "${pkgbase}-vst3-bin")
 pkgver=5.0.0.074d2374
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://store.harrisonaudio.com/all-products/mastering-eq"
 license=('EULA')
@@ -22,5 +22,6 @@ package_harrison-mastering-eq-vst-bin() {
 
 package_harrison-mastering-eq-vst3-bin() {
 	pkgdesc="Harrison Mastering EQ (VST3)"
+	groups=("vst-plugins")
 	install -Dm755 "$srcdir/Harrison_MasteringEQ/vst3/Harrison_MasteringEQ.vst3/Contents/x86_64-linux/Harrison_MasteringEQ.so" "$pkgdir/usr/lib/vst3/Harrison_MasteringEQ.vst3/Contents/x86_64-linux/Harrison_MasteringEQ.so"
 }
