@@ -1,12 +1,12 @@
 pkgbase = hunspell-ar
 	pkgdesc = Arabic dictionary for hunspell
 	pkgver = 3.5
-	pkgrel = 5
+	pkgrel = 6
 	url = http://ayaspell.sourceforge.net
 	arch = any
-	license = GPL
-	license = LGPL
-	license = MPL
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
+	license = MPL-1.1
 	makedepends = qt6-webengine
 	optdepends = hunspell: the spell checking libraries and apps
 	source = http://downloads.sourceforge.net/project/ayaspell/hunspell-ar_3.5.2014-11-08.zip
