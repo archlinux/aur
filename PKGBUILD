@@ -1,12 +1,12 @@
 # Maintainer: Neptune <neptune@b7s.ru>
 pkgname=ultimmc-bin
 pkgver=1.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Free, open source launcher and instance manager for Minecraft."
 arch=('x86_64')
 url="https://github.com/UltimMC/Launcher"
 license=('Apache')
-depends=('zlib' 'opengl-driver' 'qt5-base' 'qt5-x11extras' 'qt5-svg' 'xorg-xrandr' 'zenity' 'wget')
+depends=('zlib' 'opengl-driver' 'qt5-base' 'qt5-x11extras' 'qt5-svg' 'xorg-xrandr' 'zenity' 'wget' 'unzip')
 source=("$pkgname-$pkgver.zip::https://nightly.link/UltimMC/ultimmc-deb/workflows/ci/master/UltimMC.zip"
         "https://raw.githubusercontent.com/UltimMC/ultimmc-deb/master/ultimmc/usr/share/man/man1/ultimmc.1")
 sha256sums=('SKIP'
