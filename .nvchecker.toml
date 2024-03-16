@@ -1,0 +1,5 @@
+[slepc]
+source = "gitlab"
+gitlab = "slepc/slepc"
+use_max_tag = true
+prefix = "v"
