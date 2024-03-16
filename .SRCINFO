@@ -1,15 +1,15 @@
 pkgbase = optix
 	pkgdesc = An application framework for achieving optimal ray tracing performance on the GPU.
-	pkgver = 7.4.0
+	pkgver = 8.0.0
 	pkgrel = 1
 	url = https://developer.nvidia.com/optix
 	arch = x86_64
 	license = custom:NVIDIA
 	depends = cuda
 	options = !strip
-	source = file://NVIDIA-OptiX-SDK-7.4.0-linux64-x86_64.sh
-	source = file://cmake.patch
-	sha512sums = 04f50c49d08c5e4e9be73ee322c4bff4f10a5e30445bc431e213c879a35cc5e36e0ceb8c864313f417628575a3c71593e65467ea13dd111b432fdf1db9383ae0
+	source = local://NVIDIA-OptiX-SDK-8.0.0-linux64-x86_64.sh
+	source = cmake.patch
+	sha512sums = 5f053000fa5bcf47c5d2b9518cc0f5d6219dbf01b27bcf446a291b6070f3417b4ec93afd93cff88e77a9c2c2ce5561aff9b7400912c9eb027d3db39898cfad52
 	sha512sums = c2b3f122bf4e5d1bd987c3ce9693b24d2acd55f71f7366e49ebc0ba2f800945e6ddde439428761c6c12ec77f34a9334fb6900af2c1b10c40dd2905bb58c9ded2
 
 pkgname = optix
