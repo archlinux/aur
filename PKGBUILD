@@ -1,7 +1,7 @@
 pkgbase=vital-synth-bin
 pkgname=("${pkgbase/-bin/}-standalone-bin" "${pkgbase/-bin/}-clap-bin" "${pkgbase/-bin/}-vst-bin" "${pkgbase/-bin/}-vst3-bin")
 pkgver=1.5.5
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://vital.audio"
 license=('custom')
@@ -28,18 +28,18 @@ package_vital-synth-standalone-bin() {
 
 package_vital-synth-clap-bin() {
     pkgdesc="Spectral warping wavetable synth (CLAP)"
-    groups=('pro-audio' 'clap-plugins')
+    groups=('clap-plugins')
     install -Dm755 "$srcdir/VitalInstaller/lib/clap/Vital.clap" "$pkgdir/usr/lib/clap/Vital.clap"
 }
 
 package_vital-synth-vst-bin() {
     pkgdesc="Spectral warping wavetable synth (VST)"
-    groups=('pro-audio' 'vst-plugins')
+    groups=('vst-plugins')
     install -Dm755 "$srcdir/VitalInstaller/lib/vst/Vital.so" "$pkgdir/usr/lib/vst/Vital.so"
 }
 
 package_vital-synth-vst3-bin() {
     pkgdesc="Spectral warping wavetable synth (VST)"
-    groups=('pro-audio' 'vst3-plugins')
+    groups=('vst3-plugins')
     install -Dm755 "$srcdir/VitalInstaller/lib/vst3/Vital.vst3/Contents/x86_64-linux/Vital.so" "$pkgdir/usr/lib/vst3/Vital.vst3/Contents/x86_64-linux/Vital.so"
 }

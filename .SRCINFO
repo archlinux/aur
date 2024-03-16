@@ -1,6 +1,6 @@
 pkgbase = vital-synth-bin
 	pkgver = 1.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vital.audio
 	arch = x86_64
 	license = custom
@@ -36,15 +36,12 @@ pkgname = vital-synth-standalone-bin
 
 pkgname = vital-synth-clap-bin
 	pkgdesc = Spectral warping wavetable synth (CLAP)
-	groups = pro-audio
 	groups = clap-plugins
 
 pkgname = vital-synth-vst-bin
 	pkgdesc = Spectral warping wavetable synth (VST)
-	groups = pro-audio
 	groups = vst-plugins
 
 pkgname = vital-synth-vst3-bin
 	pkgdesc = Spectral warping wavetable synth (VST)
-	groups = pro-audio
 	groups = vst3-plugins
