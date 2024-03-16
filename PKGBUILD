@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=bowtie2
-pkgver=2.5.2
+pkgver=2.5.3
 pkgrel=1
 pkgdesc="Bowtie 2 is an ultrafast and memory-efficient tool for aligning sequencing reads to long reference sequence."
 arch=("x86_64")
@@ -10,7 +10,7 @@ url="https://bowtie-bio.sourceforge.net/bowtie2"
 license=("GPL3")
 depends=('zstd')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/BenLangmead/bowtie2/archive/v${pkgver}.tar.gz")
-sha256sums=('2f86dbfbf3dcb8521d559f830594fe28ac6e4c40d81313a8c2bfb17c82a501e0')
+sha256sums=('4ac3ece3db011322caab14678b9d80cfc7f75208cdaf0c58b24a6ea0f1a0a60e')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
