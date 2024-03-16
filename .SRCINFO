@@ -1,11 +1,8 @@
 pkgbase = amp-locker
 	pkgver = 1.0.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://audioassault.mx/collections/amp-locker-gear/products/amp-locker
 	arch = x86_64
-	groups = pro-audio
-	groups = vst-plugins
-	groups = vst3-plugins
 	license = EULA
 	makedepends = xdg-user-dirs
 	makedepends = unzip
@@ -45,9 +42,14 @@ pkgbase = amp-locker
 
 pkgname = amp-locker-standalone-bin
 	pkgdesc = Audio Assault Multamp Simulator (Standalone)
+	groups = pro-audio
 
 pkgname = amp-locker-vst-bin
 	pkgdesc = Audio Assault Multamp Simulator (VST)
+	groups = pro-audio
+	groups = vst-plugins
 
 pkgname = amp-locker-vst3-bin
 	pkgdesc = Audio Assault Multamp Simulator (VST3)
+	groups = pro-audio
+	groups = vst3-plugins
