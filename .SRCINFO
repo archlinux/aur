@@ -1,7 +1,7 @@
 pkgbase = wayfire-plugins-toplevel-manager
 	pkgdesc = A general window management protocol, and its implementation for Wayfire in the form of wayfire plugin
 	pkgver = 0.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/wayfireplugins/windowmanager
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,8 @@ pkgbase = wayfire-plugins-toplevel-manager
 	depends = wayfire
 	depends = wayland
 	source = https://gitlab.com/wayfireplugins/windowmanager/-/archive/v0.8.0/windowmanager-v0.8.0.tar.gz
+	source = https://gitlab.com/wayfireplugins/windowmanager/-/commit/0bf81a1d1af06f624722325148d6d8f7d3dcf260.patch
 	md5sums = bee49efa44c7d653c75d891dca1ac25a
+	md5sums = 1ccdefa3f69e44304c411ca0c5ba59f0
 
 pkgname = wayfire-plugins-toplevel-manager
