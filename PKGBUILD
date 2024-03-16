@@ -1,22 +1,39 @@
-# Maintainer: Alexandre Magno <alexandre.mbm@gmail.com>
+# Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=toggl-cli
-_majorver=0.2
-pkgver=0.2.1
+pkgver=0.4.2
 pkgrel=2
-_author=gabalese
-_maintainer=alexandre-mbm
-pkgdesc="Command line client for Toggl timekeeping"
-arch=('any')
-url="https://github.com/${_author}/${pkgname}"
-license=('MIT')
-conflicts=('toggl-bin')
-depends=('java-runtime')
-makedepends=()
-source=("https://github.com/${_author}/${pkgname}/releases/download/v${pkgver}/${pkgname}-${_majorver}.tar.gz")
-md5sums=('8653f9d5728dad2bd6e0e9a3911fb3e8')
+pkgdesc='Unofficial CLI for Toggl Track written in Rust, using the v9 API.'
+arch=(i686 x86_64)
+url=https://github.com/watercooler-labs/toggl-cli
+license=(MIT)
+depends=(glibc gcc-libs openssl)
+makedepends=(cargo)
+source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
+sha512sums=('db8b3d4b12a731c390d3c67c8dc180411ad7ddf6b943ff37b4e88ba22bf9501476b68e163b3e5c159a73f6372a1cd634f82674ad522a46201700662111e23829')
+
+prepare() {
+  cd $pkgname-$pkgver
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+  cd $pkgname-$pkgver
+	export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features
+}
+
+check() {
+  cd $pkgname-$pkgver
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen --all-features
+}
 
 package() {
-  cd "${srcdir}"
-  make PREFIX="${pkgdir}/usr/local" install
+  cd $pkgname-$pkgver
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${pkgname%-*}"
+  install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/$pkgname
+  install -Dm 644 LICENSE.md -t "$pkgdir"/usr/share/licenses/$pkgname
 }
