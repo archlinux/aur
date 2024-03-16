@@ -14,7 +14,7 @@ license=(MPL-2.0)
 depends=(java-runtime-headless)
 provides=(java-saxon)
 conflicts=(java-saxon)
-source=(${url}/releases/download/${_base}${pkgver//./-}/${_base/-/}${pkgver//./-}J.zip
+source=(${url}/releases/download/${_base/-/}${pkgver//./-}/${_base/-/}${pkgver//./-}J.zip
   saxon-xslt.sh
   saxon-xquery.sh)
 sha512sums=('1392a39d1e63d6571aa51624b2ec2162293cf21b7eb18221e6174d5a601097a54665afa5cd2e2d15a17ee0184a53bc008827a1f310a7be137060300589e06957'
