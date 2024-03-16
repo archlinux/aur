@@ -1,4 +1,4 @@
-# Maintainer: xiota / aur.chaotic.cx
+# Maintainer:
 
 # options
 : ${_autoupdate:=false}
@@ -90,7 +90,7 @@ _main_git() {
 
   pkgver() {
     cd "$_pkgsrc"
-    git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
       | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
   }
 }
@@ -231,11 +231,6 @@ build() {
     export CC=clang
     export CXX=clang++
     export LDFLAGS+=" -fuse-ld=lld"
-
-    _cmake_options+=(
-      -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
-      -DCMAKE_POLICY_DEFAULT_CMP0069=NEW
-    )
   fi
 
   if [[ "${_build_avx::1}" == "t" ]] ; then
