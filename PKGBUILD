@@ -1,13 +1,13 @@
 pkgbase=tal-vocoder
 pkgname=("${pkgbase}-clap-bin" "${pkgbase}-vst-bin" "${pkgbase}-vst3-bin")
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 groups=('pro-audio')
 pkgdesc="A Phase Vocoder By TAL Software"
 url="https://tal-software.com/products/tal-vocoder"
 license=('EULA')
-depends=('libcurl-gnutls' 'glibc')
+depends=('alsa-lib' 'bzip2' 'brotli' 'freetype2' 'glibc' 'graphite' 'harfbuzz' 'libpng' 'pcre2')
 source=('https://tal-software.com/downloads/plugins/TAL-Vocoder-2_64_linux.zip')
 md5sums=('1f0e553b20c7d04da55a76c224667372')
 
