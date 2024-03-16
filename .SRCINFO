@@ -1,0 +1,12 @@
+pkgbase = cdebug
+	pkgdesc = a swiss army knife of container debugging. Troubleshoot containers and pods lacking shell and/or debugging tools, add port forwarding,...
+	pkgver = 0.0.17
+	pkgrel = 1
+	url = https://github.com/iximiuz/cdebug
+	arch = x86_64
+	license = Apache
+	provides = cdebug
+	source = cdebug-0.0.17.tar.gz::https://github.com/iximiuz/cdebug/releases/download/v0.0.17/cdebug_linux_amd64.tar.gz
+	sha256sums = 34656b433d6646c4131ad1a904c2ae14a128b857c661108438417b731c923f72
+
+pkgname = cdebug
