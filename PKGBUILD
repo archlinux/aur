@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=insight
-_pkgver=0.19.8
+_pkgver=0.19.9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -96,6 +96,7 @@ optdepends=(
   r-performance
   r-plm
   r-poorman
+  r-proreg
   r-pscl
   r-psych
   r-quantreg
@@ -108,6 +109,7 @@ optdepends=(
   r-rstantools
   r-rstudioapi
   r-sandwich
+  r-serp
   r-speedglm
   r-statmod
   r-survey
@@ -120,8 +122,8 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f227772b838f94fd5775fc995c48524d')
-b2sums=('d07d5195a4fe61358ca6e44aa87c3ea69c9094308b7f5bcb63d59e996dd9b7391b447217e96b52702d376cc63ffbb83a62f863b4af9948407d7db26bd09662ca')
+md5sums=('9569dfb951ace398bbb25587722be84a')
+b2sums=('45b0a591440604ed1e32b8811353e2cd88f1174e6979a473e2b9375b5b6ac02a6cb094affa652b099695e4644dde9eafe5b49174b37cd1502b51c50fdcb66d7e')
 
 build() {
   mkdir build
