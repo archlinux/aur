@@ -1,7 +1,7 @@
 ## Maintainer: adiprasetya <ignilium.inc@gmail.com>
 
 pkgname=mcpelauncher-appimage
-_pkgver=0.14.0-788
+_pkgver=0.14.1-790
 pkgver="${_pkgver/-/.}"
 pkgrel=1
 pkgdesc="Minecraft Bedrock Launcher for Linux"
@@ -24,7 +24,7 @@ source=("${pkgname}_${_pkgver}.AppImage::https://github.com/minecraft-linux/appi
     "${pkgname}.png::https://minecraft.wiki/images/Bedrock_Edition_App_Store_icon_2.png"
     "mcpelauncher.desktop")
 noextract=("${pkgname}_${_pkgver}.AppImage")
-sha256sums=('dd3c29b5cca6135639e5fabd12ce0002790e232404f44f3cfa4399e8d6ebee83'
+sha256sums=('22ec68127de07573829d8cc6a7049dad6cfcf2a6369a4ded2431c2c88e472a88'
             'f885ae28409754af415aec63ce71c134f61dee1d6960c23dbc7b5d7b35dc6d47'
             'bc94fe1c6b6849569961e9807baf32e71e1275a0c9b2b589141ca9067b9c4732')
 
