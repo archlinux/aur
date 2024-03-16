@@ -1,13 +1,13 @@
 # Maintainer: Stefan Biereigel <stefan@biereigel.de>
 
 pkgname=csxcad-git
-pkgver=v0.6.2.r88.g3818a03
+pkgver=v0.6.3.r2.gc6a1587
 pkgrel=1
 pkgdesc="A C++ library to describe geometrical objects and their physical or non-physical properties."
 url="https://github.com/thliebig/CSXCAD"
 arch=('i686' 'x86_64')
 license=('LGPL3')
-depends=('fparser' 'qt5-webkit' 'glew' 'proj' 'libharu' 'tinyxml' 'hdf5' 'vtk' 'boost' 'cgal')
+depends=('fparser' 'qt5-webkit' 'glew' 'proj' 'libharu' 'tinyxml' 'hdf5' 'vtk' 'boost' 'cgal' 'nlohmann-json')
 makedepends=('cmake' 'cython')
 provides=('csxcad')
 conflicts=('csxcad')
