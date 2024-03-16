@@ -7,7 +7,7 @@ pkgbase=$_font-font
 pkgname=(otf-$_font{,-infinality} ttf-$_font{,-infinality})
 pkgver=2.001
 _sha=342dc8badffc187b2116099c5060e46c81eaf80d
-pkgrel=3
+pkgrel=4
 pkgdesc='Reminiscent of 1920s coffee house typography, bridges the gap to present times'
 url='https://www.yanone.de/fonts/kaffeesatz'
 arch=('any')
@@ -25,7 +25,7 @@ package_otf-yanone-kaffeesatz() {
     provides=("$pkgbase")
     conflicts=("$pkgname-ibx<2")
     pkgdesc+=' (OTF)'
-    cd "$_font-$_sha"
+    cd "${_font##*-}-$_sha"
     install -Dm644 -t "$pkgdir/usr/share/fonts/OTF/" fonts/otf/*.otf
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.txt CONTRIBUTORS.txt
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" AUTHORS.txt README.md
@@ -35,7 +35,7 @@ package_ttf-yanone-kaffeesatz() {
     provides=("$pkgbase")
     conflicts=("$pkgname-ibx<2")
     pkgdesc+=' (TTF)'
-    cd "$_font-$_sha"
+    cd "${_font##*-}-$_sha"
     install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" fonts/ttf/*.ttf
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.txt CONTRIBUTORS.txt
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" AUTHORS.txt README.md
