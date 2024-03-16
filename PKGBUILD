@@ -1,6 +1,6 @@
 # Maintainer: RiddlerXenon riddler.xenon@gmail.com
 pkgname=ddh
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Dynamic Display Handler"
 arch=('any')
