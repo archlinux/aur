@@ -4,19 +4,18 @@ _pkgname=mimic
 _pkgbase=$_pkgname-bpf
 pkgname=($_pkgbase $_pkgbase-dkms)
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="eBPF UDP -> TCP obfuscator"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/hack3ric/$_pkgname"
 license=('GPL-2.0-only')
-
-makedepends=('git' 'clang' 'bpf')
+makedepends=('git' 'clang' 'bpf' 'libbpf')
 source=("git+https://github.com/hack3ric/$_pkgname#tag=v$pkgver")
 b2sums=('SKIP')
 
 build() {
   cd $_pkgname
-  make out/$_pkgname
+  make MODE=release out/$_pkgname
 }
 
 package_mimic-bpf() {
