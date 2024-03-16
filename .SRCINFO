@@ -1,5 +1,5 @@
 pkgbase = novanav-cpp
-	pkgdesc = NovaNav: Navegador ligero para Linux escrito en C++, que ofrece una experiencia de navegación rápida y sin distracciones.
+	pkgdesc = NovaNav: Lightweight browser for Linux written in C++, delivering fast, distraction-free browsing experience.
 	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/felipealfonsog/NovaNav
