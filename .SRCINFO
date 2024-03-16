@@ -1,7 +1,7 @@
 pkgbase = qtrans
 	pkgdesc = QTrans is a word translator for Qt5/KF5. It uses Babylon (*.dic) dictionaries and translates many languages.
-	pkgver = 0.3.2.7
-	pkgrel = 2
+	pkgver = 0.3.3
+	pkgrel = 1
 	url = https://www.linux-apps.com/p/1127419/
 	arch = i686
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = qtrans
 	depends = zlib
 	depends = hicolor-icon-theme
         depends = extra-cmake-modules
-	source = https://sourceforge.net/projects/qtrans0/files/kf5/0.3.2.7/qtrans-0.3.2.7.tar.gz
-	md5sums = 9ed620bff53cffb0eedda206335352ad
+	source = https://sourceforge.net/projects/qtrans0/files/kf5/0.3.3/qtrans-0.3.3.tar.gz
+	md5sums = db762cd3b90de9242ffd10384b9dea2f
 
 pkgname = qtrans
