@@ -1,8 +1,10 @@
-# Maintainer: YagiOoda <YagiOoda@pm.me>
+# Maintainer: invverse <cheery.art2642 at fastmail dot com>
+# Contributer: j.taala <jay at jaytaala dot com>
+# Contributer: YagiOoda <yagiooda at pm dot me>
 pkgname=everdo
-pkgver=1.8.2
-pkgrel=2
-pkgdesc="The Perfect App for GTD / Getting Things Done"
+pkgver=1.9.0
+pkgrel=3
+pkgdesc="Powerful cross-platform GTD app with focus on privacy"
 arch=('x86_64')
 url='https://everdo.net'
 license=('unknown')
@@ -14,7 +16,7 @@ depends=(
 	'dbus'
 	)
 
-source=("https://d11l8siwmn8w36.cloudfront.net/$pkgver/$pkgname-$pkgver.pacman")
+source=("https://release.everdo.net/$pkgver/$pkgname-$pkgver.pacman")
 
 package() {
     # Install the application files in /opt
@@ -30,4 +32,4 @@ package() {
                       "${pkgdir}${icons_dir}/${pkgname}.png"
     done
 }
-sha256sums=('d7256cd4d21ff8da58fe61729a231893a09b0c1e8c21035ff7ae242c449ef71a')
+sha256sums=('f235ee4be60976d2384e88affbeef8f49931066b96641551ad6b2d0d9f155b71')

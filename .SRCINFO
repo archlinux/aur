@@ -1,7 +1,7 @@
 pkgbase = everdo
-	pkgdesc = The Perfect App for GTD / Getting Things Done
-	pkgver = 1.8.2
-	pkgrel = 2
+	pkgdesc = Powerful cross-platform GTD app with focus on privacy
+	pkgver = 1.9.0
+	pkgrel = 3
 	url = https://everdo.net
 	arch = x86_64
 	license = unknown
@@ -9,7 +9,7 @@ pkgbase = everdo
 	depends = nss
 	depends = alsa-lib
 	depends = dbus
-	source = https://d11l8siwmn8w36.cloudfront.net/1.8.2/everdo-1.8.2.pacman
-	sha256sums = d7256cd4d21ff8da58fe61729a231893a09b0c1e8c21035ff7ae242c449ef71a
+	source = https://release.everdo.net/1.9.0/everdo-1.9.0.pacman
+	sha256sums = f235ee4be60976d2384e88affbeef8f49931066b96641551ad6b2d0d9f155b71
 
 pkgname = everdo
