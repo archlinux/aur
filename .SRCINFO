@@ -1,6 +1,6 @@
 pkgbase = resticity
 	pkgdesc = A frontend for restic
-	pkgver = 1.0.28
+	pkgver = 1.0.29
 	pkgrel = 1
 	url = https://github.com/ad-on-is/resticity
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = resticity
 	depends = restic
 	depends = webkit2gtk
 	provides = resticity
-	source = https://github.com/ad-on-is/resticity/archive/refs/tags/1.0.28.tar.gz
-	sha256sums = 9503794efd9d048c9ce023a876e6393a9a59ec0982a955a56ea0188249716efe
+	source = https://github.com/ad-on-is/resticity/archive/refs/tags/1.0.29.tar.gz
+	sha256sums = 61ec7e37a5d7efc7c05e51528b619bd6f86f8dfbdb4c98db2fbb9e6a550a713e
 
 pkgname = resticity
