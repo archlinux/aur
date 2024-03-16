@@ -1,0 +1,13 @@
+pkgbase = qwq
+	pkgdesc = uwu/qwq for terminal
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/qsqcqs/qwq/tree
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = python3
+	replaces = uwu-qwq
+	source = https://github.com/qsqcqs/qwq/archive/refs/tags/qwq-v1.0.tar.gz
+	sha256sums = dc7bdb57e2a96bce1fa75eb17979d4a7b9993b1ebfbc1ea6f60a805741fba4d3
+
+pkgname = qwq
