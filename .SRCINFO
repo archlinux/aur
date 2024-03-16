@@ -1,7 +1,7 @@
 pkgbase = r-mgsub
 	pkgdesc = Safe, Multiple, Simultaneous String Substitution
 	pkgver = 1.7.3
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=mgsub
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = r-mgsub
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/mgsub_1.7.3.tar.gz
-	sha256sums = c9ae2560fe2690bedc5248af3fc89e7ef2bc6c147d46ced28f9824584c3791d5
+	md5sums = 1e204bdcd5b82c12f9cc0ebdd9bc3621
+	b2sums = f21476a3c30025f0c63270d041b78c4d891e009804cdbee674fbb6623065dd9c8d74069cce0997e6d355ce58361c732971a64f5c3c4e5b2024a368b722c98143
 
 pkgname = r-mgsub
