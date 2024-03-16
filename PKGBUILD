@@ -2,7 +2,7 @@
 
 pkgname=python-adafruit-circuitpython-st7735
 _pypi_pkgname=adafruit-circuitpython-st7735
-pkgver=1.2.12
+pkgver=1.2.13
 pkgrel=0
 pkgdesc="CircuitPython library for SSD1306 OLED displays"
 arch=('any')
@@ -19,7 +19,7 @@ depends=('python'
 )
 optdepends=()
 source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('696b0e59bd8643be4ba41ac5bb662af81936d6c7f5c04eb36436a122cdbc61c9')
+sha256sums=('7543bf9c7ee31399391474b6465244dbe4b1c5defc2366758b5b222d6bf4d30a')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
