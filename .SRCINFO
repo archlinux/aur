@@ -1,6 +1,6 @@
 pkgbase = parallels-client
 	pkgdesc = A remote work tool
-	pkgver = 19.3.24619
+	pkgver = 19.3.24677
 	pkgrel = 1
 	url = https://www.parallels.com/products/ras/capabilities/parallels-client/
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = parallels-client
 	depends = qt5-base
 	depends = qt5-x11extras
 	depends = ffmpeg4.4
-	source = https://download.parallels.com/ras/v19/19.3.1.24619/RASClient-19.3.24619_x86_64.tar.bz2
-	sha256sums = aaded7958c60c5d746343071c15b48a026a6a016e3910752e4ad5816ebba16fb
+	source = https://download.parallels.com/ras/v19/19.3.2.24677/RASClient-19.3.24677_x86_64.tar.bz2
+	sha256sums = bf59b5a60a710aee5a354fc20f53892c49f2bdbeffbca72817d5d00e78260e9f
 
 pkgname = parallels-client
