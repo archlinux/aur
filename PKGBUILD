@@ -1,7 +1,7 @@
 # Maintainer: Furkan Kardame <f.kardame@manjaro.org>
 
 pkgname=cockpit-docker
-pkgver=14
+pkgver=15
 pkgrel=1
 pkgdesc='Cockpit UI for docker containers'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/chabad360/cockpit-docker'
 license=(LGPL)
 depends=(cockpit docker)
 source=("${url}/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('3fdf5818270223fe95883255867d1d3e3552c1a5cd3d2ab3feab5db55e363e18')
+sha256sums=('119d2628a02e606e69cccf3ec928fd4228c1a97d0794f851328e88f9157561ae')
 
 package() {
   cd $pkgname
