@@ -3,8 +3,8 @@
 
 pkgname=python-ftfy
 _name=ftfy
-pkgver=6.1.3
-pkgrel=2
+pkgver=6.2.0
+pkgrel=1
 pkgdesc='Fixes some problems with Unicode text after the fact'
 url="https://github.com/LuminosoInsight/python-ftfy"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
 depends=('python-wcwidth')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/f/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('2c2a8ec537895f70183b39db80ba163053745afe9ffe9d9d51334debc29808c0fc48193edeca397d4e3a9566d885ac222b08f3b0472ff35b3450c882647cde2f')
+sha512sums=('31724b3f65936a146f567a493988b3a3ce5ba87ac7578b97a64f0946cc20d09fcab040964cec9bcf3fbac1f79cad0b67c5e74aaa871a7d6c856f5939e7a30529')
 
 prepare() {
   # Keep the build backend from including `CHANGELOG.md` and `README.md`
