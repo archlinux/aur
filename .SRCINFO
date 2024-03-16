@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-prrte
 	pkgdesc = PMIx Reference RunTime Environment (Android, aarch64)
 	pkgver = 3.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/openpmix/prrte
 	arch = any
 	license = BSD-3-Clause
