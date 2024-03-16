@@ -23,8 +23,8 @@ build() {
 package() {
   cd "${srcdir}/NovaNav-v.${pkgver}/src/cpp"
 
-  # Install the binary
-  install -Dm755 novanav "${pkgdir}/usr/bin/novanav"
+  # Install the binary to /usr/local/bin
+  install -Dm755 novanav "${pkgdir}/usr/local/bin/novanav"
 
   # Install the icon
   install -Dm644 "${srcdir}/NovaNav-v.${pkgver}/src/nnav-iconlogo.png" "${pkgdir}/usr/share/pixmaps/novanav.png"
