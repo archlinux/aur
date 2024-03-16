@@ -2,30 +2,33 @@
 
 pkgname=inkscape-eggbot-git
 _gitpkgname=EggBot
-pkgver=r688.ac3cf73
-_axidraw_pkgver=3.9.4
+pkgver=r692.ff3d7bf
+_axidraw_pkgver=3.9.5
+_axidraw_srctarballver="v.${_axidraw_pkgver}" # since version 3.9.5
 pkgrel=1
 pkgdesc='EggBot software as an Inkscape extension. Useful for other plotters, too.'
 arch=('any')
 url='https://github.com/evil-mad/EggBot'
 license=(
-  'GPL2' # vendored `axidrawinternal` dependency
-  'GPL3' # EggBot extension proper
+  # Vendored `axidrawinternal` dependency
+  'GPL-2.0-only'
+  # EggBot extension proper
+  'GPL-3.0-only'
 )
 depends=('inkscape' 'python-ink-extensions-git' 'python-plotink')
 makedepends=('git' 'python')
 provides=('inkscape-eggbot')
 conflicts=('inkscape-eggbot')
-options=('!strip')
+options=('!debug' '!strip')
 
 source=(
   "${pkgname}::git+https://github.com/evil-mad/EggBot.git"
-  "axidraw-${_axidraw_pkgver}.tar.gz::https://github.com/evil-mad/axidraw/archive/v${_axidraw_pkgver}.tar.gz"
+  "axidraw-${_axidraw_srctarballver}.tar.gz::https://github.com/evil-mad/axidraw/archive/${_axidraw_srctarballver}.tar.gz"
 )
 
 sha512sums=(
   'SKIP'
-  '80c779fcdc4a3a7f14005e9085b2a8b9ee565186d7053349417fdeb19d94b6f8a5732fe72ffcc8245f205eef5099691fea2d79188cbef9d0d50a4aca2c9d4f00'
+  'e9c6444813b109974f1e934de1959026c80a458f8fd1b979d41a824aebb72e97058d21dda7ea340dd466e6e09c547248cff5ef728f6ee85489901f8fd84ef398'
 )
 
 pkgver() {
@@ -46,7 +49,7 @@ package() {
   echo >&2 'Packaging vendored runtime dependency: axidrawinternal'
   mkdir -p "${pkgdir}/usr/share/inkscape/extensions/${_gitpkgname}/axidraw_deps"
   cp -r --preserve=mode -T \
-    "${srcdir}/axidraw-${_axidraw_pkgver}/inkscape driver" \
+    "${srcdir}/axidraw-${_axidraw_srctarballver}/inkscape driver" \
     "${pkgdir}/usr/share/inkscape/extensions/${_gitpkgname}/axidrawinternal"
 
   echo >&2 'Symlinking other runtime dependencies'
@@ -78,7 +81,9 @@ package() {
     "${srcdir}/${pkgname}/docs" \
     "${pkgdir}/usr/share/doc/${pkgname}/html"
 
-  echo >&2 'Packaging the license'
-  install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
+  echo >&2 'Packaging the licenses'
+  install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}/eggbot" \
     "${srcdir}/${pkgname}/LICENSE"
+  install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}/axidraw" \
+    "${srcdir}/axidraw-${_axidraw_srctarballver}/LICENSE"
 }
