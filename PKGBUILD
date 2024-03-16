@@ -1,7 +1,7 @@
 pkgbase=harrison-fastrack
 pkgname=("${pkgbase}-vst-bin" "${pkgbase}-vst3-bin")
 pkgver=2.0.1.a587504f
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://store.harrisonaudio.com/all-products/fastrack"
 license=('EULA')
@@ -20,5 +20,6 @@ package_harrison-fastrack-vst-bin() {
 
 package_harrison-fastrack-vst3-bin() {
 	pkgdesc="Harrison Fastrack (VST3)"
+	groups=("vst3-plugins")
 	install -Dm755 "$srcdir/Harrison_FasTrack/vst3/Harrison_FasTrack.vst3/Contents/x86_64-linux/Harrison_FasTrack.so" "$pkgdir/usr/lib/vst3/Harrison_FasTrack.vst3/Contents/x86_64-linux/Harrison_FasTrack.so"
 }
