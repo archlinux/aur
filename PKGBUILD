@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=jaf-api
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Jakarta Activation Specification project"
 arch=(any)
 url="https://github.com/jakartaee/${pkgname}"
@@ -30,11 +30,7 @@ check() {
 
 package() {
   cd ${pkgname}-${pkgver}/api
-
-  install -dm755 "${pkgdir}/usr/share/java/"
-  install -m544 "target/jakarta.activation-api-${pkgver}.jar" "${pkgdir}/usr/share/java/"
+  install -Dm 644 target/jakarta.activation-api-${pkgver}.jar -t "${pkgdir}"/usr/share/java
+  ln -s jakarta.activation-api-${pkgver}.jar "${pkgdir}"/usr/share/java/jakarta.activation-api.jar
   install -Dm644 ${srcdir}/${pkgname}-${pkgver}/LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  cd "${pkgdir}/usr/share/java"
-  ln -s "./jakarta.activation-api-${pkgver}.jar" "${pkgname}-${pkgver}.jar"
-  ln -s "./${pkgname}-${pkgver}.jar" "${pkgname}.jar"
 }

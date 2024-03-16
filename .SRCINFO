@@ -1,7 +1,7 @@
 pkgbase = jaf-api
 	pkgdesc = Jakarta Activation Specification project
 	pkgver = 2.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jakartaee/jaf-api
 	arch = any
 	license = BSD-3-Clause
