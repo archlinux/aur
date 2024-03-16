@@ -17,7 +17,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=(llvm-minimal-git llvm-libs-minimal-git clang-minimal-git clang-libs-minimal-git clang-opencl-headers-minimal-git)
-pkgver=19.0.0_r492907.047b2b241def
+pkgver=19.0.0_r492934.a02b79f3fc76
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -132,7 +132,7 @@ build() {
         -D LLVM_ENABLE_DUMP=ON
         -D LLVM_LIT_ARGS="$LITFLAGS"" -sv --ignore-fail"
   )
-    # build aborts with FORTIFY_SOURCE=3
+    # build aborts with FORTIFY_SOURCE=3 , see https://github.com/llvm/llvm-project/issues/85509
     export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
     
     cmake -B _build -S "$srcdir"/llvm-project/llvm "${cmake_args[@]}" -Wno-dev
