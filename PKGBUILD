@@ -1,12 +1,12 @@
 pkgbase=harrison-vocal-intensity-processor
 pkgname=("${pkgbase}-vst-bin" "${pkgbase}-vst3-bin")
 pkgver=2.0.0.39457821
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://store.harrisonaudio.com/all-products/vocal-intensity-processor"
 license=('EULA')
 groups=('pro-audio')
-depends=('glibc' 'libcurl-gnutls')
+depends=('alsa-lib' 'bzip2' 'brotli' 'freetype2' 'glibc' 'graphite' 'harfbuzz' 'keyutils' 'krb5' 'libcurl-gnutls' 'libffi' 'libnghttp2' 'libidn2' 'libp11-kit' 'libpng' 'libpsl' 'libssh2' 'libtasn1' 'libunistring' 'libxau' 'libxcb' 'libx11' 'nettle' 'openssl' 'pcre2' 'zlib' 'zstd')
 makedepends=('xdg-user-dirs' 'unzip')
 source=("https://softwareupdate.solidstatelogic.com/DownloadManager/InstallersLinux/Harrison_VocalIntensityProcessor_v${pkgver}-linux-amd64.tar.gz")
 sha256sums=('81da77d39f48936ddc255301afefbf8e33aed2ca1c96380c89e1cdf85481efcc')
