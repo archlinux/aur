@@ -1,6 +1,6 @@
 pkgname=thextech-bin
 _pkgname=TheXtech-bin
-pkgver=1.3.6.3
+pkgver=1.3.6.4
 pkgrel=1
 _pkgrel_x86_64=1
 _pkgrel_aarch64=1
