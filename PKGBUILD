@@ -7,7 +7,7 @@ _pkg_polkit='polkit-qt6'
 
 pkgname=('thedesk' 'td-polkitagent' 'xdg-desktop-portal-td' 'thedesk-platform' 'libthedesk' 'thedesk-wayland')
 pkgver=2.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Desktop Environment built on Qt"
 arch=("x86_64" "aarch64")
 url="https://github.com/theCheeseboard/thedesk"
@@ -22,7 +22,6 @@ doInstallModule() {
 
 build() {
 	export XDG_DATA_DIRS=/usr/share
-        export PKG_CONFIG_PATH=/usr/lib/wlroots0.16/pkgconfig
 	cmake -B build -S "$pkgname-$pkgver" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
                 -DQT_WAYLAND_SCANNER=/usr/lib/qt6/qtwaylandscanner \

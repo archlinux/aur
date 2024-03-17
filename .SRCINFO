@@ -1,7 +1,7 @@
 pkgbase = thedesk
 	pkgdesc = Desktop Environment built on Qt
 	pkgver = 2.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/theCheeseboard/thedesk
 	arch = x86_64
 	arch = aarch64
