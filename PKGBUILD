@@ -3,7 +3,7 @@
 
 pkgname=libtermkey
 pkgver=0.22
-pkgrel=2
+pkgrel=3
 pkgdesc='Library for easy processing of keyboard entry from terminal-based programs'
 arch=('x86_64')
 url='http://www.leonerd.org.uk/code/libtermkey'
