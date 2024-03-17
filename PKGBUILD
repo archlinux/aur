@@ -3,25 +3,25 @@
 _pkgname=varSelRF
 _pkgver=0.7-8
 pkgname=r-${_pkgname,,}
-pkgver=0.7.8
-pkgrel=4
-pkgdesc='Variable Selection using Random Forests'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Variable Selection using Random Forests"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-randomforest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('719487fb560cb4733816bafe4cbc958a132674825e3b9d4f82ce8f2003cd8940')
+md5sums=('103c460d0734bd38ae13496c839d3435')
+b2sums=('9d23e3b083b84d71c79ae3faf19022a5b6c6421f6511060e45559172f843303abf86cf7ac2b4b104c48d2df8406f899aa437822766f8ba3e659461838a374b6f')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
