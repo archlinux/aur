@@ -8,7 +8,6 @@ pkgbase = getnf
 	makedepends = git
 	depends = curl
 	depends = fontconfig
-	depends = tar
 	provides = getnf
 	conflicts = getnf
 	source = git+https://github.com/getnf/getnf.git

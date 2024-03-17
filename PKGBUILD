@@ -10,7 +10,6 @@ makedepends=("git")
 depends=(
   curl
   fontconfig
-  tar
 )
 source=("git+https://github.com/getnf/getnf.git")
 md5sums=('SKIP')
