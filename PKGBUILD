@@ -18,7 +18,9 @@ build() {
   -DCMAKE_BUILD_TYPE=None \
   -DCMAKE_INSTALL_PREFIX='/usr' \
   -DCMAKE_INSTALL_LIBDIR=lib \
-  -DLINUX_PORTABLE=OFF
+  -DLINUX_PORTABLE=OFF \
+  -DCMAKE_C_FLAGS="-Wno-error=deprecated-declarations" \
+  -Wno-dev
 
   cmake --build build
 }
