@@ -4,7 +4,7 @@
 # Contributor: Benjamin Hedrich <kiwisauce (a) pagenotfound (dot) de>
 
 pkgname=tvheadend-git
-pkgver=4.3.r2165.gdd884b8
+pkgver=4.3.r2167.g583de23
 pkgrel=1
 pkgdesc='TV streaming server and DVR'
 #arch=(x86_64)
@@ -15,8 +15,7 @@ depends=(avahi ffmpeg libdvbcsa libfdk-aac libhdhomerun libogg libtheora libvorb
          openssl opus pcre2 pngquant uriparser x264 x265)
 makedepends=(git python)
 optdepends=('xmltv: alternative source of programme listings')
-# NOTE: !lto : to avoid build errors in case lto is enabled (in makepkg.conf). See https://tvheadend.org/issues/6026
-options=(!lto !strip emptydirs)
+options=(!strip emptydirs)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+https://github.com/tvheadend/tvheadend.git"
