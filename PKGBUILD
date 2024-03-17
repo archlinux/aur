@@ -2,14 +2,35 @@
 
 pkgname=ksvg-git
 _name=${pkgname%-git}
-pkgver=r5057.9ba4b20b
+pkgver=r5156.aff7a5e0
 pkgrel=1
 pkgdesc='A library for rendering SVG-based themes with stylesheet re-coloring and on-disk caching'
 arch=(x86_64)
 url='https://projects.kde.org/projects/playground/libs/plasma-framework'
 license=(LGPL)
-depends=(qt6-base qt6-tools karchive-git kconfig-git kcolorscheme-git kcoreaddons-git kirigami2-git)
-makedepends=(git cmake extra-cmake-modules-git)
+depends=(
+    gcc-libs
+    glibc
+    karchive
+    kcolorscheme
+    kconfig
+    kguiaddons
+    qt6-base 
+    qt6-svg
+)
+makedepends=(
+    doxygen
+    extra-cmake-modules
+    kirigami
+    qt6-declarative
+    qt6-doc
+    qt6-tools
+    git
+)
+optdepends=(
+    'kirigami: QML bindings'
+    'qt6-declarative: QML bindings'
+)
 source=("git+https://invent.kde.org/frameworks/$_name.git")
 conflicts=(ksvg)
 provides=(ksvg)
@@ -21,7 +42,7 @@ pkgver() {
 }
 
 build() {
-    cmake -B build -S $_name -DCMAKE_BUILD_TYPE=Release
+    cmake -B build -S $_name -DCMAKE_BUILD_TYPE=Release -DBUILD_QCH=ON -DBUILD_TESTING=OFF
     cmake --build build
 }
 
