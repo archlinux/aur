@@ -1,6 +1,6 @@
 # Maintainer: Daniele Basso <d dot bass 05 at proton dot me>
 pkgname=bun
-pkgver=1.0.29
+pkgver=1.0.31
 #_zigver=0.12.0-dev.1828+225fe6ddb #https://github.com/oven-sh/bun/blob/bun-v1.0.28/build.zig#L9
 pkgrel=1
 pkgdesc="Bun is a fast JavaScript all-in-one toolkit. This PKGBUILD builds from source, resulting into a smaller and faster binary depending on your CPU."
@@ -8,18 +8,18 @@ arch=(x86_64)
 url="https://github.com/oven-sh/bun"
 license=('GPL')
 makedepends=(
-	clang cmake esbuild git go icu libiconv libtool lld llvm ninja pkg-config python ruby rust unzip
+	clang16 cmake esbuild git go icu libiconv libtool lld16 llvm16 ninja pkg-config python ruby rust unzip
 )
 conflicts=(bun-bin)
 source=(git+$url.git#tag=bun-v$pkgver
-        bun-linux-x64-$pkgver.zip::https://github.com/oven-sh/bun/releases/download/bun-v$pkgver/bun-linux-x64-baseline.zip)
-b2sums=('SKIP'
-        '9da09ad3981579847228fdde4e95a5b39fb84f4cbd973865dbf0bdd4499e550b7943a1418c42e4e1084b55e3c23f5b5ab7110e86aef3e679d0f81f6fc0fd7b50')
+        bun-linux-x64-$pkgver.zip::https://github.com/oven-sh/bun/releases/download/bun-v$pkgver/bun-linux-x64.zip) # add "baseline" here to download the avx2-less build of bun!
+b2sums=('3704c6f921822546a14bf489dbe74b1330310cc46e65340488ee629452457c59685a8de42f6740429be4239c5b3a1442a04c89a0c3b3bde1fc5dde11843f4271'
+        '9de8e4752d9ba25c5c173c260e1650dd36dba612b06b3aef031caed8f674c7b7a6124b2fb5218451c5981e358685313ad94ddbe72fd86fdd57cb5b2193f59968')
 
 _j=$(($(nproc)/2)) #change for your system
 
 prepare() {
-  export PATH="${srcdir}/bun-linux-x64-baseline:$PATH"
+  export PATH="${srcdir}/bun-linux-x64:$PATH"
 
   cd "$pkgname"
 
@@ -39,7 +39,7 @@ prepare() {
 }
 
 build() {
-  export PATH="${srcdir}/bun-linux-x64-baseline:$PATH"
+  export PATH="${srcdir}/bun-linux-x64:$PATH"
 
   cd $srcdir/bun/
 
