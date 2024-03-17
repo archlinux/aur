@@ -1,0 +1,56 @@
+set -e
+# Needed since post_install runs on user root
+if [ -n "$SUDO_USER" ]; then
+    user=$SUDO_USER
+else
+    user=$(whoami) # fallback (if this is used it'll error out anyways)
+fi
+
+_update() {
+    echo "Installing packages using pip"
+    su "$user" -c "
+        source venv/bin/activate
+        # Install the requirements
+        pip install -r requirements.txt
+        pip install Xlib # Required on linux, see https://github.com/Podshot/MCEdit-Unified/issues/797
+
+        # Build the libs for a faster mcedit
+        python setup.py all
+        echo "Done installing pip packages for mcedit."
+        deactivate
+    "
+}
+
+post_install() {
+    echo "Setting up MCEdit's venv."
+    cd /opt/mcedit-unified
+
+    # Install & setup the virtualenv
+    su "$user" -c "
+        python2 -m pip install virtualenv
+        python2 -m virtualenv venv
+    "
+    
+    # Install all packages
+    _update;
+
+    echo "All done !"
+}
+
+post_upgrade() {
+    _update 
+
+    echo "All done !"
+}
+
+post_remove() {
+    echo "Making sure folder is removed (for venv)."
+    if [ -d "/opt/mcedit-unified/" ]; then
+        rm -r "/opt/mcedit-unified/"
+        echo "Folder has been removed"
+    else
+        echo "Folder did not exist."
+    fi
+    
+    echo "Done uninstalling mcedit."
+}
