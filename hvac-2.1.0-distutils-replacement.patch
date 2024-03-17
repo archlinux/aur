@@ -1,0 +1,72 @@
+diff --git a/tests/integration_tests/api/auth_methods/test_ldap.py b/tests/integration_tests/api/auth_methods/test_ldap.py
+index 9b89aa7..784bbad 100644
+--- a/tests/integration_tests/api/auth_methods/test_ldap.py
++++ b/tests/integration_tests/api/auth_methods/test_ldap.py
+@@ -1,4 +1,4 @@
+-import distutils.spawn
++import shutil
+ import logging
+ from unittest import TestCase, SkipTest
+ 
+@@ -17,7 +17,7 @@ class TestLdap(HvacIntegrationTestCase, TestCase):
+     @classmethod
+     def setUpClass(cls):
+         # The mock LDAP server requires Java runtime
+-        if not distutils.spawn.find_executable("java"):
++        if not shutil.which("java"):
+             raise SkipTest("The mock LDAP server requires Java runtime")
+ 
+         try:
+diff --git a/tests/utils/hvac_integration_test_case.py b/tests/utils/hvac_integration_test_case.py
+index 0052497..76a5643 100644
+--- a/tests/utils/hvac_integration_test_case.py
++++ b/tests/utils/hvac_integration_test_case.py
+@@ -5,7 +5,7 @@ import time
+ 
+ from tests.utils import get_config_file_path, create_client, is_enterprise
+ from tests.utils.server_manager import ServerManager
+-import distutils.spawn
++import shutil
+ from hvac import Client
+ 
+ 
+@@ -23,7 +23,7 @@ class HvacIntegrationTestCase:
+     def setUpClass(cls):
+         """Use the ServerManager class to launch a vault server process."""
+         config_paths = [get_config_file_path("vault-tls.hcl")]
+-        if distutils.spawn.find_executable("consul") is None and cls.enable_vault_ha:
++        if shutil.which("consul") is None and cls.enable_vault_ha:
+             logging.warning(
+                 "Unable to run Vault in HA mode, consul binary not found in path."
+             )
+diff --git a/tests/utils/server_manager.py b/tests/utils/server_manager.py
+index d402174..dfc625c 100644
+--- a/tests/utils/server_manager.py
++++ b/tests/utils/server_manager.py
+@@ -7,7 +7,7 @@ import requests
+ import hcl
+ import typing as t
+ 
+-import distutils.spawn
++import shutil
+ from unittest import SkipTest
+ from tests.utils import (
+     get_config_file_path,
+@@ -137,7 +137,7 @@ class ServerManager:
+         self, *, consul_config: dict = None, attempt=1, max_attempts=3, delay_s=1
+     ):
+         """Launch the vault server process and wait until its online and ready."""
+-        if distutils.spawn.find_executable("vault") is None:
++        if shutil.which("vault") is None:
+             raise SkipTest("Vault executable not found")
+ 
+         with PortGetter() as g:
+@@ -225,7 +225,7 @@ class ServerManager:
+     def start_consul(
+         self,
+     ) -> str:
+-        if distutils.spawn.find_executable("consul") is None:
++        if shutil.which("consul") is None:
+             raise SkipTest("Consul executable not found")
+ 
+         with PortGetter() as g:
