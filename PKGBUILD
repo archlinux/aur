@@ -24,7 +24,7 @@ pkgver() {
 
 prepare() {
   cd seahorse-nautilus
-	git apply ../../0001-Make-file-extension-for-encrypted-files-configurable.patch
+  git apply ../../0001-Make-file-extension-for-encrypted-files-configurable.patch
   git apply ../../0001-gpgme-config-is-not-available-anymore.patch
 }
 
