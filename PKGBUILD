@@ -3,12 +3,12 @@
 pkgname=mcedit-unified-git
 _pkgname=MCEdit-Unified
 pkgver=1.6.0.0.r6.g90abfb17
-pkgrel=4
+pkgrel=5
 pkgdesc='MCEdit is a versatile map utility, designed for editing Minecraft maps.'
 url=http://podshot.github.io/MCEdit-Unified
 arch=(x86_64)
 license=(ISC)
-depends=(python2) # python2-bin recommended to avoid at least 30m of build time
+depends=(python2 xclip) # python2-bin recommended to avoid at least 30m of build time
 provides=(mcedit)
 install=mcedit.install
 conflicts=(mcedit)

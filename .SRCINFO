@@ -1,12 +1,13 @@
 pkgbase = mcedit-unified-git
 	pkgdesc = MCEdit is a versatile map utility, designed for editing Minecraft maps.
 	pkgver = 1.6.0.0.r6.g90abfb17
-	pkgrel = 4
+	pkgrel = 5
 	url = http://podshot.github.io/MCEdit-Unified
 	install = mcedit.install
 	arch = x86_64
 	license = ISC
 	depends = python2
+	depends = xclip
 	provides = mcedit
 	conflicts = mcedit
 	options = !strip
