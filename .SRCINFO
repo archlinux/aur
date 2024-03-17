@@ -1,5 +1,5 @@
 pkgbase = opencity
-	pkgdesc = A 3D city simulator
+	pkgdesc = A simple 3D city simulation game
 	pkgver = 0.0.6.5
 	pkgrel = 1
 	url = http://www.opencity.info/
