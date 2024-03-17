@@ -155,7 +155,7 @@ class AdicionarJogoDialog(Gtk.Dialog):
             self.mangohud_checkbox.set_active(False)  # Desmarca o checkbox
 
         # Verificação para Game Mode
-        gamemode_enabled = os.path.exists("/usr/games/gamemoderun")
+        gamemode_enabled = os.path.exists("/usr/bin/gamemoderun")
         if not gamemode_enabled:
             self.gamemode_checkbox.set_sensitive(False)  # Torna o checkbox insensível
             self.gamemode_checkbox.set_active(False)  # Desmarca o checkbox
