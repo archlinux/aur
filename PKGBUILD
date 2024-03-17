@@ -3,7 +3,7 @@
 pkgname=qqmusic-electron
 _pkgname=qqmusic
 pkgver=1.1.5
-pkgrel=9
+pkgrel=10
 pkgdesc="Tencent QQMusic, Run with system Electron."
 arch=('any')
 url="https://y.qq.com/"
@@ -14,7 +14,7 @@ makedepends=('asar')
 provides=("$_pkgname")
 conflicts=('qqmusic-bin')
 source=(
-    "https://test.mini-proxy.mivm.cn/qqmusic-electron/qqmusic_${pkgver}-8.asar"
+    "qqmusic_${pkgver}-${pkgrel}.asar::https://test.mini-proxy.mivm.cn/qqmusic-electron/qqmusic_${pkgver}-8.asar"
     "${_pkgname}.desktop"
     "${_pkgname}.sh"
 )
@@ -30,7 +30,6 @@ prepare() {
 
 package(){
     cd "${srcdir}"
-
     install -Dm755 ${_pkgname}.sh "${pkgdir}/usr/bin/qqmusic"
     install -Dm644 qqmusic_${pkgver}-${pkgrel}.asar "${pkgdir}/usr/lib/qqmusic/app.asar"
     install -Dm644 ${_pkgname}.desktop "${pkgdir}/usr/share/applications/qqmusic.desktop"
