@@ -25,21 +25,21 @@ _renderer=gles
 
 pkgbase=kodi-stable-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r62310.f1caa0dc88b
+pkgver=r65484.0f844b189d2
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
 makedepends=(
   'afpfs-ng' 'bluez-libs' 'cmake' 'curl' 'dav1d' 'doxygen' 'git' 'glew'
-  'gperf' 'hicolor-icon-theme' 'java-runtime<21' 'fmt' 'libaacs' 'libass'
+  'gperf' 'hicolor-icon-theme' 'java-runtime' 'fmt' 'libaacs' 'libass'
   'libbluray' 'libcdio' 'libcec' 'libgl' 'mariadb-libs' 'libmicrohttpd'
   'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libpulse' 'libva'
   'libva-vdpau-driver' 'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'nasm'
   'pipewire' 'python-pycryptodomex' 'python-pillow' 'python-pybluez'
   'python-simplejson' 'shairplay' 'smbclient' 'sndio' 'spdlog' 'taglib'
   'tinyxml' 'swig' 'upower' 'giflib' 'rapidjson' 'ghostscript' 'meson' 'gtest'
-  'graphviz' 'pcre'
+  'graphviz' 'pcre' 'libdisplay-info' 'tinyxml2'
   # wayland
   'wayland-protocols' 'waylandpp' 'libxkbcommon'
   # gbm
@@ -50,7 +50,7 @@ options=(!lto)
 [[ -n "$_clangbuild" ]] && makedepends+=('clang' 'lld' 'llvm')
 
 _gitname=xbmc
-_codename=Nexus
+_codename=Omega
 
 # Found on their respective github release pages. One can check them against
 # what is pulled down when not specifying them in the cmake step.
@@ -64,7 +64,7 @@ _codename=Nexus
 _libdvdcss_version="1.4.3-Next-Nexus-Alpha2-2"
 _libdvdnav_version="6.1.1-Next-Nexus-Alpha2-2"
 _libdvdread_version="6.1.3-Next-Nexus-Alpha2-2"
-_ffmpeg_version="4.4.1-Nexus-Alpha1"
+_ffmpeg_version="6.0.1"
 _crossguid_version="ca1bf4b810e2d188d04cb6286f957008ee1b7681"
 _fstrcmp_version="0.7.D001"
 _flatbuffers_version="23.3.3"
@@ -74,18 +74,11 @@ source=(
   "libdvdcss-$_libdvdcss_version.tar.gz::https://github.com/xbmc/libdvdcss/archive/$_libdvdcss_version.tar.gz"
   "libdvdnav-$_libdvdnav_version.tar.gz::https://github.com/xbmc/libdvdnav/archive/$_libdvdnav_version.tar.gz"
   "libdvdread-$_libdvdread_version.tar.gz::https://github.com/xbmc/libdvdread/archive/$_libdvdread_version.tar.gz"
-  "ffmpeg-$_ffmpeg_version.tar.gz::https://github.com/xbmc/FFmpeg/archive/$_ffmpeg_version.tar.gz"
+  "https://ffmpeg.org/releases/ffmpeg-$_ffmpeg_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/crossguid-$_crossguid_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
-  kodi-fmt-10.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/23571.patch
-  flatb23.patch::https://github.com/xbmc/xbmc/commit/35be40daa39965a9ea5b3569eb7d515e6a14da5d.patch
-  0001-ffmpeg-fix-build-with-binutils-update.patch
-  https://github.com/xbmc/xbmc/pull/23227.patch
-  https://github.com/xbmc/xbmc/commit/d2022ce1.patch
-  https://github.com/xbmc/xbmc/commit/6f5dff4b.patch
-  https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/24577.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -101,18 +94,11 @@ b2sums=('SKIP'
         '2f503d3ab767094958f7ec10b4ad11ffd02665deee571c8f3c739bef5fc7e2ff84babc5a3fdee638dc095f896b72fe3ce65e6b688674cb5f7b7b77190992688c'
         'db4d05836d8fbb3637ae50bdbfc0e4b612ee6b3be24addfea94ce772c3bf28d58b63a3f252d6f9f016f72f8cbb841cc1820b091226b136f4c4664385a32da73c'
         'c94feb5a03a12efa5b7767965118d2500a088299ea36f3b82e46d157e45893e6b04503cb50f179ca681bac914457607fab26acfa6e304752b355c407578572d1'
-        '51d310e7000aeba657d55341c5fdb540474e197b85062228ab4b314c8309ec11985aa7f105193333fc6106529e8e58c86eafe268190894be8532d0e0b9065fa6'
+        '6424e30c6d354abbbea8a807822ae61589413189e9c4ba7aa51c307179287506b9072626e9745861fe83753c0015b50d179f9b4f298fe9abf74bee13936639af'
         '0f78a8ab5a420297f666b3b8156d499a9141ec25c049d4d2bb2ba594dc585abe211a149b83c605cce4f5530207231a065d5f3a87a0c969781de8c6381afa2527'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
         'be5e3c8ea81ce4b6f2e2c1b2f22e1172434c435f096fa7dade060578c506cff0310e3e2ef0627e26ce2be44f740652eb9a8e1b63578c18f430f7925820f04e66'
-        '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61'
-        '45e4a4fc3ddd3bc2329b42a3f72c3e4fae1adb93e9d4b945a5aba3a70bee3ddce416fcb19061ad2263d1f247da5fc7143944408fb5294b762e45ac2f0981c06a'
-        'bdc249920685a3738f872d9ea19a5c46b244d437d30b7dad958dcf33b5bfb88782c1a73bd15dcb1c26f0b643f1e4711775621a2753a1b5668efacc2144fd06e6'
-        '7e15afcc0cc7f529e6c491c985968bc53be413424b890e4eab2ce8e3d0f21b08347698e660e0f4f0cc50c5279f052be7a2d84d5351509d34193066d797a44130'
-        '0e205a9d4a371776cbeaacb88b5a915986d6e2b7b2d32d55e672902a6c6c6530573bbcd20557819f61a12e17931d43788e8508becd26778bcc151bd0838183d5'
-        'ee94696b2e7cbdf904e271e205206a60c77571e167563a882fdeb4f0df49f53c9f38489148c697d8e694087f7fc2cf157f89c4787a4c519fac3736f976bfc854'
-        '4338568d343e48bbd68855faf1c3affc90598bbed1b2f213053fbe1df81ec3ff4e463ee24f9a971e928df7b1ff47f6dd723790fb70eb65388bc3e0adcacb9ad4'
-        '85c21d0c3e74a6c3184308c06deb0b523e721037ce8bd5e8fe3d84dc017bad63b8ef78ffdc9c9c8f24b9deb2732dd604c09f21979a900a60633c1c879e5e744b')
+        '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61')
 
 pkgver() {
   cd "$_gitname"
@@ -126,13 +112,6 @@ prepare() {
   cd "$_gitname"
 
   rm -rf system/certs # remove not needed cacert
-
-  patch -p1 -i ../0001-ffmpeg-fix-build-with-binutils-update.patch
-  patch -p1 -i ../flatb23.patch
-  patch -p1 -i ../23227.patch
-  patch -p1 -i ../d2022ce1.patch
-  patch -p1 -i ../6f5dff4b.patch
-  patch -p1 -i ../24577.patch
 
   if [[ -n "$_clangbuild" ]]; then
     msg "Building with clang"
@@ -156,6 +135,7 @@ build() {
     -DENABLE_AVX=ON
     -DENABLE_AVX2=ON
     -DUSE_LTO=$(nproc)
+    -DVERBOSE=ON
     -DENABLE_LDGOLD=OFF
     -DENABLE_AIRTUNES=ON
     -DENABLE_AVAHI=ON
@@ -204,7 +184,7 @@ build() {
 # kodi
 # components: kodi
 package_kodi-stable-git() {
-  pkgdesc="A software media player and entertainment hub for digital media (Nexus branch, $_renderer renderer)"
+  pkgdesc="A software media player and entertainment hub for digital media (Omega branch, $_renderer renderer)"
   depends=(
     'bluez-libs' 'curl' 'dav1d' 'desktop-file-utils' 'hicolor-icon-theme' 'fmt'
     'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec' 'libmicrohttpd' 'libnfs'
@@ -212,7 +192,7 @@ package_kodi-stable-git() {
     'mariadb-libs' 'mesa' 'libpipewire' 'python-pillow' 'python-pycryptodomex'
     'python-simplejson' 'shairplay' 'smbclient' 'sndio' 'spdlog' 'sqlite'
     'taglib' 'tinyxml' 'libxrandr' 'libxkbcommon' 'waylandpp' 'libinput'
-    'pcre'
+    'pcre' 'libdisplay-info' 'tinyxml2'
   )
   [[ -n "$_clangbuild" ]] && depends+=('glu')
 
@@ -252,7 +232,7 @@ package_kodi-stable-git() {
 # kodi-eventclients
 # components: kodi-eventclients-common kodi-eventclients-ps3 kodi-eventclients-kodi-send
 package_kodi-stable-git-eventclients() {
-  pkgdesc="Kodi Event Clients (Nexus branch)"
+  pkgdesc="Kodi Event Clients (Omega branch)"
   provides=("kodi-eventclients=${pkgver}")
   conflicts=('kodi-eventclients')
   optdepends=(
@@ -277,7 +257,7 @@ package_kodi-stable-git-eventclients() {
 # kodi-tools-texturepacker
 # components: kodi-tools-texturepacker
 package_kodi-stable-git-tools-texturepacker() {
-  pkgdesc="Kodi Texturepacker tool (Nexus branch)"
+  pkgdesc="Kodi Texturepacker tool (Omega branch)"
   provides=("kodi-tools-texturepacker=${pkgver}")
   conflicts=('kodi-tools-texturepacker')
   depends=('libpng' 'giflib' 'libjpeg-turbo' 'lzo')
@@ -297,7 +277,7 @@ package_kodi-stable-git-tools-texturepacker() {
 # kodi-dev
 # components: kodi-addon-dev kodi-eventclients-dev
 package_kodi-stable-git-dev() {
-  pkgdesc="Kodi dev files (Nexus branch)"
+  pkgdesc="Kodi dev files (Omega branch)"
   depends=('kodi-stable-git')
   provides=("kodi-dev=${pkgver}")
   conflicts=('kodi-dev')
