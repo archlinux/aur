@@ -2,7 +2,7 @@ pkgdesc="ROS - Example listener for Parker LORD Sensing inertial device driver r
 url="https://github.com/LORD-MicroStrain/microstrain_inertial"
 
 pkgname="ros-noetic-microstrain-inertial-examples"
-pkgver="3.1.0"
+pkgver="4.0.1"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=("MIT")
@@ -31,9 +31,10 @@ depends=(
     ${ros_depends[@]}
 )
 
-_dir="microstrain_inertial-${pkgver}/microstrain_inertial_examples"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LORD-MicroStrain/microstrain_inertial/archive/${pkgver}.tar.gz")
-sha256sums=('939b19ad132e627ed72b410d7898154452fcea181c12533355a879d38c8bdeee')
+_commit="6a2f27040934d862963999afbb2456f7cb2fa02b"
+_dir="microstrain_inertial-${_commit}/microstrain_inertial_examples"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LORD-MicroStrain/microstrain_inertial/archive/${_commit}.tar.gz")
+sha256sums=('8b9ebb1073dee8cc3d1062390aa3809ca9138b0d014b83bc3ec3feb7de392929')
 
 build() {
     # Use ROS environment variables
