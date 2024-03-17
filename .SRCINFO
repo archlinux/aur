@@ -1,7 +1,7 @@
 pkgbase = xfdesktop-devel
 	pkgdesc = A desktop manager for Xfce (development release)
-	pkgver = 4.19.1
-	pkgrel = 2
+	pkgver = 4.19.2
+	pkgrel = 1
 	url = https://docs.xfce.org/xfce/xfdesktop/start
 	arch = i686
 	arch = x86_64
@@ -12,17 +12,14 @@ pkgbase = xfdesktop-devel
 	depends = thunar
 	depends = garcon
 	depends = hicolor-icon-theme
-	depends = libwnck3
 	depends = libxfce4windowing>=4.19.3
 	depends = gtk-layer-shell
-	provides = xfdesktop=4.19.1
+	provides = xfdesktop=4.19.2
 	conflicts = xfce4-menueditor
 	conflicts = xfdesktop
 	replaces = xfce4-menueditor
 	options = !libtool
-	source = https://archive.xfce.org/src/xfce/xfdesktop/4.19/xfdesktop-4.19.1.tar.bz2
-	source = libxfce4windowing_4.19.3_fix.patch::https://gitlab.xfce.org/xfce/xfdesktop/-/commit/4b271cb6107f3212c0cbdeee342d5dce00ed16f6.patch
-	sha256sums = b47b49ebf2990aedc640ac5bf3dce6a1ed610a7b05c93d8b69bd272c4b6b77e5
-	sha256sums = 1ab50069efe1cd026f62ed566c7f444f6033cf55f006e950e881c5d75b7cffeb
+	source = https://archive.xfce.org/src/xfce/xfdesktop/4.19/xfdesktop-4.19.2.tar.bz2
+	sha256sums = 7cdf2cc37ef50221ded9a49f809180159c441d43d26e630a327283b3992e3e0f
 
 pkgname = xfdesktop-devel
