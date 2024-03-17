@@ -129,6 +129,7 @@ export CXX=${ANDROID_CXX}
 [[ "${CFLAGS}" != *-fexceptions* ]] && export CFLAGS="${CFLAGS} -fexceptions"
 [[ "${CFLAGS}" != *-I${ANDROID_PREFIX_INCLUDE}* ]] && export CFLAGS="${CFLAGS} -I${ANDROID_PREFIX_INCLUDE}"
 [[ "${CPPFLAGS}" != *-D_FORTIFY_SOURCE=* ]] && export CPPFLAGS="${CPPFLAGS} -D_FORTIFY_SOURCE=2"
+[[ "${CPPFLAGS}" != *-D__USE_FORTIFY_LEVEL=* ]] && export CPPFLAGS="${CPPFLAGS} -D__USE_FORTIFY_LEVEL=2"
 [[ "${CPPFLAGS}" != *-I${ANDROID_PREFIX_INCLUDE}* ]] && export CPPFLAGS="${CPPFLAGS} -I${ANDROID_PREFIX_INCLUDE}"
 [[ "${CXXFLAGS}" != *-O2* ]] && export CXXFLAGS="${CXXFLAGS} -O2"
 [[ "${CXXFLAGS}" != *-pipe* ]] && export CXXFLAGS="${CXXFLAGS} -pipe"
