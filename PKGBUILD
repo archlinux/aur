@@ -4,7 +4,7 @@ _pkgname=browser-corporate
 pkgname=yandex-browser-corporate
 pkgver=24.1.3.843
 _pkgver=24.1.3.843-1
-pkgrel=1
+pkgrel=2
 
 pkgdesc="The web browser from Yandex.
  Yandex Browser is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
@@ -14,7 +14,6 @@ license=("custom:yandex-browser")
 categories=("network")
 provides=(yandex-browser-corporate)
 conflicts=('yandex-browser' 'yandex-browser-beta')
-options=(!strip)
 
 depends=( "binutils" "ttf-liberation" "jq" "alsa-lib" "at-spi2-atk" "libcups" "curl" "dbus" "libdrm" "gdbm" "gtk4" "nspr" "nss" "pango"
 "wayland" "libxcomposite" "libxdamage" "libxkbcommon" "libxkbfile" "libxrandr" "squashfs-tools" "wget" "xdg-utils" "harfbuzz-icu" )
@@ -37,6 +36,5 @@ prepare() {
 
 package() {
     cp -dr --no-preserve=ownership opt usr "${pkgdir}"/
-    install -D -m0644 "${pkgdir}"/opt/yandex/browser/product_logo_128.png "${pkgdir}"/usr/share/pixmaps/${pkgname}.png
     chmod 4755 "${pkgdir}"/opt/yandex/browser/yandex_browser-sandbox
 }
