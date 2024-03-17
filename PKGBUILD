@@ -1,6 +1,6 @@
 # Maintainer: Oscar Cowdery Lack <oscar.cowderylack@gmail.com>
 pkgname=nsc
-pkgver=2.8.5
+pkgver=2.8.6
 pkgrel=1
 pkgdesc="A tool for creating NATS account and user access configurations"
 arch=(x86_64)
@@ -8,7 +8,7 @@ url="https://github.com/nats-io/nsc"
 license=('Apache-2.0')
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b1318fd86fd133a355a887dbda23b8d6d3d5c072695a432c9f23ef0b2a9fa94d')
+sha256sums=('74d240d33e223fd81bf750eaeda117c3686061ef787ee388342c38ad716da127')
 
 build() {
     cd "$pkgname-$pkgver"
