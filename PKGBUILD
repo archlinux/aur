@@ -1,11 +1,12 @@
 # Maintainer: Joakim Soderlund <joakim.soderlund@gmail.com>
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Maintainer: Fabian Bornschein <fabiscafe@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgbase=mutter-dynamic-buffering
 pkgname=(mutter-dynamic-buffering)
-pkgver=45.4
+pkgver=45.5
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME (with dynamic triple/double buffering)"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -51,7 +52,7 @@ _checkdepends=(
   wireplumber
   zenity
 )
-_commit=919e71b113cc03c0fe1de7777393a19947f7b9f9  # tags/45.4^0
+_commit=4e8ccf5f9c177595aac11895ed50a4e35d5087e4  # tags/45.5^0
 source=(
   "$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
   'mr1441.patch'
@@ -63,7 +64,7 @@ sha256sums=(
 
 pkgver() {
   cd $pkgname
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+  git describe --tags | sed -r 's/\.([a-z])/\1/;s/([a-z])\./\1/;s/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
