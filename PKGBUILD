@@ -1,6 +1,6 @@
 # Maintainer: Jenrikku (JkKU)
 pkgname=autumn-git
-pkgver=r187.8f5d05e
+pkgver=r204.0302c3c
 pkgrel=1
 pkgdesc="A WIP 3D Land stage editor."
 arch=('x86_64')
@@ -29,7 +29,13 @@ pkgver() {
 build() {
 	cd "Autumn"
 	export DOTNET_CLI_TELEMETRY_OPTOUT=1
-	dotnet publish -c Release -o "$srcdir/publish" ./Autumn
+	dotnet publish -c Release -r linux-x64 -o "$srcdir/publish" ./Autumn
+
+	cd "$srcdir/publish/"
+	mv "runtimes/linux-x64/native/libtinyfiledialogs.so" .
+	rm -r runtimes/
+
+	rm *.pdb
 }
 
 package() {

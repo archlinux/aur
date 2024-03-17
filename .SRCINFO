@@ -1,6 +1,6 @@
 pkgbase = autumn-git
 	pkgdesc = A WIP 3D Land stage editor.
-	pkgver = r187.8f5d05e
+	pkgver = r204.0302c3c
 	pkgrel = 1
 	url = https://github.com/Jenrikku/Autumn
 	arch = x86_64
