@@ -3,17 +3,18 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-spreadsheet-xlsx'
-pkgver='0.17'
+pkgver='0.18'
 pkgrel='1'
 pkgdesc="Perl extension for reading MS Excel 2007 files;"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl'
+         'GPL-3.0-or-later')
 options=('!emptydirs')
 depends=('perl-archive-zip>=1.18' 'perl-spreadsheet-parseexcel>=0')
 checkdepends=('perl-test-nowarnings>=0' 'perl-test-warnings>=0')
 url="https://metacpan.org/release/Spreadsheet-XLSX"
-source=("https://search.cpan.org/CPAN/authors/id/A/AS/ASB/Spreadsheet-XLSX-0.17.tar.gz")
-sha512sums=('a59b7649cdc6a2cefc0bae7cc2f713611b1a5715895a4ca58dd374920fd876c34e5fae5b892c30fdc2a29c72c84f8bfe0e9d80405556bbeb050450e24d41d8ed')
+source=("https://search.cpan.org/CPAN/authors/id/A/AS/ASB/Spreadsheet-XLSX-0.18.tar.gz")
+sha512sums=('46dffedce89147407fe55ccb65cf99ac5d5e06eb8d988b7bf3f7a9cf43bec9d96cec1195ef6b7f6ae40c151d31175ded2d959298f3a12f0e4ac1284669515eae')
 _distdir="Spreadsheet-XLSX-${pkgver}"
 
 build() {
