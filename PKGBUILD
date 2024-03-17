@@ -2,11 +2,11 @@
 
 pkgname=kwin-decoration-sierra-breeze-enhanced-git
 _gitname=SierraBreezeEnhanced
-pkgver=r48.ae89ab8
-pkgrel=1
+pkgver=r238.0f2cb36
+pkgrel=2
 pkgdesc="A fork of BreezeEnhanced to make it (arguably) more minimalistic and informative (git version)"
 arch=('x86_64')
-url="https://github.com/kupiqu/SierraBreezeEnhanced"
+url="https://github.com/chiyuki0325/SierraBreezeEnhanced"
 license=('GPL3')
 depends=('kwin')
 makedepends=('git' 'cmake' 'extra-cmake-modules')
