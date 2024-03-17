@@ -1,7 +1,7 @@
 # Maintainer: Heorhi Valakhanovich <valahanovich@tut.by>
 
 pkgname=('dlangide')
-pkgver=0.8.18
+pkgver=0.8.19
 pkgrel=1
 pkgdesc="D language IDE based on DlangUI "
 arch=('i686' 'x86_64')
@@ -15,16 +15,13 @@ source=(
   "https://github.com/buggins/dlangide/archive/v$pkgver.tar.gz"
   dlangide.desktop
   dlangide.install
-  dlangui.patch
 )
-sha256sums=('d04803aed51bf2481adefdbf67523009bb1b54fd57c7e28c46062040fb6cea30'
+sha256sums=('0988dc3b8351d98d7b184648577d790da41630e9f528037cc3d59321976d4a7d'
             'dc3b72ef22bec75722266497f398b87a057b44b9add7dbf1ca1140521d553efa'
-            '9fe12f1bc573f5d431fcc8f9ca3ed17fc1e1d30248ae3b58209fc53084ae0a4e'
-            'f17cb696d2632f6c52da11fc96b8236b07a1fa0577f94e88fb6ac7c327984d23')
+            '9fe12f1bc573f5d431fcc8f9ca3ed17fc1e1d30248ae3b58209fc53084ae0a4')
 
 prepare() {
 cd $srcdir/dlangide-$pkgver
-patch -p1 -i "../dlangui.patch"
 }
 
 build() {
