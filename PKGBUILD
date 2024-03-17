@@ -6,7 +6,7 @@
 # Contributor: David Moore <davidm@sjsoft.com>
 _base=simplejson
 pkgname=python2-${_base}
-pkgver=3.19.1
+pkgver=3.19.2
 pkgrel=1
 pkgdesc="Simple, fast, extensible JSON encoder/decoder for python2"
 license=('MIT')
@@ -15,7 +15,7 @@ url="https://github.com/${_base}/${_base}"
 depends=(python2)
 makedepends=(python2-setuptools)
 source=(${url}/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('8742836d4b7bd7add81f0d40a88823ad6ac15b945fa9e49292191489fc60adfe')
+sha256sums=('836bbd37b340df982ceee87c0653f1c6f17b010f8054c09213ce95456ba86220')
 
 build() {
   cd "${_base}-${pkgver}"
