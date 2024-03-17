@@ -1,0 +1,263 @@
+pkgbase = grub-theme-dedsec-git
+	pkgdesc = A collection of GRUB themes that was created inspired by the fictional hacker group DedSec from Ubisoft's Watch Dogs video game.
+	pkgver = r14.8ccb1be
+	pkgrel = 1
+	url = https://gitlab.com/VandalByte/dedsec-grub-theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = grub
+	source = git+https://gitlab.com/VandalByte/dedsec-grub-theme.git
+	sha256sums = SKIP
+
+pkgname = grub-theme-brainwash-color-1080p-git
+	provides = grub-theme-brainwash-color-1080p
+
+pkgname = grub-theme-brainwash-color-1440p-git
+	provides = grub-theme-brainwash-color-1440p
+
+pkgname = grub-theme-brainwash-white-1080p-git
+	provides = grub-theme-brainwash-white-1080p
+
+pkgname = grub-theme-brainwash-white-1440p-git
+	provides = grub-theme-brainwash-white-1440p
+
+pkgname = grub-theme-comments-color-1080p-git
+	provides = grub-theme-comments-color-1080p
+
+pkgname = grub-theme-comments-color-1440p-git
+	provides = grub-theme-comments-color-1440p
+
+pkgname = grub-theme-comments-white-1080p-git
+	provides = grub-theme-comments-white-1080p
+
+pkgname = grub-theme-comments-white-1440p-git
+	provides = grub-theme-comments-white-1440p
+
+pkgname = grub-theme-compact-color-1080p-git
+	provides = grub-theme-compact-color-1080p
+
+pkgname = grub-theme-compact-color-1440p-git
+	provides = grub-theme-compact-color-1440p
+
+pkgname = grub-theme-compact-white-1080p-git
+	provides = grub-theme-compact-white-1080p
+
+pkgname = grub-theme-compact-white-1440p-git
+	provides = grub-theme-compact-white-1440p
+
+pkgname = grub-theme-firewall-color-1080p-git
+	provides = grub-theme-firewall-color-1080p
+
+pkgname = grub-theme-firewall-color-1440p-git
+	provides = grub-theme-firewall-color-1440p
+
+pkgname = grub-theme-firewall-white-1080p-git
+	provides = grub-theme-firewall-white-1080p
+
+pkgname = grub-theme-firewall-white-1440p-git
+	provides = grub-theme-firewall-white-1440p
+
+pkgname = grub-theme-fuckery-color-1080p-git
+	provides = grub-theme-fuckery-color-1080p
+
+pkgname = grub-theme-fuckery-color-1440p-git
+	provides = grub-theme-fuckery-color-1440p
+
+pkgname = grub-theme-fuckery-white-1080p-git
+	provides = grub-theme-fuckery-white-1080p
+
+pkgname = grub-theme-fuckery-white-1440p-git
+	provides = grub-theme-fuckery-white-1440p
+
+pkgname = grub-theme-hackerden-color-1080p-git
+	provides = grub-theme-hackerden-color-1080p
+
+pkgname = grub-theme-hackerden-color-1440p-git
+	provides = grub-theme-hackerden-color-1440p
+
+pkgname = grub-theme-hackerden-white-1080p-git
+	provides = grub-theme-hackerden-white-1080p
+
+pkgname = grub-theme-hackerden-white-1440p-git
+	provides = grub-theme-hackerden-white-1440p
+
+pkgname = grub-theme-legion-color-1080p-git
+	provides = grub-theme-legion-color-1080p
+
+pkgname = grub-theme-legion-color-1440p-git
+	provides = grub-theme-legion-color-1440p
+
+pkgname = grub-theme-legion-white-1080p-git
+	provides = grub-theme-legion-white-1080p
+
+pkgname = grub-theme-legion-white-1440p-git
+	provides = grub-theme-legion-white-1440p
+
+pkgname = grub-theme-lovetrap-color-1080p-git
+	provides = grub-theme-lovetrap-color-1080p
+
+pkgname = grub-theme-lovetrap-color-1440p-git
+	provides = grub-theme-lovetrap-color-1440p
+
+pkgname = grub-theme-lovetrap-white-1080p-git
+	provides = grub-theme-lovetrap-white-1080p
+
+pkgname = grub-theme-lovetrap-white-1440p-git
+	provides = grub-theme-lovetrap-white-1440p
+
+pkgname = grub-theme-mashup-color-1080p-git
+	provides = grub-theme-mashup-color-1080p
+
+pkgname = grub-theme-mashup-color-1440p-git
+	provides = grub-theme-mashup-color-1440p
+
+pkgname = grub-theme-mashup-white-1080p-git
+	provides = grub-theme-mashup-white-1080p
+
+pkgname = grub-theme-mashup-white-1440p-git
+	provides = grub-theme-mashup-white-1440p
+
+pkgname = grub-theme-reaper-color-1080p-git
+	provides = grub-theme-reaper-color-1080p
+
+pkgname = grub-theme-reaper-color-1440p-git
+	provides = grub-theme-reaper-color-1440p
+
+pkgname = grub-theme-reaper-white-1080p-git
+	provides = grub-theme-reaper-white-1080p
+
+pkgname = grub-theme-reaper-white-1440p-git
+	provides = grub-theme-reaper-white-1440p
+
+pkgname = grub-theme-redskull-color-1080p-git
+	provides = grub-theme-redskull-color-1080p
+
+pkgname = grub-theme-redskull-color-1440p-git
+	provides = grub-theme-redskull-color-1440p
+
+pkgname = grub-theme-redskull-white-1080p-git
+	provides = grub-theme-redskull-white-1080p
+
+pkgname = grub-theme-redskull-white-1440p-git
+	provides = grub-theme-redskull-white-1440p
+
+pkgname = grub-theme-sitedown-color-1080p-git
+	provides = grub-theme-sitedown-color-1080p
+
+pkgname = grub-theme-sitedown-color-1440p-git
+	provides = grub-theme-sitedown-color-1440p
+
+pkgname = grub-theme-sitedown-white-1080p-git
+	provides = grub-theme-sitedown-white-1080p
+
+pkgname = grub-theme-sitedown-white-1440p-git
+	provides = grub-theme-sitedown-white-1440p
+
+pkgname = grub-theme-spam-color-1080p-git
+	provides = grub-theme-spam-color-1080p
+
+pkgname = grub-theme-spam-color-1440p-git
+	provides = grub-theme-spam-color-1440p
+
+pkgname = grub-theme-spam-white-1080p-git
+	provides = grub-theme-spam-white-1080p
+
+pkgname = grub-theme-spam-white-1440p-git
+	provides = grub-theme-spam-white-1440p
+
+pkgname = grub-theme-spyware-color-1080p-git
+	provides = grub-theme-spyware-color-1080p
+
+pkgname = grub-theme-spyware-color-1440p-git
+	provides = grub-theme-spyware-color-1440p
+
+pkgname = grub-theme-spyware-white-1080p-git
+	provides = grub-theme-spyware-white-1080p
+
+pkgname = grub-theme-spyware-white-1440p-git
+	provides = grub-theme-spyware-white-1440p
+
+pkgname = grub-theme-stalker-color-1080p-git
+	provides = grub-theme-stalker-color-1080p
+
+pkgname = grub-theme-stalker-color-1440p-git
+	provides = grub-theme-stalker-color-1440p
+
+pkgname = grub-theme-stalker-white-1080p-git
+	provides = grub-theme-stalker-white-1080p
+
+pkgname = grub-theme-stalker-white-1440p-git
+	provides = grub-theme-stalker-white-1440p
+
+pkgname = grub-theme-strike-color-1080p-git
+	provides = grub-theme-strike-color-1080p
+
+pkgname = grub-theme-strike-color-1440p-git
+	provides = grub-theme-strike-color-1440p
+
+pkgname = grub-theme-strike-white-1080p-git
+	provides = grub-theme-strike-white-1080p
+
+pkgname = grub-theme-strike-white-1440p-git
+	provides = grub-theme-strike-white-1440p
+
+pkgname = grub-theme-tremor-color-1080p-git
+	provides = grub-theme-tremor-color-1080p
+
+pkgname = grub-theme-tremor-color-1440p-git
+	provides = grub-theme-tremor-color-1440p
+
+pkgname = grub-theme-tremor-white-1080p-git
+	provides = grub-theme-tremor-white-1080p
+
+pkgname = grub-theme-tremor-white-1440p-git
+	provides = grub-theme-tremor-white-1440p
+
+pkgname = grub-theme-trolls-color-1080p-git
+	provides = grub-theme-trolls-color-1080p
+
+pkgname = grub-theme-trolls-color-1440p-git
+	provides = grub-theme-trolls-color-1440p
+
+pkgname = grub-theme-trolls-white-1080p-git
+	provides = grub-theme-trolls-white-1080p
+
+pkgname = grub-theme-trolls-white-1440p-git
+	provides = grub-theme-trolls-white-1440p
+
+pkgname = grub-theme-unite-color-1080p-git
+	provides = grub-theme-unite-color-1080p
+
+pkgname = grub-theme-unite-color-1440p-git
+	provides = grub-theme-unite-color-1440p
+
+pkgname = grub-theme-unite-white-1080p-git
+	provides = grub-theme-unite-white-1080p
+
+pkgname = grub-theme-unite-white-1440p-git
+	provides = grub-theme-unite-white-1440p
+
+pkgname = grub-theme-wannacry-color-1080p-git
+	provides = grub-theme-wannacry-color-1080p
+
+pkgname = grub-theme-wannacry-color-1440p-git
+	provides = grub-theme-wannacry-color-1440p
+
+pkgname = grub-theme-wannacry-white-1080p-git
+	provides = grub-theme-wannacry-white-1080p
+
+pkgname = grub-theme-wannacry-white-1440p-git
+	provides = grub-theme-wannacry-white-1440p
+
+pkgname = grub-theme-wrench-color-1080p-git
+	provides = grub-theme-wrench-color-1080p
+
+pkgname = grub-theme-wrench-color-1440p-git
+	provides = grub-theme-wrench-color-1440p
+
+pkgname = grub-theme-wrench-white-1080p-git
+	provides = grub-theme-wrench-white-1080p
+
+pkgname = grub-theme-wrench-white-1440p-git
+	provides = grub-theme-wrench-white-1440p
