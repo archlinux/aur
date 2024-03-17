@@ -1,0 +1,12 @@
+pkgbase = pretzel-web
+	pkgdesc = Open-source, browser-local data exploration using DuckDB-Wasm and PRQL
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://pretzelai.github.io/
+	arch = any
+	license = Apache-2.0
+	makedepends = npm
+	source = pretzel-web.tar.gz::https://github.com/pretzelai/pretzelai/archive/refs/heads/main.tar.gz
+	b2sums = SKIP
+
+pkgname = pretzel-web
