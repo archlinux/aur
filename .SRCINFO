@@ -1,0 +1,13 @@
+pkgbase = ccrs-bin
+	pkgdesc = CCRS allows you to easily convert colors from one format into another
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Dlurak/ccrs
+	arch = x86_64
+	license = mit
+	provides = ccrs
+	conflicts = ccrs
+	source = https://github.com/Dlurak/ccrs/releases/download/v0.1.0/ccrs-0.1.0-x86_64.tar.gz
+	sha256sums = 875af2b9f896dff90107881489b88842fc22e6b793d3512ebe6911e9b922fabe
+
+pkgname = ccrs-bin
