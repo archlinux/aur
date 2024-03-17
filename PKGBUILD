@@ -9,7 +9,7 @@ pkgrel=2
 pkgdesc="This plugin writes a timestamp to a textfile that you can use to mark specific events for later editing of your videos or streams"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/infowriter.345/"
-license=("MPL2")
+license=(MPL-2.0)
 depends=("obs-studio>=28" "gcc-libs" "glibc")
 source=(
   "$_pluginname-$pkgver.tar.gz::https://github.com/partouf/$_pluginname/archive/v$pkgver.tar.gz"
