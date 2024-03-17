@@ -6,7 +6,7 @@ _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname/-/.}"
 pkgver=1.1.0.r0.gcfb12bf
-pkgrel=1
+pkgrel=2
 pkgdesc='Access your OS root certificates with the atmost ease (built from latest commit)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/jawah/wassima'
@@ -15,6 +15,7 @@ makedepends=(
   'git'
   'maturin'
   'python-build'
+  'python-hatchling'
   'python-installer'
   'python-maturin'
   'python-wheel'
