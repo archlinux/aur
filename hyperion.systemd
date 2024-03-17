@@ -10,6 +10,7 @@ StartLimitBurst=30
 [Service]
 Environment=DISPLAY=:0
 User=%i
+ExecStartPre=xrandr --listactivemonitors
 ExecStart=/usr/bin/hyperiond -u /etc/hyperion/
 WorkingDirectory=/usr/share/hyperion
 TimeoutStopSec=5
