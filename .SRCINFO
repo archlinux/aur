@@ -1,0 +1,13 @@
+pkgbase = celestia-appimage-latest
+	pkgdesc = Real-time space simulation
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/CelestiaProject/Celestia
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	options = !strip
+	source = https://download.opensuse.org/repositories/home:/munix9:/unstable/AppImage/celestia-latest-x86_64.AppImage
+	sha256sums = SKIP
+
+pkgname = celestia-appimage-latest
