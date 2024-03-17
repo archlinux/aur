@@ -5,8 +5,8 @@ pkgname=(
   minijinja-cli
   python-minijinja
 )
-pkgver=1.0.12
-_commit=5b9917e1262f20d01b1ed78adc1968f8a4e418a3
+pkgver=1.0.13
+_commit=f338684ca544f81ad6ee06f7ecb2bbc0c65677de
 pkgrel=1
 pkgdesc="A powerful but minimal dependency template engine for Rust compatible with Jinja/Jinja2"
 url="https://github.com/mitsuhiko/minijinja"
@@ -22,7 +22,6 @@ makedepends=(
   python-wheel
 )
 checkdepends=(python-pytest)
-
 source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -37,10 +36,9 @@ pkgver() {
 prepare() {
   cd "$_archive"
 
-  sed 's|maturin>=0.15,<0.16|maturin>=0.15|' -i minijinja-py/pyproject.toml
+  sed -i 's|maturin>=0.15,<0.16|maturin>=0.15|' minijinja-py/pyproject.toml
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo update
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
@@ -52,6 +50,7 @@ build() {
   cargo build --frozen --release --all-features --package minijinja-cli
 
   cd minijinja-py
+
   python -m build --wheel --no-isolation
 }
 
@@ -64,10 +63,10 @@ check() {
   cd minijinja-py
 
   rm -rf tmp_install
-  _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   python -m installer --destdir=tmp_install dist/*.whl
 
-  export PYTHONPATH="$PWD/tmp_install/$_site_packages"
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  export PYTHONPATH="$PWD/tmp_install/$site_packages"
   pytest
 }
 
