@@ -2,7 +2,7 @@
 
 pkgname=dnf5
 pkgver=5.1.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Next-generation RPM package management system "
 arch=('x86_64')
 url="https://github.com/rpm-software-management/$pkgname"
@@ -20,9 +20,10 @@ makedepends=(
     'sdbus-cpp'
     'swig'
     'toml11'
-    'zchunk'
+    #'zchunk'    # seems broken with zchunk support enabled currently.
+                 # I think because upstream depends on 0.9, but AUR has 1.3 packaged
     )
-optdepends=('unbound: for gpgkey_dns_verification option')
+optdepends=()
 backup=("etc/$pkgname/automatic.conf"
         "etc/$pkgname/$pkgname.conf"
         "etc/$pkgname/aliases.d/zypper.conf"
@@ -39,6 +40,7 @@ build() {
 
   cmake -B build \
         -DWITH_MAN=off \
+        -DWITH_ZCHUNK=off \
         -DWITH_RUBY=off
 
   cd build
