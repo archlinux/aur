@@ -1,4 +1,4 @@
-pkgbase = libmcfg_2
+pkgbase = libmcfg_2-git
 	pkgdesc = Parsing library for MCFG/2
 	pkgver = 0.2.0
 	pkgrel = 1
@@ -9,4 +9,4 @@ pkgbase = libmcfg_2
 	source = git+https://github.com/FelixEcker/mcfg_2.git
 	sha256sums = SKIP
 
-pkgname = libmcfg_2
+pkgname = libmcfg_2-git

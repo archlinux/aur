@@ -1,4 +1,4 @@
-pkgname=libmcfg_2
+pkgname=libmcfg_2-git
 pkgver=0.2.0
 pkgrel=1
 arch=(x86_64)
