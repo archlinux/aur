@@ -1,6 +1,6 @@
 pkgbase = chwall
 	pkgdesc = A tiny wallpaper changer, written in python
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://git.umaneti.net/chwall/about/
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = chwall
 	optdepends = libnotify: to send notification when wallpaper change
 	optdepends = xorg-xrandr: to extract screen config when using feh
 	options = !debug
-	source = https://git.umaneti.net/chwall/snapshot/chwall-0.7.1.tar.gz
-	sha256sums = 61d6c8276a3ff0cc4afafa8fa6d37db2bd33e16259a395f633af2a6ce3a55332
+	source = https://git.umaneti.net/chwall/snapshot/chwall-0.7.2.tar.gz
+	sha256sums = 0765c1b8fe7f0cadbf130d571215739546f799d7702dc5fb01320a31d8762f8c
 
 pkgname = chwall
