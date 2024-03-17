@@ -7,8 +7,8 @@ epoch=1
 pkgdesc="Allows MIDI devices to interact with OBS Studio"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/obs-midi-mg.1570/"
-license=("GPL2")
-depends=("obs-studio>=28" "glibc" "jack")
+license=(GPL-2.0-or-later)
+depends=("obs-studio>=28" "glibc" "gcc-libs" "alsa-lib" "jack" "qt6-base")
 makedepends=("cmake" "git")
 options=('debug')
 source=(
