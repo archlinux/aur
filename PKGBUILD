@@ -1,14 +1,14 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=yt-dlp-git
-pkgver=2023.12.30.r104.gfb44020
+pkgver=2024.03.10.r9.g86d2f4d
 pkgrel=1
 pkgdesc='A youtube-dl fork with additional features and fixes (git)'
 arch=(any)
 url=https://github.com/yt-dlp/yt-dlp
 license=(Unlicense)
-depends=(python python-certifi python-requests)
-makedepends=(pandoc python-build python-hatchling python-installer python-wheel git)
+depends=(python python-certifi python-requests python-urllib3)
+makedepends=(pandoc python-build python-hatchling python-installer git)
 checkdepends=(python-pytest)
 optdepends=('ffmpeg: for video post-processing'
             'rtmpdump: for rtmp streams support'
