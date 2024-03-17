@@ -1,0 +1,22 @@
+diff --git a/src/libnmea_navsat_driver/parser.py b/src/libnmea_navsat_driver/parser.py
+index c33a9be..df40f13 100644
+--- a/src/libnmea_navsat_driver/parser.py
++++ b/src/libnmea_navsat_driver/parser.py
+@@ -136,7 +136,7 @@ def convert_time(nmea_utc):
+     # Resolve the ambiguity of day
+     day_offset = int((utc_time.hour - hours)/12.0)
+     utc_time += datetime.timedelta(day_offset)
+-    utc_time.replace(hour=hours, minute=minutes, second=seconds)
++    utc_time = utc_time.replace(hour=hours, minute=minutes, second=seconds)
+ 
+     unix_secs = calendar.timegm(utc_time.timetuple())
+     return (unix_secs, nanosecs)
+@@ -156,7 +156,7 @@ def convert_time_rmc(date_str, time_str):
+         tuple(float, float): 2-tuple of (NaN, NaN) if the sentence does not contain valid time.
+     """
+     # If one of the time fields is empty, return NaN seconds
+-    if not time_str[0:2] or not time_str[2:4] or not time_str[4:6]:
++    if not date_str[0:6] or not time_str[0:2] or not time_str[2:4] or not time_str[4:6]:
+         return (float('NaN'), float('NaN'))
+ 
+     pc_year = datetime.date.today().year

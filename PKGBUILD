@@ -4,7 +4,7 @@ url="https://github.com/ros-drivers/nmea_navsat_driver"
 pkgname="ros-noetic-nmea-navsat-driver"
 pkgver="0.6.1"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=("BSD")
 
 ros_makedepends=(
@@ -36,8 +36,19 @@ depends=(
 )
 
 _dir="nmea_navsat_driver-${pkgver}"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ros-drivers/nmea_navsat_driver/archive/${pkgver}.tar.gz")
-sha256sums=('8ea788e3474a47f54895c259072c961d6070aafb8f9635c7a70c6aee06dd6db3')
+source=(
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/ros-drivers/nmea_navsat_driver/archive/${pkgver}.tar.gz"
+    "b168f49.patch"
+)
+sha256sums=(
+    '8ea788e3474a47f54895c259072c961d6070aafb8f9635c7a70c6aee06dd6db3'
+    'e0ef8c0d8b0d3b4eebe4659efd042180b5f364ed5a8001694d33d75eeee9175d'
+)
+
+prepare() {
+    cd ${_dir}
+    patch -Np1 -i ${srcdir}/b168f49.patch
+}
 
 build() {
     # Use ROS environment variables
