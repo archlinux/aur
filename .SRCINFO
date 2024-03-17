@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-microstrain-inertial-msgs
 	pkgdesc = ROS - A package that contains ROS message corresponding to microstrain message types.
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LORD-MicroStrain/microstrain_inertial
 	arch = i686
 	arch = x86_64
@@ -17,8 +17,6 @@ pkgbase = ros-noetic-microstrain-inertial-msgs
 	depends = ros-noetic-geometry-msgs
 	depends = ros-noetic-message-runtime
 	source = ros-noetic-microstrain-inertial-msgs-4.0.1.tar.gz::https://github.com/LORD-MicroStrain/microstrain_inertial/archive/6a2f27040934d862963999afbb2456f7cb2fa02b.tar.gz
-	source = microstrain_inertial_msgs_common.tar.gz::https://github.com/LORD-MicroStrain/microstrain_inertial_msgs_common/archive/c5c41e685cd166dfdef6e70886cd3f68d08bdc72.tar.gz
 	sha256sums = 8b9ebb1073dee8cc3d1062390aa3809ca9138b0d014b83bc3ec3feb7de392929
-	sha256sums = 4c5a4451fe0d9d49c809b0713dc069245dbdeca714f307e38059546dbb20b738
 
 pkgname = ros-noetic-microstrain-inertial-msgs
