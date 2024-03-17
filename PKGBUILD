@@ -8,7 +8,7 @@
 pkgname=discord-electron-openasar-git
 _pkgname=discord
 _electron=28
-pkgver=0.0.40+827.4f264d8
+pkgver=0.0.45+827.4f264d8
 _pkgver=${pkgver%%+*}
 pkgrel=1
 pkgdesc="Discord packaged with OpenAsar (git) using system provided electron (v${_electron}) for increased security and performance"
@@ -30,7 +30,7 @@ optdepends=(
 source=("https://dl.discordapp.net/apps/linux/${_pkgver}/${_pkgname}-${_pkgver}.tar.gz"
 	'discord-launcher.sh'
 	"git+https://github.com/goosemod/openasar.git")
-sha512sums=('64fd9cf5c8ebb55cd5cd7c1fc0ae04a7e7cb9df6cc18a7c992f1156f46dac5415d87003622078e5d4aa0e48234c3d69d0d12633a57d55291e359cbb40511ca3a'
+sha512sums=('e2a64eed20267e40b1bc068166a8bfcb76211da12381ff43dfddcb250050901f0a4dd1db2f4c9ed4fc5618fcddef02a13d3cefc452801d7c8f674cf029dd7422'
             'f516b1dba10f423f1ebe69b14f70740232b19d343b603c3479ba1e1dd2b7bcf472e92d354fde3a9d553bfae78207ae0420be60372a4b38ba78c3421172230826'
             'SKIP')
 
@@ -59,6 +59,7 @@ build() {
 
 	# pack openasar
 	sed -i -e "s/nightly/nightly-$(git rev-parse HEAD | cut -c 1-7)/" src/index.js
+	sed -i -e "s|process.resourcesPath|'/usr/lib/${_pkgname}'|" src/utils/buildInfo.js
 	node scripts/strip.js
 	asar p src app.asar
 }
