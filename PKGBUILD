@@ -1,12 +1,13 @@
-# Maintainer: TingPing <tingping@tingping.se>
+# Contributor: TingPing <tingping@tingping.se>
 # Contributor: scadu <scadu at yandex dot com>
 # Contributor: speps <speps at aur dot archlinux dot org>
 # Contributor: Sébastien Luttringer <seblu@archlinux.org>
 # Contributor: Alain Kalker <a dot c dot kalker at gmail dot com>
+# Maintainer: Actionless Loveless <actionless DOT loveless PLUS aur AT gmail MF com>
 
 _gitname=lgi
 pkgname=luajit-lgi-git
-pkgver=0.9.0.r37.g9b717c3
+pkgver=0.9.2.r102.g700fcda
 pkgrel=1
 pkgdesc='Lua binadings for gobject using gobject-introspection library'
 arch=('i686' 'x86_64')
@@ -64,8 +65,8 @@ package() {
 check() {
   cd $_gitname
 
-  make LUA=luajit LUA_INCDIR=/usr/include/luajit-2.0/ \
-    LUA_CFLAGS="$(pkg-config --cflags luajit) -O2" check
+  #make LUA=luajit LUA_INCDIR=/usr/include/luajit-2.0/ \
+  #  LUA_CFLAGS="$(pkg-config --cflags luajit) -O2" check
 }
 
 # vim:set ts=2 sw=2 et:

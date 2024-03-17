@@ -1,6 +1,6 @@
 pkgbase = luajit-lgi-git
 	pkgdesc = Lua binadings for gobject using gobject-introspection library
-	pkgver = 0.9.0.r37.g9b717c3
+	pkgver = 0.9.2.r102.g700fcda
 	pkgrel = 1
 	url = https://github.com/pavouk/lgi
 	arch = i686
@@ -16,4 +16,3 @@ pkgbase = luajit-lgi-git
 	md5sums = SKIP
 
 pkgname = luajit-lgi-git
-
