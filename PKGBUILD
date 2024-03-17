@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="http://projects.camlcity.org/projects/ocamlnet.html"
 license=('GPL' 'LGPL')
 depends=('ncurses' 'gnutls' 'krb5')
-makedepends=('ocaml-findlib' 'ocaml>=4.02' 'ocaml<=4.14' 'ocaml-pcre')
+makedepends=('ocaml-findlib' 'ocaml4' 'ocaml-pcre')
 #makedepends=('ocaml-findlib' 'ocaml' 'ocaml-pcre' 'ocaml-ssl' 'ocaml-cryptokit')
 options=('!strip' '!makeflags' 'staticlibs')
 source=(https://gitlab.com/gerdstolpmann/lib-ocamlnet3/-/archive/ocamlnet-$pkgver/lib-ocamlnet3-ocamlnet-$pkgver.tar.gz)

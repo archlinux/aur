@@ -8,8 +8,7 @@ pkgbase = ocamlnet
 	license = GPL
 	license = LGPL
 	makedepends = ocaml-findlib
-	makedepends = ocaml>=4.02
-	makedepends = ocaml<=4.14
+	makedepends = ocaml4
 	makedepends = ocaml-pcre
 	depends = ncurses
 	depends = gnutls
