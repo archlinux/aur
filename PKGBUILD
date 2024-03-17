@@ -3,8 +3,8 @@
 
 _pkgname=vinegar
 pkgname=vinegar-git
-pkgver=1.7.4.r1.g837cda9
 pkgrel=1
+pkgver=v1.7.4.r21.gbe39c40
 pkgdesc="Fast and robust bootstrapper for Roblox that has many ease-of-use features."
 arch=("x86_64")
 url="https://github.com/vinegarhq/vinegar"
@@ -19,6 +19,12 @@ conflicts=("vinegar")
 source=("git+${url}")
 sha256sums=("SKIP")
 provides=("${pkgname}=${pkgver}");
+
+pkgver() {
+  cd "$_pkgname"
+  # cutting off 'foo-' prefix that presents in the git tag
+  git describe --long --abbrev=7 | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
