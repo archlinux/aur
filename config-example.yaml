@@ -1,0 +1,23 @@
+repo:
+  scanPath: /var/git
+  readme:
+    - readme
+    - README
+    - readme.md
+    - README.md
+  mainBranch:
+    - master
+    - main
+  ignore:
+    - foo
+    - bar
+dirs:
+  templates: /usr/share/legit/templates
+  static: /usr/share/legi/static
+meta:
+  title: git good
+  description: i think it's a skill issue
+server:
+  name: git.icyphox.sh
+  host: 127.0.0.1
+  port: 5555

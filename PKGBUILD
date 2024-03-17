@@ -1,26 +1,41 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-# Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: AlphaJack <alphajack at tuta dot io>
 
-pkgname=legit
-pkgver=3.1.0
+pkgname="legit"
+epoch=1
+pkgver=0.2.2
 pkgrel=1
-pkgdesc="CLI tool to add licenses to projects"
-arch=('any')
-url='https://github.com/captainsafia/legit'
-license=('MIT')
-depends=('nodejs')
-makedepends=('npm')
-options=('!emptydirs')
-source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/@captainsafia/legit/-/legit-$pkgver.tgz")
-noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('b99d3f778c00d4bd819c73ae961e15cbf3138405c5f99176dc7643326df1488f')
+pkgdesc="A git web frontend written in Go"
+arch=("x86_64" "armv7h" "aarch64")
+url="https://github.com/icyphox/legit"
+license=("MIT")
+depends=("git")
+makedepends=("go")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+		"config-example.yaml")
+b2sums=("fc3a094cbab7b9f1d705a66bcfddceea4ade9bffaaea29a6714a0729317cf172309cf1037ed0a2c8daff139553b07fc8ab8e0e3de7877e32ebafee996ace26e3"
+        "2bdf55ddb91350dcb6281128c24bfb479dfa6ce66f5b2b3fd1d9df42b63572f0bcc5f8dec385fdea0732b263a064de647adc3e4752142f3b45d3abfd80fd1c7a")
+options=("!strip")
 
-PURGE_TARGETS+=(usr/lib/modules/@captainsafia/legit *.md *.xml *.yml)
+prepare(){
+ cd "$pkgname-$pkgver"
+ mkdir -p build
+}
 
-package() {
-	export NODE_ENV=production
-	npm install -g --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "$pkgname-$pkgver.tgz"
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s "/usr/lib/node_modules/@captainsafia/legit/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
-	chown -R root:root "$pkgdir/"
+build(){
+ cd "$pkgname-$pkgver"
+ export CGO_CPPFLAGS="${CPPFLAGS}"
+ export CGO_CFLAGS="${CFLAGS}"
+ export CGO_CXXFLAGS="${CXXFLAGS}"
+ export CGO_LDFLAGS="${LDFLAGS}"
+ export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+ go build -o build .
+}
+
+package(){
+ cd "$pkgname-$pkgver"
+ install -d "$pkgdir/usr/share/$pkgname"
+ cp -r "static" "$pkgdir/usr/share/$pkgname"
+ cp -r "templates" "$pkgdir/usr/share/$pkgname"
+ install -D -m 755 "build/$pkgname"      "$pkgdir/usr/bin/$pkgname"
+ install -D -m 644 "$srcdir/config-example.yaml" "$pkgdir/usr/share/$pkgname/config-example.yaml"
 }
