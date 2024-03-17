@@ -6,8 +6,8 @@ pkgrel=1
 pkgdesc="This plugin aims to show beautiful texts on OBS Studio"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/obs-pthread-text.1287/"
-license=("GPL2")
-depends=("obs-studio>=28" "glibc" "pango")
+license=(GPL-2.0-or-later)
+depends=("obs-studio>=28" "glibc" "glib2" "cairo" "libpng" "pango")
 makedepends=("cmake")
 options=('debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/norihiro/$pkgname/archive/$pkgver.tar.gz")

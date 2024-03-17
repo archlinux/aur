@@ -5,10 +5,13 @@ pkgbase = obs-text-pthread
 	url = https://obsproject.com/forum/resources/obs-pthread-text.1287/
 	arch = x86_64
 	arch = aarch64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = cmake
 	depends = obs-studio>=28
 	depends = glibc
+	depends = glib2
+	depends = cairo
+	depends = libpng
 	depends = pango
 	options = debug
 	source = obs-text-pthread-2.0.3.tar.gz::https://github.com/norihiro/obs-text-pthread/archive/2.0.3.tar.gz
