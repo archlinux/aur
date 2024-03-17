@@ -1,7 +1,7 @@
 pkgbase = obs-source-copy
 	pkgdesc = Copy and paste scenes, sources and filters on clipboard
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://obsproject.com/forum/resources/source-copy.1261/
 	arch = x86_64
 	arch = aarch64

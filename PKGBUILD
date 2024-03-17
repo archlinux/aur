@@ -2,7 +2,7 @@
 
 pkgname=obs-source-copy
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Copy and paste scenes, sources and filters on clipboard"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/source-copy.1261/"
@@ -19,7 +19,9 @@ build() {
   -DCMAKE_INSTALL_PREFIX='/usr' \
   -DCMAKE_INSTALL_LIBDIR=lib \
   -DLINUX_PORTABLE=OFF \
-  -DQT_VERSION=6
+  -DQT_VERSION=6 \
+  -DCMAKE_CXX_FLAGS="-Wno-error=deprecated-declarations" \
+  -Wno-dev
 
   make -C build
 }
