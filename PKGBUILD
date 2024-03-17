@@ -3,18 +3,18 @@
 pkgname=qqmusic-electron
 _pkgname=qqmusic
 pkgver=1.1.5
-pkgrel=8
+pkgrel=9
 pkgdesc="Tencent QQMusic, Run with system Electron."
 arch=('any')
 url="https://y.qq.com/"
 license=('CC0-1.0')
-_electron=electron
+_electron=electron28
 depends=(${_electron})
 makedepends=('asar')
 provides=("$_pkgname")
 conflicts=('qqmusic-bin')
 source=(
-    "https://test.mini-proxy.mivm.cn/qqmusic-electron/qqmusic_${pkgver}-${pkgrel}.asar"
+    "https://test.mini-proxy.mivm.cn/qqmusic-electron/qqmusic_${pkgver}-8.asar"
     "${_pkgname}.desktop"
     "${_pkgname}.sh"
 )

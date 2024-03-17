@@ -1,12 +1,12 @@
 pkgbase = qqmusic-electron
 	pkgdesc = Tencent QQMusic, Run with system Electron.
 	pkgver = 1.1.5
-	pkgrel = 8
+	pkgrel = 9
 	url = https://y.qq.com/
 	arch = any
 	license = CC0-1.0
 	makedepends = asar
-	depends = electron
+	depends = electron28
 	provides = qqmusic
 	conflicts = qqmusic-bin
 	source = https://test.mini-proxy.mivm.cn/qqmusic-electron/qqmusic_1.1.5-8.asar
