@@ -5,7 +5,7 @@ _repo="https://github.com/toitlang/toit.git"
 _commit=bd0cb5464e47ae138a5d3064f0c1053a5b459be0
 _tag_no_dash="${_tag//-/}"
 pkgver="${_tag_no_dash#v}"
-pkgrel=3
+pkgrel=4
 pkgdesc="Toit programming language SDK"
 arch=('x86_64')
 url="https://toitlang.org"
@@ -27,7 +27,7 @@ md5sums=('SKIP')
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
 
-	# Initial the top-level modules but not nested ones.
+	# Initialize the top-level modules but not nested ones.
 	git submodule update --depth=1 --init .
 
 	cd third_party/esp-idf
