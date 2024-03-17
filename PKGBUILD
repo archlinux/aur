@@ -7,8 +7,7 @@ pkgname=(
   'zq'
 )
 pkgver=1.14.0
-_commit='357cae73e0fa3713258bdfa8517071ff2ebf7fb4'
-pkgrel=1
+pkgrel=2
 pkgdesc='Tooling for super-structured data'
 arch=('x86_64')
 url='https://zed.brimdata.io/'
@@ -16,18 +15,8 @@ license=('BSD')
 depends=('glibc')
 makedepends=('git' 'go')
 options=('!lto')
-source=("$pkgbase::git+https://github.com/brimdata/zed#commit=$_commit")
-md5sums=('SKIP')
-
-pkgver() {
-  cd "$pkgbase"
-
-  git describe --tags | sed 's/^v//'
-}
-
-_pkgver() {
-  curl -fs https://api.github.com/repos/brimdata/$pkgname/git/ref/tags/v$pkgver | jq -r .object.sha
-}
+source=("$pkgbase::git+https://github.com/brimdata/zed#tag=v$pkgver")
+sha256sums=('c48145e4239de74fe9864974122d66b3b798715dc85858dd4671f4376788df8f')
 
 prepare() {
   cd "$pkgbase"
@@ -51,7 +40,7 @@ build() {
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-linkmode external -extldflags ${LDFLAGS} \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" \
     -X github.com/brimdata/zed/cli.Version=$pkgver" \
     -o dist \
     ./cmd/{zed,zq}
