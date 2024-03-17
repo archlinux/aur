@@ -1,6 +1,6 @@
 pkgbase = pd-tools
 	pkgdesc = Provides all open source tools available in one package from ProjectDiscovery by installing the precompiled binaries using pdtm
-	pkgver = 20240124
+	pkgver = 20240317
 	pkgrel = 1
 	url = https://github.com/projectdiscovery/pdtm
 	arch = x86_64
