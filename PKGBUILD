@@ -45,7 +45,7 @@ depends=(
 )
 
 _commit="6a2f27040934d862963999afbb2456f7cb2fa02b"
-_msgs_common_commit="3c7cc7ebf5fdd3db411a439de9c569cae15f214e"
+_driver_common_commit="3c7cc7ebf5fdd3db411a439de9c569cae15f214e"
 _dir="microstrain_inertial-${_commit}/microstrain_inertial_driver"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LORD-MicroStrain/microstrain_inertial/archive/${_commit}.tar.gz")
 sha256sums=('8b9ebb1073dee8cc3d1062390aa3809ca9138b0d014b83bc3ec3feb7de392929')
@@ -59,7 +59,7 @@ prepare() {
     fi
     git clone --recursive https://github.com/LORD-MicroStrain/microstrain_inertial_driver_common
     cd microstrain_inertial_driver_common
-    git checkout ${_msgs_common_commit}
+    git checkout ${_driver_common_commit}
 }
 
 build() {
