@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-nmea-msgs
 	pkgdesc = ROS - The nmea_msgs package contains messages related to data in the NMEA format.
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/nmea_msgs
 	arch = any
 	license = BSD
@@ -17,4 +17,3 @@ pkgbase = ros-noetic-nmea-msgs
 	md5sums = SKIP
 
 pkgname = ros-noetic-nmea-msgs
-

@@ -4,7 +4,7 @@ url='http://ros.org/wiki/nmea_msgs'
 pkgname='ros-noetic-nmea-msgs'
 pkgver='1.1.0'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-noetic-std-msgs
@@ -36,9 +36,6 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.9 \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.9.so \
-        -DPYTHON_BASENAME=-python3.9 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
