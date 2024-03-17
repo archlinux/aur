@@ -1,10 +1,11 @@
 pkgbase = manaverse-git
 	pkgdesc = A ManaPlus fork and official game client for The Mana World.
-	pkgver = 1.0r12831.f4ecfac
+	pkgver = 1.0r12841.4f7bcdb
 	pkgrel = 1
 	url = https://manaplus.germantmw.de/
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
+	makedepends = git
 	makedepends = mesa
 	makedepends = sdl_image
 	makedepends = sdl_mixer
@@ -21,17 +22,11 @@ pkgbase = manaverse-git
 	depends = physfs
 	depends = curl
 	optdepends = xdg-utils: open in-game urls in browser
-	provides = manaverse=1.0r12831.f4ecfac
-	provides = manaplus
+	provides = manaverse=1.0r12841.4f7bcdb
 	conflicts = manaverse
-	conflicts = manaplus
 	replaces = tmw
 	source = manaverse::git+https://git.themanaworld.org/mana/plus.git/
-	source = fix-various-compiler-errors.patch
-	sha512sums = SKIP
-	sha512sums = 7ec1dc4d812a235f59aee0ec299b156169a7a0c17b791fc8a2fcfc7d040258755789930fad792526134c88782a099e64422ad8b6f6ee46b299c593def9b1a15c
-	b2sums = SKIP
-	b2sums = b422dd920aa3acbee81360608a6381547a3911ebe0c410a6997639ad047e8cd5284e179210d9337c5641f21d2e0c9d20dbe671f644c3bac45d560871ca2da9d2
+	sha256sums = SKIP
 
 pkgname = manaverse-git
 	depends = glu

@@ -4,29 +4,27 @@
 # Contributor: Mateusz Herych <heniekk@gmail.com>
 # Contributor: Jesse McClure <jesse [dot] mcclure [at] umassmed [dot] edu>
 
+# shellcheck shell=bash disable=SC2164,SC2034,SC2154
+
 _srcname=manaverse
 _vcs=git
 _feat=('sdl2')
 pkgbase=$_srcname-$_vcs
 pkgname=("${_srcname}-${_vcs}" "${_feat[@]/*/${_srcname}-&-${_vcs}}")
-pkgver=1.0r12831.f4ecfac
+pkgver=1.0r12841.4f7bcdb
 pkgrel=1
 pkgdesc="A ManaPlus fork and official game client for The Mana World."
 arch=('x86_64')
 url="https://manaplus.germantmw.de/"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('glu' 'libxml2' 'physfs' 'curl')
-makedepends=('mesa'  'sdl'{,'2'}_{'image','mixer','net','ttf','gfx'})
+makedepends=("$_vcs" 'mesa'  'sdl'{,'2'}_{'image','mixer','net','ttf','gfx'})
 optdepends=('xdg-utils: open in-game urls in browser')
-provides=("$_srcname=$pkgver" 'manaplus')
-conflicts=("$_srcname" 'manaplus')
+provides=("$_srcname=$pkgver")
+conflicts=("$_srcname")
 replaces=('tmw')
-source=($_srcname::$_vcs+'https://git.themanaworld.org/mana/plus.git/'
-        'fix-various-compiler-errors.patch')
-sha512sums=('SKIP'
-            '7ec1dc4d812a235f59aee0ec299b156169a7a0c17b791fc8a2fcfc7d040258755789930fad792526134c88782a099e64422ad8b6f6ee46b299c593def9b1a15c')
-b2sums=('SKIP'
-        'b422dd920aa3acbee81360608a6381547a3911ebe0c410a6997639ad047e8cd5284e179210d9337c5641f21d2e0c9d20dbe671f644c3bac45d560871ca2da9d2')
+source=("$_srcname::$_vcs"+'https://git.themanaworld.org/mana/plus.git/')
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_srcname
@@ -40,18 +38,21 @@ prepare() {
   cd $_srcname
   git reset --hard
   git clean -fx
-  git apply "${srcdir}/${source[1]}"
   # Rebrand to ManaVerse in more places
   sed -i 's/\[ManaPlus\]/\[ManaVerse\]/;s/\[manaplus\]/\[manaverse\]/' 'configure.ac'
   sed -E -i \
   	's/^(#define PACKAGE_EXTENDED_VERSION ")ManaPlus/\1ManaVerse/;s/(#define FULL_VERSION ")ManaPlus/\1ManaVerse/' \
   	'src/main.h'
-  sed -i 's/ManaPlus/ManaVerse/g' 'manaplus'{,'test'}'.desktop'
+  sed -i 's/ManaPlus/ManaVerse/g;s/manaplus/manaverse/g' 'manaplus'{,'test'}'.desktop' 'docs/manaplus'{,'test'}'.6'
+  sed -E -i \
+    "s#(<id .*>).*\\.desktop</id>#\\1manaverse.desktop</id>#;s#(<url .*>)http://.*</url>#\\1${url}</url>#" \
+    'manaplus.metainfo.xml'
+  sed -i 's/("manaplus"/("manaverse"/g' 'src/utils/gettexthelper.cpp'
   autoreconf -i
 }
 
 _build() {
-  local _lfeat _dist _args;
+  local _lfeat _dist _args
   _lfeat=""
   _args=()
   if [ -n "$1" ]; then
@@ -66,12 +67,19 @@ _build() {
 }
 
 _package() {
-  local _lfeat _dist;
+  local _lfeat _dist _bname _rbnd
   [ -n "$1" ] && _lfeat="-$1" || _lfeat=""
   for _dist in manaplus dyecmd; do
   	cp -f src/$_dist"$_lfeat".bak src/$_dist
   done
   make DESTDIR="${pkgdir}" install
+  # Rename files to avoid conflicts with manaplus
+  # (continuation of rebranding done in prepare())
+  mv -T "${pkgdir}/usr/bin/dyecmd" "${pkgdir}/usr/bin/dyecmd_mv"
+  mv -T "${pkgdir}/usr/bin/manaplus" "${pkgdir}/usr/bin/manaverse"
+  for _rbnd in "${pkgdir}/usr/share/"{applications,metainfo,man/man6,icons/hicolor/scalable/apps,locale/*/LC_MESSAGES}'/manaplus'*; do
+    mv -T "$_rbnd" "${_rbnd%/*}/manaverse${_rbnd##*manaplus}"
+  done
 }
 
 build() {
