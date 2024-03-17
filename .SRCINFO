@@ -4,22 +4,20 @@ pkgbase = rsync-reflink
 	pkgrel = 5
 	url = https://github.com/WayneD/rsync
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = python-commonmark
-	makedepends = git
-	depends = acl
 	depends = libacl.so
 	depends = libxxhash.so
+	depends = openssl
 	depends = popt
-	depends = xxhash
 	depends = zstd
 	optdepends = python: for rrsync
 	provides = rsync-reflink=3.2.7
 	conflicts = rsync-reflink
 	backup = etc/rsyncd.conf
 	backup = etc/xinetd.d/rsync
-	source = rsync::git+https://github.com/WayneD/rsync#tag=v3.2.7
+	source = rsync::git+https://github.com/WayneD/rsync.git#tag=v3.2.7
 	source = https://github.com/WayneD/rsync-patches/raw/master/clone-dest.diff
 	source = https://github.com/WayneD/rsync-patches/raw/master/detect-renamed.diff
 	source = https://github.com/WayneD/rsync-patches/raw/master/detect-renamed-lax.diff

@@ -8,6 +8,7 @@
 ## options
 : ${_build_git:=false}
 
+unset _pkgtype
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
 ## basic info
@@ -15,7 +16,7 @@ _gitname="rsync"
 _pkgname="$_gitname-reflink"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=3.2.7
-pkgrel=5
+pkgrel=6
 pkgdesc='A fast and versatile file copying tool for remote and local files - with reflink support'
 url='https://github.com/WayneD/rsync'
 license=('GPL-3.0-or-later')
