@@ -6,7 +6,7 @@
 pkgbase=nvidia-340xx
 pkgname=(nvidia-340xx nvidia-340xx-dkms); [ -n "$NVIDIA_340XX_DKMS_ONLY" ] && pkgname=(nvidia-340xx-dkms)
 pkgver=340.108
-pkgrel=35
+pkgrel=36
 pkgdesc="NVIDIA drivers for linux, 340xx legacy branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
@@ -32,6 +32,7 @@ source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Li
   0013-kernel-6.3.patch
   0014-kernel-6.5.patch
   0015-kernel-6.6.patch
+  0016-kernel-6.8.patch
 )
 b2sums=('6538bbec53b10f8d20977f9b462052625742e9709ef06e24cf2e55de5d0c55f1620a4bb21396cfd89ebc54c32f921ea17e3e47eaa95abcbc24ecbd144fb89028'
         '49d99f612e8eee3ab5e34083c25348bfd14ed5fc8a7984dafc0dad7c0ae0df2c0b2a63a1bb993da440eb0a60293d7c753ca3889bd2f51991b8ddc51bce2fe4a8'
@@ -49,7 +50,8 @@ b2sums=('6538bbec53b10f8d20977f9b462052625742e9709ef06e24cf2e55de5d0c55f1620a4bb
         '47681d1e4b16f0b50775120b0a02bc6d279de692cde6086b895eef80bb4598e914ffe1fae81707a771d00f23df60ee4df591dfe042f5b764856d2e07306f3821'
         'ae16e2a5674a8a93c85aa624e73b1671e85b2be1854caf967986f5764b946f7ca39a1e75c1617ee79da40a8d9a86cc1b17f64a787bc7a8c38f8dca426edeff46'
         '01192b20986be28bd270842afcf022fbe43536dc2aac6479bc41b7760118aee8e6610290444212ed117d1a006bc24cca205aa39ccc760c6cbcb42f9102b815eb'
-        '5e88a31f1f25744b1136ac8972f652dbfb63cbd9d54596f616e7c861ac3ce624554ea68b6a7f99c275495d2f55f755b7208ada161cd25c449166dd5cce3050a2')
+        '5e88a31f1f25744b1136ac8972f652dbfb63cbd9d54596f616e7c861ac3ce624554ea68b6a7f99c275495d2f55f755b7208ada161cd25c449166dd5cce3050a2'
+        '834cebe75ee128d3a3dc69c1e65c579c23a6d39b1dedd77d1333057696168d264a8131dab88997d73801595fa46bf69a8be02411a383bb2067744cbf754c61a0')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
 # default is 'linux' substitute custom name here
