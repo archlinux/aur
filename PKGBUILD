@@ -6,8 +6,8 @@ pkgname=(
   libspelling
   libspelling-docs
 )
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Spellcheck library for GTK 4"
 url="https://gitlab.gnome.org/chergert/libspelling"
 arch=(x86_64)
@@ -26,9 +26,9 @@ makedepends=(
   meson
   vala
 )
-_commit=baefb81b3b236e3bd29c0aa23f79056b2636e311  # tags/0.2.0^0
+_commit=0e9b8b2187ecda4dc1ce48a9bcc9a9976490fda2  # tags/0.2.1^0
 source=("git+https://gitlab.gnome.org/chergert/libspelling.git#commit=$_commit")
-b2sums=('SKIP')
+b2sums=('dc5652e327307165231869321010c9d98e0b4521c4ee090aa326ed2c25d17070a8217cc4bd049a4d89c76de73ed0457b8fc8b8533bfb209b7b2f6d2a0eb2895c')
 
 pkgver() {
   cd $pkgname
