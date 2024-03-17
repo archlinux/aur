@@ -1,17 +1,19 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 # Contributor: Yamakaky <yamakaky@yamaworld.fr>
 pkgname=bloaty-git
-pkgver=1.0.r62.g7cf6c58
+pkgver=1.1.r264.g22a83c0
 pkgrel=1
 pkgdesc='A size profiler for binaries'
 arch=(x86_64 i686)
 url=https://github.com/google/bloaty
 license=(Apache)
-depends=(re2 capstone protobuf)
-makedepends=(git cmake)
+depends=(re2 capstone protobuf abseil-cpp)
+makedepends=(git cmake ninja)
 conflicts=(bloaty)
-source=("${pkgname}::git+${url}")
-sha512sums=(SKIP)
+source=("${pkgname}::git+${url}"
+        bloaty-no-bundled-sources.patch)
+b2sums=('SKIP'
+        '4093cf847b4c42e5a82b7e3e5e801cc81bb8f9d4a4e431ba35e6edb7079891096ab3675aac6ca5b409560d00a8755fdbfd9a53978280f71cb84aaa5ba009d46a')
 
 pkgver () {
 	cd "${pkgname}"
@@ -22,15 +24,19 @@ pkgver () {
 	)
 }
 
+prepare () {
+	cd "${pkgname}"
+	git apply "${srcdir}/bloaty-no-bundled-sources.patch"
+}
+
 build() {
-    rm -rf "${srcdir}/build"
-    mkdir "${srcdir}/build"
-    cd "${srcdir}/build"
-    cmake -G 'Unix Makefiles' \
+    rm -rf build
+    cmake -GNinja \
         -DCMAKE_INSTALL_PREFIX=/usr \
+		-DBUILD_TESTING=OFF \
         -DBLOATY_ENABLE_CMAKETARGETS=OFF \
-        "${srcdir}/${pkgname}"
-    make
+        -S"${srcdir}/${pkgname}" -Bbuild
+	ninja -Cbuild
 }
 
 package() {
