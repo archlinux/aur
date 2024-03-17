@@ -1,7 +1,7 @@
 pkgbase = android-armv7a-eabi-libunistring
-	pkgdesc = Library for manipulating Unicode strings and C strings (android)
+	pkgdesc = Library for manipulating Unicode strings and C strings (Android, armv7a-eabi)
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/libunistring/
 	arch = any
 	license = GPL
