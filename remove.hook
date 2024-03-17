@@ -1,0 +1,9 @@
+[Trigger]
+Type=Package
+Target=alsabeep-dkms
+Operation=Remove
+
+[Action]
+Description=Remove Service Files
+When=PreTransaction
+Exec=/usr/bin/alsabeep-helper remove

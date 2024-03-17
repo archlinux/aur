@@ -4,7 +4,7 @@
 
 _pkgbase=alsabeep
 pkgname=$_pkgbase-dkms
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="Another synthetic or enhanced PC Speaker beeper module and alsa daemon"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,6 @@ url="https://aur.archlinux.org/packages/$_pkgbase-dkms"
 license=('GPL-2.0-only')
 depends=('dkms' 'glibc' 'alsa-lib' 'util-linux')
 conflicts=("${_pkgbase}" "fancybeep-dkms")
-install=install
 backup=(
 		"etc/${_pkgbase}.conf"
 		)
@@ -23,6 +22,8 @@ source=("${_pkgbase}.c"
 		"helper"
 		'dkms.conf'
 		'Makefile.dkms'
+		'install.hook'
+		'remove.hook'
 		)
 sha256sums=('4b306516383b839bacd72740671e54bc6139a517a305332ec27f0c9b91663e8d'
             '7b2778b66b675f7c49a723844ce3d3b57561b1766ed507a112d7a827a718b11a'
@@ -30,7 +31,9 @@ sha256sums=('4b306516383b839bacd72740671e54bc6139a517a305332ec27f0c9b91663e8d'
             'e9b36c683af0535ca14869f149764345c5949f163847bffe8103462e66310e58'
             '48d2f21eaddcd3f1012c5f871e3052090d579771992d5b1ebcbb27cc8a98a0bd'
             '2ea5660bb36d440627ae93ba9a704c37eb71b914d2906d127deec14afded43d7'
-            '9b3e6ac669c1cf1b4314d3901bb6c36173eb3f2e7fafbd2d13e8daa4ee31a755')
+            '9b3e6ac669c1cf1b4314d3901bb6c36173eb3f2e7fafbd2d13e8daa4ee31a755'
+            '4f3395fffc49cf474a54f25e5e22943ba52672c90e1f097c1d25f1f31f95a72d'
+            '27df1f7e8086e36df7a2a85910d0cc77315b381c999b1b96c7f61169b0f0745a')
 
 _subst(){
 	sed -e "s/@_PKGBASE@/${_pkgbase}/g" -e "s/@PKGVER@/${pkgver}/g" -i "${1}"
@@ -63,6 +66,8 @@ package() {
 	# Blacklists conflicting module(s)
 	install -Dm644 "${srcdir}/blacklist.conf" "${pkgdir}/usr/lib/modprobe.d/${_pkgbase}.conf"
 	install -Dm644 "${srcdir}/config" "${pkgdir}/etc/${_pkgbase}.conf"
+	install -Dm644 "${srcdir}/install.hook" "${pkgdir}/usr/share/libalpm/hooks/99-alsabeep-install.hook"
+	install -Dm644 "${srcdir}/remove.hook" "${pkgdir}/usr/share/libalpm/hooks/00-alsabeep-remove.hook"
 	install -Dm755 "${srcdir}/helper" "${pkgdir}/usr/bin/${_pkgbase}-helper"
 	gcc "${srcdir}/dsrc/daemon.c" -o "${pkgdir}/usr/bin/${_pkgbase}-daemon" -lm -lasound -Wl,-z,relro,-z,now,-z,shstk
 }

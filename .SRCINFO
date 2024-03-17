@@ -1,9 +1,8 @@
 pkgbase = alsabeep-dkms
 	pkgdesc = Another synthetic or enhanced PC Speaker beeper module and alsa daemon
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/alsabeep-dkms
-	install = install
 	arch = x86_64
 	arch = aarch64
 	license = GPL-2.0-only
@@ -21,6 +20,8 @@ pkgbase = alsabeep-dkms
 	source = helper
 	source = dkms.conf
 	source = Makefile.dkms
+	source = install.hook
+	source = remove.hook
 	sha256sums = 4b306516383b839bacd72740671e54bc6139a517a305332ec27f0c9b91663e8d
 	sha256sums = 7b2778b66b675f7c49a723844ce3d3b57561b1766ed507a112d7a827a718b11a
 	sha256sums = ab7c72277ba7016309452055b006a60f395443a37dc2028e69dd0d1a71a8f1bf
@@ -28,5 +29,7 @@ pkgbase = alsabeep-dkms
 	sha256sums = 48d2f21eaddcd3f1012c5f871e3052090d579771992d5b1ebcbb27cc8a98a0bd
 	sha256sums = 2ea5660bb36d440627ae93ba9a704c37eb71b914d2906d127deec14afded43d7
 	sha256sums = 9b3e6ac669c1cf1b4314d3901bb6c36173eb3f2e7fafbd2d13e8daa4ee31a755
+	sha256sums = 4f3395fffc49cf474a54f25e5e22943ba52672c90e1f097c1d25f1f31f95a72d
+	sha256sums = 27df1f7e8086e36df7a2a85910d0cc77315b381c999b1b96c7f61169b0f0745a
 
 pkgname = alsabeep-dkms
