@@ -1,13 +1,14 @@
 pkgbase = xerces2-java
 	pkgdesc = High performance fully compliant Java XML parser
 	pkgver = 2.12.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xml.apache.org/xerces2-j
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	depends = java-runtime
-	depends = java-resolver
+	provides = java-resolver=1.2
 	provides = java-xerces2=2.12.2
+	conflicts = java-resolver
 	conflicts = java-xerces2
 	source = https://dlcdn.apache.org/xerces/j/binaries/Xerces-J-bin.2.12.2.tar.gz
 	source = https://dlcdn.apache.org/xerces/j/binaries/Xerces-J-bin.2.12.2.tar.gz.asc
