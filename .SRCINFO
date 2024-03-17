@@ -1,0 +1,20 @@
+pkgbase = xeus-lua-git
+	pkgdesc = Lua kernel for Jupyter based on xeus
+	pkgver = r244.a1ba93c
+	pkgrel = 1
+	url = https://github.com/jupyter-xeus/xeus-lua
+	arch = any
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = cmake
+	depends = xeus
+	depends = nlohmann-json
+	depends = cppzmq
+	depends = xtl
+	depends = pybind11
+	provides = xeus-lua
+	conflicts = xeus-lua
+	source = xeus-lua-git::git+https://github.com/jupyter-xeus/xeus-lua.git
+	sha256sums = SKIP
+
+pkgname = xeus-lua-git
