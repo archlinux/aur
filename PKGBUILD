@@ -2,7 +2,7 @@ pkgdesc="ROS - Scripts for installing Jackal's robot software."
 url="https://github.com/jackal/jackal_robot"
 
 pkgname="ros-noetic-jackal-bringup"
-pkgver="0.7.9"
+pkgver="0.7.10"
 arch=('x86_64')
 pkgrel=1
 license=("BSD")
@@ -38,7 +38,7 @@ depends=(
 
 _dir="jackal_robot-${pkgver}/jackal_bringup"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jackal/jackal_robot/archive/${pkgver}.tar.gz")
-sha256sums=('355357470dbb56d17fc7936ff7ba924633e46891157185e3a8c7eedcb419d011')
+sha256sums=('ea7047d8bb868cbbf3f3a59c86477b6e3a740dcb19e3f21dbdd8f27ad8ec03b2')
 
 build() {
     # Use ROS environment variables
