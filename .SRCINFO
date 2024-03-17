@@ -1,10 +1,13 @@
 pkgbase = cobib
 	pkgdesc = Console Bibliography
 	pkgver = 4.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/cobib/cobib
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-bibtexparser
 	depends = python-beautifulsoup4
