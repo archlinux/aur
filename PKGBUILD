@@ -1,7 +1,7 @@
 # Maintainer: zaps166 <spaz16@wp.pl>
 
 pkgname=nfs2se-git
-pkgver=v1.3.0.r33.g2977bf2
+pkgver=v1.4.0.r0.g6fc5caf
 pkgrel=1
 pkgdesc='Cross-platform wrapper for the Need For Speed™ II SE game with 3D acceleration and TCP protocol!'
 arch=('x86_64')
@@ -47,7 +47,7 @@ prepare()
 
 build()
 {
-# 	GL=gl2
+# 	GL=gl1
 # 	GL=gles2
 	cd $srcdir/NFSIISE
 	./compile_nfs $COMPILE_ARG $GL
@@ -60,7 +60,7 @@ package()
 
 	mkdir $pkgdir/opt
 	cp -r "$srcdir/NFSIISE/Need For Speed II SE" $pkgdir/opt/nfs2se
-	rm -f $pkgdir/opt/nfs2se/open_config.bat
+	rm -f $pkgdir/opt/nfs2se/*.bat
 
 	mkdir -p $pkgdir/usr/share/applications
 	mv $pkgdir/opt/nfs2se/nfs2se.desktop $pkgdir/usr/share/applications
