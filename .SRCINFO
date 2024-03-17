@@ -40,12 +40,12 @@ pkgbase = wayfire-hidpi-xprop-git
 	optdepends = xorg-xwayland-hidpi-xprop: High DPI scaling of Xwayland applications
 	provides = wayfire=0.8.0.r40.gc48194e0
 	provides = wayfire-hidpi-xprop
-	provides = wlroots
+	provides = wlroots=0.17.1
 	provides = wf-config
-	provides = wlroots-git
-	provides = wlroots-hidpi-xprop
+	provides = wlroots-git=0.17.1
+	provides = wlroots-hidpi-xprop=0.17.1
 	provides = wf-config-git
-	provides = libwlroots.so
+	provides = libwlroots.so=0.17.1
 	conflicts = wayfire
 	conflicts = wlroots-git
 	conflicts = wlroots

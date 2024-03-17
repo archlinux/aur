@@ -1,6 +1,7 @@
 # Maintainer: Christopher Snowhill <kode54@gmail.com>
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 # Contributor: Frank Tao <frank.tao@uwaterloo.ca>
+_wlrootsver=0.17.1
 pkgname=wayfire-hidpi-xprop-git
 pkgver=0.8.0.r40.gc48194e0
 pkgrel=1
@@ -17,8 +18,8 @@ depends=('cairo' 'pango' 'doctest' 'freetype2' 'glm' 'nlohmann-json'
 makedepends=('git' 'glslang' 'meson' 'ninja' 'cmake' 'vulkan-headers')
 optdepends=('xorg-xeyes'
             'xorg-xwayland-hidpi-xprop: High DPI scaling of Xwayland applications')
-provides=("wayfire=$pkgver" "${pkgname%-git}" 'wlroots' 'wf-config' 'wlroots-git' 'wlroots-hidpi-xprop' 'wf-config-git' 'libwlroots.so')
-conflicts=('wayfire' 'wlroots-git' 'wlroots' 'wf-config-git' 'wf-config')
+provides=("wayfire=$pkgver" "wayfire-git=$pkgver" "${pkgname%-git}" "wlroots=$_wlrootsver" 'wf-config' "wlroots-git=$_wlrootsver" "wlroots-hidpi-xprop=$_wlrootsver" 'wf-config-git' "libwlroots.so=$_wlrootsver")
+conflicts=('wayfire' 'wayfire-git' 'wlroots-git' 'wlroots' 'wf-config-git' 'wf-config')
 replaces=()
 options=()
 
