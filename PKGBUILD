@@ -5,7 +5,7 @@ _repo="https://github.com/toitlang/toit.git"
 _commit=bd0cb5464e47ae138a5d3064f0c1053a5b459be0
 _tag_no_dash="${_tag//-/}"
 pkgver="${_tag_no_dash#v}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Toit programming language SDK"
 arch=('x86_64')
 url="https://toitlang.org"
@@ -28,12 +28,12 @@ prepare() {
 	cd "$srcdir/${pkgname%-git}"
 
 	# Initial the top-level modules but not nested ones.
-	git submodule update --init .
+	git submodule update --depth=1 --init .
 
 	cd third_party/esp-idf
 	# We only need mbedtls of the esp-idf submodule to build the host tools.
 	# Don't bother initializing all the other components.
-	git submodule update --init components/mbedtls
+	git submodule update --depth=1 --init components/mbedtls
 }
 
 build() {
