@@ -13,8 +13,8 @@ pkgbase = rsync-reflink-git
 	depends = popt
 	depends = zstd
 	optdepends = python: for rrsync
-	provides = rsync-reflink=3.2.7
-	conflicts = rsync-reflink
+	provides = rsync=3.2.7
+	conflicts = rsync
 	backup = etc/rsyncd.conf
 	backup = etc/xinetd.d/rsync
 	source = rsync::git+https://github.com/WayneD/rsync.git
