@@ -5,7 +5,7 @@ pkgbase = obs-gradient-source
 	url = https://obsproject.com/forum/resources/gradient-source.1172/
 	arch = x86_64
 	arch = aarch64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = cmake
 	makedepends = git
 	depends = obs-studio>=28

@@ -6,17 +6,11 @@ pkgrel=1
 pkgdesc="Gradient Source for OBS studio"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/gradient-source.1172/"
-license=("GPL2")
+license=("GPL-2.0-or-later")
 depends=("obs-studio>=28" "glibc")
 makedepends=("cmake" "git")
 source=("$pkgname::git+https://github.com/exeldro/$pkgname#commit=70c0ed3ba1763692dfafcd28328fdf29c497b92d")
 sha256sums=('SKIP')
-
-prepare()
-{
-  cd "$pkgname"
-  sed -i "s|-Wswitch|-Wswitch -Wno-error=format-truncation|" cmake/ObsPluginHelpers.cmake
-}
 
 build() {
   cmake -B build -S $pkgname \
@@ -24,6 +18,7 @@ build() {
   -DCMAKE_INSTALL_PREFIX='/usr' \
   -DCMAKE_INSTALL_LIBDIR=lib \
   -DLINUX_PORTABLE=OFF \
+  -DCMAKE_C_FLAGS="-Wno-error=deprecated-declarations -Wno-error=format-truncation" \
   -Wno-dev
 
   cmake --build build
