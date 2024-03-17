@@ -7,7 +7,7 @@
 
 pkgname=wineasio
 pkgver=1.2.0
-pkgrel=3
+pkgrel=4
 
 pkgdesc="ASIO driver implementation for Wine"
 url="https://github.com/wineasio/wineasio"
@@ -33,6 +33,10 @@ prepare(){
 
 build() {
   cd "$pkgname-$pkgver"
+
+  # fix compiling errors coming from host CFLAGS by removing those
+  CFLAGS=""
+
   make 32
   make 64
 }
