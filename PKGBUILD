@@ -2,7 +2,7 @@ pkgdesc="ROS - Topic tools for treating messages as variant types."
 url="https://github.com/ANYbotics/variant"
 
 pkgname=ros-noetic-variant-topic-tools
-pkgver='0.1.22'
+pkgver='0.1.24'
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 license=('LGPL')
@@ -30,10 +30,10 @@ depends=(
     gtest
 )
 
-_commit="83ef3d9e2b2a94d5ca29c226fc030795b70c289b"
+_commit="bd6d2b3b4b6cd6645fd7179b92054d81b238843d"
 _dir="variant-${_commit}/variant_topic_tools"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ANYbotics/variant/archive/${_commit}.tar.gz")
-sha256sums=('4d85ec2a9e88bfd31fa78f42fbfdef147a3a2d40b1943f03004bae83e015b2f5')
+sha256sums=('4c17bf4147fb25c97f71e87053111cc7c8c76b4c18216f53140634293365e154')
 
 build() {
     # Use ROS environment variables
