@@ -5,7 +5,7 @@ pkgbase = obs-vnc
 	url = https://obsproject.com/forum/resources/vnc-source.1000/
 	arch = x86_64
 	arch = aarch64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = cmake
 	depends = obs-studio>=28
 	depends = glibc

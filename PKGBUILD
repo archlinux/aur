@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="This plugin is a VNC viewer that works as a source in OBS Studio"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/vnc-source.1000/"
-license=("GPL2")
+license=(GPL-2.0-or-later)
 depends=("obs-studio>=28" "glibc" "libvncserver")
 makedepends=("cmake")
 options=('debug')
