@@ -1,18 +1,17 @@
 pkgbase = lib32-libzip
-	pkgdesc = A C library for reading, creating, and modifying zip archives
-	pkgver = 1.8.0
+	pkgdesc = C library for reading, creating, and modifying zip archives
+	pkgver = 1.10.1
 	pkgrel = 1
-	url = https://libzip.org/
+	url = https://libzip.org
 	arch = x86_64
 	license = BSD
-	checkdepends = perl
 	makedepends = cmake
 	depends = lib32-zlib
-	depends = lib32-glibc
+	depends = lib32-bzip2
+	depends = lib32-zstd
 	depends = lib32-openssl
 	depends = lib32-gnutls
-	options = !libtool
-	source = https://libzip.org/download/libzip-1.8.0.tar.gz
-	sha512sums = a70da02b55a7bace2b21b74f33f4d6c7c7b29f706340e2be240d0c9a307de0af4bb93d4677c087d57c651a4ca556ca362ddab2dee1ded86f2d55e54a0329a074
+	source = https://libzip.org/download/libzip-1.10.1.tar.xz
+	sha256sums = dc3c8d5b4c8bbd09626864f6bcf93de701540f761d76b85d7c7d710f4bd90318
 
 pkgname = lib32-libzip
