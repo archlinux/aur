@@ -2,7 +2,7 @@ pkgdesc="ROS - Jackal Tutorials"
 url="https://github.com/jackal/jackal"
 
 pkgname="ros-noetic-jackal-tutorials"
-pkgver="0.8.8"
+pkgver="0.8.9"
 arch=("x86_64")
 pkgrel=1
 license=("BSD")
@@ -28,7 +28,7 @@ depends=(
 
 _dir="jackal-${pkgver}/jackal_tutorials"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jackal/jackal/archive/${pkgver}.tar.gz")
-sha256sums=('ef3f56b7cb56b3230ea755a797e7e59f41ed51143d7fab25a5579c4e5ea890eb')
+sha256sums=('90c29c3be73a0960ec6b210c069e35b79e676f71efc61e44124e65031bb1db33')
 
 build() {
     # Use ROS environment variables

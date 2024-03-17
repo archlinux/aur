@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-jackal-tutorials
 	pkgdesc = ROS - Jackal Tutorials
-	pkgver = 0.8.8
+	pkgver = 0.8.9
 	pkgrel = 1
 	url = https://github.com/jackal/jackal
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ros-noetic-jackal-tutorials
 	makedepends = ros-build-tools
 	makedepends = ros-noetic-catkin
 	depends = ros-noetic-rosdoc-lite
-	source = ros-noetic-jackal-tutorials-0.8.8.tar.gz::https://github.com/jackal/jackal/archive/0.8.8.tar.gz
-	sha256sums = ef3f56b7cb56b3230ea755a797e7e59f41ed51143d7fab25a5579c4e5ea890eb
+	source = ros-noetic-jackal-tutorials-0.8.9.tar.gz::https://github.com/jackal/jackal/archive/0.8.9.tar.gz
+	sha256sums = 90c29c3be73a0960ec6b210c069e35b79e676f71efc61e44124e65031bb1db33
 
 pkgname = ros-noetic-jackal-tutorials
