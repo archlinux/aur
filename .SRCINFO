@@ -1,0 +1,20 @@
+pkgbase = ros-noetic-rtcm-msgs
+	pkgdesc = ROS - The rtcm_msgs package contains messages related to data in the RTCM format.
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = https://github.com/tilk/rtcm_msgs
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-message-generation
+	depends = ros-noetic-message-runtime
+	source = ros-noetic-rtcm-msgs-1.1.6.tar.gz::https://github.com/tilk/rtcm_msgs/archive/1.1.6.tar.gz
+	sha256sums = ee6edd7fe468034a4b1ba8321eedf5e9374a8eeedfbe4991fc28a4a51807235d
+
+pkgname = ros-noetic-rtcm-msgs
