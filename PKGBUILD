@@ -3,24 +3,25 @@
 _pkgname=ASEB
 _pkgver=1.46.3
 pkgname=r-${_pkgname,,}
-pkgver=1.46.3
-pkgrel=1
-pkgdesc='Predict Acetylated Lysine Sites'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Predict Acetylated Lysine Sites"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-or-later')
 depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('797561ff36b036921e82d824b4b3e7f81917229a361620951eb4141947a346b5')
+md5sums=('7e9312371523d44d7f1cb759af2d150e')
+b2sums=('4619f4135831c148606aa300ca6bdad6b519c03df645250d0aff125d56c495530f3eba035feedad93c555bd07f2cd49d0f9268b0a82f21eef55192d64ace5a28')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
