@@ -5,15 +5,15 @@
 # Contributor: Kosava <kosava@gmail.com>
 
 pkgname=butt
-pkgver=0.1.40
-pkgrel=2
+pkgver=0.1.41
+pkgrel=1
 pkgdesc="Easy to use, multi OS streaming tool"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('GPL2')
 url="https://danielnoethen.de/butt/"
-depends=('fltk' 'dbus' 'portaudio' 'libfdk-aac' 'libvorbis' 'libogg' 'lame' 'flac' 'opus' 'libsamplerate')
+depends=('fltk' 'dbus' 'portaudio' 'portmidi' 'libfdk-aac' 'libvorbis' 'libogg' 'lame' 'flac' 'opus' 'libsamplerate')
 source=("${pkgname}-${pkgver}.tar.gz::https://danielnoethen.de/${pkgname}/release/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-b2sums=('920680b90dc4a0936e2fac4cb155ed11f041b440bff3e6ca696b4bf633395550c7bbcf1fceb8f4aeedd0edf7e0d3be009874a7b141961b1bc34f867e16c4381a')
+sha256sums=('c13ca98ea7763e9983480f2f49c30b9002f8e3113f58071c9bbe3b3d2f429550')
 
 build() {
   cd "${pkgname}-${pkgver}"
