@@ -1,6 +1,6 @@
 pkgbase = python-desispec
 	pkgdesc = Scripts and packages for building and running DESI spectroscopic analyses
-	pkgver = 0.58.2
+	pkgver = 0.61.0
 	pkgrel = 1
 	url = https://github.com/desihub/desispec
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-desispec
 	depends = python-fitsio
 	depends = python-desiutil
 	depends = python-desimodel
-	source = desispec-0.58.2::https://github.com/desihub/desispec/archive/refs/tags/0.58.2.tar.gz
-	sha256sums = a7dccdb6ab3e321e9c58873dbaa6daa20183804030b0d348f66f8dc1ecf52652
+	source = desispec-0.61.0::https://github.com/desihub/desispec/archive/refs/tags/0.61.0.tar.gz
+	sha256sums = 5c7430126f7a5a33d2ca80dd6ac0f4d23488c4d68552bbfdbc09c2e4774ab044
 
 pkgname = python-desispec
