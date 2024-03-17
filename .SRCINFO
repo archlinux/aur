@@ -1,7 +1,7 @@
 pkgbase = plasma-mobile
 	pkgdesc = Plasma Mobile shell components.
 	pkgver = 6.0.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://invent.kde.org/plasma/plasma-mobile
 	arch = x86_64
 	arch = i686
@@ -24,7 +24,7 @@ pkgbase = plasma-mobile
 	depends = kirigami-addons
 	depends = maliit-keyboard
 	depends = kpipewire
-	optdepends = plasma-settings: Settings application for Plasma Mobile
+	depends = plasma-settings
 	optdepends = plasma-dialer: Phone application
 	optdepends = plasma-workspace-wallpapers: A large wallpaper selection for Plasma
 	optdepends = plasma-mobile-sounds: Plasma Mobile sound theme

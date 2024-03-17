@@ -1,7 +1,7 @@
 # Maintainer: Devin Lin <devin@kde.org>
 pkgname=plasma-mobile
 pkgver=6.0.2
-pkgrel=0
+pkgrel=1
 pkgdesc="Plasma Mobile shell components."
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
 url="https://invent.kde.org/plasma/plasma-mobile"
@@ -18,9 +18,10 @@ depends=(
   kirigami-addons
   maliit-keyboard
   kpipewire
+  plasma-settings
+  kwin
 )
 optdepends=(
-  'plasma-settings: Settings application for Plasma Mobile'
   'plasma-dialer: Phone application'
   'plasma-workspace-wallpapers: A large wallpaper selection for Plasma'
   'plasma-mobile-sounds: Plasma Mobile sound theme'
