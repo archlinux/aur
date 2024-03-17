@@ -1,7 +1,7 @@
 # Maintainer: VVL <me@ivvl.ru>
 
 pkgname=shlink-web-client
-pkgver=4.0.1
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="A ReactJS-based progressive web application for Shlink"
 arch=('any')
@@ -10,7 +10,7 @@ optdepends=('nginx: reverse-proxy')
 makedepends=('nodejs' 'npm')
 license=('MIT')
 source=("https://github.com/shlinkio/shlink-web-client/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('effd4c263d1d15e5fbb8ec4031c45f16cec7528ef7a779cc684f404be6c83850867a71c1be20787d497bb5e9b5e84b45a4ee842e214a41f51e3f79407a7126a8')
+sha512sums=('b1872d79e3f84c9bbe65af96d3209afb7285d5e3d27dfbfc429c10ea34b3f26f93654c08aaf2191f6c545a19863fe469b618750d2315137fd3ab378cf8bf299a')
 
 build() {
   cd "$pkgname-$pkgver"
