@@ -1,0 +1,31 @@
+pkgbase = ghdl-gcc
+	pkgdesc = VHDL simulator - GCC back-end
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/ghdl/ghdl
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = gmp
+	makedepends = mpfr
+	makedepends = mpc
+	makedepends = gcc-ada
+	makedepends = libisl
+	makedepends = libmpc
+	makedepends = zstd
+	depends = libmpc
+	depends = zstd
+	depends = libisl.so
+	depends = gcc-libs>=12.3.0
+	depends = gcc-ada
+	provides = ghdl=4.0.0
+	conflicts = ghdl-gcc-git
+	conflicts = ghdl-llvm-git
+	conflicts = ghdl-mcode-git
+	options = !emptydirs
+	options = !lto
+	source = ghdl-4.0.0.tar.gz::https://github.com/ghdl/ghdl/archive/refs/tags/v4.0.0.tar.gz
+	source = https://gcc.gnu.org/pub/gcc/releases/gcc-12.3.0/gcc-12.3.0.tar.xz
+	sha256sums = 97c88b36b73e7b5086366c1dd49a4224f3b200142b60c005305fc5c8a835740c
+	sha256sums = 949a5d4f99e786421a93b532b22ffab5578de7321369975b91aec97adfda8c3b
+
+pkgname = ghdl-gcc
