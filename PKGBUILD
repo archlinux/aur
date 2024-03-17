@@ -4,13 +4,13 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-gettext
 pkgver=0.22.4
-pkgrel=1
+pkgrel=2
 arch=('any')
-pkgdesc='GNU internationalization library (android)'
+pkgdesc="GNU internationalization library (Android, ${_android_arch})"
 depends=("android-${_android_arch}-termcap"
          "android-${_android_arch}-libunistring"
          "android-${_android_arch}-libxml2")
-makedepends=('gettext' 'android-configure')
+makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 license=("GPL")
 url="http://www.gnu.org/software/gettext/"
@@ -31,8 +31,7 @@ build() {
         --enable-threads=posix \
         --enable-nls \
         --with-xz \
-        --without-emacs \
-        .
+        --without-emacs
     make $MAKEFLAGS
 }
 

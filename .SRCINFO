@@ -1,11 +1,10 @@
 pkgbase = android-aarch64-gettext
-	pkgdesc = GNU internationalization library (android)
+	pkgdesc = GNU internationalization library (Android, aarch64)
 	pkgver = 0.22.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/gettext/
 	arch = any
 	license = GPL
-	makedepends = gettext
 	makedepends = android-configure
 	depends = android-aarch64-termcap
 	depends = android-aarch64-libunistring
