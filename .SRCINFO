@@ -1,6 +1,6 @@
 pkgbase = keeprofi
 	pkgdesc = Fast rofi drun menu for keepass database
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://gitlab.com/hxss-linux/keeprofi
 	arch = any
@@ -22,4 +22,3 @@ pkgbase = keeprofi
 	provides = keeprofi
 
 pkgname = keeprofi
-
