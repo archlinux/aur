@@ -9,7 +9,7 @@ license=('GPL3')
 source=(https://github.com/klartext/any-dl/archive/v."$pkgver".tar.gz)
 md5sums=('1ccfa362ddbaf332e5c9ce6f88000600')
 url="http://www.first.in-berlin.de/software/tools/any-dl/"
-depends=('ocaml' 'ocaml-pcre' 'ocaml-xmlm' 'ocamlnet' 'gnutls' 'ocaml-csv' 'ocaml-yojson')
+depends=('ocaml4' 'ocaml-pcre' 'ocaml-xmlm' 'ocamlnet' 'gnutls' 'ocaml-csv' 'ocaml-yojson')
 makedepends=('ocaml-findlib')
 options=(!makeflags)
 

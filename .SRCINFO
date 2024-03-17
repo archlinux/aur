@@ -7,7 +7,7 @@ pkgbase = any-dl
 	arch = x86_64
 	license = GPL3
 	makedepends = ocaml-findlib
-	depends = ocaml
+	depends = ocaml4
 	depends = ocaml-pcre
 	depends = ocaml-xmlm
 	depends = ocamlnet
@@ -19,4 +19,3 @@ pkgbase = any-dl
 	md5sums = 1ccfa362ddbaf332e5c9ce6f88000600
 
 pkgname = any-dl
-
