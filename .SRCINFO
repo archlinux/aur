@@ -1,8 +1,8 @@
 pkgbase = python-ufl
 	pkgdesc = Unified form language (stable).
-	pkgver = 2019.1.0
+	pkgver = 2022.3.0
 	pkgrel = 1
-	url = https://bitbucket.org/fenics-project/ufl
+	url = https://github.com/FEniCS/ufl-legacy
 	arch = any
 	groups = fenics
 	license = LGPL3
@@ -10,7 +10,7 @@ pkgbase = python-ufl
 	depends = python-numpy
 	conflicts = python-ufl-git
 	options = !emptydirs
-	source = python-ufl-2019.1.0.tar.gz::https://bitbucket.org/fenics-project/ufl/downloads/ufl-2019.1.0.tar.gz
-	sha256sums = 213a56bfa2edb0365909fa6f110f970e582b10a3f5f1fd9a0e85254f1eefaa11
+	source = ufl-2022.3.0.tar.gz::https://github.com/FEniCS/ufl-legacy/archive/refs/tags/2022.3.0.tar.gz
+	sha256sums = 2d0f4c88fe151d631e1d389faf61f58bbbe649fd08106e756fd5d6c53213660a
 
 pkgname = python-ufl
