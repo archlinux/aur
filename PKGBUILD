@@ -3,8 +3,7 @@
 
 pkgname=youki
 pkgver=0.3.2
-_commit='b9f27e487f909104be806509a4c0c794119ab5fd'
-pkgrel=1
+pkgrel=2
 pkgdesc='A container runtime written in Rust'
 arch=('x86_64')
 url='https://containers.github.io/youki'
@@ -16,14 +15,8 @@ optdepends=(
   'podman: run via podman'
 )
 options=('!lto')
-source=("$pkgname::git+https://github.com/containers/youki.git#commit=$_commit")
-md5sums=('SKIP')
-
-pkgver() {
-  cd youki
-
-  git describe --tags | sed 's/^v//'
-}
+source=("git+https://github.com/containers/youki.git#tag=v$pkgver")
+sha256sums=('f21deb7be283aa18bcd5433fb6c4b3c1b6a514bb6bc541a86afc0af1d4159751')
 
 prepare() {
   cd youki
