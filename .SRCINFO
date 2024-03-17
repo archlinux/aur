@@ -1,6 +1,6 @@
 pkgbase = flycast-git
 	pkgdesc = Sega Dreamcast, Naomi, and Atomiswave emulator
-	pkgver = 2.2.r217.g966ff37
+	pkgver = 2.3.r0.g966ff37
 	pkgrel = 1
 	url = https://github.com/flyinghead/flycast
 	arch = x86_64
@@ -15,10 +15,9 @@ pkgbase = flycast-git
 	depends = alsa-lib
 	depends = libgl
 	depends = libzip
-	provides = flycast=2.2
+	provides = flycast=2.3
 	conflicts = flycast
 	source = flycast::git+https://github.com/flyinghead/flycast.git
-	source = rtissera.libchdr::git+https://github.com/rtissera/libchdr.git
 	source = breakpad-disable.patch
 	source = flyinghead.mingw-breakpad::git+https://github.com/flyinghead/mingw-breakpad.git
 	source = google.oboe::git+https://github.com/google/oboe.git
@@ -26,6 +25,7 @@ pkgbase = flycast-git
 	source = khronosgroup.glslang::git+https://github.com/KhronosGroup/glslang.git
 	source = khronosgroup.vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	source = libsdl-org.sdl::git+https://github.com/libsdl-org/SDL.git
+	source = rtissera.libchdr::git+https://github.com/rtissera/libchdr.git
 	source = vinniefalco.luabridge::git+https://github.com/vinniefalco/LuaBridge.git
 	source = vkedwardli.spout2::git+https://github.com/vkedwardli/Spout2.git
 	source = vkedwardli.syphon-framework::git+https://github.com/vkedwardli/Syphon-Framework.git

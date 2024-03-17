@@ -16,7 +16,7 @@ unset _pkgtype
 # basic info
 _pkgname=flycast
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.2.r217.g966ff37
+pkgver=2.3.r0.g966ff37
 pkgrel=1
 pkgdesc='Sega Dreamcast, Naomi, and Atomiswave emulator'
 url="https://github.com/flyinghead/flycast"
@@ -46,10 +46,8 @@ _main_package() {
 
   if [ "${_build_git::1}" != "t" ] ; then
     _main_stable
-    _source_flycast_stable
   else
     _main_git
-    _source_flycast_git
   fi
 
   source+=("breakpad-disable.patch")
@@ -68,7 +66,7 @@ _main_stable() {
   sha256sums+=('SKIP')
 
   _prepare() {
-    _prepare_flycast_stable
+    :
   }
 
   pkgver() {
@@ -86,7 +84,7 @@ _main_git() {
   sha256sums+=('SKIP')
 
   _prepare() {
-    _prepare_flycast_git
+    :
   }
 
   pkgver() {
@@ -105,11 +103,13 @@ _source_flycast() {
     'khronosgroup.glslang'::'git+https://github.com/KhronosGroup/glslang.git'
     'khronosgroup.vulkan-headers'::'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
     'libsdl-org.sdl'::'git+https://github.com/libsdl-org/SDL.git'
+    'rtissera.libchdr'::'git+https://github.com/rtissera/libchdr.git'
     'vinniefalco.luabridge'::'git+https://github.com/vinniefalco/LuaBridge.git'
     'vkedwardli.spout2'::'git+https://github.com/vkedwardli/Spout2.git'
     'vkedwardli.syphon-framework'::'git+https://github.com/vkedwardli/Syphon-Framework.git'
   )
   sha256sums+=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -130,43 +130,10 @@ _source_flycast() {
       ['khronosgroup.glslang']='core/deps/glslang'
       ['khronosgroup.vulkan-headers']='core/deps/Vulkan-Headers'
       ['libsdl-org.sdl']='core/deps/SDL'
+      ['rtissera.libchdr']='core/deps/libchdr'
       ['vinniefalco.luabridge']='core/deps/luabridge'
       ['vkedwardli.spout2']='core/deps/Spout'
       ['vkedwardli.syphon-framework']='core/deps/Syphon'
-    )
-    _submodule_update
-  )
-}
-
-_source_flycast_stable() {
-  source+=(
-    'flyinghead.libchdr'::'git+https://github.com/flyinghead/libchdr.git'
-  )
-  sha256sums+=(
-    'SKIP'
-  )
-
-  _prepare_flycast_stable() (
-    cd "$srcdir/$_pkgsrc"
-    local -A _submodules=(
-      ['flyinghead.libchdr']='core/deps/libchdr'
-    )
-    _submodule_update
-  )
-}
-
-_source_flycast_git() {
-  source+=(
-    'rtissera.libchdr'::'git+https://github.com/rtissera/libchdr.git'
-  )
-  sha256sums+=(
-    'SKIP'
-  )
-
-  _prepare_flycast_git() (
-    cd "$srcdir/$_pkgsrc"
-    local -A _submodules=(
-      ['rtissera.libchdr']='core/deps/libchdr'
     )
     _submodule_update
   )
