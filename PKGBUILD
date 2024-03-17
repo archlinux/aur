@@ -3,7 +3,7 @@
 pkgname=mcedit-unified-git
 _pkgname=MCEdit-Unified
 pkgver=1.6.0.0.r6.g90abfb17
-pkgrel=1
+pkgrel=2
 pkgdesc='MCEdit is a versatile map utility, designed for editing Minecraft maps.'
 url=http://podshot.github.io/MCEdit-Unified
 arch=(x86_64)
