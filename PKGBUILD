@@ -3,8 +3,8 @@
 _org='Simple-Robotics'
 _pkgname='proxsuite'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=0.6.3
-pkgrel=3
+pkgver=0.6.4
+pkgrel=1
 pkgdesc="The Advanced Proximal Optimization Toolbox"
 arch=('any')
 url="https://github.com/$_org/$_pkgname"
@@ -14,10 +14,11 @@ optdepends=()
 makedepends=('cmake')
 checkdepends=('libmatio')
 source=($url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz{,.sig})
-sha256sums=('378d1e8a52ffb8a213ec62c01f8ef1c56bc7e7deb0b7588b91e554504d9e63fb'
+sha256sums=('fb90a9e45f5bf91659c394b7cfa22f9754bd864798c10a1269d342f6a456a1f3'
             'SKIP')
 validpgpkeys=(
         'A031AD35058955293D54DECEC45D22EF408328AD'  # https://github.com/jcarpent.gpg
+        'F534E75540B2E7D24F99746987CFFF3D0D73CC93'  # https://github.com/jcarpent.gpg
         '1462AF00C9CF3C9E7AFC905E63380359F089A579'  # https://github.com/jorisv.gpg
         )
 
