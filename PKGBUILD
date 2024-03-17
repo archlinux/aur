@@ -13,7 +13,6 @@ url='https://www.xp-pen.com/download/index.html'
 license=('custom')
 source=("XPPenLinux${pkgver}-${pkgrel}.tar.gz::https://www.xp-pen.com/download/file/id/1936/pid/1016/ext/gz.html")
 install=${pkgname}.install
-options=(!strip)
 
 sha512sums=('3732abdb444ae6ee0ff585b8fadb750761f194936054c392a3cf0e93f59468acedff79e864f6e751aac2b398e0ba6d951b55048ffe11bcb68c5b690062adf441')
 
