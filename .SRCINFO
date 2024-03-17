@@ -1,8 +1,8 @@
 pkgbase = zoom-system-qt
 	pkgdesc = Video Conferencing and Web Conferencing Service - system Qt libraries
-	pkgver = 5.17.5
+	pkgver = 5.17.11
 	pkgrel = 1
-	url = https://zoom.us
+	url = https://zoom.us/download
 	arch = x86_64
 	license = custom
 	makedepends = patchelf
@@ -29,7 +29,7 @@ pkgbase = zoom-system-qt
 	optdepends = pulseaudio-alsa: output sound via pulseaudio
 	provides = zoom
 	conflicts = zoom
-	source = zoom-system-qt-5.17.5.2543_orig_x86_64.pkg.tar.xz::https://cdn.zoom.us/prod/5.17.5.2543/zoom_x86_64.pkg.tar.xz
-	b2sums = f0888fec865dfa490803fcfe8a11e41147da792ef3f0cc01e150710f022222942eacff50df40f21aaa84e4958f4acd776e47ea5aa9c44d67031cb7e8ed3e47d4
+	source = zoom-system-qt-5.17.11.3835_orig_x86_64.pkg.tar.xz::https://cdn.zoom.us/prod/5.17.11.3835/zoom_x86_64.pkg.tar.xz
+	b2sums = f0f314c2b5a8a791673b236313ce6b1ad37e76596a2b6c4202c79f12e410aded324c975148d745277bd8e86a1c6464e7bd510e4c34a68dd0f95d06f30324809a
 
 pkgname = zoom-system-qt
