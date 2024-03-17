@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=infisical
-pkgver=0.18.3
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Fetch and inject secrets into any framework in local development"
 url="https://github.com/Infisical/infisical"
@@ -10,7 +10,7 @@ license=(LicenseRef-Custom)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/infisical-cli/v$pkgver.tar.gz")
-sha256sums=('8442e2ce58116fa3b3974ec8172993fae33272328f32fea09fad8befa95745d8')
+sha256sums=('3279adb2dd6dcab2bcab7a9da44527eac9b610f09b9fe3da6fc048b361180650')
 
 _archive="$pkgname-infisical-cli-v$pkgver"
 
