@@ -5,7 +5,7 @@ pkgname='python-urllib3-future-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname/-/.}"
-pkgver=2.6.902.r0.ga2dcd0bb
+pkgver=2.6.905.r0.gd3a06c3c
 pkgrel=1
 pkgdesc='Powerful HTTP 1.1, 2, and 3 client with both sync and async interfaces (built from latest commit)'
 arch=('any')
@@ -14,6 +14,7 @@ license=('MIT')  # SPDX-License-Identifier: MIT
 makedepends=(
   'git'
   'python-build'
+  'python-hatchling'
   'python-installer'
   'python-wheel'
 )
