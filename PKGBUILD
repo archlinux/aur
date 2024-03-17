@@ -2,7 +2,7 @@ pkgdesc="ROS - A package that contains ROS message corresponding to microstrain 
 url="https://github.com/LORD-MicroStrain/microstrain_inertial"
 
 pkgname="ros-noetic-microstrain-inertial-msgs"
-pkgver="3.1.0"
+pkgver="4.0.1"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=("MIT")
@@ -28,20 +28,22 @@ depends=(
     ${ros_depends[@]}
 )
 
-_dir="microstrain_inertial-${pkgver}/microstrain_inertial_msgs"
+_commit="6a2f27040934d862963999afbb2456f7cb2fa02b"
+_msgs_common_commit="c5c41e685cd166dfdef6e70886cd3f68d08bdc72"
+_dir="microstrain_inertial-${_commit}/microstrain_inertial_msgs"
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/LORD-MicroStrain/microstrain_inertial/archive/${pkgver}.tar.gz"
-    "microstrain_inertial_msgs_common.tar.gz::https://github.com/LORD-MicroStrain/microstrain_inertial_msgs_common/archive/488b325b69e9d1286ce3003953dde940da2e198f.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/LORD-MicroStrain/microstrain_inertial/archive/${_commit}.tar.gz"
+    "microstrain_inertial_msgs_common.tar.gz::https://github.com/LORD-MicroStrain/microstrain_inertial_msgs_common/archive/${_msgs_common_commit}.tar.gz"
 )
 sha256sums=(
-    '939b19ad132e627ed72b410d7898154452fcea181c12533355a879d38c8bdeee'
-    '954624245a32fe1a036bf27a3c4ab850532ec56a39f0fbfa7234573e8d4c2255')
+    '8b9ebb1073dee8cc3d1062390aa3809ca9138b0d014b83bc3ec3feb7de392929'
+    '4c5a4451fe0d9d49c809b0713dc069245dbdeca714f307e38059546dbb20b738')
 
 prepare() {
     if [ -d ${_dir}/microstrain_inertial_msgs_common ]; then
         rm -rf ${_dir}/microstrain_inertial_msgs_common
     fi
-    ln -s ${srcdir}/microstrain_inertial_msgs_common-488b325b69e9d1286ce3003953dde940da2e198f ${_dir}/microstrain_inertial_msgs_common
+    ln -s ${srcdir}/microstrain_inertial_msgs_common-${_msgs_common_commit} ${_dir}/microstrain_inertial_msgs_common
 }
 
 build() {
