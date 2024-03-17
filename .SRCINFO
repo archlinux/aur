@@ -48,6 +48,7 @@ pkgbase = wayfire-hidpi-xprop-git
 	provides = wf-config-git
 	provides = libwlroots.so=0.17.1
 	conflicts = wayfire
+	conflicts = wayfire-git
 	conflicts = wlroots-git
 	conflicts = wlroots
 	conflicts = wf-config-git
