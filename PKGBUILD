@@ -12,7 +12,8 @@ depends=('cairo' 'pango' 'doctest' 'freetype2' 'glm' 'nlohmann-json'
          'libdrm' 'libevdev' 'libglvnd' 'libinput' 'libjpeg'
          'libpng' 'libxkbcommon' 'libxml2' 'pixman' 'polkit'
          'pkgconf' 'seatd' 'xcb-util-errors' 'xcb-util-renderutil'
-         'xcb-util-wm' 'xorg-xwayland' 'wayland' 'wayland-protocols')
+         'xcb-util-wm' 'xorg-xwayland' 'wayland' 'wayland-protocols'
+         'libdisplay-info')
 makedepends=('git' 'glslang' 'meson' 'ninja' 'cmake' 'vulkan-headers')
 optdepends=('xorg-xeyes'
             'xorg-xwayland-hidpi-xprop: High DPI scaling of Xwayland applications')

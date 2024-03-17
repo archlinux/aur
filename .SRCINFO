@@ -35,6 +35,7 @@ pkgbase = wayfire-hidpi-xprop-git
 	depends = xorg-xwayland
 	depends = wayland
 	depends = wayland-protocols
+	depends = libdisplay-info
 	optdepends = xorg-xeyes
 	optdepends = xorg-xwayland-hidpi-xprop: High DPI scaling of Xwayland applications
 	provides = wayfire=0.8.0.r40.gc48194e0
