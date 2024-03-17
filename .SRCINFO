@@ -1,8 +1,8 @@
 pkgbase = livi-git
 	pkgdesc = A simple GTK4 based video player for mobile phones
-	pkgver = 0.0.2.r6.g2afa84f
+	pkgver = 0.1.0.r0.2995b99
 	pkgrel = 1
-	url = https://source.puri.sm/guido.gunther/livi
+	url = https://gitlab.gnome.org/guidog/livi
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
@@ -18,7 +18,7 @@ pkgbase = livi-git
 	depends = libgudev
 	provides = livi
 	conflicts = livi
-	source = git+https://source.puri.sm/guido.gunther/livi.git
+	source = git+https://gitlab.gnome.org/guidog/livi.git
 	b2sums = SKIP
 
 pkgname = livi-git

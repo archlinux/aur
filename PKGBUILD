@@ -1,30 +1,29 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Maintainer: fossdd <fossdd@pwned.life>
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=livi-git
-pkgver=0.0.2.r6.g2afa84f
+_pkgname="${pkgname%-git}"
+pkgver=0.1.0.r0.2995b99
 pkgrel=1
 pkgdesc="A simple GTK4 based video player for mobile phones"
 arch=('x86_64' 'aarch64')
-url="https://source.puri.sm/guido.gunther/livi"
+url="https://gitlab.gnome.org/guidog/livi"
 license=('GPL3')
 depends=('libadwaita' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plugins-good' 'x264' 'libgudev')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=($_pkgname)
+conflicts=($_pkgname)
 source=(git+$url.git)
 b2sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "$_pkgname"
+  printf "%s" "$(git describe --long | sed 's/v//g' | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
-  arch-meson "${pkgname%-git}" build
+  arch-meson "$_pkgname" build
   meson compile -C build
 }
 
