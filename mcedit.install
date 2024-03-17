@@ -3,6 +3,7 @@ set -e
 if [ -n "$SUDO_USER" ]; then
     user=$SUDO_USER
 else
+    echo "USING ROOT USER. MAY CAUSE ISSUES IF THATS NOT YOUR PREFEERED USER." >&2
     user=$(whoami) # fallback (if this is used it'll error out anyways)
 fi
 
@@ -27,7 +28,13 @@ post_install() {
 
     # Install & setup the virtualenv
     su "$user" -c "
-        python2 -m pip install virtualenv
+        # If pip not found, install it
+        # Note: not using python2-pip because it seems to be having dependency problems.
+        if python2 -m pip install virtualenv 2>&1 | grep -q 'No module named pip'; then
+            curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
+            python2 get-pip.py
+            python2 -m pip install virtualenv
+        fi
         python2 -m virtualenv venv
     "
     
