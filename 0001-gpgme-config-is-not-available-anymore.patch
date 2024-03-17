@@ -1,0 +1,46 @@
+From f167d7d61e58376aa0c0454a210a082495c705ce Mon Sep 17 00:00:00 2001
+From: Ralph Plawetzki <ralph@purejava.org>
+Date: Sun, 17 Mar 2024 16:23:07 +0100
+Subject: [PATCH 1/1] gpgme-config is not available anymore
+
+---
+ meson.build | 9 +--------
+ 1 file changed, 1 insertion(+), 8 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index c1efbfb..6a5d529 100644
+--- a/meson.build
++++ b/meson.build
+@@ -26,7 +26,7 @@ config_h_dir = include_directories('.')
+ # Dependencies
+ min_glib_version = '2.44'
+ min_gtk_version = '3.18'
+-accepted_gpg_versions= ['1.2.0', '1.4.0', '2.0.0', '2.1.0', '2.2.0', '2.3.0']
++accepted_gpg_versions= ['1.2.0', '1.4.0', '2.0.0', '2.1.0', '2.2.0', '2.3.0', '2.4.5']
+ min_gpgme_version = '1.0.0'
+ 
+ libnautilus_extension = dependency('libnautilus-extension-4', version: '>= 43.rc', required: false)
+@@ -51,7 +51,6 @@ endif
+ gpg_check_version = find_program(join_paths('meson', 'gpg_check_version.py'))
+ gpg_bin = find_program('gpg2', 'gpg')
+ gpgme = cc.find_library('gpgme')
+-gpgme_config = find_program('gpgme-config')
+ if check_compatible_gpg
+   gpg_version_check = run_command([gpg_check_version, gpg_bin.path(), 'false', accepted_gpg_versions ])
+   gpg_version = gpg_version_check.stdout()
+@@ -60,12 +59,6 @@ if check_compatible_gpg
+     error('Incompatible version of GnuPG. Accepted versions are: @0@'.format(accepted_gpg_versions))
+   endif
+ 
+-  gpgme_version_check = run_command([gpg_check_version, gpgme_config.path(), 'true', min_gpgme_version ])
+-  gpgme_version = gpgme_version_check.stdout()
+-  message('GPGME version: @0@'.format(gpgme_version))
+-  if gpgme_version_check.returncode() != 0
+-    error('Incompatible version of GPGME. Minimal version required is @0@'.format(min_gpgme_version))
+-  endif
+ endif
+ 
+ # Configuration
+-- 
+2.44.0
+
