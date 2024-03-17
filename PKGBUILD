@@ -1,9 +1,9 @@
 # Maintainer: Maurizio D'Addona <mauritiusdadd@gmail.com>
 
 _pkgname="redrock"
-_templatesver="0.8"
+_templatesver="0.8.1"
 pkgname=python-redrock
-pkgver=0.15.4
+pkgver=0.17.9
 pkgrel=2
 pkgdesc="Redshifting fitting for spectroperfectionism"
 arch=(any)
@@ -19,8 +19,8 @@ backup=('etc/redrock.module')
 
 source=("$_pkgname-$pkgver"::"https://github.com/desihub/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz"
 	"$_pkgname-templates-$_templatesver"::"https://github.com/desihub/${_pkgname}-templates/archive/refs/tags/${_templatesver}.tar.gz")
-sha256sums=('caefbf9206453c56a43892749a597963e5ad7ce75b1c905c5b1d40edd6ba5871'
-            '1013236eac8a4d45c73f83ef76f5f9bac882384d01becaa65d9683133acfcbdd')
+sha256sums=('e1b4bc59d972094dbbbbc6baee2b994af25e1d20de38341e49945dc67b1cf4f4'
+            '6f2cbf5758329e69d25a3c1440528baff53e260603a6408f71f65d1bcf210d45')
 
 prepare()
 {
