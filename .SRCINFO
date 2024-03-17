@@ -5,10 +5,11 @@ pkgbase = obs-dir-watch-media
 	url = https://obsproject.com/forum/resources/directory-watch-media.801/
 	arch = x86_64
 	arch = aarch64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = cmake
 	makedepends = git
 	depends = obs-studio>=28
+	depends = glibc
 	options = debug
 	source = obs-dir-watch-media::git+https://github.com/exeldro/obs-dir-watch-media#commit=cc320fba63ac250eaefac6d0b8cc20f4bc88aa4f
 	sha256sums = SKIP
