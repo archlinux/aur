@@ -8,8 +8,8 @@ _svcname=vanta-agent
 
 pkgname=vanta-agent
 # https://app.vanta.com/downloads
-pkgver=2.6.1
-pkgrel=2
+pkgver=2.7.1
+pkgrel=1
 pkgdesc="Vanta agent"
 arch=('x86_64')
 url="https://www.vanta.com/"
@@ -62,5 +62,5 @@ package() {
     fi
 }
 
-sha256sums=('ce87c648df9d4d792f05bedca72c162264df1c64ee8fcaf4a9bbde2680725125'
+sha256sums=('5899df5f1510ed181c9997a2c8fb62c4e78bf724f95537ad7fd011921a090a60'
             '2d650c20f8cabb78d3c629c38d8eed3b15f0e3f9f0b96b68f67fbe5831b41307')
