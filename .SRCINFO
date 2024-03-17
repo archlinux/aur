@@ -1,6 +1,6 @@
 pkgbase = python-desimodel
 	pkgdesc = Information about DESI hardware designs in machine readable formats
-	pkgver = 0.18.0
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://github.com/desihub/desispec
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-desimodel
 	depends = python-scipy
 	depends = python-pyyaml
 	depends = python-numpy
-	source = desimodel-0.18.0::https://github.com/desihub/desimodel/archive/refs/tags/0.18.0.tar.gz
-	sha256sums = 9f35e929af65060fdaae5a7a4895f2d237a7b6c142f9a7514c26ace00bf804e1
+	source = desimodel-0.19.0::https://github.com/desihub/desimodel/archive/refs/tags/0.19.0.tar.gz
+	sha256sums = c02dd948d40dab0536d2e345b0195fbf47f03aef94ffde15071bf4927c341ead
 
 pkgname = python-desimodel
