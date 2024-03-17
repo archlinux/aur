@@ -16,7 +16,7 @@ from gi.repository import Gtk, Gdk
 # Classe para caixa de diálogo de confirmação
 class ConfirmacaoDialog(Gtk.Dialog):
     def __init__(self, parent, mensagem):
-        super().__init__(title="Confirmação", parent=parent, flags=0)
+        super().__init__(title="Confirmation", parent=parent, flags=0)
         self.set_decorated(False)
         self.set_resizable(False)
         self.set_default_size(300, 100)
@@ -53,7 +53,7 @@ class ConfirmacaoDialog(Gtk.Dialog):
 # Classe para caixa de diálogo de adição/edição de jogo
 class AdicionarJogoDialog(Gtk.Dialog):
     def __init__(self, parent):
-        super().__init__(title="Adicionar/Editar Jogo", parent=parent)
+        super().__init__(title="Add/Edit Game", parent=parent)
         self.set_default_size(640, 480)
         self.set_resizable(False)
         self.set_modal(True)  # Torna a janela de diálogo modal
@@ -68,10 +68,10 @@ class AdicionarJogoDialog(Gtk.Dialog):
         grid.set_margin_bottom(10)
 
         # Widgets para a entrada de dados do jogo
-        self.nome_label = Gtk.Label(label="Nome:")
+        self.nome_label = Gtk.Label(label="Name:")
         self.nome_entry = Gtk.Entry()
 
-        self.caminho_label = Gtk.Label(label="Caminho:")
+        self.caminho_label = Gtk.Label(label="Path:")
         self.caminho_entry = Gtk.Entry()
         self.procurar_button = Gtk.Button()
         self.procurar_button.set_image(Gtk.Image.new_from_icon_name("system-search", Gtk.IconSize.BUTTON))
@@ -81,16 +81,16 @@ class AdicionarJogoDialog(Gtk.Dialog):
         self.prefix_label = Gtk.Label(label="Prefix:")
         self.prefix_entry = Gtk.Entry()
 
-        self.argumentos_label = Gtk.Label(label="Argumentos:")
+        self.argumentos_label = Gtk.Label(label="Launch Arguments:")
         self.argumentos_entry = Gtk.Entry()
 
-        self.sufixo_label = Gtk.Label(label="Sufixo:")
+        self.sufixo_label = Gtk.Label(label="Game's Arguments:")
         self.sufixo_entry = Gtk.Entry()
         
 
         
         # Dropdown menu
-        self.dropdown_label = Gtk.Label(label="Compatibilidade:")
+        self.dropdown_label = Gtk.Label(label="Runner:")
         self.dropdown_menu = Gtk.ComboBoxText()
         self.dropdown_menu.connect("changed", self.on_dropdown_changed)
 
@@ -98,7 +98,7 @@ class AdicionarJogoDialog(Gtk.Dialog):
 
         # Checkboxes
         self.mangohud_checkbox = Gtk.CheckButton(label="MangoHud")
-        self.gamemode_checkbox = Gtk.CheckButton(label="Game Mode")
+        self.gamemode_checkbox = Gtk.CheckButton(label="Feral Game Mode")
 
         # Button
         self.winetricks_button = Gtk.Button(label="Winetricks")
@@ -221,12 +221,12 @@ class AdicionarJogoDialog(Gtk.Dialog):
     def on_procurar_clicked(self, widget):
         # Callback para o botão de procurar
         dialog = Gtk.FileChooserDialog(
-            title="Selecione o arquivo .exe",
+            title="Select the game's .exe",
             parent=self,
             action=Gtk.FileChooserAction.OPEN,
         )
 
-        dialog.set_current_folder("/mnt/data/Games")
+        dialog.set_current_folder("$HOME/")
         dialog.add_buttons(
             Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
             Gtk.STOCK_OPEN, Gtk.ResponseType.OK
@@ -244,7 +244,7 @@ class AdicionarJogoDialog(Gtk.Dialog):
         caminho = self.caminho_entry.get_text()
 
         if not nome or not caminho:
-            self.exibir_mensagem_aviso("Preencha os campos Nome e Caminho.")
+            self.exibir_mensagem_aviso("Game and Path need to be filled")
             return False
 
         return True
@@ -306,15 +306,15 @@ class JogoApp(Gtk.Window):
 
         # Imprime o caminho de origem e destino
         # print(f"Caminho de origem: {ulwgl_dir}")
-        print(f"Caminho de destino: {destino_dir}")
+        # print(f"Caminho de destino: {destino_dir}")
 
         # Verifica se a pasta de destino já existe
         if os.path.exists(os.path.join(destino_dir, 'ulwgl-faugus')):
-            print("O arquivo ulwgl-faugus já existe no destino. Não é necessário copiar.")
+            print("ulwgl-faugus already exists. No need to install.")
         else:
             # Copia o arquivo ulwgl-faugus para o diretório de destino
             shutil.copy(ulwgl_run_path, destino_dir)
-            print("Arquivo ulwgl-faugus copiado com sucesso!")
+            print("ulwgl-faugus successfully installed!")
 
         self.jogos = []
         self.listbox = Gtk.ListBox(selection_mode=Gtk.SelectionMode.NONE)
@@ -373,7 +373,7 @@ class JogoApp(Gtk.Window):
     def carregar_jogos(self):
         # Carrega jogos do arquivo para a lista
         try:
-            with open("jogos.txt", "r") as arquivo:
+            with open("games.txt", "r") as arquivo:
                 for linha in arquivo:
                     dados = linha.strip().split(";")
                     # Verifica se há pelo menos 7 campos na linha
@@ -391,7 +391,7 @@ class JogoApp(Gtk.Window):
                         self.jogos.append(jogo)
                         self.adicionar_item_lista(jogo)
                     else:
-                        print(f"A linha '{linha}' não possui dados suficientes.")
+                        print(f"'{linha}'")
         except FileNotFoundError:
             pass
 
@@ -399,7 +399,7 @@ class JogoApp(Gtk.Window):
     # Alterações no método salvar_jogos
     def salvar_jogos(self):
         # Salva a lista de jogos no arquivo
-        with open("jogos.txt", "w") as arquivo:
+        with open("games.txt", "w") as arquivo:
             for jogo in self.jogos:
                 mangohud_value = "MANGOHUD=1" if jogo.mangohud else ""
                 gamemode_value = "gamemoderun" if jogo.gamemode else ""
@@ -470,7 +470,7 @@ class JogoApp(Gtk.Window):
                 jogo_info += f";{mangohud};{gamemode}\n"
 
                 # Adiciona o jogo à lista e salva no arquivo
-                with open("jogos.txt", "a") as arquivo:
+                with open("games.txt", "a") as arquivo:
                     arquivo.write(jogo_info)
 
                 jogo = Jogo(nome_jogo, caminho_jogo, prefixo_jogo, argumentos_jogo, sufixo_jogo, compatibilidade_jogo, diretorio_jogo, mangohud, gamemode)
@@ -497,7 +497,7 @@ class JogoApp(Gtk.Window):
 
     def on_btn_excluir_clicked(self, widget, jogo):
         # Callback para o botão de excluir jogo
-        confirmacao_dialog = ConfirmacaoDialog(self, "Tem certeza que deseja excluir este jogo?")
+        confirmacao_dialog = ConfirmacaoDialog(self, "Are you sure you want to delete the game?")
         response = confirmacao_dialog.run()
 
         if response == Gtk.ResponseType.YES:
@@ -531,7 +531,7 @@ class JogoApp(Gtk.Window):
         # Verificar o estado do mangohud e gamemode no arquivo jogos.txt
         mangohud_status = False  # Define como False por padrão
         gamemode_status = False  # Define como False por padrão
-        with open("jogos.txt", "r") as arquivo:
+        with open("games.txt", "r") as arquivo:
             for linha in arquivo:
                 campos = linha.strip().split(";")
                 if len(campos) >= 9 and campos[0] == jogo.nome:
@@ -551,7 +551,7 @@ class JogoApp(Gtk.Window):
             caminho = editar_jogo_dialog.caminho_entry.get_text()
 
             if not nome or not caminho:
-                editar_jogo_dialog.exibir_mensagem_aviso("Preencha os campos Nome e Caminho.")
+                editar_jogo_dialog.exibir_mensagem_aviso("Game and Path need to be filled")
                 return True
 
             # Atualiza todos os campos do objeto jogo
