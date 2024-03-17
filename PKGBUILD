@@ -9,7 +9,6 @@ pkgdesc='LabyMod Launcher for launching LabyMod, which is a Minecraft client tha
 url=https://www.labymod.net
 arch=(x86_64)
 license=(unknown)
-depends=(fuse xorg-xrandr)
 options=(!strip)
 source=("https://releases.r2.labymod.net/launcher/linux/x64/LabyMod%20Launcher-${pkgver}.AppImage")
 sha256sums=('SKIP')
