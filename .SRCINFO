@@ -6,7 +6,7 @@ pkgbase = obs-face-tracker
 	url = https://obsproject.com/forum/resources/face-tracker.1294/
 	arch = x86_64
 	arch = aarch64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = cmake
 	makedepends = git
 	depends = obs-studio>=28
