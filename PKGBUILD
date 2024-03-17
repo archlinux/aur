@@ -28,7 +28,5 @@ pkgver() {
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  install -Dm755 rofi-pass "${pkgdir}/bin/rofi-pass"
-  install -Dm644 config.example "${pkgdir}/share/rofi-pass/config.example"
-  install -Dm644 README.org "${pkgdir}/share/doc/rofi-pass/README.org"
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
