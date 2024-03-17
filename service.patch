@@ -1,0 +1,15 @@
+--- asus_numberpad_driver.service	2024-03-16 21:09:42.901692226 +0100
++++ cos.service	2024-03-16 21:09:34.521623561 +0100
+@@ -3,9 +3,9 @@
+ 
+ [Service]
+ Type=simple
+-ExecStart=/usr/share/asus-numberpad-driver/.env/bin/python3 /usr/share/asus-numberpad-driver/numberpad.py $LAYOUT_NAME $CONFIG_FILE_DIR_PATH
+-StandardOutput=append:$ERROR_LOG_FILE_PATH
+-StandardError=append:$ERROR_LOG_FILE_PATH
++ExecStart=python3 /usr/share/asus-numberpad-driver/numberpad.py $LAYOUT_NAME /usr/share/asus-numberpad-driver
++StandardOutput=append:/var/log/asus-numberpad-driver
++StandardError=append:/var/log/asus-numberpad-driver
+ TimeoutSec=5
+ Restart=on-failure
+ Environment="DISPLAY=$DISPLAY"

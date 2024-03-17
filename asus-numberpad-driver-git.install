@@ -1,4 +1,8 @@
 post_install() {
 	modprobe i2c-dev
 	echo "i2c-dev" | tee /etc/modules-load.d/i2c-dev.conf >/dev/null
+
+	echo "To enable the asus numberpad driver run:"
+	echo "# systemctl enable asus_numberpad_driver.service"
+  echo " "
 }

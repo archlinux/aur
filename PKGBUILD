@@ -5,22 +5,31 @@ pkgbase="${_pkgbase}-git"
 pkgname=(
     "${_pkgbase}-b7402-git"
     "${_pkgbase}-b7402-unicode-git"
+    "${_pkgbase}-b7402-non-unicode-git"
     "${_pkgbase}-e210ma-git"
     "${_pkgbase}-e210ma-unicode-git"
+    "${_pkgbase}-e210ma-non-unicode-git"
     "${_pkgbase}-g513-git"
     "${_pkgbase}-g513-unicode-git"
+    "${_pkgbase}-g513-non-unicode-git"
     "${_pkgbase}-g533-git"
     "${_pkgbase}-g533-unicode-git"
+    "${_pkgbase}-g533-non-unicode-git"
     "${_pkgbase}-gx551-git"
     "${_pkgbase}-gx551-unicode-git"
+    "${_pkgbase}-gx551-non-unicode-git"
     "${_pkgbase}-gx701-git"
     "${_pkgbase}-gx701-unicode-git"
+    "${_pkgbase}-gx701-non-unicode-git"
     "${_pkgbase}-up5401ea-git"
     "${_pkgbase}-up5401ea-unicode-git"
+    "${_pkgbase}-up5401ea-non-unicode-git"
     "${_pkgbase}-ux433fa-git"
     "${_pkgbase}-ux433fa-unicode-git"
+    "${_pkgbase}-ux433fa-non-unicode-git"
     "${_pkgbase}-ux581l-git"
     "${_pkgbase}-ux581l-unicode-git"
+    "${_pkgbase}-ux581l-non-unicode-git"
 )
 pkgver=r730.2103186
 pkgrel=1
@@ -44,13 +53,19 @@ depends=(
 makedepends=('git')
 provides=("${_pkgbase}")
 replaces=('asus-touchpad-numpad-driver-git')
-source=("git+${url}.git")
-sha256sums=('SKIP')
+source=("git+${url}.git" "service.patch")
+sha256sums=('SKIP'
+            'a9322b6176907076bc2ae8d5a79a8ef5745323121e4bea657063bf2dc358acbc')
 install="$pkgbase.install"
 
 pkgver() {
     cd "${srcdir}/${_pkgbase}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    patch "${srcdir}/${_pkgbase}/asus_numberpad_driver.service" service.patch
+    patch "${srcdir}/${_pkgbase}/asus_numberpad_driver.x11.service" service.patch
 }
 
 _package() {
@@ -63,10 +78,6 @@ _package() {
     install -Dm644 "asus_numberpad_driver.x11.service" "${pkgdir}/usr/lib/systemd/system/asus_numberpad_driver.x11.service"
     sed -i "s#\$LAYOUT_NAME#${model}#" "${pkgdir}/usr/lib/systemd/system/asus_numberpad_driver.service"
     sed -i "s#\$LAYOUT_NAME#${model}#" "${pkgdir}/usr/lib/systemd/system/asus_numberpad_driver.x11.service"
-    sed -i "s#\$CONFIG_FILE_DIR_PATH#${_config_dir}#" "${pkgdir}/usr/lib/systemd/system/asus_numberpad_driver.service"
-    sed -i "s#\$CONFIG_FILE_DIR_PATH#${_config_dir}#" "${pkgdir}/usr/lib/systemd/system/asus_numberpad_driver.x11.service"
-    sed -i "s#\$ERROR_LOG_FILE_PATH#${_log_dir}/error.log#" "${pkgdir}/usr/lib/systemd/system/asus_numberpad_driver.service"
-    sed -i "s#\$ERROR_LOG_FILE_PATH#${_log_dir}/error.log#" "${pkgdir}/usr/lib/systemd/system/asus_numberpad_driver.x11.service"
     install -Dm 644 -t "${pkgdir}/${_config_dir}/layouts" layouts/*.py
     install -Dm 644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${_pkgbase}/LICENSE.md"
 }

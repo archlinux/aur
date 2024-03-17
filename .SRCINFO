@@ -21,40 +21,60 @@ pkgbase = asus-numberpad-driver-git
 	provides = asus-numberpad-driver
 	replaces = asus-touchpad-numpad-driver-git
 	source = git+https://github.com/asus-linux-drivers/asus-numberpad-driver.git
+	source = service.patch
 	sha256sums = SKIP
+	sha256sums = a9322b6176907076bc2ae8d5a79a8ef5745323121e4bea657063bf2dc358acbc
 
 pkgname = asus-numberpad-driver-b7402-git
 
 pkgname = asus-numberpad-driver-b7402-unicode-git
 
+pkgname = asus-numberpad-driver-b7402-non-unicode-git
+
 pkgname = asus-numberpad-driver-e210ma-git
 
 pkgname = asus-numberpad-driver-e210ma-unicode-git
+
+pkgname = asus-numberpad-driver-e210ma-non-unicode-git
 
 pkgname = asus-numberpad-driver-g513-git
 
 pkgname = asus-numberpad-driver-g513-unicode-git
 
+pkgname = asus-numberpad-driver-g513-non-unicode-git
+
 pkgname = asus-numberpad-driver-g533-git
 
 pkgname = asus-numberpad-driver-g533-unicode-git
+
+pkgname = asus-numberpad-driver-g533-non-unicode-git
 
 pkgname = asus-numberpad-driver-gx551-git
 
 pkgname = asus-numberpad-driver-gx551-unicode-git
 
+pkgname = asus-numberpad-driver-gx551-non-unicode-git
+
 pkgname = asus-numberpad-driver-gx701-git
 
 pkgname = asus-numberpad-driver-gx701-unicode-git
+
+pkgname = asus-numberpad-driver-gx701-non-unicode-git
 
 pkgname = asus-numberpad-driver-up5401ea-git
 
 pkgname = asus-numberpad-driver-up5401ea-unicode-git
 
+pkgname = asus-numberpad-driver-up5401ea-non-unicode-git
+
 pkgname = asus-numberpad-driver-ux433fa-git
 
 pkgname = asus-numberpad-driver-ux433fa-unicode-git
 
+pkgname = asus-numberpad-driver-ux433fa-non-unicode-git
+
 pkgname = asus-numberpad-driver-ux581l-git
 
 pkgname = asus-numberpad-driver-ux581l-unicode-git
+
+pkgname = asus-numberpad-driver-ux581l-non-unicode-git
