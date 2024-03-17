@@ -15,7 +15,7 @@
 # Marco Trevisan: <https://salsa.debian.org/gnome-team/mutter/-/blob/ubuntu/master/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch>
 
 pkgname=mutter-x11-scaling
-pkgver=45.4
+pkgver=45.5
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -63,7 +63,7 @@ checkdepends=(
 )
 provides=(mutter=$pkgver libmutter-13.so)
 conflicts=(mutter)
-_commit=919e71b113cc03c0fe1de7777393a19947f7b9f9  # tags/45.4^0
+_commit=4e8ccf5f9c177595aac11895ed50a4e35d5087e4  # tags/45.5^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
   "https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/mutter-45/mutter-45.0-x11-Add-support-for-fractional-scaling-using-Randr.patch"
@@ -73,7 +73,7 @@ b2sums=('SKIP'
 
 pkgver() {
   cd mutter
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+  git describe --tags | sed -r 's/\.([a-z])/\1/;s/([a-z])\./\1/;s/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
