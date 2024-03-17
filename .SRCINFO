@@ -1,15 +1,15 @@
 pkgbase = cvc5-bin
 	pkgdesc = An open-source automatic theorem prover for Satisfiability Modulo Theories (SMT) problems
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/cvc5/cvc5
 	arch = x86_64
 	license = BSD3
 	makedepends = bash
 	depends = cadical-pic
-	provides = cvc5=1.1.1
+	provides = cvc5=1.1.2
 	conflicts = cvc5
-	source = cvc5-bin-1.1.1.zip::https://github.com/cvc5/cvc5/releases/download/cvc5-1.1.1/cvc5-Linux-static.zip
-	sha256sums = 2edaeb41389e717a5952608c968879bacfbc59860df37e3a0cbbe5a8ac2d84ed
+	source = cvc5-bin-1.1.2.zip::https://github.com/cvc5/cvc5/releases/download/cvc5-1.1.2/cvc5-Linux-static.zip
+	sha256sums = cf291aef67da8eaa8d425a51f67f3f72f36db8b1040655dc799b64e3d69e6086
 
 pkgname = cvc5-bin
