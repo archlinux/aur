@@ -1,6 +1,6 @@
 pkgbase = eidklient
 	pkgdesc = Slovak eID Client
-	pkgver = 4.7
+	pkgver = 4.8
 	pkgrel = 1
 	url = https://www.slovensko.sk/
 	install = eidklient.install
