@@ -16,7 +16,7 @@ unset _pkgtype
 ## basic info
 _pkgname="ryujinx"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.1.1221
+pkgver=1.1.1234
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://github.com/Ryujinx/Ryujinx"
