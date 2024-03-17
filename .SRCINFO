@@ -1,0 +1,12 @@
+pkgbase = libmcfg_2
+	pkgdesc = Parsing library for MCFG/2
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/FelixEcker/mcfg_2
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	source = git+https://github.com/FelixEcker/mcfg_2.git
+	sha256sums = SKIP
+
+pkgname = libmcfg_2
