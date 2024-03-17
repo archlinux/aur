@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="This is a plugin to provide a dock window displaying EBU R 128 loudness meter"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/loudness-dock.1751/"
-license=("GPL2")
+license=(GPL-2.0-or-later)
 depends=("obs-studio>=28" "glibc" "gcc-libs" "libebur128" "qt6-base")
 makedepends=("cmake")
 options=('debug')
