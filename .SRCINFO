@@ -1,7 +1,7 @@
 pkgbase = rsync-reflink
 	pkgdesc = A fast and versatile file copying tool for remote and local files - with reflink support
 	pkgver = 3.2.7
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/WayneD/rsync
 	arch = x86_64
 	license = GPL-3.0-or-later

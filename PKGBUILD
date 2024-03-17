@@ -122,7 +122,7 @@ build() {
 
   local _configure_options=(
     --prefix=/usr
-    --enabled-ipv6
+    --enable-ipv6
     --disable-debug
     --with-rrsync
     --with-included-popt=no
