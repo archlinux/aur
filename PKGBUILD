@@ -1,6 +1,6 @@
 # Maintainer: Dimitris Zervas <dzervas@dzervas.gr>
 pkgname=estlcam-wine
-pkgver=12061
+pkgver=12062
 pkgrel=1
 pkgdesc="Estlcam: 2D / 3D CAM und CNC Steuerung... - wine installation"
 arch=(i686 x86_64)
