@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-material-you-theme-git
 _uuid=material-you-theme@asubbiah.com
-pkgver=r116.8222941
+pkgver=r119.a765ead
 pkgrel=1
 pkgdesc="Applies generated libadwaita theme from wallpaper using Material You"
 arch=('any')
@@ -34,8 +34,7 @@ build() {
   export npm_config_cache="$srcdir/npm_cache"
   npm install --prefix "${_uuid}"
 
-  make update-po
-  make build
+  make
 }
 
 package() {
