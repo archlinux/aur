@@ -12,6 +12,7 @@ pkgbase = xeus-lua-git
 	depends = cppzmq
 	depends = xtl
 	depends = pybind11
+	depends = xwidgets
 	provides = xeus-lua
 	conflicts = xeus-lua
 	source = xeus-lua-git::git+https://github.com/jupyter-xeus/xeus-lua.git
