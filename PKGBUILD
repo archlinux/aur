@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="Add Media Controls Dock to OBS"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/media-controls.1032/"
-license=("GPL2")
+license=("GPL-2.0-or-later")
 depends=("obs-studio>=28" "gcc-libs" "glibc" "qt6-base")
 makedepends=("cmake" "git")
 options=('debug')
@@ -14,15 +14,14 @@ source=("$pkgname::git+https://github.com/exeldro/$pkgname#commit=a88a40759cfba6
 sha256sums=("SKIP")
 
 build() {
-  # TODO: Check if next version use 30 new API, then update depends to require 30
-  export CXXFLAGS+=" -Wno-error=deprecated-declarations"
-
   cmake -B build -S $pkgname \
   -DCMAKE_BUILD_TYPE=None \
   -DCMAKE_INSTALL_PREFIX='/usr' \
   -DCMAKE_INSTALL_LIBDIR=lib \
   -DLINUX_PORTABLE=OFF \
-  -DQT_VERSION=6
+  -DQT_VERSION=6 \
+  -DCMAKE_CXX_FLAGS="-Wno-error=deprecated-declarations" \
+  -Wno-dev
 
   cmake --build build
 }
