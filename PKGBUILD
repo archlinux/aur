@@ -1,6 +1,6 @@
 # Maintainer: Nikhil Singh <nik.singh710@gmail.com>
 pkgname=getnf
-pkgver=r75.433810e
+pkgver=r81.0776636
 pkgrel=1
 pkgdesc="Simple utility to install nerd fonts in system."
 arch=("any")
@@ -10,8 +10,7 @@ makedepends=("git")
 depends=(
   curl
   fontconfig
-  ncurses
-  unzip
+  tar
 )
 source=("git+https://github.com/getnf/getnf.git")
 md5sums=('SKIP')
