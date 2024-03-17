@@ -2,7 +2,7 @@ pkgdesc="ROS - a package that provides several RQT widgets to view the status of
 url="https://github.com/LORD-MicroStrain/microstrain_inertial"
 
 pkgname="ros-noetic-microstrain-inertial-rqt"
-pkgver="3.1.0"
+pkgver="4.0.1"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=("MIT")
@@ -32,20 +32,22 @@ depends=(
     ${ros_depends[@]}
 )
 
-_dir="microstrain_inertial-${pkgver}/microstrain_inertial_rqt"
+_commit="6a2f27040934d862963999afbb2456f7cb2fa02b"
+_rqt_common_commit="2d1affd5df90555b17e52c7b1622090f96141e4f"
+_dir="microstrain_inertial-${_commit}/microstrain_inertial_rqt"
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/LORD-MicroStrain/microstrain_inertial/archive/${pkgver}.tar.gz"
-    "microstrain_inertial_rqt_common.tar.gz::https://github.com/LORD-MicroStrain/microstrain_inertial_rqt_common/archive/dab05df89c4f4c5076e660c8a4ec97a1a4b757ab.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/LORD-MicroStrain/microstrain_inertial/archive/${_commit}.tar.gz"
 )
-sha256sums=(
-    '939b19ad132e627ed72b410d7898154452fcea181c12533355a879d38c8bdeee'
-    'b74938c4bc9ee0a4ffa660da2e268cfb5e2455701f6ff1eff6050aaea11c2328')
+sha256sums=('8b9ebb1073dee8cc3d1062390aa3809ca9138b0d014b83bc3ec3feb7de392929')
 
 prepare() {
-    if [ -d ${_dir}/microstrain_inertial_rqt_common ]; then
-        rm -rf ${_dir}/microstrain_inertial_rqt_common
+    cd ${_dir}
+    if [ -d microstrain_inertial_rqt_common ]; then
+        rm -rf microstrain_inertial_rqt_common
     fi
-    ln -s ${srcdir}/microstrain_inertial_rqt_common-dab05df89c4f4c5076e660c8a4ec97a1a4b757ab ${_dir}/microstrain_inertial_rqt_common
+    git clone --recursive https://github.com/LORD-MicroStrain/microstrain_inertial_rqt_common
+    cd microstrain_inertial_rqt_common
+    git checkout ${_rqt_common_commit}
 }
 
 build() {
