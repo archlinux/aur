@@ -1,6 +1,6 @@
 pkgbase = goldboot-registry
 	pkgdesc = Immutable infrastructure for the desktop!
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/fossable/goldboot
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = goldboot-registry
 	makedepends = cargo
 	depends = edk2-ovmf
 	depends = qemu-base
-	source = goldboot-registry-0.0.1.tar.gz::https://static.crates.io/crates/goldboot-registry/goldboot-registry-0.0.1.crate
+	source = goldboot-0.0.2.tar.gz::https://static.crates.io/crates/goldboot/goldboot-0.0.2.crate
 	sha512sums = SKIP
 
 pkgname = goldboot-registry
