@@ -1,6 +1,6 @@
 pkgbase = makepkg-tidy-optipng-git
 	pkgdesc = Optimise PNG image sizes during packaging via a makepkg tidy script for optipng.
-	pkgver = r7.baee74a
+	pkgver = r9.916da22
 	pkgrel = 1
 	url = https://gitlab.archlinux.org/freso/makepkg-tidy-optipng
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = makepkg-tidy-optipng-git
 	provides = makepkg-tidy-optipng
 	conflicts = makepkg-tidy-optipng
 	conflicts = makepkg-tidy-scripts
+	backup = etc/makepkg.conf.d/optipng.conf
 	source = git+https://gitlab.archlinux.org/freso/makepkg-tidy-optipng.git
 	b2sums = SKIP
 
