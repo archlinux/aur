@@ -1,7 +1,7 @@
 pkgbase = devilutionx-bin
 	pkgdesc = Modern open source Engine to play Diablo. You will need to provide your own game files to play Diablo. Please go to https://github.com/diasurgical/devilutionX for documentation
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/diasurgical/devilutionX
 	arch = x86_64
 	arch = i386
