@@ -2,41 +2,37 @@
 # Contributor: Lukas Jirkovsky <l.jirkovsky AT gmail.com>
 
 pkgname=rawtherapee-git
-pkgver=5.8.r2738.g8ca07e858
-pkgrel=1
+pkgver=5.10.r158.g7751019b6
+pkgrel=2
 epoch=1
 pkgdesc="A powerful cross-platform raw image processing program"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
 url="https://www.rawtherapee.com/"
 license=(GPL3)
-depends=(fftw gtk3 glibmm gtkmm3 lcms2 lensfun libcanberra
-         libiptcdata desktop-file-utils hicolor-icon-theme)
+depends=(fftw gtk3 glibmm gtkmm3 lcms2 lensfun libcanberra exiv2
+         libiptcdata hicolor-icon-theme
+
+         # namcap implicit depends
+         libsigc++ libtiff pangomm gcc-libs expat cairomm librsvg atkmm zlib libpng libjpeg cairo glibc glib2)
 makedepends=(cmake git)
 provides=(rawtherapee)
 conflicts=(rawtherapee)
-source=("${pkgname%-git}::git+https://github.com/Beep6581/RawTherapee.git#branch=dev")
+source=("git+https://github.com/Beep6581/RawTherapee.git#branch=dev")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/rawtherapee"
+  cd "RawTherapee"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "${srcdir}/${pkgname%-git}"
-  mkdir -p build
-}
-
 build() {
-  cd "${srcdir}/${pkgname%-git}/build"
-  cmake .. \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release
+  cmake -B build -S "RawTherapee" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr
 
-  make
+  cmake --build build
 }
 
 package() {
-  cd "${srcdir}/${pkgname%-git}/build"
-  make DESTDIR="${pkgdir}/" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
