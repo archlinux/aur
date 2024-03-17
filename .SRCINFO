@@ -1,11 +1,11 @@
 pkgbase = xfwm4-windowcenter
 	pkgdesc = Xfce's window manager, with a patch to allow titles to be centered relatively to the full window width.
 	pkgver = 4.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.xfce.org/xfce/xfwm4/-/merge_requests/27
 	arch = x86_64
 	groups = xfce4
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = intltool
 	makedepends = git
 	makedepends = xfce4-dev-tools
@@ -17,11 +17,17 @@ pkgbase = xfwm4-windowcenter
 	depends = hicolor-icon-theme
 	provides = xfwm4=4.18.0
 	conflicts = xfwm4
-	source = xfwm4-windowcenter::git+https://gitlab.xfce.org/xfce/xfwm4#tag=xfwm4-4.18.0
+	source = xfwm4-windowcenter::git+https://gitlab.xfce.org/xfce/xfwm4.git#tag=xfwm4-4.18.0
 	source = pr27.patch
 	source = pr27-locale-pl.patch
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	md5sums = SKIP
+	md5sums = 24a805493328f9fd35b6dd1dac13c730
+	md5sums = 9738e1c819e54fbdf11747cecfc9ee6f
+	sha512sums = SKIP
+	sha512sums = eb3be24eb811ad3e8d8bb23abd89131da6fbce18e333e01abc38fd441c848bad9f8fc60be771501295447b71e18544f22406a75d970c9ca51e82539fc30d1202
+	sha512sums = 4644bddc53258b6774f6936ce3be083a844a61e2b7c4f819f300664514a525379298954473dde38dc8620bfaf1cc64d2909474aba81f34f7bc86390d7b0658f2
+	b2sums = SKIP
+	b2sums = 5a33a77450b28534ee3c6aba228699d688619add6e8f6b6d7d524d9159fe7e519ea01924e9571ed080206b1f407d25c396bbd1d458d26d5de86ca8a6e1fc20e7
+	b2sums = 6cfede493b48105130cff15101958dafbc4317774d9d4577edb705745ff94924dc827c09febdf7537e527a0b46d25d8cd1c2ca396dcd4c33a19a63673818434a
 
 pkgname = xfwm4-windowcenter
