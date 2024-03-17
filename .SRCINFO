@@ -1,14 +1,14 @@
 pkgbase = angular-cli
 	pkgdesc = CLI tool for Angular
-	pkgver = 17.2.3
+	pkgver = 17.3.0
 	pkgrel = 1
 	url = https://github.com/angular/angular-cli
 	arch = any
 	license = MIT
 	depends = npm
-	noextract = angular-cli-17.2.3.tar.gz
+	noextract = angular-cli-17.3.0.tar.gz
 	options = !strip
-	source = angular-cli-17.2.3.tar.gz::https://registry.npmjs.org/@angular/cli/-/cli-17.2.3.tgz
-	sha1sums = c5e70fcb8f1e4cc15ef5fba04533fbe414e875c1
+	source = angular-cli-17.3.0.tar.gz::https://registry.npmjs.org/@angular/cli/-/cli-17.3.0.tgz
+	sha1sums = e1ce68f649ef50ae455a09f2738d2c6c22b6bba9
 
 pkgname = angular-cli
