@@ -2,8 +2,8 @@
 
 pkgname=apg-go
 pkgver=1.1.0
-pkgrel=1
-pkgdesc='A "Automated Password Generator"-clone'
+pkgrel=2
+pkgdesc='A modern "Automated Password Generator"-clone'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/wneessen/apg-go'
 license=('MIT')
