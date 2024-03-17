@@ -3,9 +3,8 @@
 
 pkgname=ame
 _pkgname=amethyst
-pkgver=4.0.3
-pkgrel=8
-_codename='Funky Fish'
+pkgver=4.0.4
+pkgrel=1
 pkgdesc='Amethyst is a fast and efficient AUR helper'
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/crystal-linux/software/${_pkgname}"
@@ -17,9 +16,9 @@ depends=(
     'expac'
     'less'
 )
-makedepends=('cargo')
+makedepends=('cargo' 'clang' 'lld')
 source=("${url}/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-sha256sums=('850b6eda89316e4da1148506377471c1cda878077143b6f1983b61b0dba8d8c0')
+sha256sums=('1e0d7cc7d9c5d1e8b3e177fe2f89c445dce79d2ee3e450ac057ce3189e982e24')
 
 prepare() {
     cd "${_pkgname}-v${pkgver}"
@@ -30,7 +29,8 @@ build() {
     cd "${_pkgname}-v${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    export AMETHYST_CODENAME="${_codename}"
+    export RUSTFLAGS='-Clinker-plugin-lto -Clinker=clang -Clink-arg=-fuse-ld=lld'
+    export CC=clang
     cargo build --frozen --release
 }
 
