@@ -2,12 +2,12 @@
 
 pkgname=obs-source-clone
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for OBS Studio to clone sources"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/source-clone.1632/"
-license=("GPL2")
-depends=("obs-studio>=28")
+license=(GPL-2.0-or-later)
+depends=("obs-studio>=28" "glibc")
 makedepends=("cmake" "git")
 options=("debug")
 source=("$pkgname::git+https://github.com/exeldro/$pkgname#tag=$pkgver")
@@ -18,7 +18,9 @@ build() {
   -DCMAKE_BUILD_TYPE=None \
   -DCMAKE_INSTALL_PREFIX='/usr' \
   -DCMAKE_INSTALL_LIBDIR=lib \
-  -DLINUX_PORTABLE=OFF
+  -DLINUX_PORTABLE=OFF \
+  -DCMAKE_CXX_FLAGS="-Wno-error=deprecated-declarations" \
+  -Wno-dev
 
   cmake --build build
 }
