@@ -1,6 +1,6 @@
 pkgbase = nextchat-bin
 	pkgdesc = A cross-platform ChatGPT client
-	pkgver = 2.11.2
+	pkgver = 2.11.3
 	pkgrel = 1
 	url = https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = nextchat-bin
 	conflicts = nextchat
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web/releases/download/v2.11.2/next-chat_2.11.2_amd64.deb
-	md5sums = 37878ae6bef6dc767143c28db32da771
+	source = https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web/releases/download/v2.11.3/next-chat_2.11.3_amd64.deb
+	md5sums = 1efa85cac7a41f78b329a0b3e3bd0587
 
 pkgname = nextchat-bin
