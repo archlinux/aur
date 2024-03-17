@@ -2,23 +2,31 @@
 # Contributor: Jef Roosens
 
 pkgname=scryer-prolog
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="An open source industrial strength production environment that is also a testbed for bleeding edge research in logic and constraint programming"
 arch=('aarch64' 'x86_64')
 url="https://github.com/mthom/scryer-prolog"
 license=('BSD-3-Clause')
-depends=('openssl' 'gcc-libs' 'glibc')
+depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
-source=("https://github.com/mthom/scryer-prolog/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('08bddb114cb377abccaf58df66e99c8cafc7af90dc2cf6ff2d8204fb6d514af4')
+options=('!strip' '!lto')
+source=(
+    "https://github.com/mthom/scryer-prolog/archive/refs/tags/v${pkgver}.tar.gz"
+    "update-crates.patch"
+)
+sha256sums=(
+    'ccf533c5c34ee7efbf9c702dbffea21ba1c837144c3592a9e97c515abd4d6904'
+    '13979b0d53a8e7171e5b90f3958a492f9c70232971bb6b5691e4542c546ac0e0'
+)
 
-export CARGO_PROFILE_RELEASE_LTO="true"
+export CARGO_PROFILE_RELEASE_LTO="false"
 export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
-export CARGO_PROFILE_RELEASE_OPT_LEVEL="s"
+export CARGO_PROFILE_RELEASE_OPT_LEVEL=2 # revert back to "s" if it's too big
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
+    patch -p1 < "$srcdir/update-crates.patch"
     cargo fetch # --locked
 }
 
