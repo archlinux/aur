@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=argos-translate
 _name=argostranslate
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc="Open-source offline translation library written in Python"
 arch=('any')
@@ -20,11 +20,11 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
-_commit=ba128508f5cf973c2dffd8280b1276e19a400cf8  # 1.9.2
+_commit=c5645c3f5fe71470216380a40ff8c7ad11ec58a3  # 1.9.3
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/argosopentech/argos-translate/$_commit/requirements.txt")
-sha256sums=('9742daeca1b1c6aa093f6ed8b3533f850f58e28b4b75e8bba8eacaa3b5862771'
-            '93e0c4f7db7f69df00f8c87b30ad2499c4028f130835411811dff2f2cca4601e')
+sha256sums=('3750e1f36dfc7032a920c7904fae39943bd831b3968d5a86b96c6ddfbf934264'
+            'd065ab2c74402c94c6dee79025f750184eaf6f3b00bf68bb5caea59b837d37ae')
 
 prepare() {
   cp -f requirements.txt "$_name-$pkgver"
