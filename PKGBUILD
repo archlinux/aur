@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Add a Downstream Keyer dock to OBS studio"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/downstream-keyer.1254/"
-license=("GPL2")
+license=("GPL-2.0-or-later")
 depends=("obs-studio>=30" "gcc-libs" "glibc" "qt6-base")
 makedepends=("cmake" "git")
 source=("$pkgname::git+https://github.com/exeldro/$pkgname#commit=9c2005483e0b4b2a220a517e33eb8e4bfabd1320")
@@ -18,7 +18,9 @@ build() {
   -DCMAKE_INSTALL_PREFIX='/usr' \
   -DCMAKE_INSTALL_LIBDIR=lib \
   -DLINUX_PORTABLE=OFF \
-  -DQT_VERSION=6
+  -DQT_VERSION=6 \
+  -DCMAKE_CXX_FLAGS="-Wno-error=deprecated-declarations" \
+  -Wno-dev
 
   cmake --build build
 }
