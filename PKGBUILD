@@ -1,37 +1,70 @@
-# Maintainer: DuckSoft <realducksoft@gmail.com>
-pkgname=across
-_pkgname=ACross
+# Maintainer:
+# Contributor: DuckSoft <realducksoft@gmail.com>
+
+_pkgname="across"
+pkgname="$_pkgname"
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The next GUI client for v2ray core"
+url="https://github.com/ArkToria/ACross"
+license=('GPL-3.0-only')
 arch=('x86_64')
-url='https://github.com/ArkToria/ACross'
-license=('GPL3')
-depends=('hicolor-icon-theme' 'qt6-base' 'qt6-svg' 'qt6-quickcontrols2' 'qt6-translations'
-    'qt6-tools' 'qt6-imageformats' 'qt6-5compat' 'curl' 'fmt' 'grpc'
-    'nlohmann-json' 'protobuf' 'spdlog' 'zxing-cpp' 'clang')
-makedepends=('git' 'cmake' 'clang' 'ninja' 'gcc' 'gtest')
-optdepends=('v2ray: use system v2ray core.'
-    'noto-fonts: default display fonts')
-provides=('across')
 
-source=("across-${pkgver}.tar.gz::https://github.com/ArkToria/ACross/archive/refs/tags/v${pkgver}.tar.gz")
+depends=(
+  'curl'
+  'fmt'
+  'grpc'
+  'hicolor-icon-theme'
+  'protobuf'
+  'qt6-5compat'
+  'qt6-base'
+  'qt6-quickcontrols2'
+  'spdlog'
+  'zxing-cpp'
+)
+makedepends=(
+  'clang'
+  'cmake'
+  'gcc'
+  'git'
+  'gtest'
+  'ninja'
+  'nlohmann-json'
+  'qt6-tools'
+)
+optdepends=(
+  'v2ray: use system v2ray core.'
+  'noto-fonts: default display fonts'
+)
 
+_pkgsrc="ACross-$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
 sha256sums=('5010a2473a4e25f4fcd329ca6ff54912157744f53a3b890fcd6f80c177172b32')
 
-build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}/"
+prepare() {
+  local _ver_zxing="2.2.1"
 
-    mkdir -p build && cd build
-    cmake .. \
-        -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DBUILD_INFO="Arch Linux - ${pkgver}" \
-        -GNinja
-    ninja
+  sed -E \
+    -e '/zxing-cpp/{n;s&^(\s*VERSION) [0-9\.]+$&\1 '"${_ver_zxing}"'&}' \
+    -i "$_pkgsrc/CMakeLists.txt"
+}
+
+build() {
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DBUILD_INFO="Arch Linux - $pkgver"
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    ninja -C "build" install
+  DESTDIR="$pkgdir" cmake --install build
 }
