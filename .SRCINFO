@@ -1,7 +1,7 @@
 pkgbase = rsync-reflink
 	pkgdesc = A fast and versatile file copying tool for remote and local files - with reflink support
 	pkgver = 3.2.7
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/WayneD/rsync
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -13,8 +13,8 @@ pkgbase = rsync-reflink
 	depends = popt
 	depends = zstd
 	optdepends = python: for rrsync
-	provides = rsync-reflink=3.2.7
-	conflicts = rsync-reflink
+	provides = rsync=3.2.7
+	conflicts = rsync
 	backup = etc/rsyncd.conf
 	backup = etc/xinetd.d/rsync
 	source = rsync::git+https://github.com/WayneD/rsync.git#tag=v3.2.7
