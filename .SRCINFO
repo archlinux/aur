@@ -1,7 +1,7 @@
 pkgbase = dnf5
 	pkgdesc = Next-generation RPM package management system
 	pkgver = 5.1.15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rpm-software-management/dnf5
 	arch = x86_64
 	license = GPL2
@@ -14,16 +14,9 @@ pkgbase = dnf5
 	makedepends = sdbus-cpp
 	makedepends = swig
 	makedepends = toml11
-	optdepends = unbound: for gpgkey_dns_verification option
 	conflicts = dnf
 	options = !emptydirs
-	backup = etc/dnf5/automatic.conf
-	backup = etc/dnf5/dnf5.conf
-	backup = etc/dnf5/aliases.d/zypper.conf
-	backup = etc/dnf5/protected.d/dnf5.conf
-	backup = etc/dnf5/protected.d/yum.conf
-	backup = etc/libreport/events.d/collect_dnf5.conf
-	backup = etc/logrotate.d/dnf5
+	backup = etc/dnf5/dnf.conf
 	source = https://github.com/rpm-software-management/dnf5/archive/5.1.15/dnf5-5.1.15.tar.gz
 	sha256sums = f4044439b84c10eb4378b9212c082c4c1c6b0d69319a043bf05ac6d7142ea21f
 

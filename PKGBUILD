@@ -2,7 +2,7 @@
 
 pkgname=dnf5
 pkgver=5.1.15
-pkgrel=2
+pkgrel=3
 pkgdesc="Next-generation RPM package management system "
 arch=('x86_64')
 url="https://github.com/rpm-software-management/$pkgname"
@@ -23,14 +23,7 @@ makedepends=(
     #'zchunk'    # seems broken with zchunk support enabled currently.
                  # I think because upstream depends on 0.9, but AUR has 1.3 packaged
     )
-optdepends=()
-backup=("etc/$pkgname/automatic.conf"
-        "etc/$pkgname/$pkgname.conf"
-        "etc/$pkgname/aliases.d/zypper.conf"
-        "etc/$pkgname/protected.d/$pkgname.conf"
-        "etc/$pkgname/protected.d/yum.conf"
-        "etc/libreport/events.d/collect_$pkgname.conf"
-        "etc/logrotate.d/$pkgname")
+backup=("etc/$pkgname/dnf.conf")
 options=('!emptydirs')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('f4044439b84c10eb4378b9212c082c4c1c6b0d69319a043bf05ac6d7142ea21f')
