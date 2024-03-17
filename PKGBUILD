@@ -2,13 +2,12 @@
 
 pkgname=papa
 pkgver=4.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Mod manager CLI for Northstar"
-arch=('x86_64')
 url="https://github.com/AnActualEmerald/papa"
 license=('MIT')
+arch=('x86_64')
 makedepends=('cargo' 'git')
-optdepends=('sccache: compiler caching for faster compiling')
 _commit=fa5617c1a1894d0ffd7aff69ccacfc61f8a600a2
 source=("git+$url.git#tag=v$pkgver"
         "git+https://github.com/AnActualEmerald/thermite.git#commit=$_commit")
@@ -16,17 +15,27 @@ sha256sums=('SKIP'
             'SKIP')
 
 prepare() {
-  mv thermite "$pkgname"
+# Submodule
+  rm -d papa/thermite
+  ln -sf "$srcdir/thermite" papa
+
+# Dependencies
+  cd papa
+  export CARGO_HOME="$srcdir/CARGO_HOME"
+  export RUSTUP_TOOLCHAIN=nightly
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd $pkgname
+  cd papa
+  export CARGO_HOME="$srcdir/CARGO_HOME"
+  export RUSTUP_TOOLCHAIN=nightly
   cargo build --release
 }
 
 package() {
-  cd $pkgname
-  install -Dm644 CHANGELOG.md README.md -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm755 target/release/$pkgname -t "$pkgdir/usr/bin"
+  cd papa
+  install -Dm644 CHANGELOG.md README.md -t "$pkgdir/usr/share/doc/papa"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/papa"
+  install -Dm755 target/release/papa -t "$pkgdir/usr/bin"
 }
