@@ -1,0 +1,15 @@
+pkgbase = ocaml-iso8601
+	pkgdesc = ISO 8601 and RFC 3339 date parsing for OCaml
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://ocaml-community.github.io/ISO8601.ml
+	arch = x86_64
+	license = MIT
+	makedepends = dune
+	makedepends = ocaml
+	depends = glibc
+	depends = ocaml
+	source = ocaml-iso8601-0.2.6.tar.gz::https://github.com/ocaml-community/ISO8601.ml/archive/refs/tags/0.2.6.tar.gz
+	b2sums = SKIP
+
+pkgname = ocaml-iso8601
