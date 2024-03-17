@@ -1,0 +1,22 @@
+pkgbase = ocaml-toml
+	pkgdesc = OCaml library providing a parser, a serializer and a printer for TOML
+	pkgver = 7.1.0
+	pkgrel = 1
+	url = https://ocaml-toml.github.io/To.ml
+	arch = x86_64
+	license = LGPL-3.0-only
+	checkdepends = ocaml-ounit
+	checkdepends = ocaml-mdx
+	makedepends = dune
+	makedepends = git
+	makedepends = ocaml
+	makedepends = ocaml-menhir
+	depends = glibc
+	depends = ocaml
+	depends = ocaml-iso8601
+	options = !debug
+	source = ocaml-toml-7.1.0::git+https://github.com/ocaml-toml/To.ml.git#tag=de076187d137b792f4435baf1ad533f6b2029e76?signed
+	validpgpkeys = 539B50E2211221DB29D8F7CD8981C3C62D1D28F1
+	b2sums = SKIP
+
+pkgname = ocaml-toml
