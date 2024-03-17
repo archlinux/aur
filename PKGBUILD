@@ -16,6 +16,8 @@
 #
 # ============================================================================ #
 
+# shellcheck shell=bash disable=SC2164,SC2034,SC2154
+
 ###### [ ---------------- SECTION 1: Package metadata ----------------- ] ######
 
 ### SECTION 1.1: Tweakable or updateable metadata
@@ -25,8 +27,8 @@ _vlang=Polish
 _vcode=pol
 
 pkgver=4.1
-pkgrel=1
-license=('custom:CC-BY-NC-ND-4.0')
+pkgrel=2
+license=('CC-BY-NC-ND-4.0')
 
 ### SECTION 1.2: Auto-generated or hardcoded metadata
 
