@@ -1,6 +1,6 @@
-From 8079e9e3accd28bc20b7c2ebbf87c478f4288475 Mon Sep 17 00:00:00 2001
+From 6d05bc1343b9ecce154f551ee09c15e0e9db70bb Mon Sep 17 00:00:00 2001
 From: xiota <>
-Date: Fri, 29-Dec-2023 12:34:56 +0000
+Date: Wed, 13 Mar 2024 02:36:37 +0000
 Subject: [PATCH 1/2] add-acs-overrides
 
 ---
@@ -9,10 +9,10 @@ Subject: [PATCH 1/2] add-acs-overrides
  2 files changed, 110 insertions(+)
 
 diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
-index 41644336e..a3319b714 100644
+index 31b3a2568..b8ab436d1 100644
 --- a/Documentation/admin-guide/kernel-parameters.txt
 +++ b/Documentation/admin-guide/kernel-parameters.txt
-@@ -4287,6 +4287,14 @@
+@@ -4370,6 +4370,14 @@
  		nomsi		[MSI] If the PCI_MSI kernel config parameter is
  				enabled, this kernel boot option can be used to
  				disable the use of MSI interrupts system-wide.
@@ -28,12 +28,12 @@ index 41644336e..a3319b714 100644
  				Safety option to keep boot IRQs enabled. This
  				should never be necessary.
 diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index ae95d0950..aaf28aa0b 100644
+index d797df6e5..9b41773bf 100644
 --- a/drivers/pci/quirks.c
 +++ b/drivers/pci/quirks.c
-@@ -287,6 +287,106 @@ static int __init pci_apply_final_quirks(void)
+@@ -4996,6 +4996,106 @@ static int  pci_quirk_wangxun_nic_acs(struct pci_dev *dev, u16 acs_flags)
+ 	return false;
  }
- fs_initcall_sync(pci_apply_final_quirks);
  
 +static bool acs_on_downstream;
 +static bool acs_on_multifunction;
@@ -135,10 +135,10 @@ index ae95d0950..aaf28aa0b 100644
 +	return -ENOTTY;
 +}
 +
- /*
-  * Decoding should be disabled for a PCI device during BAR sizing to avoid
-  * conflict. But doing so may cause problems on host bridge and perhaps other
-@@ -5116,6 +5216,8 @@ static const struct pci_dev_acs_enabled {
+ static const struct pci_dev_acs_enabled {
+ 	u16 vendor;
+ 	u16 device;
+@@ -5143,6 +5243,8 @@ static const struct pci_dev_acs_enabled {
  	{ PCI_VENDOR_ID_ZHAOXIN, PCI_ANY_ID, pci_quirk_zhaoxin_pcie_ports_acs },
  	/* Wangxun nics */
  	{ PCI_VENDOR_ID_WANGXUN, PCI_ANY_ID, pci_quirk_wangxun_nic_acs },
@@ -148,5 +148,5 @@ index ae95d0950..aaf28aa0b 100644
  };
  
 -- 
-2.43.0
+2.44.0
 

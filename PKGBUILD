@@ -24,12 +24,13 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.8
+pkgver=6.8.1
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
-arch=(x86_64)
-license=(GPL-2.0-or-later)
+license=('GPL-2.0-or-later')
+arch=('x86_64')
+
 makedepends=(
   bc
   cpio
@@ -45,6 +46,7 @@ makedepends=(
   graphviz
   imagemagick
   python-sphinx
+  python-yaml
   texlive-latexextra
 )
 options=('!strip')
@@ -54,7 +56,7 @@ source+=(
   "config-$pkgver"::https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/main/config
 )
 sha256sums+=(
-  'c969dea4e8bb6be991bbf7c010ba0e0a5643a3a8d8fb0a2aaa053406f1e965f3'
+  '8d0c8936e3140a0fbdf511ad7a9f21121598f3656743898f47bb9052d37cff68'
   'SKIP'
   'SKIP'
 )
@@ -66,12 +68,12 @@ validpgpkeys=(
 
 if [[ ${_build_vfio::1} == "t" ]] ; then
   source+=(
-    1001-6.6.7-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
-    1002-6.6.7-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
+    1001-6.8.0-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
+    1002-6.8.0-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
   )
   sha256sums+=(
-    'f342986bd27980c96c952b0dd8103d3e21a942d87f18df1308fab370e20010fb'
-    '2a3c732d4d61a631c98b2a3e4afb1fa5dbf8be5c43519b2a59d0e65170c9d8db'
+    'b35c26d5dc31fb9cfac68292de7b1ee8ca93b4647e4958efc77e2c77f586f1f2'
+    '966c15da4044a9a3b5f9d362c2cf08303f1265ad4489c9835c95973b71255d07'
   )
 fi
 
@@ -96,30 +98,14 @@ fi
 if [[ ${_build_clang::1} == "t" ]] ; then
   makedepends+=(clang llvm lld)
 
-  export CC=clang
-  export LD=ld.lld
-  export AR=llvm-ar
-  export NM=llvm-nm
-  export STRIP=llvm-strip
-  export OBJCOPY=llvm-objcopy
-  export OBJDUMP=llvm-objdump
-  export READELF=llvm-readelf
-  export HOSTCC=clang
-  export HOSTCXX=clang++
-  export HOSTAR=llvm-ar
-  export HOSTLD=ld.lld
   export LLVM=1
   export LLVM_IAS=1
-
-  export CXX=clang++
-  export LDFLAGS+=" -fuse-ld=lld"
 fi
 
 if [[ "${_build_v3::1}" == "t" ]] ; then
-  export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
-  export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"}
-
-  export RUSTFLAGS+=" -Ctarget-cpu=x86-64-v3"
+  export KCFLAGS="-march=x86-64-v3 -mtune=generic -O3"
+  export HOSTCFLAGS="-march=x86-64-v3 -mtune=generic -O3"
+  export HOSTCXXFLAGS="-march=x86-64-v3 -mtune=generic -O3"
 fi
 
 export KBUILD_BUILD_HOST=archlinux
@@ -183,6 +169,7 @@ prepare() {
 build() {
   cd $_srcname
   make all
+  make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
   #make htmldocs
 }
 
