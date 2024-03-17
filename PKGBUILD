@@ -1,22 +1,41 @@
 # Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 # -*- mode: sh -*-
 
-pkgname=atto
-pkgver=1.5.0
+pkgname='atto'
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='A tiny Nano wallet, focused on ease of use through simplicity'
 arch=('x86_64')
 url='https://github.com/codesoap/atto'
 license=('MIT')
 makedepends=('go')
+depends=('glibc')
 provides=('atto')
 conflicts=('atto')
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )
+options=('lto')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  go mod tidy
+}
 
 build() {
-  cd "$pkgname-$pkgver" || exit 1
+  cd "$pkgname-$pkgver"
+
+  # RFC-0023
+  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
+  #
+  # ld(1) says: “Supported for i386 and x86-64.”
+  case "${CARCH:-unknown}" in
+    'x86_64' | 'i386' )
+      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+    ;;
+    * ) : pass ;;
+  esac
 
   # https://wiki.archlinux.org/title/Go_package_guidelines
   export CGO_CPPFLAGS="$CPPFLAGS"
@@ -31,7 +50,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver" || exit 1
+  cd "$pkgname-$pkgver"
 
   install -Dm0755 atto          "$pkgdir/usr/bin/atto"
   install -Dm0755 atto-safesign "$pkgdir/usr/bin/atto-safesign"
@@ -40,13 +59,10 @@ package() {
 }
 
 sha256sums=(
-  'c9c662cd8ade26d0066022fe4a09b408bb1de4ecbc48715561fe75e1971bb933'
-)
-sha512sums=(
-  '07ed4c1acb2269057e802c2b4170fe5718845b01a6739d15aca4019ed4cfce28ffb77612b88982bfa70dce804240e7feea552f13857a368cf0453570bfad37e4'
+  '6c4c5b57777487114f7b336a1fd8e501a0fe49b164e80f3e30f87ef994f3ebed'
 )
 b2sums=(
-  '06ecae3ded378dfae3fec3ec4e47da4744d40dbe2c0af18ebc174fc68e457c0b95340207e28915aa8c0394206ec04f22728f1bb18a68a141f40229bd901e1ef5'
+  '677fd1adb69bc2aa604c435f96dfc24465a4f32c8dd5d75f733c4a1bc7047435445856260d42552bb7c0e10a1691596db951bdbb3ac882e7af08b7ef9efb64d4'
 )
 
 # eof
