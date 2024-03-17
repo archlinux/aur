@@ -1,10 +1,10 @@
 pkgbase = manaplus-sdl2
 	pkgdesc = Free OpenSource 2D MMORPG client for Evol Online, The mana world and similar servers. SDL2 version.
 	pkgver = 2.1.3.17
-	pkgrel = 2
+	pkgrel = 3
 	url = https://manaplus.org/
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = mesa
 	depends = glu
 	depends = libxml2
@@ -15,6 +15,7 @@ pkgbase = manaplus-sdl2
 	depends = sdl2_ttf
 	depends = sdl2_gfx
 	depends = curl
+	optdepends = xdg-utils: open in-game urls in browser
 	provides = manaplus=2.1.3.17
 	conflicts = manaplus
 	replaces = tmw
