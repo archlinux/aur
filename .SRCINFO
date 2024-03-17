@@ -5,11 +5,10 @@ pkgbase = obs-3d-effect
 	url = https://obsproject.com/forum/resources/3d-effect.1692/
 	arch = x86_64
 	arch = aarch64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = cmake
 	makedepends = git
 	depends = obs-studio>=28
-	depends = gcc-libs
 	depends = glibc
 	options = debug
 	source = obs-3d-effect::git+https://github.com/exeldro/obs-3d-effect#commit=063da575a5a0fb9bc0d5ef3bcfb41c3bf9f43075

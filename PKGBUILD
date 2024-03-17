@@ -6,8 +6,8 @@ pkgrel=1
 pkgdesc="Plugin for OBS Studio adding 3D effect filter"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/3d-effect.1692/"
-license=("GPL2")
-depends=("obs-studio>=28" "gcc-libs" "glibc")
+license=("GPL-2.0-or-later")
+depends=("obs-studio>=28" "glibc")
 makedepends=("cmake" "git")
 options=('debug')
 source=("$pkgname::git+https://github.com/exeldro/$pkgname#commit=063da575a5a0fb9bc0d5ef3bcfb41c3bf9f43075")
@@ -18,7 +18,9 @@ build() {
   -DCMAKE_BUILD_TYPE=None \
   -DCMAKE_INSTALL_PREFIX='/usr' \
   -DCMAKE_INSTALL_LIBDIR=lib \
-  -DLINUX_PORTABLE=OFF
+  -DLINUX_PORTABLE=OFF \
+  -DCMAKE_C_FLAGS="-Wno-error=deprecated-declarations" \
+  -Wno-dev
 
   cmake --build build
 }
