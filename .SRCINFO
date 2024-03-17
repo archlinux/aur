@@ -1,11 +1,11 @@
 pkgbase = obs-recursion-effect
 	pkgdesc = Plugin for add recursion effect to a source using a filter
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://obsproject.com/forum/resources/recursion-effect.1008/
 	arch = x86_64
 	arch = aarch64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = cmake
 	makedepends = git
 	depends = obs-studio>=28
