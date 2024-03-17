@@ -1,0 +1,16 @@
+pkgbase = ocaml-grain_dypgen
+	pkgdesc = Self-extensible parsers and lexers for OCaml
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/grain-lang/dypgen
+	arch = x86_64
+	license = LicenseRef-oLicence_CeCILL-B_V1
+	makedepends = ocaml
+	makedepends = ocaml-findlib
+	depends = glibc
+	depends = ocaml
+	depends = perl
+	source = ocaml-grain_dypgen-0.2.tar.gz::https://github.com/grain-lang/dypgen/archive/0.2.tar.gz
+	sha512sums = b01044243d76550194ea1a9e93eb53f525ae9e88ef0a1d69c5c00ef7adf3791d88df72f8ccb47fe0966c54fc214ff8e54f3cdf34c7627ea10b3a1a64f2e683a0
+
+pkgname = ocaml-grain_dypgen
