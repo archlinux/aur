@@ -1,7 +1,7 @@
 pkgname='alsa-scarlett-gui-dev'
 _pkgname='alsa-scarlett-gui'
-pkgver=0.3.3.128.g74fc
-pkgrel=2
+pkgver=0.3.3.128.g1bc0
+pkgrel=1
 pkgdesc="GUI for the ALSA controls presented by the Scarlett2 driver, Development version"
 arch=('i686' 'x86_64')
 url="https://github.com/geoffreybennett/alsa-scarlett-gui"
@@ -11,15 +11,6 @@ makedepends=('gcc' 'make' 'git' 'pkgconf' 'sed')
 provides=("$_pkgname")
 source=("git+${url}.git#branch=dev")
 sha256sums=('SKIP')
-
-DOC_FILES=(
-    ENABLEDRIVER.md
-    FAQ.md
-    INSTALL.md
-    INTERFACES.md
-    README.md
-    USAGE.md
-)
 
 pkgver() {
     cd "$_pkgname"
@@ -35,8 +26,6 @@ build() {
 package() {
     cd "$srcdir/$_pkgname"
     PREFIX="${pkgdir}/usr" make -C src install
-
-    for docfile in "${DOC_FILES[@]}"; do
-        install -vDm 644 "$docfile"  "${pkgdir}/usr/share/doc/${_pkgname}/${docfile}"
-    done
+    install -vd           "${pkgdir}/usr/share/doc/${_pkgname}/"
+    install -vm 644 *.md  "${pkgdir}/usr/share/doc/${_pkgname}/"
 }
