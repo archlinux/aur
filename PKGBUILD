@@ -2,12 +2,12 @@
 # Contributor: eduardosm
 
 pkgname=subtitleedit
-pkgver=4.0.3
+pkgver=4.0.4
 pkgrel=1
 pkgdesc='An advanced subtitle editor and converter'
 arch=('any')
 url='https://www.nikse.dk/SubtitleEdit'
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('mono')
 optdepends=('vlc: Video support'
             'mpv: Video support'
@@ -18,7 +18,7 @@ source=("https://github.com/SubtitleEdit/subtitleedit/releases/download/$pkgver/
         'subtitleedit'
         'subtitleedit.desktop'
         'subtitleedit.png')
-sha256sums=('8c336d9e340102ab6664b0063a1a4d2b4156d5b702913621369c2124d6be51d8'
+sha256sums=('49c3920beb401366a4ef7be9c50e656a144484a79cda4bb8f7e1ecac1bb5e3a5'
             '51ae2411ed70a40607a78dd863db98bf5692bfaff7f8c230ddf82f0dc78d1cc3'
             '54ffb47864611c6aebb29ecfabd49089cfe6decc320e3f25043c39ec7f27a5fb'
             '700d09858ac76341054d7edc79952fbfca70df674d2b567e3713579e5963f631')
