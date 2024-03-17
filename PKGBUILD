@@ -13,34 +13,29 @@ provides=(mcedit)
 conflicts=(mcedit)
 options=(!strip)
 source=("git+https://github.com/Podshot/MCEdit-Unified" "mcedit.desktop" "mcedit")
-sha256sums=('SKIP' 'e36c376ea3dd1c4d31a43ce7959a8ce5805804d7e9af92c143a14b4e4ae11b86' '541319e2b1aa7d26509b7b683a694340d8df48bbad5e1eb59d2934910aa65e47')
+sha256sums=('SKIP' 'e36c376ea3dd1c4d31a43ce7959a8ce5805804d7e9af92c143a14b4e4ae11b86' '3ce82504cb9ba34a955c45694f0fe535f8f73c680dec8fc7dcfccab244858f8f')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-# Why prepare when you can put everything in build
-build() {
-    # Get in the right dir
+prepare() {
     cd "${srcdir}/${_pkgname}"
+    # Not on windows, we don't need it
+    sed -i '/pypiwin32/d' requirements.txt
+    # Remove opengl lib back just in case there are fixes
+    sed -i 's/==3\.1\.1a1//g' requirements.txt
+    # Update pygame to latest good version (2.0.0 is broken)
+    sed -i 's/pygame==1.9.4/pygame==1.9.6/' requirements.txt
 
-    # Install & setup the virtualenv
-    python2 -m pip install virtualenv
-    python2 -m virtualenv venv
-    source venv/bin/activate
-
-    # Install the requirements
-    sed -i '/pypiwin32/d' requirements.txt # Not on windows, we don't need it
-    pip install -r requirements.txt
-    pip install Xlib # Required on linux, see https://github.com/Podshot/MCEdit-Unified/issues/797
-
-    # Build the libs for a faster mcedit
-    python setup.py all
-
-    deactivate
-    echo ""
+    # Resize is currently broken; trying to find a fix, for now disabling it as it makes the program almost unusable (dirty)
+    sed -i 's/elif type == VIDEORESIZE:/elif False:/' "albow/root.py"
 }
+
+# build() {
+#     # Note: this is now done in the executable, as venvs seem to have issues
+# }
 
 package() {
     # Desktop file
@@ -56,9 +51,16 @@ package() {
     # git repo
     install -dm755 "${pkgdir}/opt/mcedit-unified"
 	cp -a "${srcdir}/${_pkgname}/." "${pkgdir}/opt/mcedit-unified/"
-    chmod 777 "${pkgdir}/opt/mcedit-unified/"
+    chmod -R 777 "${pkgdir}/opt/mcedit-unified/"
                 
 	# Executable
     install -dm755 "${pkgdir}/usr/bin"
     install -Dm755 "${srcdir}/mcedit" "${pkgdir}/usr/bin/mcedit"
+}
+
+post_install() {
+    echo "Due to a problem with how venvs work, this package can only work if the venv is setup AFTER the pkgbuild (at least i think so)."
+    echo "It is recommended for you to run mcedit the first time through a terminal (using 'mcedit') to see the progress"
+    echo "After this, everything should work normally"
+    echo "If (by some miracle) mcedit unified updates, you can run 'mcedit --update' to try to install the dependencies & build again."
 }

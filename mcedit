@@ -1,6 +1,41 @@
 #!/bin/sh
 
 cd /opt/mcedit-unified
+
+update() {
+    echo "Installing requirements"
+    source venv/bin/activate
+    # Install the requirements
+    pip install -r requirements.txt
+    pip install Xlib # Required on linux, see https://github.com/Podshot/MCEdit-Unified/issues/797
+
+    # Build the libs for a faster mcedit
+    python setup.py all
+    deactivate
+}
+
+# Check if venv not setup yet
+if [ ! -d "venv" ]; then
+    echo "Setting up MCEdit's venv."
+    echo "Due to the fact venv can't be copied, I think we unfortunately need to do this here."
+
+    # Install & setup the virtualenv
+    python2 -m pip install virtualenv
+    python2 -m virtualenv venv
+    
+    # Install all packages
+    update;
+
+    echo "Done setting up, now launching."
+fi
+
+# Check if --update passed (in which case force run update )
+for arg in "$@"; do
+    if [ "$arg" = "--update" ]; then
+        update
+    fi
+done
+
 source venv/bin/activate
 python mcedit.py
 deactivate
