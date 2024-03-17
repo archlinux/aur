@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Plugin for OBS Studio to add a Scene Collection Manager"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/scene-collection-manager.1434/"
-license=("GPL2")
+license=("GPL-2.0-or-later")
 depends=("obs-studio>=28" "gcc-libs" "glibc" "qt6-base")
 makedepends=("cmake" "git")
 options=('debug')
@@ -19,7 +19,9 @@ build() {
   -DCMAKE_INSTALL_PREFIX='/usr' \
   -DCMAKE_INSTALL_LIBDIR=lib \
   -DLINUX_PORTABLE=OFF \
-  -DQT_VERSION=6
+  -DQT_VERSION=6 \
+  -DCMAKE_CXX_FLAGS="-Wno-error=deprecated-declarations" \
+  -Wno-dev
 
   cmake --build build
 }
