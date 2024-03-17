@@ -3,7 +3,7 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=060.r6794.4980bad
-pkgrel=20
+pkgrel=21
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracutdevs/dracut'
@@ -114,6 +114,7 @@ source=(
   2582.patch::${url}/commit/b3c70d337fe108bb24fb50923a360d8957006b86.patch    # fix: do not use modprobe --all
   2593-1.patch::${url}/commit/ca69cc20833577fac415e36c66495c6dc5b1c721.patch  # fix(dracut.sh): do not add device if `find_block_device`
   2593-2.patch::${url}/commit/03cd454845346c206194c214f9b9ec15ec91d9b4.patch  # feat(dracut.sh): protect `push_host_devs` function
+  2609.patch::${url}/commit/5de238a35c365e09af8065927e6cc1cb74391be1.patch    # fix(90multipath): drop unneeded dependencies from configure service
   2610.patch::${url}/commit/f68d056bd9d32f4fc0c15163b256d1811a552302.patch    # fix(systemd-255): handle systemd-pcr{phase -> extend} rename
   2613.patch::${url}/commit/619de721cff44ed7c0b809bee80aee6986577e59.patch    # fix(i18n): handle symlinked keymap
 )
@@ -134,6 +135,7 @@ sha512sums=('SKIP'
             '4aa808f891409756720cc53f6ac9a229c2b543419da23bd69796df5861bb11563755433728f12379950dbbb557ec183e02ba9ba70d37739f2b3a078392aa939f'
             '295e4847d1a1e8a2d0572ed42b2e992b37aa3875295027fb8b42e128458ed0766a8cd2cb56f455fe863086f357d536b55d9af7f3ff5293b734bd539a1cb86b5c'
             'ea6ac33900494d166e87ffc2a5a3891777f480c2c2299c5cc101e8ba91aa1b25840ace0ae4514c684de942d42a030b086f56bc048244bc0ee0525ea1c45feca0'
+            'da92f4d2fe533251526ecef730fcc86e091a256a2ed9892403b70d24d650f89cbc2b1d5cfcfd640e8bfa3dfd85a446cc3155a33b6def10201686294cbc5149d3'
             'fdffc9362d72c98cd595f458b7a20157868e4f445ad692afde8337df77496bc905597d18d646b01ee58f9cdd3eefc848bfe04e9aa565fde6e4a2e65aa3fe75e0'
             'd55de661daadd47d2b08ae5d0bc7d651f5bc93a189b58d1f0fac2496b31069212e2e120f7ba56e3afa5cfe7360070a1afd3ed609760d812264829fb8ec9c246f')
 
