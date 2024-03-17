@@ -1,13 +1,13 @@
 pkgbase = pkgbrowser
 	pkgdesc = A utility for browsing pacman databases and the AUR
 	pkgver = 0.28
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/kachelaqa/pkgbrowser
 	install = pkgbrowser.install
 	arch = x86_64
 	license = GPL2
 	depends = pacman>=4.1
-	depends = pacman<6.1
+	depends = pacman<6.2
 	depends = python>=3.2
 	depends = python<3.12
 	depends = python-pyqt5
