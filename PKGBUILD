@@ -3,14 +3,13 @@
 
 pkgname='warspear'
 pkgver=12.3.0
-pkgrel=2
+pkgrel=4
 pkgdesc='Warspear Online is a cross-platform massively multiplayer online roleplaying game (MMORPG) for smart phones.'
 arch=('i686' 'x86_64')
 url='http://warspear-online.com/'
 license=('custom')
 depends=('glibc>=2.19' 'libx11' 'libgl' 'openal' 'libxft' 'zenity' 'curl')
 optdepends=('xdg-utils')
-options=(!strip)
 _arch='i386'
 [ "$CARCH" = "x86_64" ] && _arch='amd64'
 
