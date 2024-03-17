@@ -1,7 +1,7 @@
 pkgbase = gnome-menus2
 	pkgdesc = Library for the Desktop Menu Specification (legacy version)
 	pkgver = 3.0.1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.gnome.org/
 	arch = i686
 	arch = x86_64

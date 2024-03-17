@@ -6,7 +6,7 @@
 
 pkgname=gnome-menus2
 pkgver=3.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc='Library for the Desktop Menu Specification (legacy version)'
 arch=('i686' 'x86_64')
 url='http://www.gnome.org/'
@@ -18,7 +18,7 @@ sha256sums=('579c119c26f37781f66708e867ea45b3c37589b3b69e5b32d33e9bdb944165f0')
 
 build() {
   cd ${pkgname%2}-$pkgver
-  ./configure --prefix='/usr' --sysconfdir='/etc' --localstatedir='/var' --disable-static --disable-python
+  ./configure --prefix='/usr' --sysconfdir='/etc' --localstatedir='/var' --disable-static --disable-python --disable-introspection
   make
 }
 
