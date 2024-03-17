@@ -5,7 +5,7 @@ pkgname='python-niquests-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname/-/.}"
-pkgver=3.5.3.r0.ga84e41ca
+pkgver=3.5.4.r0.g256f8879
 pkgrel=1
 pkgdesc='Simple, yet elegant, Python HTTP library: a drop-in replacement for python-requests (built from latest commit)'
 arch=('any')
@@ -14,6 +14,7 @@ license=('Apache-2.0')  # SPDX-License-Identifier: Apache-2.0
 makedepends=(
   'git'
   'python-build'
+  'python-hatchling'
   'python-installer'
   'python-wheel'
 )
