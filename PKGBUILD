@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=musicpod-git
 _app_id=org.feichtmeier.Musicpod
-pkgver=1.1.0.r3.ge190e3e
+pkgver=1.3.0.r1.geb97c5e
 pkgrel=1
 _flutter_ver=3.19.3
 pkgdesc="Music, radio, television and podcast player"
@@ -9,7 +9,8 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/ubuntu-flutter-community/musicpod"
 license=('GPL-3.0-or-later')
 depends=('gstreamer' 'gtk3' 'mpv')
-makedepends=('chrpath' 'clang' 'cmake' 'git' 'ninja')
+#makedepends=('chrpath' 'clang' 'cmake' 'git' 'ninja')
+makedepends=('clang' 'cmake' 'git' 'ninja')
 checkdepends=('appstream')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -63,5 +64,5 @@ package() {
   ln -s "/opt/${pkgname%-git}/${pkgname%-git}" "$pkgdir/usr/bin/"
 
   # Remove insecure RUNPATH pointing to build dir
-  chrpath --delete "$pkgdir/opt/${pkgname%-git}"/lib/*.so
+#  chrpath --delete "$pkgdir/opt/${pkgname%-git}"/lib/*.so
 }
