@@ -1,13 +1,13 @@
 pkgbase = rog-daemon
 	pkgdesc = Lightweight daemon and CLI to control ASUS ROG/TUF laptops features
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/mechakotik/rog-daemon
 	arch = x86_64
 	license = GPL
 	makedepends = gcc
 	makedepends = meson
-	source = rog-daemon-1.0.2::https://github.com/mechakotik/rog-daemon/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = 547e002bc36a3b493d1636a08bff3c04a2c14d54dc09082ab38eed1764c68cab
+	source = rog-daemon-1.0.3::https://github.com/mechakotik/rog-daemon/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = 1e450d18e0b55e0e0170db8888bbd25d98c67fca25c1414bb8d9524821d17d24
 
 pkgname = rog-daemon
