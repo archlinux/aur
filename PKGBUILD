@@ -1,7 +1,7 @@
 
 pkgname=python-pyqt6-pre-release
 pkgdesc='A set of Python bindings for the Qt6 toolkit'
-pkgver=6.6.0.dev2310242137
+pkgver=6.7.0.dev2402181254
 pkgrel=1
 arch=(x86_64)
 url='https://riverbankcomputing.com/software/pyqt/intro'

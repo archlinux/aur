@@ -1,6 +1,6 @@
 pkgbase = python-pyqt6-pre-release
 	pkgdesc = A set of Python bindings for the Qt6 toolkit
-	pkgver = 6.6.0.dev2310242137
+	pkgver = 6.7.0.dev2402181254
 	pkgrel = 1
 	url = https://riverbankcomputing.com/software/pyqt/intro
 	arch = x86_64
@@ -43,7 +43,7 @@ pkgbase = python-pyqt6-pre-release
 	optdepends = dbus-python: for python-dbus mainloop support
 	provides = python-pyqt6
 	conflicts = python-pyqt6
-	source = https://www.riverbankcomputing.com/pypi/packages/PyQt6/PyQt6-6.6.0.dev2310242137.tar.gz
+	source = https://www.riverbankcomputing.com/pypi/packages/PyQt6/PyQt6-6.7.0.dev2402181254.tar.gz
 	md5sums = SKIP
 
 pkgname = python-pyqt6-pre-release
