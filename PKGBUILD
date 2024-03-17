@@ -3,24 +3,25 @@
 _pkgname=agilp
 _pkgver=3.34.0
 pkgname=r-${_pkgname,,}
-pkgver=3.34.0
-pkgrel=1
-pkgdesc='Agilent expression array processing package'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Agilent expression array processing package"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8a201ed954249d8f8125901f208c6cb7f10c31fc6637cb831afe48bb6c656b75')
+md5sums=('21b54a703747520483657dd63288f403')
+b2sums=('699f1ce075285c0f334eb6d1d7ed52509e6d72ff4841d92a8d1be13857f2e351924e729f4a2d77fbded47669f1a3d7848616ec516a0e7ee0a0b898023fadb64c')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
