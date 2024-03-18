@@ -1,12 +1,11 @@
 pkgbase = autographa-bin
 	pkgdesc = A Bible translation editor for everyone.
 	pkgver = 2.4.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/friendsofagape/autographa
 	arch = x86_64
 	license = MIT
-	depends = electron21
-	depends = hicolor-icon-theme
+	depends = electron21-bin
 	provides = autographa=2.4.0
 	conflicts = autographa
 	source = autographa-2.4.0.deb::https://github.com/friendsofagape/autographa/releases/download/v2.4.0/autographa_2.4.0_amd64.deb
@@ -14,6 +13,6 @@ pkgbase = autographa-bin
 	source = autographa.sh
 	sha256sums = f069d16802fa9962d76aecf180d754b72e0170c166f944e873cc09ecc3aa89b8
 	sha256sums = 3312af32f10019d4eeca9f021124b04711a870c77e73aea8cec0cba728e1dde8
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = autographa-bin
