@@ -12,9 +12,9 @@ source_x86_64=(${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/jorgerojas
 source_aarch64=(${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/jorgerojas26/lazysql/releases/download/v${pkgver}/lazysql_Linux_arm64.tar.gz)
 source_i386=(${pkgname}-${pkgver}-i3866.tar.gz::https://github.com/jorgerojas26/lazysql/releases/download/v${pkgver}/lazysql_Linux_i386.tar.gz)
 
-sha256sums_x86_64=('55b7c0dbffa94fd6e7dfad46043db86bf44d0390f6735c11203fcdb45e4917fe')
-sha256sums_i386=('c4cc6edcf493cf0fab5e67878946b24a223ecaf574ad12b262fd1940ee3947a5')
-sha256sums_aarch64=('a15a9de459e8ed02db1bbb4c64a2c8cef0ab6f2433d4bfdc95a969d9bd3be282')
+sha256sums_x86_64=('4accae0e91691d35fbf9baa1c16095e9bf598340b2ca63d7426b6ba54c9783e1')
+sha256sums_i386=('88a64816ca895eec0edcc29acf54572cde671ede9d0fa1b60311c5d572413dbb')
+sha256sums_aarch64=('f480ca578606f05dcda38375f74c438377efe7ca0388c7ea97cbf2e29dd6ffe4')
 
 package() {
   cd "$srcdir"
