@@ -1,6 +1,6 @@
 pkgbase = falion-bin
 	pkgdesc = An open source, programmed in rust, privacy focused tool for scraping programming resources (like stackoverflow) fast, efficient and asynchronous/parallel using the CLI or GUI.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/Obscurely/falion
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = falion-bin
 	provides = falion-bin
 	conflicts = falion
 	conflicts = falion-git
-	source = https://github.com/Obscurely/falion/releases/download/v1.0.1-stable/falion-linux.tar.gz
-	sha256sums = ba2e17d397f2c29140d3f25f2e5ae51ed2686e2732d53349011a2bfb1ab25a5d
+	source = https://github.com/Obscurely/falion/releases/download/v1.0.2-stable/falion-linux.tar.gz
+	sha256sums = e0d4f9a9597da084fdedc124bfe59b009a7cb4ca0f0500b0f252a1c7fd96d3c1
 
 pkgname = falion-bin
