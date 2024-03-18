@@ -6,7 +6,7 @@ pkgdesc='Render and visualize paths for Celeste TASes'
 url='https://github.com/jakobhellermann/Atlas'
 makedepends=('git' 'rust' 'cargo' 'imagemagick')
 depends=('hicolor-icon-theme' 'glibc' 'gcc-libs')
-arch=('any')
+arch=('x86_64' 'armv7h' 'aarch64')
 license=('MIT')
 source=(
     "$pkgname::git+https://github.com/jakobhellermann/Atlas"
