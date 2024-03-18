@@ -3,8 +3,8 @@
 
 pkgname=firefox-extension-localcdn
 pkgver=2.6.65
-_commit=ca44b4a1295da3f834fa661c5880a638666db910
-pkgrel=1
+_commit=ce6e48ca7bc753d16e47a140eec7ff3b9757cf86
+pkgrel=2
 pkgdesc='LocalCDN addon for Firefox'
 arch=(any)
 url=https://www.localcdn.org/
