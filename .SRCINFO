@@ -1,6 +1,6 @@
 pkgbase = megasync
 	pkgdesc = Official MEGA desktop application for syncing with MEGA Cloud Drive
-	pkgver = 4.12.2.0
+	pkgver = 5.2.0.0
 	pkgrel = 1
 	url = https://github.com/meganz/MEGAsync/
 	arch = x86_64
@@ -31,13 +31,13 @@ pkgbase = megasync
 	depends = sqlite
 	depends = zlib
 	depends = hicolor-icon-theme
-	source = git+https://github.com/meganz/MEGAsync.git#tag=v4.12.2.0_OSX
+	source = git+https://github.com/meganz/MEGAsync.git#tag=v5.2.0.0_Linux
 	source = meganz-sdk::git+https://github.com/meganz/sdk.git
 	source = 010-megasync-libpdfium.patch
 	source = 020-megasync-ffmpeg.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 99c9e5fc8fd169aabe155293ad7ca3349ed35222d020a3c0592b5b788016c966
+	sha256sums = 9a1c1b15f99a5858f91f892a17f80dc3ad08850b90e07d8226f1f2412c97025a
 	sha256sums = 49690421d98e8f61a600ee1ec97adc3e4d1cbe2f736fcf56056da23d02db378b
 
 pkgname = megasync
