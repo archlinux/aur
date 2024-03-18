@@ -4,7 +4,7 @@ pkgname="${_appname}s-manager-bin"
 _pkgname=Bookmark-Manager
 pkgver=0.1.2
 _electronversion=15
-pkgrel=7
+pkgrel=8
 pkgdesc="Edit bookmarks, check url."
 arch=("x86_64")
 url="https://github.com/Hunlongyu/bookmarks-manager"
@@ -12,7 +12,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'fuse2'
@@ -24,11 +24,12 @@ source=(
 )
 sha256sums=('05cc0f7a8c0664d47a5cb90af113729a27b63419b8dd9649caa81a46967a241f'
             'c796c92731a81fb917e300438a8e5565ac96507ca0f4052fb3d8e2459e7b0f3b'
-            'f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
