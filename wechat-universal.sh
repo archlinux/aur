@@ -109,8 +109,9 @@ BWRAP_ARGS=(
     # /tmp
     --tmpfs /tmp
 
-    # /opt, Wechat-beta itself
+    # /opt
     --ro-bind /opt/wechat-universal{,}
+    --ro-bind-try /opt/lol{,} # LoongArch64 (WeChat) on Loong64 (LoongArchLinux)
 
     # license fixups in various places
     --ro-bind {/usr/share/wechat-universal,}/usr/lib/license

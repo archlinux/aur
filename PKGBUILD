@@ -5,7 +5,7 @@
 _pkgname=wechat-universal
 pkgname=${_pkgname}-bwrap
 pkgver=1.0.0.238
-pkgrel=10
+pkgrel=11
 pkgdesc="WeChat (Universal) with bwrap sandbox"
 arch=('x86_64' 'aarch64' 'loong64')
 url="https://weixin.qq.com"
@@ -33,6 +33,9 @@ depends=(
     'xcb-util-wm'
     'xdg-desktop-portal'
     'xdg-user-dirs'
+)
+depends_loong64=(
+    'liblol' # LoongArch64 (WeChat) on Loong64 (LoongArchLinux)
 )
 options=(!strip !debug emptydirs)
 source=(
@@ -62,7 +65,7 @@ noextract=("${_deb_stem}"_{x86_64,aarch64,loong64}.deb)
 sha256sums=(
     'b25598b64964e4a38f8027b9e8b9a412c6c8d438a64f862d1b72550ac8c75164'
     '53760079c1a5b58f2fa3d5effe1ed35239590b288841d812229ef4e55b2dbd69'
-    'e22b6750354744a163f1272a58e171f5c5587b85bf3d1759a36bdee5d4a44a0a'
+    'f4d29092a967d544e5e32c163482a0d812dab815ae5ee70e82b809c4772fab99'
     'b783b7b0035efb5a0fcb4ddba6446f645a4911e4a9f71475e408a5c87ef04c30'
 )
 
