@@ -3,7 +3,7 @@ pkgname=querym-bin
 _pkgname=Querym
 pkgver=0.5.9
 _electronversion=23
-pkgrel=4
+pkgrel=5
 pkgdesc="A free, open-source, and cross-platform GUI tool designed to make database management accessible and efficient."
 arch=('x86_64')
 url="https://querymaster.io"
@@ -20,11 +20,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('a93fe1350abc3dd1dbf798dca2e6d0b7518016455ac021abf337acf8c351131c'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
