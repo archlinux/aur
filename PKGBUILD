@@ -4,12 +4,12 @@
 # As of 1.0.32, the hash check is skipped.
 pkgname=labymod-appimage
 pkgver=2.0.12
-pkgrel=7
+pkgrel=8
 pkgdesc='LabyMod Launcher for launching LabyMod, which is a Minecraft client that adds bunch of useful features'
 url=https://www.labymod.net
 arch=(x86_64)
 license=(unknown)
-options=(!strip)
+options=(!strip !debug)
 source=("https://releases.r2.labymod.net/launcher/linux/x64/LabyMod%20Launcher-${pkgver}.AppImage")
 sha256sums=('SKIP')
 depends=(fuse xorg-xrandr)
@@ -35,7 +35,7 @@ package() {
         mkdir -p "${pkgdir}/opt/${_pkgname}"
 
         # AppImage
-        cp -a \
+        install -Dm755 \
                 "${srcdir}/${_appimage}" \
                 "${pkgdir}/opt/${_pkgname}/${_pkgname}.AppImage"
 

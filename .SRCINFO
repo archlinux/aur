@@ -8,6 +8,7 @@ pkgbase = labymod-appimage
 	depends = fuse
 	depends = xorg-xrandr
 	options = !strip
+	options = !debug
 	source = https://releases.r2.labymod.net/launcher/linux/x64/LabyMod%20Launcher-2.0.12.AppImage
 	sha256sums = SKIP
 
