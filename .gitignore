@@ -1,0 +1,7 @@
+/*.log
+/*.pkg.tar.*
+/.mkpkg_check
+/MKPKG
+/freetype
+/freetype-demos
+/log
