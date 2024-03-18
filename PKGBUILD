@@ -25,28 +25,27 @@ _http="https://github.com"
 _ns="openai"
 url="${_http}/${_ns}/${_pkg}"
 license=(
-  'lol'
+  'custom'
 )
 depends=(
-  # "${_py}-futures"
-  # "${_py}-singledispatch"
-  # "${_py}-backports-abc"
+  "${_py}-pytorch_lightning"
+  "${_py}-blobfile"
+  "${_py}-numpy"
+  "${_py}-torch"
+  "${_py}-tqdm"
+  "${_py}-scipy"
+  "${_py}-mod"
+  "${_py}-matplotlib"
 )
 optdepends=(
-  # "${_py}-monotonic: enable support for a monotonic clock"
-  # "${_py}-pycurl: for ${_pkg}.curl_httpclient"
-  # "${_py}-twisted: for ${_pkg}.platform.twisted"
-  # "${_py}-pycares: an alternative non-blocking DNS resolver"
+  # Let's keep one for reference
+  # "${_py}-at-some-point-in-the-future"
 )
 makedepends=(
   "${_py}-setuptools"
 )
 checkdepends=(
-  # "${_py}-pycurl"
-  # "${_py}-mock"
-  # "${_py}-twisted"
-  # "${_py}-trollius"
-  # "${_py}-monotonic"
+  # "${_py}-at-some-point-in-the-future"
 )
 provides=(
   "${_py}-${_pkg}=${pkgver}"
@@ -59,7 +58,6 @@ source=(
   "${pkgname}-${pkgver}.zip::${url}/archive/${_commit}.zip"
 )
 sha512sums=(
-
   '84477d2dc873a98d879fe26c35da7d97cd1be72463c4a62c1279ae9a434de3d4c4728c473c05697efbfa4a2c0a34e6514ea2cbde53a3ec546e20aa04d5cc5644'
 )
 

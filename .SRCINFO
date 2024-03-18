@@ -10,11 +10,19 @@ pkgbase = grok
 	arch = armv7h
 	arch = aarch64
 	arch = mips
-	license = lol
+	license = custom
 	makedepends = python-setuptools
+	depends = python-pytorch_lightning
+	depends = python-blobfile
+	depends = python-numpy
+	depends = python-torch
+	depends = python-tqdm
+	depends = python-scipy
+	depends = python-mod
+	depends = python-matplotlib
 	provides = python-grok=0.0.1
 	conflicts = python-grok=0.0.1
 	source = grok-0.0.1.zip::https://github.com/openai/grok/archive/3d64b1d8c1d595dd8ebdb7771998823f1b14c7b3.zip
-	sha512sums = hijess
+	sha512sums = 84477d2dc873a98d879fe26c35da7d97cd1be72463c4a62c1279ae9a434de3d4c4728c473c05697efbfa4a2c0a34e6514ea2cbde53a3ec546e20aa04d5cc5644
 
 pkgname = grok
