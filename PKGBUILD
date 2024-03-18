@@ -2,14 +2,14 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bamlss
-_pkgver=1.2-2
+_pkgver=1.2-3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Bayesian Additive Models for Location, Scale, and Shape (and Beyond)"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only OR GPL-3.0-only')
 depends=(
   blas
   lapack
@@ -48,12 +48,12 @@ optdepends=(
   r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3730ed71f5d1c06b53112ad2909fa372')
-sha256sums=('ed43c51e56529e8f797c17b8c2e7d9a3b147f955e4324c3d5b218be635177b4d')
+md5sums=('45e9d59e142198ad052ab39fccdacb04')
+b2sums=('df325db038fbe1d6b0455551788b7ed3265cedc82c8b07ff9a7c88e2f6e9201546aeeaad9e8ad29dbd5d7ee49333e83a1ce3a6b4dc0340ed9fb285b56ae87444')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
