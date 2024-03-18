@@ -1,8 +1,8 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
-_commit='c25986a65701dd7cd44a9f9af49bd0e2717d0264'
+_commit='f5a5fefa97f717dd704fa341dd26ab59bf0b0ac9'
 pkgname=alps
-pkgver=2024.02.04
+pkgver=2024.03.18
 pkgrel=1
 pkgdesc='A simple and extensible webmail'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -18,7 +18,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://git.sr.ht/~migadu/${pkgname}/archi
         "${pkgname}-user.service"
         "${pkgname}-plugins-path.patch"
         "${pkgname}-themes-path.patch")
-b2sums=('8da995f026249060322289efabfb2ac1ad6c0e9a003e491ecc6d2caa1e1a2efaa849478b212c7381c0919c895fc8e3e85b87e487a6ed5ec04b8df13009323305'
+b2sums=('20113df30a99b24076abcccb92c148c14d140150bb7e98bec32b678694bce609ab379e3df9e5c416e12fcc69c76c71b50a9438ee73a09ac76022d5115d4d3021'
         '8c9109649da6b030cd1c7ff32a5db1034391a8858593b649e953bd074b7329181c52575403d22b59113760423d15e0fb3cb3e8cdf5feb8415efe5aba936ae0c5'
         '56f6f6439e537901c953a840ff08c70c9acf63b029e3298e612fb75c152d198f4d1535327b911790c01ca74b5ef5bba2a98c2fb4f14180727a457ea5b846a74e'
         'a9ef4a29b26f950f3a1bd9f262a3c23bb731b79d15ff0cee979692b0b99cb0b678ed54da7fe36449ca146aa7e1da7ba7302fb7afc4620ef1a07a119ba789464c'
