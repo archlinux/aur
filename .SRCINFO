@@ -1,4 +1,4 @@
-pkgbase = freetype2
+pkgbase = freetype2-macos
 	pkgdesc = Font rasterization library with a patch to make it render text like on macOS
 	pkgver = 2.13.2
 	pkgrel = 1

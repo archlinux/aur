@@ -1,7 +1,7 @@
 # Maintainer: ryuukk_ <ryuukk.dev@gmail.com>
 # Contributor: ryuukk_ <ryuukk.dev@gmail.com>
 
-pkgbase=freetype2
+pkgbase=freetype2-macos
 pkgname=(
   freetype2-macos
   freetype2-demos
