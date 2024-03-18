@@ -1,0 +1,12 @@
+diff a/cmake/cef_variables.cmake b/cmake/cef_variables.cmake
+--- a/cmake/cef_variables.cmake
++++ b/cmake/cef_variables.cmake
+@@ -113,8 +113,6 @@
+     -fdata-sections                 # Enable linker optimizations to improve locality of reference for data sections
+     -ffunction-sections             # Enable linker optimizations to improve locality of reference for function sections
+     -fno-ident                      # Ignore the #ident directive
+-    -U_FORTIFY_SOURCE               # Undefine _FORTIFY_SOURCE in case it was previously defined
+-    -D_FORTIFY_SOURCE=2             # Add memory and string function protection (security feature, related to stack-protector)
+     )
+   list(APPEND CEF_LINKER_FLAGS
+     -fPIC                           # Generate position-independent code for shared libraries
