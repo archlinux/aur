@@ -31,8 +31,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DGENERATE_PYTHON_STUBS=ON \
         -Wno-dev
-    # TODO: stubs require -j1, ref https://github.com/jrl-umi3218/jrl-cmakemodules/issues/600
-    cmake --build "build-$pkgver" -j 1
+    cmake --build build
 }
 
 check() {
