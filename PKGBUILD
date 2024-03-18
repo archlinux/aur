@@ -3,7 +3,7 @@ pkgname=aechoterm-bin
 _pkgname=Aechoterm
 pkgver=4.0.1
 _electronversion=13
-pkgrel=4
+pkgrel=5
 pkgdesc="A free, cross-platform terminal and file management tool for accessing remote servers with SSH and SFTP protocols.闪令是一款免费的、跨平台的,以SSH、SFTP协议访问远程服务器的终端、文件管理工具"
 arch=(
     'aarch64'
@@ -15,8 +15,7 @@ license=('LicenseRef-custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
-    'hicolor-icon-theme'
+    "electron${_electronversion}-bin"
     'java-runtime'
     'python'
     'nodejs'
@@ -29,13 +28,14 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::https://ec.cnd.nantiangzzx.com/${_pkgname}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::https://ec.cnd.nantiangzzx.com/${_pkgname}_${pkgver}_amd64.deb")
 sha256sums=('cc65895a835817a900c9c2c4006a1738a6f2284cfa29eeb8283fd0043121931e'
-            'f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 sha256sums_aarch64=('5ad55272b26a667cfcca3cc8c31b0afdabae8c718694b645cb19c83dc7387838')
 sha256sums_x86_64=('c3cd799babbfca9a6c367891ed8612279bb59dd78ff93a374c304e9f69d78d43')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin} --no-sandbox|${pkgname%-bin}|g;s|Development|Utility|g" \
