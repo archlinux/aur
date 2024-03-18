@@ -2,10 +2,11 @@
 
 pkgname=123elf
 pkgver=1.0.0rc4
-pkgrel=1
+pkgrel=2
 pkgdesc="Native port of Lotus 1-2-3 to Linux."
 url="https://github.com/taviso/123elf"
 depends=(lib32-ncurses)
+makedepends=(cpio)
 arch=('i686' 'x86_64')
 license=('custom')
 source=(https://github.com/taviso/$pkgname/archive/refs/tags/v$pkgver.tar.gz
