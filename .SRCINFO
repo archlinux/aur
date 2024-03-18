@@ -1,17 +1,20 @@
 pkgbase = python-pyld
 	pkgdesc = JSON-LD processor written in Python
-	pkgver = 2.0.3
-	pkgrel = 2
+	pkgver = 2.0.4
+	pkgrel = 1
 	url = https://github.com/digitalbazaar/pyld
 	arch = any
 	license = BSD
-	depends = python-setuptools
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-frozendict
 	depends = python-aiohttp
 	depends = python-lxml
 	depends = python-requests
 	depends = python-cachetools
-	source = https://github.com/digitalbazaar/pyld/archive/2.0.3.tar.gz
-	sha512sums = ec12274cf7b6b6842c054e7c78a74a36d60496377d329c821a930dcf2000a02f24b77263d20086cdd83d28c1be37ab0b0c785026c7b3bf44cc1a42597410e769
+	source = https://github.com/digitalbazaar/pyld/archive/refs/tags/v2.0.4.tar.gz
+	sha512sums = d57ef3dbbd25eac8d42521c7a2b7c43d56ee6f5330b43267e178c78c0f28adf4f38c0b6863a891e3de3e6810991fa4fd3f2c4d2f2a1d19c891fa708dffce8edf
 
 pkgname = python-pyld
