@@ -1,0 +1,19 @@
+pkgbase = gng-git
+	pkgdesc = A simple puzzle game.
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/CommanderGL/gng
+	install = gng.install
+	arch = x86_64
+	license = CC-BY-NC-SA-4.0
+	makedepends = git
+	makedepends = base-devel
+	makedepends = vim
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_ttf
+	depends = sudo
+	source = gng::git+https://github.com/CommanderGL/gng.git
+	sha256sums = SKIP
+
+pkgname = gng-git

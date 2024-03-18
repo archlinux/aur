@@ -1,0 +1,5 @@
+pre_remove() {
+  sudo rm -rf /usr/bin/gng
+  sudo rm -rf /usr/share/applications/gng.desktop
+  sudo rm -rf /usr/share/icons/hicolor/128x128/apps/gng.png
+}
