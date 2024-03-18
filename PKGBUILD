@@ -3,7 +3,7 @@ pkgname=subtitler-bin
 _pkgname=Subtitler
 pkgver=1.5.5
 _electronversion=8
-pkgrel=8
+pkgrel=9
 pkgdesc="Quickly download subtitles"
 arch=("x86_64")
 url="https://s8sachin.github.io/subtitler/"
@@ -22,11 +22,12 @@ source=(
 )
 sha256sums=('ca37a8487fcf6283b36adcb43de9ebc4a12d7bd2ab96a73a1695f3c2b4d51f81'
             '61c4ef762e75d209db99b0ddd77c9931c1d966f19d72b5dc1f46e8041f18309c'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
