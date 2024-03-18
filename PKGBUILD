@@ -3,11 +3,10 @@
 
 pkgname=freetype2-macos
 pkgver=2.13.2
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="freetype2 with a patch to make it render text like on macOS"
 url="https://www.freetype.org/"
-conflicts=(freetype2)
 arch=(
   x86_64
 )
@@ -57,8 +56,11 @@ prepare() {
 }
 
 build() {
-  cd freetype-$pkgver
-  arch-meson build "${meson_options[@]}"
+  local meson_options=(
+    -D freetype2:default_library=shared
+  )
+
+  arch-meson freetype-$pkgver build "${meson_options[@]}"
   meson compile -C build
 }
 
@@ -67,9 +69,8 @@ check() {
 }
 
 package_freetype2-macos() {
-  provides=(
-    libfreetype.so
-  )
+  provides=(freetype2 libfreetype.so)
+  conflicts=(freetype2)
   install=freetype2.install
   backup=(etc/profile.d/freetype2.sh)
 
