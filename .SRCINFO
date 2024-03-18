@@ -1,7 +1,7 @@
 pkgbase = clevo-drivers-dkms-git
 	pkgdesc = Kernel module drivers for keyboard, keyboard backlight & general hardware I/O using the SysFS interface for Clevo hardware.
 	pkgver = 4.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/evorster/clevo-drivers
 	arch = x86_64
 	license = Other
@@ -20,6 +20,7 @@ pkgbase = clevo-drivers-dkms-git
 	provides = ite_8291_lb
 	provides = ite_8297
 	provides = ite_829x
+	conflicts = tuxedo-drivers-dkms
 	conflicts = tuxedo-keyboard-dkms
 	conflicts = tuxedo-keyboard-ite-dkms
 	source = git+https://gitlab.com/evorster/clevo-drivers.git

@@ -3,7 +3,7 @@
 _pkgname=clevo-drivers
 pkgname=clevo-drivers-dkms-git
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module drivers for keyboard, keyboard backlight & general hardware I/O using the SysFS interface for Clevo hardware."
 url="https://gitlab.com/evorster/clevo-drivers"
 license=("Other")
@@ -24,7 +24,7 @@ provides=('tuxedo-keyboard'
           'ite_8291_lb'
           'ite_8297'
           'ite_829x')
-conflicts=('tuxedo-keyboard-dkms' 'tuxedo-keyboard-ite-dkms')
+conflicts=('tuxedo-drivers-dkms' 'tuxedo-keyboard-dkms' 'tuxedo-keyboard-ite-dkms')
 #backup=(etc/modprobe.d/tuxedo_keyboard.conf)
 source=(git+https://gitlab.com/evorster/clevo-drivers.git tuxedo_io.conf dkms.conf)
 sha256sums=('SKIP'
