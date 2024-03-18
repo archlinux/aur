@@ -72,3 +72,4 @@ package() {
 	for application in $(cd applications && ls)
 	do ln -s "/usr/share/californium-tools/applications/$application" "$pkgdir/usr/share/applications/$application"
 	done
+}
