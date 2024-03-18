@@ -20,17 +20,15 @@ sha256sums_i686=('cb22b026e2d81c0de220238fa3d4e13a6d0016787b8c680923794296bbd548
 sha256sums_x86_64=('a9592cbdaebe11f01088e7b13fc3650d2091e406f6586b2e086e010fceeb95a8')
 
 pkgver() {
-if [ `uname -m` != "x86_64" ];
-then
-    printf "${_pkgver_i686}"
-else
-    printf "${pkgver}"
-fi
+    if [ `uname -m` != "x86_64" ]; then
+        printf "${_pkgver_i686}"
+    else
+        printf "${pkgver}"
+    fi
 }
 
 package() {
-    if [ `uname -m` != "x86_64" ];
-    then
+    if [ `uname -m` != "x86_64" ]; then
         printf "%b" "\e[1;31m==> IMPORTANT: Support for 32bit operating systems has ended with version 6.1.0. We strongly recommend upgrading to 64bit operating system.\n"
         printf "%b" "\e[1;31mThis package will install version 6.0.1 on 32bit systems which should not be used as it contains security vulnerabilities.\n"
     fi
