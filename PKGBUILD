@@ -4,10 +4,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-base-headless
-_basever=5.15.12
-pkgver=5.15.12+kde+r151
+_basever=5.15.13
+pkgver=5.15.13+kde+r138
 pkgrel=1
-_commit=a43df98d037ad07cf096ef2f775958ceba743613
+_commit=b9906b5233a80cab372c95ac4dd68b25bdca0646
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
