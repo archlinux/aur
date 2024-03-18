@@ -1,6 +1,6 @@
 pkgbase = galaxybudsclient-git
 	pkgdesc = Unofficial manager for the Samsung Galaxy Buds, Buds+, Buds Live and Buds Pro. Master branch.
-	pkgver = r1271.41befe8
+	pkgver = r1276.03742b2
 	pkgrel = 1
 	url = https://github.com/ThePBone/GalaxyBudsClient
 	arch = x86_64
