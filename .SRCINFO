@@ -1,12 +1,12 @@
 pkgbase = space-snake-bin
 	pkgdesc = A Desktop game built with Electron and Vue.js.
 	pkgver = 0.11.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/ilyagru/Space-Snake
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
-	depends = electron4
+	depends = electron4-bin
 	provides = space-snake=0.11.1
 	conflicts = space-snake
 	source = space-snake-0.11.1.zip::https://github.com/ilyagru/Space-Snake/releases/download/0.11.1/Space-Snake-linux-x64-v0.11.1.zip
@@ -14,6 +14,6 @@ pkgbase = space-snake-bin
 	source = space-snake.sh
 	sha256sums = b4ed62ff9b5dc3cc815f0ac5328dc602ce29f6bb3231beab622c246c7c2554f9
 	sha256sums = 2cf69008e16f9f81098eaed1b59e481bafb258606cc9171047db9b6fdec6cb9f
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = space-snake-bin

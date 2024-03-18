@@ -3,7 +3,7 @@ pkgname=space-snake-bin
 _pkgname=Space-Snake
 pkgver=0.11.1
 _electronversion=4
-pkgrel=7
+pkgrel=8
 pkgdesc="A Desktop game built with Electron and Vue.js."
 arch=('x86_64')
 url="https://github.com/ilyagru/Space-Snake"
@@ -11,7 +11,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'gendesk'
@@ -23,11 +23,12 @@ source=(
 )
 sha256sums=('b4ed62ff9b5dc3cc815f0ac5328dc602ce29f6bb3231beab622c246c7c2554f9'
             '2cf69008e16f9f81098eaed1b59e481bafb258606cc9171047db9b6fdec6cb9f'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories="Game" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
