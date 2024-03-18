@@ -3,7 +3,7 @@ pkgname=refi-app-bin
 _pkgname="Refi App"
 pkgver=0.0.19
 _electronversion=19
-pkgrel=7
+pkgrel=8
 pkgdesc="A tool to make interacting with Firestore less painful"
 arch=('x86_64')
 url="https://refiapp.io/"
@@ -12,7 +12,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'nodejs'
 )
 source=(
@@ -22,11 +22,12 @@ source=(
 )
 sha256sums=('01918b95b8109d2c02b0a2b517a5f59f8f795b02a02557cfd420f80fbd345dc4'
             'b2eb77a849db152dcb5ed71c597000a5dc3638559aefae0b5aa3454e8d7abe71'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\"|${pkgname%-bin} --no-sandbox %U|g" \
