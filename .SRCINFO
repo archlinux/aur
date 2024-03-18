@@ -15,7 +15,6 @@ pkgbase = ovito
 	depends = netcdf-openmpi
 	depends = ffmpeg
 	depends = qt6-base
-	depends = openssh
 	conflicts = ovito-git
 	source = https://gitlab.com/stuko/ovito/-/archive/v3.10.4/ovito-v3.10.4.tar.bz2
 	source = https://www.ovito.org/wp-content/uploads/logo_rgb-768x737.png
