@@ -26,7 +26,6 @@ pkgbase = xdg-desktop-portal-hyprland-git
 	provides = xdg-desktop-portal-impl
 	provides = xdg-desktop-portal-wlr
 	conflicts = xdg-desktop-portal-hyprland
-	conflicts = xdg-desktop-portal-wlr
 	backup = usr/share/xdg-desktop-portal/hyprland-portals.conf
 	source = xdg-desktop-portal-hyprland::git+https://github.com/hyprwm/xdg-desktop-portal-hyprland.git
 	sha256sums = SKIP
