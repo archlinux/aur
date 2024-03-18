@@ -3,7 +3,7 @@ pkgname=anubias-bin
 _pkgname=Anubias
 pkgver=1.0.0_beta1
 _electronversion=13
-pkgrel=7
+pkgrel=8
 pkgdesc="Develope mobile apps so easy and native with GUI"
 arch=('x86_64')
 url="https://anubias.app"
@@ -12,8 +12,7 @@ license=('GPL-3.0-only')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    "electron${_electronversion}"
-    'hicolor-icon-theme'
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'fuse2'
@@ -28,6 +27,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
