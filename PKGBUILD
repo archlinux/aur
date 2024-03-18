@@ -77,7 +77,6 @@ package_freetype2-macos() {
   provides=(
     libfreetype.so
   )
-  conflicts=()
   install=freetype2.install
   backup=(etc/profile.d/freetype2.sh)
 

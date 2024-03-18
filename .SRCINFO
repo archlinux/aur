@@ -37,5 +37,4 @@ pkgbase = freetype2-macos
 pkgname = freetype2-macos
 	install = freetype2.install
 	provides = libfreetype.so
-	conflicts = 
 	backup = etc/profile.d/freetype2.sh
