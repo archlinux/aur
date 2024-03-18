@@ -1,34 +1,72 @@
-# Maintainer: Giuseppe Calà <gcala at mailbox dot org>
+# Maintainer:
+# Contributor: Giuseppe Calà <gcala at mailbox dot org>
 
-pkgname=audiotube-git
-pkgver=23.01.0.r188.gf94c196
+_pkgname="audiotube"
+pkgname="$_pkgname-git"
+pkgver=24.02.0.r45.g90a7d10
 pkgrel=1
 pkgdesc="Client for YouTube Music"
+url="https://invent.kde.org/multimedia/audiotube"
+license=('GPL-2.0-only')
 arch=('x86_64' 'aarch64')
-url="https://invent.kde.org/plasma-mobile/audiotube"
-license=(GPL3)
-depends=('ki18n' 'kirigami2' 'python-ytmusicapi' 'yt-dlp' 'gst-plugins-good' 'qt5-imageformats' 'kcrash' 'purpose' 'futuresql-git')
-makedepends=('fakeroot' 'binutils' 'git' 'extra-cmake-modules' 'pybind11' 'qt5-svg' 'python-ytmusicapi' 'kirigami-addons')
-provides=('audiotube')
-conflicts=('audiotube')
-source=("git+${url}.git")
+
+depends=(
+  futuresql-qt6
+  kcoreaddons
+  kcrash
+  ki18n
+  kirigami-addons
+  kwindowsystem
+  purpose
+  python
+  python-ytmusicapi
+  qt6-5compat
+  qt6-base
+  qt6-declarative
+  qt6-imageformats
+  qt6-multimedia
+  qt6-svg
+  yt-dlp
+)
+makedepends=(
+  extra-cmake-modules
+  pybind11
+  qcoro-qt6
+  ninja
+  git
+)
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "$_pkgsrc"
+  local _tag=$(git tag | sort -rV | head -1)
+  local _version="${_tag#v}"
+  local _revision=$(git rev-list --count --cherry-pick "$_tag"...HEAD)
+  local _hash=$(git rev-parse --short=7 HEAD)
+  printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
 }
 
 build() {
-  cd "${pkgname%-git}"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -B build
-  make -C build
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DQT_MAJOR_VERSION=6
+    -DBUILD_TESTING=OFF
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  cd "${pkgname%-git}"
-  make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
+  DESTDIR="$pkgdir" cmake --install build
 }
