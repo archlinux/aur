@@ -2,7 +2,7 @@
 pkgname=eagle-animation-bin
 _pkgname="Eagle Animation"
 _appname="@brick-a-brack${pkgname%-bin}"
-pkgver=2.4.0
+pkgver=2.5.1
 _electronversion=29
 pkgrel=1
 pkgdesc="An awesome, free and open-source animation software."
@@ -21,12 +21,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1f6f8b4f213a458ac5a24b6927dde5b6a38d8e9a29708b981bd252491dc0ce34'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+sha256sums=('11056fc42714838dc2dc50318dbf73e0c843e52e8ebcbc424c2135718ce99996'
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed -e "s|\"/opt/${_pkgname}/${pkgname%-bin}\"|${pkgname%-bin}|g" \
