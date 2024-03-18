@@ -1,0 +1,19 @@
+pkgbase = ai-gate
+	pkgdesc = Brings ChatGPT, Bard, Perplexity and Claude together as collection for your convenience. NO API key needed.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/inulute/ai-gate
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nodejs
+	makedepends = git
+	depends = electron22
+	conflicts = ai-gate
+	source = ai-gate.git::git+https://github.com/inulute/ai-gate.git#tag=v2.0.0
+	source = ai-gate.sh
+	sha256sums = 3b543454994138b9c5963f654656e87feaf1c8a245e108ff20e8130eb13d04dd
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+
+pkgname = ai-gate
