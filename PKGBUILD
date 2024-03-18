@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=p3x-redis-ui-bin
 _appname=P3X-Redis-UI
-pkgver=2024.4.156
+pkgver=2024.4.158
 _electronversion=29
 pkgrel=1
 pkgdesc="A very functional handy database GUI and works in your pocket on the responsive web or as a desktop app"
@@ -17,7 +17,6 @@ conflicts=("${pkgname%-bin}=${pkgver}")
 providers=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'hicolor-icon-theme'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_armv7l.deb")
@@ -28,9 +27,9 @@ source=(
 )
 sha256sums=('b7c3dc57a4afce84fc27b0fdd02472cd670eb956a45f654a96a42019bb1599ef'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('965bdf9abdc772019c7b23119d9b13d67aaedc8e2d2798198b5e2d984b26ce36')
-sha256sums_armv7h=('952b217590592452b1e4d629320663db82921d6466500ca757f77c95247b2e6b')
-sha256sums_x86_64=('5e33c83c36a9ccc7e0a2f28812369902d83ed7ffbb74fc33351d11a4a2ba7324')
+sha256sums_aarch64=('19a95b14b15ecfc8cb610dbb39f6d01777fef02cd24f61ce5a716fce72a3eb71')
+sha256sums_armv7h=('bf49d41566cee413b1ab089abd574378d2eae63d1a650ba69d9f4be0cdbd8c30')
+sha256sums_x86_64=('9920c94b9ab3f117c8914f0845e50a982fc2830f526257bde4ca2adea393434b')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
