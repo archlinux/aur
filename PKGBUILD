@@ -1,10 +1,10 @@
-# Maintainer: Guilhem "Nim65s" Saurel <guilhem.saurel@laas.fr>
+# Maintainer: Guilhem Saurel <guilhem.saurel@laas.fr>
 
 _org='stack-of-tasks'
 _pkgname='pinocchio'
-_pkgver=2.6.19
+_pkgver=2.7.0
 pkgname="$_pkgname-git"
-pkgver=2.6.19.r6529.f1b5fc6
+pkgver=2.7.0.r6529.877099d
 pkgrel=1
 pkgdesc="Dynamic computations using Spatial Algebra"
 arch=('i686' 'x86_64')
