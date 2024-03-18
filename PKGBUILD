@@ -59,12 +59,13 @@ source=(
   "${pkgname}-${pkgver}.zip::${url}/archive/${_commit}.zip"
 )
 sha512sums=(
-  'hijess'
+
+  '84477d2dc873a98d879fe26c35da7d97cd1be72463c4a62c1279ae9a434de3d4c4728c473c05697efbfa4a2c0a34e6514ea2cbde53a3ec546e20aa04d5cc5644'
 )
 
 build() {
   cd \
-    "${_pkg}-${pkgver}"
+    "${_pkg}-${_commit}"
   "${_py}" \
     setup.py \
       build
@@ -72,7 +73,7 @@ build() {
 
 package() {
   cd \
-    "${_pkg}-${pkgver}"
+    "${_pkg}-${_commit}"
   "${_py}" \
     setup.py \
       install \
