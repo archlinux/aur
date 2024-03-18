@@ -2,7 +2,7 @@
 pkgname=youtube-desktop-bin
 pkgver=1.0.1
 _electronversion=23
-pkgrel=6
+pkgrel=7
 pkgdesc="A simple YouTube Desktop application, built using Electron.js"
 arch=('x86_64')
 url="https://github.com/mikepruett3/youtube-desktop"
@@ -19,11 +19,12 @@ source=(
 )
 sha256sums=('2a27f325d9c1e3e256723d8d3928b6b5ffa624c2ae89e2cccdee36c3420a61b3'
             '82f04c17c97a90cb676f7eec2bdeca09cfff8a6779b310226d8e750a70abad79'
-            'f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
 }
