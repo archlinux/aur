@@ -1,6 +1,6 @@
 pkgbase = python-blendmodes
 	pkgdesc = Use this module to apply a number of blending modes to a background and foreground image
-	pkgver = 2024.1
+	pkgver = 2024.1.1
 	pkgrel = 1
 	url = https://github.com/FHPythonUtils/BlendModes
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-blendmodes
 	depends = python-pillow
 	depends = python-numpy
 	depends = python-aenum
-	source = https://files.pythonhosted.org/packages/source/b/blendmodes/blendmodes-2024.1.tar.gz
-	sha512sums = dbdf5708d440591e1927b3e70c9c09e6d633f4194f2650a56b8b245708b311f967a063b7ce0ee9c98d9a6fe46418bd4294cecd77ebdebc3c99154d34e583ce7a
+	source = https://files.pythonhosted.org/packages/source/b/blendmodes/blendmodes-2024.1.1.tar.gz
+	sha512sums = 81d3d904d0164a0798f481d372deb48e651bfa95b623f7f3fe9df814b435b63e1e1e23c91feff6e4ca9957576f351d8a37a10ff1732b9c33e1566bb5ab631487
 
 pkgname = python-blendmodes
