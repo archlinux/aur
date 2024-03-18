@@ -2,12 +2,12 @@
 
 _pyname=uharfbuzz
 pkgname=python-$_pyname
-pkgver=0.39.0
+pkgver=0.39.1
 pkgrel=1
 pkgdesc='Streamlined Cython bindings for the harfbuzz shaping engine'
 arch=(x86_64)
 url="https://github.com/harfbuzz/$_project"
-license=(Apache)
+license=(Apache-2.0)
 depends=(python)
 makedepends=(cython
              python-{build,installer,wheel}
@@ -16,7 +16,7 @@ makedepends=(cython
 checkdepends=(python-pytest)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.zip")
-sha256sums=('06001ab50339003b04b194fd3804e3292c023b3f1d5b376f7e128891cc584491')
+sha256sums=('68c341f7cc9e43418b2db295eb679ed6dc638d58c11cf279d9bd28ce8a3ade06')
 
 build() {
 	cd "$_archive"
