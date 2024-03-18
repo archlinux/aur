@@ -1,7 +1,7 @@
 # Maintainer: Moabeat <moabeat@berlin.de>
 
 pkgname=beaver-notes
-pkgver=2.9.0
+pkgver=3.0.0
 pkgrel=1
 epoch=
 pkgdesc="A privacy-focused, cross-platform note-taking application."
@@ -9,12 +9,12 @@ _electron=electron28
 arch=('x86_64')
 url="https://www.beavernotes.com/"
 license=('MIT')
-depends=("$_electron" 'nspr' 'libcups' 'mesa' 'libxshmfence' 'libxcomposite' 'libdrm' 'libxfixes' 'libxrandr' 'libxdamage' 'nss' 'hicolor-icon-theme' 'expat' 'libxcb' 'glibc' 'glib2' 'gcc-libs' 'libx11')
-makedepends=('asar' 'npm' 'yarn' 'nodejs' 'imagemagick' 'libxcrypt-compat')
+depends=("$_electron" 'hicolor-icon-theme')
+makedepends=('asar' 'npm' 'yarn' 'nodejs' 'libxcrypt-compat')
 provides=('beaver-notes')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Daniele-rolli/Beaver-Notes/archive/refs/tags/$pkgver.tar.gz"
         "beaver-notes.desktop")
-sha256sums=("134b091e4beb2b98e9d8cfaa8006b4d2ddaa573c45092fc6814663c0d165042d"
+sha256sums=("30608143bbbff4388dd935ce65e340afa03f3d13fee341e7ee368bb2fd24dfc0"
             "88c929e920a36084f5257c6d77eee2e75e6b27938c52205c55c25e08bfe89420")
 
 prepare() {
