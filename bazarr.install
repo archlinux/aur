@@ -1,10 +1,10 @@
 #!/bin/sh
 
 post_install() {
-    echo " Create a file named conf"
-    echo " in /etc/runit/sv/bazarr"
-    echo " with `GROUPS=":group1:group2:etc"`"
-    echo " to allow bazarr to modify sonarr, radarr, and torrent files."
+    echo "        Create a file named conf"
+    echo "        in /etc/runit/sv/bazarr"
+    echo "        with GROUPS=\":group1:group2:etc\""
+    echo "        to allow bazarr to modify sonarr, radarr, and torrent files."
 }
 
 post_upgrade() {
