@@ -1,12 +1,11 @@
 pkgbase = eusoft-ting-en-bin
 	pkgdesc = 听力统计、笔记同步、语音高亮跟随，让您轻松愉快学英语
 	pkgver = 9.7.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://dict.eudic.net/ting
 	arch = x86_64
 	license = LicenseRef-custom
-	depends = electron11
-	depends = hicolor-icon-theme
+	depends = electron11-bin
 	conflicts = eusoft-ting-en
 	conflicts = eudic-ting_en
 	source = eusoft-ting-en-9.7.0.deb::https://static.frdic.com/pkg/ting_en/ting_en.deb
@@ -14,6 +13,6 @@ pkgbase = eusoft-ting-en-bin
 	source = eusoft-ting-en.sh
 	sha256sums = 47b4bd3aa25299fa835f7141e370aa679f938ce573a367418ad2d4ac2aa3a99c
 	sha256sums = 17651cf7ae49b0372b6b6812d8b3b066203892c9fbe0b04b25efec0ab038c12b
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = eusoft-ting-en-bin
