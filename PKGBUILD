@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=criticality_score-git
-pkgver=2.0.2.r7.ga486176
-pkgrel=2
+pkgver=2.0.3.r6.g27833b0
+pkgrel=1
 pkgdesc="Gives criticality score for an open source project"
 arch=('i686' 'x86_64')
 url="https://github.com/ossf/criticality_score"
-license=('Apache')
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('git' 'go')
 provides=("criticality_score=$pkgver")
@@ -49,7 +49,9 @@ package() {
 
   GOBIN="$pkgdir/usr/bin" \
     go install \
+      ./cmd/collect_signals \
       ./cmd/criticality_score \
+      ./cmd/csv_transfer \
       ./cmd/enumerate_github \
       ./cmd/scorer
 

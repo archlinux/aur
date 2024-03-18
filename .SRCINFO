@@ -1,15 +1,15 @@
 pkgbase = criticality_score-git
 	pkgdesc = Gives criticality score for an open source project
-	pkgver = 2.0.2.r7.ga486176
-	pkgrel = 2
+	pkgver = 2.0.3.r6.g27833b0
+	pkgrel = 1
 	url = https://github.com/ossf/criticality_score
 	arch = i686
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	provides = criticality_score=2.0.2.r7.ga486176
+	provides = criticality_score=2.0.3.r6.g27833b0
 	conflicts = criticality_score
 	source = git+https://github.com/ossf/criticality_score.git
 	sha256sums = SKIP
