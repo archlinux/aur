@@ -4,6 +4,7 @@ pkgname=smoothpaper
 pkgdesc="A wallpaper changer daemon for X11 Window Mangers with smooth transitions between wallpapers."
 pkgver=1.0.1
 pkgrel=1
+url=https://github.com/matjam/smoothpaper
 arch=(x86_64)
 depends=('libx11' 'libxrandr' 'libxinerama' 'libxcursor' 'libxext')
 makedepends=('cmake' 'make' 'base-devel' 'ninja' 'gcc' 'git')
