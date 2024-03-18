@@ -4,7 +4,7 @@ pkgname="${_pkgname}-player-bin"
 _appname=Amethyst
 pkgver=1.9.16
 _electronversion=24
-pkgrel=3
+pkgrel=4
 pkgdesc="A cross-platform music player made with Typescript"
 arch=(
     "aarch64"
@@ -16,7 +16,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
@@ -25,13 +25,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('80d12b7c086562e81c66238a2b7c596c335a4da2a047f9880c39ee03b85c28bb'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 sha256sums_aarch64=('01927aaf04d31e5249e06933e1c78fc624112f034add2f0a3e7767e908dfc52a')
 sha256sums_x86_64=('2d90947460494f3ba346109d5101b1fbb3c12010fbfd098526f31ba81bc1f1e1')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_appname}/${_pkgname}|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g;s|Music;|AudioVideo;|g" \
