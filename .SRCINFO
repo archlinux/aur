@@ -1,5 +1,5 @@
 pkgbase = switcheroo-gtk4-git
-	pkgdesc = Convert and manipulate images
+	pkgdesc = Convert and manipulate images (latest commit)
 	pkgver = 2.1.0.r1.g5fda201
 	pkgrel = 1
 	url = https://gitlab.com/adhami3310/Switcheroo
