@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tictoc
-_pkgver=1.2
+_pkgver=1.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Functions for Timing R Scripts, as Well as Implementations of \"Stack\" and \"StackList\" Structures"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -16,8 +16,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('dd342dc02c50975774dde3baf3773767')
-b2sums=('55417244b344a3ec78679454893502ec77964249bf943b0f27311b8331f08acd1269fa47e220ba0e36c35294b67b2fa0025a97b73828cf2500af776d32d757e4')
+md5sums=('0cbeed08aded314a387b93d59420e371')
+b2sums=('3fa1a833f87b163c92e207f071800ce3bf4fa266c399a6289ea3170fc7039b45eb8dcb58af0357aa09287e39e90baadf8c1f7fd737827308afafd28ec4dfcbc7')
 
 build() {
   mkdir build
