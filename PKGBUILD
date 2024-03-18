@@ -7,13 +7,14 @@
 
 pkgname=wineasio
 pkgver=1.2.0
-pkgrel=4
+pkgrel=5
 
 pkgdesc="ASIO driver implementation for Wine"
 url="https://github.com/wineasio/wineasio"
 arch=('x86_64')
 license=('LGPL')
 
+options=('!debug')
 depends=('jack' 'lib32-jack' 'python-pyqt5' 'realtime-privileges' 'wine')
 makedepends=('gcc')
 
