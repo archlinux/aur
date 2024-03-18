@@ -5,15 +5,15 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-pixman
 pkgver=0.43.4
-pkgrel=1
-pkgdesc="The pixel-manipulation library for X and cairo (android)"
+pkgrel=2
+pkgdesc="The pixel-manipulation library for X and cairo (Android, ${_android_arch})"
 arch=('any')
 url="http://xorg.freedesktop.org"
 license=("custom")
 depends=('android-ndk')
-options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=("android-meson"
              "android-${_android_arch}-libpng")
+options=(!strip !buildflags staticlibs !emptydirs)
 source=("http://xorg.freedesktop.org/releases/individual/lib/pixman-${pkgver}.tar.xz")
 md5sums=('ca6767b8056637d690cd17970daf4b18')
 
