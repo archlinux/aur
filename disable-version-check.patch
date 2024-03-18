@@ -1,27 +1,33 @@
---- a/tools/build/src/tools/common.jam	2019-09-18 16:03:02.035995695 +0200
-+++ b/tools/build/src/tools/common.jam	2019-09-18 16:03:36.386156355 +0200
-@@ -974,16 +974,16 @@
+--- a/tools/build/src/tools/common.jam	2023-02-03 10:57:59.385098144 +0100
++++ b/tools/build/src/tools/common.jam	2023-02-03 11:00:34.982146918 +0100
+@@ -1127,18 +1127,18 @@
+         import $(toolset) ;
+         local tool-version = [ $(toolset).get-full-version $(command) ] ;
+ 
+-        import version ;
+-        if ! [ version.version-compatible [ SPLIT_BY_CHARACTERS $(version) : . ]
+-                                        : [ SPLIT_BY_CHARACTERS $(tool-version) : . ] ]
+-        {
+-            errors.error toolset $(toolset) "initialization:"
+-                : version '$(version)' requested but
+-                    '$(tool)-$(version)' not found and version
+-                    '$(tool-version:J=.)' of default '$(command)'
+-                    does not match
+-                : initialized from [ errors.nearest-user-location ]
+-                ;
+-        }
++        #import version ;
++        #if ! [ version.version-compatible [ SPLIT_BY_CHARACTERS $(version) : . ]
++        #                                : [ SPLIT_BY_CHARACTERS $(tool-version) : . ] ]
++        #{
++        #    errors.error toolset $(toolset) "initialization:"
++        #        : version '$(version)' requested but
++        #            '$(tool)-$(version)' not found and version
++        #            '$(tool-version:J=.)' of default '$(command)'
++        #            does not match
++        #        : initialized from [ errors.nearest-user-location ]
++        #        ;
++        #}
      }
- 
-     # From GCC 5, versioning changes and minor becomes patch
--    if $(tag) = gcc && [ numbers.less 4 $(version[1]) ]
--    {
--        version = $(version[1]) ;
--    }
-+    #if $(tag) = gcc && [ numbers.less 4 $(version[1]) ]
-+    #{
-+    #    version = $(version[1]) ;
-+    #}
- 
-     # Ditto, from Clang 4
--    if ( $(tag) = clang || $(tag) = clangw ) && [ numbers.less 3 $(version[1]) ]
--    {
--        version = $(version[1]) ;
--    }
-+    #if ( $(tag) = clang || $(tag) = clangw ) && [ numbers.less 3 $(version[1]) ]
-+    #{
-+    #    version = $(version[1]) ;
-+    #}
- 
-     # On intel, version is not added, because it does not matter and it is the
-     # version of vc used as backend that matters. Ideally, we should encode the
+     #3) default: no command and no version specified, try using "$(tool)"
+     else
