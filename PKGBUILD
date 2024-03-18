@@ -7,7 +7,7 @@
 
 pkgname=amarok-git
 pkgver=2.9.71.r347.g14889cf
-pkgrel=2
+pkgrel=3
 pkgdesc="The powerful music player for KDE"
 arch=("i686" "x86_64")
 url="http://amarok.kde.org"
@@ -63,7 +63,7 @@ build() {
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DBUILD_TESTING=OFF \
         -DCMAKE_BUILD_TYPE=Release
-    make -j$(nproc)
+    make
 }
 
 package(){
