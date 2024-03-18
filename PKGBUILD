@@ -3,12 +3,12 @@
 _pkgname=coGPS
 _pkgver=1.46.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
-pkgrel=1
-pkgdesc='cancer outlier Gene Profile Sets'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="cancer outlier Gene Profile Sets"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r
 )
@@ -16,14 +16,15 @@ optdepends=(
   r-limma
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a7d77ed813ee2901ad1504856720f0735aabf19e76b95edf99a3da6c911a1752')
+md5sums=('a824d8a41fee47628eb7f369adef4a2c')
+b2sums=('93638d4629abbc5660873ef47fe7c49025cfa8dc8d3bde46631c7c96b014a382560a6e5f7be643d6a0ef622d90cf32de3eed9cdcd82808b06898004b218ef4f6')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
