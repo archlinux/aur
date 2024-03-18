@@ -3,7 +3,7 @@ pkgname=duskplayer-bin
 _pkgname="DuskPlayer"
 pkgver=7.0.0
 _electronversion=7
-pkgrel=4
+pkgrel=5
 pkgdesc="A minimalistic music player, designed for simplicity. "
 arch=("x86_64")
 url="https://github.com/Aveek-Saha/DuskPlayer"
@@ -11,7 +11,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'hicolor-icon-theme'
 )
 source=(
@@ -21,11 +21,12 @@ source=(
 )
 sha256sums=('4ac36192c1dccb4b33ba9483c6bd60fbc3f588509826e846ab5baaa1b43111ad'
             '634de9f3cc2e60e2040fb2162e8722d13ee3d863d9b5a1c65c3e08a6149bee1c'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g;s|Utility|AudioVideo|g" \
