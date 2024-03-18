@@ -1,0 +1,18 @@
+pkgbase = fnb-git
+	pkgdesc = Tool for packing and unpacking XNB files and managing .tmod file archives
+	pkgver = 0.1.0.r0.g5ac79b1
+	pkgrel = 1
+	url = https://github.com/steviegt6/fnb
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk-8.0
+	makedepends = git
+	depends = dotnet-runtime-8.0
+	depends = libdeflate
+	depends = zlib
+	options = !strip
+	options = !debug
+	source = git+https://github.com/steviegt6/fnb
+	sha256sums = SKIP
+
+pkgname = fnb-git
