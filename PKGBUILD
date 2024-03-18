@@ -1,48 +1,76 @@
-# Maintainer: Jonas Witschel <diabonas@archlinux.org>
-pkgname=pdftk-git
-pkgver=3.0.0.r277.31e8eca
+# Maintainer:
+# Contributor: Jonas Witschel <diabonas@archlinux.org>
+
+# options
+: ${_jrever:=8}
+: ${_jdkver:=17}
+
+: ${_build_git:=true}
+
+unset _pkgtype
+[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
+
+# basic info
+_pkgname="pdftk"
+pkgname="$_pkgname${_pkgtype:-}"
+pkgver=3.3.3.r17.gd0d4a0b
 pkgrel=1
-pkgdesc='Command-line tool for working with PDFs'
+pkgdesc="Command-line tool for working with PDFs"
+url="https://gitlab.com/pdftk-java/pdftk"
+license=('GPL-2.0-or-later')
 arch=('any')
-url='https://gitlab.com/pdftk-java/pdftk'
-license=('GPL')
-depends=('java-runtime-headless')
-makedepends=('git' 'ant' 'bcprov' 'java-commons-lang')
-checkdepends=('java-hamcrest' 'junit' 'junit-system-rules' 'poppler')
-optdepends=('bcprov: encrypted PDF support'
-            'java-commons-lang: dump_data operation support')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("git+$url.git" 'pdftk.sh')
-sha512sums=('SKIP'
-            'deceb38223617296c1cb7b6539632168922d39f8ba3bccb79eefafd3799afe0399429a7e51228fef26a6917170889f298a0ff6b2b9a9b3a3ab8bdaa28ecb739a')
+
+depends=(
+  "bcprov"
+  "java-commons-lang"
+  "java-runtime-headless>=${_jrever:-8}"
+)
+makedepends=(
+  "git"
+  "gradle"
+  "jdk${_jdkver}-openjdk"
+)
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "${pkgname%-git}"
-	git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  local _tag=$(git tag | sort -rV | head -1)
+  local _version="${_tag#v}"
+  local _revision=$(git rev-list --count --cherry-pick "$_tag"...HEAD)
+  local _hash=$(git rev-parse --short=7 HEAD)
+  printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
 }
 
 prepare() {
-	cd "${pkgname%-git}"
-	mkdir lib
-	ln -s /usr/share/java/{bcprov/bcprov,commons-lang/commons-lang,hamcrest-core,junit,junit-system-rules/system-rules}.jar lib
-	# No need for code coverage reports during tests
-	sed -ri '/<\/?jacoco:coverage>/d' build.xml
+  [ -n "$_jdkver" ] && export JAVA_HOME="/usr/lib/jvm/java-${_jdkver}-openjdk"
+  [ -n "$_jdkver" ] && export PATH="/usr/lib/jvm/java-${_jdkver}-openjdk/bin:$PATH"
+  :
 }
 
 build() {
-	cd "${pkgname%-git}"
-	ant jar
+  cd "$_pkgsrc"
+  gradle -Dorg.gradle.daemon=false build
 }
 
 check() {
-	cd "${pkgname%-git}"
-	ant test-run
+  cd "$_pkgsrc"
+  gradle -Dorg.gradle.daemon=false test
 }
 
 package() {
-	cd "${pkgname%-git}"
-	install -Dm644 build/jar/pdftk.jar -t "$pkgdir/usr/share/java/$pkgname"
-	install -Dm644 pdftk.1 -t "$pkgdir/usr/share/man/man1"
-	install -Dm755 "$srcdir/pdftk.sh" "$pkgdir/usr/bin/pdftk"
+  cd "$_pkgsrc"
+  install -Dm644 build/libs/pdftk.jar -t "$pkgdir/usr/share/java/$_pkgname"
+  install -Dm644 pdftk.1 -t "$pkgdir/usr/share/man/man1"
+
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/pdftk" <<END
+#!/usr/bin/env bash
+CP='/usr/share/java/bcprov/bcprov.jar:/usr/share/java/commons-lang/commons-lang.jar:/usr/share/java/$_pkgname/pdftk.jar'
+exec /usr/bin/java -cp "\$CP" com.gitlab.pdftk_java.pdftk "\$@"
+END
 }

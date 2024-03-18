@@ -1,26 +1,19 @@
 pkgbase = pdftk-git
 	pkgdesc = Command-line tool for working with PDFs
-	pkgver = 3.0.0.r277.31e8eca
+	pkgver = 3.3.3.r17.gd0d4a0b
 	pkgrel = 1
 	url = https://gitlab.com/pdftk-java/pdftk
 	arch = any
-	license = GPL
-	checkdepends = java-hamcrest
-	checkdepends = junit
-	checkdepends = junit-system-rules
-	checkdepends = poppler
+	license = GPL-2.0-or-later
 	makedepends = git
-	makedepends = ant
-	makedepends = bcprov
-	makedepends = java-commons-lang
-	depends = java-runtime-headless
-	optdepends = bcprov: encrypted PDF support
-	optdepends = java-commons-lang: dump_data operation support
-	provides = pdftk
+	makedepends = gradle
+	makedepends = jdk17-openjdk
+	depends = bcprov
+	depends = java-commons-lang
+	depends = java-runtime-headless>=8
+	provides = pdftk=3.3.3
 	conflicts = pdftk
-	source = git+https://gitlab.com/pdftk-java/pdftk.git
-	source = pdftk.sh
-	sha512sums = SKIP
-	sha512sums = deceb38223617296c1cb7b6539632168922d39f8ba3bccb79eefafd3799afe0399429a7e51228fef26a6917170889f298a0ff6b2b9a9b3a3ab8bdaa28ecb739a
+	source = pdftk::git+https://gitlab.com/pdftk-java/pdftk.git
+	sha256sums = SKIP
 
 pkgname = pdftk-git
