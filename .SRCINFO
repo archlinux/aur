@@ -1,16 +1,16 @@
 pkgbase = flipt-bin
 	pkgdesc = An open source, self-hosted feature flag solution
-	pkgver = 1.38.1
+	pkgver = 1.38.2
 	pkgrel = 1
 	url = https://flipt.io
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
-	provides = flipt=1.38.1
+	provides = flipt=1.38.2
 	conflicts = flipt
-	source_aarch64 = flipt-1.38.1-aarch64.tar.gz::https://github.com/flipt-io/flipt/releases/download/v1.38.1/flipt_Linux_arm64.tar.gz
-	sha256sums_aarch64 = aedb1d0474a63a7a180105dbc2e6ec15a804308a85531dd62b5d8dd525e7cbf5
-	source_x86_64 = flipt-1.38.1-x86_64.tar.gz::https://github.com/flipt-io/flipt/releases/download/v1.38.1/flipt_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 9a24f42e45db7ef76deafadba936b98c95d0abd8958eed85ec734ce8286b6833
+	source_aarch64 = flipt-1.38.2-aarch64.tar.gz::https://github.com/flipt-io/flipt/releases/download/v1.38.2/flipt_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 4d08f9d2d848aa7c86afc74aa40452ce11a494facc0d1c8cab94c0ccb9ca66c0
+	source_x86_64 = flipt-1.38.2-x86_64.tar.gz::https://github.com/flipt-io/flipt/releases/download/v1.38.2/flipt_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = d1a0495fb4546766de33ef7e3c08c7de04563b8978052a3a2ea5ecd7d5cafb21
 
 pkgname = flipt-bin
