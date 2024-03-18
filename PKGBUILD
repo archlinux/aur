@@ -1,6 +1,6 @@
 # Maintainer: Obscurely <adrian.obscurely@protonmail.com>
 pkgname=falion-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 epoch=
 pkgdesc="An open source, programmed in rust, privacy focused tool for scraping programming resources (like stackoverflow) fast, efficient and asynchronous/parallel using the CLI or GUI. "
@@ -10,7 +10,7 @@ license=('MIT')
 provides=('falion-bin')
 conflicts=('falion' 'falion-git')
 source=("https://github.com/Obscurely/falion/releases/download/v${pkgver}-stable/falion-linux.tar.gz")
-sha256sums=("301ae741284e64f5d42155ff459c1ac517d018f25c538edc224eefb8bbf5f53e")
+sha256sums=("ba2e17d397f2c29140d3f25f2e5ae51ed2686e2732d53349011a2bfb1ab25a5d")
 
 package() {
     cd "$srcdir/"
