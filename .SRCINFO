@@ -1,0 +1,19 @@
+pkgbase = python-aiohttp-sse
+	pkgdesc = Server-sent events support for aiohttp
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/aio-libs/aiohttp-sse
+	arch = x86_64
+	license = Apache
+	checkdepends = python-pytest
+	checkdepends = python-pytest-aiohttp
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-cov
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-aiohttp
+	source = python-aiohttp-sse-2.2.0.tar.gz::https://github.com/aio-libs/aiohttp-sse/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-aiohttp-sse
