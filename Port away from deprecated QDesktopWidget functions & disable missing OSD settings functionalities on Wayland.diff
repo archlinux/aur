@@ -1,5 +1,5 @@
 diff --git a/src/configdialog/dialogs/NotificationsConfig.cpp b/src/configdialog/dialogs/NotificationsConfig.cpp
-index 0c16fdcb1764566898e11f54937984123f2a68ac..1c3387206a15386db26a9ad39811dcfcb7d4bacb 100644
+index 00a15f6befab20dcc0438c27a0b822115abf4512..0e0049abf86ce6fe1bbbd56e640921997bdd07f5 100644
 --- a/src/configdialog/dialogs/NotificationsConfig.cpp
 +++ b/src/configdialog/dialogs/NotificationsConfig.cpp
 @@ -51,7 +51,11 @@ NotificationsConfig::NotificationsConfig( Amarok2ConfigDialog* parent )
@@ -87,7 +87,7 @@ index fb59c98224448de12a8b2317e765047c9e32f8ff..cfda1f109cb0aad06a7360774f8bf938
      {
          m_schemaLineLayout->insertWidget( 0,
 diff --git a/src/widgets/Osd.cpp b/src/widgets/Osd.cpp
-index dc1cf722e3c0217d3bac52d25abffeca2cee4a06..1eee135be479cdecb33c8e77b920ab8704917a47 100644
+index 4de9749a76d5a207c1845792312cf37a8e231411..10e58c70038889c889e6ddfe745e6ce39f678fcb 100644
 --- a/src/widgets/Osd.cpp
 +++ b/src/widgets/Osd.cpp
 @@ -45,6 +45,7 @@

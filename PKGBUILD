@@ -6,7 +6,7 @@
 # Contributor: Maël Kerbiriou <mael.kerbiriou-at-free-dot-fr>
 
 pkgname=amarok-git
-pkgver=2.9.71.r328.g4bc5627
+pkgver=2.9.71.r347.g14889cf
 pkgrel=1
 pkgdesc="The powerful music player for KDE"
 arch=("i686" "x86_64")
@@ -14,27 +14,28 @@ url="http://amarok.kde.org"
 license=("GPL2" "LGPL2.1" "FDL")
 depends=("threadweaver5" "qt5-webengine" "phonon-qt5" "qt5-declarative" "qt5-script"
          "kcmutils5" "knewstuff5" "ktexteditor5" "kdnssd5" "kirigami2"
-         "mariadb" "libmariadbclient" "fftw" "liblastfm-qt5" "ffmpeg"  "taglib" "libofa")
+         "mariadb" "libmariadbclient" "fftw" "liblastfm-qt5" "ffmpeg"  "taglib>=2.0" "libofa")
 makedepends=("git" "extra-cmake-modules" "kdoctools5" "gdk-pixbuf2" "knotifyconfig5"
-             "libmtp" "libgpod" "loudmouth" "libmygpo-qt5")
+             "libmtp" "libgpod" "loudmouth" "libmygpo-qt5" "qt5-tools")
 optdepends=("libmtp: support for portable media devices"
             "ifuse: support for Apple iPod Touch and iPhone"
             "libgpod: support for Apple iPod audio devices"
             "loudmouth: backend needed by mp3tunes for syncing"
             "libmygpo-qt5: gpodder.net Internet Service"
+            "taglib-extras: taglib plugins for Audible and RealMedia files"
             "gmock: tests")
-conflicts=("amarok" "taglib-extras")
+conflicts=("amarok" "taglib-extras<1.0.1-8")
 provides=("amarok")
 source=("git+https://invent.kde.org/multimedia/amarok.git"
-        "Refresh more deprecated codepaths.diff"
+        # https://invent.kde.org/multimedia/amarok/-/merge_requests/55
         "Port away from deprecated QDesktopWidget functions & disable missing OSD settings functionalities on Wayland.diff"
+        # https://invent.kde.org/multimedia/amarok/-/merge_requests/59
         "Fix crash in PodcastSettingsDialog initialization.diff"
-        "Use non-deprecated TagLib functions (fix build with TagLib 2).diff")
+       )
 sha512sums=("SKIP"
-            "dd6f92fb8e1c1d4fe429cbbda9218bce4e0f3d7e5d0300e48fb95ca701d3c537dded9ef3d792b90ee02b69dd3a2ef07c285cd43eabc703058dee74fa0e2f34b8"
-            "ef489ed770974ee95b8f7ea56b3ec8bab9cdc03c4a1ac859472bdb09b4800a135178bbe9e1c964ea7d2ad30f08b5a6024ecd58f5e56dd00fc93b515cad7a74e0"
-            "04406608a3d4453580100cf81812646f0c5581422c3764a3d08166873cab4582b650ae13d574ca010e1896fc3e7b218424570341b9b5260e039e50a0e1e424fc"
-            "6646c130ffe993db8bc105e3737a585e149a1099759e3335af67bf84620b28cb4460a4925d8592eba9d4110b72f210628b7d6078f5dafe0de64259f811b413b0")
+            "e260a1f9c2aadf04e6dd6e1417ab8378c2811e35e0a454d8483fad0cabf3664df0e3871c8f0cb688ff5d0fa173420cc2a2ba7cf704d4ebffd10824b992e9b77e"
+            "f526146534cd9d781a4c4af16f52e14d02c752eaf99b1bfa6306638a6c13298c550e0d357428c8f39dc2e3d21a81bf318a864a43ff604fbd484e2b898744f490"
+           )
 
 pkgver() {
     cd "$srcdir/amarok"
@@ -43,11 +44,15 @@ pkgver() {
 }
 
 prepare() {
+  # Taglib-extras were removed and then re-added to optdepends (after fixing its build against taglib 2.0), so better warn if anyone still has the old version installed
+  if [[ $(pacman -Q taglib-extras | cut -d ' ' -f 2) < "1.0.1-8" ]]; then
+    echo "You have an old version of 'taglib-extras' installed. This will break the build - please uninstall it or update to 1.0.1-8 from AUR."
+    return 1
+  fi
+
   cd "${srcdir}/amarok"
-  patch -Np1 -i "${srcdir}/Refresh more deprecated codepaths.diff"
   patch -Np1 -i "${srcdir}/Port away from deprecated QDesktopWidget functions & disable missing OSD settings functionalities on Wayland.diff"
   patch -Np1 -i "${srcdir}/Fix crash in PodcastSettingsDialog initialization.diff"
-  patch -Np1 -i "${srcdir}/Use non-deprecated TagLib functions (fix build with TagLib 2).diff"
   mkdir -p "${srcdir}/build"
 }
 
@@ -58,7 +63,7 @@ build() {
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DBUILD_TESTING=OFF \
         -DCMAKE_BUILD_TYPE=Release
-    make
+    make -j$(nproc)
 }
 
 package(){

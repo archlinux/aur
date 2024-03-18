@@ -1,5 +1,5 @@
 diff --git a/src/core-impl/podcasts/sql/PodcastSettingsDialog.cpp b/src/core-impl/podcasts/sql/PodcastSettingsDialog.cpp
-index 2aaee7ac16da683e492a5789a8647b3301643d68..be65b7c0aa21dbbf612881ffb83b059ff0407520 100644
+index 2aaee7ac16da683e492a5789a8647b3301643d68..18f32f5276ad6c2d42110d26c3aa492a69a670a9 100644
 --- a/src/core-impl/podcasts/sql/PodcastSettingsDialog.cpp
 +++ b/src/core-impl/podcasts/sql/PodcastSettingsDialog.cpp
 @@ -39,16 +39,13 @@ PodcastSettingsDialog::PodcastSettingsDialog( const Podcasts::SqlPodcastChannelP
@@ -17,7 +17,7 @@ index 2aaee7ac16da683e492a5789a8647b3301643d68..be65b7c0aa21dbbf612881ffb83b059f
  
      okButton->setDefault(true);
 -    mainLayout->addWidget(buttonBox);
-+    addPage(main, i18n("Settings") );
++    addPage(main, i18nc("@title", "Settings") );
  
      init();
  }
