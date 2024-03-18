@@ -1,15 +1,16 @@
 pkgbase = r-comprehenr
 	pkgdesc = List Comprehensions
 	pkgver = 0.6.10
-	pkgrel = 2
+	pkgrel = 4
 	url = https://cran.r-project.org/package=comprehenr
 	arch = any
-	license = GPL
+	license = GPL-2.0-only
 	depends = r
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-tinytest
 	source = https://cran.r-project.org/src/contrib/comprehenr_0.6.10.tar.gz
-	sha256sums = 5c08efe824278b086a9f45823b2239206b3190e463c607d3ebb690cab5018cf2
+	md5sums = 02f3c79d161b77c46295adda537a9ade
+	b2sums = 808cc93182286ed4f0de2002c4537d5887dbceb2dc8f55ad6d61e2b739f618f529791915b603c49da478bf5eaec4062c7a8f6d18a96918c8e9fec59ac5c13539
 
 pkgname = r-comprehenr
