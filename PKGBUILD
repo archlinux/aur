@@ -2,7 +2,7 @@
 
 _pkgname=limits
 pkgname=python-limits
-pkgver=3.10.0
+pkgver=3.10.1
 pkgrel=1
 pkgdesc="utilities to implement rate limiting"
 url="https://github.com/alisaifee/limits/"
@@ -12,7 +12,7 @@ license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 
-sha256sums=('6e657dccafce64fd8ee023ebf4593cd47e9eac841fd1dec3448f48673ba10b7c')
+sha256sums=('1ee31d169d498da267a1b72183ae5940afc64b17b4ed4dfd977f6ea5607c2cfb')
 
 # too many deps right now
 #check() {
