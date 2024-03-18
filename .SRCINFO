@@ -1,12 +1,12 @@
 pkgbase = ppet3-bin
 	pkgdesc = Put a cute girl on your desk for more fun.在你的桌面放一个萌妹子，多一点乐趣
 	pkgver = 3.3.0
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/zenghongtu/PPet
 	arch = x86_64
 	license = MIT
 	makedepends = asar
-	depends = electron16
+	depends = electron16-bin
 	depends = hicolor-icon-theme
 	provides = ppet3-3.3.0
 	conflicts = ppet3
@@ -15,6 +15,6 @@ pkgbase = ppet3-bin
 	source = ppet3.sh
 	sha256sums = cc2f126958fcf15aea6913c684126fef1bf3dd3a3eebfff3cd2c7648c029a00e
 	sha256sums = 4c34d72ca8a05bdc5568a82327063da521dfc431737c448fafeb97c7f98e006a
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = ppet3-bin
