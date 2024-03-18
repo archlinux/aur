@@ -3,7 +3,7 @@ pkgname=fdc3-sail-bin
 _pkgname=FDC3-Sail
 pkgver=22.12.6_1030
 _electronversion=24
-pkgrel=7
+pkgrel=8
 pkgdesc="Open implementation of the FDC3 standard using Electron and an integrated App Directory."
 arch=('x86_64')
 url="https://github.com/finos/FDC3-Sail"
@@ -11,19 +11,22 @@ license=('Apache-2.0')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    "electron${_electronversion}"
-    'hicolor-icon-theme'
+    "electron${_electronversion}-bin"
+)
+makedepends=(
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('81243023ba6af8562e5244f6d48f2e4dd8f17ab77984dda7a55ad0863959ea97'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
