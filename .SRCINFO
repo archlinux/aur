@@ -1,6 +1,6 @@
 pkgbase = requestly-git
 	pkgdesc = Debug your network request across all platforms and browsers using a single app
-	pkgver = 1.6.0.r0.gc5dfd15
+	pkgver = 1.6.0.r6.g861adb6
 	pkgrel = 1
 	url = https://requestly.io/
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = requestly-git
 	makedepends = gendesk
 	makedepends = git
 	makedepends = asar
+	makedepends = curl
 	depends = hicolor-icon-theme
 	depends = electron23
 	provides = requestly
@@ -19,6 +20,6 @@ pkgbase = requestly-git
 	source = requestly.sh
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = requestly-git
