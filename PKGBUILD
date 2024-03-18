@@ -1,9 +1,9 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
 
 _pkgname=parameters
-_pkgver=0.21.5
+_pkgver=0.21.6
 pkgname=r-${_pkgname,,}
-pkgver=0.21.5
+pkgver=0.21.6
 pkgrel=1
 pkgdesc='Processing of Model Parameters'
 arch=('any')
@@ -131,7 +131,7 @@ optdepends=(
   r-wrs2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1b18f1dc2ce1466039ebe3cde34c303a89dba1e7769648749192d6ab9997b47b')
+sha256sums=('03ed2734d0f9e178dd69699cffea7a14ff09c081e3568c285f03379cea689400')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
