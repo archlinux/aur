@@ -1,0 +1,16 @@
+pkgbase = squirrel-prover-git
+	pkgdesc = a proof assistant dedicated to cryptographic protocols
+	pkgver = git
+	pkgrel = 1
+	url = https://github.com/squirrel-prover/squirrel-prover.git
+	arch = x86_64
+	license = MIT
+	makedepends = dune
+	makedepends = git
+	makedepends = python3
+	makedepends = opam
+	depends = ocaml
+	source = squirrel-prover-git::git+https://github.com/squirrel-prover/squirrel-prover.git
+	sha256sums = SKIP
+
+pkgname = squirrel-prover-git
