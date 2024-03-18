@@ -1,20 +1,20 @@
 pkgbase = antares-sql-bin
 	pkgdesc = A modern, fast and productivity driven SQL client with a focus in UX.
 	pkgver = 0.7.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://antares-sql.app/
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = MIT
 	depends = hicolor-icon-theme
-	depends = electron26
+	depends = electron26-bin
 	provides = antares-sql=0.7.22
 	conflicts = antares-sql
 	source = LICENSE-0.7.22::https://raw.githubusercontent.com/antares-sql/antares/v0.7.22/LICENSE
 	source = antares-sql.sh
 	sha256sums = 7b960bb0bed7d2228b6a8a879558c97906cc041ab14ab1d1089959902f386613
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 	source_aarch64 = antares-sql-0.7.22-aarch64.deb::https://github.com/antares-sql/antares/releases/download/v0.7.22/Antares-0.7.22-linux_arm64.deb
 	sha256sums_aarch64 = 89a9862c9f7cb32029304aba3ddbdeca306978cbe2378cf607f02f3010189c0e
 	source_armv7h = antares-sql-0.7.22-armv7h.deb::https://github.com/antares-sql/antares/releases/download/v0.7.22/Antares-0.7.22-linux_armv7l.deb
