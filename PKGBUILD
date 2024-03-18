@@ -2,7 +2,7 @@
 pkgname=bot.dev
 pkgver=0.2.0
 _electronversion=23
-pkgrel=4
+pkgrel=5
 pkgdesc="Desktop app to manage Discord.js bots built with React, Electron and DaisyUI"
 arch=('any')
 url="https://github.com/juaneth/bot.dev"
@@ -11,23 +11,24 @@ conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
     'python>=3'
+    'nodejs'
 )
 makedepends=(
     'gendesk'
-    'npm'
-    'nodejs'
+    'npm'    
     'git'
 )
 source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('1da612ddcae428ba31bd6b6575368e786a8f2964bf0a127d5bf6cf3c83a299b2'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+sha256sums=('7364b7dee529984a57f9ea0bc842ffda8af971b72c52550a3ae75493b3f45920'
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     gendesk -q -f -n --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
@@ -39,8 +40,16 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
+    sed "s|electron-forge make|electron-forge package|g" -i package.json
     npm install
-    npm run electron:package
+    npm run build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
