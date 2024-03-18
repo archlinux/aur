@@ -47,14 +47,17 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20240315.r0.ga1e7655b77e3
+pkgver=20240318.r0.g2e93f143ca01
 _srcname=linux-next
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux NEXT'
 arch=('x86_64')
 url="http://www.kernel.org/"
-license=('GPL2')
-options=('!strip')
+license=(GPL-2.0-only)
+options=(
+  !debug
+  !strip
+)
 makedepends=('bc' 'libelf' 'git' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'python')
 _lucjanver=next
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_lucjanver}"
