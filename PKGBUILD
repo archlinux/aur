@@ -1,6 +1,6 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=anydesk-bin
-pkgver=6.3.0
+pkgver=6.3.1
 _pkgver_i686="6.0.1"
 pkgrel=1
 pkgdesc="The Fast Remote Desktop Application"
@@ -18,7 +18,7 @@ source_i686=("https://download.anydesk.com/linux/anydesk-${_pkgver_i686}-i386.ta
 source_x86_64=("https://download.anydesk.com/linux/anydesk-${pkgver}-amd64.tar.gz")
 
 sha256sums_i686=('cb22b026e2d81c0de220238fa3d4e13a6d0016787b8c680923794296bbd548e2')
-sha256sums_x86_64=('b1e3337d35ce19af93963829988b2014e8acfbbf6bd1b5adfb8bc7dcd6fee452')
+sha256sums_x86_64=('a9592cbdaebe11f01088e7b13fc3650d2091e406f6586b2e086e010fceeb95a8')
 
 package() {
     if [ `uname -m` != "x86_64" ];
