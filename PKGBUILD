@@ -4,8 +4,8 @@ _pkgname="Prospect Mail"
 pkgver=0.5.2
 _electronversion=27
 _nodeversion=20
-pkgrel=2
-pkgdesc="An Outlook mail desktop client powered by Electron"
+pkgrel=3
+pkgdesc="An Outlook mail desktop client powered by Electron.Use system-wide electron."
 arch=(
     'aarch64'
     'armv7h'
@@ -28,14 +28,14 @@ makedepends=(
     'npm'
     'yarn'
     'gcc'
-    'make'
+    'base-devel'
 )
 source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+sha256sums=('ba47cdb7c11619f20e86e77d28381221fa4d35f7b2a9191a2e2c4c93440f1e5a'
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -57,29 +57,22 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
+    mkdir -p "${srcdir}/.electron-gyp"
+    touch "${srcdir}/.electron-gyp/.yarnrc"
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
     yarn install --cache-folder "${srcdir}/.yarn_cache"
-    case "${CARCH}" in
-        aarch64)
-            yarn run dist:linux:appimage:arm64
-        ;;
-        armv7h)
-            yarn run dist:linux:appimage:arm
-        ;;
-        x86_64)
-            yarn run dist:linux:appimage:x64
-        ;;
-    esac
-    cd "${srcdir}/${pkgname}.git/dist/.icon-set"
-    cp icon_256.png icon_256x256.png
-    cp icon_512.png icon_512x512.png
+    yarn run pack
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512;do
-        install -Dm644 "${srcdir}/${pkgname}.git/dist/.icon-set/icon_${_icons}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
-    done
+    install -Dm644 "${srcdir}/${pkgname}.git/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
