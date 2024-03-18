@@ -1,7 +1,8 @@
-# Maintainer: Shae VanCleave
+# Maintainer: keutain < quentin dot aniere at gmail dot com>
+# Contributor: Shae VanCleave
 
 pkgname=python-pywebview
-pkgver=4.4.1
+pkgver=5.0.5
 pkgrel=1
 pkgdesc="Build GUI for your Python program with JavaScript, HTML, and CSS."
 arch=('any')
@@ -20,8 +21,8 @@ optdepends=('pyside2: use with QtPy, PySide2'
 install="$pkgname.install"
 source=("https://pypi.python.org/packages/source/p/pywebview/pywebview-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/r0x0r/pywebview/$pkgver/LICENSE")
-sha256sums=('ea4c517e9265fadfd77937facb67787c07425d303b00b9d5c3a401bbb4576941'
-            '4a988dd3598832cd3653de20dc33cb677d0fb53ab5551c879ca31280ae653675')
+sha256sums=('f2a39682bc144cd95fb6cdb16522a44d2ffe7974966486ed570d81d2e0a41319' # pkg.tar.gz
+            '4a988dd3598832cd3653de20dc33cb677d0fb53ab5551c879ca31280ae653675') # License
 
 build() {
     cd "${srcdir}/pywebview-${pkgver}"
@@ -31,6 +32,7 @@ build() {
 package() {
     cd "${srcdir}"
     install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
     cd "pywebview-${pkgver}"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }

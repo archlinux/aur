@@ -1,6 +1,6 @@
 pkgbase = python-pywebview
 	pkgdesc = Build GUI for your Python program with JavaScript, HTML, and CSS.
-	pkgver = 4.4.1
+	pkgver = 5.0.5
 	pkgrel = 1
 	url = https://github.com/r0x0r/pywebview
 	install = python-pywebview.install
@@ -22,9 +22,9 @@ pkgbase = python-pywebview
 	optdepends = python-pyqt5-webengine: use with Qt
 	optdepends = python-qtpy: use with Qt
 	optdepends = webkit2gtk-4.1: use with GTK
-	source = https://pypi.python.org/packages/source/p/pywebview/pywebview-4.4.1.tar.gz
-	source = https://raw.githubusercontent.com/r0x0r/pywebview/4.4.1/LICENSE
-	sha256sums = ea4c517e9265fadfd77937facb67787c07425d303b00b9d5c3a401bbb4576941
+	source = https://pypi.python.org/packages/source/p/pywebview/pywebview-5.0.5.tar.gz
+	source = https://raw.githubusercontent.com/r0x0r/pywebview/5.0.5/LICENSE
+	sha256sums = f2a39682bc144cd95fb6cdb16522a44d2ffe7974966486ed570d81d2e0a41319
 	sha256sums = 4a988dd3598832cd3653de20dc33cb677d0fb53ab5551c879ca31280ae653675
 
 pkgname = python-pywebview
