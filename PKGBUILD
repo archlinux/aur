@@ -1,5 +1,5 @@
-# Maintainer: Quentin Anière
-# Previous Maintainer: Henry-Joseph Audéoud <h.audeoud@gmail.com>
+# Maintainer: keutain < quentin dot aniere at gmail dot com>
+# Contributor: Henry-Joseph Audéoud <h.audeoud@gmail.com>
 # From imunes-git package:
 # Contributor: Denis Salopek <denis.sale@gmail.com>
 # Contributor: Robin Nehls <aur@manol.is>
@@ -9,7 +9,7 @@ pkgver=2.4.0
 pkgrel=2
 pkgdesc="Integrated Multiprotocol Network Emulator/Simulator"
 arch=(any)
-url="http://imunes.net/"
+url="https://imunes.net/"
 license=('custom')
 depends=('tk' 'tcllib' 'wireshark-qt' 'imagemagick' 'docker' 'openvswitch' 'xterm')
 makedepends=('make')
