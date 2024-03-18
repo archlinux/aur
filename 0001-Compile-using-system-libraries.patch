@@ -1,6 +1,6 @@
-From 701768e53edb892ed402681a34b0494ac67f1712 Mon Sep 17 00:00:00 2001
+From 6b5d92a5c705dccf8f54c66eeabd29ffa512a90f Mon Sep 17 00:00:00 2001
 From: taotieren <admin@taotieren.com>
-Date: Fri, 9 Dec 2022 18:18:46 +0800
+Date: Mon, 18 Mar 2024 22:43:54 +0800
 Subject: [PATCH] Compile using system libraries
 
 ---
@@ -8,17 +8,17 @@ Subject: [PATCH] Compile using system libraries
  1 file changed, 7 insertions(+), 11 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index 337d427..499bfb0 100644
+index 7bc7027..a2cd32c 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -72,17 +72,13 @@ AC_ARG_WITH([static-libplist],
+@@ -92,17 +92,13 @@ AC_ARG_WITH([static-libplist],
              [AS_HELP_STRING(["--with-static-libplist[=/path/to/static/libplist"]],
              [link against a static libplist])],
              [with_static_libplist=$withval],
 -            [with_static_libplist=yes])
 -if test "x$with_static_libplist" != "xno"; then
 -  if test "x$with_static_libplist" = "xyes"; then
--    STATIC_LIBPLIST="`pkg-config --libs-only-L libplist-2.0 |sed 's/^..//; s/[ ]*$/\/libplist-2.0.a/'`"
+-    STATIC_LIBPLIST="`pkg-config --libs-only-L ${LIBPLIST} |sed "s/^..//; s/[ ]*$/\/${LIBPLIST}.a/"`"
 -  else
 -    STATIC_LIBPLIST="$with_static_libplist"
 -  fi
@@ -37,5 +37,5 @@ index 337d427..499bfb0 100644
  
  AS_COMPILER_FLAGS(GLOBAL_CFLAGS, "-g -Wall -Wextra -Wmissing-declarations -Wredundant-decls -Wshadow -Wpointer-arith  -Wwrite-strings -Wswitch-default -Wno-unused-parameter")
 -- 
-2.38.1
+2.44.0
 
