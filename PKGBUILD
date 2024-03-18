@@ -18,13 +18,17 @@ conflicts=("hyprdots-ctl")
 #   git describe --long --tags --always | sed 's/-/./g' # Replace hyphens with dots to conform to versioning standards
 # }
 
-pkgver() { 
- cd "$srcdir/Hyprdots-ctl" || return
- git fetch --tags
- # Use git describe with a fallback to the commit hash if no tags are found
- local version=$(git describe --tags --always --dirty 2>/dev/null || git rev-parse --short HEAD)
- # Replace hyphens with dots to conform to versioning standards
- echo "$version" | sed 's/-/./g'
+# pkgver() { 
+#  cd "$srcdir/Hyprdots-ctl" || return
+#  git fetch --tags
+#  # Use git describe with a fallback to the commit hash if no tags are found
+#  local version=$(git describe --tags --always --dirty 2>/dev/null)
+#  # Replace hyphens with dots to conform to versioning standards
+#  echo "$version" | sed 's/-/./g'
+# }
+
+pkgver() {
+ git -C "${srcdir}/Hyprdots-ctl" describe --long --tags --always | sed 's/\([^-]*-g[0-9a-f]*\)/r\1/;s/[-+]/./g'
 }
 
 
