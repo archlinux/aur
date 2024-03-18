@@ -2,7 +2,7 @@
 pkgname=cubytext-bin
 pkgver=0.0.4
 _electronversion=19
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source knowledge management app."
 arch=('x86_64')
 url="https://github.com/vincentdchan/CubyText"
@@ -10,7 +10,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'nodejs'
 )
 options=('!strip')
@@ -21,11 +21,12 @@ source=(
 )
 sha256sums=('bd0ff4fdbbeaa30ab532d7efb00b7dc9962eaa87826fa7ee80727cf518a36566'
             'db7050c50a29912ab18366ac4d340da6359df6e8ad1c31bc019af5b707a69aee'
-            'f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
 }
