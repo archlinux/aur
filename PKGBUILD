@@ -7,7 +7,7 @@
 
 pkgname=amarok-git
 pkgver=2.9.71.r347.g14889cf
-pkgrel=1
+pkgrel=2
 pkgdesc="The powerful music player for KDE"
 arch=("i686" "x86_64")
 url="http://amarok.kde.org"
@@ -45,7 +45,7 @@ pkgver() {
 
 prepare() {
   # Taglib-extras were removed and then re-added to optdepends (after fixing its build against taglib 2.0), so better warn if anyone still has the old version installed
-  if [[ $(pacman -Q taglib-extras | cut -d ' ' -f 2) < "1.0.1-8" ]]; then
+  if [[ $(pacman -Q taglib-extras 2>&1 | cut -d ' ' -f 2) < "1.0.1-8" ]]; then
     echo "You have an old version of 'taglib-extras' installed. This will break the build - please uninstall it or update to 1.0.1-8 from AUR."
     return 1
   fi
