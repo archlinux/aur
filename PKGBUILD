@@ -2,7 +2,7 @@
 pkgname=inethi-bin
 pkgver=1.0.1
 _electronversion=23
-pkgrel=4
+pkgrel=5
 pkgdesc="A GUI installer that can set up the iNethi Docker environment."
 arch=("x86_64")
 url="https://www.inethi.org.za/software/"
@@ -42,11 +42,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('9e56a8eefe66574e99d04d198da338fc0577b2714450b1a61763d87b536e39dc'
-            'f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
 }
