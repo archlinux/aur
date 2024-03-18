@@ -3,7 +3,7 @@
 # Contributor: khvalera <khvalera[at]ukr[dot]net>
 
 pkgname=glpi
-pkgver=10.0.12
+pkgver=10.0.14
 pkgrel=1
 pkgdesc="GLPI Inventory Management"
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=('nginx: a more performant webserver'
             'php' 'php-gd' 'php-intl' 'php-sodium' 'php-apache'
             'libxml2' 'zlib' 'openssl')
 makedepends=("gettext")
-sha256sums=('7980cd5f9ab10dc234e1e42950acd42c2977e5c3da4d540ef000e9caa72cec85'
+sha256sums=('69c7503c453a85ef47b47cbf08d3ebe8cb8bfe0d45f6aeb32d58c10321e911f5'
             '32bd84daa949cfa1158f2c6cd8fa2593fd4bd3cc6392791b69ab24ca98eee0dd'
             '04e40235a4a6c7d1e0daaa91e630654e632073fd5fee33bb6befa7b6f3713e44'
             'c5ca6a8d1bcc73c71348d5f8a4c3de0fd023c346d1c2bf02c9dd627bcda9bfe8'
