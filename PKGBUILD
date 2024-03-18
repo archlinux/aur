@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=reor-bin
 _pkgname=Reor
-pkgver=0.1.54
+pkgver=0.1.55
 _electronversion=28
 pkgrel=1
 pkgdesc="AI note-taking app that runs models locally."
@@ -22,12 +22,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('27f5e39e47a2e649239de07529ba3b87e244964b36163b4ed26a4748f1e7ead6'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+sha256sums=('8b38fb6203733f0e8a923dc5d441cf0206771db975083412dae8e1532797029a'
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
