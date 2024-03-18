@@ -1,7 +1,7 @@
 # Maintainer: Darvin Delgado <dnmodder at gmail dot com>
-_sdkver=8.0.100
+_sdkver=8.0.203
 pkgname=ryujinx-git
-pkgver=r3239.bc4d99a07
+pkgver=r3262.d26ef2eec
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 arch=(x86_64)
@@ -19,7 +19,7 @@ source=(
 md5sums=(
 	'SKIP'
 	'824e675295b3e9df5a7f8d9220c89c93'
-	'd517490bc9790e11be78712d9803883a')
+	'd0dd291a60ec5ef525f089bcc67ea2ce')
 noextract=("dotnet-sdk-$_sdkver-linux-x64.tar.gz")
 options=(!strip)
 

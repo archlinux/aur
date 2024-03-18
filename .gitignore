@@ -1,6 +1,5 @@
-src/
-pkg/
-Ryujinx/
-*.tar.zst
-*.tar.gz
-*.log
+*
+
+!.SRCINFO
+!PKGBUILD
+!ryujinx.install
