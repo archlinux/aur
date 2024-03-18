@@ -3,7 +3,7 @@ pkgname=yana-bin
 _pkgname=Yana
 pkgver=1.0.16
 _electronversion=10
-pkgrel=7
+pkgrel=8
 pkgdesc="Powerful note-taking app with nested documents, full-text search, rich-text editor, code snippet editor and more"
 arch=("x86_64")
 url="https://yana.js.org/"
@@ -13,7 +13,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}-bin"
-    'hicolor-icon-theme'
 )
 source=(
     "${pkgname%-bin}-${pkgver}_amd64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
@@ -22,11 +21,12 @@ source=(
 )
 sha256sums=('00d2f30dad0342fa59fa228f087bf647cf2fa6fe061aa46ede22a5439d5c23b8'
             'ebb422a6231ddde433e1d601377c455aefcc96cdc27662bd3ce07d08f1110152'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
