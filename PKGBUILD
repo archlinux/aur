@@ -2,7 +2,7 @@
 _pkgname=yesplaymusic
 pkgname="my-${_pkgname}-bin"
 _appname=YesPlayMusic
-pkgver=0.4.15
+pkgver=0.4.16
 _electronversion=13
 pkgrel=1
 pkgdesc="A third party music player for Netease Music.高颜值的第三方网易云播放器，支持本地音乐播放、离线歌单、桌面歌词、Touch Bar歌词、Mac状态栏歌词显示。"
@@ -22,8 +22,7 @@ conflicts=(
     "r3playx"
 )
 depends=(
-    'hicolor-icon-theme'
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_armv7l.deb")
@@ -33,14 +32,15 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c33378c6fd12e6d040cedd06dc0d1bedfca74fd66bc46cc2cf10cc10e0906be6'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
-sha256sums_aarch64=('8de642006739cc3677513a34be517d97a252581ef2e042b944ee42a6d36c8a32')
-sha256sums_armv7h=('90f311b45cc3a5fdb9ecb28141b64f0221e1a697fa04a5380da0723ea42d5a44')
-sha256sums_x86_64=('78139692825ec904b6f44b9d4c06753b2d200bf82822ce8ab46640421cdb8a4c')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums_aarch64=('5ece65608866f82fc73304a028422fa5c0301ed2a176edcf59e22df32b0f023f')
+sha256sums_armv7h=('1c75033a95baa60ca1edfc3008a08f7f418623a90c6781e9fa90d6e27197b486')
+sha256sums_x86_64=('3531e9e7b4c369f23932808663efcc79e34b0179e6e571e7262dd79933357c25')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed -e "s|/opt/${_appname}/${_pkgname} %U|${pkgname%-bin}|g" \
