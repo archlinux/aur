@@ -1,7 +1,7 @@
 # Maintainer: imoutocon
 pkgname='qwq'
-pkgver=1.0
-pkgrel=1
+pkgver=1.1
+pkgrel=2
 pkgdesc="uwu/qwq for terminal"
 arch=('x86_64')
 url="https://github.com/qsqcqs/qwq/tree"
@@ -17,7 +17,12 @@ validpgpkeys=()
 
 package() {
 	cd "$pkgname-$pkgname-v$pkgver"
-    sudo install -Dm755 uwu "/usr/bin/uwu"
-    sudo install -Dm755 qwq "/usr/bin/qwq"
+	
+    install -Dm644 uwu "${pkgdir}"/usr/bin/uwu
+    install -Dm644 qwq "${pkgdir}"/usr/bin/qwq
+    chmod +x "${pkgdir}"/usr/bin/uwu
+    chmod +x "${pkgdir}"/usr/bin/qwq
 }
-sha256sums=('dc7bdb57e2a96bce1fa75eb17979d4a7b9993b1ebfbc1ea6f60a805741fba4d3')
+
+
+sha256sums=('30150224510f04c6f01c1a713cbf3a7455b98571ce29089ced77009b87c50575')
