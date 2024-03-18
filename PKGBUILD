@@ -49,9 +49,6 @@ validpgpkeys=(
 )
 
 prepare() {
-  # Build FreeType as part of the demos
-  ln -sr freetype-$pkgver ft2demos-$pkgver/subprojects/freetype2
-
   cd freetype-$pkgver
   patch -Np1 -i ../0001-Enable-table-validation-modules.patch
   patch -Np1 -i ../0002-Enable-subpixel-rendering.patch
@@ -60,10 +57,6 @@ prepare() {
 }
 
 build() {
-  local meson_options=(
-    -D freetype2:default_library=shared
-  )
-
   meson compile -C build
 }
 
