@@ -153,7 +153,8 @@ prepare() {
   # apply patches from the source array
   local filename
   for filename in "${source[@]%%::*}"; do
-    if [[ "${filename}" =~ \.patch$ ]]; then
+    if [[ "${filename}" =~ \.patch$ ]] \
+    && [[ "${filename}" =~ ^ceph-.* ]]; then
       echo "Applying patch ${filename##*/}"
       patch -p1 -N -i "${srcdir}/${filename##*/}"
     fi
