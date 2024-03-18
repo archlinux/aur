@@ -20,7 +20,7 @@
 
 pkgname=localsend-bin
 pkgver=1.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source cross-platform alternative to AirDrop '
 url=https://github.com/localsend/localsend
 arch=(x86_64)
@@ -28,7 +28,7 @@ license=(MIT)
 depends=(fuse2 xdg-user-dirs)
 conflicts=('localsend-git' 'localsend')
 provides=('localsend')
-options=(!strip)
+options=(!strip !debug)
 source=("https://github.com/localsend/localsend/releases/download/v${pkgver}/LocalSend-${pkgver}-linux-x86-64.AppImage")
 sha256sums=('e89e885a1de2122dbe5b2b7ec439dca00accee1e63237d4685946a48a35ca8d2')
 _appimage="LocalSend-${pkgver}-linux-x86-64.AppImage"
