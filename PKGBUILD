@@ -4,12 +4,12 @@
 pkgname=netease-cloud-music
 pkgver=1.2.1
 _pkgdate=20190428
-pkgrel=8
+pkgrel=9
 pkgdesc="Netease Cloud Music, converted from .deb package"
 arch=("x86_64")
 url="https://music.163.com/"
 license=('custom')
-depends=('gtk2' 'gtk3' 'vlc')
+depends=('gtk2' 'gtk3' 'vlc' 'taglib1')
 makedepends=(gcc)
 source=(
 	"https://d1.music.126.net/dmusic/netease-cloud-music_${pkgver}_amd64_ubuntu_${_pkgdate}.deb"
@@ -29,6 +29,7 @@ DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o
 build() {
   cd ${srcdir}
   cc -O2 -fPIC -shared -I /usr/include/vlc/plugins/ -o libnetease-patch.so patch.c
+  ln -s /usr/lib/libtag.so.1 libtag.so.2
 }
 
 package() {
@@ -37,4 +38,5 @@ package() {
   install -D -m644 service.html ${pkgdir}/usr/share/licenses/$pkgname/license.html
   install -D -m755 libnetease-patch.so ${pkgdir}/opt/netease/netease-cloud-music/libnetease-patch.so
   install -D -m755 netease-cloud-music.bash ${pkgdir}/opt/netease/netease-cloud-music/netease-cloud-music.bash
+  install -D -m755 libtag.so.2 ${pkgdir}/opt/netease/netease-cloud-music/libs/libtag.so.2
 }
