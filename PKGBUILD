@@ -1,9 +1,10 @@
-# Maintainer: Andriy Mykhaylyk <erp dot lsf at gmail dot com>
-# Maintainer: Lorenzo Tomei <tomeil at tiscali dot it>
-# Maintainer: eelvex <eelvex at gmail dot com>
+# Maintainer: Daniikk1012 <daniyarsar at gmail dot com>
+# Contributor: Andriy Mykhaylyk <erp dot lsf at gmail dot com>
+# Contributor: Lorenzo Tomei <tomeil at tiscali dot it>
+# Contributor: eelvex <eelvex at gmail dot com>
 
 pkgname=j9-git
-pkgver=r2388.ad0ca1c6
+pkgver=r4994.cd65a528
 pkgrel=1
 pkgdesc='J is a modern, high-level, general-purpose, high-performance programming language'
 arch=('x86_64')
@@ -14,9 +15,7 @@ optdepends=('wget: for web/gethttp addon'
             'expat: for api/expat addon'
             'fftw: for math/fftw addon'
             'lapack: for math/lapack addon')
-makedepends=('git'
-             'clang'
-	     'nasm')
+makedepends=('git' 'nasm')
 source=("${pkgname}::git+https://github.com/jsoftware/jsource.git#branch=master"
         'qtide-git::git+https://github.com/jsoftware/qtide.git#branch=master')
 md5sums=('SKIP'
@@ -24,8 +23,6 @@ md5sums=('SKIP'
 build() {
   # jsource
   cd "${srcdir}/${pkgname}/make2"
-  CC=clang
-  export CC
   ./build_all.sh
   ./cpbin.sh
   # qtide
@@ -37,8 +34,8 @@ build() {
 
 package() {
   cd "${srcdir}"
-  mkdir -p "${pkgdir}/usr/lib/j9/bin"
-  cp -a "${pkgname}/jlibrary/bin/"* "${pkgdir}/usr/lib/j9/bin/"
+  mkdir -p "${pkgdir}/usr/lib/j9/"
+  cp -a "${pkgname}/jlibrary/"* "${pkgdir}/usr/lib/j9/"
   cp -a "${pkgname}/bin/linux/"*/* "${pkgdir}/usr/lib/j9/bin/"
   cp -a "qtide-git/bin/linux-${CARCH}/release/"* "${pkgdir}/usr/lib/j9/bin/"
   echo "${pkgname}-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.xz (Arch Linux package)" > "${pkgdir}/usr/lib/j9/bin/installer.txt"

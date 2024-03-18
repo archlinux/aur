@@ -1,12 +1,11 @@
 pkgbase = j9-git
 	pkgdesc = J is a modern, high-level, general-purpose, high-performance programming language
-	pkgver = r2388.ad0ca1c6
+	pkgver = r4994.cd65a528
 	pkgrel = 1
 	url = http://www.jsoftware.com
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = clang
 	makedepends = nasm
 	depends = qt5-webengine
 	depends = qt5-websockets
