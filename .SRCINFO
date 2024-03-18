@@ -1,0 +1,20 @@
+pkgbase = grok
+	pkgdesc = ohoh
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/openai/grok
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = arm
+	arch = armv7h
+	arch = aarch64
+	arch = mips
+	license = lol
+	makedepends = python-setuptools
+	provides = python-grok=0.0.1
+	conflicts = python-grok=0.0.1
+	source = grok-0.0.1.zip::https://github.com/openai/grok/archive/3d64b1d8c1d595dd8ebdb7771998823f1b14c7b3.zip
+	sha512sums = hijess
+
+pkgname = grok
