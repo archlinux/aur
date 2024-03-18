@@ -1,7 +1,7 @@
 pkgbase = clevo-drivers-dkms-git
 	pkgdesc = Kernel module drivers for keyboard, keyboard backlight & general hardware I/O using the SysFS interface for Clevo hardware.
 	pkgver = 4.3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/evorster/clevo-drivers
 	arch = x86_64
 	license = Other
@@ -10,6 +10,7 @@ pkgbase = clevo-drivers-dkms-git
 	optdepends = linux-lts-headers: build modules against LTS kernel
 	optdepends = linux-zen-headers: build modules against ZEN kernel
 	optdepends = linux-hardened-headers: build modules against the HARDENED kernel
+	provides = tuxedo-drivers-dkms
 	provides = tuxedo-keyboard
 	provides = tuxedo-keyboard-ite
 	provides = tuxedo-io
