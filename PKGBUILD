@@ -1,7 +1,7 @@
 # Maintainer: picokan <todaysoracvle@protonmail.com>
 
 pkgname=bazarr-runit
-pkgver=20240313
+pkgver=20240318
 pkgrel=1
 pkgdesc="Runit service script for bazarr."
 arch=("any")
