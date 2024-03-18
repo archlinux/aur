@@ -2,8 +2,8 @@
 # Contributor: DrZaius <lou[at]fakeoutdoorsman.com>
 
 pkgname=x262-git
-pkgver=0.142.2633.bb887aa
-pkgrel=2
+pkgver=0.142.2631+93.9679f15
+pkgrel=1
 pkgdesc="x264 with MPEG-2 video support (GIT version)"
 arch=('x86_64')
 license=('GPL')
@@ -23,9 +23,9 @@ makedepends=(
 )
 url="https://www.videolan.org/developers/x262.html"
 source=(
-  'git+https://git.videolan.org/git/x262.git'
-  'git+https://github.com/ffmpeg/ffmpeg.git#tag=n2.7.7'
-  'git+https://github.com/FFMS/ffms2.git#tag=2.20'
+  'git+https://github.com/kierank/x262.git#branch=obe'
+  'git+https://github.com/ffmpeg/ffmpeg.git#tag=n2.8.22'
+  'git+https://github.com/FFMS/ffms2.git#tag=2.21'
   'mathops_fix.patch'
 )
 provides=('x262')
@@ -50,13 +50,15 @@ prepare() {
 }
 
 build() {
+
   msg2 "Build FFmpeg"
   cd "${srcdir}/build-ffmpeg"
   ../ffmpeg/configure \
     --prefix="${srcdir}/fakeroot" \
     --disable-{network,{encod,mux}ers,hwaccels,{in,out}devs,debug,doc,vdpau,vaapi,programs} \
     --enable-pic \
-    --enable-gpl
+    --enable-gpl \
+    --disable-decoder=opus
 
   make install-libs install-headers
 
@@ -65,7 +67,11 @@ build() {
 
   msg2 "Build FFmpegsource"
   cd "${srcdir}/build-ffms2"
-  (cd "${srcdir}/ffms2"; mkdir -p src/config; autoreconf -vfi)
+  (
+    cd "${srcdir}/ffms2"
+    mkdir -p src/config
+    autoreconf -vfi
+  )
   ../ffms2/configure \
     --prefix="${srcdir}/fakeroot" \
     --enable-shared=no
