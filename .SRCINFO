@@ -10,6 +10,7 @@ pkgbase = smoothpaper
 	makedepends = ninja
 	makedepends = gcc
 	makedepends = git
+	makedepends = zip
 	depends = libx11
 	depends = libxrandr
 	depends = libxinerama
