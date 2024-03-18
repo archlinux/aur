@@ -3,7 +3,7 @@ pkgname=insomnium
 pkgver=0.2.3_a
 _electronversion=25
 _nodeversion=18
-pkgrel=7
+pkgrel=8
 pkgdesc="A fast local API testing tool that is privacy-focused and 100% local. For testing GraphQL, REST, WebSockets and gRPC.This is a fork of Kong/insomnia"
 arch=('any')
 url="https://archgpt.dev/insomnium"
@@ -35,7 +35,7 @@ _ensure_local_nvm() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
-        -e "s|@runname@|app|g" \
+        -e "s|@runname@|app.asar|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm

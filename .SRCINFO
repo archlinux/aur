@@ -1,7 +1,7 @@
 pkgbase = insomnium
 	pkgdesc = A fast local API testing tool that is privacy-focused and 100% local. For testing GraphQL, REST, WebSockets and gRPC.This is a fork of Kong/insomnia
 	pkgver = 0.2.3_a
-	pkgrel = 7
+	pkgrel = 8
 	url = https://archgpt.dev/insomnium
 	arch = any
 	license = MIT
