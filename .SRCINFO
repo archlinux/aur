@@ -1,0 +1,29 @@
+pkgbase = binsec
+	pkgdesc = Open-source toolset to help improve software security at the binary level.
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://binsec.github.io
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	checkdepends = ocaml-ounit
+	checkdepends = ocaml-qcheck
+	makedepends = ocaml>=4.11
+	makedepends = dune>=3.0
+	makedepends = ocaml-menhir
+	depends = glibc
+	depends = gmp
+	depends = ocaml-curses
+	depends = ocaml-grain_dypgen
+	depends = ocaml-ocamlgraph>=1.8.5
+	depends = ocaml-toml
+	depends = ocaml-zarith>=1.4
+	depends = ocaml>=4.11
+	optdepends = bash: make_coredump.sh
+	optdepends = boolector: Boolector SMT solver
+	optdepends = z3: Z3 SMT solver
+	optdepends = cvc4: CVC4 SMT solver
+	optdepends = yices: Yices 2 SMT Solver
+	source = binsec-0.8.2.tar.gz::https://github.com/binsec/binsec/archive/refs/tags/0.8.2.tar.gz
+	b2sums = cf48c913e14b18dca3155e5fb4751f48a046fe4a0b68227def9cd676fa89aee8c41749133b2a76b865a8cde3aa2a30df747d0a6547f9cbf22f95c7551b82dd7a
+
+pkgname = binsec
