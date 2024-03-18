@@ -91,13 +91,13 @@ build() {
   )
 
   echo "Building torchvision (CPU version)"
-  cd "${srcdir}/${_pkgname}-cuda-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   local _cpu_args=("${_common_cmake[@]}" -DWITH_CUDA=OFF)
   cmake "${_cpu_args[@]}"
   cmake --build build
 
   echo "Building torchvision (GPU version with CUDA)"
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-cuda-${pkgver}"
   local _gpu_args=("${_common_cmake[@]}" -DWITH_CUDA=ON)
   cmake "${_gpu_args[@]}"
   cmake --build build
@@ -159,7 +159,7 @@ package_python-torchvision-cuda() {
 
 package_torchvision() {
   pkgdesc='Datasets, transforms, and models specific to computer vision (C++ library only)'
-  depends+=('python-pytorch-cuda')
+  depends+=('python-pytorch')
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
   DESTDIR="${pkgdir}" cmake --install build
