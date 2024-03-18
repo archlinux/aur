@@ -1,14 +1,13 @@
 # Maintainer: Henry-ZHR <henry-zhr@qq.com>
 _name=sentencepiece
 pkgbase="${_name}"
-pkgname=("${_name}" "python-${_name}")
+pkgname=("${pkgbase}" "python-${pkgbase}")
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Unsupervised text tokenizer for Neural Network-based text generation"
 arch=('x86_64')
 url="https://github.com/google/sentencepiece"
 license=('Apache-2.0')
-depends=('gcc-libs' 'glibc')
 makedepends=('git' 'cmake'
              'abseil-cpp' 'gperftools' 'protobuf'
              'python' 'python-build' 'python-setuptools' 'python-wheel' 'python-installer')
@@ -17,12 +16,18 @@ _tag='17d7580d6407802f85855d2cc9190634e2c95624' # git rev-parse "v${pkgver}"
 source=("${_name}::git+${url}.git#tag=${_tag}")
 sha512sums=('SKIP')
 
+pkgver() {
+  git -C "${_name}" describe --tags | sed 's/^v//'
+}
+
 prepare() {
-  rm -rf "${_name}/build"
+  cd "${_name}"
+
+  git clean -dfx
 
   # Use shared libs for python module
-  sed -i 's/libsentencepiece.a/libsentencepiece.so/g' "${_name}/python/setup.py"
-  sed -i 's/libsentencepiece_train.a/libsentencepiece_train.so/g' "${_name}/python/setup.py"
+  sed -i 's/libsentencepiece.a/libsentencepiece.so/g' python/setup.py
+  sed -i 's/libsentencepiece_train.a/libsentencepiece_train.so/g' python/setup.py
 }
 
 build() {
@@ -62,15 +67,16 @@ check() {
 }
 
 package_sentencepiece() {
-  depends+=('abseil-cpp' 'gperftools' 'protobuf')
+  depends=('gcc-libs' 'glibc' 'abseil-cpp' 'gperftools' 'protobuf')
+  provides=('libsentencepiece.so' 'libsentencepiece_train.so')
 
   DESTDIR="${pkgdir}" cmake --install "${_name}/build"
 }
 
 package_python-sentencepiece() {
   pkgdesc="Python wrapper for SentencePiece"
-  depends+=("${_name}" 'python')
-  optdepends+=('python-protobuf')
+  depends=("${pkgbase}" 'python')
+  optdepends=('python-protobuf')
 
   cd "${_name}/python"
   python -m installer --destdir="${pkgdir}" dist/*.whl
