@@ -1,7 +1,7 @@
 pkgbase = upt-bin
 	pkgdesc = Universal Package-management Tool for any OS.
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sigoden/upt
 	arch = x86_64
 	arch = aarch64

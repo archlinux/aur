@@ -1,8 +1,8 @@
-# PKGBUILD
-
+# Maintainer: Sergio Losito <shape93@gmail.com>
 pkgname=upt-bin
+pkgbase=upt-bin
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal Package-management Tool for any OS."
 arch=('x86_64' 'aarch64')
 url="https://github.com/sigoden/upt"
