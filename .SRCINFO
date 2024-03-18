@@ -1,14 +1,14 @@
 pkgbase = digest-to-efi-sig-list
 	pkgdesc = Create an EFI signature list from a digest
 	pkgver = r13.b9ff0c4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/danielztolnai/vbios-secure-boot/tree/master/digest-to-efi-sig-list
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = git
 	makedepends = gnu-efi
 	depends = glibc
-	source = git+https://github.com/danielztolnai/vbios-secure-boot.git?commit=b9ff0c4758669ae3d900d7c83e7305a46e8077cc
-	sha512sums = SKIP
+	source = git+https://github.com/danielztolnai/vbios-secure-boot.git#commit=b9ff0c4758669ae3d900d7c83e7305a46e8077cc
+	sha512sums = f50ab1b9ba3218f06edb1bce32e3f42eb9c0d9092d728825d7c26fec2e4cacdf0f7d645c326969c4d060b5d0110d47e9a43a1ab45eb681054ec7717a88836f1f
 
 pkgname = digest-to-efi-sig-list
