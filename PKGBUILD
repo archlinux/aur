@@ -3,7 +3,7 @@ pkgname=altus-bin
 _pkgname=Altus
 pkgver=5.0.2
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for WhatsApp Web with themes, notifications and multiple account support"
 arch=('x86_64')
 url="https://github.com/amanharwara/altus"
@@ -23,11 +23,12 @@ source=(
 )
 options=('!strip')
 sha256sums=('c1f3f61a26ca3bddb3bb2c516805c27d1ad97fddcdd2900fd2260dd5d138a661'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
+        -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
