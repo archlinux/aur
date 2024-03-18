@@ -1,11 +1,11 @@
 # Maintainer: Jakob Hellermann <jakob.hellermann@protonmail.com>
 pkgname=atlas-celeste-git
-pkgver=v1.0.0.r0.14479d0
+pkgver=v1.0.0.r2.ec96147
 pkgrel=1
 pkgdesc='Render and visualize paths for Celeste TASes'
 url='https://github.com/jakobhellermann/Atlas'
 makedepends=('git' 'rust' 'cargo' 'imagemagick')
-depends=('hicolor-icon-theme' 'glib2' 'gcc-libs' 'glibc' 'gtk3')
+depends=('hicolor-icon-theme' 'glibc' 'gcc-libs')
 arch=('any')
 license=('MIT')
 source=(
