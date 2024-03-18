@@ -1,5 +1,5 @@
 pkgname=riseup-vpn-git
-pkgrel=1
+pkgrel=2
 pkgver=0.24.03.rc.1.r1.g316e632
 pkgdesc="RiseupVPN is a branded build of Bitmask VPN. Bitmask VPN is a minimal rewrite of the Bitmask VPN Client, written in golang, that for now lacks client authentication, and is preconfigured to use a single provider."
 url="https://0xacab.org/leap/bitmask-vpn"
@@ -66,7 +66,7 @@ package() {
     install -Dm644 riseup-vpn.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/riseup-vpn.png"
 
     cd "bitmask-vpn"
-    install -Dm755 helpers/bitmask-root "${pkgdir}/usr/bin/bitmask-root"
+    install -Dm755 helpers/bitmask-root "${pkgdir}/usr/sbin/bitmask-root"
     install -Dm644 helpers/se.leap.bitmask.policy "${pkgdir}/usr/share/polkit-1/actions/se.leap.bitmask.policy"
     install -Dm755 build/qt/release/riseup-vpn "${pkgdir}/usr/bin/riseup-vpn"
 }
