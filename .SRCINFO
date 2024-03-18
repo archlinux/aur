@@ -1,0 +1,19 @@
+pkgbase = celeste64-fuji
+	pkgdesc = A free and open source mod loader for Celeste 64: Fragments of the Mountain
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://fujiapi.github.io
+	arch = x86_64
+	arch = aarch64
+	license = custom:celeste64-fuji
+	makedepends = dotnet-sdk
+	options = !strip
+	options = !debug
+	source = Fuji-0.5.0.tar.gz::https://github.com/FujiAPI/Fuji/archive/refs/tags/stable-19068e0.tar.gz
+	source = fuji.desktop
+	source = mods-in-user-dir.patch
+	sha256sums = 7d6f1148f951897f07084547eb25413cb8f79cac8daf9d6b332e362a9155e72d
+	sha256sums = 35ffe246db00f9a6e54d50eb7e37d637ac2107413e88f2fe12d27c64ef1830dd
+	sha256sums = e85dfceb917f508fa3480984e53d8eb3d3050c7ba73987a5e7af32fc40db4c74
+
+pkgname = celeste64-fuji
