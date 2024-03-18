@@ -166,6 +166,8 @@ export CXXFLAGS="${CXXFLAGS/-fno-plt/}"
 prepare() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
+  _prepare_ceph_python_bcrypt
+
   # apply patches from the source array
   local filename
   for filename in "${source[@]%%::*}"; do
@@ -194,6 +196,8 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
+
+  _build_ceph_python_bcrypt
 
   export CFLAGS+=" ${CPPFLAGS}"
   export CXXFLAGS+=" ${CPPFLAGS}"
@@ -259,6 +263,8 @@ build() {
 
 check() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
+
+  _check_ceph_python_bcrypt
 
   export CTEST_PARALLEL_LEVEL=7
   export CTEST_OUTPUT_ON_FAILURE=1
@@ -1040,6 +1046,9 @@ package_python-ceph-common() {
   )
 
   mv __pkg__/$pkgname/* "$pkgdir"
+
+  _package_ceph_python_bcrypt
+
   _print
 }
 
@@ -1143,6 +1152,53 @@ package_ceph() {
   )
 }
 
+#======================================================================================#
+#======================================================================================#
+
+_prepare_ceph_python_bcrypt() {
+  (
+    cd "${srcdir}/bcrypt-${__bcrypt_version}"
+
+    # apply patches from the source array
+    local filename
+    for filename in "${source[@]%%::*}"; do
+      if [[ "${filename}" =~ \.patch$ ]] \
+      && [[ "${filename}" =~ ^python-bcrypt-.* ]]; then
+        echo "Applying patch ${filename##*/}"
+        patch -p1 -N -i "${srcdir}/${filename##*/}"
+      fi
+    done
+
+    mv -v src/{bcrypt,ceph_bcrypt}
+  )
+}
+
+_build_ceph_python_bcrypt() {
+  (
+    cd "${srcdir}/bcrypt-${__bcrypt_version}"
+
+    python -m build --wheel --no-isolation
+  )
+}
+
+_check_ceph_python_bcrypt() {
+  (
+    cd "${srcdir}/bcrypt-${__bcrypt_version}"
+
+    local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+
+    python -m installer --destdir=test_dir dist/*.whl
+    PYTHONPATH="test_dir/$_site_packages:$PYTHONPATH" pytest
+  )
+}
+
+_package_ceph_python_bcrypt() {
+  (
+    cd "${srcdir}/bcrypt-${__bcrypt_version}"
+
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+  )
+}
 #======================================================================================#
 #======================================================================================#
 
