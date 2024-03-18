@@ -38,12 +38,16 @@ makedepends=(
   'python-pecan'    'python-prettytable'   'python-pyjwt'      'python-pyopenssl'           'python-requests'
   'python-scipy'    'python-setuptools'    'python-sphinx'     'python-typing_extensions'   'python-werkzeug'
   'python-yaml'
+
+  # python-bcrypt makedepends
+  'python-build'   'python-installer'   'python-setuptools-rust'   'python-wheel'
 )
 checkdepends=(
   'inetutils'     'xmlstarlet'
 
   'python-nose'   'python-pycodestyle'   'python-pylint'   'python-pytest'   'python-pytest-cov'
 )
+__bcrypt_version='4.1.2'
 
 # Despite the upstream suggesting that LTO is now possible, I still am unable
 # to set this. I get SEGVs in tests, and repeated mentions of C++ One Definition Rule
@@ -115,6 +119,15 @@ source=(
   # Fix a change in behavior between python 3.11.5 and 3.11.8, which prevents
   # importing type stub (.pyi) files directly, without a .py skeleton
   'ceph-18.2.2-mgr-ceph-module-stub.patch'
+
+  # ===== ceph-python-bcrypt sources ===== #
+  "python-bcrypt-${__bcrypt_version}.tar.gz::https://github.com/pyca/bcrypt/archive/${__bcrypt_version}.tar.gz"
+
+  # Rename bcrypt -> ceph_bcrypt
+  'python-bcrypt-prefix-ceph.patch'
+
+  # Use our fork of pyo3, reenabling subinterpreter support
+  'python-bcrypt-allow-subinterpreters.patch'
 )
 sha512sums=('88e1c18bc6c824b6203cf026cca4c9409000e7cf5b2b986e22ab74d2790d8b93d91556bd3af15a320dbdd0cf2302308f0b2c75fd1243bc5a65f76fc6b3d70736'
             '4354001c1abd9a0c385ba7bd529e3638fb6660b6a88d4e49706d4ac21c81b8e829303a20fb5445730bdac18c4865efb10bc809c1cd56d743c12aa9a52e160049'
@@ -135,7 +148,10 @@ sha512sums=('88e1c18bc6c824b6203cf026cca4c9409000e7cf5b2b986e22ab74d2790d8b93d91
             '9a1183c08f8799b14235c9271519203cbf93e48ca3a8607d3a0500910efca5379c8a08421c377227f93d8436a850f5ca99784f28aaa920e55f0457c657511f17'
             'e238b326609636bc7dd10cec59290e22898948ef105c49643c38d2621abf16c2efcf9581b0b6bad65066607510c9827d00a7abdb14f2054701cc33b7101ea054'
             '965f1174ed682409f5aebfe689ccc870a860f323b00dcd4c9ee079839108ee27ed4d8b42d8b59c7e3cc5fb61d554929d9f779ce224691d20b868acf7f15adb2c'
-            '494290871b12be79a3e74618912d552f4802a7580abcd8e174b890944917ac04e1a52ddd7c039fa230cf43463ed479f9abf6f9a7d403d4ba5b522297184b09a5')
+            '494290871b12be79a3e74618912d552f4802a7580abcd8e174b890944917ac04e1a52ddd7c039fa230cf43463ed479f9abf6f9a7d403d4ba5b522297184b09a5'
+            '9cd6535249b88d83efd6f84e36c552cfb68d080c12b5f35167976219fd298efa03010c8674aa6d173242c098194c7d6ace3e2a5173a910bebf63791f60e7ade3'
+            '26e4569396005f7461764dbe57634ab6d20ca9bfe777b4eeae3def8e3c887333b4d64470ad1db15a8170979f85372c111abfc043bdc1deae219183cc7539980e'
+            '80f0d698d03b18c7168818983e150b34c19480f629f33d5537f76f810bdc7394dea68409ededa5d7f369bf9377cbaa7a9f11caa8874e3ecb29fd8bb06d45aeb2')
 __version="${pkgver}-${pkgrel}"
 
 # -fno-plt causes linker errors (undefined reference to internal methods)
