@@ -1,4 +1,4 @@
-# Maintainer: imoutocon
+# Maintainer: qsqcqs
 pkgname='qwq'
 pkgver=1.1
 pkgrel=2
