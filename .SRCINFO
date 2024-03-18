@@ -1,7 +1,7 @@
 pkgbase = papa
 	pkgdesc = Mod manager CLI for Northstar
 	pkgver = 4.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/AnActualEmerald/papa
 	arch = x86_64
 	license = MIT

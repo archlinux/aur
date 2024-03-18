@@ -2,7 +2,7 @@
 
 pkgname=papa
 pkgver=4.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Mod manager CLI for Northstar"
 url="https://github.com/AnActualEmerald/papa"
 license=('MIT')
@@ -17,7 +17,7 @@ sha256sums=('SKIP'
 prepare() {
 # Submodule
   rm -d papa/thermite
-  ln -sf "$srcdir/thermite" papa
+  ln -s "$srcdir/thermite" papa
 
 # Dependencies
   cd papa
