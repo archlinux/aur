@@ -10,7 +10,7 @@ license=('MIT')
 depends=('stylelint' 'stylelint-config-recommended')
 makedepends=('git' 'npm')
 source=("git+$url.git#tag=$pkgver")
-b2sums=('SKIP')
+b2sums=('d1002f1e2ee514188b716686ce785a9b15b59a5956c16b34ee1606ff381db19278458bf844acad328d3b7b4627d8ffee12f2d3fb9b9357a1014c1cd3d33b1e40')
 
 prepare() {
   cd $pkgname
