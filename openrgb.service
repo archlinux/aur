@@ -1,9 +1,9 @@
 [Unit]
-Description=Run openrgb server
+Description=Run OpenRGB server
 After=network.target lm_sensors.service
 
 [Service]
-ExecStart=/usr/bin/openrgb --server
+ExecStart=/usr/bin/openrgb --server --config /etc/openrgb
 Restart=on-failure
 
 [Install]
