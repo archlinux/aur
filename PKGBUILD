@@ -17,21 +17,27 @@ makedepends=(
     'git'
     'nodejs'
     'npm'
+    'curl'
+)
+options=(
+    '!strip'
+    '!emptydirs'
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-git}|g" \
-        -e "s|@runname@|app|g" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     gendesk -q -f -n --categories="AudioVideo" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
@@ -43,6 +49,13 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
     npm install
     npm run package
 }
