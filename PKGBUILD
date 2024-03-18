@@ -1,8 +1,8 @@
 # Maintainer: physkets <physkets // at // tutanota dot com>
 
 pkgname=gct
-pkgver=6.2.1653033972
-pkgrel=2
+pkgver=6.2.1705709074
+pkgrel=1
 pkgdesc="The Grid Community Toolkit (GCT) is an open-source fork by the Grid Community Forum (GridCF) of the venerable Globus Toolkit"
 url="https://gridcf.org/gct-docs/"
 arch=('x86_64')
@@ -52,13 +52,10 @@ fi
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  sed -i '/#include "openbsd-compat\/openssl-compat.h"/a #include "fips_mode_replacement.h"' gsi_openssh/source/kexgexc.c
 }
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  #export LDFLAGS="-L/usr/lib/openssl-1.1/"
-  #export CPPFLAGS="-I/usr/include/openssl-1.1/"
   ./configure --prefix="/usr/local" --datarootdir="/usr/share" "${_feature_args[@]}"
   make -j
 }
