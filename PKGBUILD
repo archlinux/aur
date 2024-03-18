@@ -7,9 +7,11 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-cairo-bootstrap
 pkgver=1.18.0
-pkgrel=3
+pkgrel=4
 arch=('any')
-pkgdesc="2D graphics library with support for multiple output devices (android bootstrap)"
+pkgdesc="2D graphics library with support for multiple output devices (Android, ${_android_arch})"
+license=("LGPL" "MPL")
+url="http://cairographics.org/"
 depends=("android-${_android_arch}-fontconfig"
          "android-${_android_arch}-glib2"
          "android-${_android_arch}-libpng"
@@ -20,8 +22,6 @@ provides=("android-${_android_arch}-cairo")
 conflicts=("android-${_android_arch}-cairo")
 makedepends=('android-meson')
 options=(!strip !buildflags staticlibs !emptydirs)
-license=("LGPL" "MPL")
-url="http://cairographics.org/"
 source=("https://gitlab.freedesktop.org/cairo/cairo/-/archive/${pkgver}/cairo-${pkgver}.tar.gz"
         "0001-Added-missing-headers-and-symbols.patch"
         "0002-ipc-rmid-deferred-release.patch"
@@ -42,6 +42,12 @@ build() {
     cd "${srcdir}/cairo-${pkgver}"
     source android-env ${_android_arch}
 
+#     ld.lld: error: undefined reference due to --no-allow-shlib-undefined: __register_atfork@LIBC
+#     >>> referenced by /opt/android-libs/aarch64/lib/libpixman-1.so
+#
+#     ld.lld: error: undefined reference due to --no-allow-shlib-undefined: stderr@LIBC
+#     >>> referenced by /opt/android-libs/aarch64/lib/libpixman-1.so
+
     mkdir -p build
     cd build
     android-${_android_arch}-meson \
@@ -57,6 +63,7 @@ build() {
         -D xlib-xcb=disabled \
         --buildtype=release \
         --default-library=both
+    echo '#define HAVE_CTIME_R 1'$'\n' >> config.h
     ninja
 }
 
