@@ -4,7 +4,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=radium
-pkgver=7.2.89
+pkgver=7.3.84
 pkgrel=1
 pkgdesc='A graphical music editor. A next generation tracker.'
 arch=(x86_64)
@@ -72,12 +72,10 @@ optdepends=(
 )
 options=( !strip )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kmatheussen/radium/archive/$pkgver.tar.gz"
-        build_libpds.patch
         radium.install
         build_linux_common.patch
 )
-sha256sums=('b479a2e9a7a27464e83700f417fd1fddab2fe5326c456e4c65bc6ca351278713'
-            '2f145e84c5940f4f82544ae68e668d5bd02ee7bce559d3354f60d12eaea1a548' 
+sha256sums=('99d42a56491812cbc04fa14f463588740eb2bed8c2f58eadd6e8f45b239fd3f6'
             'f627730ff7a819e8cc5ac5c2b5f1fb2f2237327db6ea5442c55a23c1ce82ef14'
             '0decfc3adcba836004ac34d970a83d4d0b69743334a586f42be53b3de7bdd5a4'
            )
@@ -101,15 +99,13 @@ prepare() {
   for file in bin/sounds/*.rad; do sed -i -e 's/Calf MultiChorus LADSPA/Calf Multi Chorus LADSPA/g' "$file"; done
   for file in bin/sounds/*.RAD; do sed -i -e 's/Calf MultiChorus LADSPA/Calf Multi Chorus LADSPA/g' "$file"; done
   sed -ie "s/C\* Eq - 10-band equalizer/C\* Eq10 - 10-band equaliser/g" bin/sounds/ROMANCE2.RAD 
-  # See comment on calf-ladspa AUR page then on how to let Radium load Calf from LMMS package
-  
-  cd bin/packages
-  # activate our former patch in build.sh
-  sed "/fsqrt/s/#//" -i build.sh
+  # See comment on calf-ladspa AUR page then on how to let Radium load Calf from LMMS package 
 }
 
 build() {
   cd radium-$pkgver
+  export PATH=$(pwd):$PATH
+	export INCLUDE_FAUSTDEV_BUT_NOT_LLVM=1
 
   RADIUM_QT_VERSION=5 RADIUM_VST2SDK_PATH=/usr/include/vst36 RADIUM_BUILD_LIBXCB=0 make packages
   RADIUM_QT_VERSION=5 RADIUM_VST2SDK_PATH=/usr/include/vst36 BUILDTYPE=RELEASE ./build_linux.sh
