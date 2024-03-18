@@ -9,17 +9,18 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-glib2
 pkgver=2.78.4
-pkgrel=1
-pkgdesc="Low level core library (android)"
+pkgrel=2
 arch=('any')
+pkgdesc="Low level core library (Android, ${_android_arch})"
 url="https://wiki.gnome.org/Projects/GLib"
 license=("LGPL2.1")
+groups=('android-glib2')
 depends=("android-${_android_arch}-libffi"
          "android-${_android_arch}-pcre2"
          "android-${_android_arch}-gettext"
          "android-${_android_arch}-zlib")
-options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-meson')
+options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://download.gnome.org/sources/glib/${pkgver%.*}/glib-${pkgver}.tar.xz")
 sha256sums=('24b8e0672dca120cc32d394bccb85844e732e04fe75d18bb0573b2dbc7548f63')
 
@@ -33,6 +34,7 @@ build() {
         cd "${srcdir}/glib-${pkgver}/build-${_android_arch}-${type}"
         android-${_android_arch}-meson \
             --default-library "${type}" \
+            -Dtests=false \
             ..
         ninja
     done
@@ -46,4 +48,8 @@ package() {
 
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
     ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a || true
+
+    rm -f "${pkgdir}/${ANDROID_PREFIX_INCLUDE}/libintl.h"
+    rm -f "${pkgdir}/${ANDROID_PREFIX_LIB}/libintl.a"
+    rm -f "${pkgdir}/${ANDROID_PREFIX_LIB}/libintl.so"
 }
