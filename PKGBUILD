@@ -1,13 +1,13 @@
 # Maintainer: foxcub <archlinux "at" foxcub {dot} org>
 # Contributor: calegria  <calegria "at" gmail {dot} com>
 pkgname=cgal-ipelets
-pkgver=4.14.3
+pkgver=5.6
 pkgrel=1
-_ipever=7.2.24
+_ipever=7.2.28
 pkgdesc="Ipelets from CGAL"
 arch=('i686' 'x86_64')
 url="http://www.cgal.org"
-source=(https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-${pkgver}/CGAL-${pkgver}.tar.xz)
+source=(https://github.com/CGAL/cgal/releases/download/v${pkgver}/CGAL-${pkgver}.tar.xz)
 depends=('cgal' 'ipe')
 makedepends=('cmake' 'boost' 'cgal' 'ipe' 'eigen')
 license=('GPL')
@@ -25,4 +25,4 @@ package() {
   cp "$srcdir/CGAL-$pkgver/demo/CGAL_ipelets/build/"*.so "$pkgdir/usr/lib/ipe/$_ipever/ipelets/"
   cp "$srcdir/CGAL-$pkgver/demo/CGAL_ipelets/lua/"* "$pkgdir/usr/lib/ipe/$_ipever/ipelets/"
 }
-md5sums=('41c56ad048ce882aae6ff5b56256fe95')
+md5sums=('e1bdd9233cb5489b3738fb0c98eb0365')
