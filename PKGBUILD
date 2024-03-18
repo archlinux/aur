@@ -2,7 +2,7 @@
 pkgname=aeon-bin
 pkgver=0.2.22
 _electronversion=23
-pkgrel=9
+pkgrel=10
 pkgdesc="Scan the internet for your personal information and modify or remove it"
 arch=("x86_64")
 url="https://aeon.technology/"
@@ -21,11 +21,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('3a3c1112a6a750d503f08ccb2a7481dead7e4e58fc057d99f04f364dcf3c916a'
-            'f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
 }
