@@ -11,7 +11,8 @@ while true; do
 	sed -i "s/^sha256sums=.*$/sha256sums=('$(sha256sum ${pkgname}-${pkgver}.zip | awk '{ print $1 }')')/g" PKGBUILD
 	sed -i "s/^b2sums=.*$/b2sums=('$(b2sum ${pkgname}-${pkgver}.zip | awk '{ print $1 }')')/g" PKGBUILD
 	makepkg -sif
-	linuxqq &>/dev/null
+	kill $!
+	linuxqq &>/dev/null &
 	makepkg --printsrcinfo >.SRCINFO
 	git add PKGBUILD .SRCINFO
 	git commit -m "Upgrade to ${pkgver}"
