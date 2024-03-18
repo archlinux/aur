@@ -3,24 +3,25 @@
 _pkgname=CFAssay
 _pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
-pkgrel=1
-pkgdesc='Statistical analysis for the Colony Formation Assay'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('LGPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Statistical analysis for the Colony Formation Assay"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('LGPL-2.0-or-later')
 depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('44a819139501cf2bee863a9d0a0e624f19c9a3e0a2cc6755f2020a7e886e133a')
+md5sums=('122c969248ffd92330d93a266db6cb3c')
+b2sums=('53dae0fb1b19bb5e90cc870ed8226c2a97449d73e186e2f79bd45272d615d45d50f77dc26dcc15c9cd7e58f75d2d5c2d410c7af91a5dc75dc2ca6ffbd39aa02c')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

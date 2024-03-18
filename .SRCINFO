@@ -1,12 +1,13 @@
 pkgbase = r-cfassay
 	pkgdesc = Statistical analysis for the Colony Formation Assay
 	pkgver = 1.36.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/CFAssay
 	arch = any
-	license = LGPL
+	license = LGPL-2.0-or-later
 	depends = r
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/CFAssay_1.36.0.tar.gz
-	sha256sums = 44a819139501cf2bee863a9d0a0e624f19c9a3e0a2cc6755f2020a7e886e133a
+	md5sums = 122c969248ffd92330d93a266db6cb3c
+	b2sums = 53dae0fb1b19bb5e90cc870ed8226c2a97449d73e186e2f79bd45272d615d45d50f77dc26dcc15c9cd7e58f75d2d5c2d410c7af91a5dc75dc2ca6ffbd39aa02c
 
 pkgname = r-cfassay
