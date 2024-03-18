@@ -1,0 +1,15 @@
+pkgbase = brother-dcpl2535dw
+	pkgdesc = Brother DCP-L2535DW driver
+	pkgver = 4.0.0_1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?lang=zh&c=cn&prod=dcpl2535dw_cn&cgi=m00112%2fzh%2fsrc%3dDEVICE
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = custom:brother
+	depends = cups
+	optdepends = brscan4: scanner support.
+	source = https://d.brother-movie.com/driver/286/dcpl2535dwpdrv-4.0.0-1.i386.rpm
+	md5sums = e62e2935da329aa2e3e22150fe84bfb8
+
+pkgname = brother-dcpl2535dw
