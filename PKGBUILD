@@ -1,11 +1,11 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname="tailor-gui"
 pkgver="0.2.3"
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical client for tailord (part of tuxedo-rs)"
 arch=("x86_64")
 url="https://github.com/AaronErhardt/tuxedo-rs/"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 groups=('tuxedo-rs')
 provides=(
   'tailor-gui'
@@ -20,7 +20,7 @@ makedepends=(
   'meson'
   'git'
 )
-_commit_hash="74b863e" # v0.2.3
+_commit_hash="fcca331" # v0.2.3 w/latest dependencies
 source=(
   "${pkgname}-${pkgver}"::"git+${url}#commit=${_commit_hash}"
 )
@@ -29,20 +29,20 @@ _archive="${pkgname}-${pkgver}"
 _srcname="tailor_gui"
 
 build() {
-  cd ${_archive}
+  cd "${_archive}/${_srcname}"
 
-  meson setup --prefix=/usr "${_srcname}" build
+  meson setup --prefix=/usr build
   meson compile -C build
 }
 
 check() {
-  cd "${_archive}"
+  cd "${_archive}/${_srcname}"
 
   meson test -C build
 }
 
 package() {
-  cd "${_archive}"
+  cd "${_archive}/${_srcname}"
 
   meson install -C build --destdir "${pkgdir}"
 }
