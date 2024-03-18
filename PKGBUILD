@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=catcat-dm-react
 _pkgname="CatCatDM React"
-pkgver=1.9.6
+pkgver=1.9.8
 _electronversion=23
 _nodeversion=18
-pkgrel=5
+pkgrel=1
 pkgdesc="catcat弹幕姬.哔哩哔哩直播弹幕姬： 查看直播间弹幕。"
 arch=('any')
 url="https://github.com/kokolokksk/catcat-dm-react"
@@ -27,7 +27,7 @@ source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('SKIP'
+sha256sums=('1aac8c03d9025aef0c4606a59be7670ba9e6b19ea374248ef2e7852d2321a74e'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -60,9 +60,7 @@ build() {
         echo "Your network is OK."
     fi
     sed "s|-p always|--dir|g" -i package.json
-    #sed "s|app.isPackaged|!app.isPackaged|g" -i src/main/main.ts
     npm install --force
-    npm add patch-package
     npm run package
 }
 package() {
