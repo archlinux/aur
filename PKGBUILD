@@ -1,19 +1,11 @@
 # Maintainer: Leonidas Spyropoulos <artafinde at gmail dot com>
 # Contributor: CyrIng <labs[at]cyring[dot]fr>
 
-### BUILD OPTIONS
-# Set the next variables to ANYTHING that is not null to enable them
-
-# Enable transparency mode in terminal
-_transparency=
-
-### Do no edit below this line unless you know what you're doing
-
 pkgbase=corefreq-git
 pkgname=(corefreq-client-git corefreq-server-git corefreq-dkms-git)
 _gitname=CoreFreq
 _pkgbase=${pkgbase%-*}
-pkgver=1.97.0.r7.g103f9ad
+pkgver=1.97.0.r102.g77ddd76
 pkgrel=1
 pkgdesc="A CPU monitoring software with BIOS like functionalities"
 arch=('x86_64')
@@ -21,12 +13,12 @@ url='https://github.com/cyring/CoreFreq'
 license=('GPL-2.0-only')
 depends=('dkms')
 makedepends=('git')
-source=(git+"${url}.git#branch=master"
+source=(git+"${url}.git#branch=develop"
         'dkms.conf'
         'honor-archlinux-compiler-flags.patch')
 b2sums=('SKIP'
         'a47306b69244b2c7cfe34a5a19aabc7d22ef8982402da038bfb65a357bed9aa0d9f30b034afa7c6dbc23969448142a0027bd14364a14da92b1c666881e15420c'
-        '0b409cbc017b5b8d30cf2f291fe288172a8f8a1d773f17e5c860f2a9a929e758731993a2e56a4d0f03364b40481577765a714d8daf7261f2832c02921b347c93')
+        'f4299ed5c44052a521988d417410081ddb92a5f481012f9c7a964ec0dee6a63be6123cef8f8618f23be6827e25aeb3fef93f8c270aaa3076cc1f434a6d4ca861')
 
 pkgver() {
   cd "${_gitname}"
@@ -40,11 +32,7 @@ prepare(){
 
 build() {
   cd "${_gitname}"
-  if [ -n "${_transparency}" ]; then
-    make prepare corefreqd corefreq-cli -j UI_TRANSPARENCY=1
-  else
-    make prepare corefreqd corefreq-cli -j
-  fi
+  make prepare corefreqd corefreq-cli -j
 }
 
 package_corefreq-dkms-git() {
