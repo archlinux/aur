@@ -1,15 +1,15 @@
 pkgbase = bibliasacra-appimage
 	pkgdesc = A Flutter Bible application with English and Latin versions
-	pkgver = 1.0.6
-	pkgrel = 7
-	url = https://github.com/ika/Biblia_Sacra/releases/download/v1.0.6
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/ika/Biblia_Sacra/releases/download/v1.0.7
 	arch = x86_64
 	license = GPLv3
 	depends = xdg-utils
 	provides = bibliasacra
 	conflicts = bibliasacra
 	options = !strip
-	source = https://github.com/ika/Biblia_Sacra/releases/download/v1.0.6/bibliasacra-v1.0.6-x86_64.AppImage
-	md5sums = 621523b056af89f4275ddf7bb8116feb
+	source = https://github.com/ika/Biblia_Sacra/releases/download/v1.0.7/bibliasacra-v1.0.7-x86_64.AppImage
+	md5sums = 89246270db37369c4ad994795c2bcbf5
 
 pkgname = bibliasacra-appimage

@@ -2,8 +2,8 @@
 
 _pkgname=bibliasacra
 pkgname=${_pkgname}-appimage
-pkgver=1.0.6
-pkgrel=7
+pkgver=1.0.7
+pkgrel=1
 pkgdesc="A Flutter Bible application with English and Latin versions"
 arch=('x86_64')
 license=('GPLv3')
@@ -15,7 +15,7 @@ options=(!strip)
 _appimage="${_pkgname}-v${pkgver}-${arch}.AppImage"
 source=("${url}/${_appimage}")
 
-md5sums=('621523b056af89f4275ddf7bb8116feb')
+md5sums=("89246270db37369c4ad994795c2bcbf5") 
 
 prepare() {
   chmod +x ${_appimage}
