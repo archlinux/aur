@@ -1,28 +1,26 @@
 # Maintainer: Norbert Preining <norbert@preining.info>
 pkgname=plasma-gamemode-git
-pkgver=r4.3adea2b
-pkgrel=2
+pkgver=r6.4d60358
+pkgrel=1
 pkgdesc="Gamemode UI for the Plasma Desktop"
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 arch=('x86_64')
 url="https://invent.kde.org/sitter/${pkgname%-git}"
-license=('MIT' 'BSD' 'GPL2' 'GPL3' 'LGPL' 'custom:CC0')
+license=('MIT' 'BSD-3-Clause' 'GPL-2.0-only' 'GPL-3.0-only' 'LGPL-3.0-only' 'CC0-1.0')
 depends=(
+  'kirigami'
+  'gcc-libs'
   'gamemode'
-  'fontconfig'
-  'freetype2'
-  'pkgconf'
-  'qt5-base>=5.15.0'
-  'kcoreaddons5>=5.82'
-  'kdbusaddons5>=5.82'
-  'ki18n5>=5.82'
-  'kdeclarative5>=5.82'
-  'kpackage5>=5.82'
-  'kservice5>=5.82'
-  'plasma-framework5>=5.82')
+  'qt6-base'
+  'qt6-declarative'
+  'kcoreaddons>=6.0.0'
+  'kdbusaddons>=6.0.0'
+  'ki18n>=6.0.0'
+  'kdeclarative>=6.0.0'
+  'libplasma>=6.0.0')
 
-makedepends=('git' 'cmake>=3.16' 'extra-cmake-modules>=5.82')
+makedepends=('git' 'cmake>=3.16' 'extra-cmake-modules>=6.0.0')
 source=(git+${url}.git)
 sha256sums=('SKIP')
 
