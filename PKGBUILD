@@ -2,7 +2,7 @@
 pkgname=anydesk-bin
 pkgver=6.3.1
 _pkgver_i686="6.0.1"
-pkgrel=1
+pkgrel=2
 pkgdesc="The Fast Remote Desktop Application"
 arch=('i686' 'x86_64')
 url="https://anydesk.com"
@@ -13,12 +13,20 @@ conflicts=('anydesk')
 provides=('anydesk')
 options=('!strip')
 
-
 source_i686=("https://download.anydesk.com/linux/anydesk-${_pkgver_i686}-i386.tar.gz")
 source_x86_64=("https://download.anydesk.com/linux/anydesk-${pkgver}-amd64.tar.gz")
 
 sha256sums_i686=('cb22b026e2d81c0de220238fa3d4e13a6d0016787b8c680923794296bbd548e2')
 sha256sums_x86_64=('a9592cbdaebe11f01088e7b13fc3650d2091e406f6586b2e086e010fceeb95a8')
+
+pkgver() {
+if [ `uname -m` != "x86_64" ];
+then
+    printf "${_pkgver_i686}"
+else
+    printf "${pkgver}"
+fi
+}
 
 package() {
     if [ `uname -m` != "x86_64" ];
