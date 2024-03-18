@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=scripthaus-git
-pkgver=0.5.0.r8.g21619c3
+pkgver=0.5.1.r0.g03c4760
 pkgrel=1
 pkgdesc="ScriptHaus lets you run bash, Python, and JS snippets from your Markdown files directly from the command-line."
 arch=('any')
@@ -26,6 +26,11 @@ build() {
     export CGO_ENABLED=1
     export GOCACHE="${srcdir}/go-build"
     export GOMODCACHE="${srcdir}/go/pkg/mod"
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        export GOPROXY=https://goproxy.cn
+    else
+        echo "Your network is OK."
+    fi
     go build -o scripthaus cmd/main.go
 }
 package() {
