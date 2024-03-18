@@ -3,7 +3,7 @@ _pkgname=snapdrop
 pkgname="node-${_pkgname}-electron-bin"
 pkgver=1.0.4
 _electronversion=21
-pkgrel=5
+pkgrel=6
 pkgdesc="A Self Contained Desktop Version Of Snapdrop Made With Electron"
 arch=('x86_64')
 url="https://github.com/JustSch/node-snapdrop-electron"
@@ -11,7 +11,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'nodejs'
 )
 source=(
@@ -19,11 +19,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('25b67d4165657d88c10b23166d08eef9c0c7e99ad22023341c664ec649b2fe1c'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|Exec=${_pkgname} %U|Exec=${pkgname%-bin} %U|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
