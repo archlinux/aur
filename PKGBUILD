@@ -1,16 +1,16 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=criticality_score
-pkgver=2.0.2
-pkgrel=2
+pkgver=2.0.3
+pkgrel=1
 pkgdesc="Gives criticality score for an open source project"
 arch=('i686' 'x86_64')
 url="https://github.com/ossf/criticality_score"
-license=('Apache')
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/ossf/criticality_score/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fee396d728f3c0dc9711804ee9bc27388bdc4f0f299bf2c30bea343252b30efe')
+sha256sums=('7387d311e2ad09e6c0426c43bf191fc476bfcab95d28f9177133f4181e447f08')
 
 
 export CGO_CPPFLAGS="${CPPFLAGS}"
