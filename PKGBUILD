@@ -3,7 +3,7 @@ pkgname=tesler-bin
 _pkgname=TesLEr
 pkgver=0.2.3
 _electronversion=22
-pkgrel=6
+pkgrel=7
 pkgdesc="TesLEr - The Tesla Sentinel Viewer"
 arch=('x86_64')
 url="https://github.com/j-catania/TeslaSentinelViewer"
@@ -14,6 +14,9 @@ depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
 )
+makedepends=(
+    'fuse2'
+)
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/TesLEr-${pkgver}.AppImage"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/j-catania/TeslaSentinelViewer/v${pkgver}/LICENSE"
@@ -21,11 +24,12 @@ source=(
 )
 sha256sums=('5447e01520ad757fdbb4130e764a863c9d282c5dd48cf2fabbd33e171a2decfd'
             '29eee3e9d9c5dd67213ec3ab4a7eef57a1224750e2e9aab3a278177a9444a355'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
