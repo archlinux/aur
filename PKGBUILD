@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=sdformat14
-pkgver=14.0.0
-pkgrel=4
+pkgver=14.1.0
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Simulation Description Format (SDFormat) parser and description files."
