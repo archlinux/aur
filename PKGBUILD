@@ -1,7 +1,7 @@
 # Maintainer: inv2004 (https://github.com/inv2004)
 
 pkgname=ttop
-pkgver=1.3.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="System monitoring tool with TUI, historical data service and triggers"
 arch=('x86_64')
