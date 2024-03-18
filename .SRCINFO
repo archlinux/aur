@@ -1,0 +1,15 @@
+pkgbase = yolx-appimage
+        pkgdesc = A modern download tool developed with Flutter, powered by 'Aria 2' at its core.
+        pkgver = 0.3.8+1
+        pkgrel = 1
+        url = https://github.com/uiYzzi/Yolx
+        arch = x86_64
+        license = GPL
+        depends = fuse2fs
+        provides = yolx-appimage
+        noextract = yolx-linux-0.3.8+1.AppImage
+        options = !strip
+        source = https://github.com/uiYzzi/Yolx/releases/download/0.3.8+1/yolx-linux-0.3.8+1.AppImage
+        sha512sums = 1564666047bf0e54a4dfa7e72271b2a36b7fb8eeab71a20d5f3d29ca32296a95b28010efb1c0d847f089a3d3645866f90c0ed25b5a5801e95a6664537b111a81
+
+pkgname = yolx-appimage
