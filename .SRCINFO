@@ -1,11 +1,11 @@
 pkgbase = src
 	pkgdesc = Simple Revision Control with modern UI for single-file projects
 	pkgver = 1.38
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.catb.org/esr/src/
 	arch = any
 	license = BSD
-	makedepends = asciidoc
+	makedepends = asciidoctor
 	depends = python
 	depends = rcs
 	optdepends = rcs-fast-import: required for src fast-import

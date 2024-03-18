@@ -2,12 +2,12 @@
 
 pkgname=src
 pkgver=1.38
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Revision Control with modern UI for single-file projects"
 arch=('any')
 url="http://www.catb.org/esr/$pkgname/"
 license=('BSD')
-makedepends=('asciidoc')
+makedepends=('asciidoctor')
 depends=('python' 'rcs')
 optdepends=('rcs-fast-import: required for src fast-import'
             'sccs: alternative backend')
