@@ -2,8 +2,9 @@
 # vim: ts=2 sw=2 et:
 
 pkgname=python-aiohttp-sse
+_pkgname=aiohttp-sse
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Server-sent events support for aiohttp"
 arch=('x86_64')
 url="https://github.com/aio-libs/aiohttp-sse"
@@ -16,16 +17,16 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd $pkgname-$pkgver
+  cd $_pkgname-$pkgver
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd $_pkgname-$pkgver
   PYTHONPATH="$PWD/build/lib/" pytest
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $_pkgname-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
