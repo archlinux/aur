@@ -8,6 +8,7 @@ pkgbase = lunar-client
 	depends = fuse
 	depends = xorg-xrandr
 	options = !strip
+	options = !debug
 	source = https://launcherupdates.lunarclientcdn.com/Lunar%20Client-3.2.3.AppImage
 	sha256sums = 4074b895f9dba07d5ebdcf556489b62498c88731728ab555cf4ad5345d15bf12
 
