@@ -1,0 +1,17 @@
+pkgbase = samin
+	pkgdesc = A btrfs snapshot utility
+	pkgver = 0.01
+	pkgrel = 1
+	url = https://gitlab.com/lepz0r/samin
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pytz
+	depends = btrfs-progs
+	depends = python-tzlocal
+	depends = python-psutil
+	source = https://gitlab.com/lepz0r/samin/-/archive/v0.01/samin-v0.01.tar.gz
+	sha256sums = f58a63a90c27a9a153c43269c04a4509412c6e553f3e2f214ce6cd921f29465d
+
+pkgname = samin
