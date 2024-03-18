@@ -56,7 +56,7 @@ source=(
   'ceph.sysusers'
   'ceph.sudoers'
   'ceph-13.2.2-dont-install-sysvinit-script.patch'
-  'disable-empty-readable.sh-test.patch'
+  'ceph-disable-empty-readable.sh-test.patch'
 
   # Avoid spurious failures in logrotate when duplicate rule files exist,
   # typically around cephadm auto-generated rotate rules
