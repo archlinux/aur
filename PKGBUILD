@@ -24,7 +24,7 @@ package() {
     if [ `uname -m` != "x86_64" ];
     then
         printf "%b" "\e[1;31m==> IMPORTANT: Support for 32bit operating systems has ended with version 6.1.0. We strongly recommend upgrading to 64bit operating system.\n"
-        printf "%b" "\e[1;31mThis package will install version 6.0.1 on 32bit systems for now.\n"
+        printf "%b" "\e[1;31mThis package will install version 6.0.1 on 32bit systems which should not be used as it contains security vulnerabilities.\n"
     fi
 
     # install binary
