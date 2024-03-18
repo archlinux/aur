@@ -18,7 +18,7 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd "$_dir"
-	version="$(cat src/pygame_sdl2/version.py | grep '^vernum = ' | sed 's/^vernum = //; s/(//; s/)//; s/, /./g')"
+	version="$(cat 'src/pygame_sdl2/version.py' | grep '^vernum = ' | sed 's/^vernum = //; s/(//; s/)//; s/, /./g')"
 	echo "${version}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
@@ -30,6 +30,5 @@ build() {
 package() {
 	cd "$_dir"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-	install -Dm644 'COPYING.ZLIB' "$pkgdir/usr/share/licenses/$pkgname/LICENSE.zlib"
-	ln -s '../common/LGPL2.1' "$pkgdir/usr/share/licenses/$pkgname/LICENSE.LGPL2_1"
+	install -Dm644 'COPYING.ZLIB' "$pkgdir/usr/share/licenses/$_pkgname/LICENSE.zlib"
 }
