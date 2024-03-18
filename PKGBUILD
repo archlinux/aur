@@ -3,7 +3,7 @@ pkgname=darkorbit-client-bin
 _pkgname=DarkOrbit-Client
 pkgver=2.8.0
 _electronversion=11
-pkgrel=6
+pkgrel=7
 pkgdesc="Open source darkorbit client (cross-platform and with better performance)"
 arch=('x86_64')
 url="https://github.com/kaiserdj/Darkorbit-client"
@@ -12,7 +12,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}-bin"
-    'hicolor-icon-theme'
     'python>3'
     'java-runtime'
     'python-psutil'
@@ -25,11 +24,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('36a64931d244c0524ce36288c191916374957006a1be81cbcff1d000a027c315'
-            'f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
