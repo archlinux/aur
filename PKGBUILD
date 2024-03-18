@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="ttk-themes-breeze-git"
-pkgver=0.6
+pkgver=r20.cb7dd7f
 pkgrel=1
 pkgdesc="Tk version of Breeze and Breeze Dark themes"
 url="https://github.com/thindil/tkBreeze"
@@ -14,6 +14,11 @@ replaces=("ttk-themes-breeze")
 source=("git+$url")
 b2sums=("SKIP")
 install="ttk-themes-breeze.install"
+
+pkgver(){
+ cd "tkBreeze"
+ printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 package(){
  cd "tkBreeze"
