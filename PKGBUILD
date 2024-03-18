@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-sim8
-pkgver=8.0.0
-pkgrel=5
+pkgver=8.1.0
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Open source robotics simulator"
@@ -37,7 +37,7 @@ makedepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('c6298a9d03b9a6e5badd1a78a3b178201e9efac2209bbc2fe5a6b6bbba85125c')
+sha256sums=('1c140333431a745ddfe07fe1f45d728819083e0a6227aa13f7d4e054911125a0')
 
 build() {
   export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/lib/ffmpeg4.4/pkgconfig"
