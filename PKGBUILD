@@ -1,7 +1,7 @@
 # Maintainer: herzrasen <dennis.mellert@gmail.com>
 pkgname=pkghist
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Query your pacman logs"
 arch=('x86_64')
 url="https://github.com/herzrasen/pkghist"
