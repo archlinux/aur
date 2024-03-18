@@ -3,6 +3,7 @@ pkgname=vorta
 pkgver=0.9.1
 pkgrel=3
 pkgdesc="A GUI for BorgBackup"
+_package="com.borgbase.Vorta"
 arch=('any')
 url="https://github.com/borgbase/vorta"
 license=('GPL')
@@ -26,13 +27,13 @@ package() {
   cd "$pkgname-$pkgver"
   python -m installer --destdir="${pkgdir:?}" dist/*.whl
 
-  install -Dm644 package/icon-symbolic.svg \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/com.borgbase.Vorta-symbolic.svg"
-  install -Dm644 src/vorta/assets/icons/icon.svg \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.borgbase.Vorta.svg"
-  install -Dm644 "src/$pkgname/assets/metadata/com.borgbase.Vorta.appdata.xml" -t \
+  install -Dm644 "package/icon-symbolic.svg" \
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$_package-symbolic.svg"
+  install -Dm644 "src/$pkgname/assets/icons/icon.svg" \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_package.svg"
+  install -Dm644 "src/$pkgname/assets/metadata/$_package.appdata.xml" -t \
     "$pkgdir/usr/share/metainfo"
-  install -Dm644 "src/$pkgname/assets/metadata/com.borgbase.Vorta.desktop" -t \
+  install -Dm644 "src/$pkgname/assets/metadata/$_package.desktop" -t \
     "$pkgdir/usr/share/applications"
 }
 
