@@ -11,6 +11,7 @@ pkgbase = smoothpaper
 	makedepends = gcc
 	makedepends = git
 	makedepends = zip
+	makedepends = unzip
 	depends = libx11
 	depends = libxrandr
 	depends = libxinerama
