@@ -2,7 +2,7 @@
 
 pkgname=riffdiff
 _pkgname=riff
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="A diff filter highlighting which line parts have changed"
 arch=('i686' 'x86_64' 'aarch64')
@@ -12,27 +12,20 @@ depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 conflicts=("${_pkgname}")  # binary name conflicts with riff dependency manager
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('693821b00a95aa0d6b215ab96f3bca5c1a5fc9cf07e7bd80261941a0afb81a4e')
+sha256sums=('a6a8e77b82aa6462aaef2bf43c45eb8381582f3e107b77d65ef8541a459ad68e')
 
 prepare() {
 	cd "${_pkgname}-${pkgver}"
-	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
 build() {
 	cd "${_pkgname}-${pkgver}"
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
 	cargo build --release --frozen --all-features
 }
 
 check() {
 	cd "${_pkgname}-${pkgver}"
-	export RUSTUP_TOOLCHAIN=stable
-	# test potentially (though not currently) overwrites binary from `build`
-	# see: https://gitlab.com/sequoia-pgp/sequoia-sq/-/issues/96
-	export CARGO_TARGET_DIR=target-test
 	cargo test --release --frozen --all-features
 }
 
