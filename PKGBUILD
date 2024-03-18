@@ -2,7 +2,7 @@
 
 _pkgname=mauikit-terminal
 pkgname=$_pkgname-git
-pkgver=1.0.0.r1.gd76b87d
+pkgver=3.1.0.r12.g3c39ded
 pkgrel=1
 pkgdesc='Terminal support components for Maui applications'
 url='https://invent.kde.org/maui/mauikit-terminal'
@@ -12,8 +12,8 @@ depends=(kconfig
          kcoreaddons
          ki18n
          mauikit-git
-         qt5-base
-         qt5-declarative)
+         qt6-base
+         qt6-declarative)
 makedepends=(git extra-cmake-modules)
 groups=(maui)
 provides=($_pkgname)
@@ -31,6 +31,7 @@ pkgver() {
 
 build() {
   cmake -B build -S $_pkgname \
+    -DBUILD_WITH_QT6=ON \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
