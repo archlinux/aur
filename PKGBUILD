@@ -4,29 +4,29 @@ _pkgname=Saberfy
 pkgver=2.1.0
 _electronversion=16
 _nodeversion=16
-pkgrel=5
+pkgrel=6
 pkgdesc="Application for match and import your Spotify favorite songs to BeatSaber"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/LoliE1ON/Saberfy"
 license=('MIT')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 depends=(
-    "electron${_electronversion}"
-    'nodejs'
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'gendesk'
     'npm'
     'nvm'
     'git'
+    'curl'
 )
 source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+sha256sums=('77fc637e2f73738b3be9104adc38c0ff27ef2e46cd424f2f638fb012318cb525'
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -37,10 +37,11 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -f -n -q --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
-    cd "${srcdir}/${_pkgname}.git"
+    cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -49,14 +50,21 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
     npm install
     npm run package
-    sed "s|reg.exe|reg|g" -i "${srcdir}/${_pkgname}.git/out/${_pkgname}-linux-x64/resources/app/.webpack/main/index.js"
+    sed "s|reg.exe|reg|g" -i "${srcdir}/${pkgname}.git/out/${_pkgname}-linux-"*/resources/app/.webpack/main/index.js
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${_pkgname}.git/out/${_pkgname}-linux-x64/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname}/swiftshader"
-    cp -r "${srcdir}/${_pkgname}.git/out/${_pkgname}-linux-x64/resources/app" "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/out/${_pkgname}-linux-"*/swiftshader/* -t "${pkgdir}/usr/lib/${pkgname}/swiftshader"
+    cp -r "${srcdir}/${pkgname}.git/out/${_pkgname}-linux-"*/resources/app "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${_pkgname}.git/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
