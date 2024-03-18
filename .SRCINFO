@@ -1,14 +1,14 @@
 pkgbase = nodejs-xml2json
 	pkgdesc = Converts XML to JSON using node-expat
-	pkgver = 0.11.2
+	pkgver = 0.12.0
 	pkgrel = 1
-	url = https://github.com/buglabs/node-xml2json
+	url = https://www.npmjs.com/package/xml2json
 	arch = any
-	makedepends = jq
 	makedepends = npm
+	makedepends = jq
 	depends = nodejs
-	source = http://registry.npmjs.org/xml2json/-/xml2json-0.11.2.tgz
-	sha1sums = 70ddd234fd7818312cc58455cab8457b5bcc7c52
+	noextract = xml2json-0.12.0.tgz
+	source = https://registry.npmjs.org/xml2json/-/xml2json-0.12.0.tgz
+	sha256sums = f5894a8ddffaf9fb5d47b1155d66034c68b6f112e93daad9f0b8add071537d83
 
 pkgname = nodejs-xml2json
-
