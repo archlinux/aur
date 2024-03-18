@@ -1,7 +1,6 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=openvpn
-_tag='5e4ba2896c6faa0c0b7f8b8bd520f27619e1ff11' # git rev-parse v${pkgver}
 pkgver=2.6.9
 pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network)'
@@ -21,11 +20,11 @@ makedepends=('git' 'systemd' 'python-docutils')
 install=openvpn.install
 validpgpkeys=('F554A3687412CFFEBDEFE0A312F5F7B42F2B01E7'  # OpenVPN - Security Mailing List <security@openvpn.net>
               'B62E6A2B4E56570B7BDC6BE01D829EFECA562812') # Gert Doering <gert@v6.de>
-source=("git+https://github.com/OpenVPN/openvpn.git#tag=${_tag}?signed"
+source=("git+https://github.com/OpenVPN/openvpn.git#tag=v${pkgver}?signed"
         '0001-unprivileged.patch'
         'sysusers.conf'
         'tmpfiles.conf')
-sha256sums=('SKIP'
+sha256sums=('2c5f0d729c26b171ab386b6be7ef58a54048c1561644f938bb2360e3206cc87a'
             '77874824d96c1fd6c14259a6ea16232ae574dda3d5adba1798ccd6c93694846c'
             '3646b865ac67783fafc6652589cfe2a3105ecef06f3907f33de5135815f6a621'
             'b1436f953a4f1be7083711d11928a9924993f940ff56ff92d288d6100df673fc')
