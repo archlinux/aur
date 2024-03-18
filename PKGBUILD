@@ -1,7 +1,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 pkgname=spheres-of-chaos
 pkgver=2.0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Asteroids, while dropping acid."
 url="http://www.spheresofchaos.com/"
 _watch="http://www.spheresofchaos.com/p/download.php"
@@ -14,7 +14,7 @@ md5sums=('ec067bc2373c055f42884d35e35d9b40'
 
 case $CARCH in
     x86_64)
-        depends=('lib32-sdl')
+        depends=('lib32-sdl' 'lib32-libpulse')
         ;;
 esac
 
