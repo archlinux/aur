@@ -3,7 +3,7 @@
 
 pkgname=freetype2-macos
 pkgver=2.13.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="freetype2 with a patch to make it render text like on macOS"
 url="https://www.freetype.org/"
