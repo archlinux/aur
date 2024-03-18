@@ -1,6 +1,6 @@
 pkgbase = element-desktop-nightly-bin
 	pkgdesc = All-in-one secure chat app for teams, friends and organisations (nightly .deb build).
-	pkgver = 2024031701
+	pkgver = 2024031801
 	pkgrel = 1
 	url = https://element.io
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = element-desktop-nightly-bin
 	depends = sqlcipher
 	source = element-desktop-nightly.sh
 	sha256sums = eec30e5b0e549f7fa9c9c66fd3edb60bc8e0d9d0a77b79d8659cc06deced588d
-	source_x86_64 = https://packages.element.io/debian/pool/main/e/element-nightly/element-nightly_2024031701_amd64.deb
-	sha256sums_x86_64 = 11328d4800edf0ee7711c03d0e9df32dcde11cd2e8f7a2644d02e0f4dcda32c3
-	source_aarch64 = https://packages.element.io/debian/pool/main/e/element-nightly/element-nightly_2024031701_arm64.deb
-	sha256sums_aarch64 = 4cd25175b03aaf8023d9e2476702647196007541135e4ffa0e320bb4a406a35c
+	source_x86_64 = https://packages.element.io/debian/pool/main/e/element-nightly/element-nightly_2024031801_amd64.deb
+	sha256sums_x86_64 = f6bd2c42f95b70553f5041879617371a49f692ba03d80c551dde0aa9bb3dbaf9
+	source_aarch64 = https://packages.element.io/debian/pool/main/e/element-nightly/element-nightly_2024031801_arm64.deb
+	sha256sums_aarch64 = 1c3d734b6a77517af45930599fad7ceeb5694404f020c323f2d8ffc9416fecbd
 
 pkgname = element-desktop-nightly-bin
