@@ -1,7 +1,7 @@
 pkgbase = mpv-autosubsync-git
 	pkgdesc = Automatic subtitle synchronization script for mpv media player
 	pkgver = r124.22cb928
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/joaquintorres/autosubsync-mpv
 	install = mpv-autosubsync-git.install
 	arch = any

@@ -3,7 +3,7 @@
 pkgname=mpv-autosubsync-git
 _pkgname=${pkgname%-git}
 pkgver=r124.22cb928
-pkgrel=1
+pkgrel=2
 pkgdesc='Automatic subtitle synchronization script for mpv media player'
 arch=('any')
 url='https://github.com/joaquintorres/autosubsync-mpv'
@@ -37,7 +37,7 @@ package() {
     -t "$pkgdir"/usr/share/mpv/scripts/autosubsync/
 
   install -Dm644 "$srcdir/${source[1]}" \
-    -t "$pkgdir"/usr/share/doc/mpv/script-opts/
+    -t "$pkgdir"/usr/share/mpv/script-opts/
 
   install -Dm644 LICENSE \
     -t "$pkgdir"/usr/share/licenses/"$pkgname"
