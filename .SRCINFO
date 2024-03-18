@@ -1,14 +1,13 @@
 pkgbase = gz-sensors8
 	pkgdesc = Provides numerous sensor models designed to generate realistic data from simulation environments.
-	pkgver = 8.0.0
-	pkgrel = 3
+	pkgver = 8.0.1
+	pkgrel = 1
 	url = https://github.com/gazebosim/gz-sensors
 	arch = any
 	license = Apache
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = gz-cmake=3
-	makedepends = git
 	depends = gz-common=5
 	depends = gz-math=7
 	depends = gz-msgs=10
@@ -17,7 +16,7 @@ pkgbase = gz-sensors8
 	depends = protobuf
 	depends = sdformat=14
 	provides = gz-sensors=8
-	source = git+https://github.com/gazebosim/gz-sensors.git#tag=gz-sensors8_8.0.0
-	sha256sums = SKIP
+	source = https://github.com/gazebosim/gz-sensors/archive/gz-sensors8_8.0.1.tar.gz
+	sha256sums = 7204c2b9faa215516090e16cdd9227e5832c832c36b43bc9bf6aa4d22edc9191
 
 pkgname = gz-sensors8

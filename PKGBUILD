@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-sensors8
-pkgver=8.0.0
-pkgrel=3
+pkgver=8.0.1
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Provides numerous sensor models designed to generate realistic data from simulation environments."
@@ -22,18 +22,10 @@ makedepends=(
   'cmake'
   'doxygen'
   'gz-cmake=3'
-  'git'
   )
 provides=("${_pkgbase}=${_pkgmaj}")
-source=("git+https://github.com/gazebosim/${_pkgbase}.git#tag=${pkgname}_${pkgver}")
-sha256sums=('SKIP')
-
-prepare() {
-  cd "$_pkgbase"
-
-  # Avoid calling DblNormal with invalid standard deviation (issue #396)
-  git cherry-pick -n "ac0c44f7da0a6d3c9e129571c7910421664f1181"
-}
+source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
+sha256sums=('7204c2b9faa215516090e16cdd9227e5832c832c36b43bc9bf6aa4d22edc9191')
 
 build() {
   cmake -B build -S "${_pkgbase}" \
