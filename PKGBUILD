@@ -15,7 +15,7 @@ license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'curl'
     'nodejs'
 )
@@ -27,13 +27,14 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/downloa
 source=(
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+sha256sums=('dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 sha256sums_aarch64=('dc77842c011acbad94507521ad3df825a431e0ae07dff9c11a011ed774b478b8')
 sha256sums_x86_64=('c739f3f7a9cf68443450f16f7c370abbe2606e828f255a1e69b112a90f7f5a3e')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories="Network" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
