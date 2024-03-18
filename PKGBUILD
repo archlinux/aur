@@ -2,7 +2,7 @@
 
 pkgname=criticality_score
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Gives criticality score for an open source project"
 arch=('i686' 'x86_64')
 url="https://github.com/ossf/criticality_score"
@@ -38,7 +38,9 @@ package() {
 
   GOBIN="$pkgdir/usr/bin" \
     go install \
+      ./cmd/collect_signals \
       ./cmd/criticality_score \
+      ./cmd/csv_transfer \
       ./cmd/enumerate_github \
       ./cmd/scorer
 

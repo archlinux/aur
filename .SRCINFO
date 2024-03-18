@@ -1,7 +1,7 @@
 pkgbase = criticality_score
 	pkgdesc = Gives criticality score for an open source project
 	pkgver = 2.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ossf/criticality_score
 	arch = i686
 	arch = x86_64
