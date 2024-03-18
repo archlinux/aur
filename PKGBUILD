@@ -7,7 +7,7 @@ pkgrel=1
 url=https://github.com/matjam/smoothpaper
 arch=(x86_64)
 depends=('libx11' 'libxrandr' 'libxinerama' 'libxcursor' 'libxext')
-makedepends=('cmake' 'make' 'base-devel' 'ninja' 'gcc' 'git')
+makedepends=('cmake' 'make' 'base-devel' 'ninja' 'gcc' 'git' 'zip')
 
 source=(https://github.com/matjam/smoothpaper/archive/refs/tags/v${pkgver}.tar.gz)
 sha256sums=('5dbbff6acedbaa241d64bd660ba1b5358a1a24181cfddb97547da6b35467be23')
