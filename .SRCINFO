@@ -1,7 +1,7 @@
 pkgbase = ttf-nerd-fonts-input
 	pkgdesc = Fonts for Code, from Font Bureau, patched with nerd-fonts
 	pkgver = 3.1.1
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = http://input.djr.com/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = ttf-nerd-fonts-input
 	makedepends = parallel
 	source = Input_Fonts.zip::http://input.djr.com/build/?fontSelection=whole&a=0&g=0&i=0&l=0&zero=0&asterisk=0&braces=0&preset=default&line-height=1.2&accept=I+do&email=
 	source = https://github.com/ryanoasis/nerd-fonts/archive/v3.1.1.tar.gz
-	sha256sums = 0a4c38febdc46cb6660771885d3e490f835388a7cf55832d956d15f86c035682
+	sha256sums = SKIP
 	sha256sums = 4c4d7f2aceda05ff17789adb2c7046972f4729bc785bc85fd08d0ffde8785e5f
 
 pkgname = ttf-nerd-fonts-input

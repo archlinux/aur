@@ -5,7 +5,7 @@
 pkgname=ttf-nerd-fonts-input
 epoch=1
 pkgver=3.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Fonts for Code, from Font Bureau, patched with nerd-fonts'
 arch=('any')
 url='http://input.djr.com/'
@@ -16,7 +16,7 @@ url_long="${url}build/?fontSelection=whole&a=0&g=0&i=0&l=0&zero=0&asterisk=0&bra
 # url_long="${url}build/?fontSelection=whole&a=ss&g=ss&i=serifs_round&l=serifs_round&zero=0&asterisk=height&braces=0&preset=default&line-height=1.2&accept=I+do&email="
 source=("Input_Fonts.zip::${url_long}"
         "https://github.com/ryanoasis/nerd-fonts/archive/v${pkgver}.tar.gz")
-sha256sums=('0a4c38febdc46cb6660771885d3e490f835388a7cf55832d956d15f86c035682'
+sha256sums=('SKIP'
             '4c4d7f2aceda05ff17789adb2c7046972f4729bc785bc85fd08d0ffde8785e5f')
 
 build () {
