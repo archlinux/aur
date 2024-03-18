@@ -9,7 +9,7 @@ pkgname=(
   ppsspp
   ppsspp-assets
 )
-pkgver=1.16.6
+pkgver=1.17.1
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
@@ -34,16 +34,17 @@ makedepends=(
   snappy
   zlib
 )
-_tag=ba0ce344937d17e177ec8656ab957f6b82facdda
+_tag=084ce0fc1ffdc6c0d666ddde2fd7904edd29a4dc
 source=(
   git+https://github.com/hrydgard/ppsspp.git#tag=${_tag}
   git+https://github.com/Kingcom/armips.git
+  git+https://github.com/google/cpu_features.git
   git+https://github.com/discordapp/discord-rpc.git
   git+https://github.com/hrydgard/ppsspp-ffmpeg.git
   armips-filesystem::git+https://github.com/Kingcom/filesystem.git
-  git+https://github.com/google/cpu_features.git
   git+https://github.com/KhronosGroup/glslang.git
   git+https://github.com/hrydgard/ppsspp-lang.git
+  git+https://github.com/rtissera/libchdr.git
   ppsspp-miniupnp::git+https://github.com/hrydgard/miniupnp.git
   git+https://github.com/Tencent/rapidjson.git
   git+https://github.com/RetroAchievements/rcheevos.git
@@ -52,6 +53,7 @@ source=(
   ppsspp-qt.desktop
 )
 b2sums=('SKIP'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -78,7 +80,7 @@ prepare() {
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
     git -c protocol.file.allow=always submodule update ${submodule}
   done
-  for submodule in ext/{armips,cpu_features,discord-rpc,glslang,rapidjson,rcheevos,SPIRV-Cross}; do
+  for submodule in ext/{armips,cpu_features,discord-rpc,glslang,libchdr,rapidjson,rcheevos,SPIRV-Cross}; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../${submodule#*/}
     git -c protocol.file.allow=always submodule update ${submodule}
