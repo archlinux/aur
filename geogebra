@@ -35,6 +35,6 @@ fi
 GG_JAVA_ENV="$(archlinux-java status | grep -w "${GG_JAVA_VERSION}" | awk '{ print $1 }')"
 # for some env it returns like java-8-openjdk/jre
 GG_JAVA_ENV="${GG_JAVA_ENV%/*}"
-export PATH="/usr/lib/jvm/${GG_JAVA_ENV}/jre/bin/:${PATH}"
+export PATH="/usr/lib/jvm/${GG_JAVA_ENV}/bin/:${PATH}"
 echo "Run with exported ${GG_JAVA_ENV}" >&2
 run_gg "$@"
