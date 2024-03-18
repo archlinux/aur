@@ -2,12 +2,13 @@
 
 pkgname=bazarr-runit
 pkgver=20240318
-pkgrel=1
+pkgrel=2
 pkgdesc="Runit service script for bazarr."
 arch=("any")
 url="https://bazarr.media"
 license=("GPL-3.0")
 depends=("bazarr" "runit")
+install=bazarr.install
 source=("bazarr.run" "bazarr.log.run")
 sha256sums=('423996b3c96f120afef98186da437032c7221b3d3abdb37f7cd43e31fcbb915f'
             '2ea2c9f8c8fd2e140f8f1e0a43db5e1cdff91a6f1d95599bda58cae5d609a717')
