@@ -15,7 +15,7 @@ options=(!strip)
 _appimage="${_pkgname}-v${pkgver}-${arch}.AppImage"
 source=("${url}/${_appimage}")
 
-md5sums=("19f3b9e1f988c003044c41f7025bdb19')
+md5sums=("19f3b9e1f988c003044c41f7025bdb19")
 
 prepare() {
   chmod +x ${_appimage}
