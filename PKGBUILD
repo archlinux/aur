@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A fully-featured game engine, the tech behind the spectacular Frogatto & Friends"
 arch=('x86_64')
 url="https://github.com/anura-engine/anura"
-license=('GPL')
+license=('zlib')
 depends=('libgl' 'mesa' 'glew' 'cairo' 'sdl2' 'sdl2_image' 'sdl2_ttf' 'sdl2_mixer' 'libpng' 'boost-libs')
 makedepends=('git' 'boost' 'glm')
 source=("git+https://github.com/anura-engine/anura.git#tag=v$pkgver"
