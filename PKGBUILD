@@ -1,33 +1,36 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=http-parser
 pkgver=2.9.4
-pkgrel=1
-pkgdesc="Parser for HTTP Request/Response written in C"
-arch=('x86_64')
+pkgrel=2
+pkgdesc='Parser for HTTP Request/Response written in C'
+arch=(x86_64)
 url="https://github.com/nodejs/http-parser"
-license=('MIT')
-depends=('glibc')
-source=($pkgname-$pkgver.tar.gz::"${url}/archive/v$pkgver.tar.gz")
-sha512sums=('b45df7b94d1c51079d44687d0a7f901f44faae51df4e84c7e3fe38f130c2d809d0e7c2a146c57b3723e60732aededc246bf44eadb10a95b710963d641f9fe7cd')
+license=(MIT)
+depends=(glibc)
+_archive="$pkgname-$pkgver"
+source=("$url/archive/v$pkgver/$_archive.tar.gz")
+sha256sums=('467b9e30fd0979ee301065e70f637d525c28193449e1b13fbcb1b1fab3ad224f')
 
 prepare() {
-  sed -i 's|-Werror||' $pkgname-$pkgver/Makefile
+	cd "$_archive"
+	sed -i 's|-Werror||' Makefile
 }
 
 build() {
-  cd $pkgname-$pkgver
-  make library
+	cd "$_archive"
+	make library
 }
 
 check() {
-  cd $pkgname-$pkgver
-  make test
+	cd "$_archive"
+	make test
 }
 
 package() {
-  cd $pkgname-$pkgver
-  make PREFIX="$pkgdir/usr" install
-  install -Dm644 LICENSE-MIT -t "$pkgdir"/usr/share/licenses/$pkgname/
+	cd "$_archive"
+	make PREFIX="$pkgdir/usr" install
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE-MIT 
 }

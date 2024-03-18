@@ -1,0 +1,5 @@
+[http-parser]
+source = "github"
+github = "nodejs/http-parser"
+prefix = "v"
+use_max_tag = true
