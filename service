@@ -4,8 +4,10 @@ After = network.target
 AssertPathExists = /etc/cloudprober.textproto
 
 [Service]
-ExecStart = /usr/bin/cloudprober --config_file=/etc/cloudprober.textproto
+ExecStart = /usr/bin/cloudprober --config_file=/etc/cloudprober.textproto \
+	--log_dir=/var/log/cloudprober
 Restart = always
+LogsDirectory = cloudprober
 
 [Install]
 WantedBy = multi-user.target

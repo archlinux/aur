@@ -1,12 +1,12 @@
 pkgbase = cloudprober
 	pkgdesc = An active monitoring software to detect failures before your customers do.
-	pkgver = 0.12.6
+	pkgver = 0.13.2
 	pkgrel = 1
 	url = https://cloudprober.org
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	source = git+https://github.com/cloudprober/cloudprober#commit=e441335ed11f4aec93becee7d8d290b1d80ef781
+	source = git+https://github.com/cloudprober/cloudprober#commit=ae2ac8448953977d18a33530d4eb43d8de393da3
 	source = service
 	sha256sums = SKIP
 	sha256sums = SKIP

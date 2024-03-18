@@ -1,13 +1,13 @@
 # Maintainer: Franklin Yu <franklinyu@google.com>
 pkgname=cloudprober
-pkgver=0.12.6
+pkgver=0.13.2
 pkgrel=1
 pkgdesc='An active monitoring software to detect failures before your customers do.'
 arch=(x86_64)
 url="https://cloudprober.org"
 license=(Apache)
 makedepends=(go)
-_commit='e441335ed11f4aec93becee7d8d290b1d80ef781'  # v0.12.6
+_commit='ae2ac8448953977d18a33530d4eb43d8de393da3'  # v0.13.2
 source=("git+https://github.com/cloudprober/$pkgname#commit=$_commit" 'service')
 sha256sums=(SKIP SKIP)
 
@@ -33,7 +33,7 @@ check() {
 	cd "$pkgname"
 	# See https://github.com/cloudprober/cloudprober/issues/324
 	# TODO: remove “TestK8STokenSource” in next release
-	go test --skip='TestConnectFailures|TestK8STokenSource' ./...
+	go test --skip='TestConnectFailures' ./...
 }
 
 package() {
