@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=affine-bin
-_appname=AFFiNE
-pkgver=0.12.3
-_electronversion=28
+_pkgname=AFFiNE
+pkgver=0.13.0
+_electronversion=29
 pkgrel=1
 pkgdesc="There can be more than Notion and Miro. AFFiNE is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use."
 arch=('x86_64')
@@ -15,15 +15,15 @@ depends=(
     "electron${_electronversion}"
 )
 makedepends=(
-    'gendesk'
+    'fuse2'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-stable-linux-x64.zip"
+    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-stable-linux-x64.appimage"
     "${pkgname%-bin}.png::https://raw.githubusercontent.com/toeverything/AFFiNE/v${pkgver}/packages/frontend/core/public/favicon-192.png"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/toeverything/AFFiNE/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('db9ade36ae0081d88714ca5e2e482d29469e7e94d18196092e358f636e70e241'
+sha256sums=('af0a693814917b00c90f6f0c53b4c5ba27bb0a9d00d7e8c5cbd7d1695c6a91f8'
             'b266795bb7f2dd32b76ef8f05788bbd63da556629265cca13217167cfc4d9cde'
             'b54bb7aa14dd5725bc268921eeea9dee973dacbc13e0cea30e7d2adb5cd5a53f'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
@@ -33,14 +33,17 @@ build() {
         -e "s|@runname@|app.asar|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories="Utility" --name="${_appname}" --exec="${pkgname%-bin} %U"
+    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed "s|${_pkgname} %u|${pkgname%-bin} %U|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
+        -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${_appname}-linux-x64/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm755 "${srcdir}/${_appname}-linux-x64/resources/app.asar.unpacked/dist/${pkgname%-bin}.linux-x64-gnu.node" \
+    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/squashfs-root/resources/app.asar.unpacked/dist/${pkgname%-bin}.linux-x64-gnu.node" \
         -t "${pkgdir}/usr/lib/${pkgname%-bin}/app.asar.unpacked/dist"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
