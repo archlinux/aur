@@ -1,4 +1,4 @@
-# Maintainer: Mina Nagy Zaki <mnzaki@gmail.com>
+# Maintainer: Gregory Danielson III <gregdan3@protonmail.com>
 
 _npmname=markmap-cli
 pkgname=nodejs-markmap-cli # All lowercase
