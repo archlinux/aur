@@ -1,36 +1,36 @@
 pkgbase = linux-zen-versioned-bin
 	pkgdesc = The Linux ZEN kernel and modules | repackaged with a unique package name for each version
-	pkgver = 6.7.9.zen1
+	pkgver = 6.8.1.zen1
 	pkgrel = 1
 	url = https://github.com/zen-kernel/zen-kernel
 	arch = x86_64
 	license = GPL2
-	noextract = linux-zen-6.7.9.zen1-1-x86_64.pkg.tar.zst
-	noextract = linux-zen-headers-6.7.9.zen1-1-x86_64.pkg.tar.zst
-	noextract = linux-zen-docs-6.7.9.zen1-1-x86_64.pkg.tar.zst
+	noextract = linux-zen-6.8.1.zen1-1-x86_64.pkg.tar.zst
+	noextract = linux-zen-headers-6.8.1.zen1-1-x86_64.pkg.tar.zst
+	noextract = linux-zen-docs-6.8.1.zen1-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://mirror.aarnet.edu.au/pub/archlinux/extra/os/x86_64/linux-zen-6.7.9.zen1-1-x86_64.pkg.tar.zst
-	source = https://mirror.aarnet.edu.au/pub/archlinux/extra/os/x86_64/linux-zen-headers-6.7.9.zen1-1-x86_64.pkg.tar.zst
-	source = https://mirror.aarnet.edu.au/pub/archlinux/extra/os/x86_64/linux-zen-docs-6.7.9.zen1-1-x86_64.pkg.tar.zst
-	sha256sums = 81d2d6c8ff903a7fa91ce712849d8af2b4738554307bb664841f4728427ebb1a
-	sha256sums = 1bf6bda7f631cad18013714464dd4a644a71b58223929cc7e94dd2298aa5de6f
-	sha256sums = 016d19c07681a38381ec0c6db03c55988fcee054977b4c4926fe3fefbbab8c1f
+	source = https://mirror.aarnet.edu.au/pub/archlinux/extra/os/x86_64/linux-zen-6.8.1.zen1-1-x86_64.pkg.tar.zst
+	source = https://mirror.aarnet.edu.au/pub/archlinux/extra/os/x86_64/linux-zen-headers-6.8.1.zen1-1-x86_64.pkg.tar.zst
+	source = https://mirror.aarnet.edu.au/pub/archlinux/extra/os/x86_64/linux-zen-docs-6.8.1.zen1-1-x86_64.pkg.tar.zst
+	sha256sums = 8eec8811865531c941373c583b615e375f6194761994b32d19acda9471c48e4a
+	sha256sums = 9bf94553a1b1d03e7c8ddbfe51b37244d7db36e71e56a60bc8dcd296de837181
+	sha256sums = 4d2bef0ec2f16b8b3042b3a2b718534111ed10870cbe4a994dbb157d1fdeb91b
 
 pkgname = linux-zen-versioned-bin
-	pkgdesc = Metapackage depending on linux6.7.9.zen1-1-zen-bin
-	depends = linux6.7.9.zen1-1-zen-bin
+	pkgdesc = Metapackage depending on linux6.8.1.zen1-1-zen-bin
+	depends = linux6.8.1.zen1-1-zen-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-zen-versioned-headers-bin
-	pkgdesc = Metapackage depending on linux6.7.9.zen1-1-zen-headers-bin
-	depends = linux6.7.9.zen1-1-zen-headers-bin
+	pkgdesc = Metapackage depending on linux6.8.1.zen1-1-zen-headers-bin
+	depends = linux6.8.1.zen1-1-zen-headers-bin
 
 pkgname = linux-zen-versioned-docs-bin
-	pkgdesc = Metapackage depending on linux6.7.9.zen1-1-zen-docs-bin
-	depends = linux6.7.9.zen1-1-zen-docs-bin
+	pkgdesc = Metapackage depending on linux6.8.1.zen1-1-zen-docs-bin
+	depends = linux6.8.1.zen1-1-zen-docs-bin
 
-pkgname = linux6.7.9.zen1-1-zen-bin
-	pkgdesc = The Linux ZEN kernel and modules, version 6.7.9-zen1-1-zen
+pkgname = linux6.8.1.zen1-1-zen-bin
+	pkgdesc = The Linux ZEN kernel and modules, version 6.8.1-zen1-1-zen
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
@@ -43,11 +43,11 @@ pkgname = linux6.7.9.zen1-1-zen-bin
 	provides = WIREGUARD-MODULE
 	conflicts = linux-zen
 
-pkgname = linux6.7.9.zen1-1-zen-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux ZEN kernel 6.7.9-zen1-1-zen
+pkgname = linux6.8.1.zen1-1-zen-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux ZEN kernel 6.8.1-zen1-1-zen
 	depends = pahole
 	conflicts = linux-zen-headers
 
-pkgname = linux6.7.9.zen1-1-zen-docs-bin
-	pkgdesc = Documentation for the Linux ZEN kernel 6.7.9-zen1-1-zen
+pkgname = linux6.8.1.zen1-1-zen-docs-bin
+	pkgdesc = Documentation for the Linux ZEN kernel 6.8.1-zen1-1-zen
 	conflicts = linux-zen-docs
