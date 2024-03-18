@@ -3,7 +3,7 @@
 
 pkgname=freetype2-macos
 pkgver=2.13.2
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="freetype2 with a patch to make it render text like on macOS"
 url="https://www.freetype.org/"
@@ -57,6 +57,7 @@ prepare() {
 }
 
 build() {
+  cd freetype-$pkgver
   meson compile -C build
 }
 

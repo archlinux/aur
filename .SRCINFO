@@ -1,7 +1,7 @@
 pkgbase = freetype2-macos
 	pkgdesc = freetype2 with a patch to make it render text like on macOS
 	pkgver = 2.13.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.freetype.org/
 	arch = x86_64
 	license = GPL
