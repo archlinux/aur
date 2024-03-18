@@ -1,12 +1,13 @@
 pkgbase = r-bhc
 	pkgdesc = Bayesian Hierarchical Clustering
 	pkgver = 1.54.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/BHC
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-only
 	depends = r
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/BHC_1.54.0.tar.gz
-	sha256sums = c1bba8450c9bf689949f944694afc6f65e7ff8afedd7f24a68271ebd124e48d4
+	md5sums = 855087c8854bd3014111477e1c3cdcb9
+	b2sums = 8618c469025c895d42d5e6cd12099b8e25ec6b77b0e56371987d88bdece28d36248435d2ff7e748e08862fa74c4d30b8d41dd6a66fc335f6faf91b434ef76ae4
 
 pkgname = r-bhc
