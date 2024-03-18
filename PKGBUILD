@@ -3,7 +3,7 @@ pkgname=xiguavideo-bin
 _zhsname="西瓜视频"
 pkgver=1.0.9
 _electronversion=20
-pkgrel=1
+pkgrel=2
 pkgdesc="XiGua Video use system-wide electron.西瓜视频Windows移植版,使用系统electron."
 arch=("x86_64")
 url="https://www.ixigua.com"
@@ -14,15 +14,15 @@ conflicts=(
     "${pkgname%-bin}"
     "deepin-wine-${pkgname%-bin}"
 )
-noextract=("${pkgname%-bin}-${pkgver}.exe")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'gendesk'
     'asar'
     'npm'
 )
+noextract=("${pkgname%-bin}-${pkgver}.exe")
 source=(
     "${pkgname%-bin}-${pkgver}.exe::${_dlurl}/6922326164589517070/releases/11463809/${pkgver}/win32/xigua-video-${pkgver}-default.exe"
     LICENSE.html
@@ -30,11 +30,12 @@ source=(
 )
 sha256sums=('555761bb662ca4268c737e198937de1a3ba722b44707a6f5ce605445cfaa09c2'
             'bd956769c0d43acd95075a4a95c2ffe5b31f404b4c8675c481e95d0307e82bf1'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories="AudioVideo" --name="${_zhsname}" --exec="${pkgname%-bin} %U"
     install -Dm755 -d "${srcdir}/tmp"
