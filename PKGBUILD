@@ -3,7 +3,7 @@ pkgname=leafview-bin
 _pkgname=LeafView
 pkgver=2.9.1
 _electronversion=29
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalist image viewer based on Leaflet.js and Electron."
 arch=("x86_64")
 url="https://github.com/sprout2000/leafview"
@@ -21,11 +21,12 @@ source=(
 )
 sha256sums=('e2986c2512dc2b1bf91385abee44d2cd685f3e2ad07f59199c37450831879dd0'
             '17db9845cf37bf3bd6b48095f3c87e40d25f3b48d4d0c38c2e740d45f024e56e'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
