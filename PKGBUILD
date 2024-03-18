@@ -6,7 +6,7 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libsasl-bootstrap
 pkgver=2.1.28
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="Cyrus Simple Authentication Service Layer (SASL) library (Android, ${_android_arch})"
 url="https://www.cyrusimap.org/sasl/"
@@ -81,7 +81,9 @@ build() {
         --with-dblib=gdbm \
         --with-sqlite3="${ANDROID_PREFIX_INCLUDE}" \
         --without-mysql \
-        --without-pgsql
+        --without-pgsql \
+        --with-saslauthd=no \
+        --with-authdaemond=no
     make $MAKEFLAGS
 }
 
