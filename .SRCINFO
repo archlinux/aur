@@ -1,0 +1,23 @@
+pkgbase = ttf-pending-mono
+	pkgdesc = A composite font of BIZ UD Gothic and Commit Mono
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/yuru7/pending-mono
+	arch = any
+	license = custom:SIL
+	source = https://github.com/yuru7/pending-mono/releases/download/v0.0.2/PendingMono_v0.0.2.zip
+	source = https://github.com/yuru7/pending-mono/releases/download/v0.0.2/PendingMonoNF_v0.0.2.zip
+	source = https://github.com/yuru7/pending-mono/releases/download/v0.0.2/PendingMonoJPDOC_v0.0.2.zip
+	source = https://github.com/yuru7/pending-mono/releases/download/v0.0.2/PendingMonoHW_v0.0.2.zip
+	source = https://github.com/yuru7/pending-mono/releases/download/v0.0.2/PendingMonoHWNF_v0.0.2.zip
+	source = https://github.com/yuru7/pending-mono/releases/download/v0.0.2/PendingMonoHWJPDOC_v0.0.2.zip
+	source = https://raw.githubusercontent.com/yuru7/pending-mono/v0.0.2/LICENSE
+	sha256sums = 76388ee21bb11cf09b43fac154826e0da0499be6ffc49633e3f85b53f0947e3d
+	sha256sums = fefafcaa1af11c1841f8aa943205a7303b1a091f20ded17467cc414a9e863106
+	sha256sums = 9aadcdd6c95a737330842b23b0adba3eb6ad7208c377ee4823592f83c90c4da1
+	sha256sums = c03d8b16af20718fd0ce94b8658912f4f706e8ea8558b0564f6a90888e00460c
+	sha256sums = 67a2f9142999e19d30e8aeaac19ae15caf9d348fa726d17e80bb753f64ea50e4
+	sha256sums = fdf487f62573c5d37b28f50500d1bb94e2275209c4a23ada28ae724169411167
+	sha256sums = 9d23767271951afeaddbe5de4dec5d1cb60456c06f45e4d04fbb9ab517d79e30
+
+pkgname = ttf-pending-mono
