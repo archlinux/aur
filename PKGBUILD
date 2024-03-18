@@ -1,6 +1,6 @@
 pkgname='liteloader-qqnt-mspring-theme-bin'
 _pkgname='LiteLoaderQQNT-MSpring-Theme'
-pkgver='1.2.6'
+pkgver='1.2.7'
 pkgrel=1
 pkgdesc='Elegant, pink and delicate LiteLoaderQQNT theme'
 arch=('any')
@@ -11,8 +11,8 @@ provides=("liteloader-qqnt-mspring-theme")
 conflicts=("liteloader-qqnt-mspring-theme")
 
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_pkgname}.zip")
-sha256sums=('b378310682a75e474585109a72a27ee0bb3b73dc4445280a6b8de8bc737272df')
-b2sums=('127a93c21901902c46dfd68c0374b2cd2d07012d9a9883ccdd6b70387c3cafb82003952af201864e9623e352faa7c210883d75cf28a1c9be30be602a743af37a')
+sha256sums=('369df0125dc77281414f798ab75c5ed7bb46f0031c3c84e3731cd7e936ba2346')
+b2sums=('60d27985a519b979f88354fd16c553b3f4a170d6bd956f566ea5445e4f05ec3f9107dda8990c3b1b1bb1897db4c825a128f10c9f18e2c2eea826461fc9cf8ccb')
 
 package() {
 	install -dm777 "${pkgdir}/opt/LiteLoader"
