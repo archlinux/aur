@@ -3,7 +3,7 @@ pkgname=csbooks-bin
 _pkgname=csBooks
 pkgver=7.5.0
 _electronversion=21
-pkgrel=8
+pkgrel=9
 pkgdesc="A smart book management and reading software,also a PDF reader, EPUB reader, MOBI reader and DJVU file reader."
 arch=('x86_64')
 url="https://caesiumstudio.com/csbooks/"
@@ -12,8 +12,7 @@ license=('LicenseRef-custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
-    'hicolor-icon-theme'
+    "electron${_electronversion}-bin"
 )
 source=(
     "${pkgname}-${pkgver}.pacman::${_ghurl}/releases/download/latest/${_pkgname}-${pkgver}.pacman"
@@ -22,11 +21,12 @@ source=(
 )
 sha256sums=('b1dfc2d6b137580b7bba60da5d97886369170f6b38b3154ad919847b9eca7afc'
             'e3b3003f395da5789a53b25e32f44d649524de7aad73cb79a1f48694f93ae8d5'
-            'f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
