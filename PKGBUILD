@@ -8,7 +8,7 @@ pkgdesc="A singleplayer, deck-building, baking game."
 arch=('any')
 url="https://dcecile.itch.io/ultra-rainbow-bake-sale"
 license=('MIT')
-depends=('love')
+depends=('love10')
 makedepends=('python' 'git')
 source=($pkgname::git+https://github.com/dcecile/$gamename.git)
 sha1sums=('SKIP')
@@ -28,7 +28,7 @@ pkgver() {
 build() {
   cd "$pkgname"
   ./package.py
-  echo -e "#!/bin/sh\nexec love /usr/share/$pkgname/$gamename.love" > $pkgname.sh
+  echo -e "#!/bin/sh\nexec love10 /usr/share/$pkgname/$gamename.love" > $pkgname.sh
 }
 
 package() {
