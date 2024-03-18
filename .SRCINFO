@@ -1,9 +1,10 @@
 pkgbase = android-armv7a-eabi-glib2
-	pkgdesc = Low level core library (android)
+	pkgdesc = Low level core library (Android, armv7a-eabi)
 	pkgver = 2.78.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/GLib
 	arch = any
+	groups = android-glib2
 	license = LGPL2.1
 	makedepends = android-meson
 	depends = android-armv7a-eabi-libffi
