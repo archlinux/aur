@@ -3,7 +3,7 @@ pkgname=requestly-bin
 _pkgname=Requestly
 pkgver=1.6.0
 _electronversion=23
-pkgrel=2
+pkgrel=3
 pkgdesc="Debug your network request across all platforms and browsers using a single app"
 arch=('x86_64')
 url="https://requestly.io/"
@@ -19,6 +19,7 @@ depends=(
     'nodejs'
 )
 makedepends=(
+    'fuse2'
     'asar'
 )
 source=(
@@ -28,11 +29,12 @@ source=(
 )
 sha256sums=('6948609fa41e08772cdf28b528acf0fb2394b9c6d339e36a39b4d865390aaabb'
             '458836a4541233742fec5da1bf75b151cc0b1f879b0574f362ae793d055a233d'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
