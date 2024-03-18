@@ -1,17 +1,13 @@
 # Maintainer: ryuukk_ <ryuukk.dev@gmail.com>
 # Contributor: ryuukk_ <ryuukk.dev@gmail.com>
 
-pkgbase=freetype2-macos
-pkgname=(
-  freetype2-macos
-  freetype2-demos
-  freetype2-docs
-)
+pkgname=freetype2-macos
 pkgver=2.13.2
 pkgrel=1
 epoch=
 pkgdesc="Font rasterization library with a patch to make it render text like on macOS"
 url="https://www.freetype.org/"
+conflicts=(freetype2)
 arch=(
   x86_64
 )
@@ -35,8 +31,6 @@ makedepends=(
 )
 source=(
   https://download-mirror.savannah.gnu.org/releases/freetype/freetype-$pkgver.tar.xz{,.sig}
-  https://download-mirror.savannah.gnu.org/releases/freetype/freetype-doc-$pkgver.tar.xz{,.sig}
-  https://download-mirror.savannah.gnu.org/releases/freetype/ft2demos-$pkgver.tar.xz{,.sig}
   0001-Enable-table-validation-modules.patch
   0002-Enable-subpixel-rendering.patch
   0003-Enable-long-PCF-family-names.patch
@@ -44,8 +38,6 @@ source=(
   freetype2.sh
 )
 b2sums=('cebc82180d9afaeb112a65ba78903d7bf7a9295a803166a033585ad2325add6023f05066852240c4665e56285345ba503b01ecd461d48f0478a8f3f56136988e'
-        'SKIP'
-        '273ab405b6c7097ace9c7882fddb22d2a0cf8cc1594e9d141ca18d13a3745ee2e481bd2ee214cba6d99224ef0d67fdcba1b08aa06e3556a80cda29f3b6026f97'
         'SKIP'
         '5e2c3eb2fccb359d03e154b94d349baab27aa465e40274ea99be1e19c8519ec9c434749c78a41743540bd38064a7c68e5389ff99443b8e320e617c4fe7f4558b'
         'SKIP'
@@ -74,22 +66,11 @@ build() {
     -D freetype2:default_library=shared
   )
 
-  arch-meson ft2demos-$pkgver build "${meson_options[@]}"
   meson compile -C build
 }
 
 check() {
   meson test -C build --print-errorlogs
-}
-
-_pick() {
-  local p="$1" f d; shift
-  for f; do
-    d="$srcdir/$p/${f#$pkgdir/}"
-    mkdir -p "$(dirname "$d")"
-    mv "$f" "$d"
-    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
-  done
 }
 
 package_freetype2-macos() {
@@ -104,33 +85,6 @@ package_freetype2-macos() {
   install -Dt "$pkgdir/etc/profile.d" -m644 freetype2.sh
   install -Dt "$pkgdir/usr/share/aclocal" -m644 \
     freetype-$pkgver/builds/unix/freetype2.m4
-
-  _pick demos "$pkgdir"/usr/bin
-  _pick demos "$pkgdir"/usr/share/man/man1
-}
-
-package_freetype2-demos() {
-  pkgdesc="Freetype tools and demos"
-  depends=(
-    freetype2
-    librsvg
-    libx11
-  )
-  optdepends=(
-    'qt5-base: ftinspect'
-  )
-  provides=()
-  conflicts=()
-
-  mv demos/* "$pkgdir"
-}
-
-package_freetype2-docs() {
-  pkgdesc="Freetype documentation"
-  depends=(freetype2)
-
-  mkdir -p "${pkgdir}/usr/share/doc"
-  cp -r freetype-$pkgver/docs "$pkgdir/usr/share/doc/$pkgbase"
 }
 
 # vim:set sw=2 sts=-1 et:
