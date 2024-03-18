@@ -1,12 +1,13 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=cozy-audiobooks-git
 _gitname=cozy
 pkgdesc='A modern audio book player for Linux and macOS using GTK+ 3'
-pkgver=1.1.2.r1.g5b75e4e
+pkgver=1.3.0.r0.g4c978ec5
 pkgrel=1
 url='https://cozy.geigi.de'
-arch=('i686' 'x86_64')
+arch=(any)
 license=('GPL3')
 provides=('cozy-audiobooks')
 conflicts=('cozy-audiobooks')
@@ -15,7 +16,8 @@ depends=('appstream-glib'
          'desktop-file-utils'
          'gst-python'
          'gstreamer'
-         'gtk3'
+         'gtk4'
+         libadwaita
          dbus-python
          'python-distro'
          'python-requests'
@@ -27,7 +29,7 @@ depends=('appstream-glib'
          'gst-plugins-good'
          'python-apsw')
 makedepends=('meson' 'ninja' 'git' granite)
-source=("cozy-audiobooks::git+https://github.com/geigi/cozy")
+source=("cozy-audiobooks::git+https://github.com/geigi/cozy#tag=1.3.0")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -37,10 +39,12 @@ pkgver() {
 
 build() {
   cd "${srcdir}/cozy-audiobooks"
-  meson --prefix='/usr' build
-  ninja -C build
+  arch-meson . build
+
+
   ninja -C build com.github.geigi.cozy-update-po
   ninja -C build extra-update-po
+  meson compile -C build
 }
 
 package() {
