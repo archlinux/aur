@@ -1,7 +1,7 @@
 # Maintainer: Remi Gacogne <rgacogne at archlinux dot org>
 pkgname=dnsdist
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Highly DNS-, DoS- and abuse-aware loadbalancer'
 arch=('x86_64')
 url='https://dnsdist.org/'
