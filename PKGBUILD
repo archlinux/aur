@@ -2,7 +2,7 @@
 pkgname=homeassistant-desktop-bin
 pkgver=1.0.0
 _electronversion=23
-pkgrel=6
+pkgrel=7
 pkgdesc="A simple Home Assistant Desktop application, built using Electron.js"
 arch=('x86_64')
 url="https://github.com/mikepruett3/homeassistant-desktop"
@@ -19,11 +19,12 @@ source=(
 )
 sha256sums=('171da8182923ab927c0b26e9dbc7dac1e1798e7f8012fb3b3bed0d09c81b0b82'
             '82f04c17c97a90cb676f7eec2bdeca09cfff8a6779b310226d8e750a70abad79'
-            'f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
 }
