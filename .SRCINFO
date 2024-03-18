@@ -12,6 +12,7 @@ pkgbase = hyprdots-ctl
 	depends = fzf
 	depends = tree
 	depends = ttf-jetbrains-mono-nerd
+	conflicts = hyprdots-ctl-git
 	source = git+https://github.com/kRHYME7/Hyprdots-ctl.git
 	md5sums = SKIP
 
