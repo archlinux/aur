@@ -2,14 +2,14 @@
 
 pkgname=mpv-autosubsync-git
 _pkgname=${pkgname%-git}
-pkgver=r100.ea6d616
-pkgrel=2
+pkgver=r124.22cb928
+pkgrel=1
 pkgdesc='Automatic subtitle synchronization script for mpv media player'
 arch=('any')
 url='https://github.com/joaquintorres/autosubsync-mpv'
 license=('MIT')
 depends=(
-  'mpv>=0.33'
+  'mpv'
   'alass'
 )
 optdepends=('python-ffsubsync: yet another backend')
@@ -32,8 +32,9 @@ pkgver() {
 
 package() {
   cd "$_pkgname"
-  install -Dm644 autosubsync.lua \
-    -t "$pkgdir"/usr/share/mpv/scripts
+  install -dm 755 "${pkgdir}/usr/share/mpv/scripts/autosubsync"
+  install -Dm644 {autosubsync,helpers,main,menu,subtitle}.lua \
+    -t "$pkgdir"/usr/share/mpv/scripts/autosubsync/
 
   install -Dm644 "$srcdir/${source[1]}" \
     -t "$pkgdir"/usr/share/doc/mpv/script-opts/
