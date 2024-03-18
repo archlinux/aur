@@ -3,7 +3,7 @@ pkgname=postybirb-bin
 _pkgname=PostyBirb
 pkgver=2.3.44
 _electronversion=13
-pkgrel=5
+pkgrel=6
 pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly."
 arch=('x86_64')
 url="https://www.postybirb.com/"
@@ -15,7 +15,7 @@ conflicts=(
     "${pkgname%-bin}-plus"
 )
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
@@ -24,11 +24,12 @@ source=(
 )
 sha256sums=('45dc119851f148344b3601f5a00de67e00d2575f9dd616bcbd82d4eeda97b49d'
             '12e65eb62d705f4cf38eb2f7b382206fb3155fbdbff559f87c702a5e1c1c2207'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
