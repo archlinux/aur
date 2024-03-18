@@ -1,5 +1,5 @@
 pkgname=hyprdots-ctl-git
-pkgver=v0.4.0.r38.g318c03b
+pkgver=v0.4.0.r39.g38d5c70
 pkgrel=1
 pkgdesc="CLI for Hyprdots Configurations ++ Hidden Gems"
 arch=('x86_64')
