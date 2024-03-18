@@ -18,7 +18,7 @@ prepare() {
 
 package() {
   # Install the Python script
-  install -Dm755 "$srcdir"/NovaNav-v."${pkgver}"/src/python/novanav.py "${pkgdir}/usr/local/bin/novanav.py"
+  install -Dm755 "$srcdir"/NovaNav-v."${pkgver}"/src/python/novanav_linux.py "${pkgdir}/usr/local/bin/novanav.py"
   
   # Create a shell script to execute novanav.py and copy it to /usr/local/bin
   echo '#!/bin/bash' > novanav
