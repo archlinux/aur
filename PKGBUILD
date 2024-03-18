@@ -3,12 +3,12 @@
 _pkgname=BADER
 _pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
-pkgrel=1
-pkgdesc='Bayesian Analysis of Differential Expression in RNA Sequencing Data'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Bayesian Analysis of Differential Expression in RNA Sequencing Data"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r
 )
@@ -16,14 +16,15 @@ optdepends=(
   r-pasilla
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d597dfa44e9c0dffc8bae73cced5b21bfeea76fb7523f2d84bd36a4e8f3aae7e')
+md5sums=('10d4e5e231ff178df7922078024f9d89')
+b2sums=('6a606f37c1030404208913db504f22877c1f13095c78fbe6e2928a9763134f990f3371a95f12972200baf143dbe3ecdc7660a372e4359c2b92f483dc4e4886e1')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
