@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-libsasl-bootstrap
 	pkgdesc = Cyrus Simple Authentication Service Layer (SASL) library (Android, x86-64)
 	pkgver = 2.1.28
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.cyrusimap.org/sasl/
 	arch = any
 	groups = android-libsasl-bootstrap
