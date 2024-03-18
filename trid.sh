@@ -8,4 +8,4 @@ if [ ! -e /var/lib/trid/triddefs.trd ]; then
     exit 200;
 fi
 
-/usr/bin/trid.bin -d:/var/lib/trid/triddefs.trd $*
+LANG=c /usr/bin/trid.bin -d:/var/lib/trid/triddefs.trd $*

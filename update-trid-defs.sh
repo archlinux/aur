@@ -5,9 +5,4 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 
-_PWD=$(pwd)
-
-cd /var/lib/trid/
-python /usr/share/trid/tridupdate.py
-
-cd ${_PWD}
+python /usr/share/trid/tridupdate.py -- /var/lib/trid/triddefs.trd
