@@ -1,6 +1,6 @@
 pkgbase = r-pkgbuild
 	pkgdesc = Find Tools Needed to Build R Packages
-	pkgver = 1.4.3
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=pkgbuild
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-pkgbuild
 	optdepends = r-rcpp
 	optdepends = r-rmarkdown
 	optdepends = r-withr>=2.3.0
-	source = https://cran.r-project.org/src/contrib/pkgbuild_1.4.3.tar.gz
-	b2sums = 0f7f46959831cec55a49888f9a856f0cf1fffd1fc607526318b1530a7d9af5b5d3b71a9f9b72f600b81436681be9cad300f8d91ef6e0bcca56b709f3ca530d5f
+	source = https://cran.r-project.org/src/contrib/pkgbuild_1.4.4.tar.gz
+	b2sums = aff689582b5f1a3a4ea0fade29a1c0d442abc2c3935f5b84e56bfac3df5aac3dbac41ee025c98a7d94af33c9b69746121a1ad237d75ed37744a73252ddcc4afb
 
 pkgname = r-pkgbuild
