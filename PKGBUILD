@@ -1,7 +1,7 @@
-# Maintainer: Gustav Sörnäs <gustav at sornas dot net>
+# Maintainer: Gustav Sörnäs <gustav@sornas.net>
 
 pkgname=swim-git
-pkgver=r207.b48e3bd
+pkgver=0.6.0.r7.g89004a3
 pkgrel=1
 pkgdesc="Build tool for the Spade programming language"
 arch=('x86_64')
@@ -23,7 +23,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -32,11 +32,8 @@ build() {
 }
 
 check() {
-    :
-    ## TODO: disabled due to intermittent failures.
-    ## see https://gitlab.com/spade-lang/swim/-/issues/50
-    # cd "${srcdir}/${pkgname%-git}"
-    # RUSTFLAGS="--remap-path-prefix=$(pwd)=" SWIM_DOWNLOAD_SPADE=1 cargo test --locked --release --target-dir=target
+    cd "${srcdir}/${pkgname%-git}"
+    RUSTFLAGS="--remap-path-prefix=$(pwd)=" SWIM_DOWNLOAD_SPADE=1 cargo test --locked --release --target-dir=target
 }
 
 package() {
