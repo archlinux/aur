@@ -3,7 +3,7 @@ pkgname=insomnium
 pkgver=0.2.3_a
 _electronversion=25
 _nodeversion=18
-pkgrel=6
+pkgrel=7
 pkgdesc="A fast local API testing tool that is privacy-focused and 100% local. For testing GraphQL, REST, WebSockets and gRPC.This is a fork of Kong/insomnia"
 arch=('any')
 url="https://archgpt.dev/insomnium"
@@ -24,7 +24,7 @@ source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=core@${pkgver//_/-}"
     "${pkgname}.sh"
 )
-sha256sums=('SKIP'
+sha256sums=('e2cd1141ddb8b65ccf9ec886993e6d0440f2d02d64f2ae64236028188e323597'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -40,7 +40,7 @@ build() {
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --categories="Development" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
-    cd "${srcdir}/${pkgname//-/.}"
+    cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -49,7 +49,7 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    if [ `curl ifconfig.co/country` = "China" ];then
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
         echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
         echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
