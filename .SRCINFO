@@ -1,22 +1,23 @@
 pkgbase = autocut-client
 	pkgdesc = Quickly generate video subtitles and edit the video by selecting subtitle clips
 	pkgver = 0.1.7
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/zcf0508/autocut-client
 	arch = any
 	license = MIT
 	makedepends = npm
-	makedepends = pnpm
 	makedepends = nvm
 	makedepends = git
-	makedepends = gendesk
-	depends = electron21
+	makedepends = curl
+	depends = electron21-bin
 	depends = ffmpeg
 	depends = autocut
 	conflicts = autocut-client
 	source = autocut-client.git::git+https://github.com/zcf0508/autocut-client.git#tag=v0.1.7
+	source = autocut-client.desktop
 	source = autocut-client.sh
-	sha256sums = SKIP
-	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	sha256sums = 77a48faf1b5ec1fa9e017584ec634d340c87ca5f574fcca9768cbbea56a830ce
+	sha256sums = 6852367fb600dcd0df84202fb0a6222af4ec2ec71479bb2ad74a2fe0b5d2f8ea
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = autocut-client
