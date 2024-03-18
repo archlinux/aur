@@ -1,6 +1,6 @@
 pkgbase = falion
 	pkgdesc = An open source, programmed in rust, privacy focused tool for scraping programming resources (like stackoverflow) fast, efficient and asynchronous/parallel using the CLI or GUI.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/Obscurely/falion
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = falion
 	makedepends = rust
 	makedepends = cargo
 	makedepends = binutils
-	source = falion-1.0.1.tar.gz::https://github.com/Obscurely/falion/archive/v1.0.1-stable.tar.gz
+	source = falion-1.0.2.tar.gz::https://github.com/Obscurely/falion/archive/v1.0.2-stable.tar.gz
 	sha256sums = SKIP
 
 pkgname = falion

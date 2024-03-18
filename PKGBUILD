@@ -1,6 +1,6 @@
 # Maintainer: Obscurely <adrian.obscurely@protonmail.com>
 pkgname=falion
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="An open source, programmed in rust, privacy focused tool for scraping programming resources (like stackoverflow) fast, efficient and asynchronous/parallel using the CLI or GUI. "
 arch=('x86_64')
