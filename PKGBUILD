@@ -1,5 +1,5 @@
 pkgname="californium-tools-git"
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Californium tools, including cf-client, cf-server and cf-browser."
 url="https://eclipse.dev/californium/"
@@ -7,14 +7,14 @@ arch=("x86_64")
 license=("Eclipse Distribution License 1.0 or Eclipse Public License 2.0")
 makedepends=()
 optdepends=()
-depends=('maven' 'liberica-jdk-11-full-bin')
+depends=('maven' 'liberica-jdk-11-full-bin' 'coreutils')
 source=("git+https://github.com/eclipse-californium/californium.tools.git")
 sha256sums=("SKIP")
 
 build() {
 	cd "$srcdir/californium.tools"
 	export JAVA_HOME="/usr/lib/jvm/liberica-jdk-11-full"
-	mvn clean install -Daether.dependencyCollector.impl=bf
+	mvn -T $(nproc) clean install -Daether.dependencyCollector.impl=bf
 
 	rm -fr jars bin applications 
 	mkdir jars bin applications
@@ -28,7 +28,7 @@ build() {
 
 		echo "#!/bin/sh
 export JAVA_HOME='/usr/lib/jvm/liberica-jdk-11-full'
-/usr/lib/jvm/liberica-jdk-11-full/bin/java -jar /usr/share/californium-tools/jars/$identifier.jar
+/usr/lib/jvm/liberica-jdk-11-full/bin/java -jar /usr/share/californium-tools/jars/$identifier.jar "'$@'"
 " > "bin/$identifier"
 		chmod a+x "bin/$identifier"
 

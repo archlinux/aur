@@ -1,12 +1,13 @@
 pkgbase = californium-tools-git
 	pkgdesc = Californium tools, including cf-client, cf-server and cf-browser.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://eclipse.dev/californium/
 	arch = x86_64
 	license = Eclipse Distribution License 1.0 or Eclipse Public License 2.0
 	depends = maven
 	depends = liberica-jdk-11-full-bin
+	depends = coreutils
 	source = git+https://github.com/eclipse-californium/californium.tools.git
 	sha256sums = SKIP
 
