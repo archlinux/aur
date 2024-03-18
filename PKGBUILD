@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-fuel-tools9
-pkgver=9.0.0
-pkgrel=3
+pkgver=9.0.1
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="A client library and command line tools for interacting with Gazebo Fuel servers. "
@@ -31,7 +31,7 @@ optdepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('9401720e5d53f7464dbca4fee4d705c86e161f1fa51353988e8b68f255a96fc7')
+sha256sums=('85dbf8dc74e63fc6e70ed48bd40acd825acaa1429fa2cea891a265e847f01ab5')
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
