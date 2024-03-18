@@ -3,14 +3,13 @@
 _pkgname=parameters
 _pkgver=0.21.6
 pkgname=r-${_pkgname,,}
-pkgver=0.21.6
-pkgrel=1
-pkgdesc='Processing of Model Parameters'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Processing of Model Parameters"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-bayestestr
   r-datawizard
   r-insight
@@ -26,7 +25,6 @@ optdepends=(
   r-bh
   r-biglm
   r-blme
-  r-boot
   r-brglm2
   r-brms
   r-broom
@@ -36,7 +34,6 @@ optdepends=(
   r-cgam
   r-classdiscovery
   r-clubsandwich
-  r-cluster
   r-coda
   r-cplm
   r-dbscan
@@ -46,9 +43,11 @@ optdepends=(
   r-effectsize
   r-eganet
   r-emmeans
+  r-epir
   r-estimatr
   r-factoextra
   r-factominer
+  r-faraway
   r-fastica
   r-fixest
   r-fpc
@@ -74,12 +73,11 @@ optdepends=(
   r-lme4
   r-lmertest
   r-lmtest
+  r-logistf
   r-logspline
   r-lqmm
   r-m3c
   r-marginaleffects
-  r-mass
-  r-matrix
   r-mclogit
   r-mclust
   r-mcmcglmm
@@ -88,7 +86,6 @@ optdepends=(
   r-metabma
   r-metafor
   r-mfx
-  r-mgcv
   r-mice
   r-mmrm
   r-multcomp
@@ -96,8 +93,6 @@ optdepends=(
   r-nbclust
   r-nestedlogit
   r-nfactors
-  r-nlme
-  r-nnet
   r-openxlsx
   r-ordinal
   r-panelr
@@ -119,11 +114,12 @@ optdepends=(
   r-rstanarm
   r-sandwich
   r-see
+  r-serp
   r-sparsepca
   r-survey
-  r-survival
   r-testthat
   r-tidyselect
+  r-tinytable
   r-tmb
   r-truncreg
   r-vgam
@@ -131,14 +127,15 @@ optdepends=(
   r-wrs2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('03ed2734d0f9e178dd69699cffea7a14ff09c081e3568c285f03379cea689400')
+md5sums=('00964d116b406c02fe6d6c3c5d223782')
+b2sums=('f87d3d051ec3ffe9b70abdaf630c4d99d09ee0ab92748aacba9246bc2a1729900cdc562e527ad96d45aa0d827032d8cd7c8c51e884d62084571b877bc507563c')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
