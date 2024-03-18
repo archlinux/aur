@@ -1,0 +1,16 @@
+pkgbase = python-pyberny
+	pkgdesc = Molecular/crystal structure optimizer
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://github.com/jhrmnn/pyberny
+	arch = any
+	license = MPL-2.0
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.5
+	depends = python-numpy
+	noextract = pyberny-0.6.3-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/p/pyberny/pyberny-0.6.3-py3-none-any.whl
+	sha256sums = edb37aee86cc0f607b88b7f504dc6708a3eb167c6fc48a7d36bb9f92d0302a1d
+
+pkgname = python-pyberny
