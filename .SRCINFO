@@ -1,14 +1,15 @@
 pkgbase = r-calm
 	pkgdesc = Covariate Assisted Large-scale Multiple testing
 	pkgver = 1.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/calm
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/calm_1.16.0.tar.gz
-	sha256sums = db9d2c3f5b53c0bca13351fae104aac9177c35ccf0c7fc6fcd4f38082342028c
+	md5sums = 9a2b4c48021193636c88c997331ede2d
+	b2sums = 220688663275c68e39e6fbe7fef558da6e6761d067aef930d91a6e802c4fbcbdebea81366aa838355ee08956e330789b8337afe1359879f032d0fdf5c2c610f1
 
 pkgname = r-calm
