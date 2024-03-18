@@ -1,33 +1,50 @@
-# Maintainer: Sebastian Krzyszkowiak <dos@dosowisko.net>
+# Maintainer: fossdd <fossdd@pwned.life>
+# Contributor: Sebastian Krzyszkowiak <dos@dosowisko.net>
+# Contributor: Jelle van der Waa <jelle@archlinux.org>
+
+libgmobile_commit=a3c67a1184bfa73c593edefabe77cce57a5e38f6
 
 pkgname=phoc-git
-pkgver=r345.0db9e13
+_pkgname=phoc
+pkgver=r2242.8dc3ed3
 pkgrel=1
-pkgdesc="Wayland compositor for phones"
-url="https://source.puri.sm/Librem5/phoc"
-license=("GPL3")
-arch=(i686 x86_64 arm armv6h armv7h aarch64)
-depends=('glib2' 'wlroots')
-makedepends=('meson' 'ninja' 'git' 'wayland-protocols' 'ctags' 'xorg-server-xvfb')
+pkgdesc='Display compositor designed for phones'
+arch=(x86_64 aarch64)
+url='https://gitlab.gnome.org/World/Phosh/phoc'
+license=(GPL3)
+depends=(gnome-desktop wlroots gsettings-desktop-schemas pixman libinput libxcb libxkbcommon
+	 json-glib glib2 dconf cairo wayland)
+checkdepends=(xorg-server-xvfb xorg-xauth mutter pixman)
+makedepends=(cmake meson git wayland-protocols python-jinja python-pygments python-typogrify libgirepository)
+optdepends=('xorg-wayland: run X clients under phoc')
+source=("git+$url.git"
+	https://gitlab.gnome.org/guidog/gmobile/-/archive/${libgmobile_commit}/gmobile-${libgmobile_commit}.tar.gz)
+sha256sums=('SKIP'
+            '1aeac55a790525c2028a66562de877a8f99ce391636d8e0e3d059b0899c7a7ec')
 provides=(phoc)
 conflicts=(phoc)
-source=("git+https://source.puri.sm/Librem5/phoc.git")
-sha256sums=("SKIP")
 
 pkgver() {
-    cd phoc
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd phoc
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  mv "gmobile-${libgmobile_commit}" "${_pkgname}/subprojects/gmobile"
+  cd "${_pkgname}"
 }
 
 build() {
-    arch-meson phoc build -Dembed-wlroots=disabled -Ddefault_library=shared
-    ninja -C build
+  arch-meson "${_pkgname}" build -Dembed-wlroots=disabled
+  meson compile -C build
 }
 
 check() {
-    xvfb-run -s -noreset ninja -C build test
+  LC_ALL=C.UTF-8 WLR_RENDERER=pixman xvfb-run meson test -C build --print-errorlogs
 }
 
 package() {
-    DESTDIR="${pkgdir}" ninja -C build install
+  depends+=(libwlroots.so=12)
+  DESTDIR="${pkgdir}" meson install -C build
 }
+
