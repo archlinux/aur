@@ -3,4 +3,4 @@ export _JAVA_OPTIONS='-Dsun.java2d.opengl=true -Dawt.useSystemAAFontSettings=on 
 export LD_LIBRARY_PATH='/usr/lib/'
 export LD_PRELOAD='/usr/lib/libjportaudio.so'
 cd "/opt/beatoraja"
-SHUT_UP_TACHI=yes java -Xms1g -Xmx4g -cp beatoraja.jar:ir/* -jar LR2oraja-endlessdream.jar
+SHUT_UP_TACHI=yes java -Djdk.gtk.version=2 -Xms1g -Xmx4g -cp beatoraja.jar:ir/* -jar LR2oraja-endlessdream.jar

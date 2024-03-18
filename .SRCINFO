@@ -1,22 +1,20 @@
 pkgbase = lr2oraja-endlessdream
 	pkgdesc = A featureful fork of beatoraja.
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/seraxis/lr2oraja-endlessdream
 	arch = x86_64
 	license = GPL3
 	license = GPL3
 	license = MIT
-	license = unknown
-	license = unknown
 	depends = liberica-jre-8-full-bin
 	depends = portaudio
 	depends = lr2oraja
-	source = https://github.com/seraxis/lr2oraja-endlessdream/releases/download/v0.1.1/lr2oraja-0.8.6-endlessdream-linux-0.1.1.jar
+	source = https://github.com/seraxis/lr2oraja-endlessdream/releases/download/v0.2.0/lr2oraja-0.8.7-endlessdream-linux-0.2.0.zip
 	source = lr2oraja-endlessdream.sh
 	source = lr2oraja-endlessdream-icon.png
-	sha256sums = d09e8b3838b29e702edc8ad42aa49b323f722ac42d0180451a12f530fb61655c
-	sha256sums = 00f25e5f709943171f0a9fb6db77e103845f5538bdd385c06e2b7598fab0140d
+	sha256sums = 1688a08ac547b891977bdf53cb80f0f458f2bce36acaa8260d273fdb16a7c677
+	sha256sums = aa670db982f72e0c7cfce539bcc28888a242c386f42b032b0b9ec3c3cd3cb3c8
 	sha256sums = fdbd37ff43aa6af20f9eb643bf271a77ef579014970a7a3dcecf78e65123d83d
 
 pkgname = lr2oraja-endlessdream
