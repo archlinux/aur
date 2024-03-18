@@ -2,10 +2,10 @@
 
 pkgname=fake-ms-fonts
 pkgver=0.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Aliases for Core TTF Fonts from Microsoft'
 arch=('any')
-url='http://www.eworm.de/'
+url='https://www.eworm.de/'
 license=('GPL')
 depends=('fontconfig')
 conflicts=('ttf-ms-fonts')
