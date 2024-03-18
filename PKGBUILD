@@ -3,7 +3,7 @@ pkgname=electrocrud-bin
 _appname=ElectroCRUD
 pkgver=3.1.0_develop.1
 _electronversion=22
-pkgrel=8
+pkgrel=9
 pkgdesc="Database CRUD Application Built on Electron | MySQL, Postgres, SQLite"
 arch=('x86_64')
 url="http://garrylachman.github.io/ElectroCRUD/"
@@ -20,11 +20,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('6bd3e133f38beb97f8856254f09f28dd8f506ec127e3a3ae2020e65f046a441b'
-            'f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
 }
