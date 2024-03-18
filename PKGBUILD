@@ -3,7 +3,7 @@ pkgname=botclient-bin
 _appname=BotClient
 pkgver=0.12.1_alpha
 _electronversion=28
-pkgrel=2
+pkgrel=3
 pkgdesc="A discord botclient built with Electron, React and discord.js."
 arch=('x86_64')
 url="https://github.com/DarkGuy10/BotClient"
@@ -23,11 +23,12 @@ source=(
 )
 sha256sums=('74abee38ac63d3cc104807b21506e775af7c3bb70221e90ce73873529566a533'
             '56d602455f4872c78a5af3df024c6a8aab858b2e79ed53e417aaa90720b186b0'
-            'f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
