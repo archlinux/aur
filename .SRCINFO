@@ -1,6 +1,6 @@
 pkgbase = bashblog-git
 	pkgdesc = A single Bash script to create blogs.
-	pkgver = 3
+	pkgver = 4
 	pkgrel = 1
 	url = https://github.com/cfenollosa/bashblog
 	install = bashblog-git.install

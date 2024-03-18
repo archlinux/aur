@@ -2,7 +2,7 @@
 
 pkgname="bashblog-git"
 _pkgname="${pkgname%-*}"
-pkgver=3
+pkgver=4
 pkgrel=1
 pkgdesc="A single Bash script to create blogs."
 arch=('any')
@@ -29,7 +29,7 @@ package()
   install -d "$pkgdir/usr/bin"
  install -d "$pkgdir/usr/share/$_pkgname"
   install -m755 "$_pkgname/bb.sh" "$pkgdir/usr/bin/bb"
-  install -m666 "$_pkgname/README.md" "$pkgdir/usr/share/$_pkgname"
+  install -m644 "$_pkgname/README.md" "$pkgdir/usr/share/$_pkgname"
   }
 
 # vim:set ts=2 sw=2 et:
