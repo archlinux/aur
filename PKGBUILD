@@ -3,7 +3,7 @@
 # Contributor: Famous
 pkgname=zelcore
 pkgver=7.13.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Zelcore Platform"
 arch=('x86_64')
 url="https://zelcore.io/"
