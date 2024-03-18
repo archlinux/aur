@@ -5,25 +5,25 @@
 # Original: Daniel Bermond <dbermond@archlinux.org> https://aur.archlinux.org/packages/mpv-full-git
 
 pkgname=mpv-amd-full-git
-pkgver=0.36.0.r31.g13b7d7771f
+pkgver=0.37.0.r582.gc155c18023
 pkgrel=1
-pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
+pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs except Nvidia)'
 arch=('x86_64')
 license=('GPL')
 url='https://mpv.io/'
 depends=(
     # official repositories:
-        'cmocka' 'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
+        'cmocka' 'lcms2' 'libcdio-paranoia' 'libgl' 'libplacebo' 'libxss'
         'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'mujs'
         'libdvdnav' 'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
-        'zlib' 'vapoursynth' 'openal' 'vulkan-icd-loader' 'shaderc'
-        'libxpresent' 'pipewire' 'zimg' 'sndio' 'libsixel'
+        'zlib' 'vapoursynth' 'openal' 'vulkan-icd-loader' 'libxpresent'
+        'libpipewire' 'zimg' 'sndio' 'libsixel'
     # AUR:
-        'spirv-cross' 'libplacebo-git' 'ffmpeg-git'
+        'ffmpeg-git'
 )
-makedepends=('git' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
-             'wayland-protocols' 'meson')
+makedepends=('git' 'meson' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
+             'wayland-protocols')
 optdepends=('yt-dlp: for video-sharing websites playback'
             'youtube-dl: for video-sharing websites playback')
 provides=('mpv' 'mpv-git')
@@ -50,7 +50,7 @@ build() {
         -Dcplayer='true' \
         -Dlibmpv='true' \
         -Dbuild-date='false' \
-        -Dtests='true' \
+        -Dtests='false' \
         -Dta-leak-report='false' \
         \
         -Dcdda='enabled' \
@@ -69,12 +69,11 @@ build() {
         -Drubberband='enabled' \
         -Dsdl2='enabled' \
         -Dsdl2-gamepad='enabled' \
-        -Dstdatomic='enabled' \
         -Duchardet='enabled' \
         -Duwp='disabled' \
         -Dvapoursynth='enabled' \
         -Dvector='enabled' \
-        -Dwin32-internal-pthreads='disabled' \
+        -Dwin32-threads='disabled' \
         -Dzimg='enabled' \
         -Dzlib='enabled' \
         \
@@ -95,6 +94,7 @@ build() {
         -Dcocoa='disabled' \
         -Dd3d11='disabled' \
         -Ddirect3d='disabled' \
+        -Ddmabuf-wayland='enabled' \
         -Ddrm='enabled' \
         -Degl='enabled' \
         -Degl-android='disabled' \
@@ -111,19 +111,17 @@ build() {
         -Dgl-win32='disabled' \
         -Dgl-x11='enabled' \
         -Djpeg='enabled' \
-        -Dlibplacebo='enabled' \
-        -Dlibplacebo-next='enabled' \
-        -Drpi='disabled' \
         -Dsdl2-video='enabled' \
-        -Dshaderc='enabled' \
+        -Dshaderc='disabled' \
         -Dsixel='enabled' \
-        -Dspirv-cross='enabled' \
+        -Dspirv-cross='disabled' \
         -Dplain-gl='enabled' \
         -Dvdpau='enabled' \
         -Dvdpau-gl-x11='enabled' \
         -Dvaapi='enabled' \
         -Dvaapi-drm='enabled' \
         -Dvaapi-wayland='enabled' \
+        -Dvaapi-win32='disabled' \
         -Dvaapi-x11='enabled' \
         -Dvulkan='enabled' \
         -Dwayland='enabled' \
@@ -137,12 +135,10 @@ build() {
         -Dd3d9-hwaccel='disabled' \
         -Dgl-dxinterop-d3d9='disabled' \
         -Dios-gl='disabled' \
-        -Drpi-mmal='disabled' \
         -Dvideotoolbox-gl='disabled' \
+        -Dvideotoolbox-pl='disabled' \
+        -Dvulkan-interop='enabled' \
         \
-        -Dmacos-10-11-features='disabled' \
-        -Dmacos-10-12-2-features='disabled' \
-        -Dmacos-10-14-features='disabled' \
         -Dmacos-cocoa-cb='disabled' \
         -Dmacos-media-player='disabled' \
         -Dmacos-touchbar='disabled' \
@@ -154,14 +150,6 @@ build() {
         -Dpdf-build='disabled'
     meson compile -C build
 }
-
-# Tests fail for now and mpv-full-git does not
-# run them either
-# TODO Keep an eye for tests in the future 
-#check() {
-#    cd build
-#    meson test
-#}
 
 package() {
     meson install -C build --destdir "$pkgdir"
