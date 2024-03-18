@@ -1,4 +1,4 @@
-# Maintainer: Nima Askarian <nimaas1400@gmail.com>
+# Maintainer: Nima Askarian <nimaaskarian.work@outlook.com>
 pkgname=c3-bin
 pkgver=0.5.1
 pkgrel=1
