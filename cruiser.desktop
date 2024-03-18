@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Cruiser
+Comment=Map and navigation application using offline vector maps
+Exec=/usr/bin/cruiser %u
+Terminal=false
+Type=Application
+Icon=cruiser
+Categories=Application;Maps
