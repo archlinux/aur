@@ -6,27 +6,34 @@ pkgrel='1'
 url='https://github.com/fossable/goldboot'
 arch=('x86_64')
 license=('GNU Affero General Public License v3.0')
-depends=('edk2-ovmf' 'qemu-base' 'qemu-ui-gtk')
-makedepends=('cargo')
+depends=('edk2-ovmf' 'qemu-base' 'qemu-ui-gtk' 'zstd' 'gtk4')
+makedepends=('cargo' 'pkg-config')
 source=("goldboot-$pkgver.tar.gz::https://static.crates.io/crates/goldboot/goldboot-$pkgver.crate")
 sha512sums=('SKIP')
 
-prepare() {
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-}
-
 build() {
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo build --bin goldboot --frozen --release
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cd "$pkgname-$pkgver"
+	cargo build --frozen --release
+	local compgen="target/release/$pkgname --completion"
+	$compgen bash >"completions/$pkgname"
+	$compgen fish >"completions/$pkgname.fish"
+	$compgen zsh >"completions/_$pkgname"
 }
 
 check() {
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --bin goldboot --frozen --all-features
+	export RUSTUP_TOOLCHAIN=stable
+	cd "$pkgname-$pkgver"
+	cargo test --frozen --all-features
 }
 
 package() {
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+	cd "$pkgname-$pkgver"
+	install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
+	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm 644 "completions/$pkgname" -t "$pkgdir/usr/share/bash-completion/completions/"
+	install -Dm 644 "completions/$pkgname.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+	install -Dm 644 "completions/_$pkgname" -t "$pkgdir/usr/share/zsh/site-functions/"
 }
