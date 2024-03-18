@@ -2,26 +2,19 @@
 # Contributor: Armin Preiml <apreiml@strohwolke.at>
 
 pkgname=hare
-pkgver=r3667.c50d9288
+pkgver=0.24.0
 pkgrel=1
 pkgdesc='The Hare programming language'
 arch=('x86_64' 'aarch64')
 url='https://harelang.org/'
-license=('GPL3' 'MPL2')
+license=('MPL-2.0 AND GPL-3.0-only')
 depends=('qbe' 'harec')
-makedepends=('git' 'scdoc')
-_commit='c50d928838cdea09c028964a71b053588dcd63a4'
-source=("hare::git+https://git.sr.ht/~sircmpwn/hare#commit=$_commit")
-b2sums=('SKIP')
-
-pkgver() {
-  cd hare
-
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+makedepends=('scdoc')
+source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~sircmpwn/${pkgname}/archive/${pkgver}.tar.gz")
+b2sums=('4e1e706a7e0623ebe71803dc591b362527dd140f025cb3529e95d9bec8bea464bc008d512e4981f1dcd34f770b8831a0d6dd37cb453ee54e01e900c1cd52c159')
 
 prepare() {
-  cd hare
+  cd "${pkgname}-${pkgver}"
 
   # configure prefix directory & architecture
   sed \
@@ -31,7 +24,7 @@ prepare() {
 }
 
 build() {
-  cd hare
+  cd "${pkgname}-${pkgver}"
 
   # remove '-Wl,' prefix if present, since it is only required when
   # the linker is invoked indirectly. Keeping it will cause the linker to
@@ -43,7 +36,7 @@ build() {
 }
 
 check() {
-  cd hare
+  cd "${pkgname}-${pkgver}"
 
   # XXX: see above, in build().
   #
@@ -53,7 +46,7 @@ check() {
 }
 
 package() {
-  cd hare
+  cd "${pkgname}-${pkgver}"
 
   make DESTDIR="$pkgdir" install
 }
