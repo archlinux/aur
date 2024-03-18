@@ -1,12 +1,14 @@
 pkgbase = bash-supergenpass-git
 	pkgdesc = Bash shell-script implementation of SuperGenPass
 	pkgver = 0.r20.e5d9659
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lanzz/bash-supergenpass
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = bash
+	depends = coreutils
+	depends = grep
 	depends = openssl
 	provides = bash-supergenpass
 	conflicts = bash-supergenpass
