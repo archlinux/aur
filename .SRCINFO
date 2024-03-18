@@ -1,6 +1,6 @@
 pkgbase = zelcore
 	pkgdesc = Zelcore Platform
-	pkgver = 7.13.0
+	pkgver = 7.13.1
 	pkgrel = 0
 	url = https://zelcore.io/
 	install = zelcore.install

@@ -2,7 +2,7 @@
 # Maintainer: Famous
 # Contributor: Famous
 pkgname=zelcore
-pkgver=7.13.0
+pkgver=7.13.1
 pkgrel=0
 pkgdesc="Zelcore Platform"
 arch=('x86_64')
