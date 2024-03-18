@@ -1,10 +1,10 @@
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 # Maintainer: Xiaoxu Guo <ftiasch0@gmail.com>
 # Maintainer: László Várady <laszlo.varady93@gmail.com>
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=folly
-pkgver=2024.03.11.00
+pkgver=2024.04.01.00
 pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
@@ -34,7 +34,10 @@ depends=(
 makedepends=(
   boost
   cmake
+  cython
   gtest
+  python-setuptools
+  python-wheel
 )
 provides=(
   libfolly.so
@@ -46,11 +49,13 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   "fix-cmake-find-glog.patch"
   "fix-missing-include.patch"
+  "fix-setup-py-for-python-extensions.patch"
 )
 sha256sums=(
-  '057cff82142dbfacea455aa2ad30b3dd80e28a95a98ef43a27c1ca5cf77a373f'
+  '8d51e4e5d04ca29b752ecd57831fb78d79036877bbad424b371490b2a8bb5d11'
   '7655b9d6fd926770dae4d26f67b6aedf8fb6ff03927782bcfeffa09b5138b87c'
   '19cc8b4190e3c7d4ef9d1d9842a2def99bb261711ae85cb03e63787c4995e286'
+  '1f369049ec6f14cc8682f0a8d6d08cca8ac49a1cf83f94914f0335adacba29c0'
 )
 
 _archive="$pkgname-$pkgver"
@@ -60,6 +65,16 @@ prepare() {
 
   patch --forward --strip=1 --input="$srcdir/fix-cmake-find-glog.patch"
   patch --forward --strip=1 --input="$srcdir/fix-missing-include.patch"
+  patch --forward --strip=1 --input="$srcdir/fix-setup-py-for-python-extensions.patch"
+
+  # Remove non-existent test
+  sed -i '/LaunderTest/d' CMakeLists.txt
+
+  # The build will generate these files and fails if they already exist
+  rm folly/python/executor.cpp folly/python/iobuf.cpp
+
+  # Set Python extensions version
+  sed -i "s/version=\"0.0.1\"/version=\"$pkgver\"/" folly/python/setup.py
 }
 
 build() {
@@ -71,6 +86,7 @@ build() {
     -Wno-dev \
     -DBUILD_TESTS=ON \
     -DBUILD_SHARED_LIBS=ON \
+    -DPYTHON_EXTENSIONS=ON \
     -DPACKAGE_VERSION="$pkgver"
   cmake --build build
 }
@@ -88,6 +104,7 @@ check() {
     atomic_unordered_map_test.AtomicUnorderedInsertMap.DISABLEDMegaMap
     fbstring_test.FBString.testAllClauses
     fbvector_test
+    heap_vector_types_test.HeapVectorTypes.SimpleSetTest
     xlog_test.XlogTest.perFileCategoryHandling
   )
   local skipped_tests_pattern="${skipped_tests[0]}$(printf '|%s' "${skipped_tests[@]:1}")"

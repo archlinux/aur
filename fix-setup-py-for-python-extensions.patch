@@ -1,0 +1,57 @@
+From e21ddcf809472feb8010363a192fb5ca986d1167 Mon Sep 17 00:00:00 2001
+From: Carl Smedstad <carl.smedstad@protonmail.com>
+Date: Thu, 4 Apr 2024 10:07:57 +0200
+Subject: [PATCH] Fix setup.py for Python extensions
+
+* Add missing .cpp files to sources.
+* Define `GLOG_USE_GLOG_EXPORT` for compatibility with glog v0.7+.
+* Don't bundle and install .h and .pxd files.
+---
+ folly/python/setup.py | 19 ++++++++++++++++---
+ 1 file changed, 16 insertions(+), 3 deletions(-)
+
+diff --git a/folly/python/setup.py b/folly/python/setup.py
+index fc2d2fe0a..0954a9062 100755
+--- a/folly/python/setup.py
++++ b/folly/python/setup.py
+@@ -28,13 +28,27 @@ Options.fast_fail = True
+ exts = [
+     Extension(
+         "folly.executor",
+-        sources=["folly/executor.pyx"],
++        sources=[
++            "folly/executor.pyx",
++            "folly/GILAwareManualExecutor.cpp",
++            "folly/ProactorExecutor.cpp",
++            "folly/error.cpp",
++            "folly/iobuf_ext.cpp",
++        ],
+         libraries=["folly", "glog", "double-conversion", "iberty"],
++        define_macros=[('GLOG_USE_GLOG_EXPORT', '1')],
+     ),
+     Extension(
+         "folly.iobuf",
+-        sources=["folly/iobuf.pyx"],
++        sources=[
++            "folly/iobuf.pyx",
++            "folly/GILAwareManualExecutor.cpp",
++            "folly/ProactorExecutor.cpp",
++            "folly/error.cpp",
++            "folly/iobuf_ext.cpp",
++        ],
+         libraries=["folly", "glog", "double-conversion", "iberty"],
++        define_macros=[('GLOG_USE_GLOG_EXPORT', '1')],
+     ),
+ ]
+ 
+@@ -42,7 +56,6 @@ setup(
+     name="folly",
+     version="0.0.1",
+     packages=["folly"],
+-    package_data={"": ["*.pxd", "*.h"]},
+     setup_requires=["cython"],
+     zip_safe=False,
+     ext_modules=cythonize(exts, compiler_directives={"language_level": 3}),
+-- 
+2.44.0
+
