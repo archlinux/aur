@@ -2,6 +2,7 @@
 
 import os
 import re
+import shutil
 import signal
 import subprocess
 
@@ -16,39 +17,56 @@ from gi.repository import Gtk, Gdk
 # Classe para caixa de diálogo de confirmação
 class ConfirmacaoDialog(Gtk.Dialog):
     def __init__(self, parent, mensagem):
-        super().__init__(title="Confirmation", parent=parent, flags=0)
+        Gtk.Dialog.__init__(self, title="Remove Game")
+
         self.set_decorated(False)
         self.set_resizable(False)
         self.set_default_size(300, 100)
 
-        box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        self.get_content_area().add(box)
+        # Cria um container
+        container = Gtk.Grid()
+        container.set_column_homogeneous(True)
+        container.set_row_homogeneous(True)
+        container.set_row_spacing(10)
+        container.set_column_spacing(10)
+        container.set_border_width(10)
 
-        # Adiciona espaçamento e uma etiqueta com a mensagem de confirmação
-        box.pack_start(Gtk.Label(), True, True, 0)
-        label = Gtk.Label(label=mensagem)
-        label.set_line_wrap(True)
-        box.pack_start(label, True, True, 0)
-        box.pack_start(Gtk.Label(), True, True, 0)
+        # Define a cor de fundo do container para branco
+        #container.override_background_color(Gtk.StateFlags.NORMAL, Gdk.RGBA(0, 0, 0, 1))
 
-        # Adiciona botões para "Não" e "Sim"
-        buttons_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
-        box.pack_start(buttons_box, True, True, 0)
+        # Adiciona o container à janela do diálogo
+        self.get_content_area().add(container)
 
-        box.pack_start(Gtk.Label(), True, True, 0)
+        # Adiciona um label ao container
+        # label = Gtk.Label(label="Are you sure?")
+        label = Gtk.Label()
+        label.set_label("Are you sure?")
+        label.set_halign(Gtk.Align.CENTER)  # Centraliza horizontalmente
+        container.attach(label, 0, 0, 2, 1)
 
-        btn_no = Gtk.Button()
-        btn_no.add(Gtk.Image.new_from_icon_name("window-close-symbolic", Gtk.IconSize.BUTTON))
+        # Adiciona os botão NO ao container
+        # button1 = Gtk.Button(label="NO")
+        btn_no = Gtk.Button(image=Gtk.Image.new_from_icon_name("gtk-cancel", Gtk.IconSize.BUTTON))
         btn_no.connect("clicked", lambda x: self.response(Gtk.ResponseType.NO))
-        buttons_box.pack_start(btn_no, True, True, 0)
+        container.attach(btn_no, 0, 1, 1, 1)
 
-        btn_yes = Gtk.Button()
-        btn_yes.add(Gtk.Image.new_from_icon_name("gtk-ok", Gtk.IconSize.BUTTON))
+        # Adiciona os botão NO ao container
+        # button2 = Gtk.Button(label="YES")
+        btn_yes = Gtk.Button(image=Gtk.Image.new_from_icon_name("gtk-ok", Gtk.IconSize.BUTTON))
         btn_yes.connect("clicked", lambda x: self.response(Gtk.ResponseType.YES))
-        buttons_box.pack_start(btn_yes, True, True, 0)
+        container.attach(btn_yes, 1, 1, 1, 1)
+
+        # Adiciona um check box ao container
+        self.checkbox = Gtk.CheckButton(label="Also remove the prefix")
+        self.checkbox.set_halign(Gtk.Align.CENTER)  # Centraliza horizontalmente
+        container.attach(self.checkbox, 0, 2, 2, 1)
 
         # Exibe todos os elementos
         self.show_all()
+
+    def get_remove_prefix_state(self):
+        # Retorna o estado do checkbox "Also remove the prefix"
+        return self.checkbox.get_active()
 
 
 # Classe para caixa de diálogo de adição/edição de jogo
@@ -137,7 +155,7 @@ class AdicionarJogoDialog(Gtk.Dialog):
 
         # Adiciona botões de cancelar e OK
         cancel_button = Gtk.Button()
-        cancel_button.add(Gtk.Image.new_from_icon_name("window-close-symbolic", Gtk.IconSize.BUTTON))
+        cancel_button.add(Gtk.Image.new_from_icon_name("gtk-cancel", Gtk.IconSize.BUTTON))
         self.add_action_widget(cancel_button, Gtk.ResponseType.CANCEL)
 
         ok_button = Gtk.Button()
@@ -188,14 +206,12 @@ class AdicionarJogoDialog(Gtk.Dialog):
         prefixo_jogo = self.prefix_entry.get_text()
 
         comando = (f'WINEPREFIX={prefixo_jogo} '
-                   f'{os.path.expanduser("/usr/bin/wine")} -v win10'
-                   )
+                   f'{os.path.expanduser("/usr/bin/wine")} -v win10')
 
         subprocess.Popen(["/bin/bash", "-c", comando])
 
         comando = (f'WINEPREFIX={prefixo_jogo} '
-                   f'{os.path.expanduser("/usr/bin/winetricks")} '
-                   )
+                   f'{os.path.expanduser("/usr/bin/winetricks")} ')
 
         subprocess.Popen(["/bin/bash", "-c", comando])
 
@@ -207,7 +223,9 @@ class AdicionarJogoDialog(Gtk.Dialog):
         compatibility_tools_dir = os.path.expanduser("~/.steam/steam/compatibilitytools.d/")
         if os.path.exists(compatibility_tools_dir):
             for item in os.listdir(compatibility_tools_dir):
-                self.dropdown_menu.append_text(item)
+                item_path = os.path.join(compatibility_tools_dir, item)
+                if os.path.isdir(item_path) and item != "ULWGL-Launcher":
+                    self.dropdown_menu.append_text(item)
 
         # if os.path.exists("/usr/bin/wine64"):  #    self.dropdown_menu.append_text("Wine")
 
@@ -234,7 +252,7 @@ class AdicionarJogoDialog(Gtk.Dialog):
         caminho = self.caminho_entry.get_text()
 
         if not nome or not caminho:
-            self.exibir_mensagem_aviso("Game and Path need to be filled")
+            self.exibir_mensagem_aviso("Title and Path need to be filled")
             return False
 
         return True
@@ -318,7 +336,7 @@ class JogoApp(Gtk.Window):
 
         # Cria e configura o botão de adicionar
         self.btn_adicionar = Gtk.Button()
-        self.btn_adicionar.set_image(Gtk.Image.new_from_icon_name("list-add", Gtk.IconSize.BUTTON))
+        self.btn_adicionar.set_image(Gtk.Image.new_from_icon_name("gtk-add", Gtk.IconSize.BUTTON))
         self.btn_adicionar.connect("clicked", self.on_btn_adicionar_clicked)
 
         # Adiciona o botão de adicionar após o checkbox
@@ -514,10 +532,23 @@ class JogoApp(Gtk.Window):
 
     def on_btn_excluir_clicked(self, widget, jogo):
         # Callback para o botão de excluir jogo
-        confirmacao_dialog = ConfirmacaoDialog(self, "Are you sure you want to delete the game?")
+        confirmacao_dialog = ConfirmacaoDialog(self, "Are you sure?")
         response = confirmacao_dialog.run()
 
         if response == Gtk.ResponseType.YES:
+            # Verifica se o checkbox "Also remove the prefix" está marcado
+            if confirmacao_dialog.get_remove_prefix_state():
+                # Obtém o prefixo do jogo
+                prefixo_jogo = jogo.prefixo
+
+                # Exclui a pasta correspondente ao prefixo do jogo, ignorando se não existir
+                prefixo_path = os.path.expanduser(prefixo_jogo)
+                try:
+                    shutil.rmtree(prefixo_path)
+                except FileNotFoundError:
+                    pass
+
+            # Remove o jogo da lista e salva no arquivo
             self.jogos.remove(jogo)
             self.salvar_jogos()
             self.atualizar_lista()
@@ -568,7 +599,7 @@ class JogoApp(Gtk.Window):
             caminho = editar_jogo_dialog.caminho_entry.get_text()
 
             if not nome or not caminho:
-                editar_jogo_dialog.exibir_mensagem_aviso("Game and Path need to be filled")
+                editar_jogo_dialog.exibir_mensagem_aviso("Title and Path need to be filled")
                 return True
 
             # Atualiza todos os campos do objeto jogo
@@ -673,6 +704,6 @@ if __name__ == "__main__":
     # Instancia e inicia a aplicação Gtk
     app = JogoApp()
     app.connect("destroy", Gtk.main_quit)
-    app.set_type_hint(Gdk.WindowTypeHint.UTILITY)
+    #app.set_type_hint(Gdk.WindowTypeHint.UTILITY)
     app.show_all()
     Gtk.main()
