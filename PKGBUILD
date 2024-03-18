@@ -1,6 +1,6 @@
 # Maintainer: Jakob Hellermann <jakob.hellermann@protonmail.com>
 pkgname=atlas-celeste-git
-pkgver=v1.0.0.r2.ec96147
+pkgver=1.0.0.r3.108db8b
 pkgrel=1
 pkgdesc='Render and visualize paths for Celeste TASes'
 url='https://github.com/jakobhellermann/Atlas'
