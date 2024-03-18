@@ -3,7 +3,7 @@ pkgname=projscope-music-player-bin
 _pkgname="Projscope MP3 Player"
 pkgver=0.0.3
 _electronversion=17
-pkgrel=7
+pkgrel=8
 pkgdesc="Projscope MP3 player is free desktop, cross platform tool (Winamp you are remembered)!"
 arch=("x86_64")
 url="https://projscope.com/"
@@ -12,7 +12,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'hicolor-icon-theme'
     'nodejs'
 )
@@ -23,11 +23,12 @@ source=(
 )
 sha256sums=('79493043f2ab40b625fe2f8e936cdc5779a5a86e15d458cde4709e92e12881e5'
             '1aa2a3326e734bc2595f638283ed58576d5358bf403f228b48d275b98abe1f3c'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\"|${pkgname%-bin}|g;s|Audio|AudioVideo|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
