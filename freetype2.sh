@@ -9,3 +9,6 @@
 
 # Uncomment and configure below
 #export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
+
+# enable stem darkening to make light thin font on dark background better
+export FREETYPE_PROPERTIES="cff:no-stem-darkening=0 autofitter:no-stem-darkening=0 type1:no-stem-darkening=0 t1cid:no-stem-darkening=0"
