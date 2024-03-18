@@ -1,26 +1,18 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=harec
-pkgver=r1834.f9e17e6
+pkgver=0.24.0
 pkgrel=1
 pkgdesc='The Hare programming language - bootstrapped compiler'
 arch=('x86_64' 'aarch64')
 url='https://harelang.org/'
-license=('GPL3')
-depends=('qbe-git')
-makedepends=('git')
-_commit='f9e17e633845d8d38566b4ea32db0a29ac85d96e'
-source=("git+https://git.sr.ht/~sircmpwn/harec#commit=$_commit")
-b2sums=('SKIP')
-
-pkgver() {
-  cd harec
-
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+license=('GPL-3.0-only')
+depends=('glibc' 'qbe')
+source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~sircmpwn/${pkgname}/archive/${pkgver}.tar.gz")
+b2sums=('651fc34a6053b81c90e405dd53f84c4c9f549baa601dfba1227bdf1d660b461a1f1e20b0e99ac0c2aa8499375ddf37f52c9c05172433359cb777e806701209b3')
 
 prepare() {
-  cd harec
+  cd "${pkgname}-${pkgver}"
 
   # configure prefix directory & architecture
   sed \
@@ -30,19 +22,19 @@ prepare() {
 }
 
 build() {
-  cd harec
+  cd "${pkgname}-${pkgver}"
 
   make
 }
 
 check() {
-  cd harec
+  cd "${pkgname}-${pkgver}"
 
   make check
 }
 
 package() {
-  cd harec
+  cd "${pkgname}-${pkgver}"
 
   make DESTDIR="$pkgdir" install
 }
