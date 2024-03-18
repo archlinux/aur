@@ -1,6 +1,6 @@
 pkgbase = gd-tools-git
 	pkgdesc = A set of helpful programs to enhance goldendict for immersion learning.
-	pkgver = 1.5.r0.gd8e9b83
+	pkgver = 1.6.r0.g01b5adc
 	pkgrel = 1
 	url = https://github.com/Ajatt-Tools/gd-tools
 	arch = x86_64
