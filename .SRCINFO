@@ -1,7 +1,7 @@
 pkgbase = celeste64-git
 	pkgdesc = A game made in under 2 weeks for Celeste's 6th Anniversary (git)
 	pkgver = 1.1.1.r9.e24fcff
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ExOK/Celeste64
 	arch = x86_64
 	license = custom:celeste64
@@ -10,6 +10,7 @@ pkgbase = celeste64-git
 	provides = celeste64
 	conflicts = celeste64
 	options = !strip
+	options = !debug
 	source = celeste64::git+https://github.com/ExOK/Celeste64
 	source = celeste64.desktop
 	sha256sums = SKIP
