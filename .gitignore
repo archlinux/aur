@@ -1,2 +1,4 @@
-push.sh
-*.sw[po]
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
