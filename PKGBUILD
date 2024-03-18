@@ -2,7 +2,7 @@
 
 pkgname=gz-sensors8
 pkgver=8.0.1
-pkgrel=2
+pkgrel=3
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Provides numerous sensor models designed to generate realistic data from simulation environments."
@@ -26,6 +26,8 @@ makedepends=(
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
 sha256sums=('7204c2b9faa215516090e16cdd9227e5832c832c36b43bc9bf6aa4d22edc9191')
+
+_build_dir="${_pkgbase}-${pkgname}_${pkgver}/build"
 
 build() {
   mkdir -p "$srcdir/$_build_dir" && cd $_
