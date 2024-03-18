@@ -2,7 +2,7 @@
 
 _pkgname="galaxybudsclient"
 pkgname="${_pkgname}-git"
-pkgver=r1271.41befe8
+pkgver=r1276.03742b2
 pkgrel=1
 pkgdesc="Unofficial manager for the Samsung Galaxy Buds, Buds+, Buds Live and Buds Pro. Master branch."
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -43,14 +43,14 @@ prepare() {
   fi
 
   # Restore dependencies
-  dotnet restore -r $DOTNETARCH --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
+  dotnet restore -r $DOTNETARCH --configfile "$srcdir/${pkgname}/GalaxyBudsClient/nuget.config" "$srcdir/${pkgname}/GalaxyBudsClient/GalaxyBudsClient.csproj"
 }
 
 build() {
 	cd "$srcdir/${pkgname}"
   
   # Build
-  dotnet publish -r $DOTNETARCH -o bin -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+  dotnet publish -r $DOTNETARCH -o "$srcdir/${pkgname}/bin" -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore "$srcdir/${pkgname}/GalaxyBudsClient/GalaxyBudsClient.csproj"
 
   # Set exectuable bit
   cd bin
