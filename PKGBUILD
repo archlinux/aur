@@ -2,7 +2,7 @@
 
 pkgname=gz-sim8
 pkgver=8.1.0
-pkgrel=1
+pkgrel=2
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Open source robotics simulator"
@@ -52,8 +52,4 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  
-  # Temporary fix for wrong install dir
-  mkdir -p $pkgdir/usr/lib/python3.11/site-packages/
-  mv $pkgdir/gz $pkgdir/usr/lib/python3.11/site-packages/
 }
