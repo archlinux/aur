@@ -1,4 +1,4 @@
 #!/bin/sh
 [ -r conf ] && . ./conf
 
-exec chpst -u bazarr:bazarr"$GROUPS" python /usr/lib/bazarr/bazarr.py --no-update --config /var/lib/bazarr 2>&1
+exec chpst -u bazarr:bazarr"$GRPS" python /usr/lib/bazarr/bazarr.py --no-update --config /var/lib/bazarr 2>&1
