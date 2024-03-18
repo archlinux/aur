@@ -2,11 +2,11 @@
 _pkgname=github-desktop
 _appname=GitHubDesktop
 pkgname="${_pkgname}-zh-bin"
-pkgver=3.3.8_linux2
+pkgver=3.3.10_linux1
 #_zhpkgver="${pkgver%_linux2}"
 _zhpkgver=3.3.11
 _electronversion=26
-pkgrel=3
+pkgrel=1
 pkgdesc="GUI for managing Git and GitHub.Chinese SC Version.Github Desktop 汉化版"
 arch=(
     'aarch64'
@@ -24,7 +24,7 @@ conflicts=(
 )
 depends=(
     'hicolor-icon-theme'
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'libsecret'
     'perl'
     'curl'
@@ -42,9 +42,9 @@ source=(
 sha256sums=('0944b873895994338007d14304b55e621d1077b07ade2af83024d2f101acb3af'
             '891d678cd6aa67c0712f663b5fee690f24d11d360795300814f7bf2eb91ba530'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('179f751dedb67eec9f8ec9717674bc37939ba44237f6b71f9339b090a72fe7f3')
-sha256sums_armv7h=('a645b6b20077585ee93d2ad6b8adc7e7b7be0db66409fa13054c7c1049431efe')
-sha256sums_x86_64=('317b4421512c7791803c6bb13077052c9fccd34f653d19d7ea1fa48f9525486f')
+sha256sums_aarch64=('aec957d95ec694113a650395a7e71f37d469192c3364358fe5b9b6fe44ed853a')
+sha256sums_armv7h=('fd1340f570d06cdb6ef7652a49fc475ced8bbe2511af7f97359c2a7ebba2491f')
+sha256sums_x86_64=('cf3abaa7f0c0426812c38280518aadad02a420f92c2f39144231b3c0edba5a04')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
