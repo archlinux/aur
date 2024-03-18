@@ -4,13 +4,13 @@
 pkgname=python-pixcat-git
 _pkgname=pixcat
 pkgver=0.1.4r25.69e35c0
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI and Python API to display images on a kitty terminal with optional resizing."
 arch=(any)
 url='https://github.com/mirukana/pixcat'
 license=('LGPL3')
 depends=('python>=3.7' 'python-blessed' 'python-pillow' 'python-docopt' 'python-requests' 'python-ansiwrap')
-makedepends=('python-setuptools' 'git')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'git')
 provides=('pixcat')
 conflicts=('pixcat')
 source=("${_pkgname}::git+${url}.git")
@@ -26,11 +26,11 @@ pkgver() {
 build(){
   cd "${srcdir}/${_pkgname}"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 # vim:set ts=2 sw=2 et:
