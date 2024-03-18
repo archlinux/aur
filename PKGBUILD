@@ -1,7 +1,7 @@
 # Maintainer: Gr3q <floyd0122@gmail.com>
 
 pkgname=hoppscotch-app-bin
-pkgver=23.8.3
+pkgver=23.12.6
 pkgrel=1
 pkgdesc="This is a simple desktop version of hoppscotch (👽 Open source API development ecosystem) which build with Tauri. See also https://hoppscotch.io"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -12,12 +12,10 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_armv7h=("https://github.com/liudonghua123/hoppscotch-app/releases/download/${pkgver}/hoppscotch-app-linux-${pkgver}_armhf.deb")
 source_aarch64=("https://github.com/liudonghua123/hoppscotch-app/releases/download/${pkgver}/hoppscotch-app-linux-${pkgver}_arm64.deb")
-source_i686=("https://github.com/liudonghua123/hoppscotch-app/releases/download/${pkgver}/hoppscotch-app-linux-${pkgver}_i386.deb")
 source_x86_64=("https://github.com/liudonghua123/hoppscotch-app/releases/download/${pkgver}/hoppscotch-app-linux-${pkgver}_amd64.deb")
-sha512sums_armv7h=('53f2fa8d1f7dfb26d02f53f00d38d0b89907272457ab475083567b9863f0281684e0eb16c954d969bc173a5400d0f6b26c23763f0dd80a337f69c21a3b71a31a')
-sha512sums_aarch64=('a252d4ca11993ed5a8cf46c7ea55fa0790fb07207f85d7ab71abcbfe1d468728e88e2a4eebbb2515559912dc50012fa1d84ca850a2c57c00ef02618f3410037e')
-sha512sums_i686=('3cc612eb0939c83885181749ad8d4dab051068a084d628bbef970f98acb82138b94ac22008400a2174504d23d9a8b70b45797111833087a6bd47a483ef1a0743')
-sha512sums_x86_64=('7e2627f9e291e0abd498f844a12efcb9546a7ac51a9af3fa57c75b2829065149ac5c126a34ad39cc221a3df957b4d0795d70b74e1905927eb495f6b8cb1ba636')
+sha512sums_armv7h=('16351e2b4597ba395b8f53fd360bd99d95575872abfe53349fd7e6044a22cae3f087848ed67fd91f66b68319d7fcbbad95c8e5908f68628d0267ee0a92019544')
+sha512sums_aarch64=('6c6d529cee39725120c5f5249efe148b0ee53ee8375532c105b301877e543063c9534575ebd9192121f29bf2405a40b71bd6888381841a5e8b409d3178fa8743')
+sha512sums_x86_64=('1edc8f3fe48dec4e1938891c88dad1f2fcd3335852ee6ce2ac38368f517375104f5cf4ebca7abdb9a231098abcf89486cd7d75d16468f7055086d958c8d9bb48')
 
 package(){
 	# Extract package data
