@@ -7,7 +7,6 @@ pkgbase = ppet3-bin
 	license = MIT
 	makedepends = asar
 	depends = electron16-bin
-	depends = hicolor-icon-theme
 	provides = ppet3-3.3.0
 	conflicts = ppet3
 	source = ppet3-3.3.0.deb::https://github.com/zenghongtu/PPet/releases/download/v3.3.0/PPet3-3.3.0.deb

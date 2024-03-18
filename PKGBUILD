@@ -12,7 +12,6 @@ provides=("${pkgname%-bin}-${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}-bin"
-    'hicolor-icon-theme'
 )
 makedepends=(
     'asar'
