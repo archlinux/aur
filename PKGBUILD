@@ -2,7 +2,7 @@
 
 pkgname=voicevox-appimage
 pkgver=0.17.2
-pkgrel=19
+pkgrel=20
 pkgdesc='Offical Frontend for the free VOICEVOX TTS Engine'
 arch=('x86_64')
 license=('LGPLv3' 'custom')
@@ -33,7 +33,7 @@ makedepends=(
 	'p7zip'
 	'appimagetool' # Since 0.14.3
 )
-options=('!strip')
+options=('!strip' '!debug')
 
 prepare() {
     cd "${srcdir}"

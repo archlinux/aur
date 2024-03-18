@@ -1,7 +1,7 @@
 pkgbase = voicevox-appimage
 	pkgdesc = Offical Frontend for the free VOICEVOX TTS Engine
 	pkgver = 0.17.2
-	pkgrel = 19
+	pkgrel = 20
 	url = https://voicevox.hiroshiba.jp/
 	arch = x86_64
 	license = LGPLv3
@@ -13,6 +13,7 @@ pkgbase = voicevox-appimage
 	provides = voicevox
 	conflicts = voicevox
 	options = !strip
+	options = !debug
 	source = https://github.com/VOICEVOX/voicevox/releases/download/0.17.2/VOICEVOX.AppImage.7z.001
 	source = https://github.com/VOICEVOX/voicevox/releases/download/0.17.2/VOICEVOX.AppImage.7z.002
 	source = https://github.com/VOICEVOX/voicevox/releases/download/0.17.2/VOICEVOX.AppImage.7z.003
