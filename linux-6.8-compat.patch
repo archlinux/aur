@@ -1,0 +1,130 @@
+From a24f6e17c8cf75b5f551eb43019d41747c08891f Mon Sep 17 00:00:00 2001
+From: Rob Norris <robn@despairlabs.com>
+Date: Sat, 24 Feb 2024 14:24:42 +1100
+Subject: [PATCH] Linux 6.8 compat: use splice_copy_file_range() for fallback
+
+Linux 6.8 removes generic_copy_file_range(), which had been reduced to a
+simple wrapper around splice_copy_file_range(). Detect that function
+directly and use it if generic_ is not available.
+
+Signed-off-by: Rob Norris <robn@despairlabs.com>
+Sponsored-by: https://despairlabs.com/sponsor/
+---
+ config/kernel-vfs-file_range.m4      | 27 +++++++++++++++++++++++++++
+ config/kernel.m4                     |  2 ++
+ module/os/linux/zfs/zpl_file_range.c | 16 ++++++++++++++--
+ 3 files changed, 43 insertions(+), 2 deletions(-)
+
+diff --git a/config/kernel-vfs-file_range.m4 b/config/kernel-vfs-file_range.m4
+index cc96404d8bbe..8a5cbe2eeeed 100644
+--- a/config/kernel-vfs-file_range.m4
++++ b/config/kernel-vfs-file_range.m4
+@@ -16,6 +16,9 @@ dnl #
+ dnl # 5.3: VFS copy_file_range() expected to do its own fallback,
+ dnl #      generic_copy_file_range() added to support it
+ dnl #
++dnl # 6.8: generic_copy_file_range() removed, replaced by
++dnl #      splice_copy_file_range()
++dnl #
+ AC_DEFUN([ZFS_AC_KERNEL_SRC_VFS_COPY_FILE_RANGE], [
+ 	ZFS_LINUX_TEST_SRC([vfs_copy_file_range], [
+ 		#include <linux/fs.h>
+@@ -72,6 +75,30 @@ AC_DEFUN([ZFS_AC_KERNEL_VFS_GENERIC_COPY_FILE_RANGE], [
+ 	])
+ ])
+ 
++AC_DEFUN([ZFS_AC_KERNEL_SRC_VFS_SPLICE_COPY_FILE_RANGE], [
++	ZFS_LINUX_TEST_SRC([splice_copy_file_range], [
++		#include <linux/splice.h>
++	], [
++		struct file *src_file __attribute__ ((unused)) = NULL;
++		loff_t src_off __attribute__ ((unused)) = 0;
++		struct file *dst_file __attribute__ ((unused)) = NULL;
++		loff_t dst_off __attribute__ ((unused)) = 0;
++		size_t len __attribute__ ((unused)) = 0;
++		splice_copy_file_range(src_file, src_off, dst_file, dst_off,
++		    len);
++	])
++])
++AC_DEFUN([ZFS_AC_KERNEL_VFS_SPLICE_COPY_FILE_RANGE], [
++	AC_MSG_CHECKING([whether splice_copy_file_range() is available])
++	ZFS_LINUX_TEST_RESULT([splice_copy_file_range], [
++		AC_MSG_RESULT(yes)
++		AC_DEFINE(HAVE_VFS_SPLICE_COPY_FILE_RANGE, 1,
++		    [splice_copy_file_range() is available])
++	],[
++		AC_MSG_RESULT(no)
++	])
++])
++
+ AC_DEFUN([ZFS_AC_KERNEL_SRC_VFS_CLONE_FILE_RANGE], [
+ 	ZFS_LINUX_TEST_SRC([vfs_clone_file_range], [
+ 		#include <linux/fs.h>
+diff --git a/config/kernel.m4 b/config/kernel.m4
+index e3f8645774c5..1d0c5a27fc7f 100644
+--- a/config/kernel.m4
++++ b/config/kernel.m4
+@@ -118,6 +118,7 @@ AC_DEFUN([ZFS_AC_KERNEL_TEST_SRC], [
+ 	ZFS_AC_KERNEL_SRC_VFS_IOV_ITER
+ 	ZFS_AC_KERNEL_SRC_VFS_COPY_FILE_RANGE
+ 	ZFS_AC_KERNEL_SRC_VFS_GENERIC_COPY_FILE_RANGE
++	ZFS_AC_KERNEL_SRC_VFS_SPLICE_COPY_FILE_RANGE
+ 	ZFS_AC_KERNEL_SRC_VFS_REMAP_FILE_RANGE
+ 	ZFS_AC_KERNEL_SRC_VFS_CLONE_FILE_RANGE
+ 	ZFS_AC_KERNEL_SRC_VFS_DEDUPE_FILE_RANGE
+@@ -266,6 +267,7 @@ AC_DEFUN([ZFS_AC_KERNEL_TEST_RESULT], [
+ 	ZFS_AC_KERNEL_VFS_IOV_ITER
+ 	ZFS_AC_KERNEL_VFS_COPY_FILE_RANGE
+ 	ZFS_AC_KERNEL_VFS_GENERIC_COPY_FILE_RANGE
++	ZFS_AC_KERNEL_VFS_SPLICE_COPY_FILE_RANGE
+ 	ZFS_AC_KERNEL_VFS_REMAP_FILE_RANGE
+ 	ZFS_AC_KERNEL_VFS_CLONE_FILE_RANGE
+ 	ZFS_AC_KERNEL_VFS_DEDUPE_FILE_RANGE
+diff --git a/module/os/linux/zfs/zpl_file_range.c b/module/os/linux/zfs/zpl_file_range.c
+index 3065d54fa9da..64728fdb1187 100644
+--- a/module/os/linux/zfs/zpl_file_range.c
++++ b/module/os/linux/zfs/zpl_file_range.c
+@@ -26,6 +26,9 @@
+ #include <linux/compat.h>
+ #endif
+ #include <linux/fs.h>
++#ifdef HAVE_VFS_SPLICE_COPY_FILE_RANGE
++#include <linux/splice.h>
++#endif
+ #include <sys/file.h>
+ #include <sys/zfs_znode.h>
+ #include <sys/zfs_vnops.h>
+@@ -102,7 +105,7 @@ zpl_copy_file_range(struct file *src_file, loff_t src_off,
+ 	ret = zpl_clone_file_range_impl(src_file, src_off,
+ 	    dst_file, dst_off, len);
+ 
+-#ifdef HAVE_VFS_GENERIC_COPY_FILE_RANGE
++#if defined(HAVE_VFS_GENERIC_COPY_FILE_RANGE)
+ 	/*
+ 	 * Since Linux 5.3 the filesystem driver is responsible for executing
+ 	 * an appropriate fallback, and a generic fallback function is provided.
+@@ -111,6 +114,15 @@ zpl_copy_file_range(struct file *src_file, loff_t src_off,
+ 	    ret == -EAGAIN)
+ 		ret = generic_copy_file_range(src_file, src_off, dst_file,
+ 		    dst_off, len, flags);
++#elif defined(HAVE_VFS_SPLICE_COPY_FILE_RANGE)
++	/*
++	 * Since 6.8 the fallback function is called splice_copy_file_range
++	 * and has a slightly different signature.
++	 */
++	if (ret == -EOPNOTSUPP || ret == -EINVAL || ret == -EXDEV ||
++	    ret == -EAGAIN)
++		ret = splice_copy_file_range(src_file, src_off, dst_file,
++		    dst_off, len);
+ #else
+ 	/*
+ 	 * Before Linux 5.3 the filesystem has to return -EOPNOTSUPP to signal
+@@ -118,7 +130,7 @@ zpl_copy_file_range(struct file *src_file, loff_t src_off,
+ 	 */
+ 	if (ret == -EINVAL || ret == -EXDEV || ret == -EAGAIN)
+ 		ret = -EOPNOTSUPP;
+-#endif /* HAVE_VFS_GENERIC_COPY_FILE_RANGE */
++#endif /* HAVE_VFS_GENERIC_COPY_FILE_RANGE || HAVE_VFS_SPLICE_COPY_FILE_RANGE */
+ 
+ 	return (ret);
+ }
