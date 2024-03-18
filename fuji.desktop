@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Fuji Mod Loader
+Comment=A free and open source mod loader for Celeste 64: Fragments of the Mountain
+Exec=/opt/fuji/Celeste64-Fuji
+Path=/opt/fuji
+Categories=Game;
+Type=Application
+Icon=/opt/fuji/fuji.png
+Terminal=false
+StartupNotify=false

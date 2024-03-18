@@ -1,0 +1,5 @@
+src/
+pkg/
+*.pkg.*
+
+celeste64-fuji/
