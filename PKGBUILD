@@ -5,9 +5,9 @@
 
 pkgname=hmcl-java-run
 _pkgname=HMCL
-_ver=3.5.5
-_build=237
-_pkgver=$_ver.$_build
+_ver=3.5
+_build=6
+_pkgver=release-$_ver.$_build
 _java_version=17
 _jar_path="/usr/share/java/$pkgname.jar"
 pkgver=$_ver.$_build
@@ -20,12 +20,12 @@ depends=("java-runtime>=$_java_version" "java-openjfx>=$_java_version" 'hicolor-
 makedepends=("java-environment>=$_java_version" 'gradle')
 provides=('hmcl')
 conflicts=('hmcl')
-source=("${_pkgname}-v${_pkgver}.tar.gz::${url}/archive/v${_pkgver}.tar.gz"
+source=("${_pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz"
 		"0001-Target-Java-$_java_version.patch"
 		"0002-Cleanup.patch")
-sha256sums=('910e4128f846636552f34640e05fe5b4e2e1e00213a93aecf6ac253ba9c1aaee'
-            'c395ad622cf81a07d5738f6c20b845b51c900fd1aa0e9b87fd8ea415b8fac646'
-            'f723aebb63bd414bdd86e41c9795686fa0b409ddb339b5bc953b3c9097a76b02')
+sha256sums=('bba9b7d8fa15970043b990a60f5f977aa93e70c0d1e265e4fc409c8efd4533b5'
+            'f98f716e544c74a6f1ab116a1aab2ae1c857f88b9999d009491333fa562cb2d5'
+            '3afebafe4739a92416a6543e7441638df8e8f299058cd76009e136d6b57670d8')
 
 prepare() {
 	for patch in "${source[@]}"; do
