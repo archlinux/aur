@@ -2,7 +2,7 @@
 # Co-Maintainer: Leon Möller <jkhsjdhjs at totally dot rip>
 
 pkgname="nzbhydra2-nojava-bin"
-pkgver=5.3.8
+pkgver=5.3.9
 pkgrel=1
 pkgdesc="Search aggregator for newznab and torznab indexers."
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ sha256sums=('2fae64a1c5979d9f7b508f1e15d0f013b7cca1f2bbbdae56f546f4c362146b68'
             'a9ceeed2b50d55c5e554c0d4c615e855fe4d3889eb118e37908fa04ffb7cb003'
             '8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a'
             'd1c40c40c1ec75d37e8dec0b250179f6a88fedb49ad335ae53625e159a730019')
-sha256sums_x86_64=('ad02bbeca6ad8627f83b6997fc6db547d42c0880bf6337e26b28d7c2a40d5b50')
-sha256sums_aarch64=('52785be7bfcc051b5dc89979aa3bbfbd7af4eeee766eb1b5002fbb9769830261')
+sha256sums_x86_64=('ca313cf6cbf38ede926f34b57c0eefcaef962b861ba33a3dfd6d29c0ef3e3b78')
+sha256sums_aarch64=('8c9f5af2e99473e838f4934da55c4337ed5b5feda851698a9510b95dbbfdda5d')
 
 package() {
     install -D -m 755 "${srcdir}/nzbhydra2.sh" "${pkgdir}/usr/bin/nzbhydra2"
