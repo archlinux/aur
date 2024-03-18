@@ -1,21 +1,21 @@
 # Maintainer: Guilhem "Nim65s" Saurel <guilhem.saurel@laas.fr>
 
-pkgorg='stack-of-tasks'
+_org='stack-of-tasks'
 _pkgname='pinocchio'
 _pkgver=2.6.19
 pkgname="$_pkgname-git"
-pkgver=2.6.19.r6307.bd6b006
+pkgver=2.6.19.r6529.f1b5fc6
 pkgrel=1
 pkgdesc="Dynamic computations using Spatial Algebra"
 arch=('i686' 'x86_64')
-url="https://github.com/$pkgorg/$_pkgname"
-license=('BSD')
-depends=('hpp-fcl' 'eigenpy' 'urdfdom')
-optdepends=('doxygen' 'lua52' 'cppad' 'cppadcodegen')
-makedepends=('cmake' 'eigen' 'git')
+url="https://github.com/$_org/$_pkgname"
+license=('BSD-2-Clause')
+depends=('hpp-fcl' 'eigenpy' 'urdfdom' 'python' 'boost-libs' 'gcc-libs' 'glibc' 'eigen' 'python-numpy')
+optdepends=('lua52' 'cppad' 'cppadcodegen')
+makedepends=('cmake' 'boost' 'doxygen' 'git')
 conflicts=('pinocchio')
 provides=('pinocchio')
-source=("$_pkgname"::"git+https://github.com/$pkgorg/$_pkgname.git")
+source=("$_pkgname"::"git+https://github.com/$_org/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -34,11 +34,11 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DBUILD_WITH_AUTODIFF_SUPPORT="$(pacman -Qs cppad > /dev/null && echo -n ON || echo -n OFF)" \
         -DBUILD_WITH_CODEGEN_SUPPORT="$(pacman -Qs cppadcodegen > /dev/null && echo -n ON || echo -n OFF)" \
-        -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
-        -DGENERATE_PYTHON_STUBS=ON
-    # TODO: stubs require -j1, ref https://github.com/jrl-umi3218/jrl-cmakemodules/issues/600
-    cmake --build build -j 1
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DGENERATE_PYTHON_STUBS=ON \
+        -Wno-dev
+    cmake --build build
 }
 
 check() {
