@@ -1,7 +1,7 @@
 # Maintainer: Pfych <contact at pfy dot ch>
 pkgname=lr2oraja
 pkgver=build6711481041
-pkgrel=2
+pkgrel=3
 pkgdesc="The latest build of beatoraja, but compiled using LR2 judges and gauges."
 arch=('x86_64')
 depends=('liberica-jre-8-full-bin' 'portaudio')
@@ -19,7 +19,7 @@ sha256sums=(
   'ef23b516537b4f52c306fd61ab9c4197192c06b7202b3b27b63481fec1042a26' # skin.zip
   '3754959d5d6f121dbeed3a78dec2b91a26e915ff4ce68fdee4262b89ad150cb9' # bokutachiIR
   'a65d1290d3ee7710f9327c040e6369bf7587eb3609835ed782caaf0ac02d84ed' # libjportaudio.so
-  'a1c1d6ee606d042934ec1ee503a9300d5b225f3c4031be144a3c5bca24f0d042' # beatoraja.sh
+  'fd2638ec66871deec093f736298b5592caadb89b5686648a28e4d082c207bb50' # beatoraja.sh
   '0ec1382690cd847055d1b8e6da36ad6846598b45b25acca5eb5e301a5048da03' # lr2oraja-icon.png
 )
 license=(
@@ -64,7 +64,7 @@ package() {
   echo "Exec=/usr/bin/beatoraja" >> "$desktopEntry"
   echo "Version=$pkgver" >> "$desktopEntry"
   echo "Name=LR2oraja" >> "$desktopEntry"
-  echo "Categories=Games;" >> "$desktopEntry"
+  echo "Categories=Game;" >> "$desktopEntry"
   echo "Icon=lr2oraja-icon" >> "$desktopEntry"
   
   if [ -z "$XDG_CONFIG_HOME" ]; then
