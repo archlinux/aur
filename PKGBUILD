@@ -3,7 +3,7 @@ pkgname=data-works-bin
 _appname=DataWorks
 pkgver=1.0.0
 _electronversion=21
-pkgrel=8
+pkgrel=9
 pkgdesc="A simple data management system intended to be flexible and expandable"
 arch=('x86_64')
 url="https://github.com/alexaib2002/project-dataworks_base"
@@ -11,8 +11,7 @@ license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'hicolor-icon-theme'
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'fuse2'
@@ -22,11 +21,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('90ca960db8eedcf706a490998f12111885a17d408b5016fe40d5628fe85697b0'
-            'f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
