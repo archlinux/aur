@@ -1,11 +1,12 @@
 pkgbase = az-launcher
 	pkgdesc = A simple Minecraft version that offers a common gaming experience
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.az-launcher.nz/
 	arch = x86_64
 	license = unknown
 	options = !strip
+	options = !debug
 	source = https://www.az-launcher.nz/static/launcher/AZ-Launcher_3.2.0-linux64.tar
 	sha256sums = 7abb5a753d8e3077823b020cb6b631c13c222a8436c4f145c6688fb87ea82015
 

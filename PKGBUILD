@@ -6,11 +6,11 @@
 pkgname=az-launcher
 _pkgname=azlauncher
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple Minecraft version that offers a common gaming experience'
 url=https://www.az-launcher.nz/
 arch=(x86_64)
-options=(!strip)
+options=(!strip !debug)
 license=(unknown)
 _folder="AZ-Launcher_${pkgver}-linux64"
 _filename="${_folder}.tar"
@@ -42,7 +42,7 @@ package() {
     # Desktop file
     install -Dm644 \
         "${srcdir}/squashfs-root/${pkgname}.desktop"\
-		"${pkgdir}/usr/share/applications/${pkgname}.desktop"
+        "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     
     # Icons
     install -dm755 "${pkgdir}/usr/share/"
