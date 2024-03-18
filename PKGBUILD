@@ -2,7 +2,7 @@
 pkgname=moose-bin
 pkgver=0.6.2
 _electronversion=9
-pkgrel=1
+pkgrel=2
 pkgdesc="An application to stream, cast and download torrents."
 arch=('x86_64')
 url="https://moose.riteshkr.com/"
@@ -11,11 +11,11 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'hicolor-icon-theme'
 )
 makedepends=(
-    'asar'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
@@ -24,17 +24,21 @@ source=(
 )
 sha256sums=('3db219ca2c04ff538f81df99e485f9ae843e62adf1406b57d108662dc80773f4'
             '85438e003b5df78c417d91e824cdc860f0b8848b076afe44a5d73925ec24ff0c'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun|${pkgname%-bin} %U|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    sed "s|),!a.app.isPackaged|),a.app.isPackaged|g;s|a,a.app.isPackaged|a,!a.app.isPackaged|g" -i "${srcdir}/app.asar.unpacked/app/background.js"
+    sed "s|),!a.app.isPackaged|),a.app.isPackaged|g;s|a,a.app.isPackaged|a,!a.app.isPackaged|g" \
+        -i "${srcdir}/app.asar.unpacked/app/background.js"
+    install -Dm644 "${srcdir}/squashfs-root/resources/app-update.yml" \
+        "${srcdir}/app.asar.unpacked/dev-app-update.yml"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
