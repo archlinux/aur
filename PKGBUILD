@@ -3,7 +3,7 @@ _pkgname=polyglot
 pkgname="${_pkgname}-ai-bin"
 pkgver=0.3.6
 _electronversion=23
-pkgrel=3
+pkgrel=4
 pkgdesc="Based on ChatGPT and Azure artificial intelligence language models as underlying services, aiming to provide an easy-to-use language practice platform for multilingual speaking practice"
 arch=("x86_64")
 url="https://polyglotai.xyz/"
@@ -22,11 +22,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('caa949bfcd271169813269e0a9540586170ea295640989a0d1668fa821b01c46'
-            'f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
