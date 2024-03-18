@@ -6,7 +6,7 @@ pkgbase = uivonim-bin
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = fuse2
-	depends = electron16
+	depends = electron16-bin
 	depends = nodejs
 	depends = neovim
 	provides = uivonim=0.29.0
