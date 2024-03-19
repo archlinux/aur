@@ -1,0 +1,18 @@
+pkgbase = liri-terminal
+	pkgdesc = Terminal for Liri
+	pkgver = 0.2.0.20200620
+	pkgrel = 1
+	url = https://github.com/lirios/terminal
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = liri-cmake-shared
+	makedepends = ninja
+	makedepends = qt5-tools
+	depends = fluid
+	depends = qt5-gsettings
+	replaces = papyros-terminal
+	source = https://github.com/lirios/terminal/archive/1c179a463a22a5a6a04e68c01eceaa5b8d89070e/liri-terminal-1c179a463a22a5a6a04e68c01eceaa5b8d89070e.tar.gz
+	sha256sums = d03baa12bc169a95eb9e60348d421d435ab8d48a805720e6cfdff46fd218a6dc
+
+pkgname = liri-terminal
