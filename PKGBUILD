@@ -1,13 +1,13 @@
 # Maintainer: Benjamin Voisin <benjamin.voisin@ens-rennes.fr>
 pkgname=squirrel-prover-git
-pkgver=git
-pkgrel=1
+pkgver=latest
+pkgrel=2
 pkgdesc="a proof assistant dedicated to cryptographic protocols"
 arch=('x86_64')
 url="https://github.com/squirrel-prover/squirrel-prover.git"
 license=('MIT')
 groups=()
-depends=('ocaml')
+depends=('ocaml' 'grep')
 makedepends=('dune' 'git' 'python3' 'opam')
 source=(${pkgname}::git+https://github.com/squirrel-prover/squirrel-prover.git)
 sha256sums=('SKIP')
@@ -15,9 +15,11 @@ sha256sums=('SKIP')
 prepare() {
   cd "$pkgname"
   opam init -n --bare > /dev/null
-  mkdir -p ./switch
-  opam switch create ./switch/ --empty > /dev/null
-  eval $(opam env --switch=./switch --set-switch)
+  if (( $(opam switch list | grep "$pkgname" -c) == "0" )); then
+    echo "Creating the $pkgname switch..."
+    opam switch create $pkgname --empty > /dev/null
+  fi
+  eval $(opam env --switch=$pkgname --set-switch)
   opam install . -y --deps-only
 }
 
