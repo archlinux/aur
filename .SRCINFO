@@ -1,0 +1,14 @@
+pkgbase = python-poyo
+	pkgdesc = A lightweight YAML Parser for Python
+	pkgver = 0.5.0
+	pkgrel = 7
+	url = https://github.com/hackebrot/poyo
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/poyo/poyo-0.5.0.tar.gz
+	sha512sums = aad4334a2aaf63cafab0ecdbdd6f94e9e3d412e6476d7ac13a4399b4af0f43b1eb910e6a3cc7438e84262bc39413fadbe91674534e1e66f446d738c1328b9905
+
+pkgname = python-poyo
