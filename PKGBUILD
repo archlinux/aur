@@ -2,8 +2,8 @@
 
 pkgname=utc-latex-article
 _latexpkgname=utc-article
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="UTC LaTeX article template"
 url="https://github.com/qaniere/utc-latex"
 arch=("any")
