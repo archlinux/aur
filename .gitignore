@@ -1,4 +1,4 @@
-*.png
-*.zip
-*.tar.zst
-*.7z
+/pkg
+/src
+*.dmg
+*.pkg.tar.zst
