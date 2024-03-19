@@ -1,7 +1,7 @@
 pkgbase = yt-music-player
 	pkgdesc = YouTube Music player that runs in your system tray/menu
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/TBR-Development/YT-Music-Player
 	arch = any
 	license = MIT
@@ -10,11 +10,12 @@ pkgbase = yt-music-player
 	makedepends = yarn
 	makedepends = gendesk
 	makedepends = git
-	depends = electron15
+	depends = electron15-bin
 	conflicts = yt-music-player
+	options = !emptydirs
 	source = yt-music-player.git::git+https://github.com/TBR-Development/YT-Music-Player.git#tag=2.0.0
 	source = yt-music-player.sh
-	sha256sums = SKIP
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = 481e5547c092974a9eaebb51753cd2ef8da9b852b02e504bf8f775e6db0454d1
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = yt-music-player
