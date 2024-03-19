@@ -2,7 +2,7 @@
 # Based on PKGBUILD by Kevin S <aur@eldenring.mozmail.com>
 pkgname=audiobookshelf
 pkgver=v2.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Self-hosted audiobook server for managing and playing audiobooks"
 arch=('any')
 url="https://github.com/advplyr/audiobookshelf"
