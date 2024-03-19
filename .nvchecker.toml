@@ -1,5 +1,3 @@
 [jupyter-nbclassic]
-source = 'github'
-github = 'jupyter/nbclassic'
-use_max_tag = true
-prefix = 'v'
+source = 'pypi'
+pypi = 'nbclassic'
