@@ -17,11 +17,11 @@ package() {
     TEXMFDIST=$(kpsewhich -var-value=TEXMFDIST)
 
     # Install the files to the correct path
-    mkdir -p "${pkgdir}/${TEXMFDIST}/tex/latex/${latexpkgname}"
-    cp -r "${srcdir}/utc-latex-${pkgver}/${latexpkgname}" "${pkgdir}/${TEXMFDIST}/tex/latex/"
+    mkdir -p "${pkgdir}/${TEXMFDIST}/tex/latex/${_latexpkgname}"
+    cp -r "${srcdir}/utc-latex-${pkgver}/${_latexpkgname}" "${pkgdir}/${TEXMFDIST}/tex/latex/"
 
     # Fix folder permissions (TODO: Figure out why ?)
-    chmod -R 755 "${pkgdir}/${TEXMFDIST}/tex/latex/${latexpkgname}"
+    chmod -R 755 "${pkgdir}/${TEXMFDIST}/tex/latex/${_latexpkgname}"
 
     # Install the license
     mkdir -m 755 -p ${pkgdir}/usr/share/licenses/utc-latex/
