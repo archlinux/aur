@@ -2,16 +2,16 @@
 
 _pkgname=vala-panel
 pkgname=${_pkgname}-git
-pkgver=0.5.2
+pkgver=24.03
 pkgrel=1
 pkgdesc="Gtk3 panel for compositing window managers"
 url="https://gitlab.com/vala-panel-project/vala-panel"
 arch=('i686' 'x86_64')
-license=('LGPL3')
+license=('LGPL-3.0-or-later')
 depends=('gtk3' 'libwnck3' 'gtk-layer-shell' 'appmenu-glib-translator')
 makedepends=('meson' 'vala' 'git')
 provides=("vala-panel=${pkgver}")
-conflicts=('vala-panel-sntray' 'vala-panel-sntray-git')
+conflicts=('vala-panel-sntray' 'vala-panel-sntray-git' 'vala-panel')
 optdepends=('vala-panel-appmenu-valapanel: Global Menu'
 			'vala-panel-applets-xembed: Old system tray'
 			'vala-panel-applets-icontasks: Budgie tasklist'
@@ -28,7 +28,7 @@ pkgver() {
 }
 
 build() {
-  meson build "${srcdir}/${_pkgname}" --prefix=/usr --libdir=lib --libexecdir=lib -Dwnck=enabled -Dplatforms=x11,layer-shell
+  meson build "${srcdir}/${_pkgname}" --prefix=/usr --libdir=lib --libexecdir=lib -Dwnck=enabled -Dplatforms=x11,wayland
   meson compile -C build
 }
 
