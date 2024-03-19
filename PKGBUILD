@@ -93,7 +93,7 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-xanmod-bore
 _major=6.7
-pkgver=${_major}.9
+pkgver=${_major}.10
 _branch=6.x
 xanmod=1
 _revision=
@@ -140,9 +140,9 @@ for _patch in ${_patches[@]}; do
 done
 sha256sums=('ef31144a2576d080d8c31698e83ec9f66bf97c677fa2aaf0d5bbb9f3345b1069' # kernel
             'SKIP'                                                             # kernel signature
-            'ffa31e3d22f8bbcb44f99ba72399c7ba09e3387e57ca46cdc31d1b18b2e91903' # xanmod patch
+            '6bc169679e5c93967b18c3a0afae634a799a6796b59218b9885d7463e7f64eb3' # xanmod patch
             '5c84bfe7c1971354cff3f6b3f52bf33e7bbeec22f85d5e7bfde383b54c679d30' # choose-gcc-optimization.sh
-            '8f5b9b525e899290958d3f76ca86955cc61215d4f54b710a06f9f56fb9dde6f1' # 0001-bore.patch
+            '31995f40e2d7478e02be786837fefe423f126f891d24bcacc6ec37b9c6b2394b' # 0001-bore.patch
             '02be008f054a44322a74f0615e8a0d3ad7d6c5bc80182472a9cefbded959ce61' # 0002-glitched-cfs.patch
             '3ef4699107a2552b36350df44927a42a46df42781aaccbe23dd90491273e296d' # 0003-glitched-eevdf-additions.patch
             '47d7ecce973899e2f218ac7b25b3257198a492fd9a38635f10abd67b491c7631' # 0004-o3-optimization.patch
