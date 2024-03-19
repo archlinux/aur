@@ -2,46 +2,33 @@
 # Contributer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=pipewalker
-pkgver=0.9.5
-pkgrel=3
+pkgver=1.0
+pkgrel=1
 pkgdesc="Pieces of a computer network are to be turned, to make all computers connected to the same network"
 arch=('i686' 'x86_64')
-url="http://pipewalker.sourceforge.net/"
+url="https://github.com/artemsen/pipewalker"
+old_url="http://pipewalker.sourceforge.net/" #TODO: create pkg for any missing additional themes
 license=('GPL')
-depends=('mesa' 'sdl' 'desktop-file-utils' 'libpng')
+depends=('mesa' 'sdl2' 'sdl2_image')
+makedepends=('meson' 'ninja')
 install=$pkgname.install
-source=(
-  https://github.com/artemsen/$pkgname/archive/refs/tags/v$pkgver.tar.gz
-  xdg_settings.patch)
-sha256sums=(
-  'f74f3224ddd7abcbbb72fe7ed4f1cd74cd4fe1ad64ab472d491afb3e18b73c42'
-  '5d04552d97e24de56391ebb37af5bded48c5a27410b701a9f6a258c943f7692e')
+source=(https://github.com/artemsen/$pkgname/archive/refs/tags/v$pkgver.tar.gz)
+sha256sums=('24232fdf71c7146f1621c461601b60bd6237d801e6403a5695be4d57419e1a21')
 
 prepare() {
   cd "${srcdir}"/$pkgname-$pkgver
 
-  patch -Np1 -i "${srcdir}/xdg_settings.patch"
-
-  # Update manpage to reference scheme.png install location
-  #  not creating an 'examples' directory for a single file.
-  sed -i 's|examples/||' "extra/${pkgname}.6"
+  meson setup --prefix=/usr --buildtype=release build
 }
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
 
-  autoreconf -f -i
-  ./configure --prefix=/usr
-  make
-  gzip -c "extra/${pkgname}.6" > ${pkgname}.6.gz
+  ninja -C build
 }
 
 package() {
   cd "${srcdir}"/$pkgname-$pkgver
 
-  make DESTDIR="${pkgdir}" install
-
-  install -Dm644 ChangeLog "${pkgdir}"/usr/share/doc/$pkgname/ChangeLog
-  install -Dm644 extra/scheme.png "${pkgdir}"/usr/share/doc/$pkgname/scheme.png
-  install -Dm644 "${pkgname}.6.gz" "${pkgdir}/usr/share/man/man6/${pkgname}.6.gz"
+  DESTDIR="${pkgdir}" ninja -C build install
 }
