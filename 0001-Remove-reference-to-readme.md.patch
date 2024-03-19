@@ -1,0 +1,34 @@
+From 6f1f8aac4e8b5de2d2c486fca4da81d6549f252e Mon Sep 17 00:00:00 2001
+From: Florian Preinstorfer <florian@nblock.org>
+Date: Tue, 19 Mar 2024 19:55:49 +0100
+Subject: [PATCH] Remove reference to readme.md
+
+---
+ setup.py | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 7e2cbcb..7588743 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1,8 +1,5 @@
+ from setuptools import setup, find_packages
+ 
+-with open("Readme.md", "r", encoding="utf-8") as readme_file:
+-    readme = readme_file.read()
+-
+ requirements = [
+     "click>=8.1",
+     "click-aliases>=1",
+@@ -15,8 +12,6 @@ setup(
+     name="vja",
+     author="ce72",
+     description="A simple CLI for Vikunja task manager",
+-    long_description=readme,
+-    long_description_content_type="text/markdown",
+     url="https://gitlab.com/ce72/vja",
+     packages=find_packages(),
+     include_package_data=True,
+-- 
+2.44.0
+
