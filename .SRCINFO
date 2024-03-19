@@ -1,7 +1,7 @@
 pkgbase = music-you-bin
 	pkgdesc = 一个美观简约的Material Design 3 (Material You) 风格网易云音乐播放器pc客户端
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://music-you-next.vercel.app
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -11,6 +11,6 @@ pkgbase = music-you-bin
 	source = music-you-3.0.0.deb::https://github.com/GuMengYu/music-you/releases/download/v3.0.0/music-you_3.0.0_amd64.deb
 	source = music-you.sh
 	sha256sums = 4cef5119c2c1aa50e2268cbdc9bc3f515fad722546e89ad0e4fa466861c61a35
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = music-you-bin
