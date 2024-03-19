@@ -1,0 +1,20 @@
+pkgbase = python-autodocsumm
+	pkgdesc = Extending your autodoc API docs with a summary
+	pkgver = 0.2.12
+	pkgrel = 1
+	url = https://github.com/Chilipp/autodocsumm
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-versioneer
+	depends = python
+	depends = python-docutils
+	depends = python-sphinx
+	source = python-autodocsumm::git+https://github.com/Chilipp/autodocsumm#tag=v0.2.12
+	b2sums = b5c73f152e0766f436937ff486f4bf2d3371325a92c3451d8b82a4186a7b9afdb7eb4f0f5b2186c8884a9b4fd082f2af3065ff85460bc2941ef261f7772f9627
+
+pkgname = python-autodocsumm
