@@ -33,7 +33,7 @@ unset _pkgtype
 ## basic info
 _pkgname="icecat"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=115.8.0
+pkgver=115.9.0
 pkgrel=1
 pkgdesc="GNU version of the Firefox ESR browser"
 license=('MPL-2.0')
@@ -142,7 +142,7 @@ _main_package() {
 
     noextract=("firefox-${pkgver}esr.source.tar.xz")
 
-    _commit=7e2ff1ad7e03d2bfe0b2daf3f25961b06cab8848
+    _commit=d1dab742d12e2ffacae70733b14016287fc46613
     _pkgsrc="$_pkgname-$pkgver"
     _pkgsrc_gnuzilla="gnuzilla-$_commit"
     _pkgext="tar.gz"
@@ -151,8 +151,8 @@ _main_package() {
       "https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz"{,.asc}
     )
     sha256sums+=(
-      'SKIP'
-      'af8086f23efc8492d286671f6035b1a915de6f4ed5c7897e40be0e1cb6b895ea'
+      '3d0bf1af544a195f7a8c1f165bd890dba472ec3d33a074d67db09a499b296e69'
+      'db3b3371c5e6636de73798635531df137b17c5b78bdee03810930b29e8212803'
       'SKIP'
     )
 
@@ -400,11 +400,11 @@ build() {
       _pkgver_prof="$pkgver"
     fi
 
-    # new profile for minor version + 3
+    # new profile for new minor version
     _tmp_old=$(echo "${_pkgver_prof}" | cut -d'-' -f2 | cut -d'.' -f2)
     _tmp_new=$(echo "${pkgver}" | cut -d'-' -f2 | cut -d'.' -f2)
 
-    if [ "${_tmp_new:-0}" -ge "$((_tmp_old + 3))" ] ; then
+    if [ "${_tmp_new:-0}" -gt "${_tmp_old:-0}" ] ; then
       _build_pgo_reuse=false
       _pkgver_prof="$pkgver"
     fi
