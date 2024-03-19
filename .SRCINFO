@@ -1,12 +1,12 @@
 pkgbase = utc-latex-beamer
 	pkgdesc = UTC LaTeX beamer template
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://github.com/qaniere/utc-latex
 	arch = any
 	license = WTFPL
 	depends = texlive-basic
-	source = utc-latex-beamer-1.1.0.tar.gz::https://github.com/qaniere/utc-latex/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = 0b2688308e27aab759c3b3fdb3135c59d33c01a3f7d21054083e49e96effcfcd
+	source = utc-latex-beamer-1.1.1.tar.gz::https://github.com/qaniere/utc-latex/archive/refs/tags/1.1.1.tar.gz
+	sha256sums = c3ec05d9128b8a8162b4d7534f2f7f8688b8698dbe875a1b14b309088c1ab43f
 
 pkgname = utc-latex-beamer
