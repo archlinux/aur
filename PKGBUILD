@@ -7,7 +7,7 @@ pkgver=22
 _build=36
 _hash=830ec9fcccef480bb3e73fb7ecafe059
 _majver="${pkgver%%.*}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Oracle Java'
 arch=('x86_64')
 url='https://www.oracle.com/java/'
@@ -132,12 +132,8 @@ package_jdk() {
     cd "${srcdir}/jdk-${pkgver}"
     local _jvmdir="/usr/lib/jvm/java-${_majver}-${pkgname}"
     
-    install -d -m755 "${pkgdir}/${_jvmdir}"
-    install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
-    
     # bin
-    cp -a bin "${pkgdir}/${_jvmdir}"
-    rm "${pkgdir}/${_jvmdir}/bin/"{java,jfr,jrunscript,keytool,rmiregistry,jwebserver}
+    install -D -m755 bin/* -t "${pkgdir}/${_jvmdir}/bin"
     
     # libs
     install -D -m644 lib/ct.sym       -t "${pkgdir}/${_jvmdir}/lib"
@@ -162,12 +158,6 @@ package_jdk() {
     do
         install -D -m644 "$_file" "${pkgdir}/usr/share/${_file%.1}-jdk${_majver}.1"
     done < <(find man/man1 -type f -print0)
-    rm "${pkgdir}/usr/share/man/man1/"{java,jfr,jrunscript,keytool,rmiregistry}-jdk"${_majver}".1
-    
-    # legal/licenses
-    cp -a legal/* "${pkgdir}/usr/share/licenses/${pkgname}"
-    ln -s "$pkgname" "${pkgdir}/usr/share/licenses/java-${pkgname}"
-    install -D -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_jdk-doc() {
