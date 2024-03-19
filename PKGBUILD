@@ -35,12 +35,12 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LORD-MicroStrain/micros
 sha256sums=('8b9ebb1073dee8cc3d1062390aa3809ca9138b0d014b83bc3ec3feb7de392929')
 
 prepare() {
-    cd ${_dir}
+    cd ${srcdir}/${_dir}
     if [ -d microstrain_inertial_msgs_common ]; then
         rm -rf microstrain_inertial_msgs_common
     fi
     git clone --recursive https://github.com/LORD-MicroStrain/microstrain_inertial_msgs_common
-    cd microstrain_inertial_msgs_common
+    cd ${srcdir}/microstrain_inertial_msgs_common
     git checkout ${_msgs_common_commit}
 }
 
