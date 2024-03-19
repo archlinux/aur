@@ -12,7 +12,7 @@ depends=('nodejs')
 makedepends=('git' 'npm')
 options=('!emptydirs')
 source=("git+https://github.com/htmlhint/HTMLHint.git#tag=v$pkgver")
-b2sums=('SKIP')
+b2sums=('60e761e535aab029424984da6a53318542ece739f6941dad027d8ba575aa2e0414613bd0048d91433dd8b2435fa3a83b30bc2d8b3ccead8935061d8f6ad8a58c')
 
 prepare() {
   cd $_name
