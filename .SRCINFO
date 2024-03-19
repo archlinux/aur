@@ -1,7 +1,7 @@
 pkgbase = squirrel-prover-git
 	pkgdesc = a proof assistant dedicated to cryptographic protocols
-	pkgver = git
-	pkgrel = 1
+	pkgver = latest
+	pkgrel = 2
 	url = https://github.com/squirrel-prover/squirrel-prover.git
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = squirrel-prover-git
 	makedepends = python3
 	makedepends = opam
 	depends = ocaml
+	depends = grep
 	source = squirrel-prover-git::git+https://github.com/squirrel-prover/squirrel-prover.git
 	sha256sums = SKIP
 
