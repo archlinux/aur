@@ -1,0 +1,13 @@
+pkgbase = terrabutler
+	pkgdesc = A Python utility to manage IaC via Terraform by dividing code into categories and changing environments
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://docs.montblu.eu/terrabutler/
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = python
+	makedepends = python-pip
+	source = https://github.com/montblu/terrabutler/archive/refs/tags/v1.0.2.zip
+	sha256sums = 770db0539629b5272b6fe82079236727e71fc927841d34955182126aa71650bf
+
+pkgname = terrabutler
