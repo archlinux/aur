@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=flightcore
-pkgver=2.19.2
+pkgver=2.19.3
 pkgrel=1
 pkgdesc="A Northstar installer, updater, and mod-manager"
 url="https://github.com/R2NorthstarTools/FlightCore"
@@ -14,7 +14,7 @@ source=("git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 prepare() {
-# Create a shortcut
+# Shortcut
   echo -e "[Desktop Entry]\n\
 Categories=Development;\n\
 Exec=$pkgname\n\
@@ -30,10 +30,10 @@ Type=Application" > $pkgname.desktop
   sed -i '/"updater": {/,/},/{/"active":/s/true/false/}' tauri.conf.json
   cd ..
 
-# Prioritize IPv4 because some machines have a problem with IPv6
+# Prioritize IPv4 (some machines have a problem with IPv6)
   export NODE_OPTIONS=--dns-result-order=ipv4first
 
-# Install npm dependencies
+# npm dependencies
   export CARGO_HOME="$srcdir/CARGO_HOME"
   npm install
   cd src-vue
@@ -51,12 +51,14 @@ package() {
   install -Dm644 $pkgname.desktop -t "$pkgdir/usr/share/applications"
   cd FlightCore
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm644 README.md docs/DEV-TOOLS.md docs/DEVELOPMENT.md docs/FAQ.md docs/TROUBLESHOOTING.md\
+  cd docs
+  install -Dm644 ../README.md DEV-TOOLS.md DEVELOPMENT.md FAQ.md TROUBLESHOOTING.md\
   -t "$pkgdir/usr/share/doc/$pkgname"
-  cd src-tauri
-  install -Dm644 icons/32x32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
-  install -Dm644 icons/128x128.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
-  install -Dm644 icons/128x128@2x.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
-  install -Dm644 icons/icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
+  cd ../src-tauri
+  _icdr=usr/share/icons/hicolor
+  install -Dm644 icons/32x32.png "$pkgdir/$_icdr/32x32/apps/$pkgname.png"
+  install -Dm644 icons/128x128.png "$pkgdir/$_icdr/128x128/apps/$pkgname.png"
+  install -Dm644 icons/128x128@2x.png "$pkgdir/$_icdr/256x256/apps/$pkgname.png"
+  install -Dm644 icons/icon.png "$pkgdir/$_icdr/512x512/apps/$pkgname.png"
   install -Dm755 target/release/flight-core "$pkgdir/usr/bin/$pkgname"
 }
