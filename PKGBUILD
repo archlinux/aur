@@ -3,7 +3,7 @@
 pkgname=terrabutler
 # https://github.com/montblu/terrabutler/releases
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python utility to manage IaC via Terraform by dividing code into categories and changing environments "
 arch=(x86_64)
 url="https://docs.montblu.eu/terrabutler/"
