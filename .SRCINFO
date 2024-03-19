@@ -1,11 +1,11 @@
 pkgbase = lutris-git
 	pkgdesc = Open Gaming Platform
-	pkgver = 0.5.16.r33.gc1a4b2149
+	pkgver = 0.5.16.r445.g71765daf4
 	pkgrel = 1
 	url = https://lutris.net
 	arch = any
 	license = GPL-3.0-or-later
-	checkdepends = appstream-glib
+	checkdepends = appstream
 	makedepends = git
 	makedepends = meson
 	depends = cabextract

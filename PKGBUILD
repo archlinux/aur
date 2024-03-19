@@ -5,7 +5,7 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.16.r33.gc1a4b2149
+pkgver=0.5.16.r445.g71765daf4
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -39,7 +39,7 @@ depends=(
 )
 makedepends=('git' 'meson')
 checkdepends=(
-  'appstream-glib'
+  'appstream'
 #  'fluidsynth'
 #  'pciutils'
 #  'python-nose-cover3'
