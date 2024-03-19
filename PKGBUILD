@@ -1,12 +1,12 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=seer-gdb
-pkgver=2.3
+pkgver=2.4
 pkgrel=1
 pkgdesc="A gui frontend to gdb"
 arch=('x86_64' 'aarch64')
 url="https://github.com/epasveer/seer.git"
-license=('GPL3')
+license=(GPL-3.0-or-later)
 depends=('gcc-libs' 'gdb' 'glibc' 'hicolor-icon-theme'  'qt6-base' 'qt6-charts' 'qt6-svg')
 makedepends=('git' 'cmake')
 provides=('seergdb')
