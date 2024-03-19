@@ -2,7 +2,7 @@
 
 pkgname=utc-latex-report
 latexpkgname=utc-report
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="UTC LaTeX Report theme"
 url="https://github.com/qaniere/utc-latex"
@@ -10,7 +10,7 @@ arch=("any")
 license=("BSD2")
 depends=("texlive-basic")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/qaniere/utc-latex/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('301caddeb14d382d7568fb789bcb1e34edec6c520d63fdfba33552b37632c556')
+sha256sums=('0b2688308e27aab759c3b3fdb3135c59d33c01a3f7d21054083e49e96effcfcd')
 
 package() {
     # Get the proper installation path
