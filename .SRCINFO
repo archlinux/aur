@@ -1,0 +1,17 @@
+pkgbase = python-git-url-parse
+	pkgdesc = A simple GIT URL parser
+	pkgver = 1.2.2
+	pkgrel = 5
+	url = https://github.com/coala/git-url-parse
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-mock
+	checkdepends = yapf
+	makedepends = python-setuptools
+	depends = python-pbr
+	source = https://files.pythonhosted.org/packages/source/g/git-url-parse/git-url-parse-1.2.2.tar.gz
+	sha512sums = d9a1633fd08b2d4bbd33ff886776906d2981f53178e295fb9907fdb261e863e2b70293d962962355b96ea156e17bb7e224497a4a708c8d9d0cc559d111fa188b
+
+pkgname = python-git-url-parse
