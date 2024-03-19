@@ -1,6 +1,6 @@
 pkgbase = meanalyzer
 	pkgdesc = Intel Engine & Graphics Firmware Analysis Tool
-	pkgver = 1.304.5.r343
+	pkgver = 1.307.0.r345
 	pkgrel = 1
 	url = https://github.com/platomav/MEAnalyzer
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = meanalyzer
 	depends = python-crccheck
 	depends = python-pltable
 	conflicts = meanalyzer-git
-	source = meanalyzer-1.304.5.r343.tar.gz::https://github.com/platomav/MEAnalyzer/archive/v1.304.5-r343.tar.gz
-	sha256sums = 62f528e78774975581fc922f49606e21ad74a41e6a50d91be3a71636ad5367db
+	source = meanalyzer-1.307.0.r345.tar.gz::https://github.com/platomav/MEAnalyzer/archive/v1.307.0-r345.tar.gz
+	sha256sums = 5d52b38489edeb43cd5c27625bb4d946bff8290cac4158e06abd706fa2b035f6
 
 pkgname = meanalyzer
