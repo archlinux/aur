@@ -7,7 +7,7 @@ pkgdesc="A configurable TUI clipboard manager for Unix."
 arch=('any')
 url="https://github.com/savedra1/clipse"
 license=('GPL-3.0-or-later')
-depends=(
+makedepends=(
   'go'
 )
 optdepends=(
