@@ -1,14 +1,27 @@
 pkgbase = libonion-git
 	pkgdesc = lightweight C library that facilitate to create simple HTTP servers
-	pkgver = 0.5.r253.g169fabc
+	pkgver = 0.8.r191.gde8ea93
 	pkgrel = 1
 	url = https://github.com/davidmoreno/onion/
-	arch = i686
 	arch = x86_64
-	license = LGPL
+	license = GPL-2.0-or-later
+	license = Apache-2.0
 	makedepends = git
-	source = git://github.com/davidmoreno/onion
+	makedepends = cmake
+	makedepends = go-md2man
+	depends = mailcap
+	depends = libpng
+	depends = libjpeg-turbo
+	depends = hiredis
+	depends = sqlite
+	depends = libgcrypt
+	depends = pam
+	depends = systemd-libs
+	depends = libxml2
+	depends = gnutls
+	depends = cairo
+	options = !lto
+	source = git+https://github.com/davidmoreno/onion/
 	sha1sums = SKIP
 
 pkgname = libonion-git
-
