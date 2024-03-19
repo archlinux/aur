@@ -1,0 +1,11 @@
+post_upgrade() {
+  cat <<EOF
+
+##### BREAKING CHANGES #####
+
+If you previously used the special argument "_", please update your configuration to use "ALL" instead.
+
+############################
+
+EOF
+}
