@@ -51,14 +51,14 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LORD-MicroStrain/micros
 sha256sums=('8b9ebb1073dee8cc3d1062390aa3809ca9138b0d014b83bc3ec3feb7de392929')
 
 prepare() {
-    cd ${_dir}
+    cd ${srcdir}/${_dir}
     sed -i 's/add_definitions(-std=c++11)/add_definitions(-std=c++14)/g' CMakeLists.txt
     sed -i 's/${COMMON_INC_DIR}\/utils\/clock_bias_monitor.h//g' CMakeLists.txt
     if [ -d microstrain_inertial_driver_common ]; then
         rm -rf microstrain_inertial_driver_common
     fi
     git clone --recursive https://github.com/LORD-MicroStrain/microstrain_inertial_driver_common
-    cd microstrain_inertial_driver_common
+    cd ${srcdir}/${_dir}/microstrain_inertial_driver_common
     git checkout ${_driver_common_commit}
 }
 
