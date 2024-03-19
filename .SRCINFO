@@ -1,6 +1,6 @@
 pkgbase = snapgene
 	pkgdesc = Software for plasmid mapping, primer design, and restriction site analysis
-	pkgver = 7.1.2
+	pkgver = 7.2.0
 	pkgrel = 1
 	url = https://www.snapgene.com/about
 	arch = x86_64
@@ -38,9 +38,9 @@ pkgbase = snapgene
 	depends = libxext
 	depends = openssl-1.1
 	depends = zlib
-	source = https://cdn.snapgene.com/downloads/SnapGene/7.x/7.1/7.1.2/snapgene_7.1.2_linux.rpm
+	source = https://cdn.snapgene.com/downloads/SnapGene/7.x/7.2/7.2.0/snapgene_7.2.0_linux.rpm
 	source = snapgene
-	sha512sums = ebc44b4791f9450cde6a7cbce068f8e81f4a30770d1f1996a60a227a0815354cf8785e04888d3564ea4cf61ab1c201ce9e018dcc58bad6ef13e9cb719bf48526
+	sha512sums = aa6eeb63fe362db47057ba1213b16dbd30bed341f60bcc046bcbd1546ac2a760579a5e7c3c2b7701ab7c928768856db0ca7cd0dc6d53e43c35c05a7f9ddb9b59
 	sha512sums = b6e85e1a3e1ed9d07159b58abf6fecfb76bfd19752b67fbf156baaab696df83aa8b0fcfc49c93263dd56ea2f47926ddc4dac0b4b011f53112426e8545d1197be
 
 pkgname = snapgene
