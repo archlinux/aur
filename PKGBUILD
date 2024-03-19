@@ -2,7 +2,7 @@
 pkgname=zyplayer-bin
 pkgver=3.3.2
 _electronversion=29
-pkgrel=1
+pkgrel=2
 pkgdesc="跨平台桌面端视频资源播放器,免费高颜值"
 arch=(
     "aarch"
@@ -25,13 +25,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('8d85b4dc14dd3118193c1170359f6e78e05d04c90e3e4ed877d8620f7ef3d86c'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 sha256sums_aarch=('125a62bba6bf57bcc89d9a05211b9655441fc9ec84093d1278cf1e61b17dd00c')
 sha256sums_x86_64=('80a44f4fae10bc82e74835baf0b2f104ef3313adeb2bd6e2b4a4778796e02801')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g;s|Audio;Video|AudioVideo|g" \
