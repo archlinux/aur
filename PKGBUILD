@@ -2,6 +2,7 @@
 
 # options
 #: ${_gcc_version:=12}
+: ${_qt_version:=5}
 
 : ${_build_git:=true}
 
@@ -27,8 +28,8 @@ license=(
 # main package
 _main_package() {
   depends=(
-    'qt6-base'
-    'qt6-location'
+    "qt${_qt_version:-5}-base"
+    "qt${_qt_version:-5}-location"
   )
   makedepends=(
     "gcc${_gcc_version:-}"
