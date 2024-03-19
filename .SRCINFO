@@ -1,11 +1,11 @@
 pkgbase = granted-bin
 	pkgdesc = Granted is a command line interface (CLI) tool which simplifies access to cloud roles and allows multiple cloud accounts to be opened in your web browser simultaneously.
-	pkgver = 0.20.7
+	pkgver = 0.21.1
 	pkgrel = 1
 	url = https://granted.dev/
 	arch = x86_64
 	license = MIT
-	source = https://releases.commonfate.io/granted/v0.20.7/granted_0.20.7_linux_x86_64.tar.gz
-	sha256sums = 648ca3d94a6bc94f5f056fc736c3a0191a1f9b93298159b17f7f11a3e07a6a8c
+	source = https://releases.commonfate.io/granted/v0.21.1/granted_0.21.1_linux_x86_64.tar.gz
+	sha256sums = 557ac40447bba4f9c3604f183ee2e0ceaea194e5049ee4d307ae70f4245ad0a5
 
 pkgname = granted-bin
