@@ -1,7 +1,7 @@
 pkgbase = squirrel-prover-git
 	pkgdesc = a proof assistant dedicated to cryptographic protocols
 	pkgver = latest
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/squirrel-prover/squirrel-prover.git
 	arch = x86_64
 	license = MIT

@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Voisin <benjamin.voisin@ens-rennes.fr>
 pkgname=squirrel-prover-git
 pkgver=latest
-pkgrel=2
+pkgrel=3
 pkgdesc="a proof assistant dedicated to cryptographic protocols"
 arch=('x86_64')
 url="https://github.com/squirrel-prover/squirrel-prover.git"
@@ -19,12 +19,14 @@ prepare() {
     echo "Creating the $pkgname switch..."
     opam switch create $pkgname --empty > /dev/null
   fi
+  opam switch $pkgname > /dev/null
   eval $(opam env --switch=$pkgname --set-switch)
-  opam install . -y --deps-only
+  opam install . -y --deps-only --switch=$pkgname
 }
 
 build() {
   cd "$pkgname"
+  eval $(opam env --switch=$pkgname --set-switch)
   make squirrel
 }
 
@@ -40,5 +42,6 @@ package() {
 
 check() {
   cd "$pkgname"
+  eval $(opam env --switch=$pkgname --set-switch)
   make alcotest
 }
