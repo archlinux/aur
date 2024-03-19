@@ -7,14 +7,14 @@
 
 pkgname=wineasio
 pkgver=1.2.0
-pkgrel=5
+pkgrel=6
 
 pkgdesc="ASIO driver implementation for Wine"
 url="https://github.com/wineasio/wineasio"
 arch=('x86_64')
 license=('LGPL')
 
-options=('!debug')
+options=('!lto' '!debug')
 depends=('jack' 'lib32-jack' 'python-pyqt5' 'realtime-privileges' 'wine')
 makedepends=('gcc')
 
@@ -34,10 +34,6 @@ prepare(){
 
 build() {
   cd "$pkgname-$pkgver"
-
-  # fix compiling errors coming from host CFLAGS by removing those
-  CFLAGS=""
-
   make 32
   make 64
 }
