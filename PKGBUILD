@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=6.2.r114236.g95a6788314
+pkgver=6.2.r114270.g53dd31497b
 pkgrel=1
 _svt_hevc_ver='78bcaa7bdefa0dd593149517ce41842d528d596f'
 _svt_vp9_ver='3ecdf8f88037367e175198adda6e43662129af0b'
@@ -101,6 +101,7 @@ depends=(
     'svt-av1'
     'svt-hevc'
     'svt-vp9'
+    'tensorflow'
     'tesseract'
     'twolame'
     'v4l-utils'
@@ -181,7 +182,7 @@ build() {
     
     ./configure \
         --prefix='/usr' \
-        --extra-cflags='-I/opt/cuda/include' \
+        --extra-cflags='-I/opt/cuda/include -I/usr/include/tensorflow' \
         --extra-ldflags='-L/opt/cuda/lib64' \
         --enable-lto \
         \
@@ -265,10 +266,11 @@ build() {
         --enable-libsvtav1 \
         --enable-libsvthevc \
         --enable-libsvtvp9 \
-        --disable-libtensorflow \
+        --enable-libtensorflow \
         --enable-libtesseract \
         --enable-libtheora \
         --disable-libtls \
+        --disable-libtorch \
         --enable-libtwolame \
         --enable-libuavs3d \
         --enable-libv4l2 \
