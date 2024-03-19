@@ -2,7 +2,7 @@
 # Original Packager: necklace <ns@nsz.no>
 
 pkgname=grok-jpeg2000
-pkgver=10.0.7
+pkgver=11.0.0
 pkgrel=1
 pkgdesc="A high performance open source JPEG 2000 codec."
 arch=(x86_64)
@@ -11,7 +11,7 @@ url="https://github.com/GrokImageCompression/grok"
 makedepends=('cmake')
 depends=('zlib' 'libpng' 'libtiff' 'lcms2' 'libjpeg' 'jbigkit')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GrokImageCompression/grok/archive/v$pkgver.tar.gz")
-sha256sums=('6940140e507c9b28e625621233a2e99e2ee4c9f146dc8571bec0656bbf2cce58')
+sha256sums=('ffaa563312071197db5bc2a180d74fea061be5e76fcb9915caf886fe61d4b391')
 
 prepare() {
   cd "${srcdir}"
