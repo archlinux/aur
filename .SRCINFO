@@ -1,15 +1,18 @@
 pkgbase = shiori
-	pkgdesc = Simple bookmark manager
-	pkgver = 1.5.5
+	pkgdesc = Simple bookmark manager built with Go
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/go-shiori/shiori
 	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = MIT
-	makedepends = git
 	makedepends = go
 	depends = glibc
+	provides = shiori
+	conflicts = shiori-bin
 	options = !lto
-	source = shiori::git+https://github.com/go-shiori/shiori.git#commit=e7faeaf2ce79e9588995bac2dd05099d916b929b
+	source = https://github.com/go-shiori/shiori/archive/refs/tags/v1.6.0.tar.gz
 	source = systemd.service
 	source = sysusers.conf
 	source = tmpfiles.conf

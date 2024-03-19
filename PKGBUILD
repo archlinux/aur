@@ -1,18 +1,19 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
-
+# Maintainer: torculus <20175597+torculus@users.noreply.github.com>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 pkgname=shiori
-pkgver=1.5.5
+pkgver=1.6.0
 pkgrel=1
-pkgdesc='Simple bookmark manager'
-arch=('x86_64')
+pkgdesc='Simple bookmark manager built with Go'
+arch=('x86_64' 'armv7h' 'aarch64')
 url='https://github.com/go-shiori/shiori'
 license=('MIT')
+provides=('shiori')
+conflicts=('shiori-bin')
 depends=('glibc')
-makedepends=('git' 'go')
+makedepends=('go')
 options=('!lto')
-_commit='e7faeaf2ce79e9588995bac2dd05099d916b929b'
 source=(
-  "$pkgname::git+$url.git#commit=$_commit"
+  "${url}/archive/refs/tags/v$pkgver.tar.gz"
   'systemd.service'
   'sysusers.conf'
   'tmpfiles.conf'
@@ -26,37 +27,28 @@ b2sums=('SKIP'
         '4a0fe59a05aa1275a3e42bf616ef4f9c0e2ca3639a516f6966ef1689ff20f6e84827ca43ab66e15f31c9628c452a274d5a888f45155100b851fdcecd5c327fe7'
         '1a119411823ab3f6a49ab66c9df7bcad747d594c95aa96918f3f416481ee791533e67ae9789232e7806bd4178d2af18f88c7cc5a1ac06daa3678c7a37adb175a')
 
-pkgver() {
-  cd "$pkgname"
-
-  git describe --tags | sed 's/^v//'
-}
-
 prepare() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
 
   # create directory for build output
-  mkdir build
+  mkdir -p build/
 
   # download dependencies
   go mod download
 }
 
 build() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
 
   # set Go flags
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  go build -v \
-    -trimpath \
-    -buildmode=pie \
-    -mod=readonly \
-    -modcacherw \
-    -ldflags "-linkmode external -extldflags ${LDFLAGS}" \
-    -o build \
-    .
+  export GOOS="linux"
+
+  go build -o build ./...
 
   # shell completions
   for shell in bash fish zsh; do
@@ -65,7 +57,7 @@ build() {
 }
 
 #check() {
-#  cd "$pkgname"
+#  cd "$pkgname-$pkgver"
 #
 #  go test -v ./...
 #}
@@ -76,7 +68,7 @@ package() {
   install -vDm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
   install -vDm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
 
   # binary
   install -vDm755 -t "$pkgdir/usr/bin" build/shiori
