@@ -1,4 +1,5 @@
-# Maintainer: Alpin <alpin 'at' alpindale 'dot' dev>
+# Maintainer: TheBill2001 <tuantran1632001 at gmail dot com>
+# Contributer: Alpin <alpin 'at' alpindale 'dot' dev>
 # Author: LostRuins (concedo)
 pkgname=koboldcpp-cuda
 pkgver=1.61.2
