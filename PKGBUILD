@@ -1,10 +1,10 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 # Maintainer: László Várady <laszlo.varady93@gmail.com>
 # Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=proxygen
-pkgver=2024.03.11.00
+pkgver=2024.04.01.00
 pkgrel=1
 pkgdesc="A collection of C++ HTTP libraries including an easy to use HTTP server"
 arch=(x86_64)
@@ -42,7 +42,7 @@ provides=(
   libproxygenhttpserver.so
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('39d357650d1fdfb3b34c17eb21ccd8e709fb6c2a391ddfc37bb0c5476a111210')
+sha256sums=('75b040c235fee853e8db90075620f56ee4aa69345eea9ab4f80aa35501fe2eff')
 
 _archive="$pkgname-$pkgver"
 
