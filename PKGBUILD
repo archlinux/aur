@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=ttop-bin
-pkgver=1.3.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='System monitoring tool with historical data service, triggers and top-like TUI (binary release)'
 url="https://github.com/inv2004/ttop"
@@ -10,14 +10,16 @@ arch=('x86_64')
 provides=("ttop")
 conflicts=("ttop")
 source=("ttop$pkgver::$url/releases/download/v$pkgver/ttop"
-        "https://github.com/inv2004/ttop/raw/main/LICENSE"
+        "LICENSE$pkgver::$url/raw/v$pkgver/LICENSE"
+        "README$pkgver.md::$url/raw/v$pkgver/README.md"
         "ttop.png::https://user-images.githubusercontent.com/4949069/265200595-6a41ff81-6263-4ea7-a3a8-cf3f44227610.png")
-sha256sums=('d8a5a7e19b9bbe46c3b46945d1bfe247ca43f6d9f0d27cdf9a1259ccb0d1ab32'
+sha256sums=('9e2a587eab147a124e6cdabad1712eddf72888938d7e558462d27c0fa7f3dfb5'
             'd02b237a4b7b295eea657a27274b6d6ed08695807006562d7252398e34f59079'
+            '8cc449a3a484ac2e3d53782c16c5ae3bcaecef6877ef29d5a60fe44124a40605'
             '2ac1c78513b363d4c5817493c878a863552657347c5ddf5dfd2d8e6286cedab6')
 
 prepare() {
-  # Create a shortcut
+# Create a shortcut
   echo -e "[Desktop Entry]
 Name=ttop
 Exec=ttop
@@ -28,7 +30,8 @@ Comment=System monitoring tool with historical data service, triggers and top-li
 }
 
 package() {
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/ttop"
+  install -Dm644 LICENSE$pkgver "$pkgdir/usr/share/licenses/ttop/LICENSE"
+  install -Dm644 README$pkgver.md "$pkgdir/usr/share/doc/ttop/README.md"
   install -Dm644 ttop.png -t "$pkgdir/usr/share/pixmaps"
   install -Dm644 ttop.desktop -t "$pkgdir/usr/share/applications"
   install -Dm755 ttop$pkgver "$pkgdir/usr/bin/ttop"
