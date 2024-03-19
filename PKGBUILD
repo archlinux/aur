@@ -9,10 +9,12 @@
 : ${_build_pgo_reuse:=true}
 : ${_build_pgo_xvfb:=false}
 
+unset _pkgtype
+
 ## basic info
 _pkgname="floorp"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=11.10.5
+pkgver=11.11.0
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -107,7 +109,7 @@ _main_package() {
   )
 
   sha256sums=(
-    'd0cbd91d4a2e490441177476dd3c7d21b173878950d363e3a35dae151134de7d'
+    'b05d551fd0fe0114e79cbd9c2e872d5e8ced8299774a95219d332cd098c8d3ef'
     'SKIP'
     'SKIP'
     '07a63f189beaafe731237afed0aac3e1cfd489e432841bd2a61daa42977fb273'
