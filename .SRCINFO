@@ -1,6 +1,6 @@
 pkgbase = firefox-pwa
 	pkgdesc = A tool to install, manage and use Progressive Web Apps (PWAs) in Mozilla Firefox (native component)
-	pkgver = 2.10.1
+	pkgver = 2.11.0
 	pkgrel = 1
 	url = https://pwasforfirefox.filips.si/
 	install = package.install
@@ -10,8 +10,8 @@ pkgbase = firefox-pwa
 	makedepends = rust
 	makedepends = cargo
 	optdepends = firefox: Support for browser extension
-	source = firefox-pwa-2.10.1.tar.gz::https://github.com/filips123/PWAsForFirefox/archive/refs/tags/v2.10.1.tar.gz
-	sha256sums = f44e4df0e87f31174b6e4c41d06179ead95b315a98c5f41282b211743635769c
-	b2sums = 452db5b9c04597f7d88d6180c8e8acba3b3b72d75355d0dccc6d664973f8c898c00e9431030b985d7795d158cb630ad421971270c07f9900ccd86411d2a4e34d
+	source = firefox-pwa-2.11.0.tar.gz::https://github.com/filips123/PWAsForFirefox/archive/refs/tags/v2.11.0.tar.gz
+	sha256sums = 16a0d92fab9167059dbbdd14213e2a92285deb3c2c4917a29f7a7d1709aee973
+	b2sums = 0c0ea0f259e8c0b1ffe4d487acc56edbf9065f6e33f0036972d71d3ba691e28a5110c747f601a3ac22aedbb2e227c328d847b16c3f290d74403ce740dc193770
 
 pkgname = firefox-pwa
