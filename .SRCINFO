@@ -1,6 +1,7 @@
 pkgbase = belenios
+	pkgdesc = State-of-the-art secure, private and verifiable voting system
 	pkgver = 2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.belenios.org/releases/belenios-2.5.tar.gz
 	arch = x86_64
 	license = GPL

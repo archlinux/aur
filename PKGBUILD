@@ -1,22 +1,14 @@
 # Maintainer: Your Name <benjamin.voisin@ens-rennes.fr>
 pkgname=belenios
 pkgver=2.5
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc="State-of-the-art secure, private and verifiable voting system"
 arch=('x86_64')
 url="https://www.belenios.org/releases/belenios-$pkgver.tar.gz"
 license=('GPL')
 groups=()
 depends=('ocaml' 'opam' 'npm' 'nodejs')
 makedepends=('dune' 'git' 'gmp' 'libsodium' 'pkg-config' 'm4' 'sqlite3' 'openssl' 'curl' 'zip' 'unzip' 'ncurses' 'gd' 'cracklib' 'jq' 'sed')
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 validpgpkeys=('58EB0999C64E897EE894B8037853DA4D49881AD3')
 source=(
   "git+${pkgname}-$pkgver.tar.gz::https://www.belenios.org/releases/belenios-$pkgver.tar.gz"
