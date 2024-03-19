@@ -1,6 +1,6 @@
 pkgbase = lua-luaopus
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/jprjr/luaopus
 	arch = x86_64
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = lua-luaopus
 	makedepends = lua52
 	makedepends = lua53
 	depends = opus
-	source = https://github.com/jprjr/luaopus/releases/download/v1.0.0/luaopus-1.0.0.tar.gz
-	md5sums = 3d20560275bd713da0d0da5736c75c64
+	source = https://github.com/jprjr/luaopus/releases/download/v1.0.1/luaopus-1.0.1.tar.gz
+	md5sums = ffdd7cc7d25caa18e3a90f48ff5591e4
 
 pkgname = lua-luaopus
 	pkgdesc = Lua bindings for libopus
@@ -33,4 +33,3 @@ pkgname = lua53-luaopus
 	pkgdesc = Lua bindings for libopus for Lua 5.3
 	depends = opus
 	depends = lua53
-

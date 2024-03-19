@@ -2,8 +2,8 @@
 
 pkgname=('lua-luaopus' 'lua51-luaopus' 'lua52-luaopus' 'lua53-luaopus')
 _pkgbase='luaopus'
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 arch=('x86_64' 'i686')
 url='https://github.com/jprjr/luaopus'
 license=('MIT')
@@ -11,7 +11,7 @@ depends=('opus')
 makedepends=('cmake' 'lua' 'lua51' 'lua52' 'lua53')
 source=("https://github.com/jprjr/luaopus/releases/download/v${pkgver}/luaopus-${pkgver}.tar.gz")
 
-md5sums=('3d20560275bd713da0d0da5736c75c64')
+md5sums=('ffdd7cc7d25caa18e3a90f48ff5591e4')
 
 build() {
 
