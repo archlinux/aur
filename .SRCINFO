@@ -1,7 +1,7 @@
 pkgbase = efistub
 	pkgdesc = UEFI files to use with UKI
 	pkgver = 255.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
 	makedepends = docbook-xsl

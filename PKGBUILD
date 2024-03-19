@@ -6,7 +6,7 @@ _pkgbase='systemd'
 pkgname='efistub'
 pkgdesc='UEFI files to use with UKI'
 pkgver=255.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 makedepends=('docbook-xsl' 'gperf' 'intltool' 'python-jinja' 'python-lxml' 'python-pyelftools' 'git' 'meson')
@@ -16,101 +16,98 @@ b2sums=('2f6585c951a0ac6554b34faaa3724547bb6932d17f26940b6c657bc789b91e4931014cc
 
 build() {
   local _meson_options=(
-    # internal version comparison is incompatible with pacman:
-    #   249~rc1 < 249 < 249.1 < 249rc
     -Dmode=release
-    -Dblkid=true
-    -Defi=true
-	-Dtpm=true
+    -Dblkid=disabled
+    -Dbootloader=enabled
+	-Dtpm=false
 
     -Dkernel-install=false
-   	-Dukify=false
+   	-Dukify=disabled
 
-	-Dlink-boot-shared=false
+	-Dlink-boot-shared=true
 	-Dlink-udev-shared=false
-    -Drootprefix="/"
 
 	# Disable all optional features
-		-Dacl=false
-		-Dadm-group=false
-		-Danalyze=false
-		-Dapparmor=false
-		-Daudit=false
+	-Dacl=disabled
+	-Dadm-group=false
+	-Danalyze=false
+	-Dapparmor=disabled
+		-Daudit=disabled
 		-Dbacklight=false
-		-Dbinfmt=false
-		-Dbpf-framework=false
-		-Dbzip2=false
-		-Dcoredump=false
-		-Ddbus=false
-		-Delfutils=false
-		-Denvironment-d=false
-		-Dfdisk=false
-		-Dgcrypt=false
-		-Dglib=false
-		-Dgshadow=false
-		-Dgnutls=false
-		-Dhibernate=false
-		-Dhostnamed=false
-		-Didn=false
-		-Dima=false
-		-Dinitrd=false
-		-Dfirstboot=false
-		-Dldconfig=false
-		-Dlibcryptsetup=false
-		-Dlibcurl=false
-		-Dlibfido2=false
-		-Dlibidn=false
-		-Dlibidn2=false
-		-Dlibiptc=false
-		-Dlocaled=false
-		-Dlogind=false
-		-Dlz4=false
-		-Dmachined=false
-		-Dmicrohttpd=false
-		-Dnetworkd=false
-		-Dnscd=false
-		-Dnss-myhostname=false
-		-Dnss-resolve=false
-		-Dnss-systemd=false
-		-Doomd=false
-		-Dopenssl=false
-		-Dp11kit=false
-		-Dpam=false
-		-Dpcre2=false
-		-Dpolkit=false
-		-Dportabled=false
-		-Dpstore=false
-		-Dpwquality=false
-		-Drandomseed=false
-		-Dresolve=false
-		-Drfkill=false
-		-Dseccomp=false
-		-Dsmack=false
-		-Dsysext=false
-		-Dtimedated=false
-		-Dtimesyncd=false
-		-Dqrencode=false
-		-Dquotacheck=false
-		-Duserdb=false
-		-Dutmp=false
-		-Dvconsole=false
-		-Dwheel-group=false
-		-Dxdg-autostart=false
-		-Dxkbcommon=false
-		-Dxz=false
-		-Dzlib=false
-		-Dzstd=false
+	-Dbinfmt=false
+	-Dbpf-framework=disabled
+	-Dbzip2=disabled
+	-Dcoredump=false
+	-Ddbus=disabled
+	-Delfutils=disabled
+	-Denvironment-d=false
+	-Dfdisk=disabled
+	-Dgcrypt=disabled
+	-Dglib=disabled
+	-Dgshadow=false
+	-Dgnutls=disabled
+	-Dhibernate=false
+	-Dhostnamed=false
+	-Didn=false
+	-Dima=false
+	-Dinitrd=false
+	-Dfirstboot=false
+	-Dldconfig=false
+	-Dlibcryptsetup=disabled
+	-Dlibcurl=disabled
+	-Dlibfido2=disabled
+	-Dlibidn=disabled
+	-Dlibidn2=disabled
+	-Dlibiptc=disabled
+	-Dlocaled=false
+	-Dlogind=false
+	-Dlz4=disabled
+	-Dmachined=false
+	-Dmicrohttpd=disabled
+	-Dnetworkd=false
+	-Dnscd=false
+	-Dnss-myhostname=false
+	-Dnss-resolve=disabled
+	-Dnss-systemd=false
+	-Doomd=false
+	-Dopenssl=disabled
+	-Dp11kit=disabled
+	-Dpam=disabled
+	-Dpcre2=disabled
+	-Dpolkit=disabled
+	-Dportabled=false
+	-Dpstore=false
+	-Dpwquality=disabled
+	-Drandomseed=false
+	-Dresolve=false
+	-Drfkill=false
+	-Dseccomp=disabled
+	-Dsmack=false
+	-Dsysext=false
+	-Dtimedated=false
+	-Dtimesyncd=false
+	-Dqrencode=disable
+	-Dquotacheck=false
+	-Duserdb=false
+	-Dutmp=false
+	-Dvconsole=false
+	-Dwheel-group=false
+	-Dxdg-autostart=false
+	-Dxkbcommon=disabled
+	-Dxz=disabled
+	-Dzlib=disabled
+	-Dzstd=disabled
 
     -Dsbat-distro='arch'
     -Dsbat-distro-pkgname="${pkgname}"
     -Dsbat-distro-version="${pkgver}"
   )
 
-  arch-meson "$_pkgbase-stable-$pkgver" build "${_meson_options[@]}"
+  meson setup "$_pkgbase-stable-$pkgver" build "${_meson_options[@]}"
   ninja -C build -- src/boot/efi/linuxx64.efi.stub
 }
 
 package() {
-  install -d "$pkgdir/usr/lib/systemd/boot/efi"
-  cp build/src/boot/efi/linuxx64.{efi,elf}.stub "$pkgdir/usr/lib/systemd/boot/efi"
+  install -d "$pkgdir/usr/lib/gummiboot"
+  cp build/src/boot/efi/linuxx64.{efi,elf}.stub "$pkgdir/usr/lib/gummiboot"
 }
