@@ -1,7 +1,7 @@
 # Maintainer: Vincent Post <cent@spline.de>
 pkgname=xivlauncher
-pkgver=1.0.7
-pkgrel=1
+pkgver=1.0.8
+pkgrel=2
 epoch=1
 pkgdesc="Custom Launcher for Final Fantasy XIV Online (Crossplatform rewrite)"
 arch=('x86_64')
@@ -9,28 +9,29 @@ url='https://github.com/goatcorp/XIVLauncher.Core'
 license=('GPL')
 depends=(
     'aria2'
-    'sdl2' 'lib32-sdl2'
+    'sdl2'
     'libsecret'
-    'attr'                  'lib32-attr'
-    'fontconfig'            'lib32-fontconfig'
-    'lcms2'                 'lib32-lcms2'
-    'libxml2'               'lib32-libxml2'
-    'libxcursor'            'lib32-libxcursor'
-    'libxrandr'             'lib32-libxrandr'
-    'libxdamage'            'lib32-libxdamage'
-    'libxi'                 'lib32-libxi'
-    'gettext'               'lib32-gettext'
-    'freetype2'             'lib32-freetype2'
-    'glu'                   'lib32-glu'
-    'libsm'                 'lib32-libsm'
-    'gcc-libs'              'lib32-gcc-libs'
-    'libpcap'               'lib32-libpcap'
-    'faudio'                'lib32-faudio'
-    'desktop-file-utils'    'jxrlib'
+    'attr'
+    'fontconfig'
+    'lcms2'
+    'libxml2'
+    'libxcursor'
+    'libxrandr'
+    'libxdamage'
+    'libxi'
+    'gettext'
+    'freetype2'
+    'glu'
+    'libsm'
+    'gcc-libs'
+    'libpcap'
+    'faudio'
+    'desktop-file-utils'
+    'jxrlib'
 )
 makedepends=('dotnet-sdk>=6' 'git')
 optdepends=('steam')
-options=('!strip')
+options=('!strip' '!debug')
 source=(
     "XIVLauncher.Core::git+https://github.com/goatcorp/XIVLauncher.Core.git#tag=${pkgver}"
     "XIVLauncher.desktop"
