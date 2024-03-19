@@ -60,7 +60,6 @@ build() {
     -D xorg=false \
     -D xephyr=false \
     -D xwayland=true \
-    -D xwayland_eglstream=true \
     -D xwin=false \
     -D xquartz=false \
     -D glamor=true \
