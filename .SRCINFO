@@ -1,0 +1,12 @@
+pkgbase = mdns-scan
+	pkgdesc = Scan mDNS/DNS-SD published services on the local network
+	pkgver = 0.5
+	pkgrel = 6
+	url = http://0pointer.de/lennart/projects/mdns-scan/
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	source = http://0pointer.de/lennart/projects/mdns-scan/mdns-scan-0.5.tar.gz
+	sha256sums = 95d81a99d7ec68b1eda07473d2797685d4ef38e76c3d2c66039d0991fe164270
+
+pkgname = mdns-scan
