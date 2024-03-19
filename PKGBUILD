@@ -40,7 +40,7 @@ prepare() {
         rm -rf microstrain_inertial_msgs_common
     fi
     git clone --recursive https://github.com/LORD-MicroStrain/microstrain_inertial_msgs_common
-    cd ${srcdir}/microstrain_inertial_msgs_common
+    cd ${srcdir}/${_dir}/microstrain_inertial_msgs_common
     git checkout ${_msgs_common_commit}
 }
 
