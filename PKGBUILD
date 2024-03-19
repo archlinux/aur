@@ -1,5 +1,5 @@
 # Maintainer: Kimiblock Moe
-pkgname=wechat-uos-bwrap
+pkgname=(wechat-uos-bwrap wechat-uos-qt)
 pkgver=1.0.0.238
 pkgrel=1
 epoch=
@@ -94,11 +94,17 @@ md5sums_aarch64=('280d9b202390954c011dbd12e28f892d')
 md5sums_loong64=('280d9b202390954c011dbd12e28f892d')
 
 
-function prepare() {
+function prepare_wechat-uos-bwrap() {
 	tar -xf data.tar.xz ./opt/apps/com.tencent.wechat
 }
 
-function package() {
+function package_wechat-uos-qt() {
+	depends+=(wechat-uos-bwrap)
+	conflicts+=(wechat-universal-bwrap wechat-beta-bwrap)
+	replaces+=(wechat-universal-bwrap wechat-beta-bwrap)
+}
+
+function package_wechat-uos-bwrap() {
 	mkdir -p "${pkgdir}"/opt
 	cp opt/apps/com.tencent.wechat "${pkgdir}"/opt/wechat-uos-bwrap -r
 	install -Dm644 wechat-uos-beta.desktop "${pkgdir}/usr/share/applications/wechat-uos-beta.desktop"
