@@ -1,7 +1,7 @@
 # Original packager: Francois Boulogne <fboulogne at april dot org>
 # Maintainer: Andrea Girotto echo "naqern.tvebggb@tznvy.pbz" | tr '[a-z]' '[n-za-m]'
 pkgname=java-commons-codec
-pkgver=1.16.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc='Implementations of common encoders and decoders such as Base64, Hex, Phonetic and URLs'
 arch=(any)
@@ -11,7 +11,7 @@ depends=('java-runtime>=7')
 source=(http://downloads.apache.org//commons/codec/binaries/commons-codec-${pkgver}-bin.tar.gz)
 # source=("http://mirror.ibcp.fr/pub/apache//commons/codec/binaries/commons-codec-${pkgver}-bin.tar.gz")
 # http://it.apache.contactlab.it//commons/codec/binaries/commons-codec-1.13-bin.tar.gz
-md5sums=('c30d038177d269923a341cee30299503')
+md5sums=('3eb8291d8f6c57eff4f01672acfbc806')
 
 package() {
     install -d -m755 ${pkgdir}/usr/share/java/commons-codec/ || return 1
