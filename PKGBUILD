@@ -1,7 +1,7 @@
 # Maintainer: GreyXor <greyxor@protonmail.com>
 
 pkgname=framework-system-git
-pkgver=r249.7ebfe61
+pkgver=r304.491a587
 pkgrel=1
 arch=('x86_64')
 pkgdesc='Tool to interact with the framework system (git development version)'
@@ -16,7 +16,9 @@ depends=(
 makedepends=(
 	"git"
 	"cargo"
+	"pkg-config"
 )
+OPTIONS=(!lto)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname}::git+https://github.com/FrameworkComputer/framework-system.git")

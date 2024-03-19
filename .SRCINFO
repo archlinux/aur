@@ -1,12 +1,13 @@
 pkgbase = framework-system-git
 	pkgdesc = Tool to interact with the framework system (git development version)
-	pkgver = r249.7ebfe61
+	pkgver = r304.491a587
 	pkgrel = 1
 	url = https://frame.work
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cargo
+	makedepends = pkg-config
 	depends = libusb
 	depends = gcc-libs
 	depends = glibc
