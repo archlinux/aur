@@ -1,6 +1,7 @@
 [Unit]
 Description=Warp-Plus Service
-After=network.target nss-lookup.target
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 WorkingDirectory=/etc/warp-plus

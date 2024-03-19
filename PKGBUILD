@@ -12,7 +12,7 @@ conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+${url}.git"
 				"${pkgname%-git}.service")
 sha256sums=('SKIP'
-            'c15cbcfb161ba08ff882d9f23b90e51a87ca13e2045c64020dd251c49f45dc0d')
+            'c6fff6a05911c091d77d38392b7d9a74b0885a843096d45654c37ff071d0664d')
 pkgver() {
     cd "${pkgname%-git}"
     printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
@@ -29,9 +29,8 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
-
-    go build -ldflags "-compressdwarf=false -linkmode external" .
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    go build .
 }
 
 package() {

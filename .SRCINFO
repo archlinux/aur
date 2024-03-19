@@ -12,6 +12,6 @@ pkgbase = warp-plus-git
 	source = warp-plus::git+https://github.com/bepass-org/warp-plus.git
 	source = warp-plus.service
 	sha256sums = SKIP
-	sha256sums = c15cbcfb161ba08ff882d9f23b90e51a87ca13e2045c64020dd251c49f45dc0d
+	sha256sums = c6fff6a05911c091d77d38392b7d9a74b0885a843096d45654c37ff071d0664d
 
 pkgname = warp-plus-git
