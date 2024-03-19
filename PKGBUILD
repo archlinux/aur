@@ -2,8 +2,8 @@
 # Contributor: yukichan
 
 pkgname=yuki-iptv
-pkgver=0.0.9
-pkgrel=2
+pkgver=0.0.10
+pkgrel=1
 pkgdesc="IPTV player with EPG support (Astroncia IPTV fork)"
 arch=('any')
 url="https://codeberg.org/Ame-chan-angel/yuki-iptv"
@@ -13,7 +13,7 @@ depends=('python' 'qt6-base' 'mpv' 'python-pyqt6' 'python-pillow' 'python-gobjec
          'python-requests' 'python-chardet' 'python-setproctitle' 'python-pydbus' 'python-wand' 'ffmpeg')
 optdepends=('yt-dlp: YouTube channel support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('6ed6589cee217eaa6728907f2263451d396e1cb82e7cec86a422bdcadbbd5f48')
+sha256sums=('6317061270625a71956739fd35e0c4dec5d63c8bd8b2af881cfdcd26e40b9ce0')
 
 prepare(){
   cd "${pkgname}"
