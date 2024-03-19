@@ -1,19 +1,18 @@
-# Maintainer: zan <zan@420blaze.it>
-# Contributor Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: Rustmilian <Rustmilian@proton.me>
 
 pkgname=solid-git
-pkgver=5.240.0_r866.gb865f92
+pkgver=6.1.0_r1000.g45b1cc23
 pkgrel=1
 pkgdesc='Hardware integration and detection'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(qt6-declarative media-player-info udisks2 upower-git)
-makedepends=(extra-cmake-modules-git git qt6-tools doxygen)
+depends=('gcc-libs' 'glibc' 'libimobiledevice' 'libplist' 'media-player-info' 'qt6-base' 'systemd-libs' 'udisks2' 'upower' 'util-linux-libs')
+makedepends=('doxygen' 'extra-cmake-modules' 'qt6-declarative' 'qt6-doc' 'qt6-tools')
 groups=(kf6)
 conflicts=(solid)
 provides=(solid)
-source=("git+https://github.com/KDE/${pkgname%-git}.git")
+source=("git+https://invent.kde.org/frameworks/${pkgname%-git}.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -24,9 +23,11 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
-    -DQT_MAJOR_VERSION=6 \
     -DBUILD_TESTING=OFF \
-    -DBUILD_QCH=ON
+    -DBUILD_QCH=ON \
+    -DWITH_NEW_POWER_ASYNC_API=ON \
+    -DWITH_NEW_POWER_ASYNC_FREEDESKTOP=ON \
+    -DWITH_NEW_SOLID_JOB=ON # https://bugs.archlinux.org/task/64093
   cmake --build build
 }
 
