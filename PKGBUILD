@@ -10,6 +10,7 @@ license=('proprietary')
 groups=()
 
 depends=(
+	"zenity"
 	"nss"
 	"bubblewrap"
 	"xcb-util-renderutil"
@@ -84,19 +85,14 @@ source_loong64=(
 	wechat-loong64-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_1.0.0.238_arm64.deb"
 )
 
-md5sums=('266ac6d045cc5a7931a83bc11ee65180'
-         '65e149fb82392df02d587c19a1a97f78'
+md5sums=('77b5e62a5b1b9e3f290b6a9f8d157449'
+         '424bba66915fcfc40a234260691136e6'
          '600e74549ce2258c045d5c2f7689ea63'
          'e49130d3e6185335db9a60f31d4b7429'
          '6b159c6e9d21a98925489bc37a9aea43')
 md5sums_x86_64=('aa52e39afd9c16eee7f924093ce4c5b6')
 md5sums_aarch64=('280d9b202390954c011dbd12e28f892d')
 md5sums_loong64=('280d9b202390954c011dbd12e28f892d')
-
-
-function prepare_wechat-uos-bwrap() {
-	tar -xf data.tar.xz ./opt/apps/com.tencent.wechat
-}
 
 function package_wechat-uos-qt() {
 	depends+=(wechat-uos-bwrap)
@@ -105,6 +101,7 @@ function package_wechat-uos-qt() {
 }
 
 function package_wechat-uos-bwrap() {
+	tar -xf data.tar.xz ./opt/apps/com.tencent.wechat
 	mkdir -p "${pkgdir}"/opt
 	cp opt/apps/com.tencent.wechat "${pkgdir}"/opt/wechat-uos-bwrap -r
 	install -Dm644 wechat-uos-beta.desktop "${pkgdir}/usr/share/applications/wechat-uos-beta.desktop"
