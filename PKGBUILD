@@ -1,8 +1,8 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=hancho
-pkgver=0.0.4
-pkgrel=2
+pkgver=0.0.5
+pkgrel=1
 pkgdesc='Simple pleasant build system in Python'
 arch=('any')
 url='https://github.com/aappleby/hancho'
@@ -19,7 +19,7 @@ checkdepends=('gtk3')
 optdepends=(
   'gtk3: to build the included meson example'
 )
-options=('!strip')
+options=('!debug' '!strip')
 
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/aappleby/hancho/archive/${pkgver}.tar.gz"
@@ -27,7 +27,7 @@ source=(
 )
 
 sha512sums=(
-  '19678595e4dc5551764cbd2c5f96016ad38d955319aaff798bb15cfac4dffd5cc5cea23fc776924583bbe7f58e375febcc2b0db6c677b1e260c0acf4045ad942'
+  'eef8e2e22c154efc4f1722d8bc50a4865d4151a467a9408811b888d5a0f20f537e7bc3776c8a7cc59a7a62c181b7bb82039432610a04ee2b5ce5cf9f22ea54e9'
   'd16109bc0f50852749a0c75c38b4e00c1facf97ce1e458ebde711a448d10c8047e8e9daef10d4ad16313ba521dea024c8794a055cb9a6a3ac91979669d403d3a'
 )
 
