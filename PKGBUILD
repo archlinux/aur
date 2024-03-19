@@ -3,9 +3,9 @@
 # Contributor: Guillaume ALAUX <guillaume@archlinux.org>
 
 pkgname=swt
-pkgver=4.30
+pkgver=4.31
 pkgrel=1
-_date=202312010110
+_date=202402290520
 pkgdesc='An open source widget toolkit for Java'
 arch=('x86_64')
 url='https://www.eclipse.org/swt/'
@@ -29,7 +29,7 @@ source=(
   "build-swt.xml"
 )
 noextract=("$_archive")
-sha256sums=('a1219d1b4302aaea9af1de2c586069006249156d81e9bd76edc97426142da2e5'
+sha256sums=('f3c68f2a8ddd1b749e813e89c0d5d7c67a11f2721e9ea621f846b317a287b35b'
             'e382ae40d3a437b10a960bab81800a5e372769011ab591de2ce11426d52e6b37')
 
 prepare() {
@@ -58,6 +58,6 @@ package() {
 
   # Shared objects
   install -d "$pkgdir/usr/lib"
-  sed -i 's/\(-fPIC\)/\1 -Wno-error=deprecated-declarations/' build.sh
-  OUTPUT_DIR="$pkgdir/usr/lib" ./build.sh -gtk-all install
+  sed -i 's/\(-fPIC\)/\1 -Wno-error=deprecated-declarations/' library/build.sh
+  OUTPUT_DIR="$pkgdir/usr/lib" ./library/build.sh -gtk-all install
 }
