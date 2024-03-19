@@ -3,15 +3,15 @@
 
 pkgbase=jdk
 pkgname=('jre' 'jdk' 'jdk-doc')
-pkgver=21.0.2
-_build=13
-_hash=f2283984656d49d69e91c558476027ac
+pkgver=22
+_build=36
+_hash=830ec9fcccef480bb3e73fb7ecafe059
 _majver="${pkgver%%.*}"
 pkgrel=1
 pkgdesc='Oracle Java'
 arch=('x86_64')
 url='https://www.oracle.com/java/'
-license=('custom')
+license=('LicenseRef-custom')
 makedepends=('python-html2text')
 source=("https://download.oracle.com/java/${_majver}/archive/jdk-${pkgver}_linux-x64_bin.tar.gz"
         "https://download.oracle.com/otn_software/java/jdk/${pkgver}+${_build}/${_hash}/jdk-${pkgver}_doc-all.zip"
@@ -23,17 +23,41 @@ source=("https://download.oracle.com/java/${_majver}/archive/jdk-${pkgver}_linux
         'java_48.png'
         'LICENSE')
 noextract=("jdk-${pkgver}_doc-all.zip")
-sha256sums=('9f1f4a7f25ef6a73255657c40a6d7714f2d269cf15fb2ff1dc9c0c8b56623a6f'
-            'f1140e90749c7eb2368bb535d4d8b72b86cf946494c71b1f03d2c873596a05d1'
-            '080b638b37434d08474ce95f3e31c006e655a3383c0cd8058d18e492299f9cbb'
-            '1b46cfd7c9082ca6e1aad20ef0fbaf70f2c47cdd6d1e9fb3dbe9ca715524cd77'
-            'e650d244abe8d1541d6d815aba830971635c6911f8a60af58d5188364a73cca1'
-            '63309925367e9325a1cbd88fb525e96645c3e51b774534d5eefcc2e833e39c21'
+sha256sums=('17feecbbbbd8f9a3e27d7dd7689b02ba29ebfa98af59034d26812d0a671ce194'
+            'b1a91fe8a9ae579e01aaea4c4eb041c753d7837d4e255db8b26fb011735aa790'
+            '80c207fe067921acca0624a72c29590dff6c916886f870e83a0c19b036061960'
+            '5249be0129a1c3c1a0f8e5c905e4202f259c82ba1b88e70578125141d74f2515'
+            '0ebbdbdf84f9f59e9296a3257a54424d9da956a5f8e5024f2d7a36b69db465a7'
+            '4914e9d0e7e0da19934cf5151802376d41574d2804a849e4e92f062d57d00672'
             'd27fec1d74f7a3081c3d175ed184d15383666dc7f02cc0f7126f11549879c6ed'
             '7cf8ca096e6d6e425b3434446b0835537d0fc7fe64b3ccba7a55f7bd86c7e176'
             '20becfcac0bdeaa29a76e6966d727f8cc79381354cbd5d530cdec823954df19f')
 
 DLAGENTS=('https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
+
+_jre_deps=('java-runtime-common' 'ca-certificates-utils' 'freetype2' 'libx11' 'libxext'
+           'libxi' 'libxtst' 'libxrender')
+_jre_optdeps=('alsa-lib: for basic sound support'
+              'gtk2: for the Gtk+ 2 look and feel - desktop usage'
+              'gtk3: for the Gtk+ 3 look and feel - desktop usage')
+_jre_provides=("java-runtime=${_majver}" "java-runtime-jdk${_majver}"
+               "jre${_majver}-jdk=${pkgver}-${pkgrel}"
+               "java-runtime-headless=${_majver}" "java-runtime-headless-jdk=${_majver}"
+               "jre${_majver}-jdk-headless=${pkgver}-${pkgrel}")
+_jre_backup=("etc/java-${pkgbase}/management/jmxremote.access"
+             "etc/java-${pkgbase}/management/jmxremote.password.template"
+             "etc/java-${pkgbase}/management/management.properties"
+             "etc/java-${pkgbase}/security/policy/limited/default_US_export.policy"
+             "etc/java-${pkgbase}/security/policy/limited/default_local.policy"
+             "etc/java-${pkgbase}/security/policy/limited/exempt_local.policy"
+             "etc/java-${pkgbase}/security/policy/unlimited/default_US_export.policy"
+             "etc/java-${pkgbase}/security/policy/unlimited/default_local.policy"
+             "etc/java-${pkgbase}/security/policy/README.txt"
+             "etc/java-${pkgbase}/security/java.policy"
+             "etc/java-${pkgbase}/security/java.security"
+             "etc/java-${pkgbase}/logging.properties"
+             "etc/java-${pkgbase}/net.properties"
+             "etc/java-${pkgbase}/sound.properties")
 
 prepare() {
     mkdir -p "jdk-doc-${pkgver}"
@@ -41,33 +65,7 @@ prepare() {
     html2text "jdk-${_majver}_doc-license.html" > LICENSE-doc
 }
 
-package_jre() {
-    pkgdesc+=' Runtime Environment'
-    depends=('java-runtime-common' 'ca-certificates-utils' 'freetype2' 'libx11' 'libxext'
-             'libxi' 'libxtst' 'libxrender')
-    optdepends=('alsa-lib: for basic sound support'
-                'gtk2: for the Gtk+ 2 look and feel - desktop usage'
-                'gtk3: for the Gtk+ 3 look and feel - desktop usage')
-    provides=("java-runtime=${_majver}" "java-runtime-jdk${_majver}"
-              "jre${_majver}-jdk=${pkgver}-${pkgrel}"
-              "java-runtime-headless=${_majver}" "java-runtime-headless-jdk=${_majver}"
-              "jre${_majver}-jdk-headless="${pkgver}-${pkgrel})
-    backup=("etc/java-${pkgbase}/management/jmxremote.access"
-            "etc/java-${pkgbase}/management/jmxremote.password.template"
-            "etc/java-${pkgbase}/management/management.properties"
-            "etc/java-${pkgbase}/security/policy/limited/default_US_export.policy"
-            "etc/java-${pkgbase}/security/policy/limited/default_local.policy"
-            "etc/java-${pkgbase}/security/policy/limited/exempt_local.policy"
-            "etc/java-${pkgbase}/security/policy/unlimited/default_US_export.policy"
-            "etc/java-${pkgbase}/security/policy/unlimited/default_local.policy"
-            "etc/java-${pkgbase}/security/policy/README.txt"
-            "etc/java-${pkgbase}/security/java.policy"
-            "etc/java-${pkgbase}/security/java.security"
-            "etc/java-${pkgbase}/logging.properties"
-            "etc/java-${pkgbase}/net.properties"
-            "etc/java-${pkgbase}/sound.properties")
-    install=jre.install
-    
+_package_jre() {
     cd "jdk-${pkgver}"
     local _jvmdir="/usr/lib/jvm/java-${_majver}-jdk"
     
@@ -107,15 +105,31 @@ package_jre() {
     install -D -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
+package_jre() {
+    pkgdesc+=' Runtime Environment'
+    depends=("${_jre_deps[@]}")
+    optdepends=("${_jre_optdeps[@]}")
+    provides=("${_jre_provides[@]}")
+    conflicts=('jdk')
+    backup=("${_jre_backup[@]}")
+    install=jre.install
+    
+    _package_jre
+}
+
 package_jdk() {
     pkgdesc+=' Development Kit'
-    depends=('java-environment-common' "jre=${pkgver}-${pkgrel}" 'zlib'
-             'hicolor-icon-theme')
+    depends=('java-environment-common' "${_jre_deps[@]}" 'zlib' 'hicolor-icon-theme')
+    optdepends=("${_jre_optdeps[@]}")
     provides=("java-environment=${_majver}" "java-environment-jdk=${_majver}"
-              "jdk${_majver}-jdk=${pkgver}-${pkgrel}")
+              "jdk${_majver}-jdk=${pkgver}-${pkgrel}" 'jre' "${_jre_provides[@]}")
+    conflicts=('jre')
+    backup=("${_jre_backup[@]}")
     install=jdk.install
     
-    cd "jdk-${pkgver}"
+    _package_jre
+    
+    cd "${srcdir}/jdk-${pkgver}"
     local _jvmdir="/usr/lib/jvm/java-${_majver}-${pkgname}"
     
     install -d -m755 "${pkgdir}/${_jvmdir}"
