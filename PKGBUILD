@@ -2,8 +2,8 @@
 pkgname=miniaturo-git
 _name=miniaturo
 _binname=raw-thumbnailer
-pkgver=r24.44664f2
-pkgrel=2
+pkgver=0.6.0.r0.g84dce0c
+pkgrel=1
 pkgdesc="A raw image thumbnailer written in Rust. Drop-in replacement for raw-thumbnailer."
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/dbrgn/miniaturo"
@@ -11,8 +11,8 @@ license=('GPL3')
 depends=('libopenraw')
 makedepends=('git' 'rust' 'cargo')
 optdepends=('raw-thumbnailer-entry: Thumbnailer configs for Nautilus/Thunar')
-provides=('raw-thumbnailer')
-conflicts=('raw-thumbnailer')
+provides=('raw-thumbnailer' 'miniaturo')
+conflicts=('raw-thumbnailer' 'miniaturo')
 options=(!emptydirs)
 source=('git+https://github.com/dbrgn/miniaturo')
 sha256sums=('SKIP')
@@ -36,7 +36,7 @@ package() {
 
 pkgver() {
   cd "$srcdir/$_name" || exit 1
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 # vim:set ts=2 sw=2 et:
