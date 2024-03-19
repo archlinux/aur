@@ -1,0 +1,23 @@
+pkgbase = mesonlsp
+	pkgdesc = Meson language server
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://github.com/JCWasmx86/mesonlsp
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = nlohmann-json
+	makedepends = ninja
+	depends = curl
+	depends = git
+	depends = libarchive.so
+	depends = libpkgconf.so
+	depends = libuuid.so
+	depends = mercurial
+	depends = patch
+	depends = subversion
+	depends = tree-sitter
+	source = git+https://github.com/JCWasmx86/mesonlsp.git#tag=v4.1.0
+	b2sums = 2e179c119da1a98a31e1a38b9f22e729ca7ec1a1418d8408bd7b053d81bfc8a2b24749cab45b6354d7b34ff09bccc352a2f7ffd8e2bd6f5d72af76f3096c0f53
+
+pkgname = mesonlsp
