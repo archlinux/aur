@@ -1,0 +1,16 @@
+pkgbase = vim-pastie
+	pkgdesc = A Vim plugin that lets you read and create pastes at http://pastie.org/
+	pkgver = 2.0
+	pkgrel = 12
+	url = https://www.vim.org/scripts/script.php?script_id=1624
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	depends = ruby
+	depends = vim-plugin-runtime
+	source = https://www.vim.org/scripts/download_script.php?src_id=10260
+	source = license.txt
+	sha256sums = a0b510431c29e600233c4a7d6a77ad7380d37dcfe862d42811f8258046fba94d
+	sha256sums = 446c67d93c43addf076fe103a71844c2d875d478f82186436567dd221f2652f3
+
+pkgname = vim-pastie
