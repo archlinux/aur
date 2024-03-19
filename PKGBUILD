@@ -2,8 +2,8 @@
 
 _npmname=ezshare
 pkgname=$_npmname
-pkgver=1.9.0
-pkgrel=4
+pkgver=1.10.0
+pkgrel=1
 
 pkgdesc="Easily share files, folders and clipboard over LAN - Like Google Drive but without internet"
 arch=("x86_64")
@@ -14,13 +14,13 @@ depends=("glibc" "nodejs")
 makedepends=("npm" "jq")
 # provides=("$_npmname")
 # conflicts=("$_npmname")
-options=(strip emptydirs zipman)
+# options=(strip emptydirs zipman)
 changelog="changelog.md"
 
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
 	"https://raw.githubusercontent.com/mifi/ezshare/master/LICENSE")
 noextract=("${_npmname}-${pkgver}.tgz")
-b2sums=('a46df8031c223da4158bb0b88003675c87644ccddd0e1725b8e8455da99dab607b1d8c4ddc3cc56efc667d66a9822734bc6c50f3ff5e5fc5d34749fe53a5c6ab'
+b2sums=('67a0ec4b4286865a8e65ef4bc86a4ccaeed1d42c791e483da1c3a42fd1e1b9814f45cfb8a7c5596b5be583ead02d9d086c148fb65c87efbb42c373125b516118'
 	'd4c7472ae3e92a22ca856eb72895a0862af5c283f21cc978ceef69af25f14dcc8e708a26154f697e9e22e4051e7bfa91e958e62aa3b4f6bf8c45f75f02cb6d13')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
