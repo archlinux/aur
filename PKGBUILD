@@ -14,7 +14,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 
 source=("https://github.com/Ovyerus/bandsnatch/archive/v${pkgver}.zip")
-sha256sums=('f0759ed718a924e8bd2a728e3a6003d9c07c67a4b676dee82822a5c90806dac9')
+sha256sums=('7dcafbcc63d273e847938bd42c3218f7bee729745f1808b1365eb5e5dcc04fa2')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
