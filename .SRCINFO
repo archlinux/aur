@@ -1,10 +1,10 @@
 pkgbase = harmonyvpktool
 	pkgdesc = An all new Titanfall VPK unpacker. Over 2x faster than the most popular alternative! (ALPHA pre-release)
 	pkgver = 2.0.0.alpha.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/harmonytf/HarmonyVPKTool
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = cargo
 	makedepends = git
 	makedepends = yarn
