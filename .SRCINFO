@@ -1,0 +1,14 @@
+pkgbase = liri-text
+	pkgdesc = Material Design text editor
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/lirios/text
+	arch = x86_64
+	license = GPL
+	makedepends = liri-cmake-shared
+	makedepends = qt5-tools
+	depends = fluid
+	source = liri-text-0.5.0.tar.gz::https://github.com/lirios/text/archive/v0.5.0.tar.gz
+	sha512sums = a4c374ce79b06fea312e407a9062217be1eec42851a7cdb1a5ea927d7164c33fd9310fcf750f70dc1637b5c8b9b2037327742b32f6c26c58c15bc89b482454d9
+
+pkgname = liri-text
