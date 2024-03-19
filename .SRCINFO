@@ -1,7 +1,7 @@
 pkgbase = walker
 license = MIT
 pkgdesc = extensible and fast wayland application runner
-pkgver = 0.0.26
+pkgver = 0.0.27
 pkgrel = 1
 url = https://github.com/abenz1267/walker
 arch = x86_64
@@ -9,8 +9,8 @@ provides = walker
 conflicts = walker
 makedepends = go
 depends = gtk4-layer-shell
-source = https://github.com/abenz1267/walker/archive/v0.0.26/walker-0.0.26.tar.gz
-sha256sums = 031021d594cb35dbca18280a387a5ff79c955c80274fbd098d25391b4c4454a9
-b2sums = b32f6bc80fb7540a614b9ceb8a07ad9fc1c431f6b2d5c55a79679355c2dce4e9f9aaa45a97cfff0751f91e4227c9d418147d47df438389952f7fbb7c9a5086f8
+source = https://github.com/abenz1267/walker/archive/v0.0.27/walker-0.0.27.tar.gz
+sha256sums = d5586f332d0c8701b47812a30cafbb51a3b90d592fbcd4098bd8a38eb110747d
+b2sums = 21aeaf0439112014ac2a418565fc5fa2cc5ba26513c0618c483c90ee474e86509951eae4a371c513be7d978972a0ac391cb2344ea8d18f9cf59524cfaa94f9e3
 
 pkgname = walker
