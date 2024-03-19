@@ -19,6 +19,7 @@ depends=(
   'libpulse'
   'libseat.so'
   'libxkbcommon'
+  'org.freedesktop.secrets'
   'pop-icon-theme-git'
   'pop-launcher-git'
   'systemd-libs'

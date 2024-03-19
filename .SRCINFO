@@ -26,6 +26,7 @@ pkgbase = cosmic-epoch-git
 	depends = libpulse
 	depends = libseat.so
 	depends = libxkbcommon
+	depends = org.freedesktop.secrets
 	depends = pop-icon-theme-git
 	depends = pop-launcher-git
 	depends = systemd-libs
