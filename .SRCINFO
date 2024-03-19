@@ -1,0 +1,13 @@
+pkgbase = python-yapsy
+	pkgdesc = A simple plugin system for Python applications
+	pkgver = 1.12.2
+	pkgrel = 8
+	url = http://yapsy.sourceforge.net/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/Y/Yapsy/Yapsy-1.12.2.tar.gz
+	sha512sums = 3fdb4de1a6d8f836e22d82354492b99ec9883443c389393d25ea40a08bb0b6ae03db9c947af55237b67764facd4d55a09a36cdba107c8d9202f3700fd55c31fa
+
+pkgname = python-yapsy
