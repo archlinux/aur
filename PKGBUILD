@@ -1,7 +1,7 @@
 # Maintainer: Federico Maria Morrone <aur at morrone dot dev>
 
 pkgname=hyprland-cmake-git
-pkgver=0.36.0.r116.ga958884b
+pkgver=0.37.1.r15.g7283dde8
 pkgrel=1
 pkgdesc="a highly customizable dynamic tiling Wayland compositor that doesn't sacrifice on its looks."
 arch=(x86_64 aarch64)
@@ -57,14 +57,31 @@ optdepends=('cmake: to build and install plugins using hyprpm'
         'meson: to build and install plugins using hyprpm')
 
 provides=("hyprland=${pkgver%%.r*}")
-conflicts=(hyprland hyprland-git)
-source=("git+https://github.com/hyprwm/Hyprland.git")
+conflicts=(hyprland)
+source=(
+        "git+https://github.com/hyprwm/Hyprland.git"
+        "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
+        "git+https://github.com/hyprwm/hyprland-protocols"
+        "git+https://github.com/canihavesomecoffee/udis86"
+        "git+https://github.com/wolfpld/tracy"
+)
 
-b2sums=("SKIP")
+b2sums=(
+        "SKIP"
+        "SKIP"
+        "SKIP"
+        "SKIP"
+        "SKIP"
+)
 
 prepare() {
         cd Hyprland
-        git submodule update --init --recursive
+        git submodule init
+        git config submodule.wlroots.url "$srcdir/wlroots"
+        git config submodule.subprojects/hyprland-protocols.url "$srcdir/hyprland-protocols"
+        git config submodule.subprojects/udis86.url "$srcdir/udis86"
+        git config submodule.subprojects/tracy.url "$srcdir/tracy"
+        git -c protocol.file.allow=always submodule update
         sed -i -e '/^release:/{n;s/-D/-DCMAKE_SKIP_RPATH=ON -D/}' Makefile
 }
 
