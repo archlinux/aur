@@ -3,7 +3,7 @@
 _pkgname=mimic
 _pkgbase=$_pkgname-bpf
 pkgname=($_pkgbase-git $_pkgbase-dkms-git)
-pkgver=0.1.1.r117.17015ab
+pkgver=0.2.1.r2.2805895
 pkgrel=1
 pkgdesc="eBPF UDP -> TCP obfuscator"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -15,7 +15,6 @@ b2sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  # printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   printf "%s" "$(git describe --dirty=-patched --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g' | sed 's/^v//')"
 }
 
@@ -43,6 +42,7 @@ package_mimic-bpf-git() {
 }
 
 package_mimic-bpf-dkms-git() {
+  pkgdesc+=" - DKMS module"
   depends=('dkms')
   provides=($_pkgbase-modules=$pkgver $_pkgbase-dkms)
   conflicts=($_pkgbase-modules=$pkgver $_pkgbase-dkms)

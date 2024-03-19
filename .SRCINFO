@@ -1,6 +1,6 @@
 pkgbase = mimic-bpf-git
 	pkgdesc = eBPF UDP -> TCP obfuscator
-	pkgver = 0.1.1.r117.17015ab
+	pkgver = 0.2.1.r2.2805895
 	pkgrel = 1
 	url = https://github.com/hack3ric/mimic
 	arch = x86_64
@@ -20,13 +20,14 @@ pkgname = mimic-bpf-git
 	depends = gcc-libs
 	depends = libbpf
 	depends = json-c
-	depends = mimic-bpf-modules=0.1.1.r117.17015ab
+	depends = mimic-bpf-modules=0.2.1.r2.2805895
 	provides = mimic-bpf
 	conflicts = mimic-bpf
 
 pkgname = mimic-bpf-dkms-git
+	pkgdesc = eBPF UDP -> TCP obfuscator - DKMS module
 	depends = dkms
-	provides = mimic-bpf-modules=0.1.1.r117.17015ab
+	provides = mimic-bpf-modules=0.2.1.r2.2805895
 	provides = mimic-bpf-dkms
-	conflicts = mimic-bpf-modules=0.1.1.r117.17015ab
+	conflicts = mimic-bpf-modules=0.2.1.r2.2805895
 	conflicts = mimic-bpf-dkms
