@@ -1,0 +1,33 @@
+[Unit]
+Description=A high-performance cache-store from Microsoft Research
+Documentation=https://microsoft.github.io/garnet/docs
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+Restart=on-failure
+RestartSec=5
+ExecStart=/usr/bin/GarnetServer --config-import-path /etc/garnet/garnet-server.conf
+ConfigurationDirectory=garnet
+RuntimeDirectory=garnet-server
+StateDirectory=garnet-server
+LogsDirectory=garnet-server
+
+NoNewPrivileges=yes
+PrivateDevices=yes
+ProtectHome=yes
+LockPersonality=yes
+ProtectProc=invisible
+ProtectControlGroups=yes
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=yes
+RestrictSUIDSGID=yes
+
+[Install]
+WantedBy=multi-user.target

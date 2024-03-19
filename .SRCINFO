@@ -1,0 +1,18 @@
+pkgbase = garnet
+	pkgdesc = A high-performance cache-store from Microsoft Research
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://microsoft.github.io/garnet
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk-8.0
+	depends = dotnet-runtime-8.0
+	backup = etc/garnet/garnet-server.conf
+	source = https://github.com/microsoft/garnet/archive/refs/tags/v1.0.0.tar.gz
+	source = garnet-server.service
+	source = garnet-server.conf
+	b2sums = 0ee08b53820e7fa06591dc19ed04b25f83fedc5b404b80e833f59584c17278e946c1b5b51435eeda8659534b85771d885a523f5e3c7f392e630c2f4908551d23
+	b2sums = b6c13c56736a6114d29f8e929dba82dbcc951e329f225171a5718aa5eb93488d56295d29eb6bf1a72090ff8122305b48745287a594f4e5eac940ecbbc6da16f2
+	b2sums = 6917ef89ca33ba4f3b3019c63ca222bc78afafb67ac68e856391aeab6170cc89d384109d3951677cb9eb970a5012e8d22c753fcb676e527b5bb8f852d4fbbbb5
+
+pkgname = garnet
