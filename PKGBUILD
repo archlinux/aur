@@ -3,7 +3,7 @@ pkgname=electron-pdf-viewer-bin
 _appname=Electron-PDF-Viewer
 pkgver=1.0
 _electronversion=2
-pkgrel=7
+pkgrel=8
 pkgdesc="PDF viewer created using Electron framework and PDF.js"
 arch=(
     'armv7h'
@@ -25,7 +25,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('70fbb7828155cceb6b104bad95d085832731eec32b74683ff34740e2161e2e42'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 sha256sums_armv7h=('47ee8289ac564315538e97c8abf7e4907323f0a54120e3aa5dfdaa5af0adef59')
 sha256sums_i686=('924b9497d979f39df36b594a2d553b5e9c7f233144943ec51c51831518f33a5f')
 sha256sums_x86_64=('5531e0281ebf710ff5f04fb605eb314226c45ff5ecc8888387ab44423b1d9da5')
@@ -33,6 +33,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|Exec=${_appname}|Exec=${pkgname%-bin}|g;s|Icon=${_appname}|Icon=${pkgname%-bin}|g" \
