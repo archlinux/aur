@@ -9,7 +9,9 @@ pkgname="${_pkg}"
 pkgver=0.0.1
 pkgrel=1
 _pkgdesc=(
-  ohoh
+  "code for the paper"
+  "Grokking: Generalization Beyond
+  Overfitting on Small Algorithmic Datasets"
 )
 pkgdesc="${_pkgdesc[*]}"
 arch=(
@@ -34,7 +36,10 @@ depends=(
   "${_py}-torch"
   "${_py}-tqdm"
   "${_py}-scipy"
-  "${_py}-mod"
+  # im going to hheck on archlinux.org/packages
+  # no mention there; now on pypi
+  # mmm
+  "${_py}-mod" # ok this is named differently
   "${_py}-matplotlib"
 )
 optdepends=(

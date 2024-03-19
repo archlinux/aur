@@ -1,5 +1,5 @@
 pkgbase = grok
-	pkgdesc = ohoh
+	pkgdesc = code for the paper Grokking: Generalization Beyond Overfitting on Small Algorithmic Datasets
 	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/openai/grok
