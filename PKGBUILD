@@ -4,14 +4,14 @@
 
 _pkgname=lammps
 pkgname=${_pkgname}-git
-pkgver=37123.0fe6218
+pkgver=38442.b620c52
 pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
 url="https://lammps.sandia.gov/"
 arch=('x86_64')
 license=('GPL')
 depends=('fftw' 'openmpi' 'ffmpeg' 'libpng')
-makedepends=('cmake>=3.1')
+makedepends=('cmake>=3.1' 'git' 'python-pip' 'python-build')
 conflicts=('lammps')
 provides=('lammps')
 source=('git+https://github.com/lammps/lammps.git')
@@ -62,6 +62,7 @@ build() {
       -D PKG_PHONON=on \
       -D PKG_KSPACE=on \
       -D PKG_MANYBODY=yes \
+      -D PKG_PYTHON=yes \
     ../cmake \
     -DPKG_MOLECULE=yes \
     -DLAMMPS_EXCEPTIONS=yes \
@@ -74,20 +75,20 @@ build() {
 
   cmake --build . -j $(($(nproc) - 1))
 
+  # phana
   cd ../tools/phonon/
   cmake -S . -B build
   cmake --build build
+
+  # python lib
+  cd ../../python/
+  python -m build
+
 }
 
 package() {
   cd ${_pkgname}/build
-
-# 安装python库
-  sed -i "s/'--force-reinstall'/'--break-system-packages', '--force-reinstall'/g" ../python/install.py
-  export PYTHONUSERBASE="${pkgdir}/usr"
-
   make DESTDIR="${pkgdir}" install
-  make install-python
 
   mkdir -p "${pkgdir}/usr/share/examples/lammps"
   cp -r "../examples/." "${pkgdir}/usr/share/examples/lammps/"
@@ -98,4 +99,7 @@ package() {
   install -Dm644 "../tools/vim/filetype.vim" "${pkgdir}/usr/share/vim/vimfiles/ftdetect/lammps.vim"
   install -Dm644 "../tools/kate/lammps.xml" "${pkgdir}/usr/share/katepart5/syntax/lammps.xml"
   install -Dm755 "../tools/phonon/build/phana" "${pkgdir}/usr/bin/phana"
+
+  # python lib
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps ../python/dist/*.whl
 }
