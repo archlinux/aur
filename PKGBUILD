@@ -37,7 +37,6 @@ b2sums=('2e179c119da1a98a31e1a38b9f22e729ca7ec1a1418d8408bd7b053d81bfc8a2b24749c
 build() {
   local meson_options=(
     -D benchmarks=false
-    -D tests=false
     -D use_own_tree_sitter=false
   )
 
@@ -46,6 +45,10 @@ build() {
 
   arch-meson $pkgname build "${meson_options[@]}"
   meson compile -C build
+}
+
+check() {
+  meson test -C build
 }
 
 package() {
