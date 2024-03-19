@@ -1,0 +1,13 @@
+pkgbase = crest-bin
+	pkgdesc = A program for the automated exploration of low-energy molecular chemical space
+	pkgver = 2.12
+	pkgrel = 1
+	url = https://github.com/crest-lab/crest
+	arch = x86_64
+	license = LGPL3
+	provides = crest
+	conflicts = crest
+	source = crest-2.12.zip::https://github.com/crest-lab/crest/releases/download/v2.12/crest.zip
+	sha256sums = c55e0f075a6223317b33a5f0fae593ce0ad55c1229c382937b0a0c2dcaf72ef6
+
+pkgname = crest-bin
