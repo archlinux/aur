@@ -1,0 +1,19 @@
+pkgbase = python-kaptan
+	pkgdesc = Configuration manager in your pocket
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/emre/kaptan
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-yaml
+	source = kaptan-0.6.0.tar.gz::https://github.com/emre/kaptan/archive/refs/tags/v0.6.0.tar.gz
+	sha512sums = 079f851c252ca03e8d7edc863e50769c74c270e7b00c3437fac08567d2ebbb160f6d0b946f984cf093163194f9ee77fa1cbdfa536802e89ce1382864cc058f5c
+	b2sums = c87b4e392cdc429d6d0d535b9e926fe16787449962b782a6ee7f5c54a7ac799f7c64059861d5fbc1ae25c97a0df43754476f4848a6e682017baa514bbda9bc5b
+
+pkgname = python-kaptan
