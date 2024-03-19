@@ -3,22 +3,23 @@ pkgname=clickercompanion
 _pkgname="ClickerCompanion"
 pkgver=1.6_expo
 _electronversion=26
-_nodeversion=16
-pkgrel=2
+_nodeversion=20
+pkgrel=3
 pkgdesc="App for the Class Clicker"
 arch=('any')
 url="https://github.com/ClassClick/ClickerCompanion"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-    "electron${_electronversion}"
-    'hicolor-icon-theme'
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'gendesk'
     'nvm'
     'npm'
     'git'
+    'base-devel'
+    'gcc'
 )
 options=(
     '!strip'
@@ -27,8 +28,8 @@ source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver//_/-}"
     "${pkgname}.sh"
 )
-sha256sums=('SKIP'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+sha256sums=('2e009ccfd2441e4b5f02ef158d6be3a2e17c4d66465e7983978321967e025150'
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -39,6 +40,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -f -n -q --categories="Development" --name="${_pkgname}" --exec="${pkgname} %U"
@@ -51,6 +53,14 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
+    sed "s|--publish never|--dir|g" -i package.json
     npm install
     npm run package
 }
