@@ -1,7 +1,7 @@
 pkgbase = storcli
 	pkgdesc = CLI program for LSI MegaRAID cards
 	pkgver = 007.2904.0000.0000
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.broadcom.com/
 	arch = x86_64
 	arch = aarch64
