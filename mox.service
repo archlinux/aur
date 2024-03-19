@@ -1,0 +1,53 @@
+[Unit]
+Description=mox mail server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+UMask=007
+LimitNOFILE=65535
+Type=simple
+# Mox starts as root, but drops privileges after binding network addresses.
+WorkingDirectory=/var/mox
+ExecStart=/usr/bin/mox -config /etc/mox/mox.conf serve
+RestartSec=5s
+Restart=always
+ExecStop=/usr/bin/mox -config /etc/mox/mox.conf stop
+User=mox
+
+# Isolate process, reducing attack surface.
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ReadWritePaths=/etc/mox/ /var/mox
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+AmbientCapabilities=
+CapabilityBoundingSet=CAP_SETUID CAP_SETGID CAP_NET_BIND_SERVICE CAP_CHOWN CAP_FSETID CAP_DAC_OVERRIDE CAP_DAC_READ_SEARCH CAP_FOWNER
+NoNewPrivileges=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX AF_NETLINK
+ProtectProc=invisible
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RemoveIPC=yes
+ProtectHostname=yes
+ProtectClock=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+MemoryDenyWriteExecute=yes
+LockPersonality=yes
+DevicePolicy=closed
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+
+# Cannot have RestrictSUIDSGID with setgid directories.
+#RestrictSUIDSGID=yes
+
+# prevents CAP_NET_BIND_SERVICE from working?
+#PrivateUsers=yes
+
+# To check security-related settings:
+# sudo systemd-analyze security mox.service
+
+[Install]
+WantedBy=multi-user.target

@@ -1,16 +1,18 @@
 pkgbase = mox
 	pkgdesc = Modern full-featured open source secure mail server for low-maintenance self-hosted email
 	pkgver = 0.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xmox.nl/
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	backup = etc/mox/mox.config
+	backup = etc/mox/mox.conf
 	source = https://github.com/mjl-/mox/archive/refs/tags/v0.0.10.tar.gz
+	source = mox.service
 	source = mox.tmpfiles
 	source = mox.sysusers
 	sha256sums = 9a3926fda44ba05402623505346016edcaf24a9b49095897711c8e6bbd807035
+	sha256sums = 4b4e4567346b8ad749b05b38f350a125fc00f3d915abdc5e05505d2f7c6060f3
 	sha256sums = ec22b364c8b1e5991793ab42fb7228a0926bfaa85d4930959beb88ff23853e1e
 	sha256sums = 2b717fd42c67545897dce77e7ec614c6842ba5ea070ce519c7efe55e35c8e25d
 
