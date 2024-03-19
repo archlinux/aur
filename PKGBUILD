@@ -21,12 +21,12 @@ options=()
 install=
 changelog=
 noextract=()
-source=("patr-java-profiler-agent.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-agent/${pkgver}/patr-java-profiler-agent-${pkgver}-jar-with-dependencies.jar"
-        "patr-java-profiler-bootstrap.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-bootstrap/${pkgver}/patr-java-profiler-bootstrap-${pkgver}.jar"
-        "patr-java-profiler-server.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-server/${pkgver}/patr-java-profiler-server-${pkgver}.jar"
-        "patr-java-profiler-client.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-client/${pkgver}/patr-java-profiler-client-${pkgver}.jar"
-        "patr-java-profiler-test.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-test/${pkgver}/patr-java-profiler-test-${pkgver}.jar"
-        "patr-java-profiler-start.sh::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler/${pkgver}/patr-java-profiler-${pkgver}.start-script"
+source=("patr-java-profiler-agent-${pkgver}.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-agent/${pkgver}/patr-java-profiler-agent-${pkgver}-jar-with-dependencies.jar"
+        "https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-bootstrap/${pkgver}/patr-java-profiler-bootstrap-${pkgver}.jar"
+        "https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-server/${pkgver}/patr-java-profiler-server-${pkgver}.jar"
+        "https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-client/${pkgver}/patr-java-profiler-client-${pkgver}.jar"
+        "https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-test/${pkgver}/patr-java-profiler-test-${pkgver}.jar"
+        "patr-java-profiler-start-${pkgver}.sh::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler/${pkgver}/patr-java-profiler-${pkgver}.start-script"
         )
 md5sums=('e6b77e1d61b5bcffb8d5d328521883b7'
          '38c0be0018ca6dbe513836591c1ed503'
@@ -42,15 +42,15 @@ check() {
   export VERSION="${pkgver}"
   export JAVA="java"
 
-  export AGENT_JAR="$srcdir"/patr-java-profiler-agent.jar
-  export BOOTSTRAP_JAR="$srcdir"/patr-java-profiler-bootstrap.jar
-  export SERVER_JAR="$srcdir"/patr-java-profiler-server.jar
-  export CLIENT_JAR="$srcdir"/patr-java-profiler-client.jar
+  export AGENT_JAR="$srcdir"/patr-java-profiler-agent-${pkgver}.jar
+  export BOOTSTRAP_JAR="$srcdir"/patr-java-profiler-bootstrap-${pkgver}.jar
+  export SERVER_JAR="$srcdir"/patr-java-profiler-server-${pkgver}.jar
+  export CLIENT_JAR="$srcdir"/patr-java-profiler-client-${pkgver}.jar
 
   echo 'start test'
-  sh ./patr-java-profiler-start.sh --no-server --no-client --no-defaults -cp "patr-java-profiler-test.jar" de.hechler.patrick.profiler.test.PHPTestMain | true
+  sh ./patr-java-profiler-start-${pkgver}.sh --no-server --no-client --no-defaults -cp "patr-java-profiler-test.jar" de.hechler.patrick.profiler.test.PHPTestMain | true
   echo 'validate test'
-  sh ./patr-java-profiler-start.sh --only-client --validate patr-java-profiler-output.data
+  sh ./patr-java-profiler-start-${pkgver}.sh --only-client --validate patr-java-profiler-output.data
   echo 'finished test'
 }
 
@@ -62,16 +62,16 @@ package() {
   # copy original files
   mkdir -p "$pkgdir"/usr/share/java/patrjprof
   cp -t "$pkgdir"/usr/share/java/patrjprof/ \
-    patr-java-profiler-agent.jar \
-    patr-java-profiler-bootstrap.jar \
-    patr-java-profiler-server.jar \
-    patr-java-profiler-client.jar
+    patr-java-profiler-agent-${pkgver}.jar \
+    patr-java-profiler-bootstrap-${pkgver}.jar \
+    patr-java-profiler-server-${pkgver}.jar \
+    patr-java-profiler-client-${pkgver}.jar
 
   # create script which starts the profiler
   mkdir -p "$pkgdir"/usr/bin
   echo '#!/bin/sh' > "$pkgdir"/usr/bin/patrjprof
   # do not change the SPDX license Identifier
-  head -1 patr-java-profiler-start.sh >> "$pkgdir"/usr/bin/patrjprof
+  head -1 patr-java-profiler-start-${pkgver}.sh >> "$pkgdir"/usr/bin/patrjprof
   echo -n '
 # set the values needed for the script
 AGENT_JAR=/usr/share/java/patrjprof/patr-java-profiler-agent.jar
@@ -81,6 +81,6 @@ CLIENT_JAR=/usr/share/java/patrjprof/patr-java-profiler-client.jar
 
 # helper script
 ' >> "$pkgdir"/usr/bin/patrjprof
-  tail +2 patr-java-profiler-start.sh >> "$pkgdir"/usr/bin/patrjprof
+  tail +2 patr-java-profiler-start-${pkgver}.sh >> "$pkgdir"/usr/bin/patrjprof
   chmod +x "$pkgdir"/usr/bin/patrjprof
 }
