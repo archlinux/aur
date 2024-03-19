@@ -8,12 +8,13 @@
 ## options
 : ${_build_git:=false}
 
+unset _pkgtype
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
 ## basic info
-_pkgname=pure-maps
+_pkgname="pure-maps"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=3.2.1
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Display vector and raster maps, places, routes, etc."
 url="https://github.com/rinigus/pure-maps"
@@ -23,10 +24,14 @@ arch=('x86_64')
 # main package
 _main_package() {
   depends=(
+    kirigami2
     python-lxml
     python-pyotherside
+    qt5-declarative
     qt5-location
+    qt5-multimedia
     qt5-quickcontrols2
+    qt5-sensors
 
     # AUR
     mapbox-gl-qml
@@ -73,7 +78,7 @@ _main_git() {
 
   pkgver() {
     cd "$_pkgsrc"
-    git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
       | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
   }
 }
