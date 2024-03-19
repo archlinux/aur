@@ -1,8 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zyplayer-git
 _pkgname=ZyPlayer
-pkgver=3.3.2.r1.gf842be6
+pkgver=3.3.2.r51.g367fe66
 _electronversion=29
+_nodeversion=20
 pkgrel=1
 pkgdesc="跨平台桌面端视频资源播放器,免费高颜值"
 arch=('any')
@@ -27,16 +28,24 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
 }
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-git}.sh"
+    _ensure_local_nvm
     gendesk -q -f -n --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
@@ -46,7 +55,16 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    sed "s|--linux|-l AppImage|g" -i package.json
+    mkdir -p "${srcdir}/.electron-gyp"
+    touch "${srcdir}/.electron-gyp/.yarnrc"
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
+    sed "s|--linux|build --dir|g" -i package.json
     yarn install --cache-folder "${srcdir}/.yarn_cache"
     yarn run build:linux
 }
