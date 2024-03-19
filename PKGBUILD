@@ -1,7 +1,7 @@
 # Maintainer: Your Name <benjamin.voisin@ens-rennes.fr>
 pkgname=belenios
 pkgver=2.5
-pkgrel=3
+pkgrel=4
 pkgdesc="State-of-the-art secure, private and verifiable voting system"
 arch=('x86_64')
 url="https://gitlab.inria.fr/belenios/belenios.git"
@@ -28,12 +28,13 @@ prepare() {
   fi
   opam switch $pkgname
   eval $(opam env --switch=$pkgname --set-switch)
-  opam switch set-invariant ocaml-base-compiler=4.14.1 > /dev/null
-  opam install --yes base64 hex dune atdgen zarith cryptokit calendar cmdliner sqlite3 csv ocsipersist-sqlite eliom gettext-camomile ocamlnet
+  opam switch set-invariant ocaml-base-compiler=4.14.1 --switch=$pkgname > /dev/null
+  opam install --yes --switch=$pkgname base64 hex dune atdgen zarith cryptokit calendar cmdliner sqlite3 csv ocsipersist-sqlite eliom gettext-camomile ocamlnet
 }
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+  eval $(opam env --switch=$pkgname --set-switch)
   make
   sed -i "s/nodejs/node/g" frontend/Makefile
   make build-release-server
@@ -46,5 +47,6 @@ package() {
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
+  eval $(opam env --switch=$pkgname --set-switch)
   make check
 }

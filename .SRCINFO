@@ -1,7 +1,7 @@
 pkgbase = belenios
 	pkgdesc = State-of-the-art secure, private and verifiable voting system
 	pkgver = 2.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.inria.fr/belenios/belenios.git
 	arch = x86_64
 	license = GPL
