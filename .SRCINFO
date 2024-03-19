@@ -1,5 +1,5 @@
 pkgbase = utc-latex-article
-	pkgdesc = UTC LaTeX Article theme
+	pkgdesc = UTC LaTeX article template
 	pkgver = 1.1.0
 	pkgrel = 2
 	url = https://github.com/qaniere/utc-latex
