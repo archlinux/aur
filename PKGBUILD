@@ -5,7 +5,7 @@ _pkgname=${pkgname}
 _githuborg=${FORK:-$_projectname}
 pkgdesc="Skywire node implementation + deployment services, service discovery, & dmsg utilities. Skycoin.com"
 _pkggopath=github.com/${_githuborg}/${_pkgname}
-pkgver='1.3.19'
+pkgver='1.3.20'
 pkgrel='1'
 _rc=''
 #_rc='-pr1'
@@ -26,11 +26,10 @@ source=("skywire-${_tag_ver}.tar.gz::${url}/archive/refs/tags/${_tag_ver}.tar.gz
 "${_source[@]}")
 #"https://raw.githubusercontent.com/skycoin/skywire/develop/dmsghttp-config.json"
 #"all_servers.json"::"https://dmsgd.skywire.skycoin.com/dmsg-discovery/all_servers")
-sha256sums=('b68d8e54a82215edce8fdaf296be4933754073b7de24fd9701f8cf89497dfb28'
+sha256sums=('5b89560277d6c133fc70680ae0118ba51bd8abb9b94b789f8ae8358ae870fc31'
             'SKIP')
 
 _binaryscript=("skywire-cli" "skywire-visor")
-_appscript=("skychat" "skysocks" "skysocks-client" "vpn-client" "vpn-server")
 
 prepare() {
 # https://wiki.archlinux.org/index.php/Go_package_guidelines
@@ -44,7 +43,6 @@ cd "${srcdir}/go/src/${_pkggopath}/" || exit
 build() {
 export GOPATH="${srcdir}/go"
 export GOBIN="${GOPATH}/bin"
-export _GOAPPS="${GOPATH}/apps"
 export GOOS=linux
 export CGO_ENABLED=1  #default anyways
 #use musl-gcc for static compilation
@@ -70,12 +68,8 @@ cd "${srcdir}"/go/src/${_pkggopath} || exit
 _cmddir="${srcdir}"/go/src/${_pkggopath}/cmd
 #static compilation with 'musl' avoids glibc runtime deps which cause binary to fail if correct glibc / libc6 is not found on the system
 _msg2 "building skywire binary"
-go build -trimpath --ldflags="" --ldflags "${BUILDINFO} -s -w -linkmode external -extldflags '-static' -buildid=" -o $GOBIN/skywire "${_cmddir}"/skywire-deployment/...
+go build -trimpath --ldflags="" --ldflags "${BUILDINFO} -s -w -linkmode external -extldflags '-static' -buildid=" -o $GOBIN/skywire "${_cmddir}"/skywire/...
 _msg2 'creating launcher scripts'
-for _i in "${_appscript[@]}" ; do
-  _msg3 ${_i}
-  echo -e '#!/bin/bash\n/opt/skywire/bin/skywire app '"${_i} "'$@' > "${_GOAPPS}/${_i}"
-done
 echo -e '#!/bin/bash\n/opt/skywire/bin/skywire cli $@' > "${GOBIN}/skywire-cli"
 echo -e '#!/bin/bash\n/opt/skywire/bin/skywire visor $@' > "${GOBIN}/skywire-visor"
 #binary transparency
@@ -113,7 +107,6 @@ _scriptsdir="${_dir}/scripts"
 _msg2 'creating dirs'
 mkdir -p "${_pkgdir}/usr/bin"
 mkdir -p "${_pkgdir}/${_dir}/bin"
-mkdir -p "${_pkgdir}/${_dir}/apps"
 mkdir -p "${_pkgdir}/${_dir}/local/custom"
 mkdir -p "${_pkgdir}/${_dir}/scripts"
 mkdir -p "${_pkgdir}/${_systemddir}"
@@ -124,11 +117,6 @@ install -Dm755 "${GOBIN}/skywire-cli" "${_pkgdir}/${_bin}/"
 ln -rTsf "${_pkgdir}/${_bin}/skywire-cli" "${_pkgdir}/usr/bin/skywire-cli"
 install -Dm755 "${GOBIN}/skywire-visor" "${_pkgdir}/${_bin}/"
 ln -rTsf "${_pkgdir}/${_bin}/skywire-visor" "${_pkgdir}/usr/bin/skywire-visor"
-for _i in "${_appscript[@]}" ; do
-  _msg3 ${_i}
-  install -Dm755 "${_GOAPPS}/${_i}" "${_pkgdir}/${_apps}/${_i}"
-	ln -rTsf "${_pkgdir}/${_apps}/${_i}" "${_pkgdir}/usr/bin/${_i}"
-done
 for _i in "${_script[@]}" ; do
   _msg3 ${_i}
   install -Dm755 "${srcdir}/${_skywirebin}${_i}" "${_pkgdir}/${_scriptsdir}/${_i}"
