@@ -17,7 +17,7 @@ pkgbase = firefox-esr-bin
 	source = https://ftp.mozilla.org/pub/firefox/releases/115.9.0esr/linux-x86_64/en-US/firefox-115.9.0esr.tar.bz2
 	source = firefox-esr.desktop
 	source = firefox-esr-safe.desktop
-	sha512sums = a6729cc511a8cb50ff9f7d8ed48e521469a3674fb9173fb1e803758dfd07d30e437800233bcd5e4509d1ca16a89d83214d0513a18019e4b6372828d77eef6280
+	sha512sums = 9c75b8840a93013f23a4591b39c236c17eca950ae5c7014420387481abf7923d244abb21142c2c1dc6d24a54272aee5bf418520c23975752b9f14d9fc2965a6d
 	sha512sums = c585f6e8ac7abfc96ad4571940b6f0dcc3f7331a18a518b4fe5d19b45e4c2d96c394524ea5c115c8fdd256c9229ea2fabeb1fc04ca7102f1626fd20728aef47d
 	sha512sums = ab2fa2e08c7a65ac0bfe169a4b579e54b038bddabf838cd3df5ab341bd77be7c101092d0123598944d2174ab3a8fbc70dfbd692b2944016efdb7a69216a74428
 
