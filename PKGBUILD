@@ -1,7 +1,7 @@
 # Maintainer: guarapicci <gigabyz20@gmail.com>
 pkgname=omniglass-git
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="touchpad gestures library based on evdev"
 arch=('x86_64')
