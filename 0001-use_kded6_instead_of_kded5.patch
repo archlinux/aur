@@ -1,0 +1,25 @@
+diff --git a/setup-kde.cpp b/setup-kde.cpp
+index b4f9980..b3966cc 100644
+--- a/setup-kde.cpp
++++ b/setup-kde.cpp
+@@ -164,9 +164,9 @@ int setup_kde(int lockfile_arg) {
+ 
+     GDBusProxy *kded5 = g_dbus_proxy_new_for_bus_sync(G_BUS_TYPE_SESSION,
+                                                       G_DBUS_PROXY_FLAGS_NONE, NULL,
+-                                                      "org.kde.kded5",
++                                                      "org.kde.kded6",
+                                                       "/kded",
+-                                                      "org.kde.kded5",
++                                                      "org.kde.kded6",
+                                                       NULL, NULL);
+     if (kded5 == NULL) {
+         cerr << "setup_kde(...): g_dbus_proxy_new_for_bus_sync(...) failed." << endl;
+@@ -209,7 +209,7 @@ int setup_kde(int lockfile_arg) {
+     // sync on config and xsession change
+     kded5_modules_touchpad = g_dbus_proxy_new_for_bus_sync(G_BUS_TYPE_SESSION,
+                                                                        G_DBUS_PROXY_FLAGS_NONE, NULL,
+-                                                                       "org.kde.kded5",
++                                                                       "org.kde.kded6",
+                                                                        object_path,
+                                                                        "org.kde.touchpad",
+                                                                        NULL, NULL);
