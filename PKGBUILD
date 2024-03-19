@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Seurat
-_pkgver=5.0.2
+_pkgver=5.0.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -99,8 +99,8 @@ optdepends=(
   r-vgam
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cb58cbc4b85dae89262c43f1d86c49ff')
-b2sums=('bab400c3a6465734622d4439212e4cbd9d1324d949a75d4501b2f73bc20f6409a38fd509aa65049135253ffbf4940d332a2327fe5c5f8c43b5cca36fc2aae86a')
+md5sums=('2112a71f0ea07db422650c86aacc5d25')
+b2sums=('5a81b01893bf38e5e1e2e25ba3b4226eb3d12488db57983d7850e44f2b2530d10a1419dfd79211611c393a45343ca66a0363e5ee959784298e30a7628a31cdfa')
 
 prepare() {
   # skip test that requires BPCells
