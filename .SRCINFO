@@ -1,0 +1,17 @@
+pkgbase = beatslash-lv2
+	pkgdesc = A set of plugins for live beat repeating and beat slicing
+	pkgver = 1.0.6
+	pkgrel = 3
+	url = https://objectivewave.wordpress.com/beatslash-lv2
+	arch = x86_64
+	groups = lv2-plugins
+	groups = pro-audio
+	license = GPL3
+	makedepends = lv2
+	makedepends = lvtk
+	makedepends = waf
+	depends = gtkmm
+	source = beatslash-lv2-1.0.6.tar.gz::https://github.com/blablack/beatslash-lv2/archive/v1.0.6.tar.gz
+	sha512sums = d20262946479cbbec1e48dd72a89be46f88d2f48fe55ba5d35535dcdcd1226d52cf57f335dd3aeb3f794590848bbd48e98eb0bf692840f3bd5e600ae93ca8614
+
+pkgname = beatslash-lv2
