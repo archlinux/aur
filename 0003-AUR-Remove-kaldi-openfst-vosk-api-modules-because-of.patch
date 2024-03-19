@@ -1,4 +1,4 @@
-From ace3ffd629ec4e7ae959c1652175fb53e52898f4 Mon Sep 17 00:00:00 2001
+From 8632733f2e29384316c8f34715b1f1c04ca82b7a Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Wed, 12 Jul 2023 17:53:47 +0300
 Subject: [PATCH 3/7] AUR Remove kaldi, openfst, vosk-api modules because of

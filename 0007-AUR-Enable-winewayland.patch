@@ -1,4 +1,4 @@
-From 41b57a46854d8c6e78050434128f020aad6e03e0 Mon Sep 17 00:00:00 2001
+From 6ca10827262228625e4483151f2341c3e230c3c5 Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Thu, 29 Feb 2024 15:28:48 +0200
 Subject: [PATCH 7/7] AUR Enable winewayland
@@ -21,10 +21,10 @@ index 99ee6e17..581b981c 100644
    --with-mingw \
    --without-oss \
 diff --git a/proton b/proton
-index 89baeb8e..5ef22e8c 100755
+index f18488f8..417eab43 100755
 --- a/proton
 +++ b/proton
-@@ -1524,6 +1524,14 @@ if __name__ == "__main__":
+@@ -1544,6 +1544,14 @@ if __name__ == "__main__":
      elif sys.argv[1] == "waitforexitandrun":
          #wait for wineserver to shut down
          g_session.run_proc([g_proton.wineserver_bin, "-w"])
