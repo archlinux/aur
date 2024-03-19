@@ -84,6 +84,7 @@ build() {
     -D gpl=enabled
     -D gst-examples=disabled
     -D libnice=disabled
+    -D webrtc=disabled # remove deps for libnice
     -D orc=enabled # fix
     -D orc-source="system" # fix
     -D vaapi=enabled
