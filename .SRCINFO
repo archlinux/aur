@@ -1,11 +1,11 @@
 pkgbase = android-armv7a-eabi-l-smash
-	pkgdesc = MP4 muxer and other tools (android)
+	pkgdesc = MP4 muxer and other tools (Android, armv7a-eabi)
 	pkgver = 2.14.5
 	pkgrel = 1
 	url = https://github.com/l-smash/l-smash
 	arch = any
 	license = custom
-	depends = android-ndk
+	depends = android-environment
 	options = !strip
 	options = !buildflags
 	options = staticlibs
@@ -16,4 +16,3 @@ pkgbase = android-armv7a-eabi-l-smash
 	sha256sums = SKIP
 
 pkgname = android-armv7a-eabi-l-smash
-
