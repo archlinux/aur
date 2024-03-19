@@ -5,19 +5,19 @@ _suffix=""
 pkgname=(
 		"${pkgbase}${_suffix}" "${pkgbase}-headers${_suffix}"
 )
-_rev=e2f1890110c01ee515153c90d1288c5e4bf0fe4c
-pkgver=6.8.1
+_rev=c0b837cb49629eeac8fc793332c6e72c3c1e1efc
+pkgver=6.8.2
 pkgrel=1
 pkgdesc="pf-kernel"
 arch=(x86_64)
 url="https://pfkernel.natalenko.name"
 license=(GPL-2.0-only)
 makedepends=(bc cpio gettext libelf pahole perl python tar xz)
-options=('!strip')
+options=(!debug !strip)
 source=(https://codeberg.org/pf-kernel/linux/archive/${_rev}.tar.gz
 		config)
 b2sums=(SKIP
-		'804e2e652107f1860a1e66d9905a3be59731f5a2331d247d767bcbdb4f85e77168ba985c3475867ce9cd590ac3d8beca79a338e7fe187e3a3f669a30cd284d92')
+		'4a0300bbdeb6d23a57c5da444cfa6f160e33560dfa7520f7c6ad007d34509759a0ba18212d95a65a42f35f5782b5fadab61768dfcc4044eec44995eb369e96dc')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=${pkgbase}
