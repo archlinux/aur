@@ -9,7 +9,7 @@ arch=("any")
 url="https://github.com/ElementsProject/lightning/blob/master/contrib/pyln-proto"
 license=("custom:BSD-MIT")
 depends=("python" "python-base58" "python-bitstring" "python-coincurve" "python-cryptography" "python-pysocks")
-makedepends=("make" "python-build" "python-installer" "python-poetry" "python-wheel")
+makedepends=("python-build" "python-installer" "python-poetry" "python-wheel")
 source=("https://github.com/ElementsProject/lightning/releases/download/v${pkgver}/clightning-v${pkgver}.zip")
 sha256sums=("733e2b41411a5882d93319883f8575e6959fe33a30e4f0de589ce7e4511a512b")
 

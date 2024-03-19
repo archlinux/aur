@@ -5,7 +5,6 @@ pkgbase = python-pyln-proto
 	url = https://github.com/ElementsProject/lightning/blob/master/contrib/pyln-proto
 	arch = any
 	license = custom:BSD-MIT
-	makedepends = make
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-poetry
