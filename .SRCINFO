@@ -1,6 +1,6 @@
 pkgbase = python-diffusers
 	pkgdesc = Pretrained diffusion models for image and audio generation in PyTorch
-	pkgver = 0.27.0
+	pkgver = 0.27.1
 	pkgrel = 1
 	url = https://github.com/huggingface/diffusers
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-diffusers
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	source = diffusers-0.27.0.tar.gz::https://github.com/huggingface/diffusers/archive/refs/tags/v0.27.0.tar.gz
-	sha256sums = 979098d9afc90ac4ed9a8d694dea71d7961ba952d1eaaa2a67201dc7f2bdb51a
+	source = diffusers-0.27.1.tar.gz::https://github.com/huggingface/diffusers/archive/refs/tags/v0.27.1.tar.gz
+	sha256sums = 4b45b3d65b10a6206158f52246092876781628295a81d2117d2a1ee1681e5d55
 
 pkgname = python-diffusers
 	depends = python-beautifulsoup4
