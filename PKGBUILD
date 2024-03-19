@@ -11,6 +11,7 @@ _pkgname="listen1_${pkgver}_linux_${arch}.AppImage"
 noextract=(${_pkgname})
 options=("!strip" "!debug")
 depends=('fuse2')
+conflicts=("listen1-desktop")
 source=("${_pkgname}::https://github.com/listen1/listen1_desktop/releases/download/v${pkgver}/${_pkgname}"
     "LICENSE.md::https://raw.githubusercontent.com/listen1/listen1_desktop/master/LICENSE.md")
 sha512sums=("7ca7e4c2cdcb3199461fa8707fe480d368ed063df96ecdfe184fd6d6760d0f5af23169d0fbd4318ac7542820622383c7e844bf8c62ea4cc13e59d123d2a1a92a"

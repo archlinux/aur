@@ -6,6 +6,7 @@ pkgbase = listen1-desktop-appimage
 	arch = x86_64
 	license = MIT
 	depends = fuse2
+	conflicts = listen1-desktop
 	noextract = listen1_2.31.0_linux_x86_64.AppImage
 	options = !strip
 	options = !debug
