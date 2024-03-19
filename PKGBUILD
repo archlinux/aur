@@ -1,9 +1,9 @@
 # Maintainer: Henil <henil2911 + aur at gmail <.> com>
-# Contributor: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=zellij-git
 _pkgname=zellij
-pkgver=0.39.2.r41.gb677ffe
+pkgver=0.39.2.r55.g65a7fcf
 pkgrel=1
 pkgdesc="A terminal multiplexer"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
@@ -15,8 +15,7 @@ depends=(curl libcurl.so
          glibc)
 makedepends=(cargo
              git
-             mandown
-             protobuf)
+             mandown)
 provides=("zellij=$pkgver")
 conflicts=('zellij')
 source=("git+$_url.git")
@@ -39,6 +38,7 @@ build() {
   export CARGO_TARGET_DIR=target
   cargo build --release --frozen
   ./target/release/zellij setup --generate-completion bash > target/zellij.bash
+  ./target/release/zellij setup --generate-completion elvish > target/zellij.elv
   ./target/release/zellij setup --generate-completion fish > target/zellij.fish
   ./target/release/zellij setup --generate-completion zsh > target/zellij.zsh
   mandown docs/MANPAGE.md > assets/zellij.1
@@ -50,8 +50,10 @@ package() {
   install -Dm644 GOVERNANCE.md README.md -t "${pkgdir}/usr/share/doc/$pkgname/"
   install -Dm644 LICENSE.md -t "${pkgdir}/usr/share/licenses/$pkgname/"
   install -Dm644 target/zellij.bash "${pkgdir}/usr/share/bash-completion/completions/zellij"
+  install -Dm644 target/zellij.elv "${pkgdir}/usr/share/elvish/lib/zellij.elv"
   install -Dm644 target/zellij.fish "${pkgdir}/usr/share/fish/vendor_completions.d/zellij.fish"
   install -Dm644 target/zellij.zsh "${pkgdir}/usr/share/zsh/site-functions/_zellij"
   install -Dm644 assets/zellij.1 "${pkgdir}/usr/share/man/man1/zellij.1"
   install -Dm644 assets/zellij.desktop "${pkgdir}/usr/share/applications/zellij.desktop"
+  install -Dm644 assets/logo.png "${pkgdir}/usr/share/pixmaps/zellij.png"
 }

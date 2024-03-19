@@ -1,6 +1,6 @@
 pkgbase = zellij-git
 	pkgdesc = A terminal multiplexer
-	pkgver = 0.39.2.r41.gb677ffe
+	pkgver = 0.39.2.r55.g65a7fcf
 	pkgrel = 1
 	url = https://zellij.dev
 	arch = x86_64
@@ -11,12 +11,11 @@ pkgbase = zellij-git
 	makedepends = cargo
 	makedepends = git
 	makedepends = mandown
-	makedepends = protobuf
 	depends = curl
 	depends = libcurl.so
 	depends = gcc-libs
 	depends = glibc
-	provides = zellij=0.39.2.r41.gb677ffe
+	provides = zellij=0.39.2.r55.g65a7fcf
 	conflicts = zellij
 	source = git+https://www.github.com/zellij-org/zellij.git
 	sha256sums = SKIP
