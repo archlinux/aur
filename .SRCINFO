@@ -1,6 +1,6 @@
 pkgbase = alizams-qt5
 	pkgdesc = Qt5 DICOM Viewer
-	pkgver = 1.9.5
+	pkgver = 1.9.7
 	pkgrel = 1
 	url = https://www.aliza-dicom-viewer.com/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = alizams-qt5
 	depends = insight-toolkit
 	provides = alizams
 	conflicts = alizams
-	source = git+https://github.com/AlizaMedicalImaging/AlizaMS.git#tag=v1.9.5
+	source = git+https://github.com/AlizaMedicalImaging/AlizaMS.git#tag=v1.9.7
 	sha256sums = SKIP
 
 pkgname = alizams-qt5
