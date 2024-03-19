@@ -1,16 +1,16 @@
-# Maintainer: keutain
+# Maintainer: keutain <quentin at aniere at gmail dot com>
 
 pkgname=utc-latex-report
 _latexpkgname=utc-report
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="UTC LaTeX report template"
 url="https://github.com/qaniere/utc-latex"
 arch=("any")
 license=("BSD2")
 depends=("texlive-basic")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/qaniere/utc-latex/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('0b2688308e27aab759c3b3fdb3135c59d33c01a3f7d21054083e49e96effcfcd')
+sha256sums=('c3ec05d9128b8a8162b4d7534f2f7f8688b8698dbe875a1b14b309088c1ab43f')
 
 package() {
     # Get the proper installation path
