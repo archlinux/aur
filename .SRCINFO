@@ -1,6 +1,6 @@
 pkgbase = snapgene-viewer
 	pkgdesc = View plasmid maps, annotate features and share sequences (snapgene freeware edition)
-	pkgver = 7.1.2
+	pkgver = 7.2.0
 	pkgrel = 1
 	url = https://www.snapgene.com/snapgene-viewer
 	arch = x86_64
@@ -38,9 +38,9 @@ pkgbase = snapgene-viewer
 	depends = libxext
 	depends = openssl-1.1
 	depends = zlib
-	source = https://cdn.snapgene.com/downloads/SnapGeneViewer/7.x/7.1/7.1.2/snapgene_viewer_7.1.2_linux.rpm
+	source = https://cdn.snapgene.com/downloads/SnapGeneViewer/7.x/7.2/7.2.0/snapgene_viewer_7.2.0_linux.rpm
 	source = snapgene-viewer
-	sha512sums = ffaec09de19ee6de3e07b294922dac691e316b8b4fc3edbbd17c3914bd2317333a99a712e2cde94207e956d1e757faeacc7633b234c9d302a41bd9285e937f24
+	sha512sums = df675f3e9c9696aa4c035e391a3eea1564e4ef5a623a88090385e509cf755bddc6e32561682b99a776dc74d6cc88a89fb960e89d0548e0d9b674403c8b8569b9
 	sha512sums = 082c0fe6d8d5a6b8822d73589718d1baf9d4f651092c4beea8247e8a7af7ee9597858502124300111d020a07b3da612609caca21eb78fc889e6948d579ee7ea9
 
 pkgname = snapgene-viewer
