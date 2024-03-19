@@ -1,4 +1,3 @@
 [python-random2]
-source = 'github'
-github = 'strichter/random2'
-use_max_tag = true
+source = 'pypi'
+pypi = 'random2'
