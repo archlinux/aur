@@ -1,0 +1,14 @@
+pkgbase = liri-calculator
+	pkgdesc = More than a simple cross-platform Material Design calculator
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/lirios/calculator
+	arch = x86_64
+	license = GPL
+	makedepends = liri-cmake-shared
+	makedepends = qt5-tools
+	depends = fluid
+	source = liri-calculator-1.3.0.tar.gz::https://github.com/lirios/calculator/archive/v1.3.0.tar.gz
+	sha512sums = 9b5a28a5b95894983027bac8feda3359b29cf5fda96722b586c550210b6bab4ea15bfd5146c8be12d88807d3b08bf2de6e1178c1b27fa6d9e4aa905d0e8646ef
+
+pkgname = liri-calculator
