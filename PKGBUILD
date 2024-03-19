@@ -1,5 +1,5 @@
 pkgname=ruffle-bin
-pkgver=2024-03-19
+pkgver=2024.03.19
 pkgrel=1
 _pkgrel_x86_64=1
 _pkgrel_i386=1
