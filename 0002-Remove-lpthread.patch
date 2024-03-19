@@ -1,0 +1,14 @@
+--- a/configure
++++ b/configure
+@@ -1049,9 +1049,9 @@
+             cc_check pthread.h -lc "pthread_create(0,0,0,0);" && thread="posix" && libpthread="-lc"
+             ;;
+         *)
+-            if cc_check pthread.h -lpthread "pthread_create(0,0,0,0);" ; then
++            if cc_check pthread.h "" "pthread_create(0,0,0,0);" ; then
+                thread="posix"
+-               libpthread="-lpthread"
++               libpthread=""
+             else
+                 cc_check pthread.h "" "pthread_create(0,0,0,0);" && thread="posix" && libpthread=""
+             fi
