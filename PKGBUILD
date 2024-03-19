@@ -11,7 +11,7 @@ arch=('x86_64')
 url='http://catdvi.sourceforge.net'
 license=('GPL')
 depends=('glibc' 'texlive-core')
-makedepends=('texlive-fontsextra')
+makedepends=('texlive-fontsextra' 'texlive-langeuropean' 'texlive-latexextra')
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2"
         'texlive2008.patch'
         'fix_build.patch')
