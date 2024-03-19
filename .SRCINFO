@@ -1,0 +1,25 @@
+pkgbase = vocal
+	pkgdesc = Powerful, beautiful and simple podcast client for Pantheon
+	pkgver = 2.4.2
+	pkgrel = 5
+	url = https://vocalproject.net/
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = vala
+	depends = clutter-gst
+	depends = clutter-gtk
+	depends = granite
+	depends = gst-plugins-good
+	depends = gst-libav
+	depends = gvfs
+	depends = libnotify
+	source = https://github.com/needle-and-thread/vocal/archive/2.4.2/vocal-2.4.2.tar.gz
+	source = remove-about.patch
+	source = https://github.com/VocalPodcastProject/vocal/commit/6859a6c9.patch
+	sha256sums = be1991f08db05feacad30a0f459002327ba5ff3cb04757383f1da62904acdb41
+	sha256sums = 805613a82898c36ddd18a93aa034e87d771dade1382275537ba7b4c57c28dc6a
+	sha256sums = cb6033bf7e7b3aed7a1b8ec92d4c688bc2a89f6bd3f13634958dd5d4dac5ca1e
+
+pkgname = vocal
