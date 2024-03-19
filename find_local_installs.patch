@@ -1,0 +1,26 @@
+--- a/meson.build
++++ b/meson.build
+@@ -104,6 +104,7 @@ if install
+       'xtb' / 'test_libxtb.py',
+       'xtb' / 'test_utils.py',
+     ),
++    pure: false,
+     subdir: 'xtb',
+   )
+
+@@ -114,6 +115,7 @@ if install
+       'xtb' / 'ase' / 'test_calculator.py',
+       'xtb' / 'ase' / 'test_optimize.py',
+     ),
++    pure: false,
+     subdir: 'xtb' / 'ase',
+   )
+
+@@ -123,6 +125,7 @@ if install
+       'xtb' / 'qcschema' / 'harness.py',
+       'xtb' / 'qcschema' / 'test_qcschema.py',
+     ),
++    pure: false,
+     subdir: 'xtb' / 'qcschema',
+   )
+ endif

@@ -1,18 +1,21 @@
 pkgbase = python-xtb
 	pkgdesc = Python API for the extended tight-binding program xtb
 	pkgver = 22.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/grimme-lab/xtb-python
 	arch = any
 	license = LGPL3
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = meson-python
 	depends = python>3.7
 	depends = python-numpy
 	depends = python-cffi
 	depends = xtb
 	source = https://files.pythonhosted.org/packages/source/x/xtb/xtb-22.1.tar.gz
+	source = find_local_installs.patch
 	sha256sums = 7a59e7b783fc6e8b7328f55211de681e535a83991b07c4bab73494063f5e9018
+	sha256sums = faf00b5fca74b8bb991a7aeefd70fb4bc19a410947a9858723bdcf6e49d90158
 
 pkgname = python-xtb
