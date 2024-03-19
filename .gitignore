@@ -1,0 +1,11 @@
+# Build
+makechroot
+
+pkg
+src
+
+*.log
+
+# Archive
+*.tar.gz
+*.pkg.tar.zst
