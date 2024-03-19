@@ -1,0 +1,12 @@
+pkgbase = utc-latex-article
+	pkgdesc = UTC LaTeX Article theme
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/qaniere/utc-latex
+	arch = any
+	license = WTFPL
+	depends = texlive-basic
+	source = utc-latex-article-1.1.0.tar.gz::https://github.com/qaniere/utc-latex/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 0b2688308e27aab759c3b3fdb3135c59d33c01a3f7d21054083e49e96effcfcd
+
+pkgname = utc-latex-article
