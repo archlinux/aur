@@ -5,7 +5,7 @@
 
 _py="python"
 _pkg="mod"
-pkgname="${_pkg}"
+pkgname="${_py}-${_pkg}"
 pkgver=0.3.0
 pkgrel=1
 
@@ -44,10 +44,10 @@ checkdepends=(
   # "${_py}-at-some-point-in-the-future"
 )
 provides=(
-  "${_py}-${_pkg}=${pkgver}"
+  "${_pkg}=${pkgver}"
 )
 conflicts=(
-  "${_py}-${_pkg}=${pkgver}"
+  "${_pkg}=${pkgver}"
 )
 _commit="df62c20c053024953a800b26d94599e10a1fdf38"
 

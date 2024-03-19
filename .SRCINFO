@@ -1,4 +1,4 @@
-pkgbase = mod
+pkgbase = python-mod
 	pkgdesc = Modular arithmetic in Python 💯
 	pkgver = 0.3.0
 	pkgrel = 1
@@ -14,9 +14,9 @@ pkgbase = mod
 	makedepends = python-setuptools
 	makedepends = python-sphinx
 	depends = python
-	provides = python-mod=0.3.0
-	conflicts = python-mod=0.3.0
-	source = mod-0.3.0.zip::https://github.com/yoeo/mod/archive/df62c20c053024953a800b26d94599e10a1fdf38.zip
+	provides = mod=0.3.0
+	conflicts = mod=0.3.0
+	source = python-mod-0.3.0.zip::https://github.com/yoeo/mod/archive/df62c20c053024953a800b26d94599e10a1fdf38.zip
 	sha512sums = 7453f214831741780b1da4a1952cbcef6389156b1398c643d15babee61df2d1f5a9cfcda8c6b11f2c13036668a8306948d30d1d6b2929f6825898e89b6e6971c
 
-pkgname = mod
+pkgname = python-mod
