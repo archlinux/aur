@@ -7,7 +7,7 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
 pkgver=2.2.0
 _pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -62,6 +62,8 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         "${pkgname}-tbb::git+https://github.com/01org/tbb"
         "${pkgname}-tensorpipe::git+https://github.com/pytorch/tensorpipe.git"
         "${pkgname}-zstd::git+https://github.com/facebook/zstd.git"
+        "python-pytorch-2_2_0-fix-cccl-build.patch::https://github.com/pytorch/pytorch/commit/2a440348958b3f0a2b09458bd76fe5959b371c0c.patch"
+        python-pytorch-fix-cuda-12_4.patch
         fix_include_system.patch
         use-system-libuv.patch
         fix-building-for-torchvision.patch
@@ -119,6 +121,8 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
+        'ae31599abcfde4d7dcf20d5430cbdab46d1c74b342c088883d6c949fad1987cbd16520d8f1d887b669c0990aae4baf4f0c350eeadbf237abf3a8e8a122722f3e'
+        'caf22a33fab6ca909cc9325ed6c32fdf36189dbdc77bb921d7db88fb5228f33ca2d90b1368b5ef88624277be422eaeb395768f9f2ddca19f39a238ed3c40efbd'
         '77f85808e480bd37dfb5f072d565466ae30a8f827f49ef97591fc2fc03bea54944eb1adeaa4a1e3466518a5640f575eda88d15b4c4d549a6f41f0bf4f2cfb086'
         'af8c724ed80898ae3875a295ad6bd4d18d90f8a9124f6cff6d1b2f525bf7806fe61306e739c1f7362fbd8d0e4f8ba57d0e3bf925ea3f7a78a0a98f26722db147'
         'fdea0b815d7750a4233c1d4668593020da017aea43cf4cb63b4c00d0852c7d34f0333e618fcf98b8df2185313a2089b8c2e9fe8ec3cfb0bf693598f9c61461a8'
@@ -204,7 +208,7 @@ prepare() {
 
   # Fix building against glog 0.6
   patch -Np1 -i "${srcdir}/87773.patch"
-  
+
   # Fix building against glog 0.7
   patch -p1 -i "${srcdir}/glog-0.7.patch"
 
@@ -231,6 +235,11 @@ prepare() {
   patch -Np1 -d third_party/gloo -i "${srcdir}/python-pytorch-goo-rocm-6.patch"
 
   patch -Np1 -i "${srcdir}/pytorch-remove-caffe2-binaries.patch"
+
+  # https://github.com/pytorch/pytorch/issues/122169
+  patch -Np1 -i "${srcdir}/python-pytorch-2_2_0-fix-cccl-build.patch"
+
+  patch -Np1 -i "${srcdir}/python-pytorch-fix-cuda-12_4.patch"
 
   cd "${srcdir}"
 
@@ -269,8 +278,8 @@ _prepare() {
   # export BUILD_SPLIT_CUDA=ON  # modern preferred build, but splits libs and symbols, ABI break
   # export USE_FAST_NVCC=ON  # parallel build with nvcc, spawns too many processes
   export USE_CUPTI_SO=ON  # make sure cupti.so is used as shared lib
-  export CC=/usr/bin/gcc-12
-  export CXX=/usr/bin/g++-12
+  export CC=/usr/bin/gcc
+  export CXX=/usr/bin/g++
   export CUDAHOSTCXX=/opt/cuda/bin/g++
   export CUDA_HOST_COMPILER="${CUDAHOSTCXX}"
   export CUDA_HOME=/opt/cuda
