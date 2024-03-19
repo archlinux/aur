@@ -1,6 +1,0 @@
-post_install() {
-  cat << EOF
-rofimoji requires an appropriate "selector", "clipboarder", and "typer" to be
-installed for your display server.
-EOF
-}
