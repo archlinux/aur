@@ -1,15 +1,14 @@
 # Maintainer: alba4k <blaskoazzolaaaron@gmail.com>
 pkgname=albafetch
 pkgver=4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Neofetch, but written in C; both faster and worse than the original"
 arch=(x86_64 aarch64)
 url="https://github.com/alba4k/albafetch"
 license=('MIT')
 makedepends=(git make gcc)
 depends=(pciutils libcurl-gnutls)
-conflicts=(albafetch-git albafetch-bin)
-provides=(albafetch=4.1)
+provides=($pkgname=$pkgver)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 
 md5sums=('aa247e6a081a775b11b114b898843325')
