@@ -44,7 +44,7 @@ steps:
     settings:
         base_url: https://codeberg.org/
         files:
-          - firedragon-unsigned-extensions-${CI_COMMIT_TAG##v}-x86_64.pkg.tar.zst
+          - firedragon-unsigned-extensions-1:${CI_COMMIT_TAG##v1_}-x86_64.pkg.tar.zst
           - SHA256SUM
         api_key:
           from_secret: release_token
