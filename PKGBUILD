@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=valent-git
-pkgver=1.0.0.alpha.45.r0.gac5fcf0cc
+pkgver=1.0.0.alpha.45.r0.gac5fcf0
 pkgrel=1
 pkgdesc="Connect, control and sync devices"
 arch=('x86_64')
