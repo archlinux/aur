@@ -164,7 +164,17 @@ function execAppUnsafe() {
 
 function disableSandbox() {
 	if [[ $@ =~ "f5aaebc6-0014-4d30-beba-72bce57e0650" ]]; then
-		export trashAppUnsafe=1
+		if [[ "LANG" =~ 'zh_CN' ]]; then
+			zenity --title "警告" --question --text="确认以继续危险操作"
+		else
+			zenity --title "Alert" --question --text="Confirm to proceed dangerous operation..."
+		fi
+		if [[ $? = 0 ]]; then
+			export trashAppUnsafe=1
+		else
+			echo "[Critical] Request canceled by user"
+			exit 1
+		fi
 	fi
 	if [[ ${wechatUnsafe} = 1 ]]; then
 		export trashAppUnsafe=1
