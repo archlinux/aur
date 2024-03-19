@@ -1,3 +1,54 @@
+Mullvad Browser 13.0.12 - March 19 2024
+ * All Platforms
+   * Updated Firefox to 115.9.0esr
+   * Updated mullvad-browser-extension to 0.9.0
+   * Updated uBlock Origin to 1.56.0
+   * Bug 270: Mullvad support email has changed from `support@mullvad.net` to `support@mullvadvpn.net` [mullvad-browser]
+   * Bug 273: Rebase Mullvad Browser stable onto Firefox 115.9.0esr [mullvad-browser]
+   * Bug 42376: The placeholder of datetime inputs keeps being localized when spoof English is on [tor-browser]
+   * Bug 42378: spoof english + htmlform <details> can leak app language [tor-browser]
+ * Windows
+   * Bug 42377: Hidden fonts are automatically added to the allow list [tor-browser]
+ * Build System
+   * All Platforms
+     * Bug 41085: kick_devmole_build script prints wrong URL for Mullvad's build hashes [tor-browser-build]
+     * Bug 41097: authenticode-timestamping.sh fails to run again because tmp-timestamp already exists [tor-browser-build]
+     * Bug 41102: src archive does not match likely due to mismatched xz-utils version [tor-browser-build]
+
+Mullvad Browser 13.5a5 - February 27 2024
+ * All Platforms
+   * Updated Firefox to 115.8.0esr
+   * Updated uBlock Origin to 1.56.0
+   * Updated mullvad-browser-extension to 0.8.5
+   * Bug 262: Mouse-over long links causes the browser element to re-center relative to width of status tooltip [mullvad-browser]
+   * Bug 268: Rebase Mullvad Browser Alpha onto 115.8.0esr [mullvad-browser]
+   * Bug 42376: The placeholder of datetime inputs keeps being localized when spoof English is on [tor-browser]
+   * Bug 42378: spoof english + htmlform <details> can leak app language [tor-browser]
+   * Bug 42387: Visual noise in 13.5a4 letterboxing [tor-browser]
+   * Bug 42389: Betterboxing: gradient is never shown [tor-browser]
+   * Bug 42390: Betterboxing: make the decorator border disappear when the corners are flat [tor-browser]
+   * Bug 42397: Change RFP-spoofed Timezone from UTC to a real-world, less discriminable one [tor-browser]
+   * Bug 42398: Include Alpha and Nightly in MOZ_APP_DISPLAYNAME (and possibly in other places) [tor-browser]
+   * Bug 42423: Move temporary Lox Fluent strings to new file [tor-browser]
+ * macOS
+   * Bug 40569: Create build-specific installer for macOS [tor-browser-build]
+ * Build System
+   * All Platforms
+     * Bug 41038: Add RPM dependencies to README [tor-browser-build]
+     * Bug 41067: Use Capture::Tiny instead of IO::CaptureOutput [tor-browser-build]
+     * Bug 41072: Set correct updater_url for Mullvad Browser nightly builds [tor-browser-build]
+     * Bug 41081: Update detailsURL in tools/signing/nightly/update-responses-base-config.yml [tor-browser-build]
+     * Bug 41085: kick_devmole_build script prints wrong URL for Mullvad's build hashes [tor-browser-build]
+     * Bug 40068: Switch from IO::CaptureOutput to Capture::Tiny [rbm]
+     * Bug 40069: Make stdout and stderr utf8 [rbm]
+     * Bug 40071: Add an option to create zip files using 7z [rbm]
+     * Bug 40072: Move capture_exec to a separate module [rbm]
+   * Windows
+     * Bug 41076: Include the ShellLink plugin in NSIS [tor-browser-build]
+     * Bug 41077: Draft the new installer for Mullvad Browser [tor-browser-build]
+   * macOS
+     * Bug 41084: $app_bundle is missing the final .app in projects/firefox/build [tor-browser-build]
+
 Mullvad Browser 13.0.10 - February 20 2024
  * All Platforms
    * Updated Firefox to 115.8.0esr
@@ -49,6 +100,7 @@ Mullvad Browser 13.0.9 - January 23 2024
      * Bug 41043: Create script to push build requests to Mullvad build servers [tor-browser-build]
      * Bug 41056: Make it possible to use templates in var/torbrowser_incremental_from [tor-browser-build]
      * Bug 41059: Update keyring/torbrowser.gpg with updated key [tor-browser-build]
+     * Bug 40067: Use --no-verbose wget option when not running in a terminal [rbm]
    * Windows + macOS
      * Bug 41016: Switch from bullseye to bookworm for desktop platforms [tor-browser-build]
    * Windows
