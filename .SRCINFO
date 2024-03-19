@@ -1,0 +1,14 @@
+pkgbase = gdlmm
+	pkgdesc = C++ bindings for the gdl library
+	pkgver = 3.7.3
+	pkgrel = 5
+	url = https://git.gnome.org/browse/gdlmm/
+	arch = x86_64
+	license = LGPL
+	depends = gdl
+	depends = gtkmm3
+	options = !emptydirs
+	source = https://ftp.gnome.org/pub/GNOME/sources/gdlmm/3.7/gdlmm-3.7.3.tar.xz
+	sha256sums = e280ed9233877b63ad0a0c8fb04d2c35dc6a29b3312151ee21a15b5932fef79b
+
+pkgname = gdlmm
