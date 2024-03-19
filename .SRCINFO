@@ -1,7 +1,7 @@
 pkgbase = utc-latex-beamer
-	pkgdesc = UTC LaTeX Beamer theme
+	pkgdesc = UTC LaTeX beamer template
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qaniere/utc-latex
 	arch = any
 	license = WTFPL

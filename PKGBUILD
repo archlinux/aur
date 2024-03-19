@@ -1,10 +1,10 @@
-# Maintainer: keutain
+# Maintainer: keutain <quentin do aniere at gmai dot com>
 
 pkgname=utc-latex-beamer
 _latexpkgname=utc-beamer
 pkgver=1.1.0
-pkgrel=1
-pkgdesc="UTC LaTeX Beamer theme"
+pkgrel=2
+pkgdesc="UTC LaTeX beamer template"
 url="https://github.com/qaniere/utc-latex"
 arch=("any")
 license=("WTFPL")
@@ -21,5 +21,6 @@ package() {
     install -Dm644 "${srcdir}/utc-latex-${pkgver}/${_latexpkgname}"/* -t "${pkgdir}/${TEXMFDIST}/tex/latex/${_latexpkgname}"
 
     # Install the license
-    install -Dm644 "${srcdir}/utc-latex-${pkgver}/licenses/${_latexpkgname}.txt" -t "${pkgdir}/usr/share/licenses/utc-latex/${_latexpkgname}.txt"
+    mkdir -m 755 -p ${pkgdir}/usr/share/licenses/utc-latex/
+    install -m 644 "${srcdir}/utc-latex-${pkgver}/licenses/${_latexpkgname}.txt" -t "${pkgdir}/usr/share/licenses/utc-latex/"
 }
