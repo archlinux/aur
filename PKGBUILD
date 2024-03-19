@@ -104,7 +104,7 @@ source=(
   2429.patch::${url}/commit/71055058c0bdb6fec0dbebf2ec8bbfc968820b88.patch    # fix(test): running tests no longer requires to be root
   2494.patch::${url}/commit/b88d0bab791bdc4ca75d13802f0391caf537650d.patch    # fix(resume): include in hostonly mode if resume= on cmdline
   2527.patch::${url}/commit/a2fe89116db4b286fbf515f26bd1773b5e6ee8ad.patch    # fix(resume): add new systemd-hibernate-resume.service
-  2531.patch::${url}/commit/a8015f7dfc682100434e3ee051bf9472a8e6cad4.patch    # fix(resume): add new systemd-hibernate-resume.service
+  2531.patch::${url}/commit/a8015f7dfc682100434e3ee051bf9472a8e6cad4.patch    # feat(kernel-modules): add Qualcomm IPC router to enable USB
   2544.patch::${url}/commit/c1a69b81f6ebd62a40054be2375cb77c040694aa.patch    # fix(dracut.sh): skip README for AMD microcode generation
   2547-1.patch::${url}/commit/6da61a2c0e38da4e6e880e1bb7f47d55d2c54c65.patch  # fix(pcsc): add opensc load module file
   2547-2.patch::${url}/commit/842be0c89fe0cc8cac9efa88e68b07ae1c2d2464.patch  # fix(pcsc): add --disable-polkit to pcscd.service
