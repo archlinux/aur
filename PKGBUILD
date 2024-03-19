@@ -1,33 +1,32 @@
-# Maintainer: jdigi78 <jdigiovanni78 at gmail dot com>
+# Maintainer:
+# Contributor: jdigi78 <jdigiovanni78 at gmail dot com>
 
 pkgname=varia
-pkgver=2024.2.6
+pkgver=2024.2.29
+_pkgver="${pkgver}-2"
 pkgrel=1
-
-source=("https://github.com/giantpinkrobots/varia/archive/refs/tags/v$pkgver.tar.gz")
-        
-sha256sums=('e58954f584c46a5ac87a755f154808cc5bca32c2454415e9111dc3630e00a3c3')
-
-pkgdesc='Download manager based on aria2'
+pkgdesc="Download manager based on aria2"
 arch=('any')
-url='https://github.com/giantpinkrobots/varia'
-license=('MPL2')
-depends=('aria2' 'aria2p' 'python' 'python-setuptools')
-makedepends=('meson')
+url="https://github.com/giantpinkrobots/varia"
+license=('MPL-2.0')
+depends=('aria2'
+         'aria2p'
+         'bash'
+         'dconf'
+         'gobject-introspection-runtime'
+         'hicolor-icon-theme'
+         'python'
+         'python-gobject'
+         'python-requests')
+makedepends=('desktop-file-utils' 'gtk-update-icon-cache' 'meson')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
+sha256sums=('9108ffbbbbfd156bbe2692d75aa4894ca55674133c2870272e283c19c35d1ee6')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver/"
-  meson setup builddir
-  cd builddir
-  meson compile
+  arch-meson "${pkgname}-${_pkgver}" build
+  meson compile -C build
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/builddir"
-  meson configure -Dprefix="/usr"
-  meson install --destdir "$pkgdir"
-  chmod -R 755 "$pkgdir"
-  
-  # Install license
-  install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  meson install -C build --destdir "${pkgdir}"
 }
