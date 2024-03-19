@@ -1,0 +1,15 @@
+pkgbase = python-tree-format
+	pkgdesc = Python library for printing trees on the console
+	pkgver = 0.1.2
+	pkgrel = 5
+	url = https://github.com/jml/tree-format
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	checkdepends = python-testtools
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/t/tree-format/tree-format-0.1.2.tar.gz
+	sha512sums = 386b1d5852d70623514c6284cb2d4b7abe10c7b3b39ba2aca321d3590a065ad7cf1390fd518f9792bfbb9c13730beaf3504c399e25d39494e95af564a0f5b639
+
+pkgname = python-tree-format
