@@ -1,13 +1,21 @@
 pkgbase = python-fonttools-git
 	pkgdesc = A library to manipulate font files from Python
-	pkgver = 4.26.1.r1.g032befd
+	pkgver = 4.50.0.r8.gac7e55b
 	pkgrel = 1
 	url = https://github.com/fonttools/fonttools
 	arch = x86_64
 	license = MIT
+	checkdepends = python-brotli
+	checkdepends = python-fs
+	checkdepends = python-pytest
+	checkdepends = python-skia-pathops
+	checkdepends = python-ufolib2
 	makedepends = cython
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	optdepends = python-brotli: to compress/decompress WOFF 2.0 web fonts
 	optdepends = python-fs: to read/write UFO source files
@@ -18,9 +26,10 @@ pkgbase = python-fonttools-git
 	optdepends = python-reportlab: to drawing glyphs as PNG images
 	optdepends = python-scipy: for finding wrong contour/component order between different masters
 	optdepends = python-sympy: for symbolic font statistics analysis
+	optdepends = python-uharfbuzz: to use the Harfbuzz Repacker for packing GSUB/GPOS tables
 	optdepends = python-unicodedata2: for displaying the Unicode character names when dumping the cmap table with ttx
 	optdepends = python-zopfli: faster backend fom WOFF 1.0 web fonts compression
-	provides = python-fonttools=4.26.1.r1.g032befd
+	provides = python-fonttools=4.50.0.r8.gac7e55b
 	conflicts = python-fonttools
 	source = python-fonttools-git::git+https://github.com/fonttools/fonttools.git
 	sha256sums = SKIP
