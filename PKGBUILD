@@ -12,7 +12,7 @@ depends=('python-packaging' 'python-pygls' 'python-typing_extensions' 'ruff')
 makedepends=('git' 'python-build' 'python-hatchling' 'python-installer')
 checkdepends=('python-lsp-jsonrpc' 'python-pytest-asyncio')
 source=("git+$url.git#tag=v$pkgver")
-sha256sums=('7de7a3443cf0e4758388696254e1d5a72a1e30f0cc1d2e5ecf674c488caa759d')
+b2sums=('f6561b5c56b227e1ceb1de802c9defcfdeeffa9aae02b8513f831c2f1b6af3be7738135fe97c0541939cd653fd49167c845e3f4436b9030d2a9528add963bb97')
 
 build() {
   cd $pkgname
