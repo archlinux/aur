@@ -1,14 +1,14 @@
 # Maintainer: Boris-Barboris < ismailsiege  at gmail dot com >
 pkgname=evdev-proxy-git
-pkgver=0.1.1.r1.3241460
+pkgver=0.1.1.r2.64dc5e8
 pkgrel=1
 pkgdesc="Service that proxies evdev events from real to virtual devices"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
-url="https://github.com/PapaTutuWawa/evdev-proxy"
+url="https://github.com/Boris-Barboris/evdev-proxy"
 license=('GPL3')
 depends=('gcc-libs')
 makedepends=('git' 'cargo' 'binutils')
-source=('git+https://github.com/PapaTutuWawa/evdev-proxy'
+source=('git+https://github.com/Boris-Barboris/evdev-proxy'
         'evdev-proxy.service'
         'uinput.conf')
 sha256sums=('SKIP'
@@ -16,7 +16,7 @@ sha256sums=('SKIP'
             '7d0367076b1e7e79c8de626827183380d59b12b634f4e763fc94b9c6179003c7')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}"
     printf "%s" "$(git describe --tags --long | sed 's/v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
@@ -46,7 +46,7 @@ build() {
 # }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}"
 
     install -Dm755 target/release/evdev-proxy -t "${pkgdir}/usr/bin/"
 
