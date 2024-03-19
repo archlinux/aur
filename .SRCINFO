@@ -30,6 +30,7 @@ pkgbase = core-lightning
 	depends = python-grpcio
 	depends = python-grpcio-tools
 	depends = python-json5
+	depends = python-pyln-client
 	depends = sqlite
 	depends = zlib
 	optdepends = cppcheck: Static C/C++ code analysis

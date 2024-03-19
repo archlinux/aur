@@ -15,7 +15,7 @@ pkgdesc="Lightning Network implementation focusing on specification compliance a
 arch=("x86_64")
 url="https://github.com/ElementsProject/${_pkgname}"
 license=("custom:BSD-MIT")
-depends=("bitcoin-cli" "gcc-libs" "glibc" "gmp" "gunicorn" "libsodium" "make" "postgresql-libs" "protobuf" "python" "python-cryptography" "python-flask" "python-flask-cors" "python-flask-restx" "python-flask-socketio" "python-gevent" "python-gevent-websocket" "python-grpcio" "python-grpcio-tools" "python-json5" "sqlite" "zlib")
+depends=("bitcoin-cli" "gcc-libs" "glibc" "gmp" "gunicorn" "libsodium" "make" "postgresql-libs" "protobuf" "python" "python-cryptography" "python-flask" "python-flask-cors" "python-flask-restx" "python-flask-socketio" "python-gevent" "python-gevent-websocket" "python-grpcio" "python-grpcio-tools" "python-json5" "python-pyln-client" "sqlite" "zlib")
 makedepends=("git" "mrkd" "net-tools" "python-mako" "rust")
 optdepends=("cppcheck: Static C/C++ code analysis"
     "jq: Command-line JSON processor"
