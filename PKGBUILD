@@ -2,14 +2,14 @@
 #Maintainer: Rafael Fontenelle <rafaelff at gnome dot org>
 
 pkgname="mongodb42-bin"
-pkgver="4.2.24"
+pkgver="4.2.25"
 _basever="4.2"
 _basedist="bionic"
 pkgrel="1"
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64" "aarch64")
 url="https://www.mongodb.com/"
-license=("custom:SSPLv1")
+license=("SSPL-1.0")
 depends=("curl")
 optdepends=("mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities.")
 provides=("mongodb=$pkgver")
@@ -37,12 +37,12 @@ noextract=(
 sha256sums=('47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b'
             '51ee1e1f71598aad919db79a195778e6cb6cfce48267565e88a401ebc64497ac'
             '09d99ca61eb07873d5334077acba22c33e7f7d0a9fa08c92734e0ac8430d6e27')
-sha256sums_x86_64=('7fd644e30165498380e1b5a8433f909121e189da47fbfb4a6434440b6421b2de'
-                   'adc584b75729e77f545c1efedd7ba6d7e7737ef8695c48bc29889ef261d3efca'
-                   '6302bc8fd1a72c73daf3b754f22a4d89484c30bb51d07f8756ba1183a5b87f44')
-sha256sums_aarch64=('e6ed9a92af1beb3af7c0368bc85d572bf636f225ae3f43a1324fcdde91770c85'
-                    '9d66980e4ac54b3ccc115a249bd3390e308e7d79c91755e9cc8745be48acfec7'
-                    '9b3ffe48e945c01f5eb2b0561491278df52a21e38605b3af49fc963900eb42b5')
+sha256sums_x86_64=('ebb80d081f9670478346627a5797923d5c14d53280531a0e90a1f3f5b60c57d3'
+                   '1444a018d78e36d0d4df5ba6962026e0bed968a16df76f683d81d55a8275c335'
+                   '873ed7c5a60f9858cfe92b7514938585a72c5d2966c106c0d4a6d966ace14c57')
+sha256sums_aarch64=('0d788e79cd1ae100a63c6bb9812dfdb3ce37f761aeabbc544aef347129708742'
+                    'a1140c8029e37ede9192acb9b61cb376fcd9f70d246bcfb7d6812692007d9653'
+                    'e381a086beccec0f12b9a6778537938a58083499acda2517a5584a8750f702ab')
 
 prepare() {
   mkdir -p output
