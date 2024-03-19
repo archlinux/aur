@@ -10,19 +10,20 @@
 ## options
 : ${_build_bin:=true}
 
+unset _pkgtype
 [[ "${_build_bin::1}" == "t" ]] && _pkgtype+="-bin"
 
 ## basic info
 _pkgname="icecat"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=115.8.0
+pkgver=115.9.0
 pkgrel=1
-pkgdesc="GNU version of the Firefox browser"
+pkgdesc="GNU version of the Firefox ESR browser"
 url="https://icecatbrowser.org"
 license=('MPL-2.0')
 arch=('x86_64')
 
-provides=('icecat')
+provides=("icecat=$pkgver")
 conflicts=('icecat')
 
 _dl_url="https://icecatbrowser.org/assets/icecat/$pkgver"
@@ -31,7 +32,7 @@ _dl_file="icecat-$pkgver.en-US.linux-$CARCH.tar.bz2"
 noextract=("$_dl_file")
 
 source=("$_dl_url/$_dl_file")
-sha256sums=('31ca47c909c52e2a963ef8795b4be87a62b478316bfbb8feba9905fd27fab392')
+sha256sums=('4616d11d53ac28533ffd066366e8427a4b179438a8c42a644265e18ca8ede23d')
 
 prepare() {
   cat >icecat.desktop <<END
