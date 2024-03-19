@@ -1,7 +1,7 @@
 # Maintainer: Taufik Hidayat <tfkhdyt@proton.me>
 
 pkgname=geminicommit-bin
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc='A CLI that writes your git commit messages for you with Google Gemini AI'
 arch=('x86_64' 'aarch64')
@@ -9,10 +9,10 @@ url='https://github.com/tfkhdyt/geminicommit'
 license=('GPL3')
 depends=('git')
 source_x86_64=("${pkgname}-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/geminicommit-v${pkgver}-linux-amd64.tar.gz")
-sha256sums_x86_64=('13f02fab7dee748338016ff2ae58c64ed2cbb765d24d8835271b361b84c4a45f')
+sha256sums_x86_64=('2a467b4a5b3d56f76a50ee61fa964832b8326912ec3854f87e4b3acc16cd3089')
 
 source_aarch64=("${pkgname}-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/geminicommit-v${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('4b8a8e26f2ebf5861c8acf6c986badf30e46f19aa2d0385253d66e07391f60ba')
+sha256sums_aarch64=('26bb27cb663e1fed462fe277b7c4965077e68d62845f138a9fa9a751bf48dbf7')
 
 build() {
 	./geminicommit completion bash >geminicommit.bash
