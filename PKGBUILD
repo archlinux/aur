@@ -1,12 +1,8 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
 
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: guarapicci <gigabyz20@gmail.com>
 pkgname="mpv-omniglass-git"
-pkgver=0.1
-pkgrel=1
+pkgver=0.2
+pkgrel=2
 epoch=
 pkgdesc="touchpad gestures for mpv using omniglass backend"
 arch=('x86_64')
