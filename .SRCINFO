@@ -1,7 +1,7 @@
 pkgbase = xterminal-bin
 	pkgdesc = 不仅是强大的SSH工具，更提供本地控制台，以及更多即将推出的开发相关功能，让您专注于创造卓越的代码
-	pkgver = 1.8.0
-	pkgrel = 2
+	pkgver = 1.20.10
+	pkgrel = 1
 	url = https://www.xterminal.cn/
 	arch = x86_64
 	license = LicenseRef-custom
@@ -9,13 +9,13 @@ pkgbase = xterminal-bin
 	depends = electron28
 	depends = java-runtime
 	depends = python>3
-	provides = xterminal=1.8.0
+	provides = xterminal=1.20.10
 	conflicts = xterminal
-	source = xterminal-1.8.0.deb::https://cdn-cn.xterminal.cn/xterminal/XTerminal-1.8.0-linux-amd64.deb
+	source = xterminal-1.20.10.deb::https://cdn-cn.xterminal.cn/xterminal/XTerminal-1.20.10-linux-amd64.deb
 	source = LICENSE.html
 	source = xterminal.sh
-	sha256sums = b1394d9aabbfe5bd4c493525915fcf3a0ba75800468b3066614a3e343a262ab6
+	sha256sums = f5ff6f496dc64e119d2ca818b37912a47f70bb65ac31ac306e88ed6051465f6f
 	sha256sums = 8d08a959e0086a206ef3454cc0fc323454c73609cd764f102d8d2d076dafa0af
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = xterminal-bin
