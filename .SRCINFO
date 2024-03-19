@@ -1,13 +1,13 @@
 pkgbase = vim-localvimrc-git
 	pkgdesc = Search local vimrc files in the tree and load them.
-	pkgver = r238.4c768d2
+	pkgver = r246.841a064
 	pkgrel = 1
 	url = https://github.com/embear/vim-localvimrc
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = vim-plugin-runtime
-	source = git+https://github.com/embear/vim-localvimrc.git#branch=master
+	source = git+https://github.com/embear/vim-localvimrc.git
 	sha256sums = SKIP
 
 pkgname = vim-localvimrc-git

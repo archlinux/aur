@@ -1,6 +1,7 @@
 # Maintainer: Liao Junxuan <mikeljx at 126 dot com>
-pkgname=vim-localvimrc-git
-pkgver=r238.4c768d2
+_pkgname=vim-localvimrc
+pkgname=${_pkgname}-git
+pkgver=r246.841a064
 pkgrel=1
 pkgdesc="Search local vimrc files in the tree and load them."
 arch=('any')
@@ -9,16 +10,16 @@ license=('GPL3')
 groups=()
 depends=('vim-plugin-runtime')
 makedepends=('git')
-source=("git+https://github.com/embear/vim-localvimrc.git#branch=master")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${_pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${_pkgname}"
 
     local _installpath="${pkgdir}/usr/share/vim/vimfiles"
     install -d "${_installpath}"
