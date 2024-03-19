@@ -4,7 +4,7 @@ url="https://github.com/LORD-MicroStrain/microstrain_inertial"
 pkgname="ros-noetic-microstrain-inertial-msgs"
 pkgver="4.0.1"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=("MIT")
 
 ros_makedepends=(
@@ -39,7 +39,7 @@ prepare() {
     if [ -d microstrain_inertial_msgs_common ]; then
         rm -rf microstrain_inertial_msgs_common
     fi
-    git clone --recursive https://github.com/LORD-MicroStrain/microstrain_inertial_driver_common
+    git clone --recursive https://github.com/LORD-MicroStrain/microstrain_inertial_msgs_common
     cd microstrain_inertial_msgs_common
     git checkout ${_msgs_common_commit}
 }
