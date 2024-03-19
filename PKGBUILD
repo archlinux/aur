@@ -1,4 +1,5 @@
 # Maintainer: mazzetta86 <mazzetta86@gmail.com>
+# Maintainer: Archttila <linux.alucard@gmail.com>
 # Contributor: János Illés <ijanos@gmail.com>
 # Contributor: Borislav Lilov
 
