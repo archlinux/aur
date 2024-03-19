@@ -2,14 +2,15 @@
 
 pkgname=joplin-beta-appimage
 pkgver=2.14.20
-pkgrel=1
+pkgrel=2
 pkgdesc="The latest beta AppImage of Joplin - a cross-platform note taking and to-do app"
 arch=('x86_64')
 url="https://github.com/laurent22/joplin"
 license=('MIT')
 conflicts=('joplin-desktop' 'joplin-appimage' 'joplin-beta')
 depends=('fuse2')
-options=(!strip) # necessary otherwise the AppImage file in the package is truncated
+options=(!strip !debug) # strip is necessary otherwise the AppImage file in the package is truncated
+                        # debug is necessary due to issue with debugedit resulting in a truncated AppImage see: https://gitlab.archlinux.org/pacman/pacman/-/issues/107
 source=(
   ${url}/releases/download/v${pkgver}/Joplin-${pkgver}.AppImage
   ${url}/raw/v${pkgver}/LICENSE
