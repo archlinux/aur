@@ -162,21 +162,32 @@ function execAppUnsafe() {
 		/opt/wechat-uos-bwrap/files/wechat
 }
 
+function disableSandbox() {
+	if [[ $@ =~ "f5aaebc6-0014-4d30-beba-72bce57e0650" ]]; then
+		export trashAppUnsafe=1
+	fi
+	if [[ ${wechatUnsafe} = 1 ]]; then
+		export trashAppUnsafe=1
+	fi
+}
+
 function launch() {
 	detectXauth
 	inputMethod
 	moeDect
 	lnDir
-	echo "Launching WeChat Beta..."
 	if [[ ${trashAppUnsafe} = 1 ]]; then
+		echo "Launching WeChat UOS (unsafe)..."
 		execAppUnsafe
 	else
+		echo "Launching WeChat UOS..."
 		dbusProxy &
 		sleep 0.1
 		execApp
 	fi
 }
 
+disableSandbox $@
 sourceXDG
 manageDirs
 launch $@
