@@ -18,25 +18,36 @@ depends=(
   'tree-sitter'
   'util-linux-libs'
 )
-makedepends=('meson' 'nlohmann-json' 'ninja')
-source=("git+$url.git#tag=v$pkgver")
-b2sums=('2e179c119da1a98a31e1a38b9f22e729ca7ec1a1418d8408bd7b053d81bfc8a2b24749cab45b6354d7b34ff09bccc352a2f7ffd8e2bd6f5d72af76f3096c0f53')
+makedepends=('gtest' 'meson' 'nlohmann-json' 'ninja')
+source=(
+  "git+$url.git#tag=v$pkgver"
+  'git+https://github.com/JCWasmx86/tree-sitter-meson#commit=09665faff74548820c10d77dd8738cd76d488572'
+  'git+https://github.com/JCWasmx86/tree-sitter-ini#commit=20aa563306e9406ac55babb4474521060df90a30'
+  'sha256::git+https://github.com/amosnier/sha-2#commit=49265c656f9b370da660531db8cc6bf0a2e110a6'
+  'git+https://github.com/ada-url/ada#tag=v2.7.4'
+  'git+https://github.com/JCWasmx86/muon#commit=e7d0aae70c695a1adec81b9a05429474ee5c1bc1'
+)
+b2sums=('2e179c119da1a98a31e1a38b9f22e729ca7ec1a1418d8408bd7b053d81bfc8a2b24749cab45b6354d7b34ff09bccc352a2f7ffd8e2bd6f5d72af76f3096c0f53'
+        '517c4fbd80ab65375e5ebe13b57e65dc64460dda6a7d68a9998617bce94064e7fdd81c5428c55e31e785ae9b9d548dbff0818daad94fa1ffb256fe9a86804c6d'
+        'c7cb7dde86a27a8f8de2856fa04350b053a85080dc4314434739ff8f657f9b369e0b996e2ecae093de9b903e77ef3b2874a6f864d81ceba0bfa8d0a064859579'
+        'e4e59dcd348ea3ec9fc6ce7f62f944b8f5b40370c5738e6453e45aa201eadb9eb0b58d9d08e7068b8b1a4a6c90e94d58fb7df81337124c8e96e6e418fce488ae'
+        'a1bb73cac9898267aec9b019857581f2895351f3014727a297654a3c55a32d69e480e93c53a0089f342268049e0f23e9ba6c0ae1cefa703795e2655eacc74f8a'
+        'bf84b92bd7f9f287009a79926e26ec15fa744bb6500421f57e14ef12f0e453bd1d85757a6075e5e6672a882ede123d53492fd44c7aff1ec4b38d01c4ef131c96')
 
 build() {
-  local _meson_options=(
-    --wrap-mode default
-
-    -Dbenchmarks=false
-    -Dtests=false
-    -Duse_own_tree_sitter=false
+  local meson_options=(
+    -D benchmarks=false
+    -D tests=false
+    -D use_own_tree_sitter=false
   )
 
-  cd $pkgname
-  arch-meson build "${_meson_options[@]}"
+  # Inject subprojects
+  export MESON_PACKAGE_CACHE_DIR="$srcdir"
+
+  arch-meson $pkgname build "${meson_options[@]}"
   meson compile -C build
 }
 
 package() {
-  cd $pkgname
-  DESTDIR="$pkgdir" ninja -C build install
+  meson install -C build --destdir "$pkgdir"
 }
