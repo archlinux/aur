@@ -1,0 +1,15 @@
+pkgbase = vim-align
+	pkgdesc = Lets you align lines using regular expressions
+	pkgver = 37.43
+	pkgrel = 6
+	url = https://www.vim.org/scripts/script.php?script_id=294
+	arch = any
+	groups = vim-plugins
+	license = custom
+	depends = vim-plugin-runtime
+	source = vim-align.vbz.gz::https://www.vim.org/scripts/download_script.php?src_id=19633
+	source = LICENSE
+	sha256sums = b8d9ca0de80940157dea4a6531346cf3c43b54b6bcb661a6baac85ac37adf211
+	sha256sums = 49bbc4c6b0169346d675bbbbca8f11cde565b6b15b5a621e4b45b5e358889262
+
+pkgname = vim-align
