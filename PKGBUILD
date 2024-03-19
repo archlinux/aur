@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=chromazone
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='A terminal colorizer'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(gcc-libs
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('3cea4dc67dfb4838eb63422985cd42945855bc288dc55054ee0d2f0e4d5de631')
+sha256sums=('ebbdc5e3bc6e2dee27cce659ef583a10fc232ec783d3491d306b17876e33da48')
 
 prepare() {
 	cd "$_archive"
