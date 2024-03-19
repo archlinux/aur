@@ -1,0 +1,21 @@
+pkgbase = sparkleshare
+	pkgdesc = Collaboration and sharing tool based on git written in C Sharp
+	pkgver = 3.38
+	pkgrel = 1
+	url = https://www.sparkleshare.org/
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = webkit2-sharp
+	depends = notify-sharp-3
+	depends = curl
+	depends = git-lfs
+	depends = openssh
+	depends = gvfs
+	source = git+https://github.com/hbons/SparkleShare.git#commit=23d7166012e6fcf9ad6b6d317217908bbc0f51c8
+	source = 0001-Use-gtk-status-icon-by-default.patch
+	sha256sums = SKIP
+	sha256sums = 6565b373198faccade6de323a372ed4f9b26bdceefb2ce886df953eebe464b8f
+
+pkgname = sparkleshare
