@@ -7,7 +7,7 @@
 _plugin=focalboard
 pkgname=mattermost-plugin-$_plugin
 pkgver=7.11.4
-pkgrel=1
+pkgrel=2
 pkgdesc='an open source, self-hosted alternative to Trello, Notion, and Asana'
 arch=(x86_64)
 url=https://www.focalboard.com
