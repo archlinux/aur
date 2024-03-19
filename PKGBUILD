@@ -1,7 +1,7 @@
 # Maintainer: Evine Deng <evinedeng@hotmail.com>
 
 pkgname="backrest"
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="A web UI and orchestrator for restic backup."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -11,7 +11,7 @@ depends=("glibc" "restic")
 makedepends=("npm" "git" "go" "go.rice")
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}@.service")
-sha256sums=('8f6b55c290df854c66d93ad16e48789e567ef41f8826b4102b48f7eb128dc19b'
+sha256sums=('7dc8d7e3c2add0e1395d74b17fdd743cf8302f5ff24010b89b0b4b8b6f77f4ef'
             '54d7ceddc2d3abb1c00a3f45ff7dd43b5fdc05c6be1019ead7f7cbf4a40ab926')
 options=(!strip)
 
