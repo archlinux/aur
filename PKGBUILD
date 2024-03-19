@@ -1,8 +1,8 @@
 # Maintainer: thynkon <thynkon at protonmail dot com>
 
 pkgname=joplin-appimage
-pkgver=2.14.19
-pkgrel=1
+pkgver=2.14.20
+pkgrel=2
 pkgdesc="The latest stable AppImage of Joplin - a cross-platform note taking and to-do app"
 arch=('x86_64')
 url="https://github.com/laurent22/joplin"
@@ -10,12 +10,15 @@ license=('MIT')
 conflicts=('joplin-desktop')
 depends=('fuse2')
 options=(!strip) # necessary otherwise the AppImage file in the package is truncated
+# temporary solution that disables debugedit.
+# reference: https://gitlab.archlinux.org/pacman/pacman/-/issues/107
+options=(!strip !debug) # necessary otherwise the AppImage file in the package is truncated
 source=(
   ${url}/releases/download/v${pkgver}/Joplin-${pkgver}.AppImage
   ${url}/raw/v${pkgver}/LICENSE
 )
 sha512sums=(
-  7be9cdce0b1a25fdc7c0e5757faa542f11906e572af477fdd17d57fc9f3683bfb99801c91e7f03ac6ee819b72206339a61bb0aac61c66a35013af097ee8bb3a8
+  50ebaa06ad225387e2117a6453e92d5665f90bc5d7dec492aac0993781e6e7cdca8aaa2dff06d740146888e2dd04f623d72af060c41765825b52e3c2a9d03890
   SKIP
 )
 _filename="Joplin-${pkgver}.AppImage"
