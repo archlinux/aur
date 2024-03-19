@@ -49,7 +49,7 @@ check() {
 
   echo 'start test'
   sh ./patr-java-profiler-start-${pkgver}.sh --no-server --no-client --no-defaults \
-     -cp "$srcdir/patr-java-profiler-test-${pkgver}.jar" dea.hechler.patrick.profiler.test.PHPTestMain > /dev/null
+     -cp "$srcdir/patr-java-profiler-test-${pkgver}.jar" de.hechler.patrick.profiler.test.PHPTestMain > /dev/null
   echo 'validate test'
   sh ./patr-java-profiler-start-${pkgver}.sh --only-client --validate patr-java-profiler-output.data
   echo 'finished test'
