@@ -10,13 +10,13 @@ license=('GPL-3.0-or-later')
 depends=(
   'curl'
   'git'
-  'libarchive.so'
-  'libpkgconf.so'
-  'libuuid.so'
+  'libarchive'
   'mercurial'
   'patch'
+  'pkgconf'
   'subversion'
   'tree-sitter'
+  'util-linux-libs'
 )
 makedepends=('meson' 'nlohmann-json' 'ninja')
 source=("git+$url.git#tag=v$pkgver")
