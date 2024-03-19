@@ -7,7 +7,7 @@ _branch='develop'
 pkgver=0.11.0.r105.g6b5d106
 pkgrel=1
 pkgdesc="A GTK interface to the hamster time tracker"
-url="https://github.com/projecthamster/hamster-gtk"
+url="https://github.com/projecthamster/$_pkgname"
 depends=('gtk3' 'python' 'python-gobject' 'python-hamster-lib-git' 'python-orderedset')
 makedepends=('git' 'python-setuptools')
 options=(!emptydirs)
@@ -15,7 +15,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 license=('GPL3')
 arch=('any')
-source=("git://github.com/projecthamster/$_pkgname.git#branch=$_branch")
+source=("git+$url.git#branch=$_branch")
 sha256sums=('SKIP')
 
 pkgver() {
