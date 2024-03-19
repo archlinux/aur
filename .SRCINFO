@@ -1,0 +1,25 @@
+pkgbase = zmusic-bin
+	pkgdesc = GZDoom's music system as a standalone library
+	pkgver = 1.1.12
+	pkgrel = 1
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	license = GPL3
+	license = LGPL2.1
+	license = LGPL3
+	license = custom:dumb
+	makedepends = unzip
+	depends = alsa-lib
+	depends = libsndfile
+	depends = mpg123
+	depends = zlib
+	optdepends = soundfont-fluid: default soundfont for FluidSynth
+	conflicts = zmusic
+	conflicts = zmusic-git
+	source_x86_64 = https://gitlab.com/zmusic-bin/binaries/1.1.12/-/raw/main/zmusic-linux-x64.tar.xz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://gitlab.com/zmusic-bin/binaries/1.1.12/-/raw/main/zmusic-linux-arm64.tar.xz
+	sha256sums_aarch64 = SKIP
+
+pkgname = zmusic-bin
