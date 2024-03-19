@@ -2,7 +2,7 @@
 
 pkgname=hancho
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple pleasant build system in Python'
 arch=('any')
 url='https://github.com/aappleby/hancho'
@@ -12,7 +12,7 @@ makedepends=(
   'python-build'
   'python-installer'
   'python-j2cli'
-  'python-setuptools'
+  'python-poetry-core'
   'python-wheel'
 )
 checkdepends=('gtk3')
@@ -28,7 +28,7 @@ source=(
 
 sha512sums=(
   'eef8e2e22c154efc4f1722d8bc50a4865d4151a467a9408811b888d5a0f20f537e7bc3776c8a7cc59a7a62c181b7bb82039432610a04ee2b5ce5cf9f22ea54e9'
-  'd16109bc0f50852749a0c75c38b4e00c1facf97ce1e458ebde711a448d10c8047e8e9daef10d4ad16313ba521dea024c8794a055cb9a6a3ac91979669d403d3a'
+  '8d37cd359870614d0bd8c60e4f4bac867482e8460daad4a2d1974deefc5fffb79da1c880acadb7c8a7d28a733067cbf185cfbf3982090122fd2b934e6b47de83'
 )
 
 prepare() {
@@ -37,22 +37,14 @@ prepare() {
   echo >&2 'Removing unneeded files'
   find . -name .gitignore -exec rm -v '{}' +
 
-  echo >&2 'Preparing setuptools'
+  echo >&2 'Configuring build backend'
   j2 -f env -o 'pyproject.toml' '../pyproject.toml.template' - \
     <<< "pkgver=${pkgver}"
-
-  echo >&2 'Preparing Python package'
-  mkdir -pv hancho
-  mv -v hancho.py hancho/__init__.py
 }
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python -m build --wheel --no-isolation
-}
-
-_site_packages() {
-  python -c 'import site; print(site.getsitepackages()[0])'
 }
 
 check() {
@@ -65,9 +57,10 @@ check() {
     "${srcdir}/${pkgname}-${pkgver}/dist"/*.whl
 
   echo >&2 'Running tests'
-  PYTHONPATH="${_tmpbase}/$(_site_packages)"
+  PYTHONPATH="${_tmpbase}/$(
+    python -c 'import site; print(site.getsitepackages()[0])'
+  )"
   export PYTHONPATH
-  ln -s "${_tmpbase}/usr/bin/hancho" hancho.py
   python hancho.py
   rm -rf examples/*/build
   rm -rf tutorial/build

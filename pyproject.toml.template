@@ -1,13 +1,12 @@
 [build-system]
-build-backend = "setuptools.build_meta"
-requires = ["setuptools"]
+requires = ["poetry-core>=1.9.0"]
+build-backend = "poetry.core.masonry.api"
 
-[project]
+[tool.poetry]
 name = "hancho"
 version = "{{ pkgver }}"
+description = "A simple pleasant build system in Python."
+authors = ["aappleby"]
 
-[project.scripts]
+[tool.poetry.scripts]
 hancho = "hancho:app.main"
-
-[tool.setuptools]
-packages = ["hancho"]

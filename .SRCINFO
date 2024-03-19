@@ -1,7 +1,7 @@
 pkgbase = hancho
 	pkgdesc = Simple pleasant build system in Python
 	pkgver = 0.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aappleby/hancho
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = hancho
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-j2cli
-	makedepends = python-setuptools
+	makedepends = python-poetry-core
 	makedepends = python-wheel
 	depends = python
 	optdepends = gtk3: to build the included meson example
@@ -18,6 +18,6 @@ pkgbase = hancho
 	source = hancho-0.0.5.tar.gz::https://github.com/aappleby/hancho/archive/0.0.5.tar.gz
 	source = pyproject.toml.template
 	sha512sums = eef8e2e22c154efc4f1722d8bc50a4865d4151a467a9408811b888d5a0f20f537e7bc3776c8a7cc59a7a62c181b7bb82039432610a04ee2b5ce5cf9f22ea54e9
-	sha512sums = d16109bc0f50852749a0c75c38b4e00c1facf97ce1e458ebde711a448d10c8047e8e9daef10d4ad16313ba521dea024c8794a055cb9a6a3ac91979669d403d3a
+	sha512sums = 8d37cd359870614d0bd8c60e4f4bac867482e8460daad4a2d1974deefc5fffb79da1c880acadb7c8a7d28a733067cbf185cfbf3982090122fd2b934e6b47de83
 
 pkgname = hancho
