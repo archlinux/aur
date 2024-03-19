@@ -1,20 +1,20 @@
-# Mantainer: Jens Staal <staal1978@gmail.com>
+# Maintainer: Fabian Maurer <dark.shadow4@web.de>
+# Contributor: Jens Staal <staal1978@gmail.com>
 # Contributor : ackalker
 pkgname=openwatcom-v2
-pkgver=2.0
-pkgrel=8
+pkgver=2.0_2024_03_01
+pkgrel=1
 pkgdesc="The Open Watcom Fortran/C/C++ compiler, binary distribution -V2 fork"
 arch=('x86_64')
 #url="http://www.openwatcom.org"
 url="https://github.com/open-watcom"
 license=('custom:OWPL-1')
 source=(
-'https://github.com/open-watcom/open-watcom-v2/releases/download/Last-CI-build/ow-snapshot.tar.xz'
+'https://github.com/open-watcom/open-watcom-v2/releases/download/2024-03-01-Build/ow-snapshot.tar.xz'
 'owsetenv.sh'
 )
 noextract=('ow-snapshot.tar.gz')
-#md5sums change frequently since it is a snapshot. If it fails, download manually and check md5sum
-md5sums=('SKIP'
+md5sums=('bfd38da3e929655048fc8c0dd5077aae'
          '2abd462742068d76a5cf1753b128ac94')
 options=(!strip)
 
@@ -41,4 +41,7 @@ package() {
 	cd $pkgdir/opt/watcom/binl
 	ln -s /usr/bin/true ranlib
 	ln -s wlib ar
+
+    # fix ownership
+     chown -R root:root $pkgdir/opt/watcom/
 } 
