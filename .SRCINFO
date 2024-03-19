@@ -1,7 +1,7 @@
 pkgbase = pcloud-drive
 	pkgdesc = pCloud drive. Electron edition.
 	pkgver = 1.14.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pcloud.com/
 	arch = x86_64
 	license = custom
@@ -12,8 +12,9 @@ pkgbase = pcloud-drive
 	replaces = pcloud-git
 	replaces = pcloud
 	options = !strip
+	options = !debug
 	source = LICENSE
-	source = pcloud-drive-1.14.5-1.AppImage::https://vc533.pcloud.com/cBZQGMwxUZhuVWap7ZZZBcIs7kZ2ZZsP7ZkZ5hhxVZcLZCFZbHZvRZVFZtFZwLZ1FZgRZTHZF4ZSLZRQZMRZ0AMJ0ZUMBUXFDLoV0fhA261JJofpYm2saX/pcloud
+	source = pcloud-drive-1.14.5-2.AppImage::https://p-def7.pcloud.com/cBZQGMwxUZhuVWap7ZZZlCMM7kZ2ZZBH0ZkZ5hhxVZcLZCFZbHZvRZVFZtFZwLZ1FZgRZTHZF4ZSLZRQZMRZ0AMJ0Z6REzHqi1ohSBT6NmafKVvhNFolMk/pcloud
 	sha256sums = ba438cd891d5aeaf326b849d6191869bc8424c40418cca30cccbc33d23e62b20
 	sha256sums = 6b0edf0ea0d5894b4c6fbcc864ce6f23a2b4ae9b2c1a3fa2b96a4950930accc2
 

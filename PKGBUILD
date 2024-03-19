@@ -3,14 +3,14 @@
 
 pkgname=pcloud-drive
 pkgver=1.14.5
-pkgrel=1
+pkgrel=2
 pkgdesc='pCloud drive. Electron edition.'
 arch=('x86_64')
 url='https://www.pcloud.com/'
 license=('custom')
 depends=('fuse2' 'zlib' 'hicolor-icon-theme')
 optdepends=('libappindicator-gtk3: Tray menu support')
-options=(!strip)
+options=(!strip !debug)
 replaces=('pcloud-git' 'pcloud')
 _shortname='pcloud'
 _appimage="${pkgname}-${pkgver}-${pkgrel}.AppImage"
