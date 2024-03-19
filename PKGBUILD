@@ -4,8 +4,8 @@
 
 _pkgname='woodpecker-agent'
 pkgname=$_pkgname-sudo
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
 pkgdesc='A simple CI engine with great extensibility (agent), patched to use sudo to run local pipelines'
 arch=('x86_64')
 url='https://woodpecker-ci.org'
@@ -17,7 +17,7 @@ optdepends=(
 )
 makedepends=('git' 'go')
 options=('!lto')
-_commit='ee56a6ad01726311bce9cf71ea37e7cc4bbdb35c'
+_commit='21d6ea2ba6862306bf3d35e38f446022606ca811'
 replaces=($_pkgname)
 conflicts=($_pkgname)
 backup=('etc/woodpecker/agent.env')
