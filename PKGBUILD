@@ -3,13 +3,13 @@
 pkgname=('lua-luacov-reporter-gcovr' 'lua51-luacov-reporter-gcovr' 'lua52-luacov-reporter-gcovr' 'lua53-luacov-reporter-gcovr')
 _pkgbase='luacov-reporter-gcovr'
 pkgdesc='A luacov reporter that creates gcovr json files'
-pkgver=0.0.2
+pkgver=0.0.4
 pkgrel=1
 arch=('any')
 url='https://github.com/jprjr/luacov-reporter-gcovr'
 license=('MIT')
 source=("$_pkgbase-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-md5sums=('8d98347292579426b367a655444ba370')
+md5sums=('6aa8a3f6dbe6fd504a27613dc80bb1ae')
 
 package_lua-luacov-reporter-gcovr() {
     pkgdesc+=''
