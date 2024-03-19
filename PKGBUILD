@@ -2,7 +2,7 @@
 pkgname=ih8rtcgui
 pkgver=0.0.7
 _electronversion=28
-pkgrel=3
+pkgrel=4
 pkgdesc="RTC Jazz (EWM) simple desktop application to manage/view workitems"
 arch=('any')
 url="https://github.com/kenny59/ih8rtcgui"
@@ -21,12 +21,13 @@ options=('!strip')
 source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh")
-sha256sums=('SKIP'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+sha256sums=('0a168dae3136de44ed872422151bbdd889315c4aaba798c6fc3e85e44d48089b'
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     gendesk -q -f -n --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
@@ -38,7 +39,14 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    sed "s|--win|-l AppImage|g" -i package.json
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
+    sed "s|--win --publish never|--dir|g" -i package.json
     npm install
     npm run build
 }
