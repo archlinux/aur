@@ -1,0 +1,13 @@
+pkgbase = transqlate
+	pkgdesc = Transpile SQL snippet from a dialect to another using an AST
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.com/dalibo/transqlate
+	arch = x86_64
+	license = PostgreSQL
+	makedepends = go
+	depends = glibc
+	source = https://gitlab.com/dalibo/transqlate/-/archive/v0.1/transqlate-v0.1.tar.gz
+	sha256sums = f154b7f71ff065c242d09cc5e9aafc0e1599142b5c49db6ace62c32c5e3515c8
+
+pkgname = transqlate
