@@ -5,9 +5,24 @@ pkgbase=xorg-server-bug865
 pkgname=xorg-server-bug865
 
 pkgver=21.1.11
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
-license=('custom')
+license=('LicenseRef-Adobe-Display-PostScript'
+         'BSD-3-Clause'
+         'LicenseRef-DEC-3-Clause'
+         'HPND'
+         'LicenseRef-HPND-sell-MIT-disclaimer-xserver'
+         'HPND-sell-variant'
+         'ICU'
+         'ISC'
+         'MIT'
+         'MIT-open-group'
+         'NTP'
+         'SGI-B-2.0'
+         'SMLNJ'
+         'X11'
+         'X11-distribute-modifications-variant'
+)
 groups=('xorg')
 url="https://xorg.freedesktop.org"
 makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
@@ -43,7 +58,7 @@ build() {
   # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
   export CFLAGS=${CFLAGS/-fno-plt}
   export CXXFLAGS=${CXXFLAGS/-fno-plt}
-  export LDFLAGS=${LDFLAGS/,-z,now}
+  export LDFLAGS=${LDFLAGS/-Wl,-z,now}
 
   arch-meson xorg-server-$pkgver build \
     -D ipv6=true \
@@ -84,6 +99,7 @@ package_xorg-server-bug865() {
   pkgdesc="Xorg X server with the patch for freedesktop bug 865 (need to kick hotkeys on release, not press)"
   depends=(libepoxy libxfont2 pixman xorg-server-common libunwind
            dbus libgl xf86-input-libinput nettle
+           libxdmcp sh glibc libxau systemd-libs libtirpc
            libpciaccess libdrm libxshmfence libxcvt) # FS#52949
   # see xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel pkg
