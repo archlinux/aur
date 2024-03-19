@@ -8,13 +8,13 @@ _pkgname=ledger-live
 pkgname="${_pkgname}-git"
 pkgdesc="Maintain your Ledger devices (git-main)"
 _electron='electron28'
-pkgver=2.77.2.r0.g264cacb
+pkgver=2.78.0.r0.g62823eb
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
 license=('MIT')
 depends=('ledger-udev' "${_electron}")
-makedepends=('git' 'node-gyp' 'fnm' 'pnpm')
+makedepends=('git' 'node-gyp' 'pnpm' 'nvm')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${pkgname}::git+${url}#branch=main"
@@ -22,11 +22,10 @@ source=("${pkgname}::git+${url}#branch=main"
 sha512sums=('SKIP'
             '70effe952d7007e79e43523f5e8d868228eedb5049465c2ebea017f9c8b0b25f82e0c6f56cef59e40479d29149969cde8e7098edf8a0cad7b23a9a123e5f0755')
 
-_fnm_use() {
-  export FNM_DIR="${srcdir}/.fnm"
-  eval "$(fnm env --shell bash)"
-  version="$(awk -F "=" '/node/ {print $2}' .prototools | xargs)"
-  fnm use "${version}" --install-if-missing
+_nvm_install() {
+  export NVM_DIR="${srcdir}/.nvm"
+  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+  nvm install "$(awk -F "=" '/node/ {print $2}' .prototools | xargs)"
 }
 
 prepare() {
@@ -36,7 +35,7 @@ prepare() {
 build() {
   cd "${pkgname}"
 
-  _fnm_use
+  _nvm_install
 
   pnpm i --filter="ledger-live-desktop..." --filter="ledger-live" --frozen-lockfile --unsafe-perm
   pnpm build:lld
