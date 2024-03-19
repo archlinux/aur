@@ -2,7 +2,7 @@
 
 pkgname=dokku
 pkgver=0.34.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Docker-powered PaaS that helps build and manage the lifecycle of applications'
 arch=('any')
 url='https://github.com/dokku/dokku'
@@ -54,9 +54,6 @@ build() {
   export GOPATH="${srcdir}/gopath"
 
   cd "${pkgname}-${pkgver}"
-
-  # Fix issue with invalid service manager call for arch linux
-  patch -p1 -i "${srcdir}/systemd_calls.patch"
 
   # Add .core and build go plugins
   for plugin in plugins/*; do
