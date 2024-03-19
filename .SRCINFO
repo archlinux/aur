@@ -1,12 +1,12 @@
 pkgbase = ttfautohint-git
 	pkgdesc = Provides automated hinting process for web fonts
-	pkgver = 1.8.3.r16.g701aa67
-	pkgrel = 4
+	pkgver = 1.8.4.r13.g87a4ebf
+	pkgrel = 1
 	url = http://www.freetype.org/ttfautohint
 	arch = x86_64
 	arch = i686
-	license = GPL
-	license = custom
+	license = GPL-2.0-or-later OR FTL
+	makedepends = git
 	makedepends = imagemagick
 	makedepends = inkscape
 	makedepends = noto-fonts
@@ -16,7 +16,7 @@ pkgbase = ttfautohint-git
 	depends = freetype2
 	depends = harfbuzz
 	depends = qt5-base
-	provides = ttfautohint=1.8.3.r16.g701aa67
+	provides = ttfautohint=1.8.4.r13.g87a4ebf
 	conflicts = ttfautohint
 	source = ttfautohint-git::git://repo.or.cz/ttfautohint.git
 	source = gnulib-git::git+https://git.savannah.gnu.org/git/gnulib.git

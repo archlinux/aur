@@ -3,16 +3,17 @@
 # Contributor: Arthur Titeica <arthur dot titeica at gmail dot com>
 
 pkgname=ttfautohint-git
-pkgver=1.8.3.r16.g701aa67
-pkgrel=4
+pkgver=1.8.4.r13.g87a4ebf
+pkgrel=1
 pkgdesc='Provides automated hinting process for web fonts'
 arch=(x86_64 i686)
 url="http://www.freetype.org/${pkgname%-git}"
-license=(GPL custom)
+license=('GPL-2.0-or-later OR FTL')
 depends=(freetype2
          harfbuzz
          qt5-base)
-makedepends=(imagemagick
+makedepends=(git
+             imagemagick
              inkscape
              noto-fonts
              pandoc
@@ -25,19 +26,18 @@ source=("$pkgname::git://repo.or.cz/${pkgname/-/.}"
 sha256sums=('SKIP'
             'SKIP')
 
-pkgver() {
-	cd "$pkgname"
-	git describe --tags --abbrev=7 --match="v*" HEAD |
-		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 prepare(){
 	cd "$pkgname"
 	git submodule init
 	git config submodule.gnulib.url "$srcdir/gnulib-git"
-	git submodule update
-	echo "GNULIB_URL='$srcdir/gnulib-git'" > bootstrap.conf
+	git -c protocol.file.allow=always submodule update
 	./bootstrap --force
+}
+
+pkgver() {
+	cd "$pkgname"
+	git describe --tags --abbrev=7 --match="v*" HEAD |
+		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -48,6 +48,7 @@ build() {
 	export RCC='/usr/bin/rcc'
 	export TTFONTS='/usr/share/fonts/noto'
 	./configure \
+		--without-doc \
 		--prefix=/usr \
 		--with-qt=/usr/lib/qt \
 		--with-freetype-config="pkg-config freetype2"
