@@ -1,13 +1,13 @@
 # Maintainer: Dringsim <dringsim@qq.com>
 
 pkgname=gap-jupyterkernel-install
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="install Jupyter kernel for GAP"
 arch=('any')
 url="https://github.com/EugeneLoy/coq_jupyter"
 license=('BSD')
-depends=('gap-jupyterkernel=1.4.1' 'gap-crypting' 'gap-gapdoc' 'gap-io' 'gap-json' 'gap-uuid' 'gap-zeromqinterface' 'python-jupyter-client')
+depends=('gap-jupyterkernel=1.5.0' 'gap-crypting' 'gap-gapdoc' 'gap-io' 'gap-json' 'gap-uuid' 'gap-zeromqinterface' 'python-jupyter-client')
 
 package() {
     install -Dm644 /usr/lib/gap/pkg/jupyterkernel/etc/gap-mode/* -t "${pkgdir}/usr/share/jupyter/nbextensions/gap-mode"
