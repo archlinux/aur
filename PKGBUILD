@@ -7,7 +7,7 @@
 # Contributor: Jeff 'codemac' Mickey <jeff@archlinux.org>
 
 pkgname=dmenu
-pkgver=5.2
+pkgver=5.3
 pkgrel=1
 pkgdesc='Generic menu for X'
 url='https://tools.suckless.org/dmenu/'
@@ -15,8 +15,8 @@ arch=('x86_64')
 license=('MIT')
 depends=('sh' 'glibc' 'coreutils' 'libx11' 'libxinerama' 'libxft' 'freetype2' 'fontconfig' 'libfontconfig.so')
 source=(https://dl.suckless.org/tools/dmenu-${pkgver}.tar.gz)
-sha512sums=('7be9bb76b11225ec86a30e643e9b884f6d13af581526085212cb7401383d448a72fe4dffc3ce84ffb8319dbf36ca8384597a89070cd27d39d5618f239a2da6e3')
-b2sums=('f827f0d0d935f9da8103dbb73ed8b67818f1213d2f8e5a406de5e8c9496ea0479b4ccb50d3a29004abc1e4e679cac177163c02458ed144d323bb50fc120f936d')
+sha512sums=('60f758134063ad7f304fbb0785c66dddc21461e5e5014f8735cf6d5c95dc22a177f069d48101e633ddffe5bbefc1118a2bf8b31daaf7b6438fdf6fe1bcb5d61c')
+b2sums=('fd76b0b11a153f98dd58ec888820bc8a0ebc67f814cdf2d13a35ea3addcc3ad423bb9b2f4f73897cf6293e61a507900e7b7fec65e4f0acd15cc8e425f5506faa')
 
 prepare() {
   cd ${pkgname}-${pkgver}
