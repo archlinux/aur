@@ -1,14 +1,14 @@
 # Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 # -*- mode: sh -*-
 
-pkgname=gonano
+pkgname='gonano'
 pkgver=0.1.17
-pkgrel=3
+pkgrel=5
 _pkgdate=1644501572
 pkgdesc='Go language support for NANO — a digital currency'
 arch=('aarch64' 'armv7h' 'x86_64')
 url='https://github.com/hectorchu/gonano'
-license=('MIT')
+license=('MIT')  # SPDX-License-Identifier: MIT
 depends=('gcc-libs' 'glibc' 'ocl-icd')
 makedepends=('go')
 options=('lto')
@@ -16,8 +16,38 @@ source=(
   "$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  go mod tidy
+
+  # mynano.ninja is offline
+  # see e.g. https://github.com/hectorchu/gonano/issues/16
+  export _old_endpoint='mynano.ninja/api/node'
+  export _new_endpoint='rainstorm.city/api'
+
+  printf 'Changing default RPC endpoint from “%s” to “%s”:\n' "$_old_endpoint" "$_new_endpoint"
+  for _file in wallet/wallet.go cmd/root.go rpc/account_test.go; do
+    printf ' · %s' "$_file"
+    sed -i "s|$_old_endpoint|$_new_endpoint|g" "$_file"
+    printf '\n'
+  done
+  printf 'Done!\n'
+}
+
 build() {
-  cd "$pkgname-$pkgver" || exit 1
+  cd "$pkgname-$pkgver"
+
+  # RFC-0023
+  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
+  #
+  # ld(1) says: “Supported for i386 and x86-64.”
+  case "${CARCH:-unknown}" in
+    'x86_64' | 'i386' )
+      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+    ;;
+    * ) : pass ;;
+  esac
 
   # https://wiki.archlinux.org/title/Go_package_guidelines
   export CGO_CPPFLAGS="$CPPFLAGS"
@@ -40,7 +70,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver" || exit 1
+  cd "$pkgname-$pkgver"
 
   install -vDm0755 gonano    "$pkgdir/usr/bin/gonano"
   install -vDm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
