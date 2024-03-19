@@ -1,0 +1,57 @@
+pkgbase = gcc12
+	pkgdesc = The GNU Compiler Collection
+	pkgver = 12.3.0
+	pkgrel = 4
+	url = https://gcc.gnu.org
+	arch = x86_64
+	license = GPL3
+	license = LGPL
+	license = FDL
+	license = custom
+	checkdepends = dejagnu
+	checkdepends = expect
+	checkdepends = inetutils
+	checkdepends = python-pytest
+	checkdepends = tcl
+	makedepends = binutils
+	makedepends = doxygen
+	makedepends = gcc-ada
+	makedepends = gcc-d
+	makedepends = git
+	makedepends = libisl
+	makedepends = libmpc
+	makedepends = python
+	makedepends = zstd
+	options = !emptydirs
+	options = !lto
+	source = git+https://sourceware.org/git/gcc.git#commit=8fc1a49c9312b05d925b7d21f1d2145d70818151
+	source = c89
+	source = c99
+	validpgpkeys = F3691687D867B81B51CE07D9BBE43771487328A9
+	validpgpkeys = 86CFFCA918CF3AF47147588051E8B148A9999C34
+	validpgpkeys = 13975A70E63C361C73AE69EF6EEB81F8981C74C7
+	validpgpkeys = D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62
+	sha256sums = SKIP
+	sha256sums = de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931
+	sha256sums = 2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a
+
+pkgname = gcc12
+	pkgdesc = The GNU Compiler Collection - C and C++ frontends (12.x.x)
+	depends = gcc12-libs
+	depends = binutils>=2.28
+	depends = libmpc
+	depends = zstd
+	depends = libisl.so
+	options = !emptydirs
+	options = staticlibs
+
+pkgname = gcc12-libs
+	pkgdesc = Runtime libraries shipped by GCC (12.x.x)
+	depends = glibc>=2.27
+	options = !emptydirs
+	options = !strip
+
+pkgname = gcc12-fortran
+	pkgdesc = Fortran front-end for GCC (12.x.x)
+	depends = gcc12
+	depends = libisl.so
