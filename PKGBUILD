@@ -3,7 +3,7 @@
 # Contributor: Mika Fischer <mika.fischer@zoopnet.de>
 
 pkgname=squeezelite
-pkgver=1.9.9.1422
+pkgver=2.0.0.1468
 pkgrel=1
 pkgdesc="Lightweight headless squeezebox emulator"
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
@@ -12,7 +12,7 @@ license=(GPL3)
 depends=(alsa-lib faad2 flac libmad libvorbis mpg123 libsoxr ffmpeg)
 makedepends=(git)
 install=${pkgname}.install
-_commit=6394b3f987cfafdb49bb73a7381b0fbf234bc556 #micro 1422
+_commit=fd89d67b1b9a17a6dd212be0c91d0417b440f60a #micro 1468
 source=("git+https://github.com/ralph-irving/squeezelite.git#commit=${_commit}"
         'squeezelite.service'
         'conffile')
