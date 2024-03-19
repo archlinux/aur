@@ -1,16 +1,17 @@
 pkgbase = spheres-of-chaos
 	pkgdesc = Asteroids, while dropping acid.
 	pkgver = 2.0.7
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.spheresofchaos.com/
 	arch = i686
 	arch = x86_64
 	license = custom:freeware
-	depends = lib32-sdl
-	depends = lib32-libpulse
+	depends = sdl
 	source = http://www.spheresofchaos.com/files/chaosl.zip
 	source = chaosl
 	md5sums = ec067bc2373c055f42884d35e35d9b40
 	md5sums = bef16e8ff1c7a3c226b698c932ece5f2
+	depends_x86_64 = lib32-sdl
+	depends_x86_64 = lib32-libpulse
 
 pkgname = spheres-of-chaos
