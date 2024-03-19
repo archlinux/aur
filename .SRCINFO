@@ -1,0 +1,13 @@
+pkgbase = python-schedutils
+	pkgdesc = Python interface for the Linux scheduler functions etc.
+	pkgver = 0.6
+	pkgrel = 12
+	url = https://git.kernel.org/cgit/libs/python/python-schedutils/python-schedutils.git/
+	arch = x86_64
+	license = GPL2
+	makedepends = python-setuptools
+	depends = python
+	source = https://git.kernel.org/pub/scm/libs/python/python-schedutils/python-schedutils.git/snapshot/python-schedutils-0.6.tar.gz
+	sha512sums = e340cd60045f5f96ad722b1651ef5e26c3a99a4a986fbbcb0319e036a76a56c67b9b3792936da05776e43b4c92605f820f7fe6294b6197c00e5360c39767807b
+
+pkgname = python-schedutils
