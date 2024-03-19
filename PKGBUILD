@@ -3,8 +3,8 @@ pkgname=skywire-bin
 _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Building a new Internet. Skycoin.com"
-pkgver='1.3.19'
-pkgrel='3'
+pkgver='1.3.20'
+pkgrel='1'
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -50,20 +50,20 @@ sha256sums=('9257dc9cf98b382049b500f646c0005950077cedb83abbb62984983e4dda0874'
             '763c5a4251e819b944cfefeafa56e3d2bdfdd2e7e1198fdf1d369f3143990b5a'
             'd1bbd2b6d141cee8499fe2ae0c8429325d2d80ea895cce3db2db11f0629cc740'
             'e3a1a975138e6778a1e3ea47e98da94088c7c2d945295cd4ccbd0c992d6346c6')
-sha256sums_x86_64=('480cb21293902b18584d6b0da2254f12b3f08176c52ce8c106c538df59e2d723')
-sha256sums_aarch64=('460e23ee28722335b7925ea6f960cac5623081d149cf4b964ab300cf1f8b01d9')
-sha256sums_armv8=('460e23ee28722335b7925ea6f960cac5623081d149cf4b964ab300cf1f8b01d9')
-sha256sums_armv7=('de66e64e01b0058dc31bb78865b167816bc949598a774bd58b3b772c3ac6428f')
-sha256sums_armv7l=('de66e64e01b0058dc31bb78865b167816bc949598a774bd58b3b772c3ac6428f')
-sha256sums_armv7h=('de66e64e01b0058dc31bb78865b167816bc949598a774bd58b3b772c3ac6428f')
-sha256sums_arm=('2796332b21f6503ef4b28b3475aedcd8f2ccde806ce47f7b0483a097b134052c')
-sha256sums_riscv64=('5b89faf8c27dc7bf091fcf98bde504182060a7a1ddbd04f04030097bd175e53a')
+sha256sums_x86_64=('b1b8b36e8eb8378c5337cee9ba232891ea4c31ad12819f83fe74fdb95a211684')
+sha256sums_aarch64=('9ed756d6cb65f5b908004f37d6f91e32461f80bb7e0a841330a0eaf67274a8f9')
+sha256sums_armv8=('9ed756d6cb65f5b908004f37d6f91e32461f80bb7e0a841330a0eaf67274a8f9')
+sha256sums_armv7=('b1b760807bb7bae27d4019e2f75c97365f33f88f8c726a5fe7541ed52c363b7a')
+sha256sums_armv7l=('b1b760807bb7bae27d4019e2f75c97365f33f88f8c726a5fe7541ed52c363b7a')
+sha256sums_armv7h=('b1b760807bb7bae27d4019e2f75c97365f33f88f8c726a5fe7541ed52c363b7a')
+sha256sums_arm=('d463090185e36e7999d730d97e94540c681b4073b18923819da61fefdf1cd43c')
+sha256sums_riscv64=('aa2dad5d0879f0f778446c2779e36cebc77957763c793a819ed6a6b1fb920cfd')
 #https://github.com/skycoin/skywire/releases/download/v1.3.17/skywire-v1.3.17-linux-amd64.tar.gz
 #https://github.com/skycoin/skywire/releases/download/v1.3.17/skywire-v1.3.17-linux-arm64.tar.gz
 #https://github.com/skycoin/skywire/releases/download/v1.3.17/skywire-v1.3.17-linux-armhf.tar.gz
 #https://github.com/skycoin/skywire/releases/download/v1.3.17/skywire-v1.3.17-linux-arm.tar.gz
 #https://github.com/skycoin/skywire/releases/download/v1.3.17/skywire-v1.3.17-linux-riscv64.tar.gz
-_binarchive=("${_pkgname}-deployment-${_tag_ver}-linux")
+_binarchive=("${_pkgname}-${_tag_ver}-linux")
 _release_url=("${url}/releases/download/${_tag_ver}/${_binarchive}")
 source_x86_64=("${_release_url}-amd64.tar.gz")
 source_aarch64=("${_release_url}-arm64.tar.gz")
@@ -85,12 +85,12 @@ _build() {
   _GOAPPS="${GOBIN}/apps"
   mkdir -p ${_GOAPPS}
   _msg2 'creating launcher scripts'
-  for _i in "${_appscript[@]}" ; do
-    _msg3 ${_i}
-    echo -e '#!/bin/bash\n/opt/skywire/bin/skywire app '"${_i} "'$@' > "${_GOAPPS}/${_i}"
-  done
+  echo -e '#!/bin/bash\n/opt/skywire/bin/skywire $@' > "${_GOAPPS}/skywire"
+  chmod +x ${_GOAPPS}/*
   echo -e '#!/bin/bash\n/opt/skywire/bin/skywire cli $@' > "${GOBIN}/skywire-cli"
   echo -e '#!/bin/bash\n/opt/skywire/bin/skywire visor $@' > "${GOBIN}/skywire-visor"
+  chmod +x ${GOBIN}/*
+
 }
 
 package() {
@@ -123,11 +123,7 @@ install -Dm755 "${GOBIN}/skywire-cli" "${_pkgdir}/${_bin}/"
 ln -rTsf "${_pkgdir}/${_bin}/skywire-cli" "${_pkgdir}/usr/bin/skywire-cli"
 install -Dm755 "${GOBIN}/skywire-visor" "${_pkgdir}/${_bin}/"
 ln -rTsf "${_pkgdir}/${_bin}/skywire-visor" "${_pkgdir}/usr/bin/skywire-visor"
-for _i in "${_appscript[@]}" ; do
-  _msg3 ${_i}
-  install -Dm755 "${_GOAPPS}/${_i}" "${_pkgdir}/${_apps}/${_i}"
-	ln -rTsf "${_pkgdir}/${_apps}/${_i}" "${_pkgdir}/usr/bin/${_i}"
-done
+install -Dm755 "${_GOAPPS}/skywire" "${_pkgdir}/${_apps}/skywire"
 for _i in "${_script[@]}" ; do
   _msg3 ${_i}
   install -Dm755 "${srcdir}/${_skywirebin}${_i}" "${_pkgdir}/${_scriptsdir}/${_i}"
