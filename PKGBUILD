@@ -1,7 +1,7 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=mvfst
-pkgver=2024.03.11.00
+pkgver=2024.04.01.00
 pkgrel=1
 pkgdesc="An implementation of the QUIC transport protocol"
 arch=(x86_64)
@@ -67,7 +67,7 @@ provides=(
   libmvfst_transport_settings_functions.so
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4ba28efd162f83c7a330fab811f128490a787ef91d6366c6df9fc1f70e9b423d')
+sha256sums=('e39c4d7dd87520fcce6a3d5d398b5d03bd3e680186b9b0db23f02b502c6bcb1e')
 
 _archive="$pkgname-$pkgver"
 
@@ -102,7 +102,7 @@ check() {
 
   # Test fails in a chroot - not sure why
   ctest --test-dir build --output-on-failure \
-    -E QuicClientTransportAfterStartTest.StatelessResetClosesTransport
+    -E QuicClientTransportAfterStartTest.BadStatelessResetWontCloseTransport
 }
 
 package() {
