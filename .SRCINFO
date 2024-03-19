@@ -1,0 +1,27 @@
+pkgbase = foxdot
+	pkgdesc = Live Coding with Python
+	pkgver = 0.8.12
+	pkgrel = 3
+	url = https://foxdot.org
+	arch = any
+	groups = pro-audio
+	license = CCPL
+	checkdepends = python-pytest
+	makedepends = gendesk
+	makedepends = imagemagick
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = supercollider
+	depends = tk
+	optdepends = sc3-plugins: use additional UGens
+	source = foxdot-0.8.12.tar.gz::https://github.com/Qirky/foxdot/archive/v0.8.12.tar.gz
+	source = foxdot-0.8.12-python3.11.patch
+	sha512sums = d0b59bb117871ba5a785c2ab3ce83048a6649f02e8d07f1248432868ec49262bcd44fdf98dc5cb2694e1f8a9b38d76c2ac111c21708ef43fda7ce0d4d8471d64
+	sha512sums = 38ce5f0ac54c295a241998399399692793073c039c3a6e61640756908bd09819c08e5fbb656683d70e7426b05e0cc94dc3ae8e9d385df325cac36b1840ac8a0f
+	b2sums = 38bd7781daabb4abe3385444fcb254d36a24c532de789fc86063f35ddaacba8092e65bbf4e8b1eb62aff02f2705b35284fcebdfdacca5b0ad5260ffff7293989
+	b2sums = efb37ea9c8febc974142bd1127e4ba1ae7a60d458f0414ac97d73c9fe4e6d4ddc25cd12ee1e693b034cd77eb0bcb1e48ad089d89e3ced197099fea623bcb1d62
+
+pkgname = foxdot
