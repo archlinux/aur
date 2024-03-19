@@ -1,6 +1,6 @@
 pkgbase = firedragon
 	pkgdesc = Floorp fork build using custom branding & settings
-	pkgver = 11.10.5
+	pkgver = 11.11.0
 	pkgrel = 1
 	epoch = 1
 	url = http://dr460nf1r3.org
@@ -32,6 +32,8 @@ pkgbase = firedragon
 	makedepends = xorg-server-xvfb
 	makedepends = yasm
 	makedepends = zip
+	makedepends = weston
+	makedepends = xwayland-run
 	depends = dbus
 	depends = dbus-glib
 	depends = ffmpeg
@@ -65,15 +67,15 @@ pkgbase = firedragon
 	options = !strip
 	backup = usr/lib/firedragon/firedragon.cfg
 	backup = usr/lib/firedragon/distribution/policies.json
-	source = https://github.com/Floorp-Projects/Floorp/archive/refs/tags/v11.10.5.tar.gz
-	source = floorp-core::git+https://github.com/Floorp-Projects/Floorp-core#commit=db75341a765d0c1a53ccbc21513d61d82e877314
+	source = https://github.com/Floorp-Projects/Floorp/archive/refs/tags/v11.11.0.tar.gz
+	source = floorp-core::git+https://github.com/Floorp-Projects/Floorp-core#commit=31ceb1c62a7b11b07b1cfb16f6ee3de35974594c
 	source = floorp-l10n-central::git+https://github.com/Floorp-Projects/Unified-l10n-central#commit=4c2c1ca3e907d8ce170be6770d892d17e08c0e56
 	source = common::git+https://gitlab.com/garuda-linux/firedragon/common.git
 	source = settings::git+https://gitlab.com/garuda-linux/firedragon/settings.git
 	source = firedragon.desktop
-	sha256sums = d0cbd91d4a2e490441177476dd3c7d21b173878950d363e3a35dae151134de7d
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = b05d551fd0fe0114e79cbd9c2e872d5e8ced8299774a95219d332cd098c8d3ef
+	sha256sums = 824240c9799ac4939c195d26e43e22d788be07d23ebfb14a832194bf560b6561
+	sha256sums = c391478e5a144c08fdd92cf2c4e70971afbd913947509c578f3a653a4d36cb0f
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560

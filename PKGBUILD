@@ -1,10 +1,16 @@
 # Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 # Co-Maintainer: FGD
 
+# Three-stage profile-guided optimization
+: ${_build_pgo:=true}
+
+# Profile with xvfb-run, if possible
+: ${_build_pgo_xvfb:=false}
+
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=11.10.5
-_floorp_core_commit="db75341a765d0c1a53ccbc21513d61d82e877314"
+pkgver=11.11.0
+_floorp_core_commit="31ceb1c62a7b11b07b1cfb16f6ee3de35974594c"
 _floorp_l10n_commit="4c2c1ca3e907d8ce170be6770d892d17e08c0e56"
 pkgrel=1
 epoch=1
@@ -76,13 +82,22 @@ source=(https://github.com/Floorp-Projects/Floorp/archive/refs/tags/v"${pkgver}"
     "common::git+https://gitlab.com/garuda-linux/firedragon/common.git"
     "settings::git+https://gitlab.com/garuda-linux/firedragon/settings.git"
     "${pkgname}.desktop")
-sha256sums=('d0cbd91d4a2e490441177476dd3c7d21b173878950d363e3a35dae151134de7d'
-            'SKIP'
-            'SKIP'
+sha256sums=('b05d551fd0fe0114e79cbd9c2e872d5e8ced8299774a95219d332cd098c8d3ef'
+            '824240c9799ac4939c195d26e43e22d788be07d23ebfb14a832194bf560b6561'
+            'c391478e5a144c08fdd92cf2c4e70971afbd913947509c578f3a653a4d36cb0f'
             'SKIP'
             'SKIP'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560')
 install="${pkgname}.install"
+
+# Select the method of profiling
+if [[ "${_build_pgo::1}" == "t" ]]; then
+    if [[ "${_build_pgo_xvfb::1}" == "t" ]]; then
+        makedepends+=(xorg-server-xvfb)
+    else
+        makedepends+=(weston xwayland-run)
+    fi
+fi
 
 prepare() {
     # Floorp's shenanigan to make the build work without cloning the whole
@@ -243,41 +258,82 @@ build() {
     ulimit -n 4096
 
     # Do 3-tier PGO
-    echo "Building instrumented browser..."
-    cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-profile-generate=cross
-END
-    ./mach build
+    if [[ "${_build_pgo::1}" == "t" ]]; then
+        local _old_profdata="${SRCDEST:-$startdir}/merged.profdata"
+        local _old_jarlog="${SRCDEST:-$startdir}/jarlog"
 
-    echo "Profiling instrumented browser..."
-    ./mach package
-    LLVM_PROFDATA=llvm-profdata \
-        JARLOG_FILE="${PWD}/jarlog" \
-        xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
-        ./mach python build/pgo/profileserver.py
+        # Restore old profile
+        if [[ "${_build_pgo_reuse::1}" == "t" ]]; then
+            if [[ -s "$_old_profdata" ]]; then
+                echo "Restoring old profile data."
+                cp --reflink=auto -f "$_old_profdata" merged.profdata
+            fi
 
-    echo "Removing instrumented browser..."
-    ./mach clobber
+            if [[ -s "$_old_jarlog" ]]; then
+                echo "Restoring old jar log."
+                cp --reflink=auto -f "$_old_jarlog" jarlog
+            fi
+        fi
 
-    echo "Building optimized browser..."
-    cat >.mozconfig ../mozconfig
+        # Make new profile
+        if [[ "${_build_pgo_reuse::1}" != "t" ]] || [[ ! -s merged.profdata ]]; then
+            echo "Building instrumented browser..."
+            cat >.mozconfig ../mozconfig
+            echo >>.mozconfig "ac_add_options --enable-profile-generate=cross"
+            ./mach build
 
-    if [[ -s merged.profdata ]]; then
-        stat -c "Profile data found (%s bytes)" merged.profdata
-        echo "ac_add_options --enable-profile-use=cross" >>.mozconfig
-        echo "ac_add_options --with-pgo-profile-path='${PWD@Q}/merged.profdata'" >>.mozconfig
+            echo "Profiling instrumented browser..."
+            ./mach package
+
+            if [[ "${_build_pgo_xvfb::1}" == "t" ]]; then
+                local _headless_run=(
+                    xvfb-run
+                    -s "-screen 0 1920x1080x24 -nolisten local"
+                )
+            else
+                local _headless_run=(
+                    wlheadless-run
+                    -c weston --width=1920 --height=1080
+                )
+            fi
+
+            LLVM_PROFDATA=llvm-profdata JARLOG_FILE=${PWD@Q}/jarlog \
+                "${_headless_run[@]}" -- ./mach python build/pgo/profileserver.py
+
+            echo "Removing instrumented browser..."
+            ./mach clobber
+        fi
+
+        echo "Building optimized browser..."
+        cat >.mozconfig ../mozconfig
+
+        if [[ -s merged.profdata ]]; then
+            stat -c "Profile data found (%s bytes)" merged.profdata
+            echo >>.mozconfig "ac_add_options --enable-profile-use=cross"
+            echo >>.mozconfig "ac_add_options --with-pgo-profile-path='${PWD@Q}/merged.profdata'"
+
+            # save profdata for reuse
+            cp --reflink=auto -f merged.profdata "$_old_profdata"
+        else
+            echo "Profile data not found."
+        fi
+
+        if [[ -s jarlog ]]; then
+            stat -c "Jar log found (%s bytes)" jarlog
+            echo >>.mozconfig "ac_add_options --with-pgo-jarlog='${PWD@Q}/jarlog'"
+
+            # save jarlog for reuse
+            cp --reflink=auto -f jarlog "$_old_jarlog"
+        else
+            echo "Jar log not found."
+        fi
+
+        ./mach build
     else
-        echo "Profile data not found."
+        echo "Building browser..."
+        cat >.mozconfig ../mozconfig
+        ./mach build
     fi
-
-    if [[ -s jarlog ]]; then
-        stat -c "Jar log found (%s bytes)" jarlog
-        echo "ac_add_options --with-pgo-jarlog='${PWD@Q}/jarlog'" >>.mozconfig
-    else
-        echo "Jar log not found."
-    fi
-
-    ./mach build
 
     echo "Building symbol archive..."
     ./mach buildsymbols
