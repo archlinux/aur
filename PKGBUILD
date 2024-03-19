@@ -2,7 +2,7 @@
 
 _pkgname=voltrayke
 pkgname=$_pkgname-git
-pkgver=r28.5d7bae4
+pkgver=r32.a9e7fdd
 pkgrel=1
 pkgdesc="Audio volume system tray widget"
 url=https://github.com/qtilities/$_pkgname
@@ -12,6 +12,7 @@ depends=(
   alsa-lib
   libpulse
   qt5-base
+  libstatusnotifieritem-qt5
 )
 makedepends=(
   cmake

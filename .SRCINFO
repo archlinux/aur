@@ -1,6 +1,6 @@
 pkgbase = voltrayke-git
 	pkgdesc = Audio volume system tray widget
-	pkgver = r28.5d7bae4
+	pkgver = r32.a9e7fdd
 	pkgrel = 1
 	url = https://github.com/qtilities/voltrayke
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = voltrayke-git
 	depends = alsa-lib
 	depends = libpulse
 	depends = qt5-base
+	depends = libstatusnotifieritem-qt5
 	provides = voltrayke
 	conflicts = voltrayke
 	source = voltrayke::git+https://github.com/qtilities/voltrayke.git
