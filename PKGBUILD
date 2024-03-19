@@ -2,7 +2,7 @@
 
 pkgname=('lua-luaflac' 'lua51-luaflac' 'lua52-luaflac' 'lua53-luaflac')
 _pkgbase='luaflac'
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
 arch=('x86_64' 'i686')
 url='https://github.com/jprjr/luaflac'
@@ -11,7 +11,7 @@ depends=('flac')
 makedepends=('cmake' 'lua' 'lua51' 'lua52' 'lua53')
 source=("https://github.com/jprjr/luaflac/releases/download/v${pkgver}/luaflac-${pkgver}.tar.gz")
 
-md5sums=('c38ef7be5beec13ffe3fc8af6bbbf44f')
+md5sums=('e4fdd527489e37d5708e4d3794e98ce1')
 
 build() {
 
