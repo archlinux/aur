@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=igt-gpu-tools
-pkgver=1.27.1
+pkgver=1.28
 pkgrel=1
 pkgdesc="Collection of tools for development and testing of the DRM drivers."
 url="https://gitlab.freedesktop.org/drm/igt-gpu-tools"
@@ -12,6 +12,7 @@ makedepends=(
   ninja
 )
 depends=(
+  alsa-lib
   cairo
   glib2
   gsl
@@ -22,6 +23,7 @@ depends=(
   libelf
   liboping
   libpciaccess
+  libprocps
   libunwind
   libxmlrpc
   libxrandr
@@ -35,7 +37,7 @@ depends=(
   zlib
 )
 source=("$url/-/archive/v$pkgver/igt-gpu-tools-v$pkgver.tar.gz")
-sha256sums=('d6f6c26a86d95a74c20b911ded81ebfa8b0702a2786886b32e8aa891e703e4c1')
+sha256sums=('ba15b321c5a90da629baf326912c9c0406a903719040eb4959e0af1197935133')
 
 prepare() {
   MESON_OPTS=()
@@ -49,10 +51,11 @@ prepare() {
 
 build() {
   ninja -C build
+  ninja -C build igt-gpu-tools-doc
 }
 
 # several tests are timing out
-false &&
+# false &&
 check() {
   ninja -C build test
 }
