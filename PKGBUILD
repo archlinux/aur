@@ -36,5 +36,5 @@ package() {
 	cp -a "dist/terrabutler/terrabutler/." "$INSTALL_DIR"
 
 	mkdir -p "$BIN_DIR"
-	ln -s "${INSTALL_DIR}/terrabutler" "${BIN_DIR}/terrabutler"
+	ln -s "/usr/share/terrabutler/terrabutler" "${BIN_DIR}/terrabutler"
 }
