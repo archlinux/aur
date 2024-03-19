@@ -5,7 +5,7 @@
 pkgname=openlp-git
 _pkgbase=openlp
 pkgver=r17869.ed7561bde
-pkgrel=1
+pkgrel=2
 pkgdesc="Church presentation software."
 arch=('any')
 url='http://openlp.org/'
@@ -48,7 +48,7 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
   PYTHON_VERSION=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
   TAG=$(git describe --tags --abbrev=0)
-  VERSION="${TAG}.$(git rev-list $TAG.. --count)-$(git rev-parse --short HEAD)"
+  VERSION="${TAG}+git.$(git rev-parse --short HEAD)"
   echo "$VERSION" > "$pkgdir/usr/lib/python${PYTHON_VERSION}/site-packages/openlp/.version"
 
   install -Dm0755 "$srcdir/openlp.sh" "$pkgdir/etc/profile.d/openlp.sh"
