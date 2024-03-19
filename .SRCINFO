@@ -1,0 +1,14 @@
+pkgbase = chromazone
+	pkgdesc = A terminal colorizer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/matze/chromazone
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = https://github.com/matze/chromazone/archive/1.0.0/chromazone-1.0.0.tar.gz
+	sha256sums = 3cea4dc67dfb4838eb63422985cd42945855bc288dc55054ee0d2f0e4d5de631
+
+pkgname = chromazone

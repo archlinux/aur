@@ -1,0 +1,4 @@
+[chromazone]
+source = "github"
+github = "matze/chromazone"
+use_max_tag = true
