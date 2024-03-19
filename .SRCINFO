@@ -1,6 +1,6 @@
 pkgbase = gst-plugins-rs
 	pkgdesc = GStreamer plugins written in Rust (dav1d disabled when fail to build)
-	pkgver = 1.22.8
+	pkgver = 1.22.9
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = gst-plugins-rs
 	provides = gst-plugin-gtk4
 	conflicts = gst-plugin-gtk4
 	options = !lto
-	source = git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git#tag=gstreamer-1.22.8
+	source = git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git#tag=gstreamer-1.22.9
 	sha256sums = SKIP
 
 pkgname = gst-plugins-rs

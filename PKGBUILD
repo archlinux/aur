@@ -2,7 +2,7 @@
 # Contributor: Nikola Hadžić <nikola@firemail.cc>
 
 pkgname=gst-plugins-rs
-pkgver=1.22.8
+pkgver=1.22.9
 pkgrel=1
 pkgdesc="GStreamer plugins written in Rust (dav1d disabled when fail to build)"
 arch=(x86_64)
@@ -34,6 +34,7 @@ build() {
   #  -D sodium=enabled
   #  -D sodium-source=system
 
+  export RUSTUP_TOOLCHAIN=stable
   arch-meson build \
     -D dav1d=disabled
 
