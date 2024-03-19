@@ -3,20 +3,21 @@
 # Contributor: kiasoc5 <kiasoc5 at tutanota dot com>
 
 pkgname=toml11
-pkgver=3.7.1
-pkgrel=2
+pkgver=3.8.1
+pkgrel=1
 pkgdesc="C++11 header-only toml parser/encoder"
 arch=(any)
 url="https://github.com/ToruNiina/toml11"
 license=(MIT)
 makedepends=(cmake)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('afeaa9aa0416d4b6b2cd3897ca55d9317084103077b32a852247d8efd4cf6068')
+sha256sums=('6a3d20080ecca5ea42102c078d3415bef80920f6c4ea2258e87572876af77849')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" -Wno-dev \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_CXX_STANDARD=COMPILER \
     -Dtoml11_BUILD_TEST=OFF
 
   cmake --build build
