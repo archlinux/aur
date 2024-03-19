@@ -12,7 +12,7 @@ makedepends=('git' 'npm' 'rsync')
 optdepends=('stylelint-config-standard: for the standard shareable config')
 options=('!emptydirs')
 source=("git+https://github.com/stylelint/stylelint.git#tag=$pkgver")
-b2sums=('SKIP')
+b2sums=('af406e43b63f57a75399106260e5dd4d2d4b8b77becff3b4aef9cf13bea11a13177e70f5f0a62b1080861231c044cff60c52aea347d118f5c8af5c02fe875b0a')
 
 prepare() {
   cd $pkgname
