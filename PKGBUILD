@@ -19,13 +19,11 @@ license=('MIT')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 depends=(
-    'hicolor-icon-theme'
     'nodejs'
     'gtk3'
     'alsa-lib'
     'nspr'
     'nss'
-    'python>=3.8'
 )
 makedepends=(
     'git'
@@ -34,6 +32,8 @@ makedepends=(
     'nvm'
     'libarchive'
     'libicns'
+    'icoutils'
+    'python>=3.8'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -60,22 +60,27 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
+    mkdir -p "${srcdir}/.electron-gyp"
+    touch "${srcdir}/.electron-gyp/.yarnrc"
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
     install -Dm755 -d "${srcdir}/${pkgname//-/.}/node_modules/electron/dist"
+    touch "${srcdir}/${pkgname//-/.}/node_modules/electron/dist/snapshot_blob.bin"
+    sed "s|electron-builder\",|electron-builder build --dir\",|g" -i package.json
+    icotool -i 5 -x build/canary.ico -o "${pkgname%-git}.png"
     yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn run build
-    npx electron-builder -l AppImage
-    cd "${srcdir}/${pkgname//-/.}/dist/.icon-set"
-    cp icon_16x16.png icon_16.png
-    cp icon_48x48.png icon_48.png
+    yarn run dist
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-git}",usr/bin}
     ln -sf "/opt/${pkgname%-git}/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
     cp -r "${srcdir}/${pkgname//-/.}/dist/linux-"*/* "${pkgdir}/opt/${pkgname%-git}"
-    for _icons in 16 32 48 64 128 256 512 1024;do
-        install -Dm644 "${srcdir}/${pkgname//-/.}/dist/.icon-set/icon_${_icons}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons}x${_icons}/apps/${pkgname%-git}.png"
-    done
+    install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
