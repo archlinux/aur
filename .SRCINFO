@@ -8,7 +8,7 @@ pkgbase = binjr-bin
 	provides = binjr
 	source = https://github.com/binjr/binjr/releases/download/v3.16.0/binjr-3.16.0_linux-amd64.tar.gz
 	source = https://github.com/binjr/binjr/releases/download/v3.16.0/binjr-3.16.0_linux-amd64.tar.gz.asc
-	validpgpkeys = BAF5C2D20BE017155EE108152065AD47B326EB92
+	validpgpkeys = 20CAEC83151CCC7CE12DF29EAF45EEEFB23702CB
 	sha512sums = SKIP
 	sha512sums = SKIP
 
