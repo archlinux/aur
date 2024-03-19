@@ -2,7 +2,7 @@
 
 _pkgname="hyprcursor"
 pkgname="${_pkgname}-git"
-pkgver=0.1.0.r0.g2bf4f66f
+pkgver=0.1.4.r4.g4b9efbed
 pkgrel=1
 pkgdesc="The hyprland cursor format, library and utilities"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('hyprlang>=0.4.2' 'cairo' 'libzip' 'librsvg')
 makedepends=('git' 'cmake' 'gcc' 'gdb')
 source=("${_pkgname}::git+https://github.com/hyprwm/hyprcursor.git")
 conflicts=("${_pkgname}")
-provides=("${_pkgname}")
+provides=("${_pkgname}=$pkgver" "lib$_pkgname.so")
 sha256sums=('SKIP')
 
 pkgver() {
