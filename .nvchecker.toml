@@ -1,0 +1,5 @@
+[tenere]
+source = "github"
+github = "pythops/tenere"
+prefix = "v"
+use_max_tag = true
