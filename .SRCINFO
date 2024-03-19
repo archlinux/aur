@@ -1,11 +1,11 @@
 pkgbase = hw-probe
-	pkgdesc = Tool to probe for hardware, check its operability and upload result to the Linux hardware DB: http://linux-hardware.org
+	pkgdesc = Probe for hardware, check its operability and upload result to https://linux-hardware.org
 	pkgver = 1.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linuxhw/hw-probe
 	arch = any
-	license = GPLv2
-	depends = perl>=5
+	license = LGPL-2.1-or-later OR BSD-4-Clause
+	depends = perl
 	depends = hwinfo
 	depends = curl
 	depends = dmidecode
