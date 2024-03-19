@@ -12,12 +12,13 @@
 
 : ${_build_git:=true}
 
+unset _pkgtype
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
 ## basic info
 _pkgname="midori"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=11.2.2.r0.g33eb9ded
+pkgver=11.2.2.r172.g42cde7a
 pkgrel=1
 pkgdesc="Web browser based on Floorp"
 url="https://github.com/goastian/midori-desktop"
@@ -91,9 +92,6 @@ _main_package() {
     fi
   fi
 
-  provides=("$_pkgname=${pkgver%%.r*}")
-  conflicts=("$_pkgname")
-
   options=(
     !debug
     !emptydirs
@@ -102,49 +100,84 @@ _main_package() {
     !strip
   )
 
+  if [ "${_build_git::1}" != "t" ] ; then
+    _main_stable
+  else
+    _main_git
+  fi
+
   : ${_lssver:=v2022.10.12}
   noextract=("lss-${_lssver}.tar.gz")
 
-  _pkgsrc="midori-tensei"
-  _pkgext="tar.gz"
-  source=(
-    "$_pkgsrc"::"git+$url.git"
-    "goastian.l10n-central"::"git+https://github.com/goastian/l10n-central.git"
+  source+=(
     "lss-${_lssver}.tar.gz"::"https://chromium.googlesource.com/linux-syscall-support/+archive/refs/tags/${_lssver}.tar.gz"
     "$_pkgname.desktop"
   )
-  sha256sums=(
-    'SKIP'
-    'SKIP'
+  sha256sums+=(
     'SKIP'
     '7ef0f85f2b111caa08a3e855cb4b6595b6d0f62b3de13ce59eea94a580eec470'
   )
 }
 
-# common functions
-pkgver() {
-  cd "$_pkgsrc"
-  git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
-    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
-}
+# stable package
+_main_stable() {
+  : ${_pkgver:=${pkgver%%.r*}}
 
-prepare() {
-  mkdir -p mozbuild
-  cd "$_pkgsrc"
+  _pkgsrc="midori-tensei"
+  source+=(
+    "$_pkgsrc"::"git+$url.git#tag=v$_pkgver"
+    "goastian.l10n-central"::"git+https://github.com/goastian/l10n-central.git"
+  )
+  sha256sums+=(
+    'SKIP'
+    'SKIP'
+  )
 
-  # submodules
-  (
+  _prepare() (
+    # submodules
     cd "$srcdir/$_pkgsrc"
-    local -A _submodules=(
-      ['goastian.l10n-central']='l10n-central'
+    local _submodules=(
+      'goastian.l10n-central'::'l10n-central'
     )
-    local key
-    for key in ${!_submodules[@]} ; do
-      git submodule init "${_submodules[${key}]}"
-      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
-      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+    local _module
+    for _module in "${_submodules[@]}" ; do
+      git submodule init "${_module#*::}"
+      git submodule set-url "${_module#*::}" "$srcdir/${_module%::*}"
+      git -c protocol.file.allow=always submodule update "${_module#*::}"
     done
   )
+
+  pkgver() {
+    echo "${_pkgver:?}"
+  }
+}
+
+# git package
+_main_git() {
+  provides=("$_pkgname=${pkgver%%.r*}")
+  conflicts=("$_pkgname")
+
+  _pkgsrc="midori-tensei"
+  source+=("$_pkgsrc"::"git+$url.git")
+  sha256sums+=('SKIP')
+
+  _prepare() {
+    :
+  }
+
+  pkgver() {
+    cd "$_pkgsrc"
+    git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+      | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+  }
+}
+
+# common functions
+prepare() {
+  _prepare
+
+  mkdir -p mozbuild
+  cd "$_pkgsrc"
 
   # prepare google breakpad
   local _lss_path="toolkit/crashreporter/google-breakpad/src/third_party/lss"
@@ -188,7 +221,6 @@ export MOZ_APP_REMOTINGNAME=$_pkgname
 # Floorp Upstream
 ac_add_options --enable-proxy-bypass-protection
 ac_add_options --enable-unverified-updates
-ac_add_options --with-l10n-base=${PWD@Q}/l10n-central
 MOZ_REQUIRE_SIGNING=
 
 # Keys
@@ -247,6 +279,16 @@ export CXX='clang++'
 export NM=llvm-nm
 export RANLIB=llvm-ranlib
 END
+
+  if [[ "${_build_git::1}" == "t" ]] ; then
+    cat >>../mozconfig <<END
+ac_add_options --with-l10n-base=${PWD@Q}/floorp/browser/locales/l10n-central
+END
+  else
+    cat >>../mozconfig <<END
+ac_add_options --with-l10n-base=${PWD@Q}/l10n-central
+END
+  fi
 }
 
 build() {
