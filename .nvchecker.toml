@@ -1,0 +1,4 @@
+[libpri]
+source = "github"
+github = "asterisk/libpri"
+use_max_tag = true
