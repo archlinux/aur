@@ -1,7 +1,7 @@
 # Maintainer: groestlcoin <groestlcoin@gmail.com>
 
 pkgname=electrum-grs
-pkgver=4.4.4
+pkgver=4.5.4
 pkgrel=1
 pkgdesc="Lightweight Groestlcoin wallet"
 arch=('any')
@@ -15,12 +15,14 @@ depends=('hicolor-icon-theme'
          'python-protobuf'
          'python-dnspython'
          'python-qdarkstyle'
-         'python-aiorpcx'
+         'python-aiorpcx-git>=0.22'
+         'python-aiorpcx-git<0.23'
          'python-aiohttp'
          'python-aiohttp-socks'
          'python-certifi'
          'python-bitstring'
          'python-attrs'
+         'python-jsonpatch'
          'python-cryptography'
          'python-requests'
          'python-six'
@@ -50,12 +52,12 @@ optdepends=('desktop-file-utils: update desktop icon'
             'zbar: QR code reading support')
 source=("https://github.com/Groestlcoin/electrum-grs/releases/download/v${pkgver}/Electrum-grs-${pkgver}.tar.gz"
         "Electrum-grs-${pkgver}.tar.gz.asc::https://github.com/Groestlcoin/electrum-grs/releases/download/v${pkgver}/Electrum-grs-${pkgver}.tar.gz.asc")
-sha256sums=('b06940020b8e85322f2eb02876ea43cf772f4eec8479064c867b8ab3c5b0194a'
-            '173983c31d821467dbb3f3e51feda0767abbb6a5150c94fbc54b4fe24f690ca8')
+sha256sums=('2b93e3a97bc05bca189021b2c446079b800753001cd8e771ee19b2e907ce39f8'
+            'f90f9190e476c49a14893ba9c885ef7f6ee824de72b9d1f308ace61c28b85f33')
 validpgpkeys=('287AE4CA1187C68C08B49CB2D11BD4F33F1DB499')
 install=electrum-grs.install
 
-build() {
+prepare() {
   cd "Electrum-grs-${pkgver}"
 
   echo 'Compiling protobuf description file...'
@@ -63,6 +65,10 @@ build() {
     --proto_path=electrum_grs \
     --python_out=electrum_grs \
     electrum_grs/paymentrequest.proto
+}
+
+build() {
+  cd "Electrum-grs-${pkgver}"
 
   echo 'Building...'
   python setup.py build
@@ -74,6 +80,6 @@ package() {
   echo 'Installing...'
   python setup.py install --root="$pkgdir" --optimize=1
 
-  install -Dm644 AUTHORS README.rst RELEASE-NOTES -t "$pkgdir"/usr/share/doc/$pkgname
+  install -Dm644 AUTHORS README.md RELEASE-NOTES -t "$pkgdir"/usr/share/doc/$pkgname
   install -Dm644 LICENCE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
