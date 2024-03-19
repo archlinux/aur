@@ -2,17 +2,19 @@
 
 pkgname=localsend-appimage
 pkgver=1.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source cross-platform alternative to AirDrop"
 arch=("x86_64")
 url="https://localsend.org"
 license=("MIT")
 _pkgname="LocalSend-${pkgver}-linux-x86-64.AppImage"
 noextract=(${_pkgname})
-options=("!strip")
-depends=('fuse2')
-source=("${_pkgname}::https://github.com/localsend/localsend/releases/download/v${pkgver}/${_pkgname}")
-sha512sums=("1d545f23bac473bd7f88fad6ae7e8ed529167e86371cfe88d05ab19b9f3f23c9e3a2fd16029baa73ead15de1094c456aab4f172eaef9c0b94ef4f367fcdb99e1")
+options=("!strip" "!debug")
+depends=("fuse2")
+source=("${_pkgname}::https://github.com/localsend/localsend/releases/download/v${pkgver}/${_pkgname}"
+    "LICENSE::https://raw.githubusercontent.com/localsend/localsend/main/LICENSE")
+sha512sums=("1d545f23bac473bd7f88fad6ae7e8ed529167e86371cfe88d05ab19b9f3f23c9e3a2fd16029baa73ead15de1094c456aab4f172eaef9c0b94ef4f367fcdb99e1"
+    "7dfebdc125cb385cbad095d99c4af7c5fd4d5aa7e04b518fb3135abf6fbd466bdd1fc0bd416250d3bc1e6e448ff2621dd4e0159abbe5130ec04896008728cd1a")
 
 _installdir=/opt/appimages
 
@@ -26,6 +28,7 @@ prepare() {
 
 package() {
     install -Dm755 ${_pkgname} "${pkgdir}/${_installdir}/localsend.AppImage"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/localsend/LICENSE"
     install -Dm644 "squashfs-root/usr/share/icons/hicolor/32x32/apps/localsend.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/localsend-appimage.png"
     install -Dm644 "squashfs-root/usr/share/icons/hicolor/128x128/apps/localsend.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/localsend-appimage.png"
     install -Dm644 "squashfs-root/usr/share/icons/hicolor/256x256/apps/localsend.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/localsend-appimage.png"
