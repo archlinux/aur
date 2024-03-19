@@ -2,7 +2,7 @@
 # Contributor: Sergey Malkin  <adresatt@gmail.com>
 
 pkgname=nemu
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="ncurses interface for QEMU"
 arch=(i686 x86_64)
