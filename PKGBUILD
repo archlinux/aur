@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 _pkgname=libretro-flycast
 pkgname=$_pkgname-git
-pkgver=2.2.r203.g960b8134c
+pkgver=2.3.r2.g40cdef6c1
 pkgrel=1
 pkgdesc="Sega Dreamcast, NAOMI, NAOMI 2, Atomiswave and System SP core (fork of reicast)"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -33,7 +33,7 @@ source=(
 b2sums=(
 	'SKIP'
 	'SKIP'
-	'6ca2fdd4306571a59084ec208b29e50d79e84da5df1262004f713e8a95b3494f538b6c82315ff5e8eaf4c8aed0bdf34cb624535442759e5615bc892ebc775d61'
+	'e3f29bee55d7108d8f4685f41715dabe9e403b8998d8b8bb793285cadecc5842877bc6aee099fb83a386aa47dd793d40f903fb413b36786da7ebaff5e530c5f3'
 )
 
 pkgver() {
@@ -55,6 +55,7 @@ build() {
 		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
 		-DLIBRETRO=ON \
+		-DUSE_HOST_GLSLANG=ON \
 		-Wno-dev
 	cmake --build build
 }
