@@ -1,20 +1,23 @@
 # Maintainer: Your Name <benjamin.voisin@ens-rennes.fr>
 pkgname=belenios
 pkgver=2.5
-pkgrel=2
+pkgrel=3
 pkgdesc="State-of-the-art secure, private and verifiable voting system"
 arch=('x86_64')
-url="https://www.belenios.org/releases/belenios-$pkgver.tar.gz"
+url="https://gitlab.inria.fr/belenios/belenios.git"
 license=('GPL')
 groups=()
 depends=('ocaml' 'opam' 'npm' 'nodejs')
 makedepends=('dune' 'git' 'gmp' 'libsodium' 'pkg-config' 'm4' 'sqlite3' 'openssl' 'curl' 'zip' 'unzip' 'ncurses' 'gd' 'cracklib' 'jq' 'sed')
-validpgpkeys=('58EB0999C64E897EE894B8037853DA4D49881AD3')
-source=(
-  "git+${pkgname}-$pkgver.tar.gz::https://www.belenios.org/releases/belenios-$pkgver.tar.gz"
-  "git+${pkgname}-$pkgver.tar.gz.sig::https://www.belenios.org/releases/belenios-$pkgver.tar.gz.sig"
-)
-sha256sums=('SKIP' 'SKIP')
+_tag=633ae1d008a0f16e86759dde376ed1532214b63f #git rev-parse $pkgver
+source=( "$pkgname-$pkgver::git+https://gitlab.inria.fr/belenios/belenios.git#tag=$_tag")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$pkgname-$pkgver"
+  git describe --long --abbrev=7 | sed -E 's/^([0-9]+\.[0-9]+).*$/\1/'
+}
+
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -23,6 +26,7 @@ prepare() {
     echo "Creating the $pkgname switch"
     opam switch create $pkgname --empty > /dev/null
   fi
+  opam switch $pkgname
   eval $(opam env --switch=$pkgname --set-switch)
   opam switch set-invariant ocaml-base-compiler=4.14.1 > /dev/null
   opam install --yes base64 hex dune atdgen zarith cryptokit calendar cmdliner sqlite3 csv ocsipersist-sqlite eliom gettext-camomile ocamlnet

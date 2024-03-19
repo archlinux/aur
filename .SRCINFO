@@ -1,8 +1,8 @@
 pkgbase = belenios
 	pkgdesc = State-of-the-art secure, private and verifiable voting system
 	pkgver = 2.5
-	pkgrel = 2
-	url = https://www.belenios.org/releases/belenios-2.5.tar.gz
+	pkgrel = 3
+	url = https://gitlab.inria.fr/belenios/belenios.git
 	arch = x86_64
 	license = GPL
 	makedepends = dune
@@ -25,10 +25,7 @@ pkgbase = belenios
 	depends = opam
 	depends = npm
 	depends = nodejs
-	source = git+belenios-2.5.tar.gz::https://www.belenios.org/releases/belenios-2.5.tar.gz
-	source = git+belenios-2.5.tar.gz.sig::https://www.belenios.org/releases/belenios-2.5.tar.gz.sig
-	validpgpkeys = 58EB0999C64E897EE894B8037853DA4D49881AD3
-	sha256sums = SKIP
+	source = belenios-2.5::git+https://gitlab.inria.fr/belenios/belenios.git#tag=633ae1d008a0f16e86759dde376ed1532214b63f
 	sha256sums = SKIP
 
 pkgname = belenios
