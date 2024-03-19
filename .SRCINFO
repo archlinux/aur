@@ -1,11 +1,12 @@
 pkgbase = deptry
 	pkgdesc = Find unused, missing and transitive dependencies in a Python project
-	pkgver = 0.14.0
+	pkgver = 0.14.2
 	pkgrel = 1
 	url = https://github.com/fpgmaas/deptry
 	arch = x86_64
 	license = MIT
 	checkdepends = python-pytest
+	checkdepends = python-pytest-xdist
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
@@ -18,8 +19,8 @@ pkgbase = deptry
 	depends = python-chardet
 	depends = python-click
 	depends = python-pathspec
-	source = deptry::git+https://github.com/fpgmaas/deptry.git?signed#commit=8e002b7b0537a491e75e52d8f9a8552fbbaa46ca
+	source = deptry::git+https://github.com/fpgmaas/deptry.git?signed#commit=9cc6b0fa505418d97b25d8139e6d6739135fb49b
 	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
-	sha256sums = SKIP
+	sha256sums = 19db972a20bedf60b35ce07e7d195849bdd6d71d80193344ba369363e37323b9
 
 pkgname = deptry
