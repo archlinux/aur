@@ -1,0 +1,5 @@
+[fb303]
+source = "github"
+github = "facebook/fb303"
+prefix = "v"
+use_max_tag = true
