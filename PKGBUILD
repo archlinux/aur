@@ -6,7 +6,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=omniglass-git
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="touchpad gestures library based on evdev"
 arch=('x86_64')
