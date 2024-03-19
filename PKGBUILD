@@ -9,7 +9,7 @@
 
 _pkg=asterisk
 pkgname=${_pkg}-lts-18
-pkgver=18.21.0
+pkgver=18.22.0
 pkgrel=1
 pkgdesc='A complete open source PBX toolkit - Long Term Support release 18'
 arch=(x86_64 i686 aarch64 armv7h)
@@ -230,7 +230,7 @@ package(){
     chmod 0750 "$pkgdir"/{etc,run,var/{lib,log,spool}}/"${_pkg}"
     chmod 1777 "$pkgdir"/tmp
 }
-sha256sums=('31e1b544ece2bb75be93621e358e6765fc095f4b65e061d488d517177aeb9208'
+sha256sums=('ad54e6089029d8eaa3e25576037c412cf54a57db904fcbc05fe23835f65e4015'
             '38a53911647fb2308482179cba605ebf12345df37eed23eb4ea67bf0bf041486'
             'b97dc10a262621c95e4b75e024834712efd58561267b59b9171c959ecd9f7164'
             '1b6b489d4f71015bfc56ce739d92df7e9abdb349aed6f5a47dd9c18d84546c1b')
