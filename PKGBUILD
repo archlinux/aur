@@ -2,11 +2,12 @@
 _pkgname="wirehair"
 pkgname="wirehair-git"
 pkgver=r1.557c00c
-pkgrel=2
+pkgrel=3
 pkgdesc="O(N) Fountain Code for Large Data"
 arch=('i686' 'x86_64')
 url="https://github.com/catid/wirehair"
 license=('BSD-3-Clause')
+options=(staticlibs)
 makedepends=('git' 'cmake')
 source=('git+https://github.com/catid/wirehair.git'
 	'static.patch')
