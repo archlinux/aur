@@ -1,6 +1,6 @@
 # Maintainer: ACCESA <accesa.mdash@gmail.com>
 pkgname=cia-accesa
-pkgver=1.2.4
+pkgver=1.2.5.1
 pkgrel=1
 pkgdesc="Control Inteligente de Accesos"
 arch=('x86_64')
