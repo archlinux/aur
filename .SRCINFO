@@ -6,7 +6,6 @@ pkgbase = vnote-bin
 	arch = x86_64
 	license = LGPL-3.0-only
 	makedepends = fuse2
-	depends = hicolor-icon-theme
 	depends = qt5-base
 	depends = gtk3
 	depends = alsa-lib

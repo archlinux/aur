@@ -12,7 +12,6 @@ license=('LGPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'hicolor-icon-theme'
     'qt5-base'
     'gtk3'
     'alsa-lib'
