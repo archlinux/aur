@@ -1,0 +1,27 @@
+pkgbase = aliae-bin
+	pkgdesc = Cross shell and platform alias management
+	pkgver = 0.18.0
+	pkgrel = 1
+	url = https://github.com/JanDeDobbeleer/aliae
+	install = aliae-bin.install
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = curl
+	makedepends = git
+	makedepends = jq
+	makedepends = sed
+	depends = ncurses
+	provides = aliae
+	conflicts = aliae
+	source = LICENSE::https://raw.githubusercontent.com/JanDeDobbeleer/aliae/v0.18.0/LICENSE
+	sha256sums = SKIP
+	source_x86_64 = aliae::https://github.com/JanDeDobbeleer/aliae/releases/download/v0.18.0/aliae-linux-amd64
+	sha256sums_x86_64 = 0b4632d9d246ed127b8a66cb6c01fd43a312559c2da4702246810314ab8c9069
+	source_armv7h = aliae::https://github.com/JanDeDobbeleer/aliae/releases/download/v0.18.0/aliae-linux-arm
+	sha256sums_armv7h = f42161bf4f3ce681df01058a4549d1c942b1b68d9291f4a3ffed053dd1a47153
+	source_aarch64 = aliae::https://github.com/JanDeDobbeleer/aliae/releases/download/v0.18.0/aliae-linux-arm64
+	sha256sums_aarch64 = 73ec4acd2c105365fd0a49e4d2aefcf3625b6d7dbea9321b42abbb116da4b9b9
+
+pkgname = aliae-bin
