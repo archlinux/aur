@@ -1,32 +1,33 @@
-# Maintainer: mutantmonkey <aur@mutantmonkey.mx>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: mutantmonkey <aur@mutantmonkey.mx>
 # Contributor: Kyle Sferrazza <kyle.sferrazza@gmail.com>
 # Contributor: Dimitrios Vogiatzis <me@dimtree.net>
-
 pkgname=python-plexapi-girens
-_name="PlexAPI 'Girens Fork"
-pkgver=3.0.6
+pkgver=3.0.6+559+gcadb3d2
 pkgrel=1
 pkgdesc="Python bindings for the Plex API."
 arch=('any')
 url="https://github.com/tijder/python-plexapi"
 license=('BSD')
 depends=('python-requests' 'python-tqdm' 'python-websocket-client')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-provides=("python-plexapi")
-conflicts=("python-plexapi")
-source=("https://github.com/tijder/python-plexapi/archive/refs/tags/3.0.6.tar.gz")
-sha256sums=('d43947afb640d47a12525fea24c9d9e1afc80e7fbc7991666184bd942dae130d')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+provides=('python-plexapi')
+conflicts=('python-plexapi')
+_commit=cadb3d2a399702ae3908cad70e52e439d9b665a2  # branch/master
+source=("git+https://github.com/tijder/python-plexapi.git#commit=${_commit}")
+sha256sums=('SKIP')
 
-prepare() {
-  mv "python-plexapi-$pkgver" "$pkgname-$pkgver"
+pkgver() {
+  cd python-plexapi
+  git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd python-plexapi
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd python-plexapi
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
