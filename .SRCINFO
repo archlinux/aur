@@ -33,11 +33,11 @@ pkgbase = blender-fracture_modifier-git
 	optdepends = cuda: CUDA support in Cycles
 	provides = blender-fracture_modifier
 	conflicts = blender-fracture_modifier
-	source = git://git.blender.org/blender.git#branch=fracture_modifier
-	source = blender-addons.git::git://git.blender.org/blender-addons.git
-	source = blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git
-	source = blender-translations.git::git://git.blender.org/blender-translations.git
-	source = blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git
+	source = blender::git+https://github.com/blender/blender#branch=fracture_modifier
+	source = blender-addons::git+https://github.com/blender/blender-addons
+	source = blender-addons-contrib::git+https://github.com/blender/blender-addons-contrib
+	source = blender-translations::git+https://github.com/blender/blender-translations
+	source = blender-dev-tools::git+https://github.com/blender/blender-dev-tools
 	source = git+https://github.com/scorpion81/blender-fracture-helper.git
 	source = SelectCudaComputeArch.patch
 	source = gcc8.patch
