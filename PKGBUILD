@@ -13,11 +13,12 @@
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: Tomas Lindquist Olsen <tomas@famolsen.dk>
 # Contributor: Tomas Wilhelmsson <tomas.wilhelmsson@gmail.com>
+# Contributor: raininja < dandenkijin at gmail dot com >
 
-
-pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=18.0.0_r479038.d16d149e3d96
+pkgname=('llvm-rocm-git' 'llvm-libs-rocm-git' 'llvm-ocaml-rocm-git')
+pkgver=19.0.0_r505925.59792073596f
 pkgrel=1
+pkgdesc="LLVM from ROCm with AMD optimizations"
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -27,7 +28,7 @@ makedepends=('git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2'
              'python-myst-parser' 'lua53' 'ocl-icd' 'opencl-headers' 'z3'
              'jsoncpp' 'ocaml-stdlib-shims')
 checkdepends=("python-psutil")
-source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
+source=("llvm-project::git+https://github.com/ROCm/llvm-project.git"
         "llvm-config.h")
 
 md5sums=('SKIP'
@@ -79,6 +80,7 @@ build() {
         -D FFI_INCLUDE_DIR:PATH="$(pkg-config --variable=includedir libffi)" \
         -D LLVM_BUILD_LLVM_DYLIB=ON \
         -D LLVM_LINK_LLVM_DYLIB=ON \
+        -D LLVM_TARGETS_TO_BUILD="host;AMDGPU" \
         -D LLVM_INSTALL_UTILS=ON \
         -D LLVM_BUILD_DOCS=ON \
         -D LLVM_ENABLE_DOXYGEN=OFF \
@@ -99,15 +101,15 @@ build() {
 check() {
     ninja -C _build $NINJAFLAGS check-llvm
     ninja -C _build $NINJAFLAGS check-clang
-    ninja -C _build $NINJAFLAGS check-clang-tools
+    ninja -C _build $NINJAFLAGS check-clang-utils
     ninja -C _build $NINJAFLAGS check-polly
     ninja -C _build $NINJAFLAGS check-lld
     ninja -C _build $NINJAFLAGS check-lldb
 }
 
-package_llvm-git() {
+package_llvm-rocm-git() {
     pkgdesc="LLVM development version. includes clang and many other tools"
-    depends=("llvm-libs-git=$pkgver-$pkgrel" 'perl')
+    depends=("llvm-libs-rocm-git=$pkgver-$pkgrel" 'perl')
     optdepends=('python: for scripts')
     provides=(aur-llvm-git compiler-rt-git clang-git lldb-git lld-git polly-git
               llvm compiler-rt clang lldb polly lld )
@@ -168,8 +170,8 @@ package_llvm-git() {
     install -Dm644 polly/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/polly-LICENSE
 }
 
-package_llvm-libs-git() {
-    pkgdesc="runtime libraries for llvm-git"
+package_llvm-libs-rocm-git() {
+    pkgdesc="runtime libraries for llvm-rocm-git"
     depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses' 'libxml2' 'z3' 'lua53')
     provides=(aur-llvm-libs-git llvm-libs)
     conflicts=('llvm-libs')
@@ -195,9 +197,9 @@ package_llvm-libs-git() {
     install -Dm644 polly/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/polly-LICENSE
 }
 
-package_llvm-ocaml-git() {
+package_llvm-ocaml-rocm-git() {
     pkgdesc="OCaml bindings for LLVM"
-    depends=("llvm-git=$pkgver-$pkgrel" "ocaml" 'ocaml-ctypes')
+    depends=("llvm-rocm-git=$pkgver-$pkgrel" "ocaml" 'ocaml-ctypes')
     conflicts=('llvm-ocaml')
     provides=("llvm-ocaml")
     

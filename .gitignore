@@ -3,3 +3,4 @@ pkg
 *.pkg.*
 *.log
 llvm
+llvm-project
