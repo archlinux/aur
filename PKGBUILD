@@ -6,6 +6,7 @@ pkgdesc="A simple screenshot app running under Wayland"
 arch=('x86_64')
 license=('MIT')
 depends=('python' 'tk' 'python-pillow' 'python-pip')
+source=("install.sh")
 
 package() {
     chmod +x install.sh
