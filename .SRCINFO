@@ -1,12 +1,12 @@
 pkgbase = fukayo-bin
 	pkgdesc = A desktop application to read your favorite manga/manhwa/manhua from your favorite websites.
 	pkgver = 0.13.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/JiPaix/Fukayo
 	arch = x86_64
 	license = MIT
 	makedepends = fuse2
-	depends = electron24
+	depends = electron24-bin
 	depends = java-runtime
 	provides = fukayo=0.13.0
 	conflicts = fukayo
@@ -15,6 +15,6 @@ pkgbase = fukayo-bin
 	source = fukayo.sh
 	sha256sums = f982a5dc87485a30ac82f8c77dd400733ee192aa8d34f28fb59f06b7205a7861
 	sha256sums = c3fb2affb5fa8ed0b1866d379461e7e0c845ac7011f67aa7410cfe080f8d753a
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = fukayo-bin
