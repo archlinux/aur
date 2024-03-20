@@ -1,0 +1,5 @@
+[python-trame-deckgl]
+source = "github"
+github = "Kitware/trame-deckgl"
+use_latest_release = "true"
+prefix = "v"

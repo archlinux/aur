@@ -2,8 +2,8 @@
 _base=trame-deckgl
 pkgname=python-${_base}
 pkgdesc="Deck.gl widget for trame"
-pkgver=2.0.2
-pkgrel=3
+pkgver=2.0.3
+pkgrel=1
 arch=(any)
 url="https://github.com/Kitware/${_base}"
 license=(MIT)
@@ -11,7 +11,7 @@ depends=(python-trame-client)
 makedepends=(python-build python-installer python-setuptools python-wheel nodejs-lts-hydrogen npm)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('c5b0529126d02c8bf768ad90187aba47d6a3a2f7e3555d6a69184f127779b45567201ecda187ca6805eb0de1802c42426fa8f539f9d12b31f9233fe494a083c5')
+sha512sums=('4e145dc0115a0f8b1c4923b4506bddbb49ac09cbf4dfd0b29a8200a9da0729c3cb98ae7647f636af76b5c50d7818329fe02ff8fee493f1ab1a0fca5257b0e644')
 
 prepare() {
   sed -i 's/^include/#include/' ${_base}-${pkgver}/MANIFEST.in
