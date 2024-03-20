@@ -1,7 +1,7 @@
 pkgbase = liteloader-qqnt-plugin-llapi-bin
-	pkgdesc = A LiteLoaderQQNT plugin that can provide some APIs for other plugins
+	pkgdesc = LiteLoader QQNT插件，给其他插件提供一些API
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Night-stars-1/LiteLoaderQQNT-Plugin-LLAPI
 	arch = any
 	license = unknown
