@@ -2,13 +2,13 @@
 
 pkgname=ethoscope-device
 pkgver=r1702.g1c43fc3
-pkgrel=5
+pkgrel=6
 pkgdesc="A platform from monitoring animal behaviour in real time from a raspberry pi - Device version"
 arch=('any')
 url="http://lab.gilest.ro/ethoscope"
 license=('GPL3')
-makedepends=('git' 'gcc-fortran' )
-depends=('git' 'avahi' 'rsync' 'wget' 'fping' 'ntp' 'nss-mdns' 'openssh' 'mariadb' 'dnsmasq' 'f2fs-tools' 'i2c-tools' 'wpa_supplicant' 'ifplugd' 'qt5-base' 'python-opencv' 'hdf5' 'gtk3' 'python' 'python-pip' 'python-numpy' 'python-scipy' 'python-bottle' 'python-pyserial' 'python-mysql-connector' 'python-netifaces' 'python-cherrypy' 'python-eventlet' 'python-gitpython' 'python-dnspython' 'python-greenlet' 'python-monotonic' 'python-zeroconf' 'python-pyusb')
+makedepends=('git' 'gcc-fortran' 'python' 'python-setuptools')
+depends=('avahi' 'rsync' 'wget' 'fping' 'ntp' 'nss-mdns' 'openssh' 'mariadb' 'dnsmasq' 'f2fs-tools' 'i2c-tools' 'wpa_supplicant' 'ifplugd' 'qt5-base' 'python-opencv' 'hdf5' 'gtk3' 'python-pip' 'python-numpy' 'python-scipy' 'python-bottle' 'python-pyserial' 'python-mysql-connector' 'python-netifaces' 'python-cherrypy' 'python-eventlet' 'python-gitpython' 'python-dnspython' 'python-greenlet' 'python-monotonic' 'python-zeroconf' 'python-pyusb')
 optdepends=('python-picamera: picamera support on raspberry pis')
 provides=('ethoscope-device')
 install="ethoscope-device.install"
