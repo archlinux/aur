@@ -1,0 +1,24 @@
+pkgbase = blockdiag
+	pkgdesc = blockdiag generates block-diagram image from text
+	pkgver = 3.0.0
+	pkgrel = 3
+	url = http://blockdiag.com
+	arch = any
+	license = Apache
+	checkdepends = python-nose
+	checkdepends = python-pycodestyle
+	checkdepends = python-reportlab
+	checkdepends = python-docutils
+	checkdepends = python-wand
+	checkdepends = ghostscript
+	checkdepends = librsvg
+	depends = python-setuptools
+	depends = python-funcparserlib
+	depends = python-pillow
+	depends = python-webcolors
+	optdepends = python-reportlab: for PDF export
+	optdepends = python-docutils: for RST parser
+	source = blockdiag-3.0.0.tar.gz::https://github.com/blockdiag/blockdiag/archive/3.0.0.tar.gz
+	sha512sums = 9eb5aa0d78dd546feafccdf66dbedbc8b8addb97ffa45f18396bfb8e144be3acfaa4493baf680922af87ff64194424b7378367f177b1a59c3b3898b5c235623c
+
+pkgname = blockdiag
