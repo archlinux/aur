@@ -8,7 +8,7 @@ pkgbase = somafm-qt-git
 	license = MIT
 	depends = qt5-base
 	depends = qt5-multimedia
-	source = git://github.com/josefbehr/somafm-qt.git
+	source = git+https://github.com/josefbehr/somafm-qt.git
 	md5sums = SKIP
 
 pkgname = somafm-qt-git

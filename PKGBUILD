@@ -12,7 +12,7 @@ makedepends=()
 conflicts=()
 replaces=()
 backup=()
-source=("git://github.com/josefbehr/somafm-qt.git")
+source=("git+https://github.com/josefbehr/somafm-qt.git")
 md5sums=('SKIP')
 
 pkgver() {
