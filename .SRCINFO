@@ -1,6 +1,6 @@
 pkgbase = polylith-bin
 	pkgdesc = An open source tool used to develop Polylith based architectures in Clojure
-	pkgver = 0.2.18
+	pkgver = 0.2.19
 	pkgrel = 1
 	url = https://github.com/polyfy/polylith
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = polylith-bin
 	provides = polylith
 	conflicts = polylith
 	options = !strip
-	source = https://github.com/polyfy/polylith/releases/download/v0.2.18/poly-0.2.18.tar.gz
+	source = https://github.com/polyfy/polylith/releases/download/v0.2.19/poly-0.2.19.tar.gz
 	source = poly.sh
-	sha256sums = a33f53dec2ae19a6f459b7b78f032fefe4927821355064dd382c1a7bc4840343
+	sha256sums = 6d64bff47ab146c116b1806f6c383b4fd642e4136b142c42364124ac597171ab
 	sha256sums = ca3e71533f73d85a4bd00e8afcae08b8989e1774b1e4336f387e428f69ee1093
 
 pkgname = polylith-bin
