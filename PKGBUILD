@@ -2,19 +2,25 @@
 
 pkgname=gnome-shell-extension-nightthemeswitcher-git
 pkgver=76.r1.ga7e2593
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically toggle your light and dark themes variants"
 arch=('any')
 url="https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension"
-license=('GPL3'
-         'MIT'
-         'GPL2'
-         'LGPL'
-         'CCPL:by-nc-sa')
-depends=('gnome-shell>=1:44')
-makedepends=('git'
-             'eslint'
-             'meson')
+license=(
+  'GPL3'
+  'MIT'
+  'GPL2'
+  'LGPL'
+  'CCPL:by-nc-sa'
+)
+depends=(
+  'gnome-shell=1:46'
+)
+makedepends=(
+  'git'
+  'eslint'
+  'meson'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+${url}.git")
