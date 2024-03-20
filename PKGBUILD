@@ -1,3 +1,4 @@
+# Contributor: raininja < dandenkijin at gmail dot com >
 # Maintainer: raininja < dandenkijin at gmail dot com >
 
 pkgname=clipse
