@@ -3,12 +3,12 @@
 
 pkgname=xyzsh
 pkgver=1.5.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Interactive shell and text processing tools"
 arch=('i686' 'x86_64')
 url="https://github.com/ab25cq/xyzsh"
 license=('MIT')
-depends=('oniguruma' 'gc')
+depends=('glibc' 'ncurses' 'oniguruma')
 source=(http://osdn.net/projects/${pkgname}/downloads/60140/${pkgname}-${pkgver}.tgz)
 md5sums=('4fab43dbd794fb4af871ac6c9989526b')
 
