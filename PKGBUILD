@@ -5,7 +5,7 @@
 
 pkgname=vinagre
 pkgver=3.22.0+r160+gc86e114
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A VNC Client for the GNOME desktop"
 url="https://wiki.gnome.org/Apps/Vinagre"
@@ -16,7 +16,7 @@ depends=(
   cairo
   dbus-glib
   dconf
-  freerdp
+  freerdp2
   gdk-pixbuf2
   glib2
   glibc
