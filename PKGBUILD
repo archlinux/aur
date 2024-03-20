@@ -3,12 +3,12 @@
 pkgname=scie-pants-bin
 pkgdesc="scie-pants is the Pants build tool launcher binary"
 pkgver=0.10.7
-pkgrel=1
+pkgrel=2
 arch=("x86_64" "aarch64")
 url="https://github.com/pantsbuild/scie-pants"
 license=("apache")
 sha256sums=()
-options=("!strip")
+options=("!strip" "!debug")
 
 case "${CARCH:=x86_64}" in
   x86_64)
@@ -24,5 +24,5 @@ esac
 source=("https://github.com/pantsbuild/scie-pants/releases/download/v${pkgver}/scie-pants-linux-${_pkgarch}")
 
 package() {
-  install -D --debug -m 0755 "scie-pants-linux-${_pkgarch}" "${pkgdir}/usr/bin/pants"
+  install -D -m 0755 "scie-pants-linux-${_pkgarch}" "${pkgdir}/usr/bin/pants"
 }
