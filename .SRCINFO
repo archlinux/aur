@@ -1,0 +1,84 @@
+pkgbase = helm-synth
+	pkgdesc = A cross-platform, polyphonic synthesizer, available standalone and as an LV2 plugin
+	pkgver = 0.9.0
+	pkgrel = 10
+	url = https://tytel.org/helm/
+	arch = x86_64
+	license = GPL3
+	makedepends = alsa-lib
+	makedepends = freetype2
+	makedepends = hicolor-icon-theme
+	makedepends = jack
+	makedepends = libxcursor
+	makedepends = libglvnd
+	makedepends = libx11
+	makedepends = libxext
+	makedepends = libxinerama
+	makedepends = lv2
+	source = https://github.com/mtytel/helm/archive/v0.9.0/helm-v0.9.0.tar.gz
+	source = helm-synth-0.9.0-gcc91.patch
+	source = helm-synth-0.9.0-rename_helm-synth.patch
+	sha512sums = 241c6bf3aec422e9ccaf7c7113eec7e30a11baadd30fe8f05f0abfac9c41d0c8a9fb284f0cae49bcaf0d3d08aa952737f6ff3eb7d48c2b2e22c60932738aeaa4
+	sha512sums = 4c12575c6a58c6a03644b9c7d560e3a794fa3575ac10eb9301ca911a58a86eb5c721f0e4c8c1c5bfcf81b6efba25ed7bdba2a12fe68ec49eb18581067cec06bb
+	sha512sums = 99df61242d6fd5629440c72210c541f3ce0e711190ab2472ebc066a9044d79499c657c9554b39570867a95e061da3c32ceefce3706e84fc6b4cb540e59289607
+	b2sums = 1b6811f32cf36a1c1f954cc071cd64f3dca656ee0bd420c01d0be3db516210a92adc3694ac49731cf2d7cf057a9eccf2c2dcefc14d24cf8582a3eb69efe1d0e1
+	b2sums = 54c3c5baf336ee1c2739922be6040d69309db94394967be335103fe325c96afe69f05fbdde0516c153bc47763fc3686c9e0461c6b12dbec59476c85a003e4397
+	b2sums = c95fb6c4080a47bf2a137d986c62f0510b021bafd89b1c9d2f8662f9ad9f086b7d5f7cb08a3dd65ef43f6bc119695ebbda132acc33972454a0d82a05578d48f5
+
+pkgname = helm-synth
+	depends = helm-synth-lv2=0.9.0
+	depends = helm-synth-standalone=0.9.0
+	depends = helm-synth-vst=0.9.0
+
+pkgname = helm-synth-common
+	pkgdesc = A cross-platform, polyphonic synthesizer, available standalone and as an LV2 plugin - common files
+
+pkgname = helm-synth-lv2
+	pkgdesc = A cross-platform, polyphonic synthesizer, available standalone and as an LV2 plugin - LV2 plugin
+	groups = pro-audio
+	groups = lv2-plugins
+	depends = alsa-lib
+	depends = libasound.so
+	depends = freetype2
+	depends = libfreetype.so
+	depends = gcc-libs
+	depends = glibc
+	depends = helm-synth-common
+	depends = libglvnd
+	depends = libx11
+	depends = libxext
+	depends = libxinerama
+	depends = lv2-host
+
+pkgname = helm-synth-standalone
+	pkgdesc = A cross-platform, polyphonic synthesizer, available standalone and as an LV2 plugin - standalone
+	groups = pro-audio
+	depends = alsa-lib
+	depends = libasound.so
+	depends = freetype2
+	depends = libfreetype.so
+	depends = gcc-libs
+	depends = glibc
+	depends = helm-synth-common
+	depends = hicolor-icon-theme
+	depends = libglvnd
+	depends = libx11
+	depends = libxext
+	depends = libxinerama
+
+pkgname = helm-synth-vst
+	pkgdesc = A cross-platform, polyphonic synthesizer, available standalone and as an LV2 plugin - VST plugin
+	groups = pro-audio
+	groups = vst-plugins
+	depends = alsa-lib
+	depends = libasound.so
+	depends = freetype2
+	depends = libfreetype.so
+	depends = gcc-libs
+	depends = glibc
+	depends = helm-synth-common
+	depends = libglvnd
+	depends = libx11
+	depends = libxext
+	depends = libxinerama
+	depends = vst-host
