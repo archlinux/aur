@@ -4,7 +4,7 @@
 pkgname=python-baycomp
 _pkgname="${pkgname#python-}"
 pkgver=1.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Library for Bayesian comparison of classifiers'
 url='https://github.com/janezd/baycomp'
 arch=('any')
