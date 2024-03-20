@@ -10,7 +10,7 @@ license=('GPL')
 depends=('akonadi-contacts' 'ctemplate' 'python-reportlab' 'python-pypdf2')
 conflicts=('kraft')
 optdepends=("python-weasyprint: alternative PDF generator")
-makedepends=('cmake' 'extra-cmake-modules' 'po4a')
+makedepends=('git' 'cmake' 'extra-cmake-modules' 'po4a')
 source=(
   "${pkgname}::git+https://github.com/dragotin/kraft.git"
 )
@@ -18,19 +18,19 @@ sha256sums=('SKIP')
 
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$pkgname"
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
 build() {
   export PATH="/usr/bin/vendor_perl/:$PATH"
-  cmake -B $pkgname/build -S $pkgname \
+  cmake -B "$pkgname/build" -S "$pkgname" \
     -DCMAKE_BUILD_TYPE=Debug \
     -DCMAKE_INSTALL_PREFIX=/usr
-  cmake --build $pkgname/build
+  cmake --build "$pkgname/build"
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install $pkgname/build
+  DESTDIR="$pkgdir" cmake --install "$pkgname/build"
 }
