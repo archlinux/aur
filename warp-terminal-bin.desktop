@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=VERSION_PLACEHOLDER
+Name=Warp Terminal
+Comment=Your Terminal,reimagined
+Exec=/opt/warpdotdev/warp-terminal/warp
+Icon=warp-terminal
+Terminal=false
+Keywords=warp
+Categories=Terminal;

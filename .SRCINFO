@@ -1,0 +1,12 @@
+pkgbase = warp-terminal-bin
+	pkgver = 0.2024.03.12.08.02.stable.02
+	pkgrel = 1
+	arch = x86_64
+	source = https://releases.warp.dev/stable/v0.2024.03.12.08.02.stable_02/warp-terminal_0.2024.03.12.08.02.stable.02_amd64.deb
+	source = warp-terminal-bin.desktop
+	source = warp-terminal.png
+	md5sums = c4276c8d6d215454d994014c83fb09ce
+	md5sums = 309a99bcbfaeb72715754008b3732a32
+	md5sums = 6cd2541e1189c29ceb576300ff3356c6
+
+pkgname = warp-terminal-bin
