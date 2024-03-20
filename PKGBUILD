@@ -3,7 +3,7 @@
 # Contributor: Javier Tiá <javier dot tia at gmail dot com>
 pkgname=vnote-bin
 pkgver=3.17.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Qt-based, free and open source note-taking application, focusing on Markdown now."
 arch=('x86_64')
 url="https://app.vnote.fun/"
@@ -27,7 +27,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('6b74dd083bfa3ecec5a0ee74d8ecbc4fce7b7a81d43c9246fdd43d83f190ec98'
-            'a9c558d0ce9e8b9ae2ca6cb1933ddcb941e4554afb01c903680d969707ce735e')
+            '47d2528cb81661a2158a37d7d58645863e7980283223e39aa3a6c38c92a75e23')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
