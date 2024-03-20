@@ -1,6 +1,6 @@
 pkgbase = hibiscus
 	pkgdesc = HBCI banking plugin for jameica.
-	pkgver = 2.10.17
+	pkgver = 2.10.18
 	pkgrel = 1
 	url = https://www.willuhn.de/projects/hibiscus/
 	install = hibiscus.install
@@ -13,11 +13,11 @@ pkgbase = hibiscus
 	depends = jameica>=2.8
 	optdepends = pcsclite
 	options = !strip
-	source = https://www.willuhn.de/products/hibiscus/releases/2.10/hibiscus-2.10.17.zip
-	source = https://www.willuhn.de/products/hibiscus/releases/2.10/hibiscus-2.10.17.zip.asc
+	source = https://www.willuhn.de/products/hibiscus/releases/2.10/hibiscus-2.10.18.zip
+	source = https://www.willuhn.de/products/hibiscus/releases/2.10/hibiscus-2.10.18.zip.asc
 	source = hibiscus.desktop
 	validpgpkeys = 7314FBDE7D38EE5610D291B65A8ED9CFC0DB6C70
-	sha512sums = b072cc9e4c3e86b338de9dc3462dac89ba8985754d8bcab1d1f5b11d4992b32509b462069aee3dca5d403ed77fa8c00064accb15fad021c6b5f37b0cb9ed2852
+	sha512sums = ce54a8325cb2e782e837e239ccfd4a39374031e7437be2e503a7fd4fe467a6b909b1d8eb1b58a2efe897b685b822bb5d7d0f307bb58cdda1a076decc85531019
 	sha512sums = SKIP
 	sha512sums = ceea9cc5cf438893b2f5dfe46f46840448353f35719216ccca0b8dd12369d4e3c91d393c7c8b5b842a64537c61864ce8ca48e1895bb3f41c5083794399a21925
 
