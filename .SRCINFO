@@ -1,0 +1,18 @@
+pkgbase = gnupg-pkcs11-scd
+	pkgdesc = Smart-card daemon to enable the use of PKCS#11 tokens with GnuPG
+	pkgver = 0.10.0
+	pkgrel = 2
+	url = http://gnupg-pkcs11.sourceforge.net/
+	arch = x86_64
+	license = BSD
+	depends = libassuan
+	depends = libgcrypt
+	depends = libgpg-error
+	depends = openssl
+	depends = pkcs11-helper
+	source = https://github.com/alonbl/gnupg-pkcs11-scd/releases/download/gnupg-pkcs11-scd-0.10.0/gnupg-pkcs11-scd-0.10.0.tar.bz2
+	source = gnupg-pkcs11-scd.sysusers.conf
+	sha512sums = 47b9afdc3552fc9a741a725c6732cd31cd2643d7483a50d26222d68d0557b700addff37d8598ee1076575b8bc1e1134a52e06b67d4f94dda7c90141a57ca4182
+	sha512sums = e150462b8aa12f2bd30f17245f9a2ac8880029641a5a74ef3d9a7bc0618845898af4804b987e78f52a5925e346c05539fb3476fe4b64abbd86fa8ceb9271fdda
+
+pkgname = gnupg-pkcs11-scd
