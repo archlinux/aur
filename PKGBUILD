@@ -1,6 +1,6 @@
 pkgname=duke3d
 _pkgname=Duke3D
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Duke Nukem 3D developed by ID Software Powered by the EDuke32"
 arch=('x86_64' 'aarch64')
