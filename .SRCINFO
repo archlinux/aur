@@ -1,5 +1,5 @@
 pkgbase = nestris-bin
-	pkgdesc = Tetris NES reimplimentation engine.
+	pkgdesc = Tetris NES powered by the Nestris reimplimentation engine.
 	pkgver = 0.7
 	pkgrel = 1
 	url = https://gitlab.com/nestris-bin
