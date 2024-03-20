@@ -8,7 +8,7 @@ pkgdesc='KDE File Manager & Web Browser'
 arch=("x86_64")
 url='https://apps.kde.org/konqueror/'
 license=(LGPL-2.0-or-later)
-depends=("dolphin" "keditbookmarks" "qt5-webengine" "kdelibs4support" "khtml")
+depends=("dolphin" "keditbookmarks" "qt6-webengine")
 makedepends=(gcc-libs
          glibc
          karchive
