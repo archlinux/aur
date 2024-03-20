@@ -1,6 +1,6 @@
 pkgbase = r-gdnax
 	pkgdesc = Diagnostics for assessing genomic DNA contamination in RNA-seq data
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/gDNAx
 	arch = any
@@ -31,8 +31,8 @@ pkgbase = r-gdnax
 	optdepends = r-rmarkdown
 	optdepends = r-runit
 	optdepends = r-txdb.hsapiens.ucsc.hg38.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/gDNAx_1.0.1.tar.gz
-	md5sums = 4f51a23263fff85c936d0319a2c0e1de
-	b2sums = 9563776d06f41efe8bd315cd2b3a16d451010e6a33f2f4dee3670c91d1f0ffdb8ecae228a4b6851d03431d1ed1930808f0899ce8dd4889ac32ef027cc5ec9bc1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gDNAx_1.0.2.tar.gz
+	md5sums = e8937acc1de3e0e87a81c446a928d98f
+	b2sums = c94d2bc705c20d54434cafb3123c0907eb0e6d2ca4938b02683a33f5929523dedecf38b8ce8d8cfdce28f6e851e6efedc57ea536ab8fd15f0626ebc75b7f272f
 
 pkgname = r-gdnax
