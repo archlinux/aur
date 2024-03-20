@@ -4,10 +4,10 @@
 _hkgname=cab
 pkgname=cab
 pkgver=0.2.21
-pkgrel=2
+pkgrel=3
 pkgdesc="MacPorts-like maintenance command of Haskell cabal packages"
 url="http://www.mew.org/~kazu/proj/cab"
-license=('custom:BSD3')
+license=('BSD-3-Clause')
 arch=('i686' 'x86_64')
 depends=('haskell-attoparsec' 'haskell-conduit' 'haskell-conduit-extra' 'haskell-resourcet')
 makedepends=('ghc')
