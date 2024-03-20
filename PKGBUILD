@@ -4,10 +4,10 @@
 # Contributor: sukanka <su975853527 at gmail dot com>
 _pkgname=siyuan
 pkgname="${_pkgname}-note-bin"
-pkgver=3.0.3
+pkgver=3.0.4
 _electronversion=28
 pkgrel=1
-pkgdesc="A local-first personal knowledge management system"
+pkgdesc="A local-first personal knowledge management system.Use system-wide electron."
 arch=('x86_64')
 url="https://b3log.org/siyuan/"
 _ghurl="https://github.com/siyuan-note/siyuan"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}.desktop"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1acf9aa65bc814434efe2318db7ea4fdb5206869f146f5dc326e84b8b0fcfcbb'
+sha256sums=('2c2995201b42b1a5bfd933c615bdaad33d65eb92dcc2da0e0ceea80f85ffa954'
             'a8129c198d77a882ce930ccf094ced1d7dc9c0f0c3eca1f204e013bcfae5c8df'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
