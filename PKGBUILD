@@ -1,7 +1,7 @@
 # Maintainer: Ben Morgan <cassava@iexu.de>
 # vim: set ts=2 sw=2:
 pkgname=repoctl
-pkgver=0.22
+pkgver=0.22.1
 pkgrel=1
 pkgdesc="An AUR helper that also simplifies managing local Pacman repositories"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ depends=('pacman')
 makedepends=('go>=1.22.1' 'xz')
 options=('!strip')
 source=(https://github.com/cassava/repoctl/releases/download/v${pkgver}/repoctl-${pkgver}.tar.gz)
-md5sums=('634e2261b000dd6f614faae230287940')
+md5sums=('37805c51dc153db42ba25ca2cfa14005')
 
 build() {
   cd "${pkgname}-${pkgver}"
