@@ -1,0 +1,13 @@
+pkgbase = howl
+	pkgdesc = General purpose and light-weight editor
+	pkgver = 0.6
+	pkgrel = 2
+	url = https://howl.io/
+	arch = x86_64
+	license = MIT
+	makedepends = setconf
+	depends = gtk3
+	source = https://github.com/howl-editor/howl/releases/download/0.6/howl-0.6.tgz
+	sha256sums = 834b06e423d360c97197e7abec99b623fdc5ed3a0c39b88d6467e499074585e1
+
+pkgname = howl
