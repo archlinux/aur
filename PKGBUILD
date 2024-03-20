@@ -72,7 +72,7 @@ EOF
 [Desktop Entry]
 Name=${_pkgname^} - Wayland
 Exec=/usr/bin/$_pkgname --enable-features=WaylandWindowDecorations --ozone-platform-hint=wayland %U
-Terminal=falseparu
+Terminal=false
 Type=Application
 Icon=ferdium
 StartupWMClass=Ferdium
