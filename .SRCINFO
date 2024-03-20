@@ -1,0 +1,17 @@
+pkgbase = switcheroo-bin
+	pkgdesc = A cross platform, Rust implementation for the Tegra X1 bootROM exploit (binary release)
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/budde25/switcheroo
+	arch = x86_64
+	license = GPL-2.0-only
+	provides = switcheroo
+	conflicts = switcheroo
+	source = switcheroo-0.6.0.tar.xz::https://github.com/budde25/switcheroo/releases/download/v0.6.0/switcheroo-nx-x86_64-unknown-linux-gnu.tar.xz
+	source = io.ebudd.Switcheroo.png::https://github.com/budde25/switcheroo/raw/v0.6.0/extra/logo/io.ebudd.Switcheroo.png
+	source = https://github.com/budde25/switcheroo/raw/v0.6.0/extra/linux/io.ebudd.Switcheroo.desktop
+	sha256sums = 6dbff5244be3972615a3815dca0d7d25918b220c9d06d1c40ced87eedb8cc46b
+	sha256sums = d858691ed334bf34ee84e4d8e8499b62898ad3c90422e6bf12ef60d254ea9c82
+	sha256sums = 27830d20aca6c5165f2d59a0dfee51f6cc61d64fe4a8541ea659a818aa2def43
+
+pkgname = switcheroo-bin
