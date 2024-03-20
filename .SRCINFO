@@ -39,11 +39,11 @@ pkgbase = blender-2.93-git
 	optdepends = cuda: CUDA support in Cycles
 	provides = blender=2.93
 	conflicts = blender=2.93
-	source = git://git.blender.org/blender.git#branch=blender-v2.93-release
-	source = blender-addons.git::git://git.blender.org/blender-addons.git
-	source = blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git
-	source = blender-translations.git::git://git.blender.org/blender-translations.git
-	source = blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git
+	source = blender::git+https://github.com/blender/blender#branch=blender-v2.93-release
+	source = blender-addons::git+https://github.com/blender/blender-addons
+	source = blender-addons-contrib::git+https://github.com/blender/blender-addons-contrib
+	source = blender-translations::git+https://github.com/blender/blender-translations
+	source = blender-dev-tools::git+https://github.com/blender/blender-dev-tools
 	source = SelectCudaComputeArch.patch
 	source = usd_python.patch
 	source = embree.patch
