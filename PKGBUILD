@@ -2,7 +2,7 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-glib-networking
-pkgver=2.78.1
+pkgver=2.80.0
 pkgrel=1
 epoch=1
 pkgdesc="Network extensions for GLib (32-bit)"
@@ -12,6 +12,7 @@ license=(LGPL-2.1-or-later)
 depends=(
   glib-networking
   lib32-glib2
+  lib32-glibc
   lib32-gnutls
   lib32-libproxy
 )
@@ -20,7 +21,7 @@ makedepends=(
   meson
 )
 checkdepends=(ca-certificates)
-_commit=ff3ed94057edfd2e4d4c45c5e53e5b41d19fad6a  # tags/2.78.1^0
+_commit=3ae624d21b586ec33543004b037fd343042cb04b  # tags/2.80.0^0
 source=("git+https://gitlab.gnome.org/GNOME/glib-networking.git#commit=$_commit")
 b2sums=('SKIP')
 
@@ -34,16 +35,12 @@ prepare() {
 }
 
 build() {
-  local meson_options=(
-    --cross-file lib32
-  )
-
-  arch-meson glib-networking build "${meson_options[@]}"
+  arch-meson glib-networking build --cross-file lib32
   meson compile -C build
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -vC build --print-errorlogs
 }
 
 package() {
