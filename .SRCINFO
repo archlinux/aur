@@ -1,7 +1,7 @@
 pkgbase = snippet-notes
 	pkgdesc = A local note-taking software with quick recording and enhanced search capabilities.效能笔记，一款快速记录及搜索功能增强的本地笔记记录软件.
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xunxun10/snippet-notes
 	arch = any
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = snippet-notes
 	conflicts = snippet-notes
 	source = snippet-notes.git::git+https://github.com/xunxun10/snippet-notes.git#tag=0.4.0
 	source = snippet-notes.sh
-	sha256sums = SKIP
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = e28860fefe30b344923d422f16996c715810e518cbbc95d94b91198e347944a2
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = snippet-notes
