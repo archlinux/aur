@@ -1,41 +1,67 @@
 # Maintainer: Dominik Kummer <admin@arkades.org>
 
 pkgname=konqueror-git
-pkgver=00
+_pkgname=konqueror
+pkgver=24.01.90.r85.g83428ef39
 pkgrel=1
-pkgdesc="KDE File Manager & Web Browser"
+pkgdesc='KDE File Manager & Web Browser'
 arch=("x86_64")
-url="https://konqueror.org/"
-license=("LGPL")
+url='https://apps.kde.org/konqueror/'
+license=(LGPL-2.0-or-later)
 depends=("dolphin" "keditbookmarks" "qt5-webengine" "kdelibs4support" "khtml")
-makedepends=("extra-cmake-modules" "kdoctools" "tidy" "kdesignerplugin" "kdesu")
-optdepends=('tidy: tidy HTML plugin' 'kdesu: shell command plugin')
+makedepends=(gcc-libs
+         glibc
+         karchive
+         kbookmarks
+         kcmutils
+         kcodecs
+         kcolorscheme
+         kcompletion
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         kdbusaddons
+         kguiaddons
+         ki18n
+         kiconthemes
+         kio
+         kitemviews
+         kjobwidgets
+         kparts
+         kservice
+         ktextwidgets
+         kwallet
+         kwidgetsaddons
+         kwindowsystem
+         kxmlgui
+         qt6-base
+         qt6-webengine
+         solid
+         sonnet
+         zlib)
+optdepends=('kdesu: shell command plugin')
 conflicts=("konqueror")
 provides=("konqueror")
-groups=("kde-applications" "kdebase")
+groups=(kde-applications
+        kde-network)
 source=("git+https://invent.kde.org/network/konqueror.git")
 sha512sums=('SKIP')
 
-
 pkgver() {
+    echo $(pwd) >&2
     cd konqueror
     git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../$pkgname-$pkgver \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DBUILD_TESTING=OFF
-  make
+  cmake -B build -S $_pkgname \
+    -DBUILD_TESTING=OFF \
+    -DQT_MAJOR_VERSION=6 \
+    -DUSE_SYSTEM_DICTIONARIES=ON
+  cmake --build build
 }
 
 package() {
-  cd build
-  make "DESTDIR=$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
