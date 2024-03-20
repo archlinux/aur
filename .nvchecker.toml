@@ -1,0 +1,5 @@
+[jnv]
+source = "github"
+github = "ynqa/jnv"
+prefix = "v"
+use_latest_release = true
