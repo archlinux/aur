@@ -10,6 +10,6 @@ pkgbase = bibliasacra-appimage
 	conflicts = bibliasacra
 	options = !strip
 	source = https://github.com/ika/Biblia_Sacra/releases/download/v1.0.7/bibliasacra-v1.0.7-x86_64.AppImage
-	md5sums = 89246270db37369c4ad994795c2bcbf5
+	md5sums = de24b4e26c788222615989cc27ec4d90
 
 pkgname = bibliasacra-appimage
