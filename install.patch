@@ -1,0 +1,25 @@
+diff '--color=auto' --unified --recursive --text leopard.orig/leopard/CMakeLists.txt leopard/leopard/CMakeLists.txt
+--- leopard.orig/leopard/CMakeLists.txt	2024-03-20 17:49:24.395378437 -0400
++++ leopard/leopard/CMakeLists.txt	2024-03-20 17:48:57.768726489 -0400
+@@ -113,9 +113,19 @@
+     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
+ endif(ENABLE_OPENMP)
+ 
+-add_library(libleopard STATIC ${LIB_SOURCE_FILES})
++add_library(leopard_static STATIC ${LIB_SOURCE_FILES})
++set_target_properties(leopard_static PROPERTIES OUTPUT_NAME leopard)
++add_library(leopard SHARED ${LIB_SOURCE_FILES})
+ 
+ add_executable(bench_leopard ${BENCH_SOURCE_FILES})
+-target_link_libraries(bench_leopard libleopard)
++target_link_libraries(bench_leopard leopard)
+ 
+ add_executable(experiment_leopard ${EXPERIMENT_SOURCE_FILES})
++
++install(TARGETS leopard
++	ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++	LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
++install(TARGETS leopard_static
++	ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++	LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
++install(FILES leopard.h DESTINATION ${CMAKE_INSTALL_PREFIX}/include)
