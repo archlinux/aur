@@ -1,0 +1,14 @@
+pkgbase = libident
+	pkgdesc = Library for querying IDENT servers
+	pkgver = 0.32
+	pkgrel = 8
+	url = https://www.remlab.net/libident/
+	arch = x86_64
+	license = custom
+	options = !emptydirs
+	source = https://www.remlab.net/files/libident/libident-0.32.tar.bz2
+	source = libident.pc
+	sha256sums = a88a24adc377322008aaf7bf7078e6d409f5327e9515ce0d755345dd249dce22
+	sha256sums = 81907cda4fe9c925e78bf58bc9c61d1af439784e4f01da4bd6fc7e4d87750f5c
+
+pkgname = libident
