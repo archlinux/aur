@@ -1,7 +1,7 @@
 pkgbase = osu-lazer-bin
 	pkgdesc = The future of osu! and the beginning of an open era! Commonly known by the codename osu!lazer. Pew pew.
 	pkgver = 2024.312.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osu.ppy.sh
 	arch = x86_64
 	license = MIT
@@ -14,6 +14,7 @@ pkgbase = osu-lazer-bin
 	conflicts = osu-lazer
 	noextract = osu.AppImage
 	options = !strip
+	options = !debug
 	source = osu-lazer-2024.312.1.AppImage::https://github.com/ppy/osu/releases/download/2024.312.1/osu.AppImage
 	source = icon.png
 	source = https://raw.githubusercontent.com/ppy/osu-resources/master/LICENCE.md

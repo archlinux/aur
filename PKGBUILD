@@ -7,7 +7,7 @@
 pkgname=osu-lazer-bin
 _pkgname=${pkgname%-bin}
 pkgver=2024.312.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The future of osu! and the beginning of an open era! Commonly known by the codename osu!lazer. Pew pew."
 arch=(x86_64)
 url="https://osu.ppy.sh"
@@ -20,7 +20,7 @@ depends=(
 )
 provides=(osu-lazer)
 conflicts=(osu-lazer)
-options=(!strip)
+options=(!strip !debug)
 source=(
   "$_pkgname-$pkgver.AppImage::https://github.com/ppy/osu/releases/download/$pkgver/osu.AppImage"
   "icon.png"
