@@ -7,6 +7,7 @@ arch=('x86_64')
 license=('MIT')
 depends=('python' 'tk' 'python-pillow' 'python-pip')
 source=("install.sh")
+sha256sums=()
 
 package() {
     chmod +x install.sh
