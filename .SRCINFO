@@ -1,5 +1,5 @@
 pkgbase = duke3d
-	pkgdesc = Duke Nukem 3D developed by ID Software Powered by the EDuke32
+	pkgdesc = Duke Nukem 3D developed by ID Software Powered by the Ruze engine
 	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://gitlab.com/eduke32-linux
