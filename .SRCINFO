@@ -6,6 +6,7 @@ pkgbase = somafm-qt-git
 	arch = x86_64
 	arch = i686
 	license = MIT
+	makedepends = git
 	depends = qt5-base
 	depends = qt5-multimedia
 	source = git+https://github.com/josefbehr/somafm-qt.git
