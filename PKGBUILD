@@ -26,7 +26,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "patr-java-profiler"
-  printf "%sr%s" "$(cat VERSION | sed -E 's/([^-]+)-SNAPSHOT/\1.snapshot/')" "$(git rev-list --count HEAD)"
+  printf "%sr%s" "$(cat VERSION | sed -E 's/([^-]+)-SNAPSHOT/\1.snapshot_/')" "$(git rev-list --count HEAD)"
 }
 
 build() {
