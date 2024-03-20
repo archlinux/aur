@@ -2,15 +2,20 @@
 
 pkgname=gnome-shell-extension-compiz-alike-windows-effect-git
 pkgver=r48.21acc46
-pkgrel=4
-pkgdesc="Wobbly windows effect inspired by the Compiz ones"
+pkgrel=5
+pkgdesc="Wobbly windows effect inspired by the Compiz ones (archived - gnome-shell<=41)"
 arch=('any')
 url="https://github.com/hermes83/compiz-alike-windows-effect"
 install="${pkgname}.install"
 license=('GPL3')
-depends=('gnome-shell>=1:3.28' 'gnome-shell<1:42')
-makedepends=('git'
-             'glib2')
+depends=(
+	'gnome-shell>=1:3.28'
+	'gnome-shell<1:42'
+)
+makedepends=(
+	'git'
+	'glib2'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!strip')
@@ -18,30 +23,30 @@ source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+	cd "${srcdir}/${pkgname%-git}"
+	(
+		set -o pipefail
+		git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+			printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
 }
 
 package() {
-  cd "${srcdir}/${pkgname%-git}"
+	cd "${srcdir}/${pkgname%-git}"
 
-  local uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
-  #local schema=$(grep -Po '(?<="settings-schema": ")[^"]*' metadata.json).gschema.xml
-  local schema=org.gnome.shell.extensions.com.github.hermes83.compiz-alike-windows-effect.gschema.xml
-  local destdir="${pkgdir}/usr/share/gnome-shell/extensions/${uuid}"
+	local uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
+	#local schema=$(grep -Po '(?<="settings-schema": ")[^"]*' metadata.json).gschema.xml
+	local schema=org.gnome.shell.extensions.com.github.hermes83.compiz-alike-windows-effect.gschema.xml
+	local destdir="${pkgdir}/usr/share/gnome-shell/extensions/${uuid}"
 
-  install -dm755 "${destdir}"
-  find . -regextype posix-egrep -regex ".*\.(js|json|compiled|xml)$" -exec\
-     install -Dm 644 {} ${destdir}/{} \;
-  cd "${srcdir}/${pkgname%-git}/schemas"
-  sed -i "s_/extensions/ncom/github/hermes83_/extensions_g" ${schema}
-  install -Dm644 "${srcdir}/${pkgname%-git}/schemas/${schema}" \
-    "${pkgdir}/usr/share/glib-2.0/schemas/${schema}"
-# rebuild compiled GSettings schemas if missing
-  if [[ ! -f "${destdir}/schemas/gschemas.compiled" ]]; then
-    glib-compile-schemas "${destdir}/schemas"
-  fi
+	install -dm755 "${destdir}"
+	find . -regextype posix-egrep -regex ".*\.(js|json|compiled|xml)$" -exec install -Dm 644 {} ${destdir}/{} \;
+	cd "${srcdir}/${pkgname%-git}/schemas"
+	sed -i "s_/extensions/ncom/github/hermes83_/extensions_g" ${schema}
+	install -Dm644 "${srcdir}/${pkgname%-git}/schemas/${schema}" \
+		"${pkgdir}/usr/share/glib-2.0/schemas/${schema}"
+	# rebuild compiled GSettings schemas if missing
+	if [[ ! -f "${destdir}/schemas/gschemas.compiled" ]]; then
+		glib-compile-schemas "${destdir}/schemas"
+	fi
 }
