@@ -16,24 +16,24 @@ sha256sums=('31b95566b43805970a62a12aeb3d90a38e06c4d63e288dd8ebef63985ce5a5b7')
 
 package_otf-outfit() {
     provides=("$pkgbase")
-    mkdir -p "${pkgdir}/usr/share/fonts/OTF/"
+    mkdir -p "${pkgdir}/usr/share/fonts/$pkgname/"
     cd "$srcdir"
-    install -Dm0644 Outfit-Fonts-${pkgver}/fonts/otf/* "$pkgdir/usr/share/fonts/OTF"
+    install -Dm0644 Outfit-Fonts-${pkgver}/fonts/otf/* "$pkgdir/usr/share/fonts/$pkgname"
     install -Dm0644 Outfit-Fonts-${pkgver}/OFL.txt  "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 package_ttf-outfit() {
     provides=("$pkgbase")
-    mkdir -p "${pkgdir}/usr/share/fonts/TTF/"
+    mkdir -p "${pkgdir}/usr/share/fonts/$pkgname/"
     cd "$srcdir"
-    install -Dm0644 Outfit-Fonts-${pkgver}/fonts/ttf/* "$pkgdir/usr/share/fonts/TTF"
+    install -Dm0644 Outfit-Fonts-${pkgver}/fonts/ttf/* "$pkgdir/usr/share/fonts/$pkgname"
     install -Dm0644 Outfit-Fonts-${pkgver}/OFL.txt  "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 package_ttf-outfit-variable() {
     provides=("$pkgbase-variable")
-    mkdir -p "${pkgdir}/usr/share/fonts/TTF/"
+    mkdir -p "${pkgdir}/usr/share/fonts/$pkgname/"
     cd "$srcdir"
-    install -Dm0644 Outfit-Fonts-${pkgver}/fonts/variable/* "$pkgdir/usr/share/fonts/TTF"
+    install -Dm0644 Outfit-Fonts-${pkgver}/fonts/variable/* "$pkgdir/usr/share/fonts/$pkgname"
     install -Dm0644 Outfit-Fonts-${pkgver}/OFL.txt  "$pkgdir/usr/share/licenses/$pkgname"
 }

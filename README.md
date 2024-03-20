@@ -10,4 +10,8 @@ When updating don't forget to update the .SRCINFO:
 makepkg --printsrcinfo > .SRCINFO
 ```
 
+References:
+
+- https://wiki.archlinux.org/title/Arch_package_guidelines
+- https://wiki.archlinux.org/title/Font_package_guidelines
 
