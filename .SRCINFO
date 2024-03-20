@@ -1,6 +1,6 @@
 pkgbase = vja
 	pkgdesc = A simple CLI for Vikunja
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://gitlab.com/ce72/vja
 	arch = any
@@ -12,11 +12,8 @@ pkgbase = vja
 	depends = python-requests
 	depends = python-parsedatetime
 	depends = python-dateutil
-	source = https://files.pythonhosted.org/packages/source/v/vja/vja-3.2.0.tar.gz
-	source = 0001-Remove-reference-to-readme.md.patch
-	sha1sums = cd4b07df7dd9c170ee90ac2f8dd4ea9a44df5986
-	sha1sums = ec72120aeebf52b333604bf99954b9f9bcd18cbd
-	sha256sums = b206c717ce82fe43fa410038ea4fa980c83df99ef544e375e703a33cd0d40382
-	sha256sums = 1aff23e6f03ba58d6a18efacc8b9392a45272f331152d08a99bb525c792f8faa
+	source = https://files.pythonhosted.org/packages/source/v/vja/vja-3.2.1.tar.gz
+	sha1sums = 06efad71564a58d1a197f2ca3dcb8d2eeb9d712d
+	sha256sums = 21104898e0d81648802ee5f577135d0d42b2b81641365ef9b4d3021558dd019b
 
 pkgname = vja
