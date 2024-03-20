@@ -10,7 +10,7 @@ url="https://google.github.io/draco/"
 license=('Apache')
 makedepends=('cmake' 'git')
 depends=(gcc-libs)
-source=("git+https://github.com/google/draco.git")
+source=("git+https://github.com/google/draco.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {

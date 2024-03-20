@@ -8,7 +8,7 @@ pkgbase = draco-git
 	makedepends = cmake
 	makedepends = git
 	depends = gcc-libs
-	source = git+https://github.com/google/draco.git
+	source = git+https://github.com/google/draco.git#branch=main
 	sha256sums = SKIP
 
 pkgname = draco-git
