@@ -2,7 +2,7 @@
 
 basename=draco
 pkgname=$basename-git
-pkgver=1.5.6
+pkgver=1.5.7.r1.g7d58126
 pkgrel=1
 pkgdesc="Draco is a library for compressing and decompressing 3D geometric meshes and point clouds. It is intended to improve the storage and transmission of 3D graphics."
 arch=('x86_64')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${basename}"
-  git describe --tags | sed 's/-/+/g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
