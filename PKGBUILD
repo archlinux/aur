@@ -37,10 +37,9 @@ pkgver() {
 package() {
     _installDir="$pkgdir/opt/$_pkgname"
     _binDir="$pkgdir/usr/bin"
-    mkdir -p "$_installDir";
+    install -dm755 "$_binDir"
+    install -dm755 "$_installDir"
     unzip "$_archive" -d "$_installDir"
-    chmod -R 755 "$_installDir"
-    mkdir -p "$_binDir"
     ln -s "/opt/$_pkgname/GodotManager.${arch[0]}" "$_binDir/$_pkgname"
-    install -Dm755 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"    
+    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"    
 }
