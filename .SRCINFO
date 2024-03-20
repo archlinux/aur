@@ -1,0 +1,23 @@
+pkgbase = dpitunnel-git
+	pkgdesc = Free, simple and serverless solution against censorship for Linux PCs and routers
+	pkgver = 0.9.0.r4.g864c06e
+	pkgrel = 1
+	url = https://github.com/txtsd/DPITunnel
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cpp-httplib
+	depends = libnl
+	depends = gcc-libs
+	depends = zlib
+	depends = openssl
+	depends = glibc
+	depends = brotli
+	provides = dpitunnel
+	conflicts = dpitunnel
+	source = git+https://github.com/txtsd/DPITunnel
+	source = git+https://github.com/yhirose/cpp-httplib
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = dpitunnel-git
