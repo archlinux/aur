@@ -1,7 +1,7 @@
 pkgbase = python-pytorch
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration
-	pkgver = 2.2.0
-	pkgrel = 2
+	pkgver = 2.2.1
+	pkgrel = 1
 	url = https://pytorch.org
 	arch = x86_64
 	license = BSD
@@ -48,7 +48,7 @@ pkgbase = python-pytorch
 	depends = python-filelock
 	options = !lto
 	options = !debug
-	source = pytorch::git+https://github.com/pytorch/pytorch.git#tag=v2.2.0
+	source = pytorch::git+https://github.com/pytorch/pytorch.git#tag=v2.2.1
 	source = python-pytorch-ARM_NEON_2_x86_SSE::git+https://github.com/intel/ARM_NEON_2_x86_SSE.git
 	source = python-pytorch-FP16::git+https://github.com/Maratyszcza/FP16.git
 	source = python-pytorch-FXdiv::git+https://github.com/Maratyszcza/FXdiv.git
@@ -89,6 +89,8 @@ pkgbase = python-pytorch
 	source = python-pytorch-tbb::git+https://github.com/01org/tbb
 	source = python-pytorch-tensorpipe::git+https://github.com/pytorch/tensorpipe.git
 	source = python-pytorch-zstd::git+https://github.com/facebook/zstd.git
+	source = python-pytorch-2_2_0-fix-cccl-build.patch::https://github.com/pytorch/pytorch/commit/2a440348958b3f0a2b09458bd76fe5959b371c0c.patch
+	source = python-pytorch-fix-cuda-12_4.patch
 	source = fix_include_system.patch
 	source = use-system-libuv.patch
 	source = fix-building-for-torchvision.patch
@@ -146,6 +148,8 @@ pkgbase = python-pytorch
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
+	b2sums = ae31599abcfde4d7dcf20d5430cbdab46d1c74b342c088883d6c949fad1987cbd16520d8f1d887b669c0990aae4baf4f0c350eeadbf237abf3a8e8a122722f3e
+	b2sums = caf22a33fab6ca909cc9325ed6c32fdf36189dbdc77bb921d7db88fb5228f33ca2d90b1368b5ef88624277be422eaeb395768f9f2ddca19f39a238ed3c40efbd
 	b2sums = 77f85808e480bd37dfb5f072d565466ae30a8f827f49ef97591fc2fc03bea54944eb1adeaa4a1e3466518a5640f575eda88d15b4c4d549a6f41f0bf4f2cfb086
 	b2sums = af8c724ed80898ae3875a295ad6bd4d18d90f8a9124f6cff6d1b2f525bf7806fe61306e739c1f7362fbd8d0e4f8ba57d0e3bf925ea3f7a78a0a98f26722db147
 	b2sums = fdea0b815d7750a4233c1d4668593020da017aea43cf4cb63b4c00d0852c7d34f0333e618fcf98b8df2185313a2089b8c2e9fe8ec3cfb0bf693598f9c61461a8
@@ -168,7 +172,7 @@ pkgname = python-pytorch
 
 pkgname = python-pytorch-opt
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (with AVX2 CPU optimizations)
-	provides = python-pytorch=2.2.0
+	provides = python-pytorch=2.2.1
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-cuda
@@ -199,7 +203,7 @@ pkgname = python-pytorch-cuda
 	depends = cudnn
 	depends = magma-cuda
 	depends = onednn
-	provides = python-pytorch=2.2.0
+	provides = python-pytorch=2.2.1
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-opt-cuda
@@ -230,8 +234,8 @@ pkgname = python-pytorch-opt-cuda
 	depends = cudnn
 	depends = magma-cuda
 	depends = onednn
-	provides = python-pytorch=2.2.0
-	provides = python-pytorch-cuda=2.2.0
+	provides = python-pytorch=2.2.1
+	provides = python-pytorch-cuda=2.2.1
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-rocm
@@ -262,7 +266,7 @@ pkgname = python-pytorch-rocm
 	depends = miopen
 	depends = magma-hip
 	depends = onednn
-	provides = python-pytorch=2.2.0
+	provides = python-pytorch=2.2.1
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-opt-rocm
@@ -293,6 +297,6 @@ pkgname = python-pytorch-opt-rocm
 	depends = miopen
 	depends = magma-hip
 	depends = onednn
-	provides = python-pytorch=2.2.0
-	provides = python-pytorch-rocm=2.2.0
+	provides = python-pytorch=2.2.1
+	provides = python-pytorch-rocm=2.2.1
 	conflicts = python-pytorch
