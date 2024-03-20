@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flowWorkspace
-_pkgver=4.14.2
+_pkgver=4.14.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -52,9 +52,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "system-hdf5.patch")
-md5sums=('8c13b6aa80732d54f36bb544adba5a6c'
+md5sums=('84495f076b13f32e0f98817c8ff03ede'
          'd83db00432ba74621da54d24fce960fc')
-b2sums=('b80abde83d95398c4f149576b6e9d4836cabc281dffc57e806eb6f223a0af355888b4caed0d517c60809136ffd8d73e181f3d73ead5e0160c6873fa6b25b3024'
+b2sums=('7d241283522c1eaab9e5124b73504d83f76de210d42dccebcdc292f9a5cce78c1701ef89d33021f9aaf416d4a192b296b920cf75fcd8b768b1a345655737142c'
         '5f693100c9198981f8ff28aca945499054570fb5957ae22c908f2e4c19cf79704e5961589632e6568a5e62229b678ab748c02333919a18193b773c1ed602bbaf')
 
 prepare() {
