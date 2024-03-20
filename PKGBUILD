@@ -6,7 +6,7 @@ pkgver=1.11.0
 pkgrel=1
 pkgdesc="NXP Secure Provisioning SDK"
 arch=(any)
-url="https://github.com/NXPmicro/spsdk"
+url="https://github.com/nxp-mcuxpresso/spsdk"
 license=(BSD)
 depends=(
   python
