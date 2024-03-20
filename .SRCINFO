@@ -1,0 +1,16 @@
+pkgbase = python-bitcointx-git
+	pkgdesc = A python3 library providing an easy interface to the Bitcoin data structures
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Simplexum/python-bitcointx
+	arch = any
+	license = MIT
+	depends = libsecp256k1
+	provides = python-bitcointx-git
+	provides = python-bitcointx
+	conflicts = python-bitcointx-git
+	conflicts = python-bitcointx
+	source = git+https://github.com/Simplexum/python-bitcointx
+	sha256sums = SKIP
+
+pkgname = python-bitcointx-git
