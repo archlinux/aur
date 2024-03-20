@@ -5,7 +5,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=dbplyr
-_cranver=2.4.0
+_cranver=2.5.0
 pkgname=r-${_cranname,,}
 pkgdesc="A ‘dplyr’ Back End for Databases"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -29,7 +29,7 @@ depends=(
     "r-rlang>=1.1.1"
     "r-tibble>=3.2.1"
     "r-tidyr>=1.3.0"
-    "r-tidyselect>=1.2.0"
+    "r-tidyselect>=1.2.1"
     "r-vctrs>=0.6.3"
     "r-withr>=2.5.0"
 )
@@ -39,7 +39,7 @@ optdepends=(
     "r-knitr"
     "r-lahman"
     "r-nycflights13"
-    "r-odbc"
+    "r-odbc>=1.4.2"
     "r-rmariadb>=1.2.2"
     "r-rmarkdown"
     "r-rpostgres>=1.4.5"
@@ -67,7 +67,7 @@ optdepends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("c0a4c4f90544b32bed9f3582741f9870fe19c6f3b7c0c9468073dcb7c947f44e18b8c31ccb256627c79f84714707a0ad54bed91d64f4924b889b18c1d51f35e1")
+b2sums=("1902d757641cac63ede87695a1919493d41eff63a8455317b19ee1f1025d5fd2b36fd8ee143973736ae55ebef701556b5978363ffd0bfd11c711fbed9740742b")
 
 build() {
     mkdir -p "${srcdir}/build/"
