@@ -1,7 +1,7 @@
 pkgbase = shelltestrunner
 	pkgdesc = Easy, repeatable testing of CLI programs/commands
 	pkgver = 1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/simonmichael/shelltestrunner
 	arch = x86_64
 	license = GPL

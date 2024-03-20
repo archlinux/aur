@@ -1,7 +1,7 @@
 # Maintainer: xiretza <xiretza+aur@xiretza.xyz>
 pkgname=shelltestrunner
 pkgver=1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy, repeatable testing of CLI programs/commands"
 arch=(x86_64)
 url="https://github.com/simonmichael/shelltestrunner"
@@ -23,18 +23,19 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-	runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
-		--prefix=/usr --docdir="/usr/share/doc/$pkgname" \
-		--dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid --ghc-option=-fllvm \
-		--ghc-option=-optl-Wl\,-z\,relro\,-z\,now \
-		--ghc-option='-pie' -falpm
 
-	runhaskell Setup build $MAKEFLAGS
+	runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
+		--prefix=/usr --docdir="/usr/share/doc/$pkgname" --datasubdir="$pkgname" --enable-tests \
+		--dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid \
+		--ghc-option=-optl-Wl\,-z\,relro\,-z\,now \
+		--ghc-option='-pie'
+
+	runhaskell Setup build
 }
 
 check() {
 	cd "$pkgname-$pkgver"
-	#make -k test
+	runhaskell Setup test
 }
 
 package() {
