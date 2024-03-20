@@ -1,0 +1,5 @@
+[python-trame-vega]
+source = "github"
+github = "Kitware/trame-vega"
+use_latest_release = "true"
+prefix = "v"
