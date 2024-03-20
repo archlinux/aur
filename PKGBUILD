@@ -2,8 +2,8 @@
 
 pkgname="bashblog-git"
 _pkgname="${pkgname%-*}"
-pkgver=4
-pkgrel=1
+pkgver=3
+pkgrel=2
 pkgdesc="A single Bash script to create blogs."
 arch=('any')
 url="https://github.com/cfenollosa/bashblog"
