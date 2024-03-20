@@ -8,7 +8,7 @@ url="https://git.rwth-aachen.de/patrick_laszlo.hechler/patr-java-profiler"
 license=('AGPL-3.0-or-later')
 groups=()
 depends=('java-runtime-headless>=8')
-makedepends=()
+makedepends=('git' 'maven' 'java-environment>=8')
 optdepends=('java-runtime-headless>=16: support for socket files for server/client communication'
            'java-runtime>=8: graphical user interface'
            'java-runtime>=16: socket files + graphical user interface'
@@ -20,6 +20,8 @@ backup=()
 options=()
 install=
 changelog=
+
+#makedepends=()
 #source=("patr-java-profiler-agent-${pkgver}.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-agent/${pkgver}/patr-java-profiler-agent-${pkgver}-jar-with-dependencies.jar"
 #        "patr-java-profiler-bootstrap-${pkgver}.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-bootstrap/${pkgver}/patr-java-profiler-bootstrap-${pkgver}.jar"
 #        "patr-java-profiler-server-${pkgver}.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-server/${pkgver}/patr-java-profiler-server-${pkgver}.jar"

@@ -5,6 +5,9 @@ pkgbase = patrjprof
 	url = https://git.rwth-aachen.de/patrick_laszlo.hechler/patr-java-profiler
 	arch = any
 	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = maven
+	makedepends = java-environment>=8
 	depends = java-runtime-headless>=8
 	optdepends = java-runtime-headless>=16: support for socket files for server/client communication
 	optdepends = java-runtime>=8: graphical user interface
