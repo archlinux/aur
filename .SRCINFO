@@ -1,0 +1,22 @@
+pkgbase = dpitunnel-bin
+	pkgdesc = Free, simple and serverless solution against censorship for Linux PCs and routers
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/txtsd/DPITunnel
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = GPL-3.0-or-later
+	provides = dpitunnel
+	conflicts = dpitunnel
+	source_x86_64 = https://github.com/txtsd/DPITunnel/releases/download/0.9.0/dpitunnel-amd64.zip
+	sha256sums_x86_64 = 48c6ae3da23e24e352e4f7aa0a6fc2a743fed62fface2c7ab4b91637366f8b6d
+	source_i686 = https://github.com/txtsd/DPITunnel/releases/download/0.9.0/dpitunnel-x86.zip
+	sha256sums_i686 = 68e331ab4e53527f9ea1658713869195a1fc6a74f66b3b7d40e928a8adfffd37
+	source_armv7h = https://github.com/txtsd/DPITunnel/releases/download/0.9.0/dpitunnel-armhf.zip
+	sha256sums_armv7h = 1900c719ab70f92a4b970b48b6f2d6bc4fcaea9b818e34bcfa3786984bbfab89
+	source_aarch64 = https://github.com/txtsd/DPITunnel/releases/download/0.9.0/dpitunnel-arm64.zip
+	sha256sums_aarch64 = 707782fc27bb604ce437e6248ba661de982d56804e3cbc915fdf144c0d24f8e9
+
+pkgname = dpitunnel-bin
