@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libmatio-git
 	pkgdesc = C library with a fortran 90/95 module interface for reading/writing MATLAB MAT-files (git version, mingw-64)
-	pkgver = 1.5.23.41.gf3cec61
+	pkgver = 1.5.26.41.gaed031f
 	pkgrel = 1
 	url = https://github.com/tbeu/matio
 	arch = any
@@ -19,7 +19,9 @@ pkgbase = mingw-w64-libmatio-git
 	options = !buildflags
 	source = mingw-w64-libmatio::git+https://github.com/tbeu/matio.git
 	source = assume_c99_va_copy.patch
+	source = fix_Win32_header.patch
 	sha256sums = SKIP
 	sha256sums = 8bc2a8b2eacd7fc714eaa420db0c714b1677f0f4ff3663655ed05cdf5764a767
+	sha256sums = 140017ff79b7fe3c2cece0f7eaddcecd5841684fb8b7aa21b7eca4a580caf3ef
 
 pkgname = mingw-w64-libmatio-git

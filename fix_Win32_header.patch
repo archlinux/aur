@@ -1,0 +1,13 @@
+diff --git a/src/io.c b/src/io.c
+index cd8dc6e..4c7e361 100644
+--- a/src/io.c
++++ b/src/io.c
+@@ -32,7 +32,7 @@
+ #if defined(_WIN32)
+ #define WIN32_LEAN_AND_MEAN
+ #define NOGDI
+-#include <Windows.h>
++#include <windows.h>
+ #endif
+ #include <stdlib.h>
+ #include <stdarg.h>
