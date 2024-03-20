@@ -1,7 +1,9 @@
-#Contributor: Simon Legner <Simon.Legner@gmail.com>
+# Maintainer: Andrew Shark <ashark linuxcomp.ru>
+# Contributor: Simon Legner <Simon.Legner@gmail.com>
+
 pkgname=perl-hash-storediterator
 pkgver=0.008
-pkgrel=2
+pkgrel=3
 pkgdesc='Access to iterator inside Perl hashes, plus helper functions'
 _dist=Hash-StoredIterator
 arch=('any')
