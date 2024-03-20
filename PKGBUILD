@@ -12,7 +12,7 @@ pkgname=(gcc12 gcc12-libs gcc12-fortran)
 pkgver=12.3.0
 _majorver=${pkgver%%.*}
 _commit=8fc1a49c9312b05d925b7d21f1d2145d70818151
-pkgrel=4
+pkgrel=5
 pkgdesc='The GNU Compiler Collection'
 arch=(x86_64)
 license=(GPL3 LGPL FDL custom)
@@ -68,7 +68,7 @@ build() {
       --libexecdir=/usr/lib
       --mandir=/usr/share/man
       --infodir=/usr/share/info
-      --with-bugurl=https://bugs.archlinux.org/
+      --with-bugurl=https://gitlab.archlinux.org/archlinux/packaging/packages/gcc12/-/issues
       --with-build-config=bootstrap-lto
       --with-linker-hash-style=gnu
       --with-system-zlib
