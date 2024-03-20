@@ -1,7 +1,7 @@
 pkgbase = karaokemugen
 	pkgdesc = Karaoke playlist manager/player app used in parties or events.
-	pkgver = 7.0.37
-	pkgrel = 2
+	pkgver = 4.1.10.r3713.g52d7e60c7
+	pkgrel = 1
 	url = https://mugen.karaokes.moe/
 	install = karaokemugen.install
 	arch = x86_64
@@ -10,17 +10,18 @@ pkgbase = karaokemugen
 	makedepends = npm
 	makedepends = typescript
 	makedepends = yarn
-	makedepends = nodejs>=18
-	makedepends = python
+	makedepends = nodejs
 	depends = mpv
 	depends = ffmpeg
 	depends = postgresql
-	depends = patch
 	depends = electron
+	depends = patch
 	optdepends = sudo: for using karaokemugen-install script
-	source = karaokemugen::git+https://gitlab.com/karaokemugen/karaokemugen-app.git#tag=v7.0.37
-	source = karaokemugen-lib::git+https://gitlab.com/karaokemugen/lib.git
-	source = karaokemugen-avatars::git+https://gitlab.com/karaokemugen/medias/guest-avatars.git
+	provides = karaokemugen
+	conflicts = karaokemugen
+	source = karaokemugen::git+https://gitlab.com/karaokemugen/code/karaokemugen-app.git#tag=v7.1.57
+	source = karaokemugen-lib::git+https://gitlab.com/karaokemugen/code/lib.git
+	source = karaokemugen-guests::git+https://gitlab.com/karaokemugen/medias/guest-avatars.git
 	source = install.sh
 	source = run.sh
 	source = icon256.png
@@ -28,9 +29,9 @@ pkgbase = karaokemugen
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = 8373c231fb432d6efef66e3ecf94ff0f
+	md5sums = 74e8c0755a6e07cceb2895cef518660b
 	md5sums = 55557823030b7824a85a55469e119cb4
 	md5sums = 5e9a33a42fef7572b7e0fa504c586f32
-	md5sums = 10561eed906a5efeed427f90501b4f49
+	md5sums = fae5d3e631e9ec8391655b31f586b74b
 
 pkgname = karaokemugen

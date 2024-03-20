@@ -3,7 +3,7 @@ Encoding=UTF-8
 Version=1.0
 Name=Karaoke Mugen
 Comment=Karaoke playlist manager/player app used in parties or events.
-Exec=karaokemugen
+Exec=karaokemugen --ozone-platform-hint=auto
 Icon=karaokemugen
 Terminal=false
 Type=Application
