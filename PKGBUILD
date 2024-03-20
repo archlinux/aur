@@ -1,8 +1,8 @@
 # Maintainer: Volodymyr Zolotopupov <zvova7890@gmail.com>
 
 pkgname=ksysguard6-git
-pkgver=6.0.1
-pkgrel=2
+pkgver=r3600.5e368f6
+pkgrel=1
 pkgdesc='Track and control the processes running in your system. KF6 version'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -28,9 +28,16 @@ depends=(gcc-libs
          qt6-base
          zlib)
 makedepends=(extra-cmake-modules
-             kdoctools)
+             kdoctools
+             git)
 source=(git+https://invent.kde.org/vvova/ksysguard.git#branch=kf6)
 sha256sums=('SKIP')
+
+
+pkgver() {
+  cd ksysguard
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 prepare() {
   cd ksysguard

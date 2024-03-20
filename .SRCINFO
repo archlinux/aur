@@ -1,12 +1,13 @@
 pkgbase = ksysguard6-git
 	pkgdesc = Track and control the processes running in your system. KF6 version
-	pkgver = 6.0.1
-	pkgrel = 2
+	pkgver = r3600.5e368f6
+	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	license = LGPL
 	makedepends = extra-cmake-modules
 	makedepends = kdoctools
+	makedepends = git
 	depends = gcc-libs
 	depends = glibc
 	depends = kcompletion
