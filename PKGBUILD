@@ -50,8 +50,8 @@ source=("git+https://invent.kde.org/network/konqueror.git")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd $_pkgname
-    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$pkgname"
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
