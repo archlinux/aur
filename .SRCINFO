@@ -1,7 +1,7 @@
 pkgbase = liteloader-qqnt-mspring-theme-bin
-	pkgdesc = Elegant, pink and delicate LiteLoaderQQNT theme
+	pkgdesc = LiteLoaderQQNT主题，优雅、粉粉、细致
 	pkgver = 1.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MUKAPP/LiteLoaderQQNT-MSpring-Theme
 	arch = any
 	license = MIT
