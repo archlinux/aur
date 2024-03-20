@@ -1,7 +1,7 @@
 pkgbase = yaru-remix-git
 	pkgdesc = Yaru-remix is a fork of Yaru theme
 	pkgver = r6.a1fdac60
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	url = https://github.com/Muqtxdir/yaru-remix
 	arch = any
@@ -29,7 +29,7 @@ pkgname = yaru-remix-gtk-theme-git
 
 pkgname = yaru-remix-gnome-shell-theme-git
 	pkgdesc = Yaru-remix gnome shell theme
-	depends = gnome-shell
+	depends = gnome-shell<=1.40
 	provides = yaru-remix-gnome-shell-theme
 	conflicts = yaru-remix-gnome-shell-theme
 

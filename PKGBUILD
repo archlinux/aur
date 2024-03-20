@@ -5,13 +5,17 @@ pkgname=(yaru-remix-gtk-theme-git
          yaru-remix-icon-theme-git
          yaru-remix-wallpaper-git)
 pkgver=r6.a1fdac60
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="Yaru-remix is a fork of Yaru theme"
 arch=(any)
 url="https://github.com/Muqtxdir/${pkgbase%-git}"
 license=('GPL3' 'LGPL3' 'LGPL2.1' 'CCPL:by-nc-sa')
-makedepends=(meson sassc git)
+makedepends=(
+  'meson'
+  'sassc'
+  'git'
+)
 options=('!strip' '!buildflags' 'staticlibs')
 source=("${pkgbase%-git}::git+${url}.git")
 sha256sums=('SKIP')
@@ -54,39 +58,51 @@ _delete_all_from_pkgdir_except() {
 }
 
 package_yaru-remix-gtk-theme-git() {
-  pkgdesc="Yaru-remix gtk theme"  
-  depends=(gtk3 gdk-pixbuf2 gtk-engine-murrine gnome-themes-extra)
-  provides=(yaru-remix-gtk-theme)
-  conflicts=(yaru-remix-gtk-theme-git)
+  pkgdesc="Yaru-remix gtk theme"
+  depends=(
+    'gtk3'
+    'gdk-pixbuf2'
+    'gtk-engine-murrine'
+    'gnome-themes-extra'
+  )
+  provides=('yaru-remix-gtk-theme')
+  conflicts=('yaru-remix-gtk-theme-git')
 
   DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
   _delete_all_from_pkgdir_except "gtk-theme"
 }
 
 package_yaru-remix-gnome-shell-theme-git() {
-  pkgdesc="Yaru-remix gnome shell theme"  
-  depends=(gnome-shell)
-  provides=(yaru-remix-gnome-shell-theme)
-  conflicts=(yaru-remix-gnome-shell-theme)
+  pkgdesc="Yaru-remix gnome shell theme"
+  depends=(
+    'gnome-shell<=1.40'
+  )
+  provides=('yaru-remix-gnome-shell-theme')
+  conflicts=('yaru-remix-gnome-shell-theme')
 
   DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
   _delete_all_from_pkgdir_except "gnome-shell-theme"
 }
 
 package_yaru-remix-icon-theme-git() {
-  pkgdesc="Yaru-remix icon theme"  
-  depends=(hicolor-icon-theme gtk-update-icon-cache librsvg humanity-icon-theme)
-  provides=(yaru-remix-icon-theme)
-  conflicts=(yaru-remix-icon-theme)
+  pkgdesc="Yaru-remix icon theme"
+  depends=(
+    'hicolor-icon-theme'
+    'gtk-update-icon-cache'
+    'librsvg'
+    'humanity-icon-theme'
+  )
+  provides=('yaru-remix-icon-theme')
+  conflicts=('yaru-remix-icon-theme')
 
   DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
   _delete_all_from_pkgdir_except "icon-theme"
 }
 
 package_yaru-remix-wallpaper-git() {
-  pkgdesc="Yaru-remix wallpaper theme"  
-  provides=(yaru-remix-wallpaper)
-  conflicts=(yaru-remix-wallpaper)
+  pkgdesc="Yaru-remix wallpaper theme"
+  provides=('yaru-remix-wallpaper')
+  conflicts=('yaru-remix-wallpaper')
 
   DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
   _delete_all_from_pkgdir_except "wallpaper"
