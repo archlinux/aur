@@ -1,8 +1,8 @@
 # Maintainer: Torben Schweren <torben@schweren.dev>
 # I copied some things over from Shayne Hartford's PKGBUILD for Wootility: https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=wootility-lekker-appimage
 pkgname=wootomation-appimage
-pkgver=1.0.2
-pkgrel=4
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="A macro application by Wooting. (AppImage version)"
 arch=('x86_64')
 url="https://github.com/WootingKb/wooting-macros"
@@ -14,7 +14,7 @@ filename=${appname}_${pkgver}_amd64.AppImage
 inappimage_binaryname=${appname}
 inappimage_desktopname=${appname}.desktop
 inappimage_iconname=${appname}.png
-#depends=('fuse2')
+depends=('webkit2gtk' 'libayatana-appindicator')
 #makedepends=()
 #checkdepends=()
 #optdepends=()
@@ -31,7 +31,7 @@ source=(
 )
 #noextract=()
 md5sums=(
-	"8ad1843421d29c20d46c1e62a442cf6f"
+	"30d5b8117842021838057b5323d06eee"
 	"defcfc94f57a12c877fcd840f7f8140c"
 )
 #validpgpkeys=()
