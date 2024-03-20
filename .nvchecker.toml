@@ -1,0 +1,4 @@
+[toml-adapt]
+source = "github"
+github = "firefly-cpp/toml-adapt"
+use_latest_release = "true"
