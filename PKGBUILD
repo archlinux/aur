@@ -1,7 +1,7 @@
 # Maintainer: Mahor Foruzesh <mahor1221 at gmail dot com>
 
 pkgname=nix-zsh-completions
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 arch=(any)
 license=(BSD)
@@ -11,7 +11,7 @@ depends=(zsh nix)
 pkgdesc="ZSH Completions for Nix"
 url="https://github.com/nix-community/nix-zsh-completions"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('34981443f61b6383079b63b9a89af4eec03c9fa67789dc0180d28c916e494523')
+sha256sums=('0af414ff8eb98da5e7db45fbd3c43325911ba6c570c4b1f3636b042d4df09b1e')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
