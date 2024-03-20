@@ -1,22 +1,23 @@
 pkgbase = paxchange
 	pkgdesc = Simple dart script to passively synchronize installed pacman packages between systems.
-	pkgver = 1.2.3
+	pkgver = 1.2.5
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/Skycoder42/paxchange
 	install = paxchange.install
 	changelog = CHANGELOG.md
 	arch = x86_64
-	arch = i686
-	arch = armv7h
-	arch = aarch64
 	license = BSD
-	makedepends = dart>=2.19.0
-	makedepends = dart<3.0.0
 	depends = pacman
 	options = !strip
 	backup = etc/paxchange.json
-	source = paxchange-1.2.3.tar.gz::https://github.com/Skycoder42/paxchange/archive/refs/tags/v1.2.3.tar.gz
-	b2sums = e7c93918e0c9efb26e9434e8a57eded4dcb108b07ad96b8f9a1e0d234a156169035c030096c0216248ce345df7e77b514e871827f14fa726984ea6cf46c0683e
+	source = paxchange-1.2.5.tar.gz::https://github.com/Skycoder42/paxchange/archive/refs/tags/v1.2.5.tar.gz
+	source = bin.tar.xz::https://github.com/Skycoder42/paxchange/releases/download/v1.2.5/binaries-linux.tar.xz
+	source = debug.tar.xz::https://github.com/Skycoder42/paxchange/releases/download/v1.2.5/binaries-linux-debug-symbols.tar.xz
+	b2sums = 83c4ab9488cb7a2b93849542eeb54d87984eba144b37633cdfd840ad885cdb6a389ae85c08a57c518bc4ecd5b3579e978c8baaad2fce598fae74f5bd02aeeb51
+	b2sums = 7ec13e92f59172ccf95f1cab993f20f82203fd325f2dc698c0f9f42b10e29d00badfe0f51d84d26b958737544f4fc882257a06400f6b43bb79dd080bf08158ca
+	b2sums = dd38353152a5a143171de1877e4b21e5809e9a9f10727ca3687e2e6980c90db2f34406268da6c580a268054c6513b6dcc45dd0bb366530d68babaa69c29dfdb2
 
 pkgname = paxchange
+
+pkgname = paxchange-debug
