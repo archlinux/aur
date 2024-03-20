@@ -2,16 +2,16 @@
 _base=trame-matplotlib
 pkgname=python-${_base}
 pkgdesc="Matplotlib widget for trame"
-pkgver=2.0.2
-pkgrel=3
+pkgver=2.0.3
+pkgrel=1
 arch=(any)
 url="https://github.com/Kitware/${_base}"
 license=(BSD-3-clause)
-depends=(python-trame-client)
+depends=(python-trame-client python-mpld3)
 makedepends=(python-build python-installer python-setuptools python-wheel nodejs-lts-hydrogen npm)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('2758400fe658697dbb27eb4f2e0cb0acbe7116e912ca69f2d472fdeb129f8f243c51613e2d588f395ccd5cf070297df4546e1323e220ca419d716173540c0de2')
+sha512sums=('5c13e528d1fef2494c4bd479c642b6f61dbdd0d3347591cd43a2100aaf573382fdb01f3e271c035286e6fe24eec34f31679c390d74db1158d2dcbaf6b4669dc6')
 
 prepare() {
   sed -i 's/^include/#include/' ${_base}-${pkgver}/MANIFEST.in

@@ -1,0 +1,5 @@
+[python-trame-matplotlib]
+source = "github"
+github = "Kitware/trame-matplotlib"
+use_latest_release = "true"
+prefix = "v"

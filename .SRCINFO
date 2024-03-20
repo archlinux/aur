@@ -1,7 +1,7 @@
 pkgbase = python-trame-matplotlib
 	pkgdesc = Matplotlib widget for trame
-	pkgver = 2.0.2
-	pkgrel = 3
+	pkgver = 2.0.3
+	pkgrel = 1
 	url = https://github.com/Kitware/trame-matplotlib
 	arch = any
 	license = BSD-3-clause
@@ -13,7 +13,8 @@ pkgbase = python-trame-matplotlib
 	makedepends = nodejs-lts-hydrogen
 	makedepends = npm
 	depends = python-trame-client
-	source = trame-matplotlib-2.0.2.tar.gz::https://github.com/Kitware/trame-matplotlib/archive/v2.0.2.tar.gz
-	sha512sums = 2758400fe658697dbb27eb4f2e0cb0acbe7116e912ca69f2d472fdeb129f8f243c51613e2d588f395ccd5cf070297df4546e1323e220ca419d716173540c0de2
+	depends = python-mpld3
+	source = trame-matplotlib-2.0.3.tar.gz::https://github.com/Kitware/trame-matplotlib/archive/v2.0.3.tar.gz
+	sha512sums = 5c13e528d1fef2494c4bd479c642b6f61dbdd0d3347591cd43a2100aaf573382fdb01f3e271c035286e6fe24eec34f31679c390d74db1158d2dcbaf6b4669dc6
 
 pkgname = python-trame-matplotlib
