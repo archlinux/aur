@@ -1,0 +1,15 @@
+pkgbase = webkit2-sharp
+	pkgdesc = C Sharp bindings for WebKit 2 with GTK+ 3
+	pkgver = 2.10.9
+	pkgrel = 3
+	url = https://github.com/hbons/webkit2-sharp
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = libxslt
+	depends = gtk-sharp-3
+	depends = webkit2gtk
+	source = git+https://github.com/hbons/webkit2-sharp#commit=dec1e10876f3bbda621f635937c23ac486cd6e05
+	sha256sums = SKIP
+
+pkgname = webkit2-sharp
