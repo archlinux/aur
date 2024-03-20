@@ -1,0 +1,17 @@
+pkgbase = python-bitcoinx-git
+	pkgdesc = Library of Bitcoin functions
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/kyuupichan/bitcoinX
+	arch = any
+	license = MIT
+	depends = python-pycryptodomex
+	depends = python-coincurve
+	provides = python-bitcoinx-git
+	provides = python-bitcoinx
+	conflicts = python-bitcoinx-git
+	conflicts = python-bitcoinx
+	source = git+https://github.com/kyuupichan/bitcoinX
+	sha256sums = SKIP
+
+pkgname = python-bitcoinx-git
