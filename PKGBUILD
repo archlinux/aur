@@ -11,9 +11,36 @@ pkgdesc="A VNC Client for the GNOME desktop"
 url="https://wiki.gnome.org/Apps/Vinagre"
 arch=(x86_64)
 license=(GPL-2.0-or-later LGPL-2.0-or-later)
-depends=(libsecret gtk-vnc vte3 telepathy-glib avahi spice-gtk3 gnutls freerdp)
-makedepends=(docbook-xsl intltool openssh itstool spice-protocol vala
-             gnome-common appstream-glib git gobject-introspection)
+depends=(
+  avahi
+  cairo
+  dbus-glib
+  dconf
+  freerdp
+  gdk-pixbuf2
+  glib2
+  glibc
+  gtk-vnc
+  gtk3
+  hicolor-icon-theme
+  libsecret
+  libxml2
+  spice-gtk3
+  telepathy-glib
+  vte3
+)
+makedepends=(
+  appstream-glib
+  docbook-xsl
+  git
+  gnome-common
+  gobject-introspection
+  intltool
+  itstool
+  openssh
+  spice-protocol
+  vala
+)
 optdepends=('openssh: SSH plugin')
 _commit=c86e114efe31381bff3cad008e9f2cd84a83a803  # master
 source=("git+https://gitlab.gnome.org/GNOME/vinagre.git#commit=$_commit")
