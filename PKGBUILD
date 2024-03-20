@@ -21,7 +21,7 @@ prepare() {
 
 build() {
 	cd $_pkgname
-	cmake -DCMAKE_INSTALL_PREFIX="/usr" -DBUILD_SHARED_LIBS=1 -S . -B build
+	cmake -DCMAKE_INSTALL_PREFIX="/usr" -S . -B build
 	make -C build
 }
 
