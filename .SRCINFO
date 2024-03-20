@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-pano-git
 	pkgdesc = Next-gen Clipboard Manager
-	pkgver = 19.r15.g7c6e931
+	pkgver = 22.r6.g4be918b
 	pkgrel = 1
 	url = https://github.com/oae/gnome-shell-pano
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = gnome-shell-extension-pano-git
 	makedepends = gobject-introspection
 	makedepends = yarn
 	makedepends = appstream
-	depends = gnome-shell>=1:42
+	depends = gnome-shell>=1:45
 	depends = libgda6
 	depends = cogl
 	depends = gsound
