@@ -2,7 +2,7 @@
 _pkgname="wirehair"
 pkgname="wirehair-git"
 pkgver=r1.557c00c
-pkgrel=1
+pkgrel=2
 pkgdesc="O(N) Fountain Code for Large Data"
 arch=('i686' 'x86_64')
 url="https://github.com/catid/wirehair"
