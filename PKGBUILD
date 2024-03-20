@@ -2,7 +2,7 @@
 _pkgname='mongodb-compass-isolated-beta'
 _edition=' Isolated Edition Beta'
 pkgname="$_pkgname-bin"
-_pkgver='1.42.3-beta.3'
+_pkgver='1.42.3-beta.5'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Isolated Edition - beta version - binary version'
@@ -24,11 +24,11 @@ source=(
 	"$pkgname-$pkgver.rpm::https://downloads.mongodb.com/compass/$_betaprefix$_pkgname-$_pkgver.x86_64.rpm"
 	'mongodb-compass.conf'
 )
-sha512sums=('434d1de67d0e551473f30cab9e25e377c87f35b4a1312532fdeebe534e130b8a399a3b5af4b2b76682d2d59ec467f78cf80e5c64bd6152f8bfb4c29c559cbd03'
+sha512sums=('6c1203faef6a5a5936f01b9cb4a22169c1c7d173adc055d36dda5738fdec36b79f6ac15e2991433580fecae43fee84208daf7e7edffb11d286b4be5c1e4de45a'
             'f09a6026e8b963f4821454fa8c2da8c750c765f26010fbf54dfbecfd7451dda5466464bb15fada1252545366c94bf448dc0529c8bd8114f6f3834ae00176d3f1')
 
 check() {
-	"$srcdir/usr/lib/$_pkgname/MongoDB Compass$_edition" --version | tee '/dev/stderr' | grep -q "^MongoDB Compass$_edition $pkgver$"
+	"$srcdir/usr/lib/$_pkgname/MongoDB Compass$_edition" --no-sandbox --version | tee '/dev/stderr' | grep -q "^MongoDB Compass$_edition $pkgver$"
 }
 
 package() {
