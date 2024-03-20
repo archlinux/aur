@@ -1,0 +1,5 @@
+[python-pytaglib]
+source = "github"
+github = "supermihi/pytaglib"
+use_latest_release = "true"
+prefix = "v"
