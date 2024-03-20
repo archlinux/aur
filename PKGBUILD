@@ -1,7 +1,7 @@
 # Maintainer: Sven Yannick Klein <syk42 dot arch at gmail dot com>
 pkgname=logoutscreen
 gitname=LogoutScreen
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A simple window across the whole screen to reboot, shutdown, lock, logout'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://gitlab.com/syk42.arch/LogoutScreen.git'
 license=('GPL3')
 depends=('qt5-base')
 source=("https://gitlab.com/syk42.arch/$gitname/-/archive/$pkgver/$gitname-$pkgver.tar.gz")
-b2sums=('329aa3323bdb3285231a42d880e7b45793233380e0f1e1724c238edf19f04cb85ce577633a699692f0e846143bf2e4c7a9da235c3e338b14218e5ee7b72fe627')
+b2sums=('62f4aa8dbfad8bb25bead1ac2e1d9445719bbcee71ce816b57d5e7b7381a8bce5e71da2dfe673b59e938bd5b0d36e27f09c06754a3f3c402e5fe01ec719cd43b')
 
 prepare() {
 	cd $srcdir/$gitname-$pkgver
