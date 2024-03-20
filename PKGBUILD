@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tiny-rdm
 _pkgname="Tiny RDM"
-pkgver=1.1.9
+pkgver=1.1.10
 _nodeversion=18
 pkgrel=2
 pkgdesc="A modern lightweight cross-platform Redis desktop manager"
@@ -20,6 +20,7 @@ makedepends=(
     'git'
     'go>=1.21'
     'gcc'
+    'base-devel'
 )
 options=(
     '!strip'
@@ -27,7 +28,7 @@ options=(
 source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
 )
-sha256sums=('SKIP')
+sha256sums=('b83e381147d980f01efde2d05486750bc3c129544b8a3098463358c39fe39d8a')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -46,13 +47,17 @@ build() {
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     export CGO_ENABLED=1
+    export GO111MODULE=on
+    export GOOS=linux
     export GOCACHE="${srcdir}/go-build"
     export GOMODCACHE="${srcdir}/go/pkg/mod"
-    if [ `curl ifconfig.co/country` == "China" ];then
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
         echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
         echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
         export GOPROXY=https://goproxy.cn
+    else
+        echo "Your network is OK."
     fi
     go install github.com/wailsapp/wails/v2/cmd/wails@latest
     npm install --prefix ./frontend
