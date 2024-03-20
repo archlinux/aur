@@ -3,7 +3,7 @@
 _pkgorg=gitlab.com/mipimipi
 pkgname=repman-git
 _pkgname=repman
-pkgver=0.7.4
+pkgver=0.7.8
 pkgrel=1
 pkgdesc="Manage (remote) custom repositories for Arch Linux packages"
 arch=(
