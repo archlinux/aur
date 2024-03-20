@@ -3,10 +3,10 @@
 
 _pkgbase=droidcam
 pkgname=$_pkgbase-dkms-git
-_pkgver_base=2.0.0
+_pkgver_base=2.1.2
 _pkgver=v$_pkgver_base
-pkgver=v2.0.0.r138.1a68890
-pkgrel=2
+pkgver=v2.1.2.r149.add5733
+pkgrel=1
 pkgdesc="A tool for using your android device as a wireless/usb webcam (DKMS)"
 arch=('x86_64')
 url="https://www.dev47apps.com/$_pkgbase/linux/"
