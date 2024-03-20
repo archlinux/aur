@@ -1,14 +1,15 @@
 # Maintainer: Gabriel Holmann <gholmann16 at gmail dot com> 
 pkgname=janus
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
-pkgdesc=" Simple gtk notepad written in C "
+pkgdesc="Simple gtk notepad written in C"
 url="https://github.com/gholmann16/janus"
-arch=('x86_64')
+arch=('any')
+conflicts=('janus-gateway')
 license=('GPL3')
 depends=('gtk3' 'gtksourceview4')
 source=("https://github.com/gholmann16/janus/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f59107b06e8f7de85316277867ebad533d85160093ebaf4063e23307fa45a823')
+sha256sums=('7744e227649dd6a8aae29a2ff70becb048d3affb011b3ade74aa378db09acc60')
 build() {
 	cd "Janus-$pkgver"
 	make release
