@@ -1,0 +1,16 @@
+pkgbase = gpa
+	pkgdesc = A graphical user interface for the GnuPG
+	pkgver = 0.10.0
+	pkgrel = 2
+	url = https://www.gnupg.org/related_software/gpa/
+	arch = x86_64
+	license = GPL3
+	depends = gpgme
+	depends = gtk2
+	source = ftp://ftp.gnupg.org/gcrypt/gpa/gpa-0.10.0.tar.bz2
+	source = ftp://ftp.gnupg.org/gcrypt/gpa/gpa-0.10.0.tar.bz2.sig
+	validpgpkeys = D8692123C4065DEA5E0F3AB5249B39D24F25E3B6
+	sha512sums = 87004fb0806e76012bc194f95afe9ef6044aec890b26e845f45c314e1bd8864f056ba5e32f9ef2e15b24b50840235e6e548a5e3006b255b4f1c20e0fd7710a3b
+	sha512sums = SKIP
+
+pkgname = gpa
