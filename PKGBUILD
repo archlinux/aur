@@ -1,5 +1,6 @@
 # vim:set ft=sh:
-# Maintainer: Carlinux <rcarlini DOT aur AT gmail DOT com>
+# Maintainer: Shadowphoenix <allescool85 AT gmail DOT com>
+# Contributor: Carlinix <rcarlini DOT aur AT gmail DOT com>
 # Contributor: BlackEagle <ike DOT devolder AT gmail DOT com>
 # Contributor: Bartłomiej Piotrowski <barthalion@gmail.com>
 # Contributor: Mateusz Herych <heniekk@gmail.com>
@@ -10,28 +11,29 @@
 # Contributor: eworm
 
 pkgname=opera
-pkgver=107.0.5045.21
-pkgrel=1
+pkgver=108.0.5067.24
+pkgrel=2
 pkgdesc="A fast and secure web browser"
 url="https://www.opera.com/"
 options=(!strip !zipman)
 license=('custom:opera')
 backup=("etc/$pkgname/default")
 arch=('x86_64')
-depends=('gtk3' 'alsa-lib' 'libnotify' 'curl' 'nss' 'libcups' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
+depends=('gtk3' 'qt6-base' 'qt5-base' 'alsa-lib' 'libnotify' 'curl' 'nss' 'libcups' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
 optdepends=(
     'opera-ffmpeg-codecs: playback of proprietary video/audio'
     'upower: opera battery save'
 )
 source=(
-    "https://get.geo.opera.com/pub/${pkgname}/desktop/${pkgver}/linux/${pkgname}-stable_${pkgver}_amd64.deb"
+    "https://download3.operacdn.com/ftp/pub/${pkgname}/desktop/${pkgver}/linux/${pkgname}-stable_${pkgver}_amd64.deb"
     "opera"
     "default"
     'eula.html'
     'terms.html'
     'privacy.html'
 )
-sha512sums=('f952195e3017fdce43fbebb0c3578e1cd128ed65f3c916b4c0a0e625199468b819c4de71035777c4299ea1839b8ad4e9155db72b564ffc33a8de442351d457a9'
+
+sha512sums=('fdfcb61bb4618b5d6dff909dd2d360503d1b6027ec301e13479138aa3f60c37d6d96ff4e9333a041660b4f3f3b084f4734d1e7026e0dd49cecd2456b0768b17a'
             '7e854e4c972785b8941f60117fbe4b88baeb8d7ca845ef2e10e8064043411da73821ba1ab0068df61e902f242a3ce355b51ffa9eab5397ff3ae3b5defd1be496'
             'ddb1773877fcfd7d9674e63263a80f9dd5a3ba414cda4cc6c411c88d49c1d5175eede66d9362558ddd53c928c723101e4e110479ae88b8aec4d2366ec179297f'
             'aaaa4435a3b6a08bf8e6ad4802afcbf111c1e8f477054251f031b70ae57ac1234fa19048121d64c878dc3b1de03522ce7ef11a263a86dc7062f643d569ecff82'
