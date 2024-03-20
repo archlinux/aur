@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=affine-bin
 _pkgname=AFFiNE
-pkgver=0.13.0
+pkgver=0.13.1
 _electronversion=29
 pkgrel=1
 pkgdesc="There can be more than Notion and Miro. AFFiNE is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use."
@@ -23,7 +23,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/toeverything/AFFiNE/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('af0a693814917b00c90f6f0c53b4c5ba27bb0a9d00d7e8c5cbd7d1695c6a91f8'
+sha256sums=('021cf338a6bbd6c1e48dd4eac48db7306628614d7824fc256d9f649f7c13e522'
             'b266795bb7f2dd32b76ef8f05788bbd63da556629265cca13217167cfc4d9cde'
             'b54bb7aa14dd5725bc268921eeea9dee973dacbc13e0cea30e7d2adb5cd5a53f'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
