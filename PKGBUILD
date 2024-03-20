@@ -2,7 +2,7 @@
 
 _pkgname=gBar
 pkgname=gbar-git
-pkgver=r221.d3f46bc
+pkgver=r237.535d02c
 pkgrel=1
 # Architectures which are atleast confirmed to somewhat work.
 arch=('x86_64' 'aarch64')
@@ -10,13 +10,23 @@ pkgdesc='Blazingly fast status bar written with GTK'
 url='https://github.com/scorpion-26/gBar'
 source=("$_pkgname::git+$url")
 license=('MIT')
-depends=('gtk-layer-shell' 'pulseaudio' 'libdbusmenu-gtk3' 'pamixer' 'libsass')
+depends=('cairo'
+         'gdk-pixbuf2'
+         'glib2'
+         'gtk3'
+         'gtk-layer-shell'
+         'libdbusmenu-gtk3'
+         'libpulse'
+         'libsass'
+         'pamixer'
+         'pulseaudio'
+         'wayland')
 optdepends=('bluez-utils: Bluetooth support'
+            'dbus: Tray and bluetooth support'
             'hyprland: Workspace widgets'
             'nvidia-utils: Nvidia GPU support'
             'pacman-contrib: Arch update checking')
-makedepends=('git' 'meson' 'ninja' 'gcc' 'pkgconf')
-provides=('gbar')
+makedepends=('git' 'meson' 'ninja')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -24,21 +34,15 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-# 'meson setup build' should only be called once, so call it here
-prepare() {
-    cd "$_pkgname"
-    git submodule update --init
-    meson setup build -Dbuildtype=release -Dprefix=/usr
-}
-
 build() {
     cd "$_pkgname"
-    ninja -C build
+    meson setup build -Dbuildtype=release -Dprefix=/usr
+    meson compile -C build
 }
 
 package() {
     cd "$_pkgname"
-    DESTDIR="$pkgdir" ninja -C build install
-    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$_pkgname"/LICENSE
+    meson install -C build --destdir "$pkgdir"
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
     # TODO: Install default config into /usr/share (not supported by gBar)
 }
