@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-peek-top-bar-on-fullscreen-git
 	pkgdesc = Gnome Extension that triggers top panel to show up on full screen apps when cursor hovers the top edge of the screen
-	pkgver = r29.50b3abb
+	pkgver = r44.ff1bead
 	pkgrel = 1
 	url = https://github.com/marcinjahn/gnome-peek-top-bar-on-fullscreen-extension
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = gnome-shell-extension-peek-top-bar-on-fullscreen-git
 	makedepends = git
 	makedepends = gobject-introspection
 	makedepends = npm
-	depends = gnome-shell
+	depends = gnome-shell>=1:45
 	provides = gnome-shell-extension-peek-top-bar-on-fullscreen
 	conflicts = gnome-shell-extension-peek-top-bar-on-fullscreen
 	source = gnome-shell-extension-peek-top-bar-on-fullscreen::git+https://github.com/marcinjahn/gnome-peek-top-bar-on-fullscreen-extension.git
