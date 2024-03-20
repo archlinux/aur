@@ -1,12 +1,11 @@
 pkgbase = simplemediaupscalerlite-bin
 	pkgdesc = A Electron & CLI frontend to upscale images/videos using multiple different algorithms
 	pkgver = 2.0.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://janishutz.com/projects/smuL
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = electron24
-	depends = hicolor-icon-theme
+	depends = electron24-bin
 	depends = python>3
 	depends = mpdecimal
 	provides = simplemediaupscalerlite=2.0.0
@@ -14,6 +13,6 @@ pkgbase = simplemediaupscalerlite-bin
 	source = simplemediaupscalerlite-2.0.0.deb::https://github.com/simplePCBuilding/SimpleMediaUpscalerLite/releases/download/V2.0.0/simplemediaupscalerlite_2.0.0_amd64.deb
 	source = simplemediaupscalerlite.sh
 	sha256sums = f70793f387a7028e55890b594c255312eb8a1e8e0284e4e30698be4835209d45
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = simplemediaupscalerlite-bin
