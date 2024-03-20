@@ -2,3 +2,5 @@
 !PKGBUILD
 !.gitignore
 !.SRCINFO
+!chroot-build.sh
+
