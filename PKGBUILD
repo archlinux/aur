@@ -24,7 +24,8 @@ check() {
 
 package() {
   cd $pkgname
-  install -Dm644 -t "$pkgdir"/usr/lib/node_modules/$pkgname index.js
+  install -Dm644 -t "$pkgdir"/usr/lib/node_modules/$pkgname index.js \
+    package.json
   install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname {CHANGELOG,README}.md
   install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
 }
