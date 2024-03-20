@@ -1,6 +1,6 @@
 pkgbase = kas
 	pkgdesc = Setup tool for bitbake based projects
-	pkgver = 4.2
+	pkgver = 4.3.1
 	pkgrel = 1
 	url = https://github.com/siemens/kas
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = kas
 	depends = python-jsonschema
 	depends = python-kconfiglib
 	optdepends = libnewt: text based ui of menu plugin
-	source = kas-4.2.tar.gz::https://github.com/siemens/kas/archive/refs/tags/4.2.tar.gz
-	sha512sums = 2091e1372cc951781dadfd8be821e4ab4f67c2329033d3cd73e01fc0b40122ee90edfe536c43171edafe1cc7ce5faed0cff7f32c3a383986d8781997c22e5c09
+	source = kas-4.3.1.tar.gz::https://github.com/siemens/kas/archive/refs/tags/4.3.1.tar.gz
+	sha512sums = 219d9a0a19420f8a07136043c7002aa57bb47153ce9716aaa42f7ec2cc1adf7405457cae66881c899a371dc923b937bc82956ee928fece057e358dda92c810d1
 
 pkgname = kas
