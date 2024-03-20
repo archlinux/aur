@@ -1,7 +1,7 @@
 pkgbase = liteloader-qqnt-lite-tools-bin
 	pkgdesc = LiteLoaderQQNT插件，轻量工具箱，轻量、优雅、高效
 	pkgver = 2.16.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xiyuesaves/LiteLoaderQQNT-lite_tools
 	arch = any
 	license = MIT
