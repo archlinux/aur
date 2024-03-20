@@ -1,13 +1,16 @@
 pkgbase = assistant
 	pkgdesc = Secure remote access to computers over a local network or over the Internet.
-	pkgver = 5.5.2
-	pkgrel = 3
+	pkgver = 5.6.2
+	pkgrel = 1
 	url = https://xn--80akicokc0aablc.xn--p1ai/
+	install = assistant.install
 	arch = x86_64
 	license = custom:SAFIB LTD
 	depends = bash
 	depends = gtk2
-	source = https://xn--80akicokc0aablc.xn--p1ai/%D1%81%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C/Download/911
-	md5sums = SKIP
+	depends = gtk-engine-murrine
+	options = !strip
+	source = https://xn--80akicokc0aablc.xn--p1ai/%D1%81%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C/Download/972
+	md5sums = 8BCB7690394CA23CFBFA4DBB93BE257E
 
 pkgname = assistant

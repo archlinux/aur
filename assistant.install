@@ -1,0 +1,13 @@
+post_install() {
+	[[ -f assistant.acfg ]] && cp -vp assistant.acfg /opt/assistant/bin/
+	/opt/assistant/scripts/setup.sh --install
+
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	/opt/assistant/scripts/setup.sh --uninstall
+}
