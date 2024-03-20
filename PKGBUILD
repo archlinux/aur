@@ -3,8 +3,8 @@
 # Contributor: jurplel <jeep70cp[at]gmail[dotcom]>
 
 pkgname=qview-git
-pkgver=6.1.r10.ge37c8ea
-pkgrel=2
+pkgver=6.1.r13.g6c7a99d
+pkgrel=1
 pkgdesc='Practical and minimal image viewer'
 arch=(x86_64)
 url=https://interversehq.com/qview
@@ -16,8 +16,7 @@ optdepends=('kimageformats5: additional image format support'
             'qt-heif-image-plugin: HEIF support'
             'qt5-apng-plugin: APNG support'
             'qt5-imageformats: additional image format support'
-            'qt5-svg: SVG support'
-            'qtraw: RAW support')
+            'qt5-svg: SVG support')
 makedepends=(git qt5-x11extras)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

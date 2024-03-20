@@ -1,7 +1,7 @@
 pkgbase = qview-git
 	pkgdesc = Practical and minimal image viewer
 	pkgver = 6.1.r10.ge37c8ea
-	pkgrel = 2
+	pkgrel = 3
 	url = https://interversehq.com/qview
 	arch = x86_64
 	license = GPL3
@@ -16,7 +16,6 @@ pkgbase = qview-git
 	optdepends = qt5-apng-plugin: APNG support
 	optdepends = qt5-imageformats: additional image format support
 	optdepends = qt5-svg: SVG support
-	optdepends = qtraw: RAW support
 	provides = qview
 	conflicts = qview
 	source = qview-git::git+https://github.com/jurplel/qView.git
