@@ -3,7 +3,7 @@
 
 pkgname=openspace-git
 _pkgname=OpenSpace
-pkgver=v0.18.0.1439.g041cb5c68b 
+pkgver=v0.18.0.1439.g041cb5c68b
 pkgrel=1
 pkgdesc="OpenSpace is an open source, non-commercial, and freely available interactive data visualization software designed to visualize the entire known universe and portray our ongoing efforts to investigate the cosmos"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('cmake' 'git' 'sed' 'glm' 'websocketpp' 'gcc11')
 depends=('gdal' 'mpv' 'vulkan-headers' 'libxinerama' 'libxi' 'qt5-base' 'nss' 'at-spi2-core' 'libxcomposite')
 conflicts=('openspace')
 source=("git+https://github.com/OpenSpace/OpenSpace.git#branch=master"
-        "open-space")
+	"open-space")
 sha256sums=('SKIP'
 		    3139c195175c28753e2cf2b337a29226291df3e43b73a3476ae83e2db8174555)
 
@@ -94,6 +94,8 @@ package() {
 	cp -R "${srcdir}/${_pkgname}/modules/multiresvolume/shaders"  "$pkgdir/opt/OpenSpace/modules/multiresvolume"
 	mkdir -p "$pkgdir/opt/OpenSpace/modules/skybrowser/shaders"
 	cp -R "${srcdir}/${_pkgname}/modules/skybrowser/shaders"  "$pkgdir/opt/OpenSpace/modules/skybrowser"
+	mkdir -p "$pkgdir/opt/OpenSpace/modules/space/scripts"
+	cp -R "${srcdir}/${_pkgname}/modules/space/scripts"  "$pkgdir/opt/OpenSpace/modules/space"
 	mkdir -p "$pkgdir/opt/OpenSpace/modules/space/shaders"
 	cp -R "${srcdir}/${_pkgname}/modules/space/shaders"  "$pkgdir/opt/OpenSpace/modules/space"
 	mkdir -p "$pkgdir/opt/OpenSpace/modules/spacecraftinstruments/shaders"
@@ -125,5 +127,3 @@ package() {
 	mkdir -p "$pkgdir/opt/OpenSpaceData"
 	chmod 777 "$pkgdir/opt/OpenSpaceData"
 }
-
-
