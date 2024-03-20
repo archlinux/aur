@@ -12,7 +12,7 @@ depends=('perl' 'glibc' 'cfitsio')
 makedepends=('perl-alien-cfitsio')
 checkdepends=('perl-test2-suite')
 url='https://metacpan.org/release/Astro-FITS-CFITSIO'
-source=("https://search.cpan.org/CPAN/authors/id/P/PR/PRATZLAFF/Astro-FITS-CFITSIO-${pkgver}.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/P/PR/PRATZLAFF/Astro-FITS-CFITSIO-${pkgver}.tar.gz")
 sha512sums=('25eeac3d50af1e8866967edf26ba0c7d4560e5a414775588efa7587ccef4756937a23e2f2370eaa8211b5626db583b732b9be7e6e54debe86e174ac978d35bb4')
 _distdir="Astro-FITS-CFITSIO-${pkgver}"
 

@@ -13,7 +13,7 @@ pkgbase = perl-astro-fits-cfitsio
 	depends = glibc
 	depends = cfitsio
 	options = !emptydirs
-	source = https://search.cpan.org/CPAN/authors/id/P/PR/PRATZLAFF/Astro-FITS-CFITSIO-1.18.tar.gz
+	source = https://cpan.metacpan.org/authors/id/P/PR/PRATZLAFF/Astro-FITS-CFITSIO-1.18.tar.gz
 	sha512sums = 25eeac3d50af1e8866967edf26ba0c7d4560e5a414775588efa7587ccef4756937a23e2f2370eaa8211b5626db583b732b9be7e6e54debe86e174ac978d35bb4
 
 pkgname = perl-astro-fits-cfitsio
