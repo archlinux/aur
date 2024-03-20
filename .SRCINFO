@@ -1,7 +1,7 @@
 pkgbase = python-pixcat-an-prata-git
 	pkgdesc = CLI and Python API to display images on a kitty terminal with optional resizing. an-prata fork for eliminating cumulative tmpfs usage.
 	pkgver = 0.1.5r31.a21d5a8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/an-prata/pixcat
 	arch = any
 	license = LGPL3
@@ -14,7 +14,9 @@ pkgbase = python-pixcat-an-prata-git
 	depends = python-requests
 	depends = python-ansiwrap
 	provides = pixcat
+	provides = python-pixcat
 	conflicts = pixcat
+	conflicts = python-pixcat
 	source = pixcat::git+https://github.com/an-prata/pixcat.git
 	sha256sums = SKIP
 
