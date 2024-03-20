@@ -3,7 +3,7 @@
 # Co-Maintainer: Pascal Reeb <pascal@reeb.io>
 
 pkgname=talosctl-bin
-pkgver=1.6.6
+pkgver=1.6.7
 pkgrel=1
 pkgdesc="talosctl - utility for controling Talos"
 arch=('x86_64')
