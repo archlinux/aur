@@ -8,9 +8,11 @@ pkgbase=android-${_android_arch}-harfbuzz
 pkgname=("android-${_android_arch}-harfbuzz"
          "android-${_android_arch}-harfbuzz-icu")
 pkgver=8.3.0
-pkgrel=1
+pkgrel=2
+pkgdesc="OpenType text shaping engine (Android, ${_android_arch})"
 arch=('any')
-pkgdesc="OpenType text shaping engine (android)"
+license=('MIT')
+url="https://www.freedesktop.org/wiki/Software/HarfBuzz"
 depends=("android-${_android_arch}-glib2"
          "android-${_android_arch}-graphite"
          "android-${_android_arch}-freetype2")
@@ -20,10 +22,14 @@ makedepends=('android-meson'
              'python'
              'ragel')
 options=(!strip !buildflags staticlibs !emptydirs)
-license=('MIT')
-url="https://www.freedesktop.org/wiki/Software/HarfBuzz"
 source=("https://github.com/harfbuzz/harfbuzz/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('6a093165442348d99f3307480ea87ed83bdabaf642cdd9548cff6b329e93bfac')
+
+prepare() {
+    cd "${srcdir}/harfbuzz-${pkgver}"
+
+    sed -i 's|-no-undefined||g' src/Makefile.am
+}
 
 build() {
     cd "${srcdir}/harfbuzz-${pkgver}"
@@ -36,9 +42,10 @@ build() {
         -D tests=disabled \
         -D docs=disabled \
         ..
+    sed -i 's|-Wl,--no-undefined||g' build.ninja
     ninja
-
     popd
+
     mkdir -p build-${_android_arch}-static && pushd build-${_android_arch}-static
     android-${_android_arch}-meson \
         --default-library static \
@@ -47,6 +54,7 @@ build() {
         -D tests=disabled \
         -D docs=disabled \
         ..
+    sed -i 's|-Wl,--no-undefined||g' build.ninja
     ninja
     popd
 }
