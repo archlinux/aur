@@ -1,7 +1,7 @@
 pkgbase = android-x86-harfbuzz
-	pkgdesc = OpenType text shaping engine (android)
+	pkgdesc = OpenType text shaping engine (Android, x86)
 	pkgver = 8.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freedesktop.org/wiki/Software/HarfBuzz
 	arch = any
 	license = MIT
