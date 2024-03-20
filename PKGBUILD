@@ -30,8 +30,7 @@ checkdepends=(
   'appstream'
 #  'walbottle'  ## -Dtests=true (for JSON tests)
 )
-provides=('libvalent-1.so=1.0.0')
-provides=("${pkgname%-git}")
+provides=("${pkgname%-git}" 'libvalent-1.so=1.0.0')
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/andyholmes/valent.git'
         'git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git')
