@@ -7,7 +7,7 @@
 # Contributor:  The Bitcoin Developers
 
 pkgname=electrum-nmc-bin
-pkgver=4.0.0b1
+pkgver=4.0.6
 pkgrel=1
 pkgdesc='Namecoin port of Electrum client with name support'
 
@@ -34,10 +34,10 @@ source=("electrum-nmc.AppImage::https://www.namecoin.org/files/electrum-nmc/elec
         "LICENCE::https://raw.githubusercontent.com/namecoin/electrum-nmc/30762795b88da0e0a208dc748bb98bdc35f6fb79/LICENCE"
         "LICENCE.DOGE::https://raw.githubusercontent.com/namecoin/electrum-nmc/30762795b88da0e0a208dc748bb98bdc35f6fb79/LICENCE.DOGE")
 
-noextract=('electrum-nmc.AppImage' "electrum-nmc-nc${pkgver}-x86_64.AppImage")
+noextract=("electrum-nmc.AppImage" "electrum-nmc-nc${pkgver}-x86_64.AppImage")
 options=(!strip)
 
-sha256sums=('ad05759cdffdd1f35b6cfa182e43e44f67762b3df8672e2c2330762fc585e2dc'
+sha256sums=('cc5a46089a1b4fdf9baec6284cbd77856771a0f3fb49752d33a4075eca20f25f'
             'b9a107d0716183fd98439b93a93643856b7774342f36cf9afcd6a83419c6f38d'
             '507ca68a5818f30dabc14bb61f4d5045e78dfd13f1e01cf56a8e61c7e1d0fb8f'
             '6e9a46c9c296676072eb059d29a9cbf23a04719156c45df3ab34e269ab61b9c2'
