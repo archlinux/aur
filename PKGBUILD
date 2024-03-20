@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=hermes
-_pkgver=1.6.0
+_pkgver=1.6.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Preprocessing, analyzing, and reporting of RNA-seq data"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Apache)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Apache-2.0')
 depends=(
   r-assertthat
   r-biobase
@@ -58,10 +58,10 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "skip-tests.patch")
-md5sums=('af1e1dd4bab597cfb7b0bd12a1e9e7dd'
-         '584674ff858d3b36bd221e71a3feabae')
-sha256sums=('7948b722f701e86f968a9e0a3f89a6a002c5bc22932912e50f86693ed17fc8d0'
-            'fdef7997f73aa7ddaa4d8307fde896adf051a2dc60d6d7f83871df252a10dd37')
+md5sums=('9e758f81455d5fc7a8b57c3a65b4de5b'
+         'e228515b639417bea13853cfc94b866a')
+b2sums=('224fd9ad63e1bdf566a41e58f90c2cd120008add812f0ff4e777d72d9c3896c7d7ed06b5759b5c5330b2126dfc0cb6097584c7650c8a1f12fd2c1dcdf34ed99c'
+        'b781820238d74265dce64de9804bd568587c61c0460e15b32eabf27e0f827d673e52e852274e2613a2cf55bd54e218ad21493d78fc16f8fe954a98d3b9970bb7')
 
 prepare() {
   # skip failing tests
@@ -69,8 +69,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
