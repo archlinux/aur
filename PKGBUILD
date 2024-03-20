@@ -1,14 +1,14 @@
 # Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
 
 pkgname=josm-svn
-pkgver=16176
+pkgver=19018
 pkgrel=1
 pkgdesc="An editor for OpenStreetMap written in Java"
 arch=('any')
 url="http://josm.openstreetmap.de/"
 license=('GPL')
-depends=('java-runtime>=8' 'libxtst' 'ttf-font')
-makedepends=('apache-ant' 'java-environment>=8' 'subversion')
+depends=('java-runtime>=11' 'libxtst' 'ttf-font')
+makedepends=('apache-ant' 'java-environment>=11' 'subversion')
 provides=('josm')
 conflicts=('josm')
 backup=('etc/conf.d/josm')
@@ -16,7 +16,7 @@ source=("$pkgname::svn+https://josm.openstreetmap.de/svn/trunk"
         "josm.sh"
         "josm.conf")
 sha256sums=('SKIP'
-            '04d12673ad6e00093123a474b9d85400fcbdd28ec1e8421ac33859cd2e69d134'
+            '82caf9947a21c8c2860cac6bdda727fcb31887a875aebbc2c9ec36d529d7b4f7'
             '43ee660f17ee2205c0e0654e8d229db78535e4d28e1298f02ebb814ae433dfd1')
 
 pkgver() {
