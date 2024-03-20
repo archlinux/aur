@@ -3,7 +3,7 @@
 
 pkgname='perl-date-simple'
 pkgver='3.03'
-pkgrel='1'
+pkgrel='13'
 pkgdesc="a simple date object"
 arch=('i686' 'x86_64')
 license=('Artistic-1.0-Perl'

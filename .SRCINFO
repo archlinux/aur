@@ -1,7 +1,7 @@
 pkgbase = perl-date-simple
 	pkgdesc = a simple date object
 	pkgver = 3.03
-	pkgrel = 1
+	pkgrel = 13
 	url = https://metacpan.org/release/Date-Simple
 	arch = i686
 	arch = x86_64
