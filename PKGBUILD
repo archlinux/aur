@@ -8,15 +8,9 @@ license=('MIT')
 depends=('python' 'tk' 'python-pillow' 'python-pip')
 makedepends=('git')
 
-source=("git+https://github.com/yarchefis/wayscreen.git")
 sha256sums=('SKIP')
 
 package() {
-    cd "$srcdir/wayscreen" || return 1
-    
-    # Ensure permissions for install.sh
     chmod +x install.sh
-    
-    # Execute install.sh
     ./install.sh || return 1
 }
