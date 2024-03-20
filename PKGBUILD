@@ -1,14 +1,15 @@
 # Maintainer: Kazel <address at domain dot tld>
 pkgname=nvidia-launcher
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Launch applications with NVIDIA graphics card"
 arch=(x86_64)
 url="https://gitlab.com/WheelchairArtist/nvidia-launcher"
 license=('GPL2')
+options=('!debug')
 depends=(kdialog bumblebee)
 makedepends=(gendesk)
-optdepends=(primusrun)
+optdepends=(primus)
 changelog=
 source=(https://gitlab.com/WheelchairArtist/$pkgname/raw/$pkgver/nvidia-launcher)
 noextract=()
