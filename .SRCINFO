@@ -1,0 +1,24 @@
+pkgbase = bef-git
+	pkgdesc = An extensible, fast, and usable file utility to encode and decode interleaved erasure coded streams of data.
+	pkgver = r1.ac0a92c
+	pkgrel = 1
+	url = https://github.com/gbletr42/bef
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = automake
+	makedepends = autoconf
+	depends = xxhash
+	depends = openssl
+	depends = zlib
+	depends = liberasurecode
+	depends = isa-l
+	depends = jerasure-git
+	depends = libblake3
+	provides = bef
+	conflicts = bef
+	source = git+https://github.com/gbletr42/bef.git
+	sha256sums = SKIP
+
+pkgname = bef-git
