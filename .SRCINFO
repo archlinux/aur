@@ -1,0 +1,18 @@
+pkgbase = outfit-font
+	pkgdesc = A beautiful geometric sans: The official typeface for brand automation company outfit.io.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/Outfitio/Outfit-Fonts
+	arch = any
+	license = OFL
+	source = https://github.com/Outfitio/Outfit-Fonts/archive/refs/tags/1.1.zip
+	sha256sums = 31b95566b43805970a62a12aeb3d90a38e06c4d63e288dd8ebef63985ce5a5b7
+
+pkgname = otf-outfit
+	provides = outfit-font
+
+pkgname = ttf-outfit
+	provides = outfit-font
+
+pkgname = ttf-outfit-variable
+	provides = outfit-font-variable
