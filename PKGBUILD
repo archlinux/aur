@@ -12,12 +12,13 @@
 
 pkgname=lib32-mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=24.1.0_devel.186510.f88922e8161
+pkgver=24.1.0_devel.186512.d87ccf06320
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto' 'lib32-gcc-libs' 'lib32-libelf' 'git' 'lib32-libglvnd'
-                        'wayland-protocols' 'lib32-wayland' 'meson' 'lib32-libva' 'lib32-libxrandr' 
-                        'mesa-minimal-git' 'lib32-llvm-minimal-git' 'lib32-libvdpau' 
+                        'wayland-protocols' 'lib32-wayland' 'meson' 'lib32-libva' 'lib32-libxrandr' 'mesa-minimal-git' 'lib32-llvm-minimal-git' 'lib32-libvdpau' 
+                        'libclc-minimal-git' 'lib32-spirv-tools-git' 'lib32-spirv-llvm-translator-minimal-git' 'lib32-clang-libs-minimal-git' 'clang-minimal-git'
+                        'clang-opencl-headers-minimal-git' 'lib32-clang-opencl-headers-minimal-git'
 )
 depends=('mesa-minimal-git' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence'
             'lib32-libelf' 'lib32-libunwind' 'lib32-lm_sensors' 'glslang' 'lib32-vulkan-icd-loader' 'lib32-zstd' 'lib32-llvm-libs-minimal-git')
@@ -63,8 +64,8 @@ build () {
         -D sysconfdir=/etc \
         --libdir=/usr/lib32 \
         -D platforms=x11,wayland \
-        -D gallium-drivers=radeonsi,swrast,zink \
-        -D vulkan-drivers=amd,swrast \
+        -D gallium-drivers=radeonsi,swrast,zink,iris \
+        -D vulkan-drivers=amd,swrast,intel \
         -D dri3=enabled \
         -D egl=enabled \
         -D gallium-extra-hud=true \
