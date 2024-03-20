@@ -5,6 +5,7 @@ pkgbase = godot-manager-bin
 	url = https://github.com/eumario/godot-manager
 	arch = x86_64
 	license = MIT
+	makedepends = curl
 	makedepends = git
 	makedepends = jq
 	makedepends = sed
