@@ -1,6 +1,6 @@
 pkgbase = submagic
 	pkgdesc = Writes stdin into a temp file and then prints the file name
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/claui/submagic
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = submagic
 	depends = bash
 	options = !debug
 	options = !strip
-	source = submagic-0.1.0.tar.gz::https://github.com/claui/submagic/archive/v0.1.0.tar.gz
-	sha512sums = 76d82f2718a0636f76149da66943a5757533c0461de5be97dbb23731a512bac3699384e693a1da29990b2c62a4ebb78497c3325d172f93ae3c6d3c25f8cdb9a1
+	source = submagic-0.1.1.tar.gz::https://github.com/claui/submagic/archive/v0.1.1.tar.gz
+	sha512sums = 53b3c1a09ec173420d79534a3c361e1cfcabcc5520646ed911515494c02c393cb78852a606135424083c4c08cf74624add9ca875350a796d64453c4de0cbfbb1
 
 pkgname = submagic

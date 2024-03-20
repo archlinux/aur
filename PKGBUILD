@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <clau@tiqua.de>
 
 pkgname=submagic
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Writes stdin into a temp file and then prints the file name'
 arch=('any')
@@ -16,7 +16,7 @@ source=(
 )
 
 sha512sums=(
-  '76d82f2718a0636f76149da66943a5757533c0461de5be97dbb23731a512bac3699384e693a1da29990b2c62a4ebb78497c3325d172f93ae3c6d3c25f8cdb9a1'
+  '53b3c1a09ec173420d79534a3c361e1cfcabcc5520646ed911515494c02c393cb78852a606135424083c4c08cf74624add9ca875350a796d64453c4de0cbfbb1'
 )
 
 prepare() {
