@@ -10,7 +10,7 @@ epoch=1
 pkgdesc="A VNC Client for the GNOME desktop"
 url="https://wiki.gnome.org/Apps/Vinagre"
 arch=(x86_64)
-license=(GPL)
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
 depends=(libsecret gtk-vnc vte3 telepathy-glib avahi spice-gtk3 gnutls freerdp)
 makedepends=(docbook-xsl intltool openssh itstool spice-protocol vala
              gnome-common appstream-glib git gobject-introspection)
