@@ -1,15 +1,14 @@
 pkgbase = website-stalker-bin
 	pkgdesc = Track changes on websites via git
 	pkgver = 0.22.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/EdJoPaTo/website-stalker
 	arch = x86_64
 	arch = aarch64
 	arch = armv6h
 	arch = armv7h
-	license = LGPL2.1
+	license = LGPL-2.1-or-later
 	depends = gcc-libs
-	depends = zlib
 	optdepends = git: git commit support
 	provides = website-stalker
 	conflicts = website-stalker

@@ -1,11 +1,11 @@
 pkgname=website-stalker-bin
 pkgver=0.22.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Track changes on websites via git"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/EdJoPaTo/${pkgname/-bin/}"
-license=('LGPL2.1')
-depends=('gcc-libs' 'zlib')
+license=('LGPL-2.1-or-later')
+depends=('gcc-libs')
 optdepends=('git: git commit support')
 provides=("${pkgname/-bin/}")
 conflicts=("${pkgname/-bin/}")
@@ -20,11 +20,15 @@ sha256sums_aarch64=('4660fa4d76bbb723bea48511dbfc90af000746db57c8f1b1ce2325da592
 sha256sums_armv6h=('05e55f3033091560af8a149bfaed850cc2d31ab4db7551657bc899c84ba43e82')
 sha256sums_armv7h=('9d249ce52133326ec245c1bcf34d8a72c825647faf97d8b855a9bde09906fdcf')
 
+check() {
+	eval "./website-stalker --help"
+}
+
 package() {
-	install -Dm755 "${pkgname/-bin/}" -t "${pkgdir}/usr/bin/"
+	install -Dm755 ${pkgname/-bin/} -t "${pkgdir}/usr/bin/"
 	install -Dm644 CHANGELOG.md -t "${pkgdir}/usr/share/doc/${pkgname/-bin/}/"
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname/-bin/}/"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/${pkgname/-bin/}/"
+	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname/-bin/}/"
+	install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname/-bin/}/"
 
 	install -Dm644 "completions/${pkgname/-bin/}.bash" -t "${pkgdir}/usr/share/bash-completion/completions/"
 	install -Dm644 "completions/${pkgname/-bin/}.fish" -t "${pkgdir}/usr/share/fish/vendor_completions.d/"
@@ -41,8 +45,4 @@ package() {
 
 	install -Dm644 "systemd/user/service" "${pkgdir}/usr/lib/systemd/user/${pkgname/-bin/}.service"
 	install -Dm644 "systemd/user/timer" "${pkgdir}/usr/lib/systemd/user/${pkgname/-bin/}.timer"
-}
-
-check() {
-	eval "./website-stalker --help"
 }
