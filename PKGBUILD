@@ -2,8 +2,7 @@
 # Contributor: jdigi78 <jdigiovanni78 at gmail dot com>
 
 pkgname=varia
-pkgver=2024.2.29
-_pkgver="${pkgver}-2"
+pkgver=2024.3.20
 pkgrel=1
 pkgdesc="Download manager based on aria2"
 arch=('any')
@@ -19,11 +18,11 @@ depends=('aria2'
          'python-gobject'
          'python-requests')
 makedepends=('desktop-file-utils' 'gtk-update-icon-cache' 'meson')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('9108ffbbbbfd156bbe2692d75aa4894ca55674133c2870272e283c19c35d1ee6')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('8b5813b5fb90d197b641e7f280a74b36f1092025013a7f47ce4cdcd7eaf0c6ea')
 
 build() {
-  arch-meson "${pkgname}-${_pkgver}" build
+  arch-meson "${pkgname}-${pkgver}" build
   meson compile -C build
 }
 
