@@ -8,7 +8,7 @@ arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/garethgeorge/${pkgname}"
 license=("GPL3")
 depends=("glibc" "restic")
-makedepends=("npm" "git" "go" "go.rice")
+makedepends=("npm" "go" "go.rice")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}@.service")
 sha256sums=('150cbbbe745760b1343ef607e0cc763b669b03d78e58a5146cf18b27fe523ace'
