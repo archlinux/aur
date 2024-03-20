@@ -1,0 +1,19 @@
+pkgbase = cisco-secure-client
+	pkgdesc = Cisco AnyConnect Secure Mobility Client
+	pkgver = 5.1.2.42
+	pkgrel = 1
+	url = https://www.cisco.com/site/us/en/products/security/secure-client/index.html
+	arch = x86_64
+	license = custom
+	depends = libxml2
+	depends = ca-certificates
+	optdepends = hicolor-icon-theme: required by desktop shortcuts
+	optdepends = glib2: required by vpnui
+	optdepends = gtk3: required by vpnui
+	optdepends = webkit2gtk: required by acwebhelper
+	conflicts = cisco-anyconnect
+	options = !strip
+	source = cisco-secure-client-linux64-5.1.2.42-predeploy-k9.tar.gz::http://web.archive.org/web/20240320172606/https://cios.dhitechnical.com/Cisco_Firewall_ASA_FTD/Cisco%20Secure%20Client%205.x/5.1.2.42/cisco-secure-client-linux64-5.1.2.42-predeploy-k9.tar.gz
+	sha256sums = b483143d5080fcd36f90d45493b2ed81e4e8b6cc8f41b70ce8d2b7edb277ca24
+
+pkgname = cisco-secure-client
