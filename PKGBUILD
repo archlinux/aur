@@ -1,32 +1,34 @@
-# Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=mauikit-filebrowsing-git
-pkgver=v1.2.2.r4.gd6f463e
+pkgver=3.1.0.r12.g06527e1
 pkgrel=1
 pkgdesc="MauiKit File Browsing utilities and controls"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://invent.kde.org/maui/mauikit-filebrowsing"
 license=('GPL3')
-depends=('mauikit-git' 'ki18n' 'kconfig' 'kcoreaddons')
-makedepends=('git' 'extra-cmake-modules')
+depends=('mauikit-git' kio)
+makedepends=('git' ) #'extra-cmake-modules'
 provides=('mauikit-filebrowsing')
 conflicts=('mauikit-filebrowsing')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "mauikit-filebrowsing"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo -B build -S "${pkgname%-git}"
-  cmake --build build --config RelWithDebInfo
+  cmake -B build -S "mauikit-filebrowsing" -Wno-dev \
+    -DBUILD_WITH_QT6=ON \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr
+
+  cmake --build build
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install build --config RelWithDebInfo
+  DESTDIR="${pkgdir}" cmake --install build
 }
