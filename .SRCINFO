@@ -1,0 +1,17 @@
+pkgbase = python-piccata
+	pkgdesc = A simple CoAP (RFC7252) toolkit
+	pkgver = 2.0.3
+	pkgrel = 2
+	url = https://github.com/NordicSemiconductor/piccata
+	arch = any
+	license = custom
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/piccata/piccata-2.0.3.tar.gz
+	sha256sums = 3f4d3148bf884457064b3d462bd71c69b47600ab1e973c8c2e73bba6668b9900
+
+pkgname = python-piccata
