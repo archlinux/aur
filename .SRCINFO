@@ -1,5 +1,5 @@
 pkgbase = zed-editor
-	pkgdesc = high-performance, multiplayer code editor from the creators of Atom and Tree-sitter (linux pre-release series)
+	pkgdesc = high-performance, multiplayer code editor from the creators of Atom and Tree-sitter
 	pkgver = 0.127.3
 	pkgrel = 2
 	url = https://zed.dev
