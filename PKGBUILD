@@ -18,7 +18,7 @@ fi
 
 pkgname=${_pkgname}-dkms-staging-git
 pkgver=2.2.3.r0.gc883088df8
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel modules for the Zettabyte File System (release staging branch)."
 arch=('any')
 url="https://zfsonlinux.org/"
@@ -27,16 +27,30 @@ provides=("ZFS-MODULE" "SPL-MODULE" "zfs-dkms")
 conflicts=("zfs-dkms")
 makedepends=("git")
 source=("${_pkgname}::git+${_git_repo}#${_git_branch}"
-        "0001-only-build-the-module-in-dkms.conf.patch")
+        "0001-only-build-the-module-in-dkms.conf.patch"
+        "linux-6.8-compat-splice-cfr.patch::${_git_repo%.git}/commit/a24f6e17c8cf75b5f551eb43019d41747c08891f.patch")
 sha256sums=('SKIP'
-            '8d5c31f883a906ab42776dcda79b6c89f904d8f356ade0dab5491578a6af55a5')
+            '8d5c31f883a906ab42776dcda79b6c89f904d8f356ade0dab5491578a6af55a5'
+            '0bedcf6cc7800d073aca4cd3da5f94e97be11b166afa3453226c137cc7c8029c')
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
 
     msg2 "Staging branch set to ${_git_branch}"
 
-    patch -p1 -i ../0001-only-build-the-module-in-dkms.conf.patch
+    local -a patches
+    patches=($(printf '%s\n' "${source[@]}" | grep -F '.patch'))
+    patches=("${patches[@]%%::*}")
+    patches=("${patches[@]##*/}")
+
+    for patch in "${patches[@]}"; do
+        if patch -p1 -R -i "../$patch" --dry-run -sf >/dev/null; then
+            msg2 "Ignoring patch $patch..."
+        else
+            msg2 "Applying patch $patch..."
+            patch -p1 -N -i "../$patch"
+        fi
+    done
 
     # remove unneeded sections from module build
     sed -ri "/AC_CONFIG_FILES/,/]\)/{
