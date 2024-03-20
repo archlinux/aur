@@ -7,7 +7,7 @@
 #                                              |___/
 
 # This script runs Karaoke Mugen app (with some check to avoid some disasters)
-# From AUR package karaokemugen
+# From AUR package karaokemugen-git
 
 # use colors only if we have them
 if [[ $(which tput > /dev/null 2>&1 && tput -T "${TERM}" colors || echo -n '0') -ge 8 ]] ; then

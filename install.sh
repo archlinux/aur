@@ -8,7 +8,7 @@
 
 # This script creates the database and do some checks to make
 # Karaoke Mugen App working.
-# From AUR package karaokemugen
+# From AUR package karaokemugen-git
 
 check_postgres() {
     sudo -u postgres -g postgres pg_ctl status -D /var/lib/postgres/data &> /dev/null
