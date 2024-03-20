@@ -3,7 +3,7 @@ pkgname=frosch-bin
 _appname=Frosch
 pkgver=2.0.2
 _electronversion=11
-pkgrel=9
+pkgrel=10
 pkgdesc="Frosch, software para juego de rana electrónica o rana digital."
 arch=(
     'i686'
@@ -26,13 +26,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('70d564391aa89ca77317a0716d27d450d939c41d0554a66da392b28784d6fa7d'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 sha256sums_i686=('78ca0dbd64a0e6e1155632219d3990a76358abd8c385ef88a7094edc1a8aa8b6')
 sha256sums_x86_64=('16841565eecd5b9946711cfafdf9a0959c60fada1870c624f5d65f31cc31252f')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories="Game" --name="${_appname}" --exec="${pkgname%-bin} %U"
 }
