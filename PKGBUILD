@@ -14,6 +14,6 @@ conflicts=('python-bitcointx-git' 'python-bitcointx')
 source=('git+https://github.com/Simplexum/python-bitcointx')
 sha256sums=('SKIP')
 package() {
-    cd "$srcdir/bitcoinX/"
+    cd "$srcdir/python-bitcointx/"
     python setup.py install --root="$pkgdir/" --optimize=1 --prefix=/usr
 }
