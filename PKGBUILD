@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034
 
 pkgname=lib32-vulkan-tools
-pkgver=1.3.276
+pkgver=1.3.279
 pkgrel=1
 arch=(x86_64)
 url="https://www.khronos.org/vulkan/"
@@ -11,8 +11,8 @@ license=('Apache-2.0')
 depends=('lib32-libx11' 'lib32-wayland' 'lib32-vulkan-icd-loader')
 makedepends=('cmake' 'python' 'vulkan-headers' 'wayland-protocols' 'glslang' 'spirv-tools' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/Vulkan-Tools/archive/v${pkgver}.tar.gz"
-        "git+https://github.com/zeux/volk.git#commit=6963dc43cae2066b205a02cbbc6b12bbbb5691ef") # 1.3.276
-sha256sums=('24598dd9031cd7cce9b7d9446b466a18bae9fd009579da865330e2dc9d0a2bf9'
+        "git+https://github.com/zeux/volk.git#commit=4f97337658cb2f13c23006dfff3eb869c6f0d5f2") # 1.3.279
+sha256sums=('9dac517444631e46c2d88bfb0bd5fc08201fa7235bb0f2bd1db6518874416151'
             'SKIP')
 
 build() {
@@ -44,7 +44,7 @@ build() {
   # Actually build vulkan-tools
   export CMAKE_PREFIX_PATH="${srcdir}/build-volk/install/usr" # Use manually compiled volk library
 
-  cmake -S "Vulkan-Tools-${pkgver}" -B build \
+  cmake -S "Vulkan-Tools-${pkgver}" -B build --fresh \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_SYSCONFDIR=/etc \
     -DCMAKE_INSTALL_DATADIR=/usr/share \
