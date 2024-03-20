@@ -1,7 +1,7 @@
 pkgbase = xivlauncher-rb
 	pkgdesc = Custom launcher for Final Fantasy XIV Online with RB Patches!
-	pkgver = 1.0.7.3
-	pkgrel = 2
+	pkgver = 1.0.8.1
+	pkgrel = 1
 	epoch = 2
 	url = https://github.com/rankynbass/XIVLauncher.Core/tree/RB-patched
 	arch = x86_64
@@ -47,7 +47,7 @@ pkgbase = xivlauncher-rb
 	optdepends = lib32-faudio
 	options = !strip
 	options = !debug
-	source = XIVLauncher.Core::git+https://github.com/rankynbass/XIVLauncher.Core.git#tag=febfdac9328fe06c92d0d25492b9df521868d35a
+	source = XIVLauncher.Core::git+https://github.com/rankynbass/XIVLauncher.Core.git#tag=3f24373fb6b26b841c1c487a94ac61feb71dd46d
 	source = XIVLauncher.desktop
 	source = xivlauncher-rb
 	source = openssl_fix.cnf
