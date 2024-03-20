@@ -1,11 +1,11 @@
-# Maintainer: Moritz Lipp <mail@mlq.me>
+# Contributor: Moritz Lipp <mail@mlq.me>
 pkgname=pysheng-git
-pkgver=r41.3fcda63
+pkgver=r79.10c4555
 pkgrel=1
 pkgdesc="CLI and GUI program to download pages from Google Books as PNG images"
 arch=('x86_64' 'i686')
 url="https://github.com/tokland/pysheng"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('python2')
 makedepends=('git')
 optdepends=('python2-reportlab: GUI'

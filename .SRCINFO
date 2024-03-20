@@ -1,11 +1,11 @@
 pkgbase = pysheng-git
 	pkgdesc = CLI and GUI program to download pages from Google Books as PNG images
-	pkgver = r41.3fcda63
+	pkgver = r79.10c4555
 	pkgrel = 1
 	url = https://github.com/tokland/pysheng
 	arch = x86_64
 	arch = i686
-	license = GPL
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = python2
 	optdepends = python2-reportlab: GUI
@@ -16,4 +16,3 @@ pkgbase = pysheng-git
 	md5sums = SKIP
 
 pkgname = pysheng-git
-
