@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=nnSVG
-_pkgver=1.6.3
+_pkgver=1.6.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -33,8 +33,8 @@ optdepends=(
   r-weberdivechalcdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('49d0a36bf0af2e733dc383e6b2dbe333')
-b2sums=('817e60e9f92183f1a4695eff5f9c4469d0bd5b31222e1ea05622fe6ef13df0a48eaaaa52f0a00b8854e35c22518a86517331b5778871892a6c63d9515f62e7fb')
+md5sums=('7e39d32cf6dd4a19a46f0fa94980444d')
+b2sums=('f9591212e953df191e0be6dc3eebda1898de3fe27b7db137b6edbfdebf2843b5a3160a79950a9762f38318d554e9811b7b6c4ef5e13ae21dce4e167714224a59')
 
 build() {
   mkdir build
