@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tiny-rdm-git
 _pkgname="Tiny RDM"
-pkgver=1.1.9.r15.g6430dee
+pkgver=1.1.10.r3.g1091f5d
 _nodeversion=18
 pkgrel=1
 pkgdesc="A modern lightweight cross-platform Redis desktop manager"
@@ -20,6 +20,7 @@ makedepends=(
     'git'
     'go'
     'gcc'
+    'base-devel'
 )
 options=(
     '!strip'
@@ -50,13 +51,17 @@ build() {
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     export CGO_ENABLED=1
+    export GO111MODULE=on
+    export GOOS=linux
     export GOCACHE="${srcdir}/go-build"
     export GOMODCACHE="${srcdir}/go/pkg/mod"
-    if [ `curl ifconfig.co/country` == "China" ];then
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
         echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
         echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
         export GOPROXY=https://goproxy.cn
+    else
+        echo "Your network is OK."
     fi
     go install github.com/wailsapp/wails/v2/cmd/wails@latest
     npm install --prefix ./frontend
