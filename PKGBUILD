@@ -9,6 +9,7 @@ url="http://www.volle-kraft-voraus.de/"
 license=('GPL')
 depends=('akonadi-contacts' 'ctemplate' 'python-reportlab' 'python-pypdf2')
 conflicts=('kraft')
+provides=('kraft')
 optdepends=("python-weasyprint: alternative PDF generator")
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'po4a')
 source=(
@@ -21,7 +22,6 @@ pkgver() {
   cd "$pkgname"
   git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
 
 build() {
   export PATH="/usr/bin/vendor_perl/:$PATH"
