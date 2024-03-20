@@ -1,6 +1,6 @@
 _pkgname=gamescope
 pkgname=${_pkgname}-sk
-pkgver=3.14.2.sk.3.r0.g1fbabc1
+pkgver=3.14.2.sk.4.r0.g8885211
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
@@ -50,9 +50,9 @@ makedepends=(
     vulkan-headers
     wayland-protocols
 )
-_tag=1fbabc1566f754941874e62f22f4411d8a4a3393
+_tag=3.14.2-sk-4
 # _branch="wayland-backend"
-source=("git+https://github.com/3003n/gamescope.git#commit=${_tag}"
+source=("git+https://github.com/3003n/gamescope.git#tag=${_tag}"
         "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a"
         "git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1"
         "git+https://github.com/Joshua-Ashton/reshade.git"
