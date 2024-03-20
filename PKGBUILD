@@ -1,37 +1,48 @@
-# $ID$
-# Maintainer: Rémy Oudompheng <remy@archlinux.org>
+# Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname=perl-date-simple
-_dist=Date-Simple
-pkgver=3.03
-pkgrel=12
-pkgdesc="Perl module for simple Date objects"
-arch=('x86_64')
-url="https://metacpan.org/release/${_dist}"
-license=('PerlArtistic' 'GPL')
-depends=('perl')
+pkgname='perl-date-simple'
+pkgver='3.03'
+pkgrel='1'
+pkgdesc="a simple date object"
+arch=('i686' 'x86_64')
+license=('Artistic-1.0-Perl'
+         'GPL-3.0-or-later')
 options=('!emptydirs')
-source=(https://search.cpan.org/CPAN/authors/id/I/IZ/IZUT/${_dist}-${pkgver}.tar.gz)
-md5sums=('436049dc2c7dfd8423d8bcc807248b31')
+depends=('perl>=0')
+url='https://metacpan.org/release/Date-Simple'
+source=('https://search.cpan.org/CPAN/authors/id/I/IZ/IZUT/Date-Simple-3.03.tar.gz')
 sha512sums=('3e64a0ba224427e688a45945860fd5e876e6ca5b01298e744e257981ed84d933ab14c9ab8d5b74316c031ffa9821afd9563270109cba20a5939f14af2dde8668')
+_distdir="Date-Simple-3.03"
 
 build() {
-    cd "${srcdir}/${_dist}-${pkgver}"
-    unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-    export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
-    perl Makefile.PL
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB="" \
+      PERL_AUTOINSTALL=--skipdeps \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='${pkgdir}'" \
+      PERL_MB_OPT="--installdirs vendor --destdir '${pkgdir}'" \
+      MODULEBUILDRC=/dev/null
+
+    cd "${srcdir}/${_distdir}"
+    /usr/bin/perl Makefile.PL
     make
+  )
 }
 
 check() {
-    cd "${srcdir}/${_dist}-${pkgver}"
-    unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-    export PERL_MM_USE_DEFAULT=1
+  cd "${srcdir}/${_distdir}"
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
+  )
 }
 
 package() {
-    cd "${srcdir}/${_dist}-${pkgver}"
-    unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+  cd "${srcdir}/${_distdir}"
+  make install
+  find "${pkgdir}" -name .packlist -o -name perllocal.pod -delete
 }
+
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
+# vim:set ts=2 sw=2 et:
