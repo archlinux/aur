@@ -1,7 +1,7 @@
 pkgbase = nvm-desktop
 	pkgdesc = A version management desktop client for the Nodejs.
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/1111mp/nvm-desktop
 	arch = aarch64
 	arch = x86_64
@@ -12,13 +12,12 @@ pkgbase = nvm-desktop
 	makedepends = pnpm
 	makedepends = git
 	depends = electron29
-	depends = hicolor-icon-theme
 	conflicts = nvm-desktop
 	noextract = nvmd-3.2.0-x86_64.zip
 	source = nvm-desktop.git::git+https://github.com/1111mp/nvm-desktop.git#tag=v3.2.0
 	source = nvm-desktop.sh
-	sha256sums = SKIP
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = 9d4873c8f3bd02b4d4510eb764e1a1c1d3ff4a9f231283371c90e1020cc38207
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 	source_aarch64 = nvmd-3.2.0-aarch64.zip::https://github.com/1111mp/nvmd-command/releases/download/v3.2.0/Linux-arm64.zip
 	sha256sums_aarch64 = 12d756d331e9da32a625748e13ee66231b88155e8dea9a014b888ba6fd8ac5d0
 	source_x86_64 = nvmd-3.2.0-x86_64.zip::https://github.com/1111mp/nvmd-command/releases/download/v3.2.0/Linux-x64.zip
