@@ -1,6 +1,6 @@
 pkgbase = smoothpaper
 	pkgdesc = A wallpaper changer daemon for X11 Window Mangers with smooth transitions between wallpapers.
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/matjam/smoothpaper
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = smoothpaper
 	depends = libxinerama
 	depends = libxcursor
 	depends = libxext
-	source = https://github.com/matjam/smoothpaper/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 5dbbff6acedbaa241d64bd660ba1b5358a1a24181cfddb97547da6b35467be23
+	source = https://github.com/matjam/smoothpaper/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = fb7bdc5a9d09ff8df3545a924d79cb8afff16eb1ec272eda7afd31e2674bc477
 
 pkgname = smoothpaper
