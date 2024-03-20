@@ -1,0 +1,13 @@
+pkgbase = nsz2nsp
+	pkgdesc = Helper script for 'nsz' to convert packages recursive
+	pkgver = 1.0
+	pkgrel = 1
+	arch = x86_64
+	license = Custom
+	depends = nsz
+	provides = nsz2nsp
+	conflicts = nsz2nsp
+	source = nsz2nsp
+	sha256sums = b719af360405d3baa8817cbcb3d25412822ad803e8ff66159abe1233c5d45290
+
+pkgname = nsz2nsp

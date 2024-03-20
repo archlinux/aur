@@ -1,0 +1,2 @@
+#!/bin/bash
+find . -type f -name "*.nsz" -exec nsz -Dw {} \; -exec rm -v {} \;
