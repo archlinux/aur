@@ -16,7 +16,7 @@ pkgname=(
   qemu-guest-agent-git
 )
 pkgdesc="A generic and open source machine emulator and virtualizer. Git version."
-pkgver=8.2.0.r1767.g91e3bf2e92
+pkgver=9.0.0.rc0.r0.gc62d54d0a8
 pkgrel=1
 epoch=21
 arch=(i686 x86_64)
@@ -150,6 +150,7 @@ package_qemu-git() {
     alsa-lib libasound.so
     bzip2 libbz2.so
     cairo
+    capstone
     curl libcurl.so
     dtc
     fuse3
@@ -175,6 +176,7 @@ package_qemu-git() {
     libusb libusb-1.0.so
     liburing liburing.so
     libx11
+    libxdp
     libxkbcommon libxkbcommon.so
     lzo
     mesa
