@@ -1,8 +1,7 @@
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-data-validate'
-pkgver='0.08'
+pkgver='0.09'
 pkgrel='1'
 pkgdesc="common data validation methods"
 arch=('any')
@@ -11,10 +10,10 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='http://search.cpan.org/dist/Data-Validate'
-source=('http://search.cpan.org/CPAN/authors/id/S/SO/SONNEN/Data-Validate-0.08.tar.gz')
-md5sums=('2ca2c8d5750b5a0725f6b483442e6bc7')
-sha512sums=('869d41dcbb8e97726317076a44836113db1861d825a592e0a6afac0041e5407b9d89a0145caf1ab21404539244081e84de5be1b3043fc169ee07a7098a715031')
-_distdir="Data-Validate-0.08"
+source=('http://search.cpan.org/CPAN/authors/id/S/SO/SONNEN/Data-Validate-0.09.tar.gz')
+md5sums=('5f7bbc378e2e16786941335a0d67b423')
+sha512sums=('533e4ddce9b060f4f456c8208c1571ad8ade064a6689140b50b672ca7f981bb0bd5c3a59706b0e719ba444634ae4b61fcc4f86ab9ec6be3c74b0265f31c8b30a')
+_distdir="Data-Validate-0.09"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
