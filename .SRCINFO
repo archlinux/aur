@@ -7,6 +7,7 @@ pkgbase = scala-cli
 	arch = aarch64
 	license = Apache-2.0
 	options = !strip
+	options = !debug
 	source_x86_64 = scala-cli-x86_64-1.2.0.gz::https://github.com/VirtusLab/scala-cli/releases/download/v1.2.0/scala-cli-x86_64-pc-linux.gz
 	sha256sums_x86_64 = 0fa97773cd65fd96e0529bd4fc4e7882e16ef072d0c13cc2f7f1981404b96f03
 	source_aarch64 = scala-cli-aarch64-1.2.0.gz::https://github.com/VirtusLab/scala-cli/releases/download/v1.2.0/scala-cli-aarch64-pc-linux.gz

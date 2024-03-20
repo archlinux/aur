@@ -18,7 +18,7 @@ sha256sums_aarch64=('e0c3f8a15f3fdcbb4248433efa4643691095575a26d49959b78614cca02
 #
 # Since scala-cli uses GraalVM to AOT compile, I'm not sure
 # seperating debug info would work as expected anyways.
-options=(!strip)
+options=(!strip !debug)
 
 package() {
   SCALA_CLI="$pkgdir/usr/bin/scala-cli"
