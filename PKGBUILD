@@ -5,7 +5,7 @@ _dotnet_version=8.0
 
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=3.0.0.rc4.r2.g2b69b98f3
+pkgver=3.0.0.rc7.r2.gadf3e0ca9
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://steampp.net/"
@@ -47,7 +47,7 @@ source=(
     )
 sha256sums=('SKIP'
             'SKIP'
-            'e8480ba1b19e8375c80e8ae776645ca3bb86e45731c4938e059d37a09227a60e'
+            'df5a8c3e5edf0484ea1069d62ff66052ab0fe053276b3685b726d773822fe0ab'
             '2a906c968f25e7e8a8fd949a7f024da7277bf31098371bdb066b8d422982fa8a'
             'SKIP'
             'SKIP'
