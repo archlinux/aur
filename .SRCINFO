@@ -1,6 +1,6 @@
 pkgbase = hexopress-git
 	pkgdesc = A client software designed specifically for editing blog articles and managing blog content that supports Hexo!.
-	pkgver = 1.1.0.r0.gda666f5
+	pkgver = 1.1.0.r17.g61792b3
 	pkgrel = 1
 	url = http://blog.charlestang.org/HexoPress/
 	arch = any
@@ -15,6 +15,6 @@ pkgbase = hexopress-git
 	source = hexopress.git::git+https://github.com/charlestang/HexoPress.git
 	source = hexopress.sh
 	sha256sums = SKIP
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = hexopress-git
