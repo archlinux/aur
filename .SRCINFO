@@ -1,0 +1,14 @@
+pkgbase = gnome-icon-theme-extras
+	pkgdesc = Extra GNOME icons for specific devices and file types
+	pkgver = 3.12.0
+	pkgrel = 5
+	url = https://git.gnome.org/browse/gnome-icon-theme-extras
+	arch = any
+	license = CCPL:cc-by-sa
+	makedepends = icon-naming-utils
+	depends = gtk-update-icon-cache
+	depends = hicolor-icon-theme
+	source = https://download.gnome.org/sources/gnome-icon-theme-extras/3.12/gnome-icon-theme-extras-3.12.0.tar.xz
+	sha256sums = 4eec6cea8a7b09c4ed6ebab1a3b42539b9c61a53bec4b8872e774611cc619608
+
+pkgname = gnome-icon-theme-extras
