@@ -11,7 +11,7 @@ makedepends=('automake' 'autoconf')
 source=("${url}/archive/refs/tags/release-v${pkgver}.tar.gz")
 sha256sums=('ddadf122076d7142481ff1b60ab611a9f58455285b9561d777bdbce9bb8bf4d2')
 provides=(bef)
-conflicts=(bef)
+conflicts=(bef-git)
 
 build() {
 	cd ${pkgname}-release-v${pkgver}
