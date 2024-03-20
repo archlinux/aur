@@ -5,14 +5,14 @@
 
 pkgname=selinux-python
 pkgver=3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux python tools and libraries"
 groups=('selinux')
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/SELinuxProject/selinux/wiki'
 license=('GPL2')
 makedepends=('python-pip' 'python-setuptools')
-depends=('python' 'python-audit' 'python-ipy' 'libsemanage>=3.6' 'setools>=4.4.0')
+depends=('python' 'python-audit' 'libsemanage>=3.6' 'setools>=4.4.0')
 conflicts=('sepolgen<2.7' 'policycoreutils<2.7')
 provides=("sepolgen=${pkgver}-${pkgrel}")
 validpgpkeys=(
