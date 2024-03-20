@@ -1,5 +1,5 @@
 # Maintainer: Bot-wxt1221 <3264117476@qq.com>
-pkgname=warp-terminal-bin
+pkgname=warp-terminal
 pkgver=0.2024.03.12.08.02.stable.02
 _pkgver=0.2024.03.12.08.02.stable_02
 pkgrel=1

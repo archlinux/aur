@@ -1,4 +1,4 @@
-pkgbase = warp-terminal-bin
+pkgbase = warp-terminal
 	pkgver = 0.2024.03.12.08.02.stable.02
 	pkgrel = 1
 	arch = x86_64
@@ -9,4 +9,4 @@ pkgbase = warp-terminal-bin
 	md5sums = 309a99bcbfaeb72715754008b3732a32
 	md5sums = 6cd2541e1189c29ceb576300ff3356c6
 
-pkgname = warp-terminal-bin
+pkgname = warp-terminal
