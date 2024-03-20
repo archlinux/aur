@@ -4,7 +4,7 @@ _edition=' Readonly'
 pkgname="$_pkgname-bin"
 _pkgver='1.42.2'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - binary version'
 arch=('x86_64')
 url='https://www.mongodb.com/products/compass'
@@ -28,7 +28,7 @@ sha512sums=('4b402ffd9eac2242811613fbaffc8d5010769effd7dcaca4e871986dd851f6dee22
             'f09a6026e8b963f4821454fa8c2da8c750c765f26010fbf54dfbecfd7451dda5466464bb15fada1252545366c94bf448dc0529c8bd8114f6f3834ae00176d3f1')
 
 check() {
-	"$srcdir/usr/lib/$_pkgname/MongoDB Compass$_edition" --version | tee '/dev/stderr' | grep -q "^MongoDB Compass$_edition $pkgver$"
+	"$srcdir/usr/lib/$_pkgname/MongoDB Compass$_edition" --no-sandbox --version | tee '/dev/stderr' | grep -q "^MongoDB Compass$_edition $pkgver$"
 }
 
 package() {
