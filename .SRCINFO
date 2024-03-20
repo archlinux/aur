@@ -1,0 +1,22 @@
+pkgbase = midimsg-lv2
+	pkgdesc = A collection of basic LV2 plugins to translate midi messages to usable values
+	pkgver = 0.0.5
+	pkgrel = 2
+	url = https://github.com/blablack/midimsg-lv2
+	arch = x86_64
+	groups = lv2-plugins
+	groups = pro-audio
+	license = GPL3
+	checkdepends = lv2lint
+	checkdepends = sord
+	checkdepends = xorg-server-xvfb
+	makedepends = lv2
+	makedepends = waf
+	depends = gcc-libs
+	depends = glibc
+	depends = lv2-host
+	source = https://github.com/blablack/midimsg-lv2/archive/v0.0.5/midimsg-lv2-v0.0.5.tar.gz
+	sha512sums = e2977dfda904e48e87fdfb416b700efae578ceeb81cbcf1ad1a40a3dc0a80e8b92a98d846d25deb367f1763a285816a99ec3db399137f5faa5b53c9bcc1646cb
+	b2sums = 8a24d9c837f549648ce6d7b063cf454314b8be44d5121b96578ff68e94013b7ca8db36bce3ccc9c1124bf24e20084b84f2888c257332632845cb307f9082fbb1
+
+pkgname = midimsg-lv2
