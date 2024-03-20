@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=frigoligo-bin
 _pkgname=Frigoligo
-pkgver=0.7.2
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="An universal wallabag client made with Flutter. "
 arch=('x86_64')
 url="https://github.com/casimir/frigoligo"
@@ -22,10 +22,10 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/casimir/frigoligo/v${pkgver}/assets/logos/frigoligo.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9de7c4783b44466fe61351b71592355bff546a7794e1e422e60ce07c7068d80d'
+sha256sums=('a34b6da6b61625a2fbf08034de673e808b438e601ca9ba75b0aaffce8d1e2ab2'
             '3feb1ea09cc75f148e715820992fd28a3881572e3540b629059f22293b2e17db'
             '886063acc61302d4ee369f06b6062257883dd4e3f1d6ab199ca8e64db3091491'
-            '291aa263592f1db4ff2740682680779f8784601954816eadf6d2d757868ad763')
+            '8127f217ae3e217c4aa005d1ec22ad5f16c17e11471881d9e4277d6bb479445e')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
