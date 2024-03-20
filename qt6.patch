@@ -1,0 +1,61 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cf7f4215..0192852b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -33,19 +33,25 @@ if(UNIX AND NOT APPLE)
+     endif()
+ endif()
+ 
++option(FORCE_QT6 "Force qt6 build" OFF)
++
+ # FIND PACKAGES
+-find_package(Qt5 COMPONENTS Widgets QUIET)
+-if(Qt5_FOUND)
+-    find_package(QT NAMES Qt5 REQUIRED COMPONENTS Core Widgets Svg PrintSupport)
+-else()
+-    find_package(QT NAMES Qt6 REQUIRED COMPONENTS Core Widgets Svg PrintSupport OpenGLWidgets)
+-endif()
+ 
+-message(STATUS "Qt Version: " ${QT_VERSION})
+-if(QT_VERSION_MAJOR GREATER_EQUAL 6)
++if(FORCE_QT6)
++    find_package(QT NAMES Qt6 REQUIRED COMPONENTS Core Widgets Svg PrintSupport OpenGLWidgets)
+     find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Widgets Svg PrintSupport OpenGLWidgets)
+ else()
+-    find_package(Qt${QT_VERSION_MAJOR} 5.12 REQUIRED COMPONENTS Core Widgets Svg PrintSupport)
++    find_package(Qt5 COMPONENTS Widgets QUIET)
++    if(Qt5_FOUND)
++        find_package(QT NAMES Qt5 REQUIRED COMPONENTS Core Widgets Svg PrintSupport)
++    else()
++        find_package(QT NAMES Qt6 REQUIRED COMPONENTS Core Widgets Svg PrintSupport OpenGLWidgets)
++    endif()
++    if(QT_VERSION_MAJOR GREATER_EQUAL 6)
++        find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Widgets Svg PrintSupport OpenGLWidgets)
++    else()
++        find_package(Qt${QT_VERSION_MAJOR} 5.12 REQUIRED COMPONENTS Core Widgets Svg PrintSupport)
++    endif()
+ endif()
+ 
+ if(EXIV2)
+@@ -54,7 +60,7 @@ if(EXIV2)
+ endif()
+ 
+ if(KDE_SUPPORT)
+-    find_package(KF5WindowSystem REQUIRED)
++    find_package(KF6WindowSystem REQUIRED)
+ endif()
+ 
+ if(OPENCV_SUPPORT)
+diff --git a/qimgv/CMakeLists.txt b/qimgv/CMakeLists.txt
+index 545d7191..c78fb1d9 100644
+--- a/qimgv/CMakeLists.txt
++++ b/qimgv/CMakeLists.txt
+@@ -79,7 +79,7 @@ if(EXIV2)
+     target_compile_definitions(qimgv PRIVATE USE_EXIV2)
+ endif()
+ if(KDE_SUPPORT)
+-    target_link_libraries(qimgv PRIVATE KF5::WindowSystem)
++    target_link_libraries(qimgv PRIVATE KF6::WindowSystem)
+     target_compile_definitions(qimgv PRIVATE USE_KDE_BLUR)
+ endif()
+ if(VIDEO_SUPPORT)
