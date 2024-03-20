@@ -1,6 +1,6 @@
 pkgname=hyprdots-ctl-git
-pkgver=v0.4.0.r39.g38d5c70
-pkgrel=2
+pkgver=v0.4.0.r44.gf8d5b10
+pkgrel=1
 pkgdesc="CLI for Hyprdots Configurations ++ Hidden Gems"
 arch=('x86_64')
 url="https://github.com/kRHYME7/Hyprdots-ctl"
@@ -13,9 +13,10 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/Hyprdots-ctl" || return
-    git fetch --tags
-    local version=$(git describe FETCH_HEAD | sed 's/\([^-]*-g[0-9a-f]*\)/r\1/;s/[-+]/./g')
-    echo "$version"
+    git fetch --tags 
+    latest_tag=$(git tag --sort=-v:refname | head -n 1)
+    local version=$(git describe --tags --long --always $latest_tag  | sed 's/\([^-]*-g[0-9a-f]*\)/r\1/;s/[-+]/./g')
+    echo "${version}"
 }
 
 package() {
