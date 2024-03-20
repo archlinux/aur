@@ -11,14 +11,10 @@ conflicts=("hyprdots-ctl")
 source=("git+https://github.com/kRHYME7/Hyprdots-ctl.git")
 md5sums=('SKIP')
 
-# pkgver() {
-#  git -C "${srcdir}/Hyprdots-ctl" describe --long --tags --always | sed 's/\([^-]*-g[0-9a-f]*\)/r\1/;s/[-+]/./g'
-# }
-
 pkgver() {
     cd "${srcdir}/Hyprdots-ctl" || return
     git fetch --tags
-    local version=$(git describe --long --tags --always | sed 's/\([^-]*-g[0-9a-f]*\)/r\1/;s/[-+]/./g')
+    local version=$(git describe FETCH_HEAD | sed 's/\([^-]*-g[0-9a-f]*\)/r\1/;s/[-+]/./g')
     echo "$version"
 }
 
