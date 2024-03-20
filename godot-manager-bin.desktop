@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Godot Manager
+Comment=Streamlined Godot Development Experience
+Exec=/opt/godot-manager/GodotManager.x86_64
+Icon=godot-manager
+Type=Application
+Categories=Utility;Development;

@@ -1,5 +1,6 @@
 # Maintainer: Manuel Thalmann <m@nuth.ch>
 _pkgname=godot-manager
+_desktopEntry="godot-manager-bin.desktop"
 _repo="eumario/$_pkgname"
 _archive="$_pkgname.zip"
 pkgname="$_pkgname-bin"
@@ -21,10 +22,14 @@ install=
 source=(
     "$_archive::https://github.com/$_repo/releases/download/v$pkgver/godotmanager-linux-v$pkgver.zip"
     "LICENSE::https://raw.githubusercontent.com/$_repo/v$pkgver/LICENSE"
+    "$_pkgname.png::https://raw.githubusercontent.com/$_repo/v$pkgver/$_pkgname.png"
+    "$_desktopEntry"
 )
 noextract=("$_archive")
 sha256sums=(
     'f1d1100e9537329f0e9b3bf68b4f6692b9390fe5df31662afb3add5f7c5d7bb5'
+    'SKIP'
+    'SKIP'
     'SKIP'
 )
 
@@ -37,9 +42,13 @@ pkgver() {
 package() {
     _installDir="$pkgdir/opt/$_pkgname"
     _binDir="$pkgdir/usr/bin"
-    install -dm755 "$_binDir"
-    install -dm755 "$_installDir"
+    _iconDir="$pkgdir/usr/share/pixmaps"
+    _desktopDir="$pkgdir/usr/share/applications"
+    install -dm755 "$_binDir" "$_installDir"
+    install -dm644 "$_iconDir" "$_desktopDir"
     unzip "$_archive" -d "$_installDir"
     ln -s "/opt/$_pkgname/GodotManager.${arch[0]}" "$_binDir/$_pkgname"
+    install -Dm644 "$srcdir/godot-manager.png" "$_iconDir"
+    install -Dm644 "$_desktopEntry" "$_desktopDir"
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"    
 }
