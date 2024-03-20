@@ -8,5 +8,6 @@ pkgbase = wayscreen
 	depends = tk
 	depends = python-pillow
 	depends = python-pip
+	source = install.sh
 
 pkgname = wayscreen
