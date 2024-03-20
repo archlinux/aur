@@ -1,12 +1,13 @@
 pkgbase = gnome-shell-extension-gnome-static-background-git
-	pkgdesc = Static Wallpaper in Overview
+	pkgdesc = Static Wallpaper in Overview (gnome-shell<=43)
 	pkgver = r12.75093fb
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/dz4k/gnome-static-background
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = gnome-shell>=1:40
+	depends = gnome-shell<=1:43
 	provides = gnome-shell-extension-gnome-static-background
 	conflicts = gnome-shell-extension-gnome-static-background
 	source = gnome-shell-extension-gnome-static-background::git+https://github.com/dz4k/gnome-static-background
