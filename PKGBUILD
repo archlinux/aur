@@ -14,7 +14,7 @@ BUILDENV+=(!check)
 pkgname=zed-editor-git
 pkgver=0.61.0.r12398.g59bc81d
 pkgrel=1
-pkgdesc='high-performance, multiplayer code editor from the creators of Atom and Tree-sitter (linux pre-release series)'
+pkgdesc='high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
 url=https://zed.dev
 _url="https://github.com/zed-industries/zed"
@@ -40,6 +40,8 @@ makedepends=(cargo
              git
              vulkan-headers
              vulkan-validation-layers)
+provides=("${pkgname%-git}=$pkgver")
+conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$_url.git"
         "https://github.com/livekit/protocol/archive/${_tags[protocol]}/protocol-${_tags[protocol]}.tar.gz")
 sha256sums=('SKIP'
