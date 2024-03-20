@@ -2,16 +2,16 @@
 _base=trame-vega
 pkgname=python-${_base}
 pkgdesc="Vega widget for trame"
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 arch=(any)
 url="https://github.com/Kitware/${_base}"
-license=(BSD-3-clause)
+license=(BSD-3-Clause)
 depends=(python-trame-client)
 makedepends=(python-build python-installer python-setuptools python-wheel nodejs-lts-hydrogen npm)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('af598a3ae6e4f68b231b1092b6b623f76d433a93bc6206979849acb3f771977683efce52e4d7ea24c6acba5f18ab17c3bffe9d9cd62d4355f9df5122d3ab7507')
+sha512sums=('6df086f792e07d4d17cc9ecc476345071d7bf08c40df9c2ecc8882471efeda74e97beae5913901b80aa430760b4fc72bbb253ea344a6147291abc19bd6cdf160')
 
 prepare() {
   sed -i 's/^include/#include/' ${_base}-${pkgver}/MANIFEST.in
