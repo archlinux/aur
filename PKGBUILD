@@ -1,6 +1,6 @@
 # Maintainer: leonekmi <usingarchbtw@leonekmi.fr>
 pkgname=karaokemugen
-pkgver=4.1.10.r3713.g52d7e60c7
+pkgver=7.1.57
 pkgrel=1
 pkgdesc="Karaoke playlist manager/player app used in parties or events."
 arch=('x86_64')
