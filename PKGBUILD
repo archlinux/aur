@@ -13,9 +13,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/Hyprdots-ctl" || return
-    git fetch --tags 
-    latest_tag=$(git tag --sort=-v:refname | head -n 1)
-    # local version=$(git describe --tags --long --always $latest_tag  | sed 's/\([^-]*-g[0-9a-f]*\)/r\1/;s/[-+]/./g')
+    git fetch --all 
     local version=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
     echo "${version}"
 }
