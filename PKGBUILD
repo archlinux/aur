@@ -3,22 +3,21 @@
 _base=pyamg
 pkgname=python-${_base}
 pkgdesc="Algebraic Multigrid Solvers in Python"
-_gitcommit=425f80070eefc7f4fcc6246a3b6f815f5fdbb507
-pkgver=5.0.1
+pkgver=5.1.0
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/${_base}/${_base}"
 license=(MIT)
-depends=(python-scipy python-setuptools)
-makedepends=(python-build python-installer python-setuptools-scm python-wheel pybind11 git) # python-matplotlib
+depends=(python-scipy)
+makedepends=(python-build python-installer python-setuptools-scm python-wheel pybind11) # python-matplotlib
 # checkdepends=(python-pytest)
-source=("${_base}-${pkgver}::git+${url}.git?signed#commit=${_gitcommit}")
-validpgpkeys=('4DDCC34E24417C71C667DC2850BBE7E24BA62FF7') # Luke Olson <luke.olson@gmail.com>
-sha512sums=('SKIP')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('d770289a9995dd6d7eb7be137e39adeed0968d25d6c5c8c664f14ca3980f09fdda407adb3f634172a9ce49e4d0e205a63dccc21214a027324372a2be1374f062')
 
 # https://bbs.archlinux.org/viewtopic.php?id=249188
 build() {
   cd ${_base}-${pkgver}
+  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 

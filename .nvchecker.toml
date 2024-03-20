@@ -1,0 +1,5 @@
+[python-pyamg]
+source = "github"
+github = "pyamg/pyamg"
+use_latest_release = "true"
+prefix = "v"
