@@ -4,7 +4,7 @@
 
 pkgname=faudio
 pkgver=24.03
-pkgrel=1
+pkgrel=2
 pkgdesc="XAudio2 reimplementation"
 arch=(x86_64)
 url="https://github.com/FNA-XNA/FAudio/"

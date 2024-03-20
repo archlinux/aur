@@ -1,7 +1,7 @@
 pkgbase = faudio
 	pkgdesc = XAudio2 reimplementation
 	pkgver = 24.03
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FNA-XNA/FAudio/
 	arch = x86_64
 	license = Zlib
