@@ -3,7 +3,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 _base=wikitextparser
 pkgname=python-${_base}
-pkgver=0.55.9
+pkgver=0.55.10
 pkgrel=1
 pkgdesc="A simple parsing tool for MediaWiki's wikitext markup"
 arch=(any)
@@ -13,7 +13,7 @@ depends=(python-regex python-wcwidth)
 makedepends=(python-build python-installer python-flit-core python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('873072a284ff0840427e110536a3205821b4b480f373b0089194fde5d287b98e4823d4647e94bb1274c01fca17eb5ba76ec74febd0b107f4b9004ae4cc6d4ba9')
+sha512sums=('acdfd506156ad092071ea845c53dd351a4db4c50158845d3c25480afc9f4a03a27488ef34656d45236cda0964c16abf13f617fd6d865c143c1053a7d908c387b')
 
 build() {
   cd ${_base}-${pkgver}
