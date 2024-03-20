@@ -4,7 +4,7 @@ pkgname="my-${_pkgname}-bin"
 _appname=YesPlayMusic
 pkgver=0.4.16
 _electronversion=13
-pkgrel=1
+pkgrel=2
 pkgdesc="A third party music player for Netease Music.高颜值的第三方网易云播放器，支持本地音乐播放、离线歌单、桌面歌词、Touch Bar歌词、Mac状态栏歌词显示。"
 arch=(
     'aarch64'
@@ -33,9 +33,9 @@ source=(
 )
 sha256sums=('c33378c6fd12e6d040cedd06dc0d1bedfca74fd66bc46cc2cf10cc10e0906be6'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('5ece65608866f82fc73304a028422fa5c0301ed2a176edcf59e22df32b0f023f')
-sha256sums_armv7h=('1c75033a95baa60ca1edfc3008a08f7f418623a90c6781e9fa90d6e27197b486')
-sha256sums_x86_64=('3531e9e7b4c369f23932808663efcc79e34b0179e6e571e7262dd79933357c25')
+sha256sums_aarch64=('671644d212bc2a46bc271d8b4ba2ccc83e52cddca7e33367fd86c60d21546620')
+sha256sums_armv7h=('0956b9c88904d82a6f7d3b438844777ec8ea14a85ece9ccec48c26576167537e')
+sha256sums_x86_64=('48b0f9755241284de982304df03deca45ec6f399aa655e55d46b07c15f699fd9')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
