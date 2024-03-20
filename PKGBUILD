@@ -17,7 +17,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=(llvm-minimal-git llvm-libs-minimal-git clang-minimal-git clang-libs-minimal-git clang-opencl-headers-minimal-git)
-pkgver=19.0.0_r492934.a02b79f3fc76
+pkgver=19.0.0_r493341.fb5fd2d82f9b
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -26,13 +26,11 @@ makedepends=(git cmake libffi libedit ncurses libxml2
              libxcrypt python python-setuptools)
 source=("git+https://github.com/llvm/llvm-project.git"
 )
-                
 md5sums=('SKIP')
 sha512sums=('SKIP')
-            
 
-options=('!lto')
-# explicitly disable lto to reduce number of build hangs / test failures and runtime issues
+# explicitly disable lto & debug to reduce number of build hangs , resources needed and runtime issues
+options=(!lto !debug )
 
 # LIT by default uses all available cores. this can lead to heavy stress on systems making them unresponsive.
 # It can also happen that the kernel oom killer interferes and kills important tasks.
