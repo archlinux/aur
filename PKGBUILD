@@ -3,7 +3,7 @@ pkgname=fastdownloader-bin
 _appname="Fast Downloader"
 pkgver=0.5.15
 _electronversion=28
-pkgrel=3
+pkgrel=4
 pkgdesc="A fast video/audio downloader in electron.js"
 arch=('x86_64')
 url="https://github.com/BERNARDO31P/FastDownloader"
@@ -19,11 +19,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('141cdf8bcb35f2bb49c1774d1270e7781e5e1a18b5e56c89cb5c24df07491aac'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     sed "s|\"/opt/${_appname}/${pkgname%-bin}\"|${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
