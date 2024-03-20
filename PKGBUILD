@@ -11,6 +11,7 @@ license=(LGPL-2.0-or-later)
 depends=("dolphin" "keditbookmarks" "qt6-webengine")
 makedepends=(gcc-libs
          glibc
+         git
          karchive
          kbookmarks
          kcmutils
