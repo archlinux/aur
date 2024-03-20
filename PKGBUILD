@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="NXP Secure Provisioning SDK"
 arch=(any)
 url="https://github.com/nxp-mcuxpresso/spsdk"
-license=(BSD)
+license=(BSD-3-Clause)
 depends=(
   python
   python-asn1crypto
