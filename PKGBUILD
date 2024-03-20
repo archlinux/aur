@@ -8,10 +8,16 @@ arch=('i686' 'x86_64')
 url="https://github.com/catid/wirehair"
 license=('BSD-3-Clause')
 makedepends=('git' 'cmake')
-source=('git+https://github.com/catid/wirehair.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/catid/wirehair.git'
+	'static.patch')
+sha256sums=('SKIP'
+            '0518aaea558d351ca5be53ab534577f5503ddb44326b961af21b90c7e7207c4d')
 provides=(wirehair)
 conflicts=(wirehair)
+
+prepare() {
+	patch --forward --strip=1 --input=../static.patch
+}
 
 build() {
 	cd $_pkgname

@@ -11,6 +11,8 @@ pkgbase = wirehair-git
 	provides = wirehair
 	conflicts = wirehair
 	source = git+https://github.com/catid/wirehair.git
+	source = static.patch
 	sha256sums = SKIP
+	sha256sums = 0518aaea558d351ca5be53ab534577f5503ddb44326b961af21b90c7e7207c4d
 
 pkgname = wirehair-git
