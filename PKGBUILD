@@ -1,7 +1,7 @@
 # Maintainer: metamuffin <metamuffin@disroot.org>
 
 pkgname=keks-meet-server
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Server for keks-meet, a simple and secure conferencing application for the web."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ backup=('etc/keks-meet-server.toml')
 source=("https://codeberg.org/metamuffin/keks-meet/archive/v$pkgver.tar.gz"
         "keks-meet-server.service"
         "sysusers.conf")
-sha256sums=("97e27120c7c76304f0fd7afea2f76fb451dd24ccac07461c15d413e885b3f80d"
+sha256sums=("374859ce3bab4473d6aa2d82d7bc9143591bf748988f6d6b1d9d6998d7231b56s"
             "SKIP"
             "SKIP")
 
