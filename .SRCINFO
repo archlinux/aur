@@ -1,9 +1,10 @@
 pkgbase = libsignal-ffi
 	pkgdesc = Library for the Signal Protocol (ffi component)
 	pkgver = 0.42.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/signalapp/libsignal/tree/main/rust/bridge/ffi
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-or-later
 	checkdepends = cargo
 	makedepends = cargo
