@@ -11,7 +11,7 @@ optdepends=('gir1.2-gnomekeyring-1.0: Description of optional feature'
             'libgnome-keyring: Another optional feature'
             'lsb-release: Yet another optional feature'
             'pulseaudio: Optional feature for sound support')
-source=("cia-1.2.4-1-x86_64.pkg.tar.zst::https://www.dropbox.com/scl/fi/8sacraguaws5df8olhy0f/cia-1.2.4-1-x86_64.pkg.tar.zst?rlkey=1efo2ujm3tx9dtdlnoctxkvxk&dl=0")
+source=("cia-1.2.4-1-x86_64.pkg.tar.zst::https://www.dropbox.com/scl/fi/zbx6wgfx5a0276qs8brz6/cia-1.2.5-1-x86_64.pkg.tar.zst?rlkey=nqhtsab6ooogxqjyyz4ula190&dl=0")
 md5sums=('SKIP')
 
 package(){
