@@ -1,0 +1,17 @@
+pkgbase = ibus-pinyin
+	pkgdesc = Pinyin (Chinese) input method for the IBus framework
+	pkgver = 1.5.0
+	pkgrel = 8
+	url = https://github.com/phuang/ibus-pinyin/
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = ibus
+	depends = pyzy
+	depends = lua
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ibus/ibus-pinyin-1.5.0.tar.gz
+	source = ibus-pinyin-fixes-lua-compile.patch
+	sha512sums = b0cd849ee3154543747dde8994eec9aed01d67e0d9be308a2f0230cf22f0281cd8fcabd9763b24238547a37e54400bcd8e541937767b93f005d04302f0c00241
+	sha512sums = 4d62521eca39099f71824c0fdafcdda41b3920a25411e520023dd20343554f691a6c9629c80977849d70724ad7aa31cae1345d452ba6a8d15019f835c91f3913
+
+pkgname = ibus-pinyin
