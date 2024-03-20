@@ -1,6 +1,6 @@
 pkgbase = repman
 	pkgdesc = Manage (remote) custom repositories for Arch Linux packages
-	pkgver = 0.7.4
+	pkgver = 0.7.8
 	pkgrel = 1
 	url = https://gitlab.com/mipimipi/repman
 	arch = aarch64
@@ -23,9 +23,9 @@ pkgbase = repman
 	conflicts = repman-git
 	options = !debug
 	backup = etc/repman.conf
-	source = https://gitlab.com/mipimipi/repman/-/archive/v0.7.4/repman-v0.7.4.tar.gz
+	source = https://gitlab.com/mipimipi/repman/-/archive/v0.7.8/repman-v0.7.8.tar.gz
 	validpgpkeys = 11ECD6695134183B3E7AF1C2223AAA374A1D59CE
-	sha256sums = 78300ff6c2ab85274e7d7cea16cc9e7343652d74efb5053cdea4b1f82e55692f
+	sha256sums = 253e4410429deaadd4de3b00bab830eb8f48345f21f23df5c257cc90c8be2fcd
 	depends_aarch64 = devtools-alarm
 	depends_x86_64 = devtools
 
