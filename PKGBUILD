@@ -19,27 +19,66 @@ BUILD_FLAGS=(CC=clang CXX=clang++ HOSTCC=clang HOSTCXX=clang++ LD=ld.lld LLVM=1 
 ###################################################################################
 
 pkgbase=linux-llvm
-pkgver=6.7.0
-_pkgver=6.7
+pkgver=6.8.1
+_pkgver=6.8.1
 pkgrel=1
-major=6.7
-commit=79425d7496066714f38535eb4f37df529668e83a
+major=6.8
+commit=abef9db380deca88617f7014b683667ef6fc81e4
 arch=(x86_64)
 url='https://www.kernel.org/'
-license=(GPL2)
-makedepends=(bc cpio gettext git libelf pahole perl python tar xz kmod xmlto)
-makepends+=(graphviz imagemagick python-sphinx texlive-latexextra) # htmldocs
-makedepends+=(bison flex zstd make patch gcc gcc-libs glibc binutils)
-makedepends+=(clang llvm llvm-libs lld python)
-options=(!strip)
-
+license=(GPL-2.0-only)
+makedepends=(
+  bc
+  cpio
+  gettext
+  libelf
+  pahole
+  perl
+  python
+  tar
+  xz
+  kmod
+  xmlto
+  # htmldocs
+  graphviz
+  imagemagick
+  python-sphinx
+  python-yaml
+  texlive-latexextra
+)
+makedepends+=(
+  bison
+  flex
+  zstd
+  make
+  patch
+  gcc
+  gcc-libs
+  glibc
+  binutils
+  git
+)
+if [[ "$_compiler" = "2" ]]; then
+  makedepends+=(
+    clang
+    llvm
+    llvm-libs
+    lld
+    clang
+    python
+  )
+fi
+options=(
+  !debug
+  !strip
+)
 archlinuxpath=https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/$commit
-
 source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz
         ${archlinuxpath}/config
         # Arch patches
         0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-        0002-drivers-firmware-skip-simpledrm-if-nvidia-drm.modese.patch)
+        0002-drivers-firmware-skip-simpledrm-if-nvidia-drm.modese.patch
+        0003-arch-Kconfig-Default-to-maximum-amount-of-ASLR-bits.patch)
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -173,15 +212,29 @@ build(){
 
   msg "make -j$(nproc) all..."
   make ARCH=${ARCH} ${BUILD_FLAGS[*]} -j$(nproc) all
+  make ARCH=${ARCH} ${BUILD_FLAGS[*]} -j$(nproc) -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
 }
 
 _package(){
   pkgdesc='The Linux kernel and modules - Build with LLVM/CLANG'
-  depends=(coreutils initramfs kmod)
-  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
-  replaces=(virtualbox-guest-modules-arch wireguard-arch)
+  depends=(
+    coreutils
+    initramfs
+    kmod
+  )
+  optdepends=(
+    'wireless-regdb: to set the correct wireless channels of your country'
+    'linux-firmware: firmware images needed for some devices'
+  )
+  provides=(
+    KSMBD-MODULE
+    VIRTUALBOX-GUEST-MODULES
+    WIREGUARD-MODULE
+  )
+  replaces=(
+    virtualbox-guest-modules-arch
+    wireguard-arch
+  )
 
   cd ${srcdir}/linux-$_pkgver
 
@@ -213,7 +266,7 @@ _package-headers(){
   local builddir="$pkgdir"/usr/lib/modules/"$(<version)"/build
 
   msg "Installing build files..."
-  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map *localversion* version vmlinux
+  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map *localversion* version vmlinux tools/bpf/bpftool/vmlinux.h
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
@@ -288,10 +341,11 @@ _package-headers(){
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('ef31144a2576d080d8c31698e83ec9f66bf97c677fa2aaf0d5bbb9f3345b1069'
-            '45a44ff0e957cd562d2ceb60c1c90fc19c19e808209cebb46bfacfccfb56ad96'
-            'f936aae4d832ac87db8fbb9effb066dd368d092f71dd7135d1548babdb7d10c8'
-            '758690814fbe8bba6e6ab91c80352bf328d49b686c74213f85039180aecb67df')
+sha256sums=('8d0c8936e3140a0fbdf511ad7a9f21121598f3656743898f47bb9052d37cff68'
+            'c2b00c84c4b543db431e06604d939a62f93107d18369f4d9860dc8062b01ab45'
+            '416609986399d3046811bcc2344f4ee0833b6c92e305da3925a6e193f810dad2'
+            'b4c85f49a0c0fe6d6ac1f55165c2c897000a7c6c0c30f258693d66223c0389fd'
+            'd9c0e2b3fa16f02abfd95d4c00747a43dd761e5cd622d40ab908155c5957759b')
 
 pkgname=($pkgbase $pkgbase-headers)
 for _p in "${pkgname[@]}"; do

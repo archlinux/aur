@@ -1,7 +1,7 @@
-From d7cb932d45ed4d5560fc0a96a8e3728debf5fe90 Mon Sep 17 00:00:00 2001
+From 4d23b7ca9ef7806857a57a607a8bac22fd8e5b13 Mon Sep 17 00:00:00 2001
 From: Javier Martinez Canillas <javierm@redhat.com>
 Date: Thu, 19 May 2022 14:40:07 +0200
-Subject: [PATCH 2/2] drivers/firmware: skip simpledrm if nvidia-drm.modeset=1
+Subject: [PATCH 2/3] drivers/firmware: skip simpledrm if nvidia-drm.modeset=1
  is set
 
 The Nvidia proprietary driver has some bugs that leads to issues if used
@@ -49,7 +49,7 @@ Cherry-picked-for: https://bugs.archlinux.org/task/73720
  1 file changed, 17 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/firmware/sysfb.c b/drivers/firmware/sysfb.c
-index 82fcfd29b..17b7e096b 100644
+index 3c197db42..16e4a2e90 100644
 --- a/drivers/firmware/sysfb.c
 +++ b/drivers/firmware/sysfb.c
 @@ -34,6 +34,22 @@
@@ -85,5 +85,5 @@ index 82fcfd29b..17b7e096b 100644
  		if (!IS_ERR(pd))
  			goto unlock_mutex;
 -- 
-2.43.0
+2.44.0
 
