@@ -1,5 +1,5 @@
 pkgname=snowflake-pt-client-bin
-pkgver=2.9.1
+pkgver=2.9.2
 pkgrel=1
 pkgdesc='Pluggable Transport using WebRTC, inspired by Flashproxy'
 url=https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake
@@ -10,8 +10,8 @@ optdepends=(torbrowser-launcher)
 backup=(etc/tor/snowflake)
 install=$pkgname.install
 options=(!debug)
-source=(snowflake-v$pkgver.tar.gz::$url/-/jobs/486668/artifacts/raw/snowflake-v$pkgver.tar.gz)
-b2sums=(b840dec36e790d3e227c339d2bf10898d67f312093cdd6542c22ca9a0a1780f73a522d870b3358beb468532e3709ec82e4c696f3c40798dab88b7435f01f6472)
+source=(snowflake-v$pkgver.tar.gz::$url/-/jobs/504153/artifacts/raw/snowflake-v$pkgver.tar.gz)
+b2sums=(c1d88c4f90f4715c903943061fe8016f1979a974f1d5dfe603d5a43ef3f09e81540127dfc85c2d1d182229ee8b017e49320ce6e22d0b3e090dea8960af041817)
 
 package() {
 	echo -e "UseBridges 1\nClientTransportPlugin snowflake exec /usr/bin/snowflake-client" > snowflake
