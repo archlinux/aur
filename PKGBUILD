@@ -6,7 +6,7 @@
 
 _pkgname="floorp"
 pkgname="$_pkgname-bin"
-pkgver=11.11.0
+pkgver=11.11.1
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://floorp.app/"
@@ -29,6 +29,8 @@ optdepends=(
 provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 
+options=('!debug')
+
 source=(
   "floorp.desktop"
   "floorp.png"
@@ -40,8 +42,8 @@ sha256sums=(
 
 source_x86_64=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/floorp-${pkgver}.linux-x86_64.tar.bz2")
 source_aarch64=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/floorp-${pkgver}.linux-aarch64.tar.bz2")
-sha256sums_x86_64=('3ce7341dc1e3aa110d6e7894df8719e016ab0483d1c0f4f64c1294ab58bde1d7')
-sha256sums_aarch64=('68b6ae9e12d1d8e28c08ebd92bbf7f466cb15a55bce7af5b17a72dbcc48a79d8')
+sha256sums_x86_64=('4bf2e70e155b134bc436ce83474dd7b3efa7a502f5202f9c124806ec5bc21082')
+sha256sums_aarch64=('35e57e5a723f6ad81afee56445f1b5f8b9c06c8bd1c0cc8627e2f1092bf5772c')
 
 package() {
   depends=(
@@ -91,9 +93,4 @@ END
   }
 }
 END
-
-  # Use system-provided dictionaries
-  rm -rf "$pkgdir/$_install_path"/{dictionaries,hyphenation}
-  ln -sf /usr/share/hunspell "$pkgdir/$_install_path/dictionaries"
-  ln -sf /usr/share/hyphen "$pkgdir/$_install_path/hyphenation"
 }
