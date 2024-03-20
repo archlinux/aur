@@ -1,13 +1,18 @@
 # Maintainer: Christian Schendel <doppelhelix at gmail dot com>
 pkgname=gnome-shell-extension-applications-overview-tooltip-git
-pkgver=16.r0.gdac0b90
-pkgrel=4
+pkgver=19.r0.g1811710
+pkgrel=1
 pkgdesc="Shows a tooltip over applications icons on applications overview"
 arch=(any)
 url="https://github.com/RaphaelRochet/applications-overview-tooltip"
 license=('unknown')
-depends=('gnome-shell>=3.38')
-makedepends=('git' 'glib2')
+depends=(
+  'gnome-shell'
+)
+makedepends=(
+  'git'
+  'glib2'
+)
 conflicts=("${pkgname%-git}")
 provides=(${pkgname%-git})
 source=("${pkgname%-git}::git+${url}.git")

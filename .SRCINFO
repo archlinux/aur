@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-applications-overview-tooltip-git
 	pkgdesc = Shows a tooltip over applications icons on applications overview
-	pkgver = 16.r0.gdac0b90
-	pkgrel = 4
+	pkgver = 19.r0.g1811710
+	pkgrel = 1
 	url = https://github.com/RaphaelRochet/applications-overview-tooltip
 	arch = any
 	license = unknown
 	makedepends = git
 	makedepends = glib2
-	depends = gnome-shell>=3.38
+	depends = gnome-shell
 	provides = gnome-shell-extension-applications-overview-tooltip
 	conflicts = gnome-shell-extension-applications-overview-tooltip
 	source = gnome-shell-extension-applications-overview-tooltip::git+https://github.com/RaphaelRochet/applications-overview-tooltip.git
