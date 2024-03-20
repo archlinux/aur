@@ -2,7 +2,7 @@
 # Maintainer: Fabian Bornschein <fabiscafe@archlinux.org>
 
 pkgname=glib-networking
-pkgver=2.78.1
+pkgver=2.80.0
 pkgrel=1
 epoch=1
 pkgdesc="Network extensions for GLib"
@@ -11,6 +11,7 @@ arch=(x86_64)
 license=(LGPL-2.1-or-later)
 depends=(
   glib2
+  glibc
   gnutls
   gsettings-desktop-schemas
   libproxy
@@ -20,7 +21,7 @@ makedepends=(
   meson
 )
 checkdepends=(ca-certificates)
-_commit=ff3ed94057edfd2e4d4c45c5e53e5b41d19fad6a  # tags/2.78.1^0
+_commit=3ae624d21b586ec33543004b037fd343042cb04b  # tags/2.80.0^0
 source=("git+https://gitlab.gnome.org/GNOME/glib-networking.git#commit=$_commit")
 b2sums=('SKIP')
 
@@ -34,15 +35,12 @@ prepare() {
 }
 
 build() {
-  local meson_options=(
-  )
-
-  arch-meson glib-networking build "${meson_options[@]}"
+  arch-meson glib-networking build
   meson compile -C build
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -vC build --print-errorlogs
 }
 
 package() {

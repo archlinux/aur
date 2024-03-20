@@ -1,6 +1,6 @@
 pkgbase = glib-networking
 	pkgdesc = Network extensions for GLib
-	pkgver = 2.78.1
+	pkgver = 2.80.0
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.gnome.org/GNOME/glib-networking
@@ -10,10 +10,11 @@ pkgbase = glib-networking
 	makedepends = git
 	makedepends = meson
 	depends = glib2
+	depends = glibc
 	depends = gnutls
 	depends = gsettings-desktop-schemas
 	depends = libproxy
-	source = git+https://gitlab.gnome.org/GNOME/glib-networking.git#commit=ff3ed94057edfd2e4d4c45c5e53e5b41d19fad6a
+	source = git+https://gitlab.gnome.org/GNOME/glib-networking.git#commit=3ae624d21b586ec33543004b037fd343042cb04b
 	b2sums = SKIP
 
 pkgname = glib-networking
