@@ -15,7 +15,7 @@ arch=('i686' 'x86_64')
 url='http://gcmd.github.io/'
 license=('GPL')
 depends=('libgsf' 'taglib' 'poppler-glib' 'gtk2' 'exiv2' 'smbclient')
-makedepends=('itstool' 'meson' 'gtest')
+makedepends=('itstool' 'meson' 'gtest' 'flex')
 source=("https://download.gnome.org/sources/$pkgname/${_pkgver}/$pkgname-$pkgver.tar.xz"
 	gnome-commander-1.16.1.patch)
 

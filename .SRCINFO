@@ -9,6 +9,7 @@ pkgbase = gnome-commander
 	makedepends = itstool
 	makedepends = meson
 	makedepends = gtest
+	makedepends = flex
 	depends = libgsf
 	depends = taglib
 	depends = poppler-glib
