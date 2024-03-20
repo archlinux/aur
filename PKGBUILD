@@ -49,19 +49,18 @@ source=("git+https://invent.kde.org/network/konqueror.git")
 sha512sums=('SKIP')
 
 pkgver() {
-    echo $(pwd) >&2
-    cd konqueror
+    cd $_pkgname
     git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cmake -B build -S $_pkgname \
+  cmake -B $_pkgname/build -S $_pkgname \
     -DBUILD_TESTING=OFF \
     -DQT_MAJOR_VERSION=6 \
     -DUSE_SYSTEM_DICTIONARIES=ON
-  cmake --build build
+  cmake --build $_pkgname/build
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+  DESTDIR="$pkgdir" cmake --install $_pkgname/build
 }
