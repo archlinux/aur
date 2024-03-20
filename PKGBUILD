@@ -10,6 +10,8 @@ pkgdesc='Blazingly fast status bar written with GTK'
 url='https://github.com/scorpion-26/gBar'
 source=("$_pkgname::git+$url")
 license=('MIT')
+provides=('gbar=$(pkgver)')
+conflicts=('gbar')
 depends=('cairo'
          'gdk-pixbuf2'
          'glib2'

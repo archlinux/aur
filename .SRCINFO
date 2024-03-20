@@ -25,6 +25,8 @@ pkgbase = gbar-git
 	optdepends = hyprland: Workspace widgets
 	optdepends = nvidia-utils: Nvidia GPU support
 	optdepends = pacman-contrib: Arch update checking
+	provides = gbar=$(pkgver)
+	conflicts = gbar
 	source = gBar::git+https://github.com/scorpion-26/gBar
 	sha256sums = SKIP
 
