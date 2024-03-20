@@ -26,7 +26,9 @@ makedepends=('git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2'
              'python-setuptools' 'lldb' 'ocaml' 'ocaml-ctypes' 'ocaml-findlib'
              'python-sphinx' 'python-recommonmark' 'swig' 'python' 'python-six'
              'python-myst-parser' 'lua53' 'ocl-icd' 'opencl-headers' 'z3'
-             'jsoncpp' 'ocaml-stdlib-shims')
+             'jsoncpp' 'ocaml-stdlib-shims' 'python-pygments' 'zstd'
+             'python-psutil' 'python-yaml' 'python-importlib-metadata'
+             'python-setuptools' 'lib32-glibc' 'lib32-gcc-libs')
 checkdepends=("python-psutil")
 source=("llvm-project::git+https://github.com/ROCm/llvm-project.git"
         "llvm-config.h")
