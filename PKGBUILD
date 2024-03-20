@@ -1,5 +1,6 @@
 # Maintainer: Sean Greenslade <aur at seangreenslade dot com>
 # Contributor: David Runge <dvzrv@archlinux.org>
+# Contributor: T.J. Townsend <blakkheim@archlinux.org>
 # Contributor: Jon Gjengset
 # Contributor: jsteel <mail at jsteel dot org>
 # Contributor: andreas_baumann <abaumann at yahoo dot com>
@@ -8,7 +9,7 @@
 
 _pkgbase=mutt
 pkgname=${_pkgbase}-slang
-pkgver=2.2.12
+pkgver=2.2.13
 pkgrel=1
 pkgdesc="Small but very powerful text-based mail client - slang version"
 arch=(x86_64)
@@ -45,9 +46,9 @@ optdepends=(
 backup=(etc/${_pkgbase}/Muttrc)
 install=${_pkgbase}.install
 source=(https://bitbucket.org/${_pkgbase}/${_pkgbase}/downloads/${_pkgbase}-$pkgver.tar.gz{,.asc})
-sha512sums=('75e9926af9abc869929d7729cda67adc3710d15560b6a1853b1d95ca926a9e72d975bafa09ebd9a4919905498602a8b55cf72a576fad170c68902862e9474006'
+sha512sums=('dcd84235b6f759c31b56cf021efc17c0bb1fd4d59226d12af9838f3cbbcf0301262ae5f67803565cce3afd6ff5eed3a380a81958f57fb7d8f38e2ecfd0ff7d2c'
             'SKIP')
-b2sums=('f17811a37804221fbb351083a25fa8b67511b7a11220e82ab6ce971fc9a0627ec9bcd8df6095e525dacda347aac51b9671cc8e6f8a3fdd8920b44fbcbc61189e'
+b2sums=('993b5dc43f09a313acb7e02b1d182e2856f4f9a9d61c7137a9e4ea3c399302adf69993d6f7d3af3dc1f89e17473071689eb3692949daadaacb0338302090abea'
         'SKIP')
 validpgpkeys=('8975A9B33AA37910385C5308ADEF768480316BDA') # Kevin J. McCarthy <kevin@8t8.us>
 
