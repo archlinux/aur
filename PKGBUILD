@@ -2,41 +2,52 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 _pkgname=lvtk
-pkgname="${_pkgname}-git"
-pkgver=2.0.0.r608.1028f69
+pkgname=$_pkgname-git
+pkgver=2.0.0rc1.r538.g2e47460
 pkgrel=1
-pkgdesc="A set of C++ wrappers around the LV2 C API"
-arch=('i686' 'x86_64')
-url="https://github.com/lvtk/lvtk"
-license=('GPL3')
-depends=('boost-libs' 'lv2')
-makedepends=('git' 'gtkmm' 'python' 'ttl2c-git')
-optdepends=('gtkmm: lv2 sample plugins')
-conflicts=("${_pkgname}")
-provides=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/lvtk/lvtk.git")
+pkgdesc='A set of C++ wrappers around the LV2 C API'
+arch=(x86_64)
+url='https://github.com/lvtk/lvtk'
+license=(GPL-3.0-or-later)
+depends=(gcc-libs glibc lv2 libx11 libxcursor libxext libxrandr)
+makedepends=(git meson cairo)
+conflicts=($_pkgname)
+provides=($_pkgname)
+source=("$_pkgname::git+https://github.com/lvtk/lvtk.git")
 md5sums=('SKIP')
 changelog=ChangeLog
 
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd $_pkgname
+  ( set -o pipefail
+    git describe --long --tags 2>/dev/null | sed -e 's/^v//' -e 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
 
-  local ver=`grep "^LVTK_VERSION" wscript | cut -d "'" -f 2`
-  echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+prepare() {
+  meson subprojects download --sourcedir=$_pkgname
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  test -d $_pkgname-build && local extra_opts="--reconfigure"
+  arch-meson \
+    -Dplugins=enabled \
+    -Ddemo=enabled \
+    -Dtest=enabled \
+    $extra_opts \
+    $_pkgname-build $_pkgname
+  meson compile -C $_pkgname-build
+}
 
-  python waf configure --prefix=/usr
-  python waf build
+check() {
+  meson test -C $_pkgname-build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-
-  python waf install --destdir="$pkgdir"
+  depends+=(libcairo.so)
+  meson install -C $_pkgname-build --destdir="$pkgdir"
 }
 
 # vim:set ts=2 sw=2 et:

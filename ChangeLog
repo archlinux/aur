@@ -1,3 +1,8 @@
+2024-03-20 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 2.0.0rc1.r538.g2e47460-1 :
+	Change build system to meson
+
 2017-01-22 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 2.0.0.r486.7c0ffdf :
