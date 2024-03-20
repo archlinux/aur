@@ -1,0 +1,24 @@
+pkgbase = godot-manager-bin
+	pkgdesc = A Project, Version and Addons/Plugins manager for Godot Game Engine.
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/eumario/godot-manager
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = jq
+	makedepends = sed
+	provides = godot-manager
+	conflicts = godot-manager
+	noextract = godot-manager.zip
+	options = !strip
+	source = godot-manager.zip::https://github.com/eumario/godot-manager/releases/download/v0.2.3/godotmanager-linux-v0.2.3.zip
+	source = LICENSE::https://raw.githubusercontent.com/eumario/godot-manager/v0.2.3/LICENSE
+	source = godot-manager.png::https://raw.githubusercontent.com/eumario/godot-manager/v0.2.3/godot-manager.png
+	source = godot-manager-bin.desktop
+	sha256sums = f1d1100e9537329f0e9b3bf68b4f6692b9390fe5df31662afb3add5f7c5d7bb5
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = godot-manager-bin
