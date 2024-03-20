@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=shinden-client-bin
 _pkgname=shinden-client
-pkgver=3.1.0
+pkgver=3.1.1
 _electronversion=29
 pkgrel=1
 pkgdesc="Unofficial client for the polish anime websites. It allows you to watch anime without being exposed to ads and pop-ups."
@@ -11,13 +11,13 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronverupdpkgsums  && makepkg -f && namcap *.zstsion}"
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-electron_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('369a7117cd1687f3bc3871d050e82f992ebec2a8cb36c5cc15d87861c2518e73'
+sha256sums=('cd2f91eb2fcb5c8a65b24311395eada8efcfb8c59ea07a5af2c944de38cdeeb2'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
