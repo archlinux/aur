@@ -4,8 +4,8 @@
 
 _yyyy=2023
 pkgname=easytax-ag-${_yyyy}
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="Aargau tax declaration software."
 arch=(any)
 url="https://www.ag.ch/de/dfr/steuern/natuerliche_personen/steuererklaerung__easytax/steuererklaerung_easytax1.jsp"
@@ -17,7 +17,7 @@ source=(
   "$pkgname.desktop"
 )
 sha256sums=(
-  '5540c7464bc716c76f62765e331bd9faedca258e0d9fbec8723619be2300ccdd'
+  '6a47a7cff7232fe88f3661305464e18319b4a104233b36cdf28a2a5e52cdef70'
   '253d315b20371cd9add777dc990f96545c60d5d07a3f34cd33720d5148e82486'
   'ac9162d4b0e05894401552f0e8ff5783986c8a41e7607b9cf23ddfa31ce399c5'
 )
