@@ -44,7 +44,7 @@ package() {
     install -dm755 "${pkgdir}/usr/share/"
     cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
     mkdir -p "${pkgdir}/usr/share/pixmaps/"
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/todoist.png" "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/128x128/apps/open-pha.png" "${pkgdir}/usr/share/pixmaps"
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
