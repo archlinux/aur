@@ -13,7 +13,7 @@ BUILDENV+=(!check)
 
 pkgname=zed-editor
 pkgver=0.127.3
-pkgrel=2
+pkgrel=3
 pkgdesc='high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
 url=https://zed.dev
@@ -23,10 +23,10 @@ depends=(alsa-lib libasound.so
          fontconfig
          gcc-libs # libgcc_s.so libstdc++.so
          glibc # libc.so libm.so
-         libgit2 libgit2.so
-         libxau libXau.so
+         # libgit2 libgit2.so
+         # libxau libXau.so
          libxcb # libxcb-xkb.so
-         libxdmcp libXdmcp.so
+         # libxdmcp libXdmcp.so
          libxkbcommon # libxkbcommon.so
          libxkbcommon-x11 # libxkbcommon-x11.so
          openssl libcrypto.so libssl.so
