@@ -1,6 +1,6 @@
 pkgbase = r-stexampledata
 	pkgdesc = Collection of spatially-resolved transcriptomics datasets in SpatialExperiment Bioconductor format
-	pkgver = 1.10.0
+	pkgver = 1.10.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/STexampleData
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = r-stexampledata
 	optdepends = r-bumpymatrix
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/STexampleData_1.10.0.tar.gz
-	md5sums = 5fa4bfb2e58e7f6bbcd957aa1aa7e938
-	sha256sums = 29abd18b6363d77a7effee5e59f02eca94c629f3e430d148e12b2935c80918e6
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/STexampleData_1.10.1.tar.gz
+	md5sums = 99518bc21109a50be767898bfc7d904b
+	b2sums = 5414dde2ecdae8370e8fa89cd87276da78e804685c67188b6a79aac17d94815e522008a9bc8cc8f633d96f2732f5ef97f2618588e0e9507d4aa715fec38fe983
 
 pkgname = r-stexampledata

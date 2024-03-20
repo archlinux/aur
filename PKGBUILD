@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=STexampleData
-_pkgver=1.10.0
+_pkgver=1.10.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Collection of spatially-resolved transcriptomics datasets in SpatialExperiment Bioconductor format"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-experimenthub
   r-spatialexperiment
@@ -20,12 +20,12 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5fa4bfb2e58e7f6bbcd957aa1aa7e938')
-sha256sums=('29abd18b6363d77a7effee5e59f02eca94c629f3e430d148e12b2935c80918e6')
+md5sums=('99518bc21109a50be767898bfc7d904b')
+b2sums=('5414dde2ecdae8370e8fa89cd87276da78e804685c67188b6a79aac17d94815e522008a9bc8cc8f633d96f2732f5ef97f2618588e0e9507d4aa715fec38fe983')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
