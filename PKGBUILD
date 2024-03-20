@@ -3,7 +3,7 @@
 pkgname='mautrix-signal'
 _name='signal'
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Matrix-Signal puppeting bridge (go rewrite)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/mautrix/signal"
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=(
   'go'
-  'libsignal-ffi<0.42.0' # AUR
+  'libsignal-ffi<0.43.0' # AUR
 )
 backup=(
   "etc/${pkgname}/config.yaml"
@@ -29,7 +29,7 @@ source=(
   "${pkgname}.tmpfiles"
 )
 sha256sums=('646736a97421b4a3e25afa4410ef3168cba66b4964b3df0d2468d36ca409b193'
-            'fcdda5af56e07faa8b0ff127ccb560ae97e60945531b7bcf696100825d824324'
+            'e9a6a88f7b08fa00b354c3d50ded995f5578e6a6b75b96988cc2b27432575ded'
             'b47c0829a9f285e0a4bd7852e601f325e1fa8385ea96eaa92cad204c0e583adf'
             '5badc8727dfbf4531f93e86ae475c64753952ee60090a043be22b9dd9a124ca5')
 
