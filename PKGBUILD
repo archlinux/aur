@@ -3,7 +3,7 @@
 # Contributor: Jaime Martínez Rincón <jaime@jamezrin.name>
 
 pkgname=notion-app-electron
-pkgver=3.1.1
+pkgver=3.2.1
 pkgrel=1
 pkgdesc='Your connected workspace for wiki, docs & projects'
 arch=(x86_64)
@@ -17,6 +17,7 @@ depends=(
 	electron28
 )
 makedepends=(
+	p7zip
 	asar
 	icoutils
 )
@@ -28,13 +29,18 @@ source=(
 	notion-app
 	notion.desktop
 )
-sha256sums=('b55742085cf723ea2d13dd6f97969b87329646028f540692fc8e070c16d49958'
+sha256sums=('52c8d3df410869bb9927689e5aa5c84e0e63792bb029d38dd857cf19b6f16356'
             '9d9381dd7b53f06759916dbcfae24ede7e7e26c18ea45f00f40c35d4217ce7fb'
             '1ee5a3847a6aba3cba9b757ddc0f2364a5c24c4b63e057e03aede5c56f126642'
             '19a5f973f1e9291081aa05512e07c61447e8c30e1a43dd22d0cc1090837d1e19')
 
 prepare() {
-	asar e "$srcdir/resources/app.asar" "$srcdir/unpacked"
+	# bsdtar can't recognize 3.2.1, so use 7z
+	7z x ./*.exe
+	rm ./*.exe
+	7z x ./**/app-64.7z
+	rm ./**/app-64.7z
+	asar e "$srcdir"/**/app.asar "$srcdir/unpacked"
 	icotool -x -w 256 "$srcdir/unpacked/icon.ico" -o "$srcdir/notion.png"
 	icotool -x -w 256 "$srcdir/resources/trayIcon.ico" -o "$srcdir/trayIcon.png"
 
@@ -42,6 +48,7 @@ prepare() {
 		    s/_.Store.getState().app.preferences?.isAutoUpdaterDisabled/(true)/g
 		    s!extra-resources!/usr/share/notion-app!g
 		    s/trayIcon.ico/trayIcon.png/g' "$srcdir/unpacked/.webpack/main/index.js"
+	find $srcdir \( -name "clang-format.js" -or -name "conversion.js" -or -name "eslint-format.js" \) -delete -printf "rm %p to make namcap happy.\n"
 }
 
 package() {
