@@ -1,16 +1,21 @@
 # Maintainer: wuxxin <wuxxin@gmail.com>
 
-# to only build for cpu, set _ENABLE_CUDA and _ENABLE_ROCM to 0
+# env vars for build steering, eg. to only build for cpu, set _ENABLE_CUDA and _ENABLE_ROCM to 0
+_ENABLE_CPU=${_ENABLE_CPU:-1}
 _ENABLE_CUDA=${_ENABLE_CUDA:-1}
 _ENABLE_ROCM=${_ENABLE_ROCM:-1}
-_SKIP_CPU=${_SKIP_CPU:-0}
-# if not set, populate build architecture list from arch:python-pytorch@2.2.0-1
+# if GPU_TARGETS and AMDGPU_TARGETS are not set, populate build architecture list from arch:python-pytorch@2.2.0-1
 _AMDGPU_TARGETS="gfx906;gfx908;gfx90a;gfx940;gfx941;gfx942;gfx1010;gfx1012;gfx1030;gfx1100;gfx1101;gfx1102"
 if test -n "$GPU_TARGETS"; then _AMDGPU_TARGETS="$GPU_TARGETS"; fi
 if test -n "$AMDGPU_TARGETS"; then _AMDGPU_TARGETS="$AMDGPU_TARGETS"; fi
-_GO_TAGS=""
-# _GO_TAGS="tts tinydream stablediffusion"
-_OPTIONAL_BACKENDS=""
+# available GO_TAGS (use space as seperator): tts tinydream stablediffusion
+_GO_TAGS="${_GO_TAGS:-}"
+_OPTIONAL_BACKENDS="${_OPTIONAL_BACKENDS:-}"
+# optional args for main Makefile calling
+_OPTIONAL_MAKE_ARGS="${_OPTIONAL_MAKE_ARGS:-}"
+# limit exteranl sources to llama.cpp, go-piper, whisper.cpp, go-bert and go-tiny-dream and submodules
+_EXTERNAL_SOURCES="${_EXTERNAL_SOURCES:-backend/cpp/llama/llama.cpp sources/go-piper sources/whisper.cpp sources/go-bert sources/go-tiny-dream}"
+
 if test -n "$(echo "$_GO_TAGS" | grep -o "tts")"; then
   _OPTIONAL_BACKENDS="backend-assets/grpc/piper $_OPTIONAL_BACKENDS"
 fi
@@ -21,14 +26,12 @@ if test -n "$(echo "$_GO_TAGS" | grep -o "tinydream")"; then
   _OPTIONAL_BACKENDS="backend-assets/grpc/tinydream $_OPTIONAL_BACKENDS"
 fi
 # list of backends to be build
-_GRPC_BACKENDS="backend-assets/grpc/llama-cpp backend-assets/grpc/whisper $_OPTIONAL_BACKENDS backend-assets/grpc/bert-embeddings"
-# optional args for main Makefile calling
-_OPTIONAL_MAKE_ARGS="$_OPTIONAL_MAKE_ARGS"
+_GRPC_BACKENDS="$_OPTIONAL_BACKENDS backend-assets/grpc/llama-cpp backend-assets/grpc/whisper backend-assets/grpc/bert-embeddings"
 _pkgname="localai"
 
 pkgbase="${_pkgname}-git"
-pkgname=("${pkgbase}")
-pkgver=v2.9.0.7.gbc5f5aa
+pkgname=()
+pkgver=v2.9.0.43.g595a73fc
 pkgrel=1
 pkgdesc="Self-hosted OpenAI API alternative - Open Source, community-driven and local-first."
 url="https://github.com/mudler/LocalAI"
@@ -52,9 +55,17 @@ makedepends=(
 )
 
 if test "$(echo "$_GO_TAGS" | grep -o "tts")" = "tts"; then
-  makedepends+=(
+  depends+=(
     'onnxruntime'
   )
+  makedepends+=(
+    'onnxruntime'
+    'libucd-git'
+  )
+fi
+
+if [[ $_ENABLE_CPU = 1 ]]; then
+  pkgname+=("${pkgbase}")
 fi
 
 if [[ $_ENABLE_CUDA = 1 ]]; then
@@ -93,12 +104,17 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_pkgname}"
 
-  if test -n "$_OPTIONAL_MAKE_ARGS"; then
-    echo "_OPTIONAL_MAKE_ARGS=$_OPTIONAL_MAKE_ARGS"
-  fi
+  # display config
+  echo "_ENABLE_CPU=$_ENABLE_CPU"
+  echo "_ENABLE_CUDA=$_ENABLE_CUDA"
+  echo "_ENABLE_ROCM=$_ENABLE_ROCM"
+  echo "_GO_TAGS=$_GO_TAGS"
+  echo "_OPTIONAL_MAKE_ARGS=$_OPTIONAL_MAKE_ARGS"
+  echo "_EXTERNAL_SOURCES=$_EXTERNAL_SOURCES"
+  echo "_OPTIONAL_BACKENDS=$OPTIONAL_BACKENDS"
+  echo "_GRPC_BACKENDS=$_GRPC_BACKENDS"
 
   # modify get-sources
-  _EXTERNAL_SOURCES="backend/cpp/llama/llama.cpp sources/go-piper sources/whisper.cpp sources/go-bert sources/go-tiny-dream"
   sed -ri "s#get-sources: .*#get-sources: $_EXTERNAL_SOURCES#g" Makefile
 
   # remove go mod edits for inactive backend sources
@@ -114,6 +130,11 @@ prepare() {
   mkdir -p "sources"
   make $_OPTIONAL_MAKE_ARGS $_EXTERNAL_SOURCES
 
+  # fix piper build
+  mkdir -p "sources/go-piper/piper-phonemize/pi/lib"
+  touch "sources/go-piper/piper-phonemize/pi/lib/keep"
+  sed -ri 's#(\$\(MAKE\) -C sources/go-piper libpiper_binding.a) example/main#\1#g' Makefile
+
   # # fix stablediffusion
   # sed -ri "s/^(#include <ncnn\/)(benchmark|net)(\.h>)/\1src\/\2\3/g" \
   #   sources/go-stable-diffusion/stablediffusion.hpp
@@ -125,7 +146,7 @@ prepare() {
     cp -r "${_pkgname}" "$n"
   done
 
-  # ROCM workarounds
+  # ROCM fixes
   cd "${srcdir}/${_pkgname}-rocm"
   # fix build error on ROCM by removing unsupported cf-protection from CMAKE_CXX_FLAGS
   sed -i '1s/^/string(REPLACE "-fcf-protection" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")\n/' \
@@ -145,7 +166,7 @@ _build() {
 }
 
 build() {
-  if test "$_SKIP_CPU" != "1"; then
+  if [[ $_ENABLE_CPU = 1 ]]; then
     cd "${srcdir}/${_pkgname}-cpu"
     _build openblas
   fi
@@ -173,10 +194,8 @@ _package_install() {
 }
 
 package_localai-git() {
-  if test "$_SKIP_CPU" != "1"; then
-    cd "${srcdir}/${_pkgname}-cpu"
-    _package_install
-  fi
+  cd "${srcdir}/${_pkgname}-cpu"
+  _package_install
 }
 
 package_localai-git-cuda() {
