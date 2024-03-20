@@ -1,7 +1,7 @@
 # Maintainer:  Dominik Kummer <admin@arkades.org>
 
 pkgname=kraft-git
-pkgver=0.80beta8.r347.g33edf37
+pkgver=0.80beta8.r575.gc57f87e
 pkgrel=1
 pkgdesc="A program suitable for all trades or crafts (git)"
 arch=('i686' 'x86_64')
@@ -10,10 +10,12 @@ license=('GPL')
 depends=('akonadi-contacts' 'ctemplate' 'python-reportlab' 'python-pypdf2')
 conflicts=('kraft')
 optdepends=("python-weasyprint: alternative PDF generator")
-makedepends=('cmake' 'extra-cmake-modules' 'asciidoctor' 'po4a')
+makedepends=('cmake' 'extra-cmake-modules' 'po4a')
 source=(
-  "${pkgname}::git://github.com/dragotin/kraft.git"
+  "${pkgname}::git+https://github.com/dragotin/kraft.git"
 )
+sha256sums=('SKIP')
+
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -21,35 +23,14 @@ pkgver() {
 }
 
 
-prepare() {
-  cd "${srcdir}/${pkgname}"
-
-  for s in "${source[@]}"
-  do
-          case "$s" in
-                  (*.patch)
-                          patch -p1 < "${srcdir}/${s}"
-          esac
-  done
-
-  rm -rf build
-  mkdir -p build
-  cd build
-}
-
 build() {
-  cd "${srcdir}/${pkgname}/build"
   export PATH="/usr/bin/vendor_perl/:$PATH"
-  cmake ".." \
-    -Wno-dev \
-    -DCMAKE_BUILD_TYPE=Release \
+  cmake -B $pkgname/build -S $pkgname \
+    -DCMAKE_BUILD_TYPE=Debug \
     -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  cmake --build $pkgname/build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/build"
-  make "DESTDIR=${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install $pkgname/build
 }
-
-sha256sums=('SKIP')
