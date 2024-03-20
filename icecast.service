@@ -1,0 +1,43 @@
+[Unit]
+Description=Icecast Network Audio Streaming Server
+After=network.target
+
+[Service]
+CapabilityBoundingSet=~CAP_SETUID CAP_SETGID CAP_SETPCAP CAP_SYS_ADMIN CAP_SYS_PTRACE CAP_KILL CAP_SYS_BOOT CAP_LINUX_IMMUTABLE CAP_CHOWN CAP_FSETID CAP_SETFCAP CAP_FOWNER CAP_IPC_OWNER CAP_NET_ADMIN CAP_IPC_LOCK CAP_SYS_CHROOT CAP_BLOCK_SUSPEND CAP_LEASE CAP_SYS_PACCT CAP_SYS_TTY_CONFIG CAP_WAKE_ALARM CAP_SYS_NICE CAP_SYS_RESOURCE CAP_DAC_OVERRIDE CAP_DAC_READ_SEARCH CAP_AUDIT_CONTROL CAP_AUDIT_READ CAP_AUDIT_WRITE CAP_MAC_ADMIN CAP_MAC_OVERRIDE CAP_NET_BIND_SERVICE CAP_NET_BROADCAST CAP_NET_RAW
+ExecStart=/usr/bin/icecast -c /etc/icecast.xml
+ExecReload=/usr/bin/kill -HUP $MAINPID
+Group=icecast
+IPAccounting=yes
+LogsDirectory=icecast
+LockPersonality=true
+MemoryDenyWriteExecute=true
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateTmp=true
+PrivateUsers=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectSystem=strict
+ReadOnlyPaths=/etc/icecast.xml
+RemoveIPC=true
+RestrictAddressFamilies=~AF_AX25 AF_IPX AF_APPLETALK AF_X25 AF_DECnet AF_KEY AF_NETLINK AF_PACKET AF_RDS AF_PPPOX AF_LLC AF_IB AF_MPLS AF_CAN AF_TIPC AF_BLUETOOTH AF_ALG AF_VSOCK AF_KCM AF_XDP AF_UNIX
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RuntimeDirectory=icecast
+StateDirectory=icecast
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@resources @privileged
+Type=exec
+UMask=177
+User=icecast
+
+[Install]
+WantedBy=multi-user.target
