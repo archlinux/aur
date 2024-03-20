@@ -1,7 +1,7 @@
 pkgbase = binjr-bin
 	pkgdesc = Time Series Data Browser
 	pkgver = 3.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://binjr.eu/
 	arch = x86_64
 	license = Apache
