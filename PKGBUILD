@@ -11,7 +11,7 @@ arch=('x86_64')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname-$pkgver.tar.xz::$url/releases/download/v$pkgver/switcheroo-nx-x86_64-unknown-linux-gnu.tar.xz"
-        "io.ebudd.Switcheroo.png::$url/raw/v$pkgver/extra/logo/io.ebudd.Switcheroo.png"
+        "$url/raw/v$pkgver/extra/logo/io.ebudd.Switcheroo.png"
         "$url/raw/v$pkgver/extra/linux/io.ebudd.Switcheroo.desktop")
 sha256sums=('6dbff5244be3972615a3815dca0d7d25918b220c9d06d1c40ced87eedb8cc46b'
             'd858691ed334bf34ee84e4d8e8499b62898ad3c90422e6bf12ef60d254ea9c82'
