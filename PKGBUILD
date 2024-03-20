@@ -1,35 +1,33 @@
-# Maintainer: Robert Greener <me@r0bert.dev>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Robert Greener <me@r0bert.dev>
 
-_cranname=pkgKitten
-_cranver=0.2.2
-pkgname=r-pkgkitten
-pkgver=${_cranver//[:-]/.}
+_pkgname=pkgKitten
+_pkgver=0.2.3
+pkgname=r-${_pkgname,,}
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc="Provides a function kitten() which creates cute little packages which pass R package checks"
+pkgdesc="Create Simple Packages Which Do not Upset R Package Checks"
 arch=(any)
-url="https://cran.r-project.org/package=${_cranname}"
-license=(GPL)
-depends=(r)
-checkdepends=(r-tinytest)
-optdepends=(
-	"r-whoami>=1.1.0"
-	"r-roxygen2"
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
+depends=(
+  r
 )
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha512sums=("8514aa96981c9ef7e014b973971c992d59b0f598003eb61431196fd69b617e4f0cc11842ac2bb723e6156663940be9fc517b6f45c492337e77138a0ae8726d99")
+optdepends=(
+  r-roxygen2
+  r-tinytest
+  r-whoami
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('7b58fad3ab4be2ad5ca3853c34c29f8b')
+b2sums=('510f33455c03b3292142f7454f673740e914357e3f6cc23cad829c7f4555a363adf1cae276803390a6903381a3d64ff04803b7e7a49ec3629d6f5bc93b46814f')
 
 build() {
-	mkdir -p build
-	R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build"
-}
-
-check() {
-	cd "${_cranname}/tests"
-	R_LIBS="${srcdir}/build" NOT_CRAN=true Rscript --vanilla simpleTest.R
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-
-  cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }

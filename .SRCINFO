@@ -1,15 +1,16 @@
 pkgbase = r-pkgkitten
-	pkgdesc = Provides a function kitten() which creates cute little packages which pass R package checks
-	pkgver = 0.2.2
+	pkgdesc = Create Simple Packages Which Do not Upset R Package Checks
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=pkgKitten
 	arch = any
-	license = GPL
-	checkdepends = r-tinytest
+	license = GPL-2.0-or-later
 	depends = r
-	optdepends = r-whoami>=1.1.0
 	optdepends = r-roxygen2
-	source = https://cran.r-project.org/src/contrib/pkgKitten_0.2.2.tar.gz
-	sha512sums = 8514aa96981c9ef7e014b973971c992d59b0f598003eb61431196fd69b617e4f0cc11842ac2bb723e6156663940be9fc517b6f45c492337e77138a0ae8726d99
+	optdepends = r-tinytest
+	optdepends = r-whoami
+	source = https://cran.r-project.org/src/contrib/pkgKitten_0.2.3.tar.gz
+	md5sums = 7b58fad3ab4be2ad5ca3853c34c29f8b
+	b2sums = 510f33455c03b3292142f7454f673740e914357e3f6cc23cad829c7f4555a363adf1cae276803390a6903381a3d64ff04803b7e7a49ec3629d6f5bc93b46814f
 
 pkgname = r-pkgkitten
