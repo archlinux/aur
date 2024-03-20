@@ -1,17 +1,16 @@
 pkgbase = fotograph-bin
 	pkgdesc = A cross platform image manipulation desktop application
 	pkgver = 0.1.0_alpha
-	pkgrel = 9
+	pkgrel = 10
 	url = https://fotograph.vercel.app/
 	arch = x86_64
 	license = MIT
 	depends = electron23
-	depends = hicolor-icon-theme
 	provides = fotograph=0.1.0_alpha
 	conflicts = fotograph
 	source = fotograph-0.1.0_alpha.deb::https://github.com/Adedoyin-Emmanuel/FotoGraph/releases/download/v0.1.0-alpha/Fotograph_1.0.0_amd64.deb
 	source = fotograph.sh
 	sha256sums = 6c92bb3b3e160abf34bbd8a73e844792a679558ec37ab38a6dad9919e211278f
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = fotograph-bin
