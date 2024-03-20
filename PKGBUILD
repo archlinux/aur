@@ -12,9 +12,13 @@ depends=(
   glibc
   jq
 )
-makedepends=(cargo)
+makedepends=(
+  cargo
+  clang
+)
+options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('579291e0eab5afe46ef360f989996a2e8a96746e09f4958497b71c9be1b4fd33')
+sha256sums=('40fdb9de56d7ad55f7f3c52440ba7920f9aaffec07d59881b04e87a6facc5d28')
 
 _archive="$pkgname-$pkgver"
 
@@ -22,6 +26,7 @@ prepare() {
   cd "$_archive"
 
   export RUSTUP_TOOLCHAIN=stable
+  cargo update
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
