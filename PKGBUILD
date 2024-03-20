@@ -57,17 +57,14 @@ makedepends+=(
   glibc
   binutils
   git
+  # LLVM/CLANG build
+  clang
+  llvm
+  llvm-libs
+  lld
+  clang
+  python
 )
-if [[ "$_compiler" = "2" ]]; then
-  makedepends+=(
-    clang
-    llvm
-    llvm-libs
-    lld
-    clang
-    python
-  )
-fi
 options=(
   !debug
   !strip
