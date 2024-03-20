@@ -3,7 +3,7 @@
 pkgname='liteloader-qqnt-chii-devtools-bin'
 _pkgname='chii-devtools'
 pkgver='1.0.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="LiteLoaderQQNT插件，使用Chii进行远程调试"
 arch=('any')
 url="https://github.com/mo-jinran/${_pkgname}"
