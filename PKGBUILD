@@ -3,7 +3,7 @@
 
 pkgname=manifest-tool-bin
 pkgver=2.1.6
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Container image manifest tool for manifest list object creation/query'
 arch=('x86_64')
