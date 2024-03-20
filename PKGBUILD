@@ -1,7 +1,7 @@
 # Maintainer: Ariel Abreu <facekapow@outlook.com>
 
 pkgname='gitify-bin'
-pkgver='4.6.1'
+pkgver='5.0.0'
 pkgrel=1
 pkgdesc='GitHub notifications on your menu bar'
 arch=('x86_64')
@@ -9,11 +9,11 @@ url='https://www.gitify.io/'
 license=('MIT')
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'libutil-linux' 'libappindicator-gtk3' 'libsecret')
 source=(
-	"$pkgname-$pkgver.deb::https://github.com/manosim/gitify/releases/download/v$pkgver/gitify_${pkgver}_amd64.deb"
-	"LICENSE::https://raw.githubusercontent.com/manosim/gitify/v$pkgver/LICENSE"
+	"$pkgname-$pkgver.deb::https://github.com/gitify-app/gitify/releases/download/v$pkgver/gitify_${pkgver}_amd64.deb"
+	"LICENSE::https://raw.githubusercontent.com/gitify-app/gitify/v$pkgver/LICENSE"
 )
 sha256sums=(
-	'390865eb4aac9002f114434842b4b011fb9ae38c6288b9c71b6fa59574e62926'
+	'cd5ff8ed362d51c47a5cd3fca44ed5074575c2830771b1d1f65b6a9f8a1db72d'
 	'SKIP'
 )
 noextract=("$pkgname-$pkgver.deb")
@@ -23,6 +23,8 @@ package() {
 	cd "$pkgdir"
 
 	ar p "$srcdir/$pkgname-$pkgver.deb" data.tar.xz | tar xJ
+
+	chmod u+s "${pkgdir}/opt/Gitify/chrome-sandbox"
 
 	install -d -m755 "${pkgdir}/usr/bin"
 	ln -s /opt/Gitify/gitify "${pkgdir}/usr/bin"
