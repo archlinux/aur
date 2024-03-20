@@ -1,0 +1,5 @@
+[python-felupe]
+source = "github"
+github = "adtzlr/felupe"
+use_latest_release = "true"
+prefix = "v"
