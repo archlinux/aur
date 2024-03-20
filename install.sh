@@ -11,7 +11,8 @@ mv wayscreen/* download-wayscreen/
 
 # Создать виртуальное окружение
 python3 -m venv src/download-wayscreen
-source download-wayscreen/bin/activate
+source src/download-wayscreen/bin/activate
+
 
 # Установить зависимости
 pip install pyinstaller pyscreenshot pillow
