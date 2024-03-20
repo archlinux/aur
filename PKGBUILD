@@ -1,25 +1,36 @@
 pkgname=website-stalker
 pkgver=0.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Track changes on websites via git"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/EdJoPaTo/${pkgname}"
-license=('LGPL2.1')
-depends=('gcc-libs' 'zlib')
+license=('LGPL-2.1-or-later')
+depends=('gcc-libs')
 optdepends=('git: git commit support')
 makedepends=('cargo')
 provides=("${pkgname}")
+options=('!lto')
 
-source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('f6c831264673df27157f76d33162055bd150212cbcb99ad13a8a1c85e9533186')
 
+prepare() {
+	cd "$pkgname-$pkgver"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
-	cd $pkgname-$pkgver
-	RUSTUP_TOOLCHAIN=stable cargo build --release --locked --all-features
+	cd "$pkgname-$pkgver"
+	cargo build --release --frozen
+}
+
+check() {
+	cd "$pkgname-$pkgver"
+	cargo run --release --frozen -- --help
 }
 
 package() {
-	cd $pkgname-$pkgver
+	cd "$pkgname-$pkgver"
 	install -Dm755 target/release/$pkgname -t "${pkgdir}/usr/bin/"
 	install -Dm644 CHANGELOG.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
