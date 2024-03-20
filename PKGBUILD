@@ -7,6 +7,12 @@
 #   'n' - disable all patches
 #   'y' - apply all patches
 #
+# Apply user patches from `~/.config/clangd`. patches must have extension `*.patch`
+# NOTE: This variable ignores the `CLANGD_DEFAULT_PATCH_STATE` variable
+# CLANGD_USER_PATCHES:
+#   'n' - disable all patches
+#   'y' - apply all patches (default)
+#
 # Show Doxygen comments in hover (D134130)
 # CLANGD_DOXYGEN:
 #   'n' - do not apply this patch
@@ -103,6 +109,7 @@
 
 
 : ${CLANGD_DEFAULT_PATCH_STATE:=n}
+: ${CLANGD_USER_PATCHES:=y}
 : ${CLANGD_DOXYGEN:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_RESOLVEFWDPARAMS:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_CODELENS:=$CLANGD_DEFAULT_PATCH_STATE}
@@ -123,8 +130,8 @@
 : ${CLANGD_PREPROCESSOR_FOLDING:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt-git
-pkgver=19.r5440.g65284be2992f
-pkgrel=2
+pkgver=19.r6018.gde0abc0983d3
+pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
 url="https://llvm.org/"
@@ -260,6 +267,25 @@ prepare() {
     # Config patches
     if [ "$CLANGD_CONFIG_INCLUDE_STYLE" != "n" ]; then
         apply_patch config-include-style
+    fi
+
+
+    # User patches
+    if [ "$CLANGD_USER_PATCHES" != "n" ]; then
+        config_path=${XDG_CONFIG_HOME:-"$HOME/.config"}/clangd
+        if [[ -d "$config_path" ]]; then
+            echo -e "\e[1;32mSearch user pathces in \e[1;37m'${config_path}'\033[0m"
+            patches=$(ls -1 "$config_path"/*.patch 2>/dev/null||true)
+
+            if [[ -n $patches ]]; then
+                for patch in ${patches[@]}; do
+                    echo -e "\033[0;34m  -> \033[1;37mApplying user patch: $(basename ${patch%.patch})\033[0m"
+                    patch -p1 -i "$patch"
+                done
+            else
+                echo -e "\e[1;33mUser patches not found!\033[0m"
+            fi
+        fi
     fi
 }
 
