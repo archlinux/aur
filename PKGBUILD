@@ -3,7 +3,7 @@
 
 pkgname=python-github-backup
 _pkgname=github-backup
-pkgver=0.45.0
+pkgver=0.45.1
 pkgrel=1
 pkgdesc="Backup a github user or organization."
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(python-setuptools)
 provides=("$pkgname" "$_pkgname")
 conflicts=("$pkgname" "$_pkgname")
 source=("https://files.pythonhosted.org/packages/source/g/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('f349d4e10860e1c2b1565170a724996e04ece5c4c7e47267f37ea88a65e9c6480b86bf9d72692659c4184f77385e4950a9c6071a466ac5b947c076dbad97b4cd')
+sha512sums=('68d54c815159a50ec32c052176a9bcd47ced9f12b5f230b810c0fb8b526fbf2f3e2e1874d0bf64a61721b3030cbbb0838acf5f4d57d007f97e3d1aa0300a7165')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
