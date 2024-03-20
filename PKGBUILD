@@ -2,8 +2,8 @@
 
 pkgname=gnome-shell-extension-extensions-sync-git
 pkgver=19.r0.gc7f53be
-pkgrel=1
-pkgdesc="Sync all extensions and their configurations across all gnome instances"
+pkgrel=2
+pkgdesc="Sync all extensions and their configurations across all gnome instances (gnome-shell<=44)"
 arch=('any')
 url="https://github.com/oae/gnome-shell-extensions-sync"
 license=('GPL3')
