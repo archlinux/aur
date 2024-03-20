@@ -7,7 +7,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=psmisc-selinux
-pkgver=23.6
+pkgver=23.7
 pkgrel=1
 pkgdesc='Miscellaneous procfs tools with SELinux support'
 arch=('x86_64' 'aarch64')
@@ -15,16 +15,22 @@ url='https://gitlab.com/psmisc/psmisc'
 license=('GPL')
 groups=('selinux')
 depends=('ncurses' 'libselinux')
+makedepends=('git' 'po4a')
 conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 validpgpkeys=('5D2FB320B825D93904D205193938F96BDF50FEA5') # Craig Small <csmall@debian.org>
-source=("https://downloads.sourceforge.net/psmisc/${pkgname/-selinux}-${pkgver}.tar.xz"{,.asc})
-sha256sums=('257dde06159a4c49223d06f1cccbeb68933a4514fc8f1d77c64b54f0d108822a'
-            'SKIP')
+source=("git+https://gitlab.com/psmisc/psmisc.git#tag=v${pkgver}?signed")
+sha256sums=('80ae6e626ba83232b7af1c02f3f528834ebdd96325367b701f69125d3e196f2f')
+
+prepare() {
+  cd ${pkgname/-selinux}
+
+  ./autogen.sh
+}
 
 build() {
-  cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
+  cd ${pkgname/-selinux}
 
   ./configure \
     --prefix=/usr \
@@ -33,7 +39,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
+  cd ${pkgname/-selinux}
 
   make DESTDIR="${pkgdir}" install
 }
