@@ -1,0 +1,6 @@
+pkg/
+src/
+*.sign
+*.last
+*.xz
+*.zst
