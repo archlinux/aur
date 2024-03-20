@@ -1,6 +1,6 @@
 pkgbase = elos
 	pkgdesc = An event logging system
-	pkgver = 0.54.3
+	pkgver = 0.55.6
 	pkgrel = 1
 	url = https://github.com/Elektrobit/elos
 	install = elos.install
@@ -15,7 +15,7 @@ pkgbase = elos
 	depends = sqlite
 	depends = json-c
 	backup = etc/elos/elosd.json
-	source = elos-0.54.3.tar.gz::https://github.com/Elektrobit/elos/archive/refs/tags/elos-0.54.3.tar.gz
-	md5sums = fd31a0a931c746d960f1432e32a104e2
+	source = elos-0.55.6.tar.gz::https://github.com/Elektrobit/elos/archive/refs/tags/elos-0.55.6.tar.gz
+	md5sums = 6025ae34a32ec9e08e6004a65e4f2649
 
 pkgname = elos

@@ -1,7 +1,7 @@
 # Maintainer: Wolfgang Gehrhardt <gehwolf at freenet dot de>
 
 pkgname=elos
-pkgver=0.54.3
+pkgver=0.55.6
 pkgrel=1
 pkgdesc="An event logging system"
 arch=('x86_64')
@@ -65,4 +65,4 @@ package() {
   _editConfig '.root.elos.Scanner.SyslogScanner.SyslogPath = "/run/elos/dev-log"'
 
 }
-md5sums=('fd31a0a931c746d960f1432e32a104e2')
+md5sums=('6025ae34a32ec9e08e6004a65e4f2649')
