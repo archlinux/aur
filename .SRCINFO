@@ -1,41 +1,49 @@
 pkgbase = python-torchvision-rocm
 	pkgdesc = Datasets, transforms, and models specific to computer vision (with ROCM support)
-	pkgver = 0.16.2
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://github.com/pytorch/vision
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = rocm-hip-sdk
 	makedepends = python-setuptools
 	makedepends = qt6-base
 	makedepends = miopen-hip
+	depends = numactl
 	depends = python-numpy
 	depends = python-pillow
 	depends = python-requests
 	depends = python-scipy
-	depends = python-typing_extensions
+	depends = python-sympy
 	depends = python-pytorch-rocm
 	depends = ffmpeg
 	depends = libjpeg-turbo
 	depends = libpng
-	conflicts = python-pytorch<2.1.2
-	source = vision-0.16.2.tar.gz::https://github.com/pytorch/vision/archive/v0.16.2.tar.gz
+	conflicts = python-pytorch<2.2.0
+	conflicts = rocm-hip-sdk<6.0.0
+	source = vision-0.17.1.tar.gz::https://github.com/pytorch/vision/archive/v0.17.1.tar.gz
 	source = pytorch-vision-8096.patch
-	sha256sums = 8c1f2951e98d8ada6e5a468f179af4be9f56d2ebc3ab057af873da61669806d7
+	source = pytorch-vision-8112.patch
+	source = torchvision-0_17_1-fix-build.patch
+	sha256sums = a01c7bce4098c41b62cd3a08d87569113e25d12994b1370f0fd5f531952b6cef
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = torchvision-rocm
 	pkgdesc = Datasets, transforms, and models specific to computer vision (C++ library only, with ROCM support)
 	provides = torchvision
-	provides = torchvision=0.16.2
-	conflicts = python-pytorch<2.1.2
+	provides = torchvision=0.17.1
+	conflicts = python-pytorch<2.2.0
+	conflicts = rocm-hip-sdk<6.0.0
 	conflicts = torchvision
 
 pkgname = python-torchvision-rocm
 	pkgdesc = Datasets, transforms, and models specific to computer vision (with ROCM support)
 	provides = python-torchvision
-	provides = python-torchvision=0.16.2
-	conflicts = python-pytorch<2.1.2
+	provides = python-torchvision=0.17.1
+	conflicts = python-pytorch<2.2.0
+	conflicts = rocm-hip-sdk<6.0.0
 	conflicts = python-torchvision
