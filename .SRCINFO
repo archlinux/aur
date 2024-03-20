@@ -1,11 +1,11 @@
 pkgbase = libsphinx
 	pkgdesc = Sphinx-based Password Storage low-level library
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stef/libsphinx
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	depends = libsodium
 	source = libsphinx-1.1.1.tar.gz::https://github.com/stef/libsphinx/archive/refs/tags/v1.1.1.tar.gz
 	md5sums = 443476899a9a1d1377a9b99598a7bedd
