@@ -1,21 +1,23 @@
+# Maintainer: khing <bong.kook.khan@gmail.com>
+
 pkgname=hyprdots-ctl-git
-pkgver=r195.439e501
-pkgrel=2
+pkgver=v0.5.0.r5.c40008a
+pkgrel=1
 pkgdesc="CLI for Hyprdots Configurations ++ Hidden Gems"
-arch=('x86_64')
-url="https://github.com/kRHYME7/Hyprdots-ctl"
-license=('GPL3')
+arch=('any')
+url="git+https://github.com/kRHYME7/Hyprdots-ctl"
+license=('GPL')
 depends=( 'fzf' 'tree' 'ttf-jetbrains-mono-nerd' )
-makedepends=('git' 'make' 'curl' 'base-devel')
+provides=("${pkgname}")
 conflicts=("hyprdots-ctl")
-source=("git+https://github.com/kRHYME7/Hyprdots-ctl.git")
-md5sums=('SKIP')
+replaces=("hyprdots-ctl")
+source=("git+https://github.com/kRHYME7/Hyprdots-ctl#branch=master")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/Hyprdots-ctl" || return
-    git fetch --all 
-    local version=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
-    echo "${version}"
+    cd "${srcdir}/Hyprdots-ctl" || exit 1
+    printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"    
+	# printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
