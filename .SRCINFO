@@ -13,6 +13,3 @@ pkgname = otf-outfit
 
 pkgname = ttf-outfit
 	provides = outfit-font
-
-pkgname = ttf-outfit-variable
-	provides = outfit-font-variable
