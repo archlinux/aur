@@ -3,7 +3,7 @@
 _pkgname=pipework
 pkgname=${_pkgname}-git
 _pkgver=0.1
-pkgver=0.1.123.0e149b2
+pkgver=0.1.210.12998f3
 pkgrel=1
 pkgdesc="Software-Defined Networking for Linux Containers"
 arch=('i686' 'x86_64')
@@ -11,6 +11,7 @@ license=('apache')
 url='https://github.com/jpetazzo/pipework.git'
 
 depends=('bash' 'iproute2')
+makedepends=('git')
 
 source=("${_pkgname}::git+https://github.com/jpetazzo/pipework.git#branch=master")
 md5sums=("SKIP")
