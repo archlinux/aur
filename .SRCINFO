@@ -9,6 +9,7 @@ pkgbase = konqueror-git
 	license = LGPL-2.0-or-later
 	makedepends = gcc-libs
 	makedepends = glibc
+	makedepends = git
 	makedepends = karchive
 	makedepends = kbookmarks
 	makedepends = kcmutils
