@@ -3,12 +3,12 @@
 # Author: LostRuins (concedo)
 pkgname=koboldcpp-cuda
 pkgver=1.61.2
-pkgrel=3
+pkgrel=4
 pkgdesc="KoboldCpp is an easy-to-use AI text-generation software for GGML and GGUF models (with CUDA)"
 arch=('x86_64')
 url="https://github.com/LostRuins/koboldcpp"
 license=('AGPL3')
-depends=('python' 'cblas' 'openblas' 'clblast' 'cuda')
+depends=('python' 'cblas' 'openblas' 'clblast' 'vulkan-icd-loader' 'cuda')
 optdepends=(
   'customtkinter: for GUI launcher'
 )
