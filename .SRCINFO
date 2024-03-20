@@ -21,7 +21,7 @@ pkgbase = openvpn-mbedtls
 	optdepends = pam: authenticate via PAM
 	provides = openvpn=2.6.10
 	conflicts = openvpn
-	source = git+https://github.com/OpenVPN/openvpn.git#tag=2.6.10?signed
+	source = git+https://github.com/OpenVPN/openvpn.git#tag=v2.6.10?signed
 	source = 0001-unprivileged.patch
 	source = sysusers.conf
 	source = tmpfiles.conf

@@ -19,7 +19,7 @@ validpgpkeys=('F554A3687412CFFEBDEFE0A312F5F7B42F2B01E7'  # OpenVPN - Security M
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
 license=('custom')
-source=("git+https://github.com/OpenVPN/openvpn.git#tag=${pkgver}?signed"
+source=("git+https://github.com/OpenVPN/openvpn.git#tag=v${pkgver}?signed"
         '0001-unprivileged.patch'
         'sysusers.conf'
         'tmpfiles.conf')
