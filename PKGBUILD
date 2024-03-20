@@ -1,4 +1,4 @@
-# Maintainer: Giorgio Gilestro <giorgio at gilest.ro>
+# Creator and maintainer: Giorgio Gilestro <giorgio at gilest.ro>
 
 pkgname=ethoscope-device
 pkgver=r1702.g1c43fc3
