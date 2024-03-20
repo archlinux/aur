@@ -1,0 +1,5 @@
+[python-etils]
+source = "github"
+github = "google/etils"
+use_latest_release = "true"
+prefix = "v"
