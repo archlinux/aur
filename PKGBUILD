@@ -1,9 +1,9 @@
-# Maintainer: Mark Collins < tera_1225 hat hotmail dote com>
+# Maintainer: Mark Collins < tera_1225 ꜹt hotmail Ƌot com>
 # Contributor: Frédéric Tobias Christ <dev+mautrix-signal@ntr.li> <ftchrist:matrix.org>
 pkgname='mautrix-signal'
 _name='signal'
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Matrix-Signal puppeting bridge (go rewrite)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/mautrix/signal"
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=(
   'go'
-  'libsignal-ffi' # AUR
+  'libsignal-ffi<0.42.0' # AUR
 )
 backup=(
   "etc/${pkgname}/config.yaml"
