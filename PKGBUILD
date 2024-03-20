@@ -1,4 +1,5 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Echo J. <aidas957 at gmail dot com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Andrew Eikum
 
 pkgname=faudio
@@ -7,7 +8,7 @@ pkgrel=1
 pkgdesc="XAudio2 reimplementation"
 arch=(x86_64)
 url="https://github.com/FNA-XNA/FAudio/"
-license=('custom:zlib')
+license=('Zlib')
 depends=('sdl2' 'gst-libav')
 makedepends=('cmake')
 source=(https://github.com/FNA-XNA/FAudio/archive/$pkgver/$pkgname-$pkgver.tar.gz)
