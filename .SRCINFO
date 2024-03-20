@@ -10,5 +10,6 @@ pkgbase = wayscreen
 	depends = python-pillow
 	depends = python-pip
 	source = git+https://github.com/yarchefis/wayscreen.git
+	sha256sums = SKIP
 
 pkgname = wayscreen

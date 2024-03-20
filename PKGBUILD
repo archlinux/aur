@@ -9,6 +9,7 @@ depends=('python' 'tk' 'python-pillow' 'python-pip')
 makedepends=('git')
 
 source=("git+https://github.com/yarchefis/wayscreen.git")
+sha256sums=('SKIP')
 
 package() {
     cd "$srcdir/wayscreen" || return 1
