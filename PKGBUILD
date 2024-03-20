@@ -7,7 +7,7 @@
 
 pkgname=stm32cubeprog
 _pkgname="STM32CubeProgrammer"
-pkgver=2.15.0
+pkgver=2.16.0
 _pkg_file_name=en.stm32cubeprg-lin-v${pkgver//./-}.zip
 pkgrel=1
 pkgdesc="An all-in-one multi-OS software tool for programming STM32 products."
@@ -27,11 +27,12 @@ license=('custom:SLA0048')
 # stlink provides stlink udev rules
 depends=('stlink'
          'libusb')
-makedepends=('xdotool'
-             'xorg-server-xvfb'
-             'icoutils'
+makedepends=('icoutils'
              'fontconfig'
-             'gsfonts')
+             'gsfonts'
+             'p7zip'
+             'jdk8-openjdk'
+             'izpack')
 provides=("${pkgname}rammer")
 options=('!strip')
 
@@ -39,7 +40,7 @@ options=('!strip')
 # cURL inspiration from davinci-resolve package maintained by "Alex S".
 _curl_useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
                         AppleWebKit/537.36 (KHTML, like Gecko) \
-                        Chrome/120.0.0.0 \
+                        Chrome/77.0.3865.75 \
                         Safari/537.36"
 _curl_useragent="$(printf '%s' "$_curl_useragent" | sed 's/[[:space:]]\+/ /g')"
 _useragent_escaped="${_curl_useragent// /\\ }"
@@ -56,33 +57,24 @@ DLAGENTS=("https::/usr/bin/curl \
 
 _pkg_main_name="${pkgname//prog/prg}-lin-v${pkgver//./-}"
 source=("en.${_pkg_main_name}.zip::$_download_path"
-        "${pkgname}.xdotool")
-sha256sums=('3fe61e6920943e6faa9089f7326a3bab71665e0dae0475f831a8b5a0f58b7d22'
-            'd3063a13de066cdd4e1a26f73f258584f264a924e8a8e47c40d284e4c47c0b8c')
+        "AnalyticsPanelsConsoleHelper.java")
+sha256sums=('b462f66130028b281b069aae8963bd67d9bea43c9c48ce313ce4d1950cc5e547'
+            '12f3f8a3301d6f50c00195f9c852e25f8d841246768bf3bbfd4e91fd2052ce6e')
 
 prepare() {
-  cat > ${pkgname}.xvfb <<END
-#!/usr/bin/sh
-
-echo ' '
-echo 'please wait for minutes ......'
-echo ' '
-
-./SetupSTM32CubeProgrammer-${pkgver}.linux &
-
-# specify $srcdir/build as temporary dir
-xdotool stm32cubeprog.xdotool ${srcdir}/build
-END
-
-  chmod u+x Setup${_pkgname}-${pkgver}.linux ${pkgname}.xvfb
+  chmod u+x Setup${_pkgname}-${pkgver}.linux
+  mkdir -p com/st/CustomPanels
+  javac AnalyticsPanelsConsoleHelper.java
+  cp AnalyticsPanelsConsoleHelper.class com/st/CustomPanels/AnalyticsPanelsConsoleHelper.class
+  7z a Setup${_pkgname}-${pkgver}.exe com/st/CustomPanels/AnalyticsPanelsConsoleHelper.class
 }
 
 build() {
   mkdir -p build
-  # use xvfb-run and xdotool to cheat the Installer
-#   xvfb-run --auto-servernum --server-args="-screen 0, 1920x1080x24" -w 5 ./${pkgname}.xvfb
-  ./${pkgname}.xvfb
 
+  echo "INSTALL_PATH=${srcdir}/build" > install.options
+  ./Setup${_pkgname}-${pkgver}.linux -options-auto install.options
+  
   # convert ico to icon
   mkdir -p icon
   icotool -x ${srcdir}/build/util/Programmer.ico -o icon
