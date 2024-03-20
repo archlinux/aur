@@ -4,13 +4,13 @@ git clone https://github.com/yarchefis/wayscreen
 
 mv wayscreen/* download-wayscreen/
 
-python3 -m venv download-wayscreen
+python3 -m venv src/download-wayscreen
 source download-wayscreen/bin/activate
 
 
 pip install pyinstaller pyscreenshot pillow
 PYINSTALLER_PATH=$(which pyinstaller)
-cd download-wayscreen || exit
+cd src/download-wayscreen || exit
 "$PYINSTALLER_PATH" --onefile main.py
 
 cd dist || exit
