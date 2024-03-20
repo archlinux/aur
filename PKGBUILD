@@ -46,7 +46,7 @@ prepare() {
     git submodule init
     git config submodule.src/lib.url "$srcdir/${pkgname%-git}-lib"
     git config submodule.assets/guestAvatars.url "$srcdir/${pkgname%-git}-guests"
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
