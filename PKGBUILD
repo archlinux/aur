@@ -2,7 +2,7 @@
 _pkgname="leopard"
 pkgname="leopard-git"
 pkgver=r1.22ddc78
-pkgrel=1
+pkgrel=2
 pkgdesc="O(N Log N) MDS Reed-Solomon Block Erasure Code for Large Data"
 arch=('i686' 'x86_64')
 url="https://github.com/catid/leopard"
@@ -10,6 +10,7 @@ license=('BSD-3-Clause')
 makedepends=('git' 'cmake')
 source=('git+https://github.com/catid/leopard.git'
 	'install.patch')
+options=(staticlibs)
 sha256sums=('SKIP'
            '0192dae0b2a7d4c26b57ed1780f4c57d4d355c33141a118c675ea334175bc859')
 provides=(leopard)
