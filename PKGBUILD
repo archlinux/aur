@@ -9,23 +9,23 @@ license=('custom:MirOS' 'LGPL3')
 arch=('i686' 'x86_64')
 depends=('kwallet' 'mksh')
 conflicts=('kwalletcli')
-makedepends=('gcc' 'make')
+makedepends=('git' 'gcc' 'make')
 source=("${pkgname}::git+https://github.com/MirBSD/kwalletcli.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$pkgname"
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "$pkgname"
   sed -i -e 's/CPPFLAGS+=	${KDE_INCS} -D_GNU_SOURCE/CPPFLAGS+=	${KDE_INCS} -fPIC -D_GNU_SOURCE/' GNUmakefile
   make KDE_VER=5
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "$pkgname"
   install -d "${pkgdir}"/usr/{bin,share/man/man1}
   for F in kwalletaskpass kwalletcli kwalletcli_getpin pinentry-kwallet; do
     install ${F} "${pkgdir}"/usr/bin/${F}
