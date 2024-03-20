@@ -4,12 +4,12 @@
 # Contributor: Mark Lee <mark at markelee dot com>
 
 pkgname=jupyterhub
-pkgver=4.0.2
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Multi-user server for Jupyter notebooks"
 url="https://jupyter.org/hub"
 arch=(any)
-license=('BSD')
+license=('BSD-3-Clause')
 depends=(
   'ipython' 'nodejs-configurable-http-proxy' 'python-alembic'
   'python-async_generator' 'python-certipy' 'python-entrypoints' 'python-jinja'
@@ -22,7 +22,7 @@ makedepends=(
 )
 checkdepends=(
   'jupyter-notebook' 'python-beautifulsoup4' 'python-pytest'
-  'python-pytest-asyncio' 'python-requests-mock' 'python-playwright'
+  'python-pytest-rerunfailures' 'python-requests-mock' 'python-playwright'
 )
 optdepends=(
   'jupyter-notebook: standard notebook server'
@@ -40,9 +40,9 @@ source=(
   'tests_use_random_ports.patch'
 )
 sha256sums=(
-  'cbc262a0be851803f83f084a8e68435519c171fad2463eb4a379c36aaeb9cfc1'
+  '2afed4c1cbd7c83d72ad1015a7955bb0f49e82cbe6ba896ee198ecb049b08749'
   'f851dac9e098afa1dfcf30169b23414e7384559984eb7090aaf3c4f9c1c84997'
-  '031b504b08c67dfbd6047a31a3cf5555a06cfb04b8c0a637206d548e48845ab1'
+  '32d010f9d7656429e02c62b1c28368a67c3c09c5a932c3ce7df83679613912ee'
 )
 
 prepare() {
@@ -80,8 +80,13 @@ check() {
   )
 
   local skip_tests=(
-    # Needs the package to already be installed.
+    # Needs the package to already be installed to access jupyterhub-singleuser.
     'test_server_token_role'
+
+    # Tries to test errors/warnings, but some of the expected responses are set
+    # to None which pytest fails on.
+    'test_creating_roles'
+    'test_delete_roles'
 
     # Intermittent failures. For now, trust the upstream CI.
     'test_external_service'
@@ -111,7 +116,18 @@ check() {
   done
   testargs+=('-k' "${karg:5}")  # Trim the leading ' and '.
 
+  # Install into a local temporary virtual environment and run the tests there.
+  #
+  # New versions of pytest-asyncio (including the version in the Arch
+  # repositories) have a breaking change not supported by JupyterHub yet. See
+  #   https://github.com/jupyterhub/jupyterhub/pull/4663
+  #   https://github.com/jupyterhub/jupyterhub/pull/4664
+  #   https://github.com/pytest-dev/pytest-asyncio/issues/718
+  # This is only needed for check(), and is installed to a virtual environment
+  # that will not impact any other processes, hence using pip and not creating
+  # an AUR package with an old version and dealing with package conflicts.
   python -m venv --system-site-packages test-env
+  test-env/bin/python -m pip install --no-deps --ignore-installed 'pytest-asyncio>=0.17,<0.23'
   test-env/bin/python -m installer "dist/jupyterhub-$pkgver"-*.whl
   test-env/bin/python -m pytest -v jupyterhub "${testargs[@]}"
 }
@@ -122,6 +138,9 @@ package() {
   # Install the package.
   python -m installer --destdir="$pkgdir" "dist/jupyterhub-$pkgver"-*.whl
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" COPYING.md
+
+  # Remove unit tests from the final package.
+  rm -rf "$pkgdir/"usr/lib/python*/site-packages/jupyterhub/tests
 
   # Remove $srcdir references from npm metadata.
   find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
