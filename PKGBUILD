@@ -3,14 +3,14 @@
 # Contributor: Leo von Klenze <leo.vonklenze@tngtech.com>
 
 pkgname=atlassian-plugin-sdk
-pkgver=8.2.9
+pkgver=8.2.10
 pkgrel=1
 pkgdesc="Atlassian plugin software developer kit"
 arch=('i686' 'x86_64')
 url="https://marketplace.atlassian.com/plugins/atlassian-plugin-sdk-tgz"
 license=('Apache License 2.0')
 source=("https://maven.atlassian.com/public/com/atlassian/amps/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('0e64fc8a2f823342f21b1805ae3ca8b4ed4945990d876a78f49f6835ce09ddbe')
+sha256sums=('9cb3a00ae5a78440ed7ec431c3610178e474e2b0a53b8cea06e12578d075a697')
 depends=('java-environment')
 
 package() {
