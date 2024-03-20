@@ -1,0 +1,10 @@
+--- a/lib/sysfs.c
++++ b/lib/sysfs.c
+@@ -21,6 +21,7 @@
+ #include <fcntl.h>
+ #include <sys/types.h>
+ 
++#include "../../basename-impl.h"
+ #include "internal.h"
+ 
+ static void

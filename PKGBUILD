@@ -5,7 +5,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-pciutils
 pkgver=3.11.1
-pkgrel=2
+pkgrel=4
 arch=('any')
 pkgdesc="PCI bus configuration space access library and tools (Android, ${_android_arch})"
 license=('GPL2')
@@ -15,12 +15,16 @@ depends=("android-${_android_arch}-hwdata"
 makedepends=('android-environment')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://mj.ucw.cz/download/linux/pci/pciutils-${pkgver}.tar.gz"{,.sign}
+        'basename-impl.h'
         '0001-Do-not-use-lresolv.patch'
-        '0002-Disable-ecam.patch')
+        '0002-Disable-ecam.patch'
+        '0003-Define-basename.patch')
 sha256sums=('1904864ce5b0272d0a2e42e72ceac9e8810d1898480567f36b70642f8205fbfd'
             'SKIP'
+            '8d31c8da27c19ff4c358fdb3f47eb34eb5b3f1660009999377c8f93e923a6d4f'
             '14a963d11acb299db114187768bdf53ee1cb39f1044a0a2aa5c5a90ae58e42a3'
-            'bff4d9e509ceba0cdde7a20e83afa5303f27cd93705c54867c6c073fc153aa87')
+            'bff4d9e509ceba0cdde7a20e83afa5303f27cd93705c54867c6c073fc153aa87'
+            '8a55146fb7574ab1b4bda06efea69e0c84043e28ca65882cb106efe79e506754')
 validpgpkeys=('C466A56CADA981F4297D20C31F3D0761D9B65F0B') # Martin Mares <mj@ucw.cz>
 
 prepare() {
@@ -31,6 +35,10 @@ prepare() {
 
     if [ "${ANDROID_MINIMUM_PLATFORM}" -lt 28 ]; then
         patch -Np1 -i ../0002-Disable-ecam.patch
+    fi
+
+    if [ "${ANDROID_MINIMUM_PLATFORM}" -lt 23 ]; then
+        patch -Np1 -i ../0003-Define-basename.patch
     fi
 }
 
