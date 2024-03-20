@@ -2,7 +2,7 @@
 pkgname=kando-bin
 pkgver=0.5.0
 _electronversion=28
-pkgrel=2
+pkgrel=3
 pkgdesc="A pie menu for the desktop. It will be highly customizable and will allow you to create your own menus and actions. "
 arch=("x86_64")
 url="https://ko-fi.com/post/Introducing-Ken-Do-L3L7L0FQ2"
@@ -20,11 +20,12 @@ source=(
 )
 sha256sums=('780c73cbd2dd350e76df5a045314901b0305feff4a20c80060c2e4424e52591a'
             'fd6cb731b549de5452efacb0833cda7a328eb5263537d29ca18de9d7938f7bab'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
 }
 package() {
