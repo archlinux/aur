@@ -1,6 +1,6 @@
 pkgbase = wego
 	pkgdesc = Weather app for the terminal
-	pkgver = 2.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://github.com/schachmat/wego
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = wego
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = wego-2.1.tar.gz::https://github.com/schachmat/wego/archive/refs/tags/2.1.tar.gz
-	sha512sums = 80cc19ea34bdb536ab48ef6e074f86b58dab59f76270688ca2d4c562c5eb34f177597108f2159e6ef33ee2485c068a7904ddf7bf8d0b79cb825ca7b73b0fefa2
+	source = wego-2.2.tar.gz::https://github.com/schachmat/wego/archive/refs/tags/2.2.tar.gz
+	sha512sums = cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e
 
 pkgname = wego
