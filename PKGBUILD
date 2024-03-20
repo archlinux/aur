@@ -2,7 +2,7 @@ PACKAGER="Laurent Brock <incognito0135@protonmail.com>"
 
 pkgname=plasma-active-accent-decorations
 pkgver=9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Window styles for KDE Plasma highlighting the active window in the color scheme's accent color"
 url='https://github.com/nclarius/Plasma-window-decorations'
 license=('GPL3')
@@ -28,23 +28,59 @@ package() {
   install -Dm755 --directory ActiveAccentDawn "$pkgdir/usr/share/aurorae/themes/ActiveAccentDawn"
   install -Dm644 ActiveAccentDawnrc "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDawn/ActiveAccentDawnrc
   install -Dm644 decoration.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDawn/decoration.svg
+  install -Dm644 alldesktops.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDawn/alldesktops.svg
+  install -Dm644 close.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDawn/close.svg
+  install -Dm644 help.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDawn/help.svg
+  install -Dm644 keepabove.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDawn/keepabove.svg
+  install -Dm644 keepbelow.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDawn/keepbelow.svg
+  install -Dm644 maximize.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDawn/maximize.svg
+  install -Dm644 minimize.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDawn/minimize.svg
+  install -Dm644 restore.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDawn/restore.svg
+  install -Dm644 shade.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDawn/shade.svg
   install -Dm644 metadata.desktop "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDawn/metadata.desktop
 
   cd ${srcdir}/Plasma-window-decorations-${pkgver}/ActiveAccentDusk
   install -Dm755 --directory ActiveAccentDusk "$pkgdir/usr/share/aurorae/themes/ActiveAccentDusk"
   install -Dm644 ActiveAccentDuskrc "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDusk/ActiveAccentDuskrc
   install -Dm644 decoration.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDusk/decoration.svg
+  install -Dm644 alldesktops.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDusk/alldesktops.svg
+  install -Dm644 close.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDusk/close.svg
+  install -Dm644 help.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDusk/help.svg
+  install -Dm644 keepabove.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDusk/keepabove.svg
+  install -Dm644 keepbelow.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDusk/keepbelow.svg
+  install -Dm644 maximize.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDusk/maximize.svg
+  install -Dm644 minimize.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDusk/minimize.svg
+  install -Dm644 restore.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDusk/restore.svg
+  install -Dm644 shade.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDusk/shade.svg
   install -Dm644 metadata.desktop "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDusk/metadata.desktop
 
   cd ${srcdir}/Plasma-window-decorations-${pkgver}/ActiveAccentDark
   install -Dm755 --directory ActiveAccentDark "$pkgdir/usr/share/aurorae/themes/ActiveAccentDark"
   install -Dm644 ActiveAccentDarkrc "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDark/ActiveAccentDarkrc
   install -Dm644 decoration.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDark/decoration.svg
+  install -Dm644 alldesktops.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDark/alldesktops.svg
+  install -Dm644 close.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDark/close.svg
+  install -Dm644 help.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDark/help.svg
+  install -Dm644 keepabove.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDark/keepabove.svg
+  install -Dm644 keepbelow.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDark/keepbelow.svg
+  install -Dm644 maximize.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDark/maximize.svg
+  install -Dm644 minimize.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDark/minimize.svg
+  install -Dm644 restore.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDark/restore.svg
+  install -Dm644 shade.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDark/shade.svg
   install -Dm644 metadata.desktop "$pkgdir"/usr/share/aurorae/themes/ActiveAccentDark/metadata.desktop
 
   cd ${srcdir}/Plasma-window-decorations-${pkgver}/ActiveAccentLight
   install -Dm755 --directory ActiveAccentLight "$pkgdir/usr/share/aurorae/themes/ActiveAccentLight"
   install -Dm644 ActiveAccentLightrc "$pkgdir"/usr/share/aurorae/themes/ActiveAccentLight/ActiveAccentLightrc
+  install -Dm644 alldesktops.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentLight/alldesktops.svg
+  install -Dm644 close.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentLight/close.svg
+  install -Dm644 help.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentLight/help.svg
+  install -Dm644 keepabove.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentLight/keepabove.svg
+  install -Dm644 keepbelow.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentLight/keepbelow.svg
+  install -Dm644 maximize.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentLight/maximize.svg
+  install -Dm644 minimize.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentLight/minimize.svg
+  install -Dm644 restore.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentLight/restore.svg
+  install -Dm644 shade.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentLight/shade.svg
   install -Dm644 decoration.svg "$pkgdir"/usr/share/aurorae/themes/ActiveAccentLight/decoration.svg
   install -Dm644 metadata.desktop "$pkgdir"/usr/share/aurorae/themes/ActiveAccentLight/metadata.desktop
 

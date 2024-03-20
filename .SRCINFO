@@ -1,7 +1,7 @@
 pkgbase = plasma-active-accent-decorations
 	pkgdesc = Window styles for KDE Plasma highlighting the active window in the color scheme's accent color
 	pkgver = 9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nclarius/Plasma-window-decorations
 	arch = any
 	license = GPL3
