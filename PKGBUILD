@@ -4,7 +4,7 @@
 pkgname=python-syncedlyrics
 _pkgname=${pkgname#python-}
 pkgver=0.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Get an LRC format (synchronized) lyrics for your music'
 arch=('any')
 url='https://github.com/moehmeni/syncedlyrics'
