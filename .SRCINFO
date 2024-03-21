@@ -5,7 +5,7 @@ pkgbase = kinda-bard-bin
 	url = https://www.zorbawong.com/
 	arch = x86_64
 	license = AGPL-3.0-only
-	depends = electron24
+	depends = electron24-bin
 	provides = kinda-bard=1.0.0
 	conflicts = kinda-bard
 	source = kinda-bard-1.0.0.deb::https://github.com/zorbajwhk/KindaBard/releases/download/v1.0.0/kinda-bard_1.0.0_amd64.deb
