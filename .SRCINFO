@@ -1,9 +1,12 @@
 pkgbase = dpitunnel
 	pkgdesc = Free, simple and serverless solution against censorship for Linux PCs and routers
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/txtsd/DPITunnel
 	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = cpp-httplib
 	depends = libnl

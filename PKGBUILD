@@ -3,9 +3,9 @@
 pkgname=dpitunnel
 __pkgname=DPITunnel
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, simple and serverless solution against censorship for Linux PCs and routers"
-arch=('x86_64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/txtsd/DPITunnel"
 license=('GPL-3.0-or-later')
 depends=('libnl' 'gcc-libs' 'zlib' 'openssl' 'glibc' 'brotli' 'ca-certificates-utils')
