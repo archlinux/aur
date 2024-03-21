@@ -1,7 +1,7 @@
 # Maintainer: Peter Cai <peter@typeblog.net>
 
 pkgname=lpac-git
-pkgver=r184.4095ab5
+pkgver=r189.596e78b
 pkgrel=1
 pkgdesc="Local Profile Agent (LPA) for eSIM cards via PC/SC readers, or AT / APDU commands over stdio."
 arch=(x86_64 aarch64 armv7h)
@@ -24,7 +24,7 @@ build() {
   # Do not leave reference to build path
   CFLAGS="-fmacro-prefix-map=$PWD=/fake/root" cmake . \
     -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_INSTALL_LIBDIR="/usr/lib" \
-    -DLPAC_DYNAMIC_LIBEUICC=ON
+    -DLPAC_DYNAMIC_LIBEUICC=ON -DLPAC_DYNAMIC_DRIVERS=on
   make
 }
 
