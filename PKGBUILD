@@ -1,5 +1,5 @@
-# Submitter: Kaan Genc <aur@bgenc.net>
 # Maintainer: raininja < dandenkijin at gmail >
+# Contributor: Kaan Genc <aur@bgenc.net>
 
 pkgname=dendron
 _npmname="dendron-cli"
