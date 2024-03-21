@@ -1,6 +1,6 @@
 pkgbase = bitrise
 	pkgdesc = Run your bitrise.io automations offline
-	pkgver = 2.2.5
+	pkgver = 2.10.1
 	pkgrel = 1
 	url = https://github.com/bitrise-io/bitrise
 	install = bitrise.install
@@ -9,9 +9,9 @@ pkgbase = bitrise
 	optdepends = envman
 	optdepends = stepman
 	provides = bitrise
-	source = bitrise-2.2.5::https://github.com/bitrise-io/bitrise/releases/download/2.2.5/bitrise-Linux-x86_64
+	source = bitrise-2.10.1::https://github.com/bitrise-io/bitrise/releases/download/2.10.1/bitrise-Linux-x86_64
 	source = https://raw.githubusercontent.com/bitrise-io/bitrise/master/LICENSE
-	sha256sums = 07714f092dd321e4acb96ef5afd735a4ef6247b118be0ed170c7366f8601de9e
+	sha256sums = 1940aa718f2a108c67e0822152accda699a4adf7ca7b7f5309f7104fc760a5cf
 	sha256sums = a0379118157469b6a466bf070c8986ffbca0874d10bb4950e0c6018544914414
 
 pkgname = bitrise
