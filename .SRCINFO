@@ -32,6 +32,9 @@ pkgbase = umu-launcher
 	depends = libxcrypt
 	depends = libxcrypt-compat
 	depends = gcc-libs
+	provides = ulwgl-launcher
+	conflicts = ulwgl-launcher
+	replaces = ulwgl-launcher
 	source = git+https://github.com/Open-Wine-Components/umu-launcher.git#commit=76bc4ed7fd658432bedf70c7355efca2cdb757b3
 	sha256sums = f3bf18af3317ddcb0e37a776e3b8b609bd51b0c0ee7d839617c044ee1b699715
 	depends_x86_64 = lib32-glibc

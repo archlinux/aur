@@ -53,6 +53,9 @@ makedepends=(
   ninja
   scdoc
 )
+provides=('ulwgl-launcher')
+conflicts=('ulwgl-launcher')
+replaces=('ulwgl-launcher')
 install=
 _commit=76bc4ed7fd658432bedf70c7355efca2cdb757b3
 _origin="https://github.com/Open-Wine-Components/umu-launcher.git"
