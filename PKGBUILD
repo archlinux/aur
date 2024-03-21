@@ -4,7 +4,7 @@
 pkgname=python-dbg
 _major=3
 _minor=11
-_patch=6
+_patch=7
 _pybasever=${_major}
 _pyminorver=${_pybasever}.${_minor}
 pkgver=${_pyminorver}.${_patch}
@@ -16,16 +16,10 @@ url='http://www.python.org/'
 license=('custom')
 depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
 makedepends=('gcc' 'make' 'm4' 'autoconf' 'valgrind')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
 options=(!debug !strip)
 
 source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz")
-sha256sums=('0fab78fa7f133f4f38210c6260d90d7c0d5c7198446419ce057ec7ac2e6f5f38')
+sha256sums=('18e1aa7e66ff3a58423d59ed22815a6954e53342122c45df20c96877c062b9b7')
 
 prepare() {
     cd Python-${pkgver}
@@ -44,6 +38,7 @@ build() {
     cd Python-${pkgver}
 
     # Disable bundled pip & setuptools
+    export ax_cv_c_float_words_bigendian=no
     ./configure --prefix=/opt/${pkgname} \
                 --enable-ipv6 \
                 --enable-loadable-sqlite-extensions \
