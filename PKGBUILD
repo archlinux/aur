@@ -3,7 +3,7 @@ pkgname=jasperapp-bin
 _pkgname=Jasper
 pkgver=1.1.2
 _electronversion=18
-pkgrel=8
+pkgrel=9
 pkgdesc="A flexible and powerful issue reader for GitHub"
 arch=('x86_64')
 url='https://jasperapp.io/'
@@ -24,11 +24,12 @@ source=(
 )
 sha256sums=('53f5158ac169cb4462f22fd1a4a4a5e4555cde3aac70d8a1d8b92bc6a5d8f3ca'
             '606dd64bd59eb00a0a34a171483131bc2c10e9bf237ecfc36176cc89e596d3c4'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
