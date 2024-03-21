@@ -1,6 +1,6 @@
 # Maintainer: Linus Karlsson <linus.karlsson@debricked.com>
 pkgname=debricked
-pkgver=1.8.12
+pkgver=1.8.13
 pkgrel=1
 pkgdesc="A CLI tool to interact with Debricked"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('git' 'glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('f5df4e03447c97c10497e6033d8abc4ec4c2a718ac912f9bb60229ba6883b538963709d27c83ab12a0629420100aea2b0149710ae081cb809a22437768fe76e6')
+b2sums=('c67cc98c563c96bcb30b2417240ee8fdb8ed7cc3453b8272242864676d33651fcd6b9e0c2f7b9aa74c7c4419f0be00d1453dc30aedefe61920889a1c7cbc7bb0')
 
 prepare() {
 	cd "cli-$pkgver"
