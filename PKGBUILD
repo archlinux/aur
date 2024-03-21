@@ -3,8 +3,8 @@
 _base=openfoam
 pkgname=${_base}-com-precice
 _gitcommit=4b6ad03223dcf5fb066e3c0198a9c72c086d48f9
-pkgver=1.2.3
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="preCICE adapter for OpenFOAM"
 arch=(x86_64)
 url="https://github.com/precice/${_base}-adapter"

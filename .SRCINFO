@@ -1,7 +1,7 @@
 pkgbase = openfoam-com-precice
 	pkgdesc = preCICE adapter for OpenFOAM
-	pkgver = 1.2.3
-	pkgrel = 2
+	pkgver = 1.3.0
+	pkgrel = 1
 	url = https://github.com/precice/openfoam-adapter
 	arch = x86_64
 	license = GPL3
