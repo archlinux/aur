@@ -1,7 +1,7 @@
 pkgbase = frame-eth-bin
 	pkgdesc = System-wide Web3
 	pkgver = 0.6.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://frame.sh/
 	arch = aarch64
 	arch = x86_64
