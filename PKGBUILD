@@ -23,6 +23,7 @@ prepare() {
 
 build() {
   cd "BoxBuddyRS-$pkgver"
+#  CFLAGS+=" -ffat-lto-objects"  ## gettext-sys crate fails
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
