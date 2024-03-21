@@ -2,7 +2,7 @@
 # Contributor: John Andrews <theunderdog09 at gmail dot com>
 # Contributor: Timo Kramer <fw minus aur at timokramer dot de>
 pkgname=mullvad-vpn-cli
-pkgver=2023.6
+pkgver=2024.1
 pkgrel=1
 pkgdesc="The Mullvad VPN CLI client"
 arch=('x86_64')
@@ -12,9 +12,8 @@ depends=('dbus' 'iputils' 'libnftnl')
 makedepends=('cargo' 'git' 'go' 'protobuf')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-options=('!lto')
 install="${pkgname%-*}.install"
-_tag=c2f7f75dee35c050540b90c6ebc9084969b1a93b  # tags/2023.6^0
+_tag=b261238598f0237aaf420354445797a12a45d907  # tags/2024.1^0
 _commit=d5772339cee9c1a0d7671968746f02499b78e245
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#commit=${_tag}"  # signed by Oskar Nyberg (raksooo), public key not uploaded yet
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed")
@@ -26,7 +25,7 @@ validpgpkeys=('225E40C8F1C8DEB7977ABF59F293063FECE2E8ED' # Linus Färnstrand <li
               )
 
 pkgver() {
-  cd "$srcdir/mullvadvpn-app"
+  cd mullvadvpn-app
   git describe --tags | sed 's/-/./g'
 }
 
@@ -49,6 +48,7 @@ prepare() {
 
 build() {
   cd mullvadvpn-app
+  CFLAGS+=" -ffat-lto-objects"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
