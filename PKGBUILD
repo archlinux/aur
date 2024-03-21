@@ -1,32 +1,28 @@
-pkgname=ncmdump
-pkgver=0.3.6
-pkgrel=1
-pkgdesc="netease cloud music copyright protection file dump"
-arch=('i686' 'x86_64')
-url="https://github.com/yoki123/ncmdump"
-license=('Apache')
-makedepends=('git' 'go')
-depends=('glibc')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/yoki123/ncmdump/archive/v$pkgver.tar.gz")
-sha256sums=('8828afd00c3ee83be0656b4264e3f6ace1c39ea3ea53ed2caeafaffac7c81267')
+# Maintainer: devome <evinedeng@hotmail.com>
 
-prepare() {
-    mkdir -p "$srcdir/build"
-    export GOPATH="$srcdir/build"
-    export CGO_LDFLAGS="$LDFLAGS"
-    export GOFLAGS="-buildmode=pie -trimpath -mod=vendor -modcacherw"
-    cd "$srcdir/$pkgname-$pkgver"
-    go mod vendor
-}
+pkgname=ncmdump
+pkgver=1.2.1
+pkgrel=1
+pkgdesc="Convert Netease Cloud Music ncm files to mp3/flac files."
+arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
+url="https://github.com/taurusxin/${pkgname}"
+license=("MIT")
+depends=("glibc" "gcc-libs" "taglib" "zlib")
+makedepends=("taglib")
+provides=("${pkgname}"{,-latest-bin} )
+conflicts=("${pkgname}"{,-latest-bin})
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('a1bd97fd1b46f9ba4ffaac0cf6cf1e920b49bf6ec753870ad0e6e07a72c2de2d')
 
 build() {
-    export GOPATH="$srcdir/build"
-    export CGO_LDFLAGS="$LDFLAGS"
-    export GOFLAGS="-buildmode=pie -trimpath -mod=vendor -modcacherw"
-    cd "$srcdir/$pkgname-$pkgver"
-    go build -v -o ncmdump cmd/ncmdump/main.go
+    cd "${pkgname}-${pkgver}"
+    rm -rf taglib
+    make linux
 }
 
 package() {
-    install -Dm755 "$srcdir/$pkgname-$pkgver/ncmdump" -t "$pkgdir/usr/bin"
+    cd "${pkgname}-${pkgver}"
+    install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 LICENSE*     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 README.md    "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
