@@ -1,0 +1,42 @@
+diff --git a/src/common/quantile.cu b/src/common/quantile.cu
+index 25c4543c6..d74deab46 100644
+--- a/src/common/quantile.cu
++++ b/src/common/quantile.cu
+@@ -181,7 +181,7 @@ common::Span<thrust::tuple<uint64_t, uint64_t>> MergePath(
+       merge_path.data(), [=] __device__(Tuple const &t) -> Tuple {
+         auto ind = get_ind(t);  // == 0 if element is from x
+         // x_counter, y_counter
+-        return thrust::make_tuple<uint64_t, uint64_t>(!ind, ind);
++        return thrust::make_tuple<uint64_t, uint64_t>(static_cast<uint64_t>(!ind), static_cast<uint64_t>(ind));
+       });
+ 
+   // Compute the index for both x and y (which of the element in a and b are used in each
+diff --git a/src/data/ellpack_page.cu b/src/data/ellpack_page.cu
+index 369021376..3e139c34b 100644
+--- a/src/data/ellpack_page.cu
++++ b/src/data/ellpack_page.cu
+@@ -175,11 +175,11 @@ struct WriteCompressedEllpackFunctor {
+ 
+   using Tuple = thrust::tuple<size_t, size_t, size_t>;
+   __device__ size_t operator()(Tuple out) {
+-    auto e = batch.GetElement(out.get<2>());
++    auto e = batch.GetElement(thrust::get<2>(out));
+     if (is_valid(e)) {
+       // -1 because the scan is inclusive
+       size_t output_position =
+-          accessor.row_stride * e.row_idx + out.get<1>() - 1;
++          accessor.row_stride * e.row_idx + thrust::get<1>(out) - 1;
+       uint32_t bin_idx = 0;
+       if (common::IsCat(feature_types, e.column_idx)) {
+         bin_idx = accessor.SearchBin<true>(e.value, e.column_idx);
+@@ -196,8 +196,8 @@ template <typename Tuple>
+ struct TupleScanOp {
+   __device__ Tuple operator()(Tuple a, Tuple b) {
+     // Key equal
+-    if (a.template get<0>() == b.template get<0>()) {
+-      b.template get<1>() += a.template get<1>();
++    if (thrust::get<0>(a) == thrust::get<0>(b)) {
++      thrust::get<1>(b) += thrust::get<1>(a);
+       return b;
+     }
+     // Not equal
