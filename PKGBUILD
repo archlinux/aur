@@ -15,8 +15,8 @@ source=("${pkgname%-bin}-$pkgver.AppImage::https://app.tuta.com/desktop/${pkgnam
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-linux")
 replaces=("${pkgname%-bin}-linux")
-sha512sums=('ff59502eff3ced5bd8df36183622d8240f43cfe27e6139dd4570202407ec39dcffe3037f2ae96a0a5c99dd6d1f91827cd230c0149faef06d7bdaee393d179c7c'
-            'd22eb1aa09397d89fff7b3264f40850745e2b5ab00a72e5b8506ad4eb5973452b1f47e288c90600089d53a40b039a90ce0bf79ff73c488a9a66b7880ad615655'
+sha512sums=('7d0b118f7df6ea840405999769881ddad77f45849a81984b434e19e332827b1220f84c8d609ebb5bd7bcccf6e783a56b2bdc2d4627b547796126626f61f2a898'
+            '32bee91f291624839a0cb7107fd6e8623161d428fab19bbd7624ca3a6117f611d2177e0d6334a79360bb117106951f92f00b5a8c3425c8ec05035a8306350aa6'
             '7c6cf9f1074c08b4d38567ced95159c0809af025efe01b0163d9bb5107daabfa873064255186c071a7dc3a9177ccd0c1b2fcc8b085bdbff234965a6710b3ae45')
 
 prepare() {
