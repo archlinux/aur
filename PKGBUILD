@@ -3,17 +3,19 @@
 # Contributor: Morgan <morganamilo@archlinux.org>
 pkgname=paru-static
 _pkgname=paru
-pkgver=2.0.1
-pkgrel=6
+pkgver=2.0.3
+pkgrel=1
 pkgdesc='Feature packed AUR helper'
 url='https://github.com/morganamilo/paru'
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/Morganamilo/paru/archive/v$pkgver.tar.gz")
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/Morganamilo/paru/archive/v$pkgver.tar.gz"
+        git+https://aur.archlinux.org/pacman-static.git)
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
-license=('GPL3')
-makedepends=('rustup' 'cargo' 'musl')
+license=('GPL-3.0-or-later')
+makedepends=('rustup' 'cargo' 'musl' 'meson' 'kernel-headers-musl')
 depends=('git' 'pacman' 'paru')
 optdepends=('bat: colored pkgbuild printing' 'devtools: build in chroot and downloading pkgbuilds')
-sha256sums=('47cae94d227cc08f86706408d234444af6dda192ba24309c251a0b43a8aa7980')
+sha256sums=('ccf6defc4884d580a4b813cc40323a0389ffc9aa4bdc55f3764a46b235dfe1e0'
+            'SKIP')
 
 
 _srcenv() {
@@ -30,11 +32,22 @@ _srcenv() {
 prepare() {
   _srcenv
   rustup target add $TARGET
-  cargo update
   cargo fetch --locked --target $TARGET
 }
 
 build () {
+  # If pacman-static(6.1.0) is not installed, build and install it.
+  cd $srcdir/pacman-static
+  # disable lto
+  sed "s/^options=(\(.*\))$/options=(\1 '\!lto')/" PKGBUILD -i
+  # disable CFLAGS and CXXFLAGS and LDFLAGS of makepkg.conf
+  C_FLAG="-Os -Wformat -Werror=format-security -Wtautological-compare -Wsign-compare -gdwarf-4 -fPIC -ffunction-sections -fdata-sections -fstack-protector-all -fstack-clash-protection -fcf-protection=full -U_FORTIFY_SOURCE"
+  CXX_FLAG="$CFLAGS -Wp,-D_GLIBCXX_ASSERTIONS"
+  LD_FLAG="-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now"
+  sed -r "/(export LDFLAGS=.*)/s/(.+)/export CFLAGS='$C_FLAG'\nexport CXXFLAGS='$CXX_FLAG'\nexport LDFLAGS='$LD_FLAG'\n\1/" PKGBUILD -i
+  # pacman-static build & install
+  [[ $(LC_ALL=C pacman -Qi pacman-static |grep "6.1.0") ]] || makepkg -si --skippgpcheck
+
   _srcenv
   if pacman -T pacman-git > /dev/null; then
     _features+="git,"
