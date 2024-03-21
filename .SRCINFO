@@ -1,0 +1,17 @@
+pkgbase = virtual-touchpad-driver-dkms
+	pkgdesc = The Virtual Touchpad Driver (DKMS)
+	pkgver = r37.a4633ea
+	pkgrel = 1
+	url = https://github.com/wanywhn/VirtualTouchPadDriver
+	arch = x86_64
+	arch = aarch64
+	arch = loongarch64
+	license = GPL2
+	depends = dkms
+	conflicts = virtual-touchpad-driver
+	source = virtual-touchpad-driver::git+https://github.com/wanywhn/VirtualTouchPadDriver#tag=v1.1.0
+	source = dkms.conf
+	md5sums = SKIP
+	md5sums = 4b0482e17cc64830fe298bf13e28ec5c
+
+pkgname = virtual-touchpad-driver-dkms
