@@ -4,7 +4,7 @@
 pkgname=python-dbg
 _major=3
 _minor=11
-_patch=7
+_patch=8
 _pybasever=${_major}
 _pyminorver=${_pybasever}.${_minor}
 pkgver=${_pyminorver}.${_patch}
@@ -19,7 +19,7 @@ makedepends=('gcc' 'make' 'm4' 'autoconf' 'valgrind')
 options=(!debug !strip)
 
 source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz")
-sha256sums=('18e1aa7e66ff3a58423d59ed22815a6954e53342122c45df20c96877c062b9b7')
+sha256sums=('9e06008c8901924395bc1da303eac567a729ae012baa182ab39269f650383bb3')
 
 prepare() {
     cd Python-${pkgver}
