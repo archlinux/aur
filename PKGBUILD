@@ -1,7 +1,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 _pkg=focus
 pkgname=focus-bin
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='A simple and fast text editor'
 arch=(x86_64)
@@ -16,7 +16,7 @@ source_x86_64=("$_pkg-$pkgver::$url/releases/download/$pkgver/focus-linux")
 b2sums=('62297f30c35be5f9f82fa24c876f924c3838e8249fd4f1c120b3d4e89b09287d763e75529676b87fbd54c53611f3e67562a65f9639fe74de14a8d56c72f22465'
         'f227f1b2d224a77b18fc96417ff23afc9db8f47894cb4e7c5cf107b795117426fc24db9c24cd7764f0af5092ec11c101843ad7cd4aad08ed3dcf5b541b63bdf6'
         'd3b689130762002b41ba928b68af5014198fbb63df0fcbc517c30cdfadb3dfafaee46c30a7cc2eda97f198c2fc4df0810d7993e627155ddd7635b19754fecc6d')
-b2sums_x86_64=('67295a97e7d0eb4d956687d6f4a58d9c9557add17c4fa84d5cec9d18f01c893155a4356fc021a96fa06e9592e8ae342dc602d3d2cc770aaaf7776b1f4cefac8e')
+b2sums_x86_64=('8df74ce84fd55d3cbe021c16fd901ed6c7925e07489855dc6522e8e78df3ad29a3c519d0d230686dfa021e4213e8d1f81c6695279b35738f5f28f88633e31d8d')
 
 package() {
 	install -Dm0755 "$_pkg-$pkgver" "$pkgdir/usr/bin/$_pkg"
