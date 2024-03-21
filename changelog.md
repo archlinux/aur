@@ -1,3 +1,15 @@
+## GE-Pronto9-2
+
+- wine updated to latest bleeding edge
+- dxvk updated to latest git
+- vkd3d-proton updated to latest git
+- dxvk-nvapi updated to latest git
+- upstream proton changes added
+- upstream steamclient changes added
+- ULWGL-protonfixes renamed to umu-protonfixes per upstream project
+- previous noted wmv playback regression appears to be fixed now -- working with ultimate marvel vs capcom 3 again.
+
+
 ## GE-Proton9-1
 
 Proton:
