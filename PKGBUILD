@@ -36,7 +36,7 @@ fi
 pkgbase=linux-zen-pds
 pkgver=6.8.1.zen1
 pkgrel=1
-major=6.8
+linuxver=6.8.1
 commit=d51ddadb4c484aaba621bfe57812085c4fddbdc8
 versiontag=6.8.1-zen1
 arch=(x86_64)
@@ -88,7 +88,7 @@ options=(
   !strip
 )
 archlinuxpath=https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/$commit
-source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$major.tar.xz
+source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$linuxver.tar.xz
         https://github.com/zen-kernel/zen-kernel/releases/download/v$versiontag/linux-v$versiontag.patch.zst
         ${archlinuxpath}/config)
 
@@ -97,11 +97,11 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare(){
-  cd ${srcdir}/linux-$major
+  cd ${srcdir}/linux-$linuxver
 
   # Apply Zen patch
-  msg "Apply Zen patch v$versiontag"
-  patch -Np1 < "$srcdir/v$versiontag.patch"
+  msg "Apply Zen patch"
+  patch -Np1 < "$srcdir/linux-v$versiontag.patch"
 
   local src
   for src in "${source[@]}"; do
@@ -211,7 +211,7 @@ prepare(){
 }
 
 build(){
-  cd ${srcdir}/linux-$major
+  cd ${srcdir}/linux-$linuxver
 
   msg "make all"
   make ARCH=${ARCH} ${BUILD_FLAGS[*]} -j$(nproc) all
@@ -242,7 +242,7 @@ _package(){
     wireguard-arch
   )
 
-  cd ${srcdir}/linux-$major
+  cd ${srcdir}/linux-$linuxver
 
   local kernver="$(<version)"
   local modulesdir="${pkgdir}"/usr/lib/modules/${kernver}
@@ -267,7 +267,7 @@ _package-headers(){
   pkgdesc="Headers and scripts for building modules for the $pkgbase kernel"
   depends=("${pkgbase}" pahole)
 
-  cd ${srcdir}/linux-$major
+  cd ${srcdir}/linux-$linuxver
 
   local builddir="$pkgdir"/usr/lib/modules/"$(<version)"/build
 
@@ -349,7 +349,7 @@ _package-headers(){
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('c969dea4e8bb6be991bbf7c010ba0e0a5643a3a8d8fb0a2aaa053406f1e965f3'
+sha256sums=('8d0c8936e3140a0fbdf511ad7a9f21121598f3656743898f47bb9052d37cff68'
             '1f86318ff6d2c14eed7c01cb83407df2d8c52b21c6ee887869e3bef748d6a790'
             '026dfadb2b5af1190d7360fbfe4630d5e83c6a890abed56ff1594f028408f110')
 

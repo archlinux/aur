@@ -32,12 +32,12 @@ pkgbase = linux-zen-pds
 	makedepends = git
 	options = !debug
 	options = !strip
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.8.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.8.1.tar.xz
 	source = https://github.com/zen-kernel/zen-kernel/releases/download/v6.8.1-zen1/linux-v6.8.1-zen1.patch.zst
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/d51ddadb4c484aaba621bfe57812085c4fddbdc8/config
-	sha256sums = 8fa0588f0c2ceca44cac77a0e39ba48c9f00a6b9dc69761c02a5d3efac8da7f3
-	sha256sums = 72356a9b2482a44e935be0651e374ceb3640e71ba1f2d31dd1ab1986c4c6d9a0
-	sha256sums = aec310553aa9b98572c25d37dfc33a62f5f853441a91cafc5cb1b8c19d7d9be3
+	sha256sums = 8d0c8936e3140a0fbdf511ad7a9f21121598f3656743898f47bb9052d37cff68
+	sha256sums = 1f86318ff6d2c14eed7c01cb83407df2d8c52b21c6ee887869e3bef748d6a790
+	sha256sums = 026dfadb2b5af1190d7360fbfe4630d5e83c6a890abed56ff1594f028408f110
 
 pkgname = linux-zen-pds
 	pkgdesc = The Zen kernel and modules - PDS enabled
