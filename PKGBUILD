@@ -3,7 +3,7 @@
 pkgname=frc-toolchain
 pkgver=2024.1
 _year=2024
-pkgrel=2
+pkgrel=3
 pkgdesc="The FIRST Robotics Competition C/C++ build system components"
 arch=('x86_64')
 url='https://github.com/wpilibsuite/toolchain-builder'
@@ -17,5 +17,5 @@ package() {
   cp -r $srcdir/roborio-academic/{arm-nilrt-linux-gnueabi,bin,libexec,share/gdb} $pkgdir/usr
 
   mkdir -p $pkgdir/usr/arm-nilrt-linux-gnueabi
-  cp $srcdir/roborio-academic/toolchain-config.cmake $pkgdir/usr/arm-nilrt-linux-gnueabi
+  cp $srcdir/roborio-academic/toolchain-config.cmake $pkgdir/usr/frc-toolchain-config.cmake
 }
