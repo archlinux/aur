@@ -1,6 +1,6 @@
 pkgbase = samin-git
 	pkgdesc = A btrfs snapshot utility
-	pkgver = r0.6d56d95
+	pkgver = r0.b7ad2c4
 	pkgrel = 1
 	url = https://gitlab.com/lepz0r/samin
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = samin-git
 	depends = btrfs-progs
 	depends = python-tzlocal
 	depends = python-psutil
+	provides = samin
 	source = git+https://gitlab.com/lepz0r/samin.git
 	sha256sums = SKIP
 

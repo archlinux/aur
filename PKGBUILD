@@ -1,9 +1,10 @@
 # Maintainer: Ryan Putrama Yahya <punkofthedeath at gmail.com>
 pkgname=samin-git
 _pkgname='samin'
-pkgver=r0.6d56d95
+pkgver=r0.b7ad2c4
 pkgrel=1
 pkgdesc='A btrfs snapshot utility'
+provides=('samin')
 arch=('any')
 url='https://gitlab.com/lepz0r/samin'
 license=('GPL2')
