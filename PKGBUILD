@@ -1,34 +1,64 @@
-# Maintainer: Anakojm <https://anakojm.net/a-propos/#contact>
+# Maintainer:
+# Contributor: Anakojm <https://anakojm.net/a-propos/#contact>
 
-pkgname='mov-cli-git'
-pkgver=1.4.6.r3.g1c8605d
+_pkgname="mov-cli"
+pkgname="$_pkgname-git"
+pkgver=4.1.0.r0.gadf61ce
 pkgrel=1
-pkgdesc="A cli tool to browse and watch movies/shows."
+pkgdesc="CLI tool to browse and stream videos"
+url="https://github.com/mov-cli/mov-cli"
+license=('MIT')
 arch=('any')
-url="https://github.com/${pkgname%-git}/${pkgname%-git}"
-license=('GPL3')
-depends=('ffmpeg' 'mpv' 'fzf' 'python-beautifulsoup4' 'python-lxml' 'python-httpx' 'python-pycryptodome' 'python-six' 'python-tldextract' 'python-krfzf')
-optdepends=('iina: Player used for MacOS' 'porn-cli: CLI tool to browse and watch porn')
-makedepends=('git' 'python-build' 'python-installer' 'python-poetry' 'python-wheel')
-provides=("${pkgname%-git}")
-source=("git+$url.git")
-md5sums=('SKIP')
+
+depends=(
+  'fzf'
+  'python'
+  'python-beautifulsoup4'
+  'python-httpx'
+  'python-lxml'
+  'python-pycryptodome'
+  'python-toml'
+  'python-typer'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-poetry'
+  'python-setuptools-scm'
+  'python-wheel'
+)
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-        cd "$srcdir/${pkgname%-git}"
-        git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-        python -m build --no-isolation --wheel "$srcdir/${pkgname%-git}"
+  python -m build --wheel --no-isolation "$_pkgsrc"
 }
 
 package() {
-        cd "$srcdir/${pkgname%-git}"
-        _py=$(python --version)
-        _py=${_py%%.*}
-        _pkgname=${pkgname%-git}
+  depends=(
+    'ffmpeg'
+    'mpv'
 
-        python -m installer --destdir="$pkgdir" \
-                "$srcdir/${pkgname%-git}/dist/${_pkgname/-/_}-${pkgver%.r*}-py${_py##* }-none-any.whl"
+    #AUR
+    'python-devgoldyutils'
+    'python-inquirer'
+  )
+
+  cd "$_pkgsrc"
+  python -m installer --destdir="$pkgdir" "$(ls -1 -- dist/*.whl | sort -rV | head -1)"
+
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+
 }
