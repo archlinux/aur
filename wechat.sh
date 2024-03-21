@@ -96,7 +96,7 @@ function execApp() {
 		--symlink usr/bin /sbin \
 		--ro-bind /usr/bin/true /usr/bin/lsblk \
 		--bind /opt /opt \
-		--ro-bind "${XDG_RUNTIME_DIR}/bus" "${XDG_RUNTIME_DIR}/bus" \
+		--bind "${busDir}/bus" "${XDG_RUNTIME_DIR}/bus" \
 		--ro-bind "${XDG_RUNTIME_DIR}/pulse" "${XDG_RUNTIME_DIR}/pulse" \
 		--bind "${XDG_DOCUMENTS_DIR}"/WeChat_Data "${HOME}" \
 		--ro-bind-try "${XAUTHORITY}" "${XAUTHORITY}" \
@@ -138,10 +138,8 @@ function dbusProxy() {
 		env -i xdg-dbus-proxy \
 			"${DBUS_SESSION_BUS_ADDRESS}" \
 			"${busDir}/bus" \
-			--filter \
 			--log \
-			--talk=org.freedesktop.portal.Flatpak \
-			--call="org.freedesktop.portal.Desktop=org.freedesktop.portal.Settings.Read@/org/freedesktop/portal/desktop" \
+			--call=org.freedesktop.portal.Desktop=*=* \
 			--broadcast="org.freedesktop.portal.Desktop=org.freedesktop.portal.Settings.SettingChanged@/org/freedesktop/portal/desktop" 3<<EOF
 [Application]
 name=$busName
