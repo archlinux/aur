@@ -1,5 +1,5 @@
 pkgname=shellcheck-git-static
-pkgver=0.7.1
+pkgver=v0.10.0.r2.g50db9a2
 pkgrel=1
 pkgdesc="shellcheck-static, but using the latest-commit builds maintained by the author"
 license=("AGPL3")
@@ -15,7 +15,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/shellcheck-latest"
-  ./shellcheck -V | sed -nE 's/^version: (.*)$/\1/p'
+  ./shellcheck -V \
+    | sed -n '/^version:/{s/^version: //;s/\([^-]*-g\)/r\1/;s#[-:/ ]#.#g;p}'
 }
 
 package() {
