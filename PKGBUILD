@@ -1,8 +1,8 @@
 # Maintainer: Martin Diehl <martin.diehl@kuleuven.be>
 pkgbase=damask
 pkgname=('damask' 'damask-grid' 'damask-mesh' 'python-damask')
-pkgver=3.0.0~beta
 pkgver_=3.0.0-beta
+pkgver=${pkgver_//-}
 pkgrel=1
 pkgdesc='DAMASK - The Duesseldorf Advanced Material Simulation Kit'
 arch=('x86_64')
