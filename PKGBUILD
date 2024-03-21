@@ -5,7 +5,7 @@
 
 _pkgname=konsole
 pkgname=$_pkgname-osc52
-pkgver=24.02.0
+pkgver=24.02.1
 pkgrel=1
 arch=(x86_64)
 url='https://apps.kde.org/konsole/'
@@ -49,7 +49,7 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz{,.sig}
         osc52.patch)
-sha256sums=('2915edcd856552bd6199efb23dcaf194605ee4fb307c75e27606198253dfdfe0'
+sha256sums=('c5a277db84a2f61751250b89c7f984dfdb7750d9ed5f68a4fae228d89ae72c85'
             'SKIP'
             'e7c2ca3b30e018139a139e99141202a2efc8e4e880e2965b09537f9a97865e53')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
