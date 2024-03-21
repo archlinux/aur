@@ -4,7 +4,7 @@ pkgname="${_appname}-todo-desktop"
 _pkgname=Meteor
 pkgver=2.0.1
 _electronversion=22
-pkgrel=3
+pkgrel=4
 pkgdesc="A meter based ToDo List. used Electron-Vue"
 arch=("x86_64")
 url="https://hideko.f5.si/project/meteor.html"
@@ -13,7 +13,6 @@ license=('MIT')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
-    'hicolor-icon-theme'
 )
 makedepends=(
     'gendesk'
@@ -25,8 +24,8 @@ source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('SKIP'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+sha256sums=('a41ebd10efb2ea3b295298b7a98504a4a16c0f87c527b629f13cc0871632f5fd'
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname}|g" \
@@ -36,15 +35,23 @@ build() {
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl="https://electronjs.org/headers"
-    sed "s|--windows --linux --mac|--linux|g" -i package.json
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        echo 'regis    npm install
+try="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
+    sed "s|--windows --linux --mac||g" -i package.json
     npm install
-    npm run postinstall
-    npm run pre-electron-pack
+    npm run build
     npm run electron-pack
 }
 package() {
