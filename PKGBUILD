@@ -17,6 +17,7 @@ makedepends=(
     'gendesk'
     'npm'
     'git'
+    'nvm'
     'base-devel'
     'gcc'
 )

@@ -8,6 +8,7 @@ pkgbase = mockoon
 	makedepends = gendesk
 	makedepends = npm
 	makedepends = git
+	makedepends = nvm
 	makedepends = base-devel
 	makedepends = gcc
 	depends = electron29
