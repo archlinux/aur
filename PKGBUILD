@@ -5,7 +5,7 @@ pkgname='python-qh3'
 _pkgname="${pkgname}"
 _srcname="${_pkgname/python-/}"
 pkgver=0.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python'
 arch=('aarch64' 'x86_64')
 url='https://github.com/jawah/qh3'
@@ -18,6 +18,7 @@ depends=(
 makedepends=(
   'python-build'
   'python-installer'
+  'python-setuptools'
   'python-wheel'
 )
 provides=("$_pkgname")
