@@ -10,8 +10,8 @@ unset _pkgtype
 # basic info
 _pkgname="thorium-reader"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.3.0
-pkgrel=5
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit"
 url="https://github.com/edrlab/thorium-reader"
 license=('MIT')
@@ -41,32 +41,6 @@ _main_stable() {
   source+=("$_pkgsrc"::"git+$url.git#tag=v${pkgver%%.r*}")
   sha256sums+=('SKIP')
 
-  _backports=(
-    # commits needed to fix error message
-    22a49691a23c01b4041f6679dec86e1b36df7b31
-    dcb98bf62cfbc85a0a0cc12bdfb5606a6d2ab8bd
-    93a79a38601ad6251f0afa80be85dd240d5e7f8f
-    2374d856712b8315aec2605975aa48bd37398105
-    50cc65551d69d22137aeff5efa00aceb452d0bfb
-    1d72280ab708fa8ac5ca8ebfbccc0412623d080b
-    87d059c8d4ee7fdeab6bee9383c241be6adf2952
-    7d7a1e480828200bbf0ac20a9edfeda77ebae40d
-    23fdd654ae67221faa01020c36c268aa7d599eed
-    1d3dc939d1d495540a0482f4e0596dc55d5157cf
-  )
-
-  _backport() (
-    cd "$_pkgsrc"
-    local _c
-    for _c in "${_backports[@]}"; do
-      git cherry-pick -n -m1 "${_c}"
-    done
-  )
-
-  _prepare() {
-    _backport
-  }
-
   pkgver() {
     cd "$_pkgsrc"
     local _pkgver=$(
@@ -86,10 +60,6 @@ _main_git() {
   source+=("$_pkgsrc"::"git+$url.git")
   sha256sums+=('SKIP')
 
-  _prepare() {
-    :
-  }
-
   pkgver() {
     cd "$_pkgsrc"
     git describe --long --tags --exclude='*[a-z][a-z]*' \
@@ -100,8 +70,6 @@ _main_git() {
 
 # common functions
 prepare() {
-  _prepare
-
   cat <<'EOF' > "$_pkgname.sh"
 #!/usr/bin/env sh
 set -e
@@ -142,8 +110,8 @@ EOF
 }
 
 build() {
-  export HOME="${SRCDEST:-$startdir}/node-home"
-  export NVM_DIR="${SRCDEST:-$startdir}/node-nvm"
+  export HOME="$SRCDEST/node-home"
+  export NVM_DIR="$SRCDEST/node-nvm"
 
   export SYSTEM_ELECTRON_VERSION=$(</usr/lib/electron/version)
   export ELECTRONVERSION=${SYSTEM_ELECTRON_VERSION%%.*}
