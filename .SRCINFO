@@ -1,0 +1,17 @@
+pkgbase = teler
+	pkgdesc = Real-time HTTP Intrusion Detection
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://teler.app/
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	options = !strip
+	backup = etc/teler/teler.yaml
+	source = teler-2.0.0.tar.gz::https://github.com/kitabisa/teler/archive/refs/tags/v2.0.0.tar.gz
+	b2sums = d607dce8f618d0120239cd1f491988239f60e6671beb589d0266ed2d0fb921fc4c04018cbb09451f62bdb0c48e7f9db792d431457127d55a539b810192a77702
+
+pkgname = teler
