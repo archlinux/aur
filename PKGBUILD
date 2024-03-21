@@ -1,14 +1,14 @@
-# Maintainer: Joseph DiGiovanni <jdigiovanni78 at gmail dot com>
+# Maintainer: Joseph R. Prostko <joe dot prostko at gmail dot com>
 # Upstream: Immersed Inc. <info at immersed dot com>
 
 pkgname=immersed
-pkgver=9.10.1
+pkgver=10.1.1
 pkgrel=1
 
 source_x86_64=( "https://static.immersed.com/dl/Immersed-x86_64.AppImage"
                 "$pkgname.desktop")
 
-sha256sums_x86_64=('b66b437b7f5902c83da7b1a894d8ecec22243cebae675100abd38bb59da0f1be'
+sha256sums_x86_64=('3703bc9c9ab02e7af8c22f8c4a85da270b0f8bccd294543c84db08b1c744730f'
                    SKIP)
 
 pkgdesc="Immersed Desktop Agent"
@@ -17,7 +17,7 @@ url="https://immersed.com/"
 license=('unknown')
 depends=('fuse')
 optdepends=('V4L2LOOPBACK-MODULE: Virtual webcam support')
-options=(!strip)
+options=(!strip !debug)
 
 _appimage="Immersed-x86_64.AppImage"
 
