@@ -6,8 +6,8 @@ pkgbase = psa-update
 	arch = x86_64
 	license = UNLICENSE
 	depends = openssl
-	noextract = https://github.com/zeld/psa-update/releases/download/1.0.4/psa-update-1.0.4-x86_64-unknown-linux-gnu.tar.gz
-	source = https://github.com/zeld/psa-update/releases/download/1.0.4/psa-update-1.0.4-x86_64-unknown-linux-gnu.tar.gz
+	noextract = psa-update-1.0.4-x86_64-unknown-linux-gnu.tar.gz::https://github.com/zeld/psa-update/releases/download/1.0.4/psa-update-1.0.4-x86_64-unknown-linux-gnu.tar.gz
+	source = psa-update-1.0.4-x86_64-unknown-linux-gnu.tar.gz::https://github.com/zeld/psa-update/releases/download/1.0.4/psa-update-1.0.4-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums = 404ecb5543f588a203eab277e98548a86da1e70034d8644e98636db56bfc8390
 
 pkgname = psa-update

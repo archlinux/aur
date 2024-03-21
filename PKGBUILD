@@ -8,8 +8,8 @@ arch=('x86_64')
 url='https://github.com/zeld/psa-update'
 license=('UNLICENSE')
 depends=('openssl')
-source=("${url}/releases/download/${pkgver}/${pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-noextract=("${url}/releases/download/${pkgver}/${pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
+source=("${pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz"::"${url}/releases/download/${pkgver}/${pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
+noextract=("${pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz"::"${url}/releases/download/${pkgver}/${pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 sha256sums=("404ecb5543f588a203eab277e98548a86da1e70034d8644e98636db56bfc8390")
 
 package() {
