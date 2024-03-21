@@ -3,7 +3,7 @@
 _pkgorg=gitlab.com/mipimipi
 pkgname=repman
 pkgver=0.7.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage (remote) custom repositories for Arch Linux packages"
 arch=(
   aarch64
@@ -34,6 +34,7 @@ optdepends=(
 makedepends=(
   bash
   cargo
+  clang
   git
   make
   asciidoctor

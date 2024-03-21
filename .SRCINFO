@@ -1,13 +1,14 @@
 pkgbase = repman
 	pkgdesc = Manage (remote) custom repositories for Arch Linux packages
 	pkgver = 0.7.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/mipimipi/repman
 	arch = aarch64
 	arch = x86_64
 	license = GPL3
 	makedepends = bash
 	makedepends = cargo
+	makedepends = clang
 	makedepends = git
 	makedepends = make
 	makedepends = asciidoctor
