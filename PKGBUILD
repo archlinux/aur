@@ -14,7 +14,7 @@ install=alchemy.install
 # template end;
 # template start; name=deps; version=1.0;
 depends=('glu' 'libgl' 'libiconv' 'libidn' 'libjpeg-turbo' 'libpng' 'libxml2' 'libxss' 'mesa' 'nss' 'openal' 'sdl2' 'vlc' 'zlib')
-makedepends=('gcc' 'python-pip' 'git')
+makedepends=('gcc' 'python-pip' 'python-virtualenv' 'git')
 optdepends=(
   'alsa-lib: ALSA support'
   'freealut: OpenAL support'
@@ -31,7 +31,7 @@ optdepends=(
   'xdg-desktop-portal: File picker portal')
 # template end;
 pkgname=alchemy-next-viewer-git
-pkgver=7.1.3.55266.2a64c7b773
+pkgver=7.1.4.55811.471ae26a78
 pkgrel=1
 replaces=('alchemy-viewer-git')
 provides=('alchemy-viewer')
