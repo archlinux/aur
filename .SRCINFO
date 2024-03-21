@@ -1,6 +1,6 @@
 pkgbase = pot-translation-git
 	pkgdesc = 一个跨平台的划词翻译软件 | A cross-platform software for text translation.
-	pkgver = 2.7.9.r2.g8d275ff
+	pkgver = 2.7.9.r7.gd6ff01c
 	pkgrel = 1
 	url = https://pot.pylogmon.com/
 	arch = x86_64
@@ -28,6 +28,6 @@ pkgbase = pot-translation-git
 	source = pot-translation.git::git+https://github.com/pot-app/pot-desktop.git
 	source = pot-translation.sh
 	sha256sums = SKIP
-	sha256sums = b60d19ae9d170e907419ae1c5098a9ebceb47d386f187b6778a2ac089af9fd87
+	sha256sums = 44a5d65890e900259c4c9047d799ed8bf66c3baae9d5366ab9ad975f33d653d7
 
 pkgname = pot-translation-git

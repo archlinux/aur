@@ -2,7 +2,7 @@
 # Contributor: Pylogmon <pylogmon@outlook.com>
 _pkgname=pot
 pkgname="${_pkgname}-translation-git"
-pkgver=2.7.9.r2.g8d275ff
+pkgver=2.7.9.r7.gd6ff01c
 _nodeversion=18
 pkgrel=1
 pkgdesc="一个跨平台的划词翻译软件 | A cross-platform software for text translation."
@@ -39,7 +39,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'b60d19ae9d170e907419ae1c5098a9ebceb47d386f187b6778a2ac089af9fd87')
+            '44a5d65890e900259c4c9047d799ed8bf66c3baae9d5366ab9ad975f33d653d7')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -60,6 +60,15 @@ build() {
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
     pnpm config set link-workspace-packages true
     export CARGO_HOME="${srcdir}/.cargo"
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+        export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+	    export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+    else
+        echo "Your network is OK."
+    fi
     sed "s|icon.ico|icon.png|g" -i src-tauri/tauri.linux.conf.json
     sed "s|icon.ico|icon.png|g" -i src-tauri/webview.arm64.json
     sed "s|icon.ico|icon.png|g" -i src-tauri/webview.x64.json
@@ -70,8 +79,7 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    _pkgver=`grep '"version": ' "${srcdir}/${pkgname%-git}.git/package.json" | sed 's|\"||g;s|,||g' | awk '{print $2}'`
-    install -Dm755 "${srcdir}/${pkgname%-git}.git/src-tauri/target/release/bundle/deb/${_pkgname}_${_pkgver}_amd64/data/usr/bin/${_pkgname}" -t "${pkgdir}/usr/bin"
+    install -Dm755 "${srcdir}/${pkgname%-git}.git/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.r*}_amd64/data/usr/bin/${_pkgname}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/src-tauri/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
 }
