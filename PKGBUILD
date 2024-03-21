@@ -4,7 +4,7 @@ pkgname=hyperkeys-bin
 _appname=HyperKeys
 pkgver=1.3.0
 _electronversion=20
-pkgrel=7
+pkgrel=8
 pkgdesc="Unleash you keyboard shorcuts"
 arch=('x86_64')
 url="https://hyperkeys.xureilab.com/"
@@ -13,7 +13,7 @@ license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'java-runtime'
     'perl'
     'python>3'
@@ -34,11 +34,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('2884e6025aa4dfee198f1279584e8ec798d8f9519cbe8c6ed1f4648b26e63711'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
