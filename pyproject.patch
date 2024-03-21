@@ -1,0 +1,21 @@
+--- pyprojectb.toml	2024-03-21 16:14:19.072365340 +0000
++++ pyproject.toml	2024-03-21 16:14:47.422739304 +0000
+@@ -137,16 +137,8 @@
+ 
+ # build-system -----------------------------------------------------------------
+ [tool.poetry-dynamic-versioning]
+-enable = true
+-metadata = false
+-dirty = false
+-style = "pep440"
+-
+-[tool.poetry-dynamic-versioning.files."taskw_ng/__version__.py"]
+-persistent-substitution = false
+-
+ [build-system]
+-requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning>=1.0.0,<2.0.0"]
+-build-backend = "poetry_dynamic_versioning.backend"
++requires = ["poetry-core>=1.0.0"]
++build-backend = "poetry.core.masonry.api"
+ 
+ # vim: tw=80
