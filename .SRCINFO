@@ -1,12 +1,11 @@
 pkgbase = python-pyephem
 	pkgdesc = PyEphem provides scientific-grade astronomical computations
 	pkgver = 4.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rhodesmill.org/pyephem/
 	arch = i686
 	arch = x86_64
-	license = GPL
-	license = LGPL
+	license = MIT
 	makedepends = python
 	makedepends = python-setuptools
 	options = !emptydirs
