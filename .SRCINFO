@@ -1,0 +1,14 @@
+pkgbase = btlescan
+	pkgdesc = BTLE/Bluetooth Scanner
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ztroop/btlescan
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = dbus
+	source = btlescan-0.1.0.tar.gz::https://github.com/ztroop/btlescan/archive/0.1.0.tar.gz
+	sha512sums = e8d1af780075d76e5fe7a7fd7897f9ce29bd39deecb4db934499b6d54b240db844f4e719f713229326d7108b76748704d1ec20a4eaaea62b7bd8fb74afe349ab
+
+pkgname = btlescan
