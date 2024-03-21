@@ -5,7 +5,7 @@ pkgname=opentabletdriver-git
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
-pkgver=v0.7.0.0pre.r744.g3a022e09
+pkgver=v0.7.0.0pre.r786.gf14a184f
 pkgrel=2
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
@@ -17,8 +17,9 @@ makedepends=('git' 'dotnet-sdk-7.0' 'jq')
 provides=("opentabletdriver")
 conflicts=('opentabletdriver' 'digimend-kernel-drivers-dkms-git' 'digimend-drivers-git-dkms' 'digimend-kernel-drivers-dkms' 'digimend-kernel-drivers')
 install="notes.install"
-# unified binary dotnet releases break when stripped see https://github.com/dotnet/runtime/issues/54947
-options=('!strip')
+# unified binary dotnet releases break when stripped, see https://github.com/dotnet/runtime/issues/54947
+# disabling debug is necessary for the time being, see https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/19
+options=('!strip' '!debug')
 source=('git+https://github.com/OpenTabletDriver/OpenTabletDriver'
         "notes.install"
         )
