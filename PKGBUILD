@@ -10,16 +10,16 @@
 
 pkgname=davinci-resolve-studio
 major_version=18.6
-minor_version=5
+minor_version=6
 pkgver=${major_version}.${minor_version}
 pkgrel=1
 
 if [ "$pkgname" == "davinci-resolve" ]; then
     # Variables for FREE edition
     _product="DaVinci Resolve"
-    _referid='0098df10e28e404682c4945687fcdf8c'
+    _referid='dfd43085ef224766b06b579ce8a6d097'
     _siteurl="https://www.blackmagicdesign.com/api/support/latest-stable-version/davinci-resolve/linux"
-    sha256sums=('e96db4e958e60cfaa49665fa94ef18d34de3ea111f7f1aab8e25ac13321ee183')
+    sha256sums=('06ba9d3e2f4e6ca813a394e0fe622992fdb6b29b9cd5f9a351103ad1040b6dac')
     pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
     _archive_name=DaVinci_Resolve_${pkgver}_Linux
     _archive_run_name=DaVinci_Resolve_${pkgver}_Linux
@@ -27,9 +27,9 @@ if [ "$pkgname" == "davinci-resolve" ]; then
 elif [ "$pkgname" == "davinci-resolve-studio" ]; then
     # Variables for STUDIO edition
     _product="DaVinci Resolve Studio"
-    _referid='9a7b8de9c3e346b2925397cfe2faff2d'
+    _referid='0978e9d6e191491da9f4e6eeeb722351'
     _siteurl="https://www.blackmagicdesign.com/api/support/latest-stable-version/davinci-resolve-studio/linux"
-    sha256sums=('0610031560736946186bd076f070b1eefaa29393780dafde750c414a89b803b4')
+    sha256sums=('27c33c942fec19533cf81fd5ebd19706e8c0fd92c6ad4da47402171b885d38e4')
     pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
     _archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
     _archive_run_name=DaVinci_Resolve_Studio_${pkgver}_Linux
