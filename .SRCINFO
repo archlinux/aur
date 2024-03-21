@@ -1,7 +1,7 @@
 pkgbase = kdesktop-bin
 	pkgdesc = 金山文档
 	pkgver = 3.7.7
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.kdocs.cn
 	arch = x86_64
 	license = LicenseRef-custom
@@ -11,6 +11,6 @@ pkgbase = kdesktop-bin
 	source = kdesktop-3.7.7.deb::https://d.store.deepinos.org.cn/store/office/cn.kdocs.kdesktop/cn.kdocs.kdesktop_3.7.7_amd64.deb
 	source = kdesktop.sh
 	sha256sums = 57e6e623bbb761d5b2e3a8dd5c179189e585b40e14cc9f9f17213797093e88ef
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = kdesktop-bin
