@@ -1,5 +1,5 @@
 # Maintainer: Peter Blackman <peter at pblackman dot plus dot com>
-# 16-Nov-2023
+# 21-Mar-2024
 #
 
 pkgname=c-evo-dh
@@ -8,10 +8,9 @@ pkgrel=1
 pkgdesc="C-evo: Distant Horizon, Empire Building Game"
 arch=('x86_64' 'aarch64')
 url="https://sourceforge.net/projects/c-evo-eh/"
-license=('GPL2' 'CCPL')
+license=('GPL-2.0-or-later' 'CC-BY-3.0')
 makedepends=('fpc' 'lazarus-gtk2')
-depends=('gtk2')
-optdepends=('ffmpeg: Needed for sounds')
+depends=('gtk2' 'mpg123' 'gdk-pixbuf2' 'glib2' 'pango' 'libx11' 'at-spi2-core' 'cairo')
 source=("$url/files/Source/${pkgname}_${pkgver}.orig.tar.xz")
 sha256sums=('f63a4794c2c1ce93a78ca186fb5e326e6ee6e48d606066a109d32be72ee7c9ba')
 
