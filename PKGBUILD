@@ -1,7 +1,7 @@
 # Maintainer: Richard Garai <garric at okki dot hu>
 pkgname=okki-status
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Status bar for the Sway window manager"
 arch=('x86_64')
 url="https://github.com/gar-r/$pkgname"
