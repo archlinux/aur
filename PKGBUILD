@@ -106,7 +106,7 @@ package() {
     install -Dm 755 -t "$pkgdir/usr/bin" setup_dxvk
 }
 
-sha256sums=('SKIP'
+sha256sums=('203b336366b16612b01bc5c220bdeeee633e6fdbf15f23559c826eac7b59beeb'
             'bcc15521e4c7f966a0192a1dabb7fb4935b33db39344ab5b861f9d81486f1362'
             'c3daf448a0460f36ac471d2d4982874207888148ac3f03fbc2f003eccc2c2a45'
             'c1f6a18b03d1612b60f8081428f00cfac5e66315fe9d42719f01cf5564deeeff')
