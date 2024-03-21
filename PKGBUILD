@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=sticky-notes
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="A simple sticky notes app"
 arch=('any')
@@ -8,8 +8,8 @@ url="https://github.com/vixalien/sticky"
 license=('MIT')
 depends=('gjs' 'libadwaita')
 makedepends=('git' 'gobject-introspection' 'meson' 'yarn')
-checkdepends=('appstream-glib')
-_commit=0b054a132d06964ef4e086b439ff834a552c25b5  # tags/v0.2.4^0
+checkdepends=('appstream')
+_commit=73c9000a406d92bf15ccb574aa871f5c69fcb014  # tags/v0.2.5^0
 source=("git+https://github.com/vixalien/sticky.git#commit=$_commit"
         'git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions.git')
 sha256sums=('SKIP'
