@@ -1,0 +1,39 @@
+[Unit]
+Description=DPITunnel
+After=network.target
+
+[Service]
+SyslogIdentifier=dpitunnel
+Restart=always
+RestartSec=5
+Type=simple
+User=root
+Group=root
+ExecStart=/usr/bin/dpitunnel -doh -doh-server https://dns.google/dns-query -ttl 1 -ca-bundle-path "/etc/ssl/certs/ca-bundle.crt" -desync-attacks disorder_fake
+TimeoutStopSec=15
+CapabilityBoundingSet=CAP_NET_RAW
+IPAddressAllow=localhost link-local multicast
+LockPersonality=true
+MemoryDenyWriteExecute=true
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateTmp=true
+ProcSubset=pid
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectProc=noaccess
+ProtectSystem=strict
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+SystemCallArchitectures=native
+SystemCallFilter=@basic-io @file-system @io-event @ipc @network-io @process @signal @system-service
+
+[Install]
+WantedBy=multi-user.target
