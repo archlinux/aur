@@ -1,7 +1,7 @@
 pkgbase = kui-bin
 	pkgdesc = A hybrid command-line/UI development experience for cloud-native development
 	pkgver = 13.1.4
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/kubernetes-sigs/kui
 	arch = aarch64
 	arch = x86_64
@@ -9,11 +9,10 @@ pkgbase = kui-bin
 	makedepends = gendesk
 	depends = electron22
 	depends = kubectl
-	depends = hicolor-icon-theme
 	provides = kui=13.1.4
 	conflicts = kui
 	source = kui.sh
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 	source_aarch64 = kui-13.1.4-aarch64.zip::https://github.com/kubernetes-sigs/kui/releases/download/v13.1.4/Kui-linux-arm64.zip
 	sha256sums_aarch64 = 2138d7b605fb9cc0a28a7bceaa071b7b70a6a8f009110e34eeb6ec4aa0772c85
 	source_x86_64 = kui-13.1.4-x86_64.zip::https://github.com/kubernetes-sigs/kui/releases/download/v13.1.4/Kui-linux-x64.zip
