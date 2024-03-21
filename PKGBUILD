@@ -6,22 +6,21 @@
 # Contributor: Thomas Bächler <thomas@archlinux.org> ([core] package)
 
 pkgname=mkinitcpio-git
-pkgver=37.1.r17.ge7e20f2
+pkgver=38.1.r16.g9ec8c30
 pkgrel=1
 pkgdesc='Modular initramfs image creation utility - git checkout'
 arch=('any')
 url='https://gitlab.archlinux.org/archlinux/mkinitcpio/mkinitcpio'
 license=('GPL-2.0-only')
 depends=('awk' 'mkinitcpio-busybox' 'kmod' 'util-linux' 'libarchive' 'coreutils'
-         'bash' 'binutils' 'diffutils' 'findutils' 'grep' 'filesystem' 'zstd' 'systemd')
-optdepends=('gzip: Use gzip compression for the initramfs image'
-            'xz: Use lzma or xz compression for the initramfs image'
+         'bash' 'binutils' 'diffutils' 'findutils' 'grep' 'gzip' 'filesystem' 'zstd' 'systemd')
+optdepends=('xz: Use lzma or xz compression for the initramfs image'
             'bzip2: Use bzip2 compression for the initramfs image'
             'lzop: Use lzo compression for the initramfs image'
             'lz4: Use lz4 compression for the initramfs image'
             'mkinitcpio-nfs-utils: Support for root filesystem on NFS')
-makedepends=('git' 'asciidoc')
-checkdepends=('bats' 'bats-assert' 'bzip2' 'gzip' 'lz4' 'lzop')
+makedepends=('git' 'asciidoctor')
+checkdepends=('bats' 'bats-assert' 'bzip2' 'lz4' 'lzop')
 provides=('initramfs' "mkinitcpio=${pkgver}")
 conflicts=('mkinitcpio')
 backup=('etc/mkinitcpio.conf')
