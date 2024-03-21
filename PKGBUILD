@@ -2,7 +2,7 @@
 
 pkgname=python-taskw-ng
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for your taskwarrior database next generation"
 url="https://github.com/bergercookie/taskw-ng/"
 depends=("python" "python-pytz" "python-dateutil" "python-kitchen" "task")

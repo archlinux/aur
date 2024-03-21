@@ -12,6 +12,7 @@ pkgbase = python-taskw-ng
 	depends = python-dateutil
 	depends = python-kitchen
 	depends = task
+	provides = python-taskw=2.1
 	conflicts = python-taskw
 	replaces = python-taskw
 	source = taskw-ng-0.2.6.tar.gz::https://github.com/bergercookie/taskw-ng/archive/refs/tags/v0.2.6.tar.gz
