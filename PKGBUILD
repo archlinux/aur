@@ -1,27 +1,23 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: David Birks <david at tellus dot space>
 # Contributor: Jeff Henson <jeff at henson dot io>
-# Contributor: Linus Färnstrand <linus at mullvad dot net>
-# Contributor: Emīls Piņķis <emil at mullvad dot net>
-# Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
 _pkgver=2024.1
-_channel=beta
-_rel=2
-pkgver=${_pkgver}.${_channel}${_rel}  # beta
-#pkgver=${_pkgver}.${_channel}  # stable
+_channel=stable
+_rel=1
+#pkgver=${_pkgver}.${_channel}${_rel}  # beta
+pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64')
 url="https://www.mullvad.net"
 license=('GPL-3.0-or-later')
 depends=('alsa-lib' 'gtk3' 'iputils' 'libnftnl' 'libnotify' 'nss')
-makedepends=('cargo' 'git' 'go' 'libxcrypt-compat' 'nodejs>=16' 'npm>=8.3' 'protobuf')
+makedepends=('cargo' 'git' 'go' 'libxcrypt-compat' 'npm' 'protobuf')
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
-options=('!lto')
 install="${pkgname%-beta}.install"
-_tag=d10d9226cac118180cafcf1fa2b160b2f772f032  # tags/2024.1-beta2^0
+_tag=b261238598f0237aaf420354445797a12a45d907  # tags/2024.1^0
 _commit=d5772339cee9c1a0d7671968746f02499b78e245
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#commit=${_tag}"  # signed by Oskar Nyberg (raksooo), public key not uploaded yet
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
@@ -64,6 +60,7 @@ prepare() {
 
 build() {
   cd mullvadvpn-app
+  CFLAGS+=" -ffat-lto-objects"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
