@@ -6,6 +6,7 @@ pkgbase = mingw-w64-libdeflate
 	arch = any
 	license = MIT
 	checkdepends = mingw-w64-wine
+	checkdepends = mingw-w64-zlib
 	makedepends = mingw-w64-cmake
 	depends = mingw-w64-crt
 	options = staticlibs
