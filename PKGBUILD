@@ -1,7 +1,6 @@
 #Maintainer: archdevlab <https://github.com/archdevlab>
 #Credits: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 #Credits: Andreas Radke <andyrtr@archlinux.org>
-#Credits: Luca Stefani <luca.stefani.ge1@gmail.com>
 
 ################################# Arch ################################
 
