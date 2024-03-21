@@ -1,7 +1,7 @@
 pkgbase = wnr-bin
 	pkgdesc = Work/Rest Timer. Stricter. Prettier. More features.
 	pkgver = 1.30.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://getwnr.com/
 	arch = x86_64
 	license = MPL-2.0

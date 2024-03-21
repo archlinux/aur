@@ -2,7 +2,7 @@
 pkgname=wnr-bin
 pkgver=1.30.2
 _electronversion=22
-pkgrel=3
+pkgrel=4
 pkgdesc="Work/Rest Timer. Stricter. Prettier. More features. "
 arch=('x86_64')
 url="https://getwnr.com/"
