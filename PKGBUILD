@@ -1,12 +1,12 @@
 # Maintainer: JinguTech <xiuluo dot android at gmail dot com>
 # Contributor: Alkindi42
 pkgname=joplin-beta
-pkgver=2.12.18
+pkgver=2.14.20
 pkgrel=1
 pkgdesc="The latest pre-release - open source note taking and to-do application"
 arch=('x86_64')
 depends=('electron' 'gtk3' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss' 'nodejs>=17.3'
-         'nss' 'orc' 'rsync' 'libvips')
+         'nss' 'orc' 'rsync')
 optdepends=('libappindicator-gtk3: for tray icon')
 makedepends=('git' 'npm' 'yarn' 'python' 'jq' 'yq' 'node-gyp>=8.4.1')
 source=(
@@ -14,7 +14,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/laurent22/joplin/archive/refs/tags/v${pkgver}.tar.gz"
   
 )
-conflicts=('joplin' 'joplin-desktop' 'joplin-appimage')
+conflicts=('joplin' 'joplin-desktop' 'joplin-appimage' 'libvips')
 url="https://joplinapp.org"
 license=('MIT')
 
@@ -70,6 +70,10 @@ prepare() {
   echo "Deleting app-mobile"
   rm -r "${srcdir}/joplin-${pkgver}/packages/app-mobile"
   rm -r "${srcdir}/joplin-${pkgver}/packages/app-clipper"
+
+  # Taking out a comma in wrong place in package.json (probably only in 2.14.20)
+  sed -i '109s/,$//' joplin-${pkgver}/package.json
+
 }
 
 build() {
@@ -149,3 +153,7 @@ package() {
         "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/joplin.png"
   done
 }
+sha256sums=('18cca699f52f884980646359631bb59a77d190b9f91e9e3e71efa62166772557'
+            'b5c621c425cdf0b5bb07bf0353939f6991a18db81955294a47ec42d0c5593438'
+            'b46dd772eb1adf9327f6c07657acf3c627c6ea204f8de3a4481efa6db0071f5e'
+            '919e9300e66bc6c24a282cbf93c43c228cdfe3227bdb1eaa50fdadef4734901b')
