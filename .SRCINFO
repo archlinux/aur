@@ -1,12 +1,11 @@
 pkgbase = igdm-bin
 	pkgdesc = Desktop application for Instagram DMs
 	pkgver = 3.0.4
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/igdmapps/igdm
 	arch = x86_64
 	license = MIT
-	depends = electron13
-	depends = hicolor-icon-theme
+	depends = electron13-bin
 	provides = igdm=3.0.4
 	conflicts = igdm
 	source = igdm-3.0.4.deb::https://github.com/igdmapps/igdm/releases/download/v3.0.4/IGdm_3.0.4_amd64.deb
@@ -14,6 +13,6 @@ pkgbase = igdm-bin
 	source = igdm.sh
 	sha256sums = c65181d96bc3886b77e37fe76d4a17626399ed3253a6353b78759fe0a1e40d99
 	sha256sums = cfe59b21a32217b32573315adbcc0f3621aeaa8dec634e54eb30a0cf260867cc
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = igdm-bin
