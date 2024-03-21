@@ -1,6 +1,6 @@
 pkgbase = crabz
 	pkgdesc = Cross-platform compression and decompression tool
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/sstadick/crabz
 	changelog = CHANGELOG.md
@@ -11,7 +11,7 @@ pkgbase = crabz
 	makedepends = cmake
 	depends = gcc-libs
 	options = !lto
-	source = crabz-0.9.0.tar.gz::https://github.com/sstadick/crabz/archive/v0.9.0.tar.gz
-	sha256sums = 8b5df26a8ff0b1252d5a31c7135b39aa328e9a256c8869c2e9f346d561e522e7
+	source = crabz-0.10.0.tar.gz::https://github.com/sstadick/crabz/archive/v0.10.0.tar.gz
+	sha256sums = 2bbd8eb669a6570b104a0eb412d2492d5a9296524964cd676440069d27f52e6c
 
 pkgname = crabz
