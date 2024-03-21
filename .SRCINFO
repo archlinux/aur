@@ -9,6 +9,8 @@ pkgbase = bef-minimal
 	makedepends = automake
 	makedepends = autoconf
 	depends = xxhash
+	provides = bef
+	conflicts = bef
 	source = https://github.com/gbletr42/bef/archive/refs/tags/release-v0.2.2.tar.gz
 	sha256sums = ddadf122076d7142481ff1b60ab611a9f58455285b9561d777bdbce9bb8bf4d2
 
