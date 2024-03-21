@@ -1,0 +1,13 @@
+pkgbase = nix-search-cli
+	pkgdesc = CLI client for search.nixos.org/packages
+	pkgver = 20240321
+	pkgrel = 1
+	url = https://github.com/peterldowns/nix-search-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	source = git+https://github.com/peterldowns/nix-search-cli
+	sha256sums = SKIP
+
+pkgname = nix-search-cli
