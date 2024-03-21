@@ -1,9 +1,9 @@
 # Maintainer: 
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=protonmail-desktop
-_pkgver=1.0.0-beta
+_pkgver=1.0.1-beta
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Proton official desktop application for Proton Mail and Proton Calendar"
 arch=('x86_64')
 url="https://proton.me"
