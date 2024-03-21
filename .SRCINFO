@@ -17,6 +17,7 @@ pkgbase = non-daw-git
 	depends = liblrdf
 	depends = hicolor-icon-theme
 	depends = ntk-git
+	depends = libsndfile
 	provides = non-timeline
 	provides = non-mixer
 	provides = non-session-manager
