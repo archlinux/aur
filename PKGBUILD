@@ -11,9 +11,12 @@ pkgdesc="Programming language designed for productive parallel computing at scal
 url="https://chapel-lang.org/"
 arch=('x86_64' 'arm')
 license=('Apache')
+provides=("${_gitname}")
+conflicts=("${_gitname}")
 # depends=('python' 'perl' 'llvm' 'clang')
-depends=('python' 'perl' 'llvm15' 'llvm15-libs' 'clang15') # if using old versions
+depends=('python' 'perl' 'llvm16' 'llvm16-libs' 'clang16') # if using old versions
 makedepends=('git' 'cmake')
+options=('!debug' '!lto')  # build currently fails from default flags these add
 source=("git+https://github.com/${_gituser}/${_gitname}.git")
 sha256sums=('SKIP') # source is not static
 
@@ -44,8 +47,8 @@ build() {
         # if depending on old versions like llvmXX and clangXX
         export CHPL_TARGET_CPU="native"
         export CHPL_HOST_COMPILER="clang"
-        export CHPL_HOST_CC="/usr/lib/llvm15/bin/clang"
-        export CHPL_HOST_CXX="/usr/lib/llvm15/bin/clang++"
+        export CHPL_HOST_CC="/usr/lib/llvm16/bin/clang"
+        export CHPL_HOST_CXX="/usr/lib/llvm16/bin/clang++"
         ./configure --prefix=/usr
         make
 }
