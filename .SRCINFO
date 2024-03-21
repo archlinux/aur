@@ -1,17 +1,16 @@
 pkgbase = codex-bin
 	pkgdesc = A free note-taking software for programmers and Computer Science students
 	pkgver = 2.0.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://codexnotes.com/
 	arch = x86_64
 	license = CC-BY-NC-4.0
-	depends = hicolor-icon-theme
-	depends = electron26
+	depends = electron26-bin
 	provides = codex=2.0.4
 	conflicts = codex
 	source = codex-2.0.4.deb::https://github.com/jcv8000/Codex/releases/download/v2.0.4/Codex-2.0.4-amd64.deb
 	source = codex.sh
 	sha256sums = e36b9cab0f56cf8084d3657e754629df065042aabe704efd15a4e9985529c321
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = codex-bin
