@@ -9,12 +9,14 @@
 : ${_build_pgo_reuse:=true}
 : ${_build_pgo_xvfb:=false}
 
+: ${_build_private:=false}
+
 unset _pkgtype
 
 ## basic info
 _pkgname="floorp"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=11.11.0
+pkgver=11.11.1
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -109,7 +111,7 @@ _main_package() {
   )
 
   sha256sums=(
-    'b05d551fd0fe0114e79cbd9c2e872d5e8ced8299774a95219d332cd098c8d3ef'
+    '20f8e200bf786d55849f5934b55b508d2a0d1cd8de67a9f9c88ecb8205aed44d'
     'SKIP'
     'SKIP'
     '07a63f189beaafe731237afed0aac3e1cfd489e432841bd2a61daa42977fb273'
@@ -234,6 +236,16 @@ export CXX='clang++'
 export NM=llvm-nm
 export RANLIB=llvm-ranlib
 END
+
+  local _private="$SRCDEST/private-components.zip"
+  if [[ "${_build_private::1}" == "t" ]] && [ -f "$_private" ] ; then
+    echo "Enabling private components..."
+    mkdir -p floorp/Floorp-private-components
+    bsdtar -C floorp/Floorp-private-components --strip-components=1 -xf "$_private"
+    cat >>../mozconfig <<END
+ac_add_options --enable-private-components
+END
+  fi
 }
 
 build() {
@@ -257,7 +269,7 @@ build() {
     # find previous profile file...
     local _old_profdata _old_jarlog _pkgver_old tmp_old tmp_new
     _pkgver_prof=$(
-      cd "${SRCDEST:-$startdir}"
+      cd "$SRCDEST"
       for i in *.profdata ; do [ -f "$i" ] && echo "$i" ; done \
         | sort -rV | head -1 | sed -E 's&^[^0-9]+-([0-9\.]+)-merged.profdata&\1&'
     )
@@ -277,8 +289,8 @@ build() {
       _pkgver_prof="$pkgver"
     fi
 
-    local _old_profdata="${SRCDEST:-$startdir}/$_pkgname-$_pkgver_prof-merged.profdata"
-    local _old_jarlog="${SRCDEST:-$startdir}/$_pkgname-$_pkgver_prof-jarlog"
+    local _old_profdata="$SRCDEST/$_pkgname-$_pkgver_prof-merged.profdata"
+    local _old_jarlog="$SRCDEST/$_pkgname-$_pkgver_prof-jarlog"
 
     # Restore old profile
     if [[ "${_build_pgo_reuse::1}" == "t" ]] ; then
@@ -396,7 +408,7 @@ END
   install -Dvm644 /dev/stdin "$distini" <<END
 [Global]
 id=archlinux
-version=${pkgver}
+version=rolling
 about=Floorp for Arch Linux
 
 [Preferences]
