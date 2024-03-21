@@ -1,14 +1,14 @@
 # Maintainer: Faerbit <faerbit at gmail dot com>
 
 pkgname=usbguard-notifier
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A tool for detecting usbguard policy and device presence changes"
 arch=('x86_64')
 url="https://github.com/Cropi/usbguard-notifier"
-license=('GPL2')
+license=('GPL-2.0-only')
 depends=('usbguard' 'libnotify' 'librsvg')
-makedepends=('catch2' 'asciidoc')
+makedepends=('catch2-v2' 'asciidoc')
 source=("https://github.com/Cropi/usbguard-notifier/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz"{,.asc})
 md5sums=('SKIP'
          'SKIP')

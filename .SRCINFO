@@ -1,19 +1,19 @@
 pkgbase = usbguard-notifier
 	pkgdesc = A tool for detecting usbguard policy and device presence changes
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/Cropi/usbguard-notifier
 	arch = x86_64
-	license = GPL2
-	makedepends = catch2
+	license = GPL-2.0-only
+	makedepends = catch2-v2
 	makedepends = asciidoc
 	depends = usbguard
 	depends = libnotify
 	depends = librsvg
-	source = https://github.com/Cropi/usbguard-notifier/releases/download/usbguard-notifier-0.1.0/usbguard-notifier-0.1.0.tar.gz
-	source = https://github.com/Cropi/usbguard-notifier/releases/download/usbguard-notifier-0.1.0/usbguard-notifier-0.1.0.tar.gz.asc
+	source = https://github.com/Cropi/usbguard-notifier/releases/download/usbguard-notifier-0.1.1/usbguard-notifier-0.1.1.tar.gz
+	source = https://github.com/Cropi/usbguard-notifier/releases/download/usbguard-notifier-0.1.1/usbguard-notifier-0.1.1.tar.gz.asc
 	validpgpkeys = 42363D1C30A574A4EE5D9C87E650CBBFEF3AAC4B
-	md5sums = SKIP
+	md5sums = 482b10310b5aab4c4e744729d4ba2ca4
 	md5sums = SKIP
 
 pkgname = usbguard-notifier
