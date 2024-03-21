@@ -1,7 +1,7 @@
 pkgbase = android-armv7a-eabi-openpmix
 	pkgdesc = Extended version of the PMI standard (Android, armv7a-eabi)
 	pkgver = 4.2.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/openpmix/openpmix
 	arch = any
 	license = BSD-3-Clause
@@ -20,8 +20,10 @@ pkgbase = android-armv7a-eabi-openpmix
 	source = https://github.com/openpmix/openpmix/releases/download/v4.2.9/pmix-4.2.9.tar.gz
 	source = 0001-Force-32-bits-compile.patch
 	source = 0002-Unversioned-libs.patch
+	source = 0003-Add-missing-headers.patch
 	md5sums = 6ef6da8a14d670712431fd62194bd390
 	md5sums = d0032b4f6868acb7b3a593f1a76f0eed
 	md5sums = 47db6b8ab5894753aa4c508f64c75389
+	md5sums = a5c7336af3f4abce17ff7ecc1d08573a
 
 pkgname = android-armv7a-eabi-openpmix
