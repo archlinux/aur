@@ -4,14 +4,15 @@
 _pkgname=suyu
 _branch=dev
 pkgname=suyu-dev-qt6-git
-pkgver=r27191.e29c55dd98
+pkgver=r27265.383a243aa7
 pkgrel=1
 pkgdesc="suyu is the afterlife the world's most popular, open-source, Nintendo Switch emulator (dev branch with QT6)"
 arch=(x86_64)
 url=https://gitlab.com/suyu-emu/suyu
 license=(GPL-3.0-or-later)
 provides=('suyu')
-conflics=(suyu-dev-git suyu-git)
+conflicts=(suyu-dev-git suyu-git)
+provides=(suyu-dev-git suyu-git)
 install=$pkgname.install
 depends=(
   brotli
