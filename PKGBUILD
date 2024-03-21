@@ -1,19 +1,18 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=firmware-manager-git
 _app_id=com.system76.FirmwareManager
-pkgver=0.1.5.r7.g27633c6
+pkgver=0.1.5.r11.g5c8a9c7
 pkgrel=1
 pkgdesc="Generic framework and GTK UI for firmware updates from system76-firmware and fwupd"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/firmware-manager"
 license=('GPL-3.0-or-later')
 depends=('dbus' 'gtk3' 'libgudev' 'openssl' 'polkit')
-makedepends=('cargo' 'git')
+makedepends=('git' 'rustup')
 optdepends=('fwupd: Generic firmware updates'
             'system76-firmware-daemon: System76 firmware updates')
 conflicts=('libfirmware-manager')
 replaces=('libfirmware-manager-git')
-options=('!lto')
 source=('git+https://github.com/pop-os/firmware-manager.git'
         "${_app_id}.policy"
         "${pkgname%-git}.sh")
@@ -29,14 +28,13 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export CARGO_HOME="$srcdir/cargo-home"
-  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd "${pkgname%-git}"
+  CFLAGS+=" -ffat-lto-objects"
   export CARGO_HOME="$srcdir/cargo-home"
-  export RUSTUP_TOOLCHAIN=stable
   make prefix=/usr
 }
 
