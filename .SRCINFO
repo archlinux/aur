@@ -1,0 +1,20 @@
+pkgbase = nginx-mainline-mod-coraza-git
+	pkgdesc = Coraza Nginx Connector (module for mainline nginx)
+	pkgver = r15.a746b53
+	pkgrel = 1
+	url = https://coraza.io/
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	makedepends = nginx-mainline-src
+	depends = nginx-mainline
+	depends = libcoraza
+	provides = nginx-mainline-mod-coraza
+	conflicts = nginx-mainline-mod-coraza
+	source = git+https://github.com/corazawaf/coraza-nginx
+	b2sums = SKIP
+
+pkgname = nginx-mainline-mod-coraza-git
