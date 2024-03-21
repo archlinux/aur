@@ -1,16 +1,16 @@
 pkgbase = izpack-git
 	pkgdesc = Tool for packaging applications on the Java platform as cross-platform installers (git version)
-	pkgver = 5.1.3.r66.g4af48448d
+	pkgver = 5.2.1.r30.g3073356e5
 	pkgrel = 1
 	url = http://izpack.org/
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	checkdepends = gtk2
 	checkdepends = gnome-themes-standard
 	makedepends = git
 	makedepends = maven
 	depends = sh
-	depends = java-environment=8
+	depends = java-environment=11
 	depends = hicolor-icon-theme
 	optdepends = python: for wrapper utils
 	optdepends = p7zip: for izpack2exe wrapper
@@ -21,4 +21,3 @@ pkgbase = izpack-git
 	sha256sums = 42609fa684456afe770d43670fcc1ffcce099f25a76cea00df3f8323aa95f582
 
 pkgname = izpack-git
-

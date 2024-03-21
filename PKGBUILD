@@ -1,13 +1,13 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=izpack-git
-pkgver=5.1.3.r66.g4af48448d
+pkgver=5.2.1.r30.g3073356e5
 pkgrel=1
 pkgdesc='Tool for packaging applications on the Java platform as cross-platform installers (git version)'
 arch=('any')
 url='http://izpack.org/'
-license=('Apache')
-depends=('sh' 'java-environment=8' 'hicolor-icon-theme')
+license=('Apache-2.0')
+depends=('sh' 'java-environment=11' 'hicolor-icon-theme')
 optdepends=('python: for wrapper utils'
             'p7zip: for izpack2exe wrapper'
             'upx: for izpack2exe wrapper')
@@ -41,7 +41,7 @@ package() {
     # install
     local _ver
     _ver="$(find izpack/izpack-dist/target -type f -name 'izpack-dist-*.jar' |
-        sort | head -n1 | sed 's/\.jar$//;s/.*izpack-dist-//')"
+        sort | head -n1 | sed 's/\.jar$//;s/-tests$//;s|.*/izpack-dist-||')"
     printf '%s\n' '0' '1' '1' '1' "${pkgdir}/opt/izpack" \
                   'O' '1' 'Y' '1' 'N' 'N' 'Y' "${pkgdir}/opt/izpack/auto-install.xml" |
     java -jar "izpack/izpack-dist/target/izpack-dist-${_ver}.jar" -console
