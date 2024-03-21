@@ -1,7 +1,7 @@
 pkgbase = parrot
 	pkgdesc = A Rust-based GUI in Tauri for pacman using the wrapper paru.
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dan-online/parrot
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,6 @@ pkgbase = parrot
 	makedepends = yarn
 	depends = gtk3
 	depends = webkit2gtk
-	options = !lto
 	source = parrot-1.0.6.tar.gz::https://github.com/dan-online/parrot/archive/refs/tags/1.0.6.tar.gz
 	sha256sums = 32c7a8b20a908e0d57de4c7ff503af117c34b1b93f76937daa3380edd3116882
 
