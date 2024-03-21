@@ -6,7 +6,7 @@
 # basic info
 _pkgname="art-rawconverter"
 pkgname="$_pkgname-bin"
-pkgver=1.21.1
+pkgver=1.21.2
 pkgrel=1
 pkgdesc="Raw image converter forked from RawTherapee with ease of use in mind"
 url="https://bitbucket.org/agriggio/art"
@@ -43,7 +43,7 @@ _main_chaotic() {
   pkgrel="${pkgrel}.1"
 
   _dl_url="https://cdn-mirror.chaotic.cx/chaotic-aur/$CARCH"
-  source=("$_dl_url/$_filename")
+  source+=("$_dl_url/$_filename")
   sha256sums+=('SKIP')
 
   package() {
@@ -78,12 +78,8 @@ _main_chaotic() {
 
 # bitbucket
 _main_bitbucket() {
-  source=(
-    "$_pkgname-$pkgver.tar.xz"::"$url/downloads/ART-$pkgver-linux64.tar.xz"
-  )
-  sha256sums+=(
-    'e3d07a4685aee2558ad620bcd1c23b2371a4b4fa444211d8d32175c7b5f0b0aa'
-  )
+  source+=("$_pkgname-$pkgver.tar.xz"::"$url/downloads/ART-$pkgver-linux64.tar.xz")
+  sha256sums+=('dd0222aa1963ea0c428283a4b4e45ff2a26093b6bf784dd886979c90ee9ff323')
 
   prepare() {
     cp -rl "ART-$pkgver-linux64" "$_pkgname-$pkgver"
