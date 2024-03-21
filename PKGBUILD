@@ -1,17 +1,15 @@
-# system requirements: Ensembl VEP (API version 104) and the Perl modulesDBI and DBD::mysql must be installed. See the package READMEand Ensembl installation instructions:http://www.ensembl.org/info/docs/tools/vep/script/vep_download.html#installer
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ensemblVEP
-_pkgver=1.38.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
-pkgrel=4
-pkgdesc='R Interface to Ensembl Variant Effect Predictor'
-arch=('any')
-url="https://bioconductor.org/packages/3.15/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=1
+pkgdesc="R Interface to Ensembl Variant Effect Predictor"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
-  r
   r-biocgenerics
   r-biostrings
   r-genomeinfodb
@@ -23,15 +21,16 @@ depends=(
 optdepends=(
   r-runit
 )
-source=("https://bioconductor.org/packages/3.15/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c8ac6f434fe43cfc9bb1d7fe39bd233a4c93b2809dc72bcc736083df9bae94f6')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('378569d68f5d4973a7b16eb7cc2b9327')
+b2sums=('567065cc42b2013cb4d6bdcc8fa27b32f94f42d9df58497019e0b081802249e08d6c21cabdc8b1d10d2df51edfd2661ab1272e2ea84eb255b33ce5060befc79a')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
