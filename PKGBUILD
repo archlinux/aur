@@ -2,7 +2,7 @@
 
 pkgname=python-langchain-community
 _pkgname=${pkgname#python-}
-pkgver=0.0.28
+pkgver=0.0.29
 pkgrel=1
 pkgdesc="Community contributed LangChain integrations."
 url="https://pypi.org/project/langchain-community"
@@ -62,8 +62,8 @@ license=('MIT')
 arch=('any')
 _src_name="${_pkgname/-/_}-${pkgver}"
 source=("https://pypi.org/packages/source/${_pkgname::1}/${_pkgname}/${_src_name}.tar.gz"
-        "https://github.com/langchain-ai/langchain/raw/v0.1.12/LICENSE")
-sha256sums=('8664d243a90550fc5ddc137b712034e02c8d43afc8d4cc832ba5842b44c864ce'
+        "https://github.com/langchain-ai/langchain/raw/v0.1.13/LICENSE")
+sha256sums=('d88107fafa9fe2c5733da9630c68d9ee51cd33b1c88a4950e7a2d9a38f7e7aa3'
             '4ec67e4ca6e6721dba849b2ca82261597c86a61ee214bbf21416006b7b2d0478')
 
 build() {
