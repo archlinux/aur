@@ -2,7 +2,7 @@
 pkgname=wavy-bin
 pkgver=1.0.1
 _electronversion=28
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple protocol testing tool that supports various connection types(now serial port only)."
 arch=('x86_64')
 url="https://github.com/novrain/wavy"
@@ -20,11 +20,12 @@ source=(
 )
 sha256sums=('8a16bdec4c84fb69ac3124e093b13a485e09aa5980b8104a0f40a158f965452c'
             '9f1a32e4c028facd2d42a3e5bb8c0bf6af386e3d48d2c205bb253694826f57be'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
 }
