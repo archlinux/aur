@@ -15,7 +15,7 @@ _majorver=${pkgver%%.*}
 pkgrel=1
 pkgdesc='The GNU Compiler Collection'
 arch=(x86_64)
-license=(GPL3 LGPL FDL custom)
+license=(GPL-3.0-with-GCC-exception GFDL-1.3-or-later)
 url='https://gcc.gnu.org'
 makedepends=(
   binutils
@@ -27,7 +27,6 @@ makedepends=(
   lib32-gcc-libs
   libisl
   libmpc
-  libxcrypt
   python
   zstd
 )
@@ -78,7 +77,7 @@ build() {
       --libexecdir=/usr/lib
       --mandir=/usr/share/man
       --infodir=/usr/share/info
-      --with-bugurl=https://bugs.archlinux.org/
+      --with-bugurl=https://gitlab.archlinux.org/archlinux/packaging/packages/gcc/-/issues \
       --with-build-config=bootstrap-lto
       --with-linker-hash-style=gnu
       --with-system-zlib
@@ -112,7 +111,7 @@ build() {
   CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
   "$srcdir/gcc/configure" \
-    --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++,d,rust \
+    --enable-languages=ada,c,c++,d,fortran,go,lto,m2,objc,obj-c++,rust \
     --enable-bootstrap \
     "${_confflags[@]:?_confflags unset}"
 
@@ -259,7 +258,7 @@ package_gcc-git() {
   make -C $CHOST/32/libsanitizer/asan DESTDIR="$pkgdir" install-nodist_toolexeclibHEADERS
 
   make -C gcc DESTDIR="$pkgdir" install-man install-info
-  rm "$pkgdir"/usr/share/man/man1/{gccgo,gfortran,lto-dump,gdc}.1
+  rm "$pkgdir"/usr/share/man/man1/{gccgo,gfortran,lto-dump,gdc,gm2}.1
   rm "$pkgdir"/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn,gdc}.info
 
   make -C libcpp DESTDIR="$pkgdir" install
@@ -267,6 +266,12 @@ package_gcc-git() {
 
   # many packages expect this symlink
   ln -s gcc "$pkgdir"/usr/bin/cc
+
+  # create cc-rs compatible symlinks
+  # https://github.com/rust-lang/cc-rs/blob/1.0.73/src/lib.rs#L2578-L2581
+  for binary in {c++,g++,gcc,gcc-ar,gcc-nm,gcc-ranlib}; do
+    ln -s /usr/bin/${binary} "${pkgdir}"/usr/bin/x86_64-linux-gnu-${binary}
+  done
 
   # POSIX conformance launcher scripts for c89 and c99
   install -Dm755 "$srcdir/c89" "$pkgdir/usr/bin/c89"
@@ -425,14 +430,14 @@ package_lib32-gcc-libs-git() {
   rm -f "$pkgdir/$_libdir/32/libgcc_eh.a"
 
   for lib in libatomic \
-    libgfortran \
-    libgo \
-    libgomp \
-    libitm \
-    libquadmath \
-    libsanitizer/{a,l,ub}san \
-    libstdc++-v3/src \
-    libvtv; do
+             libgfortran \
+             libgo \
+             libgomp \
+             libitm \
+             libquadmath \
+             libsanitizer/{a,l,ub}san \
+             libstdc++-v3/src \
+             libvtv; do
     make -C $CHOST/32/$lib DESTDIR="$pkgdir" install-toolexeclibLTLIBRARIES
   done
 
@@ -447,12 +452,11 @@ package_lib32-gcc-libs-git() {
   # Install Runtime Library Exception
   install -Dm644 "$srcdir/gcc/COPYING.RUNTIME" \
     "$pkgdir/usr/share/licenses/lib32-gcc-libs/RUNTIME.LIBRARY.EXCEPTION"
-
 }
 
 package_gcc-d-git() {
   pkgdesc="D frontend for GCC (git version)"
-  depends=("gcc-git=$pkgver-$pkgrel")
+  depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
   provides=(gcc-d gdc{,-git})
   conflicts=(gcc-d)
   replaces=(gdc-git)
@@ -467,6 +471,26 @@ package_gcc-d-git() {
   make -C $CHOST/libphobos DESTDIR="$pkgdir" install
   rm -f "$pkgdir/usr/lib/"lib{gphobos,gdruntime}.so*
   rm -f "$pkgdir/usr/lib32/"lib{gphobos,gdruntime}.so*
+
+  # Install Runtime Library Exception
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
+    "$pkgdir/usr/share/licenses/$pkgname/"
+}
+
+package_gcc-m2-git() {
+  pkgdesc='Modula-2 frontend for GCC'
+  depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
+  provides=(gcc-m2 )
+  conflicts=(gcc-m2)
+
+  cd gcc-build
+  make -C gcc DESTDIR="$pkgdir" m2.install-{common,man,info}
+
+  install -Dm755 gcc/cc1gm2 "$pkgdir/$_libdir"/cc1gm2
+  install -Dm755 gcc/gm2 "$pkgdir"/usr/bin/gm2
+
+  make -C $CHOST/libgm2 DESTDIR="$pkgdir" install
 
   # Install Runtime Library Exception
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
