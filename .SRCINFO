@@ -1,0 +1,22 @@
+pkgbase = battop-bin
+	pkgdesc = Interactive batteries viewer (binary release)
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/svartalf/rust-battop
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	provides = battop
+	conflicts = battop
+	source = battop-0.2.4::https://github.com/svartalf/rust-battop/releases/download/v0.2.4/battop-v0.2.4-x86_64-unknown-linux-gnu
+	source = https://github.com/svartalf/rust-battop/raw/v0.2.4/assets/screenshot.png
+	source = CHANGELOG-0.2.4.md::https://github.com/svartalf/rust-battop/raw/v0.2.4/CHANGELOG.md
+	source = LICENSE-APACHE-0.2.4::https://github.com/svartalf/rust-battop/raw/v0.2.4/LICENSE-APACHE
+	source = LICENSE-MIT-0.2.4::https://github.com/svartalf/rust-battop/raw/v0.2.4/LICENSE-MIT
+	sha256sums = 8b601903d550a2efe3825c57720cff17a89783828885d99d3b9519895cd10de5
+	sha256sums = bfde06b77c9024194725011fe98fe00ae364a5d48689a0366fda45b0dbcfbd23
+	sha256sums = c7637817ad4e4cdf838b4f3a2b9683d85b8eac744cfd114e702fa7aa7ed4b8fb
+	sha256sums = 53297eaaac87f6c139b2a6b8e94be8bcb594b7debcb13d12a22c2d1ad79718a5
+	sha256sums = 2f95702fc749faea961cd826fec7a6611319bc7fc860db0c1011b706fe81f934
+
+pkgname = battop-bin
