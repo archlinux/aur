@@ -1,34 +1,28 @@
-# Maintainer: DuckSoft <realducksoft at gmail dot com>
 pkgname=mybase-desktop-bin
-pkgver=735
+pkgver=8216
 pkgrel=1
 pkgdesc='A high-quality free-form database program for personal note-taking and knowledgebase management'
 arch=('x86_64')
 url='http://www.wjjsoft.com'
 license=('custom: commercial')
-depends=('zlib' 'glibc' 'gcc-libs' 'libpng12')
+depends=()
 provides=('mybase-desktop')
 conflicts=('mybase-desktop')
 source=(
-    "http://www.wjjsoft.com/downloads/myBase-Desktop-Ver${pkgver}-Linux-amd64.tar.bz2"
-    "myBase.desktop"
+    "http://www.wjjsoft.com/downloads/Mybase-Desktop-Ver${pkgver}-Linux-amd64.tar.xz"
+    "Mybase8.desktop"
 )
-sha512sums=(
-    '722d5fa9c1e4f3af7edbb4855776b2ec6f877df935aac154edeafb79e86d4edd98bb0eea07079f729df0f90db1862ad1904df4a590bd423222a3232e92f66a10'
-    '75ee29c84a1648f9c76f94b73034f3d432658709e1b04b15d41111d7f892f371967803e34d60e06f96903ecc9b739972133589e1076c8e18aafc9a802f101765'
-)
+sha512sums=('8595d08dd3a16601cb5a4325176d2ee8d8776fa90f352abaab59c2afd31cb54c19705f85d7c752f3e1dc3dade544395acb8172532e6d62665c9917f56a4df412'
+            'ae55b128ab75c47a2897f1ff29ee118d5e4bbdd24e5e998a065bd31c7f42d815fc364d7b3007a6c26f006fa5bee204bdc5164cb5e638ce4ddb2c3096c7fc8a01')
 
 package() {
-    install -d "${pkgdir}/usr/share/licenses/mybase-desktop"
     install -d "${pkgdir}/usr/share/applications"
     install -d "${pkgdir}/usr/share/icons" 
     install -d "${pkgdir}/usr/bin"
     install -d "${pkgdir}/opt"
-    
-    
-    cp -r "${srcdir}/myBase7" "${pkgdir}/opt/"
-    install -m644 "${srcdir}/myBase7/license.txt" "${pkgdir}/usr/share/licenses/mybase-desktop/LICENSE"
-    install -m644 "${srcdir}/myBase7/images/ico_nyfdb.png" "${pkgdir}/usr/share/icons/myBase.png"
-    install -m644 "${srcdir}/myBase.desktop" "${pkgdir}/usr/share/applications/myBase.desktop"
-    ln -s /opt/myBase7/myBase.run "${pkgdir}/usr/bin/myBase"
+
+    cp -r "${srcdir}/Mybase8" "${pkgdir}/opt/"
+    install -m644 "${srcdir}/Mybase8/nyf8_logo_256.png" "${pkgdir}/usr/share/icons/Mybase8.png"
+    install -m644 "${srcdir}/Mybase8.desktop" "${pkgdir}/usr/share/applications/Mybase8.desktop"
+    ln -s /opt/MyBase8/Mybase.run "${pkgdir}/usr/bin/Mybase8"
 }
