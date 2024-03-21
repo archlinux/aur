@@ -105,7 +105,7 @@ package() {
     install -Dm 755 -t "$pkgdir/usr/bin" setup_vkd3d_proton
 }
 
-sha256sums=('SKIP'
+sha256sums=('610b8c96ec293fad2318a41a4746de23bf377e5071220327d8a2135b875d2481'
             'bcc15521e4c7f966a0192a1dabb7fb4935b33db39344ab5b861f9d81486f1362'
             '5a72af2395f7bc700d566add343b8742ebd6facc0d682f1386be44cce1d19c5b'
             '67815eed9d47bbf610e23c6a1e4954c11371886c2ca73555dd9f1d6fbebb1323')
