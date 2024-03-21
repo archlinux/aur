@@ -3,7 +3,7 @@ pkgname=dk-c++-bin
 _pkgname=DK-C++
 pkgver=1.3.0
 _electronversion=19
-pkgrel=6
+pkgrel=7
 pkgdesc="A C++ IDE designed for easy use."
 arch=('x86_64')
 url="https://github.com/EntityPlantt/DK-CPP"
@@ -17,7 +17,11 @@ depends=(
 )
 makedepends=(
     'gendesk'
-    'imagemagick'
+    'icoutils'
+)
+options=(
+    '!strip'
+    '!emptydirs'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.7z::${url}/releases/download/v${pkgver}/${_pkgname}-linux-x64.7z"
@@ -26,14 +30,15 @@ source=(
 )
 sha256sums=('3b59ed87183c16072a6db41108c940cece6d5c51a452c6a48c78f1b8d69315d2'
             '118e8d39dc5b8e68c533eb798f8e569b056c1238c7d8a2ab4c7eefd7067eea0d'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories="Development" --name="${_pkgname}" --exec="${pkgname%-bin}"
-    convert "${srcdir}/resources/app/icon.ico" "${srcdir}/${pkgname%-bin}.png"
+    icotool -x "${srcdir}/resources/app/icon.ico" -o "${srcdir}/${pkgname%-bin}.png"
     sed "s|icon.ico|icon.png|g" -i "${srcdir}/resources/app/app.js"
     sed "s|icon.ico|icon.png|g" -i "${srcdir}/resources/app/installer.js"
     install -Dm644 "${srcdir}/${pkgname%-bin}.png" "${srcdir}/resources/app/icon.png"
