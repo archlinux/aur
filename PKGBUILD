@@ -1,13 +1,13 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=izpack
-pkgver=5.1.3
-pkgrel=2
+pkgver=5.2.1
+pkgrel=1
 pkgdesc='Tool for packaging applications on the Java platform as cross-platform installers'
 arch=('any')
 url='http://izpack.org/'
-license=('Apache')
-depends=('sh' 'java-environment=8' 'hicolor-icon-theme')
+license=('Apache-2.0')
+depends=('sh' 'java-environment=11' 'hicolor-icon-theme')
 optdepends=('python: for wrapper utils'
             'p7zip: for izpack2exe wrapper'
             'upx: for izpack2exe wrapper')
@@ -15,7 +15,7 @@ makedepends=('maven')
 checkdepends=('gtk2' 'gnome-themes-standard')
 source=("https://github.com/izpack/izpack/archive/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
         '010-izpack-compile.patch')
-sha256sums=('5c82c115ce58d476cc8dbc7c7e5aa6069511df0dcc8b657c3a7ddb9afc0363be'
+sha256sums=('dd3b35e74f982d338129663bfd333a51d7e6c4b92db6d55c7b952e9bc9d2072e'
             '42609fa684456afe770d43670fcc1ffcce099f25a76cea00df3f8323aa95f582')
 
 prepare() {
