@@ -2,7 +2,7 @@
 # Contributor: Jonas Witschel <diabonas@archlinux.org>
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
-pkgver=060.r6794.4980bad
+pkgver=060.r6795.5d2bda4
 pkgrel=21
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
