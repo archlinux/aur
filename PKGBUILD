@@ -2,7 +2,7 @@
 
 pkgname=hedgewars-server-hg
 pkgver=r15991+.00bf5adba849+
-pkgrel=1
+pkgrel=2
 pkgdesc="Turn-based strategy artillery game similiar to Worms (Server component)"
 arch=('x86_64')
 url="https://hedgewars.org"
@@ -33,7 +33,7 @@ build() {
 
     runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
         --prefix=/usr --docdir=/usr/share/doc/$pkgname --datasubdir=$pkgname --enable-tests \
-        --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid --ghc-option=-fllvm
+        --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid
     runhaskell Setup build $MAKEFLAGS
 }
 
