@@ -3,13 +3,13 @@ _base=tfel-mfront
 _upstream=tfel
 pkgname=${_base}-git
 pkgver=20240222.r2750.0459fabae
-pkgrel=2
+pkgrel=3
 pkgdesc="TFEL/MFront introduce DSLs based on C++ to handle material knowledge"
 arch=(x86_64)
 url="https://github.com/thelfer/${_upstream}"
 license=(GPL3)
 depends=(gcc-libs gnuplot boost boost-libs python python-numpy)
-provides=(tfel mfront)
+provides=(tfel mfront=5.0.0 ${_base}=5.0.0)
 makedepends=(cmake gcc-fortran)
 optdepends=(calculix)
 source=(${_base}::git+${url}#branch=master)

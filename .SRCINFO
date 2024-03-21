@@ -1,7 +1,7 @@
 pkgbase = tfel-mfront-git
 	pkgdesc = TFEL/MFront introduce DSLs based on C++ to handle material knowledge
 	pkgver = 20240222.r2750.0459fabae
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/thelfer/tfel
 	arch = x86_64
 	license = GPL3
@@ -15,7 +15,8 @@ pkgbase = tfel-mfront-git
 	depends = python-numpy
 	optdepends = calculix
 	provides = tfel
-	provides = mfront
+	provides = mfront=5.0.0
+	provides = tfel-mfront=5.0.0
 	source = tfel-mfront::git+https://github.com/thelfer/tfel#branch=master
 	sha512sums = SKIP
 
