@@ -1,11 +1,10 @@
 pkgbase = gpt-anywhere-bin
 	pkgdesc = Use GPT anywhere with just one shortcut.
 	pkgver = 0.0.1
-	pkgrel = 7
+	pkgrel = 8
 	url = http://jinay.dev/gpt-anywhere/
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = hicolor-icon-theme
 	depends = gtk3
 	provides = gpt-anywhere=0.0.1
 	conflicts = gpt-anywhere

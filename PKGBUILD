@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gpt-anywhere-bin
 pkgver=0.0.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Use GPT anywhere with just one shortcut."
 arch=('x86_64')
 url="http://jinay.dev/gpt-anywhere/"
@@ -10,7 +10,6 @@ license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'hicolor-icon-theme'
     'gtk3'
 )
 source=(
