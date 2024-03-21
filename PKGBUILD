@@ -5,10 +5,10 @@
 
 pkgname=pandoc-crossref-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.3.17.0b.r2.ga428e2d
+pkgver=0.3.17.0e.r1.g060a049
 _pandoc_type=version
-_pandoc_ver=3.1.11.1
-_pandoc_commit=714ed52213fd6649350ccebe741caefc11cc5a04
+_pandoc_ver=3.1.12.3
+_pandoc_commit=b1e2e452deb36e050c0b81c4c2351d5a829d2977
 pkgrel=1
 pkgdesc="Pandoc filter for cross-references (static build)"
 url="https://github.com/lierdakil/pandoc-crossref"
@@ -18,19 +18,42 @@ conflicts=("pandoc-crossref")
 provides=("$_pkgname=${pkgver%%.r*}")
 replaces=('pandoc-crossref-bin' 'pandoc-crossref-static' 'pandoc-crossref-lite')
 depends=("pandoc=$_pandoc_ver")
-makedepends=('stack' 'pandoc')
-source=("$pkgname::git+$url.git" ver-bump.patch)
-sha256sums=('SKIP'
-            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+makedepends=('stack' 'pandoc' 'yq')
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
     git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+_bumpVer() {
+    yq -i --yaml-output --arg pkg "$1" --arg ver "$2" \
+        "$(cat <<'EOF'
+        (."extra-deps".[]
+        | strings
+        | select(match("^\($pkg)-[0-9.]+")))
+        |= $pkg + "-" + $ver
+EOF
+)" stack.yaml
+}
+
 prepare() {
     cd "$pkgname"
-    patch --forward --strip=1 --input="${srcdir}/ver-bump.patch"
+    stack config set resolver lts-22.13 # ghc-9.6.4
+
+    _bumpVer commonmark            0.2.6
+    _bumpVer commonmark-extensions 0.2.5.4
+    _bumpVer djot                  0.1.1.3
+    _bumpVer pandoc                3.1.12.3
+    _bumpVer pandoc-cli            3.1.12.3
+    _bumpVer skylighting           0.14.1.1
+    _bumpVer skylighting-core      0.14.1.1
+    _bumpVer texmath               0.12.8.7
+    _bumpVer toml-parser           2.0.0.0
+    _bumpVer typst                 0.5.0.2
+    _bumpVer zip-archive           0.4.3.1
+
     # if pandoc updates break the golden tests, cf
     # https://github.com/lierdakil/pandoc-crossref/pull/403#issuecomment-1732434519
     # for how to bump
