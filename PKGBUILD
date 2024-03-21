@@ -1,38 +1,37 @@
-# Maintainer: Mykyta Poturai <mykyta.poturai@tutanota.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Mykyta Poturai <mykyta.poturai@tutanota.com>
+
 pkgname=libthemis
-pkgver=0.13.12
+pkgver=0.15.2
 pkgrel=1
 pkgdesc="Open-source high-level cryptographic services library."
 url="https://github.com/cossacklabs/themis"
 arch=('x86_64')
-license=('Apache')
+license=('Apache-2.0')
 depends=('openssl')
-makedepends=('make' 'gcc')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
+provides=('libthemis.so' 'libsoter.so')
 changelog=
-source=("https://github.com/cossacklabs/themis/archive/refs/tags/$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "makefile-ldconfig.patch")
-md5sums=('22e68c9a28f27f008fbadb3ea927abef'
-         '5d5db18b2d72d7db21cd7f9d701c2221')
+sha256sums=('ae1e7d7d20528c2ea627a863f9dc70a7e024069d80e563539bdefafecf5ec1fb'
+            '5378f6535e5c2bd44d72d0f7b461307135578a656dd8f64c54367bc0a1e12a1f')
 
 prepare() {
-    cd "themis-$pkgver"
-    patch -p1 -i "$srcdir/makefile-ldconfig.patch"
+	cd "themis-$pkgver"
+	patch -p1 -i "$srcdir/makefile-ldconfig.patch"
 }
 
 build() {
-    cd "themis-$pkgver"
-    make
+	cd "themis-$pkgver"
+	make
+}
+
+check() {
+	cd "themis-$pkgver"
+	make test
 }
 
 package() {
-    cd "themis-$pkgver"
-    make install PREFIX="$pkgdir/usr/"
+	cd "themis-$pkgver"
+	make install PREFIX="$pkgdir/usr/"
 }
