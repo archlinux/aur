@@ -1,6 +1,6 @@
 pkgbase = cabal-install-bin
 	pkgdesc = The command-line interface for Cabal and Hackage.
-	pkgver = 3.10.2.0
+	pkgver = 3.10.3.0
 	pkgrel = 1
 	url = https://www.haskell.org/cabal
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = cabal-install-bin
 	depends = glibc>=2.12
 	provides = cabal-install
 	conflicts = cabal-install
-	source = https://downloads.haskell.org/~cabal/cabal-install-3.10.2.0/cabal-install-3.10.2.0-x86_64-linux-deb10.tar.xz
-	source = https://downloads.haskell.org/~cabal/cabal-install-3.10.2.0/cabal-install-3.10.2.0.tar.gz
-	sha256sums = bdeb27c008b09c3b86f8a2768018d62a1aee02565304d123fda87ed432549418
-	sha256sums = b6deefa9fd0f8e6af1022f7f552b1214b562ee31cea6ab344c3fb12194645140
+	source = https://downloads.haskell.org/~cabal/cabal-install-3.10.3.0/cabal-install-3.10.3.0-x86_64-linux-deb10.tar.xz
+	source = https://downloads.haskell.org/~cabal/cabal-install-3.10.3.0/cabal-install-3.10.3.0.tar.gz
+	sha256sums = 1d7a7131402295b01f25be5373fde095a404c45f9b5a5508fb7474bb0d3d057a
+	sha256sums = a8e706f0cf30cd91e006ae8b38137aecf65983346f44d0cba4d7a60bbfa3da9e
 
 pkgname = cabal-install-bin
