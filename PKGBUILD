@@ -2,7 +2,7 @@
 pkgname=time-to-leave-bin
 pkgver=3.0.0
 _electronversion=11
-pkgrel=4
+pkgrel=5
 pkgdesc="Log work hours and get notified when it's time to leave the office and start to live."
 arch=('x86_64')
 url="http://timetoleave.app/"
@@ -18,11 +18,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('cb545e917262e4263c59baa95a2b995d4aac7370bf623ce2b715d4b5d819f45a'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
 }
