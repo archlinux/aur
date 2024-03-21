@@ -3,7 +3,7 @@ pkgname=utools-bin
 _pkgname=uTools
 pkgver=4.4.1
 _electronversion=22
-pkgrel=3
+pkgrel=4
 pkgdesc="uTools Utilities.新一代效率工具平台,自由组合插件应用,打造专属你的趁手工具集"
 arch=("x86_64")
 url="https://u.tools"
@@ -14,7 +14,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     'nspr'
     'gtk3'
-    'hicolor-icon-theme'
     'nss'
     'alsa-lib'
 )
