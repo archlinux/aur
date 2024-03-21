@@ -1,15 +1,16 @@
 # Maintainer: Alessandro Zanatta <alessandro.zanatta.lav@gmail.com>
+# Contributor: Noah Vogt <noah@noahvogt.com>
+
 pkgname=veridian-bin
-_pkgname=veridian
 pkgver=0.0.0
-pkgrel=4
-pkgdesc="A SystemVerilog Language Server "
+pkgrel=5
+pkgdesc="A SystemVerilog Language Server"
 arch=('x86_64')
-url="https://github.com/vivekmalneedi/veridian"
+url="https://github.com/vivekmalneedi/${pkgname%-*}"
 license=('MIT')
 provides=('veridian')
-source=("https://github.com/vivekmalneedi/$_pkgname/releases/download/nightly/veridian-ubuntu-20.04.tar.gz")
-sha256sums=('163f0140813b34c759ad38d75aec7292da6a2e1ad334e1a79d8843d134985871')
+source=("$url/releases/download/nightly/${pkgname%-*}-ubuntu-22.04.tar.gz")
+sha256sums=('ec4c25b8a2d0bde4a755555160d9ff47df5d9e9d034935cea658189f4be578a0')
 optdepends=(
 	'verible-bin: syntax checking and formatting (binary)'
 	'verible: syntax checking and formatting'
@@ -17,5 +18,5 @@ optdepends=(
 )
 
 package() {
-	install -Dm755 "./veridian" "$pkgdir/usr/bin/veridian"
+	install -Dm755 "./${pkgname%-*}" "$pkgdir/usr/bin/${pkgname%-*}"
 }
