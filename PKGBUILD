@@ -2,15 +2,15 @@
 # Maintainer: Lili1228 <aur at lili dot lgbt>
 
 _pkgname=86Box
-_build=b5555
+_build=b5634
 
 pkgname=86box-appimage
-pkgver=4.1
+pkgver=4.1.1
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones'
 arch=('pentium4' 'x86_64' 'armv7h' 'aarch64')
 url='https://86box.net/'
-license=(GPL2)
+license=('GPL-2.0-or-later')
 depends=('fuse2')
 optdepends=('86box-roms: ROM files')
 provides=("86box")
@@ -22,10 +22,11 @@ source_x86_64=("${_pkgname}-${pkgver}-x86_64.appimage::${_source}-Linux-x86_64-$
 source_armv7h=("${_pkgname}-${pkgver}-arm7h.appimage::${_source}-NDR-Linux-arm32-${_build}.AppImage")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.appimage::${_source}-NDR-Linux-arm64-${_build}.AppImage")
 
-sha512sums_pentium4=('32db05bb016bae985779fb3a2177aebe17b4aa4d345aad95706fffcc5aa27da72abb7a3fca6c373bcd5acabe1343b9c3746fa53e8b5d49b89b1336ecee5b18e3')
-sha512sums_x86_64=('56623db42e90a6587ddc6c0fd85f16f569cda8a702da13a7e1a56dbee5056816fcc60257f4ff3f4f3f394809b1043385d4c92d975a2e7e4b4d3ee5ebf0c73d39')
-sha512sums_armv7h=('cdad8f6bed934897aa67fff81a1a4084e82dacc5ff8c03d1e10c0958eea34ff52247c08963c5cfb60047700c968861c590b9780f048ff493dde78e0c3428b79f')
-sha512sums_aarch64=('49a315d26c7632ee9d625622b24d7dccb419733f277ca127ec792ed99da049cd80f5502177df3d505cae4ea82c7d1d8f30826fa59289a49013233ca019773ca1')
+sha512sums_pentium4=('125a7f298ad53452462bd771631d69babd53a24a38e03d451dcb2ee77c6acfddc60aa306c5cd911335396acaac36be8db72a69ec6ada311b333d0e21ff6689b5')
+sha512sums_x86_64=('5f359a7d12816245713ee2764f1d12594b3c7a60a384a6e092e571469ff58afa4a7f8f890c898ee87e4fdff9901765cbdab0cda3e39e688d87505c31a85b241e')
+sha512sums_armv7h=('5a2a4dce09860fc192b1df8b2e9f6022584f71a903ab6cc3a6f199ab669d93a9f9a4a36000f8a590977a79dfce53c26183811bbeebbba94366cf518b201bae56')
+sha512sums_aarch64=('1bb2e59ea82d7b1e91009a733662029a37f5b781f761d2cc1014c3cdc47a436fd7551ab7bd4b87214388ffdf57e918105d6dd5b530e39f78f37df51a0fee8414')
+
 
 prepare() {
     chmod +x "${_pkgname}-${pkgver}-${CARCH}.appimage"
