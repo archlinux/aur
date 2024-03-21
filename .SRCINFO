@@ -1,6 +1,6 @@
 pkgbase = python-uni-curses
 	pkgdesc = Unified Curses Wrapper for Python
-	pkgver = 2.1.7
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/unicurses/unicurses
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-uni-curses
 	depends = ncurses
 	depends = python
 	depends = python-x256
-	source = unicurses-2.1.7.tar.gz::https://github.com/unicurses/unicurses/archive/refs/tags/v.2.1.7.tar.gz
-	sha256sums = f7c7529a8cea86842cc9fa8601ad5b22c9acb10e9bea5b5f4822c249dcaefd50
+	source = unicurses-3.0.0.tar.gz::https://github.com/unicurses/unicurses/archive/refs/tags/v.3.0.0.tar.gz
+	sha256sums = a9d81ec28d0fb32fb5ccc1cd80dfa5c2ffd7bdcf28f70c62e7334b35253bcd48
 
 pkgname = python-uni-curses
