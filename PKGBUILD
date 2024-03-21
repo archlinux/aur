@@ -1,12 +1,12 @@
 # Maintainer: Lili1228 <aur at lili dot lgbt>
 pkgname=86box
 _pkgname=86Box
-pkgver=4.1
+pkgver=4.1.1
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones'
 arch=('pentium4' 'x86_64' 'armv7h' 'aarch64')
 url='https://86box.net/'
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('fluidsynth' 'hicolor-icon-theme' 'libslirp' 'openal' 'qt6-base' 'rtmidi' 'sdl2' # explicit
 'freetype2' 'gcc-libs' 'glib2' 'glibc' 'libevdev' 'libglvnd' 'libpng' 'libx11' 'libxcb' 'libxext' 'libxi' 'libxkbcommon-x11' 'libxkbcommon' 'wayland' 'zlib') # implicit 
 makedepends=('cmake>=3.21' 'extra-cmake-modules' 'ninja' 'qt6-tools' 'vde2') # vulkan-headers on qt5
@@ -19,7 +19,7 @@ options=('!buildflags')
 source=(
     "${pkgname}_$pkgver.tgz::https://github.com/${_pkgname}/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha512sums=('bfc1267b333dd738e5935b0c6b9eec3d84863bda22ba52d4d51e59e72f6bcaa78b6e9c656699eef3c3e436072b18c32d11f8d57a5bb578fc0334430fbdb48b35')
+sha512sums=('d1b0a1810f8712464ce8266942e9bfdc9721ab4ac70bbb242b3b06d6a7d6613b7bcb0ba730a2e458b2731c8d58e38c4b245b6f4afb5ee6c11ab4a2fb0dfd6d5e')
 
 build() {
     case "$CARCH" in
