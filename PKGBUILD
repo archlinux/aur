@@ -1,4 +1,4 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Chih-Hsuan Yen <yan12125@gmail.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: grimsock <lord.grimsock at gmail dot com>
@@ -12,7 +12,7 @@ _debver=2.1.1+dfsg
 _debrel=2
 pkgrel=16
 pkgdesc='Headless WebKit with JavaScript API'
-url='http://www.phantomjs.org/'
+url='https://www.phantomjs.org/'
 license=('BSD' 'LGPL' 'MIT')
 arch=('i686' 'x86_64')
 depends=('icu' 'libjpeg-turbo' 'libpng' 'fontconfig' 'gperf' 'ruby' 'python2' 'openssl-1.0' 'qt5-webkit')
