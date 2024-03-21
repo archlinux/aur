@@ -3,7 +3,7 @@ pkgname=mini-music-bin
 _pkgname="迷你音乐"
 pkgver=1.5.0
 _electronversion=11
-pkgrel=9
+pkgrel=10
 pkgdesc="A simple and beautiful music player.一个简单、美观的音乐播放器"
 arch=('x86_64')
 url="https://gitee.com/cgper/miniMusic"
@@ -13,7 +13,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}-bin"
-    'hicolor-icon-theme'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/V${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
@@ -22,11 +21,12 @@ source=(
 )
 sha256sums=('f451f4e717c9364e8e302e9f24e2f7a8a0573734508d96b1c48b3ff548d5b310'
             'd0b16a3cb603569486834cb55fa8a539832063864793339386f5e1f646928987'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\"|${pkgname%-bin}|g;s|DesktopApp|AudioVideo|g" \
