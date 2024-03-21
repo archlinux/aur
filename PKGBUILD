@@ -3,7 +3,7 @@
 pkgname=ludusavi
 _app_id="com.github.mtkennerly.$pkgname"
 pkgver=0.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Backup tool for PC game saves"
 arch=('x86_64')
 url="https://github.com/mtkennerly/ludusavi"
@@ -12,7 +12,6 @@ depends=('bzip2' 'gcc-libs' 'hicolor-icon-theme')
 makedepends=('cargo' 'git' 'libx11' 'libxcb' 'python')
 checkdepends=('appstream' 'desktop-file-utils')
 optdepends=('rclone: upload backups to the cloud')
-options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$url/releases/download/v$pkgver/$pkgname-v$pkgver-legal.zip")
 sha256sums=('6b7fe4010460653a8e47da45cbe8d531db857d17f87191801e259e4e4b8fc0eb'
@@ -27,6 +26,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
+  CFLAGS+=" -ffat-lto-objects"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
