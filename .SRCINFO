@@ -1,17 +1,16 @@
 pkgbase = deckboard-bin
 	pkgdesc = Control your PC with your phone in easy way possible.
 	pkgver = 3.0.0_rc7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://deckboard.app/
 	arch = i686
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = electron4-bin
-	depends = hicolor-icon-theme
 	provides = deckboard=3.0.0_rc7
 	conflicts = deckboard
 	source = deckboard.sh
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 	source_i686 = deckboard-3.0.0_rc7-i686.deb::https://github.com/rivafarabi/deckboard/releases/download/v3.0.0-rc7/deckboard_3.0.0-rc7_i386.deb
 	sha256sums_i686 = e51fa37e6e25d09387f2b2830df4f23da55881b096abd4b55985c99579adbdc0
 	source_x86_64 = deckboard-3.0.0_rc7-x86_64.deb::https://github.com/rivafarabi/deckboard/releases/download/v3.0.0-rc7/deckboard_3.0.0-rc7_amd64.deb
