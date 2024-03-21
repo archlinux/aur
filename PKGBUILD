@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=serial-studio-bin
 _pkgname=SerialStudio
-pkgver=1.1.7
-pkgrel=3
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Multi-purpose serial data visualization & processing program"
 arch=('x86_64')
 url="https://serial-studio.github.io/"
@@ -27,7 +27,7 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/Serial-Studio/Serial-Studio/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('22b6a9465b9b56bb321956991f6746117f7f084d56082b28000bed0908919be8'
+sha256sums=('b6291c283caa460ce7ef50a5b127665455be19a101353c57b5a01643f85708d3'
             '2bd1d916e395ee261da269285a9cb803e6f594b0cb97b50e01b43e0911004d17'
             '9b0fc0eb27805a22012ca316cc9d2b04168067b89802a2818ff5f5fd241159e4')
 build() {
@@ -41,7 +41,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
     cp -r "${srcdir}/squashfs-root/usr/"{bin,lib,plugins,qml,translations} "${pkgdir}/opt/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
