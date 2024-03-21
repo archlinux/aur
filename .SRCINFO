@@ -1,12 +1,11 @@
 pkgbase = gmail-desktop-bin
 	pkgdesc = Nifty Gmail desktop app (unofficial)
 	pkgver = 3.0.0_alpha.37
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/timche/gmail-desktop
 	arch = x86_64
 	license = MIT
 	depends = electron23
-	depends = hicolor-icon-theme
 	provides = gmail-desktop=3.0.0_alpha.37
 	conflicts = gmail-desktop
 	source = gmail-desktop-3.0.0_alpha.37.deb::https://github.com/timche/gmail-desktop/releases/download/v3.0.0-alpha.37/gmail-desktop-3.0.0-alpha.37-linux.deb
@@ -14,6 +13,6 @@ pkgbase = gmail-desktop-bin
 	source = gmail-desktop.sh
 	sha256sums = aa125803e43bd295154e3d0fa9def4fe3a89d1f312b15e2989aa3a25b1a49861
 	sha256sums = 056c7c1e5bf66eba0167d966d192c743f6b66ed854011c9b6dac04f959f8f5b5
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = gmail-desktop-bin
