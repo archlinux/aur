@@ -3,7 +3,7 @@ pkgname=proton-mail-viewer
 pkgver=0.0.1
 _electronversion=26
 _nodeversion=18
-pkgrel=6
+pkgrel=7
 pkgdesc="Unofficial Proton Mail™ viewer"
 arch=('any')
 url="https://github.com/moba1/proton-mail-viewer"
@@ -17,6 +17,7 @@ makedepends=(
     'npm'
     'nodejs'
     'git'
+    'nvm'
 )
 source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"

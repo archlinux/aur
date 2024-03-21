@@ -1,7 +1,7 @@
 pkgbase = proton-mail-viewer
 	pkgdesc = Unofficial Proton Mail™ viewer
 	pkgver = 0.0.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/moba1/proton-mail-viewer
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = proton-mail-viewer
 	makedepends = npm
 	makedepends = nodejs
 	makedepends = git
+	makedepends = nvm
 	depends = electron26-bin
 	conflicts = proton-mail-viewer
 	source = proton-mail-viewer.git::git+https://github.com/moba1/proton-mail-viewer.git#tag=v0.0.1
