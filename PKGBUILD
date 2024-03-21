@@ -2,7 +2,7 @@
 pkgname=copytranslator-bin
 pkgver=9.1.0
 _electronversion=6
-pkgrel=4
+pkgrel=5
 pkgdesc="Foreign language reading and translation assistant based on copy and translate."
 arch=('x86_64')
 url="https://copytranslator.gitee.io/"
@@ -11,7 +11,6 @@ license=('GPL-2.0-only')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    'hicolor-icon-theme'
     "electron${_electronversion}-bin"
 )
 makedepends=(
@@ -22,11 +21,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('426f706acc80610731116b2317540fd10e844f597ca0489c83934f8ac3c0527a'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     asar e "${srcdir}/opt/${pkgname%-bin}/resources/app.asar" "${srcdir}/app.asar.unpacked"
