@@ -2,7 +2,7 @@
 # Contributor: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=kasts-git
-pkgver=24.04.70_r1549.g3f1440ae
+pkgver=24.04.70_r1560.g7e1e8f68
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 pkgdesc="Kirigami-based podcast player"
@@ -10,7 +10,7 @@ url="https://invent.kde.org/multimedia/kasts"
 license=('GPL2')
 depends=('qt6-multimedia' 'qt6-declarative' 'qtkeychain-qt6' 'kirigami' 'ki18n'
          'kconfig' 'kcoreaddons' 'syndication' 'taglib' 'threadweaver' 'vlc'
-         'kirigami-addons')
+         'kirigami-addons' 'qqc2-desktop-style')
 makedepends=('extra-cmake-modules' 'git' 'qt6-svg' 'qt6-tools')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")

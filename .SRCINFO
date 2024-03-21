@@ -1,6 +1,6 @@
 pkgbase = kasts-git
 	pkgdesc = Kirigami-based podcast player
-	pkgver = 24.04.70_r1549.g3f1440ae
+	pkgver = 24.04.70_r1560.g7e1e8f68
 	pkgrel = 1
 	url = https://invent.kde.org/multimedia/kasts
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = kasts-git
 	depends = threadweaver
 	depends = vlc
 	depends = kirigami-addons
+	depends = qqc2-desktop-style
 	provides = kasts
 	conflicts = kasts
 	source = git+https://invent.kde.org/multimedia/kasts.git
