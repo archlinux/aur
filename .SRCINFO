@@ -1,13 +1,13 @@
 pkgbase = crabz-bin
 	pkgdesc = Like pigz, but in Rust
-	pkgver = 0.8.1
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/sstadick/crabz
 	arch = x86_64
 	license = MIT
 	provides = crabz
 	conflicts = crabz
-	source = crabz-0.8.1::https://github.com/sstadick/crabz/releases/download/v0.8.1/crabz-linux-amd64
-	sha256sums = c6848c121ad4dd71c33f9b572e19cb24bc1ea122363ee4fcf7376ea7b32464d0
+	source = crabz-0.10.0::https://github.com/sstadick/crabz/releases/download/v0.10.0/crabz-linux-amd64
+	sha256sums = 01fa3e853a20109130180ee7d4e1bff047f0c710bbfa4de7a0904bf49af4886c
 
 pkgname = crabz-bin
