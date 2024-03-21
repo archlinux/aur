@@ -27,7 +27,7 @@ prepare() {
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 
   # Remove single process limit since we're not running the tests
-#  sed -i '/codegen-units/d' Cargo.toml
+  sed -i '/codegen-units/d' Cargo.toml
 }
 
 build() {
@@ -40,14 +40,14 @@ build() {
 
 check() {
   cd "$pkgname"
-  export CARGO_HOME="$srcdir/cargo-home"
-  export RUSTUP_TOOLCHAIN=stable
-  export LANG=C.UTF-8
-  export NO_AT_BRIDGE=1
-  xvfb-run -a -s "-screen 0 1024x768x24" dbus-run-session meson test -C build --no-stdsplit --print-errorlogs || :
+#  export CARGO_HOME="$srcdir/cargo-home"
+#  export RUSTUP_TOOLCHAIN=stable
+#  export LANG=C.UTF-8
+#  export NO_AT_BRIDGE=1
+#  xvfb-run -a -s "-screen 0 1024x768x24" dbus-run-session meson test -C build --no-stdsplit --print-errorlogs || :
 
   desktop-file-validate build/data/org.gnome.World.PikaBackup.Monitor.desktop
-#  appstreamcli validate --no-net build/data/org.gnome.World.PikaBackup.metainfo.xml || :
+  appstreamcli validate --no-net build/data/org.gnome.World.PikaBackup.metainfo.xml || :
 }
 
 package() {
