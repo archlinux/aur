@@ -3,18 +3,17 @@
 pkgname=firmware-manager
 _app_id=com.system76.FirmwareManager
 pkgver=0.1.5+3+gf3ead34
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic framework and GTK UI for firmware updates from system76-firmware and fwupd"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/firmware-manager"
 license=('GPL-3.0-or-later')
 depends=('dbus' 'gtk3' 'libgudev' 'openssl' 'polkit')
-makedepends=('cargo' 'git')
+makedepends=('git' 'rustup')
 optdepends=('fwupd: Generic firmware updates'
             'system76-firmware-daemon: System76 firmware updates')
 conflicts=('libfirmware-manager')
 replaces=('libfirmware-manager')
-options=('!lto')
 install="$pkgname.install"
 _commit=f3ead34e243025eb1ae39d19b5844f91e17f3c31  # branch/master
 source=("git+https://github.com/pop-os/firmware-manager.git#commit=${_commit}"
@@ -31,15 +30,14 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
+  CFLAGS+=" -ffat-lto-objects"
   export CARGO_HOME="$srcdir/cargo-home"
-  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd "$pkgname"
   export CARGO_HOME="$srcdir/cargo-home"
-  export RUSTUP_TOOLCHAIN=stable
   make prefix=/usr
 }
 
