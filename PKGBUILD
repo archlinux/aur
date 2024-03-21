@@ -6,8 +6,8 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=libwrap
-pkgver=7.6.31
-pkgrel=5
+pkgver=7.6.32
+pkgrel=1
 pkgdesc='Monitors and Controls incoming TCP connections'
 arch=(x86_64)
 url="http://ftp.porcupine.org/pub/security/index.html"
@@ -22,14 +22,15 @@ source=(
   hosts.allow
   hosts.deny
 )
+
 sha256sums=('9543d7adedf78a6de0b221ccbbd1952e08b5138717f4ade814039bb489a4315d'
-            '20fec7826bde1262007e6dd43f365b5802bacc283942d93b78385ea634dc594a'
+            'deec7966808407ddcb11581380c7253c348bd8780da6c9ee17fa9e7a729539fe'
             '2e527e54c1ea208de10a206c667f751e54651eb77c973271d213e3459d690403'
             'c1b19035a14ba552e8795ec3d7171e688592c9317f2eb14373320315435565e3'
             '969414f0a161e95fbe4cfe32df7c657a2793734d09416c00fa1116c5c0a9924f')
-
 prepare() {
   cd tcp_wrappers_${pkgver%.*}
+  find $srcdir -type f -exec chmod +w {} \;
 
   for patch in $(cat ../debian/patches/series); do
     patch -Np1 -i ../debian/patches/${patch}
