@@ -1,8 +1,8 @@
 pkgbase = yash
 	pkgdesc = Yet Another SHell is a POSIX-compliant command line shell
-	pkgver = 2.55
-	pkgrel = 2
-	url = https://yash.osdn.jp
+	pkgver = 2.56.1
+	pkgrel = 1
+	url = https://magicant.github.io/yash/
 	install = yash.install
 	arch = i686
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = yash
 	makedepends = ed
 	depends = ncurses
 	options = lto
-	source = https://github.com/magicant/yash/archive/refs/tags/2.55.tar.gz
+	source = https://github.com/magicant/yash/archive/refs/tags/2.56.1.tar.gz
 	source = yash.install
-	sha256sums = 9f5ac033bdc5fd49b98552ecde144f180a6148394a1d6cb1b33823a8f4440637
+	sha256sums = cf151ee697e08b1ab711a51855346e227d7dd2202d637b448de10460486bd1ec
 	sha256sums = c66c7a4b9da4416082ea57bbec0ce0c2bbc13af340ceb1241b4a4897d8944531
 
 pkgname = yash
