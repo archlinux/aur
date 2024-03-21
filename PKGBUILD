@@ -3,7 +3,7 @@
 pkgname=dosbox-x-sdl2
 _pkgname=dosbox-x
 pkgver=2024.03.01
-pkgrel=2
+pkgrel=3
 pkgdesc="x86 emulator with builtin DOS, with patches and more features"
 arch=(i686 x86_64 aarch64)
 url="http://dosbox-x.com"
@@ -19,12 +19,7 @@ build() {
   cd "$srcdir/dosbox-x-dosbox-x-v$pkgver"
    
   ./autogen.sh
-  
-  export CFLAGS="${CFLAGS/-Werror=format-security/}"
-  export LDFLAGS="${LDFLAGS//,--as-needed}"
-  export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
-    
-  ./configure --enable-core-inline --enable-debug --enable-avcodec --prefix=/usr --enable-sdl2
+  ./configure --enable-debug --enable-avcodec --prefix=/usr --enable-sdl2
   make
   
 }
