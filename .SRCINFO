@@ -23,7 +23,7 @@ pkgbase = valent-git
 	provides = valent
 	provides = libvalent-1.so=1.0.0
 	conflicts = valent
-	source = git+https://github.com/andyholmes/valent.git
+	source = git+https://github.com/andyholmes/valent.git#branch=gnome-45
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	sha256sums = SKIP
 	sha256sums = SKIP

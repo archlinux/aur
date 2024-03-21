@@ -32,7 +32,7 @@ checkdepends=(
 )
 provides=("${pkgname%-git}" 'libvalent-1.so=1.0.0')
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/andyholmes/valent.git'
+source=('git+https://github.com/andyholmes/valent.git#branch=gnome-45'
         'git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git')
 sha256sums=('SKIP'
             'SKIP')
