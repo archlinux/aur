@@ -1,0 +1,10 @@
+--- src/needleman_wunsch.cpp.orig	2024-03-21 14:20:56.061266948 +0100
++++ src/needleman_wunsch.cpp	2024-03-21 14:21:11.028166421 +0100
+@@ -24,6 +24,7 @@
+ #include "needleman_wunsch.h"
+ #include <cassert>
+ #include <algorithm>
++#include <limits>
+ 
+ float
+ NeedlemanWunsch::

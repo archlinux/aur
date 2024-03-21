@@ -1,17 +1,20 @@
 pkgbase = dafs-git
-	pkgdesc = DAFS: simultaneous aligning and folding of RNA sequences by dual decomposition
-	pkgver = 0.0.2.6.g8b19266
+	pkgdesc = dual decomposition for aligning and folding RNA sequences simultaneously
+	pkgver = r108.e9cc15c
 	pkgrel = 1
 	url = https://github.com/satoken/dafs
-	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = git
-	depends = boost
-	depends = glpk
-	depends = viennarna2
-	source = git://github.com/satoken/dafs.git
-	md5sums = SKIP
+	makedepends = cmake
+	depends = viennarna
+	optdepends = glpk: solver for linear programming
+	source = git+https://github.com/satoken/dafs
+	source = git+https://github.com/jarro2783/cxxopts
+	source = git+https://github.com/gabime/spdlog
+	source = dafs.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 6147313855a24ff6b624a16318460e1b8eaae5087afc93460ca75717193185dd
 
 pkgname = dafs-git
-

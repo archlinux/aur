@@ -1,42 +1,47 @@
-# Maintainer: Keith Hughitt <khughitt@umd.edu>
+# Maintainer: Tomasz Zok <tomasz dot zok at gmail dot com>
 pkgname=dafs-git
-_gitname=dafs
-pkgver=0.0.2.6.g8b19266
+pkgver=r108.e9cc15c
 pkgrel=1
-pkgdesc="DAFS: simultaneous aligning and folding of RNA sequences by dual
-decomposition"
-arch=('i686' 'x86_64')
+pkgdesc="dual decomposition for aligning and folding RNA sequences simultaneously"
+arch=(x86_64)
 url="https://github.com/satoken/dafs"
 license=('GPL')
-makedepends=('git')
-depends=('boost' 'glpk' 'viennarna2')
-md5sums=("SKIP")
-
-source=("git://github.com/satoken/dafs.git")
+depends=(viennarna)
+makedepends=(cmake)
+optdepends=('glpk: solver for linear programming')
+source=("git+https://github.com/satoken/${pkgname%-git}"
+	"git+https://github.com/jarro2783/cxxopts"
+	"git+https://github.com/gabime/spdlog"
+	"dafs.patch")
+sha256sums=('SKIP'
+	'SKIP'
+	'SKIP'
+	'6147313855a24ff6b624a16318460e1b8eaae5087afc93460ca75717193185dd')
 
 pkgver() {
-    cd "${srcdir}/${_gitname}"
-    git describe --tags | sed -e 's:v::' -e 's/-/./g'
+	cd "$srcdir/${pkgname%-git}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "$srcdir/${pkgname%-git}"
+	git submodule init
+	git config submodule.libs/cxxopts.url "$srcdir/cxxopts"
+	git config submodule.libs/spdlog.url "$srcdir/spdlog"
+	git -c protocol.file.allow=always submodule update
+
+	patch -p0 -i "$srcdir/${pkgname%-git}.patch"
 }
 
 build() {
-  cd "$srcdir/$_gitname"
-
-  env CXXFLAGS='-fopenmp' ./configure --prefix=/usr --with-vienna-rna=/usr/include/ViennaRNA --with-glpk
- 
-  # https://github.com/SIPp/sipp/issues/61
-  touch configure.ac aclocal.m4 configure Makefile.am Makefile.in
-
-  make CXXFLAGS="-Wall -O2 -fpermissive -fopenmp" CFLAGS="$CFLAGS -I/usr/include/ViennaRNA" PREFIX=/usr
+	cd "$srcdir/${pkgname%-git}"
+	mkdir -p build
+	cd build
+	cmake ..
+	make
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-
-  #make PREFIX="$pkgdir/usr" install
-  make install DESTDIR="$pkgdir"
-
-  # install license
-  install -D -m644 "COPYING" "$pkgdir/usr/share/licenses/$_gitname/LICENSE"
+	cd "$srcdir/${pkgname%-git}/build"
+	make DESTDIR="$pkgdir/" install
 }
-
