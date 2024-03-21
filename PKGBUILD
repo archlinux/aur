@@ -2,7 +2,7 @@
 
 pkgname=agat
 _pkgname=AGAT
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Another Gtf/Gff Analysis Toolkit is a suite of tools to handle gene annotations in GTF/GFF format. doi:10.5281/zenodo.3552717"
 arch=('any')
@@ -26,7 +26,7 @@ depends=(
 	 'perl-list-moreutils'
         )
 source=($pkgname-$pkgver.tar.gz::https://github.com/NBISweden/AGAT/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('2cc0eaf32544e016238611b176e43fbb333ad490a44c9195a4a73764b5fa005d4f808f115152da99e75a030ce1e76c642b9d97ad0d0598fdfd7bb75055051c7c')
+sha512sums=('aa1b6ea604e9eac5540f2218032c63204a11957f7b8d1d952ca8501d29c0e9db9acf058ec8840bdcc60dcac0f56b27376a01c0fb0d3280a7ee9a311028a67a9b')
 options=('!emptydirs' 'purge')
 
 build() {
