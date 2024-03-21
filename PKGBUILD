@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=paleta
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Extract the dominant colors from any image."
 arch=('x86_64')
 url="https://github.com/nate-xyz/paleta"
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('libadwaita')
 makedepends=('cargo' 'git' 'meson')
 checkdepends=('appstream-glib')
-options=('!lto')
+#options=('!lto')
 _commit=d779d2a0393d790586c3f73fb230d029ae406391  # tags/v0.3.1^0
 source=("git+https://github.com/nate-xyz/paleta.git#commit=$_commit")
 sha256sums=('SKIP')
@@ -27,6 +27,7 @@ prepare() {
 }
 
 build() {
+  CFLAGS+=" -ffat-lto-objects"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   arch-meson "$pkgname" build
@@ -38,5 +39,5 @@ check() {
 }
 
 package () {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
