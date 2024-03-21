@@ -3,7 +3,7 @@
 pkgname=dpitunnel-git
 _pkgname=${pkgname/-git}
 __pkgname=DPITunnel
-pkgver=0.9.0.r4.g864c06e
+pkgver=1.0.0.r0.g4d2e735
 pkgrel=1
 pkgdesc="Free, simple and serverless solution against censorship for Linux PCs and routers"
 arch=('x86_64')
@@ -31,12 +31,13 @@ prepare() {
 }
 
 build() {
-	cd "${__pkgname}"
-	cmake -B build .
-	cmake --build build
+  cd "${__pkgname}"
+  cmake -B build .
+  cmake --build build
 }
 
 package() {
-	cd "${__pkgname}"
-	install -Dm755 "build/${__pkgname}-exec" "${pkgdir}/usr/bin/${_pkgname}"
+  cd "${__pkgname}"
+  install -Dm755 "build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 "${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
 }
