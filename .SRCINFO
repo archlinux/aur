@@ -1,12 +1,11 @@
 pkgbase = listen1-desktop-bin
 	pkgdesc = One for all free music in China
 	pkgver = 2.31.0
-	pkgrel = 7
+	pkgrel = 8
 	url = http://listen1.github.io/listen1
 	arch = x86_64
 	license = MIT
-	depends = electron13
-	depends = hicolor-icon-theme
+	depends = electron13-bin
 	provides = listen1-desktop=2.31.0
 	conflicts = listen1-desktop
 	conflicts = listen1
@@ -16,6 +15,6 @@ pkgbase = listen1-desktop-bin
 	source = listen1-desktop.sh
 	sha256sums = 0623e152524477d1015b2619bb1784d82473de6153b8b78a892783fb9e0894f9
 	sha256sums = d2aa8a82485042b9d5efb8ed2d9c0e8a66e8983bc3f64ebbe35158d35662cdbc
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = listen1-desktop-bin
