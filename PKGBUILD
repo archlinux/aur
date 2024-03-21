@@ -6,7 +6,7 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-openpmix
 pkgver=4.2.9
-pkgrel=3
+pkgrel=4
 arch=('any')
 pkgdesc="Extended version of the PMI standard (Android, ${_android_arch})"
 url="https://github.com/openpmix/openpmix"
@@ -22,10 +22,12 @@ makedepends=("android-${_android_arch}-hwloc"
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("$url/releases/download/v$pkgver/pmix-$pkgver.tar.gz"
         '0001-Force-32-bits-compile.patch'
-        '0002-Unversioned-libs.patch')
+        '0002-Unversioned-libs.patch'
+        '0003-Add-missing-headers.patch')
 md5sums=('6ef6da8a14d670712431fd62194bd390'
          'd0032b4f6868acb7b3a593f1a76f0eed'
-         '47db6b8ab5894753aa4c508f64c75389')
+         '47db6b8ab5894753aa4c508f64c75389'
+         'a5c7336af3f4abce17ff7ecc1d08573a')
 
 prepare() {
     cd "${srcdir}/pmix-$pkgver"
@@ -35,6 +37,7 @@ prepare() {
 
     patch -Np1 -i ../0001-Force-32-bits-compile.patch
     patch -Np1 -i ../0002-Unversioned-libs.patch
+    patch -Np1 -i ../0003-Add-missing-headers.patch
     sed -i 's|-lpthread||g' configure
 }
 
@@ -72,6 +75,7 @@ build() {
         --includedir=${ANDROID_PREFIX_INCLUDE} \
         --enable-shared \
         --enable-static \
+        --enable-pmix-binaries=no \
         --sysconfdir="${ANDROID_PREFIX_ETC}/openpmix"
     make V=1 $MAKEFLAGS
 }
