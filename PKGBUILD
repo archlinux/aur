@@ -3,7 +3,7 @@ pkgname=webkitty-bin
 _pkgname=WebKitty
 pkgver=3.2.1
 _electronversion=24
-pkgrel=6
+pkgrel=7
 pkgdesc="Local web development IDE"
 arch=("x86_64")
 url="https://dartfling.com/product?pid=3"
@@ -12,7 +12,7 @@ license=("MIT")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'fuse2'
@@ -24,11 +24,12 @@ source=(
 )
 sha256sums=('103f4ccb57d0e7685993b6cc1a47ead500f5eef0c63a7c501af36456e5d696f1'
             'c46ac74ef8cd13c7541f9de280f3d759319f70292fd32d4d170193041b06300b'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
