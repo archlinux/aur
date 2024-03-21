@@ -3,7 +3,7 @@ pkgname=hugin-messenger-bin
 _pkgname="Hugin Messenger"
 pkgver=0.4.0
 _electronversion=19
-pkgrel=3
+pkgrel=4
 pkgdesc="The new version of the private messaging desktop application powered by the Kryptokrona Blockchain."
 arch=('x86_64')
 url="https://hugin.chat/"
@@ -12,18 +12,19 @@ license=('GPL-3.0-only')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('a2a850d7ef29021066d82cee855cbb8f959dcff5e4b0bcf50423c36d45139e12'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\"|${pkgname%-bin}|g;s|Utility|Network|g" \
