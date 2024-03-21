@@ -1,6 +1,6 @@
 pkgbase = r-vars
 	pkgdesc = VAR Modelling
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=vars
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-vars
 	depends = r-sandwich
 	depends = r-strucchange
 	depends = r-urca
-	source = https://cran.r-project.org/src/contrib/vars_1.6-0.tar.gz
-	sha256sums = ed7feed9d787cbcbb6883ee8dddbd6ff1032526303dfe4f55e28a8690bec822d
+	source = https://cran.r-project.org/src/contrib/vars_1.6-1.tar.gz
+	sha256sums = 9b3df03232fbedd30a89af10b20b540fce20ddd36602853857d47242d66f14c5
 
 pkgname = r-vars
