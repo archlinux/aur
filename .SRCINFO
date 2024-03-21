@@ -1,18 +1,16 @@
 pkgbase = tree-sitter-rust-git
-	pkgdesc = Rust grammar for tree-sitter
-	pkgver = 0.19.1.r4.ga360da0
-	pkgrel = 2
+	pkgdesc = Rust grammar for tree-sitter.
+	pkgver = v0.20.4.r25.g3a56481
+	pkgrel = 1
 	url = https://github.com/tree-sitter/tree-sitter-rust
 	arch = x86_64
-	groups = tree-sitter-grammars
 	license = MIT
 	makedepends = git
-	makedepends = tree-sitter
 	makedepends = npm
-	depends = glibc
+	makedepends = tree-sitter
+	makedepends = tree-sitter-cli
 	provides = tree-sitter-rust
-	conflicts = tree-sitter-rust
-	source = tree-sitter-rust-git::git+https://github.com/tree-sitter/tree-sitter-rust
-	sha256sums = SKIP
+	source = tree-sitter-rust::git+https://github.com/tree-sitter/tree-sitter-rust
+	b2sums = SKIP
 
 pkgname = tree-sitter-rust-git
