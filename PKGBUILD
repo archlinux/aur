@@ -19,6 +19,7 @@ makedepends=('git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2'
              'swig' 'lld' 'python' 'libc++'
              'ocl-icd' 'opencl-headers' 'z3' 'jsoncpp' 'clang')
 checkdepends=("python-psutil")
+pkgdesc="Up to date official clang releases installed at /opt/clang/latest to avoid system wide usage/impact"
 
 # stable
 #source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz")
