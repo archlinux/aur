@@ -1,7 +1,7 @@
 pkgbase = everytime
 	pkgdesc = Time zones are hard. Everytime makes them easy!
 	pkgver = 1.1.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/kiprobinson/everytime
 	arch = aarch64
 	arch = x86_64
@@ -13,9 +13,10 @@ pkgbase = everytime
 	depends = nodejs
 	provides = everytime
 	conflicts = everytime
+	options = !emptydirs
 	source = everytime.git::git+https://github.com/kiprobinson/everytime.git#tag=v1.1.5
 	source = everytime.sh
-	sha256sums = SKIP
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = ad443bae2cac17c4ea42743b1290b6d29e51e499205b50fa95dcbb5ca90f14c5
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = everytime
