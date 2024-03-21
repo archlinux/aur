@@ -1,6 +1,6 @@
 pkgbase = trezord-git
 	pkgdesc = Trezor Communication Daemon aka Trezor Bridge (written in Go)
-	pkgver = 2.0.33.r1.g33e9b09
+	pkgver = 2.0.33.r6.gdb03d99
 	pkgrel = 1
 	url = https://github.com/trezor/trezord-go
 	arch = x86_64

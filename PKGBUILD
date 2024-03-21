@@ -4,7 +4,7 @@
 _pkgname=trezord
 pkgname="${_pkgname}-git"
 _gitname="${_pkgname}-go"
-pkgver=2.0.33.r1.g33e9b09
+pkgver=2.0.33.r6.gdb03d99
 pkgrel=1
 pkgdesc='Trezor Communication Daemon aka Trezor Bridge (written in Go)'
 arch=('x86_64')
@@ -49,7 +49,7 @@ build() {
     go install \
         -gcflags "all=-trimpath=${srcdir}" \
         -asmflags "all=-trimpath=${srcdir}" \
-        -ldflags "-extldflags ${LDFLAGS}" \
+        -ldflags "-extldflags \"${LDFLAGS}\"" \
         "${_importpath}"
 }
 
