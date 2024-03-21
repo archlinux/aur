@@ -3,7 +3,7 @@ pkgname=uyou-todo-bin
 _pkgname=uyoutodo
 pkgver=2.1.1
 _electronversion=26
-pkgrel=3
+pkgrel=4
 pkgdesc="A todo list with electron"
 arch=('x86_64')
 url="https://github.com/tonylu110/uyou-todo-electron"
@@ -11,7 +11,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'fuse2'
@@ -23,11 +23,12 @@ source=(
 )
 sha256sums=('2d3870d1b349a2a14292dd88a334c2f516c6e4810afc59daa62fd68064aed174'
             '39db5a38eec57377569ab296b6a804062b8e7a72908db228ae1d6d91bcbb61d3'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null

@@ -1,12 +1,12 @@
 pkgbase = uyou-todo-bin
 	pkgdesc = A todo list with electron
 	pkgver = 2.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tonylu110/uyou-todo-electron
 	arch = x86_64
 	license = MIT
 	makedepends = fuse2
-	depends = electron26
+	depends = electron26-bin
 	provides = uyou-todo=2.1.1
 	conflicts = uyou-todo
 	source = uyou-todo-2.1.1.AppImage::https://github.com/tonylu110/uyou-todo-electron/releases/download/2.1.1/uyou.ToDo-2.1.1.AppImage
@@ -14,6 +14,6 @@ pkgbase = uyou-todo-bin
 	source = uyou-todo.sh
 	sha256sums = 2d3870d1b349a2a14292dd88a334c2f516c6e4810afc59daa62fd68064aed174
 	sha256sums = 39db5a38eec57377569ab296b6a804062b8e7a72908db228ae1d6d91bcbb61d3
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = uyou-todo-bin
