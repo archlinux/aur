@@ -4,7 +4,7 @@ pkgname="${_pkgname}++-bin"
 pkgver=1.2.5
 _subver=20230523
 _electronversion=2
-pkgrel=8
+pkgrel=9
 pkgdesc="Make weweChat great again!!! 美丽的第三方微信PC客户端"
 arch=(
     'aarch64'
@@ -19,7 +19,6 @@ conflits=(
 )
 depends=(
     "electron${_electronversion}-bin"
-    'hicolor-icon-theme'
 )
 optdepends=(
     'xdg-desktop-portal-kde: KDE 下的原生对话框'
@@ -33,13 +32,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('b64d5463454e756d3008ff1a0511179b777884a0b4ed50dfe33e9182cf0c54db'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 sha256sums_aarch64=('5ac045251db9af48a7a2d898cfefd0198de23c69e4bd91b7162344bf574051f8')
 sha256sums_x86_64=('48f0ede636da8f3a7b4d94a75a8324a51413dbf7ad040cf0acc173cd200088cb')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed -e "s|Name=${_pkgname}|Name=${pkgname%-bin}|g" \
