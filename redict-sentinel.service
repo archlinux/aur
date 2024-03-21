@@ -1,0 +1,24 @@
+[Unit]
+Description=High availability daemon for Redict
+After=network.target
+
+[Service]
+Type=notify
+User=redict
+Group=redict
+ExecStart=/usr/bin/redict-sentinel /etc/redict/sentinel.conf --supervised systemd
+TimeoutStartSec=60
+TimeoutStopSec=60
+CapabilityBoundingSet=
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/etc/redict/
+NoNewPrivileges=true
+RuntimeDirectory=redict
+RuntimeDirectoryMode=755
+LimitNOFILE=10032
+
+[Install]
+WantedBy=multi-user.target
