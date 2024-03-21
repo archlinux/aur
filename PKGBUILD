@@ -5,7 +5,7 @@
 
 pkgname=git-review
 pkgver=2.4.0
-pkgrel=4
+pkgrel=1
 pkgdesc='Tool to submit code to Gerrit'
 arch=('any')
 url='https://opendev.org/opendev/git-review'
