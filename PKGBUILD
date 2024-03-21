@@ -4,11 +4,11 @@
 _pkgname=suyu
 _branch=dev
 pkgname=suyu-dev-qt6-git
-pkgver=r27265.383a243aa7
+pkgver=r27269.b6ad090424
 pkgrel=1
 pkgdesc="suyu is the afterlife the world's most popular, open-source, Nintendo Switch emulator (dev branch with QT6)"
 arch=(x86_64)
-url=https://gitlab.com/suyu-emu/suyu
+url=https://git.suyu.dev/suyu/suyu
 license=(GPL-3.0-or-later)
 provides=('suyu')
 conflicts=(suyu-dev-git suyu-git)
@@ -60,15 +60,15 @@ makedepends=(
 )
 options=(!debug lto)
 source=(
-  git+https://gitlab.com/suyu-emu/suyu.git#branch=${_branch}
+  git+https://git.suyu.dev/suyu/suyu.git#branch=${_branch}
   git+https://github.com/lsalzman/enet.git
   git+https://github.com/mozilla/cubeb.git
-  git+https://gitlab.com/suyu-emu/dynarmic.git
+  git+https://git.suyu.dev/suyu/dynarmic.git
   git+https://github.com/libusb/libusb.git
-  git+https://github.com/suyu-emu/discord-rpc.git
+  git+https://git.suyu.dev/suyu/discord-rpc.git
   git+https://github.com/KhronosGroup/Vulkan-Headers.git
-  git+https://gitlab.com/suyu-emu/sirit.git
-  git+https://gitlab.com/suyu-emu/mbedtls.git
+  git+https://git.suyu.dev/suyu/sirit.git
+  git+https://git.suyu.dev/suyu/mbedtls.git
   git+https://github.com/herumi/xbyak.git
   git+https://github.com/xiph/opus.git
   git+https://github.com/libsdl-org/SDL.git
@@ -79,7 +79,7 @@ source=(
   git+https://github.com/bylaws/libadrenotools.git
   git+https://github.com/lat9nq/tzdb_to_nx.git
   git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git
-  git+https://gitlab.com/suyu-emu/breakpad.git
+  git+https://git.suyu.dev/suyu/breakpad.git
   git+https://github.com/brofield/simpleini.git
   git+https://github.com/merryhime/oaknut.git
   git+https://github.com/KhronosGroup/Vulkan-Utility-Libraries.git
