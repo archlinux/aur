@@ -4,12 +4,12 @@
 
 pkgname=gnome-icon-theme-extras
 pkgver=3.12.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Extra GNOME icons for specific devices and file types'
 arch=('any')
-depends=('gtk-update-icon-cache' 'hicolor-icon-theme')
+depends=('hicolor-icon-theme')
 makedepends=('icon-naming-utils')
-url='https://git.gnome.org/browse/gnome-icon-theme-extras'
+url='https://gitlab.gnome.org/Archive/gnome-icon-theme-extras'
 license=('CCPL:cc-by-sa')
 source=(https://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
 sha256sums=('4eec6cea8a7b09c4ed6ebab1a3b42539b9c61a53bec4b8872e774611cc619608')
@@ -24,3 +24,4 @@ package() {
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
+
