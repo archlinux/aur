@@ -1,0 +1,142 @@
+diff --unified --recursive --text package.orig/CMakeLists.txt package.new/CMakeLists.txt
+--- package.orig/CMakeLists.txt	2024-03-21 07:15:29.659498422 +0900
++++ package.new/CMakeLists.txt	2024-03-21 12:23:19.544892731 +0900
+@@ -1,18 +1,19 @@
+ project(FcstdThumbnailer)
+ 
+ # Set minimum required version of cmake.
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.5.0)
+ 
+-set(QT_MIN_VERSION "5.2.0")
++set(QT_MIN_VERSION "6.6.0")
++set(CMAKE_CXX_STANDARD 17)
+ 
+ # Locate extra-cmake-modules version 0.0.11 and make it a required package
+-find_package(ECM 1.0.0 REQUIRED NO_MODULE)
++find_package(ECM 6.0.0 REQUIRED NO_MODULE)
+ 
+ # Set value of CMAKE_MODULE_PATH variable where cmake will search for modules
+ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+ 
+-find_package(Qt5Gui REQUIRED)
+-find_package(KF5 REQUIRED COMPONENTS KIO Archive)
++find_package(Qt6Gui REQUIRED)
++find_package(KF6 REQUIRED COMPONENTS KIO Archive)
+ 
+ include(FeatureSummary)
+ include(WriteBasicConfigVersionFile)
+@@ -23,12 +24,12 @@
+ set(FcstdThumbnailer_SRCS src/fcstdcreator.cpp)
+ 
+ add_library(fcstdthumbnailer MODULE ${FcstdThumbnailer_SRCS})
+-
+-target_link_libraries(fcstdthumbnailer Qt5::Gui KF5::KIOWidgets KF5::Archive)
++target_link_libraries(fcstdthumbnailer Qt6::Gui KF6::KIOWidgets KF6::Archive)
+ 
+ # TODO: Figure out why (on my system) the documentation suggested paths don't resolve to the proper qt5 plugin path, silently breaking the plugin.
+ #       The manual TARGET specification does install in the proper location.
+ #install(TARGETS fcstdthumbnailer             DESTINATION ${PLUGIN_INSTALL_DIR})
+ #install(TARGETS fcstdthumbnailer             DESTINATION ${QT_PLUGIN_INSTALL_DIR})
+-install(TARGETS fcstdthumbnailer             DESTINATION ${LIB_INSTALL_DIR}/qt5/plugins)
+-install(FILES   src/fcstdthumbnailer.desktop DESTINATION ${SERVICES_INSTALL_DIR})
++# install(TARGETS fcstdthumbnailer             DESTINATION ${LIB_INSTALL_DIR}/qt5/plugins)
++# install(FILES   src/fcstdthumbnailer.desktop DESTINATION ${SERVICES_INSTALL_DIR})
++install(TARGETS fcstdthumbnailer DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf6/thumbcreator)
+diff --unified --recursive --text package.orig/src/fcstdcreator.cpp package.new/src/fcstdcreator.cpp
+--- package.orig/src/fcstdcreator.cpp	2024-03-20 13:10:17.047547212 +0900
++++ package.new/src/fcstdcreator.cpp	2024-03-21 08:27:17.840502719 +0900
+@@ -22,56 +22,29 @@
+  */
+ 
+ #include "fcstdcreator.h"
+-
+ #include <kzip.h>
+-
+ #include <QImage>
+ #include <QPainter>
++#include <KPluginFactory>
+ 
+-extern "C"
+-{
+-    Q_DECL_EXPORT ThumbCreator *new_creator() {
+-        return new FcstdCreator();
+-    }
+-}
+-
+-FcstdCreator::FcstdCreator() { }
+-
+-FcstdCreator::~FcstdCreator() { }
++K_PLUGIN_CLASS_WITH_JSON(FcstdCreator, "fcstdthumbnailer.json")
+ 
+-bool FcstdCreator::create(const QString &path, int w, int h, QImage &img) {
+-    Q_UNUSED(w);
+-    Q_UNUSED(h);
+-
+-    bool bRet = false;
+-    KZip zip(path);
++FcstdCreator::FcstdCreator(QObject* parent, const QVariantList& args): KIO::ThumbnailCreator(parent, args) {}
++KIO::ThumbnailResult FcstdCreator::create(const KIO::ThumbnailRequest& request)
++{
++    QImage img;
++    KZip zip(request.url().toLocalFile());
+     if (zip.open(QIODevice::ReadOnly)) {
+         const KArchiveDirectory* dir = zip.directory();
+-        const KArchiveEntry* entry = dir->entry ("thumbnails/Thumbnail.png");
+-
+-        if ( (entry != NULL) && (entry->isFile())) {
++        const KArchiveEntry* entry = dir->entry(tr("thumbnails/Thumbnail.png"));
++        if ((entry != nullptr) && (entry->isFile())) {
+             const KArchiveFile* file = (KArchiveFile*)entry;
+-            QByteArray data(file->data());
+-
+-            if (data.size() > 0) {
++            if (QByteArray data(file->data()); data.size() > 0)
+                 img.loadFromData(data, "PNG");
+-                if (!img.isNull()) {
+-                    //TODO: Check if this is really needed
+-                    // if (img.hasAlphaChannel()) {
+-                    //     QImage i = img.convertToFormat(QImage::Format_RGB32);
+-                    //     img.swap(i);
+-                    // }
+-                    bRet = true;
+-                }
+-            }
+         }
+     }
+     zip.close();
+-    return bRet;
+-}
+-
+-ThumbCreator::Flags FcstdCreator::flags() const {
+-    // FreeCAD already overlays a logo (TODO: file bug report about that)
+-    // return (Flags)(DrawFrame | BlendIcon);
+-    return None;
++    if (!img.isNull()) return KIO::ThumbnailResult::pass(img);
++    return KIO::ThumbnailResult::fail();
+ }
++#include "fcstdcreator.moc"
+diff --unified --recursive --text package.orig/src/fcstdcreator.h package.new/src/fcstdcreator.h
+--- package.orig/src/fcstdcreator.h	2024-03-20 13:10:17.047547212 +0900
++++ package.new/src/fcstdcreator.h	2024-03-21 08:26:59.336563552 +0900
+@@ -25,16 +25,13 @@
+ #define _FCSTD_CREATOR_H_
+ 
+ #include <QObject>
+-#include <kio/thumbcreator.h>
++#include <KIO/ThumbnailCreator>
+ 
+-class FcstdCreator : public QObject, public ThumbCreator
+-{
++class FcstdCreator : public KIO::ThumbnailCreator {
+     Q_OBJECT
+ public:
+-    FcstdCreator();
+-    virtual ~FcstdCreator();
+-    virtual bool create(const QString &path, int w, int h, QImage &thumb);
+-    virtual Flags flags() const;
++    FcstdCreator(QObject* parent, const QVariantList& args);
++    KIO::ThumbnailResult create(const KIO::ThumbnailRequest& request) override;
+ };
+ 
+ #endif // _FCSTD_CREATOR_H_
