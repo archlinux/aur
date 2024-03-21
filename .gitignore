@@ -1,6 +1,4 @@
-src/
-pkg/
-bowtie2/
-*.tar.gz
-*.tar.xz
-*.tar
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
