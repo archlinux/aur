@@ -1,6 +1,6 @@
 pkgbase = python-langchain
 	pkgdesc = Build context-aware reasoning applications
-	pkgver = 0.1.12
+	pkgver = 0.1.13
 	pkgrel = 1
 	url = https://github.com/langchain-ai/langchain
 	arch = any
@@ -32,9 +32,9 @@ pkgbase = python-langchain
 	depends = python-beautifulsoup4
 	depends = python-tiktoken
 	depends = python-openai
-	source = langchain-0.1.12.tar.gz::https://github.com/langchain-ai/langchain/archive/refs/tags/v0.1.12.tar.gz
-	source = https://github.com/langchain-ai/langchain/raw/v0.1.12/LICENSE
-	sha256sums = d6be26ee0920bd491e152c3064a5c87ed23b595927f30e77ed3a90a10d92d072
+	source = langchain-0.1.13.tar.gz::https://github.com/langchain-ai/langchain/archive/refs/tags/v0.1.13.tar.gz
+	source = https://github.com/langchain-ai/langchain/raw/v0.1.13/LICENSE
+	sha256sums = b24bb5e619fbf399542972c3d5771e3489347d5306df47fcc2fa72c4b6438739
 	sha256sums = 4ec67e4ca6e6721dba849b2ca82261597c86a61ee214bbf21416006b7b2d0478
 
 pkgname = python-langchain
