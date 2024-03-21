@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('borg' 'fuse3' 'libadwaita' 'libsecret' 'python-pyfuse3')
 makedepends=('cargo' 'git' 'itstool' 'meson')
 checkdepends=('appstream')
-checkdepends+=('openssh' 'xorg-server-xvfb')
+#checkdepends+=('openssh' 'xorg-server-xvfb')
 _commit=f9d416385bb0d1949956c07e0117cba3a9c525dc  # tags/v0.7.1^0
 source=("git+https://gitlab.gnome.org/World/pika-backup.git#commit=$_commit")
 sha256sums=('SKIP')
@@ -25,9 +25,6 @@ prepare() {
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
-
-  # Remove single process limit since we're not running the tests
-  sed -i '/codegen-units/d' Cargo.toml
 }
 
 build() {
