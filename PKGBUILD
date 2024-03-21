@@ -1,10 +1,4 @@
-#_     _            _                                _____
-#| |__ | | __ _  ___| | ___ __ ___   ___   ___  _ __ |___ /
-#| '_ \| |/ _` |/ __| |/ / '_ ` _ \ / _ \ / _ \| '_ \  |_ \
-#| |_) | | (_| | (__|   <| | | | | | (_) | (_) | | | |___) |
-#|_.__/|_|\__,_|\___|_|\_\_| |_| |_|\___/ \___/|_| |_|____/
-
-#Maintainer: blackmoon3 <https://github.com/blacksky3>
+#Maintainer: archdevlab <https://github.com/archdevlab>
 #Credits: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 #Credits: Andreas Radke <andyrtr@archlinux.org>
 
@@ -40,27 +34,62 @@ fi
 ###################################################################################
 
 pkgbase=linux-zen-pds
-pkgver=6.4.0.zen1
+pkgver=6.8.1.zen1
 pkgrel=1
-major=6.4
-commit=e63a6b30adfd9c0b870daa2a14300a893b69cf17
-versiontag=6.4-zen1
+major=6.8
+commit=d51ddadb4c484aaba621bfe57812085c4fddbdc8
+versiontag=6.8.1-zen1
 arch=(x86_64)
 url='https://www.kernel.org/'
-license=(GPL2)
-makedepends=(bc cpio gettext git libelf pahole perl tar xz kmod xmlto)
-makepends+=(graphviz imagemagick python-sphinx texlive-latexextra) # htmldocs
-makedepends+=(bison flex zstd make patch gcc gcc-libs glibc binutils)
+license=(GPL-2.0-only)
+makedepends=(
+  bc
+  cpio
+  gettext
+  libelf
+  pahole
+  perl
+  python
+  tar
+  xz
+  kmod
+  xmlto
+  # htmldocs
+  graphviz
+  imagemagick
+  python-sphinx
+  python-yaml
+  texlive-latexextra
+)
+makedepends+=(
+  bison
+  flex
+  zstd
+  make
+  patch
+  gcc
+  gcc-libs
+  glibc
+  binutils
+  git
+)
 if [[ "$_compiler" = "2" ]]; then
-  makedepends+=(clang llvm llvm-libs lld python)
+  makedepends+=(
+    clang
+    llvm
+    llvm-libs
+    lld
+    clang
+    python
+  )
 fi
-options=(!strip)
-
+options=(
+  !debug
+  !strip
+)
 archlinuxpath=https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/$commit
-patchpath=https://raw.githubusercontent.com/blacksky3/patches/main/$major
-
 source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$major.tar.xz
-        https://github.com/zen-kernel/zen-kernel/releases/download/v$versiontag/v$versiontag.patch.xz
+        https://github.com/zen-kernel/zen-kernel/releases/download/v$versiontag/linux-v$versiontag.patch.zst
         ${archlinuxpath}/config)
 
 export KBUILD_BUILD_HOST=archlinux
@@ -86,8 +115,7 @@ prepare(){
   plain ""
 
   # Copy the config file first
-  # Copy "${srcdir}"/config to "${srcdir}"/linux-${major}/.config
-  msg "Copy "${srcdir}"/config to "${srcdir}"/linux-$major/.config"
+  msg "Copy the config file first..."
   cp "${srcdir}"/config .config
 
   sleep 2s
@@ -152,72 +180,9 @@ prepare(){
     plain ""
   fi
 
-  msg "Apply config from Cachyos"
-
-  # NUMA is optimized for multi-socket motherboards.
-  # A single multi-core CPU actually runs slower with NUMA enabled.
-  # See, https://bugs.archlinux.org/task/31187
-  msg2 "Disable NUMA"
-  scripts/config --disable CONFIG_NUMA
-  scripts/config --disable CONFIG_AMD_NUMA
-  scripts/config --disable CONFIG_X86_64_ACPI_NUMA
-  scripts/config --disable CONFIG_NODES_SPAN_OTHER_NODES
-  scripts/config --disable CONFIG_NUMA_EMU
-  scripts/config --disable CONFIG_USE_PERCPU_NUMA_NODE_ID
-  scripts/config --disable CONFIG_ACPI_NUMA
-  scripts/config --disable CONFIG_ARCH_SUPPORTS_NUMA_BALANCING
-  scripts/config --disable CONFIG_NODES_SHIFT
-  scripts/config --disable CONFIG_NODES_SHIFT
-  scripts/config --disable CONFIG_NEED_MULTIPLE_NODES
-  scripts/config --disable CONFIG_NUMA_BALANCING
-  scripts/config --disable CONFIG_NUMA_BALANCING_DEFAULT_ENABLED
-
-  sleep 2s
-
-  # Disable debug to lower the size of the kernel
-  msg2 "Disable debug to lower the size of the kernel"
-  scripts/config --disable CONFIG_DEBUG_INFO
-  scripts/config --disable CONFIG_DEBUG_INFO_BTF
-  scripts/config --disable CONFIG_DEBUG_INFO_DWARF4
-  scripts/config --disable CONFIG_DEBUG_INFO_DWARF5
-  scripts/config --disable CONFIG_PAHOLE_HAS_SPLIT_BTF
-  scripts/config --disable CONFIG_DEBUG_INFO_BTF_MODULES
-  scripts/config --disable CONFIG_SLUB_DEBUG
-  scripts/config --disable CONFIG_PM_DEBUG
-  scripts/config --disable CONFIG_PM_ADVANCED_DEBUG
-  scripts/config --disable CONFIG_PM_SLEEP_DEBUG
-  scripts/config --disable CONFIG_ACPI_DEBUG
-  scripts/config --disable CONFIG_SCHED_DEBUG
-  scripts/config --disable CONFIG_LATENCYTOP
-  scripts/config --disable CONFIG_DEBUG_PREEMPT
-
-  sleep 2s
-
-  msg "Apply config from linux-prjc (AUR)"
-
-  # Disable CONFIG_DEBUG_INFO=y at build time otherwise memory usage blows up
-  # And can easily overwhelm a system with 32 GB of memory using a tmpfs build
-  # partition ... this was introduced by FS#66260, see:
-  # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/linux&id=663b08666b269eeeeaafbafaee07fd03389ac8d7
-  msg2 "Disable debug to lower the size of the kernel"
-  scripts/config --disable CONFIG_CGROUP_BPF
-  scripts/config --disable CONFIG_BPF_LSM
-  scripts/config --disable CONFIG_BPF_PRELOAD
-  scripts/config --disable CONFIG_BPF_LIRC_MODE2
-  scripts/config --disable CONFIG_BPF_KPROBE_OVERRIDE
-
-  sleep 2s
-
-  # https://gitlab.com/alfredchen/linux-prjc/-/issues/81
-  # Disable mellanox module
-  msg2 "Disable mellanox module"
-  scripts/config --disable CONFIG_MLX5_CORE
-
-  sleep 2s
-
   plain ""
 
-  msg "Supress depmod"
+  msg "Supress depmod..."
   sed -i '2iexit 0' scripts/depmod.sh
 
   sleep 2s
@@ -234,6 +199,7 @@ prepare(){
   plain ""
 
   # Config
+  msg "make olddefconfig..."
   make ARCH=${ARCH} ${BUILD_FLAGS[*]} olddefconfig
 
   plain ""
@@ -247,16 +213,34 @@ prepare(){
 build(){
   cd ${srcdir}/linux-$major
 
-  msg "make -j$(nproc) all..."
+  msg "make all"
   make ARCH=${ARCH} ${BUILD_FLAGS[*]} -j$(nproc) all
+  msg "make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1"
+  make ARCH=${ARCH} ${BUILD_FLAGS[*]} -j$(nproc) -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
 }
 
 _package(){
   pkgdesc="The Zen kernel and modules - PDS enabled"
-  depends=(coreutils initramfs kmod)
-  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE VHBA-MODULE UKSMD-BUILTIN)
+  depends=(
+    coreutils
+    initramfs
+    kmod
+  )
+  optdepends=(
+    'wireless-regdb: to set the correct wireless channels of your country'
+    'linux-firmware: firmware images needed for some devices'
+  )
+  provides=(
+    KSMBD-MODULE
+    UKSMD-BUILTIN
+    VHBA-MODULE
+    VIRTUALBOX-GUEST-MODULES
+    WIREGUARD-MODULE
+  )
+  replaces=(
+    virtualbox-guest-modules-arch
+    wireguard-arch
+  )
 
   cd ${srcdir}/linux-$major
 
@@ -288,7 +272,7 @@ _package-headers(){
   local builddir="$pkgdir"/usr/lib/modules/"$(<version)"/build
 
   msg "Installing build files..."
-  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map *localversion* version vmlinux
+  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map *localversion* version vmlinux tools/bpf/bpftool/vmlinux.h
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
@@ -326,6 +310,8 @@ _package-headers(){
   msg "Removing unneeded architectures..."
   local arch
   for arch in "$builddir"/arch/*/; do
+
+
     [[ $arch = */x86/ ]] && continue
     msg2 "Removing $(basename "$arch")"
     rm -r "$arch"
@@ -363,9 +349,9 @@ _package-headers(){
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('8fa0588f0c2ceca44cac77a0e39ba48c9f00a6b9dc69761c02a5d3efac8da7f3'
-            '72356a9b2482a44e935be0651e374ceb3640e71ba1f2d31dd1ab1986c4c6d9a0'
-            'aec310553aa9b98572c25d37dfc33a62f5f853441a91cafc5cb1b8c19d7d9be3')
+sha256sums=('c969dea4e8bb6be991bbf7c010ba0e0a5643a3a8d8fb0a2aaa053406f1e965f3'
+            '1f86318ff6d2c14eed7c01cb83407df2d8c52b21c6ee887869e3bef748d6a790'
+            '026dfadb2b5af1190d7360fbfe4630d5e83c6a890abed56ff1594f028408f110')
 
 pkgname=($pkgbase $pkgbase-headers)
 for _p in "${pkgname[@]}"; do
