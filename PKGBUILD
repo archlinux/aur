@@ -3,7 +3,7 @@ pkgname=chrolog-bin
 _pkgname=Chrolog
 pkgver=1.8.3
 _electronversion=28
-pkgrel=4
+pkgrel=5
 pkgdesc="An automated time tracking tool"
 arch=("x86_64")
 url="https://github.com/Lukylix/Chrolog"
@@ -12,7 +12,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'hicolor-icon-theme'
 )
 makedepends=(
     'gendesk'
@@ -24,11 +23,12 @@ source=(
 )
 sha256sums=('190e86b4111454ee4f524f68a585727d1ce60ef961e35a67deeb72c35e5960fb'
             '2cbf73c5824da32f1f9d2db0fb78368b0c556cf80a2de0fd569aa9722dae14ee'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --pkgname="${pkgname%-bin}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
