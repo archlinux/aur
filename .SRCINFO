@@ -32,10 +32,10 @@ pkgbase = linux-zen-bmq
 	makedepends = git
 	options = !debug
 	options = !strip
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.8.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.8.1.tar.xz
 	source = https://github.com/zen-kernel/zen-kernel/releases/download/v6.8.1-zen1/linux-v6.8.1-zen1.patch.zst
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/d51ddadb4c484aaba621bfe57812085c4fddbdc8/config
-	sha256sums = c969dea4e8bb6be991bbf7c010ba0e0a5643a3a8d8fb0a2aaa053406f1e965f3
+	sha256sums = 8d0c8936e3140a0fbdf511ad7a9f21121598f3656743898f47bb9052d37cff68
 	sha256sums = 1f86318ff6d2c14eed7c01cb83407df2d8c52b21c6ee887869e3bef748d6a790
 	sha256sums = 026dfadb2b5af1190d7360fbfe4630d5e83c6a890abed56ff1594f028408f110
 
