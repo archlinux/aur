@@ -1,14 +1,16 @@
 pkgbase = wayscreen
 	pkgdesc = A simple screenshot app running under Wayland
-	pkgver = 1.0
+	pkgver = 1.0.0
 	pkgrel = 1
-	arch = x86_64
-	license = MIT
+	url = https://github.com/yarchefis/wayscreen
+	arch = any
+	license = 
+	makedepends = python
 	depends = python
+	depends = python-pyscreenshot
 	depends = tk
 	depends = python-pillow
-	depends = python-pip
-	source = install.sh
-	sha256sums = SKIP
+	source = wayscreen::git+https://github.com/yarchefis/wayscreen.git
+	md5sums = SKIP
 
 pkgname = wayscreen
