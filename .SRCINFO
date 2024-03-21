@@ -1,7 +1,7 @@
 pkgbase = python-qh3-bin
-	pkgdesc = Lightweight QUIC and HTTP/3 implementation in Python
+	pkgdesc = Lightweight QUIC and HTTP/3 implementation in Python (pre-compiled)
 	pkgver = 0.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jawah/qh3
 	arch = x86_64
 	license = BSD-3-Clause
