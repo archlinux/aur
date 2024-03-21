@@ -3,7 +3,7 @@ pkgname=tm-desktop-bin
 pkgver=09.11.2023
 _realver=0.8.2
 _electronversion=27
-pkgrel=3
+pkgrel=4
 pkgdesc="A TikTok Music desktop application."
 arch=('x86_64')
 url="https://github.com/NeverExcel/tm-desktop"
@@ -23,11 +23,12 @@ source=(
 )
 sha256sums=('f109a8a3eddd61e0497537114dd2ca4f548eb946c3acbc6e58d0f8af2445e1f2'
             'fca810bcb164e26493b6e6bf39e95aaca781fba20ad6e02fec625a43d142aecd'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
