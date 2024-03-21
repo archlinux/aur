@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy-bin
 _pkgname=Escrcpy
-pkgver=1.17.5
+pkgver=1.17.6
 _electronversion=27
 pkgrel=1
 pkgdesc="使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动"
@@ -15,7 +15,6 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
-    'hicolor-icon-theme'
     'scrcpy'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
@@ -24,8 +23,8 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('8cf9a2d37021d35b2536852f040e02a91a2cea7e7aa333354a94814359c42fa9')
-sha256sums_x86_64=('48809d546155aab2ff7afa40653292e00847015608bf74cbe7bdc34d9580c654')
+sha256sums_aarch64=('abf623504110e978b81c3abeb313d3fe66ad4582b95b1071b108e62d353e1a92')
+sha256sums_x86_64=('40e24034dca479b2e1f21cf4f2ccff5caced06ff98573ca0ef52bc40172ce848')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
