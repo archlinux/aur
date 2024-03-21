@@ -1,0 +1,5 @@
+[calculix-precice]
+source = "github"
+github = "precice/calculix-adapter"
+use_latest_release = "true"
+prefix = "v"
