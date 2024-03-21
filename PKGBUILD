@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=extra-cmake-modules-git
-pkgver=6.0.0.r3674.a97a3e58
+pkgver=6.1.0.r3681.1e6808bd
 pkgrel=1
 pkgdesc='Extra modules and scripts for CMake. (GIT version)'
 arch=('any')
@@ -40,7 +40,9 @@ pkgver() {
 }
 
 prepare() {
-  sed 's|frameworks/||g' -i extra-cmake-modules/tests/KDEFetchTranslations/CMakeLists.txt
+  sed -e 's|\.\*\/extra-cmake-modules|extra-cmake-modules|g' \
+      -e 's|\*\/extra-cmake-modules|extra-cmake-modules|g' \
+      -i extra-cmake-modules/tests/KDEFetchTranslations/CMakeLists.txt
 }
 
 build() {
