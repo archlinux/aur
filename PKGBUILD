@@ -3,7 +3,7 @@ pkgname=moonplayer-bin
 _pkgname=MoonPlayer
 _appname="com.github.coslyk.${_pkgname}"
 pkgver=4.3
-pkgrel=3
+pkgrel=4
 pkgdesc="All-in-One video player that can play videos from Youtube, Bilibili etc. as well as local videos."
 arch=("x86_64")
 url="https://coslyk.github.io/moonplayer.html"
@@ -12,7 +12,6 @@ license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'hicolor-icon-theme'
     'pipewire-jack'
     'alsa-lib'
 )
@@ -25,7 +24,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('84ce29a94c194a084fb51f7c046042b35cf920412be0e7d7450f168220c51b76'
-            '0686ac8d63c097cec03fd031e28bae999ddf25152d63ebf9500f244142289cf7')
+            'adcdd9a812acc79842b2c61aa8ae5da573dfbdd536faeed13235d21199595382')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
