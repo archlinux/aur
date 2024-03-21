@@ -2,13 +2,22 @@
 pkgname=('pop-launcher' 'pop-shell-plugin-system76-power')
 pkgbase=pop-launcher
 pkgver=1.2.1
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/launcher"
 license=('MPL-2.0')
-depends=('dbus' 'fd' 'libqalculate' 'sh' 'xdg-utils')
-makedepends=('cargo' 'just')
-options=('!lto')
+depends=(
+  'dbus'
+  'fd'
+  'libqalculate'
+  'pop-icon-theme'
+  'sh'
+  'xdg-utils'
+)
+makedepends=(
+  'cargo'
+  'just'
+)
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('00f6386851a770d988eab58b367a592a7df3b69c17c99f9daea2bd40a1f69d5a')
 
@@ -23,6 +32,7 @@ prepare() {
 
 build() {
   cd "launcher-$pkgver"
+  CFLAGS+=" -ffat-lto-objects"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   just vendor=1
@@ -42,7 +52,7 @@ package_pop-launcher() {
 
 package_pop-shell-plugin-system76-power() {
   pkgdesc="System76 Power scripts for the launcher"
-  depends=('gnome-terminal' 'system76-power')
+  depends=('gnome-terminal' 'pop-launcher' 'system76-power')
   conflicts=('pop-launcher-system76-power')
   replaces=('pop-launcher-system76-power')
 
