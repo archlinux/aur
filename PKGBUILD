@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xpeviewer-bin
 pkgver=0.04
-pkgrel=7
+pkgrel=8
 pkgdesc="PE file viewer/editor for Windows, Linux and MacOS."
 arch=(x86_64)
 url="http://ntinfo.biz/"
@@ -11,7 +11,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'qt5-base'
-    'hicolor-icon-theme'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_Ubuntu_22.04_amd64.deb"

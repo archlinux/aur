@@ -1,12 +1,11 @@
 pkgbase = xpeviewer-bin
 	pkgdesc = PE file viewer/editor for Windows, Linux and MacOS.
 	pkgver = 0.04
-	pkgrel = 7
+	pkgrel = 8
 	url = http://ntinfo.biz/
 	arch = x86_64
 	license = MIT
 	depends = qt5-base
-	depends = hicolor-icon-theme
 	provides = xpeviewer=0.04
 	conflicts = xpeviewer
 	source = xpeviewer-0.04.deb::https://github.com/horsicq/XPEViewer/releases/download/0.04/xpeviewer_0.04_Ubuntu_22.04_amd64.deb
