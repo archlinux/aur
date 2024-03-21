@@ -1,7 +1,7 @@
 pkgbase = frc-toolchain
 	pkgdesc = The FIRST Robotics Competition C/C++ build system components
 	pkgver = 2024.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wpilibsuite/toolchain-builder
 	arch = x86_64
 	license = GPL
