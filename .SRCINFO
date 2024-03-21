@@ -1,21 +1,20 @@
 pkgbase = anklang-bin
 	pkgdesc = A digital audio synthesis application for live creation and composition of music and other audio material.
 	pkgver = 0.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/tim-janik/anklang
 	arch = x86_64
 	license = MPL-2.0
-	depends = gtk2
-	depends = gtk3
-	depends = alsa-lib
-	depends = hicolor-icon-theme
-	depends = nss
+	depends = electron25-bin
 	depends = flac
 	depends = pipewire-jack
+	depends = gtk2
 	depends = opus
 	provides = anklang=0.2.0
 	conflicts = anklang
 	source = anklang-0.2.0.deb::https://github.com/tim-janik/anklang/releases/download/v0.2.0/anklang_0.2.0_amd64.deb
+	source = anklang.sh
 	sha256sums = 749f5a76b3bde9fdf3f6ea87cca936f2ab2572ac00e31e3d3a47e63f66c0e099
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = anklang-bin
