@@ -3,8 +3,8 @@
 
 _extension=better-mystudies
 pkgname="chromium-extension-$_extension"
-pkgver=0.0.2
-pkgrel=1
+pkgver=0.0.0
+pkgrel=2
 pkgdesc="A chromium extension to improve ETHZ websites Resources"
 arch=('any')
 url="https://github.com/timothelaborie/better_mystudies"
