@@ -1,7 +1,8 @@
-libvos/
-pkg/
-rescached-git/
-src/
 *.tar
 *.xz
 *.zst
+/libvos/
+/pkg/
+/rescached-git-remote/
+/rescached-git/
+/src/

@@ -1,10 +1,10 @@
 # Maintainer: shulhan <ms@kilabit.info>
 pkgname=rescached-git
-pkgver=4.4.2.r1.g627c9ba
+pkgver=4.4.2.r5.g842206e
 pkgrel=1
 pkgdesc="Resolver/DNS cache daemon"
 arch=('i686' 'x86_64' 'armv7h')
-url="https://github.com/shuLhan/rescached-go"
+url="https://git.sr.ht/~shulhan/rescached"
 license=('GPL-3.0-or-later')
 
 depends=('bash')
@@ -12,10 +12,13 @@ provides=('rescached')
 makedepends=('git' 'go>=1.20')
 
 source=(
-	"$pkgname::git+https://github.com/shuLhan/rescached-go.git"
-	## For testing on local.
-	#"$pkgname::git+file:///home/ms/go/src/github.com/shuLhan/rescached-go"
+	"$pkgname::git+https://git.sr.ht/~shulhan/rescached"
 )
+## For testing on local.
+#source=(
+#	"$pkgname::git+file:///.."
+#)
+
 sha1sums=(
 	'SKIP'
 )
