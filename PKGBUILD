@@ -3,7 +3,7 @@ pkgname=guiwrapper-bin
 _pkgname=GUIwrapper
 pkgver=0.7.3
 _electronversion=23
-pkgrel=9
+pkgrel=10
 pkgdesc="A simple cross platform graphical user interface (GUI) wrapper to launch executable desktop applications"
 arch=('x86_64')
 url="https://github.com/frodal/GUIwrapper"
@@ -23,11 +23,12 @@ source=(
 )
 sha256sums=('9fe4cd794aae62af8867149fe22a05859b03974871963bf37f9617556ebaf085'
             'c2655948673313ef780c59ed39d9cc8d7db09929330223d44e8014f0860435ba'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
