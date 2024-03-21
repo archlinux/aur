@@ -125,7 +125,7 @@ source=(
   git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}
   add-av_stream_get_first_dts-for-chromium.patch
 )
-b2sums=('9c19bd6b68d4224af2a93fdce199fd0ce9b00432c8818801d124ca993ac45a01d3a7618b66804c02c1f26787a5ca88d2d9f682f3e819cee8c2b6b3dc77e64052'
+b2sums=('SKIP'
         '555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de')
 validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
 
