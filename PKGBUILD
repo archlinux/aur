@@ -5,7 +5,7 @@
 # https://wiki.archlinux.org/title/Python_package_guidelines
 
 pkgname=pearl-git
-pkgver=r134.e8b4482
+pkgver=r140.e504230
 pkgrel=1
 pkgdesc="Package manager for dotfiles, plugins, programs and any form of code accessible via git. Allow to easily share and sync packages across systems and have them ready to work out of the box."
 arch=('any')
@@ -23,9 +23,16 @@ options=()
 install=${pkgname%-git}.install
 # Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
 # a description of each element in the source array.
-source=('pearl::git+https://github.com/pearl-core/pearl.git#branch=master')
+source=('pearl::git+https://github.com/pearl-core/pearl.git#branch=master' 'git+https://github.com/fsquillace/buava#branch=master')
 noextract=()
-md5sums=('SKIP')
+md5sums=('SKIP' 'SKIP')
+
+prepare() {
+	cd "$srcdir/${pkgname%-git}"
+  git submodule init
+  git config submodule.src/pearllib/static/buava.url "$srcdir/buava"
+  git -c protocol.file.allow=always submodule update
+}
 
 
 pkgver() {
