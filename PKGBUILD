@@ -8,9 +8,9 @@ pkgrel=1
 pkgdesc="preCICE adapter for OpenFOAM"
 arch=(x86_64)
 url="https://github.com/precice/${_base}-adapter"
-license=(GPL3)
+license=(GPL-3.0-or-later)
 _openfoam_version=v2306
-depends=("${_base}-com=${_openfoam_version}" "precice")
+depends=("${_base}-com=${_openfoam_version}" precice)
 makedepends=(git)
 source=("git+${url}.git#commit=${_gitcommit}")
 # validpgpkeys=('2A955D4FE358070072B117D56723BA104179BCE9') # Gerasimos Chourdakis <chourdak@in.tum.de>

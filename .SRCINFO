@@ -4,7 +4,7 @@ pkgbase = openfoam-com-precice
 	pkgrel = 1
 	url = https://github.com/precice/openfoam-adapter
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = openfoam-com=v2306
 	depends = precice
