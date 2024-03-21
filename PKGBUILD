@@ -3,8 +3,8 @@
 
 pkgname=snapcast-git
 _pkgname_snapos=snapos-git
-pkgver=v0.27.0.r0.g54a3d862
-pkgrel=2
+pkgver=v0.27.0.r65.g86cd4b2b
+pkgrel=3
 pkgdesc="Synchronous multi-room audio player"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/badaix/snapcast"
@@ -20,6 +20,11 @@ source=("${pkgname}::git+$url.git#branch=develop"
         "snapcast.sysusers"
         "snapcast.tmpfiles"
         "snapcast.install")
+
+optdepends=("python-websocket-client: stream plugin script"
+            "python-mpd2: stream plugin script"
+            "python-musicbrainzngs: stream plugin script")
+
 sha256sums=('SKIP'
             'SKIP'
             '9fe6e9e07adb77f555a617b772e6d01e098e1dfaad1e8075e03a7d7ba76141de'
@@ -27,7 +32,7 @@ sha256sums=('SKIP'
             '87945989ce215c3720e12e9d53642d7b1112f8276cd02d999fd7e27517aea126')
 
 pkgver() {
-    cd ${pkgname}
+    cd "${pkgname}"
     git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -50,10 +55,7 @@ package() {
     for file in server/etc/snapweb/*\.*; 
         do install -Dm 644 ${file} -t "${pkgdir}/usr/share/snapserver/snapweb/"; 
     done
-    for file in server/etc/snapweb/3rd-party/*\.*;
-        do install -Dm 644 ${file} -t "${pkgdir}/usr/share/snapserver/snapweb/3rd-party/";
-    done
-
+    # install plug-ins
     for file in server/etc/plug-ins/*\.*;
         do install -Dm 755 ${file} -t "${pkgdir}/usr/share/snapserver/plug-ins/";
     done
