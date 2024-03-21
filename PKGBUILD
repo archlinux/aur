@@ -21,13 +21,11 @@ optdepends=(
 provides=('semgrep')
 options=('!strip')
 source=(
-  "https://files.pythonhosted.org/packages/cb/d8/1e3f1733998c7a2954df307527943629b892ed62415ba48982a5408f37b1/semgrep-1.28.0-cp37.cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-any.whl"
+  "https://files.pythonhosted.org/packages/58/da/d1d4681d8e73b7b27223822281c915b672914b0713248378aa7045e110d5/semgrep-1.66.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-any.whl"
 )
-sha256sums=(
-  '804695261b05257713f4e1846c8a31b7c8ae9a1664ec1dd368d68ee46989bb4e'
-)
+sha256sums=('3d1fe1e22edc9ba8a6ea45fd9c9a253703b39c13fd6a300438f0011770c0d2c9')
 
 package() {
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.whl
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps semgrep-1.66.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-any.whl
   python -O -m compileall "${pkgdir}"
 }
