@@ -2,8 +2,8 @@
 
 _basename=jitsi-meet
 _pkgname=prosody
-_version=1.0.7876
-_url=https://download.jitsi.org/unstable/jitsi-meet-prosody_1.0.7876-1_all.deb
+_version=1.0.7894
+_url=https://download.jitsi.org/unstable/jitsi-meet-prosody_1.0.7894-1_all.deb
 
 _pkgbase=${_basename}-${_pkgname}-nightly
 _debname=${_basename}-${_pkgname}
@@ -48,4 +48,4 @@ package() {
 	
 
 }
-sha256sums=('2000e84e18cada721fe480d9214a0d24aeee49664ceaefc9de5e7ca7840f7978')
+sha256sums=('b304aa1cd6d06ef4290421eb710abde41badcf2858d685e85a87692421dd5919')
