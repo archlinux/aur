@@ -1,7 +1,7 @@
 pkgbase = bef-minimal
 	pkgdesc = An extensible, fast, and usable file utility to encode and decode interleaved erasure coded streams of data. Minimal Dependencies
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gbletr42/bef
 	arch = i686
 	arch = x86_64
