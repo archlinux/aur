@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=catcat-dm-react
 _pkgname="CatCatDM React"
-pkgver=1.9.8
+pkgver=1.9.9
 _electronversion=23
 _nodeversion=18
 pkgrel=1
@@ -12,7 +12,6 @@ license=('MIT')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
-    'hicolor-icon-theme'
 )
 makedepends=(
     'npm'
@@ -20,14 +19,14 @@ makedepends=(
     'gendesk'
     'yarn'
     'git'
-    'base-devel'
     'gcc'
+    'base-devel'
 )
 source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('1aac8c03d9025aef0c4606a59be7670ba9e6b19ea374248ef2e7852d2321a74e'
+sha256sums=('065269e4b27dc4b9c553125c9676c39cfeccfc06bdcc198dfa52bc8e525b8efb'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
