@@ -1,8 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yesplaymusic-bin
 _pkgname=YesPlayMusic
-pkgver=0.4.8
-_subver=2
+pkgver=0.4.8_2
 _electronversion=13
 pkgrel=1
 pkgdesc="高颜值的第三方网易云播放器。"
@@ -15,8 +14,7 @@ url="https://music.qier222.com/"
 _ghurl="https://github.com/qier222/YesPlayMusic"
 license=('MIT')
 depends=(
-    "electron${_electronversion}"
-    'hicolor-icon-theme'
+    "electron${_electronversion}-bin"
 )
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=(
@@ -27,15 +25,15 @@ conflicts=(
     "r3play"
     "r3playx"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}-${_subver}/${pkgname%-bin}_${pkgver}_arm64.deb")
-source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}-${_subver}/${pkgname%-bin}_${pkgver}_armv7l.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}-${_subver}/${pkgname%-bin}_${pkgver}_amd64.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver%_2}_arm64.deb")
+source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver%_2}_armv7l.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver%_2}_amd64.deb")
 source=(
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/qier222/YesPlayMusic/v${pkgver}-${_subver}/LICENSE"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/qier222/YesPlayMusic/v${pkgver//_/-}/LICENSE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c33378c6fd12e6d040cedd06dc0d1bedfca74fd66bc46cc2cf10cc10e0906be6'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 sha256sums_aarch64=('3cfd1aa726d2391aa578e068825760215d6d619a9aa3c919e3be26b80103a5dd')
 sha256sums_armv7h=('13ccd225abbd4d5beb6fcee95648f5aae551809ffd1eefe1b37cf446980d5ad3')
 sha256sums_x86_64=('8935a2fad64651053b27599c98c76559748aa581b2e263007aaf4237d7e19d9f')
@@ -43,6 +41,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g;s|Music;|AudioVideo;|g" \
