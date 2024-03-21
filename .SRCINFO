@@ -8,9 +8,9 @@ pkgbase = ipsw-bin
 	provides = ipsw
 	arch = aarch64
 	source_aarch64 = https://github.com/blacktop/ipsw/releases/download/v3.1.459/ipsw_3.1.459_linux_arm64.tar.gz
-	sha256sums_aarch64 = 6e7dc5f6130792f4962969236d7c70f80afa20012c33305a82c7540f48f98041
+	sha256sums_aarch64 = bf74c473a1f51731ed52ca48e283b3373ba91513b3eb3fcaade99afebbecacc9
 	arch = x86_64
 	source_x86_64 = https://github.com/blacktop/ipsw/releases/download/v3.1.459/ipsw_3.1.459_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 8a3524ec23b2a7b05f2934fd8591b8159b3ac605155870e8f3807aa7655449ba
+	sha256sums_x86_64 = c102e270a58d547ee49e6eac6fc5209d73d1248dc7f7b2c7a362bd671f46efb9
 	
 pkgname = ipsw-bin
