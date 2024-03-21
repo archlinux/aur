@@ -4,7 +4,7 @@
 # Contributor: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=git-review
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=4
 pkgdesc='Tool to submit code to Gerrit'
 arch=('any')
@@ -14,14 +14,14 @@ depends=('git' 'python-requests')
 makedepends=('python-pbr' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 #checkdepends=('java-runtime=11' 'libcups' 'openssh' 'procps-ng' 'python-stestr' 'python-mock')
 source=("$pkgname-$pkgver.tar.gz::https://opendev.org/opendev/git-review/archive/$pkgver.tar.gz"
-        'https://gerrit-releases.storage.googleapis.com/gerrit-2.13.14.war')
-sha512sums=('f1c3cdb6dd309894963c9c039b3e0677b5e9fd23ef5ba3495426fdd3f08330fe1ffbc87b4549639adbb8134555052d4358251315f121569fda84956bf4dfc5be'
-            '8fe04cb9b84ab06cf2b92a4ef475d1252ae63c1e6ea4fffca5b02bba3e48ec5c248fb9df7243b9464182afae9e566faf317972394077a50aaf13239af4e35a0a')
+        'https://gerrit-releases.storage.googleapis.com/gerrit-3.4.4.war')
+sha512sums=('acbfde06a03776494f1506355d837111305c45cd9424aed4b852ebb5c496a83184eb7d515425b48317d9e0858021f8bd78b6c2184fc1d4655d00ca2ade244532'
+            'bb7d54585d16a3a4c2660d1e4cdfe193164f4f18e24a2d5df147936023a237332b1c1e1e21198c2f4216935e37fd3dc1494a0c1aa41c6dcf6b966f19c9f976ce')
 
 prepare() {
   export PBR_VERSION=$pkgver
   mkdir -p $pkgname/.gerrit
-  cp gerrit-2.13.14.war $pkgname/.gerrit/
+  cp gerrit-3.4.4.war $pkgname/.gerrit/
 
   cd $pkgname
 
@@ -45,6 +45,8 @@ build() {
 #check() {
 #  cd $pkgname
 #  python -m installer --destdir="$PWD/tmp_install" dist/*.whl
+#  export PATH="$PWD/tmp_install/usr/bin":$PATH
+#  export PYTHONPATH="$PWD/tmp_install/usr/lib/python3.11/site-packages":$PYTHONPATH
 #
 #  python -m git_review.tests.prepare
 #  stestr run || warning "Tests failed"
