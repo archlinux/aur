@@ -5,7 +5,7 @@ _pkgname="AeroBrowser"
 pkgver=0.2.2_alpha
 _electronversion=23
 _nodeversion=18
-pkgrel=3
+pkgrel=4
 pkgdesc="A fast and lightweight web browser made with electron and react that allows you to navigate the Internet with ease."
 arch=('any')
 url="https://aero-mymeiy532-frostbreker.vercel.app/"
@@ -27,7 +27,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -38,6 +38,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --categories="Network" --pkgname="${_appname}-browser" --name="${_pkgname}" --exec="${pkgname} %U"
@@ -50,7 +51,14 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    sed '53,56d;52s|,||g' -i electron-builder.json
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
+    sed '53,56d;s|"deb",|"dir"|g' -i electron-builder.json
     sed "s|https://www.google.fr/|about:blank|g" -i src/App.js
     npm install
     npm run electron:package:linux
