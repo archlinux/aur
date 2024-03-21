@@ -2,7 +2,7 @@
 # Contributor: Asuka Minato
 pkgname=cultivation-bin
 pkgver=1.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A custom launcher designed to make it as easy as possible to proxy anime game traffic to private servers"
 arch=(x86_64)
 url="https://github.com/NotThorny/Cultivation"
@@ -11,7 +11,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
 	'gtk3'
-	'hicolor-icon-theme'
 	'webkit2gtk'
 )
 source=(
