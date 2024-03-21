@@ -3,7 +3,7 @@ pkgname=mockoon
 pkgver=7.0.0
 _electronversion=29
 _nodeversion=20
-pkgrel=1
+pkgrel=2
 pkgdesc="The easiest and quickest way to run mock APIs locally. No remote deployment, no account required, open source."
 arch=('any')
 url="https://mockoon.com/"
@@ -12,14 +12,11 @@ license=('MIT')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
-    'hicolor-icon-theme'
 )
 makedepends=(
     'gendesk'
-    'asar'
     'npm'
     'git'
-    'node-gyp'
     'base-devel'
     'gcc'
 )
@@ -27,8 +24,8 @@ source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('SKIP'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+sha256sums=('8041d39ceecef2c50de833d0f447c86554fb025f63190e2629d3543e2837e10f'
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -51,7 +48,14 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    sed '12,24d' -i "${srcdir}/${pkgname}.git/packages/desktop/build-configs/electron-builder.linux.js"
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
+    sed "12,24d;s|'AppImage',|'dir'|g" -i "${srcdir}/${pkgname}.git/packages/desktop/build-configs/electron-builder.linux.js"
     npm run bootstrap
     npm run build:libs
     npm run build:desktop:prod
