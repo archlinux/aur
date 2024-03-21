@@ -3,7 +3,7 @@
 # Contributer: Ada <adadonderr@gmail.com>
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook-git
-pkgver=2.6.16.r12.ga3b590bcb
+pkgver=2.6.17.r1.gf15446b1d
 _electronversion=25
 _nodeversion=16
 pkgrel=1
