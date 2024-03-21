@@ -1,7 +1,7 @@
 pkgbase = imagine-bin
 	pkgdesc = PNG/JPEG optimization app
 	pkgver = 0.7.5
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/meowtec/Imagine
 	arch = x86_64
 	license = MIT
@@ -15,6 +15,6 @@ pkgbase = imagine-bin
 	source = imagine.sh
 	sha256sums = a032f096cc4d09f866d9e575706cb3174875900a234ed0dca0e9a2dfc2cea838
 	sha256sums = aebee0e853c4db64ce36bd0b235613a9b948036a7f62af387f2e0b406cd657b7
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = imagine-bin

@@ -3,7 +3,7 @@ pkgname=imagine-bin
 _appname=Imagine
 pkgver=0.7.5
 _electronversion=12
-pkgrel=7
+pkgrel=8
 pkgdesc="PNG/JPEG optimization app"
 arch=("x86_64")
 url="https://github.com/meowtec/Imagine"
@@ -22,11 +22,12 @@ source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}
     "${pkgname%-bin}.sh")
 sha256sums=('a032f096cc4d09f866d9e575706cb3174875900a234ed0dca0e9a2dfc2cea838'
             'aebee0e853c4db64ce36bd0b235613a9b948036a7f62af387f2e0b406cd657b7'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
