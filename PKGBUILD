@@ -1,14 +1,26 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=('pop-launcher-git' 'pop-shell-plugin-system76-power-git')
 pkgbase=pop-launcher-git
-pkgver=1.2.1.r51.gb1f6002
+pkgver=1.2.1.r56.ga7fc5bc
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/launcher"
 license=('MPL-2.0')
-depends=('dbus' 'fd' 'libqalculate' 'sh' 'xdg-utils')
-makedepends=('cargo' 'git' 'just' 'libegl' 'libxkbcommon')
-options=('!lto')
+depends=(
+  'dbus'
+  'fd'
+  'libqalculate'
+  'pop-icon-theme-git'
+  'sh'
+  'xdg-utils'
+)
+makedepends=(
+  'cargo'
+  'git'
+  'just'
+  'libegl'
+  'libxkbcommon'
+)
 source=('git+https://github.com/pop-os/launcher.git')
 sha256sums=('SKIP')
 
@@ -24,14 +36,11 @@ prepare() {
   just vendor
 
   sed -i 's|{{bin-path}}|/usr/bin/pop-launcher|g' justfile
-
-  # change session-lock script icon to one more common
-  # so pop-icon-theme is not required
-  sed -i 's/locked/object-locked/g' scripts/session/session-lock.sh
 }
 
 build() {
   cd launcher
+  CFLAGS+=" -ffat-lto-objects"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   just build-vendored
@@ -60,7 +69,7 @@ package_pop-launcher-git() {
 
 package_pop-shell-plugin-system76-power-git() {
   pkgdesc="System76 Power scripts for the launcher"
-  depends=('gnome-terminal' 'system76-power')
+  depends=('gnome-terminal' 'pop-launcher-git' 'system76-power')
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}" 'pop-launcher-system76-power')
   replaces=('pop-launcher-system76-power-git')
