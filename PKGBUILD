@@ -2,14 +2,14 @@
 
 pkgname=gct
 pkgver=6.2.1705709074
-pkgrel=1
+pkgrel=2
 pkgdesc="The Grid Community Toolkit (GCT) is an open-source fork by the Grid Community Forum (GridCF) of the venerable Globus Toolkit"
 url="https://gridcf.org/gct-docs/"
 arch=('x86_64')
 license=('Apache')
 depends=('openssl' 'perl')
 source=("https://repo.gridcf.org/gct6/sources/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('1498c895279dbc806f675c4478ff747df77b14f94dcfa83e36f04129b84258bc5e84ada6b406f3e480afa53f3205c995ac714ce2dd7a5eb42e02c285eac7db3a')
+sha512sums=('dc875263f8dec756e99157be94f2671312ee8321378684c4e34fe4d9f9488b8599702154b03be11d80647305e8438d6369d0630a5ae57564d42fecf82d824e5e')
 
 
 ### BUILD OPTIONS
