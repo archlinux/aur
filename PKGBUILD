@@ -23,16 +23,16 @@ sha256sums_aarch64=('83a453a454ab804dc23e8f502efe468f2103725dba030002f6a23f3db91
 prepare() {
     cd "${_pkgname}"
     mv LICENSE ..
-    rm -rf jre tmm.{ico,png} native/linux/addons/*
+    rm -rf jre native/linux/addons/*
 }
 
 package() {
     install -Dm644 "LICENSE"               "${pkgdir}/usr/share/licenses/${_pkgname,,}/LICENSE"
     install -Dm644 "${_pkgname,,}.desktop" "${pkgdir}/usr/share/applications/${_pkgname,,}.desktop"
     install -Dm644 "${_pkgname,,}.png"     "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname,,}.png"
-    install -dm755 "${pkgdir}/usr/"{bin,share}
-    cp --preserve=mode -r "${_pkgname}" "${pkgdir}/usr/share/${_pkgname,,}"
-    ln -s "/usr/share/${_pkgname,,}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname,,}"
-    ln -s /usr/lib/jvm/default "${pkgdir}/usr/share/${_pkgname,,}/jre"
-    ln -s /usr/bin/ffmpeg "${pkgdir}/usr/share/${_pkgname,,}/native/linux/addons/ffmpeg"
+    install -dm755 "${pkgdir}/"{opt,usr/bin}
+    cp --preserve=mode -r "${_pkgname}" "${pkgdir}/opt/${_pkgname,,}"
+    ln -s "/opt/${_pkgname,,}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname,,}"
+    ln -s /usr/lib/jvm/default "${pkgdir}/opt/${_pkgname,,}/jre"
+    ln -s /usr/bin/ffmpeg "${pkgdir}/opt/${_pkgname,,}/native/linux/addons/ffmpeg"
 }
