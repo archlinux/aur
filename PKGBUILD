@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=mongodb-compass
-pkgver=1.42.1
+pkgver=1.42.3
 pkgrel=1
 pkgdesc="The MongoDB GUI"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('alsa-lib' 'gtk3' 'libsecret' 'libxss' 'libxtst' 'nss')
 optdepends=('org.freedesktop.secrets')
 source=("https://downloads.mongodb.com/compass/${pkgname}_${pkgver}_amd64.deb")
 noextract=("${pkgname}_${pkgver}_amd64.deb")
-b2sums=('04095363dbeed6715022fa47d4e3bb8f16b3847b3f0aa6fc8f1c682c5bec90dab157df271e9adc530c2dd3457bc3b7196df5e52028db88ee8f0179a186606231')
+b2sums=('1f25df5081b466f940368d76d3a77a573fb017533d34edf2e7e689206835d7c20ed56d77c92ba1b77d747a143a13a10645fde9a78f32051d1096845d0f857ffe')
 
 package() {
     bsdtar -O -xf "${pkgname}_${pkgver}"*.deb data.tar.xz | bsdtar -C "$pkgdir" -xJf -
@@ -26,6 +26,10 @@ package() {
     # Remove all unnecessary stuff
     rm -rf "${pkgdir}/usr/share/lintian"
     rm -rf "${pkgdir}/usr/share/doc"
+
+    # Prevent creation of unnecessary logs in `${HOME}/.mongodb`
+    sed -i 's/Exec=/Exec=env MONGODB_COMPASS_TEST_LOG_DIR=\/dev\/null /' \
+      "${pkgdir}"/usr/share/applications/mongodb-compass.desktop
 
     # Install license
     install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}
