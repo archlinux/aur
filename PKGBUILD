@@ -4,7 +4,7 @@ pkgname=gridea-bin
 _pkgname=Gridea
 pkgver=0.9.3
 _electronversion=7
-pkgrel=8
+pkgrel=9
 pkgdesc="A static blog writing client.静态博客写作客户端"
 arch=('x86_64')
 url='https://gridea.dev'
@@ -26,11 +26,12 @@ source=(
 )
 sha256sums=('9538866b640e44e9fd54bc1b3a957d1625648f1c1dd6b942dcd73d22701ede4e'
             'd5fd1669066ffaab84a9063cd2792ded7aca1f6f92a972f58ffb5173404b53d2'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
