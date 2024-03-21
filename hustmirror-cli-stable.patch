@@ -4,28 +4,8 @@ Date: Sun, 17 Dec 2023 14:24:41 +0800
 Subject: [PATCH] patch:core/install
 
 ---
- Makefile    |  4 ++++
  src/core.sh | 25 +------------------------
- 2 files changed, 5 insertions(+), 24 deletions(-)
-
-diff --git a/Makefile b/Makefile
-index fe7b8fb..6414dc9 100644
---- a/Makefile
-+++ b/Makefile
-@@ -11,10 +11,14 @@ OUT_DIR := output
- OUT_FILE := $(OUT_DIR)/hustmirror-cli
- OUT_MIRROR_DIR := $(OUT_DIR)/mirrors
- OUT_MIRROR_FILES := $(patsubst $(MIRROR_DIR)/%,$(OUT_MIRROR_DIR)/%,$(MIRROR_FILES))
-+INSTALL_DIR := /usr/local/bin/
- 
- all: $(OUT_FILE)
- 	@echo "Done, object script is $(OUT_FILE)."
- 
-+install: $(OUT_FILE)
-+	@cp $(OUT_FILE) $(INSTALL_DIR)
-+
- test: $(OUT_FILE)
- 	@tests/test.sh
+ 1 files changed, 5 insertions(+), 24 deletions(-)
  
 diff --git a/src/core.sh b/src/core.sh
 index 91a0796..9975e15 100644

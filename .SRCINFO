@@ -1,6 +1,6 @@
 pkgbase = hustmirror-cli
 	pkgdesc = The command line tool (hustmirror-cli) is a small tool that can help you quickly change sources to HUST mirror sources.
-	pkgver = 1.0.2
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://gitee.com/hustmirror/hustmirror-cli
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = hustmirror-cli
 	source = hustmirror-cli-stable.patch
 	source = hustmirror-cli-makefile.patch
 	sha256sums = SKIP
-	sha256sums = b282b2527d8463bc891e84413d3a672e3d6c3bada277f26b7056fe814bf9c5e4
-	sha256sums = SKIP
+	sha256sums = a08dfc1246edcb721505d717dff36abdaa4aee0f1a74c02d4eece69f563cb5e8
+	sha256sums = b63df2685509bbdd82a97c0b73e4891d013a6a91c19fc029ed79ce9fc35b4710
 
 pkgname = hustmirror-cli
