@@ -96,8 +96,7 @@ prepare(){
   plain ""
 
   # Copy the config file first
-  # Copy "${srcdir}"/config to "${srcdir}"/linux-${_pkgver}/.config
-  msg "Copy "${srcdir}"/config to "${srcdir}"/linux-$_pkgver/.config"
+  msg "Copy the config file first..."
   cp "${srcdir}"/config .config
 
   sleep 2s
@@ -177,7 +176,7 @@ prepare(){
 
   plain ""
 
-  msg "Supress depmod"
+  msg "Supress depmod..."
   sed -i '2iexit 0' scripts/depmod.sh
 
   sleep 2s
@@ -194,6 +193,7 @@ prepare(){
   plain ""
 
   # Config
+  msg "make olddefconfig..."
   make ARCH=${ARCH} ${BUILD_FLAGS[*]} olddefconfig
 
   plain ""
@@ -207,8 +207,9 @@ prepare(){
 build(){
   cd ${srcdir}/linux-$_pkgver
 
-  msg "make -j$(nproc) all..."
+  msg "make all"
   make ARCH=${ARCH} ${BUILD_FLAGS[*]} -j$(nproc) all
+  msg "make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1"
   make ARCH=${ARCH} ${BUILD_FLAGS[*]} -j$(nproc) -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
 }
 
