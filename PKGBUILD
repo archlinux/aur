@@ -2,7 +2,7 @@
 pkgname=bbg-bin
 pkgver=20240104
 _electronversion=27
-pkgrel=3
+pkgrel=4
 pkgdesc="A static blog generator based on Electron Technology"
 arch=(
     'aarch64'
@@ -26,13 +26,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('436a6d536138f203ac333858cff92a568be62797752b3adb94bcaa0f6ffe7ef6'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 sha256sums_aarch64=('2955334403f927cf55f3d4f106a3e627186b50864dfba76cd7db3aedbd4d66d9')
 sha256sums_x86_64=('8989cb9eb0491fea78d35bd48ccbce63ac46ea374e88b83def659a6e7c89dd3f')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     chmod a+x "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}.AppImage"
