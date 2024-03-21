@@ -2,7 +2,7 @@
 
 pkgname=modbus-tcp-client-shm
 pkgrel=1
-pkgver=1.5.2
+pkgver=1.5.3
 pkgdesc="modbus tcp client that stores its data (registers) in shared memory"
 url="https://github.com/NikolasK-source/modbus_tcp_client_shm"
 license=('GPL-3.0-only')
@@ -16,8 +16,8 @@ prepare() {
     cd modbus_tcp_client_shm
     git submodule init
     git submodule update
-    mkdir -p build
-    cmake -DCMAKE_BUILD_TYPE=Release -DCLANG_FORMAT=OFF -DCOMPILER_WARNINGS=OFF -B build .
+    
+    cmake -DCMAKE_BUILD_TYPE=Release -DCLANG_FORMAT=OFF -DCOMPILER_WARNINGS=OFF -DCLANG_FORMAT=OFF -DCLANG_TIDY=OFF -B build .
 }
 
 build() {
