@@ -1,10 +1,10 @@
 pkgbase = bower-mail
 	pkgdesc = A curses terminal client for the Notmuch email system
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/wangp/bower
-	arch = any
-	license = GPL3
+	arch = x86_64
+	license = GPL-3.0-or-later
 	makedepends = gpgme
 	makedepends = pandoc
 	depends = notmuch

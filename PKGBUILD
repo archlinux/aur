@@ -7,16 +7,16 @@ _mercury_dependency='mercury>=14.04'
 
 pkgname=bower-mail
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A curses terminal client for the Notmuch email system"
-arch=('any')
+arch=(x86_64)
 url="https://github.com/wangp/bower"
 depends=('notmuch' 'ncurses' 'coreutils' 'file')
 makedepends=('gpgme' 'pandoc')
 options=(!lto)
 optdepends=('msmtp: send messages' 'lynx: dump HTML emails' 'w3m: dump HTML emails')
 conflicts=('bower')
-license=('GPL3')
+license=(GPL-3.0-or-later)
 source=("bower-$pkgver.tar.gz::https://github.com/wangp/bower/archive/$pkgver.tar.gz"
 		workaround-mercury-bug567.patch
 		arch.patch)
