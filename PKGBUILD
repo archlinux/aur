@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hardinfo2-git
-pkgver=2.0.12.r15.g0a095c0
-pkgrel=2
+pkgver=2.0.18.r1.g4ac6eaa
+pkgrel=1
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64')
 url="https://www.hardinfo2.org"
@@ -35,7 +35,6 @@ build() {
     -DCMAKE_BUILD_TYPE='None' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='lib' \
-    -DHARDINFO2_LIBSOUP3='ON' \
     -Wno-dev
   cmake --build build
 }
