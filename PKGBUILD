@@ -3,13 +3,17 @@
 
 pkgname=linux-ck-autobuild
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically build linux-ck kernels service"
 arch=(any)
 url="https://github.com/nebulosa2007/$pkgname"
 license=(GPL-3.0-only)
-depends=(base-devel git)
-optdepends=('fzf: for selecting subarches')
+depends=(git)
+optdepends=('fzf: for selecting subarches'
+            'modprobed-db: for setting list of modules only'
+            'repoctl: powerfull tool for making local repository'
+            'pacman-contrib: package archive maintaining'
+            'nginx-mainline: to distribute packages')
 options=(!debug)
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz
         $pkgname@.service
