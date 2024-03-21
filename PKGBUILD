@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=narrowlink-bin
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='Securely connect devices and services, even in restricted networks'
 url='https://narrowlink.com'
@@ -32,18 +32,18 @@ source_aarch64=(
   narrowlink-token-generator-aarch64-$pkgver::$_base-token-generator-aarch64-unknown-linux-musl
 )
 sha256sums=('b60d1792b67d877064fd8164177f2d5dca7e220e42e0679f53216a4ec8a6f46d')
-sha256sums_i686=('475dce9f1dfeb787f6470e07f4f67f5957d998c9a39421f02d78ce4e8acec09b'
-                 '600f11af03936f38b187903b19293c7de8f6f16bca722023a1430aa0fbf0e974'
-                 '9025244e55e8d4c433224354fe20f8fe04fb971d0f70df1ff019898392aa0ed6'
-                 '25a821b5b604ca160380eff0e3b1aed49a40403cbbf81dfdfcc11678b92eb0f5')
-sha256sums_x86_64=('e824a1d0f7b6cde74deffb9133761244563465591a5c65543cdad480515d863e'
-                   '53c9f1b32b37bbd247cc75f05061ff4d0d901da7eb2c9479d12f6ae7c6de9df3'
-                   '8db3daba02113a83b839babf6af9be0e7e96853a56e7c5ea47071c5e229376f1'
-                   '91d27b3d531a98cb25b0e1748fd0e6bbe6ccda40f6347ce6813e310e69bb9a99')
-sha256sums_aarch64=('aa7fd4acba1db088565766ef9e1f66a1456aa3f735db3a15d4eca7cbbfa16f8b'
-                    'd4d17aa428d849f1412676643e78df7e23b61658718e68772c2bf30bd6a68d2e'
-                    '1fe4314baab3c95951f0fe18db52e9f47f2bff6bfe106d7947864a0184f280b1'
-                    '10576af6fff0c55c9d4b3c36f90b51fe12a8cb961fd9f950b69dda6f306a9d2c')
+sha256sums_i686=('fd61fd8d323dccd3ff7d5d7a3b94368c28e8cc7cb71ef04011f0a3762596cd40'
+                 '482737d8e14c4c208e60f3a0585335576ee4a72df31d6d5d7e410036347ccb02'
+                 'f5e4bbc9d882cbe7201cc293636ad751af37742943a44fc0e8fd880070423c39'
+                 '0075c85c9a90e630b7e55094fab04085b233d7b6d18833ee589c394a4e0f0a27')
+sha256sums_x86_64=('1c1804621f4beb89c789465c17a2f1d04468f97e727efe16630fd9e934758aa0'
+                   '3c3b0d54eec43963aa34bb56230d1a7a3259b3c654ba11c44282343b486abd36'
+                   '40cdd6b0705076e9c409b3d55cef9163064f8d2ac544189c8104ef24e0f36796'
+                   '6f225008a1fbeb001d0db65cec1146f290a2a97d644b282904e5272764a1d401')
+sha256sums_aarch64=('bbcc253a432abfeb0c10406e3593d42f1dfe1e5aad2902ef3398ffd45571aa68'
+                    'c8555bc991b3f599a43dfa6fea09c2e3327d9e1c8ac93bd271a8e1472089dc6d'
+                    '1d0437a2fd8300f0e35074e119ddf29b75d68e58caaeb2a4c562458c80089fe8'
+                    'f0562cfc56a7c3ed7276aeba09a41cd790d7aa0e184d58fca123ed9527a6ca9f')
 
 # Splitting this into four separate packages would be a bit too much IMHO
 package() {
