@@ -180,8 +180,6 @@ prepare(){
     plain ""
   fi
 
-  plain ""
-
   msg "Supress depmod..."
   sed -i '2iexit 0' scripts/depmod.sh
 
