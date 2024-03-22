@@ -3,7 +3,7 @@ pkgname=altarik-launcher-bin
 _pkgname=Altarik-Launcher
 pkgver=2.1.6
 _electronversion=28
-pkgrel=2
+pkgrel=3
 pkgdesc="A Minecraft custom launcher developped to launch the game with our own modpack."
 arch=('x86_64')
 url="https://altarik.fr/"
@@ -27,11 +27,12 @@ source=(
 sha256sums=('1d11ebd18c78384ec2ad21c512d2036c2702a36c815033fe1c028a27e2a74ba4'
             '3a3a7d8474ca58bf2620f0a95275445faf654df7d4061afc209458b5fc8f8a2c'
             '5dbc783060b213ca39548ace82bbc9a2ffa35031b70728027a7a8e14dad2260a'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     convert "${srcdir}/${pkgname%-bin}-${pkgver}.ico" "${srcdir}/${pkgname%-bin}.png"
     gendesk -q -f -n --categories="Game" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
