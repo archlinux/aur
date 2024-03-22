@@ -1,0 +1,11 @@
+pkgbase = ttf-gohufont-nerd
+	pkgdesc = A bitmap font for programming and terminal use, patched to include Nerd Font symbols.
+	pkgver = v3.1.1
+	pkgrel = 1
+	url = https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Gohu
+	arch = any
+	license = MIT
+	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Gohu.tar.xz
+	sha256sums = SKIP
+
+pkgname = ttf-gohufont-nerd
