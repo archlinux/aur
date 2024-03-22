@@ -9,6 +9,7 @@ depends=("glibc" "libheif" "libde265")
 makedepends=("go" "git")
 backup=()
 provides=("matrix-media-repo")
+conflicts=("matrix-media-repo")
 source=("git+https://github.com/t2bot/matrix-media-repo.git")
 sha256sums=('SKIP')
 
