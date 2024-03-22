@@ -10,6 +10,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'git')
 provides=("${_pkgname}")
 options=('!lto')
+conflicts=('mqttui' 'mqttui-bin')
 
 source=("git+https://github.com/EdJoPaTo/${_pkgname}.git")
 sha256sums=('SKIP')
