@@ -1,0 +1,49 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index dce0630..9222955 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
+ set(WITH_ZLIB OFF)
+ set(BUILD_TESTING OFF)
+-add_subdirectory(taglib)
++# add_subdirectory(taglib)
+ 
+ if(MSVC)
+   add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/execution-charset:utf-8>")
+@@ -28,10 +28,10 @@ add_executable(ncmdump
+   ${SOURCES}
+ )
+ target_link_libraries(ncmdump tag)
+-target_include_directories(ncmdump PRIVATE taglib)
+-target_include_directories(ncmdump PRIVATE taglib/taglib)
+-target_include_directories(ncmdump PRIVATE taglib/taglib/toolkit)
+-target_include_directories(ncmdump PRIVATE taglib/taglib/mpeg/id3v2)
++# target_include_directories(ncmdump PRIVATE taglib)
++# target_include_directories(ncmdump PRIVATE taglib/taglib)
++# target_include_directories(ncmdump PRIVATE taglib/taglib/toolkit)
++# target_include_directories(ncmdump PRIVATE taglib/taglib/mpeg/id3v2)
+ 
+ if(WIN32)
+   if(CMAKE_COMPILER_IS_GNUCXX)
+diff --git a/ncmcrypt.cpp b/ncmcrypt.cpp
+index 3dc9617..80000ed 100644
+--- a/ncmcrypt.cpp
++++ b/ncmcrypt.cpp
+@@ -4,11 +4,11 @@
+ #include "cJSON.h"
+ 
+ #define TAGLIB_STATIC
+-#include "taglib/toolkit/tfile.h"
+-#include "taglib/mpeg/mpegfile.h"
+-#include "taglib/flac/flacfile.h"
+-#include "taglib/mpeg/id3v2/frames/attachedpictureframe.h"
+-#include "taglib/mpeg/id3v2/id3v2tag.h"
++#include "taglib/tfile.h"
++#include "taglib/mpegfile.h"
++#include "taglib/flacfile.h"
++#include "taglib/attachedpictureframe.h"
++#include "taglib/id3v2tag.h"
+ #include "taglib/tag.h"
+ 
+ #include <stdexcept>
