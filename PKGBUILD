@@ -2,28 +2,33 @@
 # Contributer: Alpin <alpin 'at' alpindale 'dot' dev>
 # Author: LostRuins (concedo), YellowRoseCx
 pkgname=koboldcpp-hipblas
-pkgver=1.61.2
+pkgver=1.61.2.yr1
 pkgrel=1
-_yr=0
 pkgdesc="KoboldCpp is an easy-to-use AI text-generation software for GGML and GGUF models (with HIPBLAS, for ROCM)"
 arch=('x86_64')
 url="https://github.com/YellowRoseCx/koboldcpp-rocm"
 license=('AGPL3')
-depends=('python' 'cblas' 'openblas' 'clblast' 'vulkan-icd-loader' 'hipblas')
+depends=(
+  'python'
+  'openblas'
+  'clblast'
+  'vulkan-icd-loader'
+  'hipblas'
+)
 optdepends=(
   'customtkinter: for GUI launcher'
 )
 provides=('koboldcpp' 'koboldcpp-hipblas' 'koboldcpp-rocm')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/YellowRoseCx/koboldcpp-rocm/archive/refs/tags/v$pkgver.yr$_yr-ROCm.tar.gz")
-sha256sums=('4ce8df31be8bf8124e234990a7ba4fc8d31d57dce49e96f9864a87ac68bfa80e')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/YellowRoseCx/koboldcpp-rocm/archive/refs/tags/v$pkgver-ROCm.tar.gz")
+sha256sums=('3e1adc6ad2d4282f7fc4066ba81bf9470276283094e5e9ab3f47a8438853ce52')
 
 build() {
-  cd "$srcdir/koboldcpp-rocm-$pkgver.yr$_yr-ROCm"
+  cd "$srcdir/koboldcpp-rocm-$pkgver-ROCm"
   make LLAMA_VULKAN=1 LLAMA_OPENBLAS=1 LLAMA_CLBLAST=1 LLAMA_HIPBLAS=1
 }
 
 package() {
-  cd "$srcdir/koboldcpp-rocm-$pkgver.yr$_yr-ROCm"
+  cd "$srcdir/koboldcpp-rocm-$pkgver-ROCm"
 
   install -d "$pkgdir/usr/share/koboldcpp"
 
