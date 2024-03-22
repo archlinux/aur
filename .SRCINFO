@@ -10,6 +10,7 @@ pkgbase = matrix-media-repo-git
 	depends = glibc
 	depends = libheif
 	depends = libde265
+	depends = imagemagick
 	provides = matrix-media-repo
 	conflicts = matrix-media-repo
 	source = git+https://github.com/t2bot/matrix-media-repo.git
