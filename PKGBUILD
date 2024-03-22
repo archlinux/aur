@@ -8,7 +8,6 @@ arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/zhanhb/${pkgname}"
 license=("MIT")
 provides=("${pkgname}")
-depends=("glibc")
 makedepends=("go")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('48b13f950d56175712c47ea7b1c0a4a905fd2995dee76708625152c134ab1cba')

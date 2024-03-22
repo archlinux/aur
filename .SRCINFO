@@ -13,7 +13,6 @@ pkgbase = cidr-merger
 	arch = riscv64
 	license = MIT
 	makedepends = go
-	depends = glibc
 	provides = cidr-merger
 	source = cidr-merger-1.1.3.tar.gz::https://github.com/zhanhb/cidr-merger/archive/refs/tags/v1.1.3.tar.gz
 	sha256sums = 48b13f950d56175712c47ea7b1c0a4a905fd2995dee76708625152c134ab1cba
