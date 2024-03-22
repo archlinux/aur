@@ -15,7 +15,6 @@ pkgbase = ddns-go
 	license = MIT
 	makedepends = git
 	makedepends = go
-	depends = glibc
 	provides = ddns-go
 	conflicts = ddns-go
 	backup = etc/ddns-go/ddns-go.env

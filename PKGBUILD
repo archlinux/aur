@@ -12,7 +12,6 @@ conflicts=("${pkgname}")
 backup=("etc/${pkgname}/${pkgname}.env" "etc/${pkgname}/config.yml")
 install="${pkgname}.install"
 license=("MIT")
-depends=("glibc")
 makedepends=("git" "go")
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}.env"
