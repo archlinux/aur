@@ -56,7 +56,9 @@ build () {
   if [[ $CARCH != x86_64 ]]; then
     export CARGO_PROFILE_RELEASE_LTO=off
   fi
-  RUSTFLAGS="-C link-self-contained=on -C strip=symbols -C no-redzone=y -C overflow-checks=y -C lto=fat -C embed-bitcode=y -C codegen-units=1 -C opt-level=z -C control-flow-guard=y -C link-arg=-fuse-ld=lld" \
+  if [[ $CARCH == x86_64 ]]; then
+    export RUSTFLAGS="-C link-self-contained=on -C strip=symbols -C no-redzone=y -C overflow-checks=y -C lto=fat -C embed-bitcode=y -C codegen-units=1 -C opt-level=z -C control-flow-guard=y -C link-arg=-fuse-ld=lld"
+  fi
   cargo build --frozen --features "${_features:-}" --release --target-dir target --target $TARGET
   #./scripts/mkmo locale/
 }
