@@ -5,6 +5,7 @@ pkgbase = keyoxidizer
 	url = https://github.com/shombando/keyoxidizer
 	arch = x86_64
 	license = APACHE
+	makedepends = git
 	source = git+https://github.com/shombando/keyoxidizer#tag=v.0.3
 	b2sums = SKIP
 

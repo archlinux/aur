@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="Interactive Keyoxide helper"
 arch=('x86_64')
 url="https://github.com/shombando/$pkgname"
+makedepends=('git')
 license=('APACHE')
 b2sums=('SKIP')
 source=("git+$url#tag=v.$pkgver")
