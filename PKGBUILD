@@ -3,7 +3,7 @@
 # Contributor: Macxcool <macx coool at coolnet dot xyz>
 
 pkgname=openlp
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Church presentation software."
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPLv2')
 makedepends=('qt5-tools' 'python-pip' 'python-setuptools')
 depends=('python>=3.10' 'python<3.12' 'python-pyqt5' 'phonon-qt5'
         'python-chardet' 'python-lxml' 'python-beautifulsoup4' 'python-pyenchant' 
-        'python-mako' 'python-appdirs' 'python-sqlalchemy' 'python-pyodbc' 
+        'python-mako' 'python-appdirs' 'python-pyodbc' 
         'python-pyqt5-webengine' 'qt5-multimedia' 'python-pyqt5-webengine' 'python-alembic' 
         'python-qtawesome' 'python-websockets' 'python-flask' 'python-flask-cors' 
         'python-webob' 'python-waitress' 'python-qrcode' 'python-pymediainfo')
@@ -24,7 +24,7 @@ optdepends=('libreoffice-fresh: Display impress presentations'
 install=openlp.install
 source=("https://gitlab.com/openlp/openlp/-/archive/${pkgver}/openlp-${pkgver}.tar.gz" "openlp.sh")
 
-sha256sums=('d40baf9698d84fbcaf1cc3624aca3c157de6e25dbf8b09f54037cd98632ec939'
+sha256sums=('c464669a3661b3b23e917cb1508c1bfc8e8c8308ee24c86e7dde94789ea1797c'
             '19c2f3c622585bf308efc259013fb5518feaf8cf14b51613e1e71778fcc2e8cf')
 
 package() {

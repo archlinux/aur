@@ -1,6 +1,6 @@
 pkgbase = openlp
 	pkgdesc = Church presentation software.
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = http://openlp.org/
 	install = openlp.install
@@ -19,7 +19,6 @@ pkgbase = openlp
 	depends = python-pyenchant
 	depends = python-mako
 	depends = python-appdirs
-	depends = python-sqlalchemy
 	depends = python-pyodbc
 	depends = python-pyqt5-webengine
 	depends = qt5-multimedia
@@ -37,9 +36,9 @@ pkgbase = openlp
 	optdepends = python-vlc: Multimedia playback
 	optdepends = python-mysql-connector: Use a mysql/mariadb database
 	optdepends = python-psycopg2: Use a postgresql database
-	source = https://gitlab.com/openlp/openlp/-/archive/3.1.0/openlp-3.1.0.tar.gz
+	source = https://gitlab.com/openlp/openlp/-/archive/3.1.1/openlp-3.1.1.tar.gz
 	source = openlp.sh
-	sha256sums = d40baf9698d84fbcaf1cc3624aca3c157de6e25dbf8b09f54037cd98632ec939
+	sha256sums = c464669a3661b3b23e917cb1508c1bfc8e8c8308ee24c86e7dde94789ea1797c
 	sha256sums = 19c2f3c622585bf308efc259013fb5518feaf8cf14b51613e1e71778fcc2e8cf
 
 pkgname = openlp
