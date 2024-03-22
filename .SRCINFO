@@ -26,7 +26,6 @@ pkgbase = texpresso-git
 	depends = libjpeg-turbo
 	depends = libjpeg.so
 	depends = libmupdf
-	depends = libmupdf.so
 	depends = libpng
 	depends = libpng16.so
 	depends = openjpeg2

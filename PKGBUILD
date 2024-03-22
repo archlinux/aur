@@ -22,7 +22,7 @@ depends=(fontconfig libfontconfig.so
          icu libicuuc.so
          jbig2dec # libjbig2dec.so
          libjpeg-turbo libjpeg.so
-         libmupdf libmupdf.so
+         libmupdf # libmupdf.so
          libpng libpng16.so
          openjpeg2 # libopenjp2.so
          openssl libcrypto.so libssl.so
