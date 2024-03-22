@@ -1,15 +1,15 @@
 pkgbase = owasp-core-ruleset
 	pkgdesc = OWASP ModSecurity Core Rule Set
-	pkgver = 4.0.0
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://github.com/coreruleset/coreruleset/
 	arch = any
 	license = Apache-2.0
 	depends = apache
 	depends = modsecurity
-	source = owasp-core-ruleset-4.0.0.zip::https://github.com/coreruleset/coreruleset/archive/refs/tags/v4.0.0.zip
+	source = owasp-core-ruleset-4.1.0.zip::https://github.com/coreruleset/coreruleset/archive/refs/tags/v4.1.0.zip
 	source = owasp-core-ruleset.install
-	sha256sums = 70115a846d5f5c3da42962cf073b99a21a48e84a70b96bac7e0da2e0a463b0d4
+	sha256sums = 427122ba21b0b369bd00a71ac896ec95e3be8f33151b05cdb5f292613a7e1d27
 	sha256sums = 9e2bd146b6608d0b1e1b786e35f5f8ea8eefc2a149854876f92127e0536d0e09
 
 pkgname = owasp-core-ruleset
