@@ -1,0 +1,38 @@
+diff -ru src/asio-1.28.0/src/examples/cpp11/type_erasure/stdin_line_reader.cpp origsrc/asio-1.28.0/src/examples/cpp11/type_erasure/stdin_line_reader.cpp
+--- src/asio-1.28.0/src/examples/cpp11/type_erasure/stdin_line_reader.cpp	2024-03-21 23:45:55.969921513 -0700
++++ origsrc/asio-1.28.0/src/examples/cpp11/type_erasure/stdin_line_reader.cpp	2023-03-01 04:00:10.292093934 -0800
+@@ -14,7 +14,11 @@
+ #include <iostream>
+ 
+ stdin_line_reader::stdin_line_reader(asio::any_io_executor ex)
++#if defined(ASIO_HAS_WINDOWS_STREAM_HANDLE)
++  : stdin_(ex, ::GetStdHandle(STD_INPUT_HANDLE))
++#elif defined(ASIO_HAS_POSIX_STREAM_DESCRIPTOR)
+   : stdin_(ex, ::dup(STDIN_FILENO))
++#endif
+ {
+ }
+ 
+diff -ru src/asio-1.28.0/src/examples/cpp11/type_erasure/stdin_line_reader.hpp origsrc/asio-1.28.0/src/examples/cpp11/type_erasure/stdin_line_reader.hpp
+--- src/asio-1.28.0/src/examples/cpp11/type_erasure/stdin_line_reader.hpp	2024-03-21 23:45:52.679993204 -0700
++++ origsrc/asio-1.28.0/src/examples/cpp11/type_erasure/stdin_line_reader.hpp	2023-03-01 04:00:10.292606431 -0800
+@@ -13,6 +13,7 @@
+ 
+ #include "line_reader.hpp"
+ #include <asio/posix/stream_descriptor.hpp>
++#include <asio/windows/stream_handle.hpp>
+ 
+ class stdin_line_reader : public line_reader
+ {
+@@ -24,7 +23,11 @@
+   void async_read_line_impl(std::string prompt,
+       asio::any_completion_handler<void(asio::error_code, std::string)> handler) override;
+ 
++#if defined(ASIO_HAS_WINDOWS_STREAM_HANDLE)
++  asio::windows::stream_handle stdin_;
++#elif defined(ASIO_HAS_POSIX_STREAM_DESCRIPTOR)
+   asio::posix::stream_descriptor stdin_;
++#endif
+   std::string buffer_;
+ };
+ 
