@@ -14,7 +14,7 @@ md5sums=(82d39e878a591fd00f30595121d2c10b)
 
 prepare() {
   MAKEFILE="$srcdir/pil21/src/Makefile"
-  LDFLAGS=-Wl,-z,relro,-z,now
+  LDFLAGS=-Wl,-z,relro,-z,now,-z,shstk
   sed -i "s/SHARED =\|MAIN =/& $LDFLAGS/" "$MAKEFILE"
   sed -i "/CC.\+balance\|CC.\+ssl\|CC.\+httpGate/ s/$/ $LDFLAGS/" "$MAKEFILE"
 }
