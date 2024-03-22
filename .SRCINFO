@@ -1,7 +1,7 @@
 pkgbase = yubico-authenticator
 	pkgdesc = Yubico Authenticator for Desktop
 	pkgver = 6.4.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Yubico/yubioath-flutter
 	arch = x86_64
 	arch = aarch64
@@ -25,10 +25,10 @@ pkgbase = yubico-authenticator
 	depends = python-zxing-cpp
 	depends = yubikey-manager
 	source = git+https://github.com/Yubico/yubioath-flutter.git#commit=c44d65eb6efc9e82b74eb44f228c3937bdc1e071?signed
-	source = flutter-3.19.3.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.19.3-stable.tar.xz
+	source = flutter-3.19.4.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.19.4-stable.tar.xz
 	validpgpkeys = AF511D2CBC0F973E5D308054325C8E4AE2E6437D
 	validpgpkeys = 20EE325B86A81BCBD3E56798F04367096FBA95E8
-	sha256sums = SKIP
-	sha256sums = ddb712be586281afd51a3f96db3681f99f242278201e0ae3322c03706e4004ad
+	sha256sums = 5409741c3e10645fe9b41e497e34f94bc95c7c8d79a71c645c00486c0484f40c
+	sha256sums = 66adfe6b6559a2e2f1fdbf89c938d0af53add3860c854c79dbbd5452f5d2290a
 
 pkgname = yubico-authenticator
