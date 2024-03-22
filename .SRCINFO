@@ -1,0 +1,25 @@
+pkgbase = ruyi-bin
+	pkgdesc = The package manager for RuyiSDK.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/ruyisdk/ruyi
+	arch = x86_64
+	arch = arm64
+	arch = riscv64
+	license = Apache-2.0
+	depends = wget
+	depends = git
+	depends = tar
+	depends = bzip2
+	depends = xz
+	depends = zstd
+	provides = ruyi=0.6.0
+	options = !strip
+	source_x86_64 = https://mirror.iscas.ac.cn/ruyisdk/ruyi/releases/0.6.0/ruyi.amd64
+	sha256sums_x86_64 = 96e9042d0f0f8a67a9aaf517cbfd908afccbf77e7ec653b45f0c305f19f20cc2
+	source_arm64 = https://mirror.iscas.ac.cn/ruyisdk/ruyi/releases/0.6.0/ruyi.arm64
+	sha256sums_arm64 = 787ae7d6cf5ffe486cbdae6c92084a594f150bb2885ffa3bb6bbae20e2d28997
+	source_riscv64 = https://mirror.iscas.ac.cn/ruyisdk/ruyi/releases/0.6.0/ruyi.riscv64
+	sha256sums_riscv64 = 80ddaabe6ef22d5836ba74dc586c21b4e582f80b1f3e20aed51dd29ddbb20405
+
+pkgname = ruyi-bin
