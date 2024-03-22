@@ -3,7 +3,7 @@ pkgname=masscode-bin
 _pkgname=massCode
 pkgver=3.11.0
 _electronversion=16
-pkgrel=2
+pkgrel=3
 pkgdesc="A free and open source code snippets manager for developers"
 arch=('x86_64')
 url="https://masscode.io/"
@@ -23,11 +23,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('72df12e9b5a5a7afef0d31c75f5c56994bbbe3bd8c2c87b5dee9baa919a9591f'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@appasar@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     unsquashfs "${srcdir}/${pkgname%-bin}-${pkgver}.snap"
     gendesk -q -f -n --categories="Development" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
