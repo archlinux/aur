@@ -1,21 +1,24 @@
 pkgbase = katago-cuda
 	pkgdesc = Baduk engine with no human-provided knowledge
 	pkgver = 1.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lightvector/KataGo
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = cuda
 	makedepends = cudnn
-	makedepends = git
+	makedepends = ninja
 	depends = libzip
 	provides = katago
 	conflicts = katago
 	noextract = kata1-b18c384nbt-s9131461376-d4087399203.bin.gz
-	source = katago-cuda::git+https://github.com/lightvector/KataGo#tag=v1.14.1
+	noextract = kata1-b18c384nbt-s9555257600-d4198296303.bin.gz
+	source = katago-cuda-1.14.1.tar.gz::https://github.com/lightvector/KataGo/archive/refs/tags/v1.14.1.tar.gz
 	source = https://media.katagotraining.org/uploaded/networks/models/kata1/kata1-b18c384nbt-s9131461376-d4087399203.bin.gz
-	sha256sums = SKIP
+	source = https://media.katagotraining.org/uploaded/networks/models/kata1/kata1-b18c384nbt-s9555257600-d4198296303.bin.gz
+	sha256sums = 1a80d7fbd2b3a2684049afe61407d2276f6faf1dd1ca3f886cdb07c170c08e65
 	sha256sums = d266f19b4497ed19a72285a422813d8ee97e91d8a0b56f27585d0c02e61c9d38
+	sha256sums = 30ff9a4f20f3f3cc40ba174187d87541e8becdd0dff54b12db7dfa24a3837d1e
 
 pkgname = katago-cuda
