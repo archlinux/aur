@@ -1,3 +1,9 @@
+Mullvad Browser 13.0.13 - March 22 2024
+ * Windows + macOS + Linux
+   * Updated Firefox to 115.9.1esr
+   * Bug 42473: ESR 115.9.1 fixes [tor-browser]
+   * Bug 277: Rebase Mullvad Browser stable onto Firefox 115.9.1esr [mullvad-browser]
+
 Mullvad Browser 13.0.12 - March 19 2024
  * All Platforms
    * Updated Firefox to 115.9.0esr
