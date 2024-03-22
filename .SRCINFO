@@ -1,11 +1,11 @@
 pkgbase = arctis-monitor-bin
 	pkgdesc = Electron Tray application to view Battery Level of Arctis Headsets
 	pkgver = 0.0.12
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/richrace/arctis-monitor
 	arch = x86_64
 	license = MIT
-	depends = electron26
+	depends = electron26-bin
 	depends = libusb
 	depends = nodejs
 	provides = arctis-monitor=0.0.12
@@ -15,6 +15,6 @@ pkgbase = arctis-monitor-bin
 	source = arctis-monitor.sh
 	sha256sums = 35f546aa8a23eb79527a1ff489fa9ab9d1412f69fe2b15e75e43efcfa1e844e9
 	sha256sums = bd5c70f61f5c60d42bffbadd12de9a6e0f3272afe8d869e7251d4f0c6d67025d
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = arctis-monitor-bin
