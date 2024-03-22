@@ -3,7 +3,7 @@ pkgname=react-explorer-bin
 _pkgname=React-Explorer
 pkgver=3.1.0
 _electronversion=21
-pkgrel=6
+pkgrel=7
 pkgdesc="File manager written in TypeScript, React, Blueprint and packaged with Electron"
 arch=(
     "aarch64"
@@ -15,7 +15,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}-bin"
-    'hicolor-icon-theme'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-amd64.deb")
@@ -24,13 +23,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('2ee003eed53af196295f44ab14460333b6d129dc96dd1143e5f119f3122650cd'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 sha256sums_aarch64=('f6cc0961d53798ac4991bd566294dd7c0c13b9809bd7c61c6910e3345642b398')
 sha256sums_x86_64=('b36054b9b5679894aaf57b1f521f4dbfb1c6ee32c32f06b285b105190014a175')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g;s|FileManager|System;Utility|g" \
