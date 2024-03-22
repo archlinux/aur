@@ -4,7 +4,7 @@
 
 _appname=smartgit
 pkgname=${_appname}_preview
-pkgver=23.1_rc_2
+pkgver=24.1_preview_3
 pkgrel=1
 pkgdesc="Graphical Git client. Preview version."
 arch=("any")
@@ -23,7 +23,7 @@ _pkgver=${pkgver//_/-}
 _pkgver=${_pkgver//./_}
 
 source=("https://www.syntevo.com/downloads/smartgit/${_appname}-${_pkgver}.deb")
-sha1sums=('8d42ac516904c638de26630536d219e34b7810f8')
+sha1sums=('baa21bccda8886e68d83a0f51182c74c9b6e81e0')
 
 package() {
     cd "$srcdir"
