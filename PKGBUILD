@@ -1,7 +1,7 @@
 # Maintainer: Volodymyr Zolotopupov <zvova7890@gmail.com>
 
 pkgname=ksysguard6-git
-pkgver=r3600.5e368f6
+pkgver=r3601.bb0e639
 pkgrel=1
 pkgdesc='Track and control the processes running in your system. KF6 version'
 arch=(x86_64)
@@ -30,24 +30,13 @@ depends=(gcc-libs
 makedepends=(extra-cmake-modules
              kdoctools
              git)
-source=(git+https://invent.kde.org/vvova/ksysguard.git#branch=kf6)
+source=(git+https://github.com/zvova7890/ksysguard6.git#branch=kf6)
 sha256sums=('SKIP')
 
 
 pkgver() {
   cd ksysguard
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-}
-
-prepare() {
-  cd ksysguard
-  # I have no clue how to commit locales into KDE's git, so...
-  sed -i s/\&kmenu/kmenu/g po/de/docs/ksysguard/index.docbook
-  sed -i s/\&kmenu/kmenu/g po/pt/docs/ksysguard/index.docbook
-
-  sed -i -e 's/#add_subdirectory( doc )/add_subdirectory( doc )/g;
-             s/#kdoctools_install(po)/kdoctools_install(po)/g' \
-             CMakeLists.txt
 }
 
 build() {

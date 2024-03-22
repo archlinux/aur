@@ -1,6 +1,6 @@
 pkgbase = ksysguard6-git
 	pkgdesc = Track and control the processes running in your system. KF6 version
-	pkgver = r3600.5e368f6
+	pkgver = r3601.bb0e639
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = ksysguard6-git
 	depends = lm_sensors
 	depends = qt6-base
 	depends = zlib
-	source = git+https://invent.kde.org/vvova/ksysguard.git#branch=kf6
+	source = git+https://github.com/zvova7890/ksysguard6.git#branch=kf6
 	sha256sums = SKIP
 
 pkgname = ksysguard6-git
