@@ -4,27 +4,29 @@ _pkgname=FlexPlayer
 pkgver=1.0.0
 _electronversion=26
 _nodeversion=18
-pkgrel=4
+pkgrel=5
 pkgdesc="Plays multiple video files in a grid,built in electron."
 arch=('x86_64')
 url="https://github.com/ricmsd/flexplayer"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'gendesk'
     'npm'
     'nvm'
     'git'
+    'curl'
+    'base-devel'
 )
 source=(
     "${pkgname}.git::git+${url}/#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('SKIP'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+sha256sums=('0746a0e8fccc9c04f3a0f4dc4860e4c74131f2fc5a1d50efa6bab5a71df9966c'
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -35,6 +37,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname} %U"
@@ -46,6 +49,13 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
     cd "${srcdir}/${pkgname}.git/player"
     npm install
     npm run build
