@@ -1,19 +1,19 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python-galpy-doc
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="Documentation for galpy"
 arch=('any')
 url="https://www.galpy.org"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=("python-galpy=${pkgver}"
              'python-sphinxext-opengraph'
              'python-sphinx_design'
-             'gsl'
-             'ttf-roboto')
+             'gsl')
+#            'ttf-roboto'
 source=("https://github.com/jobovy/galpy/archive/v${pkgver}.tar.gz"
         'fix-underline-length.patch')
-md5sums=('eb186328571e82cc37ccdaf9b3fa8cac'
+md5sums=('ab372b0c09d9f54292bffd233ae6ffd8'
          '6eed08a4280a7d2ec91a04b479414c65')
 
 prepare() {
