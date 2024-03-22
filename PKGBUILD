@@ -4,12 +4,12 @@ _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
 _torus_commit="b7bf7965db8c3b2034d6a92f5a1c1fefe13e0e5d"
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="Galactic Dynamics in python"
 arch=('i686' 'x86_64')
 url="https://www.galpy.org"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('python-setuptools' 'gsl'
              'python-wheel'
              'python-build'
@@ -20,7 +20,7 @@ makedepends=('python-setuptools' 'gsl'
 #              'python-matplotlib')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "torus-200307.tar.gz::https://github.com/jobovy/Torus/archive/${_torus_commit}.tar.gz")
-md5sums=('e5c8678b6734b498b9427c61ba63bdff'
+md5sums=('844b300bc57e9ead0190abc9552b0084'
          'f84f68196975d1efbac800b1a5703c45')
 
 get_pyver() {
