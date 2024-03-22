@@ -9,7 +9,7 @@ arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/${_reponame}/${_reponame}"
 license=("MIT")
 install="${pkgname}.install"
-depends=("ffmpeg" "gcc-libs" "glibc" "systemd")
+depends=("ffmpeg")
 makedepends=("npm" "git" "go")
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}.service"
@@ -41,10 +41,10 @@ build() {
 }
 
 package() {
-    install -Dm755 "${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-    install -Dm644 "${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
-    install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    install -Dm755 "${pkgname}/${pkgname}"   "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${pkgname}.sysusers"     "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+    install -Dm644 "${pkgname}.tmpfiles"     "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+    install -Dm644 "${pkgname}.service"      "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
     install -Dm644 "${pkgname}.user.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
-    install -Dm644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${pkgname}/LICENSE"      "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

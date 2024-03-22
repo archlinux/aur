@@ -17,9 +17,6 @@ pkgbase = chinesesubfinder
 	makedepends = git
 	makedepends = go
 	depends = ffmpeg
-	depends = gcc-libs
-	depends = glibc
-	depends = systemd
 	source = chinesesubfinder::git+https://github.com/ChineseSubFinder/ChineseSubFinder.git#tag=v0.55.3
 	source = chinesesubfinder.service
 	source = chinesesubfinder.sysusers
