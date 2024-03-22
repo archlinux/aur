@@ -1,7 +1,7 @@
 pkgbase = cpu-cli-controller
 	pkgdesc = A Linux CPU controller CLI tool
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AlixBernard/cpu-cli-controller
 	arch = any
 	license = MIT

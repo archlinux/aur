@@ -2,7 +2,7 @@
 
 pkgname=cpu-cli-controller
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux CPU controller CLI tool"
 url="https://github.com/AlixBernard/$pkgname"
 license=("MIT")
