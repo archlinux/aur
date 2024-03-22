@@ -1,4 +1,4 @@
-# Maintainer: Evine Deng <evinedeng@hotmail.com>
+# Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=iyuuplus
 pkgver=20240205.034109

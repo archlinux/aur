@@ -1,4 +1,4 @@
-iyuuplus
-pkg
-src
+/iyuuplus
+/pkg
+/src
 *.pkg.tar.zst
