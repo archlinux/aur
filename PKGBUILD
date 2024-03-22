@@ -1,7 +1,7 @@
 # Maintainer: Florian Schweiger <mpkmpoza@duck.com>
 upstream_name=actions-for-nautilus
 pkgname="$upstream_name-git"
-pkgver=v1.6.1_1_g1d38628
+pkgver=v1.6.1_4_g0a3c7ce
 pkgrel=1
 pkgdesc='Nautilus extension to add arbitrary actions to the file selection context menu'
 arch=('x86_64')
@@ -25,5 +25,5 @@ pkgver() {
 }
 package() {
 	cd "$upstream_name"
-	make DESTDIR="$pkgdir/" install
+	make GLOBALLOC="$pkgdir/usr/share" install_global
 }
