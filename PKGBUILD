@@ -4,7 +4,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=lib32-tcl-ar
-pkgver=8.6.13
+pkgver=8.6.14
 pkgrel=1
 pkgdesc='The Tcl scripting language (with *.a files)'
 arch=(x86_64)
@@ -19,7 +19,7 @@ depends=(
 )
 options=('staticlibs' '!lto')
 source=("https://cfhcable.dl.sourceforge.net/project/tcl/Tcl/${pkgver}/tcl${pkgver}-src.tar.gz")
-sha256sums=('43a1fae7412f61ff11de2cfd05d28cfc3a73762f354a417c62370a54e2caf066')
+sha256sums=('5880225babf7954c58d4fb0f5cf6279104ce1cd6aa9b71e9a6322540e1c4de66')
 
 prepare() {
   cd tcl${pkgver}
@@ -52,18 +52,18 @@ package() {
       -e "s#${srcdir}/tcl${pkgver}#/usr/include#" \
       -i "${pkgdir}/usr/lib32/tclConfig.sh"
 
-  tdbcver=1.1.5
+  tdbcver=1.1.7
   sed -e "s#${srcdir}/tcl${pkgver}/unix/pkgs/tdbc${tdbcver}#/usr/lib32/tdbc${tdbcver}#" \
       -e "s#${srcdir}/tcl${pkgver}/pkgs/tdbc${tdbcver}/generic#/usr/include#" \
       -e "s#${srcdir}/tcl${pkgver}/pkgs/tdbc${tdbcver}/library#/usr/lib32/tcl${pkgver%.*}#" \
       -e "s#${srcdir}/tcl${pkgver}/pkgs/tdbc${tdbcver}#/usr/include#" \
       -i "${pkgdir}/usr/lib32/tdbc${tdbcver}/tdbcConfig.sh"
 
-  ictlver=4.2.3
-  sed -e "s#${srcdir}/tcl${pkgver}/unix/pkgs/itcl${ictlver}#/usr/lib32/${ictlver}#" \
-      -e "s#${srcdir}/tcl${pkgver}/pkgs/itcl${ictlver}/generic#/usr/include#" \
-      -e "s#${srcdir}/tcl${pkgver}/pkgs/itcl${ictlver}#/usr/include#" \
-      -i "${pkgdir}/usr/lib32/itcl${ictlver}/itclConfig.sh"
+  itclver=4.2.4
+  sed -e "s#${srcdir}/tcl${pkgver}/unix/pkgs/itcl${itclver}#/usr/lib32/${itclver}#" \
+      -e "s#${srcdir}/tcl${pkgver}/pkgs/itcl${itclver}/generic#/usr/include#" \
+      -e "s#${srcdir}/tcl${pkgver}/pkgs/itcl${itclver}#/usr/include#" \
+      -i "${pkgdir}/usr/lib32/itcl${itclver}/itclConfig.sh"
 
   install -dm 755 -p "${pkgdir}"/usr/share/licenses
   ln -s tcl "${pkgdir}"/usr/share/licenses/lib32-tcl
