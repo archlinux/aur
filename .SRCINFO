@@ -1,13 +1,12 @@
 pkgbase = chinesechess-bin
 	pkgdesc = Cross-platform and online battle platform game based on Qt: Chinese Chess. Also known as:"Xiangqi" "中国象棋"
 	pkgver = 6.1
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/XMuli/ChineseChess
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = gendesk
 	depends = qt5-multimedia
-	depends = hicolor-icon-theme
 	depends = qt5-base
 	provides = chinesechess=6.1
 	conflicts = chinesechess
