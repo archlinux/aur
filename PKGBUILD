@@ -21,7 +21,6 @@ noextract=()
 sha256sums=('SKIP')
 prepare() {
 	sed -Ei 's#(^.*LOC=)\$\(.+ALLOC\)#\1/usr/share#' "$srcdir/$upstream_name/Makefile"
-	cat  "$srcdir/$upstream_name/Makefile"
 }
 pkgver() {
 	cd "$upstream_name"
