@@ -15,7 +15,6 @@ pkgbase = backrest
 	makedepends = npm
 	makedepends = go
 	makedepends = go.rice
-	depends = glibc
 	depends = restic
 	options = !strip
 	source = backrest-0.15.1.tar.gz::https://github.com/garethgeorge/backrest/archive/refs/tags/v0.15.1.tar.gz
