@@ -1,7 +1,7 @@
 # Maintainer: khing <bong.kook.khan@gmail.com>
 
 pkgname=hyprdots-ctl-git
-pkgver=v0.5.0.r5.c40008a
+pkgver=v0.5.0.r10.da627b7
 pkgrel=2
 pkgdesc="CLI for Hyprdots Configurations ++ Hidden Gems"
 arch=('any')
