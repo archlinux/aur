@@ -6,5 +6,6 @@ Type=Application
 Terminal=false
 Name=Yet Another Factorio Calculator Community Edition (YAFC-CE)
 Exec=factorio-yafc-ce %U
+Icon=yafc-ce
 Comment=Powerful Factorio calculator/analyser that works with mods
 Categories=Game;
