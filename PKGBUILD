@@ -1,8 +1,8 @@
 # Maintainer: Graham Gower <graham dot gower at gmail dot com>
 _gitname=SLiM
-_gittag=v4.1  # tag, branch, or commit; comment out to use latest
+_gittag=v4.2  # tag, branch, or commit; comment out to use latest
 pkgname=slim-simulator
-pkgver=4.1.r0.g45b0e9ba
+pkgver=4.2.r0.g6d00ad37
 pkgrel=1
 pkgdesc="A forwards-time population genetic simulator."
 arch=("x86_64")
