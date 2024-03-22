@@ -9,10 +9,10 @@ pkgrel=1
 pkgdesc='Library for accessing SEGGER J-Link and compatible devices'
 arch=('x86_64')
 url='https://gitlab.zapb.de/libjaylink/libjaylink'
-license=('GPL-2.0-or-later')
+license=('GPL-3.0-or-later')
 depends=('glibc'
 	'libusb')
-makedepends=('git')
+makedepends=('git' 'meson')
 optdepends=('doxygen: Required for API documentation')
 provides=("$_pkg.so")
 conflicts=("$_pkg")
@@ -30,16 +30,21 @@ pkgver() {
 prepare()
 {
     git -C "${srcdir}/${_pkg}" clean -dfx
+    meson subprojects download --sourcedi=${_pkg}
 }
 
 build() {
-	cd "$_pkg"
-	./autogen.sh
-	./configure --prefix=/usr
-	make
+	arch-meson ${_pkg} build -Dusb=enabled
+	meson compile -C build
+}
+
+check() {
+  meson test -C build
 }
 
 package() {
-	cd "$_pkg"
-	make DESTDIR="$pkgdir/" install
+	meson install -C build --destdir "$pkgdir"
+
+	sed -i 's|plugdev|uucp|g' ${srcdir}/${_pkg}/contrib/99-libjaylink.rules
+	install -Dm644 ${srcdir}/${_pkg}/contrib/99-libjaylink.rules -t "${pkgdir}/usr/lib/udev/rules.d/"
 }
