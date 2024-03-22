@@ -3,7 +3,7 @@ pkgname=commas-bin
 _pkgname=Commas
 pkgver=0.30.0
 _electronversion=28
-pkgrel=2
+pkgrel=3
 pkgdesc="A hackable, pluggable terminal, and also a command runner."
 arch=("x86_64")
 url="https://github.com/CyanSalt/commas"
@@ -30,6 +30,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
