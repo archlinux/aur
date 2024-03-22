@@ -1,8 +1,8 @@
 pkgbase = kwin-effects-forceblur
 	pkgdesc = KWin Blur effect fork with window class force blur feature (Wayland & X11)
 	pkgver = 1.1.1
-	pkgrel = 4
-	url = https://github.com/taj-ny/kwin-effects-forceblur
+	pkgrel = 3
+	url = https://github.com/taj-ny/kwin-forceblur
 	install = kwin-effects-forceblur.install
 	arch = x86_64
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = kwin-effects-forceblur
 	depends = kwin
 	depends = kcrash
 	depends = kglobalaccel
-	source = https://github.com/taj-ny/kwin-effects-forceblur/archive/v1.1.1.tar.gz
+	source = https://github.com/taj-ny/kwin-forceblur/archive/v1.1.1.tar.gz
 	sha256sums = 3c0dd195e995bc72e66fd876e59a6c422b649ee84f2da75355daa3a1616641ae
 
 pkgname = kwin-effects-forceblur
