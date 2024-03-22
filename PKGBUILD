@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark at proton dot me>
 # Co-Maintainer: soloturn <soloturn@gmail.com>
 pkgname=cosmic-edit-git
-pkgver=r359.f1f7106
+pkgver=r403.07115fd
 pkgrel=1
 pkgdesc="COSMIC Text Editor"
 arch=('x86_64')
@@ -20,7 +20,6 @@ makedepends=(
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'cosmic-text-editor')
 replaces=('cosmic-text-editor-git')
-options=('!lto')
 source=('git+https://github.com/pop-os/cosmic-edit.git')
 sha256sums=('SKIP')
 
@@ -38,6 +37,7 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
+  CFLAGS+=" -ffat-lto-objects"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   just build-vendored

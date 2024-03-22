@@ -1,6 +1,6 @@
 pkgbase = cosmic-edit-git
 	pkgdesc = COSMIC Text Editor
-	pkgver = r359.f1f7106
+	pkgver = r403.07115fd
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-edit
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = cosmic-edit-git
 	conflicts = cosmic-edit
 	conflicts = cosmic-text-editor
 	replaces = cosmic-text-editor-git
-	options = !lto
 	source = git+https://github.com/pop-os/cosmic-edit.git
 	sha256sums = SKIP
 
