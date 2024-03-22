@@ -2,14 +2,14 @@
 
 pkgname=mani
 pkgver=0.24.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A CLI tool that helps you manage multiple repositories'
 arch=('x86_64')
 url='https://manicli.com'
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
-options=('!lto')
+options=('!debug')
 _commit='6259e0cfd569bb132d6c5177094fda772706a636'
 source=("$pkgname::git+https://github.com/alajmo/mani.git#commit=$_commit")
 b2sums=('SKIP')
@@ -19,14 +19,12 @@ pkgver() {
   git describe --tags | sed 's/^v//'
 }
 
-prepare() {
+build() {
   cd "$pkgname"
-
-  # create directory for build output
-  mkdir -p build
-
-  # download dependencies
-  go mod download
+  # set Go flags
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
 
   # run make build
   make build
