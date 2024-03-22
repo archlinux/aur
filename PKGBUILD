@@ -3,7 +3,7 @@
 pkgname=discord-rpc
 pkgver=20200921
 _commit=963aa9f3e5ce81a4682c6ca3d136cddda614db33
-pkgrel=2
+pkgrel=3
 pkgdesc="Discord Rich Presence library"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/discord/discord-rpc"
@@ -28,6 +28,7 @@ build() {
         -DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -Wno-dev
+    sed -i '48d' .clang-format # remove duplicate line, otherwise it does not compile
     cmake --build build
 }
 
