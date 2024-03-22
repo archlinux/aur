@@ -141,6 +141,7 @@ prepare(){
   #  fi
 
   # Set LTO with CLANG/LLVM
+
   if [[ "$_compiler" = "2" ]]; then
 
     msg "Enable THIN LTO"
@@ -203,6 +204,7 @@ prepare(){
 
   plain ""
 
+  # Supress depmod
   msg "Supress depmod..."
   sed -i '2iexit 0' scripts/depmod.sh
 
