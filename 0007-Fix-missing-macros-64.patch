@@ -1,0 +1,22 @@
+--- a/opal/mca/memory/patcher/memory_patcher_component.c
++++ b/opal/mca/memory/patcher/memory_patcher_component.c
+@@ -295,14 +295,17 @@
+ {
+     int result = 0;
+ 
+-    if (advice == MADV_DONTNEED ||
++    if (
++#    ifdef POSIX_MADV_DONTNEED
++        advice == POSIX_MADV_DONTNEED ||
++#    endif
+ #    ifdef MADV_FREE
+         advice == MADV_FREE ||
+ #    endif
+ #    ifdef MADV_REMOVE
+         advice == MADV_REMOVE ||
+ #    endif
+-        advice == POSIX_MADV_DONTNEED) {
++        advice == MADV_DONTNEED) {
+         opal_mem_hooks_release_hook(start, length, true);
+     }
+ 
