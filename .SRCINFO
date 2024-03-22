@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-bzip2
 	pkgdesc = A high-quality data compression program (android)
 	pkgver = 1.0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sources.redhat.com/bzip2
 	arch = any
 	license = custom
@@ -16,4 +16,3 @@ pkgbase = android-x86-64-bzip2
 	sha1sums = bf7badf7e248e0ecf465d33c2f5aeec774209227
 
 pkgname = android-x86-64-bzip2
-
