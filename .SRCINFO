@@ -1,0 +1,15 @@
+pkgbase = revng-bin
+	pkgdesc = An open source binary analysis framework based on LLVM and QEMU
+	pkgver = 0.0.0.gc849342e
+	pkgrel = 1
+	url = https://rev.ng/
+	arch = x86_64
+	license = GPL2
+	provides = revng
+	options = !strip
+	source = https://rev.ng/downloads/revng-distributable/none_c849342e971fd3e491b123a855b9987e5f9ffcdf.tar.xz
+	source = launcher.sh
+	sha256sums = 631a351bebbedb0c655eec9c3514b609fcdcec88912f310d29d9929985eb476d
+	sha256sums = 4605f93ff27ba081036acebb204af5e81614394357d941ae917e8e97e58d7252
+
+pkgname = revng-bin
