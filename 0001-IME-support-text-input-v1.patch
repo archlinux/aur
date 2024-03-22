@@ -1,4 +1,4 @@
-From f71b072bfdaa97a478d119b6615ebd6f48c57b7b Mon Sep 17 00:00:00 2001
+From e3be251ca4792b68d4274ae2baf2ac0e798fca9e Mon Sep 17 00:00:00 2001
 From: tokyo4j <hrak1529@gmail.com>
 Date: Fri, 23 Feb 2024 03:57:01 +0900
 Subject: [PATCH] IME: support text-input-v1
@@ -6,8 +6,8 @@ Subject: [PATCH] IME: support text-input-v1
 ---
  include/input/ime.h   |   1 +
  protocols/meson.build |   1 +
- src/input/ime.c       | 337 +++++++++++++++++++++++++++++++++++++++++-
- 3 files changed, 338 insertions(+), 1 deletion(-)
+ src/input/ime.c       | 342 +++++++++++++++++++++++++++++++++++++++++-
+ 3 files changed, 343 insertions(+), 1 deletion(-)
 
 diff --git a/include/input/ime.h b/include/input/ime.h
 index 06dd16f..2463809 100644
@@ -34,10 +34,10 @@ index acaf021..ffb371a 100644
  	'wlr-input-inhibitor-unstable-v1.xml',
  	'wlr-output-power-management-unstable-v1.xml',
 diff --git a/src/input/ime.c b/src/input/ime.c
-index bb08f6d..7c44d20 100644
+index bb08f6d..7e24a63 100644
 --- a/src/input/ime.c
 +++ b/src/input/ime.c
-@@ -6,11 +6,277 @@
+@@ -6,11 +6,282 @@
  #include "input/ime.h"
  #include "node.h"
  #include "view.h"
@@ -139,7 +139,12 @@ index bb08f6d..7c44d20 100644
 +handle_text_input_v1_reset(struct wl_client *client, struct wl_resource *resource)
 +{
 +	struct wlr_text_input_v3 *text_input = wl_resource_get_user_data(resource);
-+	text_input->current = (struct wlr_text_input_v3_state){0};
++	/* Preserve cursor rectangle to prevent flickering */
++	text_input->current = (struct wlr_text_input_v3_state){
++		.cursor_rectangle = text_input->current.cursor_rectangle,
++		.features = text_input->current.features
++			& WLR_TEXT_INPUT_V3_FEATURE_CURSOR_RECTANGLE,
++	};
 +	free(text_input->current.surrounding.text);
 +	wl_signal_emit_mutable(&text_input->events.commit, NULL);
 +}
@@ -315,7 +320,7 @@ index bb08f6d..7c44d20 100644
  /*
   * Get keyboard grab of the seat from keyboard if we should forward events
   * to it.
-@@ -144,9 +410,16 @@ update_text_inputs_focused_surface(struct input_method_relay *relay)
+@@ -144,9 +415,16 @@ update_text_inputs_focused_surface(struct input_method_relay *relay)
  			continue;
  		}
  		if (input->focused_surface) {
@@ -332,7 +337,7 @@ index bb08f6d..7c44d20 100644
  			wlr_text_input_v3_send_enter(input, new_focused_surface);
  		}
  	}
-@@ -253,6 +526,62 @@ handle_input_method_commit(struct wl_listener *listener, void *data)
+@@ -253,6 +531,62 @@ handle_input_method_commit(struct wl_listener *listener, void *data)
  		return;
  	}
  
@@ -395,7 +400,7 @@ index bb08f6d..7c44d20 100644
  	if (input_method->current.preedit.text) {
  		wlr_text_input_v3_send_preedit_string(
  			text_input->input,
-@@ -505,11 +834,14 @@ handle_new_text_input(struct wl_listener *listener, void *data)
+@@ -505,11 +839,14 @@ handle_new_text_input(struct wl_listener *listener, void *data)
  	struct input_method_relay *relay =
  		wl_container_of(listener, relay, new_text_input);
  	struct wlr_text_input_v3 *wlr_text_input = data;
@@ -411,7 +416,7 @@ index bb08f6d..7c44d20 100644
  	text_input->input = wlr_text_input;
  	text_input->relay = relay;
  	wl_list_insert(&relay->text_inputs, &text_input->link);
-@@ -563,6 +895,9 @@ input_method_relay_create(struct seat *seat)
+@@ -563,6 +900,9 @@ input_method_relay_create(struct seat *seat)
  	relay->popup_surface_destroy.notify = handle_popup_surface_destroy;
  	relay->popup_surface_commit.notify = handle_popup_surface_commit;
  
