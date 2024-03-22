@@ -1,0 +1,16 @@
+pkgbase = hyprcursor-dracula-kde-git
+	pkgdesc = A Hyprcursor imported from the Dracula KDE XCursor.
+	pkgver = r8.5a6eebb
+	pkgrel = 1
+	url = https://github.com/guillaumeboehm/hyprcursor_dracula_kde
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = tar
+	depends = hyprcursor
+	provides = hyprcursor-dracula-kde-git
+	conflicts = hyprcursor-dracula-kde-git
+	source = hyprcursor_dracula_kde::git+https://github.com/guillaumeboehm/hyprcursor_dracula_kde.git
+	md5sums = SKIP
+
+pkgname = hyprcursor-dracula-kde-git
