@@ -18,7 +18,6 @@ conflicts=(
 provides=("yesplaymusic")
 depends=(
     "electron${_electronversion}"
-    'hicolor-icon-theme'
     'python>3'
 )
 makedepends=(
@@ -29,13 +28,14 @@ makedepends=(
     'pnpm'
     'base-devel'
     'gcc'
+    'curl'
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -53,7 +53,7 @@ build() {
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
-    cd "${srcdir}/${pkgname//-/.}"
+    cd "${srcdir}/${pkgname//-/.}/packages/desktop"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
@@ -64,10 +64,16 @@ build() {
     pnpm config set store-dir "${srcdir}/.pnpm_store"
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
     pnpm config set link-workspace-packages true
-    cp .env.example .env
-    cd "${srcdir}/${pkgname//-/.}"
-    sed '87d;78,84d' -i packages/desktop/.electron-builder.config.js
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
+    sed "87d;78,84d;s|AppImage|dir|g" -i .electron-builder.config.js
     pnpm install
+    pnpm run build
     pnpm run package
 }
 package() {

@@ -12,8 +12,8 @@ pkgbase = r3playx-git
 	makedepends = pnpm
 	makedepends = base-devel
 	makedepends = gcc
+	makedepends = curl
 	depends = electron28
-	depends = hicolor-icon-theme
 	depends = python>3
 	provides = yesplaymusic
 	conflicts = r3playx
@@ -23,6 +23,6 @@ pkgbase = r3playx-git
 	source = r3playx.git::git+https://github.com/Sherlockouo/music.git
 	source = r3playx.sh
 	sha256sums = SKIP
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = r3playx-git
