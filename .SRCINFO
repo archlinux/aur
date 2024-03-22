@@ -20,7 +20,6 @@ pkgbase = hedgewars-client-hg
 	depends = sdl2_ttf
 	depends = lua51
 	depends = ffmpeg4.4
-	depends = glut
 	depends = physfs
 	optdepends = hedgewars-server
 	provides = hedgewars-client
