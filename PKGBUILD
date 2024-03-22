@@ -11,7 +11,7 @@ source=("$_pkgname-$pkgver.tar.gz::https://github.com/Morganamilo/paru/archive/v
         git+https://aur.archlinux.org/pacman-static.git)
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 license=('GPL-3.0-or-later')
-makedepends=('rustup' 'cargo' 'musl' 'meson' 'kernel-headers-musl')
+makedepends=('rustup' 'cargo' 'musl' 'meson' 'kernel-headers-musl' 'lld')
 depends=('git' 'pacman')
 optdepends=('bat: colored pkgbuild printing' 'devtools: build in chroot and downloading pkgbuilds')
 sha256sums=('ccf6defc4884d580a4b813cc40323a0389ffc9aa4bdc55f3764a46b235dfe1e0'
@@ -56,7 +56,7 @@ build () {
   if [[ $CARCH != x86_64 ]]; then
     export CARGO_PROFILE_RELEASE_LTO=off
   fi
-
+  RUSTFLAGS="-C link-self-contained=on -C strip=symbols -C no-redzone=y -C overflow-checks=y -C lto=fat -C embed-bitcode=y -C codegen-units=1 -C opt-level=z -C control-flow-guard=y -C link-arg=-fuse-ld=lld" \
   cargo build --frozen --features "${_features:-}" --release --target-dir target --target $TARGET
   #./scripts/mkmo locale/
 }
