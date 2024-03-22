@@ -16,6 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/Hyprdots-ctl" || exit 1
+    git fetch --all
     printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"    
 	# printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
