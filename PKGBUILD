@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=frigoligo-bin
 _pkgname=Frigoligo
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="An universal wallabag client made with Flutter. "
 arch=('x86_64')
 url="https://github.com/casimir/frigoligo"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/casimir/frigoligo/v${pkgver}/assets/logos/frigoligo.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a34b6da6b61625a2fbf08034de673e808b438e601ca9ba75b0aaffce8d1e2ab2'
+sha256sums=('dbcd395d4c5c8179300d8c332e85df27e1923f2a049f5246366bb49c1151182d'
             '3feb1ea09cc75f148e715820992fd28a3881572e3540b629059f22293b2e17db'
             '886063acc61302d4ee369f06b6062257883dd4e3f1d6ab199ca8e64db3091491'
             'b80a05fa761440dc131976b08181f3f064acaf78d273d50bf418778bd5f10238')
