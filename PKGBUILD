@@ -3,7 +3,7 @@ pkgname=walc-bin
 _pkgname=WALC
 pkgver=0.3.3
 _electronversion=20
-pkgrel=2
+pkgrel=3
 pkgdesc="An unofficial WhatsApp Desktop client for linux systems."
 arch=('x86_64')
 url="https://github.com/WAClient/WALC"
@@ -22,11 +22,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('186276bd9806c0ae9e93d733990f50375b02cc480164a94ee067ede56934e55e'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
