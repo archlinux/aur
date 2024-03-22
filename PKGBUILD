@@ -4,7 +4,7 @@ pkgname="${_appname}-desktop-bin"
 _pkgname=OONI-Probe-desktop
 pkgver=3.9.4
 _electronversion=12
-pkgrel=2
+pkgrel=3
 pkgdesc="The next generation OONI Probe desktop app"
 arch=('x86_64')
 url="https://github.com/ooni/probe-desktop"
@@ -13,7 +13,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}-bin"
-    'hicolor-icon-theme'
 )
 makedepends=(
     'fuse2'
@@ -25,11 +24,12 @@ source=(
 )
 sha256sums=('e9138bccb09ecd9be3e120bbe9db6f7b30a4ba920ef28482b2c5569dbeb867a7'
             '1fc3f6a8bf2909bfaad6d6f4825c8e8b6dfed17e3b5270a9fd060d6de7938f8d'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
