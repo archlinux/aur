@@ -3,12 +3,13 @@
 ## options
 : ${_build_git:=true}
 
+unset _pkgtype
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
 ## basic info
 _pkgname="xwayland-run"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=0.0.2.r3.gc5846bed
+pkgver=0.0.2.r7.g8d30fc5
 pkgrel=1
 pkgdesc="Utilities to run headless X/Wayland clients"
 url="https://gitlab.freedesktop.org/ofourdan/xwayland-run"
@@ -27,7 +28,7 @@ optdepends=(
   'kwin: Wayland compositor'
   'mutter: Wayland compositor'
   'weston: Wayland compositor'
-  'xorg-server-xwayland: X11 server'
+  'xorg-xwayland: X11 server'
 )
 
 provides=(
@@ -50,7 +51,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
