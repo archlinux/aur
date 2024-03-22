@@ -31,7 +31,7 @@ pkgname=(
     "${_pkgbase}-ux581l-unicode-git"
     "${_pkgbase}-ux581l-non-unicode-git"
 )
-pkgver=r740.dca2537
+pkgver=r741.a7d87f9
 pkgrel=1
 pkgdesc="Linux newest feature-rich configurable driver for Asus numberpad"
 arch=('any')
