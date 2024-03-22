@@ -1,4 +1,4 @@
-backrest
-pkg
-src
+/backrest
+/pkg
+/src
 *.pkg.tar.zst
