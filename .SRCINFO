@@ -8,6 +8,6 @@ pkgbase = codeql
 	license = custom
 	options = !strip
 	source = codeql-v2.16.3.zip::https://github.com/github/codeql-cli-binaries/releases/download/v2.16.3/codeql-linux64.zip
-	sha256sums = 8a9b9683e53e3e6687f4514382d7ad0b14680226307d1bb514aa4d642054a724
+	sha256sums = f97f800240f865f64d51924edc0b96bd25fa7440b098eaf06a167b8fdd445e4d
 
 pkgname = codeql
