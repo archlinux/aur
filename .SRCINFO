@@ -1,0 +1,26 @@
+pkgbase = graphs
+	pkgdesc = Plot and manipulate data (Gnome Circle app)
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = https://welcome.gnome.org/app/Graphs/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = blueprint-compiler
+	makedepends = gettext
+	makedepends = vala
+	makedepends = gobject-introspection-runtime
+	depends = gtk4
+	depends = libadwaita
+	depends = python-matplotlib
+	depends = python-scipy
+	depends = python-numpy
+	depends = python-numexpr
+	depends = python-sympy
+	depends = gobject-introspection
+	provides = graphs
+	source = https://gitlab.gnome.org/World/Graphs/-/archive/v1.7.2/Graphs-v1.7.2.tar.gz
+	sha256sums = 90616099e3224c1fae0bfbe23faedf635936f101bae2f75e28fc8d7c2a845638
+
+pkgname = graphs
