@@ -1,20 +1,19 @@
 # Maintainer: Alix Bernard <alix.bernard9 at gmail dot com>
 
 pkgname=cpu-cli-controller
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="A Linux CPU controller CLI tool"
 url="https://github.com/AlixBernard/$pkgname"
 license=("MIT")
 makedepends=("cargo")
 arch=("any")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AlixBernard/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("5bacce42acff74f3091ba984e9a2247e572646c74ca08a149bac89722cfca9f3")
+sha256sums=("90cda74beaeee9eabc6736dd48945e85f0a44c3cd234828a9c9ac9260ba5c247")
 
 prepare() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo update  # This step should be removed when figured out how
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
