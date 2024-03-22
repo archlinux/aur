@@ -2,7 +2,7 @@
 pkgname=chatd-bin
 pkgver=1.1.0
 _electronversion=24
-pkgrel=3
+pkgrel=4
 pkgdesc="Chat with your documents using local AI"
 arch=('x86_64')
 url="https://chatd.ai/"
@@ -11,8 +11,7 @@ license=('MIT')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    "electron${_electronversion}"
-    'hicolor-icon-theme'
+    "electron${_electronversion}-bin"
     'python>=3'
     'ollama'
     'nodejs'
@@ -28,11 +27,12 @@ source=(
 )
 sha256sums=('0c2879ae40b1c17ce81bb90eec7e281018736c6aad0574aabb4c025a92418687'
             '2482d360377c8e4d4ef1432e93f9e67e6f6d76ce0e69eee6f2647c3f1c296dd2'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -f -n -q --categories="Utility" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
 }
