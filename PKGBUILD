@@ -3,9 +3,9 @@
 # Contributor: portaloffreedom
 
 _pkgname=repr
-_pkgver=1.1.6
+_pkgver=1.1.7
 pkgname=r-${_pkgname,,}
-pkgver=1.1.6
+pkgver=1.1.7
 pkgrel=1
 pkgdesc='Serializable Representations'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
   r-vegalite
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3d2e6c9b363c1ec4811688deff7fb22093cadc9e0a333930382093d93c16673f')
+sha256sums=('73bd696b4d4211096e0d1e382d5ce6591527d2ff400cc7ae8230f0235eed021b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

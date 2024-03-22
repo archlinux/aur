@@ -1,6 +1,6 @@
 pkgbase = r-repr
 	pkgdesc = Serializable Representations
-	pkgver = 1.1.6
+	pkgver = 1.1.7
 	pkgrel = 1
 	url = https://cran.r-project.org/package=repr
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-repr
 	optdepends = r-testthat
 	optdepends = r-tibble
 	optdepends = r-vegalite
-	source = https://cran.r-project.org/src/contrib/repr_1.1.6.tar.gz
-	sha256sums = 3d2e6c9b363c1ec4811688deff7fb22093cadc9e0a333930382093d93c16673f
+	source = https://cran.r-project.org/src/contrib/repr_1.1.7.tar.gz
+	sha256sums = 73bd696b4d4211096e0d1e382d5ce6591527d2ff400cc7ae8230f0235eed021b
 
 pkgname = r-repr
