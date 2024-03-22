@@ -20,7 +20,6 @@ sha512sums_x86_64=(
 )
 
 package() {
-
     # Extract package data
     tar -xJ -f data.tar.xz -C "${pkgdir}"
 
