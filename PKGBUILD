@@ -3,7 +3,7 @@ pkgname=r3playx-bin
 _pkgname=R3PLAYX
 pkgver=2.7.5
 _electronversion=28
-pkgrel=2
+pkgrel=3
 pkgdesc="A music player forked from YesPlayMusic。高颜值的第三方网易云播放器，支持 Windows / macOS / Linux"
 arch=(
     'aarch64'
@@ -20,18 +20,18 @@ conflicts=(
 provides=("yesplaymusic")
 depends=(
     "electron${_electronversion}"
-    'hicolor-icon-theme'
 )
 source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb")
-sha256sums=('50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+sha256sums=('dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 sha256sums_aarch64=('631444fcc800d112738d1abb8aacea2c94e0dfeaa39045055cd988fc144dbca2')
 sha256sums_x86_64=('29412fd8023306a96bfa64c9766c580848b28578b70c266c75a55a7408d777c9')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed -e "s|/opt/${_pkgname}/desktop|${pkgname%-bin}|g" \
