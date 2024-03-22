@@ -3,7 +3,7 @@ pkgname=recode-converter-bin
 pkgver=2.0.2
 _pkgname=Recode-Converter
 _electronversion=28
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple, modern audio codec converter for video files"
 arch=('x86_64')
 url="https://github.com/murgatt/recode-converter"
@@ -21,11 +21,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('f374df76c2f89ab58ad7ec8fa2ef94230c2c2c0ee382a3d66087c3517cc64b44'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
