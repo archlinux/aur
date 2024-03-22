@@ -34,7 +34,7 @@ Type=Application" > $pkgname.desktop
 
 build() {
   export CARGO_HOME="$srcdir/CARGO_HOME"
-  export RUSTUP_TOOLCHAIN=nightly
+  export RUSTUP_TOOLCHAIN=stable
   cd HarmonyVPKTool
   yarn tauri build -b none
 }
