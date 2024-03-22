@@ -2,7 +2,7 @@
 
 pkgname=switcheroo-gtk4
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert and manipulate images"
 url="https://gitlab.com/adhami3310/Switcheroo"
 license=('GPL-3.0-only')
@@ -17,13 +17,13 @@ sha256sums=('SKIP')
 prepare() {
   cd Switcheroo
   export CARGO_HOME="$srcdir/CARGO_HOME"
-  export RUSTUP_TOOLCHAIN=nightly
+  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   export CARGO_HOME="$srcdir/CARGO_HOME"
-  export RUSTUP_TOOLCHAIN=nightly
+  export RUSTUP_TOOLCHAIN=stable
   arch-meson Switcheroo build
   meson compile -C build
 }
