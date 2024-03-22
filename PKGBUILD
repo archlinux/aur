@@ -12,7 +12,7 @@ source=("$_pkgname-$pkgver.tar.gz::https://github.com/Morganamilo/paru/archive/v
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 license=('GPL-3.0-or-later')
 makedepends=('rustup' 'cargo' 'musl' 'meson' 'kernel-headers-musl')
-depends=('git' 'pacman' 'paru')
+depends=('git' 'pacman')
 optdepends=('bat: colored pkgbuild printing' 'devtools: build in chroot and downloading pkgbuilds')
 sha256sums=('ccf6defc4884d580a4b813cc40323a0389ffc9aa4bdc55f3764a46b235dfe1e0'
             'SKIP')
@@ -24,6 +24,7 @@ _srcenv() {
   export PKG_CONFIG_ALLOW_CROSS=1
   export RUSTUP_TOOLCHAIN=stable
   export TARGET="$CARCH-unknown-linux-musl"
+  rustup target add $TARGET
   # If you prefer the settings in ~/.config/cargo.toml, comment out the following two lines to enable them.
   #source <(cargo +nightly -Z unstable-options rustc --print cfg|grep -E "target_(arch|vendor|os|env)")
   #export TARGET="${target_arch}-${target_vendor}-${target_os}-${target_env}"
