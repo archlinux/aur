@@ -1,7 +1,7 @@
 pkgbase = japreader-bin
 	pkgdesc = An Electron app that helps you read Japanese text.
 	pkgver = 1.9.3
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/marisukukise/japReader
 	arch = x86_64
 	license = GPL-3.0-only
@@ -14,6 +14,6 @@ pkgbase = japreader-bin
 	source = japreader-1.9.3.deb::https://github.com/marisukukise/japReader/releases/download/v1.9.3/japreader_1.9.3_amd64.deb
 	source = japreader.sh
 	sha256sums = f2e12d33c495bcfa79af141986357d77849752c66d4ae80ad377c15d64ae68b5
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = japreader-bin
