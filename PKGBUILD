@@ -41,10 +41,7 @@ build () {
   # disable lto
   sed "s/^options=(\(.*\))$/options=(\1 '\!lto')/" PKGBUILD -i
   # disable CFLAGS and CXXFLAGS and LDFLAGS of makepkg.conf
-  C_FLAG="-Os -Wformat -Werror=format-security -Wtautological-compare -Wsign-compare -gdwarf-4 -fPIC -ffunction-sections -fdata-sections -fstack-protector-all -fstack-clash-protection -fcf-protection=full -U_FORTIFY_SOURCE"
-  CXX_FLAG="$CFLAGS -Wp,-D_GLIBCXX_ASSERTIONS"
-  LD_FLAG="-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now"
-  sed -r "/(export LDFLAGS=.*)/s/(.+)/export CFLAGS='$C_FLAG'\nexport CXXFLAGS='$CXX_FLAG'\nexport LDFLAGS='$LD_FLAG'\n\1/" PKGBUILD -i
+  #sed -r "/(export LDFLAGS=.*)/s/(.+)/unset CFLAGS\nunset CXXFLAGS\n\1/" PKGBUILD -i
   # pacman-static build & install
   [[ $(LC_ALL=C pacman -Qi pacman-static |grep "6.1.0") ]] || makepkg -si --skippgpcheck --noconfirm
 
