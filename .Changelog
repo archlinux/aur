@@ -1,0 +1,5 @@
+# 5.2.2-1
+
+* Update to Lighthouse 5.2.2 (Handsome Bigfoot) hotfix
+* Add Sigma Prime PGP key to PKGBUILD. The key can be imported with `gpg --recv-keys 15E66D941F697E28F49381F426416DC3F30674B0`
+
