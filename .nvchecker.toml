@@ -1,0 +1,5 @@
+[python-sdv]
+source = "github"
+github = "sdv-dev/SDV"
+use_latest_release = "true"
+prefix = "v"
