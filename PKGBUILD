@@ -1,7 +1,7 @@
 # Maintainer: Volodymyr Zolotopupov <zvova7890@gmail.com>
 
 pkgname=ksysguard6-git
-pkgver=r3601.bb0e639
+pkgver=r3602.5794f61
 pkgrel=1
 pkgdesc='Track and control the processes running in your system. KF6 version'
 arch=(x86_64)
@@ -35,12 +35,12 @@ sha256sums=('SKIP')
 
 
 pkgver() {
-  cd ksysguard
+  cd ksysguard6
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-  cmake -B build -S ksysguard \
+  cmake -B build -S ksysguard6 \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
