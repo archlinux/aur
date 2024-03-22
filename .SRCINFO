@@ -9,7 +9,7 @@ pkgbase = miniplayer-git
 	makedepends = python-setuptools
 	depends = python>=3.7
 	depends = python-mpd2
-	depends = python-pixcat-an-prata
+	depends = pixcat
 	depends = ueberzug
 	depends = python-colorthief
 	provides = miniplayer
