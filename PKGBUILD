@@ -5,7 +5,7 @@
 
 pkgname=notesnook-bin
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote (binary release)"
-pkgver=2.6.16
+pkgver=2.6.17
 pkgrel=1
 url="https://github.com/streetwriters/notesnook"
 license=('GPL-3.0-or-later')
@@ -17,7 +17,7 @@ conflicts=("notesnook")
 _appimage="notesnook_linux_$CARCH-$pkgver.AppImage"
 source_x86_64=("$_appimage::$url/releases/download/v$pkgver/notesnook_linux_x86_64.AppImage")
 source_aarch64=("$_appimage::$url/releases/download/v$pkgver/notesnook_linux_arm64.AppImage")
-sha256sums_x86_64=('455eb0f715e76b840291ab0bdf537976d2e87dbc65b9367d2fa574739cc3d514')
+sha256sums_x86_64=('cbe569bad7295c2be2ba508d8d0bad914d970b9262f482955c377af7ec57cbf2')
 sha256sums_aarch64=('SKIP')
 
 _fix_permissions() (
@@ -50,7 +50,7 @@ prepare() {
   sed -i -E "s|Exec=AppRun|Exec=notesnook|g" notesnook.desktop
   sed -i "/X-AppImage-Version=$pkgver/d; /actions=undefined/d" notesnook.desktop
   sed -i 's/--no-sandbox //g' notesnook.desktop
-# Delete a folder based the architecture
+# Delete a folder based on the architecture
   if [ "$CARCH" == "x86_64" ]; then
     rm -dr resources/app/build/prebuilds/linux-arm64
   elif [ "$CARCH" == "aarch64" ]; then
@@ -65,7 +65,7 @@ package() {
   cd squashfs-root
   for i in 16 32 48 64 128 256 512 1024; do
     mkdir -p "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps"
-    ln -s /opt/notesnook/resources/assets/icons/${i}x${i}.png -t "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps"
+    ln -s /opt/notesnook/resources/assets/icons/${i}x${i}.png "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/notesnook.png"
   done
   install -Dm644 notesnook.desktop -t "$pkgdir/usr/share/applications"
   rm -dr usr AppRun notesnook.desktop notesnook.png .DirIcon resources/app-update.yml
