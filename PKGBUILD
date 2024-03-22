@@ -176,6 +176,7 @@ prepare(){
 
   plain ""
 
+  # Supress depmod
   msg "Supress depmod..."
   sed -i '2iexit 0' scripts/depmod.sh
 
