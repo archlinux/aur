@@ -1,7 +1,7 @@
 pkgbase = minio-client
 	pkgdesc = Replacement for ls, cp, mkdir, diff and rsync commands for filesystems and object storage
 	pkgver = 2024.03.20
-	pkgrel = 2
+	pkgrel = 1
 	url = https://minio.io/downloads/#minio-client
 	install = minio-client.install
 	arch = x86_64
