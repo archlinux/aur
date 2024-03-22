@@ -5,6 +5,7 @@ pkgbase = cpu-cli-controller
 	url = https://github.com/AlixBernard/cpu-cli-controller
 	arch = any
 	license = MIT
+	makedepends = cargo
 	source = cpu-cli-controller-0.2.0.tar.gz::https://github.com/AlixBernard/cpu-cli-controller/archive/refs/tags/v0.2.0.tar.gz
 	sha256sums = 5bacce42acff74f3091ba984e9a2247e572646c74ca08a149bac89722cfca9f3
 

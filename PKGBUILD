@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="A Linux CPU controller CLI tool"
 url="https://github.com/AlixBernard/$pkgname"
 license=("MIT")
+makedepends=("cargo")
 arch=("any")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AlixBernard/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=("5bacce42acff74f3091ba984e9a2247e572646c74ca08a149bac89722cfca9f3")
