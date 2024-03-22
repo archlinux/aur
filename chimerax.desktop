@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Chimerax
+Comment=UCSF ChimeraX (or simply ChimeraX) is the next-generation molecular visualization program from the Resource for Biocomputing, Visualization, and Informatics (RBVI), following UCSF Chimera.
+Exec=ChimeraX
+Icon=ChimeraX-icon.svg
+Terminal=false
+StartupNotify=false
+Categories=Application;Science;

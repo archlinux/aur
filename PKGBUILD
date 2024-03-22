@@ -2,15 +2,16 @@
 # Inspired by PKGBUILD of ucsf-chimera
 pkgname=chimerax
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="UCSF ChimeraX (or simply ChimeraX) is the next-generation molecular visualization program from the Resource for Biocomputing, Visualization, and Informatics (RBVI), following UCSF Chimera."
 arch=(x86_64)
 url="https://www.cgl.ucsf.edu/chimerax/"
 license=(custom)
 depends=(libffi6 libxcrypt-compat)
 options=(!strip)
-source=(LICENSE)
-sha256sums=('4361604379b11e73ad942144ef84aaf479815f80265f98fed9879f3c82e3aa8d')
+source=(LICENSE chimerax.desktop)
+sha256sums=('4361604379b11e73ad942144ef84aaf479815f80265f98fed9879f3c82e3aa8d'
+            'caa99276e5afccf36af41892d223fd1698cdf87a190f1abf1a751b2cf114c4fb')
 
 _major=$(echo ${pkgver} | awk -F. '{ if (NF >= 2) { print $1 "." $2 } else print $1 }')
 _source=https://www.rbvi.ucsf.edu/chimerax/cgi-bin/secure/chimerax-get.py
@@ -42,7 +43,9 @@ prepare() {
 package() {
 	cd "${srcdir}"
 	install -d "${pkgdir}/opt/chimerax" "${pkgdir}/usr/bin"
+	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/share/ChimeraX-icon.svg" "${pkgdir}/usr/share/pixmaps/ChimeraX-icon.svg"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 chimerax.desktop "${pkgdir}/usr/share/applications/chimerax.desktop"
 	cp -R "${pkgname}-${pkgver}"/{bin,include,lib,share} "${pkgdir}/opt/chimerax/"
 	ln -s "/opt/chimerax/bin/ChimeraX" "${pkgdir}/usr/bin"
 }
