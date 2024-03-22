@@ -12,7 +12,7 @@ backup=('etc/keks-meet-server.toml')
 source=("https://codeberg.org/metamuffin/keks-meet/archive/v$pkgver.tar.gz"
         "keks-meet-server.service"
         "sysusers.conf")
-sha256sums=("374859ce3bab4473d6aa2d82d7bc9143591bf748988f6d6b1d9d6998d7231b56s"
+sha256sums=("374859ce3bab4473d6aa2d82d7bc9143591bf748988f6d6b1d9d6998d7231b56"
             "SKIP"
             "SKIP")
 
