@@ -122,6 +122,8 @@ prepare(){
 
   plain ""
 
+  # Enbale BMQ
+
   msg "Enable BMQ CPU Scheduler"
 
   msg2 "Enable CONFIG_SCHED_ALT, this feature enable alternative CPU scheduler"
