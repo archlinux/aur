@@ -10,7 +10,6 @@ url='https://brave.com/download-nightly'
 license=('MPL2')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'ttf-font')
 optdepends=('cups: Printer support'
-            'pepper-flash: Adobe Flash support'
             'mesa: Hardware accelerated rendering'
             'libglvnd: Support multiple different OpenGL drivers at any given time'
             'libgnome-keyring: gnome keyring support')
