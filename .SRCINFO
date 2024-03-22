@@ -9,7 +9,7 @@ pkgbase = mani
 	makedepends = go
 	depends = glibc
 	options = !lto
-	source = mani::git+https://github.com/alajmo/mani.git#commit=83b2ffba74bda11004c29ea76515b40e7a9d1774
+	source = mani::git+https://github.com/alajmo/mani.git#commit=6259e0cfd569bb132d6c5177094fda772706a636
 	b2sums = SKIP
 
 pkgname = mani
