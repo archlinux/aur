@@ -2,7 +2,7 @@
 
 pkgname=utc-latex-beamer
 _latexpkgname=utc-beamer
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="UTC LaTeX beamer template"
 url="https://github.com/qaniere/utc-latex"
@@ -10,7 +10,7 @@ arch=("any")
 license=("WTFPL")
 depends=("texlive-basic")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/qaniere/utc-latex/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c3ec05d9128b8a8162b4d7534f2f7f8688b8698dbe875a1b14b309088c1ab43f')
+sha256sums=('f8d38ae41bef018e1cc9ff2d6d5c2272b7c57b4abc09d7ea09a237025cf3a674')
 
 package() {
     # Get the proper installation path
