@@ -16,7 +16,7 @@ sha256sums=('44b73b955c17abb8f494941ea38df79d50299bc6679a86bd1701cf5454579626')
 
 build() {
     cmake -DCMAKE_INSTALL_PREFIX=/usr -B build -S "$_reponame-$pkgver"
-    make -j"$(nproc)" -C build
+    make -C build
 }
 
 package() {
