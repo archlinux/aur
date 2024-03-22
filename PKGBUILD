@@ -1,6 +1,6 @@
 pkgname=matrix-media-repo-git
 pkgver=1.3.4.r13.g2f8a209b
-pkgrel=1
+pkgrel=2
 pkgdesc="Highly configurable multi-domain media repository for Matrix."
 arch=("any")
 url="https://github.com/t2bot/matrix-media-repo"
@@ -46,7 +46,7 @@ function check() {
 }
 
 function package() {
-	mkdir -p "${pkgdir}/usr/bin"
-	cp "${srcdir}/matrix-media-repo/bin"/* "${pkgdir}/usr/bin"
-	chmod 755 -R "${pkgdir}/usr/bin"
+	mkdir -p "${pkgdir}/usr/lib/matrix-media-repo"
+	cp "${srcdir}/matrix-media-repo/bin"/* "${pkgdir}/usr/lib/matrix-media-repo"
+	chmod 755 -R "${pkgdir}/usr/lib/matrix-media-repo"
 }
