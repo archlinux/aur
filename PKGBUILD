@@ -1,4 +1,4 @@
-# Maintainer: Evine Deng <evinedeng@hotmail.com>
+# Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="frp-panel"
 pkgver=0.0.19
@@ -12,7 +12,6 @@ backup=(
     "etc/${pkgname}/server.env"
 )
 license=("unkown")
-depends=("glibc" "systemd")
 makedepends=("go" "npm")
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
