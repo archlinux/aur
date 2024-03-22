@@ -3,7 +3,7 @@ pkgname=vikunja-desktop-bin
 _pkgname="Vikunja Desktop"
 pkgver=0.23.0
 _electronversion=28
-pkgrel=2
+pkgrel=3
 pkgdesc="The open-source, self-hostable to-do app.Organize everything, on all platforms."
 arch=('x86_64')
 url="https://vikunja.io/"
@@ -13,18 +13,18 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'hicolor-icon-theme'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.pacman::https://dl.vikunja.io/desktop/${pkgver}/Vikunja%20Desktop-v${pkgver}.pacman"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('39e48d4bad48ca39e91e61cd81bbc67bfcf5f1ba86ccd739adc0206b02278266'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\"|${pkgname%-bin}|g;s|Productivity|Utility|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
