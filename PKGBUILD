@@ -2,7 +2,7 @@
 
 pkgname=mani
 pkgver=0.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A CLI tool that helps you manage multiple repositories'
 arch=('x86_64')
 url='https://manicli.com'
