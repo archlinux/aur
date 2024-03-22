@@ -1,4 +1,4 @@
-# Maintainer: Evine Deng <evinedeng@hotmail.com>
+# Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="nginx-ui"
 pkgver=2.0.0.beta.18.patch.2
@@ -9,7 +9,7 @@ arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/0xJacky/${pkgname}"
 backup=("etc/${pkgname}/config.ini")
 license=("AGPL3")
-depends=("glibc" "nginx" "systemd")
+depends=("nginx")
 makedepends=("npm" "go")
 source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz"
         "${pkgname}.service")
