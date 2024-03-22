@@ -1,46 +1,46 @@
-# Maintainer: schuay <jakob.gruber@gmail.com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: schuay <jakob.gruber@gmail.com>
 
 pkgname=picmi-git
-pkgver=20130301
+pkgver=24.01.90.r22.gcb668b9
 pkgdesc="A nonogram logic game for KDE"
 pkgrel=1
-arch=('i686' 'x86_64')
-url="http://github.com/schuay/picmi/"
-license=('GPL')
+epoch=1
+arch=('x86_64')
+url="https://apps.kde.org/picmi/"
+license=('GPL-2.0-or-later' 'LGPL-2.0-or-later')
+depends=('gcc-libs'
+         'glibc'
+         'kconfigwidgets'
+         'kcoreaddons'
+         'kcrash'
+         'kdbusaddons'
+         'ki18n'
+         'kwidgetsaddons'
+         'kxmlgui'
+         'libkdegames'
+         'qt6-base'
+         'qt6-svg')
+makedepends=('extra-cmake-modules' 'git' 'kdoctools')
 conflicts=('picmi')
-depends=('kdebase-runtime' 'libkdegames')
-makedepends=('cmake' 'git' 'automoc4')
+provides=('picmi')
+source=("git+https://invent.kde.org/games/picmi.git")
+sha256sums=('SKIP')
 
-_gitroot=git://github.com/schuay/picmi.git
-_gitname=picmi-git
+pkgver() {
+  git -C picmi describe --tags | sed 's/^v//;s/-/.r/;s/-/./g'
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  mkdir build && cd build
-  cmake -DCMAKE_INSTALL_PREFIX="/usr" ..
-  make
+  cmake -B build -S picmi \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-  cd "$srcdir/$_gitname-build/build"
-
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 }
 
 # vim:set ts=2 sw=2 et:
