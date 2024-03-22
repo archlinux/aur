@@ -5,7 +5,7 @@ _vlcver=3.0.20
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=7
+pkgrel=8
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64' 'aarch64')
@@ -15,6 +15,7 @@ license=(
 )
 # To manage dependency rebuild easily, this will prevent you to rebuild VLC on non-updated system
 _aomver=3
+_abseilcppver=20240116
 _dav1dver=1.3.0
 _flacver=1.4.0
 _libdc1394ver=2.2.7
@@ -29,99 +30,186 @@ _srtver=1.5
 _x264ver=0.164
 _x265ver=3.5
 depends=(
-  'a52dec' 'aribb24' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'luajit' 'libidn'
-  'libmatroska' "taglib>=$_taglibver" 'libmpcdec' 'faad2' 'libmad'
-  'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
-  'libarchive' 'qt5-base' "ffmpeg>=6"
-  'qt5-x11extras' 'qt5-svg' 'freetype2' 'fribidi' 'harfbuzz'
-  'fontconfig' 'libxml2' 'gnutls' 'libplacebo'
+  'a52dec'
+  "abseil-cpp>=$_abseilcppver"
+  'aribb24'
+  'bash'
+  'cairo'
+  'dbus'
+  'faad2'
+  "ffmpeg>=6"
+  'fontconfig'
+  'freetype2'
+  'fribidi'
+  'gcc-libs'
+  'gdk-pixbuf2'
+  'glib2'
+  'glibc'
+  'gnutls'
+  'harfbuzz'
+  'hicolor-icon-theme'
+  'libarchive'
+  'libdca'
+  'libdvbpsi'
+  'libglvnd'
+  'libidn'
+  'libmad'
+  'libmatroska'
+  'libmpcdec'
+  'libmpeg2'
+  'libproxy'
+  'libsecret'
+  'libtar'
   "libupnp>=$_libupnpver"
+  # 'libva' Non-functional in VLC 3 if FFmpeg 5 or later, only VLC 4 supports it
+  'libx11'
+  'libxcb'
+  'libxinerama'
+  'libxml2'
+  'libxpm'
+  'luajit'
+  'qt5-base'
+  'qt5-svg'
+  'qt5-x11extras'
+  "taglib>=$_taglibver"
+  'wayland'
+  'xcb-util-keysyms'
+  'zlib'
 )
 makedepends=(
-  'gst-plugins-base-libs' "live-media>=$_livemedia" 'libnotify' 'libbluray'
-  'libavc1394' 'libcaca' 'gtk3'
-  'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'systemd-libs'
-  'libmtp' 'libdvdcss' 'smbclient'
-  'vcdimager' 'libssh2' 'mesa' 'libnfs' "mpg123>=$_mpg123ver"
-  'libdvdread' 'libdvdnav' 'libogg' 'libshout' 'libmodplug'
-  'libvorbis' 'speex' 'opus' 'libtheora' 'libpng' 'libjpeg-turbo'
-  'zvbi' 'libass' 'libkate' 'libtiger'
-  'sdl_image' 'libpulse' 'alsa-lib' 'jack' 'libsamplerate' 'libsoxr'
-  'lirc' 'libgoom2' 'projectm' 'chromaprint'
-  'aribb25' 'pcsclite' 'lua51' 'wayland-protocols'
-  "aom>=$_aomver" "dav1d>=$_dav1dver" "flac>=$_flacver"
+  'aalib'
+  'alsa-lib'
+  "aom>=$_aomver"
+  'aribb25'
+  'avahi'
+  'chromaprint'
+  "dav1d>=$_dav1dver"
+  "flac>=$_flacver"
+  'fluidsynth'
+  'gst-plugins-base-libs'
+  'gtk3'
+  'jack'
+  'libass'
+  'libavc1394'
+  'libbluray'
+  'libcaca'
   "libdc1394>=$_libdc1394ver"
-  "libmicrodns>=$_libmicrodnsver" "libvpx>=$_libvpxver"
-  "x264>=$_x264ver" "x265>=$_x265ver" "protobuf>=$_protobufver"
-  "srt>=$_srtver" fluidsynth
+  'libdvdcss'
+  'libdvdnav'
+  'libdvdread'
+  'libgme'
+  'libgoom2'
+  'libjpeg-turbo'
+  'libkate'
+  "libmicrodns>=$_libmicrodnsver"
+  'libmodplug'
+  'libmtp'
+  'libnotify'
+  'libnfs'
+  'libogg'
+  'libpng'
+  'libpulse'
+  'librsvg'
+  'libsamplerate'
+  'libshout'
+  'libsoxr'
+  'libssh2'
+  'libtheora'
+  'libtiger'
+  'libvorbis'
+  "libvpx>=$_libvpxver"
+  'lirc'
+  "live-media>=$_livemedia"
+  'mesa'
+  "mpg123>=$_mpg123ver"
+  'opus'
+  'pcsclite'
+  'projectm'
+  "protobuf>=$_protobufver"
+  'sdl_image'
+  'smbclient'
+  'speex'
+  "srt>=$_srtver"
+  'systemd-libs'
+  'twolame'
+  'vcdimager'
+  'wayland-protocols'
+  "x264>=$_x264ver"
+  "x265>=$_x265ver"
+  'xosd'
+  'zvbi'
+  'lua51'
 )
 optdepends=(
-  'avahi: service discovery using bonjour protocol'
-  'gst-plugins-base-libs: for libgst plugins'
-  'dav1d: dav1d AV1 decoder'
-  'libdvdcss: decoding encrypted DVDs'
-  'libavc1394: devices using the 1394ta AV/C'
-  'kwallet: kwallet keystore'
-  #'libva-intel-driver: video backend intel'
-  'libbluray: Blu-Ray video input'
-  'twolame: TwoLAME mpeg2 encoder plugin'
-  'libgme: Game Music Emu plugin'
-  'vcdimager: navigate VCD with libvcdinfo'
-  'libmtp: MTP devices discovery'
-  'systemd-libs: udev services discovery'
-  'smbclient: SMB access plugin'
-  'libcdio: audio CD playback'
-  'fluidsynth: FluidSynth based MIDI playback plugin'
-  'gnu-free-fonts: subtitle font'
-  'ttf-dejavu: subtitle font'
-  'libssh2: sftp access'
-  'libnfs: NFS access'
-  "mpg123>=$_mpg123ver: mpg123 codec"
-  'lua51-socket: http interface'
-  'libdvdread: DVD input module'
-  'libdvdnav: DVD with navigation input module'
-  'libogg: Ogg and OggSpots codec'
-  'libshout: shoutcast/icecast output plugin'
-  'libmodplug: MOD output plugin'
-  'libvorbis: Vorbis decoder/encoder'
-  'speex: Speex codec'
-  'opus: opus codec'
-  'libtheora: theora codec'
-  'libpng: PNG support'
-  'libjpeg-turbo: JPEG support'
-  'librsvg: SVG plugin'
-  'zvbi: VBI/Teletext/webcam/v4l2 capture/decoding'
-  'libass: Subtitle support'
-  'libkate: Kate codec'
-  'libtiger: Tiger rendering for Kate streams'
-  'sdl_image: SDL image support'
   'aalib: ASCII art video output'
-  'libcaca: colored ASCII art video output'
-  'libpulse: PulseAudio audio output'
   'alsa-lib: ALSA audio output'
-  'jack: jack audio server'
-  'libsamplerate: audio Resampler'
-  'libsoxr: SoX audio Resampler'
-  'chromaprint: Chromaprint audio fingerprinter'
-  'lirc: lirc control'
-  'libgoom2: Goom visualization'
-  'projectm: ProjectM visualisation'
-  'ncurses: ncurses interface'
-  'libnotify: notification plugin'
-  'gtk3: notification plugin'
-  'aribb25: aribcam support'
-  'pcsclite: aribcam support'
-  'live-media: streaming over RTSP'
   "aom>=$_aomver: AOM AV1 codec"
+  'aribb25: aribcam support'
+  'avahi: service discovery using bonjour protocol'
+  'chromaprint: Chromaprint audio fingerprinter'
   "dav1d>=$_dav1dver: dav1d AV1 decoder"
   "flac>=$_flacver: Free Lossless Audio Codec plugin"
-  "protobuf>=$_protobufver: chromecast streaming"
+  'fluidsynth: FluidSynth based MIDI playback plugin'
+  'gnu-free-fonts: subtitle font'
+  'gst-plugins-base-libs: for libgst plugins'
+  'gstreamer: for libgst plugins'
+  'gtk3: notification plugin'
+  'jack: jack audio server'
+  'kwallet: kwallet keystore'
+  'libass: Subtitle support'
+  'libavc1394: devices using the 1394ta AV/C'
+  'libbluray: Blu-Ray video input'
+  'libcaca: colored ASCII art video output'
+  'libcdio: audio CD playback'
+  "libdc1394>=$_libdc1394ver: IEEE 1394 access plugin"
+  'libdvdcss: decoding encrypted DVDs'
+  'libdvdnav: DVD with navigation input module'
+  'libdvdread: DVD input module'
+  'libgme: Game Music Emu plugin'
+  'libgoom2: Goom visualization'
+  'libjpeg-turbo: JPEG support'
+  'libkate: Kate codec'
+  'libmodplug: MOD output plugin'
   "libmicrodns>=$_libmicrodnsver: mDNS services discovery (chromecast etc)"
+  'libmtp: MTP devices discovery'
+  'libnfs: NFS access'
+  'libnotify: notification plugin'
+  'libogg: Ogg and OggSpots codec'
+  'libpng: PNG support'
+  'libpulse: PulseAudio audio output'
+  'libraw1394: IEEE 1394 access plugin'
+  'librsvg: SVG plugin'
+  'libsamplerate: audio Resampler'
+  'libshout: shoutcast/icecast output plugin'
+  'libsoxr: SoX audio Resampler'
+  'libssh2: sftp access'
+  'libtheora: theora codec'
+  'libtiger: Tiger rendering for Kate streams'
+  #'libva-intel-driver: video backend intel'
+  'libvorbis: Vorbis decoder/encoder'
   "libvpx>=$_libvpxver: VP8 and VP9 codec"
+  'lirc: lirc control'
+  'live-media: streaming over RTSP'
+  'lua51-socket: http interface'
+  "mpg123>=$_mpg123ver: mpg123 codec"
+  'ncurses: ncurses interface'
+  'opus: opus codec'
+  'pcsclite: aribcam support'
+  'projectm: ProjectM visualisation'
+  "protobuf>=$_protobufver: chromecast streaming"
+  'sdl12-compat: SDL image support'
+  'sdl_image: SDL image support'
+  'smbclient: SMB access plugin'
+  'speex: Speex codec'
+  'speexdsp: Speex codec'
+  "srt>=$_srtver: SRT input/output plugin"
+  'systemd-libs: udev services discovery'
+  'ttf-dejavu: subtitle font'
+  'twolame: TwoLAME mpeg2 encoder plugin'
+  'vcdimager: navigate VCD with libvcdinfo'
   "x264>=$_x264ver: H264 encoding"
   "x265>=$_x265ver: HEVC/H.265 encoder"
-  "srt>=$_srtver: SRT input/output plugin"
-  "libdc1394>=$_libdc1394ver: IEEE 1394 access plugin"
+  'zvbi: VBI/Teletext/webcam/v4l2 capture/decoding'
 )
 _name=vlc
 conflicts=("${_name}" 'vlc-dev' 'vlc-plugin' 'vlc-stable-git')

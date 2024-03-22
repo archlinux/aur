@@ -1,170 +1,186 @@
 pkgbase = vlc-luajit
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility
 	pkgver = 3.0.20
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.videolan.org/vlc/
 	arch = x86_64
 	arch = aarch64
 	license = GPL-2.0-or-later
 	license = LGPL-2.1-or-later
-	makedepends = gst-plugins-base-libs
-	makedepends = live-media>=2023.01.19
-	makedepends = libnotify
-	makedepends = libbluray
-	makedepends = libavc1394
-	makedepends = libcaca
-	makedepends = gtk3
-	makedepends = librsvg
-	makedepends = libgme
-	makedepends = xosd
-	makedepends = twolame
 	makedepends = aalib
-	makedepends = avahi
-	makedepends = systemd-libs
-	makedepends = libmtp
-	makedepends = libdvdcss
-	makedepends = smbclient
-	makedepends = vcdimager
-	makedepends = libssh2
-	makedepends = mesa
-	makedepends = libnfs
-	makedepends = mpg123>=1.32.2
-	makedepends = libdvdread
-	makedepends = libdvdnav
-	makedepends = libogg
-	makedepends = libshout
-	makedepends = libmodplug
-	makedepends = libvorbis
-	makedepends = speex
-	makedepends = opus
-	makedepends = libtheora
-	makedepends = libpng
-	makedepends = libjpeg-turbo
-	makedepends = zvbi
-	makedepends = libass
-	makedepends = libkate
-	makedepends = libtiger
-	makedepends = sdl_image
-	makedepends = libpulse
 	makedepends = alsa-lib
-	makedepends = jack
-	makedepends = libsamplerate
-	makedepends = libsoxr
-	makedepends = lirc
-	makedepends = libgoom2
-	makedepends = projectm
-	makedepends = chromaprint
-	makedepends = aribb25
-	makedepends = pcsclite
-	makedepends = lua51
-	makedepends = wayland-protocols
 	makedepends = aom>=3
+	makedepends = aribb25
+	makedepends = avahi
+	makedepends = chromaprint
 	makedepends = dav1d>=1.3.0
 	makedepends = flac>=1.4.0
+	makedepends = fluidsynth
+	makedepends = gst-plugins-base-libs
+	makedepends = gtk3
+	makedepends = jack
+	makedepends = libass
+	makedepends = libavc1394
+	makedepends = libbluray
+	makedepends = libcaca
 	makedepends = libdc1394>=2.2.7
+	makedepends = libdvdcss
+	makedepends = libdvdnav
+	makedepends = libdvdread
+	makedepends = libgme
+	makedepends = libgoom2
+	makedepends = libjpeg-turbo
+	makedepends = libkate
 	makedepends = libmicrodns>=0.2
+	makedepends = libmodplug
+	makedepends = libmtp
+	makedepends = libnotify
+	makedepends = libnfs
+	makedepends = libogg
+	makedepends = libpng
+	makedepends = libpulse
+	makedepends = librsvg
+	makedepends = libsamplerate
+	makedepends = libshout
+	makedepends = libsoxr
+	makedepends = libssh2
+	makedepends = libtheora
+	makedepends = libtiger
+	makedepends = libvorbis
 	makedepends = libvpx>=1.14
+	makedepends = lirc
+	makedepends = live-media>=2023.01.19
+	makedepends = mesa
+	makedepends = mpg123>=1.32.2
+	makedepends = opus
+	makedepends = pcsclite
+	makedepends = projectm
+	makedepends = protobuf>=25
+	makedepends = sdl_image
+	makedepends = smbclient
+	makedepends = speex
+	makedepends = srt>=1.5
+	makedepends = systemd-libs
+	makedepends = twolame
+	makedepends = vcdimager
+	makedepends = wayland-protocols
 	makedepends = x264>=0.164
 	makedepends = x265>=3.5
-	makedepends = protobuf>=25
-	makedepends = srt>=1.5
-	makedepends = fluidsynth
+	makedepends = xosd
+	makedepends = zvbi
+	makedepends = lua51
 	depends = a52dec
+	depends = abseil-cpp>=20240116
 	depends = aribb24
-	depends = libdvbpsi
-	depends = libxpm
-	depends = libdca
-	depends = libproxy
-	depends = luajit
-	depends = libidn
-	depends = libmatroska
-	depends = taglib>=2
-	depends = libmpcdec
+	depends = bash
+	depends = cairo
+	depends = dbus
 	depends = faad2
-	depends = libmad
-	depends = libmpeg2
-	depends = xcb-util-keysyms
-	depends = libtar
-	depends = libxinerama
-	depends = libsecret
-	depends = libarchive
-	depends = qt5-base
 	depends = ffmpeg>=6
-	depends = qt5-x11extras
-	depends = qt5-svg
+	depends = fontconfig
 	depends = freetype2
 	depends = fribidi
-	depends = harfbuzz
-	depends = fontconfig
-	depends = libxml2
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
 	depends = gnutls
-	depends = libplacebo
+	depends = harfbuzz
+	depends = hicolor-icon-theme
+	depends = libarchive
+	depends = libdca
+	depends = libdvbpsi
+	depends = libglvnd
+	depends = libidn
+	depends = libmad
+	depends = libmatroska
+	depends = libmpcdec
+	depends = libmpeg2
+	depends = libproxy
+	depends = libsecret
+	depends = libtar
 	depends = libupnp>=1.14
-	optdepends = avahi: service discovery using bonjour protocol
-	optdepends = gst-plugins-base-libs: for libgst plugins
-	optdepends = dav1d: dav1d AV1 decoder
-	optdepends = libdvdcss: decoding encrypted DVDs
-	optdepends = libavc1394: devices using the 1394ta AV/C
-	optdepends = kwallet: kwallet keystore
-	optdepends = libbluray: Blu-Ray video input
-	optdepends = twolame: TwoLAME mpeg2 encoder plugin
-	optdepends = libgme: Game Music Emu plugin
-	optdepends = vcdimager: navigate VCD with libvcdinfo
-	optdepends = libmtp: MTP devices discovery
-	optdepends = systemd-libs: udev services discovery
-	optdepends = smbclient: SMB access plugin
-	optdepends = libcdio: audio CD playback
-	optdepends = fluidsynth: FluidSynth based MIDI playback plugin
-	optdepends = gnu-free-fonts: subtitle font
-	optdepends = ttf-dejavu: subtitle font
-	optdepends = libssh2: sftp access
-	optdepends = libnfs: NFS access
-	optdepends = mpg123>=1.32.2: mpg123 codec
-	optdepends = lua51-socket: http interface
-	optdepends = libdvdread: DVD input module
-	optdepends = libdvdnav: DVD with navigation input module
-	optdepends = libogg: Ogg and OggSpots codec
-	optdepends = libshout: shoutcast/icecast output plugin
-	optdepends = libmodplug: MOD output plugin
-	optdepends = libvorbis: Vorbis decoder/encoder
-	optdepends = speex: Speex codec
-	optdepends = opus: opus codec
-	optdepends = libtheora: theora codec
-	optdepends = libpng: PNG support
-	optdepends = libjpeg-turbo: JPEG support
-	optdepends = librsvg: SVG plugin
-	optdepends = zvbi: VBI/Teletext/webcam/v4l2 capture/decoding
-	optdepends = libass: Subtitle support
-	optdepends = libkate: Kate codec
-	optdepends = libtiger: Tiger rendering for Kate streams
-	optdepends = sdl_image: SDL image support
+	depends = libx11
+	depends = libxcb
+	depends = libxinerama
+	depends = libxml2
+	depends = libxpm
+	depends = luajit
+	depends = qt5-base
+	depends = qt5-svg
+	depends = qt5-x11extras
+	depends = taglib>=2
+	depends = wayland
+	depends = xcb-util-keysyms
+	depends = zlib
 	optdepends = aalib: ASCII art video output
-	optdepends = libcaca: colored ASCII art video output
-	optdepends = libpulse: PulseAudio audio output
 	optdepends = alsa-lib: ALSA audio output
-	optdepends = jack: jack audio server
-	optdepends = libsamplerate: audio Resampler
-	optdepends = libsoxr: SoX audio Resampler
-	optdepends = chromaprint: Chromaprint audio fingerprinter
-	optdepends = lirc: lirc control
-	optdepends = libgoom2: Goom visualization
-	optdepends = projectm: ProjectM visualisation
-	optdepends = ncurses: ncurses interface
-	optdepends = libnotify: notification plugin
-	optdepends = gtk3: notification plugin
-	optdepends = aribb25: aribcam support
-	optdepends = pcsclite: aribcam support
-	optdepends = live-media: streaming over RTSP
 	optdepends = aom>=3: AOM AV1 codec
+	optdepends = aribb25: aribcam support
+	optdepends = avahi: service discovery using bonjour protocol
+	optdepends = chromaprint: Chromaprint audio fingerprinter
 	optdepends = dav1d>=1.3.0: dav1d AV1 decoder
 	optdepends = flac>=1.4.0: Free Lossless Audio Codec plugin
-	optdepends = protobuf>=25: chromecast streaming
+	optdepends = fluidsynth: FluidSynth based MIDI playback plugin
+	optdepends = gnu-free-fonts: subtitle font
+	optdepends = gst-plugins-base-libs: for libgst plugins
+	optdepends = gstreamer: for libgst plugins
+	optdepends = gtk3: notification plugin
+	optdepends = jack: jack audio server
+	optdepends = kwallet: kwallet keystore
+	optdepends = libass: Subtitle support
+	optdepends = libavc1394: devices using the 1394ta AV/C
+	optdepends = libbluray: Blu-Ray video input
+	optdepends = libcaca: colored ASCII art video output
+	optdepends = libcdio: audio CD playback
+	optdepends = libdc1394>=2.2.7: IEEE 1394 access plugin
+	optdepends = libdvdcss: decoding encrypted DVDs
+	optdepends = libdvdnav: DVD with navigation input module
+	optdepends = libdvdread: DVD input module
+	optdepends = libgme: Game Music Emu plugin
+	optdepends = libgoom2: Goom visualization
+	optdepends = libjpeg-turbo: JPEG support
+	optdepends = libkate: Kate codec
+	optdepends = libmodplug: MOD output plugin
 	optdepends = libmicrodns>=0.2: mDNS services discovery (chromecast etc)
+	optdepends = libmtp: MTP devices discovery
+	optdepends = libnfs: NFS access
+	optdepends = libnotify: notification plugin
+	optdepends = libogg: Ogg and OggSpots codec
+	optdepends = libpng: PNG support
+	optdepends = libpulse: PulseAudio audio output
+	optdepends = libraw1394: IEEE 1394 access plugin
+	optdepends = librsvg: SVG plugin
+	optdepends = libsamplerate: audio Resampler
+	optdepends = libshout: shoutcast/icecast output plugin
+	optdepends = libsoxr: SoX audio Resampler
+	optdepends = libssh2: sftp access
+	optdepends = libtheora: theora codec
+	optdepends = libtiger: Tiger rendering for Kate streams
+	optdepends = libvorbis: Vorbis decoder/encoder
 	optdepends = libvpx>=1.14: VP8 and VP9 codec
+	optdepends = lirc: lirc control
+	optdepends = live-media: streaming over RTSP
+	optdepends = lua51-socket: http interface
+	optdepends = mpg123>=1.32.2: mpg123 codec
+	optdepends = ncurses: ncurses interface
+	optdepends = opus: opus codec
+	optdepends = pcsclite: aribcam support
+	optdepends = projectm: ProjectM visualisation
+	optdepends = protobuf>=25: chromecast streaming
+	optdepends = sdl12-compat: SDL image support
+	optdepends = sdl_image: SDL image support
+	optdepends = smbclient: SMB access plugin
+	optdepends = speex: Speex codec
+	optdepends = speexdsp: Speex codec
+	optdepends = srt>=1.5: SRT input/output plugin
+	optdepends = systemd-libs: udev services discovery
+	optdepends = ttf-dejavu: subtitle font
+	optdepends = twolame: TwoLAME mpeg2 encoder plugin
+	optdepends = vcdimager: navigate VCD with libvcdinfo
 	optdepends = x264>=0.164: H264 encoding
 	optdepends = x265>=3.5: HEVC/H.265 encoder
-	optdepends = srt>=1.5: SRT input/output plugin
-	optdepends = libdc1394>=2.2.7: IEEE 1394 access plugin
+	optdepends = zvbi: VBI/Teletext/webcam/v4l2 capture/decoding
 	provides = vlc=3.0.20
 	conflicts = vlc
 	conflicts = vlc-dev
