@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=SPIAT
-_pkgver=1.4.1
+_pkgver=1.4.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Spatial Image Analysis of Tissues"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-apcluster
   r-dbscan
@@ -53,12 +53,12 @@ optdepends=(
   r-umap
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('45342ea9b5cbfbc01e38d6c7b7866852')
-sha256sums=('2f583d8f85a5bb2c5c681c43b23eb7177c9df82b41317a2d0f76464eff2e9d90')
+md5sums=('cdd75c21f47e1cfe43a806043338ff1c')
+b2sums=('e36dd728940ca18cac123a6d9c906ca2ff8d9ec45bc7c07265c3d930db629e05eff24fd860aca0de73c9a23b658f107274ea187dcc08b3c9d79cddb7697323db')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
