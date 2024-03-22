@@ -1,17 +1,17 @@
 pkgbase = panwriter-bin
 	pkgdesc = Markdown editor with pandoc integration and paginated preview.
 	pkgver = 0.8.6
-	pkgrel = 5
+	pkgrel = 6
 	url = https://panwriter.com/
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = fuse2
-	depends = electron26
+	depends = electron26-bin
 	provides = panwriter=0.8.6
 	conflicts = panwriter
 	source = panwriter-0.8.6.AppImage::https://github.com/mb21/panwriter/releases/download/v0.8.6/PanWriter-0.8.6.AppImage
 	source = panwriter.sh
 	sha256sums = 263027d6093ffb9bbac7ca707790b191c1057d35377a448c991735fe48dbc39a
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = panwriter-bin
