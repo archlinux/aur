@@ -18,7 +18,7 @@ package() {
 
     # copy everything matching this pattern
     cd "${srcdir}"
-    for ttf in $(ls | grep "GohuFont[^\w\.]*\.ttf")
+    for ttf in $(ls | grep "GohuFont[^\s\.]*\.ttf")
     do
         install -m 644 "${ttf}" "${_installation_dir}/${ttf}"
     done
