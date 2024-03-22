@@ -3,7 +3,7 @@ pkgname=streamdock-bin
 _pkgname=StreamDock
 pkgver=2.0.1
 _electronversion=27
-pkgrel=3
+pkgrel=4
 pkgdesc="Streaming service viewer."
 arch=('x86_64')
 url="https://github.com/jtvberg/StreamDock"
@@ -11,7 +11,6 @@ license=("MIT")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'hicolor-icon-theme'
     'alsa-lib'
     'nspr'
     'gtk3'
