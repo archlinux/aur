@@ -1,4 +1,4 @@
-pkg
-src
-webhookd
+/pkg
+/src
+/webhookd
 *.pkg.tar.zst

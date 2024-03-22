@@ -1,4 +1,4 @@
-# Maintainer: Evine Deng <evinedeng@hotmail.com>
+# Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="webhookd"
 pkgver=1.19.0
@@ -15,15 +15,6 @@ source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
 sha256sums=('SKIP'
             'b24d5dfc84bf7b1cceea963b96de3085b6ed079c8f99c56225d8125c791d3543'
             '714e9e219b51af192208500b6936f748ad86a5ec79d5e5683cab1e81fbeae09c')
-
-prepare() {
-    cd "${pkgname}"
-
-    echo >> "etc/default/${pkgname}.env"
-    echo "# You can omit the script extension. If you do, webhookd will search by default for a .sh file. " >> "etc/default/${pkgname}.env"
-    echo "# You can change the default extension using the WHD_HOOK_DEFAULT_EXT environment variable. " >> "etc/default/${pkgname}.env"
-    echo "#WHD_HOOK_DEFAULT_EXT=\"\"" >> "etc/default/${pkgname}.env"
-}
 
 build() {
     cd "${pkgname}"
