@@ -22,18 +22,26 @@
 : ${_build_pgo_reuse:=true}
 : ${_build_pgo_xvfb:=true}
 
-if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ] || [ "${_build_prepatched::1}" != "t" ] ; then
+# set to download only one language
+: ${_lang:=}
+
+if [ "${_build_prepatched::1}" != "t" ] || [ -n "$_pkgver" ] ; then
   : ${_autoupdate:=false}
-else
-  : ${_autoupdate:=true}
 fi
+
+if [ -n "$_srcinfo" ] ; then
+  : ${_autoupdate:=false}
+  : ${_lang:=en_US}
+fi
+
+: ${_autoupdate:=true}
 
 unset _pkgtype
 
 ## basic info
 _pkgname="icecat"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=115.9.0
+pkgver=115.9.1
 pkgrel=1
 pkgdesc="GNU version of the Firefox ESR browser"
 license=('MPL-2.0')
@@ -143,6 +151,7 @@ _main_package() {
     noextract=("firefox-${pkgver}esr.source.tar.xz")
 
     _commit=d1dab742d12e2ffacae70733b14016287fc46613
+    _ffsum=23657808bfefb8ba33a191645d4df776d5b8d99d453edde32b785d2a8846f929
     _pkgsrc="$_pkgname-$pkgver"
     _pkgsrc_gnuzilla="gnuzilla-$_commit"
     _pkgext="tar.gz"
@@ -152,7 +161,7 @@ _main_package() {
     )
     sha256sums+=(
       '3d0bf1af544a195f7a8c1f165bd890dba472ec3d33a074d67db09a499b296e69'
-      'db3b3371c5e6636de73798635531df137b17c5b78bdee03810930b29e8212803'
+      "$_ffsum"
       'SKIP'
     )
 
@@ -167,7 +176,10 @@ _main_package() {
       ta te tg th tl tr trs uk ur uz vi xh zh-CN zh-TW
     )
 
+    [ -n "$_lang" ] && _languages=("$_lang")
+
     for _locale in "${_languages[@]}"; do
+      [ "$_locale" = "en-US" ] && continue
       source+=("l10n-central-$pkgver-$pkgrel-$_locale.zip"::"https://hg.mozilla.org/l10n-central/$_locale/archive/tip.zip")
       sha256sums+=('SKIP')
       noextract+=("l10n-central-$pkgver-$pkgrel-$_locale.zip")
@@ -217,8 +229,20 @@ _make_icecat() {
   sed -e '/rm -rf output/d' -i makeicecat
   sed -e 's/wget -N/wget -nv -Nc/g' -i makeicecat
 
+  # update firefox version
+  sed -E \
+    -e '/^readonly FFMAJOR/s&(FFMAJOR)=.*$&\1='"$(cut -d'.' -f1 <<< "$pkgver")"'&' \
+    -e '/^readonly FFMINOR/s&(FFMINOR)=.*$&\1='"$(cut -d'.' -f2 <<< "$pkgver")"'&' \
+    -e '/^readonly FFSUB/s&(FFSUB)=.*$&\1='"$(cut -d'.' -f3 <<< "$pkgver")"'&' \
+    -e '/^readonly FFBUILD/s&(FFBUILD)=.*$&\1='"$(cut -d'.' -f1 <<< "$pkgrel")"'&' \
+    -e '/^readonly SOURCEBALL_CHECKSUM/s&(SOURCEBALL_CHECKSUM)=.*$&\1='"${_ffsum}"'&' \
+    -i makeicecat
+
   # don't make source tarball
   sed '/^finalize_sourceball$/d' -i makeicecat
+
+  # don't redownload languages
+  sed -E -e '/DEVEL/s&^(\s*)!.*continue$&\1continue&' -i makeicecat
 
   # produce icecat sources
   bash makeicecat
