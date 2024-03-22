@@ -1,17 +1,16 @@
 pkgbase = sengi-bin
 	pkgdesc = Mastodon & Pleroma Multi-account Desktop Client
 	pkgver = 1.8.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/NicolasConstant/sengi
 	arch = x86_64
 	license = AGPL3
 	depends = electron23
-	depends = hicolor-icon-theme
 	provides = sengi=1.8.0
 	conflicts = sengi
 	source = sengi1.8.0.deb::https://github.com/NicolasConstant/sengi-electron/releases/download/v1.8.0/Sengi-1.8.0-linux.deb
 	source = sengi.sh
 	sha256sums = 0b6a43409861217dd11a76e34de174715adaaac1c3de3927d2f6bf08c5b81a4e
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = sengi-bin
