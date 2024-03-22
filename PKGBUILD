@@ -1,4 +1,4 @@
-# Maintainer: Evine Deng <evinedeng@hotmail.com>
+# Maintainer: devome <evinedeng@hotmail.com>
 
 _pkgname="tinyMediaManager"
 pkgname="${_pkgname,,}-bin"
