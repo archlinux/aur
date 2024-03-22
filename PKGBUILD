@@ -1,8 +1,8 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: Mike Boiko <mike@boiko.ca>
 
 pkgname=mani
 pkgver=0.24.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A CLI tool that helps you manage multiple repositories'
 arch=('x86_64')
 url='https://manicli.com'
@@ -16,7 +16,6 @@ b2sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-
   git describe --tags | sed 's/^v//'
 }
 
@@ -28,46 +27,16 @@ prepare() {
 
   # download dependencies
   go mod download
-}
 
-build() {
-  cd "$pkgname"
-
-  # set Go flags
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  local build_time="$(date -d@"$SOURCE_DATE_EPOCH" +%Y%m%d-%H:%M:%S)"
-
-  # build
-  go build -v \
-    -trimpath \
-    -buildmode=pie \
-    -mod=readonly \
-    -modcacherw \
-    -ldflags "-linkmode external -extldflags ${LDFLAGS} \
-    -X github.com/alajmo/mani/cmd.version=$pkgver \
-    -X github.com/alajmo/mani/cmd.commit=$_commit \
-    -X github.com/alajmo/mani/cmd.date=$build_time" \
-    -o build \
-    .
-
-  # create shell completions
-  for shell in bash zsh fish; do
-    ./build/mani completion "$shell" > "build/completion.$shell"
-  done
+  # run make build
+  make build
 }
 
 package() {
   cd "$pkgname"
 
   # binary
-  install -vDm755 -t "$pkgdir/usr/bin" build/mani
-
-  # shell completions
-  install -vDm644 build/completion.bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-  install -vDm644 build/completion.fish "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
-  install -vDm644 build/completion.zsh "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+  install -vDm755 -t "$pkgdir/usr/bin" dist/mani
 
   # documentation
   install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md

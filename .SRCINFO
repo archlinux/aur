@@ -1,7 +1,7 @@
 pkgbase = mani
 	pkgdesc = A CLI tool that helps you manage multiple repositories
 	pkgver = 0.24.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://manicli.com
 	arch = x86_64
 	license = MIT
