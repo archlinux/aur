@@ -2,7 +2,7 @@
 pkgname=acodec-bin
 _pkgname=ACodec
 pkgver=2.5.4
-pkgrel=5
+pkgrel=6
 pkgdesc="Encoder & decoder for various algorithms with graphical user interface."
 arch=(
     "aarch64"
@@ -16,7 +16,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'java-runtime'
-    'hicolor-icon-theme'
 )
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-gtk-linux-armhf-bin.tar.gz")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-gtk-linux-aarch64-bin.tar.gz")
