@@ -1,21 +1,19 @@
 pkgbase = godmode
 	pkgdesc = AI Chat Browser: Fast, Full webapp access to ChatGPT / Claude / Bard / Bing / Llama2!
 	pkgver = 1.0.0_beta.10
-	pkgrel = 4
+	pkgrel = 5
 	url = https://smol.ai/
-	arch = aarch64
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = npm
 	makedepends = gendesk
 	makedepends = nvm
 	makedepends = git
-	depends = electron26
-	depends = hicolor-icon-theme
+	depends = electron26-bin
 	conflicts = godmode
 	source = godmode.git::git+https://github.com/smol-ai/GodMode.git#tag=v1.0.0-beta.10
 	source = godmode.sh
-	sha256sums = SKIP
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = 16cf9940c7415642a76b2cf74b48cf7dfdc5c5b723e26ee18d9fcb8bf0b00d7d
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = godmode
