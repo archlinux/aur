@@ -1,7 +1,7 @@
 pkgbase = losslesscut-bin
 	pkgdesc = Crossplatform GUI tool for lossless trimming/cutting of video/audio files
 	pkgver = 3.59.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mifi/lossless-cut
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,8 @@ pkgbase = losslesscut-bin
 	depends = ffmpeg
 	depends = gtk3
 	depends = libxss
+	provides = losslesscut
+	conflicts = losslesscut
 	source_x86_64 = losslesscut-bin-3.59.1.tar.bz2::https://github.com/mifi/lossless-cut/releases/download/v3.59.1/LosslessCut-linux-x64.tar.bz2
 	source_x86_64 = losslesscut.desktop
 	source_x86_64 = LICENSE
