@@ -1,7 +1,7 @@
 pkgbase = hotspot
 	pkgdesc = The Linux perf GUI for performance analysis
 	pkgver = 20240312
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KDAB/hotspot
 	arch = x86_64
 	license = GPL-2.0-only
@@ -10,21 +10,23 @@ pkgbase = hotspot
 	makedepends = extra-cmake-modules
 	makedepends = git
 	depends = elfutils
-	depends = kconfig5
-	depends = kconfigwidgets5
-	depends = kcoreaddons5
-	depends = kddockwidgets
-	depends = ki18n5
-	depends = kio5
-	depends = kitemmodels5
-	depends = kitemviews5
-	depends = kparts5
+	depends = kconfig
+	depends = kconfigwidgets
+	depends = kcoreaddons
+	depends = kddockwidgets-qt6
+	depends = kgraphviewer
+	depends = ki18n
+	depends = kio
+	depends = kitemmodels
+	depends = kitemviews
+	depends = kparts
 	depends = libelf
 	depends = perf
-	depends = qt5-base>=5.15.0
+	depends = qt6-base
 	depends = rustc-demangle>=0.1.18-2
-	depends = solid5
-	depends = threadweaver5
+	depends = solid
+	depends = syntax-highlighting
+	depends = threadweaver
 	source = git+https://github.com/KDAB/hotspot#commit=61c5ad91765d5916d211742949878004d725ac51
 	source = git+https://github.com/KDAB/perfparser.git
 	source = git+https://github.com/koenpoppe/PrefixTickLabels

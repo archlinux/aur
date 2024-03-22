@@ -4,28 +4,31 @@
 pkgname=hotspot
 pkgver=20240312
 _commit=61c5ad91765d5916d211742949878004d725ac51
-pkgrel=1
+pkgrel=2
 pkgdesc="The Linux perf GUI for performance analysis"
 arch=('x86_64')
 url="https://github.com/KDAB/hotspot"
 license=('GPL-2.0-only')
 depends=(
     'elfutils'
-    'kconfig5'
-    'kconfigwidgets5'
-    'kcoreaddons5'
-    'kddockwidgets'
-    'ki18n5'
-    'kio5'
-    'kitemmodels5'
-    'kitemviews5'
-    'kparts5'
+    'kconfig'
+    'kconfigwidgets'
+    'kcoreaddons'
+    'kddockwidgets-qt6'
+    'kgraphviewer'
+    'ki18n'
+    'kio'
+    'kitemmodels'
+    'kitemviews'
+    'kparts'
     'libelf'
     'perf'
-    'qt5-base>=5.15.0'
+    # 'qcustomplot' # currently it doesn't build
+    'qt6-base'
     'rustc-demangle>=0.1.18-2'
-    'solid5'
-    'threadweaver5'
+    'solid'
+    'syntax-highlighting'
+    'threadweaver'
 )
 makedepends=('cmake>=3.16.0' 'desktop-file-utils' 'extra-cmake-modules' 'git')
 source=("git+$url#commit=$_commit"
@@ -50,7 +53,7 @@ prepare() {
 
 build() {
     cd $pkgname
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTING=off .
+    cmake -DBUILD_TESTING=off -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DQT6_BUILD=on .
     cmake --build .
 }
 
