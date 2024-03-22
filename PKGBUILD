@@ -9,7 +9,7 @@
 # Contributor: Wael Nasreddine <wael.nasreddine@gmail.com>
 
 pkgname=git-crypt-patched-git
-pkgver=0.7.0_2_g3349835
+pkgver=0.7.0_3_g6256625
 pkgrel=1
 _branch=master
 pkgdesc='Transparent file encryption in Git with patch for worktree'
@@ -22,9 +22,11 @@ makedepends=(libxslt)
 provides=("${pkgname%-patched-git}")
 conflicts=("${pkgname%-patched-git}")
 source=("git+https://github.com/AGWA/${pkgname%-patched-git}.git#branch=$_branch"
-        "https://github.com/AGWA/${pkgname%-patched-git}/pull/222.patch")
+        "https://github.com/AGWA/${pkgname%-patched-git}/pull/222.patch"
+        "https://github.com/AGWA/${pkgname%-patched-git}/pull/249.patch")
 sha256sums=('SKIP'
-            '69d1cfbefbdf00bb7035050a00b49b6204ae0fc1213bd26a703407597c5790f8')
+            '69d1cfbefbdf00bb7035050a00b49b6204ae0fc1213bd26a703407597c5790f8'
+            'b8dc43540bfd80993359890a6064ef51a932d9e677b3cd62527c6cff4bdfc1f4')
 
 pkgver() {
 	cd "${pkgname%-patched-git}"
@@ -33,6 +35,7 @@ pkgver() {
 prepare() {
 	cd "${pkgname%-patched-git}"
   git am ../222.patch
+  git am ../249.patch
 }
 
 build() {
