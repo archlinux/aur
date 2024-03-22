@@ -4,7 +4,7 @@
 pkgname=pup-git
 _gitname="pup"
 _gourl="github.com/ericchiang/pup"
-pkgver=0.4.0.r10.g681d7bb
+pkgver=0.4.0.r11.g5a57cf1
 pkgrel=1
 epoch=1
 pkgdesc="Parsing HTML at the command line"
@@ -24,7 +24,12 @@ pkgver() {
 
 build() {
     cd "$_gitname"
-    go build -trimpath -ldflags "-extldflags $LDFLAGS" .
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    go build .
 }
 
 package() {
