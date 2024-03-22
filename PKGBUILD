@@ -2,7 +2,7 @@
 
 pkgbase=jetbrains-gateway-eap
 pkgname=(jetbrains-gateway-eap jetbrains-gateway-eap-jre)
-pkgver=241.14024.15
+pkgver=241.14494.32
 pkgrel=1
 pkgdesc='An entry point to Remote Development, Early Access Program (EAP) build.'
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ options=('!strip')
 source=("https://download-cf.jetbrains.com/idea/gateway/JetBrainsGateway-${pkgver}.tar.gz"
         jetbrains-gateway-eap.desktop
         LICENSE)
-b2sums=('a63625e260da3e7252ecdd5be482b2cc04b50fb73654989c981c524d2446883b3a912bd94e7797ffcd3ce8972e523481a09b972b8b2107e4959279a45fad6bc0'
+b2sums=('2ca2c6ee057cbe283a3edacb2999935d6688e6acfbcdb660f448ce565a62293dd62edc63deab952bb8e7f8dc37c4766c5d98f39a8e9e0a9895986f6ea3264676'
         'e7ef51c2c64fce8d4990fcac68c901b63485ea8124db5aacf639c7cd0a00c82c2cf77cb1e3ea6b0ae79795dc4b6d34a32b694b9724ea65fd1665d608bc410a51'
         'dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77')
 
