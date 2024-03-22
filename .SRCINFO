@@ -19,7 +19,7 @@ pkgbase = graphs
 	depends = python-numexpr
 	depends = python-sympy
 	depends = gobject-introspection
-	provides = graphs
+	conflicts = graphs-git
 	source = https://gitlab.gnome.org/World/Graphs/-/archive/v1.7.2/Graphs-v1.7.2.tar.gz
 	sha256sums = 90616099e3224c1fae0bfbe23faedf635936f101bae2f75e28fc8d7c2a845638
 
