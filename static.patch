@@ -1,18 +1,19 @@
-diff '--color=auto' --unified --recursive --text wirehair.orig/wirehair/CMakeLists.txt wirehair/wirehair/CMakeLists.txt
---- wirehair.orig/wirehair/CMakeLists.txt	2024-03-20 17:37:07.195842112 -0400
-+++ wirehair/wirehair/CMakeLists.txt	2024-03-20 17:36:46.499196698 -0400
-@@ -78,7 +78,9 @@
+diff '--color=auto' --unified --recursive --text wirehair-orig/wirehair/CMakeLists.txt wirehair/wirehair/CMakeLists.txt
+--- wirehair-orig/wirehair/CMakeLists.txt	2024-03-22 00:12:05.190785375 -0400
++++ wirehair/wirehair/CMakeLists.txt	2024-03-22 00:12:26.947390753 -0400
+@@ -78,7 +78,10 @@
      set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} -march=native")
  endif()
  
 -add_library(wirehair ${LIB_SOURCE_FILES})
 +add_library(wirehair_static STATIC ${LIB_SOURCE_FILES})
 +set_target_properties(wirehair_static PROPERTIES OUTPUT_NAME wirehair)
++target_include_directories(wirehair_static PUBLIC ${PROJECT_SOURCE_DIR}/include)
 +add_library(wirehair SHARED ${LIB_SOURCE_FILES})
  set_target_properties(wirehair PROPERTIES VERSION 2)
  set_target_properties(wirehair PROPERTIES SOVERSION 2)
  target_include_directories(wirehair PUBLIC ${PROJECT_SOURCE_DIR}/include)
-@@ -108,5 +110,8 @@
+@@ -108,5 +111,8 @@
      ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
      LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
      PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
@@ -21,4 +22,3 @@ diff '--color=auto' --unified --recursive --text wirehair.orig/wirehair/CMakeLis
 +	LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
  install(DIRECTORY include DESTINATION ${CMAKE_INSTALL_PREFIX})
  install(DIRECTORY python DESTINATION ${CMAKE_INSTALL_PREFIX})
-Only in wirehair/wirehair: CMakeLists.txt.rej

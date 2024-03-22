@@ -1,7 +1,7 @@
 pkgbase = wirehair-git
 	pkgdesc = O(N) Fountain Code for Large Data
 	pkgver = r1.557c00c
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/catid/wirehair
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,6 @@ pkgbase = wirehair-git
 	source = git+https://github.com/catid/wirehair.git
 	source = static.patch
 	sha256sums = SKIP
-	sha256sums = 0518aaea558d351ca5be53ab534577f5503ddb44326b961af21b90c7e7207c4d
+	sha256sums = 54da02be64bbab9eaa1f93f0b91c3cb27f3fb87a5838fe115b40ec0e0918ad86
 
 pkgname = wirehair-git
