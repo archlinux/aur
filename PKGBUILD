@@ -3,7 +3,7 @@ pkgname=polar-bin
 _pkgname=Polar
 pkgver=2.2.0
 _electronversion=13
-pkgrel=1
+pkgrel=2
 pkgdesc="One-click Bitcoin Lightning networks for local app development & testing"
 arch=("x86_64")
 url="https://lightningpolar.com/"
@@ -12,8 +12,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
-    'hicolor-icon-theme'
+    "electron${_electronversion}-bin"
     'docker'
     'docker-compose'
 )
@@ -24,11 +23,12 @@ source=(
 )
 sha256sums=('d7065df8c171fc6b6231dc928bc3dbff62c243417e402fd2d4645a4b453868db'
             '971e947b52af09847d493b326953f2cbc91669441eab0d5e74eac38b8e162904'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
