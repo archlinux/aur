@@ -3,7 +3,7 @@ pkgname=tts-vue
 pkgver=1.9.15
 _electronversion=19
 _nodeversion=14
-pkgrel=6
+pkgrel=7
 pkgdesc="Microsoft speech synthesis tool, built using Electron+Vue+ElementPlus+Vite.微软语音合成工具,使用Electron+Vue+ElementPlus+Vite构建。"
 arch=('x86_64')
 url="https://tts-doc.loker.vip/home.html"
@@ -18,13 +18,14 @@ makedepends=(
     'nvm'
     'npm'
     'git'
+    'curl'
 )
 source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('SKIP'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+sha256sums=('a070c7728fb24a093a86a38c1e4e2bfe6261dcab1bfc0072fbacfb5ceb0e6fa2'
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -35,6 +36,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --categories="Utility" --exec="${pkgname} %U"
@@ -47,9 +49,18 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
     sed "s|\/\${version}||g" -i electron-builder.json5
     npm install
-    npm run build
+    npx vue-tsc --noEmit
+    npx vite build
+    npx electron-builder --dir
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
