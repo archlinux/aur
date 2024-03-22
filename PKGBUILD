@@ -2,7 +2,7 @@
 pkgname=mu-epub-viewer-bin
 pkgver=1.1.4
 _electronversion=16
-pkgrel=5
+pkgrel=6
 pkgdesc="Epub viewer on Electron that support text translation."
 arch=('x86_64')
 url="https://github.com/azu/mu-epub-reader"
@@ -11,7 +11,6 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}-bin"
-    'hicolor-icon-theme'
 )
 makedepends=(
     'fuse2'
@@ -23,11 +22,12 @@ source=(
 )
 sha256sums=('638b33189eda422f481464d4e6c81eb455192908f1cc35017dfc6b2f3e5f22b9'
             '8696e42debf4f04bd943baa459cfa5d17ef59407a1e9d3b705af1f9e56407c72'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
