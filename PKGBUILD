@@ -2,7 +2,7 @@
 
 pkgname=texmacs-guile3-git
 _pkgname=texmacs
-pkgver=2.1.4_r13445.90fda4700
+pkgver=2.1.4_r13451.4c6097b19
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG
 editor and CAS-interface. Pulled from github.com/hammerfunctor/texmacs"
@@ -36,7 +36,12 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-  sed -e 's/-Wno-deprecated-register//' -i src/CMakeLists.txt # Remove wrong flag on Linux
+  #sed -e 's/-Wno-deprecated-register//' -i src/CMakeLists.txt # Remove wrong flag on Linux
+
+  # replace function (... start end . delta) by (range-list*-1 start end . delta) to supress warning
+  for f in $(grep -l "(\\.\\.\\." $(find . -iname "*.scm")); do
+    sed -i -e "s/(\\.\\.\\./(range-list*-1/" $f
+  done
 }
 
 build() {
@@ -45,7 +50,7 @@ build() {
   #export CC=/usr/bin/clang
   #export CXX=/usr/bin/clang++
   cmake -Bbuild \
-        -DCMAKE_BUILD_TYPE=RELEASE \
+        -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_PRIO_GUILE3=YES
   cd build && make -j8
@@ -56,7 +61,7 @@ package() {
   make DESTDIR="$pkgdir" install
 
   # fix fig2ps script
-  sed -i 's|${prefix}|/usr|' "$pkgdir"/usr/bin/fig2ps
+  #sed -i 's|${prefix}|/usr|' "$pkgdir"/usr/bin/fig2ps
   # fix FS#37518
   #sed -i '/^Path=/d' "$pkgdir"/usr/share/applications/texmacs.desktop
 }
