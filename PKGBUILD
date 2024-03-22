@@ -1,4 +1,4 @@
-# Maintainer: Evine Deng <evinedeng@hotmail.com>
+# Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="ips"
 pkgver=0.3.3
@@ -7,7 +7,6 @@ pkgdesc="IP geolocation databases tool and library."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/sjzar/${pkgname}"
 license=("Apache")
-depends=("glibc")
 makedepends=("go")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('a1671268770d884482323631dea8a2f4c21c5fb2775899a5363519974f8d6a31')
