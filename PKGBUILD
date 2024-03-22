@@ -1,12 +1,12 @@
 # Maintainer: zotan <aur@zotan.email>
 
 pkgname=iceshrimp.net-git
-pkgver=v2024.1.alpha+b0b8bfc
+pkgver=v2024.1.alpha+d5b7fa5
 pkgrel=1
 pkgdesc="The Iceshrimp .NET rewrite. Caution: This is alpha software, do not use with production database"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp.net"
-license=(AGPL3)
+license=(EUPL)
 
 makedepends=('dotnet-sdk>=8.0' 'aspnet-targeting-pack>=8.0' 'aspnet-targeting-pack<9.0' nodejs npm)
 depends=('aspnet-runtime>=8.0' 'aspnet-runtime<9.0')
