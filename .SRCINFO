@@ -19,7 +19,7 @@ pkgbase = graphs-git
 	depends = python-numexpr
 	depends = python-sympy
 	depends = gobject-introspection
-	provides = graphs
+	conflicts = graphs
 	source = graphs-git::git+https://gitlab.gnome.org/World/Graphs.git
 	sha256sums = SKIP
 
