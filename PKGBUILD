@@ -1,7 +1,7 @@
 # Maintainer: JinguTech <xiuluo dot android at gmail dot com>
 # Contributor: Alkindi42
 pkgname=joplin-beta
-pkgver=2.14.20
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="The latest pre-release - open source note taking and to-do application"
 arch=('x86_64')
@@ -21,7 +21,7 @@ license=('MIT')
 sha256sums=('18cca699f52f884980646359631bb59a77d190b9f91e9e3e71efa62166772557'
             'b5c621c425cdf0b5bb07bf0353939f6991a18db81955294a47ec42d0c5593438'
             'b46dd772eb1adf9327f6c07657acf3c627c6ea204f8de3a4481efa6db0071f5e'
-            'a85f2133e5b71d829fbc9438d2e3191172f8af2e270906745203a8fa36aac307')
+            'bfb7e326f21ebf9fd6da4d82a00fdeb74e3f4538f08ecc97fccd05e49010bbb9')
 
 
 # local npm cache directory
@@ -67,12 +67,9 @@ prepare() {
   local tmp_json="$(mktemp --tmpdir="$srcdir")"
   local lerna_json="${srcdir}/joplin-${pkgver}/lerna.json"
 
-  echo "Deleting app-mobile"
-  rm -r "${srcdir}/joplin-${pkgver}/packages/app-mobile"
-  rm -r "${srcdir}/joplin-${pkgver}/packages/app-clipper"
-
-  # Taking out a comma in wrong place in package.json (probably only in 2.14.20)
-  sed -i '109s/,$//' joplin-${pkgver}/package.json
+  #echo "Deleting app-mobile"
+  #rm -r "${srcdir}/joplin-${pkgver}/packages/app-mobile"
+  #rm -r "${srcdir}/joplin-${pkgver}/packages/app-clipper"
 
 }
 
@@ -153,7 +150,3 @@ package() {
         "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/joplin.png"
   done
 }
-sha256sums=('18cca699f52f884980646359631bb59a77d190b9f91e9e3e71efa62166772557'
-            'b5c621c425cdf0b5bb07bf0353939f6991a18db81955294a47ec42d0c5593438'
-            'b46dd772eb1adf9327f6c07657acf3c627c6ea204f8de3a4481efa6db0071f5e'
-            '919e9300e66bc6c24a282cbf93c43c228cdfe3227bdb1eaa50fdadef4734901b')
