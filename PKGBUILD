@@ -1,6 +1,6 @@
 # Maintainer: Adis Durakovic <aur@mail.adisdurakovic.com>
 pkgname=resticity
-pkgver=1.0.32
+pkgver=1.0.33
 pkgrel=1
 epoch=
 pkgdesc="A frontend for restic"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
 noextract=()
-sha256sums=('8db9bcba301c3a33396d9db77bd42b77e44d252ea8b0b978d1e8b1c1ff3be2aa')
+sha256sums=('18f0387b18ea2f8a202fb035d165fabcd7d02c354c95ca41bdb58b97ce4bd90d')
 validpgpkeys=()
 
 prepare() {
@@ -47,6 +47,6 @@ check() {
 package() {
         cd "$pkgname-$pkgver"
         install -Dm755 --no-target-directory "build/bin/resticity" "${pkgdir}/usr/bin/${pkgname}"
-        install -Dm755 --no-target-directory "packaging/resticity.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
-        install -Dm755 --no-target-directory "packaging/resticity.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+        install -Dm755 --no-target-directory "packaging/io.github.ad_on_is.Resticity.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/io.github.ad_on_is.Resticity.png"
+        install -Dm755 --no-target-directory "packaging/io.github.ad_on_is.Resticity.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }

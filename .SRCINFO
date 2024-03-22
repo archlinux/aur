@@ -1,6 +1,6 @@
 pkgbase = resticity
 	pkgdesc = A frontend for restic
-	pkgver = 1.0.32
+	pkgver = 1.0.33
 	pkgrel = 1
 	url = https://github.com/ad-on-is/resticity
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = resticity
 	depends = rclone
 	depends = openssh
 	provides = resticity
-	source = https://github.com/ad-on-is/resticity/archive/refs/tags/1.0.32.tar.gz
-	sha256sums = 8db9bcba301c3a33396d9db77bd42b77e44d252ea8b0b978d1e8b1c1ff3be2aa
+	source = https://github.com/ad-on-is/resticity/archive/refs/tags/1.0.33.tar.gz
+	sha256sums = 18f0387b18ea2f8a202fb035d165fabcd7d02c354c95ca41bdb58b97ce4bd90d
 
 pkgname = resticity
