@@ -1,4 +1,4 @@
-chinesesubfinder
-pkg
-src
+/chinesesubfinder
+/pkg
+/src
 *.pkg.tar.zst
