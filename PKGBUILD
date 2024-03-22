@@ -1,14 +1,14 @@
 # Maintainer: Catty Steve <cattysteve89265@163.com>
 
 pkgname=zero-ui
-pkgver=r227.076b496
-pkgrel=5
+pkgver=r304.6f7bc6c
+pkgrel=1
 pkgdesc='Zerotier Controller UI'
 arch=('x86_64')
 url='https://github.com/dec0dOS/zero-ui'
 license=('GPL')
 depends=('nodejs' 'zerotier-one')
-makedepends=('yarn')
+makedepends=('yarn-berry')
 source=("zero-ui"::'git+https://github.com/dec0dOS/zero-ui'
         zero-ui.service
         zero-ui.conf)
@@ -26,17 +26,19 @@ build() {
     mkdir -p app/frontend
     mkdir -p app/backend
     cp yarn.lock .yarnrc.yml app/frontend
-    cp -r .yarn  app/frontend/.yarn
+    #cp -r .yarn  app/frontend/.yarn
     cp ./frontend/package*.json app/frontend
     cd "app/frontend"
+    yarn config set npmRegistryServer "https://registry.npmmirror.com"
+    yarn config set checksumBehavior "ignore"
     yarn install
     cd "$srcdir/zero-ui"
     cp -r frontend app/
     cd "app/frontend"
-    yarn build --verbose
+    yarn build
     cd "$srcdir/zero-ui"
     cp yarn.lock .yarnrc.yml app/backend
-    cp -r .yarn  app/backend/.yarn
+    #cp -r .yarn  app/backend/.yarn
     cp ./backend/package*.json app/backend
     cd "app/backend"
     yarn install
