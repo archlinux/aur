@@ -4,7 +4,7 @@ pkgname="${_pkgname}-ee-bin"
 _appname=BingGPT
 pkgver=0.4.7
 _electronversion=26
-pkgrel=2
+pkgrel=3
 pkgdesc="BingGPT Enhanced Editon - Desktop application of new Bing's AI-powered chat.A rewritten version."
 arch=(
     'aarch64'
@@ -19,20 +19,21 @@ conflicts=(
 )
 provides=("${_pkgname}-desktop")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_appname}-Linux-arm64-${pkgver}.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_appname}-Linux-amd64-${pkgver}.deb")
 source=(
     "${pkgname%-bin}.sh"
 )
-sha256sums=('50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+sha256sums=('dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 sha256sums_aarch64=('c51a2fd6705dc5bfe7b3cdebf6fd6daedade8be00fc5e8cbd0abc3ddbda20b16')
 sha256sums_x86_64=('01dafcd9a29abc8e1960ce0a405bbaa7ca7612f353d9a0bac3ab439eec564839')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed -e "s|\"/opt/${_chsname}/${_appname}\"|${pkgname%-bin}|g" \
