@@ -6,8 +6,8 @@ pkgbase = mozlz4-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = rust
 	makedepends = cargo
+	options = !lto
 	source = git+https://github.com/jusw85/mozlz4.git
 	sha256sums = SKIP
 
