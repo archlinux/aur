@@ -13,7 +13,7 @@ sha256sums=('06f21be755a0a0b362472bbe565391c26056d27aeed6ca81457a9b7977f553e6')
 
 build() {
     cd "${pkgname}-${pkgver}"
-    cargo build --frozen --release
+    cargo build --release
 }
 
 package() {
