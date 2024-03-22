@@ -1,7 +1,7 @@
 pkgbase = electron-s3-file-manager
 	pkgdesc = A GUI AWS S3 file manager. It supports keyword search, download, upload and preview video.
 	pkgver = 0.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/kelp404/electron-s3-file-manager
 	arch = any
 	license = MIT
@@ -9,30 +9,14 @@ pkgbase = electron-s3-file-manager
 	makedepends = npm
 	makedepends = nodejs
 	makedepends = git
-	depends = make
-	depends = python
-	depends = alsa-lib
-	depends = libdrm
-	depends = pango
-	depends = nss
-	depends = gtk3
-	depends = libxfixes
-	depends = libxdamage
-	depends = cairo
-	depends = nspr
-	depends = libxcomposite
-	depends = libcups
-	depends = libx11
-	depends = at-spi2-core
-	depends = libxrandr
-	depends = libxkbcommon
-	depends = expat
-	depends = mesa
-	depends = libxext
-	depends = libxcb
-	depends = wayland
+	makedepends = gcc
+	makedepends = base-devel
+	depends = electron20-bin
+	depends = python>3
 	conflicts = electron-s3-file-manager
-	source = electron-s3-file-manager-0.2.0::git+https://github.com/kelp404/electron-s3-file-manager.git#tag=v0.2.0
-	sha256sums = SKIP
+	source = electron-s3-file-manager.git::git+https://github.com/kelp404/electron-s3-file-manager.git#tag=v0.2.0
+	source = electron-s3-file-manager.sh
+	sha256sums = 936168f7206a3f9dbe2f302ac7a4f02b886e539b36c6c6cba6026184d3ebfd81
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = electron-s3-file-manager
