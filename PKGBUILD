@@ -6,7 +6,7 @@ BUILDENV+=(!check)
 
 pkgname=texpresso-git
 _pkgname=${pkgname%-git}
-pkgver=r150.dc2b66d
+pkgver=r176.96d0599
 pkgrel=1
 pkgdesc='Live rendering and error reporting for LaTeX'
 url="https://github.com/let-def/$_pkgname"
