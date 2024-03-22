@@ -4,13 +4,13 @@
 
 pkgname=rabbitvcs-thunar
 pkgver=0.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Thunar front-end for RabbitVCS SVN GIT HG Extension."
-#_gitcommit='c424618cc15686a902a0255cdf6751647dd39b19'
+_gitcommit=''
 arch=('any')
 url="https://github.com/rabbitvcs/rabbitvcs"
 install=$pkgname.install
-depends=('python-thunarx' 'python-dbus' "rabbitvcs>=$pkgver")
+depends=('thunarx-python' 'python-dbus' "rabbitvcs>=$pkgver")
 license=('GPL')
 if [ "${_gitcommit}" != "" ]; then
   source=("rabbitvcs-$pkgver-$pkgrel.tar.gz::$url/archive/$_gitcommit.tar.gz")
