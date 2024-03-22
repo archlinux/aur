@@ -4,7 +4,7 @@ _pkgname=Discord-Netflix
 pkgver=1.1.12
 _electronversion=22
 _nodeversion=16
-pkgrel=4
+pkgrel=5
 pkgdesc="An updated and improved version from the original Discord-Netflix from Nirewen."
 arch=('any')
 url="https://discord.gg/kbf8EjpxbU"
@@ -27,8 +27,8 @@ source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('SKIP'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+sha256sums=('18a6712a7eb74be8651523064bc7c14768b2611af7cc42d757824cef4a5c99ec'
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -39,6 +39,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -f -n -q --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
@@ -51,11 +52,14 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    if [ `curl ifconfig.co/country` == "China" ];then
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
         echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
         echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
     fi
+    sed "s|AppImage|dir|g;41,46d" -i package.json
     npm install
     npm run linbuild
 }
