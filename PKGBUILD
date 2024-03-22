@@ -2,7 +2,7 @@
 _pkgname=tidgi
 pkgname="${_pkgname}-desktop-git"
 _appname=TidGi
-pkgver=0.9.3.r3.g4e398504
+pkgver=0.9.3.r7.gc13b14b0
 _electronversion=28
 pkgrel=1
 pkgdesc="an privatcy-in-mind, automated, auto-git-backup, freely-deployed Tiddlywiki knowledge management Desktop note app, with local REST API."
@@ -24,11 +24,9 @@ provides=(
 depends=(
     #"electron${_electronversion}"
     'alsa-lib'
-    'blas'
-    'java-runtime'
-    'nodejs'
-    'lapack'
-    'perl'
+    'gtk3'
+    'nss'
+    'nspr'
 )
 makedepends=(
     'gendesk'
@@ -62,16 +60,16 @@ build() {
     pnpm config set store-dir "${srcdir}/.pnpm_store"
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
     pnpm config set link-workspace-packages true
-    sed '82,89d;s|icon.ico|icon.png|g' -i forge.config.js
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
+    sed "s|icon.ico|icon.png|g" -i forge.config.js
     pnpm install --no-frozen-lockfile
-    case "${CARCH}" in
-        aarch64)
-            pnpm run make:linux-arm
-            ;;
-        x86_64)
-            pnpm run make:linux-x64
-            ;;
-    esac
+    pnpm run package
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-git}",usr/bin}
