@@ -2,7 +2,7 @@
 pkgname=icalingua++-bin
 pkgver=2.11.1
 _electronversion=22
-pkgrel=3
+pkgrel=4
 pkgdesc="A branch of deleted Icalingua, with limited support"
 arch=(
     "aarch64"
