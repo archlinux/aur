@@ -1,8 +1,8 @@
 pkgbase = script-runner-gui
 	pkgdesc = A GUI application for running and managing shell scripts
 	pkgver = 1.1.0
-	pkgrel = 3
-	url = http://yourapplicationhomepage.com
+	pkgrel = 4
+	url = https://github.com/LORDINFINITY12/script-runner-gui
 	arch = any
 	license = GPL
 	depends = python
