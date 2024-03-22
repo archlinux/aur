@@ -2,7 +2,7 @@
 pkgname=board4you-bin
 pkgver=1.0.8
 _electronversion=26
-pkgrel=1
+pkgrel=2
 pkgdesc="A whiteboard app built with Electron, React, react-icons, konva and bootstrap."
 arch=("x86_64")
 url="https://github.com/GachiLord/board4you"
@@ -10,7 +10,7 @@ license=("GPL-3.0-only")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'nodejs'
 )
 makedepends=(
