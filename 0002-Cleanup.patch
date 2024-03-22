@@ -1,4 +1,4 @@
-From 6a10db3d678b8e4aa93e2556c24be0db124bc5fd Mon Sep 17 00:00:00 2001
+From 53c49da37bba2d6c1d83299fbe3112220d00743a Mon Sep 17 00:00:00 2001
 From: Aviana Cruz <gwencroft@proton.me>
 Date: Sun, 6 Nov 2022 13:33:14 +0800
 Subject: [PATCH 2/2] Cleanup
@@ -14,26 +14,24 @@ Signed-off-by: Aviana Cruz <gwencroft@proton.me>
  .../org/jackhuang/hmcl/ui/UpgradeDialog.java  |  77 -----
  .../hmcl/ui/account/CreateAccountPane.java    |  16 -
  .../jackhuang/hmcl/ui/main/FeedbackPage.java  |  79 -----
- .../hmcl/ui/main/LauncherSettingsPage.java    |  22 +-
+ .../hmcl/ui/main/LauncherSettingsPage.java    |  14 +-
  .../org/jackhuang/hmcl/ui/main/MainPage.java  | 135 +--------
- .../org/jackhuang/hmcl/ui/main/RootPage.java  |  17 --
+ .../org/jackhuang/hmcl/ui/main/RootPage.java  |   3 -
  .../jackhuang/hmcl/ui/main/SettingsPage.java  |  60 ----
  .../jackhuang/hmcl/ui/main/SettingsView.java  |  58 ----
- .../jackhuang/hmcl/ui/main/SponsorPage.java   | 174 -----------
  .../hmcl/upgrade/ExecutableHeaderHelper.java  | 124 --------
  .../hmcl/upgrade/HMCLDownloadTask.java        |  68 -----
  .../hmcl/upgrade/IntegrityChecker.java        | 146 ---------
- .../jackhuang/hmcl/upgrade/RemoteVersion.java |  96 ------
+ .../jackhuang/hmcl/upgrade/RemoteVersion.java | 103 -------
  .../jackhuang/hmcl/upgrade/UpdateChannel.java |  42 ---
- .../jackhuang/hmcl/upgrade/UpdateChecker.java | 124 --------
+ .../jackhuang/hmcl/upgrade/UpdateChecker.java | 128 --------
  .../jackhuang/hmcl/upgrade/UpdateHandler.java | 282 ------------------
  .../jackhuang/hmcl/util/CrashReporter.java    |   5 -
  .../hmcl/game/GameDumpGenerator.java          |   6 +-
- 23 files changed, 3 insertions(+), 1636 deletions(-)
+ 22 files changed, 3 insertions(+), 1451 deletions(-)
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/countly/Countly.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java
- delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SponsorPage.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/ExecutableHeaderHelper.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/HMCLDownloadTask.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/IntegrityChecker.java
@@ -43,7 +41,7 @@ Signed-off-by: Aviana Cruz <gwencroft@proton.me>
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java
 
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java b/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
-index bf967fc5a..df2f6252e 100644
+index 772a436e1..e28bf7805 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
 @@ -33,8 +33,6 @@ import org.jackhuang.hmcl.setting.SambaException;
@@ -312,10 +310,10 @@ index b43133a1c..000000000
 -    }
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java
-index 06c6763a0..cac871f81 100644
+index 9a17ba55c..606bf4465 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java
-@@ -58,7 +58,6 @@ import org.jackhuang.hmcl.ui.FXUtils;
+@@ -57,7 +57,6 @@ import org.jackhuang.hmcl.ui.FXUtils;
  import org.jackhuang.hmcl.ui.SVG;
  import org.jackhuang.hmcl.ui.WeakListenerHolder;
  import org.jackhuang.hmcl.ui.construct.*;
@@ -323,7 +321,7 @@ index 06c6763a0..cac871f81 100644
  import org.jackhuang.hmcl.util.StringUtils;
  import org.jackhuang.hmcl.util.gson.UUIDTypeAdapter;
  import org.jackhuang.hmcl.util.javafx.BindingMapping;
-@@ -323,12 +322,6 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
+@@ -322,12 +321,6 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
                  box.getChildren().setAll(profileLink, birthLink, purchaseLink, deauthorizeLink, forgotpasswordLink, createProfileLink);
                  GridPane.setColumnSpan(box, 2);
  
@@ -336,7 +334,7 @@ index 06c6763a0..cac871f81 100644
                  vbox.getChildren().addAll(hintPane, box);
  
                  btnAccept.setDisable(false);
-@@ -418,15 +411,6 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
+@@ -399,15 +392,6 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
  
              int rowIndex = 0;
  
@@ -354,7 +352,7 @@ index 06c6763a0..cac871f81 100644
  
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java
 deleted file mode 100644
-index a71c1d5d5..000000000
+index ec9932bcd..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java
 +++ /dev/null
 @@ -1,79 +0,0 @@
@@ -402,10 +400,10 @@ index a71c1d5d5..000000000
 -        ComponentList community = new ComponentList();
 -        {
 -            IconedTwoLineListItem users = new IconedTwoLineListItem();
--            users.setImage(FXUtils.newBuiltinImage("/assets/img/craft_table.png"));
+-            users.setImage(FXUtils.newBuiltinImage("/assets/img/icon.png"));
 -            users.setTitle(i18n("feedback.qq_group"));
 -            users.setSubtitle(i18n("feedback.qq_group.statement"));
--            users.setExternalLink("https://hmcl.huangyuhui.net/api/redirect/sponsor");
+-            users.setExternalLink("https://docs.hmcl.net/groups.html");
 -
 -            IconedTwoLineListItem github = new IconedTwoLineListItem();
 -            github.setImage(FXUtils.newBuiltinImage("/assets/img/github.png"));
@@ -438,31 +436,29 @@ index a71c1d5d5..000000000
 -
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/LauncherSettingsPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/LauncherSettingsPage.java
-index 3e80594cc..32ca4b1db 100644
+index dbcba03c0..32ca4b1db 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/LauncherSettingsPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/LauncherSettingsPage.java
-@@ -45,8 +45,6 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
+@@ -45,7 +45,6 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
      private final TabHeader.Tab<DownloadSettingsPage> downloadTab = new TabHeader.Tab<>("downloadSettingsPage");
      private final TabHeader.Tab<HelpPage> helpTab = new TabHeader.Tab<>("helpPage");
      private final TabHeader.Tab<AboutPage> aboutTab = new TabHeader.Tab<>("aboutPage");
 -    private final TabHeader.Tab<FeedbackPage> feedbackTab = new TabHeader.Tab<>("feedbackPage");
--    private final TabHeader.Tab<SponsorPage> sponsorTab = new TabHeader.Tab<>("sponsorPage");
      private final TransitionPane transitionPane = new TransitionPane();
  
      public LauncherSettingsPage() {
-@@ -55,10 +53,8 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
+@@ -54,9 +53,8 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
          personalizationTab.setNodeSupplier(PersonalizationPage::new);
          downloadTab.setNodeSupplier(DownloadSettingsPage::new);
          helpTab.setNodeSupplier(HelpPage::new);
 -        feedbackTab.setNodeSupplier(FeedbackPage::new);
--        sponsorTab.setNodeSupplier(SponsorPage::new);
          aboutTab.setNodeSupplier(AboutPage::new);
--        tab = new TabHeader(gameTab, settingsTab, personalizationTab, downloadTab, helpTab, feedbackTab, sponsorTab, aboutTab);
+-        tab = new TabHeader(gameTab, settingsTab, personalizationTab, downloadTab, helpTab, feedbackTab, aboutTab);
 +        tab = new TabHeader(gameTab, settingsTab, personalizationTab, downloadTab, helpTab, aboutTab);
  
          tab.select(gameTab);
          gameTab.initializeIfNeeded();
-@@ -102,18 +98,6 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
+@@ -100,12 +98,6 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
                          helpItem.activeProperty().bind(tab.getSelectionModel().selectedItemProperty().isEqualTo(helpTab));
                          helpItem.setOnAction(e -> tab.select(helpTab));
                      })
@@ -472,16 +468,10 @@ index 3e80594cc..32ca4b1db 100644
 -                        feedbackItem.activeProperty().bind(tab.getSelectionModel().selectedItemProperty().isEqualTo(feedbackTab));
 -                        feedbackItem.setOnAction(e -> tab.select(feedbackTab));
 -                    })
--                    .addNavigationDrawerItem(sponsorItem -> {
--                        sponsorItem.setTitle(i18n("sponsor"));
--                        sponsorItem.setLeftGraphic(wrap(SVG.HAND_HEAR_OUTLINE));
--                        sponsorItem.activeProperty().bind(tab.getSelectionModel().selectedItemProperty().isEqualTo(sponsorTab));
--                        sponsorItem.setOnAction(e -> tab.select(sponsorTab));
--                    })
                      .addNavigationDrawerItem(aboutItem -> {
                          aboutItem.setTitle(i18n("about"));
                          aboutItem.setLeftGraphic(wrap(SVG.INFORMATION_OUTLINE));
-@@ -142,10 +126,6 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
+@@ -134,10 +126,6 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
          tab.select(gameTab);
      }
  
@@ -685,10 +675,10 @@ index 6f1cf7f17..c63d73ce9 100644
          FXUtils.checkFxUserThread();
          this.profile = profile;
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
-index 7191966f9..5082c8a4f 100644
+index 9ef6da0f4..2963bb587 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
-@@ -43,7 +43,6 @@ import org.jackhuang.hmcl.ui.nbt.NBTEditorPage;
+@@ -42,7 +42,6 @@ import org.jackhuang.hmcl.ui.nbt.NBTEditorPage;
  import org.jackhuang.hmcl.ui.nbt.NBTHelper;
  import org.jackhuang.hmcl.ui.versions.GameAdvancedListItem;
  import org.jackhuang.hmcl.ui.versions.Versions;
@@ -696,7 +686,7 @@ index 7191966f9..5082c8a4f 100644
  import org.jackhuang.hmcl.util.Lang;
  import org.jackhuang.hmcl.util.StringUtils;
  import org.jackhuang.hmcl.util.TaskCancellationAction;
-@@ -111,8 +110,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
+@@ -110,8 +109,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
                      });
  
              FXUtils.onChangeAndOperate(Profiles.selectedVersionProperty(), mainPage::setCurrentGame);
@@ -705,36 +695,8 @@ index 7191966f9..5082c8a4f 100644
  
              Profiles.registerVersionsListener(profile -> {
                  HMCLGameRepository repository = profile.getRepository();
-@@ -169,19 +166,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
-             downloadItem.setOnAction(e -> Controllers.navigate(Controllers.getDownloadPage()));
-             runInFX(() -> FXUtils.installFastTooltip(downloadItem, i18n("download.hint")));
- 
--            // fifth item in left sidebar
--            AdvancedListItem multiplayerItem = new AdvancedListItem();
--            multiplayerItem.setLeftGraphic(wrap(SVG.LAN));
--            multiplayerItem.setActionButtonVisible(false);
--            multiplayerItem.setTitle(i18n("multiplayer"));
--            JFXHyperlink link = new JFXHyperlink(i18n("multiplayer.hint.details"));
--            link.setExternalLink("https://hmcl.huangyuhui.net/api/redirect/multiplayer-migrate");
--            multiplayerItem.setOnAction(e -> Controllers.dialog(
--                    new MessageDialogPane.Builder(i18n("multiplayer.hint"), null, MessageDialogPane.MessageType.INFO)
--                            .addAction(link)
--                            .ok(null)
--                            .build()));
--
-             // sixth item in left sidebar
-             AdvancedListItem launcherSettingsItem = new AdvancedListItem();
-             launcherSettingsItem.setLeftGraphic(wrap(SVG.GEAR_OUTLINE));
-@@ -198,7 +182,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
-                     .add(gameItem)
-                     .add(downloadItem)
-                     .startCategory(i18n("settings.launcher.general").toUpperCase(Locale.ROOT))
--                    .add(multiplayerItem)
-                     .add(launcherSettingsItem);
- 
-             // the root page, with the sidebar in left, navigator in center.
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsPage.java
-index b53470944..622b21e6b 100644
+index 1e6975e4d..e0e7e3d58 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsPage.java
 @@ -27,10 +27,6 @@ import org.jackhuang.hmcl.setting.Settings;
@@ -746,9 +708,9 @@ index b53470944..622b21e6b 100644
 -import org.jackhuang.hmcl.upgrade.UpdateChecker;
 -import org.jackhuang.hmcl.upgrade.UpdateHandler;
  import org.jackhuang.hmcl.util.Logging;
+ import org.jackhuang.hmcl.util.StringUtils;
  import org.jackhuang.hmcl.util.i18n.Locales;
- import org.jackhuang.hmcl.util.io.FileUtils;
-@@ -68,57 +64,6 @@ public final class SettingsPage extends SettingsView {
+@@ -69,57 +65,6 @@ public final class SettingsPage extends SettingsView {
                  Bindings.createObjectBinding(() -> Optional.ofNullable(Settings.instance().getCommonDirectory())
                                  .orElse(i18n("launcher.cache_directory.disabled")),
                          config().commonDirectoryProperty(), config().commonDirTypeProperty()));
@@ -806,23 +768,23 @@ index b53470944..622b21e6b 100644
      }
  
      @Override
-@@ -142,11 +87,6 @@ public final class SettingsPage extends SettingsView {
+@@ -143,11 +88,6 @@ public final class SettingsPage extends SettingsView {
          });
      }
  
 -    @Override
 -    protected void onSponsor() {
--        FXUtils.openLink("https://hmcl.huangyuhui.net/api/redirect/sponsor");
+-        FXUtils.openLink("https://github.com/HMCL-dev/HMCL");
 -    }
 -
      @Override
      protected void clearCacheDirectory() {
          FileUtils.cleanDirectoryQuietly(new File(Settings.instance().getCommonDirectory(), "cache"));
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java
-index 132ea76f6..44b6dfed7 100644
+index 445f28be1..aa0d7e298 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java
-@@ -49,11 +49,6 @@ public abstract class SettingsView extends StackPane {
+@@ -50,11 +50,6 @@ public abstract class SettingsView extends StackPane {
      protected final JFXComboBox<SupportedLocale> cboLanguage;
      protected final MultiFileItem<EnumCommonDirectory> fileCommonLocation;
      protected final ComponentSublist fileCommonLocationSublist;
@@ -834,7 +796,7 @@ index 132ea76f6..44b6dfed7 100644
      protected final ScrollPane scroll;
  
      public SettingsView() {
-@@ -69,11 +64,6 @@ public abstract class SettingsView extends StackPane {
+@@ -70,11 +65,6 @@ public abstract class SettingsView extends StackPane {
                  ComponentList settingsPane = new ComponentList();
                  {
                      {
@@ -846,7 +808,7 @@ index 132ea76f6..44b6dfed7 100644
                          GridPane gridPane = new GridPane();
  
                          ColumnConstraints col = new ColumnConstraints();
-@@ -96,51 +86,7 @@ public abstract class SettingsView extends StackPane {
+@@ -97,51 +87,7 @@ public abstract class SettingsView extends StackPane {
                              GridPane.setColumnIndex(label, 0);
                              gridPane.getChildren().add(label);
                          }
@@ -898,7 +860,7 @@ index 132ea76f6..44b6dfed7 100644
                  }
  
                  {
-@@ -204,11 +150,7 @@ public abstract class SettingsView extends StackPane {
+@@ -205,11 +151,7 @@ public abstract class SettingsView extends StackPane {
          }
      }
  
@@ -910,186 +872,6 @@ index 132ea76f6..44b6dfed7 100644
 -
      protected abstract void clearCacheDirectory();
  }
-diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SponsorPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SponsorPage.java
-deleted file mode 100644
-index ea21757c6..000000000
---- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SponsorPage.java
-+++ /dev/null
-@@ -1,174 +0,0 @@
--/*
-- * Hello Minecraft! Launcher
-- * Copyright (C) 2021  huangyuhui <huanghongxun2008@126.com> and contributors
-- *
-- * This program is free software: you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License as published by
-- * the Free Software Foundation, either version 3 of the License, or
-- * (at your option) any later version.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- *
-- * You should have received a copy of the GNU General Public License
-- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
-- */
--package org.jackhuang.hmcl.ui.main;
--
--import com.google.gson.annotations.SerializedName;
--import com.google.gson.reflect.TypeToken;
--import com.jfoenix.controls.JFXListCell;
--import com.jfoenix.controls.JFXListView;
--import javafx.geometry.Insets;
--import javafx.geometry.VPos;
--import javafx.scene.Cursor;
--import javafx.scene.control.Label;
--import javafx.scene.layout.*;
--import javafx.scene.text.TextAlignment;
--import org.jackhuang.hmcl.task.Schedulers;
--import org.jackhuang.hmcl.task.Task;
--import org.jackhuang.hmcl.ui.FXUtils;
--import org.jackhuang.hmcl.util.Holder;
--import org.jackhuang.hmcl.util.io.HttpRequest;
--
--import java.math.BigDecimal;
--import java.time.Instant;
--import java.util.List;
--
--import static org.jackhuang.hmcl.util.i18n.I18n.i18n;
--
--public class SponsorPage extends StackPane {
--    private final JFXListView<Sponsor> listView;
--
--    public SponsorPage() {
--        VBox content = new VBox();
--        content.setPadding(new Insets(10));
--        content.setSpacing(10);
--        content.setFillWidth(true);
--
--        {
--            StackPane sponsorPane = new StackPane();
--            sponsorPane.getStyleClass().add("card");
--            sponsorPane.setCursor(Cursor.HAND);
--            sponsorPane.setOnMouseClicked(e -> onSponsor());
--
--            GridPane gridPane = new GridPane();
--
--            ColumnConstraints col = new ColumnConstraints();
--            col.setHgrow(Priority.SOMETIMES);
--            col.setMaxWidth(Double.POSITIVE_INFINITY);
--
--            gridPane.getColumnConstraints().setAll(col);
--
--            RowConstraints row = new RowConstraints();
--            row.setMinHeight(Double.NEGATIVE_INFINITY);
--            row.setValignment(VPos.TOP);
--            row.setVgrow(Priority.SOMETIMES);
--            gridPane.getRowConstraints().setAll(row);
--
--            {
--                Label label = new Label(i18n("sponsor.hmcl"));
--                label.setWrapText(true);
--                label.setTextAlignment(TextAlignment.JUSTIFY);
--                GridPane.setRowIndex(label, 0);
--                GridPane.setColumnIndex(label, 0);
--                gridPane.getChildren().add(label);
--            }
--
--            sponsorPane.getChildren().setAll(gridPane);
--            content.getChildren().add(sponsorPane);
--        }
--
--        {
--            StackPane pane = new StackPane();
--            pane.getStyleClass().add("card");
--            listView = new JFXListView<>();
--            Holder<Object> lastCell = new Holder<>();
--            listView.setCellFactory((listView) -> new JFXListCell<Sponsor>() {
--                @Override
--                public void updateItem(Sponsor item, boolean empty) {
--                    super.updateItem(item, empty);
--
--                    // https://mail.openjdk.org/pipermail/openjfx-dev/2022-July/034764.html
--                    if (this == lastCell.value && !isVisible())
--                        return;
--                    lastCell.value = this;
--
--                    if (!empty) {
--                        setText(item.getName());
--                        setGraphic(null);
--                    }
--                }
--            });
--            VBox.setVgrow(pane, Priority.ALWAYS);
--            pane.getChildren().setAll(listView);
--            content.getChildren().add(pane);
--        }
--
--        loadSponsorList();
--
--        getChildren().setAll(content);
--    }
--
--    private void onSponsor() {
--        FXUtils.openLink("https://hmcl.huangyuhui.net/api/redirect/sponsor");
--    }
--
--    private void loadSponsorList() {
--        Task.<List<Sponsor>>supplyAsync(() -> HttpRequest.GET("https://hmcl.huangyuhui.net/api/sponsor").getJson(new TypeToken<List<Sponsor>>() {
--        }.getType())).thenAcceptAsync(Schedulers.javafx(), sponsors -> {
--            listView.getItems().setAll(sponsors);
--        }).start();
--    }
--
--    private static class Sponsor {
--        @SerializedName("name")
--        private final String name;
--
--        @SerializedName("create_time")
--        private final Instant createTime;
--
--        @SerializedName("money")
--        private final BigDecimal money;
--
--        @SerializedName("contact")
--        private final String contact;
--
--        @SerializedName("afdian_id")
--        private final String afdianId;
--
--        public Sponsor() {
--            this("", Instant.now(), BigDecimal.ZERO, "", "");
--        }
--
--        public Sponsor(String name, Instant createTime, BigDecimal money, String contact, String afdianId) {
--            this.name = name;
--            this.createTime = createTime;
--            this.money = money;
--            this.contact = contact;
--            this.afdianId = afdianId;
--        }
--
--        public String getName() {
--            return name;
--        }
--
--        public Instant getCreateTime() {
--            return createTime;
--        }
--
--        public BigDecimal getMoney() {
--            return money;
--        }
--
--        public String getContact() {
--            return contact;
--        }
--
--        public String getAfdianId() {
--            return afdianId;
--        }
--    }
--}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/ExecutableHeaderHelper.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/ExecutableHeaderHelper.java
 deleted file mode 100644
 index 7c47f586d..000000000
@@ -1448,10 +1230,10 @@ index d03600e2e..000000000
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/RemoteVersion.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/RemoteVersion.java
 deleted file mode 100644
-index c3ac2caaf..000000000
+index 81947320e..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/RemoteVersion.java
 +++ /dev/null
-@@ -1,96 +0,0 @@
+@@ -1,103 +0,0 @@
 -/*
 - * Hello Minecraft! Launcher
 - * Copyright (C) 2020  huangyuhui <huanghongxun2008@126.com> and contributors
@@ -1492,10 +1274,11 @@ index c3ac2caaf..000000000
 -            String jarHash = Optional.ofNullable(response.get("jarsha1")).map(JsonElement::getAsString).orElse(null);
 -            String packXZUrl = Optional.ofNullable(response.get("packxz")).map(JsonElement::getAsString).orElse(null);
 -            String packXZHash = Optional.ofNullable(response.get("packxzsha1")).map(JsonElement::getAsString).orElse(null);
+-            boolean force = Optional.ofNullable(response.get("force")).map(JsonElement::getAsBoolean).orElse(false);
 -            if (Pack200Utils.isSupported() && packXZUrl != null && packXZHash != null) {
--                return new RemoteVersion(channel, version, packXZUrl, Type.PACK_XZ, new IntegrityCheck("SHA-1", packXZHash));
+-                return new RemoteVersion(channel, version, packXZUrl, Type.PACK_XZ, new IntegrityCheck("SHA-1", packXZHash), force);
 -            } else if (jarUrl != null && jarHash != null) {
--                return new RemoteVersion(channel, version, jarUrl, Type.JAR, new IntegrityCheck("SHA-1", jarHash));
+-                return new RemoteVersion(channel, version, jarUrl, Type.JAR, new IntegrityCheck("SHA-1", jarHash), force);
 -            } else {
 -                throw new IOException("No download url is available");
 -            }
@@ -1509,13 +1292,15 @@ index c3ac2caaf..000000000
 -    private final String url;
 -    private final Type type;
 -    private final IntegrityCheck integrityCheck;
+-    private final boolean force;
 -
--    public RemoteVersion(UpdateChannel channel, String version, String url, Type type, IntegrityCheck integrityCheck) {
+-    public RemoteVersion(UpdateChannel channel, String version, String url, Type type, IntegrityCheck integrityCheck, boolean force) {
 -        this.channel = channel;
 -        this.version = version;
 -        this.url = url;
 -        this.type = type;
 -        this.integrityCheck = integrityCheck;
+-        this.force = force;
 -    }
 -
 -    public UpdateChannel getChannel() {
@@ -1536,6 +1321,10 @@ index c3ac2caaf..000000000
 -
 -    public IntegrityCheck getIntegrityCheck() {
 -        return integrityCheck;
+-    }
+-
+-    public boolean isForce() {
+-        return force;
 -    }
 -
 -    @Override
@@ -1598,10 +1387,10 @@ index 998a3da7d..000000000
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChecker.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChecker.java
 deleted file mode 100644
-index 10569497b..000000000
+index eb9f896cb..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChecker.java
 +++ /dev/null
-@@ -1,124 +0,0 @@
+@@ -1,128 +0,0 @@
 -/*
 - * Hello Minecraft! Launcher
 - * Copyright (C) 2020  huangyuhui <huanghongxun2008@126.com> and contributors
@@ -1628,6 +1417,7 @@ index 10569497b..000000000
 -import javafx.beans.value.ObservableBooleanValue;
 -import org.jackhuang.hmcl.Metadata;
 -import org.jackhuang.hmcl.util.io.NetworkUtils;
+-import org.jackhuang.hmcl.util.versioning.VersionNumber;
 -
 -import java.io.IOException;
 -import java.util.logging.Level;
@@ -1646,10 +1436,13 @@ index 10569497b..000000000
 -                RemoteVersion latest = latestVersion.get();
 -                if (latest == null || isDevelopmentVersion(Metadata.VERSION)) {
 -                    return false;
--                } else {
--                    // We can update from development version to stable version,
--                    // which can be downgrading.
+-                } else if (latest.isForce()
+-                        || Metadata.isNightly()
+-                        || latest.getChannel() == UpdateChannel.NIGHTLY
+-                        || latest.getChannel() != UpdateChannel.getChannel()) {
 -                    return !latest.getVersion().equals(Metadata.VERSION);
+-                } else {
+-                    return VersionNumber.compare(Metadata.VERSION, latest.getVersion()) < 0;
 -                }
 -            },
 -            latestVersion);

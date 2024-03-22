@@ -6,7 +6,7 @@
 pkgname=hmcl-new
 _pkgname=HMCL
 _ver=3.5
-_build=6
+_build=7
 _pkgver=release-$_ver.$_build
 pkgver=$_ver.$_build
 pkgrel=1
@@ -27,9 +27,9 @@ source=('hmcl.desktop'
 sha256sums=('b4e8aa0f349bb3f5dd15a31c5a13ac3e10e5a5bcd2f97cf390041924275e43ef'
   '4fcd4bf8f8d2ca39cf25a8d59daeb53ffa54fbca0356bd55aa17a5ee31d59a95'
   'd4e56ae2e8c0d991dba01ef3124ef4d38918825f58728338a8bab5e78319306a'
-  'bba9b7d8fa15970043b990a60f5f977aa93e70c0d1e265e4fc409c8efd4533b5'
-  'f98f716e544c74a6f1ab116a1aab2ae1c857f88b9999d009491333fa562cb2d5'
-  '3afebafe4739a92416a6543e7441638df8e8f299058cd76009e136d6b57670d8')
+  '115af54c288521cb5fdb087cee44b6ee7ef613970bde2fbff230f69605242e68'
+  '0dc7909795777dff86c5c3cee030e1768387e52b92a2e569686788b093e76945'
+  '98100e45c3253ddf6c1cbb3e2d164584021958fa4251b9f035b61ab44d2aa231')
 
 prepare() {
   cd "$_pkgname-$_pkgver"
