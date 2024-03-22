@@ -1,12 +1,12 @@
 pkgbase = tastytrade
 	pkgdesc = One of the fastest, most reliable, and most secure trading platforms in the world.
-	pkgver = 2.2.0
-	pkgrel = 2
+	pkgver = 2.7.0
+	pkgrel = 1
 	url = https://tastytrade.com/
 	arch = x86_64
 	license = custom:commercial
 	conflicts = tastytrade-bin
-	source = https://download.tastytrade.com/desktop-2.x.x/2.2.0/tastytrade-2.2.0-1_amd64.deb
-	sha256sums = fd5e30dc5a21c6ae7499d271e2dcd89a283ccbee5c4bbef6ebd6c7b6778c2e25
+	source = https://download.tastytrade.com/desktop-2.x.x/2.7.0/tastytrade-2.7.0-1_amd64.deb
+	sha256sums = ce3ce6b30e759d36aba4ff82c49d072fd96e11426bfb26a4c599d1c00581233f
 
 pkgname = tastytrade
