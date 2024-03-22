@@ -25,7 +25,7 @@ prepare() {
 package() {
 
   # AppImage
-  install -Dm755 "${_appimage}" "${pkgdir}/opt/appimages/${_appname}.Appimage"
+  install -Dm755 "${_appimage}" "${pkgdir}/opt/appimages/${_appname}.AppImage"
 	
   # Symlink
   install -dm755 "${pkgdir}/usr/bin"
