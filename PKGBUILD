@@ -15,7 +15,7 @@ else
     pkgver=5.0.2
 fi
 
-pkgrel=2
+pkgrel=4
 arch=('any')
 pkgdesc="High performance message passing library (MPI) (Android, ${_android_arch})"
 url='https://www.open-mpi.org'
@@ -39,7 +39,11 @@ options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/openmpi-$pkgver.tar.bz2"
         '0001-Remove-shmctl.patch'
         '0002-Remove-getdtablesize.patch'
-        '0003-Disable-address-patch-in-x86.patch')
+        '0003-Disable-address-patch-in-x86.patch'
+        '0004-Remove-getifaddrs.patch'
+        '0005-Fix-missing-macros-32.patch'
+        '0006-Add-missing-headers.patch'
+        '0007-Fix-missing-macros-64.patch')
 
 if [ "${is_32_bits}" == true ]; then
     _src_md5sum='c9b1c974cfc23c77c0fbdb965cd58a1c'
@@ -50,7 +54,11 @@ fi
 md5sums=(${_src_md5sum}
          '137c5041b5a3a47574b5630b0ff82b4e'
          '34b93930fb47257b3a77e51bd2a13de6'
-         'f4b8f79f3f0cc039d2fcfca113e419e8')
+         'f4b8f79f3f0cc039d2fcfca113e419e8'
+         '49fc1b27cf765f847ce5350a0b38d3f4'
+         'dfec77ec53288e16acbbd7c35f12e3c6'
+         '15e07e34a261129ccc56fe58d115827e'
+         '2801669c30f3f834ee56b5b0eeef9206')
 
 prepare() {
     cd "${srcdir}/openmpi-$pkgver"
@@ -72,9 +80,17 @@ prepare() {
 
     if [ "${is_32_bits}" == true ]; then
         patch -Np1 -i ../0002-Remove-getdtablesize.patch
+        patch -Np1 -i ../0005-Fix-missing-macros-32.patch
 
         if [ "${_android_arch}" == x86 ]; then
             patch -Np1 -i ../0003-Disable-address-patch-in-x86.patch
+        fi
+    else
+        patch -Np1 -i ../0006-Add-missing-headers.patch
+        patch -Np1 -i ../0007-Fix-missing-macros-64.patch
+
+        if [ "${ANDROID_MINIMUM_PLATFORM}" -lt 24 ]; then
+            patch -Np1 -i ../0004-Remove-getifaddrs.patch
         fi
     fi
 
@@ -146,14 +162,9 @@ build() {
             ;;
     esac
 
-    default_android_pp_flags="-fPIC -D_FORTIFY_SOURCE=2 -DEXFS_SUPER_MAGIC=0x45584653 -I${ANDROID_PREFIX_INCLUDE}"
-    default_android_compiler_flags="-fPIC -DEXFS_SUPER_MAGIC=0x45584653 -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4"
-    default_android_linker_flags="-DEXFS_SUPER_MAGIC=0x45584653 -Wl,-O1,--sort-common,--as-needed"
-
-    export CPPFLAGS="${CPPFLAGS} $default_android_pp_flags"
-    export CFLAGS="${CFLAGS} $default_android_compiler_flags"
-    export CXXFLAGS="${CXXFLAGS} $default_android_compiler_flags"
-    export LDFLAGS="${LDFLAGS} $default_android_linker_flags"
+    export CPPFLAGS="${CPPFLAGS} -fPIC -DEXFS_SUPER_MAGIC=0x45584653"
+    export CFLAGS="${CFLAGS} -fPIC -DEXFS_SUPER_MAGIC=0x45584653"
+    export CXXFLAGS="${CXXFLAGS} -fPIC -DEXFS_SUPER_MAGIC=0x45584653"
 
     export PERL=perl
 
@@ -183,7 +194,8 @@ package() {
     source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
-    rm -f "$pkgdir/${ANDROID_PREFIX_BIN}"/*
+    rm -rf "$pkgdir/usr"
+    rm -rf "$pkgdir/${ANDROID_PREFIX_BIN}"
     rm -rf "$pkgdir/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
     ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
