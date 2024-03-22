@@ -3,7 +3,7 @@ pkgname=mailspring-bin
 _pkgname=Mailspring
 pkgver=1.13.3
 _electronversion=22
-pkgrel=4
+pkgrel=5
 pkgdesc="A beautiful, fast and fully open source mail client."
 arch=('x86_64')
 url="https://getmailspring.com/"
@@ -14,7 +14,6 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'krb5'
-    'hicolor-icon-theme'
     'db5.3'
     'openssl-1.0'
     'zenity'

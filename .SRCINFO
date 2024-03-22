@@ -1,13 +1,12 @@
 pkgbase = mailspring-bin
 	pkgdesc = A beautiful, fast and fully open source mail client.
 	pkgver = 1.13.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://getmailspring.com/
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = electron22
 	depends = krb5
-	depends = hicolor-icon-theme
 	depends = db5.3
 	depends = openssl-1.0
 	depends = zenity
