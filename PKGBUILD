@@ -3,7 +3,7 @@ pkgname=notes-nc-bin
 _pkgname=Notes
 pkgver=0.8.0
 _electronversion=26
-pkgrel=5
+pkgrel=6
 pkgdesc="Cross-platform Notes desktop application for markdown notes"
 arch=('x86_64')
 url="https://github.com/mscharley/notes-nc"
@@ -11,7 +11,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'fuse2'
@@ -23,11 +23,12 @@ source=(
 )
 sha256sums=('e0408b98f96518be982163e9268e9b715b8e76abb09b1d7fd36df08467586c59'
             '3dcc1e196d70d5503a020194e91d5d663f428c349622d1f0eb545ec2f354264b'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
