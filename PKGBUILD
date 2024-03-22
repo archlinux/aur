@@ -4,7 +4,7 @@ _pkgname=Miteiru
 pkgver=4.2.1
 _electronversion=21
 _nodeversion=16
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source Electron video player to learn Japanese. It has main language dictionary and tokenizer (morphological analyzer), heavily based on External software MeCab"
 arch=('any')
 url="https://github.com/hockyy/miteiru"
@@ -21,12 +21,13 @@ makedepends=(
     'git'
     'icoutils'
     'base-devel'
+    'gcc'
 )
 source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('SKIP'
+sha256sums=('8e36ae700c4709dc29c98444fc56f6f0288be42023751ebcc6f5184c58cdcf33'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -51,13 +52,15 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    if [ `curl ifconfig.co/country` == "China" ];then
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
         echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
         echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
     fi
     icotool -i 1 -x resources/icon.ico -o resources/icon.png
-    sed 's|icon.icns|icon.png|g;s|"deb", ||g' -i buildConfig/linux22.config.json
+    sed "s|icon.icns|icon.png|g;s|\"deb\", \"AppImage\"|\"dir\"|g" -i buildConfig/linux22.config.json
     npm install
     npm run build:linux22
 }
