@@ -1,0 +1,22 @@
+pkgbase = swim
+	pkgdesc = Build tool for the Spade programming language
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://gitlab.com/spade-lang/swim
+	arch = x86_64
+	license = EUPL-1.2
+	depends = git
+	depends = cargo
+	depends = openssl
+	optdepends = fujprog: upload to devices supported by fujprog
+	optdepends = icestorm-nightly: pack and upload to iCE40-devices
+	optdepends = nextpnr-ice40-nightly: pnr for iCE40-devices
+	optdepends = nextpnr-ecp5-nightly: pnr for ECP5-devices
+	optdepends = openocd: upload to devices supported by openocd
+	optdepends = prjtrellis-nightly: utilities for ECP5-devices
+	optdepends = tinyprog: upload to devices supported by tinyprog
+	optdepends = yosys-nightly: synthesising using the yosys suite
+	source = https://gitlab.com/spade-lang/swim/-/archive/v0.7.0/swim-v0.7.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = swim
