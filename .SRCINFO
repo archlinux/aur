@@ -1,6 +1,6 @@
 pkgbase = foot-transparency-git
-	pkgdesc = A fork of foot - the fast wayland terminal emulator - containing two big transparency features (git)
-	pkgver = 1.15.3.r127.gc628768c
+	pkgdesc = A fork of foot - the fast wayland terminal emulator - now with more transparency options!! (git)
+	pkgver = 1.16.2.r135.gd8f61883
 	pkgrel = 1
 	url = https://codeberg.org/fazzi/foot/src/branch/transparency_yipee
 	arch = x86_64

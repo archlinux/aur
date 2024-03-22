@@ -4,9 +4,9 @@
 
 PGO=auto
 
-pkgdesc='A fork of foot - the fast wayland terminal emulator - containing two big transparency features (git)'
+pkgdesc='A fork of foot - the fast wayland terminal emulator - now with more transparency options!! (git)'
 pkgname=foot-transparency-git
-pkgver=1.15.3.r127.gc628768c
+pkgver=1.16.2.r135.gd8f61883
 pkgrel=1
 conflicts=('foot')
 replaces=('foot-themes')
