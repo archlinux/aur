@@ -3,14 +3,14 @@
 _reponame=kwin-effects-forceblur
 pkgname=kwin-effects-forceblur
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="KWin Blur effect fork with window class force blur feature (Wayland & X11)"
 arch=(x86_64)
 url="https://github.com/taj-ny/$_reponame"
 license=(GPL3)
 depends=(kio knotifications kwin kcrash kglobalaccel)
 makedepends=(git extra-cmake-modules qt6-tools)
-source=("$url/archive/v$pkgver.tar.gz")
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 install="$pkgname.install"
 sha256sums=('44b73b955c17abb8f494941ea38df79d50299bc6679a86bd1701cf5454579626')
 
