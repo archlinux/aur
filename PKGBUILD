@@ -1,4 +1,4 @@
-# Maintainer: Evine Deng <evinedeng@hotmail.com>
+# Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=cmd-wrapped
 pkgver=0.2.0
@@ -19,6 +19,6 @@ build() {
 package() {
     cd "${pkgname}-${pkgver}"
     install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 License "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" *.md
 }
