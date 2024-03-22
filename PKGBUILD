@@ -1,6 +1,6 @@
 # Maintainer: Danny Grove <dgrove@hashbang.sh>
 pkgname=mtls-server
-pkgver=0.18.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="A Web of Trust Short-Lived Client Certificate System (Server)"
 url="https://github.com/drgrove/mtls-server"
@@ -12,8 +12,8 @@ depends=("python-flask"
          "python-gnupg"
          "python-psycopg2")
 makedepends=("python-setuptools" "python-setuptools-scm")
-source=("https://pypi.io/packages/source/m/mtls-server/${pkgname}-${pkgver}.tar.gz"{,.asc})
-sha256sums=('20f116079c21cca29679919ba7dd6ec3037b85cebfdb1bd27ce213a56de9aa5f'
+source=("https://github.com/drGrove/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.sig})
+sha256sums=('06eeb79b914cd89809253f3b10d8a7d3df0bc2c1fc406a05455d857eb5280639'
             'SKIP')
 validpgpkeys=('C92FE5A3FBD58DD3EC5AA26BB10116B8193F2DBD') # Danny Grove <dgrove@hashbang.sh>
 

@@ -1,6 +1,6 @@
 pkgbase = mtls-server
 	pkgdesc = A Web of Trust Short-Lived Client Certificate System (Server)
-	pkgver = 0.18.0
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/drgrove/mtls-server
 	arch = any
@@ -12,11 +12,10 @@ pkgbase = mtls-server
 	depends = python-cryptography
 	depends = python-gnupg
 	depends = python-psycopg2
-	source = https://pypi.io/packages/source/m/mtls-server/mtls-server-0.18.0.tar.gz
-	source = https://pypi.io/packages/source/m/mtls-server/mtls-server-0.18.0.tar.gz.asc
+	source = https://github.com/drGrove/mtls-server/releases/download/v0.20.0/mtls-server-0.20.0.tar.gz
+	source = https://github.com/drGrove/mtls-server/releases/download/v0.20.0/mtls-server-0.20.0.tar.gz.sig
 	validpgpkeys = C92FE5A3FBD58DD3EC5AA26BB10116B8193F2DBD
-	sha256sums = 20f116079c21cca29679919ba7dd6ec3037b85cebfdb1bd27ce213a56de9aa5f
+	sha256sums = 06eeb79b914cd89809253f3b10d8a7d3df0bc2c1fc406a05455d857eb5280639
 	sha256sums = SKIP
 
 pkgname = mtls-server
-
