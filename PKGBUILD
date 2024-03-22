@@ -16,11 +16,11 @@ source_riscv64=("https://mirror.iscas.ac.cn/ruyisdk/ruyi/releases/$pkgver/ruyi.r
 package() {
     install -d "${pkgdir}/usr/bin"
     if [ "$CARCH" == "x86_64" ]; then
-        cp "${srcdir}/ruyi.amd64" "${pkgdir}/usr/bin/ruyi"
+        install -m755 "${srcdir}/ruyi.amd64" "${pkgdir}/usr/bin/ruyi"
     elif [ "$CARCH" == "arm64" ]; then
-        cp "${srcdir}/ruyi.arm64" "${pkgdir}/usr/bin/ruyi"
+        install -m755 "${srcdir}/ruyi.arm64" "${pkgdir}/usr/bin/ruyi"
     elif [ "$CARCH" == "riscv64" ]; then
-        cp "${srcdir}/ruyi.riscv64" "${pkgdir}/usr/bin/ruyi"
+        install -m755 "${srcdir}/ruyi.riscv64" "${pkgdir}/usr/bin/ruyi"
     else
         echo "Unsupported architecture: $CARCH"
     fi
