@@ -1,5 +1,5 @@
 # Maintainer: Kalani Helekunihi <i [at] am [dot] guru>
-# Maintainer: Evine Deng <evinedeng@hotmail.com>
+# Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=xteve
 _reponame="xTeVe"
@@ -10,7 +10,6 @@ arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://xteve.de"
 _url="https://github.com/${pkgname}-project/${_reponame}"
 license=('MIT')
-depends=("glibc")
 makedepends=("go")
 source=("${pkgname}-${pkgver}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgname}.service"

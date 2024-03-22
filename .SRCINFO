@@ -13,7 +13,6 @@ pkgbase = xteve
 	arch = riscv64
 	license = MIT
 	makedepends = go
-	depends = glibc
 	source = xteve-2.2.0.200.tar.gz::https://github.com/xteve-project/xTeVe/archive/refs/tags/2.2.0.200.tar.gz
 	source = xteve.service
 	source = xteve.sysusers
