@@ -18,13 +18,13 @@ sha256sums=('SKIP')
 prepare() {
   cd Footage
   export CARGO_HOME="$srcdir/CARGO_HOME"
-  export RUSTUP_TOOLCHAIN=nightly
+  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   export CARGO_HOME="$srcdir/CARGO_HOME"
-  export RUSTUP_TOOLCHAIN=nightly
+  export RUSTUP_TOOLCHAIN=stable
   arch-meson Footage build
   meson compile -C build
 }
