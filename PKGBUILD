@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=android-toolkit-bin
 _appname=Android-Toolkit
-pkgver=1.5.20
+pkgver=1.5.21
 _electronversion=25
-pkgrel=8
+pkgrel=1
 pkgdesc="A cross platform desktop app written in Typescript/Node using React and Electron.A GUI for adb and can be used to modify android devices such as firesticks and google TVs."
 arch=('x86_64')
 url="https://github.com/AnthonyGress/Android-Toolkit"
@@ -13,7 +13,6 @@ conflicts=("${pkgname%-bin}")
 depends=(
     'android-sdk-platform-tools'
     "electron${_electronversion}-bin"
-    'hicolor-icon-theme'
 )
 makedepends=(
     'fuse2'
@@ -23,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/AnthonyGress/Android-Toolkit/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('da6f1f81366cec5bbc69cb0281853847966f7de02d7a54a01254b56c575263b8'
+sha256sums=('e2b63d85b4dcf02f4e433b027871d20119eb56fb0dc6b21a6b661da040c7279b'
             '65cb0d2fdca7e4375a2ab466fb1e37fef2514eb10c88c5cf8998893a77295176'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
