@@ -42,6 +42,8 @@ build () {
   sed "s/^options=(\(.*\))$/options=(\1 '\!lto')/" PKGBUILD -i
   # disable CFLAGS and CXXFLAGS and LDFLAGS of makepkg.conf
   #sed -r "/(export LDFLAGS=.*)/s/(.+)/unset CFLAGS\nunset CXXFLAGS\n\1/" PKGBUILD -i
+  # linker lld
+  sed -r "/(export LDFLAGS=.*)/s/(.+)/export LDFLAGS+=' -fuse-ld=lld'\n\1/" PKGBUILD -i
   # pacman-static build & install
   [[ $(LC_ALL=C pacman -Qi pacman-static |grep "6.1.0") ]] || makepkg -si --skippgpcheck --noconfirm
 
