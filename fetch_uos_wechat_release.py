@@ -29,70 +29,142 @@
 import requests
 import zlib
 import hashlib
-import os.path
-from dataclasses import dataclass
+import os
 
-@dataclass
 class Architecture:
-    uos: str
-    arch: str
+    arch_uos: str
+    arch_archlinux: str
     version: str
     url: str
     file: str
-    sha256sum: bytes
+    sha256: str
+    sha1: str
+    md5: str
+
+    def __init__(self, arch_uos: str, arch_archlinux: str):
+        self.arch_uos = arch_uos
+        self.arch_archlinux = arch_archlinux
+        self.version = None
+        self.url = None
+        self.file = None
+        self.size = None
+        self.sha256 = None
+        self.sha1 = None
+        self.md5 = None
+
+    def fetch(self, url_appstore: str, session: requests.Session):
+        print(f"=> Fetching for architecture '{self.arch_uos}' (Uniontech OS) / '{self.arch_archlinux}' (Arch Linux)")
+        url = f'{url_appstore}/dists/eagle/appstore/binary-{self.arch_uos}/Packages.gz'
+        response = session.get(url, stream = True)
+        if response.status_code != 200:
+            raise Exception(f'Request code is {response.status_code}')
+        decompressor = zlib.decompressobj(wbits = 31)
+        data = bytearray()
+        for chunk in response.iter_content(0x100000):
+            data += decompressor.decompress(chunk)
+        data += decompressor.flush()
+        
+        wechat = None
+        for package in data.split(b'\n\n'):
+            if package.startswith(b'Package: com.tencent.wechat\n'):
+                wechat=package
+                break
+        if wechat is None:
+            raise Exception(f"Failed to find package com.tencent.wechat for arch '{self.arch_uos}'")
+
+        filename = None
+        for line in package.split(b'\n'):
+            if line.startswith(b'Version: '):
+                self.version = line[9:].decode('utf-8')
+            elif line.startswith(b'Filename: '):
+                filename = line[10:].decode('utf-8')
+            elif line.startswith(b'Size: '):
+                self.size = int(line[6:])
+            elif line.startswith(b'SHA256: '):
+                self.sha256 = line[8:].decode('utf-8')
+            elif line.startswith(b'SHA1: '):
+                self.sha1 = line[6:].decode('utf-8')
+            elif line.startswith(b'MD5sum: '):
+                self.md5 = line[8:].decode('utf-8')
+        if self.version is None:
+            raise Exception("Failed to get version")
+        if filename is None:
+            raise Exception(f"Failed to get remote filename")
+        self.url = f"{url_appstore}/{filename}"
+        self.file = f"wechat-universal_{self.version}_{self.arch_archlinux}.deb"
+        if self.size is None:
+            raise Exception("Failed to get size")
+        
+    def cache(self, session: requests.Session):
+        print(f"=> Caching for architecture '{self.arch_uos}' (Uniontech OS) / '{self.arch_archlinux}' (Arch Linux)")
+        if os.path.exists(self.file):
+            with open(self.file, "rb") as f:
+                data = f.read()
+            sha256 = hashlib.sha256(data).hexdigest()
+            sha1 = hashlib.sha1(data).hexdigest()
+            md5 = hashlib.md5(data).hexdigest()
+            integ = True
+            if sha256 != self.sha256:
+                print(f"sha256 not right, local {sha256} != remote {self.sha256}")
+                integ = False
+            if sha1 != self.sha1:
+                print(f"sha1 not right, local {sha1} != remote {self.sha1}")
+                integ = False
+            if md5 != self.md5:
+                print(f"md5 not right, local {md5} != remote {self.md5}")
+                integ = False
+            if integ:
+                print("All integ passed, no need to redownload")
+                return
+            os.remove(self.file)
+            print("Some integ failed, re-downloading")
+
+        response = session.get(self.url)
+        if response.status_code != 200:
+            raise Exception(f'Request code is {response.status_code}')
+        sha256 = hashlib.sha256(response.content).hexdigest()
+        sha1 = hashlib.sha1(response.content).hexdigest()
+        md5 = hashlib.md5(response.content).hexdigest()
+        integ = True
+        if sha256 != self.sha256:
+            print(f"sha256 not right, file {sha256} != repo {self.sha256}")
+            integ = False
+        if sha1 != self.sha1:
+            print(f"sha1 not right, file {sha1} != repo {self.sha1}")
+            integ = False
+        if md5 != self.md5:
+            print(f"md5 not right, file {md5} != repo {self.md5}")
+            integ = False
+        if not integ:
+            print("Some integ passed, would not save it, try to re-cache")
+            return
+        print("All integ passed, saving it to disk")
+        with open(self.file, "wb") as f:
+            f.write(response.content)
+
 
 architectures=(
-    Architecture('amd64', 'x86_64', '', '', '', b''),
-    Architecture('arm64', 'aarch64', '', '', '', b''),
-    Architecture('loongarch64', 'loong64', '', '', '', b'')
+    Architecture('amd64', 'x86_64'),
+    Architecture('arm64', 'aarch64'),
+    Architecture('loongarch64', 'loong64')
 )
 
-url_appstore='https://home-store-packages.uniontech.com/appstore'
 
+
+url_appstore='https://home-store-packages.uniontech.com/appstore'
 session = requests.Session()
 
 for architecture in architectures:
-    print(f"=> Fetching for architecture '{architecture.uos}' (Uniontech OS) / '{architecture.arch}' (Arch Linux)")
-    url = f'{url_appstore}/dists/eagle/appstore/binary-{architecture.uos}/Packages.gz'
-    response = session.get(url)
-    if response.status_code != 200:
-        raise Exception(f'Request code is {response.status_code}')
-    buffer = zlib.decompress(response.content, wbits = 31)
-    packages=buffer.split(b'\n\n')
-    wechat=None
-    for package in packages:
-        if package.startswith(b'Package: com.tencent.wechat\n'):
-            wechat=package
-            break
-    if wechat is None:
-        raise Exception(f"Failed to find package com.tencent.wechat for arch '{architecture.uos}'")
-    version = None
-    filename = None
-    for line in package.split(b'\n'):
-        if line.startswith(b'Version: '):
-            version = line[9:]
-        if line.startswith(b'Filename: '):
-            filename = line[10:]
-    if version is None or filename is None:
-        raise Exception(f"Failed to get version and filename for arch '{architecture.uos}'")
-    architecture.version = version.decode('utf-8')
-    architecture.url = f"{url_appstore}/{filename.decode('utf-8')}"
-    architecture.file = f"wechat-universal_{architecture.version}_{architecture.arch}.deb"
-    print(f"{architecture.arch}: {architecture.version}: {architecture.url} => {architecture.file}")
-    if os.path.exists(architecture.file):
-        with open(architecture.file, 'rb') as f:
-            buffer = f.read()
-    else:
-        response = session.get(architecture.url)
-        if response.status_code != 200:
-            raise Exception(f'Request code is {response.status_code}')
-        with open(architecture.file, 'wb') as f:
-            f.write(response.content)
-        buffer = response.content
-    sha256sum = hashlib.sha256(buffer)
-    architecture.sha256sum = sha256sum.hexdigest()
+    architecture.fetch(url_appstore, session)
+for architecture in architectures:
+    print(f"source_{architecture.arch_archlinux}=(\n\t'{architecture.file}::{architecture.url}'\n)")
+for architecture in architectures:
+    print(f"sha256sums_{architecture.arch_archlinux}=(\n\t'{architecture.sha256}'\n)")
+for architecture in architectures:
+    print(f"sha1sums_{architecture.arch_archlinux}=(\n\t'{architecture.sha1}'\n)")
+for architecture in architectures:
+    print(f"md5sums_{architecture.arch_archlinux}=(\n\t'{architecture.md5}'\n)")
 
+print("Caching all files and verifying them...")
 for architecture in architectures:
-    print(f"source_{architecture.arch}=(\n\t'{architecture.file}::{architecture.url}'\n)")
-for architecture in architectures:
-    print(f"sha256sums_{architecture.arch}=(\n\t'{architecture.sha256sum}'\n)")
+    architecture.cache(session)
