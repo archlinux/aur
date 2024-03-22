@@ -1,0 +1,19 @@
+pkgbase = greenlight-git
+	pkgdesc = Client for xCloud and Xbox home streaming.
+	pkgver = v2.2.1.r2.f71ee05
+	pkgrel = 1
+	url = https://github.com/unknownskl/greenlight
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = yarn
+	makedepends = libxcrypt-compat
+	depends = nodejs
+	provides = greenlight
+	conflicts = greenlight=v2.2.1.r2.f71ee05
+	source = greenlight::git+https://github.com/unknownskl/greenlight.git
+	source = https://raw.githubusercontent.com/unknownskl/greenlight/main-v2/LICENSE
+	sha512sums = SKIP
+	sha512sums = 7462e619774282261613b33196fbfd4840087a7e1b863cc039e217cea289bea7a3d0c1100c32e16168494ae3873b4c6ea2aacd6d62790450b12b39dba39039ae
+
+pkgname = greenlight-git
