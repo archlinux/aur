@@ -122,6 +122,7 @@ prepare(){
 
   plain ""
 
+  # Enable BORE
   msg "Enable BORE CPU Scheduler"
   scripts/config --enable CONFIG_SCHED_BORE
 
