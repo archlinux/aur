@@ -15,7 +15,7 @@ depends=(python
     python-pybase62
     python-base58
     python-requests
-    python-bs4
+    python-beautifulsoup4
     python-sympy
     python-urllib3
     python-rarfile)
