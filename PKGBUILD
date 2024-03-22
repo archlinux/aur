@@ -1,4 +1,4 @@
-# Maintainer: Evine Deng <evinedeng@hotmail.com>
+# Maintainer: devome <evinedeng@hotmail.com>
 
 _pkgname="restic-browser"
 pkgname="${_pkgname}-bin"

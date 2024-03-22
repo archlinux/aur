@@ -1,5 +1,5 @@
-pkg
-src
-icon.png
+/pkg
+/src
+/*.png
 *.zip
 *.pkg.tar.zst
