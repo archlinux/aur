@@ -65,12 +65,12 @@ post_install() {
     mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'ethoscope'@'%' WITH GRANT OPTION";
     chown -R mysql:mysql /var/lib/mysql
 
-    echo "setup mariadb configuration"
-    echo '[server]' > /etc/my.cnf.d/server.cnf
-    echo 'log-bin=mysql-bin' >> /etc/my.cnf.d/server.cnf
-    echo 'binlog_format=mixed' >> /etc/my.cnf.d/server.cnf
-    echo 'expire_logs_days = 10' >> /etc/my.cnf.d/server.cnf
-    echo 'max_binlog_size  = 100M' >> /etc/my.cnf.d/server.cnf
+    #echo "creating and handling binary log in mariadb configuration"
+    #echo '[server]' > /etc/my.cnf.d/server.cnf
+    #echo 'log-bin=mysql-bin' >> /etc/my.cnf.d/server.cnf
+    #echo 'binlog_format=mixed' >> /etc/my.cnf.d/server.cnf
+    #echo 'expire_logs_days = 10' >> /etc/my.cnf.d/server.cnf
+    #echo 'max_binlog_size  = 100M' >> /etc/my.cnf.d/server.cnf
 
     echo "install picamera settings into the boot/config.txt"
     echo 'start_file=start_x.elf' > /boot/config.txt
