@@ -24,7 +24,6 @@ _srcenv() {
   export PKG_CONFIG_ALLOW_CROSS=1
   export RUSTUP_TOOLCHAIN=stable
   export TARGET="$CARCH-unknown-linux-musl"
-  rustup target add $TARGET
   # If you prefer the settings in ~/.config/cargo.toml, comment out the following two lines to enable them.
   #source <(cargo +nightly -Z unstable-options rustc --print cfg|grep -E "target_(arch|vendor|os|env)")
   #export TARGET="${target_arch}-${target_vendor}-${target_os}-${target_env}"
