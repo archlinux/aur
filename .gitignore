@@ -1,4 +1,4 @@
-docker-image-extract
-pkg
-src
+/docker-image-extract
+/pkg
+/src
 *.pkg.tar.zst

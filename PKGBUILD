@@ -1,4 +1,4 @@
-# Maintainer: Evine Deng <evinedeng@hotmail.com>
+# Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=docker-image-extract-git
 pkgver=20230808.224523
