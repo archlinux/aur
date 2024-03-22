@@ -3,7 +3,7 @@ pkgname=gopher-bin
 _pkgname=Gopher
 pkgver=1
 _electronversion=2
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-Platform Desktop Password Manager"
 arch=('x86_64')
 url="https://github.com/HusnainTaj/Gopher"
@@ -25,11 +25,12 @@ source=(
 sha256sums=('3d1ada1614d852f49d3606faa95eb4425829693cefa738bf2359b2a86ccacb95'
             'a48a85aa1cf632a0e34abe0696865e1a379bcbd6878a9e10bedd400e1ec2a90f'
             'cd28f93efae53392db346b89ea3a61c8cbad465c20cfb1083e827cfff8e62090'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
