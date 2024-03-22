@@ -1,4 +1,4 @@
-pkgbase = BMO
+pkgbase = bmo
 	pkgdesc = CLI tool to improve developement experience for traditional compiled web servers
 	pkgver = v2.0.stable
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = BMO
 	source = bmo::git+https://github.com/siddhantmadhur/bmo.git
 	sha256sums = SKIP
 
-pkgname = BMO
+pkgname = bmo

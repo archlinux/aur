@@ -1,5 +1,5 @@
 # Maintainer: Siddhant Madhur <siddhant.madhur@gmail.com>
-pkgname=BMO
+pkgname=bmo
 pkgver=v2.0.stable
 pkgrel=1
 pkgdesc="CLI tool to improve developement experience for traditional compiled web servers"
