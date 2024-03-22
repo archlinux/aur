@@ -1,8 +1,8 @@
 # Maintainer: Tim Lagnese <tim at inept tech>
 
 pkgname=alire
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="A catalog of ready-to-use Ada libraries plus a command-line tool (alr) to obtain, build, and incorporate them into your own projects. It aims to fulfill a similar role to Rust's cargo or OCaml's opam."
 arch=('i686' 'x86_64')
 url="https://alire.ada.dev/"
@@ -33,27 +33,27 @@ git+https://github.com/mosteo/si_units#branch=alire
 # Transitive dependency of aaa
 git+https://github.com/mosteo/umwi.git#commit=34abe38402431ced3e2f2018acecc6dfa1ab860e
 )
-b2sums=('1323435d5a3591cbbf9e27d017caf3c426fe9aa571f8a092784acf8b85f350c885fc07f32c9670b0e32250bac4490387e0f022a3312b3cd7c0c2831d9d5c1a2a'
-        'f817589eaa80cddff6b41154c57955e1698af8562b56edce8fccac9924d3f61be67ef26b7253fa77cf1e99f51a265208240a7c0984ceb44662d4da9223efa2e4'
+b2sums=('3ab51557039873ade9309f0dbd46a9f248cca48a6bacaaa118c596db5182c95878322ac1d4f6d1091dff804b828be083ae253af7590326a8daa31fc322a12510'
+        'ea3ecc85486a317533148bafe2ff908227c8810e8fec7143c229b6ccde4e39072e703aa7a17678b0d1e36653f5e50adb1dd770acd9e3a54c7bbb626e3d7de373'
+        '178b0f0bae8f22a8ed8abe6012b306d7be6cc57ad52710196497d313b182d5ad888821e2da8145ea3d49fd1867ced2c85f23d5d31d179440070362a4552caee4'
+        'c46d3b2dbfb4cf36fccca90f4c546a5121e4be34c5b8cda45e65d4e7296840789bb4c8979155861ca7e386ba318df84f81b9551653bbf1953b475b23a294597d'
+        '8a900b1507ccf19b5405318b7265d2731d9b6cfb00c58b26bb6d94e9e1ee3e8817a3057f419e4cb0e79be85b326d00e0d272ce7c085aef017c92a2b969d5e1bc'
+        '657254533f860a5168acd8b844a7ee74b13dec005e4337f2ae2e5b424ff606e2a90e736779452103476655d45961bf28d18154eeae930e66ae0ca0f62390a5ca'
+        '2582f1809fffe20899c57c947aebf439a2e9a99c269168c10f11a876b82ebb11ed09c71308fae895134c6a3510b319d099b67e474cba36eaa5b24678379472c5'
+        '04153f28d513b403edf359632647786c53904450f24d20d30ee521ee76d7f1dc347041f7e186182bb8c867df4ddb6e1d01ff0e24179d000da23e08df304a7132'
+        'ae22a179cafd88438d1b2f57be6f37515176bd00e3dbebdfdc587bcc81d5b7034b0090608f6a1e2786a4f2f1b35b9481c1f6a08e919d10cd951b9e482f2257f6'
+        '0c463de6da532b8202ca9f7238b03935ce8fb109a4ddaf2939ef1de073db0e6f730475329f9c15db2d2d251bce4451bc9125e35dee07c4c203c342f5bbfe0c7b'
+        '9b8068065ffd94f04b1d39145621469524ce681a786bf0c33f079d8570b81436f0e13100e34bf4d2ddab96cf94c85f548fafcb930ca9198cfe7e276713abecc1'
+        'a43e64fef4481de0293f69fc194b600fc64f7e2d6d70f61f2c643e1717db9d6c50cfac2a292b25e8d8cb1707c10b7c4bfa4a406292aee8526ad47985b69a34c9'
+        'f75890082fbe661fd0a2a18f9734b825e9519d9030611aa2e3b246f2f0a25721d45dc7c550296d81eadd8387d4baf926fbbb7a6cb77a2dc9c35835eb6c013fc4'
+        '3786dcc29c882c72f6c80d177acd0ca7a1a4a1313ee51da708e8f1b01def8d524be885d91481c3f92d8b3adb5aa752a1fcc4a31b497e319984c3204e180467da'
+        '3d8a7ab31c1557e9344a3273fb9ee708e3b857a6c6700bc677ada15492c5a1e5d745e822b35825bead460afd204854a1a9742fbe724afb256ad96dc2fd99e4a9'
+        '196eb6045eeb4d1a538d1058883e1620f104c655c6cccaaaf66eebedd3e62a5980b1ed40e2b942608c60f02a92899390750a10553ff8b57986c7255b92b1c390'
         'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP')
+        '476a25b32c582ef5a2dff6b0a009390f4b20d0897be6bb7618d64616e1b3b5a43c8093686be8aee87cd8f10a7212851ffc2542d4a630c4be39c417c06d9e72a9')
 
 prepare()
 {
