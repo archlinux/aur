@@ -11,6 +11,7 @@ groups=()
 
 depends=(
 	"zenity"
+	"xdg-dbus-proxy"
 	"nss"
 	"bubblewrap"
 	"xcb-util-renderutil"
