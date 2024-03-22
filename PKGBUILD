@@ -3,15 +3,14 @@ pkgname=passbox
 pkgver=1.0.0
 _electronversion=24
 _nodeversion=18
-pkgrel=5
+pkgrel=6
 pkgdesc="A versatile toolbox primarily designed for password management and note-taking."
 arch=('x86_64')
 url="https://github.com/zzk13180/passbox"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-    "electron${_electronversion}"
-    'hicolor-icon-theme'
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'gendesk'
@@ -19,13 +18,14 @@ makedepends=(
     'pnpm'
     'nodejs'
     'git'
+    'curl'
 )
 source=(
     "${pkgname}.git::git+${url}#tag=${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('SKIP'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+sha256sums=('80c9134d7a466460053eca58adbb8c00e4654c509ebe624775bf777d86e30786'
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -36,6 +36,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
@@ -45,10 +46,19 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     pnpm config set store-dir "${srcdir}/.pnpm_store"
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
     pnpm config set link-workspace-packages true
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
+    sed "s|AppImage|dir|g" -i electron-builder.json
     cp src/app/services/userState.service.ts src/app/services/userstate.service.ts
     pnpm install
     pnpm run build
