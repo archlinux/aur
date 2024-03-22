@@ -1,10 +1,10 @@
 pkgbase = youtube-local
 	pkgdesc = browser-based client for watching Youtube anonymously and with greater page performance
-	pkgver = 2.8.6
+	pkgver = 2.8.7
 	pkgrel = 1
 	url = https://github.com/user234683/youtube-local
 	arch = any
-	license = AGPL-3.0-or-later
+	license = custom
 	checkdepends = python-pytest
 	depends = python-flask
 	depends = python-gevent
@@ -16,9 +16,9 @@ pkgbase = youtube-local
 	depends = python-stem
 	provides = youtube-local
 	conflicts = youtube-local-git
-	source = youtube-local-2.8.6.tar.gz::https://github.com/user234683/youtube-local/archive/refs/tags/v2.8.6.tar.gz
+	source = youtube-local-2.8.7.tar.gz::https://github.com/user234683/youtube-local/archive/refs/tags/v2.8.7.tar.gz
 	source = remove-portable-mode.patch
-	sha256sums = 0a7840400f2aa9367c68b6628a8c243491abd6b3a0ad247743111672274a8f79
+	sha256sums = 2a292834699566b04750c8c6992b8b2aacc3e932fdb9324d2b480dfdb7f7182e
 	sha256sums = d479daf59f4a073a7e7ba462b6932d7928c3876c5cc86eef9eeae74cf9fac761
 
 pkgname = youtube-local
