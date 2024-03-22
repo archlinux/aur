@@ -1,7 +1,7 @@
 pkgbase = git-crypt-patched-git
 	pkgdesc = Transparent file encryption in Git with patch for worktree
 	pkgver = 0.7.0_2_g3349835
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.agwa.name/projects/git-crypt/
 	arch = x86_64
 	license = GPL3
