@@ -9,7 +9,6 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 url="https://github.com/jjlin/${pkgname%-*}"
 license=("MIT")
-depends=("curl")
 makedepends=("git")
 source=("git+${url}")
 sha256sums=('SKIP')
