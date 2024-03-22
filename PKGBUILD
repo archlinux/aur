@@ -3,12 +3,11 @@
 
 pkgname=unofficial-homestuck-collection
 pkgver=2.0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="The Unofficial Homestuck Collection"
 arch=('x86_64')
 url="https://bambosh.github.io/unofficial-homestuck-collection/"
 license=('custom:chrome' 'custom:electron')
-depends=('libvips')
 makedepends=('nodejs-lts-fermium' 'gendesk' 'yarn' 'electron')
 source=("https://github.com/Bambosh/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('79dd52c709c56a385fecc1d64a700208bab752140201edfd0d4a1c0054e59f252ea2310bc31e26027204629277ecfa1387f6573669c59faed5ac728d25924b7f')
