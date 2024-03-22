@@ -22,14 +22,14 @@ prepare() {
 # Dependencies
   cd papa
   export CARGO_HOME="$srcdir/CARGO_HOME"
-  export RUSTUP_TOOLCHAIN=nightly
+  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd papa
   export CARGO_HOME="$srcdir/CARGO_HOME"
-  export RUSTUP_TOOLCHAIN=nightly
+  export RUSTUP_TOOLCHAIN=stable
   cargo build --release
 }
 
