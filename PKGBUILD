@@ -2,7 +2,7 @@
 pkgname=firefly-iota-desktop-bin
 pkgver=2.0.9
 _electronversion=27
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage your IOTA assets directly from your computer with both software and hardware wallet support. Earn staking rewards and participate in governance votes."
 arch=('x86_64')
 url="https://firefly.iota.org/"
@@ -24,11 +24,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1fecfb2a80d416b33e8862d92e1e7c5c2f1f2ca86caf766e92e6f1cc543b334a'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
