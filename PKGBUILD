@@ -1,4 +1,4 @@
-# Maintainer: Evine Deng <evinedeng@hotmail.com>
+# Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=tieba-cloud-sign
 pkgver=20231124.154303
