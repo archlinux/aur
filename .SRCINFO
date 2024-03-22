@@ -1,7 +1,7 @@
 pkgbase = glyphr-studio-desktop-bin
 	pkgdesc = A desktop client for Glyphr Studio built in electron.Glyphr Studio is a free, web based font designer.
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.glyphrstudio.com/
 	arch = x86_64
 	license = GPL-3.0-only
@@ -12,6 +12,6 @@ pkgbase = glyphr-studio-desktop-bin
 	source = glyphr-studio-desktop-0.6.0.deb::https://github.com/glyphr-studio/Glyphr-Studio-Desktop/releases/download/v0.6.0/glyphr-studio-desktop_0.6.0_amd64.deb
 	source = glyphr-studio-desktop.sh
 	sha256sums = b156bd22d1864c71ddb5063c17f405d1340760207cf15973082e6d072e55c317
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = glyphr-studio-desktop-bin
