@@ -1,6 +1,6 @@
 pkgbase = losslesscut-git
 	pkgdesc = The swiss army knife of lossless video/audio editing.Using system-wide ffmpeg.
-	pkgver = 3.60.0.r75.gdaaa2c6
+	pkgver = 3.60.0.r89.gb791c9f
 	pkgrel = 1
 	url = https://github.com/mifi/lossless-cut
 	arch = x86_64
@@ -19,6 +19,6 @@ pkgbase = losslesscut-git
 	source = losslesscut.git::git+https://github.com/mifi/lossless-cut.git
 	source = losslesscut.sh
 	sha256sums = SKIP
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = losslesscut-git
