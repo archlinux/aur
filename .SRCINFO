@@ -1,7 +1,7 @@
 pkgbase = deadbolt-bin
 	pkgdesc = Dead-simple file encryption for any OS
 	pkgver = 1.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/alichtman/deadbolt
 	arch = x86_64
 	license = MIT
@@ -14,6 +14,6 @@ pkgbase = deadbolt-bin
 	source = deadbolt.sh
 	sha256sums = 9e352bd7f5023fcdaa7d85f1167ba2805b2a3477af53dc547412ebff5e8f7ead
 	sha256sums = b6f8e4a32cbd0221c7a41052b9e4b06e1a2216741b41d1951b9163445907cb3b
-	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = deadbolt-bin
