@@ -3,7 +3,7 @@
 _reponame=kwin-effects-forceblur
 pkgname=kwin-effects-forceblur
 pkgver=1.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="KWin Blur effect fork with window class force blur feature (Wayland & X11)"
 arch=(x86_64)
 url="https://github.com/taj-ny/$_reponame"
