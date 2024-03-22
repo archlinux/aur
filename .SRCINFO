@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-openmpi
 	pkgdesc = High performance message passing library (MPI) (Android, aarch64)
 	pkgver = 5.0.2
-	pkgrel = 2
+	pkgrel = 4
 	url = https://www.open-mpi.org
 	arch = any
 	license = BSD-3-Clause AND LicenseRef-MPICH
@@ -28,9 +28,17 @@ pkgbase = android-aarch64-openmpi
 	source = 0001-Remove-shmctl.patch
 	source = 0002-Remove-getdtablesize.patch
 	source = 0003-Disable-address-patch-in-x86.patch
+	source = 0004-Remove-getifaddrs.patch
+	source = 0005-Fix-missing-macros-32.patch
+	source = 0006-Add-missing-headers.patch
+	source = 0007-Fix-missing-macros-64.patch
 	md5sums = 047ea0985b79d30d5a24ee72cbf5f4bf
 	md5sums = 137c5041b5a3a47574b5630b0ff82b4e
 	md5sums = 34b93930fb47257b3a77e51bd2a13de6
 	md5sums = f4b8f79f3f0cc039d2fcfca113e419e8
+	md5sums = 49fc1b27cf765f847ce5350a0b38d3f4
+	md5sums = dfec77ec53288e16acbbd7c35f12e3c6
+	md5sums = 15e07e34a261129ccc56fe58d115827e
+	md5sums = 2801669c30f3f834ee56b5b0eeef9206
 
 pkgname = android-aarch64-openmpi
