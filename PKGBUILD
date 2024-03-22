@@ -47,7 +47,7 @@ build () {
   LD_FLAG="-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now"
   sed -r "/(export LDFLAGS=.*)/s/(.+)/export CFLAGS='$C_FLAG'\nexport CXXFLAGS='$CXX_FLAG'\nexport LDFLAGS='$LD_FLAG'\n\1/" PKGBUILD -i
   # pacman-static build & install
-  [[ $(LC_ALL=C pacman -Qi pacman-static |grep "6.1.0") ]] || makepkg -si --skippgpcheck
+  [[ $(LC_ALL=C pacman -Qi pacman-static |grep "6.1.0") ]] || makepkg -si --skippgpcheck --noconfirm
 
   _srcenv
   if pacman -T pacman-git > /dev/null; then
