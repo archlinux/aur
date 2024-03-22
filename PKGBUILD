@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=buttercup
 pkgname="${_pkgname}-desktop-bin"
-pkgver=2.26.1
+pkgver=2.26.2
 _electronversion=22
 pkgrel=1
 pkgdesc="Cross-Platform Passwords & Secrets Vault"
@@ -17,7 +17,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'hicolor-icon-theme'
 )
 makedepends=(
     'fuse2'
@@ -27,9 +26,9 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.AppImage::${_ghurl}/releases/do
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname//b/B}-linux-x86_64.AppImage")
 source=("${pkgname%-bin}.sh")
 sha256sums=('dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('bea5660b7f772d8e3961fc2c35df53a38c125dedac1c392375b125e4d4e6bf72')
-sha256sums_armv7h=('27410b5b63114be0b6e293e3a982bf311dbe4bee7a820c461bfea71e458276e9')
-sha256sums_x86_64=('baccaaf6a7fa6c12472ab786ccaccc75960d9a9646b6451049c1f29359ef1502')
+sha256sums_aarch64=('95fc94a4edd219bd85b9ffba3318bfc787f9dee80fbdf3abbf9f4bc41f353539')
+sha256sums_armv7h=('fe7823853e7079f4a9939aa7e1d8c61f6a570a4e5339dd3761045c4f1fce1330')
+sha256sums_x86_64=('c178a71f7fe5ca55c236cfc2fecd82710efd8b1f3b42d70adecaba6738058755')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
