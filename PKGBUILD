@@ -2,7 +2,7 @@
 pkgname=cellframe-node-debug
 _pkgname=cellframe-node
 pkgver=5.2.483
-pkgrel=1
+pkgrel=2
 pkgdesc="Cellframe blockchain node with a powerful SDK"
 arch=('x86_64' 'aarch64')
 url="https://cellframe.net"
@@ -30,7 +30,7 @@ md5sums=('SKIP'
          '42a6fdb6b79a93d0a31dd33a40456c9c')
 install=$_pkgname.install
 conflicts=(cellframe-dashboard cellframe-wallet cellframe-node)
-options=(!strip !debug)
+options=(!strip !debug !buildflags !makeflags)
 
 prepare() {
 	rm -rf "$srcdir/$_pkgname/cellframe-sdk"
@@ -44,7 +44,7 @@ prepare() {
 build() {
 	cd "$_pkgname"
 	cmake -B build \
-		-DCMAKE_BUILD_TYPE='Debug' \
+		-DCMAKE_BUILD_TYPE='RelWithDebInfo' \
         -Wno-dev
 	cmake --build build -j$(nproc)
 }
