@@ -1,5 +1,5 @@
-ddns-go
-src
-pkg
+/ddns-go
+/src
+/pkg
 *.pkg.tar.zst
 *.tar.gz
