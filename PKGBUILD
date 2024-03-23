@@ -2,7 +2,7 @@
 
 pkgname=python-instructor
 _pkgname=${pkgname#python-}
-pkgver=0.6.4
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
@@ -27,9 +27,13 @@ makedepends=(
   python-poetry
   python-wheel
 )
-checkdepends=(python-pytest)
+checkdepends=(
+  python-anthropic
+  python-pytest
+)
+optdepends=('python-anthropic: support using Anthropic models')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('58e9c18e4fa099836222487d487a43fd90c34140d6fa44454a82d2775a82ffa8')
+sha256sums=('b429ed3c76c6a313d939fad679969dbd06da21189ce69076fcfa9bb2dbfd013f')
 
 _archive="$_pkgname-$pkgver"
 
@@ -42,10 +46,16 @@ build() {
 check() {
   cd "$_archive"
 
-  # Tests in tests/openapi/ interact with OpenAI's API and requires a valid API
-  # key
+  rm -rf tmp_install
+  python -m installer --destdir=tmp_install dist/*.whl
+
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  export PYTHONPATH="$PWD/tmp_install/$site_packages:$PYTHONPATH"
+  # Tests in tests/openapi/ requires a valid API key. The key below is a mock
+  # key required by other tests.
   export OPENAI_API_KEY=sk-dBAe8c5a9bc4294cca9bed292cd61e0ff9030bB94647adfb
-  pytest --ignore=tests/openai
+  pytest \
+    --ignore tests/openai
 }
 
 package() {
