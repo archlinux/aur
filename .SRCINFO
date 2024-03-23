@@ -1,11 +1,15 @@
 pkgbase = python-deal
 	pkgdesc = Design by contract for Python. Write bug-free code. Add a few decorators, get static analysis and tests for free
-	pkgver = 4.24.3
+	pkgver = 4.24.4
 	pkgrel = 1
 	url = https://github.com/life4/deal
 	arch = any
 	license = MIT
+	checkdepends = python-astroid
+	checkdepends = python-docstring-parser
+	checkdepends = python-hypothesis
 	checkdepends = python-pytest
+	checkdepends = python-typeguard
 	checkdepends = python-urllib3
 	makedepends = python-build
 	makedepends = python-flit-core
@@ -16,7 +20,7 @@ pkgbase = python-deal
 	optdepends = python-hypothesis: for test generation
 	optdepends = python-pygments: for syntax highlighting in exceptions
 	optdepends = python-typeguard: for runtime type checking in tests
-	source = python-deal-4.24.3.tar.gz::https://github.com/life4/deal/archive/refs/tags/4.24.3.tar.gz
-	sha256sums = aa9c1f6fe2301e4125878ac0caa2e27c016324c5d499125aeea77f128c766826
+	source = python-deal-4.24.4.tar.gz::https://github.com/life4/deal/archive/4.24.4.tar.gz
+	sha256sums = 4dee672a317d55216083155158617789c3f461b2c59911655e79fdd128bc4277
 
 pkgname = python-deal
