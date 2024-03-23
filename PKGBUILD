@@ -1,4 +1,4 @@
-# Maintainer: Томас <70m4c@70m4c.su>
+# Maintainer: Reset1443 <aur@barata.pt>
 
 # shellcheck disable=SC2148 # Ignore lack of shebang
 # shellcheck disable=SC2034 # Ignore "unused" PKGBUILD variables
@@ -9,11 +9,11 @@ pkgver=17.10.3
 pkgrel=1
 pkgdesc="The Chef Client installation package includes everything you need to start converging your machines."
 arch=('x86_64')
-url="https://downloads.chef.io/chef-client/"
+url="https://omnitruck.chef.io/stable/chef/metadata?m=x86_64&v=18&p=debian&pv=12"
 license=('custom:Chef EULA')
 depends=()
 conflicts=(chef chef-solo chef-dk cinc)
-source=('https://packages.chef.io/files/stable/chef/17.10.3/ubuntu/18.04/chef_17.10.3-1_amd64.deb')
+source=("https://packages.chef.io/files/stable/chef/${pkgver}/debian/11/chef_${pkgver}-${pkgrel}_amd64.deb")
 sha256sums=('bcf012a2e1b632db09a2469cbfabb7363df4586c51e7d58cb851bc85166c267a')
 
 package() {

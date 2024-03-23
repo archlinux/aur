@@ -1,0 +1,64 @@
+image: samuelbarata/infinity-gauntlet:latest
+
+stages:
+  - Fetch
+  - Update
+
+variables:
+  ARCH: x86_64
+  VERSION: 18
+  PLATFORM: debian
+  PLATROFM_VERSION: 12
+
+Download Package Info:
+  stage: Fetch
+  script:
+    - curl "https://omnitruck.chef.io/stable/chef/metadata?m=$ARCH&v=$VERSION&p=$PLATFORM&pv=$PLATROFM_VERSION" | python3 -c "import sys; import os; a=sys.stdin.read().strip().split(); print(a); pkgrel=a[5].split('-')[1].split('_')[0] ; content=f'export sha1={a[1]}\nexport sha256={a[3]}\nexport url={a[5]}\nexport version={a[7]}\nexport pkgrel={pkgrel}'; f = open('chef_info.txt', 'w'); f.write(content); f.close()" #"; [os.symlink(source, destination) for destination, source in zip(a[::2], a[1::2])]"
+  artifacts:
+    when: on_success
+    expire_in: 30 days
+    paths:
+      - chef_info.txt
+
+Analise Package:
+  stage: Update
+  needs:
+    - job: Download Package Info
+      artifacts: true
+  variables:
+    CLONE_FOLDER: chef-client-aur
+    SSH_KEY: /root/.ssh/id_ed25519
+  script:
+    - cp PKGBUILD PKGBUILD.new
+    - source chef_info.txt
+    - sed -i "s/sha256sums=(.*/sha256sums=('$sha256')/g" PKGBUILD.new
+    - sed -i "s/pkgver=.*/pkgver=$version/g" PKGBUILD.new
+    - sed -i "s/pkgrel=.*/pkgrel=$pkgrel/g" PKGBUILD.new
+    - |
+      if [[ ! $(diff PKGBUILD PKGBUILD.new) ]]; then
+        echo 'No new updates'
+        exit 0
+      fi
+    - mv PKGBUILD.new PKGBUILD
+    - runuser -unobody -- makepkg --printsrcinfo > .SRCINFO
+    - cat PKGBUILD
+    - cat .SRCINFO
+    - grep "$url" .SRCINFO # Test if url is correct
+    - echo "New version $version"
+    - echo 'Setup AUR'
+    - mkdir -p /root/.ssh
+    - echo ${AUR_KEY_B64} | base64 -d > $SSH_KEY
+    - chmod 400 $SSH_KEY
+    - ssh-agent bash -c "ssh-add $SSH_KEY"
+    - ssh-keyscan -H aur.archlinux.org >> /root/.ssh/known_hosts
+    - echo 'Setup git'
+    - git config user.email "$AUR_EMAIL"
+    - git config user.name "$AUR_USERNAME"
+    - git remote remove origin
+    - git remote add origin https://oauth2:$ACCESS_TOKEN@$CI_SERVER_HOST/$CI_PROJECT_PATH.git
+    - git remote set-url --add --push origin $AUR_REPO
+    - git remote set-url --add --push origin https://oauth2:$ACCESS_TOKEN@$CI_SERVER_HOST/$CI_PROJECT_PATH.git
+    - git add .
+    - git commit -m "Upgrade to $version"
+    - git remote show origin
+    - git push origin HEAD:$CI_COMMIT_REF_NAME
