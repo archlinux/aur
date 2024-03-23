@@ -1,7 +1,7 @@
 pkgbase = bef
 	pkgdesc = An extensible, fast, and usable file utility to encode and decode interleaved erasure coded streams of data.
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gbletr42/bef
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,10 @@ pkgbase = bef
 	depends = isa-l
 	depends = jerasure-git
 	depends = libblake3
+	depends = cm256cc
+	depends = openfec
+	depends = wirehair
+	depends = leopard
 	source = https://github.com/gbletr42/bef/archive/refs/tags/release-v0.2.3.tar.gz
 	sha256sums = 2f676eb9cbc91d916666bedc7968325005714c298204aa86b5621b72a154979f
 

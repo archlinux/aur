@@ -1,12 +1,12 @@
 # Maintainer: gbletr42 <gbletr42@gmail.com>
 pkgname="bef"
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An extensible, fast, and usable file utility to encode and decode interleaved erasure coded streams of data."
 arch=('i686' 'x86_64')
 url="https://github.com/gbletr42/bef"
 license=('GPL-3.0-or-later')
-depends=('xxhash' 'openssl' 'zlib' 'liberasurecode' 'isa-l' 'jerasure-git' 'libblake3')
+depends=('xxhash' 'openssl' 'zlib' 'liberasurecode' 'isa-l' 'jerasure-git' 'libblake3' 'cm256cc' 'openfec' 'wirehair' 'leopard')
 makedepends=('automake' 'autoconf')
 source=("${url}/archive/refs/tags/release-v${pkgver}.tar.gz")
 sha256sums=('2f676eb9cbc91d916666bedc7968325005714c298204aa86b5621b72a154979f')
