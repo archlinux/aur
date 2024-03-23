@@ -2,13 +2,13 @@
 
 pkgname=sudo-rs
 pkgver=0.2.2
-pkgrel=0
+pkgrel=2
 pkgdesc="A safety oriented and memory safe implementation of sudo and su written in Rust."
 arch=('x86_64'
     'aarch64'
     'riscv64')
 url="https://github.com/memorysafety/sudo-rs"
-license=('Apache-2.0' 'MIT')
+license=('Apache-2.0 AND MIT')
 provides=(${pkgname})
 conflicts=(${pkgname})
 replaces=()
@@ -59,7 +59,7 @@ package() {
 
     for file in *; do
         if [ -x "$file" ]; then
-            if [ -f "$file" = "sudo" ] || [ -f "$file" = "su" ]; then
+            if [[ -f "$file" || "$file" = "sudo" ]]; then
                 # Add setuid setgid
                 chmod u+s,g+s "$file"
             fi
@@ -67,4 +67,6 @@ package() {
             mv "$file" "$new_name"
         fi
     done
+
+    cp -rv  sudo-rs sudo-i
 }
