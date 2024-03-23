@@ -1,10 +1,10 @@
 pkgbase = nginxbeautifier
 	pkgdesc = nginx config file formatter and beautifier
 	pkgver = 1.0.19
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vasilevich/nginxbeautifier
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	makedepends = git
 	makedepends = npm
 	depends = nodejs

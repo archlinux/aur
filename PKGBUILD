@@ -4,45 +4,42 @@
 
 pkgname=nginxbeautifier
 pkgver=1.0.19
-pkgrel=2
-pkgdesc="nginx config file formatter and beautifier"
+pkgrel=3
+pkgdesc='nginx config file formatter and beautifier'
 arch=(any)
-url="https://github.com/vasilevich/nginxbeautifier"
-license=(Apache)
+url='https://github.com/vasilevich/nginxbeautifier'
+license=(Apache-2.0)
 depends=(nodejs)
 makedepends=(git npm)
 _commit=734ff631f254d8f17661d81e43927ba68e69f545
 source=("$pkgname::git+https://github.com/vasilevich/nginxbeautifier.git#commit=${_commit}")
 b2sums=('SKIP')
 
-prepare() {
-    cd "${pkgname}"
-
-    # remove junk
-    rm -rf ".idea/"
-}
-
 build() {
-    cd "${pkgname}"
+  cd $pkgname
 
-    # We create a taball of the project as "npm installing" (see package()) the directory itself only creates symlinks
-    npm pack
+  # we create a taball of the project as "npm installing" (see package()) the directory itself only creates symlinks
+  npm pack
 }
 
 package() {
-    cd "${pkgname}"
+  cd $pkgname
 
-    npm install -g --prefix "${pkgdir}/usr" "${pkgname}-${pkgver}.tgz"
-    # Non-deterministic race in npm gives 777 permissions to random directories.
-    # See https://github.com/npm/npm/issues/9359 for details.
-    find "${pkgdir}/usr" -type d -exec chmod 755 {} +
+  npm install -g --prefix "$pkgdir"/usr $pkgname-$pkgver.tgz
 
-    # npm gives ownership of ALL FILES to build user
-    # https://bugs.archlinux.org/task/63396
-    chown -R root:root "${pkgdir}"
+  # Non-deterministic race in npm gives 777 permissions to random directories.
+  # See https://github.com/npm/npm/issues/9359 for details.
+  find "$pkgdir"/usr -type d -exec chmod 755 {} +
 
-    install -d "${pkgdir}/usr/share/doc/${pkgname}"
-    ln -s "/usr/lib/node_modules/${pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  # npm gives ownership of ALL FILES to build user
+  # https://bugs.archlinux.org/task/63396
+  chown -R root:root "$pkgdir"
+
+  # remove ide stuff
+  rm -r "$pkgdir"/usr/lib/node_modules/nginxbeautifier/.idea
+
+  install -d "$pkgdir"/usr/share/doc/$pkgname
+  ln -s /usr/lib/node_modules/$pkgname/README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
 }
 
 # vim:set ts=2 sw=2 et:
