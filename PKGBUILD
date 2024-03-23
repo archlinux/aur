@@ -1,7 +1,7 @@
 # Maintainer: gbletr42 <gbletr42@gmail.com>
 _pkgname="bef"
 pkgname="bef-git"
-pkgver=r1.ac0a92c
+pkgver=r2.06afd1b
 pkgrel=1
 pkgdesc="An extensible, fast, and usable file utility to encode and decode interleaved erasure coded streams of data."
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ conflicts=(bef)
 build() {
 	cd $_pkgname
 	autoreconf --install
-	./configure --with-liberasurecode --with-zlib --with-blake3 --with-openssl --prefix="/usr"
+	./configure --with-blake3 --with-zlib --with-openssl --with-liberasurecode --with-cm256cc --with-openfec --with-leopard --with-wirehair --prefix="/usr"
 	make
 }
 
