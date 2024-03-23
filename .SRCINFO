@@ -1,0 +1,12 @@
+pkgbase = onekey-bridge
+	pkgdesc = OneKey Bridge. Might be required to connect your hardware wallet
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://onekey.so/download/?client=bridge
+	arch = x86_64
+	license = custom
+	makedepends = dpkg
+	source = https://web.onekey-asset.com/bridge/v2.2.0/onekey-bridge-2.2.0-amd64.deb
+	sha256sums = 75b21054d95f7c527b833913a5b227c02305b8b29ea20a1a716717e8b98c132c
+
+pkgname = onekey-bridge
