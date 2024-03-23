@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=python-osadl-matrix
-pkgver=2023.10.28.101022
+pkgver=2024.02.13.010236
 pkgrel=1
 pkgdesc="OSADL license compatibility matrix as a CSV"
 arch=('any')
@@ -21,4 +21,4 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-sha256sums=('22129bc25cfb2d7bd05331de3bc24f7fb4eb987ac57b2371f09c07892dfdd8b2')
+sha256sums=('a91433f342cf652dd04832b1c1752da2cdacc5de8bbc3ca71a9ae2099f0460d9')
