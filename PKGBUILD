@@ -1,13 +1,13 @@
 # Maintainer: Craig McLure <craig@mclure.net>
 pkgname=goxlr-utility
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility for monitoring and controlling a TC-Helicon GoXLR or GoXLR Mini."
 arch=('x86_64')
 url="https://github.com/GoXLR-on-Linux/goxlr-utility"
 license=('MIT' 'custom')
 depends=('libusb' 'bzip2' 'libpulse' 'speech-dispatcher')
-makedepends=('cargo' 'jq' 'pkgconf' 'clang')
+makedepends=('cargo' 'pkgconf' 'clang')
 install=goxlr-utility.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GoXLR-on-Linux/goxlr-utility/archive/refs/tags/v$pkgver.tar.gz")
 sha512sums=('eef52b44179644249501009aeee7cd4015308684ff3b69e1f8ec8e630ff49e04765601a9717f42c96154beff9d45508b87f6b8023b81dd1765c878d151915321')
@@ -23,11 +23,12 @@ prepare() {
 build() {
     cd "$pkgname-$pkgver"
 
-    # Based on the ripgrep build
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --all-features --release --frozen --message-format=json-render-diagnostics |
-    jq -r 'select(.out_dir) | select(.package_id | startswith("goxlr-client")) | .out_dir' > out_dir
+    cargo build --all-features --release --frozen
+
+    # Grab the Path where the AutoComplete scripts are..
+    ci/cargo-out-dir target/release/ client-stamp > out_dir
 }
 
 check() {

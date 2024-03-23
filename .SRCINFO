@@ -1,14 +1,13 @@
 pkgbase = goxlr-utility
 	pkgdesc = A utility for monitoring and controlling a TC-Helicon GoXLR or GoXLR Mini.
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GoXLR-on-Linux/goxlr-utility
 	install = goxlr-utility.install
 	arch = x86_64
 	license = MIT
 	license = custom
 	makedepends = cargo
-	makedepends = jq
 	makedepends = pkgconf
 	makedepends = clang
 	depends = libusb
