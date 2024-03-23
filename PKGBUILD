@@ -2,7 +2,7 @@
 
 pkgname=modbus-rtu-client-shm
 pkgrel=1
-pkgver=0.2.5
+pkgver=0.3.0
 pkgdesc="modbus rtu client that stores its data (registers) in shared memory"
 url="https://github.com/NikolasK-source/modbus_rtu_client_shm"
 license=('MIT')
@@ -17,7 +17,7 @@ prepare() {
     git submodule init
     git submodule update
     mkdir -p build
-    cmake -DCMAKE_BUILD_TYPE=Release -DCLANG_FORMAT=OFF -DCOMPILER_WARNINGS=OFF -B build .
+    cmake -DCMAKE_BUILD_TYPE=Release -DCLANG_FORMAT=OFF -DCOMPILER_WARNINGS=OFF -DCLANG_TIDY=OFF -B build .
 }
 
 build() {
