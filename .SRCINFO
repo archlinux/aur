@@ -1,10 +1,10 @@
 pkgbase = mindustry-server-bin
 	pkgdesc = Server of a sandbox tower defense game written in Java
 	pkgver = 7.0_146
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/Anuken/Mindustry
-	arch = any
+	arch = x86_64
 	license = GPL3
 	makedepends = libicns
 	depends = java-runtime>=8
