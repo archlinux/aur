@@ -1,7 +1,7 @@
 # Maintainer: avi <4visekh@gmail.com>
 pkgname=python-materialyoucolor-git
 _name=materialyoucolor-python
-pkgver=v2.0.7.r5.g1dd2f05
+pkgver=2.0.8.r1.g9780c78
 pkgrel=1
 pkgdesc="Material You color algorithms for Python!"
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd $_name
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
