@@ -2,36 +2,35 @@
 # Contributor:
 
 pkgname=haruna-git
-pkgver=0.7.3.r50.g8efae07
+pkgver=1.0.1.r12.g616f0317
 pkgrel=1
-pkgdesc='A Qt/QML video player built on top of libmpv'
-url='https://invent.kde.org/multimedia/haruna'
+pkgdesc='Video player built with Qt/QML on top of libmpv'
 arch=(x86_64)
-license=(GPL3)
+url='https://apps.kde.org/haruna/'
+license=(GPL-3.0-or-later)
 depends=(ffmpeg
          gcc-libs
          glibc
-         kconfig5
-         kconfigwidgets5
-         kcoreaddons5
-         kdeclarative5
-         kfilemetadata5
-         ki18n5
-         kio5
-         kirigami2
-         kwindowsystem5
-         mpv
-         qt5-base
-         qt5-declarative
-         qt5-quickcontrols2
-         qt5-x11extras)
-makedepends=(git
-             extra-cmake-modules
-             kdoctools5)
+         kcolorscheme
+         kconfig
+         kcoreaddons
+         kdeclarative
+         kfilemetadata
+         ki18n
+         kio
+         kirigami
+         kwindowsystem
+         mpvqt
+         qt6-5compat
+         qt6-base
+         qt6-declarative)
+makedepends=(extra-cmake-modules
+             git
+             kdoctools)
 optdepends=('yt-dlp: YouTube support')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("${pkgname%-*}::git+${url}.git")
+source=("${pkgname%-*}::git+https://invent.kde.org/multimedia/haruna.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -40,9 +39,7 @@ pkgver() {
 }
 
 build() {
-  cmake -B build -S "${pkgname%-*}" \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=None
+  cmake -B build -S "${pkgname%-*}"
   cmake --build build
 }
 
