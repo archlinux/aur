@@ -1,7 +1,7 @@
 # Maintainer: martiuk <me at martinke dot mp>
 
 pkgname=xorg-xwayland-explicit-sync-git
-pkgver=23.2.4.r159.g2ef0f1116
+pkgver=23.2.4.r382.g4e5361234
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -16,7 +16,7 @@ makedepends=('meson' 'git'
              'pixman' 'libxkbfile' 'libxfont2' 'dbus'
              'xorg-font-util'
              'wayland'
-             'wayland-protocols-git'
+             'wayland-protocols'
              'libdrm' 'libepoxy'
              'systemd'
              'egl-wayland'
