@@ -1,0 +1,1 @@
+KERNEL=="uinput", RUN+="/bin/setfacl -m u:asus_numpad:rw- /dev/uinput"
