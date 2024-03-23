@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-openldap
 	pkgdesc = Lightweight Directory Access Protocol (LDAP) (Android, x86-64)
 	pkgver = 2.6.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openldap.org/
 	arch = any
 	groups = android-openldap-bootstrap
@@ -18,6 +18,8 @@ pkgbase = android-x86-64-openldap
 	options = staticlibs
 	options = !emptydirs
 	source = https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.7.tgz
+	source = 0001-Add-missing-headers.patch
 	sha256sums = cd775f625c944ed78a3da18a03b03b08eea73c8aabc97b41bb336e9a10954930
+	sha256sums = 0d8f2c1011678df0e42e9691ab66565ae1b45c9b97018a6069d57665392e2b0c
 
 pkgname = android-x86-64-openldap

@@ -1,0 +1,10 @@
+--- a/libraries/liblutil/lockf.c
++++ b/libraries/liblutil/lockf.c
+@@ -29,6 +29,7 @@
+ #include "portable.h"
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include <ac/unistd.h>
+ 
+ #undef LOCK_API
