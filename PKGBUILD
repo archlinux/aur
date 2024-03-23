@@ -2,10 +2,10 @@
 
 pkgname=thumbor
 pkgver=7.7.3
-pkgrel=3
-pkgdesc="open-source photo thumbnail service"
+pkgrel=4
+pkgdesc='open-source photo thumbnail service'
 arch=(x86_64)
-url="https://github.com/thumbor/thumbor"
+url='https://github.com/thumbor/thumbor'
 license=(MIT)
 depends=(
   python
@@ -23,16 +23,16 @@ depends=(
 )
 makedepends=(python-setuptools)
 checkdepends=(python-pytest python-preggy python-pyssim)
-backup=("etc/thumbor.conf")
-source=("https://github.com/thumbor/thumbor/archive/$pkgver.tar.gz"
-        "thumbor.service")
+backup=('etc/thumbor.conf')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+        'thumbor.service')
 b2sums=('4fcc9f9f3eb74021616c544bf6a8a35935284272d7ab0cfe69e4d98f26dd22159e39dc6e4c9910d4c43789211f50c944bdf89a54e6fabcec166d1c5e8b53dfa8'
-        'c0fe21516f245132ac9bb1a833601eabc8348f8c420c76d49ffe7cb25e00712fcbc0fe7c579604616f5008507ec9f7582936596e54e8a311acf949fb031cd5ca')
+        '9f5b837710e47654d522c5791cb5c6e01d6452093837a0c57b7158cbc8be6a7a3b5380efe2e975d6396bc1fd23a5f922f6ede9aa921142fd004ff48381f58db3')
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd $pkgname-$pkgver
 
-  # Adjust storage/cache paths to match systemd service
+  # adjust storage/cache paths to match systemd service
   sed -e "s|FILE_STORAGE_ROOT_PATH = join(home, 'thumbor', 'storage' )|FILE_STORAGE_ROOT_PATH = '/var/lib/thumbor'|" \
       -e "s|RESULT_STORAGE_FILE_STORAGE_ROOT_PATH = join(home, 'thumbor', 'result_storage')|RESULT_STORAGE_FILE_STORAGE_ROOT_PATH = '/var/cache/thumbor'|" \
       -i $pkgname/$pkgname.conf
@@ -45,16 +45,17 @@ prepare() {
 #}
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   python setup.py build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm 644 thumbor.service -t "$pkgdir"/usr/lib/systemd/system/
+  install -Dm 644 $pkgname-$pkgver/$pkgname/$pkgname.conf -t "$pkgdir"/etc/
+
+  cd $pkgname-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm 644 $srcdir/thumbor.service -t "${pkgdir}"/usr/lib/systemd/system/
-  install -Dm 644 $pkgname/$pkgname.conf -t "${pkgdir}"/etc/
 }
 
 # vim:set ts=2 sw=2 et:

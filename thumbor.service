@@ -14,6 +14,10 @@ LockPersonality=true
 ProtectControlGroups=true
 ProtectKernelModules=true
 ProtectKernelTunables=true
+ProtectHome=true
+PrivateDevices=true
+NoNewPrivileges=true
+MemoryDenyWriteExecute=true
 
 ExecStart=/usr/bin/thumbor --conf=/etc/thumbor.conf
 

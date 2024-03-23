@@ -1,7 +1,7 @@
 pkgbase = thumbor
 	pkgdesc = open-source photo thumbnail service
 	pkgver = 7.7.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/thumbor/thumbor
 	arch = x86_64
 	license = MIT
@@ -22,9 +22,9 @@ pkgbase = thumbor
 	depends = python-piexif
 	depends = python-jpegiptc
 	backup = etc/thumbor.conf
-	source = https://github.com/thumbor/thumbor/archive/7.7.3.tar.gz
+	source = thumbor-7.7.3.tar.gz::https://github.com/thumbor/thumbor/archive/7.7.3.tar.gz
 	source = thumbor.service
 	b2sums = 4fcc9f9f3eb74021616c544bf6a8a35935284272d7ab0cfe69e4d98f26dd22159e39dc6e4c9910d4c43789211f50c944bdf89a54e6fabcec166d1c5e8b53dfa8
-	b2sums = c0fe21516f245132ac9bb1a833601eabc8348f8c420c76d49ffe7cb25e00712fcbc0fe7c579604616f5008507ec9f7582936596e54e8a311acf949fb031cd5ca
+	b2sums = 9f5b837710e47654d522c5791cb5c6e01d6452093837a0c57b7158cbc8be6a7a3b5380efe2e975d6396bc1fd23a5f922f6ede9aa921142fd004ff48381f58db3
 
 pkgname = thumbor
