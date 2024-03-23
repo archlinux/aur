@@ -1,6 +1,6 @@
 # Maintainer: randomTWdude
 pkgname=fumosay
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='cowsay with fumofumos written in C.'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/randomtwdude/fumosay'
 license=('BSD-3-Clause')
 depends=('glibc')
 source=("https://github.com/randomtwdude/fumosay/releases/download/fumo${pkgver}/fumosay-${pkgver}.tar.gz")
-sha512sums=('038bcfcf8fba0d64df531766b227e5b0b167e5d83a21d27c4487eeda878d8d5bb8a39f33198cb55c5519ca3400d516f0ed3085ddae20ceb8acc5f91c93011678')
+sha512sums=('9f7721fea7b41201c344021d38ff726c64cd7f2dbca4e86b4347282573733cc55857a45e35205a2d9b271801ec336b0df053e0c469e0007acded5b5d70594060')
 
 build() {
 	cd "$pkgname-$pkgver"
