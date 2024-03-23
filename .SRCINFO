@@ -4,12 +4,12 @@ pkgbase = pyfan
 	pkgrel = 1
 	url = https://somegit.dev/anonfunc/PyFan
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	depends = python-yaml
 	depends = python-simple-pid
 	optdepends = lm_sensors: check and load required hwmon modules
 	backup = etc/pyfan
-	source = https://somegit.dev/anonfunc/PyFan/archive/1.6.1.tar.gz
+	source = pyfan-1.6.1.tar.gz::https://somegit.dev/anonfunc/PyFan/archive/1.6.1.tar.gz
 	b2sums = c7ff904568196657c78acb1d690b3437b6a5e0cd2eb3355988b618426d6a225e357d26bbe060cf70363114d46ce9d55559d0396f2d793168ddc008a789416f26
 
 pkgname = pyfan
