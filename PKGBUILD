@@ -3,25 +3,18 @@
 
 _projectname=Mamba
 pkgname="${_projectname,,}"
-pkgver=2.5
-pkgrel=2
+pkgver=2.6
+pkgrel=1
 pkgdesc='A virtual MIDI keyboard and file player/recorder for ALSA/JACK'
 arch=(x86_64 aarch64)
 url="https://github.com/brummer10/$_projectname"
-license=(BSD)
+license=(0BSD MIT)
 depends=(gcc-libs glibc cairo libx11)
 makedepends=(alsa-lib fluidsynth graphite jack liblo libsigc++ libsmf xxd)
 optdepends=('new-session-manager: for NSM support')
 groups=(pro-audio)
-source=("https://github.com/brummer10/Mamba/releases/download/v$pkgver/${_projectname}_$pkgver.tar.gz"
-        'mamba-asprintf-7eb70bf.patch')
-sha256sums=('4880c2fe2554843cce3dbf783adbaeae376e287daa86030c0fc5fc58f084b064'
-            'b80d33fe8f228a587a02019f7a206e4494cb2d7202f7f80062f782819a1bc054')
-
-prepare() {
-  cd ${_projectname}_$pkgver/libxputty
-  patch -p1 -N -r - -i "$srcdir"/mamba-asprintf-7eb70bf.patch
-}
+source=("https://github.com/brummer10/Mamba/releases/download/v$pkgver/${_projectname}_$pkgver.tar.gz")
+sha256sums=('c5439d40184dd5e5967fd9d49b185e8f034bce41a080af3021a2e4146c29466a')
 
 build() {
   cd ${_projectname}_$pkgver
@@ -34,5 +27,6 @@ package() {
   cd ${_projectname}_$pkgver
   make DESTDIR="$pkgdir" PREFIX=/usr install
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+  install -Dm644 LICENSE.txt -t "$pkgdir"/usr/share/licenses/$pkgname
   install -Dm644 README.md -t "$pkgdir"/usr/share/doc/$pkgname
 }
