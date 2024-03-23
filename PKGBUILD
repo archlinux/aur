@@ -3,10 +3,10 @@
 pkgname=coreapps-meta
 pkgver=1
 pkgrel=1
-pkgdesc="CoreApps application family meta package"
+pkgdesc='CoreApps application family meta package'
 arch=(any)
-url="https://gitlab.com/cubocore"
-license=(GPL3)
+url='https://gitlab.com/cubocore'
+license=(LicenseRef-None)
 depends=(
   coreaction
   corearchiver
