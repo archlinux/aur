@@ -3,8 +3,8 @@
 # Contributor: Alastair Hughes
 
 pkgname='gog-stardew-valley'
-pkgver=1.5.6
-pkgrel=2
+pkgver=1.6.2
+pkgrel=1
 # Fix upstream versioning shenanigans:
 epoch=1
 pkgdesc="You’ve inherited your grandfather’s old farm plot in Stardew Valley.
@@ -18,11 +18,11 @@ options=('!strip' 'staticlibs')
 source=(
   "${pkgname}"
   "${pkgname}.desktop"
-  'local:///stardew_valley_1_5_6_1988831614_53040.sh'
+  'local:///stardew_valley_1_6_2_24081_6443062877_72053.sh'
 )
 sha256sums=('9f51b56b351824493c381731f29175b0897fa0dc4169a9b9160b5a12003883dc'
             'ca0fe151f73f5e8b594b226e1b0539655a2d95a7848eb0e43961cb6daa0de2ff'
-            '692722cb77acbccf7392abfbaec54cae34fd6edb8e62cfb2843f70494cb5ea91')
+            '4f3c91d3e5d2d67bffd38b207165463d4925174cc6b84b15497098092f621d8f')
 
 
 package() {
