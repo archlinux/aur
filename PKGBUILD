@@ -9,7 +9,7 @@ url="https://fmv.jku.at/kissat"
 license=('MIT')
 depends=('glibc')
 _srcname="${pkgname}-rel-${pkgver}"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/arminbiere/kissat/archive/refs/tags/${_srcname}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/arminbiere/kissat/archive/refs/tags/rel-${pkgver}.tar.gz")
 b2sums=('ce98105f2701e9dfab8dc555ace2d6891015e25bd23f09c1b2706ddb757f7580a555bdc20340d6880f2c4a0c786a71fd16466ab06a9c7499c81e4832665ce6c3')
 
 build() {
