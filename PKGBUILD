@@ -1,7 +1,7 @@
 # Maintainer: martiuk <me at martinke dot mp>
 
 pkgname=xorg-xwayland-explicit-sync-git
-pkgver=23.2.4.r382.g4e5361234
+pkgver=23.2.4.r383.ge6573baa7
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -13,17 +13,16 @@ depends=('nettle' 'libegl' 'libepoxy' 'systemd-libs' 'libxfont2'
 makedepends=('meson' 'git'
              'xorgproto-explicit-sync-git'
              'xtrans'
-             'pixman' 'libxkbfile' 'libxfont2' 'dbus'
+             'libxkbfile' 'dbus'
              'xorg-font-util'
              'wayland'
              'wayland-protocols'
-             'libdrm' 'libepoxy'
+             'libdrm'
              'systemd'
-             'egl-wayland'
 )
 source=(
   "xserver::git+https://gitlab.freedesktop.org/xorg/xserver.git"
-  "https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/967.patch"
+  "explicit-sync.patch::https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/967.patch"
 )
 b2sums=('SKIP'
         'SKIP')
@@ -41,7 +40,7 @@ pkgver() {
 
 prepare() {
   cd xserver
-  patch -Np1 -i "${srcdir}/967.patch"
+  patch -Np1 -i "${srcdir}/explicit-sync.patch"
 }
 
 build() {
