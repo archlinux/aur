@@ -29,7 +29,8 @@ makedepends=(
 )
 
 _pkgsrc="$_pkgname-$pkgver"
-source=("https://github.com/Fizzadar/pyinfra/archive/v$pkgver.tar.gz")
+_pkgext="tar.gz"
+source=("$_pkgsrc.$_pkgext"::"https://github.com/Fizzadar/pyinfra/archive/v$pkgver.$_pkgext")
 sha256sums=('10a4d7698f60ff142541d7e5c8173147b3613489c720899f3b92e278f2e95789')
 
 prepare() {
