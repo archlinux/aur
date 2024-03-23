@@ -1,11 +1,12 @@
 pkgbase = r-parsnip
 	pkgdesc = A Common API to Modeling and Analysis Functions
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=parsnip
 	arch = any
 	license = MIT
 	checkdepends = python-tensorflow
+	checkdepends = r-bench
 	checkdepends = r-c50
 	checkdepends = r-dials
 	checkdepends = r-earth
@@ -37,6 +38,7 @@ pkgbase = r-parsnip
 	depends = r-tidyr
 	depends = r-vctrs
 	depends = r-withr
+	optdepends = r-bench
 	optdepends = r-c50
 	optdepends = r-covr
 	optdepends = r-dials
@@ -56,8 +58,8 @@ pkgbase = r-parsnip
 	optdepends = r-tensorflow
 	optdepends = r-testthat
 	optdepends = r-xgboost
-	source = https://cran.r-project.org/src/contrib/parsnip_1.2.0.tar.gz
-	md5sums = 5511bd877b251ff068613fd7e47d387c
-	b2sums = 2824147e2f4c46329ab4575f9a4493cc68d141ec031271799e5874a5b4e4148842db38d638b567ed4091e1f9fbe05e371a828c00f2fb603c6d6506c8d07c4181
+	source = https://cran.r-project.org/src/contrib/parsnip_1.2.1.tar.gz
+	md5sums = 8963904d37b6296869d29d0a8c22e61a
+	b2sums = b4456b926bbcb92b68a442c155e954d585c7695dd2e65b6ee2c2351ddb4e4e63b2896ec223c8b20ae62903a90778f16a28b97e7437820fdb37b5efa0c9f6643d
 
 pkgname = r-parsnip
