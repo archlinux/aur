@@ -1,3 +1,4 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Chih-Hsuan Yen <yan12125@gmail.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
@@ -10,13 +11,13 @@ pkgname=phantomjs
 pkgver=2.1.1
 _debver=2.1.1+dfsg
 _debrel=2
-pkgrel=16
+pkgrel=17
 pkgdesc='Headless WebKit with JavaScript API'
 url='https://www.phantomjs.org/'
 license=('BSD' 'LGPL' 'MIT')
 arch=('i686' 'x86_64')
-depends=('icu' 'libjpeg-turbo' 'libpng' 'fontconfig' 'gperf' 'ruby' 'python2' 'openssl-1.0' 'qt5-webkit')
-makedepends=('quilt')
+depends=('gcc-libs' 'glibc' 'qt5-base' 'qt5-webkit')
+makedepends=('python' 'quilt')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ariya/phantomjs/archive/${pkgver}.tar.gz"
         "https://deb.debian.org/debian/pool/main/p/phantomjs/phantomjs_$_debver-$_debrel.debian.tar.xz"
         fix-missing-webkit-include-files.patch)
@@ -36,21 +37,21 @@ prepare() {
 
     quilt push -av
   fi
-  mkdir "$srcdir/python2-path"
-  ln -s /usr/bin/python2 "$srcdir/python2-path/python"
+#  mkdir "$srcdir/python2-path"
+#  ln -s /usr/bin/python2 "$srcdir/python2-path/python"
   patch -p1 -i ../fix-missing-webkit-include-files.patch
 }
 
 build() {
   cd $pkgname-$pkgver
-  export PATH="$srcdir/python2-path:$PATH" PYTHON=/usr/bin/python2
-  export CXXFLAGS+=' -I/usr/include/openssl-1.0'
-  export OPENSSL_LIBS='-L/usr/lib/openssl-1.0 -lssl -lcrypto'
+#  export PATH="$srcdir/python2-path:$PATH" PYTHON=/usr/bin/python2
+#  export CXXFLAGS+=' -I/usr/include/openssl-1.0'
+#  export OPENSSL_LIBS='-L/usr/lib/openssl-1.0 -lssl -lcrypto'
 
-  CFLAGS+=' -Wno-expansion-to-defined'
-  CXXFLAGS+=' -Wno-expansion-to-defined'
+#  CFLAGS+=' -Wno-expansion-to-defined'
+#  CXXFLAGS+=' -Wno-expansion-to-defined'
 
-  python2 build.py --skip-git --skip-qtbase --skip-qtwebkit --confirm --release
+  python build.py --skip-git --skip-qtbase --skip-qtwebkit --confirm --release
 }
 
 package() {
