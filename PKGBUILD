@@ -10,7 +10,7 @@ unset _pkgtype
 # basic info
 _pkgname="thorium-reader"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit"
 url="https://github.com/edrlab/thorium-reader"
