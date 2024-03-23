@@ -9,7 +9,7 @@ pkgbase = lst-git
 	depends = python
 	provides = lst
 	conflicts = lst
-	source = git+https://github.com/byomess/lst.git
+	source = git+https://github.com/byomess/lst
 	sha256sums = SKIP
 
 pkgname = lst-git

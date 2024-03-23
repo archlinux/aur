@@ -4,13 +4,14 @@ pkgname=lst-git
 pkgver='1.0'
 pkgrel=1
 pkgdesc="Improved ls command for Unix-like systems."
+keywords=('ls' 'lsd' 'lst' 'directory-listing' 'list' 'cli')
 arch=('any')
 url="http://github.com/byomess/${pkgname%-git}"
 license=('MIT')
 depends=('git' 'python')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+https://github.com/byomess/lst.git")
+source=("git+https://github.com/byomess/lst")
 
 build() {
     cd "${pkgname%-git}"
