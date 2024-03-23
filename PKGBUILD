@@ -1,35 +1,38 @@
-# Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
+# Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
+# Contributor: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=parabolic
-pkgver=2023.11.1
+pkgver=2023.12.0
 pkgrel=1
-pkgdesc='An easy-to-use video downloader'
-arch=(aarch64 armv7h x86_64 i686)
-url=https://github.com/NickvisionApps/$pkgname
-license=(GPL3)
-depends=(aria2 dee 'dotnet-runtime>=8' ffmpeg gnome-common libadwaita libdbusmenu-gtk3 libunity python-brotli python-mutagen python-pycryptodomex python-pyxattr python-websockets yt-dlp python-psutil)
-makedepends=(blueprint-compiler 'dotnet-sdk>=8' git)
-provides=(tube-converter)
-replaces=(tube-converter)
-conflicts=(tube-converter)
-source=("git+$url#tag=$pkgver" "git+${url%parabolic}cakescripts.git#commit=1b48cc0957fcd65c3b0f25285e84033fb5b7f542")
-b2sums=('SKIP' 'SKIP')
+pkgdesc="Download web video and audio"
+arch=('x86_64')
+url="https://github.com/NickvisionApps/Parabolic"
+license=('MIT')
+depends=('bash' 'dotnet-runtime' 'ffmpeg' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'python-psutil' 'yt-dlp')
+makedepends=('blueprint-compiler' 'dotnet-sdk' 'libadwaita')
+provides=('tube-converter')
+conflicts=('tube-converter')
+replaces=('tube-converter')
+_commit='cbc0135ee8a02f85d6f1a8525096c26d059886e8'
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+        "https://github.com/NickvisionApps/CakeScripts/archive/${_commit}.tar.gz")
+sha256sums=('77c33fe556eab5721d4deaa6a8425b6d5305852b46b1ca85355c07a859ccbdde'
+            '93961fc1fde9b4f01f86197946accfefb227ef34a3cc1719a203235ea56a837e')
 
 prepare() {
-	rm -rf $pkgname/CakeScripts
-	mv cakescripts $pkgname/CakeScripts
-	cd $pkgname
-	dotnet tool restore
+    mv "CakeScripts-${_commit}"/* "${pkgname^}-${pkgver}/CakeScripts"
+    cd "${pkgname^}-${pkgver}"
+    dotnet tool restore
 }
 
 build() {
-	cd $pkgname
-	dotnet cake --target=Publish --prefix=/usr --ui=gnome
+    cd "${pkgname^}-${pkgver}"
+    dotnet cake --target=Publish --prefix=/usr --ui=gnome
 }
 
 package() {
-	cd $pkgname
-	dotnet cake --target=Install --destdir="$pkgdir"
-	ln -sv org.nickvision.tubeconverter "$pkgdir"/usr/bin/$pkgname
+    cd "${pkgname^}-${pkgver}"
+    dotnet cake --target=Install --destdir="${pkgdir}"
+    ln -s org.nickvision.tubeconverter "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
-
