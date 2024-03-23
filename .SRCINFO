@@ -1,18 +1,18 @@
 pkgbase = victoriametrics
 	pkgdesc = Fast, cost-effective and scalable time series database
-	pkgver = 1.96.0
+	pkgver = 1.99.0
 	pkgrel = 1
 	url = https://victoriametrics.github.io
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = go
 	depends = glibc
 	backup = etc/default/victoriametrics
-	source = https://github.com/VictoriaMetrics/VictoriaMetrics/archive/refs/tags/v1.96.0.tar.gz
+	source = victoriametrics-1.99.0.tar.gz::https://github.com/VictoriaMetrics/VictoriaMetrics/archive/refs/tags/v1.99.0.tar.gz
 	source = victoriametrics.service
 	source = victoriametrics.default
-	b2sums = f241ad0da8303da4ca085ae8f447d28e23dd19f30853b96ad24551232e8030d223a27d79aa5ab56df372e10c54b82bd964e7bf69997734379a438adacff06b40
-	b2sums = dfe05a39758258ad3298332dc18f35544cbf40c3257208823321f9631581ab9bfc7465018eb02a9990d3df852887e4715478abe7816354effd781a9c13026168
+	b2sums = d0883b5a52e74d5dbfa10e3cb4b78229674d6e5476bd3a74b28ae178e7c99762c52fe43e6a987546ac380851c3d177afb7a7e5e8c43f75e9330eb167c4cfcfb8
+	b2sums = 82b1c2b55b3c9f3d4deee12753820247ba1f4ac28a94cf16dad31ce091306875d392f7a7a0a56029d88101d7e75f7fefec392ac50d2447276850476f773d147d
 	b2sums = 4405dc19795d2cbfa515e4750a2cad77c13611293176ff5aeec597f9905494902bd4496c1e90f1efe2d484e383adb39d034167673b9fe7de8b307b8cedf17b7f
 
 pkgname = victoriametrics
