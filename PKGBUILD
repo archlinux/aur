@@ -2,7 +2,7 @@
 
 pkgname=ravenna-alsa-daemon
 pkgver=1.1.93
-pkgrel=1
+pkgrel=2
 pkgdesc="A daemon for ALSA RAVENNA/AES67 Driver"
 url="https://github.com/bondagit/ravenna-alsa-lkm"
 license=("custom")
