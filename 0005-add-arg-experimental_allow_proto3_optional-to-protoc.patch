@@ -1,0 +1,25 @@
+From df47d3293ca2424772b0e3d3c3c9ba329e713126 Mon Sep 17 00:00:00 2001
+From: Butui Hu <hot123tea123@gmail.com>
+Date: Wed, 21 Feb 2024 10:58:46 +0800
+Subject: [PATCH 5/5] add arg experimental_allow_proto3_optional to protoc
+ command
+
+---
+ setup.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/setup.py b/setup.py
+index aa6004b7..f2ec8479 100644
+--- a/setup.py
++++ b/setup.py
+@@ -228,6 +228,7 @@ class GeneratePyProtos(build_ext.build_ext):
+       sys.stderr.write('generating proto file: %s\n' % output)
+       protoc_command = [
+           self._protoc, '-I.',
++          '--experimental_allow_proto3_optional',
+           '--python_out=' + os.path.abspath(self.build_lib), source
+       ]
+       _invoke_shell_command(protoc_command)
+-- 
+2.43.2
+

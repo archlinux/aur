@@ -1,0 +1,33 @@
+From 454702a3fa207ae5553627a60cfd36b36e2b344c Mon Sep 17 00:00:00 2001
+From: Butui Hu <hot123tea123@gmail.com>
+Date: Wed, 21 Feb 2024 10:56:46 +0800
+Subject: [PATCH 4/5] use opencv4 headers
+
+---
+ third_party/opencv_linux.BUILD | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/third_party/opencv_linux.BUILD b/third_party/opencv_linux.BUILD
+index 84458554..afc37009 100644
+--- a/third_party/opencv_linux.BUILD
++++ b/third_party/opencv_linux.BUILD
+@@ -18,14 +18,14 @@ cc_library(
+         #"include/aarch64-linux-gnu/opencv4/opencv2/cvconfig.h",
+         #"include/arm-linux-gnueabihf/opencv4/opencv2/cvconfig.h",
+         #"include/x86_64-linux-gnu/opencv4/opencv2/cvconfig.h",
+-        #"include/opencv4/opencv2/**/*.h*",
++        "include/opencv4/opencv2/**/*.h*",
+     ]),
+     includes = [
+         # For OpenCV 4.x
+         #"include/aarch64-linux-gnu/opencv4/",
+         #"include/arm-linux-gnueabihf/opencv4/",
+         #"include/x86_64-linux-gnu/opencv4/",
+-        #"include/opencv4/",
++        "include/opencv4/",
+     ],
+     linkopts = [
+         "-l:libopencv_core.so",
+-- 
+2.43.2
+
