@@ -1,0 +1,22 @@
+pkgbase = python-magpylib
+	pkgdesc = Biblioteca para simulaciones con fuentes de campos magnéticos
+	pkgver = 5.0.0
+	pkgrel = 31
+	url = https://github.com/magpylib/magpylib
+	arch = any
+	license = BSD 2-Clause
+	checkdepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
+	depends = python-plotly
+	depends = python-pyvista
+	depends = python-ipywidgets
+	depends = fmt
+	depends = glew
+	source = https://github.com/magpylib/magpylib/archive/refs/tags/5.0.0.tar.gz
+	sha256sums = 6ffb6284070e7ab0c7404430f0f061432148b29df1120ecfbd7475f285bcf576
+
+pkgname = python-magpylib
