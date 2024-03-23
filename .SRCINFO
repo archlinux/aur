@@ -1,0 +1,30 @@
+pkgbase = r-dharma
+	pkgdesc = Residual Diagnostics for Hierarchical (Multi-Level / Mixed) Regression Models
+	pkgver = 0.4.6
+	pkgrel = 1
+	url = https://cran.r-project.org/package=DHARMa
+	arch = any
+	license = GPL-3.0-or-later
+	checkdepends = r-glmmadaptive
+	checkdepends = r-glmmtmb
+	checkdepends = r-mgcviz
+	checkdepends = r-spamm
+	checkdepends = r-testthat
+	depends = r-ape
+	depends = r-gap
+	depends = r-lme4
+	depends = r-lmtest
+	depends = r-qgam
+	optdepends = r-glmmadaptive
+	optdepends = r-glmmtmb
+	optdepends = r-knitr
+	optdepends = r-mgcviz
+	optdepends = r-rmarkdown
+	optdepends = r-sfsmisc
+	optdepends = r-spamm
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/DHARMa_0.4.6.tar.gz
+	md5sums = 1bc0e3ce3b7761689efc8ad828b55e5d
+	b2sums = c344045c2adeedad2f17f318ddbbe9f8d6214368a50c97d0874f292197941f0c329ba68a18d099a7ec8160ffb294fccb7783762906692203b073bb9e76e0dbca
+
+pkgname = r-dharma
