@@ -1,15 +1,15 @@
 # Maintainer: Artem Vlasenko <artemvlas at proton dot me>
 pkgname=veretino
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
-pkgdesc="A simple tool for checking folder-wide data integrity"
+pkgdesc="Multiple checksums calculator"
 arch=('x86_64')
 url="https://github.com/artemvlas/veretino"
 license=('GPL3')
 depends=('qt5-base' 'qt5-svg')
 
 source=(https://github.com/artemvlas/veretino/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=(731838822c9383aeea840515c7ce3bb6313f3529c95926fca835d736d42bc1a1)
+sha256sums=(2b4976c255b3f4cdafad39de5d057e604eed0c8e5b9a14b639360c7d77528cb8)
 
 build() {
 	cd "$pkgname-$pkgver"
