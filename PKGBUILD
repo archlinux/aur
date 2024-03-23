@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=countrycode
-_pkgver=1.5.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="Convert Country Names and Country Codes"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,14 +13,16 @@ depends=(
   r
 )
 optdepends=(
+  r-altdoc
   r-eurostat
+  r-isocodes
   r-testthat
   r-tibble
   r-utf8
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e4ff5a21b823cf69b603aafe23052470')
-b2sums=('1c81d263f8fcaf46d539027bf047ac94aa908c42d46a507de1a3d9cd3cb7f6a44726a4028bb509813a33f27449a2815ec711b300993bc423d2fbfb8b1d44df5f')
+md5sums=('3b65037b69a3ff0a348ecee6e9659285')
+b2sums=('2eac6eef00b54d052e227147b1e652dbd4d16c5734fd0d8146e7ed02d80bf0416781d5b0c6eeaaf84e40cf0f22330312fc2028e50df2697c7f24745c3ae187a7')
 
 build() {
   mkdir build
