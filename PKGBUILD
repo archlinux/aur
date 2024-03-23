@@ -3,7 +3,7 @@
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
 
-_android_arch=x86_64
+_android_arch=x86-64
 pkgname=android-${_android_arch}-boost
 pkgver=1.84.0
 pkgrel=1
@@ -26,9 +26,9 @@ source=("https://boostorg.jfrog.io/artifactory/main/release/$pkgver/source/$_src
         "boost-1.81.0-phoenix-multiple-definitions.patch"
         "boost-ublas-c++20-iterator.patch::https://github.com/boostorg/ublas/commit/a31e5cffa85f.patch"
         "disable-version-check.patch")
-md5sums=('9cbfb9076ed06384471802b850698a6d'
+md5sums=('9dcd632441e4da04a461082ebbafd337'
          'cb1c25777e9b85af62366e7c930244b8'
-         '991daf28f76ea0383620ccaf971decba'
+         '326826bf610c63c23247e70e648ff104'
          '6290eb4fa0cab451aac92e12e85ef073')
 
 prepare() {
