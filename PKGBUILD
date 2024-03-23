@@ -2,7 +2,7 @@
 _pkgname="bef"
 pkgname="bef-git"
 pkgver=r2.06afd1b
-pkgrel=1
+pkgrel=2
 pkgdesc="An extensible, fast, and usable file utility to encode and decode interleaved erasure coded streams of data."
 arch=('i686' 'x86_64')
 url="https://github.com/gbletr42/bef"
