@@ -1,0 +1,20 @@
+pkgbase = plasma6-applets-gmailfeed
+	pkgdesc = A Plasma 6 plasmoid showing your Gmail feed.
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/anthon38/gmailfeed
+	install = plasma6-applets-gmailfeed.install
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = extra-cmake-modules
+	makedepends = intltool
+	depends = plasma-workspace
+	depends = hicolor-icon-theme
+	depends = knotifications
+	depends = kaccounts-integration
+	replaces = plasma5-applets-gmailfeed
+	source = https://github.com/anthon38/gmailfeed/archive/v2.0.tar.gz
+	sha256sums = 5589f4e54208bcdb79569ebabeaf10e66361b9b3cc05853ec3e1826db297c766
+
+pkgname = plasma6-applets-gmailfeed
