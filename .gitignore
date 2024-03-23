@@ -1,4 +1,4 @@
 pkg/
 src/
-airwindows-lv2-*.pkg.tar.*
-airwindows-*.tar.gz
+*.tar.*
+*.zip
