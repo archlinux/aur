@@ -8,7 +8,7 @@ arch=(any)
 pkgver=r18.958a175
 pkgrel=1
 makedepends=(python-setuptools git)
-depends=(python python-xxhash python-yaml python-matrix-nio)
+depends=(python python-xxhash python-yaml)
 optdepends=(postgresql-libs)
 source=(
 	"git+https://github.com/ShadowRZ/jose-bot.git"
@@ -20,7 +20,7 @@ provides=(jose-bot)
 
 function pkgver() {
 	cd "${srcdir}/jose-bot"
-	git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 function build() {
