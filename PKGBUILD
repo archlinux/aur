@@ -5,7 +5,7 @@
 pkgname=papis-git
 _pkgname=papis
 pkgver=0.13.r391.gb00a67a8
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line document and bibliography manager"
 arch=('any')
 url="https://github.com/papis/papis"
@@ -96,6 +96,14 @@ check() {
 
 build() {
   cd "${_pkgname}"
+
+  python -m build --wheel --no-isolation
+  python -m installer --destdir=tmp_man_install dist/*.whl
+
+  local site_packages=$(python -c 'import site; print(site.getsitepackages()[0])')
+  export PYTHONPATH="$(pwd)/tmp_man_install/${site_packages}:${PYTHONPATH}"
+  make -C doc man
+
   python -m build --wheel --no-isolation
 }
 
