@@ -1,6 +1,6 @@
 pkgbase = neophyte-git
 	pkgdesc = A WebGPU-rendered Neovim GUI
-	pkgver = 0.2.4.r0.gc62a622
+	pkgver = 0.2.5.r0.g9b5e62f
 	pkgrel = 1
 	url = https://github.com/tim-harding/neophyte
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = neophyte-git
 	depends = freetype2
 	depends = gcc-libs
 	depends = glibc
-	provides = neophyte=0.2.4.r0.gc62a622
+	provides = neophyte=0.2.5.r0.g9b5e62f
 	conflicts = neophyte-bin
 	conflicts = neophyte
 	source = neophyte::git+https://github.com/tim-harding/neophyte.git
