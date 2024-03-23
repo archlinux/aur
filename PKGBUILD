@@ -4,21 +4,21 @@
 
 pkgname=windows2usb
 pkgver=0.2.4
-pkgrel=1
-pkgdesc="Windows 7/8/8.1/10/11 ISO to Flash Drive burning utility for Linux (MBR/GPT, BIOS/UEFI, FAT32/NTFS)"
+_rufusver=4.4
+pkgrel=2
+pkgdesc='Windows 7/8/8.1/10/11 ISO to Flash Drive burning utility for Linux (MBR/GPT, BIOS/UEFI, FAT32/NTFS)'
 arch=(any)
-url="https://github.com/ValdikSS/windows2usb"
-license=(Apache)
+url='https://github.com/ValdikSS/windows2usb'
+license=(Apache-2.0)
 depends=(bash awk ntfs-3g dosfstools util-linux p7zip ms-sys wimlib)
-makedepends=(git)
-source=("git+https://github.com/ValdikSS/windows2usb.git#tag=${pkgver}"
-		"https://github.com/pbatard/rufus/raw/v3.21/res/uefi/uefi-ntfs.img")
-b2sums=('SKIP'
-        '60d75a2281b4357af2bc511d4ea45f269c5dae06975eca00b158eb6321239ab7c0fae4fad4c1b57b0b2cd77a4a4409f4bdfe4c08c4ab111ac80a64d4d12cbc18')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
+		    "uefi-ntfs-$_rufusver.img::https://github.com/pbatard/rufus/raw/v$_rufusver/res/uefi/uefi-ntfs.img")
+b2sums=('0630d0de39f2e35c658eb86f9b86677e5a4d962b00c4e468d11574ff2bfb0df55e96abaf756a5553a8079c4ae20fcef5ee641a3da1d9b03ba8ede5bd404203f4'
+        'a84dd2c7435cea34ec3344ef4d21a4e98eb9d980db456a63b8bda1e763f753f70eabe65230e9fdc6db217374c7702d37bc861a8be4a7b8c5ad9e7f3164b15722')
 
 package() {
-  install -D -t "${pkgdir}/usr/share/${pkgname}/" -m 644 uefi-ntfs.img
-  install -D -t "${pkgdir}/usr/bin/" -m 755 ${pkgname}/${pkgname}
+  install -Dm644 -t "$pkgdir"/usr/share/$pkgname/ uefi-ntfs-$_rufusver.img
+  install -Dm755 -t "$pkgdir"/usr/bin/ $pkgname/$pkgname
 }
 
 # vim: ts=2 sw=2 et:
