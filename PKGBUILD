@@ -1,21 +1,21 @@
 # Maintainer: Malte Jürgens <maltejur@dismail.de>
 
 pkgname=discord-screenaudio
-pkgver=1.9.2
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Custom discord client with the ability to stream desktop audio"
 arch=("x86_64")
 url="https://github.com/maltejur/discord-screenaudio"
 license=("GPL-3.0")
-depends=(qt5-base qt5-webengine knotifications5 kxmlgui5 kglobalaccel5 pipewire xdg-desktop-portal-impl)
-makedepends=(qt5-base qt5-webengine knotifications5 kxmlgui5 kglobalaccel5 pipewire cmake)
+depends=(qt6-base qt6-webengine knotifications kxmlgui kglobalaccel pipewire xdg-desktop-portal-impl)
+makedepends=(qt6-base qt6-webengine knotifications kxmlgui kglobalaccel pipewire cmake)
 optdepends=("nodejs: Rich presence support through arRPC")
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/maltejur/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
   "rohrkabel-1.2.tar.gz::https://github.com/Soundux/rohrkabel/archive/refs/tags/v1.2.tar.gz"
 )
 sha256sums=(
-  "360f825f129b5e951259c936ae49d84ec9fe6a36c5ff2488cc1c097aabfc57e0"
+  "168f31f78ee864ae84917194eb8d04c9f7e5dac68017906b632c2f205da5dceb"
   "e167e50d4c633a2b96dde5faa28cd83dd56828868c669fcf86c7e0ade7db1dcd"
 )
 
