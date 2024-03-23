@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-dbix-class-cursor-cached'
-pkgver='1.001002'
+pkgver='1.001004'
 pkgrel='1'
 pkgdesc="cursor class with built-in caching support"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=5.8.1' 'perl-carp-clan>=6.0' 'perl-dbix-class>=0.08124')
-makedepends=('perl-cache-cache' 'perl-dbd-sqlite>=1.25')
-url='http://search.cpan.org/dist/DBIx-Class-Cursor-Cached'
-source=('http://search.cpan.org/CPAN/authors/id/A/AR/ARCANEZ/DBIx-Class-Cursor-Cached-1.001002.tar.gz')
-md5sums=('814a9613314026d5771e67865a2445e8')
-sha512sums=('95b5fb884610e9d557f12fab9a904c965039b1710c7d07636fae291cd1b3a3e117a19aaf2f224989ee408e7b5a24e38120494de1d17122ad677f4c480299c74c')
-_distdir="DBIx-Class-Cursor-Cached-1.001002"
+depends=('perl-carp-clan>=6.0' 'perl-dbix-class>=0.08124' 'perl>=5.8.1')
+makedepends=('perl-cache-cache>=0' 'perl-dbd-sqlite>=1.25')
+url='https://metacpan.org/release/DBIx-Class-Cursor-Cached'
+source=('http://search.cpan.org/CPAN/authors/id/A/AR/ARCANEZ/DBIx-Class-Cursor-Cached-1.001004.tar.gz')
+md5sums=('117dcd7e06c2456379092226dff873d3')
+sha512sums=('e20f950d505615987444f724615e49929b180af4c837542b163506a89675f4747c182060472d80a8f2bf265d44c719c560e0856176a95fb8c229568e996621b1')
+_distdir="DBIx-Class-Cursor-Cached-1.001004"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
