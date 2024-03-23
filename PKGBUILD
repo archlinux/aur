@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
 pkgname=obs-studio-tytan652
-pkgver=30.1.0
+pkgver=30.1.1
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus my bind interface PR, and sometimes backported fixes"
 arch=("x86_64" "aarch64")
