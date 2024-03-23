@@ -2,14 +2,14 @@
 
 pkgname=wmbusmeters
 pkgver=1.15.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Read the wired or wireless mbus protocol to acquire utility meter readings'
 arch=(x86_64)
-url=https://github.com/wmbusmeters/wmbusmeters
+url='https://github.com/wmbusmeters/wmbusmeters'
 license=(GPL-3.0-or-later)
-depends=(rtl-sdr)
+depends=(glibc gcc-libs libxml2 rtl-sdr)
 optdepends=('rtl-wmbus: read wmbusmeters from rtl-sdr recievers')
-source=("https://github.com/$pkgname/$pkgname/archive/refs/tags/$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         $pkgname.{service,sysusers,tmpfiles})
 b2sums=('8874d9f876add029b41781f2b42ae109218f5d3cf248c72d8572082ae7658f4014b8cdffe333501b7dbe19b8aa3cfe9f89687ee0913e691e8fc7ad8723aaff47'
         'e5abb7690ab1095987542b5542b6e4d6b651899b56933165679343c5b19e6a8ec653007b83f0e08a71a2cffff6fb9c34c7be77480ab3a09ba758ce97a6a13fee'
@@ -39,9 +39,9 @@ package() {
   rm "$pkgdir"/usr/lib/systemd/system/wmbusmeters.service
 
   # install our own systemd service/tmpfiles/sysusers
-  install -Dm644 "$srcdir"/$pkgname.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/$pkgname.conf
-  install -Dm644 "$srcdir"/$pkgname.sysusers "$pkgdir"/usr/lib/sysusers.d/$pkgname.conf
-  install -Dm644 "$srcdir"/$pkgname.service -t "$pkgdir"/usr/lib/systemd/system/
+  install -Dm644 ../$pkgname.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/$pkgname.conf
+  install -Dm644 ../$pkgname.sysusers "$pkgdir"/usr/lib/sysusers.d/$pkgname.conf
+  install -Dm644 ../$pkgname.service -t "$pkgdir"/usr/lib/systemd/system/
 }
 
-# vim: set ts=2 sw=2 tw=0 et :
+# vim:set ts=2 sw=2 et:
