@@ -1,11 +1,11 @@
 pkgbase = perl-net-ftpssl
-	pkgdesc = NET::FTPSSL perl module.
+	pkgdesc = NET::FTPSSL perl module
 	pkgver = 0.42
 	pkgrel = 1
 	url = https://metacpan.org/release/Net-FTPSSL
 	arch = any
-	license = GPL
-	license = PerlArtistic
+	license = GPL-1.0-or-later
+	license = Artistic-1.0
 	depends = perl
 	depends = perl-net-ssleay
 	depends = perl-io-socket-ssl
