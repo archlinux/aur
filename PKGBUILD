@@ -10,12 +10,12 @@ url=https://github.com/unknownskl/greenlight
 license=(MIT)
 depends=(nodejs)
 makedepends=(git yarn libxcrypt-compat)
-provides=(${pkgname%-git})
-conflicts=(${pkgname%-git}=${pkgver})
+provides=(${pkgname%-git}=${pkgver})
+conflicts=(${pkgname%-git})
 
 source=(
 	${pkgname%-git}::git+https://github.com/unknownskl/greenlight.git
-	https://raw.githubusercontent.com/unknownskl/greenlight/main-v2/LICENSE
+	LICENSE::https://raw.githubusercontent.com/unknownskl/greenlight/main-v2/LICENSE
 )
 
 sha512sums=(
