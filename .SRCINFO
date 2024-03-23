@@ -1,7 +1,7 @@
 pkgbase = hyprdots-ctl-git
 	pkgdesc = CLI for Hyprdots Configurations ++ Hidden Gems
-	pkgver = v0.5.0.r10.da627b7
-	pkgrel = 2
+	pkgver = v0.5.0.r11.0e8d3dd
+	pkgrel = 1
 	url = git+https://github.com/kRHYME7/Hyprdots-ctl
 	arch = any
 	license = GPL

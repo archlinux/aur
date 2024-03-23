@@ -1,8 +1,8 @@
 # Maintainer: khing <bong.kook.khan@gmail.com>
 
 pkgname=hyprdots-ctl-git
-pkgver=v0.5.0.r10.da627b7
-pkgrel=2
+pkgver=v0.5.0.r11.0e8d3dd
+pkgrel=1
 pkgdesc="CLI for Hyprdots Configurations ++ Hidden Gems"
 arch=('any')
 url="git+https://github.com/kRHYME7/Hyprdots-ctl"
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/Hyprdots-ctl" || exit 1
-    git fetch --all
+    git fetch --all &> /dev/null
     printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"    
 	# printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
