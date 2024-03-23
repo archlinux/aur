@@ -2,7 +2,7 @@
 
 pkgname=stack-bin
 _pkgname=stack
-pkgver=2.15.1
+pkgver=2.15.3
 pkgrel=1
 pkgdesc="The Haskell Tool Stack. Packaged from upstream binary release."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=(gmp zlib)
 provides=(stack stack-static)
 conflicts=(stack stack-static)
 source=("https://github.com/commercialhaskell/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${arch}.tar.gz")
-sha256sums=('3e8d85c4c9d24905498edc8c0ec0b4fa207093d9817f281d842c203f33ad9f5e')
+sha256sums=('25ccba5988611e51fed8904acb97f6149df6dd91b72616a8653bc52260820a41')
 package() {
   cd ${srcdir}/${_pkgname}-${pkgver}-linux-${arch}
   install -Dm755 stack "${pkgdir}/usr/bin/stack"

@@ -1,6 +1,6 @@
 pkgbase = stack-bin
 	pkgdesc = The Haskell Tool Stack. Packaged from upstream binary release.
-	pkgver = 2.15.1
+	pkgver = 2.15.3
 	pkgrel = 1
 	url = https://github.com/commercialhaskell/stack
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = stack-bin
 	provides = stack-static
 	conflicts = stack
 	conflicts = stack-static
-	source = https://github.com/commercialhaskell/stack/releases/download/v2.15.1/stack-2.15.1-linux-x86_64.tar.gz
-	sha256sums = 3e8d85c4c9d24905498edc8c0ec0b4fa207093d9817f281d842c203f33ad9f5e
+	source = https://github.com/commercialhaskell/stack/releases/download/v2.15.3/stack-2.15.3-linux-x86_64.tar.gz
+	sha256sums = 25ccba5988611e51fed8904acb97f6149df6dd91b72616a8653bc52260820a41
 
 pkgname = stack-bin
