@@ -9,32 +9,46 @@ pkgdesc='Feature packed AUR helper'
 url='https://github.com/morganamilo/paru'
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/Morganamilo/paru/archive/v$pkgver.tar.gz"
         git+https://aur.archlinux.org/pacman-static.git)
-arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
+arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 license=('GPL-3.0-or-later')
 makedepends=('rustup' 'cargo' 'musl' 'meson' 'kernel-headers-musl' 'lld' 'binutils')
-depends=('git' 'pacman')
+depends=('git' 'pacman' 'paru')
+#conflicts=('paru')
+#replaces=('paru')
 optdepends=('bat: colored pkgbuild printing' 'devtools: build in chroot and downloading pkgbuilds')
 sha256sums=('ccf6defc4884d580a4b813cc40323a0389ffc9aa4bdc55f3764a46b235dfe1e0'
             'SKIP')
 
 export LTOFLAGS+=" -ffat-lto-objects"
-_srcenv() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  # musl build for openssl-sys
-  export PKG_CONFIG_ALLOW_CROSS=1
-  export RUSTUP_TOOLCHAIN=stable
-  export TARGET="$CARCH-unknown-linux-musl"
-  # If you prefer the settings in ~/.config/cargo.toml, comment out the following two lines to enable them.
-  #source <(cargo +nightly -Z unstable-options rustc --print cfg|grep -E "target_(arch|vendor|os|env)")
-  #export TARGET="${target_arch}-${target_vendor}-${target_os}-${target_env}"
-}
+# musl build for openssl-sys
+export PKG_CONFIG_ALLOW_CROSS=1
+export RUSTUP_TOOLCHAIN=stable
+case "$CARCH" in
+  "armv6h")
+    ARCH="arm"
+    ;;
+  "armv7h")
+    ARCH="armv7"
+    ;;
+  "riscv64")
+    ARCH="riscv64gc"
+    ;;
+  "pentium4")
+    ARCH="x86_64"
+    ;;
+  *)
+    ARCH=$CARCH
+    ;;
+esac
+[[ $(rustup target list | grep "$ARCH"- | grep musl) ]] && TARGET=$(rustup target list | grep "$ARCH"- |grep musl|head -n1|awk '{ print $1 }') || TARGET=$(rustup target list | grep "$ARCH"- |grep -v musl|head -n1| awk '{print $1}')
 
 checkver() {
   test "$(echo "$@" | tr " " "\n" | sort -Vr | head -n 1)" == "$1";
 }
 
 prepare() {
-  _srcenv
+  cd "$srcdir/$_pkgname-$pkgver"
+  echo $TARGET
   rustup target add $TARGET
   cargo fetch --locked --target $TARGET
 }
@@ -42,7 +56,7 @@ prepare() {
 build () {
   cd $srcdir/pacman-static
 
-  # If pacman-static(6.1.0) is not installed, build and install it.
+  # If pacman-static(6.1.0) is not installed, build and install it.(Because it requires libalpm.a.)
   # Build and install pacman-static if the version is not greater than or not equal to 6.1.0-1 or if the package cannot read symbols in the static link library(libalpm.a).
   if ! checkver $(LC_ALL=C pacman -Qi pacman-static|grep Version|grep -Eo "([0-9]+.[0-9]+.[0-9]+)-[0-9]+") "6.1.0-1" || [[ ! $(LC_ALL=C objdump --syms /usr/lib/pacman/lib/libalpm.a | grep -E "\.text.* alpm_version") ]] ; then
     # Addition of -ffat-lto-objects to LTOFLAGS.(prevent static lib mangling)
@@ -51,7 +65,7 @@ build () {
   fi
 
   # paru
-  _srcenv
+  cd "$srcdir/$_pkgname-$pkgver"
   if pacman -T pacman-git > /dev/null; then
     _features+="git,"
   fi
@@ -62,15 +76,21 @@ build () {
   if [[ $CARCH != x86_64 ]]; then
     export CARGO_PROFILE_RELEASE_LTO=off
   fi
+
+  if [[ $CARCH == aarch64 ]]; then
+    _features+="generate,"
+  fi
+
   if [[ $CARCH == x86_64 ]]; then
-    export RUSTFLAGS="-C link-self-contained=on -C strip=symbols -C no-redzone=y -C overflow-checks=y -C lto=fat -C embed-bitcode=y -C codegen-units=1 -C opt-level=z -C control-flow-guard=y -C link-arg=-fuse-ld=lld"
+    export RUSTFLAGS="-C link-self-contained=on -C strip=symbols -C no-redzone=y -C overflow-checks=y -C lto=fat -C embed-bitcode=y -C codegen-units=1 -C opt-level=z -C control-flow-guard=y -C link-arg=-fuse-ld=lld -C link-arg=-Wp,-D_FORTIFY_SOURCE=2 -C link-arg=-U_FORTIFY_SOURCE -C link-arg=-D_FORTIFY_SOURCE=2 -C link-arg=-fPIE -C link-arg=-fpie -C link-arg=-Wl,-z,relro,-z,now",
+
   fi
   cargo build --frozen --features "${_features:-}" --release --target-dir target --target $TARGET
   #./scripts/mkmo locale/
 }
 
 package() {
-  _srcenv
+  cd "$srcdir/$_pkgname-$pkgver"
   install -Dm755 target/$TARGET/release/paru "${pkgdir}/usr/bin/paru-static"
   #install -Dm644 paru.conf "${pkgdir}/etc/paru.conf"
 
