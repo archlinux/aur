@@ -1,71 +1,63 @@
+# https://aur.archlinux.org/packages/passy
+groups=('modified')
+
 pkgname=passy
-_pkgshortname=passy
-pkgver=1.7.0.r0.g29e8f66
+_app_id=com.glitterware.passy
+pkgver=1.8.0
 pkgrel=1
-pkgdesc='Offline password manager with cross-platform synchronization'
-arch=('x86_64')
-url='https://github.com/GlitterWare/Passy'
-license=(GPL)
-provides=('passy')
-depends=('gtk3' 'git' 'glu' 'java-environment' 'libglvnd' 'unzip' 'cmake' 'ninja')
-source=('git+https://github.com/GlitterWare/Passy.git')
-sha512sums=('SKIP')
-_flutter='submodules/flutter/bin/flutter --no-version-check --suppress-analytics --verbose'
+pkgdesc="Offline password manager with cross-platform synchronization"
+arch=('x86_64' 'aarch64')
+url="https://glitterware.github.io/Passy"
+license=('GPL-3.0-or-later')
+depends=('gtk3')
+makedepends=('chrpath' 'clang' 'cmake' 'git' 'ninja' 'unzip')
+_commit=7fee2f6210bb358e89a95f1d0dab625875f1c9d8  # tags/1.8.0^0
+source=("git+https://github.com/GlitterWare/Passy.git#commit=${_commit}"
+        'git+https://github.com/flutter/flutter.git')
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
   cd Passy
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
+
+prepare() {
+  cd Passy
+  git submodule init
+  git config submodule.submodules/flutter.url "$srcdir/flutter"
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
-  # flutter build
   cd Passy
-  git reset --hard $(git describe --tags $(git rev-list --tags --max-count=1))
-  git submodule init
-  git submodule update
-  export PATH="$PATH:$PWD/submodules/flutter/bin"
-  $_flutter config --no-analytics
-  $_flutter build linux --dart-define=UPDATES_POPUP_ENABLED=false
-  cd ..
-
-  # change the package name
-  if [ -d 'linux_assets' ]; then
-    rm -rf linux_assets
-  fi
-  mkdir -p linux_assets
-  cp -r Passy/linux_assets .
-  cd linux_assets
-  sed -i s/com.glitterware.passy/$_pkgshortname/ com.glitterware.passy.appdata.xml
-  sed -i s/com.glitterware.passy/$_pkgshortname/ com.glitterware.passy.desktop
-  cd ..
+  export FLUTTER_HOME="${PWD}/submodules/flutter"
+  export PATH="${FLUTTER_HOME}/bin:${PATH}"
+  flutter --disable-analytics
+  flutter pub get
+  flutter build linux --dart-define=UPDATES_POPUP_ENABLED=false
 }
 
 package() {
-  case "$(uname -m)" in
-    'x86_64')
-      export FLUTTER_ARCH=x64
-      ;;
-    'aarch64')
-      export FLUTTER_ARCH=arm64
-      ;;
-  esac
+  cd Passy
 
-  # install
-  install -dm755 ${pkgdir}/opt
-  mv Passy/build/linux/$FLUTTER_ARCH/release/bundle ${pkgdir}/opt/${_pkgshortname}
+  if [ $CARCH == "aarch64" ]; then
+    FLUTTER_ARCH=arm64
+  else
+    FLUTTER_ARCH=x64
+  fi
 
-  # link
-  install -dm755 ${pkgdir}/usr/bin
-  ln -s /opt/${_pkgshortname}/${_pkgshortname} ${pkgdir}/usr/bin/${_pkgshortname}
+  install -Dm755 "build/linux/${FLUTTER_ARCH}/release/bundle/$pkgname" -t \
+    "$pkgdir/opt/$pkgname/"
+  cp -r "build/linux/${FLUTTER_ARCH}/release/bundle"/{data,lib} "$pkgdir/opt/$pkgname"
 
-  # icon
-  install -Dm644 Passy/logo.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgshortname}.png
+  install -d "$pkgdir/usr/bin"
+  ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/"
 
-  # desktop entry
-  install -dm755 $pkgdir/usr/share/applications
-  install -Dm644 linux_assets/com.glitterware.passy.desktop $pkgdir/usr/share/applications/${_pkgshortname}.desktop
+  install -Dm644 logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/${_app_id}.svg"
+  install -Dm644 "linux_assets/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "linux_assets/${_app_id}.appdata.xml" -t "$pkgdir/usr/share/metainfo/"
 
-  # metainfo
-  install -dm755 $pkgdir/usr/share/metainfo
-  install -Dm644 linux_assets/com.glitterware.passy.appdata.xml $pkgdir/usr/share/metainfo/${_pkgshortname}.appdata.xml
+  # Remove insecure RUNPATH pointing to build dir
+  chrpath --delete "$pkgdir/opt/$pkgname"/lib/*.so
 }
