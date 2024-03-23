@@ -1,6 +1,6 @@
 # Maintainer: Feydreva <feydreva.aur at paradize dot io>
 pkgname=winamax-bin
-pkgver=1.5.0
+pkgver=1.54.0
 pkgrel=1
 pkgdesc="Winamax Poker"
 arch=('x86_64')
