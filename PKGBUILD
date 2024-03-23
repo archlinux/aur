@@ -2,11 +2,11 @@
 
 pkgname=qt5ct-svn
 pkgver=1.9.r690
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt5 Configuration Tool - svn version.'
 arch=(x86_64)
 url='https://sourceforge.net/projects/qt5ct/'
-license=(BSD)
+license=(BSD-2-Clause)
 depends=(gcc-libs
          glibc
          qt5-base
