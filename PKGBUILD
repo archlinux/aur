@@ -61,7 +61,8 @@ build () {
   if ! checkver $(LC_ALL=C pacman -Qi pacman-static|grep Version|grep -Eo "([0-9]+.[0-9]+.[0-9]+)-[0-9]+") "6.1.0-1" || [[ ! $(LC_ALL=C objdump --syms /usr/lib/pacman/lib/libalpm.a | grep -E "\.text.* alpm_version") ]] ; then
     # Addition of -ffat-lto-objects to LTOFLAGS.(prevent static lib mangling)
     sed -r "/(export LDFLAGS=.*)/s/(.+)/export LTOFLAGS+=' -ffat-lto-objects'\n\1/" PKGBUILD -i
-    makepkg -si --skippgpcheck --noconfirm
+    for i in $( . PKGBUILD; echo "${validpgpkeys[@]}" ); do gpg --receive "$i"; gpg -a --export "$i" > "keys/pgp/$i.asc" ; done
+    makepkg -si --noconfirm
   fi
 
   # paru
