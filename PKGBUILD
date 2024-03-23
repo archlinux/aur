@@ -13,7 +13,7 @@ _neovim="n"
 
 _name='deoplete'
 pkgname="${_name}-git"
-pkgver=r2062.62dd019
+pkgver=r2066.43d7457
 pkgrel=1
 pkgdesc="deoplete completion plugin for neovim"
 # i.e. seems to build and work fine on raspberrypi
@@ -31,7 +31,7 @@ optdepends=('vim: vim support'
 makedepends=('git') 
 provides=('deoplete')
 conflicts=('deoplete')
-replaces=('')
+replaces=('deoplete')
 backup=()
 options=()
 install="${_name}.install"
