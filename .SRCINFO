@@ -6,6 +6,8 @@ pkgbase = mediascan
 	arch = any
 	license = AGPL3
 	checkdepends = shellcheck
+	depends = find
+	optdepends = termux-api
 	source = mediascan-0.1.1.1.tar.gz::https://github.com/themartiancompany/mediascan/archive/refs/tags/0.1.1.1.tar.gz
 	sha256sums = dbbea941b273e8ca87faa8105cf4fcd275504bee82565a542bc8a30d1f3e3a10
 

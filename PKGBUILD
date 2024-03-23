@@ -24,23 +24,21 @@ license=(
   AGPL3
 )
 depends=(
+  "find"
 )
 _os="$( \
   uname \
     -o)"
-[[ "${_os}" == "GNU/Linux" ]] && \
-  depends+=(
-    "find"
-  )
-[[ "${_os}" == "GNU/Linux" ]] && \
-  depends+=(
+optdepends=(
+)
+[[ "${_os}" != "GNU/Linux" ]] && \
+[[ "${_os}" == "Android" ]] && \
+  optdepends+=(
     "termux-api"
   )
 makedepends=()
-optdepends=(
-)
 checkdepends=(
-  shellcheck
+  "shellcheck"
 )
 source=()
 sha256sums=()
