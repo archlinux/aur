@@ -7,9 +7,9 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-unixodbc
 pkgver=2.3.12
-pkgrel=1
+pkgrel=2
 arch=('any')
-pkgdesc="ODBC is an open specification for providing application developers with a predictable API with which to access Data Sources (android)"
+pkgdesc="ODBC is an open specification for providing application developers with a predictable API with which to access Data Sources (Android, ${_android_arch})"
 license=('GPL2' 'LGPL2.1')
 url="http://www.unixodbc.org/"
 depends=("android-${_android_arch}-readline"
@@ -22,7 +22,13 @@ build() {
     cd "${srcdir}/unixODBC-${pkgver}"
     source android-env ${_android_arch}
 
-    android-${_android_arch}-configure
+    if [ "${ANDROID_MINIMUM_PLATFORM}" -lt 24 ]; then
+        if [[ "${_android_arch}" = armv7a-eabi || "${_android_arch}" = x86 ]]; then
+            configopts=--disable-largefile
+        fi
+    fi
+
+    android-${_android_arch}-configure ${configopts}
     make $MAKEFLAGS
 }
 
