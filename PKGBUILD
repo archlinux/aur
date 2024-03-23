@@ -8,7 +8,7 @@ pkgname=(
   'wxwidgets-qt5-light'
 )
 pkgver=3.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="wxWidgets suite for Base, Qt5 and GTK3 toolkits (GNOME/GStreamer free!)"
 arch=('x86_64')
 url='http://wxwidgets.org'
@@ -182,8 +182,8 @@ pkgdesc="wxWidgets Qt5 Toolkit (GNOME/GStreamer free!)"
     'libtiff' 'libtiff.so'
   )
   provides=(
-    'wxwidgets-qt5'
     'wxwidgets'
+    "wxwidgets-qt5=${pkgver:0:3}"
     'libwx_qtu_adv-3.2.so'
     'libwx_qtu_aui-3.2.so'
     'libwx_qtu_core-3.2.so'
@@ -242,7 +242,7 @@ package_wxwidgets-gtk3-light() {
   )
   provides=(
     'wxwidgets'
-    'wxwidgets-gtk3'
+    "wxwidgets-gtk3=${pkgver:0:3}"
     'libwx_gtk3u_adv-3.2.so'
     'libwx_gtk3u_aui-3.2.so'
     'libwx_gtk3u_core-3.2.so'
@@ -290,7 +290,7 @@ package_wxwidgets-gtk4-light() {
   optdepends=('webkit2gtk: for webview support')
   provides=(
     'wxwidgets'
-    'wxwidgets-gtk4'
+    "wxwidgets-gtk4=${pkgver:0:3}"
   )
   conflicts=('wxwidgets-gtk4')
 
@@ -328,7 +328,7 @@ package_wxwidgets-common-light() {
   provides=(
     'wxbase'
     'wxbase-light'
-    'wxwidgets-common'
+    "wxwidgets-common=${pkgver:0:3}"
     'libwx_baseu-3.2.so'
     'libwx_baseu_net-3.2.so'
     'libwx_baseu_xml-3.2.so'

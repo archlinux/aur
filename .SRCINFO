@@ -1,7 +1,7 @@
 pkgbase = wxwidgets-light
 	pkgdesc = wxWidgets suite for Base, Qt5 and GTK3 toolkits (GNOME/GStreamer free!)
 	pkgver = 3.2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://wxwidgets.org
 	arch = x86_64
 	license = custom:wxWindows
@@ -63,7 +63,7 @@ pkgname = wxwidgets-common-light
 	depends = libsecret-1.so
 	provides = wxbase
 	provides = wxbase-light
-	provides = wxwidgets-common
+	provides = wxwidgets-common=3.2
 	provides = libwx_baseu-3.2.so
 	provides = libwx_baseu_net-3.2.so
 	provides = libwx_baseu_xml-3.2.so
@@ -118,7 +118,7 @@ pkgname = wxwidgets-gtk3-light
 	depends = libwayland-egl.so
 	optdepends = webkit2gtk: for webview support
 	provides = wxwidgets
-	provides = wxwidgets-gtk3
+	provides = wxwidgets-gtk3=3.2
 	provides = libwx_gtk3u_adv-3.2.so
 	provides = libwx_gtk3u_aui-3.2.so
 	provides = libwx_gtk3u_core-3.2.so
@@ -152,8 +152,8 @@ pkgname = wxwidgets-qt5-light
 	depends = libmspack.so
 	depends = libtiff
 	depends = libtiff.so
-	provides = wxwidgets-qt5
 	provides = wxwidgets
+	provides = wxwidgets-qt5=3.2
 	provides = libwx_qtu_adv-3.2.so
 	provides = libwx_qtu_aui-3.2.so
 	provides = libwx_qtu_core-3.2.so
