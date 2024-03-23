@@ -1,6 +1,6 @@
 pkgbase = tinygo-bin
 	pkgdesc = TinyGo - Go for small spaces
-	pkgver = 0.29.0
+	pkgver = 0.31.2
 	pkgrel = 1
 	url = https://tinygo.org
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = tinygo-bin
 	optdepends = arm-none-eabi-gdb: tinygo gdb support
 	provides = tinygo
 	conflicts = tinygo
-	source = https://github.com/tinygo-org/tinygo/releases/download/v0.29.0/tinygo0.29.0.linux-amd64.tar.gz
-	source = https://raw.githubusercontent.com/tinygo-org/tinygo/v0.29.0/LICENSE
-	sha256sums = 46efb5d3181101f774f746120e4d0cc392b2216c3a960422f8f10cd62afdae05
+	source = https://github.com/tinygo-org/tinygo/releases/download/v0.31.2/tinygo0.31.2.linux-amd64.tar.gz
+	source = https://raw.githubusercontent.com/tinygo-org/tinygo/v0.31.2/LICENSE
+	sha256sums = 48a83ae9efe619124d2ecac8aba0b039ea8dabf07765b1df26692b63cfd8fab8
 	sha256sums = 122381213b7e2278825295b1d1469dd6fd4a22310cbbcb215192bde3f73b6950
 
 pkgname = tinygo-bin
