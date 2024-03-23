@@ -1,0 +1,38 @@
+--- a/Makefile	2024-03-23 10:24:04.600741878 +0100
++++ b/Makefile	2024-03-23 10:25:52.090892838 +0100
+@@ -3,27 +3,21 @@
+ bindir=$(PREFIX)/bin
+ localedir=$(PREFIX)/share/locale
+ mandir=$(PREFIX)/share/man
+-MSGFMT=msgfmt
+ GZIP=gzip
+ INSTALL=install
+
+
+-all: po man
+-
+-po:
+-	$(MSGFMT) po/fr.po -o po/dmg2dir_fr.mo
++all: man
+
+ man:
+ 	$(GZIP) -f -k -c docs/en.1 > docs/dmg2dir_en.1.gz
+ 	$(GZIP) -f -k -c docs/fr.1 > docs/dmg2dir_fr.1.gz
+
+ clean:
+-	@rm -v po/*.mo
+ 	@rm -v docs/*.1.gz
+
+-install: po man
++install: man
+ 	$(INSTALL) -Dvm755 dmg2dir			$(DESTDIR)$(bindir)/dmg2dir
+-	$(INSTALL) -Dvm644 po/dmg2dir_fr.mo		$(DESTDIR)$(localedir)/fr/LC_MESSAGES/dmg2dir.mo
+ 	$(INSTALL) -Dvm644 docs/dmg2dir_en.1.gz		$(DESTDIR)$(mandir)/man1/dmg2dir.1.gz
+ 	$(INSTALL) -Dvm644 docs/dmg2dir_fr.1.gz		$(DESTDIR)$(mandir)/fr/man1/dmg2dir.1.gz
+ 	sed -i 's|@TEXTDOMAINDIR@|$(localedir)|g'	$(DESTDIR)$(bindir)/dmg2dir
+@@ -34,4 +28,4 @@
+ 	@rm -v $(mandir)/man1/dmg2dir.1.gz
+ 	@rm -v $(mandir)/fr/man1/dmg2dir.1.gz
+
+-.PHONY: po man clean install
++.PHONY: man clean install

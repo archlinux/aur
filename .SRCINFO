@@ -1,7 +1,7 @@
 pkgbase = dmg2dir
 	pkgdesc = A Bash script which extract macOS application from DMG file
 	pkgver = 3.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/TheTumultuousUnicornOfDarkness/dmg2dir
 	arch = any
 	license = unknow
@@ -10,6 +10,8 @@ pkgbase = dmg2dir
 	optdepends = cdrtools: to use --iso option
 	optdepends = darling: to use --run option
 	source = dmg2dir-3.1.1::https://github.com/TheTumultuousUnicornOfDarkness/dmg2dir/archive/v3.1.1.tar.gz
+	source = 0001-makefile-remove-po.patch
 	sha512sums = b5ef6b1c5e59d84456844dd440833d84bd1a0203116a9e100e4d7a5f7f010a48fd3049a895574fbe8090f01cedfe0d71ab5bd23412ee5fb5ecdeb087f00745c5
+	sha512sums = 2f15c84a127673bfecefe675589cd74535bf6825b22b73b6c384020e3ca3094dc777ef5bd2cc8ee799233946f17547761011db2b26706273def125f67866044f
 
 pkgname = dmg2dir
