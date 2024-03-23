@@ -1,13 +1,15 @@
-# Maintainer: Castor <whoisyoges at castorisdead dot xyz>
+# Maintainer: Castor <whoisyoges@castorisdead.xyz>
 pkgname=local-arch-wiki
-pkgver=1.1
+pkgver=2.0
 pkgrel=0
-pkgdesc="An offline version of arch linux wiki."
+pkgdesc="A convenient wrapper for arch-wiki-docs, enabling effortless searching and access to the offline Arch Wiki."
 arch=('any')
 url="https://github.com/whoisyoges/local-arch-wiki"
 license=('GPL2')
-depends=('arch-wiki-docs' 'dmenu' 'bash' 'sed')
-optdepends=('rofi' 'firefox' 'xdg-utils' 'libnotify')
+depends=('arch-wiki-docs' 'bash' 'sed')
+optdepends=('dmenu: tofi, dmenu, rofi or any other menu.'
+            'firefox: Firefox or any other web browser.'
+            'libnotify: For notification support.')
 makedepends=('git')
 source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
