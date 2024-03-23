@@ -40,18 +40,20 @@ prepare() {
 }
 
 build () {
-  # If pacman-static(6.1.0) is not installed, build and install it.
   cd $srcdir/pacman-static
 
-  # disable lto
-  #sed "s/^options=(\(.*\))$/options=(\1 '\!lto')/" PKGBUILD -i
-
-  # Addition of -ffat-lto-objects to CFLAGS to ensure that symbols and headers are included in libalpm.a when lto is enabled.
-  sed -r "/(export LDFLAGS=.*)/s/(.+)/export CFLAGS+=' -ffat-lto-objects'\n\1/" PKGBUILD -i
-
+  # If pacman-static(6.1.0) is not installed, build and install it.
   # Build and install pacman-static if the version is not greater than or not equal to 6.1.0-1 or if the package cannot read symbols in the static link library(libalpm.a).
   if ! checkver $(LC_ALL=C pacman -Qi pacman-static|grep Version|grep -Eo "([0-9]+.[0-9]+.[0-9]+)-[0-9]+") "6.1.0-1" || [[ ! $(LC_ALL=C objdump --syms /usr/lib/pacman/lib/libalpm.a | grep -E "\.text.* alpm_version") ]] ; then
-      makepkg -si --skippgpcheck --noconfirm
+    # disable lto
+    #sed "s/^options=(\(.*\))$/options=(\1 '\!lto')/" PKGBUILD -i
+
+    # Addition of -ffat-lto-objects to CFLAGS to ensure that symbols and headers are included in libalpm.a when lto is enabled.
+    if [[ $(printf '%s\n' "${OPTIONS[@]}" | grep -Ex "^lto") && ! $(printf '%s\n' "${options[@]}" | grep -Ex "^!lto") || $(printf '%s\n' "${options[@]}" | grep -Ex "^lto") ]] ;then
+      echo "lto is enabled"
+      sed -r "/(export LDFLAGS=.*)/s/(.+)/export CFLAGS+=' -ffat-lto-objects'\n\1/" PKGBUILD -i
+    fi
+    makepkg -si --skippgpcheck --noconfirm
   fi
 
   # paru
