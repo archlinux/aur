@@ -2,7 +2,7 @@
 
 pkgname=sudo-rs
 pkgver=0.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A safety oriented and memory safe implementation of sudo and su written in Rust."
 arch=('x86_64'
     'aarch64'
@@ -68,5 +68,7 @@ package() {
         fi
     done
 
-    ln -sf  $pkgdir/etc/pam.d/sudo $pkgdir/etc/pam.d/sudo-i
+    # https://github.com/memorysafety/sudo-rs/issues/832#issuecomment-1994101988
+    install -dm0755 $pkgdir/etc/pam.d
+    ln -sf /etc/pam.d/sudo $pkgdir/etc/pam.d/sudo-i
 }
