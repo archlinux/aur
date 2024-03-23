@@ -40,7 +40,7 @@ case "$CARCH" in
     ARCH=$CARCH
     ;;
 esac
-[[ $(rustup target list | grep "$ARCH"- | grep musl) ]] && TARGET=$(rustup target list | grep "$ARCH"- |grep musl|head -n1|awk '{ print $1 }') || TARGET=$(rustup target list | grep "$ARCH"- |grep -v musl|head -n1| awk '{print $1}')
+[[ $(rustup target list | grep "$ARCH"- | grep musl) ]] && TARGET=$(rustup target list | grep "$ARCH"- |grep musl|head -n1|cut -d" " -f1) || TARGET=$(rustup target list | grep "$ARCH"- |grep -v musl|head -n1|cut -d" " -f1)
 
 checkver() {
   test "$(echo "$@" | tr " " "\n" | sort -Vr | head -n 1)" == "$1";
