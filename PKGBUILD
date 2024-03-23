@@ -68,5 +68,5 @@ package() {
         fi
     done
 
-    cp -rv  sudo-rs sudo-i
+    ln -sf  $pkgdir/etc/pam.d/sudo $pkgdir/etc/pam.d/sudo-i
 }
