@@ -1,6 +1,6 @@
 pkgbase = makemeasandwich-nosudo-git
 	pkgdesc = Orders from Jimmy John's via command line, inspired by xkcd 149. This package has less snark.
-	pkgver = 33.4d79aab
+	pkgver = 35.35d6312
 	pkgrel = 1
 	url = https://github.com/travist/makemeasandwich.js
 	arch = i686
@@ -17,10 +17,9 @@ pkgbase = makemeasandwich-nosudo-git
 	conflicts = makemeasandwich
 	conflicts = makemeasandwich-git
 	conflicts = makemeasandwich-nosudo
-	source = makemeasandwich-nosudo-git::git://github.com/travist/makemeasandwich.js
+	source = makemeasandwich-nosudo-git::git+https://github.com/travist/makemeasandwich.js
 	source = nosudo.patch
 	md5sums = SKIP
 	md5sums = 57fe79325ea7043de15aa0f08a53d45f
 
 pkgname = makemeasandwich-nosudo-git
-
