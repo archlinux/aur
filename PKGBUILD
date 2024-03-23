@@ -7,7 +7,7 @@
 
 
 pkgname=kdenlive-git
-pkgver=24.04.70.r19660
+pkgver=24.04.70.r19799
 pkgrel=1
 pkgdesc="A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (Latest Applications GIT Version)"
 arch=('i686' 'x86_64')
@@ -50,28 +50,16 @@ pkgver() {
   echo "$(echo ${_ver}).r$(git rev-list --count HEAD)"
 }
 
-prepare(){
-  mkdir -p build
-}
-
 #To get debug info, change -DCMAKE_BUILD_TYPE=Release to either "Debug" or "RelWithDebInfo"
 
 build() {
-  cd build
-  cmake ../kdenlive \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF
-  make
+  cmake -B build -S kdenlive \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
+  cmake --build build
 }
-#-DQT_MAJOR_VERSION=5
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-## These are not needed anymore, as the package has finally been updated.
-#  cp -v ../frei0r_bigsh0t_hemi_to_eq.xml ${pkgdir}/usr/share/kdenlive/effects/
-#  cp -v ../frei0r_bigsh0t_eq_to_rect.xml ${pkgdir}/usr/share/kdenlive/effects/
 }
 
