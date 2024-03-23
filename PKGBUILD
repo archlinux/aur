@@ -1,7 +1,8 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=sentry-native
-pkgver=0.7.0
+pkgver=0.7.1
+_commit=9bc0fc75e34cb43e7019d76b0decb6c0cddbfd34
 pkgrel=1
 pkgdesc="Sentry SDK for C, C++ and native applications"
 arch=(x86_64)
@@ -22,8 +23,6 @@ checkdepends=(
   python-pytest
   python-pytest-httpserver
 )
-
-_commit=4ec95c0725df5f34440db8fa8d37b4c519fce74e # git rev-parse "$pkgver"
 source=(
   "git+$url.git#commit=$_commit"
   "git+https://github.com/getsentry/libunwindstack-ndk.git"
@@ -34,7 +33,7 @@ source=(
   "git+https://chromium.googlesource.com/chromium/src/third_party/zlib.git"
 )
 sha256sums=(
-  'SKIP'
+  '704370295758194498b733ee758d16c647d8346be57ac52302ad7919e3297ef7'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -83,8 +82,8 @@ check() {
   cd "$_archive"
 
   pytest \
-    --ignore="external/crashpad/test/win" \
-    --ignore="external/crashpad/snapshot/win/"
+    --ignore external/crashpad/test/win \
+    --ignore external/crashpad/snapshot/win
 }
 
 package() {
