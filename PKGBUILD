@@ -5,7 +5,7 @@
 pkgbase='ceph'
 pkgdesc='Distributed, fault-tolerant storage platform delivering object, block, and file system'
 pkgver=18.2.2
-pkgrel=1
+pkgrel=2
 url='https://ceph.com/'
 arch=('x86_64')
 license=('GPL')
@@ -120,6 +120,9 @@ source=(
   # importing type stub (.pyi) files directly, without a .py skeleton
   'ceph-18.2.2-mgr-ceph-module-stub.patch'
 
+  # Make the mgr import our ceph_bcrypt fork instead of the system bcrypt
+  'ceph-18.2.2-mgr-alias-ceph-bcrypt.patch'
+
   # ===== ceph-python-bcrypt sources ===== #
   "python-bcrypt-${__bcrypt_version}.tar.gz::https://github.com/pyca/bcrypt/archive/${__bcrypt_version}.tar.gz"
 
@@ -149,6 +152,7 @@ sha512sums=('2fcd3d67512754947adc8780edbbee9498ef666056b804298cdc998a3eb4a2916c8
             'e238b326609636bc7dd10cec59290e22898948ef105c49643c38d2621abf16c2efcf9581b0b6bad65066607510c9827d00a7abdb14f2054701cc33b7101ea054'
             '965f1174ed682409f5aebfe689ccc870a860f323b00dcd4c9ee079839108ee27ed4d8b42d8b59c7e3cc5fb61d554929d9f779ce224691d20b868acf7f15adb2c'
             '494290871b12be79a3e74618912d552f4802a7580abcd8e174b890944917ac04e1a52ddd7c039fa230cf43463ed479f9abf6f9a7d403d4ba5b522297184b09a5'
+            '692b9cea0199366fdfbcaff2d9590e3a1e439b948a1a5030215e81fcc8a22ac562b3261e2057470cc8acc20f404869a5a0c4550177788dc2f824523e5267b1eb'
             '9cd6535249b88d83efd6f84e36c552cfb68d080c12b5f35167976219fd298efa03010c8674aa6d173242c098194c7d6ace3e2a5173a910bebf63791f60e7ade3'
             '26e4569396005f7461764dbe57634ab6d20ca9bfe777b4eeae3def8e3c887333b4d64470ad1db15a8170979f85372c111abfc043bdc1deae219183cc7539980e'
             '80f0d698d03b18c7168818983e150b34c19480f629f33d5537f76f810bdc7394dea68409ededa5d7f369bf9377cbaa7a9f11caa8874e3ecb29fd8bb06d45aeb2')
