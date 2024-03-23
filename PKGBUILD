@@ -8,7 +8,7 @@ arch=(any)
 pkgver=r18.958a175
 pkgrel=1
 makedepends=(python-setuptools git)
-depends=(python python-xxhash python-yaml)
+depends=(python python-xxhash python-yaml python-matrix-nio)
 optdepends=(postgresql-libs)
 source=(
 	"git+https://github.com/ShadowRZ/jose-bot.git"
