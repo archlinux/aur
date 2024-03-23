@@ -1,11 +1,12 @@
 pkgbase = nginx-mainline-mod-vts
 	pkgdesc = Nginx virtual host traffic status module (module for mainline nginx)
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vozlt/nginx-module-vts
 	arch = x86_64
 	license = BSD-2-Clause
 	makedepends = nginx-mainline-src
+	depends = glibc
 	depends = nginx-mainline
 	source = nginx-module-vts-0.2.2.tar.gz::https://github.com/vozlt/nginx-module-vts/archive/v0.2.2.tar.gz
 	b2sums = 07c24eb62feeb145705ef07dc08feaa06b6b68f80b08e43ff8435bcd1ddbce2ce2d9adffd33efe635678eb787e39d9532f5fb0c22cedd2cb58445b2df14f96f5
