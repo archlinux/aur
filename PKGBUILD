@@ -16,7 +16,7 @@ unset _pkgtype
 ## basic info
 _pkgname="icecat"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=115.9.0
+pkgver=115.9.1
 pkgrel=1
 pkgdesc="GNU version of the Firefox ESR browser"
 url="https://icecatbrowser.org"
@@ -32,7 +32,7 @@ _dl_file="icecat-$pkgver.en-US.linux-$CARCH.tar.bz2"
 noextract=("$_dl_file")
 
 source=("$_dl_url/$_dl_file")
-sha256sums=('4616d11d53ac28533ffd066366e8427a4b179438a8c42a644265e18ca8ede23d')
+sha256sums=('62e0052e1733f100300330efc38343294b92a9c133692602aed96768eaa7f128')
 
 prepare() {
   cat >icecat.desktop <<END
