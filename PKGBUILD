@@ -6,7 +6,7 @@ pkgver='1.017'
 pkgrel='1'
 pkgdesc="Parse and manipulate Perl version strings"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic2.0')
 options=('!emptydirs')
 depends=('perl>=5.010')
 makedepends=()

@@ -4,8 +4,7 @@ pkgbase = perl-perl-version
 	pkgrel = 1
 	url = https://metacpan.org/release/Perl-Version
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic2.0
 	depends = perl>=5.010
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/B/BD/BDFOY/Perl-Version-1.017.tar.gz
