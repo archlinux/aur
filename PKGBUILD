@@ -2,7 +2,7 @@
 
 pkgname='neophyte'
 pkgver='0.2.5'
-pkgrel=1
+pkgrel=2
 pkgdesc='A WebGPU-rendered Neovim GUI'
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/tim-harding/$pkgname"
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 # See for best practices:
 # https://wiki.archlinux.org/title/Rust_package_guidelines
 #
-# Test in a clean chroot with `extra-x86_64-build`:
+# Test in a clean chroot with `namcap PKGBUILD && extra-x86_64-build`:
 # https://wiki.archlinux.org/title/DeveloperWiki:Building_in_a_clean_chroot
 
 prepare() {
