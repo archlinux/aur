@@ -1,12 +1,13 @@
+# Maintainer: Jakub Klinkovský <lahwaacz at archlinux dot org>
 # Maintainer: Specter119 <spcter119 AT gmail.com>
 
 pkgname=jupyter-lsp
-pkgver=2.2.0
-pkgrel=2
-pkgdesc='Multi-Language Server WebSocket proxy for Jupyter Notebook/Lab server.'
+pkgver=2.2.4
+pkgrel=1
+pkgdesc="Multi-Language Server WebSocket proxy for Jupyter Notebook/Lab server."
 arch=(any)
-url=https://pypi.org/project/$pkgname
-license=(MIT)
+url="https://github.com/jupyter-lsp/jupyterlab-lsp"
+license=(BSD-3-Clause)
 depends=(python jupyter-server)
 makedepends=(python-build python-installer python-wheel python-setuptools)
 optdepends=(
@@ -22,8 +23,8 @@ optdepends=(
   vscode-css-languageserver
   vscode-json-languageserver
   yaml-language-server)
-source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('8ebbcb533adb41e5d635eb8fe82956b0aafbf0fd443b6c4bfa906edeeb8635a1')
+source=("$url/archive/refs/tags/$pkgname-$pkgver.tar.gz")
+sha256sums=('5e50033149344065348e688608f3c6d654ef06d9856b67655bd7b6bac9ee2d59')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
@@ -34,5 +35,5 @@ package() {
   cd $srcdir/$pkgname-$pkgver
   python -m installer --destdir=$pkgdir dist/*.whl
   mv $pkgdir/{usr,}/etc
-  install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
