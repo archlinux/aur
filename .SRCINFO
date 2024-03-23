@@ -1,10 +1,10 @@
 pkgbase = python-pydeck
 	pkgdesc = Widget for deck.gl maps
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://pypi.org/project/pydeck
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -16,6 +16,8 @@ pkgbase = python-pydeck
 	depends = python-numpy
 	depends = python-traitlets
 	source = pydeck-0.8.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pydeck/pydeck-0.8.0.tar.gz
+	source = 0001-fix-pyproject.toml.patch
 	sha512sums = 117ba93c3338ab53b34afd9974b4b6408f4287d2f2db340ffa63a6bbe1ca6632939ea50dd5e81d04d76c69634b486a4d34a119eb3a3ad3fa7cb4087c87f8c932
+	sha512sums = 58b6fb016175dcf9c388ee2f9d9a867863592ec71fa044be10b0888f4df0912d553269b4d48da888546b93d192eb9b7c4e3f05e5522f38006384e39f1d81e909
 
 pkgname = python-pydeck
