@@ -1,7 +1,7 @@
 pkgbase = bef-minimal
 	pkgdesc = An extensible, fast, and usable file utility to encode and decode interleaved erasure coded streams of data. Minimal Dependencies
-	pkgver = 0.2.2
-	pkgrel = 2
+	pkgver = 0.2.3
+	pkgrel = 1
 	url = https://github.com/gbletr42/bef
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = bef-minimal
 	depends = xxhash
 	provides = bef
 	conflicts = bef
-	source = https://github.com/gbletr42/bef/archive/refs/tags/release-v0.2.2.tar.gz
-	sha256sums = ddadf122076d7142481ff1b60ab611a9f58455285b9561d777bdbce9bb8bf4d2
+	source = https://github.com/gbletr42/bef/archive/refs/tags/release-v0.2.3.tar.gz
+	sha256sums = 2f676eb9cbc91d916666bedc7968325005714c298204aa86b5621b72a154979f
 
 pkgname = bef-minimal

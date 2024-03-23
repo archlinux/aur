@@ -1,8 +1,8 @@
 # Maintainer: gbletr42 <gbletr42@gmail.com>
 _pkgname="bef"
 pkgname="bef-minimal"
-pkgver=0.2.2
-pkgrel=2
+pkgver=0.2.3
+pkgrel=1
 pkgdesc="An extensible, fast, and usable file utility to encode and decode interleaved erasure coded streams of data. Minimal Dependencies"
 arch=('i686' 'x86_64')
 url="https://github.com/gbletr42/bef"
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('xxhash')
 makedepends=('automake' 'autoconf')
 source=("${url}/archive/refs/tags/release-v${pkgver}.tar.gz")
-sha256sums=('ddadf122076d7142481ff1b60ab611a9f58455285b9561d777bdbce9bb8bf4d2')
+sha256sums=('2f676eb9cbc91d916666bedc7968325005714c298204aa86b5621b72a154979f')
 provides=(bef)
 conflicts=(bef)
 
