@@ -5,7 +5,7 @@
 _pkgname=osmosis
 pkgname="${_pkgname}-bin"
 pkgver=0.49.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line Java application for processing OSM data."
 arch=('any')
 url="http://wiki.openstreetmap.org/wiki/Osmosis"
@@ -20,6 +20,9 @@ provides=(
 )
 conflicts=(
   "${_pkgname}"
+)
+replaces=(
+  "${_pkgname}<=0.49.1" # There was a package 'osmosis' in the AUR which in reality was just this pre-built package.
 )
 source=(
   "${_pkgname}-${pkgver}.zip::https://github.com/openstreetmap/osmosis/releases/download/${pkgver}/osmosis-${pkgver}.zip"
