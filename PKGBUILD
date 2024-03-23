@@ -2,7 +2,7 @@
 
 pkgname=sonicmania-git
 pkgver=r1163.8278952d
-pkgrel=1
+pkgrel=2
 pkgdesc='A full decompilation of Sonic Mania.'
 arch=('any')
 url='https://github.com/Rubberduckycooly/Sonic-Mania-Decompilation'
@@ -17,7 +17,6 @@ depends=(
 	'glfw'
 	'glew'
 )
-provides=(sonic2013)
 source=(
 	"git+${url}.git"
 	'shadersMod.ini'

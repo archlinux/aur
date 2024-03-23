@@ -1,7 +1,7 @@
 pkgbase = sonicmania-git
 	pkgdesc = A full decompilation of Sonic Mania.
 	pkgver = r1163.8278952d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Rubberduckycooly/Sonic-Mania-Decompilation
 	install = sonicmania.install
 	arch = any
@@ -14,7 +14,6 @@ pkgbase = sonicmania-git
 	depends = tinyxml2
 	depends = glfw
 	depends = glew
-	provides = sonic2013
 	source = git+https://github.com/Rubberduckycooly/Sonic-Mania-Decompilation.git
 	source = shadersMod.ini
 	source = sonicmania-launcher
