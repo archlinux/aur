@@ -2,27 +2,21 @@
 
 pkgname=rtl88x2bu-openhd-dkms-git
 _modname=88x2bu_ohd
-pkgver=5.13.1.r222.gaad91d6
+pkgver=5.13.1.r224.g4e07c13
 _pkgver=5.13.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Realtek RTL88x2BU WiFi USB driver (with OpenHD patches)'
 arch=(any)
 url='https://github.com/OpenHD/rtl88x2bu'
 license=(GPL2)
 depends=(dkms bc)
 makedepends=(git)
-source=('git+https://github.com/OpenHD/rtl88x2bu.git' '0001-Update-beacon-change-signature-to-fix-build-on-recen.patch')
-sha256sums=('SKIP'
-            '1449a364a7b8bd828420720c21379d6f5fd395dc761b12925b0ba4809bc0ef13')
+source=('git+https://github.com/OpenHD/rtl88x2bu.git')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/rtl88x2bu"
 	printf '%s.r%s.g%s' "${_pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-}
-
-prepare() {
-	cd "${srcdir}/rtl88x2bu"
-	patch -p1 -i "$srcdir/0001-Update-beacon-change-signature-to-fix-build-on-recen.patch"
 }
 
 package() {
