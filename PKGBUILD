@@ -5,7 +5,7 @@ _pkgname="heptabase"
 _pkgname_capital="Heptabase"
 pkgname="$_pkgname-bin"
 _pkgext="AppImage"
-pkgver="1.29.7"
+pkgver="1.31.1"
 pkgrel=1
 pkgdesc="A visual note-taking tool for learning complex topics."
 url="https://heptabase.com"
@@ -15,7 +15,7 @@ source=(
     "https://github.com/heptameta/project-meta/releases/download/v$pkgver/$_pkgname_capital-$pkgver.$_pkgext"
 )
 sha512sums=(
-    "040696bc54de7b9120e045f73112fc83d3cff4cabcd452b1dc44c2eb45b0dfdfc5e280befee8e36495f7c2c90fadd529f45931fce117e75561603166500b5a73"
+    "86fe912aac5de9ec5a6581d6ec1e752c1bb3570b099502f8e45273ad0623c26ebf7c5d39ca1370b79a6dd43f00371418a339d78e2236ed4034b03f5b5bad1314"
 )
 
 prepare() {
