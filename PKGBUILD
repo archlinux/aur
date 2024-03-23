@@ -2,7 +2,7 @@
 pkgname=python-materialyoucolor-git
 _name=materialyoucolor-python
 pkgver=2.0.8.r1.g9780c78
-pkgrel=1
+pkgrel=2
 pkgdesc="Material You color algorithms for Python!"
 arch=('x86_64')
 url="https://github.com/T-Dynamos/materialyoucolor-python"
