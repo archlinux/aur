@@ -2,8 +2,8 @@
 # Contributor: Grzegorz Koperwas <admin@grzegorzkoperwas.site>
 
 pkgname=swww
-pkgver=0.8.2
-pkgrel=2
+pkgver=0.9.1
+pkgrel=1
 pkgdesc="A Solution to your Wayland Wallpaper Woes"
 arch=(x86_64 aarch64)
 url="https://github.com/LGFae/swww"
@@ -11,7 +11,6 @@ license=(GPL-3.0-only)
 depends=(
   gcc-libs
   glibc
-  libxkbcommon
   lz4
 )
 makedepends=(
@@ -19,8 +18,8 @@ makedepends=(
   scdoc
 )
 options=(!lto)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6733cda771a0e635dbd00f7aef78ed60f1ccdf640647ecfe02d0cdfdef996b68')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('c1f6cf2ccd4878e9cb5b6c6412494120535227516d3749694ac4e75ec68e0547')
 
 _archive="$pkgname-$pkgver"
 
@@ -59,9 +58,9 @@ package() {
   install -Dm644 completions/swww.bash "$pkgdir/usr/share/bash-completion/completions/swww"
   install -Dm644 completions/swww.fish "$pkgdir/usr/share/fish/vendor_completions.d/swww.fish"
   install -Dm644 completions/_swww "$pkgdir/usr/share/zsh/site-functions/_swww"
+  install -Dm644 completions/swww.elv "$pkgdir/usr/share/elvish/lib/swww.elv"
 
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
 
-  # manpages
   install -Dm644 -t "$pkgdir/usr/share/man/man1" ./doc/generated/*.1
 }
