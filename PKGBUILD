@@ -5,11 +5,11 @@
 
 _basename=qt5-wayland
 pkgname=qt5-wayland-decorations
-_basever=5.15.12
-pkgver=5.15.12+kde+r61
+_basever=5.15.13
+pkgver=5.15.13+kde+r60
 pkgrel=1
-_commit=c8b37a1bda9b8f29d56775ed6556d56ac5d3ea1d
-_patchcommit=afd940c87832d5bbc1bcdc7589ffa7b8108a9c61
+_commit=9c82b5461736f59a06923ab68c6f7584ecab4f77
+_patchcommit=1d8e08648debad9741dca0820f5f0e91633b5a4e
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
