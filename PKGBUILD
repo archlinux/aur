@@ -2,7 +2,7 @@
 
 pkgname=sudo-rs
 pkgver=0.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A safety oriented and memory safe implementation of sudo and su written in Rust."
 arch=('x86_64'
     'aarch64'
@@ -34,6 +34,9 @@ build() {
     export CARGO_TARGET_DIR=target
 
     cd "${srcdir}/${pkgname}-${pkgver}/"
+
+    # https://github.com/memorysafety/sudo-rs/issues/832#issuecomment-1994101988
+    sed -i 's|sudo-i|sudo|g' src/sudo/pam.rs
     cargo build --release --all-features
 }
 
@@ -67,8 +70,4 @@ package() {
             mv "$file" "$new_name"
         fi
     done
-
-    # https://github.com/memorysafety/sudo-rs/issues/832#issuecomment-1994101988
-    install -dm0755 $pkgdir/etc/pam.d
-    ln -sf /etc/pam.d/sudo $pkgdir/etc/pam.d/sudo-i
 }
