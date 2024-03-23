@@ -1,13 +1,13 @@
 # Maintainer: robertfoster
 
 pkgname=gyp-git
-pkgver=2077.8e8c317
+pkgver=2174.1615ec32
 pkgrel=1
 pkgdesc="GYP can Generate Your Projects."
 url="http://code.google.com/p/gyp/"
-arch=('i686' 'x86_64')   
+arch=('i686' 'x86_64')
 makedepends=('git')
-depends=('python2' 'python2-setuptools')
+depends=('python' 'python-setuptools')
 license=('custom')
 source=("gyp::git+https://chromium.googlesource.com/external/gyp")
 conflicts=('gyp-svn')
@@ -15,12 +15,12 @@ replaces=('gyp-svn')
 
 pkgver() {
   cd gyp
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  echo "$(git rev-list --count master).$(git rev-parse --short master)"
 }
 
 package() {
   cd gyp
-  python2 setup.py install --root=$pkgdir
+  python3 setup.py install --root="$pkgdir"
 }
 
-md5sums=('SKIP')
+sha256sums=('SKIP')
