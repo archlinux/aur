@@ -1,0 +1,14 @@
+post_upgrade(){
+
+  cat <<INFO
+
+If updating from OCIS version < 5.0.0 ensure that you add the following two lines to your /etc/ocis.env file:
+
+  OCIS_SERVICE_ACCOUNT_ID=$(uuidgen)
+  OCIS_SERVICE_ACCOUNT_SECRET=$(uuidgen)
+
+The values for id and secret are arbitrary and can be replaced with any value you like
+
+INFO
+
+}
