@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-duppy
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="OCaml asynchronous scheduler and monad for server-oriented programming"
 arch=('i686' 'x86_64')
@@ -28,4 +28,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('dc93a45d0c2f18323766eca3a79ffd85eb679dc4b8fff65e4db37da37498c721')
+sha256sums=('b10f5b61495f934996c3f5ac7b01f2e4ea1b31e3418adb7c3fed4edc32a42686')
