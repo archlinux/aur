@@ -2,21 +2,21 @@
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
 
 pkgname=perl-mail-mbox-messageparser
+_dist=Mail-Mbox-MessageParser
 pkgver=1.5111
 pkgrel=2
-pkgdesc="A fast and simple mbox folder reader"
+pkgdesc='A fast and simple mbox folder reader'
 arch=(any)
-license=(PerlArtistic GPL)
+license=(GPL-2.0-only)
 options=(!emptydirs)
 depends=(perl-filehandle-unget)
 checkdepends=(perl-test-compile perl-text-diff perl-test-pod perl-test-pod-coverage perl-universal-require)
-url="http://search.cpan.org/dist/Mail-Mbox-MessageParser"
-source=("http://search.cpan.org/CPAN/authors/id/D/DC/DCOPPIT/Mail-Mbox-MessageParser-1.5111.tar.gz")
-sha512sums=('c0b0c4066da3be2d8b669eed1a527309aefbbedf08531cd8eb524db37319532df75719784a557929adc409fc680a384d731f8b06768020a18855e34f392d6d0f')
-_distdir="Mail-Mbox-MessageParser-1.5111"
+url='http://search.cpan.org/dist/Mail-Mbox-MessageParser'
+source=("$pkgname-$pkgver.tar.gz::http://search.cpan.org/CPAN/authors/id/D/DC/DCOPPIT/Mail-Mbox-MessageParser-$pkgver.tar.gz")
+b2sums=('d5c4e2974a3336088fcb69233c45972246972eb4f88c17b5d0fd205e300c8773c7e6cc6b401ca895c045f59c86c048f473cd2c5f46ff890f556db10965cc2f8b')
 
 build() {
-  cd "$srcdir/$_distdir"
+  cd $_dist-$pkgver
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
   /usr/bin/perl Makefile.PL
@@ -24,14 +24,14 @@ build() {
 }
 
 check() {
-  cd "$srcdir/$_distdir"
+  cd $_dist-$pkgver
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1
   make test
 }
 
 package() {
-  cd "$srcdir/$_distdir"
+  cd $_dist-$pkgver
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
