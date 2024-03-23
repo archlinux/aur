@@ -1,5 +1,5 @@
 pkgname=mingw-w64-abseil-cpp
-pkgver=20230802.1
+pkgver=20240116.1
 pkgrel=1
 pkgdesc='Collection of C++ library code designed to augment the C++ standard library (mingw-w64)'
 arch=('any')
@@ -9,18 +9,15 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/abseil/abseil-cpp/archive/$pkgver/abseil-cpp-$pkgver.tar.gz")
-sha256sums=('987ce98f02eefbaf930d6e38ab16aa05737234d7afbab2d5c4ea7adbe50c28ed')
+sha256sums=('3c743204df78366ad2eaf236d6631d83f6bc928d1705dd0000b872e53b73dc6a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd "${srcdir}/abseil-cpp-$pkgver"
-  # add ABSL_FORCE_WAITER_MODE=4 for https://github.com/abseil/abseil-cpp/issues/1510
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    CXXFLAGS="-DABSL_FORCE_WAITER_MODE=4" ${_arch}-cmake ..
-    make
-    popd
+    ${_arch}-cmake -B build-${_arch} .
+    make -C build-${_arch}
   done
 }
 
