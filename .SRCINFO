@@ -1,0 +1,21 @@
+pkgbase = python-aitemplate-git
+	pkgdesc = AITemplate is a Python framework which renders neural network into high performance CUDA/HIP C++ code.
+	pkgver = 0.3.dev0.r653.gd2dc957b
+	pkgrel = 1
+	url = https://github.com/facebookincubator/AITemplate
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = ninja
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-jinja
+	depends = python-numpy
+	depends = python-sympy
+	provides = python-aitemplate
+	conflicts = python-aitemplate
+	source = python-aitemplate-git::git+https://github.com/facebookincubator/AITemplate
+	sha256sums = SKIP
+
+pkgname = python-aitemplate-git
