@@ -1,52 +1,50 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
 # Former Maintainer: bemasher <bemasher@gmail.com>
 
-_pkgname=rtlamr
 pkgname=rtlamr-git
-pkgver=v0.9.3.r5.g3965b5c5
+_pkgname=${pkgname%%-git}
+pkgver=0.9.3.r16.gdcdddc5
 pkgrel=1
 pkgdesc="An rtl-sdr receiver for Itron ERT compatible smart meters operating in the 900MHz ISM band."
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://github.com/bemasher/rtlamr"
-source=("git+https://github.com/bemasher/rtlamr.git")
-md5sums=('SKIP')
 license=('AGPL3')
 depends=('rtl-sdr')
 makedepends=('go' 'git')
 provides=('rtlamr')
 conflicts=('rtlamr')
-options=('!strip' '!emptydirs')
-_gourl=github.com/bemasher/rtlamr
+source=("git+https://github.com/bemasher/rtlamr.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare(){
-  mkdir -p gopath/src/${_gourl%/*}
-  ln -rTsf $_pkgname gopath/src/$_gourl
+  cd "$_pkgname"
+  mkdir -p build
 }
 
 build() {
-  export GOPATH="$srcdir"/gopath
-  cd gopath/src/$_gourl
-  go install \
-     -trimpath \
-     -modcacherw \
-     -ldflags "-extldflags $LDFLAGS" \
-     -v ./...
+  cd "$_pkgname"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o build .
 }
 
 check() {
-  export GOPATH="$srcdir"/gopath
-  cd gopath/src/$_gourl
+  cd "$_pkgname"
   go test ./...
 }
 
 
 package() {
-  install -p -Dm755 gopath/bin/rtlamr "$pkgdir/usr/bin/rtlamr"
+  cd "$_pkgname"
+  install -p -Dm755 build/$_pkgname "$pkgdir"/usr/bin/$_pkgname
 }
 
 # vim:set ts=2 sw=2 et:
