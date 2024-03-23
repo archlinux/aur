@@ -1,5 +1,5 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
-# Maintainer: Niels Martignène <niels.martignene@gmail.com>
+# Contributor: Niels Martignène <niels.martignene@gmail.com>
 # Contributor: moostik <mooostik_at_gmail.com>
 # Contributor: pressh <pressh funnysymbol gmail dot com>
 # Contributor: vantu5z <vantu5z@mail.ru>
@@ -7,7 +7,7 @@
 _pkgname='convertall'
 pkgname=${_pkgname}
 _pkgreponame='ConvertAll'
-_tag='v1.0.0'
+_tag='v1.0.1'
 pkgver="${_tag/v/}"
 pkgrel=1
 pkgdesc='Convert between units.'
@@ -23,12 +23,12 @@ source=(
 	"git+${url}.git#tag=${_tag}"
 	"flutter::git+https://github.com/flutter/flutter.git"
 	"flutter-engine::git+https://github.com/flutter/engine.git")
-sha256sums=('SKIP'
+sha256sums=('22cd74809e42e20b4fd9c3cacced9024a80ad1235553e9b18b81b5f44ef1f6c3'
             'SKIP'
             'SKIP')
 
 _srcdir="${_pkgreponame}"
-_engine_version=3.19.3
+_engine_version=3.19.4
 
 prepare() {
 	cd "${_srcdir}"
