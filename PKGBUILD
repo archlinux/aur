@@ -1,20 +1,21 @@
-# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Contributor: CpanBot <cpanbot at sch bme hu>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-class-base'
-pkgver='0.06'
+pkgver='0.09'
 pkgrel='1'
 pkgdesc="useful base class for deriving other modules "
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl')
+depends=('perl-clone>=0')
 makedepends=()
+checkdepends=('perl>=5.006')
 url='https://metacpan.org/release/Class-Base'
-source=('http://search.cpan.org/CPAN/authors/id/S/SZ/SZABGAB/Class-Base-0.06.tar.gz')
-md5sums=('73b1c3c87efd9fa327f9c6b1457235ae')
-sha512sums=('095ed524914bac64bf5b2c2fddc6df94dd13c7a469da91857083ee0041bfbe993e6fa7c1245f1b987e6ebfa4f7393ea61c05d6396aacfe7ffabad417d529d2be')
-_distdir="Class-Base-0.06"
+source=('http://search.cpan.org/CPAN/authors/id/Y/YA/YANICK/Class-Base-0.09.tar.gz')
+md5sums=('9303570e4f9cd09310259a8b44e58322')
+sha512sums=('c6915499861367f188d7deff0e7e3079fb3d73c7c4b8d9af7e6ff4fed6e37d60cbee242ef7e781bf014940b71478e5a05d97fc35eb8994473927cd0bcc6c7bbd')
+_distdir="Class-Base-0.09"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +40,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
