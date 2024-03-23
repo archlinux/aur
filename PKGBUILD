@@ -1,13 +1,14 @@
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
+# Maintainer: Jakub Klinkovský <lahwaacz at archlinux dot org>
+
 pkgname=python-voila
-_pkgname=${pkgname:7}
-pkgver=0.5.4
+_name=${pkgname#python-}
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="Voilà turns Jupyter notebooks into standalone web applications"
-arch=('any')
-url="https://voila.readthedocs.io"
-license=(BSD)
-makedepends=(python-build python-installer python-wheel python-jupyter_packaging)
+arch=(any)
+url="https://github.com/voila-dashboards/voila"
+license=(BSD-3-Clause)
 depends=(
     python
     jupyter-server
@@ -16,14 +17,16 @@ depends=(
     jupyter-nbclient
     jupyter-nbconvert
     jupyterlab
-    jupyter-notebook
-    jupyter-lsp
     python-websockets
     python-traitlets
     python-hatchling
-    python-tinycss2
 )
-makedepends+=(
+makedepends=(
+    python-build
+    python-installer
+    python-wheel
+    python-jupyter_packaging
+    npm
     python-fqdn
     python-webcolors
     python-isoduration
@@ -34,21 +37,18 @@ makedepends+=(
     python-jupyter-server-terminals
     python-hatch-jupyter-builder
     python-debugpy
+    python-types-python-dateutil
+    jupyter-lsp
 )
-source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('216aee6f9daab24cb1b0cd366e4a599c08edb1e644867bdf3b1e5682c7084677')
-
-prepare() {
-    cd ${srcdir}/${_pkgname}-${pkgver}
-    sed -i 's|jupyterlab~=3.0|jupyterlab>=3.0|g' pyproject.toml
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+b2sums=('a5465f2b36257a5ac4540a8513bd9a220cc75e82122cd1f7136cdfd062681d7e6849301ba0433a0c3d29679cf8d027e54b05a26da12188053eee5fa087461037')
 
 build() {
-    cd ${srcdir}/${_pkgname}-${pkgver}
+    cd $_name-$pkgver
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd ${srcdir}/${_pkgname}-${pkgver}
+    cd $_name-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
