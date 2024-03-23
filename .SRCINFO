@@ -1,6 +1,6 @@
 pkgbase = yandex-music
 	pkgdesc = Yandex Music - Personal recommendations, selections for any occasion and new music
-	pkgver = 5.0.16
+	pkgver = 5.0.17
 	pkgrel = 1
 	url = https://github.com/cucumber-sp/yandex-music-linux
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = yandex-music
 	depends = electron29
 	depends = libpulse
 	depends = xdg-utils
-	source = https://music-desktop-application.s3.yandex.net/stable/Yandex_Music_x64_5.0.16.exe
+	source = https://music-desktop-application.s3.yandex.net/stable/Yandex_Music_x64_5.0.17.exe
 	source = git+https://github.com/cucumber-sp/yandex-music-linux
-	sha256sums = 0b70fa4723eecd98828f6184c65e916c15fd884946e511e7b57ffd30d11ba5fc
+	sha256sums = e8553abe97f1c1d9c72a2fb25620c838e7ef6c871cebb051ec0ae3ae4c125960
 	sha256sums = SKIP
 
 pkgname = yandex-music
