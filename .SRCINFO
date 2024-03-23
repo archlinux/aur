@@ -1,7 +1,7 @@
 pkgbase = neophyte
 	pkgdesc = A WebGPU-rendered Neovim GUI
 	pkgver = 0.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tim-harding/neophyte
 	arch = x86_64
 	arch = i686
