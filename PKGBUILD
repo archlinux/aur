@@ -1,30 +1,40 @@
-pkgname=tmate-git
-pkgver=2.2.0
-pkgrel=1
-pkgdesc="Instant Terminal Sharing http://tmate.io/"
-arch=('i686' 'x86_64')
-license=('MIT')
-url="http://tmate.io/"
-makedepends=('cmake' 'libevent' 'ncurses' 'openssl' 'zlib' 'ruby' 'msgpack-c')
+# Contributor: Christian Hesse <mail@eworm.de>
+# Contributor: "Amhairghin" Oscar Garcia Amor
+# Contributors: bhushan, huma, adlaiff6, Invie, solarce
 
-gitroot="https://github.com/tmate-io/tmate.git"
-gitname="tmate"
-gitbranch="2.2.0"
+pkgname=tmate-git
+pkgver=2.4.0.r29.gac919516
+pkgrel=1
+pkgdesc="Instant terminal sharing"
+arch=('x86_64')
+url="https://tmate.io/"
+license=('ISC')
+depends=('libevent' 'libssh' 'libutempter' 'msgpack-c' 'ncurses')
+makedepends=('git')
+source=("git+https://github.com/tmate-io/tmate.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd tmate
+  git describe --tags | sed 's/-/.r/;s/-/./g'
+}
+
+prepare() {
+  cd tmate
+  ./autogen.sh
+  autoupdate
+}
 
 build() {
-  cd ${srcdir}
-  if [[ -d ${gitname} ]] ; then
-    cd ${gitname}
-  else
-    git clone -b ${gitbranch} --depth=1 ${gitroot} 
-    cd ${gitname}
-  fi
-  ./autogen.sh
+  cd tmate
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd ${gitname}
-  make DESTDIR=${pkgdir} install
+  cd tmate
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/$pkgname" COPYING
 }
+
+# vim: set ts=2 sw=2 et:
