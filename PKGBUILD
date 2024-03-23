@@ -4,8 +4,8 @@
 
 pkgname=papis-git
 _pkgname=papis
-pkgver=0.13.r364.geb1a2738
-pkgrel=2
+pkgver=0.13.r391.gb00a67a8
+pkgrel=1
 pkgdesc="Command-line document and bibliography manager"
 arch=('any')
 url="https://github.com/papis/papis"
@@ -64,6 +64,7 @@ checkdepends=(
     flake8
     python-flake8-bugbear
     python-flake8-polyfill
+    python-flake8-pyproject
     python-flake8-quotes
     python-pep8-naming
 
