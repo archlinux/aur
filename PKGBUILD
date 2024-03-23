@@ -1,7 +1,7 @@
 # Contributor: Asuka Minato <i at asukaminato dot eu dot org>
 # Contributor: Aron Young <tkf6fkt at gmail dot com>
 pkgname=chatbox-bin
-pkgver=1.2.6
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="a cross-platform desktop client for OpenAI API, also a prompt debugging and management tool."
 arch=(x86_64)
@@ -19,7 +19,7 @@ source_x86_64=(
 # source_aarch64=("https://github.com/Bin-Huang/chatbox/releases/download/v$pkgver/Chatbox-${pkgver}-arm64.deb")
 sha256sums=('d431b60cb72f37d595f3703e26e5603e5bf487b463b10e65b49416498489a286'
             '964150e544005d46d0024f77d6853ae8ea03412992ea9a3035ccc4ba21bd7a28')
-sha256sums_x86_64=('b377b457e2baa3fab8691af282e8c2f761f3a3d9612d8625f92941e9f340eb96')
+sha256sums_x86_64=('b43bfe80a86e8d2c4ad6218be68bcce7d4539e0bad3270029faf5c9b177dea8e')
 
 prepare() {
 	chmod +x ./*.AppImage

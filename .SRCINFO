@@ -1,6 +1,6 @@
 pkgbase = chatbox-bin
 	pkgdesc = a cross-platform desktop client for OpenAI API, also a prompt debugging and management tool.
-	pkgver = 1.2.6
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://chatboxapp.xyz
 	install = .install
@@ -14,7 +14,7 @@ pkgbase = chatbox-bin
 	source = chatbox.desktop
 	sha256sums = d431b60cb72f37d595f3703e26e5603e5bf487b463b10e65b49416498489a286
 	sha256sums = 964150e544005d46d0024f77d6853ae8ea03412992ea9a3035ccc4ba21bd7a28
-	source_x86_64 = https://download.chatboxai.app/releases/Chatbox-1.2.6-x86_64.AppImage
-	sha256sums_x86_64 = b377b457e2baa3fab8691af282e8c2f761f3a3d9612d8625f92941e9f340eb96
+	source_x86_64 = https://download.chatboxai.app/releases/Chatbox-1.3.0-x86_64.AppImage
+	sha256sums_x86_64 = b43bfe80a86e8d2c4ad6218be68bcce7d4539e0bad3270029faf5c9b177dea8e
 
 pkgname = chatbox-bin
