@@ -1,0 +1,13 @@
+pkgbase = r-gamm4
+	pkgdesc = Generalized Additive Mixed Models using 'mgcv' and 'lme4'
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://cran.r-project.org/package=gamm4
+	arch = any
+	license = GPL-2.0-or-later
+	depends = r-lme4
+	source = https://cran.r-project.org/src/contrib/gamm4_0.2-6.tar.gz
+	md5sums = dff478c7c80f51c0356df39347fdf9f5
+	b2sums = 1d6ea478da815f23c9c986c8d4c3acf9c5b57eaa923e627a3bf8d1b8c07920f48fffd98aaeff5ef8b8afafa5176337f2fb42002633eb0e04b8c6eecec0dce02d
+
+pkgname = r-gamm4
