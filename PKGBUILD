@@ -1,16 +1,16 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=skympc-git
-pkgver=1.6.5.0.r150.g1ba975a
-pkgrel=1
-pkgdesc="A simple MPD (Music Player Daemon) client, powerd by Qt"
-arch=('x86_64')
-url="http://www.soramimi.jp/skympc/index.html"
-license=('GPL3')
-depends=('hicolor-icon-theme' 'mpd' 'qt5-svg')
-makedepends=('git' 'ruby')
-provides=('skympc')
-conflicts=('skympc')
+pkgver=1.6.5.0.r157.g3aada10
+pkgrel=2
+pkgdesc='A simple MPD (Music Player Daemon) client, powerd by Qt'
+arch=(x86_64)
+url='http://www.soramimi.jp/skympc/index.html'
+license=(GPL-3.0-only)
+depends=(gcc-libs glibc hicolor-icon-theme mpd qt5-svg)
+makedepends=(git ruby)
+provides=(skympc)
+conflicts=(skympc)
 source=("git+https://github.com/soramimi/SkyMPC.git")
 sha256sums=('SKIP')
 
