@@ -1,0 +1,18 @@
+pkgbase = cocainediesel-bin
+	pkgdesc = Cocaine Diesel is a multiplayer first person shooter with an emphasis on drug promotion and criminal lifestyles (official launcher binary)
+	pkgver = 0.1.0.82
+	pkgrel = 1
+	url = https://cocainediesel.fun
+	arch = x86_64
+	license = mixed
+	makedepends = imagemagick
+	makedepends = gendesk
+	provides = cocainediesel
+	source = cocainediesel.png
+	source = cocainediesel.launcher
+	source = https://cocainediesel.fun/cocaine_diesel_launcher_linux.tar.gz
+	sha256sums = 9c23b99273423690b640f1baff6fec3e82c686c80d55cdfd3c4ef086917cbd39
+	sha256sums = 138bf9e8a47cb3680faa8ef9f4368d3a90cb850a7a59efd4a6320b6317c7c1f4
+	sha256sums = 1a183d65fcd7757e0a61440b61fe506609718ce437d12ba43971cf239abc4028
+
+pkgname = cocainediesel-bin
