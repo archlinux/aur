@@ -1,7 +1,7 @@
 pkgbase = ravenna-alsa-lkm-dkms
 	pkgdesc = A kernel module for ALSA RAVENNA/AES67 Driver
-	pkgver = r141.6ca0a3d
-	pkgrel = 2
+	pkgver = r142.ffcbd1b
+	pkgrel = 1
 	url = https://bitbucket.org/MergingTechnologies/ravenna-alsa-lkm
 	arch = x86_64
 	arch = x86_64_v3
