@@ -1,0 +1,27 @@
+pkgbase = vim-colors-night-git
+	pkgdesc = night color schemes for vim (catppuccin, moonfly, nightfly, nightfox, night-owl, one, onehalfdark, palenight)
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	source = /catppuccin::git+https://github.com/catppuccin/vim.git
+	source = /moonfly::git+https://github.com/bluz71/vim-moonfly-colors.git
+	source = /nightfly::git+https://github.com/bluz71/vim-nightfly-colors
+	source = /nightfox::git+https://github.com/EdenEast/nightfox.nvim
+	source = /night-owl::git+https://github.com/haishanh/night-owl.vim.git
+	source = /palenight::git+https://github.com/drewtempelmeyer/palenight.vim.git
+	source = /one::git+https://github.com/rakr/vim-one.git
+	source = /onehalf::git+https://github.com/sonph/onehalf.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vim-colors-night-git
