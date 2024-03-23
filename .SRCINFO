@@ -1,0 +1,12 @@
+pkgbase = kissat
+	pkgdesc = A keep it simple and clean bare metal SAT solver written in C
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://fmv.jku.at/kissat
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	source = kissat-3.1.1.tar.gz::https://github.com/arminbiere/kissat/archive/refs/tags/kissat-rel-3.1.1.tar.gz
+	b2sums = ce98105f2701e9dfab8dc555ace2d6891015e25bd23f09c1b2706ddb757f7580a555bdc20340d6880f2c4a0c786a71fd16466ab06a9c7499c81e4832665ce6c3
+
+pkgname = kissat
