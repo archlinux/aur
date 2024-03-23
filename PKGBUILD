@@ -1,51 +1,49 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
 
-_pkgname=rtlamr-collect
 pkgname=rtlamr-collect-git
-pkgver=r31.7951486
+_pkgname=${pkgname%%-git}
+pkgver=1.0.3.r0.g7951486
 pkgrel=1
-pkgdesc=" Data aggregation for rtlamr."
+pkgdesc="Data aggregation for rtlamr."
 arch=('any')
 url="https://github.com/bemasher/rtlamr-collect"
-source=("git+https://github.com/bemasher/rtlamr-collect.git")
-md5sums=('SKIP')
 license=('AGPL3')
 depends=('rtl-sdr')
 makedepends=('go' 'git')
 provides=('rtlamr-collect')
 conflicts=('rtlamr-collect')
-options=('!strip' '!emptydirs')
-_gourl=github.com/bemasher/rtlamr-collect
+source=("git+https://github.com/bemasher/rtlamr-collect.git")
+md5sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_pkgname"
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare(){
-  mkdir -p gopath/src/${_gourl%/*}
-  ln -rTsf $_pkgname gopath/src/$_gourl
+  cd "$_pkgname"
+  mkdir -p build
 }
 
 build() {
-  export GOPATH="$srcdir"/gopath
-  cd gopath/src/$_gourl
-  go install \
-     -trimpath \
-     -modcacherw \
-     -ldflags "-extldflags $LDFLAGS" \
-     -v ./...
+  cd "$_pkgname"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o build .
 }
 
 check() {
-  export GOPATH="$srcdir"/gopath
-  cd gopath/src/$_gourl
+  cd "$_pkgname"
   go test ./...
 }
 
 
 package() {
-  install -p -Dm755 gopath/bin/rtlamr-collect "$pkgdir/usr/bin/rtlamr-collect"
+  cd "$_pkgname"
+  install -p -Dm755 build/$_pkgname "$pkgdir"/usr/bin/$_pkgname
 }
 
 # vim:set ts=2 sw=2 et:
