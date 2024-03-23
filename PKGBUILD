@@ -1,18 +1,18 @@
 pkgname=lexido
-pkgver=1.2
+pkgver=1.2.2
 pkgrel=1
 arch=('any')
 url="https://github.com/micr0-dev/lexido"
 license=('GAPL')
 makedepends=('go')
-source=("lexido-1.2.tar.gz::https://github.com/micr0-dev/lexido/archive/refs/tags/v1.2.tar.gz")
+source=("https://github.com/micr0-dev/lexido/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-    cd "./lexido-1.2"
-    go build -o "$pkgname"
+    cd "$srcdir/lexido-$pkgver"
+    /usr/local/go/bin/go build -o "$pkgname"
 }
 
 package() {
-    install -Dm755 "$srcdir/$pkgname-$pkgver/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "$srcdir/lexido-$pkgver/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
