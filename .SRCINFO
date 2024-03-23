@@ -1,22 +1,25 @@
 pkgbase = perl-moosex-types-structured
 	pkgdesc = Structured Type Constraints for Moose
-	pkgver = 0.30
+	pkgver = 0.36
 	pkgrel = 1
-	url = http://search.mcpan.org/dist/MooseX-Types-Structured
+	url = https://metacpan.org/release/MooseX-Types-Structured
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	checkdepends = perl-test-fatal
-	depends = perl-datetime
+	checkdepends = perl-datetime>=0
+	checkdepends = perl-moosex-types>=0
+	checkdepends = perl-test-fatal>=0
+	checkdepends = perl-test-needs>=0
+	makedepends = perl-module-build-tiny>=0.034
 	depends = perl-devel-partialdump>=0.13
-	depends = perl-moose>=1.08
+	depends = perl-moose>=0
 	depends = perl-moosex-types>=0.22
-	depends = perl-moosex-types-datetime
 	depends = perl-sub-exporter>=0.982
+	depends = perl-namespace-clean>=0.19
+	depends = perl>=5.008
 	options = !emptydirs
-	source = http://search.mcpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Types-Structured-0.30.tar.gz
-	md5sums = 4d896c5e6b5ca47b219d06737abdae82
-	sha512sums = 3e9ca8915a86a2d633934fd6b77e820d5a816ff869be292f41850dde3a47757fde9fa1abbecc4305a1746de3c2fb9f183aecd8f56cad3f08c2ee3bfe6089ea8d
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Types-Structured-0.36.tar.gz
+	md5sums = d29c7bdaf44a90b3871dc040157015c5
+	sha512sums = 02d5a7ec823549a5a1422f67aa2099358870e36f0b8e9244776ce28a16708639f6d63e88cc02a7b301c3663fc4dfa4c3732049383c21a1f86f3eb68cb9ace978
 
 pkgname = perl-moosex-types-structured
-
