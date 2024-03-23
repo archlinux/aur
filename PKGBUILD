@@ -4,9 +4,11 @@
 # Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
 # Contributor: Fabio Castelli (muflone) <webreg@muflone.com>
 
+_offline="false"
+_git="false"
 pkgname=mediascan
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.1.1
+pkgrel=1
 _pkgdesc=(
   "Scan a directory for media files"
   "using Android media library."
@@ -22,23 +24,46 @@ license=(
   AGPL3
 )
 depends=(
-  bash
 )
-makedepends=(
-  git
-)
+_os="$( \
+  uname \
+    -o)"
+[[ "${_os}" == "GNU/Linux" ]] && \
+  depends+=(
+    "find"
+  )
+[[ "${_os}" == "GNU/Linux" ]] && \
+  depends+=(
+    "termux-api"
+  )
+makedepends=()
 optdepends=(
-  'termux-api: to run in termux'
 )
 checkdepends=(
   shellcheck
 )
-source=(
-  "git+${url}#tag=${pkgver}"
-)
-sha256sums=(
-  SKIP
-)
+source=()
+sha256sums=()
+_url="${url}"
+[[ "${_offline}" == "true" ]] && \
+  _url="file://${HOME}/${_pkgname}"
+[[ "${_git}" == true ]] && \
+  makedepends+=(
+    "git"
+  ) && \
+  source+=(
+    "${pkgname}-${pkgver}::git+${_url}#tag=${pkgver}"
+  ) && \
+  sha256sums+=(
+    SKIP
+  )
+[[ "${_git}" == false ]] && \
+  source+=(
+    "${pkgname}-${pkgver}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz"
+  ) && \
+  sha256sums+=(
+    'dbbea941b273e8ca87faa8105cf4fcd275504bee82565a542bc8a30d1f3e3a10'
+  )
 
 check() {
   cd \

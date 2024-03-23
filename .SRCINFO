@@ -1,15 +1,12 @@
 pkgbase = mediascan
 	pkgdesc = Scan a directory for media files using Android media library.
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgver = 0.1.1.1
+	pkgrel = 1
 	url = https://github.com/themartiancompany/mediascan
 	arch = any
 	license = AGPL3
 	checkdepends = shellcheck
-	makedepends = git
-	depends = bash
-	optdepends = termux-api: to run in termux
-	source = git+https://github.com/themartiancompany/mediascan#tag=0.1.1
-	sha256sums = SKIP
+	source = mediascan-0.1.1.1.tar.gz::https://github.com/themartiancompany/mediascan/archive/refs/tags/0.1.1.1.tar.gz
+	sha256sums = dbbea941b273e8ca87faa8105cf4fcd275504bee82565a542bc8a30d1f3e3a10
 
 pkgname = mediascan
