@@ -24,7 +24,7 @@ license=(
   AGPL3
 )
 depends=(
-  "find"
+  "findutils"
 )
 _os="$( \
   uname \
