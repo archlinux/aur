@@ -1,20 +1,20 @@
 pkgbase = python-jellyfin-apiclient
 	pkgdesc = Python API client for Jellyfin
 	pkgver = 1.9.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/iwalton3/jellyfin-apiclient-python
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
+	depends = python
 	depends = python-requests
 	depends = python-urllib3
 	depends = python-websocket-client
-	depends = python-six
 	depends = python-certifi
-	source = https://pypi.python.org/packages/source/j/jellyfin-apiclient-python/jellyfin-apiclient-python-1.9.2.tar.gz
-	b2sums = 4d8547e33a151678824abf6bc055dee984f61c7b550fa404751c648f53817b291260ec855d0788e46c3cdf1f3b907832fb65a7ffbf84fbdb56fa0ccdee25fcc9
+	source = python-jellyfin-apiclient-1.9.2.tar.gz::https://github.com/iwalton3/jellyfin-apiclient-python/archive/refs/tags/v1.9.2.tar.gz
+	b2sums = ba12075a54df646c02fe437c576e3a19f38082080e6c136d88abf45f2eaba5d308259f16df46b4c7a5d76978ebf3392111fd0b3b3d2ee2c9496acf64fb8553b6
 
 pkgname = python-jellyfin-apiclient
