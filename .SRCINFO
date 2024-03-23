@@ -6,12 +6,11 @@ pkgbase = hide-client
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
-	arch = armv6h
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = go
 	depends = glibc
 	backup = etc/hide.me/config
-	source = https://github.com/eventure/hide.client.linux/archive/0.9.9.zip
+	source = hide-client-0.9.9.zip::https://github.com/eventure/hide.client.linux/archive/0.9.9.zip
 	b2sums = ca30b3442d9cee438c69719725f33d6702e82c252d5ee2130e984bc57f221edfa2dc943b07c6564f347cb4c618d0d5b0ab98851da31f8da0fe37e803f837c84b
 
 pkgname = hide-client
