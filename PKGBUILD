@@ -26,6 +26,6 @@ check() {
 
 package() {
   cd "$_pkgname-$pkgver"
-  sudo python -m installer "dist/$_pkgname-$pkgver-py3-none-any.whl" --compile-bytecode=1
+  python -m installer "dist/$_pkgname-$pkgver-py3-none-any.whl" --compile-bytecode=1
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
