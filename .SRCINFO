@@ -1,7 +1,7 @@
 pkgbase = jupyter-lsp
 	pkgdesc = Multi-Language Server WebSocket proxy for Jupyter Notebook/Lab server.
 	pkgver = 2.2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jupyter-lsp/jupyterlab-lsp
 	arch = any
 	license = BSD-3-Clause
@@ -23,6 +23,6 @@ pkgbase = jupyter-lsp
 	optdepends = vscode-json-languageserver
 	optdepends = yaml-language-server
 	source = https://github.com/jupyter-lsp/jupyterlab-lsp/archive/refs/tags/jupyter-lsp-2.2.4.tar.gz
-	sha256sums = 5e50033149344065348e688608f3c6d654ef06d9856b67655bd7b6bac9ee2d59
+	sha256sums = adf6536a5198119ea2541b0fa793b251c6f231d12baf7959b7a0e7e71c50636c
 
 pkgname = jupyter-lsp

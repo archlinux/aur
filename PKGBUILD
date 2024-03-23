@@ -3,7 +3,7 @@
 
 pkgname=jupyter-lsp
 pkgver=2.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Multi-Language Server WebSocket proxy for Jupyter Notebook/Lab server."
 arch=(any)
 url="https://github.com/jupyter-lsp/jupyterlab-lsp"
@@ -23,15 +23,15 @@ optdepends=(
   vscode-json-languageserver
   yaml-language-server)
 source=("$url/archive/refs/tags/$pkgname-$pkgver.tar.gz")
-sha256sums=('5e50033149344065348e688608f3c6d654ef06d9856b67655bd7b6bac9ee2d59')
+sha256sums=('adf6536a5198119ea2541b0fa793b251c6f231d12baf7959b7a0e7e71c50636c')
 
 build() {
-  cd $pkgname-$pkgver
+  cd jupyterlab-lsp-$pkgname-$pkgver/python_packages/jupyter_lsp
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd jupyterlab-lsp-$pkgname-$pkgver/python_packages/jupyter_lsp
   python -m installer --destdir=$pkgdir dist/*.whl
   mv $pkgdir/{usr,}/etc
   install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
