@@ -1,30 +1,64 @@
 pkgbase = local-ai
-	pkgdesc = Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first.
-	pkgver = 2.10.0
+	pkgdesc = Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first
+	pkgver = 2.10.1
 	pkgrel = 1
 	url = https://github.com/mudler/LocalAI
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	makedepends = c-ares
+	makedepends = clblast
 	makedepends = cmake
 	makedepends = git
 	makedepends = go
 	makedepends = grpc
 	makedepends = make
 	makedepends = openssl
+	makedepends = openblas
 	makedepends = re2
+	makedepends = rocm-hip-sdk
+	makedepends = upx
+	makedepends = cuda
 	depends = glibc
+	provides = local-ai
+	conflicts = local-ai
+	options = !strip
 	backup = etc/conf.d/local-ai.conf
-	source = https://github.com/mudler/LocalAI/archive/refs/tags/v2.10.0.tar.gz
+	source = local-ai.tar.gz::https://github.com/mudler/LocalAI/archive/refs/tags/v2.10.1.tar.gz
 	source = local-ai.conf
 	source = local-ai.tmpfiles
 	source = local-ai.sysusers
 	source = local-ai.service
-	sha256sums = e5711ba3dc2e697e77cec6e996c8b96877d54ef54393fe81f44707f5762107c0
+	sha256sums = abbeb3dc29642ff40bdd360cabea95a8c954197c3b9e5483959cc2bd221bd224
 	sha256sums = 095c6f530c0c2f864d7aa1c22b88e111b1adc54c85e3510156dcc5b6675de00c
 	sha256sums = 90e042d0f5885b63a6aa4db7f87d6b931956f6c9b022407593466f61f6973312
 	sha256sums = 97ba21355c50ec658e220bc0558f506227b3dc77cc51f343b6f5657b0d77a19b
 	sha256sums = affefb565e63f19fbdad53032c090fc33c2aa8ce986ba9cf678ccf071c2d67bf
 
 pkgname = local-ai
+	pkgdesc = Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first (with OPENBlas CPU optimizations)
+	depends = glibc
+	depends = openblas
+	depends = openblas64
+	provides = local-ai=2.10.1
+
+pkgname = local-ai-cublas
+	pkgdesc = Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first (with NVIDIA CUDA optimizations)
+	depends = glibc
+	depends = cuda
+	provides = local-ai=2.10.1
+	conflicts = local-ai
+
+pkgname = local-ai-clblas
+	pkgdesc = Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first (with OpenCL optimizations)
+	depends = glibc
+	depends = clblast
+	provides = local-ai=2.10.1
+	conflicts = local-ai
+
+pkgname = local-ai-hipblas
+	pkgdesc = Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first (with AMD ROCm optimizations)
+	depends = glibc
+	depends = rocm-hip-runtime
+	provides = local-ai=2.10.1
+	conflicts = local-ai
