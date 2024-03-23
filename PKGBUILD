@@ -2,7 +2,7 @@
 # Contributor: Hu Butui <hot123tea123@gmail.com>
 
 _pkgname=performance
-_pkgver=0.10.9
+_pkgver=0.11.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,6 +23,7 @@ checkdepends=(
   r-bigutilsr
   r-curl
   r-dbscan
+  r-dharma
   r-estimatr
   r-fixest
   r-glmmtmb
@@ -59,6 +60,7 @@ optdepends=(
   r-correlation
   r-cplm
   r-dbscan
+  r-dharma
   r-estimatr
   r-fixest
   r-flextable
@@ -106,8 +108,8 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('07a07184ab81c70c92646ab990e0fd5f')
-b2sums=('029a8b72203e719ac7520d903f3eb510de573fd16a3efc2249a16b22dd11223f25a5e0680a4a114cd87fff4dd0e08504a4f7449e031cea683873059ac7823933')
+md5sums=('003d46ccb28030be151595396c4315fd')
+b2sums=('1e442ea24bcba7dd8a0a8504adc76a8686aa07e3bb25a73f161d4c2aa92aa2d965c69bde462fe2b7fb0c1ed55e5b10c10f7654dc396de75e277bbfedfe590231')
 
 prepare() {
   # skip failing tests
