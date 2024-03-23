@@ -18,8 +18,8 @@ encso=$(readlink -es /lib/libnvidia-encode.so)
 fbcso=$(readlink -es /lib/libnvidia-fbc.so)
 
 pkgver() {
-	encver=$(echo "$encso" | grep -oP '\.\K\d+\.\d+\.\d+')
-	fbcver=$(echo "$fbcso" | grep -oP '\.\K\d+\.\d+\.\d+')
+	encver=$(echo "$encso" | grep -oP '\d+\.\d+')
+	fbcver=$(echo "$fbcso" | grep -oP '\d+\.\d+')
 	if [ "$encver" == "$fbcver" ]; then
 		echo "$encver"
 	else
@@ -36,8 +36,8 @@ package() {
     # libnvidia-fbc.so
     . <(sed -n '/.*patch_list=($/,/^)$/p' $pkgname/patch-fbc.sh | sed 's|patch_list|fbc_patch_list|')
     
-    [ -z "${patch_list[$pkgver]}" ] && msg "Upstream haven't update !" && exit 2
-    [ -z "${fbc_patch_list[$pkgver]}" ] && msg "Upstream haven't update !" && exit 2
+    [ -z "${patch_list[$pkgver]}" ] && error "Upstream haven't update !" && exit 2
+    [ -z "${fbc_patch_list[$pkgver]}" ] && error "Upstream haven't update !" && exit 2
 
 	mkdir -p "$pkgdir/usr/share/libalpm/hooks/"
 	cat <<- EOF > "$pkgdir/usr/share/libalpm/hooks/nvidia-patch.hook"
