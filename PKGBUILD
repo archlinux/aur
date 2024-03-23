@@ -4,7 +4,6 @@ pkgname=lst-git
 pkgver='1.0'
 pkgrel=1
 pkgdesc="Improved ls command for Unix-like systems."
-keywords=('ls' 'lsd' 'lst' 'directory-listing' 'list' 'cli')
 arch=('any')
 url="http://github.com/byomess/${pkgname%-git}"
 license=('MIT')
