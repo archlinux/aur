@@ -1,7 +1,7 @@
 pkgbase = freetype-gl
 	pkgdesc = OpenGL text using one vertex buffer, one texture and FreeType
-	pkgver = 20220922
-	pkgrel = 4
+	pkgver = 20240122
+	pkgrel = 1
 	url = https://github.com/rougier/freetype-gl
 	arch = x86_64
 	license = BSD
@@ -9,7 +9,7 @@ pkgbase = freetype-gl
 	makedepends = git
 	depends = freetype2
 	depends = glew
-	source = git+https://github.com/rougier/freetype-gl#commit=513fa238357f7c11a9f427965fe336aae7955297
-	b2sums = SKIP
+	source = git+https://github.com/rougier/freetype-gl#commit=9543576aab0ee5d1f0c89d8280e9420ca3fc4a6e
+	b2sums = cc999266664caba698cbf53595785486878b63a9fa9881ccd3dcad460551711c5a12d6de90b30d5cf8400c85ae7bcfd54a64c70f267af0fc93d6ad601c2d55ae
 
 pkgname = freetype-gl
