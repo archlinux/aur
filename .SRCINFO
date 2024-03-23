@@ -1,0 +1,26 @@
+pkgbase = python-mediapipe-bin
+	pkgdesc = A cross-platform, customizable ML solutions for live and streaming media
+	pkgver = 0.10.11
+	pkgrel = 1
+	url = https://github.com/google/mediapipe
+	arch = x86_64
+	license = Apache
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = absl-py
+	depends = python
+	depends = python-cycler
+	depends = python-dateutil
+	depends = python-fonttools
+	depends = python-kiwisolver
+	depends = python-matplotlib
+	depends = python-opencv
+	depends = python-pillow
+	depends = python-protobuf
+	depends = python-wheel
+	provides = python-mediapipe
+	conflicts = python-mediapipe
+	source = https://files.pythonhosted.org/packages/c9/e4/3e645a8f87577553194a2a15383a60d61b8381cf864e903e43e4c6eb58e0/mediapipe-0.10.11-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	sha256sums = ea751e043909ba7bbe27e7afdbcdafd79723d50ef4165afcaae431ab428eea13
+
+pkgname = python-mediapipe-bin
