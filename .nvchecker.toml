@@ -1,0 +1,5 @@
+[python-pyviz_comms]
+source = "github"
+github = "pyviz/pyviz_comms"
+use_latest_release = "true"
+prefix = "v"
