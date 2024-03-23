@@ -1,6 +1,6 @@
 pkgbase = socli
 	pkgdesc = Stack overflow command line client. Search and browse stack overflow without leaving the terminal
-	pkgver = 7.2
+	pkgver = 7.4
 	pkgrel = 1
 	url = https://github.com/gautamkrishnar/socli
 	arch = any
@@ -13,7 +13,8 @@ pkgbase = socli
 	depends = python-py-stackexchange
 	depends = python-sentry_sdk
 	depends = python-urwid
-	source = socli-7.2.tar.gz::https://github.com/gautamkrishnar/socli/archive/7.2.tar.gz
-	sha256sums = 38bb22e2ecfb0a43e0546dd6252f3b64e21d05a250295be2af96c65cac0a84b4
+	optdepends = python-pyperclip: Copy answer text to clipboard
+	source = socli-7.4.tar.gz::https://github.com/gautamkrishnar/socli/archive/7.4.tar.gz
+	sha256sums = 63f73e7b1308df6eab21c730892643dc891379168b9508f627222983db13a81b
 
 pkgname = socli
