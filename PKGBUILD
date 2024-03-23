@@ -3,9 +3,9 @@
 _pkgbase=hysteria1
 pkgname=$_pkgbase
 pkgver=1.3.5
-pkgrel=2
+pkgrel=3
 pkgdesc='A feature-packed network utility optimized for networks of poor quality (Legacy Version)'
-_gover=1.20.7
+_gover=1.20.14
 arch=('x86_64')
 url="https://v1.hysteria.network/"
 license=('GPL3')
@@ -24,7 +24,7 @@ sha256sums=('SKIP'
             '59d9d1b722028b66028565d269fd5028577fc0cab80f514232b5e8fb919c6ffe'
             '44f1cb2fedfc94dc396ceb215e62237dbc8c74c035c45a3430c1f3748d266dd9'
             '1e93d9f2b312eaf02ac00229106cd796e0cd54a9a468a0a8d3ae843399c1c310'
-            '2c5ee9c9ec1e733b0dbbc2bdfed3f62306e51d8172bf38f4f4e542b27520f597')
+            '1aef321a0e3e38b7e91d2d7eb64040666cabdcc77d383de3c9522d0d69b67f4e')
 
 prepare(){
   mkdir -p "$srcdir/gopath"
