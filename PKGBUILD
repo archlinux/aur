@@ -27,7 +27,7 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${_pkgname}"
 
-	patch -p1 < nix/cmake.patch
+	patch -Np1 < nix/cmake.patch
 }
 
 build() {
