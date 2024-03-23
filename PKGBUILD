@@ -17,7 +17,7 @@ optdepends=('bat: colored pkgbuild printing' 'devtools: build in chroot and down
 sha256sums=('ccf6defc4884d580a4b813cc40323a0389ffc9aa4bdc55f3764a46b235dfe1e0'
             'SKIP')
 
-
+export LTOFLAGS+=" -ffat-lto-objects"
 _srcenv() {
   cd "$srcdir/$_pkgname-$pkgver"
   # musl build for openssl-sys
@@ -45,14 +45,8 @@ build () {
   # If pacman-static(6.1.0) is not installed, build and install it.
   # Build and install pacman-static if the version is not greater than or not equal to 6.1.0-1 or if the package cannot read symbols in the static link library(libalpm.a).
   if ! checkver $(LC_ALL=C pacman -Qi pacman-static|grep Version|grep -Eo "([0-9]+.[0-9]+.[0-9]+)-[0-9]+") "6.1.0-1" || [[ ! $(LC_ALL=C objdump --syms /usr/lib/pacman/lib/libalpm.a | grep -E "\.text.* alpm_version") ]] ; then
-    # disable lto
-    #sed "s/^options=(\(.*\))$/options=(\1 '\!lto')/" PKGBUILD -i
-
-    # Addition of -ffat-lto-objects to CFLAGS to ensure that symbols and headers are included in libalpm.a when lto is enabled.
-    if [[ $(printf '%s\n' "${OPTIONS[@]}" | grep -Ex "^lto") && ! $(printf '%s\n' "${options[@]}" | grep -Ex "^!lto") || $(printf '%s\n' "${options[@]}" | grep -Ex "^lto") ]] ;then
-      echo "lto is enabled"
-      sed -r "/(export LDFLAGS=.*)/s/(.+)/export CFLAGS+=' -ffat-lto-objects'\n\1/" PKGBUILD -i
-    fi
+    # Addition of -ffat-lto-objects to LTOFLAGS.(prevent static lib mangling)
+    sed -r "/(export LDFLAGS=.*)/s/(.+)/export LTOFLAGS+=' -ffat-lto-objects'\n\1/" PKGBUILD -i
     makepkg -si --skippgpcheck --noconfirm
   fi
 
