@@ -1,20 +1,20 @@
-# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Contributor: CpanBot <cpanbot at sch bme hu>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-enum'
-pkgver='1.11'
+pkgver='1.12'
 pkgrel='1'
 pkgdesc="C style enumerated types and bitmask flags in Perl"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl')
+depends=('perl>=5.006')
 makedepends=()
 url='https://metacpan.org/release/enum'
-source=('http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/enum-1.11.tar.gz')
-md5sums=('61b1a67dfaf8e16db0c3e80824797c1b')
-sha512sums=('53d7137f42e4845887f6067f16e68141827379c40c50299d36f4c44ba005cea52610c55a7eb09600ff36aac87d11b9c992e63007c1e4fe11a12e381d7515f733')
-_distdir="enum-1.11"
+source=('http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/enum-1.12.tar.gz')
+md5sums=('a89225b8c1f5925fefc7788baeedcaa9')
+sha512sums=('04c5b5ff185c9e8d41aa056a1be7fb8f95a0063b88f2c9d2678c0c11037f077c3a3502914f0ddd3c67f255b275dcf238a13ca0d23b28addb4e5a7bba0dcfc8ae')
+_distdir="enum-1.12"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
