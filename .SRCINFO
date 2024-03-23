@@ -1,7 +1,7 @@
 pkgbase = swig-cli
 	pkgdesc = An easy to use git config manager
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AlexanderDotH/Swig
 	arch = any
 	license = custom
@@ -10,7 +10,7 @@ pkgbase = swig-cli
 	depends = git
 	depends = xdg-utils
 	options = !strip
-	source = swig-cli-3.0.0.tar.gz::https://github.com/AlexanderDotH/Swig/archive/3.0.0.tar.gz
-	sha256sums = SKIP
+	source = https://github.com/AlexanderDotH/Swig/archive/refs/tags/3.0.0.tar.gz
+	sha256sums = 1ad9d2343c6d86012a8df1585b7796c7d244a9829b793609c3cb2b5d22092a5e
 
 pkgname = swig-cli
