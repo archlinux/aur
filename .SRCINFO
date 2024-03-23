@@ -1,6 +1,6 @@
 pkgbase = linux-sgx-driver-dkms-git
 	pkgdesc = Intel® SGX Linux module - dkms
-	pkgver = 2.14.r1.54c9c4c
+	pkgver = 2.14.r2.b6f5b4a
 	pkgrel = 1
 	url = https://01.org/intel-softwareguard-extensions
 	arch = i686
@@ -12,7 +12,9 @@ pkgbase = linux-sgx-driver-dkms-git
 	optdepends = linux-zen-headers: Build the module for Zen Arch kernel
 	source = linux-sgx-driver::git+https://github.com/intel/linux-sgx-driver.git
 	source = dkms.conf
+	source = sgx_main.patch
 	sha256sums = SKIP
 	sha256sums = 317e476c57e891eecd6c6b57eceb3ed7ab7ffbf3ba0a40362e08b5d35f23fe6f
+	sha256sums = b84b8ef9e12baff3618845ff9f14d1bf325b298f8e22e2048eac75cb84f46844
 
 pkgname = linux-sgx-driver-dkms-git

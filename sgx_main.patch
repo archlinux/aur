@@ -1,0 +1,12 @@
+--- a/sgx_main.c	2024-03-23 12:36:45.898411534 +0100
++++ b/sgx_main.c	2024-03-23 12:40:39.680289964 +0100
+@@ -109,8 +109,7 @@
+ static int sgx_mmap(struct file *file, struct vm_area_struct *vma)
+ {
+ 	vma->vm_ops = &sgx_vm_ops;
+-	vma->vm_flags |= VM_PFNMAP | VM_DONTEXPAND | VM_DONTDUMP | VM_IO |
+-			 VM_DONTCOPY;
++	vm_flags_set(vma, (VM_PFNMAP | VM_DONTEXPAND | VM_DONTDUMP | VM_IO | VM_DONTCOPY));
+ 
+ 	return 0;
+ }
