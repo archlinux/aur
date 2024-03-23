@@ -1,0 +1,17 @@
+pkgbase = pacman-install-comments-hook-git
+	pkgdesc = Pacman hook for adding comments to explicitly installed packages
+	pkgver = r8.2b1be4b
+	pkgrel = 1
+	url = https://github.com/Bekaboo/pacman-install-comments
+	arch = any
+	license = custom
+	depends = bash
+	depends = sed
+	depends = coreutils
+	depends = diffutils
+	depends = grep
+	depends = pacman
+	source = git+https://github.com/Bekaboo/pacman-install-comments
+	md5sums = SKIP
+
+pkgname = pacman-install-comments-hook-git
