@@ -1,14 +1,15 @@
 pkgbase = ktorrent-git
 	pkgdesc = A powerful BitTorrent client. (GIT version)
-	pkgver = 24.01.75.r3167.64e383cd
+	pkgver = 24.04.70.r3267.177a8d69
 	pkgrel = 1
 	url = https://apps.kde.org/ktorrent
 	arch = x86_64
 	license = GPL
 	checkdepends = appstream
-	makedepends = extra-cmake-modules
-	makedepends = kdoctools
 	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = qt6-tools
+	makedepends = kdoctools
 	makedepends = python
 	makedepends = boost
 	makedepends = taglib
@@ -61,6 +62,8 @@ pkgbase = ktorrent-git
 	conflicts = ktorrent
 	options = debug
 	source = git+https://invent.kde.org/network/ktorrent.git
+	source = https://invent.kde.org/network/ktorrent/-/merge_requests/57.diff
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = ktorrent-git

@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=ktorrent-git
-pkgver=24.01.75.r3167.64e383cd
+pkgver=24.04.70.r3267.177a8d69
 pkgrel=1
 pkgdesc="A powerful BitTorrent client. (GIT version)"
 arch=('x86_64')
@@ -34,9 +34,10 @@ depends=(
   'hicolor-icon-theme'
 )
 makedepends=(
-  'extra-cmake-modules'
-  'kdoctools'
   'git'
+  'extra-cmake-modules'
+  'qt6-tools'
+  'kdoctools'
   'python'
   'boost'
   'taglib'
@@ -68,14 +69,24 @@ provides=(
   'libktcore.so'
 )
 conflicts=('ktorrent')
-source=('git+https://invent.kde.org/network/ktorrent.git')
-sha256sums=('SKIP')
+source=(
+  'git+https://invent.kde.org/network/ktorrent.git'
+  'https://invent.kde.org/network/ktorrent/-/merge_requests/57.diff'
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
 options=('debug')
 
 pkgver() {
   cd ktorrent
   _ver="$(cat CMakeLists.txt | grep -m3 -e RELEASE_SERVICE_VERSION_MAJOR -e RELEASE_SERVICE_VERSION_MINOR -e RELEASE_SERVICE_VERSION_MICRO | grep -o "[[:digit:]]*" | paste -sd'.')"
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  patch -d ktorrent -p1 -i "${srcdir}/57.diff"
 }
 
 build() {
