@@ -6,7 +6,8 @@
 # Configuration.
 _blenver="2.83"
 _branch="blender-v${_blenver}-release"
-_fragment=${FRAGMENT:-#branch=${_branch}}
+# branch was deleted as v2.83 is end of life
+_fragment=${FRAGMENT:-#tag=v2.83.20}
 [[ -v CUDA_ARCH ]] && _cuda_capability=${CUDA_ARCH}
 
 #some extra, unofficially supported stuff goes here:
@@ -26,7 +27,7 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix70'); }
 
 pkgname=blender-${_blenver}-git
-pkgver=2.83.20.r1.g6f40a18ecc2
+pkgver=2.83.20.r0.ga56e2faeb7a
 pkgrel=1
 pkgdesc="LTS Maintenance version of ${_branch} branch"
 changelog=blender.changelog

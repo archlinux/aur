@@ -1,6 +1,6 @@
 pkgbase = blender-2.83-git
 	pkgdesc = LTS Maintenance version of blender-v2.83-release branch
-	pkgver = 2.83.20.r1.g6f40a18ecc2
+	pkgver = 2.83.20.r0.ga56e2faeb7a
 	pkgrel = 1
 	url = https://blender.org/
 	changelog = blender.changelog
@@ -37,7 +37,7 @@ pkgbase = blender-2.83-git
 	optdepends = cuda: CUDA support in Cycles
 	provides = blender=2.83
 	conflicts = blender=2.83
-	source = blender::git+https://github.com/blender/blender#branch=blender-v2.83-release
+	source = blender::git+https://github.com/blender/blender#tag=v2.83.20
 	source = blender-addons::git+https://github.com/blender/blender-addons
 	source = blender-addons-contrib::git+https://github.com/blender/blender-addons-contrib
 	source = blender-translations::git+https://github.com/blender/blender-translations
