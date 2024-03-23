@@ -2,7 +2,7 @@
 # Contributor: Steffen Jaeckel <jaeckel-floss@eyet-services.de>
 
 pkgname=verible-bin
-pkgver=0.0.3483
+pkgver=0.0.3622
 pkgrel=1
 pkgdesc='SystemVerilog parser, linter, formatter and etc from Google'
 arch=('x86_64' 'aarch64')
