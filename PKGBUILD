@@ -6,7 +6,7 @@
 
 pkgname=ondsel-es-appimage
 pkgver=2024.1.0
-pkgrel=2
+pkgrel=3
 _gitrev=35694
 pkgdesc="A general purpose 3D CAD modeler based on FreeCAD (AppImage version)"
 arch=('x86_64')
@@ -15,7 +15,8 @@ license=('LGPL')
 depends=('fuse2')
 provides=('ondsel-es')
 conflicts=('ondsel-es')
-options=('!strip')
+#!debug added to work around https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/19
+options=('!strip' '!debug')
 noextract=("ondsel-es-${pkgver}.AppImage")
 source=("ondsel-es-${pkgver}.AppImage::https://github.com/Ondsel-Development/FreeCAD/releases/download/${pkgver}/Ondsel_ES_${pkgver}.${_gitrev}-Linux-x86_64.AppImage"
         "ondsel-es.sh"
