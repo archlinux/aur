@@ -1,12 +1,15 @@
 pkgbase = jellyfin-mpv-shim
 	pkgdesc = Cast media from Jellyfin Mobile and Web apps to MPV
 	pkgver = 2.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jellyfin/jellyfin-mpv-shim
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = gettext
+	makedepends = python-setuptools
 	depends = mpv
 	depends = python>=3.6
 	depends = python-mpv
