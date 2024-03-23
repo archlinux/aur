@@ -1,6 +1,6 @@
 pkgbase = ocaml-ffmpeg
 	pkgdesc = OCaml bindings to the FFmpeg library
-	pkgver = 1.1.10
+	pkgver = 1.1.11
 	pkgrel = 1
 	url = https://github.com/savonet/ocaml-ffmpeg
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = ocaml-ffmpeg
 	depends = ocaml
 	depends = ffmpeg
 	options = !strip
-	source = https://github.com/savonet/ocaml-ffmpeg/archive/refs/tags/v1.1.10.tar.gz
-	sha512sums = f4d35e93d847b2a00965ab6a8ef33698612eb77f7667477ee3308ef192ecc082787ef26ac5dae2bee12c579ef36028a66e698fe3de46309ac2bd90e5ba09314d
+	source = https://github.com/savonet/ocaml-ffmpeg/archive/refs/tags/v1.1.11.tar.gz
+	sha512sums = 2fe1c166e6554c497bb15d7a12af812e81f488fe0b4e2874794aa3dab87248a5592a0db7bd63ff548bdd30f5bba9ae4a95462e15d3f3513afe3d5d58c352e940
 
 pkgname = ocaml-ffmpeg
