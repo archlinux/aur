@@ -3,7 +3,7 @@
 pkgname=python-pixcat-an-prata-git
 _pkgname=pixcat
 pkgver=0.1.5r31.a21d5a8
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI and Python API to display images on a kitty terminal with optional resizing. an-prata fork for eliminating cumulative tmpfs usage."
 arch=(any)
 url='https://github.com/an-prata/pixcat'
@@ -31,6 +31,6 @@ build(){
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  python -m build --wheel --no-isolation
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 # vim:set ts=2 sw=2 et:
