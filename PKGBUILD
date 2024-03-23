@@ -3,9 +3,9 @@
 pkgname=asus-numpad
 pkgver=0.4.1
 pkgrel=7
-pkgdesc="Linux daemon for Asus laptops to activate numpad on touchpad"
+pkgdesc='Linux daemon for Asus laptops to activate numpad on touchpad'
 arch=(x86_64)
-url="https://github.com/iamkroot/asus-numpad"
+url='https://github.com/iamkroot/asus-numpad'
 license=(MIT)
 depends=(libevdev gcc-libs glibc)
 makedepends=(cargo)
@@ -20,7 +20,7 @@ b2sums=('74bd538beb97f8455f2b6dd059bd43d6638b7db58f102d7e0e9a03455c5e80bc1be4153
         'ff669b533f2911f39160e33bc958f7ea471f2efb29d1cafae281fbd81d7ff97b198598734991d3894ce5f848e1857293f76e39693a08a12fc23ec622a1e2a7bb')
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd $pkgname-$pkgver
 
   # use stable rust toolchain
   patch -p1 < ../702141b3752bd38abf82215e74f255fffc1a6266.patch
@@ -30,14 +30,14 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --all-features
 }
