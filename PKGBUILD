@@ -2,8 +2,8 @@
 # Maintained at https://github.com/rixx/pkgbuilds, feel free to submit patches
 
 pkgname=python38
-pkgver=3.8.18
-pkgrel=2
+pkgver=3.8.19
+pkgrel=1
 _pybasever=3.8
 _pymajver=3
 pkgdesc="Major release 3.8 of the Python high-level programming language"
@@ -18,7 +18,7 @@ source=(
     https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz.asc
     mpdecimal-2.5.1.patch
 )
-sha256sums=('3ffb71cd349a326ba7b2fadc7e7df86ba577dd9c4917e52a8401adbda7405e3f'
+sha256sums=('d2807ac69f69b84fd46a0b93bbd02a4fa48d3e70f4b2835ff0f72a2885040076'
             'SKIP'
             '8eb389be1babe03a0231001dc16dd2d69a3ea0fbf6b8c976a580787e7ff1594c')
 validpgpkeys=('E3FF2839C048B25C084DEBE9B26995E310250568')
