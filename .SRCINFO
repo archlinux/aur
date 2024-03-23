@@ -1,15 +1,15 @@
 pkgbase = gaffer-bin
 	pkgdesc = Gaffer is a VFX application that enables look developers, lighters, and compositors to easily build, tweak, iterate, and render scenes.
-	pkgver = 1.3.11.0
+	pkgver = 1.3.15.0
 	pkgrel = 1
 	url = https://www.gafferhq.org/
 	arch = any
-	license = BSD-3
+	license = BSD-3-Clause
 	depends = python
 	provides = gaffer
-	noextract = gaffer-1.3.11.0-linux.tar.gz
+	noextract = gaffer-1.3.15.0-linux.tar.gz
 	options = !strip
-	source = https://github.com/GafferHQ/gaffer/releases/download/1.3.11.0/gaffer-1.3.11.0-linux.tar.gz
-	md5sums = a8491348549656622d308ac46799ce82
+	source = https://github.com/GafferHQ/gaffer/releases/download/1.3.15.0/gaffer-1.3.15.0-linux.tar.gz
+	md5sums = 526b273e02ef4199e74e1386d76929a2
 
 pkgname = gaffer-bin
