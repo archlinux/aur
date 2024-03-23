@@ -1,6 +1,6 @@
 pkgbase = lst-git
 	pkgdesc = Improved ls command for Unix-like systems.
-	pkgver = latest
+	pkgver = 1.0
 	pkgrel = 1
 	url = http://github.com/byomess/lst
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = lst-git
 	depends = python
 	provides = lst
 	conflicts = lst
-	source = https://github.com/byomess/lst.git#branch=main
+	source = git+https://github.com/byomess/lst.git
 	sha256sums = SKIP
 
 pkgname = lst-git

@@ -1,7 +1,7 @@
 # Maintainer: Felipe Chierice <byomess@proton.me>
 
 pkgname=lst-git
-pkgver=latest
+pkgver='1.0'
 pkgrel=1
 pkgdesc="Improved ls command for Unix-like systems."
 arch=('any')
@@ -10,15 +10,15 @@ license=('MIT')
 depends=('git' 'python')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("https://github.com/byomess/lst.git#branch=main")
+source=("git+https://github.com/byomess/lst.git")
 
 build() {
-    cd "$pkgname"
+    cd "${pkgname%-git}"
     ./setup.sh
 }
 
 package() {
-    cd "$pkgname"
+    cd "${pkgname%-git}"
     ./install.sh --path="$HOME/.local/share" --bin-path="$HOME/.local/bin"
 }
 
