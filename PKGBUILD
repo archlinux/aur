@@ -5,7 +5,7 @@
 
 pkgname=pandoc-crossref-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.3.17.0e.r1.g060a049
+pkgver=0.3.17.0f.r0.g2dfb0d5
 _pandoc_type=version
 _pandoc_ver=3.1.12.3
 _pandoc_commit=b1e2e452deb36e050c0b81c4c2351d5a829d2977
@@ -41,18 +41,6 @@ EOF
 prepare() {
     cd "$pkgname"
     stack config set resolver lts-22.13 # ghc-9.6.4
-
-    _bumpVer commonmark            0.2.6
-    _bumpVer commonmark-extensions 0.2.5.4
-    _bumpVer djot                  0.1.1.3
-    _bumpVer pandoc                3.1.12.3
-    _bumpVer pandoc-cli            3.1.12.3
-    _bumpVer skylighting           0.14.1.1
-    _bumpVer skylighting-core      0.14.1.1
-    _bumpVer texmath               0.12.8.7
-    _bumpVer toml-parser           2.0.0.0
-    _bumpVer typst                 0.5.0.2
-    _bumpVer zip-archive           0.4.3.1
 
     # if pandoc updates break the golden tests, cf
     # https://github.com/lierdakil/pandoc-crossref/pull/403#issuecomment-1732434519
