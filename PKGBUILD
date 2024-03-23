@@ -5,7 +5,7 @@ pkgdesc='A cross-platform backup-tool with encryption, deduplication, compressio
 pkgver=0.16.0
 # Uncomment for releases with hyphens
 # _pkgver=$(echo "$pkgver" | tr '~' -)
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://kopia.io/'
 license=('APACHE')
