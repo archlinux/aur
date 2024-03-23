@@ -1,0 +1,25 @@
+pkgbase = gzdoom-bin
+	pkgdesc = Feature centric port for all Doom engine games
+	pkgver = 4.11.3
+	pkgrel = 1
+	arch = x86_64
+	arch = aarch64
+	license = custom:BUILD
+	license = GPL2
+	makedepends = unzip
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libgl
+	depends = libvpx>=1.14
+	depends = libwebp
+	depends = openal
+	depends = sdl2
+	depends = zmusic-bin
+	conflicts = gzdoom
+	conflicts = gzdoom-git
+	source_x86_64 = https://gitlab.com/gzdoom-bin/binaries/4.11.3/-/raw/main/gzdoom-linux-x64.tar.xz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://gitlab.com/gzdoom-bin/binaries/4.11.3/-/raw/main/gzdoom-linux-arm64.tar.xz
+	sha256sums_aarch64 = SKIP
+
+pkgname = gzdoom-bin
