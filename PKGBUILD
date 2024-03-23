@@ -1,8 +1,8 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=mesonlsp
-pkgver=4.1.0
-pkgrel=2
+pkgver=4.1.2
+pkgrel=1
 pkgdesc='Meson language server'
 arch=('x86_64')
 url=https://github.com/JCWasmx86/mesonlsp
@@ -27,7 +27,7 @@ source=(
   'git+https://github.com/ada-url/ada#tag=v2.7.4'
   'git+https://github.com/JCWasmx86/muon#commit=e7d0aae70c695a1adec81b9a05429474ee5c1bc1'
 )
-b2sums=('2e179c119da1a98a31e1a38b9f22e729ca7ec1a1418d8408bd7b053d81bfc8a2b24749cab45b6354d7b34ff09bccc352a2f7ffd8e2bd6f5d72af76f3096c0f53'
+b2sums=('81e9ab752e5aa6f87dcc82b7897b5453c689cf34963f5ef117cfc06de114e708a65a3b4904880b2b70b45e9ff173e94050871dd39b0b80c5953a8360206beb64'
         '517c4fbd80ab65375e5ebe13b57e65dc64460dda6a7d68a9998617bce94064e7fdd81c5428c55e31e785ae9b9d548dbff0818daad94fa1ffb256fe9a86804c6d'
         'c7cb7dde86a27a8f8de2856fa04350b053a85080dc4314434739ff8f657f9b369e0b996e2ecae093de9b903e77ef3b2874a6f864d81ceba0bfa8d0a064859579'
         'e4e59dcd348ea3ec9fc6ce7f62f944b8f5b40370c5738e6453e45aa201eadb9eb0b58d9d08e7068b8b1a4a6c90e94d58fb7df81337124c8e96e6e418fce488ae'
