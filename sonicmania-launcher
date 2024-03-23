@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Use XDG_DATA_HOME or fallback to ~/.local/share if it isn't set.
+data_folder="${XDG_DATA_HOME:-$HOME/.local/share}/sonicmania"
+
+if [[ ! -d "$data_folder" ]]; then
+	mkdir -p "$data_folder"
+	cp -R /usr/share/sonicmania-git/mods $data_folder
+	echo "Created data folder in '$data_folder', please copy Data.rsdk" \
+"from an existing Mania(+) install there and run this launcher again."
+exit 1
+fi
+
+cd "$data_folder"
+/usr/bin/sonicmania
+
+exit_code=$?
+
+if [[ $exit_code -eq 1 ]]; then
+	echo "Game exited with error code 1, check if data files are present in" \
+"'$data_folder'."
+fi

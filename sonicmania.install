@@ -1,0 +1,6 @@
+post_install() {
+	echo "Use sonicmania-launcher to make RSDKv5U look for data in "\
+"<\$XDG_DATA_HOME|~/.local/share>/sonicmania"
+	echo "Alternatively, running sonicmania directly will have it look in "\
+"the current directory."
+}

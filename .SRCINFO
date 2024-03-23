@@ -1,0 +1,27 @@
+pkgbase = sonicmania-git
+	pkgdesc = A full decompilation of Sonic Mania.
+	pkgver = r1163.8278952d
+	pkgrel = 1
+	url = https://github.com/Rubberduckycooly/Sonic-Mania-Decompilation
+	install = sonicmania.install
+	arch = any
+	license = custom:RSDKv5(U) DECOMPILATION SOURCE CODE LICENSE v2.1
+	makedepends = git
+	depends = sdl2
+	depends = libogg
+	depends = libvorbis
+	depends = asio
+	depends = tinyxml2
+	depends = glfw
+	depends = glew
+	provides = sonic2013
+	source = git+https://github.com/Rubberduckycooly/Sonic-Mania-Decompilation.git
+	source = shadersMod.ini
+	source = sonicmania-launcher
+	source = sonicmania.desktop
+	sha256sums = SKIP
+	sha256sums = ab10afed573e1f718b7731b0fb71589cd70a622e99b1cf90b6eec1cc54c75cba
+	sha256sums = 391d407e421a610541056eaa3ce681f47eb55c2d06de38ca4f134a573ff370b9
+	sha256sums = 175e883d36669d2613c3f848c255db343f345c4c8fe69074d4564310561db5ee
+
+pkgname = sonicmania-git
