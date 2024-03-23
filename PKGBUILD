@@ -1,7 +1,7 @@
 # Maintainer: quietvoid <tcChlisop0@gmail.com>
 
 pkgname=dovi_tool-bin
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='CLI tool combining multiple utilities for working with Dolby Vision'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 conflicts=('dovi_tool')
 provides=('dovi_tool')
 source=("https://github.com/quietvoid/dovi_tool/releases/download/$pkgver/dovi_tool-$pkgver-x86_64-unknown-linux-musl.tar.gz")
-sha256sums=('4e4400941dca3026ab24596643424b50adcb678412335e72c1f7154d2f0b0cf6')
+sha256sums=('8910c6d0ba06936293254b6c6a4b40afbd19420a3c1fcdbdfad90e149f611f8b')
 
 package() {
   cd "$srcdir/"
