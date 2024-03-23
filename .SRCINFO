@@ -1,7 +1,7 @@
 pkgbase = leopard-git
 	pkgdesc = O(N Log N) MDS Reed-Solomon Block Erasure Code for Large Data
-	pkgver = r1.22ddc78
-	pkgrel = 2
+	pkgver = r2.6e5725e
+	pkgrel = 1
 	url = https://github.com/catid/leopard
 	arch = i686
 	arch = x86_64

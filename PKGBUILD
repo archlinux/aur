@@ -1,8 +1,8 @@
 # Maintainer: gbletr42 <gbletr42@gmail.com>
 _pkgname="leopard"
 pkgname="leopard-git"
-pkgver=r1.22ddc78
-pkgrel=2
+pkgver=r2.6e5725e
+pkgrel=1
 pkgdesc="O(N Log N) MDS Reed-Solomon Block Erasure Code for Large Data"
 arch=('i686' 'x86_64')
 url="https://github.com/catid/leopard"
