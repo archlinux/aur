@@ -1,12 +1,12 @@
 # Maintainer: Andrey Anshin <Andrey.Anshin@taragol.is>
 
 pkgname=discover-overlay
-_pkgrelname=Discover
-pkgver=0.7.0
-pkgrel=2
+_name=${pkgname#python-}
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="Yet another Discord overlay for Linux written in Python using GTK3"
 arch=("x86_64")
-url="https://github.com/trigg/${_pkgrelname}"
+url="https://github.com/trigg/Discover"
 license=("GPL3")
 makedepends=(
     "python-build"
@@ -28,19 +28,17 @@ depends=(
 conflicts=("discover-overlay-git")
 provides=("discover-overlay")
 optdepends=("gtk-layer-shell: Wayland support")
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("e7f00e1087251559fab5ed033bde059ea87ea45eb6fbe1782442253126281cae51b6d296bbae0cb11503ccf082fe22654ff129687f73c467ad8a2406bbe35bd8")
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha512sums=("77324ed057964dfcbcefdce13d2a6a4e649a47e0cd88437d299e41925cc80f11f945475651c561d5b9e5beeccbd84e5ee21cfbef2c65c257b86630a1a5937bd4")
 
 build() {
-    cd "${srcdir}/${_pkgrelname}-${pkgver}"
-
-    python -B -m build --wheel --no-isolation
+    cd ${pkgname}-${pkgver}
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_pkgrelname}-${pkgver}"
-
-    python -B -m installer --destdir="${pkgdir}" dist/*.whl
+    cd ${pkgname}-${pkgver}
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 
     install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
