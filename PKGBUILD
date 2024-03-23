@@ -5,21 +5,19 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=motion-git
-pkgver=4.4.0.r44.db94a89
+pkgver=4.6.0.r10.11e5ca7
 pkgrel=1
-pkgdesc="Monitor and record video signals from many types of cameras"
+pkgdesc='Monitor and record video signals from many types of cameras'
 arch=(x86_64)
-license=(GPL)
-url="https://motion-project.github.io"
+license=(GPL-2.0-or-later)
+url='https://motion-project.github.io'
 conflicts=(motion)
-depends=(sqlite ffmpeg libmicrohttpd libwebp mariadb-libs)
+depends=(glibc libjpeg-turbo sqlite ffmpeg libmicrohttpd libwebp mariadb-libs)
 makedepends=(git)
 optdepends=('gettext: native language support')
 backup=('etc/motion/motion.conf')
 source=("git+https://github.com/Motion-Project/motion.git"
-        'motion.service'
-        'motion.sysusers'
-        'motion.tmpfiles')
+        ${pkgname%-git}.{service,sysusers,tmpfiles})
 b2sums=('SKIP'
         'c66ca8a7723b78f05cf4750377276891cb6025a74ec33960ccaa3939a25edb6eca713d36ded94d20db70cd1bd6694629eb6d43ba63e8165be145bb9d6a668771'
         'e923b20ceb893fb52cffc530f3d777ccbaffd7aef447f368a6a83b73043795acfb6a26da0bcdeb695a3b356baebe9ad89ea9aabd27e986c482dcd71670957a84'
