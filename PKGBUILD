@@ -3,17 +3,17 @@
 pkgname=mmdbinspect
 pkgver=0.1.1
 pkgrel=1
-pkgdesc="look up records for one or more IPs/networks in one or more .mmdb databases"
-arch=(x86_64 aarch64 armv7h armv6h)
+pkgdesc='look up records for one or more IPs/networks in one or more .mmdb databases'
+arch=(x86_64 aarch64 armv7h)
 url="https://github.com/maxmind/mmdbinspect"
-license=(Apache)
+license=(Apache-2.0)
 depends=(glibc)
 makedepends=(go)
-source=("https://github.com/maxmind/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('3e3e8c5a9d7bf256e1700323f968589f066a187d0ca29fad5fb811431de4874e1918841862ef3ea497b9c7c0b32da16c4e5c737a5399330cf655bec2e0de1998')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd $pkgname-$pkgver
 
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   install -Dm755 -t "$pkgdir"/usr/bin $pkgname
 }
 
