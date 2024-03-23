@@ -3,42 +3,40 @@
 
 pkgname=rtlamr
 pkgver=0.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An rtl-sdr receiver for Itron ERT compatible smart meters operating in the 900MHz ISM band."
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://github.com/bemasher/rtlamr"
-source=("https://github.com/bemasher/rtlamr/archive/v${pkgver}.tar.gz")
-md5sums=('eaf1d3de2284bc672c76eca5cef47ed4')
 license=('AGPL3')
 depends=('rtl-sdr')
 makedepends=('go')
-options=('!strip' '!emptydirs')
-_gourl=github.com/bemasher/rtlamr
+source=("https://github.com/bemasher/rtlamr/archive/v${pkgver}.tar.gz")
+sha256sums=('544f50826f874cc436a0b9cf3d72a6c298ddb308d4ea5f088dad233c5d319fc1')
 
 prepare(){
-  mkdir -p gopath/src/${_gourl%/*}
-  ln -rTsf $pkgname-$pkgver gopath/src/$_gourl
+  cd "$pkgname-$pkgver"
+  mkdir -p build
 }
 
 build() {
-  export GOPATH="$srcdir"/gopath
-  cd gopath/src/$_gourl
-  go install \
-     -trimpath \
-     -modcacherw \
-     -ldflags "-extldflags $LDFLAGS" \
-     -v ./...
+  cd "$pkgname-$pkgver"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o build .
 }
 
 check() {
-  export GOPATH="$srcdir"/gopath
-  cd gopath/src/$_gourl
+  cd "$pkgname-$pkgver"
   go test ./...
 }
 
 
 package() {
-  install -p -Dm755 gopath/bin/rtlamr "$pkgdir/usr/bin/rtlamr"
+  cd "$pkgname-$pkgver"
+  install -p -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
 }
 
 # vim:set ts=2 sw=2 et:
