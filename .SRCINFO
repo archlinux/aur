@@ -1,7 +1,7 @@
 pkgbase = kate-root
 	pkgdesc = Advanced Text Editor from the KDE project, patched to be able to run as root.
 	pkgver = 24.02.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.kde.org/kate/
 	arch = x86_64
 	arch = i686
@@ -75,7 +75,7 @@ pkgbase = kate-root
 	provides = kwrite-qt6=24.02.0
 	conflicts = kate
 	conflicts = kwrite
-	replaces = kwrite
+	replaces = kwrite<=23.99
 	replaces = kwrite-root
 	source = https://download.kde.org/stable/release-service/24.02.0/src/kate-24.02.0.tar.xz
 	source = https://download.kde.org/stable/release-service/24.02.0/src/kate-24.02.0.tar.xz.sig

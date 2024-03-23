@@ -9,7 +9,7 @@
 _pkgname=kate
 pkgname="${_pkgname}-root"
 pkgver=24.02.0
-pkgrel=1
+pkgrel=2
 arch=(
   'x86_64'
   'i686'
@@ -111,7 +111,7 @@ provides=(
   "kwrite-qt6=${pkgver}"
 )
 replaces=(
-  'kwrite'
+  'kwrite<=23.99'
   'kwrite-root'
 )
 source=(
