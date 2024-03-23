@@ -2,7 +2,7 @@
 
 pkgname=qimgv-light-git
 pkgver=1.0.3alpha.r105.g70dc0ef9
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt6 image viewer (git, without any optional features)'
 arch=(x86_64 i686 armv6h armv7h aarch64)
 url=https://github.com/easymodo/qimgv
@@ -11,8 +11,7 @@ depends=(qt6-base qt6-imageformats qt6-svg qt6-5compat)
 makedepends=(cmake qt6-tools git)
 provides=("${pkgname%-light-git}")
 conflicts=("${pkgname%-light-git}")
-optdepends=('kimageformats: support for more image formats'
-            'qtraw: raw images support')
+optdepends=('kimageformats: support for more image formats')
 source=(git+"${url}".git)
 sha256sums=('SKIP')
 
