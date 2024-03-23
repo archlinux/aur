@@ -2,7 +2,7 @@
 
 _name=wio
 pkgname=$_name-wl
-pkgver=0.17.1
+pkgver=0.17.2
 pkgrel=1
 pkgdesc="Wayland compositor similar to Plan 9's rio"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=('custom')
 depends=(alacritty cage cairo "wlroots>=$pkgver")
 makedepends=(meson)
 source=("$url/-/archive/$pkgver/$_name-$pkgver.tar.gz")
-b2sums=('f81d67fa9fe50ff4bc087db076c06cd33237495ffd403978dbaba85e032f36803e4ee734687db668aeea46c5e3d1b344814fed80b12c24a4b64cbe3f3e4f14cb')
+b2sums=('54db114accc6c7f3999ce657843f8161d685d900f3970efb6cfd5a3035d2a10320e194078e4397f882dd6f9bd1a6f7c84fafb7c854b154db9d090307b1bde066')
 
 build() {
     cd $_name-$pkgver
