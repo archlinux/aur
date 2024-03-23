@@ -4,14 +4,13 @@ pkgbase = perl-filehandle-unget
 	pkgrel = 3
 	url = http://search.cpan.org/dist/FileHandle-Unget
 	arch = any
-	license = GPL
-	license = PerlArtistic
+	license = GPL-2.0-only
 	checkdepends = perl-test-compile
 	checkdepends = perl-file-slurper
 	checkdepends = perl-universal-require
 	depends = perl
 	options = !emptydirs
-	source = http://cpan.perl.org/modules/by-module/FileHandle/FileHandle-Unget-0.1634.tar.gz
+	source = perl-filehandle-unget-0.1634.tar.gz::http://cpan.perl.org/modules/by-module/FileHandle/FileHandle-Unget-0.1634.tar.gz
 	b2sums = b7f4993e1247ac5b80828ba56137acde6660576934d42abb9628ef4afbd82b69849a95670625ce56044c12636fc81b5aab4297135b17cc4af2f4651beabaff4a
 
 pkgname = perl-filehandle-unget
