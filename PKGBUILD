@@ -3,10 +3,10 @@ _pkgname=mindustry
 pkgname="${_pkgname}-bin"
 _build=146
 pkgver="7.0_${_build}"
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A sandbox tower defense game written in Java"
-arch=("any")
+arch=("x86_64")
 url="https://github.com/Anuken/Mindustry"
 license=("GPL3")
 depends=("java-runtime>=8" "sh" "hicolor-icon-theme")
