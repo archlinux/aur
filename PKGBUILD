@@ -16,8 +16,19 @@ checkdepends=(python-blinker python-pytest-env python-pytest-mock)
 optdepends=(
   'python-blinker: for signals'
 )
-source=("https://github.com/pynamodb/PynamoDB/archive/$pkgver/PynamoDB-$pkgver.tar.gz")
-sha256sums=('fdd9d7fec4874e998e3a7148a147ce4a59bc03123c08b048d944a191e5ea605a')
+source=("https://github.com/pynamodb/PynamoDB/archive/$pkgver/PynamoDB-$pkgver.tar.gz"
+        "pytest-7.2.patch")
+sha256sums=('fdd9d7fec4874e998e3a7148a147ce4a59bc03123c08b048d944a191e5ea605a'
+            '9b9950dadcc236ac259afeeaf19f7386a77542c5db75658218b6958ddf7bb4c4')
+
+prepare() {
+  cd PynamoDB-$pkgver
+  # Backport a fix for newer pytest, which leads to a warning since pytest 7.2 and an error since pytest 8
+  # See: https://github.com/pynamodb/PynamoDB/pull/1109
+  # Note that the relevant commit is already part of the latest stable release (6.0.0), but we cannot upgrade
+  # due to python-aws-xray-sdk as mentioned above
+  patch -Np1 -i ../pytest-7.2.patch
+}
 
 build() {
   cd PynamoDB-$pkgver
