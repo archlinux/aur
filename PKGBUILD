@@ -11,7 +11,7 @@ source=("$_pkgname-$pkgver.tar.gz::https://github.com/Morganamilo/paru/archive/v
         git+https://aur.archlinux.org/pacman-static.git)
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 license=('GPL-3.0-or-later')
-makedepends=('rustup' 'cargo' 'musl' 'meson' 'kernel-headers-musl' 'lld')
+makedepends=('rustup' 'cargo' 'musl' 'meson' 'kernel-headers-musl' 'lld' 'binutils')
 depends=('git' 'pacman')
 optdepends=('bat: colored pkgbuild printing' 'devtools: build in chroot and downloading pkgbuilds')
 sha256sums=('ccf6defc4884d580a4b813cc40323a0389ffc9aa4bdc55f3764a46b235dfe1e0'
@@ -29,6 +29,10 @@ _srcenv() {
   #export TARGET="${target_arch}-${target_vendor}-${target_os}-${target_env}"
 }
 
+checkver() {
+  test "$(echo "$@" | tr " " "\n" | sort -Vr | head -n 1)" == "$1";
+}
+
 prepare() {
   _srcenv
   rustup target add $TARGET
@@ -38,13 +42,19 @@ prepare() {
 build () {
   # If pacman-static(6.1.0) is not installed, build and install it.
   cd $srcdir/pacman-static
-  # disable lto
-  sed "s/^options=(\(.*\))$/options=(\1 '\!lto')/" PKGBUILD -i
-  # disable CFLAGS and CXXFLAGS and LDFLAGS of makepkg.conf
-  #sed -r "/(export LDFLAGS=.*)/s/(.+)/unset CFLAGS\nunset CXXFLAGS\n\1/" PKGBUILD -i
-  # pacman-static build & install
-  [[ $(LC_ALL=C pacman -Qi pacman-static |grep "6.1.0") ]] || makepkg -si --skippgpcheck --noconfirm
 
+  # disable lto
+  #sed "s/^options=(\(.*\))$/options=(\1 '\!lto')/" PKGBUILD -i
+
+  # Addition of -ffat-lto-objects to CFLAGS to ensure that symbols and headers are included in libalpm.a when lto is enabled.
+  sed -r "/(export LDFLAGS=.*)/s/(.+)/export CFLAGS+=' -ffat-lto-objects'\n\1/" PKGBUILD -i
+
+  # Build and install pacman-static if the version is not greater than or not equal to 6.1.0-1 or if the package cannot read symbols in the static link library(libalpm.a).
+  if ! checkver $(LC_ALL=C pacman -Qi pacman-static|grep Version|grep -Eo "([0-9]+.[0-9]+.[0-9]+)-[0-9]+") "6.1.0-1" || [[ ! $(LC_ALL=C objdump --syms /usr/lib/pacman/lib/libalpm.a | grep -E "\.text.* alpm_version") ]] ; then
+      makepkg -si --skippgpcheck --noconfirm
+  fi
+
+  # paru
   _srcenv
   if pacman -T pacman-git > /dev/null; then
     _features+="git,"

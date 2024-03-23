@@ -18,6 +18,7 @@ pkgbase = paru-static
 	makedepends = meson
 	makedepends = kernel-headers-musl
 	makedepends = lld
+	makedepends = binutils
 	depends = git
 	depends = pacman
 	optdepends = bat: colored pkgbuild printing
