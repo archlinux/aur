@@ -1,0 +1,12 @@
+pkgbase = rime-my-wubi86-pinyin
+	pkgdesc = rime 86版五笔+拼音输入方案
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://gitee.com/comrade-kobayashi/rime-my-wubi86-pinyin
+	arch = any
+	license = custom
+	depends = rime-pinyin-simp
+	source = https://gitee.com/comrade-kobayashi/rime-my-wubi86-pinyin/repository/archive/master.zip
+	sha512sums = b048c1755e0d9716cbe7323b54eb51c788fb25943f6cd3f60840ee573a5676912befa71a1456ba37b340b41c0b8e05675fbfc3b219127a6cbdbbf6cff5b40f8a
+
+pkgname = rime-my-wubi86-pinyin
