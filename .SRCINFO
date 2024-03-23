@@ -1,17 +1,36 @@
 pkgbase = stable-diffusion.cpp-git
 	pkgdesc = Stable Diffusion in pure C/C++
-	pkgver = r107.a469688
+	pkgver = r108.48bcce4
 	pkgrel = 1
 	url = https://github.com/leejet/stable-diffusion.cpp
 	arch = armv7h
 	arch = aarch64
 	arch = x86_64
 	license = MIT
+	makedepends = ccache
 	makedepends = cmake
+	makedepends = cuda
 	makedepends = git
+	makedepends = hipblas
+	makedepends = openblas
 	provides = stable-diffusion.cpp
 	conflicts = stable-diffusion.cpp
 	source = stable-diffusion.cpp::git+https://github.com/leejet/stable-diffusion.cpp
 	sha256sums = SKIP
 
 pkgname = stable-diffusion.cpp-git
+	pkgdesc = Stable Diffusion in pure C/C++ (with OPENBlas CPU optimizations)
+	depends = openblas
+	provides = stable-diffusion.cpp-git=r108.48bcce4
+
+pkgname = stable-diffusion.cpp-cublas-git
+	pkgdesc = Stable Diffusion in pure C/C++ (with NVIDIA CUDA optimizations)
+	depends = cuda
+	provides = stable-diffusion.cpp-git=r108.48bcce4
+	conflicts = stable-diffusion.cpp-git
+
+pkgname = stable-diffusion.cpp-hipblas-git
+	pkgdesc = Stable Diffusion in pure C/C++ (with AMD ROCm optimizations)
+	depends = hipblas
+	provides = stable-diffusion.cpp-git=r108.48bcce4
+	conflicts = stable-diffusion.cpp-git
