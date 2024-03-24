@@ -1,27 +1,34 @@
-# Maintainer: Grey Christoforo <first name at last name dot net>
+# Maintainer: Scott Cheng <aur@chengscott.io>
+# Contributer: Grey Christoforo <first name at last name dot net>
+# Contributer: Sven-Hendrik Haase <svenstaro at gmail dot com>
+# Contributer: Raphael Scholer <rascholer at gmail dot com>
 pkgname=python-pep8-naming
-pkgver=0.11.1
+_name=${pkgname#python-}
+pkgver=0.13.3
 pkgrel=1
 pkgdesc="This module provides a name plugin for flake8, the Python code checker"
-arch=(x86_64)
+arch=(any)
 url="https://github.com/PyCQA/pep8-naming"
 license=('MIT')
 depends=('python')
 provides=('flake-pep8-naming')
-makedepends=('python-setuptools')
+makedepends=(
+  python-build
+  python-installer
+  python-wheel
+)
 source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/${pkgver}.tar.gz")
-md5sums=('946e1864f5ea39c6f4e35ed75fa7a0b4')
+sha256sums=('d693ebff6b6a6107722b3009265fb5b854aa4b5551df0b76fdb97a39eba98f34')
 
 build() {
-  cd "pep8-naming-${pkgver}"
-
-  python setup.py build
+  python -m build -nw "${_name}-${pkgver}"
 }
 
 package() {
-    cd "pep8-naming-${pkgver}"
-
-    python setup.py install --prefix="/usr" --root="${pkgdir}" --optimize=1 --skip-build
-    install -Dm755 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"/LICENSE
+  python -m installer \
+      --compile-bytecode 1 \
+      --destdir "${pkgdir}" \
+      "${_name}-${pkgver}/dist/pep8_naming-"*.whl
+  install -Dm644 "${_name}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 # vim:set ts=2 sw=2 et:
