@@ -1,7 +1,7 @@
 # Maintainer: Mazhar Hussain <realmazharhussain@gmail.com>
 
 pkgname=gst-plugin-gtk4
-pkgver=0.11.2
+pkgver=0.12.3
 pkgrel=1
 pkgdesc="Multimedia graph framework - GTK4 plugin"
 arch=(x86_64)
@@ -12,7 +12,7 @@ makedepends=(cargo cargo-c)
 provides=(libgstgtk4.so)
 conflicts=(gst-plugins-rs)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=(33970273495544e54d5f486d761b09d402f0cf8760990e1ea508bd5141f8ebeb)
+sha256sums=(83c12132d3619f85db54f6034b4e3872577886657b07e055c521baeb2d5f6733)
 
 prepare() {
   cd "$pkgname-$pkgver"
