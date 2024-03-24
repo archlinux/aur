@@ -12,7 +12,7 @@ pkgname=davinci-resolve
 major_version=18.6
 minor_version=6
 pkgver=${major_version}.${minor_version}
-pkgrel=1
+pkgrel=2
 
 if [ "$pkgname" == "davinci-resolve" ]; then
     # Variables for FREE edition
@@ -40,7 +40,7 @@ _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
                         AppleWebKit/537.36 (KHTML, like Gecko) \
                         Chrome/77.0.3865.75 \
                         Safari/537.36"
-_releaseinfo=$(curl -s "$_siteurl")
+_releaseinfo=$(curl -Ls "$_siteurl")
 
 _downloadId=$(printf "%s" $_releaseinfo | sed -n 's/.*"downloadId":"\([^"]*\).*/\1/p')
 _pkgver=$(printf "%s" $_releaseinfo | awk -F'[,:]' '{for(i=1;i<=NF;i++){if($i~/"major"/){print $(i+1)} if($i~/"minor"/){print $(i+1)} if($i~/"releaseNum"/){print $(i+1)}}}' | sed 'N;s/\n/./;N;s/\n/./')
