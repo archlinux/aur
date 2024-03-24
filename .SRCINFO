@@ -1,10 +1,10 @@
 pkgbase = linux-mainline
 	pkgdesc = Linux Mainline
-	pkgver = 6.8
+	pkgver = 6.9rc1
 	pkgrel = 1
 	url = https://kernel.org/
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = bc
 	makedepends = cpio
 	makedepends = gettext
@@ -21,13 +21,14 @@ pkgbase = linux-mainline
 	makedepends = python-yaml
 	makedepends = texlive-latexextra
 	options = !strip
-	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v6.8
+	options = !debug
+	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v6.9-rc1
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
-	sha256sums = SKIP
-	sha256sums = aa47193f89794412776f36c970cabbf19e9abaccf01e3c33f4f891dd4661e5af
+	sha256sums = 8b75b81a0b84c2db80c9e90b208a173b2ae527ab74a6c69e5df2fba58e45899e
+	sha256sums = c2b00c84c4b543db431e06604d939a62f93107d18369f4d9860dc8062b01ab45
 
 pkgname = linux-mainline
 	pkgdesc = The Linux Mainline kernel and modules
