@@ -2,7 +2,7 @@
 
 pkgname=sumatrapdf
 pkgver=3.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="PDF, eBook (epub, mobi), comic book (cbz/cbr), DjVu, XPS, CHM, image viewer for Windows. Small, fast, customizable, free."
 arch=('x86_64')
 url='https://www.sumatrapdfreader.org/free-pdf-reader'
@@ -36,6 +36,7 @@ package() {
 
   # desktop entry
   install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "$srcdir/${pkgname}-3.png" "$pkgdir/usr/share/pixmaps/${pkgname}-3.png"
 
   echo "You may need MS fonts for non-latin characters."
 }
@@ -49,3 +50,5 @@ package() {
 #   - you can remove it
 # - change WINEPREFIX to config directory
 #   - you can delete ~/.sumatrapdf/
+# 3.5.2-3
+# - fix desktop entry icon
