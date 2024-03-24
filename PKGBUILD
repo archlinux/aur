@@ -6,7 +6,7 @@
 
 pkgname=gogui
 pkgver=1.5.4a
-pkgrel=2
+pkgrel=3
 pkgdesc='SGF editor, can also be used for playing against engines'
 arch=('any')
 url='https://github.com/Remi-Coulom/gogui'
@@ -15,6 +15,7 @@ depends=('java-runtime')
 makedepends=('apache-ant' 'docbook-xsl' 'java-environment')
 source=("${url}/releases/download/v${pkgver}/gogui-v${pkgver}-bin.zip")
 sha256sums=('5b03df6d81754bd154ae0d22b17fe9db3b454054feb743fcc739caf9c698b867')
+install="${pkgname}.install"
 
 package() {
   cd gogui
