@@ -174,37 +174,6 @@ prepare(){
     plain ""
   fi
 
-  msg "Apply some Archlinux config"
-
-  msg2 "Compress modules by default (following Arch's kernel)"
-  scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
-
-  sleep 2s
-
-  msg2 "CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team"
-  scripts/config --enable CONFIG_STACK_VALIDATION
-
-  sleep 2s
-
-  msg2 "Enable IKCONFIG following Arch's philosophy"
-  scripts/config --enable CONFIG_IKCONFIG
-  scripts/config --enable CONFIG_IKCONFIG_PROC
-
-  sleep 2s
-
-  msg2 "Enable FUNCTION_TRACER/GRAPH_TRACER"
-  scripts/config --enable CONFIG_FUNCTION_TRACER
-  scripts/config --enable CONFIG_STACK_TRACER
-
-  sleep 2s
-
-  msg2 "Enable CONFIG_USER_NS_UNPRIVILEGED"
-  scripts/config --enable CONFIG_USER_NS
-
-  sleep 2s
-
-  plain ""
-
   # Supress depmod
   msg "Supress depmod..."
   sed -i '2iexit 0' scripts/depmod.sh
