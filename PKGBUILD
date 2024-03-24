@@ -31,6 +31,7 @@ build() {
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DAW_ENABLE_GRAPHICS:BOOL=ON \
+        -DAW_ENABLE_HUDF:BOOL=ON \
         -DAW_SPLIT_INCLUDES:BOOL=OFF \
         -DAW_INCLUDE_PREFIX:STRING="" \
         -Wno-dev
