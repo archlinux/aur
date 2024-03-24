@@ -1,35 +1,34 @@
 pkgbase = perl-travel-status-de-iris
-	pkgdesc = Interface to IRIS-based web departure monitors (as used by DeutscheBahn)
-	pkgver = 1.52
+	pkgdesc = Interface to IRIS based web departure monitors.
+	pkgver = 1.96
 	pkgrel = 1
-	url = http://finalrewind.org/projects/Travel-Status-DE-IRIS/
+	url = https://metacpan.org/release/Travel-Status-DE-IRIS
 	arch = any
 	license = PerlArtistic
-	makedepends = perl-module-build
-	makedepends = perl-file-slurp
-	makedepends = perl-json
-	makedepends = perl-test-compile
-	makedepends = perl-test-fatal
-	makedepends = perl-test-pod
-	makedepends = perl-text-csv
-	makedepends = perl-test-number-delta
-	makedepends = perl-cache
-	depends = perl-class-accessor
-	depends = perl-datetime
-	depends = perl-datetime-format-strptime
-	depends = perl-geo-distance
-	depends = perl-lwp-protocol-https
-	depends = perl-list-compare
-	depends = perl-list-moreutils
-	depends = perl-list-utilsby
-	depends = perl-text-levenshtein
-	depends = perl-xml-libxml
+	license = GPL
+	makedepends = perl-file-slurp>=9999.19
+	makedepends = perl-json>=0
+	makedepends = perl-module-build>=0.4
+	makedepends = perl-test-compile>=0
+	makedepends = perl-test-fatal>=0
+	makedepends = perl-test-number-delta>=0
+	makedepends = perl-test-pod>=0
+	makedepends = perl-text-csv>=0
+	depends = perl-class-accessor>=0
+	depends = perl-datetime>=0
+	depends = perl-datetime-format-strptime>=0
+	depends = perl-gis-distance>=0
+	depends = perl-lwp-protocol-https>=0
+	depends = perl-list-compare>=0.29
+	depends = perl-list-moreutils>=0
+	depends = perl-list-utilsby>=0
+	depends = perl-text-levenshteinxs>=0
+	depends = perl-xml-libxml>=0
+	depends = perl-libwww>=0
+	depends = perl>=5.14.2
 	options = !emptydirs
-	source = https://finalrewind.org/projects/Travel-Status-DE-IRIS/Travel-Status-DE-IRIS-1.52.tar.gz
-	source = https://finalrewind.org/projects/Travel-Status-DE-IRIS/Travel-Status-DE-IRIS-1.52.tar.gz.asc
-	validpgpkeys = 781BB7071C6BF648EAEB08A1100D5BFB5166E005
-	sha256sums = 051fc891b82a992dfc2f8adfd09b4724a067fa4cf97a27f8edea1f8a88cbb389
-	sha256sums = bc333bc18657a42dbbe9ee1c0da8c6aee9775fd1fe93c77e25f158683d93509c
+	source = http://search.cpan.org/CPAN/authors/id/D/DE/DERF/Travel-Status-DE-IRIS-1.96.tar.gz
+	md5sums = 897713ea63ecf3e6b359f887512674ec
+	sha512sums = 0ff07d63c810583a6ebf7a5e691e9d52fa17aa2873df75595520f2d46728ff6f45efbdad3e7167e60fff7df5a60b56916f62a2369e117c3f4f029ff35b78f58a
 
 pkgname = perl-travel-status-de-iris
-
