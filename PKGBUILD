@@ -7,21 +7,40 @@
 _pkgbase=gdm
 pkgbase=gdm-nox
 pkgname=(gdm-nox libgdm-nox)
-pkgver=45.0.1
+pkgver=46.0
 pkgrel=1
 pkgdesc="Display manager and login screen, but without the dependency on xorg-server"
 url="https://wiki.gnome.org/Projects/GDM"
 arch=(x86_64)
-license=(GPL)
+license=('GPL-2.0-or-later')
 depends=(
+  accountsservice
+  audit
+  bash
+  gcc-libs
+  gdk-pixbuf2
+  glib2
+  glibc
+  gnome-session
   gnome-shell
-  gnome-session 
-  upower 
-  systemd 
+  gtk3
+  json-glib
+  keyutils
   libcanberra
+  libgudev
+  libx11
+  libxau
+  libxcb
+  libxdmcp
+  pam
+  systemd
+  systemd-libs
+  upower
 )
 makedepends=(
+  dconf
   plymouth
+  python-packaging
   yelp-tools
   gobject-introspection
   git
@@ -29,17 +48,17 @@ makedepends=(
   meson
 )
 checkdepends=(check)
-_commit=ef5620737de697d215f655722617e49f4a9a448e  # tags/45.0.1^0
+_commit=a5b591cd8d1db5c5d1ebe67d10ec3fe57b9bbded  # tags/46.0^0
 source=("git+https://gitlab.gnome.org/GNOME/gdm.git#commit=$_commit"
         0001-Xsession-Don-t-start-ssh-agent-by-default.patch
         )
-sha256sums=('SKIP'
+sha256sums=('bf1a7723223164be9afaa7f15af0da3251112a527b74f2fca7ef192ff2ffba9c'
             '39a7e1189d423dd428ace9baac77ba0442c6706a861d3c3db9eb3a6643e223f8')
 
-#pkgver() {
-#  cd $_pkgbase
-#  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
-#}
+pkgver() {
+  cd $_pkgbase
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+}
 
 prepare() {
   cd $_pkgbase
@@ -81,9 +100,18 @@ package_gdm-nox() {
   optdepends=('fprintd: fingerprint authentication')
   provides=("gdm")
   conflicts=("gdm")
-  backup=(etc/pam.d/gdm-autologin etc/pam.d/gdm-fingerprint etc/pam.d/gdm-launch-environment
-          etc/pam.d/gdm-password etc/pam.d/gdm-smartcard etc/gdm/custom.conf
-          etc/gdm/Xsession etc/gdm/PostSession/Default etc/gdm/PreSession/Default)
+  replaces=("gdm-plymouth-nox")
+  backup=(
+    etc/gdm/PostSession/Default
+    etc/gdm/PreSession/Default
+    etc/gdm/Xsession
+    etc/gdm/custom.conf
+    etc/pam.d/gdm-autologin
+    etc/pam.d/gdm-fingerprint
+    etc/pam.d/gdm-launch-environment
+    etc/pam.d/gdm-password
+    etc/pam.d/gdm-smartcard
+  )
   groups=(gnome)
   install=gdm.install
 
@@ -126,9 +154,18 @@ END
 
 package_libgdm-nox() {
   pkgdesc+=" - support library"
-  depends=(libsystemd.so libg{lib,object,io}-2.0.so)
+  depends=(
+    dconf
+    gcc-libs
+    glib2
+    glibc
+    libg{lib,object,io}-2.0.so
+    libsystemd.so
+    systemd-libs
+  )
   provides=(libgdm)
   conflicts=(libgdm)
+  replaces=("libgdm-plymouth-nox")
 
   mv libgdm/* "$pkgdir"
 }
