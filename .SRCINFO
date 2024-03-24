@@ -1,6 +1,6 @@
 pkgbase = python-blobfile-git
 	pkgdesc = A library that provides a Python-like interface for reading local and remote files (only from blob storage), with an API similar to open() as well as some of the os.path and shutil functions.
-	pkgver = 2.1.0+1.r630.20231011.e81b345
+	pkgver = 2.1.0+7.r636.20240131.0ddd797
 	pkgrel = 1
 	url = https://github.com/christopher-hesse/blobfile
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = python-blobfile-git
 	optdepends = python-av
 	optdepends = python-imageio
 	optdepends = python-tensorflow
-	provides = python-blobfile=2.1.0+1.r630.20231011.e81b345
+	provides = python-blobfile=2.1.0+7.r636.20240131.0ddd797
 	conflicts = python-blobfile
 	source = python-blobfile::git+https://github.com/christopher-hesse/blobfile.git
 	sha256sums = SKIP
