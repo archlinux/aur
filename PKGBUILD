@@ -2,15 +2,15 @@
 
 pkgname="cmake-extras-git"
 _pkgname="cmake-extras"
-pkgver=r283
+pkgver=1.7.r4.g669add9
 pkgrel=1
 pkgdesc="A collection of add-ons for the CMake build tool"
 arch=("any")
-url="https://gitlab.com/ubports/core/${_pkgname}"
-license=("LGPL3")
-depends=("cmake" "python")
-makedepends=("git" "cmake")
-source=("${_pkgname}::git+https://gitlab.com/ubports/core/${_pkgname}.git")
+url="https://gitlab.com/ubports/development/core/${_pkgname}"
+license=("GPL-3.0-or-later")
+depends=("cmake" "python" "bash")
+makedepends=("git")
+source=("${_pkgname}::git+https://gitlab.com/ubports/development/core/${_pkgname}.git")
 md5sums=("SKIP")
 options=("!emptydirs")
 provides=("${_pkgname}")
@@ -19,7 +19,7 @@ conflicts=("${_pkgname}")
 pkgver()
 {
     cd ${srcdir}/${_pkgname}
-    printf "r%s" "$(git rev-list --count HEAD)"
+    git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build()
