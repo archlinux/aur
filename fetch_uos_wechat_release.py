@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # Fetcher for UOS com.tencent.wechat release
 # Copyright (C) 2024-present Guoxin "7Ji" Pu
 
@@ -31,6 +32,7 @@ import zlib
 import hashlib
 import os
 
+
 class Architecture:
     arch_uos: str
     arch_archlinux: str
@@ -53,39 +55,43 @@ class Architecture:
         self.md5 = None
 
     def fetch(self, url_appstore: str, session: requests.Session):
-        print(f"=> Fetching for architecture '{self.arch_uos}' (Uniontech OS) / '{self.arch_archlinux}' (Arch Linux)")
-        url = f'{url_appstore}/dists/eagle/appstore/binary-{self.arch_uos}/Packages.gz'
-        response = session.get(url, stream = True)
+        print(
+            f"=> Fetching for architecture '{self.arch_uos}' (Uniontech OS) / '{self.arch_archlinux}' (Arch Linux)"
+        )
+        url = f"{url_appstore}/dists/eagle/appstore/binary-{self.arch_uos}/Packages.gz"
+        response = session.get(url, stream=True)
         if response.status_code != 200:
-            raise Exception(f'Request code is {response.status_code}')
-        decompressor = zlib.decompressobj(wbits = 31)
+            raise Exception(f"Request code is {response.status_code}")
+        decompressor = zlib.decompressobj(wbits=31)
         data = bytearray()
         for chunk in response.iter_content(0x100000):
             data += decompressor.decompress(chunk)
         data += decompressor.flush()
-        
+
         wechat = None
-        for package in data.split(b'\n\n'):
-            if package.startswith(b'Package: com.tencent.wechat\n'):
-                wechat=package
+        for package in data.split(b"\n\n"):
+            if package.startswith(b"Package: com.tencent.wechat\n"):
+                wechat = package
                 break
         if wechat is None:
-            raise Exception(f"Failed to find package com.tencent.wechat for arch '{self.arch_uos}'")
+            raise Exception(
+                f"Failed to find package com.tencent.wechat for arch '{self.arch_uos}'"
+            )
 
         filename = None
-        for line in package.split(b'\n'):
-            if line.startswith(b'Version: '):
-                self.version = line[9:].decode('utf-8')
-            elif line.startswith(b'Filename: '):
-                filename = line[10:].decode('utf-8')
-            elif line.startswith(b'Size: '):
+        for line in package.split(b"\n"):
+            if line.startswith(b"Version: "):
+                self.version = line[9:].decode("utf-8")
+            elif line.startswith(b"Filename: "):
+                filename = line[10:].decode("utf-8")
+            elif line.startswith(b"Size: "):
                 self.size = int(line[6:])
-            elif line.startswith(b'SHA256: '):
-                self.sha256 = line[8:].decode('utf-8')
-            elif line.startswith(b'SHA1: '):
-                self.sha1 = line[6:].decode('utf-8')
-            elif line.startswith(b'MD5sum: '):
-                self.md5 = line[8:].decode('utf-8')
+            elif line.startswith(b"SHA256: "):
+                self.sha256 = line[8:].decode("utf-8")
+            elif line.startswith(b"SHA1: "):
+                self.sha1 = line[6:].decode("utf-8")
+            elif line.startswith(b"MD5sum: "):
+                self.md5 = line[8:].decode("utf-8")
         if self.version is None:
             raise Exception("Failed to get version")
         if filename is None:
@@ -94,9 +100,11 @@ class Architecture:
         self.file = f"wechat-universal_{self.version}_{self.arch_archlinux}.deb"
         if self.size is None:
             raise Exception("Failed to get size")
-        
+
     def cache(self, session: requests.Session):
-        print(f"=> Caching for architecture '{self.arch_uos}' (Uniontech OS) / '{self.arch_archlinux}' (Arch Linux)")
+        print(
+            f"=> Caching for architecture '{self.arch_uos}' (Uniontech OS) / '{self.arch_archlinux}' (Arch Linux)"
+        )
         if os.path.exists(self.file):
             with open(self.file, "rb") as f:
                 data = f.read()
@@ -121,7 +129,7 @@ class Architecture:
 
         response = session.get(self.url)
         if response.status_code != 200:
-            raise Exception(f'Request code is {response.status_code}')
+            raise Exception(f"Request code is {response.status_code}")
         sha256 = hashlib.sha256(response.content).hexdigest()
         sha1 = hashlib.sha1(response.content).hexdigest()
         md5 = hashlib.md5(response.content).hexdigest()
@@ -143,21 +151,22 @@ class Architecture:
             f.write(response.content)
 
 
-architectures=(
-    Architecture('amd64', 'x86_64'),
-    Architecture('arm64', 'aarch64'),
-    Architecture('loongarch64', 'loong64')
+architectures = (
+    Architecture("amd64", "x86_64"),
+    Architecture("arm64", "aarch64"),
+    Architecture("loongarch64", "loong64"),
 )
 
 
-
-url_appstore='https://home-store-packages.uniontech.com/appstore'
+url_appstore = "https://home-store-packages.uniontech.com/appstore"
 session = requests.Session()
 
 for architecture in architectures:
     architecture.fetch(url_appstore, session)
 for architecture in architectures:
-    print(f"source_{architecture.arch_archlinux}=(\n\t'{architecture.file}::{architecture.url}'\n)")
+    print(
+        f"source_{architecture.arch_archlinux}=(\n\t'{architecture.file}::{architecture.url}'\n)"
+    )
 for architecture in architectures:
     print(f"sha256sums_{architecture.arch_archlinux}=(\n\t'{architecture.sha256}'\n)")
 for architecture in architectures:
