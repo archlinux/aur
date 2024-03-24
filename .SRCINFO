@@ -1,0 +1,11 @@
+pkgbase = openziti-bin
+	pkgdesc = An open source zero trust network
+	pkgver = 0.33.1
+	pkgrel = 1
+	url = https://openziti.io
+	arch = x86_64
+	license = Apache-2.0
+	source = https://github.com/openziti/ziti/releases/download/v0.33.1/ziti-linux-amd64-0.33.1.tar.gz
+	sha256sums = 6b7a9e5da7e679fb5eea4ce91220ed235d2bff5083ece2db57533ed315f70566
+
+pkgname = openziti-bin
