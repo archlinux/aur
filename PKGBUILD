@@ -71,8 +71,8 @@ build() {
     ## For people with the old version of makepkg.conf
     unset CPPFLAGS
     ## For people with the new version of makepkg.conf
-    CFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=2\s//g" <(echo $CFLAGS))
-    CXXFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=2\s//g" <(echo $CXXFLAGS))
+    CFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=3\s//g" <(echo $CFLAGS))
+    CXXFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=3\s//g" <(echo $CXXFLAGS))
 
     # Build
     colcon build --merge-install ${COLCON_EXTRA_ARGS} --cmake-args -Wno-dev
