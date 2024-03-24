@@ -27,7 +27,7 @@ JIT=              # Enable native just-in-time compilation with libgccjit availa
 
 ################################################################################
 pkgname=emacs-lucid
-pkgver=29.2
+pkgver=29.3
 _pkgver_major=${pkgver/.*}
 pkgrel=1
 pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)"
@@ -94,7 +94,7 @@ validpgpkeys=('17E90D521672C04631B1183EE78DAE0F3115E06B'  # Eli Zaretskii <eliz@
 _source_url_prefix="ftp://ftp.gnu.org/gnu/emacs"
 source=(${_source_url_prefix}/emacs-$pkgver.tar.xz
         ${_source_url_prefix}/emacs-$pkgver.tar.xz.sig)
-b2sums=('d634fbd94a2fde4824daf5d4d44d6f9e9693900af9ebeda75488fd4d14b7f6cd22e0c9fc15a4c73b4b90843aa782dbd698ba0d40c50465eb4b902105cd9e2c2c'
+b2sums=('73651c52e508d5341f66659bbaf98e839040239198cb66f62239f489a961794adf837d9a14e9b605f059b7b612803e0ce5998ec47100ba545db642baacdb55ec'
         'SKIP')
 ################################################################################
 
