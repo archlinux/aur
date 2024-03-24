@@ -3,7 +3,7 @@ _pkgname=ssh-tpm-agent
 _repo_name="${_pkgname}.git"
 pkgname="${_pkgname}-git"
 # renovate: pkgName=https://github.com/Foxboron/ssh-tpm-agent depName=ssh-tpm-agent-git
-pkgver=0.1.0.r12.6092d3f
+pkgver=0.3.1.r1.5924ae1
 pkgrel=1
 pkgdesc='ssh-agent compatible agent using TPM backed keys'
 arch=('x86_64')
@@ -43,8 +43,10 @@ _go_build() {
 
 build() {
   cd "${srcdir}/${_repo_name}"
-  _go_build "ssh-tpm-agent.bin" ./cmd/ssh-tpm-agent
-  _go_build "ssh-tpm-keygen.bin" ./cmd/ssh-tpm-keygen
+  for i in agent keygen add hostkeys
+  do
+    _go_build "ssh-tpm-${i}.bin" "./cmd/ssh-tpm-${i}"
+  done
 }
 
 check() {
@@ -54,8 +56,10 @@ check() {
 
 package () {
   cd "${srcdir}/${_repo_name}"
-  install -Dm 755 ssh-tpm-agent.bin "${pkgdir}/usr/bin/ssh-tpm-agent"
-  install -Dm 755 ssh-tpm-keygen.bin "${pkgdir}/usr/bin/ssh-tpm-keygen"
+  for i in agent keygen add hostkeys
+  do
+    install -Dm 755 "ssh-tpm-${i}.bin" "${pkgdir}/usr/bin/ssh-tpm-${i}"
+  done
   install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   for _file in *.md
