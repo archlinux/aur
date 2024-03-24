@@ -5,13 +5,13 @@
 
 pkgname=edb-debugger
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="EDB (Evan's Debugger) is a cross platform AArch32/x86/x86-64 debugger, inspired by Ollydbg."
 arch=('i686' 'x86_64')
 url='http://www.codef00.com/projects#debugger'
 license=('GPL2')
 depends=('qt5-xmlpatterns>=5.9' 'qt5-svg>=5.9' 'capstone>=3.0')
-makedepends=('cmake' 'coreutils')
+makedepends=('cmake' 'coreutils' 'qt5-tools>=5.9')
 optdepends=('graphviz>=2.38.0')
 source=("https://github.com/eteran/edb-debugger/releases/download/$pkgver/edb-debugger-$pkgver.tgz"
         'edb.desktop')
@@ -20,7 +20,8 @@ sha256sums=('04382485a60eb585f7dfa72993ee2dd2753564556a4abbfd747ec44809a0ad0c'
 
 prepare() {
   cmake -S$pkgname -Bbuild -Wno-deprecated \
-        -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/"
+        -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/" \
+        -DDEFAULT_PLUGIN_DIR="/usr/lib/edb/"
 }
 
 build() {
