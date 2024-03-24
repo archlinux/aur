@@ -16,7 +16,7 @@ unset _pkgtype
 ## basic info
 _pkgname="debhelper"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=13.15.1
+pkgver=13.15.2
 pkgrel=1
 pkgdesc="A collection of programs that can be used in a debian/rules file to automate common tasks"
 url="https://salsa.debian.org/debian/debhelper"
