@@ -4,7 +4,7 @@
 
 pkgname=botan1.10
 pkgver=1.10.17
-pkgrel=3
+pkgrel=4
 pkgdesc='Obsolete branch of the Botan crypto library for Monotone'
 license=('BSD')
 arch=('x86_64')
@@ -12,15 +12,18 @@ url='http://botan.randombit.net/'
 depends=('gcc-libs' 'sh')
 makedepends=('python')
 source=("https://botan.randombit.net/releases/old/Botan-${pkgver}.tgz"{,.asc}
+        "botan1_10_17-latest-commits.patch"
         "sphinx-python3.diff")
 sha512sums=('a47cab3af113652247c8efc8b0f043eb62175eaa8554833d5fc3016ea94dbdd8aa722ab9b5226cc5f133afbcc088d54362111630eaa4594812c39925cc3c8649'
             'SKIP'
+            'b490383950ddbeb3ec472ba7075e986aa52175c99ef348d8446a648f3f39e0e9a0c80e1a0591d77f9b4d04e60c7784452296fa2bf2a238f5dad50ccedbf970f4'
             '18cdf4f3739adb853e1b9a743ef79caad899fcd074bd70e4bb689716a8ee46768667ddc74912ed8849474ffd45c10f5399b0dc8f330a9b9851c24cce3a228937')
 validpgpkeys=('621DAF6411E1851C4CF9A2E16211EBF1EFBADFBC')  # Botan Distribution Key
 
 prepare() {
   cd "Botan-$pkgver"
 
+  patch -Np1 < "$srcdir/botan1_10_17-latest-commits.patch"
   patch -Np1 < "$srcdir/sphinx-python3.diff"
 }
 
