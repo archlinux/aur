@@ -6,11 +6,11 @@ pkgver=0.6
 pkgrel=2
 pkgdesc="A Tool for communication between PC and Lego NXT over usb"
 arch=('i686' 'x86_64')
-url="http://www-verimag.imag.fr/~raymond/edu/lego/t2n/"
+url="https://www-verimag.imag.fr/~raymond/home/tools/t2n/"
 license=('LGPL')
 makedepends=("automake" "autoconf")
 depends=("libusb-compat" "lego-udev-rules")
-source=("http://www-verimag.imag.fr/~raymond/edu/lego/t2n/files/${pkgname}-${pkgver}.src.tgz" \
+source=("http://www-verimag.imag.fr/~raymond/t2n/files/${pkgname}-${pkgver}.src.tgz" \
 	"Makefile.am"
 	"configure.ac")
 
