@@ -8,6 +8,6 @@ pkgbase = bulk-rename-plus
 	depends = bash
 	depends = coreutils
 	source = https://github.com/siyia2/bulk-rename-plus/archive/v1.8.1.tar.gz
-	md5sums = 2004228ed18905c327abc6eb046361ad
+	md5sums = 00618f001ab93db9d306330ac0186b10
 
 pkgname = bulk-rename-plus
