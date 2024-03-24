@@ -8,6 +8,7 @@ pkgbase = cursor-appimage
 	depends = hicolor-icon-theme
 	depends = zlib
 	options = !strip
+	options = !debug
 	source = cursor-0.30.3.AppImage::https://download.cursor.sh/linux/appImage/x64
 	sha256sums = 7215bab7cecd13a49733e76cae4817d8e8e177fbb2c5a695f107b500bcecd158
 

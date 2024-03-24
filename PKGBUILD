@@ -9,7 +9,7 @@ pkgdesc="Write, edit, and chat about your code with GPT. (AppImage)"
 arch=('x86_64')
 url="https://cursor.so"
 license=('custom')
-options=('!strip')
+options=('!strip' '!debug')
 depends=('hicolor-icon-theme' 'zlib')
 
 # Use curl to get the filename and extract the version
