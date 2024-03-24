@@ -3,7 +3,7 @@
 _pkgname="balong-nvtool"
 pkgname="${_pkgname}-git"
 pkgver=1.0+215.r72.20200731.4f5eb89
-pkgrel=1
+pkgrel=2
 pkgdesc='A utility to process NVRAM images of devices on the HiSilicon Balong chipset.'
 arch=('i686' 'x86_64')
 url="https://github.com/forth32/${_pkgname}"
@@ -19,7 +19,7 @@ conflicts=("${_pkgname}")
 
 source=(
   "${_pkgname}::git+https://github.com/forth32/${_pkgname}.git"
-  'helpmessages_english.md'::"http://ix.io/3Znw"
+  'helpmessages_english.md'
 )
 sha256sums=(
   'SKIP'
