@@ -7,7 +7,7 @@ _gitname='dosemu2'
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=1.7+138.r1581.20240318.e4e7992
-pkgrel=1
+pkgrel=2
 pkgdesc='64 bit FreeDOS++ for dosemu2. Latest git checkout.'
 arch=(
   'x86_64'
@@ -29,6 +29,7 @@ makedepends=(
   'clang'
   'git'
   'nasm-segelf' # See https://github.com/dosemu2/fdpp/issues/233#issuecomment-1788601563
+  'thunk_gen'
 )
 if [ "${CARCH}" == "x86_64" ]; then
   export CROSS_LD='ld'
