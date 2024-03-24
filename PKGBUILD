@@ -1,15 +1,15 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="cmake-extras"
-pkgver="1.6"
+pkgver="1.7"
 pkgrel=1
 pkgdesc="A collection of add-ons for the CMake build tool"
 arch=("any")
-url="https://gitlab.com/ubports/core/${pkgname}"
-license=("LGPL3")
-depends=("cmake" "python")
-source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/ubports/core/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=("3f4a4f785cf34e6d201422e00e9e3ffa")
+url="https://gitlab.com/ubports/development/core/${pkgname}"
+license=("LGPL-3.0-or-later")
+depends=("cmake" "python" "bash")
+source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/ubports/development/core/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+md5sums=("936fa4a322990eb72aed856bfc793d33")
 
 build()
 {
