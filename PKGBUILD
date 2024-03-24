@@ -1,42 +1,41 @@
-# system requirements: C++17, libpng, cairo, freetype2, fontconfig
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=httpgd
-_pkgver=1.3.1
+_pkgver=2.0.1
 pkgname=r-${_pkgname,,}
-pkgver=1.3.1
-pkgrel=4
+pkgver=${_pkgver//-/.}
+pkgrel=1
 pkgdesc="A 'HTTP' Server Graphics Device"
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
-  r-bh
+  r-unigd
+)
+makedepends=(
+  r-asioheaders
   r-cpp11
-  r-later
-  r-systemfonts
-  libpng
-  cairo
-  freetype2
-  fontconfig
 )
 optdepends=(
-  r-fontquiver
+  r-covr
+  r-future
+  r-httr
+  r-jsonlite
   r-knitr
   r-rmarkdown
   r-testthat
   r-xml2
 )
-source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6dbfe3aaf70a004abb92268a80816bb604033b094d46420ba14f3ffaf13adaee')
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('2c18e37c6f9c36f743ce8b467ab370cd')
+b2sums=('5b40d65f133c5cda3c251478d643b747a0b4b048a0dacbd0be94271b021d898353d57270df601102dbfbcf4aaac471dd0c39f013393e3e37adafebce49d40f7e')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
