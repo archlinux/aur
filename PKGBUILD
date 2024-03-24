@@ -73,9 +73,9 @@ fi
 
 pkgbase=linux-xanmod-rt
 _major=6.6
-pkgver=${_major}.21
+pkgver=${_major}.22
 _branch=6.x
-_rt=26
+_rt=27
 xanmod=1
 _revision=
 _sf_branch=rt
@@ -83,7 +83,6 @@ pkgrel=${xanmod}
 pkgdesc='Linux Xanmod real-time version'
 url="http://www.xanmod.org/"
 arch=(x86_64)
-
 license=(GPL2)
 makedepends=(
   bc
@@ -119,7 +118,7 @@ done
 
 sha256sums=('d926a06c63dd8ac7df3f86ee1ffc2ce2a3b81a2d168484e76b5b389aba8e56d0'
             'SKIP'
-            'cfa6fc66030488187bd292e239f8045949bcb6b7f9a98f009123eb6e330fa829'
+            '21fa004ad4824ed9e80ba5d063be6a62ac3ccf4578575327ae827a8c968343ff'
             'a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
@@ -223,7 +222,9 @@ prepare() {
     fi
   fi
 
+  msg2 "make ${_compiler_flags} olddefconfig"
   make ${_compiler_flags} olddefconfig
+  #diff -u CONFIGS/xanmod/gcc/${_config} .config || :
 
   make -s kernelrelease > version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
@@ -239,6 +240,7 @@ prepare() {
 build() {
   cd linux-${_major}
   make ${_compiler_flags} all
+  make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
 }
 
 _package() {
@@ -291,7 +293,7 @@ _package-headers() {
 
   msg2 "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
-    localversion.* version vmlinux
+    localversion.* version vmlinux tools/bpf/bpftool/vmlinux.h
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
@@ -300,7 +302,7 @@ _package-headers() {
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
   # required when DEBUG_INFO_BTF_MODULES is enabled
-  if [ -f "tools/bpf/resolve_btfids/resolve_btfids" ]; then install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids ; fi
+  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   msg2 "Installing headers..."
   cp -t "$builddir" -a include
