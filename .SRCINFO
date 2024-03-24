@@ -1,0 +1,18 @@
+pkgbase = takang-git
+	pkgdesc = Minimal presentation tool for Wayland
+	pkgver = r209.646371f
+	pkgrel = 1
+	url = https://sr.ht/~tardypad/takang/
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = scdoc
+	makedepends = wayland-protocols
+	depends = libxkbcommon
+	depends = pango
+	depends = wayland
+	source = git+https://git.sr.ht/~tardypad/takang
+	sha512sums = SKIP
+
+pkgname = takang-git
