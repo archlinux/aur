@@ -18,36 +18,36 @@ services:
   sabnzbd:
     image: lscr.io/linuxserver/sabnzbd:latest
     container_name: sabnzbd
+    profiles: ["all", "sabnzbd"]
     <<: *default
     volumes:
-      - ${PATH_PREFIX}/sabnzbd/config:/config
-      - ${PATH_PREFIX}:/downloads
-      - ${PATH_PREFIX}/temp:/incomplete-downloads
+      - ${SABNZBD_PATH_CONFIG}:/config
+      - ${SABNZBD_PATH_INCOMPLETE_DOWNLOADS}:/incomplete-downloads
+      - ${SABNZBD_PATH_DOWNLOADS}:/downloads
     ports:
       - ${SABNZBD_PORT}:8080
 
   nzbhydra2:
     image: lscr.io/linuxserver/nzbhydra2:latest
     container_name: nzbhydra2
+    profiles: ["all", "nzbhydra2"]
     <<: *default
     volumes:
-      - ${PATH_PREFIX}/nzbhydra2/config:/config 
-      - ${PATH_PREFIX}:/downloads
+      - ${NZBHYDRA2_PATH_CONFIG}:/config
     ports:
       - ${NZBHYDRA2_PORT}:5076
 
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest
     container_name: sonarr
+    profiles: ["all", "sonarr"]
     <<: *default
     volumes:
-      - ${PATH_PREFIX}/sonarr/config:/config
-      - ${PATH_PREFIX}/tv:/tv
-      - ${PATH_PREFIX}:/downloads
+      - ${SONARR_PATH_CONFIG}:/config
+      - ${SONARR_PATH_TV}:/tv
+      - ${SONARR_PATH_DOWNLOADS}:/downloads
     ports:
       - ${SONARR_PORT}:8989
 
-
 networks:
   nzb:
-

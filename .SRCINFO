@@ -10,10 +10,10 @@ pkgbase = sabnzbd-docker
 	source = file://sabnzbd-docker-update.service
 	source = file://docker-compose.yaml
 	source = file://default.env
-	md5sums = 94ffcf6e8447d6177fdafe8ec48dbb23
+	md5sums = 09d427d3b1de5bb5d14d674d18b778df
 	md5sums = 6fd19f267a71ba90a6a4f3177570e416
 	md5sums = 80456723536c022e86d7e1f9970792ef
-	md5sums = 4a2c0fe817f64b3bd81577bef85d64e1
-	md5sums = 8d223e192e5fb25de96ed7dc6fb0c8d1
+	md5sums = 2b152775fc07e01aed4f13e2e738452b
+	md5sums = 7e7a4426d5decc539d71a4ddde152b4b
 
 pkgname = sabnzbd-docker

@@ -14,5 +14,5 @@ ExecStart=docker compose -f /opt/docker-sabnzbd/docker-compose.yaml up
 ExecStop=docker compose -f /opt/docker-sabnzbd/docker-compose.yaml down
 
 [Install]
-WantedBy=sabnzbd-docker-update.service
+WantedBy=default.target
 
