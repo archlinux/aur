@@ -1,0 +1,15 @@
+pkgbase = lunas
+	pkgdesc = A syncing cli tool that can handle more than two directories locally and remotely
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://codeberg.org/cyber-luna/lunas
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = libssh
+	source = git+https://codeberg.org/cyber-luna/lunas
+	sha256sums = SKIP
+
+pkgname = lunas
