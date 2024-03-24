@@ -1,0 +1,6 @@
+*
+!.gitignore
+!.nvchecker.toml
+!.SRCINFO
+!PKGBUILD
+!remove-python-six-dependency-from-cmake-files.patch

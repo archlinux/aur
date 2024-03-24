@@ -1,0 +1,69 @@
+From cdb2197af6e79b4bc9253be998beeed8d73a79ee Mon Sep 17 00:00:00 2001
+From: Carl Smedstad <carl.smedstad@protonmail.com>
+Date: Thu, 4 Apr 2024 18:37:35 +0200
+Subject: [PATCH] Remove python-six dependency from CMake files
+
+---
+ CMakeLists.txt                       | 18 ------------------
+ thrift/cmake/FBThriftConfig.cmake.in |  3 ---
+ thrift/lib/py/CMakeLists.txt         |  1 -
+ 3 files changed, 22 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c384f63a4b..3273e95ce5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -121,24 +121,6 @@ if (THRIFT_LIB_ONLY OR build_all)
+     find_program(THRIFT1 thrift1)
+     include(${THRIFT_COMPILER_INCLUDE}/thrift/ThriftLibrary.cmake)
+   endif ()
+-
+-  find_package(python-six)
+-  if("${thriftpy}" STREQUAL "AUTO")
+-    if(python-six_FOUND)
+-      message(STATUS
+-        "Python dependencies found, enabling build of thrift/lib/py"
+-      )
+-    else()
+-      message(STATUS
+-        "Python dependencies not found, will not build thrift/lib/py"
+-      )
+-    endif()
+-    set(thriftpy "${python-six_FOUND}")
+-  elseif(thriftpy AND NOT python-six_FOUND)
+-    message(FATAL_ERROR
+-        "Unable to find python-six, but building thrift/lib/py was requested"
+-    )
+-  endif()
+ endif ()
+ 
+ if(thriftpy3)
+diff --git a/thrift/cmake/FBThriftConfig.cmake.in b/thrift/cmake/FBThriftConfig.cmake.in
+index 1d382218cf..161edeb4f7 100644
+--- a/thrift/cmake/FBThriftConfig.cmake.in
++++ b/thrift/cmake/FBThriftConfig.cmake.in
+@@ -49,9 +49,6 @@ set(FBThrift_cpp2_FOUND True)
+ # the output from the thrift compiler's "py" generator.
+ # (Note that this generator is deprecated in favor of the "py3" generator,)
+ set(FBThrift_py_FOUND @thriftpy@)
+-if(FBThrift_py_FOUND)
+-  find_dependency(python-six)
+-endif()
+ 
+ set(FBThrift_FOUND True)
+ check_required_components(FBThrift)
+diff --git a/thrift/lib/py/CMakeLists.txt b/thrift/lib/py/CMakeLists.txt
+index 8ec4eeb340..81071d3ac2 100644
+--- a/thrift/lib/py/CMakeLists.txt
++++ b/thrift/lib/py/CMakeLists.txt
+@@ -51,7 +51,6 @@ add_fb_python_library(
+   thrift_py
+   SOURCES ${THRIFT_PY_SRCS}
+   NAMESPACE "thrift"
+-  DEPENDS python-six::python-six
+ )
+ install_fb_python_library(
+   thrift_py
+-- 
+2.44.0
+

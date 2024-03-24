@@ -1,0 +1,5 @@
+[fbthrift]
+source = "github"
+github = "facebook/fbthrift"
+prefix = "v"
+use_max_tag = true
