@@ -4,8 +4,8 @@
 
 _pkgname=nasm
 pkgname="${_pkgname}-segelf-git"
-pkgver=2.16.01+19.r4902.20231030.gc2bf042b
-pkgrel=2
+pkgver=2.16.01+30.r4913.20231207.g13292aec
+pkgrel=1
 epoch=1
 pkgdesc="80x86 assembler designed for portability and modularity. 'elf16' branch."
 arch=(
