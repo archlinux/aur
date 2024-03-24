@@ -1,6 +1,6 @@
 pkgname=python-ocp
 pkgver=7.7.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
 url=https://github.com/CadQuery/OCP
@@ -50,7 +50,7 @@ eigen
 utf8cpp
 glew
 fast_float
-lief
+python-lief
 python-logzero
 python-clang15
 )
@@ -74,7 +74,7 @@ _n_parallel_build_jobs=1
 #_n_parallel_build_jobs=10  # consumes ~14.5 GiB of ram
 #_n_parallel_build_jobs=30  # consumes ~30 GiB of ram
 #_n_parallel_build_jobs=60  # consumes ~34 GiB of ram
-_n_parallel_build_jobs=$(nproc --ignore 2)
+#_n_parallel_build_jobs=$(nproc --ignore 2)
 
 # pick where opencascade is installed
 #_opencascade_install_prefix="/opt/opencascade-cadquery/usr"
@@ -110,7 +110,7 @@ build() {
   # sneak in python-clang15
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   ln -s "${site_packages}"/clang15 clang
-  export PYTHONPATH="$(pwd):${PYTHONPATH}"
+  export PYTHONPATH="${srcdir}/OCP:${PYTHONPATH}"
 
   msg2 "Setting up build, dumping symbols, then generating bindings..."
   PATH="/usr/lib/llvm15/bin/:${PATH}" LD_LIBRARY_PATH="/usr/lib/llvm15/lib:${LD_LIBRARY_PATH}" cmake \

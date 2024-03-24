@@ -1,7 +1,7 @@
 pkgbase = python-ocp
 	pkgdesc = Python wrapper for OCCT generated using pywrap
 	pkgver = 7.7.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/CadQuery/OCP
 	arch = x86_64
 	license = Apache
@@ -39,7 +39,7 @@ pkgbase = python-ocp
 	makedepends = utf8cpp
 	makedepends = glew
 	makedepends = fast_float
-	makedepends = lief
+	makedepends = python-lief
 	makedepends = python-logzero
 	makedepends = python-clang15
 	depends = python
