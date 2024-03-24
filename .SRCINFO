@@ -1,0 +1,19 @@
+pkgbase = glade2script-python3
+	pkgdesc = Glade interface engine for scripts (Python3 version)
+	pkgver = 3.2.4~ppa23
+	pkgrel = 1
+	arch = x86_64
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	license = custom
+	depends = python
+	options = !emptydirs
+	options = !strip
+	source = https://ftp5.gwdg.de/pub/linux/debian/mint/packages/pool/import/g/glade2script/glade2script-python3_3.2.4~ppa23_all.deb
+	md5sums = SKIP
+	sha256sums = SKIP
+	sha512sums = SKIP
+
+pkgname = glade2script-python3
