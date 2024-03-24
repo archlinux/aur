@@ -1,0 +1,27 @@
+pkgbase = adbfs-klippenstein-git
+	pkgdesc = fuse filesystem to mount android diveces via ADB. Software which allows to manually specify which android device to mount, and comes with automounter.
+	pkgver = r103.20230624.31b5a2e
+	pkgrel = 1
+	url = https://github.com/exidler/adbfs
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	depends = gcc-libs
+	depends = fuse
+	provides = adbfs
+	provides = adbfs-klippenstein
+	provides = adbfs-automount
+	provides = adbfs-automount-git=r103.20230624.31b5a2e
+	conflicts = adbfs
+	conflicts = adbfs-git
+	conflicts = adbfs-rootless-git
+	conflicts = adbfs-klippenstein
+	conflicts = adbfs-automount
+	source = adbfs-klippenstein::git+https://github.com/exidler/adbfs.git
+	source = goadb::git+https://github.com/exidler/goadb
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = adbfs-klippenstein-git
