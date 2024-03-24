@@ -47,8 +47,8 @@ _debianmainver=0.9.2
 _debiandfsgver=3
 _debianver="${_debianmainver}+dfsg-${_debiandfsgver}"
 _pkgver=latest
-pkgver=0.9.3+32.r.20230504.7042e6d
-pkgrel=4
+pkgver=0.9.3+52.r.20240307.8ce569a
+pkgrel=1
 pkgdesc="Software for continuation and bifurcation problems in ordinary differential equations. Version 07p, latest git checkout. Environment variables can control the build (see PKGBUILD)."
 arch=(
   'aarch64'

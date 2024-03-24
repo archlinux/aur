@@ -1,7 +1,7 @@
 pkgbase = auto-07p-git
 	pkgdesc = Software for continuation and bifurcation problems in ordinary differential equations. Version 07p, latest git checkout. Environment variables can control the build (see PKGBUILD).
-	pkgver = 0.9.3+32.r.20230504.7042e6d
-	pkgrel = 4
+	pkgver = 0.9.3+52.r.20240307.8ce569a
+	pkgrel = 1
 	url = http://cmvl.cs.concordia.ca/auto/
 	arch = aarch64
 	arch = armv7h
@@ -36,7 +36,7 @@ pkgbase = auto-07p-git
 	optdepends = python-matplotlib: For python interface.
 	optdepends = python-numpy: For python interface.
 	optdepends = python-traitlets: For python interface.
-	provides = auto-07p=0.9.3+32.r.20230504.7042e6d
+	provides = auto-07p=0.9.3+52.r.20240307.8ce569a
 	conflicts = auto-07p
 	options = libtool
 	options = staticlibs
