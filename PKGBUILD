@@ -3,7 +3,7 @@
 _pkgname='hacki'
 pkgname=${_pkgname}
 _pkgreponame='Hacki'
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc='A Hacker News reader.'
 url='https://github.com/Livinglist/Hacki'
@@ -19,12 +19,12 @@ source=(
 	"git+${url}.git#tag=v${pkgver}"
 	"flutter::git+https://github.com/flutter/flutter.git"
 	"flutter-engine::git+https://github.com/flutter/engine.git")
-sha256sums=('SKIP'
+sha256sums=('77326d109123d5dd1b388ef61fe713c446e1415ba92522b526df98269496ca98'
             'SKIP'
             'SKIP')
 
 _srcdir="${_pkgreponame}"
-_engine_version=3.19.0
+_engine_version=3.19.4
 
 prepare() {
 	cd "${_srcdir}"
