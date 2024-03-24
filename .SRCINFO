@@ -1,0 +1,18 @@
+pkgbase = pineapple-midi-player
+	pkgdesc = Simple SoundFont MIDI Player
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/BLumia/pineapple-midi-player/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = qt5-tools
+	makedepends = cmake
+	depends = qt5-svg
+	depends = portaudio
+	optdepends = soundfont-fluid: Decent SoundFont provided by FluidSynth
+	source = pineapple-midi-player-1.0.0.tar.gz::https://github.com/BLumia/pineapple-midi-player/archive/1.0.0.tar.gz
+	sha256sums = ed2dc4de675d646371e9c77b06f8ecd3d28c088980613d0114f318b2a6d29569
+
+pkgname = pineapple-midi-player
