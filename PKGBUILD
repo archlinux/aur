@@ -2,8 +2,8 @@
 # Contributor: Kartoffel
 _pkgname=pineflash
 pkgname="${_pkgname}-git"
-pkgver=0.5.3+19.r295.20240112.4c6996d
-pkgrel=4
+pkgver=0.5.4+4.r302.20240308.18ca316
+pkgrel=1
 arch=(
   'i686'
   'x86_64'
