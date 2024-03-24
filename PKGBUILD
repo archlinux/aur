@@ -2,8 +2,8 @@
 
 _pkgname=perl-extutils-depends
 pkgname="${_pkgname}-git"
-pkgver=0.8001.0+r117.20210515.g5ea5430
-pkgrel=2
+pkgver=0.8001.5+r122.20240317.g6e5aad1
+pkgrel=1
 pkgdesc='disables multidimensional array emulation.'
 arch=(
   'any'
