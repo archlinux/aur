@@ -2,7 +2,7 @@
 
 _pkgname=lupa
 pkgname=python-$_pkgname-luajit
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc='Python wrapper around LuaJIT'
 url='https://github.com/scoder/lupa'
@@ -12,8 +12,9 @@ depends=(python luajit)
 makedepends=(cython python-build python-installer python-setuptools python-wheel)
 provides=(python-lupa)
 conflicts=(python-lupa)
-source=("https://github.com/scoder/lupa/releases/download/$_pkgname-$pkgver/$_pkgname-$pkgver.tar.gz")
-sha256sums=('ad3fef486be7adddd349fe9a9c393789061312cf98ebc533b489be34f484cb79')
+# Note: release is tagged with label '2.1-2'
+source=("https://github.com/scoder/lupa/releases/download/$_pkgname-$pkgver-2/$_pkgname-$pkgver.tar.gz")
+sha256sums=('760030712d5273396f5e963dd8731aefb5ac65d92eff8bf8fd4124c1630fe950')
 
 build() {
   cd $_pkgname-$pkgver
