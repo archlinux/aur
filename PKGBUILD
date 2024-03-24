@@ -56,7 +56,7 @@ prepare() {
   cd "${srcdir}/${_pkgname}"
 
   msg2 "Fetching additional node.js modules ..."
-  npm install --production --cache "${srcdir}/npm-cache"
+  npm install -g --production --cache "${srcdir}/npm-cache"
 }
 
 package() {
