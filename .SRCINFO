@@ -1,20 +1,20 @@
 pkgbase = glslang-minimal-git
-	pkgdesc = OpenGL and OpenGL ES shader front end and validator
-	pkgver = 11.0.0
-	pkgrel = 1
+	pkgdesc = OpenGL and OpenGL ES shader front end and validator, git version
+	pkgver = 14.1.0.r7.g32257786
+	pkgrel = 3
 	url = https://github.com/KhronosGroup/glslang
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
-	makedepends = ninja
+	makedepends = git
+	makedepends = python
 	depends = gcc-libs
-	depends = spirv-tools
-	depends = python
+	depends = spirv-tools-git
 	provides = glslang
 	conflicts = glslang
-	options = staticlibs
-	source = git+https://github.com/KhronosGroup/glslang
+	options = !lto
+	options = !debug
+	source = git+https://github.com/KhronosGroup/glslang.git
 	sha256sums = SKIP
 
 pkgname = glslang-minimal-git
-
