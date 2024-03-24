@@ -3,7 +3,7 @@
 _pkgname=vscDebugger
 _pkgver=0.4.7
 pkgname=r-${_pkgname,,}
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='Support for Visual Studio Code Debugger'
 arch=('x86_64')
