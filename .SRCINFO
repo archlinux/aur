@@ -1,7 +1,7 @@
 pkgbase = walker
 license = MIT
 pkgdesc = extensible and fast wayland application runner
-pkgver = 0.0.43
+pkgver = 0.0.44
 pkgrel = 1
 url = https://github.com/abenz1267/walker
 arch = x86_64
@@ -9,8 +9,11 @@ provides = walker
 conflicts = walker
 makedepends = go
 depends = gtk4-layer-shell
-source = https://github.com/abenz1267/walker/archive/v0.0.43/walker-0.0.43.tar.gz
-sha256sums = 0b1baa5255b64698c8cfb9c060dbfddc8302adbb8370deaf9e46b74178362233
-b2sums = b2e2ea1035472dddbc1ccfb42462bf51203176dedc0afb8c4d4388beb29217c9ad00a4f124b78cd42d1315f9ef3af7d9cdd2b5787fa7aff55c71833040c734f9
+optdepends = fzf: for finder module
+optdepends = fd: for finder module
+optdepends = wl-clipboard: for clipboard module
+source = https://github.com/abenz1267/walker/archive/v0.0.44/walker-0.0.44.tar.gz
+sha256sums = 63ffdd3c139ddb2ab199120d667d0860d2ca7913090559fee777bc08d9df9356
+b2sums = f260f695fd7104f4f13275f648f4dda7bd8264c07a444a487b2fecbc117afc5075e08610b247ff226cd84a3c85b0cb631bfc1bb6e398cdd6d1fbc87bb92ed3d7
 
 pkgname = walker
