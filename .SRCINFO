@@ -1,6 +1,6 @@
 pkgbase = neo4j-community
 	pkgdesc = A fully transactional graph database implemented in Java
-	pkgver = 5.18.0
+	pkgver = 5.18.1
 	pkgrel = 1
 	url = https://github.com/neo4j/neo4j
 	arch = any
@@ -8,23 +8,20 @@ pkgbase = neo4j-community
 	makedepends = java-environment=17
 	makedepends = maven
 	depends = java-runtime=17
-	depends = scala
 	conflicts = neo4j-enterprise
 	backup = etc/neo4j/neo4j-admin.conf
 	backup = etc/neo4j/neo4j.conf
 	backup = etc/neo4j/server-logs.xml
 	backup = etc/neo4j/user-logs.xml
-	source = neo4j-community-5.18.0.tar.gz::https://github.com/neo4j/neo4j/archive/5.18.0.tar.gz
+	source = neo4j-community-5.18.1.tar.gz::https://github.com/neo4j/neo4j/archive/5.18.1.tar.gz
 	source = neo4j.executable-template
 	source = neo4j.service
 	source = neo4j.sysusers
 	source = neo4j.tmpfiles
-	source = use-system-scala.patch
-	sha256sums = 0a9d4b833798d4eeaaa14669466b65d283e18567a00f4e8195c978225bd06499
+	sha256sums = adf109bc170f3a11b7cd024aa9976bd1c24fdef1d592e4c0f80fbb878b0ae301
 	sha256sums = 152e35d949fe9090c890e7a213da917c09bc087a060119a1c32541821f91781f
 	sha256sums = 090e9ced1708e22592f775490360762d973e81061a0170b4150b087b1751e142
 	sha256sums = a1d3dd94aecf80289e8d9b6381d4393ed60b7a5dec3cae436e721be676c15f3a
 	sha256sums = 45033d5009c84340b79f914bfc13b00c67a8c0bf30a5ccf9d016b5e238762f92
-	sha256sums = f0ec370a01d479459c44c096730396524a86c7c04b706ff6094120accc17d6de
 
 pkgname = neo4j-community

@@ -5,17 +5,14 @@
 
 pkgname=neo4j-community
 _pkgname=neo4j
-pkgver=5.18.0
+pkgver=5.18.1
 pkgrel=1
 pkgdesc="A fully transactional graph database implemented in Java"
 arch=(any)
 url="https://github.com/neo4j/neo4j"
 license=(GPL-3.0-only)
 _java_version=17
-depends=(
-  "java-runtime=$_java_version"
-  "scala"
-)
+depends=("java-runtime=$_java_version")
 makedepends=(
   "java-environment=$_java_version"
   "maven"
@@ -33,15 +30,13 @@ source=(
   "neo4j.service"
   "neo4j.sysusers"
   "neo4j.tmpfiles"
-  "use-system-scala.patch"
 )
 sha256sums=(
-  '0a9d4b833798d4eeaaa14669466b65d283e18567a00f4e8195c978225bd06499'
+  'adf109bc170f3a11b7cd024aa9976bd1c24fdef1d592e4c0f80fbb878b0ae301'
   '152e35d949fe9090c890e7a213da917c09bc087a060119a1c32541821f91781f'
   '090e9ced1708e22592f775490360762d973e81061a0170b4150b087b1751e142'
   'a1d3dd94aecf80289e8d9b6381d4393ed60b7a5dec3cae436e721be676c15f3a'
   '45033d5009c84340b79f914bfc13b00c67a8c0bf30a5ccf9d016b5e238762f92'
-  'f0ec370a01d479459c44c096730396524a86c7c04b706ff6094120accc17d6de'
 )
 
 _archive="$_pkgname-$pkgver"
@@ -49,14 +44,11 @@ _archive="$_pkgname-$pkgver"
 prepare() {
   cd "$_archive"
 
-  patch --forward --strip=1 --input="$srcdir/use-system-scala.patch"
-
   mvn versions:set -DnewVersion="$pkgver"
 
   # Download dependencies
   mvn \
     -Dmaven.repo.local="$srcdir/repo" \
-    -Dscala.home=/usr/share/scala \
     dependency:go-offline
 
   mkdir -p bin
@@ -83,7 +75,6 @@ build() {
   export PATH="/usr/lib/jvm/java-$_java_version-openjdk/bin:$PATH"
   mvn \
     -Dmaven.repo.local="$srcdir/repo" \
-    -Dscala.home=/usr/share/scala \
     package -DskipTests
 }
 
@@ -93,7 +84,6 @@ check() {
   # Running all integration tests takes ~1 hour
   mvn \
     -Dmaven.repo.local="$srcdir/repo" \
-    -Dscala.home=/usr/share/scala \
     integration-test --projects community/community-it/community-it/
 }
 
@@ -110,15 +100,14 @@ package() {
     "$bin_archive/conf/server-logs.xml" \
     "$bin_archive/conf/user-logs.xml"
 
-  sed -i 's|=/usr/share/neo4j/lib|=/usr/share/java/neo4j|' "$pkgdir/etc/neo4j/neo4j.conf"
+  sed -i 's|=/usr/share/neo4j/lib|=/usr/share/java/neo4j|' \
+    "$pkgdir/etc/neo4j/neo4j.conf"
 
   # Bash completion
-  install -Dm644 "$bin_archive/bin/completion/neo4j-admin_completion" "$pkgdir/usr/share/bash-completion/completions/neo4j-admin"
-  install -Dm644 "$bin_archive/bin/completion/neo4j_completion" "$pkgdir/usr/share/bash-completion/completions/neo4j"
-
-  # Remove Scala JARs
-  rm "$bin_archive/lib/"scala-library-*.jar
-  rm "$bin_archive/lib/"scala-reflect-*.jar
+  install -Dm644 "$bin_archive/bin/completion/neo4j-admin_completion" \
+    "$pkgdir/usr/share/bash-completion/completions/neo4j-admin"
+  install -Dm644 "$bin_archive/bin/completion/neo4j_completion" \
+    "$pkgdir/usr/share/bash-completion/completions/neo4j"
 
   # Install JARs
   install -Dm644 -t "$pkgdir/usr/share/java/neo4j" "$bin_archive/lib/"*.jar
