@@ -4,7 +4,7 @@
 
 _pkgname='ksh93'
 pkgname="${_pkgname}-git"
-pkgver=r1611.40c217ac
+pkgver=r1659.f2bc1f45
 pkgrel=1
 pkgdesc="KornShell 93u+m, fork based on ksh 93u+"
 arch=('x86_64' 'i686' 'pentium4' 'powerpc64le' 'powerpc64' 'powerpc' 'riscv64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -44,6 +44,9 @@ build() {
 package() {
 	cd "${srcdir}"
 	# Folder creation in ${pkgdir}
+	install -dm0755 "${pkgdir}/usr/bin"
+	install -dm0755 "${pkgdir}/usr/lib"
+	install -dm0755 "${pkgdir}/etc/skel"
 	install -dm0755 "${pkgdir}/usr/share/ksh/functions"
 	install -dm0755 "${pkgdir}/usr/share/doc/ksh"
 	install -dm0755 "${pkgdir}/usr/share/licenses/ksh"
@@ -75,10 +78,19 @@ package() {
 		install -Dm0644 "src/cmd/${_pkgname}/fun/${_fun}" "${pkgdir}/usr/share/ksh/functions/${_fun}"
 	done
 
-	# Install the ksh and shcomp binaries
-	install -Dm0755 arch/linux.*/bin/ksh "${pkgdir}/usr/bin/ksh"
+	# Install dynamic libraries used by ksh (e.g. libast)
+	for _dynlib in arch/linux.*/dyn/lib/*; do
+		if [[ -L ${_dynlib} ]]; then
+			cp -P "${_dynlib}" "${pkgdir}/usr/lib"
+		else
+			install -Dm0755 "${_dynlib}" "${pkgdir}/usr/lib/$(basename "${_dynlib}")"
+		fi
+	done
+
+	# Install the dynamically linked ksh and shcomp binaries
+	install -Dm0755 arch/linux.*/dyn/bin/ksh "${pkgdir}/usr/bin/ksh"
 	for _exe in 'ksh93' 'rksh' 'rksh93'; do
 		ln -srf "${pkgdir}/usr/bin/ksh" "${pkgdir}/usr/bin/${_exe}"
 	done
-	install -Dm0755 arch/linux.*/bin/shcomp "${pkgdir}/usr/bin/shcomp"
+	install -Dm0755 arch/linux.*/dyn/bin/shcomp "${pkgdir}/usr/bin/shcomp"
 }
