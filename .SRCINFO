@@ -1,0 +1,20 @@
+pkgbase = boot-repair
+	pkgdesc = A little software for MBR and Boot Record recovery.
+	pkgver = 4ppa200
+	pkgrel = 1
+	url = https://sourceforge.net/p/boot-repair/home/Home/
+	arch = x86_64
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	license = GPL
+	depends = boot-sav
+	options = !emptydirs
+	options = !strip
+	source = https://ftp5.gwdg.de/pub/linux/debian/mint/packages/pool/import/b/boot-repair/boot-repair_4ppa200_all.deb
+	md5sums = SKIP
+	sha256sums = SKIP
+	sha512sums = SKIP
+
+pkgname = boot-repair
