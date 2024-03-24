@@ -3,7 +3,7 @@
 _projectname="cito"
 _pkgname="${_projectname}"
 pkgname="${_pkgname}-git"
-pkgver=fut+3.1.2+50.r2508.20240323.0490a98
+pkgver=3.1.2+50.r2508.20240323.0490a98
 pkgrel=1
 pkgdesc="The Ć Programming Language. A programming language which can be translated automatically to C, C++, C#, D, Java, JavaScript, Python, Swift, TypeScript and OpenCL C."
 arch=(
@@ -71,7 +71,7 @@ prepare() {
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  _ver="$(git describe --tags | sed -E -e 's|cito[-_+]||' -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
+  _ver="$(git describe --tags | sed -E -e 's|cito[-_+]||' -e 's|^fut[-_+]||' -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
   _rev="$(git rev-list --count HEAD)"
   _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
   _hash="$(git rev-parse --short HEAD)"
