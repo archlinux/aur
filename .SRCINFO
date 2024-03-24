@@ -1,17 +1,16 @@
 pkgbase = perl-directory-scratch
 	pkgdesc = Easy-to-use self-cleaning scratch space.
-	pkgver = 0.15
+	pkgver = 0.18
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Directory-Scratch
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl-file-slurp>=9999.12
 	depends = perl-path-class
+	depends = perl-path-tiny
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Directory-Scratch-0.15.tar.gz
-	md5sums = 8d4ad115e1f2b3bfabb59267b8fec0fb
-	sha512sums = d3645235f6e3639978ff1022331123feeea700b5e4cdbd31c012bbc5690cebaf401c5bcf5aa65a56f47e38c6b499ae2366ba8d4b08eab0ac55dbd1a86f9765fa
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Directory-Scratch-0.18.tar.gz
+	md5sums = 66ea2b47c1bb184b08ba562d14727fb4
+	sha512sums = 46fecf0c5b43cfac749e33024bcf814e97c5c461086f0e2d6aebbf74b47cf4a428cfe4c6bacb16ca858a35a0ef653ca3b9ee26ba3ed6bebd152380dfb1fde7b7
 
 pkgname = perl-directory-scratch
-

@@ -1,20 +1,19 @@
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-directory-scratch'
-pkgver='0.15'
+pkgver='0.18'
 pkgrel='1'
 pkgdesc="Easy-to-use self-cleaning scratch space."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-file-slurp>=9999.12' 'perl-path-class')
+depends=('perl-path-class' 'perl-path-tiny')
 makedepends=()
 url='http://search.cpan.org/dist/Directory-Scratch'
-source=('http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Directory-Scratch-0.15.tar.gz')
-md5sums=('8d4ad115e1f2b3bfabb59267b8fec0fb')
-sha512sums=('d3645235f6e3639978ff1022331123feeea700b5e4cdbd31c012bbc5690cebaf401c5bcf5aa65a56f47e38c6b499ae2366ba8d4b08eab0ac55dbd1a86f9765fa')
-_distdir="Directory-Scratch-0.15"
+source=('https://cpan.metacpan.org/authors/id/E/ET/ETHER/Directory-Scratch-0.18.tar.gz')
+md5sums=('66ea2b47c1bb184b08ba562d14727fb4')
+sha512sums=('46fecf0c5b43cfac749e33024bcf814e97c5c461086f0e2d6aebbf74b47cf4a428cfe4c6bacb16ca858a35a0ef653ca3b9ee26ba3ed6bebd152380dfb1fde7b7')
+_distdir="Directory-Scratch-0.18"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
