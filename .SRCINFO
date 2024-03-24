@@ -1,12 +1,10 @@
 pkgbase = waterfox
 	pkgdesc = Fork of Mozilla Firefox featuring some privacy, usability, and speed enhancements.
 	pkgver = G6.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.waterfox.net/
 	arch = x86_64
-	license = MPL
-	license = GPL
-	license = LGPL
+	license = MPL-2.0
 	makedepends = cbindgen
 	makedepends = clang
 	makedepends = diffutils

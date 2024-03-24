@@ -8,11 +8,11 @@
 
 pkgname=waterfox
 pkgver=G6.0.11
-pkgrel=1
-pkgdesc="Fork of Mozilla Firefox featuring some privacy, usability, and speed enhancements."
+pkgrel=2
+pkgdesc='Fork of Mozilla Firefox featuring some privacy, usability, and speed enhancements.'
 arch=(x86_64)
-license=(MPL GPL LGPL)
-url="https://www.waterfox.net/"
+license=('MPL-2.0')
+url='https://www.waterfox.net/'
 depends=(
 	gtk3
 	libxt
@@ -57,8 +57,8 @@ optdepends=(
 
 options=(!emptydirs !makeflags !strip)
 source=(
-	$pkgname-$pkgver.tar.gz::https://github.com/WaterfoxCo/Waterfox/archive/refs/tags/$pkgver.tar.gz
-	$pkgname.desktop
+	"$pkgname-$pkgver.tar.gz::https://github.com/WaterfoxCo/Waterfox/archive/refs/tags/$pkgver.tar.gz"
+	"$pkgname.desktop"
 )
 b2sums=(
 	'861e981cd9a7a0a497e7f3a752a435d63825ae4227abfffbf8019387432b44eaf950360ff06968cf65f74d3f7396a3e168e9c8c97ba3be1f1bea14011746ba58'
