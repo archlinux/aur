@@ -1,17 +1,17 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-binary-memcached
-pkgver=0.31.0
-pkgrel=2
+pkgver=0.31.2
+pkgrel=1
 arch=('any')
 pkgdesc='A pure python module to access memcached via its binary protocol with SASL auth support'
 url='https://github.com/jaysonsantos/python-binary-memcached'
 license=('MIT')
 depends=('python-six' 'python-uhashring')
-makedepends=('python-setuptools' 'python-uhashring')
+makedepends=('python-setuptools')
 checkdepends=('memcached' 'python-pytest' 'python-trustme')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jaysonsantos/python-binary-memcached/archive/v$pkgver.tar.gz")
-sha512sums=('8b83e09b80f0de86e9348c444f650d125878921f079fc2d4e4a79d1ad54a49217401498c80ca65ce864d8bb434dc2f20e2c25ff12bc46e351488508cd752c9fd')
+sha512sums=('e0d18df48dd62f483fe93313d90425e6c168c1f3ab2a9e248bde339f986d6d40fdee88fd6d26d64b45154f1442abc2083b04ff4b87ce68c09d0f8e963a6b11ee')
 
 prepare() {
   sed -i '/typing/d' python-binary-memcached-$pkgver/setup.py
