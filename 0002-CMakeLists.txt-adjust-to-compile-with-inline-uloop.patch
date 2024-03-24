@@ -1,4 +1,4 @@
-From 3f5dabdc0c5e83077c10aec1f1fa2de0dc93e6d5 Mon Sep 17 00:00:00 2001
+From e73e4f013ba1fc12543204f5c593b35b03d09aab Mon Sep 17 00:00:00 2001
 From: Dobroslaw Kijowski <dobo90@gmail.com>
 Date: Thu, 25 Mar 2021 22:10:03 +0100
 Subject: [PATCH 2/3] CMakeLists.txt: adjust to compile with inline uloop
@@ -23,5 +23,5 @@ index 7e960ab..450ed01 100644
  SET(CMAKE_INSTALL_PREFIX /usr)
  
 -- 
-2.31.0
+2.44.0
 

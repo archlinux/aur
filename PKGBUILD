@@ -1,7 +1,7 @@
 # Maintainer: Dobroslaw Kijowski <dobo90_at_gmail.com>
 
 pkgname=relayd
-pkgver=20200425
+pkgver=20230121
 pkgrel=1
 pkgdesc="Transparent routing / relay daemon (taken from OpenWrt)"
 arch=(x86_64 armv7h)
@@ -10,7 +10,7 @@ license=(GPL)
 depends=(glibc)
 makedepends=(git)
 backup=("etc/conf.d/relayd")
-_repo_commit="f4d759be54ceb37714e9a6ca320d5b50c95e9ce9"
+_repo_commit="f646ba40489371e69f624f2dee2fc4e19ceec00e"
 source=("relayd::git+https://git.openwrt.org/project/relayd.git#commit=${_repo_commit}"
         "0001-libubox-import-list-uloop-utils-.h-uloop-epoll-.c.patch"
         "0002-CMakeLists.txt-adjust-to-compile-with-inline-uloop.patch"
@@ -18,9 +18,9 @@ source=("relayd::git+https://git.openwrt.org/project/relayd.git#commit=${_repo_c
         "relayd.conf"
         "relayd.service")
 sha256sums=('SKIP'
-            '3073ac119de2635eeb5affa6c8e46a6328179ffe568302a463f62d5e5b0ac4f5'
-            'b002ab6bf4729984c630e3ef57caf2606e2a667cdd2fac1046d16475bd5cb98e'
-            'b4fcb393e3567e61999d31734d45314e2cced8620d52146696f982437a978c75'
+            'affd8c2900e7cd213251df6976b200591baa5d5a3f64e568e732fffd3a0045f4'
+            '5ecf7f910084b0f4c58211a4a2ebb690717ddfda4714aadc59f62caf9455a163'
+            'f35c687efb2a21ca2bc6d65a2472ebece6e490205e08d3e46051056780a5e2a0'
             '58c84f0f6c335e05c281d9f2eeb144839a5e0e2021bac9073872a4634739fd1f'
             '91a601ba5080851ecba276ad8ba11bcd1c4ed97715e631fc8e3c58fa86962b62')
 
@@ -34,8 +34,6 @@ prepare() {
 
 build() {
     cd "${pkgname}"
-
-    CFLAGS="${CFLAGS} -Wno-unused-result"
 
     cmake -B build \
         -DCMAKE_BUILD_TYPE=Release \
