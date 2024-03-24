@@ -2,7 +2,7 @@
 
 _pkgname=python-tls-client
 pkgname="${_pkgname}-git"
-pkgver=0.2.1+1.r96.20230917.df0333b
+pkgver=1.0.1.r113.20240202.ab6c736
 pkgrel=1
 pkgdesc="An advanced HTTP library based on requests and tls-client."
 arch=(
