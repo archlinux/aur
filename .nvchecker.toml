@@ -1,0 +1,3 @@
+[commitlint-config-conventional]
+source = "npm"
+npm = "@commitlint/config-conventional"
