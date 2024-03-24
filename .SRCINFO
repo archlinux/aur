@@ -1,0 +1,15 @@
+pkgbase = python-appdata
+	pkgdesc = Utils to manage application data folder.
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/VoIlAlex/appdata
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	options = !emptydirs
+	source = python-appdata-2.2.1.tar.gz::https://files.pythonhosted.org/packages/5d/0f/4c941be545e24149e2034afefc292e49c9d6f0ce91ae0153d29c8b27b71a/appdata-2.2.1.tar.gz
+	md5sums = 521dcbe6604fd882a2ae7dbb95a36d2c
+	sha256sums = 3122241e1689eb8be36aee28af3bf080fe216e3cc8fabb5af67826b149837a92
+
+pkgname = python-appdata
