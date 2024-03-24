@@ -36,7 +36,7 @@ source=(
 md5sums=(
     '52346086d3f58474161f7a8f22be9c6e'
     'c1a5499b80a55d3d238ef5c5d2c93c99'
-    'dc9c0db7a6e2fba3200165beaab44775'
+    'f0cfe73897e8f49e92e0dfc41326fb0b'
 )
 
 prepare() {
@@ -49,7 +49,7 @@ package() {
     cp an-anime-game-launcher_${pkgver} "${pkgdir}/usr/lib/${pkgname}/"
 
     install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/an-anime-game-launcher.png"
-    ln -s "/usr/lib/${pkgname}/an-anime-game-launcher_${pkgver}" "${pkgdir}/usr/bin/anime-game-launcher"
+    ln -s "/usr/lib/${pkgname}/an-anime-game-launcher_${pkgver}" "${pkgdir}/usr/bin/an-anime-game-launcher"
     install -Dm644 "${srcdir}/an-anime-game-launcher.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/moe.launcher.an-anime-game-launcher.png"
 }
