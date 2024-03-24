@@ -1,15 +1,16 @@
 pkgbase = gnome-shell-extension-bluetooth-quick-connect
 	pkgdesc = Allow to connect Bluetooth paired devices from GNOME control panel.
-	pkgver = 46
+	pkgver = 47
 	pkgrel = 1
 	url = https://github.com/Extensions-Valhalla/gnome-bluetooth-quick-connect
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = pnpm
+	makedepends = zip
 	depends = gnome-shell
 	depends = bluez-utils
-	source = git+https://github.com/Extensions-Valhalla/gnome-bluetooth-quick-connect.git#commit=66ff5ee109a1d753436799e44a32a577c22e5aef
+	source = git+https://github.com/Extensions-Valhalla/gnome-bluetooth-quick-connect.git#commit=61a858d3f9659d049a9bbba32515c8c071c3dcdd
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-bluetooth-quick-connect
