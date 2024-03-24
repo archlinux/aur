@@ -16,6 +16,7 @@
 : ${_build_avx:=false}
 : ${_build_git:=true}
 
+unset _pkgtype
 [[ "${_build_debugfast::1}" == "t" ]] && _pkgtype+="-debugfast"
 [[ "${_build_avx::1}" == "t" ]] && _pkgtype+="-avx"
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
@@ -156,27 +157,27 @@ _source_dolphin_emu() {
 
   _prepare_dolphin_emu() (
     cd "${srcdir:?}/$_pkgsrc"
-    local -A _submodules=(
-      #['bylaws.libadrenotools']='Externals/libadrenotools'
-      #['curl']='Externals/curl/curl'
-      #['cyan4973.xxhash']='Externals/xxhash/xxHash'
-      #['dolphin-emu.ext-win-ffmpeg']='Externals/FFmpeg-bin'
-      #['dolphin-emu.ext-win-qt']='Externals/Qt'
-      #['fmtlib.fmt']='Externals/fmt/fmt'
-      #['google.googletest']='Externals/gtest'
-      #['khronosgroup.spirv-cross']='Externals/spirv_cross/SPIRV-Cross'
-      #['libsdl-org.sdl']='Externals/SDL/SDL'
-      #['libusb']='Externals/libusb/libusb'
-      #['lsalzman.enet']='Externals/enet/enet'
-      #['lz4']='Externals/lz4/lz4'
-      #['mozilla.cubeb']='Externals/cubeb/cubeb'
-      #['randy408.libspng']='Externals/libspng/libspng'
+    local _submodules=(
+      #'bylaws.libadrenotools'::'Externals/libadrenotools'
+      #'curl'::'Externals/curl/curl'
+      #'cyan4973.xxhash'::'Externals/xxhash/xxHash'
+      #'dolphin-emu.ext-win-ffmpeg'::'Externals/FFmpeg-bin'
+      #'dolphin-emu.ext-win-qt'::'Externals/Qt'
+      #'fmtlib.fmt'::'Externals/fmt/fmt'
+      #'google.googletest'::'Externals/gtest'
+      #'khronosgroup.spirv-cross'::'Externals/spirv_cross/SPIRV-Cross'
+      #'libsdl-org.sdl'::'Externals/SDL/SDL'
+      #'libusb'::'Externals/libusb/libusb'
+      #'lsalzman.enet'::'Externals/enet/enet'
+      #'lz4'::'Externals/lz4/lz4'
+      #'mozilla.cubeb'::'Externals/cubeb/cubeb'
+      #'randy408.libspng'::'Externals/libspng/libspng'
 
-      ['epezent.implot']='Externals/implot/implot'
-      ['gpuopen-librariesandsdks.vulkanmemoryallocator']='Externals/VulkanMemoryAllocator'
-      ['mgba-emu.mgba']='Externals/mGBA/mgba'
-      ['retroachievements.rcheevos']='Externals/rcheevos/rcheevos'
-      ['zlib-ng']='Externals/zlib-ng/zlib-ng'
+      'epezent.implot'::'Externals/implot/implot'
+      'gpuopen-librariesandsdks.vulkanmemoryallocator'::'Externals/VulkanMemoryAllocator'
+      'mgba-emu.mgba'::'Externals/mGBA/mgba'
+      'retroachievements.rcheevos'::'Externals/rcheevos/rcheevos'
+      'zlib-ng'::'Externals/zlib-ng/zlib-ng'
     )
     _submodule_update
   )
@@ -225,10 +226,10 @@ _main_git() {
 # common functions
 prepare() {
   _submodule_update() {
-    for key in ${!_submodules[@]} ; do
-      git submodule init "${_submodules[${key}]}"
-      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
-      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+    for _module in "${_submodules[@]}" ; do
+      git submodule init "${_module##*::}"
+      git submodule set-url "${_module##*::}" "${srcdir}/${_module%%::*}"
+      git -c protocol.file.allow=always submodule update "${_module##*::}"
     done
   }
 
@@ -254,10 +255,6 @@ prepare() {
   #git -c user.name="tmp" -c user.email="tmp@example.com" am "$srcdir/primehack-rename.patch"
   apply-patch "$srcdir/primehack-rename.patch"
   popd
-
-  # Fix minizip-ng name for Arch
-  #sed -E -e 's@(pkgconfig\(MINIZIP minizip)([^a-z]+)@\1-ng\2@' \
-  #  -i "$srcdir/$_pkgsrc/CMakeLists.txt"
 
   # Delete gcc specific options
   sed '/_ARCHIVE_/d' -i "$srcdir/$_pkgsrc/CMakeLists.txt"
