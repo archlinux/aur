@@ -1,6 +1,6 @@
 pkgname=python-ocp
 pkgver=7.7.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
 url=https://github.com/CadQuery/OCP
@@ -36,49 +36,47 @@ openmpi
 python-pyparsing
 qt5-base
 qt5-declarative
-cli11
-ospray
 openxr
 openvr
 python-mpi4py
-postgresql-libs
 boost
 pdal
 liblas
 adios2
 ffmpeg
 libharu
-netcdf
-cgns
 verdict
 eigen
 utf8cpp
+glew
 fast_float
-python-lief
+lief
 python-logzero
 python-clang15
 )
 
 conflicts=(python-ocp-git)
 
-_fragment="#tag=${pkgver}"
+#_fragment="#tag=${pkgver}"
 _fragment="#commit=7bef13a1525610a8c208537e1c6793cf71d27334"
 source=(
 git+https://github.com/CadQuery/OCP.git${_fragment}
 git+https://github.com/CadQuery/pywrap.git
 )
 
-cksums=('SKIP'
-        'SKIP')
+options=(!lto)  # comment this line out if you've got better than 32 GB of ram to spare for the linking step
+
+sha256sums=('SKIP'
+            'SKIP')
 
 # needed to prevent memory exhaustion, 10 seems to consume about 14.5 GiB in the build step
 _n_parallel_build_jobs=1
 #_n_parallel_build_jobs=10  # consumes ~14.5 GiB of ram
 #_n_parallel_build_jobs=30  # consumes ~30 GiB of ram
 #_n_parallel_build_jobs=60  # consumes ~34 GiB of ram
-#_n_parallel_build_jobs=$(nproc --ignore 2)
+_n_parallel_build_jobs=$(nproc --ignore 2)
 
-# pick where the opencascade is installed
+# pick where opencascade is installed
 #_opencascade_install_prefix="/opt/opencascade-cadquery/usr"
 _opencascade_install_prefix="/usr"
 
@@ -91,12 +89,15 @@ prepare(){
   sed "s,-i \${CLANG_INSTALL_PREFIX}/lib/clang/\${LLVM_VERSION}/include/,-i \"$(clang -print-resource-dir)/include\"," -i CMakeLists.txt
   sed "s,-n \${N_PROC},--njobs ${_n_parallel_build_jobs}," -i CMakeLists.txt
 
-  # use upstream's headers, not what's shipped here
+  # use upstream's headers, not whatever is shipped here
   rm -r opencascade
   ln -s "${_opencascade_install_prefix}"/include/opencascade .
 
   # ensure any opencascade at /usr isn't used here
   sed 's|CONDA_PREFIX|_opencascade_install_prefix|g' -i pywrap/FindOpenCascade.cmake
+
+  # fix up VTK deps
+  curl --silent https://patch-diff.githubusercontent.com/raw/CadQuery/OCP/pull/141.patch | patch -p1
 
   # disable progress bars
   cd pywrap
@@ -111,12 +112,13 @@ build() {
   ln -s "${site_packages}"/clang15 clang
   export PYTHONPATH="$(pwd):${PYTHONPATH}"
 
-  msg2 "Dumping symbols, then generating bindings..."
-  PATH="/usr/lib/llvm15/bin/:${PATH}" LD_LIBRARY_PATH="/usr/lib/llvm15/lib:${LD_LIBRARY_PATH}" cmake -B new -S .
-  
-  msg2 "Setting up OCP build..."
-  cmake -B build_dir -S OCP -W no-dev -G Ninja \
-    -D CMAKE_BUILD_TYPE=Release
+  msg2 "Setting up build, dumping symbols, then generating bindings..."
+  PATH="/usr/lib/llvm15/bin/:${PATH}" LD_LIBRARY_PATH="/usr/lib/llvm15/lib:${LD_LIBRARY_PATH}" cmake \
+    -W no-dev \
+    -G Ninja \
+    -D CMAKE_BUILD_TYPE=Release \
+    -B build_dir \
+    -S .
 
   msg2 "Building OCP..."
   cmake --build build_dir -j${_n_parallel_build_jobs}
@@ -132,13 +134,12 @@ check() {
   #unset "${!DRAW@}"
   #unset CASROOT
 
-  LD_DEBUG=libs PYTHONPATH="$(pwd)/build_dir" python -c "from OCP import *; import OCP; print(OCP.__spec__)"
+  LD_DEBUG=libs PYTHONPATH="${srcdir}/build_dir/OCP" python -c "from OCP import *; import OCP; print(OCP.__spec__)"
 }
 
 package(){
   cd OCP
-
-  install -Dt "${pkgdir}$(python -c 'import sys; print(sys.path[-1])')" -m644 build_dir/OCP.*.so
+  install -Dt "${pkgdir}$(python -c 'import sys; print(sys.path[-1])')" -m644 build_dir/OCP/OCP.*.so
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICENSE
 }
 
