@@ -3,7 +3,7 @@
 
 pkgname=astrometry.net
 pkgver=0.94
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic recognition of astronomical images"
 arch=('i686' 'x86_64')
 url="http://astrometry.net"
@@ -48,4 +48,5 @@ package() {
     rm ${pkgdir}/usr/share/doc/astrometry/report.txt
     rm ${pkgdir}/usr/bin/fitscopy
     rm ${pkgdir}/usr/bin/imcopy
+    rm ${pkgdir}/usr/bin/fitsverify
 }
