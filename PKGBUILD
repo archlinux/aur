@@ -38,6 +38,7 @@ _delete_all_from_pkgdir_except() {
     fi
     if [[ "$1" != "gtksourceview-theme" ]]; then
         rm -r "${pkgdir}"/usr/share/gtksourceview-*
+        rm -r "${pkgdir}"/usr/share/*-gtksourceview-*
     fi
     if [[ "$1" != "gnome-shell-theme" ]]; then
         rm "${pkgdir}"/usr/share/themes/Yaru{,-*}/gnome-shell
