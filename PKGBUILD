@@ -3,18 +3,18 @@
 
 _uuid="clipboard-history@alexsaveau.dev"
 _gitn=gnome-clipboard-history
-_gitv=1.4.5
+_gitv=1.4.6
 pkgname=gnome-shell-extension-clipboard-history
-pkgver=34
+pkgver=35
 pkgrel=1
 pkgdesc="Gnome extension that saves what you've copied into an easily accessible, searchable history panel."
 arch=("any")
 url="https://github.com/SUPERCILEX/gnome-clipboard-history"
 license=("MIT")
-depends=("dconf" "gnome-shell")
+depends=("dconf" "gnome-shell>=46.0")
 conflicts=("gnome-shell-extension-clipboard-indicator")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_gitv}.tar.gz")
-sha256sums=('d3c22ce7d27e294445ceae73396d60230b78f1a96c821d9e6669795f34139e78')
+sha256sums=('64a37b5fbd38825025f9a18520cc6edb7843d167e18970cd12aa056fb15ef88f')
 
 build() {
   cd "${_gitn}-${_gitv}"
@@ -28,10 +28,9 @@ package() {
   install -Dm644 -t "${pkgdir}/usr/share/glib-2.0/schemas/" schemas/*.xml
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 
-  cd locale
-
-  for locale in */
-  do
-    install -Dm644 -t "${pkgdir}/usr/share/locale/${locale}/LC_MESSAGES" "${locale}/LC_MESSAGES"/*.mo
-  done
+  # cd locale
+  #
+  # for locale in */; do
+  #   install -Dm644 -t "${pkgdir}/usr/share/locale/${locale}/LC_MESSAGES" "${locale}/LC_MESSAGES"/*.mo
+  # done
 }
