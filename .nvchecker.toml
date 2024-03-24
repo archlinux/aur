@@ -1,0 +1,5 @@
+[python-myokit]
+source = "github"
+github = "lfortran/lfortran"
+use_latest_release = "true"
+prefix = "v"
