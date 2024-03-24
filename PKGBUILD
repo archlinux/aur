@@ -4,7 +4,7 @@ _pkgname='thunk_gen'
 _gitname='stsp'
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=0.1.r17.20240306.ce05792
+pkgver=0.1.r19.20240324.3e8905a
 pkgrel=1
 pkgdesc="Thunk generator for C and assembler code."
 arch=(
@@ -24,6 +24,9 @@ makedepends=(
   'git'
   'meson'
   'ninja'
+)
+checkdepends=(
+  'meson'
 )
 provides=(
   "${_pkgname}=${pkgver}"
@@ -71,6 +74,12 @@ build() {
   meson compile -C build
 }
 
+check() {
+  cd "${srcdir}"
+
+  meson test -C build
+}
+
 package() {
   cd "${srcdir}"
 
@@ -78,7 +87,7 @@ package() {
 
   cd "${srcdir}/${_pkgname}"
 
-  for _docfile in 'git.log'; do
+  for _docfile in 'git.log' 'README.md'; do
     install -Dvm644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
   for _licensefile in LICENSE; do
