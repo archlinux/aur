@@ -15,7 +15,7 @@ arch=(
 )
 url='https://github.com/dosemu2/fdpp'
 license=(
-  'GPL3'
+  'GPL-3.0-or-later'
 )
 depends=(
   'comcom32'
@@ -24,10 +24,12 @@ depends=(
   'libelf'
 )
 makedepends=(
+  'bash'
+  'binutils'
   'clang'
-  'nasm'
-  'lld'
   'nasm-segelf' # See https://github.com/dosemu2/fdpp/issues/233#issuecomment-1788601563
+  'thunk_gen'
+  nasm          # to be removed after 1.7
 )
 if [ "${CARCH}" == "x86_64" ]; then
   export CROSS_LD='ld'
