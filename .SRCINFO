@@ -1,0 +1,11 @@
+pkgbase = libplist-2.0-3
+	pkgdesc = Library to handle Apple Property List files (libplist-2.0.so.3, libplist++-2.0.so.3)
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://libimobiledevice.org/
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	source = https://github.com/libimobiledevice/libplist/releases/download/2.2.0/libplist-2.2.0.tar.bz2
+	sha256sums = 4a5517e5377ec421df84c586ba85bb4e1d26f11ad203d7d450a907c0156fbd9a
+
+pkgname = libplist-2.0-3
