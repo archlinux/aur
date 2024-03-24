@@ -1,36 +1,35 @@
 # Maintainer: Adam Thiede <me@adamthiede.com>
 pkgname=buffyboard
-pkgver=0.2.0
+_reponame=buffybox
+pkgver=3.0.0
 pkgrel=1
-_lv_drivers_commit="33983bcb0a9bfd0a4cf44dba67617b9f537e76f3"
-_lvgl_commit="a2b555e096f7d401b5d8e877a6b5e81ff81c747a"
-_squeek2lvgl_commit="e3ce01bc38020b21bc61844fa1fed1a4f41097c5"
+_lv_drivers_commit="0091dc612facc94dce1061a9b78d641c77f1791a"
+_lvgl_commit="f37aebf3327a02f6a21f543d826710d56cb277f2"
 pkgdesc="Touch-enabled framebuffer keyboard (not only) for vampire slayers"
 arch=(x86_64 armv7h aarch64)
-url="https://gitlab.com/cherrypicker/buffyboard"
+url="https://gitlab.com/postmarketOS/buffybox/-/tree/master/${pkgname}"
 license=('GPL3')
 depends=(libinput)
 makedepends=(meson libinput libxkbcommon linux-headers udev)
-source=(https://gitlab.com/cherrypicker/buffyboard/-/archive/${pkgver}/buffyboard-${pkgver}.tar.gz
+source=(https://gitlab.com/postmarketOS/buffybox/-/archive/${pkgver}/buffybox-${pkgver}.tar.bz2
       https://github.com/lvgl/lv_drivers/archive/${_lv_drivers_commit}.tar.gz
       https://github.com/lvgl/lvgl/archive/${_lvgl_commit}.tar.gz
-      https://gitlab.com/cherrypicker/squeek2lvgl/-/archive/${_squeek2lvgl_commit}/buffyboard-${_squeek2lvgl_commit}.tar.gz)
+)
 
 build() {
-  mkdir -p "${srcdir}/${pkgname}-${pkgver}/lvgl" "${srcdir}/${pkgname}-${pkgver}/lv_drivers" "${srcdir}/${pkgname}-${pkgver}/squeek2lvgl"
-  mv "${srcdir}/lvgl-${_lvgl_commit}/"* "${srcdir}/${pkgname}-${pkgver}/lvgl"
-  mv "${srcdir}/lv_drivers-${_lv_drivers_commit}/"* "${srcdir}/${pkgname}-${pkgver}/lv_drivers"
-  mv "${srcdir}/squeek2lvgl-${_squeek2lvgl_commit}/"* "${srcdir}/${pkgname}-${pkgver}/squeek2lvgl"
-  arch-meson ${pkgname}-${pkgver} _build
-  meson compile -C _build
+  mv "${srcdir}/lvgl-${_lvgl_commit}/"* "${srcdir}/${_reponame}-${pkgver}/lvgl"
+  cd "${_reponame}-${pkgver}"
+  arch-meson "${pkgname}" "${pkgname}/_build"
+  meson compile -C "${pkgname}/_build"
 }
 
 package() {
-  DESTDIR=${pkgdir} meson install --no-rebuild -C _build
+  cd "${_reponame}-${pkgver}"
+  DESTDIR=${pkgdir} meson install --no-rebuild -C "${pkgname}/_build"
 }
 
 sha512sums=(
-'6a504ed775ebcc03276b2c10e299e894cdc3ea3c7e40d263e449982dd6ac6a7f37fe2094c84e6d0b92c3f965aefc38e606de66bd74d8d375bb2168acb0c0284e' 
-'788ab2ac810580222e85c580a6e7d94783b6e4a29688274d6eb85ec7e9cbe8c146452baf9b2c8ecde135b9e68539218affd4d3bde40667ed1e2da2fa9b9feea4'
-'6db243760407176d57bc1aafc9145f8f089e6be4b74afff966ca6fbf29605ccd30afbd113412c7259040894eb7506a90a40c07c0e0be1c7bfbaab01c5ea2727c'
-'57fb6bb0445e27c5529f96499f744f64038c549f741ff17a2fc83902e7bdbcf1358c4a3eb37848f89e98d1e6011bb46581ab081bf0b0e01350de2f75e58e2f33')
+ee7dfb2c785806c11ac444ed8abcbe912eb39460e97109d62b3716f7257f0cba9c0f774edff9bac49151d97d1178cc30e8773b69a00f27f57693e76773f87387
+e2a487d618af5db7575fd28f1597d2f856d02b8360c57abaf89146701318cdc49f249feb893c05e98d8f400782ea5f2a8030220f16305c8365388b777da358d8
+804e84063ab31258cb628155b0705af2fad33542fbce2c5a4e8cc9e906720deae1b1eee740f1e23be17192565291166be285fe5b6ab1ae92b79382149bb17535
+)
