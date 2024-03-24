@@ -13,12 +13,13 @@ fi
 
 : ${_build_git:=true}
 
+unset _pkgtype
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
 ## basic info
 _pkgname="tuba"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=0.6.1.r0.g8a4708d6
+pkgver=0.7.0.r3.g9a449ef
 pkgrel=1
 pkgdesc='Browse the Fediverse'
 url="https://github.com/GeopJr/Tuba"
@@ -33,11 +34,12 @@ arch=(
 # main package
 _main_package() {
   depends=(
-    libadwaita
-    libgee
-    libsecret
     gtk4
     gtksourceview5
+    libadwaita
+    libgee
+    libicuuc.so # icu
+    libsecret
     libspelling
     webp-pixbuf-loader # gdk-pixbuf2
 
@@ -88,7 +90,7 @@ _main_git() {
 
   pkgver() (
     cd "$_pkgsrc"
-    git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
       | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
   )
 }

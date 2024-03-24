@@ -1,6 +1,6 @@
 pkgbase = tuba-git
 	pkgdesc = Browse the Fediverse
-	pkgver = 0.6.1.r0.g8a4708d6
+	pkgver = 0.7.0.r3.g9a449ef
 	pkgrel = 1
 	url = https://github.com/GeopJr/Tuba
 	arch = aarch64
@@ -11,24 +11,26 @@ pkgbase = tuba-git
 	makedepends = git
 	makedepends = meson
 	makedepends = vala
-	depends = libadwaita
-	depends = libgee
-	depends = libsecret
 	depends = gtk4
 	depends = gtksourceview5
+	depends = libadwaita
+	depends = libgee
+	depends = libicuuc.so
+	depends = libsecret
 	depends = libspelling
 	depends = webp-pixbuf-loader
-	provides = tuba=0.6.1
+	provides = tuba=0.7.0
 	conflicts = tuba
 	source = tuba::git+https://github.com/GeopJr/Tuba.git
 	sha256sums = SKIP
 
 pkgname = tuba-git
-	depends = libadwaita
-	depends = libgee
-	depends = libsecret
 	depends = gtk4
 	depends = gtksourceview5
+	depends = libadwaita
+	depends = libgee
+	depends = libicuuc.so
+	depends = libsecret
 	depends = libspelling
 	depends = webp-pixbuf-loader
 	depends = hicolor-icon-theme
