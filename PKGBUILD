@@ -1,6 +1,6 @@
 # Maintainer: Nima Askarian <nimaaskarian.work@outlook.com>
 pkgname=c3-bin
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 _gitname=c3
 pkgdesc="A TUI to-do list that uses and extends calcurse format to have tree-like dependencies."
@@ -16,7 +16,7 @@ source=(
   "${pkgname}::https://github.com/nimaaskarian/${_gitname}/releases/download/${pkgver}/c3.x86.linux"
 )
 
-md5sums=('def89ca67dee850ed2ee34e83deeec72')
+md5sums=('49021f9a03502d2c7410d9739d120e25')
 
 package () {
   install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/c3"
