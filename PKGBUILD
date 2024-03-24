@@ -6,17 +6,17 @@
 
 pkgname=openafs-modules-dkms
 _srcname=openafs
-pkgver=1.8.11pre1
+pkgver=1.8.11
 pkgrel=1
 pkgdesc="Kernel module for OpenAFS (dkms)"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
-license=('custom:"IBM Public License Version 1.0"')
+license=(IPL-1.0)
 depends=('dkms' 'libelf' 'openafs')
 provides=("openafs-modules=$pkgver")
 conflicts=('openafs-features-libafs' 'openafs-modules' 'openafs<1.6.6-2')
 options=(!emptydirs)
-source=(http://openafs.org/dl/openafs/candidate/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
+source=(http://openafs.org/dl/openafs/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
         0001-afs-Make-afs_AllocDCache-static.patch
         0002-LINUX-Minor-osi_vfsop.c-cleanup.patch
         0003-afs-Remove-SRXAFSCB_GetDE.patch
@@ -47,7 +47,7 @@ source=(http://openafs.org/dl/openafs/candidate/${pkgver}/${_srcname}-${pkgver}-
         0028-Linux-6.8-Use-roken-s-strlcpy-in-kernel-module.patch
         0029-afs-Drop-GLOCK-for-various-Rx-calls.patch
         dkms.conf)
-sha256sums=('dfdb4bcd79e060180ebfd127d0447eceb716be0fbe07712ee7f9ac1904b42c82'
+sha256sums=('e2efb4710996b7d23198b53c56295a8f9e24e8a555317c5fc63b8125a3714ecd'
             'e85f5656f76700e4236b1033cf4b7f08c59ab757d52d2a67dcb2c65762388733'
             '8d48b727e77b1e952310ad9f94bd4ece9e64e1f03a35463bb23dffa1009738d8'
             'c44c91e31df1ec77f1a39eb7b172c4e348e41b293ae05606288bfe333ad7c29b'
