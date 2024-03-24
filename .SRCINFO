@@ -1,7 +1,7 @@
 pkgbase = gogui
 	pkgdesc = SGF editor, can also be used for playing against engines
 	pkgver = 1.5.4a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Remi-Coulom/gogui
 	arch = any
 	license = GPL
