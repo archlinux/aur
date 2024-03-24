@@ -2,7 +2,7 @@
 
 pkgname=sumatrapdf
 pkgver=3.5.2
-pkgrel=3
+pkgrel=4
 pkgdesc="PDF, eBook (epub, mobi), comic book (cbz/cbr), DjVu, XPS, CHM, image viewer for Windows. Small, fast, customizable, free."
 arch=('x86_64')
 url='https://www.sumatrapdfreader.org/free-pdf-reader'
@@ -22,8 +22,12 @@ build() {
   wrestool -x -t 14 "SumatraPDF-${pkgver}-64.exe" > "${pkgname}.ico"
   convert "${pkgname}.ico" "$srcdir/$pkgname.png"
   rm $pkgname.ico
+  mv "${pkgname}-3.png" "${pkgname}.png"
 
-  gendesk -n -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name="SumatraPDF" --genericname "Application" --exec "/usr/bin/sumatrapdf" --icon "$srcdir/${pkgname}-3.png" --categories "Viewer;Wine;Graphics;Office" --mimetypes "application/pdf;application/epub+zip;application/x-mobipocket-ebook;image/vnd.djvu;image/vnd.djvu+multipage;application/vnd.ms-xpsdocument;application/oxps"
+  gendesk -n -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name="SumatraPDF"\
+      --genericname "Application" --exec "/usr/bin/sumatrapdf"\
+      --categories "Viewer;Wine;Graphics;Office"\
+      --mimetypes "application/pdf;application/epub+zip;application/x-mobipocket-ebook;image/vnd.djvu;image/vnd.djvu+multipage;application/vnd.ms-xpsdocument;application/oxps"
 }
 
 package() {
@@ -36,7 +40,7 @@ package() {
 
   # desktop entry
   install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 "$srcdir/${pkgname}-3.png" "$pkgdir/usr/share/pixmaps/${pkgname}-3.png"
+  install -Dm644 "$srcdir/${pkgname}.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
 
   echo "You may need MS fonts for non-latin characters."
 }
@@ -50,5 +54,5 @@ package() {
 #   - you can remove it
 # - change WINEPREFIX to config directory
 #   - you can delete ~/.sumatrapdf/
-# 3.5.2-3
+# 3.5.2-3, -4
 # - fix desktop entry icon
