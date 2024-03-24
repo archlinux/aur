@@ -1,6 +1,4 @@
 # https://aur.archlinux.org/packages/passy
-groups=('modified')
-
 pkgname=passy
 _app_id=com.glitterware.passy
 pkgver=1.8.0
