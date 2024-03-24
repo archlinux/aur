@@ -392,7 +392,7 @@ class Main(Gtk.Window):
         desktop_file_content = f"""[Desktop Entry]
     Name={game.title}
     Exec=sh -c '{command}'
-    Icon=~/.config/faugus-launcher/icons/{title_formatted}.ico
+    Icon={os.path.expanduser("~/.config/faugus-launcher/icons/")}{title_formatted}.ico
     Type=Application
     Categories=Game;
     """
