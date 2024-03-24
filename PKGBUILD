@@ -1,8 +1,8 @@
 # Maintainer: LekKit <github.com/LekKit>
-# Intended for staging builds, enables experimental features (USE_NET, etc)
+# Intended for staging git builds with experimental features
 
 pkgname=rvvm-git
-pkgver=0.6_r958.528bfde
+pkgver=0.7_r1249.9bee561
 pkgrel=1
 pkgdesc="The RISC-V Virtual Machine"
 arch=('x86_64' 'aarch64' 'riscv64' 'riscv' 'ppc' 'i386' 'i686' 'pentium4' 'arm' 'armv7h' 'armv6h')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd $pkgname
-    printf "0.6_r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "0.7_r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
