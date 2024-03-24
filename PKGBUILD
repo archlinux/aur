@@ -4,13 +4,15 @@
 
 pkgname=idevicerestore
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Restore/upgrade firmware of iOS devices'
 arch=('x86_64')
 url='https://www.libimobiledevice.org'
-license=('LGPL3')
+# https://github.com/libimobiledevice/idevicerestore/issues/345
+license=('LGPL-3.0-only')
 depends=('curl' 'libimobiledevice' 'libplist' 'libirecovery' 'libzip' 'openssl' 'zlib')
-conflicts=('idevicerestore-git') # https://aur.archlinux.org/packages/idevicerestore-git/#comment-759041
+# https://aur.archlinux.org/packages/idevicerestore-git/#comment-759041
+conflicts=('idevicerestore-git')
 source=("https://github.com/libimobiledevice/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2"
         '0001-configure.ac-check-for-pthreads.patch')
 sha256sums=('32712e86315397fd2e8999e77a2d2f790c67f6b4aa50d4d1c64cb2c4609836f7'
@@ -19,9 +21,7 @@ sha256sums=('32712e86315397fd2e8999e77a2d2f790c67f6b4aa50d4d1c64cb2c4609836f7'
 prepare() {
   cd "$pkgname-$pkgver"
 
-  for p in "${srcdir}"/*.patch; do
-    patch -Np1 -i "${p}"
-  done
+  patch -Np1 -i "$srcdir/0001-configure.ac-check-for-pthreads.patch"
 }
 
 build() {
