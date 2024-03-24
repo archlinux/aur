@@ -1,6 +1,6 @@
 pkgbase = upower-nocritical-nosystemd-git
 	pkgdesc = Abstraction for enumerating power devices, listening to device events and querying history and statistics (With a patch to disable low battery action). Built without systemd dependencies. Latest Git checkout.
-	pkgver = 1.90.2+6.r1677.20230706.029651a
+	pkgver = 1.90.2+24.r1695.20240309.1e58e82
 	pkgrel = 1
 	url = http://upower.freedesktop.org
 	arch = i686
@@ -24,10 +24,10 @@ pkgbase = upower-nocritical-nosystemd-git
 	optdepends = python-gobject: For For /usr/lib/upower/integration-test.py.
 	optdepends = python-packaging: For /usr/lib/upower/integration-test.py.
 	optdepends = umockdev: For For /usr/lib/upower/integration-test.py.
-	provides = upower=1.90.2+6.r1677.20230706.029651a
-	provides = upower-nocritical=1.90.2+6.r1677.20230706.029651a
-	provides = upower-nosystemd=1.90.2+6.r1677.20230706.029651a
-	provides = upower-git=1.90.2+6.r1677.20230706.029651a
+	provides = upower=1.90.2+24.r1695.20240309.1e58e82
+	provides = upower-nocritical=1.90.2+24.r1695.20240309.1e58e82
+	provides = upower-nosystemd=1.90.2+24.r1695.20240309.1e58e82
+	provides = upower-git=1.90.2+24.r1695.20240309.1e58e82
 	conflicts = upower
 	options = emptydirs
 	backup = etc/UPower/UPower.conf
@@ -45,8 +45,8 @@ pkgname = upower-nocritical-nosystemd-git
 	depends = libglib-2.0.so
 	depends = libgobject-2.0.so
 	depends = libgio-2.0.so
-	provides = upower=1.90.2+6.r1677.20230706.029651a
-	provides = upower-nocritical=1.90.2+6.r1677.20230706.029651a
-	provides = upower-nosystemd=1.90.2+6.r1677.20230706.029651a
-	provides = upower-git=1.90.2+6.r1677.20230706.029651a
+	provides = upower=1.90.2+24.r1695.20240309.1e58e82
+	provides = upower-nocritical=1.90.2+24.r1695.20240309.1e58e82
+	provides = upower-nosystemd=1.90.2+24.r1695.20240309.1e58e82
+	provides = upower-git=1.90.2+24.r1695.20240309.1e58e82
 	provides = libupower-glib.so
