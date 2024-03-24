@@ -1,6 +1,6 @@
 pkgbase = firefox-decrypt-git
 	pkgdesc = A tool to extract passwords from Mozilla (Firefox™, Waterfox™, Thunderbird®, SeaMonkey®) profiles.
-	pkgver = 1.1.0+8.r308.20231108.65f2d9a
+	pkgver = 1.1.0+10.r310.20231223.3f1a6dc
 	pkgrel = 1
 	url = https://github.com/Unode/firefox_decrypt
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = firefox-decrypt-git
 	depends = python>=3.9
 	optdepends = firefox: This generates the data which firefox-decrypt works on.
 	optdepends = pass: To import extracted login information directly into 'pass' password store.
-	provides = firefox-decrypt=1.1.0+8.r308.20231108.65f2d9a
+	provides = firefox-decrypt=1.1.0+10.r310.20231223.3f1a6dc
 	conflicts = firefox-decrypt
 	options = !emptydirs
 	source = firefox-decrypt::git+https://github.com/Unode/firefox_decrypt.git
