@@ -10,8 +10,8 @@ pkgname=('yaru-sound-theme'
          'yaru-metacity-theme'
          'yaru-icon-theme'
          'yaru-session')
-pkgver=23.10.0
-pkgrel=2
+pkgver=24.04.0
+pkgrel=1
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
 url="https://github.com/ubuntu/yaru"
@@ -20,11 +20,11 @@ license=('GPL3')
 makedepends=('meson' 'sassc' 'git')
 options=('!strip' '!buildflags' 'staticlibs')
 
-source=("https://github.com/ubuntu/yaru/archive/${pkgver}-0ubuntu2.tar.gz")
-sha256sums=('2cc53cefb8f899bf7100dedad674799caf478115aafa5a8ea504770c75278108')
+source=("https://github.com/ubuntu/yaru/archive/${pkgver}.tar.gz")
+sha256sums=('6619d8aea0b15548350566ddfabe801cb01ed62c5e8489adbf4112aceee72959')
 
 build() {
-  arch-meson $pkgbase-$pkgver-0ubuntu2 build
+  arch-meson $pkgbase-$pkgver build
   meson configure build -Dubuntu-unity=true -Dxfwm4=true
   ninja -C build
 }
@@ -117,7 +117,7 @@ package_yaru-metacity-theme() {
 
 package_yaru-icon-theme() {
   pkgdesc="Yaru default ubuntu icon theme"  
-  depends=("hicolor-icon-theme" "gtk-update-icon-cache" "librsvg" "humanity-icon-theme")
+  depends=("hicolor-icon-theme" "gtk-update-icon-cache" "librsvg")
 
   DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
   _delete_all_from_pkgdir_except "icon-theme"
