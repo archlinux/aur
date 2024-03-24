@@ -1,18 +1,20 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-email-valid'
-pkgver='1.203'
+pkgver='1.204'
 pkgrel='1'
 pkgdesc="Check validity of Internet email addresses"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-io-captureoutput' 'perl-mailtools' 'perl-net-dns' 'perl-net-domain-tld')
-url='http://search.mcpan.org/dist/Email-Valid'
-source=(http://search.mcpan.org/CPAN/authors/id/R/RJ/RJBS/Email-Valid-$pkgver.tar.gz)
-md5sums=('a5955912c064187cccc387a43fe64708')
-_distdir="Email-Valid-$pkgver"
+depends=('perl-capture-tiny>=0' 'perl-mailtools>=0' 'perl-net-dns>=0' 'perl-net-domain-tld>=1.65' 'perl>=5.012')
+makedepends=()
+url='https://metacpan.org/release/Email-Valid'
+source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Email-Valid-1.204.tar.gz')
+md5sums=('fbcfb4e7e4352b625d8d77aa052b3cdf')
+sha512sums=('cce10f17fc69400698cbf3dea8368c73f5c6d1435a400fd27670cfab1bc042202b00541f6e2f1c8c81375634efd4065368cd4554e5a5c9f022e94e4b3f976ed1')
+_distdir="Email-Valid-1.204"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -37,6 +39,11 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
+
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
+# vim:set ts=2 sw=2 et:
