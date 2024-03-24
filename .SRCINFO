@@ -1,11 +1,12 @@
 pkgbase = hhd-git
 	pkgdesc = Handheld Daemon. A tool for managing the quirks of handheld devices. Latest git checkout.
 	pkgver = 2.2.1+1.r788.20240319.36097fb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hhd-dev/hhd
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = libusb
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -15,9 +16,11 @@ pkgbase = hhd-git
 
 pkgname = hhd-git
 	depends = hhd-license-git=2.2.1+1.r788.20240319.36097fb
+	depends = libusb
 	depends = python
 	depends = python-evdev
 	depends = python-rich
+	depends = python-xlib
 	depends = python-yaml
 	optdepends = hhd-doc: For documentation.
 	optdepends = hhd-ui: A (browser based) graphical user interface for hhd.

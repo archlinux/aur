@@ -11,7 +11,7 @@ pkgname=(
   "${_pkgbase}-doc${_vcssuffix}"
 )
 pkgver=2.2.1+1.r788.20240319.36097fb
-pkgrel=1
+pkgrel=2
 pkgdesc='Handheld Daemon. A tool for managing the quirks of handheld devices. Latest git checkout.'
 arch=(
   'x86_64'
@@ -21,6 +21,7 @@ license=('MIT')
 
 makedepends=(
   'git'
+  'libusb'
   'python-'{'build','installer','setuptools','wheel'}
 )
 source=(
@@ -62,9 +63,11 @@ build() {
 package_hhd-git() {
   depends=(
     "${_pkgbase}-license${_vcssuffix}=${pkgver}"
+    'libusb'
     'python'
     'python-evdev'
     'python-rich'
+    'python-xlib'
     'python-yaml'
   )
   optdepends=(
