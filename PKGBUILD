@@ -5,7 +5,7 @@
 pkgname=windows2usb
 pkgver=0.2.4
 _rufusver=4.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Windows 7/8/8.1/10/11 ISO to Flash Drive burning utility for Linux (MBR/GPT, BIOS/UEFI, FAT32/NTFS)'
 arch=(any)
 url='https://github.com/ValdikSS/windows2usb'
@@ -18,7 +18,7 @@ b2sums=('0630d0de39f2e35c658eb86f9b86677e5a4d962b00c4e468d11574ff2bfb0df55e96aba
 
 package() {
   install -Dm644 -t "$pkgdir"/usr/share/$pkgname/ uefi-ntfs-$_rufusver.img
-  install -Dm755 -t "$pkgdir"/usr/bin/ $pkgname/$pkgname
+  install -Dm755 -t "$pkgdir"/usr/bin/ $pkgname-$pkgver/$pkgname
 }
 
 # vim: ts=2 sw=2 et:
