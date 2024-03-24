@@ -1,8 +1,7 @@
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-module-signature'
-pkgver='0.73'
+pkgver='0.88'
 pkgrel='1'
 pkgdesc="Module signature file manipulation"
 arch=('any')
@@ -11,10 +10,10 @@ options=('!emptydirs')
 depends=('perl>=5.005')
 makedepends=('perl-ipc-run')
 url='http://search.cpan.org/dist/Module-Signature'
-source=('http://search.cpan.org/CPAN/authors/id/A/AU/AUDREYT/Module-Signature-0.73.tar.gz')
-md5sums=('de27bbca948ba8a13a7f614414cb623d')
-sha512sums=('dd43923aa2bd21ec4025360d8ba27936d1e8d9906799b91d0386887c14326fd40e3e684afdffa37d36665a7c64bc4e582a83b3bb3b366bb49f76d2b28cb5eb41')
-_distdir="Module-Signature-0.73"
+source=('http://search.cpan.org/CPAN/authors/id/A/AU/AUDREYT/Module-Signature-0.88.tar.gz')
+md5sums=('af534a2d5cb4dd55e4cc1ded88d97e77')
+sha512sums=('624d7508b7854e05c50915b9192552fddd17e22043f2b330c02c34ad44dd01cb0ffd657fcd4e5333324b2ce9a05e044772e80c3ae061608f91d8101d00b3666c')
+_distdir="Module-Signature-0.88"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
