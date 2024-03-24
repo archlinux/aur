@@ -10,8 +10,8 @@ _pkgname=uksmd
 _downloadname="${_pkgname}-CachyOS"
 pkgname="${_pkgname}-cachyos-nosystemd-git"
 epoch=0
-pkgver=1.2.8.r108.20231220.65b9974
-pkgrel=3
+pkgver=1.2.9.r110.20240130.3b026f1
+pkgrel=1
 pkgdesc="Userspace KSM helper daemon. CachyOS-version with 'uksmdstats'. Without systemd dependency, latest git checkout."
 url='https://github.com/CachyOS/uksmd'
 # Original upstream URL: https://codeberg.org/pf-kernel/uksmd
