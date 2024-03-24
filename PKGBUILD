@@ -3,14 +3,13 @@
 # Contributor: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
 
 pkgbase=lief
-# pkgname=(lief python-lief)
-pkgname=(lief)
+pkgname=(lief python-lief)
 pkgver=0.14.1
 pkgrel=1
 pkgdesc='Library to instrument executable formats'
 arch=('x86_64')
 url='https://github.com/lief-project/lief'
-license=('Apache-2.0')
+license=(Apache-2.0)
 depends=(tl-expected)
 makedepends=(cmake python nlohmann-json mbedtls python-build python-installer python-wheel python-tomli python-scikit-build-core ninja python-cattrs python-packaging python-rich python-setuptools python-pydantic python-pydantic-core python-pyproject-metadata python-pathspec)
 provides=(libLIEF.so)
@@ -44,8 +43,8 @@ package_lief() {
   DESTDIR="$pkgdir" cmake --install build
 }
 
-# package_python-lief() {
-#   depends+=(python lief)
-#   cd "LIEF-$pkgver/api/python"
-#   python -m installer --destdir="$pkgdir" dist/*.whl
-# }
+package_python-lief() {
+  depends+=(python lief)
+  cd "LIEF-$pkgver/api/python"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+}
