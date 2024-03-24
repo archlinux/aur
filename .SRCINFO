@@ -1,0 +1,19 @@
+pkgbase = python-speedport-api
+	pkgdesc = Control Telekom Speedport routers with Python!
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/Andre0512/speedport-api
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-pylint
+	makedepends = mypy
+	makedepends = flake8
+	makedepends = python-black
+	depends = python-aiohttp
+	depends = python-pycryptodome
+	source = python-speedport-api-0.6.0.tar.gz::https://github.com/Andre0512/speedport-api/archive/refs/tags/v0.6.0.tar.gz
+	b2sums = dc51548de5e6271f31e087cf8ba61e637b3156ad5695d2bb98efe692c423be5d65eda4ad57bce9da43b1ee0343233cd41eb5e7e17b57f9eb41823ae2a96b052b
+
+pkgname = python-speedport-api
