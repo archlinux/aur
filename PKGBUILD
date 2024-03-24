@@ -1,7 +1,6 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2023-11-13.
-### NOTE! As of 2023-11-13, the file `C1.ZIP` is not avaiable upstream. Let's wait a bit and see if it comes back or not.
+# PKGBUILD last time manually edited: At least on 2024-01-14.
 
 url="https://chaps.cz/eng/download/idos/zip#kotvainf"
 _zipfile="C1.ZIP"
