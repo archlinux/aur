@@ -4,7 +4,7 @@
 # Contributor: Pablo Lezaeta <prflr88@gmail.com>
 pkgname=hfsutils
 pkgver=3.2.6_p15
-pkgrel=1
+pkgrel=2
 pkgdesc="HFS Access utils"
 arch=('x86_64')
 license=('GPL2')

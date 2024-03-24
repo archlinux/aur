@@ -1,7 +1,7 @@
 pkgbase = hfsutils
 	pkgdesc = HFS Access utils
 	pkgver = 3.2.6_p15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mars.org/home/rob/proj/hfs/
 	arch = x86_64
 	license = GPL2
