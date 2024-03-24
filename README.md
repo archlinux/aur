@@ -1,16 +1,16 @@
 # wechat-universal
 
-AUR package of WeChat (微信) Universal. Not depends on bubblewrap.
+AUR package of WeChat (微信) Universal. 
 
-
-Currently, fcitx can not work properly. Please use `wechat-universal-privileged` instead.
+Using `unshare` and `nsenter` provided by `util-linux` instead of `bubblewrap`.
 
 ## Features
 
-- `unshare` instead of `bubblewrap`.
+- `util-linux` instead of `bubblewrap`.
 
 - Full privalige granted.
 
 - Distro detection bypassed.
 
+- Input methods, clipboard, cameras and other devices should work.
 
