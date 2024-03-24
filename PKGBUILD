@@ -1,7 +1,7 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-manager
-pkgver=4.7.2
+pkgver=4.7.3
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
 pkgrel=1
@@ -21,7 +21,7 @@ validpgpkeys=(
 
 source=(
   "https://packages.wazuh.com/4.x/yum/${pkgname}-${_prodver}.x86_64.rpm"
-  "wazuh-manager-4.7.2-1.x86_64.rpm.sig"
+  "${pkgname}-${pkgver}-${pkgrel}.x86_64.rpm.sig"
 )
 
 backup=(
@@ -30,7 +30,7 @@ backup=(
   'var/ossec/etc/ossec.conf'
 )
 
-sha512sums=('f450d26df96bcfab2efc7a73a63365d95e394033b2b0e8e8972b601a55c9b89e770771748090ba0b1a5c19df961f85b0b048147165a9368a63f6aa5554cb9d86'
+sha512sums=('f352649b0b6f01abcc53b6fb99ba027397d5d4e38e163cf2919d4d50014990ae719dd4f69c44592372587f132e5733a73daba712ba0701417b747d2a3aa57808'
             'SKIP')
 
 install=$pkgname.install
