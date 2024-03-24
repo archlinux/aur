@@ -1,8 +1,8 @@
 # Maintainer: yuki_wastaken <yukiat at proton dot me>
 pkgname=catnip-git
 _pkgname=catnip
-pkgver=r50.fe90ca5
-pkgrel=5
+pkgver=r161.cb0b8fd
+pkgrel=1
 pkgdesc="A minimalistic and fast system fetch written in Nim."
 arch=(x86_64)
 url="https://github.com/iinsertNameHere/catnip"
@@ -22,10 +22,10 @@ pkgver() {
 
 build() {
 	cd "${_pkgname%}"
-	nim setup
+	nim install
 }
 
 package() {
 	cd "${_pkgname%}"
   	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
-}
+  }
