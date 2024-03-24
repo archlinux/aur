@@ -2,7 +2,6 @@
 # Maintainer:  Afnan Enayet <afnan at afnan.io>
 # Contributor: Eric Engestrom (https://aur.archlinux.org/account/1ace)
 
-
 _pkgname=hdrview
 pkgname="$_pkgname-git"
 epoch=0
