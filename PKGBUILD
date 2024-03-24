@@ -2,10 +2,10 @@
 # Contributor: éclairevoyant (https://aur.archlinux.org/account/eclairevoyant)
 # Contributor: keenord (https://aur.archlinux.org/account/keenerd)
 
-_pkgname=nasm
-pkgname="${_pkgname}-segelf-git"
+_pkgname="nasm-segelf"
+pkgname="${_pkgname}-git"
 pkgver=2.16.01+30.r4913.20231207.g13292aec
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="80x86 assembler designed for portability and modularity. 'elf16' branch."
 arch=(
@@ -35,14 +35,9 @@ license=(
 )
 provides=(
   "${_pkgname}=${pkgver%%.r*}"
-  "${_pkgname}-git=${pkgver}"
-  "${_pkgname}-segelf=${pkgver%%.r*}"
-  "${_pkgname}-elf16=${pkgver%%.r*}"
 )
 conflicts=(
   "${_pkgname}"
-  "${_pkgname}-segelf"
-  "${_pkgname}-elf16"
 )
 source=(
   "${_pkgname}::git+https://github.com/stsp/nasm.git#branch=elf16"
