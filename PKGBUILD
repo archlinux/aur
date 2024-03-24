@@ -1,7 +1,7 @@
 # Maintainer: Tran Duc Nam <dynamo.foss@gmail.com>
 
 pkgname=awesome-gnome
-pkgver=2.3
+pkgver=2.4
 pkgrel=1
 pkgdesc='Setup awesome as window manager of GNOME 3'
 arch=('any')
@@ -12,7 +12,7 @@ install=awesome-gnome.install
 source=($pkgname.desktop
         awesome.desktop
         awesome.session)
-md5sums=('e95f93f3b34a42f9b3590d5323cec416'
+md5sums=('33833f966597ae644bdc927750409b78'
          'ae7d8d0426c36c8c6f606cf28f13ac02'
          '7580f265ba21e01aaa43ffdcc657a52a')
 
