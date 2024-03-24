@@ -2,16 +2,16 @@
 
 pkgname='neophyte-git'
 pkgver=0.2.5.r0.g9b5e62f
-pkgrel=1
+pkgrel=2
 pkgdesc='A WebGPU-rendered Neovim GUI'
 arch=('x86_64' 'i686' 'aarch64')
-url="https://github.com/tim-harding/neophyte"
+url='https://github.com/tim-harding/neophyte'
 license=('MIT')
 depends=('fontconfig' 'freetype2' 'gcc-libs' 'glibc')
 makedepends=('git' 'cargo')
 provides=("neophyte=$pkgver")
 conflicts=('neophyte-bin' 'neophyte')
-source=("neophyte::git+$url.git")
+source=("$pkgname-$pkgver::git+$url.git")
 sha256sums=('SKIP')
 
 # See for best practices:
@@ -22,12 +22,12 @@ sha256sums=('SKIP')
 
 # From https://wiki.archlinux.org/title/VCS_package_guidelines#Package_naming
 pkgver() {
-  cd "neophyte"
+  cd "$pkgname-$pkgver"
   git describe --long --abbrev=7 | sed 's/-/.r/;s/-/./'
 }
 
 prepare() {
-    cd "neophyte"
+    cd "$pkgname-$pkgver"
     git fetch --tags
     latest_tag=$(git describe --tags "$(git rev-list --tags --max-count=1)")
     git checkout "$latest_tag"
@@ -39,7 +39,7 @@ prepare() {
 }
 
 build() {
-    cd "neophyte"
+    cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     export RUSTFLAGS="-C target-cpu=native"
@@ -47,7 +47,7 @@ build() {
 }
 
 package() {
-    cd "neophyte"
+    cd "$pkgname-$pkgver"
 
     install \
         --mode=0755 \
@@ -59,20 +59,15 @@ package() {
         -D --target-directory="$pkgdir/usr/share/applications/" \
         assets/neophyte.desktop
 
-    # Installing to both locations because makepkg complains about uncommon
-    # license identifier MIT needing a license file in neophyte-git
-    for dst in neophyte $pkgname
-    do
-        install \
-            --mode=0644 \
-            -D --target-directory="$pkgdir/usr/share/licenses/$dst/" \
-            LICENSE
+    install \
+        --mode=0644 \
+        -D --target-directory="$pkgdir/usr/share/licenses/$pkgname/" \
+        LICENSE
 
-        install \
-            --mode=0644 \
-            -D --target-directory="$pkgdir/usr/share/doc/$dst/" \
-            README.md
-    done
+    install \
+        --mode=0644 \
+        -D --target-directory="$pkgdir/usr/share/doc/$pkgname/" \
+        README.md
 }
 
 # vim: ts=4 sts=4 sw=4 et
