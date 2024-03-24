@@ -1,0 +1,15 @@
+pkgbase = font-patcher
+	pkgdesc = Official patcher to turn any font into a nerd font by adding many useful glyphs
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://nerdfonts.com/
+	arch = any
+	license = MIT
+	depends = fontforge
+	depends = python
+	source = font-patcher-3.1.1.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FontPatcher.zip
+	source = font-patcher.sh
+	sha256sums = 7b11bdbbe645ff817192233f7fab1dc026cea201959dc4617f5217d5250de4f2
+	sha256sums = 3c2b2c743c6ce715f1b3f66d9b1c6219c48899523e7cf9356a330adaac6e1009
+
+pkgname = font-patcher
