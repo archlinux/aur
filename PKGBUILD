@@ -12,7 +12,7 @@ pkgname=aseprite
 pkgver=1.3.5
 _skiaver=m102
 _skiahash=861e4743af
-pkgrel=1
+pkgrel=2
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -149,6 +149,9 @@ package() {
 	install -vDm 755 staging/bin/aseprite "$pkgdir/usr/bin/aseprite"
 	install -vDm 644 aseprite/src/desktop/linux/aseprite.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
 	install -vDm 644 aseprite/src/desktop/linux/mime/aseprite.xml "$pkgdir/usr/share/mime/packages/$pkgname.xml"
+	# Thumbnailer
+	install -vDm 755 aseprite/src/desktop/linux/aseprite-thumbnailer "$pkgdir/usr/bin/aseprite-thumbnailer"
+	install -vDm 644 aseprite/src/desktop/linux/gnome/aseprite.thumbnailer "$pkgdir/usr/share/thumbnailers/aseprite.thumbnailer"
 	# Install the icons in the correct directory (which is not the default)
 	local _size
 	for _size in 16 32 48 64 128 256; do
