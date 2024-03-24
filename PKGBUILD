@@ -5,13 +5,14 @@
 ## options
 : ${_build_git:=true}
 
+unset _pkgtype
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
 ## basic info
 _pkgname='compiz'
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=0.9.14.2.r0.g12aca685
-pkgrel=2
+pkgver=0.9.14.2.r6.g275e8550
+pkgrel=1
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 url="https://launchpad.net/compiz"
 arch=('i686' 'x86_64')

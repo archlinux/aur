@@ -1,7 +1,7 @@
 pkgbase = compiz-git
 	pkgdesc = Composite manager for Aiglx and Xgl, with plugins and CCSM
-	pkgver = 0.9.14.2.r0.g12aca685
-	pkgrel = 2
+	pkgver = 0.9.14.2.r6.g275e8550
+	pkgrel = 1
 	url = https://launchpad.net/compiz
 	arch = i686
 	arch = x86_64
