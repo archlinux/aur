@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=goverlay-git
-pkgver=1.1.r2.g5c485bb
+pkgver=1.10.r0.g608c32b
 pkgrel=1
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
 url="https://github.com/benjamimgois/goverlay"
 license=('GPL-3.0-or-later')
-depends=('glu' 'mangohud' 'qt5pas')
-makedepends=('git' 'lazarus')
+depends=('glu' 'mangohud' 'qt6pas')
+makedepends=('git' 'lazarus-qt6')
 checkdepends=('appstream' 'desktop-file-utils')
 optdepends=(
   'mesa-utils: OpenGL preview'
@@ -21,21 +21,21 @@ source=('git+https://github.com/benjamimgois/goverlay.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   make LAZBUILDOPTS=--lazarusdir=/usr/lib/lazarus
 }
 
 check() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   make tests
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   make prefix=/usr libexecdir=/lib DESTDIR="$pkgdir/" install
 }
