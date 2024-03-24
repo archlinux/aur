@@ -4,24 +4,35 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=glib2-patched-thumbnailer
-pkgver=2.78.4
-pkgrel=1.1
+pkgver=2.80.0
+pkgrel=1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
 arch=(x86_64)
-provides=(glib2=$pkgver libgio-2.0.so libglib-2.0.so libgmodule-2.0.so
-           libgobject-2.0.so libgthread-2.0.so)
+provides=(glib2=$pkgver libg{lib,io,irepository,module,object,thread}-2.0.so)
 conflicts=('glib2')
 depends=(pcre2 libffi util-linux-libs zlib tumbler libsysprof-capture libmount.so libffi.so)
-makedepends=(gettext gtk-doc shared-mime-info python libelf git util-linux
-             meson dbus)
+makedepends=(
+  dbus
+  gettext
+  git
+  gi-docgen
+  gobject-introspection
+  libelf
+  meson
+  python
+  python-docutils
+  python-packaging
+  shared-mime-info
+  util-linux
+)
 checkdepends=(desktop-file-utils glib2)
 optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report'
             'libelf: gresource inspection tool'
             'gvfs: most gio functionality')
 options=(!docs staticlibs)
 license=(LGPL)
-_commit=00edb7f7453a43cff343f9e99d49f2e421e4345c  # tags/2.78.4^0
+_commit=763cc3b238398614c20069fd67642730e3a6519b  # tags/2.80.0^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
   "git+https://gitlab.gnome.org/GNOME/gvdb.git"
@@ -30,7 +41,7 @@ source=(
   gio-querymodules.hook
   glib-compile-schemas.hook
 )
-b2sums=('SKIP'
+b2sums=('cc3a6a7a14fef1aabc08d3bdfe98f66e3ecf3591ac054d83aa9404c8c9cd72e690a4c26c16934700d067bb2cb3d58730387482032cd9ffa04b041869426165ba'
         'SKIP'
         '94c73ca7070c239494873dd52d6ee09382bbb5b1201f7afd737cfa140b1a2fb0744b2c2831baf3943d1d072550c35888d21ce6f19f89481ff9d1a60d9a0b30e0'
         '5eed57eccc15fa9994228815874200135e9ee682b9bd718dae4b486eb3a65f2efb8121f45afedd4dd33208297738b5f1f489cb9a798a896540a505b32a37cc08'
@@ -60,7 +71,8 @@ build() {
   local meson_options=(
     --default-library both
     -D glib_debug=disabled
-    -D man=true
+    -D introspection=enabled
+    -D man-pages=enabled
     -D selinux=disabled
     -D sysprof=enabled
   )
