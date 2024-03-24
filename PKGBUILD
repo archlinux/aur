@@ -2,7 +2,7 @@
 # Contributor: th1nhhdk <th1nhhdk@tutanota.com>
 # Contributor: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=gnome-obfuscate
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="Censor private information."
 arch=('x86_64')
@@ -10,9 +10,9 @@ url="https://gitlab.gnome.org/World/obfuscate"
 license=('GPL-3.0-or-later')
 depends=('libadwaita')
 makedepends=('cargo' 'git' 'meson')
-checkdepends=('appstream-glib')
-_commit=dbe45dc431d8deb8e1c715a1d9194368505e41a5  # tags/0.0.9^0
-source=("git+https://gitlab.gnome.org/World/obfuscate.git#commit=$_commit")
+checkdepends=('appstream')
+_commit=08e4d8f60037402afbc8f61f1eeabc62c86bccf0  # tags/0.0.10^0
+source=("git+https://gitlab.gnome.org/World/obfuscate.git#commit=${_commit}")
 sha256sums=('SKIP')
 
 pkgver() {
