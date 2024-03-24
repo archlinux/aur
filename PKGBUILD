@@ -1,7 +1,7 @@
 # Maintainer: Rafael Carvalho <contact@rafaelrc.com>
 
 pkgname=wayland-pipewire-idle-inhibit
-pkgver=0.4.5
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Inhibit wayland idle when computer is playing sound"
 arch=('x86_64')
