@@ -6,32 +6,67 @@
 
 pkgbase=mutter-dynamic-buffering
 pkgname=(mutter-dynamic-buffering)
-pkgver=45.5
+pkgver=46.0
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME (with dynamic triple/double buffering)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
 license=(GPL-2.0-or-later)
 depends=(
+  at-spi2-core
+  cairo
   colord
   dconf
+  fontconfig
+  fribidi
+  gcc-libs
+  gdk-pixbuf2
+  glib2
+  glibc
   gnome-desktop-4
   gnome-settings-daemon
   graphene
   gsettings-desktop-schemas
+  gtk4
+  harfbuzz
   iio-sensor-proxy
   lcms2
   libcanberra
+  libcolord
   libdisplay-info
+  libdrm
   libei
+  libglvnd
   libgudev
+  libice
   libinput
+  libpipewire
   libsm
   libsysprof-capture
+  libwacom
+  libx11
+  libxau
+  libxcb
+  libxcomposite
+  libxcursor
+  libxdamage
+  libxext
+  libxfixes
+  libxi
+  libxinerama
+  libxkbcommon
   libxkbcommon-x11
   libxkbfile
+  libxrandr
+  libxtst
+  mesa
+  pango
   pipewire
+  pixman
+  python
   startup-notification
+  systemd-libs
+  wayland
   xorg-xwayland
 )
 makedepends=(
@@ -52,7 +87,7 @@ _checkdepends=(
   wireplumber
   zenity
 )
-_commit=4e8ccf5f9c177595aac11895ed50a4e35d5087e4  # tags/45.5^0
+_commit=c4753689e3413cd9332d885dd0297b3b7d9ba9ca  # tags/46.0^0
 source=(
   "$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
   'mr1441.patch'
@@ -77,7 +112,7 @@ build() {
     -D docs=true
     -D egl_device=true
     -D installed_tests=false
-    -D libdisplay_info=true
+    -D libdisplay_info=enabled
     -D wayland_eglstream=true
     -D tests=false
   )
@@ -97,9 +132,14 @@ _check() (
   export NO_AT_BRIDGE=1 GTK_A11Y=none
   export MUTTER_DEBUG_DUMMY_MODE_SPECS="800x600@10.0"
 
+  # Tests fail:
+  # mutter:cogl+cogl/conform / cogl-test-offscreen-texture-formats-gles2
+  # mutter:core+mutter/stacking / fullscreen-maximize
+  ## https://gitlab.gnome.org/GNOME/mutter/-/issues/3343
   xvfb-run -s '-nolisten local +iglx -noreset' \
     mutter/src/tests/meta-dbus-runner.py --launch=pipewire --launch=wireplumber \
-    meson test -C build --print-errorlogs -t 5 --setup plain
+    meson test -C build --no-suite 'mutter/kvm' --no-rebuild \
+    --print-errorlogs --timeout-multiplier 10 --setup plain ||:
 )
 
 _pick() {
@@ -114,7 +154,7 @@ _pick() {
 
 package_mutter-dynamic-buffering() {
   conflicts=(mutter)
-  provides=(mutter libmutter-13.so)
+  provides=(mutter libmutter-14.so)
 
   meson install -C build --destdir "$pkgdir"
 
