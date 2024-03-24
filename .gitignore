@@ -4,3 +4,6 @@ flutter-*.log
 PKGBUILD-namcap.log
 pkg/
 src/
+*.zip
+*.tar.gz
+*.idea
