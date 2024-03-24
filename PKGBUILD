@@ -1,5 +1,6 @@
 # Maintainer: Cody P Schafer <dev@codyps.com>
 # Maintainer: Michał Wojdyła <micwoj9292@gmail.com>
+# Maintainer: Alexander Jacocks <alexander@redhat.com>
 # Contributor: Pablo Lezaeta <prflr88@gmail.com>
 pkgname=hfsutils
 pkgver=3.2.6_p15
@@ -9,6 +10,8 @@ arch=('x86_64')
 license=('GPL2')
 url="https://www.mars.org/home/rob/proj/hfs/"
 depends=(glibc)
+optdepends=('tcl: xhfs GUI'
+            'tk: xhfs GUI')
 source=(
 	"https://deb.debian.org/debian/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver/_p*}.orig.tar.gz"
 	"https://deb.debian.org/debian/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver/_p/-}.debian.tar.xz"
@@ -25,7 +28,12 @@ prepare() {
 build() {
 	cd "${pkgname}-${pkgver%_p*}"
 	autoreconf -fi
-	./configure
+  # test for tcl and tk presence
+  if [ -x /usr/bin/tclsh -a -x /usr/bin/wish ]; then
+	  ./configure --with-tcl --with-tk
+  else
+	  ./configure
+  fi
 	make prefix=/usr
 	make -C hfsck prefix=/usr
 }
