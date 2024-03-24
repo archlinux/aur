@@ -3,7 +3,7 @@
 pkgname=wechat-universal
 pkgver=1.0.0.238
 pkgrel=1
-pkgdesc="WeChat (Universal) with full access to the system"
+pkgdesc="WeChat (Universal) with namespace sandboxing"
 arch=('x86_64' 'aarch64' 'loong64')
 url="https://weixin.qq.com"
 license=('proprietary')
@@ -13,6 +13,7 @@ depends=(
 	'alsa-lib'
 	'at-spi2-core'
 	'bash'
+	'util-linux'
 	'flatpak-xdg-utils'
 	'libxcomposite'
 	'libxkbcommon-x11'
@@ -55,7 +56,7 @@ noextract=("${_deb_stem}"_{x86_64,aarch64,loong64}.deb)
 
 sha256sums=(
 	'53760079c1a5b58f2fa3d5effe1ed35239590b288841d812229ef4e55b2dbd69'
-	'1ba349d82c21e7cdff872f3fc36f2c532f4c2802b936f836ff9ba650677bb501'
+	'708b77df53a07c22ca621877892bf770158e80ba194db3cc74038c5466fbdb9e'
 	'b783b7b0035efb5a0fcb4ddba6446f645a4911e4a9f71475e408a5c87ef04c30'
 )
 
