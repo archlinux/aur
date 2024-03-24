@@ -1,6 +1,6 @@
 pkgbase = gnome-directory-thumbnailer-git
 	pkgdesc = GNOME thumbnailer to generate thumbnails for directories. Latest git checkout.
-	pkgver = 0.1.11+15.r103.20230311.7826c40
+	pkgver = 0.1.11+17.r105.20240315.6eeca7e
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-directory-thumbnailer
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = gnome-directory-thumbnailer-git
 	makedepends = intltool
 	makedepends = libtool
 	depends = gnome-desktop
-	provides = gnome-directory-thumbnailer=0.1.11+15.r103.20230311.7826c40
+	provides = gnome-directory-thumbnailer=0.1.11+17.r105.20240315.6eeca7e
 	conflicts = gnome-directory-thumbnailer
 	source = gnome-directory-thumbnailer::git+https://gitlab.gnome.org/GNOME/gnome-directory-thumbnailer.git
 	sha256sums = SKIP
