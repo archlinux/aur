@@ -2,8 +2,8 @@
 
 _pkgname=perl-strictures
 pkgname="${_pkgname}-git"
-pkgver=2.000006.0+r214.20190310.ga767ae1
-pkgrel=2
+pkgver=2.000006.6+r220.20240310.geffab3f
+pkgrel=1
 pkgdesc='Turn on strict and make most warnings fatal.'
 arch=(
   'any'
