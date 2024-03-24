@@ -1,6 +1,7 @@
-# Maintainer: Twor <i@twor.me>
+# Maintainer: Chizuru-Kagurazaka <chizuru-mtf@outlook.com>
+# Contributor: Twor <i@twor.me>
 pkgname=xmcl-launcher
-pkgver=0.35.19
+pkgver=0.42.3
 pkgrel=1
 pkgdesc="X Minecraft Launcher - 一个现代化的 Minecraft 启动器"
 arch=('x86_64')
@@ -14,10 +15,10 @@ optdepends=('jre8-openjdk: 启动低版本游戏的最低要求'
 source=("https://github.com/Voxelum/x-minecraft-launcher/releases/download/v$pkgver/xmcl-$pkgver-x64.tar.xz"
     xmcl.desktop
     xmcl.png)
-md5sums=('31f824e8c0f8dbc73ae420217086562f'
+md5sums=('30880093c9add3384ff77d2f203a37ba'
          '7af75d1e6fb1c031a0ca63a8940f7e9d'
          'a36bd664bd28ee990ade43232e506071')
-install="$pkgname.install"
+#install="$pkgname.install"
 
 _setvars() {
     cd "$srcdir"
