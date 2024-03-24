@@ -1,17 +1,16 @@
 pkgbase = perl-type-tiny-xs
 	pkgdesc = provides an XS boost for some of Type::Tiny's built-in type constraints
-	pkgver = 0.022
+	pkgver = 0.025
 	pkgrel = 1
 	url = https://metacpan.org/release/Type-Tiny-XS
 	arch = i686
 	arch = x86_64
 	license = PerlArtistic
-	checkdepends = perl-type-tiny
-	depends = perl
-	provides = perl-type-tiny-xs-util=0.022
+	license = GPL
+	depends = perl>=5.8.5
 	options = !emptydirs
-	options = purge
-	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/Type-Tiny-XS-0.022.tar.gz
-	sha256sums = bcc34a31f7dc1d30cc803889b5c8f90e4773b73b5becbdb3860f5abe7e22ff00
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/Type-Tiny-XS-0.025.tar.gz
+	md5sums = 1f34b61b0f708a4cc49bd745a4387a14
+	sha512sums = c990733efd4f057730ded8b7b2530251254ccaf1fb4398ff31ba12fe41c61cb24e817be20adc29002ab6281f703ba20c00f563b6e43e4983bc02d3aa7d0ceeee
 
 pkgname = perl-type-tiny-xs
