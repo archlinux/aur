@@ -3,18 +3,18 @@
 _name=FotoKilof
 
 pkgname=${_name,,}
-pkgver=4.4.7
+pkgver=4.4.8
 pkgrel=1
 pkgdesc="GUI for ImageMagick"
 url="https://github.com/TeaM-TL/FotoKilof"
 makedepends=('python-setuptools')
-depends=('imagemagick' 'tk' 'python-pillow' 'python-wand' 'python-ttkbootstrap')
+depends=('imagemagick' 'tk' 'python-pillow' 'python-wand' 'python-ttkbootstrap' 'python-requests')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
         0001-fix-character-in-setup.py-entrypoint-gui_script.patch
         $pkgname.desktop)
-sha256sums=('958e54feef5acf4d536325eda86b349d825bd4c4593fcdf673892ee77dfecd40'
+sha256sums=('05458ca867a231b7dccf0b856c7fb8c6dc3b165232c50597ff0795b20f6ca0b9'
             'fff5a43a08c5c5ef2483dafff22c749527c4f392645cf9517621a9dbc6ec00b3'
             '8f6610e5b14c7ecc3d099b6c03ee2ea638b6080d625d4d7ed2e6baa95daaf1c2')
 
