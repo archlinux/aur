@@ -7,7 +7,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=waterfox
-pkgver=G6.0.8
+pkgver=G6.0.11
 pkgrel=1
 pkgdesc="Fork of Mozilla Firefox featuring some privacy, usability, and speed enhancements."
 arch=(x86_64)
@@ -41,6 +41,7 @@ makedepends=(
 	wasi-libc
 	wasi-libc++
 	wasi-libc++abi
+	xorg-server-xvfb
 	yasm
 	zip
 )
