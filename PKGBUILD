@@ -2,7 +2,7 @@
 
 _pkgname=python-undetected-chromedriver
 pkgname="${_pkgname}-git"
-pkgver=3.5.4.r326.20231115.783b839
+pkgver=3.5.5.r329.20240217.0aa5fbe
 pkgrel=1
 pkgdesc="Optimized Selenium Chromedriver patch which does not trigger anti-bot services like Distill Network / Imperva / DataDome / Botprotect.io Automatically downloads the driver binary and patches it."
 arch=(
