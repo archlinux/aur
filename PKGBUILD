@@ -1,10 +1,10 @@
 # Maintainer: Raimar Buehmann (raimar)
 
 pkgname=lxsession-git
-pkgver=0.5.5.r1046.20200320
+pkgver=0.5.5.r1089.20240322
 pkgrel=1
 epoch=1
-pkgdesc='Lightweight X11 session manager for LXDE'
+pkgdesc='Lightweight X11 session manager'
 arch=('i686' 'x86_64')
 url="http://lxde.org/"
 license=('GPL2')
@@ -13,7 +13,7 @@ depends=('polkit' 'dbus-glib' 'libunique' 'libkeybinder2'
 	'libappindicator-gtk2'
 	'libnotify'
 )
-makedepends=('pkgconfig' 'intltool' 'docbook-xml' 'docbook-xsl' 'vala')
+makedepends=('git' 'pkgconfig' 'intltool' 'docbook-xml' 'docbook-xsl' 'vala' 'autoconf')
 provides=('lxsession' 'lxsession-edit' 'lxpolkit' 'lxde-settings-daemon' 'lxsession-lite')
 conflicts=('lxsession' 'lxsession-edit' 'lxpolkit' 'lxde-settings-daemon' 'lxsession-lite')
 source=(
@@ -40,11 +40,12 @@ pkgver() {
 prepare() {
 	cd $pkgname
 	#patch -Np1 -i ../Create-lock-file-to-prevent-more-than-one-logout-dialog.patch
+	rm -f *.stamp
+	autoreconf -fi
 }
 
 build() {
 	cd $pkgname
-	./autogen.sh
 	./configure --prefix=/usr --sysconfdir=/etc --disable-buildin-clipboard --disable-buildin-polkit
 	make
 }
