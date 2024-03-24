@@ -1,15 +1,15 @@
 pkgbase = perl-uri-imaps
 	pkgdesc = Support IMAPS URI
-	pkgver = 1.03
+	pkgver = 1.04
 	pkgrel = 1
-	url = http://search.cpan.org/dist/URI-imaps
+	url = https://metacpan.org/release/URI-imaps
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl-uri
+	depends = perl-uri>=0
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/A/AL/ALEXM/URI-imaps-1.03.tar.gz
-	sha512sums = 0d0be3c132e458eba1add00eced4f4f5968fdc62861fe4c8b610465e1fc2949b83c4c32bebbc6199b06b3465ab696fb25132769c26d5dacbdae4ae58bd3d4c26
+	source = http://search.cpan.org/CPAN/authors/id/A/AL/ALEXM/URI-imaps-1.04.tar.gz
+	md5sums = 9a3078af8930563af76736f66f1a8b89
+	sha512sums = d1559823e346131801dad0da45ae8e5c0d1ad0c09a9a9c70f958489cd598ba5ebf79e31424b461ee6e42ffdd2ac5fb02a3273200e8999e54b069d4e1cbbc2919
 
 pkgname = perl-uri-imaps
-

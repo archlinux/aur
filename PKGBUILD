@@ -1,20 +1,20 @@
-# Contributor: Felix Golatofski <contact@xdfr.de>
-# Contributor: Anonymous
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-uri-imaps'
-pkgver='1.03'
+pkgver='1.04'
 pkgrel='1'
 pkgdesc="Support IMAPS URI"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-uri')
+depends=('perl-uri>=0')
 makedepends=()
-url='http://search.cpan.org/dist/URI-imaps'
-source=("https://cpan.metacpan.org/authors/id/A/AL/ALEXM/URI-imaps-${pkgver}.tar.gz")
-sha512sums=('0d0be3c132e458eba1add00eced4f4f5968fdc62861fe4c8b610465e1fc2949b83c4c32bebbc6199b06b3465ab696fb25132769c26d5dacbdae4ae58bd3d4c26')
-_distdir="URI-imaps-${pkgver}"
+url='https://metacpan.org/release/URI-imaps'
+source=('http://search.cpan.org/CPAN/authors/id/A/AL/ALEXM/URI-imaps-1.04.tar.gz')
+md5sums=('9a3078af8930563af76736f66f1a8b89')
+sha512sums=('d1559823e346131801dad0da45ae8e5c0d1ad0c09a9a9c70f958489cd598ba5ebf79e31424b461ee6e42ffdd2ac5fb02a3273200e8999e54b069d4e1cbbc2919')
+_distdir="URI-imaps-1.04"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
