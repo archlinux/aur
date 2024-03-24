@@ -3,7 +3,7 @@
 
 _pkgname=nvtop
 pkgname="${_pkgname}-nosystemd-git"
-pkgver=3.0.2+31.r384.20231021.45a1796
+pkgver=3.1.0+9.r425.20240226.0316ce1
 pkgrel=1
 pkgdesc="GPUs process monitoring for AMD, Intel and NVIDIA. Without systemd dependencies. Latest Git checkout."
 arch=('x86_64')
