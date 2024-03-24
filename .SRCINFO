@@ -1,6 +1,6 @@
 pkgbase = door-knocker
 	pkgdesc = Check availability of all portals provided by xdg-desktop-portal
-	pkgver = 0.4.4
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://codeberg.org/tytan652/door-knocker
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = door-knocker
 	depends = hicolor-icon-theme
 	depends = libadwaita
 	depends = gtk4
-	source = door-knocker-0.4.4.tar.gz::https://codeberg.org/tytan652/door-knocker/archive/0.4.4.tar.gz
-	sha256sums = 5a1e25ce6daad0f23a1f0c5984e25c74765902708da15aaf195ae284b707a858
+	source = door-knocker-0.5.0.tar.gz::https://codeberg.org/tytan652/door-knocker/archive/0.5.0.tar.gz
+	sha256sums = 214f2ca2cce5bb0e5c82a4cb45ad1c5b4eeace21ef6f29a3471294e7f345b29d
 
 pkgname = door-knocker
