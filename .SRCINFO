@@ -1,6 +1,6 @@
 pkgbase = resolute-bin
 	pkgdesc = Mod Manager GUI for Resonite
-	pkgver = 0.8.1
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/Gawdl3y/Resolute
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = resolute-bin
 	depends = gtk3
 	depends = webkit2gtk
 	depends = noto-fonts-emoji
-	source = https://github.com/Gawdl3y/Resolute/releases/download/v0.8.1/resolute_0.8.1_amd64.deb
-	sha256sums = de41e7a2e2b1c5bd1e338372aafcdf7e46409358ab218bc56c0c32307be0153c
+	source = https://github.com/Gawdl3y/Resolute/releases/download/v0.8.3/resolute_0.8.3_amd64.deb
+	sha256sums = 2e27eff189a5e0ef9df1d68170be1cb58ff6b1034c2743b4314ba7263ff71bfc
 
 pkgname = resolute-bin
