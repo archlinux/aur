@@ -2,14 +2,14 @@
 
 _pkgname=ansible-navigator
 pkgname=ansible-navigator-git
-pkgver=3.6.0.r0.gebef960e
+pkgver=24.2.0.r42.gddd8ac67
 pkgrel=1
 pkgdesc="A text-based user interface (TUI) for Ansible."
 arch=('any')
 url="https://github.com/ansible/ansible-navigator"
 license=('MIT')
 depends=(python python-{jsonschema,onigurumacffi} ansible-{core,runner} git podman)
-makedepends=(python-{build,installer,setuptools,wheel,setuptools-scm,setuptools-scm-git-archive})
+makedepends=(python-{build,installer,setuptools,wheel,setuptools-scm})
 checkdepends=('python-pytest')
 optdepends=('ansible: check official ansible collections')
 provides=('ansible-navigator')
@@ -28,7 +28,7 @@ printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  python -m build --wheel --no-isolation
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
