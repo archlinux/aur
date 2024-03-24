@@ -1,6 +1,6 @@
 pkgbase = atlas-bin
 	pkgdesc = A modern tool for managing database schemas
-	pkgver = 0.19.2
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/ariga/atlas
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = atlas-bin
 	makedepends = go
 	provides = atlas
 	conflicts = atlas
-	source_x86_64 = https://release.ariga.io/atlas/atlas-community-linux-amd64-v0.19.2
-	sha256sums_x86_64 = ef6d60a425db613be74f2773419c665ce1ab3062d02a71a57a5a764e9ad0eb3c
-	b2sums_x86_64 = e50b354b7af5e3779f36d049d757df2aeee3cd1bb23b05cb9552f28152a2c2f6da0bde277c11e3aeed65f1fdb322992e8cf501432dc828fc1a6e45bf44d88b9a
+	source_x86_64 = https://release.ariga.io/atlas/atlas-community-linux-amd64-v0.20.0
+	sha256sums_x86_64 = 390e931c3ddf6057c7d9c9b523962e190b69900464e6598c4fe218d5760f926f
+	b2sums_x86_64 = 95bdc89e9e2331a422ad3d7af6b9f979d161747ccebe8f9374939365d22dbc4b8c48abbb9fb0c865c9d5313519deb29fdcf7037f137a6de42844942c99b2bab5
 
 pkgname = atlas-bin
