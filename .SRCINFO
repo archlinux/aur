@@ -1,6 +1,6 @@
 pkgbase = tuba
 	pkgdesc = Browse the Fediverse
-	pkgver = 0.6.3
+	pkgver = 0.7.0
 	pkgrel = 0.1
 	url = https://tuba.geopjr.dev/
 	arch = aarch64
@@ -13,10 +13,13 @@ pkgbase = tuba
 	makedepends = vala
 	depends = dconf
 	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
 	depends = graphene
 	depends = gtk4
 	depends = gtksourceview5
 	depends = hicolor-icon-theme
+	depends = icu
 	depends = json-glib
 	depends = libadwaita
 	depends = libgee
@@ -61,7 +64,7 @@ pkgbase = tuba
 	optdepends = hunspell-pl: Polish spellchecking dictionary
 	optdepends = hunspell-ro: Romanian spellchecking dictionary
 	optdepends = hunspell-ru: Russian spellchecking dictionary
-	source = git+https://github.com/GeopJr/Tuba.git#commit=69d0a1531a0fc57489fd1bbaa1298988ec4d3747?signed
+	source = git+https://github.com/GeopJr/Tuba.git#commit=b928bf3a6f1be7cd34cc9a2b018396527ffbcc87?signed
 	validpgpkeys = 04A92A61E5CE5342F40E48DCFE5185F095BFC8C9
 	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
 	sha256sums = SKIP

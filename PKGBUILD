@@ -2,7 +2,7 @@
 # Contributor: Luna Jernberg <lunajernberg@gnome.org>
 
 pkgname=tuba
-pkgver=0.6.3
+pkgver=0.7.0
 pkgrel=0.1
 pkgdesc='Browse the Fediverse'
 arch=(
@@ -16,10 +16,13 @@ license=('GPL-3.0-only')
 depends=(
   dconf
   gdk-pixbuf2
+  glib2
+  glibc
   graphene
   gtk4
   gtksourceview5
   hicolor-icon-theme
+  icu
   json-glib
   libadwaita
   libgee
@@ -74,7 +77,7 @@ optdepends=(
   'hunspell-ru: Russian spellchecking dictionary'
 )
 
-_commit=69d0a1531a0fc57489fd1bbaa1298988ec4d3747 # tags/0.6.3^0
+_commit=b928bf3a6f1be7cd34cc9a2b018396527ffbcc87 # tags/v0.7.0^0
 validpgpkeys=(
   ## curl -sS https://github.com/GeopJr.gpg | gpg --import -
   '04A92A61E5CE5342F40E48DCFE5185F095BFC8C9' #Evangelos Paterakis <evan@geopjr.dev>
