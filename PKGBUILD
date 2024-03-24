@@ -3,7 +3,7 @@
 _pkgname=igetnonce
 pkgname=$_pkgname-s0uthwest-git
 pkgver=r10.6443eb5
-pkgrel=3
+pkgrel=4
 pkgdesc="Tool for checking booted iOS device nonces - s0uthwest's fork - git version"
 arch=('x86_64')
 url="https://github.com/s0uthwest/$_pkgname"
@@ -28,9 +28,8 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
 
-  for p in "$srcdir"/*.patch; do
-    patch -Np1 -i "$p"
-  done
+  patch -Np1 -i "$srcdir/0001-Fix-incorrect-language-standard.patch"
+  patch -Np1 -i "$srcdir/0002-Update-libirecovery-and-libusbmuxd-names-for-1.0.0-2.patch"
 }
 
 build() {
