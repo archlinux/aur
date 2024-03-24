@@ -1,14 +1,15 @@
 # Maintainer: Alexander Jacocks <alexander@redhat.com>
 
 pkgname=ansible-navigator
-pkgver=3.6.0
+pkgver=24.2.0
 pkgrel=1
 pkgdesc="A text-based user interface (TUI) for Ansible."
 arch=('any')
 url="https://github.com/ansible/ansible-navigator"
 license=('MIT')
 depends=(python python-{jsonschema,onigurumacffi} ansible-{core,runner} podman)
-makedepends=(python-{build,installer,setuptools,wheel,setuptools-scm,setuptools-scm-git-archive})
+makedepends=(python-{build,installer,setuptools,wheel,setuptools-scm})
+#makedepends=(python-{build,installer,setuptools,wheel,setuptools-scm,setuptools-scm-git-archive})
 checkdepends=('python-pytest')
 optdepends=('ansible: check official ansible collections')
 provides=('ansible-navigator')
@@ -17,8 +18,12 @@ source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/65
 sha256sums=('889dd1e8c8bc0c352435107c54ecd2fa1e3ec2a31cf910330498810e2cd3d352')
 
 build() {
+  # handle re-aligned version number
+  if [ -d "${srcdir}/${pkgname}-3.6.0" ]; then
+    mv "${srcdir}/${pkgname}-3.6.0" "${srcdir}/${pkgname}-${pkgver}"
+  fi
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python -m build --wheel --no-isolation
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
