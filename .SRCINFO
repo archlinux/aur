@@ -1,0 +1,18 @@
+pkgbase = libva1-compat
+	pkgdesc = Video Acceleration (VA) API for Linux
+	pkgver = 1.8.3
+	pkgrel = 1
+	url = https://01.org/linuxmedia/vaapi
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = mesa
+	depends = libdrm
+	depends = libgl
+	depends = libxfixes
+	optdepends = libva-vdpau-driver: backend for Nvidia and AMD cards
+	optdepends = libva-intel-driver: backend for Intel cards
+	source = https://github.com/intel/libva/releases/download/1.8.3/libva-1.8.3.tar.bz2
+	sha256sums = 56ee129deba99b06eb4a8d4f746b117c5d1dc2ec5b7a0bfc06971fca1598ab9b
+
+pkgname = libva1-compat
