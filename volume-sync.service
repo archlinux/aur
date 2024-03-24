@@ -1,0 +1,9 @@
+[Unit]
+Description=volume-sync
+
+[Install]
+WantedBy=default.target
+
+[Service]
+ExecStart=/usr/bin/volume-sync
+Slice=background.slice

@@ -7,6 +7,8 @@ pkgbase = volume-sync-git
 	makedepends = cargo
 	depends = libpulse
 	source = volume-sync::git+https://github.com/aravance/volume-sync.git
+	source = volume-sync.service
 	sha256sums = SKIP
+	sha256sums = 10491238508343ffe0eda259c65a549c09762ab0d83a13ebd143410d29f87db4
 
 pkgname = volume-sync-git
