@@ -4,7 +4,7 @@
 _pkgname="balongflash"
 pkgname="${_pkgname}-git"
 pkgver=3.0+290.r112.20211111.bf43faa
-pkgrel=4
+pkgrel=5
 pkgdesc='Flashing utility for Huawei E3372 and other modems baesd on Balong v7'
 arch=('i686' 'x86_64')
 url="https://github.com/forth32/${_pkgname}"
@@ -17,7 +17,7 @@ conflicts=("${_pkgname}")
 
 source=(
   "${_pkgname}::git+https://github.com/forth32/${_pkgname}.git"
-  "${_pkgname}-${pkgver}_-_helpmessages_english.txt::http://ix.io/1RtB"
+  "helpmessages_english.txt"
 )
 sha256sums=(
   'SKIP'
@@ -59,5 +59,5 @@ package() {
   ln -svr "${pkgdir}/usr/bin/balong_flash" "${pkgdir}/usr/bin/balongflash"
 
   install -D -v -m644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -D -v -m644 "${srcdir}/${_pkgname}-${pkgver}_-_helpmessages_english.txt" "${pkgdir}/usr/share/doc/${_pkgname}/helpmessages_english.txt"
+  install -D -v -m644 "${srcdir}/helpmessages_english.txt" "${pkgdir}/usr/share/doc/${_pkgname}/helpmessages_english.txt"
 }

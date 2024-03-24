@@ -1,0 +1,53 @@
+[ The following has been translated from Russian by http://http://translate.google.com/ ]
+
+* Output of the command 'balongflash':
+
+== %< ==
+
+  The program for the firmware on the device Balong-chipset, V3.0.196, (c) forth32, 2015, GNU GPLv3
+-------------------------------------------------- ------------------------------------------------
+
+  - Not specified file name to download, use -h key tips
+
+== >% ==
+
+* Output of the command 'balongflash -h':
+
+== %< ==
+
+The tool is designed for modem firmware chipset Balong V7
+
+balongflash [options] <file name to download or directory with files>
+
+ The valid keys are:
+
+-p <tty> - serial port for communication with the loader (by default, /dev/ttyUSB0)
+-n - multifaylovoy flashing mode of the specified directory
+-g# - to set the digital signature (-gl - description of the parameters)
+-m - display firmware file card and finish the job
+-e - disassemble the firmware file into sections without headings
+-s - disassemble the firmware file into sections with headings
+-k - do not restart the modem firmware by the end of
+-r - is forced to restart the modem firmware without partitions
+-f - flash even if CRC errors in the source file
+
+== >% ==
+
+* Output of the command 'balongflash -gl':
+
+== %< ==
+
+# Length Type Description
+--------------------------------------
+0 2958   1    The basic Firmware
+1 2694   1    Firmware E3372s-stick
+2 1110   2    + ISO web interface for HLINK-modem
+3 1110   6    + ISO web interface for HLINK-modem
+4 846    2    ISO (dashboard) for stick-modem
+5 3750   7    Firmware + ISO + web interface
+6 3750   99   Universal
+
+  You can also specify arbitrary parameters in the signature format:
+   -g *, type, len
+
+== >% ==
