@@ -17,13 +17,6 @@ prepare() {
 }
 
 package() {
-#     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-#     install -Dm644 "${srcdir}/squashfs-root/resources/"app* -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-#     cp -r "${srcdir}/squashfs-root/resources/"{bin,static} "${pkgdir}/usr/lib/${pkgname%-bin}"
-#     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-#     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-#     cp -r "$srcdir"/{lib,usr} "$pkgdir"
-
     install -Dm644 "${srcdir}/lib/udev/rules.d/50-onekey.rules" "${pkgdir}/usr/lib/udev/rules.d/50-onekey.rules"
     install -Dm755 "${srcdir}/usr/bin/onekeyd" "${pkgdir}/usr/bin/onekeyd"
     install -Dm644 "${srcdir}/usr/lib/systemd/system/onekeyd.service" "${pkgdir}/usr/lib/systemd/system/onekeyd.service"
