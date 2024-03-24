@@ -1,20 +1,19 @@
 pkgbase = gnome-shell-performance
 	pkgdesc = Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync
-	pkgver = 45.5
+	pkgver = 46.0
 	pkgrel = 1
 	epoch = 1
 	url = https://wiki.gnome.org/Projects/GnomeShell
 	arch = x86_64
 	arch = aarch64
-	groups = gnome
 	license = GPL
 	makedepends = asciidoc
 	makedepends = bash-completion
 	makedepends = evolution-data-server
+	makedepends = gi-docgen
 	makedepends = git
 	makedepends = gnome-control-center
 	makedepends = gobject-introspection
-	makedepends = gtk-doc
 	makedepends = meson
 	makedepends = sassc
 	depends = accountsservice
@@ -36,25 +35,17 @@ pkgbase = gnome-shell-performance
 	depends = mutter
 	depends = unzip
 	depends = upower
-	optdepends = evolution-data-server: Evolution calendar integration
-	optdepends = gnome-bluetooth-3.0: Bluetooth support
-	optdepends = gnome-control-center: System settings
-	optdepends = gnome-disk-utility: Mount with keyfiles
-	optdepends = gst-plugin-pipewire: Screen recording
-	optdepends = gst-plugins-good: Screen recording
-	optdepends = power-profiles-daemon: Power profile switching
-	optdepends = python-gobject: gnome-shell-test-tool performance tester
-	optdepends = switcheroo-control: Multi-GPU support
 	provides = gnome-shell
-	provides = gnome-shell=45.5
-	provides = gnome-shell=1:45.5
+	provides = gnome-shell=46.0
+	provides = gnome-shell=1:46.0
 	conflicts = gnome-shell
-	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=97fa46130bc35733ea88f6591705081a343e7d18
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=0463511457612ca87f7426b3b01356d1d85bee9b
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
-	b2sums = SKIP
+	b2sums = 8684414294c781bd02f89eb76ae04a51a701c51e00966f227989c0a41d161f34e4bfb7e9609f0a902a565aa4ea22f9d9c740d043b668bc132ed6d7471b8d7119
 	b2sums = SKIP
 
 pkgname = gnome-shell-performance
+	groups = gnome
 	depends = accountsservice
 	depends = gcr-4
 	depends = gjs
@@ -74,4 +65,18 @@ pkgname = gnome-shell-performance
 	depends = mutter
 	depends = unzip
 	depends = upower
-	depends = libmutter-13.so
+	depends = libmutter-14.so
+	optdepends = evolution-data-server: Evolution calendar integration
+	optdepends = gnome-bluetooth-3.0: Bluetooth support
+	optdepends = gnome-control-center: System settings
+	optdepends = gnome-disk-utility: Mount with keyfiles
+	optdepends = gst-plugin-pipewire: Screen recording
+	optdepends = gst-plugins-good: Screen recording
+	optdepends = power-profiles-daemon: Power profile switching
+	optdepends = python-gobject: gnome-shell-test-tool performance tester
+	optdepends = python-simplejson: gnome-shell-test-tool performance tester
+	optdepends = switcheroo-control: Multi-GPU support
+
+pkgname = gnome-shell-performance-docs
+	pkgdesc = Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync (API documentation)
+	depends = 

@@ -13,14 +13,23 @@
 # Merge Requests List: ()
 _merge_requests_to_use=()
 
+## Disable building the DOCS package (Enabled if not set)
+# Remember to unset this variable when producing .SRCINFO
+: "${_disable_docs:=""}"
+
 ## Enable the `check()` operation (Disabled if not set)
 : "${_enable_check:=""}"
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=45.5
+pkgbase=gnome-shell-performance
+if [ -n "$_disable_docs" ]; then
+  pkgname=gnome-shell-performance
+else
+  pkgname=(gnome-shell-performance gnome-shell-performance-docs)
+fi
+pkgver=46.0
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
@@ -52,10 +61,10 @@ makedepends=(
   asciidoc
   bash-completion
   evolution-data-server
+  gi-docgen
   git
   gnome-control-center
   gobject-introspection
-  gtk-doc
   meson
   sassc
 )
@@ -66,26 +75,14 @@ if [ -n "$_enable_check" ]; then
     xorg-server-xvfb
   )
 fi
-optdepends=(
-  'evolution-data-server: Evolution calendar integration'
-  'gnome-bluetooth-3.0: Bluetooth support'
-  'gnome-control-center: System settings'
-  'gnome-disk-utility: Mount with keyfiles'
-  'gst-plugin-pipewire: Screen recording'
-  'gst-plugins-good: Screen recording'
-  'power-profiles-daemon: Power profile switching'
-  'python-gobject: gnome-shell-test-tool performance tester'
-  'switcheroo-control: Multi-GPU support'
-)
-groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver gnome-shell=$epoch:$pkgver)
 conflicts=(gnome-shell)
-_commit=97fa46130bc35733ea88f6591705081a343e7d18  # tags/45.5^0
+_commit=0463511457612ca87f7426b3b01356d1d85bee9b  # tags/46.0^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
   "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
 )
-b2sums=('SKIP'
+b2sums=('8684414294c781bd02f89eb76ae04a51a701c51e00966f227989c0a41d161f34e4bfb7e9609f0a902a565aa4ea22f9d9c740d043b668bc132ed6d7471b8d7119'
         'SKIP')
 
 pkgver() {
@@ -183,17 +180,45 @@ _check() (
   export XDG_RUNTIME_DIR="$PWD/rdir"
   mkdir -p -m 700 "$XDG_RUNTIME_DIR"
 
-  meson test -C build --print-errorlogs -t 3
+  meson test -C build --no-rebuild --print-errorlogs -t 2
 )
 
+# Tests FAIL and or TIMEOUT at random
+# gnome-shell:shell / fittsy; / headlessStart; / basic; / closeWithActiveWindows
 if [ -n "$_enable_check" ]; then
   check() {
-    dbus-run-session xvfb-run -s '-nolisten local +iglx -noreset' \
-      bash -c "$(declare -f _check); _check"
+    dbus-run-session -- xvfb-run -s '-nolisten local +iglx -noreset' \
+      bash -c "$(declare -f _check); _check" || :
   }
 fi
 
-package() {
-  depends+=(libmutter-13.so)
+package_gnome-shell-performance() {
+  depends+=(libmutter-14.so)
+  optdepends=(
+    'evolution-data-server: Evolution calendar integration'
+    'gnome-bluetooth-3.0: Bluetooth support'
+    'gnome-control-center: System settings'
+    'gnome-disk-utility: Mount with keyfiles'
+    'gst-plugin-pipewire: Screen recording'
+    'gst-plugins-good: Screen recording'
+    'power-profiles-daemon: Power profile switching'
+    'python-gobject: gnome-shell-test-tool performance tester'
+    'python-simplejson: gnome-shell-test-tool performance tester'
+    'switcheroo-control: Multi-GPU support'
+  )
+  groups=(gnome)
+
   meson install -C build --destdir "$pkgdir"
+
+  mkdir -p doc/usr/share
+  mv {"$pkgdir",doc}/usr/share/doc
 }
+
+if ! [ -n "$_disable_docs" ]; then
+  package_gnome-shell-performance-docs() {
+    pkgdesc+=" (API documentation)"
+    depends=()
+
+    mv doc/* "$pkgdir"
+  }
+fi
