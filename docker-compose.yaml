@@ -1,0 +1,53 @@
+---
+version: "3.8"
+
+x-environment: &env
+  - PUID
+  - PGID
+  - TZ
+
+x-network: &net
+  - nzb
+
+x-default: &default
+  environment: *env
+  networks: *net
+  restart: unless-stopped
+
+services:
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: sabnzbd
+    <<: *default
+    volumes:
+      - ${PATH_PREFIX}/sabnzbd/config:/config
+      - ${PATH_PREFIX}:/downloads
+      - ${PATH_PREFIX}/temp:/incomplete-downloads
+    ports:
+      - ${SABNZBD_PORT}:8080
+
+  nzbhydra2:
+    image: lscr.io/linuxserver/nzbhydra2:latest
+    container_name: nzbhydra2
+    <<: *default
+    volumes:
+      - ${PATH_PREFIX}/nzbhydra2/config:/config 
+      - ${PATH_PREFIX}:/downloads
+    ports:
+      - ${NZBHYDRA2_PORT}:5076
+
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    <<: *default
+    volumes:
+      - ${PATH_PREFIX}/sonarr/config:/config
+      - ${PATH_PREFIX}/tv:/tv
+      - ${PATH_PREFIX}:/downloads
+    ports:
+      - ${SONARR_PORT}:8989
+
+
+networks:
+  nzb:
+

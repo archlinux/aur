@@ -1,0 +1,18 @@
+[Unit]
+Description=Convenience launch service for Sabnzd, Nzbhydra2 and Sonarr in docker
+After=network.target
+After=docker.service
+After=sabnzbd-docker-update.service
+PartOf=sabnzbd-docker-update.service
+
+[Service]
+EnvironmentFile=/opt/docker-sabnzbd/default.env
+EnvironmentFile=%h/.docker-sabnzbd.env
+Environment="PUID=%U"
+Environment="PGID=%G"
+ExecStart=docker compose -f /opt/docker-sabnzbd/docker-compose.yaml up
+ExecStop=docker compose -f /opt/docker-sabnzbd/docker-compose.yaml down
+
+[Install]
+WantedBy=sabnzbd-docker-update.service
+

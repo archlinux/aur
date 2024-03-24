@@ -1,0 +1,14 @@
+[Unit]
+Description=Convenience update service for sabnzbd-docker.service 
+After=network.target
+After=docker.service
+Before=sabnzbd-docker.service
+
+[Service]
+EnvironmentFile=/opt/docker-sabnzbd/default.env
+EnvironmentFile=%h/.docker-sabnzbd.env
+Environment="PUID=%U"
+Environment="PGID=%G"
+Type=oneshot
+ExecStart=docker compose -f /opt/docker-sabnzbd/docker-compose.yaml pull
+
