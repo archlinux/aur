@@ -2,13 +2,13 @@
 
 pkgname=casetta
 pkgver=0.3.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Collection of free (as speech) softwares to open, edit, convert and transfer data with a Casio graphical calculator."
 license=('GPL2')
 arch=('i686' 'x86_64')
 url="http://casetta.tuxfamily.org/"
 depends=('python2' 'python2-pyserial' 'python2-pillow' 'gtk2' 'pygtk')
-makedepends=('python2')
+makedepends=('python2-setuptools')
 source=("http://download.tuxfamily.org/casetta/casetta-0.3/casetta-$pkgver.tar.gz"
         'fixes20150517.patch')
 sha256sums=('6a06ae8d41d188cd716803a0e85a4a25102a01851e5b24538d0794ef50346f44'
