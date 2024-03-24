@@ -1,43 +1,42 @@
 pkgname=doom2
-pkgver=1.0
+_pkgname=Doom2
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="Doom 2 shooter game"
-arch=(any)
-url="http://oldgames.ru"
-license=('custom')
-depends=(dosbox bash)
-makedepends=(unrar)
-noextract=('Doom_2.rar')
-source=('http://oldgames.ru/oldgames/files/D/Doom_2.rar')
-md5sums=('ac2299f9dd3f066c7d7b568f555fee07')
+pkgdesc="Doom II first person shooter powered by GZDoom."
+arch=('x86_64' 'aarch64')
+license=('GPL')
+depends=('gzdoom-bin' 'wget' 'unzip' 'yad')
+makedepends=('unzip')
+source=("https://gitlab.com/gzdoom-bin/doom2/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2")
+sha256sums=("SKIP")
 
 package() {
-  cd "$srcdir/"
-  unrar x 'Doom_2.rar'
+    install -dm755 "$pkgdir/usr/bin"
+    install -dm775 "$pkgdir/usr/share/games/$_pkgname"
+    install -dm755 "$pkgdir/usr/share/pixmaps"
 
-  local game=doom2
+    # Packaging files
+    # Check if zelda3_assets.dat exists so it doesn't redownload the file when it doesn't need to.
+    FILE="/usr/share/games/$_pkgname/doom2.wad"
+     if test -f "$FILE"
+    then
+        echo "$FILE exists skipping download."
+        cp -r /usr/share/games/$_pkgname/doom2.wad "$pkgdir/usr/share/games/$_pkgname"
+    else
+        echo "$FILE does not exist, Starting download.."
+        cd $srcdir
+        wget "https://archive.org/download/2020_03_22_DOOM/DOOM%20WADs/Doom%20II%20-%20Hell%20on%20Earth%20%28v1.9%29.zip"
+        unzip "Doom II - Hell on Earth (v1.9)"
+        mv DOOM2.WAD doom2.wad
+        cp -r doom2.wad "$pkgdir/usr/share/games/$_pkgname/doom2.wad"
+    fi    
+    cd $srcdir/$pkgname-$pkgver
+    cp "$srcdir/$pkgname-$pkgver/$pkgname" "$pkgdir/usr/bin"
+    cp -r ./ "$pkgdir/usr/share/games/$_pkgname"
+    cp -r $pkgname.svg "$pkgdir/usr/share/pixmaps"
 
-  rm -f Doom\ 2/*.PIF
-
-  mkdir -p $pkgdir/usr/share/ $pkgdir/usr/bin/
-  cp -r "Doom 2" $pkgdir/usr/share/$game
-
-  cat >$pkgdir/usr/bin/$game <<EOF
-#!/bin/sh
-
-if [ ! -d ~/.dosbox/$game ]; then
-	mkdir -p ~/.dosbox/$game
-	cd ~/.dosbox/$game
-	ls -1 /usr/share/$game | while read A; do
-		ln -s /usr/share/$game/\$A \$A
-	done
-
-	rm -f DEFAULT.CFG zdoom.cfg MODEM.CFG
-	cp /usr/share/$game/DEFAULT.CFG /usr/share/$game/zdoom.cfg /usr/share/$game/MODEM.CFG ./
-fi
-cd ~/.dosbox/$game
-dosbox -c 'mount c ~/.dosbox/$game' -c 'c:' -c '$game' -c 'exit'
-EOF
-
-  chmod 0755 $pkgdir/usr/bin/$game
+    # Desktop Entry
+    install -Dm644 "$srcdir/$pkgname-$pkgver/$pkgname.desktop" \
+    "$pkgdir/usr/share/applications/$pkgname.desktop"
+    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
