@@ -1,11 +1,11 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname=pascal-sdl2-git
 pkgver=1.72.r138.201a767
-pkgrel=1
+pkgrel=2
 pkgdesc="Pascal SDL 2 Headers"
 arch=('i686' 'x86_64')
 url="https://github.com/ev1313/Pascal-SDL-2-Headers"
-license=('LGPL3')
+license=('MPL-2.0' 'Zlib')
 depends=('fpc' 'sdl2')
 optdepends=('sdl2_gfx'
             'sdl2_image'
