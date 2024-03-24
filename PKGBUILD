@@ -1,30 +1,37 @@
 # Maintainer: acuteenvy
 pkgname=tlrc
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Official tldr client written in Rust"
 arch=('x86_64')
 url="https://github.com/tldr-pages/$pkgname"
 license=('MIT')
+depends=('gcc-libs')
 makedepends=('cargo')
 provides=('tldr')
 conflicts=('tldr')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('f7e4b8941dd7c3bc9adecd05af4f4ba2536db6bade784dc6dadabdbf09200cda6df75f389c58ced777be962716db3154fa28c1a62522e86c8687805a7295d2af')
+b2sums=('5346c991df8e3993ff28b8f8e3348724cec11378100877f3e749ad836b532886c3e5094f8eea09c3758782de312f349b229e74aae862cde7697b4dd0545dc026')
 # This is needed for `ring` to compile. See https://github.com/briansmith/ring/issues/1444
 options=('!lto')
 
 prepare() {
     cd "$pkgname-$pkgver"
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    export COMPLETION_DIR=completions
     cargo build --frozen --release
+}
+
+check() {
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen
 }
 
 package() {

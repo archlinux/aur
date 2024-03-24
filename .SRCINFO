@@ -1,15 +1,16 @@
 pkgbase = tlrc
 	pkgdesc = Official tldr client written in Rust
-	pkgver = 1.8.0
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/tldr-pages/tlrc
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	depends = gcc-libs
 	provides = tldr
 	conflicts = tldr
 	options = !lto
-	source = tlrc-1.8.0.tar.gz::https://github.com/tldr-pages/tlrc/archive/v1.8.0.tar.gz
-	b2sums = f7e4b8941dd7c3bc9adecd05af4f4ba2536db6bade784dc6dadabdbf09200cda6df75f389c58ced777be962716db3154fa28c1a62522e86c8687805a7295d2af
+	source = tlrc-1.9.0.tar.gz::https://github.com/tldr-pages/tlrc/archive/v1.9.0.tar.gz
+	b2sums = 5346c991df8e3993ff28b8f8e3348724cec11378100877f3e749ad836b532886c3e5094f8eea09c3758782de312f349b229e74aae862cde7697b4dd0545dc026
 
 pkgname = tlrc
