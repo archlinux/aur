@@ -3,25 +3,25 @@
 _base=mahotas
 pkgname=python-${_base}
 pkgdesc="Computer Vision in Python"
-pkgver=1.4.13
+pkgver=1.4.14
 pkgrel=1
-arch=('x86_64')
+arch=(x86_64)
 url="https://github.com/luispedro/${_base}"
-license=('custom')
+license=(MIT)
 depends=(python-numpy)
-makedepends=(python-setuptools git)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 # checkdepends=(python-pytest python-pillow python-scipy)
 optdepends=('python-imread: for function imread support'
   'python-pillow: for function imread support'
   'freeimage: for functions imread/imsave support')
 provides=('mahotas')
-source=("git+${url}.git?#tag=v${pkgver}")
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('SKIP')
 # validpgpkeys=('6FB8B07A620CC7A7FB5B2AB4110D6C98E760BEF2') # Lu\xed\x73 Pedro Coelho <lpc@cmu.edu>
 
 build() {
-  cd ${_base}
-  python setup.py build
+  cd ${_base}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 # check() {
@@ -31,7 +31,8 @@ build() {
 # }
 
 package() {
-  cd ${_base}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
