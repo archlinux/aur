@@ -9,7 +9,7 @@ pkgname=(
   "amd-psr-identification-script${_vcssuffix}"
 )
 epoch=0
-pkgver=r181.20240228.2f6b5d7
+pkgver=r187.20240321.1e19198
 pkgrel=1
 pkgdesc="Test scripts for open source AMD graphics driver."
 arch=(
