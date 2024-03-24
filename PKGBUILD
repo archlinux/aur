@@ -2,7 +2,7 @@
 
 _pkgname=fflogs-uploader
 pkgname=${_pkgname}-appimage
-pkgver=8.3.18
+pkgver=8.3.19
 pkgrel=1
 pkgdesc="FFLogs Uploader appimage"
 arch=('x86_64')
@@ -14,8 +14,8 @@ _appimage="fflogs-v${pkgver}.AppImage"
 source_x86_64=("${_appimage}::${url}releases/download/v${pkgver}/fflogs-v${pkgver}.AppImage"
 		"${_pkgname}.desktop")
 noextract=("${_appimage}")
-sha256sums_x86_64=('650282f141f23102c4b372f387c8b99d001cc8baf6880ef7aa1ddb5f8947146a'
-                   '36a41f0500c96cdd674a83e42a5e0d941c49a4fb882118f3ba0cd4f610ff6bf4')
+sha256sums_x86_64=('9b5d945c98c1c14b0580376cde38af634190eb79bce581dd880339dcce18fefc'
+                   'b1772934cd5bda835afff2b2796d7c2c219b37ab3ac8dec7bb76fd5a781660d6')
 
 prepare() {
     chmod +x "${_appimage}"
