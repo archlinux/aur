@@ -2,7 +2,7 @@
 # https://github.com/TD-Sky/PKGBUILDs
 
 pkgname=conceal-bin
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Command line recycle bin"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-bin}")
 depends=('fzf')
 optdepends=('skim: supports skim as finder')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}-$arch-unknown-linux-gnu.tar.gz")
-sha256sums=('697ff316cafcb15e08d2d218f0ad60424a7adf8479d84a6fd38addc942c0fd93')
+sha256sums=('f92e8de72462f04fd8978835d4f7f4a6b158805babe6142416c3c6354c9cd25a')
 
 package() {
   install -Dm 755 conceal -t "$pkgdir/usr/bin"
