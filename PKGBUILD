@@ -13,7 +13,7 @@ depends=(
   'python-dateutil'
   'python-dacite'
 )
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 conflicts=('python-soundcloud')
 provides=('python-soundcloud')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
@@ -21,12 +21,12 @@ sha512sums=('8843a6cafb25df7753a5dd6dd2545d8fd9f8a092102d0904ab5654cb9f54e583e19
 
 build() {
   cd "${_name}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${_name}-${pkgver}"
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 # vim:set ts=2 sw=2 et:
