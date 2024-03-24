@@ -20,7 +20,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     CC_FOR_BUILD=gcc ${_arch}-configure \
-      --enable-cxx \
+      --enable-cxx=detect \
       --disable-static
     make
     popd
