@@ -1,18 +1,18 @@
 # Maintainer: zaps166 <spaz16@wp.pl>
 
 pkgname=qmplay2-git
-pkgver=24.03.16.r0.g09d462fc
+pkgver=24.03.16.r1.g3f6d0274
 pkgrel=1
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/zaps166/QMPlay2'
 license=('LGPL')
-depends=('qt5-base' 'qt5-svg' 'qt5-declarative' 'qt5-x11extras' 'ffmpeg' 'libass' 'libgl' 'libva' 'libxv' 'alsa-lib' 'libcdio' 'taglib' 'libcddb' 'libpulse' 'libgme' 'libsidplayfp' 'pipewire' 'rubberband')
+depends=('qt6-base' 'qt6-svg' 'qt6-declarative' 'qt6-5compat' 'ffmpeg' 'libass' 'libgl' 'libva' 'libxv' 'alsa-lib' 'libcdio' 'taglib' 'libcddb' 'libpulse' 'libgme' 'libsidplayfp' 'pipewire' 'rubberband')
 optdepends=('pulseaudio: PulseAudio support'
             'game_music_emu-kode54-git: Better chiptune support (less bugs in sound, AUR package)')
 conflicts=('qmplay2')
 provides=('qmplay2')
-makedepends=('ninja' 'clang' 'git' 'pkg-config' 'qt5-tools' 'cmake' 'fakeroot' 'shaderc')
+makedepends=('ninja' 'clang' 'git' 'pkg-config' 'qt6-tools' 'cmake' 'fakeroot' 'shaderc')
 source=(
     'git+https://github.com/zaps166/QMPlay2.git'
     'git+https://github.com/zaps166/QmVk.git'
@@ -50,8 +50,7 @@ build() {
         -DUSE_LINK_TIME_OPTIMIZATION=OFF \
         -DUSE_PCH=ON \
         -DUSE_GLSLC=ON \
-        -DUSE_GIT_VERSION=ON \
-        -DBUILD_WITH_QT6=OFF
+        -DUSE_GIT_VERSION=ON
     time ninja
 }
 
