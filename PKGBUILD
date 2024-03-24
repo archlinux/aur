@@ -1,14 +1,13 @@
 # Maintainer: Denis Ismailaj <denis.ismailaj1@gmail.com>
 pkgname=i3-auto-arrange
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
-pkgdesc="This is a simple Shell script that will automatically rearrange i3 workspaces"
+pkgdesc="Rearrange i3 workspaces to get rid of gaps in numbering"
 arch=('any')
 url="https://github.com/denis-ismailaj/i3-auto-arrange"
 license=('GPL3')
 depends=('i3-wm' 'jq')
 
 package() {
-	sudo cp "$startdir/i3-auto-arrange" /usr/bin
+	install -D -m 755 "$srcdir/i3-auto-arrange" "$pkgdir/usr/bin/i3-auto-arrange"
 }
-
