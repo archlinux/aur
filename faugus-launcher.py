@@ -380,6 +380,11 @@ class Main(Gtk.Window):
         if game.gamemode:
             gamemode = "gamemoderun"
 
+        # Check if the icon directory exists and create if it doesn't
+        icon_directory = os.path.expanduser("~/.config/faugus-launcher/icons/")
+        if not os.path.exists(icon_directory):
+            os.makedirs(icon_directory)
+
         # Execute wrestool command to extract icon
         os.system(f'wrestool -x -t14 "{path}" > ~/.config/faugus-launcher/icons/{title_formatted}.ico')
 
@@ -417,13 +422,6 @@ Path={os.path.expanduser("~/.config/faugus-launcher/")}
         # Copy the shortcut to Desktop
         desktop_shortcut_path = os.path.expanduser(f"~/Desktop/{title_formatted}.desktop")
         shutil.copy(desktop_file_path, desktop_shortcut_path)
-
-        # Check if the icon directory exists and create if it doesn't
-        icon_directory = os.path.expanduser("~/.config/faugus-launcher/icons/")
-        if not os.path.exists(icon_directory):
-            os.makedirs(icon_directory)
-
-
 
     def remove_shortcut(self, game):
         # Remove existing shortcut if it exists
