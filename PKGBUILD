@@ -1,7 +1,7 @@
 # Maintainer: Joerg Weislogel <mutoroglin at posteo dot de>
 
 pkgname=waybar-cava
-pkgver=0.9.24
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors, with module cava (Cross-platform Audio Visualizer)'
 arch=('x86_64')
@@ -50,9 +50,15 @@ optdepends=(
 )
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/Alexays/Waybar/archive/$pkgver.tar.gz"
+    waybar-cava-0.10.0-1.patch
 )
-sha256sums=('57aa7860bc066ebf4f3327dafa9841100b098c0dec1dce4baaa1fae63e9b57ae'
+sha256sums=('3af6665889868f2334ba1793c8b0f3104c4c3b176a8c759f0d08f07266ad2620'
+            'a31c63995c111db171286d41b5c3aa779c270f5a3cc7eb2c2ad9c0a245e000a9'
 )
+
+prepare() {
+    patch --directory="Waybar-${pkgver}" --strip=1 --input="${srcdir}/waybar-cava-0.10.0-1.patch"
+}
 
 build() {
     cd "Waybar-${pkgver}"
@@ -74,16 +80,17 @@ build() {
           -Dlibudev=enabled \
           -Dmpd=enabled \
           -Djack=enabled \
-          -Dgtk-layer-shell=enabled \
           -Drfkill=enabled \
           -Dsndio=enabled \
           -Dsystemd=enabled \
           -Dlogind=enabled \
           -Dman-pages=enabled \
           -Dwireplumber=enabled \
-          -Dcava=enabled \
+          -Dcava=disabled \
           -Dtests=disabled \
           build
+
+#          -Dgtk-layer-shell=enabled \
 
     ninja -C build
 }
