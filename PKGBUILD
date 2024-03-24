@@ -1,7 +1,7 @@
 # Maintainer: PRESFIL <echo cHJlc2ZpbEBwcm90b25tYWlsLmNvbQo= | base64 -d>
 
 pkgname=i2pd-qt-git
-pkgver=2.48.0.r0.6e0a771
+pkgver=2.50.0.r0.41546bf # renovate: datasource=github-tags depName=PurpleI2P/i2pd-qt
 pkgrel=1
 pkgdesc="i2pd with Qt based GUI "
 arch=('any')
