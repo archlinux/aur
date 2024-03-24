@@ -1,14 +1,14 @@
 # Maintainer: Vladislav Nepogodin <nepogodin.vlad@gmail.com>
 
 pkgname=btop-git
-pkgver=1.3.0.r896.3567254
+pkgver=1.3.2.r1032.d168073
 pkgrel=1
 pkgdesc="A monitor of resources"
 arch=(x86_64)
 url="https://github.com/aristocratos/btop"
 license=('Apache-2.0')
 depends=('gcc-libs')
-makedepends=('gcc' 'make' 'git')
+makedepends=('gcc' 'make' 'lowdown' 'git')
 optdepends=(
   'nvidia-utils: NVIDIA GPU support'
   'rocm-smi-lib: AMD GPU support'
