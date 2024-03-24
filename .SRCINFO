@@ -1,7 +1,7 @@
 pkgbase = scli-git
 	pkgdesc = A simple terminal user interface for Signal, wrapping around 'signal-cli'.
-	pkgver = 0.7.3+23.r475.20230516.0239e04
-	pkgrel = 2
+	pkgver = 0.7.4.r478.20240228.20d0b8d
+	pkgrel = 1
 	url = https://github.com/isamert/scli
 	arch = any
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = scli-git
 	optdepends = qrencode: Generate QR codes for linking device.
 	optdepends = xclip: For X11 clipboard interaction.
 	optdepends = wl-clipboard: For Waylands clipboard interaction.
-	provides = scli=0.7.3+23.r475.20230516.0239e04
+	provides = scli=0.7.4.r478.20240228.20d0b8d
 	conflicts = scli
 	source = scli::git+https://github.com/isamert/scli.git
 	sha256sums = SKIP

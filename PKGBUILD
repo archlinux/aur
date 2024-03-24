@@ -2,8 +2,8 @@
 # Contributor: David Pedersen (https://aur.archlinux.org/account/Limero)
 _pkgname="scli"
 pkgname="${_pkgname}-git"
-pkgver=0.7.3+23.r475.20230516.0239e04
-pkgrel=2
+pkgver=0.7.4.r478.20240228.20d0b8d
+pkgrel=1
 pkgdesc="A simple terminal user interface for Signal, wrapping around 'signal-cli'."
 arch=("any")
 url="https://github.com/isamert/scli"
