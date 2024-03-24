@@ -1,7 +1,7 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-indexer
-pkgver=4.7.2
+pkgver=4.7.3
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
 pkgrel=1
@@ -21,7 +21,7 @@ validpgpkeys=(
 
 source=(
   "https://packages.wazuh.com/4.x/yum/${pkgname}-${_prodver}.x86_64.rpm"
-  'wazuh-indexer-4.7.2-1.x86_64.rpm.sig'
+  "${pkgname}-${pkgver}-${pkgrel}.x86_64.rpm.sig"
 )
 
 backup=(
@@ -30,7 +30,7 @@ backup=(
   'etc/wazuh-indexer/opensearch.keystore'
   )
 
-sha512sums=('e6de824af7712efeef923040a3d086db6e180576af61772140cdf5b30a02655cbe0b615eec40a8b18e9a28df06ddd465e4a44affde5919a64e5a1913bc142ca0'
+sha512sums=('04b154074df31a5fa764c93b8ba416694def4fbeb083f5179029cee761babb7170f668a74407575aa2740b99e7180eea756df9771b15240e2a389aedbf664227'
             'SKIP')
 
 install=$pkgname.install
