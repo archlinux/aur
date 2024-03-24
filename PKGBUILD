@@ -28,5 +28,5 @@ prepare() {
 
 package() {
     cd "$srcdir"
-    cp -dpr --no-preserve=ownership ./usr "$pkgdir"
+    cp -dpr --no-preserve=ownership ./usr/share "$pkgdir"
 }
