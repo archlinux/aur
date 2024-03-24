@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=nl.dvdgiessen.dbusapplauncher
+Exec=/usr/bin/dbus-app-launcher
+

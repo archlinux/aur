@@ -1,0 +1,18 @@
+pkgbase = dbus-app-launcher
+	pkgdesc = Simple app launcher for D-Bus
+	pkgver = 0.1.0.0
+	pkgrel = 1
+	url = https://github.com/DvdGiessen/dbus-app-launcher
+	arch = x86_64
+	license = MIT
+	makedepends = ghc
+	makedepends = uusi
+	depends = ghc-libs
+	depends = haskell-dbus
+	depends = haskell-extra
+	source = https://hackage.haskell.org/packages/archive/dbus-app-launcher/0.1.0.0/dbus-app-launcher-0.1.0.0.tar.gz
+	source = nl.dvdgiessen.dbusapplauncher.service
+	sha256sums = bb09fc801920df9d217a0993064c7848a9811d8b24bd26119aa963f327305490
+	sha256sums = bdf13de2547f626ff797070f493999577b9f499d72e904b5d7801e92d11b0387
+
+pkgname = dbus-app-launcher
