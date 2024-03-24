@@ -1,14 +1,19 @@
 pkgbase = python-django-formtools
 	pkgdesc = A set of high-level abstractions for Django forms
-	pkgver = 2.4.1
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://github.com/jazzband/django-formtools
 	arch = any
 	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
+	makedepends = python-wheel
 	depends = python-django
-	source = python-django-formtools-2.4.1.tar.gz::https://github.com/jazzband/django-formtools/archive/2.4.1.tar.gz
-	sha256sums = 97a2fccc43b1667121750dedc48b876056253372c953104143fb8078af880ad1
+	source = python-django-formtools-2.5.1.tar.gz::https://github.com/jazzband/django-formtools/archive/2.5.1.tar.gz
+	source = 0001-Exclude-all-tests-from-wheel.patch
+	sha256sums = 8ebd2845691d532a1dac14361da39318af7fac6df1e4a541ac945798ab5ac7cd
+	sha256sums = 23eca9559f3504d65ca799a47c72b75bce7b5a67d06e47db8f915b39152304f0
 
 pkgname = python-django-formtools

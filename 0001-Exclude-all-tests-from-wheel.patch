@@ -1,0 +1,29 @@
+From 53a225c32a0dff2d5e501020d514c7be653e3d09 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klemens=20Sch=C3=B6lhorn?= <klemens@schoelhorn.eu>
+Date: Sun, 24 Mar 2024 15:22:00 +0100
+Subject: [PATCH] Exclude all tests from wheel
+
+Previously, the "tests/wizard" package was still included in the built
+wheel, because the tool.setuptools.packages.find.exclude directive
+matches each fully qualified package name separately. Exclude all test
+packages by using a glob.
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 6a8003f..8c7d5ea 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -53,7 +53,7 @@ license-files = ["LICENSE"]
+ zip-safe = false
+ 
+ [tool.setuptools.packages.find]
+-exclude = ["tests"] # tests.*
++exclude = ["tests*"]
+ namespaces = false
+ 
+ [tool.setuptools_scm]
+-- 
+2.44.0
+
