@@ -1,7 +1,7 @@
 # Maintainer: Alexander Jacocks <alexander@redhat.com>
 
 pkgname="bambustudio"
-pkgver=01.08.03.89
+pkgver=01.08.04.51
 pkgrel=1
 pkgdesc="PC Software for BambuLab's 3D printers"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
   'TBB.cmake'
   'OpenEXR.cmake'
   )
-sha512sums=('5e228dff823db479af88008c12e0a9c96b4febf22fc6379c7b3ff2fe843f04f71f1957d50326bc459fbd0097f21787be61cf9fe331b20bd4b631c963ca13a719'
+sha512sums=('9e09544c406b7b7b2e124262b4940d59ec3ecd3ddd0a7dac3255077338762729f825e5a2d7d890239e3054667295867c985d75fdc213f9c0be3a522a887f75e5'
             'e3cb1b072754ae6443fa136fffa263761b5e4e3da5dca1e91b7c4d577daaf01afa0affde04f1355fc404fcd336852db4ce8dc57938833f864346a0b17c12d6d6'
             '208a24cd44521907a261a5fa0a646eb469099bbe1b96805070e09cc1f288d7b8ff7d79dfd153e08f1ce5894030f87e5d89f33cfadfab8f2454f07d5495d360f1'
             'fcc49f8364b9446b34e0b96c72e5e4ff0288d2ebbdef8f38f8a488f97558133d0c826de1b7181e1484135e6a9e3b549b6c5fd66d37d8f3b13751b03a675d4e41')
