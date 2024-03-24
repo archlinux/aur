@@ -1,6 +1,6 @@
 pkgbase = fdpp-git
 	pkgdesc = 64 bit FreeDOS++ for dosemu2. Latest git checkout.
-	pkgver = 1.7+90.r1533.20231230.d8e05b8
+	pkgver = 1.7+138.r1581.20240318.e4e7992
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/dosemu2/fdpp
@@ -16,7 +16,7 @@ pkgbase = fdpp-git
 	depends = gcc-libs
 	depends = glibc
 	depends = libelf
-	provides = fdpp=1.7+90.r1533.20231230.d8e05b8
+	provides = fdpp=1.7+138.r1581.20240318.e4e7992
 	conflicts = fdpp
 	options = !strip
 	source = fdpp::git+https://github.com/dosemu2/fdpp.git
