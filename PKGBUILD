@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=maxLik
-_pkgver=1.5-2
+_pkgver=1.5-2.1
 pkgname=r-${_pkgname,,}
-pkgver=1.5.2
-pkgrel=4
+pkgver=1.5.2.1
+pkgrel=1
 pkgdesc='Maximum Likelihood Estimation and Related Tools'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -24,7 +24,7 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7cee05be0624b6a76911fa7b0d66f3e1b78460e0c55ed8bc904ce1e8af7bb15d')
+sha256sums=('d054c7626d0b4e03a5d5beecb7a39e60785322a146c34b2e1ee9f7939183925d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
