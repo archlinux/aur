@@ -1,8 +1,8 @@
 #Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 pkgname=tclkit
-pkgver=8.6.11
-_tcl_ver=8.6.11
-_tk_ver=8.6.11.1
+pkgver=8.6.14
+_tcl_ver=8.6.14
+_tk_ver=8.6.14
 _kit_ver=8.6.4-9
 pkgrel=1
 pkgdesc="single-file executable that provides a complete Tcl and Tk runtime"
@@ -20,8 +20,8 @@ source=("kitgen-${_kit_ver}.tar.gz::https://github.com/stiefel40k/kitgen/archive
 	"tcl-${_tcl_ver}.tar.gz::https://prdownloads.sourceforge.net/tcl/tcl${_tcl_ver}-src.tar.gz")
 
 sha256sums=('6a78963842e6810f85ba81a01866ba705b470feee8c0bb25a86992560b215150'
-            '006cab171beeca6a968b6d617588538176f27be232a2b334a0e96173e89909be'
-            '8c0486668586672c5693d7d95817cb05a18c5ecca2f40e2836b9578064088258')
+            '8ffdb720f47a6ca6107eac2dd877e30b0ef7fac14f3a84ebbd0b3612cee41a94'
+            '5880225babf7954c58d4fb0f5cf6279104ce1cd6aa9b71e9a6322540e1c4de66')
 noextract=("tk-${_tk_ver}.tar.gz" "tcl-${_tcl_ver}.tar.gz")
 
 prepare() {
