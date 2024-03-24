@@ -1,20 +1,21 @@
-# Contributor: Anonymous
+# Contributor: CpanBot <cpanbot at sch bme hu>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-test-kit'
-pkgver='2.15'
+pkgver='2.16'
 pkgrel='1'
 pkgdesc="Build custom test packages with only the features you want"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-hook-lexwrap>=0' 'perl-import-into>=0' 'perl-module-runtime>=0' 'perl-sub-delete>=0' 'perl-test-exception>=0' 'perl-test-nowarnings>=0' 'perl-test-output>=0' 'perl-test-pod>=0' 'perl-test-warn>=0' 'perl>=5.010')
+depends=('perl-hook-lexwrap>=0' 'perl-import-into>=0' 'perl-module-runtime>=0' 'perl-sub-delete>=0' 'perl>=5.010')
 makedepends=()
+checkdepends=('perl-test-exception>=0' 'perl-test-nowarnings>=0' 'perl-test-output>=0' 'perl-test-pod>=0' 'perl-test-warn>=0')
 url='https://metacpan.org/release/Test-Kit'
-source=('http://search.cpan.org/CPAN/authors/id/K/KA/KAORU/Test-Kit-2.15.tar.gz')
-md5sums=('12f326522549597442149669a315716b')
-sha512sums=('ef798307e44c214f3b312b1bde3b48a39948c72c683a17b0e0ab7b097cbc991408a6382d06a94bbfa8cd0e6d92a4ba5339245463c249660f987dd8a5aef4691e')
-_distdir="Test-Kit-2.15"
+source=('http://search.cpan.org/CPAN/authors/id/K/KA/KAORU/Test-Kit-2.16.tar.gz')
+md5sums=('396500ae77991ac2e3ea1a90bb66d5c5')
+sha512sums=('077fa559cd1582c9ef30427ddba0bd77a8dde0d9e979dfc92e7f35781363e701f14c90e31a85df8e7c924ab7f9af4125bffe892b10b56cc2f6ef1d3a3b590364')
+_distdir="Test-Kit-2.16"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
