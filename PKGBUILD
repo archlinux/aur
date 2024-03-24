@@ -6,7 +6,7 @@ pkgname=minify
 pkgver=2.20.19
 pkgrel=1
 pkgdesc="Minifier CLI for HTML, CSS, JS, JSON, SVG and XML"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/tdewolff/minify"
 license=('MIT')
 makedepends=('go')
@@ -21,9 +21,11 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  export CGO_ENABLED=0
+  if [ "$CARCH" == "x86_64" ]; then
+    export CGO_ENABLED=0
+  fi
   go build -trimpath -buildmode=pie -mod=readonly -modcacherw \
-           -ldflags "-X 'main.Version=v$pkgver'" -o build ./cmd/minify
+           -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -X 'main.Version=v$pkgver'" -o build/minify ./cmd/minify
 }
 
 check() {
@@ -33,7 +35,7 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 "build/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 build/minify "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "cmd/minify/bash_completion" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
   source cmd/minify/bash_completion
