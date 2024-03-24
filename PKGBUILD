@@ -1,16 +1,17 @@
 # Maintainer: acuteenvy
 pkgname=tlrc-bin
 _pkgname=tlrc
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Official tldr client written in Rust"
 arch=('x86_64')
 url="https://github.com/tldr-pages/$_pkgname"
 license=('MIT')
+depends=('gcc-libs')
 provides=('tldr')
 conflicts=('tldr')
 source=("$url/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-b2sums=('be85828612b0560c8f96bfb3a44006d24b6fd6cef5257a11c780d8166a9051328dc849b3e6b8a271e08140c99369db00d11a7f2dedbcc051694f0dbdbb65d7da')
+b2sums=('e882f0a34aa6453def99d427bdda614a2378ed4691ffffe6f3153e1d969b5eecabaa298bac02f778bf64b79117cfc46f7824470cefd9bb6048bf2ecc62910b10')
 
 package() {
     install -Dm755 tldr -t "$pkgdir/usr/bin"
