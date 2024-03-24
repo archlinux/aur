@@ -1,15 +1,21 @@
 pkgbase = meteo
-	pkgdesc = Meteo es un proyecto de software libre que recopila datos meteorológicos para Radit.
-	pkgver = 1.0.2+r2.ea7996c
-	pkgrel = 1
-	url = http://www.radit.org/net
-	install = meteo.install
-	arch = any
-	license = GPL v3
+	pkgdesc = A forecast application using OpenWeatherMap API
+	pkgver = 0.9.9.3
+	pkgrel = 2
+	url = https://gitlab.com/bitseater/meteo
+	arch = x86_64
+	license = GPL-3.0-or-later
+	checkdepends = appstream
 	makedepends = git
-	depends = qt4
-	source = meteo::git+https://github.com/jfperini/meteo.git
-	md5sums = SKIP
+	makedepends = meson
+	makedepends = vala
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = webkit2gtk
+	conflicts = meteo-gtk
+	replaces = meteo-gtk
+	source = git+https://gitlab.com/bitseater/meteo.git#commit=5d8501911faed913036609e8ae7dfb2b35d76f4a?signed
+	validpgpkeys = 900E41F44EFF4B6D696EB80AE6BDC743AED36483
+	sha256sums = SKIP
 
 pkgname = meteo
-

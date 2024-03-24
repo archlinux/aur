@@ -1,62 +1,37 @@
-# Maintainer:  jfperini <@jfperini>
-# Contributor: jfperini <@jfperini>
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=meteo
-pkgver=1.0.2+r2.ea7996c
-pkgrel=1
-pkgdesc="Meteo es un proyecto de software libre que recopila datos meteorológicos para Radit."
-url="http://www.radit.org/net"
-arch=('any')
-license=('GPL v3')
-install=meteo.install
-depends=('qt4')
-makedepends=('git')
-# provides=('')
-# conflicts=('')
-source=("$pkgname"::'git+https://github.com/jfperini/meteo.git')
-# Because the sources are not static, skip Git checksum:
-md5sums=('SKIP')
+pkgver=0.9.9.3
+pkgrel=2
+pkgdesc="A forecast application using OpenWeatherMap API"
+arch=('x86_64')
+url="https://gitlab.com/bitseater/meteo"
+license=('GPL-3.0-or-later')
+depends=('gtk3' 'libayatana-appindicator' 'webkit2gtk')
+makedepends=('git' 'meson' 'vala')
+checkdepends=('appstream')
+conflicts=('meteo-gtk')
+replaces=('meteo-gtk')
+_commit=5d8501911faed913036609e8ae7dfb2b35d76f4a  # tags/0.9.9.3^0
+source=("git+https://gitlab.com/bitseater/meteo.git#commit=${_commit}?signed")
+sha256sums=('SKIP')
+validpgpkeys=('900E41F44EFF4B6D696EB80AE6BDC743AED36483') # Carlos Suárez <bitseater@gmail.com>
 
 pkgver() {
-
-	cd "$srcdir/$pkgname"
-      
-	# Use the tag of the last commit
-	printf "1.0.2+r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-
+  cd "$pkgname"
+  git describe --tags | sed 's/-/+/g'
 }
 
-
-build()
-{
-
-      	cd "$srcdir/$pkgname/src"
-      
-	msg2 "  -> Build program..."
-	qmake-qt4 $pkgname.pro
-      	make
-      
+build() {
+  arch-meson "$pkgname" build
+  meson compile -C build
 }
 
+check() {
+  meson test -C build --print-errorlogs || :
+}
 
 package() {
+  meson install -C build --destdir "$pkgdir"
 
-      	cd "$srcdir/$pkgname"
-      
-	rm -rf {.git,.gitignore,CONTRIBUTORS,COPYING,CREDITS,LICENSE.txt,README.md}
-
-    	msg2 "  -> Installing program..."
-      	install -d $pkgdir/{opt/radit,usr/bin}
-      	cp -a "./LinuxDesktop/$pkgname" "$pkgdir/opt/radit"
-      	cp -u "./launcher/$pkgname" "$pkgdir/usr/bin"
-      
-      	chmod -R 775 $pkgdir/opt/radit/$pkgname
-
-      	install -Dm644 "./launcher/$pkgname.svg" "$pkgdir/usr/share/pixmaps/$pkgname.svg"
-      	install -Dm644 "./launcher/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-
-      	# chmod -R ugo+rX "$pkgdir/opt"
-      
+  ln -s /usr/bin/com.gitlab.bitseater.meteo "$pkgdir/usr/bin/$pkgname"
 }
-
-# vim: ts=2 sw=2 et:
