@@ -9,7 +9,7 @@ pkgname=stm32cubeprog
 _pkgname="STM32CubeProgrammer"
 pkgver=2.16.0
 _pkg_file_name=en.stm32cubeprg-lin-v${pkgver//./-}.zip
-pkgrel=1
+pkgrel=2
 pkgdesc="An all-in-one multi-OS software tool for programming STM32 products."
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubeprog.html"
@@ -31,10 +31,10 @@ makedepends=('icoutils'
              'fontconfig'
              'gsfonts'
              'p7zip'
-             'jdk8-openjdk'
-             'izpack')
+             'java-environment=8')
 provides=("${pkgname}rammer")
-options=('!strip')
+options=('!strip'
+         '!debug')
 
 # Big thanks to user "yjun" for direct download link advice.
 # cURL inspiration from davinci-resolve package maintained by "Alex S".
@@ -63,9 +63,7 @@ sha256sums=('b462f66130028b281b069aae8963bd67d9bea43c9c48ce313ce4d1950cc5e547'
 
 prepare() {
   chmod u+x Setup${_pkgname}-${pkgver}.linux
-  mkdir -p com/st/CustomPanels
-  javac AnalyticsPanelsConsoleHelper.java
-  cp AnalyticsPanelsConsoleHelper.class com/st/CustomPanels/AnalyticsPanelsConsoleHelper.class
+  javac -cp "Setup${_pkgname}-${pkgver}.exe" -d . AnalyticsPanelsConsoleHelper.java
   7z a Setup${_pkgname}-${pkgver}.exe com/st/CustomPanels/AnalyticsPanelsConsoleHelper.class
 }
 
@@ -93,11 +91,7 @@ package() {
                     ${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png
   done
   
-  # doc
-  for _doc in CLI_TREE.txt Readme.txt
-  do
-    install -Dm644 ${pkgdir}/opt/${pkgname}/doc/${_doc} -t ${pkgdir}/usr/share/doc/${pkgname}
-  done
+  install -Dm644 ${pkgdir}/opt/${pkgname}/doc/Readme.txt -t ${pkgdir}/usr/share/doc/${pkgname}
 
   # license
   install -Dm644 ${pkgdir}/opt/${pkgname}/doc/license.txt -t ${pkgdir}/usr/share/licenses/${pkgname}
