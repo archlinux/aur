@@ -8,14 +8,14 @@ pkgname=zig-dev-bin
 # Without changing the epoch, the old version scheme would be considered
 # "newer" greater than the new version scheme
 epoch=1
-# NOTE: Hyphen -> underscore
-pkgver=0.12.0_dev.700+376242e58
+# NOTE: Sanitize version '-' -> '_', '+' -> `.g`
+pkgver=0.12.0_dev.3433.g640acf862
 pkgrel=1
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software"
 arch=('x86_64' 'aarch64')
 url="https://ziglang.org/"
 license=('MIT')
-makedepends=(curl jq minisign)
+makedepends=(curl jq minisign ripgrep)
 options=('!strip')
 provides=('zig')
 conflicts=('zig')
@@ -76,9 +76,35 @@ fetch_version_index() {
     echo "$index_file"
 }
 
-pkgver() {
+# The original version of the zig package, without any sanitation
+original_pkgver() {
     local index_file="$(fetch_version_index)"
-    jq -r .master.version "$index_file" | sed 's/-/_/'
+    jq -r '.master.version' "$index_file";
+}
+
+# Sanitizes the package version, replacing special characters
+#
+# Specifically, we replace '-' with '_' because it's special-cased by makepkg & pacman,
+# and replace '+$commit" with '.g$commit' because '+' is special-cased in URLs.
+# Also the second form '.g$commit" is more consistent with the VCS package guidelines
+# https://wiki.archlinux.org/title/VCS_package_guidelines#The_pkgver()_function
+#
+# Unlike VCS packages, there aren't really any clear guidelines on versioning
+# for auto-updating binaries,
+# so the versioning format of the package has changed somewhat over time.
+pkgver() {
+    (
+        set -o pipefail;
+        # Sanitize `-` to `_`, `+` to `.g`
+        #
+        # So `0.12.0-dev.3429+13a9d94a8` becomes `0.12.0-dev.3429.g13a9d94a8`
+        #
+        # See VCS package guidelines for details:
+        original_pkgver | rg -e '^([\w\.]+)-(dev[\w\.]+)\+(\w+)$' -r '${1}_${2}.g${3}' || {
+            error "Version doesn't match pattern: '$(original_pkgver)'";
+            exit 1;
+        }
+    )
 }
 
 prepare() {
@@ -128,7 +154,7 @@ check() {
     # Right now there is no way to disable the cache (see Zig issue #12317)
     # Instead we shove everything in a local directory and delete it
     cache_dir="${srcdir}/zig-cache"
-    cd "${srcdir}/zig-linux-${CARCH}-${pkgver//_/-}";
+    cd "${srcdir}/zig-linux-${CARCH}-$(original_pkgver)"
     echo "Running Zig Hello World"
     ./zig run --cache-dir "$cache_dir" --global-cache-dir "$cache_dir" "$hello_file"
     ./zig test --cache-dir "$cache_dir" --global-cache-dir "$cache_dir" "$hello_file"
@@ -161,7 +187,7 @@ check() {
 }
 
 package() {
-  cd "${srcdir}/zig-linux-${CARCH}-${pkgver//_/-}"
+  cd "${srcdir}/zig-linux-${CARCH}-$(original_pkgver)"
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/lib/zig"
   cp -R lib "${pkgdir}/usr/lib/zig/lib"
