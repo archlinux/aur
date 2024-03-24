@@ -1,0 +1,17 @@
+pkgbase = hhd-ui-git
+	pkgdesc = Browser based user interface for 'hhd' ("Handheld Daemon"). Latest git checkout.
+	pkgver = 2.0.3.r329.20240315.cf9464e
+	pkgrel = 1
+	url = https://github.com/hhd-dev/hhd-ui
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	source = hhd-ui::git+https://github.com/hhd-dev/hhd-ui.git
+	sha256sums = SKIP
+
+pkgname = hhd-ui-git
+	depends = hhd
+	optdepends = 
+	provides = hhd-ui=2.0.3.r329.20240315.cf9464e
+	conflicts = hhd-ui
