@@ -1,7 +1,7 @@
 # Maintainer: archcrack <leo.clifm@outlook.com>
 
 pkgname=clifm
-pkgver=1.17
+pkgver=1.18
 pkgrel=1
 pkgdesc="The command line file manager"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'aarch64' 'armv7h')
@@ -21,7 +21,7 @@ optdepends=(
 	'udisks2: (un)mount storage devices'
 	)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('c6b64bbbdb4f1c7a752db004150ac3a773696624ec62d8d33204b259e810421f')
+sha256sums=('b3293074a62542c0ba54bd246391f9e38e0d48ea80c222bf8112469cb97a550c')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
