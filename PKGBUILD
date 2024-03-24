@@ -5,8 +5,8 @@ pkgver=1.0.16
 pkgrel=1
 pkgdesc='Simple audio recorder'
 url="https://github.com/alexkdeveloper/recorder"
+license=('GPL-3.0-or-later')
 arch=('x86_64' 'aarch64')
-license=('GPL3')
 depends=('gstreamer' 'libadwaita' 'libpulse')
 makedepends=('git' 'meson' 'vala')
 checkdepends=('appstream-glib')
@@ -23,6 +23,6 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
   ln -s com.github.alexkdeveloper.$pkgname "$pkgdir/usr/bin/$pkgname"
 }
