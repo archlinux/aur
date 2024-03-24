@@ -1,6 +1,6 @@
 pkgbase = mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 24.1.0_devel.184903.c6635c09d0d.d41d8cd
+	pkgver = 24.1.0_devel.186662.72e1e6e1206.d41d8cd
 	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = x86_64
@@ -68,6 +68,8 @@ pkgbase = mesa-git
 	conflicts = mesa-vdpau
 	conflicts = vulkan-swrast
 	conflicts = mesa-libgl
+	options = !lto
+	options = !debug
 	source = mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main
 	source = LICENSE
 	md5sums = SKIP

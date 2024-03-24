@@ -12,7 +12,7 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=24.1.0_devel.185961.12c71ef847c.d41d8cd
+pkgver=24.1.0_devel.186662.72e1e6e1206.d41d8cd
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto' 'libxml2' 'libvdpau' 'libva' 'elfutils' 'libxrandr'
@@ -35,6 +35,9 @@ md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a')
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
+options=(!lto !debug)
+# lto and debug are disabled manually through meson -D flags, but it feels cleaner to also list them here.
+
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
@@ -148,7 +151,7 @@ build () {
        -D valgrind=disabled \
        -D tools=[] \
        -D zstd=enabled \
-       -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc,av1dec,av1enc,vp9dec \
+       -D video-codecs=all \
        -D buildtype=plain \
        --wrap-mode=nofallback \
        -D prefix=/usr \
