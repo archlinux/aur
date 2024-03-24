@@ -78,7 +78,7 @@ package() {
 		install -Dm0644 "src/cmd/${_pkgname}/fun/${_fun}" "${pkgdir}/usr/share/ksh/functions/${_fun}"
 	done
 
-	# Install dynamic libraries used by ksh (e.g. libast)
+	# Install shared libraries used by ksh (e.g. libast)
 	for _dynlib in arch/linux.*/dyn/lib/*; do
 		if [[ -L ${_dynlib} ]]; then
 			cp -P "${_dynlib}" "${pkgdir}/usr/lib"
