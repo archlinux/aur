@@ -1,7 +1,7 @@
 pkgbase = emoji-keyboard-bin
 	pkgdesc = Virtual keyboard like emoji palette (binary release)
 	pkgver = 4.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/OzymandiasTheGreat/emoji-keyboard
 	arch = x86_64
 	license = MIT
@@ -10,8 +10,12 @@ pkgbase = emoji-keyboard-bin
 	provides = emoji-keyboard
 	conflicts = emoji-keyboard
 	source = https://github.com/OzymandiasTheGreat/emoji-keyboard/releases/download/v4.0.0/emoji-keyboard_4.0.0_amd64.deb
+	source = https://github.com/OzymandiasTheGreat/emoji-keyboard/raw/v4.0.0/src-tauri/icons/icon.png
+	source = https://github.com/OzymandiasTheGreat/emoji-keyboard/raw/v4.0.0/app-icon.svg
 	source = https://github.com/OzymandiasTheGreat/emoji-keyboard/raw/v4.0.0/LICENSE
 	sha256sums = bfc9c56bc3355dd5d2b5f44451eea8ec6b41f7c8afbe6370b38f18a80b083873
-	sha256sums = SKIP
+	sha256sums = 438b330601ddf2540e164f2d9ea4f4da72a56d5947d84e98f07e1d3556aa8d73
+	sha256sums = 51a27f3ba4d6635ce12813264c2c3218e040b6db88678716500d25f5edd164f4
+	sha256sums = 3e2288c507c722a8644c37d1d7b76181b9dbca17c4c32d69813eebd721aa2f06
 
 pkgname = emoji-keyboard-bin
