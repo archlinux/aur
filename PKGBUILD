@@ -56,13 +56,13 @@ prepare() {
   cd "${srcdir}/${_pkgname}"
 
   msg2 "Fetching additional node.js modules ..."
-  npm install -g --production --cache "${srcdir}/npm-cache"
+  npm install --omit=dev --cache "${srcdir}/npm-cache"
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  DESTDIR="${pkgdir}" npm install -g --production --cache "${srcdir}/npm-cache" "${srcdir}/$(npm pack --pack-destination "${srcdir}")"
+  DESTDIR="${pkgdir}" npm install -g --omit=dev --cache "${srcdir}/npm-cache" "${srcdir}/$(npm pack --pack-destination "${srcdir}")"
 
   install -D -v -m755 "${srcdir}/ddplan.sh" "${pkgdir}/usr/bin/ddplan"
 
