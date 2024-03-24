@@ -10,7 +10,7 @@ url="https://www-verimag.imag.fr/~raymond/home/tools/t2n/"
 license=('LGPL')
 makedepends=("automake" "autoconf")
 depends=("libusb-compat" "lego-udev-rules")
-source=("http://www-verimag.imag.fr/~raymond/t2n/files/${pkgname}-${pkgver}.src.tgz" \
+source=("http://www-verimag.imag.fr/~raymond/files/t2n/files/${pkgname}-${pkgver}.src.tgz" \
 	"Makefile.am"
 	"configure.ac")
 
