@@ -5,7 +5,7 @@
 
 pkgname=postsrsd-git
 epoch=1
-pkgver=2.0.8+4.r185.20231024.g81bcc85
+pkgver=2.0.8+11.r192.20240305.g6c15e5f
 pkgrel=1
 pkgdesc="Provides the Sender Rewriting Scheme (SRS) via TCP-based lookup tables for Postfix"
 provides=("postsrsd=${pkgver}")
