@@ -1,7 +1,7 @@
 pkgbase = dell-c2665dnf
 	pkgdesc = CUPS driver for Dell C2665dnf
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.dell.com/support/home/us/en/19/product-support/product/dell-c2665dnf/drivers
 	arch = i686
 	arch = x86_64
@@ -13,4 +13,3 @@ pkgbase = dell-c2665dnf
 	sha256sums = 258c48bd485f6b4e1c5e05dfbce0d7d8a794ca408124124b43d43b6de6655eec
 
 pkgname = dell-c2665dnf
-
