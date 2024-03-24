@@ -7,12 +7,13 @@
 # Contributor: David Castellon (github.com/bobosito000)
 # Contributor: Yannic Wehner <yannic.wehner@gmail.com> (github.com/ElCap1tan)
 # Contributor: Kino <github.com/cybaol>
+# Contributor: Zijian <github.com/zijian-x>
 # Acknowledgment: This work is hugely based on `ros2-arch-deps` AUR
 # package, maintained by T. Borgert.
 
 pkgname=ros2-humble
 pkgver=2024.02.22
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of software libraries and tools for building robot applications"
 url="https://docs.ros.org/en/humble/"
 arch=('any')
