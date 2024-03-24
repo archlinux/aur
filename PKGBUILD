@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=valent-git
-pkgver=1.0.0.alpha.45.r0.gac5fcf0
+pkgver=1.0.0.alpha.45.r9.g199b608
 pkgrel=1
 pkgdesc="Connect, control and sync devices"
 arch=('x86_64')
@@ -32,7 +32,7 @@ checkdepends=(
 )
 provides=("${pkgname%-git}" 'libvalent-1.so=1.0.0')
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/andyholmes/valent.git#branch=gnome-45'
+source=('git+https://github.com/andyholmes/valent.git'
         'git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git')
 sha256sums=('SKIP'
             'SKIP')
