@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=margins
-_pkgver=0.3.26
+_pkgver=0.3.26.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Marginal Effects for Model Objects"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   r-data.table
   r-prediction
@@ -32,12 +32,12 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('089978cd9b7fd9b0ba75525c9efe4641')
-sha256sums=('098c9dd136005c5e27808bf42102d47d141d4e18ca3a3a17fa3287ff97eca56b')
+md5sums=('dd589d282b4de60a78614e3d0cabac3b')
+b2sums=('d2e66d91b7b4af64f54c36938788af7160ede1c324756d60c1d6b53cbcc86b1da598372c3d09cbac983ba739adc36c68585e7b3d481475c39615503fd9207516')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
