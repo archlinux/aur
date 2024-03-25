@@ -1,14 +1,13 @@
 pkgbase = munin-template-munstrap-git
 	pkgdesc = Bootstrap based template for munin-html
-	pkgver = r25.c3431051
+	pkgver = r29.cfedd433
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/munin-monitoring/contrib/tree/master/templates/munstrap
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = git
 	source = munin-template-munstrap::git+https://github.com/munin-monitoring/contrib.git
 	md5sums = SKIP
 
 pkgname = munin-template-munstrap-git
-

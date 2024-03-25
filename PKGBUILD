@@ -1,6 +1,6 @@
 # Maintainer: Bert Peters <bert@bertptrs.nl>
 pkgname=munin-template-munstrap-git
-pkgver=r25.c3431051
+pkgver=r29.cfedd433
 # Changed versioning scheme to prevent rebuilds
 # Thanks to eschwarz for recommending
 epoch=1
@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Bootstrap based template for munin-html"
 arch=('any')
 url="https://github.com/munin-monitoring/contrib/tree/master/templates/munstrap"
-license=('GPL2')
+license=('GPL-2.0-only')
 makedepends=('git')
 source=("${pkgname%-git}::git+https://github.com/munin-monitoring/contrib.git")
 md5sums=('SKIP')
