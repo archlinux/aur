@@ -1,8 +1,8 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=deptry
-pkgver=0.14.2
-_commit=9cc6b0fa505418d97b25d8139e6d6739135fb49b
+pkgver=0.15.0
+_commit=e51a86a5138aedab65578caae85e4a5ab04358b8
 pkgrel=1
 pkgdesc="Find unused, missing and transitive dependencies in a Python project"
 arch=(x86_64)
@@ -12,9 +12,7 @@ depends=(
   gcc-libs
   glibc
   python
-  python-chardet
   python-click
-  python-pathspec
 )
 makedepends=(
   git
@@ -29,7 +27,7 @@ checkdepends=(
   python-pytest-xdist
 )
 source=("$pkgname::git+$url.git?signed#commit=$_commit")
-sha256sums=('19db972a20bedf60b35ce07e7d195849bdd6d71d80193344ba369363e37323b9')
+sha256sums=('3d6a6d79048acc248ca0d3a398c484666e6c1c6fc1d1bb8bd85ba10b6ee3bfc1')
 validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194') # GitHub <noreply@github.com>
 
 _archive="$pkgname"
@@ -58,7 +56,7 @@ check() {
   # ignored as they fail due to what I suspect is some problem with venvs.
   pytest tests/ \
     --deselect tests/unit/violations/dep003_transitive/test_finder.py::test_simple \
-    --ignore tests/functional/cli
+    --deselect tests/functional/cli
 }
 
 package() {
