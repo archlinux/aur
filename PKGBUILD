@@ -2,7 +2,7 @@
 pkgname=promethium-bin
 _pkgname=Promethium
 pkgver=6.1.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Extensible, fast, and innovative Electron based web browser with Material UI design elements and built-in AdBlock."
 arch=('x86_64')
 url="https://github.com/Alex313031/promethium"
@@ -11,7 +11,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'alsa-lib'
-    'hicolor-icon-theme'
     'gtk3'
     'nss'
 )
@@ -20,7 +19,7 @@ source=(
 )
 sha256sums=('74da657f5b07c32f91ca7fdac99af9f53f1f89b6b429364918f618f81bc26b27')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin} --no-sandbox --disable-gpu-sandbox %U|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
