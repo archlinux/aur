@@ -1,0 +1,15 @@
+pkgbase = converse-git
+	pkgdesc = A frontend to LLMs like Gemini.
+	pkgver = r30.7d94a56
+	pkgrel = 1
+	url = https://github.com/vishruth-thimmaiah/converse
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = gtk-layer-shell
+	depends = gtk3
+	source = converse::git+https://github.com/vishruth-thimmaiah/converse.git
+	sha256sums = SKIP
+
+pkgname = converse-git
