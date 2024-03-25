@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=vr-video-player-git
-pkgver=r133.1b6b1e7
+pkgver=r134.1669918
 pkgrel=1
 pkgdesc='A virtual reality video player for Linux'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glm' 'glew' 'sdl2' 'openvr' 'libx11' 'libxcomposite' 'libxfixes' 'mpv'
 provides=('vr-video-player')
 conflicts=('vr-video-player')
 source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/vr-video-player.git.${pkgver}.tar.gz")
-sha512sums=('d2e6d56b5a4af363d5c6caf818aa9f01d345b28a087f46935bbd16953cb4d8b785a3eb4f1f371396ce1ab69734b7f0a9b35306960e8940566cb38cd94e9b97d4')
+sha512sums=('680202c82090c3edbed0b6fd9d3cb3564ad27074387968f43b642a68d7e9c653d88b3aa1a4a6d32bf1fc2e8cd43837cfa2f101b2921ba25ba7c3b343baed4d3e')
 
 build() {
   cd "$srcdir"
