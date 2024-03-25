@@ -1,0 +1,16 @@
+diff -pNaru5 a/v0100/smlrc.c b/v0100/smlrc.c
+--- a/v0100/smlrc.c	2021-09-11 17:34:07.000000000 -0400
++++ b/v0100/smlrc.c	2024-03-25 17:25:33.162558811 -0400
+@@ -194,11 +194,11 @@ int fsetpos(FILE*, fpos_t*);
+ #ifndef SYNTAX_STACK_MAX
+ #define SYNTAX_STACK_MAX (2048+1024)
+ #endif
+ 
+ #ifndef MAX_FILE_NAME_LEN
+-#define MAX_FILE_NAME_LEN    95
++#define MAX_FILE_NAME_LEN    254
+ #endif
+ 
+ #ifndef NO_PREPROCESSOR
+ #define MAX_INCLUDES         8
+ #define PREP_STACK_SIZE      8

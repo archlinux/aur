@@ -1,0 +1,19 @@
+pkgbase = smallerc
+	pkgdesc = simple and small single-pass C compiler
+	pkgver = 1.0.1_dos.win.1ab15c7
+	pkgrel = 1
+	url = https://github.com/alexfru/SmallerC
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = nasm
+	options = !strip
+	options = !buildflags
+	options = !lto
+	source = SmallerC-1.0.1-dos.win.1ab15c7.zip::https://github.com/alexfru/SmallerC/archive/refs/tags/v1.0.1+dos.win.1ab15c7.zip
+	source = 0000-smlrc.c-MAX_FILE_NAME_LEN.patch
+	md5sums = 04e5b3a57915c439c09a38406c4583e4
+	md5sums = c96ff0ba67916f5aa2ed3e19eb9fee44
+	sha256sums = 96c58af2fbf040d8277af1831dc8d34fd974d381d14965f4937dd9651fc2d0b8
+	sha256sums = e1f4d6e57700d175857f373395526a3bb1a775f1f2dc23010e2ffc1614c900c4
+
+pkgname = smallerc
