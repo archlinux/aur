@@ -2,7 +2,7 @@
 
 _pkgname=rows
 pkgname=python-${_pkgname}-git
-pkgver=v0.4.1.r216.g895e16a
+pkgver=v0.4.1.r220.g6904d6c
 pkgrel=1
 pkgdesc='Import data, automatically detect types and give you high-level Python objects so you can start working with the data instead of trying to parse it'
 arch=("any")
@@ -12,8 +12,8 @@ depends=('python-cached-property' 'python-click' 'python-lxml' 'python-magic' 'p
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("git+https://github.com/turicas/rows")
 sha512sums=('SKIP')
-provides=("python-$_pkgname")
-conflicts=("python-$_pkgname")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 pkgver() {
   cd $_pkgname

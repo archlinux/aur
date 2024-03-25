@@ -1,6 +1,6 @@
 pkgbase = python-rows-git
 	pkgdesc = Import data, automatically detect types and give you high-level Python objects so you can start working with the data instead of trying to parse it
-	pkgver = v0.4.1.r216.g895e16a
+	pkgver = v0.4.1.r220.g6904d6c
 	pkgrel = 1
 	url = https://github.com/turicas/rows
 	arch = any
@@ -27,8 +27,8 @@ pkgbase = python-rows-git
 	depends = python-urllib3
 	depends = python-xlrd
 	depends = python-xlwt
-	provides = python-rows
-	conflicts = python-rows
+	provides = rows
+	conflicts = rows
 	source = git+https://github.com/turicas/rows
 	sha512sums = SKIP
 
