@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=srgn
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A code surgeon for precise text and code transplantation"
 url="https://github.com/alexpovel/srgn"
@@ -14,7 +14,7 @@ depends=(
 makedepends=(cargo)
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/srgn-v$pkgver.tar.gz")
-sha256sums=('82b0fe9282293ce2a132769e0ad4640d531c08d43b23798e2a51ec917a89853c')
+sha256sums=('6b87c2c26da7dcbf97d875f742bc00428d23d5a3a1d0cd788918dfa1764d9cc5')
 
 _archive="$pkgname-srgn-v$pkgver"
 
