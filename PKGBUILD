@@ -1,38 +1,49 @@
-# Maintainer: 3ED <krzysztofas at protonmail dot com>
-#
-pkgname=perl-log-ger
-_author=PERLANCAR
-_pkgname=Log-ger
-pkgver=0.038
-pkgrel=1
-pkgdesc="a lightweight, flexible logging framework"
-arch=('any')
-license=('PerlArtistic')
-depends=('perl')
-makedepends=('perl-extutils-makemaker')
-url="https://metacpan.org/release/${_pkgname}"
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
+pkgname='perl-log-ger'
+pkgver='0.042'
+pkgrel='1'
+pkgdesc="A lightweight, flexible logging framework"
+arch=('any')
+license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-_lastauthor=${_author:0:1}/${_author:0:2}/${_author}
-source=("https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('608df90dcc25d4f20309461ab1f22e08f5658c06f12c429a424426e0a95a6f9a')
+depends=('perl>=0')
+makedepends=()
+url='https://metacpan.org/release/Log-ger'
+source=('http://search.cpan.org/CPAN/authors/id/P/PE/PERLANCAR/Log-ger-0.042.tar.gz')
+md5sums=('fe0c723f497d76c9335bd2aa78024a19')
+sha512sums=('8fc0bc5615c8607b210c2f407dd6affdbbe9e292e37c73296d098b7698e7fea5084e04b360aa901684d5612eb00824b719349958c8c89121eea9c401d924b260')
+_distdir="Log-ger-0.042"
 
 build() {
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
-    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
-    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-    MODULEBUILDRC=/dev/null
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      MODULEBUILDRC=/dev/null
 
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  perl Makefile.PL
-  make
+    cd "$srcdir/$_distdir"
+    /usr/bin/perl Makefile.PL
+    make
+  )
 }
+
 check() {
-  cd ${_pkgname}-${pkgver}
-  make test
-}
-package() {
-  cd ${_pkgname}-${pkgver}
-  make install
+  cd "$srcdir/$_distdir"
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+    make test
+  )
 }
 
+package() {
+  cd "$srcdir/$_distdir"
+  make install
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}
+
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
+# vim:set ts=2 sw=2 et:
