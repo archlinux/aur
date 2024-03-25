@@ -33,7 +33,7 @@ source=(
   "https://github.com/Hashy-Software/hasherino/releases/download/v$pkgver/$_appimage"
 )
 noextract=()
-sha256sums=(SKIP)
+sha256sums=(SKIP, SKIP)
 validpgpkeys=()
 
 prepare() {
