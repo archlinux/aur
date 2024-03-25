@@ -3,9 +3,9 @@
 
 _uuid="clipboard-history@alexsaveau.dev"
 _gitn=gnome-clipboard-history
-_gitv=1.4.6
+_gitv=1.4.7
 pkgname=gnome-shell-extension-clipboard-history
-pkgver=35
+pkgver=38
 pkgrel=1
 pkgdesc="Gnome extension that saves what you've copied into an easily accessible, searchable history panel."
 arch=("any")
@@ -14,7 +14,7 @@ license=("MIT")
 depends=("dconf" "gnome-shell>=46.0")
 conflicts=("gnome-shell-extension-clipboard-indicator")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_gitv}.tar.gz")
-sha256sums=('64a37b5fbd38825025f9a18520cc6edb7843d167e18970cd12aa056fb15ef88f')
+sha256sums=('00aa20229b397a7dd87979e489f23e44af3d95c905dfdd6ce1c4bb118528f176')
 
 build() {
   cd "${_gitn}-${_gitv}"
