@@ -12,7 +12,7 @@ _flutterarch=$(uname -m | sed s/aarch64/arm64/ | sed s/x86_64/x64/)
 # this host is blocked in China, according to Flutter docs, the FLUTTER_STORAGE_BASE_URL environment variable
 # should be used to provide an alternative mirror
 _storagebase="${FLUTTER_STORAGE_BASE_URL:-"https://storage.googleapis.com"}"
-pkgrel=4
+pkgrel=5
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64" "aarch64")
 url="https://${pkgname}.dev"
@@ -301,5 +301,10 @@ package() {
   install -dm755 "${pkgdir}/usr/lib/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
   cp -ra "${srcdir}/${pkgname}" "${pkgdir}/usr/lib"
-  install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/flutter"
+  install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/lib/${pkgname}/bin/flutter"
+  ln -sf "/usr/lib/flutter/bin/flutter" "${pkgdir}/usr/bin/flutter"
+  ln -sf "${DART_ROOT:-"/opt/dart-sdk"}/bin/dart" "${pkgdir}/usr/lib/flutter/bin/dart"
+
+  # * not my fault grumble * : The IntelliJ Flutter plugin enforces this relative Dart SDK
+  ln -sf "${DART_ROOT:-"/opt/dart-sdk"}" "${pkgdir}/usr/lib/flutter/bin/cache/dart-sdk"
 }
