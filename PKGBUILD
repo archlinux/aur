@@ -1,12 +1,12 @@
 # Maintainer:TurtleRuss <tttturtleruss@gmail.com> 
 pkgname=hustmirror-cli
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 epoch=
 pkgdesc="The command line tool (hustmirror-cli) is a small tool that can help you quickly change sources to HUST mirror sources."
 arch=('x86_64')
 license=('GPL')
-url='https://gitee.com/hustmirror/hustmirror-cli'
+url='https://github.com/hust-open-atom-club/hustmirror-cli'
 groups=()
 depends=()
 makedepends=('make')
@@ -19,8 +19,8 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname-stable.tar.gz::${url}/repository/archive/stable.tar.gz"
-        "$pkgname-stable.patch"
+source=("$pkgname-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+        "$pkgname.patch"
 		"$pkgname-makefile.patch")
 noextract=()
 sha256sums=('SKIP'
@@ -29,20 +29,18 @@ sha256sums=('SKIP'
 validpgpkeys=()
 
 prepare() {
-	cd "$pkgname-stable"
-	patch -p1 -i "$srcdir/$pkgname-stable.patch"
+	cd "$pkgname-${pkgver}"
+	patch -p1 -i "$srcdir/$pkgname.patch"
 	patch -p1 -i "$srcdir/$pkgname-makefile.patch"
-	echo "$pkgdir/usr/local/bin"
 	mkdir -p "$pkgdir/usr/local/bin"
 }
 
 build() {
-	cd "$pkgname-stable"
+	cd "$pkgname-${pkgver}"
 	make
 }
 
 package() {
-	cd "$pkgname-stable"
-	echo $pkgdir
+	cd "$pkgname-${pkgver}"
 	make DESTDIR="$pkgdir/" install
 }
