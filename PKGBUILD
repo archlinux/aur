@@ -1,35 +1,36 @@
 # Maintainer:  JP-Ellis <josh@jpellis.me>
-pkgname=python-habanero
-_name=${pkgname#python-}
-pkgver=1.2.3
-pkgrel=2
-pkgdesc="Habanero is a low level client for working with Crossref's search API."
-arch=('any')
-url="https://pypi.org/project/habanero/"
-license=('GPL')
+pkgname='python-habanero'
+_module='habanero'
+_src_folder='habanero-1.2.6'
+pkgver='1.2.6'
+pkgrel=1
+pkgdesc="A low level client for Crossref's Search API"
+url="https://github.com/sckott/habanero"
 depends=(
   'python'
   'python-requests'
   'python-tqdm'
 )
 makedepends=(
+  'python-build'
+  'python-installer'
+  'python-wheel'
   'python-setuptools'
-  'python-pip'
+  'python-setuptools-scm'
 )
-optdepends=()
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('196f9e01b42dad2cd829dc5d0bbe466232daf6ad5f1b0ee7098a57927b17e908')
-noextract=()
+license=('MIT')
+arch=('any')
+source=("https://files.pythonhosted.org/packages/3d/17/885ee33738a7ecb29d487ca42043378804d0c47945d24ee040cfaa35beeb/habanero-1.2.6.tar.gz")
+sha256sums=('b206d49f44f41c2289f0ad731f259a50d4376c747d8ecbb219a73874d45309d4')
 
 build() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  touch Changelog.rst
-  python setup.py build
+    cd "${srcdir}/${_src_folder}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    cd "${srcdir}/${_src_folder}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
 # vim:set ts=2 sw=2 et:
