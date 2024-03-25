@@ -2,7 +2,7 @@
 
 pkgname=ryujinx-bin
 pkgver=1.1.1242
-pkgrel=1
+pkgrel=2
 pkgdesc='Experimental Nintendo Switch Emulator written in C# (master build channel release)'
 arch=(x86_64)
 url='https://github.com/Ryujinx/release-channel-master'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('dotnet-runtime')
 provides=(ryujinx)
 conflicts=(ryujinx Ryujinx)
-options=('!strip')
+options=('!strip' '!debug')
 source=("${url}/releases/download/${pkgver}/ryujinx-${pkgver}-linux_x64.tar.gz"
         'https://raw.githubusercontent.com/Ryujinx/Ryujinx/master/distribution/linux/Ryujinx.desktop'
         'https://raw.githubusercontent.com/Ryujinx/Ryujinx/master/distribution/misc/Logo.svg'
