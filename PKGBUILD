@@ -4,7 +4,7 @@
 
 pkgname="nzbhydra2-bin"
 pkgver=5.3.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Search aggregator for newznab and torznab indexers."
 arch=('any')
 url="https://github.com/theotherp/nzbhydra2"
@@ -13,6 +13,7 @@ provides=('nzbhydra2')
 conflicts=('nzbhydra2')
 depends=('python' 'java-runtime-headless=17')
 optdepends=('jackett: torrent indexer proxy')
+options=(!debug)
 source=("https://github.com/theotherp/nzbhydra2/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-generic.zip"
         'nzbhydra2.service'
         'nzbhydra2.tmpfiles'
