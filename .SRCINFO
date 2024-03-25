@@ -17,6 +17,6 @@ pkgbase = google-drive-ocamlfuse
 	options = !strip
 	options = staticlibs
 	source = google-drive-ocamlfuse-0.7.32.tar.gz::https://github.com/astrada/google-drive-ocamlfuse/archive/v0.7.32.tar.gz
-	sha256sums = c0a7012f07553b837c74b8373a6a80aa856c20d2fb0432dc464cff3a384e4c9e
+	sha256sums = d0057b72a80388c56d855d6fc088c33dd185f83e56678340a7fbfd05cae1d0c8
 
 pkgname = google-drive-ocamlfuse
