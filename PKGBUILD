@@ -6,36 +6,36 @@ pkgname='comcom32'
 _pkgver='alpha-3'
 # pkgver="0.0.${_pkgver//-/_}" # copy this line
 pkgver="0.0.${_pkgver//-/_}"
-pkgrel='1'
+pkgrel=1
 pkgdesc='32 bit command interpreter for fdpp and dosemu2'
-arch=('x86_64')
-url='https://github.com/dosemu2/comcom32'
-license=('GPL3')
+arch=('any')
+url='https://github.com/dosemu2/comcom64'
+license=('GPL-3.0-or-later')
 makedepends=('djgpp-gcc' 'djgpp-djcrx')
 conflicts=('djgpp-djcrx-bootstrap')
-_srcdir="${pkgname%-git}-${_pkgver%.r*}"
+_srcdir="comcom64-${_pkgver%.r*}"
 source=(
   "${_srcdir}.tar.gz::${url}/archive/${_pkgver}.tar.gz"
 )
-md5sums=('6b97ffae13786144b4a037477c744fe5')
-sha256sums=('ff9e878f9e3948e26a2ffd279c46d4193af114f43c087e96714fbba28831aaea')
-b2sums=('3c2e9cfe94e7acd01f282af1a5140ee61d430496802aa55dcc20ba26cda409c911cf39d37322dd1d55bfad8b23409219b77f976b2cc9a8e7fd49a5058530da2c')
+md5sums=('f3843e66fd37be94865620730ef91655')
+sha256sums=('24a90d3142498ea3f48e6874d94af7c0158419e2c0fee4754c159d46c69fb088')
+b2sums=('b5f5d4057c1dd8305f33184f43da9460a4c4d76696cc9ce598fe2f37d6648a2ae5546926bc3c2d98f3910ffc87d1a4217729d3f2f5bfe678bdc14bd74e673d0c')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
-  source[0]="git+${url}.git"
+  source[0]="git+${url}.git" #commit=ef0fdeb44158d1ef8850767890cd970186737340"
   md5sums[0]='SKIP'
   sha256sums[0]='SKIP'
   b2sums[0]='SKIP'
   conflicts+=("${pkgname%-git}")
   provides+=("${pkgname%-git}=${pkgver%%.r*}")
-  _srcdir="${pkgname%-git}"
+  _srcdir="comcom64"
 pkgver() {
   cd "${_srcdir}"
   printf '0.0.%s' "$(git describe --tags --long | sed -e 's:^v::g' -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g')"
 }
 else
   if [ "${pkgver%.r*}" != "${pkgver}" ]; then
-    echo "pkgver must be manually restored to non git version (see comment): ${pkgver}"
+    echo "pkgver must be manually restored to non git version (see line to copy): ${pkgver}"
     exit 1
   fi
 fi
@@ -53,6 +53,9 @@ prepare() {
     fi
   done
 
+  if [ -d 'src' ]; then
+    cd 'src'
+  fi
   sed -e '/^PREFIX / s:/usr/local:/usr:g' \
       -e 's:i586-pc:i686-pc:g' -i 'Makefile'
   set +u
@@ -61,7 +64,7 @@ prepare() {
 build() {
   set -u
   cd "${_srcdir}"
-  make -j "$(nproc)"
+  nice make
   set +u
 }
 
