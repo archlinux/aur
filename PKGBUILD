@@ -33,7 +33,10 @@ source=(
   "https://github.com/Hashy-Software/hasherino/releases/download/v$pkgver/$_appimage"
 )
 noextract=()
-sha256sums=(SKIP, SKIP)
+sha256sums=(
+  SKIP
+  SKIP
+)
 
 prepare() {
   cd "$srcdir"
