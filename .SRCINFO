@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-libnghttp3
-	pkgdesc = HTTP/3 library written in C (android)
+	pkgdesc = HTTP/3 library written in C (Android aarch64)
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ngtcp2/nghttp3
 	arch = any
 	license = MIT
