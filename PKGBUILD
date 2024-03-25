@@ -1,4 +1,4 @@
-# Maintainer: Coelacanthus <coelacanthus@outlook.com>
+# Maintainer: Coelacanthus <CoelacanthusHex@gmail.com>
 
 pkgname=lemon-lime-git
 _pkgname=lemon-lime
@@ -8,11 +8,9 @@ epoch=1
 pkgdesc="为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus"
 arch=('x86_64' 'i686')
 url="https://github.com/Project-LemonLime/Project_LemonLime"
-license=('GPL3')
-groups=()
+license=('GPL-3.0-or-later')
 depends=('qt5-base' 'hicolor-icon-theme')
 makedepends=('git' 'qt5-tools' 'cmake' 'ninja')
-checkdepends=()
 optdepends=('gcc: C and C++ support'
             'fpc: Pascal support'
             'java-environment: Java support'
@@ -20,20 +18,13 @@ optdepends=('gcc: C and C++ support'
             'python: Python support')
 provides=("lemon-lime")
 conflicts=("lemon-lime")
-replaces=()
-backup=()
-options=(debug strip)
-install=
-changelog=
 source=('Project_LemonLime::git+https://github.com/Project-LemonLime/Project_LemonLime.git'
             'SingleApplication::git+https://github.com/itay-grudev/SingleApplication.git'
             'Testlib-for-Lemons::git+https://github.com/GitPinkRabbit/Testlib-for-Lemons.git'
            )
-noextract=()
 b2sums=('SKIP'
         'SKIP'
         'SKIP')
-validpgpkeys=()
 
 pkgver() {
     cd "$srcdir/Project_LemonLime"
@@ -54,13 +45,13 @@ prepare() {
 
     git config submodule."assets/Testlib-for-Lemons".url "${srcdir}/Testlib-for-Lemons"
 
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
     cd "$srcdir/Project_LemonLime"
     cmake -S . -B build \
-        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+        -DCMAKE_BUILD_TYPE=None \
         -GNinja \
         -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
         -DLEMON_BUILD_INFO="Build for Arch Linux (Git Version)" \
