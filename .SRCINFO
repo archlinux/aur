@@ -1,6 +1,6 @@
 pkgbase = nextmeeting
 	pkgdesc = An utility tool to show you next meeting with gcalcli
-	pkgver = 1.2.2
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/chmouel/nextmeeting
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = nextmeeting
 	makedepends = python-poetry-core
 	depends = python-dateutil
 	depends = gcalcli
-	source = https://github.com/chmouel/nextmeeting/releases/download/1.2.2/nextmeeting-1.2.2.tar.gz
-	sha256sums = a46a8441a828a4ce32267e68c66812be58cb030e7b490f919b448fb7c0286c1c
+	source = https://github.com/chmouel/nextmeeting/releases/download/1.3.0/nextmeeting-1.3.0.tar.gz
+	sha256sums = c828c63102571f0a893391775beb5e1451ade6160a31502a8b1ddf66d3aa61dc
 
 pkgname = nextmeeting
