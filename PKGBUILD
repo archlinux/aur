@@ -12,7 +12,7 @@ pkgname="${_jdkname}-bin"
 _java_ver=22
 _pkgver=${_java_ver}+37
 pkgver=${_pkgver/+/.0.0.u}
-pkgrel=1
+pkgrel=2
 pkgdesc='BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.'
 arch=(aarch64 armv7h armv8h x86_64)
 url='https://bell-sw.com/'
@@ -53,10 +53,10 @@ backup=(etc/${_jdkname}/logging.properties
 source=(freedesktop-java.desktop.in
         freedesktop-jconsole.desktop.in
         freedesktop-jshell.desktop.in
-        ${_jdkname}16.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon16.png
-        ${_jdkname}24.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon24.png
-        ${_jdkname}32.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon32.png
-        ${_jdkname}48.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon48.png)
+        ${_jdkname}16.png::https://raw.githubusercontent.com/openjdk/jdk/master/src/java.desktop/unix/classes/sun/awt/X11/java-icon16.png
+        ${_jdkname}24.png::https://raw.githubusercontent.com/openjdk/jdk/master/src/java.desktop/unix/classes/sun/awt/X11/java-icon24.png
+        ${_jdkname}32.png::https://raw.githubusercontent.com/openjdk/jdk/master/src/java.desktop/unix/classes/sun/awt/X11/java-icon32.png
+        ${_jdkname}48.png::https://raw.githubusercontent.com/openjdk/jdk/master/src/java.desktop/unix/classes/sun/awt/X11/java-icon48.png)
 sha1sums=('19873c53aaf234d215b9892450bfd4e95c13ed7c'
           '5347a8c12c16a29aada0babdfda5dbef236717c0'
           '8a66b7e3c5fa8b2f11ee1dd2b11127f7156cb60b'
