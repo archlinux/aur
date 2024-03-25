@@ -2,7 +2,7 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=libplasma-git
-pkgver=6.0.0_r11163.g9930890ce
+pkgver=6.0.2_r17313.g8504ae26b
 pkgrel=1
 pkgdesc='Plasma library and runtime components'
 arch=($CARCH)
@@ -20,6 +20,11 @@ pkgver() {
   cd ${pkgname%-git}
   _ver="$(git tag | tail -1 | sed 's/^v//;s/-.*//')"
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd ${pkgname%-git}
+  git checkout master
 }
 
 build() {
