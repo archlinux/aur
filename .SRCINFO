@@ -13,6 +13,7 @@ pkgbase = plasma6-applets-weather-widget-3-git
 	provides = plasma-applets-weather-widget-3
 	conflicts = plasma5-applets-weather-widget
 	conflicts = plasma-applets-weather-widget-2
+	conflicts = plasma-applets-weather-widget-3
 	source = git+https://github.com/blackadderkate/weather-widget-2.git#branch=QT6
 	sha256sums = SKIP
 
