@@ -1,14 +1,14 @@
 pkgbase = hasherino-latest-bin
 	pkgdesc = A twitch chat client
 	pkgver = 0.1.14
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Hashy-Software/hasherino
 	arch = x86_64
 	license = MIT
 	provides = hasherino
-	source = git+https://github.com/Hashy-Software/hasherino.git
+	source = hasherino-latest-bin::git+https://github.com/Hashy-Software/hasherino.git
 	source = https://github.com/Hashy-Software/hasherino/releases/download/v0.1.14/hasherino
-	sha256sums = SKIP,
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = hasherino-latest-bin

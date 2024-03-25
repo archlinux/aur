@@ -10,7 +10,7 @@ Terminal=false
 Categories=Python;Chat;Twitch;Network;InstantMessaging;"
 pkgname=hasherino-latest-bin
 pkgver=0.1.14
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="A twitch chat client"
 arch=('x86_64')
@@ -29,7 +29,7 @@ options=()
 install=
 changelog=
 source=(
-  "git+https://github.com/Hashy-Software/hasherino.git"
+  "$pkgname::git+https://github.com/Hashy-Software/hasherino.git"
   "https://github.com/Hashy-Software/hasherino/releases/download/v$pkgver/$_appimage"
 )
 noextract=()
@@ -44,7 +44,7 @@ prepare() {
 }
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --abbrev=0 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 package() {
   cd "$srcdir"
