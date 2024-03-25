@@ -184,7 +184,6 @@ prepare(){
   msg2 "Enable CONFIG_HZ_625"
   scripts/config --disable CONFIG_HZ_300
   scripts/config --enable CONFIG_HZ_625
-  scripts/config --set-str CONFIG_HZ "625"
 
   sleep 2s
 
