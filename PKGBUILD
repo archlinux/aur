@@ -37,7 +37,10 @@ makedepends=(
   'mold'
   'nasm'
 )
-checkdepends=('appstream' 'desktop-file-utils')
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+)
 optdepends=(
   'flatpak: Flatpak support for Cosmic Store'
   'otf-fira-mono: Recommended Mono font'
