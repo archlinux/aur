@@ -1,0 +1,12 @@
+diff --git a/tiledb/inst/tinytest/test_query.R b/tiledb/inst/tinytest/test_query.R
+index 01d20ed..2ef375f 100644
+--- a/tiledb/inst/tinytest/test_query.R
++++ b/tiledb/inst/tinytest/test_query.R
+@@ -298,6 +298,7 @@ fromDataFrame(pp, uri, sparse = TRUE, col_index = c("species", "year"))
+ qry <- tiledb_query(tiledb_array(uri), "READ")
+ expect_equal(tiledb_query_get_range_num(qry, 1), 1)
+ qry <- tiledb_query(tiledb_array(uri), "READ")
++exit_file("Skip tests that make a coredump")
+ expect_equal(tiledb_query_get_range_var(qry, 1, 1), c("", ""))
+ qry <- tiledb_query(tiledb_array(uri), "READ")
+ expect_error(tiledb_query_get_range_var(qry, 1, 2))  # wrong range

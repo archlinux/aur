@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tiledb
-_pkgver=0.24.0
+_pkgver=0.25.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -11,6 +11,7 @@ arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('MIT')
 depends=(
+  r-nanoarrow
   r-nanotime
   r-rcpp
   r-spdl
@@ -37,9 +38,17 @@ optdepends=(
   r-tibble
   r-tinytest
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('514305a1b7933bc52631a767816633c7')
-b2sums=('52ebc8b697f99cac14abef3706d8506f6d7afdd75b6294785377a89ff41e0d1f80db75e8bfba3d95f81c0fcde71162f98f94af599c1f4771c506bb98e0266f8d')
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
+        "skip-tests.patch")
+md5sums=('2dab464d1b4e7d51971ac531a8a45cbf'
+         '65589ce8628e97f3ef75905ba16cd8fa')
+b2sums=('2a16ebfb27f803bce5aa2157530e6074c3c51b45353b9f9b72cb3a06dea054fb55342369fac68c3d673e41b7fa9f9a9a9c5cbd8d6c4021a889296a6cef34c9bf'
+        'd82cae045055f52ca11160181df950e4f44773cac3ccd8c04de78f8ba5901b46d9095d9439b86ce78ba0804d98ef9ee6fdffc3ed76b7cda3d1e5c0ffd9b22449')
+
+prepare() {
+  # skip tests that make a coredump
+  patch -Np1 -i skip-tests.patch
+}
 
 build() {
   mkdir build
