@@ -6,13 +6,13 @@
 pkgname=camlidl
 pkgver=1.12
 _pkgver=${pkgver/\./}
-pkgrel=1
+pkgrel=2
 pkgdesc="A stub code generator and COM binding for Objective Caml (OCaml)"
 arch=('x86_64')
 url="https://github.com/xavierleroy/camlidl"
 license=(LGPL2.1)
 depends=('ocaml')
-makedepends=('git')
+makedepends=()
 options=(staticlibs)
 source=("https://github.com/xavierleroy/$pkgname/archive/$pkgname$_pkgver.tar.gz"
         META.camlidl
@@ -29,7 +29,8 @@ build() {
   cp config/Makefile.unix config/Makefile
 
   #ls -alh
-  git apply -v patch.diff
+  #git apply -v patch.diff
+  patch -p1 < patch.diff
 
   #ls -alh /usr/lib/ocaml/Makefile.config
   #mkdir -p /build/camlidl/pkg/camlidl//usr/lib/ocaml/

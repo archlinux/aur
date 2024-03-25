@@ -1,11 +1,10 @@
 pkgbase = camlidl
 	pkgdesc = A stub code generator and COM binding for Objective Caml (OCaml)
 	pkgver = 1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xavierleroy/camlidl
 	arch = x86_64
 	license = LGPL2.1
-	makedepends = git
 	depends = ocaml
 	options = staticlibs
 	source = https://github.com/xavierleroy/camlidl/archive/camlidl112.tar.gz
