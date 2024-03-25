@@ -12,7 +12,7 @@ _flutterarch=$(uname -m | sed s/aarch64/arm64/ | sed s/x86_64/x64/)
 # this host is blocked in China, according to Flutter docs, the FLUTTER_STORAGE_BASE_URL environment variable
 # should be used to provide an alternative mirror
 _storagebase="${FLUTTER_STORAGE_BASE_URL:-"https://storage.googleapis.com"}"
-pkgrel=5
+pkgrel=6
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64" "aarch64")
 url="https://${pkgname}.dev"
@@ -56,19 +56,6 @@ source=(
   # we use the arch system gradle to create that one
   # "gradle_wrapper.tar.gz::${_storagebase}/flutter_infra_release/gradle-wrapper/${_gradlewver}/gradle-wrapper.tgz"
 
-  # engine/android-arm-profile/linux-x64
-  "android-arm-profile-linux.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/android-arm-profile/linux-x64.zip"
-  # engine/android-arm-release/linux-x64
-  "android-arm-release-linux.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/android-arm-release/linux-x64.zip"
-  # engine/android-arm64-profile/linux-x64
-  "android-arm64-profile-linux.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/android-arm64-profile/linux-x64.zip"
-  # engine/android-arm64-release/linux-x64
-  "android-arm64-release-linux.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/android-arm64-release/linux-x64.zip"
-  # engine/android-x64-profile/linux-x64
-  "android-x64-profile-linux.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/android-x64-profile/linux-x64.zip"
-  # engine/android-x64-release/linux-x64
-  "android-x64-release-linux.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/android-x64-release/linux-x64.zip"
-
   # engine/android-x86
   "android-x86.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/android-x86/artifacts.zip"
   # engine/android-x64
@@ -103,17 +90,6 @@ source=(
   # engine/common
   "flutter_patched_sdk_product.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/flutter_patched_sdk_product.zip"
 
-  # engine/linux-$ARCH
-  "engine-${_flutterarch}.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/linux-${_flutterarch}/artifacts.zip"
-  # engine/linux-$ARCH
-  "gtk-debug-${_flutterarch}.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/linux-${_flutterarch}-debug/linux-${_flutterarch}-flutter-gtk.zip"
-  # engine/linux-$ARCH-profile
-  "gtk-profile-${_flutterarch}.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/linux-${_flutterarch}-profile/linux-${_flutterarch}-flutter-gtk.zip"
-  # engine/linux-$ARCH-release
-  "gtk-release-${_flutterarch}.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/linux-${_flutterarch}-release/linux-${_flutterarch}-flutter-gtk.zip"
-  # engine/linux-$ARCH
-  "font-subset.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/linux-${_flutterarch}/font-subset.zip"
-
   "system-dart.patch"
   "gradle-user-home.patch"
 
@@ -125,16 +101,46 @@ source=(
   "doctor.patch"
   "opt-in-analytics.patch"
 )
+source_x86_64=(
+  # engine/android-arm-profile/linux-x64
+  "android-arm-profile-linux-x64.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/android-arm-profile/linux-x64.zip"
+  # engine/android-arm-release/linux-x64
+  "android-arm-release-linux-x64.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/android-arm-release/linux-x64.zip"
+  # engine/android-arm64-profile/linux-x64
+  "android-arm64-profile-linux-x64.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/android-arm64-profile/linux-x64.zip"
+  # engine/android-arm64-release/linux-x64
+  "android-arm64-release-linux-x64.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/android-arm64-release/linux-x64.zip"
+  # engine/android-x64-profile/linux-x64
+  "android-x64-profile-linux-x64.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/android-x64-profile/linux-x64.zip"
+  # engine/android-x64-release/linux-x64
+  "android-x64-release-linux-x64.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/android-x64-release/linux-x64.zip"
+
+  # engine/linux-$ARCH
+  "engine-x64.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/linux-x64/artifacts.zip"
+  # engine/linux-$ARCH
+  "gtk-debug-x64.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/linux-x64-debug/linux-x64-flutter-gtk.zip"
+  # engine/linux-$ARCH-profile
+  "gtk-profile-x64.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/linux-x64-profile/linux-x64-flutter-gtk.zip"
+  # engine/linux-$ARCH-release
+  "gtk-release-x64.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/linux-x64-release/linux-x64-flutter-gtk.zip"
+  # engine/linux-$ARCH
+  "font-subset-x64.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/linux-x64/font-subset.zip"
+)
+source_aarch64=(
+  # engine/linux-$ARCH
+  "engine-arm64.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/linux-arm64/artifacts.zip"
+  # engine/linux-$ARCH
+  "gtk-debug-arm64.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/linux-arm64-debug/linux-arm64-flutter-gtk.zip"
+  # engine/linux-$ARCH-profile
+  "gtk-profile-arm64.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/linux-arm64-profile/linux-arm64-flutter-gtk.zip"
+  # engine/linux-$ARCH-release
+  "gtk-release-arm64.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/linux-arm64-release/linux-arm64-flutter-gtk.zip"
+  # engine/linux-$ARCH
+  "font-subset-arm64.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/linux-arm64/font-subset.zip"
+)
 noextract=(
   "material_fonts.zip"
   # "gradle_wrapper.tar.gz"
-
-  "android-arm-profile-linux.zip"
-  "android-arm-release-linux.zip"
-  "android-arm64-profile-linux.zip"
-  "android-arm64-release-linux.zip"
-  "android-x64-profile-linux.zip"
-  "android-x64-release-linux.zip"
 
   "android-x86.zip"
   "android-x64.zip"
@@ -154,20 +160,32 @@ noextract=(
   "flutter_patched_sdk.zip"
   "flutter_patched_sdk_product.zip"
 
-  "engine-${_flutterarch}.zip"
-  "gtk-debug-${_flutterarch}.zip"
-  "gtk-profile-${_flutterarch}.zip"
-  "gtk-release-${_flutterarch}.zip"
-  "font-subset.zip"
+  # x64
+  "android-arm-profile-linux-x64.zip"
+  "android-arm-release-linux-x64.zip"
+  "android-arm64-profile-linux-x64.zip"
+  "android-arm64-release-linux-x64.zip"
+  "android-x64-profile-linux-x64.zip"
+  "android-x64-release-linux-x64.zip"
+
+  "engine-x64.zip"
+  "gtk-debug-x64.zip"
+  "gtk-profile-x64.zip"
+  "gtk-release-x64.zip"
+  "font-subset-x64.zip"
+
+  # arm64
+  "engine-arm64.zip"
+  "gtk-debug-arm64.zip"
+  "gtk-profile-arm64.zip"
+  "gtk-release-arm64.zip"
+  "font-subset-arm64.zip"
 )
+
+
+
 sha256sums=('089f924c72f28d25851382d70db83df83c64746713f6a8ca08879a1530adb8ca'
             'e56fa8e9bb4589fde964be3de451f3e5b251e4a1eafb1dc98d94add034dd5a86'
-            'f41f8cf16ed627f94c9ad2c60602fdedb585ff1f8d50f4c44927da706dbe1808'
-            '9032d360fb258fba392fd00a150881674bfa88598c6fad2c73f552a03501f1ce'
-            '33517b19738cf68a4c1de7566d3602a09b3be037b9f4aca17f10a364b476cb9e'
-            '29780ca6efbcdabe6988cd7eae6dbf995c5839d3f4c0b1f3ee6de2f9bfdc6c5c'
-            '6a35206886a116ba4ae83432035b877818b883033a70697a8330c473f9374b8e'
-            '1778a36d34657f853b1c6cb848c5dae6a1480babd357131ab723d8b41109ffd3'
             'd5da421c4849c169766be16f51e2634e02f1536416befb61f5f6551fb60c32d9'
             'ec7e0d94b5fa32efe772e246893e9cc832e1f133e737f498fb7f7da5b84192c2'
             'e5be895a4e8d2bf7d553839eeb097aff109fcc2efc45d76d7feebb18855831c8'
@@ -183,11 +201,6 @@ sha256sums=('089f924c72f28d25851382d70db83df83c64746713f6a8ca08879a1530adb8ca'
             'b1f8faafcc0f3492aa1d0dab511e9a026de19356e35c55a237b8cfa3c0b1bcf1'
             '0a52880f8f3aff667db1a29ec2e68567689b378e773345427f9e5cf6cb80dea3'
             '2e848e6ee2dd591c0e558ee37d80391e4acb5bf8672cbe3e02af9a52d39e25b8'
-            'c72981b583838b6016f3ab5bf5240f041acefc82c3f67983e447373b520e54e5'
-            '214302538b9c983bc075cb59770329f4f751f2a0f73c390566f68d670cdcdb6f'
-            '70edb9c63fe08d77cb2a9b59f9d4d1ec16e28a49737e8dd0cdbf5ccefcc562bb'
-            '6f5d86f207c78cb64744889c34ed3ac45e403ea035d512674e5b348cb0d6355a'
-            '05778e62c2da50d8280dc55589225871bf90bb2d543b48d2f1d6acd73460d573'
             '8d2422220b5cdcbe7757cefa576045c92c4b013708a0a88c8d378484e1adb24e'
             'de0d3567d83bd756841b19ccf879efc02749d8a45cf18d94cd71ec1d366c9024'
             '54db9347ac6467b806fff70f62b2709276a0ca4d82468ae8357d5520db0ad04a'
@@ -196,6 +209,22 @@ sha256sums=('089f924c72f28d25851382d70db83df83c64746713f6a8ca08879a1530adb8ca'
             'a5f19e68e9e4790d017dc4988e715f51c44548df5615aae6106d1a0c84fe49f1'
             '04531ee1732c18c933b5b28f5da88ed183d5aa3698b1d1e912c000928b93ec91'
             '1578e819b6ee479b6db7a095bcfa74372d3ff555642c6d6ea7112e97bb6f2027')
+sha256sums_x86_64=('f41f8cf16ed627f94c9ad2c60602fdedb585ff1f8d50f4c44927da706dbe1808'
+                   '9032d360fb258fba392fd00a150881674bfa88598c6fad2c73f552a03501f1ce'
+                   '33517b19738cf68a4c1de7566d3602a09b3be037b9f4aca17f10a364b476cb9e'
+                   '29780ca6efbcdabe6988cd7eae6dbf995c5839d3f4c0b1f3ee6de2f9bfdc6c5c'
+                   '6a35206886a116ba4ae83432035b877818b883033a70697a8330c473f9374b8e'
+                   '1778a36d34657f853b1c6cb848c5dae6a1480babd357131ab723d8b41109ffd3'
+                   'c72981b583838b6016f3ab5bf5240f041acefc82c3f67983e447373b520e54e5'
+                   '214302538b9c983bc075cb59770329f4f751f2a0f73c390566f68d670cdcdb6f'
+                   '70edb9c63fe08d77cb2a9b59f9d4d1ec16e28a49737e8dd0cdbf5ccefcc562bb'
+                   '6f5d86f207c78cb64744889c34ed3ac45e403ea035d512674e5b348cb0d6355a'
+                   '05778e62c2da50d8280dc55589225871bf90bb2d543b48d2f1d6acd73460d573')
+sha256sums_aarch64=('7f99e5020f79d3a9a369e579543db860afef6f2a41403992733a2b707b73e757'
+                    '10ae30dac5b3ed1cc820a2d0ea9796ce2fa0a6e87813d212a15e9d595a1c3afc'
+                    'ddc83cb35141192222529db34e57e26aef70b3960d4c688b73121a434d580232'
+                    '65500e40641c62f470d36034e3579c87108964660788d67fc3d771be66b1a096'
+                    '6e0044cf445b8650efe57daf9415adb99f063c7a529437f2dbe58c7774e57cab')
 
 prepare() {
   mv "${srcdir}/${pkgname}-${pkgver/.hotfix/+hotfix}" "${srcdir}/${pkgname}"
@@ -225,7 +254,7 @@ EOF
 
   mkdir "${srcdir}/gradlew"
   pushd ${srcdir}/gradlew
-  gradle init --use-defaults --type basic --project-name flutter --dsl groovy
+  gradle init --type basic --project-name flutter --dsl kotlin --incubating
   gradle wrapper
   popd
 
@@ -252,12 +281,16 @@ EOF
   mkdir -p engine/android-arm64-release
   mkdir -p engine/android-x64-release
 
-  unzip -o -q "${srcdir}/android-arm-profile-linux.zip" -d engine/android-arm-profile/linux-x64
-  unzip -o -q "${srcdir}/android-arm-release-linux.zip" -d engine/android-arm-release/linux-x64
-  unzip -o -q "${srcdir}/android-arm64-profile-linux.zip" -d engine/android-arm64-profile/linux-x64
-  unzip -o -q "${srcdir}/android-arm64-release-linux.zip" -d engine/android-arm64-release/linux-x64
-  unzip -o -q "${srcdir}/android-x64-profile-linux.zip" -d engine/android-x64-profile/linux-x64
-  unzip -o -q "${srcdir}/android-x64-release-linux.zip" -d engine/android-x64-release/linux-x64
+  if [ "$(uname -m)" == "x86_64" ]; then
+
+  unzip -o -q "${srcdir}/android-arm-profile-linux-x64.zip" -d engine/android-arm-profile/linux-x64
+  unzip -o -q "${srcdir}/android-arm-release-linux-x64.zip" -d engine/android-arm-release/linux-x64
+  unzip -o -q "${srcdir}/android-arm64-profile-linux-x64.zip" -d engine/android-arm64-profile/linux-x64
+  unzip -o -q "${srcdir}/android-arm64-release-linux-x64.zip" -d engine/android-arm64-release/linux-x64
+  unzip -o -q "${srcdir}/android-x64-profile-linux-x64.zip" -d engine/android-x64-profile/linux-x64
+  unzip -o -q "${srcdir}/android-x64-release-linux-x64.zip" -d engine/android-x64-release/linux-x64
+
+  fi
 
   unzip -o -q "${srcdir}/android-x86.zip" -d engine/android-x86
   unzip -o -q "${srcdir}/android-x64.zip" -d engine/android-x64
@@ -279,7 +312,7 @@ EOF
   unzip -o -q "${srcdir}/gtk-debug-${_flutterarch}.zip" -d engine/linux-${_flutterarch}
   unzip -o -q "${srcdir}/gtk-profile-${_flutterarch}.zip" -d engine/linux-${_flutterarch}-profile
   unzip -o -q "${srcdir}/gtk-release-${_flutterarch}.zip" -d engine/linux-${_flutterarch}-release
-  unzip -o -q "${srcdir}/font-subset.zip" -d engine/linux-${_flutterarch}
+  unzip -o -q "${srcdir}/font-subset-${_flutterarch}.zip" -d engine/linux-${_flutterarch}
 }
 
 build() {
