@@ -12,9 +12,8 @@ depends=('plasma-workspace' 'qt6-5compat' 'qt6-declarative')
 makedepends=('git' 'extra-cmake-modules')
 source=("git+$url.git#branch=QT6")
 sha256sums=('SKIP')
-conflicts=("${pkgname%-git}")
-provides=("${pkgname%-git}");
-replaces=("plasma5-applets-weather-widget-2-git")
+conflicts=('plasma5-applets-weather-widget' 'plasma-applets-weather-widget-2')
+provides=('plasma-applets-weather-widget-3')
 
 pkgver() {
   cd "$_gitname"
