@@ -3,8 +3,8 @@
 _name=stable-diffusion.cpp
 pkgbase="${_name}-git"
 pkgname=(
-  "${pkgbase}"
-  "${_name}-cublas-git"
+  # "${pkgbase}"
+  # "${_name}-cublas-git"
   "${_name}-hipblas-git"
 )
 pkgver=r108.48bcce4
@@ -18,7 +18,7 @@ makedepends=(
   'cmake'
   'cuda'
   'git'
-  'hipblas'
+  'rocm-hip-sdk'
   'openblas'
 )
 conflicts=("${_name}")
@@ -59,6 +59,7 @@ build() {
     -DCMAKE_C_COMPILER=clang
     -DCMAKE_CXX_COMPILER=clang++
     -DSD_HIPBLAS=ON
+    -DAMDGPU_TARGETS=gfx1100
   )
 
   local _cmake_openblas_args=(
@@ -66,21 +67,28 @@ build() {
     -DGGML_OPENBLAS=ON
   )
 
+  echo "Build ${pkgbase} with OPENBlas"
+  cd "${srcdir}/${_name}-openblas"
+  cmake "${_cmake_openblas_args[@]}"
+  cmake --build build
+
   echo "Build ${pkgbase} with CUBlas (NVIDIA CUDA)"
+  export CUDA_PATH=/opt/cuda
+  export PATH+=":/opt/cuda/bin:/opt/cuda/nsight_compute:/opt/cuda/nsight_systems/bin"
+  export LD_LIBRARY_PATH+=":/opt/cuda/lib:/opt/cuda/lib64"
+  export NVCC_PREPEND_FLAGS='-ccbin /opt/cuda/bin'
   cd "${srcdir}/${_name}-cublas"
   cmake "${_cmake_cublas_args[@]}"
   cmake --build build
 
   echo "Build ${pkgbase} with HIPBlas (AMD ROCm)"
   cd "${srcdir}/${_name}-hipblas"
-  CC=/opt/rocm/llvm/bin/clang CXX=/opt/rocm/llvm/bin/clang++ \
+  export CXXFLAGS+="$CXXFLAGS -fcf-protection=none"
+  export PATH+=":/opt/rocm/lib/llvm/bin"
+  CC="/opt/rocm/llvm/bin/clang" CXX="/opt/rocm/llvm/bin/clang++" \
     cmake "${_cmake_hipblas_args[@]}"
   cmake --build build
 
-  echo "Build ${pkgbase} with OPENBlas"
-  cd "${srcdir}/${_name}-openblas"
-  cmake "${_cmake_openblas_args[@]}"
-  cmake --build build
 }
 
 package_stable-diffusion.cpp-git() {
@@ -104,7 +112,7 @@ package_stable-diffusion.cpp-cublas-git() {
 
 package_stable-diffusion.cpp-hipblas-git() {
   pkgdesc="$pkgdesc (with AMD ROCm optimizations)"
-  depends+=('hipblas')
+  depends+=('rocm-hip-runtime')
   provides=("${pkgbase}=${pkgver}")
   conflicts=("${pkgbase}")
 
