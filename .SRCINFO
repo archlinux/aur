@@ -1,24 +1,21 @@
 pkgbase = sing-geosite
-	pkgdesc = sing-geosite
-	pkgver = 20240105034708
+	pkgdesc = Geosite Database and Rule Set for sing-box
+	pkgver = 20240324094850
 	pkgrel = 3
 	url = https://github.com/SagerNet/sing-geosite
 	arch = any
-	license = GPL3
-	makedepends = go
-	source = sing-geosite-20240105034708.tar.gz::https://github.com/SagerNet/sing-geosite/archive/refs/tags/20240105034708.tar.gz
-	sha256sums = b4101866d5559596f072aae952cff82758e3a1be1cfae9e55d086d97d5d9413d
+	license = MIT
+	license = GPL-3.0-or-later
+	makedepends = git
+	source = geosite.db::https://github.com/SagerNet/sing-geosite/releases/download/20240324094850/geosite.db
+	source = LICENSE::https://raw.githubusercontent.com/v2fly/domain-list-community/master/LICENSE
+	sha256sums = 56d12105bcdcfecf9a209a34a3c43d54ad4458928e1addec819bcd6995cfd47a
+	sha256sums = b9d84a22870d3f21c91a4c6e410c9cc51d00902f5233ad0c84011479244bf7d2
+
+pkgname = sing-geosite-rule-set
+	pkgdesc = sing-geosite (rule-set)
+	provides = sing-geosite
 
 pkgname = sing-geosite-db
 	pkgdesc = sing-geosite (database)
-	depends = sing-geosite-common
 	provides = sing-geosite
-	replaces = sing-geosite
-
-pkgname = sing-geosite-rule-set
-	pkgdesc = sing-geosite (rule sets)
-	depends = sing-geosite-common
-	provides = sing-geosite
-
-pkgname = sing-geosite-common
-	pkgdesc = sing-geosite (common files)

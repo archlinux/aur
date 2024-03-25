@@ -1,47 +1,39 @@
 # Maintainer: everyx <lunt.luo#gmail.com>
 
 pkgbase=sing-geosite
-pkgname=(sing-geosite-db sing-geosite-rule-set sing-geosite-common)
-pkgver=20240105034708
+pkgname=(sing-geosite-rule-set sing-geosite-db)
+pkgver=20240324094850
 pkgrel=3
+pkgdesc="Geosite Database and Rule Set for sing-box"
+arch=(any)
+url="https://github.com/SagerNet/$pkgbase"
+license=(MIT GPL-3.0-or-later)
 
-pkgdesc='sing-geosite'
-arch=('any')
-url="https://github.com/SagerNet/sing-geosite"
-license=('GPL3')
+makedepends=(git)
 
-makedepends=(go)
+source=("geosite.db::$url/releases/download/$pkgver/geosite.db"
+        "LICENSE::https://raw.githubusercontent.com/v2fly/domain-list-community/master/LICENSE")
+sha256sums=('56d12105bcdcfecf9a209a34a3c43d54ad4458928e1addec819bcd6995cfd47a'
+            'b9d84a22870d3f21c91a4c6e410c9cc51d00902f5233ad0c84011479244bf7d2')
 
-_srcbase="${pkgbase}-${pkgver}"
-
-source=("${_srcbase}.tar.gz::https://github.com/SagerNet/sing-geosite/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b4101866d5559596f072aae952cff82758e3a1be1cfae9e55d086d97d5d9413d')
-
-build() {
-    cd "${_srcbase}" || exit
-    NO_SKIP=true go run -v .
-}
-
-package_sing-geosite-common() {
-    pkgdesc='sing-geosite (common files)'
-    install -Dm644 "${_srcbase}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
+prepare() {
+  git clone --depth 1 --branch rule-set $url
 }
 
 package_sing-geosite-rule-set() {
-    pkgdesc='sing-geosite (rule sets)'
-    depends=(sing-geosite-common)
-    provides=(sing-geosite)
+  pkgdesc="sing-geosite (rule-set)"
+  provides=($pkgbase)
 
-    install -dm755 "${pkgdir}/usr/share/${pkgbase}/rule-set"
-    install -Dm644 "${_srcbase}/rule-set/"* "${pkgdir}/usr/share/${pkgbase}/rule-set"
+  install -dm755 "$pkgdir/usr/share/sing-box/$pkgname"
+  install -Dm644 $pkgbase/*.srs "$pkgdir/usr/share/sing-box/$pkgname"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 package_sing-geosite-db() {
-    pkgdesc='sing-geosite (database)'
-    depends=(sing-geosite-common)
-    replaces=(sing-geosite)
-    provides=(sing-geosite)
+  pkgdesc="sing-geosite (database)"
+  provides=($pkgbase)
 
-    install -dm755 "${pkgdir}/usr/share/${pkgbase}"
-    install -Dm644 "${_srcbase}/"*.db "${pkgdir}/usr/share/${pkgbase}"
+  install -dm755 "$pkgdir/usr/share/sing-box"
+  install -Dm644 geosite.db "$pkgdir/usr/share/sing-box"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
