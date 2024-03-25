@@ -15,7 +15,7 @@ pkgname=(
   "${_pkgbare}-common-git"
 )
 pkgver=0.0.alpha_3+262.r437.20240324.3add463
-pkgrel=1
+pkgrel=2
 pkgdesc="32 and 64 bit DOS command interpreters ('command.com'), e.g. for fdpp and dosemu2. Latest git checkout."
 arch=('any')
 url='https://github.com/dosemu2/comcom64'
@@ -43,11 +43,9 @@ if "${_build_64}"; then
 fi
 source=(
   "${_upstreamname}::git+${url}.git"
-  #"thunk_gen::git+https://github.com/stsp/thunk_gen.git"
 )
 sha256sums=(
   'SKIP'
-  #'SKIP'
 )
 
 pkgver() {
