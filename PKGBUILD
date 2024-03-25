@@ -2,7 +2,7 @@
 pkgname=opal-player-bin
 _pkgname=Opal
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Plays relaxing music in the background"
 arch=('x86_64')
 url="https://codedead.com/"
@@ -19,13 +19,16 @@ depends=(
     'alsa-lib'
     'libxi'
 )
+makedepends=(
+    'fuse2'
+)
 options=('!strip')
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${CARCH}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('4f5fb19cf085c3f160f373100c89a4ff67dc1bff5b270db852df115b658328ef'
-            '62a78a27802fc0a643a84e47903b74f61abe39adbef3445fe5195c118d77dc77')
+            'badda08ff7595f293153b5d58f1b908d5efd343bca2dab7ad4e9577c1250f8ea')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
