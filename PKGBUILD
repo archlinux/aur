@@ -1,0 +1,126 @@
+# Maintainer: Aleksana QwQ <me@aleksana.moe>
+# Maintainer: q234 rty <q23456yuiop at gmail dot com>
+# Contributor: ThatOneCalculator <kainoa@t1c.dev>
+# Contributor: lilydjwg <lilydjwg@gmail.com>
+# Contributor: FabioLolix
+
+_pkgname="hyprland"
+pkgname="${_pkgname}-hidpi-xprop"
+pkgver=0.37.1
+pkgrel=1
+pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
+arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
+url="https://github.com/hyprwm/Hyprland"
+license=('BSD-3-Clause')
+depends=(
+	libxcb
+	xcb-proto
+	xcb-util
+	xcb-util-keysyms
+	libxfixes
+	libx11
+	libxcomposite
+	xorg-xinput
+	libxrender
+	pixman
+	wayland-protocols
+	cairo
+	pango
+	polkit
+	glslang
+	libdisplay-info
+	libinput
+	libxcb
+	libxkbcommon
+	opengl-driver
+	pixman
+	wayland
+	xcb-util-errors
+	xcb-util-renderutil
+	xcb-util-wm
+	seatd
+	xorg-xwayland-hidpi-xprop
+	tomlplusplus
+	hyprlang
+	hyprcursor
+)
+makedepends=(
+	git
+	cmake
+	ninja
+	gcc
+	meson
+	wayland-protocols
+	xorgproto
+)
+source=("${_pkgname}::git+https://github.com/hyprwm/Hyprland.git#commit=c5e28ebcfe00a510922779b2c568cfa52a317445"
+        "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
+        "git+https://github.com/hyprwm/hyprland-protocols.git"
+        "git+https://github.com/canihavesomecoffee/udis86.git"
+        "0001-Revert-compositor-send-WL_SURFACE_ERROR_INVALID_SIZE.patch"
+        "0001-xwayland-support-HiDPI-scale.patch"
+        "0002-Fix-configure_notify-event.patch"
+        "0003-Fix-size-hints-under-Xwayland-scaling.patch")
+conflicts=("${_pkgname}")
+provides=("${_pkgname}=${pkgver}")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '7758eb3ca20b657e53b01c239c5234898342322f41af1cd9e9a8841fca2d5e2b'
+            'b717f2f61aeb3bf670fe60424a8cd638d51e73dc66bd84277fada289bf2330d8'
+            'acced048ce6359f4f9f894ee648e4c47fd5093db3fce285b60f73b9f80bb7ac9'
+            '4e6b32ea58ecfd6a2cce7e5ddf09160136714de8b58e41a9919b30e06e998178')
+
+pkgver() {
+	git -C "${_pkgname}" describe --tags | sed -r 's/^v//;s/\.([a-z])/\1/;s/([a-z])\./\1/;s/[^-]*-g/r&/;s/-/+/g'
+}
+
+prepare() {
+	cd "${srcdir}/${_pkgname}"
+	rm -rf subprojects/wlroots subprojects/hyprland-protocols
+	git submodule init
+	git config submodule.wlroots.url "${srcdir}"/wlroots
+	git config submodule.subprojects/hyprland-protocols.url "${srcdir}"/hyprland-protocols
+	git config submodule.subprojects/udis86.url "${srcdir}"/udis86
+	git -c protocol.file.allow=always submodule update subprojects/wlroots
+	git -c protocol.file.allow=always submodule update subprojects/hyprland-protocols
+	git -c protocol.file.allow=always submodule update subprojects/udis86
+	cd subprojects/wlroots
+	patch -Np1 -i "${srcdir}"/0001-Revert-compositor-send-WL_SURFACE_ERROR_INVALID_SIZE.patch
+	patch -Np1 -i "${srcdir}"/0001-xwayland-support-HiDPI-scale.patch
+	patch -Np1 -i "${srcdir}"/0002-Fix-configure_notify-event.patch
+	patch -Np1 -i "${srcdir}"/0003-Fix-size-hints-under-Xwayland-scaling.patch
+}
+
+build() {
+	cd "${srcdir}/${_pkgname}"
+	mkdir -p build && cd build
+	cmake -G Ninja -DCMAKE_BUILD_TYPE=None -DCMAKE_SKIP_RPATH=ON -DCMAKE_INSTALL_PREFIX=/usr ..
+	ninja
+}
+
+package() {
+	cd "${srcdir}/${_pkgname}"
+	meson install -C subprojects/wlroots/build --destdir "${pkgdir}/tmpwlr"
+	install -Dm755 build/Hyprland -t "${pkgdir}/usr/bin"
+	pushd "${pkgdir}/usr/bin" && ln -sf Hyprland hyprland && popd
+	install -Dm755 build/hyprctl/hyprctl -t "${pkgdir}/usr/bin"
+	install -Dm755 build/hyprpm/hyprpm -t "${pkgdir}/usr/bin"
+	install -Dm644 assets/*.png -t "${pkgdir}/usr/share/hyprland"
+	install -Dm644 example/hyprland.desktop -t "${pkgdir}/usr/share/wayland-sessions"
+	install -Dm644 example/hyprland.conf -t "${pkgdir}/usr/share/hyprland"
+	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -Dm644 subprojects/wlroots/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-wlroots"
+	install -Dm644 subprojects/udis86/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-udis86"
+	install -Dm644 docs/*.1 -t "${pkgdir}/usr/share/man/man1"
+	install -Dm755 ${pkgdir}/tmpwlr/usr/local/lib/libwlroots.so.* -t "${pkgdir}/usr/lib"
+	install -d "${pkgdir}/usr/include/hyprland/protocols"
+	install -d "${pkgdir}/usr/include/hyprland/wlroots"
+	cp -R src ${pkgdir}/usr/include/hyprland/
+	cp -R ${pkgdir}/tmpwlr/usr/local/include/* ${pkgdir}/usr/include/hyprland/wlroots/
+	find ${pkgdir}/usr/include/hyprland/ -type f ! -name '*.h*' -delete
+	rm -rf ${pkgdir}/tmpwlr
+	cp protocols/*-protocol.h ${pkgdir}/usr/include/hyprland/protocols
+	install -Dm644 build/hyprland.pc -t "${pkgdir}/usr/share/pkgconfig"
+}
