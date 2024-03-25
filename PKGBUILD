@@ -1,14 +1,21 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=watchman-bin
-pkgver=2024.02.12.00
+pkgver=2024.03.25.00
 pkgrel=1
 pkgdesc="An inotify-based file watching and job triggering command line utility"
 url="https://facebook.github.io/watchman/"
 arch=(x86_64)
 license=(MIT)
-depends=(openssl-1.1 gcc-libs)
-makedepends=(patchelf python)
+depends=(
+  gcc-libs
+  glibc
+  openssl-1.1
+)
+makedepends=(
+  patchelf
+  python
+)
 provides=("watchman=$pkgver")
 conflicts=(watchman)
 options=(!strip)
@@ -19,7 +26,7 @@ source=(
   "https://github.com/facebook/watchman/releases/download/v$pkgver/watchman-v$pkgver-linux.zip"
   "watchman-LICENSE::https://github.com/facebook/watchman/raw/v$pkgver/LICENSE"
 )
-b2sums=('59d8dce013a9d9be29380bb0c4263780b3301fa240fb7e1e18983394d8abda5c727b32882ffff700ff7baa18ea2a89ab1ebf228fa34a2f625c012c3a1b5ba104'
+b2sums=('cefea6c9ababe91271124cb393508e662abcc0f74b88d62db443096bdd56444dae3e4f941246f4b4b3e0b0f49879b2d89766eed7d9eeb214389f57668d83e7de'
         'b9c1c046dc0cd3c6bbf977f3e6d3f448a5fa26ac4d27aa3e2bf1c1a2f6bf97484a79f76c19bf5d5b3cf92400f951015a5036dfd8e183a2fdb0634ce992b12469')
 
 prepare() {
@@ -94,4 +101,4 @@ END
   install -Dm644 ../watchman-LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-# vim:set sw=2 et:
+# vim:set sw=2 sts=-1 et:
