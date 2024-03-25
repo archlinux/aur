@@ -9,7 +9,7 @@ _enginever=a5c24f538d05aaf66f7972fb23959d8cafb9f95a
 _materialfontsver=3012db47f3130e62f7cc0beabff968a33cbec8d8
 _gradlewver=fd5c1f2c013565a3bea56ada6df9d2b8e96d56aa
 _flutterarch=$(uname -m | sed s/aarch64/arm64/ | sed s/x86_64/x64/)
-pkgrel=1
+pkgrel=2
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64" "aarch64")
 url="https://${pkgname}.dev"
@@ -185,7 +185,7 @@ sha256sums=('089f924c72f28d25851382d70db83df83c64746713f6a8ca08879a1530adb8ca'
             '05778e62c2da50d8280dc55589225871bf90bb2d543b48d2f1d6acd73460d573'
             '54db9347ac6467b806fff70f62b2709276a0ca4d82468ae8357d5520db0ad04a'
             '688a7d6a3c220cf09f7e48af46f1ef1b01d251679962c825eded0b3fa4fc2ab1'
-            'a5516dda7451eec10a2c0069f5a2e01c6de63a16332c3e2d8a94e27b520f8d9e'
+            '8d2422220b5cdcbe7757cefa576045c92c4b013708a0a88c8d378484e1adb24e'
             '544d08716332a9f9358b21010d468b84a9edff0da7bbb1baf0cf4d6322821ea5'
             'a5f19e68e9e4790d017dc4988e715f51c44548df5615aae6106d1a0c84fe49f1'
             '04531ee1732c18c933b5b28f5da88ed183d5aa3698b1d1e912c000928b93ec91'
