@@ -1,16 +1,16 @@
 pkgbase = proxyman-bin
 	pkgdesc = Proxyman is a native, high-performance app, which enables developers to capture, inspect, and manipulate HTTP/HTTPS requests/responses with ease.
-	pkgver = 2.11.1
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://proxyman.io
 	arch = x86_64
 	license = custom
-	provides = proxyman=2.11.1
+	provides = proxyman=2.12.0
 	conflicts = proxyman
 	options = !strip
-	source = proxyman-2.11.1.AppImage::https://github.com/ProxymanApp/proxyman-windows-linux/releases/download/2.11.1/Proxyman-2.11.1.AppImage?v=2-11-1
+	source = proxyman-2.12.0.AppImage::https://github.com/ProxymanApp/proxyman-windows-linux/releases/download/2.12.0/Proxyman-2.12.0.AppImage?v=2-12-0
 	source = LICENSE.md
-	sha256sums = 3818e76ed20504a8b870259747116da11f3747bdc97a02093d814388400b9295
+	sha256sums = ae9864c77c0208c7938692c181ebf9096df08ed0c325ef7de3c63eabe729dc9c
 	sha256sums = 1f06e6dbbba57c36ef98daa6ad4893b944494b1e20bcf477eb78580476205f9a
 
 pkgname = proxyman-bin
