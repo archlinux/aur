@@ -2,16 +2,16 @@
 pkgname=notekit-appimage
 _appname="com.github.blackhole89.${pkgname%-appimage}"
 pkgver=0.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A GTK3 hierarchical markdown notetaking application with tablet support."
 arch=('x86_64')
 url="https://github.com/blackhole89/notekit"
-license=('GPL-3.0-only')
+license=('GPL-3.0-or-later')
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
 depends=()
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 options=('!strip')
 _install_path="/opt/appimages"
