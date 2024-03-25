@@ -5,7 +5,7 @@ _officalname=mCloud
 pkgver=7.7.1
 _deepinver=7.2.0deepin2
 _deepinurl=https://com-store-packages.uniontech.com
-pkgrel=2
+pkgrel=3
 pkgdesc="CMCC 139 client on Deepin Wine 6.中国移动云盘 on Deepin Wine 6"
 arch=("x86_64")
 url="https://yun.139.com/"
@@ -14,7 +14,6 @@ conflicts=("mcloud")
 depends=(
     'deepin-wine6-stable'
     'xdg-utils'
-    'hicolor-icon-theme'
     'deepin-wine-helper'
 )
 makedepends=(
@@ -56,7 +55,7 @@ build() {
     bsdtar -xf "${srcdir}/extracted_exe/app.7z" -C "${srcdir}/tmp/drive_c/Program Files/${_officalname}"
     msg "Repackaging app archive ..."
     rm -r "${srcdir}/opt/apps/${pkgname}/files/files.7z" "${srcdir}/opt/apps/${pkgname}/info"
-    7z a -t7z -r "${srcdir}/opt/apps/${pkgname}/files/files.7z" "${srcdir}/tmp/*"
+    7z a -t7z -r -snl -snh "${srcdir}/opt/apps/${pkgname}/files/files.7z" "${srcdir}/tmp/*"
     sed "s|${_pkgname}|${pkgname}|g;s|internet|Network|g" -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop"
 }
 package() {

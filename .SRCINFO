@@ -1,7 +1,7 @@
 pkgbase = deepin-wine-mcloud
 	pkgdesc = CMCC 139 client on Deepin Wine 6.中国移动云盘 on Deepin Wine 6
 	pkgver = 7.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://yun.139.com/
 	install = deepin-wine-mcloud.install
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = deepin-wine-mcloud
 	makedepends = p7zip
 	depends = deepin-wine6-stable
 	depends = xdg-utils
-	depends = hicolor-icon-theme
 	depends = deepin-wine-helper
 	conflicts = mcloud
 	source = com.139.yun.deepin_7.2.0deepin2_i386.deb::https://com-store-packages.uniontech.com/appstore/pool/appstore/c/com.139.yun.deepin/com.139.yun.deepin_7.2.0deepin2_i386.deb
