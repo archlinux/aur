@@ -1,0 +1,5 @@
+[dotslash]
+source = "github"
+github = "facebook/dotslash"
+prefix = "v"
+use_max_tag = true
