@@ -1,7 +1,7 @@
 # Maintainer: Maxim Novikov <the.mlex@gmail.com>
 
 pkgname=openssl-gost-engine
-pkgver=r759.2a8a5e0
+pkgver=3.0.3.r760.e0a500a
 pkgrel=1
 pkgdesc="A reference implementation of the Russian GOST crypto algorithms for OpenSSL"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ conflicts=(
   'gost-engine'
 )
 source=(
-  "git+https://github.com/gost-engine/engine.git#commit=2a8a5e0"
+  "git+https://github.com/gost-engine/engine.git#commit=e0a500a"
   "git+https://github.com/provider-corner/libprov.git#commit=8a126e0"
   "gost.cnf"
   "example-openssl.cnf"
@@ -36,7 +36,7 @@ backup=(
 
 pkgver(){
   cd "$srcdir/engine"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "3.0.3.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 prepare() {
   cd "$srcdir/engine"

@@ -1,6 +1,6 @@
 pkgbase = openssl-gost-engine
 	pkgdesc = A reference implementation of the Russian GOST crypto algorithms for OpenSSL
-	pkgver = r759.2a8a5e0
+	pkgver = 3.0.3.r760.e0a500a
 	pkgrel = 1
 	url = https://github.com/gost-engine/engine/
 	install = openssl-gost-engine.install
@@ -16,7 +16,7 @@ pkgbase = openssl-gost-engine
 	conflicts = openssl-gost-engine
 	conflicts = gost-engine
 	backup = etc/ssl/gost.cnf
-	source = git+https://github.com/gost-engine/engine.git#commit=2a8a5e0
+	source = git+https://github.com/gost-engine/engine.git#commit=e0a500a
 	source = git+https://github.com/provider-corner/libprov.git#commit=8a126e0
 	source = gost.cnf
 	source = example-openssl.cnf
