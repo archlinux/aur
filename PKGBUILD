@@ -1,7 +1,7 @@
 # Maintainer: Raffaele Mancuso <raffaelemancuso532 at gmail dot com>
 pkgname=pdf4qt
 pkgver=1.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source PDF editor"
 arch=('x86_64')
 url="https://jakubmelka.github.io/"
@@ -17,7 +17,6 @@ depends=(
 	'openjpeg2'
 	'onetbb'
 	'lcms2'
-	'hicolor-icon-theme'
 )
 makedepends=(
 	'git'
@@ -36,7 +35,7 @@ source=(
 	"${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
 	"FindLCMS2.cmake"
 )
-sha256sums=('SKIP'
+sha256sums=('c29a98913c9181ab93bc957a29d4009605d10eb0c5a3c0e90f4e0473620642d8'
             '5f64f0b7a3e265cc02cbe0e968482337ed8d197a043d926d7714e938d1da9f34')
 build() {
 	sed "s|lcms2|LCMS2|g" -i "${srcdir}/${pkgname}.git/Pdf4QtLibCore/CMakeLists.txt"
