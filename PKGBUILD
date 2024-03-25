@@ -1,20 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=drawio-desktop-git
-pkgver=24.0.4.r1.g6374d2f
+pkgver=24.0.4.r2.g641da88
 _electronversion=28
 _nodeversion=20
 pkgrel=1
 pkgdesc="A diagramming and whiteboarding desktop app based on Electron that wraps the core draw.io editor."
-arch=(
-    'aarch64'
-    'x86_64'
-)
+arch=('any')
 url="https://www.diagrams.net/"
 _ghurl="https://github.com/jgraph/drawio-desktop"
 license=('Apache-2.0')
 depends=(
     "electron${_electronversion}"
-    'hicolor-icon-theme'
 )
 makedepends=(
     'gendesk'
@@ -62,24 +58,24 @@ build() {
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        sed "s|https|https:\/\/gh.con.sh\/https|g" -i .gitmodules
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
     sed "s|--publish always|--publish never|g" -i package.json
-    sed '50,59d' -i electron-builder-linux-mac.json
+    sed "48,60d;s|\"target\": \"AppImage\", \"arch\": \[|\"target\": \"dir\"|g" -i electron-builder-linux-mac.json
     git submodule update --depth=1 --init --recursive
     yarn install --cache-folder "${srcdir}/.yarn_cache"
     yarn run sync
     yarn run release-linux
 }
 package() {
-    case "${CARCH}" in
-        x86_64)
-            _architecture="linux-unpacked"
-        ;;
-        aarch64)
-            _architecture="linux-arm64-unpacked"
-        ;;
-    esac
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm755 "${srcdir}/${pkgname%-git}.git/dist/${_architecture}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm755 "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     for _icons in 16x16 32x32 48x48 64x64 96x96 128x128 192x192 256x256 512x512 720x720 1024x1024;do
         install -Dm644 "${srcdir}/${pkgname%-git}.git/build/${_icons}.png" \
