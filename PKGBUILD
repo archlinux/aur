@@ -9,5 +9,5 @@ license=('GPL3')
 depends=('i3-wm' 'jq')
 
 package() {
-	install -D -m 755 "$srcdir/i3-auto-arrange.sh" "$pkgdir/usr/bin/i3-auto-arrange"
+	install -D -m 755 i3-auto-arrange.sh "$pkgdir/usr/bin/i3-auto-arrange"
 }
