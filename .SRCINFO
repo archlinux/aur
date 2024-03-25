@@ -1,7 +1,7 @@
 pkgbase = netctl2iwd
 	pkgdesc = Convert your netctl wireless profiles to iwd profiles.
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bertptrs/netctl2iwd
 	arch = x86_64
 	license = MIT
@@ -12,4 +12,3 @@ pkgbase = netctl2iwd
 	md5sums = dcbff31d50a3731ce19a3c81e6568706
 
 pkgname = netctl2iwd
-
