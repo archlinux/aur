@@ -1,0 +1,20 @@
+pkgbase = unison-upstream-bin
+	pkgdesc = File-synchronization tool, upstream provided binaries
+	pkgver = 2.53.4
+	pkgrel = 1
+	url = https://github.com/bcpierce00/unison/
+	arch = x86_64
+	license = GPL2
+	optdepends = gtk3: graphical interface
+	provides = unison
+	conflicts = unison
+	source = https://github.com/bcpierce00/unison//releases/download/v2.53.4/unison-2.53.4-ubuntu-x86_64.tar.gz
+	source = https://github.com/bcpierce00/unison//archive/v2.53.4/unison-2.53.4.tar.gz
+	source = unison.desktop
+	source = unison.1.gz
+	sha256sums = 2015de41859b35ecf4f30423d64ab39cdff2b0f5b66c561093ee0266749d56fb
+	sha256sums = d19e4293013581dbc4d149aef89b34c76221efcbd873c7aa5193de489addb85a
+	sha256sums = e53bd5add9a448f2eb4fd06bb84f3122be20575a8574cfd04ba4c6af984e3382
+	sha256sums = 8de06857315dfb8d87d4affd2c6a03387c4f904a3ff1468a1eed97bafe052356
+
+pkgname = unison-upstream-bin
