@@ -1,24 +1,25 @@
 pkgbase = local-ai
 	pkgdesc = Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first
 	pkgver = 2.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mudler/LocalAI
-	arch = aarch64
 	arch = x86_64
 	license = MIT
 	makedepends = c-ares
 	makedepends = clblast
+	makedepends = ccache
 	makedepends = cmake
+	makedepends = cuda
 	makedepends = git
 	makedepends = go
 	makedepends = grpc
 	makedepends = make
+	makedepends = openmpi
 	makedepends = openssl
 	makedepends = openblas
 	makedepends = re2
 	makedepends = rocm-hip-sdk
 	makedepends = upx
-	makedepends = cuda
 	depends = glibc
 	provides = local-ai
 	conflicts = local-ai
@@ -39,7 +40,6 @@ pkgname = local-ai
 	pkgdesc = Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first (with OPENBlas CPU optimizations)
 	depends = glibc
 	depends = openblas
-	depends = openblas64
 	provides = local-ai=2.10.1
 
 pkgname = local-ai-cublas

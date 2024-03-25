@@ -8,9 +8,9 @@ pkgname=(
   "${pkgbase}-hipblas"
 )
 pkgver=2.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first"
-arch=('aarch64' 'x86_64')
+arch=('x86_64')
 url="https://github.com/mudler/LocalAI"
 license=('MIT')
 backup=("etc/conf.d/${pkgname}.conf")
@@ -21,17 +21,19 @@ options=('!strip')
 makedepends=(
   'c-ares'
   'clblast'
+  'ccache'
   'cmake'
+  'cuda'
   'git'
   'go'
   'grpc'
   'make'
+  'openmpi'
   'openssl'
   'openblas'
   're2'
   'rocm-hip-sdk'
   'upx'
-  'cuda'
 )
 source=("${pkgbase}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
   "${pkgbase}.conf"
@@ -41,6 +43,9 @@ source=("${pkgbase}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
 prepare() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  make get-sources -j8
+
   if [ ! -d "${srcdir}/${pkgbase}-cublas" ]; then
     cp -rf "${srcdir}/${_pkgname}-${pkgver}" \
       "${srcdir}/${pkgbase}-cublas"
@@ -51,6 +56,10 @@ prepare() {
     cp -rf "${srcdir}/${_pkgname}-${pkgver}" \
       "${srcdir}/${pkgbase}-hipblas"
   fi
+
+  # disable clang unknown argument
+  sed -i 's/-fopt-info-vec-optimized//g' \
+    "${srcdir}/${pkgbase}-hipblas/sources/go-tiny-dream/Makefile"
 }
 
 build() {
@@ -58,23 +67,23 @@ build() {
 
   echo "Build ${pkgbase} with OPENBlas"
   cd "${srcdir}/${pkgbase}-openblas"
-  BUILD_TYPE=openblas make build
+  BUILD_TYPE=openblas make build -j"$(nproc)"
 
   echo "Build ${pkgbase} with OpenCL"
   cd "${srcdir}/${pkgbase}-clblas"
-  BUILD_TYPE=clblas make build
+  BUILD_TYPE=clblas make build -j"$(nproc)"
 
   echo "Build ${pkgbase} with CUBlas (NVIDIA CUDA)"
+  cd "${srcdir}/${pkgbase}-cublas"
   export CUDA_HOME="/opt/cuda"
   export PATH="$CUDA_HOME/bin:$PATH"
-  cd "${srcdir}/${pkgbase}-cublas"
-  BUILD_TYPE=cublas make build
+  BUILD_TYPE=cublas CUDA_LIBPATH=/opt/cuda/targets/x86_64-linux/lib \
+    make build -j"$(nproc)"
 
   echo "Build ${pkgbase} with HIPBlas (AMD ROCm)"
-  export ROCM_HOME="/opt/rocm"
-  export PATH="$ROCM_HOME/bin:$PATH"
   cd "${srcdir}/${pkgbase}-hipblas"
-  BUILD_TYPE=hipblas make build
+  export CXXFLAGS+="$CXXFLAGS -fcf-protection=none"
+  BUILD_TYPE=hipblas make build -j"$(nproc)"
 }
 
 _package() {
@@ -97,8 +106,7 @@ _package() {
 
 package_local-ai() {
   pkgdesc="$pkgdesc (with OPENBlas CPU optimizations)"
-  depends+=('openblas'
-    'openblas64')
+  depends+=('openblas')
   provides=("${pkgbase}=${pkgver}")
   cd "${srcdir}/${pkgbase}-openblas"
   _package
@@ -130,7 +138,7 @@ package_local-ai-hipblas() {
   provides=("${pkgbase}=${pkgver}")
   conflicts=("${pkgbase}")
 
-  cd "${srcdir}/${pkgbase}-${pkgver}-hipblas"
+  cd "${srcdir}/${pkgbase}-hipblas"
   _package
 }
 
