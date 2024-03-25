@@ -3,7 +3,7 @@
 
 pkgname=ollama-rocm-git
 pkgdesc='Create, run and share large language models (LLMs) with ROCm'
-pkgver=0.1.29.ga5ba0fcf
+pkgver=0.1.30.gc2712b55
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/jmorganca/ollama'
@@ -23,7 +23,7 @@ b2sums=('SKIP'
 pkgver() {
   cd ${pkgname/-rocm-git}
 
-  local _tag=$(git describe --tags --abbrev=0 | sed "s/^v//")
+  local _tag=$(git describe --tags --abbrev=0 | sed "s/^v//" | sed "s/-rc[0-9]*$//")
   local _commit=$(git describe --abbrev=8 --always)
   echo "$_tag.g$_commit"
 }
