@@ -15,7 +15,7 @@ pkgname=(
   "${_pkgbare}-common-git"
 )
 pkgver=0.0.alpha_3+262.r437.20240324.3add463
-pkgrel=2
+pkgrel=3
 pkgdesc="32 and 64 bit DOS command interpreters ('command.com'), e.g. for fdpp and dosemu2. Latest git checkout."
 arch=('any')
 url='https://github.com/dosemu2/comcom64'
@@ -69,10 +69,12 @@ pkgver() {
 prepare() {
   set -u
 
-  if pacman -Qi djgpp-djcrx-bootstrap > /dev/null 2>&1; then
-    error "Package 'djgpp-djcrx-bootstrap' is installed. You need to replace it with 'djgpp-djcrx' before continuing, and then re-start the build process."
-    error "Aborting."
-    return 1
+  if "${_build_32}"; then
+    if pacman -Qi djgpp-djcrx-bootstrap > /dev/null 2>&1; then
+      error "Package 'djgpp-djcrx-bootstrap' is installed. You need to replace it with 'djgpp-djcrx' before continuing, and then re-start the build process."
+      error "Aborting."
+      return 1
+    fi
   fi
 
   cd "${srcdir}/${_upstreamname}"
