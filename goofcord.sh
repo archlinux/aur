@@ -8,6 +8,8 @@ export LD_LIBRARY_PATH="${_APPDIR}/swiftshader:${_APPDIR}/lib:${LD_LIBRARY_PATH}
 export ELECTRON_IS_DEV=0
 export ELECTRON_FORCE_IS_PACKAGED=true
 export NODE_ENV=production
+export GDK_BACKEND=x11
+export XDG_SESSION_TYPE=x11
 cd "${_APPDIR}"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
     exec electron@electronversion@ "${_RUNNAME}" "${_OPTIONS}" "$@" || exit $?

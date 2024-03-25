@@ -3,7 +3,7 @@ pkgname=goofcord-bin
 _pkgname=GoofCord
 pkgver=1.3.2
 _electronversion=29
-pkgrel=1
+pkgrel=2
 pkgdesc="Take control of your Discord experience with GoofCord – the highly configurable and privacy first discord client."
 arch=(
     'aarch64'
@@ -33,7 +33,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env -u WAYLAND_DISPLAY|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
