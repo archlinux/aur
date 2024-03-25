@@ -4,9 +4,9 @@ _appname=GitHubDesktop
 pkgname="${_pkgname}-zh-bin"
 pkgver=3.3.10_linux1
 #_zhpkgver="${pkgver%_linux2}"
-_zhpkgver=3.3.11
+_zhpkgver=3.3.12
 _electronversion=26
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for managing Git and GitHub.Chinese SC Version.Github Desktop 汉化版"
 arch=(
     'aarch64'
@@ -23,7 +23,6 @@ conflicts=(
     "${pkgname%-bin}"
 )
 depends=(
-    'hicolor-icon-theme'
     "electron${_electronversion}-bin"
     'libsecret'
     'perl'
@@ -39,7 +38,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/shiftkey/desktop/release-${pkgver//_/-}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0944b873895994338007d14304b55e621d1077b07ade2af83024d2f101acb3af'
+sha256sums=('93e5833ed499a04965893959c95671572bae8331cb8fab08d303a4569f28b9d2'
             '891d678cd6aa67c0712f663b5fee690f24d11d360795300814f7bf2eb91ba530'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 sha256sums_aarch64=('aec957d95ec694113a650395a7e71f37d469192c3364358fe5b9b6fe44ed853a')
