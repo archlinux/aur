@@ -1,21 +1,19 @@
 pkgbase = sing-geosite
 	pkgdesc = Geosite Database and Rule Set for sing-box
 	pkgver = 20240324094850
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/SagerNet/sing-geosite
 	arch = any
 	license = MIT
 	license = GPL-3.0-or-later
 	makedepends = git
-	source = geosite.db::https://github.com/SagerNet/sing-geosite/releases/download/20240324094850/geosite.db
 	source = LICENSE::https://raw.githubusercontent.com/v2fly/domain-list-community/master/LICENSE
-	sha256sums = 56d12105bcdcfecf9a209a34a3c43d54ad4458928e1addec819bcd6995cfd47a
 	sha256sums = b9d84a22870d3f21c91a4c6e410c9cc51d00902f5233ad0c84011479244bf7d2
-
-pkgname = sing-geosite-rule-set
-	pkgdesc = sing-geosite (rule-set)
-	provides = sing-geosite
 
 pkgname = sing-geosite-db
 	pkgdesc = sing-geosite (database)
+	provides = sing-geosite
+
+pkgname = sing-geosite-rule-set
+	pkgdesc = sing-geosite (rule-set)
 	provides = sing-geosite
