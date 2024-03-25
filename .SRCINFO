@@ -1,7 +1,7 @@
 pkgbase = nzbhydra2-nojava-bin
 	pkgdesc = Search aggregator for newznab and torznab indexers.
 	pkgver = 5.3.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/theotherp/nzbhydra2
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = nzbhydra2-nojava-bin
 	optdepends = jackett: torrent indexer proxy
 	provides = nzbhydra2
 	conflicts = nzbhydra2
+	options = !debug
 	source = nzbhydra2.service
 	source = nzbhydra2.tmpfiles
 	source = nzbhydra2.sysusers
