@@ -2,7 +2,7 @@
 
 _modulename='xpi2pkgbuild'
 pkgname="python-${_modulename}"
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Mozilla XPI based PKGBUILD generator using mozilla addon API.'
 arch=('any')
@@ -15,8 +15,8 @@ makedepends=(
   'python-wheel'
   'python-setuptools'
 )
-source=("${_modulename}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_modulename::1}/${_modulename}/${_modulename}-${pkgver}.tar.gz")
-b2sums=('83c7da4d2b13bb3c8f9c72e6c6f2c188c82ecb1b2b93e1c90b795a6aca705e6dec5e2f07e70ed3b189e072b61eba798f577b04873622610e702e045eb141a895')
+source=("https://files.pythonhosted.org/packages/source/${_modulename::1}/${_modulename}/${_modulename}-${pkgver}.tar.gz")
+b2sums=('86ce5c34d4f4f2886a0ab40586a546582ed6ae565bb71e48142ff89bf8ad4e72bdfda8b10e69d93b2fea9b1ec015be50724fafa67508734cdec2161d5189e7db')
 
 build() {
   cd "${_modulename}-${pkgver}"
