@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggspavis
-_pkgver=1.8.0
+_pkgver=1.8.1
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='Visualization functions for spatially resolved transcriptomics data'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-uwot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('46ccbf1030de9fdd2822fe08eb28750bd05d8e70e425420705ad95c0df68dd7d')
+sha256sums=('3d77170f633c44140baf45b7051ff7ce2f770d184877818ebb6e88464e3e1d18')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
