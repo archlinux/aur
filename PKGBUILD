@@ -6,10 +6,10 @@ pkgname=sabnzbd-docker
 pkgrel=2
 pkgdesc='Convenience launch service for Sabnzd, Nzbhydra2 and Sonarr in docker'
 url="https://github.com/grumlimited/sabnzbd-docker"
-arch=('x86_64')
-license=('MIT')
+arch=('any')
+license=('GPL-3.0-or-later')
 groups=()
-depends=('docker')
+depends=('docker-compose')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -24,8 +24,8 @@ source=("file://sabnzbd-docker.service"
         "file://default.env"
         "file://docker.env")
 md5sums=('09d427d3b1de5bb5d14d674d18b778df'
-         '6fd19f267a71ba90a6a4f3177570e416'
-         '80456723536c022e86d7e1f9970792ef'
+         '879f3630d2f97a93d92d593fc79c0636'
+         'd263106fb3ae8cf5595e870fdc8907c6'
          '86c471c654c795796dbef4f8f2f4bb8f'
          '55a3e51b6074df2959798d99b60e38b4'
          '6af9cc13d7ddf3b2721208ef4bdc156f')
