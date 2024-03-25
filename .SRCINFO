@@ -1,7 +1,7 @@
 pkgbase = rofi-calc-git
 	pkgdesc = Do calculations in rofi
 	pkgver = r181.12fe2d5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/svenstaro/rofi-calc
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = rofi-calc-git
 	makedepends = automake
 	makedepends = libtool
 	depends = rofi
+	depends = libqalculate
 	provides = rofi-calc
 	conflicts = rofi-calc
 	source = git+https://github.com/svenstaro/rofi-calc
