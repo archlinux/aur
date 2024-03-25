@@ -34,11 +34,11 @@ fi
 ###################################################################################
 
 pkgbase=linux-echo
-pkgver=6.8.1
-_pkgver=6.8.1
+pkgver=6.7.10
+_pkgver=6.7.10
 pkgrel=1
-major=6.8
-commit=abef9db380deca88617f7014b683667ef6fc81e4
+major=6.7
+commit=0bd29eb1601f9b1d256cf8b402ba7d5e2a04b441
 arch=(x86_64)
 url='https://www.kernel.org/'
 license=(GPL-2.0-only)
@@ -330,7 +330,7 @@ _package-headers(){
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('8d0c8936e3140a0fbdf511ad7a9f21121598f3656743898f47bb9052d37cff68'
+sha256sums=('a9b99fb376f9fcd699c7c252aeef3bb5ba26280eb049711ac091b2eb2b487c03'
             'c2b00c84c4b543db431e06604d939a62f93107d18369f4d9860dc8062b01ab45'
             '416609986399d3046811bcc2344f4ee0833b6c92e305da3925a6e193f810dad2'
             'b4c85f49a0c0fe6d6ac1f55165c2c897000a7c6c0c30f258693d66223c0389fd'
