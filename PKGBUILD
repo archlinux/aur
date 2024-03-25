@@ -1,12 +1,12 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=relaxator
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc='Relax to soothing sounds'
 url="https://github.com/alexkdeveloper/relaxator"
+license=('GPL-3.0-or-later')
 arch=('x86_64' 'aarch64')
-license=('GPL3')
 depends=('gstreamer' 'libadwaita')
 makedepends=('git' 'meson' 'vala')
 checkdepends=('appstream-glib')
@@ -19,10 +19,10 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs || :
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
   ln -s com.github.alexkdeveloper.$pkgname "$pkgdir/usr/bin/$pkgname"
 }
