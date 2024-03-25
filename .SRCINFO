@@ -1,13 +1,13 @@
 pkgbase = canihazgnomeupdate-bin
 	pkgdesc = check if all your extensions support a specific gnome version
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://jon4hz.io
 	license = MIT
 	conflicts = canihazgnomeupdate
 	provides = canihazgnomeupdate
 	arch = x86_64
-	source_x86_64 = https://github.com/jon4hz/canihazgnomeupdate/releases/download/v0.1.0/canihazgnomeupdate-v0.1.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = ceeda97ccadbba4ab745cd5705bdce43a7a4336a60970829888d2f28f4d9b1ae
+	source_x86_64 = https://github.com/jon4hz/canihazgnomeupdate/releases/download/v0.1.1/canihazgnomeupdate-v0.1.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = 2b5796bb46a137558807c016c51d1f6654a3e76018b76b9e8850597f882f1652
 	
 pkgname = canihazgnomeupdate-bin
