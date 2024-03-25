@@ -1,6 +1,7 @@
-# Maintainer: Bart De Roy <de dot roy dot bart at gmail dot com>
+# Mantainer: Hownioni <honeyhownihoni at gmail dot com>
+# Contributor: Previous submitter's and mantainer's name: Bart De Roy <de dot roy dot bart at gmail dot com>
 pkgname=pistol-git
-pkgver=0.3.2.r7.g4b834a9
+pkgver=0.4.2.r10.g5e71fe6
 pkgrel=1
 pkgdesc='General purpose file previewer'
 arch=('x86_64')
@@ -21,15 +22,18 @@ pkgver() {
 }
 
 build() {
+  export GOPATH="$srcdir"/gopath  
+
   cd "$srcdir/$pkgname"
   # -fix flag is a no-op when using modules
-  GOPATH="$srcdir" go get -v "$_gourl/cmd/pistol"
+  make VERSION=$pkgver DESTDIR="$pkgdir" PREFIX="/usr" build
   make build manpage
 }
 
 package() {
   cd "$srcdir/$pkgname"
-  make DESTDIR="$pkgdir" install
+  make VERSION=$pkgver DESTDIR="$pkgdir" PREFIX="/usr" install
+  install -Dm755 "$srcdir/pistol-git/pistol" "$pkgdir/usr/bin/pistol"
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
   install -Dm644 -t "$pkgdir/usr/share/man/man1" pistol.1
 }
@@ -42,3 +46,4 @@ warn_build_references() {
   : # I like __FILE__ and don't consider build references to be a problem
 }
 # vim:set ts=2 sw=2 et:
+
