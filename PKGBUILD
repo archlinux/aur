@@ -6,7 +6,7 @@ pkgdesc="An offline build planner for Path of Exile using PoBFrontend, LocalIden
 arch=('x86_64')
 url='https://github.com/PathOfBuildingCommunity/PathOfBuilding'
 license=('MIT')
-pkgver=2.34.1.r7378.62.517
+pkgver=2.41.0.1bed7eb
 
 depends=('zlib' 'qt6-base' 'luajit' 'libgl' 'curl' 'ttf-liberation' 'ttf-bitstream-vera')
 makedepends=('meson' 'ninja' 'unzip' 'rsync' 'git')
