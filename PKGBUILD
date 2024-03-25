@@ -2,7 +2,7 @@
 pkgname=aliyun-adrive-bin
 pkgver=4.11.0
 _electronversion=22
-pkgrel=4
+pkgrel=5
 pkgdesc="Aliyun aDrive阿里云盘"
 arch=('x86_64')
 url="https://www.aliyundrive.com"
@@ -22,7 +22,7 @@ makedepends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.exe::https://cdn.aliyundrive.net/downloads/apps/desktop/aDrive-${pkgver}.exe"
-    "LICENSE.html::https://terms.alicdn.com/legal-agreement/terms/suit_bu1_dingtalk/suit_bu1_dingtalk202103191654_76478.html"
+    "LICENSE.html"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('507bf86e5dffe75fc9cdd8caea0e1b284dd10dfeba435e331040c305958df7a6'
