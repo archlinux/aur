@@ -1,6 +1,6 @@
 pkgbase = tulip
-	pkgdesc = Tulip is an information visualization framework dedicated to the analysis and visualization of relational data.
-	pkgver = 5.7.2
+	pkgdesc = An information visualization framework dedicated to the analysis and visualization of relational data.
+	pkgver = 5.7.3
 	pkgrel = 1
 	url = http://tulip.labri.fr/
 	arch = i686
@@ -26,11 +26,9 @@ pkgbase = tulip
 	depends = desktop-file-utils
 	optdepends = doxygen
 	optdepends = python-sphinx
-	source = https://sourceforge.net/projects/auber/files/tulip/tulip-5.7.2/tulip-5.7.2_src.tar.gz
-	source = cstdint.patch
-	source = qwebengineview.patch
-	sha256sums = 6fe5c5092e8ab3e129c3181817359d46899f0a91d79991d79eb40cf9948b37fd
-	sha256sums = 9470d749a13c35dfe1eb1e648cb6ff4f5442ea2c3cb7c070c69647f2e49d0bee
-	sha256sums = 20fd74005597463db1f8eb030e34da6e38a77e04cbdf7a0ba3e90cc258827436
+	source = https://sourceforge.net/projects/auber/files/tulip/tulip-5.7.3/tulip-5.7.3_src.tar.gz
+	source = tulip-894.patch
+	sha256sums = 6aba42f85b0360631fe3ba61b52cf28e3bc383f518652f9a90e7b90987da8dd5
+	sha256sums = 59430c405e5ce81729ed0582e3ec02b89b2e682341c3c79e12143e38c1558fad
 
 pkgname = tulip
