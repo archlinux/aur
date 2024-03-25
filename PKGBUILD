@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=shedshield-bin
 pkgver=0.0.3_beta
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform application that shuts down your desktop PC before loadshedding"
 arch=('x86_64')
 url="https://github.com/ZJouba/ShedShield"
@@ -19,7 +19,7 @@ source=(
 )
 sha256sums=('7ad50254295afd4283a42b1805eb7be96fe7f02f64085dd43c31cd823b6bd388')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.zst"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 -d "${pkgdir}"/{usr/bin,opt}

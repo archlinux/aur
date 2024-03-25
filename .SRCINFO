@@ -1,7 +1,7 @@
 pkgbase = shedshield-bin
 	pkgdesc = A cross-platform application that shuts down your desktop PC before loadshedding
 	pkgver = 0.0.3_beta
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ZJouba/ShedShield
 	arch = x86_64
 	license = GPL-3.0-only
