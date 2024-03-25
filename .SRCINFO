@@ -1,0 +1,17 @@
+pkgbase = rustmon-git
+	pkgdesc = Pokemon Colorscripts written in Rust
+	pkgver = r26.2b2a15c
+	pkgrel = 1
+	url = https://github.com/Vomitblood/rustmon
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	provides = rustmon
+	options = !debug
+	source = git+https://github.com/Vomitblood/rustmon.git
+	md5sums = SKIP
+
+pkgname = rustmon-git
