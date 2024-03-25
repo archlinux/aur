@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=overmind-bin
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Overmind is a process manager for Procfile-based applications and tmux"
 arch=("x86_64")
@@ -12,7 +12,7 @@ depends=("tmux")
 makedepends=("gzip")
 source=("$pkgname-$pkgver.gz::$url/releases/download/v$pkgver/overmind-v$pkgver-linux-amd64.gz")
 noextract=("$pkgname-$pkgver.gz")
-sha256sums=('1f7cac289b550a71bebf4a29139e58831b39003d9831be59eed3e39a9097311c')
+sha256sums=('713aa96c161166672b18008b4326dceda497c573f084acbc473e979be39b7771')
 
 prepare() {
   gzip -d --force "$pkgname-$pkgver.gz"
