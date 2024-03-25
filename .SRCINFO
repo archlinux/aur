@@ -1,17 +1,17 @@
 pkgbase = perl-math-currency
 	pkgdesc = Exact Currency Math with Formatting and Rounding
-	pkgver = 0.52
-	pkgrel = 3
+	pkgver = 0.53
+	pkgrel = 1
 	url = https://metacpan.org/release/Math-Currency
 	arch = any
-	license = GPL
 	license = PerlArtistic
-	makedepends = perl-extutils-makemaker
-	depends = perl
-	depends = perl-encode-locale
+	license = GPL
+	checkdepends = perl-test-more-utf8>=0
+	depends = perl-encode-locale>=0
+	depends = perl>=5.008
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/M/MS/MSCHOUT/Math-Currency-0.52.tar.gz
-	sha512sums = f440826f7fa7480f43576c1d7f5f6e5b868e961af918047f592b299b64244429ec167c1a5869e2cfe514ddc90ae2019bbd36c1288ca07f7a3e0a672e735e4bee
+	source = http://search.cpan.org/CPAN/authors/id/M/MS/MSCHOUT/Math-Currency-0.53.tar.gz
+	md5sums = 32c06da7d919ff1e28d25c136bea8b38
+	sha512sums = b8fd936427b34fc65470789f3db53a081f1cd06c5027fdae57e9a58d03983c699ae2ff7a4f4b3e7f11cf6e1a2eaa61092f368dda211c3cad05ef3f25b0736e1f
 
 pkgname = perl-math-currency
-
