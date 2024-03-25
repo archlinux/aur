@@ -36,7 +36,7 @@ build() {
         -e "s|@appname@|${pkgname%-bin}|g" \
         -i "${srcdir}/lintian-${pkgname%-bin}"
     sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@ap | grep '^Chrome/[0-9.]* Electron/[0-9]'pname@|${pkgname%-bin}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
