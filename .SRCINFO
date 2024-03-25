@@ -80,7 +80,6 @@ pkgbase = cosmic-epoch-git
 	conflicts = cosmic-term
 	conflicts = cosmic-workspaces-epoch
 	conflicts = xdg-desktop-portal-cosmic
-	options = !lto
 	backup = etc/cosmic-comp/config.ron
 	source = git+https://github.com/pop-os/cosmic-epoch.git
 	source = git+https://github.com/pop-os/cosmic-applets.git

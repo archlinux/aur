@@ -77,7 +77,6 @@ conflicts=(
   "${_submodules[@]}"
 )
 backup=('etc/cosmic-comp/config.ron')
-options=('!lto')
 source=(
   'git+https://github.com/pop-os/cosmic-epoch.git'
   'git+https://github.com/pop-os/cosmic-applets.git'
@@ -180,6 +179,7 @@ prepare() {
 
 build() {
   cd cosmic-epoch
+  CFLAGS+=" -ffat-lto-objects"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   # note, consider rust build time optimisations: 
