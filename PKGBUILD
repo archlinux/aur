@@ -34,7 +34,6 @@ source=(
 )
 noextract=()
 sha256sums=(SKIP, SKIP)
-validpgpkeys=()
 
 prepare() {
   cd "$srcdir"
