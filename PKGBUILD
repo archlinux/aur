@@ -1,20 +1,19 @@
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-text-microtemplate'
-pkgver='0.20'
+pkgver='0.24'
 pkgrel='1'
 pkgdesc="Micro template engine with Perl5 language"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.8.0')
-makedepends=()
+makedepends=('perl-module-install')
 url='http://search.cpan.org/dist/Text-MicroTemplate'
-source=('http://search.cpan.org/CPAN/authors/id/K/KA/KAZUHO/Text-MicroTemplate-0.20.tar.gz')
-md5sums=('03627343e85e269ddc6e7dfc5efe8c65')
-sha512sums=('107379e2ea5c1c1f6df5578dcade9b0a698b983f6801a21890de75a046bb77cfa0ed48b3531973adc73fb8f421bd5ab0ce8c01817227f102730ffb8bfa082cff')
-_distdir="Text-MicroTemplate-0.20"
+source=('http://search.cpan.org/CPAN/authors/id/K/KA/KAZUHO/Text-MicroTemplate-0.24.tar.gz')
+md5sums=('8dcce521bace009b87a30a445da15000')
+sha512sums=('5a024cf2a1a20131d823fadf8e5e7575a694e69ba73d9f96ff9151eab36f62278896c030b7f78b0665ad49c1b2afaff34aae06f16f37dd8d65e301cb950d4a05')
+_distdir="Text-MicroTemplate-0.24"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \

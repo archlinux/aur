@@ -1,16 +1,16 @@
 pkgbase = perl-text-microtemplate
 	pkgdesc = Micro template engine with Perl5 language
-	pkgver = 0.20
+	pkgver = 0.24
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Text-MicroTemplate
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	makedepends = perl-module-install
 	depends = perl>=5.8.0
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/K/KA/KAZUHO/Text-MicroTemplate-0.20.tar.gz
-	md5sums = 03627343e85e269ddc6e7dfc5efe8c65
-	sha512sums = 107379e2ea5c1c1f6df5578dcade9b0a698b983f6801a21890de75a046bb77cfa0ed48b3531973adc73fb8f421bd5ab0ce8c01817227f102730ffb8bfa082cff
+	source = http://search.cpan.org/CPAN/authors/id/K/KA/KAZUHO/Text-MicroTemplate-0.24.tar.gz
+	md5sums = 8dcce521bace009b87a30a445da15000
+	sha512sums = 5a024cf2a1a20131d823fadf8e5e7575a694e69ba73d9f96ff9151eab36f62278896c030b7f78b0665ad49c1b2afaff34aae06f16f37dd8d65e301cb950d4a05
 
 pkgname = perl-text-microtemplate
-
