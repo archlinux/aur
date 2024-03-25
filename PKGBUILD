@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="bitbake language server"
 arch=(any)
 url=https://github.com/Freed-Wu/bitbake-language-server
-depends=(python-pygls 'oelint-adv>=4.4.1')
+depends=(python-pygls 'oelint-adv>=5.0.0')
 makedepends=(python-installer)
 license=(GPL3)
 _py=py3
