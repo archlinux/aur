@@ -1,5 +1,5 @@
 pkgname=python-pysma
-pkgver=0.7.4
+pkgver=0.7.5
 _pypiname=${pkgname#python-}
 pkgrel=1
 pkgdesc="Async library for SMA Solar's WebConnect interface"
