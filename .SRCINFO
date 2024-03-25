@@ -5,14 +5,27 @@ pkgbase = patrjprof
 	url = https://git.rwth-aachen.de/patrick_laszlo.hechler/patr-java-profiler
 	arch = any
 	license = AGPL-3.0-or-later
-	makedepends = git
-	makedepends = maven
-	makedepends = java-environment>=8
 	depends = java-runtime-headless>=8
 	optdepends = java-runtime-headless>=16: support for socket files for server/client communication
 	optdepends = java-runtime>=8: graphical user interface
 	optdepends = java-runtime>=16: socket files + graphical user interface
-	source = git+https://git.rwth-aachen.de/patrick_laszlo.hechler/patr-java-profiler.git#commit=fac3a42eb14e58e43237a19953ecf4b1cf34a450
-	md5sums = SKIP
+	noextract = patr-java-profiler-start-1.2.3.sh
+	noextract = patr-java-profiler-agent-1.2.3.jar
+	noextract = patr-java-profiler-bootstrap-1.2.3.jar
+	noextract = patr-java-profiler-client-1.2.3.jar
+	noextract = patr-java-profiler-server-1.2.3.jar
+	noextract = patr-java-profiler-test-1.2.3.jar
+	source = patr-java-profiler-start-1.2.3.sh::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler/1.2.3/patr-java-profiler-1.2.3.start-script
+	source = patr-java-profiler-agent-1.2.3.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-agent/1.2.3/patr-java-profiler-agent-1.2.3-jar-with-dependencies.jar
+	source = patr-java-profiler-bootstrap-1.2.3.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-bootstrap/1.2.3/patr-java-profiler-bootstrap-1.2.3.jar
+	source = patr-java-profiler-client-1.2.3.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-client/1.2.3/patr-java-profiler-client-1.2.3.jar
+	source = patr-java-profiler-server-1.2.3.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-server/1.2.3/patr-java-profiler-server-1.2.3.jar
+	source = patr-java-profiler-test-1.2.3.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-test/1.2.3/patr-java-profiler-test-1.2.3.jar
+	sha512sums = cdef6de2254f01d4398b2fcd8f9c43ca5aa1cac5d44d66595f0c0d7cdcab5082dea7fd323548df46dde468b5f307cc44a267927ed103324b2e0f41df99ab0bc4
+	sha512sums = fa8e8d274d4d1dd15e9dba377783e49191de5e55ccc5b5e4a2c765c525ece8e3ddccee583cb266ef247b5af12569e77a9c3325b3e659442dc62d782ba913a805
+	sha512sums = 5d29b69636e06c830d006af148c79812cf7339ced88ddee59cf5add839cef934ebf1842554ec95bf89281ad34e12e9eac46fdbc861920f93f167d7543f7ff4d8
+	sha512sums = cc85720462434d8692c2d8856004de444396906c616aa6b896d3cac150027d594f52b3f5e1001ba3038bda84b3fc3f8398c2a18c2e09250a36ed026f6400204e
+	sha512sums = 7cb871422c5c766b09c2a6dfe211191162bd8f0324470163e603e24c93981f027bb52d9c5d492f7200d400e9219660a04b6b2301c2e71e1d9f2792f27bb37bdc
+	sha512sums = 11ac044870838e2a8d6fe8c593bde02786d62aaae68ff5b77a6e4a2bf355366f1137f940b52b8541613a68a24c0cc6a4839a7e2d3f066dc058e81c04f8f2e792
 
 pkgname = patrjprof
