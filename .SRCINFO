@@ -16,6 +16,8 @@ pkgbase = stable-diffusion.cpp-git
 	provides = stable-diffusion.cpp
 	conflicts = stable-diffusion.cpp
 	source = stable-diffusion.cpp::git+https://github.com/leejet/stable-diffusion.cpp
+	source = git+https://github.com/ggerganov/ggml.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = stable-diffusion.cpp-git

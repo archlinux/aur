@@ -23,11 +23,14 @@ makedepends=(
 )
 conflicts=("${_name}")
 provides=("${_name}")
-source=("${_name}::git+${url}")
+source=("${_name}::git+${url}"
+  "git+https://github.com/ggerganov/ggml.git")
 
 prepare() {
   cd "${srcdir}/${_name}"
-  git submodule update --init
+  git submodule init
+  git config submodule.ggml.url "${srcdir}/ggml"
+  git -c protocol.file.allow=always submodule update
 
   if [ ! -d "${srcdir}/${_name}-cublas" ]; then
     cp -r "${srcdir}/${_name}" "${srcdir}/${_name}-cublas"
@@ -120,4 +123,5 @@ package_stable-diffusion.cpp-hipblas-git() {
   DESTDIR="${pkgdir}" cmake --install build
 }
 
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+  'SKIP')
