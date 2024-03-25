@@ -3,10 +3,10 @@
 pkgname=stellarium-bin
 _pkgname=stellarium
 _pkgname2=Stellarium
-pkgver=23.4
+pkgver=24.1
 _pkgtag=v$pkgver
 pkgrel=1
-pkgdesc="Free GPL software which renders realistic skies in real time with OpenGL"
+pkgdesc="Software which renders realistic skies in real time with OpenGL"
 arch=('x86_64')
 url="https://${_pkgname}.org/"
 license=('GPL2')
@@ -26,8 +26,8 @@ source=(
 	"$_pkgname.bash"
 )
 sha256sums=(
-	'804419f809c17aa2574caf685da758e6cb87491372efa34301c1b89fdee8a21b'
-	'57d93f0a96359082ae9099801f8330125623e5de9981cb310a9d7bd89bcdd82b'
+	'853a26c5dab168b3190e1376e5b00bc7a9b9b50c2ca1985df0b650a1245c2da7'
+	'67c7c74f5e6f85c77a0b07b4342a1a9921b903047517b917edbaa5518e8b3b40'
 	'cc8903384ef8b8349dda202be45c3f68542dc74d40c4a1c266a5e057e96323ff'
 )
 
