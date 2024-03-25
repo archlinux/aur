@@ -1,0 +1,10 @@
+--- a/src/interfaces/ecpg/compatlib/informix.c
++++ b/src/interfaces/ecpg/compatlib/informix.c
+@@ -15,6 +15,7 @@
+ #include "pgtypes_numeric.h"
+ #include "sqlca.h"
+ #include "sqltypes.h"
++#include "../include/sqltypes.h"
+ 
+ /* this is also defined in ecpglib/misc.c, by defining it twice we don't have to export the symbol */
+ 
