@@ -1,6 +1,6 @@
 pkgbase = xeus-zmq
 	pkgdesc = ZeroMQ-based middleware for xeus
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/jupyter-xeus/xeus-zmq
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = xeus-zmq
 	depends = xeus
 	depends = zeromq
 	options = staticlibs
-	source = xeus-zmq-1.2.0.tar.gz::https://github.com/jupyter-xeus/xeus-zmq/archive/refs/tags/1.2.0.tar.gz
-	sha256sums = ecde713e9c5d5bd28fdd61448a6ec41a74a7ae6b76a81b65b7a84f602dfd9244
+	source = xeus-zmq-1.3.0.tar.gz::https://github.com/jupyter-xeus/xeus-zmq/archive/refs/tags/1.3.0.tar.gz
+	sha256sums = 503987f17983f9c877edecf73ba884136eda419e48be82606c7d7670845effb3
 
 pkgname = xeus-zmq
