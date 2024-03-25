@@ -3,7 +3,7 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=060.r6795.5d2bda4
-pkgrel=23
+pkgrel=24
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracutdevs/dracut'
@@ -103,7 +103,6 @@ source=(
   2269-2.patch::${url}/commit/51f1211be3610e57937fe2235d8088565b4f2639.patch  # fix(overlayfs): to allow overlay on top of network device
   2429.patch::${url}/commit/71055058c0bdb6fec0dbebf2ec8bbfc968820b88.patch    # fix(test): running tests no longer requires to be root
   2494.patch::${url}/commit/b88d0bab791bdc4ca75d13802f0391caf537650d.patch    # fix(resume): include in hostonly mode if resume= on cmdline
-  2495.patch::${url}/commit/20687f98e66315bc4845f2cf2b59585d589abc03.patch    # feat(install.d): allow using dracut in combination with ukify
   2527.patch::${url}/commit/a2fe89116db4b286fbf515f26bd1773b5e6ee8ad.patch    # fix(resume): add new systemd-hibernate-resume.service
   2531.patch::${url}/commit/a8015f7dfc682100434e3ee051bf9472a8e6cad4.patch    # feat(kernel-modules): add Qualcomm IPC router to enable USB
   2544.patch::${url}/commit/c1a69b81f6ebd62a40054be2375cb77c040694aa.patch    # fix(dracut.sh): skip README for AMD microcode generation
@@ -125,7 +124,6 @@ sha512sums=('SKIP'
             '4b48a6cdfbf5289b031abe18450e29cf3a3fe6c1d05ba667a5fe26b0e3ba84f765b789cfae307c9718a0feb0abf5ab727fd1e818eb138518f7ea6c97ec2242ce'
             '83c1f6ff6cdee619dfe8bc7dd6401797e427678701424c85c0dd91268575ce2dd8d164ff8bf029afcf884835bd220929d22a15ab5da2ddf3cfffdc80dbdcf3c3'
             'addb075072359b4317844d24b456f110186ad110e9b0ed148ed0ae85350086decc71cb7d1a1aac275142537f0bff05f385d82102c1d802691cccdb349f0a62a3'
-            '333a04fe64dbd58b0948feff1f4cc3ba90f7f0834f7842d83859dd48ef4c9d7a2979a62b7c0c438a7a2c8ee8a0fc03366aec5f924ec1033b676de731ef4c9745'
             'bba154e13463fb759e1cfd5f461b2b4e786ad8c6f4cacacbd918e911efc7d5a5368300676d6e6d8e9b7b2f4333314886bb1e34daac9f0c73c1c441baf7918063'
             'caaee57cb86268f49c36223bb4add6a798ee0e1c2cd0556b80946e09b7d25e51c3f54eaac42c4e529194dcb4af7dd80464c73c7196c0e8d8c929b579c2c443d0'
             '6ec47d79f4363a0c0723480ca8b22a37aad054150f0496af5c54aa17392ab53ca130d8c8849412a5391a9374a232f95571cee799e1296a764964cc5aed000e41'
