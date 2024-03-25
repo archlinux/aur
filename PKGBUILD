@@ -18,6 +18,7 @@ _cachy_config=${_cachy_config-y}
 # 'rt' - select EEVDF, but includes a series of realtime patches
 # 'rt-bore' - select Burst-Oriented Response Enhancer, but includes a series of realtime patches
 # 'sched-ext' - select 'sched-ext' Scheduler, based on EEVDF
+# 'echo' - select 'ECHO' Scheduler from Hamad
 _cpusched=${_cpusched-cachyos}
 
 ### Tweak kernel options prior to a build via nconfig
@@ -138,7 +139,6 @@ _use_lto_suffix=${_use_lto_suffix-y}
 # scheme used by CONFIG_CFI_CLANG. kCFI doesn't require LTO, doesn't
 # alter function references to point to a jump table, and won't break
 # function address equality.
-# ATTENTION!: kCFI is only available in llvm 16
 _use_kcfi=${_use_kcfi-}
 
 # Build the zfs module in to the kernel
@@ -158,23 +158,23 @@ elif [ -n "$_use_llvm_lto" ]  ||  [[ "$_use_lto_suffix" = "n" ]]; then
     pkgsuffix=cachyos-rc
     pkgbase=linux-$pkgsuffix
 fi
-_major=6.8
-_minor=0
+_major=6.9
+_minor=1
 #_minorc=$((_minor+1))
-_rcver=rc7
+_rcver=rc1
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 #_stable=${_major}
 _stable=${_major}-${_rcver}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
-pkgdesc='Linux EEVDF scheduler with the sched-ext framework Kernel by CachyOS and with some other patches and other improvements'
+pkgdesc='Linux SCHED-EXT + Cachy Sauce Kernel by CachyOS with other patches and improvements'
 pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
 license=('GPL2')
-options=('!strip')
+options=('!strip' '!debug')
 makedepends=('bc' 'libelf' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'zstd' 'gcc' 'gcc-libs' 'glibc' 'binutils' 'make' 'patch' 'python')
 # LLVM makedepends
 if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_kcfi" ]; then
@@ -192,7 +192,7 @@ if [[ "$_cpusched" = "sched-ext" || "$_cpusched" = "cachyos" ]]; then
 fi
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=550.54.14
+_nv_ver=550.67
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 source=(
     "https://github.com/torvalds/linux/archive/refs/tags/v${_major}-${_rcver}.tar.gz"
@@ -218,9 +218,8 @@ fi
 
 ## List of CachyOS schedulers
 case "$_cpusched" in
-    cachyos) # CachyOS Scheduler (BORE + SCHED-EXT)
-        source+=("${_patchsource}/sched/0001-sched-ext.patch"
-                 "${_patchsource}/sched/0001-bore-cachy.patch");;
+    cachyos) ## SCHED-EXT
+        source+=("${_patchsource}/sched/0001-bore-cachy.patch");;
     bore) ## BORE Scheduler
         source+=("${_patchsource}/sched/0001-bore-cachy.patch");;
     rt) ## EEVDF with RT patches
@@ -235,9 +234,9 @@ case "$_cpusched" in
                  "${_patchsource}/misc/0001-hardened.patch");;
     sched-ext) ## SCHED-EXT
         source+=("${_patchsource}/sched/0001-sched-ext.patch");;
+    echo) ## ECHO Scheduler
+        source+=("${_patchsource}/sched/0001-echo-cachy.patch");;
 esac
-
-
 
 export KBUILD_BUILD_HOST=cachyos
 export KBUILD_BUILD_USER=$pkgbase
@@ -289,12 +288,12 @@ prepare() {
     [ -z "$_cpusched" ] && _die "The value is empty. Choose the correct one again."
 
     case "$_cpusched" in
-        cachyos) scripts/config -e SCHED_BORE -e SCHED_CLASS_EXT;;
-        bore|hardened) scripts/config -e SCHED_BORE;;
+        sched-ext) scripts/config -e SCHED_CLASS_EXT;;
+        bore|hardened|cachyos) scripts/config -e SCHED_BORE;;
         eevdf) ;;
+        echo) ;;
         rt) scripts/config -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -e PREEMPT_RT -d PREEMPT_DYNAMIC -d PREEMPT_BUILD;;
         rt-bore) scripts/config -e SCHED_BORE -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -e PREEMPT_RT -d PREEMPT_DYNAMIC -d PREEMPT_BUILD;;
-        sched-ext) scripts/config -e SCHED_CLASS_EXT;;
         *) _die "The value $_cpusched is invalid. Choose the correct one again.";;
     esac
 
@@ -716,9 +715,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('f78cc33e15c1364ec621a03ff02c40dfbe896449bdbef3d754882d6df98def802c6840e166423172ddcc939deb13844ba24d377ecb9a315d64af8666a4df0bc2'
-        '5b580f9f1f67282ec1b649b4bd25d85e26dab77924e6a7665c86a4adb0b6f6f6affd3e14f41d51b19e6200e73a4746f3ad16e45e6c00b79a1ecb5920b8cf6e25'
+b2sums=('809f4c010ce6dd1e1033e0b73e465b8303814797397754a21d98bb7423f2ab73c523c106f205fbd3f9bb0856ee5e96a259a03f3cea02d81957c60d92536eae39'
+        'baf8dab9427bd404f598026619b11b533fffa14ea5c306d3ae6761a396ff49284e4ba293dc3c974982692a156ec8e391fc8d064bf3ed04b8c729e31d33592fc9'
         '43ef7a347878592740d9eb23b40a56083fa747f7700fa1e2c6d039d660c0b876d99bf1a3160e15d041fb13d45906cdb5defef034d4d0ae429911864239c94d8d'
-        '5a6eadbd3a69a089eacf46dda698e49e8bd267bb60228d44720e5e1ddc621089d7a29bec16471cfc45b30e4405fd2865964e556cfb36be2d289e609f34947657'
-        '372cadf4fde5ea90746b815364c0fc9fa4545f3bc7cb9242983913870422911ea8be772463149a474aa7dc5bed4e2553955ed71b365d401a33d418f09a689a96'
-        '3564ea0a143781424956836ad6b74768c7780709f94339cf12557ce134d3b356f3fb49eba30f4a8fdba04ecb015101a3475cf1cf9c19f3c11a012af371e5c785')
+        '3c736ed35ed166c2606540b45d3c0d0616baf8280595c7222c51d691c973f891aab73436cdb71e7ae8242c3bd4a8d25429f3807cf5263e19a425cd0d23b22f61'
+        'd7cbdec7da9edd4ff1d373b34041a867f651433cb01aac8633d72fed8d7042ae715494697292c2a0b0fd6562f89f46cf5778c45a6e69cf5d2b2fe132580aa15a')
