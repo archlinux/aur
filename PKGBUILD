@@ -15,12 +15,12 @@ source=('git+https://github.com/atareao/battery-status.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/battery-status"
+  cd battery-status
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/battery-status"
+  cd battery-status
   gnome-extensions pack \
     --extra-source=icons \
     --extra-source=aboutpage.js \
@@ -31,14 +31,14 @@ build() {
 }
 
 package() {
-  cd "$srcdir/battery-status"
-  install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
-  bsdtar xvf "$_uuid.shell-extension.zip" -C \
-    "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/" --no-same-owner
+  cd battery-status
+  install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
+  bsdtar xvf "${_uuid}.shell-extension.zip" -C \
+    "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
 
-  mv "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/locale" "$pkgdir/usr/share/"
+  mv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share/"
 
   install -Dm644 schemas/es.atareao.battery-status.gschema.xml -t \
     "$pkgdir/usr/share/glib-2.0/schemas/"
-  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/schemas"
+  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
 }
