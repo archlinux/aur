@@ -1,0 +1,3733 @@
+diff --git a/configure.ac b/configure.ac
+index 453e2936..e9f3b816 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -111,10 +111,10 @@ CC_ATTRIBUTE_UNUSED(
+ )
+ 
+ AC_CONFIG_FILES([
+-	libtorrent.pc
+-	Makefile
+-	src/Makefile
+-	src/torrent/Makefile
++  libtorrent.pc
++  Makefile
++  src/Makefile
++  src/torrent/Makefile
+   test/Makefile
+   test/torrent/net/Makefile
+   test/net/Makefile
+diff --git a/scripts/ax_cxx_compile_stdcxx.m4 b/scripts/ax_cxx_compile_stdcxx.m4
+old mode 100755
+new mode 100644
+diff --git a/src/download/download_main.cc b/src/download/download_main.cc
+index e075038a..7541fb6d 100644
+--- a/src/download/download_main.cc
++++ b/src/download/download_main.cc
+@@ -66,7 +66,7 @@ DownloadMain::DownloadMain() :
+   m_uploadThrottle(NULL),
+   m_downloadThrottle(NULL) {
+ 
+-  m_tracker_list = new TrackerList();
++  m_tracker_list = new TrackerList(m_info);
+   m_tracker_controller = new TrackerController(m_tracker_list);
+ 
+   m_tracker_list->slot_success() = std::bind(&TrackerController::receive_success, m_tracker_controller, std::placeholders::_1, std::placeholders::_2);
+diff --git a/src/download/download_wrapper.cc b/src/download/download_wrapper.cc
+index 304bddce..3fb45588 100644
+--- a/src/download/download_wrapper.cc
++++ b/src/download/download_wrapper.cc
+@@ -45,7 +45,6 @@ DownloadWrapper::DownloadWrapper() :
+   m_main->delay_partially_restarted().slot() = std::bind(&download_data::call_partially_restarted, data());
+ 
+   m_main->peer_list()->set_info(info());
+-  m_main->tracker_list()->set_info(info());
+   m_main->tracker_controller()->slot_success() = std::bind(&DownloadWrapper::receive_tracker_success, this, std::placeholders::_1);
+   m_main->tracker_controller()->slot_failure() = std::bind(&DownloadWrapper::receive_tracker_failed, this, std::placeholders::_1);
+ 
+diff --git a/src/protocol/handshake_manager.cc b/src/protocol/handshake_manager.cc
+index 99592ba8..255aca0b 100644
+--- a/src/protocol/handshake_manager.cc
++++ b/src/protocol/handshake_manager.cc
+@@ -95,7 +95,7 @@ HandshakeManager::add_incoming(SocketFd fd, const rak::socket_address& sa) {
+ 
+   base_type::push_back(h);
+ }
+-  
++
+ void
+ HandshakeManager::add_outgoing(const rak::socket_address& sa, DownloadMain* download) {
+   if (!manager->connection_manager()->can_connect() ||
+@@ -175,7 +175,7 @@ HandshakeManager::receive_succeeded(Handshake* handshake) {
+                                                  handshake->bitfield(),
+                                                  handshake->encryption()->info(),
+                                                  handshake->extensions())) != NULL) {
+-    
++
+     manager->client_list()->retrieve_id(&handshake->peer_info()->mutable_client_info(), handshake->peer_info()->id());
+     LT_LOG_SA_C(handshake->peer_info()->socket_address(), "Handshake success.", 0);
+ 
+@@ -254,7 +254,7 @@ HandshakeManager::setup_socket(SocketFd fd) {
+ 
+   if (m->send_buffer_size() != 0 && !fd.set_send_buffer_size(m->send_buffer_size()))
+     return false;
+-    
++
+   if (m->receive_buffer_size() != 0 && !fd.set_receive_buffer_size(m->receive_buffer_size()))
+     return false;
+ 
+diff --git a/src/torrent/connection_manager.cc b/src/torrent/connection_manager.cc
+index ea5efc58..976ec696 100644
+--- a/src/torrent/connection_manager.cc
++++ b/src/torrent/connection_manager.cc
+@@ -1,45 +1,10 @@
+-// libTorrent - BitTorrent library
+-// Copyright (C) 2005-2011, Jari Sundell
+-//
+-// This program is free software; you can redistribute it and/or modify
+-// it under the terms of the GNU General Public License as published by
+-// the Free Software Foundation; either version 2 of the License, or
+-// (at your option) any later version.
+-// 
+-// This program is distributed in the hope that it will be useful,
+-// but WITHOUT ANY WARRANTY; without even the implied warranty of
+-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-// GNU General Public License for more details.
+-// 
+-// You should have received a copy of the GNU General Public License
+-// along with this program; if not, write to the Free Software
+-// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-//
+-// In addition, as a special exception, the copyright holders give
+-// permission to link the code of portions of this program with the
+-// OpenSSL library under certain conditions as described in each
+-// individual source file, and distribute linked combinations
+-// including the two.
+-//
+-// You must obey the GNU General Public License in all respects for
+-// all of the code used other than OpenSSL.  If you modify file(s)
+-// with this exception, you may extend this exception to your version
+-// of the file(s), but you are not obligated to do so.  If you do not
+-// wish to do so, delete this exception statement from your version.
+-// If you delete this exception statement from all source files in the
+-// program, then also delete it here.
+-//
+-// Contact:  Jari Sundell <jaris@ifi.uio.no>
+-//
+-//           Skomakerveien 33
+-//           3185 Skoppum, NORWAY
+-
+ #include "config.h"
+ 
+ #include <sys/types.h>
+ 
+ #include <rak/address_info.h>
+ #include <rak/socket_address.h>
++#include <net/socket_address.h>
+ 
+ #include "net/listen.h"
+ 
+@@ -70,10 +35,10 @@ resolve_host(const char* host, int family, int socktype, ConnectionManager::slot
+   rak::socket_address sa;
+   sa.copy(*ai->address(), ai->length());
+   rak::address_info::free_address_info(ai);
+-  
++
+   if (manager->main_thread_main()->is_current())
+     thread_base::acquire_global_lock();
+-  
++
+   slot(sa.c_sockaddr(), 0);
+   return NULL;
+ }
+@@ -174,6 +139,12 @@ ConnectionManager::set_proxy_address(const sockaddr* sa) {
+ 
+ uint32_t
+ ConnectionManager::filter(const sockaddr* sa) {
++  if (!sa_is_any(sa)) {
++    if ((m_block_ipv4 && sa_is_inet(sa)) ||
++        (m_block_ipv6 && sa_is_inet6(sa)))
++      return 0;
++  }
++
+   if (!m_slot_filter)
+     return 1;
+   else
+diff --git a/src/torrent/connection_manager.h b/src/torrent/connection_manager.h
+index 09ccdd28..2c44357f 100644
+--- a/src/torrent/connection_manager.h
++++ b/src/torrent/connection_manager.h
+@@ -1,41 +1,3 @@
+-// libTorrent - BitTorrent library
+-// Copyright (C) 2005-2011, Jari Sundell
+-//
+-// This program is free software; you can redistribute it and/or modify
+-// it under the terms of the GNU General Public License as published by
+-// the Free Software Foundation; either version 2 of the License, or
+-// (at your option) any later version.
+-// 
+-// This program is distributed in the hope that it will be useful,
+-// but WITHOUT ANY WARRANTY; without even the implied warranty of
+-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-// GNU General Public License for more details.
+-// 
+-// You should have received a copy of the GNU General Public License
+-// along with this program; if not, write to the Free Software
+-// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-//
+-// In addition, as a special exception, the copyright holders give
+-// permission to link the code of portions of this program with the
+-// OpenSSL library under certain conditions as described in each
+-// individual source file, and distribute linked combinations
+-// including the two.
+-//
+-// You must obey the GNU General Public License in all respects for
+-// all of the code used other than OpenSSL.  If you modify file(s)
+-// with this exception, you may extend this exception to your version
+-// of the file(s), but you are not obligated to do so.  If you do not
+-// wish to do so, delete this exception statement from your version.
+-// If you delete this exception statement from all source files in the
+-// program, then also delete it here.
+-//
+-// Contact:  Jari Sundell <jaris@ifi.uio.no>
+-//
+-//           Skomakerveien 33
+-//           3185 Skoppum, NORWAY
+-
+-// Add some helpfull words here.
+-
+ #ifndef LIBTORRENT_CONNECTION_MANAGER_H
+ #define LIBTORRENT_CONNECTION_MANAGER_H
+ 
+@@ -106,7 +68,7 @@ public:
+ 
+   ConnectionManager();
+   ~ConnectionManager();
+-  
++
+   // Check that we have not surpassed the max number of open sockets
+   // and that we're allowed to connect to the socket address.
+   //
+@@ -129,7 +91,7 @@ public:
+   void                set_priority(priority_type p)           { m_priority = p; }
+   void                set_send_buffer_size(uint32_t s);
+   void                set_receive_buffer_size(uint32_t s);
+-  void                set_encryption_options(uint32_t options); 
++  void                set_encryption_options(uint32_t options);
+ 
+   // Setting the addresses creates a copy of the address.
+   const sockaddr*     bind_address() const                    { return m_bindAddress; }
+@@ -144,7 +106,7 @@ public:
+   void                set_filter(const slot_filter_type& s)   { m_slot_filter = s; }
+ 
+   bool                listen_open(port_type begin, port_type end);
+-  void                listen_close();  
++  void                listen_close();
+ 
+   // Since trackers need our port number, it doesn't get cleared after
+   // 'listen_close()'. The client may change the reported port number,
+@@ -208,4 +170,3 @@ private:
+ }
+ 
+ #endif
+-
+diff --git a/src/torrent/download_info.h b/src/torrent/download_info.h
+index 2c4dbaf2..22f936c3 100644
+--- a/src/torrent/download_info.h
++++ b/src/torrent/download_info.h
+@@ -1,39 +1,3 @@
+-// libTorrent - BitTorrent library
+-// Copyright (C) 2005-2011, Jari Sundell
+-//
+-// This program is free software; you can redistribute it and/or modify
+-// it under the terms of the GNU General Public License as published by
+-// the Free Software Foundation; either version 2 of the License, or
+-// (at your option) any later version.
+-// 
+-// This program is distributed in the hope that it will be useful,
+-// but WITHOUT ANY WARRANTY; without even the implied warranty of
+-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-// GNU General Public License for more details.
+-// 
+-// You should have received a copy of the GNU General Public License
+-// along with this program; if not, write to the Free Software
+-// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-//
+-// In addition, as a special exception, the copyright holders give
+-// permission to link the code of portions of this program with the
+-// OpenSSL library under certain conditions as described in each
+-// individual source file, and distribute linked combinations
+-// including the two.
+-//
+-// You must obey the GNU General Public License in all respects for
+-// all of the code used other than OpenSSL.  If you modify file(s)
+-// with this exception, you may extend this exception to your version
+-// of the file(s), but you are not obligated to do so.  If you do not
+-// wish to do so, delete this exception statement from your version.
+-// If you delete this exception statement from all source files in the
+-// program, then also delete it here.
+-//
+-// Contact:  Jari Sundell <jaris@ifi.uio.no>
+-//
+-//           Skomakerveien 33
+-//           3185 Skoppum, NORWAY
+-
+ #ifndef LIBTORRENT_DOWNLOAD_INFO_H
+ #define LIBTORRENT_DOWNLOAD_INFO_H
+ 
+diff --git a/src/torrent/http.h b/src/torrent/http.h
+index c605afa5..c5d43016 100644
+--- a/src/torrent/http.h
++++ b/src/torrent/http.h
+@@ -1,47 +1,11 @@
+-// libTorrent - BitTorrent library
+-// Copyright (C) 2005-2011, Jari Sundell
+-//
+-// This program is free software; you can redistribute it and/or modify
+-// it under the terms of the GNU General Public License as published by
+-// the Free Software Foundation; either version 2 of the License, or
+-// (at your option) any later version.
+-// 
+-// This program is distributed in the hope that it will be useful,
+-// but WITHOUT ANY WARRANTY; without even the implied warranty of
+-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-// GNU General Public License for more details.
+-// 
+-// You should have received a copy of the GNU General Public License
+-// along with this program; if not, write to the Free Software
+-// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-//
+-// In addition, as a special exception, the copyright holders give
+-// permission to link the code of portions of this program with the
+-// OpenSSL library under certain conditions as described in each
+-// individual source file, and distribute linked combinations
+-// including the two.
+-//
+-// You must obey the GNU General Public License in all respects for
+-// all of the code used other than OpenSSL.  If you modify file(s)
+-// with this exception, you may extend this exception to your version
+-// of the file(s), but you are not obligated to do so.  If you do not
+-// wish to do so, delete this exception statement from your version.
+-// If you delete this exception statement from all source files in the
+-// program, then also delete it here.
+-//
+-// Contact:  Jari Sundell <jaris@ifi.uio.no>
+-//
+-//           Skomakerveien 33
+-//           3185 Skoppum, NORWAY
+-
+ #ifndef LIBTORRENT_HTTP_H
+ #define LIBTORRENT_HTTP_H
+ 
+-#include <string>
+-#include <functional>
+-#include <iosfwd>
+-#include <list>
+-#include <torrent/common.h>
++#import <string>
++#import <functional>
++#import <iosfwd>
++#import <list>
++#import <torrent/common.h>
+ 
+ namespace torrent {
+ 
+@@ -60,59 +24,75 @@ class LIBTORRENT_EXPORT Http {
+ 
+   static const int flag_delete_self   = 0x1;
+   static const int flag_delete_stream = 0x2;
++  static const int flag_only_ipv4     = 0x8;
++  static const int flag_only_ipv6     = 0x10;
+ 
+   Http() : m_flags(0), m_stream(NULL), m_timeout(0) {}
+   virtual ~Http();
+ 
+   // Start must never throw on bad input. Calling start/stop on an
+   // object in the wrong state should throw a torrent::internal_error.
+-  virtual void       start() = 0;
+-  virtual void       close() = 0;
++  virtual void start() = 0;
++  virtual void close() = 0;
+ 
+-  int                flags() const                        { return m_flags; }
++  auto flags() const -> int;
+ 
+-  void               set_delete_self()                    { m_flags |= flag_delete_self; }
+-  void               set_delete_stream()                  { m_flags |= flag_delete_stream; }
++  void set_delete_self();
++  void set_delete_stream();
+ 
+-  const std::string& url() const                          { return m_url; }
+-  void               set_url(const std::string& url)      { m_url = url; }
++  auto url() const -> const std::string&;
++  void set_url(const std::string& url);
+ 
+   // Make sure the output stream does not have any bad/failed bits set.
+-  std::iostream*     stream()                             { return m_stream; }
+-  void               set_stream(std::iostream* str)       { m_stream = str; }
+-  
+-  uint32_t           timeout() const                      { return m_timeout; }
+-  void               set_timeout(uint32_t seconds)        { m_timeout = seconds; }
++  auto stream() -> std::iostream*;
++  void set_stream(std::iostream* str);
++
++  auto timeout() const -> uint32_t;
++  void set_timeout(uint32_t seconds);
+ 
+   // The owner of the Http object must close it as soon as possible
+   // after receiving the signal, as the implementation may allocate
+   // limited resources during its lifetime.
+-  signal_void&       signal_done()                        { return m_signal_done; }
+-  signal_string&     signal_failed()                      { return m_signal_failed; }
++  auto signal_done() -> signal_void&;
++  auto signal_failed() -> signal_string&;
+ 
+   // Guaranteed to return a valid object or throw a internal_error. The
+   // caller takes ownership of the returned object.
+-  static slot_http&  slot_factory()                       { return m_factory; }
++  static slot_http&  slot_factory();
+ 
+ protected:
+-  void               trigger_done();
+-  void               trigger_failed(const std::string& message);
++  void trigger_done();
++  void trigger_failed(const std::string& message);
+ 
+-  int                m_flags;
+-  std::string        m_url;
+-  std::iostream*     m_stream;
+-  uint32_t           m_timeout;
++  int            m_flags;
++  std::string    m_url;
++  std::iostream* m_stream;
++  uint32_t       m_timeout;
+ 
+-  signal_void        m_signal_done;
+-  signal_string      m_signal_failed;
++  signal_void    m_signal_done;
++  signal_string  m_signal_failed;
+ 
+ private:
+   Http(const Http&);
+-  void               operator = (const Http&);
++  void operator = (const Http&);
+ 
+-  static slot_http   m_factory;
++  static slot_http m_factory;
+ };
+ 
++inline auto Http::slot_factory() -> Http::slot_http& { return m_factory; }
++
++inline auto Http::flags() const -> int { return m_flags; }
++inline void Http::set_delete_self() { m_flags |= flag_delete_self; }
++inline void Http::set_delete_stream() { m_flags |= flag_delete_stream; }
++inline auto Http::url() const -> const std::string& { return m_url; }
++inline void Http::set_url(const std::string& url) { m_url = url; }
++inline auto Http::stream() -> std::iostream* { return m_stream; }
++inline void Http::set_stream(std::iostream* str) { m_stream = str; }
++inline auto Http::timeout() const -> uint32_t { return m_timeout; }
++inline void Http::set_timeout(uint32_t seconds) { m_timeout = seconds; }
++inline auto Http::signal_done() -> signal_void& { return m_signal_done; }
++inline auto Http::signal_failed() -> signal_string& { return m_signal_failed; }
++
+ }
+ 
+ #endif
+diff --git a/src/torrent/tracker.cc b/src/torrent/tracker.cc
+index 68597a1a..6fc95445 100644
+--- a/src/torrent/tracker.cc
++++ b/src/torrent/tracker.cc
+@@ -1,53 +1,18 @@
+-// libTorrent - BitTorrent library
+-// Copyright (C) 2005-2011, Jari Sundell
+-//
+-// This program is free software; you can redistribute it and/or modify
+-// it under the terms of the GNU General Public License as published by
+-// the Free Software Foundation; either version 2 of the License, or
+-// (at your option) any later version.
+-// 
+-// This program is distributed in the hope that it will be useful,
+-// but WITHOUT ANY WARRANTY; without even the implied warranty of
+-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-// GNU General Public License for more details.
+-// 
+-// You should have received a copy of the GNU General Public License
+-// along with this program; if not, write to the Free Software
+-// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-//
+-// In addition, as a special exception, the copyright holders give
+-// permission to link the code of portions of this program with the
+-// OpenSSL library under certain conditions as described in each
+-// individual source file, and distribute linked combinations
+-// including the two.
+-//
+-// You must obey the GNU General Public License in all respects for
+-// all of the code used other than OpenSSL.  If you modify file(s)
+-// with this exception, you may extend this exception to your version
+-// of the file(s), but you are not obligated to do so.  If you do not
+-// wish to do so, delete this exception statement from your version.
+-// If you delete this exception statement from all source files in the
+-// program, then also delete it here.
+-//
+-// Contact:  Jari Sundell <jaris@ifi.uio.no>
+-//
+-//           Skomakerveien 33
+-//           3185 Skoppum, NORWAY
+-
+-#include "config.h"
+-
+-#include <algorithm>
+-
+-#include "exceptions.h"
+-#include "globals.h"
+-#include "tracker.h"
+-#include "tracker_list.h"
++#import "config.h"
++
++#import <algorithm>
++
++#import "exceptions.h"
++#import "globals.h"
++#import "tracker.h"
++#import "tracker_list.h"
+ 
+ namespace torrent {
+ 
+-Tracker::Tracker(TrackerList* parent, const std::string& url, int flags) :
++Tracker::Tracker(DownloadInfo* info, const std::string& url, int flags) :
+   m_flags(flags),
+-  m_parent(parent),
++  m_info(info),
++
+   m_group(0),
+   m_url(url),
+ 
+@@ -82,9 +47,7 @@ Tracker::enable() {
+     return;
+ 
+   m_flags |= flag_enabled;
+-  
+-  if (m_parent->slot_tracker_enabled())
+-    m_parent->slot_tracker_enabled()(this);
++  m_slot_tracker_enabled();
+ }
+ 
+ void
+@@ -94,9 +57,7 @@ Tracker::disable() {
+ 
+   close();
+   m_flags &= ~flag_enabled;
+-
+-  if (m_parent->slot_tracker_disabled())
+-    m_parent->slot_tracker_disabled()(this);
++  m_slot_tracker_disabled();
+ }
+ 
+ uint32_t
+diff --git a/src/torrent/tracker.h b/src/torrent/tracker.h
+index bd7546a9..39ecec28 100644
+--- a/src/torrent/tracker.h
++++ b/src/torrent/tracker.h
+@@ -1,13 +1,15 @@
+ #ifndef LIBTORRENT_TRACKER_H
+ #define LIBTORRENT_TRACKER_H
+ 
+-#include <string>
+-#include <cinttypes>
+-#include <torrent/common.h>
++#import <functional>
++#import <string>
++#import <cinttypes>
++#import <torrent/common.h>
+ 
+ namespace torrent {
+ 
+ class AddressList;
++class DownloadInfo;
+ class TrackerList;
+ 
+ class LIBTORRENT_EXPORT Tracker {
+@@ -55,8 +57,6 @@ public:
+   void                enable();
+   void                disable();
+ 
+-  TrackerList*        parent()                              { return m_parent; }
+-
+   uint32_t            group() const                         { return m_group; }
+   virtual Type        type() const = 0;
+ 
+@@ -96,7 +96,7 @@ public:
+   static std::string  scrape_url_from(std::string url);
+ 
+ protected:
+-  Tracker(TrackerList* parent, const std::string& url, int flags = 0);
++  Tracker(DownloadInfo* info, const std::string& url, int flags = 0);
+   Tracker(const Tracker& t);
+   void operator = (const Tracker& t);
+ 
+@@ -116,8 +116,8 @@ protected:
+   void                set_min_interval(int v)               { m_min_interval = std::min(std::max(300, v), 4 * 3600); }
+ 
+   int                 m_flags;
++  DownloadInfo*       m_info;
+ 
+-  TrackerList*        m_parent;
+   uint32_t            m_group;
+ 
+   std::string         m_url;
+@@ -147,6 +147,26 @@ protected:
+   // there's been in the recent past.
+   uint32_t            m_request_time_last;
+   uint32_t            m_request_counter;
++
++public:
++  auto& slot_success()          { return m_slot_success; }
++  auto& slot_failure()          { return m_slot_failure; }
++  auto& slot_scrape_success()   { return m_slot_scrape_success; }
++  auto& slot_scrape_failure()   { return m_slot_scrape_failure; }
++  auto& slot_tracker_enabled()  { return m_slot_tracker_enabled; }
++  auto& slot_tracker_disabled() { return m_slot_tracker_disabled; }
++  auto& slot_key()              { return m_slot_key; }
++  auto& slot_numwant()          { return m_slot_numwant; }
++
++protected:
++  std::function<void (AddressList* l)>         m_slot_success;
++  std::function<void (const std::string& msg)> m_slot_failure;
++  std::function<void ()>                       m_slot_scrape_success;
++  std::function<void (const std::string& msg)> m_slot_scrape_failure;
++  std::function<void ()>                       m_slot_tracker_enabled;
++  std::function<void ()>                       m_slot_tracker_disabled;
++  std::function<uint32_t ()>                   m_slot_key;
++  std::function<int32_t ()>                    m_slot_numwant;
+ };
+ 
+ inline bool
+diff --git a/src/torrent/tracker_controller.cc b/src/torrent/tracker_controller.cc
+index ddbf6538..abf77793 100644
+--- a/src/torrent/tracker_controller.cc
++++ b/src/torrent/tracker_controller.cc
+@@ -1,51 +1,15 @@
+-// libTorrent - BitTorrent library
+-// Copyright (C) 2005-2011, Jari Sundell
+-//
+-// This program is free software; you can redistribute it and/or modify
+-// it under the terms of the GNU General Public License as published by
+-// the Free Software Foundation; either version 2 of the License, or
+-// (at your option) any later version.
+-// 
+-// This program is distributed in the hope that it will be useful,
+-// but WITHOUT ANY WARRANTY; without even the implied warranty of
+-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-// GNU General Public License for more details.
+-// 
+-// You should have received a copy of the GNU General Public License
+-// along with this program; if not, write to the Free Software
+-// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-//
+-// In addition, as a special exception, the copyright holders give
+-// permission to link the code of portions of this program with the
+-// OpenSSL library under certain conditions as described in each
+-// individual source file, and distribute linked combinations
+-// including the two.
+-//
+-// You must obey the GNU General Public License in all respects for
+-// all of the code used other than OpenSSL.  If you modify file(s)
+-// with this exception, you may extend this exception to your version
+-// of the file(s), but you are not obligated to do so.  If you do not
+-// wish to do so, delete this exception statement from your version.
+-// If you delete this exception statement from all source files in the
+-// program, then also delete it here.
+-//
+-// Contact:  Jari Sundell <jaris@ifi.uio.no>
+-//
+-//           Skomakerveien 33
+-//           3185 Skoppum, NORWAY
+-
+-#include "config.h"
++#import "config.h"
+ 
+-#include "exceptions.h"
+-#include "download_info.h"
+-#include "tracker.h"
+-#include "tracker_controller.h"
+-#include "tracker_list.h"
++#import "exceptions.h"
++#import "download_info.h"
++#import "tracker.h"
++#import "tracker_controller.h"
++#import "tracker_list.h"
+ 
+-#include "rak/priority_queue_default.h"
+-#include "utils/log.h"
++#import "rak/priority_queue_default.h"
++#import "utils/log.h"
+ 
+-#include "globals.h"
++#import "globals.h"
+ 
+ #define LT_LOG_TRACKER(log_level, log_fmt, ...)                         \
+   lt_log_print_info(LOG_TRACKER_##log_level, m_tracker_list->info(), "tracker_controller", log_fmt, __VA_ARGS__);
+@@ -220,7 +184,7 @@ TrackerController::send_stop_event() {
+     if (!(*itr)->is_in_use())
+       continue;
+ 
+-    m_tracker_list->send_state(*itr, Tracker::EVENT_STOPPED);
++    m_tracker_list->send_state(itr->get(), Tracker::EVENT_STOPPED);
+   }
+ 
+   // Timer...
+@@ -251,7 +215,7 @@ TrackerController::send_completed_event() {
+     if (!(*itr)->is_in_use())
+       continue;
+ 
+-    m_tracker_list->send_state(*itr, Tracker::EVENT_COMPLETED);
++    m_tracker_list->send_state(itr->get(), Tracker::EVENT_COMPLETED);
+   }
+ 
+   // Timer...
+@@ -412,7 +376,7 @@ tracker_find_preferred(TrackerList::iterator first, TrackerList::iterator last,
+   uint32_t preferred_time_last = ~uint32_t();
+ 
+   for (; first != last; first++) {
+-    uint32_t tracker_timeout = tracker_next_timeout_promiscuous(*first);
++    uint32_t tracker_timeout = tracker_next_timeout_promiscuous(first->get());
+ 
+     if (tracker_timeout != 0) {
+       *next_timeout = std::min(tracker_timeout, *next_timeout);
+@@ -459,7 +423,7 @@ TrackerController::do_timeout() {
+         preferred = tracker_find_preferred(preferred, group_end, &next_timeout);
+ 
+       } else {
+-        uint32_t tracker_timeout = tracker_next_timeout_promiscuous(*preferred);
++        uint32_t tracker_timeout = tracker_next_timeout_promiscuous(preferred->get());
+ 
+         if (tracker_timeout != 0) {
+           next_timeout = std::min(tracker_timeout, next_timeout);
+@@ -511,7 +475,7 @@ TrackerController::do_scrape() {
+ 
+     while (itr != group_end) {
+       if ((*itr)->can_scrape() && (*itr)->is_usable()) {
+-        m_tracker_list->send_scrape(*itr);
++        m_tracker_list->send_scrape(itr->get());
+         break;
+       }
+ 
+diff --git a/src/torrent/tracker_controller.h b/src/torrent/tracker_controller.h
+index 9452be0f..4af2f4b9 100644
+--- a/src/torrent/tracker_controller.h
++++ b/src/torrent/tracker_controller.h
+@@ -1,47 +1,11 @@
+-// libTorrent - BitTorrent library
+-// Copyright (C) 2005-2011, Jari Sundell
+-//
+-// This program is free software; you can redistribute it and/or modify
+-// it under the terms of the GNU General Public License as published by
+-// the Free Software Foundation; either version 2 of the License, or
+-// (at your option) any later version.
+-// 
+-// This program is distributed in the hope that it will be useful,
+-// but WITHOUT ANY WARRANTY; without even the implied warranty of
+-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-// GNU General Public License for more details.
+-// 
+-// You should have received a copy of the GNU General Public License
+-// along with this program; if not, write to the Free Software
+-// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-//
+-// In addition, as a special exception, the copyright holders give
+-// permission to link the code of portions of this program with the
+-// OpenSSL library under certain conditions as described in each
+-// individual source file, and distribute linked combinations
+-// including the two.
+-//
+-// You must obey the GNU General Public License in all respects for
+-// all of the code used other than OpenSSL.  If you modify file(s)
+-// with this exception, you may extend this exception to your version
+-// of the file(s), but you are not obligated to do so.  If you do not
+-// wish to do so, delete this exception statement from your version.
+-// If you delete this exception statement from all source files in the
+-// program, then also delete it here.
+-//
+-// Contact:  Jari Sundell <jaris@ifi.uio.no>
+-//
+-//           Skomakerveien 33
+-//           3185 Skoppum, NORWAY
+-
+ #ifndef LIBTORRENT_TRACKER_CONTROLLER_H
+ #define LIBTORRENT_TRACKER_CONTROLLER_H
+ 
+-#include <functional>
+-#include <string>
++#import <functional>
++#import <string>
+ 
+-#include <torrent/common.h>
+-#include <torrent/tracker.h>
++#import <torrent/common.h>
++#import <torrent/tracker.h>
+ 
+ // Refactor:
+ namespace rak { class priority_item; }
+@@ -56,11 +20,6 @@ class LIBTORRENT_EXPORT TrackerController {
+ public:
+   typedef AddressList address_list;
+ 
+-  typedef std::function<void (void)>               slot_void;
+-  typedef std::function<void (const std::string&)> slot_string;
+-  typedef std::function<uint32_t (AddressList*)>   slot_address_list;
+-  typedef std::function<void (Tracker*)>           slot_tracker;
+-
+   static const int flag_send_update      = 0x1;
+   static const int flag_send_completed   = 0x2;
+   static const int flag_send_start       = 0x4;
+@@ -120,18 +79,14 @@ public:
+   void                receive_tracker_enabled(Tracker* tb);
+   void                receive_tracker_disabled(Tracker* tb);
+ 
+-  slot_void&          slot_timeout()        { return m_slot_timeout; }
+-  slot_address_list&  slot_success()        { return m_slot_success; }
+-  slot_string&        slot_failure()        { return m_slot_failure; }
+-
+-  slot_tracker&       slot_tracker_enabled()  { return m_slot_tracker_enabled; }
+-  slot_tracker&       slot_tracker_disabled() { return m_slot_tracker_disabled; }
+-
+   // TEMP:
+   rak::priority_item* task_timeout();
+   rak::priority_item* task_scrape();
+ 
+ private:
++  TrackerController() = delete;
++  void operator = (const TrackerController&) = delete;
++
+   void                do_timeout();
+   void                do_scrape();
+ 
+@@ -139,21 +94,25 @@ private:
+ 
+   inline int          current_send_state() const;
+ 
+-  TrackerController();
+-  void operator = (const TrackerController&);
+-
+   int                 m_flags;
+   TrackerList*        m_tracker_list;
+ 
+-  slot_void           m_slot_timeout;
+-  slot_address_list   m_slot_success;
+-  slot_string         m_slot_failure;
+-
+-  slot_tracker        m_slot_tracker_enabled;
+-  slot_tracker        m_slot_tracker_disabled;
+-
+   // Refactor this out.
+   tracker_controller_private* m_private;
++
++public:
++  auto& slot_timeout()          { return m_slot_timeout; }
++  auto& slot_success()          { return m_slot_success; }
++  auto& slot_failure()          { return m_slot_failure; }
++  auto& slot_tracker_enabled()  { return m_slot_tracker_enabled; }
++  auto& slot_tracker_disabled() { return m_slot_tracker_disabled; }
++
++private:
++  std::function<void (void)>               m_slot_timeout;
++  std::function<uint32_t (AddressList*)>   m_slot_success;
++  std::function<void (const std::string&)> m_slot_failure;
++  std::function<void (Tracker*)>           m_slot_tracker_enabled;
++  std::function<void (Tracker*)>           m_slot_tracker_disabled;
+ };
+ 
+ uint32_t tracker_next_timeout(Tracker* tracker, int controller_flags);
+diff --git a/src/torrent/tracker_list.cc b/src/torrent/tracker_list.cc
+index 625055da..4daf45ce 100644
+--- a/src/torrent/tracker_list.cc
++++ b/src/torrent/tracker_list.cc
+@@ -1,64 +1,31 @@
+-// libTorrent - BitTorrent library
+-// Copyright (C) 2005-2011, Jari Sundell
+-//
+-// This program is free software; you can redistribute it and/or modify
+-// it under the terms of the GNU General Public License as published by
+-// the Free Software Foundation; either version 2 of the License, or
+-// (at your option) any later version.
+-// 
+-// This program is distributed in the hope that it will be useful,
+-// but WITHOUT ANY WARRANTY; without even the implied warranty of
+-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-// GNU General Public License for more details.
+-// 
+-// You should have received a copy of the GNU General Public License
+-// along with this program; if not, write to the Free Software
+-// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-//
+-// In addition, as a special exception, the copyright holders give
+-// permission to link the code of portions of this program with the
+-// OpenSSL library under certain conditions as described in each
+-// individual source file, and distribute linked combinations
+-// including the two.
+-//
+-// You must obey the GNU General Public License in all respects for
+-// all of the code used other than OpenSSL.  If you modify file(s)
+-// with this exception, you may extend this exception to your version
+-// of the file(s), but you are not obligated to do so.  If you do not
+-// wish to do so, delete this exception statement from your version.
+-// If you delete this exception statement from all source files in the
+-// program, then also delete it here.
+-//
+-// Contact:  Jari Sundell <jaris@ifi.uio.no>
+-//
+-//           Skomakerveien 33
+-//           3185 Skoppum, NORWAY
+-
+-#include "config.h"
+-
+-#include <functional>
+-#include <rak/functional.h>
+-
+-#include "net/address_list.h"
+-#include "torrent/utils/log.h"
+-#include "torrent/utils/option_strings.h"
+-#include "torrent/download_info.h"
+-#include "tracker/tracker_dht.h"
+-#include "tracker/tracker_http.h"
+-#include "tracker/tracker_udp.h"
+-
+-#include "globals.h"
+-#include "exceptions.h"
+-#include "tracker.h"
+-#include "tracker_list.h"
++#import "config.h"
++
++#import <functional>
++#import <rak/functional.h>
++
++#import "net/address_list.h"
++#import "torrent/utils/log.h"
++#import "torrent/utils/option_strings.h"
++#import "torrent/download_info.h"
++#import "tracker/tracker_dht.h"
++#import "tracker/tracker_http.h"
++#import "tracker/tracker_udp.h"
++
++#import "globals.h"
++#import "exceptions.h"
++#import "tracker.h"
++#import "tracker_list.h"
+ 
+ #define LT_LOG_TRACKER(log_level, log_fmt, ...)                         \
+   lt_log_print_info(LOG_TRACKER_##log_level, info(), "tracker_list", log_fmt, __VA_ARGS__);
+ 
++#define LT_LOG_STATE_DEBUG(log_fmt, ...)                                \
++  lt_log_print_info(LOG_TRACKER_STATE_DEBUG, info(), "tracker_list::state_debug", log_fmt, __VA_ARGS__);
++
+ namespace torrent {
+ 
+-TrackerList::TrackerList() :
+-  m_info(NULL),
++TrackerList::TrackerList(DownloadInfo* info) :
++  m_info(info),
+   m_state(DownloadInfo::STOPPED),
+ 
+   m_key(0),
+@@ -67,22 +34,22 @@ TrackerList::TrackerList() :
+ 
+ bool
+ TrackerList::has_active() const {
+-  return std::find_if(begin(), end(), std::mem_fun(&Tracker::is_busy)) != end();
++  return std::find_if(begin(), end(), [](auto& v){ return v->is_busy(); }) != end();
+ }
+ 
+ bool
+ TrackerList::has_active_not_scrape() const {
+-  return std::find_if(begin(), end(), std::mem_fun(&Tracker::is_busy_not_scrape)) != end();
++  return std::find_if(begin(), end(), [](auto& v){ return v->is_busy_not_scrape(); }) != end();
+ }
+ 
+ bool
+ TrackerList::has_active_in_group(uint32_t group) const {
+-  return std::find_if(begin_group(group), end_group(group), std::mem_fun(&Tracker::is_busy)) != end_group(group);
++  return std::find_if(begin_group(group), end_group(group), [](auto& v){ return v->is_busy(); }) != end_group(group);
+ }
+ 
+ bool
+ TrackerList::has_active_not_scrape_in_group(uint32_t group) const {
+-  return std::find_if(begin_group(group), end_group(group), std::mem_fun(&Tracker::is_busy_not_scrape)) != end_group(group);
++  return std::find_if(begin_group(group), end_group(group), [](auto& v){ return v->is_busy_not_scrape(); }) != end_group(group);
+ }
+ 
+ // Need a custom predicate because the is_usable function is virtual.
+@@ -97,7 +64,7 @@ TrackerList::has_usable() const {
+ 
+ unsigned int
+ TrackerList::count_active() const {
+-  return std::count_if(begin(), end(), std::mem_fun(&Tracker::is_busy));
++  return std::count_if(begin(), end(), [](auto& v){ return v->is_busy(); });
+ }
+ 
+ unsigned int
+@@ -123,29 +90,29 @@ TrackerList::disown_all_including(int event_bitmap) {
+   }
+ }
+ 
+-void
+-TrackerList::clear() {
+-  std::for_each(begin(), end(), rak::call_delete<Tracker>());
+-  base_type::clear();
+-}
+-
+ void
+ TrackerList::clear_stats() {
+-  std::for_each(begin(), end(), std::mem_fun(&Tracker::clear_stats));
++  std::for_each(begin(), end(), [](auto& v){ return v->clear_stats(); });
+ }
+ 
+ void
+ TrackerList::send_state(Tracker* tracker, int new_event) {
+-  if (!tracker->is_usable() || new_event == Tracker::EVENT_SCRAPE)
++  if (!tracker->is_usable() || new_event == Tracker::EVENT_SCRAPE) {
++    LT_LOG_STATE_DEBUG("send state skipped: !is_usable || new_event == EVENT_SCRAPE", 0)
+     return;
++  }
+ 
+   if (tracker->is_busy()) {
+-    if (tracker->latest_event() != Tracker::EVENT_SCRAPE)
++    if (tracker->latest_event() != Tracker::EVENT_SCRAPE) {
++      LT_LOG_STATE_DEBUG("send state skipped: already making a non-scrape request", 0)
+       return;
++    }
+ 
+     tracker->close();
+   }
+ 
++  LT_LOG_STATE_DEBUG("sending state", 0)
++
+   tracker->send_state(new_event);
+   tracker->inc_request_counter();
+ 
+@@ -156,14 +123,22 @@ TrackerList::send_state(Tracker* tracker, int new_event) {
+ 
+ void
+ TrackerList::send_scrape(Tracker* tracker) {
+-  if (tracker->is_busy() || !tracker->is_usable())
++  if (tracker->is_busy() || !tracker->is_usable()) {
++    LT_LOG_STATE_DEBUG("send scrape skipped: is_busy || !is_usable", 0)
+     return;
++  }
+ 
+-  if (!(tracker->flags() & Tracker::flag_can_scrape))
++  if (!(tracker->flags() & Tracker::flag_can_scrape)) {
++    LT_LOG_STATE_DEBUG("send scrape skipped: !can_scrape", 0)
+     return;
++  }
+ 
+-  if (rak::timer::from_seconds(tracker->scrape_time_last()) + rak::timer::from_seconds(10 * 60) > cachedTime )
++  if (rak::timer::from_seconds(tracker->scrape_time_last()) + rak::timer::from_seconds(10 * 60) > cachedTime ) {
++    LT_LOG_STATE_DEBUG("send scrape skipped: time_last:%" PRIu32 " cached_time:%" PRIu32, tracker->scrape_time_last(), cachedTime.seconds())
+     return;
++  }
++
++  LT_LOG_STATE_DEBUG("sending scrape", 0)
+ 
+   tracker->send_scrape();
+   tracker->inc_request_counter();
+@@ -172,11 +147,20 @@ TrackerList::send_scrape(Tracker* tracker) {
+                  tracker->group(), tracker->url().c_str());
+ }
+ 
++// TODO: Make tracker shared_ptr.
+ TrackerList::iterator
+ TrackerList::insert(unsigned int group, Tracker* tracker) {
+   tracker->set_group(group);
+-  
+-  iterator itr = base_type::insert(end_group(group), tracker);
++  tracker->slot_success() = std::bind(&TrackerList::receive_success, this, tracker, std::placeholders::_1);
++  tracker->slot_failure() = std::bind(&TrackerList::receive_failed, this, tracker, std::placeholders::_1);
++  tracker->slot_scrape_success() = std::bind(&TrackerList::receive_scrape_success, this, tracker);
++  tracker->slot_scrape_failure() = std::bind(&TrackerList::receive_scrape_failed, this, tracker, std::placeholders::_1);
++  tracker->slot_tracker_enabled() = std::bind(&TrackerList::receive_tracker_enabled, this, tracker);
++  tracker->slot_tracker_disabled() = std::bind(&TrackerList::receive_tracker_disabled, this, tracker);
++  tracker->slot_key() = std::bind(&TrackerList::key, this);
++  tracker->slot_numwant() = std::bind(&TrackerList::numwant, this);
++
++  iterator itr = base_type::insert(end_group(group), std::shared_ptr<Tracker>(tracker));
+ 
+   if (m_slot_tracker_enabled)
+     m_slot_tracker_enabled(tracker);
+@@ -195,13 +179,13 @@ TrackerList::insert_url(unsigned int group, const std::string& url, bool extra_t
+ 
+   if (std::strncmp("http://", url.c_str(), 7) == 0 ||
+       std::strncmp("https://", url.c_str(), 8) == 0) {
+-    tracker = new TrackerHttp(this, url, flags);
++    tracker = new TrackerHttp(m_info, url, flags);
+ 
+   } else if (std::strncmp("udp://", url.c_str(), 6) == 0) {
+-    tracker = new TrackerUdp(this, url, flags);
++    tracker = new TrackerUdp(m_info, url, flags);
+ 
+   } else if (std::strncmp("dht://", url.c_str(), 6) == 0 && TrackerDht::is_allowed()) {
+-    tracker = new TrackerDht(this, url, flags);
++    tracker = new TrackerDht(m_info, url, flags);
+ 
+   } else {
+     LT_LOG_TRACKER(WARN, "could find matching tracker protocol (url:%s)", url.c_str());
+@@ -213,6 +197,7 @@ TrackerList::insert_url(unsigned int group, const std::string& url, bool extra_t
+   }
+   
+   LT_LOG_TRACKER(INFO, "added tracker (group:%i url:%s)", group, url.c_str());
++
+   insert(group, tracker);
+ }
+ 
+@@ -240,7 +225,7 @@ TrackerList::find_usable(const_iterator itr) const {
+ 
+ TrackerList::iterator
+ TrackerList::find_next_to_request(iterator itr) {
+-  TrackerList::iterator preferred = itr = std::find_if(itr, end(), std::mem_fun(&Tracker::can_request_state));
++  TrackerList::iterator preferred = itr = std::find_if(itr, end(), [](auto& v){ return v->can_request_state(); });
+ 
+   if (preferred == end() || (*preferred)->failed_counter() == 0)
+     return preferred;
+@@ -266,12 +251,12 @@ TrackerList::find_next_to_request(iterator itr) {
+ 
+ TrackerList::iterator
+ TrackerList::begin_group(unsigned int group) {
+-  return std::find_if(begin(), end(), rak::less_equal(group, std::mem_fun(&Tracker::group)));
++  return std::find_if(begin(), end(), rak::less_equal(group, [](auto& v){ return v->group(); }));
+ }
+ 
+ TrackerList::const_iterator
+ TrackerList::begin_group(unsigned int group) const {
+-  return std::find_if(begin(), end(), rak::less_equal(group, std::mem_fun(&Tracker::group)));
++  return std::find_if(begin(), end(), rak::less_equal(group, [](auto& v){ return v->group(); }));
+ }
+ 
+ TrackerList::size_type
+@@ -384,4 +369,16 @@ TrackerList::receive_scrape_failed(Tracker* tb, const std::string& msg) {
+     m_slot_scrape_failed(tb, msg);
+ }
+ 
++void
++TrackerList::receive_tracker_enabled(Tracker* t) {
++  if (m_slot_tracker_enabled)
++    m_slot_tracker_enabled(t);
++}
++
++void
++TrackerList::receive_tracker_disabled(Tracker* t) {
++  if (m_slot_tracker_disabled)
++    m_slot_tracker_disabled(t);
++}
++
+ }
+diff --git a/src/torrent/tracker_list.h b/src/torrent/tracker_list.h
+index bb06f8af..9c1c9f6f 100644
+--- a/src/torrent/tracker_list.h
++++ b/src/torrent/tracker_list.h
+@@ -1,47 +1,12 @@
+-// libTorrent - BitTorrent library
+-// Copyright (C) 2005-2011, Jari Sundell
+-//
+-// This program is free software; you can redistribute it and/or modify
+-// it under the terms of the GNU General Public License as published by
+-// the Free Software Foundation; either version 2 of the License, or
+-// (at your option) any later version.
+-// 
+-// This program is distributed in the hope that it will be useful,
+-// but WITHOUT ANY WARRANTY; without even the implied warranty of
+-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-// GNU General Public License for more details.
+-// 
+-// You should have received a copy of the GNU General Public License
+-// along with this program; if not, write to the Free Software
+-// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-//
+-// In addition, as a special exception, the copyright holders give
+-// permission to link the code of portions of this program with the
+-// OpenSSL library under certain conditions as described in each
+-// individual source file, and distribute linked combinations
+-// including the two.
+-//
+-// You must obey the GNU General Public License in all respects for
+-// all of the code used other than OpenSSL.  If you modify file(s)
+-// with this exception, you may extend this exception to your version
+-// of the file(s), but you are not obligated to do so.  If you do not
+-// wish to do so, delete this exception statement from your version.
+-// If you delete this exception statement from all source files in the
+-// program, then also delete it here.
+-//
+-// Contact:  Jari Sundell <jaris@ifi.uio.no>
+-//
+-//           Skomakerveien 33
+-//           3185 Skoppum, NORWAY
+-
+ #ifndef LIBTORRENT_TRACKER_LIST_H
+ #define LIBTORRENT_TRACKER_LIST_H
+ 
+-#include <algorithm>
+-#include <functional>
+-#include <string>
+-#include <vector>
+-#include <torrent/common.h>
++#import <algorithm>
++#import <functional>
++#import <memory>
++#import <string>
++#import <vector>
++#import <torrent/common.h>
+ 
+ namespace torrent {
+ 
+@@ -57,16 +22,12 @@ class Tracker;
+ // tracker to the beginning of the subgroup and start from the
+ // beginning of the whole list.
+ 
+-class LIBTORRENT_EXPORT TrackerList : private std::vector<Tracker*> {
++class LIBTORRENT_EXPORT TrackerList : private std::vector<std::shared_ptr<Tracker>> {
+ public:
+   friend class DownloadWrapper;
+ 
+-  typedef std::vector<Tracker*> base_type;
+-  typedef AddressList           address_list;
+-
+-  typedef std::function<void (Tracker*)>                     slot_tracker;
+-  typedef std::function<void (Tracker*, const std::string&)> slot_string;
+-  typedef std::function<uint32_t (Tracker*, AddressList*)>   slot_address_list;
++  typedef std::vector<std::shared_ptr<Tracker>> base_type;
++  typedef AddressList                           address_list;
+ 
+   using base_type::value_type;
+ 
+@@ -85,9 +46,10 @@ public:
+   using base_type::back;
+ 
+   using base_type::at;
++  using base_type::clear;
+   using base_type::operator[];
+ 
+-  TrackerList();
++  TrackerList(DownloadInfo* info);
+ 
+   bool                has_active() const;
+   bool                has_active_not_scrape() const;
+@@ -103,7 +65,6 @@ public:
+ 
+   void                disown_all_including(int event_bitmap);
+ 
+-  void                clear();
+   void                clear_stats();
+ 
+   iterator            insert(unsigned int group, Tracker* tracker);
+@@ -124,7 +85,9 @@ public:
+   int32_t             numwant() const                         { return m_numwant; }
+   void                set_numwant(int32_t n)                  { m_numwant = n; }
+ 
+-  iterator            find(Tracker* tb)                       { return std::find(begin(), end(), tb); }
++  auto find(Tracker* tb) -> iterator;
++
++  // iterator            find(Tracker* tb)                       { return std::find(begin(), end(), tb); }
+   iterator            find_url(const std::string& url);
+ 
+   iterator            find_usable(iterator itr);
+@@ -145,28 +108,17 @@ public:
+ 
+   void                receive_success(Tracker* tb, AddressList* l);
+   void                receive_failed(Tracker* tb, const std::string& msg);
+-
+   void                receive_scrape_success(Tracker* tb);
+   void                receive_scrape_failed(Tracker* tb, const std::string& msg);
+-
+-  // Used by libtorrent internally.
+-  slot_address_list&  slot_success()                          { return m_slot_success; }
+-  slot_string&        slot_failure()                          { return m_slot_failed; }
+-
+-  slot_tracker&       slot_scrape_success()                   { return m_slot_scrape_success; }
+-  slot_string&        slot_scrape_failure()                   { return m_slot_scrape_failed; }
+-
+-  slot_tracker&       slot_tracker_enabled()                  { return m_slot_tracker_enabled; }
+-  slot_tracker&       slot_tracker_disabled()                 { return m_slot_tracker_disabled; }
++  void                receive_tracker_enabled(Tracker* t);
++  void                receive_tracker_disabled(Tracker* t);
+ 
+ protected:
+-  void                set_info(DownloadInfo* info)            { m_info = info; }
+-
+   void                set_state(int s)                        { m_state = s; }
+ 
+ private:
+-  TrackerList(const TrackerList&) LIBTORRENT_NO_EXPORT;
+-  void operator = (const TrackerList&) LIBTORRENT_NO_EXPORT;
++  TrackerList(const TrackerList&) = delete;
++  void operator = (const TrackerList&) = delete;
+ 
+   DownloadInfo*       m_info;
+   int                 m_state;
+@@ -174,19 +126,26 @@ private:
+   uint32_t            m_key;
+   int32_t             m_numwant;
+ 
+-  slot_address_list   m_slot_success;
+-  slot_string         m_slot_failed;
+-
+-  slot_tracker        m_slot_scrape_success;
+-  slot_string         m_slot_scrape_failed;
++public:
++  auto& slot_success()          { return m_slot_success; }
++  auto& slot_failure()          { return m_slot_failed; }
++  auto& slot_scrape_success()   { return m_slot_scrape_success; }
++  auto& slot_scrape_failure()   { return m_slot_scrape_failed; }
++  auto& slot_tracker_enabled()  { return m_slot_tracker_enabled; }
++  auto& slot_tracker_disabled() { return m_slot_tracker_disabled; }
+ 
+-  slot_tracker        m_slot_tracker_enabled;
+-  slot_tracker        m_slot_tracker_disabled;
++private:
++  std::function<uint32_t (Tracker*, AddressList*)>   m_slot_success;
++  std::function<void (Tracker*, const std::string&)> m_slot_failed;
++  std::function<void (Tracker*)>                     m_slot_scrape_success;
++  std::function<void (Tracker*, const std::string&)> m_slot_scrape_failed;
++  std::function<void (Tracker*)>                     m_slot_tracker_enabled;
++  std::function<void (Tracker*)>                     m_slot_tracker_disabled;
+ };
+ 
+ inline void
+ TrackerList::send_state_idx(unsigned idx, int new_event) {
+-  send_state(at(idx), new_event);
++  send_state(at(idx).get(), new_event);
+ }
+ 
+ inline void
+@@ -194,7 +153,12 @@ TrackerList::send_state_itr(iterator itr, int new_event) {
+   if (itr == end())
+     return;
+     
+-  send_state(*itr, new_event);
++  send_state(itr->get(), new_event);
++}
++
++inline TrackerList::iterator
++TrackerList::find(Tracker* tb) {
++  return std::find_if(begin(), end(), [tb](auto& v){ return v.get() == tb; });
+ }
+ 
+ }
+diff --git a/src/torrent/utils/log.h b/src/torrent/utils/log.h
+index fe6127d6..863199bc 100644
+--- a/src/torrent/utils/log.h
++++ b/src/torrent/utils/log.h
+@@ -108,6 +108,8 @@ enum {
+ 
+   LOG_SYSTEM,
+ 
++  LOG_TRACKER_STATE_DEBUG,
++
+   LOG_UI_EVENTS,
+ 
+   LOG_GROUP_MAX_SIZE
+diff --git a/src/torrent/utils/option_strings.cc b/src/torrent/utils/option_strings.cc
+index 101e2688..eb3798d8 100644
+--- a/src/torrent/utils/option_strings.cc
++++ b/src/torrent/utils/option_strings.cc
+@@ -232,6 +232,8 @@ const char* option_list_log_group[] = {
+ 
+   "system",
+ 
++  "tracker_state_debug",
++
+   "ui_events",
+ 
+   NULL
+diff --git a/src/tracker/tracker_dht.cc b/src/tracker/tracker_dht.cc
+index d48a7f5f..8e09036d 100644
+--- a/src/tracker/tracker_dht.cc
++++ b/src/tracker/tracker_dht.cc
+@@ -58,8 +58,8 @@ const char* TrackerDht::states[] = { "Idle", "Searching", "Announcing" };
+ 
+ bool TrackerDht::is_allowed() { return manager->dht_manager()->is_valid(); }
+ 
+-TrackerDht::TrackerDht(TrackerList* parent, const std::string& url, int flags) :
+-  Tracker(parent, url, flags),
++TrackerDht::TrackerDht(DownloadInfo* info, const std::string& url, int flags) :
++  Tracker(info, url, flags),
+   m_state(state_idle) {
+ 
+   if (!manager->dht_manager()->is_valid())
+@@ -83,11 +83,8 @@ TrackerDht::is_usable() const {
+ 
+ void
+ TrackerDht::send_state(int state) {
+-  if (m_parent == NULL)
+-    throw internal_error("TrackerDht::send_state(...) does not have a valid m_parent.");
+-
+   if (is_busy()) {
+-    manager->dht_manager()->router()->cancel_announce(m_parent->info(), this);
++    manager->dht_manager()->router()->cancel_announce(m_info, this);
+ 
+     if (is_busy())
+       throw internal_error("TrackerDht::send_state cancel_announce did not cancel announce.");
+@@ -103,7 +100,7 @@ TrackerDht::send_state(int state) {
+   if (!manager->dht_manager()->is_active())
+     return receive_failed("DHT server not active.");
+ 
+-  manager->dht_manager()->router()->announce(m_parent->info(), this);
++  manager->dht_manager()->router()->announce(m_info, this);
+ 
+   set_normal_interval(20 * 60);
+   set_min_interval(0);
+@@ -112,7 +109,7 @@ TrackerDht::send_state(int state) {
+ void
+ TrackerDht::close() {
+   if (is_busy())
+-    manager->dht_manager()->router()->cancel_announce(m_parent->info(), this);
++    manager->dht_manager()->router()->cancel_announce(m_info, this);
+ }
+ 
+ void
+@@ -139,7 +136,7 @@ TrackerDht::receive_success() {
+     throw internal_error("TrackerDht::receive_success called while not busy.");
+ 
+   m_state = state_idle;
+-  m_parent->receive_success(this, &m_peers);
++  m_slot_success(&m_peers);
+   m_peers.clear();
+ }
+ 
+@@ -149,7 +146,7 @@ TrackerDht::receive_failed(const char* msg) {
+     throw internal_error("TrackerDht::receive_failed called while not busy.");
+ 
+   m_state = state_idle;
+-  m_parent->receive_failed(this, msg);
++  m_slot_failure(msg);
+   m_peers.clear();
+ }
+ 
+diff --git a/src/tracker/tracker_dht.h b/src/tracker/tracker_dht.h
+index d2a73ca7..bdc2adae 100644
+--- a/src/tracker/tracker_dht.h
++++ b/src/tracker/tracker_dht.h
+@@ -45,7 +45,7 @@ namespace torrent {
+ 
+ class TrackerDht : public Tracker {
+ public:
+-  TrackerDht(TrackerList* parent, const std::string& url, int flags);
++  TrackerDht(DownloadInfo* info, const std::string& url, int flags);
+   ~TrackerDht();
+ 
+   typedef enum {
+diff --git a/src/tracker/tracker_http.cc b/src/tracker/tracker_http.cc
+index 22c409a1..6daf0308 100644
+--- a/src/tracker/tracker_http.cc
++++ b/src/tracker/tracker_http.cc
+@@ -25,15 +25,15 @@
+ #import "manager.h"
+ 
+ #define LT_LOG_TRACKER(log_level, log_fmt, ...)                         \
+-  lt_log_print_info(LOG_TRACKER_##log_level, m_parent->info(), "tracker", "[%u] " log_fmt, group(), __VA_ARGS__);
++  lt_log_print_info(LOG_TRACKER_##log_level, m_info, "tracker", "[%u] " log_fmt, group(), __VA_ARGS__);
+ 
+ #define LT_LOG_TRACKER_DUMP(log_level, log_dump_data, log_dump_size, log_fmt, ...)                   \
+-  lt_log_print_info_dump(LOG_TRACKER_##log_level, log_dump_data, log_dump_size, m_parent->info(), "tracker", "[%u] " log_fmt, group(), __VA_ARGS__);
++  lt_log_print_info_dump(LOG_TRACKER_##log_level, log_dump_data, log_dump_size, m_info, "tracker", "[%u] " log_fmt, group(), __VA_ARGS__);
+ 
+ namespace torrent {
+ 
+-TrackerHttp::TrackerHttp(TrackerList* parent, const std::string& url, int flags) :
+-  Tracker(parent, url, flags),
++TrackerHttp::TrackerHttp(DownloadInfo* info, const std::string& url, int flags) :
++  Tracker(info, url, flags),
+ 
+   m_get(Http::slot_factory()()),
+   m_data(NULL) {
+@@ -70,8 +70,8 @@ void
+ TrackerHttp::request_prefix(std::stringstream* stream, const std::string& url) {
+   char hash[61];
+ 
+-  *rak::copy_escape_html(m_parent->info()->hash().begin(),
+-                         m_parent->info()->hash().end(), hash) = '\0';
++  *rak::copy_escape_html(m_info->hash().begin(),
++                         m_info->hash().end(), hash) = '\0';
+   *stream << url
+           << (m_dropDeliminator ? '&' : '?')
+           << "info_hash=" << hash;
+@@ -81,9 +81,6 @@ void
+ TrackerHttp::send_state(int state) {
+   close_directly();
+ 
+-  if (m_parent == NULL)
+-    throw internal_error("TrackerHttp::send_state(...) does not have a valid m_parent.");
+-
+   m_latest_event = state;
+ 
+   std::stringstream s;
+@@ -91,7 +88,7 @@ TrackerHttp::send_state(int state) {
+ 
+   char localId[61];
+ 
+-  DownloadInfo* info = m_parent->info();
++  DownloadInfo* info = m_info;
+ 
+   request_prefix(&s, m_url);
+ 
+@@ -99,8 +96,8 @@ TrackerHttp::send_state(int state) {
+ 
+   s << "&peer_id=" << localId;
+ 
+-  if (m_parent->key())
+-    s << "&key=" << std::hex << std::setw(8) << std::setfill('0') << m_parent->key() << std::dec;
++  if (m_slot_key())
++    s << "&key=" << std::hex << std::setw(8) << std::setfill('0') << m_slot_key() << std::dec;
+ 
+   if (!m_tracker_id.empty())
+     s << "&trackerid=" << rak::copy_escape_html(m_tracker_id);
+@@ -122,8 +119,8 @@ TrackerHttp::send_state(int state) {
+   if (info->is_compact())
+     s << "&compact=1";
+ 
+-  if (m_parent->numwant() >= 0 && state != DownloadInfo::STOPPED)
+-    s << "&numwant=" << m_parent->numwant();
++  if (m_slot_numwant() >= 0 && state != DownloadInfo::STOPPED)
++    s << "&numwant=" << m_slot_numwant();
+ 
+   if (manager->connection_manager()->listen_port())
+     s << "&port=" << manager->connection_manager()->listen_port();
+@@ -280,10 +277,12 @@ TrackerHttp::receive_failed(std::string msg) {
+ 
+   close_directly();
+ 
+-  if (m_latest_event == EVENT_SCRAPE)
+-    m_parent->receive_scrape_failed(this, msg);
+-  else
+-    m_parent->receive_failed(this, msg);
++  if (m_latest_event == EVENT_SCRAPE) {
++    m_slot_scrape_failure(msg);
++    return;
++  }
++
++  m_slot_failure(msg);
+ }
+ 
+ void
+@@ -330,7 +329,7 @@ TrackerHttp::process_success(const Object& object) {
+     l.parse_address_compact_ipv6(object.get_key_string("peers6"));
+ 
+   close_directly();
+-  m_parent->receive_success(this, &l);
++  m_slot_success(&l);
+ }
+ 
+ void
+@@ -341,10 +340,10 @@ TrackerHttp::process_scrape(const Object& object) {
+   // Add better validation here...
+   const Object& files = object.get_key("files");
+ 
+-  if (!files.has_key_map(m_parent->info()->hash().str()))
++  if (!files.has_key_map(m_info->hash().str()))
+     return receive_failed("Tracker scrape replay did not contain infohash.");
+ 
+-  const Object& stats = files.get_key(m_parent->info()->hash().str());
++  const Object& stats = files.get_key(m_info->hash().str());
+ 
+   if (stats.has_key_value("complete"))
+     m_scrape_complete = std::max<int64_t>(stats.get_key_value("complete"), 0);
+@@ -359,7 +358,7 @@ TrackerHttp::process_scrape(const Object& object) {
+                  files.as_map().size(), m_scrape_complete, m_scrape_incomplete, m_scrape_downloaded);
+ 
+   close_directly();
+-  m_parent->receive_scrape_success(this);
++  m_slot_scrape_success();
+ }
+ 
+ }
+diff --git a/src/tracker/tracker_http.h b/src/tracker/tracker_http.h
+index 2d6adcff..2ceb47db 100644
+--- a/src/tracker/tracker_http.h
++++ b/src/tracker/tracker_http.h
+@@ -1,46 +1,10 @@
+-// libTorrent - BitTorrent library
+-// Copyright (C) 2005-2011, Jari Sundell
+-//
+-// This program is free software; you can redistribute it and/or modify
+-// it under the terms of the GNU General Public License as published by
+-// the Free Software Foundation; either version 2 of the License, or
+-// (at your option) any later version.
+-// 
+-// This program is distributed in the hope that it will be useful,
+-// but WITHOUT ANY WARRANTY; without even the implied warranty of
+-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-// GNU General Public License for more details.
+-// 
+-// You should have received a copy of the GNU General Public License
+-// along with this program; if not, write to the Free Software
+-// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-//
+-// In addition, as a special exception, the copyright holders give
+-// permission to link the code of portions of this program with the
+-// OpenSSL library under certain conditions as described in each
+-// individual source file, and distribute linked combinations
+-// including the two.
+-//
+-// You must obey the GNU General Public License in all respects for
+-// all of the code used other than OpenSSL.  If you modify file(s)
+-// with this exception, you may extend this exception to your version
+-// of the file(s), but you are not obligated to do so.  If you do not
+-// wish to do so, delete this exception statement from your version.
+-// If you delete this exception statement from all source files in the
+-// program, then also delete it here.
+-//
+-// Contact:  Jari Sundell <jaris@ifi.uio.no>
+-//
+-//           Skomakerveien 33
+-//           3185 Skoppum, NORWAY
+-
+ #ifndef LIBTORRENT_TRACKER_TRACKER_HTTP_H
+ #define LIBTORRENT_TRACKER_TRACKER_HTTP_H
+ 
+-#include <iosfwd>
++#import <iosfwd>
+ 
+-#include "torrent/object.h"
+-#include "torrent/tracker.h"
++#import "torrent/object.h"
++#import "torrent/tracker.h"
+ 
+ namespace torrent {
+ 
+@@ -48,7 +12,7 @@ class Http;
+ 
+ class TrackerHttp : public Tracker {
+ public:
+-  TrackerHttp(TrackerList* parent, const std::string& url, int flags);
++  TrackerHttp(DownloadInfo* info, const std::string& url, int flags);
+   ~TrackerHttp();
+   
+   virtual bool        is_busy() const;
+diff --git a/src/tracker/tracker_udp.cc b/src/tracker/tracker_udp.cc
+index 93493e47..2ce56638 100644
+--- a/src/tracker/tracker_udp.cc
++++ b/src/tracker/tracker_udp.cc
+@@ -1,39 +1,3 @@
+-// libTorrent - BitTorrent library
+-// Copyright (C) 2005-2011, Jari Sundell
+-//
+-// This program is free software; you can redistribute it and/or modify
+-// it under the terms of the GNU General Public License as published by
+-// the Free Software Foundation; either version 2 of the License, or
+-// (at your option) any later version.
+-// 
+-// This program is distributed in the hope that it will be useful,
+-// but WITHOUT ANY WARRANTY; without even the implied warranty of
+-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-// GNU General Public License for more details.
+-// 
+-// You should have received a copy of the GNU General Public License
+-// along with this program; if not, write to the Free Software
+-// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-//
+-// In addition, as a special exception, the copyright holders give
+-// permission to link the code of portions of this program with the
+-// OpenSSL library under certain conditions as described in each
+-// individual source file, and distribute linked combinations
+-// including the two.
+-//
+-// You must obey the GNU General Public License in all respects for
+-// all of the code used other than OpenSSL.  If you modify file(s)
+-// with this exception, you may extend this exception to your version
+-// of the file(s), but you are not obligated to do so.  If you do not
+-// wish to do so, delete this exception statement from your version.
+-// If you delete this exception statement from all source files in the
+-// program, then also delete it here.
+-//
+-// Contact:  Jari Sundell <jaris@ifi.uio.no>
+-//
+-//           Skomakerveien 33
+-//           3185 Skoppum, NORWAY
+-
+ #include "config.h"
+ 
+ #define __STDC_FORMAT_MACROS
+@@ -58,15 +22,15 @@
+ #include "manager.h"
+ 
+ #define LT_LOG_TRACKER(log_level, log_fmt, ...)                         \
+-  lt_log_print_info(LOG_TRACKER_##log_level, m_parent->info(), "tracker_udp", "[%u] " log_fmt, group(), __VA_ARGS__);
++  lt_log_print_info(LOG_TRACKER_##log_level, m_info, "tracker_udp", "[%u] " log_fmt, group(), __VA_ARGS__);
+ 
+ #define LT_LOG_TRACKER_DUMP(log_level, log_dump_data, log_dump_size, log_fmt, ...)                   \
+-  lt_log_print_info_dump(LOG_TRACKER_##log_level, log_dump_data, log_dump_size, m_parent->info(), "tracker_udp", "[%u] " log_fmt, group(), __VA_ARGS__);
++  lt_log_print_info_dump(LOG_TRACKER_##log_level, log_dump_data, log_dump_size, m_info, "tracker_udp", "[%u] " log_fmt, group(), __VA_ARGS__);
+ 
+ namespace torrent {
+ 
+-TrackerUdp::TrackerUdp(TrackerList* parent, const std::string& url, int flags) :
+-  Tracker(parent, url, flags),
++TrackerUdp::TrackerUdp(DownloadInfo* info, const std::string& url, int flags) :
++  Tracker(info, url, flags),
+ 
+   m_port(0),
+ 
+@@ -174,8 +138,8 @@ TrackerUdp::start_announce(const sockaddr* sa, int err) {
+   manager->poll()->insert_write(this);
+   manager->poll()->insert_error(this);
+ 
+-  m_tries = m_parent->info()->udp_tries();
+-  priority_queue_insert(&taskScheduler, &m_taskTimeout, (cachedTime + rak::timer::from_seconds(m_parent->info()->udp_timeout())).round_seconds());
++  m_tries = m_info->udp_tries();
++  priority_queue_insert(&taskScheduler, &m_taskTimeout, (cachedTime + rak::timer::from_seconds(m_info->udp_timeout())).round_seconds());
+ }
+ 
+ void
+@@ -230,7 +194,7 @@ TrackerUdp::type() const {
+ void
+ TrackerUdp::receive_failed(const std::string& msg) {
+   close_directly();
+-  m_parent->receive_failed(this, msg);
++  m_slot_failure(msg);
+ }
+ 
+ void
+@@ -241,7 +205,7 @@ TrackerUdp::receive_timeout() {
+   if (--m_tries == 0) {
+     receive_failed("unable to connect to UDP tracker");
+   } else {
+-    priority_queue_insert(&taskScheduler, &m_taskTimeout, (cachedTime + rak::timer::from_seconds(m_parent->info()->udp_timeout())).round_seconds());
++    priority_queue_insert(&taskScheduler, &m_taskTimeout, (cachedTime + rak::timer::from_seconds(m_info->udp_timeout())).round_seconds());
+ 
+     manager->poll()->insert_write(this);
+   }
+@@ -275,9 +239,9 @@ TrackerUdp::event_read() {
+     prepare_announce_input();
+ 
+     priority_queue_erase(&taskScheduler, &m_taskTimeout);
+-    priority_queue_insert(&taskScheduler, &m_taskTimeout, (cachedTime + rak::timer::from_seconds(m_parent->info()->udp_timeout())).round_seconds());
++    priority_queue_insert(&taskScheduler, &m_taskTimeout, (cachedTime + rak::timer::from_seconds(m_info->udp_timeout())).round_seconds());
+ 
+-    m_tries = m_parent->info()->udp_tries();
++    m_tries = m_info->udp_tries();
+     manager->poll()->insert_write(this);
+     return;
+ 
+@@ -325,20 +289,18 @@ TrackerUdp::prepare_connect_input() {
+ 
+ void
+ TrackerUdp::prepare_announce_input() {
+-  DownloadInfo* info = m_parent->info();
+-
+   m_writeBuffer->reset();
+ 
+   m_writeBuffer->write_64(m_connectionId);
+   m_writeBuffer->write_32(m_action = 1);
+   m_writeBuffer->write_32(m_transactionId = random());
+ 
+-  m_writeBuffer->write_range(info->hash().begin(), info->hash().end());
+-  m_writeBuffer->write_range(info->local_id().begin(), info->local_id().end());
++  m_writeBuffer->write_range(m_info->hash().begin(), m_info->hash().end());
++  m_writeBuffer->write_range(m_info->local_id().begin(), m_info->local_id().end());
+ 
+-  uint64_t uploaded_adjusted = info->uploaded_adjusted();
+-  uint64_t completed_adjusted = info->completed_adjusted();
+-  uint64_t download_left = info->slot_left()();
++  uint64_t uploaded_adjusted = m_info->uploaded_adjusted();
++  uint64_t completed_adjusted = m_info->completed_adjusted();
++  uint64_t download_left = m_info->slot_left()();
+ 
+   m_writeBuffer->write_64(completed_adjusted);
+   m_writeBuffer->write_64(download_left);
+@@ -353,8 +315,8 @@ TrackerUdp::prepare_announce_input() {
+     local_addr = localAddress->sa_inet()->address_n();
+ 
+   m_writeBuffer->write_32_n(local_addr);
+-  m_writeBuffer->write_32(m_parent->key());
+-  m_writeBuffer->write_32(m_parent->numwant());
++  m_writeBuffer->write_32(m_slot_key());
++  m_writeBuffer->write_32(m_slot_numwant());
+   m_writeBuffer->write_16(manager->connection_manager()->listen_port());
+ 
+   if (m_writeBuffer->size_end() != 98)
+@@ -398,7 +360,7 @@ TrackerUdp::process_announce_output() {
+   // Some logic here to decided on whetever we're going to close the
+   // connection or not?
+   close_directly();
+-  m_parent->receive_success(this, &l);
++  m_slot_success(&l);
+ 
+   return true;
+ }
+diff --git a/src/tracker/tracker_udp.h b/src/tracker/tracker_udp.h
+index aaa7ff67..68a31ef6 100644
+--- a/src/tracker/tracker_udp.h
++++ b/src/tracker/tracker_udp.h
+@@ -60,7 +60,7 @@ public:
+ 
+   static const uint64_t magic_connection_id = 0x0000041727101980ll;
+ 
+-  TrackerUdp(TrackerList* parent, const std::string& url, int flags);
++  TrackerUdp(DownloadInfo* info, const std::string& url, int flags);
+   ~TrackerUdp();
+   
+   const char*         type_name() const { return "tracker_udp"; }
+diff --git a/test/Makefile.am b/test/Makefile.am
+index cb00dce3..8d7e6f1d 100644
+--- a/test/Makefile.am
++++ b/test/Makefile.am
+@@ -34,7 +34,9 @@ LibTorrent_Test_Common = \
+ 	helpers/test_fixture.cc \
+ 	helpers/test_fixture.h \
+ 	helpers/test_thread.cc \
+-	helpers/test_thread.h
++	helpers/test_thread.h \
++	mock/http.cc \
++	mock/http.h
+ 
+ LibTorrent_Test_Torrent_Net_SOURCES = $(LibTorrent_Test_Common) \
+ 	torrent/net/test_address_info.cc \
+@@ -65,6 +67,16 @@ LibTorrent_Test_Torrent_Utils_SOURCES = $(LibTorrent_Test_Common) \
+ LibTorrent_Test_Torrent_SOURCES = $(LibTorrent_Test_Common) \
+ 	torrent/test_http.cc \
+ 	torrent/test_http.h \
++	torrent/test_tracker_controller.cc \
++	torrent/test_tracker_controller.h \
++	torrent/test_tracker_controller_features.cc \
++	torrent/test_tracker_controller_features.h \
++	torrent/test_tracker_controller_requesting.cc \
++	torrent/test_tracker_controller_requesting.h \
++	torrent/test_tracker_list.cc \
++	torrent/test_tracker_list.h \
++	torrent/test_tracker_list_features.cc \
++	torrent/test_tracker_list_features.h \
+ 	\
+ 	torrent/object_test.cc \
+ 	torrent/object_test.h \
+@@ -74,16 +86,6 @@ LibTorrent_Test_Torrent_SOURCES = $(LibTorrent_Test_Common) \
+ 	torrent/object_static_map_test.h \
+ 	torrent/object_stream_test.cc \
+ 	torrent/object_stream_test.h \
+-	torrent/tracker_controller_test.cc \
+-	torrent/tracker_controller_test.h \
+-	torrent/tracker_controller_features.cc \
+-	torrent/tracker_controller_features.h \
+-	torrent/tracker_controller_requesting.cc \
+-	torrent/tracker_controller_requesting.h \
+-	torrent/tracker_list_test.cc \
+-	torrent/tracker_list_test.h \
+-	torrent/tracker_list_features_test.cc \
+-	torrent/tracker_list_features_test.h \
+ 	torrent/tracker_timeout_test.cc \
+ 	torrent/tracker_timeout_test.h
+ 
+diff --git a/test/helpers/mock_function.cc b/test/helpers/mock_function.cc
+index 83e81551..51fea643 100644
+--- a/test/helpers/mock_function.cc
++++ b/test/helpers/mock_function.cc
+@@ -42,14 +42,7 @@ mock_clear(bool ignore_assert) {
+   mock_compare_map<torrent::Event>::values.clear();
+ };
+ 
+-void mock_init() {
+-  log_add_group_output(torrent::LOG_MOCK_CALLS, "test_output");
+-  mock_clear(true);
+-}
+-
+-void mock_cleanup() {
+-  mock_clear(false);
+-}
++void mock_clear_ignore_assert() { mock_clear(true); }
+ 
+ namespace torrent {
+ 
+diff --git a/test/helpers/mock_function.h b/test/helpers/mock_function.h
+index 6c194137..9bc0f162 100644
+--- a/test/helpers/mock_function.h
++++ b/test/helpers/mock_function.h
+@@ -11,6 +11,9 @@
+ 
+ #include "helpers/mock_compare.h"
+ 
++void mock_clear(bool ignore_assert = false);
++void mock_clear_ignore_assert();
++
+ template<typename R, typename... Args>
+ struct mock_function_map {
+   typedef std::tuple<R, Args...> call_type;
+@@ -73,9 +76,6 @@ struct mock_function_type<void, Args...> {
+   static void call_redirect(void* fn, Args... args) { type::redirects.find(fn)->second(args...); }
+ };
+ 
+-void mock_init();
+-void mock_cleanup();
+-
+ template<typename R, typename... Args>
+ bool
+ mock_cleanup_map(R fn[[gnu::unused]](Args...)) {
+diff --git a/test/helpers/progress_listener.cc b/test/helpers/progress_listener.cc
+index 7a6ed047..ccd5e66a 100644
+--- a/test/helpers/progress_listener.cc
++++ b/test/helpers/progress_listener.cc
+@@ -1,25 +1,60 @@
+-#include "config.h"
++#import "config.h"
+ 
+-#include "progress_listener.h"
++#import "progress_listener.h"
+ 
+-#include <algorithm>
+-#include <iostream>
+-#include <iterator>
+-#include <numeric>
+-#include <stdexcept>
+-#include "torrent/utils/log.h"
+-#include "torrent/utils/log_buffer.h"
++#import <algorithm>
++#import <iostream>
++#import <iterator>
++#import <numeric>
++#import <stdexcept>
++#import <cppunit/TestCase.h>
++#import <cppunit/TestSuite.h>
++#import "torrent/utils/log.h"
++#import "torrent/utils/log_buffer.h"
+ 
+ static std::string
+ get_test_path(const test_list_type& tl) {
+-  if (tl.size() < 2)
++  if (tl.size() < 3)
+     return "";
+ 
+-  return std::accumulate(std::next(tl.begin()), std::prev(tl.end()), std::string(), [](std::string result, CppUnit::Test* test) {
++  return std::accumulate(std::next(std::next(tl.begin())), std::prev(tl.end()), std::string(), [](std::string result, CppUnit::Test* test) {
+       return std::move(result) + test->getName() + "::";
+     });
+ }
+ 
++static int
++get_suite_count(CppUnit::Test *suite) {
++  auto test_suite = dynamic_cast<CppUnit::TestSuite*>(suite);
++  if (test_suite == nullptr)
++    return 0;
++
++  return std::accumulate(test_suite->getTests().begin(), test_suite->getTests().end(), 0, [](int result, CppUnit::Test* test) {
++      return result + (dynamic_cast<CppUnit::TestSuite*>(test) != nullptr);
++    });
++}
++
++static int
++get_case_count(CppUnit::Test *suite) {
++  auto test_suite = dynamic_cast<CppUnit::TestSuite*>(suite);
++  if (test_suite == nullptr)
++    return 0;
++
++  return std::accumulate(test_suite->getTests().begin(), test_suite->getTests().end(), 0, [](int result, CppUnit::Test* test) {
++      return result + (dynamic_cast<CppUnit::TestCase*>(test) != nullptr);
++    });
++}
++
++static int
++get_sub_case_count(CppUnit::Test *suite) {
++  auto test_suite = dynamic_cast<CppUnit::TestSuite*>(suite);
++  if (test_suite == nullptr)
++    return 0;
++
++  return std::accumulate(test_suite->getTests().begin(), test_suite->getTests().end(), 0, [](int result, CppUnit::Test* test) {
++      return result + get_case_count(test);
++    });
++}
++
+ void
+ progress_listener::startTest(CppUnit::Test *test) {
+   std::cout << get_test_path(m_test_path) << test->getName() << std::flush;
+@@ -54,8 +89,22 @@ void
+ progress_listener::startSuite(CppUnit::Test *suite) {
+   m_test_path.push_back(suite);
+ 
+-  if (suite->countTestCases() > 0)
+-    std::cout << std::endl << get_test_path(m_test_path) << suite->getName() << ":" << std::endl;
++  if (suite->countTestCases() == 0)
++    return;
++
++  if (get_suite_count(suite) == 0) {
++    std::cout << std::endl;
++    return;
++  }
++
++  if (get_sub_case_count(suite) == 0)
++    return;
++
++  std::cout << std::endl;
++  std::cout << std::endl;
++  std::cout << std::string(suite->getName().size() + 1, '=') << std::endl;
++  std::cout << suite->getName() << ":" << std::endl;
++  std::cout << std::string(suite->getName().size() + 1, '=') << std::endl;
+ }
+ 
+ void
+diff --git a/test/helpers/test_fixture.cc b/test/helpers/test_fixture.cc
+index 4d8d7214..a435c218 100644
+--- a/test/helpers/test_fixture.cc
++++ b/test/helpers/test_fixture.cc
+@@ -2,17 +2,25 @@
+ 
+ #include "test_fixture.h"
+ 
++#include "globals.h"
+ #include "torrent/utils/log.h"
++#include "rak/timer.h"
+ 
+ void
+ test_fixture::setUp() {
+-  mock_init();
++  mock_clear_ignore_assert();
+ 
+-  log_add_group_output(torrent::LOG_CONNECTION_BIND, "test_output");
+-  log_add_group_output(torrent::LOG_CONNECTION_FD, "test_output");
++  CPPUNIT_ASSERT(torrent::taskScheduler.empty());
++
++  // TODO: Start replacing cachedTime with clock_gettime(CLOCK_REALTIME_COARSE, ...).
++  torrent::cachedTime = rak::timer::current();
++
++  log_add_group_output(torrent::LOG_MOCK_CALLS, "test_output");
+ }
+ 
+ void
+ test_fixture::tearDown() {
+-  mock_cleanup();
++  mock_clear();
++
++  torrent::taskScheduler.clear();
+ }
+diff --git a/test/helpers/utils.h b/test/helpers/utils.h
+deleted file mode 100644
+index e81d22eb..00000000
+--- a/test/helpers/utils.h
++++ /dev/null
+@@ -1,60 +0,0 @@
+-#ifndef LIBTORRENT_HELPER_UTILS_H
+-#define LIBTORRENT_HELPER_UTILS_H
+-
+-#include <algorithm>
+-#include <iostream>
+-#include <cppunit/extensions/TestFactoryRegistry.h>
+-#include <torrent/utils/log.h>
+-
+-static void
+-dump_failure_log(const failure_type& failure) {
+-  if (failure.log->empty())
+-    return;
+-
+-  std::cout << std::endl << failure.name << std::endl;
+-
+-  // Doesn't print dump messages as log_buffer drops them.
+-  std::for_each(failure.log->begin(), failure.log->end(), [](const torrent::log_entry& entry) {
+-      std::cout << entry.timestamp << ' ' << entry.message << '\n';
+-    });
+-
+-  std::cout << std::flush;
+-}
+-
+-static void
+-dump_failures(const failure_list_type& failures) {
+-  if (failures.empty())
+-    return;
+-
+-  std::cout << std::endl
+-            << "=================" << std::endl
+-            << "Failed Test Logs:" << std::endl
+-            << "=================" << std::endl;
+-
+-  std::for_each(failures.begin(), failures.end(), [](const failure_type& failure) {
+-      dump_failure_log(failure);
+-    });
+-  std::cout << std::endl;
+-}
+-
+-static
+-void add_tests(CppUnit::TextUi::TestRunner& runner, const char* c_test_names) {
+-  if (c_test_names == NULL || std::string(c_test_names).empty()) {
+-    runner.addTest(CppUnit::TestFactoryRegistry::getRegistry().makeTest());
+-    return;
+-  }
+-
+-  const std::string& test_names(c_test_names);
+-
+-  size_t pos = 0;
+-  size_t next = 0;
+-
+-  while ((next = test_names.find(',', pos)) < test_names.size()) {
+-    runner.addTest(CppUnit::TestFactoryRegistry::getRegistry(test_names.substr(pos, next - pos)).makeTest());
+-    pos = next + 1;
+-  }
+-
+-  runner.addTest(CppUnit::TestFactoryRegistry::getRegistry(test_names.substr(pos)).makeTest());
+-}
+-
+-#endif
+diff --git a/test/main.cc b/test/main.cc
+index 57ae31a2..dd5ca772 100644
+--- a/test/main.cc
++++ b/test/main.cc
+@@ -1,27 +1,31 @@
+-#include "config.h"
+-
+-#include <cstdlib>
+-#include <stdexcept>
+-#include <signal.h>
+-#include <string.h>
+-#include <cppunit/BriefTestProgressListener.h>
+-#include <cppunit/CompilerOutputter.h>
+-#include <cppunit/TestResult.h>
+-#include <cppunit/TestResultCollector.h>
+-#include <cppunit/extensions/HelperMacros.h>
+-#include <cppunit/extensions/TestFactoryRegistry.h>
+-#include <cppunit/ui/text/TestRunner.h>
++#import "config.h"
++
++#import <algorithm>
++#import <cstdlib>
++#import <iostream>
++#import <stdexcept>
++#import <signal.h>
++#import <string.h>
++#import <cppunit/BriefTestProgressListener.h>
++#import <cppunit/CompilerOutputter.h>
++#import <cppunit/TestResult.h>
++#import <cppunit/TestResultCollector.h>
++#import <cppunit/extensions/HelperMacros.h>
++#import <cppunit/extensions/TestFactoryRegistry.h>
++#import <cppunit/ui/text/TestRunner.h>
+ 
+ #ifdef HAVE_BACKTRACE
+-#include <execinfo.h>
++#import <execinfo.h>
+ #endif
+ 
+-#include "helpers/progress_listener.h"
+-#include "helpers/utils.h"
++#import "helpers/progress_listener.h"
++#import "torrent/utils/log.h"
+ 
+ CPPUNIT_REGISTRY_ADD_TO_DEFAULT("torrent/net");
+ CPPUNIT_REGISTRY_ADD_TO_DEFAULT("torrent/utils");
+ CPPUNIT_REGISTRY_ADD_TO_DEFAULT("torrent");
++CPPUNIT_REGISTRY_ADD_TO_DEFAULT("torrent::tracker_list");
++CPPUNIT_REGISTRY_ADD_TO_DEFAULT("torrent::tracker_controller");
+ CPPUNIT_REGISTRY_ADD_TO_DEFAULT("net");
+ CPPUNIT_REGISTRY_ADD_TO_DEFAULT("tracker");
+ 
+@@ -63,6 +67,59 @@ register_signal_handlers() {
+   }
+ }
+ 
++static
++void add_tests(CppUnit::TextUi::TestRunner& runner, const char* c_test_names) {
++  if (c_test_names == NULL || std::string(c_test_names).empty()) {
++    runner.addTest(CppUnit::TestFactoryRegistry::getRegistry().makeTest());
++    return;
++  }
++
++  const std::string& test_names(c_test_names);
++
++  size_t pos = 0;
++  size_t next = 0;
++
++  while ((next = test_names.find(',', pos)) < test_names.size()) {
++    auto name = test_names.substr(pos, next - pos);
++    runner.addTest(CppUnit::TestFactoryRegistry::getRegistry(name).makeTest());
++    pos = next + 1;
++  }
++
++  auto name = test_names.substr(pos);
++  runner.addTest(CppUnit::TestFactoryRegistry::getRegistry(name).makeTest());
++}
++
++static void
++dump_failure_log(const failure_type& failure) {
++  if (failure.log->empty())
++    return;
++
++  std::cout << std::endl << failure.name << std::endl;
++
++  // Doesn't print dump messages as log_buffer drops them.
++  std::for_each(failure.log->begin(), failure.log->end(), [](const torrent::log_entry& entry) {
++      std::cout << entry.timestamp << ' ' << entry.message << '\n';
++    });
++
++  std::cout << std::flush;
++}
++
++static void
++dump_failures(const failure_list_type& failures) {
++  if (failures.empty())
++    return;
++
++  std::cout << std::endl
++            << "=================" << std::endl
++            << "Failed Test Logs:" << std::endl
++            << "=================" << std::endl;
++
++  std::for_each(failures.begin(), failures.end(), [](const failure_type& failure) {
++      dump_failure_log(failure);
++    });
++  std::cout << std::endl;
++}
++
+ int main(int argc, char* argv[]) {
+   register_signal_handlers();
+ 
+diff --git a/test/mock/http.cc b/test/mock/http.cc
+new file mode 100755
+index 00000000..df69a961
+--- /dev/null
++++ b/test/mock/http.cc
+@@ -0,0 +1,48 @@
++#import "config.h"
++
++#import "mock/http.h"
++
++namespace mock {
++
++http_getter::http_getter() :
++  m_test_flags(0),
++  m_destroyed_status(nullptr) {}
++
++http_getter::~http_getter() {
++  if (m_destroyed_status != nullptr)
++    *m_destroyed_status = true;
++}
++
++void
++http_getter::start() {
++  m_test_flags |= test_flag_active;
++}
++
++void
++http_getter::close() {
++  m_test_flags &= ~test_flag_active;
++}
++
++bool
++http_getter::trigger_signal_done() {
++  if (!(m_test_flags & test_flag_active))
++    return false;
++
++  m_test_flags &= ~test_flag_active;
++  trigger_done();
++
++  return true;
++}
++
++bool
++http_getter::trigger_signal_failed() {
++  if (!(m_test_flags & test_flag_active))
++    return false;
++
++  m_test_flags &= ~test_flag_active;
++  trigger_failed("mock triggered failed");
++
++  return true;
++}
++
++}
+diff --git a/test/mock/http.h b/test/mock/http.h
+new file mode 100755
+index 00000000..b4c85569
+--- /dev/null
++++ b/test/mock/http.h
+@@ -0,0 +1,29 @@
++#import "torrent/http.h"
++
++namespace mock {
++
++class http_getter : public torrent::Http {
++public:
++  static const int test_flag_active = 0x1;
++
++  http_getter();
++  ~http_getter() override;
++
++  void start() override;
++  void close() override;
++
++  bool trigger_signal_done();
++  bool trigger_signal_failed();
++
++  void set_destroyed_status(bool* status);
++
++private:
++  int   m_test_flags;
++  bool* m_destroyed_status;
++};
++
++inline http_getter* create_http_getter() { return new http_getter; }
++
++inline void http_getter::set_destroyed_status(bool* status) { m_destroyed_status = status; }
++
++}
+diff --git a/test/torrent/test_http.cc b/test/torrent/test_http.cc
+index 24ec97b5..a8fb2939 100644
+--- a/test/torrent/test_http.cc
++++ b/test/torrent/test_http.cc
+@@ -1,26 +1,27 @@
+-#include "config.h"
++#import "config.h"
+ 
+-#include "test_http.h"
++#import "test_http.h"
+ 
+-#include <sstream>
+-#include "torrent/http.h"
++#import <memory>
++#import <sstream>
++
++#import "mock/http.h"
+ 
+ CPPUNIT_TEST_SUITE_NAMED_REGISTRATION(test_http, "torrent");
+ 
+ #define HTTP_SETUP()                                                    \
++  int done_counter = 0;                                                 \
++  int failed_counter = 0;                                               \
+   bool http_destroyed = false;                                          \
+   bool stream_destroyed = false;                                        \
+                                                                         \
+-  TestHttp* test_http = new TestHttp(&http_destroyed);                  \
+-  torrent::Http* http = test_http;                                      \
+-  std::stringstream* http_stream = new StringStream(&stream_destroyed); \
++  auto http_getter = new mock::http_getter();                          \
++  auto http_stream = new StringStream(&stream_destroyed);               \
+                                                                         \
+-  int done_counter = 0;                                                 \
+-  int failed_counter = 0;                                               \
+-                                                                        \
+-  http->set_stream(http_stream);                                        \
+-  http->signal_done().push_back(std::bind(&increment_value, &done_counter)); \
+-  http->signal_failed().push_back(std::bind(&increment_value, &failed_counter));
++  http_getter->set_destroyed_status(&http_destroyed);                   \
++  http_getter->set_stream(http_stream);                                 \
++  http_getter->signal_done().push_back(std::bind(&increment_value, &done_counter)); \
++  http_getter->signal_failed().push_back(std::bind(&increment_value, &failed_counter));
+ 
+ class StringStream : public std::stringstream {
+ public:
+@@ -30,78 +31,43 @@ private:
+   bool* m_destroyed;
+ };
+ 
+-class TestHttp : public torrent::Http {
+-public:
+-  static const int flag_active = 0x1;
+-
+-  TestHttp(bool *destroyed = NULL) : m_flags(0), m_destroyed(destroyed) {}
+-  virtual ~TestHttp() { if (m_destroyed) *m_destroyed = true; }
+-  
+-  virtual void start() { m_flags |= flag_active; }
+-  virtual void close() { m_flags &= ~flag_active; }
+-
+-  bool trigger_signal_done();
+-  bool trigger_signal_failed();
++static void increment_value(int* value) { (*value)++; }
+ 
+-private:
+-  int m_flags;
+-  bool* m_destroyed;
+-};
++void
++test_http::test_basic() {
++  mock::http_getter::slot_factory() = std::bind(&mock::create_http_getter);
+ 
+-bool
+-TestHttp::trigger_signal_done() {
+-  if (!(m_flags & flag_active))
+-    return false;
++  auto http_getter = mock::http_getter::slot_factory()();
++  auto http_stream = std::make_unique<std::stringstream>();
+ 
+-  m_flags &= ~flag_active;
+-  trigger_done();
+-  return true;
+-}
++  http_getter->set_url("http://example.com");
++  CPPUNIT_ASSERT(http_getter->url() == "http://example.com");
+ 
+-bool
+-TestHttp::trigger_signal_failed() {
+-  if (!(m_flags & flag_active))
+-    return false;
++  CPPUNIT_ASSERT(http_getter->stream() == NULL);
++  http_getter->set_stream(http_stream.get());
++  CPPUNIT_ASSERT(http_getter->stream() == http_stream.get());
+ 
+-  m_flags &= ~flag_active;
+-  trigger_failed("We Fail.");
+-  return true;
++  CPPUNIT_ASSERT(http_getter->timeout() == 0);
++  http_getter->set_timeout(666);
++  CPPUNIT_ASSERT(http_getter->timeout() == 666);
+ }
+ 
+-TestHttp* create_test_http() { return new TestHttp; }
+-
+-static void increment_value(int* value) { (*value)++; }
+-
+ void
+-test_http::test_basic() {
+-  torrent::Http::slot_factory() = std::bind(&create_test_http);
+-
+-  torrent::Http* http = torrent::Http::slot_factory()();
+-  std::stringstream* http_stream = new std::stringstream;
+-
+-  http->set_url("http://example.com");
+-  CPPUNIT_ASSERT(http->url() == "http://example.com");
++test_http::test_flags() {
++  auto http_getter = std::make_unique<mock::http_getter>();
+ 
+-  CPPUNIT_ASSERT(http->stream() == NULL);
+-  http->set_stream(http_stream);
+-  CPPUNIT_ASSERT(http->stream() == http_stream);
++  CPPUNIT_ASSERT(http_getter->flags() == 0);
+ 
+-  CPPUNIT_ASSERT(http->timeout() == 0);
+-  http->set_timeout(666);
+-  CPPUNIT_ASSERT(http->timeout() == 666);
+-  
+-  delete http;
+-  delete http_stream;
++  // No need to add tests for delete_self/stream as they're going to
++  // be obsolete.
+ }
+ 
+ void
+ test_http::test_done() {
+   HTTP_SETUP();
+-  http->start();
++  http_getter->start();
+ 
+-  CPPUNIT_ASSERT(test_http->trigger_signal_done());
+-
+-  // Check that we didn't delete...
++  CPPUNIT_ASSERT(http_getter->trigger_signal_done());
+ 
+   CPPUNIT_ASSERT(done_counter == 1 && failed_counter == 0);
+ }
+@@ -109,11 +75,9 @@ test_http::test_done() {
+ void
+ test_http::test_failure() {
+   HTTP_SETUP();
+-  http->start();
+-
+-  CPPUNIT_ASSERT(test_http->trigger_signal_failed());
++  http_getter->start();
+ 
+-  // Check that we didn't delete...
++  CPPUNIT_ASSERT(http_getter->trigger_signal_failed());
+ 
+   CPPUNIT_ASSERT(done_counter == 0 && failed_counter == 1);
+ }
+@@ -121,26 +85,26 @@ test_http::test_failure() {
+ void
+ test_http::test_delete_on_done() {
+   HTTP_SETUP();
+-  http->start();
+-  http->set_delete_stream();
++  http_getter->start();
++  http_getter->set_delete_stream();
+ 
+   CPPUNIT_ASSERT(!stream_destroyed);
+   CPPUNIT_ASSERT(!http_destroyed);
+-  CPPUNIT_ASSERT(test_http->trigger_signal_done());
++  CPPUNIT_ASSERT(http_getter->trigger_signal_done());
+   CPPUNIT_ASSERT(stream_destroyed);
+   CPPUNIT_ASSERT(!http_destroyed);
+-  CPPUNIT_ASSERT(http->stream() == NULL);
++  CPPUNIT_ASSERT(http_getter->stream() == NULL);
+ 
+   stream_destroyed = false;
+   http_stream = new StringStream(&stream_destroyed);
+-  http->set_stream(http_stream);
++  http_getter->set_stream(http_stream);
+ 
+-  http->start();
+-  http->set_delete_self();
++  http_getter->start();
++  http_getter->set_delete_self();
+ 
+   CPPUNIT_ASSERT(!stream_destroyed);
+   CPPUNIT_ASSERT(!http_destroyed);
+-  CPPUNIT_ASSERT(test_http->trigger_signal_done());
++  CPPUNIT_ASSERT(http_getter->trigger_signal_done());
+   CPPUNIT_ASSERT(stream_destroyed);
+   CPPUNIT_ASSERT(http_destroyed);
+ }
+@@ -148,27 +112,26 @@ test_http::test_delete_on_done() {
+ void
+ test_http::test_delete_on_failure() {
+   HTTP_SETUP();
+-  http->start();
+-  http->set_delete_stream();
++  http_getter->start();
++  http_getter->set_delete_stream();
+ 
+   CPPUNIT_ASSERT(!stream_destroyed);
+   CPPUNIT_ASSERT(!http_destroyed);
+-  CPPUNIT_ASSERT(test_http->trigger_signal_failed());
++  CPPUNIT_ASSERT(http_getter->trigger_signal_failed());
+   CPPUNIT_ASSERT(stream_destroyed);
+   CPPUNIT_ASSERT(!http_destroyed);
+-  CPPUNIT_ASSERT(http->stream() == NULL);
++  CPPUNIT_ASSERT(http_getter->stream() == NULL);
+ 
+   stream_destroyed = false;
+   http_stream = new StringStream(&stream_destroyed);
+-  http->set_stream(http_stream);
++  http_getter->set_stream(http_stream);
+ 
+-  http->start();
+-  http->set_delete_self();
++  http_getter->start();
++  http_getter->set_delete_self();
+ 
+   CPPUNIT_ASSERT(!stream_destroyed);
+   CPPUNIT_ASSERT(!http_destroyed);
+-  CPPUNIT_ASSERT(test_http->trigger_signal_failed());
++  CPPUNIT_ASSERT(http_getter->trigger_signal_failed());
+   CPPUNIT_ASSERT(stream_destroyed);
+   CPPUNIT_ASSERT(http_destroyed);
+ }
+-
+diff --git a/test/torrent/test_http.h b/test/torrent/test_http.h
+index f4334646..1443faf9 100644
+--- a/test/torrent/test_http.h
++++ b/test/torrent/test_http.h
+@@ -4,6 +4,8 @@ class test_http : public test_fixture {
+   CPPUNIT_TEST_SUITE(test_http);
+ 
+   CPPUNIT_TEST(test_basic);
++  CPPUNIT_TEST(test_flags);
++
+   CPPUNIT_TEST(test_done);
+   CPPUNIT_TEST(test_failure);
+ 
+@@ -14,10 +16,11 @@ class test_http : public test_fixture {
+ 
+ public:
+   void test_basic();
++  void test_flags();
++
+   void test_done();
+   void test_failure();
+ 
+   void test_delete_on_done();
+   void test_delete_on_failure();
+ };
+-
+diff --git a/test/torrent/tracker_controller_test.cc b/test/torrent/test_tracker_controller.cc
+similarity index 88%
+rename from test/torrent/tracker_controller_test.cc
+rename to test/torrent/test_tracker_controller.cc
+index 9406c99e..0a8db3ea 100644
+--- a/test/torrent/tracker_controller_test.cc
++++ b/test/torrent/test_tracker_controller.cc
+@@ -1,15 +1,15 @@
+-#include "config.h"
++#import "config.h"
+ 
+-#include <functional>
+-#include <iostream>
++#import <functional>
++#import <iostream>
+ 
+-#include "rak/priority_queue_default.h"
++#import "rak/priority_queue_default.h"
++#import "globals.h"
+ 
+-#include "globals.h"
+-#include "tracker_list_test.h"
+-#include "tracker_controller_test.h"
++#import "test_tracker_list.h"
++#import "test_tracker_controller.h"
+ 
+-CPPUNIT_TEST_SUITE_REGISTRATION(tracker_controller_test);
++CPPUNIT_TEST_SUITE_NAMED_REGISTRATION(test_tracker_controller, "torrent::tracker_controller");
+ 
+ bool
+ test_goto_next_timeout(torrent::TrackerController* tracker_controller, uint32_t assumed_timeout, bool is_scrape) {
+@@ -49,19 +49,7 @@ test_goto_next_timeout(torrent::TrackerController* tracker_controller, uint32_t
+ }
+ 
+ void
+-tracker_controller_test::setUp() {
+-  CPPUNIT_ASSERT(torrent::taskScheduler.empty());
+-
+-  torrent::cachedTime = rak::timer::current();
+-}
+-
+-void
+-tracker_controller_test::tearDown() {
+-  torrent::taskScheduler.clear();
+-}
+-
+-void
+-tracker_controller_test::test_basic() {
++test_tracker_controller::test_basic() {
+   torrent::TrackerController tracker_controller(NULL);
+ 
+   CPPUNIT_ASSERT(tracker_controller.flags() == 0);
+@@ -70,8 +58,9 @@ tracker_controller_test::test_basic() {
+ }
+ 
+ void
+-tracker_controller_test::test_enable() {
+-  torrent::TrackerList tracker_list;
++test_tracker_controller::test_enable() {
++  torrent::DownloadInfo download_info;
++  torrent::TrackerList tracker_list(&download_info);
+   torrent::TrackerController tracker_controller(&tracker_list);
+ 
+   tracker_controller.enable();
+@@ -81,8 +70,9 @@ tracker_controller_test::test_enable() {
+ }
+ 
+ void
+-tracker_controller_test::test_requesting() {
+-  torrent::TrackerList tracker_list;
++test_tracker_controller::test_requesting() {
++  torrent::DownloadInfo download_info;
++  torrent::TrackerList tracker_list(&download_info);
+   torrent::TrackerController tracker_controller(&tracker_list);
+ 
+   tracker_controller.enable();
+@@ -98,7 +88,7 @@ tracker_controller_test::test_requesting() {
+ }
+ 
+ void
+-tracker_controller_test::test_timeout() {
++test_tracker_controller::test_timeout() {
+   TRACKER_CONTROLLER_SETUP();
+   TRACKER_INSERT(0, tracker_0_0);
+ 
+@@ -115,7 +105,7 @@ tracker_controller_test::test_timeout() {
+ }
+ 
+ void
+-tracker_controller_test::test_single_success() {
++test_tracker_controller::test_single_success() {
+   TEST_SINGLE_BEGIN();
+   
+   tracker_list.send_state_idx(0, 1);
+@@ -136,7 +126,7 @@ tracker_controller_test::test_single_success() {
+   torrent::cachedTime += rak::timer::from_seconds(test_interval);
+ 
+ void
+-tracker_controller_test::test_single_failure() {
++test_tracker_controller::test_single_failure() {
+   torrent::cachedTime = rak::timer::from_seconds(1 << 20);
+   TEST_SINGLE_BEGIN();
+ 
+@@ -158,14 +148,14 @@ tracker_controller_test::test_single_failure() {
+ }
+ 
+ void
+-tracker_controller_test::test_single_disable() {
++test_tracker_controller::test_single_disable() {
+   TEST_SINGLE_BEGIN();
+   tracker_list.send_state_idx(0, 0);
+   TEST_SINGLE_END(0, 0);
+ }
+ 
+ void
+-tracker_controller_test::test_send_start() {
++test_tracker_controller::test_send_start() {
+   TEST_SINGLE_BEGIN();
+   TEST_SEND_SINGLE_BEGIN(start);
+ 
+@@ -188,7 +178,7 @@ tracker_controller_test::test_send_start() {
+ }
+ 
+ void
+-tracker_controller_test::test_send_stop_normal() {
++test_tracker_controller::test_send_stop_normal() {
+   TEST_SINGLE_BEGIN();
+   TEST_SEND_SINGLE_BEGIN(update);
+ 
+@@ -215,13 +205,14 @@ tracker_controller_test::test_send_stop_normal() {
+ // send_stop during request and right after start, send stop failed.
+ 
+ void
+-tracker_controller_test::test_send_completed_normal() {
++test_tracker_controller::test_send_completed_normal() {
+   TEST_SINGLE_BEGIN();
+   TEST_SEND_SINGLE_BEGIN(update);
+ 
+   CPPUNIT_ASSERT(tracker_controller.task_timeout()->is_queued());
+   CPPUNIT_ASSERT(tracker_0_0->trigger_success());
+ 
++
+   tracker_controller.send_completed_event();
+   CPPUNIT_ASSERT((tracker_controller.flags() & torrent::TrackerController::mask_send) == torrent::TrackerController::flag_send_completed);
+ 
+@@ -240,7 +231,7 @@ tracker_controller_test::test_send_completed_normal() {
+ }
+ 
+ void
+-tracker_controller_test::test_send_update_normal() {
++test_tracker_controller::test_send_update_normal() {
+   TEST_SINGLE_BEGIN();
+   TEST_SEND_SINGLE_BEGIN(update);
+ 
+@@ -255,7 +246,7 @@ tracker_controller_test::test_send_update_normal() {
+ }
+ 
+ void
+-tracker_controller_test::test_send_update_failure() {
++test_tracker_controller::test_send_update_failure() {
+   torrent::cachedTime = rak::timer::from_seconds(1 << 20);
+   TEST_SINGLE_BEGIN();
+ 
+@@ -268,7 +259,7 @@ tracker_controller_test::test_send_update_failure() {
+ }
+ 
+ void
+-tracker_controller_test::test_send_task_timeout() {
++test_tracker_controller::test_send_task_timeout() {
+   TEST_SINGLE_BEGIN();
+   TEST_SEND_SINGLE_BEGIN(update);
+ 
+@@ -278,7 +269,7 @@ tracker_controller_test::test_send_task_timeout() {
+ }
+ 
+ void
+-tracker_controller_test::test_send_close_on_enable() {
++test_tracker_controller::test_send_close_on_enable() {
+   TRACKER_CONTROLLER_SETUP();
+   TRACKER_INSERT(0, tracker_0);
+   TRACKER_INSERT(0, tracker_1);
+@@ -299,7 +290,7 @@ tracker_controller_test::test_send_close_on_enable() {
+ }
+ 
+ void
+-tracker_controller_test::test_multiple_success() {
++test_tracker_controller::test_multiple_success() {
+   TEST_MULTI3_BEGIN();
+   TEST_SEND_SINGLE_BEGIN(update);
+ 
+@@ -322,7 +313,7 @@ tracker_controller_test::test_multiple_success() {
+ }
+ 
+ void
+-tracker_controller_test::test_multiple_failure() {
++test_tracker_controller::test_multiple_failure() {
+   TEST_MULTI3_BEGIN();
+   TEST_SEND_SINGLE_BEGIN(update);
+ 
+@@ -374,13 +365,13 @@ tracker_controller_test::test_multiple_failure() {
+ }
+ 
+ void
+-tracker_controller_test::test_multiple_cycle() {
++test_tracker_controller::test_multiple_cycle() {
+   TEST_MULTI3_BEGIN();
+   TEST_SEND_SINGLE_BEGIN(update);
+ 
+   CPPUNIT_ASSERT(tracker_0_0->trigger_failure());
+   CPPUNIT_ASSERT(tracker_0_1->trigger_success());
+-  CPPUNIT_ASSERT(tracker_list.front() == tracker_0_1);
++  CPPUNIT_ASSERT(tracker_list.front().get() == tracker_0_1);
+ 
+   CPPUNIT_ASSERT(test_goto_next_timeout(&tracker_controller, tracker_0_1->normal_interval()));
+   
+@@ -392,7 +383,7 @@ tracker_controller_test::test_multiple_cycle() {
+ }
+ 
+ void
+-tracker_controller_test::test_multiple_cycle_second_group() {
++test_tracker_controller::test_multiple_cycle_second_group() {
+   TEST_MULTI3_BEGIN();
+   TEST_SEND_SINGLE_BEGIN(update);
+ 
+@@ -400,17 +391,17 @@ tracker_controller_test::test_multiple_cycle_second_group() {
+   CPPUNIT_ASSERT(tracker_0_1->trigger_failure());
+   CPPUNIT_ASSERT(tracker_1_0->trigger_success());
+ 
+-  CPPUNIT_ASSERT(tracker_list[0] == tracker_0_0);
+-  CPPUNIT_ASSERT(tracker_list[1] == tracker_0_1);
+-  CPPUNIT_ASSERT(tracker_list[2] == tracker_1_0);
+-  CPPUNIT_ASSERT(tracker_list[3] == tracker_2_0);
+-  CPPUNIT_ASSERT(tracker_list[4] == tracker_3_0);
++  CPPUNIT_ASSERT(tracker_list[0].get() == tracker_0_0);
++  CPPUNIT_ASSERT(tracker_list[1].get() == tracker_0_1);
++  CPPUNIT_ASSERT(tracker_list[2].get() == tracker_1_0);
++  CPPUNIT_ASSERT(tracker_list[3].get() == tracker_2_0);
++  CPPUNIT_ASSERT(tracker_list[4].get() == tracker_3_0);
+ 
+   TEST_MULTIPLE_END(1, 2);
+ }
+ 
+ void
+-tracker_controller_test::test_multiple_send_stop() {
++test_tracker_controller::test_multiple_send_stop() {
+   TEST_MULTI3_BEGIN();
+ 
+   tracker_list.send_state_idx(1, torrent::Tracker::EVENT_NONE);
+@@ -460,7 +451,7 @@ tracker_controller_test::test_multiple_send_stop() {
+ }
+ 
+ void
+-tracker_controller_test::test_multiple_send_update() {
++test_tracker_controller::test_multiple_send_update() {
+   TEST_MULTI3_BEGIN();
+ 
+   tracker_controller.send_update_event();
+@@ -489,10 +480,11 @@ tracker_controller_test::test_multiple_send_update() {
+ // The enable/disable tracker functions will poke the tracker
+ // controller, ensuring the tast timeout gets re-started.
+ void
+-tracker_controller_test::test_timeout_lacking_usable() {
++test_tracker_controller::test_timeout_lacking_usable() {
+   TEST_MULTI3_BEGIN();
+ 
+-  std::for_each(tracker_list.begin(), tracker_list.end(), std::mem_fun(&torrent::Tracker::disable));
++  std::for_each(tracker_list.begin(), tracker_list.end(), [](auto& v){ v->disable(); });
++
+   CPPUNIT_ASSERT(tracker_controller.task_timeout()->is_queued());
+ 
+   CPPUNIT_ASSERT(test_goto_next_timeout(&tracker_controller, 0));
+@@ -518,7 +510,7 @@ tracker_controller_test::test_timeout_lacking_usable() {
+ }
+ 
+ void
+-tracker_controller_test::test_disable_tracker() {
++test_tracker_controller::test_disable_tracker() {
+   TEST_SINGLE_BEGIN();
+   TEST_SEND_SINGLE_BEGIN(update);
+ 
+@@ -534,7 +526,7 @@ tracker_controller_test::test_disable_tracker() {
+ }
+ 
+ void
+-tracker_controller_test::test_new_peers() {
++test_tracker_controller::test_new_peers() {
+   TRACKER_CONTROLLER_SETUP();
+   TRACKER_INSERT(0, tracker_0);
+ 
+diff --git a/test/torrent/tracker_controller_test.h b/test/torrent/test_tracker_controller.h
+similarity index 94%
+rename from test/torrent/tracker_controller_test.h
+rename to test/torrent/test_tracker_controller.h
+index 80315439..de32f18c 100644
+--- a/test/torrent/tracker_controller_test.h
++++ b/test/torrent/test_tracker_controller.h
+@@ -1,9 +1,14 @@
+-#include <cppunit/extensions/HelperMacros.h>
++#import <cppunit/extensions/HelperMacros.h>
+ 
+-#include "torrent/tracker_controller.h"
++#import <memory>
+ 
+-class tracker_controller_test : public CppUnit::TestFixture {
+-  CPPUNIT_TEST_SUITE(tracker_controller_test);
++#import "helpers/test_fixture.h"
++
++#import "torrent/download_info.h"
++#import "torrent/tracker_controller.h"
++
++class test_tracker_controller : public test_fixture {
++  CPPUNIT_TEST_SUITE(test_tracker_controller);
+ 
+   CPPUNIT_TEST(test_basic);
+   CPPUNIT_TEST(test_enable);
+@@ -35,9 +40,6 @@ class tracker_controller_test : public CppUnit::TestFixture {
+   CPPUNIT_TEST_SUITE_END();
+ 
+ public:
+-  void setUp();
+-  void tearDown();
+-
+   void test_basic();
+   void test_enable();
+   void test_disable();
+@@ -69,7 +71,8 @@ public:
+ };
+ 
+ #define TRACKER_CONTROLLER_SETUP()                                      \
+-  torrent::TrackerList tracker_list;                                    \
++  auto download_info = std::make_unique<torrent::DownloadInfo>();       \
++  torrent::TrackerList tracker_list(download_info.get());               \
+   torrent::TrackerController tracker_controller(&tracker_list);         \
+                                                                         \
+   int success_counter = 0;                                              \
+diff --git a/test/torrent/tracker_controller_features.cc b/test/torrent/test_tracker_controller_features.cc
+similarity index 91%
+rename from test/torrent/tracker_controller_features.cc
+rename to test/torrent/test_tracker_controller_features.cc
+index 0a6a57d6..eabc8d4b 100644
+--- a/test/torrent/tracker_controller_features.cc
++++ b/test/torrent/test_tracker_controller_features.cc
+@@ -1,30 +1,18 @@
+-#include "config.h"
++#import "config.h"
+ 
+-#include <functional>
+-#include <iostream>
++#import <functional>
++#import <iostream>
+ 
+-#include "rak/priority_queue_default.h"
++#import "rak/priority_queue_default.h"
+ 
+-#include "globals.h"
+-#include "tracker_list_test.h"
+-#include "tracker_controller_features.h"
++#import "globals.h"
++#import "test_tracker_list.h"
++#import "test_tracker_controller_features.h"
+ 
+-CPPUNIT_TEST_SUITE_REGISTRATION(tracker_controller_features);
++CPPUNIT_TEST_SUITE_NAMED_REGISTRATION(test_tracker_controller_features, "torrent::tracker_controller");
+ 
+ void
+-tracker_controller_features::setUp() {
+-  CPPUNIT_ASSERT(torrent::taskScheduler.empty());
+-
+-  torrent::cachedTime = rak::timer::current();
+-}
+-
+-void
+-tracker_controller_features::tearDown() {
+-  torrent::taskScheduler.clear();
+-}
+-
+-void
+-tracker_controller_features::test_requesting_basic() {
++test_tracker_controller_features::test_requesting_basic() {
+   TEST_MULTI3_BEGIN();
+   TEST_SEND_SINGLE_BEGIN(update);
+ 
+@@ -60,7 +48,7 @@ tracker_controller_features::test_requesting_basic() {
+ }
+ 
+ void
+-tracker_controller_features::test_requesting_timeout() {
++test_tracker_controller_features::test_requesting_timeout() {
+   TEST_MULTI3_BEGIN();
+   TEST_SEND_SINGLE_BEGIN(update);
+ 
+@@ -90,7 +78,7 @@ tracker_controller_features::test_requesting_timeout() {
+ }
+ 
+ void
+-tracker_controller_features::test_promiscious_timeout() {
++test_tracker_controller_features::test_promiscious_timeout() {
+   TEST_MULTI3_BEGIN();
+   TEST_SEND_SINGLE_BEGIN(start);
+ 
+@@ -118,7 +106,7 @@ tracker_controller_features::test_promiscious_timeout() {
+ // situations. This includes fixing old tests.
+ 
+ void
+-tracker_controller_features::test_promiscious_failed() {
++test_tracker_controller_features::test_promiscious_failed() {
+   TEST_MULTI3_BEGIN();
+   TEST_SEND_SINGLE_BEGIN(start);
+ 
+@@ -149,7 +137,7 @@ tracker_controller_features::test_promiscious_failed() {
+ }
+ 
+ void
+-tracker_controller_features::test_scrape_basic() {
++test_tracker_controller_features::test_scrape_basic() {
+   TEST_GROUP_BEGIN();
+   tracker_controller.disable();
+ 
+@@ -191,7 +179,7 @@ tracker_controller_features::test_scrape_basic() {
+ }
+ 
+ void
+-tracker_controller_features::test_scrape_priority() {
++test_tracker_controller_features::test_scrape_priority() {
+   TEST_SINGLE_BEGIN();
+   CPPUNIT_ASSERT(test_goto_next_timeout(&tracker_controller, 0));
+   tracker_0_0->trigger_success();
+@@ -234,7 +222,7 @@ tracker_controller_features::test_scrape_priority() {
+ }
+ 
+ void
+-tracker_controller_features::test_groups_requesting() {
++test_tracker_controller_features::test_groups_requesting() {
+   TEST_GROUP_BEGIN();
+   TEST_SEND_SINGLE_BEGIN(start);
+ 
+@@ -273,7 +261,7 @@ tracker_controller_features::test_groups_requesting() {
+ }
+ 
+ void
+-tracker_controller_features::test_groups_scrape() {
++test_tracker_controller_features::test_groups_scrape() {
+   TEST_GROUP_BEGIN();
+   tracker_controller.disable();
+ 
+diff --git a/test/torrent/tracker_controller_features.h b/test/torrent/test_tracker_controller_features.h
+similarity index 72%
+rename from test/torrent/tracker_controller_features.h
+rename to test/torrent/test_tracker_controller_features.h
+index bbbfec2a..85dc19e8 100644
+--- a/test/torrent/tracker_controller_features.h
++++ b/test/torrent/test_tracker_controller_features.h
+@@ -1,9 +1,11 @@
+-#include <cppunit/extensions/HelperMacros.h>
++#import <cppunit/extensions/HelperMacros.h>
+ 
+-#include "tracker_controller_test.h"
++#import "helpers/test_fixture.h"
+ 
+-class tracker_controller_features : public CppUnit::TestFixture {
+-  CPPUNIT_TEST_SUITE(tracker_controller_features);
++#import "test_tracker_controller.h"
++
++class test_tracker_controller_features : public test_fixture {
++  CPPUNIT_TEST_SUITE(test_tracker_controller_features);
+ 
+   CPPUNIT_TEST(test_requesting_basic);
+   CPPUNIT_TEST(test_requesting_timeout);
+@@ -19,9 +21,6 @@ class tracker_controller_features : public CppUnit::TestFixture {
+   CPPUNIT_TEST_SUITE_END();
+ 
+ public:
+-  void setUp();
+-  void tearDown();
+-
+   void test_requesting_basic();
+   void test_requesting_timeout();
+   void test_promiscious_timeout();
+diff --git a/test/torrent/tracker_controller_requesting.cc b/test/torrent/test_tracker_controller_requesting.cc
+similarity index 80%
+rename from test/torrent/tracker_controller_requesting.cc
+rename to test/torrent/test_tracker_controller_requesting.cc
+index 92e664b3..7fd54f50 100644
+--- a/test/torrent/tracker_controller_requesting.cc
++++ b/test/torrent/test_tracker_controller_requesting.cc
+@@ -1,27 +1,15 @@
+-#include "config.h"
++#import "config.h"
+ 
+-#include <functional>
+-#include <iostream>
++#import <functional>
++#import <iostream>
+ 
+-#include "rak/priority_queue_default.h"
++#import "rak/priority_queue_default.h"
+ 
+-#include "globals.h"
+-#include "tracker_list_test.h"
+-#include "tracker_controller_requesting.h"
++#import "globals.h"
++#import "test_tracker_list.h"
++#import "test_tracker_controller_requesting.h"
+ 
+-CPPUNIT_TEST_SUITE_REGISTRATION(tracker_controller_requesting);
+-
+-void
+-tracker_controller_requesting::setUp() {
+-  CPPUNIT_ASSERT(torrent::taskScheduler.empty());
+-
+-  torrent::cachedTime = rak::timer::current();
+-}
+-
+-void
+-tracker_controller_requesting::tearDown() {
+-  torrent::taskScheduler.clear();
+-}
++CPPUNIT_TEST_SUITE_NAMED_REGISTRATION(test_tracker_controller_requesting, "torrent::tracker_controller");
+ 
+ void
+ do_test_hammering_basic(bool success1, bool success2, bool success3, uint32_t min_interval = 0) {
+@@ -69,32 +57,32 @@ do_test_hammering_basic(bool success1, bool success2, bool success3, uint32_t mi
+ }
+ 
+ void
+-tracker_controller_requesting::test_hammering_basic_success() {
++test_tracker_controller_requesting::test_hammering_basic_success() {
+   do_test_hammering_basic(true, true, true);
+ }
+ 
+ void
+-tracker_controller_requesting::test_hammering_basic_success_long_timeout() {
++test_tracker_controller_requesting::test_hammering_basic_success_long_timeout() {
+   do_test_hammering_basic(true, true, true, 1000);
+ }
+ 
+ void
+-tracker_controller_requesting::test_hammering_basic_success_short_timeout() {
++test_tracker_controller_requesting::test_hammering_basic_success_short_timeout() {
+   do_test_hammering_basic(true, true, true, 300);
+ }
+ 
+ void
+-tracker_controller_requesting::test_hammering_basic_failure() {
++test_tracker_controller_requesting::test_hammering_basic_failure() {
+   do_test_hammering_basic(true, false, false);
+ }
+ 
+ void
+-tracker_controller_requesting::test_hammering_basic_failure_long_timeout() {
++test_tracker_controller_requesting::test_hammering_basic_failure_long_timeout() {
+   do_test_hammering_basic(true, false, false, 1000);
+ }
+ 
+ void
+-tracker_controller_requesting::test_hammering_basic_failure_short_timeout() {
++test_tracker_controller_requesting::test_hammering_basic_failure_short_timeout() {
+   do_test_hammering_basic(true, false, false, 300);
+ }
+ 
+@@ -169,20 +157,20 @@ do_test_hammering_multi3(bool success1, bool success2, bool success3, uint32_t m
+ }
+ 
+ void
+-tracker_controller_requesting::test_hammering_multi_success() {
++test_tracker_controller_requesting::test_hammering_multi_success() {
+   do_test_hammering_multi3(true, true, true);
+ }
+ 
+ void
+-tracker_controller_requesting::test_hammering_multi_success_long_timeout() {
++test_tracker_controller_requesting::test_hammering_multi_success_long_timeout() {
+   do_test_hammering_multi3(true, true, true, 1000);
+ }
+ 
+ void
+-tracker_controller_requesting::test_hammering_multi_success_short_timeout() {
++test_tracker_controller_requesting::test_hammering_multi_success_short_timeout() {
+   do_test_hammering_multi3(true, true, true, 300);
+ }
+ 
+ void
+-tracker_controller_requesting::test_hammering_multi_failure() {
++test_tracker_controller_requesting::test_hammering_multi_failure() {
+ }
+diff --git a/test/torrent/tracker_controller_requesting.h b/test/torrent/test_tracker_controller_requesting.h
+similarity index 84%
+rename from test/torrent/tracker_controller_requesting.h
+rename to test/torrent/test_tracker_controller_requesting.h
+index c347ceed..df8ee6d7 100644
+--- a/test/torrent/tracker_controller_requesting.h
++++ b/test/torrent/test_tracker_controller_requesting.h
+@@ -1,9 +1,11 @@
+-#include <cppunit/extensions/HelperMacros.h>
++#import <cppunit/extensions/HelperMacros.h>
+ 
+-#include "tracker_controller_test.h"
++#import "helpers/test_fixture.h"
+ 
+-class tracker_controller_requesting : public CppUnit::TestFixture {
+-  CPPUNIT_TEST_SUITE(tracker_controller_requesting);
++#import "test_tracker_controller.h"
++
++class test_tracker_controller_requesting : public test_fixture {
++  CPPUNIT_TEST_SUITE(test_tracker_controller_requesting);
+ 
+   CPPUNIT_TEST(test_hammering_basic_success);
+   CPPUNIT_TEST(test_hammering_basic_success_long_timeout);
+@@ -16,15 +18,13 @@ class tracker_controller_requesting : public CppUnit::TestFixture {
+   CPPUNIT_TEST(test_hammering_multi_success_long_timeout);
+   CPPUNIT_TEST(test_hammering_multi_success_short_timeout);
+   CPPUNIT_TEST(test_hammering_multi_failure);
++
+   // CPPUNIT_TEST(test_hammering_multi_failure_long_timeout);
+   // CPPUNIT_TEST(test_hammering_multi_failure_short_timeout);
+ 
+   CPPUNIT_TEST_SUITE_END();
+ 
+ public:
+-  void setUp();
+-  void tearDown();
+-
+   void test_hammering_basic_success();
+   void test_hammering_basic_success_long_timeout();
+   void test_hammering_basic_success_short_timeout();
+diff --git a/test/torrent/tracker_list_test.cc b/test/torrent/test_tracker_list.cc
+similarity index 86%
+rename from test/torrent/tracker_list_test.cc
+rename to test/torrent/test_tracker_list.cc
+index e62383f1..d7d48214 100644
+--- a/test/torrent/tracker_list_test.cc
++++ b/test/torrent/test_tracker_list.cc
+@@ -1,27 +1,16 @@
+-#include "config.h"
++#import "config.h"
+ 
+-#include "torrent/http.h"
+-#include "net/address_list.h"
++#import "globals.h"
++#import "torrent/utils/log.h"
++#import "net/address_list.h"
+ 
+-#include "globals.h"
+-#include "tracker_list_test.h"
++#import "test_tracker_list.h"
++#import "mock/http.h"
+ 
+-CPPUNIT_TEST_SUITE_REGISTRATION(tracker_list_test);
++CPPUNIT_TEST_SUITE_NAMED_REGISTRATION(test_tracker_list, "torrent::tracker_list");
+ 
+ uint32_t return_new_peers = 0xdeadbeef;
+ 
+-class http_get : public torrent::Http {
+-public:
+-  ~http_get() { }
+-
+-  // Start must never throw on bad input. Calling start/stop on an
+-  // object in the wrong state should throw a torrent::internal_error.
+-  void       start() { }
+-  void       close() { }
+-};
+-
+-torrent::Http* http_factory() { return new http_get; }
+-
+ bool
+ TrackerTest::trigger_success(uint32_t new_peers, uint32_t sum_peers) {
+   torrent::TrackerList::address_list address_list;
+@@ -36,17 +25,20 @@ TrackerTest::trigger_success(uint32_t new_peers, uint32_t sum_peers) {
+ 
+ bool
+ TrackerTest::trigger_success(torrent::TrackerList::address_list* address_list, uint32_t new_peers) {
+-  if (parent() == NULL || !is_busy() || !is_open())
++  if (!is_busy() || !is_open())
+     return false;
+ 
+   m_busy = false;
+   m_open = !(m_flags & flag_close_on_done);
+   return_new_peers = new_peers;
+ 
+-  if (m_latest_event == EVENT_SCRAPE)
+-    parent()->receive_scrape_success(this);
+-  else
+-    parent()->receive_success(this, address_list);
++  if (m_latest_event == EVENT_SCRAPE) {
++    if (m_slot_scrape_success)
++      m_slot_scrape_success();
++  } else {
++    if (m_slot_success)
++      m_slot_success(address_list);
++  }
+ 
+   m_requesting_state = -1;
+   return true;
+@@ -54,17 +46,20 @@ TrackerTest::trigger_success(torrent::TrackerList::address_list* address_list, u
+ 
+ bool
+ TrackerTest::trigger_failure() {
+-  if (parent() == NULL || !is_busy() || !is_open())
++  if (!is_busy() || !is_open())
+     return false;
+ 
+   m_busy = false;
+   m_open = !(m_flags & flag_close_on_done);
+   return_new_peers = 0;
+ 
+-  if (m_latest_event == EVENT_SCRAPE)
+-    parent()->receive_scrape_failed(this, "failed");
+-  else
+-    parent()->receive_failed(this, "failed");
++  if (m_latest_event == EVENT_SCRAPE) {
++    if (m_slot_scrape_failure)
++      m_slot_scrape_failure("failed");
++  } else {
++    if (m_slot_failure)
++      m_slot_failure("failed");
++  }
+ 
+   m_requesting_state = -1;
+   return true;
+@@ -72,7 +67,7 @@ TrackerTest::trigger_failure() {
+ 
+ bool
+ TrackerTest::trigger_scrape() {
+-  if (parent() == NULL || !is_busy() || !is_open())
++  if (!is_busy() || !is_open())
+     return false;
+ 
+   if (m_latest_event != EVENT_SCRAPE)
+@@ -82,19 +77,30 @@ TrackerTest::trigger_scrape() {
+ }
+ 
+ void
+-tracker_list_test::test_basic() {
++test_tracker_list::setUp() {
++  test_fixture::setUp();
++
++  // TODO: Refactor tracker logging types:
++  log_add_group_output(torrent::LOG_TRACKER_WARN, "test_output");
++  log_add_group_output(torrent::LOG_TRACKER_INFO, "test_output");
++  log_add_group_output(torrent::LOG_TRACKER_DEBUG, "test_output");
++  log_add_group_output(torrent::LOG_TRACKER_STATE_DEBUG, "test_output");
++}
++
++void
++test_tracker_list::test_basic() {
+   TRACKER_SETUP();
+   TRACKER_INSERT(0, tracker_0);
+ 
+-  CPPUNIT_ASSERT(tracker_0 == tracker_list[0]);
++  CPPUNIT_ASSERT(tracker_list.size() == 1);
++  CPPUNIT_ASSERT(tracker_list[0].get() == tracker_0);
+ 
+-  CPPUNIT_ASSERT(tracker_list[0]->parent() == &tracker_list);
+   CPPUNIT_ASSERT(std::distance(tracker_list.begin_group(0), tracker_list.end_group(0)) == 1);
+   CPPUNIT_ASSERT(tracker_list.find_usable(tracker_list.begin()) != tracker_list.end());
+ }
+ 
+ void
+-tracker_list_test::test_enable() {
++test_tracker_list::test_enable() {
+   TRACKER_SETUP();
+   int enabled_counter = 0;
+   int disabled_counter = 0;
+@@ -108,7 +114,7 @@ tracker_list_test::test_enable() {
+ 
+   tracker_0->enable(); tracker_1->enable();
+   CPPUNIT_ASSERT(enabled_counter == 2 && disabled_counter == 0);
+-  
++
+   tracker_0->disable(); tracker_1->enable();
+   CPPUNIT_ASSERT(enabled_counter == 2 && disabled_counter == 1);
+ 
+@@ -121,7 +127,7 @@ tracker_list_test::test_enable() {
+ }
+ 
+ void
+-tracker_list_test::test_close() {
++test_tracker_list::test_close() {
+   TRACKER_SETUP();
+   TRACKER_INSERT(0, tracker_0);
+   TRACKER_INSERT(0, tracker_1);
+@@ -168,13 +174,14 @@ tracker_list_test::test_close() {
+ // Test clear.
+ 
+ void
+-tracker_list_test::test_tracker_flags() {
++test_tracker_list::test_tracker_flags() {
+   TRACKER_SETUP();
+-  tracker_list.insert(0, new TrackerTest(&tracker_list, ""));
+-  tracker_list.insert(0, new TrackerTest(&tracker_list, "", 0));
+-  tracker_list.insert(0, new TrackerTest(&tracker_list, "", torrent::Tracker::flag_enabled));
+-  tracker_list.insert(0, new TrackerTest(&tracker_list, "", torrent::Tracker::flag_extra_tracker));
+-  tracker_list.insert(0, new TrackerTest(&tracker_list, "", torrent::Tracker::flag_enabled | torrent::Tracker::flag_extra_tracker));
++
++  tracker_list.insert(0, new TrackerTest(download_info.get(), ""));
++  tracker_list.insert(0, new TrackerTest(download_info.get(), "", 0));
++  tracker_list.insert(0, new TrackerTest(download_info.get(), "", torrent::Tracker::flag_enabled));
++  tracker_list.insert(0, new TrackerTest(download_info.get(), "", torrent::Tracker::flag_extra_tracker));
++  tracker_list.insert(0, new TrackerTest(download_info.get(), "", torrent::Tracker::flag_enabled | torrent::Tracker::flag_extra_tracker));
+ 
+   CPPUNIT_ASSERT((tracker_list[0]->flags() & torrent::Tracker::mask_base_flags) == torrent::Tracker::flag_enabled);
+   CPPUNIT_ASSERT((tracker_list[1]->flags() & torrent::Tracker::mask_base_flags) == 0);
+@@ -184,12 +191,12 @@ tracker_list_test::test_tracker_flags() {
+ }
+ 
+ void
+-tracker_list_test::test_find_url() {
++test_tracker_list::test_find_url() {
+   TRACKER_SETUP();
+ 
+-  tracker_list.insert(0, new TrackerTest(&tracker_list, "http://1"));
+-  tracker_list.insert(0, new TrackerTest(&tracker_list, "http://2"));
+-  tracker_list.insert(1, new TrackerTest(&tracker_list, "http://3"));
++  tracker_list.insert(0, new TrackerTest(download_info.get(), "http://1"));
++  tracker_list.insert(0, new TrackerTest(download_info.get(), "http://2"));
++  tracker_list.insert(1, new TrackerTest(download_info.get(), "http://3"));
+ 
+   CPPUNIT_ASSERT(tracker_list.find_url("http://") == tracker_list.end());
+ 
+@@ -204,9 +211,9 @@ tracker_list_test::test_find_url() {
+ }
+ 
+ void
+-tracker_list_test::test_can_scrape() {
++test_tracker_list::test_can_scrape() {
+   TRACKER_SETUP();
+-  torrent::Http::slot_factory() = std::bind(&http_factory);
++  torrent::Http::slot_factory() = std::bind(&mock::create_http_getter);
+ 
+   tracker_list.insert_url(0, "http://example.com/announce");
+   CPPUNIT_ASSERT((tracker_list.back()->flags() & torrent::Tracker::flag_can_scrape));
+@@ -239,7 +246,7 @@ tracker_list_test::test_can_scrape() {
+ }
+ 
+ void
+-tracker_list_test::test_single_success() {
++test_tracker_list::test_single_success() {
+   TRACKER_SETUP();
+   TRACKER_INSERT(0, tracker_0);
+ 
+@@ -264,14 +271,14 @@ tracker_list_test::test_single_success() {
+   CPPUNIT_ASSERT(!tracker_0->is_open());
+   CPPUNIT_ASSERT(tracker_0->requesting_state() == -1);
+   CPPUNIT_ASSERT(tracker_0->latest_event() == torrent::Tracker::EVENT_STARTED);
+-  
++
+   CPPUNIT_ASSERT(success_counter == 1 && failure_counter == 0);
+   CPPUNIT_ASSERT(tracker_0->success_counter() == 1);
+   CPPUNIT_ASSERT(tracker_0->failed_counter() == 0);
+ }
+ 
+ void
+-tracker_list_test::test_single_failure() {
++test_tracker_list::test_single_failure() {
+   TRACKER_SETUP();
+   TRACKER_INSERT(0, tracker_0);
+ 
+@@ -295,7 +302,7 @@ tracker_list_test::test_single_failure() {
+ }
+ 
+ void
+-tracker_list_test::test_single_closing() {
++test_tracker_list::test_single_closing() {
+   TRACKER_SETUP();
+   TRACKER_INSERT(0, tracker_0);
+ 
+@@ -319,7 +326,7 @@ tracker_list_test::test_single_closing() {
+ }
+ 
+ void
+-tracker_list_test::test_multiple_success() {
++test_tracker_list::test_multiple_success() {
+   TRACKER_SETUP();
+   TRACKER_INSERT(0, tracker_0_0);
+   TRACKER_INSERT(0, tracker_0_1);
+@@ -371,10 +378,10 @@ tracker_list_test::test_multiple_success() {
+ }
+ 
+ void
+-tracker_list_test::test_scrape_success() {
++test_tracker_list::test_scrape_success() {
+   TRACKER_SETUP();
+   TRACKER_INSERT(0, tracker_0);
+-  
++
+   tracker_0->set_can_scrape();
+   tracker_list.send_scrape(tracker_0);
+ 
+@@ -391,7 +398,7 @@ tracker_list_test::test_scrape_success() {
+   CPPUNIT_ASSERT(!tracker_0->is_open());
+   CPPUNIT_ASSERT(tracker_0->requesting_state() == -1);
+   CPPUNIT_ASSERT(tracker_0->latest_event() == torrent::Tracker::EVENT_SCRAPE);
+-  
++
+   CPPUNIT_ASSERT(success_counter == 0 && failure_counter == 0);
+   CPPUNIT_ASSERT(scrape_success_counter == 1 && scrape_failure_counter == 0);
+   CPPUNIT_ASSERT(tracker_0->success_counter() == 0);
+@@ -400,10 +407,10 @@ tracker_list_test::test_scrape_success() {
+ }
+ 
+ void
+-tracker_list_test::test_scrape_failure() {
++test_tracker_list::test_scrape_failure() {
+   TRACKER_SETUP();
+   TRACKER_INSERT(0, tracker_0);
+-  
++
+   tracker_0->set_can_scrape();
+   tracker_list.send_scrape(tracker_0);
+ 
+@@ -413,7 +420,7 @@ tracker_list_test::test_scrape_failure() {
+   CPPUNIT_ASSERT(!tracker_0->is_open());
+   CPPUNIT_ASSERT(tracker_0->requesting_state() == -1);
+   CPPUNIT_ASSERT(tracker_0->latest_event() == torrent::Tracker::EVENT_SCRAPE);
+-  
++
+   CPPUNIT_ASSERT(success_counter == 0 && failure_counter == 0);
+   CPPUNIT_ASSERT(scrape_success_counter == 0 && scrape_failure_counter == 1);
+   CPPUNIT_ASSERT(tracker_0->success_counter() == 0);
+@@ -441,7 +448,7 @@ check_has_active_in_group(const torrent::TrackerList* tracker_list, const char*
+ }
+ 
+ void
+-tracker_list_test::test_has_active() {
++test_tracker_list::test_has_active() {
+   TRACKER_SETUP();
+   TRACKER_INSERT(0, tracker_0);
+   TRACKER_INSERT(0, tracker_1);
+diff --git a/test/torrent/tracker_list_test.h b/test/torrent/test_tracker_list.h
+similarity index 89%
+rename from test/torrent/tracker_list_test.h
+rename to test/torrent/test_tracker_list.h
+index 39fc7c19..57c368f0 100644
+--- a/test/torrent/tracker_list_test.h
++++ b/test/torrent/test_tracker_list.h
+@@ -1,10 +1,17 @@
+-#include <torrent/tracker.h>
+-#include <torrent/tracker_list.h>
+-#include <rak/timer.h>
+-#include <cppunit/extensions/HelperMacros.h>
++#import <cppunit/extensions/HelperMacros.h>
++
++#import <memory>
++
++#import "helpers/test_fixture.h"
++
++#import "torrent/download_info.h"
++#import "torrent/tracker.h"
++#import "torrent/tracker_list.h"
++#import "rak/timer.h"
++
++class test_tracker_list : public test_fixture {
++  CPPUNIT_TEST_SUITE(test_tracker_list);
+ 
+-class tracker_list_test : public CppUnit::TestFixture {
+-  CPPUNIT_TEST_SUITE(tracker_list_test);
+   CPPUNIT_TEST(test_basic);
+   CPPUNIT_TEST(test_enable);
+   CPPUNIT_TEST(test_close);
+@@ -23,11 +30,11 @@ class tracker_list_test : public CppUnit::TestFixture {
+   CPPUNIT_TEST(test_scrape_failure);
+ 
+   CPPUNIT_TEST(test_has_active);
++
+   CPPUNIT_TEST_SUITE_END();
+ 
+ public:
+-  void setUp() {}
+-  void tearDown() {}
++  void setUp();
+ 
+   void test_basic();
+   void test_enable();
+@@ -49,14 +56,15 @@ public:
+   void test_has_active();
+ };
+ 
++// TODO: Move.
+ class TrackerTest : public torrent::Tracker {
+ public:
+   static const int flag_close_on_done = max_flag_size << 0;
+   static const int flag_scrape_on_success = max_flag_size << 1;
+ 
+   // TODO: Clean up tracker related enums.
+-  TrackerTest(torrent::TrackerList* parent, const std::string& url, int flags = torrent::Tracker::flag_enabled) :
+-    torrent::Tracker(parent, url, flags),
++  TrackerTest(torrent::DownloadInfo* info, const std::string& url, int flags = torrent::Tracker::flag_enabled) :
++    torrent::Tracker(info, url, flags),
+     m_busy(false),
+     m_open(false),
+     m_requesting_state(-1) { m_flags |= flag_close_on_done; }
+@@ -105,18 +113,21 @@ inline unsigned int increment_value_uint(int* value) { (*value)++; return return
+ bool check_has_active_in_group(const torrent::TrackerList* tracker_list, const char* states, bool scrape);
+ 
+ #define TRACKER_SETUP()                                                 \
+-  torrent::TrackerList tracker_list;                                    \
++  auto download_info = std::make_unique<torrent::DownloadInfo>();       \
++  torrent::TrackerList tracker_list(download_info.get());               \
++                                                                        \
+   int success_counter = 0;                                              \
+   int failure_counter = 0;                                              \
+   int scrape_success_counter = 0;                                       \
+   int scrape_failure_counter = 0;                                       \
++                                                                        \
+   tracker_list.slot_success() = std::bind(&increment_value_uint, &success_counter); \
+   tracker_list.slot_failure() = std::bind(&increment_value_void, &failure_counter); \
+   tracker_list.slot_scrape_success() = std::bind(&increment_value_void, &scrape_success_counter); \
+   tracker_list.slot_scrape_failure() = std::bind(&increment_value_void, &scrape_failure_counter);
+ 
+-#define TRACKER_INSERT(group, name)                             \
+-  TrackerTest* name = new TrackerTest(&tracker_list, "");       \
++#define TRACKER_INSERT(group, name)                               \
++  TrackerTest* name = new TrackerTest(download_info.get(), "");  \
+   tracker_list.insert(group, name);
+ 
+ #define TEST_TRACKER_IS_BUSY(tracker, state)            \
+diff --git a/test/torrent/tracker_list_features_test.cc b/test/torrent/test_tracker_list_features.cc
+similarity index 88%
+rename from test/torrent/tracker_list_features_test.cc
+rename to test/torrent/test_tracker_list_features.cc
+index 5257b1a7..99c0850c 100644
+--- a/test/torrent/tracker_list_features_test.cc
++++ b/test/torrent/test_tracker_list_features.cc
+@@ -1,29 +1,30 @@
+-#include "config.h"
++#import "config.h"
+ 
+-#include <functional>
++#import <functional>
+ 
+-#include "torrent/http.h"
+-#include "net/address_list.h"
++#import "torrent/http.h"
++#import "torrent/utils/log.h"
++#import "net/address_list.h"
+ 
+-#include "globals.h"
+-#include "tracker_list_test.h"
+-#include "tracker_list_features_test.h"
++#import "globals.h"
++#import "test_tracker_list.h"
++#import "test_tracker_list_features.h"
+ 
+-CPPUNIT_TEST_SUITE_REGISTRATION(tracker_list_features_test);
++CPPUNIT_TEST_SUITE_NAMED_REGISTRATION(test_tracker_list_features, "torrent::tracker_list");
+ 
+ void
+-tracker_list_features_test::setUp() {
+-  CPPUNIT_ASSERT(torrent::taskScheduler.empty());
+-
+-  torrent::cachedTime = rak::timer::current();
+-}
+-
+-void
+-tracker_list_features_test::tearDown() {
++test_tracker_list_features::setUp() {
++  test_fixture::setUp();
++
++  // TODO: Refactor tracker logging types:
++  log_add_group_output(torrent::LOG_TRACKER_WARN, "test_output");
++  log_add_group_output(torrent::LOG_TRACKER_INFO, "test_output");
++  log_add_group_output(torrent::LOG_TRACKER_DEBUG, "test_output");
++  log_add_group_output(torrent::LOG_TRACKER_STATE_DEBUG, "test_output");
+ }
+ 
+ void
+-tracker_list_features_test::test_new_peers() {
++test_tracker_list_features::test_new_peers() {
+   TRACKER_SETUP();
+   TRACKER_INSERT(0, tracker_0);
+   
+@@ -51,7 +52,7 @@ tracker_list_features_test::test_new_peers() {
+ // test has_active, and then clean up TrackerManager.
+ 
+ void
+-tracker_list_features_test::test_has_active() {
++test_tracker_list_features::test_has_active() {
+   TRACKER_SETUP();
+   TRACKER_INSERT(0, tracker_0_0);
+   TRACKER_INSERT(0, tracker_0_1);
+@@ -84,7 +85,7 @@ tracker_list_features_test::test_has_active() {
+ }
+ 
+ void
+-tracker_list_features_test::test_find_next_to_request() {
++test_tracker_list_features::test_find_next_to_request() {
+   TRACKER_SETUP();
+   TRACKER_INSERT(0, tracker_0);
+   TRACKER_INSERT(0, tracker_1);
+@@ -123,7 +124,7 @@ tracker_list_features_test::test_find_next_to_request() {
+ }
+ 
+ void
+-tracker_list_features_test::test_find_next_to_request_groups() {
++test_tracker_list_features::test_find_next_to_request_groups() {
+   TRACKER_SETUP();
+   TRACKER_INSERT(0, tracker_0);
+   TRACKER_INSERT(0, tracker_1);
+@@ -146,7 +147,7 @@ tracker_list_features_test::test_find_next_to_request_groups() {
+ }
+ 
+ void
+-tracker_list_features_test::test_count_active() {
++test_tracker_list_features::test_count_active() {
+   TRACKER_SETUP();
+   TRACKER_INSERT(0, tracker_0_0);
+   TRACKER_INSERT(0, tracker_0_1);
+@@ -193,7 +194,7 @@ verify_did_internal_error(std::function<void ()> func, bool should_throw) {
+ }
+ 
+ void
+-tracker_list_features_test::test_request_safeguard() {
++test_tracker_list_features::test_request_safeguard() {
+   TRACKER_SETUP();
+   TRACKER_INSERT(0, tracker_1);
+   TRACKER_INSERT(0, tracker_2);
+diff --git a/test/torrent/tracker_list_features_test.h b/test/torrent/test_tracker_list_features.h
+similarity index 72%
+rename from test/torrent/tracker_list_features_test.h
+rename to test/torrent/test_tracker_list_features.h
+index e1c70486..cfe3965a 100644
+--- a/test/torrent/tracker_list_features_test.h
++++ b/test/torrent/test_tracker_list_features.h
+@@ -1,7 +1,10 @@
+-#include <cppunit/extensions/HelperMacros.h>
++#import <cppunit/extensions/HelperMacros.h>
++
++#import "helpers/test_fixture.h"
++
++class test_tracker_list_features : public test_fixture {
++  CPPUNIT_TEST_SUITE(test_tracker_list_features);
+ 
+-class tracker_list_features_test : public CppUnit::TestFixture {
+-  CPPUNIT_TEST_SUITE(tracker_list_features_test);
+   CPPUNIT_TEST(test_new_peers);
+   CPPUNIT_TEST(test_has_active);
+   CPPUNIT_TEST(test_find_next_to_request);
+@@ -9,11 +12,11 @@ class tracker_list_features_test : public CppUnit::TestFixture {
+   CPPUNIT_TEST(test_count_active);
+ 
+   CPPUNIT_TEST(test_request_safeguard);
++
+   CPPUNIT_TEST_SUITE_END();
+ 
+ public:
+   void setUp();
+-  void tearDown();
+ 
+   void test_new_peers();
+   void test_has_active();
+diff --git a/test/torrent/tracker_timeout_test.cc b/test/torrent/tracker_timeout_test.cc
+index cd060006..399fc973 100644
+--- a/test/torrent/tracker_timeout_test.cc
++++ b/test/torrent/tracker_timeout_test.cc
+@@ -6,7 +6,7 @@
+ #include "rak/priority_queue_default.h"
+ 
+ #include "globals.h"
+-#include "tracker_list_test.h"
++#include "test_tracker_list.h"
+ #include "tracker_timeout_test.h"
+ 
+ CPPUNIT_TEST_SUITE_REGISTRATION(tracker_timeout_test);
+diff --git a/test/tracker/test_tracker_http.cc b/test/tracker/test_tracker_http.cc
+index 399d00d5..46813be7 100644
+--- a/test/tracker/test_tracker_http.cc
++++ b/test/tracker/test_tracker_http.cc
+@@ -1,11 +1,27 @@
+-#include "config.h"
++#import "config.h"
+ 
+-#include "test_tracker_http.h"
++#import "test_tracker_http.h"
+ 
+-#include "tracker/tracker_http.h"
++#import "mock/http.h"
++#import "torrent/tracker_list.h"
++#import "tracker/tracker_http.h"
+ 
+ CPPUNIT_TEST_SUITE_NAMED_REGISTRATION(test_tracker_http, "tracker");
+ 
+ void
+ test_tracker_http::test_basic() {
++  // TODO: Replace TrackerList parameter with slots, then write these tests.
++
++
++  // torrent::Http::slot_factory() = std::bind(&test::tracker_http::create_http_getter);
++
++  // std::unique_ptr<torrent::TrackerList> tracker_list(new torrent::TrackerList());
++
++  // tracker_list->slot_success() = std::bind(&test::tracker_http::controller_receive_success, std::placeholders::_1, std::placeholders::_2);
++  // tracker_list->slot_failure() = std::bind(&test::tracker_http::controller_receive_failure, std::placeholders::_1, std::placeholders::_2);
++  // tracker_list->slot_scrape_success() = std::bind(&test::tracker_http::controller_receive_scrape, std::placeholders::_1);
++  // tracker_list->slot_tracker_enabled()  = std::bind(&test::tracker_http::controller_receive_tracker_enabled, std::placeholders::_1);
++  // tracker_list->slot_tracker_disabled() = std::bind(&test::tracker_http::controller_receive_tracker_disabled, std::placeholders::_1);
++
++  // tracker_list->insert_url(0, "http://example.com/announce", false);
+ }
+diff --git a/test/tracker/test_tracker_http.h b/test/tracker/test_tracker_http.h
+index ab11a8f7..97ee2194 100644
+--- a/test/tracker/test_tracker_http.h
++++ b/test/tracker/test_tracker_http.h
+@@ -1,10 +1,10 @@
+-#include "helpers/test_fixture.h"
+-
+-#include "torrent/utils/thread_base.h"
++#import "helpers/test_fixture.h"
+ 
+ class test_tracker_http : public test_fixture {
+   CPPUNIT_TEST_SUITE(test_tracker_http);
++
+   CPPUNIT_TEST(test_basic);
++
+   CPPUNIT_TEST_SUITE_END();
+ 
+ public:
