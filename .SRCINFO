@@ -1,0 +1,18 @@
+pkgbase = rvgl-launcher
+	pkgdesc = Files and mods manager for RVGL, the Re-Volt port.
+	pkgver = 0.1.23.1030a3
+	pkgrel = 1
+	url = https://rvgl.org/
+	arch = any
+	license = custom
+	depends = python-wxpython
+	depends = python-requests
+	depends = python-packaging
+	depends = p7zip
+	depends = xdg-utils
+	source = https://rvgl.org/downloads/rvgl_launcher_linux.zip
+	source = RVGL Launcher.desktop
+	md5sums = 59817a9170121b4cf70e096e9afe07f4
+	md5sums = b644fd7487ddd7288328a3137c27c494
+
+pkgname = rvgl-launcher

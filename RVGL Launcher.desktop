@@ -1,0 +1,9 @@
+[Desktop Entry]
+Comment=Launcher and package manager for RVGL
+Terminal=false
+Name=RVGL Launcher
+Type=Application
+Categories=Game;
+Path=/opt/rvgl
+Exec="/usr/bin/python" "/opt/rvgl/rvgl_launcher.py"
+Icon=/opt/rvgl/icons/icon.png
