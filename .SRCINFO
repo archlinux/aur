@@ -10,7 +10,9 @@ pkgbase = rtorrent-ipv6
 	depends = xmlrpc-c
 	provides = rtorrent
 	conflicts = rtorrent
-	source = rtorrent::git+https://github.com/rakshasa/rtorrent.git#commit=45bec061a4b97fa5945bb45b10682849d874fa80
-	sha256sums = SKIP
+	source = rtorrent::git+https://github.com/rakshasa/rtorrent.git#commit=1da0e3476dcabbf74b2e836d6b4c37b4d96bde09
+	source = tracker-ipv6.patch
+	sha256sums = 8cdeba8958f9a035f5d6a5015dc43bcbefa1a2cb6b585fe0e1d598a5bdec9720
+	sha256sums = e8209b8ed89a1f7b40d2d0c5616be44c6fe072995c8420b17f5fa3dd4e3bcad1
 
 pkgname = rtorrent-ipv6

@@ -1,0 +1,123 @@
+diff --git a/configure.ac b/configure.ac
+index b6cc7c1..2a8c2fb 100755
+--- a/configure.ac
++++ b/configure.ac
+@@ -18,6 +18,8 @@ RAK_ENABLE_DEBUG
+ RAK_ENABLE_EXTRA_DEBUG
+ RAK_ENABLE_WERROR
+ 
++AX_CXX_COMPILE_STDCXX(14, noext, mandatory)
++
+ TORRENT_DISABLE_IPV6
+ 
+ TORRENT_ENABLE_ARCH
+diff --git a/scripts/ax_cxx_compile_stdcxx.m4 b/scripts/ax_cxx_compile_stdcxx.m4
+old mode 100755
+new mode 100644
+diff --git a/src/command_download.cc b/src/command_download.cc
+index 25db01e..33e3b9d 100644
+--- a/src/command_download.cc
++++ b/src/command_download.cc
+@@ -435,9 +435,9 @@ t_multicall(core::Download* download, const torrent::Object::list_type& args) {
+ 
+     for (torrent::Object::list_const_iterator cItr = ++args.begin(); cItr != args.end(); cItr++) {
+       const std::string& cmd = cItr->as_string();
+-      torrent::Tracker* t = download->tracker_list()->at(itr);
++      auto t = download->tracker_list()->at(itr);
+ 
+-      row.push_back(rpc::parse_command(rpc::make_target(t), cmd.c_str(), cmd.c_str() + cmd.size()).first);
++      row.push_back(rpc::parse_command(rpc::make_target(t.get()), cmd.c_str(), cmd.c_str() + cmd.size()).first);
+     }
+   }
+ 
+diff --git a/src/command_network.cc b/src/command_network.cc
+index 0e53f17..b346bd8 100644
+--- a/src/command_network.cc
++++ b/src/command_network.cc
+@@ -5,12 +5,12 @@
+ // it under the terms of the GNU General Public License as published by
+ // the Free Software Foundation; either version 2 of the License, or
+ // (at your option) any later version.
+-// 
++//
+ // This program is distributed in the hope that it will be useful,
+ // but WITHOUT ANY WARRANTY; without even the implied warranty of
+ // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ // GNU General Public License for more details.
+-// 
++//
+ // You should have received a copy of the GNU General Public License
+ // along with this program; if not, write to the Free Software
+ // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+@@ -108,7 +108,7 @@ xmlrpc_find_tracker(core::Download* download, uint32_t index) {
+   if (index >= download->tracker_list()->size())
+     return NULL;
+ 
+-  return download->tracker_list()->at(index);
++  return download->tracker_list()->at(index).get();
+ }
+ 
+ torrent::Peer*
+diff --git a/src/command_tracker.cc b/src/command_tracker.cc
+index 47d8f18..00a71f6 100644
+--- a/src/command_tracker.cc
++++ b/src/command_tracker.cc
+@@ -98,12 +98,12 @@ apply_dht_add_node(const std::string& arg) {
+ 
+ torrent::Object
+ apply_enable_trackers(int64_t arg) {
+-  for (core::Manager::DListItr itr = control->core()->download_list()->begin(), last = control->core()->download_list()->end(); itr != last; ++itr) {
+-    std::for_each((*itr)->tracker_list()->begin(), (*itr)->tracker_list()->end(),
+-                  arg ? std::mem_fun(&torrent::Tracker::enable) : std::mem_fun(&torrent::Tracker::disable));
++  for (auto&& itr : *control->core()->download_list()) {
++    std::for_each(itr->tracker_list()->begin(), itr->tracker_list()->end(),
++                  [arg](auto& v){ return arg ? v->enable() : v->disable(); });
+ 
+     if (arg && !rpc::call_command_value("trackers.use_udp"))
+-      (*itr)->enable_udp_trackers(false);
++      itr->enable_udp_trackers(false);
+   }    
+ 
+   return torrent::Object();
+diff --git a/src/display/utils.cc b/src/display/utils.cc
+index 5a5ae8f..62a392d 100644
+--- a/src/display/utils.cc
++++ b/src/display/utils.cc
+@@ -197,9 +197,8 @@ print_download_status(char* first, char* last, core::Download* d) {
+                          (d->download()->chunks_hashed() * 100) / d->download()->file_list()->size_chunks());
+ 
+   } else if (d->tracker_list()->has_active_not_scrape()) {
+-    torrent::TrackerList::iterator itr =
+-      std::find_if(d->tracker_list()->begin(), d->tracker_list()->end(),
+-                   std::mem_fun(&torrent::Tracker::is_busy_not_scrape));
++    auto itr = std::find_if(d->tracker_list()->begin(), d->tracker_list()->end(), [](auto& v){ return v->is_busy_not_scrape(); });
++
+     char status[128];
+ 
+     (*itr)->get_status(status, sizeof(status));
+diff --git a/src/display/window_tracker_list.cc b/src/display/window_tracker_list.cc
+index 66a3457..2d6178b 100644
+--- a/src/display/window_tracker_list.cc
++++ b/src/display/window_tracker_list.cc
+@@ -81,7 +81,7 @@ WindowTrackerList::redraw() {
+   unsigned int group = tl->at(range.first)->group();
+ 
+   while (range.first != range.second) {
+-    torrent::Tracker* tracker = tl->at(range.first);
++    auto tracker = tl->at(range.first);
+ 
+     if (tracker->group() == group)
+       m_canvas->print(0, pos, "%2i:", group++);
+diff --git a/src/ui/element_tracker_list.cc b/src/ui/element_tracker_list.cc
+index c048165..2d0a069 100644
+--- a/src/ui/element_tracker_list.cc
++++ b/src/ui/element_tracker_list.cc
+@@ -103,7 +103,7 @@ ElementTrackerList::receive_disable() {
+   if (m_window == NULL)
+     throw torrent::internal_error("ui::ElementTrackerList::receive_disable(...) called on a disabled object");
+ 
+-  torrent::Tracker* t = m_download->download()->tracker_list()->at(m_focus);
++  auto t = m_download->download()->tracker_list()->at(m_focus);
+ 
+   if (t->is_enabled())
+     t->disable();
