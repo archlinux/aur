@@ -1,0 +1,20 @@
+pkgbase = sshs-bin
+	pkgdesc = Terminal user interface for SSH (Binary)
+	pkgver = 4.3.0
+	pkgrel = 1
+	url = https://github.com/quantumsheep/sshs
+	changelog = CHANGELOG.md
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = openssh
+	provides = sshs
+	conflicts = sshs
+	source = https://github.com/quantumsheep/sshs/raw/4.3.0/LICENSE
+	sha256sums = 711a86d103b497d5dc01a1864ff8192885fdeb946fd6984dbba5367c058918a1
+	source_x86_64 = sshs::https://github.com/quantumsheep/sshs/releases/download/4.3.0/sshs-linux-amd64
+	sha256sums_x86_64 = 0b95bc5bcca89a4fe39799b52377670e28cdb4f7fd11fa15a26612cf4c381569
+	source_aarch64 = sshs::https://github.com/quantumsheep/sshs/releases/download/4.3.0/sshs-linux-arm64
+	sha256sums_aarch64 = ccd6cc4f2e04e4c6a85a0ccc386153ea093d4015eb4486a1e10ad34a2ee5a7ae
+
+pkgname = sshs-bin
