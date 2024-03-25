@@ -1,0 +1,15 @@
+pkgbase = disable-c6-runit-git
+	pkgdesc = Simple runit script to disable the C6 power saving state on AMD Zen processors using zenstates.py
+	pkgver = 1
+	pkgrel = 1
+	url = https://codeberg.org/revsuine/disable-c6-runit
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = runit
+	depends = zenstates-git
+	provides = disable-c6-runit
+	source = git+https://codeberg.org/revsuine/disable-c6-runit
+	sha256sums = SKIP
+
+pkgname = disable-c6-runit-git
