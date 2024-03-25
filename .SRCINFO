@@ -1,22 +1,21 @@
 pkgbase = panfu-desktop-bin
 	pkgdesc = The desktop application for Panfu with integrated Flash Player
-	pkgver = 1.4.3
-	pkgrel = 3
+	pkgver = 1.4.4
+	pkgrel = 1
 	url = https://www.panfu.us/download
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = electron11-bin
-	depends = hicolor-icon-theme
-	provides = panfu-desktop=1.4.3
+	provides = panfu-desktop=1.4.4
 	conflicts = panfu-desktop
-	source = LICENSE-1.4.3::https://raw.githubusercontent.com/teampanfu/panfu-desktop/v1.4.3/LICENSE
+	source = LICENSE-1.4.4::https://raw.githubusercontent.com/teampanfu/panfu-desktop/v1.4.4/LICENSE
 	source = panfu-desktop.sh
-	sha256sums = a8770b3f8133c0d98066fe1e96540b4dbe176f5d21b966f0373236280d1d1761
+	sha256sums = 5f4bb38a02e354d66d61ef73c248aa75bc04e3d3a2f3071a83c7674501f0291c
 	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
-	source_i686 = panfu-desktop-1.4.3-i686.deb::https://github.com/teampanfu/panfu-desktop/releases/download/v1.4.3/panfu-desktop_1.4.3_i386.deb
-	sha256sums_i686 = 1fd6571897ed19eddacd0cea9e3800361d4ad9e9347bed517528018b3eb46e25
-	source_x86_64 = panfu-desktop-1.4.3-x86_64.deb::https://github.com/teampanfu/panfu-desktop/releases/download/v1.4.3/panfu-desktop_1.4.3_amd64.deb
-	sha256sums_x86_64 = 9c8c10a07a92c6a0d0a199a27ae011bed940b103b0036845fa875f22da4d4813
+	source_i686 = panfu-desktop-1.4.4-i686.deb::https://github.com/teampanfu/panfu-desktop/releases/download/v1.4.4/panfu-desktop_1.4.4_i386.deb
+	sha256sums_i686 = 6d64662d9e787523ba737e7c5064910748437211162c256b807a877ff2f1d7a9
+	source_x86_64 = panfu-desktop-1.4.4-x86_64.deb::https://github.com/teampanfu/panfu-desktop/releases/download/v1.4.4/panfu-desktop_1.4.4_amd64.deb
+	sha256sums_x86_64 = e5a60290e0fc94c148dcd93adf6e03db07a0f6211546b75858dfa36ae868ebab
 
 pkgname = panfu-desktop-bin

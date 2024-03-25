@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=panfu-desktop-bin
 _pkgname="Panfu Desktop"
-pkgver=1.4.3
+pkgver=1.4.4
 _electronversion=11
-pkgrel=3
+pkgrel=1
 pkgdesc="The desktop application for Panfu with integrated Flash Player"
 arch=(
     "i686"
@@ -16,7 +16,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}-bin"
-    'hicolor-icon-theme'
 )
 source_i686=("${pkgname%-bin}-${pkgver}-i686.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_i386.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
@@ -24,10 +23,10 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/teampanfu/panfu-desktop/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a8770b3f8133c0d98066fe1e96540b4dbe176f5d21b966f0373236280d1d1761'
+sha256sums=('5f4bb38a02e354d66d61ef73c248aa75bc04e3d3a2f3071a83c7674501f0291c'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_i686=('1fd6571897ed19eddacd0cea9e3800361d4ad9e9347bed517528018b3eb46e25')
-sha256sums_x86_64=('9c8c10a07a92c6a0d0a199a27ae011bed940b103b0036845fa875f22da4d4813')
+sha256sums_i686=('6d64662d9e787523ba737e7c5064910748437211162c256b807a877ff2f1d7a9')
+sha256sums_x86_64=('e5a60290e0fc94c148dcd93adf6e03db07a0f6211546b75858dfa36ae868ebab')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
