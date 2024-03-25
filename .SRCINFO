@@ -1,9 +1,8 @@
 pkgbase = simulide
 	pkgdesc = Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers).
-	pkgver = 1.0.0_SR2
+	pkgver = 1.1.0_SR0
 	pkgrel = 1
 	url = https://launchpad.net/simulide
-	changelog = changelog.txt
 	arch = x86_64
 	license = GPL3
 	makedepends = python-dulwich
@@ -16,11 +15,9 @@ pkgbase = simulide
 	depends = qt5-tools
 	provides = simulide
 	conflicts = simulide
-	source = simulide::bzr+https://code.launchpad.net/~arcachofo/simulide/1.0.0#revision=revno:1449
+	source = simulide::bzr+https://code.launchpad.net/~arcachofo/simulide/1.1.0#revision=revno:1913
 	source = simulide.desktop
-	source = changelog.txt
 	sha256sums = SKIP
 	sha256sums = a5b1f6b19d3fc2e93baa98beb000488a0e1f0fd93935cc7d86e8f0b345c11f23
-	sha256sums = SKIP
 
 pkgname = simulide

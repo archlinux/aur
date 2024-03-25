@@ -4,10 +4,10 @@
 # Contributor: franciscod <demartino.francisco@gmail.com>
 
 pkgname=simulide
-pkgver=1.0.0_SR2
-_version_branch=1.0.0
+pkgver=1.1.0_SR0
+_version_branch=1.1.0
 _realver=${pkgver//_/-}
-_rev=1449
+_rev=1913
 pkgrel=1
 pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers)."
 arch=("x86_64")
@@ -15,15 +15,12 @@ url="https://launchpad.net/simulide"
 provides=('simulide')
 conflicts=('simulide')
 license=("GPL3")
-changelog="changelog.txt"
 source=(
   "${pkgname}::bzr+https://code.launchpad.net/~arcachofo/simulide/${_version_branch}#revision=revno:${_rev}"
-  "simulide.desktop"
-  "changelog.txt")
+  "simulide.desktop")
 sha256sums=(
   SKIP
-  'a5b1f6b19d3fc2e93baa98beb000488a0e1f0fd93935cc7d86e8f0b345c11f23'
-  SKIP)
+  'a5b1f6b19d3fc2e93baa98beb000488a0e1f0fd93935cc7d86e8f0b345c11f23')
 
 depends=(
   "qt5-base>=5.15.1"
