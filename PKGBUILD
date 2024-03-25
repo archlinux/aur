@@ -9,8 +9,9 @@ pkgname=(
   "${_name}-hipblas-git"
   "${_name}-sycl-f16-git"
   "${_name}-sycl-f32-git"
+  "${_name}-vulkan-git"
 )
-pkgver=b2527.r2.2f34b865b
+pkgver=b2531.r1.b06c16ef9
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -27,6 +28,7 @@ makedepends=(
   'intel-oneapi-basekit'
   'openblas'
   'openblas64'
+  'vulkan-headers'
 )
 conflicts=("${_name}")
 provides=("${_name}")
@@ -51,6 +53,7 @@ prepare() {
     cp -r "${srcdir}/${_name}" "${srcdir}/${_name}-openblas"
     cp -r "${srcdir}/${_name}" "${srcdir}/${_name}-hipblas"
     cp -r "${srcdir}/${_name}" "${srcdir}/${_name}-sycl"
+    cp -r "${srcdir}/${_name}" "${srcdir}/${_name}-vulkan"
   fi
 }
 
@@ -96,6 +99,11 @@ build() {
     -DLLAMA_SYCL_F16=ON
   )
 
+  local _cmake_vulkan_args=(
+    "${_cmake_args[@]}"
+    -DLLAMA_VULKAN=ON
+  )
+
   echo "Build ${pkgbase} with OPENBlas"
   cd "${srcdir}/${_name}-openblas"
   cmake "${_cmake_openblas_args[@]}"
@@ -104,6 +112,11 @@ build() {
   echo "Build ${pkgbase} with OpenCL"
   cd "${srcdir}/${_name}-clblas"
   cmake "${_cmake_clblas_args[@]}"
+  cmake --build build
+
+  echo "Build ${pkgbase} with Vulkan"
+  cd "${srcdir}/${_name}-vulkan"
+  cmake "${_cmake_vulkan_args[@]}"
   cmake --build build
 
   echo "Build ${pkgbase} with CUBlas (NVIDIA CUDA)"
@@ -234,6 +247,25 @@ package_llama.cpp-sycl-f32-git() {
   conflicts=("${pkgbase}")
 
   cd "${_name}-sycl"
+  DESTDIR="${pkgdir}" cmake --install build
+
+  rm -rf "${pkgdir}/usr/bin/"*
+  cd build/bin/
+  for i in *; do
+    install -Dm755 "${i}" \
+      "${pkgdir}/usr/bin/${_name}-${i}"
+  done
+  mv "${pkgdir}/usr/bin/${_name}-main" \
+    "${pkgdir}/usr/bin/${_name}"
+}
+
+package_llama.cpp-vulkan-git() {
+  pkgdesc="$pkgdesc (with Vulkan GPU optimizations)"
+  depends+=('vulkan-icd-loader')
+  provides=("${pkgbase}=${pkgver}")
+  conflicts=("${pkgbase}")
+
+  cd "${_name}-vulkan"
   DESTDIR="${pkgdir}" cmake --install build
 
   rm -rf "${pkgdir}/usr/bin/"*
