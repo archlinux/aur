@@ -2,7 +2,7 @@
 pkgname=raj-browser-bin
 pkgver=2.0.5
 _electronversion=22
-pkgrel=6
+pkgrel=7
 pkgdesc="A UI and privacy focussed browser for the web from the web."
 arch=('x86_64')
 license=('Apache-2.0')
@@ -16,11 +16,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('b0ff6a0abff0fe3f8510aa5f12bae954eab07cb0441ee5971685d3335fa91b79'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g;s|Utility|Network|g" \
