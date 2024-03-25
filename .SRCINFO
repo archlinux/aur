@@ -1,17 +1,51 @@
 pkgbase = whisper.cpp
 	pkgdesc = Port of OpenAI's Whisper model in C/C++
 	pkgver = 1.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ggerganov/whisper.cpp
 	arch = armv7h
 	arch = aarch64
 	arch = x86_64
 	license = MIT
+	makedepends = clblast
 	makedepends = cmake
+	makedepends = cuda
 	makedepends = git
+	makedepends = openblas-lapack
+	makedepends = openvino
 	depends = glibc
 	depends = gcc-libs
 	source = whisper.cpp-1.5.4.tar.gz::https://github.com/ggerganov/whisper.cpp/archive/v1.5.4.tar.gz
 	sha256sums = 06eed84de310fdf5408527e41e863ac3b80b8603576ba0521177464b1b341a3a
 
 pkgname = whisper.cpp
+	pkgdesc = Port of OpenAI's Whisper model in C/C++ (with OPENBlas CPU optimizations)
+	depends = glibc
+	depends = gcc-libs
+	depends = openblas-lapack
+	provides = whisper.cpp=1.5.4
+
+pkgname = whisper.cpp-cublas
+	pkgdesc = Port of OpenAI's Whisper model in C/C++ (with NVIDIA CUDA optimizations)
+	depends = glibc
+	depends = gcc-libs
+	depends = cuda
+	provides = whisper.cpp=1.5.4
+	conflicts = whisper.cpp
+
+pkgname = whisper.cpp-clblas
+	pkgdesc = Port of OpenAI's Whisper model in C/C++ (with OpenCL optimizations)
+	depends = glibc
+	depends = gcc-libs
+	depends = clblast
+	provides = whisper.cpp=1.5.4
+	conflicts = whisper.cpp
+
+pkgname = whisper.cpp-openvino
+	pkgdesc = Port of OpenAI's Whisper model in C/C++ (with OpenVINO run-time)
+	depends = glibc
+	depends = gcc-libs
+	depends = openvino
+	depends = pugixml
+	provides = whisper.cpp=1.5.4
+	conflicts = whisper.cpp
