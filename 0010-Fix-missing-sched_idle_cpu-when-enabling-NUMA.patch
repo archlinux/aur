@@ -1,0 +1,37 @@
+From d6cc0c3fa5e790118f510fafa18642b3fd080da3 Mon Sep 17 00:00:00 2001
+From: hamadmarri <hamad.s.almarri@gmail.com>
+Date: Mon, 25 Mar 2024 13:58:29 +0300
+Subject: [PATCH 10/11] Fix missing sched_idle_cpu when enabling NUMA
+
+---
+ kernel/sched/balancer.h | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/kernel/sched/balancer.h b/kernel/sched/balancer.h
+index e3ad04672..68965fc82 100644
+--- a/kernel/sched/balancer.h
++++ b/kernel/sched/balancer.h
+@@ -310,6 +310,20 @@ static void pull_from(struct task_struct *p, struct lb_env *env)
+ }
+ 
+ #ifdef CONFIG_NUMA_BALANCING
++/* Runqueue only has SCHED_IDLE tasks enqueued */
++static int sched_idle_rq(struct rq *rq)
++{
++	return unlikely(rq->nr_running == rq->cfs.idle_h_nr_running &&
++			rq->nr_running);
++}
++
++#ifdef CONFIG_SMP
++static int sched_idle_cpu(int cpu)
++{
++	return sched_idle_rq(cpu_rq(cpu));
++}
++#endif
++
+ /*
+  * Returns 1, if task migration degrades locality
+  * Returns 0, if task migration improves locality i.e migration preferred.
+-- 
+2.44.0
+

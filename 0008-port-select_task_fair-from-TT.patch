@@ -1,0 +1,159 @@
+From b8854faf60b216cc601ae6073bbeb3794c32b8b6 Mon Sep 17 00:00:00 2001
+From: hamadmarri <hamad.s.almarri@gmail.com>
+Date: Sun, 24 Mar 2024 00:59:03 +0300
+Subject: [PATCH 08/11] port select_task_fair from TT
+
+---
+ kernel/sched/balancer.h | 117 +++++++++++++++++++++++++++++++---------
+ 1 file changed, 93 insertions(+), 24 deletions(-)
+
+diff --git a/kernel/sched/balancer.h b/kernel/sched/balancer.h
+index 82969cbbb..e3ad04672 100644
+--- a/kernel/sched/balancer.h
++++ b/kernel/sched/balancer.h
+@@ -8,49 +8,118 @@ balance_fair(struct rq *rq, struct task_struct *prev, struct rq_flags *rf)
+ 	return newidle_balance(rq, rf) != 0;
+ }
+ 
+-/* Runqueue only has SCHED_IDLE tasks enqueued */
+-static int sched_idle_rq(struct rq *rq)
++static int
++wake_affine_idle(int this_cpu, int prev_cpu, int sync)
+ {
+-	return unlikely(rq->nr_running == rq->cfs.idle_h_nr_running &&
+-			rq->nr_running);
+-}
++	/*
++	 * If this_cpu is idle, it implies the wakeup is from interrupt
++	 * context. Only allow the move if cache is shared. Otherwise an
++	 * interrupt intensive workload could force all tasks onto one
++	 * node depending on the IO topology or IRQ affinity settings.
++	 *
++	 * If the prev_cpu is idle and cache affine then avoid a migration.
++	 * There is no guarantee that the cache hot data from an interrupt
++	 * is more important than cache hot data on the prev_cpu and from
++	 * a cpufreq perspective, it's better to have higher utilisation
++	 * on one CPU.
++	 */
++	if (available_idle_cpu(this_cpu) && cpus_share_cache(this_cpu, prev_cpu))
++		return available_idle_cpu(prev_cpu) ? prev_cpu : this_cpu;
+ 
+-#ifdef CONFIG_SMP
+-static int sched_idle_cpu(int cpu)
+-{
+-	return sched_idle_rq(cpu_rq(cpu));
++	if (sync && cpu_rq(this_cpu)->nr_running == 1)
++		return this_cpu;
++
++	if (available_idle_cpu(prev_cpu))
++		return prev_cpu;
++
++	return nr_cpumask_bits;
+ }
+-#endif
+ 
+ static int
+-select_task_rq_fair(struct task_struct *p, int prev_cpu, int wake_flags)
++wake_affine(struct task_struct *p, int this_cpu, int prev_cpu, int sync)
+ {
+-	unsigned int min;
+-	int cpu, new_cpu = -1;
++	int target = nr_cpumask_bits;
++
++	target = wake_affine_idle(this_cpu, prev_cpu, sync);
+ 
+-	if (sched_idle_cpu(prev_cpu) && cpumask_test_cpu(prev_cpu, p->cpus_ptr))
++	if (target == nr_cpumask_bits)
+ 		return prev_cpu;
+ 
+-	for_each_online_cpu(cpu) {
+-		if (!cpumask_test_cpu(cpu, p->cpus_ptr))
+-			continue;
++	return target;
++}
+ 
+-		if (new_cpu == -1) {
+-			new_cpu = cpu;
+-			min = cpu_rq(new_cpu)->nr_running;
++static int wake_wide(struct task_struct *p)
++{
++	unsigned int master = current->wakee_flips;
++	unsigned int slave = p->wakee_flips;
++	int factor = __this_cpu_read(sd_llc_size);
++
++	if (master < slave)
++		swap(master, slave);
++	if (slave < factor || master < slave * factor)
++		return 0;
++	return 1;
++}
++
++static void record_wakee(struct task_struct *p)
++{
++	/*
++	 * Only decay a single time; tasks that have less then 1 wakeup per
++	 * jiffy will not have built up many flips.
++	 */
++	if (time_after(jiffies, current->wakee_flip_decay_ts + HZ)) {
++		current->wakee_flips >>= 1;
++		current->wakee_flip_decay_ts = jiffies;
++	}
++
++	if (current->last_wakee != p) {
++		current->last_wakee = p;
++		current->wakee_flips++;
++	}
++}
++
++static int
++select_task_rq_fair(struct task_struct *p, int prev_cpu, int wake_flags)
++{
++	int sync = (wake_flags & WF_SYNC) && !(current->flags & PF_EXITING);
++	int cpu = smp_processor_id();
++	int new_cpu = prev_cpu;
++	int want_affine = 0;
++	struct rq *rq = cpu_rq(prev_cpu);
++	unsigned int min_prev = rq->nr_running;
++	unsigned int min = rq->nr_running;
++	int this_cpu = smp_processor_id();
++
++	if (wake_flags & WF_TTWU) {
++		record_wakee(p);
++
++		if ((wake_flags & WF_CURRENT_CPU) &&
++		    cpumask_test_cpu(cpu, p->cpus_ptr))
++			return cpu;
++
++		want_affine = !wake_wide(p) && cpumask_test_cpu(cpu, p->cpus_ptr);
++	}
++
++	for_each_cpu_wrap(cpu, cpu_online_mask, this_cpu) {
++		if (unlikely(!cpumask_test_cpu(cpu, p->cpus_ptr)))
+ 			continue;
+-		}
+ 
+-		if (available_idle_cpu(cpu) || sched_idle_cpu(cpu) || cpu_rq(cpu)->nr_running < min) {
++		if (want_affine) {
++			if (cpu != prev_cpu)
++				new_cpu = wake_affine(p, cpu, prev_cpu, sync);
+ 
+-			if (cpu_rq(cpu)->nr_running == min && !cpus_share_cache(prev_cpu, cpu))
+-				continue;
++			return new_cpu;
++		}
+ 
++		if (cpu_rq(cpu)->nr_running < min) {
+ 			new_cpu = cpu;
+ 			min = cpu_rq(cpu)->nr_running;
+ 		}
+ 	}
+ 
++	if (min == min_prev)
++		return prev_cpu;
++
+ 	return new_cpu;
+ }
+ 
+-- 
+2.44.0
+

@@ -1,0 +1,75 @@
+From 65766f02bcd97c26a9f7a0e290d49759a325ab7a Mon Sep 17 00:00:00 2001
+From: hamadmarri <hamad.s.almarri@gmail.com>
+Date: Sat, 23 Mar 2024 01:46:47 +0300
+Subject: [PATCH 05/11] fix update candidate to pick cfs_rq->head unless it is
+ null or cannot be candidate, then pick cfs_rq->q2_head
+
+---
+ kernel/sched/bs.c | 32 ++++++++++----------------------
+ 1 file changed, 10 insertions(+), 22 deletions(-)
+
+diff --git a/kernel/sched/bs.c b/kernel/sched/bs.c
+index eaa265715..6fe2ba6e3 100644
+--- a/kernel/sched/bs.c
++++ b/kernel/sched/bs.c
+@@ -93,14 +93,19 @@ static inline void __update_candidate(struct cfs_rq *cfs_rq, struct bs_node *bsn
+ static inline bool
+ can_be_candidate(struct bs_node *bsn, int this_cpu)
+ {
+-	struct task_struct *p = task_of(se_of(bsn));
++	struct task_struct *p;
++
++	if (!bsn)
++		return 0;
++
++	p = task_of(se_of(bsn));
+ 
+ 	if (kthread_is_per_cpu(p))
+ 		return 0;
+ 
+ 	// just migrated
+-	// if (p->se.avg.last_update_time == 0)
+-	// 	return 0;
++	if (p->se.avg.last_update_time == 0)
++		return 0;
+ 
+ 	if (task_on_cpu(cpu_rq(this_cpu), p))
+ 		return 0;
+@@ -115,32 +120,15 @@ can_be_candidate(struct bs_node *bsn, int this_cpu)
+ 	return 1;
+ }
+ 
+-/**
+- * Should `a` preempts `b`?
+- */
+-static inline bool entity_before(struct bs_node *a, struct bs_node *b)
+-{
+-	return (s64)(a->est - b->est) < 0;
+-}
+-
+ static void update_candidate(struct cfs_rq *cfs_rq)
+ {
+ 	struct bs_node *bsn = NULL;
+ 	int this_cpu = cpu_of(rq_of(cfs_rq));
+ 
+-	if (cfs_rq->head && cfs_rq->q2_head) {
+-		if (can_be_candidate(cfs_rq->head, this_cpu))
+-			bsn = cfs_rq->head;
+-
+-		if (can_be_candidate(cfs_rq->q2_head, this_cpu)
+-				&& entity_before(cfs_rq->q2_head, cfs_rq->head))
+-			bsn = cfs_rq->q2_head;
+-
+-	} else if (cfs_rq->head && can_be_candidate(cfs_rq->head, this_cpu)) {
++	if (can_be_candidate(cfs_rq->head, this_cpu))
+ 		bsn = cfs_rq->head;
+-	} else if (cfs_rq->q2_head && can_be_candidate(cfs_rq->q2_head, this_cpu)) {
++	else if (can_be_candidate(cfs_rq->q2_head, this_cpu))
+ 		bsn = cfs_rq->q2_head;
+-	}
+ 
+ 	if (bsn)
+ 		__update_candidate(cfs_rq, bsn);
+-- 
+2.44.0
+

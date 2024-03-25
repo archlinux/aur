@@ -1,0 +1,77 @@
+From 44d32ba267d56fd931b1bc3771dcb8e478413a02 Mon Sep 17 00:00:00 2001
+From: hamadmarri <hamad.s.almarri@gmail.com>
+Date: Sat, 23 Mar 2024 22:47:32 +0300
+Subject: [PATCH 07/11] - change bs_shared_quota to 105us - change bs_node.est
+ initial value to 0 instead of shared_quota - check_wakeup preempt right away
+ if entity is before current eventhough current   didn't finished min slice
+
+---
+ kernel/sched/bs.c   | 17 +++++++++++++++--
+ kernel/sched/core.c |  2 +-
+ 2 files changed, 16 insertions(+), 3 deletions(-)
+
+diff --git a/kernel/sched/bs.c b/kernel/sched/bs.c
+index ca12d3aa5..9515eb3a7 100644
+--- a/kernel/sched/bs.c
++++ b/kernel/sched/bs.c
+@@ -15,7 +15,7 @@
+ #include "pelt.h"
+ 
+ unsigned int sysctl_sched_base_slice	= 7000ULL;
+-unsigned int bs_shared_quota		= 6600000ULL; // 6.6ms
++unsigned int bs_shared_quota		= 105000ULL; // 105us
+ u32 alpha				= 500U;
+ 
+ struct lb_env {
+@@ -471,6 +471,7 @@ static void check_preempt_wakeup_fair(struct rq *rq, struct task_struct *p, int
+ 	struct cfs_rq *cfs_rq = &rq->cfs;
+ 	struct task_struct *curr = rq->curr;
+ 	struct sched_entity *curr_se = &curr->se, *pse = &p->se;
++	int cse_is_idle, pse_is_idle;
+ 
+ 	if (unlikely(curr_se == pse))
+ 		return;
+@@ -490,6 +491,18 @@ static void check_preempt_wakeup_fair(struct rq *rq, struct task_struct *p, int
+ 	if (unlikely(p->policy != SCHED_NORMAL) || !sched_feat(WAKEUP_PREEMPTION))
+ 		return;
+ 
++	cse_is_idle = se_is_idle(curr_se);
++	pse_is_idle = se_is_idle(pse);
++
++	/*
++	 * Preempt an idle group in favor of a non-idle group (and don't preempt
++	 * in the inverse case).
++	 */
++	if (cse_is_idle && !pse_is_idle)
++		goto preempt;
++	if (cse_is_idle != pse_is_idle)
++		return;
++
+ 	update_curr(cfs_rq_of(curr_se));
+ 
+ 	/*
+@@ -500,7 +513,7 @@ static void check_preempt_wakeup_fair(struct rq *rq, struct task_struct *p, int
+ 	if (__entity_end_quota(cfs_rq, curr_se))
+ 		goto preempt;
+ 
+-	if (entity_before(&pse->bs_node, &curr_se->bs_node) && entity_end_min_slice(curr_se))
++	if (entity_before(&pse->bs_node, &curr_se->bs_node))
+ 		goto preempt;
+ 
+ 	return;
+diff --git a/kernel/sched/core.c b/kernel/sched/core.c
+index f99b51020..ed8a6b75d 100644
+--- a/kernel/sched/core.c
++++ b/kernel/sched/core.c
+@@ -4516,7 +4516,7 @@ static void __sched_fork(unsigned long clone_flags, struct task_struct *p)
+ 	p->se.slice			= 0;
+ 
+ 	p->se.bs_node.vburst		= 0;
+-	p->se.bs_node.est		= (u64)bs_shared_quota;
++	p->se.bs_node.est		= 0;
+ 
+ 	INIT_LIST_HEAD(&p->se.group_node);
+ 
+-- 
+2.44.0
+

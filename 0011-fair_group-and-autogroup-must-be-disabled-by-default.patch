@@ -1,0 +1,33 @@
+From 4adf8324a23b8168996c3944b0b382d823ff836d Mon Sep 17 00:00:00 2001
+From: hamadmarri <hamad.s.almarri@gmail.com>
+Date: Mon, 25 Mar 2024 15:20:50 +0300
+Subject: [PATCH 11/11] fair_group and autogroup must be disabled by default
+
+---
+ init/Kconfig | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/init/Kconfig b/init/Kconfig
+index bfde8189c..5d2a534b3 100644
+--- a/init/Kconfig
++++ b/init/Kconfig
+@@ -997,7 +997,7 @@ if CGROUP_SCHED
+ config FAIR_GROUP_SCHED
+ 	bool "Group scheduling for SCHED_OTHER"
+ 	depends on CGROUP_SCHED
+-	default CGROUP_SCHED
++	default n
+ 
+ config CFS_BANDWIDTH
+ 	bool "CPU bandwidth provisioning for FAIR_GROUP_SCHED"
+@@ -1272,6 +1272,7 @@ config SCHED_AUTOGROUP
+ 	select CGROUPS
+ 	select CGROUP_SCHED
+ 	select FAIR_GROUP_SCHED
++	default n
+ 	help
+ 	  This option optimizes the scheduler for common desktop workloads by
+ 	  automatically creating and populating task groups.  This separation
+-- 
+2.44.0
+

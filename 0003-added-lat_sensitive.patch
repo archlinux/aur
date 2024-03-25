@@ -1,0 +1,155 @@
+From 278ba5fc4f4a7e8008ed9b288162558fbdd6d69f Mon Sep 17 00:00:00 2001
+From: hamadmarri <hamad.s.almarri@gmail.com>
+Date: Fri, 22 Mar 2024 07:53:00 +0300
+Subject: [PATCH 03/11] added lat_sensitive
+
+---
+ kernel/sched/bs.c    |  4 ----
+ kernel/sched/core.c  | 26 +++++++++++++++++++++++++-
+ kernel/sched/idle.c  |  8 +++++++-
+ kernel/sched/sched.h |  4 ++++
+ 4 files changed, 36 insertions(+), 6 deletions(-)
+
+diff --git a/kernel/sched/bs.c b/kernel/sched/bs.c
+index 6db6b92b5..ea9875792 100644
+--- a/kernel/sched/bs.c
++++ b/kernel/sched/bs.c
+@@ -87,8 +87,6 @@ static inline void __update_candidate(struct cfs_rq *cfs_rq, struct bs_node *bsn
+ 		global_candidate.candidate = bsn;
+ 		global_candidate.est = bsn->est;
+ 		raw_spin_unlock_irqrestore(&global_candidate.lock, flags);
+-
+-		// printk(KERN_INFO "__update_candidate");
+ 	}
+ }
+ 
+@@ -413,8 +411,6 @@ static void yield_task_fair(struct rq *rq)
+ 	if (unlikely(rq->nr_running == 1))
+ 		return;
+ 
+-	printk(KERN_INFO "yield_task_fair");
+-
+ 	curr->se.yielded = true;
+ 
+ 	update_rq_clock(rq);
+diff --git a/kernel/sched/core.c b/kernel/sched/core.c
+index 95f842b03..e9ad2a7f5 100644
+--- a/kernel/sched/core.c
++++ b/kernel/sched/core.c
+@@ -3322,6 +3322,22 @@ void relax_compatible_cpus_allowed_ptr(struct task_struct *p)
+ 	WARN_ON_ONCE(ret);
+ }
+ 
++inline void inc_nr_lat_sensitive(unsigned int cpu, struct task_struct *p)
++{
++	if (per_cpu(nr_lat_sensitive, cpu) == 0 || per_cpu(nr_lat_sensitive, cpu) == -10)
++		per_cpu(nr_lat_sensitive, cpu) = HZ / 78;
++}
++
++inline void dec_nr_lat_sensitive(unsigned int cpu)
++{
++	if (per_cpu(nr_lat_sensitive, cpu) > -10) {
++		per_cpu(nr_lat_sensitive, cpu)--;
++
++		if (per_cpu(nr_lat_sensitive, cpu) == 0)
++			per_cpu(nr_lat_sensitive, cpu) = -1;
++	}
++}
++
+ void set_task_cpu(struct task_struct *p, unsigned int new_cpu)
+ {
+ #ifdef CONFIG_SCHED_DEBUG
+@@ -5677,6 +5693,11 @@ void scheduler_tick(void)
+ 	if (curr->flags & PF_WQ_WORKER)
+ 		wq_worker_tick(curr);
+ 
++	if (idle_cpu(cpu))
++		inc_nr_lat_sensitive(cpu, NULL);
++	else
++		dec_nr_lat_sensitive(cpu);
++
+ #ifdef CONFIG_SMP
+ 	rq->idle_balance = idle_cpu(cpu);
+ 	trigger_load_balance(rq);
+@@ -5741,7 +5762,6 @@ static void sched_tick_remote(struct work_struct *work)
+ 
+ 		if (cpu_online(cpu)) {
+ 			update_rq_clock(rq);
+-
+ 			if (!is_idle_task(curr)) {
+ 				/*
+ 				 * Make sure the next tick runs within a
+@@ -9884,6 +9904,8 @@ LIST_HEAD(task_groups);
+ static struct kmem_cache *task_group_cache __ro_after_init;
+ #endif
+ 
++DEFINE_PER_CPU(int, nr_lat_sensitive);
++
+ void __init sched_init(void)
+ {
+ 	unsigned long ptr = 0;
+@@ -10020,6 +10042,8 @@ void __init sched_init(void)
+ 		hrtick_rq_init(rq);
+ 		atomic_set(&rq->nr_iowait, 0);
+ 
++		per_cpu(nr_lat_sensitive, i) = 0;
++
+ #ifdef CONFIG_SCHED_CORE
+ 		rq->core = rq;
+ 		rq->core_pick = NULL;
+diff --git a/kernel/sched/idle.c b/kernel/sched/idle.c
+index 565f8374d..f25efd390 100644
+--- a/kernel/sched/idle.c
++++ b/kernel/sched/idle.c
+@@ -237,6 +237,7 @@ static void cpuidle_idle_call(void)
+ static void do_idle(void)
+ {
+ 	int cpu = smp_processor_id();
++	int pm_disabled = per_cpu(nr_lat_sensitive, cpu);
+ 
+ 	/*
+ 	 * Check if we need to update blocked load
+@@ -275,12 +276,17 @@ static void do_idle(void)
+ 		 * broadcast device expired for us, we don't want to go deep
+ 		 * idle as we know that the IPI is going to arrive right away.
+ 		 */
+-		if (cpu_idle_force_poll || tick_check_broadcast_expired()) {
++		if (pm_disabled > 0 || cpu_idle_force_poll || tick_check_broadcast_expired()) {
+ 			tick_nohz_idle_restart_tick();
+ 			cpu_idle_poll();
++			dec_nr_lat_sensitive(cpu);
+ 		} else {
+ 			cpuidle_idle_call();
+ 		}
++
++		if (pm_disabled < 0)
++			dec_nr_lat_sensitive(cpu);
++
+ 		arch_cpu_idle_exit();
+ 	}
+ 
+diff --git a/kernel/sched/sched.h b/kernel/sched/sched.h
+index af2280b5b..f1818ea68 100644
+--- a/kernel/sched/sched.h
++++ b/kernel/sched/sched.h
+@@ -1859,6 +1859,7 @@ DECLARE_PER_CPU(struct sched_domain_shared __rcu *, sd_llc_shared);
+ DECLARE_PER_CPU(struct sched_domain __rcu *, sd_numa);
+ DECLARE_PER_CPU(struct sched_domain __rcu *, sd_asym_packing);
+ DECLARE_PER_CPU(struct sched_domain __rcu *, sd_asym_cpucapacity);
++DECLARE_PER_CPU(int, nr_lat_sensitive);
+ extern struct static_key_false sched_asym_cpucapacity;
+ extern struct static_key_false sched_cluster_active;
+ 
+@@ -2509,6 +2510,9 @@ extern void wakeup_preempt(struct rq *rq, struct task_struct *p, int flags);
+ #define SCHED_NR_MIGRATE_BREAK 32
+ #endif
+ 
++extern inline void inc_nr_lat_sensitive(unsigned int cpu, struct task_struct *p);
++extern inline void dec_nr_lat_sensitive(unsigned int cpu);
++
+ extern const_debug unsigned int sysctl_sched_nr_migrate;
+ extern const_debug unsigned int sysctl_sched_migration_cost;
+ 
+-- 
+2.44.0
+

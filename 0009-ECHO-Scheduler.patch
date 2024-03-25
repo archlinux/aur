@@ -1,0 +1,25 @@
+From c274b5b8841daafc6e59c7e53b14e5e3c5ccf647 Mon Sep 17 00:00:00 2001
+From: hamadmarri <hamad.s.almarri@gmail.com>
+Date: Mon, 25 Mar 2024 00:19:06 +0300
+Subject: [PATCH 09/11] ECHO Scheduler
+
+---
+ kernel/sched/core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kernel/sched/core.c b/kernel/sched/core.c
+index ed8a6b75d..529569699 100644
+--- a/kernel/sched/core.c
++++ b/kernel/sched/core.c
+@@ -9920,7 +9920,7 @@ void __init sched_init(void)
+ 
+ 	wait_bit_init();
+ 
+-	printk(KERN_INFO "Baby CPU scheduler v6.7 by Hamad Al Marri.");
++	printk(KERN_INFO "ECHO CPU scheduler v6.7 by Hamad Al Marri.");
+ 
+ #ifdef CONFIG_FAIR_GROUP_SCHED
+ 	ptr += 2 * nr_cpu_ids * sizeof(void **);
+-- 
+2.44.0
+

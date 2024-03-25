@@ -1,0 +1,162 @@
+From 3a27fb29e2f4900a8baa7b7df22f3336e10bc4f8 Mon Sep 17 00:00:00 2001
+From: hamadmarri <hamad.s.almarri@gmail.com>
+Date: Fri, 22 Mar 2024 03:16:24 +0300
+Subject: [PATCH 02/11] added yield from tt
+
+---
+ include/linux/sched.h                         |  1 +
+ balancer.h => kernel/sched/balancer.h         |  2 +-
+ bs.c => kernel/sched/bs.c                     | 12 ++++++---
+ fair_debug.h => kernel/sched/fair_debug.h     |  0
+ .../sched/fair_dep_funcs.h                    | 25 +++----------------
+ fair_numa.h => kernel/sched/fair_numa.h       |  0
+ nohz.h => kernel/sched/nohz.h                 |  0
+ 7 files changed, 15 insertions(+), 25 deletions(-)
+ rename balancer.h => kernel/sched/balancer.h (99%)
+ rename bs.c => kernel/sched/bs.c (98%)
+ rename fair_debug.h => kernel/sched/fair_debug.h (100%)
+ rename fair_dep_funcs.h => kernel/sched/fair_dep_funcs.h (97%)
+ rename fair_numa.h => kernel/sched/fair_numa.h (100%)
+ rename nohz.h => kernel/sched/nohz.h (100%)
+
+diff --git a/include/linux/sched.h b/include/linux/sched.h
+index 34ac565e0..62e5be998 100644
+--- a/include/linux/sched.h
++++ b/include/linux/sched.h
+@@ -578,6 +578,7 @@ struct sched_entity {
+ 	u64				vruntime;
+ 	s64				vlag;
+ 	u64				slice;
++	bool				yielded;
+ 
+ 	u64				nr_migrations;
+ 
+diff --git a/balancer.h b/kernel/sched/balancer.h
+similarity index 99%
+rename from balancer.h
+rename to kernel/sched/balancer.h
+index 3cd7d1054..82969cbbb 100644
+--- a/balancer.h
++++ b/kernel/sched/balancer.h
+@@ -255,7 +255,7 @@ static int migrate_degrades_locality(struct task_struct *p, struct rq *dst_rq, s
+ 	if (!static_branch_likely(&sched_numa_balancing))
+ 		return -1;
+ 
+-	if (!p->numa_faults || !(env->sd->flags & SD_NUMA))
++	if (!p->numa_faults)
+ 		return -1;
+ 
+ 	src_nid = cpu_to_node(cpu_of(src_rq));
+diff --git a/bs.c b/kernel/sched/bs.c
+similarity index 98%
+rename from bs.c
+rename to kernel/sched/bs.c
+index c5d580525..6db6b92b5 100644
+--- a/bs.c
++++ b/kernel/sched/bs.c
+@@ -413,6 +413,10 @@ static void yield_task_fair(struct rq *rq)
+ 	if (unlikely(rq->nr_running == 1))
+ 		return;
+ 
++	printk(KERN_INFO "yield_task_fair");
++
++	curr->se.yielded = true;
++
+ 	update_rq_clock(rq);
+ 	/*
+ 	 * Update run-time statistics of the 'current'.
+@@ -651,10 +655,12 @@ static struct task_struct *pick_task_fair(struct rq *rq)
+ 
+ static void __enqueue_prev_entity(struct cfs_rq *cfs_rq, struct sched_entity *se)
+ {
+-	if (entity_end_quota(cfs_rq, se))
++	if (se->yielded || entity_end_quota(cfs_rq, se)) {
++		se->yielded = false;
+ 		__enqueue_entity(&cfs_rq->q2_head, &se->bs_node);
+-	else
++	} else {
+ 		__enqueue_entity(&cfs_rq->head, &se->bs_node);
++	}
+ }
+ 
+ static void put_prev_entity(struct cfs_rq *cfs_rq, struct sched_entity *prev)
+@@ -710,7 +716,7 @@ entity_tick(struct cfs_rq *cfs_rq, struct sched_entity *curr, int queued)
+ 		clear_rq_candidate(cfs_rq);
+ 
+ 	if (cfs_rq->nr_running > 1) {
+-		if (entity_end_quota(cfs_rq, curr)) {
++		if (curr->yielded || entity_end_quota(cfs_rq, curr)) {
+ 			resched_curr(rq_of(cfs_rq));
+ 			return;
+ 		}
+diff --git a/fair_debug.h b/kernel/sched/fair_debug.h
+similarity index 100%
+rename from fair_debug.h
+rename to kernel/sched/fair_debug.h
+diff --git a/fair_dep_funcs.h b/kernel/sched/fair_dep_funcs.h
+similarity index 97%
+rename from fair_dep_funcs.h
+rename to kernel/sched/fair_dep_funcs.h
+index c2af3b055..c92c700a7 100644
+--- a/fair_dep_funcs.h
++++ b/kernel/sched/fair_dep_funcs.h
+@@ -167,6 +167,8 @@ static void migrate_task_rq_fair(struct task_struct *p, int new_cpu)
+ 	/* Tell new CPU we are migrated */
+ 	se->avg.last_update_time = 0;
+ 
++	p->se.yielded = false;
++
+ 	update_scan_period(p, new_cpu);
+ }
+ 
+@@ -448,29 +450,10 @@ static inline u64 calc_delta_fair(u64 delta, struct sched_entity *se)
+  */
+ static void update_deadline(struct cfs_rq *cfs_rq, struct sched_entity *se)
+ {
+-	// if ((s64)(se->vruntime - se->deadline) < 0)
+-	// 	return;
+-
+-	/*
+-	 * For EEVDF the virtual time slope is determined by w_i (iow.
+-	 * nice) while the request time r_i is determined by
+-	 * sysctl_sched_base_slice.
+-	 */
+-	if (cfs_rq->nr_running == 0)
++	if (cfs_rq->nr_running <= 1)
+ 		se->slice = bs_shared_quota;
+ 	else
+ 		se->slice = bs_shared_quota / cfs_rq->nr_running;
+-
+-	// /*
+-	//  * EEVDF: vd_i = ve_i + r_i / w_i
+-	//  */
+-	// se->deadline = se->vruntime + calc_delta_fair(se->slice, se);
+- //
+-	// /*
+-	//  * The task has consumed its request, reschedule.
+-	//  */
+-	// if (cfs_rq->nr_running > 1)
+-	// 	resched_curr(rq_of(cfs_rq));
+ }
+ 
+ #ifdef CONFIG_SCHED_HRTICK
+@@ -485,7 +468,7 @@ static void hrtick_start_fair(struct rq *rq, struct task_struct *p)
+ 		u64 slice = se->slice;
+ 		s64 delta = slice - ran;
+ 
+-		if (delta < 0) {
++		if (se->yielded || delta < 0) {
+ 			if (task_current(rq, p))
+ 				resched_curr(rq);
+ 			return;
+diff --git a/fair_numa.h b/kernel/sched/fair_numa.h
+similarity index 100%
+rename from fair_numa.h
+rename to kernel/sched/fair_numa.h
+diff --git a/nohz.h b/kernel/sched/nohz.h
+similarity index 100%
+rename from nohz.h
+rename to kernel/sched/nohz.h
+-- 
+2.44.0
+

@@ -94,7 +94,18 @@ source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz
         0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
         0002-drivers-firmware-skip-simpledrm-if-nvidia-drm.modese.patch
         0003-arch-Kconfig-Default-to-maximum-amount-of-ASLR-bits.patch
-        linux-6.7-echo.patch)
+        # ECHO
+        0001-initial-baby-6.7.y-commit-Thu-Mar-21-04-32-59-PM-03-.patch
+        0002-added-yield-from-tt.patch
+        0003-added-lat_sensitive.patch
+        0004-added-entity_end_min_slice-with-min-slice-7us.patch
+        0005-fix-update-candidate-to-pick-cfs_rq-head.patch
+        0006-make-quota-for-preempted-task-preserved.patch
+        0007-change-bs_shared_quota-to-105us.patch
+        0008-port-select_task_fair-from-TT.patch
+        0009-ECHO-Scheduler.patch
+        0010-Fix-missing-sched_idle_cpu-when-enabling-NUMA.patch
+        0011-fair_group-and-autogroup-must-be-disabled-by-default.patch)
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -166,9 +177,29 @@ prepare(){
     plain ""
   fi
 
-  # Fix Disable NUMA
-  msg "Disable NUMA"
-  scripts/config --disable CONFIG_NUMA
+  # Setup ECHO
+  # https://github.com/hamadmarri/ECHO-CPU-Scheduler?tab=readme-ov-file#defaults-and-sysctls
+  msg "Setup ECHO"
+
+  msg2 "Enable CONFIG_HZ_625"
+  scripts/config --disable CONFIG_HZ_300
+  scripts/config --enable CONFIG_HZ_625
+  scripts/config --set-str CONFIG_HZ "625"
+
+  sleep 2s
+
+  msg2 "Disable CONFIG_FAIR_GROUP_SCHED"
+  scripts/config --disable CONFIG_FAIR_GROUP_SCHED
+
+  sleep 2s
+
+  msg2 "Disable CONFIG_SCHED_AUTOGROUP"
+  scripts/config --disable CONFIG_SCHED_AUTOGROUP
+
+  sleep 2s
+
+  msg2 "Disable CONFIG_SCHED_CORE"
+  scripts/config --disable CONFIG_SCHED_CORE
 
   sleep 2s
 
@@ -339,11 +370,21 @@ _package-headers(){
 }
 
 sha256sums=('a9b99fb376f9fcd699c7c252aeef3bb5ba26280eb049711ac091b2eb2b487c03'
-            'c2b00c84c4b543db431e06604d939a62f93107d18369f4d9860dc8062b01ab45'
+            '04143712e593d45a597661fe00f89cf92d52c62df3468c68a46c952c2ef4db64'
             '416609986399d3046811bcc2344f4ee0833b6c92e305da3925a6e193f810dad2'
             'b4c85f49a0c0fe6d6ac1f55165c2c897000a7c6c0c30f258693d66223c0389fd'
             'd9c0e2b3fa16f02abfd95d4c00747a43dd761e5cd622d40ab908155c5957759b'
-            '79048799c6a5531aab36098edcab9005fba07082be63ced5a4f66fc9ae8f01f9')
+            '52eb2013a7078e8c681c2c49cdbb7d1d6ce7f64e2cb1b1f59c375452fee71a27'
+            '3c1f57ec80a4284a33405462b637e95725d641a4bc1afdb255701b7e0be5f35b'
+            'ed6ab2c58deb3135f3bd65d12c03cefa5055f3c22c2fffaa123b8f718a6bfa3f'
+            '3491f6d3194660954e058f43d18e1056f56d7ed67ccde018187566b12b931c48'
+            '73aefea3d20d130208b286d610914f2335abce65107e61bb275a587e8f1cb21b'
+            '2d1fbb361d9038ea7ba5ef39f4ff5985568a6d538509cd7f6d593987857efc0d'
+            'd3e98d29fb4fa0e64c2359656d1d08e6f12a388838ece9102252ced30d2b3375'
+            '9a80253b840c27deb508d9a67a2ac480c675664a95b148ef7fa891343d58a3dc'
+            '6ddcc5e8737c637ca4dc4c6685fb47d0baff3a87a4a00a358e14ed30146368c3'
+            'bbe65dca2ebed50274d75f5190f8eef89c5d6e2c3398452d43d653a1f11d9cd9'
+            '881d9fc89e928ba04360e370bce1c52feefad8e0a7d878877377851c4671dd81')
 
 pkgname=($pkgbase $pkgbase-headers)
 for _p in "${pkgname[@]}"; do

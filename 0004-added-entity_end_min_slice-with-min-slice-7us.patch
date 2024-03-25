@@ -1,0 +1,156 @@
+From 6a203a9662fd9cf0499287f22f26c0a88da35845 Mon Sep 17 00:00:00 2001
+From: hamadmarri <hamad.s.almarri@gmail.com>
+Date: Fri, 22 Mar 2024 23:48:49 +0300
+Subject: [PATCH 04/11] added entity_end_min_slice with min slice = 7us
+
+---
+ kernel/sched/bs.c             | 61 ++++++++++++++++++++++++-----------
+ kernel/sched/fair_dep_funcs.h | 10 +++---
+ 2 files changed, 46 insertions(+), 25 deletions(-)
+
+diff --git a/kernel/sched/bs.c b/kernel/sched/bs.c
+index ea9875792..eaa265715 100644
+--- a/kernel/sched/bs.c
++++ b/kernel/sched/bs.c
+@@ -14,7 +14,7 @@
+ #include "sched.h"
+ #include "pelt.h"
+ 
+-unsigned int sysctl_sched_base_slice	= 750000ULL;
++unsigned int sysctl_sched_base_slice	= 7000ULL;
+ unsigned int bs_shared_quota		= 6600000ULL; // 6.6ms
+ 
+ struct lb_env {
+@@ -437,31 +437,47 @@ static bool yield_to_task_fair(struct rq *rq, struct task_struct *p)
+ 	return true;
+ }
+ 
+-static int entity_end_quota(struct cfs_rq *cfs_rq, struct sched_entity *curr)
++static __always_inline
++int __entity_end_quota(struct cfs_rq *cfs_rq, struct sched_entity *curr)
+ {
+-	unsigned int n = cfs_rq->nr_running;
++	unsigned int n = max(cfs_rq->nr_running, 1);
+ 	unsigned int quota;
+ 	struct bs_node *bs = &curr->bs_node;
+ 	s64 vburst;
+ 
+-	if (n == 0)
+-		return 1;
++	quota = max(bs_shared_quota / n, sysctl_sched_base_slice);
++	vburst = curr->vruntime - bs->vruntime_start;
++
++	return vburst >= (s64)quota;
++}
+ 
+-	if (n == 1)
++static int entity_end_quota(struct cfs_rq *cfs_rq, struct sched_entity *curr)
++{
++	unsigned int n = cfs_rq->nr_running;
++
++	if (n <= 1)
+ 		return 0;
+ 
+-	quota = bs_shared_quota / n;
++	return __entity_end_quota(cfs_rq, curr);
++}
++
++static int entity_end_min_slice(struct sched_entity *curr)
++{
++	struct bs_node *bs = &curr->bs_node;
++	s64 vburst;
++
+ 	vburst = curr->vruntime - bs->vruntime_start;
+ 
+-	return vburst >= (s64)quota;
++	return (vburst - (s64)sysctl_sched_base_slice) >= 0;
+ }
+ 
+ static void check_preempt_wakeup_fair(struct rq *rq, struct task_struct *p, int wake_flags)
+ {
++	struct cfs_rq *cfs_rq = &rq->cfs;
+ 	struct task_struct *curr = rq->curr;
+-	struct sched_entity *se = &curr->se, *pse = &p->se;
++	struct sched_entity *curr_se = &curr->se, *pse = &p->se;
+ 
+-	if (unlikely(se == pse))
++	if (unlikely(curr_se == pse))
+ 		return;
+ 
+ 	if (test_tsk_need_resched(curr))
+@@ -479,9 +495,17 @@ static void check_preempt_wakeup_fair(struct rq *rq, struct task_struct *p, int
+ 	if (unlikely(p->policy != SCHED_NORMAL) || !sched_feat(WAKEUP_PREEMPTION))
+ 		return;
+ 
+-	update_curr(cfs_rq_of(se));
++	update_curr(cfs_rq_of(curr_se));
++
++	/*
++	 * - if curr_se ended quoat then preempt
++	 * - if waked entity is before curr_se and
++	 *   curr_se ended min slice
++	 */
++	if (__entity_end_quota(cfs_rq, curr_se))
++		goto preempt;
+ 
+-	if (entity_before(&pse->bs_node, &se->bs_node))
++	if (entity_before(&pse->bs_node, &curr_se->bs_node) && entity_end_min_slice(curr_se))
+ 		goto preempt;
+ 
+ 	return;
+@@ -708,10 +732,9 @@ entity_tick(struct cfs_rq *cfs_rq, struct sched_entity *curr, int queued)
+ 		return;
+ 	}
+ 
+-	if (cfs_rq->nr_running <= 1)
++	if (cfs_rq->nr_running <= 1) {
+ 		clear_rq_candidate(cfs_rq);
+-
+-	if (cfs_rq->nr_running > 1) {
++	} else {
+ 		if (curr->yielded || entity_end_quota(cfs_rq, curr)) {
+ 			resched_curr(rq_of(cfs_rq));
+ 			return;
+@@ -721,10 +744,10 @@ entity_tick(struct cfs_rq *cfs_rq, struct sched_entity *curr, int queued)
+ 		if (!se)
+ 			return;
+ 
+-		 if (entity_before(&se->bs_node, &curr->bs_node))
+-			 resched_curr(rq_of(cfs_rq));
+-
+-		return;
++		 if (entity_before(&se->bs_node, &curr->bs_node) && entity_end_min_slice(curr)) {
++			resched_curr(rq_of(cfs_rq));
++			return;
++		}
+ 	}
+ 
+ 	/*
+diff --git a/kernel/sched/fair_dep_funcs.h b/kernel/sched/fair_dep_funcs.h
+index c92c700a7..775c4ec6c 100644
+--- a/kernel/sched/fair_dep_funcs.h
++++ b/kernel/sched/fair_dep_funcs.h
+@@ -444,16 +444,14 @@ static inline u64 calc_delta_fair(u64 delta, struct sched_entity *se)
+ 	return delta;
+ }
+ 
+-/*
+- * XXX: strictly: vd_i += N*r_i/w_i such that: vd_i > ve_i
+- * this is probably good enough.
+- */
+ static void update_deadline(struct cfs_rq *cfs_rq, struct sched_entity *se)
+ {
+-	if (cfs_rq->nr_running <= 1)
++	unsigned int n = cfs_rq->nr_running;
++
++	if (n <= 1)
+ 		se->slice = bs_shared_quota;
+ 	else
+-		se->slice = bs_shared_quota / cfs_rq->nr_running;
++		se->slice = max(bs_shared_quota / n, sysctl_sched_base_slice);
+ }
+ 
+ #ifdef CONFIG_SCHED_HRTICK
+-- 
+2.44.0
+
