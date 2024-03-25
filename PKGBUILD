@@ -10,7 +10,7 @@ pkgname=(
   "${_name}-sycl-f16-git"
   "${_name}-sycl-f32-git"
 )
-pkgver=b2510
+pkgver=b2527.r1.ae1f211ce
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -23,14 +23,15 @@ makedepends=(
   'cmake'
   'cuda'
   'git'
-  'hipblas'
+  'rocm-hip-sdk'
   'intel-oneapi-basekit'
   'openblas'
   'openblas64'
 )
 conflicts=("${_name}")
 provides=("${_name}")
-source=("${_name}::git+${url}")
+source=("${_name}::git+${url}"
+  "kompute::git+https://github.com/nomic-ai/kompute.git")
 
 pkgver() {
   cd "${srcdir}/${_name}"
@@ -39,14 +40,15 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}"
+  cd "${srcdir}/${_name}"
+  git submodule init
+  git config submodule.kompute.url "${srcdir}/kompute"
+  git -c protocol.file.allow=always submodule update
 
-  if [ ! -d "${_name}-cublas" ]; then
-    cp -r "${_name}" "${_name}-cublas"
-    cp -r "${_name}" "${_name}-openblas"
-    cp -r "${_name}" "${_name}-clblas"
-    cp -r "${_name}" "${_name}-hipblas"
-    cp -r "${_name}" "${_name}-sycl"
+  if [ ! -d "${srcdir}/${_name}-cublas" ]; then
+    cp -r "${srcdir}/${_name}" "${srcdir}/${_name}-cublas"
+    cp -r "${srcdir}/${_name}" "${srcdir}/${_name}-openblas"
+    cp -r "${srcdir}/${_name}" "${srcdir}/${_name}-hipblas"
   fi
 }
 
@@ -92,6 +94,11 @@ build() {
     -DLLAMA_SYCL_F16=ON
   )
 
+  echo "Build ${pkgbase} with OPENBlas"
+  cd "${srcdir}/${_name}-openblas"
+  cmake "${_cmake_openblas_args[@]}"
+  cmake --build build
+
   echo "Build ${pkgbase} with OpenCL"
   cd "${srcdir}/${_name}-clblas"
   cmake "${_cmake_clblas_args[@]}"
@@ -99,18 +106,15 @@ build() {
 
   echo "Build ${pkgbase} with CUBlas (NVIDIA CUDA)"
   cd "${srcdir}/${_name}-cublas"
+  export PATH+=":/opt/cuda/bin"
   cmake "${_cmake_cublas_args[@]}"
   cmake --build build
 
   echo "Build ${pkgbase} with HIPBlas (AMD ROCm)"
   cd "${srcdir}/${_name}-hipblas"
+  export CXXFLAGS+="$CXXFLAGS -fcf-protection=none"
   CC=/opt/rocm/llvm/bin/clang CXX=/opt/rocm/llvm/bin/clang++ \
     cmake "${_cmake_hipblas_args[@]}"
-  cmake --build build
-
-  echo "Build ${pkgbase} with OPENBlas"
-  cd "${srcdir}/${_name}-openblas"
-  cmake "${_cmake_openblas_args[@]}"
   cmake --build build
 
   echo "Build ${pkgbase} with Intel SYCL (f16)"
@@ -185,7 +189,7 @@ package_llama.cpp-cublas-git() {
 
 package_llama.cpp-hipblas-git() {
   pkgdesc="$pkgdesc (with AMD ROCm optimizations)"
-  depends+=('hipblas')
+  depends+=('rocm-hip-runtime')
   provides=("${pkgbase}=${pkgver}")
   conflicts=("${pkgbase}")
 
@@ -240,4 +244,5 @@ package_llama.cpp-sycl-f32-git() {
     "${pkgdir}/usr/bin/${_name}"
 }
 
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+  'SKIP')
