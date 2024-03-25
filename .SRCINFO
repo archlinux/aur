@@ -1,0 +1,24 @@
+pkgbase = woocommerce-pos
+	pkgdesc = Electron Desktop App for WooCommerce POS
+	pkgver = 1.4.6
+	pkgrel = 1
+	url = https://github.com/wcpos/electron
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = yarn
+	makedepends = base-devel
+	makedepends = gcc
+	depends = electron28
+	conflicts = woocommerce-pos
+	source = woocommerce-pos.git::git+https://github.com/wcpos/electron.git#tag=v1.4.6
+	source = expo.git::git+https://github.com/wcpos/managed-expo.git
+	source = woocommerce-pos.sh
+	sha256sums = 5ed72b17542dbc9b20ac73db505c2780d14aaa6d621fcd6cfa85668387115a8a
+	sha256sums = SKIP
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+
+pkgname = woocommerce-pos
