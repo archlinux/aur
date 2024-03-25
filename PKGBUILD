@@ -2,7 +2,7 @@
 
 _name=owega
 pkgname="python-$_name"
-pkgver=5.5.3
+pkgver=5.5.4
 pkgrel=1
 pkgdesc="TUI / CLI interface for conversing with GPT models (from OpenAI)"
 arch=('any')
@@ -23,7 +23,7 @@ depends=(
 )
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('1250af6d5ef424f897e88da1b7ab251b4f8a022168cb9284c252244ebc1ad718013f118b37e3313159b099f91828a2ea90c84e5c099f172938bbee7afbc23dae')
+b2sums=('66a5dbbbb4c2232822f9c58737edb61892fcc98ff34b0fabfddab2900f0057c4b10d0f66c9ef7c579027846f7036f58c7298e166676133647ff05fdfd191c43c')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
