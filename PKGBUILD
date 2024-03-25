@@ -3,7 +3,7 @@
 
 pkgname=libplasma-git
 pkgver=6.0.2_r17313.g8504ae26b
-pkgrel=1
+pkgrel=2
 pkgdesc='Plasma library and runtime components'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
@@ -13,18 +13,13 @@ makedepends=(git doxygen extra-cmake-modules-git kdoctools-git plasma-wayland-pr
 conflicts=(${pkgname%-git} plasma-framework plasma-framework-git)
 provides=(${pkgname%-git})
 replaces=(plasma-framework-git)
-source=("git+https://github.com/KDE/${pkgname%-git}.git")
+source=("git+https://github.com/KDE/${pkgname%-git}.git#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
   _ver="$(git tag | tail -1 | sed 's/^v//;s/-.*//')"
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd ${pkgname%-git}
-  git checkout master
 }
 
 build() {

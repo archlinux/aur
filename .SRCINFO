@@ -1,7 +1,7 @@
 pkgbase = libplasma-git
 	pkgdesc = Plasma library and runtime components
 	pkgver = 6.0.2_r17313.g8504ae26b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	license = LGPL-2.0-or-later
@@ -42,7 +42,7 @@ pkgbase = libplasma-git
 	conflicts = plasma-framework
 	conflicts = plasma-framework-git
 	replaces = plasma-framework-git
-	source = git+https://github.com/KDE/libplasma.git
+	source = git+https://github.com/KDE/libplasma.git#branch=master
 	sha256sums = SKIP
 
 pkgname = libplasma-git
