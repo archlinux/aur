@@ -2,7 +2,7 @@
 # Contributor: Piotr Walesiuk <pwalesiuk@gmail.com>
 
 pkgname=php-pdo-oci
-pkgver=8.3.2
+pkgver=8.3.4
 pkgrel=1
 _extname=pdo_oci
 pkgdesc="PDO driver for OCI8"
@@ -19,7 +19,7 @@ source=(
   "https://github.com/php/php-src/archive/php-${pkgver}.tar.gz"
   "patch.diff"
 )
-md5sums=('c32e2d03f49081560c82f07c9cfce633' '74552b37da712404393cfca947c8e402')
+md5sums=('f8c8d72f1a6af3fe932626be453a1cc4' '74552b37da712404393cfca947c8e402')
 
 build() {
   
