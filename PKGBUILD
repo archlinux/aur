@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-rounded-window-corners-git
-pkgver=11.r38.g3f00988
+pkgver=11.r46.g9c6005c
 pkgrel=1
 pkgdesc="A GNOME Shell extension that adds rounded corners for all windows"
 arch=('any')
@@ -11,8 +11,10 @@ depends=('gnome-shell')
 makedepends=('git' 'gobject-introspection' 'yarn' 'zip')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/yilozt/rounded-window-corners.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/yilozt/rounded-window-corners.git'
+        'https://github.com/yilozt/rounded-window-corners/pull/159.patch')
+sha256sums=('SKIP'
+            'd12c3ec0684d275fcd35afd916837682f078e1dd13e929ac84cb1ab4a02783e6')
 
 pkgver() {
   cd rounded-window-corners
@@ -21,6 +23,9 @@ pkgver() {
 
 prepare() {
   cd rounded-window-corners
+
+  # GNOME 46
+  patch -Np1 -i ../159.patch
 }
 
 build() {
