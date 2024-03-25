@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+_pkgname=wechat-universal
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+post_install() {
+    if [[ "$LANG" == "zh_CN.UTF-8" ]]; then
+        note "采用 bubblewrap 沙盒运行微信，对于家目录，默认只能对 '\$XDG_DOCUMENTS_DIR/WeChat_Data' 读写...
+          如需增加更多的读写目录，请在 '~/.config/${_pkgname}/binds.list' 文件（如不存在请自行创建）中增加...
+          一个路径一行，可以使用绝对路径，形如：/home/username/music
+          也可以使用相对于运行用户家目录的相对路径，形如：pictures/screenshot"
+    else
+        note "Run WeChat with the bubblewrap sandbox. For home directory, WeChat can only read and write '\$XDG_DOCUMENTS_DIR/WeChat_Data'...
+          Custom binds could be declared in '~/.config/${_pkgname}/binds.list', each line a path, absolute or relative to your HOME..."
+    fi
+}
+
+post_upgrade() {
+    post_install
+}

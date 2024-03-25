@@ -11,12 +11,12 @@ arch=('x86_64' 'aarch64' 'loong64')
 url="https://weixin.qq.com"
 license=('proprietary')
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+conflicts=("${_pkgname}"{,-beta,-privileged})
 replaces=('wechat-beta'{,-bwrap})
+install="${_pkgname}.install"
 depends=(
     'alsa-lib'
     'at-spi2-core'
-    'bash'
     'bubblewrap'
     'flatpak-xdg-utils'
     'libxcomposite'
