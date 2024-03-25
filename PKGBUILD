@@ -1,14 +1,27 @@
 # Maintainer:
 # Contributor: Andrea Feletto <andrea@andreafeletto.com>
-# Contributor: Daurnimator <daurnimator@archlinux.org>
 
+## useful links
+# https://codeberg.org/river/river
+# https://github.com/riverwm/river
+
+## options
+
+: ${_build_xwayland:=false}
+: ${_build_git:=true}
+
+unset _pkgtype
+[ "${_build_xwayland::1}" != "t" ] && _pkgtype+="-noxwayland"
+[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
+
+# basic info
 _pkgname="river"
-pkgname="$_pkgname-noxwayland-git"
-pkgver=0.3.0dev.r141.g5da4769
+pkgname="$_pkgname${_pkgtype:-}"
+pkgver=0.2.6.r285.g12de175
 pkgrel=1
 pkgdesc='Dynamic tiling wayland compositor'
-url='https://github.com/riverwm/river'
-license=('GPL3')
+url='https://codeberg.org/river/river'
+license=('GPL-3.0-only')
 arch=('x86_64')
 
 depends=(
@@ -29,6 +42,8 @@ optdepends=(
   'polkit: access seat through systemd-logind'
 )
 
+[[ "${_build_xwayland::1}" == "t" ]] && depends+=('xorg-xwayland')
+
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
@@ -36,7 +51,7 @@ options=('!strip')
 
 _pkgsrc="$_pkgname"
 source=(
-  "git+$url.git"
+  'git+https://github.com/riverwm/river.git'
   'git+https://github.com/ifreund/zig-pixman.git'
   'git+https://github.com/ifreund/zig-wayland.git'
   'git+https://github.com/swaywm/zig-wlroots.git'
@@ -60,31 +75,30 @@ prepare() {
 }
 
 pkgver() {
-  local _version _commit_count _commit_hash
-
   cd "$_pkgsrc"
-  _version=$(sed -n 's/-//;s/^const version = "\(.*\)";/\1/p' build.zig)
-  _commit_count=$(git describe --long | cut -d- -f2)
-  _commit_hash=$(git describe --long | cut -d- -f3)
+  local _tag=$(git tag | sort -rV | head -1)
+  local _version"=${_tag#v}"
+  local _revision=$(git rev-list --count --cherry-pick "$_tag"...HEAD)
+  local _hash=$(git rev-parse --short=7 HEAD)
 
-  printf '%s.r%s.%s' "$_version" "$_commit_count" "$_commit_hash"
+  printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
 }
 
 package() {
   cd "$_pkgsrc"
-
   local _zig_options=(
     --prefix '/usr'
     -Doptimize=ReleaseSafe
-    # -Dxwayland
   )
 
-  DESTDIR="${pkgdir:?}" zig build "${_zig_options[@]}"
+  [[ "${_build_xwayland::1}" == "t" ]] && _zig_options+=(-Dxwayland)
 
-  install -Dm644 LICENSE -t "${pkgdir:?}/usr/share/licenses/$pkgname/"
-  install -Dm644 README.md -t "${pkgdir:?}/usr/share/doc/$pkgname/"
-  install -Dm644 contrib/river.desktop -t "${pkgdir:?}/usr/share/wayland-sessions/"
+  DESTDIR="$pkgdir" zig build "${_zig_options[@]}"
 
-  install -d "${pkgdir:?}/usr/share/$_pkgname"
-  cp --reflink=auto -fr example "${pkgdir:?}/usr/share/$_pkgname/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm644 contrib/river.desktop -t "$pkgdir/usr/share/wayland-sessions/"
+
+  install -d "$pkgdir/usr/share/$_pkgname"
+  cp --reflink=auto -fr example "$pkgdir/usr/share/$_pkgname/"
 }
