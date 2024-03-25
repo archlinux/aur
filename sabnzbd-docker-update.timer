@@ -1,5 +1,5 @@
 [Unit]
-Description=Run sabnzbd-docker update daily and on boot
+Description=Run sabnzbd-docker-update.service daily and on boot
 After=docker.service
 
 [Timer]

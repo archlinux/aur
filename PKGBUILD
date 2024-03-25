@@ -5,6 +5,7 @@ pkgver=0.3
 pkgname=sabnzbd-docker
 pkgrel=2
 pkgdesc='Convenience launch service for Sabnzd, Nzbhydra2 and Sonarr in docker'
+url="https://github.com/grumlimited/sabnzbd-docker"
 arch=('x86_64')
 license=('MIT')
 groups=()

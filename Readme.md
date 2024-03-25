@@ -4,6 +4,11 @@ Sabnzbd-docker
 `sabnzbd-docker` is a service unit that starts `sabnzbd`, `nzbhydra2` and `sonarr` in their respective docker
 containers.
 
+The services are provided as-is by linuxserver.io, direct from docker hub:
+* [sabnzbd](https://hub.docker.com/r/linuxserver/sabnzbd)
+* [nzbhydra2](https://hub.docker.com/r/linuxserver/nzbhydra2)
+* [sonarr](https://hub.docker.com/r/linuxserver/sonarr)
+
 ## Configuration
 
 1. Create a user config file at `~/.docker-sabnzbd.env` with the following content:
@@ -14,8 +19,9 @@ containers.
         NZBHYDRA2_PATH_PREFIX = /path/to/prefix
         SONARR_PATH_PREFIX    = /path/to/prefix
 
-   For example, you can run it with something like:
-
+      <details>
+      For example, you can run it with something like:
+   
          cat ~/.docker-sabnzbd.env
 
          TZ=Europe/Madrid
@@ -25,6 +31,7 @@ containers.
          SABNZBD_PATH_DOWNLOADS=/data/banjo/Downloads          # downloads will go one level up
          
          NZBHYDRA2_PATH_PREFIX=/data/banjo/Downloads/nzbhydra2 # config, logs and everything
+      </details>
 
 2. Create the following directories (for services you choose to run):
 

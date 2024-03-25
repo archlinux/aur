@@ -11,4 +11,3 @@ Environment="PUID=%U"
 Environment="PGID=%G"
 Type=oneshot
 ExecStart=docker compose -f /opt/docker-sabnzbd/docker-compose.yaml pull
-
