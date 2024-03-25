@@ -1,6 +1,6 @@
 pkgbase = python-qiskit-dynamics
 	pkgdesc = Tools for building and solving models of quantum systems in Qiskit
-	pkgver = 0.4.5
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/Qiskit-Extensions/qiskit-dynamics
 	arch = any
@@ -9,12 +9,14 @@ pkgbase = python-qiskit-dynamics
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = python-arraylias
 	depends = python-matplotlib
 	depends = python-multiset
 	depends = python-numpy
 	depends = python-qiskit
 	depends = python-scipy
-	source = qiskit-dynamics-0.4.5.tar.gz::https://github.com/Qiskit-Extensions/qiskit-dynamics/archive/refs/tags/0.4.5.tar.gz
-	b2sums = 57ebb437fdca18370b34f0c6bbb2e2ee7f07c80e31b69697db709a07d18bd1b22d50567632f4ced5df51c0e4ce56df8f15c3872fadab9db198d6a9caf0710af3
+	depends = python-sympy
+	source = qiskit-dynamics-0.5.0.tar.gz::https://github.com/Qiskit-Extensions/qiskit-dynamics/archive/refs/tags/0.5.0.tar.gz
+	b2sums = 97a552cac445abd767d90330dff968022c2e5b0c2733f5ab2f0483391e801946e203f4ce8f6f070c67f4dfb08e102955b19f81e98f4fd46079bfe95e60493a1d
 
 pkgname = python-qiskit-dynamics
