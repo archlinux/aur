@@ -1,19 +1,17 @@
 pkgbase = d80-star-db-astap
 	pkgdesc = D80 star database for 10>FOV>0.15 degrees. Size 1.2GB
-	pkgver = 2023.03.30
+	pkgver = 2023.09.29
 	pkgrel = 1
 	url = https://www.hnsky.org/astap.htm
 	arch = any
 	license = LGPL3
-	makedepends = gdown
-	makedepends = unzip
 	optdepends = astap-bin: binary GTk version
 	optdepends = astap-bin-qt5: binary Qt version
 	optdepends = astap: sourced Qt version
 	optdepends = astap-cli: CLI version
 	optdepends = hnsky-hg: planetarium program, hg-version
 	optdepends = hnsky-bin: planetarium program, bin-version
-	source = sha256.chk
-	md5sums = SKIP
+	source = d80.deb::https://sourceforge.net/projects/astap-program/files/star_databases/d80_star_database.deb/download
+	md5sums = 1d0683cbc0d0330df03378fab9d899bf
 
 pkgname = d80-star-db-astap
