@@ -174,6 +174,14 @@ prepare(){
     plain ""
   fi
 
+  # Fix Disable NUMA
+  msg "Disable NUMA"
+  scripts/config --disable CONFIG_NUMA
+
+  sleep 2s
+
+  plain ""
+
   # Supress depmod
   msg "Supress depmod..."
   sed -i '2iexit 0' scripts/depmod.sh
