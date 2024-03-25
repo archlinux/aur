@@ -1,7 +1,7 @@
 # Maintainer: martiuk <me at martinke dot mp>
 
 pkgname=xorg-xwayland-explicit-sync-git
-pkgver=23.2.4.r383.ge6573baa7
+pkgver=23.2.4.r385.gbb2e2eba4
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -11,7 +11,7 @@ pkgdesc="Run X clients under Wayland with explicit sync patch"
 depends=('nettle' 'libegl' 'libepoxy' 'systemd-libs' 'libxfont2'
          'pixman' 'xorg-server-common' 'libxcvt')
 makedepends=('meson' 'git'
-             'xorgproto-explicit-sync-git'
+             'xorgproto-git'
              'xtrans'
              'libxkbfile' 'dbus'
              'xorg-font-util'
