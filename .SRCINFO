@@ -18,6 +18,7 @@ pkgbase = discover-overlay-git
 	depends = python-pillow
 	depends = python-xlib
 	depends = python-setuptools
+	depends = python-pulsectl-asyncio
 	optdepends = gtk-layer-shell: Wayland support
 	provides = discover-overlay
 	conflicts = discover-overlay
