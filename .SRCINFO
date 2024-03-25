@@ -1,0 +1,16 @@
+pkgbase = comcom-git
+	pkgdesc = 32 and 64 bit DOS command interpreters ('command.com'), e.g. for fdpp and dosemu2. Latest git checkout.
+	pkgver = 0.0.alpha_3+262.r437.20240324.3add463
+	pkgrel = 1
+	url = https://github.com/dosemu2/comcom64
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = djgpp-gcc
+	makedepends = djgpp-djcrx
+	source = comcom64::git+https://github.com/dosemu2/comcom64.git
+	sha256sums = SKIP
+
+pkgname = comcom-common-git
+
+pkgname = comcom32-git
