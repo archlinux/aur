@@ -21,6 +21,7 @@ pkgbase = trgui-ng
 	depends = libsoup
 	depends = openssl
 	depends = webkit2gtk
+	conflicts = trgui-ng-git
 	noextract = dbip.mmdb
 	options = !lto
 	source = git+https://github.com/openscopeproject/TrguiNG#tag=v1.2.0
