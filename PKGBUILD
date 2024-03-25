@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Asbach <archlinux-aur.${pkgname}@impl.it>
 
 pkgname=jenkins-lts
-pkgver=2.414.3
+pkgver=2.440.2
 pkgrel=1
 _java=17
 pkgdesc='Extendable continuous integration server (lts)'
@@ -16,14 +16,14 @@ replaces=('jenkins-ci')
 backup=('etc/conf.d/jenkins')
 install='jenkins.install'
 noextract=("jenkins-${pkgver}.war")
-source=("jenkins-${pkgver}.war::https://get.jenkins.io/war-stable/2.375.1/jenkins.war"
+source=("jenkins-${pkgver}.war::https://get.jenkins.io/war-stable/$pkgver/jenkins.war"
         # Rename to force re-download on new version
         'jenkins.conf'
         'jenkins.service'
         'jenkins.tmpfiles'
         'jenkins.sysusers'
         'LICENSE')
-sha512sums=('dc7bb525b222f0fd0216304c97b8a1e84fb6c1bafbea46e83261e9db0c8cf4378fd9b621822667eaaa627d970c5e7fd88cd1b6706f1dc478d2b0fc7b9629369f'
+sha512sums=('590bd2d781671f91401922ee09aee5d2973d6d6a67fedd46b0073dd24a1826822f5beb8f266094055566bcc848b5e88ebd589562e0ddd49f398037919cb92fc0'
             '482b642988027b623995e0488cc00011be5bbe9890a6d40dd6979197fa50794889ff731f798891106b367962cf60cb59b0260caadfcee9685b358a966f759553'
             'c1e9a542bfd3db54ea0ef57acdac47ad5180330f9ffab44296762b0e69e75ce595d85a77d46025586fb507aedce4f1a032379dcd16b7b886fe475a99849fa4b2'
             'a845a7147be54affc586dfce9a188ec24c92e673e88dec0b62da386d2e597de6ecda103429008562abd897f179a52c37cf2188ebc65b8c636efd07d707e18f90'

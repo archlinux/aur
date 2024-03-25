@@ -1,6 +1,6 @@
 pkgbase = jenkins-lts
 	pkgdesc = Extendable continuous integration server (lts)
-	pkgver = 2.414.3
+	pkgver = 2.440.2
 	pkgrel = 1 
 	url = https://jenkins.io
 	install = jenkins.install
@@ -17,7 +17,7 @@ pkgbase = jenkins-lts
 	replaces = jenkins-ci
 	noextract = jenkins-2.361.2.war
 	backup = etc/conf.d/jenkins
-	source = jenkins-2.414.3.war::https://get.jenkins.io/war-stable/2.414.3/jenkins.war
+	source = jenkins-2.440.2.war::https://get.jenkins.io/war-stable/2.440.2/jenkins.war
 	source = jenkins.conf
 	source = jenkins.service
 	source = jenkins.tmpfiles
