@@ -3,7 +3,7 @@
 
 pkgname=lib32-vulkan-nouveau-git
 pkgdesc="Nouveau Vulkan (NVK) EXPERIMENTAL Mesa driver with some additions (32-bit Git version)"
-pkgver=24.0.branchpoint.r2525.g0a3a80a
+pkgver=24.0.branchpoint.r3625.g44cfc57
 pkgrel=1
 arch=('x86_64')
 depends=('lib32-libdrm' 'lib32-libxshmfence' 'lib32-libx11' 'lib32-systemd' 'lib32-vulkan-icd-loader' 'lib32-wayland')
@@ -12,12 +12,11 @@ makedepends=('elfutils' 'git' 'glslang' 'lib32-libunwind' 'lib32-libxrandr' 'lib
 optdepends=('lib32-vulkan-mesa-layers: Additional Vulkan layers'
             'linux>=6.6.arch1: Minimum required kernel for new uAPI support')
 provides=('lib32-vulkan-driver')
+conflicts=('lib32-vulkan-nouveau')
 url="https://gitlab.freedesktop.org/mesa/mesa"
 license=('MIT AND BSD-3-Clause AND SGI-B-2.0')
-source=("git+${url}.git"
-        LICENSE)
-sha512sums=('SKIP'
-            'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7')
+source=("git+${url}.git")
+sha512sums=('SKIP')
 install="${pkgname}.install"
 
 prepare() {
@@ -102,5 +101,5 @@ build() {
 package() {
   meson install -C build --destdir "${pkgdir}"
 
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+  install -Dm644 mesa/docs/license.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

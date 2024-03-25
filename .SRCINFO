@@ -1,6 +1,6 @@
 pkgbase = lib32-vulkan-nouveau-git
 	pkgdesc = Nouveau Vulkan (NVK) EXPERIMENTAL Mesa driver with some additions (32-bit Git version)
-	pkgver = 24.0.branchpoint.r2525.g0a3a80a
+	pkgver = 24.0.branchpoint.r3625.g44cfc57
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/mesa/mesa
 	install = lib32-vulkan-nouveau-git.install
@@ -28,9 +28,8 @@ pkgbase = lib32-vulkan-nouveau-git
 	optdepends = lib32-vulkan-mesa-layers: Additional Vulkan layers
 	optdepends = linux>=6.6.arch1: Minimum required kernel for new uAPI support
 	provides = lib32-vulkan-driver
+	conflicts = lib32-vulkan-nouveau
 	source = git+https://gitlab.freedesktop.org/mesa/mesa.git
-	source = LICENSE
 	sha512sums = SKIP
-	sha512sums = f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7
 
 pkgname = lib32-vulkan-nouveau-git
