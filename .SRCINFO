@@ -1,7 +1,7 @@
 pkgbase = onlyoffice-documentserver-bin
 	pkgdesc = Online office suite comprising viewers and editors for texts, spreadsheets and presentations
 	pkgver = 8.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ONLYOFFICE/DocumentServer
 	install = onlyoffice-documentserver.install
 	arch = x86_64

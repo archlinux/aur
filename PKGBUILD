@@ -2,7 +2,7 @@
 
 pkgname=onlyoffice-documentserver-bin
 pkgver=8.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('x86_64')
 url="https://github.com/ONLYOFFICE/DocumentServer"
@@ -56,7 +56,7 @@ package() {
   install -Dm 644 ${srcdir}/{local.json,etc/onlyoffice/documentserver/{default.json,production-linux.json}} "${pkgdir}/etc/webapps/onlyoffice/documentserver/"
   install -d "${pkgdir}/usr/lib/"
 #  install -Dm 644 ${srcdir}/usr/lib64/* "${pkgdir}/usr/lib/"
-  ln -sf /var/www/onlyoffice/documentserver/server/FileConverter/bin/{libDjVuFile.so,libDocxRenderer.so,libFb2File.so,libHtmlFile2.so,libicudata.so.58,libkernel_network.so,libPdfFile.so,libXpsFile.so,libdoctrenderer.so,libEpubFile.so,libgraphics.so,libHtmlRenderer.so,libicuuc.so.58,libkernel.so,libUnicodeConverter.so} ${pkgdir}/usr/lib/
+  ln -sf /usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/{libDjVuFile.so,libDocxRenderer.so,libFb2File.so,libHtmlFile2.so,libicudata.so.58,libkernel_network.so,libPdfFile.so,libXpsFile.so,libdoctrenderer.so,libEpubFile.so,libgraphics.so,libHtmlRenderer.so,libicuuc.so.58,libkernel.so,libUnicodeConverter.so} ${pkgdir}/usr/lib/
   install -Dm 644 "${srcdir}/onlyoffice-docservice.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-docservice.service"
   install -Dm 644 "${srcdir}/onlyoffice-fileconverter.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-fileconverter.service"
   install -Dm 644 "${srcdir}/onlyoffice-documentserver.sysusers" "${pkgdir}/usr/lib/sysusers.d/onlyoffice-documentserver.conf"
