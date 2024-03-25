@@ -1,7 +1,7 @@
 pkgbase = wechat-devtools-bin
 	pkgdesc = WeChat Devtools For Linux.
-	pkgver = 1.06.2209070
-	pkgrel = 1
+	pkgver = 1.06.2310080
+	pkgrel = 2
 	epoch = 2
 	url = https://github.com/msojocs/wechat-web-devtools-linux
 	arch = x86_64
@@ -11,7 +11,11 @@ pkgbase = wechat-devtools-bin
 	provides = wechat-devtools
 	conflicts = wechat-devtools
 	options = !strip
-	source = wechat-devtools-2-1.06.2209070-1-x86_64.pkg.tar.zst::https://github.com/msojocs/wechat-web-devtools-linux/releases/download/v1.06.2209070-1/wechat-devtools-2-1.06.2209070-1-x86_64.pkg.tar.zst
-	md5sums = e10f6c9f216c2dd5954ce274eec05cf4
+	source = https://github.com/msojocs/wechat-web-devtools-linux/releases/download/v1.06.2310080-2/WeChat_Dev_Tools_v1.06.2310080-2_x86_64_linux.tar.gz
+	source = wechat-devtools.desktop
+	source = wechat-devtools.svg
+	md5sums = 1bb202dafb9a6968202c932e83414226
+	md5sums = 08b27001217b9732289cd0e33f8f8d58
+	md5sums = cd6a5d400025355a7c3d1156dea424c8
 
 pkgname = wechat-devtools-bin
