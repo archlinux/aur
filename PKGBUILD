@@ -324,7 +324,7 @@ build() {
 
 _package() {
   pkgdesc="${_pkgdesc} - full installation of development tool and runtime"
-  depends=("${pkgbase}-tool-developer" "${pkgbase}-target-linux" "${pkgbase}-target-android" "${pkgbase}-target-web" "${pkgbase}-intellij-patch")
+  depends=("${pkgbase}-devel" "${pkgbase}-target-linux" "${pkgbase}-target-android" "${pkgbase}-target-web" "${pkgbase}-intellij-patch")
 }
 
 _package-common() {
@@ -398,7 +398,7 @@ _package-target-web() {
   cp -ra "${srcdir}/${pkgbase}/packages/flutter_tools/lib/src/web/file_generators" "${pkgdir}/usr/lib/${pkgbase}/packages/flutter_tools/lib/src/web"
 }
 
-_package-tagret-android() {
+_package-target-android() {
   pkgdesc="${_pkgdesc} - android target files"
   depends=("${pkgbase}-tool")
   optdepends=("android-sdk: develop for Android devices"
@@ -408,6 +408,7 @@ _package-tagret-android() {
 
   install -dm755 "${pkgdir}/usr/lib/${pkgbase}/bin/cache/artifacts/engine"
   install -dm755 "${pkgdir}/usr/lib/${pkgbase}/packages/flutter_tools"
+  install -dm755 "${pkgdir}/usr/lib/${pkgbase}/bin/internal"
 
   cp -ra "${srcdir}/${pkgbase}/bin/cache/artifacts/engine/android-arm" "${pkgdir}/usr/lib/${pkgbase}/bin/cache/artifacts/engine"
   cp -ra "${srcdir}/${pkgbase}/bin/cache/artifacts/engine/android-arm-release" "${pkgdir}/usr/lib/${pkgbase}/bin/cache/artifacts/engine"
@@ -426,6 +427,9 @@ _package-tagret-android() {
 
   cp -ra "${srcdir}/${pkgbase}/bin/cache/artifacts/gradle_wrapper" "${pkgdir}/usr/lib/${pkgbase}/bin/cache/artifacts"
   cp -ra "${srcdir}/${pkgbase}/packages/flutter_tools/gradle" "${pkgdir}/usr/lib/${pkgbase}/packages/flutter_tools"
+
+  install -Dm644 "${srcdir}/${pkgbase}/bin/internal/engine.version" "${pkgdir}/usr/lib/${pkgbase}/bin/internal/engine.version"
+  install -Dm644 "${srcdir}/${pkgbase}/bin/internal/engine.realm" "${pkgdir}/usr/lib/${pkgbase}/bin/internal/engine.realm"
 }
 
 _package-tool() {
@@ -448,7 +452,7 @@ _package-tool() {
   ln -sf "/usr/lib/flutter/bin/flutter" "${pkgdir}/usr/bin/flutter"
 }
 
-_package-tool-developer() {
+_package-devel() {
   pkgdesc="${_pkgdesc} - CLI tool (for application development)"
   depends=("${pkgbase}-tool")
 
@@ -460,7 +464,6 @@ _package-tool-developer() {
   cp -ra "${srcdir}/${pkgbase}/packages/flutter_tools/templates" "${pkgdir}/usr/lib/${pkgbase}/packages/flutter_tools"
 }
 
-
 _package-intellij-patch() {
   pkgdesc="${_pkgdesc} - IntelliJ Flutter plugin hotfix"
   depends=("${pkgbase}-common")
@@ -470,8 +473,6 @@ _package-intellij-patch() {
         "intellij-idea-ultimate-edition"
   )
 
-
-
   install -dm755 "${pkgdir}/usr/lib/${pkgbase}/bin/cache"
   
   ln -sf "${DART_ROOT:-"/opt/dart-sdk"}/bin/dart" "${pkgdir}/usr/lib/${pkgbase}/bin/dart"
@@ -479,7 +480,7 @@ _package-intellij-patch() {
   ln -sf "${DART_ROOT:-"/opt/dart-sdk"}" "${pkgdir}/usr/lib/${pkgbase}/bin/cache/dart-sdk"
 }
 
-pkgname=("${pkgbase}" "${pkgbase}-tool" "${pkgbase}-tool-developer" "${pkgbase}-target-linux" "${pkgbase}-common" "${pkgbase}-target-android" "${pkgbase}-target-web" "${pkgbase}-intellij-patch")
+pkgname=("${pkgbase}" "${pkgbase}-tool" "${pkgbase}-devel" "${pkgbase}-target-linux" "${pkgbase}-common" "${pkgbase}-target-android" "${pkgbase}-target-web" "${pkgbase}-intellij-patch")
 
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {

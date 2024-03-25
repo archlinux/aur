@@ -141,7 +141,7 @@ pkgbase = flutter
 
 pkgname = flutter
 	pkgdesc = Flutter SDK component - full installation of development tool and runtime
-	depends = flutter-tool-developer
+	depends = flutter-devel
 	depends = flutter-target-linux
 	depends = flutter-target-android
 	depends = flutter-target-web
@@ -151,7 +151,7 @@ pkgname = flutter-tool
 	pkgdesc = Flutter SDK component - CLI tool (for packaging only)
 	depends = flutter-common
 
-pkgname = flutter-tool-developer
+pkgname = flutter-devel
 	pkgdesc = Flutter SDK component - CLI tool (for application development)
 	depends = flutter-tool
 
@@ -169,6 +169,10 @@ pkgname = flutter-common
 	depends = glu
 
 pkgname = flutter-target-android
+	pkgdesc = Flutter SDK component - android target files
+	depends = flutter-tool
+	optdepends = android-sdk: develop for Android devices
+	optdepends = java-environment: develop for Android devices
 
 pkgname = flutter-target-web
 	pkgdesc = Flutter SDK component - web target files
