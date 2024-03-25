@@ -23,13 +23,13 @@ prepare() {
 
 build() {
     cd "${pkgname}-${pkgver}"
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" -B build
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr" -B build
     cmake --build build
 }
 
 package() {
     cd "${pkgname}-${pkgver}"
-    cmake --install build
+    DESTDIR="${pkgdir}" cmake --install build
     install -Dm644 LICENSE*  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
