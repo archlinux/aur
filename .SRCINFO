@@ -1,0 +1,17 @@
+pkgbase = python-argcomplete-git
+	pkgdesc = Bash tab completion for argparse
+	pkgver = 3.2.3
+	pkgrel = 1
+	url = https://github.com/kislyuk/argcomplete
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	provides = python-argcomplete
+	conflicts = python-argcomplete
+	replaces = python-argcomplete
+	source = https://files.pythonhosted.org/packages/source/a/argcomplete/argcomplete-3.2.3.tar.gz
+	sha256sums = bf7900329262e481be5a15f56f19736b376df6f82ed27576fa893652c5de6c23
+
+pkgname = python-argcomplete-git
+	depends = python
