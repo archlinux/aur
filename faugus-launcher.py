@@ -371,6 +371,7 @@ class Main(Gtk.Window):
         path = game.path
         launch_arguments = game.launch_arguments
         game_arguments = game.game_arguments
+        runner_path = self.get_runner_path(game.runner)
 
         mangohud = ""
         if game.mangohud:
@@ -391,7 +392,7 @@ class Main(Gtk.Window):
         command = (f'{mangohud} '
                    f'WINEPREFIX={prefix} '
                    f'GAMEID={title_formatted} '
-                   f'PROTONPATH=\"{os.path.expanduser("~/.steam/steam/steamapps/common/Proton - Experimental")}\" '
+                   f'PROTONPATH=\"{runner_path}\" '
                    f'{launch_arguments} '
                    f'{gamemode} '
                    f'"/usr/bin/umu-run" "{path}" "{game_arguments}"')
