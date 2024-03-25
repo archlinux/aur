@@ -3,7 +3,7 @@
 _base=govarnam-ibus
 _pkgname=varnam-ibus-engine
 pkgname=${_base}-bin
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="IBus engine for GoVarnam providing Indian language input method"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('unzip')
 depends=('govarnam' 'ibus')
 provides=('govarnam-ibus')
 source=("https://github.com/varnamproject/${_base}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${arch}.zip")
-sha256sums=('aceeb0b649f25267db91164a4c216d9a71b7cca15083e777a3770cb94356ab32')
+sha256sums=('228763d4a5fea4067932fa4e1998178bb28f265d753146e91bbef2f117d8a3f3')
 
 package() {
 	cd "${_pkgname}"-"${pkgver}"-"${arch}"
