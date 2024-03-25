@@ -1,7 +1,7 @@
 pkgbase = flutter
 	pkgdesc = A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android.
 	pkgver = 3.19.4
-	pkgrel = 6
+	pkgrel = 7
 	url = https://flutter.dev
 	install = flutter.install
 	arch = x86_64
@@ -9,8 +9,9 @@ pkgbase = flutter
 	license = custom
 	license = BSD
 	license = CCPL
+	makedepends = dart>=3.3.2
 	makedepends = jq
-	depends = dart>=3.3.2
+	makedepends = gradle
 	depends = gradle
 	depends = bash
 	depends = curl
@@ -21,18 +22,7 @@ pkgbase = flutter
 	depends = which
 	depends = xz
 	depends = zip
-	depends = glu
 	depends = libglvnd
-	optdepends = android-sdk: develop for Android devices
-	optdepends = java-environment: develop for Android devices
-	optdepends = android-studio
-	optdepends = intellij-idea-community-edition
-	optdepends = intellij-idea-ultimate-edition
-	optdepends = clang: clang++ is required for Linux development
-	optdepends = cmake: CMake is required for Linux development
-	optdepends = ninja: ninja is required for Linux development
-	optdepends = pkgconf: pkg-config is required for Linux development
-	optdepends = gtk3: GTK 3.0 development libraries are required for Linux development
 	noextract = material_fonts.zip
 	noextract = android-x86.zip
 	noextract = android-x64.zip
@@ -108,7 +98,7 @@ pkgbase = flutter
 	sha256sums = b1f8faafcc0f3492aa1d0dab511e9a026de19356e35c55a237b8cfa3c0b1bcf1
 	sha256sums = 0a52880f8f3aff667db1a29ec2e68567689b378e773345427f9e5cf6cb80dea3
 	sha256sums = 2e848e6ee2dd591c0e558ee37d80391e4acb5bf8672cbe3e02af9a52d39e25b8
-	sha256sums = 8d2422220b5cdcbe7757cefa576045c92c4b013708a0a88c8d378484e1adb24e
+	sha256sums = d721fc48f534af8f804bb4a9f2cb1d304627a9f73881b3f61d829a9f1e33164f
 	sha256sums = de0d3567d83bd756841b19ccf879efc02749d8a45cf18d94cd71ec1d366c9024
 	sha256sums = 54db9347ac6467b806fff70f62b2709276a0ca4d82468ae8357d5520db0ad04a
 	sha256sums = 688a7d6a3c220cf09f7e48af46f1ef1b01d251679962c825eded0b3fa4fc2ab1
@@ -150,3 +140,43 @@ pkgbase = flutter
 	sha256sums_aarch64 = 6e0044cf445b8650efe57daf9415adb99f063c7a529437f2dbe58c7774e57cab
 
 pkgname = flutter
+	pkgdesc = Flutter SDK component - full installation of development tool and runtime
+	depends = flutter-tool-developer
+	depends = flutter-target-linux
+	depends = flutter-target-android
+	depends = flutter-target-web
+	depends = flutter-intellij-patch
+
+pkgname = flutter-tool
+	pkgdesc = Flutter SDK component - CLI tool (for packaging only)
+	depends = flutter-common
+
+pkgname = flutter-tool-developer
+	pkgdesc = Flutter SDK component - CLI tool (for application development)
+	depends = flutter-tool
+
+pkgname = flutter-target-linux
+	pkgdesc = Flutter SDK component - linux target files
+	depends = flutter-tool
+	depends = clang
+	depends = cmake
+	depends = ninja
+	depends = pkgconf
+	depends = gtk3
+
+pkgname = flutter-common
+	pkgdesc = Flutter SDK component - common files
+	depends = glu
+
+pkgname = flutter-target-android
+
+pkgname = flutter-target-web
+	pkgdesc = Flutter SDK component - web target files
+	depends = flutter-tool
+
+pkgname = flutter-intellij-patch
+	pkgdesc = Flutter SDK component - IntelliJ Flutter plugin hotfix
+	depends = flutter-common
+	optdepends = android-studio
+	optdepends = intellij-idea-community-edition
+	optdepends = intellij-idea-ultimate-edition

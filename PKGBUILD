@@ -2,7 +2,7 @@
 # Co-Maintainer: Polarian <polarian@polarian.dev>, Fredy García <frealgagu at gmail dot com>
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
-pkgname=flutter
+pkgbase=flutter
 pkgver=3.19.4
 _dartver=3.3.2
 _enginever=a5c24f538d05aaf66f7972fb23959d8cafb9f95a
@@ -12,13 +12,13 @@ _flutterarch=$(uname -m | sed s/aarch64/arm64/ | sed s/x86_64/x64/)
 # this host is blocked in China, according to Flutter docs, the FLUTTER_STORAGE_BASE_URL environment variable
 # should be used to provide an alternative mirror
 _storagebase="${FLUTTER_STORAGE_BASE_URL:-"https://storage.googleapis.com"}"
-pkgrel=6
+pkgrel=7
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
+_pkgdesc="Flutter SDK component"
 arch=("x86_64" "aarch64")
-url="https://${pkgname}.dev"
+url="https://${pkgbase}.dev"
 license=("custom" "BSD" "CCPL")
 depends=( 
-	 "dart>=${_dartver}"
 	 # instead of bundled Gradle Wrapper
 	 "gradle"
 	 # commands first
@@ -32,24 +32,17 @@ depends=(
 	 "xz"
 	 "zip"
 	 # runtime shared libraries
-	 "glu" # libGLU.so.1 required for flutter test
 	 "libglvnd" # https://github.com/flutter/engine/pull/16924
 )
-makedepends=("jq")
-optdepends=("android-sdk: develop for Android devices"
-	    "java-environment: develop for Android devices"
-            "android-studio"
-            "intellij-idea-community-edition"
-            "intellij-idea-ultimate-edition"
-	    "clang: clang++ is required for Linux development"
-	    "cmake: CMake is required for Linux development"
-            "ninja: ninja is required for Linux development"
-	    "pkgconf: pkg-config is required for Linux development" # base-devel, but runtime dependency
-	    "gtk3: GTK 3.0 development libraries are required for Linux development")
+makedepends=(
+	"dart>=${_dartver}"
+	"jq"
+	"gradle"
+)
 options=("!emptydirs")
-install="${pkgname}.install"
+install="${pkgbase}.install"
 source=(
-  "${pkgname}-${pkgver}.tar.xz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/${pkgver/.hotfix/+hotfix}.tar.gz"
+  "${pkgbase}-${pkgver}.tar.xz::https://github.com/${pkgbase}/${pkgbase}/archive/refs/tags/${pkgver/.hotfix/+hotfix}.tar.gz"
   # material_fonts
   "material_fonts.zip::${_storagebase}/flutter_infra_release/flutter/fonts/${_materialfontsver}/fonts.zip"
   # gradle_wrapper
@@ -94,7 +87,7 @@ source=(
   "gradle-user-home.patch"
 
   # thanks to lauren n. liberda from Alpine for the awesome patchset used here !
-  "${pkgname}.sh"
+  "${pkgbase}.sh"
   "version.patch"
   "no-lock.patch"
   "no-runtime-download.patch"
@@ -201,7 +194,7 @@ sha256sums=('089f924c72f28d25851382d70db83df83c64746713f6a8ca08879a1530adb8ca'
             'b1f8faafcc0f3492aa1d0dab511e9a026de19356e35c55a237b8cfa3c0b1bcf1'
             '0a52880f8f3aff667db1a29ec2e68567689b378e773345427f9e5cf6cb80dea3'
             '2e848e6ee2dd591c0e558ee37d80391e4acb5bf8672cbe3e02af9a52d39e25b8'
-            '8d2422220b5cdcbe7757cefa576045c92c4b013708a0a88c8d378484e1adb24e'
+            'd721fc48f534af8f804bb4a9f2cb1d304627a9f73881b3f61d829a9f1e33164f'
             'de0d3567d83bd756841b19ccf879efc02749d8a45cf18d94cd71ec1d366c9024'
             '54db9347ac6467b806fff70f62b2709276a0ca4d82468ae8357d5520db0ad04a'
             '688a7d6a3c220cf09f7e48af46f1ef1b01d251679962c825eded0b3fa4fc2ab1'
@@ -227,25 +220,25 @@ sha256sums_aarch64=('7f99e5020f79d3a9a369e579543db860afef6f2a41403992733a2b707b7
                     '6e0044cf445b8650efe57daf9415adb99f063c7a529437f2dbe58c7774e57cab')
 
 prepare() {
-  mv "${srcdir}/${pkgname}-${pkgver/.hotfix/+hotfix}" "${srcdir}/${pkgname}"
-  patch -p1 -i "${srcdir}/system-dart.patch" -d "${srcdir}/${pkgname}"
-  patch -p1 -i "${srcdir}/gradle-user-home.patch" -d "${srcdir}/${pkgname}"
-  patch -p1 -i "${srcdir}/version.patch" -d "${srcdir}/${pkgname}"
-  patch -p1 -i "${srcdir}/no-lock.patch" -d "${srcdir}/${pkgname}"
-  patch -p1 -i "${srcdir}/no-runtime-download.patch" -d "${srcdir}/${pkgname}"
-  patch -p1 -i "${srcdir}/doctor.patch" -d "${srcdir}/${pkgname}"
-  patch -p1 -i "${srcdir}/opt-in-analytics.patch" -d "${srcdir}/${pkgname}"
+  mv "${srcdir}/${pkgbase}-${pkgver/.hotfix/+hotfix}" "${srcdir}/${pkgbase}"
+  patch -p1 -i "${srcdir}/system-dart.patch" -d "${srcdir}/${pkgbase}"
+  patch -p1 -i "${srcdir}/gradle-user-home.patch" -d "${srcdir}/${pkgbase}"
+  patch -p1 -i "${srcdir}/version.patch" -d "${srcdir}/${pkgbase}"
+  patch -p1 -i "${srcdir}/no-lock.patch" -d "${srcdir}/${pkgbase}"
+  patch -p1 -i "${srcdir}/no-runtime-download.patch" -d "${srcdir}/${pkgbase}"
+  patch -p1 -i "${srcdir}/doctor.patch" -d "${srcdir}/${pkgbase}"
+  patch -p1 -i "${srcdir}/opt-in-analytics.patch" -d "${srcdir}/${pkgbase}"
 
-  echo "${pkgver}" > "${srcdir}/${pkgname}/version"
-  mkdir -p "${srcdir}/${pkgname}/bin/cache/artifacts"
-  cat > "${srcdir}/${pkgname}/bin/cache/flutter.version.json" <<EOF
+  echo "${pkgver}" > "${srcdir}/${pkgbase}/version"
+  mkdir -p "${srcdir}/${pkgbase}/bin/cache/artifacts"
+  cat > "${srcdir}/${pkgbase}/bin/cache/flutter.version.json" <<EOF
 {
 	"frameworkVersion": "$pkgver",
 	"channel": "$_channel",
 	"repositoryUrl": "https://github.com/flutter/flutter.git",
 	"frameworkRevision": "archlinuxaur0000000000000000000000000000",
 	"frameworkCommitDate": "2038-01-19 03:14:08",
-	"engineRevision": "$(cat "${srcdir}/${pkgname}/bin/internal/engine.version")",
+	"engineRevision": "$(cat "${srcdir}/${pkgbase}/bin/internal/engine.version")",
 	"dartSdkVersion": "$_dartver",
 	"devToolsVersion": $(jq '.version' < /opt/dart-sdk/bin/resources/devtools/version.json),
 	"flutterVersion": "$pkgver"
@@ -258,12 +251,12 @@ EOF
   gradle wrapper
   popd
 
-  cd "${srcdir}/${pkgname}/bin/cache"
+  cd "${srcdir}/${pkgbase}/bin/cache"
 
   unzip -o -q "${srcdir}/flutter_web_sdk.zip" -d flutter_web_sdk
   unzip -o -q "${srcdir}/sky_engine.zip" -d pkg
 
-  cd "${srcdir}/${pkgname}/bin/cache/artifacts"
+  cd "${srcdir}/${pkgbase}/bin/cache/artifacts"
 
   # why should we use a pre-build gradle wrapper if we have it in the arch repos ?
   mkdir -p gradle_wrapper/gradle
@@ -316,8 +309,8 @@ EOF
 }
 
 build() {
-  export PUB_CACHE="${srcdir}/${pkgname}/pub-cache"
-  cd "${srcdir}/${pkgname}"
+  export PUB_CACHE="${srcdir}/${pkgbase}/pub-cache"
+  cd "${srcdir}/${pkgbase}"
   dart pub get -C "packages/flutter_tools" --no-offline --no-precompile
   dart --verbosity=error --disable-dart-dev \
 		--snapshot="bin/cache/flutter_tools.snapshot" --snapshot-kind="app-jit" \
@@ -325,19 +318,173 @@ build() {
 		--no-enable-mirrors "packages/flutter_tools/bin/flutter_tools.dart" --version
  cd ../..
 
-  sed -Ei 's|'"$PUB_CACHE"'|/usr/lib/flutter/pub_cache|g' "${srcdir}/${pkgname}/packages/flutter_tools/.dart_tool/package_config.json"
+  sed -Ei 's|'"$PUB_CACHE"'|/usr/lib/flutter/pub-cache|g' "${srcdir}/${pkgbase}/packages/flutter_tools/.dart_tool/package_config.json"
   find "$PUB_CACHE" -name '*.aot' -delete
 }
 
-package() {
-  install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -dm755 "${pkgdir}/usr/lib/${pkgname}"
-  install -dm755 "${pkgdir}/usr/bin"
-  cp -ra "${srcdir}/${pkgname}" "${pkgdir}/usr/lib"
-  install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/lib/${pkgname}/bin/flutter"
-  ln -sf "/usr/lib/flutter/bin/flutter" "${pkgdir}/usr/bin/flutter"
-  ln -sf "${DART_ROOT:-"/opt/dart-sdk"}/bin/dart" "${pkgdir}/usr/lib/flutter/bin/dart"
-
-  # * not my fault grumble * : The IntelliJ Flutter plugin enforces this relative Dart SDK
-  ln -sf "${DART_ROOT:-"/opt/dart-sdk"}" "${pkgdir}/usr/lib/flutter/bin/cache/dart-sdk"
+_package() {
+  pkgdesc="${_pkgdesc} - full installation of development tool and runtime"
+  depends=("${pkgbase}-tool-developer" "${pkgbase}-target-linux" "${pkgbase}-target-android" "${pkgbase}-target-web" "${pkgbase}-intellij-patch")
 }
+
+_package-common() {
+  pkgdesc="${_pkgdesc} - common files"
+  depends=(
+	 "glu" # libGLU.so.1 required for flutter test
+  )
+
+  install -Dm644 "${srcdir}/${pkgbase}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
+
+  install -dm755 "${pkgdir}/usr/lib/${pkgbase}"
+  install -dm755 "${pkgdir}/usr/lib/${pkgbase}/bin/cache/artifacts/engine"
+  install -dm755 "${pkgdir}/usr/lib/${pkgbase}/packages/flutter"
+  install -dm755 "${pkgdir}/usr/lib/${pkgbase}/packages/flutter_driver"
+  install -dm755 "${pkgdir}/usr/lib/${pkgbase}/packages/flutter_goldens"
+  install -dm755 "${pkgdir}/usr/lib/${pkgbase}/packages/flutter_localizations"
+  install -dm755 "${pkgdir}/usr/lib/${pkgbase}/packages/flutter_test"
+  install -dm755 "${pkgdir}/usr/lib/${pkgbase}/packages/flutter_web_plugins"
+  install -dm755 "${pkgdir}/usr/lib/${pkgbase}/packages/fuchsia_remote_debug_protocol"
+  install -dm755 "${pkgdir}/usr/lib/${pkgbase}/packages/integration_test"
+
+  cp -ra "${srcdir}/${pkgbase}/bin/cache/artifacts/engine/common" "${pkgdir}/usr/lib/${pkgbase}/bin/cache/artifacts/engine/common"
+  cp -ra "${srcdir}/${pkgbase}/bin/cache/artifacts/material_fonts" "${pkgdir}/usr/lib/${pkgbase}/bin/cache/artifacts/material_fonts"
+  cp -ra "${srcdir}/${pkgbase}/bin/cache/pkg" "${pkgdir}/usr/lib/${pkgbase}/bin/cache/pkg"
+
+  cp -ra "${srcdir}/${pkgbase}/packages/flutter/"{pubspec.yaml,lib} "${pkgdir}/usr/lib/${pkgbase}/packages/flutter"
+  cp -ra "${srcdir}/${pkgbase}/packages/flutter_driver/"{pubspec.yaml,lib} "${pkgdir}/usr/lib/${pkgbase}/packages/flutter_driver"
+  cp -ra "${srcdir}/${pkgbase}/packages/flutter_goldens/"{pubspec.yaml,lib} "${pkgdir}/usr/lib/${pkgbase}/packages/flutter_goldens"
+  cp -ra "${srcdir}/${pkgbase}/packages/flutter_localizations/"{pubspec.yaml,lib} "${pkgdir}/usr/lib/${pkgbase}/packages/flutter_localizations"
+  cp -ra "${srcdir}/${pkgbase}/packages/flutter_test/"{pubspec.yaml,lib} "${pkgdir}/usr/lib/${pkgbase}/packages/flutter_test"
+  cp -ra "${srcdir}/${pkgbase}/packages/flutter_web_plugins/"{pubspec.yaml,lib} "${pkgdir}/usr/lib/${pkgbase}/packages/flutter_web_plugins"
+  cp -ra "${srcdir}/${pkgbase}/packages/fuchsia_remote_debug_protocol/"{pubspec.yaml,lib} "${pkgdir}/usr/lib/${pkgbase}/packages/fuchsia_remote_debug_protocol"
+  cp -ra "${srcdir}/${pkgbase}/packages/integration_test/"{pubspec.yaml,lib} "${pkgdir}/usr/lib/${pkgbase}/packages/integration_test"
+
+  cp -ra "${srcdir}/${pkgbase}/bin/cache/pkg" "${pkgdir}/usr/lib/${pkgbase}/bin/cache/pkg"
+  cp -ra "${srcdir}/${pkgbase}/pub-cache" "${pkgdir}/usr/lib/${pkgbase}/pub-cache"
+}
+
+_package-target-linux() {
+  pkgdesc="${_pkgdesc} - linux target files"
+  depends=(
+	"${pkgbase}-tool"
+	"clang"
+	"cmake"
+        "ninja"
+	"pkgconf" # base-devel, but runtime dependency
+	"gtk3"
+  )
+
+
+  install -dm755 "${pkgdir}/usr/lib/${pkgbase}/bin/cache/artifacts/engine"
+  install -dm755 "${pkgdir}/usr/lib/${pkgbase}/packages/flutter_tools/bin"
+
+  cp -ra "${srcdir}/${pkgbase}/bin/cache/artifacts/engine/linux-${_flutterarch}" "${pkgdir}/usr/lib/${pkgbase}/bin/cache/artifacts/engine"
+  cp -ra "${srcdir}/${pkgbase}/bin/cache/artifacts/engine/linux-${_flutterarch}-profile" "${pkgdir}/usr/lib/${pkgbase}/bin/cache/artifacts/engine"
+  cp -ra "${srcdir}/${pkgbase}/bin/cache/artifacts/engine/linux-${_flutterarch}-release" "${pkgdir}/usr/lib/${pkgbase}/bin/cache/artifacts/engine"
+
+  cp -ra "${srcdir}/${pkgbase}/packages/flutter_tools/bin/tool_backend.sh" "${pkgdir}/usr/lib/${pkgbase}/packages/flutter_tools/bin"
+  cp -ra "${srcdir}/${pkgbase}/packages/flutter_tools/bin/tool_backend.dart" "${pkgdir}/usr/lib/${pkgbase}/packages/flutter_tools/bin"
+}
+
+_package-target-web() {
+  pkgdesc="${_pkgdesc} - web target files"
+  depends=("${pkgbase}-tool")
+
+
+  install -dm755 "${pkgdir}/usr/lib/${pkgbase}/bin/cache"
+  install -dm755 "${pkgdir}/usr/lib/${pkgbase}/packages/flutter_tools/lib/src/web"
+
+  cp -ra "${srcdir}/${pkgbase}/bin/cache/flutter_web_sdk" "${pkgdir}/usr/lib/${pkgbase}/bin/cache"
+  cp -ra "${srcdir}/${pkgbase}/packages/flutter_tools/lib/src/web/file_generators" "${pkgdir}/usr/lib/${pkgbase}/packages/flutter_tools/lib/src/web"
+}
+
+_package-tagret-android() {
+  pkgdesc="${_pkgdesc} - android target files"
+  depends=("${pkgbase}-tool")
+  optdepends=("android-sdk: develop for Android devices"
+	    "java-environment: develop for Android devices"
+  )
+
+
+  install -dm755 "${pkgdir}/usr/lib/${pkgbase}/bin/cache/artifacts/engine"
+  install -dm755 "${pkgdir}/usr/lib/${pkgbase}/packages/flutter_tools"
+
+  cp -ra "${srcdir}/${pkgbase}/bin/cache/artifacts/engine/android-arm" "${pkgdir}/usr/lib/${pkgbase}/bin/cache/artifacts/engine"
+  cp -ra "${srcdir}/${pkgbase}/bin/cache/artifacts/engine/android-arm-release" "${pkgdir}/usr/lib/${pkgbase}/bin/cache/artifacts/engine"
+  cp -ra "${srcdir}/${pkgbase}/bin/cache/artifacts/engine/android-arm-profile" "${pkgdir}/usr/lib/${pkgbase}/bin/cache/artifacts/engine"
+
+  cp -ra "${srcdir}/${pkgbase}/bin/cache/artifacts/engine/android-arm64" "${pkgdir}/usr/lib/${pkgbase}/bin/cache/artifacts/engine"
+  cp -ra "${srcdir}/${pkgbase}/bin/cache/artifacts/engine/android-arm64-release" "${pkgdir}/usr/lib/${pkgbase}/bin/cache/artifacts/engine"
+  cp -ra "${srcdir}/${pkgbase}/bin/cache/artifacts/engine/android-arm64-profile" "${pkgdir}/usr/lib/${pkgbase}/bin/cache/artifacts/engine"
+
+  cp -ra "${srcdir}/${pkgbase}/bin/cache/artifacts/engine/android-x64" "${pkgdir}/usr/lib/${pkgbase}/bin/cache/artifacts/engine"
+  cp -ra "${srcdir}/${pkgbase}/bin/cache/artifacts/engine/android-x64-release" "${pkgdir}/usr/lib/${pkgbase}/bin/cache/artifacts/engine"
+  cp -ra "${srcdir}/${pkgbase}/bin/cache/artifacts/engine/android-x64-profile" "${pkgdir}/usr/lib/${pkgbase}/bin/cache/artifacts/engine"
+
+  cp -ra "${srcdir}/${pkgbase}/bin/cache/artifacts/engine/android-x86" "${pkgdir}/usr/lib/${pkgbase}/bin/cache/artifacts/engine"
+  cp -ra "${srcdir}/${pkgbase}/bin/cache/artifacts/engine/android-x86-jit-release" "${pkgdir}/usr/lib/${pkgbase}/bin/cache/artifacts/engine"
+
+  cp -ra "${srcdir}/${pkgbase}/bin/cache/artifacts/gradle_wrapper" "${pkgdir}/usr/lib/${pkgbase}/bin/cache/artifacts"
+  cp -ra "${srcdir}/${pkgbase}/packages/flutter_tools/gradle" "${pkgdir}/usr/lib/${pkgbase}/packages/flutter_tools"
+}
+
+_package-tool() {
+  pkgdesc="${_pkgdesc} - CLI tool (for packaging only)"
+  depends=("${pkgbase}-common")
+
+
+  install -dm755 "${pkgdir}/usr/lib/${pkgbase}"
+  install -dm755 "${pkgdir}/usr/lib/${pkgbase}/bin/cache"
+  install -dm755 "${pkgdir}/usr/lib/${pkgbase}/packages/flutter_tools/.dart_tool"
+
+  cp -ra "${srcdir}/${pkgbase}/bin/cache/flutter_tools.snapshot" "${pkgdir}/usr/lib/${pkgbase}/bin/cache/flutter_tools.snapshot"
+  cp -ra "${srcdir}/${pkgbase}/bin/cache/flutter.version.json" "${pkgdir}/usr/lib/${pkgbase}/bin/cache"
+  cp -ra "${srcdir}/${pkgbase}/version" "${pkgdir}/usr/lib/${pkgbase}"
+
+  cp -ra "${srcdir}/${pkgbase}/packages/flutter_tools/.dart_tool/package_config.json" "${pkgdir}/usr/lib/${pkgbase}/packages/flutter_tools/.dart_tool"
+
+  install -dm755 "${pkgdir}/usr/bin"
+  install -Dm755 "${srcdir}/${pkgbase}.sh" "${pkgdir}/usr/lib/${pkgbase}/bin/flutter"
+  ln -sf "/usr/lib/flutter/bin/flutter" "${pkgdir}/usr/bin/flutter"
+}
+
+_package-tool-developer() {
+  pkgdesc="${_pkgdesc} - CLI tool (for application development)"
+  depends=("${pkgbase}-tool")
+
+
+  install -dm755 "${pkgdir}/usr/lib/${pkgbase}"
+  install -dm755 "${pkgdir}/usr/lib/${pkgbase}/packages/flutter_tools"
+
+  cp -ra "${srcdir}/${pkgbase}/examples" "${pkgdir}/usr/lib/${pkgbase}"
+  cp -ra "${srcdir}/${pkgbase}/packages/flutter_tools/templates" "${pkgdir}/usr/lib/${pkgbase}/packages/flutter_tools"
+}
+
+
+_package-intellij-patch() {
+  pkgdesc="${_pkgdesc} - IntelliJ Flutter plugin hotfix"
+  depends=("${pkgbase}-common")
+  optdepends=(
+	"android-studio"
+        "intellij-idea-community-edition"
+        "intellij-idea-ultimate-edition"
+  )
+
+
+
+  install -dm755 "${pkgdir}/usr/lib/${pkgbase}/bin/cache"
+  
+  ln -sf "${DART_ROOT:-"/opt/dart-sdk"}/bin/dart" "${pkgdir}/usr/lib/${pkgbase}/bin/dart"
+  # * not my fault grumble * : The IntelliJ Flutter plugin enforces this relative Dart SDK
+  ln -sf "${DART_ROOT:-"/opt/dart-sdk"}" "${pkgdir}/usr/lib/${pkgbase}/bin/cache/dart-sdk"
+}
+
+pkgname=("${pkgbase}" "${pkgbase}-tool" "${pkgbase}-tool-developer" "${pkgbase}-target-linux" "${pkgbase}-common" "${pkgbase}-target-android" "${pkgbase}-target-web" "${pkgbase}-intellij-patch")
+
+for _p in "${pkgname[@]}"; do
+  eval "package_$_p() {
+    $(declare -f "_package${_p#$pkgbase}")
+    _package${_p#$pkgbase}
+  }"
+done
+
