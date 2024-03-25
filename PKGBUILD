@@ -3,7 +3,7 @@
 pkgorg='vsg-dev'
 _pkgname=VulkanSceneGraph
 pkgname=vulkanscenegraph
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Vulkan & C++17 based Scene Graph Project"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('glibc' 'gcc-libs' 'libxcb' 'vulkan-icd-loader')
 makedepends=('cmake' 'vulkan-headers')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ec5e1db9ec4082598b6d56fb5812fdf552e5a6b49792cb80f29bcb8a23fe7cac')
+sha256sums=('45c95d3177c80e057febfdf9a48db07b081174690f7a3830ab06516765c1ae64')
 
 build() {
     cmake -B "build-$pkgver" -S "$_pkgname-$pkgver" \
