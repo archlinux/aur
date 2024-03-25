@@ -1,48 +1,35 @@
 # Maintainer: everyx <lunt.luo#gmail.com>
 
 pkgbase=sing-geoip
-pkgname=(sing-geoip-common sing-geoip-rule-set sing-geoip-db)
-pkgver=20240112
-pkgrel=1
+pkgname=(sing-geoip-rule-set sing-geoip-db)
+pkgver=20240312
+pkgrel=3
+pkgdesc="GeoIP Database and Rule Set for sing-box"
+arch=(any)
+url="https://github.com/SagerNet/$pkgbase"
+license=(CC-BY-SA-4.0 GPL-3.0-or-later)
 
-pkgdesc='sing-geoip'
-arch=('any')
-url="https://github.com/SagerNet/sing-geoip"
-license=('GPL3')
+makedepends=(git)
 
-makedepends=(go)
+source=("geoip.db::$url/releases/download/$pkgver/geoip.db")
+sha256sums=('77879a4239ed28a9835e7db1d7f55dd3f9540904714125cb39cc3425e61b7fd4')
 
-_srcbase="${pkgbase}-${pkgver}"
-
-source=("${_srcbase}.tar.gz::https://github.com/SagerNet/sing-geoip/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('d3277611a2f0f4657c1bf4cb402543892d05155d481ee4e04b1c0ecc473df3fa')
-
-build() {
-    cd "${_srcbase}" || exit
-    NO_SKIP=true go run -v .
-}
-
-package_sing-geoip-common() {
-    pkgdesc='sing-geosite (common files)'
-
-    install -Dm644 "${_srcbase}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
+prepare() {
+  git clone --depth 1 --branch rule-set $url
 }
 
 package_sing-geoip-rule-set() {
-    pkgdesc='sing-geoip (rule sets)'
-    depends=(sing-geoip-common)
-    provides=(sing-geoip)
+  pkgdesc="sing-geoip (rule-set)"
+  provides=($pkgbase)
 
-    install -dm755 "${pkgdir}/usr/share/${pkgbase}/rule-set"
-    install -Dm644 "${_srcbase}/rule-set/"* "${pkgdir}/usr/share/${pkgbase}/rule-set"
+  install -dm755 "$pkgdir/usr/share/sing-box/$pkgname"
+  install -Dm644 $pkgbase/*.srs "$pkgdir/usr/share/sing-box/$pkgname"
 }
 
 package_sing-geoip-db() {
-    pkgdesc='sing-geoip (database)'
-    depends=(sing-geoip-common)
-    provides=(sing-geoip)
-    replaces=(sing-geoip)
+  pkgdesc="sing-geoip (database)"
+  provides=($pkgbase)
 
-    install -dm755 "${pkgdir}/usr/share/${pkgbase}"
-    install -Dm644 "${_srcbase}/"*.db "${pkgdir}/usr/share/${pkgbase}"
+  install -dm755 "$pkgdir/usr/share/sing-box"
+  install -Dm644 geoip.db "$pkgdir/usr/share/sing-box"
 }
