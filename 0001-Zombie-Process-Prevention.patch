@@ -11,10 +11,10 @@ so prevent it.
  1 file changed, 13 insertions(+)
 
 diff --git a/src/base/process.cc b/src/base/process.cc
-index 56bbcb1..a20a00d 100644
+index 83ae725..c15108a 100644
 --- a/src/base/process.cc
 +++ b/src/base/process.cc
-@@ -213,6 +213,19 @@ bool Process::SpawnProcess(const std::string &path, const std::string &arg,
+@@ -214,6 +214,21 @@ bool Process::SpawnProcess(const std::string &path, const std::string &arg,
  #endif  // __linux__
    pid_t tmp_pid = 0;
  
@@ -23,11 +23,13 @@ index 56bbcb1..a20a00d 100644
 +  // If you start and close the mozc_tool,
 +  // there are cases where the zombie process remains,
 +  // so prevent it.
-+   struct sigaction sa;
-+   sa.sa_handler = SIG_IGN;
-+   sa.sa_flags = SA_NOCLDWAIT;
-+   if (sigaction(SIGCHLD, &sa, NULL) == -1) {
-+     LOG(ERROR) << "sigaction() failed: " << strerror(errno);
++   if (strstr(path.c_str(), "mozc_tool") != nullptr) {
++     struct sigaction sa;
++     sa.sa_handler = SIG_IGN;
++     sa.sa_flags = SA_NOCLDWAIT;
++     if (sigaction(SIGCHLD, &sa, NULL) == -1) {
++       LOG(ERROR) << "sigaction() failed: " << strerror(errno);
++     }
 +   }
 +#endif  // __linux__
 +
@@ -36,4 +38,5 @@ index 56bbcb1..a20a00d 100644
    // posix_spawn returns 0 even if kMozcServer doesn't exist, because
 -- 
 2.42.0
+
 
