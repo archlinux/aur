@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pear-rec
-pkgver=1.3.12
-_electronversion=26
+pkgver=1.3.14
+_electronversion=29
 pkgrel=1
 pkgdesc="An open-source, cross-platform terminal for seamless workflows"
 arch=(
@@ -25,12 +25,13 @@ source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('SKIP'
-            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
+sha256sums=('2796f172051a223f925e8b0fad358ddf7540689d3d0d24c76ba13ec1394997eb'
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     gendesk -f -n -q --categories="Utility" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
@@ -44,7 +45,14 @@ build() {
     pnpm config set store-dir "${srcdir}/.pnpm_store"
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
     pnpm config set link-workspace-packages true
-    sed "s|release/\${version}|release|g" -i packages/desktop/electron-builder.json5
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
+    sed "s|release/\${version}|release|g;s|AppImage|dir|g" -i packages/desktop/electron-builder.json5
     pnpm install
     pnpm run build:desktop
 }
