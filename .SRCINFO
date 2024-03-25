@@ -1,12 +1,13 @@
 pkgbase = ondsel-es-appimage
 	pkgdesc = A general purpose 3D CAD modeler based on FreeCAD (AppImage version)
 	pkgver = 2024.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://ondsel.com/
 	arch = x86_64
 	arch = aarch64
 	license = LGPL
 	depends = fuse2
+	depends = appimagetool
 	provides = ondsel-es
 	conflicts = ondsel-es
 	noextract = ondsel-es-2024.1.0-x86_64.AppImage

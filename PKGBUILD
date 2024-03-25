@@ -6,13 +6,14 @@
 
 pkgname=ondsel-es-appimage
 pkgver=2024.1.0
-pkgrel=4
+pkgrel=5
 _gitrev=35694
 pkgdesc="A general purpose 3D CAD modeler based on FreeCAD (AppImage version)"
 arch=('x86_64' 'aarch64')
 url="https://ondsel.com/"
 license=('LGPL')
-depends=('fuse2')
+#appimagetool is needed only to work around https://github.com/realthunder/FreeCAD/issues/960
+depends=('fuse2' 'appimagetool')
 provides=('ondsel-es')
 conflicts=('ondsel-es')
 #!debug added to work around https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/19
@@ -34,14 +35,22 @@ sha256sums_aarch64=('9d9f59cf43840d459028911eec0055a2ea6fabbbb9021641f94a014bf0f
 prepare() {
   cd "${srcdir}"
   chmod +x ondsel-es-${pkgver}-${CARCH}.AppImage
-  ./ondsel-es-${pkgver}-${CARCH}.AppImage --appimage-extract com.ondsel.ES.desktop
-  ./ondsel-es-${pkgver}-${CARCH}.AppImage --appimage-extract usr/share/icons
-  ./ondsel-es-${pkgver}-${CARCH}.AppImage --appimage-extract usr/share/mime/packages
+  ###workaround for https://github.com/realthunder/FreeCAD/issues/960
+  ./ondsel-es-${pkgver}-${CARCH}.AppImage --appimage-extract
+  rm squashfs-root/usr/lib/libdrm*
+  unset SOURCE_DATE_EPOCH
+  appimagetool -n squashfs-root/ ondsel-es-${pkgver}-modified.AppImage
+  chmod +x ondsel-es-${pkgver}-modified.AppImage
+  ###
+  #./ondsel-es-${pkgver}-${CARCH}.AppImage --appimage-extract com.ondsel.ES.desktop
+  #./ondsel-es-${pkgver}-${CARCH}.AppImage --appimage-extract usr/share/icons
+  #./ondsel-es-${pkgver}-${CARCH}.AppImage --appimage-extract usr/share/mime/packages
   patch -Np0 <./ondsel-es-desktop.patch
 }
 
 package() {
-  install -Dm755 "${srcdir}/ondsel-es-${pkgver}-${CARCH}.AppImage" "${pkgdir}/opt/appimages/ondsel-es.AppImage"
+  #install -Dm755 "${srcdir}/ondsel-es-${pkgver}-${CARCH}.AppImage" "${pkgdir}/opt/appimages/ondsel-es.AppImage"
+  install -Dm755 "${srcdir}/ondsel-es-${pkgver}-modified.AppImage" "${pkgdir}/opt/appimages/ondsel-es.AppImage"
   install -Dm755 "${srcdir}/ondsel-es.sh" "${pkgdir}/usr/bin/ondsel-es"
   install -Dm644 "${srcdir}/squashfs-root/com.ondsel.ES.desktop" "${pkgdir}/usr/share/applications/ondsel-es.desktop"
   install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/scalable/apps/Ondsel.svg" "${pkgdir}/usr/share/pixmaps/ondsel-es.svg"
