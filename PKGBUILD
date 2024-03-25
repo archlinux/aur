@@ -1,12 +1,12 @@
 # Maintainer: nezu <nezu@nezu.cc>
 pkgname=teamwork-desktop
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Teamwork for Desktop - Launch Teamwork directly from your desktop."
 arch=('any')
 url="https://integrations.teamwork.com/integrations/teamwork-projects-desktop/"
 license=('unknown')
-depends=(electron11)
+depends=(electron26)
 makedepends=(asar)
 source=(
 	# latest release can be found here: https://tw-open.s3.amazonaws.com/projects/electron/releases/latest.yml
