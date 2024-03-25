@@ -26,7 +26,7 @@ pkgver() {
 package() {
     echo "$url"
     service_dir="/etc/runit/sv"
-    echo "Warning: This package is for Artix Linux's version of runit, which uses $service_dir as its service directory. If your service directory is elsewhere, you can easily edit the PKGBUILD to reflect your service directory."
+    echo "Warning: This package assumes that $service_dir is where you store runit services. If your service directory is elsewhere, you can easily edit the PKGBUILD to reflect your service directory."
     
     install_dir="${pkgdir}${service_dir}/disable-c6"
     mkdir -p "$install_dir"
