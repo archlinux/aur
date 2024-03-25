@@ -1,7 +1,7 @@
 # Maintainer: Gilbert Gilb's <gilbsgilbert@gmail.com>
 
 pkgname=freecad-assembly3-appimage
-pkgver=2023.01.31
+pkgver=2024.03.22
 pkgrel=1
 pkgdesc="Assembly3 workbench for FreeCAD."
 arch=('x86_64')
@@ -11,21 +11,21 @@ depends=('fuse2')
 options=(!strip) # necessary otherwise the AppImage file in the package is truncated
 
 _filename="FreeCAD-asm3-${pkgver}.AppImage"
-_squashfs_desktop_file="freecad_link.desktop"
+_squashfs_desktop_file="org.freecadweb.FreeCAD.Link.desktop"
 _desktop_file="/usr/share/applications/freecad-asm3-appimage.desktop"
 _appimage_name="FreeCAD-asm3.AppImage"
 _install_path="/opt/appimages/${_appimage_name}"
 
 noextract=("${_filename}")
 source=(
-  "${_filename}::https://github.com/realthunder/FreeCAD/releases/download/2023.01.31-edge/FreeCAD-asm3-Daily-Conda-Py3.10-20230131-glibc2.12-x86_64.AppImage"
-  "https://raw.githubusercontent.com/realthunder/FreeCAD/2023.01.31-edge/LICENSE"
+  "${_filename}::https://github.com/realthunder/FreeCAD/releases/download/20240322stable/FreeCAD-Link-Stable-Linux-x86_64-py3.11-20240322.AppImage"
+  "https://raw.githubusercontent.com/realthunder/FreeCAD/20240322stable/LICENSE"
   "freecad_link.desktop.patch"
 )
 sha512sums=(
-  "7d2bb4992b2f25f036cbc1eef2269f07879cd817c24cdede6c5eb9f84d623ffda42281f7aa1a2d92121bfb575cc7328503ba09da86c5b54fe91858efe5d998de"
+  "ac54d253519fbc3ecb36ceb19959d415d1107c11ec9b5251e21ecf716e0795bcedd4738ebffcea546a7fb01e23c2db71e8c88f0412fa68c5639968db8049c2cf"
   "4d1b0998dc55adcfb2ac2f33382bce6467078aaa33dbd3bedf5c2102da853d4186836ad4103ea6100f34068751a5a9d627c022bf2f01deb712e88c6c58e0e292"
-  "6f8f60c9a823ac328c1d70db36486adf5268bd8d2cb2d5acd6058254b67b40e4cfa2806d01da679ac092d9ca6b7688f6435415c12e05e6afe207fb8e1b6a622e"
+  "d7683d92271e9127b7bb0a0a5869caa8d8f8b17aa6426f342a48798568ae9ce8f10a454abf894ca53bd7440f0fc3085650eaa4b4128be525b8a62120360abced"
 )
 
 prepare() {
@@ -56,7 +56,7 @@ package() {
   ln -s "${_install_path}" "${pkgdir}/usr/bin/freecad-asm3"
 
   # Copy Desktop entry
-  install -Dm644 "${srcdir}/squashfs-root/freecad_link.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "${srcdir}/squashfs-root/${_squashfs_desktop_file}" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   # Copy icons
   install -dm755 "${pkgdir}/usr/share/icons"

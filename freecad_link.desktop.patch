@@ -1,11 +1,11 @@
---- squashfs-root/freecad_link.desktop
-+++ squashfs-root/freecad_link.desktop
+--- squashfs-root/org.freecadweb.FreeCAD.Link.desktop
++++ squashfs-root/org.freecadweb.FreeCAD.Link.desktop
 @@ -1,10 +1,10 @@
  [Desktop Entry]
  Version=1.0
 -Name=FreeCAD Link Branch
--Exec=AppRun
--Icon=freecad_link
+-Exec=AppRun %F
+-Icon=org.freecadweb.FreeCAD.Link
 +Name=FreeCAD Assembly3
 +Exec=/usr/bin/freecad-asm3 %F
 +Icon=freecad-assembly3-appimage
