@@ -1,15 +1,15 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=oqsprovider-git
 _pkgname=oqs-provider
-pkgver=r130.57d4c58
-_pkgverliboqs=0.8.0
+pkgver=r195.66ee770
+_pkgverliboqs=0.10.0
 pkgrel=1
 pkgdesc="OpenSSL 3 provider containing post-quantum algorithms"
 arch=('x86_64')
 url="https://openquantumsafe.org/applications/tls.html#oqs-openssl-provider"
 license=('MIT')
 depends=(
-    'liboqs>=0.8.0'
+    'liboqs>=0.10.0'
     'openssl'
 )
 makedepends=(
@@ -25,13 +25,9 @@ conflicts=('oqsprovider')
 source=(
     "${pkgname}::git+https://github.com/open-quantum-safe/${_pkgname}"
     "liboqs-${_pkgverliboqs}.tar.gz::https://github.com/open-quantum-safe/liboqs/archive/refs/tags/${_pkgverliboqs}.tar.gz"
-    "enable-algs.patch"
 )
-b2sums=(
-    'SKIP'
-    'f84a290ece4fffe458988e2ddbbcb4efb05f0d2be97ab21d4ccd60720977477d9b36cd2a9c69bad7815c5ed69eaf3526ee8fc65d819c0b3c341d326bd435bc16'
-    '71286fda50b1830ee70e3cc23b647499f812348c3303c518147f2ec62c300bca346147e6bdf540748a5ca6400c6134607ffd47f6166b3b6661c53aabb8035af2'
-)
+b2sums=('SKIP'
+        '6fda208f669f270b7c361a87c5b4d2bc59e3fac2d49a31c378650bc2b6a36a34e6627bf31785d5bbbb5609cc87ef280ff035c60961dfd3abe620035e88c9a433')
 
 pkgver() {
     cd "$pkgname"
@@ -41,10 +37,10 @@ pkgver() {
 prepare() {
     # Enable additional algorithms supported by liboqs
     # See: https://github.com/open-quantum-safe/oqs-provider/issues/210
-    patch --directory="${pkgname}" --forward --strip=1 --input="${srcdir}/enable-algs.patch"
+    cd ${pkgname}
+    sed -i -e "s/enable: false/enable: true/g" oqs-template/generate.yml
 
     # Some files are needed from the liboqs source code or generate.py will fail
-    cd "${pkgname}"
     LIBOQS_SRC_DIR="${srcdir}/liboqs-${_pkgverliboqs}" python oqs-template/generate.py
 }
 
@@ -54,6 +50,13 @@ build() {
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -Wno-dev
     cmake --build build
+}
+
+check() {
+    cd build
+    # Running the built-in tests can take a long time (~10-20 mins)
+    # Consider passing --nocheck if you don't want to wait that long
+    ctest --verbose
 }
 
 package() {
