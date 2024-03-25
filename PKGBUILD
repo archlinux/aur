@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-chat
 _pkgname=GhostChat
-pkgver=2.8.0
+pkgver=2.9.0
 _electronversion=29
 _nodeversion=20
 pkgrel=1
@@ -12,7 +12,6 @@ license=('Zlib')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
-    'hicolor-icon-theme'
 )
 makedepends=(
     'pnpm'
@@ -20,12 +19,13 @@ makedepends=(
     'npm'
     'nodejs'
     'git'
+    'curl'
 )
 source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('SKIP'
+sha256sums=('ed67143b853fd5ac6247efae81bb7df7d0a3e3ac5d0e55ea61db1393fed21e16'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
