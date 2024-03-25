@@ -3,20 +3,22 @@
 ## useful links
 # http://floorp.app/
 # https://github.com/Floorp-Projects/Floorp
+# https://github.com/Floorp-Projects/Floorp-core
+# https://github.com/Floorp-Projects/Floorp-private-components
 
 ## options
 : ${_build_pgo:=true}
 : ${_build_pgo_reuse:=true}
 : ${_build_pgo_xvfb:=false}
 
-: ${_build_private:=false}
+: ${_build_private:=true}
 
 unset _pkgtype
 
 ## basic info
 _pkgname="floorp"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=11.11.1
+pkgver=11.11.2
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -104,18 +106,24 @@ _main_package() {
   _pkgsrc="Floorp-${pkgver%%.r*}"
   _pkgext="tar.gz"
   source=(
-    "$_pkgname-${pkgver%%.r*}.$_pkgext"::"$url/archive/refs/tags/v${pkgver%%.r*}.tar.gz"
+    "$_pkgname-${pkgver%%.r*}.$_pkgext"::"https://github.com/Floorp-Projects/Floorp/archive/refs/tags/v${pkgver%%.r*}.tar.gz"
     "floorp-projects.floorp-core"::"git+https://github.com/Floorp-Projects/Floorp-core.git"
     "floorp-projects.unified-l10n-central"::"git+https://github.com/Floorp-Projects/Unified-l10n-central.git"
     "$_pkgname.desktop"
   )
 
   sha256sums=(
-    '20f8e200bf786d55849f5934b55b508d2a0d1cd8de67a9f9c88ecb8205aed44d'
+    '18250e72d551e81ec34c7206c58c3026a465d5cdc780eb10cdc3ea050b2ff824'
     'SKIP'
     'SKIP'
     '07a63f189beaafe731237afed0aac3e1cfd489e432841bd2a61daa42977fb273'
   )
+
+  if [[ "${_build_private::1}" == "t" ]] ; then
+    license+=('CC-BY-NC-SA-4.0')
+    source+=("floorp-projects.private-components"::"git+https://github.com/Floorp-Projects/Floorp-private-components.git")
+    sha256sums+=('SKIP')
+  fi
 }
 
 # common functions
@@ -129,14 +137,19 @@ prepare() {
     ln -sf "../floorp-projects.floorp-core" "floorp"
 
     cd "$srcdir/floorp-projects.floorp-core"
-    local -A _submodules=(
-      ['floorp-projects.unified-l10n-central']='browser/locales/l10n-central'
+    local _submodules=(
+      'floorp-projects.unified-l10n-central'::'browser/locales/l10n-central'
     )
-    local key
-    for key in ${!_submodules[@]} ; do
-      git submodule init "${_submodules[${key}]}"
-      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
-      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+
+    if [[ "${_build_private::1}" == "t" ]] ; then
+      _submodules+=('floorp-projects.private-components'::'Floorp-private-components')
+    fi
+
+    local _module
+    for _module in "${_submodules[@]}" ; do
+      git submodule init "${_module##*::}"
+      git submodule set-url "${_module##*::}" "$srcdir/${_module%%::*}"
+      git -c protocol.file.allow=always submodule update "${_module##*::}"
     done
   )
 
@@ -237,11 +250,8 @@ export NM=llvm-nm
 export RANLIB=llvm-ranlib
 END
 
-  local _private="$SRCDEST/private-components.zip"
-  if [[ "${_build_private::1}" == "t" ]] && [ -f "$_private" ] ; then
+  if [[ "${_build_private::1}" == "t" ]] ; then
     echo "Enabling private components..."
-    mkdir -p floorp/Floorp-private-components
-    bsdtar -C floorp/Floorp-private-components --strip-components=1 -xf "$_private"
     cat >>../mozconfig <<END
 ac_add_options --enable-private-components
 END
