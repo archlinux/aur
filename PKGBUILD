@@ -3,7 +3,7 @@
 # Contributor: Morten Linderud <foxboron archlinux.org>
 
 pkgname=gopass-git
-pkgver=1.15.7.r2.g439bc002
+pkgver=1.15.12.r4.g57f19d2c
 pkgrel=1
 pkgdesc="The slightly more awesome standard unix password manager for teams."
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
@@ -28,6 +28,7 @@ pkgver() {
 prepare() {
   cd gopass
   sed -i 's|-gcflags="-trimpath=$(GOPATH)" -asmflags="-trimpath=$(GOPATH)"||' Makefile
+  sed -i 's|CGO_ENABLED=0||' Makefile
 }
 
 build() {
@@ -36,7 +37,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   make
 }
 
