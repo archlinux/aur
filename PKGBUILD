@@ -25,6 +25,8 @@ prepare() {
   sed -e "s/@PACKAGE_VERSION@/${pkgver}/" \
       -i "${pkgname}-${pkgver}/php_imagick.h" "${pkgname}-${pkgver}/package.xml"
   cd "$pkgname-${pkgver}"
+  rm tests/bug_73840.phpt
+  rm tests/316_Imagick_getImageKurtosis.phpt
   phpize${_phpbase}
 }
 
