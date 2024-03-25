@@ -1,17 +1,24 @@
 pkgbase = kando-bin
 	pkgdesc = A pie menu for the desktop. It will be highly customizable and will allow you to create your own menus and actions.
 	pkgver = 0.5.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://ko-fi.com/post/Introducing-Ken-Do-L3L7L0FQ2
 	arch = x86_64
 	license = MIT
 	depends = electron28
+	depends = xdg-utils
+	optdepends = kde-cli-tools
+	optdepends = gnome-browser-connector
+	optdepends = trash-cli
+	optdepends = gvfs
+	optdepends = alsa-lib
+	optdepends = pulseaudio
 	provides = kando=0.5.0
 	conflicts = kando
-	source = kando-0.5.0.rpm::https://github.com/kando-menu/kando/releases/download/v0.5.0/kando-0.5.0-1.x86_64.rpm
+	source = kando-0.5.0.rpm::https://github.com/kando-menu/kando/releases/download/v0.5.0/kando_0.5.0_amd64.deb
 	source = LICENSE-0.5.0::https://raw.githubusercontent.com/kando-menu/kando/v0.5.0/LICENSE.md
 	source = kando.sh
-	sha256sums = 780c73cbd2dd350e76df5a045314901b0305feff4a20c80060c2e4424e52591a
+	sha256sums = 4ac52586366d28d870dbdb2e5f4082bea2ac31e88c594a224e8d8e8a021e9cd2
 	sha256sums = fd6cb731b549de5452efacb0833cda7a328eb5263537d29ca18de9d7938f7bab
 	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
