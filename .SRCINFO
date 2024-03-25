@@ -1,0 +1,19 @@
+pkgbase = python-arraylias
+	pkgdesc = A Python library for automatic aliasing of multiple array libraries
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Qiskit-Extensions/arraylias
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-numpy
+	checkdepends = python-pytest
+	checkdepends = python-scipy
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = arraylias-0.1.1.tar.gz::https://github.com/Qiskit-Extensions/arraylias/archive/0.1.1.tar.gz
+	b2sums = 4adeef464d0187786ed641ac13061304ca2a87bccff70e5c8f28ec63ed6ac7213e29c5d9b651824fc2f2a515daa222e2c48b6a4a2d338fc411fe95b9466ff346
+
+pkgname = python-arraylias
