@@ -1,4 +1,5 @@
-# Maintainer: Barry Smith <brrtsm at gmail.com>
+# Maintainer: Max Harmathy <harmathy@secure.mailbox.org>
+# Contributor: Barry Smith <brrtsm at gmail.com>
 # Contributor: nblock <nblock [/at\] archlinux DOT us>
 # Contributor: Frederik AlkÃ¦rsig (FALKER) <havnelisten AT gmail.com>
 
