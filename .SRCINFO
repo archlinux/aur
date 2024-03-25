@@ -1,7 +1,7 @@
 pkgbase = python310
 	pkgdesc = Next generation of the python high-level scripting language, version 3.10
-	pkgver = 3.10.13
-	pkgrel = 2
+	pkgver = 3.10.14
+	pkgrel = 1
 	url = https://www.python.org/
 	arch = x86_64
 	license = custom
@@ -25,9 +25,9 @@ pkgbase = python310
 	optdepends = mpdecimal: for decimal
 	optdepends = xz: for lzma
 	optdepends = tk: for tkinter
-	provides = python=3.10.13
-	source = https://www.python.org/ftp/python/3.10.13/Python-3.10.13.tar.xz
+	provides = python=3.10.14
+	source = https://www.python.org/ftp/python/3.10.14/Python-3.10.14.tar.xz
 	validpgpkeys = A035C8C19219BA821ECEA86B64E628F8D684696D
-	sha256sums = 5c88848668640d3e152b35b4536ef1c23b2ca4bd2c957ef1ecbb053f571dd3f6
+	sha256sums = 9c50481faa8c2832329ba0fc8868d0a606a680fc4f60ec48d26ce8e076751fda
 
 pkgname = python310
