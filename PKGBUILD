@@ -1,7 +1,7 @@
 # Maintainer: Hans-Nikolai Viessmann <hans AT viess.mn>
 
 pkgname=xmrig-cuda
-pkgver=6.21.0
+pkgver=6.21.1
 pkgrel=1
 pkgdesc='NVIDIA CUDA plugin for XMRig miner.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cmake' 'openssl' 'cuda>=11.8')
 license=('GPL')
 source=("${url}/archive/v${pkgver}.tar.gz"
         'fix-compile.patch')
-sha256sums=('39fc4cc9ef3dab89fb0f3681e58c970edf72a6952df371d3b959744c2a578b43'
+sha256sums=('985ad8ce33df1f2572d0a5a62e48cc0f03457614db8d563dc42613119ebb32d7'
             'd702dc516dc5b57c814d9ddeffb6df72b699891b2c0c50eb690f5a9dd1a3a77f')
 
 prepare () {
