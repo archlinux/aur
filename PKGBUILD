@@ -38,14 +38,14 @@ _opt_altcommand=0
 
 _pkgname='dosemu2'
 pkgname="${_pkgname}-git"
-pkgver=2.0pre9.dev.r1646.g5959e5fb8
+pkgver=2.0pre9.dev.r1795.ga235ad7e3
 pkgrel=1
 _pkgver="${pkgver%%[a-z]*}"
 pkgdesc='Virtual machine that allows you to run DOS programs under Linux'
 arch=('i686' 'x86_64')
 #url='https://stsp.github.io/dosemu2/'
 url='https://github.com/dosemu2/dosemu2'
-license=('GPL' 'custom')
+license=('GPL-2.0-only')
 depends=('glibc' 'alsa-lib')
 if [ "${_opt_Debug}" -ne 0 ]; then
   depends+=('gdb' 'binutils' 'sudo')
@@ -165,6 +165,8 @@ _fd10='fd10_https://www.ibiblio.org//pub/micro/pc-stuff/freedos/files/distributi
 _fd11='fd11_https://www.ibiblio.org/pub/micro/pc-stuff/freedos/files/distributions/1.1/repos'
 _fd12='fd12_https://www.ibiblio.org/pub/micro/pc-stuff/freedos/files/distributions/1.2/repos'
 _gnu='gnu_https://www.ibiblio.org/pub/micro/pc-stuff/freedos/gnuish'
+_gnu='gnu_https://mirror.math.princeton.edu/pub/freeDOS/gnuish'
+_gnu2='gnu_https://ftp.sun.ac.za/ftp/pub/mirrors/freedos/gnuish'
 _extras=(
   # Extras originally found in dosemu-freedos-1.0-bin.tgz
   "${_fd10}/bwbasicx.zip" # Bywater Basic Ted A. Campbell
@@ -181,7 +183,7 @@ _extras=(
   #"${_fd12}/util/wcd.zip"
   "${_gnu}/dos_only/diff23x.zip"
   "${_gnu}/dos_only/fut312bx.zip" # File utils
-  "${_gnu}/dos_only/tut111ax.zip" # Text utils
+  "${_gnu2}/dos_only/tut111ax.zip" # Text utils
   "${_gnu}/dos_only/grep20ax.zip"
   # Extras I want, though many of little use without long file name support
   "${_gnu}/find32.zip"
