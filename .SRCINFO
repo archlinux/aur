@@ -1,0 +1,15 @@
+pkgbase = sono-font
+	pkgdesc = Soft rounded monospace and proportional font by Ty Finck
+	pkgver = 2.112
+	pkgrel = 1
+	url = https://www.etceteratype.co/sono
+	arch = any
+	license = OFL-1.1
+	source = sono-font-2.112.tar.gz::https://github.com/sursly/sono/archive/refs/tags/v2.112.tar.gz
+	b2sums = f95bb7c11c017aaa4cc901cb5a856b28054787b48acec772eba0e7a3afe04c35c00bb8ba7f663d782f442b9f314d882f4697d9e18dd50244bcabb0d5a33fe468
+
+pkgname = otf-sono
+
+pkgname = ttf-sono
+
+pkgname = ttf-sono-variable
