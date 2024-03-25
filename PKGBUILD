@@ -2,37 +2,37 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=xemu
-pkgver=0.7.118
+pkgver=0.7.120
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
-arch=('x86_64')
+arch=(x86_64)
 url="https://xemu.app/"
-license=('GPL2')
+license=(GPL-2.0-only LGPL-2.1-only LicenseRef-QEMUDistributionLicense)
 depends=(
-	'dtc'
-	'gcc-libs'
-	'glibc'
-	'hicolor-icon-theme'
-	'libhttplib.so'
-	'sdl2'
-	'zlib'
+	dtc
+	gcc-libs
+	glibc
+	hicolor-icon-theme
+	libhttplib.so
+	sdl2
+	zlib
 )
 makedepends=(
-	'cmake'
-	'git'
-	'glib2'
-	'glu'
-	'gtk3'
-	'keyutils'
-	'libepoxy'
-	'libpcap'
-	'libsamplerate'
-	'libslirp'
-	'meson'
-	'nlohmann-json'
-	'openssl'
-	'pixman'
-	'python-yaml'
+	cmake
+	git
+	glib2
+	glu
+	gtk3
+	keyutils
+	libepoxy
+	libpcap
+	libsamplerate
+	libslirp
+	meson
+	nlohmann-json
+	openssl
+	pixman
+	python-yaml
 	'tomlplusplus>=3.1'
 	'xxhash>=0.8'
 )
@@ -40,7 +40,7 @@ optdepends=(
 	'fancy-mouse-boot-rom: first-stage xbox bootrom'
 )
 install=$pkgname.install
-_commit='03f40b1d8e873b57eab68dc66ae9892aa5e39f89'
+_commit=94d826a4f125d755d6d37069ad7084bfde33d650
 source=(
 	"$pkgname::git+https://github.com/xemu-project/xemu.git#commit=$_commit"
 	"$pkgname-imgui::git+https://github.com/xemu-project/imgui.git"
@@ -53,15 +53,15 @@ source=(
 	'use-system-libs.patch'
 )
 b2sums=(
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'ab5636092dd543c38b9756914100f15a44222d5e4a3160360a1d739725a65f95ea8a5c48e11358397c0a07bbbc04ed604fc86295d979209481b1e56c5c7b4dcf'
+	SKIP
+	SKIP
+	SKIP
+	SKIP
+	SKIP
+	SKIP
+	SKIP
+	SKIP
+	ab5636092dd543c38b9756914100f15a44222d5e4a3160360a1d739725a65f95ea8a5c48e11358397c0a07bbbc04ed604fc86295d979209481b1e56c5c7b4dcf
 )
 
 prepare() {
@@ -87,7 +87,8 @@ build() {
 		--extra-cflags="-DXBOX=1" \
 		--ninja="$NINJA" \
 		--target-list="i386-softmmu" \
-		--with-git-submodules=ignore
+		--with-git-submodules=ignore \
+		--disable-fortify-source
 	make qemu-system-i386
 }
 
