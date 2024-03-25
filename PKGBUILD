@@ -3,7 +3,7 @@
 # Contributor: sanduhrs <stefan.auditor@erdfisch.de>
 pkgname=gnome-shell-extension-caffeine-git
 _uuid=caffeine@patapon.info
-pkgver=50.r16.g8e60bbb
+pkgver=53.r0.gfc5fad1
 pkgrel=1
 pkgdesc="Disable the screensaver and auto suspend"
 arch=('any')
@@ -13,10 +13,8 @@ depends=('gnome-shell')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/eonpatapon/gnome-shell-extension-caffeine.git'
-        'https://github.com/eonpatapon/gnome-shell-extension-caffeine/pull/317.patch')
-sha256sums=('SKIP'
-            'e9c0bd7fc1cf20e4fb094922f752a45aa581291a5eb1b2b806538d3316569fe3')
+source=('git+https://github.com/eonpatapon/gnome-shell-extension-caffeine.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -25,9 +23,6 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-
-  # Port extension to GNOME 46
-  patch -Np1 -i ../317.patch
 }
 
 build() {
