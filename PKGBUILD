@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-bin
-pkgver=0.24.4
+pkgver=0.24.6
 _electronversion=28
 pkgrel=1
 pkgdesc="VS Code inspired text editor that mostly runs in a webworker"
@@ -28,15 +28,15 @@ source=(
 )
 sha256sums=('ada1a0303abece27be80372538645da5c5b4e9d60fcacc87b97da1c26b8931bc'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('14e46d9b182b19f1797106a13fec29ba36f9cabb5858d09a2782b74994e7382e')
-sha256sums_armv7h=('3575dcdda8155cede6fed8d3db0db7dce673e3647a58f35e613d30303f4e9ba5')
-sha256sums_x86_64=('c5660f9480e74a84aded40150f7009ec7e77ee30a12261df53c22e7ca33d117b')
+sha256sums_aarch64=('eef795e253e4a19069b49841ddd04bbd5c807ff72a941b8cce6bab929a38d8bc')
+sha256sums_armv7h=('fab22e92e1255b50e71066bbbe221c404f0f18c34d794f999d7ae03ccf2988c3')
+sha256sums_x86_64=('44682db5f0a9003b01f76718f14692e974c2a920ee562c26dc6220311e2b4fc6')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -i "${srcdir}/lintian-${pkgname%-bin}"
     sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@ap | grep '^Chrome/[0-9.]* Electron/[0-9]'pname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
