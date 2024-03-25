@@ -1,0 +1,17 @@
+pkgbase = v2ray-rules-dat
+	pkgdesc = Enhanced edition of V2Ray rules dat files, compatible with Xray and Hysteria.
+	pkgver = 202403242210
+	pkgrel = 2
+	url = https://github.com/Loyalsoldier/v2ray-rules-dat
+	arch = any
+	license = GPL-3.0-or-later
+	provides = v2ray-domain-list-community
+	provides = v2ray-geoip
+	conflicts = v2ray-domain-list-community
+	conflicts = v2ray-geoip
+	source = geoip.dat::https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202403242210/geoip.dat
+	source = geosite.dat::https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202403242210/geosite.dat
+	sha256sums = 6e0e73e3656b83f0fad9cb61a8f33b6c896e8cb1cb2db1502f0691640680fe88
+	sha256sums = 5bbd5ce20006a41f719f410d898f0a838d5bfe643fac37b6e32729e16aae9539
+
+pkgname = v2ray-rules-dat
