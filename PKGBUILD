@@ -3,7 +3,7 @@ pkgname=pitv-bin
 _appname=pitv
 pkgver=1.1.1
 _electronversion=22
-pkgrel=4
+pkgrel=5
 pkgdesc="A cross-platform STB and IPTV player client"
 arch=("x86_64")
 url="https://ozankaraali.com/PiTV/"
@@ -22,13 +22,14 @@ source=(
 )
 sha256sums=('ae0b7dfb275404412e2ef1d04becd9c40abb7fc5b9a29e77c3a70a985986584c'
             '1473d16a8edb299025ac4faecc2b83570a5aca99e5ad66781b8492d2d328525e'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.zst"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
