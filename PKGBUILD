@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=budgeted
 pkgname="${_pkgname}-ui-bin"
-pkgver=1.2.8
+pkgver=1.2.9
 _electronversion=28
 pkgrel=1
 pkgdesc="A data pipeline for budget data and so much more"
@@ -13,13 +13,12 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'nodejs'
-    'hicolor-icon-theme'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c7d460804b88213360c01277424d24df8bb51741c083f32ca833352599083b82'
+sha256sums=('71d1dcb5544474504ea681073d3cdd341616c87c2881a8642003b685197b194e'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
