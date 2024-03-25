@@ -1,6 +1,6 @@
 pkgbase = iptvnator-appimage
 	pkgdesc = Cross-platform IPTV player app, supports m3u+m3u8 playlists, favorites, TV guide, TV archive/catchup and more
-	pkgver = 0.15.0
+	pkgver = 0.15.1
 	pkgrel = 1
 	url = https://github.com/4gray/iptvnator/
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = iptvnator-appimage
 	provides = iptvnator
 	conflicts = iptvnator
 	options = !strip
-	source_x86_64 = https://github.com/4gray/iptvnator/releases/download/v0.15.0/IPTVnator-0.15.0.AppImage
-	sha256sums_x86_64 = d12a16b36b7abd090939aaad96c689e778d3dfab58d3b9a167ece1588d806753
-	source_aarch64 = https://github.com/4gray/iptvnator/releases/download/v0.15.0/IPTVnator-0.15.0-arm64.AppImage
-	sha256sums_aarch64 = 2008b0fa186c29f43e7e28acdf648fc7fffd3dad7ce36634ed83e4aa780b5c9b
-	source_armv7h = https://github.com/4gray/iptvnator/releases/download/v0.15.0/IPTVnator-0.15.0-armv7l.AppImage
-	sha256sums_armv7h = d0e5b99b449dba7a1bc05d8586c8b71a24d101469ad72752ff8b72a9531aaba7
+	source_x86_64 = https://github.com/4gray/iptvnator/releases/download/v0.15.1/IPTVnator-0.15.1.AppImage
+	sha256sums_x86_64 = fd0d9de1122df031d46b2de572648f697f5bc0db91d84fb73f16f198e1a4a763
+	source_aarch64 = https://github.com/4gray/iptvnator/releases/download/v0.15.1/IPTVnator-0.15.1-arm64.AppImage
+	sha256sums_aarch64 = 6319a0dd3ff4e131af5381d3b398527d5ad375bab999a4f94ca988acb339336f
+	source_armv7h = https://github.com/4gray/iptvnator/releases/download/v0.15.1/IPTVnator-0.15.1-armv7l.AppImage
+	sha256sums_armv7h = e9666d23338e77e3a18601f97e4fe6c217bd73d841d056388e2e5fe53fea6961
 
 pkgname = iptvnator-appimage

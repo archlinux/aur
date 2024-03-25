@@ -1,26 +1,30 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=iptvnator-appimage
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="Cross-platform IPTV player app, supports m3u+m3u8 playlists, favorites, TV guide, TV archive/catchup and more"
-arch=('x86_64' 'aarch64' 'armv7h')
-url="https://github.com/4gray/iptvnator/"
-license=('MIT')
-depends=('fuse2')
+arch=(
+	x86_64 
+	aarch64 
+	armv7h
+)
+url='https://github.com/4gray/iptvnator/'
+license=(MIT)
+depends=(fuse2)
 optdepends=(
 	'mpv: a free, open source, and cross-platform media player'
 	'vlc: Multi-platform MPEG, VCD/DVD, and DivX player'
 )
-provides=('iptvnator')
-conflicts=('iptvnator')
+provides=(iptvnator)
+conflicts=(iptvnator)
 options=(!strip) # necessary otherwise the AppImage file in the package is truncated
 source_x86_64=("${url}releases/download/v${pkgver}/IPTVnator-${pkgver}.AppImage")
 source_aarch64=("${url}releases/download/v${pkgver}/IPTVnator-${pkgver}-arm64.AppImage")
 source_armv7h=("${url}releases/download/v${pkgver}/IPTVnator-${pkgver}-armv7l.AppImage")
-sha256sums_x86_64=('d12a16b36b7abd090939aaad96c689e778d3dfab58d3b9a167ece1588d806753')
-sha256sums_aarch64=('2008b0fa186c29f43e7e28acdf648fc7fffd3dad7ce36634ed83e4aa780b5c9b')
-sha256sums_armv7h=('d0e5b99b449dba7a1bc05d8586c8b71a24d101469ad72752ff8b72a9531aaba7')
+sha256sums_x86_64=('fd0d9de1122df031d46b2de572648f697f5bc0db91d84fb73f16f198e1a4a763')
+sha256sums_aarch64=('6319a0dd3ff4e131af5381d3b398527d5ad375bab999a4f94ca988acb339336f')
+sha256sums_armv7h=('e9666d23338e77e3a18601f97e4fe6c217bd73d841d056388e2e5fe53fea6961')
 [ $CARCH = "x86_64" ] && _image="$(basename "${source_x86_64[0]}")"
 [ $CARCH = "aarch64" ] && _image="$(basename "${source_aarch64[0]}")"
 [ $CARCH = "armv7h" ] && _image="$(basename "${source_armv7h[0]}")"
