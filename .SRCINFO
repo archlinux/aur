@@ -1,0 +1,16 @@
+pkgbase = chrpath-git
+	pkgdesc = Tool to adjust the RPATH or RUNPATH of ELF binaries
+	pkgver = 0.17.r2.g594b5ff
+	pkgrel = 1
+	url = https://codeberg.org/pere/chrpath
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = glibc
+	provides = chrpath=0.17.r2.g594b5ff
+	conflicts = chrpath
+	source = git+https://codeberg.org/pere/chrpath.git
+	sha256sums = SKIP
+
+pkgname = chrpath-git
