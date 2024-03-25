@@ -28,9 +28,9 @@ package() {
   install -Dm644 -t "${pkgdir}/usr/share/glib-2.0/schemas/" schemas/*.xml
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 
-  # cd locale
-  #
-  # for locale in */; do
-  #   install -Dm644 -t "${pkgdir}/usr/share/locale/${locale}/LC_MESSAGES" "${locale}/LC_MESSAGES"/*.mo
-  # done
+  cd locale
+
+  for locale in */; do
+    install -Dm644 -t "${pkgdir}/usr/share/locale/${locale}/LC_MESSAGES" "${locale}/LC_MESSAGES"/*.mo || true
+  done
 }
