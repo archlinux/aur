@@ -38,7 +38,11 @@ makedepends=(
   'nasm'
 )
 checkdepends=('appstream' 'desktop-file-utils')
-optdepends=('flatpak: Flatpak support for Cosmic Store')
+optdepends=(
+  'flatpak: Flatpak support for Cosmic Store'
+  'otf-fira-mono: Recommended Mono font'
+  'otf-fira-sans: Recommended Sans font'
+)
 
 _submodules=(
   cosmic-applets
