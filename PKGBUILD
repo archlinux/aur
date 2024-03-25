@@ -1,38 +1,38 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=iptvnator
-pkgver=0.15.0
-pkgrel=4
+pkgver=0.15.1
+pkgrel=1
 pkgdesc="Cross-platform IPTV player application with multiple features, such as support of m3u and m3u8 playlists, favorites, TV guide, TV archive/catchup and more"
-arch=('x86_64')
-url="https://github.com/4gray/iptvnator"
-license=('MIT')
+arch=(x86_64)
+url='https://github.com/4gray/iptvnator'
+license=(MIT)
 depends=(
-	'c-ares'
-	'ffmpeg'
-	'gtk3'
-	'http-parser'
-	'libevent'
-	'libvpx'
-	'libxslt'
-	'libxss'
-	'minizip'
-	'nss'
-	're2'
-	'snappy'
-	'libnotify'
-	'libappindicator-gtk3'
-	'libxcrypt-compat'
+	c-ares
+	ffmpeg
+	gtk3
+	http-parser
+	libevent
+	libvpx
+	libxslt
+	libxss
+	minizip
+	nss
+	re2
+	snappy
+	libnotify
+	libappindicator-gtk3
+	libxcrypt-compat
 )
-makedepends=('npm')
+makedepends=(npm)
 optdepends=(
 	'mpv: a free, open source, and cross-platform media player'
 	'vlc: Multi-platform MPEG, VCD/DVD, and DivX player'
 )
-provides=('iptvnator')
-conflicts=('iptvnator')
+provides=(iptvnator)
+conflicts=(iptvnator)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a4e44d63951dba8594907e6d94629901181d62176b3373f6c957b2e6e0d2631b')
+sha256sums=('6059a3a1691244f360b093ea4055bbcfbe7dbec69d3a9e85d3a160b35debd799')
 
 prepare() {
 	cd $pkgname-$pkgver
