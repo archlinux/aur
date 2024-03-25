@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=TotK Mod Manager
-Comment=Open-source application, designed to assist players of Zelda: Tears of the Kingdom on the Yuzu emulator in managing mods for the game
-Exec=/usr/bin/totk-mod-manager
-Icon=totk-mod-manager
-StartupWMClass=zelda-tears-of-the-kingdom-mod-manager
-Type=Application
-Categories=Development;
