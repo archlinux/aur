@@ -3,8 +3,8 @@
 _name=stable-diffusion.cpp
 pkgbase="${_name}-git"
 pkgname=(
-  # "${pkgbase}"
-  # "${_name}-cublas-git"
+  "${pkgbase}"
+  "${_name}-cublas-git"
   "${_name}-hipblas-git"
 )
 pkgver=r108.48bcce4

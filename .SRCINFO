@@ -18,6 +18,17 @@ pkgbase = stable-diffusion.cpp-git
 	source = stable-diffusion.cpp::git+https://github.com/leejet/stable-diffusion.cpp
 	sha256sums = SKIP
 
+pkgname = stable-diffusion.cpp-git
+	pkgdesc = Stable Diffusion in pure C/C++ (with OPENBlas CPU optimizations)
+	depends = openblas
+	provides = stable-diffusion.cpp-git=r108.48bcce4
+
+pkgname = stable-diffusion.cpp-cublas-git
+	pkgdesc = Stable Diffusion in pure C/C++ (with NVIDIA CUDA optimizations)
+	depends = cuda
+	provides = stable-diffusion.cpp-git=r108.48bcce4
+	conflicts = stable-diffusion.cpp-git
+
 pkgname = stable-diffusion.cpp-hipblas-git
 	pkgdesc = Stable Diffusion in pure C/C++ (with AMD ROCm optimizations)
 	depends = rocm-hip-runtime
