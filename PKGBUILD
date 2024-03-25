@@ -1,12 +1,12 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=notepad
-pkgdesc='A simple notepad for GNU/Linux distributions'
-pkgver=1.2.5
+pkgver=1.2.6
 pkgrel=1
-arch=('aarch64' 'x86_64')
+pkgdesc='A simple notepad for GNU/Linux distributions'
 url="https://github.com/alexkdeveloper/notepad"
-license=('GPL3')
+license=('GPL-3.0-or-later')
+arch=('x86_64' 'aarch64')
 depends=('libadwaita')
 makedepends=('git' 'meson' 'vala')
 checkdepends=('appstream-glib')
@@ -14,7 +14,7 @@ source=("git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 build() {
-  arch-meson $pkgname build
+  arch-meson notepad build
   meson compile -C build
 }
 
@@ -23,6 +23,6 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
-  ln -s com.github.alexkdeveloper.$pkgname "$pkgdir/usr/bin/$pkgname.alexkdeveloper"
+  meson install -C build --destdir "$pkgdir"
+  ln -s com.github.alexkdeveloper.notepad "$pkgdir/usr/bin/notepad.alexkdeveloper"
 }
