@@ -16,6 +16,8 @@ help-common:
 .PHONY: renew install update package clean update_tag test
 renew: update_tag install ## get newer version and renew package, install that
 
+update_pakage: package_auto test ## 自動的に最新バージョンを取得してパッケージングしてテスト
+
 install: ## install package
 	makepkg -si
 
@@ -24,11 +26,11 @@ update_checksum: ## upgrade pkg checksum
 	@# https://wiki.archlinux.org/title/PKGBUILD#Integrity
 	updpkgsums
 
-package: update_checksum ## packaging for manual operation
+package: update_checksum ## 事前に手動でバージョンを更新してパッケージング
 	makepkg -s
 	mksrcinfo
 
-package_auto: update_tag ## Auto packaging 
+package_auto: update_tag ## 自動でバージョンを更新してパッケージング
 	makepkg -s
 	mksrcinfo
 
