@@ -11,10 +11,9 @@ pkgbase = picotool-git
 	depends = libusb
 	provides = picotool
 	conflicts = picotool
-	source = git+https://github.com/raspberrypi/picotool
-	source = git+https://github.com/raspberrypi/pico-sdk
+	source = git+https://github.com/raspberrypi/picotool.git
+	source = git+https://github.com/raspberrypi/pico-sdk.git
 	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = picotool-git
-

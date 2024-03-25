@@ -1,7 +1,7 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
 pkgname=picotool-git
-pkgver=r1.d54bf53
+pkgver=r47.f6fe6b7
 pkgrel=1
 pkgdesc="Tool for interacting with a RP2040 device in BOOTSEL mode, or with a RP2040 binary"
 arch=('x86_64')
@@ -12,8 +12,8 @@ makedepends=('git' 'cmake')
 provides=('picotool')
 conflicts=('picotool')
 source=(
-  "git+https://github.com/raspberrypi/picotool"
-  "git+https://github.com/raspberrypi/pico-sdk"
+  "git+https://github.com/raspberrypi/picotool.git"
+  "git+https://github.com/raspberrypi/pico-sdk.git"
 )
 sha512sums=(
   'SKIP'
