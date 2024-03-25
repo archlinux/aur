@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-another-window-session-manager-git
 	pkgdesc = A GNOME shell extension to close open windows gracefully and save them as a session.
-	pkgver = 41.r10.g938fcf4
-	pkgrel = 1
+	pkgver = 46.r0.ga6640e3
+	pkgrel = 2
 	url = https://github.com/nlpsuge/gnome-shell-extension-another-window-session-manager
 	install = gnome-shell-extension-another-window-session-manager.install
 	arch = any
