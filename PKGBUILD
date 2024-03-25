@@ -1,7 +1,7 @@
 # Maintainer: TrueConf LLC <packager@trueconf.com>
 pkgbase='trueconf-client'
 pkgname='trueconf'
-pkgver='8.4.0.1954'
+pkgver='8.4.0.1957'
 pkgrel='1'
 pkgdesc='Video conference client with a range of rich collaborative tools and an easy-to-use interface'
 arch=('x86_64')
@@ -56,8 +56,8 @@ depends=('pulseaudio'
 )
 install="${pkgname}-client.install"
 _channel=stable
-source=('https://mirror.trueconf.com/archlinux/trueconf-8.4.0.1954-1-x86_64.pkg.tar.zst')
-sha512sums=('06594ad7412960d72a24c8580e58b8633abbfa3ea8c95f5f6c95561234b31ae055eb56903d967f023f609e47dacd71d69fa80b516659c7fa2528a383b884a0b2')
+source=('https://mirror.trueconf.com/archlinux/trueconf-8.4.0.1957-1-x86_64.pkg.tar.zst')
+sha512sums=('444e590cc52494ca5df075f4fbf3a95e8c478f2535c90982a408a7a67a38e58566bb6272057d03c4a0be160ba4e4d720f683898373ca61572fbe60e4d709cc82')
 
 package() {
   cd "${srcdir}"
