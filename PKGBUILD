@@ -2,7 +2,7 @@
 
 pkgname=ledger-udev
 pkgver=1
-pkgrel=8
+pkgrel=9
 pkgdesc='Udev rules to connect a ledger wallet to your linux box'
 arch=(any)
 url='https://www.ledgerwallet.com'
@@ -11,7 +11,7 @@ depends=(udev)
 install='ledger-udev.install'
 
 source=(https://raw.githubusercontent.com/LedgerHQ/udev-rules/master/20-hw1.rules)
-sha256sums=('e6d262beeb5ce40804ad90ce99716617e3fe046afa85a7b8c24e83362b653221')
+sha256sums=('0a67fa9b7024048f7f967fef8d33c2da38dae9354e996c131b79a014f62b7efc')
 
 package() {
   install -Dm 644 20-hw1.rules "$pkgdir"/usr/lib/udev/rules.d/20-hw1.rules
