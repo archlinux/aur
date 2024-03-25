@@ -5,9 +5,9 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=lintr
-_pkgver=3.1.1
+_pkgver=3.1.2
 pkgname=r-${_pkgname,,}
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="A 'Linter' for R Code"
 arch=('any')
@@ -41,7 +41,7 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bcf146f4e74e6bf132fcbee7c9a43cd9c8abb4787e76a4164fa20468c180871d')
+sha256sums=('35d379999b0c2f0955a963027b9fb6ad03456ea58a57ee57dc2e5a0e10505377')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
