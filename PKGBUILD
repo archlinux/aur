@@ -1,9 +1,6 @@
 # Maintainer:
 # Contributor: Frederic Bezies < fredbezies at gmail dot com >
 # Contributor: aimileus < me at aimileus dot nl >
-# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Contributor: Tiago Pierezan Camargo <tcamargo@gmail.com>
-# Contributor: robb_force <robb_force@holybuffalo.net>
 
 ## useful links
 # http://0ldsk00l.ca/nestopia/
@@ -17,13 +14,14 @@
 : ${_build_avx:=false}
 : ${_build_git:=true}
 
+unset _pkgtype
 [[ "${_build_avx::1}" == "t" ]] && _pkgtype+="-avx"
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
 ## basic info
 _pkgname="nestopia"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.52.0.r4.gaca778f
+pkgver=1.52.0.r13.g07fa3b3
 pkgrel=1
 pkgdesc="High-accuracy NES/Famicom emulator"
 url="https://github.com/0ldsk00l/nestopia"

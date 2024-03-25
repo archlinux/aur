@@ -1,6 +1,6 @@
 pkgbase = nestopia-git
 	pkgdesc = High-accuracy NES/Famicom emulator
-	pkgver = 1.52.0.r4.gaca778f
+	pkgver = 1.52.0.r13.g07fa3b3
 	pkgrel = 1
 	url = https://github.com/0ldsk00l/nestopia
 	install = nestopia.install
