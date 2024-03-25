@@ -1,10 +1,11 @@
 pkgbase = python-sphinx-markdown-tables
 	pkgdesc = Sphinx extension for rendering tables written in markdown
 	pkgver = 0.0.17
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/ryanfox/sphinx-markdown-tables
 	arch = any
 	license = GPL-3.0-or-later
+	makedepends = debugedit
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
