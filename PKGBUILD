@@ -1,28 +1,23 @@
 # Maintainer: Rustmilian Rustmilian@proton.me
 
-pkgname=(
-	'calamares'
-	'calamares-qt5'
-	)
+pkgname=('calamares'
+	'calamares-qt5')
 
-pkgver=3.3.1
+pkgver=3.3.5
 pkgrel=1
 pkgdesc='Distribution-independent installer framework'
 arch=($CARCH)
 url="https://github.com/calamares/calamares"
 
-license=(
-	'BSD-2-Clause'
+license=('BSD-2-Clause'
 	'CC-BY-4.0'
 	'CC0-1.0'
 	'GPL-3.0-or-later'
 	'LGPL-2.1-only'
 	'LGPL-3.0-or-later'
-	'MIT'
-	)
+	'MIT')
 
-depends=(
-	'ckbcomp'
+depends=('ckbcomp'
 	'efibootmgr'
 	'gtk-update-icon-cache'
 	'hwinfo'
@@ -31,38 +26,28 @@ depends=(
 	'libpwquality'
 	'mkinitcpio-openswap'
 	'squashfs-tools'
-	'yaml-cpp'
-	)
+	'yaml-cpp')
 
-makedepends=(
-	'extra-cmake-modules'
-	'git'
-	)
+makedepends=('extra-cmake-modules' 'git')
 
-backup=(
-	'usr/share/calamares/modules/bootloader.conf'
+backup=('usr/share/calamares/modules/bootloader.conf'
 	'usr/share/calamares/modules/displaymanager.conf'
 	'usr/share/calamares/modules/initcpio.conf'
-	'usr/share/calamares/modules/unpackfs.conf'
-	)
+	'usr/share/calamares/modules/unpackfs.conf')
 
-source=(
-	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	"calamares.desktop"
 	"calamares_polkit"
 	"49-nopasswd-calamares.rules"
 	"paru-support.patch"
-	"flag.patch"
-	)
+	"flag.patch")
 
-sha256sums=(
-	'af95c65d78236f67ea7181bce16483a863e304d53a2fab8403a3a9cb7544f86c'
-	'b9e65ab87f69b2d3f8f8eaea60c78625aef57dd336314ab75389f31a447445be'
-	'c176b28007bd1c1f23d8dbb2c936fa54d0c01bacfb67290ddad597606c129df3'
-	'56d85ff6bf860b9559b8c9f997ad9b1002f3fccc782073760eca505e3bddd176'
-	'f00c90bd87d6dfd73b3ec53fa9a145ac25234676be41604807f05f05a4bf5bbb'
-	'0830c8fe57c94a63ef87b6a025eb729b4f098a9e46e729b63415f4d3a2755762'
-	)
+sha256sums=('65b11d6bb2ba76fc74fed08faa4b6fe43d1a5bf4a2522b30fc43b44151686c47'
+            'b9e65ab87f69b2d3f8f8eaea60c78625aef57dd336314ab75389f31a447445be'
+            'c176b28007bd1c1f23d8dbb2c936fa54d0c01bacfb67290ddad597606c129df3'
+            '56d85ff6bf860b9559b8c9f997ad9b1002f3fccc782073760eca505e3bddd176'
+            'f00c90bd87d6dfd73b3ec53fa9a145ac25234676be41604807f05f05a4bf5bbb'
+            '0830c8fe57c94a63ef87b6a025eb729b4f098a9e46e729b63415f4d3a2755762')
 
 prepare() {
 	makedepends() {
@@ -156,8 +141,7 @@ build() {
 }
 
 package_calamares() {
-	depends=(
-		'kconfig>=5.246'
+	depends=('kconfig>=5.246'
 		'kcoreaddons>=5.246'
 		'ki18n>=5.246'
 		'kiconthemes>=5.246'
@@ -165,8 +149,7 @@ package_calamares() {
 		'polkit-qt6>=0.175.0'
 		'qt6-base>=6.6.0'
 		'qt6-svg>=6.6.0'
-		'solid>=5.246'
-	)
+		'solid>=5.246')
 
 	cd "${srcdir}/${pkgname}-${pkgver}/build" || return
 	make DESTDIR="$pkgdir" install
@@ -178,8 +161,7 @@ package_calamares() {
 }
 
 package_calamares-qt5() {
-	depends=(
-		'kconfig5>=5.113.0'
+	depends=('kconfig5>=5.113.0'
 		'kcoreaddons5>=5.113.0'
 		'kiconthemes5>=5.113.0'
 		'ki18n5>=5.113.0'
@@ -189,8 +171,7 @@ package_calamares-qt5() {
 		'qt5-svg>=5.15.11'
 		'polkit-qt5>=0.175.0'
 		'plasma-framework5>=5.58'
-		'qt5-xmlpatterns>=5.15.11'
-	)
+		'qt5-xmlpatterns>=5.15.11')
 
 	cd "${srcdir}/${pkgname}-${pkgver}/build" || return
 	make DESTDIR="$pkgdir" install
