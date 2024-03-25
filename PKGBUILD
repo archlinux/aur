@@ -4,13 +4,13 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdisplay-git
-pkgver=5.27.80_r1542.gd243e46
+pkgver=5.27.80_r1568.g49bdcb3
 pkgrel=1
 pkgdesc="App and daemon for display managing by the KWinFT project (kscreen fork)"
 arch=($CARCH)
 url="https://gitlab.com/kwinft/kdisplay"
 license=(LGPL)
-depends=(kcmutils-git kdeclarative-git kirigami2-git ki18n-git plasma-framework-git qt6-sensors)
+depends=(kcmutils-git kdeclarative-git kirigami-git ki18n-git libplasma-git qt6-sensors)
 makedepends=(git disman-git extra-cmake-modules-git kcmutils-git)
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
@@ -19,7 +19,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  _ver="$(grep -m1 'set(PROJECT_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  _ver="$(grep -im1 "project(${pkgname%-git} VERSION" CMakeLists.txt | sed 's/.* //; s/-/./g; s/)//')"
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
