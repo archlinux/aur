@@ -3,7 +3,7 @@
 _name=GUN4ALL-GUI
 pkgname=gun4all-gui
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Configuration utility for the IR-GUN4ALL DIY light-gun system.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/SeongGino/GUN4ALL-GUI'
@@ -25,5 +25,5 @@ build() {
 
 package() {
   install -Dm755 "$srcdir/$_name-$pkgver/build/G4A-GUImain" "$pkgdir/usr/bin/G4A-GUI"
-  desktop-file-install "$srcdir/GUN4ALL-GUI.desktop" --dir="$pkgdir/usr/share/applications"
+  install -Dm755 "$srcdir/GUN4ALL-GUI.desktop" "$pkgdir/usr/share/applications/GUN4ALL-GUI.desktop"
 }
