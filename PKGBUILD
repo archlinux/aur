@@ -13,7 +13,7 @@ makedepends=('cmake')
 depends=('libatasmart' 'yaml-cpp')
 optdepends=('lm_sensors: hwmon support')
 backup=('etc/systemd/system/thinkfan.service.d/override.conf')
-license=('GPL')
+license=('GPL-3.0-or-later')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vmatare/$pkgname/archive/$pkgver.tar.gz"
         'thinkfan.service'
         'thinkpad_acpi.conf')
