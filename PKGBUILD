@@ -2,7 +2,7 @@
 # Maintainer: Patrick Wicki <patrick.wicki96@gmail.com>
 
 pkgname=gnome-meta
-pkgver=45
+pkgver=46
 pkgrel=1
 pkgdesc='Meta package to install GNOME'
 arch=(any)
@@ -10,7 +10,6 @@ url='https://www.gnome.org/'
 license=(GPL)
 depends=(
   baobab
-  cheese
   epiphany
   evince
   gdm
@@ -31,7 +30,6 @@ depends=(
   gnome-maps
   gnome-menus
   gnome-music
-  gnome-photos
   gnome-remote-desktop
   gnome-session
   gnome-settings-daemon
@@ -52,6 +50,7 @@ depends=(
   gvfs-gphoto2
   gvfs-mtp
   gvfs-nfs
+  gvfs-onedrive
   gvfs-smb
   loupe
   malcontent
