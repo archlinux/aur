@@ -8,6 +8,7 @@ pkgbase = hasherino-latest-bin
 	provides = hasherino
 	source = git+https://github.com/Hashy-Software/hasherino.git
 	source = https://github.com/Hashy-Software/hasherino/releases/download/v0.1.14/hasherino
+	sha256sums = SKIP,
 	sha256sums = SKIP
 
 pkgname = hasherino-latest-bin
