@@ -1,7 +1,7 @@
 pkgbase = thextech-bin
 	pkgdesc = SMBX engine.
 	pkgver = 1.3.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Wohlstand/TheXTech
 	arch = i386
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = thextech-bin
 	license = GPL
 	makedepends = unzip
 	depends = sdl2
+	provides = thextech=1.3.6.4
 	source_i386 = https://github.com/Wohlstand/TheXTech/releases/download/v1.3.6.4/thextech-plain-runtime-v1.3.6.4-linux-generic-u16.04-i386.tar.gz
 	sha256sums_i386 = SKIP
 	source_i686 = https://github.com/Wohlstand/TheXTech/releases/download/v1.3.6.4/thextech-plain-runtime-v1.3.6.4-linux-generic-u16.04-i386.tar.gz

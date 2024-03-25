@@ -1,7 +1,7 @@
 pkgname=thextech-bin
 _pkgname=TheXtech-bin
 pkgver=1.3.6.4
-pkgrel=1
+pkgrel=2
 _pkgrel_x86_64=1
 _pkgrel_aarch64=1
 _pkgrel_i386=1
@@ -9,6 +9,7 @@ _pkgrel_i686=1
 pkgdesc="SMBX engine."
 arch=('i386' 'i686' 'pentium4' 'x86_64' 'aarch64')
 url="https://github.com/Wohlstand/TheXTech"
+provides=("thextech=${pkgver}");
 license=('GPL')
 depends=('sdl2')
 makedepends=('unzip')
