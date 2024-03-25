@@ -6,8 +6,17 @@
 # https://codeberg.org/river/river
 # https://github.com/riverwm/river
 
+## options
+: ${_build_xwayland:=true}
+: ${_build_git:=true}
+
+unset _pkgtype
+[ "${_build_xwayland::1}" != "t" ] && _pkgtype+="-noxwayland"
+[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
+
+# basic info
 _pkgname="river"
-pkgname="$_pkgname-git"
+pkgname="$_pkgname${_pkgtype:-}"
 pkgver=0.2.6.r285.g12de175
 pkgrel=1
 pkgdesc='Dynamic tiling wayland compositor'
@@ -23,7 +32,6 @@ depends=(
   'wayland'
   'wayland-protocols'
   'wlroots'
-  'xorg-xwayland'
 )
 makedepends=(
   'git'
@@ -34,6 +42,8 @@ optdepends=(
   'polkit: access seat through systemd-logind'
 )
 
+[[ "${_build_xwayland::1}" == "t" ]] && depends+=('xorg-xwayland')
+
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
@@ -41,7 +51,7 @@ options=('!strip')
 
 _pkgsrc="$_pkgname"
 source=(
-  "git+https://github.com/riverwm/river.git"
+  'git+https://github.com/riverwm/river.git'
   'git+https://github.com/ifreund/zig-pixman.git'
   'git+https://github.com/ifreund/zig-wayland.git'
   'git+https://github.com/swaywm/zig-wlroots.git'
@@ -79,8 +89,9 @@ package() {
   local _zig_options=(
     --prefix '/usr'
     -Doptimize=ReleaseSafe
-    -Dxwayland
   )
+
+  [[ "${_build_xwayland::1}" == "t" ]] && _zig_options+=(-Dxwayland)
 
   DESTDIR="$pkgdir" zig build "${_zig_options[@]}"
 
