@@ -14,6 +14,7 @@
 : ${_build_avx:=false}
 : ${_build_git:=false}
 
+unset _pkgtype
 [[ "${_build_avx::1}" == "t" ]] && _pkgtype+="-avx"
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
@@ -80,8 +81,8 @@ build() {
   fi
 
   if [[ "${_build_avx::1}" == "t" ]] ; then
-    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
-    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
+    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
   fi
 
   cd "$_pkgsrc"
