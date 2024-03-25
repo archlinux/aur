@@ -1,0 +1,27 @@
+pkgbase = intel-npu-driver-bin
+	pkgdesc = Intel(R) NPU (Neural Processing Unit) Driver
+	pkgver = 1.4.0.20240322_8393323322
+	pkgrel = 1
+	url = https://github.com/intel/linux-npu-driver
+	arch = x86_64
+	license = MIT
+	depends = onetbb
+	depends = level-zero-headers
+	depends = level-zero-loader
+	provides = intel-driver-compiler-npu
+	provides = intel-fw-npu
+	provides = intel-level-zero-npu
+	noextract = intel-driver-compiler-npu.deb
+	noextract = intel-fw-npu.deb
+	noextract = intel-level-zero-npu.deb
+	noextract = LICENSE
+	source = intel-driver-compiler-npu.deb::https://github.com/intel/linux-npu-driver/releases/download/v1.2.0/intel-driver-compiler-npu_1.4.0.20240322-8393323322_ubuntu22.04_amd64.deb
+	source = intel-fw-npu.deb::https://github.com/intel/linux-npu-driver/releases/download/v1.2.0/intel-fw-npu_1.4.0.20240322-8393323322_ubuntu22.04_amd64.deb
+	source = intel-level-zero-npu.deb::https://github.com/intel/linux-npu-driver/releases/download/v1.2.0/intel-level-zero-npu_1.4.0.20240322-8393323322_ubuntu22.04_amd64.deb
+	source = LICENSE::https://raw.githubusercontent.com/intel/linux-npu-driver/main/LICENSE.md
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = intel-npu-driver-bin
