@@ -3,15 +3,15 @@
 # thanks to txtsd <aur.archlinux@ihavea.quest> for contributing some parts of the PKGBUILD code
 
 pkgname=openmw-git
-pkgver=0.48.0.r4616.g65d51665e5
+pkgver=0.48.0.r4764.g012d10703f
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64' 'aarch64')
 url="http://www.openmw.org"
 license=('GPL3' 'MIT' 'custom')
-depends=('openal' 'openscenegraph' 'mygui-openmw' 'bullet-dp' 'qt6-base' 'qt6-tools' 'ffmpeg' 'sdl2' 'unshield' 'libxt' 'boost-libs' 'luajit' 'recastnavigation-openmw' 'yaml-cpp' 'sqlite')
+depends=('openal' 'openscenegraph-openmw-git' 'mygui-openmw' 'bullet-dp' 'qt6-base' 'qt6-tools' 'ffmpeg' 'sdl2' 'unshield' 'libxt' 'boost-libs' 'luajit' 'recastnavigation-openmw' 'yaml-cpp' 'sqlite')
 optdepends=('openscenegraph-openmw-git: experimental performance enhancements for OpenMW that are too controversial to be included in the general purpose OSG project')
-makedepends=('git' 'cmake' 'boost')
+makedepends=('git' 'cmake' 'boost' 'debugedit')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=('git+https://gitlab.com/OpenMW/openmw.git')
