@@ -10,7 +10,7 @@ pkgname=(
   "${_name}-sycl-f16-git"
   "${_name}-sycl-f32-git"
 )
-pkgver=b2527.r1.ae1f211ce
+pkgver=b2527.r2.2f34b865b
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -45,10 +45,12 @@ prepare() {
   git config submodule.kompute.url "${srcdir}/kompute"
   git -c protocol.file.allow=always submodule update
 
-  if [ ! -d "${srcdir}/${_name}-cublas" ]; then
+  if [ ! -d "${srcdir}/${_name}-clblas" ]; then
+    cp -r "${srcdir}/${_name}" "${srcdir}/${_name}-clblas"
     cp -r "${srcdir}/${_name}" "${srcdir}/${_name}-cublas"
     cp -r "${srcdir}/${_name}" "${srcdir}/${_name}-openblas"
     cp -r "${srcdir}/${_name}" "${srcdir}/${_name}-hipblas"
+    cp -r "${srcdir}/${_name}" "${srcdir}/${_name}-sycl"
   fi
 }
 
