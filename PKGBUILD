@@ -9,9 +9,10 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=11.11.1
-_floorp_core_commit="ff6aaadc11e889f0bcb2e5a5d63000bfe6b9257a"
+pkgver=11.11.2
+_floorp_core_commit="09cc05ed3a469f71aaf4ada1b5a08acd08f99af8"
 _floorp_l10n_commit="b1cfac382d73f99251cf3e7076cc90e4612572f6"
+_floorp_private_commit="69519e444dbb05118e512c1e23a456520004b700"
 pkgrel=1
 epoch=1
 pkgdesc="Floorp fork build using custom branding & settings"
@@ -79,12 +80,14 @@ backup=("usr/lib/${pkgname}/${pkgname}.cfg"
 source=(https://github.com/Floorp-Projects/Floorp/archive/refs/tags/v"${pkgver}".tar.gz
     "floorp-core::git+https://github.com/Floorp-Projects/Floorp-core#commit=$_floorp_core_commit"
     "floorp-l10n-central::git+https://github.com/Floorp-Projects/Unified-l10n-central#commit=$_floorp_l10n_commit"
+    "floorp-private::git+https://github.com/floorp-Projects/Floorp-private-components#commit=$_floorp_private_commit"
     "common::git+https://gitlab.com/garuda-linux/firedragon/common.git"
     "settings::git+https://gitlab.com/garuda-linux/firedragon/settings.git"
     "${pkgname}.desktop")
-sha256sums=('20f8e200bf786d55849f5934b55b508d2a0d1cd8de67a9f9c88ecb8205aed44d'
-    'b7560f743bb8c25b29acc3573bb4ae8997816f7eb5e41e014535a74a0f18e4b0'
+sha256sums=('18250e72d551e81ec34c7206c58c3026a465d5cdc780eb10cdc3ea050b2ff824'
+    'ac1824366321e33651b0a388d3fd9ca82709361f9291664d16890e37630f33cb'
     '86b211b89b5aa742b2f583655ba85273ea56d6c4942ba3b5a3ec2d52d6afc36f'
+    '9fd6541b7f8d1b212db18a71a501727d707ff11b9a995300579d3f6f92114eeb'
     'SKIP'
     'SKIP'
     '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560')
@@ -103,6 +106,7 @@ prepare() {
     # Floorp's shenanigan to make the build work without cloning the whole
     # git source (puts submodules' content in place)
     mv -f "${srcdir}"/floorp-core/* ./Floorp-"${pkgver}"/floorp
+    mv -f "${srcdir}"/floorp-private/* ./Floorp-"${pkgver}"/floorp/Floorp-private-components
     mv -f "${srcdir}"/floorp-l10n-central/* ./Floorp-"${pkgver}"/floorp/browser/locales/l10n-central
 
     rm -rf "${srcdir}/mozbuild"
@@ -115,6 +119,7 @@ ac_add_options --with-app-name=${pkgname}
 ac_add_options --with-branding=browser/branding/firedragon
 ac_add_options --with-l10n-base=${PWD@Q}/floorp/browser/locales/l10n-central
 ac_add_options --enable-application=browser
+ac_add_options --enable-private-components
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
 # Build options
