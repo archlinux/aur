@@ -1,7 +1,7 @@
 # Maintainer: VVL <v@minakov.pro>
 
 pkgname=openssl-gost
-pkgver=v3.0.3.r0.ge0a500a
+pkgver=v3.0.3.r2.gede3886
 pkgrel=1
 pkgdesc='A reference implementation of the Russian GOST crypto algorithms for OpenSSL'
 url='https://github.com/gost-engine/engine/'
