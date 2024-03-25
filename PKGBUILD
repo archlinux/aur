@@ -4,12 +4,12 @@ pkgbase=python-acstools
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=3.7.0
+pkgver=3.7.1
 pkgrel=1
 pkgdesc="Python Tools for ACS (Advanced Camera for Surveys) Data"
 arch=('any')
 url="https://acstools.readthedocs.io"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
@@ -17,14 +17,14 @@ makedepends=('python-setuptools-scm'
 #'python-pandas' 'python-astropy' 'python-beautifulsoup4' 'python-sphinx-automodapi' 'python-sphinx_rtd_theme' 'python-matplotlib')
 checkdepends=('python-pytest-astropy-header'
               'python-pytest-remotedata'
-              'python-astropy'
-#              'python-stsci.tools'
+#             'python-astropy'
+#             'python-stsci.tools'
 ##            'python-beautifulsoup4'
-              'python-requests'
+#             'python-requests'
               'python-ci_watson'
-              'python-scikit-image>=0.11')  # stsci.tools, {ci_watson -> crds} -> astropy skimage -> matplotlib
+              'python-scikit-image>=0.11')  # stsci.tools, {ci_watson -> crds} -> astropy, requests skimage -> matplotlib, scipy
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('641cdcdb32cf2d852975b23becf9fa8b')
+md5sums=('7808ea9ba14cd37a376a962c9a323f3d')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -37,7 +37,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed" # -vv --color=yes --remote-data
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package() {
