@@ -2,12 +2,12 @@
 
 _pkgname=easybashgui
 pkgname=$_pkgname-git
-pkgver=11.0.1.r0.gc7c6c7c
+pkgver=13.0.0.r0.ga716a78
 pkgrel=1
 pkgdesc="Bash function library to have simple GUIs using dialog, yad, zenity, kdialog, xdialog, gtkdialog"
 arch=('any')
 depends=('bash')
-makedepends=('make')
+makedepends=('git' 'make')
 optdepends=(
     'dialog: ncurses-based TUI dialog'
     'libnewt: whiptail TUI dialog'
@@ -18,7 +18,7 @@ optdepends=(
     'kdialog: KDE/Qt5 dialog'
 )
 url="https://github.com/BashGui/easybashgui"
-license=('GPL3')
+license=('GPL-3.0-only')
 source=(${_pkgname}::git+https://github.com/BashGui/easybashgui.git)
 sha256sums=('SKIP')
 provides=($_pkgname)
