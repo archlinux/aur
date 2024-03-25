@@ -1,6 +1,6 @@
 pkgbase = bob-bin
 	pkgdesc = A version manager for neovim
-	pkgver = 2.8.1
+	pkgver = 2.8.2
 	pkgrel = 1
 	url = https://github.com/MordechaiHadad/bob
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = bob-bin
 	depends = gcc-libs
 	provides = bob
 	conflicts = bob
-	source_x86_64 = bob-bin-2.8.1.zip::https://github.com/MordechaiHadad/bob/releases/download/v2.8.1/bob-linux-x86_64.zip
-	source_x86_64 = bob-bin-2.8.1-LICENSE::https://github.com/MordechaiHadad/bob/raw/v2.8.1/LICENSE
-	source_x86_64 = bob-bin-2.8.1-README.md::https://github.com/MordechaiHadad/bob/raw/v2.8.1/README.md
-	sha512sums_x86_64 = 92c80c926969e414be9b702b4687b9978b0a988ae2e6669419c5a9ef94ec9b668cac932ff9be0e4f538b565b25414ccdc55133b807e1df3eb788d39df6dabb54
+	source_x86_64 = bob-bin-2.8.2.zip::https://github.com/MordechaiHadad/bob/releases/download/v2.8.2/bob-linux-x86_64.zip
+	source_x86_64 = bob-bin-2.8.2-LICENSE::https://github.com/MordechaiHadad/bob/raw/v2.8.2/LICENSE
+	source_x86_64 = bob-bin-2.8.2-README.md::https://github.com/MordechaiHadad/bob/raw/v2.8.2/README.md
+	sha512sums_x86_64 = f07e6f8ce6470c1f79357d3dc9bdade8a8c6745f10f00f55f1b0cb5535974fe4ec96deb7ad4b9b7df391c86593a5792c8f7fc46ee4571cba50d7ac8bba8e3024
 	sha512sums_x86_64 = 88b112def47f8b8e9fe085c362061faf7284860bb88f7666a94e5bb2b63c41ad8b0fb1921f99ba1b1bd3e28b88f4dc585327e88a992f2dc345cb2771784bead3
-	sha512sums_x86_64 = 5fa693424fb78e8ccc02fda9caf745dbc51b3feb62d4a0e9e38f8a78acfdf0a45fbd36aa50eb1e8d66b64ef6601397aa70408225ea7a997b498ac5206511844c
+	sha512sums_x86_64 = 5dac462b34d7dd4b06d1adaec60125e566a2f00a108aaf734c29ac5f3e18c943fd63316b15627570ccdb779f77e6b55315a48180e827cd6807acf59dc1d6a2f2
 
 pkgname = bob-bin
