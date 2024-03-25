@@ -1,7 +1,7 @@
 pkgbase = ecloud-bin
 	pkgdesc = A project of Tianyi Cloud Disk.天翼云盘Linux版
 	pkgver = 1.1.0_1_plus_a1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cloud.189.cn/
 	arch = x86_64
 	license = LicenseRef-custom
