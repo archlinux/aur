@@ -9,7 +9,8 @@ arch=("x86_64")
 url='https://apps.kde.org/konqueror/'
 license=(LGPL-2.0-or-later)
 depends=("dolphin" "keditbookmarks" "qt6-webengine")
-makedepends=(gcc-libs
+makedepends=(cmake
+         gcc-libs
          glibc
          git
          karchive
@@ -23,6 +24,7 @@ makedepends=(gcc-libs
          kcoreaddons
          kcrash
          kdbusaddons
+         kdesu
          kguiaddons
          ki18n
          kiconthemes
@@ -50,7 +52,7 @@ source=("git+https://invent.kde.org/network/konqueror.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$_pkgname"
   git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
