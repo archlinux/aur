@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-session-git
-pkgver=r123.8e73c0f
+pkgver=r130.ac74753
 pkgrel=1
 pkgdesc="Session manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -51,6 +51,9 @@ prepare() {
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
+
+  # libexec > lib
+  sed -i 's|libexec|lib|g' Justfile src/main.rs
 }
 
 build() {
@@ -58,9 +61,6 @@ build() {
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   just all
-
-  # libexec > lib
-  sed -i 's|libexec|lib|g' Justfile src/main.rs
 }
 
 package() {
