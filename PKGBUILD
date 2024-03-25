@@ -12,7 +12,7 @@ pkgname=('yaru-sound-theme-git'
          'yaru-metacity-theme-git'
          'yaru-icon-theme-git'
          'yaru-session-git')
-pkgver=21.10.1.r50.g670a52f26
+pkgver=24.04.0.0ubuntu1.r0.g4568749b1
 pkgrel=1
 epoch=1
 pkgdesc="Yaru default ubuntu theme"
@@ -41,23 +41,24 @@ _delete_all_from_pkgdir_except() {
         rm -r "${pkgdir}"/usr/share/sounds
     fi
     if [[ "$1" != "gtk-theme" ]]; then
-        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-dark}/{gtk-*,index.theme}
+        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-*}/{gtk-*,index.theme}
     fi
     if [[ "$1" != "gtksourceview-theme" ]]; then
         rm -r "${pkgdir}"/usr/share/gtksourceview-*
+        rm -r "${pkgdir}"/usr/share/*-gtksourceview-*
     fi
     if [[ "$1" != "gnome-shell-theme" ]]; then
-        rm "${pkgdir}"/usr/share/themes/Yaru{,-light}/gnome-shell
-        rm -r "${pkgdir}"/usr/share/gnome-shell/theme/Yaru{,-light}
+        rm "${pkgdir}"/usr/share/themes/Yaru{,-*}/gnome-shell
+        rm -r "${pkgdir}"/usr/share/gnome-shell/theme/Yaru{,-*}
     fi
     if [[ "$1" != "xfwm4-theme" ]]; then
-        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-dark}/xfwm4
+        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-*}/xfwm4
     fi
     if [[ "$1" != "unity-theme" ]]; then
-        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-dark}/unity
+        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-*}/unity
     fi
     if [[ "$1" != "metacity-theme" ]]; then
-        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-dark}/metacity-1
+        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-*}/metacity-1
     fi
     if [[ "$1" != "icon-theme" ]]; then
         rm -r "${pkgdir}"/usr/share/icons
