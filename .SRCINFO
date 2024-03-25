@@ -1,6 +1,6 @@
 pkgbase = maestral-qt
 	pkgdesc = A Qt interface for the Maestral daemon
-	pkgver = 1.8.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://github.com/SamSchott/maestral-qt
 	arch = any
@@ -9,14 +9,15 @@ pkgbase = maestral-qt
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = maestral>=1.8.0
+	depends = maestral>=1.9.1
+	depends = python
 	depends = python-click
 	depends = python-markdown2
 	depends = python-packaging
 	depends = python-pyqt6
 	depends = qt6-svg
 	optdepends = gnome-shell-extension-appindicator: Gnome integration
-	source = maestral-qt-1.8.0.tar.gz::https://github.com/SamSchott/maestral-qt/archive/refs/tags/v1.8.0.tar.gz
-	sha256sums = ffc450c03e4d306adb5a859a074227386505161c1a08f6f6b9bfa01d66251c28
+	source = maestral-qt-1.9.1.tar.gz::https://github.com/SamSchott/maestral-qt/archive/refs/tags/v1.9.1.tar.gz
+	sha256sums = 4a37e34db60eef57142fe66cddc466d62e56bdc703dca1e5b9cb705ef044b758
 
 pkgname = maestral-qt
