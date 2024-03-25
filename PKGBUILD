@@ -5,7 +5,7 @@
 _name=libirecovery
 pkgname=$_name-1.0-3
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library and utility to talk to iBoot/iBSS via USB (libirecovery-1.0.so.3)"
 arch=('x86_64')
 url="https://libimobiledevice.org/"
@@ -32,7 +32,7 @@ prepare() {
 build() {
   cd "$_name-$pkgver"
 
-  ./autogen.sh --prefix=/usr --disable-static --without-tools
+  ./autogen.sh --prefix=/usr --disable-static --without-tools --without-udev
   make
 }
 
