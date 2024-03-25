@@ -1,0 +1,38 @@
+--- a/src/backend/utils/adt/xml.c
++++ b/src/backend/utils/adt/xml.c
+@@ -1174,7 +1174,7 @@
+ 	errcxt->saved_errcxt = xmlGenericErrorContext;
+ #endif
+ 
+-	xmlSetStructuredErrorFunc((void *) errcxt, xml_errorHandler);
++	xmlSetStructuredErrorFunc((void *) errcxt, (xmlStructuredErrorFunc) xml_errorHandler);
+ 
+ 	/*
+ 	 * Verify that xmlSetStructuredErrorFunc set the context variable we
+@@ -4781,7 +4781,7 @@
+ 	xtCxt = GetXmlTableBuilderPrivateData(state, "XmlTableFetchRow");
+ 
+ 	/* Propagate our own error context to libxml2 */
+-	xmlSetStructuredErrorFunc((void *) xtCxt->xmlerrcxt, xml_errorHandler);
++	xmlSetStructuredErrorFunc((void *) xtCxt->xmlerrcxt, (xmlStructuredErrorFunc) xml_errorHandler);
+ 
+ 	if (xtCxt->xpathobj == NULL)
+ 	{
+@@ -4835,7 +4835,7 @@
+ 		   xtCxt->xpathobj->nodesetval != NULL);
+ 
+ 	/* Propagate our own error context to libxml2 */
+-	xmlSetStructuredErrorFunc((void *) xtCxt->xmlerrcxt, xml_errorHandler);
++	xmlSetStructuredErrorFunc((void *) xtCxt->xmlerrcxt, (xmlStructuredErrorFunc) xml_errorHandler);
+ 
+ 	*isnull = false;
+ 
+@@ -4978,7 +4978,7 @@
+ 	xtCxt = GetXmlTableBuilderPrivateData(state, "XmlTableDestroyOpaque");
+ 
+ 	/* Propagate our own error context to libxml2 */
+-	xmlSetStructuredErrorFunc((void *) xtCxt->xmlerrcxt, xml_errorHandler);
++	xmlSetStructuredErrorFunc((void *) xtCxt->xmlerrcxt, (xmlStructuredErrorFunc) xml_errorHandler);
+ 
+ 	if (xtCxt->xpathscomp != NULL)
+ 	{
