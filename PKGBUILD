@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennnan <caleb@alerque.com>
 
 pkgname=dotslash
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Simplified executable deployment'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(gcc-libs
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('bb7212a13248474232c0b23c94bc1736b5653094b87c817d9b32c0dcbd8fba26')
+sha256sums=('e1d55ecbe1a471a54a9f915df89faba23ff72fbfc5ad7b68e66f509b38bc8c9b')
 
 prepare() {
 	cd "$_archive"
@@ -23,6 +23,7 @@ _srcenv() {
 	cd "$_archive"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	CFLAGS+=' -ffat-lto-objects'
 }
 
 build() {
