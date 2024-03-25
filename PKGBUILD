@@ -3,7 +3,7 @@ _pkgname=thorium
 pkgname="${_pkgname}-reader-bin"
 _appname=Thorium
 _fullname="${_appname}Reader"
-pkgver=2.4.0
+pkgver=2.4.1
 _electronversion=29
 pkgrel=1
 pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit"
@@ -21,7 +21,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/edrlab/thorium-reader/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d24c1a0ea11df05ce7743f2687ef0b9a002239f11e38a6607a3ed3260f9e9319'
+sha256sums=('0abe6d51f68f35c3a6f664025aef4aee286b7cdebd2b769ed3169a882ec77508'
             'e95e504f42685015445b4a0a80dfdaa86e5b2b2c0e317bca2bcbb51330ec61e5'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
