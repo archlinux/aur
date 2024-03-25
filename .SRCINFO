@@ -1,6 +1,6 @@
 pkgbase = freecad-linkstage3-git
 	pkgdesc = A general purpose 3D CAD modeler - LinkStage3 dev branch, git checkout
-	pkgver = 2022.07.04.edge.r0.ga87320cc64
+	pkgver = 20240322stable.r2.gaa38fcb81c
 	pkgrel = 1
 	url = http://www.freecadweb.org/
 	arch = x86_64
@@ -44,6 +44,7 @@ pkgbase = freecad-linkstage3-git
 	optdepends = graphviz
 	optdepends = openscad
 	conflicts = freecad
+	conflicts = freecad-linkstage3-bin
 	source = git+https://github.com/realthunder/FreeCAD.git#branch=LinkStable
 	source = patch_std_gnupp14.patch
 	sha256sums = SKIP

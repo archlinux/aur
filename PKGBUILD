@@ -1,13 +1,13 @@
 # Maintainer: Salamandar <felix@piedallu.me>
 
 pkgname=freecad-linkstage3-git
-pkgver=2022.07.04.edge.r0.ga87320cc64
+pkgver=20240322stable.r2.gaa38fcb81c
 pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler - LinkStage3 dev branch, git checkout'
 arch=('x86_64')
 url='http://www.freecadweb.org/'
 license=('LGPL')
-conflicts=('freecad')
+conflicts=('freecad' 'freecad-linkstage3-bin')
 depends=(
     'boost-libs' 'curl' 'shared-mime-info' 'hicolor-icon-theme' 'utf8cpp' 'jsoncpp'
     'opencascade>=7.2' 'xerces-c' 'libspnav' 'glew' 'netcdf' 'med' 'openmpi'
