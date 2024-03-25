@@ -12,7 +12,7 @@ pkgname="${_jdkname}-bin"
 _java_ver=21
 _pkgver=${_java_ver}.0.2+14
 pkgver=${_pkgver/+/.u}
-pkgrel=2
+pkgrel=3
 pkgdesc='BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.'
 arch=(aarch64 armv7h armv8h x86_64)
 url='https://bell-sw.com/'
@@ -53,17 +53,17 @@ backup=(etc/${_jdkname}/logging.properties
 source=(freedesktop-java.desktop.in
         freedesktop-jconsole.desktop.in
         freedesktop-jshell.desktop.in
-        ${_jdkname}16.png::https://github.com/openjdk/jdk/blob/master/src/java.desktop/unix/classes/sun/awt/X11/java-icon16.png
-        ${_jdkname}24.png::https://github.com/openjdk/jdk/blob/master/src/java.desktop/unix/classes/sun/awt/X11/java-icon24.png
-        ${_jdkname}32.png::https://github.com/openjdk/jdk/blob/master/src/java.desktop/unix/classes/sun/awt/X11/java-icon32.png
-        ${_jdkname}48.png::https://github.com/openjdk/jdk/blob/master/src/java.desktop/unix/classes/sun/awt/X11/java-icon48.png)
-sha1sums=('19873c53aaf234d215b9892450bfd4e95c13ed7c'
-          '5347a8c12c16a29aada0babdfda5dbef236717c0'
-          '8a66b7e3c5fa8b2f11ee1dd2b11127f7156cb60b'
-          '5ca4cd6e4d1eaa45fe790a09edebfadadc2d090e'
-          'e785ac753daeb3ffb2c383166336002ea9d3b5ad'
-          'cfdc6bdbebef9d3f66b9371a26b7d1ba9e540be0'
-          '78184f7a8efda14886def43a75a9ac08a5e6a186')
+        ${_jdkname}16.png::https://raw.githubusercontent.com/openjdk/jdk/master/src/java.desktop/unix/classes/sun/awt/X11/java-icon16.png
+        ${_jdkname}24.png::https://raw.githubusercontent.com/openjdk/jdk/master/src/java.desktop/unix/classes/sun/awt/X11/java-icon24.png
+        ${_jdkname}32.png::https://raw.githubusercontent.com/openjdk/jdk/master/src/java.desktop/unix/classes/sun/awt/X11/java-icon32.png
+        ${_jdkname}48.png::https://raw.githubusercontent.com/openjdk/jdk/master/src/java.desktop/unix/classes/sun/awt/X11/java-icon48.png)
+sha1sums=('7d79a8c26a125f55f52493df7dca2189c8521b3c'
+          '80a166acf99b351aa466452782a8faac3eca2d26'
+          '4b5684dc98370ecbff274195b42c3ce559226596'
+          '36096a57cebd346e08efc68326fe77960d43726f'
+          'b8233f9ff931ce97a265827fac18ed90f4e248c6'
+          'a0da2952bc87a425182c3ac88e88649fbaa7cb65'
+          'eb36aa73a9be98164447774217865b91e79d503c')
 sha1sums_aarch64=('2d680daf47e0b3305fd0f24f135aff0e40f89863')
 sha1sums_armv7h=('810e3d41fb52dc9604c1edf14262e33e9b03ac8f')
 sha1sums_armv8h=('810e3d41fb52dc9604c1edf14262e33e9b03ac8f')
