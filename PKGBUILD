@@ -1,8 +1,8 @@
 # Maintainer: Sergio Losito <shape93@gmail.com>
 pkgname=upt-bin
 pkgbase=upt-bin
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="Universal Package-management Tool for any OS."
 arch=('x86_64' 'aarch64')
 url="https://github.com/sigoden/upt"
@@ -10,10 +10,10 @@ license=('MIT' 'Apache')
 depends=('curl' 'tar' 'gzip' 'unzip')
 
 source_x86_64=("upt-v$pkgver-x86_64-unknown-linux-musl.tar.gz"::"https://github.com/sigoden/upt/releases/download/v$pkgver/upt-v$pkgver-x86_64-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=('1781b7952520a0374478dc1de818945537a3852cb8b340b4adfb7c8c1da0c601')
+sha256sums_x86_64=('0f6622042255dbdbd57f850d2e5e05eed6bd1bd3ac18aef57f94d9677c09728d')
 
 source_aarch64=("upt-v$pkgver-aarch64-unknown-linux-musl.tar.gz"::"https://github.com/sigoden/upt/releases/download/v$pkgver/upt-v$pkgver-aarch64-unknown-linux-musl.tar.gz")
-sha256sums_aarch64=('827f040206d0255bac4dfd356b310bb74a1409d45e6833de67e6e1bfd208cb84')
+sha256sums_aarch64=('5e216ec000d374a49c273f5902b6d7fb67bbbcbd9ce4512191b87be33bfbded8')
 
 package() {
   mkdir -p "$pkgdir/usr/bin"
