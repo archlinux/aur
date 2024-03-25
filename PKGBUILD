@@ -1,12 +1,12 @@
 # Maintainer: Bert Peters <bert@bertptrs.nl>
 _npmname=node-pre-gyp
-pkgname=nodejs-node-pre-gyp
+pkgname=nodejs-$_npmname
 pkgver=1.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Node.js tool for easy binary deployment of C++ addons "
 arch=('any')
 url="https://github.com/mapbox/node-pre-gyp"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/@mapbox/$_npmname/-/$_npmname-$pkgver.tgz")
