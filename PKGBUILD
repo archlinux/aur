@@ -1,14 +1,16 @@
-# Maintainer: Eric DeStefano <eric at ericdestefano dot com>
+# Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
+# Contributor: Eric DeStefano <eric at ericdestefano dot com>
 
 pkgbase=sheepshaver-git
 pkgname=(sheepshaver-git sheepnet-dkms-git)
 pkgver=r2687.g720eb598
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open Source PowerMac Emulator"
 arch=('x86_64')
 url="http://sheepshaver.cebix.net"
 license=('GPL')
 depends=('gtk2' 'sdl' 'vde2')
+options=(!lto)
 makedepends=('git')
 source=('git+https://github.com/cebix/macemu'
         'SheepShaver.sysctl'
@@ -34,7 +36,7 @@ prepare() {
 
 build() {
   cd macemu/SheepShaver/src/Unix
-  export CXXFLAGS="$CXXFLAGS -DSTDC_HEADERS=1"
+  export CXXFLAGS="$CXXFLAGS -DSTDC_HEADERS=1 -Werror=format-security"
   ./autogen.sh \
     --prefix=/usr \
     --enable-addressing=direct \
@@ -44,7 +46,7 @@ build() {
     --enable-sdl-video \
     --with-bincue \
 	;
-  make
+  make -j1
 }
 
 package_sheepshaver-git() {
