@@ -31,7 +31,7 @@ optdepends=(
 )
 _gitname='FreeCAD'
 source=(
-    "git+https://github.com/realthunder/FreeCAD.git#branch=LinkDaily"
+    "git+https://github.com/realthunder/FreeCAD.git#branch=LinkStable"
     'patch_std_gnupp14.patch'
 )
 sha256sums=(
