@@ -2,8 +2,8 @@
 
 pkgname=python-outlines
 _pkgname=${pkgname#python-}
-pkgver=0.0.36
-_commit=d47bd6b2f19588e1e74e41e189b5f973d807d0f7
+pkgver=0.0.37
+_commit=803439a83d15ea4fcc452e1c367ffb41feb39ac2
 pkgrel=1
 pkgdesc="Guided text generation"
 arch=(any)
@@ -50,7 +50,7 @@ optdepends=(
   'python-llama-cpp: llama.cpp backend'
 )
 source=("git+$url.git#commit=$_commit")
-sha256sums=('SKIP')
+sha256sums=('942957ed6a00e8ac4096c1524f093d77614b8f6e9e9d39c69ffb5f1028989cc2')
 validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194') # GitHub <noreply@github.com>
 
 _archive="$_pkgname"
