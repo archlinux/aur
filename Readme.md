@@ -9,6 +9,10 @@ The services are provided as-is by linuxserver.io, direct from docker hub:
 * [nzbhydra2](https://hub.docker.com/r/linuxserver/nzbhydra2)
 * [sonarr](https://hub.docker.com/r/linuxserver/sonarr)
 
+This package is ArchLinux centric, but it should work on any system that uses `systemd` and `docker`.
+
+An [Aur package](https://aur.archlinux.org/packages/sabnzbd-docker) is provided for easy installation.
+
 ## Configuration
 
 1. Create a user config file at `~/.docker-sabnzbd.env` with the following content:
@@ -35,7 +39,7 @@ The services are provided as-is by linuxserver.io, direct from docker hub:
 
 2. Create the following directories (for services you choose to run):
 
-        # SABNZBD
+        # Sabnzbd
         mkdir -p /path/to/prefix/sabnzbd/config      # /config
         mkdir -p /path/to/prefix/sabnzbd/temp        # /incomplete-downloads
         mkdir -p /path/to/prefix/sabnzbd/downloads   # /downloads
