@@ -12,7 +12,7 @@ pkgbase = cmd-wrapped
 	arch = aarch64
 	arch = riscv64
 	license = MIT
-	makedepends = rust
+	makedepends = cargo
 	source = cmd-wrapped-0.2.0.tar.gz::https://github.com/YiNNx/cmd-wrapped/archive/refs/tags/0.2.0.tar.gz
 	sha256sums = 06f21be755a0a0b362472bbe565391c26056d27aeed6ca81457a9b7977f553e6
 
