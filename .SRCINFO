@@ -8,6 +8,7 @@ pkgbase = obsidian-bin
 	license = custom:Commercial
 	depends = fuse2
 	conflicts = obsidian
+	options = !debug
 	options = !strip
 	source_x86_64 = obsidian-bin-1.5.11-x86_64.AppImage::https://github.com/obsidianmd/obsidian-releases/releases/download/v1.5.11/Obsidian-1.5.11.AppImage
 	sha256sums_x86_64 = 73f6d9e2bad7a6766d3d40b24757afe042f4d90f082efefdab8b8a31193b2494

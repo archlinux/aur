@@ -16,6 +16,11 @@ source_aarch64=(${pkgname}-${pkgver}-aarch64.AppImage::"${url}/releases/download
 sha256sums_x86_64=('73f6d9e2bad7a6766d3d40b24757afe042f4d90f082efefdab8b8a31193b2494')
 sha256sums_aarch64=('14e16dba3157525572d3e0fa4ea091ae86ff9e58dca56802193bf97c205ae838')
 
+# https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/19
+# https://sourceware.org/bugzilla/show_bug.cgi?id=31504
+# TODO: remove this after these bug fixed
+options=('!debug' '!strip')
+
 prepare() {
     _appimage="${pkgname}-${pkgver}-${CARCH}.AppImage"
     cd ${srcdir}
