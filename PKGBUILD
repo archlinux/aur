@@ -10,7 +10,7 @@ license=('GPL-2.0-only' 'LGPL-2.0-only' 'GFDL-1.2-only' 'GPL-2.0-or-later')
 url="http://www.gnu.org/software/gettext/"
 source=(http://ftp.gnu.org/pub/gnu/gettext/gettext-${pkgver}.tar.gz{,.sig}
         intl.pc)
-sha256sums=('49f089be11b490170bbf09ed2f51e5f5177f55be4cc66504a5861820e0fb06ab'
+sha256sums=('ec1705b1e969b83a9f073144ec806151db88127f5e40fe5a94cb6c8fa48996a0'
             'SKIP'
             '0dc8a3e2c95d79aacaeaacd3c90e41c0f5d6ba9cfbc949a0ca55f4b0fd389d9c')
 validpgpkeys=('462225C3B46F34879FC8496CD605848ED7E69871'  # Daiki Ueno
