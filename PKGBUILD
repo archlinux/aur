@@ -1,24 +1,25 @@
 # Maintainer: John Lindgren <john@jlindgren.net>
 
 pkgname=qmpanel
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="A Minimal Qt-Based Desktop Panel"
 arch=("x86_64")
 url="https://github.com/jlindgren90/qmpanel"
 license=("LGPL2.1")
-makedepends=("meson")
+makedepends=(
+  "meson"
+  "cmake" # needed to find layer-shell-qt
+)
 depends=(
   "glib2"
-  "kwindowsystem5"
+  "kwindowsystem"
+  "layer-shell-qt"
   "libxcb"
-  "libxcomposite"
-  "libxdamage"
-  "libxrender"
 )
 
 source=("https://github.com/jlindgren90/qmpanel/archive/qmpanel-$pkgver.tar.gz")
-sha256sums=("14883ffa21fab0e76a7c7ae3c9416b8e999d4becc7ee12f10ecc5a8fcc60f7c4")
+sha256sums=("501e0307e6ec096452e66fecfecc7149f6aa593d2cb37d2c3fcdc2b0d29c9af8")
 
 build() {
   arch-meson qmpanel-qmpanel-$pkgver build
