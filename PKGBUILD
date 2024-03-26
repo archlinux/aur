@@ -2,7 +2,7 @@
 
 pkgname=gpt4all-chat-git
 _gitname=gpt4all
-pkgver=r1401.6711bddc
+pkgver=r1747.67843edc
 pkgrel=1
 pkgdesc="Cross platform Qt based GUI for GPT4All versions"
 arch=('x86_64')
@@ -37,7 +37,6 @@ prepare() {
   cd "${srcdir}/${_gitname}"
   git submodule update --init --recursive
   mkdir -p gpt4all-chat/build
-  sed -i '/CMAKE_INSTALL_PREFIX/d' gpt4all-chat/CMakeLists.txt
 }
 
 build() {
