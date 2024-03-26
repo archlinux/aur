@@ -1,6 +1,6 @@
 pkgbase = kdisplay-git
 	pkgdesc = App and daemon for display managing by the KWinFT project (kscreen fork)
-	pkgver = 5.27.80_r1568.g49bdcb3
+	pkgver = 6.0.0_r1602.ga606d52
 	pkgrel = 1
 	url = https://gitlab.com/kwinft/kdisplay
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = kdisplay-git
 	depends = qt6-sensors
 	provides = kdisplay
 	conflicts = kdisplay
-	source = git+https://gitlab.com/kwinft/kdisplay.git
+	source = git+https://github.com/winft/kdisplay.git
 	sha512sums = SKIP
 
 pkgname = kdisplay-git

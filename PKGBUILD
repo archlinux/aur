@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdisplay-git
-pkgver=5.27.80_r1568.g49bdcb3
+pkgver=6.0.0_r1602.ga606d52
 pkgrel=1
 pkgdesc="App and daemon for display managing by the KWinFT project (kscreen fork)"
 arch=($CARCH)
@@ -14,7 +14,7 @@ depends=(kcmutils-git kdeclarative-git kirigami-git ki18n-git libplasma-git qt6-
 makedepends=(git disman-git extra-cmake-modules-git kcmutils-git)
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
-source=("git+https://gitlab.com/kwinft/kdisplay.git")
+source=("git+https://github.com/winft/${pkgname%-git}.git")
 sha512sums=('SKIP')
 
 pkgver() {
