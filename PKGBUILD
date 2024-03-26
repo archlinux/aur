@@ -2,14 +2,14 @@
 
 pkgname=pizauth-git
 _pkgname="${pkgname%-git}"
-pkgver=1.0.3.r19.gf32cb2f
+pkgver=1.0.4.r0.gcaf045c
 pkgrel=1
 pkgdesc="OAuth2 token requester daemon"
 arch=('i686' 'x86_64')
 url="https://github.com/ltratt/${_pkgname}"
-license=('custom')
+license=('MIT' 'Apache-2.0')
 provides=("$_pkgname")
-makedepends=(cargo)
+makedepends=(git cargo)
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
@@ -22,14 +22,15 @@ pkgver() {
 prepare() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
-    cargo update
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    #cargo update
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export CFLAGS+=('-ffat-lto-objects')
     cargo build --frozen --release --all-features
 }
 
@@ -46,4 +47,6 @@ package() {
         EXAMPLESDIR='/usr/share/' \
         DESTDIR="$pkgdir/" \
         install
+
+    install -Dm 644 LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
