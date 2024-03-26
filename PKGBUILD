@@ -3,17 +3,17 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=okteta-git
-pkgver=0.26.60_r5033.g4a8d1cd19
+pkgver=0.26.60_r5052.g8d58c1543
 pkgrel=1
 pkgdesc='KDE hex editor for viewing and editing the raw data of files'
 url='https://kde.org/applications/utilities/okteta/'
 license=(GPL LGPL FDL)
-depends=(gcc-libs glibc kcmutils5 kcodecs5 kcompletion5 kconfig5 kconfigwidgets5 kcoreaddons5 kcrash5 kdbusaddons5 ki18n5 kiconthemes5 kio5 kjobwidgets5 knewstuff5 kparts5 kservice5 kwidgetsaddons5 kxmlgui5 qca-qt5-git qt5-base qt5-declarative qt5-script)
-makedepends=(git extra-cmake-modules-git kdoctools5 qt5-tools)
+depends=(gcc-libs glibc kcmutils-git kcodecs-git kcompletion-git kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git kdbusaddons-git ki18n-git kiconthemes-git kio-git kjobwidgets-git knewstuff-git kparts-git kservice-git kwidgetsaddons-git kxmlgui-git qca-qt6-git qt6-base qt6-declarative)
+makedepends=(git extra-cmake-modules-git kdoctools-git qt6-tools)
 arch=($CARCH)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-source=("git+https://github.com/KDE/${pkgname%-git}.git")
+source=("git+https://github.com/KDE/${pkgname%-git}.git#branch=work/kossebau/kf6")
 sha256sums=('SKIP')
 
 pkgver() {
