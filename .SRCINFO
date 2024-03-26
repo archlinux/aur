@@ -1,5 +1,5 @@
 pkgbase = libreoffice-dev-i18n
-	pkgver = 24.2.2.1
+	pkgver = 24.2.2.2
 	pkgrel = 1
 	url = https://www.documentfoundation.org
 	arch = any
@@ -8,834 +8,834 @@ pkgbase = libreoffice-dev-i18n
 
 pkgname = libreoffice-dev-af
     pkgdesc= Afrikaans language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_af.tar.gz
-    sha256sums = 95e8e73578338878e512e183d990d8402ba26f01ee10e166b2258550c8580ab1 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_af.tar.gz
+    sha256sums = 03a3aac148400e807bbb5de0f2ddf1948bc856fd6b55f892d82574a080674c3f 
 
 pkgname = libreoffice-dev-am
     pkgdesc= Amharic language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_am.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_am.tar.gz
-    sha256sums = 023dc4abd37355cc1c6f0ae38c566761126ac06cd49ff5ee2789deaf20a41b4c 
-    sha256sums = d720c4799dc83dbd91bfb4e4adab1520ff2f89fe4be87f2238e9386c5ab64f89 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_am.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_am.tar.gz
+    sha256sums = c7d3146c40bfa50869530e75ae88ea44bc573705410a9158c6e6fde134492a62 
+    sha256sums = 31e253d0ebeef84f12c59c8c01904b9fcb5808b93130b092ad07329a7bce658b 
 
 pkgname = libreoffice-dev-ar
     pkgdesc= Arabic language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_ar.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_ar.tar.gz
-    sha256sums = db1abdec20792dfc760b038e3f07b1b2300def8e4f7e026105a00970efc88355 
-    sha256sums = e57a57e773727deb6590be4f890b2a3ce1d080e0972306f5088b635c3138d5b8 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_ar.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_ar.tar.gz
+    sha256sums = 6868fb98d44ceb7e0995347e0c0b4d930b5af6cbe13b9412274046475f8ebf5b 
+    sha256sums = 7a9bd1c9ee26c15bb37af93cbd422cfab47fa36c269ccd44e6c4090fc29b5022 
 
 pkgname = libreoffice-dev-as
     pkgdesc= Assamese (India) language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_as.tar.gz
-    sha256sums = 16716c12d63b10f29c7c53174f2c8e22e8f4d30836f0843586ea2d0892fb7743 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_as.tar.gz
+    sha256sums = ce66c45b447e94fea3c00c65e7afc868f44767c4a17607de5eea824145c7bf34 
 
 pkgname = libreoffice-dev-ast
     pkgdesc= Asturianu language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_ast.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_ast.tar.gz
-    sha256sums = c1d3954a7f71b869bc2cd7d8587ab09a0df9654a9c744ec271aadd85b4bbfeeb 
-    sha256sums = 8c108514897eb9419483061c6c5a3818d08a601f1f9b78044c4b6c817262d83c 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_ast.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_ast.tar.gz
+    sha256sums = e1d9bf6529311e9ee9f7c3320493efb11e0a1be4acdcd391440b84f268d7cc9a 
+    sha256sums = 6e44b67a9c8cb9ff7d93a90411cc233230c33915a30f77e586b9fd601790fd1e 
 
 pkgname = libreoffice-dev-be
     pkgdesc= Belarusian language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_be.tar.gz
-    sha256sums = c0596c2d2156b0c97df7147498f8b6a1740a5990af55c36799be2617f7579450 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_be.tar.gz
+    sha256sums = b49397294e59b44ee3a05ceeae67d5a623a64a62ba0dfe64c996516807998698 
 
 pkgname = libreoffice-dev-bg
     pkgdesc= Bulgarian language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_bg.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_bg.tar.gz
-    sha256sums = 2671180038af12701cc4e087b53b3b1c57697931faaf5f58e79977391d4a7724 
-    sha256sums = 91a19b631294dcc06cd0d1ed9287e0a8e989658a020119e9f24764ab9652ed11 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_bg.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_bg.tar.gz
+    sha256sums = 6a2379de48beba9d0f6c4b9d744f382b9915ca7301218e837b07f60d02deb5b9 
+    sha256sums = f119395e88b2012f03e24da90c2f3246a562753713272fb3c1940963981f14c5 
 
 pkgname = libreoffice-dev-bn-in
     pkgdesc= Bengali (India) language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_bn-IN.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_bn-IN.tar.gz
-    sha256sums = 5e6bd8a65f3f8699d44db0eff5805b97daea78314314e910dc25bc50b8a52daa 
-    sha256sums = b8ced588acf6387164223c5aa44502fc2f4c4397c562c38feae1cc3d98556188 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_bn-IN.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_bn-IN.tar.gz
+    sha256sums = aa8ff1c032f66a80bf8c7ea086a57aa4a7cd3496de3e7cc432f1744b0b291a39 
+    sha256sums = 6b3942185d3aaf14059a44ef96aab773c32caaaa7819e4c87fb0186be7530a6a 
 
 pkgname = libreoffice-dev-bn
     pkgdesc= Bengali language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_bn.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_bn.tar.gz
-    sha256sums = c1fa0973700b7c136f5e8d7300784372e0973dc573b7bb398401949c060ed3e3 
-    sha256sums = d7ac2b7f5200cfbc318836037758ea26631bbc9faef30d037d5d47314557c0e3 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_bn.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_bn.tar.gz
+    sha256sums = 4857e09afa236b4ddff5087d212da498f43c812ffe7e869f1c57059fd3ae281d 
+    sha256sums = e5e781a52af8821fc84626a60fc7cf8dc403249dfb114bd833d52b32339d0c9d 
 
 pkgname = libreoffice-dev-bo
     pkgdesc= Tibetan language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_bo.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_bo.tar.gz
-    sha256sums = 2b6aad14790eac0be8d2c9fcc6f4d6d93619297298ed4b0a22ebab9bc6357980 
-    sha256sums = 36b74f1d2d3c93d35bf8d14d29be45fb2bd81d6d6b54079538a24937dde078e5 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_bo.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_bo.tar.gz
+    sha256sums = 993c4da392ac9cc9741d2bbf87ac6a67713ac932d1d79d9ce3180f8ef2fe45a3 
+    sha256sums = f85bf1bd375533e6852a7ee69310d98cf380d8250f06c96822a9c77185e1a295 
 
 pkgname = libreoffice-dev-br
     pkgdesc= Breton language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_br.tar.gz
-    sha256sums = 2b6aad14790eac0be8d2c9fcc6f4d6d93619297298ed4b0a22ebab9bc6357980 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_br.tar.gz
+    sha256sums = 993c4da392ac9cc9741d2bbf87ac6a67713ac932d1d79d9ce3180f8ef2fe45a3 
 
 pkgname = libreoffice-dev-brx
     pkgdesc= Bodo language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_brx.tar.gz
-    sha256sums = 1bb316ffe580e0f0aa816e8c033e67cf0225a2e83bf3ada5a53b9ea86f61eb33 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_brx.tar.gz
+    sha256sums = f26a8bca813a1eae011e16d7bf35ec49433cb46345a2b9983946fbe63f097a96 
 
 pkgname = libreoffice-dev-bs
     pkgdesc= Bosnian language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_bs.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_bs.tar.gz
-    sha256sums = 6e0afa9b3ceefe56ae0c46ce605bbee0eccf0b06f0ef507feaf0e541b0b8bc6a 
-    sha256sums = e76310fc132d6f78e26cc564f38cf87ab3d9bcc993664755ac0728607daaf005 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_bs.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_bs.tar.gz
+    sha256sums = 32c05805d78f2068c87e43c62870a3a25d3a6569f6d87aa66887b1be69706d61 
+    sha256sums = f169296d10c13df06b92c499f409ab3db50a8a35a03e0dc45966e857139cbdfd 
 
 pkgname = libreoffice-dev-ca-valencia
     pkgdesc= Catalan (Valencia) language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_ca-valencia.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_ca-valencia.tar.gz
-    sha256sums = b674d6e8a3e41e4443765e278b36ae87371334fd9e80b749c760ac9d71a79c12 
-    sha256sums = 76c5b08a10910d8a7d84d7bc2a34ce6b368f76d11c6c9722d3e96752be202bb0 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_ca-valencia.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_ca-valencia.tar.gz
+    sha256sums = 8613800d9643a6a66b565a6da4b555ace1afeeed7b61b67d8f4ee1591cfa88db 
+    sha256sums = a3ecbe4a7851699a0358a5f03db5b3ac1e5a90cde5868efa90e1346ea5ff54a6 
 
 pkgname = libreoffice-dev-ca
     pkgdesc= Catalan language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_ca.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_ca.tar.gz
-    sha256sums = 42cd57182ed4ca0f35bb52e75511dc1e46ba37cd40466c33d65017d99012c4c7 
-    sha256sums = fc6b16fdb408d8f8270d570c2bf32eb6983a6f32110f8a3356e0a963b23218b2 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_ca.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_ca.tar.gz
+    sha256sums = 9a6231c5e7a763aea474b949d6d343d7d6fbed30a07302053d6aa6a47df958a8 
+    sha256sums = 5e78015c01aa962fa17859516e5539d65176aa2b8e84299a61729ce3282787d7 
 
 pkgname = libreoffice-dev-cs
     pkgdesc= Czech language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_cs.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_cs.tar.gz
-    sha256sums = c19e2c10e38a4575c667cf2136d38d85e9bfe128aeefa007cf0d9b90fc2ca0df 
-    sha256sums = 5f823c2a83bb232719487ffe58a11e6ec09755fe53c62580d644b91ac0555970 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_cs.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_cs.tar.gz
+    sha256sums = 19980df80ec8ac63798da42474362f8d3b26479436ecf13bc87be2a4f3370673 
+    sha256sums = e2dda5c9020ab8ae5422f541b6e66034ef44f0dc23753dea51e36077a3d327ab 
 
 pkgname = libreoffice-dev-cy
     pkgdesc= Welsh language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_cy.tar.gz
-    sha256sums = d6388bbbe739ab4d37dd47dec4ef08f0d0ebbbf588f8102d86a5f591f5c368c1 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_cy.tar.gz
+    sha256sums = b685ef29c07de2b7a034d25f73b469875a80589661ee4961c50c51eb92155e4b 
 
 pkgname = libreoffice-dev-da
     pkgdesc= Danish language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_da.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_da.tar.gz
-    sha256sums = 611fafd1311ddbc67f5f9d4ec69345e8b4ef9aa8718b3faa6a2b8a9416e4790b 
-    sha256sums = 4158531873ab9d71e1466d023145761eaa4a6784d65f81e6b130cc988e2eae88 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_da.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_da.tar.gz
+    sha256sums = b3810235d34ae6eabf2a442ce6da6134cdeb8aaebf7a2108330f09bfd749156a 
+    sha256sums = eafd247483239801510bfe72ad1c65c13d56e7adc4a5014ad974276bb0a1c28c 
 
 pkgname = libreoffice-dev-de
     pkgdesc= German language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_de.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_de.tar.gz
-    sha256sums = ca55e2a9af430b0e4418992cbf8cba5bc360ae6a82b7b58dc87e32a0055dc433 
-    sha256sums = d14897bdcd36c5b2d0b09ad6856b24d80551ba5ce82b033090524370ac1b42cd 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_de.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_de.tar.gz
+    sha256sums = a03f64d37e8782f318459576d475dc9a9491e38f957eb519c4e095455e5a5477 
+    sha256sums = 0f606c4da9fa8b045a8c4ad010cf66b9bcae1d51bcd2b14b188d6bbbb67306d9 
 
 pkgname = libreoffice-dev-dgo
     pkgdesc= Dogri language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_dgo.tar.gz
-    sha256sums = 7dd03225259c8903e4dc22a64805eb8875996b78ded54cb19d43eb278cfa17af 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_dgo.tar.gz
+    sha256sums = 94e0c8df829eaa402ed83b268c307d4facca83ba6e58b485e8d2577ebcb00072 
 
 pkgname = libreoffice-dev-dsb
     pkgdesc= Lower Sorbian language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_dsb.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_dsb.tar.gz
-    sha256sums = 56c025bfcf15e5146ab4a2eb805b764abda3ba90c4001574fe9733dfb918b52c 
-    sha256sums = b8b57f298891a667572acfeee2999076ccb3aae0ddd30068a964de81ec5ae754 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_dsb.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_dsb.tar.gz
+    sha256sums = f85e9fb235fe6e134d78905d9465c55cb4cd5b0dd5682657335d48dba999af08 
+    sha256sums = 2452c456c1b7c4aaea18002ac15294b373224b85c8bb0c8e1513df76f5845cdb 
 
 pkgname = libreoffice-dev-dz
     pkgdesc= Dzongkha language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_dz.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_dz.tar.gz
-    sha256sums = 07397ffdfa60db8349bb789690e12bb2ddcd563de64cda4822c27cc74b47aed2 
-    sha256sums = 39a949f9f773807a4f6c70f3d3227c1f2259313f6f52bd53f6930d6a401fc1de 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_dz.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_dz.tar.gz
+    sha256sums = a7f2747d33c3701295e0104478756227a5d7f71b098cfc7c81c6bae5c45579b3 
+    sha256sums = b5a2051ee714007a502589498ae09e5e40920668af93e065f7d3322f82c018b3 
 
 pkgname = libreoffice-dev-el
     pkgdesc= Greek language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_el.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_el.tar.gz
-    sha256sums = f65982fd509b4be116cf809dac548e5efcda11d252e93af970edb122add44fb5 
-    sha256sums = 4e0c722be0c24a7169f9c71df643659b336b4400dd273b076d71c3f711aefd43 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_el.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_el.tar.gz
+    sha256sums = 14c276729e524c833b9ffc3e77ecc7bc63ffa438e9ec22537da889f2ac9dca3b 
+    sha256sums = f383a45ece9a53e0141508961efdb0e57709cb949d3587c6d47e1f0264afa3d0 
 
 pkgname = libreoffice-dev-en-gb
     pkgdesc= English (GB) language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_en-GB.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_en-GB.tar.gz
-    sha256sums = 9460c08809b24c818a389e9edd19b2c078a650d8254bfbcc6aa74c39339836f6 
-    sha256sums = e91a013a98a8bbb303c9d2e7195e7ff5dfd4a62ba34847ee4cb7bcdfcaa37bc7 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_en-GB.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_en-GB.tar.gz
+    sha256sums = 790d91beb3d12c967f65f6a47656c34a8c75779665d26c77c5777243ad5cf5e0 
+    sha256sums = 869233f447db8bd762f93ebdb997833119dfb8ec4f1ece706b43a663df3f92fc 
 
 pkgname = libreoffice-dev-en-za
     pkgdesc= English (ZA) language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_en-ZA.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_en-ZA.tar.gz
-    sha256sums = c92d71db03ef4dbb1e55d1fe2db924c78dcf9bac017c52168bf9c20cbc627764 
-    sha256sums = 66bc5274d5396d5c86b0a059de182df0bc3815c90e1d54fdd3d981e3a551efe9 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_en-ZA.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_en-ZA.tar.gz
+    sha256sums = c3814ec754583c34f05fa84e27ea47c664d2ad77bf4888558e1f71ec8daebf5d 
+    sha256sums = da83d86126e0b6e1078ae0cbcd3491ff1b3dd9c67017505cccc7cd33dce38d7f 
 
 pkgname = libreoffice-dev-eo
     pkgdesc= Esperanto language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_eo.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_eo.tar.gz
-    sha256sums = eae6f093f3fa4f237887f9b4bd5cd166c43277fb8fdd989e3c1f3859fb985bed 
-    sha256sums = 749bf12ad0b05b852ed239e281f535be4537bbdf05b460fc42a2446384a7b809 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_eo.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_eo.tar.gz
+    sha256sums = e940e6be6e62c346eaa6b8beff854896b71641476e2eeb3246728b1ea0fc7190 
+    sha256sums = 24acace0cf3a72d6f6dcc9ce041753c9750b9176ecab689344bf28fc5a2ed8a1 
 
 pkgname = libreoffice-dev-es
     pkgdesc= Spanish language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_es.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_es.tar.gz
-    sha256sums = 5e9eb5ac36e82561689e8750e436947eccb52e8bc41adc2dbc347d69eea40917 
-    sha256sums = c4e5c063807a91548cf282680fca520dcee0f51330786480107b38153373348a 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_es.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_es.tar.gz
+    sha256sums = 5886977780eb109366140792217c05c2065fd2decdf7b6374434efc3cb7ba931 
+    sha256sums = c9678a80dfc2df500fa3d3c36261efd62b3714c3bf6c7db4d6413eb95984c22f 
 
 pkgname = libreoffice-dev-et
     pkgdesc= Estonian language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_et.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_et.tar.gz
-    sha256sums = c823dde7f4095bc146da2048e2e87bc730cbfd67e685d166fb2239cff4d4438f 
-    sha256sums = ed033cf524ea821badb3c07dbd1049d465fd1110b4c13ab0c4c355660ec12d1e 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_et.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_et.tar.gz
+    sha256sums = bbb2b59b19de9982c4776dab2d34bfe343809edbe3df0e2fac7cf01fccbde957 
+    sha256sums = 2f35cd8064619f0b89b999420ac84658451a5ec91b769c12770ffd6d51db3eeb 
 
 pkgname = libreoffice-dev-eu
     pkgdesc= Basque language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_eu.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_eu.tar.gz
-    sha256sums = dbed84c20fb0fe46ebdc58821919d152a02491342e2fa5e9e387552153867817 
-    sha256sums = 3405caf6808af320b58e81e3a49ecf27b4e5acd32868ab28cbc5d0047b82e5d3 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_eu.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_eu.tar.gz
+    sha256sums = 991f9c32bcacf5ed8fd928f1fa80191aeac1c0d8407d407d3bb8d2d404cd8920 
+    sha256sums = e6287e94911e5df7a1166e42b541ba4161136ce3774dc2008c463cfbff62f563 
 
 pkgname = libreoffice-dev-fa
     pkgdesc= Persian language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_fa.tar.gz
-    sha256sums = 89219a855290708e8b28a48b3a779f94bfe313580cb7bf5c4ef8054444fe0c89 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_fa.tar.gz
+    sha256sums = 089bdff2c952659cbdc796abd01ca8d06893779df15471b79729a189d37f112c 
 
 pkgname = libreoffice-dev-fi
     pkgdesc= Finnish language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_fi.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_fi.tar.gz
-    sha256sums = b9dc6a5ea5b5851dbdc9e26a65259d26e3883a3d1ec0e8b43b91e5cb4bb72c17 
-    sha256sums = 226c80476f48ff3438bf306800ddf0a72555e6120b2d668ef77573b0f8a031f0 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_fi.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_fi.tar.gz
+    sha256sums = 3c86507d557c36e31dadb5ef63fa17ff14ed1755cb01a45afd9d13eb9d1458bf 
+    sha256sums = 8cd2a73527505c98ecb33b951cd2d3a72af735fbf97cd780152db0043a3799b6 
 
 pkgname = libreoffice-dev-fr
     pkgdesc= French language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_fr.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_fr.tar.gz
-    sha256sums = b41694f58edfb87c9482eebb6cf95aad14276db7febf691f99b518b3361c36f5 
-    sha256sums = 9fe7b97175e3e7e14504c4dc33cd44de2b5cfbbefc96039dceee988c68b2cdad 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_fr.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_fr.tar.gz
+    sha256sums = 1958f92f72f53a6066cc5dfa6ea9bc32503af535b4e3d3ff81e191eac102f168 
+    sha256sums = 18d30b0ffa35206169abc6e942699b56c292d0bb38d480aeea1e1a036d5aa959 
 
 pkgname = libreoffice-dev-fur
     pkgdesc= Friulian language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_fur.tar.gz
-    sha256sums = 51271bc8fbbe7a8f969fbc17b013cdc748a9e805f78240c75c4f1bc51e80f81f 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_fur.tar.gz
+    sha256sums = f083bfbdf8f4e647340b43eda5444b2315ff6a6fc6c674752be70095e011176f 
 
 pkgname = libreoffice-dev-fy
     pkgdesc= Western Frisian language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_fy.tar.gz
-    sha256sums = d593754273b254c684e40304b846cb8d9ca7c01596076d5c65e7808de629954d 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_fy.tar.gz
+    sha256sums = 9931b7703674baaf178f65827489416819bedaeeac578a051734a76e666f73cd 
 
 pkgname = libreoffice-dev-ga
     pkgdesc= Irish language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_ga.tar.gz
-    sha256sums = df7db7d53fafa96edcf3aca6fb0d549ced6574a5ad369ad32e4f29468e8454ed 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_ga.tar.gz
+    sha256sums = 9fdfd629315f615095787ac5dfd3c0d2c72fa77fd887ca263b32a4061867dda9 
 
 pkgname = libreoffice-dev-gd
     pkgdesc= Gaelic (Scottish) language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_gd.tar.gz
-    sha256sums = 5b21018ff89a3a9132d859259ffe2b81027e00efca9e8390238a7c18feaa2414 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_gd.tar.gz
+    sha256sums = 6ca49430baf1d8c5a44b84169b728b2733f1d5f6e1ed466a4424ab5e7bff7be3 
 
 pkgname = libreoffice-dev-gl
     pkgdesc= Galician language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_gl.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_gl.tar.gz
-    sha256sums = a62626465f37002c7e5132da8d6689a4670b9970872a05670344001da87de84d 
-    sha256sums = 978a0a8225a72b42f09acbcbe432817685ef43b6b67110bf12f0b01ff1891375 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_gl.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_gl.tar.gz
+    sha256sums = 64475ef2b2d2041ad927c27d21f5eca1bd8baf9bb7e5b107b2df61be7717113d 
+    sha256sums = f95f3d3d2c3deb7ae6833b2e43c88c2471e6ba087cd730ec9da1ef6cb70baed7 
 
 pkgname = libreoffice-dev-gu
     pkgdesc= Gujarati language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_gu.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_gu.tar.gz
-    sha256sums = 0f4cb2b76cc5a981e8cc40dad1f18914786ba99852079af1f2564a4a3b523d26 
-    sha256sums = 18920828f57a39370570aea0d58cce1c476cb166df15498c1f0a6e7488c63a8a 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_gu.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_gu.tar.gz
+    sha256sums = 7ab0c74da9bb6cf208454a02f99296620e0291f4da8cbef4b77b3a8122c9737c 
+    sha256sums = e729888cf49778ce9d442e1ef99a9447d927270cf3169ccbaf1d43d04d2cbc70 
 
 pkgname = libreoffice-dev-gug
     pkgdesc= Paraguayan Guaraní language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_gug.tar.gz
-    sha256sums = 27f2c1258c4a4181b248ebb34684e5a3438670ab2aaa1a1d042403d62b5646de 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_gug.tar.gz
+    sha256sums = 55def9f0f70174611dbdc1eacd864cbb4156439b5372874a5908b460f0b4ad92 
 
 pkgname = libreoffice-dev-he
     pkgdesc= Hebrew language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_he.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_he.tar.gz
-    sha256sums = 0993f5a5be3dfd80883ab7ff43322596012ec2c9f11f6a4460bc181e9e290cf6 
-    sha256sums = fdb628c2622ad4d2279d730f26b9568cdf9458a238fbdb8d60ca9b55d06bc049 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_he.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_he.tar.gz
+    sha256sums = 814319b4089326b21bc72199a66e98bd32697a708febf08d6aa306beb20465f9 
+    sha256sums = 01de894e09ca63e3103866fefb7596a81916e9baabd77d137445eb9861098e14 
 
 pkgname = libreoffice-dev-hi
     pkgdesc= Hindi language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_hi.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_hi.tar.gz
-    sha256sums = 5838ed21dedc2931fdb3bcc88ee6836887d3189d59e842d49fefb78cd0ac74da 
-    sha256sums = b57f5fb1cba2763ce8940c0a3c90a6141eb81db07d2a89ee9027d7873013e652 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_hi.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_hi.tar.gz
+    sha256sums = 4065fb23bfb4bb73800658817ce69e4b727a0ed92a156019947d4d5d44cf295a 
+    sha256sums = 28f118f787486d71b2e7c262acc35c638d6743ced7157b7f96c8d7a9f319bc0b 
 
 pkgname = libreoffice-dev-hr
     pkgdesc= Croatian language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_hr.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_hr.tar.gz
-    sha256sums = 05e19b059a241c82961aa543f93af523168f8563a5cf886391462c27f3740547 
-    sha256sums = 07ebb27cc48f88274e70d3387501e6e2097abdaa9745a06783f39264969fbff8 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_hr.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_hr.tar.gz
+    sha256sums = 24e91b19834926520813320d45acfd08d11c5c2a3b269f4a92268a3880b26d7f 
+    sha256sums = 6396028d5fae92107ab071958c8167cb67724a90a417b125cb5b3c7bb1746971 
 
 pkgname = libreoffice-dev-hsb
     pkgdesc= Upper Sorbian language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_hsb.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_hsb.tar.gz
-    sha256sums = 3e1941d0780d1c34f8026350ef9bd3b1bed8d2301a5d209675f1297557dd20e4 
-    sha256sums = 07522a73675facbebe4d29dbc6c3d896059f6cd34e2d0ae512c443e67f0eaac8 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_hsb.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_hsb.tar.gz
+    sha256sums = 705dc33bbd6bfb572de802e291a3e62b82ace28d4864ac5cdc123be5577372b2 
+    sha256sums = 5ea20428809fe4be17d4628f04ce29145bf2e6df05eafb694630c189aa86f7a1 
 
 pkgname = libreoffice-dev-hu
     pkgdesc= Hungarian language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_hu.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_hu.tar.gz
-    sha256sums = 985b5c429dbfa8477b3bede4a601c339776e8b56b14eb6c9970500df235edaa7 
-    sha256sums = 046087f0cb3d652e3e952b2290972a90995463556cfc92e78c5140cb2dfb3128 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_hu.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_hu.tar.gz
+    sha256sums = 528e13fff17d1f1e1d4f70987a4179c95295a36a65b48e4fd7691da24ada6edd 
+    sha256sums = 87ec0e2dab48a1a812d99e27641906701f8c0e4852e09dcadd5a69c632fc5e68 
 
 pkgname = libreoffice-dev-id
     pkgdesc= Indonesian language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_id.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_id.tar.gz
-    sha256sums = 90fc91dd3b091c192b093efaa6edc629017d7137de311a386c6cecc8f252c1f4 
-    sha256sums = 8ad5a132b52a6f55c8a0e6b32a772009498925e44a8f65b6746d1f30c0c07dad 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_id.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_id.tar.gz
+    sha256sums = bfd2ac21ec618a83d6d613ad029feedfe7e2ea9ae22269b9cc313ce4a7061b48 
+    sha256sums = c6080b441ce057458657eb7e9565dd7f39dc69f137603a22c43a60b52feea77a 
 
 pkgname = libreoffice-dev-is
     pkgdesc= Icelandic language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_is.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_is.tar.gz
-    sha256sums = 188e896f737f7ba87be51e70f8e9f85a4ef26cf0bf250a6f939d10ea07afca2a 
-    sha256sums = de23439ab792775604eb8885620f28baea001d0c66e64514f9d7151f5c95e22e 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_is.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_is.tar.gz
+    sha256sums = a1d0a211735b6bbc452d70bf2c80294386c5d9bd3efed4c87845315f6100bb0a 
+    sha256sums = 7cd083a327b188cf4c12392ff189ccdc9f37c36dcb1414db12de0507c04a99ce 
 
 pkgname = libreoffice-dev-it
     pkgdesc= Italian language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_it.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_it.tar.gz
-    sha256sums = 64a774128b3bd3d9ea27e7bdbf11feb2c6ed564fa9739ad21c18d07540591bf1 
-    sha256sums = e45a5e0f213d1775b934e7749986a5e8bba7b7be20eacdd3e13950c0b164e3a4 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_it.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_it.tar.gz
+    sha256sums = 376c6e351228abc6a6ed273ec9cf789aa7cdfde0dd3be91fe14d7376e703b4e3 
+    sha256sums = cf43e1422bb5f7a9c4317ea67d86fbcbbd44d30f427c8117dd783cfa4452eaa9 
 
 pkgname = libreoffice-dev-ja
     pkgdesc= Japanese language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_ja.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_ja.tar.gz
-    sha256sums = c27880280a4758b299188b0ef5d61a78eb6e01ee3f4a8780626525306f0d5622 
-    sha256sums = 51be39ddec021678a18c3c69d45945970eddb47940e37b2b6a1768cdfded95da 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_ja.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_ja.tar.gz
+    sha256sums = b898a90ddc4529560e9cef57b02f7c8f7665c5bf9c1cd8406ef8d025b2c61ac7 
+    sha256sums = 6318f9d84434b9f082aea110dc826214204fffb45f4107ea43cd61abda8ab539 
 
 pkgname = libreoffice-dev-ka
     pkgdesc= Georgian language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_ka.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_ka.tar.gz
-    sha256sums = 2c33c6a6d865e1087ad2c8d6392e14e8af26ba5a88bd8ab482c7fb078760488c 
-    sha256sums = 0dcc675a3389399bb66ab4480866210af89fefca5a134a3fb5b5a862284f14f6 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_ka.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_ka.tar.gz
+    sha256sums = 717cdbb001e1c47b06a96107b291992e50cac67dd1fcb5a070534f084076b42f 
+    sha256sums = c7b881855f520a66f79616da93754c011a8f842c3befef36a43188dbe5ba3131 
 
 pkgname = libreoffice-dev-kab
     pkgdesc= Kabyle language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_kab.tar.gz
-    sha256sums = 7b83a56e474619e216f18b06383eab40361e745e29e37834dd8b79eebda94ca9 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_kab.tar.gz
+    sha256sums = f46b2d995d0e664fbd2414b3be8748d4e8d3300e103df9e35deb2ac80f3fc4b3 
 
 pkgname = libreoffice-dev-kk
     pkgdesc= Kazakh language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_kk.tar.gz
-    sha256sums = c2e90e7d1145074a1e9a803dbc3daa750622883d2315fcda1221b2c0449827d7 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_kk.tar.gz
+    sha256sums = 6500e0d3cf5cbaa8838e3800a71a8af08e66afa12a308e95c809a8d67eb7c36c 
 
 pkgname = libreoffice-dev-km
     pkgdesc= Khmer (Cambodia) language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_km.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_km.tar.gz
-    sha256sums = 3d4063098817a913bd4937f1f0a9d9b07f979fbac38f7026dc8eaab036c1d07c 
-    sha256sums = 1020104efabfdd59be1000223d773398ee9e3e6605e863b7f312c50d16b570d6 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_km.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_km.tar.gz
+    sha256sums = b5eced3f992c0921a48f1575db1237c601c74e32453288ed24577a272661316d 
+    sha256sums = faaef72257412e2d548cf3cf9609dd3e6a62e64d146386cbfc463138f507ea8a 
 
 pkgname = libreoffice-dev-kmr-latn
     pkgdesc= Kurdish language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_kmr-Latn.tar.gz
-    sha256sums = e03885d8012ef80a00764347bc392aaa431fd2546c799e4b86eee99bbd80cfc8 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_kmr-Latn.tar.gz
+    sha256sums = 8e78905ea10e0d8827cf55e4a2362d63b24b2c60791ac6d516b2c145c8cb153e 
 
 pkgname = libreoffice-dev-kn
     pkgdesc= Kannada language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_kn.tar.gz
-    sha256sums = 7e08ee5b3316d1e83ff3f364006b83a822463f1f7adb30fc5d5afbbeba491a44 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_kn.tar.gz
+    sha256sums = bf35aff692dd9b51371c8769050094b26438d849b1741dbe1259039bc96da66c 
 
 pkgname = libreoffice-dev-ko
     pkgdesc= Korean language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_ko.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_ko.tar.gz
-    sha256sums = ea62bb647bcced96fbb3700555aabe4e5c9bfd657587f81d181514f7c37ef112 
-    sha256sums = 8cc449435f990ef0515d61f66e9ea91904767fb816d354134086b0cb7de8fa45 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_ko.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_ko.tar.gz
+    sha256sums = 814624e951a2de5d6d3c7be931490a7f77ff0c478b09d6738e758abd6f761f4b 
+    sha256sums = 9d0df285db31837c1a97a15c2a18dd7cfc9e68e4026726c1d5082e558dbaa9dd 
 
 pkgname = libreoffice-dev-kok
     pkgdesc= Konkani language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_kok.tar.gz
-    sha256sums = 1b8702c258074afcce78ff9b13de8e6274ea2c0a523dc54b8932af7314155d90 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_kok.tar.gz
+    sha256sums = e55a308e92b44b97d5cb3412b0f07fdb965836514ba5b6394d0d04b0d9a0fd17 
 
 pkgname = libreoffice-dev-ks
     pkgdesc= Kashmiri language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_ks.tar.gz
-    sha256sums = f654a678079232b696d26b13b41e7e74c38dc199da5228ab9b950932196e968e 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_ks.tar.gz
+    sha256sums = afd46961dec8a1ce7f6760eb44d5833b51527277aaaf5a3648831be0d9ea2e13 
 
 pkgname = libreoffice-dev-lb
     pkgdesc= Luxembourgish language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_lb.tar.gz
-    sha256sums = 89f2e3976faae5274dc3302c5681d78846185bb47be695892a0f7a9be16beda9 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_lb.tar.gz
+    sha256sums = 4fc72a68384f2eed068b1b2af079f0395a3cfbfdd887a42ed2b7496c2a13a9e3 
 
 pkgname = libreoffice-dev-lo
     pkgdesc= Lao language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_lo.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_lo.tar.gz
-    sha256sums = ebf8f7938d12be334fc0e8d60b1c9ec570cb8df440c84dc51f7fea02b7fedede 
-    sha256sums = fd0c451bffbdd3cfc287adff6864f7f24934df819dd550d17cef5643bf96ef60 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_lo.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_lo.tar.gz
+    sha256sums = d70844319872c8c68b34876620e4a1e427af97fae0ead8fd83c5007e3543f7b6 
+    sha256sums = bcd64c3d631952166380ca12a5bb51a07a2ad20c91d066d2ff3e408a98d50220 
 
 pkgname = libreoffice-dev-lt
     pkgdesc= Lithuanian language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_lt.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_lt.tar.gz
-    sha256sums = 018f9802b669ba92b83d21b8223fa3a90c6de8bc1ddf2d3020dfe5d64f9fec9f 
-    sha256sums = f21ff4017a67f030281517d64e1ba86aa23459b0f510f796ba3ef29467abeae8 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_lt.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_lt.tar.gz
+    sha256sums = a4d3fde9e4208eb339b113e07c59c4139e91cc307bb0556807bf812c1fc18335 
+    sha256sums = d51428fc53c80be7be3da22225df07f9c2f20a270495b94fb051e688a45e0b53 
 
 pkgname = libreoffice-dev-lv
     pkgdesc= Latvian language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_lv.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_lv.tar.gz
-    sha256sums = e8f00efda7de87e7afdaa565a1b34c052c66be95ce9409d79ffcce850ca2239c 
-    sha256sums = df2df4d1cc02804e9a2a2c38e6ae9a6ab95bbd872dfb17286d7288e69f234a23 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_lv.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_lv.tar.gz
+    sha256sums = 54d7a6a2117e9b764a793203551a22e202dc280bd596def0ef54c3e10438acf9 
+    sha256sums = 2f886e2c84f3756981ca2652052cc3563a2d934b916651e64d91b63bedb8f918 
 
 pkgname = libreoffice-dev-mai
     pkgdesc= Maithili language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_mai.tar.gz
-    sha256sums = 58effd21c53392768fcab6ef89b3100e3b79d7a34bcb395f60b3b04e14a27569 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_mai.tar.gz
+    sha256sums = 6877bb629040a46c04ec250e4f66f8e4679ca28db021db8f61486ccd0310f2e4 
 
 pkgname = libreoffice-dev-mk
     pkgdesc= Macedonian language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_mk.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_mk.tar.gz
-    sha256sums = 697dde5158d17946501fb9dfab9a98f6e27b471b2bc7f9d404da5729fb8cbb83 
-    sha256sums = 3907717afa97afb97c75b77f0caa4443853faf80dba4b71bea5eddcd29517df2 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_mk.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_mk.tar.gz
+    sha256sums = 9a186e41a2ed8250742914651b68fe446111248c003d5cdebd3e35f082b1902e 
+    sha256sums = 5512cdce24f83e19fbe875df1412498a027b6856ad887dd342b8cf6f40d189f8 
 
 pkgname = libreoffice-dev-ml
     pkgdesc= Malayalam language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_ml.tar.gz
-    sha256sums = 1eaa5c8efc590dde0f9b32706ea942d9b9a7f5eeafd24cfaeda93abb4fce2b9b 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_ml.tar.gz
+    sha256sums = 0e9c8d96731f73bc34f9bdcca424aabcb028128da5f1ae86010b97d4223fa8b7 
 
 pkgname = libreoffice-dev-mn
     pkgdesc= Mongolian language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_mn.tar.gz
-    sha256sums = b1c6c55528ad51c64cf1a0c11ddc510bab7d62fff552cadf174433b6d7bec718 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_mn.tar.gz
+    sha256sums = 7a78254f16c491d61f9e8809273d8dc5ef6db8543d7aa9af1066e53fc6404966 
 
 pkgname = libreoffice-dev-mni
     pkgdesc= Manipuri language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_mni.tar.gz
-    sha256sums = a6a7ed555be60cf0cdd358e7ed6c280967c62edbbf01ec84f263b7c0c26ac4a7 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_mni.tar.gz
+    sha256sums = 1f370b41aea7f50441c63fe5bdefee3729328aea9be0db54013f6a6a37870ec8 
 
 pkgname = libreoffice-dev-mr
     pkgdesc= Marathi language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_mr.tar.gz
-    sha256sums = a5be2439c8cfda07c8f537ffe80bc98c36613847e20fe9d7e463fa30e4cbe395 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_mr.tar.gz
+    sha256sums = dcbef76b4c65fe3ac84732fd6414a0d78d76b7311bc7d5ae4e5f0e25b046f2ac 
 
 pkgname = libreoffice-dev-my
     pkgdesc= Burmese language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_my.tar.gz
-    sha256sums = ee48b8099264264b8f6679c417e1f4c27b00d4c3c65685a401b541b73cbb16b5 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_my.tar.gz
+    sha256sums = cec3c447e60dc4cd6ca94a95f1279cc38e6c4b2e9e086ef21bf43776a397b485 
 
 pkgname = libreoffice-dev-nb
     pkgdesc= Norwegian Bokmal language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_nb.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_nb.tar.gz
-    sha256sums = ec34cd1ea0f134b693db3386290d6e4ac04880d825dde75d825321c8fd8c1b6f 
-    sha256sums = 9e7f9bfd93e5c76ed335e8729cb065e55c3c4b2c4c9b08f025b0d19372374b4d 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_nb.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_nb.tar.gz
+    sha256sums = ce490ab6823d08ec1848ad9f14b2fcd061fc0e6b3bad81420a61dcbada8b46a4 
+    sha256sums = 0dd2fa9b957a3ca43394a30485994dea51ecaf6138a6100c457fad478e990a55 
 
 pkgname = libreoffice-dev-ne
     pkgdesc= Nepali language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_ne.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_ne.tar.gz
-    sha256sums = 7c66db0886b32b2dcbbc839f4866a65f5f86b6de8c6eac2895a52aea241070f7 
-    sha256sums = 89ba4b4759f26e3fa172e435d14ea9a8c1940b4e89df463fdf657db58cc467c8 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_ne.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_ne.tar.gz
+    sha256sums = c187a23caa9426b345c30b22391586767a766e1e921d5fe1f20e45bf7a5c2a14 
+    sha256sums = f69a7579687f9c9992a34e57da1aa9caf042f63fbdfac223e45750fa1d44888c 
 
 pkgname = libreoffice-dev-nl
     pkgdesc= Dutch language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_nl.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_nl.tar.gz
-    sha256sums = 510711db51514baca862a6b86e9729660259830f2749a6fddde042fffee512bd 
-    sha256sums = 7d19a76a6402583e317665984f4202d8a059f89295ea431b0434f009cbfd2dcb 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_nl.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_nl.tar.gz
+    sha256sums = 0ca3e759d50a479b4766ec49447c2145c1f068f683f0ceeba99297091390a5d9 
+    sha256sums = b2835540ab879b11dd2787d2580002c2183658e94243ce6b57e2fa430c6e4613 
 
 pkgname = libreoffice-dev-nn
     pkgdesc= Norwegian Nynorsk language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_nn.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_nn.tar.gz
-    sha256sums = 2c449ae44d8f213cc09ea0870d4898291ba6d3f3cc3677d5f7ee10c2e2b6ad24 
-    sha256sums = 3bf90abe6a88ebbe84a324ba6bd2b5005b970b740c918d874bf4a5de547773b2 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_nn.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_nn.tar.gz
+    sha256sums = bda74b24063864dcca9a0f8b731d71a589fdf3a9ca0a3d99fc3ba7530a47edac 
+    sha256sums = 2c6ddf07f2049d718127883096a747c33817f8baae416a8198c5b5ce4a2c827f 
 
 pkgname = libreoffice-dev-nr
     pkgdesc= Ndebele (South) language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_nr.tar.gz
-    sha256sums = f976da00999d4183c326d5468b8d5df0373de6edff0455935b58f93d6fdb4966 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_nr.tar.gz
+    sha256sums = f8ab66e74a759634ec160c6cb0ee4a4732361d9df7b7c5a6ef008238f506e060 
 
 pkgname = libreoffice-dev-nso
     pkgdesc= Northern Sotho language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_nso.tar.gz
-    sha256sums = b94e1589550d1fc1fc8769797985deb0b335767d080bf5ac93719cd86ee4bcbd 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_nso.tar.gz
+    sha256sums = fc1141d460403df085df17320bae609430678b517a6a844cf3bae17fa709fb1d 
 
 pkgname = libreoffice-dev-oc
     pkgdesc= Occitan language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_oc.tar.gz
-    sha256sums = 858184f1dec03a408d108a81ca5acd4375314bf23eafaef773ad62e16e5fdafb 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_oc.tar.gz
+    sha256sums = d49eee31ad49b314818dc716f3c321f2c33a23fb413acf9e7c367354b3370538 
 
 pkgname = libreoffice-dev-om
     pkgdesc= Oromo language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_om.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_om.tar.gz
-    sha256sums = 56809320ca1042df0192722db9101becdc9c6c8e41558d675bdb290de78147eb 
-    sha256sums = 019ef6b237f5f59bbc14b144f83bad9b4619117e241cb9f79c6820499686ba2f 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_om.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_om.tar.gz
+    sha256sums = 8ada38bce28232f26ca999ecb92f945797da5e9fbe8d5c4fdfdd6f1f82dc1938 
+    sha256sums = e36869ddc7dc5aaf25d7bc9b4d0c43198eba75f4f62e4a7b72f94d8c45b4dff7 
 
 pkgname = libreoffice-dev-or
     pkgdesc= Oriya language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_or.tar.gz
-    sha256sums = b60c93f768d280356bf6a84118ea94e3370e7e9917858f9a09b55ddd6ca36045 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_or.tar.gz
+    sha256sums = ddfac83e10e7f8bc4cc34ec0f24567eaf575971462819898c2b56a8192974c3e 
 
 pkgname = libreoffice-dev-pa-in
     pkgdesc= Punjabi (India) language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_pa-IN.tar.gz
-    sha256sums = ae5d69a01874a5387817f12129ab891ce7bfb07bd4974a61827dfd9203103889 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_pa-IN.tar.gz
+    sha256sums = 5ec40ded80247e6222ee6119f5377c64622707ea33a9d5ceb717d24e5d236f9c 
 
 pkgname = libreoffice-dev-pl
     pkgdesc= Polish language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_pl.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_pl.tar.gz
-    sha256sums = 52a76ea97cf86a2a36d89f5b6c2e3516f095eeaa56c3f19e4bb9b25629de6521 
-    sha256sums = 9635a0b9dd5616af660a5caf06b9347eacadc2b4f078f23efe821d05d322997d 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_pl.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_pl.tar.gz
+    sha256sums = 41d481118d98fe42bff5f105ba67cd10fe55ec6dee3bbd4b980e57461a05202f 
+    sha256sums = b007398fe6a486891c4621ae0b9b16e8bf7e4ae43783bbf10def2125d640f282 
 
 pkgname = libreoffice-dev-pt-br
     pkgdesc= Portuguese (Brazil) language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_pt-BR.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_pt-BR.tar.gz
-    sha256sums = be9f87d9267d13756dcd4eab36ab6e95697e998ece4d927fc04bc72b6a1818e4 
-    sha256sums = 4b28602ca9df12767c0001111f947464d32f6e90fe8525b05531934f7f5453f9 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_pt-BR.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_pt-BR.tar.gz
+    sha256sums = 592105e0c06b31eeb12bd483a27656ecfe1374faf039afc0d816902f6f7f730e 
+    sha256sums = 3c5ffc25f8034208a5f5167f58f850718488ba29628d891faeff36d24160faa0 
 
 pkgname = libreoffice-dev-pt
     pkgdesc= Portuguese language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_pt.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_pt.tar.gz
-    sha256sums = 3b74f39030208293f51bfcc656f6e0101d6130e215bdda57035bce3916fd3e9e 
-    sha256sums = bae25811f2d6745ba6387406ab4721418a99464e6157510f25499637f7bb128e 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_pt.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_pt.tar.gz
+    sha256sums = 0335e8fd964aa9d54496eaa367aa966f3efc5704ce6a3094397995a53e46b83b 
+    sha256sums = 2fed3a5a02ae414cf897c9ed85df3415cde1504d7a0f7b4f620a8a192a9020fc 
 
 pkgname = libreoffice-dev-ro
     pkgdesc= Romanian language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_ro.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_ro.tar.gz
-    sha256sums = ac4d4529b105d052d8d313f0d7dc676e63c15c55b2f8fc452a9f6eb14450e054 
-    sha256sums = 779a0303d8d13fd022782d62d555915679475d589114c67338227249b10084cf 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_ro.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_ro.tar.gz
+    sha256sums = b99efdf5b44b9e21583ee2cdf42b8591a5b01d55b9b67749d98936f32524c519 
+    sha256sums = fe216ae47c70c7ac7687437a52c607f10f0cc31f5820d44b8ca803720c410db5 
 
 pkgname = libreoffice-dev-ru
     pkgdesc= Russian language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_ru.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_ru.tar.gz
-    sha256sums = 9809d79b16fa43f3c412050f7a23df4929483822300577e6bba998653131243b 
-    sha256sums = f37594ebd61886674949915a2a736b6cd9ae224342bc710b70ba873be353bed8 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_ru.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_ru.tar.gz
+    sha256sums = 1ef4c64ee0fca16e8fcd5d6dd22c47d0e90ebb5fe8136ee9c4cad06bb8f8cef5 
+    sha256sums = 5a9c4e5caa3dbd7d4fa23becfd08b89e2f15c3e986a85fd514981ff72cd7c1f1 
 
 pkgname = libreoffice-dev-rw
     pkgdesc= Kinyarwanda language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_rw.tar.gz
-    sha256sums = 9930abe4506c640bfbbdd05ab3c55ce8f9b82fbab7454132674395d6aecad23e 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_rw.tar.gz
+    sha256sums = 02839f7485233672f8d3c1b840c08faeabeb74fa1c1f65480fb1afdb5a1895bb 
 
 pkgname = libreoffice-dev-sa-in
     pkgdesc= Sanskrit (India) language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_sa-IN.tar.gz
-    sha256sums = eff1b63149b92320208f183e8e755edd82aa97abb946657d1107ff2bafebc095 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_sa-IN.tar.gz
+    sha256sums = 088dadd036ee560a1046f9aaa8192e377488de86e3369cd474df530b7091a236 
 
 pkgname = libreoffice-dev-sat
     pkgdesc= Santali language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_sat.tar.gz
-    sha256sums = 641ac32745d026ac28da880c046ec8de24adb1ec3555af39134c0869d4258b87 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_sat.tar.gz
+    sha256sums = 8dbb809161c7b4d9a52ccf295f7e5ebb1a76a1c1de08b2159104a9379bd95120 
 
 pkgname = libreoffice-dev-sd
     pkgdesc= Sindhi language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_sd.tar.gz
-    sha256sums = 894b1f3aa5d5a5c17766dcdf2be9868d95e2ddf390936e96bd4115c11ca43a3b 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_sd.tar.gz
+    sha256sums = a88ea2c48ef16ee1a4ee44fcfad5028c7cbb824907ff4bf0e46bfdf824ab75a4 
 
 pkgname = libreoffice-dev-si
     pkgdesc= Singhalese language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_si.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_si.tar.gz
-    sha256sums = fb9f9b9bda3c3e89c08cb765a68bed232ac5c789cd9f9770fe3d1a986da0b503 
-    sha256sums = 477718c4bee647c8eccbcf303318dbe381bc68dcbe81da0b49c690258f8bebd6 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_si.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_si.tar.gz
+    sha256sums = f3152a7c7e17672561c16053db9dd6fc19e86253f3b9f0ee0af19eab18f106be 
+    sha256sums = 1bdd3092fb693a7d54cca879e321f26cd55d163ebd6b8ece5cf7cf41501b0db7 
 
 pkgname = libreoffice-dev-sid
     pkgdesc= Sidama language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_sid.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_sid.tar.gz
-    sha256sums = e8691a0df8d2fe63320b5f881e8ba3cc6ecc70b00457bcebd1f5c26140ab0481 
-    sha256sums = 0c6e9453986d471670ccad8ca028fb2fcfad87d1ba47e58863adf478440da05a 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_sid.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_sid.tar.gz
+    sha256sums = 12721326084a71535a83edbfc0950620545fdf36e68eaa76bad66a3863fee3e8 
+    sha256sums = 755a88c7679268571934accb5feef60b15a236fbcda2bd303f1583077b882f29 
 
 pkgname = libreoffice-dev-sk
     pkgdesc= Slovak language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_sk.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_sk.tar.gz
-    sha256sums = cf6a7f2291c4cccea8d0b816b04ed9da0676cbb04521ee298b1bdd7c5cd39ac2 
-    sha256sums = eb0f925b3374e8f8395b2604832d69f7b7f19608eaea2ad7a21933b9b5d5bfa4 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_sk.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_sk.tar.gz
+    sha256sums = 308537e37d25db31589a8bf689e07a3cd5a761b0529a3f9a54ecb5954eff59cc 
+    sha256sums = 63d47beecec1abd07b05ca86a1a68e2a479edc0ceeceecc371e2a7b84478e816 
 
 pkgname = libreoffice-dev-sl
     pkgdesc= Slovenian language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_sl.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_sl.tar.gz
-    sha256sums = 4a2974ddfab225ff241c06ccef002afe2f125db5381eb992f87cce252191bbfa 
-    sha256sums = f1676e55e303e238527396d8a3c897afb22caca5dd701657ed7970d08fc776fb 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_sl.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_sl.tar.gz
+    sha256sums = 03c1574104dc32f422e79257162f1af659753f85b688c0bc663cd967a57df765 
+    sha256sums = 092a9051e0b13644bb61d414271374414191e6adb450a7275f22655cbd288ba8 
 
 pkgname = libreoffice-dev-sq
     pkgdesc= Albanien language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_sq.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_sq.tar.gz
-    sha256sums = 21d6089fdea5db906c87ee80c3acc22d097667a0682691310244e87855f2a3a5 
-    sha256sums = 38ba64bbe2dd3b79792d04aff2dc39967fc1c52276b48693112c5be7731ed297 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_sq.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_sq.tar.gz
+    sha256sums = 25d3057712e11ca756fb93229e716e4945ecc9651dbdb317633a7a04d6c978bf 
+    sha256sums = 16fc8b4243f0caa334e15e42f0eb4072090923d4c9f09983eecae3494fd353cd 
 
 pkgname = libreoffice-dev-sr-latn
     pkgdesc= Serbian (Latin) language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_sr-Latn.tar.gz
-    sha256sums = fa5142f99b22328485c05959ec06b8428d5b683dc0f84d9745bc5aa813340017 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_sr-Latn.tar.gz
+    sha256sums = b42f845bc158a45094bca318395fcd5783312d3d9e5ff6d3c24daeaf86a0f647 
 
 pkgname = libreoffice-dev-sr
     pkgdesc= Serbian language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_sr.tar.gz
-    sha256sums = 5dbbae8697c2562946049a0a30597d2166955f13ebea0699d3727b3778e3474c 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_sr.tar.gz
+    sha256sums = 55788f7b3f7b4b53f9c235f3006d8c6f4fdd1ecdfafe53e716a86aaefb61f671 
 
 pkgname = libreoffice-dev-ss
     pkgdesc= Swati language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_ss.tar.gz
-    sha256sums = 8e759889ac83422eb92db2d579c17baf157945446927b8c57a8c1a16ea4550df 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_ss.tar.gz
+    sha256sums = 96761e2e459bade4c266eaff5b592a6102fe6ce47621c13741d802459d1e5081 
 
 pkgname = libreoffice-dev-st
     pkgdesc= Southern Sotho language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_st.tar.gz
-    sha256sums = 146281e454b0da438c3195a33ca4cc4a649761e1e3a07d28cee69d80c3d9ad46 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_st.tar.gz
+    sha256sums = 2452bca74f9223ad462ff2ca7974d4a32d4f9dbef7d541309614b413eda2bdfc 
 
 pkgname = libreoffice-dev-sv
     pkgdesc= Swedish language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_sv.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_sv.tar.gz
-    sha256sums = 82eda9a5f2afd77392f465118cbf4cab98ce67e43faf2fc1c7a970839e035a0f 
-    sha256sums = 0ab938570eef4f54df3ece5cf9b35a2920bd6861fa35ba173cb3ebc2388659c8 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_sv.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_sv.tar.gz
+    sha256sums = e9158e1276a969843e51397b85c261dd7a7f37d81566f4e147288da134478c1b 
+    sha256sums = ca4edfb19c1e301f273977a59a2ef70ff6ee1b1e56570d515cfffa837aabc8bc 
 
 pkgname = libreoffice-dev-sw-tz
     pkgdesc= Swahili (Tanzania) language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_sw-TZ.tar.gz
-    sha256sums = 08c49cc0b0a516e47a0510046b77c40071cb678edf692bb4eb7e9d34b64529db 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_sw-TZ.tar.gz
+    sha256sums = d7932f307c5f7eb8aec07b93a6b6de0c4bd5d8b353ce98b6e38f13998e93d643 
 
 pkgname = libreoffice-dev-szl
     pkgdesc= Silesian language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_szl.tar.gz
-    sha256sums = 4ae381efff0cbbdaafb38bcc16aedfa216635e8b8c26f660b2c2440633d2949c 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_szl.tar.gz
+    sha256sums = cd7d630dec45c06861161fa937a12b663d10d80d5bc6a28fe045aae8740b3d85 
 
 pkgname = libreoffice-dev-ta
     pkgdesc= Tamil language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_ta.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_ta.tar.gz
-    sha256sums = 0002a6ef29aabecb1e5c8799880e7e1057cdc7d09c0e31d255f3e3f52d27b2f5 
-    sha256sums = 682dbf264188f4045e22d01d7034dca2b294e82aa6773a6145e82889209872d5 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_ta.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_ta.tar.gz
+    sha256sums = b4cf457e5ac07a35169b3d2d7777460c4a16368b7850f67ae50b246e3e11216a 
+    sha256sums = d9da7a741b1d0e866e99e4617d22b32b396d871d73d03952b937d4af30698716 
 
 pkgname = libreoffice-dev-te
     pkgdesc= Telugu language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_te.tar.gz
-    sha256sums = f6981fc2caf630fa344c96fd0c1b3c405e05ac0baae7efdcc0085a6733866d2c 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_te.tar.gz
+    sha256sums = 91765316e2bcd72e7e03f6bdfd1b3786e81c3247cd44bb43d00a0515c214cf3e 
 
 pkgname = libreoffice-dev-tg
     pkgdesc= Tajik language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_tg.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_tg.tar.gz
-    sha256sums = dbc4aad0b349a172c4faa0d9d0d035e73a2437898c79b0ed1843f7c7cfd69ad6 
-    sha256sums = 51b624cbfb143f6d6af848e43cd1c1672361c7b7989e3ea54b098ce3b4192548 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_tg.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_tg.tar.gz
+    sha256sums = b5dbcafedf7e07a7f886868e09dd05c365598577e212782cae5dc8820e714032 
+    sha256sums = 985f59b4fc81247fc0e79a9845518f4fc0db3d1d2db7fc60d0c8639f9d201887 
 
 pkgname = libreoffice-dev-th
     pkgdesc= Thai language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_th.tar.gz
-    sha256sums = 88d3d059807c1bd84f6291d97ace4a5bd9a1fea6f9ab68ff5c12b043b5f289ef 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_th.tar.gz
+    sha256sums = d975840619042ac89776088d2f0ce0ea5b426a1269fcf74cc59d29067a497168 
 
 pkgname = libreoffice-dev-tn
     pkgdesc= Tswana language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_tn.tar.gz
-    sha256sums = 88d3d059807c1bd84f6291d97ace4a5bd9a1fea6f9ab68ff5c12b043b5f289ef 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_tn.tar.gz
+    sha256sums = d975840619042ac89776088d2f0ce0ea5b426a1269fcf74cc59d29067a497168 
 
 pkgname = libreoffice-dev-tr
     pkgdesc= Turkish language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_tr.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_tr.tar.gz
-    sha256sums = 80bf6e2e07af6f9858831f9de1864f81199209bc74b5b3841168e737f3ed8950 
-    sha256sums = 6fe6d75a86602267d1bbac96b8730b69dc01e22b0470023d21d6e0ec139c1788 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_tr.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_tr.tar.gz
+    sha256sums = 34484b2313e2553d0e0c2cb12b1ee21e58afb4f7be566ab5594a966497038b1a 
+    sha256sums = 425ec817911e45b48f5e5355d7eb9201dc87a7aeebc57141d376e91044d677cd 
 
 pkgname = libreoffice-dev-ts
     pkgdesc= Tsonga language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_ts.tar.gz
-    sha256sums = ae427c2a910cf20184926e0269428c94b3381621d2c7fa97c5a3130415b443c7 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_ts.tar.gz
+    sha256sums = 1f7d840098c542552555dc10255a8fc68e0b706ef3b11f0044bc74f0eb772e9b 
 
 pkgname = libreoffice-dev-tt
     pkgdesc= Tatar language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_tt.tar.gz
-    sha256sums = c8763c863c364f3ab7150a5a34a6891d0348882f2386a7c76fe18e735d4457b8 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_tt.tar.gz
+    sha256sums = 3f6bc6ce602a59cecdf57f4e686b7b9f58251782fb985724b4929b5fdf019e88 
 
 pkgname = libreoffice-dev-ug
     pkgdesc= Uighur language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_ug.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_ug.tar.gz
-    sha256sums = c9b6a15784c825a79d3b59cf26a08235af8d7b3d18dbe32f866e693f0e06e1ff 
-    sha256sums = b10dc2ff1d6229815a84c02fd2d79f36bb77a427da54aea229d5e71b18cac47a 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_ug.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_ug.tar.gz
+    sha256sums = 2b1bd07cf35d4d79acf09de4ee25617a847b3b69831023acb98fceb0a9531c5c 
+    sha256sums = 08dd35d607f64c68f92fde758cf0df4aa39dd3051355d1b6113133026ef7de95 
 
 pkgname = libreoffice-dev-uk
     pkgdesc= Ukrainian language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_uk.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_uk.tar.gz
-    sha256sums = 64c9335523990621c73768d466efe564e1396ff776dac3ae5cf3cec9c04f598b 
-    sha256sums = 617ccebd88b31647b712c061b4c55e9cd17588bf73549ab33aecf915707c9438 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_uk.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_uk.tar.gz
+    sha256sums = 47bdd2bf5e76ff705d20da80004f9ce04f5515e9967f2768fe617e23e8344ee3 
+    sha256sums = 1323d72a5a2145d4b23bd3888401ea46b4a4f6ceb77f690698727f978dbca4b5 
 
 pkgname = libreoffice-dev-uz
     pkgdesc= Uzbek language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_uz.tar.gz
-    sha256sums = 305938b483e969623ee151f7b0e5b5c5ae20e6f75634609910c9e75fc5c66bd5 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_uz.tar.gz
+    sha256sums = 94db1107b56881bdd4ecad2002d8837e2aaf838c6d0817076c90d113ada487aa 
 
 pkgname = libreoffice-dev-ve
     pkgdesc= Venda language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_ve.tar.gz
-    sha256sums = 9d23cbd9d5580ab5fc58437dd56154dd3dee4e3b64207c4c9f44937319fc197c 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_ve.tar.gz
+    sha256sums = 33d51a251a44df68cdcba009376633778e6d106ed85236e72134e920fffbd9e4 
 
 pkgname = libreoffice-dev-vec
     pkgdesc= Venetian language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_vec.tar.gz
-    sha256sums = 64cd0c63d9be68ca57efe70a1bcc6fb2013c758d78b318540b57b389551ff5b5 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_vec.tar.gz
+    sha256sums = 647cba2e0b6cd4a06bac03d80dceef01afacf2b071454b86206b3cc6dcadf4d0 
 
 pkgname = libreoffice-dev-vi
     pkgdesc= Vietnamese language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_vi.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_vi.tar.gz
-    sha256sums = 38eeb80a888cc2bd53763d3c7d32ad74f6c398ead70ba5f2b92e1a077c679972 
-    sha256sums = 545c9c283a11f2b1c83a09e689a86efa3e1551d25fa02fad74bd38da8062f8ea 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_vi.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_vi.tar.gz
+    sha256sums = 12e256b398fa085c288935ab4afe790d95738092c4073f6afd9fe6eb5e0c14c9 
+    sha256sums = 3110bdc15dca3a2d69af4019ee0677e536ddc77767aca0fcc59ed9cd14a36796 
 
 pkgname = libreoffice-dev-xh
     pkgdesc= Xhosa language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_xh.tar.gz
-    sha256sums = e33cd6709ef7333e9e63398cac2db3dcdd58fa95121fd62a8eefa6f4812c93fe 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_xh.tar.gz
+    sha256sums = 6abc0977e779f97971f2f0abe43d0aa52380f703998c00eafff44dd2e28fb12b 
 
 pkgname = libreoffice-dev-zh-cn
     pkgdesc= Chinese (simplified) language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_zh-CN.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_zh-CN.tar.gz
-    sha256sums = ce209fce7d62c53681e69540056e2888a20ed049180638cee26ed7e27ac85a4c 
-    sha256sums = c9ee6f99753550ed3d14ee0531c62ddf813c3006850ffe507b90e44ebfb6c3e9 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_zh-CN.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_zh-CN.tar.gz
+    sha256sums = 1713611042274086a2621103dab35a9fbdcd501d9941a6848ddcc6c27b34a686 
+    sha256sums = 24fe5cfb6ed321d04fe8d0c07e8b4d7153b72207ea0de1fc3fddb7ed1016dd47 
 
 pkgname = libreoffice-dev-zh-tw
     pkgdesc= Chinese (traditional) language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_zh-TW.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_helppack_zh-TW.tar.gz
-    sha256sums = 9c252725000f929ef1783539b6bebb08a0358bea533b68ca8d9ce68a4653211b 
-    sha256sums = fee0589962e6029ddd1d5c8bb4c2282541f6f4ec1fcbbc6f32ec72761482762e 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_zh-TW.tar.gz
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_helppack_zh-TW.tar.gz
+    sha256sums = 498925b9468cfbe5f629bae9938e40816da07f79974d44e3f94237b0f2c585f7 
+    sha256sums = 43cd8a551cdfb70fe137d89df6c530c6bb95eea139c92e8785ae4ca8704b4c7f 
 
 pkgname = libreoffice-dev-zu
     pkgdesc= Zulu language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=24.2.2.1
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.1_Linux_x86-64_rpm_langpack_zu.tar.gz
-    sha256sums = 9a8cbef7c02edf1d6952d4df39ffc8e9b8b7a617e37987d1009aa90d1427d7e0 
+    depends= libreoffice-dev-bin>=24.2.2.2
+    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_24.2.2.2_Linux_x86-64_rpm_langpack_zu.tar.gz
+    sha256sums = 27936698794e0a66f5e38957f07fb698d025473c3b360d6d4ff04a9e08379647 
