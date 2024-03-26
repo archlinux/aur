@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Pinnacle
+Comment=Remake of the 1986 classic, "The Sentinel"
+Type=Application
+Exec=/opt/pinnacle/Pinnacle.x86_64
+Terminal=false
+Hidden=false
+Categories=Game
+Icon=pinnacle
+Keywords=Game;Retro;Sentinel;
