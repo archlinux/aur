@@ -1,0 +1,20 @@
+pkgbase = bilive-danmaku-git
+	pkgdesc = Bilibili live danmaku client.一个开源的 bilibili 直播弹幕姬.
+	pkgver = 1.0.9.r0.g590e9f1
+	pkgrel = 1
+	url = https://github.com/Beats0/bilive-danmaku
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	depends = electron26
+	provides = bilive-danmaku=1.0.9
+	conflicts = bilive-danmaku
+	source = bilive-danmaku.git::git+https://github.com/Beats0/bilive-danmaku.git
+	source = bilive-danmaku.sh
+	sha256sums = SKIP
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+
+pkgname = bilive-danmaku-git
