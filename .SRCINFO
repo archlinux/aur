@@ -1,23 +1,22 @@
 pkgbase = python-flake8-polyfill
 	pkgdesc = Polyfill package for Flake8 plugins
-	pkgver = 1.0.2
-	pkgrel = 2
+	pkgver = 1.0.2.r18.gb98e6f4
+	pkgrel = 1
 	url = https://github.com/PyCQA/flake8-polyfill
 	arch = any
 	license = LicenseRef-MIT
 	checkdepends = python-pytest
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = flake8
-	source = https://files.pythonhosted.org/packages/source/f/flake8-polyfill/flake8-polyfill-1.0.2.tar.gz
-	source = 0001-fix-metadata.patch
-	source = 0002-fix-tests.patch
-	source = 0003-fix-mock.patch
-	sha256sums = e44b087597f6da52ec6393a709e7108b2905317d0c0b744cdca6208e670d8eda
-	sha256sums = 8258d609f8da2fcd03a87a9ada781939d1a526f6747daff2ef12231b9a8c7999
-	sha256sums = 7723ba2cae2c187ae0e7f97b4782d7e39803beff6b8799e77f97c575b457ed3e
-	sha256sums = a7f1f0db437cae2322e3a82afb21b1f67aee152b262fc4fe5ad8afa80d1635af
+	source = python-flake8-polyfill::git+https://github.com/PyCQA/flake8-polyfill#commit=b98e6f4f6cc90334f4d7040745aee91b4021cc42
+	source = fix-tests.patch
+	source = version.sh
+	sha256sums = 6fa19d5ed3629de90256046c7e848805b90745460296b3b6677b0c61a9af2744
+	sha256sums = 33a28897eda38828c197a6f31e0415a8804209c40f698ca5b5201b7660b65985
+	sha256sums = d15fca2becb34181a422547a3fed8695f4ff8459753d087aed768d0d010bf5db
 
 pkgname = python-flake8-polyfill
