@@ -1,19 +1,21 @@
 pkgbase = sing-geoip
 	pkgdesc = GeoIP Database and Rule Set for sing-box
 	pkgver = 20240312
-	pkgrel = 3
+	pkgrel = 6
 	url = https://github.com/SagerNet/sing-geoip
 	arch = any
 	license = CC-BY-SA-4.0
 	license = GPL-3.0-or-later
 	makedepends = git
-	source = geoip.db::https://github.com/SagerNet/sing-geoip/releases/download/20240312/geoip.db
+	source = https://github.com/SagerNet/sing-geoip/releases/download/20240312/geoip.db
+	source = https://github.com/SagerNet/sing-geoip/releases/download/20240312/geoip.db.sha256sum
 	sha256sums = 77879a4239ed28a9835e7db1d7f55dd3f9540904714125cb39cc3425e61b7fd4
-
-pkgname = sing-geoip-rule-set
-	pkgdesc = sing-geoip (rule-set)
-	provides = sing-geoip
+	sha256sums = f150da7d973e20ccae298569ae261d2f34936414bdca45fad87e4e3b9ce09b71
 
 pkgname = sing-geoip-db
 	pkgdesc = sing-geoip (database)
+	provides = sing-geoip
+
+pkgname = sing-geoip-rule-set
+	pkgdesc = sing-geoip (rule-set)
 	provides = sing-geoip
