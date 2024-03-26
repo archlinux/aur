@@ -1,7 +1,7 @@
 # Maintainer: martiuk <me at martinke dot mp>
 
 pkgname=xorg-xwayland-explicit-sync-git
-pkgver=23.2.4.r385.gbb2e2eba4
+pkgver=23.2.4.r387.ga57b44948
 pkgrel=1
 arch=('x86_64')
 license=('custom')

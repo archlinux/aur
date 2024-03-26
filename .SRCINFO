@@ -1,6 +1,6 @@
 pkgbase = xorg-xwayland-explicit-sync-git
 	pkgdesc = Run X clients under Wayland with explicit sync patch
-	pkgver = 23.2.4.r383.ge6573baa7
+	pkgver = 23.2.4.r387.ga57b44948
 	pkgrel = 1
 	url = https://xorg.freedesktop.org
 	arch = x86_64
