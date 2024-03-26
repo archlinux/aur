@@ -1,0 +1,23 @@
+pkgbase = android-x86-snappy
+	pkgdesc = A fast compressor/decompressor library (Android x86)
+	pkgver = 1.1.10
+	pkgrel = 1
+	url = https://google.github.io/snappy/
+	arch = any
+	license = BSD
+	makedepends = android-cmake
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/google/snappy/archive/1.1.10/android-x86-snappy-1.1.10.tar.gz
+	source = snappy.pc.in
+	source = 0001-Add-pkgconfig.patch
+	source = 0002-Disable-neon.patch
+	sha256sums = 49d831bffcc5f3d01482340fe5af59852ca2fe76c3e05df0e67203ebbe0f1d90
+	sha256sums = 134f06ca0584a1026538d0fb972fc141c008390ecae1806184b721eca1abbc75
+	sha256sums = 2a204d7d35509ffc290d80c641fcb7e8488c67ca550aa1695493cff12c53156b
+	sha256sums = 4ba42f130366ee39d2afba4967c2afde4ebb490b6470d2a39506c630e31d20d4
+
+pkgname = android-x86-snappy
