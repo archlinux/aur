@@ -1,0 +1,11 @@
+--- vendor/libpg_query-sys/build.rs	2024-03-26 22:59:08.958794718 +0100
++++ vendor/libpg_query-sys/build.rs	2024-03-26 23:01:37.082730452 +0100
+@@ -7,7 +7,7 @@
+ fn main() {
+     let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
+
+-    println!("cargo:rustc-link-lib=static=pg_query");
++    println!("cargo:rustc-link-lib=dylib=pg_query");
+
+     let system_path = env::var("LIBPG_QUERY_PATH").map(PathBuf::from);
+     let header_path = if let Ok(system_path) = system_path {
