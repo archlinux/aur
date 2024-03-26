@@ -1,14 +1,14 @@
-# Maintainer: Allen Zhong <moeallenz@gmail.com>
+# Maintainer: Allen Zhong <pdev@zhoal.pw>
 # Maintainer: Liqueur Librazy <im@librazy.org>
 # Contributor: Jian Zeng <anonymousknight96@gmail.com>
 # Contributor: Xuanwo <xuanwo@archlinuxcn.org>
 pkgbase=tidb-bin
-_basever=5.4.0
+_basever=7.6.0
 #_relver=-prega
 #pkgver=$_basever.$_relver
 pkgver=$_basever
 pkgrel=1
-pkgname=("${pkgbase}" "${pkgbase}-utils")
+pkgname=("${pkgbase}")
 pkgdesc="A distributed NewSQL database compatible with MySQL protocol"
 arch=('x86_64')
 url="https://github.com/pingcap/tidb"
@@ -20,7 +20,9 @@ backup=(etc/tidb/tidb.toml
         etc/tikv/tikv.toml
         etc/pd/pd.toml
 )
-source=("https://download.pingcap.org/tidb-v$_basever$_relver-linux-amd64.tar.gz"
+source=("https://tiup-mirrors.pingcap.com/tidb-v$_basever-linux-amd64.tar.gz"
+        "https://tiup-mirrors.pingcap.com/tikv-v$_basever-linux-amd64.tar.gz"
+        "https://tiup-mirrors.pingcap.com/pd-v$_basever-linux-amd64.tar.gz"
         pd.service
         tidb.service
         tikv.service
@@ -33,7 +35,9 @@ source=("https://download.pingcap.org/tidb-v$_basever$_relver-linux-amd64.tar.gz
         pd.toml
         tidb.toml
         tikv.toml)
-sha256sums=('a318d9437d8991ee421b0552d388acded3eb807319c0f9dd67f858b18950e8c1'
+sha256sums=('6149a616db667da28482d7b45ad5da68d28d2769e7cf3d3e5b3403bb1a0dc389'
+            '60f6dbe5fb8c2b0167f321ca8c25c01439db96b494f748b5f78d438b0399afd9'
+            'e3d9df8420b4f24fb628569b9750af72d4ee9ac6f14c4b7778c3ddc84da7984f'
             'b03d12f2f8d6eb2e9d654d6258ca39000225cdf1418840f7e35081631bc4d924'
             '22318c19bb89ff5a0852df5186cc1496214cd49f2264192413a326d1e8c93dc9'
             '870b8eaf83bc0d22b05b0f3a7890660e483cf77bb1d84bc50ad04fb23068cd8c'
@@ -68,22 +72,9 @@ _package() {
     install -Dm644 tidb.toml "$pkgdir/etc/tidb/tidb.toml"
     install -Dm644 tikv.toml "$pkgdir/etc/tikv/tikv.toml"
 
-    cd "tidb-v$_basever$_relver-linux-amd64/bin"
     install -dm755 "$pkgdir"/etc/{pd,tidb,tikv}
     install -dm755 "$pkgdir"/usr/bin
     install -Dm755 {pd,tidb,tikv}-server "$pkgdir"/usr/bin
-}
-
-_package-utils() {
-    optdepends=('go-tools: provides goyacc')
-    cd "tidb-v$_basever$_relver-linux-amd64/bin"
-    install -dm755 "$pkgdir"/usr/bin
-    install -Dm755 *ctl "$pkgdir"/usr/bin
-    install -Dm755 pd-recover "$pkgdir"/usr/bin
-    install -Dm755 drainer "$pkgdir"/usr/bin
-    install -Dm755 pump "$pkgdir"/usr/bin
-    install -Dm755 reparo "$pkgdir"/usr/bin
-    install -Dm755 arbiter "$pkgdir"/usr/bin
 }
 
 for _p in ${pkgname[@]}; do
