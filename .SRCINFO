@@ -1,6 +1,6 @@
 pkgbase = notesnook-git
 	pkgdesc = A fully open source & end-to-end encrypted note taking alternative to Evernote
-	pkgver = 2.6.17.r1.gf15446b1d
+	pkgver = 3.0.13.beta.r0.gc54759e76
 	pkgrel = 1
 	url = https://notesnook.com/
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = notesnook-git
 	makedepends = gcc
 	makedepends = curl
 	depends = electron25-bin
-	provides = notesnook=2.6.17
+	provides = notesnook=3.0.13.beta
 	conflicts = notesnook
 	source = notesnook.git::git+https://github.com/streetwriters/notesnook.git
 	source = notesnook.desktop

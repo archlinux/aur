@@ -3,7 +3,7 @@
 # Contributer: Ada <adadonderr@gmail.com>
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook-git
-pkgver=2.6.17.r1.gf15446b1d
+pkgver=3.0.13.beta.r0.gc54759e76
 _electronversion=25
 _nodeversion=16
 pkgrel=1
@@ -39,7 +39,7 @@ sha256sums=('SKIP'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/.android//g'
 }
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
