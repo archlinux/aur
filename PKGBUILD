@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=universal-android-debloater
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="Cross-platform GUI written in Rust using ADB to debloat non-rooted Android devices"
 arch=('x86_64')
 url="https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation"
@@ -12,7 +12,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'uad-ng.desktop')
 conflicts=('universal-android-debloater-opengl')
 replaces=('universal-android-debloater-opengl')
-sha256sums=('00810c02e47f2aa75e9e8445a1419180074d3dc50edac0408fb2f822ade8a036'
+sha256sums=('312a428ca277f23af24b5562ab71e806442c90a23df1adca6ab8f934e765cb4a'
             '8d5d790fffd35101af340792d081f8f75b61b1579bc8f89acab818f03f1071ea')
 
 prepare() {
@@ -34,6 +34,6 @@ build() {
 package() {
   cd "$pkgname-next-generation-$pkgver"
   install -Dm755 target/release/uad-ng -t "$pkgdir/usr/bin/"
-  install -Dm644 resources/assets/logo.png "$pkgdir/usr/share/pixmaps/uad-ng.png"
+  install -Dm644 resources/assets/logo-dark.png "$pkgdir/usr/share/pixmaps/uad-ng.png"
   install -Dm644 "$srcdir/uad-ng.desktop" -t "$pkgdir/usr/share/applications/"
 }
