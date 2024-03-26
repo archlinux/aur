@@ -1,4 +1,4 @@
-pkgbase = rofi-lbonn-wayland-git
+pkgbase = rofi-lbonn-wayland-acd407
 	pkgdesc = A window switcher, application launcher and dmenu replacement (fork with Wayland support)
 	pkgver = 1.7.5.wayland3.r3.g47ae31eb
 	pkgrel = 1
@@ -21,7 +21,7 @@ pkgbase = rofi-lbonn-wayland-git
 	optdepends = i3-wm: use as a window switcher
 	provides = rofi
 	conflicts = rofi
-	source = rofi-lbonn-wayland-git::git+https://github.com/lbonn/rofi.git#branch=wayland
+	source = rofi-lbonn-wayland-acd407::git+https://github.com/lbonn/rofi.git#branch=wayland
 	source = git+https://github.com/sardemff7/libgwater.git
 	source = git+https://github.com/sardemff7/libnkutils.git
 	source = disable_dpi.patch
@@ -30,4 +30,4 @@ pkgbase = rofi-lbonn-wayland-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = rofi-lbonn-wayland-git
+pkgname = rofi-lbonn-wayland-acd407
