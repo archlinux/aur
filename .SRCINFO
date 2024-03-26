@@ -1,0 +1,20 @@
+pkgbase = yd-go-git
+	pkgdesc = Panel indicator for Yandex-disk CLI daemon (linux)
+	pkgver = master.5af17d8.r0.g5af17d8
+	pkgrel = 1
+	url = https://github.com/slytomcat/yd-go/
+	arch = x86_64
+	license = GPL-3.0 license
+	makedepends = go
+	makedepends = git
+	makedepends = gendesk
+	depends = yandex-disk
+	conflicts = yd-go
+	conflicts = yd-go-bin
+	conflicts = yd-go-git-bin
+	conflicts = yd-go-bin-git
+	options = !debug
+	source = git+https://github.com/slytomcat/yd-go.git
+	sha256sums = SKIP
+
+pkgname = yd-go-git
