@@ -2,16 +2,16 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=argc
-pkgver=1.15.0
+pkgver=1.16.0
 pkgrel=1
-pkgdesc="An elegant command-line options, arguments and sub-commands parser for bash"
+pkgdesc="An elegant command-line argument parser"
 arch=('x86_64')
 url="https://github.com/sigoden/argc"
 license=('MIT' 'Apache-2.0')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('5d7170d590dc7e75af864d3936aee62da945485103251903df9a76eb70384ef17bb21dd4b4a9c8d2fae17e6081c78b738f69e305b3b17b1bab4bc33beeabb78a')
+sha512sums=('eed62825729be21a05e603d7075fdd06a13a5e30bbe0a940089b4b4fce7b84ef39c60341589b33e76c009d86deea8f49d8eab16616b0b8d895e67670e046d947')
 
 prepare() {
   cd "$pkgname-$pkgver"
