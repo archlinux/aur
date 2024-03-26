@@ -109,7 +109,7 @@ package_stable-diffusion.cpp-cublas-git() {
   provides=("${pkgbase}=${pkgver}")
   conflicts=("${pkgbase}")
 
-  cd "${_name}-clblas"
+  cd "${_name}-cublas"
   DESTDIR="${pkgdir}" cmake --install build
 }
 
