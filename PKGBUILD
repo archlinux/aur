@@ -2,9 +2,8 @@
 # Contributor: severach (https://aur.archlinux.org/account/severach) # Did make the `comcom32` `PKGBUILD` which was used to create this one.
 
 ## Controls which variants to build.
-#  NOTE 2024-03-25: The 64 bit variant needs `dj64-gcc` executable which is unclear where to find, see https://github.com/dosemu2/comcom64/issues/90.
 _build_32=true
-_build_64=false
+_build_64=true
 
 set -u
 _pkgbare="comcom"
@@ -14,8 +13,8 @@ pkgbase="${_pkgbase}-git"
 pkgname=(
   "${_pkgbare}-common-git"
 )
-pkgver=0.0.alpha_3+262.r437.20240324.3add463
-pkgrel=3
+pkgver=0.0.alpha_3+263.r438.20240326.06cacf9
+pkgrel=1
 pkgdesc="32 and 64 bit DOS command interpreters ('command.com'), e.g. for fdpp and dosemu2. Latest git checkout."
 arch=('any')
 url='https://github.com/dosemu2/comcom64'
@@ -37,7 +36,8 @@ if "${_build_64}"; then
     "${_pkgbare}64-git"
   )
   makedepends+=(
-    'dj64-gcc'
+    'dj64'
+    'djstub'
     'thunk_gen'
   )
 fi
