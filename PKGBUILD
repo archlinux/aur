@@ -12,11 +12,11 @@
 
 _pkgname=cockroachdb
 pkgname="$_pkgname-bin"
-pkgver=23.2.2
+pkgver=23.2.3
 pkgrel=1
 pkgdesc="Cloud-native, distributed SQL database"
 url='https://www.cockroachlabs.com'
-license=('Apache-2.0' 'BUSL-1.1' 'RefLicense-CCL')
+license=('Apache-2.0' 'BUSL-1.1' 'LicenseRef-CCL')
 arch=('x86_64')
 
 conflicts=("$_pkgname=${pkgver}")
@@ -30,27 +30,12 @@ source=(
   "$_pkgname-$pkgver.tar.gz"::"https://binaries.cockroachdb.com/$_pkgsrc.tgz"
   "LICENSE-$pkgver"::"https://github.com/cockroachdb/cockroach/raw/v$pkgver/LICENSE"
   "LICENSE.CCL-$pkgver"::"https://github.com/cockroachdb/cockroach/raw/v$pkgver/licenses/CCL.txt"  
-  'cockroach.service'
-  'cockroach.default'
-  'cockroach.sysusers'
-  'cockroach.tmpfiles'
 )
 sha256sums=(
-  'bf58a5bccca741d455209a01c530f26148de303ce3e388c59285bca9665a95b5'
+  '909b7a28ae9362cdbfc44a30b20694e6e271b1d3d1cc63fdfd0ab3370566bed4'
   'SKIP'
   'SKIP'
-  '6c336d30983d6295995823a134e3cc85a06ef9418339b53cf6f375df816bea51'
-  '55f380f5cb201c6afeafbf1a6fb5a6400dbffa0edc134d30960d1d04e3d19ef2'
-  '8be2f52529135d8d173bba130e000a187bbadc869ac2c603a4714af435840821'
-  'c74cf876197312b91970bdd7832081750d2ab4d47e553bb46f38d57cba52641e'
 )
-
-prepare() {
-  cat <<'EOF' > "$_pkgname.sh"
-#!/usr/bin/env sh
-exec /usr/share/cockroach/cockroach "$@"
-EOF
-}
 
 build() {
   # generate shell completion
@@ -62,23 +47,58 @@ build() {
 }
 
 package() {
+  local _install_path='usr/lib'
+
   # binary
-  install -Dm755 "$_pkgsrc/cockroach" "$pkgdir/usr/share/cockroach/cockroach"
+  install -Dm755 "$_pkgsrc/cockroach" "$pkgdir/$_install_path/$_pkgname/cockroach"
 
   # GEOS libraries
-  install -Dm644 "$_pkgsrc/lib/libgeos.so" "$pkgdir/usr/share/cockroach/lib/libgeos.so"
-  install -Dm644 "$_pkgsrc/lib/libgeos_c.so" "$pkgdir/usr/share/cockroach/lib/libgeos_c.so"
+  install -Dm644 "$_pkgsrc/lib/libgeos.so" "$pkgdir/$_install_path/$_pkgname/lib/libgeos.so"
+  install -Dm644 "$_pkgsrc/lib/libgeos_c.so" "$pkgdir/$_install_path/$_pkgname/lib/libgeos_c.so"
 
   # script
-  install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/cockroach"
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/cockroach" <<EOF
+#!/usr/bin/env sh
+exec /$_install_path/$_pkgname/cockroach "\$@"
+EOF
 
   # user/group & owned directories
-  install -Dm644 "cockroach.sysusers" "$pkgdir/usr/lib/sysusers.d/cockroach.conf"
-  install -Dm644 "cockroach.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/cockroach.conf"
+  install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/cockroach.conf" <<END
+u cockroach - "CockroachDB" /var/lib/cockroach
+END
+
+  install -Dm644 /dev/stdin "$pkgdir/usr/lib/tmpfiles.d/cockroach.conf" <<END
+d /etc/cockroach 0755 root cockroach - -
+d /var/lib/cockroach 0750 cockroach cockroach - -
+END
 
   # services & runtime
-  install -Dm644 "cockroach.service" "$pkgdir/usr/lib/systemd/system/cockroach.service"
-  install -Dm644 "cockroach.default" "$pkgdir/etc/default/cockroach"
+  install -Dm644 /dev/stdin "$pkgdir/usr/lib/systemd/system/cockroach.service" <<END
+[Unit]
+Description=CockroachDB database server
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=cockroach
+Group=cockroach
+
+EnvironmentFile=-/etc/default/cockroach
+ExecStart=/usr/bin/cockroach start --certs-dir /etc/cockroach --store=${COCKROACH_STORE} $COCKROACH_FLAGS
+LimitNOFILE=35000
+
+ProtectHome=true
+ProtectSystem=full
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
+END
+
+  install -Dm644 /dev/stdin "$pkgdir/etc/default/cockroach" <<END
+COCKROACH_FLAGS="--insecure"
+COCKROACH_STORE="path=/var/lib/cockroach"
+END
 
   # man pages
   install -Dm644 "man"/*.1 -t "$pkgdir/usr/share/man/man1/"
