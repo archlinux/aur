@@ -18,7 +18,5 @@ package() {
     cp -pr "${_archivename}"/* "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
     install -Dm644 ../dkms.conf "${pkgdir}/usr/src/${_pkgname}-${pkgver}/dkms.conf"
     sed -e "s/@PKGVER@/${pkgver}/" -i "${pkgdir}/usr/src/${_pkgname}-${pkgver}/dkms.conf"
-    mkdir -p "${pkgdir}/usr/lib/modprobe.d"
-    echo "blacklist ax88179_178a" > "${pkgdir}/usr/lib/modprobe.d/ax-usb-nic.conf"
-    echo "blacklist cdc_ncm" >> "${pkgdir}/usr/lib/modprobe.d/ax-usb-nic.conf"
+    install -Dm644 ../ax-usb-nic.modprobe.conf "${pkgdir}/usr/lib/modprobe.d/ax-usb-nic.conf"
 }
