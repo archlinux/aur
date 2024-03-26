@@ -16,7 +16,7 @@ pkgbase = larksuite-bin
 	replaces = bytedance-lark-dev-bin
 	options = !strip
 	options = !emptydirs
-	source = https://sf16-va.larksuitecdn.com/obj/lark-artifact-storage/033c3a0e/Lark-linux_x64-6.9.20.deb
-	sha256sums = ff88eb1fdf4ba583a71939ca9fab992306dfa4a796a64d5be81344652d935984
+	source = https://sf16-va.larksuitecdn.com/obj/lark-artifact-storage/60d6a113/Lark-linux_x64-7.11.8.deb
+	sha256sums = cff8d19738c62d0118047049e827730393d179fbcf94f79a85fa997c5a33a329
 
 pkgname = larksuite-bin

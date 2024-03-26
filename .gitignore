@@ -6,3 +6,6 @@ tmp/
 *.log
 *.xz
 *.zst
+
+pkg
+src
