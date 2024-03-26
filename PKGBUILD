@@ -2,13 +2,13 @@
 
 pkgname=clash-for-windows-bin
 pkgver=0.20.39
-pkgrel=2
+pkgrel=3
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron."
 arch=("x86_64" "aarch64")
 url='https://web.archive.org/web/20231030023332/https://github.com/Fndroid/clash_for_windows_pkg'
 install=clash-for-windows-bin.install
 
-options=(!strip)
+options=(!strip !debug)
 
 depends=('libxss' 'gtk3')
 
