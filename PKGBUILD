@@ -7,25 +7,21 @@
 # Contributor: vnoel <victor.noel at crazydwarves dot org>
 
 pkgname=kile-git
-pkgver=3.0b2_r3569.g66599ab1
+pkgver=3.0b4_r3616.g2f49c0c8
 pkgrel=1
 pkgdesc='A user friendly TeX/LaTeX frontend for KDE'
 arch=($CARCH)
 url='https://apps.kde.org/kile/'
-license=(GPL-2.0-only)
-depends=(gcc-libs glibc kcodecs-git kcompletion-git kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git kdbusaddons-git kguiaddons-git ki18n-git kiconthemes-git kinit-git kio-git kjobwidgets-git kparts-git kservice-git ktexteditor-git ktextwidgets-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git okular-git kcolorscheme-git hicolor-icon-theme perl poppler-qt6 qt6-base qt6-script qt6-5compat qt6-declarative texlive-basic)
-makedepends=(git extra-cmake-modules-git kdoctools-git okular-git)
-optdepends=('konsole-git: embedded terminal' 'imagemagick: for some file type conversions')
+license=(GPL-2.0-or-later)
+depends=(gcc-libs glibc kcodecs-git kcolorscheme-git kcompletion-git kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git kdbusaddons-git kguiaddons-git ki18n-git kiconthemes-git kio-git kparts-git kservice-git ktexteditor-git ktextwidgets-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git okular-git perl poppler-qt6 qt6-5compat qt6-base qt6-declarative texlive-basic)
+makedepends=(git extra-cmake-modules-git kdoctools-git)
+optdepends=('imagemagick: for some file type conversions'
+            'konsole-git: embedded terminal')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
-
-prepare() {
-  cd ${pkgname%-git}
-  git checkout work/carl/kf6
-}
 
 pkgver() {
   cd ${pkgname%-git}
