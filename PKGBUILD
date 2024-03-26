@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zyplayer-git
 _pkgname=ZyPlayer
-pkgver=3.3.2.r51.g367fe66
+pkgver=3.3.3.r0.g76543a0
 _electronversion=29
 _nodeversion=20
 pkgrel=1

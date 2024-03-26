@@ -1,6 +1,6 @@
 pkgbase = zyplayer-git
 	pkgdesc = 跨平台桌面端视频资源播放器,免费高颜值
-	pkgver = 3.3.2.r51.g367fe66
+	pkgver = 3.3.3.r0.g76543a0
 	pkgrel = 1
 	url = https://github.com/Hiram-Wong/ZyPlayer
 	arch = any
