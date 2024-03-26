@@ -11,7 +11,7 @@ source_armv7h=("https://github.com/Morganamilo/paru/releases/download/v$pkgver/p
 backup=("etc/paru.conf")
 arch=('x86_64' 'aarch64' 'armv7h')
 license=('GPL-3.0-or-later')
-depends=('git' 'pacman' 'libalpm.so>=14-64')
+depends=('git' 'pacman' 'libalpm.so>=14')
 optdepends=('bat: colored pkgbuild printing' 'devtools: build in chroot and downloading pkgbuilds')
 conflicts=('paru')
 provides=('paru')
