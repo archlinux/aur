@@ -1,7 +1,7 @@
 pkgbase = flutter-artifacts-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google)
 	pkgver = 3.19.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://flutter.dev
 	arch = x86_64
 	arch = aarch64
@@ -134,24 +134,23 @@ pkgname = flutter-engine-web-google-bin
 pkgname = flutter-engine-android-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - android engine
 	depends = flutter-engine-common=3.19.4
-	depends = flutter-gradle=3.19.4
 	provides = flutter-engine-android=3.19.4
 	conflicts = flutter-engine-android=3.19.4
 
 pkgname = flutter-sky-engine-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - sky-engine
-	depends = flutter-common=3.19.4
+	depends = flutter-engine-common=3.19.4
 	provides = flutter-sky-engine=3.19.4
 	conflicts = flutter-sky-engine=3.19.4
 
 pkgname = flutter-material-fonts-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - material fonts
-	depends = flutter-common=3.19.4
+	depends = flutter-engine-common=3.19.4
 	provides = flutter-material-fonts=3.19.4
 	conflicts = flutter-material-fonts=3.19.4
 
 pkgname = flutter-gradle-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - gradle wrapper
-	depends = flutter-engine-android=3.19.4
+	depends = flutter-common=3.19.4
 	provides = flutter-gradle=3.19.4
 	conflicts = flutter-gradle=3.19.4

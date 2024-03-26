@@ -12,7 +12,7 @@ _flutterarch=$(uname -m | sed s/aarch64/arm64/ | sed s/x86_64/x64/)
 # this host is blocked in China, according to Flutter docs, the FLUTTER_STORAGE_BASE_URL environment variable
 # should be used to provide an alternative mirror
 _storagebase="${FLUTTER_STORAGE_BASE_URL:-"https://storage.googleapis.com"}"
-pkgrel=1
+pkgrel=2
 _pkgdesc="Flutter SDK artifacts (binary from Google)"
 pkgdesc="${_pkgdesc}"
 arch=("x86_64" "aarch64")
@@ -261,7 +261,7 @@ _package-engine-common-google-bin() {
 _package-sky-engine-google-bin() {
   pkgdesc="${_pkgdesc} - sky-engine"
   depends=(
-	"${_pkgbase}-common=${pkgver}"
+	"${_pkgbase}-engine-common=${pkgver}"
   )
   provides=(
 	"${_pkgbase}-sky-engine=${pkgver}"
@@ -278,7 +278,7 @@ _package-sky-engine-google-bin() {
 _package-material-fonts-google-bin() {
   pkgdesc="${_pkgdesc} - material fonts"
   depends=(
-	"${_pkgbase}-common=${pkgver}"
+	"${_pkgbase}-engine-common=${pkgver}"
   )
   provides=(
 	"${_pkgbase}-material-fonts=${pkgver}"
@@ -331,7 +331,7 @@ _package-engine-web-google-bin() {
 _package-gradle-google-bin() {
   pkgdesc="${_pkgdesc} - gradle wrapper"
   depends=(
-	"${_pkgbase}-engine-android=${pkgver}"
+	"${_pkgbase}-common=${pkgver}"
   )
   provides=(
 	"${_pkgbase}-gradle=${pkgver}"
@@ -349,7 +349,6 @@ _package-engine-android-google-bin() {
   pkgdesc="${_pkgdesc} - android engine"
   depends=(
 	"${_pkgbase}-engine-common=${pkgver}"
-	"${_pkgbase}-gradle=${pkgver}"
   )
   provides=(
 	"${_pkgbase}-engine-android=${pkgver}"
