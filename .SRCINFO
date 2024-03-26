@@ -1,7 +1,7 @@
 pkgbase = anituner
 	pkgdesc = Create, edit and convert Windows animated cursors
 	pkgver = 2.0.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.gdgsoft.com/anituner
 	arch = any
 	license = LicenseRef-AniTuner

@@ -4,7 +4,7 @@ pkgname="anituner"
 pkgdesc="Create, edit and convert Windows animated cursors"
 
 pkgver=2.0.0
-pkgrel=7
+pkgrel=8
 
 arch=(any)
 
@@ -31,7 +31,7 @@ prepare() {
 		--pkgname AniTuner \
 		--pkgdesc "${pkgdesc}" \
 		--exec anituner \
-		--icon AniTuner.png \
+		--icon anituner.png \
 		--categories "Graphics;Utility" \
 		--mimetypes "image/bmp;image/jpeg;image/png;image/gif;image/vnd.adobe.photoshop;image/x-icon;image/x-win-bitmap;application/x-navi-animation;application/anituner-atd"
 }
@@ -53,8 +53,8 @@ package() {
 	install -Dm755 anituner "${pkgdir}/usr/bin/anituner"
 
 	# copy the extracted icon and the generated .desktop file
-	install -Dm644 AniTuner.png "${pkgdir}/usr/share/pixmaps/AniTuner.png"
-	install -Dm644 AniTuner.desktop "${pkgdir}/usr/share/applications/AniTuner.desktop"
+	install -Dm644 AniTuner.png "${pkgdir}/usr/share/pixmaps/anituner.png"
+	install -Dm644 AniTuner.desktop "${pkgdir}/usr/share/applications/anituner.desktop"
 
 	# copy the custom MIME type
 	install -Dm644 anituner-atd.xml "${pkgdir}/usr/share/mime/packages/anituner-atd.xml"
