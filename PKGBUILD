@@ -12,7 +12,7 @@ _flutterarch=$(uname -m | sed s/aarch64/arm64/ | sed s/x86_64/x64/)
 # this host is blocked in China, according to Flutter docs, the FLUTTER_STORAGE_BASE_URL environment variable
 # should be used to provide an alternative mirror
 _storagebase="${FLUTTER_STORAGE_BASE_URL:-"https://storage.googleapis.com"}"
-pkgrel=11
+pkgrel=12
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 _pkgdesc="Flutter SDK component"
 arch=("x86_64" "aarch64")
@@ -186,9 +186,6 @@ _package-target-android() {
 
 _package-gradle() {
   pkgdesc="${_pkgdesc} - gradle wrapper"
-  depends=(
-	"${pkgbase}-engine-android=${pkgver}"
-  )
   provides=(
 	"${pkgbase}-gradle=${pkgver}"
   )
