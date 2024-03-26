@@ -2,7 +2,7 @@
 # Co-Maintainer: Robert Zhou <meep (dot) aur (at) meepzh (dot) com>
 
 pkgname=maya-arnold
-pkgver=5.3.5.2
+pkgver=5.3.5.3
 pkgrel=1
 pkgdesc='Autodesk Maya Arnold Renderer Plugin'
 arch=('x86_64')
@@ -13,8 +13,8 @@ optdepends=('maya-usd: Universal scene description support'
             'maya-bifrost: Bifrost effects support')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from Autodesk.com')
-source=('manual://MtoA-5.3.5.2-linux-2024.run')
-b2sums=('ed1183e088d8f1de5a56c8f9f823279fbeb511c76b51b0132c95991423c9660131e2943502626a6d976f9d7e7ceb789a5a65d4a5ab36a4118ebe914d08f172e8')
+source=("manual://MtoA-${pkgver}-linux-2024.run")
+b2sums=('661e64f187d569f73062b53c32e6c0521f5215b22b8e7191330a66ab03c45a6aac101715eb20f6fac27af6d38518a3416833eed4df93c9387127f3894dcd29ed')
 
 options=(!strip)
 
