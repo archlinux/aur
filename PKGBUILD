@@ -1,50 +1,36 @@
+# Merged with official ABS kolourpaint PKGBUILD by João, 2024/03/26 (all respective contributors apply herein)
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
-# Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
+# Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=kolourpaint-git
-pkgver=r2305.dddf80a5
+pkgver=24.04.70_r2667.g24e7731b
 pkgrel=1
-pkgdesc="Paint Program. (GIT version)"
-url='http://kde.org/applications/graphics/kolourpaint'
-arch=('x86_64')
-license=('GPL' 'LGPL' 'FDL')
-depends=('kxmlgui'
-         'kio'
-         'libksane'
-         )
-makedepends=('extra-cmake-modules'
-             'kdoctools'
-             'git'
-             'python'
-             'kdesignerplugin'
-             )
-conflicts=('kdegraphics-kolourpaint'
-           'kolourpaint'
-           )
-provides=('kolourpaint')
-source=('git+https://anongit.kde.org/kolourpaint')
-sha1sums=('SKIP')
+pkgdesc='Paint Program'
+url='https://apps.kde.org/kolourpaint/'
+arch=($CARCH)
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(gcc-libs glibc kconfig5 kconfigwidgets5 kcoreaddons5 kguiaddons5 ki18n5 kio5 kjobwidgets5 ktextwidgets5 kwidgetsaddons5 kxmlgui5 libksane-git qt5-base)
+makedepends=(git extra-cmake-modules-git kdoctools5)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd kolourpaint
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _major_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MAJOR' CMakeLists.txt | cut -d '"' -f2)"
+  _minor_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MINOR' CMakeLists.txt | cut -d '"' -f2)"
+  _micro_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MICRO' CMakeLists.txt | cut -d '"' -f2)"
+  echo "${_major_ver}.${_minor_ver}.${_micro_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../kolourpaint \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+  cmake -B build -S ${pkgname%-git} \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 }
