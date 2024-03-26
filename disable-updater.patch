@@ -1,8 +1,8 @@
 diff --git a/src-tauri/tauri.conf.json b/src-tauri/tauri.conf.json
-index efde387..a81cc67 100644
+index 6de7f91..04c1f39 100644
 --- a/src-tauri/tauri.conf.json
 +++ b/src-tauri/tauri.conf.json
-@@ -86,14 +86,6 @@
+@@ -90,14 +90,6 @@
      "security": {
        "csp": null
      },

@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=en-croissant
-pkgver=0.9.2
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Modern chess GUI and analysis tool'
 arch=('x86_64')
@@ -40,8 +40,8 @@ source=(
 )
 
 sha512sums=(
-  '11be461edc70f77cbeae4ed4dbff76dcca8516d0a046838236093dcba727869bbe54c69ea3abb5fd9c3c10c8463930118a4d05a733ef5e266e209ee8f2af2ab6'
-  '088be913d85d1c5e6fe11c081dd67f4156ce4d8ffc04465042a1acb5bb8186f1a7877625695cfb8ae5492a8b30eacb5dd770580a75ace945fc7c2855a5966f4c'
+  'f5c72be4efa7a12e14cde95f9a8b93417cb0073e681f9e35ba01fb4b92962284948ed9bdeff648f59355a0ac03e3b509c068a32835388e639a943d8114f6785e'
+  'fe5dbb7df6b25d9c1512bf9e38dc4eb8096d5c9bcafe328f7e55fb42064695234016e3baed7008bded04501494e149bcbb34ad5ebbaa885eda880497d8cd208e'
   '0ca0416ec4941d0a9194048b7e099c433bdb7f309dd0746e272757f02e5d13bb899090ac390b9fbdd6f075070e5cf54996d63348f5f1cafdc8f5d7d798b92023'
 )
 
@@ -58,9 +58,7 @@ build() {
   cd "${pkgname}-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  # Replace the following command with just `pnpm build` once the
-  # next stable release has landed
-  pnpm tauri build -b none
+  pnpm build
 }
 
 check() {
