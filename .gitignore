@@ -3,6 +3,6 @@
 *.zst
 /libvos/
 /pkg/
-/rescached-git-remote/
+/rescached-local/
 /rescached-git/
 /src/

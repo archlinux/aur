@@ -1,6 +1,6 @@
 # Maintainer: shulhan <ms@kilabit.info>
 pkgname=rescached-git
-pkgver=4.4.2.r5.g842206e
+pkgver=4.4.2.r9.gd35cf24
 pkgrel=1
 pkgdesc="Resolver/DNS cache daemon"
 arch=('i686' 'x86_64' 'armv7h')
@@ -11,12 +11,14 @@ depends=('bash')
 provides=('rescached')
 makedepends=('git' 'go>=1.20')
 
+_sourcedir=$pkgname
 source=(
 	"$pkgname::git+https://git.sr.ht/~shulhan/rescached"
 )
 ## For testing on local.
+#_sourcedir=rescached-local
 #source=(
-#	"$pkgname::git+file:///.."
+#	"$_sourcedir::git+file:///home/ms/go/src/git.sr.ht/~shulhan/rescached#branch=dev"
 #)
 
 sha1sums=(
@@ -35,12 +37,12 @@ backup=(
 install=rescached.install
 
 pkgver() {
-	cd "$pkgname"
+	cd "$_sourcedir"
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$pkgname"
+	cd "$_sourcedir"
 	echo ">>"
 	echo ">> cleaning ..."
 	echo ">>"
@@ -54,7 +56,7 @@ build() {
 }
 
 package() {
-	cd "$pkgname"
+	cd "$_sourcedir"
 	make PREFIX="$pkgdir" install
 	rm -rf ${pkgdir}/usr/share/rescached/
 	install -Dm644 $srcdir/$pkgname/COPYING \
