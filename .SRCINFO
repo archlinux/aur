@@ -1,0 +1,19 @@
+pkgbase = wapua
+	pkgdesc = A WAP Browser written in Perl/Tk
+	pkgver = 0.06.4
+	pkgrel = 1
+	url = https://fsinfo.noone.org/~abe/wApua
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = imagemagick
+	depends = perl>=5.6
+	depends = perl-libwww>=5.22
+	depends = perl-tk>=800.012
+	source = https://fsinfo.noone.org/~abe/wApua/wApua-0.06.4.tar.gz
+	source = wApua.jpeg::https://fsinfo.noone.org/~abe/wApua/images/wApua-Logo.70.jpeg
+	source = wapua.desktop
+	sha256sums = 2d4d3b4402c0c31715d951100420ce3a2a6ff553cedee5d2d8ff15b51eae525d
+	sha256sums = 54a4fc3780028a5a9f5b6b11f24ad0c548e5684aefee8bda7167eeeff7cf0869
+	sha256sums = b5d95a89e2009ad9d518e982cf14ee3fd680d637eae1356e513e70201dec0236
+
+pkgname = wapua

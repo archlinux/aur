@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=wApua
+GenericName=WAP Web Browser
+GenericName[es]=Navegador de Web WAP
+Comment=A WAP Browser written in Perl/Tk
+Icon=wApua
+Exec=wApua
+TryExec=wApua
+Terminal=false
+Categories=Network;WebBrowser;
+
