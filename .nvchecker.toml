@@ -1,0 +1,4 @@
+[durdraw]
+source = "github"
+github = "cmang/durdraw"
+use_latest_release = true
