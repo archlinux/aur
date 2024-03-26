@@ -1,0 +1,25 @@
+pkgbase = deadbeef-plugins-kode54-git
+	pkgdesc = A set of plugins for DeaDBeeF (Git version)
+	pkgver = r86.2bb75ba
+	pkgrel = 1
+	url = https://bitbucket.org/losnoco/deadbeef_plugins
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	license = ZLIB
+	license = proprietary
+	depends = deadbeef
+	depends = zlib
+	depends = libbass
+	depends = libbassmidi
+	depends = libbass_mpc
+	depends = libbassflac
+	depends = libbassopus
+	depends = libbasswv
+	depends = libopenmpt
+	depends = vgmstream-git
+	depends = libmgba
+	source = git+https://bitbucket.org/losnoco/deadbeef_plugins.git
+	md5sums = SKIP
+
+pkgname = deadbeef-plugins-kode54-git
