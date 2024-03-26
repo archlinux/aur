@@ -1,17 +1,17 @@
 # Maintainer: Asuka Minato <i at asukaminato dot eu dot org>
 _pkgname=delance-runtime
 pkgname=delance-langserver
-# upstream version number can't trigger vercmp, so use publish date + ISO 8601 format
-pkgver=2024_03_25
+# If patch >= 100, update _pkgver only
 _pkgver="2024.3.2"
+pkgver="2024.3.2"
 pkgrel=1
-epoch=2
+epoch=1 # TODO: remove after 2024.4
 pkgdesc="A spear to the Python language server built with black magic"
 arch=(any)
 url="https://sr.ht/~self/delance/"
 license=('0BSD')
 depends=(nodejs)
-makedepends=(npm)
+makedepends=(npm jq)
 source=("https://git.sr.ht/~self/${_pkgname}/archive/v${_pkgver}.tar.gz")
 sha256sums=('791d99864ddb3a376687c2baafc9b73863713f1cd6e3ea2818b31d5515f05c8c')
 
@@ -44,4 +44,19 @@ require('./server.bundle.js');
 EOF
 
 	ln -s "/usr/share/${pkgname}/langserver.cjs" "${pkgdir}/usr/bin/${pkgname}"
+}
+
+pkgver() {
+	cd "$_pkgname-v$_pkgver"
+
+	jq '
+		def v: split(".") | map(tonumber);
+		.version | v as $pkgver |
+		(if $pkgver[-1] >= 100 then
+			[$ARGS.positional[0] | v | last, "r" + ($pkgver[-1] | tostring)]
+		else
+			[$pkgver[-1]]
+		end) as $patch |
+		$pkgver[0:-1] + $patch | join(".")
+	' package.json --args ${pkgver%.r*}
 }
