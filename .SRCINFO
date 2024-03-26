@@ -1,19 +1,19 @@
 pkgbase = ttop-bin
 	pkgdesc = System monitoring tool with historical data service, triggers and top-like TUI (binary release)
-	pkgver = 1.4.2
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://github.com/inv2004/ttop
 	arch = x86_64
 	license = MIT
 	provides = ttop
 	conflicts = ttop
-	source = ttop1.4.2::https://github.com/inv2004/ttop/releases/download/v1.4.2/ttop
-	source = LICENSE2023::https://github.com/inv2004/ttop/raw/v1.4.2/LICENSE
-	source = README1.4.2.md::https://github.com/inv2004/ttop/raw/v1.4.2/README.md
-	source = ttop.png::https://user-images.githubusercontent.com/4949069/265200595-6a41ff81-6263-4ea7-a3a8-cf3f44227610.png
-	sha256sums = f7c27b9f0904ea80d8426e1bd10f7cf1a316d1564d77c2d0a21a94420344e73b
+	source = ttop1.4.4::https://github.com/inv2004/ttop/releases/download/v1.4.4/ttop
+	source = LICENSE2023::https://github.com/inv2004/ttop/raw/v1.4.4/LICENSE
+	source = README1.4.4.md::https://github.com/inv2004/ttop/raw/v1.4.4/README.md
+	source = https://github.com/inv2004/ttop/raw/main/.github/images/screen.png
+	sha256sums = 89c7ac7f59d12252a540db82c1c741c3c840035e7fd797972b5104d00386c080
 	sha256sums = d02b237a4b7b295eea657a27274b6d6ed08695807006562d7252398e34f59079
-	sha256sums = 63cd96fb8962c2e59a0a3dea25dced32cef8597664e53bdeba9033b4d7cf7960
-	sha256sums = 2ac1c78513b363d4c5817493c878a863552657347c5ddf5dfd2d8e6286cedab6
+	sha256sums = 2a8e481fa846fcc5623f721a4aba8d9b7afee2ff2eaed8234a06107f77ac4d9d
+	sha256sums = 9746ec96a19dddb22eb8165825c70be3abcf8ff43e44301ef0ad9fc88fa98075
 
 pkgname = ttop-bin
