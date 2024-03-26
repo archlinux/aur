@@ -5,14 +5,14 @@
 _pkgname='audio-offset-finder'
 pkgname="${_pkgname}-git"
 pkgver=0.5.3.r151.20231205.2e948a3
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple tool for finding the offset of an audio file within another file."
 arch=('any')
 _githost='github.com'
 # _gituser='abramhindle'
 _gituser='bbc'
 url="https://${_githost}/${_gituser}/${_pkgname}"
-license=("Apache")
+license=("Apache-2.0")
 depends=(
   'ffmpeg'
   'python-librosa'
@@ -86,9 +86,6 @@ package() {
 
   python -m installer --destdir="$pkgdir" --compile-bytecode=2 dist/*.whl
   # python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-
-  # Name the executable correctly
-  #mv -v "${pkgdir}/usr/bin/executable-name" "${pkgdir}/usr/bin/${_pkgname}"
 
   # Remove files that should not be there
   rm -fv "${pkgdir}/usr/lib"/python*/"site-packages/tests/__init__.py"
