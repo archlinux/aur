@@ -2,7 +2,7 @@
 _pkgname=delance-runtime
 pkgname=delance-langserver
 pkgver="2024.3.101"
-pkgrel=4
+pkgrel=5
 pkgdesc="A spear to the Python language server built with black magic"
 arch=(any)
 url="https://sr.ht/~self/delance/"
@@ -22,6 +22,7 @@ package() {
 	cd "$_pkgname-v$pkgver"
 
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 
 	cp -r "dist/v${pkgver}-"*/ "${pkgdir}/usr/share/${pkgname}"
 	cd "${pkgdir}/usr/share/${pkgname}"
