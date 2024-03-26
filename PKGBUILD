@@ -21,9 +21,6 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  if [ "$CARCH" == "x86_64" ]; then
-    export CGO_ENABLED=0
-  fi
   go build -trimpath -buildmode=pie -mod=readonly -modcacherw \
            -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -X 'main.Version=v$pkgver'" -o build/minify ./cmd/minify
 }
