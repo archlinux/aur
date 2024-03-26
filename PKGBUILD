@@ -22,7 +22,6 @@ makedepends=(
     'gendesk'
     'base-devel'
     'gcc'
-    'asar'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
