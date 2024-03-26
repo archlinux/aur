@@ -1,14 +1,13 @@
 # Maintainer: brokenpip3 <brokenpip3[at]gmail[dot]com>
+# Maintainer: Thomas Labarussias <issif+aur@gadz.org>
 # https://github.com/brokenpip3/my-pkgbuilds
-# Contributors:
-# - Kris Nóva <kris@nivenly.com> R.I.P.
-# - Thomas Labarussias <issif+aur@gadz.org>
+# Contributor: Kris Nóva R.I.P. <kris@nivenly.com>
 
 pkgbase=falco-bin
 pkgname=("falco-bin"
          "falco-bin-dkms")
 pkgver=0.37.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cloud native runtime security. Binaries and Kernel modules. (Stable)"
 arch=(x86_64)
 license=(Apache)
