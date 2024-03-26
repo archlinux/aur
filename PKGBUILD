@@ -1,16 +1,15 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=diffcyt
-_pkgver=1.22.0
+_pkgver=1.22.1
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Differential discovery in high-dimensional cytometry via high-resolution clustering'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+pkgdesc="Differential discovery in high-dimensional cytometry via high-resolution clustering"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
-  r
   r-circlize
   r-complexheatmap
   r-dplyr
@@ -35,15 +34,18 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b1b31f4d655d433a0879aa637ac145e77ca4053b1c43b4cf163509d5deff6fcc')
+md5sums=('44b02895aa252ca092777135cb0edede')
+b2sums=('ca4f46b54b9d4c2e70dc13ebf4c85f9c2c1c2d812e433f1537c8315e9e81de7fd4f0fdcb5a2c69c71d77ff49b5c82b3704b0cc02ec08c6fb79cd76a2047066fa')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
