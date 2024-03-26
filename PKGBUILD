@@ -1,7 +1,7 @@
 # Maintainer: Marco Sternini <mkarko01@gmail.com>
 # Maintainer: Danilo Pianini <danilo.pianini@unibo.it>
 pkgname=alchemist
-pkgver=32.0.1
+pkgver=33.0.0
 pkgrel=1
 pkgdesc="An extensible simulator for pervasive computing"
 arch=('x86_64')
@@ -26,8 +26,8 @@ depends=(
 #    'zlib'
 )
 makedepends=()
-source=("https://github.com/AlchemistSimulator/Alchemist/releases/download/32.0.1/alchemist-32.0.1-1.$CARCH.rpm")
-md5sums=('9e67481cac7ed258c41b62aa0d2387bb')
+source=("https://github.com/AlchemistSimulator/Alchemist/releases/download/33.0.0/alchemist-33.0.0-1.$CARCH.rpm")
+md5sums=('03450950cfa2bb6c6ffecbe195546d4a')
 
 package() {
     mkdir -p "${pkgdir}/usr/share/${pkgname}"
