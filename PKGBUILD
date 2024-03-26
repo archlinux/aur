@@ -5,7 +5,7 @@
 
 pkgname=glib2-patched-thumbnailer
 pkgver=2.80.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
 arch=(x86_64)
@@ -22,7 +22,6 @@ makedepends=(
   meson
   python
   python-docutils
-  python-packaging
   shared-mime-info
   util-linux
 )
