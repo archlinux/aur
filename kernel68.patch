@@ -1,0 +1,22 @@
+From 5b9a87955b157a8826f1d6fd94ea19523e3aacb0 Mon Sep 17 00:00:00 2001
+From: Patrick Northon <northon_patrick3@yahoo.ca>
+Date: Wed, 13 Mar 2024 05:08:06 -0400
+Subject: [PATCH] Change deprecated use of strlcpy to strscpy.
+
+---
+ src/r8168_n.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/r8168_n.c b/src/r8168_n.c
+index 19ae62b..d32c449 100755
+--- a/src/r8168_n.c
++++ b/src/r8168_n.c
+@@ -6293,7 +6293,7 @@ rtl8168_get_drvinfo(struct net_device *dev,
+         info->eedump_len = tp->eeprom_len;
+         BUILD_BUG_ON(sizeof(info->fw_version) < sizeof(rtl_fw->version));
+         if (rtl_fw)
+-                strlcpy(info->fw_version, rtl_fw->version,
++                strscpy(info->fw_version, rtl_fw->version,
+                         sizeof(info->fw_version));
+ }
+ 

@@ -1,7 +1,7 @@
 pkgbase = r8168-8136
 	pkgdesc = A kernel module for Realtek 8168 network cards (DKMS version) for Device ID 0x8136.
-	pkgver = 8.051.02
-	pkgrel = 2
+	pkgver = 8.052.01
+	pkgrel = 1
 	url = https://github.com/mtorromeo/r8168
 	install = r8168-dkms.install
 	arch = i686
@@ -16,10 +16,10 @@ pkgbase = r8168-8136
 	source = r8168-8136::git+https://github.com/mtorromeo/r8168.git
 	source = dkms.conf
 	source = 8136.patch
-	source = kernel61.patch
+	source = kernel68.patch
 	sha256sums = SKIP
 	sha256sums = d37b8acbd4fe06f81538581712a04751a96fc37bad3a4bd3ae8329f8744c49b3
 	sha256sums = f203ed455d17f03c964b8bb91d9d7da6c33d8494c0b47ecf3096bde16e95b310
-	sha256sums = d102d0827758a300806362e840943ea6df54013c9f2bf43d08c0d2a780c64539
+	sha256sums = a834e3e43745a737ca211c3eb550d369bf1894211e7584717f87b781246fb2d1
 
 pkgname = r8168-8136
