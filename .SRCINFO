@@ -1,16 +1,14 @@
 pkgbase = backup-git
 	pkgdesc = A simple tar based incremental daily backup script based on systemd
-	pkgver = 1.2
-	pkgrel = 1
+	pkgver = 1.2.0
+	pkgrel = 2
 	url = https://github.com/dhtseany/backup
-	install = backup-git.install
 	arch = x86_64
 	license = any
 	makedepends = git
 	depends = tar
 	depends = pigz
-	source = git://github.com/dhtseany/backup.git
-	md5sums = SKIP
+	source = backup-git-1.2.0.tar.gz::https://github.com/dhtseany/backup/archive/refs/tags/v1.2.0.tar.gz
+	sha512sums = db4cc28d4319bb978f39a215ec933f98a4cc0f04fe58ee7ddfd0ef529b7803459cd7cb0e5e864a4084f83f5e86898ad881d2890280c728b291d7cca141be8809
 
 pkgname = backup-git
-

@@ -1,34 +1,24 @@
-# Maintainer: Sean Snell <ssnell at cmhsol dot com>
+# Maintainer: Sean Snell <ssnell@lakecs.net>
 
 pkgname=backup-git
-_gitname=backup
-pkgver=1.2
-pkgrel=1
+gitname=backup
+pkgver=1.2.0
+pkgrel=2
 pkgdesc='A simple tar based incremental daily backup script based on systemd'
 arch=('x86_64')
-url=https://github.com/dhtseany/backup
+url="https://github.com/dhtseany/backup"
 license=('any')
 makedepends=('git')
 depends=('tar' 'pigz')
-source=("git://github.com/dhtseany/${_gitname}.git")
-md5sums=('SKIP')
-install=backup-git.install
-build() {
-	cd "${srcdir}/${_gitname}"
-	echo "Staging package"
-	mkdir -p usr/bin/backup
-	mkdir -p usr/share/backup
-	mkdir -p etc/systemd/system
-	mv backup.conf etc/backup.conf
-	mv backup usr/bin/backup/backup
-	mv email.sh usr/bin/backup/email.sh
-	mv backup.service etc/systemd/system/backup.service
-	mv backup.timer etc/systemd/system/backup.timer
-	mv storage-mounts-Public.mount usr/share/backup/storage-mounts-Public.mount.example
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dhtseany/${gitname}/archive/refs/tags/v${pkgver}.tar.gz")
+
+# Upstream tar.gz
+sha512sums=('db4cc28d4319bb978f39a215ec933f98a4cc0f04fe58ee7ddfd0ef529b7803459cd7cb0e5e864a4084f83f5e86898ad881d2890280c728b291d7cca141be8809')
 
 package() {
-	cd "${srcdir}/${_gitname}"
-	echo "Building package"
-	cp -dr --no-preserve=ownership {usr,etc} "${pkgdir}"/
+	install -Dm 755 "${srcdir}/${gitname}-${pkgver}/backup" "${pkgdir}/usr/bin/backup/backup"
+	install -Dm 755 "${srcdir}/${gitname}-${pkgver}/backup.conf" "${pkgdir}/etc/backup.conf"
+	install -Dm 755 "${srcdir}/${gitname}-${pkgver}/backup.service" "${pkgdir}/etc/systemd/system/backup.service"
+	install -Dm 755 "${srcdir}/${gitname}-${pkgver}/backup.timer" "${pkgdir}/etc/systemd/system/backup.timer"
+	install -Dm 755 "${srcdir}/${gitname}-${pkgver}/email.sh" "${pkgdir}/usr/bin/backup/email.sh"
 }
