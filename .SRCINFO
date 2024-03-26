@@ -1,13 +1,20 @@
 pkgbase = smassh
-	pkgdesc = Smassh your Keyboard, TUI Edition
-	pkgver = 3.1.2
-	pkgrel = 1
+	pkgdesc = TUI based typing test application inspired by MonkeyType
+	pkgver = 3.1.3
+	pkgrel = 2
 	url = https://github.com/kraanzu/smassh
 	arch = any
-	license = GPL-3.0
-	depends = python
-	depends = git
-	source = https://github.com/kraanzu/smassh/releases/download/v3.1.2/linux-smassh
-	sha256sums = SKIP
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core>=1.0.0
+	depends = python>=3.8
+	depends = python-textual>=0.52.1
+	depends = python-appdirs>=1.4.4
+	depends = python-click>=8.1.7
+	depends = python-requests>=2.31.0
+	source = smassh-3.1.3.tar.gz::https://github.com/kraanzu/smassh/archive/v3.1.3.tar.gz
+	sha256sums = c7cde89ba0442c56f9c8953a0cdd4653c276f7ded3398874f45812b12384a011
 
 pkgname = smassh
