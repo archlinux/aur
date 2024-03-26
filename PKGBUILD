@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A program to detect the encoding of a text file."
 arch=(x86_64)
 url=https://github.com/adah1972/tellenc
-license=(Unlicense)
+license=(zlib-acknowledgement)
 source=("git+$url")
 sha256sums=(SKIP)
 

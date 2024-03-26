@@ -4,7 +4,7 @@ pkgbase = tellenc-git
 	pkgrel = 1
 	url = https://github.com/adah1972/tellenc
 	arch = x86_64
-	license = Unlicense
+	license = zlib-acknowledgement
 	source = git+https://github.com/adah1972/tellenc
 	sha256sums = SKIP
 
