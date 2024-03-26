@@ -14,7 +14,7 @@ pkgbase = paru
 	makedepends = cargo
 	depends = git
 	depends = pacman
-	depends = libalpm.so>=14-64
+	depends = libalpm.so>=14
 	optdepends = bat: colored pkgbuild printing
 	optdepends = devtools: build in chroot and downloading pkgbuilds
 	backup = etc/paru.conf
