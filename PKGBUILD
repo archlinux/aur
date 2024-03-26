@@ -3,17 +3,18 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=bluedevil-git
-pkgver=5.21.80_r2238.g2de8dd48
+pkgver=6.0.80_r2886.g7533d07e
 pkgrel=1
 pkgdesc='Integrate the Bluetooth technology within KDE workspace and applications'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
-license=(GPL2)
-depends=(bluez-qt kdeclarative-git)
-makedepends=(git extra-cmake-modules-git plasma-framework-git kded-git)
+license=(GPL-2.0-or-later)
+depends=(bluez-qt-git gcc-libs glibc kcmutils-git kconfig-git kcoreaddons-git kdbusaddons-git kdeclarative-git ki18n-git kio-git kirigami-git kjobwidgets-git knotifications-git kservice-git ksvg-git kwidgetsaddons-git kwindowsystem-git libplasma-git qt6-base qt6-declarative)
+makedepends=(git extra-cmake-modules-git kdoctools-git)
+optdepends=('bluez-obex: file transfer'
+            'pulseaudio-bluetooth: to connect to A2DP profile')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('pulseaudio-bluetooth: to connect to A2DP profile')
 groups=(plasma-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
