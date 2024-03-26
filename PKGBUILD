@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 pkgname=maestral-qt
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc='A Qt interface for the Maestral daemon'
 arch=('any')
@@ -18,7 +18,7 @@ depends=("maestral>=$pkgver"
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=('gnome-shell-extension-appindicator: Gnome integration')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4a37e34db60eef57142fe66cddc466d62e56bdc703dca1e5b9cb705ef044b758')
+sha256sums=('97a0f05864477f077395bcff4ee601402e319587b12cb1dcf98713f50c7d18f0')
 
 build() {
 	cd "$pkgname-$pkgver"
