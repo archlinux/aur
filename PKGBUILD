@@ -10,7 +10,7 @@
 # Contributor: Sean Pringle <sean.pringle@gmail.com>
 # Contributor: SanskritFritz (gmail)
 
-pkgname=rofi-lbonn-wayland-git
+pkgname=rofi-lbonn-wayland-acd407
 pkgver=1.7.5.wayland3.r3.g47ae31eb
 pkgrel=1
 pkgdesc='A window switcher, application launcher and dmenu replacement (fork with Wayland support)'
