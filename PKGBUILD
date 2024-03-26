@@ -8,7 +8,7 @@ pkgname=(
   "${pkgbase}-openvino"
 )
 pkgver=1.5.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Port of OpenAI's Whisper model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/whisper.cpp"
@@ -19,7 +19,7 @@ makedepends=(
   'cmake'
   'cuda'
   'git'
-  'openblas-lapack'
+  'blas-openblas'
   'openvino'
 )
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
