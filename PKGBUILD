@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-epoch-git
-pkgver=r118.5f2fd33
+pkgver=r119.408aa60
 pkgrel=1
 pkgdesc="Cosmic desktop environment from System76's Pop!_OS written in Rust utilizing Iced inspired by GNOME"
 arch=('x86_64' 'aarch64')
@@ -11,6 +11,7 @@ license=('GPL-3.0-or-later AND MPL-2.0 AND CC-BY-SA-4.0')
 depends=(
   'cage'
   'fontconfig'
+  'geoclue'
   'greetd'
   'gtk4'
   'libinput'
@@ -166,22 +167,25 @@ prepare() {
   done
 
   # Use mold linker instead of lld
-  for f in cosmic-launcher/justfile cosmic-notifications/justfile; do
-    sed -i 's/lld/mold/g' "${f}"
-  done
+  sed -i 's/lld/mold/g' cosmic-notifications/justfile
 
   # libexec > lib
   # see discussion: https://github.com/pop-os/cosmic-epoch/issues/87
   sed -i 's|libexecdir = $(prefix)/libexec|libexecdir = $(libdir)|g' \
     xdg-desktop-portal-cosmic/Makefile
-  sed -i 's|libexec|lib|g' cosmic-osd/Makefile cosmic-session/{Justfile,src/main.rs}
+  sed -i 's|libexec|lib|g' cosmic-osd/Makefile cosmic-session/{Justfile,src/main.rs} \
+    cosmic-settings-daemon/{Makefile,src/main.rs}
   sed -i 's|libexec|lib/polkit-1|g' cosmic-osd/src/subscriptions/polkit_agent_helper.rs
 
-  # Upstream completely broke the justfile
+  # Revert justfile changes
   git revert -n 5f2fd3324b997142fa10c8170fd6b53feb5f2673
 
-  # Fix cosmic-screenshot .desktop file installation from justfile
-  sed -i 's/Dm-644/Dm0644/g' cosmic-screenshot/justfile
+  # Problem in CI for cosmic-epoch caused by cargo.just file
+  # https://github.com/pop-os/cosmic-settings/issues/214
+  pushd cosmic-settings
+  sed -i '/no-cd/d' scripts/cargo.just
+  sed -i 's/no-cd, private/private/g' scripts/common.just
+  popd
 }
 
 build() {
