@@ -4,16 +4,16 @@
 
 pkgname='python-bs4'
 _pkgname='bs4'
-pkgver='0.0.1'
-pkgrel=4
+pkgver='0.0.2'
+pkgrel=1
 pkgdesc='Beautiful Soup. bs4 name required by CrackMapExec trunk'
 arch=('any')
 url='https://pypi.python.org/pypi/bs4/'
 license=('custom:unknown')
-depends=('python' 'python-beautifulsoup4')
+depends=('python' 'python-beautifulsoup4' 'python-hatchling')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('36ecea1fd7cc5c0c6e4a1ff075df26d50da647b75376626cc186e2212886dd3a')
+sha256sums=('a48685c58f50fe127722417bae83fe6badf500d54b55f7e39ffe43b798653925')
 
 build() {
     cd "$srcdir/${_pkgname}-$pkgver"
