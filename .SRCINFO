@@ -1,0 +1,14 @@
+pkgbase = rickroll-rs
+	pkgdesc = A simple rust program doing rickroll
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/chardon55/rickroll-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	makedepends = rustfmt
+	depends = mpv
+
+pkgname = rickroll-rs
