@@ -1,7 +1,7 @@
 pkgbase = ryzenctrl-git
 	pkgdesc = Fine-tuning of power limits and frequency of APU Ryzen Mobile
-	pkgver = 0.5.1.870+9.r140.20220301.baf6084
-	pkgrel = 2
+	pkgver = 0.5.2.931.r142.20240210.a84e50b
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/xodj/RyzenAdjCtrl
 	arch = x86_64
@@ -17,11 +17,9 @@ pkgbase = ryzenctrl-git
 	depends = ryzen_smu
 	depends = ryzenadj
 	depends = qt5-base
-	provides = ryzenctrl=0.5.1.870+9.r140.20220301.baf6084
+	provides = ryzenctrl=0.5.2.931.r142.20240210.a84e50b
 	conflicts = ryzenctrl
 	source = xodj-RyzenAdjCtrl::git+https://github.com/xodj/RyzenAdjCtrl.git
-	source = fix-ryzenadj.h-path.patch
 	sha256sums = SKIP
-	sha256sums = 95389e1380d8a18ae55b0500916053016ad830f5b942e9f5ca2c8f82d53c061a
 
 pkgname = ryzenctrl-git

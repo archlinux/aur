@@ -1,8 +1,0 @@
-diff -U1 -r xodj-RyzenAdjCtrl.org/CtrlService.h xodj-RyzenAdjCtrl/CtrlService.h
---- xodj-RyzenAdjCtrl.org/CtrlService.h	2024-01-29 14:23:08.867198072 +0100
-+++ xodj-RyzenAdjCtrl/CtrlService.h	2024-01-29 14:23:57.040533430 +0100
-@@ -11,3 +11,3 @@
- #include "CtrlArmour.h"
--#include "lib/ryzenadj.h"
-+#include "ryzenadj.h"
- #include "CtrlBus.h"

@@ -3,8 +3,8 @@
 
 pkgname="ryzenctrl-git"
 epoch=1
-pkgver=0.5.1.870+9.r140.20220301.baf6084
-pkgrel=2
+pkgver=0.5.2.931.r142.20240210.a84e50b
+pkgrel=1
 pkgdesc="Fine-tuning of power limits and frequency of APU Ryzen Mobile"
 url="https://github.com/xodj/RyzenAdjCtrl"
 arch=("x86_64")
@@ -35,21 +35,14 @@ conflicts=(
 source=(
   "xodj-RyzenAdjCtrl::git+https://github.com/xodj/RyzenAdjCtrl.git"
   #"ryzenadj::git+https://github.com/FlyGoat/RyzenAdj.git" # Needed for `lib/ryzenadj.h`, and needed to be downloaded to `ryzenadj`.
-  "fix-ryzenadj.h-path.patch"
 )
 sha256sums=(
   "SKIP"
   #"SKIP"
-  "95389e1380d8a18ae55b0500916053016ad830f5b942e9f5ca2c8f82d53c061a"
 )
 
 prepare() {
   cd "${srcdir}/xodj-RyzenAdjCtrl"
-
-  for _patch in "${srcdir}/fix-ryzenadj.h-path.patch"; do
-    printf '%s\n' "    > Applying patch '$(basename "${_patch}")' ..."
-    patch -N -p1 --follow-symlinks -i "${_patch}"
-  done
 
   mkdir -p build
 
