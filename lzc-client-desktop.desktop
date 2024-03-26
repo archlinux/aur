@@ -1,0 +1,10 @@
+# DONT DELETE ME
+# 不要删除我
+[Desktop Entry]
+Name=LazyCat Cloud Client
+Name[zh_CN]=懒猫微服
+Comment=LazyCat Cloud client for Linux desktop
+Exec=lzc-client-desktop
+Icon=lzc-client-desktop
+Type=Application
+Categories=Network;
