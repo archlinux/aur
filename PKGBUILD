@@ -1,4 +1,5 @@
-# Maintainer: Jérémy "Vrakfall" Lecocq <jeremy [dot] lecocq [at] protonmail [dot] com>
+# Maintainer: Karl Ludwig Brennan <karlludwigbrennan@outlook.com>
+# Contributor: Jérémy "Vrakfall" Lecocq <jeremy [dot] lecocq [at] protonmail [dot] com>
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 # Contributor: James Rayner <iphitus@gmail.com>
@@ -6,7 +7,7 @@
 _pkgmainbranch=nvidia-utils
 pkgbase=nvidia-525xx-utils
 pkgname=('nvidia-525xx-utils' 'opencl-nvidia-525xx' 'nvidia-525xx-dkms')
-pkgver=525.116.04
+pkgver=525.147.05
 pkgrel=1
 pkgdesc="NVIDIA drivers for Linux, 525 branch, dkms"
 arch=('x86_64')
@@ -18,11 +19,13 @@ _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 source=('nvidia-drm-outputclass.conf'
         'nvidia-utils.sysusers'
         'nvidia.rules'
-        "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run")
+        "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
+        'kernel-6.8.patch')
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
             'a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989'
-            '8e511e4965f11c849ae0bb3f399bc79eb004bb3a15612b35e6c7b9ec236a73085b58cc4e8cb37b5ffde7e7fe202928a08618b5dd3328235795bb942bde339195')
+            '0c7b31715fce6a7bd77a2d9f9a3dca54a929a7790d748051576f62cdaeaeb6a9d0f3fbb13f0b20a51966bdb9470acdbc9ee529a9e84f38a9c834a1bd28d81773'
+            'f40defda0f4c949ff767580eb43236b3c3ed33947e40c27518c7b4a3cb8cbee1fa48536fb03eb9f18bf2b6da9a1520a61c596a5bd9a1cd45031a09bce52c7100')
 
 
 create_links() {
@@ -41,6 +44,8 @@ prepare() {
     bsdtar -xf nvidia-persistenced-init.tar.bz2
 
     cd kernel
+
+    patch -p1 -i "$srcdir/kernel-6.8.patch"
 
     sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
     sed -i 's/__JOBS/`nproc`/' dkms.conf
@@ -103,7 +108,6 @@ package_nvidia-525xx-utils() {
                 'opencl-nvidia: OpenCL support')
     conflicts=('nvidia-utils' 'nvidia-libgl')
     provides=("nvidia-utils=${pkgver}" 'vulkan-driver' 'opengl-driver' 'nvidia-libgl')
-    replaces=('nvidia-libgl')
     install="${pkgname}.install"
 
     cd "${_pkg}"
