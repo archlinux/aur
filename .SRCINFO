@@ -1,13 +1,14 @@
 pkgbase = freecad-assembly3-appimage
 	pkgdesc = Assembly3 workbench for FreeCAD.
 	pkgver = 2024.03.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/realthunder/FreeCAD
 	arch = x86_64
 	license = LGPLv2
 	depends = fuse2
 	noextract = FreeCAD-asm3-2024.03.22.AppImage
 	options = !strip
+	options = !debug
 	source = FreeCAD-asm3-2024.03.22.AppImage::https://github.com/realthunder/FreeCAD/releases/download/20240322stable/FreeCAD-Link-Stable-Linux-x86_64-py3.11-20240322.AppImage
 	source = https://raw.githubusercontent.com/realthunder/FreeCAD/20240322stable/LICENSE
 	source = freecad_link.desktop.patch

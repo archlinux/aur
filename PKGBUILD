@@ -2,17 +2,20 @@
 
 pkgname=freecad-assembly3-appimage
 pkgver=2024.03.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Assembly3 workbench for FreeCAD."
 arch=('x86_64')
 url="https://github.com/realthunder/FreeCAD"
 license=('LGPLv2')
 depends=('fuse2')
-options=(!strip) # necessary otherwise the AppImage file in the package is truncated
+# prevent AppImage from being truncated
+options=(
+  '!strip'
+  '!debug'
+)
 
 _filename="FreeCAD-asm3-${pkgver}.AppImage"
 _squashfs_desktop_file="org.freecadweb.FreeCAD.Link.desktop"
-_desktop_file="/usr/share/applications/freecad-asm3-appimage.desktop"
 _appimage_name="FreeCAD-asm3.AppImage"
 _install_path="/opt/appimages/${_appimage_name}"
 
@@ -41,10 +44,10 @@ prepare() {
   patch -Np0 < ./freecad_link.desktop.patch
 
   # Rename icons
-  find "squashfs-root/usr/share/icons" -type f -not -name 'freecad_link.*' -delete
+  find "squashfs-root/usr/share/icons" -type f -not -name 'org.freecadweb.FreeCAD.Link.*' -delete
   find "squashfs-root/usr/share/icons" -type d -empty -delete
-  find "squashfs-root/usr/share/icons" -type f -name "freecad_link.svg" -execdir mv {} "${pkgname}.svg" \;
-  find "squashfs-root/usr/share/icons" -type f -name "freecad_link.png" -execdir mv {} "${pkgname}.png" \;
+  find "squashfs-root/usr/share/icons" -type f -name "org.freecadweb.FreeCAD.Link.svg" -execdir mv {} "${pkgname}.svg" \;
+  find "squashfs-root/usr/share/icons" -type f -name "org.freecadweb.FreeCAD.Link.png" -execdir mv {} "${pkgname}.png" \;
 }
 
 package() {
