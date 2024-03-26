@@ -1,0 +1,11 @@
+pkgbase = stylelint-config-recess-order
+        pkgdesc = Recess-based property sort order for Stylelint
+        pkgver = 5.0.0
+        pkgrel = 1
+        url = https://github.com/stormwarning/stylelint-config-recess-order
+        arch = any
+        license = ISC
+        makedepends = git
+        depends = stylelint
+
+pkgname = stylelint-config-recess-order
