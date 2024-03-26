@@ -2,14 +2,14 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=qpdf
-_pkgver=1.3.2
+_pkgver=1.3.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="Split, Combine and Compress PDF Files"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(Apache)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('Apache-2.0')
 depends=(
   qpdf
   r-askpass
@@ -23,12 +23,12 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('683a7a73e5bd530b377987ea646f31db')
-sha256sums=('d9c905a4879274d72de0c638f2e14737ec0a59895cbba9814e05c62b43e8e976')
+md5sums=('befda010dc47d87b6e988db7d6941768')
+b2sums=('9ead90e9319b76f36815730c0d1cb3a80d0f8bab8541cb4be121b32fa730226cd94d10f45964654b11abbe8051fa1b3b0b0d4c2b75578eb7a89d73a3ccc8500f')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build \
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname" \
       --configure-vars=EXTERNAL_QPDF=yes
 }
 
