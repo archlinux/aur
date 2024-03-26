@@ -1,0 +1,22 @@
+[Unit]
+Description=GitLab Container Registry
+After=network.target
+ConditionFileIsExecutable=/usr/bin/gitlab-container-registry
+
+[Service]
+User=root
+Group=root
+StartLimitInterval=5
+StartLimitBurst=10
+ExecStart=/usr/bin/gitlab-container-registry serve /etc/gitlab-container-registry/config.yml
+Restart=always
+RestartSec=120
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=gitlab-container-registry
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target
