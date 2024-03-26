@@ -2,7 +2,7 @@
 # A minimal address book for the aerc email client
 # Maintainer: Dian Fay <dian dot m dot fay at gmail dot com>
 pkgname=aercbook-bin
-pkgver=0.1.2
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='A minimal address book for the aerc email client'
 provides=('aercbook')
@@ -11,7 +11,7 @@ url='https://git.sr.ht/~renerocksai/aercbook'
 license=('MIT')
 depends=('aerc')
 source=("https://git.sr.ht/~renerocksai/aercbook/refs/download/v${pkgver}/aercbook-v${pkgver}--x86_64-linux.gz")
-sha256sums=('25bf22245934b57b08bfee5a052bf6c0a60f3e6718ee024511fca4d9ab7057dd')
+sha256sums=('871c9732a212f1c04a3a69356aaaa39d9f0e64aed4401d4c7bb443440eb3a79f')
 
 package() {
     cd "$srcdir"
