@@ -1,7 +1,7 @@
 pkgbase = osaka-simulator
 	pkgdesc = A fanmade interactive Osaka simulator from hirahira.net for PC
 	pkgver = Aug_2003
-	pkgrel = 2
+	pkgrel = 3
 	url = https://azumanga.fandom.com/wiki/Ayumu_Kasuga%27s_Mail_Order_Life
 	arch = any
 	license = LicenseRef-unknown

@@ -4,7 +4,7 @@ pkgname="osaka-simulator"
 pkgdesc="A fanmade interactive Osaka simulator from hirahira.net for PC"
 
 pkgver=Aug_2003
-pkgrel=2
+pkgrel=3
 
 arch=(any)
 
@@ -33,7 +33,7 @@ prepare() {
 		--pkgname "Ayumu Kasuga's Mail Order Life" \
 		--pkgdesc "${pkgdesc}" \
 		--exec osaka-simulator \
-		--icon OsakaSimulator.png \
+		--icon osaka-simulator.png \
 		--categories "Game;Simulation"
 }
 
@@ -58,6 +58,6 @@ package() {
 	install -Dm755 osaka-simulator "${pkgdir}/usr/bin/osaka-simulator"
 
 	# copy the extracted icon and the generated .desktop file
-	install -Dm644 OsakaSimulator.png "${pkgdir}/usr/share/pixmaps/OsakaSimulator.png"
-	install -Dm644 "Ayumu Kasuga's Mail Order Life.desktop" "${pkgdir}/usr/share/applications/OsakaSimulator.desktop"
+	install -Dm644 OsakaSimulator.png "${pkgdir}/usr/share/pixmaps/osaka-simulator.png"
+	install -Dm644 "Ayumu Kasuga's Mail Order Life.desktop" "${pkgdir}/usr/share/applications/osaka-simulator.desktop"
 }
