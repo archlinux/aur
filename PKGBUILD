@@ -5,7 +5,7 @@
 _pkgname='audio-offset-finder'
 pkgname="${_pkgname}-git"
 pkgver=0.5.3.r151.20231205.2e948a3
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple tool for finding the offset of an audio file within another file."
 arch=('any')
 _githost='github.com'
@@ -21,6 +21,7 @@ depends=(
   'python-numpy'
   'python-pytest' # Yes!, this is also a real dependency (usr/lib/python*/site-packages/tests/audio_offset_finder_test.py).
   'python-scipy>=0.12.0'
+  'python-soxr'
 )
 makedepends=(
   'git'
@@ -33,6 +34,7 @@ makedepends=(
 checkdepends=(
   'python-nose'
   'python-pytest'
+  'python-soxr'
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -71,15 +73,15 @@ build() {
   # python setup.py build
 }
 
-# check() {
-#   cd "${srcdir}/${_pkgname}"
-# 
-#   printf '%s\n' " --> running 'nosetests' ..."
-#   nosetests
-#   printf '\n'
-#   printf '%s\n' " --> running 'pytest' ..."
-#   pytest
-# }
+check() {
+  cd "${srcdir}/${_pkgname}"
+
+  printf '%s\n' " --> running 'nosetests' ..."
+  nosetests
+  printf '\n'
+  printf '%s\n' " --> running 'pytest' ..."
+  pytest
+}
 
 package() {
   cd "${srcdir}/${_pkgname}"
