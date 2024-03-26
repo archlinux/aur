@@ -1,30 +1,33 @@
 # Maintainer: Asuka Minato <i at asukaminato dot eu dot org>
 _pkgname=delance-runtime
 pkgname=delance-langserver
-pkgver="2024.3.2"
+# upstream version number can't trigger vercmp, so use publish date + ISO 8601 format
+pkgver=2024_03_25
+_pkgver="2024.3.2"
 pkgrel=1
+epoch=2
 pkgdesc="A spear to the Python language server built with black magic"
 arch=(any)
 url="https://sr.ht/~self/delance/"
 license=('0BSD')
 depends=(nodejs)
 makedepends=(npm)
-source=("https://git.sr.ht/~self/${_pkgname}/archive/v${pkgver}.tar.gz")
+source=("https://git.sr.ht/~self/${_pkgname}/archive/v${_pkgver}.tar.gz")
 sha256sums=('791d99864ddb3a376687c2baafc9b73863713f1cd6e3ea2818b31d5515f05c8c')
 
 build() {
-	cd "$_pkgname-v$pkgver"
+	cd "$_pkgname-v$_pkgver"
 
 	npm install --cache "${srcdir}/npm-cache"
 }
 
 package() {
-	cd "$_pkgname-v$pkgver"
+	cd "$_pkgname-v$_pkgver"
 
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 	install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 
-	cp -r "dist/v${pkgver}-"*/ "${pkgdir}/usr/share/${pkgname}"
+	cp -r "dist/v${_pkgver}-"*/ "${pkgdir}/usr/share/${pkgname}"
 	cd "${pkgdir}/usr/share/${pkgname}"
 
 	rm browser.*.LICENSE.txt
