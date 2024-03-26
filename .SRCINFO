@@ -1,7 +1,7 @@
 pkgbase = delance-langserver
 	pkgdesc = A spear to the Python language server built with black magic
 	pkgver = 2024.3.101
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sr.ht/~self/delance/
 	arch = any
 	license = 0BSD

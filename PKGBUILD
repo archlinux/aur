@@ -2,7 +2,7 @@
 _pkgname=delance-runtime
 pkgname=delance-langserver
 pkgver="2024.3.101"
-pkgrel=2
+pkgrel=3
 pkgdesc="A spear to the Python language server built with black magic"
 arch=(any)
 url="https://sr.ht/~self/delance/"
@@ -31,6 +31,8 @@ package() {
 	local _licenses=(*.LICENSE.txt)
 	install -Dm644 "${_licenses[@]}" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 	rm "${_licenses[@]}"
+
+	chmod 0755 server.bundle.js
 
 	install -dm755 "${pkgdir}/usr/bin/"
 	ln -s "/usr/share/${pkgname}/server.bundle.js" "${pkgdir}/usr/bin/${pkgname}"
