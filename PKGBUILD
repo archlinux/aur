@@ -4,7 +4,7 @@ pkgname="jpsxdec-bin"
 pkgdesc="A modern, cross-platform PlayStation 1 audio/video converter"
 
 pkgver=2.0
-pkgrel=3
+pkgrel=4
 
 arch=(any)
 
@@ -32,7 +32,7 @@ prepare() {
 		--pkgname jPSXdec \
 		--pkgdesc "${pkgdesc}" \
 		--exec jpsxdec \
-		--icon jPSXdec.png \
+		--icon jpsxdec.png \
 		--categories "Development;Utility"
 }
 
@@ -48,8 +48,8 @@ package() {
 	install -Dm755 ../jpsxdec "${pkgdir}/usr/bin/jpsxdec"
 
 	# copy the extracted icon and the generated .desktop file
-	install -Dm644 icon48.png "${pkgdir}/usr/share/pixmaps/jPSXdec.png"
-	install -Dm644 jPSXdec.desktop "${pkgdir}/usr/share/applications/jPSXdec.desktop"
+	install -Dm644 icon48.png "${pkgdir}/usr/share/pixmaps/jpsxdec.png"
+	install -Dm644 jPSXdec.desktop "${pkgdir}/usr/share/applications/jpsxdec.desktop"
 
 	# copy the included license
 	install -Dm644 doc/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
