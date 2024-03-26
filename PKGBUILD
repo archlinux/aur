@@ -100,7 +100,7 @@ build() {
 
 package_whisper.cpp() {
   pkgdesc="$pkgdesc (with OPENBlas CPU optimizations)"
-  depends+=('openblas-lapack')
+  depends+=('blas-openblas')
   provides=("${pkgbase}=${pkgver}")
 
   cd "${pkgbase}-openblas"

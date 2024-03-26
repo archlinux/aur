@@ -22,7 +22,7 @@ pkgname = whisper.cpp
 	pkgdesc = Port of OpenAI's Whisper model in C/C++ (with OPENBlas CPU optimizations)
 	depends = glibc
 	depends = gcc-libs
-	depends = openblas-lapack
+	depends = blas-openblas
 	provides = whisper.cpp=1.5.4
 
 pkgname = whisper.cpp-cublas
