@@ -8,7 +8,7 @@ function get_aria2_home(){
         echo /etc/aria2cd
         return 0
     fi
-    for path in ${HOME}/.aria2 ${XDG_CONFIG_HOME:-${HOME}/.config}/aria2
+    for path in "${HOME}/.aria2" "${XDG_CONFIG_HOME:-${HOME}/.config}/aria2"
     do
         if [[ -f ${path}/aria2.conf ]]
         then

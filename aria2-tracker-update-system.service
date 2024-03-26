@@ -5,8 +5,6 @@ Wants=network-online.target
 
 [Service]
 Type=oneshot
-DynamicUser=yes
-User=aria2cd
 ExecStart=/usr/bin/update-aria2-tracker --systemd
 # Sandboxing
 ProtectSystem=strict
