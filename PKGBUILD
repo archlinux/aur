@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zyplayer-bin
-pkgver=3.3.2
+pkgver=3.3.3
 _electronversion=29
-pkgrel=2
+pkgrel=1
 pkgdesc="跨平台桌面端视频资源播放器,免费高颜值"
 arch=(
     "aarch"
@@ -24,10 +24,10 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Hiram-Wong/ZyPlayer/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8d85b4dc14dd3118193c1170359f6e78e05d04c90e3e4ed877d8620f7ef3d86c'
+sha256sums=('05a41f7b9dc819453e9c8c3ea4e144fe7e3d09d0f78bdf800e92810312f99094'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch=('125a62bba6bf57bcc89d9a05211b9655441fc9ec84093d1278cf1e61b17dd00c')
-sha256sums_x86_64=('80a44f4fae10bc82e74835baf0b2f104ef3313adeb2bd6e2b4a4778796e02801')
+sha256sums_aarch=('ff203bd28a708b23af1792a095eea6d5d00148029651ba9393359f1e23fcba8b')
+sha256sums_x86_64=('4a5ae6055c3d1738c145a5e97163a9ccc23bbfc2d65e3e3a8e7490e96a4fd3df')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
