@@ -1,15 +1,15 @@
-# Maintainer: bemxio <bemxiov@protonmail.com>
+# Maintainer: bemxio <bemxiov at protonmail dot com>
 
 pkgname=musyx-extract-git
 pkgdesc="Sample extractor for GameCube MusyX files"
 
 pkgver=r18.1d9e5c4
-pkgrel=1
+pkgrel=2
 
 arch=(any)
 
 url="https://github.com/Nisto/musyx-extract"
-license=("unknown")
+license=("LicenseRef-unknown")
 
 depends=(python)
 makedepends=(git)
