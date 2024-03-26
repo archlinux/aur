@@ -1,4 +1,4 @@
-pkgbase = plasma-applet-places-widget-git
+pkgbase = plasma-applet-places-widget
 	pkgdesc = Plasmoid Places Widget for Plasma desktop
 	pkgver = 1.4.0
 	pkgrel = 1
