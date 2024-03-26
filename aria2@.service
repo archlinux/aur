@@ -1,13 +1,13 @@
 [Unit]
-Description=Aria2c Daemon for %i
+Description=Aria2c Daemon for user %i
 After=network-online.target
 Wants=network-online.target
 
 [Service]
-Type=forking
+Type=simple
 User=%i
 ExecStartPre=/usr/bin/update-aria2-tracker
-ExecStart=/usr/bin/aria2c --daemon=true
+ExecStart=/usr/bin/aria2c --daemon=false
 ExecReload=/usr/bin/kill -HUP ${MAINPID}
 
 [Install]

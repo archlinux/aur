@@ -2,7 +2,10 @@
 Description=User Aria2 Daemons with Trackers Updated Automatically
 After=network-online.target
 Wants=network-online.target 
-Wants=aria2.service aria2-tracker-update.timer
+Requires=aria2.service
+After=aria2.service
+Wants=aria2-tracker-update.timer
+After=aria2-tracker-update.timer
 
 [Install]
 WantedBy=default.target

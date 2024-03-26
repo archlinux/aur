@@ -4,31 +4,32 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
-Type=forking
+Type=simple
+DynamicUser=true
 User=aria2cd
 # Arguments here will override config file.
 ExecStart=/usr/bin/aria2c --conf-path=/etc/aria2cd/aria2.conf \
-    --dir=/var/lib/aria2cd/Downloads --remote-time=true --daemon=true --enable-rpc=true \
-    --bt-enable-lpd=true --bt-save-metadata=true \
-    --enable-dht=true --enable-dht6=true \
-    --optimize-concurrent-downloads=true \
-    --parameterized-uri=true \
+    --daemon=false --enable-rpc=true \
+    --dir=/var/lib/aria2cd/Downloads \
     --save-session=/var/lib/aria2cd/aria2.session \
     --input-file=/var/lib/aria2cd/aria2.session \
     --dht-file-path=/var/lib/aria2cd/aria2.dht \
     --dht-file-path6=/var/lib/aria2cd/aria2.dht6 \
     --save-cookies=/var/lib/aria2cd/aria2.cookies \
     --load-cookies=/var/lib/aria2cd/aria2.cookies \
-    --log=/var/log/aria2cd.log
-ExecReload=/usr/bin/kill -HUP ${MAINPID}
+    --log=/var/log/aria2cd/aria2cd.log
 
 # Sandboxing
 ProtectSystem=strict
-ReadWritePaths=/var/lib/aria2cd /var/log/aria2cd.log
+StateDirectory=aria2cd
+LogsDirectory=aria2cd
+ConfigurationDirectory=aria2cd
 ReadOnlyPaths=/etc/aria2cd
-NoExecPaths=/
-ExecPaths=/usr/bin/aria2c /usr/lib
+
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
 ProtectHome=yes
+ProtectControlGroups=yes
 NoNewPrivileges=yes
 
 [Install]

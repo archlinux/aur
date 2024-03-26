@@ -2,25 +2,34 @@
 
 echo "aria2cd has been installed/updated successfully, but there is something extra to do."
 echo ""
-echo "If you are using user service, there are two options:"
+echo "If you are using user service, you need to copy /usr/share/aria2/ to <aria2-config-dir>"
 echo ""
-echo "1. You need to copy /usr/share/aria2/ to \${HOME}/.aria2/, \${HOME} is the home directory of the user who runs aria2c."
-echo "2. Copy aria2.conf and tracker-config.sh in /usr/share/aria2 to \${XDG_CONFIG_HOME:-\${HOME}/.config}/aria2/"
-echo "   Copy aria2.session, dht.dat and dnt6.dat in /usr/share/aria2 to \${XDG_CACHE_HOME:-\${HOME}/.config}/aria2/"
-echo ""
-echo "The latter(\${XDG_CACHE_HOME}/aria2/ and \${XDG_CONFIG_HOME}/aria2/) is preferered to use because it follows freedesktop's specification."
+echo "<aria2-config-dir> means ~/.aria2 or \${XDG_CONFIG_HOME:-\${HOME}/.config}/aria2"
 echo ""
 echo "According to systemd document, you also need to enable NetworkManager-wait-online.service or systemd-networkd-wait-online.service if you want to use aria2-update-tracker.timer."
 echo ""
-echo "Note: aria2@username.service is deprecated now, it may be removed in the future. You can use system wide aria2.service or user wide aria2.service instead."
-echo "      Files downloaded by system service is placed at /var/lib/aria2cd/Downloads and will be cleaned after 30 days, please copy it to a safe place if needed."
+echo "Notes:"
+echo "    aria2@username.service is deprecated now, it may be removed in the future. You can use system wide aria2.service or user wide aria2.service instead."
+echo "    Files downloaded by system service is placed at /var/lib/aria2cd/Downloads."
 echo ""
 
+# create_config $file
+function create_config() {
+    if [[ ! -f "/etc/aria2cd/${1}" ]]
+    then
+        if [[ -f "/usr/share/aria2/${1}" ]]
+        then
+            echo "Copying ${1}..."
+            cp "/usr/share/aria2/${1}" "/etc/aria2cd/${1}"
+        else
+            echo "Creating empty ${1}..."
+            touch "/etc/aria2cd/${1}"
+        fi
+    else
+        echo "${1} is found so we will skip it."
+    fi
+}
+
 mkdir -p /etc/aria2cd
-for file in aria2.conf tracker-config.sh
-do
-    echo "Copying ${file}..."
-    [[ ! -f /etc/aria2cd/${file} ]] && \
-        cp /usr/share/aria2/${file} /etc/aria2cd/${file}
-done
-echo "Finished copying config."
+create_config tracker-config.sh
+create_config aria2.conf

@@ -6,5 +6,3 @@ Wants=network-online.target
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/update-aria2-tracker
-RestartSec=60s
-Restart=on-failure

@@ -4,16 +4,9 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
-Type=forking
+Type=simple
 # Arguments here will override config file.
-ExecStart=/usr/bin/aria2c \
-    --remote-time=true --daemon=true --enable-rpc=true \
-    --bt-enable-lpd=true --bt-save-metadata=true \
-    --enable-dht=true --enable-dht6=true \
-    --optimize-concurrent-downloads=true \
-    --parameterized-uri=true 
-ExecReload=/usr/bin/kill -HUP ${MAINPID}
-
+ExecStart=/usr/bin/aria2c --daemon=false --enable-rpc=true
 
 [Install]
 WantedBy=aria2.target 

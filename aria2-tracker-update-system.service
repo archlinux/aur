@@ -5,13 +5,15 @@ Wants=network-online.target
 
 [Service]
 Type=oneshot
+DynamicUser=yes
+User=aria2cd
 ExecStart=/usr/bin/update-aria2-tracker --systemd
-RestartSec=60s
-Restart=on-failure
 # Sandboxing
 ProtectSystem=strict
+ReadOnlyPaths=/
 ReadWritePaths=/etc/aria2cd
-NoExecPaths=/
-ExecPaths=/usr/bin /usr/lib
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
 ProtectHome=yes
+ProtectControlGroups=yes
 NoNewPrivileges=yes

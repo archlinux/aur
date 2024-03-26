@@ -1,75 +1,62 @@
-# Maintainer: ZhangHua<zhanghua.00@qq.com>
+# Maintainer: ZhangHua<zhanghua.00 at qq dot com>
 
 pkgname=aria2cd
-pkgver=1.3
-pkgrel=12
+pkgver=1.4
+pkgrel=1
 pkgdesc="A systemd Service to start aria2 automatically."
 arch=("any")
 url="https://aur.archlinux.org/packages/aria2cd"
-license=(custom:WTFPL)
-depends=(aria2 systemd)
+license=(LicenseRef-WTFPL)
 optdepends=(
-	'curl: for getting tracker list')
+    'curl: for getting tracker list')
 source=(
-	tracker-config.sh
-	update-aria2-tracker
-	notify-user-and-copy-config
-	${pkgname}.hook
-	aria2.conf
-	aria2.sysusers
-	aria2.tmpfiles
-	aria2-tracker-update-user.service
-	aria2-tracker-update-user.timer
-	aria2-user.service
-	aria2-user.target
-	aria2-tracker-update-system.service
-	aria2-tracker-update-system.timer
-	aria2-system.service
-	aria2-system.target
-	aria2@.service
-	LICENSE::http://www.wtfpl.net/txt/copying
+    tracker-config.sh
+    update-aria2-tracker
+    notify-user-and-copy-config
+    ${pkgname}.hook
+    aria2-tracker-update-user.service
+    aria2-tracker-update-user.timer
+    aria2-user.service
+    aria2-user.target
+    aria2-tracker-update-system.service
+    aria2-tracker-update-system.timer
+    aria2-system.service
+    aria2-system.target
+    aria2@.service
+    LICENSE::http://www.wtfpl.net/txt/copying
 )
-sha256sums=('85f465f6f32a1713f65c389b57f81d26cecfb1e7baf06c38f6b9477818fc4f85'
-            'c97d987a51925c4a8b76ca45f97df63c0ea2f9301040c7460294407117b49bc6'
-            '1046d5807ff575276aad2307560d4281215b3f8fadcc6993864af93dbcde8a2e'
+sha256sums=('70ff5d088f62cebd2168eca1fd528e4928ac162865c8f5253f9dea171c4184c6'
+            '5e87e631409387ec14fe12b1e75fcf92d9b46e270b32a2ef2748fcc354b2a335'
+            'dee544a6cb7fb78aa69b37fbcc9ad9f1f48e3289b99bc054084191e93c969922'
             'bdfecc359414d95396c6d19990e262d82a3240a01645a96e38e351fc8c27846e'
-            'd3dc278eeddbc910c775124bf474aa2c68b7bbba30226f6322ffc2c457785d27'
-            'ada4e985d9023c6e0f79a8bf8bc77af609f56f832dccd287c45bb62a2bb74946'
-            '6c02f6fd75db7070f152689121a7485514f1b59aa8ec5afa92d4aaaf300ab2b2'
-            '98f23383ca1a1264fe9c418580c70eaba3fde2811ae57dab7c9bb48f0d924572'
+            '6f0171608c2352fe6be43da813fc01d656d9c19a2dab0b393521c7b0d842ec4f'
             'f3a81fd686335d8f45bc3aa3075979da40b93945d9b155c0e00d259de94499c1'
-            '1ab7c6bc690f82838205aec3ecd7482c3e582017c5462119e6ac57603fd12f3b'
-            '2ab0b3c87f29f0b37fff593f9379fb6662775c6d3ce11342a0136a267c5fc8a2'
-            '0ef8368cf4c9aaf4b04268ce71163da4ae3c26bd8b2093516f855ba98b6f3d86'
+            '67da4cac7f24a783cb53e3bf6144a9d913782fa5b2e7539aa77440ec2e4a3996'
+            '6b4ce82e1678e199aca41f8e7017174a4a7e3f0be4e7ae4977ba716d650b4fbc'
+            '478d32f2789e39588384e22eaa57877ae20ca10ce4a75e5189dec9fe9e6658bd'
             'f11e1d678b0fcd14f961b1e3ba7888f7ce76fc27e81fc5d6e8e442527e7a0d0d'
-            '5797ee69e214f2c59cfd8d20c4287da97e0955264fa25cb43add56d5097981a0'
-            'ce7de392ff23ac33fda6fa0eebe347aa591e9760b8aee140353b8e00cb93c80e'
-            '1ee51459337fafc9767734d1274cedbc1d5bf5c3092c98040235b7360a9b5925'
+            '792ab59a0bb4c6123b0f4537174f125b7ed528a96aaa24a24e84b7ec169da916'
+            '0922a3e463c1c936f24af896cf56e2f2fc9852cc7f7ae4a47bd64be917ff7e85'
+            '0f4a3901b8b32b0842c5dc6765d808585cb4611561114511867eba65cd3facc1'
             '0356258391e190dc1d44ea01565cfe627fe44e27dad693a0a54c2483a7b223e5')
 package(){
-	mkdir -p "${pkgdir}/usr/share/aria2"
-	touch "${pkgdir}/usr/share/aria2/dht.dat"
-	touch "${pkgdir}/usr/share/aria2/dht6.dat"
-	touch "${pkgdir}/usr/share/aria2/aria2.session"
-	install -Dm644 "${srcdir}/aria2.conf" "${pkgdir}/usr/share/aria2/aria2.conf"
-	install -Dm644 "${srcdir}/tracker-config.sh" "${pkgdir}/usr/share/aria2/tracker-config.sh"
-	install -Dm644 "${srcdir}/aria2@.service" "${pkgdir}/usr/lib/systemd/system/aria2@.service"
-	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 "${srcdir}/${pkgname}.hook" "${pkgdir}/usr/share/libalpm/hooks/${pkgname}.hook"
-	install -Dm755 "${srcdir}/notify-user-and-copy-config" \
-		"${pkgdir}/usr/share/libalpm/scripts/notify-user-and-copy-config"
-	install -Dm755 "${srcdir}/update-aria2-tracker" "${pkgdir}/usr/bin/update-aria2-tracker"
-	install -Dm644 "${srcdir}/aria2.sysusers" "${pkgdir}/usr/lib/sysusers.d/aria2cd.conf"
-	install -Dm644 "${srcdir}/aria2.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/aria2cd.conf"
-	for target in user system
-	do
-		install -Dm644 "${srcdir}/aria2-tracker-update-${target}.service" \
-			"${pkgdir}/usr/lib/systemd/${target}/aria2-tracker-update.service"
-		install -Dm644 "${srcdir}/aria2-tracker-update-${target}.timer" \
-			"${pkgdir}/usr/lib/systemd/${target}/aria2-tracker-update.timer"
-		install -Dm644 "${srcdir}/aria2-${target}.service" \
-			"${pkgdir}/usr/lib/systemd/${target}/aria2.service"
-		install -Dm644 "${srcdir}/aria2-${target}.target" \
-			"${pkgdir}/usr/lib/systemd/${target}/aria2.target"
-	done
+    depends=(aria2 systemd)
+    install -Dm644 "${srcdir}/tracker-config.sh" "${pkgdir}/usr/share/aria2/tracker-config.sh"
+    install -Dm644 "${srcdir}/aria2@.service" "${pkgdir}/usr/lib/systemd/system/aria2@.service"
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/${pkgname}.hook" "${pkgdir}/usr/share/libalpm/hooks/${pkgname}.hook"
+    install -Dm755 "${srcdir}/notify-user-and-copy-config" \
+        "${pkgdir}/usr/share/libalpm/scripts/notify-user-and-copy-config"
+    install -Dm755 "${srcdir}/update-aria2-tracker" "${pkgdir}/usr/bin/update-aria2-tracker"
+    for target in user system
+    do
+        install -Dm644 "${srcdir}/aria2-tracker-update-${target}.service" \
+            "${pkgdir}/usr/lib/systemd/${target}/aria2-tracker-update.service"
+        install -Dm644 "${srcdir}/aria2-tracker-update-${target}.timer" \
+            "${pkgdir}/usr/lib/systemd/${target}/aria2-tracker-update.timer"
+        install -Dm644 "${srcdir}/aria2-${target}.service" \
+            "${pkgdir}/usr/lib/systemd/${target}/aria2.service"
+        install -Dm644 "${srcdir}/aria2-${target}.target" \
+            "${pkgdir}/usr/lib/systemd/${target}/aria2.target"
+    done
 }

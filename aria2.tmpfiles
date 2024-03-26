@@ -1,7 +1,0 @@
-v /var/lib/aria2cd                  755     aria2cd     aria2cd
-d /var/lib/aria2cd/Downloads        755     aria2cd     aria2cd 30d
-f /var/lib/aria2cd/aria2.session    640     aria2cd     aria2cd
-f /var/lib/aria2cd/aria2.dht        640     aria2cd     aria2cd
-f /var/lib/aria2cd/aria2.dht6       640     aria2cd     aria2cd
-f /var/lib/aria2cd/aria2.cookies    640     aria2cd     aria2cd
-f /var/log/aria2cd.log              644     aria2cd     aria2cd

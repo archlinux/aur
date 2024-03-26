@@ -3,25 +3,43 @@
 set -e
 
 function get_aria2_home(){
-    [[ $(id -nu) == "root" && $1 == "--systemd" ]] && echo /etc/aria2cd && return 0
+    if [[ "$1" == "--systemd" ]]
+    then
+        echo /etc/aria2cd
+        return 0
+    fi
     for path in ${HOME}/.aria2 ${XDG_CONFIG_HOME:-${HOME}/.config}/aria2
     do
-        [[ -f ${path}/aria2.conf ]] && echo ${path} && return 0
+        if [[ -f ${path}/aria2.conf ]]
+        then
+            echo "${path}"
+            return 0
+        fi
     done
-    echo ${HOME}/.aria2 && return 0
+    echo "${HOME}/.aria2"
+    return 0
 }
 
-ARIA2_CONFIG_HOME=$(get_aria2_home $1)
+ARIA2_CONFIG_HOME=$(get_aria2_home "$1")
 echo "Aria2 config is placing at ${ARIA2_CONFIG_HOME}"
 if [[ -f "${ARIA2_CONFIG_HOME}/tracker-config.sh" ]]
 then
     echo "Loading config from ${ARIA2_CONFIG_HOME}/tracker-config.sh"
     source "${ARIA2_CONFIG_HOME}/tracker-config.sh"
 fi
-[[ -z $ENABLED ]] && ENABLED=false
-$ENABLED || exit 0
-[[ -z $TRACKER ]] && \
-    TRACKER=$(curl -Ls https://cdn.staticaly.com/gh/XIU2/TrackersListCollection/master/best_aria2.txt)
-grep -q 'bt-tracker=' "${ARIA2_CONFIG_HOME}/aria2.conf" && \
-    sed -i "s@bt-tracker=.*@bt-tracker=$TRACKER@" "${ARIA2_CONFIG_HOME}/aria2.conf" || \
-    sed -i "\$a bt-tracker=$TRACKER" "${ARIA2_CONFIG_HOME}/aria2.conf"
+ENABLED=${ENABLED:-false}
+if $ENABLED
+then
+    if [[ -z $TRACKER ]]
+    then
+        exit 1
+    fi
+    if grep -q 'bt-tracker=' "${ARIA2_CONFIG_HOME}/aria2.conf"
+    then
+        echo "Replacing tracker line"
+        sed -i "s@bt-tracker=.*@bt-tracker=$TRACKER@" "${ARIA2_CONFIG_HOME}/aria2.conf"
+    else
+        echo "Adding tracker line"
+        sed -i "\$a bt-tracker=$TRACKER" "${ARIA2_CONFIG_HOME}/aria2.conf"
+    fi
+fi
