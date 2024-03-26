@@ -1,7 +1,7 @@
 pkgbase = php82-imagick
 	pkgdesc = PHP 8.2 extension to create and modify images using the ImageMagick library
 	pkgver = 3.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/imagick/imagick
 	arch = x86_64
 	license = PHP

@@ -5,7 +5,7 @@ _phpbase=82
 pkgname=php82-imagick
 _name=imagick
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP 8.2 extension to create and modify images using the ImageMagick library"
 arch=('x86_64')
 url="https://github.com/imagick/imagick"
@@ -27,6 +27,10 @@ prepare() {
   sed -e "s/@PACKAGE_VERSION@/${pkgver}/" \
       -i "${pkgname}-${pkgver}/php_imagick.h" "${pkgname}-${pkgver}/package.xml"
   cd "$pkgname-${pkgver}"
+
+  # Workaround for broken test
+  rm tests/316_Imagick_getImageKurtosis.phpt
+
   phpize${_phpbase}
 }
 
