@@ -1,4 +1,5 @@
-pkg
-src
-*.tar.*
-*.log
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!build.patch
