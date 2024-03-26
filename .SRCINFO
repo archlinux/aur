@@ -1,13 +1,13 @@
 pkgbase = stop
 	pkgdesc = Stock position tracker for status bars
-	pkgver = 0.1.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/axxml/stop
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-yfinance
-	source = stop-0.1.0.tar.gz::https://github.com/axxml/stop/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 4186d512892adf309ca3ba2e403346cacc297304ee80fa81d7ce766bbf00a948
+	source = stop-0.2.1.tar.gz::https://github.com/axxml/stop/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 68122b2df401d3bb549f8a7a3b8df8bd3a86e40ee2d56c32e6b54dadf4d15648
 
 pkgname = stop
