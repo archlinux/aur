@@ -1,11 +1,14 @@
 pkgbase = python-colcon-core
 	pkgdesc = Command line tool to build sets of software packages.
-	pkgver = 0.15.2
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://colcon.readthedocs.io/en/released/
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-pytest
 	depends = python-pytest-runner
 	depends = python-pytest-rerunfailures
@@ -15,7 +18,7 @@ pkgbase = python-colcon-core
 	depends = python-distlib
 	depends = python-notify2
 	depends = python-empy3
-	source = python-colcon-core-0.15.2.tar.gz::https://github.com/colcon/colcon-core/archive/0.15.2.tar.gz
-	sha256sums = 2eebc46d001163a70c37bff57c5cc83c694563ff75b5178bcd2a24d6ff0cb645
+	source = python-colcon-core-0.16.0.tar.gz::https://github.com/colcon/colcon-core/archive/0.16.0.tar.gz
+	sha256sums = 223e3096b75e4c1537861a0d95585ce8306a7d3ac796c0944658d932eca15539
 
 pkgname = python-colcon-core
