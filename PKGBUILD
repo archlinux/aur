@@ -4,7 +4,7 @@
 
 _prjname=wxFormBuilder
 pkgname=wxformbuilder
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="RAD tool for wxWidgets GUI design"
 arch=('i686' 'x86_64' 'aarch64')
@@ -16,16 +16,11 @@ depends=('wxwidgets-gtk3' 'boost')
 makedepends=('cmake')
 source=(
   "https://github.com/wxFormBuilder/wxFormBuilder/releases/download/v${pkgver}/wxFormBuilder-${pkgver}-source-full.tar.gz"
-  "tinyxml2-no-install.patch"
 )
 sha512sums=(
-  "fd50f66584a6b03d7cb2281d20649fb39b2d4923dadfa44bc244732d524a08483ed9c7a97fbf02d613b7a1e494858b9ea0d2d13a554bcca2dab277cfa892ecc1"
-  "cb941a55d67104f68a3b1ab84f19c5016d96ba52efb9ea7755be33f52af6c5ce8fba36f25e8f10d0ddd38ed9842192a6ef55a9de2b54b3428aed4e360653b7c0"
+  "d3b8fd8fe5cfafc2a3f49255d87aa78399be0804d6176d506ecfa77d141b86f1fda7150637c80a740637516807be3ae6f1d698825de8f247c7878b313d259d5f"
 )
-prepare() {
-    cd "${_prjname}-${pkgver}"
-    patch --forward --strip=1 --input="${srcdir}/tinyxml2-no-install.patch"
-}
+
 build() {
   cd "${_prjname}-${pkgver}"
   cmake -S . -B _build --install-prefix /usr -DCMAKE_BUILD_TYPE=Release

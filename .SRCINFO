@@ -1,6 +1,6 @@
 pkgbase = wxformbuilder
 	pkgdesc = RAD tool for wxWidgets GUI design
-	pkgver = 4.0.0
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://github.com/wxFormBuilder/wxFormBuilder
 	arch = i686
@@ -14,9 +14,7 @@ pkgbase = wxformbuilder
 	conflicts = wxformbuilder
 	conflicts = wxformbuilder-svn
 	conflicts = wxformbuilder-git
-	source = https://github.com/wxFormBuilder/wxFormBuilder/releases/download/v4.0.0/wxFormBuilder-4.0.0-source-full.tar.gz
-	source = tinyxml2-no-install.patch
-	sha512sums = fd50f66584a6b03d7cb2281d20649fb39b2d4923dadfa44bc244732d524a08483ed9c7a97fbf02d613b7a1e494858b9ea0d2d13a554bcca2dab277cfa892ecc1
-	sha512sums = cb941a55d67104f68a3b1ab84f19c5016d96ba52efb9ea7755be33f52af6c5ce8fba36f25e8f10d0ddd38ed9842192a6ef55a9de2b54b3428aed4e360653b7c0
+	source = https://github.com/wxFormBuilder/wxFormBuilder/releases/download/v4.1.0/wxFormBuilder-4.1.0-source-full.tar.gz
+	sha512sums = d3b8fd8fe5cfafc2a3f49255d87aa78399be0804d6176d506ecfa77d141b86f1fda7150637c80a740637516807be3ae6f1d698825de8f247c7878b313d259d5f
 
 pkgname = wxformbuilder
