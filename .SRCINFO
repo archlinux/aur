@@ -19,7 +19,9 @@ pkgbase = snapper-gui-git
 	provides = snapper-gui
 	conflicts = snapper-gui
 	source = snapper-gui-git::git+https://github.com/ricardomv/snapper-gui.git
+	source = python3.11-diff-fix.patch::https://patch-diff.githubusercontent.com/raw/ricardomv/snapper-gui/pull/59.patch
 	sha256sums = SKIP
+	sha256sums = 2770d1ef054c1e089af72d3779e65fcaa33b7fab54eab57e31cfd3ebab6b96e9
 
 pkgname = snapper-gui-git
 
