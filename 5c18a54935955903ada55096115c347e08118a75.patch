@@ -1,0 +1,26 @@
+From 5c18a54935955903ada55096115c347e08118a75 Mon Sep 17 00:00:00 2001
+From: Steffen Ullrich <github@maulwuff.de>
+Date: Tue, 18 Jul 2023 06:55:27 +0200
+Subject: [PATCH] fix exiting subroutine with next in test
+
+---
+ t/19_call_with_dtmf.t | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/t/19_call_with_dtmf.t b/t/19_call_with_dtmf.t
+index 36c4e9d..1468fa6 100644
+--- a/t/19_call_with_dtmf.t
++++ b/t/19_call_with_dtmf.t
+@@ -185,10 +185,10 @@ sub uas {
+ 	my $diff = ($seq - $lastseq) % 2**32;
+ 	if ($diff == 0) {
+ 	    diag("duplicate $seq");
+-	    next;
++	    return;
+ 	} elsif ($diff>2**31) {
+ 	    diag("out of order $seq");
+-	    next;
++	    return;
+ 	}
+ 	if ($diff>1) {
+ 	    $lost += $diff-1;
