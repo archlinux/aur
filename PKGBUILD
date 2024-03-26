@@ -3,8 +3,8 @@
 
 pkgname=scarlett2-git
 _pkgname=scarlett2
-pkgver=2e74
-pkgrel=3
+pkgver=b5a1
+pkgrel=1
 pkgdesc='Scarlett2 Firmware Management Utility for Scarlett 2nd/3rd/4th Gen, Clarett USB, and Clarett+ interfaces'
 arch=('i686' 'x86_64')
 url="https://github.com/geoffreybennett/$_pkgname"

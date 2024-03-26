@@ -1,7 +1,7 @@
 pkgbase = scarlett2-git
 	pkgdesc = Scarlett2 Firmware Management Utility for Scarlett 2nd/3rd/4th Gen, Clarett USB, and Clarett+ interfaces
-	pkgver = 2e74
-	pkgrel = 3
+	pkgver = b5a1
+	pkgrel = 1
 	url = https://github.com/geoffreybennett/scarlett2
 	arch = i686
 	arch = x86_64
