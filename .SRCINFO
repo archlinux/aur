@@ -1,0 +1,19 @@
+pkgbase = python-ollama-git
+	pkgdesc = Ollama Python library
+	pkgver = v0.1.7.r0.gfcdf577
+	pkgrel = 1
+	url = https://github.com/ollama/ollama-python
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = git
+	depends = ollama
+	depends = python
+	depends = python-httpx
+	depends = python-typing_extensions
+	provides = python-ollama
+	conflicts = python-ollama
+	source = python-ollama-git::git+https://github.com/ollama/ollama-python.git
+	b2sums = SKIP
+
+pkgname = python-ollama-git
