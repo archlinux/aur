@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=warteschlangensimulator-appimage
 _appname=Warteschlangensimulator
-pkgver=5.5.0
-pkgrel=3
+pkgver=5.6.0
+pkgrel=1
 pkgdesc="A free, platform independent, discrete-event, stochastic simulator which allows to model queueing systems in form of flowcharts."
 arch=("x86_64")
 url="https://a-herzog.github.io/Warteschlangensimulator/"
@@ -11,12 +11,15 @@ license=('Apache-2.0')
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
 depends=()
+makedepends=(
+    'fuse2'
+)
 options=('!strip')
 _install_path="/opt/appimages"
 source=(
     "${pkgname%-appimage}-${pkgver}.AppImage::${_ghurl}/releases/download/${pkgver}/${_appname}-${CARCH}.AppImage"
 )
-sha256sums=('ca161e42926660b7a575603e440f1c29d73dd5d1c557108e8b9f2745eaa7bee4')
+sha256sums=('9f106640ad1435c431aabc4c2910419e7ef85f0fd568771c88d7181fd83f5480')
 build() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
