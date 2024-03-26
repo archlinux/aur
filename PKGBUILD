@@ -6,7 +6,7 @@ pkgdesc="A spear to the Python language server built with black magic"
 arch=(any)
 url="https://sr.ht/~self/delance/"
 license=('0BSD')
-depends=(nodejs bun-bin python python-numpy python-pytest)
+depends=(nodejs bun python python-numpy python-pytest)
 makedepends=(npm)
 source=(
 	"https://registry.npmjs.org/@delance/runtime/-/runtime-$pkgver.tgz"
