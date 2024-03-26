@@ -10,7 +10,6 @@ pkgbase = libinputsynth-git
 	makedepends = git
 	depends = glib2
 	depends = glibc
-	depends = libinputsynth-git
 	depends = libx11
 	depends = libxi
 	depends = libxtst

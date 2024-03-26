@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='Synthesize desktop input for X11 and Wayland'
 arch=('i686' 'x86_64')
 url='https://gitlab.freedesktop.org/xrdesktop/libinputsynth'
-depends=('glib2' 'glibc' 'libinputsynth-git' 'libx11' 'libxi' 'libxtst' 'xdotool' 'gcc-libs')
+depends=('glib2' 'glibc' 'libx11' 'libxi' 'libxtst' 'xdotool' 'gcc-libs')
 provides=("$_realname="$pkgver)
 conflicts=("$_realname")
 makedepends=('meson' 'git')
