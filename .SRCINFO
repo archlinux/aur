@@ -1,0 +1,23 @@
+pkgbase = medis-git
+	pkgdesc = A beautiful, easy-to-use Mac database management application for Redis.
+	pkgver = r318.12c87a5
+	pkgrel = 1
+	url = http://getmedis.com/
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = base-devel
+	makedepends = gcc
+	makedepends = asar
+	depends = electron4-bin
+	provides = medis
+	conflicts = medis
+	source = medis.git::git+https://github.com/luin/medis.git
+	source = medis.sh
+	sha256sums = SKIP
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+
+pkgname = medis-git
