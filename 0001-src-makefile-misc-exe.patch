@@ -1,0 +1,16 @@
+diff -pNaru5 a/src/makefile b/src/makefile
+--- a/src/makefile	2024-03-26 02:10:56.477386810 -0400
++++ b/src/makefile	2024-03-26 02:11:04.114045045 -0400
+@@ -24,11 +24,11 @@ DIRS = \
+ all : misc.exe config $(DIRS) makemake.exe subs
+ 
+ misc.exe : misc.c
+ 	gcc -O2 -Wall misc.c -o misc.exe
+ 
+-$(DIRS) :
++$(DIRS) : misc.exe
+ 	./misc.exe mkdir $@
+ 
+ makemake.exe : makemake.c
+ 	gcc -O2 -Wall makemake.c -o makemake.exe
+ 
