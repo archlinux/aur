@@ -2,9 +2,9 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=argc-git
-pkgver=1.15.0.r0.ge82f089
+pkgver=1.16.0.r0.g09da0a3
 pkgrel=1
-pkgdesc="An elegant command-line options, arguments and sub-commands parser for bash (git)"
+pkgdesc="An elegant command-line argument parser (git)"
 arch=('x86_64')
 url="https://github.com/sigoden/argc"
 license=('MIT' 'Apache-2.0')
