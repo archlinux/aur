@@ -1,9 +1,9 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
 
 _plugin_name=foxyproxy
-_plugin_version=7.5.1
-_plugin_id=3616824
-_plugin_ext="-an+fx"
+_plugin_version=8.9
+_plugin_id=4228676
+_plugin_ext=""
 pkgdesc="FoxyProxy is an advanced proxy management tool that completely replaces Firefox's limited proxying capabilities."
 license=('GPL')
 
@@ -16,7 +16,7 @@ depends=("firefox>=57")
 source=("https://addons.mozilla.org/firefox/downloads/file/${_plugin_id}/foxyproxy_standard-${pkgver}${_plugin_ext}.xpi")
 
 noextract=('foxyproxy_standard-${pkgver}${_plugin_ext}.xpi')
-sha256sums=('42109bc250e20aafd841183d09c7336008ab49574b5e8aa9206991bb306c3a65')
+sha256sums=('b1e1b85f4b3b047560f5329040e14a2fec9699edd4706391f6f2318b203ab023')
 
 package() {
   cd "${srcdir}"
