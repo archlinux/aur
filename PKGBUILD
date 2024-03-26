@@ -1,7 +1,8 @@
-# Maintainer: Christian Hesse <mail@eworm.de>
+# Maintainer: FloTheSysadmin <FloTheSysadmin@protonmail.com>
+#
 
 pkgname=check_mk-agent
-pkgver=2.1.0p19
+pkgver=2.2.0p24
 pkgrel=1
 pkgdesc='Agent to send information to a Check_MK server'
 arch=(any)
@@ -12,8 +13,8 @@ source=("${pkgname}-check_mk_agent.linux-${pkgver}::https://raw.githubuserconten
         "${pkgname}-check_mk_caching_agent.linux-${pkgver}::https://raw.githubusercontent.com/tribe29/checkmk/v${pkgver}/agents/check_mk_caching_agent.linux"
         'check_mk.socket'
         'check_mk@.service')
-sha256sums=('89bb33dc3820eb8c60e81f744a1fc323f9b19f432006d3f24e3364810248da97'
-            'c29a519a75fec898d8c748da16f2cdecff210c11872c206873aa1374e793f87b'
+sha256sums=('7c10a68daa0c5c0c366ccc8b4b898bc94b32221d25aea2191df5b768f04b214c'
+            '54bb693ef89cf65fa53440384b238e507193d5770f803854746335ccb2dd7162'
             'a891bb3020f20ff8e6c1672e58607dd5545923bfce6420911fd1c967ec500b08'
             '7a8507af8fd92a7acc68c34d6a7525b67e0c0419ef8a99cd620d459837c7d1e8')
 
