@@ -1,11 +1,11 @@
 pkgbase = jpsxdec-bin
 	pkgdesc = A modern, cross-platform PlayStation 1 audio/video converter
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jpsxdec.blogspot.com
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = LicenseRef-jPSXdec
 	makedepends = unzip
 	makedepends = gendesk
 	depends = java-runtime>=8

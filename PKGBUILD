@@ -1,15 +1,15 @@
-# Maintainer: bemxio <bemxiov@protonmail.com>
+# Maintainer: bemxio <bemxiov at protonmail dot com>
 
 pkgname="jpsxdec-bin"
 pkgdesc="A modern, cross-platform PlayStation 1 audio/video converter"
 
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 
 arch=(i686 x86_64)
 
 url="http://jpsxdec.blogspot.com"
-license=("custom")
+license=("LicenseRef-jPSXdec")
 
 depends=("java-runtime>=8")
 makedepends=(unzip gendesk)
@@ -22,7 +22,7 @@ md5sums=("bfa6db7bebac5a88e0c18336f066f1af" "df950dfd76574ba615d245eafd5e34d6")
 
 prepare() {
 	# move into the extracted directory
-	cd "${srcdir}/jpsxdec_v${pkgver}"
+	cd "jpsxdec_v${pkgver}"
 
 	# extract the logo out of the JAR file
 	unzip -o -j jpsxdec.jar jpsxdec/gui/icon48.png -d .
@@ -38,7 +38,7 @@ prepare() {
 
 package() {
 	# move into the extracted directory
-	cd "${srcdir}/jpsxdec_v${pkgver}"
+	cd "jpsxdec_v${pkgver}"
 
 	# copy the required .jar files
 	install -Dm755 jpsxdec.jar "${pkgdir}/usr/share/java/jpsxdec/jpsxdec.jar"
