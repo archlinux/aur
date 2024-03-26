@@ -1,13 +1,13 @@
 pkgbase = r-mvnormtest
-	pkgdesc = Normality test for multivariate variables
-	pkgver = 0.1.9
-	pkgrel = 2
+	pkgdesc = Normality Test for Multivariate Variables
+	pkgver = 0.1.9.3
+	pkgrel = 1
 	url = https://cran.r-project.org/package=mvnormtest
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
-	source = https://cran.r-project.org/src/contrib/mvnormtest_0.1-9.tar.gz
-	md5sums = e5960fbfc0e69797eec01c16fe74ecb7
-	sha256sums = 46dab6eb9e7d55b8d4054d14029613b89a308259f86ddc8952b0bf752e975dc5
+	source = https://cran.r-project.org/src/contrib/mvnormtest_0.1-9-3.tar.gz
+	md5sums = 5040046e51bee05b6191e1abff06875d
+	b2sums = 2418137c4524291761ddb14a92f2fdab325663a034af5578210ec29e83d23583e378c19969b224cb1a1849a70755bba95b295a44cd078079938d6f149960c7c7
 
 pkgname = r-mvnormtest
