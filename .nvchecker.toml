@@ -1,5 +1,2 @@
 [vcsh-git]
-source = "github"
-github = "RichiH/vcsh"
-prefix = "v"
-use_max_tag = true
+source = 'manual'
