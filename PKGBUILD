@@ -3,7 +3,7 @@ pkgname=goofcord-bin
 _pkgname=GoofCord
 pkgver=1.3.2
 _electronversion=29
-pkgrel=2
+pkgrel=3
 pkgdesc="Take control of your Discord experience with GoofCord – the highly configurable and privacy first discord client."
 arch=(
     'aarch64'
@@ -25,7 +25,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('4e7f66aa93929feee2db20f14f871e7ddcc69236b0ecfb79a19ade9b859daf51'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '6e6d3f9683321ae64b00c89f23697aff193a2874a40f21b7f1414bbd1211754a')
 sha256sums_aarch64=('eef61c111a232b2bccdbde52d4b5572f1ccedd3042c52d143ef87233cf54a11e')
 sha256sums_armv7h=('66731db0347b3fcffab4f50ac51aef0dee00d2e54107a73c8040dcb5396e533f')
 sha256sums_x86_64=('4144164704b2abf98e81163a29f7306572492b2e4c57394398be49268044d1d8')
