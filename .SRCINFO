@@ -1,7 +1,7 @@
 pkgbase = directfb2-tslib-git
 	pkgdesc = contains tslib input driver for DirectFB2
-	pkgver = r7.f0dc2f3
-	pkgrel = 1
+	pkgver = r13.ce00eca
+	pkgrel = 2
 	url = https://directfb2.github.io/
 	arch = x86_64
 	arch = armv7h
