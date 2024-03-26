@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=siyuan-git
-pkgver=3.0.4.r0.g83fbf8c52
+pkgver=3.0.5.r0.g925102e8e
 _electronversion=28
 _nodeversion=18
 pkgrel=1
