@@ -1,7 +1,7 @@
 pkgbase = directfb2-gles2-git
 	pkgdesc = OpenGL ES 2.0 GFX driver for DirectFB2
-	pkgver = r7.fe03aa2
-	pkgrel = 1
+	pkgver = r19.ec94603
+	pkgrel = 2
 	url = https://directfb2.github.io/
 	arch = x86_64
 	arch = armv7h
