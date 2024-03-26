@@ -1,7 +1,7 @@
 pkgbase = flutter
 	pkgdesc = A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android.
 	pkgver = 3.19.4
-	pkgrel = 7
+	pkgrel = 8
 	url = https://flutter.dev
 	install = flutter.install
 	arch = x86_64
@@ -12,17 +12,6 @@ pkgbase = flutter
 	makedepends = dart>=3.3.2
 	makedepends = jq
 	makedepends = gradle
-	depends = gradle
-	depends = bash
-	depends = curl
-	depends = file
-	depends = git
-	depends = coreutils
-	depends = unzip
-	depends = which
-	depends = xz
-	depends = zip
-	depends = libglvnd
 	noextract = material_fonts.zip
 	noextract = android-x86.zip
 	noextract = android-x64.zip
@@ -147,36 +136,89 @@ pkgname = flutter
 	depends = flutter-target-web
 	depends = flutter-intellij-patch
 
+pkgname = flutter-common
+	pkgdesc = Flutter SDK component - common SDK files and pub cache
+
+pkgname = flutter-engine-common-google-bin
+	pkgdesc = Flutter SDK component - common engine files
+	depends = flutter-common
+	depends = flutter-sky-engine
+	depends = flutter-material-fonts
+	provides = flutter-engine-common
+	conflicts = flutter-engine-common
+
+pkgname = flutter-engine-linux-google-bin
+	pkgdesc = Flutter SDK component - linux engine
+	depends = flutter-engine-common
+	provides = flutter-engine-linux
+	conflicts = flutter-engine-linux
+
+pkgname = flutter-engine-web-google-bin
+	pkgdesc = Flutter SDK component - web engine
+	depends = flutter-engine-common
+	provides = flutter-engine-web
+	conflicts = flutter-engine-web
+
+pkgname = flutter-engine-android-google-bin
+	pkgdesc = Flutter SDK component - android engine
+	depends = flutter-engine-common
+	provides = flutter-engine-android
+	conflicts = flutter-engine-android
+
+pkgname = flutter-sky-engine-google-bin
+	pkgdesc = Flutter SDK component - sky-engine
+	depends = flutter-common
+	provides = flutter-sky-engine
+	conflicts = flutter-sky-engine
+
+pkgname = flutter-material-fonts
+	pkgdesc = Flutter SDK component - material fonts
+	depends = flutter-common
+
 pkgname = flutter-tool
 	pkgdesc = Flutter SDK component - CLI tool (for packaging only)
 	depends = flutter-common
+	depends = dart>=3.3.2
+	depends = bash
+	depends = curl
+	depends = file
+	depends = git
+	depends = coreutils
+	depends = unzip
+	depends = which
+	depends = xz
+	depends = zip
+	depends = glu
 
 pkgname = flutter-devel
 	pkgdesc = Flutter SDK component - CLI tool (for application development)
 	depends = flutter-tool
+	depends = dart>=3.3.2
+	replaces = flutter-tool-developer
 
 pkgname = flutter-target-linux
 	pkgdesc = Flutter SDK component - linux target files
 	depends = flutter-tool
+	depends = flutter-engine-linux
+	depends = dart>=3.3.2
 	depends = clang
 	depends = cmake
 	depends = ninja
 	depends = pkgconf
 	depends = gtk3
-
-pkgname = flutter-common
-	pkgdesc = Flutter SDK component - common files
-	depends = glu
+	depends = libglvnd
 
 pkgname = flutter-target-android
 	pkgdesc = Flutter SDK component - android target files
 	depends = flutter-tool
+	depends = flutter-engine-android
 	optdepends = android-sdk: develop for Android devices
 	optdepends = java-environment: develop for Android devices
 
 pkgname = flutter-target-web
 	pkgdesc = Flutter SDK component - web target files
 	depends = flutter-tool
+	depends = flutter-engine-web
 
 pkgname = flutter-intellij-patch
 	pkgdesc = Flutter SDK component - IntelliJ Flutter plugin hotfix
