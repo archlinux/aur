@@ -5,7 +5,7 @@
 _pkgname='audio-offset-finder'
 pkgname="${_pkgname}-git"
 pkgver=0.5.3.r151.20231205.2e948a3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple tool for finding the offset of an audio file within another file."
 arch=('any')
 _githost='github.com'
@@ -88,7 +88,7 @@ package() {
   # python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
   # Name the executable correctly
-  mv -v "${pkgdir}/usr/bin/executable-name" "${pkgdir}/usr/bin/${_pkgname}"
+  #mv -v "${pkgdir}/usr/bin/executable-name" "${pkgdir}/usr/bin/${_pkgname}"
 
   # Remove files that should not be there
   rm -fv "${pkgdir}/usr/lib"/python*/"site-packages/tests/__init__.py"
