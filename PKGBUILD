@@ -1,12 +1,12 @@
 pkgname=mingw-w64-gettext
-pkgver=0.22
+pkgver=0.22.5
 pkgrel=1
 arch=('any')
 pkgdesc='GNU internationalization library (mingw-w64)'
 depends=('mingw-w64-termcap' 'mingw-w64-libunistring')
 makedepends=('gettext' 'mingw-w64-configure')
 options=(!strip !buildflags staticlibs)
-license=("GPL")
+license=('GPL-2.0-only' 'LGPL-2.0-only' 'GFDL-1.2-only' 'GPL-2.0-or-later')
 url="http://www.gnu.org/software/gettext/"
 source=(http://ftp.gnu.org/pub/gnu/gettext/gettext-${pkgver}.tar.gz{,.sig}
         intl.pc)
