@@ -52,8 +52,8 @@ check() {
   test_colors_assy0[chassis0_assy-expected0]
   test_colors_fused_assy[chassis0_assy-expected5]
   test_colors_assy1[chassis0_assy-expected10]
-  testDXF
-  testExtrude
+  testDXF  # https://github.com/CadQuery/cadquery/issues/1550
+  testExtrude # https://github.com/CadQuery/cadquery/issues/1550
   )
   printf -v _joined '%s and not ' "${_these_fail[@]}"
   python -m pytest tests -k "$(echo "not ${_joined% and not }")"
