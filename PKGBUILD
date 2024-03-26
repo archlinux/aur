@@ -22,15 +22,17 @@ pkgver() {
 }
 
 prepare() {
-  echo "Creating desktop file..."
-  gendesk -f -n --pkgname ${_pkgname} \
-    --pkgdesc "${pkgdesc}" \
-    --categories="Network; FileTools; Monitor" \
-    --icon "${pkgdir}/usr/share/pixmaps/${_pkgname}.png" \
-    --exec "${pkgdir}/usr/bin/${_pkgname}"
-	# Should i use "applet" type in categories?
-	# If I have to, then don't forget about the OnlyShowIn=
-	# Categories spec. https://specifications.freedesktop.org/menu-spec/menu-spec-1.1.html#category-registry
+	echo "Creating desktop file..."
+		gendesk -f -n --pkgname ${_pkgname} \
+		--genericname "Yandex Disk panel" \
+		--custom "GenericName[ru]=Панель Яндекс Диска" \
+		--pkgdesc "${pkgdesc}" \
+		--categories="Network; FileTools; Monitor" \
+		--icon "/usr/share/pixmaps/${_pkgname}.png" \
+		--exec "/usr/bin/${_pkgname}"
+		# Should i use "applet" type in categories?
+		# If I have to, then don't forget about the OnlyShowIn=
+		# Categories spec. https://specifications.freedesktop.org/menu-spec/menu-spec-1.1.html#category-registry
 }
 
 build() {
