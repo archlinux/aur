@@ -1,20 +1,19 @@
 # Maintainer: Daniel Chesters <archlinux@coin-coin.xyz>
 
 pkgname=oterm
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="A text-based terminal client for Ollama"
 arch=('any')
 url="https://github.com/ggozad/oterm"
 license=('MIT')
 depends=(
-	'ollama'
 	'python'
+	'python-ollama'
 	'python-rich'
 	'python-typer'
 	'python-textual'
 	'python-pyperclip'
-	'python-httpx'
 	'python-aiosqlite'
 	'python-aiosql'
 	'python-packaging'
@@ -36,4 +35,4 @@ package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 }
-b2sums=('bd22d1538f8eb971dd6c6dda5296b3f3e1325d2a9e43acd34289e54cb423a072052a441b0593d2ec9a1137eb27ec144c1fb461aab855429ed49916a2c63df8a1')
+b2sums=('91e20bab9fe01d69584d5e79f130c6a181f424270e5762caaafd4bd19e1db95b9fc5fd05c1ef06b942212ecb217d7ddea2be394153d7c7be79d0041151e56f8b')
