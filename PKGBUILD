@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=syntenet
-_pkgver=1.4.0
+_pkgver=1.4.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Inference And Analysis Of Synteny Networks"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-biocparallel
   r-biostrings
@@ -41,8 +41,8 @@ optdepends=(
   r-xml2
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ab56b637f74d79cfba3dd6aab80b7ac9')
-sha256sums=('023956e4272163608eea70636a88815e86ef214692fe3b3df37988e20d3b2f9c')
+md5sums=('707c5e37a241e40c0d5c99f3dbbe4a08')
+b2sums=('31fa900433a340eecd3fee9999ca360f9e9df68e76924dc294a458489e13b0536d6767ab55f6a8d7be60fdb3f2c9e3a3ef1e4a00052ee2785b751a4cbc712217')
 
 prepare() {
   # skip tests that cause a coredump
@@ -50,8 +50,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
