@@ -2,7 +2,7 @@
 
 pkgname=python-xopen
 _module=${pkgname#python-}
-pkgver=1.9.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Python library to pen compressed files transparently'
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=(
             )
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('01daaefd18875b1e555183f9641de892cc245eaca6893546e91f48182b6d6ab1')
+sha256sums=('201b30809144235582c092910fda531ec156cb7469905b00cbdd64e5282191e3')
 
 build() {
     cd "$_module-$pkgver"
