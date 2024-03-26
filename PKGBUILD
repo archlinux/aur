@@ -1,13 +1,16 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-settings-daemon-git
-pkgver=r25.e87837e
+pkgver=r39.a949447
 pkgrel=1
 pkgdesc="WIP COSMIC settings daemon"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-settings-daemon"
 license=('GPL-3.0-or-later')
 groups=('cosmic')
-depends=('systemd-libs')
+depends=(
+  'geoclue'
+  'systemd-libs'
+)
 makedepends=(
   'cargo'
   'git'
@@ -26,8 +29,9 @@ prepare() {
   cd "${pkgname%-git}"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
   make vendor
+
+  sed -i 's|libexec|lib|g' Makefile src/main.rs
 }
 
 build() {
