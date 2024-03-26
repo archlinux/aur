@@ -1,6 +1,6 @@
 pkgbase = lmstudio-appimage
 	pkgdesc = Discover, download, and run local LLMs
-	pkgver = 0.2.15.beta.1
+	pkgver = 0.2.17.preview.6
 	pkgrel = 1
 	url = https://lmstudio.ai/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = lmstudio-appimage
 	depends = hicolor-icon-theme
 	depends = fuse2
 	depends = clblast
-	noextract = lmstudio-appimage-0.2.15.beta.1.AppImage
+	noextract = lmstudio-appimage-0.2.17.preview.6.AppImage
 	options = !strip
-	source_x86_64 = lmstudio-appimage-0.2.15.beta.1.AppImage::https://releases.lmstudio.ai/linux/0.2.15/beta/LM_Studio-0.2.15-beta-1.AppImage
-	sha256sums_x86_64 = a5339f9531137d3b371994da39ca069b237e8a4c2da22ec3837ba5ddbafb921f
+	source_x86_64 = lmstudio-appimage-0.2.17.preview.6.AppImage::https://releases.lmstudio.ai/linux/0.2.17/test/LM_Studio-0.2.17-preview-6.AppImage
+	sha256sums_x86_64 = 6da83495bfb64d46f317512cbe430e71b8119daaf6ffd0329b649d7098dad5ba
 
 pkgname = lmstudio-appimage

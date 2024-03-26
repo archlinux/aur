@@ -1,8 +1,8 @@
 _pkgname=lmstudio
 
 pkgname="${_pkgname}"-appimage
-_basever="0.2.15"
-pkgver="${_basever}.beta.1"
+_basever="0.2.17"
+pkgver="${_basever}.preview.6"
 pkgrel=1
 pkgdesc="Discover, download, and run local LLMs"
 arch=('x86_64')
@@ -11,9 +11,10 @@ license=('custom')
 depends=('zlib' 'hicolor-icon-theme' 'fuse2' 'clblast')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
-source_x86_64=("${_appimage}::https://releases.lmstudio.ai/linux/${_basever}/beta/LM_Studio-${pkgver/\.beta\./-beta-}.AppImage")
+source_x86_64=("${_appimage}::https://releases.lmstudio.ai/linux/${_basever}/test/LM_Studio-${pkgver/\.preview\./-preview-}.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('a5339f9531137d3b371994da39ca069b237e8a4c2da22ec3837ba5ddbafb921f')
+
+sha256sums_x86_64=('6da83495bfb64d46f317512cbe430e71b8119daaf6ffd0329b649d7098dad5ba')
 appname="lm-studio"
 
 prepare() {
@@ -51,8 +52,8 @@ package() {
     ln -s "/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 
     # add clblast symlinks
-    mkdir -p "$pkgdir/usr/local/lib"
-    ln -s "/usr/lib/libclblast.so.1" "$pkgdir/usr/local/lib"
-    ln -s "/usr/lib/libclblast.so" "$pkgdir/usr/local/lib"
+    #mkdir -p "$pkgdir/usr/local/lib"
+    #ln -s "/usr/lib/libclblast.so.1" "$pkgdir/usr/local/lib"
+    #ln -s "/usr/lib/libclblast.so" "$pkgdir/usr/local/lib"
 }
 
