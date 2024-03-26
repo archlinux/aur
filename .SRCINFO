@@ -1,12 +1,11 @@
 pkgbase = zelcore
 	pkgdesc = Zelcore Platform
-	pkgver = 7.13.0
+	pkgver = 7.13.2
 	pkgrel = 0
 	url = https://zelcore.io/
 	install = zelcore.install
 	arch = x86_64
-	groups = 
-	license = 
+	license = custom
 	depends = gtk3
 	depends = libnotify
 	depends = nss

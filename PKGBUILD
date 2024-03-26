@@ -2,13 +2,12 @@
 # Maintainer: Famous
 # Contributor: Famous
 pkgname=zelcore
-pkgver=7.13.0
+pkgver=7.13.2
 pkgrel=0
 pkgdesc="Zelcore Platform"
 arch=('x86_64')
 url="https://zelcore.io/"
-license=('')
-groups=('')
+license=('custom')
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
 optdepends=('libappindicator-gtk3')
 options=('!strip' '!emptydirs')
