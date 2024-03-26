@@ -1,11 +1,11 @@
 pkgbase = radio
 	pkgdesc = Simple Radio for Linux
-	pkgver = 1.0.12
+	pkgver = 1.0.13
 	pkgrel = 1
 	url = https://github.com/alexkdeveloper/radio
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-or-later
 	checkdepends = appstream-glib
 	makedepends = git
 	makedepends = meson
@@ -16,7 +16,7 @@ pkgbase = radio
 	depends = libgee
 	depends = libpulse
 	depends = libsoup
-	source = git+https://github.com/alexkdeveloper/radio.git#tag=1.0.12
+	source = git+https://github.com/alexkdeveloper/radio.git#commit=e296ed021718050fe87d01406d1458828afbb61b
 	sha256sums = SKIP
 
 pkgname = radio
