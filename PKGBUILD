@@ -1,18 +1,18 @@
-# Maintainer: Mr. Misconception <@MisconceivedSec>
+# Maintainer: HaCk0 <@HaCk0>
 pkgname=walc
-pkgver=0.3.2
-pkgrel=4
+pkgver=0.3.3
+pkgrel=1
 pkgdesc="An unofficial WhatsApp Desktop client for linux systems."
 arch=('x86_64')
 url="https://github.com/WAClient/WALC"
 license=('GPL3')
-depends=('nodejs-lts-gallium' 'npm' 'gtk3' 'alsa-lib' 'nss')
-makedepends=('gendesk')
+depends=('gtk3' 'alsa-lib' 'nss')
+makedepends=('gendesk' 'nodejs-lts-hydrogen' 'npm' )
 provides=('walc')
 conflicts=('walc')
 options=(!strip)
 source=("WALC-$pkgver.tar.gz::https://github.com/WAClient/WALC/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('335557223abb59b64da5dbba09ec3ff5')
+md5sums=('2460b571b97b2158813067913b061648')
 
 prepare() {
 	gendesk --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='WALC' --genericname='Unofficial WhatsApp Client for Linux' --custom='StartupWMClass=walc' --exec='npm start --prefix /opt/WALC' --icon='/opt/WALC/src/icons/logo360x360.png' --startupnotify='true' --categories='Network;Applications' -n
