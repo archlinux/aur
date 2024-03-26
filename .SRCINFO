@@ -1,19 +1,19 @@
 pkgbase = dockit-bin
 	pkgdesc = GUI clients for elasticsearch, opensearch and etc
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://dockit.geekfun.club/
 	arch = aarch64
 	arch = x86_64
 	license = Apache-2.0
 	depends = electron28
-	provides = dockit=0.2.1
+	provides = dockit=0.2.2
 	conflicts = dockit
 	source = dockit.sh
 	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
-	source_aarch64 = dockit-0.2.1-aarch64.deb::https://github.com/geek-fun/dockit/releases/download/v0.2.1/dockit_0.2.1_arm64.deb
-	sha256sums_aarch64 = 3708838ecfb49f12c295a4bbc94e942daddc29bb05cc1e4acd72418d290acc04
-	source_x86_64 = dockit-0.2.1-x86_64.deb::https://github.com/geek-fun/dockit/releases/download/v0.2.1/dockit_0.2.1_amd64.deb
-	sha256sums_x86_64 = 2e3035a378308fdaff0bb0a598e99391e064ff426158b5e81dd4763fb5ae6035
+	source_aarch64 = dockit-0.2.2-aarch64.deb::https://github.com/geek-fun/dockit/releases/download/v0.2.2/dockit_0.2.2_arm64.deb
+	sha256sums_aarch64 = 0999a3c3d41b56b922af1e05cde6d81bd9e3b9f2dcce698bdc7ed10fa8e75197
+	source_x86_64 = dockit-0.2.2-x86_64.deb::https://github.com/geek-fun/dockit/releases/download/v0.2.2/dockit_0.2.2_amd64.deb
+	sha256sums_x86_64 = 70323106c1d90c283b0c803023e86078b1573d45845da9b3c724f38322be77bc
 
 pkgname = dockit-bin
