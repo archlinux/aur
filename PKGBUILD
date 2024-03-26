@@ -11,7 +11,7 @@ pkgname=(
   "${_name}-sycl-f32-git"
   "${_name}-vulkan-git"
 )
-pkgver=b2531.r1.b06c16ef9
+pkgver=b2536.r4.557410b8f
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -145,15 +145,7 @@ build() {
   cmake --build build
 }
 
-package_llama.cpp-git() {
-  pkgdesc="$pkgdesc (with OPENBlas CPU optimizations)"
-  depends+=('openblas'
-    'openblas64')
-  provides=("${pkgbase}=${pkgver}")
-
-  cd "${_name}-openblas"
-  DESTDIR="${pkgdir}" cmake --install build
-
+_package() {
   rm -rf "${pkgdir}/usr/bin/"*
   cd build/bin/
   for i in *; do
@@ -162,6 +154,20 @@ package_llama.cpp-git() {
   done
   mv "${pkgdir}/usr/bin/${_name}-main" \
     "${pkgdir}/usr/bin/${_name}"
+
+  # it conflicts with whisper.cpp
+  rm -f "${pkgdir}/usr/include/ggml.h"
+}
+
+package_llama.cpp-git() {
+  pkgdesc="$pkgdesc (with OPENBlas CPU optimizations)"
+  depends+=('openblas'
+    'openblas64')
+  provides=("${pkgbase}=${pkgver}")
+
+  cd "${_name}-openblas"
+  DESTDIR="${pkgdir}" cmake --install build
+  _package
 }
 
 package_llama.cpp-clblas-git() {
@@ -172,15 +178,7 @@ package_llama.cpp-clblas-git() {
 
   cd "${_name}-clblas"
   DESTDIR="${pkgdir}" cmake --install build
-
-  rm -rf "${pkgdir}/usr/bin/"*
-  cd build/bin/
-  for i in *; do
-    install -Dm755 "${i}" \
-      "${pkgdir}/usr/bin/${_name}-${i}"
-  done
-  mv "${pkgdir}/usr/bin/${_name}-main" \
-    "${pkgdir}/usr/bin/${_name}"
+  _package
 }
 
 package_llama.cpp-cublas-git() {
@@ -191,15 +189,7 @@ package_llama.cpp-cublas-git() {
 
   cd "${_name}-clblas"
   DESTDIR="${pkgdir}" cmake --install build
-
-  rm -rf "${pkgdir}/usr/bin/"*
-  cd build/bin/
-  for i in *; do
-    install -Dm755 "${i}" \
-      "${pkgdir}/usr/bin/${_name}-${i}"
-  done
-  mv "${pkgdir}/usr/bin/${_name}-main" \
-    "${pkgdir}/usr/bin/${_name}"
+  _package
 }
 
 package_llama.cpp-hipblas-git() {
@@ -210,15 +200,7 @@ package_llama.cpp-hipblas-git() {
 
   cd "${_name}-hipblas"
   DESTDIR="${pkgdir}" cmake --install build
-
-  rm -rf "${pkgdir}/usr/bin/"*
-  cd build/bin/
-  for i in *; do
-    install -Dm755 "${i}" \
-      "${pkgdir}/usr/bin/${_name}-${i}"
-  done
-  mv "${pkgdir}/usr/bin/${_name}-main" \
-    "${pkgdir}/usr/bin/${_name}"
+  _package
 }
 
 package_llama.cpp-sycl-f16-git() {
@@ -229,15 +211,7 @@ package_llama.cpp-sycl-f16-git() {
 
   cd "${_name}-sycl"
   DESTDIR="${pkgdir}" cmake --install build
-
-  rm -rf "${pkgdir}/usr/bin/"*
-  cd build/bin/
-  for i in *; do
-    install -Dm755 "${i}" \
-      "${pkgdir}/usr/bin/${_name}-${i}"
-  done
-  mv "${pkgdir}/usr/bin/${_name}-main" \
-    "${pkgdir}/usr/bin/${_name}"
+  _package
 }
 
 package_llama.cpp-sycl-f32-git() {
@@ -248,15 +222,7 @@ package_llama.cpp-sycl-f32-git() {
 
   cd "${_name}-sycl"
   DESTDIR="${pkgdir}" cmake --install build
-
-  rm -rf "${pkgdir}/usr/bin/"*
-  cd build/bin/
-  for i in *; do
-    install -Dm755 "${i}" \
-      "${pkgdir}/usr/bin/${_name}-${i}"
-  done
-  mv "${pkgdir}/usr/bin/${_name}-main" \
-    "${pkgdir}/usr/bin/${_name}"
+  _package
 }
 
 package_llama.cpp-vulkan-git() {
@@ -267,15 +233,7 @@ package_llama.cpp-vulkan-git() {
 
   cd "${_name}-vulkan"
   DESTDIR="${pkgdir}" cmake --install build
-
-  rm -rf "${pkgdir}/usr/bin/"*
-  cd build/bin/
-  for i in *; do
-    install -Dm755 "${i}" \
-      "${pkgdir}/usr/bin/${_name}-${i}"
-  done
-  mv "${pkgdir}/usr/bin/${_name}-main" \
-    "${pkgdir}/usr/bin/${_name}"
+  _package
 }
 
 sha256sums=('SKIP'
