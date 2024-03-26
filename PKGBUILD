@@ -1,9 +1,6 @@
-# $Id$
-# Maintainer: Grey Christoforo <grey at christoforo dot net>
-
 pkgname=python-cadquery
-_build_hash=94179da64a5b37cd778986772fcf3d8e2164e773
-pkgver=2.3.1.r78
+local _build_hash=c44978d60cee2d61bdadf4cb4498286b7034b4c6
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A parametric CAD scripting framework based on PythonOCC"
 arch=(x86_64)
@@ -33,8 +30,7 @@ python-installer
 python-wheel
 )
 
-_fragment='#commit=94179da64a5b37cd778986772fcf3d8e2164e773'  # whatever I thought might work with opencascade 7.7.2
-source=(git+https://github.com/CadQuery/cadquery${_fragment})
+source=("git+https://github.com/CadQuery/cadquery#commit=${_build_hash}")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -56,15 +52,11 @@ check() {
   test_colors_assy0[chassis0_assy-expected0]
   test_colors_fused_assy[chassis0_assy-expected5]
   test_colors_assy1[chassis0_assy-expected10]
-  testExtrude
   testDXF
-  testSweep
-  test_project
+  testExtrude
   )
   printf -v _joined '%s and not ' "${_these_fail[@]}"
-  #_neg=$(echo "not ${_joined% and not }")
-  #pytest -v -k "$(echo $_neg)"
-  pytest -v -k "$(echo "not ${_joined% and not }")"
+  python -m pytest tests -k "$(echo "not ${_joined% and not }")"
 }
 
 package() {
