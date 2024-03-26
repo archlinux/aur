@@ -1,6 +1,6 @@
 pkgbase = ddns-go
 	pkgdesc = A simple, easy-to-use ddns service | 简单好用的DDNS
-	pkgver = 6.2.2
+	pkgver = 6.3.0
 	pkgrel = 1
 	url = https://github.com/jeessy2/ddns-go
 	install = ddns-go.install
@@ -19,12 +19,12 @@ pkgbase = ddns-go
 	conflicts = ddns-go
 	backup = etc/ddns-go/ddns-go.env
 	backup = etc/ddns-go/config.yml
-	source = ddns-go::git+https://github.com/jeessy2/ddns-go.git#tag=v6.2.2
+	source = ddns-go::git+https://github.com/jeessy2/ddns-go.git#tag=v6.3.0
 	source = ddns-go.env
 	source = ddns-go.service
 	source = ddns-go.sysusers
 	source = ddns-go.user.service
-	sha256sums = 82804948faa8efd969cd80938bd6523828cc14431edd4a28481122931196bffa
+	sha256sums = fc91e14222c35676744a58c5a5942984dc8db1eb600404e61ebaff8bb4455d87
 	sha256sums = adc5116f5b965e642a826dd2ac5680a112b85b89963658dae18242cffb9224dc
 	sha256sums = f1d7ee4f2ef6c13270ff7e3b9f17a35c5faba76e7601a81cc0ac75da9e27f724
 	sha256sums = 558a170cae11f423591c5487dfe5f5e72f4aa88aaf62055f79a6656b6a98235a
