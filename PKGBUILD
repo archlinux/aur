@@ -12,7 +12,7 @@ conflicts=("ttop")
 source=("ttop$pkgver::$url/releases/download/v$pkgver/ttop"
         "LICENSE2023::$url/raw/v$pkgver/LICENSE"
         "README$pkgver.md::$url/raw/v$pkgver/README.md"
-        "https://github.com/inv2004/ttop/raw/main/.github/images/screen.png")
+        "$url/raw/v$pkgver/.github/images/screen.png")
 sha256sums=('89c7ac7f59d12252a540db82c1c741c3c840035e7fd797972b5104d00386c080'
             'd02b237a4b7b295eea657a27274b6d6ed08695807006562d7252398e34f59079'
             '2a8e481fa846fcc5623f721a4aba8d9b7afee2ff2eaed8234a06107f77ac4d9d'
