@@ -1,12 +1,14 @@
 pkgbase = python-doi
 	pkgdesc = Python package to work with Document Object Identifier (doi).
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/python-doi
 	arch = any
-	license = BSD
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
-	depends = python
 	source = https://files.pythonhosted.org/packages/source/p/python-doi/python-doi-0.2.0.tar.gz
 	sha256sums = 2e01e56fb319bd219ea8586baa43a1fc794dfe45a83156ac70242c4ce961fd9a
 
