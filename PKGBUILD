@@ -7,7 +7,7 @@ _gitname='dosemu2'
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=1.7+140.r1583.20240326.5e68fbe
-pkgrel=1
+pkgrel=2
 pkgdesc='64 bit FreeDOS++ for dosemu2. Latest git checkout.'
 arch=(
   'x86_64'
@@ -18,11 +18,16 @@ license=(
   'GPL3'
 )
 depends=(
-  # 'COMMAND.COM'
-  'comcom32'
   'gcc-libs'
   'glibc'
   'libelf'
+)
+optdepends=(
+  'dosemu2: To use this software.'
+  'comcom32: For command.com interpreter.'
+  'comcom64: For command.com interpreter.'
+  'freecom: For command.com interpreter.'
+  'COMMAND.COM: For command.com interpreter.'
 )
 makedepends=(
   'bash'
