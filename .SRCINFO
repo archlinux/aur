@@ -1,17 +1,15 @@
 pkgbase = sentinelagent
 	pkgdesc = SentinelOne | Next-Generation Endpoint Protection Software.
-	pkgver = 23.3.2.12
+	pkgver = 23.4.2.14
 	pkgrel = 1
 	install = sentinelagent.install
 	arch = i686
 	arch = x86_64
-	groups = 
-	license = 
 	depends = kmod
 	depends = zlib
 	options = !strip
 	options = !emptydirs
 	source_x86_64 = file://SentinelAgent_linux_x86_64_v23_3_2_12.deb
-	sha256sums_x86_64 = af81b873ae742ef6135e9f8bfcdb9aaa8d760d54c83f210ac415fd89ba78b4bd
+	sha256sums_x86_64 = 6663c91349a0d91290284de6a96378aa8612f7cda7e9591c7817ce4b87509075
 
 pkgname = sentinelagent
