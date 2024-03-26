@@ -1,6 +1,6 @@
 # Maintainer: ZAvrikDinozavrik <zaz965@stm32f0.ru>
 pkgname=sonycardscanner
-pkgver=0.0.2
+pkgver=0.0.2.1
 pkgrel=1
 pkgdesc="Утилита для работы с камерами Sony"
 arch=('x86_64')
