@@ -10,6 +10,7 @@ pkgbase = python-hypothesmith-032
 	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-hypothesis
 	depends = python-lark-parser
