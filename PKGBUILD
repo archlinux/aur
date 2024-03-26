@@ -33,10 +33,6 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-
-  # Use mold linker instead of lld
-  sed -i 's/lld/mold/g' justfile
-
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   just vendor
