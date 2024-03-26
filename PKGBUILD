@@ -6,7 +6,7 @@
 # Contributor: Drew DeVault
 
 _pkgbase=nginx
-_commit=ee40e2b1d083
+_commit=6317e21a15e0
 pkgbase=nginx-quic-libressl
 pkgname=(nginx-quic-libressl nginx-quic-libressl-src)
 pkgver=1.25.3
@@ -14,7 +14,7 @@ pkgrel=5
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
-license=('custom')
+license=('BSD-2-Clause-Views AND OpenSSL')
 depends=('geoip' 'libxcrypt' 'pcre2' 'zlib' 'glibc')
 makedepends=('cmake' 'git' 'go' 'mercurial')
 backup=('etc/nginx/fastcgi.conf'
@@ -173,6 +173,8 @@ package_nginx-quic-libressl() {
     install -Dm644 contrib/vim/${i}/nginx.vim \
       "${pkgdir}/usr/share/vim/vimfiles/${i}/nginx.vim"
   done
+  install -Dm644 "$srcdir"/libressl-3.8.2/COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-LIBRESSL
+
 }
 
 package_nginx-quic-libressl-src() {
@@ -194,6 +196,7 @@ package_nginx-quic-libressl-src() {
   install -Dm644 docs/text/LICENSE "$pkgdir"/usr/share/licenses/$provides/LICENSE
   install -d "$pkgdir"/usr/share/licenses/$pkgname
   ln -s /usr/share/licenses/$provides/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 "$srcdir"/libressl-3.8.2/COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-LIBRESSL
 }
 
 # vim:set ts=2 sw=2 et:
