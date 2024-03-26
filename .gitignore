@@ -1,0 +1,9 @@
+# Source and package folders
+src/
+pkg/
+
+# Archive files
+*.zip
+
+# Package files
+*.zst
