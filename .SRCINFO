@@ -27,6 +27,7 @@ pkgbase = maestral
 	depends = python-survey
 	depends = python-typing_extensions
 	depends = python-watchdog
+	depends = python-xattr
 	optdepends = maestral-qt: Qt interface for the maestral daemon
 	optdepends = python-systemd: Syslog support
 	source = maestral-1.9.2.tar.gz::https://github.com/SamSchott/maestral/archive/v1.9.2.tar.gz

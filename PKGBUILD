@@ -25,7 +25,8 @@ depends=('hicolor-icon-theme'
          'python-setuptools'
          'python-survey'
          'python-typing_extensions'
-         'python-watchdog')
+         'python-watchdog'
+         'python-xattr')
 makedepends=('python-build'
              'python-installer'
              'python-wheel'
