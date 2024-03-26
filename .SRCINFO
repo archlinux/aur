@@ -6,7 +6,7 @@ pkgbase = circle
 	arch = x86_64
 	license = custom
 	depends = gcc>=10.2
-	source = https://www.circle-lang.org/linux/build_200.tgz
+	source = https://www.circle-lang.org/linux/build_mar_24_2024-attrib.tgz
 	sha256sums = SKIP
 
 pkgname = circle
