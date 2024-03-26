@@ -8,7 +8,7 @@
 ## basic info
 _pkgname="libreoffice"
 pkgname="${_pkgname}-dev-bin"
-pkgver=24.2.2.1
+pkgver=24.2.2.2
 pkgrel=1
 pkgdesc="LibreOffice development branch"
 url="https://www.libreoffice.org/"
