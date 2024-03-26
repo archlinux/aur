@@ -2,10 +2,10 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=EMT
-_pkgver=1.3
+_pkgver=1.3.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Exact Multinomial Test: Goodness-of-Fit Test for Discrete Multivariate Data"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -14,8 +14,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('71a05083cda0b119a751905a1512e83f')
-b2sums=('27d2a5a9ae939b106bf99b665459d9829cc3ca03088e3d133a47c8170e7ca58812102d9ee71b2fd406ff5eed084cc125111777e27d9e34eb8d5a92d33ebdcbe0')
+md5sums=('4c94ae89b2912cfa217798fbc92da664')
+b2sums=('ddd5bda755e58f266d83f6e7e7bf52639732938a2d0afa5eaf221699577b60083c51e84e7c82ce99d0f3b1a909f7acd7c65665d41503cec0a8195c521b0cd843')
 
 build() {
   mkdir build
