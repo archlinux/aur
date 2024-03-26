@@ -1,0 +1,14 @@
+pkgbase = win2xcur
+	pkgdesc = Convert Windows cursors to Xcursor format and visceversa
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/quantum5/win2xcur
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-wand
+	source = win2xcur-0.1.2.tar.gz::https://github.com/quantum5/win2xcur/archive/refs/tags/v0.1.2.tar.gz
+	md5sums = SKIP
+
+pkgname = win2xcur
