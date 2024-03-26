@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RcwlPipelines
-_pkgver=1.18.0
+_pkgver=1.18.1
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.18.1
 pkgrel=1
 pkgdesc='Bioinformatics pipelines based on Rcwl'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2d3217e361c5a384c686d3e50eed30a460d421268347cb0d90aff312f076a6bb')
+sha256sums=('65b033a94322587a67742cf1426e69356d330e9578cc70cf342a655f6141c9d9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
