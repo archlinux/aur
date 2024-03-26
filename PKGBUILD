@@ -44,7 +44,7 @@ source=("${pkgbase}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  make get-sources -j8
+  make get-sources
 
   if [ ! -d "${srcdir}/${pkgbase}-cublas" ]; then
     cp -rf "${srcdir}/${_pkgname}-${pkgver}" \
