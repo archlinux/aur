@@ -1,16 +1,16 @@
-# Maintainer: bemxio <bemxiov@protonmail.com>
+# Maintainer: bemxio <bemxiov at protonmail dot com>
 
 pkgname=fastvideods-encoder-git
 pkgdesc="Encoder for the FastVideoDS format"
 
 pkgver=r2.1a25c4f
-pkgrel=1
+pkgrel=2
 epoch=1 # required because of the changed version numbering scheme
 
 arch=(i686 x86_64)
 
 url="https://github.com/Gericom/FastVideoDSEncoder"
-license=("unknown")
+license=("LicenseRef-unknown")
 
 depends=(dotnet-runtime-6.0 ffmpeg5.1)
 makedepends=(git dotnet-sdk)
@@ -38,7 +38,7 @@ prepare() {
 
 build() {
 	# move to the source directory
-	cd "${srcdir}/FastVideoDSEncoder"
+	cd FastVideoDSEncoder
 
 	# build the project
 	dotnet build FastVideoDS.sln --property:Configuration=Release --output Build/
@@ -46,7 +46,7 @@ build() {
 
 package() {
 	# move to the source directory
-	cd "${srcdir}/FastVideoDSEncoder"
+	cd FastVideoDSEncoder
 
 	# make the required directories
 	mkdir -p "${pkgdir}/usr/share/fastvideods-encoder/"
