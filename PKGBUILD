@@ -4,7 +4,7 @@ pkgname=fastvideods-encoder-git
 pkgdesc="Encoder for the FastVideoDS format"
 
 pkgver=r2.1a25c4f
-pkgrel=2
+pkgrel=3
 epoch=1 # required because of the changed version numbering scheme
 
 arch=(i686 x86_64)
@@ -15,14 +15,14 @@ license=("LicenseRef-unknown")
 depends=(dotnet-runtime-6.0 ffmpeg5.1)
 makedepends=(git dotnet-sdk)
 
-provides=(FastVideoDSEncoder)
+provides=(fastvideods-encoder)
 
 source=("git+https://github.com/Gericom/FastVideoDSEncoder.git" "fix-library-path.patch")
 md5sums=("SKIP" "594a84df360613bbd562f4b77c743850")
 
 pkgver() {
   	# move to the source directory
-	cd "${srcdir}/FastVideoDSEncoder"
+	cd FastVideoDSEncoder
   	
 	# use the number of revisions since beginning of the history
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
@@ -30,7 +30,7 @@ pkgver() {
 
 prepare() {
 	# move to the source directory
-	cd "${srcdir}/FastVideoDSEncoder"
+	cd FastVideoDSEncoder
 
 	# apply the patch
 	patch --forward --strip 1 --input ../fix-library-path.patch
@@ -56,5 +56,5 @@ package() {
 	install -Dm755 Build/* "${pkgdir}/usr/share/fastvideods-encoder/"
 
 	# make a symlink to the executable
-	ln -s /usr/share/fastvideods-encoder/FastVideoDSEncoder "${pkgdir}/usr/bin/FastVideoDSEncoder"
+	ln -s /usr/share/fastvideods-encoder/FastVideoDSEncoder "${pkgdir}/usr/bin/fastvideods-encoder"
 }
