@@ -1,15 +1,15 @@
-# Maintainer: bemxio <bemxiov@protonmail.com>
+# Maintainer: bemxio <bemxiov at protonmail dot com>
 
 pkgname="anituner"
 pkgdesc="Create, edit and convert Windows animated cursors"
 
 pkgver=2.0.0
-pkgrel=6
+pkgrel=7
 
-arch=(i686 x86_64)
+arch=(any)
 
 url="https://www.gdgsoft.com/anituner"
-license=("freeware")
+license=("LicenseRef-AniTuner")
 
 depends=(wine)
 makedepends=(unzip gendesk icoutils)
@@ -17,7 +17,7 @@ makedepends=(unzip gendesk icoutils)
 provides=(anituner)
 
 source=("https://download.gdgsoft.com/anitun2p.zip" "anituner" "anituner-atd.xml" "LICENSE")
-md5sums=("f0cff36790da5e3f9b02a65aa4d64101" "be9cfcd1a8c5f57cfae60e6739e0fceb" "2c084aaadfb308a757c12ca19c012f9f" "2c89a8cdf5a8ef238b07897d28c419a1")
+md5sums=("f0cff36790da5e3f9b02a65aa4d64101" "056298b9cb09a504b6b39fbb0213c199" "2c084aaadfb308a757c12ca19c012f9f" "2c89a8cdf5a8ef238b07897d28c419a1")
 
 prepare() {
 	# extract the icon out of the executable

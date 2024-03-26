@@ -10,7 +10,7 @@ if [ ! -d "$HOME/.anituner" ]; then
     cp -r /usr/share/anituner/AniTunerPrefDefault.xml "$HOME/.anituner/AniTunerPref.xml" || exit 1
 
     # make a symlink to the executable
-    ln -s /usr/share/anituner/AniTuner.exe "$HOME/.anituner/anituner"
+    ln -s /usr/share/anituner/AniTuner.exe "$HOME/.anituner/anituner" || exit 1
 fi
 
 WINEDEBUG=-all wine "$HOME/.anituner/anituner" "$@"
