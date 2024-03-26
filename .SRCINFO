@@ -1,26 +1,24 @@
 pkgbase = python-pyinquirer
-	pkgdesc = A Python module for collection of common interactive command line user interfaces, based on Inquirer.js
-	pkgver = 1.0.3
-	pkgrel = 2
-	url = https://github.com/CITGuru/PyInquirer
+	pkgdesc = A collection of common interactive command line user interfaces, based on Inquirer.js
+	pkgver = 1.0.3.r78.g7637373
+	pkgrel = 1
+	url = https://pypi.org/project/PyInquirer
 	arch = any
 	license = MIT
+	checkdepends = python-ptyprocess
+	checkdepends = python-pytest
+	checkdepends = python-pytest-xdist
+	checkdepends = python-regex
+	checkdepends = python-testfixtures
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	provides = python-pyinquirer
-	conflicts = python-pyinquirer
-	source = https://github.com/CITGuru/PyInquirer/archive/1.0.3.tar.gz
-	sha256sums = 943d6851493a7b8625883dddcd3790361d39aa2c9e8706f62b43effb58915785
+	makedepends = python-wheel
+	depends = python
+	depends = python-prompt_toolkit
+	depends = python-pygments
+	source = PyInquirer::git+https://github.com/CITGuru/PyInquirer.git#commit=7637373429bec66788650cda8091b7a6f12929ee
+	b2sums = SKIP
 
 pkgname = python-pyinquirer
-	depends = python
-	depends = python-pygments
-	depends = python-prompt_toolkit
-	depends = python-regex
-
-pkgname = python2-pyinquirer
-	depends = python2
-	depends = python2-pygments
-	depends = python2-prompt_toolkit
-	depends = python2-regex
-

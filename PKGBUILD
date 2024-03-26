@@ -1,31 +1,104 @@
-# Maintainer: Ivan Semkin (ivan at semkin dot ru)
+# Maintainer: 
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Ivan Semkin (ivan at semkin dot ru)
 
-appname=PyInquirer
-pkgname=(python-pyinquirer python2-pyinquirer)
-pkgver=1.0.3
-pkgrel=2
-pkgdesc='A Python module for collection of common interactive command line user interfaces, based on Inquirer.js'
+_distname=PyInquirer
+pkgname=python-pyinquirer
+pkgver=1.0.3.r78.g7637373
+_commit=7637373429bec66788650cda8091b7a6f12929ee
+pkgrel=1
+pkgdesc='A collection of common interactive command line user interfaces, based on Inquirer.js'
 arch=('any')
-url='https://github.com/CITGuru/PyInquirer'
+url="https://pypi.org/project/${_distname}"
+_repourl="https://github.com/CITGuru/${_distname}"
 license=('MIT')
-depends=()
-makedepends=('python-setuptools' 'python2-setuptools')
-provides=('python-pyinquirer')
-conflicts=('python-pyinquirer')
-source=("https://github.com/CITGuru/PyInquirer/archive/$pkgver.tar.gz")
-sha256sums=('943d6851493a7b8625883dddcd3790361d39aa2c9e8706f62b43effb58915785')
+depends=(
+  'python'
+  'python-prompt_toolkit'
+  'python-pygments'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+checkdepends=(
+  'python-ptyprocess'
+  'python-pytest'
+  'python-pytest-xdist'
+  'python-regex'
+  'python-testfixtures'
+)
+source=("${_distname}::git+${_repourl}.git#commit=${_commit}")
+b2sums=('SKIP')
 
-package_python-pyinquirer() {
-  depends=('python' 'python-pygments' 'python-prompt_toolkit' 'python-regex')
+prepare() {
+  cd "${_distname}"
 
-  cd "$srcdir/$appname-$pkgver"
-  python setup.py install --optimize=1 --root="${pkgdir}/"
+  echo "Removing upper version bounds from requirements.txt..."
+  sed -i requirements.txt \
+      -e 's/,<[0-9].*//g'
+  echo "Done."
 }
 
-package_python2-pyinquirer() {
-  depends=('python2' 'python2-pygments' 'python2-prompt_toolkit' 'python2-regex')
+pkgver() {
+    cd "${_distname}"
 
-  cd "$srcdir/$appname-$pkgver"
-  python2 setup.py install --optimize=1 --root="${pkgdir}/"
+    # Generate git tag based version. Count only proper (v)#.#* [#=number] tags.
+    local _gitversion=$(git describe --long --tags --match '[v0-9][0-9.][0-9.]*' | sed -e 's|^v||' | tr '[:upper:]' '[:lower:]') 
+
+    # Format git-based version for pkgver
+    # Expected format: e.g. 1.5.0rc2.r521.g99982a1c
+    # Or in case of 'post': 1.5.0.post1.r521.g99982a1c
+    echo "${_gitversion}" | sed \
+        -e 's;^\([0-9][0-9.]*\)[-_.]\([a-zA-Z]\+\);\1\2;' \
+        -e 's;\([0-9]\+-g\);r\1;' \
+        -e 's;-;.;g' \
+        -e 's;\(post.*\);\.\1;'
 }
-# vim:set ts=2 sw=2 et:
+
+build() {
+  cd "${_distname}"
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "${_distname}"
+
+  (
+    export PYTHONPATH="$PWD/build/lib:$PYTHONPATH"
+
+    # Deselected tests are buggy, i.e. the tests themselves are wrong
+    python -m pytest -vv \
+      --cache-clear \
+      --deselect tests/test_example_checkbox.py::test_checkbox \
+      --deselect tests/test_example_expand.py::test_without_expand \
+      --deselect tests/test_example_expand.py::test_with_expand \
+      --deselect tests/test_example_hierachical.py::test_hierarchical \
+      --deselect tests/test_example_input.py::test_input \
+      --deselect tests/test_example_list.py::test_list \
+      --deselect tests/test_example_password.py::test_password \
+      --deselect tests/test_example_pizza.py::test_pizza \
+      --deselect tests/test_example_rawlist.py::test_rawlist \
+      --deselect tests/test_example_when.py::test_when_bacon \
+      --deselect tests/test_example_when.py::test_when_pizza \
+      --deselect tests/test_example_when.py::test_when_no_thanks \
+      --deselect tests/test_prompts_list.py::test_select_first_choice \
+      --deselect tests/test_prompts_list.py::test_select_second_choice \
+      --deselect tests/test_prompts_list.py::test_select_third_choice \
+      --deselect tests/test_prompts_list.py::test_cycle_to_first_choice \
+      --deselect tests/test_prompts_list.py::test_cycle_backwards
+  )
+}
+
+package() {
+  cd "${_distname}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+
+  echo "Removing unneeded example files..."
+  local python_version="$(python --version | cut -d' ' -f2 | cut -d'.' -f1,2)"
+  rm -rfv "$pkgdir/usr/lib/python${python_version}/site-packages/examples"
+}
