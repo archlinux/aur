@@ -4,10 +4,10 @@
 # Contributor: kartikmohta
 # Contributor: calvertdw
 pkgname=ros2-arch-deps
-pkgver=0.17
+pkgver=0.19
 pkgrel=1
 pkgdesc="[Meta-PKG] Dependencies for building ROS2 on Arch"
-url="https://index.ros.org/doc/ros2/"
+url="https://docs.ros.org/"
 arch=('any')
 license=('none')
 
@@ -15,6 +15,7 @@ depends=(
   'asio'
   'bullet'
   'cmake'
+  'curl'
   'eigen'
   'git'
   'glew'
@@ -24,23 +25,32 @@ depends=(
   'libxrandr'
   'log4cxx'
   'opencv'
+  'openssl'
   'poco'
   'procps-ng' # provides /usr/bin/free command
+  'pyside2'
   'python'
+  'python-argcomplete'
+  'python-build'
   'python-cryptography'
   'python-empy'
+  'python-installer'
   'python-lark-parser'
   'python-netifaces'
   'python-nose'
   'python-notify2'
   'python-numpy'
   'python-pyqt5'
+  'python-pyqt5-sip'
   'python-pytest-repeat'
+  'python-pytest-rerunfailures'
+  'python-pytest-runner'
+  'python-pyyaml'
   'python-setuptools'
-  'python-yaml'
+  'python-wheel'
   'qt5-base'
   'qt5-svg'
-  'tinyxml'
+  'sip'
   'tinyxml2'
   'vtk'
   'wget'
@@ -68,16 +78,14 @@ depends=(
   'python-colcon-ros'
   'python-colcon-test-result'
   'python-colcon-zsh'
-  'python-pyqt5-sip4'
   'python-rosdep'
   'python-rosdistro'
   'python-rospkg'
-  'python-sip4'
   'python-vcstool'
-  'sip4'
 )
 
 optdepends=(
+  'ogre-legacy: backwards-compatible Ogre engine'
   'python-matplotlib: for plotting in rqt'
   'python-pydot: running the node graph in rqt'
   'python-pyqtgraph: for plotting in rqt'
