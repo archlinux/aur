@@ -1,12 +1,13 @@
-# Maintainer: Klaus Alexander Seistrup <klaus@seistrup.dk>
+# Maintainer: Klaus Alexander Seistrup <klaus at seistrup dot 🇩🇰>
+# Contributor: mcode10 <manas at designX6 dot com>
 # -*- sh -*-
 
 pkgname='soupault-bin'
 _pkgname="${pkgname/-bin}"
 pkgver=4.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Static website generator based on HTML element tree rewriting (pre-compiled)'
-arch=('x86_64')
+arch=('aarch64' 'x86_64')
 url='https://github.com/PataphysicalSociety/soupault'
 license=('MIT')  # SPDX-License-Identifier: MIT
 makedepends=('minisign')
@@ -22,6 +23,11 @@ _validminisignkey='RWRfW+gkhk/+iA7dOUtTio6G6KeJCiAEp4Zfozw7eqv2shN90+5z20Cy'
 prepare() {
   cd "$srcdir" || exit 1
 
+  cat <<EOF
+Please notice that we are relying solely on the following
+minisign signature for tampering protection:
+EOF
+
   minisign -Vm "$_tarball" -P "$_validminisignkey" || exit 1
 }
 
@@ -36,9 +42,7 @@ package() {
   done
 }
 
-sha256sums=(
-  '8d8391b50202f553faed21b98df0fdb576f88a7a096e714889815b85708925bb'
-  'a50c111a4ec37d5901b58e62dd04afcf0e9b99d89640b6d58bf2cbbe7132da31'
-)
+# Let's rely on minisign only
+sha256sums=('SKIP' 'SKIP')  # Skip to my Lou!
 
 # eof
