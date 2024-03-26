@@ -1,0 +1,20 @@
+pkgbase = python-psycopg-c
+	pkgdesc = psycopg C extension
+	pkgver = 3.1.18
+	pkgrel = 1
+	url = https://www.psycopg.org/psycopg3/
+	arch = x86_64
+	license = LGPL-3.0-only
+	makedepends = cython
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = postgresql-libs
+	depends = python
+	depends = python-psycopg
+	source = psycopg.tar.gz::https://github.com/psycopg/psycopg/archive/refs/tags/3.1.18.tar.gz
+	b2sums = 35e5e4cb4e5355189b387fd17e1b51d4baf08f130cc5418f9f3cb58d6baf097953b4f6a7df31579a1d87e5269e110c4476d865fe12416e2fe62abbb52e0c141c
+
+pkgname = python-psycopg-c
