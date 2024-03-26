@@ -1,0 +1,107 @@
+diff --git a/setup.cfg b/setup.cfg
+index 752171c..0c0cc53 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -1,6 +1,41 @@
++[metadata]
++name = flake8_polyfill
++version = attr: flake8_polyfill.__version__
++description = Polyfill package for Flake8 plugins
++long_description = file: README.rst
++long_description_content_type = text/x-rst
++url = https://github.com/pycqa/flake8-polyfill
++author = Ian Stapleton Cordasco
++author_email = graffatcolmingov@gmail.com
++license = MIT
++license_file = LICENSE
++classifiers =
++    Environment :: Console
++    Framework :: Flake8
++    Intended Audience :: Developers
++    License :: OSI Approved :: MIT License
++    Programming Language :: Python
++    Programming Language :: Python :: 3
++    Programming Language :: Python :: 3 :: Only
++    Programming Language :: Python :: 3.6
++    Programming Language :: Python :: 3.7
++    Programming Language :: Python :: 3.8
++    Programming Language :: Python :: 3.9
++    Programming Language :: Python :: 3.10
++    Programming Language :: Python :: Implementation :: CPython
++    Topic :: Software Development :: Libraries :: Python Modules
++    Topic :: Software Development :: Quality Assurance
++
++[options]
++packages = flake8_polyfill
++install_requires =
++    flake8
++python_requires = >=3.6
++package_dir = =src
++
+ [bdist_wheel]
+ universal = 1
+ 
+-[pytest]
++[tool:pytest]
+ norecursedirs = .git .* *.egg* old docs dist build
+ addopts = -rw
+diff --git a/setup.py b/setup.py
+index 7dca16a..6446078 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1,53 +1,4 @@
+-# -*- coding: utf-8 -*-
+-"""Packaging logic for Flake8's polyfill."""
+-import io
+-import os
+-import sys
+-
++"""Installation and packaging."""
+ import setuptools
+ 
+-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
+-
+-import flake8_polyfill  # noqa
+-
+-requires = ['flake8']
+-
+-
+-def get_long_description():
+-    """Generate a long description from the README file."""
+-    descr = []
+-    for fname in ('README.rst',):
+-        with io.open(fname, encoding='utf-8') as f:
+-            descr.append(f.read())
+-    return '\n\n'.join(descr)
+-
+-
+-setuptools.setup(
+-    name='flake8-polyfill',
+-    license='MIT',
+-    version=flake8_polyfill.__version__,
+-    description='Polyfill package for Flake8 plugins',
+-    long_description=get_long_description(),
+-    author='Ian Cordasco',
+-    author_email='graffatcolmingov@gmail.com',
+-    url='https://gitlab.com/pycqa/flake8-polyfill',
+-    package_dir={'': 'src'},
+-    packages=[
+-        'flake8_polyfill',
+-    ],
+-    install_requires=requires,
+-    classifiers=[
+-        "Environment :: Console",
+-        "Framework :: Flake8",
+-        "Intended Audience :: Developers",
+-        "License :: OSI Approved :: MIT License",
+-        "Programming Language :: Python",
+-        "Programming Language :: Python :: 2",
+-        "Programming Language :: Python :: 2.7",
+-        "Programming Language :: Python :: 3",
+-        "Programming Language :: Python :: 3.4",
+-        "Programming Language :: Python :: 3.5",
+-        "Topic :: Software Development :: Libraries :: Python Modules",
+-        "Topic :: Software Development :: Quality Assurance",
+-    ],
+-)
++setuptools.setup()
