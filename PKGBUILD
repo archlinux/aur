@@ -1,8 +1,8 @@
 # Maintainer: Oliver Nordbjerg <hi@notbjerg.me>
 
 pkgname=reth
-pkgver=v0.2.0_beta.3
-_tag=v0.2.0-beta.3
+pkgver=v0.2.0_beta.4
+_tag=v0.2.0-beta.4
 pkgrel=1
 pkgdesc="A fast implementation of the Ethereum protocol in Rust"
 arch=('x86_64')
@@ -15,25 +15,25 @@ source=("git+https://github.com/paradigmxyz/reth.git#tag=${_tag}")
 sha512sums=('SKIP')
 
 prepare() {
-    cd ${pkgname}
+	cd ${pkgname}
 
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd ${pkgname}
+	cd ${pkgname}
 
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo build --bin reth --frozen --profile maxperf --features jemalloc
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --bin reth --frozen --profile maxperf --features jemalloc
 }
 
 package() {
-  cd ${pkgname}
+	cd ${pkgname}
 
-  install -Dm755 "target/maxperf/reth" "$pkgdir/usr/bin/reth"
+	install -Dm755 "target/maxperf/reth" "$pkgdir/usr/bin/reth"
 
-  install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE-MIT"
-  install -Dm644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE-APACHE"
+	install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE-MIT"
+	install -Dm644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE-APACHE"
 }
