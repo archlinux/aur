@@ -17,11 +17,11 @@ depends=(
   'ffmpeg'
   'python-librosa'
   'python-matplotlib'
-  'python-numba'
+  'python-numba' # Might actually not be needed.
   'python-numpy'
   'python-pytest' # Yes!, this is also a real dependency (usr/lib/python*/site-packages/tests/audio_offset_finder_test.py).
   'python-scipy>=0.12.0'
-  'python-soxr'
+  'python-soxr'  # Might actually not be needed.
 )
 makedepends=(
   'git'
