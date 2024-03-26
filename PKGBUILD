@@ -3,12 +3,12 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=gnome-shell-extension-hidetopbar-git
-pkgver=114.r2.g07653b2
+pkgver=115.r3.ga7dd3d3
 pkgrel=1
 pkgdesc="Gnome extension to hide the top bar except in overview mode"
 arch=(any)
-url='https://gitlab.gnome.org/ademar111190/hidetopbar'
-branch='gnome-45'
+url='https://gitlab.gnome.org/romgrk1/hidetopbar'
+branch='romgrk1-main-patch-81940'
 license=(GPLv2)
 makedepends=('git')
 conflicts=('gnome-shell-extension-hidetopbar')

@@ -2,7 +2,7 @@ pkgbase = gnome-shell-extension-hidetopbar-git
 	pkgdesc = Gnome extension to hide the top bar except in overview mode
 	pkgver = 107.r2.g580726b
 	pkgrel = 1
-	url = https://gitlab.gnome.org/ademar111190/hidetopbar
+	url = https://gitlab.gnome.org/romgrk1/hidetopbar
 	install = gschemas.install
 	arch = any
 	license = GPLv2
@@ -10,7 +10,7 @@ pkgbase = gnome-shell-extension-hidetopbar-git
 	depends = gnome-shell
 	provides = gnome-shell-extension-hidetopbar
 	conflicts = gnome-shell-extension-hidetopbar
-	source = git+https://gitlab.gnome.org/ademar111190/hidetopbar
+	source = git+https://gitlab.gnome.org/romgrk1/hidetopbar
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-hidetopbar-git
