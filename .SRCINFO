@@ -1,6 +1,6 @@
 pkgbase = xpipe-ptb
 	pkgdesc = XPipe (Public Test Build) releases
-	pkgver = 8.5
+	pkgver = 8.6
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/xpipe-io/xpipe-ptb
@@ -20,9 +20,9 @@ pkgbase = xpipe-ptb
 	depends = pango
 	source = xpipe-ptb.desktop
 	sha512sums = SKIP
-	source_x86_64 = xpipe-ptb-8.5-x86_64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/8.5/xpipe-portable-linux-x86_64.tar.gz
+	source_x86_64 = xpipe-ptb-8.6-x86_64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/8.6/xpipe-portable-linux-x86_64.tar.gz
 	sha512sums_x86_64 = SKIP
-	source_aarch64 = xpipe-ptb-8.5-arm64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/8.5/xpipe-portable-linux-arm64.tar.gz
+	source_aarch64 = xpipe-ptb-8.6-arm64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/8.6/xpipe-portable-linux-arm64.tar.gz
 	sha512sums_aarch64 = SKIP
 
 pkgname = xpipe-ptb
