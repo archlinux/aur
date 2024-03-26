@@ -4,9 +4,9 @@ pkgname="jpsxdec-bin"
 pkgdesc="A modern, cross-platform PlayStation 1 audio/video converter"
 
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 
-arch=(i686 x86_64)
+arch=(any)
 
 url="http://jpsxdec.blogspot.com"
 license=("LicenseRef-jPSXdec")
