@@ -2,12 +2,12 @@
 
 pkgname=ts-analyzer-git
 pkgver=0.1.r12.g5d7f034
-pkgrel=1
+pkgrel=2
 pkgdesc='MPEG TS Stream analyzer, based on Qt5 and FFmpeg'
 arch=('x86_64')
 url='https://github.com/xuguangxiao/ts_analyzer'
 license=('LGPL3')
-depends=('qt5-base' 'qtav' 'ffmpeg')
+depends=('qt5-base' 'qtav' 'ffmpeg4.4')
 makedepends=('cmake' 'git')
 # note: use packager fork with build patches
 source=("git+https://github.com/aswild/ts_analyzer")
@@ -21,6 +21,7 @@ pkgver() {
 
 build() {
   mkdir -p build
+  export PKG_CONFIG_PATH=/usr/lib/ffmpeg4.4/pkgconfig
   cmake -S "$srcdir/ts_analyzer" -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
