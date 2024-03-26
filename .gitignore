@@ -1,0 +1,6 @@
+*.patch
+*.pkg.*
+
+snapper-gui-git/
+pkg/
+src/
