@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=unigd
-_pkgver=0.1.0
+_pkgver=0.1.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -32,17 +32,9 @@ optdepends=(
   r-testthat
   r-xml2
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
-        "$_pkgname-tiff.patch::https://github.com/nx10/unigd/pull/17.patch")
-md5sums=('1674fafbd0e2d6fec077499a6859b1a1'
-         '6edc5c3253cb665014e2087f4e0f17b1')
-b2sums=('28e3760d4740fbd14221dd8cceaec2943a3673db3eac8720bc08f5d7f223f6bbf733c34a0ab7cf3664dc12e069376a9e2177465643928f6578cf1c8f34374d90'
-        '7dc5125999ece6a23c8567006d873d2c4b705b97cae324bc6508cf4700b9378ae0642d1b94670b3ca46074be35192ae2991c05acd6ed97658626dbfdde3d0736')
-
-prepare() {
-  # fix libtiff configuration
-  patch -Np1 -d "$_pkgname" < "$_pkgname-tiff.patch"
-}
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('37bfbf9974b65c696f687f12a21dbc6e')
+b2sums=('c1891bc2fd44401acfc76d7a0efe6f46acde5223e443c06aae2a0cea5436bbb2d54844c8cb23747080454459d183ab4c15455e3aabaa3259634c5810daba4b82')
 
 build() {
   mkdir build
