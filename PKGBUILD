@@ -1,7 +1,6 @@
 # Maintainer: brokenpip3 <brokenpip3[at]gmail[dot]com>
+# Maintainer: Thomas Labarussias <issif+aur@gadz.org>
 # https://github.com/brokenpip3/my-pkgbuilds
-# Contributors:
-# - Thomas Labarussias <issif+aur@gadz.org>
 
 pkgname=falcoctl
 pkgver=0.7.3
