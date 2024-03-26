@@ -1,0 +1,10 @@
+flutter-*.pkg.tar.zst
+flutter-*.pkg.tar
+flutter-*.tar.xz
+flutter-*.log
+PKGBUILD-namcap.log
+pkg/
+src/
+*.zip
+*.tar.gz
+*.idea
