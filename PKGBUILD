@@ -2,7 +2,7 @@
 
 pkgname=python-asyauth
 _pkgname=asyauth
-pkgver=0.0.16
+pkgver=0.0.20
 pkgrel=1
 pkgdesc="Unified authentication library, written in python"
 url="https://github.com/skelsec/asyauth"
@@ -16,7 +16,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel'
 'python-setuptools>=61.0.0')
 
 source=("https://github.com/skelsec/asyauth/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('ccbf5ce81b5c8e948ee91167b404c48d2916f25ed25c295d35e772030e09474f')
+sha256sums=('77e288569589f1cf07cf912b9abf0c20e4a745fe4ae9f3f39bfedabbfff0d644')
 
 build() {
     cd "${_pkgname}-${pkgver}"
