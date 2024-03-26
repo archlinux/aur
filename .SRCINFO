@@ -1,0 +1,26 @@
+pkgbase = sddm-theme-catppuccin
+	pkgdesc = Soothing pastel theme for SDDM
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/catppuccin/sddm
+	arch = any
+	license = MIT
+	depends = sddm
+	depends = qt6-svg
+	depends = qt6-declarative
+	backup = usr/share/sddm/themes/catppuccin-latte/theme.conf
+	backup = usr/share/sddm/themes/catppuccin-frappe/theme.conf
+	backup = usr/share/sddm/themes/catppuccin-macchiato/theme.conf
+	backup = usr/share/sddm/themes/catppuccin-mocha/theme.conf
+	source = https://raw.githubusercontent.com/catppuccin/sddm/main/LICENSE
+	source = https://github.com/catppuccin/sddm/releases/download/v1.0.0/catppuccin-latte.zip
+	source = https://github.com/catppuccin/sddm/releases/download/v1.0.0/catppuccin-frappe.zip
+	source = https://github.com/catppuccin/sddm/releases/download/v1.0.0/catppuccin-macchiato.zip
+	source = https://github.com/catppuccin/sddm/releases/download/v1.0.0/catppuccin-mocha.zip
+	sha256sums = 814096d2c34cc216c624738a49356f32b7237733b4f7edb0685f4e50ef5074ba
+	sha256sums = 19cc14098c9cc709334b6f65598520834f373bd24702301411c6ac1a6ecc4c32
+	sha256sums = 6b7eb5e549e9a2bb28f7c6f8f42997bd55aaac172158aa2dcd780c2bfa262774
+	sha256sums = 4a43034dfe13195632fea8243d3f732c2a5806b7857ae131ba2ba0da7a7204fa
+	sha256sums = 1fb17a79685d97ea616e81c0b9f4fd01c70bdd08f4f5c11d33db7eb0b1d32999
+
+pkgname = sddm-theme-catppuccin
