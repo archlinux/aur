@@ -1,15 +1,15 @@
 pkgbase = lfanew-git
 	pkgdesc = manipulate fat binary programs wrapped inside MS-DOS MZ files
-	pkgver = 0.0.20230825.r13.g125ce1d
+	pkgver = 0.0.20230825.r12.gc1980df
 	pkgrel = 1
-	url = https://github.com/stsp/lfanew
+	url = https://codeberg.org/tkchia/lfanew
 	arch = x86_64
 	license = MPL-2.0
 	makedepends = git
 	depends = glibc
 	provides = lfanew=0.0.20230825
 	conflicts = lfanew
-	source = git+https://github.com/stsp/lfanew.git
+	source = git+https://codeberg.org/tkchia/lfanew.git
 	md5sums = SKIP
 	sha256sums = SKIP
 

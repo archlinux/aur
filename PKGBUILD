@@ -2,11 +2,12 @@
 
 set -u
 pkgname='lfanew-git'
-pkgver=0.0.20230825.r13.g125ce1d
+pkgver=0.0.20230825.r12.gc1980df
 pkgrel=1
 pkgdesc='manipulate fat binary programs wrapped inside MS-DOS MZ files'
 arch=('x86_64')
-url='https://github.com/stsp/lfanew'
+#url='https://github.com/stsp/lfanew'
+url='https://codeberg.org/tkchia/lfanew'
 license=('MPL-2.0')
 depends=('glibc')
 makedepends=('git')
