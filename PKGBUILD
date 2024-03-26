@@ -2,7 +2,7 @@
 
 _pkgname="nchat"
 pkgname="${_pkgname}-git"
-pkgver=4.13.r35.g317652b6
+pkgver=4.41.r6.gf0e91a37
 pkgrel=1
 pkgdesc="console-based chat client with support for Telegram"
 url="https://github.com/d99kris/nchat"
@@ -35,11 +35,6 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$_pkgsrc"
   git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$_pkgsrc"
-  sed -i 's|ncursesw/ncurses.h|ncurses.h|' src/ui*
 }
 
 build() {
