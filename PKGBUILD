@@ -2,7 +2,7 @@
 
 _pkgname=gBar
 pkgname=gbar-git
-pkgver=r237.535d02c
+pkgver=r238.b35ce3f
 pkgrel=1
 # Architectures which are atleast confirmed to somewhat work.
 arch=('x86_64' 'aarch64')
@@ -28,7 +28,7 @@ optdepends=('bluez-utils: Bluetooth support'
             'hyprland: Workspace widgets'
             'nvidia-utils: Nvidia GPU support'
             'pacman-contrib: Arch update checking')
-makedepends=('git' 'meson' 'ninja')
+makedepends=('git' 'meson' 'ninja' 'python-packaging')
 sha256sums=('SKIP')
 
 pkgver() {
