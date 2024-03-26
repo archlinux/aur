@@ -23,13 +23,9 @@ makedepends=(git
     $_qt-charts
     $_qt-quickcontrols2
     $_qt-svg
-    $_qt-tools
-#     libxkbcommon-x11
-#     libxcb
-#     zstd
-    )
+    $_qt-tools)
 provides=(${_pkgname} ${pkgname} ${pkgname}-git)
-conflicts=(${_pkgname}  ${pkgname} ${pkgname}-git)
+conflicts=(${_pkgname} ${pkgname} ${pkgname}-git)
 replaces=()
 backup=()
 options=()
