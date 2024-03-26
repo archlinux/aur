@@ -2,7 +2,7 @@
 
 pkgname="yd-go-git"
 _pkgname=${pkgname%-git}
-pkgrel=1
+pkgrel=2
 pkgver="master.5af17d8.r0.g5af17d8"
 pkgdesc="Panel indicator for Yandex-disk CLI daemon (linux)"
 arch=('x86_64')
@@ -25,10 +25,12 @@ prepare() {
   echo "Creating desktop file..."
   gendesk -f -n --pkgname ${_pkgname} \
     --pkgdesc "${pkgdesc}" \
-    --categories="X-GNOME-NetworkSettings;Network;" \
+    --categories="Network; FileTools; Monitor" \
     --icon "${pkgdir}/usr/share/pixmaps/${_pkgname}.png" \
     --exec "${pkgdir}/usr/bin/${_pkgname}"
-
+	# Should i use "applet" type in categories?
+	# If I have to, then don't forget about the OnlyShowIn=
+	# Categories spec. https://specifications.freedesktop.org/menu-spec/menu-spec-1.1.html#category-registry
 }
 
 build() {
@@ -60,8 +62,8 @@ build() {
 
 package() {
     echo "Install yd-go..."
-	install -Dm755 "${srcdir}/${_pkgname}/build/${_pkgname}" "${pkgdir}/usr/local/bin/${_pkgname}"
-    install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+	install -Dm755 "${srcdir}/${_pkgname}/build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 	install -Dm644 "${srcdir}/${_pkgname}/icons/img/yd128.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 	#TODO: add autostart in $XDG_CONFIG_DIRS/autostart
 }
