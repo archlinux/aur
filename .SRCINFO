@@ -1,16 +1,17 @@
 pkgbase = python-aiosql
 	pkgdesc = Simple SQL in Python
-	pkgver = 3.2.0
+	pkgver = 10.1
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/aiosql
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	conflicts = python-aiosql
 	conflicts = python-aiosql-git
-	source = https://files.pythonhosted.org/packages/source/a/aiosql/aiosql-3.2.0.tar.gz
-	sha256sums = f6e4fded66753dd82b020a9ea936ce8acb63e73640b4ac9026c6ad6874940a91
+	source = https://files.pythonhosted.org/packages/source/a/aiosql/aiosql-10.1.tar.gz
+	sha256sums = fe6d321aca2c723b3f26cdd6e9d1f1c0845b7e073a84f2333051ad2ec80cb748
 
 pkgname = python-aiosql
-
