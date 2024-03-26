@@ -12,10 +12,17 @@ url="https://github.com/EndlessSkyCommunity/ESLauncher2"
 license=('GPL-3.0')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('8dfe23f7edc65f03c55e407772caa96c97ef0611b6af4bea191302ee50ab5b41822c461a3ab0a362f5eee53d68fd5f3564639659a5ba81a9e1b1eca33b3f4a4d')
-
+makedepends=(cargo)
+prepare() {
+	export RUSTUP_TOOLCHAIN=stable
+	cd "${pkgcompletename^}-${pkgver}"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 build() {
-	cd ${pkgcompletename^}-${pkgver}
-	cargo build --release
+	export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+	cd "${pkgcompletename^}-${pkgver}"
+    cargo build --frozen --release --all-features
 }
 
 package() {
