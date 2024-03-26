@@ -1,10 +1,10 @@
 pkgbase = mingw-w64-winpthreads-git
 	pkgdesc = MinGW-w64 winpthreads library (git version)
-	pkgver = 11.0.0.r643.g57f796c
+	pkgver = 11.0.0.r662.g14315e6
 	pkgrel = 1
 	url = http://mingw-w64.sourceforge.net
 	arch = any
-	license = custom
+	license = MIT
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-binutils
 	makedepends = mingw-w64-crt
@@ -13,7 +13,6 @@ pkgbase = mingw-w64-winpthreads-git
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	options = !emptydirs
 	source = git+https://git.code.sf.net/p/mingw-w64/mingw-w64
 	md5sums = SKIP
 
