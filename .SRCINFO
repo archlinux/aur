@@ -1,0 +1,20 @@
+pkgbase = djstub-git
+	pkgdesc = Stub for dj64
+	pkgver = 0.0.r84.a9b4c98
+	pkgrel = 1
+	url = https://github.com/stsp/djstub
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = smallerc
+	makedepends = lfanew
+	makedepends = git
+	makedepends = nasm
+	depends = glibc
+	depends = bash
+	provides = djstub=0.0
+	conflicts = djstub
+	source = git+https://github.com/stsp/djstub.git
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = djstub-git
