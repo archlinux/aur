@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Knossu
+Comment=A Doom-like non-euclidean horror game
+Type=Application
+Exec=/opt/knossu/knossu
+Terminal=false
+Hidden=false
+Categories=Game
+Icon=knossu
+Keywords=Game;Retro;Doom;non-euclidean;euclidean;
