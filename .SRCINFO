@@ -1,24 +1,24 @@
 pkgbase = pixelviewer-bin
 	pkgdesc = A cross-platform image viewer which supports reading raw Luminance/YUV/RGB/ARGB/Bayer pixels data from file and rendering it.
-	pkgver = 3.0.5.214
-	pkgrel = 2
+	pkgver = 3.1.0.326
+	pkgrel = 1
 	url = https://carina-studio.github.io/PixelViewer/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
 	depends = fontconfig
-	provides = pixelviewer=3.0.5.214
+	provides = pixelviewer=3.1.0.326
 	conflicts = pixelviewer
-	noextract = pixelviewer-3.0.5.214-x86_64.zip
+	noextract = pixelviewer-3.1.0.326-x86_64.zip
 	options = !strip
-	source = LICENSE-3.0.5.214.md::https://raw.githubusercontent.com/carina-studio/PixelViewer/3.0.5.214/LICENSE.md
+	source = LICENSE-3.1.0.326.md::https://raw.githubusercontent.com/carina-studio/PixelViewer/3.1.0.326/LICENSE.md
 	source = pixelviewer.sh
 	sha256sums = 4b023d792eb6b929311286a207c6493e18875bd9d320db8f7a996dd5d5716fea
 	sha256sums = 259d55437eac40590c6174afa8a3e93ba47e4e4ecb9daad55e07bd5149c56588
-	source_aarch64 = pixelviewer-3.0.5.214-aarch64.zip::https://github.com/carina-studio/PixelViewer/releases/download/3.0.5.214/PixelViewer-3.0.5.214-linux-arm64.zip
-	sha256sums_aarch64 = 300682e7d37195868f2a2f8d5cc6a1f5fd44799103a68d5d8430c6868f65f806
-	source_x86_64 = pixelviewer-3.0.5.214-x86_64.zip::https://github.com/carina-studio/PixelViewer/releases/download/3.0.5.214/PixelViewer-3.0.5.214-linux-x64.zip
-	sha256sums_x86_64 = d44ce2a2af25b5cbb3686fe4f852eecf4527638629b711ae35c8e52c67aa88de
+	source_aarch64 = pixelviewer-3.1.0.326-aarch64.zip::https://github.com/carina-studio/PixelViewer/releases/download/3.1.0.326/PixelViewer-3.1.0.326-linux-arm64.zip
+	sha256sums_aarch64 = e8e2b31306901962a98dac0dbe6c839da81ca378059353b37e19747616d68863
+	source_x86_64 = pixelviewer-3.1.0.326-x86_64.zip::https://github.com/carina-studio/PixelViewer/releases/download/3.1.0.326/PixelViewer-3.1.0.326-linux-x64.zip
+	sha256sums_x86_64 = 0dedcbea5f37a7e39a4de43a737d150563a987a255632a08fd403ada7372433c
 
 pkgname = pixelviewer-bin
