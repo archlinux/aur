@@ -17,7 +17,7 @@ pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/llama.cpp"
 license=("MIT")
-depends=('openmpi')
+depends=()
 makedepends=(
   'ccache'
   'clblast'
@@ -63,7 +63,7 @@ build() {
     -S .
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_BUILD_TYPE=Release
-    -DLLAMA_MPI=ON
+    -DLLAMA_MPI=OFF
   )
 
   local _cmake_clblas_args=(
