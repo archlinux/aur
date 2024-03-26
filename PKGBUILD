@@ -2,17 +2,17 @@
 pkgname=plasma6-applets-resources-monitor-git
 _gitpkgname=plasma-applet-resources-monitor
 pkgver=2.11.1.r18.ga26ad58
-pkgrel=1
-pkgdesc="A Plasma 6 applet for monitoring CPU, RAM and network traffic"
+pkgrel=2
+pkgdesc='A Plasma 6 applet for monitoring CPU, RAM and network traffic'
 arch=(any)
 url=https://github.com/orblazer/plasma-applet-resources-monitor
 license=(GPL-3.0-only)
 depends=(
-    kirigami
-    plasma-workspace
-    python-gobject
-    qt6-5compat
-    qt6-declarative
+    kitemmodels
+    kquickcharts
+    libksysguard
+    libplasma
+    plasma5support
 )
 makedepends=(git)
 conflicts=(
@@ -27,6 +27,7 @@ pkgver() {
     git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+# TODO: change to cmake when upstream porting to Plasma 6
 package() {
     cd $_gitpkgname
     mkdir -p "$pkgdir/usr/share/plasma/plasmoids/org.kde.resourcesMonitor-fork/"

@@ -1,16 +1,16 @@
 pkgbase = plasma6-applets-resources-monitor-git
 	pkgdesc = A Plasma 6 applet for monitoring CPU, RAM and network traffic
 	pkgver = 2.11.1.r18.ga26ad58
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/orblazer/plasma-applet-resources-monitor
 	arch = any
 	license = GPL-3.0-only
 	makedepends = git
-	depends = kirigami
-	depends = plasma-workspace
-	depends = python-gobject
-	depends = qt6-5compat
-	depends = qt6-declarative
+	depends = kitemmodels
+	depends = kquickcharts
+	depends = libksysguard
+	depends = libplasma
+	depends = plasma5support
 	conflicts = plasma5-applets-resources-monitor-git
 	conflicts = plasma6-applets-resources-monitor
 	source = plasma-applet-resources-monitor::git+https://github.com/orblazer/plasma-applet-resources-monitor#branch=release-3.0
