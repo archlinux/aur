@@ -7,10 +7,6 @@ pkgbase = delance-langserver
 	license = 0BSD
 	makedepends = npm
 	depends = nodejs
-	depends = bun
-	depends = python
-	depends = python-numpy
-	depends = python-pytest
 	source = https://registry.npmjs.org/@delance/runtime/-/runtime-2024.3.101.tgz
 	sha256sums = bb90ce57f8870cb0f3c77a5b63b22b11c614f1509e25990f3aab84ae11d2a7ae
 
