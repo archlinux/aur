@@ -1,7 +1,7 @@
 # Maintainer: Daniel Chesters <archlinux@coin-coin.xyz>
 
 pkgname=python-ollama-git
-pkgver=v0.1.7.r0.gfcdf577
+pkgver=0.1.7.r0.gfcdf577
 pkgrel=1
 pkgdesc="Ollama Python library"
 arch=('any')
@@ -25,7 +25,7 @@ source=("$pkgname::git+https://github.com/ollama/ollama-python.git")
 
 pkgver() {
 	cd "$pkgname"
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
