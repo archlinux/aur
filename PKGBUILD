@@ -1,15 +1,15 @@
-# Maintainer: bemxio <bemxiov@protonmail.com>
+# Maintainer: bemxio <bemxiov at protonmail dot com>
 
 pkgname="resource-hacker"
 pkgdesc="A resource editor for 32/64-bit Windows applications"
 
 pkgver=5.2.7
-pkgrel=1
+pkgrel=2
 
-arch=(i686 x86_64)
+arch=(any)
 
 url="http://www.angusj.com/resourcehacker"
-license=("freeware")
+license=("LicenseRef-ResourceHacker")
 
 depends=(wine)
 makedepends=(unzip gendesk icoutils)
@@ -31,13 +31,14 @@ prepare() {
 		--pkgname "Resource Hacker" \
 		--pkgdesc "${pkgdesc}" \
 		--exec resource-hacker \
-		--icon ResourceHacker.png \
+		--icon resource-hacker.png \
 		--categories "Development;Utility"
 }
 
 package() {
 	# make a directory for the Resource Hacker help & samples
-	mkdir -p "${pkgdir}/usr/share/resource-hacker/help" "${pkgdir}/usr/share/resource-hacker/samples"
+	mkdir -p "${pkgdir}/usr/share/resource-hacker/help"
+	mkdir -p "${pkgdir}/usr/share/resource-hacker/samples"
 
 	# copy all of Resource Hacker's files
 	install -Dm755 ResourceHacker.exe "${pkgdir}/usr/share/resource-hacker/ResourceHacker.exe"
@@ -48,12 +49,12 @@ package() {
 	install -Dm644 help/* "${pkgdir}/usr/share/resource-hacker/help"
 	install -Dm644 samples/* "${pkgdir}/usr/share/resource-hacker/samples"
 
-	## copy the executable script
+	# copy the executable script
 	install -Dm755 resource-hacker "${pkgdir}/usr/bin/resource-hacker"
 
 	# copy the extracted icon and the generated .desktop file
-	install -Dm644 ResourceHacker.png "${pkgdir}/usr/share/pixmaps/ResourceHacker.png"
-	install -Dm644 "Resource Hacker.desktop" "${pkgdir}/usr/share/applications/ResourceHacker.desktop"
+	install -Dm644 ResourceHacker.png "${pkgdir}/usr/share/pixmaps/resource-hacker.png"
+	install -Dm644 "Resource Hacker.desktop" "${pkgdir}/usr/share/applications/resource-hacker.desktop"
 
 	# copy the license file
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
