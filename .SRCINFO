@@ -1,6 +1,6 @@
 pkgbase = cia-accesa
 	pkgdesc = Control Inteligente de Accesos
-	pkgver = 1.4.1
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://accesa.me
 	arch = x86_64
@@ -41,7 +41,7 @@ pkgbase = cia-accesa
 	optdepends = libgnome-keyring: Another optional feature
 	optdepends = lsb-release: Yet another optional feature
 	optdepends = pulseaudio: Optional feature for sound support
-	source = cia-1.4.1-1-x86_64.pkg.tar.zst::https://www.dropbox.com/scl/fi/i6d7n7i82tul2rf4mkuqi/cia-1.4.1-1-x86_64.pkg.tar.zst?rlkey=awwgnpm2w8fh895qsv7svjk8e&dl=0
+	source = cia-1.5.1-1-x86_64.pkg.tar.zst::https://www.dropbox.com/scl/fi/kqiaepomxcw8vopa3kwn6/cia-1.5.1-1-x86_64.pkg.tar.zst?rlkey=zlvo11bbpshvfpsogwnxgj5yb&dl=0
 	md5sums = SKIP
 
 pkgname = cia-accesa
