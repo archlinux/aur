@@ -3,8 +3,8 @@
 
 _framework='gnunet'
 pkgname='libgnunetchat'
-pkgver=0.3.0
-pkgrel=3
+pkgver=0.3.1
+pkgrel=1
 pkgdesc='GNUnet chat library'
 arch=('i686' 'x86_64')
 url="http://${_framework}.org"
@@ -15,14 +15,11 @@ makedepends=(meson check)
 options=('!makeflags' '!buildflags')
 source=("https://ftp.gnu.org/gnu/${_framework}/${pkgname}-${pkgver}.tar.gz"{,.sig})
 validpgpkeys=('3D11063C10F98D14BD24D1470B0998EF86F59B6A')
-sha256sums=('30d44298976c7c708c1ba595dde9455994415e05275f71bc3a7e8776c4e6b1ad'
+sha256sums=('208c8a4316ae78525027cfa6b7c233e384bc16367fc085bbbc5c3f518333680d'
             'SKIP')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	
-	# Fix missing dependency from gnunet meson build
-	sed -i '40d' meson.build
 	
 	meson setup --prefix /usr --buildtype release build
 }
