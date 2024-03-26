@@ -1,15 +1,15 @@
-# Maintainer: bemxio <bemxiov@protonmail.com>
+# Maintainer: bemxio <bemxiov at protonmail dot com>
 
 pkgname="sklauncher-bin"
 pkgdesc="Secure and modern Minecraft Launcher"
 
 pkgver=3.2.5
-pkgrel=5
+pkgrel=6
 
 arch=(any)
 
 url="https://skmedix.pl"
-license=("Apache-2.0" "custom:SKlauncher")
+license=("Apache-2.0" "LicenseRef-SKlauncher")
 
 depends=("java-runtime>=17")
 makedepends=(unzip gendesk)
@@ -33,7 +33,7 @@ prepare() {
 		--pkgname SKlauncher \
 		--pkgdesc "${pkgdesc}" \
 		--exec sklauncher \
-		--icon SKlauncher.png \
+		--icon sklauncher.png \
 		--categories "Game;Simulation"
 }
 
@@ -45,8 +45,8 @@ package() {
 	install -Dm755 sklauncher "${pkgdir}/usr/bin/sklauncher"
 
 	# copy the extracted icon and the generated .desktop file
-	install -Dm644 logo.png "${pkgdir}/usr/share/pixmaps/SKlauncher.png"
-	install -Dm644 SKlauncher.desktop "${pkgdir}/usr/share/applications/SKlauncher.desktop"
+	install -Dm644 logo.png "${pkgdir}/usr/share/pixmaps/sklauncher.png"
+	install -Dm644 SKlauncher.desktop "${pkgdir}/usr/share/applications/sklauncher.desktop"
 
 	# copy the terms of service into a separate file
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
