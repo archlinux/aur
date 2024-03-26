@@ -4,7 +4,7 @@ pkgname=musyx-extract-git
 pkgdesc="Sample extractor for GameCube MusyX files"
 
 pkgver=r18.1d9e5c4
-pkgrel=2
+pkgrel=3
 
 arch=(any)
 
@@ -21,7 +21,7 @@ md5sums=("SKIP")
 
 pkgver() {
   	# move to the source directory
-	cd "${srcdir}/musyx-extract"
+	cd musyx-extract
   	
 	# use the number of revisions since beginning of the history
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
@@ -29,7 +29,7 @@ pkgver() {
 
 prepare() {
 	# move to the source directory
-	cd "${srcdir}/musyx-extract"
+	cd musyx-extract
 
 	# add the shebang to the script
 	sed -i '1s/^/#!\/usr\/bin\/python\n/' MusyXExtract.py
@@ -37,7 +37,7 @@ prepare() {
 
 package() {
 	# move to the source directory
-	cd "${srcdir}/musyx-extract"
+	cd musyx-extract
 
 	# make the script executable
 	chmod +x MusyXExtract.py
