@@ -1,5 +1,4 @@
-# Maintainer: Stella <jens300304@gmail.com>
-# Maintainer: bemxio <bemxiov@protonmail.com>
+# Maintainer: bemxio <bemxiov at protonmail dot com>
 
 pkgname=python-jumpcutter
 _name=${pkgname#python-}
@@ -7,7 +6,7 @@ _name=${pkgname#python-}
 pkgdesc="Jumpcut silent parts of your videos automagically"
 
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 
 arch=(any)
 
@@ -21,20 +20,20 @@ source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_
 md5sums=("664185983281e283bdd36ca1a276af3c")
 
 build() {
-    # move to the source directory
-    cd "${srcdir}/${_name}-${pkgver}"
+	# move to the source directory
+	cd "${_name}-${pkgver}"
 
-    # build the package
-    python -m build --wheel --no-isolation
+	# build the package
+	python -m build --wheel --no-isolation
 }
 
 package() {
-    # move to the source directory
-    cd "${srcdir}/${_name}-${pkgver}"
+	# move to the source directory
+	cd "${_name}-${pkgver}"
 
-    # package the files
-    python -m installer --destdir="${pkgdir}" dist/*.whl
+	# package the files
+	python -m installer --destdir="${pkgdir}" dist/*.whl
 
-    # bundle the license in the package
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	# bundle the license in the package
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

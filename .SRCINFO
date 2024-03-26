@@ -1,7 +1,7 @@
 pkgbase = python-jumpcutter
 	pkgdesc = Jumpcut silent parts of your videos automagically
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/jumpcutter/
 	arch = any
 	license = MIT
