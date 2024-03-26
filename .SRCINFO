@@ -1,6 +1,6 @@
 pkgbase = adaptivecpp-git
 	pkgdesc = Independent, community-driven modern platform for C++-based heterogeneous programming models targeting CPUs and GPUs from all major vendors. (formerly known as hipSYCL / Open SYCL).
-	pkgver = 24.02.0+12.r2659.20240322.57b72029
+	pkgver = 24.02.0+17.r2664.20240325.37d1dcd7
 	pkgrel = 1
 	url = https://github.com/AdaptiveCpp/AdaptiveCpp
 	arch = x86_64
@@ -29,22 +29,22 @@ pkgbase = adaptivecpp-git
 pkgname = adaptivecpp-common-git
 	pkgdesc = Independent, community-driven modern platform for C++-based heterogeneous programming models targeting CPUs and GPUs from all major vendors. (formerly known as hipSYCL / Open SYCL). Common files.
 	depends = 
-	optdepends = adaptivecpp-cpu-git=24.02.0+12.r2659.20240322.57b72029: For CPU only backend.
-	optdepends = adaptivecpp-cuda-git=24.02.0+12.r2659.20240322.57b72029: For CUDA (NVIDIA) + OpenCL + CPU backend.
-	optdepends = adaptivecpp-opencl-git=24.02.0+12.r2659.20240322.57b72029: For OpenCL + CPU backend.
-	optdepends = adaptivecpp-rocm-git=24.02.0+12.r2659.20240322.57b72029: For ROCm (AMD Radeon) + OpenCL + CPU backend.
-	provides = adaptivecpp-common=24.02.0+12.r2659.20240322.57b72029
+	optdepends = adaptivecpp-cpu-git=24.02.0+17.r2664.20240325.37d1dcd7: For CPU only backend.
+	optdepends = adaptivecpp-cuda-git=24.02.0+17.r2664.20240325.37d1dcd7: For CUDA (NVIDIA) + OpenCL + CPU backend.
+	optdepends = adaptivecpp-opencl-git=24.02.0+17.r2664.20240325.37d1dcd7: For OpenCL + CPU backend.
+	optdepends = adaptivecpp-rocm-git=24.02.0+17.r2664.20240325.37d1dcd7: For ROCm (AMD Radeon) + OpenCL + CPU backend.
+	provides = adaptivecpp-common=24.02.0+17.r2664.20240325.37d1dcd7
 	conflicts = adaptivecpp-common
 
 pkgname = adaptivecpp-cpu-git
 	pkgdesc = Independent, community-driven modern platform for C++-based heterogeneous programming models targeting CPUs and GPUs from all major vendors. (formerly known as hipSYCL / Open SYCL). Accelerated CPU-only backend.
-	depends = adaptivecpp-common-git=24.02.0+12.r2659.20240322.57b72029
+	depends = adaptivecpp-common-git=24.02.0+17.r2664.20240325.37d1dcd7
 	depends = gcc-libs
 	depends = glibc
 	depends = llvm-libs
 	depends = python
 	optdepends = 
-	provides = adaptivecpp-cpu=24.02.0+12.r2659.20240322.57b72029
+	provides = adaptivecpp-cpu=24.02.0+17.r2664.20240325.37d1dcd7
 	provides = adaptivecpp-backend
 	provides = hipsycl
 	provides = syclcc
@@ -56,7 +56,7 @@ pkgname = adaptivecpp-cpu-git
 
 pkgname = adaptivecpp-opencl-git
 	pkgdesc = Independent, community-driven modern platform for C++-based heterogeneous programming models targeting CPUs and GPUs from all major vendors. (formerly known as hipSYCL / Open SYCL). OpenCL + CPU backend.
-	depends = adaptivecpp-common-git=24.02.0+12.r2659.20240322.57b72029
+	depends = adaptivecpp-common-git=24.02.0+17.r2664.20240325.37d1dcd7
 	depends = gcc-libs
 	depends = glibc
 	depends = llvm-libs
@@ -64,8 +64,8 @@ pkgname = adaptivecpp-opencl-git
 	depends = python
 	depends = spirv-tools
 	optdepends = 
-	provides = adaptivecpp-opencl24.02.0+12.r2659.20240322.57b72029
-	provides = adaptivecpp-cpu=24.02.0+12.r2659.20240322.57b72029
+	provides = adaptivecpp-opencl24.02.0+17.r2664.20240325.37d1dcd7
+	provides = adaptivecpp-cpu=24.02.0+17.r2664.20240325.37d1dcd7
 	provides = adaptivecpp-backend
 	provides = hipsycl
 	provides = syclcc
@@ -78,7 +78,7 @@ pkgname = adaptivecpp-opencl-git
 
 pkgname = adaptivecpp-rocm-git
 	pkgdesc = Independent, community-driven modern platform for C++-based heterogeneous programming models targeting CPUs and GPUs from all major vendors. (formerly known as hipSYCL / Open SYCL). ROCm (AMD Radeon) + OpenCL + CPU backend.
-	depends = adaptivecpp-common-git=24.02.0+12.r2659.20240322.57b72029
+	depends = adaptivecpp-common-git=24.02.0+17.r2664.20240325.37d1dcd7
 	depends = gcc-libs
 	depends = glibc
 	depends = hip-runtime-amd
@@ -87,9 +87,9 @@ pkgname = adaptivecpp-rocm-git
 	depends = python
 	depends = spirv-tools
 	optdepends = 
-	provides = adaptivecpp-rocm=24.02.0+12.r2659.20240322.57b72029
-	provides = adaptivecpp-cpu=24.02.0+12.r2659.20240322.57b72029
-	provides = adaptivecpp-opencl=24.02.0+12.r2659.20240322.57b72029
+	provides = adaptivecpp-rocm=24.02.0+17.r2664.20240325.37d1dcd7
+	provides = adaptivecpp-cpu=24.02.0+17.r2664.20240325.37d1dcd7
+	provides = adaptivecpp-opencl=24.02.0+17.r2664.20240325.37d1dcd7
 	provides = adaptivecpp-backend
 	provides = hipsycl
 	provides = syclcc

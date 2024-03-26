@@ -10,7 +10,7 @@ pkgname=(
   "${_pkgbase}-opencl${_vcssuffix}"
   "${_pkgbase}-rocm${_vcssuffix}"
 )
-pkgver=24.02.0+12.r2659.20240322.57b72029
+pkgver=24.02.0+17.r2664.20240325.37d1dcd7
 pkgrel=1
 pkgdesc="Independent, community-driven modern platform for C++-based heterogeneous programming models targeting CPUs and GPUs from all major vendors. (formerly known as hipSYCL / Open SYCL)."
 arch=(
