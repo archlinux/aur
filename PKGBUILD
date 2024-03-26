@@ -1,16 +1,16 @@
 # Maintainer: Morgan <morganamilo@archlinux.org>
 pkgname=paru-git
 _pkgname=paru
-pkgver=2.0.1.r1.g584fb75
+pkgver=2.0.3.rebuild.1.r0.g5355012
 pkgrel=1
 pkgdesc='Feature packed AUR helper'
 url='https://github.com/morganamilo/paru'
 source=("git+https://github.com/morganamilo/paru")
 backup=("etc/paru.conf")
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 makedepends=('cargo')
-depends=('glibc' 'git' 'pacman')
+depends=('git' 'pacman' 'libalpm.so>=14')
 optdepends=('bat: colored pkgbuild printing' 'devtools: build in chroot and downloading pkgbuilds')
 conflicts=('paru')
 provides=('paru')
