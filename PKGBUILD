@@ -3,7 +3,7 @@
 # Contributor: Alexandros Theodotou <alex at zrythm dot org>
 
 pkgname=zrythm
-_pkgver=1.0.0-beta.6.5.1
+_pkgver=1.0.0-beta.6.6.1
 pkgver="${_pkgver/-/.}"
 pkgrel=1
 pkgdesc='Highly automated and intuitive digital audio workstation'
@@ -11,6 +11,7 @@ arch=(x86_64 i686)
 url="https://www.zrythm.org"
 license=(AGPL3)
 depends=(
+	appstream
 	boost
 	breeze-icons
 	carla-git
@@ -55,7 +56,7 @@ options=('debug')
 source=("https://www.zrythm.org/releases/$pkgname-$_pkgver.tar.xz"{,.asc}
         "git+https://github.com/drobilla/zix.git"
         0001-gcc13-fixes.patch)
-sha256sums=('aedf45f65119aef06d90eb8b7b875a25961bb4950d6e5dbfe21174f89cd7c98c'
+sha256sums=('e62bdcb1d3f29bdb6df0aff1709f7882426d86d7d614e187c3ac138a9b8fc386'
             'SKIP'
             'SKIP'
             'bb93eea519020e491f85c38ab3901ac530bbf747c4e7acc3aaea39f402091653')
