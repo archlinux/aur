@@ -1,5 +1,4 @@
 # Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
-# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
 
 set -u
 pkgname='smallerc'
@@ -10,8 +9,8 @@ pkgdesc='simple and small single-pass C compiler'
 arch=('x86_64')
 url='https://github.com/alexfru/SmallerC'
 license=('BSD-2-Clause')
+depends=('glibc')
 makedepends=('nasm')
-options=('!strip' '!buildflags' '!lto')
 _srcdir="SmallerC-${pkgver/_/-}"
 source=(
   "${_srcdir}.zip::${url}/archive/refs/tags/v${pkgver/_/+}.zip"
@@ -49,7 +48,7 @@ build() {
   set -u
   cd "${_srcdir}"
   ./configure
-  nice make # -j1
+  nice make -j1
   set +u
 }
 
@@ -57,6 +56,7 @@ package() {
   set -u
   cd "${_srcdir}"
   make -j1 DESTDIR="${pkgdir}" install
+  install -D 'license.txt' -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   set +u
 }
 set +u
