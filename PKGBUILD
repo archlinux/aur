@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=noi
 pkgname="${_pkgname}-desktop-bin"
-pkgver=0.3.0
+pkgver=0.4.0
 _electronversion=28
 pkgrel=1
 pkgdesc="Power Your World with AI - Explore, Extend, Empower."
@@ -19,7 +19,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_linux_amd64_${pkgver}.deb"
 )
-sha256sums=('fbba5a2b6f1a0d53436a4707e70f670b3f235737509a5c0b8836597378ca6102')
+sha256sums=('80921cf6a68aac06ef1051dfd23573e040bedabf17f90717bafe7085ec0fd928')
 build() {
     bsdtar -xf "${srcdir}/data."*
     sed "s|${_pkgname} %U|${pkgname%-bin} --no-sandbox %U|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
