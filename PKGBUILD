@@ -6,7 +6,7 @@ _appname="${_pkgname} Terminal"
 pkgver=0.7.1
 _electronversion=29
 _nodeversion=20
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source, cross-platform terminal for seamless workflows"
 arch=('any')
 url="https://www.waveterm.dev/"
@@ -27,6 +27,7 @@ makedepends=(
     'scripthaus'
     'base-devel'
     'zip'
+    'nvm'
 )
 source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
