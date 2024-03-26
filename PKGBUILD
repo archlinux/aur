@@ -2,7 +2,7 @@
 
 _pkgname=openexr
 pkgname=mingw-w64-${_pkgname}
-pkgver=3.2.3
+pkgver=3.2.4
 pkgrel=1
 epoch=1
 pkgdesc='An high dynamic-range image file format library (mingw-w64)'
@@ -10,19 +10,18 @@ url='http://www.openexr.com/'
 arch=(any)
 license=('BSD')
 depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-imath' 'mingw-w64-libdeflate')
-makedepends=('mingw-w64-cmake')
+makedepends=('mingw-w64-cmake' 'ninja')
 checkdepends=('mingw-w64-wine' 'python')
 options=('staticlibs' '!buildflags' '!strip')
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/AcademySoftwareFoundation/${_pkgname}/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('f3f6c4165694d5c09e478a791eae69847cadb1333a2948ca222aa09f145eba63')
+sha256sums=('81e6518f2c4656fdeaf18a018f135e96a96e7f66dbe1c1f05860dd94772176cc')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release
 	-DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG -msse4.2'
 	-DCMAKE_C_FLAGS_RELEASE='-DNDEBUG -msse4.2'
-	-DOPENEXR_INSTALL_EXAMPLES=OFF
 	-DOPENEXR_LIB_SUFFIX= )
 _srcdir="${_pkgname}-${pkgver}"
 
@@ -34,7 +33,7 @@ prepare() {
 
 build() {
 	for _arch in ${_architectures}; do
-		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" \
+		${_arch}-cmake -G Ninja -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" \
 			-DOPENEXR_INSTALL_TOOLS=OFF \
 			-DOPENEXR_BUILD_TOOLS=OFF \
 			-DBUILD_TESTING=OFF \
@@ -42,7 +41,7 @@ build() {
 			-DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
 		cmake --build "build-${_arch}-static"
 		
-		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" \
+		${_arch}-cmake -G Ninja -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" \
 			-DOPENEXR_INSTALL_TOOLS=ON \
 			-DOPENEXR_BUILD_TOOLS=ON \
 			-DBUILD_TESTING=OFF
