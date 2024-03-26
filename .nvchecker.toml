@@ -1,0 +1,4 @@
+[python-lib4sbom]
+source = "github"
+github = "anthonyharrison/lib4sbom"
+use_latest_release = true
