@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=znote-bin
-pkgver=2.5.4
+pkgver=2.5.5
 _electronversion=28
 pkgrel=1
 pkgdesc="A Beautiful markdown editor inspired by Jupyter."
@@ -15,7 +15,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'hicolor-icon-theme'
 )
 makedepends=(
     'fuse2'
@@ -26,10 +25,10 @@ source=(
     "LICENSE-${pkgver}.html::${url}/cgu.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('445718a1932af51623b268a406ca16f05fc77764d2761d6aebc191463dda049c'
+sha256sums=('e79cd1e77f956b560f95918d4737baa7be8f3660fe15edcb6ac4a3cab39121a9'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('a7759b7331ce3b55f1ba6329b2c41b2655b4e18fe45c401ea43b02dfcecca664')
-sha256sums_x86_64=('96895fcb6d1f6e83a169019e615da924fe7b41fb5cc43284a5c4b0bd313f88b6')
+sha256sums_aarch64=('5874b2494c849b0ca9a974d18f4567d9ec7d78006f47c3829cdce31e166909bc')
+sha256sums_x86_64=('69024ec49222fc81d833913a653803edbaa479db0aca96b5d40e80dcaeff0e78')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
