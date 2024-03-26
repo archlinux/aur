@@ -4,3 +4,4 @@
 *.zst
 *.log
 *.patch
+tmp/
