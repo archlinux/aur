@@ -1,9 +1,10 @@
 pkgbase = act-runner-bin
 	pkgdesc = A runner for Gitea Actions based on GitHub's Act
 	pkgver = 0.2.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitea.com/gitea/act_runner
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	optdepends = docker: for running containers
 	provides = act_runner
@@ -17,8 +18,8 @@ pkgbase = act-runner-bin
 	sha256sums = cb2bd209ae841c78f2b9e839724fd4a323f1d635a97b0206d7056b7f0cb290b4
 	sha256sums = 5f8944df92d0e5278e3a29795dfcd8bcd340bea37075627d4f9d3303cdb58607
 	source_x86_64 = https://gitea.com/gitea/act_runner/releases/download/v0.2.6/act_runner-0.2.6-linux-amd64.xz
-	source_aarch64 = https://gitea.com/gitea/act_runner/releases/download/v0.2.6/act_runner-0.2.6-linux-arm64.xz
 	sha256sums_x86_64 = 8abae07c3c57fad9a79f0ac97f9c11678b90bce70397d76dfb31c73f78285073
+	source_aarch64 = https://gitea.com/gitea/act_runner/releases/download/v0.2.6/act_runner-0.2.6-linux-arm64.xz
 	sha256sums_aarch64 = daab20e045832a8e41266b6e75dc3f3b21b9edce5be1b68f697616575bc6d2e6
 
 pkgname = act-runner-bin

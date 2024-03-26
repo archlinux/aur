@@ -2,7 +2,7 @@
 
 pkgname=act-runner-bin
 pkgver=0.2.6
-pkgrel=3
+pkgrel=4
 pkgdesc="A runner for Gitea Actions based on GitHub's Act"
 arch=('x86_64' 'aarch64')
 url="https://gitea.com/gitea/act_runner"
