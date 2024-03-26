@@ -1,6 +1,6 @@
 pkgbase = delfin
 	pkgdesc = Stream movies and TV shows from Jellyfin
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://delfin.avery.cafe/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = delfin
 	depends = libadwaita
 	depends = mpv
 	provides = delfin
-	source = https://codeberg.org/avery42/delfin/archive/v0.4.2.tar.gz
-	sha256sums = 019856c1e0426a4f39e8a0e8e6e2e111826f9b48e46c4b00b449dc5ccbce46b8
+	source = https://codeberg.org/avery42/delfin/archive/v0.4.3.tar.gz
+	sha256sums = 900953d0e9980f4cfa3dd5cd18c5813b4d30dc58dc656d0114c23fa9dc4a6aa6
 
 pkgname = delfin
