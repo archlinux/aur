@@ -1,12 +1,14 @@
 pkgbase = pokemon-colorscripts-git
 	pkgdesc = Print Pokemon ASCII art in the terminal
 	pkgver = r112.0483c85b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/phoneybadger/pokemon-colorscripts
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = python
+	provides = pokemon-colorscripts
+	conflicts = pokemon-colorscripts
 	source = pokemon-colorscripts::git+https://gitlab.com/phoneybadger/pokemon-colorscripts.git
 	sha256sums = SKIP
 

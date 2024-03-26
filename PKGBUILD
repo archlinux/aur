@@ -4,7 +4,7 @@
 _pkgname=pokemon-colorscripts
 pkgname="$_pkgname-git"
 pkgver=r112.0483c85b
-pkgrel=1
+pkgrel=2
 pkgdesc="Print Pokemon ASCII art in the terminal"
 url="https://gitlab.com/phoneybadger/pokemon-colorscripts"
 license=('MIT')
@@ -12,6 +12,9 @@ arch=('any')
 
 depends=('python')
 makedepends=('git')
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
 source=("$_pkgname"::"git+$url.git")
