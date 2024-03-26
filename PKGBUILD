@@ -18,11 +18,14 @@ source=(
   # Error in "/tmp/makepkg-chris/smallerc/src/SmallerC-1.0.1-dos.win.1ab15c7/v0100/srclib/kernel32/closehan.c" (9:109)
   # Invalid or too long file name or path name
   '0000-smlrc.c-MAX_FILE_NAME_LEN.patch'
+  '0001-stsp-dpstub-alloc-dpmi-mem-in-UMB.patch::https://github.com/alexfru/SmallerC/commit/8e55da3682e71349a536673618cd974ad6151bfd.patch'
 )
 md5sums=('04e5b3a57915c439c09a38406c4583e4'
-         'c96ff0ba67916f5aa2ed3e19eb9fee44')
+         'c96ff0ba67916f5aa2ed3e19eb9fee44'
+         '3e72cf1e6051cd1a1282bd17177b8a67')
 sha256sums=('96c58af2fbf040d8277af1831dc8d34fd974d381d14965f4937dd9651fc2d0b8'
-            'e1f4d6e57700d175857f373395526a3bb1a775f1f2dc23010e2ffc1614c900c4')
+            'e1f4d6e57700d175857f373395526a3bb1a775f1f2dc23010e2ffc1614c900c4'
+            'ca2873c88ef1330cf8e06759df125a6eff8a1e6a0052ff680d42e3cf197de61f')
 
 prepare() {
   set -u
