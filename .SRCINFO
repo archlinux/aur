@@ -1,7 +1,7 @@
 pkgbase = python-ollama
 	pkgdesc = Ollama Python library
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ollama/ollama-python
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = python-ollama
 	depends = ollama
 	depends = python
 	depends = python-httpx
+	depends = python-typing_extensions
 	source = python-ollama-0.1.7.tar.gz::https://github.com/ollama/ollama-python/archive/refs/tags/v0.1.7.tar.gz
 	b2sums = e3f3b731f8acb7af71bd956f6c2daf253db3cb9123c506c77a8947ce8976ce53cbe0f4706431ff652a099834843f6fee3ffb4e4ba35a75e74fab669a20b78c24
 
