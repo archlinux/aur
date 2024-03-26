@@ -1,7 +1,7 @@
 # Maintainer: Daniel Chesters <archlinux@coin-coin.xyz>
 
 pkgname=oterm-git
-pkgver=0.1.17.r0.g7acbf4d
+pkgver=0.2.4.r0.ga0167f4
 pkgrel=1
 pkgdesc="A text-based terminal client for Ollama"
 arch=('any')
@@ -10,13 +10,12 @@ conflicts=("${pkgname%-git}")
 url="https://github.com/ggozad/oterm"
 license=('MIT')
 depends=(
-	'ollama'
 	'python'
+	'python-ollama'
 	'python-rich'
 	'python-typer'
 	'python-textual'
 	'python-pyperclip'
-	'python-httpx'
 	'python-aiosqlite'
 	'python-aiosql'
 	'python-packaging'
