@@ -1,0 +1,15 @@
+--- rofi-lbonn-wayland-git/source/wayland/view.c	2024-03-26 23:40:28.824185890 +0800
++++ view.c	2024-03-26 23:43:59.030828447 +0800
+@@ -262,10 +262,10 @@
+   WlState.flags = menu_flags;
+   // Setup dpi
+   PangoFontMap *font_map = pango_cairo_font_map_get_default();
+-  if (config.dpi > 1) {
++  if (FALSE && config.dpi > 1) {
+     pango_cairo_font_map_set_resolution((PangoCairoFontMap *)font_map,
+                                         (double)config.dpi);
+-  } else if (config.dpi == 0 || config.dpi == 1) {
++  } else if (FALSE && config.dpi == 0 || config.dpi == 1) {
+     // Should not be reached
+     g_warning("DPI auto-detect failed, the output is not known yet or does not "
+               "provide a physical size");
