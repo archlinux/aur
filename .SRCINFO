@@ -1,11 +1,11 @@
 pkgbase = chomikbox
 	pkgdesc = A desktop application for Chomikuj.pl integration
 	pkgver = 2.0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://chomikuj.pl/ChomikBox.aspx
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = LicenseRef-ChomikBox
 	depends = qt4
 	depends = gstreamer0.10-base
 	source = LICENSE
