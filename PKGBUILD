@@ -16,7 +16,7 @@ unset _pkgtype
 ## basic info
 _pkgname="ryujinx"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.1.1234
+pkgver=1.1.1244
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://github.com/Ryujinx/Ryujinx"
@@ -27,10 +27,10 @@ arch=(x86_64)
 _main_package() {
   makedepends=(
     'desktop-file-utils'
-    'dotnet-sdk-8.0' # check global.json
+    'dotnet-sdk>=8.0.3.sdk202' # AUR: dotnet-core-bin
   )
 
-  options=('!strip')
+  options=('!strip' '!debug')
   install="$_pkgname.install"
 
   if [ "${_build_git::1}" != "t" ] ; then
