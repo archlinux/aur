@@ -40,6 +40,6 @@ then
         sed -i "s@bt-tracker=.*@bt-tracker=$TRACKER@" "${ARIA2_CONFIG_HOME}/aria2.conf"
     else
         echo "Adding tracker line"
-        sed -i "\$a bt-tracker=$TRACKER" "${ARIA2_CONFIG_HOME}/aria2.conf"
+        echo "bt-tracker=$TRACKER" >> "${ARIA2_CONFIG_HOME}/aria2.conf"
     fi
 fi
