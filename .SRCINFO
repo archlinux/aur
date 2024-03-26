@@ -1,6 +1,6 @@
 pkgbase = rickroll-rs
 	pkgdesc = A simple rust program doing rickroll
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/chardon55/rickroll-rs
 	arch = x86_64

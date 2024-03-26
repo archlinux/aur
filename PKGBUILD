@@ -5,7 +5,7 @@
 
 # Maintainer: Charles Dong <charlesdong_2000@outlook.com>
 pkgname=rickroll-rs
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A simple rust program doing rickroll"
 arch=("x86_64" "aarch64")
@@ -25,7 +25,7 @@ prepare() {
 }
 
 build() {
-	cargo install rickroll --locked --root $srcdir/${pkgver}-$pkgrel --target "$CARCH-unknown-linux-gnu"
+	cargo install rickroll@$pkgver --locked --root $srcdir/${pkgver}-$pkgrel --target "$CARCH-unknown-linux-gnu"
 }
 
 package() {
