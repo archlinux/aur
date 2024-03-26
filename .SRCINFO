@@ -1,6 +1,6 @@
 pkgbase = rtl-433-git
 	pkgdesc = A generic software defined radio data receiver, mainly for the 433.92 MHz, 868 MHz (SRD), 315 MHz, 345 MHz, and 915 MHz ISM bands.
-	pkgver = nightly+23.r3483.20240324.c00aa109
+	pkgver = nightly+26.r3486.20240326.693cf766
 	pkgrel = 1
 	url = https://github.com/merbanan/rtl_433
 	arch = i686
@@ -13,9 +13,9 @@ pkgbase = rtl-433-git
 	depends = openssl
 	depends = soapysdr
 	depends = rtl-sdr
-	provides = rtl-433=nightly+23.r3483.20240324.c00aa109
-	provides = rtl_433=nightly+23.r3483.20240324.c00aa109
-	provides = rtl_433-git=nightly+23.r3483.20240324.c00aa109
+	provides = rtl-433=nightly+26.r3486.20240326.693cf766
+	provides = rtl_433=nightly+26.r3486.20240326.693cf766
+	provides = rtl_433-git=nightly+26.r3486.20240326.693cf766
 	conflicts = rtl-433
 	conflicts = rtl_433
 	conflicts = rtl-443-git=nightly+18.r3433.20240205.06b03b7a
