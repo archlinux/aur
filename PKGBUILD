@@ -3,7 +3,7 @@ _pkgname=butterfly
 pkgname="linwood-${_pkgname}-bin"
 _appname="dev.linwood.${_pkgname}"
 pkgver=2.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Powerful, minimalistic, cross-platform, opensource note-taking app"
 arch=("x86_64")
 url="https://docs.butterfly.linwood.dev/"
@@ -11,13 +11,13 @@ _ghurl="https://github.com/LinwoodDev/Butterfly"
 license=(
     'AGPL-3.0-only'
     'CC-BY-4.0'
+    'Apache-2.0'
 )
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'gtk3'
     'at-spi2-core'
-    'hicolor-icon-theme'
     'libsecret'
 )
 source=(

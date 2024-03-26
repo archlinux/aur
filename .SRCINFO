@@ -1,14 +1,14 @@
 pkgbase = linwood-butterfly-bin
 	pkgdesc = Powerful, minimalistic, cross-platform, opensource note-taking app
 	pkgver = 2.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://docs.butterfly.linwood.dev/
 	arch = x86_64
 	license = AGPL-3.0-only
 	license = CC-BY-4.0
+	license = Apache-2.0
 	depends = gtk3
 	depends = at-spi2-core
-	depends = hicolor-icon-theme
 	depends = libsecret
 	provides = linwood-butterfly=2.0.3
 	conflicts = linwood-butterfly
