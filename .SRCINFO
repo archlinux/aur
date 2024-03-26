@@ -1,0 +1,14 @@
+pkgbase = pinnacle
+	pkgdesc = Modern tribute to the 1986 classic "The Sentinel"
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://viperfish.com.au/games/pinnacle.html
+	arch = x86_64
+	license = custom
+	provides = pinnacle
+	options = !strip
+	options = !emptydirs
+	source = pinnacle-1.0.zip::https://viperfish.com.au/downloads.html?download=1:pinnacle-linux
+	sha512sums = 4a379944df2a816d751c16cfd7bf385499a344464b2ccebec10e414c364b0ef7ac83375c9e3c71c2b7fffdfc27e26ba1a77623135b7ffb4f366e60034638d269
+
+pkgname = pinnacle
