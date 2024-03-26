@@ -1,7 +1,7 @@
 pkgbase = directfb2-eglgbm-git
 	pkgdesc = EGL system module for DirectFB2 and supported on GBM (Generic Buffer Manager) platforms.
 	pkgver = r13.6a46274
-	pkgrel = 2
+	pkgrel = 3
 	url = https://directfb2.github.io/
 	arch = x86_64
 	arch = armv7h
