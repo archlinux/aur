@@ -1,7 +1,7 @@
 
 # Maintainer: Dvd-Znf <email@dvdznf.xyz>
 pkgname=youtty
-pkgver=0.3.9
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Search, download and watch any youtube video from the tty"
 arch=('any')
@@ -11,7 +11,7 @@ groups=()
 depends=("python" "yt-dlp" "vlc" "python-requests")
 makedepends=("make" "gcc")
 source=("https://github.com/Dvd-Znf/youtty/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("99a305d7e3fb7ad622bd744a1d83aa4988ecb6f0a67ab0a73a3d1a644bda8683")
+sha256sums=("de91e5de14ea4572b3139cb3309b0fb608f6ec56b70196d113dd2ee83b077b3a")
 
 # build() {
 # 	cd "$pkgname-$pkgver"
