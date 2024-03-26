@@ -7,6 +7,7 @@ pkgbase = epubmerge
 	license = GPL-3.0-or-later
 	makedepends = python-build
 	makedepends = python-installer
+	depends = calibre
 	depends = python
 	depends = python-pyqt5
 	depends = python-setuptools
