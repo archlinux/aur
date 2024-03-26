@@ -1,7 +1,7 @@
 fontname=consolas-ligaturized
 pkgname="ttf-${fontname}"
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Standard Consolas font with FiraCode ligatures. Versions 1 and 2 are included'
 arch=(any)
 license=(CUSTOM)
@@ -14,5 +14,7 @@ package() {
   mkdir -p "$pkgdir/usr/share/fonts/${fontname}"
   mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
   cp "${srcdir}/${fontname}-${pkgver}/"*.ttf "$pkgdir/usr/share/fonts/${fontname}"
+  cp "${srcdir}/${fontname}-${pkgver}/Consolas-FiraCode_v2/"*.ttf "$pkgdir/usr/share/fonts/${fontname}"
+  cp "${srcdir}/${fontname}-${pkgver}/Consolas-FiraCode_v3/"*.ttf "$pkgdir/usr/share/fonts/${fontname}"
   cp "${srcdir}/${fontname}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}"
 }
