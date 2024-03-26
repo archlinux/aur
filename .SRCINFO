@@ -1,0 +1,16 @@
+pkgbase = spplice-bin
+	pkgdesc = The first ever dedicated Portal 2 mod launcher
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = https://www.p2r3.com/spplice/
+	arch = x86_64
+	license = unknown
+	depends = zlib
+	depends = fuse2
+	noextract = spplice.AppImage
+	options = !strip
+	options = !debug
+	source = https://www.p2r3.com/spplice/app/spplice.AppImage
+	sha512sums = d46eaa6300930a4fb4abc5e39baef793861096c6a34e13036e83ae7a15a77de830120576133a5654dd95ae97c55f141342a914a0dd56096ede5c1ac84653041b
+
+pkgname = spplice-bin
