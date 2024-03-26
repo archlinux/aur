@@ -1,7 +1,7 @@
 # Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
-# Maintainer: Allen Zhong <zhongbenli@pingcap.com>
+# Maintainer: Allen Zhong <allen@moe.cat>
 pkgname=tikv-pd
-pkgver=5.4.0
+pkgver=7.6.0
 pkgrel=1
 pkgdesc='Manage and schedule the TiKV cluster.'
 depends=('glibc')
@@ -17,7 +17,7 @@ source=(pd-${pkgver}.tar.gz::https://github.com/tikv/pd/archive/v${pkgver}.tar.g
         pd-sysusers.conf
         pd-tmpfiles.conf
         pd.toml)
-sha256sums=('735d10bad89aa401e6d47f542e5d91649a5ffb3c727d02acb8bd93884bb744e3'
+sha256sums=('f505d5348cb82018936a444b9692d7686c76de809a72f07fba9777080aff7fbb'
             'b03d12f2f8d6eb2e9d654d6258ca39000225cdf1418840f7e35081631bc4d924'
             '5edd250ba9e70a4f8d27581ed658f0fbfeca58ca62429dec12bb5fffc0919b67'
             '15633aaa2d7726375112a1b5af88105878f09c176a542cde6d0e5f0c4eee4495'
@@ -36,20 +36,18 @@ prepare() {
   sed -i 's/CGO_ENABLED=0/CGO_ENABLED=1/g' "$GOPATH/src/$_gopkgname/Makefile"
   sed -i 's/BUILD_CGO_ENABLED := 0/BUILD_CGO_ENABLED := 1/g' "$GOPATH/src/$_gopkgname/Makefile"
   sed -i '/shell git /d' "$GOPATH/src/$_gopkgname/Makefile"
+  sed -i '/PDReleaseVersion/d' "$GOPATH/src/$_gopkgname/Makefile"
+  sed -i '/describe-dashboard.sh git-hash/d' "$GOPATH/src/$_gopkgname/Makefile"
 }
 
 build() {
   export GOPATH="$srcdir/build"
   export PATH=$GOPATH/bin:$PATH
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
   cd $GOPATH/src/$_gopkgname
 
-  _LDFLAGS="-X $_gopkgname/server/versioninfo.PDReleaseVersion=$pkgver -X $_gopkgname/server/versioninfo.PDGitBranch=release -X $_gopkgname/server/versioninfo.PDGitHash=v$pkgver"
+  _LDFLAGS="-X $_gopkgname/pkg/versioninfo.PDReleaseVersion=$pkgver -X $_gopkgname/pkg/versioninfo.PDGitBranch=release -X $_gopkgname/pkg/versioninfo.PDGitHash=v$pkgver -X $_gopkgname/pkg/versioninfo.PDGitBranch=release -X github.com/pingcap/tidb-dashboard/pkg/utils/version.PDVersion=$pkgver -X github.com/pingcap/tidb-dashboard/pkg/utils/version.BuildGitHash=v$pkgver"
 
   LDFLAGS=$_LDFLAGS make build tools
 }
@@ -60,8 +58,9 @@ package() {
   install -Dm755 "$srcdir/build/src/$_gopkgname/bin/pd-ctl" "$pkgdir/usr/bin/pd-ctl"
   install -Dm755 "$srcdir/build/src/$_gopkgname/bin/pd-tso-bench" "$pkgdir/usr/bin/pd-tso-bench"
   install -Dm755 "$srcdir/build/src/$_gopkgname/bin/pd-recover" "$pkgdir/usr/bin/pd-recover"
-  install -Dm755 "$srcdir/build/src/$_gopkgname/bin/pd-analysis" "$pkgdir/usr/bin/pd-analysis"
   install -Dm755 "$srcdir/build/src/$_gopkgname/bin/pd-heartbeat-bench" "$pkgdir/usr/bin/pd-heartbeat-bench"
+  install -Dm755 "$srcdir/build/src/$_gopkgname/bin/regions-dump" "$pkgdir/usr/bin/pd-regions-dump"
+  install -Dm755 "$srcdir/build/src/$_gopkgname/bin/stores-dump" "$pkgdir/usr/bin/pd-stores-dump"
 
   # Install systemd service
   install -Dm644 "$srcdir/pd.service" "$pkgdir/usr/lib/systemd/system/pd.service"
