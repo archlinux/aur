@@ -1,5 +1,5 @@
-# Maintainer: Stella <jens300304@gmail.com>
-# Maintainer: bemxio <bemxiov@protonmail.com>
+# Maintainer: Stella <jens300304 at gmail dot com>
+# Maintainer: bemxio <bemxiov at protonmail dot com>
 
 pkgname=python-osrparse
 _name=${pkgname#python-}
@@ -7,7 +7,7 @@ _name=${pkgname#python-}
 pkgdesc="Parser for .osr (osu! replays) file format"
 
 pkgver=7.0.0
-pkgrel=2
+pkgrel=3
 
 arch=(any)
 
@@ -21,28 +21,28 @@ source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_
 md5sums=("51353e97c7e3e45a7bcee6cc4be61860")
 
 build() {
-    # move to the source directory
-    cd "${srcdir}/${_name}-${pkgver}"
+	# move to the source directory
+	cd "${_name}-${pkgver}"
 
-    # build the package
-    python -m build --wheel --no-isolation
+	# build the package
+	python -m build --wheel --no-isolation
 }
 
 #check() {
 #    # move to the source directory
-#    cd "${srcdir}/${_name}-${pkgver}"
+#    cd "${_name}-${pkgver}"
 #
 #    # run all tests
 #    python -m pytest
 #}
 
 package() {
-    # move to the source directory
-    cd "${srcdir}/${_name}-${pkgver}"
+	# move to the source directory
+	cd "${_name}-${pkgver}"
 
-    # package the files
-    python -m installer --destdir="${pkgdir}" dist/*.whl
+	# package the files
+	python -m installer --destdir="${pkgdir}" dist/*.whl
 
-    # bundle the license in the package
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	# bundle the license in the package
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
