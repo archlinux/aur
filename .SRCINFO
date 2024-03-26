@@ -1,0 +1,15 @@
+pkgbase = pd-bin
+	pkgdesc = Perfect Dark Reimplimentation engine.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/fgsfdsfgs/perfect_dark
+	arch = x86_64
+	license = GPL
+	depends = lib32-sdl2
+	depends = lib32-alsa-lib
+	depends = lib32-alsa-plugins
+	depends = lib32-pipewire
+	source_x86_64 = https://nightly.link/fgsfdsfgs/perfect_dark/workflows/c-cpp/port-net/pd-i686-linux.zip
+	sha256sums_x86_64 = SKIP
+
+pkgname = pd-bin
