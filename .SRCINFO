@@ -1,11 +1,12 @@
 pkgbase = flutter
 	pkgdesc = A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android.
 	pkgver = 3.19.4
-	pkgrel = 12
+	pkgrel = 13
 	url = https://flutter.dev
 	install = flutter.install
 	arch = x86_64
 	arch = aarch64
+	groups = flutter
 	license = custom
 	license = BSD
 	license = CCPL
@@ -32,14 +33,6 @@ pkgbase = flutter
 	sha256sums = a5f19e68e9e4790d017dc4988e715f51c44548df5615aae6106d1a0c84fe49f1
 	sha256sums = 04531ee1732c18c933b5b28f5da88ed183d5aa3698b1d1e912c000928b93ec91
 	sha256sums = 1578e819b6ee479b6db7a095bcfa74372d3ff555642c6d6ea7112e97bb6f2027
-
-pkgname = flutter
-	pkgdesc = Flutter SDK component - full installation of development tool and runtime
-	depends = flutter-devel=3.19.4
-	depends = flutter-target-linux=3.19.4
-	depends = flutter-target-android=3.19.4
-	depends = flutter-target-web=3.19.4
-	depends = flutter-intellij-patch=3.19.4
 
 pkgname = flutter-common
 	pkgdesc = Flutter SDK component - common SDK files and pub cache
