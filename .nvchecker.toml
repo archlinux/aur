@@ -1,0 +1,4 @@
+[typecatcher]
+source = "github"
+github = "andrewsomething/typecatcher"
+use_max_tag = true
