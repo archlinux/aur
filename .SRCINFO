@@ -1,7 +1,7 @@
 pkgbase = wox-git
 	pkgdesc = A cross-platform launcher that simply works
-	pkgver = 2.0.0_alpha.1
-	pkgrel = 2
+	pkgver = 2.0.0_nightly
+	pkgrel = 1
 	url = https://github.com/Wox-launcher/Wox
 	arch = x86_64
 	license = GPL3
@@ -37,11 +37,12 @@ pkgbase = wox-git
 	depends = zlib
 	depends = gtk3
 	depends = libdbusmenu-glib
+	depends = libkeybinder3
 	provides = wox
 	conflicts = wox-bin
 	conflicts = wox
 	source = git+https://github.com/Wox-launcher/Wox.git
-	source = https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.16.3-stable.tar.xz
+	source = https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.19.4-stable.tar.xz
 	sha256sums = SKIP
 	sha256sums = SKIP
 

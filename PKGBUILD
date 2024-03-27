@@ -2,19 +2,19 @@
 
 _pkgname=wox
 pkgname=$_pkgname-git
-pkgver=2.0.0_alpha.1
-pkgrel=2
+pkgver=2.0.0_nightly
+pkgrel=1
 pkgdesc="A cross-platform launcher that simply works"
 arch=(x86_64)
 url='https://github.com/Wox-launcher/Wox'
 license=('GPL3')
-depends=('webkit2gtk' 'libayatana-indicator' 'glibc' 'libx11' 'libxtst' 'pango' 'ayatana-ido' 'at-spi2-core' 'glib2' 'cairo' 'harfbuzz' 'gdk-pixbuf2' 'libayatana-appindicator' 'zlib' 'gtk3' 'libdbusmenu-glib')
+depends=('webkit2gtk' 'libayatana-indicator' 'glibc' 'libx11' 'libxtst' 'pango' 'ayatana-ido' 'at-spi2-core' 'glib2' 'cairo' 'harfbuzz' 'gdk-pixbuf2' 'libayatana-appindicator' 'zlib' 'gtk3' 'libdbusmenu-glib' 'libkeybinder3')
 makedepends=('git' 'go' 'just' 'nodejs' 'pnpm' 'python' 'cargo' 'libsoup' 'python-loguru' 'python-websockets' 'upx' 'lefthook' 'python-pip' 'cmake' 'ninja' 'clang')
 provides=(${_pkgname})
 conflicts=(${_pkgname}-bin ${_pkgname})
 source=(
     "git+https://github.com/Wox-launcher/Wox.git"
-    "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.16.3-stable.tar.xz"
+    "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.19.4-stable.tar.xz"
 )
 sha256sums=(
     "SKIP"
