@@ -1,7 +1,7 @@
 # MAINTAINER username227 gfrank227[at]gmail[dot]com
 # MAINTAINER qu1ck anlutsenko[at]gmail[dot]com
 pkgname=trgui-ng-git
-pkgver=r372.0876824
+pkgver=r373.d4a10c6
 pkgrel=1
 pkgdesc='Transmission torrent daemon remote GUI. Remote control GUI for Transmission torrent daemon'
 url="https://github.com/openscopeproject/TrguiNG"
