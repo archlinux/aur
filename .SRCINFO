@@ -41,6 +41,7 @@ pkgbase = wox-git
 	provides = wox
 	conflicts = wox-bin
 	conflicts = wox
+	options = !strip
 	source = git+https://github.com/Wox-launcher/Wox.git
 	source = https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.19.4-stable.tar.xz
 	sha256sums = SKIP

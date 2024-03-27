@@ -11,6 +11,7 @@ license=('GPL3')
 depends=('webkit2gtk' 'libayatana-indicator' 'glibc' 'libx11' 'libxtst' 'pango' 'ayatana-ido' 'at-spi2-core' 'glib2' 'cairo' 'harfbuzz' 'gdk-pixbuf2' 'libayatana-appindicator' 'zlib' 'gtk3' 'libdbusmenu-glib' 'libkeybinder3')
 makedepends=('git' 'go' 'just' 'nodejs' 'pnpm' 'python' 'cargo' 'libsoup' 'python-loguru' 'python-websockets' 'upx' 'lefthook' 'python-pip' 'cmake' 'ninja' 'clang')
 provides=(${_pkgname})
+options=(!strip)
 conflicts=(${_pkgname}-bin ${_pkgname})
 source=(
     "git+https://github.com/Wox-launcher/Wox.git"
