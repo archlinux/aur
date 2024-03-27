@@ -4,7 +4,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: hexchain <i@hexchain.org>
 pkgname=telegram-desktop-userfonts-altscroll
-pkgver=4.15.0
+pkgver=4.15.6
 pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
@@ -16,14 +16,14 @@ options=('!debug')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
          'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash'
          'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'libxcomposite' 'abseil-cpp' 'libdispatch'
-         'openssl' 'protobuf' 'glib2' 'libsigc++-3.0' 'glibmm-2.68')
+         'openssl' 'protobuf' 'glib2' 'libsigc++-3.0' 'glibmm-2.68' 'kcoreaddons')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
              'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt'
-             'gobject-introspection' 'boost' 'fmt' 'mm-common' 'perl-xml-parser' 'patch')
+             'gobject-introspection' 'boost' 'fmt' 'mm-common' 'perl-xml-parser' 'python-packaging' 'patch')
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz" 'mediaview-altscroll.patch')
-sha512sums=('95aa5f14a9a88b9c6421049445f59f1c5c5d7ab4ca4e8b8f4ab7389bdb8f3cc6b29fea270574881633035acec769ba271261f84ec269010c63af28a03719da98'
+sha512sums=('965790e34dcbb1ff84c054a0d241f9ef628ee03526c7fd6a3cb5e0d419082b495e377a55bf9aeafc03d7851077d3703fb11df497d181ddbf6699455c2945c158'
             '38ff8627090ac9766a8d409fa26cbd4381640e08abcb677f4524a5305d011aa0f6ce81d69313a01f0db5c1a3794805bff2a059095258f5e8d9bd1133550cca2e')
 
 prepare() {
