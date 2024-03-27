@@ -1,0 +1,5 @@
+[zed]
+source = "github"
+github = "brimdata/zed"
+prefix = "v"
+use_max_tag = true
