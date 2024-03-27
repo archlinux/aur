@@ -1,0 +1,5 @@
+[marktext-bin]
+source = "github"
+github = "marktext/marktext"
+prefix = "v"
+use_max_tag = true
