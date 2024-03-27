@@ -14,7 +14,7 @@ provides=("tidal-hifi")
 source=("tidal-hifi-${pkgver}.tar.gz::https://github.com/Mastermindzh/tidal-hifi/releases/download/${pkgver}/tidal-hifi-${pkgver}.tar.gz"
         "tidal-hifi.desktop"
         "icon.png")
-md5sums=('17a80910439af7df76eb5833f3e51bc2'
+md5sums=('ff1554897ead9ed42fbb2ca52942f836'
         '9095cbb5d798204ed26898de6a2430a9'
         '1caae79ff90e803a2728f581ef40cca4')
 
