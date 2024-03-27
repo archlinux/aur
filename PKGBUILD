@@ -3,12 +3,11 @@
 
 pkgname=klog-time-tracker-bin
 pkgver=6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A plain-text file format and a command line tool for time tracking."
 arch=("x86_64")
 url="https://github.com/jotaen/klog"
 license=('MIT')
-depends=('glibc>=2.37-3')
 provides=("${pkgname%-bin}=$pkgver")
 conflicts=('klog' "${pkgname%-bin}")
 source=($pkgname-$pkgver.zip::https://github.com/jotaen/klog/releases/download/v$pkgver/klog-linux.zip)
