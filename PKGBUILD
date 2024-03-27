@@ -2,7 +2,7 @@
 
 _pkgname=wrestic
 pkgname=wrestic-bin
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='A wrapper around restic built in rust'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('LGPL-3.0-only')
 provides=('wrestic')
 conflicts=('wrestic')
 source=("$_pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname.tar.gz")
-sha256sums=('cfd91e2060c15ef5c66dacb6bb0f370017074e0822ee8ba763867af14cef2463')
+sha256sums=('903c7cb7d4ccc628c36d88d2c79d876fedaeb3eca5ecf8a445f7c989d85f9805')
 
 build() {
 	cd $srcdir
