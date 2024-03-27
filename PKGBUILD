@@ -1,6 +1,6 @@
 # Maintainer: Devin Lin <devin@kde.org>
 pkgname=plasma-mobile
-pkgver=6.0.3
+pkgver=6.0.3.1
 pkgrel=0
 pkgdesc="Plasma Mobile shell components."
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
