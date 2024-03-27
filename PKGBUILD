@@ -3,16 +3,16 @@
 # Contributor: Kimiblock
 # Contributor: Philip Goto <philip.goto@gmail.com>
 pkgname=apostrophe-git
-pkgver=2.6.3.r289.g5085803
+pkgver=2.6.3.r327.g5666e17
 pkgrel=1
 pkgdesc="A distraction free Markdown editor for GNU/Linux made with GTK+"
 arch=('any')
 url="https://world.pages.gitlab.gnome.org/apostrophe"
 license=('GPL-3.0-or-later')
 depends=(
-  'ttf-fira-mono'
-  'ttf-fira-sans'
-  'libadwaita>=1.5'
+  'gtksourceview5'
+  'libadwaita'
+  'libspelling'
   'python-cairo'
   'python-chardet'
   'python-gobject'
@@ -32,6 +32,8 @@ checkdepends=('appstream')
 optdepends=(
   'mathjax: for formula preview'
   'texlive-bin: for the pdftex module'
+  'ttf-fira-mono: recommended Mono font'
+  'ttf-fira-sans: recommended Sans font'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
