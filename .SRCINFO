@@ -1,0 +1,18 @@
+pkgbase = vanilla-backgrounds-git
+	pkgdesc = Collection of light and dark backgrounds for Vanilla OS
+	pkgver = continuous.r0.g54ac40b
+	pkgrel = 1
+	url = https://github.com/Vanilla-OS/vanilla-backgrounds
+	arch = any
+	license = CCPL:by-sa-4.0
+	license = CCPL:by-4.0
+	makedepends = git
+	makedepends = glib2
+	makedepends = meson
+	depends = webp-pixbuf-loader
+	provides = vanilla-backgrounds
+	conflicts = vanilla-backgrounds
+	source = git+https://github.com/Vanilla-OS/vanilla-backgrounds.git
+	b2sums = SKIP
+
+pkgname = vanilla-backgrounds-git
