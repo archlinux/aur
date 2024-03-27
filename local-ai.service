@@ -5,7 +5,7 @@ After=local-fs.target
 [Service]
 User=local-ai
 Group=local-ai
-EnvironmentFile=/etc/conf.d/local-ai.conf
+EnvironmentFile=/etc/local-ai/local-ai.conf
 SyslogIdentifier=local-ai
 Type=simple
 ExecStart=/usr/bin/local-ai
