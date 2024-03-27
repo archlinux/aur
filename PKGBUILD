@@ -8,20 +8,21 @@ pkgver=0.9.23
 pkgrel=14
 pkgdesc='mount removable devices as normal user'
 arch=(i686 x86_64 armv7h)
+url=https://salsa.debian.org/debian/pmount
 license=(GPL2)
-url=http://pmount.alioth.debian.org/
-backup=(etc/pmount.allow)
+
+provides=($pkgname)
+conflicts=($pkgname)
 depends=('sysfsutils>=2.0.0-1' util-linux)
-makedepends=(intltool)
+makedepends=('intltool>=0.21')
+backup=(etc/pmount.allow)
 source=(
-    https://alioth-archive.debian.org/releases/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.bz2
-    pmount-bash-completion # From pmount-debian
-    0001-Fix-a-careless-segfault-in-debug-mode.patch
-    pmount.exfat.patch
+    $url/-/archive/debian/$pkgver/$pkgname-debian-$pkgver.tar.gz
+    0001-fix-debug-segfault.patch
+    0002-support-exfat.patch
 )
 sha256sums=(
-    db38fc290b710e8e9e9d442da2fb627d41e13b3ee80326c15cc2595ba00ea036
-    2f3983432533d453cb1217b8e6804264e22fa689a0e73a2a4d8d11f0b704bacc
+    259d5994e4580ea4c0171c1534e5111c503a605d62e1a2d4d4bbd5018f99d727
     e19eda4987b41f1b76281b980b56239b386539938d70e5b4a40b286bff789b93
     6c90da5d992deea70334acaf6781df9d538887bd3d1b62e36a9449e0708006c0
 )
