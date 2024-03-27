@@ -1,7 +1,7 @@
 pkgbase = monolith
 	pkgdesc = CLI to save web pages as single HTML files
 	pkgver = 2.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Y2Z/monolith
 	arch = x86_64
 	arch = aarch64

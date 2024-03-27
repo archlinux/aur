@@ -4,7 +4,7 @@
 
 pkgname=monolith
 pkgver=2.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI to save web pages as single HTML files'
 arch=(x86_64 aarch64)
 url=https://github.com/Y2Z/monolith
@@ -17,7 +17,7 @@ sha512sums=('31bc8c82393ddd3e55d2fd1f13f60fcf2591b1718a077668e240853ee782c8ebbb3
 
 build() {
   cd $pkgname-$pkgver
-  cargo build --release
+  cargo build --release --locked
 }
 
 package() {
