@@ -8,7 +8,7 @@ pkgdesc="Generate music from the entropy of Linux (latest commit)"
 url="https://github.com/orhun/linuxwave"
 license=('MIT')
 arch=('aarch64' 'arm' 'i386' 'riscv64' 'x86_64')
-makedepends=('clang' 'git' 'lld<=15.0.7' 'zig<=0.10.1')
+makedepends=('clang15' 'git' 'lld<=15.0.7' 'zig<=0.10.1')
 provides=("linuxwave")
 conflicts=("linuxwave")
 source=("git+$url"

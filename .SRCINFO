@@ -9,7 +9,7 @@ pkgbase = linuxwave-git
 	arch = riscv64
 	arch = x86_64
 	license = MIT
-	makedepends = clang
+	makedepends = clang15
 	makedepends = git
 	makedepends = lld<=15.0.7
 	makedepends = zig<=0.10.1
