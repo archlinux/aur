@@ -2,11 +2,11 @@
 
 pkgname=fwbuilder-git
 pkgver=4853.8013c00e1
-pkgrel=1
+pkgrel=2
 pkgdesc="Object-oriented GUI and set of compilers for various firewall platforms. Git version"
 url="https://github.com/fwbuilder/fwbuilder"
 arch=('x86_64')
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=(
 	'qt6-base'
 	'hicolor-icon-theme'
