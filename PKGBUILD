@@ -2,7 +2,7 @@
 
 _pkgname=volume-sync
 pkgname=$_pkgname-git
-pkgver=11.aed6bb3
+pkgver=12.bc57dc4
 pkgrel=1
 pkgdesc="A utility for keeping volume in sync across multiple pulse volume sinks"
 url="https://github.com/aravance/volume-sync"
