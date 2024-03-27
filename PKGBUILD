@@ -3,7 +3,7 @@
 
 pkgname='firefox-extension-enhancer-for-youtube-bin'
 pkgver=2.0.123
-pkgrel=1
+pkgrel=2
 pkgdesc='Take control of YouTube and boost your user experience!'
 arch=('any')
 url='https://www.mrfdev.com/enhancer-for-youtube'
@@ -15,6 +15,6 @@ noextract=('enhancer-for-youtube.xpi')
 sha256sums=('18ed7dcb7cd373af7107e9f15b627df9d33a59f1dc5bd33b7f00f995b99fbcf2')
 
 package() {
-  install -Dm644 'enhancer-for-youtube.xpi' "${pkgdir}/usr/lib/firefox/browser/extensions/enhancer-for-youtube.xpi"
+  install -Dm644 'enhancer-for-youtube.xpi' "${pkgdir}/usr/lib/firefox/browser/extensions/enhancerforyoutube@maximerf.addons.mozilla.org.xpi"
 }
 
