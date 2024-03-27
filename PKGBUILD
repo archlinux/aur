@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=sfdnormalize
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='SFD normalizer, discards GUI information from SFD files'
 arch=(any)
 url="https://github.com/alerque/$pkgname"
@@ -13,7 +13,7 @@ makedepends=(python-{build,installer,wheel}
              python-setuptools)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('638ed0a7dab3f7c20eee9ef3803357c7e9b01cf4bdc30ba0de94a7dd2c1ca19c')
+sha256sums=('4713ecd4d58cc6f2d0a195af61f57ae8e141027f40d49cf418357b5325f681d0')
 
 build() {
 	cd "$_archive"
