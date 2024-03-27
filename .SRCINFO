@@ -7,7 +7,7 @@ pkgbase = xfce4-mixer
 	license = GPL2
 	makedepends = intltool
 	depends = xfce4-panel
-	depends = alsa-lib>=1.2.1
+	depends = alsa-utils
 	depends = gstreamer
 	source = https://archive.xfce.org/src/apps/xfce4-mixer/4.18/xfce4-mixer-4.18.1.tar.bz2
 	sha256sums = b27f67dccc9dd67d989b405dab02be1299436dd71b58edb88a1d5f82571ead95
