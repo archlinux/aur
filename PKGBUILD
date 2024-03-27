@@ -1,13 +1,13 @@
-# Maintainer: Eduardo Leggiero <https://www.leggiero.uk/>
+# Maintainer:  Geballin - Guillaume Ballin <macniaque at free dot fr>
 
 pkgname=restclient
-pkgver=3.6.1
+pkgver=3.7.1
 pkgrel=1
 pkgdesc="RESTClient is a Java application to test RESTful webservices. It can be used to test variety of HTTP communications."
 arch=("any")
 url="https://github.com/wiztools/rest-client"
 license=('BSD')
-depends=('jre8-openjdk')
+depends=('java-runtime')
 install=${pkgname}.install
 source=("https://github.com/wiztools/rest-client/releases/download/${pkgver}/${pkgname}-ui-fat-${pkgver}.jar"
         "https://github.com/wiztools/rest-client/releases/download/${pkgver}/${pkgname}-cli-fat-${pkgver}.jar"
@@ -31,8 +31,8 @@ package() {
                   "${pkgdir}/usr/share/icons/hicolor/128x128/apps/restclient.png"
     install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
-sha256sums=('c4b84905187284691c1090d531ce225a25c33211c8927a6232660922a198c354'
-            'f5ab5b5a4f72bc16c309cc5f87dfd7ee2de0cb02fb9646b00fe339d382786131'
+sha256sums=('ea575df3f96841fbe6a294c04e0357a75f3541dab8d418e0f49e43a393a3daee'
+            'f85f2c0d516f1834745e50567f6f347b30de0531a2aca8f5476f0f973f9fe819'
             'fba871a8b79a220218d01934b8782485c2198509d9a142f635374a46704ef09e'
             'ca367cd056d56ad7a370fca15233fb619b82c146d3c10ac2ea7bbe3e51953099'
             'bba0973de659d2da536e7700e7817f8cdd9607016896e962709379f98664dd69'
