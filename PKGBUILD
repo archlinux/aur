@@ -1,3 +1,5 @@
+# shellcheck disable=SC2034,SC2154,SC2164
+
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
@@ -10,7 +12,7 @@ pkgver=4.19.25
 pkgrel=5
 arch=(x86_64)
 url='https://www.riverbankcomputing.com/software/sip/intro'
-license=('custom:"sip"')
+license=('LicenseRef-sip')
 makedepends=(python)
 source=("https://www.riverbankcomputing.com/static/Downloads/sip/$pkgver/sip-$pkgver.tar.gz"
         python3-11.patch)
@@ -32,8 +34,6 @@ build() {
 package_sip4() {
   pkgdesc="A tool that makes it easy to create Python bindings for C and C++ libraries"
   depends=(glibc)
-  provides=(sip)
-  conflicts=(sip)
 
   cd build
   make DESTDIR="$pkgdir" install -C sipgen
@@ -47,8 +47,6 @@ package_sip4() {
 package_python-sip4() {
   pkgdesc="Python SIP4 bindings for C and C++ libraries"
   depends=(python)
-  provides=(python-sip)
-  replaces=(python-sip)
 
   cd build
   make DESTDIR="$pkgdir" install
