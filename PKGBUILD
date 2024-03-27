@@ -3,56 +3,58 @@
 # All my PKGBUILDs are managed at https://github.com/tmn505/AUR
 
 pkgbase=libonvif
-pkgname=('libonvif' 'onvif-gui')
-pkgver=1.4.4
+pkgname=('libonvif' 'python-libonvif')
+pkgver=3.1.0
 pkgrel=1
 url='https://github.com/sr99622/libonvif'
+license=('LGPL-2.1-or-later')
 arch=('i686' 'x86_64')
-makedepends=('cmake' 'git' 'libavcodec.so' 'libavdevice.so' 'libavformat.so' 'libavutil.so'
-             'libswresample.so' 'libswscale.so' 'libxkbcommon-x11' 'libxml2' 'python' 'qt5-base' 'sdl2')
-source=("git+${url}.git#commit=ab5ccb2635a18552a9b10102531b7d61dbc55868"
-        "${pkgbase}.desktop")
-sha256sums=('SKIP'
-            'dc6d193827628215ccf66c0617c6ce2150e2fc3a5ee66afc35fb9c0c7d571d88')
+makedepends=('cmake'
+             'git'
+             'libxml2'
+             'pybind11'
+             'python-build'
+             'python-installer'
+             'python-setuptools'
+             'python-wheel')
+# _prjrel=2.0.1
+source=("git+${url}.git#commit=5c8433978a1bc15a5b662b451759af4f5d7e27be")
+sha256sums=('3db685e429d00f733307b8c056a63817b864162d6b6d404ec83966138273ed8a')
+
+prepare() {
+	cd ${srcdir}/${pkgbase}/libonvif
+	sed -e 's,add_subdirectory(pybind11),find_package(pybind11 REQUIRED),' -i CMakeLists.txt
+}
+
+pkgver() {
+	cd ${srcdir}/${pkgbase}/libonvif
+	sed -n -e '/libonvif VERSION/p' CMakeLists.txt | sed -e 's/[^0-9,.]*//g'
+}
 
 build() {
-	cd ${srcdir}/${pkgbase}
-	cmake -B build \
+	cd ${srcdir}/${pkgbase}/libonvif
+	cmake -B build-so \
 		-D CMAKE_BUILD_TYPE=Release \
 		-D CMAKE_INSTALL_PREFIX=/usr \
-		-D BUILD_GUI=ON
-	cmake --build build
-	DESTDIR="${srcdir}/${pkgbase}/destdir" cmake --install build
+		-D WITHOUT_PYTHON=true
+	cmake --build build-so
+	python -m build --wheel --no-isolation
 }
 
 package_libonvif() {
-	pkgdesc='A client side implementation of the ONVIF specification - library and CLI app'
-	license=('BSD-2-Clause-NETBSD' 'GPL-2.0-or-later')
+	pkgdesc='A client side implementation of the ONVIF specification - library'
 	depends=('libxml2')
 
-	cp -R ${srcdir}/${pkgbase}/destdir/. ${pkgdir}
-	rm -f \
-		${pkgdir}/usr/bin/onvif-gui \
-		${pkgdir}/usr/lib/libavio.* \
-		${pkgdir}/usr/share/man/*/onvif-gui.*
+	cd ${srcdir}/${pkgbase}/libonvif
+	install -D -m 644 -t ${pkgdir}/usr/include include/onvif.h
+	install -D -m 755 -t ${pkgdir}/usr/lib build-so/${pkgname}.so.*
+	cp -a build-so/${pkgname}.so ${pkgdir}/usr/lib
 }
 
-package_onvif-gui() {
-	pkgdesc='A client side implementation of the ONVIF specification - GUI app'
-	license=('Apache-2.0' 'GPL-2.0-or-later')
-	depends=('libavcodec.so' 'libavformat.so' 'libavutil.so' 'libswresample.so'
-	         'libswscale.so' 'libonvif' 'libxkbcommon-x11' 'qt5-base' 'sdl2')
+package_python-libonvif() {
+	pkgdesc='A client side implementation of the ONVIF specification - python library'
+	depends=('libxml2' 'python')
 
-	cp -R ${srcdir}/${pkgbase}/destdir/. ${pkgdir}
-	rm -f -R \
-		${pkgdir}/usr/bin/onvif-util \
-		${pkgdir}/usr/include \
-		${pkgdir}/usr/lib/libonvif.* \
-		${pkgdir}/usr/share/man/*/onvif-util.*
-	install -D -m 644 \
-		${srcdir}/${pkgbase}.desktop \
-		${pkgdir}/usr/share/applications/${pkgname}.desktop
-	install -D -m 644 \
-		${srcdir}/${pkgbase}/${pkgname}/resources/${pkgname}.png \
-		${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png
+	cd ${srcdir}/${pkgbase}/libonvif
+	python -m installer --destdir="${pkgdir}" dist/*.whl
 }

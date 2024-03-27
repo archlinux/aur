@@ -1,43 +1,26 @@
 pkgbase = libonvif
-	pkgver = 1.4.4
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/sr99622/libonvif
 	arch = i686
 	arch = x86_64
+	license = LGPL-2.1-or-later
 	makedepends = cmake
 	makedepends = git
-	makedepends = libavcodec.so
-	makedepends = libavdevice.so
-	makedepends = libavformat.so
-	makedepends = libavutil.so
-	makedepends = libswresample.so
-	makedepends = libswscale.so
-	makedepends = libxkbcommon-x11
 	makedepends = libxml2
-	makedepends = python
-	makedepends = qt5-base
-	makedepends = sdl2
-	source = git+https://github.com/sr99622/libonvif.git#commit=ab5ccb2635a18552a9b10102531b7d61dbc55868
-	source = libonvif.desktop
-	sha256sums = SKIP
-	sha256sums = dc6d193827628215ccf66c0617c6ce2150e2fc3a5ee66afc35fb9c0c7d571d88
+	makedepends = pybind11
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	source = git+https://github.com/sr99622/libonvif.git#commit=5c8433978a1bc15a5b662b451759af4f5d7e27be
+	sha256sums = 3db685e429d00f733307b8c056a63817b864162d6b6d404ec83966138273ed8a
 
 pkgname = libonvif
-	pkgdesc = A client side implementation of the ONVIF specification - library and CLI app
-	license = BSD-2-Clause-NETBSD
-	license = GPL-2.0-or-later
+	pkgdesc = A client side implementation of the ONVIF specification - library
 	depends = libxml2
 
-pkgname = onvif-gui
-	pkgdesc = A client side implementation of the ONVIF specification - GUI app
-	license = Apache-2.0
-	license = GPL-2.0-or-later
-	depends = libavcodec.so
-	depends = libavformat.so
-	depends = libavutil.so
-	depends = libswresample.so
-	depends = libswscale.so
-	depends = libonvif
-	depends = libxkbcommon-x11
-	depends = qt5-base
-	depends = sdl2
+pkgname = python-libonvif
+	pkgdesc = A client side implementation of the ONVIF specification - python library
+	depends = libxml2
+	depends = python
