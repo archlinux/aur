@@ -1,0 +1,5 @@
+[python-panel]
+source = "github"
+github = "holoviz/panel"
+use_latest_release = "true"
+prefix = "v"
