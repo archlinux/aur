@@ -1,0 +1,5 @@
+[freecheck]
+source = "github"
+github = "alerque/freecheck"
+prefix = "v"
+use_max_tag = true
