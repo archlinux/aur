@@ -1,23 +1,25 @@
-# Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
+# Maintainer: Marco Rubin <marco.rubin@protonmail.com>
+# Contributor: Chih-Hsuan Yen <yan12125@archlinux.org>
 
-pkgname=python-tensorflow-metadata
-pkgver=1.12.0
+_name=metadata
+pkgname=python-tensorflow-$_name
+pkgver=1.14.0
 pkgrel=1
-pkgdesc='Utilities for passing TensorFlow-related metadata between tools'
+pkgdesc='Library and standards for schema and statistics.'
 arch=(any)
 url='https://github.com/tensorflow/metadata'
-license=(Apache)
+license=(Apache-2.0)
 depends=(python absl-py python-googleapis-common-protos python-protobuf)
-makedepends=(python-setuptools bazel)
-source=(https://github.com/tensorflow/metadata/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('45297b5b1f9eb45a2608274f1227174ab4ea794a5a61354b9610cafd55424cea')
+makedepends=(bazel python-build python-installer python-setuptools python-wheel)
+source=("$url/archive/v$pkgver.tar.gz")
+b2sums=('6340ddf36940bea62ef751dad1fb0e8b729a011677a4b0d7e472b223f0d4a9713abbd8e8648bd507aa227f522f96bba6346ab69884f48b561f8020d6b2fa2abc')
 
 build() {
-  cd metadata-$pkgver
-  python setup.py build
+    cd $_name-$pkgver
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd metadata-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    cd $_name-$pkgver
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
