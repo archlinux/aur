@@ -3,7 +3,7 @@ pkgname="watt-wiser-sensors-bin"
 _pkgname=${pkgname%-bin}
 pkgdesc="A software energy consumption estimation tool"
 _repo="watt-wiser"
-pkgver=v0.0.8
+pkgver=v0.1.0
 pkgrel=1
 arch=("any")
 url="https://github.com/wattwisegames/$_repo"
@@ -13,9 +13,7 @@ provides=($_pkgname)
 conflicts=("$_pkgname" "watt-wiser-git" "watt-wiser-sensors-git")
 depends=("lm_sensors")
 
-sha256sums=('6db5612ede2c6307f24047e7c9a82223536fc2c97c81e0e6b774877b8d280634')
-sha512sums=('3f41194f5c1b88bb2e3e35b3363657e11568c1909aaea755790f31d61d8e5ba0448dfe4e1fb78f9e291ca9ea24cd307e56fffdb584fd1e51e1c2f28f24e95f12')
-b2sums=('df5b85474a505b0ac3e852fb1ffe2883d58411a0fa00a83f223b1209bdd3fc575a9c8aa48e9f719ca59bb0f594bcdd938c77f71ec68f4bf0138a7c86fea252ba')
+b2sums=('199b77b298f73f00ae227abfd14a1880a76bc60d279fb87c30367e1c58e67a470c289cf89aeacc7e89c7c4b7ca9bff797631344733f37c0899e5e178e30ceedc')
 
 package() {
   cd "${_repo}-${pkgver}-linux"
