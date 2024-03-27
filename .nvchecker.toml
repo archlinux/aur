@@ -1,0 +1,4 @@
+[devbox]
+source = "github"
+github = "jetpack-io/devbox"
+use_max_tag = true
