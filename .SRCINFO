@@ -1,12 +1,13 @@
 pkgbase = python-ansicolors
 	pkgdesc = ANSI colors for Python
 	pkgver = 1.1.8
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/jonathaneunice/colors
 	arch = any
 	license = ISC
-	checkdepends = python-pytest
-	makedepends = python-setuptools
+	checkdepends = python-nose
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python
 	source = https://github.com/jonathaneunice/colors/archive/c965f5b9103c5bd32a1572adb8024ebe83278fb0/python-ansicolors-c965f5b9103c5bd32a1572adb8024ebe83278fb0.tar.gz
 	sha512sums = f60770496614b75fc2a6bab15c55a87c245ac233c907708572e76d4701690895b3a350b7ab2934304262a8e9076fbff64a9792c2345fe5994af0c6c09209e6a2
