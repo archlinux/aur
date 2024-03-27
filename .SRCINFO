@@ -1,7 +1,7 @@
 pkgbase = python-ezdxf
 	pkgdesc = Python interface to DXF
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ezdxf.mozman.at/
 	arch = x86_64
 	license = MIT
@@ -9,9 +9,11 @@ pkgbase = python-ezdxf
 	checkdepends = python-pytest
 	makedepends = python-setuptools
 	makedepends = cython
-	depends = python
 	depends = python-typing_extensions
 	depends = python-pyparsing
+	depends = python-numpy
+	depends = python
+	depends = python-fonttools
 	source = python-ezdxf-1.2.0.tar.gz::https://github.com/mozman/ezdxf/archive/v1.2.0.tar.gz
 	sha256sums = 199c9cb37029f212b8d0fff258e5daa44623e89fe231bc10117bec02c7f2a09c
 

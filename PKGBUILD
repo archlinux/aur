@@ -2,15 +2,17 @@
 
 pkgname=python-ezdxf
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python interface to DXF"
 arch=('x86_64')
 url=https://ezdxf.mozman.at/
 license=('MIT')
 depends=(
-python
 python-typing_extensions
 python-pyparsing
+python-numpy
+python
+python-fonttools
 )
 makedepends=(
 python-setuptools
