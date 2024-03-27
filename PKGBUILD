@@ -1,10 +1,10 @@
-# Maintainer: Gökçe Aydos <aur2022_aydos_de>
+# Maintainer: Gökçe Aydos <aydos.de>
 
 pkgname=jupyter-nbgrader
 _realm=jupyter
 _name=${pkgname#"$_realm"-}
-pkgver=0.9.1
-pkgrel=2
+pkgver=0.9.2
+pkgrel=1
 pkgdesc="A system for assigning and grading notebooks"
 arch=(any)
 url=https://github.com/$_realm/$_name
@@ -52,7 +52,6 @@ makedepends=(
 source=(
 	https://files.pythonhosted.org/packages/source/"${_name::1}/$_name/$_name-$pkgver".tar.gz
 )
-sha256sums=(88e3718fb4e6f75dd0b90afea3c5ad0abf14fd23ead4ce7a5c2be5eb6fa327d2)
 build() {
 	cd nbgrader-"$pkgver" || exit
 	python -m build --wheel --no-isolation
@@ -63,3 +62,4 @@ package() {
 	mv "$pkgdir"/usr/etc "$pkgdir"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+sha256sums=('99409da055306524254a8d19595ec13810f11112f34c6a93306475861490a734')

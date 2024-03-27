@@ -1,7 +1,7 @@
 pkgbase = jupyter-nbgrader
 	pkgdesc = A system for assigning and grading notebooks
-	pkgver = 0.9.1
-	pkgrel = 2
+	pkgver = 0.9.2
+	pkgrel = 1
 	url = https://github.com/jupyter/nbgrader
 	arch = any
 	license = BSD
@@ -38,7 +38,7 @@ pkgbase = jupyter-nbgrader
 	depends = python-uri-template
 	depends = python-jsonpointer
 	depends = python-isoduration
-	source = https://files.pythonhosted.org/packages/source/n/nbgrader/nbgrader-0.9.1.tar.gz
-	sha256sums = 88e3718fb4e6f75dd0b90afea3c5ad0abf14fd23ead4ce7a5c2be5eb6fa327d2
+	source = https://files.pythonhosted.org/packages/source/n/nbgrader/nbgrader-0.9.2.tar.gz
+	sha256sums = 99409da055306524254a8d19595ec13810f11112f34c6a93306475861490a734
 
 pkgname = jupyter-nbgrader
