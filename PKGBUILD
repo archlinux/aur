@@ -3,23 +3,25 @@
 
 pkgname=jupyterlab-lsp
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Coding assistance for JupyterLab with Language Server Protocol."
 arch=(any)
 url="https://github.com/jupyter-lsp/jupyterlab-lsp"
 license=(BSD-3-Clause)
 depends=(python jupyter-lsp jupyterlab)
-makedepends=(python-build python-installer python-wheel python-setuptools)
+makedepends=(python-build python-installer python-wheel python-setuptools npm yarn)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('aeac84093ada6d20ef57ae0e97811cc5796a0cab7237b32f8eddf993c0bb0356')
+sha256sums=('ff052231adca0239a97cc04a4eca779affee15f3475017178e6b94d3a398e6ac')
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname-$pkgver/python_packages/jupyterlab_lsp
+  jlpm install
+  jlpm build
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname-$pkgver/python_packages/jupyterlab_lsp
   python -m installer --destdir=$pkgdir dist/*.whl
   install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }

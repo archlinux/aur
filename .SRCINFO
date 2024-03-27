@@ -1,7 +1,7 @@
 pkgbase = jupyterlab-lsp
 	pkgdesc = Coding assistance for JupyterLab with Language Server Protocol.
 	pkgver = 5.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jupyter-lsp/jupyterlab-lsp
 	arch = any
 	license = BSD-3-Clause
@@ -9,10 +9,12 @@ pkgbase = jupyterlab-lsp
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
+	makedepends = npm
+	makedepends = yarn
 	depends = python
 	depends = jupyter-lsp
 	depends = jupyterlab
 	source = jupyterlab-lsp-5.1.0.tar.gz::https://github.com/jupyter-lsp/jupyterlab-lsp/archive/refs/tags/v5.1.0.tar.gz
-	sha256sums = aeac84093ada6d20ef57ae0e97811cc5796a0cab7237b32f8eddf993c0bb0356
+	sha256sums = ff052231adca0239a97cc04a4eca779affee15f3475017178e6b94d3a398e6ac
 
 pkgname = jupyterlab-lsp
