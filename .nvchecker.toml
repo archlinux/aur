@@ -1,0 +1,4 @@
+[u2o]
+source = "github"
+github = "adyeths/u2o"
+use_max_tag = true
