@@ -6,7 +6,7 @@
 # Contributor: Alessandro Pazzaglia <jackdroido at gmail dot com>
 pkgname=pyinstaller
 pkgver=6.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Bundles a Python application and all its dependencies into a single package"
 arch=('x86_64')
 url="https://www.pyinstaller.org"
@@ -30,8 +30,10 @@ checkdepends=(
   'xmldiff'
 )
 optdepends=('python-argcomplete: tab completion for CLI tools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/pyinstaller/pyinstaller/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0200fb8e27c284e5698a688aa904980b7a1692bc38daf6446bbae8f71b65dc2e')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pyinstaller/pyinstaller/archive/refs/tags/v$pkgver.tar.gz"
+        'fortify-source-fix.diff')
+sha256sums=('0200fb8e27c284e5698a688aa904980b7a1692bc38daf6446bbae8f71b65dc2e'
+            '46f7cfd082570a3f4c138a868e55dc39deacccbff602ce7e70d033236566fa1b')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -39,6 +41,10 @@ prepare() {
   # Force bootloader build for the current platform
   # and remove the unnecessary binaries
   rm -rvf PyInstaller/bootloader/{Darwin,Linux,Windows}*
+
+  # Apply patch to bootloader build script to avoid redefining _FORTIFY_SOURCE if
+  # default makepkg CFLAGS are used, which contain `-Wp,-D_FORTIFY_SOURCE=3`:
+  patch -Np1 -i "${srcdir}/fortify-source-fix.diff"
 }
 
 build() {
