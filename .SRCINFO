@@ -1,7 +1,7 @@
 pkgbase = dae-git
 	pkgdesc = A Linux lightweight and high-performance transparent proxy solution based on eBPF.
-	pkgver = 0.5.1.r9.gd31d880
-	pkgrel = 4
+	pkgver = 0.5.1.r12.gb9741c9
+	pkgrel = 1
 	url = https://github.com/daeuniverse/dae
 	arch = x86_64
 	arch = aarch64

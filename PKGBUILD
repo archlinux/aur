@@ -1,8 +1,8 @@
 # Maintainer: leo <douglarek at gmail dot com>
 _name=dae
 pkgname=$_name-git
-pkgver=0.5.1.r9.gd31d880
-pkgrel=4
+pkgver=0.5.1.r12.gb9741c9
+pkgrel=1
 pkgdesc="A Linux lightweight and high-performance transparent proxy solution based on eBPF."
 arch=('x86_64' 'aarch64')
 url="https://github.com/daeuniverse/dae"
