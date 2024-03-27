@@ -1,0 +1,5 @@
+[lab]
+source = "github"
+github = "zaquestion/lab"
+prefix = "v"
+use_max_tag = true
