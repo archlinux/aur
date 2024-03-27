@@ -1,0 +1,5 @@
+[decasify]
+source = "github"
+github = "alerque/decasify"
+prefix = "v"
+use_max_tag = true
