@@ -2,12 +2,12 @@
 
 pkgname="yd-go-git"
 _pkgname=${pkgname%-git}
-pkgrel=2
+pkgrel=3
 pkgver="master.5af17d8.r0.g5af17d8"
 pkgdesc="Panel indicator for Yandex-disk CLI daemon (linux)"
 arch=('x86_64')
 url="https://github.com/slytomcat/${_pkgname}/"
-license=('GPL-3.0 license')
+license=('GPL-3.0-only')
 depends=('yandex-disk')
 makedepends=('go' 'git' 'gendesk')
 conflicts=('yd-go' 'yd-go-bin' 'yd-go-git-bin' 'yd-go-bin-git')
@@ -15,11 +15,6 @@ source=("git+https://github.com/slytomcat/yd-go.git")
 sha256sums=('SKIP')
 
 options=(!debug)
-
-pkgver() {
-  cd "${_pkgname}"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 prepare() {
 	echo "Creating desktop file..."
@@ -33,6 +28,11 @@ prepare() {
 		# Should i use "applet" type in categories?
 		# If I have to, then don't forget about the OnlyShowIn=
 		# Categories spec. https://specifications.freedesktop.org/menu-spec/menu-spec-1.1.html#category-registry
+}
+
+pkgver() {
+  cd "${_pkgname}"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
