@@ -34,6 +34,5 @@ package() {
       "$pkgdir/usr/share/vim/vimfiles/{}" \;
     done
     cd ..
-    [ -d vim ] && cd ..
   done
 }
