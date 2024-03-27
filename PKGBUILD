@@ -25,9 +25,6 @@ prepare() {
 		--categories="Network; FileTools; Monitor" \
 		--icon "/usr/share/pixmaps/${_pkgname}.png" \
 		--exec "/usr/bin/${_pkgname}"
-		# Should i use "applet" type in categories?
-		# If I have to, then don't forget about the OnlyShowIn=
-		# Categories spec. https://specifications.freedesktop.org/menu-spec/menu-spec-1.1.html#category-registry
 }
 
 pkgver() {
