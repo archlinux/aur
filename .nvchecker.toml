@@ -1,0 +1,5 @@
+[sile-smartquotes]
+source = "github"
+github = "Omikhleia/smartquotes.sile"
+prefix = "v"
+use_max_tag = true
