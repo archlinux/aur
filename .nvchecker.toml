@@ -1,0 +1,5 @@
+[ufolint]
+source = "github"
+github = "source-foundry/ufolint"
+prefix = "v"
+use_max_tag = true
