@@ -1,19 +1,18 @@
 pkgbase = yd-go
 	pkgdesc = Panel indicator for Yandex-disk CLI daemon (linux)
 	pkgver = 5af17d8
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/slytomcat/yd-go
 	arch = x86_64
-	license = GPL-3.0 license
-	depends = go
+	license = GPL-3.0-only
+	makedepends = gendesk
 	depends = yandex-disk
-	depends = dbus-broker
-	depends = gendesk
+	conflicts = yd-go-git
 	options = !strip
 	options = !debug
 	source = https://github.com/slytomcat/yd-go/releases/download/master-5af17d8/yd-go
 	source = yd-go.png
-	md5sums = SKIP
-	md5sums = SKIP
+	b2sums = fe74594fa1b1a564bce469bc13aa0e65b47bcfef4de4b07f11dabaf92594eab4e8408e7dd777edfb869f84a24821be3d3bfa4e8437559a8821551a7091870756
+	b2sums = 647865327ba584fdc36ddc37e85b6457af6ca888d1b25479a7b8a94a81d0629a71c954a21c8604ef5e96c529178fcf9c4b6fd82df41a1ab6a9ab2d5c281c2c41
 
 pkgname = yd-go
