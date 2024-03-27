@@ -36,7 +36,7 @@ source=("https://dl-canary.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkg
         'LICENSE.html::https://discordapp.com/terms'
         'OSS-LICENSES.html::https://discordapp.com/licenses')
 # Skip SHA256 of licenses, it fails always for some reason.
-sha256sums=('33188585deed2ef2f5b4145ce39d6a8c215996618cf08a25724131a74b11df2f'
+sha256sums=('33188585deed2ef2f5b4145ce39d6a8c215996618cf08a25724131a74b11df2f  discord-canary-0.0.326.tar.gz'
             'SKIP'
             'SKIP')
 
