@@ -1,6 +1,6 @@
 pkgbase = r-transport
 	pkgdesc = Computation of Optimal Transport Plans and Wasserstein Distances
-	pkgver = 0.14.7
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=transport
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = r-transport
 	optdepends = r-ks
 	optdepends = r-testthat
 	optdepends = r-wsgeometry
-	source = https://cran.r-project.org/src/contrib/transport_0.14-7.tar.gz
-	sha256sums = c01ed03509dee22b58b39da176a6427c2026efd901e9b0fb9f42ab022fd58716
+	source = https://cran.r-project.org/src/contrib/transport_0.15-0.tar.gz
+	sha256sums = 8aa9d5daec455586fe6fab3db5b1bfa85d1157ff55af98d936bc654c20f33829
 
 pkgname = r-transport
