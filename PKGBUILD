@@ -11,7 +11,6 @@ depends=(
 python-typing_extensions
 python-pyparsing
 python-numpy
-python
 python-fonttools
 )
 makedepends=(
