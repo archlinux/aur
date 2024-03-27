@@ -1,0 +1,5 @@
+[dehinter]
+source = "github"
+github = "source-foundry/dehinter"
+prefix = "v"
+use_max_tag = true
