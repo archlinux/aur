@@ -1,7 +1,7 @@
 pkgbase = vim-colors-night-git
 	pkgdesc = night color schemes for vim (catppuccin, moonfly, nightfly, nightfox, night-owl, one, onehalfdark, palenight)
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	groups = vim-plugins
 	license = MIT

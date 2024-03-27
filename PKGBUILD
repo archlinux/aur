@@ -1,7 +1,7 @@
 # Maintainer: janezz55
 pkgname=vim-colors-night-git
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='night color schemes for vim (catppuccin, moonfly, nightfly, nightfox, night-owl, one, onehalfdark, palenight)'
 arch=('any')
 license=('MIT')
