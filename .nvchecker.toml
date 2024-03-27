@@ -1,0 +1,5 @@
+[xet]
+source = "github"
+github = "xetdata/xet-core"
+prefix = "v"
+use_max_tag = true
