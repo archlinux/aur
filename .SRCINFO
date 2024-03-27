@@ -1,0 +1,18 @@
+pkgbase = sdl23-compat-git
+	pkgdesc = SDL2 runtime compatibility library using SDL3
+	pkgver = r522.44fec4d
+	pkgrel = 1
+	url = https://github.com/libsdl-org/sdl2-compat
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = libgl
+	makedepends = ninja
+	depends = sdl3
+	provides = sdl2
+	conflicts = sdl2
+	replaces = sdl2
+	source = git+https://github.com/libsdl-org/sdl2-compat.git
+	sha512sums = SKIP
+
+pkgname = sdl23-compat-git
