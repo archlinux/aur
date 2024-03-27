@@ -1,18 +1,18 @@
 pkgbase = affine-bin
 	pkgdesc = There can be more than Notion and Miro. AFFiNE is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use.
-	pkgver = 0.13.2
+	pkgver = 0.13.3
 	pkgrel = 1
 	url = https://affine.pro/
 	arch = x86_64
 	license = LicenseRef-custom
 	makedepends = fuse2
 	depends = electron29
-	provides = affine=0.13.2
+	provides = affine=0.13.3
 	conflicts = affine
-	source = affine-0.13.2.AppImage::https://github.com/toeverything/AFFiNE/releases/download/v0.13.2/affine-0.13.2-stable-linux-x64.appimage
-	source = LICENSE-0.13.2::https://raw.githubusercontent.com/toeverything/AFFiNE/v0.13.2/LICENSE
+	source = affine-0.13.3.AppImage::https://github.com/toeverything/AFFiNE/releases/download/v0.13.3/affine-0.13.3-stable-linux-x64.appimage
+	source = LICENSE-0.13.3::https://raw.githubusercontent.com/toeverything/AFFiNE/v0.13.3/LICENSE
 	source = affine.sh
-	sha256sums = 8d8118a8d33765291337f52f809aa0e205c0e851fee237617adc00288bbc4982
+	sha256sums = ee021ffe1674d98848416c1e8ea7d2488b8a0c8842338dce3885864689f72fc4
 	sha256sums = b54bb7aa14dd5725bc268921eeea9dee973dacbc13e0cea30e7d2adb5cd5a53f
 	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 

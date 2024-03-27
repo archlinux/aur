@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=affine-bin
 _pkgname=AFFiNE
-pkgver=0.13.2
+pkgver=0.13.3
 _electronversion=29
 pkgrel=1
 pkgdesc="There can be more than Notion and Miro. AFFiNE is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use."
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/toeverything/AFFiNE/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8d8118a8d33765291337f52f809aa0e205c0e851fee237617adc00288bbc4982'
+sha256sums=('ee021ffe1674d98848416c1e8ea7d2488b8a0c8842338dce3885864689f72fc4'
             'b54bb7aa14dd5725bc268921eeea9dee973dacbc13e0cea30e7d2adb5cd5a53f'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
@@ -33,7 +33,7 @@ build() {
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "/Exec=${_pkgname}/d;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
+    sed "/Exec=${_pkgname}/d;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g;s|Utility|Office;|g" \
         -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
     sed "3i\Exec=${pkgname%-bin} %U" -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
 }
