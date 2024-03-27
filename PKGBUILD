@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=leaflet
-_cranver=2.2.1
+_cranver=2.2.2
 pkgname=r-${_cranname,,}
 pkgdesc="Create Interactive Web Maps with the JavaScript ‘Leaflet’ Library"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -23,7 +23,7 @@ depends=(
     "r-rcolorbrewer"
     "r-scales>=1.0.0"
     "r-sp"
-    "r-viridis>=0.5.1"
+    "r-viridislite"
     "r-xfun"
 )
 optdepends=(
@@ -32,6 +32,7 @@ optdepends=(
     "r-purrr"
     "r-r6"
     "r-rjsonio"
+    "r-rmarkdown"
     "r-s2"
     "r-sf>=0.9.6"
     "r-shiny"
@@ -58,7 +59,7 @@ optdepends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("1849ed58e86a89e1301acdba5102cee5086ce06d083f1e4bae91d10cb23934bd21dcc4549f6c02e01a53a4eba474c0455b6d2b6fb01296a2f6a3d91de06e2877")
+b2sums=("70ab96616154a3cfce4db451badf8bf60fcfcfe58e57ffe31d41a3eb6a4527d78e0bd3af11e553127d61cc8f3f6c6e4489480a19d3755e4db936ad724f4b646c")
 
 build() {
     mkdir -p "${srcdir}/build/"
