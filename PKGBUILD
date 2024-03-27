@@ -2,7 +2,7 @@
 pkgbase="eslauncher2"
 pkgname="eslauncher2"
 pkgcompletename="ESLauncher2"
-pkgrel=1
+pkgrel=2
 pkgver=0.9.3
 pkgdesc="The next generation Endless Sky Launcher"
 depends=('rust' 'fuse2')
