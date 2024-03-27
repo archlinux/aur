@@ -2,24 +2,27 @@
 
 _pkgname=hiddify-next
 pkgname=$_pkgname-git
-pkgver=0.15.6
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH etc. It’s an open-source, secure and ad-free"
 arch=(x86_64)
 url='https://github.com/hiddify/hiddify-next'
 license=('CC-BY-NC-SA-4.0')
 depends=('hicolor-icon-theme' 'glibc' 'gcc-libs' 'glib2' 'libayatana-appindicator' 'libdbusmenu-glib' 'libayatana-indicator' 'ayatana-ido')
-makedepends=('git' 'mesa' 'cmake' 'clang' 'locate' 'ninja' 'pkg-config' 'gtk3' 'libayatana-common' 'libappindicator-gtk3' 'libappindicator-gtk2' 'fuse3' 'fuse2' 'appstream' 'zsync' 'file' 'patchelf' 'dpkg' 'appimagetool' 'rpm-tools')
+makedepends=('git' 'mesa' 'cmake' 'clang' 'locate' 'ninja' 'pkg-config' 'gtk3' 'libayatana-common' 'libappindicator-gtk3' 'libappindicator-gtk2' 'fuse3' 'fuse2' 'appstream' 'zsync' 'file' 'patchelf')
 optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
 )
+options=(!strip)
 provides=('hiddify')
 conflicts=(${_pkgname} ${_pkgname}-bin)
 source=(
     "git+https://github.com/hiddify/hiddify-next.git"
-    "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.16.9-stable.tar.xz"
+    "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.19.4-stable.tar.xz"
+    "hiddify.desktop"
 )
 sha256sums=(
+    "SKIP"
     "SKIP"
     "SKIP"
 )
@@ -39,30 +42,19 @@ prepare() {
     export CHANNEL=dev
     flutter config --no-analytics
     flutter config --enable-linux-desktop
-    sed -i 's/-Werror/-Wno-error -Wno-deprecated-declarations/g' linux/CMakeLists.txt
+    make linux-prepare
 }
 
 build() {
     cd "${srcdir}/hiddify-next"
-    unset SOURCE_DATE_EPOCH
-    make linux-prepare
-    make linux-release
-    ls -R dist/
-    EXT="deb"
-    mv dist/*/*.$EXT ${srcdir}/Hiddify-Debian-x64.$EXT
-    cd "${srcdir}"
-    ar x Hiddify-Debian-x64.deb
-    tar -xf data.tar.xz
-    sed -i '/Version/d' "${srcdir}/usr/share/applications/hiddify.desktop"
+    flutter build linux --release
 }
 
 package() {
-    cd ${srcdir}/usr/share/hiddify
+    cd "${srcdir}/hiddify-next/build/linux/x64/release/bundle"
     find . -type f -exec install -Dm 755 {} "$pkgdir/$_install_path"/{} \;
-    cd ${srcdir}/usr/share/icons
-    find . -type f -exec install -Dm 644 {} "$pkgdir/usr/share/icons"/{} \;
-    cd ${srcdir}/usr/share/applications
-    find . -type f -exec install -Dm 644 {} "$pkgdir/usr/share/applications"/{} \;
+    install -Dm644 data/flutter_assets/assets/images/logo.svg "${pkgdir}/usr/share/pixmaps/hiddify.svg"
+    install -Dm644 "${srcdir}/hiddify.desktop" "${pkgdir}/usr/share/applications/hiddify.desktop"
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${_pkgname}/hiddify" "${pkgdir}/usr/bin/hiddify"
 }
