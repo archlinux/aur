@@ -13,7 +13,7 @@ BUILDENV+=(!check)
 
 pkgname=zed-editor
 pkgver=0.128.3
-pkgrel=1
+pkgrel=2
 pkgdesc='high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
 url=https://zed.dev
@@ -39,6 +39,7 @@ depends=(alsa-lib libasound.so
 makedepends=(cargo
              vulkan-headers
              vulkan-validation-layers)
+optdepends=('rust-analyzer: improved Rust language support')
 _archive="zed-$pkgver"
 source=("$_url/archive/v$pkgver/$_archive.tar.gz"
         "https://github.com/livekit/protocol/archive/${_tags[protocol]}/protocol-${_tags[protocol]}.tar.gz")
