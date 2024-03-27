@@ -2,11 +2,11 @@
 
 pkgname=walksnail-osd-tool
 pkgdesc="Tool for rendering OSDs over Walksnail DVR recordings"
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/avsaase/walksnail-osd-tool"
-license=('GPL3')
+license=('GPL-3.0')
 # need to download with git because it's required for the build
 source=("$pkgname::git+https://github.com/avsaase/walksnail-osd-tool.git")
 # skip because the latest is fetched so can't verify
@@ -17,18 +17,21 @@ depends=(
 makedepends=(
 	'cargo'
 	'git'
+	'gtk3'
 )
+# linking fails without disabling lto
+options=('!lto')
 
 prepare() {
 	export RUSTUP_TOOLCHAIN=stable
 	cd "$srcdir/$pkgname"
-	git checkout v0.2.0
+	git checkout "v$pkgver"
 
 	# bump poll-promise because 0.2.0 is broken
-	sed -i 's/poll-promise = "0.2.0"/poll-promise = "0.2.1"/' "$srcdir/$pkgname/Cargo.toml"
+	#sed -i 's/poll-promise = "0.2.0"/poll-promise = "0.2.1"/' "$srcdir/$pkgname/Cargo.toml"
 
 	# fix the bad parsing of the version number
-	sed -i '108s/parse(s)/parse(\&s[1..])/' "$srcdir/$pkgname/src/util.rs"
+	sed -i '251s/parse(s)/parse(\&s[1..])/' "$srcdir/$pkgname/ui/src/util.rs"
 
 	cargo fetch --target "$CARCH-unknown-linux-gnu"
 }

@@ -1,13 +1,15 @@
 pkgbase = walksnail-osd-tool
 	pkgdesc = Tool for rendering OSDs over Walksnail DVR recordings
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/avsaase/walksnail-osd-tool
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0
 	makedepends = cargo
 	makedepends = git
+	makedepends = gtk3
 	depends = ffmpeg
+	options = !lto
 	source = walksnail-osd-tool::git+https://github.com/avsaase/walksnail-osd-tool.git
 	sha256sums = SKIP
 
