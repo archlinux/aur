@@ -1,6 +1,6 @@
 pkgbase = python-langsmith
 	pkgdesc = LangSmith Client SDK Implementations
-	pkgver = 0.1.31
+	pkgver = 0.1.33
 	pkgrel = 1
 	url = https://github.com/langchain-ai/langsmith-sdk
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-langsmith
 	depends = python-psutil
 	depends = python-typing_extensions
 	depends = python-urllib3
-	source = langsmith-0.1.31.tar.gz::https://github.com/langchain-ai/langsmith-sdk/archive/refs/tags/v0.1.31.tar.gz
-	sha256sums = 8b73304be42484af91a704c59ac8ee6d5d993e255080a0762a9e4b3814848a67
+	source = langsmith-0.1.33.tar.gz::https://github.com/langchain-ai/langsmith-sdk/archive/refs/tags/v0.1.33.tar.gz
+	sha256sums = 30b86763b7b6a00d0f51db9e3154a4c2656b71a75f6d33885fa3d5b85e05d552
 
 pkgname = python-langsmith
