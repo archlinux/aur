@@ -1,0 +1,5 @@
+[python-ast-monitor]
+source = "github"
+github = "firefly-cpp/AST-Monitor"
+use_latest_release = "true"
+prefix = "v"
