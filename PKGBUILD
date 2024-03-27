@@ -11,7 +11,7 @@ pkgbase=glibc-eac
 pkgname=(glibc-eac lib32-glibc-eac glibc-eac-locales)
 pkgver=2.39
 _commit=6d1e3fb07b45e2e31e469b16cf21b24bccf8914c
-pkgrel=1
+pkgrel=1.1
 arch=(x86_64)
 url='https://www.gnu.org/software/libc'
 license=(GPL-2.0-or-later LGPL-2.1-or-later)
@@ -130,7 +130,7 @@ check() (
   sed -i 's/-Werror=format-security/-Wformat-security/' config.make   # failure to build testsuite
   sed -i '/CFLAGS/s/-fno-plt//' config.make                           # 16 failures
   sed -i '/CFLAGS/s/-fexceptions//' config.make                       # 1 failure
-  LDFLAGS=${LDFLAGS/,-z,now/}                                         # 10 failures
+  LDFLAGS=${LDFLAGS/,-z,now/,-z,lazy}                                         # 10 failures
 
   # The following tests fail due to restrictions in the Arch build system
   # The correct fix is to add the following to the systemd-nspawn call:
