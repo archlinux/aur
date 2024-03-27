@@ -27,6 +27,7 @@ prepare() {
 
 build() {
   cd "Collision-$pkgver"
+  export CRYSTAL_CACHE_DIR="$srcdir/CRYSTAL_CACHE"
   export SHARDS_CACHE_PATH="$srcdir/shards-cache"
   export APP_ID="${_app_id}"
   export PREFIX='/usr'
@@ -54,6 +55,7 @@ build() {
 
 check() {
   cd "Collision-$pkgver"
+  export CRYSTAL_CACHE_DIR="$srcdir/CRYSTAL_CACHE"
   export SHARDS_CACHE_PATH="$srcdir/shards-cache"
 
 #  make check test
