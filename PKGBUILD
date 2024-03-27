@@ -13,7 +13,7 @@ _flutterarch=$(uname -m | sed s/aarch64/arm64/ | sed s/x86_64/x64/)
 # this host is blocked in China, according to Flutter docs, the FLUTTER_STORAGE_BASE_URL environment variable
 # should be used to provide an alternative mirror
 _storagebase="${FLUTTER_STORAGE_BASE_URL:-"https://storage.googleapis.com"}"
-pkgrel=4
+pkgrel=5
 _pkgdesc="Flutter SDK artifacts (binary from Google)"
 pkgdesc="${_pkgdesc}"
 arch=("x86_64" "aarch64")
@@ -251,7 +251,7 @@ _package-engine-common-google-bin() {
 	"${_group}-engine-common=${pkgver}"
   )
   conflicts=(
-	"${_group}-engine-common=${pkgver}"
+	"${_group}-engine-common"
   )
 
   install -dm755 "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"
@@ -265,7 +265,7 @@ _package-sky-engine-google-bin() {
 	"${_group}-sky-engine=${pkgver}"
   )
   conflicts=(
-	"${_group}-sky-engine=${pkgver}"
+	"${_group}-sky-engine"
   )
 
   install -dm755 "${pkgdir}/usr/lib/${_group}/bin/cache"
@@ -279,7 +279,7 @@ _package-material-fonts-google-bin() {
 	"${_group}-material-fonts=${pkgver}"
   )
   conflicts=(
-	"${_group}-material-fonts=${pkgver}"
+	"${_group}-material-fonts"
   )
 
   install -dm755 "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts"
@@ -296,7 +296,7 @@ _package-engine-linux-google-bin() {
 	"${_group}-engine-linux=${pkgver}"
   )
   conflicts=(
-	"${_group}-engine-linux=${pkgver}"
+	"${_group}-engine-linux"
   )
 
   install -dm755 "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"
@@ -315,7 +315,7 @@ _package-engine-web-google-bin() {
 	"${_group}-engine-web=${pkgver}"
   )
   conflicts=(
-	"${_group}-engine-web=${pkgver}"
+	"${_group}-engine-web"
   )
 
   install -dm755 "${pkgdir}/usr/lib/${_group}/bin/cache"
@@ -332,7 +332,7 @@ _package-gradle-google-bin() {
 	"${_group}-gradle=${pkgver}"
   )
   conflicts=(
-	"${_group}-gradle=${pkgver}"
+	"${_group}-gradle"
   )
 
   install -dm755 "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts"
@@ -349,7 +349,7 @@ _package-engine-android-google-bin() {
 	"${_group}-engine-android=${pkgver}"
   )
   conflicts=(
-	"${_group}-engine-android=${pkgver}"
+	"${_group}-engine-android"
   )
 
   install -dm755 "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"
