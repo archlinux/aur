@@ -1,0 +1,10 @@
+diff -rauN pdfalto-orig/src/Parameters.cc pdfalto-compilation-fixes/src/Parameters.cc
+--- pdfalto-orig/src/Parameters.cc	2024-03-27 15:05:20.002516210 +0100
++++ pdfalto-compilation-fixes/src/Parameters.cc	2024-03-27 15:11:56.039196511 +0100
+@@ -1,5 +1,6 @@
+ #include "Parameters.h"
+ #include <stdio.h>
++#include <stdlib.h>
+ 
+ #if MULTITHREADED
+ #  define lockGlobalParams            gLockMutex(&mutex)
