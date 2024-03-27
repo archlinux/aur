@@ -9,8 +9,8 @@ pkgbase = python-macholib
 	makedepends = python-installer
 	depends = python
 	depends = python-altgraph
-	source = https://files.pythonhosted.org/packages/16/1b/85fd523a1d5507e9a5b63e25365e0a26410d5b6ee89082426e6ffff30792/macholib-1.16.tar.gz
-	sha512sums = 5a3b93275726b02a3cc93f272940a98c4543effbcfcfad741a0a5c3d6fde267ae388eabac8b776b37d87180196ad07cfae914a48430dbbd4d71ec157cf7b9766
+	source = https://files.pythonhosted.org/packages/source/m/macholib/macholib-1.16.tar.gz
+	sha512sums = 269f8aefe2686cdd22486f6c9d20a2c7034c38984886a1e235ab2285d13e7087286b8ea094704a31105c4a48b9b375a42cb2c65914c95e6a138b203310d17832
 
 pkgname = python-macholib
 	
