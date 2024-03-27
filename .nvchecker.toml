@@ -1,0 +1,5 @@
+[sile-labelrefs]
+source = "github"
+github = "Omikhleia/labelrefs.sile"
+prefix = "v"
+use_max_tag = true
