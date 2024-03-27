@@ -3,7 +3,7 @@ pkgname=('python-jaraco.packaging' 'python-jaraco.packaging-docs')
 pkgbase=python-jaraco.packaging
 _name=${pkgname#python-}
 pkgver=9.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to supplement packaging Python releases"
 arch=('any')
 url="https://github.com/jaraco/jaraco.packaging"
@@ -25,11 +25,12 @@ checkdepends=(
   'python-pip'
   'python-pytest'
 )
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('2690ca1c40ea9edfd3a2aa4887f573714f8a09a484ade0578a66d52778e557b6')
+source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('9055ceb3dc03ecb069df5459669b80a6890780602be933fb9e21f4dc79b7a923')
 
 build() {
   cd "$_name-$pkgver"
+  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
   python -m build --wheel --no-isolation
 
   # generate html docs
