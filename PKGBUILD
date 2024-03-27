@@ -1,8 +1,9 @@
 # Maintainer: Darvin Delgado <dnmodder at gmail dot com>
+# The original PKGBUILD was by HurricanePootis <hurricanepootis@protonmail.com>, credits to him and contributor Brendan Szymanski <bscubed@pm.me>
 
 _pkgname=lemonade-emu
 pkgname=$_pkgname-git
-pkgver=r9629.eff6181
+pkgver=r9663.c7a57bb
 pkgrel=1
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 arch=('x86_64')
@@ -18,8 +19,6 @@ else
     _cmake_build_type=Debug
     _enable_lto=false
 fi
-provides=("citra" "citra-qt" "citra-canary" "citra-git" "citra-qt-git")
-#conflicts=("citra" "citra-qt" "citra-canary" "citra-git" "citra-qt-git")
 license=('GPL-3.0-or-later')
 depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'libfdk-aac' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'sndio' 'zstd' 'soundtouch' 'fmt' 'libinih' 'openal' 'enet')
 makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gcc' 'glslang' 'vulkan-headers' 'nlohmann-json' 'catch2' 'clang')
@@ -199,5 +198,4 @@ package() {
     rm -rf "$pkgdir/usr/include"
     rm -rf "$pkgdir/usr/lib"
     rm -rf "$pkgdir/usr/share/cmake"
-
 }
