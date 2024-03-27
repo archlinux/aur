@@ -10,23 +10,23 @@
 
 pkgbase=liblinear
 pkgname=(liblinear python-liblinear)
-pkgver=2.43
+pkgver=2.47
 pkgrel=1
 pkgdesc="A Library for Large Linear Classification"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="http://www.csie.ntu.edu.tw/~cjlin/liblinear/"
 license=('BSD')
-depends=('gcc-libs')
-makedepends=('gcc' 'python-setuptools')
+depends=('gcc-libs' 'python-scipy')
+makedepends=('gcc' 'python-build' 'python-installer')
 source=("https://www.csie.ntu.edu.tw/~cjlin/$pkgbase/$pkgbase-$pkgver.tar.gz")
-sha256sums=('02bad43d745e2796f39a08ac9d117770e71939ef06b1ee7afc6ab7909e304807')
+sha256sums=('99ce98ca3ce7cfb31f2544c42f23ba5bc6c226e536f95d6cd21fe012f94c65e0')
 
 build() {
     cd $srcdir/${pkgbase}-${pkgver}
     make lib all
 
     cd python
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package_liblinear() {
@@ -54,11 +54,10 @@ package_liblinear() {
 }
 
 package_python-liblinear() {
-    depends+=('python-scipy')
     pkgdesc="Python bindings for liblinear"
 
     cd "${srcdir}/${pkgbase}-${pkgver}/python"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 
     # license
     install -D -m644 ../COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
