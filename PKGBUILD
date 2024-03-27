@@ -4,8 +4,8 @@
 
 pkgname=bazel-buildtools
 pkgver=7.1.0
-_commit=433ea8554e82832e4fa4bdd530ca471564071511
-pkgrel=1
+_commit=66c6051739542b50723c420191346ec238a090db
+pkgrel=2
 pkgdesc="A bazel BUILD file formatter and editor"
 arch=('x86_64')
 url='https://github.com/bazelbuild/buildtools'

@@ -1,7 +1,7 @@
 pkgbase = bazel-buildtools
 	pkgdesc = A bazel BUILD file formatter and editor
 	pkgver = 7.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bazelbuild/buildtools
 	arch = x86_64
 	license = Apache-2.0
