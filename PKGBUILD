@@ -8,10 +8,10 @@ pkgname=(
   "$pkgbase-variable"
 )
 pkgver=1.204
-pkgrel=1
+pkgrel=2
 pkgdesc="World-script expansion of Lexend font family"
 url="https://github.com/ThomasJockin/readexpro"
-license=('OFL-1.1-RN')
+license=('OFL-1.1-RFN')
 arch=('any')
 
 _commit=1a5aaa4c15edb043c37113a8cddf020235917050

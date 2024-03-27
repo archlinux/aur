@@ -1,10 +1,10 @@
 pkgbase = ttf-readex-pro
 	pkgdesc = World-script expansion of Lexend font family
 	pkgver = 1.204
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ThomasJockin/readexpro
 	arch = any
-	license = OFL-1.1-RN
+	license = OFL-1.1-RFN
 	source = readex-pro-1.204-1a5aaa4.tar.gz::https://github.com/ThomasJockin/readexpro/archive/1a5aaa4c15edb043c37113a8cddf020235917050.tar.gz
 	sha256sums = 128848eba1ae8fe0454f279a367f5ef0e932949e131382f7b3e26b9373c9a7e4
 
