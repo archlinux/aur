@@ -1,0 +1,23 @@
+pkgbase = libggml-git
+	pkgdesc = Tensor library for machine learning. Used by llama.cpp and whisper.cpp.
+	pkgver = r794.20240322.f5c9599
+	pkgrel = 1
+	url = https://github.com/ggerganov/ggml
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = clblast
+	depends = glibc
+	depends = openblas
+	provides = ggml
+	provides = libggml
+	provides = libggml-clblas
+	provides = libggml-openblas
+	conflicts = ggml
+	conflicts = libggml
+	source = libggml::git+https://github.com/ggerganov/ggml.git
+	sha256sums = SKIP
+
+pkgname = libggml-git
