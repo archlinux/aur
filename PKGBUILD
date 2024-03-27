@@ -5,7 +5,7 @@
 
 pkgname=pmount
 pkgver=0.9.23
-pkgrel=14
+pkgrel=15
 pkgdesc='mount removable devices as normal user'
 arch=(i686 x86_64 armv7h)
 url=https://salsa.debian.org/debian/pmount
