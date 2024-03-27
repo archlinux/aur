@@ -1,7 +1,7 @@
 # Maintainer: Walwe <aur@walwe.de>
 pkgname=md2pdf-git
 gitname=md2pdf
-pkgver=0.0.5.r2.gfa5507c
+pkgver=0.0.5.r3.g5d033c3
 pkgrel=1
 pkgdesc="A Python Markdown to PDF Converter"
 arch=('any')
@@ -11,6 +11,7 @@ depends=('python-click' 'wkhtmltopdf' 'python-markdown2')
 makedepends=('python' 'python-setuptools' 'git')
 source=("git+${url}")
 sha1sums=('SKIP')
+provides=('md2pdf')
 
 pkgver() {
   cd "${srcdir}/${gitname}"
