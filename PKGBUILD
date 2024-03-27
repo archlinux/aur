@@ -25,7 +25,6 @@ depends=(
   'qt5-webengine'
   'qt5-sensors'
   'qt5-serialport'
-  'qt5-webkit'
   'qt5-multimedia'
   'qt5-script'
   'qt5-connectivity'
