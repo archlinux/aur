@@ -28,12 +28,10 @@ source=(
 	https://github.com/Stapxs/Stapxs-QQ-Lite-2.0/releases/latest/download/stapxs-qq-lite-${pkgver}.tar.gz
 )
 noextract=()
-md5sums=(
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-)
+md5sums=('7b579380eb715e47bee3201a79250a13'
+         '58d88260604e3a868ecf90bbb80fc941'
+         '2e398b351eb13ea64ca82707cfb8fc34'
+         '3f1518771a0f11d1bbe3ed948cfc540d')
 validpgpkeys=()
 
 package() {
