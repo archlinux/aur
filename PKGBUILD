@@ -1,9 +1,9 @@
 # Maintainer: Christopher Schnick <crschnick@xpipe.io>
 
-_fullver="8.6"
+_fullver="8.6-2"
 pkgname="xpipe-ptb"
 pkgver="8.6"
-pkgrel="1"
+pkgrel="2"
 epoch=1
 pkgdesc="XPipe (Public Test Build) releases"
 arch=('x86_64' 'aarch64')
@@ -22,6 +22,7 @@ depends=(
   libx11
   libxtst
   pango
+  util-linux
 )
 makedepends=()
 checkdepends=()
