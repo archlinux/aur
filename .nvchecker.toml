@@ -1,0 +1,5 @@
+[grcompiler]
+source = "github"
+github = "silnrsi/grcompiler"
+prefix = "v"
+use_max_tag = true
