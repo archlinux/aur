@@ -1,6 +1,6 @@
 pkgbase = flytectl-bin
 	pkgdesc = Flyte official command-line interface
-	pkgver = 0.8.0
+	pkgver = 0.8.14
 	pkgrel = 1
 	url = https://github.com/flyteorg/flytectl
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = flytectl-bin
 	provides = flytectl
 	conflicts = flytectl
 	noextract = flytectl
-	source_x86_64 = flytectl-0.8.0::https://github.com/flyteorg/flytectl/releases/download/v0.8.0/flytectl_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = c6bc441761dee165e6de01247f9a27b6d6c86f49ec47489dfb6ca1d01eb717d8
-	source_aarch64 = flytectl-0.8.0::https://github.com/flyteorg/flytectl/releases/download/v0.8.0/flytectl_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 5ec0c32781f6a7fbf54904d147318aafc6f6c24a2a521133e563dbf2241cac2a
+	source_x86_64 = flytectl-0.8.14::https://github.com/flyteorg/flytectl/releases/download/v0.8.14/flytectl_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = bba5c08806a9044b75b0ddcb1132ecb773a579d8ebbf4dce34d924b60a5987e2
+	source_aarch64 = flytectl-0.8.14::https://github.com/flyteorg/flytectl/releases/download/v0.8.14/flytectl_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 026cfe6230c416d110d61871fb9db5e40ce53673017489f9818233c3173245d8
 
 pkgname = flytectl-bin
