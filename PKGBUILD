@@ -6,7 +6,7 @@ pkgrel=3
 pkgdesc="Performance Software for Cyclists, Runners, Triathletes and Coaches"
 arch=('i686' 'x86_64')
 url="https://www.goldencheetah.org/"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 makedepends=(
   'bison'
   'flex'
