@@ -3,12 +3,12 @@
 _pkgname=COSNet
 _pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
-pkgrel=1
-pkgdesc='Cost Sensitive Network for node label prediction on graphs with highly unbalanced labelings'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Cost Sensitive Network for node label prediction on graphs with highly unbalanced labelings"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
@@ -19,14 +19,15 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('561cd82192772984c05e53970130aa6ea43e025f9788e4142807e68d9717d2f0')
+md5sums=('6648998ac68e41642f1a7bad77e0bb7f')
+b2sums=('c6a46e8c457658d86ea381ab390b689ee74a3efabb4be81f54f143751cc176c70156f12c0fbc995bc065944e2e0c470345cd992a84b569ceb2d9ca8539339b87')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
