@@ -2,7 +2,7 @@
 
 pkgbase=vcutil
 pkgname=(ipmikvm)
-pkgver=1.43
+pkgver=1.44
 pkgrel=5
 pkgdesc="Misc. simple utilities to aid version control and host maintenance."
 license=()
@@ -10,7 +10,7 @@ arch=('any')
 depends=()
 url=https://github.com/ossobv/vcutil
 source=("$pkgbase.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('6578e5d09aa44ef64b63a4678424178c77bb39b9a7dfb7b0d641b42ca894726a25e977b0af6aed225bdb3f577f3d32a96a7f2e1cb000ee985391fc759ca55ee9')
+sha512sums=('07a3db41f7ab0a7c3ad8772738aa8f6f2d7e17f07cc161670876e3fac3a5599a3c433bec39675a8afdb8f483b418d02e0d9ba9eac83e098d71f3f6dbd650ee77')
 
 pkgdescs=(   [ipmikvm]="A wrapper to call the SuperMicro iKVM console bypassing Java browser plugins." )
 pkgdepends=( [ipmikvm]="jre8-openjdk-headless unzip curl awk coreutils" )
