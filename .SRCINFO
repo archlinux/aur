@@ -1,6 +1,6 @@
 pkgbase = obs-backgroundremoval
 	pkgdesc = Background removal plugin for OBS studio
-	pkgver = 1.1.10
+	pkgver = 1.1.13
 	pkgrel = 1
 	url = https://github.com/occ-ai/obs-backgroundremoval
 	arch = x86_64
@@ -10,7 +10,10 @@ pkgbase = obs-backgroundremoval
 	depends = obs-studio
 	depends = opencv
 	depends = curl
-	source = obs-backgroundremoval-1.1.10.tar.gz::https://github.com/occ-ai/obs-backgroundremoval/archive/refs/tags/1.1.10.tar.gz
-	sha256sums = 7372ba4d996322bee82de1a934ff83c085a4532ab64537959145be3535f45da3
+	noextract = onnxruntime-linux-x64-gpu-1.17.1.tgz
+	source = obs-backgroundremoval-1.1.13.tar.gz::https://github.com/occ-ai/obs-backgroundremoval/archive/refs/tags/1.1.13.tar.gz
+	source = onnxruntime-linux-x64-gpu-1.17.1.tgz::https://github.com/microsoft/onnxruntime/releases/download/v1.17.1/onnxruntime-linux-x64-gpu-1.17.1.tgz
+	sha256sums = 732d280dbc094ecb62783c4d51ebf956ea365a0b4f76c13621628bc7fcb9415b
+	sha256sums = 613c53745ea4960ed368f6b3ab673558bb8561c84a8fa781b4ea7fb4a4340be4
 
 pkgname = obs-backgroundremoval
