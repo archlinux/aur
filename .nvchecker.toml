@@ -1,0 +1,4 @@
+[bibledit]
+source = "github"
+github = "bibledit/cloud"
+use_max_tag = true
