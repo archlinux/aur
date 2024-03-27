@@ -1,0 +1,5 @@
+[sile-qrcode]
+source = "github"
+github = "Omikhleia/qrcode.sile"
+prefix = "v"
+use_max_tag = true
