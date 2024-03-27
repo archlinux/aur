@@ -20,7 +20,7 @@ build() {
   -DCMAKE_INSTALL_LIBDIR=lib \
   -DLINUX_PORTABLE=OFF \
   -DQT_VERSION=6 \
-  -DCMAKE_CXX_FLAGS="-Wno-error=switch" \
+  -DCMAKE_CXX_FLAGS="-Wno-error=deprecated-declarations -Wno-error=switch" \
   -Wno-dev
 
   cmake --build build
