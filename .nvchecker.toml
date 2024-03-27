@@ -1,0 +1,5 @@
+[krankerl]
+source = "github"
+github = "ChristophWurst/krankerl"
+prefix = "v"
+use_max_tag = true
