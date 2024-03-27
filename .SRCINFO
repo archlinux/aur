@@ -1,6 +1,6 @@
 pkgbase = osmin
 	pkgdesc = Satellite Navigator & Tracker On-Road/Off-Road for Mobile
-	pkgver = 1.12.1
+	pkgver = 1.12.2
 	pkgrel = 1
 	url = https://github.com/janbar/osmin
 	arch = x86_64
