@@ -1,7 +1,7 @@
 # Maintainer: irmluity <45vw4yz8g@mozmail.com>
 
 pkgname=marble-shell-theme
-pkgver=46.1
+pkgver=46.0.1
 pkgrel=1
 pkgdesc='Shell theme for GNOME DE'
 url='https://github.com/imarkoff/Marble-shell-theme'

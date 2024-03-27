@@ -1,6 +1,6 @@
 pkgbase = marble-shell-theme
 	pkgdesc = Shell theme for GNOME DE
-	pkgver = 46.1
+	pkgver = 46.0.1
 	pkgrel = 1
 	url = https://github.com/imarkoff/Marble-shell-theme
 	arch = any
