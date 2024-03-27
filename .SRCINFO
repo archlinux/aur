@@ -1,7 +1,7 @@
 pkgbase = stm32cubeide
 	pkgdesc = Integrated Development Environment for STM32
-	pkgver = 1.14.0
-	pkgrel = 2
+	pkgver = 1.15.0
+	pkgrel = 1
 	url = https://www.st.com/en/development-tools/stm32cubeide.html
 	arch = x86_64
 	license = custom:SLA0048
@@ -14,9 +14,9 @@ pkgbase = stm32cubeide
 	optdepends = stlink
 	optdepends = arm-none-eabi-gdb
 	options = !strip
-	source = en.st-stm32cubeide_1.14.0_19471_20231121_1200_amd64.sh.zip::https://www.st.com/content/ccc/resource/technical/software/sw_development_suite/group0/d5/ca/d8/d4/64/90/42/e1/stm32cubeide-lnx/files/st-stm32cubeide_1.14.0_19471_20231121_1200_amd64.sh.zip/jcr:content/translations/en.st-stm32cubeide_1.14.0_19471_20231121_1200_amd64.sh.zip
+	source = en.st-stm32cubeide_1.15.0_20695_20240315_1429_amd64.sh.zip::https://www.st.com/content/ccc/resource/technical/software/sw_development_suite/group0/65/ec/0b/04/83/d4/41/d7/stm32cubeide-lnx/files/st-stm32cubeide_1.15.0_20695_20240315_1429_amd64.sh.zip/jcr:content/translations/en.st-stm32cubeide_1.15.0_20695_20240315_1429_amd64.sh.zip
 	source = https://www.st.com/resource/en/license/SLA0048_STM32CubeIDE.pdf
-	sha256sums = cdd131fcaa3781ed3695bce315ee064e3a50cd971869d27b39c99f8d8e77f7cc
+	sha256sums = 9958f4383253feccce6f80169a53bb8f2b89b9e7ec332f9dd8fe7c254b9f4290
 	sha256sums = SKIP
 
 pkgname = stm32cubeide
