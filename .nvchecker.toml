@@ -1,0 +1,5 @@
+[fontship]
+source = "github"
+github = "theleagueof/fontship"
+prefix = "v"
+use_max_tag = true
