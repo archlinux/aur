@@ -1,0 +1,5 @@
+[fontproof]
+source = "github"
+github = "sile-typesetter/fontproof"
+prefix = "v"
+use_max_tag = true
