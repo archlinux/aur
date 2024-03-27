@@ -1,27 +1,23 @@
 # Maintainer: Docler <hello@docler.me>
 
 pkgname=fvm-bin
-pkgver=2.4.1
-pkgrel=2
-pkgdesc="Flutter Version Management: A simple CLI to manage Flutter SDK versions."
-url="https://github.com/fluttertools/fvm"
+pkgver=3.1.3
+pkgrel=1
+pkgdesc="Flutter Version Management: A simple CLI to manage Flutter SDK versions"
 arch=('x86_64')
+url="https://github.com/leoafarias/fvm"
 license=('MIT')
-depends=()
-optdepends=()
-provides=('fvm')
-source=(
-  "$url/releases/download/$pkgver/fvm-$pkgver-linux-x64.tar.gz"
-)
-sha256sums=(
-  '78498cfe331b9f4d2c8ebd97ebe17d3b19ac20c391c3d688525baf764170c0b9'
-)
-conflicts=()
-OPTIONS=()
+depends=('bash' 'glibc')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+source=("${url}/releases/download/${pkgver}/fvm-${pkgver}-linux-x64.tar.gz"
+        "${pkgname}.sh")
+sha256sums=('a86aa8f218c9463c37c63db60c748a7816d40e6a600e75ba670fd264c82c985f'
+            'a4b23cdb2a96907fc9c1ca041baa6e440e7a91b1af9749974a105c2b5ead7a5b')
 
 package() {
-  cd $srcdir
-  tar -xf "fvm-${pkgver}-linux-x64.tar.gz"
-  install -Dm755 "${srcdir}/fvm/fvm" "${pkgdir}/usr/bin/fvm"
-  install -Dm644 "${srcdir}/fvm/src/LICENSE" "${pkgdir}/usr/share/licenses/fvm/LICENSE"
+  install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/fvm"
+  install -Dm755 -t "${pkgdir}/opt/${pkgname}" fvm/src/dart
+  install -Dm644 -t "${pkgdir}/opt/${pkgname}" fvm/src/fvm.snapshot
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" fvm/src/LICENSE
 }
