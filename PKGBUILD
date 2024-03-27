@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=minimap2-bin
-pkgver=2.27
+pkgver=2.28
 pkgrel=1
 pkgdesc="Aligner for genomic and spliced nucleotide sequences"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc' 'zlib')
 provides=("minimap2=$pkgver")
 conflicts=('minimap2')
 source_x86_64=("https://github.com/lh3/minimap2/releases/download/v$pkgver/minimap2-${pkgver}_x64-linux.tar.bz2")
-sha256sums_x86_64=('a8971db6fbde47bdb4cab505dc2c1b099c77c2343e80d9549ed9b39a99867a60')
+sha256sums_x86_64=('51f2cf0e486d0f9f88ace1aa58fdc56571382a676ea0889ae607301c60693377')
 
 
 package() {
