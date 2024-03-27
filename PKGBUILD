@@ -7,7 +7,6 @@
 pkgname=spotify-1.1
 _pkg=spotify
 pkgver=1.1.84.716
-epoch=1
 _commit=gc5f8b819-2
 pkgrel=1
 pkgdesc='A proprietary music streaming service. (Legacy version branch v1.1.)'
