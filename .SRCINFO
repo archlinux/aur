@@ -1,7 +1,7 @@
 pkgbase = davfs2
 	pkgdesc = File system driver that allows you to mount a WebDAV folder
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://savannah.nongnu.org/projects/davfs2
 	arch = armv7h
 	arch = aarch64
