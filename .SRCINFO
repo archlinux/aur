@@ -11,4 +11,3 @@ pkgbase = travis-lint
 	sha256sums = 1918261232d278d6c371ab3ace1d43a13408af799ed62fcb62bd866654c2eaea
 
 pkgname = travis-lint
-

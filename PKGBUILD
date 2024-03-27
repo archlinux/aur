@@ -1,4 +1,5 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer:
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: McNoggins <gagnon88 AT gmail DOT com>
 # Contributor: Jochen Schalanda <jochen+aur AT schalanda.aname>
 
