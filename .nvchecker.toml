@@ -1,0 +1,5 @@
+[sile-couyards]
+source = "github"
+github = "Omikhleia/couyards.sile"
+prefix = "v"
+use_max_tag = true
