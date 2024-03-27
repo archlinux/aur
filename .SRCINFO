@@ -1,0 +1,22 @@
+pkgbase = taskchampion-sync-server
+	pkgdesc = The server Taskwarrior syncs to
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://taskwarrior.org/
+	install = taskchampion-sync-server.install
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = cargo
+	depends = util-linux
+	depends = gnutls
+	options = !lto
+	source = taskchampion-sync-server::git+https://github.com/GothenburgBitFactory/taskwarrior.git#commit=3e41fb604c209e355444a1f0e2f4e15c70d76226
+	source = taskchampion-sync-server.service
+	source = taskchampion-sync-server.sysusers
+	sha256sums = 4f8304c149f28152fa1f291d6be1b263ed23619f53637715ae21e023f9c0f184
+	sha256sums = 3ea87bb86ec6aa395eba25f859350545c9c67fa9779e485fd9083b7317339458
+	sha256sums = 6ff937968e0c319bd436bdfe765eba132ceac78cb80640a8fd7b909cd44db89a
+
+pkgname = taskchampion-sync-server

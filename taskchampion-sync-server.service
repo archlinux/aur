@@ -1,0 +1,14 @@
+[Unit]
+Description=The server Taskwarrior syncs to
+After=network.target
+Documentation=http://taskwarrior.org/docs/
+
+[Service]
+ExecStart=/usr/bin/taskchampion-sync-server --port 53589 --data-dir /var/lib/taskchampion-sync-server
+Restart=on-abort
+Type=simple
+User=taskchampion
+Group=taskchampion
+
+[Install]
+WantedBy=multi-user.target

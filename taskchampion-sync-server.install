@@ -1,0 +1,8 @@
+datadir=/var/lib/taskchampion-sync-server
+post_install() {
+    systemd-sysusers
+    if [[ ! -e $datadir ]]; then
+        echo "Initializing taskchampion-sync-server data."
+        install -dm770 $datadir
+        chown -R taskchampion:taskchampion $datadir
+    fi 
