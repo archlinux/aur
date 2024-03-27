@@ -1,7 +1,7 @@
 # Maintainer: Devin Lin <devin@kde.org>
 pkgname=plasma-mobile
-pkgver=6.0.2
-pkgrel=1
+pkgver=6.0.3
+pkgrel=0
 pkgdesc="Plasma Mobile shell components."
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
 url="https://invent.kde.org/plasma/plasma-mobile"
@@ -28,7 +28,7 @@ optdepends=(
 )
 makedepends=(cmake extra-cmake-modules)
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('2d080cab40af60e6ca3eb03c13a5f0b6dad1102c6c0941193a64f24c37957f72')
+sha256sums=('a48933bfe539b3724ec4a3f82705b9e12178330860340d67778ae20a6536db83')
 
 prepare() {
   mkdir -p build
