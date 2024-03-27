@@ -19,7 +19,7 @@
 _phpbase="72"
 _suffix=""
 pkgver="7.2.34"
-pkgrel="14"
+pkgrel="15"
 pkgbase="php72"
 pkgdesc="PHP 7.2.34 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1  -DU_DEFINE_FALSE_AND_TRUE=1 "
@@ -876,7 +876,7 @@ package_php72-cgi() {
 package_php72-apache() {
     _sapi="apache"
     _build_mod_php_so="libphp${_suffix_so}.so"
-    _build_mod_php_module="php_module${_suffix_so}"
+    _build_mod_php_module="php${_suffix_so}_module"
     _build_build_php_script_name="php${_suffix_so}-script"
     _apache_module_conf="${pkgbase}-module.conf"
     pkgdesc="Apache SAPI for ${pkgbase}"
