@@ -1,0 +1,15 @@
+pkgbase = pfring-dkms
+	pkgdesc = High-speed packet processing framework
+	pkgver = 8.6.1.8976
+	pkgrel = 1
+	url = https://github.com/ntop/PF_RING
+	arch = any
+	depends = numactl
+	depends = dkms
+	provides = PFRING-MODULE=8.6.1.8976
+	source = https://packages.ntop.org/apt-stable/bookworm/all/pfring-dkms_8.6.1.8976_all.deb
+	source = 0001-subdirs-to-m.patch
+	sha256sums = 5d805777cca322fe2749568483a8541d4c311dbacfeb34caec6b2ff22d502848
+	sha256sums = cfa0074ea07bf19b7476714092ed1031ded4c4089919628e3caf3308608d20d6
+
+pkgname = pfring-dkms

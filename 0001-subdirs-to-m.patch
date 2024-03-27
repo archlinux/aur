@@ -1,0 +1,12 @@
+diff --color --unified --recursive --text package.orig/usr/src/pfring-8.6.1.8976/Makefile package.new/usr/src/pfring-8.6.1.8976/Makefile
+--- package.orig/usr/src/pfring-8.6.1.8976/Makefile	2024-03-21 22:35:25.000000000 +0800
++++ package.new/usr/src/pfring-8.6.1.8976/Makefile	2024-03-27 13:00:22.279956067 +0800
+@@ -73,7 +73,7 @@
+ 	sudo $(MAKE) -f Makefile.dkms rpm
+ 
+ clean:
+-	$(MAKE) -C $(KERNEL_SRC) SUBDIRS=$(HERE) clean || true
++	$(MAKE) -C $(KERNEL_SRC) M=$(HERE) clean || true
+ 	\rm -f *~ Module.symvers Module.markers modules.order *#
+ 
+ install:
