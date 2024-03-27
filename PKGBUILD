@@ -106,7 +106,8 @@ build() {
 
 _package() {
   pkgdesc="${_pkgdesc} - full installation of development tool and runtime"
-  depends=("${pkgbase}-devel=${pkgver}" "${pkgbase}-target-linux=${pkgver}" "${pkgbase}-target-android=${pkgver}" "${pkgbase}-target-web=${pkgver}" "${pkgbase}-intellij-patch"=${pkgver})
+  depends=("${pkgbase}-devel=${pkgver}" "${pkgbase}-target-linux=${pkgver}" "${pkgbase}-target-android=${pkgver}" "${pkgbase}-target-web=${pkgver}" "${pkgbase}-intellij-patch=${pkgver}")
+  conflicts=("${pkgbase}")
 }
 
 _package-common() {
@@ -170,9 +171,9 @@ _package-target-web() {
 _package-target-android() {
   pkgdesc="${_pkgdesc} - android target files"
   depends=(
-	"${_group}-tool"
-	"${_group}-engine-android"
-	"${_group}-gradle"
+	"${_group}-tool=${pkgver}"
+	"${_group}-engine-android=${pkgver}"
+	"${_group}-gradle=${pkgver}"
   )
   optdepends=("android-sdk: develop for Android devices"
 	    "java-environment: develop for Android devices"
@@ -194,7 +195,7 @@ _package-gradle() {
 	"${_group}-gradle=${pkgver}"
   )
   conflicts=(
-	"${_group}-gradle=${pkgver}"
+	"${_group}-gradle"
   )
 
   install -dm755 "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts"
@@ -205,7 +206,7 @@ _package-gradle() {
 _package-tool() {
   pkgdesc="${_pkgdesc} - CLI tool (for packaging only)"
   depends=(
-	"${_group}-common"
+	"${_group}-common=${pkgver}"
 	# TODO: completely compile Flutter tool standalone and drop dependency
 	"dart>=${_dartver}"
 	# commands first
@@ -240,7 +241,7 @@ _package-tool() {
 _package-devel() {
   pkgdesc="${_pkgdesc} - CLI tool (for application development)"
   depends=(
-	"${_group}-tool"
+	"${_group}-tool=${pkgver}"
 	"dart>=${_dartver}"
   )
   replaces=("${_group}-tool-developer")
@@ -257,7 +258,7 @@ _package-devel() {
 
 _package-intellij-patch() {
   pkgdesc="${_pkgdesc} - IntelliJ Flutter plugin hotfix"
-  depends=("${_group}-common")
+  depends=("${_group}-common=${pkgver}")
   optdepends=(
 	"android-studio"
         "intellij-idea-community-edition"

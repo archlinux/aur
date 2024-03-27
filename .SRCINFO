@@ -41,6 +41,7 @@ pkgname = flutter
 	depends = flutter-target-android=3.19.4
 	depends = flutter-target-web=3.19.4
 	depends = flutter-intellij-patch=3.19.4
+	conflicts = flutter
 
 pkgname = flutter-common
 	pkgdesc = Flutter SDK component - common SDK files and pub cache
@@ -48,11 +49,11 @@ pkgname = flutter-common
 pkgname = flutter-gradle
 	pkgdesc = Flutter SDK component - gradle wrapper
 	provides = flutter-gradle=3.19.4
-	conflicts = flutter-gradle=3.19.4
+	conflicts = flutter-gradle
 
 pkgname = flutter-tool
 	pkgdesc = Flutter SDK component - CLI tool (for packaging only)
-	depends = flutter-common
+	depends = flutter-common=3.19.4
 	depends = dart>=3.3.2
 	depends = bash
 	depends = curl
@@ -67,7 +68,7 @@ pkgname = flutter-tool
 
 pkgname = flutter-devel
 	pkgdesc = Flutter SDK component - CLI tool (for application development)
-	depends = flutter-tool
+	depends = flutter-tool=3.19.4
 	depends = dart>=3.3.2
 	replaces = flutter-tool-developer
 
@@ -85,9 +86,9 @@ pkgname = flutter-target-linux
 
 pkgname = flutter-target-android
 	pkgdesc = Flutter SDK component - android target files
-	depends = flutter-tool
-	depends = flutter-engine-android
-	depends = flutter-gradle
+	depends = flutter-tool=3.19.4
+	depends = flutter-engine-android=3.19.4
+	depends = flutter-gradle=3.19.4
 	optdepends = android-sdk: develop for Android devices
 	optdepends = java-environment: develop for Android devices
 
@@ -98,7 +99,7 @@ pkgname = flutter-target-web
 
 pkgname = flutter-intellij-patch
 	pkgdesc = Flutter SDK component - IntelliJ Flutter plugin hotfix
-	depends = flutter-common
+	depends = flutter-common=3.19.4
 	optdepends = android-studio
 	optdepends = intellij-idea-community-edition
 	optdepends = intellij-idea-ultimate-edition
