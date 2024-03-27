@@ -1,7 +1,0 @@
-*
-!./.SRCINFO
-!./.gitignore
-!./PKGBUILD
-!./apache2.4-ssl.conf.example
-!./apache2.4.conf.example
-!./kanban.service
