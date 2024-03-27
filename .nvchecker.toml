@@ -1,0 +1,5 @@
+[knit]
+source = "github"
+github = "zyedidia/knit"
+prefix = "v"
+use_max_tag = true
