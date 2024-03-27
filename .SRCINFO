@@ -1,0 +1,19 @@
+pkgbase = python-pytest-shard
+	pkgdesc = Shard tests to support parallelism across multiple machines.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/AdamGleave/pytest-shard
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.6
+	depends = python-pytest
+	source = https://files.pythonhosted.org/packages/source/p/pytest-shard/pytest-shard-0.1.2.tar.gz
+	source = https://github.com/AdamGleave/pytest-shard/blob/master/LICENSE
+	b2sums = 93116de01aa919697e7ba142b8955eb3ea3926e193b24c0241fdfa46c21bba9b8b556427e4a661dce4158ead855e25cce51a9fcb1bf6402364bff60b3dc1e2db
+	b2sums = 6bb69c3f9ab81aab6ca0dc35f0aaa70d37eadc098857b9012a2f03bdb67b7fc785137dfe2badb62d87c8c604d5dc2f01a1241459cc34a036cc027ee16e47fc6c
+
+pkgname = python-pytest-shard
