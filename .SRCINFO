@@ -1,0 +1,21 @@
+pkgbase = video-chapter-injector-bin
+	pkgdesc = An electron app which quickly allows you to inject non-linear video editor markers into video files as chapter points.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/markbattistella/video-chapter-injector
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	depends = electron29
+	depends = nodejs
+	provides = video-chapter-injector=1.0.0
+	conflicts = video-chapter-injector
+	options = !emptydirs
+	source = video-chapter-injector-1.0.0.zip::https://github.com/markbattistella/video-chapter-injector/releases/download/1.0.0/video-chapter-injector-linux.zip
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/markbattistella/video-chapter-injector/1.0.0/LICENSE
+	source = video-chapter-injector.sh
+	sha256sums = a82e26951b197e7bd76b8d59ba8b9d648729d2a40fa5169a6ef984b37985b171
+	sha256sums = 68771d03435f519db8e096bd17e4e9ca5252b6508b5c61cc14d26a6578a757d2
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+
+pkgname = video-chapter-injector-bin
