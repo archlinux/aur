@@ -1,13 +1,13 @@
 pkgbase = r-fdrame
 	pkgdesc = FDR adjustments of Microarray Experiments (FDR-AME)
 	pkgver = 1.74.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/fdrame
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
-	depends = tk
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/fdrame_1.74.0.tar.gz
-	sha256sums = 5c3fe0beaa45f50023560f4d2705c59d7a99e3f79a3835f3c11c9c6ac43cda0d
+	md5sums = d7fafba89f784f421a43b4b4d9a10000
+	b2sums = 2174e67a4795c5b3def564c6c312a98a93e937d484ffd8e6fb3aca6c32023143c88924179bb78fb39f2a766c02b4cbeb8d131359e8e4a3e10eb931d16c3df8c9
 
 pkgname = r-fdrame

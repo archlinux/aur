@@ -3,25 +3,25 @@
 _pkgname=fdrame
 _pkgver=1.74.0
 pkgname=r-${_pkgname,,}
-pkgver=1.74.0
-pkgrel=1
-pkgdesc='FDR adjustments of Microarray Experiments (FDR-AME)'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="FDR adjustments of Microarray Experiments (FDR-AME)"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
-  tk
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5c3fe0beaa45f50023560f4d2705c59d7a99e3f79a3835f3c11c9c6ac43cda0d')
+md5sums=('d7fafba89f784f421a43b4b4d9a10000')
+b2sums=('2174e67a4795c5b3def564c6c312a98a93e937d484ffd8e6fb3aca6c32023143c88924179bb78fb39f2a766c02b4cbeb8d131359e8e4a3e10eb931d16c3df8c9')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
