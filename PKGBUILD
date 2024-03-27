@@ -104,10 +104,9 @@ build() {
   find "$PUB_CACHE" -name '*.aot' -delete
 }
 
-_package-full() {
+_package() {
   pkgdesc="${_pkgdesc} - full installation of development tool and runtime"
   depends=("${pkgbase}-devel=${pkgver}" "${pkgbase}-target-linux=${pkgver}" "${pkgbase}-target-android=${pkgver}" "${pkgbase}-target-web=${pkgver}" "${pkgbase}-intellij-patch"=${pkgver})
-  provides=("${_group}")
 }
 
 _package-common() {
@@ -267,7 +266,7 @@ _package-intellij-patch() {
   ln -sf "${DART_ROOT:-"/opt/dart-sdk"}" "${pkgdir}/usr/lib/${_group}/bin/cache/dart-sdk"
 }
 
-pkgname=("${_group}-full" "${_group}-common" "${_group}-gradle" "${_group}-tool" "${_group}-devel" "${_group}-target-linux" "${_group}-target-android" "${_group}-target-web" "${_group}-intellij-patch")
+pkgname=("${_group}" "${_group}-common" "${_group}-gradle" "${_group}-tool" "${_group}-devel" "${_group}-target-linux" "${_group}-target-android" "${_group}-target-web" "${_group}-intellij-patch")
 
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {

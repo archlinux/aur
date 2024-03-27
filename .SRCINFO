@@ -34,14 +34,13 @@ pkgbase = flutter
 	sha256sums = 04531ee1732c18c933b5b28f5da88ed183d5aa3698b1d1e912c000928b93ec91
 	sha256sums = 1578e819b6ee479b6db7a095bcfa74372d3ff555642c6d6ea7112e97bb6f2027
 
-pkgname = flutter-full
+pkgname = flutter
 	pkgdesc = Flutter SDK component - full installation of development tool and runtime
 	depends = flutter-devel=3.19.4
 	depends = flutter-target-linux=3.19.4
 	depends = flutter-target-android=3.19.4
 	depends = flutter-target-web=3.19.4
 	depends = flutter-intellij-patch=3.19.4
-	provides = flutter
 
 pkgname = flutter-common
 	pkgdesc = Flutter SDK component - common SDK files and pub cache
