@@ -3,7 +3,7 @@
 
 pkgname='firefox-extension-styl-us-bin'
 pkgver=1.5.46
-pkgrel=1
+pkgrel=2
 pkgdesc='Redesign your favorite websites with Stylus, an actively developed and community driven userstyles manager. Easily install custom themes from popular online repositories, or create, edit, and manage your own personalized CSS stylesheets.'
 arch=('any')
 url='https://add0n.com/stylus.html'
@@ -15,6 +15,6 @@ noextract=('styl-us.xpi')
 sha256sums=('9a75bf1bdde7263a5502d78009b5f19117ea09e6237afc852e7ba4e52b565364')
 
 package() {
-  install -Dm644 'styl-us.xpi' "${pkgdir}/usr/lib/firefox/browser/extensions/styl-us.xpi"
+  install -Dm644 'styl-us.xpi' "${pkgdir}/usr/lib/firefox/browser/extensions/{7a7a4a92-a2a0-41d1-9fd7-1e92480d612d}.xpi"
 }
 
