@@ -1,0 +1,5 @@
+[sile-ptable]
+source = "github"
+github = "Omikhleia/ptable.sile"
+prefix = "v"
+use_max_tag = true
