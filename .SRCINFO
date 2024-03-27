@@ -1,5 +1,5 @@
 pkgbase = epubmerge
-	pkgdesc = A tool for merging multiple epubs into one.
+	pkgdesc = A tool for merging multiple epub files into one.
 	pkgver = 2.17.0
 	pkgrel = 1
 	url = https://github.com/JimmXinu/EpubMerge
