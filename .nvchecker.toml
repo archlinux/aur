@@ -1,0 +1,6 @@
+[kindleunpack]
+source = "github"
+github = "kevinhendricks/KindleUnpack"
+from_pattern = 'v(\d)(\d\d)'
+to_pattern = '\1.\2'
+use_max_tag = true
