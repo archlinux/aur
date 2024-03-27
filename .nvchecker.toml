@@ -1,0 +1,5 @@
+[bo]
+source = "github"
+github = "brouberol/bo"
+prefix = "v"
+use_max_tag = true
