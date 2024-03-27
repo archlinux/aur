@@ -42,7 +42,7 @@ prepare() {
 }
 
 build() {
-	patch "rofi-lbonn-wayland-git/source/wayland/view.c" <../disable_dpi.patch
+	patch "$pkgname/source/wayland/view.c" <../disable_dpi.patch
 
 	local meson_options=(-Dwayland=enabled -Dcheck=enabled)
 
