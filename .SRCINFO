@@ -10,9 +10,9 @@ pkgbase = biblesync-git
 	makedepends = cmake
 	makedepends = git
 	provides = biblesync=2.1.0
+	provides = libbiblesync.so
 	conflicts = biblesync
 	source = git+https://github.com/karlkleinpaste/biblesync.git
 	sha256sums = SKIP
 
 pkgname = biblesync-git
-

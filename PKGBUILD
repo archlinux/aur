@@ -10,7 +10,7 @@ arch=('x86_64' 'i686')
 url='https://github.com/karlkleinpaste/biblesync'
 license=('custom')
 makedepends=('cmake' 'git')
-provides=("${pkgname%-git}=$pkgver")
+provides=("${pkgname%-git}=$pkgver" libbiblesync.so)
 conflicts=("${pkgname%-git}")
 source=("git+$url.git")
 sha256sums=('SKIP')
