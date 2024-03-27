@@ -3,29 +3,33 @@
 # Contributor: florianbw <florian.bw gmail.com>
 
 pkgname=cytoscape
-pkgver=3.10.1
+pkgver=3.10.2
 pkgrel=1
 pkgdesc="Network Data Integration, Analysis, and Visualization in a Box"
 arch=('any')
 url=https://www.cytoscape.org
-license=('LGPL')
+license=('LGPL-2.1-only')
 depends=('java-runtime=17' 'bash')
 optdepends=('opencl-driver: for OpenCL support')
 source=("https://github.com/cytoscape/cytoscape/releases/download/${pkgver}/cytoscape-unix-${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.png"
-        "${pkgname}")
+        "${pkgname}"
+        "0001-fix-cytoscape.vmoptions-file-location.patch"
+        "0002-fix-karaf-instances-dir.patch"
+)
 
-sha256sums=('7eac40b27a4c602623d215b6a31bbf347e0fa9eb119563ece5e0d27928f2d5a5'
+sha256sums=('02b4fe83719bb52c6adc5bd18b51f8cff929b267050a62a1cc4248e1b08ae381'
             'f4476545086f845e1cec5861169270da9f82a6ad4944972010827a567af0c7d0'
             '135faa3f0beb8ecc1b704cf376408e8bd5f62f32ba50a84002c14321d0bb0b68'
-            'daf81142f560db93aeeea96ca185a2662dd0ec9ee220aee167bf826fc44f3dc3')
+            'daf81142f560db93aeeea96ca185a2662dd0ec9ee220aee167bf826fc44f3dc3'
+            'fadbacc92c147dead6f09577aedda08aca3a70c04386d91cbee2562739c5645b'
+            '4a65e776ab9092e5828b3c9299add0452b131e1665343bd10758399f67479f47')
 
 prepare() {
   cd ${pkgname}-unix-${pkgver}
-  sed -i 's#^\(vm_options_path\)=.*$#\1="\${HOME}/CytoscapeConfiguration"#' cytoscape.sh gen_vmoptions.sh
-  sed -i '/^LOCAL_CLASSPATH/a KARAF_INSTANCES="\${HOME}/CytoscapeConfiguration/instances"' framework/bin/karaf
-  sed -i 's#\${KARAF_HOME}/instances#\${KARAF_INSTANCES}#' framework/bin/karaf
+  patch -p1 -i ../0001-fix-cytoscape.vmoptions-file-location.patch
+  patch -p1 -i ../0002-fix-karaf-instances-dir.patch
 }
 
 package() {

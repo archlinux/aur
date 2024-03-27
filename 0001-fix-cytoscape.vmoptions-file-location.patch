@@ -1,0 +1,41 @@
+From 78c55ffd7640432e2cdf4da40b1eb4b6338ba39c Mon Sep 17 00:00:00 2001
+From: a821 <a821@nospam.mail.de>
+Date: Wed, 27 Mar 2024 09:44:40 +0100
+Subject: [PATCH 1/2] fix cytoscape.vmoptions file location
+
+cytoscape tries to write this file in a write protected directory.
+therefore move this file inside $HOME/CytoscapeConfiguration
+---
+ cytoscape.sh     | 2 +-
+ gen_vmoptions.sh | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cytoscape.sh b/cytoscape.sh
+index 1d3d196..ae3ce0c 100755
+--- a/cytoscape.sh
++++ b/cytoscape.sh
+@@ -58,7 +58,7 @@ else
+ fi
+ 
+ #vm_options_path=$HOME/.cytoscape
+-vm_options_path=$script_path
++vm_options_path="${HOME}/CytoscapeConfiguration"
+ 
+ # Attempt to generate Cytoscape.vmoptions if it doesn't exist!
+ if [ ! -e "$vm_options_path/Cytoscape.vmoptions"  -a  -x "$script_path/gen_vmoptions.sh" ]; then
+diff --git a/gen_vmoptions.sh b/gen_vmoptions.sh
+index b9b0934..3ae36ab 100755
+--- a/gen_vmoptions.sh
++++ b/gen_vmoptions.sh
+@@ -4,7 +4,7 @@
+ script_path="$(dirname -- $0)"
+ 
+ #vm_options_path="$HOME/.cytoscape"
+-vm_options_path=$script_path
++vm_options_path="${HOME}/CytoscapeConfiguration"
+ 
+ if [ ! -e $vm_options_path ]; then
+     /bin/mkdir $vm_options_path
+-- 
+2.44.0
+

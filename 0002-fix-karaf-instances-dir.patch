@@ -1,0 +1,59 @@
+From f87819db35cdc3c8c41b5745aed0dabdd6dbc791 Mon Sep 17 00:00:00 2001
+From: a821 <a821@nospam.mail.de>
+Date: Wed, 27 Mar 2024 09:49:59 +0100
+Subject: [PATCH 2/2] fix karaf instances dir
+
+cytoscape tries to write instance data in a write protected directory.
+create a directory $KARAF_INSTANCES inside cytoscape configuration
+dir for that.
+---
+ framework/bin/karaf | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/framework/bin/karaf b/framework/bin/karaf
+index 6b573e4..3dc19cd 100755
+--- a/framework/bin/karaf
++++ b/framework/bin/karaf
+@@ -60,6 +60,7 @@ REALNAME=`realpath "$0"`
+ DIRNAME=`dirname "${REALNAME}"`
+ PROGNAME=`basename "${REALNAME}"`
+ LOCAL_CLASSPATH=$CLASSPATH
++KARAF_INSTANCES="${HOME}/CytoscapeConfiguration/instances"
+ 
+ #
+ # Load common functions
+@@ -108,10 +109,10 @@ setupClassPath() {
+ 
+ checkRootInstance() {
+    ROOT_INSTANCE_RUNNING=false
+-   if [ -f "${KARAF_HOME}/instances/instance.properties" ];
++   if [ -f "${KARAF_INSTANCES}/instance.properties" ];
+    then
+-      ROOT_INSTANCE_PID=`sed -n -e '/item.0.pid/ s/.*\= *//p' "${KARAF_HOME}/instances/instance.properties"`
+-      ROOT_INSTANCE_NAME=`sed -n -e '/item.0.name/ s/.*\= *//p' "${KARAF_HOME}/instances/instance.properties"`
++      ROOT_INSTANCE_PID=`sed -n -e '/item.0.pid/ s/.*\= *//p' "${KARAF_INSTANCES}/instance.properties"`
++      ROOT_INSTANCE_NAME=`sed -n -e '/item.0.name/ s/.*\= *//p' "${KARAF_INSTANCES}/instance.properties"`
+       if [ "${ROOT_INSTANCE_PID}" -ne "0" ]; then
+           if ps -p "${ROOT_INSTANCE_PID}" > /dev/null
+           then
+@@ -324,7 +325,7 @@ run() {
+                     --add-exports=jdk.naming.rmi/com.sun.jndi.url.rmi=ALL-UNNAMED \
+                     --add-exports=java.rmi/sun.rmi.registry=ALL-UNNAMED \
+                     --add-exports=java.security.sasl/com.sun.security.sasl=ALL-UNNAMED \
+-                    -Dkaraf.instances="${KARAF_HOME}/instances" \
++                    -Dkaraf.instances="${KARAF_INSTANCES}" \
+                     -Dkaraf.home="${KARAF_HOME}" \
+                     -Dkaraf.base="${KARAF_BASE}" \
+                     -Dkaraf.data="${KARAF_DATA}" \
+@@ -342,7 +343,7 @@ run() {
+                 ${KARAF_EXEC} "${JAVA}" ${JAVA_OPTS} \
+                     -Djava.endorsed.dirs="${JAVA_ENDORSED_DIRS}" \
+                     -Djava.ext.dirs="${JAVA_EXT_DIRS}" \
+-                    -Dkaraf.instances="${KARAF_HOME}/instances" \
++                    -Dkaraf.instances="${KARAF_INSTANCES}" \
+                     -Dkaraf.home="${KARAF_HOME}" \
+                     -Dkaraf.base="${KARAF_BASE}" \
+                     -Dkaraf.data="${KARAF_DATA}" \
+-- 
+2.44.0
+
