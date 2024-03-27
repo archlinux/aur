@@ -1,15 +1,15 @@
 pkgbase = dooit
 	pkgdesc = A todo manager that you didn't ask for, but needed!
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kraanzu/dooit
-	arch = any
+	arch = x86_64
 	license = MIT
-	depends = python
-	depends = git
-	depends = xclip
+	depends = zlib
 	conflicts = dooit-git
-	source = https://github.com/kraanzu/dooit/releases/download/v2.1.0/linux-dooit
-	sha256sums = SKIP
+	source = linux-dooit-2.1.0::https://github.com/kraanzu/dooit/releases/download/v2.1.0/linux-dooit
+	source = https://github.com/kraanzu/dooit/raw/v2.1.0/LICENSE
+	sha256sums = bae540f4da2f73f1dbab5860d05df798b6ab27d5690d84f3405fc1232cee9c60
+	sha256sums = 33504ada23da37774e0d02d99a3a61328f3df017a2bf8468525cd30bb86f57ec
 
 pkgname = dooit
