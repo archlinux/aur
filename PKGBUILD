@@ -1,78 +1,80 @@
-# Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
+# Maintainer: Marco Rubin <marco.rubin@protonmail.com>
+# Contributor: Chih-Hsuan Yen <yan12125@archlinux.org>
 
-pkgname=python-tensorflow-datasets
-pkgver=4.7.0
+_name=datasets
+pkgname=python-tensorflow-$_name
+pkgver=4.9.4
 pkgrel=1
-pkgdesc='A collection of datasets ready to use with TensorFlow, Jax, ...'
+pkgdesc='tensorflow/datasets is a library of datasets ready to use with TensorFlow.'
 arch=(any)
 url='https://github.com/tensorflow/datasets'
-license=(Apache)
-depends=(python absl-py python-{dill,etils,numpy,promise,protobuf,requests,six,tensorflow,tensorflow-metadata,termcolor,toml,tqdm})
-makedepends=(python-setuptools)
-checkdepends=(python-pytest python-dm-tree python-pydub)
+license=(Apache-2.0)
+depends=('python>=3.10' python-{absl,click,dm-tree,etils,immutabledict,importlib_resources,numpy,promise,'protobuf>=3.20',psutil,pyarrow,'requests>=2.19.0',tensorflow-metadata,termcolor,toml,tqdm,wrapt})
+makedepends=(python-build python-installer python-setuptools python-wheel)
+# checkdepends=(python-{conllu,dill,jax,jupyter-core,pandas,pydub,pytest,pytest-shard,pytest-xdist,tensorflow-io,yaml})
 optdepends=(
-  'python-scipy: for aflw2k3d, duke_ultrasound, imagenet2012_corrupted, svhn, the300w_lp'
-  # 'python-apache-beam: for beir, c4, wiki_dialog, wikipedia'
-  'python-gcsfs: for ble_wind_field'
-  'python-zarr: for ble_wind_field'
-  'python-gcld3: for c4'
-  'python-langdetect: for c4'
-  'python-nltk: for c4'
-  'python-tldextract: for c4'
-  'python-matplotlib: for cats_vs_dogs'
-  'python-pillow: for colorectal_histology, wider_face'
-  'python-pydub: for common_voice, groove, gtzan, librispeech'
-  'python-scikit-image: for eurosat, imagenet2012_corrupted'
-  'python-tifffile: for eurosat'
-  'python-imagecodecs: for eurosat'
-  # 'python-pretty-midi: for groove'
-  'python-opencv: for imagenet2012_corrupted'
-  # 'python-tensorflow-io: for lsun'
-  # 'python-crepe: for nsynth'
-  'python-librosa: for nsynth'
-  'python-scikit-learn: for nsynth'
-  'python-pandas: for ogbg_molpcba, pet_finder, smartwatch_gestures'
-  'python-networkx: for ogbg_molpcba'
-  'python-h5py: for robonet'
-  # 'python-envlogger: for robosuite_panda_pick_place_can'
-  'python-mwparserfromhell: for wikipedia'
-  'python-beautifulsoup4: for wsc273'
-  'python-lxml: for wsc273'
-  'python-pycocotools: for youtube_vis'
+    'python-scipy: for aflw2k3d, duke_ultrasound, imagenet2012_corrupted, svhn, the300w_lp'
+    # 'python-apache-beam: for beir, c4, c4_wsrs, wiki_dialog, wikipedia'
+    'python-gcsfs: for ble_wind_field'
+    'python-zarr: for ble_wind_field'
+    'python-gcld3: for c4'
+    'python-langdetect: for c4'
+    'python-nltk: for c4'
+    'python-tldextract: for c4'
+    'python-matplotlib: for cats_vs_dogs'
+    'python-pillow: for colorectal_histology, wider_face'
+    'python-pydub: for common_voice, groove, gtzan, librispeech'
+    'python-scikit-image: for eurosat, imagenet2012_corrupted'
+    'python-tifffile: for eurosat'
+    'python-imagecodecs: for eurosat'
+    # 'python-pretty-midi: for groove'
+    'python-opencv: for imagenet2012_corrupted'
+    # 'python-tensorflow-io: for lsun'
+    # 'python-crepe: for nsynth'
+    'python-librosa: for nsynth'
+    'python-scikit-learn: for nsynth'
+    'python-pandas: for ogbg_molpcba, pet_finder, smartwatch_gestures'
+    'python-networkx: for ogbg_molpcba'
+    'python-h5py: for robonet'
+    # 'python-envlogger: for locomotion, robosuite_panda_pick_place_can'
+    'python-mwparserfromhell: for wikipedia'
+    'python-mwxml: for wikipedia'
+    'python-beautifulsoup4: for wsc273'
+    'python-lxml: for wsc273'
+    'python-pycocotools: for youtube_vis'
 )
-source=(https://github.com/tensorflow/datasets/archive/v$pkgver/$pkgname-$pkgver.tar.gz
+source=("$url/archive/v$pkgver.tar.gz"
         get_optdepends.py)
-sha256sums=('ed7c3b959d10ba762137e18b93631ab42f4ed0915bc3d9ce98ee66eef9c61418'
-            '91f3819b43c38faa17120ea6bc36e0733470acc9e8f91cf614954416b4904d9a')
+b2sums=('69136372b2c22b9a85abde82f17f9429cad7f44fa2b823c9d3fbbc520a9e866cd5dfbff2a6c7288ea30336a504842da53d301d13f8e8fb69cb737f1d7f03f11f'
+        '3148fd6187ca7ccf7fd1834501b6fde3df94be20a3af97acff8ed67c3aea666c5300e0718fdccd91dbf1ae2bac3da435313de984648e507c62bfc6345c05c3b3')
 
 prepare() {
-  cd datasets-$pkgver
-  mv -vf tensorflow_datasets/{version_stable,version}.py
-  # PYTHONPATH="$PWD" python ../get_optdepends.py
+    cd $_name-$pkgver
+    mv -vf tensorflow_datasets/{version_stable,version}.py
 }
 
 build() {
-  cd datasets-$pkgver
-  python setup.py build
+    cd $_name-$pkgver
+    python -m build --wheel --no-isolation
 }
 
-check() {
-  cd datasets-$pkgver
-  # Collect tests to check for missing dependencies. Actually running tests takes too much time.
-  # Skipped tests: https://github.com/tensorflow/datasets/blob/v4.6.0/.github/workflows/pytest.yml#L71-L77
-  # Two other skipped tests: needs apache_beam
-  pytest --collect-only \
-    --ignore="tensorflow_datasets/audio/nsynth_test.py" \
-    --ignore="tensorflow_datasets/core/features/features_test.py" \
-    --ignore="tensorflow_datasets/testing/test_utils.py" \
-    --ignore="tensorflow_datasets/image/lsun_test.py" \
-    --ignore="tensorflow_datasets/image_classification/imagenet2012_corrupted_test.py" \
-    --ignore="tensorflow_datasets/scripts/documentation/build_api_docs_test.py" \
-    --ignore="tensorflow_datasets/core/dataset_builder_beam_test.py" \
-    --ignore="tensorflow_datasets/core/split_builder_test.py"
-}
+# Collect tests to check for missing dependencies. Actually running tests takes too much time.
+# Skipped tests: https://github.com/tensorflow/datasets/blob/v4.6.0/.github/workflows/pytest.yml#L71-L77
+# Two other skipped tests: needs apache_beam
+# check() {
+#     cd $_name-$pkgver
+#     pytest --collect-only \
+#         --ignore="tensorflow_datasets/audio/nsynth_test.py" \
+#         --ignore="tensorflow_datasets/core/features/features_test.py" \
+#         --ignore="tensorflow_datasets/testing/test_utils.py" \
+#         --ignore="tensorflow_datasets/image/lsun_test.py" \
+#         --ignore="tensorflow_datasets/image_classification/imagenet2012_corrupted_test.py" \
+#         --ignore="tensorflow_datasets/scripts/documentation/build_api_docs_test.py" \
+#         --ignore="tensorflow_datasets/core/dataset_builder_beam_test.py" \
+#         --ignore="tensorflow_datasets/core/split_builder_test.py"
+# }
 
 package() {
-  cd datasets-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    cd $_name-$pkgver
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
