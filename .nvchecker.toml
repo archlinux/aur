@@ -1,0 +1,5 @@
+[youki]
+source = "github"
+github = "containers/youki"
+prefix = "v"
+use_max_tag = true
