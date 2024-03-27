@@ -1,12 +1,11 @@
 pkgbase = web-os-dev-manager-bin
 	pkgdesc = Device/DevMode Manager for webOS TV
 	pkgver = 1.12.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/webosbrew/dev-manager-desktop
 	arch = aarch64
 	arch = x86_64
 	license = Apache-2.0
-	depends = hicolor-icon-theme
 	depends = gtk3
 	depends = webkit2gtk
 	depends = libsoup

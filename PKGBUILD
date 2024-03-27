@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=web-os-dev-manager-bin
 pkgver=1.12.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Device/DevMode Manager for webOS TV"
 arch=(
     'aarch64'
@@ -12,7 +12,6 @@ license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'hicolor-icon-theme'
     'gtk3'
     'webkit2gtk'
     'libsoup'
