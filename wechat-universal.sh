@@ -115,8 +115,6 @@ BWRAP_ARGS=(
 
     # license fixups in various places
     --ro-bind {/usr/share/wechat-universal,}/usr/lib/license
-    --ro-bind {/usr/share/wechat-universal,}/var/
-    --ro-bind {/usr/share/wechat-universal,}/etc/os-release
     --ro-bind {/usr/share/wechat-universal,}/etc/lsb-release
 
     # /home

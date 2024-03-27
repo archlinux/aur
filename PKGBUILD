@@ -5,13 +5,13 @@
 _pkgname=wechat-universal
 pkgname=${_pkgname}-bwrap
 pkgver=1.0.0.238
-pkgrel=13
+pkgrel=14
 pkgdesc="WeChat (Universal) with bwrap sandbox"
 arch=('x86_64' 'aarch64' 'loong64')
 url="https://weixin.qq.com"
-license=('proprietary')
+license=('proprietary' 'GPLv3') # GPLv3 as desktop-app was statically linked-in, refer: https://aur.archlinux.org/packages/wechat-universal-bwrap#comment-964013
 provides=("${_pkgname}")
-conflicts=("${_pkgname}"{,-beta,-privileged})
+conflicts=("${_pkgname}"{,-privileged})
 replaces=('wechat-beta'{,-bwrap})
 install="${_pkgname}.install"
 depends=(
@@ -35,11 +35,14 @@ depends=(
     'xdg-user-dirs'
 )
 options=(!strip !debug emptydirs)
+
+_lib_uos='libuosdevicea'
+
 source=(
     "fake_dde-file-manager"
-    "license.tar.gz"
     "${_pkgname}.sh"
     "${_pkgname}.desktop"
+    "${_lib_uos}.c"
 )
 
 _deb_url_common="https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_${pkgver}"
@@ -61,9 +64,9 @@ noextract=("${_deb_stem}"_{x86_64,aarch64,loong64}.deb)
 
 sha256sums=(
     'b25598b64964e4a38f8027b9e8b9a412c6c8d438a64f862d1b72550ac8c75164'
-    '53760079c1a5b58f2fa3d5effe1ed35239590b288841d812229ef4e55b2dbd69'
-    'f4d29092a967d544e5e32c163482a0d812dab815ae5ee70e82b809c4772fab99'
+    '47f84b67e8b84cd2276c239f289a53e437adcffd04a1a86b264c2d48d43400d0'
     'b783b7b0035efb5a0fcb4ddba6446f645a4911e4a9f71475e408a5c87ef04c30'
+    'a8dd9bbb41968fc023a27467bccf45c9a7264dbf0b6cf85c3533b02c81f3fa03'
 )
 
 sha256sums_x86_64=(
@@ -75,6 +78,12 @@ sha256sums_aarch64=(
 sha256sums_loong64=(
     '8ae25e2cc283eaff09f222b0dfe73238337b3d942b2e98bda74fff9a4234ba31'
 )
+
+build() {
+    echo "Building ${_lib_uos}.so stub by Zephyr Lykos..."
+    gcc -fPIC -shared "${_lib_uos}.c" -o "${_lib_uos}.so"
+    strip "${_lib_uos}.so"
+}
 
 package() {
     echo 'Popupating pkgdir with data from wechat-universal deb file...'
@@ -93,10 +102,9 @@ package() {
 
     echo 'Fixing licenses...'
     local _wechat_root="${pkgdir}/usr/share/${_pkgname}"
-    install -dm755 {"${pkgdir}","${_wechat_root}"}/usr/lib/license
-    mv "${pkgdir}/opt/${_pkgname}/libuosdevicea.so" "${_wechat_root}"/usr/lib/license/
-    cp -ra license/etc "${_wechat_root}"
-    cp -ra license/var "${_wechat_root}"
+    install -dm755 {"${pkgdir}","${_wechat_root}"}/{etc,usr/lib/license}
+    install -Dm755 {,"${_wechat_root}"/usr/lib/license/}"${_lib_uos}.so"
+    echo 'DISTRIB_ID=uos' > "${_wechat_root}"/etc/lsb-release
 
     echo 'Installing fake deepin file manager...'
     install -Dm755 {fake_,"${_wechat_root}"/usr/bin/}dde-file-manager
