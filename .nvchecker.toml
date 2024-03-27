@@ -1,0 +1,5 @@
+[teal]
+source = "github"
+github = "teal-language/tl"
+prefix = "v"
+use_max_tag = true
