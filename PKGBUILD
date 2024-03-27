@@ -1,7 +1,7 @@
 # Maintainer: Ranieri Althoff <ranisalt+aur at gmail dot com>
 
 pkgname=gnome-shell-extension-hot-edge-git
-pkgver=14
+pkgver=22
 pkgrel=1
 pkgdesc='Adds a hot edge that activates the overview to the bottom of the screen.'
 url='https://github.com/jdoda/hotedge'
@@ -25,6 +25,6 @@ build() {
 package() {
   cd "$pkgname"
 
-  install -Dm644 -t "$pkgdir/usr/share/gnome-shell/extensions/hotedge@jonathan.jdoda.ca" extension.js logger.js metadata.json prefs.js stylesheet.css
+  install -Dm644 -t "$pkgdir/usr/share/gnome-shell/extensions/hotedge@jonathan.jdoda.ca" extension.js metadata.json prefs.js stylesheet.css
   install -Dm644 -t "$pkgdir/usr/share/gnome-shell/extensions/hotedge@jonathan.jdoda.ca/schemas" schemas/org.gnome.shell.extensions.hotedge.gschema.xml schemas/gschemas.compiled
 }
