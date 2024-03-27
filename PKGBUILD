@@ -2,8 +2,8 @@
 _pkgname=tidgi
 pkgname="${_pkgname}-desktop-git"
 _appname=TidGi
-pkgver=0.9.3.r7.gc13b14b0
-_electronversion=28
+pkgver=0.9.4.prerelease.r1.g794136a1
+_electronversion=29
 pkgrel=1
 pkgdesc="an privatcy-in-mind, automated, auto-git-backup, freely-deployed Tiddlywiki knowledge management Desktop note app, with local REST API."
 arch=(
@@ -41,7 +41,8 @@ source=(
 sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
-    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    #git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --tags | sed 's/\w\+\///g;s/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
 build() {
     #sed -e "s|@electronversion@|${_electronversion}|" \
