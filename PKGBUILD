@@ -3,13 +3,13 @@
 
 pkgname=qucs-s
 pkgver=24.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A spin-off of Qucs that supports other free SPICE circuit simulators like ngspice with the same Qucs GUI"
 arch=('x86_64' 'i686')
 url="https://ra3xdh.github.io"
 license=('GPL')
-depends=('qt6-svg' 'ngspice' 'gperf')
-makedepends=('cmake' 'qt6-tools')
+depends=('qt6-svg' 'ngspice')
+makedepends=('cmake' 'qt6-tools' 'gperf' 'dos2unix')
 optdepends=('ngspice: recommended simulation backend'
             'qucs: for Qucsator simulation backend'
             'xyce-serial: SPICE-compatible simulation backend'
