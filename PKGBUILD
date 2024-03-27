@@ -1,7 +1,7 @@
 # Maintainer: Nikolas Koesling <nikolas@koesling.info>
 
 pkgname=shm-modbus-gui
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="QT GUI (PySide6) for shm-modbus"
 url="https://github.com/NikolasK-source/shm_modbus_gui"
@@ -13,14 +13,12 @@ source=("git+https://github.com/NikolasK-source/shm_modbus_gui.git#tag=v${pkgver
 
 sha256sums=('SKIP')
 
+build() {
+    cd shm_modbus_gui
+    python setup.py build
+}
+
 package() {
     cd shm_modbus_gui
-    mkdir -p "${pkgdir}/usr/share/shm-modbus-gui/py_ui"
-    install -Dm555 src/*.py "${pkgdir}/usr/share/shm-modbus-gui"
-    chmod +x "${pkgdir}/usr/share/shm-modbus-gui/main.py"
-    install -Dm555 src/py_ui/*.py "${pkgdir}/usr/share/shm-modbus-gui/py_ui"
-
-    mkdir -p "${pkgdir}/usr/bin"
-    cd "${pkgdir}/usr/bin"
-    ln -s ../share/shm-modbus-gui/main.py shm-modbus-gui
+    python setup.py install --root="$pkgdir" --optimize=1
 }
