@@ -1,0 +1,4 @@
+[lyricue]
+source = "github"
+github = "cjd/lyricue"
+use_max_tag = true
