@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.8.1.arch1
+pkgver=6.8.2.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -37,10 +37,9 @@ source=(
 
   0001-acpi-proc-idle-skip-dummy-wait.patch
 
-#  0001-platform-x86-asus-wmi-Add-safety-checks-to-dgpu-egpu.patch
   0027-mt76_-mt7921_-Disable-powersave-features-by-default.patch
   
-  0001-linux6.7.y-bore4.0.0.patch
+  0001-linux6.8.y-bore4.5.0.patch
   
   0032-Bluetooth-btusb-Add-a-new-PID-VID-0489-e0f6-for-MT7922.patch
   0035-Add_quirk_for_polling_the_KBD_port.patch
@@ -49,16 +48,19 @@ source=(
   0002-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
 
   v2-0005-platform-x86-asus-wmi-don-t-allow-eGPU-switching-.patch
-#  v2-0006-platform-x86-asus-wmi-add-safety-checks-to-gpu-sw.patch
 
   0038-mediatek-pci-reset.patch
   0040-workaround_hardware_decoding_amdgpu.patch
 
-#  0005-platform-x86-asus-wmi-don-t-allow-eGPU-switching-if-.patch
-#  0006-platform-x86-asus-wmi-add-safety-checks-to-gpu-switc.patch
-
   0001-platform-x86-asus-wmi-Support-2023-ROG-X16-tablet-mo.patch
   amd-tablet-sfh.patch
+  fix_amd_eDP_HDR_flickering.patch
+
+  0001-platform-x86-asus-wmi-add-support-for-2024-ROG-Mini-.patch
+  0002-platform-x86-asus-wmi-add-support-for-Vivobook-GPU-M.patch
+  0003-platform-x86-asus-wmi-add-support-variant-of-TUF-RGB.patch
+  0004-platform-x86-asus-wmi-support-toggling-POST-sound.patch
+  0005-platform-x86-asus-wmi-store-a-min-default-for-ppt-op.patch
   
   "sys-kernel_arch-sources-g14_files-0047-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch"
   "sys-kernel_arch-sources-g14_files-0048-asus-nb-wmi-fix-tablet_mode_sw_int.patch"
@@ -69,16 +71,16 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('8d0c8936e3140a0fbdf511ad7a9f21121598f3656743898f47bb9052d37cff68'
+sha256sums=('9ac322d85bcf98a04667d929f5c2666b15bd58c6c2d68dd512c72acbced07d04'
             'SKIP'
-            '376db82b4613c3942932fde99d54c3dea1e4b29ab23d8b86daa6414327e6244d'
+            '9ccb26c046bacf04777617e96cad5b33d3d048b30bb4840a3b5ac2cdf40a3aba'
             'SKIP'
             'c2b00c84c4b543db431e06604d939a62f93107d18369f4d9860dc8062b01ab45'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             'd69232afd0dd6982ae941cf2d1f577f4be2011e3bb847d1db37952acf416b5d3'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             'ed242f4be3f8eaade2a1d42157c5c6c86281917a08ae43221b088fafdc775ee7'
-            '6e0b648637a0925df4bb43f5eb5144838415e02c43ff8fddbf82f6813b0f132c'
+            '09883311108d461da63a04012d7a2b7f6a4165ee0c4e9cb7a5dc3f9ade326fc7'
             'a8e1e11a4ab1995cc4975c9b134a43ddfe7054ef0c965e52a7d8f9223e15c3e0'
             '315d1839630b37894a626bbc2aea012618b2e1ccb6f9d8aa27c0a3ce5e90e99c'
             'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
@@ -88,6 +90,12 @@ sha256sums=('8d0c8936e3140a0fbdf511ad7a9f21121598f3656743898f47bb9052d37cff68'
             'e41198b29cee4de7a5132d8df606f48c2d0f9c9076fe4230b00a33c7e0b22c71'
             '1edb362a762c8858374027e30ff58ae0014e117fdc05cc7db6da50f80e7aab87'
             '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04'
+            '9b94f02b87c28a7403478ce9f57461c3b2219b7279a928e814cafd78ee767366'
+            '1bc69aaec2089599c1154d7ee5709f5a6140434ef6edf81702b0ea7042a44967'
+            'aa171a103d4133db4cfe153e48e71b58a85d69ed9fe144100dcc792055d79495'
+            'f0e5b7653c91e025c5c2010e2447c98eaad699106b34ff140da106e628ea5c17'
+            '4b1e78681848c34175251e9dcbee02f6b2bb67a65aae6ea8bfb5e1322dc51f7a'
+            '4ee418b9d9905a89e58cc860fb93cb226f45ac2d00d767fc3c4dccb297c731ee'
             '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
             '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85')
 

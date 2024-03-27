@@ -1,0 +1,139 @@
+From 1c0f375634b3ddbcf479c4ddb81639e397795802 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Sun, 10 Mar 2024 19:03:11 +1300
+Subject: [PATCH 4/5] platform/x86: asus-wmi: support toggling POST sound
+
+Add support for toggling the BIOS POST sound on some ASUS laptops.
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ .../ABI/testing/sysfs-platform-asus-wmi       |  7 +++
+ drivers/platform/x86/asus-wmi.c               | 54 +++++++++++++++++++
+ include/linux/platform_data/x86/asus-wmi.h    |  3 ++
+ 3 files changed, 64 insertions(+)
+
+diff --git a/Documentation/ABI/testing/sysfs-platform-asus-wmi b/Documentation/ABI/testing/sysfs-platform-asus-wmi
+index e32b4f0ae15f..f3c53b7453f0 100644
+--- a/Documentation/ABI/testing/sysfs-platform-asus-wmi
++++ b/Documentation/ABI/testing/sysfs-platform-asus-wmi
+@@ -194,3 +194,10 @@ Contact:	"Luke Jones" <luke@ljones.dev>
+ Description:
+ 		Set the target temperature limit of the Nvidia dGPU:
+ 			* min=75, max=87
++
++What:		/sys/devices/platform/<platform>/boot_sound
++Date:		Jun 2023
++KernelVersion:	6.9
++Contact:	"Luke Jones" <luke@ljones.dev>
++Description:
++		Set if the BIOS POST sound is played on boot.
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index e1100726de53..e4341abb71e0 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -297,6 +297,7 @@ struct asus_wmi {
+ 	// The RSOC controls the maximum charging percentage.
+ 	bool battery_rsoc_available;
+ 
++	bool boot_sound_available;
+ 	bool panel_overdrive_available;
+ 	bool mini_led_mode_available;
+ 	u32 mini_led_dev_id;
+@@ -2106,6 +2107,55 @@ static ssize_t panel_od_store(struct device *dev,
+ }
+ static DEVICE_ATTR_RW(panel_od);
+ 
++/* Bootup sound ***************************************************************/
++
++static ssize_t boot_sound_show(struct device *dev,
++			     struct device_attribute *attr, char *buf)
++{
++	struct asus_wmi *asus = dev_get_drvdata(dev);
++	int result;
++
++	result = asus_wmi_get_devstate_simple(asus, ASUS_WMI_DEVID_BOOT_SOUND);
++	if (result < 0)
++		return result;
++
++	return sysfs_emit(buf, "%d\n", result);
++}
++
++static ssize_t boot_sound_store(struct device *dev,
++			      struct device_attribute *attr,
++			      const char *buf, size_t count)
++{
++	int result, err;
++	u32 snd;
++
++	struct asus_wmi *asus = dev_get_drvdata(dev);
++
++	result = kstrtou32(buf, 10, &snd);
++	if (result)
++		return result;
++
++	if (snd > 1)
++		return -EINVAL;
++
++	err = asus_wmi_set_devstate(ASUS_WMI_DEVID_BOOT_SOUND, snd, &result);
++
++	if (err) {
++		pr_warn("Failed to set boot sound: %d\n", err);
++		return err;
++	}
++
++	if (result > 1) {
++		pr_warn("Failed to set panel boot sound (result): 0x%x\n", result);
++		return -EIO;
++	}
++
++	sysfs_notify(&asus->platform_device->dev.kobj, NULL, "boot_sound");
++
++	return count;
++}
++static DEVICE_ATTR_RW(boot_sound);
++
+ /* Mini-LED mode **************************************************************/
+ static ssize_t mini_led_mode_show(struct device *dev,
+ 				   struct device_attribute *attr, char *buf)
+@@ -4203,6 +4253,7 @@ static struct attribute *platform_attributes[] = {
+ 	&dev_attr_ppt_platform_sppt.attr,
+ 	&dev_attr_nv_dynamic_boost.attr,
+ 	&dev_attr_nv_temp_target.attr,
++	&dev_attr_boot_sound.attr,
+ 	&dev_attr_panel_od.attr,
+ 	&dev_attr_mini_led_mode.attr,
+ 	&dev_attr_available_mini_led_mode.attr,
+@@ -4255,6 +4306,8 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
+ 		ok = asus->nv_dyn_boost_available;
+ 	else if (attr == &dev_attr_nv_temp_target.attr)
+ 		ok = asus->nv_temp_tgt_available;
++	else if (attr == &dev_attr_boot_sound.attr)
++		ok = asus->boot_sound_available;
+ 	else if (attr == &dev_attr_panel_od.attr)
+ 		ok = asus->panel_overdrive_available;
+ 	else if (attr == &dev_attr_mini_led_mode.attr)
+@@ -4526,6 +4579,7 @@ static int asus_wmi_add(struct platform_device *pdev)
+ 	asus->ppt_plat_sppt_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_PPT_PLAT_SPPT);
+ 	asus->nv_dyn_boost_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_NV_DYN_BOOST);
+ 	asus->nv_temp_tgt_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_NV_THERM_TARGET);
++	asus->boot_sound_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_BOOT_SOUND);
+ 	asus->panel_overdrive_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_PANEL_OD);
+ 	asus->ally_mcu_usb_switch = acpi_has_method(NULL, ASUS_USB0_PWR_EC0_CSEE)
+ 						&& dmi_match(DMI_BOARD_NAME, "RC71L");
+diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
+index 3e9a01467c67..3eb5cd6773ad 100644
+--- a/include/linux/platform_data/x86/asus-wmi.h
++++ b/include/linux/platform_data/x86/asus-wmi.h
+@@ -137,6 +137,9 @@
+ /* TUF laptop RGB power/state */
+ #define ASUS_WMI_DEVID_TUF_RGB_STATE	0x00100057
+ 
++/* Bootup sound control */
++#define ASUS_WMI_DEVID_BOOT_SOUND	0x00130022
++
+ /* DSTS masks */
+ #define ASUS_WMI_DSTS_STATUS_BIT	0x00000001
+ #define ASUS_WMI_DSTS_UNKNOWN_BIT	0x00000002
+-- 
+2.44.0
+

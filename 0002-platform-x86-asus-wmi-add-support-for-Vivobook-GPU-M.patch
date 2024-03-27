@@ -1,0 +1,100 @@
+From 06d5a9b83548d99b70764166d723489cc8336b1d Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Sun, 10 Mar 2024 17:10:05 +1300
+Subject: [PATCH 2/5] platform/x86: asus-wmi: add support for Vivobook GPU MUX
+
+Adjust existing MUX support to select whichever MUX support is available
+so that ASUS Vivobook MUX can also be used if detected.
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/platform/x86/asus-wmi.c            | 18 +++++++++++++-----
+ include/linux/platform_data/x86/asus-wmi.h |  1 +
+ 2 files changed, 14 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index a56152ccfbe7..b9a2fb8007c0 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -268,6 +268,7 @@ struct asus_wmi {
+ 	bool egpu_connect_available;
+ 	bool dgpu_disable_available;
+ 	bool gpu_mux_mode_available;
++	u32 gpu_mux_dev;
+ 
+ 	/* Tunables provided by ASUS for gaming laptops */
+ 	bool ppt_pl2_sppt_available;
+@@ -682,7 +683,7 @@ static ssize_t dgpu_disable_store(struct device *dev,
+ 		return -EINVAL;
+ 
+ 	if (asus->gpu_mux_mode_available) {
+-		result = asus_wmi_get_devstate_simple(asus, ASUS_WMI_DEVID_GPU_MUX);
++		result = asus_wmi_get_devstate_simple(asus, asus->gpu_mux_dev);
+ 		if (result < 0)
+ 			/* An error here may signal greater failure of GPU handling */
+ 			return result;
+@@ -748,7 +749,7 @@ static ssize_t egpu_enable_store(struct device *dev,
+ 	}
+ 
+ 	if (asus->gpu_mux_mode_available) {
+-		result = asus_wmi_get_devstate_simple(asus, ASUS_WMI_DEVID_GPU_MUX);
++		result = asus_wmi_get_devstate_simple(asus, asus->gpu_mux_dev);
+ 		if (result < 0) {
+ 			/* An error here may signal greater failure of GPU handling */
+ 			pr_warn("Failed to get gpu mux status: %d\n", result);
+@@ -801,7 +802,7 @@ static ssize_t gpu_mux_mode_show(struct device *dev,
+ 	struct asus_wmi *asus = dev_get_drvdata(dev);
+ 	int result;
+ 
+-	result = asus_wmi_get_devstate_simple(asus, ASUS_WMI_DEVID_GPU_MUX);
++	result = asus_wmi_get_devstate_simple(asus, asus->gpu_mux_dev);
+ 	if (result < 0)
+ 		return result;
+ 
+@@ -847,7 +848,7 @@ static ssize_t gpu_mux_mode_store(struct device *dev,
+ 		}
+ 	}
+ 
+-	err = asus_wmi_set_devstate(ASUS_WMI_DEVID_GPU_MUX, optimus, &result);
++	err = asus_wmi_set_devstate(asus->gpu_mux_dev, optimus, &result);
+ 	if (err) {
+ 		dev_err(dev, "Failed to set GPU MUX mode: %d\n", err);
+ 		return err;
+@@ -4514,7 +4515,6 @@ static int asus_wmi_add(struct platform_device *pdev)
+ 	asus->egpu_enable_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_EGPU);
+ 	asus->egpu_connect_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_EGPU_CONNECTED);
+ 	asus->dgpu_disable_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_DGPU);
+-	asus->gpu_mux_mode_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_GPU_MUX);
+ 	asus->kbd_rgb_mode_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_MODE);
+ 	asus->kbd_rgb_state_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_STATE);
+ 	asus->ppt_pl2_sppt_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_PPT_PL2_SPPT);
+@@ -4536,6 +4536,14 @@ static int asus_wmi_add(struct platform_device *pdev)
+ 		asus->mini_led_dev_id = ASUS_WMI_DEVID_MINI_LED_MODE2;
+ 	}
+ 
++	if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_GPU_MUX)) {
++		asus->gpu_mux_mode_available = true;
++		asus->gpu_mux_dev = ASUS_WMI_DEVID_GPU_MUX;
++	} else if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_GPU_MUX_VIVO)) {
++		asus->gpu_mux_mode_available = true;
++		asus->gpu_mux_dev = ASUS_WMI_DEVID_GPU_MUX_VIVO;
++	}
++
+ 	err = fan_boost_mode_check_present(asus);
+ 	if (err)
+ 		goto fail_fan_boost_mode;
+diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
+index 9cadce10ad9a..b48b024dd844 100644
+--- a/include/linux/platform_data/x86/asus-wmi.h
++++ b/include/linux/platform_data/x86/asus-wmi.h
+@@ -128,6 +128,7 @@
+ 
+ /* gpu mux switch, 0 = dGPU, 1 = Optimus */
+ #define ASUS_WMI_DEVID_GPU_MUX		0x00090016
++#define ASUS_WMI_DEVID_GPU_MUX_VIVO	0x00090026
+ 
+ /* TUF laptop RGB modes/colours */
+ #define ASUS_WMI_DEVID_TUF_RGB_MODE	0x00100056
+-- 
+2.44.0
+
