@@ -25,8 +25,8 @@ depends=(
 )
 makedepends=(
   'git'
-  'meson'
   'gobject-introspection'
+  'meson'
 )
 checkdepends=('appstream')
 optdepends=(
