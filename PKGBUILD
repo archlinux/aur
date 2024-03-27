@@ -31,9 +31,9 @@ sha256sums=(
 )
 
 prepare() {
-    cd $srcdir/$pkgname-$pkgver
-    patch -p1 < $srcdir/0001-Fix-a-careless-segfault-in-debug-mode.patch
-    patch -p1 < $srcdir/pmount.exfat.patch
+    cd "$srcdir"/$_pkgname
+    patch -p1 < $srcdir/0001-fix-debug-segfault.patch
+    patch -p1 < $srcdir/0002-support-exfat.patch
 }
 
 build() {
@@ -42,16 +42,19 @@ build() {
     #export CFLAGS="${CFLAGS} -fPIE -pie"
     #export CXXFLAGS="${CXXFLAGS} -fPIE -pie"
 
-    cd $srcdir/$pkgname-$pkgver
+    cd "$srcdir"/$_pkgname
     ./configure --prefix=/usr --disable-hal \
         --with-cryptsetup-prog=/usr/bin/cryptsetup
     make
 }
 
 package() {
-    cd $srcdir/$pkgname-$pkgver
-    make DESTDIR=$pkgdir install
-    install -Dm644 $srcdir/pmount-bash-completion \
-        $pkgdir/usr/share/bash-completion/completions/pmount
+    cd $srcdir/$_pkgname
+    make DESTDIR="$pkgdir" install
+    install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname COPYING
+    install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname \
+        debian/changelog debian/NEWS
+    install -Dm644 -t $pkgdir/usr/share/bash-completion/completions \
+        debian/completion/$pkgname
     mkdir -p $pkgdir/media
 }
