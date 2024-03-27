@@ -5,5 +5,7 @@ pkgbase = marble-shell-theme
 	url = https://github.com/imarkoff/Marble-shell-theme
 	arch = any
 	license = GPL3
+	source = https://github.com/imarkoff/Marble-shell-theme/releases/download/46.0.1/Marble-shell.tar.gz
+	sha256sums = b7e67a075c4cfdffbcf3925554e7e5af56a6e62ef0b044b3bf959a465b06b541
 
 pkgname = marble-shell-theme
