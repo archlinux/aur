@@ -1,0 +1,5 @@
+[xi-core]
+source = "github"
+github = "xi-editor/xi-editor"
+prefix = "v"
+use_max_tag = true
