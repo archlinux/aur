@@ -2,18 +2,18 @@
 # Contributor: hexchain <i@hexchain.org>
 pkgname=python-requirements-parser
 _name=${pkgname#python-}
-pkgver=0.5.0
-pkgrel=7
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="A Pip requirements file parser."
 arch=('any')
 url="https://github.com/madpah/requirements-parser"
 license=('Apache-2.0')
 depends=('python-future' 'python-setuptools' 'python-types-setuptools')
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
+source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v0.6.0.tar.gz"
         'https://github.com/madpah/requirements-parser/pull/80.patch'
         'https://github.com/madpah/requirements-parser/pull/82.patch')
-sha256sums=('3336f3a3ae23e06d3f0f88595e4052396e3adf91688787f637e5d2ca1a904069'
+sha256sums=('2270c9ed5961de83e37d86332d49954bbab852e36c3f4ff35b431e069baf2c38'
             'b9c3a7c8543b23867452c7564dc5b742e232f6af3cf4abfa524545f9010a6d0a'
             '19351e57470816d95742917efadf9fe2e0dc7224d7f26a76bdb13f3fcfce7019')
 
