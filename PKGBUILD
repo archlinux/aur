@@ -2,7 +2,7 @@
 # Contributor: Asuka Minato
 pkgname=openai-translator-bin
 _pkgname=openai-translator
-pkgver=0.3.25
+pkgver=0.3.35
 pkgrel=1
 pkgdesc="Browser extension and cross-platform desktop application for translation based on ChatGPT API."
 arch=("x86_64")
@@ -19,7 +19,7 @@ depends=('webkit2gtk' 'xdotool' 'libayatana-appindicator'
 source=(
 	"https://github.com/yetone/openai-translator/releases/download/v${pkgver}/open-ai-translator_${pkgver}_amd64.deb"
 )
-sha256sums=('c10f6b88f5a7fd3692ed015f402c0a11750b081eb8918372bc52aff85fb75935')
+sha256sums=('3b66f0c99590bbc50cf12f2e2e92843ae7664e8ea158591d506d958c43b1a4ad')
 
 package() {
 	cd "$srcdir/"
