@@ -6,7 +6,7 @@ _appname="${_pkgname} Terminal"
 pkgver=0.7.1
 _electronversion=29
 _nodeversion=20
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source, cross-platform terminal for seamless workflows"
 arch=('any')
 url="https://www.waveterm.dev/"
@@ -33,7 +33,7 @@ source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('b761eab8dbbe0689b7f4096310a522db929ff7c170b6f7c0a68a395200684952'
+sha256sums=('SKIP'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
