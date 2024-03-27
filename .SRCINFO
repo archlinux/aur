@@ -1,6 +1,6 @@
 pkgbase = watt-wiser-sensors-git
 	pkgdesc = A software energy consumption estimation tool
-	pkgver = r183.872a2df
+	pkgver = r216.223ec8c
 	pkgrel = 1
 	url = https://git.sr.ht/~whereswaldon/watt-wiser
 	arch = any
