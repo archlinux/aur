@@ -1,13 +1,13 @@
 pkgbase = ibus-table-others
 	pkgdesc = Provides many ibus-table based keyboards, including emoji and IPA/X-SAMPA
-	pkgver = 1.3.12
+	pkgver = 1.3.17
 	pkgrel = 0
 	url = https://github.com/moebiuscurve/ibus-table-others
 	arch = i686
 	arch = x86_64
 	license = GNU
 	depends = ibus-table
-	source = https://github.com/moebiuscurve/ibus-table-others/releases/download/1.3.12/ibus-table-others-1.3.12.tar.gz
-	md5sums = 0046d812a54f92b8fb547f89d6594a88
+	source = https://github.com/moebiuscurve/ibus-table-others/releases/download/1.3.17/ibus-table-others-1.3.17.tar.gz
+	md5sums = 9e1133a6ff26d93fa4c3294579053d93
 
 pkgname = ibus-table-others
