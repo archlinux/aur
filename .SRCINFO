@@ -1,0 +1,12 @@
+pkgbase = jslint.mjs
+	pkgdesc = The JavaScript Code Quality and Coverage Tool
+	pkgver = 2023.10.24
+	pkgrel = 1
+	url = https://github.com/jslint-org/jslint
+	arch = any
+	license = Unlicense
+	depends = nodejs
+	source = jslint-2023.10.24.tar.gz::https://github.com/jslint-org/jslint/archive/refs/tags/v2023.10.24.tar.gz
+	sha256sums = c49ffc67a79980fc6e401e6bb81170f74e475080f15f201c1a98f1892d6f41ea
+
+pkgname = jslint.mjs
