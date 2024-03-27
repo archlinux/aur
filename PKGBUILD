@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pipgrip
 pkgver=0.10.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight pip dependency resolver with deptree preview functionality based on the PubGrub algorithm"
 arch=('any')
 url="https://github.com/ddelange/pipgrip"
@@ -19,8 +19,8 @@ makedepends=(
   'python-installer'
   'python-setuptools-scm'
 )
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('f481ef054c37036d334ca6f4b8608c1ca8a113e02e011276b540f1558dc394ba')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('5771986f78898265845b2d920b0689f80e45c62c1fe4c5b3d2a3d47f23f7a46d')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -31,6 +31,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
+  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
   python -m build --wheel --no-isolation
 }
 
