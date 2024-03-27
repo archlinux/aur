@@ -4,13 +4,13 @@ _srcname=SPIRV-LLVM-Translator
 pkgname=spirv-llvm-translator-minimal-git
 pkgdesc="Tool and a library for bi-directional translation between SPIR-V and LLVM IR, trunk version"
 epoch=1
-pkgver=r2001.ed26b97
+pkgver=r2012.0838497
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=(llvm-minimal-git git cmake spirv-headers-git spirv-tools-git)
-checkdepends=(python python-setuptools clang-minimal-git)
+checkdepends=(python python-setuptools clang-minimal-git clang-opencl-headers-minimal-git)
 depends=(llvm-libs-minimal-git spirv-tools-git gcc-libs glibc)
 provides=(spirv-llvm-translator)
 conflicts=(spirv-llvm-translator)
@@ -20,6 +20,7 @@ md5sums=('SKIP'
 )
 sha512sums=('SKIP'
 )
+options=(!debug)
 
 pkgver() {
     cd $_srcname
