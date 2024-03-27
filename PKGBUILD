@@ -1,17 +1,17 @@
 # Maintainer: Yadav Gowda <yadav . gowda __at__ gmail . com>
 _pkgname=handyoutliner
 pkgname=${_pkgname}-bin
-pkgver=1.1.6.3
+pkgver=1.1.6.4
 pkgrel=1
 pkgdesc="The goal of this program is to make easier and faster the process of creating bookmarks for DjVu and PDF documents."
 arch=('x86_64')
 url="http://handyoutlinerfo.sourceforge.net/"
 license=('GPL')
 depends=('djvulibre' 'mono')
-source=('https://prdownloads.sourceforge.net/sourceforge/handyoutlinerfo/handyoutliner_1.1.6.3.zip'
+source=('https://prdownloads.sourceforge.net/sourceforge/handyoutlinerfo/handyoutliner_1.1.6.4.zip'
         'handyoutliner.desktop')
-md5sums=('51a3b3411103564b762605d8bcb17be4'
-         '55f5c8fa377de829f10632a2d518d06d')
+md5sums=('0fa32c26b04014f1978174a7fe87e07d'
+         'cbdba92c9b16a08c8f198a0d7c2adf89')
 
 prepare() {
     cd ${_pkgname}_${pkgver}
