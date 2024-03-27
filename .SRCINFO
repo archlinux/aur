@@ -12,7 +12,7 @@ pkgbase = squawk-cli
 	options = !lto
 	source = squawk::git+https://github.com/sbdchd/squawk.git#commit=9ac8190d2b71ef5f65f4a7d5006e10ab02988b0c
 	source = dynamic-pg_query-linking.patch
-	sha256sums = SKIP
+	sha256sums = 57d17fc96dfddb27ecd95899c8a2e78211e6de457b19d634b547611aee22a82f
 	sha256sums = SKIP
 
 pkgname = squawk-cli

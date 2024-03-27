@@ -30,7 +30,7 @@ source=(
 	dynamic-pg_query-linking.patch
 )
 sha256sums=(
-	SKIP
+	57d17fc96dfddb27ecd95899c8a2e78211e6de457b19d634b547611aee22a82f
 	SKIP
 )
 
