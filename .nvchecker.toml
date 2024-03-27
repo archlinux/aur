@@ -1,0 +1,5 @@
+[sile-embedders]
+source = "github"
+github = "Omikhleia/embedders.sile"
+prefix = "v"
+use_max_tag = true
