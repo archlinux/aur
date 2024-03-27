@@ -1,0 +1,5 @@
+[slice]
+source = "github"
+github = "source-foundry/Slice"
+prefix = "v"
+use_max_tag = true
