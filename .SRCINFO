@@ -1,6 +1,6 @@
 pkgbase = chatterino2-git
 	pkgdesc = Second installment of the Twitch chat client series "Chatterino", dev/git version
-	pkgver = 2.4.5.r152.g25add89
+	pkgver = 2.4.5.r310.g515a92d
 	pkgrel = 1
 	url = https://chatterino.com
 	install = chatterino2-git.install
@@ -21,6 +21,7 @@ pkgbase = chatterino2-git
 	optdepends = pulseaudio: For audio output
 	provides = chatterino
 	conflicts = chatterino
+	options = !lto
 	source = git+https://github.com/Chatterino/chatterino2
 	source = git+https://github.com/arsenm/sanitizers-cmake
 	source = git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake
