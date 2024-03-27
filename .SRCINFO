@@ -5,7 +5,6 @@ pkgbase = pt-plugin-plus-bin
 	url = https://github.com/pt-plugins/PT-Plugin-Plus
 	arch = any
 	license = MIT
-	optdepends = firefox
 	optdepends = google-chrome
 	optdepends = microsoft-edge-stable-bin
 	provides = pt-plugin-plus
