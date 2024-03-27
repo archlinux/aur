@@ -4,8 +4,8 @@
 _module="markdownify"
 _pkgname="python-$_module"
 pkgname="$_pkgname"
-pkgver=0.11.6
-pkgrel=5
+pkgver=0.12.1
+pkgrel=1
 pkgdesc="Convert HTML to Markdown"
 url="https://github.com/matthewwithanm/python-markdownify"
 license=('MIT')
@@ -34,7 +34,7 @@ source=(
   "$_pkgsrc.$_pkgext"::"https://pypi.io/packages/source/${_module::1}/$_module/$_module-${pkgver%%.r*}.$_pkgext"
 )
 sha256sums=(
-  '009b240e0c9f4c8eaf1d085625dcd4011e12f0f8cec55dedf9ea6f7655e49bfe'
+  '1fb08c618b30e0ee7a31a39b998f44a18fb28ab254f55f4af06b6d35a2179e27'
 )
 
 prepare() {
@@ -58,7 +58,7 @@ check() {
 
 package() {
   cd "$_pkgsrc"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  python -m installer --destdir="$pkgdir" "$(ls -1 dist/*.whl | sort -rV | head -1)"
 
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
