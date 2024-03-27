@@ -9,7 +9,6 @@ pkgbase = pt-plugin-plus-git
 	makedepends = jq
 	makedepends = nodejs
 	makedepends = yarn
-	optdepends = firefox
 	optdepends = google-chrome
 	optdepends = microsoft-edge-stable-bin
 	provides = pt-plugin-plus-dev

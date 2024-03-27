@@ -11,7 +11,7 @@ url="https://github.com/pt-plugins/${_reponame}"
 provides=("${_pkgname}-dev")
 license=("MIT")
 makedepends=("git" "jq" "nodejs" "yarn")
-optdepends=('firefox' 'google-chrome' 'microsoft-edge-stable-bin')
+optdepends=('google-chrome' 'microsoft-edge-stable-bin')
 source=("${_pkgname}::git+${url}.git#branch=dev")
 sha256sums=('SKIP')
 options=(!strip)
