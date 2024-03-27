@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# because the permission and group of /proc/acpi/call will be reset after reboot, we add this hook also in udev rule
+
+post_install() {
+    sudo /usr/bin/chgrp wheel /proc/acpi/call
+    sudo /usr/bin/chmod g+w /proc/acpi/call
+    sudo /usr/bin/udevadm control --reload-rules
+    sudo /usr/bin/udevadm trigger
+}
