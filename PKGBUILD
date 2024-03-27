@@ -3,7 +3,7 @@
 
 _pkgname=Flatseal
 pkgname=flatseal
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc='A permissions manager for Flatpak.'
 url="https://github.com/tchx84/Flatseal/"
@@ -13,7 +13,7 @@ depends=('flatpak' 'gjs' 'webkitgtk-6.0' 'libhandy' 'appstream-glib' 'libadwaita
 makedepends=('meson' 'flatpak-builder' 'ninja')
 source=("${pkgname}-${pkgver}::https://github.com/tchx84/Flatseal/archive/v${pkgver}.tar.gz"
         "appstream.patch") # https://github.com/tchx84/Flatseal/pull/617
-sha256sums=('b4e280a049a9f32ed8e7c4c0d903cacd4610c72ff58bc73d88ee5dbd3a937510'
+sha256sums=('3f942a1f4120c2b97a3f6476c81bd8f6e79d91ef47f7a15db680e94e6019895d'
             '505a24f2f97856f6a03b07dd51c58a1f7eeaf35432348879ae553305203f1bfb')
 
 prepare() {
