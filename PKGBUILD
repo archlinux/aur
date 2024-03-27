@@ -6,7 +6,7 @@
 # Contributor: Maël Kerbiriou <mael.kerbiriou-at-free-dot-fr>
 
 pkgname=amarok-git
-pkgver=2.9.71.r359.gdb6ccbb
+pkgver=2.9.71.r377.g9d74990
 pkgrel=1
 pkgdesc="The powerful music player for KDE"
 arch=("i686" "x86_64")
@@ -26,16 +26,8 @@ optdepends=("libmtp: support for portable media devices"
             "gmock: tests")
 conflicts=("amarok" "taglib-extras<1.0.1-8")
 provides=("amarok")
-source=("git+https://invent.kde.org/multimedia/amarok.git"
-        # https://invent.kde.org/multimedia/amarok/-/merge_requests/55
-        "Port away from deprecated QDesktopWidget functions & disable missing OSD settings functionalities on Wayland.diff"
-        # https://invent.kde.org/multimedia/amarok/-/merge_requests/64
-        "Improve collection tree keyboard navigation.diff"
-       )
-sha512sums=("SKIP"
-            "e260a1f9c2aadf04e6dd6e1417ab8378c2811e35e0a454d8483fad0cabf3664df0e3871c8f0cb688ff5d0fa173420cc2a2ba7cf704d4ebffd10824b992e9b77e"
-            "3659fabda8d75e87f9fe5a22217cd58e9b4aa71ff40e568a51c5b20570f79469a591fb0f6f58cc85c9dff4982d157c42ce396bc1e0b61b0aa7e3000e25390783"
-           )
+source=("git+https://invent.kde.org/multimedia/amarok.git")
+sha512sums=("SKIP")
 
 pkgver() {
     cd "$srcdir/amarok"
@@ -51,8 +43,7 @@ prepare() {
   fi
 
   cd "${srcdir}/amarok"
-  patch -Np1 -i "${srcdir}/Port away from deprecated QDesktopWidget functions & disable missing OSD settings functionalities on Wayland.diff"
-  patch -Np1 -i "${srcdir}/Improve collection tree keyboard navigation.diff"
+  # patch -Np1 -i "${srcdir}/Patch.diff"
   mkdir -p "${srcdir}/build"
 }
 

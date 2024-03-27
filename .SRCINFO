@@ -1,6 +1,6 @@
 pkgbase = amarok-git
 	pkgdesc = The powerful music player for KDE
-	pkgver = 2.9.71.r359.gdb6ccbb
+	pkgver = 2.9.71.r377.g9d74990
 	pkgrel = 1
 	url = http://amarok.kde.org
 	arch = i686
@@ -46,10 +46,6 @@ pkgbase = amarok-git
 	conflicts = amarok
 	conflicts = taglib-extras<1.0.1-8
 	source = git+https://invent.kde.org/multimedia/amarok.git
-	source = Port away from deprecated QDesktopWidget functions & disable missing OSD settings functionalities on Wayland.diff
-	source = Improve collection tree keyboard navigation.diff
 	sha512sums = SKIP
-	sha512sums = e260a1f9c2aadf04e6dd6e1417ab8378c2811e35e0a454d8483fad0cabf3664df0e3871c8f0cb688ff5d0fa173420cc2a2ba7cf704d4ebffd10824b992e9b77e
-	sha512sums = 3659fabda8d75e87f9fe5a22217cd58e9b4aa71ff40e568a51c5b20570f79469a591fb0f6f58cc85c9dff4982d157c42ce396bc1e0b61b0aa7e3000e25390783
 
 pkgname = amarok-git
