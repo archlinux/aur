@@ -3,7 +3,7 @@
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=libclc-minimal-git
-pkgver=19.0.0_r492907.047b2b241def
+pkgver=19.0.0_r494108.f18600c87404
 pkgrel=1
 pkgdesc="companion package to llvm-minimal-git,  Library requirements of the OpenCL C programming language"
 arch=('any')
@@ -15,6 +15,7 @@ makedepends=(llvm-minimal-git clang-minimal-git cmake  git python spirv-llvm-tra
 source=("git+https://github.com/llvm/llvm-project.git"
 )
 sha256sums=('SKIP')
+options=(!debug)
 
 prepare() {
   cd llvm-project
