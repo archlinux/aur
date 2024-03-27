@@ -1,15 +1,52 @@
-=Logstash 8.12.2 Release Notes
+Logstash 8.13.0 Release Notes
+New Logstash plugin: Elastic_integration filter
 
-    Set Netty’s maxOrder options to previous default value of 11 #15928
-    Add "openssl" to UBI docker images #15929
+With the Logstash Elastic_integration filter, you can take advantage of the features in Elastic integrations without missing out on the advanced processing capabilities offered by Logstash. Together, Elastic integrations and Logstash can help you solve a wide range of use cases, including air gapped environments, data privacy processing, and multiple destinations.
+
+Your Logstash pipeline would include the elastic_agent input, the elastic_integration filter, and the elasticsearch output, in addition to any other plugins you want to use.
+
+Check out Using Logstash with Elastic Integrations and the Elastics_integration filter plugin docs for details.
+Enhancements and notable issues fixed
+
+    Flow metrics added worker_utilization to pipeline-level #15912
+    Ensure that the order of JVM options from both files and environment variables is respected #15997
+
+Changes to bundled plugins
+
+    Packaged filter-elastic_integration as a bundled plugin in preparation for GA. #15769
+    Unbundled logstash-input-imap plugin #15985
 
 Plugins
 
-Jdbc Integration - 5.4.8
+Elastic_integration Filter - 0.1.6
 
-    Update Derby to 10.15.2.1 (built from source) #155
-    Update sequel version to >= 5.74.0, that allows the generic jdbc adapter to better handle disconnect errors #153
+    The elastic_integration filter is generally available and bundled with Logstash 8.13.0. Using this filter, Logstash can process data collected by Elastic integrations.
 
-Kafka Integration - 11.3.4
+    When you configure the filter to point to an Elasticsearch cluster, it auto-detects the event’s data-stream to determine what integration processing (if any) should be executed for each event. It performs that processing inside Logstash without transmitting the event to Elasticsearch. Events that are successfully handled are tagged so that any downstream Elasticsearch output in the Logstash pipeline will not re-run the integration in Elasticsearch.
+    Fixes issue where configured username/password credentials was not sent to Elasticsearch instances that had anonymous access enabled #127
 
-    Fix "retries" and "value_serializer" error handling in output plugin #160
+Beats Input - 6.8.0
+
+    Added a new configuration option event_loop_threads to control the threads count of netty event loop #490
+        When multiple beats-input pipelines are defined in a single machine, sometimes the number of thread may lead to a resource problem.
+        By default, netty event loop creates CPU * 2 thread count. This configuration intends to limit or increase the number of threads to be created for the event loop.
+
+Elasticsearch Input - 4.20.1
+
+    Added support to aggregations with a new configuration option response_type #202
+        hits, the default, is to generate one event per returned document, which is the current behavior.
+        aggregations is to allow processing result of aggregations. A single Logstash event will be generated with the contents of the aggregations object of the query’s response.
+
+Tcp Output - 6.2.0
+
+    Deprecated SSL settings to comply with Logstash’s naming convention #53
+        Deprecated ssl_enable in favor of ssl_enabled
+        Deprecated ssl_cert in favor of ssl_certificate
+        Deprecated ssl_verify in favor of ssl_client_authentication when mode is server
+        Deprecated ssl_verify in favor of ssl_verification_mode when mode is client
+        Added ssl_cipher_suites configuration
+        Added SSL configuration validations
+
+Elasticsearch Output - 11.22.3
+
+    Fixes an issue where events containing non-unicode strings could fail to serialize correctly when compression is enabled #1169
