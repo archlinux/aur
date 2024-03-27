@@ -1,0 +1,5 @@
+[stund]
+source = "httpheader"
+url = "https://sourceforge.net/projects/stun/files/latest/download"
+regex = 'stund-(\d+\.\d+).tgz'
+
