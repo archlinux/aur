@@ -1,0 +1,5 @@
+[sile-resilient]
+source = "github"
+github = "Omikhleia/resilient.sile"
+prefix = "v"
+use_max_tag = true
