@@ -1,1 +1,4 @@
-version
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD

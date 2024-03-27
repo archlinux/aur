@@ -1,12 +1,21 @@
 pkgbase = python-pysma
 	pkgdesc = Async library for SMA Solar's WebConnect interface
 	pkgver = 0.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kellerza/pysma
 	arch = any
-	license = Apache-2.0
-	makedepends = python
-	makedepends = python-pip
+	license = MIT
+	checkdepends = python-pytest-aiohttp
+	checkdepends = python-aioresponses
+	checkdepends = python-pytest-asyncio
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-jmespath
+	depends = python-aiohttp
+	depends = python-attrs
+	source = python-pysma-0.7.5.tar.gz::https://github.com/kellerza/pysma/archive/refs/tags/0.7.5.tar.gz
+	sha256sums = ae2ec7d1c36e513142a51eab801ddc1319762e1aef6ebc31035c58d8a9d03edb
 
 pkgname = python-pysma
