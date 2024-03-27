@@ -5,16 +5,16 @@
 
 pkgname=kdisplay-git
 pkgver=6.0.0_r1602.ga606d52
-pkgrel=1
+pkgrel=2
 pkgdesc="App and daemon for display managing by the KWinFT project (kscreen fork)"
 arch=($CARCH)
-url="https://gitlab.com/kwinft/kdisplay"
+url="https://github.com/winft/${pkgname%-git}"
 license=(LGPL)
 depends=(kcmutils-git kdeclarative-git kirigami-git ki18n-git libplasma-git qt6-sensors)
 makedepends=(git disman-git extra-cmake-modules-git kcmutils-git)
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
-source=("git+https://github.com/winft/${pkgname%-git}.git")
+source=("git+$url.git")
 sha512sums=('SKIP')
 
 pkgver() {

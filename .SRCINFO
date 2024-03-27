@@ -1,8 +1,8 @@
 pkgbase = kdisplay-git
 	pkgdesc = App and daemon for display managing by the KWinFT project (kscreen fork)
 	pkgver = 6.0.0_r1602.ga606d52
-	pkgrel = 1
-	url = https://gitlab.com/kwinft/kdisplay
+	pkgrel = 2
+	url = https://github.com/winft/kdisplay
 	arch = x86_64
 	license = LGPL
 	makedepends = git
