@@ -1,0 +1,5 @@
+[wxlua]
+source = "github"
+github = "pkulchenko/wxlua"
+prefix = "v"
+use_max_tag = true
