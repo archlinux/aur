@@ -2,7 +2,7 @@
 pkgname=gitsync
 pkgver=0.0.20
 pkgrel=1
-pkgdesc="GitSyncMaster: Automate updating multiple Git repositories within a directory structure effortlessly."
+pkgdesc="GitSyncMaster: Effortlessly Automate Git Repository Updates, Including Committing and Pulling, Across Directory Structures."
 arch=('x86_64')
 url="https://github.com/felipealfonsog/GitSyncMaster"
 license=('BSD 3-Clause')
