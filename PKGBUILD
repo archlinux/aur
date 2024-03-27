@@ -9,7 +9,7 @@
 
 pkgname=nordmenu
 pkgver=5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Generic menu for X with Nord colours'
 url='https://github.com/0jdxt/nordmenu'
 arch=('x86_64')

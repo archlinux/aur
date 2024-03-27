@@ -1,7 +1,7 @@
 pkgbase = nordmenu
 	pkgdesc = Generic menu for X with Nord colours
 	pkgver = 5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/0jdxt/nordmenu
 	arch = x86_64
 	license = MIT
