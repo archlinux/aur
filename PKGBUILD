@@ -11,7 +11,7 @@ _enginever=a5c24f538d05aaf66f7972fb23959d8cafb9f95a
 _materialfontsver=3012db47f3130e62f7cc0beabff968a33cbec8d8
 _gradlewver=fd5c1f2c013565a3bea56ada6df9d2b8e96d56aa
 _flutterarch=$(uname -m | sed s/aarch64/arm64/ | sed s/x86_64/x64/)
-pkgrel=13
+pkgrel=14
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 _pkgdesc="Flutter SDK component"
 arch=("x86_64" "aarch64")
@@ -179,8 +179,13 @@ _package-target-android() {
   )
 
   install -dm755 "${pkgdir}/usr/lib/${_group}/packages/flutter_tools"
+  install -dm755 "${pkgdir}/usr/lib/${_group}/bin/internal"
 
   cp -ra "${srcdir}/${_group}/packages/flutter_tools/gradle" "${pkgdir}/usr/lib/${_group}/packages/flutter_tools"
+
+  install -Dm644 "${srcdir}/${_group}/bin/internal/engine.version" "${pkgdir}/usr/lib/${_group}/bin/internal"
+  install -Dm644 "${srcdir}/${_group}/bin/internal/engine.realm" "${pkgdir}/usr/lib/${_group}/bin/internal"
+
 }
 
 _package-gradle() {
