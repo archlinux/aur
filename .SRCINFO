@@ -4,9 +4,9 @@ pkgbase = openplc-editor-git
 	pkgrel = 2
 	url = https://github.com/thiagoralves/OpenPLC_Editor
 	arch = x86_64
-	license = GPL3
+	license = GPL2
 	makedepends = git
-	depends = python38
+	depends = python39
 	source = git+https://github.com/thiagoralves/OpenPLC_Editor.git
 	md5sums = SKIP
 

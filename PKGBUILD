@@ -7,10 +7,10 @@ pkgdesc="OpenPLC editor"
 arch=("x86_64")
 url="https://github.com/thiagoralves/OpenPLC_Editor"
 source=("git+${url}.git")
-license=("GPL3")
+license=("GPL2")
 md5sums=("SKIP")
 makedepends=("git")
-depends=("python38")
+depends=("python39")
 
 pkgver() {
   cd "${srcdir}/OpenPLC_Editor"
