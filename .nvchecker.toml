@@ -1,0 +1,5 @@
+[sile-barcodes]
+source = "github"
+github = "Omikhleia/barcodes.sile"
+prefix = "v"
+use_max_tag = true
