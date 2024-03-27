@@ -1,0 +1,20 @@
+pkgbase = doomguy-git
+	pkgdesc = An Electron postman like application, without bloat features
+	pkgver = r8.02daaac
+	pkgrel = 1
+	url = https://github.com/CMOISDEAD/doomguy
+	arch = any
+	license = GPL-3.0-only
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	depends = electron28
+	provides = doomguy=r8.02daaac
+	conflicts = doomguy
+	source = doomguy.git::git+https://github.com/CMOISDEAD/doomguy.git
+	source = doomguy.sh
+	sha256sums = SKIP
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+
+pkgname = doomguy-git
