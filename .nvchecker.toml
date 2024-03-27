@@ -1,0 +1,4 @@
+[yanone-kaffeesatz-font]
+source = "github"
+github = "alexeiva/yanone-kaffeesatz"
+use_max_tag = true
