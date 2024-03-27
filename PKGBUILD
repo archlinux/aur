@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit-dynamics
 pkgname=python-${_pkgname}
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Tools for building and solving models of quantum systems in Qiskit"
 arch=('any')
@@ -27,7 +27,7 @@ makedepends=(
 #    'python-pytest'
 #)
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Qiskit-Extensions/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('97a552cac445abd767d90330dff968022c2e5b0c2733f5ab2f0483391e801946e203f4ce8f6f070c67f4dfb08e102955b19f81e98f4fd46079bfe95e60493a1d')
+b2sums=('8f361a8831cb6587e9e95589a646b7af36e6bc94adcea074e86a9b1e45db1b7b29f7bac7012e708915e95a7ca98e7e04540a65d7377c0480aec28fef076e8d95')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
