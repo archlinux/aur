@@ -1,7 +1,7 @@
 # Maintainer: Joakim Saario <saario.joakim@gmail.com>
 
 pkgname=python-respx
-pkgver=0.20.2
+pkgver=0.21.0
 pkgrel=1
 pkgdesc='Mock HTTPX with awesome request patterns and response side effects'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-httpx')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-starlette' 'python-trio' 'python-flask')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('14d434942c87032b81bc1b77a0bcf40b85d873720456d1f2cc678f7f53c0107342ed6312b93b8b246c835c8e6c24494bd977a0ce1415b01d515d457a17ccc854')
+sha512sums=('a5a7a14536d19aea42bd33ea9cde3f2a989db3be29a30f40966c339d45c1e490d72ab40bcc60d85fe3f675c4eb30db4692e85f64898e77cc74e483744086f4b8')
 
 build() {
     cd "${srcdir}/respx-${pkgver}"
