@@ -1,0 +1,5 @@
+[lite]
+source = "github"
+github = "rxi/lite"
+prefix = "v"
+use_max_tag = true
