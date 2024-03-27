@@ -1,17 +1,18 @@
+# Maintainer: Tzu-Yu Lee <leejuyuu at google dot com>
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=sqls
-pkgver=0.2.22
+pkgver=0.2.27
 pkgrel=1
 pkgdesc="Language Server Protocol implementation for SQL"
 arch=('x86_64')
-url="https://github.com/lighttiger2505/sqls"
+url="https://github.com/sqls-server/sqls"
 license=('MIT')
 depends=('glibc')
 makedepends=('go')
 optdepends=('mysql' 'sqlite3' 'postgresql')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0f417123331b23a50b10f2724befc53aa82f44150cf84f28bfb885f768697a01')
+sha256sums=('f47aff522ce20eb4f87fb099d492c35503824b10d40cb3d4b755bc0a8d6ddf56')
 
 prepare() {
 	cd "$pkgname-$pkgver"
