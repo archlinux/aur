@@ -1,0 +1,5 @@
+[sile-textsubsuper]
+source = "github"
+github = "Omikhleia/textsubsuper.sile"
+prefix = "v"
+use_max_tag = true
