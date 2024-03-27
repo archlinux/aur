@@ -1,0 +1,4 @@
+[tin-summer]
+source = "github"
+github = "vmchale/tin-summer"
+use_max_tag = true
