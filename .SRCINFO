@@ -1,7 +1,7 @@
 pkgbase = whisper.cpp
 	pkgdesc = Port of OpenAI's Whisper model in C/C++
 	pkgver = 1.5.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ggerganov/whisper.cpp
 	arch = armv7h
 	arch = aarch64

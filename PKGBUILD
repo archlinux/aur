@@ -8,7 +8,7 @@ pkgname=(
   "${pkgbase}-openvino"
 )
 pkgver=1.5.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Port of OpenAI's Whisper model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/whisper.cpp"
