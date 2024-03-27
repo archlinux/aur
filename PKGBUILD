@@ -3,7 +3,7 @@
 
 pkgname='firefox-extension-canvasblocker-bin'
 pkgver=1.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Alters some JS APIs to prevent fingerprinting.'
 arch=('any')
 url='https://github.com/kkapsner/CanvasBlocker/'
@@ -15,6 +15,6 @@ noextract=('canvasblocker.xpi')
 sha256sums=('5248c2c2dedd14b8aa2cd73f9484285d9453e93339f64fcf04a3d63c859cf3d7')
 
 package() {
-  install -Dm644 'canvasblocker.xpi' "${pkgdir}/usr/lib/firefox/browser/extensions/canvasblocker.xpi"
+  install -Dm644 'canvasblocker.xpi' "${pkgdir}/usr/lib/firefox/browser/extensions/CanvasBlocker@kkapsner.de.xpi"
 }
 
