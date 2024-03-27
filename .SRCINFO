@@ -1,6 +1,6 @@
 pkgbase = msquic
-	pkgdesc = Microsoft implementation of the IETF QUIC protocol (release)
-	pkgver = 2.2.2
+	pkgdesc = Microsoft implementation of the IETF QUIC protocol
+	pkgver = 2.2.4
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/microsoft/msquic
@@ -8,24 +8,19 @@ pkgbase = msquic
 	arch = armv7h
 	arch = aarch64
 	license = MIT
-	makedepends = cmake>=3.16
-	makedepends = dotnet-sdk>=3.1
+	makedepends = cmake
+	makedepends = git
 	depends = glibc
+	depends = numactl
 	provides = libmsquic.so
 	conflicts = libmsquic.so
-	noextract = clog-ca6e640fbf7f53ec9de915f1f4d852c10d874d13.tar.gz
-	noextract = googletest-12a5852e451baabc79c63a86c634912c563d57bc.tar.gz
-	noextract = openssl-c3f5f36f5dadfa334119e940b7576a4abfa428c8.tar.gz
-	noextract = openssl3-be9e773e8926fc76166a45cfe5a19362372db90c.tar.gz
-	source = msquic-2.2.2.tar.gz::https://github.com/microsoft/msquic/archive/refs/tags/v2.2.2.tar.gz
-	source = clog-ca6e640fbf7f53ec9de915f1f4d852c10d874d13.tar.gz::https://github.com/microsoft/CLOG/archive/ca6e640fbf7f53ec9de915f1f4d852c10d874d13.tar.gz
-	source = googletest-12a5852e451baabc79c63a86c634912c563d57bc.tar.gz::https://github.com/google/googletest/archive/12a5852e451baabc79c63a86c634912c563d57bc.tar.gz
-	source = openssl-c3f5f36f5dadfa334119e940b7576a4abfa428c8.tar.gz::https://github.com/quictls/openssl/archive/c3f5f36f5dadfa334119e940b7576a4abfa428c8.tar.gz
-	source = openssl3-be9e773e8926fc76166a45cfe5a19362372db90c.tar.gz::https://github.com/quictls/openssl/archive/be9e773e8926fc76166a45cfe5a19362372db90c.tar.gz
-	sha512sums = 6fe01aa2f09e036d9ca6f8c1ff15a624c666bf45689cb532aedf08ea19898a59732aec2b8423e152e38fc5e6bfadebfc96b5b3d21c22df94cd0ade09308667d8
-	sha512sums = d7c4190174d8c4690ec50bfe010a0d557f911d2a17802d8caf9f0b4e13d5e06ef0ae828fc4c355157ff860929f5f4bab42e248665c5d9678891b286ee9eaeaef
-	sha512sums = 3f1fe26d8bf3bfa7c7be8ad5e9a80239cf88066cd5ca234be574d1d4a243ceb3e4991cf7d15ccb159312735416fefa905e4e1ef1ff6defc39b3c14248ac62b86
-	sha512sums = 04197a62a2e5ae8e280f45dae5a72d039d5c139f775b9f91e54985949e07ce13e347b5f46463bb68b3e8e2d78314c10311a7c11e5b606bbb1ba7ef60bedd7c74
-	sha512sums = a615090d5adce86f6333ac29d948680695ceaab4be18fdf9fbb4cd2390f20acf0aefdee1de42f0f4b2994327a668d3c0ecd9a85b04204616ea8f114e933d96fa
+	source = git+https://github.com/microsoft/msquic.git#tag=v2.2.4
+	source = git+https://github.com/google/googletest.git
+	source = quictls-openssl::git+https://github.com/quictls/openssl.git
+	source = git+https://github.com/microsoft/CLOG.git
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = msquic
