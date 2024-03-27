@@ -12,8 +12,8 @@ unset _pkgtype
 _gitname="dolphin"
 _pkgname="$_gitname-tabopts"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=24.02.0
-pkgrel=2
+pkgver=24.02.1
+pkgrel=1
 pkgdesc='KDE File Manager - with extended tab options'
 url="https://invent.kde.org/xiota/dolphin/-/merge_requests/1"
 license=('GPL-2.0-or-later')
@@ -49,9 +49,6 @@ _main_package() {
 
   if [ "${_build_git::1}" != "t" ] ; then
     _main_stable
-
-    source+=('https://invent.kde.org/system/dolphin/-/commit/95551f44.patch')
-    sha256sums+=('6e56ba2c4e5379742fe2fb839b10a2d01f43101634e063966ac2e0f5fd134e9e')
   else
     _main_git
   fi
@@ -69,7 +66,7 @@ _main_stable() {
   if [[ "${_autoupdate::1}" == "t" ]] ; then
     sha256sums+=('SKIP')
   else
-    sha256sums+=('10ef284597e28f933d8b4ead75d02759a15df4bcc928ed10b54f8065b7431257')
+    sha256sums+=('597bb12c53984bae7310cda5e06dbed831fdae1a6e731f55bbc660b4a583da0e')
   fi
 
   source+=(
