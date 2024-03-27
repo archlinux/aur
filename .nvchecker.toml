@@ -1,0 +1,5 @@
+[ygt]
+source = "github"
+github = "psb1558/ygt"
+prefix = "v"
+use_max_tag = true
