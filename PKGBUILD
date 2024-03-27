@@ -1,7 +1,7 @@
 # Maintainer: hexchain <arch at hexchain.org>
 
 pkgname=libkrun
-pkgver=1.7.2
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="A dynamic library providing Virtualization-based process isolation capabilities"
 url='https://github.com/containers/libkrun'
@@ -20,4 +20,4 @@ package() {
     cd "$srcdir/$pkgname-$pkgver"
     make DESTDIR="$pkgdir" PREFIX=/usr LIBDIR_Linux=lib install
 }
-sha256sums=('b5eae842c62551e5fa5c1c13309d3051d5c1495b0ce2c66c53dfb537d0d425b1')
+sha256sums=('836127b03d88a954431eba3b7a76da8794c7e738568e16954eab3baf6dd55ca9')
