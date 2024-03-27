@@ -1,0 +1,5 @@
+[git-town]
+source = "github"
+github = "git-town/git-town"
+prefix = "v"
+use_max_tag = true
