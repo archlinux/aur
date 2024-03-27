@@ -13,7 +13,7 @@ BUILDENV+=(!check)
 
 pkgname=zed-editor-preview
 pkgver=0.129.0
-pkgrel=1
+pkgrel=2
 pkgdesc='high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
 url=https://zed.dev
@@ -39,7 +39,8 @@ depends=(alsa-lib libasound.so
 makedepends=(cargo
              vulkan-headers
              vulkan-validation-layers)
-optdepends=('clang: improved C/C++ language support')
+optdepends=('clang: improved C/C++ language support'
+            'rust-analyzer: improved Rust language support')
 provides=("${pkgname%-preview}=$pkgver")
 conflicts=("${pkgname%-preview}")
 _archive="zed-$pkgver-pre"
