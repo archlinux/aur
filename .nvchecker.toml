@@ -1,0 +1,5 @@
+[casile]
+source = "github"
+github = "sile-typesetter/casile"
+prefix = "v"
+use_max_tag = true
