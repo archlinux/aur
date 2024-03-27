@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: syntheit <daniel@matv.io>
 pkgname=tagspaces
-pkgver=5.7.10
+pkgver=5.7.11
 pkgrel=1
 _electronversion=27
 pkgdesc="An offline, open source, document manager with tagging support"
@@ -13,7 +13,7 @@ makedepends=('git' 'libxcrypt-compat' 'npm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tagspaces/tagspaces/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop"
         "$pkgname.sh")
-sha256sums=('268374141601d1c581340991db06d7a9caaa233ca3d597a3311cb21fb680cf95'
+sha256sums=('79a037fa4eac78e0b3986616fbd160d4a1341a0b06968c7ac69868fd18f6d7e7'
             'a548e2b62a61a93d80482ebe43ef11e33e2c2bfef9db641fc583bd5539ac6948'
             '6a0d3ca0f31afdd7587b3dc0ed819f252c350eaeafb17472fe4b7031d4130118')
 
