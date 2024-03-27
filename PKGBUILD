@@ -75,8 +75,6 @@ package_octopi() {
               'opendoas: privilege elevation'
               'sudo: privilege elevation')
   provides=('octopi-repoeditor' 'octopi-cachecleaner')
-  conflicts=('octopi-qt5' 'octopi-pacmanhelper' 'octopi-repoeditor' 'octopi-cachecleaner')
-  replaces=('octopi-qt5' 'octopi-pacmanhelper' 'octopi-repoeditor' 'octopi-cachecleaner')
 
   cd "${pkgbase}-${pkgver}"
   make INSTALL_ROOT="${pkgdir}" install
