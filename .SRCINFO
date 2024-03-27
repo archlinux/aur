@@ -1,21 +1,22 @@
 pkgbase = perl-plack-middleware-debug
 	pkgdesc = display information about the current request/response
-	pkgver = 0.14
+	pkgver = 0.18
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Plack-Middleware-Debug
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	makedepends = perl-module-build-tiny
 	depends = perl>=5.8.1
 	depends = perl-class-method-modifiers>=1.05
 	depends = perl-data-dump
+	depends = perl-data-dumper-concise
 	depends = perl-file-sharedir>=1.00
 	depends = perl-plack
 	depends = perl-text-microtemplate>=0.15
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Plack-Middleware-Debug-0.14.tar.gz
-	md5sums = 55b4d11e38299002cf68b6b0fd91631e
-	sha512sums = d176656dc1aa2cfad0ecbe5b9d9ee667c8ab606ef670c1a67788109bd24d57e8bf8bb03b1c333c2460e053e2a3d04abfeabc3a82970093ef40ed7b73d0a9c17d
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Plack-Middleware-Debug-0.18.tar.gz
+	md5sums = 986abef34388a1a422c15e377c64b501
+	sha512sums = 802a9aafbebf7a0bcd49c82ab64f240444369128d45b52c6602ce740fe664d7eaec7d27fa17daf946182de0cc4ac73421c9f467dda897c270c5c3d933d39130a
 
 pkgname = perl-plack-middleware-debug
-
