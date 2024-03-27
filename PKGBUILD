@@ -11,7 +11,7 @@ _enginever=a5c24f538d05aaf66f7972fb23959d8cafb9f95a
 _materialfontsver=3012db47f3130e62f7cc0beabff968a33cbec8d8
 _gradlewver=fd5c1f2c013565a3bea56ada6df9d2b8e96d56aa
 _flutterarch=$(uname -m | sed s/aarch64/arm64/ | sed s/x86_64/x64/)
-pkgrel=14
+pkgrel=16
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 _pkgdesc="Flutter SDK component"
 arch=("x86_64" "aarch64")
@@ -24,7 +24,6 @@ makedepends=(
 	"unzip"
 )
 options=("!emptydirs")
-install="${_group}.install"
 source=(
   "${_group}-${pkgver}.tar.xz::https://github.com/${_group}/${_group}/archive/refs/tags/${pkgver/.hotfix/+hotfix}.tar.gz"
 
@@ -112,6 +111,8 @@ _package() {
 
 _package-common() {
   pkgdesc="${_pkgdesc} - common SDK files and pub cache"
+  install="${_group}-common.install"
+  conflicts=("${_group}<=3.19.3")
 
   install -Dm644 "${srcdir}/${_group}/LICENSE" "${pkgdir}/usr/share/licenses/${_group}/LICENSE"
 
