@@ -5,13 +5,13 @@
 _name=pythran
 pkgbase=python-pythran-git
 pkgname=('python-pythran-git')
-pkgver=0.11.0.r0.gb87f45893
+pkgver=0.15.0.r11.g3d9380999
 pkgrel=1
 pkgdesc="claimless python to c++ converter"
 arch=('i686' 'x86_64')
 url="https://github.com/serge-sans-paille/pythran"
 license=('BSD')
-depends=('python-networkx' 'python-ply' 'python-colorlog' 'python-numpy' 'python-gast03' 'python-six' 'gperftools' 'gmp' 'boost')
+depends=('python-networkx' 'python-ply' 'python-colorlog' 'python-numpy' 'python-gast' 'python-six' 'gperftools' 'gmp' 'boost')
 makedepends=('gperftools'  'python-setuptools' 'git' 'cmake')
 provides=('python-pythran')
 conflicts=('python-pythran')

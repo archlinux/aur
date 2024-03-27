@@ -1,6 +1,6 @@
 pkgbase = python-pythran-git
 	pkgdesc = claimless python to c++ converter
-	pkgver = 0.11.0.r0.gb87f45893
+	pkgver = 0.15.0.r11.g3d9380999
 	pkgrel = 1
 	url = https://github.com/serge-sans-paille/pythran
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = python-pythran-git
 	depends = python-ply
 	depends = python-colorlog
 	depends = python-numpy
-	depends = python-gast03
+	depends = python-gast
 	depends = python-six
 	depends = gperftools
 	depends = gmp
