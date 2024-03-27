@@ -1,22 +1,21 @@
 pkgbase = cerebro-git
-	pkgdesc = Open-source productivity booster with a brain.
-	pkgver = v0.4.0.r4.gb2039c2
-	pkgrel = 2
-	url = https://cerebroapp.com/
-	arch = x86_64
+	pkgdesc = An open-source launcher to improve your productivity and efficiency
+	pkgver = 0.11.0.r22.gbcabb5b
+	pkgrel = 1
+	url = https://www.cerebroapp.com/
+	arch = any
 	license = MIT
-	makedepends = gendesk
-	makedepends = python2
-	makedepends = git
 	makedepends = npm
 	makedepends = yarn
-	depends = nss
-	depends = gtk3
-	provides = cerebro
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	depends = electron20-bin
+	provides = cerebro=0.11.0
 	conflicts = cerebro
-	source = cerebro.desktop
-	source = git://github.com/cerebroapp/cerebro.git
-	sha256sums = 3f6cf397952372f1bdf144b61dc02c977a127b04d52166947173aadf94cf3274
+	source = cerebro.git::git+https://github.com/cerebroapp/cerebro.git
+	source = cerebro.sh
 	sha256sums = SKIP
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = cerebro-git

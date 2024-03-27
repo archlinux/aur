@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Cerebro
-Comment=Open-source productivity booster with a brain.
-Exec=/opt/cerebro/cerebro
-Icon=cerebro
-Terminal=false
-Categories=Utility;
