@@ -5,13 +5,13 @@ pkgbase = octopi
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = qt5-tools
+	depends = alpm-octopi-utils
+	depends = qtermwidget
 	source = octopi-0.15.0.tar.gz::https://github.com/aarnt/octopi/archive/v0.15.0.tar.gz
 	sha256sums = e94525d906d6ab4f5fc594cf1a267668ae5f1fa7f32e449ddfa84328dd738f30
 
 pkgname = octopi
 	pkgdesc = A powerful Pacman frontend using Qt libs
-	depends = alpm-octopi-utils
-	depends = qtermwidget
 	optdepends = octopi-notifier-qt5: Notifier for Octopi using Qt5 libs
 	optdepends = octopi-notifier-frameworks: Notifier for Octopi with Knotifications support
 	optdepends = pacaur: for AUR support

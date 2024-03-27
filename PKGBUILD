@@ -11,7 +11,7 @@ pkgrel=4
 arch=('x86_64')
 url="https://tintaescura.com/projects/octopi"
 license=('GPL-2.0-or-later')
-#depends=('alpm-octopi-utils' 'qtermwidget')
+depends=('alpm-octopi-utils' 'qtermwidget')
 #makedepends=('qt5-tools' 'knotifications5')
 makedepends=('qt5-tools')
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/aarnt/octopi/archive/v${pkgver}.tar.gz")
@@ -63,7 +63,6 @@ build() {
 
 package_octopi() {
   pkgdesc="A powerful Pacman frontend using Qt libs"
-  depends=('alpm-octopi-utils' 'qtermwidget')
   optdepends=('octopi-notifier-qt5: Notifier for Octopi using Qt5 libs'
               'octopi-notifier-frameworks: Notifier for Octopi with Knotifications support'
               'pacaur: for AUR support'
