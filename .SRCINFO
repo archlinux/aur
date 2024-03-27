@@ -1,13 +1,13 @@
 pkgbase = sling-cli-bin
 	pkgdesc = Sling is a CLI tool that extracts data from a source storage/database
-	pkgver = 1.1.7
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://docs.slingdata.io
 	arch = x86_64
 	license = GPL3
 	provides = sling-cli
 	conflicts = sling-cli
-	source = sling-cli-bin-1.1.7.tgz::https://github.com/slingdata-io/sling-cli/releases/download/v1.1.7/sling_linux_amd64.tar.gz
-	sha256sums = 93b08d9431a948febec0996c2f50f421c5d6ce3d2e00fac6fb24761ff3bae8dd
+	source = sling-cli-bin-1.2.1.tgz::https://github.com/slingdata-io/sling-cli/releases/download/v1.2.1/sling_linux_amd64.tar.gz
+	sha256sums = 59d96a6e66171b4e53b95f1ed9e4091d866e41a026d46edad75220fd21441e99
 
 pkgname = sling-cli-bin
