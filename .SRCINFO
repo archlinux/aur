@@ -1,14 +1,15 @@
 pkgbase = ttvchecker
 	pkgdesc = A cli tool to check if your favorite twitch streamers are online written in GO.
-	pkgver = 0.2.2
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://gitlab.com/n00bady/ttvchecker
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = go
+	depends = glibc
 	provides = ttvchecker
 	conflicts = ttvchecker
-	source = https://gitlab.com/n00bady/ttvchecker/-/archive/0.2.2/ttvchecker-0.2.2.tar.gz
-	sha512sums = f45aaf1f8a618c859b651619346a713d442eb3ad972777d56c74decb424e9da721e2ffc7a0790c7f0f76e4da0576bd3521cd0cb25a9a3883579826bb96f2c3d8
+	source = https://gitlab.com/n00bady/ttvchecker/-/archive/0.3.0/ttvchecker-0.3.0.tar.gz
+	sha512sums = c3b1e2a36e9d99c32092cf57855b4ff1df6c8b76b73bc7386488a36f21256059483b16fa2187393b0975922e500a14cef260767b2e08c1130fc019bbf9fa6f5e
 
 pkgname = ttvchecker
