@@ -2,7 +2,7 @@
 # Contributor: Rafael Silva (perigoso) <perigoso@riseup.net>
 
 pkgname=curlcpp
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 epoch=
 pkgdesc="An object oriented C++ wrapper for CURL"
@@ -17,7 +17,7 @@ optdepends=()
 provides=()
 conflicts=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('fcb78774c493ca8f7fa51741dd75d43c8a5a04a788b47e44216ca4d9cf672344')
+sha256sums=('ba7aeed9fde9e5081936fbe08f7a584e452f9ac1199e5fabffbb3cfc95e85f4b')
 
 build() {
 	cmake -B build -S "$pkgname-$pkgver" \
