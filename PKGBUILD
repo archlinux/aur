@@ -3,13 +3,13 @@
 pkgname=avr-sim-bin
 _pkgname=avr_sim
 pkgver=2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Gerd's avr simulator"
 arch=(x86_64)
 url="http://www.avr-asm-tutorial.net/avr_sim/index_en.html"
 license=('unknown')
 depends=('gtk2')
-source=("http://www.avr-asm-tutorial.net/avr_sim/${pkgver/./}/avr_sim_${pkgver/./}_lin64.zip"
+source=("https://vin.ovh/repo/avr_sim_${pkgver/./}_lin64.zip"
         "avr_sim.desktop")
 sha256sums=('fb5201676e7ee64865d890469b9cc73af9478319e4c1442abeb1e451895351fa'
             '62ccc4b2dfd899d13b143c36d56d43927c1a32741a6315bf632af159baa73ff8'

@@ -1,12 +1,12 @@
 pkgbase = avr-sim-bin
 	pkgdesc = Gerd's avr simulator
 	pkgver = 2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.avr-asm-tutorial.net/avr_sim/index_en.html
 	arch = x86_64
 	license = unknown
 	depends = gtk2
-	source = http://www.avr-asm-tutorial.net/avr_sim/28/avr_sim_28_lin64.zip
+	source = https://vin.ovh/repo/avr_sim_28_lin64.zip
 	source = avr_sim.desktop
 	source = avr_sim_16x16.png
 	source = avr_sim_32x32.png
