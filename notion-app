@@ -8,4 +8,4 @@ if [[ -f $XDG_CONFIG_HOME/notion-flags.conf ]]; then
 fi
 
 # Launch
-exec electron28 /usr/lib/notion-app $NOTION_USER_FLAGS "$@"
+exec electron29 /usr/lib/notion-app $NOTION_USER_FLAGS "$@"
