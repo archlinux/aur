@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=ONVIF GUI
+Comment=Manager for ONVIF compatible devices
+Type=Application
+Categories=Network;Qt;VideoConference;
+Icon=onvif-gui
+Exec=onvif-gui
+NoDisplay=false
+Terminal=false
