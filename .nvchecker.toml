@@ -1,0 +1,5 @@
+[ufodiff]
+source = "github"
+github = "source-foundry/ufodiff"
+prefix = "v"
+use_max_tag = true
