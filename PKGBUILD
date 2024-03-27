@@ -1,7 +1,7 @@
-# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
+# Maintainer: ap4ss3rby <ap4ss3rby (at) gmail (dot) org>
 pkgname=rtl8192eu-dkms
 _pkgname="${pkgname%-*}"
-pkgver=5.6.4.r293.gf2fc8af
+pkgver=5.6.4.r299.g7ef8251
 _pkgver="${pkgver%.g*}"
 pkgrel=1
 pkgdesc="Driver for Realtek 8192eu chipset (DKMS)"
@@ -13,7 +13,7 @@ makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
 install=$pkgname.install
-_commit=f2fc8af7         # fix netif_napi_add Linux 6.1/6.3 execution issue (#321)
+_commit=7ef8251         # (Merge pull request #337 from etzngr/fix-build-for-kernel-6.8)
 source=("$_pkgname::git+${url}.git#commit=$_commit"
         $pkgname.conf)
 sha256sums=('SKIP'

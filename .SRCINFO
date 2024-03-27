@@ -1,6 +1,6 @@
 pkgbase = rtl8192eu-dkms
 	pkgdesc = Driver for Realtek 8192eu chipset (DKMS)
-	pkgver = 5.6.4.r293.gf2fc8af
+	pkgver = 5.6.4.r299.g7ef8251
 	pkgrel = 1
 	url = https://github.com/Mange/rtl8192eu-linux-driver
 	install = rtl8192eu-dkms.install
@@ -10,7 +10,7 @@ pkgbase = rtl8192eu-dkms
 	depends = dkms
 	provides = rtl8192eu
 	conflicts = rtl8192eu
-	source = rtl8192eu::git+https://github.com/Mange/rtl8192eu-linux-driver.git#commit=f2fc8af7
+	source = rtl8192eu::git+https://github.com/Mange/rtl8192eu-linux-driver.git#commit=7ef8251
 	source = rtl8192eu-dkms.conf
 	sha256sums = SKIP
 	sha256sums = dc6a9bfc6a796461da2219accc7a6ae755ea13253737630e1538f3d98aa7aff5
