@@ -7,7 +7,7 @@ pkgbase = zathura-language-server
 	license = GPL3
 	makedepends = python-installer
 	depends = python-lsp-tree-sitter
-	depends = python-tree-sitter-zathurarc>=0.0.3
+	depends = python-tree-sitter-zathurarc>=0.0.4
 	depends = python-webcolors
 	source = https://files.pythonhosted.org/packages/py3/z/zathura_language_server/zathura_language_server-0.0.11-py3-none-any.whl
 	sha256sums = 6cdd977871ca70e0e031f567f90c150b08f866fffd775b3332b413f63ac6fdc7
