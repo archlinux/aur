@@ -1,6 +1,6 @@
 # Maintainer: Alexander Pohl <alex at ahpohl dot com>
 pkgname=smartmeter
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 epoch=
 pkgdesc="Read energy utility meter with IR dongle"
@@ -16,7 +16,7 @@ provides=()
 conflicts=()
 replaces=()
 backup=('etc/smartmeter.conf')
-options=()
+options=(!strip)
 install=
 changelog=
 source=("$pkgname-$pkgver::git+https://github.com/ahpohl/smartmeter.git#tag=v${pkgver}"
