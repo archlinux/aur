@@ -1,0 +1,17 @@
+pkgbase = gtk-session-lock-git
+	pkgdesc = A library to create screen lockers for Wayland using the ext-session-lock protocol
+	pkgver = r510.00599bf
+	pkgrel = 1
+	url = https://github.com/Cu3PO42/gtk-session-lock
+	arch = x86_64
+	makedepends = meson
+	makedepends = wayland
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = valabind
+	depends = gtk3
+	provides = gtk-session-lock
+	source = git+https://github.com/Cu3PO42/gtk-session-lock.git
+	sha256sums = SKIP
+
+pkgname = gtk-session-lock-git
