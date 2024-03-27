@@ -1,0 +1,15 @@
+pkgbase = nsproxy-git
+	pkgdesc = A tool to force applications to use a specific SOCKS5 or HTTP proxy (git version to track dev branch)
+	pkgver = 0.2.0.3.g7306d12
+	pkgrel = 1
+	url = https://github.com/nlzy/nsproxy
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = linux-api-headers
+	provides = nsproxy=0.2.0.3.g7306d12
+	conflicts = nsproxy
+	source = git+https://github.com/nlzy/nsproxy.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = nsproxy-git
