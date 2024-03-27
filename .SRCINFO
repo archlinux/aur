@@ -1,11 +1,12 @@
 pkgbase = clash-geoip
-	pkgdesc = A GeoLite2 data created by MaxMind
-	pkgver = 20240312
+	pkgdesc = GeoIP files for Clash
+	pkgver = 20240327
 	pkgrel = 1
-	url = https://github.com/Dreamacro/maxmind-geoip
+	url = https://github.com/MetaCubeX/meta-rules-dat
 	arch = any
-	license = custom
-	source = maxmind-geoip-20240312.mmdb::https://github.com/Dreamacro/maxmind-geoip/releases/download/20240312/Country.mmdb
-	sha256sums = 87a9eb97314146bbcbfa150e9e95a2fda8b12833a54684d5e334182071ac9486
+	license = CC-BY-SA-4.0
+	license = GPL-3.0-or-later
+	source = https://github.com/MetaCubeX/meta-rules-dat/raw/release/country.mmdb
+	sha256sums = 15cd3c51840c1d4849f7933c81e5d35525b5ed980229f6a97af7e4be67126fe7
 
 pkgname = clash-geoip
