@@ -1,0 +1,19 @@
+pkgbase = zls-nightly-bin
+	pkgdesc = A Zig language server. [YOU MUST USE ZIG MASTER VERSION]
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/zigtools/zls/wiki/Installation
+	arch = x86_64
+	arch = x86
+	arch = aarch64
+	license = MIT
+	provides = zls
+	conflicts = zls
+	source_x86_64 = https://zigtools-releases.nyc3.digitaloceanspaces.com/zls/master/x86_64-linux/zls
+	sha256sums_x86_64 = f561c6757ad05bc0287699bfc3f117833932210cce3701969ca94f37b7e52721
+	source_x86 = https://zigtools-releases.nyc3.digitaloceanspaces.com/zls/master/x86-linux/zls
+	sha256sums_x86 = f561c6757ad05bc0287699bfc3f117833932210cce3701969ca94f37b7e52721
+	source_aarch64 = https://zigtools-releases.nyc3.digitaloceanspaces.com/zls/master/aarch64-linux/zls
+	sha256sums_aarch64 = f561c6757ad05bc0287699bfc3f117833932210cce3701969ca94f37b7e52721
+
+pkgname = zls-nightly-bin

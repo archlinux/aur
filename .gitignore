@@ -1,0 +1,9 @@
+# pkg build directories
+/src
+/pkg
+
+# download
+/zls
+
+# build result
+/*.zst
