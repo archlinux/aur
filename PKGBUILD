@@ -1,7 +1,7 @@
 # Maintainer: Maksim Kurnosenko <asusx2@mail.ru>
 
 pkgname=element-web-anyarch-bin
-pkgver=1.11.61
+pkgver=1.11.62
 pkgrel=1
 pkgdesc="Glossy Matrix collaboration client — web version for any architecture (built files without electron dependencies)."
 arch=(any)
@@ -13,7 +13,7 @@ conflicts=(element-web)
 replaces=(riot-web vector-web)
 source=(element-web-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/element-v${pkgver}.tar.gz
         element-web-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/element-v${pkgver}.tar.gz.asc)
-sha256sums=('fd1c804c501c78a8cda37947b94578f23b5d3e3d763491b345ce5ba587061512'
+sha256sums=('713a527ffaa31d29af61afb123f2a0b55c52920662599f4558672a21e523012c'
             'SKIP')
 validpgpkeys=(712BFBEE92DCA45252DB17D7C7BE97EFA179B100) # Element Releases <releases@riot.im>
 
