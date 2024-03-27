@@ -1,21 +1,21 @@
 pkgbase = linux-xanmod-linux-bin-x64v2
 	pkgdesc = The Linux kernel and modules with Xanmod patches - Current Stable (MAIN) - Prebuilt version - x64v2
-	pkgver = 6.7.10
+	pkgver = 6.7.11
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
 	license = GPL2
 	makedepends = curl
 	makedepends = libxml2
-	noextract = https://sourceforge.net/projects/xanmod/files/releases/main/6.7.10-xanmod1/6.7.10-x64v2-xanmod1/linux-image-6.7.10-x64v2-xanmod1_6.7.10-x64v2-xanmod1-0~20240315.g13c816f_amd64.deb
-	noextract = https://sourceforge.net/projects/xanmod/files/releases/main/6.7.10-xanmod1/6.7.10-x64v2-xanmod1/linux-headers-6.7.10-x64v2-xanmod1_6.7.10-x64v2-xanmod1-0~20240315.g13c816f_amd64.deb
+	noextract = https://sourceforge.net/projects/xanmod/files/releases/main/6.7.11-xanmod1/6.7.11-x64v2-xanmod1/linux-image-6.7.11-x64v2-xanmod1_6.7.11-x64v2-xanmod1-0~20240326.g10422a2_amd64.deb
+	noextract = https://sourceforge.net/projects/xanmod/files/releases/main/6.7.11-xanmod1/6.7.11-x64v2-xanmod1/linux-headers-6.7.11-x64v2-xanmod1_6.7.11-x64v2-xanmod1-0~20240326.g10422a2_amd64.deb
 	options = !strip
-	source = https://sourceforge.net/projects/xanmod/files/releases/main/6.7.10-xanmod1/6.7.10-x64v2-xanmod1/linux-image-6.7.10-x64v2-xanmod1_6.7.10-x64v2-xanmod1-0~20240315.g13c816f_amd64.deb
-	source = https://sourceforge.net/projects/xanmod/files/releases/main/6.7.10-xanmod1/6.7.10-x64v2-xanmod1/linux-headers-6.7.10-x64v2-xanmod1_6.7.10-x64v2-xanmod1-0~20240315.g13c816f_amd64.deb
+	source = https://sourceforge.net/projects/xanmod/files/releases/main/6.7.11-xanmod1/6.7.11-x64v2-xanmod1/linux-image-6.7.11-x64v2-xanmod1_6.7.11-x64v2-xanmod1-0~20240326.g10422a2_amd64.deb
+	source = https://sourceforge.net/projects/xanmod/files/releases/main/6.7.11-xanmod1/6.7.11-x64v2-xanmod1/linux-headers-6.7.11-x64v2-xanmod1_6.7.11-x64v2-xanmod1-0~20240326.g10422a2_amd64.deb
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = f84d5cbc18d57921379be5322efa8099bad134b112cc28c968e8e8140358d50a
-	sha256sums = 39f6a0f3166e31ad37a8821352a12ff5b2c3b721c1d8ec1bdbd4521c5ab4009a
+	sha256sums = 6a883c4df64c7d530f5807cff93df1373bc640a782b54169b18da5150152e4fe
+	sha256sums = ff1bf593da9990ea9790f0b231a3986c1ec8b31999f9a9170a5d3d915ab0b094
 
 pkgname = linux-xanmod-linux-bin-x64v2
 
