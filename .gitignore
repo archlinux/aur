@@ -2,3 +2,4 @@ ansi-color-codec*
 color-code*
 pkg/
 src/
+*.tar.gz
