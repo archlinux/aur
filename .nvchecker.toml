@@ -1,0 +1,5 @@
+[sile-fancytoc]
+source = "github"
+github = "Omikhleia/fancytoc.sile"
+prefix = "v"
+use_max_tag = true
