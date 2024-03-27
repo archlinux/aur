@@ -3,12 +3,12 @@
 _pkgname=CONSTANd
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
-pkgrel=1
-pkgdesc='Data normalization by matrix raking'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('custom')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Data normalization by matrix raking"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('NPOSL-3.0')
 depends=(
   r
 )
@@ -24,15 +24,18 @@ optdepends=(
   r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d95083be200baac9f56d8d8f7cba928393cb088a556aee24b4b2a9f6e2d41e60')
+md5sums=('6337f6a248f820600a99fa9ef9fc1571')
+b2sums=('66f3c5461bd804d4c90ee6b3802c6b74237ce6df1a089e153856d41b15d5c6f5394f659ff6684bb0d2f28f2b7e8c875a746b9a55e4b297920872202692bda912')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:

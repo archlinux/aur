@@ -1,10 +1,10 @@
 pkgbase = r-constand
 	pkgdesc = Data normalization by matrix raking
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/CONSTANd
 	arch = any
-	license = custom
+	license = NPOSL-3.0
 	depends = r
 	optdepends = r-biocstyle
 	optdepends = r-cairo
@@ -16,6 +16,7 @@ pkgbase = r-constand
 	optdepends = r-rmarkdown
 	optdepends = r-tidyr
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/CONSTANd_1.10.0.tar.gz
-	sha256sums = d95083be200baac9f56d8d8f7cba928393cb088a556aee24b4b2a9f6e2d41e60
+	md5sums = 6337f6a248f820600a99fa9ef9fc1571
+	b2sums = 66f3c5461bd804d4c90ee6b3802c6b74237ce6df1a089e153856d41b15d5c6f5394f659ff6684bb0d2f28f2b7e8c875a746b9a55e4b297920872202692bda912
 
 pkgname = r-constand
