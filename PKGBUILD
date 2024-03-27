@@ -3,7 +3,7 @@
 
 pkgname='firefox-extension-plasma-integration-bin'
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Multitask efficiently by controlling browser functions from the Plasma desktop.'
 arch=('any')
 url='http://kde.org'
@@ -15,6 +15,6 @@ noextract=('plasma-integration.xpi')
 sha256sums=('e156e82091bbff44cb9d852e16aedacdcc0819c5a3b8cb34cedd77acf566c5c4')
 
 package() {
-  install -Dm644 'plasma-integration.xpi' "${pkgdir}/usr/lib/firefox/browser/extensions/plasma-integration.xpi"
+  install -Dm644 'plasma-integration.xpi' "${pkgdir}/usr/lib/firefox/browser/extensions/plasma-browser-integration@kde.org.xpi"
 }
 
