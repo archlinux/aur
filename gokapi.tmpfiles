@@ -1,0 +1,7 @@
+d /etc/gokapi 0755 gokapi gokapi
+d /var/lib/gokapi 0755 gokapi gokapi
+
+
+
+
+

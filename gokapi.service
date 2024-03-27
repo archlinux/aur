@@ -1,0 +1,42 @@
+[Unit]
+Description=Gokapi file send server
+Documentation=https://gokapi.readthedocs.io
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=gokapi
+Group=gokapi
+ExecStart=/usr/bin/gokapi --config-dir /etc/gokapi --data /var/lib/gokapi
+
+# Hardening options
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+DevicePolicy=closed
+LockPersonality=true
+MemoryAccounting=true
+MemoryDenyWriteExecute=true
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateTmp=true
+ProcSubset=pid
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectProc=invisible
+ProtectSystem=strict
+RemoveIPC=true
+ReadWritePaths=/var/lib/gokapi /etc/gokapi
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+
+[Install]
+WantedBy=multi-user.target
+
+
