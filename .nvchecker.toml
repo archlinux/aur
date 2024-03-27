@@ -1,0 +1,5 @@
+[sile-piecharts]
+source = "github"
+github = "Omikhleia/piecharts.sile"
+prefix = "v"
+use_max_tag = true
