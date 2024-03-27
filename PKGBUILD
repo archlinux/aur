@@ -3,7 +3,7 @@
 
 _crate="cargo-doc2readme"
 pkgname="cargo-doc2readme"
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='cargo subcommand to create a readme file containing the rustdoc comments from...'
 url='https://crates.io/crates/cargo-doc2readme'
@@ -12,20 +12,28 @@ license=('Apache')
 depends=('gcc-libs')
 makedepends=('cargo')
 
-source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/cargo-doc2readme/0.3.0/download")
-sha512sums=('4c36cd16aab9606cc0e2ebf59ec83ac19cd6349f4b26cca733f8d2796d10b2b63e2a5186bd0b7f87da97f683a7d1729c6dc1eea341ad9777229280398d92df08')
+source=("$_crate-0.4.0.tar.gz::https://crates.io/api/v1/crates/cargo-doc2readme/0.4.0/download")
+sha512sums=('0c8d9717e48e3f8e2aba162072bcc93c1fa5751b59693c7b6abbf28f7d92f26a112aeb65d337de11cdfdbb37eeb1b0688c81105d8c1eea0ac50ebc7012a87cdd')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
 
 prepare() {
-	cd "$srcdir/$_crate-$pkgver"
+	cd "$srcdir/$_crate-0.4.0"
 
-	cargo fetch --locked
+	export RUSTUP_TOOLCHAIN=stable
+
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-	cd "$srcdir/$_crate-$pkgver"
+	cd "$srcdir/$_crate-0.4.0"
+	
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	CFLAGS+=" -ffat-lto-objects"
+
+	
 	cargo build \
 		--offline \
 		--locked \
@@ -33,7 +41,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$_crate-$pkgver"
+	cd "$srcdir/$_crate-0.4.0"
 	install -Dm755 "target/release/cargo-doc2readme" -t "$pkgdir/usr/bin"
-	install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 'LICENSE' -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
