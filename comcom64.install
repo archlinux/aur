@@ -1,0 +1,8 @@
+post_install() {
+  printf '%s\n' "  > comcom64 needs to have '/dev/shm' mounted with the 'exec' option/ without the 'noexec' option."
+  printf '%s\n' "    Otherwise the 64bit command.com will fail to launch in DOSEMU2."
+}
+
+post_upgrade() {
+  post_install "$@"
+}
