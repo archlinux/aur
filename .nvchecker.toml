@@ -1,0 +1,6 @@
+[biome]
+source = "github"
+github = "biomejs/biome"
+include_regex = 'cli/v\d+\.\d+\.\d+'
+prefix = "cli/v"
+use_max_tag = true
