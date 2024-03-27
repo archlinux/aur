@@ -1,0 +1,5 @@
+[sile-markdown]
+source = "github"
+github = "Omikhleia/markdown.sile"
+prefix = "v"
+use_max_tag = true
