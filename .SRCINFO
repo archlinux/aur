@@ -1,15 +1,15 @@
 pkgbase = lmo-desktop-mode-git
 	pkgdesc = Client and companion application for LibreMobileOS desktop mode
 	pkgver = 1.0.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://get.libremobileos.com/desktop
 	arch = x86_64
+	arch = aarch64
 	license = GPL-2.0-only
 	makedepends = make
 	makedepends = cmake
 	makedepends = unzip
 	depends = jdk-openjdk
-	depends = jre-openjdk
 	depends = android-tools
 	depends = android-udev
 	source = lmo-desktop-mode.desktop
