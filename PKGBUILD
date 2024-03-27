@@ -3,7 +3,7 @@
 
 pkgname=qucs-s
 pkgver=24.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A spin-off of Qucs that supports other free SPICE circuit simulators like ngspice with the same Qucs GUI"
 arch=('x86_64' 'i686')
 url="https://ra3xdh.github.io"
@@ -21,12 +21,12 @@ source=(https://github.com/ra3xdh/qucs_s/releases/download/$pkgver/$pkgname-$pkg
 sha256sums=('14d8d81793ec846c03469cdba0a7eeaa6f12182242166c0b62762b62f34c45da')
 
 build() {
-  export QT_DIR=/usr/lib/cmake/Qt6/
   cd $srcdir/$pkgname-$pkgver
   mkdir -p builddir
   cd builddir
   cmake \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
+    -DWITH_QT6=ON \
 	  ..
   make -j$(nproc) 
 }
