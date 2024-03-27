@@ -1,0 +1,130 @@
+From b03eb6191fed8481874fae6731f2a90ec4f84a41 Mon Sep 17 00:00:00 2001
+From: tippfehlr <tippfehlr@tippfehlr.eu>
+Date: Fri, 19 Jan 2024 18:48:09 +0100
+Subject: [PATCH] feat: add feature no-self-update
+
+To disable self-update for package manager installs.
+
+Rustup functions in the same way:
+- https://github.com/rust-lang/rustup/blob/9955b9f889889a495b380e73709db5480c6a656b/Cargo.toml#L29
+- https://github.com/rust-lang/rustup/blob/9955b9f889889a495b380e73709db5480c6a656b/src/cli/self_update.rs#L96
+---
+ Cargo.toml            |  3 ++
+ src/modules/update.rs | 81 ++++++++++++++++++++++++-------------------
+ 2 files changed, 48 insertions(+), 36 deletions(-)
+
+diff --git a/Cargo.toml b/Cargo.toml
+index 9b22636..61454eb 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -27,3 +27,6 @@ serde_json = "1.0.115"
+ sudo = "0.6.0"
+ tar = "0.4.40"
+ which = "6.0.1"
++
++[features]
++no-self-update = []
+diff --git a/src/modules/update.rs b/src/modules/update.rs
+index a05366a..52e7b80 100644
+--- a/src/modules/update.rs
++++ b/src/modules/update.rs
+@@ -121,50 +121,59 @@ fn remove_file_with_permission_check(file_path: &str) -> Result<()> {
+ }
+ 
+ pub fn update() -> Result<()> {
+-    clear()?;
+-    cprintln!("<c,u,s>UPDATER");
+-    println!();
+-
+-    let current_executable = &current_exe()?;
+-    let bin_path = current_executable.to_str().unwrap();
+-    let tmp_path = "/tmp/wrestic.tar.gz";
+-    let url = "https://api.github.com/repos/alvaro17f/wrestic/releases/latest";
+-
+-    if get_current_version()? >= get_latest_version(url)? {
+-        cprintln!("<g,u>Wrestic is already up to date!\n");
+-        pause()?
+-    } else {
+-        cprintln!(
+-            "<y>Wrestic is outdated!\n<r>current: <k>{}\n<g>latest: <k>{}\n",
+-            get_current_version()?,
+-            get_latest_version(url)?
+-        );
++    #[cfg(not(feature = "no-self-update"))]
++    const SELF_UPDATE: bool = true;
++    #[cfg(feature = "no-self-update")]
++    const SELF_UPDATE: bool = false;
++
++    if SELF_UPDATE {
++        clear()?;
++        cprintln!("<c,u,s>UPDATER");
++        println!();
++
++        let current_executable = &current_exe()?;
++        let bin_path = current_executable.to_str().unwrap();
++        let tmp_path = "/tmp/wrestic.tar.gz";
++        let url = "https://api.github.com/repos/alvaro17f/wrestic/releases/latest";
++
++        if get_current_version()? >= get_latest_version(url)? {
++            cprintln!("<g,u>Wrestic is already up to date!\n");
++            pause()?
++        } else {
++            cprintln!(
++                "<y>Wrestic is outdated!\n<r>current: <k>{}\n<g>latest: <k>{}\n",
++                get_current_version()?,
++                get_latest_version(url)?
++            );
+ 
+-        let pb = ProgressBar::new_spinner();
+-        pb.enable_steady_tick(Duration::from_millis(120));
+-        pb.set_message("Updating wrestic...");
++            let pb = ProgressBar::new_spinner();
++            pb.enable_steady_tick(Duration::from_millis(120));
++            pb.set_message("Updating wrestic...");
+ 
+-        let shell = get_current_shell()?;
++            let shell = get_current_shell()?;
+ 
+-        download_latest_version(&shell, url, tmp_path)?;
++            download_latest_version(&shell, url, tmp_path)?;
+ 
+-        pb.finish_and_clear();
++            pb.finish_and_clear();
+ 
+-        remove_file_with_permission_check(bin_path)?;
++            remove_file_with_permission_check(bin_path)?;
+ 
+-        pb.finish_and_clear();
++            pb.finish_and_clear();
+ 
+-        if extract_wrestic(tmp_path, bin_path).is_err() {
+-            Err(error!("Failed extracting the latest version of wrestic"))?;
+-        }
++            if extract_wrestic(tmp_path, bin_path).is_err() {
++                Err(error!("Failed extracting the latest version of wrestic"))?;
++            }
+ 
+-        pb.finish_and_clear();
++            pb.finish_and_clear();
+ 
+-        cprintln!(
+-            "<g,u>Wrestic has been updated to version <k>{}<g,u>!",
+-            get_latest_version(url)?
+-        );
+-    }
++            cprintln!(
++                "<g,u>Wrestic has been updated to version <k>{}<g,u>!",
++                get_latest_version(url)?
++            );
++        }
+ 
+-    Ok(())
++        Ok(())
++    } else {
++        Err(error!("Self-update is disabled for this build. You should probably use your system package manager to update"))
++    }
+ }
+-- 
+2.44.0
+
+

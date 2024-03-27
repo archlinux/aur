@@ -10,8 +10,9 @@ pkgbase = wrestic
 	depends = gcc-libs
 	provides = wrestic
 	conflicts = wrestic
-	options = strip
 	source = wrestic-1.6.1::https://github.com/alvaro17f/wrestic/archive/refs/tags/v1.6.1.tar.gz
+	source = wrestic-1.6.1-no-self-update.patch
 	sha256sums = 475436aec4650c2ca8e47d502b663d09e1af717f3b9bba65d667924720e762d0
+	sha256sums = SKIP
 
 pkgname = wrestic
