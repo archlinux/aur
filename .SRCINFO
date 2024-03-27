@@ -1,11 +1,11 @@
 pkgbase = vmware-govc-bin
 	pkgdesc = VMWare vSphere CLI
-	pkgver = 0.36.0
+	pkgver = 0.36.2
 	pkgrel = 1
 	url = https://github.com/vmware/govmomi/tree/master/govc
 	arch = x86_64
 	license = Apache
-	source = vmware-govc-bin-0.36.0.tar.gz::https://github.com/vmware/govmomi/releases/download/v0.36.0/govc_Linux_x86_64.tar.gz
-	sha256sums = 9ee0e1cc62a7280602975d6b0aadb2d961de8489724e1f4842e53b81ac160ba6
+	source = vmware-govc-bin-0.36.2.tar.gz::https://github.com/vmware/govmomi/releases/download/v0.36.2/govc_Linux_x86_64.tar.gz
+	sha256sums = 47130749a94755f53cf8d39c6e22e1fcf045fdca9c2f480c19a6a51cd67991c3
 
 pkgname = vmware-govc-bin
