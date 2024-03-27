@@ -2,7 +2,7 @@
 _name=dae
 pkgname=$_name-git
 pkgver=0.5.1.r9.gd31d880
-pkgrel=2
+pkgrel=3
 pkgdesc="A Linux lightweight and high-performance transparent proxy solution based on eBPF."
 arch=('x86_64' 'aarch64')
 url="https://github.com/daeuniverse/dae"
@@ -14,11 +14,13 @@ makedepends=('clang' 'go' 'git')
 backup=("etc/dae/config.dae")
 source=(
 	"git+https://github.com/daeuniverse/dae.git"
+	"dae.service"
 	"geoip.dat::https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat"
 	"geosite.dat::https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat"
 )
 sha256sums=(
 	'SKIP'
+	'323467e65408a68c6f443ca0cdc25c4e5e94254d7e4397560a9a2dce86149b96'
 	'SKIP'
 	'SKIP'
 )
@@ -43,7 +45,7 @@ build() {
 package() {
 	cd "$srcdir/$_name"
 	install -Dm755 "dae" -t "${pkgdir}/usr/bin/"
-	install -Dm644 "install/dae.service" -t "${pkgdir}/usr/lib/systemd/system/"
+	install -Dm644 "../dae.service" -t "${pkgdir}/usr/lib/systemd/system/"
 	install -Dm640 "install/empty.dae" "${pkgdir}/etc/dae/config.dae"
 	install -Dm644 "example.dae" "${pkgdir}/etc/dae/config.dae.example"
 
