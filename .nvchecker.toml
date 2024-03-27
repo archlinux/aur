@@ -1,0 +1,6 @@
+[tau-editor]
+source = "gitlab"
+host = "gitlab.gnome.org"
+gitlab = "World/Tau"
+prefix = "v"
+use_max_tag = true
