@@ -1,6 +1,6 @@
 pkgbase = deadbeef-plugins-kode54-git
 	pkgdesc = A set of plugins for DeaDBeeF (Git version)
-	pkgver = r86.2bb75ba
+	pkgver = r91.1820899
 	pkgrel = 1
 	url = https://bitbucket.org/losnoco/deadbeef_plugins
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = deadbeef-plugins-kode54-git
 	license = LGPL2.1
 	license = ZLIB
 	license = proprietary
+	makedepends = cmake
 	depends = deadbeef
 	depends = zlib
 	depends = libbass

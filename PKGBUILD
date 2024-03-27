@@ -1,6 +1,6 @@
 # Maintainer: Christopher Snowhill <kode54@gmail.com>
 pkgname=deadbeef-plugins-kode54-git
-pkgver=r86.2bb75ba
+pkgver=r91.1820899
 pkgrel=1
 pkgdesc="A set of plugins for DeaDBeeF (Git version)"
 url="https://bitbucket.org/losnoco/deadbeef_plugins"
@@ -9,6 +9,7 @@ license=('GPL2'
          'LGPL2.1'
          'ZLIB'
          'proprietary')
+makedepends=('cmake')
 depends=('deadbeef' 'zlib' 'libbass' 'libbassmidi' 'libbass_mpc' 'libbassflac' 'libbassopus'
          'libbasswv' 'libopenmpt' 'vgmstream-git' 'libmgba')
 source=('git+https://bitbucket.org/losnoco/deadbeef_plugins.git')
@@ -30,6 +31,7 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
+  install -Dm644 libvgm/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING.libvgm"
   install -Dm644 midi/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING.midi"
   install -Dm644 openmpt/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING.openmpt"
   install -Dm644 vfs_fex/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING.vfs_fex"
