@@ -1,0 +1,5 @@
+[audacium]
+source = "github"
+github = "SartoxOnlyGNU/audacium"
+prefix = "v"
+use_max_tag = true
