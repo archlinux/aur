@@ -1,7 +1,7 @@
 pkgbase = flut-renamer
 	pkgdesc = A GUI application written in Flutter (using GTK on Linux), it helps users batch renaming their files in multiple ways, including inserting text, inserting file metadata and Exif data, replacing text, deleting text, rearranging, transliterating characters.
-	pkgver = 1.3.3
-	pkgrel = 8
+	pkgver = 1.4.0
+	pkgrel = 9
 	url = https://github.com/sun-jiao/renamer
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = flut-renamer
 	makedepends = cmake
 	makedepends = ninja
 	depends = gtk3
-	source = https://github.com/sun-jiao/renamer/archive/refs/tags/1.3.3.tar.gz
-	sha256sums = 4f74f03d9e2ece36f2a648606d9488538a269662ba8083dcff601c172a6a02c1
+	source = https://github.com/sun-jiao/renamer/archive/refs/tags/1.4.0.tar.gz
+	sha256sums = 3db163beaecfab5149df46dd60a961e91d6f3f3a7a0a63c83f2bf6500518e9e3
 
 pkgname = flut-renamer
