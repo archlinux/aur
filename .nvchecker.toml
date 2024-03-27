@@ -1,0 +1,5 @@
+[sfdnormalize]
+source = "github"
+github = "alerque/sfdnormalize"
+prefix = "v"
+use_max_tag = true
