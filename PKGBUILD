@@ -1,5 +1,5 @@
 pkgname=bitmagnet-git
-pkgver=v0.7.7.r1.gaa135e0
+pkgver=v0.7.14.r2.ge9e19a5
 pkgrel=1
 pkgdesc='A self-hosted BitTorrent indexer, DHT crawler, content classifier and torrent search engine with web UI, GraphQL API and Servarr stack integration.'
 arch=('any')
