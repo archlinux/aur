@@ -1,0 +1,7 @@
+[typstudio]
+source = "github"
+github = "Cubxity/typstudio"
+use_max_tag = true
+include_regex = 'v\d+\.\d+\.\d+-dev\.\d+'
+from_pattern = 'v(\d+\.\d+\.\d+)-(dev\.\d+)'
+to_pattern = '\1\2'
