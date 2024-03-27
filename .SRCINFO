@@ -1,6 +1,6 @@
 pkgbase = open-goal-launcher-bin
 	pkgdesc = A launcher for the OpenGOAL Project to simplify usage and installation
-	pkgver = 2.4.1
+	pkgver = 2.4.3
 	pkgrel = 2
 	url = https://github.com/open-goal/launcher
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = open-goal-launcher-bin
 	depends = fuse
 	conflicts = open-goal-launcher
 	options = !strip
-	source_x86_64 = https://github.com/open-goal/launcher/releases/download/v2.4.1/open-goal-launcher_2.4.1_amd64.AppImage
-	md5sums_x86_64 = 4bc94e8082cfe9e78e4133b40bcb7178
+	source_x86_64 = https://github.com/open-goal/launcher/releases/download/v2.4.3/open-goal-launcher_2.4.3_amd64.AppImage
+	md5sums_x86_64 = e945f9f423d2247e7a7ccd5e4f306f7a
 
 pkgname = open-goal-launcher-bin
