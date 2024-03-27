@@ -10,7 +10,7 @@ url="https://github.com/madpah/requirements-parser"
 license=('Apache-2.0')
 depends=('python-future' 'python-setuptools' 'python-types-setuptools')
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
-source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v0.6.0.tar.gz"
+source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'https://github.com/madpah/requirements-parser/pull/80.patch'
         'https://github.com/madpah/requirements-parser/pull/82.patch')
 sha256sums=('2270c9ed5961de83e37d86332d49954bbab852e36c3f4ff35b431e069baf2c38'
