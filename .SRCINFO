@@ -1,12 +1,12 @@
 pkgbase = gitsync
 	pkgdesc = GitSyncMaster: Automate updating multiple Git repositories within a directory structure effortlessly.
-	pkgver = 0.0.19
+	pkgver = 0.0.20
 	pkgrel = 1
 	url = https://github.com/felipealfonsog/GitSyncMaster
 	arch = x86_64
 	license = BSD 3-Clause
 	depends = python
-	source = https://github.com/felipealfonsog/GitSyncMaster/archive/refs/tags/v.0.0.19.tar.gz
-	sha256sums = df576ccca6fb553ea0ed8374172576beb3491f0febe65c77432705c46cc696c3
+	source = https://github.com/felipealfonsog/GitSyncMaster/archive/refs/tags/v.0.0.20.tar.gz
+	sha256sums = 22ce2cd6f12c9de128d4cfd762052fa3cb0ac2f5a5590278949c6dffe65f3994
 
 pkgname = gitsync
