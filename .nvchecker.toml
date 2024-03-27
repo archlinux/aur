@@ -1,0 +1,4 @@
+[matterhorn]
+source = "github"
+github = "matterhorn-chat/matterhorn"
+use_max_tag = true
