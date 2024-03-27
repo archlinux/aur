@@ -1,8 +1,8 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-rst.linker
 _name=${pkgname#python-}
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Can add links and perform other custom replacements to rst"
 arch=('any')
 url="https://github.com/jaraco/rst.linker"
@@ -34,11 +34,12 @@ makedepends=(
 #  'python-pytest-mypy'
 #  'python-types-python-dateutil'
 #)
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('b41018765f1f65e3e6dfae6ea23cd699e0a26d8ce34cd3bcfd6f779af2944f01')
+source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('a9edcf4d192a29ad871bac53932ea974a67723833e9009ad0fa29289ba9457b3')
 
 build() {
   cd "$_name-$pkgver"
+  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
   python -m build --wheel --no-isolation
 
   # generate html docs
