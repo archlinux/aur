@@ -1,0 +1,5 @@
+[akira]
+source = "github"
+github = "akiraux/Akira"
+prefix = "v"
+use_max_tag = true
