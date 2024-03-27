@@ -1,0 +1,5 @@
+[klog-time-tracker]
+source = "github"
+github = "jotaen/klog"
+prefix = "v"
+use_max_tag = true
