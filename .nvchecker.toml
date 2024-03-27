@@ -1,0 +1,3 @@
+[flowify]
+source = "pypi"
+pypi = "flowify"
