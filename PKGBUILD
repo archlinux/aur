@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=p3x-onenote-bin
 _pkgname=P3X-OneNote
-pkgver=2024.4.160
+pkgver=2024.4.161
 _electronversion=29
 pkgrel=1
 pkgdesc="Linux Electron Onenote - A Linux compatible version of OneNote"
@@ -27,9 +27,9 @@ source=(
 )
 sha256sums=('9610dab5a4ed91d2caa7d0eee497dcf618fda2715bcdeb3281acbf9c93b7a038'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('bc514a09466280be61ea2eb7b3027043a52b0734ab8836fc392888393fbe4dc7')
-sha256sums_armv7h=('5fce8b686f823efe1a49b7d0570dfa30d3b46103a2eac45d52d3e80a5c5af233')
-sha256sums_x86_64=('a34734d7aef6a87ae4c68be51e47ba3aba389e9853e61f378faae50f26047247')
+sha256sums_aarch64=('639351b6010112d5de42c2bfa764395cc4fd150475d441bbd0b500708f4cf2ed')
+sha256sums_armv7h=('7c52a657faaa4aad53d13f054c886c29548fcec37f525331e16995644702c73a')
+sha256sums_x86_64=('3aac9129b148f9a01f4f0f691e690522e267d73c11071d60696bf1104f4b7db1')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
