@@ -1,6 +1,6 @@
 pkgbase = spirv-tools-git
 	pkgdesc = API and commands for processing SPIR-V modules
-	pkgver = 2023.5.3845.2a238ed24
+	pkgver = 2024.1.3932.fe7bae090
 	pkgrel = 1
 	epoch = 3
 	url = https://github.com/KhronosGroup/SPIRV-Tools
@@ -17,15 +17,18 @@ pkgbase = spirv-tools-git
 	depends = sh
 	provides = spirv-tools
 	conflicts = spirv-tools
+	options = !debug
 	source = git+https://github.com/KhronosGroup/SPIRV-Tools
 	source = git+https://github.com/google/googletest.git
 	source = git+https://github.com/google/effcee.git
 	source = git+https://github.com/google/re2.git
 	source = git+https://github.com/abseil/abseil-cpp.git
+	source = https://github.com/KhronosGroup/SPIRV-Tools/commit/75ad1345d4af5268448a9b26797294b48795cd69.patch
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
+	sha1sums = 23be87aa32fb5189b61975033c6a69035f4cb0e8
 
 pkgname = spirv-tools-git

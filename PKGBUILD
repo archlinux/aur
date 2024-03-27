@@ -3,7 +3,7 @@
 
 pkgname=spirv-tools-git
 epoch=3
-pkgver="2023.5".3845.2a238ed24
+pkgver="2024.1".3932.fe7bae090
 pkgrel=1
 pkgdesc='API and commands for processing SPIR-V modules'
 url='https://github.com/KhronosGroup/SPIRV-Tools'
@@ -15,17 +15,19 @@ source=('git+https://github.com/KhronosGroup/SPIRV-Tools'
               'git+https://github.com/google/effcee.git'
               'git+https://github.com/google/re2.git'
               'git+https://github.com/abseil/abseil-cpp.git'
+              'https://github.com/KhronosGroup/SPIRV-Tools/commit/75ad1345d4af5268448a9b26797294b48795cd69.patch'
 )
 sha1sums=('SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
-          'SKIP')
+          'SKIP'
+          '23be87aa32fb5189b61975033c6a69035f4cb0e8')
 depends=(glibc gcc-libs sh)
 makedepends=(cmake python git spirv-headers-git)
 conflicts=(spirv-tools)
 provides=(spirv-tools)
-
+options=(!debug)
 
 cmake_args=(
   -G "Unix Makefiles"
@@ -50,8 +52,7 @@ prepare() {
   ln -s "$srcdir"/re2
   popd
   
-#  patch --directory="SPIRV-Tools" --forward --strip=1 --input="${srcdir}"/212dd9247ad60d5dcd262e43c24ec92de1a8ef1d.patch
-#  patch --directory="SPIRV-Tools" --forward --strip=1 --input="${srcdir}"/5cf47a9f90e192a1c799a04d7416b6dcd7dd59a8.patch
+  patch --directory="SPIRV-Tools" --reverse --strip=1 --input="$srcdir"/75ad1345d4af5268448a9b26797294b48795cd69.patch
   
   cmake   -S SPIRV-Tools -B _build "${cmake_args[@]}" -Wno-dev
   make -C _build spirv-tools-build-version
