@@ -1,18 +1,17 @@
 pkgbase = wrestic
 	pkgdesc = A wrapper around restic built in rust
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://github.com/alvaro17f/wrestic
 	arch = x86_64
 	license = LGPL-3.0-only
-	makedepends = git
-	makedepends = rust
-	depends = gcc-libs
+	makedepends = cargo
 	depends = glibc
+	depends = gcc-libs
 	provides = wrestic
 	conflicts = wrestic
 	options = strip
-	source = wrestic::git+https://github.com/alvaro17f/wrestic#tag=e0a0a7e16ad94c42e50ce5af4f198c9367a489b8
-	sha256sums = SKIP
+	source = wrestic-1.6.1::https://github.com/alvaro17f/wrestic/archive/refs/tags/v1.6.1.tar.gz
+	sha256sums = 475436aec4650c2ca8e47d502b663d09e1af717f3b9bba65d667924720e762d0
 
 pkgname = wrestic
