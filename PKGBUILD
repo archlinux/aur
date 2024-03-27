@@ -32,15 +32,15 @@ depends=(
   'qt5-charts'
   'gsl')
 optdepends=(
-  'vlc: for video playback in realtime'
-  'srmio: for SRM powercontrol V downloads via serial'
-  'libftd2xx: for Powertap downloads via USB'
-  'libkml: for export to Google Earth'
-  'libical: for diary integration with Google or MobileMe calendars'
+  'vlc: video playback in training mode'
+  'srmio: SRM powercontrol V downloads via serial'
+  'libftd2xx: Powertap downloads via USB'
+  'libkml: export to Google Earth'
+  'libical: diary window and CALDAV support (external calendar integration)'
   'libusb-compat: for using USB2 sticks in Train View'
   'libsamplerate'
-  'r: for charts generation'
-  'python: charting / ML')
+  'r: R charts'
+  'python: Python charts, scripts and data processors')
 options=('staticlibs')
 conflicts=('golden-cheetah-rc' 'golden-cheetah-dev' 'golden-cheetah')
 provides=('golden-cheetah')
