@@ -1,0 +1,4 @@
+[zerobrane-studio]
+source = "github"
+github = "pkulchenko/ZeroBraneStudio"
+use_max_tag = true
