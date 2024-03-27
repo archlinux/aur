@@ -2,7 +2,7 @@
 
 pkgname="yd-go-git"
 _pkgname=${pkgname%-git}
-pkgrel=4
+pkgrel=5
 pkgver="master.5af17d8.r0.g5af17d8"
 pkgdesc="Panel indicator for Yandex-disk CLI daemon (linux)"
 arch=('x86_64')
@@ -52,8 +52,8 @@ build() {
 	
 	#UPX not working with strip (set by defalut) option in PKGBUILD https://bbs.archlinux.org/viewtopic.php?id=235637
 	#If you need UPX, set !strip in options()
-	echo "Compress yd-go..."
-		upx --best ${srcdir}/${_pkgname}/build/${_pkgname}
+	#echo "Compress yd-go..."
+		#upx --best ${srcdir}/${_pkgname}/build/${_pkgname}
 }
 
 #Test yd-go

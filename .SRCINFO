@@ -1,7 +1,7 @@
 pkgbase = yd-go-git
 	pkgdesc = Panel indicator for Yandex-disk CLI daemon (linux)
 	pkgver = master.5af17d8.r0.g5af17d8
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/slytomcat/yd-go/
 	arch = x86_64
 	license = GPL-3.0-only
