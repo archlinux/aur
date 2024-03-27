@@ -1,0 +1,20 @@
+pkgbase = pt-plugin-plus-git
+	pkgdesc = Microsoft Edge, Google Chrome, Firefox browser plugin (Web Extensions), which is mainly used to assist the seeds of downloading PT station.
+	pkgver = 1.6.1.2590
+	pkgrel = 1
+	url = https://github.com/pt-plugins/PT-Plugin-Plus
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = jq
+	makedepends = nodejs
+	makedepends = yarn
+	optdepends = firefox
+	optdepends = google-chrome
+	optdepends = microsoft-edge-stable-bin
+	provides = pt-plugin-plus-dev
+	options = !strip
+	source = pt-plugin-plus::git+https://github.com/pt-plugins/PT-Plugin-Plus.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = pt-plugin-plus-git
