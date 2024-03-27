@@ -1,7 +1,8 @@
 # Maintainer: The one with the braid <info@braid.business>
 
 pkgbase=flutter-artifacts-google-bin
-_pkgbase=flutter
+_group=flutter
+groups=("$_group")
 pkgver=3.19.4
 # in order to update these version hashes, consult the PKGBUILD and update-artifact-versions.sh
 # script of https://aur.archlinux.org/pkgbase/flutter
@@ -12,11 +13,11 @@ _flutterarch=$(uname -m | sed s/aarch64/arm64/ | sed s/x86_64/x64/)
 # this host is blocked in China, according to Flutter docs, the FLUTTER_STORAGE_BASE_URL environment variable
 # should be used to provide an alternative mirror
 _storagebase="${FLUTTER_STORAGE_BASE_URL:-"https://storage.googleapis.com"}"
-pkgrel=2
+pkgrel=3
 _pkgdesc="Flutter SDK artifacts (binary from Google)"
 pkgdesc="${_pkgdesc}"
 arch=("x86_64" "aarch64")
-url="https://${_pkgbase}.dev"
+url="https://${_group}.dev"
 license=("custom" "BSD" "CCPL")
 makedepends=(
 	"unzip"
@@ -181,14 +182,14 @@ sha256sums_aarch64=('7f99e5020f79d3a9a369e579543db860afef6f2a41403992733a2b707b7
                     '6e0044cf445b8650efe57daf9415adb99f063c7a529437f2dbe58c7774e57cab')
 
 prepare() {
-  mkdir -p "${srcdir}/${_pkgbase}/bin/cache/artifacts"
+  mkdir -p "${srcdir}/${_group}/bin/cache/artifacts"
 
-  cd "${srcdir}/${_pkgbase}/bin/cache"
+  cd "${srcdir}/${_group}/bin/cache"
 
   unzip -o -q "${srcdir}/flutter_web_sdk.zip" -d flutter_web_sdk
   unzip -o -q "${srcdir}/sky_engine.zip" -d pkg
 
-  cd "${srcdir}/${_pkgbase}/bin/cache/artifacts"
+  cd "${srcdir}/${_group}/bin/cache/artifacts"
 
   mkdir -p "gradle_wrapper"
   tar -xzf "${srcdir}/gradle_wrapper.tar.gz" -C "gradle_wrapper"
@@ -242,145 +243,145 @@ build() {
 _package-engine-common-google-bin() {
   pkgdesc="${_pkgdesc} - common engine files"
   depends=(
-	"${_pkgbase}-common=${pkgver}"
-	"${_pkgbase}-sky-engine=${pkgver}"
-	"${_pkgbase}-material-fonts=${pkgver}"
+	"${_group}-common=${pkgver}"
+	"${_group}-sky-engine=${pkgver}"
+	"${_group}-material-fonts=${pkgver}"
   )
   provides=(
-	"${_pkgbase}-engine-common=${pkgver}"
+	"${_group}-engine-common=${pkgver}"
   )
   conflicts=(
-	"${_pkgbase}-engine-common=${pkgver}"
+	"${_group}-engine-common=${pkgver}"
   )
 
-  install -dm755 "${pkgdir}/usr/lib/${_pkgbase}/bin/cache/artifacts/engine"
+  install -dm755 "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"
 
-  cp -ra "${srcdir}/${_pkgbase}/bin/cache/artifacts/engine/common" "${pkgdir}/usr/lib/${_pkgbase}/bin/cache/artifacts/engine/common"
+  cp -ra "${srcdir}/${_group}/bin/cache/artifacts/engine/common" "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine/common"
 }
 
 _package-sky-engine-google-bin() {
   pkgdesc="${_pkgdesc} - sky-engine"
   depends=(
-	"${_pkgbase}-engine-common=${pkgver}"
+	"${_group}-engine-common=${pkgver}"
   )
   provides=(
-	"${_pkgbase}-sky-engine=${pkgver}"
+	"${_group}-sky-engine=${pkgver}"
   )
   conflicts=(
-	"${_pkgbase}-sky-engine=${pkgver}"
+	"${_group}-sky-engine=${pkgver}"
   )
 
-  install -dm755 "${pkgdir}/usr/lib/${_pkgbase}/bin/cache"
+  install -dm755 "${pkgdir}/usr/lib/${_group}/bin/cache"
 
-  cp -ra "${srcdir}/${_pkgbase}/bin/cache/pkg" "${pkgdir}/usr/lib/${_pkgbase}/bin/cache/pkg"
+  cp -ra "${srcdir}/${_group}/bin/cache/pkg" "${pkgdir}/usr/lib/${_group}/bin/cache/pkg"
 }
 
 _package-material-fonts-google-bin() {
   pkgdesc="${_pkgdesc} - material fonts"
   depends=(
-	"${_pkgbase}-engine-common=${pkgver}"
+	"${_group}-engine-common=${pkgver}"
   )
   provides=(
-	"${_pkgbase}-material-fonts=${pkgver}"
+	"${_group}-material-fonts=${pkgver}"
   )
   conflicts=(
-	"${_pkgbase}-material-fonts=${pkgver}"
+	"${_group}-material-fonts=${pkgver}"
   )
 
-  install -dm755 "${pkgdir}/usr/lib/${_pkgbase}/bin/cache/artifacts"
+  install -dm755 "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts"
 
-  cp -ra "${srcdir}/${_pkgbase}/bin/cache/artifacts/material_fonts" "${pkgdir}/usr/lib/${_pkgbase}/bin/cache/artifacts/material_fonts"
+  cp -ra "${srcdir}/${_group}/bin/cache/artifacts/material_fonts" "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/material_fonts"
 }
 
 _package-engine-linux-google-bin() {
   pkgdesc="${_pkgdesc} - linux engine"
   depends=(
-	"${_pkgbase}-engine-common=${pkgver}"
+	"${_group}-engine-common=${pkgver}"
   )
   provides=(
-	"${_pkgbase}-engine-linux=${pkgver}"
+	"${_group}-engine-linux=${pkgver}"
   )
   conflicts=(
-	"${_pkgbase}-engine-linux=${pkgver}"
+	"${_group}-engine-linux=${pkgver}"
   )
 
-  install -dm755 "${pkgdir}/usr/lib/${_pkgbase}/bin/cache/artifacts/engine"
+  install -dm755 "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"
 
-  cp -ra "${srcdir}/${_pkgbase}/bin/cache/artifacts/engine/linux-${_flutterarch}" "${pkgdir}/usr/lib/${_pkgbase}/bin/cache/artifacts/engine"
-  cp -ra "${srcdir}/${_pkgbase}/bin/cache/artifacts/engine/linux-${_flutterarch}-profile" "${pkgdir}/usr/lib/${_pkgbase}/bin/cache/artifacts/engine"
-  cp -ra "${srcdir}/${_pkgbase}/bin/cache/artifacts/engine/linux-${_flutterarch}-release" "${pkgdir}/usr/lib/${_pkgbase}/bin/cache/artifacts/engine"
+  cp -ra "${srcdir}/${_group}/bin/cache/artifacts/engine/linux-${_flutterarch}" "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"
+  cp -ra "${srcdir}/${_group}/bin/cache/artifacts/engine/linux-${_flutterarch}-profile" "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"
+  cp -ra "${srcdir}/${_group}/bin/cache/artifacts/engine/linux-${_flutterarch}-release" "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"
 }
 
 _package-engine-web-google-bin() {
   pkgdesc="${_pkgdesc} - web engine"
   depends=(
-	"${_pkgbase}-engine-common=${pkgver}"
+	"${_group}-engine-common=${pkgver}"
   )
   provides=(
-	"${_pkgbase}-engine-web=${pkgver}"
+	"${_group}-engine-web=${pkgver}"
   )
   conflicts=(
-	"${_pkgbase}-engine-web=${pkgver}"
+	"${_group}-engine-web=${pkgver}"
   )
 
-  install -dm755 "${pkgdir}/usr/lib/${_pkgbase}/bin/cache"
+  install -dm755 "${pkgdir}/usr/lib/${_group}/bin/cache"
 
-  cp -ra "${srcdir}/${_pkgbase}/bin/cache/flutter_web_sdk" "${pkgdir}/usr/lib/${_pkgbase}/bin/cache"
+  cp -ra "${srcdir}/${_group}/bin/cache/flutter_web_sdk" "${pkgdir}/usr/lib/${_group}/bin/cache"
 }
 
 _package-gradle-google-bin() {
   pkgdesc="${_pkgdesc} - gradle wrapper"
   depends=(
-	"${_pkgbase}-common=${pkgver}"
+	"${_group}-common=${pkgver}"
   )
   provides=(
-	"${_pkgbase}-gradle=${pkgver}"
+	"${_group}-gradle=${pkgver}"
   )
   conflicts=(
-	"${_pkgbase}-gradle=${pkgver}"
+	"${_group}-gradle=${pkgver}"
   )
 
-  install -dm755 "${pkgdir}/usr/lib/${_pkgbase}/bin/cache/artifacts"
+  install -dm755 "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts"
 
-  cp -ra "${srcdir}/${_pkgbase}/bin/cache/artifacts/gradle_wrapper" "${pkgdir}/usr/lib/${_pkgbase}/bin/cache/artifacts"
+  cp -ra "${srcdir}/${_group}/bin/cache/artifacts/gradle_wrapper" "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts"
 }
 
 _package-engine-android-google-bin() {
   pkgdesc="${_pkgdesc} - android engine"
   depends=(
-	"${_pkgbase}-engine-common=${pkgver}"
+	"${_group}-engine-common=${pkgver}"
   )
   provides=(
-	"${_pkgbase}-engine-android=${pkgver}"
+	"${_group}-engine-android=${pkgver}"
   )
   conflicts=(
-	"${_pkgbase}-engine-android=${pkgver}"
+	"${_group}-engine-android=${pkgver}"
   )
 
-  install -dm755 "${pkgdir}/usr/lib/${_pkgbase}/bin/cache/artifacts/engine"
+  install -dm755 "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"
 
-  cp -ra "${srcdir}/${_pkgbase}/bin/cache/artifacts/engine/android-arm" "${pkgdir}/usr/lib/${_pkgbase}/bin/cache/artifacts/engine"
-  cp -ra "${srcdir}/${_pkgbase}/bin/cache/artifacts/engine/android-arm-release" "${pkgdir}/usr/lib/${_pkgbase}/bin/cache/artifacts/engine"
-  cp -ra "${srcdir}/${_pkgbase}/bin/cache/artifacts/engine/android-arm-profile" "${pkgdir}/usr/lib/${_pkgbase}/bin/cache/artifacts/engine"
+  cp -ra "${srcdir}/${_group}/bin/cache/artifacts/engine/android-arm" "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"
+  cp -ra "${srcdir}/${_group}/bin/cache/artifacts/engine/android-arm-release" "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"
+  cp -ra "${srcdir}/${_group}/bin/cache/artifacts/engine/android-arm-profile" "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"
 
-  cp -ra "${srcdir}/${_pkgbase}/bin/cache/artifacts/engine/android-arm64" "${pkgdir}/usr/lib/${_pkgbase}/bin/cache/artifacts/engine"
-  cp -ra "${srcdir}/${_pkgbase}/bin/cache/artifacts/engine/android-arm64-release" "${pkgdir}/usr/lib/${_pkgbase}/bin/cache/artifacts/engine"
-  cp -ra "${srcdir}/${_pkgbase}/bin/cache/artifacts/engine/android-arm64-profile" "${pkgdir}/usr/lib/${_pkgbase}/bin/cache/artifacts/engine"
+  cp -ra "${srcdir}/${_group}/bin/cache/artifacts/engine/android-arm64" "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"
+  cp -ra "${srcdir}/${_group}/bin/cache/artifacts/engine/android-arm64-release" "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"
+  cp -ra "${srcdir}/${_group}/bin/cache/artifacts/engine/android-arm64-profile" "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"
 
-  cp -ra "${srcdir}/${_pkgbase}/bin/cache/artifacts/engine/android-x64" "${pkgdir}/usr/lib/${_pkgbase}/bin/cache/artifacts/engine"
-  cp -ra "${srcdir}/${_pkgbase}/bin/cache/artifacts/engine/android-x64-release" "${pkgdir}/usr/lib/${_pkgbase}/bin/cache/artifacts/engine"
-  cp -ra "${srcdir}/${_pkgbase}/bin/cache/artifacts/engine/android-x64-profile" "${pkgdir}/usr/lib/${_pkgbase}/bin/cache/artifacts/engine"
+  cp -ra "${srcdir}/${_group}/bin/cache/artifacts/engine/android-x64" "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"
+  cp -ra "${srcdir}/${_group}/bin/cache/artifacts/engine/android-x64-release" "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"
+  cp -ra "${srcdir}/${_group}/bin/cache/artifacts/engine/android-x64-profile" "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"
 
-  cp -ra "${srcdir}/${_pkgbase}/bin/cache/artifacts/engine/android-x86" "${pkgdir}/usr/lib/${_pkgbase}/bin/cache/artifacts/engine"
-  cp -ra "${srcdir}/${_pkgbase}/bin/cache/artifacts/engine/android-x86-jit-release" "${pkgdir}/usr/lib/${_pkgbase}/bin/cache/artifacts/engine"
+  cp -ra "${srcdir}/${_group}/bin/cache/artifacts/engine/android-x86" "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"
+  cp -ra "${srcdir}/${_group}/bin/cache/artifacts/engine/android-x86-jit-release" "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"
 }
 
-pkgname=("${_pkgbase}-engine-common-google-bin" "${_pkgbase}-engine-linux-google-bin" "${_pkgbase}-engine-web-google-bin" "${_pkgbase}-engine-android-google-bin" "${_pkgbase}-sky-engine-google-bin" "${_pkgbase}-material-fonts-google-bin" "${_pkgbase}-gradle-google-bin")
+pkgname=("${_group}-engine-common-google-bin" "${_group}-engine-linux-google-bin" "${_group}-engine-web-google-bin" "${_group}-engine-android-google-bin" "${_group}-sky-engine-google-bin" "${_group}-material-fonts-google-bin" "${_group}-gradle-google-bin")
 
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
-    $(declare -f "_package${_p#$_pkgbase}")
-    _package${_p#$_pkgbase}
+    $(declare -f "_package${_p#$_group}")
+    _package${_p#$_group}
   }"
 done
 

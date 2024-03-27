@@ -1,10 +1,11 @@
 pkgbase = flutter-artifacts-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google)
 	pkgver = 3.19.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://flutter.dev
 	arch = x86_64
 	arch = aarch64
+	groups = flutter
 	license = custom
 	license = BSD
 	license = CCPL
