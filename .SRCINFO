@@ -1,12 +1,13 @@
 pkgbase = r-curry
 	pkgdesc = Partial Function Application with %<%, %-<%, and %><%
 	pkgver = 0.1.1
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=curry
 	arch = any
-	license = LGPL
+	license = GPL-2.0-or-later
 	depends = r
 	source = https://cran.r-project.org/src/contrib/curry_0.1.1.tar.gz
-	sha256sums = 4930c6d5cdb6fa319b888d2220b9ded2c7bf786d8a700ad102558065d78649df
+	md5sums = a2d43da3367e9506e4e4e8a4523faaf5
+	b2sums = 096e547915dae45e9f05a2d0c2ebec6aaebc12c21b192a5ee0e73f64ea909335571eb0c40313f4bfc9f29edc4d560db927b1434f4301680dac3f2e570d32a390
 
 pkgname = r-curry
