@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=HTTP Toolkit
-Comment=HTTP(S) debugging proxy, analyzer and client
-GenericName=HTTP Toolkit
-Exec=httptoolkit %U
-Icon=httptoolkit
-Type=Application
-StartupNotify=true
-Categories=Development;Network;

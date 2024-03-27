@@ -1,79 +1,81 @@
-# Maintainer: Jason Nader <jason *add-dot-here* nader *you-know-what-goes-here* protonmail.com>
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Jason Nader <jason *add-dot-here* nader *you-know-what-goes-here* protonmail.com>
 pkgname=httptoolkit-git
-_pkgname=httptoolkit
-pkgver=v1.7.0.r0.g871e047
-pkgrel=2
-epoch=1
-pkgdesc="Beautiful, cross-platform & open-source HTTP(S) proxy, analyzer and client."
-arch=("x86_64")
-url="https://httptoolkit.tech/"
-license=('GPL3')
-depends=(electron14 python)
-makedepends=(git nvm)
-provides=(httptoolkit)
-conflicts=(httptoolkit-bin)
-source=("${pkgname}::git+https://github.com/httptoolkit/httptoolkit-desktop.git"
-    'httptoolkit.desktop')
-md5sums=('SKIP'
-    'faf640796c9ad59c3fe56dac09b19767')
-
-# ci.yml specifies node 14, but lockfileVersion@2 implies npm 7 / node 15
-_node_version=15
-
-_ensure_local_nvm() {
-    if type nvm &>/dev/null; then
-        nvm deactivate
-        nvm unload
-    fi
-    unset npm_config_prefix
-    export NVM_DIR=${srcdir}/.nvm
-    . /usr/share/nvm/init-nvm.sh
-}
-
+_pkgname="HTTP Toolkit Desktop"
+pkgver=1.14.11.r0.gd26dea0
+_electronversion=29
+_nodeversion=20
+pkgrel=1
+pkgdesc="A beautiful, cross-platform & open-source HTTP(S) proxy, analyzer and client."
+arch=("any")
+url="https://httptoolkit.com/"
+_ghurl="https://github.com/httptoolkit/httptoolkit-desktop"
+license=('AGPL-3.0-or-later')
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}=${pkgver%.r*}")
+depends=(
+    "electron${_electronversion}"
+    'mercurial'
+    'nodejs'
+    'java-runtime'
+)
+makedepends=(
+    'npm'
+    'git'
+    'nvm'
+    'gendesk'
+    'base-devel'
+    'gcc'
+)
+source=(
+    "${pkgname//-/.}::git+${_ghurl}.git"
+    "${pkgname%-git}.sh")
+sha256sums=('SKIP'
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 pkgver() {
-  cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${srcdir}/${pkgname//-/.}"
+    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
-
-prepare() {
-    cd "${srcdir}/${pkgname}"
-    _ensure_local_nvm
-    nvm ls "$_node_version" &>/dev/null ||
-        nvm install "$_node_version"
-    nvm exec "$_node_version" \
-        npm install --no-save --no-audit --no-progress --no-fund
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
 }
-
 build() {
-    cd "${srcdir}/${pkgname}"
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-git}|g" \
+        -e "s|@runname@|app.asar|g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
+        -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    nvm exec "$_node_version" npm run build:src
-    nvm exec "$_node_version" npm run build:electron -- \
-        -c.electronDist=/usr/lib/electron14 \
-        -c.electronVersion="$(cat /usr/lib/electron14/version)" \
-        --linux dir
+    gendesk -q -f -n --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    cd "${srcdir}/${pkgname//-/.}"
+    export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/.npm_cache"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        echo -e "\n" >> .npmrc
+        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
+        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
+        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    else
+        echo "Your network is OK."
+    fi
+    sed '/"deb",/d;/"rpm",/d;/"AppImage",/d;s|"zip"|"dir"|g' -i package.json
+    npm install
+    npm run build
 }
-
 package() {
-    install -d "${pkgdir}/usr/bin"
-    install -d "${pkgdir}/opt/${_pkgname}"
-    install -d "${pkgdir}/usr/share/icons"
-    install -d "${pkgdir}/usr/share/licenses"
-    install -d "${pkgdir}/usr/share/applications"
-
-    cp -r "${srcdir}/${pkgname}/dist/linux-unpacked/"* "${pkgdir}/opt/${_pkgname}"
-    cp "${srcdir}/${pkgname}/src/icons/icon.png" "${pkgdir}/opt/${_pkgname}/icon.png"
-    install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-    install -Dm644 "${srcdir}/${pkgname}/src/icons/icon.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
-    install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications"
-    _electron=${pkgdir}/opt/${_pkgname}/${_pkgname}
-    echo "Deleting Electron binary ($(du -h "$_electron" | awk '{print $1}'))"
-    rm -v "$_electron"
-    install -m755 /dev/null "${pkgdir}/usr/bin/${_pkgname}"
-    cat >"${pkgdir}/usr/bin/${_pkgname}" <<EOF
-#!/bin/sh
-exec electron14 /opt/${_pkgname}/resources/app.asar "\$@"
-EOF
-    find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i "s|$srcdir||g"
+    install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -r "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/"${pkgname%-git}-server" "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/src/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
