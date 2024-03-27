@@ -2,7 +2,7 @@
 
 pkgname=ttop-bin
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='System monitoring tool with historical data service, triggers and top-like TUI (binary release)'
 url="https://github.com/inv2004/ttop"
 license=('MIT')
@@ -16,7 +16,7 @@ source=("ttop$pkgver::$url/releases/download/v$pkgver/ttop"
 sha256sums=('89c7ac7f59d12252a540db82c1c741c3c840035e7fd797972b5104d00386c080'
             'd02b237a4b7b295eea657a27274b6d6ed08695807006562d7252398e34f59079'
             '2a8e481fa846fcc5623f721a4aba8d9b7afee2ff2eaed8234a06107f77ac4d9d'
-            '9746ec96a19dddb22eb8165825c70be3abcf8ff43e44301ef0ad9fc88fa98075')
+            '9debd882651a68296e54d89c012be37834ddaa926ba34bf7e4eb29ae6998c28c')
 
 prepare() {
 # Shortcut
