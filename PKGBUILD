@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-rtsp-server
-pkgver=1.22.10
+pkgver=1.24.1
 pkgrel=1
 pkgdesc="RTSP server library based on GStreamer (mingw-w64)"
 arch=(any)
@@ -11,7 +11,7 @@ options=('!strip' '!buildflags' 'staticlibs')
 makedepends=('mingw-w64-meson')
 
 source=("${url}src/gst-rtsp-server/gst-rtsp-server-${pkgver}.tar.xz")
-sha256sums=('60eb4f80b5a7ca929c21a61d50be9813a3413787959a5875de56a8ad5ca25f35')
+sha256sums=('ab436a2ec9c3c58fbfd3c5b1736419891bb5315d136d7c72c58479f2807008e6')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
