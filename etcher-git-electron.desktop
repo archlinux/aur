@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=BalenaEtcherGit
-Comment=Flash OS images to SD cards and USB drives, safely and easily.
-Exec="/usr/bin/etcher-git-electron" %U
-Terminal=false
-Type=Application
-Icon=etcher-git-electron
-Categories=Utility;
