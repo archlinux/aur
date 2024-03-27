@@ -1,0 +1,17 @@
+pkgbase = ideapad2024-power-management
+	pkgdesc = Manage power settings for the Lenovo Ideapad 2024 (IdeaPad Pro 5 (Gen 9)) with the CLI tool ideapad2024-power-manage, alongside a system tray icon for convenient access. Remember, you'll need to manually start the tray by executing ideapad2024-power-tray.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Sino-Huang/ideapad2024-power-management
+	install = build.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-pyqt6
+	depends = cpupower
+	depends = acpi_call-dkms
+	source = https://github.com/Sino-Huang/ideapad2024-power-management/archive/refs/tags/0.0.1.tar.gz
+	sha256sums = 7fce3d14facaa1f1139adf68c9fb6592d8e0f12a53fedc9f8adf7123d77e2ba3
+
+pkgname = ideapad2024-power-management
