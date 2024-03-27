@@ -1,0 +1,16 @@
+--- a/TSRM/threads.m4
++++ b/TSRM/threads.m4
+@@ -133,12 +133,12 @@
+         ac_cv_pthreads_cflags=$flag
+         break
+       fi
+     done
+   fi
+-fi
+ ])
++fi
+
+ AC_CACHE_CHECK(for pthreads_lib, ac_cv_pthreads_lib,[
+ ac_cv_pthreads_lib=
+ if test "$pthreads_working" != "yes"; then
+   for lib in pthread pthreads c_r; do

@@ -19,7 +19,7 @@
 _phpbase="55"
 _suffix=""
 pkgver="5.5.38"
-pkgrel="14"
+pkgrel="15"
 pkgbase="php55"
 pkgdesc="PHP 5.5.38 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1  -DOPENSSL_NO_SSL3=1  -DOPENSSL_NO_SSL2=1  -DU_DEFINE_FALSE_AND_TRUE=1 "
@@ -138,6 +138,7 @@ source=(
     "https://php.net/distributions/php-${pkgver}.tar.xz"
     "php-libxml.patch"
     "php55-phar-names.patch"
+    "php56-autoconf.patch"
     "openssl-1.0.patch"
     "openssl-sslv3-consts.patch"
     "dba-5.3-support.patch"
@@ -218,6 +219,7 @@ arch=(
 _patches=(
     "php-libxml.patch"
     "php55-phar-names.patch"
+    "php56-autoconf.patch"
     "openssl-1.0.patch"
     "openssl-sslv3-consts.patch"
     "dba-5.3-support.patch"
@@ -878,7 +880,7 @@ package_php55-cgi() {
 package_php55-apache() {
     _sapi="apache"
     _build_mod_php_so="libphp${_suffix_so}.so"
-    _build_mod_php_module="php_module${_suffix_so}"
+    _build_mod_php_module="php${_suffix_so}_module"
     _build_build_php_script_name="php${_suffix_so}-script"
     _apache_module_conf="${pkgbase}-module.conf"
     pkgdesc="Apache SAPI for ${pkgbase}"
@@ -1563,6 +1565,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             'cb527c44b48343c8557fe2446464ff1d4695155a95601083e5d1f175df95580f'
             'e757f84d2d72ea39259450c32f3a83c72262da4294152ae3e9fbc0cada622bba'
             '70e3cc00d954fa2b466a0e8f356c68bbb1e92b36304deaffd34c53cb6ae5e979'
+            '6393ea65ccf8bc4b3b1c06bf3f158473a223a11bb5eb7819155aac1b394e166e'
             '8a5e1a2a563c38f237b0ed735918ecf82c30edd3f7beae5d99be041585901d27'
             'aecd8dff7022e956718407a5b98dec19acdceef08b0a58e7266b483bc3845de6'
             'd2f6f8e71c99247c798451a56d5b3e0817d404dfc41175b2e9735e38ecfaa6d6'
