@@ -1,6 +1,6 @@
 pkgbase = jetbrains-gateway-eap
 	pkgdesc = An entry point to Remote Development, Early Access Program (EAP) build.
-	pkgver = 241.14494.32
+	pkgver = 241.14494.184
 	pkgrel = 1
 	url = https://www.jetbrains.com/remote-development/gateway/nextversion/
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = jetbrains-gateway-eap
 	license = custom:jetbrains
 	depends = glib2
 	options = !strip
-	source = https://download-cf.jetbrains.com/idea/gateway/JetBrainsGateway-241.14494.32.tar.gz
+	source = https://download-cf.jetbrains.com/idea/gateway/JetBrainsGateway-241.14494.184.tar.gz
 	source = jetbrains-gateway-eap.desktop
 	source = LICENSE
-	b2sums = 2ca2c6ee057cbe283a3edacb2999935d6688e6acfbcdb660f448ce565a62293dd62edc63deab952bb8e7f8dc37c4766c5d98f39a8e9e0a9895986f6ea3264676
+	b2sums = aef2ce9fdea64881fc17a25edb4a89ca40fd174c3850d62681a6532c0a7522380c0c3c8ca09a3dd97f89fc7e576b07eabd24594bd9d4b75192a49c14b10428e5
 	b2sums = e7ef51c2c64fce8d4990fcac68c901b63485ea8124db5aacf639c7cd0a00c82c2cf77cb1e3ea6b0ae79795dc4b6d34a32b694b9724ea65fd1665d608bc410a51
 	b2sums = dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77
 
