@@ -1,11 +1,12 @@
+#!/usr/bin/env bash
 echo "Scraping latest aws-iam-authenticator version from https://api.github.com/repos/kubernetes-sigs/aws-iam-authenticator/releases"
-latestversion=$(curl -sq https://api.github.com/repos/kubernetes-sigs/aws-iam-authenticator/releases | grep tag_name | sort | tail -1 | awk -F '"' '{print $4}')
+latestversion=$(curl -sq https://api.github.com/repos/kubernetes-sigs/aws-iam-authenticator/releases/latest | jq -r '.tag_name')
 echo "Latest aws-iam-authenticator version: ${latestversion}"
 
 srcurl="https://github.com/kubernetes-sigs/aws-iam-authenticator/archive/${latestversion}.tar.gz"
 
 echo "Determining sha512sum for ${srcurl}"
-sha512sum=$(curl -sqLo - ${srcurl} | sha512sum | awk '{print $1}')
+sha512sum=$(curl -sqLo - "${srcurl}" | sha512sum | awk '{print $1}')
 echo "aws-iam-authenticator sha512sum: ${sha512sum}"
 
 echo "Updating PKGBUILD and .SRCINFO with new version and sha512sum"
