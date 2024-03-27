@@ -1,0 +1,19 @@
+--- a/Source/troff_generator.c	2021-01-28 23:24:55.000000000 +0100
++++ b/Source/troff_generator.c	2024-02-16 16:30:54.120883223 +0100
+@@ -30,7 +30,7 @@
+ #include <ctype.h>
+ 
+ #include <sys/param.h>
+-#include <sys/unistd.h>
++#include <unistd.h>
+ 
+ #include "troff_generator.h"
+ #include "util.h"
+@@ -560,6 +560,6 @@
+  * SOURCE
+  */
+ {
+-    fprintf( dest_doc, line_number_string );
++    fprintf( dest_doc, "%s", line_number_string );
+ }
+ /******/
