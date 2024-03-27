@@ -1,0 +1,5 @@
+[sile-silex]
+source = "github"
+github = "Omikhleia/silex.sile"
+prefix = "v"
+use_max_tag = true
