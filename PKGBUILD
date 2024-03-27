@@ -887,7 +887,7 @@ package_php56-cgi() {
 package_php56-apache() {
     _sapi="apache"
     _build_mod_php_so="libphp${_suffix_so}.so"
-    _build_mod_php_module="php_module${_suffix_so}"
+    _build_mod_php_module="php${_suffix_so}_module"
     _build_build_php_script_name="php${_suffix_so}-script"
     _apache_module_conf="${pkgbase}-module.conf"
     pkgdesc="Apache SAPI for ${pkgbase}"
@@ -1572,7 +1572,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             '1369a51eee3995d7fbd1c5342e5cc917760e276d561595b6052b21ace2656d1c'
             'e757f84d2d72ea39259450c32f3a83c72262da4294152ae3e9fbc0cada622bba'
             '70e3cc00d954fa2b466a0e8f356c68bbb1e92b36304deaffd34c53cb6ae5e979'
-            '563f7858764ce344b5802808de5e253f0477b08de3346b74ed757ac24819458a'
+            '6393ea65ccf8bc4b3b1c06bf3f158473a223a11bb5eb7819155aac1b394e166e'
             'b0d40038d245196480cac04bf7fd18b1c5cdab5e1b75462035cb03a87fd22e08'
             'aecd8dff7022e956718407a5b98dec19acdceef08b0a58e7266b483bc3845de6'
             'd175f0c14fdb22855090c93f76e18f04320d7bf15afc057ffde947f9bb361242'

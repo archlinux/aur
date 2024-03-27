@@ -9,7 +9,7 @@
 -fi
  ])
 +fi
-.
+
  AC_CACHE_CHECK(for pthreads_lib, ac_cv_pthreads_lib,[
  ac_cv_pthreads_lib=
  if test "$pthreads_working" != "yes"; then
