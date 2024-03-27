@@ -2,7 +2,7 @@
 # Maintainer: Cleber Matheus <clebermatheus@outlook.com>
 
 pkgname=blivet-gui-git
-pkgver=2.5.0.r1.g2f6da74
+pkgver=2.5.0.r16.g1b7473d
 pkgrel=1
 pkgdesc='GUI tool for storage configuration'
 arch=('any')
@@ -10,8 +10,9 @@ license=('GPL')
 url='https://github.com/storaged-project/blivet-gui'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-makedepends=('git' 'python')
-depends=('python' 'python-blivet-git' 'python-cairo' 'python-gobject' 'python-meh' 'python-pid')
+makedepends=('git' 'python' 'python-cairo')
+depends=('python' 'python-blivet-git' 'python-cairo' 'python-gobject' 'python-meh'
+'python-pid' 'python-polib' 'python-coverage' 'python-pycodestyle' 'python-pip')
 source=("${pkgname%-git}::git+https://github.com/storaged-project/blivet-gui.git")
 sha256sums=('SKIP')
 
