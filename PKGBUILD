@@ -2,12 +2,12 @@
 ## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
-_microarchitecture=0
+_microarchitecture=98
 
 ## Major kernel version
 _major=6.8
 ## Minor kernel version
-_minor=1
+_minor=2
 
 ## PKGBUILD ##
 
@@ -34,7 +34,7 @@ validpgpkeys=(
   '83BC8889351B5DEBBB68416EB8AC08600F108CDF'  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('8d0c8936e3140a0fbdf511ad7a9f21121598f3656743898f47bb9052d37cff68'
+sha256sums=('9ac322d85bcf98a04667d929f5c2666b15bd58c6c2d68dd512c72acbced07d04'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -58,6 +58,14 @@ prepare() {
   ## --- Patches
   
   ### Apply patches
+
+  # GCC Optimizations
+
+  msg2 "Apply GCC Optimization Patch..."
+  patch -Np1 < ${srcdir}/kernel_compiler_patch/more-uarches-for-kernel-6.8-rc4+.patch
+
+  # TKG Patches
+
   msg2 "Apply 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch..."
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 
@@ -76,11 +84,11 @@ prepare() {
   msg2 "Apply 0006-add-acs-overrides_iommu.patch..."
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0006-add-acs-overrides_iommu.patch
 
-  msg2 "Apply 0007-v${_major}-fsync1_via_futex_waitv.patch..."
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-fsync1_via_futex_waitv.patch
-
   #msg2 "Apply 0007-v${_major}-winesync.patch..."
   #patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-winesync.patch
+
+  msg2 "Apply 0007-v${_major}-fsync1_via_futex_waitv.patch..."
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-fsync1_via_futex_waitv.patch
 
   msg2 "Apply 0012-misc-additions.patch..."
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0012-misc-additions.patch
@@ -90,9 +98,6 @@ prepare() {
 
   msg2 "Apply 0014-OpenRGB.patch..."
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0014-OpenRGB.patch
-
-  msg2 "Apply GCC Optimization Patch..."
-  patch -Np1 < ${srcdir}/kernel_compiler_patch/more-uarches-for-kernel-6.8-rc4+.patch
 
   ### Setting config
   echo "Setting config..."
