@@ -1,0 +1,41 @@
+pkgbase = libavio
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/sr99622/libavio
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = libavcodec.so
+	makedepends = libavformat.so
+	makedepends = libavutil.so
+	makedepends = libswresample.so
+	makedepends = libswscale.so
+	makedepends = pybind11
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = sdl2
+	source = git+https://github.com/sr99622/libavio.git#commit=39da8a680bae8bce6d38d2417673184d64d9baba
+	sha256sums = e662e7ba5ed7c028c722a108ec33bafc9b68d203f1e2f6891c72c58f37fd123e
+
+pkgname = libavio
+	pkgdesc = Library for processing media streams designed for use in Onvif GUI
+	depends = libavcodec.so
+	depends = libavformat.so
+	depends = libavutil.so
+	depends = libswresample.so
+	depends = libswscale.so
+	depends = sdl2
+
+pkgname = python-avio
+	pkgdesc = Python library for processing media streams designed for use in Onvif GUI
+	depends = libavcodec.so
+	depends = libavformat.so
+	depends = libavutil.so
+	depends = libswresample.so
+	depends = libswscale.so
+	depends = python
+	depends = sdl2
