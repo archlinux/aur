@@ -11,7 +11,7 @@ pkgname=(
   "${_name}-sycl-f32-git"
   "${_name}-vulkan-git"
 )
-pkgver=b2536.r4.557410b8f
+pkgver=b2548.r3.e5b89a441
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -19,7 +19,6 @@ url="https://github.com/ggerganov/llama.cpp"
 license=("MIT")
 depends=()
 makedepends=(
-  'ccache'
   'clblast'
   'cmake'
   'cuda'
@@ -30,6 +29,7 @@ makedepends=(
   'openblas64'
   'vulkan-headers'
 )
+optdepends=('ccache: for caching builds')
 conflicts=("${_name}")
 provides=("${_name}")
 source=("${_name}::git+${url}"
@@ -163,7 +163,7 @@ package_llama.cpp-git() {
   pkgdesc="$pkgdesc (with OPENBlas CPU optimizations)"
   depends+=('openblas'
     'openblas64')
-  provides=("${pkgbase}=${pkgver}")
+  provides=("${_name}")
 
   cd "${_name}-openblas"
   DESTDIR="${pkgdir}" cmake --install build
@@ -173,8 +173,8 @@ package_llama.cpp-git() {
 package_llama.cpp-clblas-git() {
   pkgdesc="$pkgdesc (with OpenCL optimizations)"
   depends+=('clblast')
-  provides=("${pkgbase}=${pkgver}")
-  conflicts=("${pkgbase}")
+  provides=("${_name}")
+  conflicts=("${_name}")
 
   cd "${_name}-clblas"
   DESTDIR="${pkgdir}" cmake --install build
@@ -184,8 +184,8 @@ package_llama.cpp-clblas-git() {
 package_llama.cpp-cublas-git() {
   pkgdesc="$pkgdesc (with NVIDIA CUDA optimizations)"
   depends+=('cuda')
-  provides=("${pkgbase}=${pkgver}")
-  conflicts=("${pkgbase}")
+  provides=("${_name}")
+  conflicts=("${_name}")
 
   cd "${_name}-clblas"
   DESTDIR="${pkgdir}" cmake --install build
@@ -195,8 +195,8 @@ package_llama.cpp-cublas-git() {
 package_llama.cpp-hipblas-git() {
   pkgdesc="$pkgdesc (with AMD ROCm optimizations)"
   depends+=('rocm-hip-runtime')
-  provides=("${pkgbase}=${pkgver}")
-  conflicts=("${pkgbase}")
+  provides=("${_name}")
+  conflicts=("${_name}")
 
   cd "${_name}-hipblas"
   DESTDIR="${pkgdir}" cmake --install build
@@ -206,8 +206,8 @@ package_llama.cpp-hipblas-git() {
 package_llama.cpp-sycl-f16-git() {
   pkgdesc="$pkgdesc (with Intel SYCL GPU optimizations and F16)"
   depends+=('intel-oneapi-basekit')
-  provides=("${pkgbase}=${pkgver}")
-  conflicts=("${pkgbase}")
+  provides=("${_name}")
+  conflicts=("${_name}")
 
   cd "${_name}-sycl"
   DESTDIR="${pkgdir}" cmake --install build
@@ -217,8 +217,8 @@ package_llama.cpp-sycl-f16-git() {
 package_llama.cpp-sycl-f32-git() {
   pkgdesc="$pkgdesc (with Intel SYCL GPU optimizations and F32)"
   depends+=('intel-oneapi-basekit')
-  provides=("${pkgbase}=${pkgver}")
-  conflicts=("${pkgbase}")
+  provides=("${_name}")
+  conflicts=("${_name}")
 
   cd "${_name}-sycl"
   DESTDIR="${pkgdir}" cmake --install build
@@ -228,8 +228,8 @@ package_llama.cpp-sycl-f32-git() {
 package_llama.cpp-vulkan-git() {
   pkgdesc="$pkgdesc (with Vulkan GPU optimizations)"
   depends+=('vulkan-icd-loader')
-  provides=("${pkgbase}=${pkgver}")
-  conflicts=("${pkgbase}")
+  provides=("${_name}")
+  conflicts=("${_name}")
 
   cd "${_name}-vulkan"
   DESTDIR="${pkgdir}" cmake --install build

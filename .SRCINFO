@@ -1,13 +1,12 @@
 pkgbase = llama.cpp-git
 	pkgdesc = Port of Facebook's LLaMA model in C/C++
-	pkgver = b2536.r4.557410b8f
+	pkgver = b2548.r3.e5b89a441
 	pkgrel = 1
 	url = https://github.com/ggerganov/llama.cpp
 	arch = armv7h
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	makedepends = ccache
 	makedepends = clblast
 	makedepends = cmake
 	makedepends = cuda
@@ -17,6 +16,7 @@ pkgbase = llama.cpp-git
 	makedepends = openblas
 	makedepends = openblas64
 	makedepends = vulkan-headers
+	optdepends = ccache: for caching builds
 	provides = llama.cpp
 	conflicts = llama.cpp
 	source = llama.cpp::git+https://github.com/ggerganov/llama.cpp
@@ -28,40 +28,40 @@ pkgname = llama.cpp-git
 	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with OPENBlas CPU optimizations)
 	depends = openblas
 	depends = openblas64
-	provides = llama.cpp-git=b2536.r4.557410b8f
+	provides = llama.cpp
 
 pkgname = llama.cpp-cublas-git
 	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with NVIDIA CUDA optimizations)
 	depends = cuda
-	provides = llama.cpp-git=b2536.r4.557410b8f
-	conflicts = llama.cpp-git
+	provides = llama.cpp
+	conflicts = llama.cpp
 
 pkgname = llama.cpp-clblas-git
 	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with OpenCL optimizations)
 	depends = clblast
-	provides = llama.cpp-git=b2536.r4.557410b8f
-	conflicts = llama.cpp-git
+	provides = llama.cpp
+	conflicts = llama.cpp
 
 pkgname = llama.cpp-hipblas-git
 	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations)
 	depends = rocm-hip-runtime
-	provides = llama.cpp-git=b2536.r4.557410b8f
-	conflicts = llama.cpp-git
+	provides = llama.cpp
+	conflicts = llama.cpp
 
 pkgname = llama.cpp-sycl-f16-git
 	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with Intel SYCL GPU optimizations and F16)
 	depends = intel-oneapi-basekit
-	provides = llama.cpp-git=b2536.r4.557410b8f
-	conflicts = llama.cpp-git
+	provides = llama.cpp
+	conflicts = llama.cpp
 
 pkgname = llama.cpp-sycl-f32-git
 	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with Intel SYCL GPU optimizations and F32)
 	depends = intel-oneapi-basekit
-	provides = llama.cpp-git=b2536.r4.557410b8f
-	conflicts = llama.cpp-git
+	provides = llama.cpp
+	conflicts = llama.cpp
 
 pkgname = llama.cpp-vulkan-git
 	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with Vulkan GPU optimizations)
 	depends = vulkan-icd-loader
-	provides = llama.cpp-git=b2536.r4.557410b8f
-	conflicts = llama.cpp-git
+	provides = llama.cpp
+	conflicts = llama.cpp
