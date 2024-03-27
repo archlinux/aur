@@ -1,0 +1,4 @@
+[comrak]
+source = "github"
+github = "kivikakk/comrak"
+use_max_tag = true
