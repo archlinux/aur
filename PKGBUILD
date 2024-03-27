@@ -5,55 +5,54 @@
 # Contributor: Thor K. H. <thor alfakrøll roht dott no>
 
 pkgname=csvkit-git
-pkgver=1.0.5.r1.g178eb76
+pkgver=1.4.0.r13.g59fbd6d
 pkgrel=1
 pkgdesc='A suite of utilities for converting to and working with CSV'
-arch=('any')
+arch=(any)
 url='https://csvkit.readthedocs.org'
-license=('MIT')
-depends=('python'
-         'python-agate-dbf>=0.2.0'
-         'python-agate-excel>=0.2.2'
-         'python-agate-sql>=0.5.3'
-         'python-agate>=1.6.1'
-         'python-babel'
-         'python-dateutil'
-         'python-openpyxl'
-         'python-six'
-         'python-sphinx_rtd_theme'
-         'python-sqlalchemy'
-         'python-xlrd')
+license=(MIT)
+_pydeps=(agate
+         agate-dbf
+         agate-excel
+         agate-sql
+         setuptools
+         sphinx-furo)
+depends=(python
+         "${_pydeps[@]/#/python-}")
 optdepends=('ipython: nicer command-line for csvpy utility')
-makedepends=('git'
-             'python-setuptools'
-             'python-sphinx')
-provides=("${pkgname%-git}")
+makedepends=(git
+             python-{build,installer,wheel}
+             python-sphinx)
+checkdepends=(python-pytest)
+provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+https://github.com/wireservice/${pkgname/-/.}")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
-    git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+	cd "$pkgname"
+	git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$pkgname"
-    python setup.py build
-    python setup.py build_sphinx
-    _rtd_theme_path="$(python -c 'import sphinx_rtd_theme; print(sphinx_rtd_theme.get_html_theme_path())')"
-    rm -rvf "build/sphinx/html/_static"
-    ln -svf "$_rtd_theme_path/sphinx_rtd_theme/static" "build/sphinx/html/_static"
+	cd "$pkgname"
+	python -m build -wn
+	make -C docs html
+	_rtd_theme_path="$(python -c 'import sphinx_rtd_theme; print(sphinx_rtd_theme.get_html_theme_path())')"
+	rm -rvf "docs/_build/html/_static"
+	ln -svf "$_rtd_theme_path/sphinx_rtd_theme/static" "docs/_build/html/_static"
 }
 
 check() {
-    cd "$pkgname"
-    python setup.py test
+	cd "$pkgname"
+	export LANG=en_US.UTF-8
+	pytest tests
 }
 
 package() {
-    cd "$pkgname"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-    mkdir -p "$pkgdir/usr/share/doc"
-    cp -rv "build/sphinx/html" "$pkgdir/usr/share/doc/$pkgname"
+	cd "$pkgname"
+	python -m installer -d "$pkgdir" dist/*.whl
+	install -dm0755 "$pkgdir/usr/share/doc/"
+	cp -rv docs/_build/html "$pkgdir/usr/share/doc/$pkgname"
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" COPYING
 }
