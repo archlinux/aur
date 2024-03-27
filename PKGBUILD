@@ -1,7 +1,7 @@
 # Maintainer: Axel McLaren <scm(at)axml(dot)uk>
 
 pkgname=stop
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Stock position tracker for status bars"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/axxml/stop"
 depends=('python' 'python-yfinance')
 
 source=($pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('68122b2df401d3bb549f8a7a3b8df8bd3a86e40ee2d56c32e6b54dadf4d15648')
+sha256sums=('91d5475160d48edfdbee9c3a54ceb0a9c91edbe50cb5fa0b3fb3084947655569')
 
 build() {
   cd "${pkgname}-${pkgver}"
