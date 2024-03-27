@@ -10,6 +10,9 @@ pkgdesc='mount removable devices as normal user'
 arch=(i686 x86_64 armv7h)
 url=https://salsa.debian.org/debian/pmount
 license=(GPL2)
+_pkgvermin=7
+_pkgver=$pkgver-$_pkgvermin
+_pkgname=$pkgname-debian-$_pkgver
 
 provides=($pkgname)
 conflicts=($pkgname)
@@ -17,7 +20,7 @@ depends=('sysfsutils>=2.0.0-1' util-linux)
 makedepends=('intltool>=0.21')
 backup=(etc/pmount.allow)
 source=(
-    $url/-/archive/debian/$pkgver/$pkgname-debian-$pkgver.tar.gz
+    $url/-/archive/debian/$_pkgver/$_pkgname.tar.gz
     0001-fix-debug-segfault.patch
     0002-support-exfat.patch
 )
