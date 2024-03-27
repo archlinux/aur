@@ -2,14 +2,15 @@
 
 pkgname="yd-go-git"
 _pkgname=${pkgname%-git}
-pkgrel=3
+pkgrel=4
 pkgver="master.5af17d8.r0.g5af17d8"
 pkgdesc="Panel indicator for Yandex-disk CLI daemon (linux)"
 arch=('x86_64')
 url="https://github.com/slytomcat/${_pkgname}/"
 license=('GPL-3.0-only')
+# Licences: https://spdx.org/licenses/
 depends=('yandex-disk')
-makedepends=('go' 'git' 'gendesk')
+makedepends=('go' 'git' 'gendesk' 'upx')
 conflicts=('yd-go' 'yd-go-bin' 'yd-go-git-bin' 'yd-go-bin-git')
 source=("git+https://github.com/slytomcat/yd-go.git")
 sha256sums=('SKIP')
@@ -25,6 +26,8 @@ prepare() {
 		--categories="Network; FileTools; Monitor" \
 		--icon "/usr/share/pixmaps/${_pkgname}.png" \
 		--exec "/usr/bin/${_pkgname}"
+		# Desktop entry spec.:https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html 
+		# Categories spec.: https://specifications.freedesktop.org/menu-spec/menu-spec-1.1.html#category-registry
 }
 
 pkgver() {
@@ -47,9 +50,10 @@ build() {
 			-ldflags "-s -w -X main.version=v.${pkgver}" \
 			-o build .
 	
-	#UPX not working with PKGBUILD https://bbs.archlinux.org/viewtopic.php?id=235637
-	#echo "Compress yd-go..."
-		#upx --best ${srcdir}/${_pkgname}/build/${_pkgname}
+	#UPX not working with strip (set by defalut) option in PKGBUILD https://bbs.archlinux.org/viewtopic.php?id=235637
+	#If you need UPX, set !strip in options()
+	echo "Compress yd-go..."
+		upx --best ${srcdir}/${_pkgname}/build/${_pkgname}
 }
 
 #Test yd-go
@@ -65,4 +69,5 @@ package() {
 	install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 	install -Dm644 "${srcdir}/${_pkgname}/icons/img/yd128.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 	#TODO: add autostart in $XDG_CONFIG_DIRS/autostart
+	# Autostart spec.: https://specifications.freedesktop.org/autostart-spec/autostart-spec-latest.html
 }
