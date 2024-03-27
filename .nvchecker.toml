@@ -1,0 +1,5 @@
+[gojq]
+source = "github"
+github = "itchyny/gojq"
+prefix = "v"
+use_max_tag = true
