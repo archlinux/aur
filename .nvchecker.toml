@@ -1,0 +1,5 @@
+[chrysalis]
+source = "github"
+github = "keyboardio/Chrysalis"
+prefix = "v"
+use_max_tag = true
