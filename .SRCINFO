@@ -1,6 +1,6 @@
 pkgbase = kathara
 	pkgdesc = A lightweight container-based network emulation tool.
-	pkgver = 3.7.3
+	pkgver = 3.7.4
 	pkgrel = 1
 	url = https://www.kathara.org/
 	install = kathara.install
@@ -15,7 +15,7 @@ pkgbase = kathara
 	optdepends = docker: for running network scenarios in a local environment
 	optdepends = xterm: for opening devices terminals
 	optdepends = tmux: for devices terminals multiplexing
-	source = https://github.com/KatharaFramework/Kathara/archive/refs/tags/3.7.3.tar.gz
+	source = https://github.com/KatharaFramework/Kathara/archive/refs/tags/3.7.4.tar.gz
 	md5sums = SKIP
 
 pkgname = kathara
