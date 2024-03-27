@@ -1,8 +1,8 @@
 # Maintainer: Matt Taylor <64.delta@proton.me>
 # https://github.com/64/aur-packages for pull requests and issues.
 pkgname=mlibc
-pkgver=4.0.0_rc1
-pkgrel=2
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="A portable C standard library"
 arch=('x86_64')
 url="https://github.com/managarm/mlibc"
@@ -32,17 +32,17 @@ install=
 changelog=
 GCCVER=13.2.3
 BINUTILSVER=2.40
-LINUXVER=6.7.6
-source=("${pkgname}-4.0.0.tar.gz::https://github.com/managarm/mlibc/archive/refs/tags/4.0.0-rc1.tar.gz"
+LINUXVER=6.8.1
+source=("$pkgname-$pkgver.tar.gz::https://github.com/managarm/mlibc/archive/refs/tags/$pkgver.tar.gz"
         "gcc-managarm-$GCCVER.tar.gz::https://github.com/managarm/gcc/archive/refs/tags/managarm/gcc-$GCCVER.tar.gz"
         "binutils-managarm-$BINUTILSVER.tar.gz::https://github.com/managarm/binutils-gdb/archive/refs/tags/managarm/binutils-2_40_2.tar.gz"
         "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$LINUXVER.tar.xz"
         "config.sub::https://git.savannah.gnu.org/cgit/config.git/plain/config.sub?id=948ae97ca5703224bd3eada06b7a69f40dd15a02")
 noextract=()
-md5sums=('3c41fea991ff084f2df7cad8ae0c5363'
+md5sums=('870d607b8d4c5922a74653af8a5625cd'
          'b6d5828e1392c9e84fb86fb2735c5fd8'
          'd277da5a45da1e0323f1e4eb571f8f53'
-         '8b4a23ce33184bcd4e9c4b9ff0e5ddb0'
+         'c4423a42f1e32d9decf17897eaca15ee'
          'e14e81807d4870d70f29ec131aed4ab2')
 validpgpkeys=()
 
@@ -53,7 +53,7 @@ sysroot_install_linux_headers() {
 }
 
 sysroot_install_mlibc() {
-	cd "$pkgname-4.0.0-rc1"
+	cd "$pkgname-$pkgver"
 
 	# The default flags include -fexceptions which requires libgcc.
 	CFLAGS=${CFLAGS//"-fexceptions"}
@@ -144,5 +144,5 @@ package() {
 	ln -s "$PREFIX/bin/$CARCH-linux-mlibc-gcc" "$pkgdir/usr/bin/mlibc-gcc"
 	ln -s "$PREFIX/bin/$CARCH-linux-mlibc-g++" "$pkgdir/usr/bin/mlibc-g++"
 
-	install -Dm644 "./$pkgname-4.0.0-rc1/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "./$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
