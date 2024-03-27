@@ -1,7 +1,7 @@
 pkgbase = wox-bin
 	pkgdesc = A cross-platform launcher that simply works
 	pkgver = 2.0.0_nightly
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/Wox-launcher/Wox
 	arch = x86_64
 	license = GPL3
@@ -21,11 +21,11 @@ pkgbase = wox-bin
 	depends = zlib
 	depends = gtk3
 	depends = libdbusmenu-glib
+	depends = libkeybinder3
 	provides = wox
 	conflicts = wox-git
 	conflicts = wox
-	options = !strip
-	source = wox-2.0.0_nightly-10::https://github.com/Wox-launcher/Wox/releases/download/v2.0.0-nightly/wox-linux-amd64-20240325-66b2b5
+	source = wox-2.0.0_nightly-11::https://github.com/Wox-launcher/Wox/releases/download/v2.0.0-nightly/wox-linux-amd64-20240325-66b2b5
 	sha256sums = 4350545021ff55e385dbe6ed30d38f635b16fd520bbc0f1beb92d8d75939869a
 
 pkgname = wox-bin
