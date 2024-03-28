@@ -1,0 +1,5 @@
+[chan-sccp]
+source = "github"
+github = "chan-sccp/chan-sccp"
+prefix = "v"
+use_max_tag = true
