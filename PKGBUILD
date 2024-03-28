@@ -2,7 +2,7 @@
 _pkgname=wayneko
 pkgname=$_pkgname-git
 pkgver=r27.a0a22b7
-pkgrel=1
+pkgrel=2
 pkgdesc="Display an animated neko cat on the bottom of a Wayland output."
 arch=("x86_64")
 url="https://git.sr.ht/~leon_plickat/$_pkgname"
