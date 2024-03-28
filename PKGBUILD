@@ -4,8 +4,8 @@
 
 pkgname=python-shortuuid
 _pkgname=${pkgname#python-}
-pkgver=1.0.11
-pkgrel=2
+pkgver=1.0.13
+pkgrel=1
 pkgdesc='library that generates concise, unambiguous, URL-safe UUIDs'
 arch=(any)
 url="https://github.com/skorokithakis/$_pkgname"
@@ -16,8 +16,8 @@ makedepends=(python-{build,installer,wheel}
              python-poetry-core)
 checkdepends=(python-django)
 _archive="$_pkgname-$pkgver"
-source=("$_archive.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6ba28eece88d23389684585d73f3d883be3a76d6ab0c5d18ef34e5de2d500d0f')
+source=("$url/archive/v$pkgver/$_archive.tar.gz")
+sha256sums=('2ac98d9ff16cac764d1f2e98cde146bce436714e6a6c74ec42c24a63c210ce1d')
 
 build() {
 	cd "$_archive"

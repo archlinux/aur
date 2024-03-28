@@ -1,7 +1,7 @@
 pkgbase = python-shortuuid
 	pkgdesc = library that generates concise, unambiguous, URL-safe UUIDs
-	pkgver = 1.0.11
-	pkgrel = 2
+	pkgver = 1.0.13
+	pkgrel = 1
 	url = https://github.com/skorokithakis/shortuuid
 	arch = any
 	license = BSD
@@ -12,7 +12,7 @@ pkgbase = python-shortuuid
 	makedepends = python-poetry-core
 	depends = python
 	options = !emptydirs
-	source = shortuuid-1.0.11.tar.gz::https://github.com/skorokithakis/shortuuid/archive/v1.0.11.tar.gz
-	sha256sums = 6ba28eece88d23389684585d73f3d883be3a76d6ab0c5d18ef34e5de2d500d0f
+	source = https://github.com/skorokithakis/shortuuid/archive/v1.0.13/shortuuid-1.0.13.tar.gz
+	sha256sums = 2ac98d9ff16cac764d1f2e98cde146bce436714e6a6c74ec42c24a63c210ce1d
 
 pkgname = python-shortuuid
