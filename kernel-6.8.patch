@@ -1,3 +1,7 @@
+drm: Remove locking for legacy ioctls and DRM_UNLOCKED
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2798ffcc1d6a788b5769b1fbcf0750dfc06ae98a
+
+
 diff --git a/nvidia-drm/nvidia-drm-drv.c b/nvidia-drm/nvidia-drm-drv.c
 index 74f8583..6563e9f 100644
 --- a/nvidia-drm/nvidia-drm-drv.c
