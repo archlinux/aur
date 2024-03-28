@@ -1,4 +1,5 @@
-# Maintainer: Jérémy "Vrakfall" Lecocq <jeremy [dot] lecocq [at] protonmail [dot] com>
+# Maintainer: Karl Ludwig Brennan <karlludwigbrennan@outlook.com>
+# Contributor: Jérémy "Vrakfall" Lecocq <jeremy [dot] lecocq [at] protonmail [dot] com>
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
@@ -6,7 +7,7 @@
 _pkgmainbranch=nvidia-settings
 pkgbase=nvidia-525xx-settings
 pkgname=('nvidia-525xx-settings' 'libxnvctrl-525xx')
-pkgver=525.116.04
+pkgver=525.147.05
 pkgrel=1
 pkgdesc='Tool for configuring the NVIDIA graphics driver, 525 branch'
 url='https://github.com/NVIDIA/nvidia-settings'
@@ -16,7 +17,7 @@ makedepends=('inetutils' 'jansson' 'gtk3' 'libxv' 'libvdpau' "nvidia-utils=${pkg
 options=('staticlibs')
 source=(${_pkgmainbranch}-${pkgver}.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/${pkgver}.tar.gz
         nvidia-settings-libxnvctrl_so.patch)
-sha512sums=('ff63dc50479022866f2e9bc8fba798b88fc819595517d839125dac1fb7e4c20f0027640c4dc7f7b0c544eba984190d4b204b4306ef36c55740681621be4e6fb3'
+sha512sums=('c08f25c9d3435adf3c0ae5a8584faeb90e57dc335579369b3f2eef6f44cbd1ffdf9bdcd7bf7f7d9890018fb82043a99b34da2c3c76b83b072ab50d34de89a75a'
             '0303fe615d6ef4e14112998c531a17613b94776f9a6a027ddb81e400fddd5f2ff15583da8b8631c2306aca854edf2f54a8007eb36f1732b4c064c857aaf268ae')
 
 prepare() {
