@@ -1,0 +1,4 @@
+[kanban-bin]
+source = "github"
+github = "leanlabsio/kanban"
+use_max_tag = true
