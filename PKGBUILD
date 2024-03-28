@@ -2,7 +2,7 @@
 
 pkgname=gensoquote-git
 _pkgname=gensoquote
-pkgver=0.3.0.r1.gde10188
+pkgver=0.3.0.r0.ga9c9646
 pkgrel=1
 pkgdesc='Like fortune, but in Gensokyo and memory safe™'
 url=https://github.com/dmyTRUEk/gensoquote
@@ -25,11 +25,13 @@ build () {
   cd $srcdir/$_pkgname
 
   [[ $CARCH != x86_64 ]] && export CARGO_PROFILE_RELEASE_LTO=off
+
   CARGO_INCREMENTAL=0 GENSOQUOTE_VERSION=$pkgver cargo build --frozen --release --target-dir target
 }
 
 package() {
   cd $srcdir/$_pkgname
+
   install -Dm755 -t ${pkgdir}/usr/bin target/release/gensoquote
 }
 
