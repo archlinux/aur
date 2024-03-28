@@ -4,17 +4,17 @@
 
 pkgname=davfs2
 pkgver=1.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="File system driver that allows you to mount a WebDAV folder"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://savannah.nongnu.org/projects/${pkgname}"
 license=('GPL')
-depends=('neon')
+depends=('neon' 'po4a')
 backup=(etc/${pkgname}/${pkgname}.conf etc/${pkgname}/secrets)
 source=(https://mirror.easyname.at/nongnu/${pkgname}/${pkgname}-${pkgver}.tar.gz{,.sig})
 validpgpkeys=('51A0F4A0C8CFC98F842EA9A8B94556F81C85D0D5') # Ali Abdallah <aabdallah@suse.com>
 sha512sums=('6ee5820b60ed28ad100949bb4db65ea07bbae1ad0128cd35e7bb69f7f6bdde99606e8cf704ddb197f1400abadc3934d34ab85f298f9100b6ea9e60813c2345f2'
-  'SKIP')
+            'SKIP')
 
 prepare() { 
   cd ${pkgname}-${pkgver}
@@ -24,8 +24,6 @@ prepare() {
 
 build() {
   cd ${pkgname}-${pkgver}
-  sed -i 's/NE_REQUIRE_VERSIONS(\[0\], \[27 28 29 30 31 32\])/NE_REQUIRE_VERSIONS(\[0\], \[27 28 29 30 31 32 33\])/g' configure.ac
-  ./bootstrap
   dav_user=nobody dav_group=network ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --disable-debug
   make
 }

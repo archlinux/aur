@@ -1,13 +1,14 @@
 pkgbase = davfs2
 	pkgdesc = File system driver that allows you to mount a WebDAV folder
 	pkgver = 1.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://savannah.nongnu.org/projects/davfs2
 	arch = armv7h
 	arch = aarch64
 	arch = x86_64
 	license = GPL
-	depends = neon
+	depends = neon 
+  depends = po4a
 	backup = etc/davfs2/davfs2.conf
 	backup = etc/davfs2/secrets
 	source = https://mirror.easyname.at/nongnu/davfs2/davfs2-1.7.0.tar.gz
