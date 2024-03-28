@@ -1,0 +1,5 @@
+[python-turkish-morphology]
+source = "github"
+github = "google-research/turkish-morphology"
+prefix = "v"
+use_max_tag = true
