@@ -1,0 +1,3 @@
+[python-gobbet]
+source = "pypi"
+pypi = "gobbet"
