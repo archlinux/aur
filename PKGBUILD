@@ -3,8 +3,8 @@
 
 pkgname=vmware-host-modules-dkms-git
 _pkgname=vmware-host-modules
-pkgver=17.5.0.d20240112.2c6d66f
-_branch_version=17.5.0
+pkgver=17.5.1.d20240112.2c6d66f
+_branch_version=17.5.1
 url='https://github.com/mkubecek/vmware-host-modules'
 pkgrel=1
 epoch=2
