@@ -4,7 +4,7 @@ pkgbase=python-sunpy-sphinx-theme
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc="The sphinx theme for the SunPy website and documentation"
 arch=('any')
@@ -20,7 +20,7 @@ checkdepends=('python-nose'    # pydata already in makedepends
               'python-pydata-sphinx-theme')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'Makefile')
-md5sums=('000732e12a9176b3565e1422bd5d0337'
+md5sums=('996ffffbd959ae831dbebbce9b95c6a6'
          'a6aa4bc42b138d75f938065a0994c3e1')
 
 get_pyver() {
