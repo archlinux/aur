@@ -3,8 +3,7 @@
 _pipname=glyphconstruction
 _project=GlyphConstruction
 pkgname=python-$_pipname
-pkgver=0.8.3
-_sha=d7c7dd5ffe8a48d089c49206197a9091886fcb10
+pkgver=0.8.4
 pkgrel=3
 pkgdesc='a simple, powerful, human-readable language for describing how glyph shapes are built'
 arch=(any)
@@ -13,9 +12,9 @@ license=(MIT)
 depends=(python)
 makedepends=(python-{build,installer,wheel}
              python-setuptools)
-_archive="$_project-$_sha"
-source=("$_archive.tar.gz::$url/archive/$_sha.tar.gz")
-sha256sums=('f0f6c48329f21aea6802dcf4d8790d1ca208723ace6e8c115c538be2c5809de5')
+_archive="$_project-$pkgver"
+source=("$url/archive/$pkgver/$_archive.tar.gz")
+sha256sums=('d280a6296cc3bc1ee8c9251f03b73c7fa88fb948e89bf6b30f26ca24a9837d7c')
 
 prepare() {
 	cd "$_archive"
