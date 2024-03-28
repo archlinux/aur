@@ -1,0 +1,5 @@
+[font-line]
+source = "github"
+github = "source-foundry/font-line"
+prefix = "v"
+use_max_tag = true
