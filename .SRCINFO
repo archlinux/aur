@@ -1,6 +1,6 @@
 pkgbase = python-pykickstart
 	pkgdesc = Python module for manipulating kickstart files
-	pkgver = 3.32.10
+	pkgver = 3.52
 	pkgrel = 1
 	url = http://fedoraproject.org/wiki/Pykickstart
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-pykickstart
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	source = pykickstart-3.32.10.tar.gz::https://github.com/pykickstart/pykickstart/archive/r3.32.10.tar.gz
-	sha512sums = 55e0dbaa62acb1123eb45ade01c4edc82234162e513755ced6a34efe40c20763c1983eb263ff8b9d50f9c2e46210792b41b338690575654dc77743877928192a
+	source = pykickstart-3.32.10.tar.gz::https://github.com/pykickstart/pykickstart/archive/r3.52.tar.gz
+	sha512sums = 0ac6f1336a88e4f6047e63374c669f21fb52a7d249df695aca8bd996f7128cc301191894c805590271a38e0925b4f7846b2864d61fa923a76ec516071d91a714
 
 pkgname = python-pykickstart
 	pkgdesc = Python module for manipulating kickstart files
