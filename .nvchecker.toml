@@ -1,0 +1,5 @@
+[mfek-glif]
+source = "github"
+github = "MFEK/glif"
+prefix = "v"
+use_max_tag = true
