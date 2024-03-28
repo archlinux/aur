@@ -1,0 +1,4 @@
+[ocaml-earley]
+source = "github"
+github = "rlepigre/ocaml-earley"
+use_max_tag = true
