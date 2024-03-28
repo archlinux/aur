@@ -1,0 +1,5 @@
+[mattermost-plugin-calls]
+source = "github"
+github = "mattermost/mattermost-plugin-calls"
+prefix = "v"
+use_max_tag = true
