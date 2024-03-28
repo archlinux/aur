@@ -1,0 +1,5 @@
+[set-unicoderange]
+source = "github"
+github = "source-foundry/set-unicoderange"
+prefix = "v"
+use_max_tag = true
