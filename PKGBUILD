@@ -3,8 +3,8 @@
 pkgname=mingw-w64-directxtex
 pkgdesc="Texture processing library (mingw-w64)"
 # Version from CMakeLists.txt.
-pkgver=2.0.2
-_tag=dec2023
+pkgver=2.0.3
+_tag=mar2024
 pkgrel=1
 arch=('any')
 depends=('mingw-w64-directx-headers' 'mingw-w64-directxmath')
@@ -13,7 +13,7 @@ url="https://go.microsoft.com/fwlink/?LinkId=248926"
 license=('MIT')
 options=('staticlibs' '!strip' '!buildflags')
 source=(directxtex-${_tag}.tar.gz::https://github.com/microsoft/DirectXTex/archive/refs/tags/${_tag}.tar.gz)
-sha256sums=('5a2c479aa976ea5cd26e5a4fb253eb634bab0c2c9456ac2f5bf9a14caa11d2e0')
+sha256sums=('1a887a8e4b9a5ba6eff2f1b3ce31a8c3c269318a268d2278ce50b2461eb214c5')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 

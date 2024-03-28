@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-directxtex
 	pkgdesc = Texture processing library (mingw-w64)
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://go.microsoft.com/fwlink/?LinkId=248926
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = mingw-w64-directxtex
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = directxtex-dec2023.tar.gz::https://github.com/microsoft/DirectXTex/archive/refs/tags/dec2023.tar.gz
-	sha256sums = 5a2c479aa976ea5cd26e5a4fb253eb634bab0c2c9456ac2f5bf9a14caa11d2e0
+	source = directxtex-mar2024.tar.gz::https://github.com/microsoft/DirectXTex/archive/refs/tags/mar2024.tar.gz
+	sha256sums = 1a887a8e4b9a5ba6eff2f1b3ce31a8c3c269318a268d2278ce50b2461eb214c5
 
 pkgname = mingw-w64-directxtex
