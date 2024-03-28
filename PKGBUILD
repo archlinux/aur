@@ -6,10 +6,10 @@
 _distname=krunner
 pkgname=${_distname}5
 pkgver=5.115.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Framework for providing different actions given a string query'
 arch=(x86_64)
-url="https://invent.kde.org/frameworks/${krunner}"
+url="https://invent.kde.org/frameworks/${_distname}"
 license=('LGPL-2.0-or-later')
 depends=(
   gcc-libs

@@ -1,8 +1,8 @@
 pkgbase = krunner5
 	pkgdesc = Framework for providing different actions given a string query
 	pkgver = 5.115.0
-	pkgrel = 2
-	url = https://invent.kde.org/frameworks/
+	pkgrel = 3
+	url = https://invent.kde.org/frameworks/krunner
 	arch = x86_64
 	groups = kf5
 	license = LGPL-2.0-or-later
