@@ -1,0 +1,20 @@
+pkgbase = wg-meshconf
+	pkgdesc = WireGuard full mesh configuration generator
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = https://github.com/k4yt3x/wg-meshconf
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-pdm
+	makedepends = python-pdm-pep517
+	depends = python
+	depends = python-cryptography
+	depends = python-rich
+	source = wg-meshconf-2.5.1.tar.gz::https://files.pythonhosted.org/packages/source/w/wg-meshconf/wg-meshconf-2.5.1.tar.gz
+	sha256sums = 7c73b57b4da0ba9d32835fd4cff8d6fae99c15a50115499c896686b364065650
+
+pkgname = wg-meshconf
