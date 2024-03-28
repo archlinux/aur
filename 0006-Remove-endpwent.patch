@@ -1,0 +1,10 @@
+--- a/mysys/mf_pack.c
++++ b/mysys/mf_pack.c
+@@ -382,7 +382,6 @@
+     save= *str; *str= '\0';
+     user_entry=getpwnam(*path);
+     *str=save;
+-    endpwent();
+     if (user_entry)
+     {
+       *path=str;
