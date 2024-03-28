@@ -1,7 +1,7 @@
 pkgbase = lua-copas
 	pkgdesc = A dispatcher based on coroutines that can be used by TCP/IP servers
 	pkgver = 4.7.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://lunarmodules.github.io/copas
 	arch = x86_64
 	arch = i686
@@ -15,21 +15,10 @@ pkgbase = lua-copas
 	sha256sums = 54c16a5f56ff32f3a6c9410f5927c33156c81fde035772e5adc6404565ed3d3a
 
 pkgname = lua-copas
-	depends = lua
-	depends = lua-coxpcall
-	depends = lua-socket
 
 pkgname = lua53-copas
-	depends = lua53
-	depends = lua53-coxpcall
-	depends = lua53-socket
 
 pkgname = lua52-copas
-	depends = lua52
-	depends = lua52-coxpcall
-	depends = lua52-socket
 
 pkgname = lua51-copas
-	depends = lua51
 	depends = lua51-coxpcall
-	depends = lua51-socket
