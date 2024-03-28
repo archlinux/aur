@@ -1,0 +1,5 @@
+[diff-pdf]
+source = "github"
+github = "vslavik/diff-pdf"
+prefix = "v"
+use_max_tag = true
