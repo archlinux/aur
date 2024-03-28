@@ -53,7 +53,7 @@ package() {
   make DESTDIR="$pkgdir" install
   mkdir -p "$pkgdir"/etc/
   echo -e "# Read man pptpd.conf, see samples in /usr/share/doc/pptpd\n# and write your pptpd configuration here" >"$pkgdir"/etc/pptpd.conf
-  install -Dm0644 "$srcdir"/$pkgname.service "$pkgdir"/usr/lib/systemd/system/$pkgname.service
+  install -Dm0644 "$srcdir"/pptpd.service "$pkgdir"/usr/lib/systemd/system/pptpd.service
   mkdir -p "$pkgdir"/usr/share/doc/pptpd
   cp -a samples "$pkgdir"/usr/share/doc/pptpd/
 }
