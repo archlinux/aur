@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nuclia-sync-agent-bin
-pkgver=1.2.5
+pkgver=1.2.6
 _dnver=0.0.0
 _electronversion=27
 pkgrel=1
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${_dnver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a0bb170b214fa3176b2038c2ae23968cfb093a0dc01ebf2ee70400caf60a5277'
+sha256sums=('22efd8b726c732f498268f6efeed60239afda2f56e18e7138a276bb3a5afaca9'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
