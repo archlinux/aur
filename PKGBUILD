@@ -1,4 +1,5 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer:
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Xavier Devlamynck <magicrhesus@ouranos.be>
 # Contributor: Jonathan Liu <net147@gmail.com>
 
