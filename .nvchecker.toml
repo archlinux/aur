@@ -1,0 +1,5 @@
+[nodejs-sqlite3]
+source = "github"
+github = "mapbox/node-sqlite3"
+prefix = "v"
+use_max_tag = true
