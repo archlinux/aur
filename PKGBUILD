@@ -2,14 +2,14 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=biganalytics
-_pkgver=1.1.21
+_pkgver=1.1.22
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=1
 pkgdesc="Utilities for 'big.matrix' Objects from Package 'bigmemory'"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(Apache LGPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('LGPL-3.0-only OR Apache-2.0')
 depends=(
   r-biglm
   r-bigmemory
@@ -20,12 +20,12 @@ makedepends=(
   r-rcpp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('85078759889b06ac5a408175d5297560')
-sha256sums=('debd18d8ed2e1a49fe25c69f8a636b955b1cabedd36ec69c0bff53b64d8eb9a5')
+md5sums=('a6dadd3f2c7b62fd90ac527cbfa1fe02')
+b2sums=('5e65fa8a24eb685df41266ed760ee4e529cb3fb47bfeae454166378bf00fb30794067d4480a2c3284c1b63d808390fc84dc88e117ebb05049dfce8489455da15')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
