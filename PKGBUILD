@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=eulerr
-_pkgver=7.0.1
+_pkgver=7.0.2
 pkgname=r-${_pkgname,,}
-pkgver=7.0.1
+pkgver=7.0.2
 pkgrel=1
 pkgdesc='Area-Proportional Euler and Venn Diagrams with Ellipses'
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6c3caa93e4f3c8bec3198020f1436fe617acb4eb52799790cb0612f548721eb1')
+sha256sums=('4e0dce2b240a97e2bfe22b3848c7ff9e1fc684ed3b007c94adb97a8bc6a0842b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
