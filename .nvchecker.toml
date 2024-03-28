@@ -1,0 +1,5 @@
+[python-commandlines]
+source = "github"
+github = "chrissimpkins/commandlines"
+prefix = "v"
+use_max_tag = true
