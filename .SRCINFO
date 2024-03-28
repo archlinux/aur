@@ -1,13 +1,18 @@
 pkgbase = python-sioyek
 	pkgdesc = Python wrapper and simple addons for sioyek PDF viewer
 	pkgver = 0.31.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ahrm/sioyek-python-extensions
 	arch = any
 	license = GPL
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = sioyek
+	depends = python-regex
+	depends = python-pyperclip
+	depends = python-appdirs
+	depends = python-pypdf
+	depends = python-pymupdf
 	source = https://files.pythonhosted.org/packages/py3/s/sioyek/sioyek-0.31.11-py3-none-any.whl
 	sha256sums = f9d2f8549a20449b4d37e905eccaaa0e563bf33a0c9cc55529a79a8c4e83ccf9
 
