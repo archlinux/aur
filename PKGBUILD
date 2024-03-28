@@ -45,16 +45,22 @@ _filepicker_pkgsrc="vdhcoapp-filepicker"
 source+=("$_filepicker_pkgsrc"::"git+$_filepicker_url.git")
 sha256sums+=('SKIP')
 
-_filepicker_prepare() {
+_cargo_env() {
   export CARGO_HOME="${CARGO_HOME:-$SRCDEST/cargo-home}"
   export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
   export CARGO_TARGET_DIR=target
+}
+
+_filepicker_prepare() {
+  _cargo_env
 
   cd "$srcdir/$_filepicker_pkgsrc"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 _filepicker_build() {
+  _cargo_env
+
   cd "$srcdir/$_filepicker_pkgsrc"
   cargo build --frozen --release --all-features
 }
