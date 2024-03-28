@@ -1,7 +1,7 @@
 # Maintainer: Wolfgang Gehrhardt <gehwolf at freenet dot de>
 
 pkgname=elos
-pkgver=0.55.6
+pkgver=0.56.5
 pkgrel=1
 pkgdesc="An event logging system"
 arch=('x86_64')
@@ -48,6 +48,9 @@ package() {
   # Don't need demo dummy storage backend
   _editConfig 'del(.root.elos.EventLogging.Plugins.Dummy)'
 
+  # Don't need DLT storage backend
+  _editConfig 'del(.root.elos.EventLogging.Plugins.DLT)'
+
   # log everything with json backend
   _editConfig '.root.elos.EventLogging.Plugins.JsonBackend.Filter = ["1 1 EQ"]'
 
@@ -65,4 +68,4 @@ package() {
   _editConfig '.root.elos.Scanner.SyslogScanner.SyslogPath = "/run/elos/dev-log"'
 
 }
-md5sums=('6025ae34a32ec9e08e6004a65e4f2649')
+md5sums=('0ad4c40c75ce58f44e154259dbe5e1af')
