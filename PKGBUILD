@@ -18,11 +18,12 @@ package() {
     DESKTOP_ENTRY=$HOME/.local/share/applications/saturn.desktop
     mkdir -p $INSTALL_PATH/res
     mkdir ~/.local/share/applications
-    cp "$srcdir/Saturn-legacy/build/us_pc/saturn.us.f3dex2e" $INSTALL_PATH
+    cp "$srcdir/Saturn-legacy/build/us_pc/saturn.us.f3dex2e" $INSTALL_PATH/saturn
     cp "$srcdir/Saturn-legacy/build/us_pc/libdiscord_game_sdk.so" $INSTALL_PATH
     cp "$srcdir/Saturn-legacy/res/saturn-linuxicon.png" $INSTALL_PATH/res
     cp -r "$srcdir/Saturn-legacy/dynos" $INSTALL_PATH
     cp -r "$srcdir/Saturn-legacy/fonts" $INSTALL_PATH
+    chmod +x $INSTALL_PATH/saturn
     echo "[Desktop Entry]" >> $DESKTOP_ENTRY
     echo "Name=Saturn" >> $DESKTOP_ENTRY
     echo "Comment=A cross-platform, all-in-one machinima studio for Super Mario 64." >> $DESKTOP_ENTRY
