@@ -3,26 +3,26 @@
 # Contributor: Maik Broemme <mbroemme@libmpq.org>
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
 
-_kernelver=$(uname -r)
+_kernelver=$(pacman -Q linux | cut -f2 -d ' ')
 _linuxver=${_kernelver%-*}
 
 pkgname=dahdi-linux-git
 pkgdesc="DAHDI drivers for Asterisk (Digium, OpenVox, Allo and Yeastar cards)"
-pkgver=3.1.0.r12.g5c840cf
+pkgver=3.3.0.r1.g2781746
 pkgrel=1
 arch=(x86_64 i686)
 url=http://www.asterisk.org
 license=(LGPL)
-provides=("${pkgname%-git}=$pkgver")
+provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=("linux=${_linuxver//-/.}"
          perl)
 makedepends=(git
              "linux-headers=${_linuxver//-/.}")
-conflicts=(dahdi)
+conflicts=(dahdi dahdi-linux)
 install="${pkgname%-linux-git}.install"
 _archive="$pkgname"
 _fwurl=http://downloads.digium.com/pub/telephony/firmware/releases
-source=("$_archive::git://git.asterisk.org/dahdi/linux#branch=next"
+source=("$_archive::git+https://github.com/asterisk/dahdi-linux#branch=master"
         "${pkgname%-linux-git}.service"
         "$_fwurl/dahdi-fw-a4a-a0017.tar.gz"
         "$_fwurl/dahdi-fw-a4b-d001e.tar.gz"

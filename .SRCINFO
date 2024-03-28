@@ -1,6 +1,6 @@
 pkgbase = dahdi-linux-git
 	pkgdesc = DAHDI drivers for Asterisk (Digium, OpenVox, Allo and Yeastar cards)
-	pkgver = 3.1.0.r12.g5c840cf
+	pkgver = 3.3.0.r1.g2781746
 	pkgrel = 1
 	url = http://www.asterisk.org
 	install = dahdi.install
@@ -8,12 +8,13 @@ pkgbase = dahdi-linux-git
 	arch = i686
 	license = LGPL
 	makedepends = git
-	makedepends = linux-headers=6.8.1.arch1
-	depends = linux=6.8.1.arch1
+	makedepends = linux-headers=6.8.2.arch1
+	depends = linux=6.8.2.arch1
 	depends = perl
-	provides = dahdi-linux=3.1.0.r12.g5c840cf
+	provides = dahdi-linux=3.3.0
 	conflicts = dahdi
-	source = dahdi-linux-git::git://git.asterisk.org/dahdi/linux#branch=next
+	conflicts = dahdi-linux
+	source = dahdi-linux-git::git+https://github.com/asterisk/dahdi-linux#branch=master
 	source = dahdi.service
 	source = http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-a4a-a0017.tar.gz
 	source = http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-a4b-d001e.tar.gz
