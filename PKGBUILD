@@ -21,12 +21,13 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.6.21
+pkgver=6.6.23
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
-arch=(x86_64)
-license=(GPL-2.0-or-later)
+license=('GPL-2.0-or-later')
+arch=('x86_64')
+
 makedepends=(
   bc
   cpio
@@ -51,7 +52,7 @@ source+=(
   "config-$pkgver"::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/config
 )
 sha256sums+=(
-  'ee0b430148da94d2b13608b8d80b007b7d281dc90e3f19b63cf9a9943810e457'
+  '200fd119cb9ef06bcedcdb52be00ba443163eab154295c5831fed9a12211a8b9'
   'SKIP'
   'SKIP'
 )
@@ -87,30 +88,14 @@ fi
 if [[ ${_build_clang::1} == "t" ]] ; then
   makedepends+=(clang llvm lld)
 
-  export CC=clang
-  export LD=ld.lld
-  export AR=llvm-ar
-  export NM=llvm-nm
-  export STRIP=llvm-strip
-  export OBJCOPY=llvm-objcopy
-  export OBJDUMP=llvm-objdump
-  export READELF=llvm-readelf
-  export HOSTCC=clang
-  export HOSTCXX=clang++
-  export HOSTAR=llvm-ar
-  export HOSTLD=ld.lld
   export LLVM=1
   export LLVM_IAS=1
-
-  export CXX=clang++
-  export LDFLAGS+=" -fuse-ld=lld"
 fi
 
 if [[ "${_build_v3::1}" == "t" ]] ; then
-  export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
-  export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"}
-
-  export RUSTFLAGS+=" -Ctarget-cpu=x86-64-v3"
+  export KCFLAGS="-march=x86-64-v3 -mtune=generic -O3"
+  export HOSTCFLAGS="-march=x86-64-v3 -mtune=generic -O3"
+  export HOSTCXXFLAGS="-march=x86-64-v3 -mtune=generic -O3"
 fi
 
 export KBUILD_BUILD_HOST=archlinux
