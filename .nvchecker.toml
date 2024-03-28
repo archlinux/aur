@@ -1,0 +1,5 @@
+[python-isbntools]
+source = "github"
+github = "xlcnd/isbntools"
+prefix = "v"
+use_max_tag = true
