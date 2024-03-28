@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=smol_img tool
+Comment=Quick Image Editor with automatic resizing to reach target JPG/PNG size.
+Icon=gtk-zoom-fit
+Type=Application
+Exec=/usr/bin/smol_img
+Terminal=false
+Categories=Graphics
+MimeType=

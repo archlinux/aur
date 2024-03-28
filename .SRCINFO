@@ -1,7 +1,7 @@
 pkgbase = smol_img
 	pkgdesc = Quick Image Editor with automatic resizing to reach target JPG/PNG size.
 	pkgver = v1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/frak0d/smol_img
 	arch = pentium4
 	arch = i686
@@ -13,6 +13,8 @@ pkgbase = smol_img
 	makedepends = cmake
 	depends = qt5-base
 	source = git+https://github.com/frak0d/smol_img
+	source = smol_img.desktop
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = smol_img
