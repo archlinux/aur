@@ -1,6 +1,6 @@
 pkgname=m64py-git
 _gitname=mupen64plus-ui-python
-pkgver=0.2.5.r13.0a08a32
+pkgver=0.2.5.r37.90093ce
 pkgrel=1
 pkgdesc='A frontend for Mupen64Plus'
 arch=('any')
@@ -10,7 +10,7 @@ depends=(mupen64plus python-pyqt5 python-pysdl2)
 makedepends=(git python-setuptools qt5-tools)
 conflicts=(m64py)
 provides=(m64py)
-source=("git://github.com/mupen64plus/$_gitname.git")
+source=("git+https://github.com/mupen64plus/$_gitname.git")
 md5sums=('SKIP')
 
 pkgver() {

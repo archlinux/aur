@@ -1,6 +1,6 @@
 pkgbase = m64py-git
 	pkgdesc = A frontend for Mupen64Plus
-	pkgver = 0.2.5.r13.0a08a32
+	pkgver = 0.2.5.r37.90093ce
 	pkgrel = 1
 	url = http://m64py.sourceforge.net/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = m64py-git
 	depends = python-pysdl2
 	provides = m64py
 	conflicts = m64py
-	source = git://github.com/mupen64plus/mupen64plus-ui-python.git
+	source = git+https://github.com/mupen64plus/mupen64plus-ui-python.git
 	md5sums = SKIP
 
 pkgname = m64py-git
