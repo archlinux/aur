@@ -3,7 +3,7 @@
 # Contributor: Christian Cornelssen <email@address.invalid>
 
 pkgname=theia-electron
-pkgver=1.47.1
+pkgver=1.48.0
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
@@ -13,7 +13,7 @@ depends=('nodejs-lts-hydrogen' 'nss' 'gtk3' 'libxss' 'libxkbfile')
 makedepends=('bash>=5' 'curl' 'diffutils' 'jq'
              'yarn' 'npm' 'make' 'gcc' 'pkgconf' 'python' 'node-gyp')
 optdepends=('git: git support' 'libsecret: keytar support')
-options=(!strip) #to speed up build
+options=(!strip !debug)
 
 _tools_commit=3a60f68f4fde1675c0860923e752f73f5664eb68
 source=(
