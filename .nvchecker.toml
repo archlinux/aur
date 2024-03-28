@@ -1,0 +1,3 @@
+[python-click-man]
+source = "pypi"
+pypi = "click-man"
