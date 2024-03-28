@@ -4,8 +4,8 @@
 # Contributor: kusakata <shohei atmark kusakata period com>
 
 pkgname=fluentd
-pkgver=1.16.4
-_commit=9e4b91bb056fe93332918d1a9949cc5dfbd923fe
+pkgver=1.16.5
+_commit=0edf004573dd5b5ed91f5102b8d83a6f80e2ec32
 pkgrel=1
 pkgdesc="Data collector designed to scale and simplify log management"
 arch=(any)
@@ -56,7 +56,7 @@ source=(
   "unbundlify-tests.patch"
 )
 sha256sums=(
-  'SKIP'
+  '51ebdbec6e31efd0e6bf335b4000bd1abde9ebfd662d8ce56b25a3313e4b5df6'
   'b02013a8e3895369df58557b813d260a11edf245c59afc1747971205f1b9e825'
   'ea811ec16a78cbe1248266bca6589ebaab54f75048288959641b8ef3a8ea7e1b'
   '8eca8af4df0ea2c0b954d8bf72029e7d2034b7e77f9be36d3d261630068f5674'
