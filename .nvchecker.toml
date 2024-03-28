@@ -1,0 +1,5 @@
+[nextcloud-app-integration-gitlab]
+source = "github"
+github = "nextcloud-releases/integration_gitlab"
+prefix = "v"
+use_max_tag = true
