@@ -1,0 +1,5 @@
+[moonray]
+source = "github"
+github = "dreamworksanimation/openmoonray"
+prefix = "v"
+use_max_tag = true
