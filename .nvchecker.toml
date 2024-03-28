@@ -1,0 +1,5 @@
+[nextcloud-app-previewgenerator]
+source = "github"
+github = "nextcloud/previewgenerator"
+prefix = "v"
+use_max_tag = true
