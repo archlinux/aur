@@ -3,28 +3,39 @@ pkgname=rusync
 pkgver="0.7.0"
 pkgrel=2
 pkgdesc="Ergonomic replacement for rsync"
-url="https://git.sr.ht/~dmerej/rusync"
+url="https://github.com/your-tools/rusync/"
 arch=('x86_64')
 license=('MIT')
-depends=('gcc-libs')
-makedepends=('rust')
-source=("rusync-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('72eb3c710e2c17e3e8999c904e6abf276a78861e1cbfc5aad00b1622aa2bda7b')
+depends=('glibc' 'gcc-libs')
+makedepends=('cargo')
+source=("rusync-$pkgver.tar.gz::https://github.com/your-tools/rusync/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('78136abaa4089fb8018cec6acf3ba08f48341f1404be16b52da3e829edb0da43')
+
+
+prepare() {
+  cd "rusync-${pkgver}"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
 build() {
-  cd rusync-v$pkgver
-  RUSTUP_TOOLCHAIN=stable cargo build --release --locked --all-features --target-dir=target
+  cd "rusync-${pkgver}"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features
 }
 
 check() {
-  cd rusync-v$pkgver
-  RUSTUP_TOOLCHAIN=stable cargo test --release --locked --all-features --target-dir=target
-}
+  cd "rusync-${pkgver}"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo test --frozen --release --all-features
+ }
 
 package() {
-  cd rusync-v$pkgver
-  install -Dm755 target/release/rusync "${pkgdir}/usr/bin/rusync"
-  install -Dm644 LICENSE $pkgdir/usr/share/licenses/rusync/LICENSE
+  cd "rusync-${pkgver}"
+  install -Dm0755 target/release/rusync "${pkgdir}/usr/bin/rusync"
+  install -Dm0644 LICENSE $pkgdir/usr/share/licenses/rusync/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
