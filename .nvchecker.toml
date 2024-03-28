@@ -1,0 +1,3 @@
+[nodejs-csscomb]
+source = "npm"
+npm = "csscomb"
