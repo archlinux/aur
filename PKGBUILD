@@ -4,13 +4,13 @@
 pkgname='vkteams-bin'
 pkgbasename='vkteams'
 pkgver=24.2.0.40858
-pkgrel=1
+pkgrel=2
 pkgdesc='Official desktop application for the VK Teams messaging service'
 arch=("x86_64")
 url='https://teams.vk.com'
 provides=("${pkgbasename}")
 conflicts=("${pkgbasename}")
-source=("${pkgbasename}.tar.xz::https://vkteams-www.hb.bizmrg.com/linux/x64/${pkgver}/${pkgbasename}.tar.xz"
+source=("${pkgbasename}-${pkgver}.tar.xz::https://vkteams-www.hb.bizmrg.com/linux/x64/${pkgver}/${pkgbasename}.tar.xz"
         "${pkgbasename}.sh"
         "${pkgbasename}.png"
         "${pkgbasename}.desktop")
