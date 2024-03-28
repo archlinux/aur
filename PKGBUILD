@@ -6,9 +6,8 @@
 
 pkgname=python-blurhash
 _pkg=blurhash-python
-pkgver=1.2.0
-pkgrel=3
-epoch=1
+pkgver=1.2.2
+pkgrel=1
 pkgdesc='Python implementation of the blurhash algorithm'
 arch=('x86_64' 'aarch64')
 url="https://github.com/woltapp/blurhash-python"
@@ -22,7 +21,7 @@ makedepends=(
   'python-wheel')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/b/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('4caf57039c386ef53fb17598cd90a5c3eca1c76f529c35b4d67166070b9d2de2')
+sha256sums=('f2dbb8a58c5a299c8fca81112e52471a15cff38020ca9a65dae96a777609b8d4')
 
 build() {
   cd "$_pkg-$pkgver"

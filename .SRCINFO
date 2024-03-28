@@ -1,8 +1,7 @@
 pkgbase = python-blurhash
 	pkgdesc = Python implementation of the blurhash algorithm
-	pkgver = 1.2.0
-	pkgrel = 3
-	epoch = 1
+	pkgver = 1.2.2
+	pkgrel = 1
 	url = https://github.com/woltapp/blurhash-python
 	arch = x86_64
 	arch = aarch64
@@ -16,7 +15,7 @@ pkgbase = python-blurhash
 	depends = python-cffi
 	depends = python-pillow
 	depends = python-six
-	source = python-blurhash-1.2.0.tar.gz::https://files.pythonhosted.org/packages/source/b/blurhash-python/blurhash-python-1.2.0.tar.gz
-	sha256sums = 4caf57039c386ef53fb17598cd90a5c3eca1c76f529c35b4d67166070b9d2de2
+	source = python-blurhash-1.2.0.tar.gz::https://files.pythonhosted.org/packages/source/b/blurhash-python/blurhash-python-1.2.2.tar.gz
+	sha256sums = f2dbb8a58c5a299c8fca81112e52471a15cff38020ca9a65dae96a777609b8d4
 
 pkgname = python-blurhash
