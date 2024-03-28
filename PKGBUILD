@@ -8,7 +8,7 @@ pkgver=4.0.2
 pkgrel=1
 pkgdesc="An old-school 2d platformer game, starring a certain quixotic frog"
 url="http://www.frogatto.com"
-license=('GPL')
+license=('CC-BY-3.0 AND LicenseRef-proprietary')
 depends=('anura')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/frogatto/frogatto/archive/refs/tags/v$pkgver.tar.gz"
         launcher)

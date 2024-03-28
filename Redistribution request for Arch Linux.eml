@@ -1,0 +1,123 @@
+Delivered-To: svenstaro@gmail.com
+Received: by 2002:a05:6a10:836c:b0:540:870f:c349 with SMTP id o12csp3033102pxf;
+        Mon, 25 Mar 2024 22:48:43 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVCUNIYBtnjB5f02R0Wvovdq+Om3/yO7IkcNT2XeoXPy0Vf8U+NNUwg7wO/nN29BybPKp6vEghGRKcVEHrix8YjXFig
+X-Google-Smtp-Source: AGHT+IE5uEDInbLxR0pb+D0ichQaB4bu3jivWcvXu9tSfvU4CMsDtIv+Ryc0f3IEogSJlfPDNeIL
+X-Received: by 2002:a2e:8683:0:b0:2d2:e784:abc2 with SMTP id l3-20020a2e8683000000b002d2e784abc2mr6623432lji.33.1711432122964;
+        Mon, 25 Mar 2024 22:48:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711432122; cv=none;
+        d=google.com; s=arc-20160816;
+        b=RK+IYKSzfKU4sn7YvbbjTGcDHIqeGY5s06LgtJHFQJYVxdD6zPGI0z7ak1sC+Hxgjn
+         OPgkF7PddzegLVQ9Lj+41j7iTXeg6Yzox5NjVaL3/y4GEetJo78++2PYeFC3XcGjU7Q6
+         ahVjudvDf+CV4sVUJ2hxzqLAOMWpaVIgqGFEOs1+w4U8cIXm1orD6rILhRJ5kr0kMIRS
+         F/mklzJPBBuyxirm187nL0X1fyR1bTUJzuDz78ezd3gF+mWQXE/qeDYzXNK4ki/GcdYK
+         U2xAgkoYrsVuNgJ5gNSGQYpxwzjooKIknfmPfkLeGlBG/XxgrwXWt7P5OcDdzWZZ6ack
+         gu9g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:in-reply-to:to:references:date:subject:mime-version
+         :content-transfer-encoding:from;
+        bh=s01uJMweqfE8cJj5ZPQ/1xQ0tqXL2iKd7S3/I9Hw6Sw=;
+        fh=ONteUNLNLN4zLTysHSL+U+K+laSyzypi72uP8Fr6TA0=;
+        b=ghwIkvn3Jh1sr02UmdhjwW1Y3Thv9yWMjVPd2QwQaMlQt3jj/Y4GQ2tL+11q3iqOr0
+         U7SZt44GHYEApmRp3EceFYW5uSpNmd8PReNx8cgomO91KsqQmw85M36MlP00ihBwkOgB
+         WXr2ronuqUguXBeWqofNTsjoLulYEBqmXaiulHMKeqcZB6/x0daAgFAG4Bxyp5nVZdGZ
+         Tt2udVy3+bGI2Jw8ur6qvK8eBUhj9Qg1UNCx7yk0suEukVUhmHnpU5A/Ylqkr4lnczgE
+         gqH6OEUycZD/grxWbl4Ij7JgGITTOFbNBrt29SvZBURiqiP1ECgRwbD9tVf4oQ3HxJIy
+         TPkw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=fail (google.com: domain of devteam@frogatto.com does not designate 95.216.189.61 as permitted sender) smtp.mailfrom=devteam@frogatto.com
+Return-Path: <devteam@frogatto.com>
+Received: from mail.archlinux.org (mail.archlinux.org. [95.216.189.61])
+        by mx.google.com with ESMTPS id z13-20020a2e964d000000b002d6cb20e74esi1553564ljh.439.2024.03.25.22.48.41
+        for <svenstaro@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 25 Mar 2024 22:48:42 -0700 (PDT)
+Received-SPF: fail (google.com: domain of devteam@frogatto.com does not designate 95.216.189.61 as permitted sender) client-ip=95.216.189.61;
+Authentication-Results: mx.google.com;
+       spf=fail (google.com: domain of devteam@frogatto.com does not designate 95.216.189.61 as permitted sender) smtp.mailfrom=devteam@frogatto.com
+Received: from ec2.happyspork.com (ec2.happyspork.com [50.18.252.202])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.archlinux.org (Postfix) with ESMTPS id 636CF29ABF14
+	for <svenstaro@archlinux.org>; Tue, 26 Mar 2024 05:48:40 +0000 (UTC)
+Authentication-Results: mail.archlinux.org;
+	dkim=none;
+	dmarc=none;
+	spf=pass (mail.archlinux.org: domain of devteam@frogatto.com designates 50.18.252.202 as permitted sender) smtp.mailfrom=devteam@frogatto.com
+Received: from smtpclient.apple (unknown [98.46.116.181])
+	(using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	(Authenticated sender: devteam@frogatto.com)
+	by ec2.happyspork.com (Postfix) with ESMTPSA id 2E6F63EB2D
+	for <svenstaro@archlinux.org>; Tue, 26 Mar 2024 05:48:37 +0000 (UTC)
+From: Richard Kettering <devteam@frogatto.com>
+Content-Type: text/plain;
+	charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3774.400.31\))
+Subject: Re: Redistribution request for Arch Linux
+Date: Tue, 26 Mar 2024 00:48:26 -0500
+References: <85be3ff4-0b0c-43da-aa66-2ad815dd3267@archlinux.org>
+To: Sven-Hendrik Haase <svenstaro@archlinux.org>
+In-Reply-To: <85be3ff4-0b0c-43da-aa66-2ad815dd3267@archlinux.org>
+Message-Id: <557EA1B0-FB69-4AEA-BB74-E99467A9C3D1@frogatto.com>
+X-Mailer: Apple Mail (2.3774.400.31)
+X-Rspamd-Action: no action
+X-Rspamd-Server: mail.archlinux.org
+X-Rspamd-Queue-Id: 636CF29ABF14
+X-Spamd-Result: default: False [-0.20 / 15.00];
+	R_SPF_ALLOW(-0.20)[+mx];
+	MIME_GOOD(-0.10)[text/plain];
+	ONCE_RECEIVED(0.10)[];
+	RCVD_TLS_ALL(0.00)[];
+	RCVD_COUNT_ONE(0.00)[1];
+	FROM_HAS_DN(0.00)[];
+	TO_MATCH_ENVRCPT_ALL(0.00)[];
+	DMARC_NA(0.00)[frogatto.com];
+	TO_DN_ALL(0.00)[];
+	RCPT_COUNT_ONE(0.00)[1];
+	ASN(0.00)[asn:16509, ipnet:50.18.224.0/19, country:US];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	APPLE_MAILER_COMMON(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[svenstaro@archlinux.org];
+	FROM_EQ_ENVFROM(0.00)[];
+	ARC_NA(0.00)[];
+	RECEIVED_SPAMHAUS_PBL(0.00)[98.46.116.181:received];
+	R_DKIM_NA(0.00)[];
+	NEURAL_HAM(-0.00)[-0.268];
+	MID_RHS_MATCH_FROM(0.00)[];
+	MIME_TRACE(0.00)[0:+]
+
+We=E2=80=99d be happy to allow you to redistribute the game on any linux =
+distros.
+
+Arch in particular has done a bunch of good out there, and I think =
+we=E2=80=99ve got a few Arch users in our discord.
+
+Thanks for asking, and the answer is:  yes.  :)
+
+
+
+> On Mar 18, 2024, at 10:17=E2=80=AFAM, Sven-Hendrik Haase =
+<svenstaro@archlinux.org> wrote:
+>=20
+> Hello Frogatto team,
+>=20
+> I'm a packager and maintainer for Arch Linux (archlinux.org), a =
+volunteer-run Linux distribution.
+>=20
+> I'd like to ask for clarification on your license =
+(https://github.com/frogatto/frogatto/blob/master/LICENSE). I'd like to =
+know whether you allow for redistribution of the files which are not =
+CC-BY 3.0. The reason I'm asking is that we'd like to keep providing the =
+game to our users in our official package repositories but it's not =
+clear whether this is currently allowed under the license or not.
+>=20
+> Would be great if you could clarify this for us. If you don't want us =
+redistributing the game, we'll comply without hesitation.
+>=20
+> Kind regards,
+> Sven-Hendrik Haase
+
