@@ -1,0 +1,3 @@
+[python-glyphsets]
+source = "pypi"
+pypi = "glyphsets"
