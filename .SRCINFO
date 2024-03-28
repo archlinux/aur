@@ -1,18 +1,18 @@
 pkgbase = soapnuke
 	pkgdesc = A Tool for integrated Quality Control and Preprocessing on FASTQ or BAM/CRAM files http://dx.doi.org/10.5524/100361
-	pkgver = 2.1.8
+	pkgver = 2.1.9
 	pkgrel = 1
 	url = https://github.com/BGI-flexlab/SOAPnuke
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = make
 	makedepends = bc
 	depends = gcc-libs
 	depends = zlib
 	depends = glibc
-	source = https://github.com/BGI-flexlab/SOAPnuke/archive/refs/tags/SOAPnuke2.1.8.tar.gz
-	source = https://github.com/BGI-flexlab/SOAPnuke/pull/64.patch
-	sha512sums = 437b5b5f17a62fc308c99ebb4a8ab312cb8f4b5850b8091c203f86b262ef3ba106e5d608cd6e2b70bb6ecf58cc2f8e0605d69efa118497c36c9f561c76921dff
-	sha512sums = a5b6b3518dc381714745c385c7822a68a6772df59ff783f21192a6f3eb6ef81c46a5eda4b3d8d96a31d20733be0f5ca035bfe262b202342ce94b4e6dd78e0abe
+	source = https://github.com/BGI-flexlab/SOAPnuke/archive/refs/tags/SOAPnuke2.1.9.tar.gz
+	source = soapnuke_2.1.9.patch::https://github.com/BGI-flexlab/SOAPnuke/pull/68.patch
+	sha512sums = ed717ea5a7635be00dbc66dc10c5a6ad251cca2e881146e2dae19b954f9e2678c9a8ea41a890e50b2385289497c667bc227ef0271b1b98073c405195370abc8b
+	sha512sums = 41e15f5b5d559e5cfa6340a81222c2c7b3dfbcfb4c30aca58dd22f8dfbb05fb99026cda4fdc4c8c3ed2ebb7f9c891c5bb4309c210e7676214f6f6f72455ec9bb
 
 pkgname = soapnuke
