@@ -1,8 +1,7 @@
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
 
 pkgname='perl-template-alloy'
-pkgver='1.020'
+pkgver='1.022'
 pkgrel='1'
 pkgdesc="TT2/3, HT, HTE, Tmpl, and Velocity Engine"
 arch=('any')
@@ -11,10 +10,10 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='http://search.mcpan.org/dist/Template-Alloy'
-source=('http://search.mcpan.org/CPAN/authors/id/R/RH/RHANDOM/Template-Alloy-1.020.tar.gz')
-md5sums=('b7106441b0f52759718edabb50a760b1')
-sha512sums=('da848d64a05ef880b328efaf5f12aeeb1040150d2b0f90accbde7d5d78f9534a23a60767fd8d7f06b98bb664bb873e23289b23730736488e256d183e5e270e90')
-_distdir="Template-Alloy-1.020"
+source=('http://search.mcpan.org/CPAN/authors/id/R/RH/RHANDOM/Template-Alloy-1.022.tar.gz')
+md5sums=('e36561886e0abe39b88c4a35aca75e23')
+sha512sums=('deed5702022f62ea75f4eefff7ed9c873b0b09e148af10ad7d5030d69a755979b0fbc56e8291fdb8e26555a41912cfe2c74ee0bf3d3ed0ef67340eb1e39f3c28')
+_distdir="Template-Alloy-1.022"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
