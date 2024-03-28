@@ -2,14 +2,14 @@
 
 pkgname=hyperlap2d-bin
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful, platform-independent, visual editor for complex 2D worlds and scenes."
 arch=('x86_64')
 url="https://hyperlap2d.rednblack.games/"
 license=('GPL3')
 conflicts=("hyperlap2d-git")
 provides=("hyperlap2d")
-depends=('libxtst' 'libxrender' 'alsa-lib' 'hicolor-icon-theme' 'libnet' 'java-runtime')
+depends=('libxi' 'java-runtime')
 makedepends=('binutils' 'tar')
 optdepends=()
 source=("$pkgname-$pkgver.deb::https://github.com/rednblackgames/HyperLap2D/releases/download/v${pkgver}/Linux.hyperlap2d_${pkgver}-1_amd64.deb")
