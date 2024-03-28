@@ -1,36 +1,30 @@
-# Maintainer: Vincent Bernardoff <vb@luminar.eu.org>
+# Maintainer:
+# Contributor: Vincent Bernardoff <vb@luminar.eu.org>
 
 pkgname=yyjson
-pkgver=0.5.1
+pkgver=0.8.0
 pkgrel=1
-pkgdesc="A high performance C JSON library"
-arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+pkgdesc="A high performance JSON library written in ANSI C"
+arch=('x86_64')
 url="https://ibireme.github.io/yyjson/"
 license=('MIT')
-depends=()
+depends=('glibc')
 makedepends=('cmake')
-source=("https://github.com/ibireme/yyjson/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b484d40b4e20cc3174a6fdc160d0f20f961417f9cb3f6dc1cf6555fffa8359f3')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ibireme/yyjson/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('b2e39ac4c65f9050820c6779e6f7dd3c0d3fed9c6667f91caec0badbedce00f3')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-
-    mkdir -p build && cd build
-    cmake \
-      -DBUILD_SHARED_LIBS=ON \
-      -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-      -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-      ..
-
-    cmake --build .
+    cmake -B build -S "${pkgname}-${pkgver}" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DBUILD_SHARED_LIBS=ON \
+        -Wno-dev
+    cmake --build build
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}/build"
-
-    make DESTDIR="${pkgdir}" install
-    install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" ../LICENSE
+    DESTDIR="${pkgdir}" cmake --install build
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgname}-${pkgver}/LICENSE"
 }
 
 # vim:set ts=4 sw=4 et:

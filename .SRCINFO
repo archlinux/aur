@@ -1,15 +1,13 @@
 pkgbase = yyjson
-	pkgdesc = A high performance C JSON library
-	pkgver = 0.5.1
+	pkgdesc = A high performance JSON library written in ANSI C
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://ibireme.github.io/yyjson/
-	arch = i686
 	arch = x86_64
-	arch = armv7h
-	arch = aarch64
 	license = MIT
 	makedepends = cmake
-	source = https://github.com/ibireme/yyjson/archive/refs/tags/0.5.1.tar.gz
-	sha256sums = b484d40b4e20cc3174a6fdc160d0f20f961417f9cb3f6dc1cf6555fffa8359f3
+	depends = glibc
+	source = yyjson-0.8.0.tar.gz::https://github.com/ibireme/yyjson/archive/refs/tags/0.8.0.tar.gz
+	sha256sums = b2e39ac4c65f9050820c6779e6f7dd3c0d3fed9c6667f91caec0badbedce00f3
 
 pkgname = yyjson
