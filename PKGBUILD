@@ -2,7 +2,7 @@
 
 pkgname="embedded-studio-risc-v"
 pkgver=7.32a
-pkgrel=1
+pkgrel=2
 pkgdesc="Segger Embedded Studio for RISC-V"
 arch=('x86_64' 'aarch64')
 makedepends=()
@@ -43,7 +43,11 @@ package() {
 
 	msg2 'Installing Embedded Studio RISC-V'
 	"$srcdir"/embedded-studio-risc-v/install_segger_embedded_studio --copy-files-to ${pkgdir}/opt/SEGGER/Embedded-Studio-RISC-V/  --accept-license --no-upgrade
-	chmod 755 "${pkgdir}/opt/SEGGER/Embedded-Studio-RISC-V/lib"
+        
+	msg2 'Redirect library build directory to cache directory'
+	rmdir "${pkgdir}/opt/SEGGER/Embedded-Studio-RISC-V/lib"
+        install -dm 777 "${pkgdir}/var/cache/${pkgname}/lib/"
+        ln -s /var/cache/${pkgname}/lib "${pkgdir}/opt/SEGGER/Embedded-Studio-RISC-V/lib"
 
 	msg2 'Instalation of binary file'
 	ln -s /opt/SEGGER/Embedded-Studio-RISC-V/bin/emStudio "${pkgdir}/usr/bin/emStudio-RISC-V"
