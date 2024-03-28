@@ -1,109 +1,71 @@
 # Maintainer:
 
-## options
-if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ] ; then
-  : ${_autoupdate:=false}
-else
-  : ${_autoupdate:=true}
-fi
-
-: ${_build_git:=true}
-
-unset _pkgtype
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
-
-## basic info
 _pkgname="vdhcoapp"
-pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.0.19.r2.g475703e
+pkgname="$_pkgname-git"
+pkgver=2.0.19.r4.g0b40d3e
 pkgrel=1
 pkgdesc="Companion application for Video DownloadHelper browser add-on"
 url="https://github.com/aclap-dev/vdhcoapp"
 license=('GPL-2.0-or-later')
 arch=('x86_64')
 
-_main_package() {
-  makedepends+=(
-    'esbuild'
-    'jq'
-    'yq'
+makedepends=(
+  'esbuild'
+  'jq'
+  'yq'
 
-    # AUR
-    'nvm'
-  )
+  # AUR
+  'nvm'
+)
 
-  options=(!strip emptydirs)
-  install="$_pkgname.install"
+options=(!strip emptydirs)
+install="$_pkgname.install"
 
-  if [ "${_build_git::1}" != "t" ] ; then
-    _main_stable
-  else
-    _main_git
-  fi
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
 
-  _main_filepicker
-}
+_pkgsrc="$_pkgname"
+source+=("$_pkgsrc"::"git+$url.git")
+sha256sums+=('SKIP')
 
-# stable package
-_main_stable() {
-  _update_version
-
-  _pkgsrc="$_pkgname-${_pkgver:?}"
-  _pkgext="tar.gz"
-  source+=("$_pkgsrc.$_pkgext"::"$url/archive/v$_pkgver.$_pkgext")
-  sha256sums+=('SKIP')
-
-  pkgver() {
-    echo "${_pkgver:?}"
-  }
-}
-
-# git package
-_main_git() {
-  #makedepends+=('git')
-
-  provides=("$_pkgname=${pkgver%%.r*}")
-  conflicts=("$_pkgname")
-
-  _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git")
-  sha256sums+=('SKIP')
-
-  pkgver() {
-    cd "$_pkgsrc"
-    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-  }
+pkgver() {
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 # filepicker
-_main_filepicker() {
-  depends+=(
-    'at-spi2-core'
-    'gdk-pixbuf2'
-    'gtk3'
-    'pango'
-  )
-  makedepends+=(
-    'cargo'
-    'git'
-  )
+depends+=(
+  'at-spi2-core'
+  'gdk-pixbuf2'
+  'gtk3'
+  'pango'
+)
+makedepends+=(
+  'cargo'
+  'git'
+)
 
-  _filepicker_url="https://github.com/paulrouget/static-filepicker"
-  _filepicker_pkgsrc="vdhcoapp-filepicker"
-  source+=("$_filepicker_pkgsrc"::"git+$_filepicker_url.git")
-  sha256sums+=('SKIP')
-}
+_filepicker_url="https://github.com/paulrouget/static-filepicker"
+_filepicker_pkgsrc="vdhcoapp-filepicker"
+source+=("$_filepicker_pkgsrc"::"git+$_filepicker_url.git")
+sha256sums+=('SKIP')
 
-_filepicker_prepare() {
+_cargo_env() {
   export CARGO_HOME="${CARGO_HOME:-$SRCDEST/cargo-home}"
   export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
   export CARGO_TARGET_DIR=target
+}
+
+_filepicker_prepare() {
+  _cargo_env
 
   cd "$srcdir/$_filepicker_pkgsrc"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 _filepicker_build() {
+  _cargo_env
+
   cd "$srcdir/$_filepicker_pkgsrc"
   cargo build --frozen --release --all-features
 }
@@ -112,7 +74,6 @@ _filepicker_package() {
   install -Dm755 "$srcdir/$_filepicker_pkgsrc/$CARGO_TARGET_DIR/release/filepicker" -t "$pkgdir/usr/bin/"
 }
 
-# common functions
 prepare() {
   cd "$_pkgsrc"
   mv -f app/* .
@@ -134,7 +95,7 @@ build() {
   : ${_nodeversion:=18}
 
   export HOME="$srcdir/node-home"
-  export NVM_DIR="${SRCDEST:-${startdir:-$srcdir}}/node-nvm"
+  export NVM_DIR="$SRCDEST/node-nvm"
 
   # set up nvm
   source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -187,29 +148,3 @@ package() {
 
   _filepicker_package
 }
-
-# update version
-_update_version() {
-  : ${_pkgver:=${pkgver%%.r*}}
-
-  if [[ "${_autoupdate::1}" != "t" ]] ; then
-    return
-  fi
-
-  local _response=$(curl -Ssf "$url/releases.atom")
-  local _tag=$(
-    printf '%s' "$_response" \
-      | grep '"https://.*/releases/tag/.*"' \
-      | sed -E 's@^.*/releases/tag/(.*)".*$@\1@' \
-      | grep -Ev '[a-z]{2}' | sort -rV | head -1
-  )
-  local _pkgver_new="${_tag#v}"
-
-  # update _pkgver
-  if [ "$_pkgver" != "${_pkgver_new:?}" ] ; then
-    _pkgver="${_pkgver_new:?}"
-  fi
-}
-
-# execute
-_main_package

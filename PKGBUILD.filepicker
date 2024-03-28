@@ -1,10 +1,6 @@
 # Maintainer:
 
 # options
-export CARGO_HOME="${CARGO_HOME:-$SRCDEST/cargo-home}"
-export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
-export CARGO_TARGET_DIR=target
-
 : ${_build_git:=false}
 
 unset _pkgtype
@@ -17,8 +13,8 @@ pkgver=1.0.1
 pkgrel=1
 pkgdesc="Filepicker for VDHCoApp" # added in 2.0.16
 url="https://github.com/paulrouget/static-filepicker"
+license=('GPL-2.0-or-later')
 arch=('x86_64')
-license=('LicenseRef-Pending')
 
 depends=(
   'at-spi2-core'
@@ -35,12 +31,22 @@ _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
+_cargo_env() {
+  export CARGO_HOME="${CARGO_HOME:-$SRCDEST/cargo-home}"
+  export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
+  export CARGO_TARGET_DIR=target
+}
+
 prepare() {
+  _cargo_env
+
   cd "$_pkgsrc"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
+  _cargo_env
+
   cd "$_pkgsrc"
   cargo build --frozen --release --all-features
 }
