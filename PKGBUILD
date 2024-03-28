@@ -1,4 +1,5 @@
-# Maintainer: Ankit R Gadiya <arch@argp.in>
+# Maintainer: Bert Peters <bert@bertptrs.nl>
+# Contributor: Ankit R Gadiya <arch@argp.in>
 # Contributor: Joel Goguen <contact+aur@jgoguen.ca>
 
 _gemname=jekyll-sitemap
