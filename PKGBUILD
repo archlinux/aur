@@ -1,8 +1,8 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Maintainer: Luna Jernberg <droidbittin@gmail.com>
 # Maintainer: Jonas Schwartz <jonas@josc.io>
 # Maintainer: Vlad <ejiek at mail.ru>
 # Maintainer: Solomon Choina<shlomochoina@gmail.com>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: intrnl
 
 _channel=dev
