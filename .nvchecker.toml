@@ -1,0 +1,3 @@
+[python-sre-yield]
+source = "pypi"
+pypi = "sre_yield"
