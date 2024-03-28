@@ -1,63 +1,57 @@
-# Maintainer: Maik Broemme <mbroemme@libmpq.org>
+# Maintainer:
+# Contributor: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Xavier Devlamynck <magicrhesus@ouranos.be>
+# Contributor: Jonathan Liu <net147@gmail.com>
+# Contributor: Maik Broemme <mbroemme@libmpq.org>
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
-pkgname="dahdi-linux"
-pkgdesc="DAHDI drivers for Asterisk (Digium, OpenVox, Allo and Yeastar cards)"
-pkgver=2.11.0
+
+_kernelver=$(pacman -Q linux | cut -f2 -d ' ')
+_linuxver=${_kernelver%-*}
+
+_basename=dahdi
+pkgname=dahdi-linux
+_releasename="${_basename}-linux-complete"
+pkgver=3.3.0
 pkgrel=1
-arch=("i686" "x86_64")
-url="http://www.asterisk.org/"
-license=("LGPLv2")
-depends=("linux>=4.3" "linux<4.4")
-makedepends=("linux-headers>=4.3" "linux-headers<4.4")
-conflicts=("dahdi")
+pkgdesc='DAHDI drivers for Asterisk (Digium, OpenVox, Allo and Yeastar cards)'
+arch=(x86_64)
+url=http://www.asterisk.org
+license=(GPL2)
+makedepends=(
+  libusb
+  linux
+  linux-headers
+)
+provides=("${_basename}=${pkgver}")
+conflicts=("${_basename}" zaptel)
 install="${pkgname}.install"
-source=(
-  "http://downloads.asterisk.org/pub/telephony/${pkgname}/${pkgname}-${pkgver}.tar.gz"
-  "http://mirror.netcologne.de/gentoo/distfiles/gentoo-dahdi-patchset-1.2.3.tar.bz2"
-  "http://www.junghanns.net/downloads/jnet-dahdi-drivers-1.0.14.tar.gz"
-)
-sha256sums=(
-  "50d3785d00fa37e6121ea58a888aa2dd39161db58c4bfcf24c8a2b4fe9d8b704"
-  "4bd57ffa61d718b847080af274fdf2414bf83a6567dffa05786e3e9b900cdf5f"
-  "c71d1ac29c78511b59914cc9aa1798529ae7b344cdc8403a797dbcddbe486974"
-)
+_tarname="${_releasename}-${pkgver}.${pkgver}"
+_srcdirname="${_releasename}-${pkgver}+${pkgver}"
+source=("https://downloads.asterisk.org/pub/telephony/${_releasename}/releases/${_tarname}.tar.gz"
+        "${pkgname}.service")
+sha256sums=('c38d21ae60144d95c63819617e654e47b5bb758e5a9970f3c3337e81e6cb5ad2'
+            '7c91314aacab22ffd02794abfa7db49f44a796ea54f3e2bc4276616e68b90e0f')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
-  # junghanns hw.
-  cp "${srcdir}/jnet-dahdi-drivers-1.0.14/cwain/"*.[ch] drivers/dahdi
-  cp "${srcdir}/jnet-dahdi-drivers-1.0.14/qozap/"*.[ch] drivers/dahdi
-  cp "${srcdir}/jnet-dahdi-drivers-1.0.14/ztgsm/"*.[ch] drivers/dahdi
-
-  # enable additional drivers.
-  patch -Np1 -i "${srcdir}/dahdi-patchset/01-no-depmod.diff"
-  patch -Np1 -i "${srcdir}/dahdi-patchset/02-parallel-make.diff"
-  patch -Np1 -i "${srcdir}/dahdi-patchset/03-grsecurity-no-constify.diff"
-  patch -Np1 -i "${srcdir}/dahdi-patchset/04-dahdi-irq-shared.diff"
-  patch -Np1 -i "${srcdir}/dahdi-patchset/98-non-digium-hardware-and-oslec.diff"
-  patch -Np1 -i "${srcdir}/dahdi-patchset/99-irqf-disabled.diff"
-
-  # fix wrong installation paths.
-  sed 's,$(DESTDIR)/lib/firmware,$(DESTDIR)/usr/lib/firmware,g' -i drivers/dahdi/firmware/Makefile
-  sed 's,$DESTDIR/lib/firmware,$DESTDIR/usr/lib/firmware,g' -i build_tools/install_firmware
-
-  # compile.
-  make -j1 DESTDIR="${pkgdir}" all
+  cd "${_srcdirname}"
+  make DESTDIR="${pkgdir}" all
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  depends=(
+    libusb
+    "linux=${_linuxver//-/.}"
+    perl
+  )
 
-  # install.
+  cd "${_srcdirname}"
   make DESTDIR="${pkgdir}" install-firmware
   make DESTDIR="${pkgdir}" install-include
   make DESTDIR="${pkgdir}" install-xpp-firm
-
-  # beautifying firmware directory.
   rm "${pkgdir}/usr/lib/firmware/".d*
-
-  # compress modules.
+  rm -r "${pkgdir}/usr/lib/hotplug/firmware"
   cd drivers
-  find . -name "*.ko" -exec gzip "{}" \; -exec install -D -m 0644 "{}.gz" "${pkgdir}/usr/lib/modules/extramodules-4.3-ARCH/{}.gz" \;
+  find . -name "*.ko" \
+    -exec gzip "{}" \; \
+    -exec install -Dm0644 "{}.gz" "${pkgdir}/usr/lib/modules/${_kernelver}/extramodules/{}.gz" \;
 }

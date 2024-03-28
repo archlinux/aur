@@ -1,0 +1,11 @@
+[Unit]
+Description=DAHDI configuration script
+After=network.target systemd-udevd.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/dahdi_cfg
+ExecStop=/usr/bin/dahdi_cfg -s
+
+[Install]
+WantedBy=multi-user.target
