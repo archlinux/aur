@@ -1,6 +1,6 @@
 # Maintainer: Lev Levitsky <levlev@mail.ru>
 pkgname=msgfplus
-pkgver=2023.01.12
+pkgver=2024.03.26
 pkgrel=1
 pkgdesc="MS/MS database search tool"
 arch=('any')
@@ -13,7 +13,7 @@ source=("https://github.com/MSGFPlus/msgfplus/archive/refs/tags/v${pkgver}.zip"
 	"mzid2tsv"
         "scoringParamGen"
         "https://raw.githubusercontent.com/sangtaekim/msgfplus/master/LICENSE.txt")
-md5sums=('6b5ec5a86f3c180cb5d1cfab807ab7e8'
+md5sums=('70f17c37ccdc3d2cdbfb667488158ff8'
          'c43c6581b373266171c3930c3718eb9c'
          'c860b9c30b74dae43de2d3933a405ac1'
          '315d84069d6333a83599aa93b782eb5c'
