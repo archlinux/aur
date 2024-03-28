@@ -1,7 +1,7 @@
 # vim:ts=2:sw=2:expandtab
 # Maintainer: peelz <peelz.dev+arch@gmail.com>
 
-_commit="b0f202a1bdf1cee380f044a4d1a9013f55b81e43"
+_commit="a70dd6719c5aa52f0c3bd349544d0bccf4e5991a"
 pkgbase="gtkclipblock"
 pkgname=(
   "${pkgbase}"
@@ -9,8 +9,8 @@ pkgname=(
   "${pkgbase}-gtk3"
   "${pkgbase}-gtk4"
 )
-pkgver="0.2.2"
-pkgrel="2"
+pkgver="0.2.3"
+pkgrel="1"
 pkgdesc="A hack to prevent GTK programs from interacting with the primary clipboard"
 url="https://github.com/notpeelz/gtkclipblock"
 arch=("x86_64")
@@ -39,13 +39,18 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgbase}"
-  for version in hybrid 2 3 4; do
-    arch-meson \
-      --auto-features auto \
-      -Dgtk-version="${version}" \
-      "build-${version}"
-    meson compile -C "build-${version}"
-  done
+
+  arch-meson -Dgtk2=enabled -Dgtk3=enabled -Dgtk4=enabled build-hybrid
+  meson compile -C build-hybrid
+
+  arch-meson -Dgtk2=enabled -Dgtk3=disabled -Dgtk4=disabled -Dsoname-suffix=-gtk2 build-gtk2
+  meson compile -C build-gtk2
+
+  arch-meson -Dgtk2=disabled -Dgtk3=enabled -Dgtk4=disabled -Dsoname-suffix=-gtk3 build-gtk3
+  meson compile -C build-gtk3
+
+  arch-meson -Dgtk2=disabled -Dgtk3=disabled -Dgtk4=enabled -Dsoname-suffix=-gtk4 build-gtk4
+  meson compile -C build-gtk4
 }
 
 package_gtkclipblock() {
@@ -72,7 +77,7 @@ package_gtkclipblock-gtk2() {
   conflicts=("${pkgbase}")
 
   cd "${srcdir}/${pkgbase}"
-  meson install -C build-2 --destdir "${pkgdir}"
+  meson install -C build-gtk2 --destdir "${pkgdir}"
 }
 
 package_gtkclipblock-gtk3() {
@@ -81,7 +86,7 @@ package_gtkclipblock-gtk3() {
   conflicts=("${pkgbase}")
 
   cd "${srcdir}/${pkgbase}"
-  meson install -C build-3 --destdir "${pkgdir}"
+  meson install -C build-gtk3 --destdir "${pkgdir}"
 }
 
 package_gtkclipblock-gtk4() {
@@ -90,5 +95,5 @@ package_gtkclipblock-gtk4() {
   conflicts=("${pkgbase}")
 
   cd "${srcdir}/${pkgbase}"
-  meson install -C build-4 --destdir "${pkgdir}"
+  meson install -C build-gtk4 --destdir "${pkgdir}"
 }
