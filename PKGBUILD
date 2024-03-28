@@ -2,63 +2,58 @@
 
 pkgname=clash-meta
 pkgver=1.18.2
-pkgrel=7
+pkgrel=8
 pkgdesc="Another Clash Kernel by MetaCubeX"
-arch=(x86_64)
-url="https://github.com/MetaCubeX/mihomo"
-license=(GPL-3.0-or-later)
-depends=(clash-geoip glibc)
-makedepends=(go)
+arch=('x86_64' 'aarch64' 'riscv64' 'loong64')
+url="https://github.com/MetaCubeX/Clash.Meta"
+license=("GPL3")
+depends=('glibc' 'clash-geoip')
+makedepends=('go')
+conflicts=(clash-meta)
 backup=('etc/clash-meta/config.yaml')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('49855c53e5717932b9cb933e7f42f58155b52a42bf7db7f35f1fb1d4baa7ee00')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+        "clash-meta.service"
+        "clash-meta@.service"
+        "${pkgname}.sysusers"
+        "${pkgname}.tmpfiles"
+)
+sha256sums=('49855c53e5717932b9cb933e7f42f58155b52a42bf7db7f35f1fb1d4baa7ee00'
+            'b6b7ce11489a6f6322a41ce840b3f999b1ec88914f8bd6864c220269231bf759'
+            'ec4de877464e595124a5f2752c3f4be157adc85ec5f7f8392c0331cb70fc906a'
+            '655e8e2edcd82a6bdf2fd12430b7ab6f8e32db8dffce70e7342685a7cc65ebfb'
+            '50737592c7bd743fe8f543924034718337477a203fa11ef4272cae496df3769c')
 
-prepare() {
-    mv "mihomo-$pkgver"       "$pkgname"
-    cd "$pkgname"
-    mv .github/mihomo.service "$pkgname.service"
+prepare(){
+    cd "${srcdir}"
+    mv mihomo-${pkgver} Clash.Meta-${pkgver}
+    cd Clash.Meta-${pkgver}
+    sed -i 's|^const.*|const Name = "clash"|g' constant/path.go
 }
-
-build() {
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
-    export CGO_ENABLED=1
-    cd "$pkgname"
-    BUILDTIME=$(date -u --rfc-3339=seconds)
-    LDFLAGS="-linkmode external -extldflags \"${LDFLAGS}\""
-    OTHER_FLAGS="-X \"github.com/metacubex/mihomo/constant.Version=${pkgver}\" \
-                 -X \"github.com/metacubex/mihomo/constant.BuildTime=${BUILDTIME}\""
-    GOOS=linux go build \
-        -trimpath \
-        -buildmode=pie \
-        -mod=readonly \
-        -modcacherw \
-        -ldflags "$LDFLAGS $OTHER_FLAGS" \
-        -tags with_gvisor \
-        -o "$pkgname-$pkgver"
-
-    echo "u $pkgname - \"Clash-Meta Service\" - -"      >  "$pkgname.sysusers"
-    echo "d /etc/$pkgname     0755 $pkgname $pkgname -" >  "$pkgname.tmpfiles"
-    echo "d /var/log/$pkgname 0700 $pkgname $pkgname -" >> "$pkgname.tmpfiles"
-    sed -i -e '/Description/s/mihomo/Clash-Meta/' \
-           -e "s/mihomo/$pkgname/g"               \
-           -e "/^Type=simple/a User=$pkgname"     \
-           -e "/^Type=simple/a Group=$pkgname"    "$pkgname.service"
+build(){
+    cd "${srcdir}"/Clash.Meta-${pkgver}
+    BUILDTIME=$(date -u)
+    NAME=clash-meta
+    GOOS=linux CGO_ENABLED=1 go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags '${LDFLAGS}' \
+    -X 'github.com/metacubex/mihomo/constant.Version=${pkgver}' \
+    -X 'github.com/metacubex/mihomo/constant.BuildTime=${BUILDTIME}' \
+    " \
+    -tags with_gvisor -o ${pkgname}-${pkgver}
 }
-
-check() {
-    cd "$pkgname"
-    go test ./...
-}
-
 package() {
-    cd "$pkgname"
-    install -Dm755 "$pkgname-$pkgver"      "$pkgdir/usr/bin/clash-meta"
-    install -Dm644 "$pkgname.sysusers"     "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-    install -Dm644 "$pkgname.tmpfiles"     "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
-    install -Dm644 docs/config.yaml        "$pkgdir/etc/clash-meta/config.yaml"
-    install -Dm644 "$pkgname.service"      "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-    ln -s          /etc/clash/Country.mmdb "$pkgdir/etc/$pkgname/Country.mmdb"
+    cd "${srcdir}"/Clash.Meta-${pkgver}
+    install -Dm755 "${pkgname}-${pkgver}" "${pkgdir}/usr/bin/clash-meta"
+    install -Dm644 "docs/config.yaml" -t "${pkgdir}/etc/clash-meta"
+    cd $srcdir
+    install -Dm644 ${pkgname}.sysusers "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+    install -Dm644 ${pkgname}.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+    install -Dm644 "clash-meta.service"  -t "${pkgdir}/usr/lib/systemd/system"
+    install -Dm644 "clash-meta@.service" -t "${pkgdir}/usr/lib/systemd/system"
+    ln -sf /etc/clash/Country.mmdb ${pkgdir}/etc/${pkgname}/Country.mmdb
+    #geosite.dat from community repo does not work
+    # ln -sf /usr/share/v2ray/geosite.dat ${pkgdir}/etc/${pkgname}/GeoSite.dat
 }
