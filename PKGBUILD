@@ -5,13 +5,15 @@ _rockname=copas
 pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=4.7.0
 _rockrel=1
-pkgrel=4
+pkgrel=5
 pkgdesc='A dispatcher based on coroutines that can be used by TCP/IP servers'
 arch=(x86_64 i686)
 url="https://lunarmodules.github.io/$_rockname"
 _url="https://github.com/lunarmodules/$_rockname"
 license=('MIT')
-_luadeps=(socket)
+_luadeps=(binaryheap
+          socket
+          timerwheel)
 makedepends=(lua
              lua53
              lua52
