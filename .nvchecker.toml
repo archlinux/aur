@@ -1,0 +1,5 @@
+[mattermost-plugin-matterpoll]
+source = "github"
+github = "matterpoll/matterpoll"
+prefix = "v"
+use_max_tag = true
