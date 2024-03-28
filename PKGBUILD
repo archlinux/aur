@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=onekey-wallet-bin
 _pkgname=OneKey-Wallet
-pkgver=4.22.0
+pkgver=4.23.0
 _electronversion=19
 pkgrel=1
 pkgdesc="Secure, open source and community driven crypto wallet runs on all platforms and trusted by millions."
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e72e2af2bbe7d13f2d5601ed67f40a88edeba40d839758791c302664c349cd2f'
+sha256sums=('10c5c682bcdf74bb14311ed6faccea30fb12dfc4598d7aa82f84ce0e53ae7d74'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
