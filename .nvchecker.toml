@@ -1,0 +1,4 @@
+[pjproject]
+source = "github"
+github = "pjsip/pjproject"
+use_max_tag = true
