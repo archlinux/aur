@@ -1,20 +1,20 @@
 # Maintainer: Peter Fern <aur at 0xc0dedbad dot com>
 
 pkgname=hyprpanel
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="An opinionated panel/shell for the Hyprland compositor."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pdf/hyprpanel"
 license=('MIT')
 options=('!strip')
-depends=('gtk4' 'gtk4-layer-shell' 'hyprland')
+depends=('gtk4' 'gtk4-layer-shell' 'hyprland>=0.37.0')
 optdepends=('systemd: logging support'
 	'pulse-native-provider: volume control support'
 	'upower: battery status support')
 makedepends=('git' 'go')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('efea9907e757f28f03c4333df247b313b05201212f576baa1afa6b2351909776')
+sha256sums=('4c23a8ebd5b65c7245713f438735c3bd46edefc784a839b0ff5f89ab75566aa6')
 
 build() {
 	export CGO_ENABLED=0
