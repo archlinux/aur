@@ -1,0 +1,155 @@
+From 755f5891f3e1981e92275576226ea22120248f4d Mon Sep 17 00:00:00 2001
+From: meowtec <bertonzh@gmail.com>
+Date: Tue, 12 Sep 2023 19:54:43 +0800
+Subject: [PATCH] fix: refactor cli.js to esm
+
+---
+ cli.js => cli.mjs | 106 ++++++++++++++++++++++------------------------
+ package.json      |   4 +-
+ 2 files changed, 53 insertions(+), 57 deletions(-)
+ rename cli.js => cli.mjs (58%)
+
+diff --git a/cli.js b/cli.mjs
+similarity index 58%
+rename from cli.js
+rename to cli.mjs
+index d1eac5b..54d9c6a 100755
+--- a/cli.js
++++ b/cli.mjs
+@@ -9,63 +9,59 @@
+ 
+ 'use strict';
+ 
+-var fs = require('fs');
+-var meow = require('meow');
+-var path = require('path');
+-var stdin = require('get-stdin');
+-var Fontmin = require('./');
+-var _ = require('lodash');
+-
+-var cli = meow({
+-    help: [
+-        'Usage',
+-        '  $ fontmin <file> [<output>]',
+-        '  $ fontmin <directory> [<output>]',
+-        '  $ fontmin <file> > <output>',
+-        '  $ cat <file> | fontmin > <output>',
+-        '',
+-        'Example',
+-        '  $ fontmin fonts/* build',
+-        '  $ fontmin fonts build',
+-        '  $ fontmin foo.ttf > foo-optimized.ttf',
+-        '  $ cat foo.ttf | fontmin > foo-optimized.ttf',
+-        '',
+-        'Options',
+-        '  -t, --text                          require glyphs by text',
+-        '  -b, --basic-text                    require glyphs with base chars',
+-        '  -d, --deflate-woff                  deflate woff',
+-        '  --font-family                       font-family for @font-face CSS',
+-        '  --css-glyph                         generate class for each glyf. default = false',
+-        '  -T, --show-time                     show time fontmin cost'
+-    ].join('\n')
+-}, {
+-    'boolean': [
+-        'basic-text',
+-        'show-time',
+-        'deflate-woff',
+-        'css-glyph',
+-        'version'
+-    ],
+-    'string': [
+-        'text',
+-        'font-family'
+-    ],
+-    'alias': {
+-        t: 'text',
+-        b: 'basic-text',
+-        d: 'deflate-woff',
+-        T: 'show-time',
+-        h: 'help',
+-        v: 'version'
+-    }
++import fs from 'fs';
++import path from 'path';
++import meow from 'meow';
++import stdin from 'get-stdin';
++import _ from 'lodash';
++import Fontmin from './index.js';
++
++var cli = meow(`
++    Usage
++    $ fontmin <file> [<output>]
++    $ fontmin <directory> [<output>]
++    $ fontmin <file> > <output>
++    $ cat <file> | fontmin > <output>
++
++    Example
++    $ fontmin fonts/* build
++    $ fontmin fonts build
++    $ fontmin foo.ttf > foo-optimized.ttf
++    $ cat foo.ttf | fontmin > foo-optimized.ttf
++
++    Options
++    -t, --text                          require glyphs by text
++    -b, --basic-text                    require glyphs with base chars
++    -d, --deflate-woff                  deflate woff
++    --font-family                       font-family for @font-face CSS
++    --css-glyph                         generate class for each glyf. default = false
++    -T, --show-time                     show time fontmin cost
++`, {
++    importMeta: import.meta,
++    flags: {
++        text: {
++            type: 'string',
++            shortFlag: 't',
++        },
++        basicText: {
++            type: 'boolean',
++            shortFlag: 'b',
++        },
++        fontFamily: {},
++        showTime: {
++            type: 'boolean',
++            shortFlag: 'T',
++        },
++        deflateWoff: {
++            type: 'boolean',
++            shortFlag: 'd',
++        },
++        cssGlyph: {
++            type: 'boolean',
++        },
++    },
+ });
+ 
+-// version
+-if (cli.flags.version) {
+-    console.log(require('./package.json').version);
+-    process.exit(0);
+-}
+-
+ function isFile(path) {
+     if (/^[^\s]+\.\w*$/.test(path)) {
+         return true;
+diff --git a/package.json b/package.json
+index 9dd280d..f5b369a 100644
+--- a/package.json
++++ b/package.json
+@@ -34,7 +34,7 @@
+     "node": ">=12"
+   },
+   "bin": {
+-    "fontmin": "cli.js"
++    "fontmin": "cli.mjs"
+   },
+   "scripts": {
+     "test": "mocha test/*.spec.js",
+@@ -57,7 +57,7 @@
+     "is-svg": "^4.2.1",
+     "is-ttf": "^0.2.2",
+     "lodash": "^4.17.10",
+-    "meow": "^10.1.1",
++    "meow": "^12.1.1",
+     "pako": "^2.0.3",
+     "replace-ext": "^2.0.0",
+     "stream-combiner": "^0.2.1",
