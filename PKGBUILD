@@ -2,8 +2,9 @@
 # Contributor: PolpOnline <aur at t0mmy dot anonaddy dot com>
 pkgname=gitify
 _pkgname=Gitify
-pkgver=5.0.0
-_electronversion=19
+pkgver=5.1.0
+_electronversion=29
+_nodeversion=20
 pkgrel=1
 pkgdesc="GitHub notifications on your menu bar."
 arch=('any')
@@ -11,7 +12,7 @@ url='https://www.gitify.io/'
 _ghurl="https://github.com/gitify-app/gitify"
 license=('MIT')
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'gendesk'
@@ -25,15 +26,21 @@ source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('6dbccd1f7621d69d97b340ac9d012bb7acada2d9dcc44bde10530b14b7d581aa'
+sha256sums=('0b54b880a75e27831fb741b084fbede6c6f0700be6d6945675db678f1cad5f59'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
+}
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname}.sh"
-    gendesk -f -n -q --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
+    gendesk -f -n -q --categories="Development" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -46,9 +53,9 @@ build() {
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
     pnpm config set link-workspace-packages true
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-      echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
-      echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
-      echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
       echo "Your network is OK."
     fi
