@@ -1,0 +1,5 @@
+[python-shortuuid]
+source = "github"
+github = "skorokithakis/shortuuid"
+prefix = "v"
+use_max_tag = true
