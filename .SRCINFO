@@ -1,10 +1,11 @@
 pkgbase = python-blurhash
 	pkgdesc = Python implementation of the blurhash algorithm
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/woltapp/blurhash-python
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	checkdepends = python-pytest
 	makedepends = python-build

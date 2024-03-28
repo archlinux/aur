@@ -7,10 +7,10 @@
 pkgname=python-blurhash
 _pkg=blurhash-python
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Python implementation of the blurhash algorithm'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/woltapp/blurhash-python"
 license=('MIT')
 depends=('python-cffi' 'python-pillow' 'python-six')
