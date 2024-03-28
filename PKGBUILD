@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=plsgenomics
-_pkgver=1.5-2.1
+_pkgver=1.5-3
 pkgname=r-${_pkgname,,}
-pkgver=1.5.2.1
+pkgver=1.5.3
 pkgrel=1
 pkgdesc='PLS Analyses for Genomics'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
   r-rhpcblasctl
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8a0b49d74e3812ba503efb5caa9c7745502d4a850fba085ea96c573bb0a4c7b2')
+sha256sums=('d9e6a9f81ea86d203d79024524d57009edc835d9ca99fe77929e8226d7fd3b28')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
