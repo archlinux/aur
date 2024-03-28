@@ -1,0 +1,5 @@
+[fdiff]
+source = "github"
+github = "source-foundry/fdiff"
+prefix = "v"
+use_max_tag = true
