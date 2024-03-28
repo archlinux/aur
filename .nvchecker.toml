@@ -1,0 +1,6 @@
+[nextcloud-app-user-saml]
+source = "github"
+github = "nextcloud/user_saml"
+include_regex = 'v\d+\.\d+\.\d+'
+prefix = "v"
+use_max_tag = true
