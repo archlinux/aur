@@ -1,0 +1,132 @@
+From 1408244202834f7cd7fd48fd271249555d14b17e Mon Sep 17 00:00:00 2001
+From: Nicola Murino <nicola.murino@gmail.com>
+Date: Thu, 28 Mar 2024 13:24:10 +0100
+Subject: [PATCH] fix DirectXMath.h include path
+
+---
+ gst-libs/gst/d3d11/gstd3d11converter.cpp | 2 +-
+ gst-libs/gst/d3d11/meson.build           | 4 ++--
+ sys/d3d11/gstd3d11dxgicapture.cpp        | 2 +-
+ sys/d3d11/gstd3d11pluginutils.cpp        | 2 +-
+ sys/d3d12/gstd3d12converter.cpp          | 2 +-
+ sys/d3d12/gstd3d12dxgicapture.cpp        | 2 +-
+ sys/d3d12/gstd3d12pluginutils.cpp        | 2 +-
+ sys/d3d12/meson.build                    | 2 +-
+ 8 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/gst-libs/gst/d3d11/gstd3d11converter.cpp b/gst-libs/gst/d3d11/gstd3d11converter.cpp
+index 813a0ff..65d1b34 100644
+--- a/gst-libs/gst/d3d11/gstd3d11converter.cpp
++++ b/gst-libs/gst/d3d11/gstd3d11converter.cpp
+@@ -43,7 +43,7 @@
+ #ifndef HAVE_DIRECTX_MATH_SIMD
+ #define _XM_NO_INTRINSICS_
+ #endif
+-#include <DirectXMath.h>
++#include <directxmath/DirectXMath.h>
+ 
+ /**
+  * SECTION:gstd3d11converter
+diff --git a/gst-libs/gst/d3d11/meson.build b/gst-libs/gst/d3d11/meson.build
+index 5abb136..2f129c7 100644
+--- a/gst-libs/gst/d3d11/meson.build
++++ b/gst-libs/gst/d3d11/meson.build
+@@ -183,7 +183,7 @@ endif
+ 
+ have_dx_math = cxx.compiles('''
+     #include <windows.h>
+-    #include <DirectXMath.h>
++    #include <directxmath/DirectXMath.h>
+     using namespace DirectX;
+     int main(int argc, char ** argv) {
+       XMMATRIX matrix;
+@@ -207,7 +207,7 @@ endif
+ if host_machine.cpu_family() != 'x86'
+   have_dx_math_simd = cxx.compiles('''
+       #include <windows.h>
+-      #include <DirectXMath.h>
++      #include <directxmath/DirectXMath.h>
+       using namespace DirectX;
+       int main(int argc, char ** argv) {
+         XMVerifyCPUSupport ();
+diff --git a/sys/d3d11/gstd3d11dxgicapture.cpp b/sys/d3d11/gstd3d11dxgicapture.cpp
+index aeb8d38..0403003 100644
+--- a/sys/d3d11/gstd3d11dxgicapture.cpp
++++ b/sys/d3d11/gstd3d11dxgicapture.cpp
+@@ -54,7 +54,7 @@
+ #include <wrl.h>
+ 
+ #define _XM_NO_INTRINSICS_
+-#include <DirectXMath.h>
++#include <directxmath/DirectXMath.h>
+ 
+ GST_DEBUG_CATEGORY_EXTERN (gst_d3d11_screen_capture_debug);
+ #define GST_CAT_DEFAULT gst_d3d11_screen_capture_debug
+diff --git a/sys/d3d11/gstd3d11pluginutils.cpp b/sys/d3d11/gstd3d11pluginutils.cpp
+index db64725..7770b93 100644
+--- a/sys/d3d11/gstd3d11pluginutils.cpp
++++ b/sys/d3d11/gstd3d11pluginutils.cpp
+@@ -32,7 +32,7 @@
+ 
+ /* Disable platform-specific intrinsics */
+ #define _XM_NO_INTRINSICS_
+-#include <DirectXMath.h>
++#include <directxmath/DirectXMath.h>
+ 
+ GST_DEBUG_CATEGORY_EXTERN (gst_d3d11_plugin_utils_debug);
+ #define GST_CAT_DEFAULT gst_d3d11_plugin_utils_debug
+diff --git a/sys/d3d12/gstd3d12converter.cpp b/sys/d3d12/gstd3d12converter.cpp
+index f89da10..0346599 100644
+--- a/sys/d3d12/gstd3d12converter.cpp
++++ b/sys/d3d12/gstd3d12converter.cpp
+@@ -35,7 +35,7 @@
+ #ifndef HAVE_DIRECTX_MATH_SIMD
+ #define _XM_NO_INTRINSICS_
+ #endif
+-#include <DirectXMath.h>
++#include <directxmath/DirectXMath.h>
+ 
+ GST_DEBUG_CATEGORY (gst_d3d12_converter_debug);
+ #define GST_CAT_DEFAULT gst_d3d12_converter_debug
+diff --git a/sys/d3d12/gstd3d12dxgicapture.cpp b/sys/d3d12/gstd3d12dxgicapture.cpp
+index 5f18305..b5608df 100644
+--- a/sys/d3d12/gstd3d12dxgicapture.cpp
++++ b/sys/d3d12/gstd3d12dxgicapture.cpp
+@@ -59,7 +59,7 @@
+ #include "VSMain_coord.h"
+ 
+ #define _XM_NO_INTRINSICS_
+-#include <DirectXMath.h>
++#include <directxmath/DirectXMath.h>
+ 
+ GST_DEBUG_CATEGORY_EXTERN (gst_d3d12_screen_capture_debug);
+ #define GST_CAT_DEFAULT gst_d3d12_screen_capture_debug
+diff --git a/sys/d3d12/gstd3d12pluginutils.cpp b/sys/d3d12/gstd3d12pluginutils.cpp
+index 41987af..3765546 100644
+--- a/sys/d3d12/gstd3d12pluginutils.cpp
++++ b/sys/d3d12/gstd3d12pluginutils.cpp
+@@ -24,7 +24,7 @@
+ #include "gstd3d12pluginutils.h"
+ 
+ #define _XM_NO_INTRINSICS_
+-#include <DirectXMath.h>
++#include <directxmath/DirectXMath.h>
+ 
+ /* *INDENT-OFF* */
+ using namespace DirectX;
+diff --git a/sys/d3d12/meson.build b/sys/d3d12/meson.build
+index 00db928..383a232 100644
+--- a/sys/d3d12/meson.build
++++ b/sys/d3d12/meson.build
+@@ -83,7 +83,7 @@ d3d12_headers = [
+   'd3d11.h',
+   'd3d11on12.h',
+   'd2d1.h',
+-  'DirectXMath.h',
++  'directxmath/DirectXMath.h',
+ ]
+ 
+ have_d3d12_headers = true
+-- 
+2.44.0
+

@@ -1,13 +1,13 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-plugins-bad
-pkgver=1.22.10
+pkgver=1.24.1
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Bad Plugins (mingw-w64)"
 arch=(any)
 url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
 depends=('mingw-w64-gst-plugins-base' 'mingw-w64-orc')
-makedepends=('mingw-w64-meson' 'mingw-w64-openh264' 'mingw-w64-nettle' 'mingw-w64-opus' 'mingw-w64-bzip2' 'mingw-w64-libsrtp' 'mingw-w64-vo-aacenc' 'mingw-w64-libkate' 'mingw-w64-librsvg' 'mingw-w64-openjpeg2' 'mingw-w64-opencv' 'mingw-w64-libfdk-aac' 'mingw-w64-librtmp0' 'mingw-w64-libwebp' 'mingw-w64-srt' 'mingw-w64-curl' 'mingw-w64-libnice')
+makedepends=('mingw-w64-meson' 'mingw-w64-directxmath' 'mingw-w64-openh264' 'mingw-w64-nettle' 'mingw-w64-opus' 'mingw-w64-bzip2' 'mingw-w64-libsrtp' 'mingw-w64-vo-aacenc' 'mingw-w64-libkate' 'mingw-w64-librsvg' 'mingw-w64-openjpeg2' 'mingw-w64-opencv' 'mingw-w64-libfdk-aac' 'mingw-w64-librtmp0' 'mingw-w64-libwebp' 'mingw-w64-srt' 'mingw-w64-curl' 'mingw-w64-libnice')
 optdepends=(
   "mingw-w64-openh264: H.264 video codec plugin"
   "mingw-w64-opus: OPUS audio parser plugin"
@@ -26,10 +26,18 @@ optdepends=(
 )
 options=('!strip' '!buildflags' 'staticlibs')
 
-source=(${url}src/gst-plugins-bad/gst-plugins-bad-${pkgver}.tar.xz)
-sha256sums=('dabcd60c762165bb043eba753d599212514c94684e4db9a2e25484cb6508ebbf')
+source=(${url}src/gst-plugins-bad/gst-plugins-bad-${pkgver}.tar.xz
+  0001-fix-DirectXMath.h-include-path.patch)
+sha256sums=('f1a183966ea9136a00f159ee42db4d1d106abef022d1b49e63fba2fcbe50c8f8'
+  '51f80198efeedd14424a2f2ea3d3395c0fec6c8c853017fd4fc459abd669f1ea')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare() {
+  cd "${srcdir}/gst-plugins-bad-${pkgver}"
+  patch -Np1 -i "${srcdir}/0001-fix-DirectXMath.h-include-path.patch"
+}
+
 
 build() {
   cd "${srcdir}/gst-plugins-bad-${pkgver}"
