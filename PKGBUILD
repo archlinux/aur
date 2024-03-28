@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("matugen")
 conflicts=("matugen")
 source=("https://github.com/InioX/matugen/releases/download/v$pkgver/matugen-$pkgver-x86_64.tar.gz")
-sha256sums=("2bfc331bac3f7ccdd06b4fe3e072ff4404826424d1a286c5125d3ef96c1a59eb")
+sha256sums=("d262d7aad645ebdc8b40b0d0b1fcb1b4d015919d63516c88e517cc87432b4be1")
 
 package() {
     install -Dm755 matugen -t "$pkgdir/usr/bin"
