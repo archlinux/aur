@@ -1,7 +1,7 @@
 pkgbase = clash-meta
 	pkgdesc = Another Clash Kernel
 	pkgver = 1.18.2
-	pkgrel = 4
+	pkgrel = 6
 	url = https://github.com/MetaCubeX/mihomo
 	arch = x86_64
 	license = GPL-3.0-or-later
