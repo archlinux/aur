@@ -1,13 +1,15 @@
 pkgbase = python-rl
 	pkgdesc = Alternative Python bindings for GNU Readline
 	pkgver = 3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stefanholek/rl
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	license = PSFL
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python
 	depends = readline
 	options = !emptydirs

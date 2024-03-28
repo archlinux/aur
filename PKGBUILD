@@ -3,11 +3,11 @@
 
 pkgname=python-rl
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Alternative Python bindings for GNU Readline"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 depends=('python' 'readline')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer')
 url="https://github.com/stefanholek/rl"
 license=('GPL' 'PSFL')
 options=(!emptydirs)
@@ -16,10 +16,10 @@ sha256sums=('508924bec14771088b24e80d9db97744235c43bbd96c95bb7557bd11b20388b2')
 
 build() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
