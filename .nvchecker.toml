@@ -1,0 +1,5 @@
+[python-trame-router]
+source = "github"
+github = "Kitware/trame-router"
+use_latest_release = "true"
+prefix = "v"
