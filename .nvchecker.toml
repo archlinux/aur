@@ -1,0 +1,6 @@
+[python-grandalf]
+source = "github"
+github = "bdcht/grandalf"
+prefix = "v"
+ignored = 'v0.55555 v0.5555 v0.555 v0.55'
+use_max_tag = true
