@@ -22,6 +22,9 @@ pkgver() {
 
 package() {
     cd "$srcdir/$_pkgname"
+
+    # note: the makefile puts the mandir and bashcompdir as /usr/local/share/...;
+    # just /usr/share is a more standard location
     bashcompdir="/usr/share/bash-completions/completions"
     mkdir -p "$pkgdir$bashcompdir"
     make DESTDIR="$pkgdir" MANDIR="/usr/share/man" BASHCOMPDIR="$bashcompdir" install
