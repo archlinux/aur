@@ -2,7 +2,7 @@
 #Contributor: Janrupf <business.janrupf@gmail.com>
 
 pkgname=modular
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=2
 pkgdesc="Modular installation tool - Repository: https://github.com/Sharktheone/arch-mojo"
 url="https://developer.modular.com/download"
@@ -14,7 +14,7 @@ depends=(
 )
 arch=("x86_64")
 source=("https://dl.modular.com/public/installer/deb/debian/pool/any-version/main/m/mo/modular_$pkgver/modular-v$pkgver-amd64.deb")
-sha256sums=("9747968d724afad372916eb6113c0c1cfa5d5a1ca5806cba44f73f89fc703d20")
+sha256sums=("1eff3bcc8a1e5746ad5be7c2ac3827e316095f22e01cffb8fda29f0b79bbb5c4")
 
 install="modular.install"
 
