@@ -1,10 +1,10 @@
 pkgbase = python-quicktions
 	pkgdesc = Fast fractions data type for rational numbers
-	pkgver = 1.16
+	pkgver = 1.17
 	pkgrel = 1
 	url = https://github.com/scoder/quicktions
 	arch = x86_64
-	license = Python
+	license = PSF-2.0
 	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
@@ -13,7 +13,7 @@ pkgbase = python-quicktions
 	makedepends = cython
 	depends = python
 	depends = glibc
-	source = quicktions-1.16.tar.gz::https://github.com/scoder/quicktions/archive/1.16.tar.gz
-	sha512sums = 4fc9f083bbc4f0a2bc18d020ff0d66765e03ff4049069892ab47439d6efd01c40d68f4d56596effd9118ee97cae8e0513698bb2e0e0881218093da3983c20554
+	source = quicktions-1.17.tar.gz::https://github.com/scoder/quicktions/archive/1.17.tar.gz
+	sha512sums = d4205c042adc4f1831839773fe911cdba96713d1024165956e76c7a4493e01eef111b545f3f0d061f8757c39e9e3c69d5dcd0f42bb5e86023a46362668f0d4a3
 
 pkgname = python-quicktions

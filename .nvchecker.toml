@@ -1,0 +1,4 @@
+[python-quicktions]
+source = "github"
+github = "scoder/quicktions"
+use_latest_release = "true"

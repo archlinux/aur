@@ -2,17 +2,17 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 _base=quicktions
 pkgname=python-${_base}
-pkgver=1.16
+pkgver=1.17
 pkgrel=1
 pkgdesc="Fast fractions data type for rational numbers"
 arch=(x86_64)
 url="https://github.com/scoder/${_base}"
-license=(Python)
+license=(PSF-2.0)
 depends=(python glibc)
 makedepends=(python-build python-installer python-setuptools python-wheel cython)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('4fc9f083bbc4f0a2bc18d020ff0d66765e03ff4049069892ab47439d6efd01c40d68f4d56596effd9118ee97cae8e0513698bb2e0e0881218093da3983c20554')
+sha512sums=('d4205c042adc4f1831839773fe911cdba96713d1024165956e76c7a4493e01eef111b545f3f0d061f8757c39e9e3c69d5dcd0f42bb5e86023a46362668f0d4a3')
 
 build() {
   cd ${_base}-${pkgver}
