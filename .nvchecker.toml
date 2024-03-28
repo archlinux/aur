@@ -1,0 +1,5 @@
+[pam-oauth2]
+source = "github"
+github = "CyberDem0n/pam-oauth2"
+prefix = "v"
+use_max_tag = true
