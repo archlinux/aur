@@ -13,15 +13,15 @@ url="https://www.segger.com/products/development-tools/embedded-studio/"
 license=('Commercial')
 options=(!strip)
 
-source_x86_64=("Setup_EmbeddedStudio_ARM_v${pkgver/./}_linux_x64.tar.gz::https://dl.a.segger.com/embedded-studio/Setup_EmbeddedStudio_v${pkgver/./}_linux_x64.tar.gz")
-source_aarch64=("Setup_EmbeddedStudio_ARM_v${pkgver/./}_linux_arm64.tar.gz::https://dl.a.segger.com/embedded-studio/Setup_EmbeddedStudio_v${pkgver/./}_linux_arm64.tar.gz")
+source_x86_64=("Setup_EmbeddedStudio_v${pkgver/./}_linux_x64.tar.gz::https://dl.a.segger.com/embedded-studio/Setup_EmbeddedStudio_v${pkgver/./}_linux_x64.tar.gz")
+source_aarch64=("Setup_EmbeddedStudio_v${pkgver/./}_linux_arm64.tar.gz::https://dl.a.segger.com/embedded-studio/Setup_EmbeddedStudio_v${pkgver/./}_linux_arm64.tar.gz")
 	
 md5sums_x86_64=('96a145c508ce702c6b5b6ebb666534da')
 md5sums_aarch64=('87997d531bdcb542d3e6d8f0b6d32496')
 
 prepare(){
 	# Delete potential previous build
-	rm -rf embedded-studio-arm
+	rm -rf embedded-studio
 	
         # Change src path name
         case ${CARCH} in
@@ -53,7 +53,7 @@ package() {
 	install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/${pkgname}.desktop" <<END
 [Desktop Entry]
 Name=Embedded Studio
-Comment=Embedded Studio for ARM
+Comment=Embedded Studio for ARM and RISC-V
 GenericName=Embedded Studio
 Exec=env GDK_BACKEND=x11 emStudio %F
 Icon=embedded-studio
