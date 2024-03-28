@@ -4,7 +4,7 @@
 pkgname=gamemaker-beta-bin
 
 # Version
-pkgver=2024.400.0.516
+pkgver=2024.400.0.526
 pkgrel=2
 
 # Generic
@@ -30,7 +30,7 @@ source=(
     "LICENSE.txt"    
 )
 sha256sums=(
-    '008128650fdacf45b58a2964b789618900dd04573e3664ba983e45ff3dc3e7a4'
+    'aba9c6dc9994275077cc6900cf66faf0884ea48d670eb8c542a08ddddea862a1'
     '9ebe45546ac7bb43156c62f42947ccaf660f96cd4fcc684f42df49754aaeac51'
 )
 
