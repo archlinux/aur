@@ -17,7 +17,7 @@ unset _pkgtype
 _pkgname="kotatogram-desktop"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=1.4.14.r4897.g0c4ceba
-pkgrel=1
+pkgrel=2
 pkgdesc='Experimental fork of Telegram Desktop'
 url="https://github.com/kotatogram/kotatogram-desktop"
 license=('GPL-3.0-only')
@@ -27,9 +27,8 @@ arch=('x86_64')
 _main_package() {
   depends=(
     'abseil-cpp'
-    'ffmpeg4.4'
+    'ffmpeg'
     'glib2'
-    'glibc'
     'glibmm-2.68'
     'gobject-introspection'
     'hicolor-icon-theme'
@@ -55,6 +54,7 @@ _main_package() {
     'openal'
     'openh264'
     'opus'
+    'protobuf'
     'qt6-imageformats'
     'qt6-svg'
     'qt6-wayland'
@@ -72,11 +72,12 @@ _main_package() {
     'git'
     'meson'
     'microsoft-gsl'
+    'mold'
     'ninja'
     'pipewire'
-    'protobuf'
     'plasma-wayland-protocols'
     'python'
+    'python-packaging'
     'range-v3'
     'tl-expected'
     'unzip'
@@ -107,6 +108,8 @@ _main_package() {
 
   if [[ "${_build_tg_owt::1}" == "t" ]] ; then
     _source_kotatogram_tg_owt
+  else
+    makedepends+=('libtg_owt-git')
   fi
 }
 
@@ -132,11 +135,11 @@ _source_kotatogram_tg_owt() {
 
   _prepare_kotatogram_tg_owt() (
     cd "$srcdir/kotatogram-tg_owt"
-    local -A _submodules=(
-      ['abseil.abseil-cpp']='src/third_party/abseil-cpp'
-      ['chromiumsrc.libyuv']='src/third_party/libyuv'
-      ['cisco.libsrtp']='src/third_party/libsrtp'
-      ['google.crc32c']='src/third_party/crc32c/src'
+    local _submodules=(
+      'abseil.abseil-cpp'::'src/third_party/abseil-cpp'
+      'chromiumsrc.libyuv'::'src/third_party/libyuv'
+      'cisco.libsrtp'::'src/third_party/libsrtp'
+      'google.crc32c'::'src/third_party/crc32c/src'
     )
     _submodule_update
   )
@@ -218,41 +221,41 @@ _source_kotatogram_desktop() {
 
   _prepare_kotatogram_desktop() (
     cd "$srcdir/$_pkgsrc"
-    local -A _submodules=(
-      ['apple.swift-corelibs-libdispatch']='Telegram/ThirdParty/dispatch'
-      ['cyan4973.xxhash']='Telegram/ThirdParty/xxHash'
-      ['desktop-app.codegen']='Telegram/codegen'
-      ['desktop-app.gsl']='Telegram/ThirdParty/GSL'
-      ['desktop-app.lib_base']='Telegram/lib_base'
-      ['desktop-app.lib_crl']='Telegram/lib_crl'
-      ['desktop-app.lib_lottie']='Telegram/lib_lottie'
-      ['desktop-app.lib_qr']='Telegram/lib_qr'
-      ['desktop-app.lib_rpl']='Telegram/lib_rpl'
-      ['desktop-app.lib_spellcheck']='Telegram/lib_spellcheck'
-      ['desktop-app.lib_storage']='Telegram/lib_storage'
-      ['desktop-app.lib_tl']='Telegram/lib_tl'
-      ['desktop-app.lib_webrtc']='Telegram/lib_webrtc'
-      ['desktop-app.lib_webview']='Telegram/lib_webview'
-      ['desktop-app.libprisma']='Telegram/ThirdParty/libprisma'
-      ['desktop-app.rlottie']='Telegram/ThirdParty/rlottie'
-      ['ericniebler.range-v3']='Telegram/ThirdParty/range-v3'
-      ['fcitx.fcitx5-qt']='Telegram/ThirdParty/fcitx5-qt'
-      ['gitlab-freedesktop-mirrors.wayland']='Telegram/ThirdParty/wayland'
-      ['gitlab-freedesktop-mirrors.wayland-protocols']='Telegram/ThirdParty/wayland-protocols'
-      ['google.cld3']='Telegram/ThirdParty/cld3'
-      ['hamonikr.nimf']='Telegram/ThirdParty/nimf'
-      ['hime-ime.hime']='Telegram/ThirdParty/hime'
-      ['hunspell']='Telegram/ThirdParty/hunspell'
-      ['kde.kcoreaddons']='Telegram/ThirdParty/kcoreaddons'
-      ['kde.kimageformats']='Telegram/ThirdParty/kimageformats'
-      ['kde.plasma-wayland-protocols']='Telegram/ThirdParty/plasma-wayland-protocols'
-      ['kotatogram.cmake_helpers']='cmake'
-      ['kotatogram.lib_ui']='Telegram/lib_ui'
-      ['lz4']='Telegram/ThirdParty/lz4'
-      ['nayuki.qr-code-generator']='Telegram/ThirdParty/QR'
-      ['tartanllama.expected']='Telegram/ThirdParty/expected'
-      ['telegramdesktop.libtgvoip']='Telegram/ThirdParty/libtgvoip'
-      ['telegrammessenger.tgcalls']='Telegram/ThirdParty/tgcalls'
+    local _submodules=(
+      'apple.swift-corelibs-libdispatch'::'Telegram/ThirdParty/dispatch'
+      'cyan4973.xxhash'::'Telegram/ThirdParty/xxHash'
+      'desktop-app.codegen'::'Telegram/codegen'
+      'desktop-app.gsl'::'Telegram/ThirdParty/GSL'
+      'desktop-app.lib_base'::'Telegram/lib_base'
+      'desktop-app.lib_crl'::'Telegram/lib_crl'
+      'desktop-app.lib_lottie'::'Telegram/lib_lottie'
+      'desktop-app.lib_qr'::'Telegram/lib_qr'
+      'desktop-app.lib_rpl'::'Telegram/lib_rpl'
+      'desktop-app.lib_spellcheck'::'Telegram/lib_spellcheck'
+      'desktop-app.lib_storage'::'Telegram/lib_storage'
+      'desktop-app.lib_tl'::'Telegram/lib_tl'
+      'desktop-app.lib_webrtc'::'Telegram/lib_webrtc'
+      'desktop-app.lib_webview'::'Telegram/lib_webview'
+      'desktop-app.libprisma'::'Telegram/ThirdParty/libprisma'
+      'desktop-app.rlottie'::'Telegram/ThirdParty/rlottie'
+      'ericniebler.range-v3'::'Telegram/ThirdParty/range-v3'
+      'fcitx.fcitx5-qt'::'Telegram/ThirdParty/fcitx5-qt'
+      'gitlab-freedesktop-mirrors.wayland'::'Telegram/ThirdParty/wayland'
+      'gitlab-freedesktop-mirrors.wayland-protocols'::'Telegram/ThirdParty/wayland-protocols'
+      'google.cld3'::'Telegram/ThirdParty/cld3'
+      'hamonikr.nimf'::'Telegram/ThirdParty/nimf'
+      'hime-ime.hime'::'Telegram/ThirdParty/hime'
+      'hunspell'::'Telegram/ThirdParty/hunspell'
+      'kde.kcoreaddons'::'Telegram/ThirdParty/kcoreaddons'
+      'kde.kimageformats'::'Telegram/ThirdParty/kimageformats'
+      'kde.plasma-wayland-protocols'::'Telegram/ThirdParty/plasma-wayland-protocols'
+      'kotatogram.cmake_helpers'::'cmake'
+      'kotatogram.lib_ui'::'Telegram/lib_ui'
+      'lz4'::'Telegram/ThirdParty/lz4'
+      'nayuki.qr-code-generator'::'Telegram/ThirdParty/QR'
+      'tartanllama.expected'::'Telegram/ThirdParty/expected'
+      'telegramdesktop.libtgvoip'::'Telegram/ThirdParty/libtgvoip'
+      'telegrammessenger.tgcalls'::'Telegram/ThirdParty/tgcalls'
     )
     _submodule_update
   )
@@ -269,8 +272,8 @@ _source_ericniebler_range_v3() {
   _prepare_ericniebler_range_v3() (
     cd "$srcdir/$_pkgsrc"
     cd "Telegram/ThirdParty/range-v3"
-    local -A _submodules=(
-      ['ericniebler.range-v3']='doc/gh-pages'
+    local _submodules=(
+      'ericniebler.range-v3'::'doc/gh-pages'
     )
     _submodule_update
   )
@@ -287,8 +290,8 @@ _source_telegramdesktop_libtgvoip() {
   _prepare_telegramdesktop_libtgvoip() (
     cd "$srcdir/$_pkgsrc"
     cd 'Telegram/ThirdParty/libtgvoip'
-    local -A _submodules=(
-      ['desktop-app.cmake_helpers']='cmake'
+    local _submodules=(
+      'desktop-app.cmake_helpers'::'cmake'
     )
     _submodule_update
   )
@@ -307,9 +310,9 @@ _source_desktop_app_cmake_helpers() {
   _prepare_desktop_app_cmake_helpers() (
     cd "$srcdir/$_pkgsrc"
     cd "cmake"
-    local -A _submodules=(
-      ['mnauw.cppgir']='external/glib/cppgir'
-      #['yugr.implib.so']='external/Implib.so'
+    local _submodules=(
+      'mnauw.cppgir'::'external/glib/cppgir'
+      #'yugr.implib.so'::'external/Implib.so'
     )
     _submodule_update
   )
@@ -327,8 +330,8 @@ _source_mnauw_cppgir() {
     cd "$srcdir/$_pkgsrc"
     cd "cmake"
     cd "external/glib/cppgir"
-    local -A _submodules=(
-      ['martinmoene.expected-lite']='expected-lite'
+    local _submodules=(
+      'martinmoene.expected-lite'::'expected-lite'
     )
     _submodule_update
   )
@@ -341,12 +344,7 @@ _build_tg_owt() (
     -S "kotatogram-tg_owt"
     -G Ninja
     -DCMAKE_BUILD_TYPE=Release
-    -DCMAKE_POSITION_INDEPENDENT_CODE=ON
     -DBUILD_SHARED_LIBS=OFF
-    -DTG_OWT_PACKAGED_BUILD=ON
-
-    -DCMAKE_C_FLAGS="${CFLAGS} -ffat-lto-objects"
-    -DCMAKE_CXX_FLAGS="${CXXFLAGS} -ffat-lto-objects -I/usr/include/libdrm"
   )
 
   cmake "${_cmake_options[@]}"
@@ -379,16 +377,16 @@ pkgver() {
   local _revision=$(git rev-list --count --cherry-pick $_commit...HEAD)
   local _hash=$(git rev-parse --short=7 HEAD)
 
-  printf '%s.r%s.g%s' "$_version" "$_revision" "$_hash"
+  printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
 }
 
 prepare() {
   _submodule_update() {
-    local key;
-    for key in ${!_submodules[@]} ; do
-      git submodule init "${_submodules[${key}]}"
-      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
-      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+    local _module;
+    for _module in "${_submodules[@]}" ; do
+      git submodule init "${_module##*::}"
+      git submodule set-url "${_module##*::}" "$srcdir/${_module%%::*}"
+      git -c protocol.file.allow=always submodule update "${_module##*::}"
     done
   }
 
@@ -411,7 +409,7 @@ prepare() {
 
 build() {
   export CXXFLAGS+=" -Wp,-U_GLIBCXX_ASSERTIONS"
-  export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig' # force build with ffmpeg4.4
+  export LDFLAGS+=" -fuse-ld=mold"
 
   if [[ "${_build_tg_owt::1}" == "t" ]] ; then
     _build_tg_owt
