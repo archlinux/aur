@@ -1,0 +1,5 @@
+[rawstudio]
+source = "github"
+github = "rawstudio/rawstudio"
+prefix = "v"
+use_max_tag = true
