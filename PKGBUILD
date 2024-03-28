@@ -3,7 +3,7 @@
 pkgname=cpotree
 _srcname=CPotree
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Potree Utilities"
 arch=('x86_64')
 url="https://github.com/potree/CPotree"
@@ -13,7 +13,7 @@ conflicts=('cpotree-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/potree/${_srcname}/archive/refs/tags/${pkgver}.tar.gz"
        "https://github.com/potree/${_srcname}/blob/master/LICENSE")
 b2sums=('2ed8be18c353bee5d52a371af9ca59961446087ee3b7883e6416f26b1f81bd6d0f445f8fb8bf6534cc6d295856fb326ed4ff60619ced8d3a063aa12c057f95d1'
-        'bdd31962cc0c595cd0bda268a9e291420b3e9e2c314dda9ebd7a7dba3b20f661cef8530c31aeafde8a3de6a5ebb6e00b416a1f32735e22c5a6f535fd8c28870d')
+        '0dc2dc0f814a5ffe7eabbec6029b740fe9a53e37b53b336b911c3a32fd96050a299c1ba7e6e61e389a9a075050162ea462c72b9dbb84fca03a7a898aa35bf67a')
 
 build() {
     CXX="${CXX:=g++}"
