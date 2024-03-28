@@ -1,0 +1,5 @@
+[python-pandoc-include]
+source = "github"
+github = "DCsunset/pandoc-include"
+prefix = "v"
+use_max_tag = true
