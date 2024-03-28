@@ -1,5 +1,5 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.com>
 # Co-Maintainer: Bert Peters <bert@bertpts.nl>
+# Contributor: George Rawlinson <grawlinson@archlinux.com>
 # Contributor: Shengyu Zhang <la@archlinuxcn.org>
 
 _gemname=em-websocket
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('ruby'
     'ruby-eventmachine>=0.12.9'
     'ruby-http_parser.rb>=0.6.0'
-    )
+)
 provides=("$pkgname=$pkgver")
 options=(!emptydirs)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/igrigorik/em-websocket/archive/v${pkgver}.tar.gz)
