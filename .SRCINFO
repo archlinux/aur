@@ -1,11 +1,10 @@
 pkgbase = r-tvtb
-	pkgdesc = TVTB: The VCF Tool Box
-	pkgver = 1.22.0
-	pkgrel = 4
-	url = https://bioconductor.org/packages/3.15/TVTB
+	pkgdesc = The VCF Tool Box
+	pkgver = 1.28.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/TVTB
 	arch = any
-	license = Artistic2.0
-	depends = r
+	license = Artistic-2.0
 	depends = r-annotationfilter
 	depends = r-biocgenerics
 	depends = r-biocparallel
@@ -34,7 +33,8 @@ pkgbase = r-tvtb
 	optdepends = r-rtracklayer
 	optdepends = r-shiny
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/3.15/bioc/src/contrib/TVTB_1.22.0.tar.gz
-	sha256sums = 1af5da609ec7b34cc10f5fe898bebf786f4fac573044fee992c86fe15df4dd00
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TVTB_1.28.0.tar.gz
+	md5sums = 64da00f3c21bf3f9a82dc32e451395a1
+	b2sums = e9383fe58a3af14f9b76c2bb759e07a9ba4181daeeea7f2141744be3991226adedd33e067784adf942749ab025d40432bdd02d16674d1535bdb1fc0618c3a13d
 
 pkgname = r-tvtb
