@@ -1,6 +1,6 @@
 pkgbase = python-pysilfont
 	pkgdesc = Python-based font utilities collection and framework
-	pkgver = 1.7.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/silnrsi/pysilfont
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = python-pysilfont
 	optdepends = fontbakery
 	optdepends = python-glyphconstruction
 	optdepends = python-palaso
-	source = pysilfont-1.7.0.tar.gz::https://github.com/silnrsi/pysilfont/archive/v1.7.0.tar.gz
-	sha256sums = 29da485493e85232cd768eb3b32b1676a382e75cfea8d31f510a5864be33fe84
+	source = pysilfont-1.8.0.tar.gz::https://github.com/silnrsi/pysilfont/archive/v1.8.0.tar.gz
+	sha256sums = dac5e15cc398c54694c35fec03dc6a7725ef0eeb126ff24a4a1fb7b76c11588d
 
 pkgname = python-pysilfont
