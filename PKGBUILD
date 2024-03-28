@@ -3,7 +3,7 @@
 
 pkgname=python-ftputil
 _pkg="${pkgname#python-}"
-pkgver=5.0.4
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="High-level FTP client library"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel
 checkdepends=('python-pytest' 'python-freezegun')
 changelog=announcements.txt
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/f/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('6889db8649dd20d9b6d40a6c5f0f84ccf340a7dac1e0bfc0f0024090fc2afb33')
+sha256sums=('e9e62d3fd307ef9c52e43b33fd92759fc94c04d8b5178f85f641b183906d4353')
 
 prepare() {
 	## setup.py installs docs to an incorrect directory; exclude them
