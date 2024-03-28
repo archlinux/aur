@@ -2,7 +2,7 @@
 
 pkgbase=xbydriver-appimage
 pkgname=(xbydriver-{bin,appimage})
-pkgver=3.12.5
+pkgver=3.13.1
 pkgrel=1
 pkgdesc="阿里云盘小白羊版 v3 修复版"
 arch=('x86_64' 'aarch64')
@@ -21,10 +21,10 @@ source_x86_64=("${pkgbase}-${pkgver}-x86_64.AppImage::${url}/releases/download/v
     "${pkgbase%-appimage}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/XBYDriver-${pkgver}-linux-amd64.deb")
 source_aarch64=("${pkgbase}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/XBYDriver-${pkgver}-linux-arm64.AppImage"
     "${pkgbase%-appimage}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/XBYDriver-${pkgver}-linux-arm64.deb")
-sha256sums_x86_64=('961805b48f95769679481a62cb2c7bc3eb525a2a9c97438c4cd40c2042c6fa4a'
-                   '00bfc210c1ed52ee8d732625c71109384d52448536ea2affde0efe6e57e12c3d')
-sha256sums_aarch64=('0b4b223f1214667683e9601bbaa5dd9c5f8d8cbbcf61330e7501a43cbbe2f3a6'
-                    'a5047842f75abe78837517f4de70a2ca6b262046be278b8002fc446800d7808d')
+sha256sums_x86_64=('90b5f2fd687e27f6cca4102b67c68e96248028eda5ab9a29239d0d197b7a9fab'
+                   'a0eed801ae7999d13dfd3114f96bc0ace74d95d21c09f9cfddf069b4ff6423ed')
+sha256sums_aarch64=('3efe963c6f5172115ba1e0e0682cea457821acb8f67eca81f60deb92c81e6aaa'
+                    'eb809bbfe409449e12adcbfbc97d97a1c558ad5cf0e84b3deac4c361329c89a3')
 noextract=(
     ${pkgbase%-appimage}-${pkgver}-x86_64.deb
     ${pkgbase%-appimage}-${pkgver}-aarch64.deb)
