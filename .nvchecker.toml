@@ -1,0 +1,4 @@
+[nimf]
+source = "github"
+github = "hamonikr/nimf"
+use_max_tag = true
