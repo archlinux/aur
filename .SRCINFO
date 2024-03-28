@@ -1,0 +1,17 @@
+pkgbase = android-x86-libtpms
+	pkgdesc = Library providing a software emulation of a Trusted Platform Module (TPM 1.2 and TPM 2.0) (Android x86)
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = https://github.com/stefanberger/libtpms
+	arch = any
+	license = BSD
+	makedepends = android-configure
+	depends = android-x86-openssl
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/stefanberger/libtpms/archive/refs/tags/v0.9.6.tar.gz
+	md5sums = c922a80cb1a098e6f9b2671c0044a388
+
+pkgname = android-x86-libtpms
