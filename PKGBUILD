@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dockit-bin
 _pkgname=DocKit
-pkgver=0.2.2
+pkgver=0.2.3
 _electronversion=28
 pkgrel=1
 pkgdesc="GUI clients for elasticsearch, opensearch and etc"
@@ -23,13 +23,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('0999a3c3d41b56b922af1e05cde6d81bd9e3b9f2dcce698bdc7ed10fa8e75197')
-sha256sums_x86_64=('70323106c1d90c283b0c803023e86078b1573d45845da9b3c724f38322be77bc')
+sha256sums_aarch64=('1c9953f13e9e64a2e0a80c706899a02efda4dee152234f0024080044e41986ee')
+sha256sums_x86_64=('52c2339b991e4e4ee9b63674d6d0cebaf60092bb95464ca6fd02c2fb19d63d88')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
 }
