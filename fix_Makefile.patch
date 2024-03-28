@@ -1,10 +1,19 @@
 diff --git a/linux/linux.mk b/linux/linux.mk
-index 3697430..51102d9 100644
+index 3697428..120964f 100644
 --- a/linux/linux.mk
 +++ b/linux/linux.mk
-@@ -51,4 +51,4 @@ INCLUDES += -I$(LIBOBS_INCLUDES)
+@@ -36,6 +34,7 @@ ifeq "$(ALLOW_STATIC)" "yes"
+ 
+ else
+ $(eval	$(call ADD_Lib,libturbojpeg))
++	LDD_LIBS += -limobiledevice-1.0
+ $(eval	$(call ADD_Lib,libusbmuxd))
+ endif
+ 
+@@ -53,4 +52,4 @@ INCLUDES += -I$(LIBOBS_INCLUDES)
  INCLUDES += -I$(FFMPEG_INCLUDES)
  
  LDD_LIBS += -lobs
 -LDD_FLAG += -shared
 +LDD_FLAG += $(LDFLAGS) -shared
+

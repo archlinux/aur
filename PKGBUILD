@@ -17,7 +17,7 @@ makedepends=('git')
 conflicts=("${pkgname}-git")
 pkgstem=${pkgname%-git}
 source=("${pkgstem}::git+${srcurl}#tag=${_tag}" "fix_Makefile.patch")
-sha256sums=('SKIP' '75f5d0973697d8bf3e0e4cc166d376ea889aac6a88e3138e360af2a491cf2553')
+sha256sums=('SKIP' '23f06a6105cd953681fd72415137e81231faa254105ccb07c25685b8c43e059a')
 
 
 prepare() {
