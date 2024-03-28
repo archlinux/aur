@@ -1,10 +1,10 @@
-# Maintainer: farawayer <farwayer@gmail.com>
-# Co-Maintainer: Bert Peters <bert@bertptrs.nl>
+# Maintainer: Bert Peters <bert@bertptrs.nl>
+# Contributor: farawayer <farwayer@gmail.com>
 
 _gemname=terminal-table
 pkgname=ruby-$_gemname
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, feature rich ascii table generation library'
 arch=(any)
 url='https://github.com/tj/terminal-table'
@@ -33,4 +33,5 @@ package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  install -Dm644 "${pkgdir}/${_gemdir}/gems/${_gemname}-${pkgver}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

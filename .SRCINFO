@@ -1,7 +1,7 @@
 pkgbase = ruby-terminal-table
 	pkgdesc = Simple, feature rich ascii table generation library
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tj/terminal-table
 	arch = any
 	license = MIT
