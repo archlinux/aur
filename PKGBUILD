@@ -2,7 +2,7 @@
 
 pkgname="embedded-studio-arm"
 pkgver=7.32a
-pkgrel=1
+pkgrel=2
 pkgdesc="Segger Embedded Studio for ARM"
 arch=('x86_64' 'aarch64')
 makedepends=()
@@ -36,13 +36,17 @@ prepare(){
 }
 
 package() {
-        install -dm755 "${pkgdir}/opt/SEGGER/Embedded-Studio-ARM" \
+        install -dm 755 "${pkgdir}/opt/SEGGER/Embedded-Studio-ARM" \
                     "${pkgdir}/usr/share/licenses/${pkgname}" \
                     "${pkgdir}/usr/bin/" \
 
         msg2 'Installing Embedded Studio ARM'
         "$srcdir"/embedded-studio-arm/install_segger_embedded_studio --copy-files-to ${pkgdir}/opt/SEGGER/Embedded-Studio-ARM/  --accept-license --no-upgrade
-	chmod 755 "${pkgdir}/opt/SEGGER/Embedded-Studio-ARM/lib"
+        
+	msg2 'Redirect library build directory to cache directory'
+	rmdir "${pkgdir}/opt/SEGGER/Embedded-Studio-ARM/lib"
+        install -dm 777 "${pkgdir}/var/cache/${pkgname}/lib/"
+        ln -s /var/cache/${pkgname}/lib "${pkgdir}/opt/SEGGER/Embedded-Studio-ARM/lib"
 
         msg2 'Instalation of binary files'
         ln -s /opt/SEGGER/Embedded-Studio-ARM/bin/emStudio "${pkgdir}/usr/bin/emStudio-ARM"
@@ -50,7 +54,7 @@ package() {
 
         msg2 'Installing desktop shortcut and icon'
         install -Dm 644 "${pkgdir}/opt/SEGGER/Embedded-Studio-ARM/bin/StudioIcon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-        install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/${pkgname}.desktop" <<END
+        install -Dm 644 /dev/stdin "$pkgdir/usr/share/applications/${pkgname}.desktop" <<END
 [Desktop Entry]
 Name=ARM Embedded Studio
 Comment=Embedded Studio for ARM
