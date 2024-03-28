@@ -2,7 +2,7 @@
 pkgname=astal-git
 _pkgname=astal
 _reponame=Astal
-pkgver=r481.cb08521
+pkgver=r488.4e4b4eb
 pkgrel=1
 pkgdesc="JavaScript/TypeScript framework for creating Linux Desktops ontop of Wayland compositors "
 arch=('x86_64')
@@ -20,9 +20,11 @@ optdepends=('gnome-bluetooth-3.0: required for bluetooth service'
 provides=("astal")
 backup=('etc/pam.d/astal')
 source=("git+${url}"
-        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control")
+        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control"
+        "astal.sh")
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            '6f5e5de63dc613cd62497c89540b09de5e0cec64aa0450094d282776e20bb2ee')
 
 pkgver(){
   cd $srcdir/Astal
@@ -47,5 +49,5 @@ build() {
 package() {
   cd $srcdir/$_reponame
   meson install -C build --destdir "$pkgdir"
-  install -Dm 755 ../../astal.sh "${pkgdir}/usr/bin/astal"
+  install -Dm 755 ../astal.sh "${pkgdir}/usr/bin/astal"
 }
