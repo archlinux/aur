@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=catcat-dm-react
 _pkgname="CatCatDM React"
-pkgver=1.9.9
+pkgver=2.0.0
 _electronversion=23
 _nodeversion=18
 pkgrel=1
@@ -17,7 +17,6 @@ makedepends=(
     'npm'
     'nvm'
     'gendesk'
-    'yarn'
     'git'
     'gcc'
     'base-devel'
@@ -26,7 +25,7 @@ source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('065269e4b27dc4b9c553125c9676c39cfeccfc06bdcc198dfa52bc8e525b8efb'
+sha256sums=('728f4b7748feaa920990dba54b79bd6f02ee09b170691a9f4719998525dc2697'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -52,9 +51,9 @@ build() {
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
-        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
-        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
         echo "Your network is OK."
     fi
