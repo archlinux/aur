@@ -1,6 +1,6 @@
 # Maintainer: Dwayne Bent <dbb@dbb.io>
 pkgname=systemd-cron
-pkgver=2.3.2
+pkgver=2.3.4
 pkgrel=1
 pkgdesc='systemd units to run cron scripts'
 arch=('x86_64')
@@ -11,28 +11,31 @@ optdepends=('smtp-forwarder: sending emails')
 provides=('cron')
 conflicts=('cron')
 options=('debug')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/systemd-cron/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
-        'sysusers.conf')
+source=(
+	"${pkgname}-${pkgver}.tar.gz::https://github.com/systemd-cron/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+	'sysusers.conf'
+)
 install=${pkgname}.install
-sha256sums=('0b28cda22f3b37711aa181f27c53493b36145549f0cb82b2fd994a85b9191806'
-            '9260221879cca05d4c82cd12deb88759c8d9148e106f4b9891700849cef5c41b')
+sha256sums=(
+	'540757650e921522645ede58848e08d0367b6936bd81f9640f96bbf0dc79d5d0'
+	'9260221879cca05d4c82cd12deb88759c8d9148e106f4b9891700849cef5c41b'
+)
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
-    ./configure --prefix=/usr --libexecdir=/usr/lib \
-        --enable-minutely --enable-quarterly --enable-semi_annually
+	./configure --prefix=/usr --libexecdir=/usr/lib \
+		--enable-minutely --enable-quarterly --enable-semi_annually
 
-    make
+	make
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
-    make DESTDIR="${pkgdir}" install
+	make DESTDIR="${pkgdir}" install
 
-    install -d "${pkgdir}"/etc/cron.{boot,minutely,hourly,daily,weekly,monthly,quarterly,semi-annually,yearly}
-    install -dm1730 "${pkgdir}/var/spool/cron"
-    cat "${srcdir}/sysusers.conf" >> "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+	install -d "${pkgdir}"/etc/cron.{boot,minutely,hourly,daily,weekly,monthly,quarterly,semi-annually,yearly}
+	install -dm1730 "${pkgdir}/var/spool/cron"
+	cat "${srcdir}/sysusers.conf" >>"${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 }
-
