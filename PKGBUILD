@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=walker
-pkgver=0.0.50
+pkgver=0.0.51
 pkgrel=1
 pkgdesc='wayland application runner'
 url='https://github.com/abenz1267/walker'
@@ -15,8 +15,8 @@ optdepends=('fd: for finder module'
 conflicts=('walker')
 provides=('walker')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('8b422ceca2d100af91ce53647949b28279ffeefc55da9938f610f1d8258d489d')
-b2sums=('c33fcda50c11628810b56e91931e1ed4a0eee586e31781c582e3adcd24ecaa9d1d856e6b5cd91f5b1e55cc7b65d97d4fa0f070f4c9a43c957811b43301c1c8ca')
+sha256sums=('d33611018070153dcd4a539c7e41a22dfa546fa678c60478021af3879b816a0f')
+b2sums=('3bcf30a6d479a083b7f27113b839c38566a4d58548ea972abaa837ad1137ac796b30f1480dd448eebd79c12b441a2ac399ef897f786dcfed09ec04e36b430132')
 
 build() {
   cd ${pkgname}-${pkgver}
