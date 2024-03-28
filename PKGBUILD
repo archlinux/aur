@@ -27,15 +27,15 @@ optdepends=(
 options=('!strip' '!buildflags' 'staticlibs')
 
 source=(${url}src/gst-plugins-bad/gst-plugins-bad-${pkgver}.tar.xz
-  0001-fix-DirectXMath.h-include-path.patch)
+  0001-fix-DirectXMath-detection.patch)
 sha256sums=('f1a183966ea9136a00f159ee42db4d1d106abef022d1b49e63fba2fcbe50c8f8'
-  '51f80198efeedd14424a2f2ea3d3395c0fec6c8c853017fd4fc459abd669f1ea')
+  '3eee4a3e2751d6fc24852b6cf27d42e660858d02ec31620fb1f3a2ecebb4923a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/gst-plugins-bad-${pkgver}"
-  patch -Np1 -i "${srcdir}/0001-fix-DirectXMath.h-include-path.patch"
+  patch -Np1 -i "${srcdir}/0001-fix-DirectXMath-detection.patch"
 }
 
 
