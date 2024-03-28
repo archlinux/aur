@@ -1,0 +1,5 @@
+[nextcloud-app-oidc-login]
+source = "github"
+github = "pulsejet/nextcloud-oidc-login"
+prefix = "v"
+use_max_tag = true
