@@ -1,0 +1,5 @@
+[ots]
+source = "github"
+github = "khaledhosny/ots"
+prefix = "v"
+use_max_tag = true
