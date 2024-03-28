@@ -34,8 +34,9 @@ b2sums=('a24308a98714b05d8df34bf06d64e3854ed9b826276b0ea576c23cebdf2ffd47139c003
 
 build() {
   # check for correct java version
-  read -a javac_version < <(javac --version)
-  if [ ! "${javac_version[1]}" = "21" ]; then
+  local status=''
+  read -a javac_version < <(javac --version) || status='failed'
+  if [ -n "$status" ] || [ ! "${javac_version[1]%%.*}" = "21" ]; then
     echo "Please set your java version to openjdk 21 unsing \"archlinux-java\"" >&2
     return 1
   fi
