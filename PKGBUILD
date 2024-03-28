@@ -35,23 +35,59 @@ fi
 ###################################################################################
 
 pkgbase=linux-rc
-pkgver=6.8rc1
-_pkgver=6.8-rc1
+pkgver=6.9rc1
+_pkgver=6.9-rc1
 pkgrel=1
-commit=7d2b6771ff6939d0ca6e8c9a7185d902a37b4eea
+commit=abef9db380deca88617f7014b683667ef6fc81e4
 arch=(x86_64)
 url='https://www.kernel.org/'
-license=(GPL2)
-makedepends=(bc cpio gettext git libelf pahole perl python tar xz kmod xmlto)
-makepends+=(graphviz imagemagick python-sphinx texlive-latexextra) # htmldocs
-makedepends+=(bison flex zstd make patch gcc gcc-libs glibc binutils)
+license=(GPL-2.0-only)
+makedepends=(
+  bc
+  cpio
+  gettext
+  libelf
+  pahole
+  perl
+  python
+  tar
+  xz
+  kmod
+  xmlto
+  # htmldocs
+  graphviz
+  imagemagick
+  python-sphinx
+  python-yaml
+  texlive-latexextra
+)
+makedepends+=(
+  bison
+  flex
+  zstd
+  make
+  patch
+  gcc
+  gcc-libs
+  glibc
+  binutils
+  git
+)
 if [[ "$_compiler" = "2" ]]; then
-  makedepends+=(clang llvm llvm-libs lld python)
+  makedepends+=(
+    clang
+    llvm
+    llvm-libs
+    lld
+    clang
+    python
+  )
 fi
-options=(!strip)
-
+options=(
+  !debug
+  !strip
+)
 archlinuxpath=https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/$commit
-
 source=(#https://github.com/torvalds/linux/archive/refs/tags/v${_pkgver}.tar.gz
         https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/snapshot/linux-${_pkgver}.tar.gz
         ${archlinuxpath}/config
@@ -77,8 +113,7 @@ prepare(){
   plain ""
 
   # Copy the config file first
-  # Copy "${srcdir}"/config to "${srcdir}"/linux-${_pkgver}/.config
-  msg "Copy "${srcdir}"/config to "${srcdir}"/linux-$_pkgver/.config"
+  msg "Copy the config file first..."
   cp "${srcdir}"/config .config
 
   sleep 2s
@@ -97,6 +132,7 @@ prepare(){
   #  fi
 
   # Set LTO with CLANG/LLVM
+
   if [[ "$_compiler" = "2" ]]; then
 
     msg "Enable THIN LTO"
@@ -128,38 +164,8 @@ prepare(){
     plain ""
   fi
 
-  msg "Apply some Archlinux config"
-
-  msg2 "Compress modules by default (following Arch's kernel)"
-  scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
-
-  sleep 2s
-
-  msg2 "CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team"
-  scripts/config --enable CONFIG_STACK_VALIDATION
-
-  sleep 2s
-
-  msg2 "Enable IKCONFIG following Arch's philosophy"
-  scripts/config --enable CONFIG_IKCONFIG
-  scripts/config --enable CONFIG_IKCONFIG_PROC
-
-  sleep 2s
-
-  msg2 "Enable FUNCTION_TRACER/GRAPH_TRACER"
-  scripts/config --enable CONFIG_FUNCTION_TRACER
-  scripts/config --enable CONFIG_STACK_TRACER
-
-  sleep 2s
-
-  msg2 "Enable CONFIG_USER_NS_UNPRIVILEGED"
-  scripts/config --enable CONFIG_USER_NS
-
-  sleep 2s
-
-  plain ""
-
-  msg "Supress depmod"
+  # Supress depmod
+  msg "Supress depmod..."
   sed -i '2iexit 0' scripts/depmod.sh
 
   sleep 2s
@@ -176,6 +182,7 @@ prepare(){
   plain ""
 
   # Config
+  msg "make olddefconfig..."
   make ARCH=${ARCH} ${BUILD_FLAGS[*]} olddefconfig
 
   plain ""
@@ -189,17 +196,32 @@ prepare(){
 build(){
   cd ${srcdir}/linux-$_pkgver
 
-  msg "make -j$(nproc) all..."
+  msg "make all"
   make ARCH=${ARCH} ${BUILD_FLAGS[*]} -j$(nproc) all
+  msg "make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1"
+  make ARCH=${ARCH} ${BUILD_FLAGS[*]} -j$(nproc) -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
 }
 
 _package(){
   pkgdesc='The Linux kernel and modules - Release Candidate version'
-  depends=(coreutils initramfs kmod)
-  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
-  replaces=(virtualbox-guest-modules-arch wireguard-arch)
+  depends=(
+    coreutils
+    initramfs
+    kmod
+  )
+  optdepends=(
+    'wireless-regdb: to set the correct wireless channels of your country'
+    'linux-firmware: firmware images needed for some devices'
+  )
+  provides=(
+    KSMBD-MODULE
+    VIRTUALBOX-GUEST-MODULES
+    WIREGUARD-MODULE
+  )
+  replaces=(
+    virtualbox-guest-modules-arch
+    wireguard-arch
+  )
 
   cd ${srcdir}/linux-$_pkgver
 
@@ -231,7 +253,7 @@ _package-headers(){
   local builddir="$pkgdir"/usr/lib/modules/"$(<version)"/build
 
   msg "Installing build files..."
-  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map *localversion* version vmlinux
+  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map *localversion* version vmlinux tools/bpf/bpftool/vmlinux.h
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
@@ -306,9 +328,9 @@ _package-headers(){
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('327c0c2dcbe348ab9902dc30511f5cfb239cfff8a8d285b29779c4b5bd7c8e42'
-            'aa47193f89794412776f36c970cabbf19e9abaccf01e3c33f4f891dd4661e5af'
-            'f936aae4d832ac87db8fbb9effb066dd368d092f71dd7135d1548babdb7d10c8')
+sha256sums=('a0239424e10e45c43252d5decc6978a3fa58e0d4d631d0855db57fa209f53165'
+            'c2b00c84c4b543db431e06604d939a62f93107d18369f4d9860dc8062b01ab45'
+            '416609986399d3046811bcc2344f4ee0833b6c92e305da3925a6e193f810dad2')
 
 pkgname=($pkgbase $pkgbase-headers)
 for _p in "${pkgname[@]}"; do
