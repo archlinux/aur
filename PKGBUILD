@@ -22,6 +22,5 @@ pkgver() {
 
 package() {
 	cd "$srcdir/$_pkgname"
-    mkdir -p "$pkgdir/usr/local/share/bash-completion/completions"
-	make DESTDIR="$pkgdir" MANDIR="/usr/share/man" install
+	make DESTDIR="$pkgdir" MANDIR="/usr/share/man" BASHCOMPDIR="/usr/share/bash-completion" install
 }
