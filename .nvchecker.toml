@@ -1,0 +1,5 @@
+[markdown2ctags]
+source = "github"
+github = "jszakmeister/markdown2ctags"
+prefix = "v"
+use_max_tag = true
