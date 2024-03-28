@@ -1,7 +1,7 @@
 # Maintainer: Laurent Jourden <laurent85@enarel.fr>
 
 pkgname=archuseriso
-pkgver=0.8
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Create bootable disk images of Arch Linux, install to USB disk or thumb drive"
 arch=('any')
@@ -18,9 +18,9 @@ optdepends=('devtools: for building ZFS packages'
 conflicts=('archuseriso')
 source=("http://dl.gnutux.fr/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "http://dl.gnutux.fr/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz.sig")
-sha256sums=('e32c07fe8cdd1c54db63ebef86c46382db0130435af7e345e00e71e725c885e9'
+sha256sums=('45eff0e1cf7a6a458b76f5398ae227ceb63ea0a8e11b8683f2679d25498f166a'
             'SKIP')
-b2sums=('1462a4d19e1a203e90b9f490a62f23979cbdb455aad7277686381015895d346d0a4c20aec5baabd029b2702e6fbe92107e5495a2ec7f1eee6fc05b5795cd0434'
+b2sums=('1414846f15a83ee5b12892368cdfdde8ee25fd13fa752a40f5c890c331117d88213f1f83015f545c0a78abd27a7c38f93fd403bee033effbb00703933e17bd55'
         'SKIP')
 validpgpkeys=('A5143BB56952B3189F49A175FAC4560863BEEC34') # Laurent Jourden
 
