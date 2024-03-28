@@ -1,0 +1,5 @@
+[ebnf-rr]
+source = "github"
+github = "GuntherRademacher/rr"
+prefix = "v"
+use_max_tag = true
