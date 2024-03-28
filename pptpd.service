@@ -1,0 +1,10 @@
+[Unit]
+Description=PPTP Server
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/pptpd -c /etc/pptpd.conf -p /var/run/pptpd.pid -f
+StandardOutput=null
+
+[Install]
+WantedBy=multi-user.target

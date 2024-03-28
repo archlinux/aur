@@ -1,0 +1,19 @@
+pkgbase = wenger-pptpd
+	pkgdesc = Poptop server from Wenger Binning
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = http://poptop.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = ppp
+	conflicts = pptpd
+	backup = etc/pptpd.conf
+	source = wenger-pptpd::git+https://git.code.sf.net/p/poptop/git#commit=b77d92c025992b246083142587f3c3b5f115832d
+	source = pptpd.service
+	source = 0001-Fixed-make-install-issue.patch
+	sha256sums = SKIP
+	sha256sums = c9ba10acd0db041da079f1e3376b65f2f867b90b458a13ff228bfc76c05eb325
+	sha256sums = SKIP
+
+pkgname = wenger-pptpd

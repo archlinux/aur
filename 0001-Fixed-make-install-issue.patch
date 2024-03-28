@@ -1,0 +1,54 @@
+From 9b3b2a265b6412381903f49b0d969bfafef4508e Mon Sep 17 00:00:00 2001
+From: Wenbin Zheng <wbzheng@grandstream.cn>
+Date: Thu, 28 Mar 2024 16:20:06 +0800
+Subject: [PATCH] Fixed make install issue.
+
+---
+ Makefile.am      | 2 +-
+ plugins/Makefile | 8 ++++----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index ad036d0..e22af38 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -32,7 +32,7 @@ debian/po/POTFILES.in debian/po/fr.po debian/po/pt_BR.po \
+ debian/po/templates.pot
+ 
+ EXTRA_PROGRAMS = 
+-sbin_PROGRAMS = pptpd pptpctrl bcrelay
++bin_PROGRAMS = pptpd pptpctrl bcrelay
+ 
+ # Header files are only used to determine what to put in a distribution, not
+ # for dependencies, so just attribute them all to pptpd.
+diff --git a/plugins/Makefile b/plugins/Makefile
+index 059cba1..3580711 100644
+--- a/plugins/Makefile
++++ b/plugins/Makefile
+@@ -3,7 +3,7 @@ COPTS	= -O2 -g
+ CFLAGS	= $(COPTS) -I.. -I../../include -fPIC
+ LDFLAGS	= -shared
+ LDADD   = -lutil
+-INSTALL	= install -o root
++INSTALL	= install
+ prefix  = /usr/local
+ 
+ PLUGINS = pptpd-logwtmp.so
+@@ -18,11 +18,11 @@ all:	$(PLUGINS)
+ %.so: %.c
+ 	$(CC) -o $@ $(LDFLAGS) $(CFLAGS) $^ $(LDADD)
+ 
+-LIBDIR	?= $(DESTDIR)$(prefix)/lib/pptpd
++LIBDIR	?= $(prefix)/lib/pptpd
+ 
+ install: $(PLUGINS)
+-	$(INSTALL) -d $(LIBDIR)
+-	$(INSTALL) $? $(LIBDIR)
++	$(INSTALL) -d $(DESTDIR)$(LIBDIR)
++	$(INSTALL) $? $(DESTDIR)$(LIBDIR)
+ 
+ uninstall:
+ 	rm -f $(LIBDIR)$(PLUGINS)
+-- 
+2.43.0
+
