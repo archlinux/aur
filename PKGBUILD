@@ -2,11 +2,11 @@
 
 pkgname=walksnail-osd-tool-git
 pkgdesc="Tool for rendering OSDs over Walksnail DVR recordings"
-pkgver=r219.2562d55
+pkgver=r222.1044026
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/avsaase/walksnail-osd-tool"
-license=('GPL3')
+license=('GPL-3.0')
 source=("$pkgname::git+https://github.com/avsaase/walksnail-osd-tool.git")
 sha256sums=('SKIP')
 depends=(
@@ -15,7 +15,9 @@ depends=(
 makedepends=(
 	'cargo'
 	'git'
+	'gtk3'
 )
+options=('!lto')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
