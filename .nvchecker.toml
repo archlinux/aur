@@ -1,0 +1,3 @@
+[nodejs-jsonlint]
+source = "npm"
+npm = "jsonlint"
