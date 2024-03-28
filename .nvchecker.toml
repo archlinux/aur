@@ -1,0 +1,4 @@
+[nodejs-sword-interface]
+source = "github"
+github = "tobias-klein/node-sword-interface"
+use_max_tag = true
