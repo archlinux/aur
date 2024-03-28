@@ -1,0 +1,3 @@
+[nodejs-less-plugin-autoprefix]
+source = "npm"
+npm = "less-plugin-autoprefix"
