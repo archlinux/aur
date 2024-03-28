@@ -1,0 +1,4 @@
+[cops]
+source = "github"
+github = "seblucas/cops"
+use_max_tag = true
