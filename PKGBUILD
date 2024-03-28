@@ -1,8 +1,8 @@
 # Maintainer: Dimitri Merejkowsky <d.merej at gmail>
 pkgname=rusync
-pkgver="0.7.0"
-pkgrel=2
-pkgdesc="Ergonomic replacement for rsync"
+pkgver="0.7.2"
+pkgrel=1
+pkgdesc="Minimalist rsync implementation in Rust"
 url="https://github.com/your-tools/rusync/"
 arch=('x86_64')
 license=('MIT')
