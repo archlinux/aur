@@ -1,0 +1,6 @@
+[python-pyffmpeg]
+source = "github"
+github = "deuteronomy-works/pyffmpeg"
+include_regex = 'v\d+(\.\d+)+'
+prefix = "v"
+use_max_tag = true
