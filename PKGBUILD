@@ -1,6 +1,6 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname='warp-plus-git'
-pkgver=1.0.4.rc2.r34.efe8b5d
+pkgver=1.1.0.r0.cdb551a
 pkgrel=1
 pkgdesc="An open-source implementation of Cloudflare's Warp, enhanced with Psiphon integration."
 arch=('x86_64')
@@ -9,10 +9,12 @@ license=('MIT')
 makedepends=('git' 'go')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+install="${pkgname%-git}.install"
 source=("${pkgname%-git}::git+${url}.git"
-				"${pkgname%-git}.service")
+		"${pkgname%-git}.service")
+
 sha256sums=('SKIP'
-            'c6fff6a05911c091d77d38392b7d9a74b0885a843096d45654c37ff071d0664d')
+            '5ada20e3b2871c0921dfe36d721914fa02fe2f4892919160daa71992e91be49b')
 pkgver() {
     cd "${pkgname%-git}"
     printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
@@ -20,6 +22,7 @@ pkgver() {
 
 prepare() {
     cd "${pkgname%-git}"
+    sed -i 's|"gool": false|"gool": true|' example_config.json
     go mod tidy
 }
 
@@ -35,9 +38,9 @@ build() {
 
 package() {
     cd "${pkgname%-git}"
-	  install -Dm755 warp-plus "${pkgdir}/usr/bin/${pkgname%-git}"
-	  install -D -t "${pkgdir}/usr/lib/systemd/system/" -m 644 ../"${pkgname%-git}.service"
-	  install -d "${pkgdir}/etc/${pkgname%-git}"
-	  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+	install -Dm 755 warp-plus "${pkgdir}/usr/bin/${pkgname%-git}"
+	install -D -t "${pkgdir}/usr/lib/systemd/system/" -m 644 ../"${pkgname%-git}.service"
+	install -Dm 644 example_config.json "${pkgdir}/etc/${pkgname%-git}/config.json"
+	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
 # vim:set ts=4 sw=4 et:

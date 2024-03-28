@@ -1,0 +1,18 @@
+post_install() {
+	echo "  -> Warp-Plus is installed as a systemd service."
+	echo "  -> You should change default config file at /etc/warp-plus/config.json according to your preferences."
+	echo "  -> Then enable and start service with systemctl command."
+	echo "  -> sudo systemctl enable --now warp-plus.service"
+}
+
+pre_upgrade() {
+	systemctl stop warp-plus.service
+}
+
+post_upgrade() {
+	systemctl start warp-plus.service
+}
+
+pre_remove() {
+	systemctl disable --now warp-plus.service
+}
