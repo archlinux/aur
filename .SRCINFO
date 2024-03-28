@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-previewgenerator
 	pkgdesc = Nextcloud app that allows admins to pre-generate previews
-	pkgver = 5.3.0
+	pkgver = 5.4.0
 	pkgrel = 1
 	url = https://github.com/nextcloud/previewgenerator
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = nextcloud-app-previewgenerator
 	makedepends = nextcloud
 	makedepends = yq
 	options = !strip
-	source = https://github.com/nextcloud/previewgenerator/archive/v5.3.0/previewgenerator-5.3.0.tar.gz
-	sha256sums = 634e0db7c5d5e62ce7051d602f51abc4e9d80b205399c15a2e12676a05ae2b3a
+	source = https://github.com/nextcloud/previewgenerator/archive/v5.4.0/previewgenerator-5.4.0.tar.gz
+	sha256sums = c3b6604b372cb89ecf5f805c16d5b81552588e61e7b4c589968baae468433e62
 
 pkgname = nextcloud-app-previewgenerator
