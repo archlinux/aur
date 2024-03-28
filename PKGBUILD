@@ -12,8 +12,8 @@ arch=(
 url="https://dbgate.org/"
 _ghurl="https://github.com/dbgate/dbgate"
 license=('MIT')
-provides=("${pkgname%-beta-bin}=${pkgver}")
-conflicts=("${pkgname%-beta-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}-bin"
     'hicolor-icon-theme'
