@@ -1,7 +1,7 @@
 pkgbase = nodejs-sqlite3
 	pkgdesc = Asynchronous, non-blocking SQLite3 bindings
-	pkgver = 5.0.2
-	pkgrel = 2
+	pkgver = 5.1.7
+	pkgrel = 1
 	url = https://github.com/mapbox/node-sqlite3
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = nodejs-sqlite3
 	makedepends = npm
 	depends = nodejs
 	depends = nodejs-node-pre-gyp
-	source = nodejs-sqlite3-5.0.2.tar.gz::https://github.com/mapbox/node-sqlite3/archive/v5.0.2.tar.gz
-	sha256sums = 39ce61088a0c51e41e9d8dee59db98f1cf043104a0d78650e67253ef161cfe81
+	source = nodejs-sqlite3-5.1.7.tar.gz::https://github.com/mapbox/node-sqlite3/archive/v5.1.7.tar.gz
+	sha256sums = fbfa89d06de316a51cf7d4734a19c61b876bb685d33593992617c12d0a950732
 
 pkgname = nodejs-sqlite3

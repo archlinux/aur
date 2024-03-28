@@ -2,8 +2,8 @@
 
 _npmname=sqlite3
 pkgname=nodejs-$_npmname
-pkgver=5.0.2
-pkgrel=2
+pkgver=5.1.7
+pkgrel=1
 pkgdesc='Asynchronous, non-blocking SQLite3 bindings'
 arch=(x86_64)
 url="https://github.com/mapbox/${pkgname/js-/-}"
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(nodejs nodejs-node-pre-gyp)
 makedepends=(jq moreutils npm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('39ce61088a0c51e41e9d8dee59db98f1cf043104a0d78650e67253ef161cfe81')
+sha256sums=('fbfa89d06de316a51cf7d4734a19c61b876bb685d33593992617c12d0a950732')
 
 prepare() {
 	cd "${pkgname/js}-$pkgver"
