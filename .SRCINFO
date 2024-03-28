@@ -1,7 +1,7 @@
 pkgbase = clash-meta
-	pkgdesc = Another Clash Kernel
+	pkgdesc = Another Clash Kernel by MetaCubeX
 	pkgver = 1.18.2
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/MetaCubeX/mihomo
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -10,8 +10,6 @@ pkgbase = clash-meta
 	depends = glibc
 	backup = etc/clash-meta/config.yaml
 	source = clash-meta-1.18.2.tar.gz::https://github.com/MetaCubeX/mihomo/archive/refs/tags/v1.18.2.tar.gz
-	source = https://raw.githubusercontent.com/MetaCubeX/Meta-Docs/main/docs/example/yaml
 	sha256sums = 49855c53e5717932b9cb933e7f42f58155b52a42bf7db7f35f1fb1d4baa7ee00
-	sha256sums = 25a125934bf524b340ec0bfe9be258f41b3ee55b0b23555f1c83ea3a3e776c4f
 
 pkgname = clash-meta
