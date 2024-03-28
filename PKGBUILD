@@ -1,7 +1,7 @@
 # Maintainer Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=nodejs-nan
 _pkgname=${pkgname#nodejs-}
-pkgver=2.10.0
+pkgver=2.19.0
 pkgrel=1
 pkgdesc="Native Abstractions for Node.js"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 noextract=("$pkgname-$pkgver.tar.gz")
-sha256sums=('3859b4cc9bfba3a6d16227ca7d66132691f42b24850f971f56b7a5225143cd2b')
+sha256sums=('84137176ba808de2da0b9d823958d18ac172b0582d36ae45473e8e7da0a39303')
 
 prepare() {
   cd "$srcdir"
