@@ -1,40 +1,60 @@
-# Maintainer: fsociety3765 <fsociety3765 at gmail dot com>
+# Maintainer: Arne Brücher <archlinux [at] arne-bruecher [dot] de>
 
 pkgname=joplin-desktop-bin
-pkgver=2.6.10
+pkgver=2.14.20
 pkgrel=1
-pkgdesc='An open source note taking and to-do application with synchronization capabilities for Windows, macOS, Linux, Android and iOS'
+pkgdesc="The latest AppImage of Joplin - a cross-platform note taking and to-do app"
 arch=('x86_64')
-url='https://joplinapp.org'
+url="https://github.com/laurent22/joplin"
 license=('MIT')
-depends=('hicolor-icon-theme')
-makedepends=('asar')
-options=(!strip)
-provides=('joplin-desktop')
-conflicts=('joplin-desktop')
-install="$pkgname.install"
-source=("joplin-desktop.sh")
-sha256sums=('6b6c0c40685ded41316351d7ced34c33107d0401ee29729be1dadb3ba5e859da')
-source_x86_64=("Joplin-$pkgver.AppImage::https://github.com/laurent22/joplin/releases/download/v$pkgver/Joplin-$pkgver.AppImage")
-sha512sums_x86_64=('05cecb22db1addf36ec54b08f8891998b59c5c15d62fec73067b371cad298c7916954175f85941b195b6e4a19cdb7e197682ae9e8653e58cb362a0af8e50d872')
+conflicts=('joplin-desktop' 'joplin-appimage' 'joplin-beta')
+depends=('fuse2')
+options=(!strip !debug) # strip is necessary otherwise the AppImage file in the package is truncated
+                        # debug is necessary due to issue with debugedit resulting in a truncated AppImage see: https://gitlab.archlinux.org/pacman/pacman/-/issues/107
+source=(
+  ${url}/releases/download/v${pkgver}/Joplin-${pkgver}.AppImage
+  ${url}/raw/v${pkgver}/LICENSE
+)
 
-prepare() {
-	chmod +x "Joplin-$pkgver.AppImage"
-	"./Joplin-$pkgver.AppImage" --appimage-extract 2>&1 >/dev/null
-	asar e squashfs-root/resources/app.asar squashfs-root/resources/app
-	rm squashfs-root/resources/{app.asar,app-update.yml}
-}
+sha512sums=('50ebaa06ad225387e2117a6453e92d5665f90bc5d7dec492aac0993781e6e7cdca8aaa2dff06d740146888e2dd04f623d72af060c41765825b52e3c2a9d03890'
+            'ef4c3708113bae9fc81334cf44cd8fe3a7f1443df6de6f021838565ad870e008700ad9298b78ba075272cc2490b3b634bdf2aa1ce094008873b3f61efb4a7ee1')
+
+_filename="Joplin-${pkgver}.AppImage"
+_squashfs_desktop_file="@joplinapp-desktop.desktop"
+_desktop_file="/usr/share/applications/joplin.desktop"
+_appimage_name=$(echo "${_filename}"|sed -E 's/-[0-9]*.[0-9]*.[0-9]*//')
+_install_path="/opt/appimages/${_appimage_name}"
 
 package() {
-	install -d "$pkgdir/opt/$pkgname/"
-	chmod -R 755 squashfs-root/{usr,locales,resources,swiftshader}
-	cp -a --no-preserve=ownership squashfs-root/* "$pkgdir/opt/$pkgname/"
+    chmod +x "${_filename}"
+    mkdir -p squashfs-root/usr/share/icons/hicolor/{72x72,16x16}/apps
+    ./${_filename} --appimage-extract "usr/share/icons/hicolor/*/apps/@joplinapp-desktop.png" > /dev/null 2>&1
+    ./${_filename} --appimage-extract @joplinapp-desktop.desktop > /dev/null 2>&1
+    sed -i -E "s|Exec=AppRun|Exec=${_install_path}|" "squashfs-root/${_squashfs_desktop_file}"
+    sed -i -E "s|Icon=joplin|Icon=@joplinapp-desktop|" "squashfs-root/${_squashfs_desktop_file}"
+    sed -i -E "s|Comment=Joplin for Desktop|Comment=Joplin for Desktop|" "squashfs-root/${_squashfs_desktop_file}"
+    sed -i -E "s|Name=Joplin|Name=Joplin|" "squashfs-root/${_squashfs_desktop_file}"
 
-	install -Dm 755 "joplin-desktop.sh" "$pkgdir/usr/bin/joplin-desktop"
-	install -d "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
-	install -d "$pkgdir/usr/share/applications/"
+    # install icons
+    install -dm755 "${pkgdir}/usr/share/icons"
+    cp -dpr --no-preserve=ownership "squashfs-root/usr/share/icons" "${pkgdir}/usr/share"
+    chmod -R 755 "${pkgdir}/usr/share/icons"
+    find "${pkgdir}/usr/share/icons" -type f -name "@joplinapp-desktop.png" -exec chmod 644 {} \;
 
-	sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/joplin-desktop|" "$pkgdir/opt/$pkgname/@joplinapp-desktop.desktop"
-	ln -s "/opt/$pkgname/@joplinapp-desktop.desktop" "$pkgdir/usr/share/applications/"
-	ln -s "/opt/$pkgname/@joplinapp-desktop.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
+    # install .desktop file and image file
+    # disable appimage desktop integration: https://github.com/AppImage/AppImageSpec/blob/master/draft.md#desktop-integration
+    # disable AppimageLauncher integration prompt
+    # https://github.com/TheAssassin/AppImageLauncher/issues/78#issuecomment-466390939
+    sed -i -E "s|Exec=${_install_path}|Exec=env DESKTOPINTEGRATION=0 APPIMAGELAUNCHER_DISABLE=1 /usr/bin/joplin-desktop|" "squashfs-root/${_squashfs_desktop_file}"
+    install -Dm644 "squashfs-root/${_squashfs_desktop_file}" "${pkgdir}/${_desktop_file}"
+    install -Dm755 "${_filename}" "${pkgdir}/${_install_path}"
+    mkdir "${pkgdir}/usr/bin/" && chmod 755 "${pkgdir}/usr/bin/"
+    ln -s "${_install_path}" "${pkgdir}/usr/bin/joplin-desktop"
+
+    # install license file
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/joplin-appimage/LICENSE"
+
+    # disable AppImage integration prompt
+    # https://github.com/electron-userland/electron-builder/issues/1962
+    install -dm755 "${pkgdir}/usr/share/appimagekit"
 }
