@@ -1,0 +1,3 @@
+[nodejs-apg-js]
+source = "npm"
+npm = "apg-js"
