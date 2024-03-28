@@ -26,11 +26,32 @@ Index: qt5ct/CMakeLists.txt
  message(STATUS "Plugin path: " ${PLUGINDIR})
  
  message(STATUS "Generating translations ...")
+Index: qt5ct/src/qt5ct/CMakeLists.txt
+===================================================================
+--- qt5ct/src/qt5ct/CMakeLists.txt	(revision 690)
++++ qt5ct/src/qt5ct/CMakeLists.txt	(working copy)
+@@ -28,6 +28,6 @@
+ )
+ 
+ add_executable(qt5ct ${app_SRCS})
+-target_link_libraries(qt5ct PRIVATE Qt5::Widgets Qt5::Concurrent Qt5::WidgetsPrivate qt5ct-common)
++target_link_libraries(qt5ct PRIVATE Qt5::Widgets Qt5::Concurrent Qt5::WidgetsPrivate KF5::ConfigCore qt5ct-common)
+ install(TARGETS qt5ct DESTINATION ${CMAKE_INSTALL_BINDIR})
+ install(FILES qt5ct.desktop DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
 Index: qt5ct/src/qt5ct/appearancepage.cpp
 ===================================================================
 --- qt5ct/src/qt5ct/appearancepage.cpp	(revision 690)
 +++ qt5ct/src/qt5ct/appearancepage.cpp	(working copy)
-@@ -378,7 +378,7 @@
+@@ -35,6 +35,8 @@
+ #include <QMenu>
+ #include <QIcon>
+ #include <QStringList>
++#include <KSharedConfig>
++#include <KConfigGroup>
+ #include <qpa/qplatformthemefactory_p.h>
+ #include "qt5ct.h"
+ #include "appearancepage.h"
+@@ -378,11 +380,22 @@
  {
      QDir dir(path);
      dir.setFilter(QDir::Files);
@@ -39,6 +60,22 @@ Index: qt5ct/src/qt5ct/appearancepage.cpp
  
      for(const QFileInfo &info : dir.entryInfoList())
      {
+-        m_ui->colorSchemeComboBox->addItem(info.baseName(), info.filePath());
++        QString name;
++        QString path = info.filePath();
++        if(info.suffix() == "colors") {
++            KSharedConfigPtr config = KSharedConfig::openConfig(path, KConfig::SimpleConfig);
++            KConfigGroup group(config, "General");
++            name = group.readEntry("Name", info.baseName()) + " (KColorScheme)";
++        }
++        else
++        {
++            name = info.baseName();
++        }
++        m_ui->colorSchemeComboBox->addItem(name, path);
+     }
+ }
+ 
 Index: qt5ct/src/qt5ct-common/qt5ct.cpp
 ===================================================================
 --- qt5ct/src/qt5ct-common/qt5ct.cpp	(revision 690)
@@ -80,10 +117,10 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
  #include <QStringList>
  #include <qpa/qplatformthemefactory_p.h>
  
-+#include <ksharedconfig.h>
-+#include <kcolorscheme.h>
-+#include <kiconengine.h>
-+#include <kiconloader.h>
++#include <KSharedConfig>
++#include <KColorScheme>
++#include <KIconEngine>
++#include <KIconLoader>
 +
  Q_LOGGING_CATEGORY(lqt5ct, "qt5ct", QtWarningMsg)
  
@@ -92,7 +129,7 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
          QMetaObject::invokeMethod(this, "createFSWatcher", Qt::QueuedConnection);
  #endif
          QGuiApplication::setFont(m_generalFont);
-+        //if the user has explicitly set something else, don't interfere
++        //don't override the value explicitly set by the user
 +        if (QQuickStyle::name().isEmpty()) {
 +            QQuickStyle::setStyle(QLatin1String("org.kde.desktop"));
 +        }
@@ -136,11 +173,14 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
      }
      m_iconTheme = settings.value("icon_theme").toString();
      //load dialogs
-@@ -414,3 +438,30 @@
+@@ -414,3 +438,33 @@
      content.replace(regExp, "\n");
      return content;
  }
 +
++//There's such a thing as KColorSchemeManager that lets the user to change the color scheme
++//application-wide and we should re-apply the color scheme if KCSM resets it to the default
++//which leads KColorScheme to get the color scheme from kdeglobals which won't help us.
 +bool Qt5CTPlatformTheme::eventFilter(QObject *obj, QEvent *e)
 +{
 +    if(obj == qApp && e->type() == QEvent::DynamicPropertyChange)
