@@ -1,0 +1,4 @@
+[python-ntfs]
+source = "github"
+github = "sunshowers-code/py-ntfs"
+use_max_tag = true
