@@ -1,30 +1,41 @@
+# Maintainer: kojq <kojq@mailfence.com>
+
 pkgname=gitoxide-git
-pkgver=0.17.0.9516
+_pkgname=gitoxide
+pkgver=gix.v0.61.1.r4.g9e9c653a8
 pkgrel=1
-pkgdesc="An idiomatic, lean, fast & safe pure Rust implementation of Git"
-arch=('x86_64' 'i686')
-url="https://github.com/Byron/gitoxide"
-license=('MIT' 'Apache')
-depends=('cargo')
-makedepends=('cargo' 'git')
-optdepends=()
+pkgdesc='An idiomatic, lean, fast & safe pure Rust implementation of Git'
+url=https://github.com/Byron/gitoxide
+source=('git+https://github.com/Byron/gitoxide')
+arch=('aarch64' 'arm' 'armv5' 'armv6h' 'armv7h' 'i686' 'pentium4' 'riscv64' 'x86_64')
+license=('Apache-2.0' 'MIT')
+makedepends=('cargo' 'cmake')
+options=(!lto)
+depends=('git')
+conflicts=('gitoxide' 'gitoxide-bin')
 provides=('gitoxide')
-conflicts=('gitoxide')
-source=($pkgname::git+https://github.com/Byron/gitoxide)
 sha256sums=('SKIP')
 
-pkgver() {
-	cd $pkgname
-	echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).$(git rev-list --count HEAD)
+prepare() {
+  cd $_pkgname
+
+  cargo fetch --locked --target $(rustc -vV | sed -n 's|host: ||p')
 }
 
-build() {
-	cd $pkgname
-	env CARGO_INCREMENTAL=0 cargo build --release
+build () {
+  cd $srcdir/$_pkgname
+
+  CARGO_INCREMENTAL=0 GITOXIDE_VERSION=$pkgver cargo build --frozen --release --no-default-features --features max-pure --target-dir target
 }
 
 package() {
-	cd $pkgname
-	install -D -m755 "$srcdir/$pkgname/target/release/gix" "$pkgdir/usr/bin/gix"
-	install -D -m755 "$srcdir/$pkgname/target/release/ein" "$pkgdir/usr/bin/ein"
+  cd $srcdir/$_pkgname
+
+  install -Dm755 -t ${pkgdir}/usr/bin target/release/{gix,ein}
+}
+
+pkgver() {
+  cd $srcdir/$_pkgname
+
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
