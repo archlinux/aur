@@ -2,7 +2,7 @@
 _pkgname=wayneko
 pkgname=$_pkgname-git
 pkgver=r27.a0a22b7
-pkgrel=3
+pkgrel=4
 pkgdesc="Display an animated neko cat on the bottom of a Wayland output."
 arch=("x86_64")
 url="https://git.sr.ht/~leon_plickat/$_pkgname"
@@ -22,5 +22,7 @@ pkgver() {
 
 package() {
 	cd "$srcdir/$_pkgname"
-	make DESTDIR="$pkgdir" MANDIR="/usr/share/man" BASHCOMPDIR="/usr/share/bash-completion/completions" install
+    bashcompdir="/usr/share/bash-completions/completions"
+    mkdir -p "$pkgdir$bashcompdir"
+	make DESTDIR="$pkgdir" MANDIR="/usr/share/man" BASHCOMPDIR="$bashcompdir" install
 }
