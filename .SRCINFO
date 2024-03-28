@@ -1,10 +1,10 @@
 pkgbase = sfd2ufo
 	pkgdesc = An SFD to UFO converter providing sdflib
-	pkgver = 1.2.1
-	pkgrel = 3
-	url = https://github.com/aliftype/sfdLib
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/MFEK/sfdLib.py
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -14,7 +14,7 @@ pkgbase = sfd2ufo
 	depends = python-fonttools
 	provides = python-sfdlib
 	options = !emptydirs
-	source = https://github.com/aliftype/sfdLib/archive/v1.2.1/sfdLib-1.2.1.tar.gz
-	sha256sums = b4500e61f3714c762cb03f164823b5ea921b8e462a2a480a98f7a1cfb9a06ef4
+	source = https://github.com/MFEK/sfdLib.py/archive/v1.2.2/sfdLib.py-1.2.2.tar.gz
+	sha256sums = 5953cba813144d63f8e1227502faed8e936359cddc18a58bb4b7dd15ba96fcd3
 
 pkgname = sfd2ufo

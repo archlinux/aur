@@ -1,13 +1,13 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=sfd2ufo
-_pkgname=sfdLib
-pkgver=1.2.1
-pkgrel=3
+_pkgname=sfdLib.py
+pkgver=1.2.2
+pkgrel=1
 pkgdesc='An SFD to UFO converter providing sdflib'
 arch=(any)
-url="https://github.com/aliftype/$_pkgname"
-license=(BSD)
+url="https://github.com/MFEK/$_pkgname"
+license=(BSD-3-Clause)
 depends=(python
          python-ufolib2
          python-fonttools)
@@ -17,7 +17,7 @@ provides=(python-sfdlib)
 options=(!emptydirs)
 _archive="$_pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('b4500e61f3714c762cb03f164823b5ea921b8e462a2a480a98f7a1cfb9a06ef4')
+sha256sums=('5953cba813144d63f8e1227502faed8e936359cddc18a58bb4b7dd15ba96fcd3')
 
 build() {
 	cd "$_archive"
