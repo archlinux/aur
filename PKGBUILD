@@ -32,7 +32,12 @@ prepare() {
 }
 
 pkgver() {
-    jq -r .version "${_pkgname}/dist/manifest.json" || exit 1
+    local _pkgver=$(jq -r .version "${_pkgname}/dist/manifest.json")
+    if [[ -n $_pkgver && $_pkgver != null ]]; then
+        echo "$_pkgver"
+    else
+        exit 1
+    fi
 }
 
 package() {
