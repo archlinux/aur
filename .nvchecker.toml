@@ -1,0 +1,3 @@
+[nodejs-less-plugin-clean-css]
+source = "npm"
+npm = "less-plugin-clean-css"
