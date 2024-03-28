@@ -1,0 +1,27 @@
+pkgbase = planetblupi-bin
+	pkgdesc = Planet Blupi game
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = https://gitlab.com/planetblupi/
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = unzip
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = sdl2_ttf
+	depends = libpng
+	depends = libogg
+	depends = ffmpeg
+	depends = libvorbis
+	source_x86_64 = git+https://gitlab.com/planetblupi/planetblupi
+	source_x86_64 = https://gitlab.com/planetblupi/binaries/1.15.0/-/raw/main/planetblupi-linux-x64.tar.xz
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = git+https://gitlab.com/planetblupi/planetblupi
+	source_aarch64 = https://gitlab.com/planetblupi/binaries/1.15.0/-/raw/main/planetblubi-linux-arm64.tar.xz
+	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = SKIP
+
+pkgname = planetblupi-bin
