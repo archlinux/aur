@@ -1,6 +1,6 @@
 pkgbase = hhd-ui
 	pkgdesc = Configurator interface for Handheld Daemon.
-	pkgver = 2.0.3
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://hhd.dev
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = hhd-ui
 	depends = electron28
 	optdepends = hhd: a version of Handheld Daemon to connect to (also works over the network).
 	conflicts = hhd-ui
-	source = git+https://github.com/hhd-dev/hhd-ui.git#tag=v2.0.3
-	sha512sums = SKIP
+	source = git+https://github.com/hhd-dev/hhd-ui.git#tag=v2.1.0
+	sha512sums = 94369984daaca707288241560d7378a9cd6099f4b3294a47b69c6d79c150309fe4fa67d45ffeabb8cd0793489e61da6fc419149c41d21b3e2288c53466aba030
 
 pkgname = hhd-ui
