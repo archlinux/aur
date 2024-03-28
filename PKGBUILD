@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=opal-player-bin
 _pkgname=Opal
-pkgver=1.3.0
-pkgrel=3
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="Plays relaxing music in the background"
 arch=('x86_64')
 url="https://codedead.com/"
@@ -11,13 +11,10 @@ license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'java-runtime'
     'libx11'
-    'libxext'
-    'libxrender'
-    'libxtst'
     'alsa-lib'
-    'libxi'
+    'libxtst'
+    'libxrender'
 )
 makedepends=(
     'fuse2'
@@ -27,13 +24,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${CARCH}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4f5fb19cf085c3f160f373100c89a4ff67dc1bff5b270db852df115b658328ef'
-            'badda08ff7595f293153b5d58f1b908d5efd343bca2dab7ad4e9577c1250f8ea')
+sha256sums=('9d7d008f94cdf13ef3e9628d2e5a671f8fc830c532c6a0af52ee5380329d2bdc'
+            '19042ac56436e3b24a2662c24f6c0fdfb8feebf3506532956c53aef014583e07')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    chmod 755 "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|Exec=${_pkgname}|Exec=${pkgname%-bin} %U|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g;s|Utility|AudioVideo|g" \
         -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
