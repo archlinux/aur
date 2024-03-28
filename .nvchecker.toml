@@ -1,0 +1,5 @@
+[mattermost-plugin-focalboard]
+source = "github"
+github = "mattermost/focalboard"
+prefix = "v"
+use_max_tag = true
