@@ -1,12 +1,11 @@
 pkgbase = otf-junction
 	pkgdesc = A humanist sans-serif typeface
 	pkgver = 1
-	pkgrel = 3
-	url = http://theleagueofmoveabletype.com/junction/
+	pkgrel = 4
+	url = https://www.theleagueofmoveabletype.com/junction/
 	arch = any
 	license = OFL
 	source = https://github.com/theleagueof/junction/archive/master.zip
 	md5sums = e35636a6a9075db4f1bc09df69b8d0d3
 
 pkgname = otf-junction
-
