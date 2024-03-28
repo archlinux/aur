@@ -4,7 +4,7 @@
 
 _pkgname=svt-av1
 pkgname=lib32-svt-av1
-pkgver=1.8.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Scalable Video Technology AV1 encoder and decoder. (32-bits)'
 arch=('x86_64')
@@ -28,17 +28,17 @@ provides=(
   'libSvtAv1Dec.so'
   'libSvtAv1Enc.so'
 )
-_tag=59645eea34e2815b627b8293aa3af254eddd0d69
+_tag=2aeeb4f1a1d495b84bf5c21dbb60ae10e991fada
 source=("git+https://gitlab.com/AOMediaCodec/SVT-AV1.git#tag=${_tag}")
 b2sums=('SKIP')
-
-prepare() {
-  sed '/CMAKE_BUILD_TYPE Release/d' -i SVT-AV1/CMakeLists.txt
-}
 
 pkgver() {
   cd SVT-AV1
   echo "$(git describe --tags | tr -d v)"
+}
+
+prepare() {
+  sed '/CMAKE_BUILD_TYPE Release/d' -i SVT-AV1/CMakeLists.txt
 }
 
 build() {
