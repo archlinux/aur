@@ -8,8 +8,8 @@ pkgbase = dahdi-linux-git
 	arch = i686
 	license = LGPL
 	makedepends = git
-	makedepends = linux-headers=5.15.11.arch2
-	depends = linux=5.15.11.arch2
+	makedepends = linux-headers=6.8.1.arch1
+	depends = linux=6.8.1.arch1
 	depends = perl
 	provides = dahdi-linux=3.1.0.r12.g5c840cf
 	conflicts = dahdi
