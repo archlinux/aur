@@ -2,11 +2,9 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Jonas Heinrich <onny@project-insantiy.org>
 
-## license not available in pypi source package
-
 pkgname=python-soundcard
 _pkg=SoundCard
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='Play and record audio without resorting to CPython extensions'
 arch=('any')
@@ -14,8 +12,9 @@ url='https://github.com/bastibe/soundcard'
 license=('BSD')
 depends=('pulseaudio' 'python-cffi' 'python-numpy')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('3457c474a281d67f773e1ddd0f340032f23789e30280d2cb3f7cf2b08769c303')
+#source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('410835514ba10809803cb9887d4270f392b59eaf365915bb94516af3f8b1d037')
 
 build() {
 	cd "$_pkg-$pkgver"
