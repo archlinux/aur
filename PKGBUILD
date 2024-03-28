@@ -3,7 +3,7 @@
 # Contributor: Jordan Klassen <forivall@gmail.com>
 _pkgname='flow'
 pkgname="$_pkgname-bin"
-pkgver='0.231.0'
+pkgver='0.232.0'
 pkgrel='1'
 pkgdesc='A static type checker for JavaScript - binary version'
 arch=('x86_64' 'aarch64')
@@ -25,10 +25,10 @@ source=(
 )
 sha512sums=('50dd81cc39c67bc463e51a2d492119a2533548cb7e3f765e02cf9ada999397710351a1c4deadc4ffc59f4c2347b2e6ba2d4c42cbb63026ef48d50a2f2f5ee87a'
             '3b8288e5dac996da44bd81b0eb1d96905c4b90ad9154f3d29d073c96890b75cd281fa03af0b77f331dbec239d341363b5f9b328bafea0d4b8d0a3e900d150f80')
-sha512sums_x86_64=('1437dce3d5cace5f3709480e6a751ec992fb9e4f39ee83ab1e27c0e4e96baea62ba3969cb13bb7eff60a81e9463d497c2f535f7ec981805059bbe7d4ba4ff911'
-                   '82b227d37fdfaf084f8d93e489ee8a573c6c9878941180108bff22c2fa13c6b2f50d7e8ffbbf821f51d2d744c612a91fdc4f22a84483a5ab7db95d1c4adcc499')
-sha512sums_aarch64=('c5886ad8b4c28d1e88a397017654c105fa8b6ab9a90980072cb286e319dfe2f22e5b1def511ca41e1e5fada95328b138f0b17981f0e9b473ea98a53e220f9870'
-                    '4a49d088f4080cf7b36e52c5eb81bf4441ecdd609e1df08ebdde6d0d321f309a74e3dfebeea8c2ebd7a0cf6c8d7e445230bb1bc16f1030d4d5ab671238dfefe1')
+sha512sums_x86_64=('95d140fb3bbb01fb494211257244bc9803b1cab178275d623b79d55c3445bc3c6468e320dd2c08ba2c82b530661c8b0bc0e81f272b7a204906240c2666bf61b6'
+                   '7a2aea4c55986abad28fd90ac236de6c16f263b7045c2ea04fc38ec96506dacfef73bdd037fdb487f6a6aac2f5dd6e75322ed62a2c3d0122a8eb12360f2b99d8')
+sha512sums_aarch64=('081853786707c8adef108d56a3283d2f0eb1070c348bc36f0fe4e029ee97239150f2c0a62673462d980bae56d3c2bb5c3d16bb638fa875a00d862703e0174da8'
+                    'd55f6964c35daca58fecde94a81703ef48ea98721df3d8896f027d6581e9f3e59640f996ce42af7d33631dd564dd311a2214f1c0247227553e86e4ce0af4954b')
 
 check() {
 	"$srcdir/$_pkgname/$_pkgname" --version | tee '/dev/stderr' | grep -q "version $pkgver$"
