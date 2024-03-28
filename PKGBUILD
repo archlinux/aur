@@ -1,7 +1,7 @@
 # Maintainer: kumen
 
 pkgname="embedded-studio-arm"
-pkgver=7.32
+pkgver=7.32a
 pkgrel=1
 pkgdesc="Segger Embedded Studio for ARM"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ options=(!strip)
 source_x86_64=("Setup_EmbeddedStudio_ARM_v${pkgver/./}_linux_x64.tar.gz::https://www.segger.com/downloads/embedded-studio/Setup_EmbeddedStudio_ARM_v${pkgver/./}_linux_x64.tar.gz")
 source_aarch64=("Setup_EmbeddedStudio_ARM_v${pkgver/./}_linux_arm64.tar.gz::https://www.segger.com/downloads/embedded-studio/Setup_EmbeddedStudio_ARM_v${pkgver/./}_linux_arm64.tar.gz")
 
-md5sums_x86_64=('1af59d8d4c7f08c8ded809ee248b0575')
-md5sums_aarch64=('a0716e76c52e3b843fd319293461abea')
+md5sums_x86_64=('a0a2bc62a1836334909108f9c0b41ef0')
+md5sums_aarch64=('c0d4e41d63d740bbca2c3576ff5fae28')
 
 prepare(){
 	# Delete potential previous build
