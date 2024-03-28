@@ -13,9 +13,7 @@ pkgbase = lazycat-cloud-client
 	noextract = lzc-client-desktop_v1.0.63.tar.zst
 	source = https://dl.lazycat.cloud/client/desktop/stable/lzc-client-desktop_v1.0.63.tar.zst
 	source = lzc-client-desktop
-	source = lzc-client-desktop.desktop
 	sha256sums = c23b926ad9ace62fc3d5db84a53af8f398bdb45235eab6c9369db9ecf1454413
 	sha256sums = 0670fac388eb62ea33daa0d1ca3aa99637d922720aa55f392c021f24ba27eb8c
-	sha256sums = 16d8002683a82816a926042fbbbf03a70538cae3393bbdc0f435ec9a57a0ac7d
 
 pkgname = lazycat-cloud-client

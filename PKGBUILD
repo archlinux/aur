@@ -13,13 +13,11 @@ depends=('gtk3' 'zenity')
 makedepends=('tar' 'zstd')
 source=(
   "https://dl.lazycat.cloud/client/desktop/${_channel}/lzc-client-desktop_${_pkgver}.tar.zst"
-  "lzc-client-desktop"
-  "lzc-client-desktop.desktop")
+  "lzc-client-desktop")
 install='lazycat-cloud-client.install'
 noextract=("lzc-client-desktop_${_pkgver}.tar.zst")
 sha256sums=('c23b926ad9ace62fc3d5db84a53af8f398bdb45235eab6c9369db9ecf1454413'
-            '0670fac388eb62ea33daa0d1ca3aa99637d922720aa55f392c021f24ba27eb8c'
-            '16d8002683a82816a926042fbbbf03a70538cae3393bbdc0f435ec9a57a0ac7d')
+            '0670fac388eb62ea33daa0d1ca3aa99637d922720aa55f392c021f24ba27eb8c')
 
 package() {
   install -d ${pkgdir}/opt/lzc-client-desktop/
@@ -27,8 +25,7 @@ package() {
   tar xf lzc-client-desktop_${_pkgver}.tar.zst -C ${pkgdir}/opt/lzc-client-desktop
 
   install -Dm755 ${srcdir}/lzc-client-desktop ${pkgdir}/usr/bin/lzc-client-desktop
-  #install -Dm644 ${pkgdir}/opt/lzc-client-desktop/lzc-client.desktop ${pkgdir}/usr/share/applications/lzc-client-desktop.desktop
-  install -Dm644 ${srcdir}/lzc-client-desktop.desktop ${pkgdir}/usr/share/applications/lzc-client-desktop.desktop
+  install -Dm644 ${pkgdir}/opt/lzc-client-desktop/lzc-client.desktop ${pkgdir}/usr/share/applications/lzc-client-desktop.desktop
   install -Dm644 ${pkgdir}/opt/lzc-client-desktop/icon.png ${pkgdir}/usr/share/icons/lzc-client-desktop.png
 
   sed -i '/chmod/d' ${pkgdir}/opt/lzc-client-desktop/runcore.sh
