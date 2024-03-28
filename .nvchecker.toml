@@ -1,0 +1,5 @@
+[pam-exec-oauth2]
+source = "github"
+github = "shimt/pam-exec-oauth2"
+prefix = "v"
+use_max_tag = true
