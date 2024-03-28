@@ -1,0 +1,5 @@
+[ebnf-convert]
+source = "github"
+github = "GuntherRademacher/ebnf-convert"
+prefix = "v"
+use_max_tag = true
