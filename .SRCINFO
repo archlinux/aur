@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-window-thumbnails-git
+	pkgdesc = A GNOME Shell extension that allows the creation of scaled-down window clones for use as Picture-in-Picture (PIP) thumbnails (Github version).
+	pkgver = r38.a885f32
+	pkgrel = 1
+	url = https://github.com/G-dH/window-thumbnails
+	install = gnome-shell-extension-window-thumbnails.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell
+	provides = gnome-shell-extension-window-thumbnails
+	conflicts = gnome-shell-extension-window-thumbnails
+	source = gnome-shell-extension-window-thumbnails::git+https://github.com/G-dH/window-thumbnails.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-window-thumbnails-git
