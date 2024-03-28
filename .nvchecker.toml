@@ -1,0 +1,5 @@
+[sfd2ufo]
+source = "github"
+github = "aliftype/sfdLib"
+prefix = "v"
+use_max_tag = true
