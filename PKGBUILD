@@ -2,7 +2,7 @@
 
 pkgname=thumbor
 pkgver=7.7.3
-pkgrel=4
+pkgrel=5
 pkgdesc='open-source photo thumbnail service'
 arch=(x86_64)
 url='https://github.com/thumbor/thumbor'
@@ -50,7 +50,7 @@ build() {
 }
 
 package() {
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 $pkgname-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
   install -Dm 644 thumbor.service -t "$pkgdir"/usr/lib/systemd/system/
   install -Dm 644 $pkgname-$pkgver/$pkgname/$pkgname.conf -t "$pkgdir"/etc/
 
