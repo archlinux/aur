@@ -1,0 +1,5 @@
+[python-standardstreams]
+source = "github"
+github = "chrissimpkins/standardstreams"
+prefix = "v"
+use_max_tag = true
