@@ -1,5 +1,5 @@
 pkgbase = ruby-jekyll-seo-tag
-	pkgdesc = A Jekyll plugin to add metadata tags for search engines and social networks to better index and display your site's content
+	pkgdesc = Jekyll plugin to add metadata tags for search engines and social networks to better index and display your site
 	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://rubygems.org/gems/jekyll-seo-tag

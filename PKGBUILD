@@ -1,9 +1,10 @@
-# Maintainer: Ankit R Gadiya <arch@argp.in>
+# Maintainer: Bert Peters <bert@bertptrs.nl>
+# Contributor: Ankit R Gadiya <arch@argp.in>
 
 pkgname=ruby-jekyll-seo-tag
 pkgver=2.8.0
 pkgrel=1
-pkgdesc="A Jekyll plugin to add metadata tags for search engines and social networks to better index and display your site's content"
+pkgdesc="Jekyll plugin to add metadata tags for search engines and social networks to better index and display your site"
 arch=('any')
 depends=('jekyll')
 url="https://rubygems.org/gems/jekyll-seo-tag"
