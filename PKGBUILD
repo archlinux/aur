@@ -3,7 +3,7 @@
 pkgname="python-type-enforced"
 _name=${pkgname#python-}
 _name2="type_enforced"
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Check if type annotations correspond the reality at runtime"
 arch=("any")
@@ -11,7 +11,7 @@ url="https://pypi.org/project/$_name"
 license=("MIT")
 makedepends=(python-build python-installer python-wheel)
 source=("https://github.com/connor-makowski/type_enforced/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=("6a8ed3adbe8b11279b24505d595b873dd33fe0b6e471e6d7bb5c73d87e02eeba")
+sha256sums=("4ebf2a575ff672b8866cd211b3e825064dbbd9f730426a465684460fc3ef6eeb")
 
 build() {
     cd "$_name2-$pkgver"
