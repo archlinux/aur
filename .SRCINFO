@@ -12,7 +12,7 @@ pkgbase = warp-plus-bin
 	source = warp-plus-config.json
 	source = warp-plus.service
 	sha256sums = 1f0ac7c201c3a23eb8c343cd4bd77f7e6023b0a818b87aca9b9e2760a14fb810
-	sha256sums = b76bf2c04e60befcf95cf8ed38bfe3b56da7719cededb97f4048136789abe5fd
+	sha256sums = 75f7943345b61ae5c7d1573b870733ad4de4bc013ca6f761c9f9e36c91dcb2bb
 	sha256sums = 5ada20e3b2871c0921dfe36d721914fa02fe2f4892919160daa71992e91be49b
 
 pkgname = warp-plus-bin
