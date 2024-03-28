@@ -1,0 +1,5 @@
+[nodejs-addon-api]
+source = "github"
+github = "nodejs/node-addon-api"
+prefix = "v"
+use_max_tag = true
