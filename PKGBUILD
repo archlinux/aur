@@ -10,17 +10,15 @@ _basename=dahdi
 pkgname=dahdi-linux-git
 pkgdesc="DAHDI drivers for Asterisk (Digium, OpenVox, Allo and Yeastar cards)"
 pkgver=3.3.0.r1.g2781746
-pkgrel=2
+pkgrel=3
 arch=(x86_64 i686)
 url=http://www.asterisk.org
 license=(LGPL)
-depends=(
-  "linux=${_linuxver//-/.}"
-  perl
-)
 makedepends=(
   git
-  "linux-headers=${_linuxver//-/.}"
+  libusb
+  linux
+  linux-headers
 )
 provides=(
   "${_basename}=${pkgver%.r*}"
@@ -74,37 +72,43 @@ sha256sums=('SKIP'
             '3ff26cf80555fd7470b43a87c51d03c1db2a75abcd4561d79f69b6c48298e4a1')
 
 prepare() {
-	cd "$_archive"
-	sed -i -e 's,$(DESTDIR)/lib/firmware,$(DESTDIR)/usr/lib/firmware,g' \
-		drivers/dahdi/firmware/Makefile
-	sed -i -e '/^target/s,lib,usr/lib,' -e '/\binstall\b/{s,-m,-Dm,;s,bin ,bin -t ,}' \
-		build_tools/install_firmware
-	cd "drivers/dahdi/firmware"
-	for fw in ${source[@]:2:18}; do
-		ln -sf "$srcdir/${fw##*/}"
-	done
+  cd "$_archive"
+  sed -i -e 's,$(DESTDIR)/lib/firmware,$(DESTDIR)/usr/lib/firmware,g' \
+    drivers/dahdi/firmware/Makefile
+  sed -i -e '/^target/s,lib,usr/lib,' -e '/\binstall\b/{s,-m,-Dm,;s,bin ,bin -t ,}' \
+    build_tools/install_firmware
+  cd "drivers/dahdi/firmware"
+  for fw in ${source[@]:2:18}; do
+    ln -sf "$srcdir/${fw##*/}"
+  done
 }
 
 pkgver() {
-	cd "$_archive"
-	git describe --long --tags --abbrev=7 --match="v*" HEAD |
-		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_archive"
+  git describe --long --tags --abbrev=7 --match="v*" HEAD |
+    sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$_archive"
-	make DESTDIR="$pkgdir" all
+  cd "$_archive"
+  make DESTDIR="$pkgdir" all
 }
 
 package() {
-	cd "$_archive"
-	make DESTDIR="$pkgdir" install-firmware
-	make DESTDIR="$pkgdir" install-include
-	make DESTDIR="$pkgdir" install-xpp-firm
-	rm "$pkgdir/usr/lib/firmware/".d*
-	rm -r "$pkgdir/usr/lib/hotplug/firmware"
-	cd drivers
-	find . -name "*.ko" \
-		-exec gzip "{}" \; \
-		-exec install -Dm0644 "{}.gz" "$pkgdir/usr/lib/modules/$_kernelver/extramodules/{}.gz" \;
+  depends=(
+    libusb
+    "linux=${_linuxver//-/.}"
+    perl
+  )
+
+  cd "$_archive"
+  make DESTDIR="$pkgdir" install-firmware
+  make DESTDIR="$pkgdir" install-include
+  make DESTDIR="$pkgdir" install-xpp-firm
+  rm "$pkgdir/usr/lib/firmware/".d*
+  rm -r "$pkgdir/usr/lib/hotplug/firmware"
+  cd drivers
+  find . -name "*.ko" \
+    -exec gzip "{}" \; \
+    -exec install -Dm0644 "{}.gz" "$pkgdir/usr/lib/modules/$_kernelver/extramodules/{}.gz" \;
 }

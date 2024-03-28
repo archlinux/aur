@@ -1,16 +1,16 @@
 pkgbase = dahdi-linux-git
 	pkgdesc = DAHDI drivers for Asterisk (Digium, OpenVox, Allo and Yeastar cards)
 	pkgver = 3.3.0.r1.g2781746
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.asterisk.org
 	install = dahdi.install
 	arch = x86_64
 	arch = i686
 	license = LGPL
 	makedepends = git
-	makedepends = linux-headers=6.8.2.arch1
-	depends = linux=6.8.2.arch1
-	depends = perl
+	makedepends = libusb
+	makedepends = linux
+	makedepends = linux-headers
 	provides = dahdi=3.3.0
 	provides = dahdi-linux=3.3.0
 	conflicts = dahdi
@@ -55,3 +55,6 @@ pkgbase = dahdi-linux-git
 	sha256sums = 3ff26cf80555fd7470b43a87c51d03c1db2a75abcd4561d79f69b6c48298e4a1
 
 pkgname = dahdi-linux-git
+	depends = libusb
+	depends = linux=6.8.2.arch1
+	depends = perl
