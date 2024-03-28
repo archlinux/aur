@@ -1,0 +1,4 @@
+[python-panflute]
+source = "github"
+github = "sergiocorreia/panflute"
+use_max_tag = true
