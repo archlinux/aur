@@ -2,7 +2,7 @@
 
 pkgbase=pytorch-kineto-git
 pkgname=(libkineto-git torch-tb-profiler-git)
-pkgver=r498.8466a8b
+pkgver=r505.6968a24
 pkgrel=1
 pkgdesc="Kineto is part of the PyTorch Profiler"
 arch=('x86_64')
@@ -39,7 +39,10 @@ prepare() {
 
 build() {
     cd "${srcdir}/kineto/libkineto/build"
-    cmake ..
+    cmake .. \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DKINETO_BUILD_TESTS=OFF
     make -j$(nproc)
 }
 
