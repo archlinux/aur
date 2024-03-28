@@ -3,13 +3,13 @@
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 pkgname=python-pydicom
 pkgver=2.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Pure python package for working with DICOM files"
 arch=("any")
 url="https://pydicom.github.io/pydicom/stable/index.html"
-license=('MIT' 'custom')
+license=('MIT' 'LicenseRef-GDCM')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-wheel' 'python-build' 'python-installer' 'python-flit-core')
 optdepends=('python-numpy: for working with pixel data'
             'python-pillow: for working with compressed image data'
             'gdcm: for working with compressed JPEG, JPEG-LS and JPEG 2000 images'
@@ -18,10 +18,8 @@ optdepends=('python-numpy: for working with pixel data'
             'python-pylibjpeg-rle: for working with compressed RLE images'
             )
 checkdepends=('python-pytest')
-source=(
-"$pkgname-$pkgver.tar.gz::https://github.com/pydicom/pydicom/archive/v$pkgver.tar.gz"
-"pillow-10.1.patch"
-)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pydicom/pydicom/archive/v$pkgver.tar.gz"
+        "pillow-10.1.patch")
 md5sums=('748bfd7ad12373675c9df4e088f38dd1'
          '837949b3e4505c3fee9c43e8d5665251')
 
@@ -34,13 +32,13 @@ prepare()
 build()
 {
 	cd "$srcdir/pydicom-$pkgver"
-	python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package()
 {
 	cd "$srcdir/pydicom-$pkgver"
-	python setup.py install --skip-build --root="$pkgdir"/ --optimize=1
+	python -m installer --destdir="$pkgdir"/ dist/*.whl
 
 	install -D "$srcdir/pydicom-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
@@ -49,5 +47,5 @@ check()
 {
 	cd "$srcdir/pydicom-$pkgver"
 	# CLI tests are broken, skip those
-	PYTHONDONTWRITEBYTECODE=1 pytest -k "not TestCLIcall"
+	pytest -k "not TestCLIcall"
 }
