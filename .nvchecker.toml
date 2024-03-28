@@ -1,0 +1,3 @@
+[python-opentype-sanitizer]
+source = "pypi"
+pypi = "opentype-sanitizer"
