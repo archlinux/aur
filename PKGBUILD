@@ -1,17 +1,30 @@
 # Maintainer: Zenvie <134689569+Zenvie@users.noreply.github.com>
-# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=jslint.mjs
 _pkgname=jslint
-pkgver=2023.10.24
+pkgver=2024.3.26
 pkgrel=1
 pkgdesc="The JavaScript Code Quality and Coverage Tool"
 arch=(any)
 url="https://github.com/jslint-org/$_pkgname"
 license=(Unlicense)
+
 depends=(nodejs)
+makedepends=(npm)
+
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c49ffc67a79980fc6e401e6bb81170f74e475080f15f201c1a98f1892d6f41ea')
+sha256sums=('e57b21464e07efbe0395d0ff0040c1016f80552344c83b0a0d3a0d3613494283')
+
+prepare() {
+  cd "$_pkgname-$pkgver"
+  npm install
+}
+
+check() {
+  cd "$_pkgname-$pkgver"
+  npm test
+}
 
 package() {
   cd "$_pkgname-$pkgver"
