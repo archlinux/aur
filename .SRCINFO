@@ -29,7 +29,6 @@ pkgbase = kaudiocreator-git
 	depends = kcmutils5
 	depends = phonon-qt5
 	depends = kxmlgui5
-	depends = libkcompactdisc
 	depends = kcoreaddons5
 	depends = kio5
 	depends = kwidgetsaddons5

@@ -24,7 +24,6 @@ depends=(
   'kcmutils5' # libKF5KCMUtils.so
   'phonon-qt5' # libphonon4qt5.so
   'kxmlgui5' # libKF5XmlGui.so
-  'libkcompactdisc' # libKF5CompactDisc.so
   'kcoreaddons5' # libKF5CoreAddons.so
   'kio5' # libKF5KIOCore.so libKF5KIOWidgets.so
   'kwidgetsaddons5' # libKF5WidgetsAddons.so
