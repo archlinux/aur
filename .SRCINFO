@@ -1,0 +1,17 @@
+pkgbase = android-armv7a-eabi-json-c
+	pkgdesc = A JSON implementation in C (Android armv7a-eabi)
+	pkgver = 0.17
+	pkgrel = 1
+	url = https://github.com/json-c/json-c/wiki
+	arch = any
+	license = MIT
+	makedepends = android-cmake
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/json-c/json-c/archive/refs/tags/json-c-0.17-20230812.tar.gz
+	md5sums = 6d724389b0a08c519d9dd6e2fac7efb8
+
+pkgname = android-armv7a-eabi-json-c
