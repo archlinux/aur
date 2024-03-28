@@ -9,7 +9,7 @@ pkgrel=2
 pkgdesc="Access the Mediathek of many German TV stations (store data in XDG_DATA_HOME)"
 arch=(any)
 url="https://github.com/mediathekview/mediathekview"
-license=(GPL3)
+license=(GPL-3.0-or-later)
 depends=(bash hicolor-icon-theme 'java-runtime-openjdk=21' xdg-user-dirs)
 makedepends=(maven strip-nondeterminism 'java-environment-openjdk=21')
 conflicts=(mediathek mediathekview)
