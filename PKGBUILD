@@ -4,12 +4,12 @@
 # Contributer: Aviana Cruz <gwencroft@proton.me>
 
 pkgname="droidcam-obs-plugin"
-pkgver="2.2.0"
+pkgver="2.3.2"
 pkgrel="1"
 pkgdesc="plugin for droidcam obs"
 arch=("x86_64" "i686")
 url="https://dev47apps.com/obs/"
-_tag="6384259957c4cb6410d79096666aa4832e24d001"
+_tag="bc8b045c0a67a2f62f1f98bd537112cbc89881e3"
 srcurl="https://github.com/dev47apps/droidcam-obs-plugin.git"
 license=('GPL')
 depends=("obs-studio" 'libusbmuxd' 'libjpeg-turbo' 'libimobiledevice')
@@ -17,7 +17,7 @@ makedepends=('git')
 conflicts=("${pkgname}-git")
 pkgstem=${pkgname%-git}
 source=("${pkgstem}::git+${srcurl}#tag=${_tag}" "fix_Makefile.patch")
-sha256sums=('SKIP' '56d0fc2d61f79422260ea4ebbdb7ca7e59d084416d9ea6c35d94512606d02823')
+sha256sums=('SKIP' '75f5d0973697d8bf3e0e4cc166d376ea889aac6a88e3138e360af2a491cf2553')
 
 
 prepare() {

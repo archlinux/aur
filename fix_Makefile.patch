@@ -1,20 +1,10 @@
 diff --git a/linux/linux.mk b/linux/linux.mk
-index 33e2e7a..58d2d86 100644
+index 3697430..51102d9 100644
 --- a/linux/linux.mk
 +++ b/linux/linux.mk
-@@ -23,7 +23,7 @@ else
- 	LDD_DIRS += -L$(IMOBILEDEV_LIB)
- 
- 	LDD_LIBS += -lturbojpeg
--	LDD_LIBS += -limobiledevice
-+	LDD_LIBS += -limobiledevice-1.0
- endif
- 
- INCLUDES += -I$(IMOBILEDEV_DIR)/include
-@@ -33,4 +33,4 @@ INCLUDES += -I/usr/include/obs
+@@ -51,4 +51,4 @@ INCLUDES += -I$(LIBOBS_INCLUDES)
+ INCLUDES += -I$(FFMPEG_INCLUDES)
  
  LDD_LIBS += -lobs
- 
 -LDD_FLAG += -shared
-\ No newline at end of file
 +LDD_FLAG += $(LDFLAGS) -shared
