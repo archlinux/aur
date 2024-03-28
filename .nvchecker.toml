@@ -1,0 +1,3 @@
+[python-flatten-dict]
+source = "pypi"
+pypi = "flatten-dict"
