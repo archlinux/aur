@@ -1,0 +1,17 @@
+pkgbase = fortune-mod-fr-deb
+	pkgdesc = Collection of French fortune cookie files from Debian
+	pkgver = 0.65+nmu3
+	pkgrel = 1
+	url = https://packages.debian.org/bullseye/fortunes-fr
+	arch = any
+	groups = fortune-mods
+	license = custom
+	makedepends = recode
+	depends = fortune-mod
+	provides = fortune-mod-fr
+	conflicts = fortune-mod-fr
+	replaces = fortune-mod-fr
+	source = https://deb.debian.org/debian/pool/main/f/fortunes-fr/fortunes-fr_0.65+nmu3.tar.gz
+	sha256sums = 98488a2c1a62f2740ea085b3aca9757e3083d9b028657f16eaf3c5cfab379d28
+
+pkgname = fortune-mod-fr-deb
