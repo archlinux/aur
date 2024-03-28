@@ -1,0 +1,3 @@
+[python-orderedset]
+source = "pypi"
+pypi = "orderedset"
