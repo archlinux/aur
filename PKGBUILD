@@ -12,14 +12,15 @@ pkgname=ocaml-$_srcname
 pkgver=2.1.0
 pkgrel=1
 pkgdesc="Graph library for OCaml"
+arch=('x86_64')
 url="https://github.com/backtracking/ocamlgraph"
-source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('c60fae1c38bdcae6e00dadc652c84fdec285d0ff37ff86881fa191815c0decad82f525557c43dfee0dbf88866d1001dc450563eca51ce585ba2ac2bdc52c0cb1')
+license=('LGPL-2.1-only')
+depends=('glibc' 'ocaml-stdlib-shims' 'ocaml>=4.08.0')
 makedepends=('dune>=2.0' 'ocaml>=4.08.0')
 checkdepends=('ocaml-graphics')
-depends=('glibc' 'ocaml-stdlib-shims' 'ocaml>=4.08.0')
-arch=('x86_64')
-license=('LGPL-2.1-only')
+provides=("${pkgname}")
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+b2sums=('c60fae1c38bdcae6e00dadc652c84fdec285d0ff37ff86881fa191815c0decad82f525557c43dfee0dbf88866d1001dc450563eca51ce585ba2ac2bdc52c0cb1')
 
 check() {
     cd "$srcdir/$_srcname-$pkgver"
