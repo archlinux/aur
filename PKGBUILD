@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="olivetin-bin"
-pkgver=2024.03.08
+pkgver=2024.03.24
 pkgrel=1
 pkgdesc="Safe and simple access to predefined shell commands from a web interface"
 url="https://www.olivetin.app/"
@@ -16,9 +16,9 @@ source=("olivetin.service"
         "olivetin@.service")
 b2sums=('402097ad54be50688a22223b96f32a6630ec5479bcf4f99dbaf98d1b212cac4316c4adcf8dd7aeb9216d28dd815b5b80820023a4ca710ebe60f7603795931489'
         '90c4f129b8a481612a7b4c051b48930bce6259df1a1f02c7fcadcabe4eb3031feaa7bc620fd543ed66d2453464c7f5c383e58d7146019a01c98c333ccf382f25')
-b2sums_x86_64=('7ec689956b3dd898db9747c6e9196dc0b2aa2f075c3e2331acb8bbfac2556f4f56bb6d9811175a063216297ac737c3cf1145e165ded9f51cf371a6232228bdae')
-b2sums_aarch64=('7ec689956b3dd898db9747c6e9196dc0b2aa2f075c3e2331acb8bbfac2556f4f56bb6d9811175a063216297ac737c3cf1145e165ded9f51cf371a6232228bdae')
-b2sums_armv7h=('7ec689956b3dd898db9747c6e9196dc0b2aa2f075c3e2331acb8bbfac2556f4f56bb6d9811175a063216297ac737c3cf1145e165ded9f51cf371a6232228bdae')
+b2sums_x86_64=('6928f332e2df787ffbd53e966cb3b46c4a1caa4bc3188386e88e984524d739d347dbdc1f92fe1b4f65891245faf93b92adf2a07a7209e9e6289baefa2e261a92')
+b2sums_aarch64=('6928f332e2df787ffbd53e966cb3b46c4a1caa4bc3188386e88e984524d739d347dbdc1f92fe1b4f65891245faf93b92adf2a07a7209e9e6289baefa2e261a92')
+b2sums_armv7h=('6928f332e2df787ffbd53e966cb3b46c4a1caa4bc3188386e88e984524d739d347dbdc1f92fe1b4f65891245faf93b92adf2a07a7209e9e6289baefa2e261a92')
 backup=("etc/olivetin/config.yaml")
 
 prepare(){
