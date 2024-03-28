@@ -1,0 +1,5 @@
+[projclean]
+source = "github"
+github = "sigoden/projclean"
+prefix = "v"
+use_max_tag = true
