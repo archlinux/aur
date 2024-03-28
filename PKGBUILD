@@ -1,20 +1,20 @@
 # Maintainer: gifnksm <makoto.nksm+aur@gmail.com>
 _pkgname=cargo-sync-rdme
 pkgname=${_pkgname}-bin
-pkgver=0.3.2
+pkgver=0.3.4
 pkgrel=1
 epoch=
 pkgdesc="Cargo subcommand to synchronize README with crate documentation"
 arch=('x86_64' 'aarch64')
 url="https://github.com/gifnksm/cargo-sync-rdme"
-license=('MIT' 'Apache')
+license=('MIT' 'Apache-2.0')
 depends=('gcc-libs' 'zlib')
 conflicts=('cargo-sync-rdme')
 provides=('cargo-sync-rdme')
 source_x86_64=("https://github.com/gifnksm/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/gifnksm/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('6e5ae31ecc6b34d1ce1633f24799c1629ac38334ec64cdac83689a96589195bf')
-sha256sums_aarch64=('44bf8c7d0935c43e1dd2e1e01fde182721644e607de860e440350b750dc16f8a')
+sha256sums_x86_64=('2072215d45a0bdcf84ce0a2f7d7d39119b4fad5afac9ba54dfdaa2e4f7f2db6a')
+sha256sums_aarch64=('c99f0255d898e2fc27548fe13afdc0dde16af6ad99ff55cc0180d1d013e00469')
 
 package() {
         cd "$srcdir/"
