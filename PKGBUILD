@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=musicpod-git
 _app_id=org.feichtmeier.Musicpod
-pkgver=1.3.0.r10.g37521c6
+pkgver=1.3.1.r3.g9ba506e
 pkgrel=1
-_flutter_ver=3.19.4
+_flutter_ver=3.19.5
 pkgdesc="Music, radio, television and podcast player"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ubuntu-flutter-community/musicpod"
@@ -11,17 +11,21 @@ license=('GPL-3.0-or-later')
 depends=('gstreamer' 'gtk3' 'mpv')
 #makedepends=('chrpath' 'clang' 'cmake' 'git' 'ninja')
 makedepends=('clang' 'cmake' 'git' 'ninja')
-checkdepends=('appstream')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/ubuntu-flutter-community/musicpod.git'
         "flutter-${_flutter_ver}.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${_flutter_ver/.hotfix/+hotfix}-stable.tar.xz")
 sha256sums=('SKIP'
-            '66adfe6b6559a2e2f1fdbf89c938d0af53add3860c854c79dbbd5452f5d2290a')
+            '6590607e7f2fb23bcc7e0a2d6aac292f9208cbf12a40862c281058c758604fb3')
 
 pkgver() {
   cd "${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${pkgname%-git}"
+  desktop-file-edit  --set-icon="${pkgname%-git}" "snap/gui/${pkgname%-git}.desktop"
 }
 
 build() {
@@ -35,8 +39,7 @@ build() {
 
 check() {
   cd "${pkgname%-git}"
-  appstreamcli validate --no-net "flatpak/${_app_id}.appdata.xml"
-  desktop-file-validate "flatpak/${_app_id}.desktop"
+  desktop-file-validate "snap/gui/${pkgname%-git}.desktop"
 }
 
 package() {
@@ -52,13 +55,8 @@ package() {
     "$pkgdir/opt/${pkgname%-git}/"
   cp -r build/linux/${FLUTTER_ARCH}/release/bundle/{data,lib} "$pkgdir/opt/${pkgname%-git}"
 
-  for i in 64 128; do
-    install -Dm644 "flatpak/icon${i}.png" \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/${_app_id}.png"
-  done
-
-  install -Dm644 "flatpak/${_app_id}.appdata.xml" -t "$pkgdir/usr/share/metainfo/"
-  install -Dm644 "flatpak/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "snap/gui/${pkgname%-git}.png" -t "$pkgdir/usr/share/pixmaps/"
+  install -Dm644 "snap/gui/${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications/"
 
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/${pkgname%-git}/${pkgname%-git}" "$pkgdir/usr/bin/"
