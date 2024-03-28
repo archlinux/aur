@@ -11,7 +11,7 @@ conflicts=("python-fmpy")
 provides=("python-fmpy")
 depends=(python-attrs python-jinja python-lark-parser python-lxml python-msgpack python-numpy python-pytz sundials) # rpclib
 makedepends=(python-build python-installer python-setuptools python-wheel python-requests cmake git)
-checkdepends=(python-pytest python-dask python-scipy python-plotly jupyter-nbformat)
+# checkdepends=(python-pytest python-dask python-scipy python-plotly jupyter-nbformat)
 optdepends=('python-matplotlib: for plot results'
   'python-kaleido: for SVG export'
   'jupyter-notebook: for simulate the FMU in jupyter'
