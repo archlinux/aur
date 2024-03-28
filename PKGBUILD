@@ -1,29 +1,31 @@
 # Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
 
-pkgname=cpotree-git
 _srcname=CPotree
+_pkgname=cpotree
+pkgname="${_pkgname}-git"
 pkgver=1.0.r5.gdc13ad1
-pkgrel=2
+pkgrel=3
 pkgdesc="Potree Utilities"
 arch=('x86_64')
 url="https://github.com/potree/CPotree"
 license=('BSD-2-Clause')
 makedepends=('git')
 depends=('gcc-libs' 'glibc' 'brotli' 'laszip' 'onetbb')
-conflicts=('cpotree')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("git+${url}.git")
 b2sums=('SKIP')
 
 build() {
+    cd "$srcdir/$_srcname/src"
+
     CXX="${CXX:=g++}"
 
-    cd "$srcdir/$_srcname/src"
     $CXX -std=c++20 -I../include/ -I../modules -idirafter../libs executable_extract_area.cpp ../modules/unsuck/unsuck_platform_specific.cpp -lbrotlidec -llaszip -ltbb -o extract_area
     $CXX -std=c++20 -I../include/ -I../modules -idirafter../libs executable_extract_profile.cpp ../modules/unsuck/unsuck_platform_specific.cpp -lbrotlidec -llaszip -ltbb -o extract_profile
 }
 
 package() {
-
     cd "${srcdir}/${_srcname}"
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
