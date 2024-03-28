@@ -1,10 +1,10 @@
 pkgbase = mediathekview-xdg
 	pkgdesc = Access the Mediathek of many German TV stations (store data in XDG_DATA_HOME)
 	pkgver = 14.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mediathekview/mediathekview
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = maven
 	makedepends = strip-nondeterminism
 	makedepends = java-environment-openjdk=21
