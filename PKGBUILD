@@ -2,8 +2,9 @@
 _pkgname=kaiju
 pkgname=ghidra-extension-kaiju-bin
 pkgdesc="Binary analysis improvements for Ghidra. Can import C++ symbols from OOAnalyer"
-pkgver=240220
-_ghidraver=11.0.1
+pkgver=240327
+_pkgdate=240328
+_ghidraver=11.0.2
 pkgrel=1
 arch=('any')
 url=https://github.com/CERTCC/kaiju
@@ -13,8 +14,8 @@ optdepends=(
   'z3-java: To use the GhiHorn plugin for CFG analysis'
 )
 makedepends=('unzip')
-source=("kaiju-${pkgver}.zip::https://github.com/CERTCC/kaiju/releases/download/${pkgver}/ghidra_${_ghidraver}_PUBLIC_20${pkgver}_kaiju.zip")
-sha512sums=('535a157c3a04012c8e196c788df5fbf9b1c6036216ddaf58288d97aaf64a6ebb08ce2f058e7c6eb972fe1c49c0fd03e9224c09bc2288132713277cc31064667f')
+source=("kaiju-${pkgver}.zip::https://github.com/CERTCC/kaiju/releases/download/${_pkgdate}/ghidra_${_ghidraver}_PUBLIC_20${pkgver}_kaiju.zip")
+sha512sums=('f15a3e28a7205b061206dc7f00451a3521a8c1c0d3f3efa91e841ca1acbabb46abd3ec8aa4c0a85c0d72932bbbd9c9654f0a320ca050cf42215397c7ad84f4cb')
 
 package() {
   cd $srcdir
