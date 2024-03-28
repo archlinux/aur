@@ -1,7 +1,7 @@
 pkgbase = ruby-http_parser.rb
 	pkgdesc = Ruby bindings to https://github.com/ry/http-parser and https://github.com/a2800276/http-parser.java
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/tmm1/http_parser.rb
 	arch = i686
 	arch = x86_64

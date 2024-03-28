@@ -1,9 +1,10 @@
-# Maintainer: Mario Finelli <mario dot finelli at yahoo dot com>
+# Maintainer: Bert Peters <bert@bertptrs.nl>
+# Contributor: Mario Finelli <mario dot finelli at yahoo dot com>
 
 _gemname=http_parser.rb
 pkgname=ruby-$_gemname
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ruby bindings to https://github.com/ry/http-parser and https://github.com/a2800276/http-parser.java"
 arch=(i686 x86_64)
 url='http://github.com/tmm1/http_parser.rb'
@@ -20,4 +21,10 @@ package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
 
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+
+  # Install license in correct spot
+  install -t "$pkgdir/usr/share/licenses/$pkgname" -Dm644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE-MIT"
+
+  # Remove pointless cache file
+  rm "$pkgdir/$_gemdir/cache/"*.gem
 }
