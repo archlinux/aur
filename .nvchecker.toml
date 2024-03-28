@@ -1,0 +1,5 @@
+[mattermost-plugin-playbooks]
+source = "github"
+github = "mattermost/mattermost-plugin-playbooks"
+prefix = "v"
+use_max_tag = true
