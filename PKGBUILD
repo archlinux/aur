@@ -1,4 +1,5 @@
-# Maintainer: Jérémy "Vrakfall" Lecocq <jeremy [dot] lecocq [at] protonmail [dot] com>
+# Maintainer: Karl Ludwig Brennan <karlludwigbrennan@outlook.com>
+# Contributor: Jérémy "Vrakfall" Lecocq <jeremy [dot] lecocq [at] protonmail [dot] com>
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 # Contributor: James Rayner <iphitus@gmail.com>
@@ -6,7 +7,7 @@
 _pkgbasename=nvidia-utils
 pkgbase=lib32-nvidia-525xx-utils
 pkgname=('lib32-nvidia-525xx-utils' 'lib32-opencl-nvidia-525xx')
-pkgver=525.116.04
+pkgver=525.147.05
 pkgrel=1
 pkgdesc="NVIDIA x32 libs for Linux, 525 branch"
 arch=('x86_64')
@@ -16,7 +17,7 @@ license=('custom')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run")
-sha512sums=('8e511e4965f11c849ae0bb3f399bc79eb004bb3a15612b35e6c7b9ec236a73085b58cc4e8cb37b5ffde7e7fe202928a08618b5dd3328235795bb942bde339195')
+sha512sums=('0c7b31715fce6a7bd77a2d9f9a3dca54a929a7790d748051576f62cdaeaeb6a9d0f3fbb13f0b20a51966bdb9470acdbc9ee529a9e84f38a9c834a1bd28d81773')
 
 create_links() {
     # create soname links
@@ -57,7 +58,6 @@ package_lib32-nvidia-525xx-utils() {
     optdepends=('lib32-opencl-nvidia')
     conflicts=('lib32-nvidia-utils' 'lib32-nvidia-libgl')
     provides=("lib32-nvidia-utils=${pkgver}" 'lib32-vulkan-driver' 'lib32-opengl-driver' 'lib32-nvidia-libgl')
-    replaces=('lib32-nvidia-libgl')
 
     cd "${_pkg}"/32
 
