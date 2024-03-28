@@ -1,7 +1,8 @@
 # Maintainer: Kimiblock Moe
 pkgname=rime-moe-pinyin-git
-pkgver=r87.28e3566
+pkgver=3.2.r0.gaf817b1c
 pkgrel=1
+epoch=1
 pkgdesc="moeOS RIME 拼音方案"
 arch=('any')
 url="https://github.com/Kimiblock/moeOS-pinyin"
@@ -14,7 +15,7 @@ sha256sums=("SKIP")
 
 function pkgver() {
 	cd moeOS-pinyin
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 function prepare() {

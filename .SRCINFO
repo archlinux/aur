@@ -1,7 +1,8 @@
 pkgbase = rime-moe-pinyin-git
 	pkgdesc = moeOS RIME 拼音方案
-	pkgver = r87.28e3566
+	pkgver = 3.2.r0.gaf817b1c
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/Kimiblock/moeOS-pinyin
 	arch = any
 	license = GPL-3.0-or-later
