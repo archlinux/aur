@@ -1,0 +1,4 @@
+[luasql]
+source = "github"
+github = "keplerproject/luasql"
+use_max_tag = true
