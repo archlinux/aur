@@ -1,7 +1,7 @@
 # Maintainer: alyrow
 
 pkgname=hyperlap2d-git
-pkgver=v0.0.8.r36.g79bf6f3
+pkgver=v0.1.3.r35.g67790cc0
 pkgrel=1
 pkgdesc="A powerful, platform-independent, visual editor for complex 2D worlds and scenes."
 arch=('x86_64')
@@ -9,8 +9,8 @@ url="https://hyperlap2d.rednblack.games/"
 license=('GPL3')
 conflicts=("hyperlap2d-bin")
 provides=("hyperlap2d")
-depends=('libxtst' 'libxrender' 'alsa-lib' 'hicolor-icon-theme' 'libnet' 'java-runtime')
-makedepends=('java-environment' 'git' 'dpkg' 'binutils' 'tar')
+depends=('libxi' 'java-runtime>=16')
+makedepends=('java-environment>=16' 'java-environment<=19' 'git' 'dpkg' 'binutils' 'tar')
 optdepends=()
 source=("$pkgname::git+https://github.com/rednblackgames/HyperLap2D.git")
 md5sums=('SKIP')
@@ -21,11 +21,13 @@ pkgver() {
 }
 
 prepare() {
-  if ! archlinux-java get | grep 16 ; then 
-      echo "You don't have a Java 16 JDK selected but the following installed on your system:"
-      echo "`archlinux-java status | grep 16`"
-      echo "Select a Java 16 JDK using \"sudo archlinux-java set [name from the list above]\""
-      echo "If you switched to a JDK 16, please re-run the installation."
+  jver=$(archlinux-java get | sed -r 's/java-([[:digit:]]+)-.*/\1/')
+  if [[ $jver < 16 || $jver > 19 ]]; then
+  #if ! archlinux-java get | grep 16 ; then 
+      echo "You don't have a Java [16-19] JDK selected but the following are installed on your system:"
+      echo "`archlinux-java status`"
+      echo "Select a Java [16-19] JDK using \"sudo archlinux-java set [name from the list above]\""
+      echo "If you switched to a JDK [16-19], please re-run the installation."
       return 1
   fi
 

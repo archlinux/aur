@@ -1,21 +1,18 @@
 pkgbase = hyperlap2d-git
 	pkgdesc = A powerful, platform-independent, visual editor for complex 2D worlds and scenes.
-	pkgver = v0.0.8.r36.g79bf6f3
+	pkgver = v0.1.3.r35.g67790cc0
 	pkgrel = 1
 	url = https://hyperlap2d.rednblack.games/
 	arch = x86_64
 	license = GPL3
-	makedepends = java-environment
+	makedepends = java-environment>=16
+	makedepends = java-environment<=19
 	makedepends = git
 	makedepends = dpkg
 	makedepends = binutils
 	makedepends = tar
-	depends = libxtst
-	depends = libxrender
-	depends = alsa-lib
-	depends = hicolor-icon-theme
-	depends = libnet
-	depends = java-runtime
+	depends = libxi
+	depends = java-runtime>=16
 	provides = hyperlap2d
 	conflicts = hyperlap2d-bin
 	source = hyperlap2d-git::git+https://github.com/rednblackgames/HyperLap2D.git
