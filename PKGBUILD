@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=heimer-bin
-pkgver=4.3.0
-pkgrel=2
+pkgver=4.4.0
+pkgrel=1
 pkgdesc="A simple cross-platform mind map, diagram, and note-taking tool written in Qt."
 arch=("x86_64")
 url="https://github.com/juzzlin/Heimer"
@@ -13,7 +13,7 @@ depends=(
     'qt6-svg'
 )
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-ubuntu-22.04_amd64.deb")
-sha256sums=('87cf29b02778c844ee11e0b48026e4ec80454047279a1103adc606fd7980d4dc')
+sha256sums=('afb949cff53cddf58706d91944035cfb96397204f72fb8654198ed1e6d6cb661')
 build() {
     bsdtar -xf "${srcdir}/data."*
 }
