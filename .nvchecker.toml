@@ -1,0 +1,4 @@
+[novel-cli]
+source = "github"
+github = "novel-rs/cli"
+use_max_tag = true
