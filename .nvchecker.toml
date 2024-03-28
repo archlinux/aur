@@ -1,0 +1,5 @@
+[mattermost-plugin-jitsi]
+source = "github"
+github = "mattermost/mattermost-plugin-jitsi"
+prefix = "v"
+use_max_tag = true
