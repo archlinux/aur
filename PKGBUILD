@@ -12,7 +12,7 @@ pkgdesc='VMware (Player and Workstation) host kernel modules with patches needed
 arch=('x86_64' 'aarch64' 'i386')
 license=('GPL2')
 provides=(vmware-host-modules-dkms vmware-host-modules)
-conflicts=(vmware-host-modules-dkms vmware-host-modules vmware-workstation)
+conflicts=(vmware-host-modules-dkms vmware-host-modules)
 depends=('dkms')
 makedepends=('git')
 source=("git+https://github.com/mkubecek/${_pkgname}.git#branch=workstation-${_branch_version}"

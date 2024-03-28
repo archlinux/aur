@@ -14,7 +14,6 @@ pkgbase = vmware-host-modules-dkms-git
 	provides = vmware-host-modules
 	conflicts = vmware-host-modules-dkms
 	conflicts = vmware-host-modules
-	conflicts = vmware-workstation
 	source = git+https://github.com/mkubecek/vmware-host-modules.git#branch=workstation-17.5.1
 	source = dkms-vmmon.conf
 	source = dkms-vmnet.conf
