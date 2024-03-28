@@ -1,0 +1,5 @@
+[gnvim]
+source = "github"
+github = "vhakulinen/gnvim"
+prefix = "v"
+use_max_tag = true
