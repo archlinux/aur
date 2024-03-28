@@ -1,7 +1,7 @@
 # Maintainer: Asuka Minato <i at asukaminato dot eu dot org>
 pkgname=nodejs-inshellisense
 _pkgname=@microsoft/inshellisense
-pkgver=0.0.1_rc.7
+pkgver=0.0.1_rc.9
 pkgrel=1
 pkgdesc="IDE style command line auto complete"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(nodejs glibc gcc-libs bash)
 makedepends=(npm)
 source=(https://registry.npmjs.org/$_pkgname/-/inshellisense-${pkgver//_/-}.tgz)
 noextract=(inshellisense-${pkgver//_/-}.tgz)
-sha256sums=('c3a2b6adb755a19b2119fff8c4179b899ddbae60b00262c0bacea5b423061987')
+sha256sums=('3c0dcde6cc14efdb69b859bb60db210e1cf850673eb27014055b24c634db381c')
 
 package() {
 	npm install --omit=dev -g --prefix "${pkgdir}/usr" "${srcdir}/inshellisense-${pkgver//_/-}.tgz"
