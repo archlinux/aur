@@ -1,0 +1,36 @@
+--- a/client/mysql.cc
++++ b/client/mysql.cc
+@@ -61,31 +61,8 @@
+ #include "client_metadata.h"
+ 
+ extern "C" {
+-#if defined(HAVE_CURSES_H) && defined(HAVE_TERM_H)
+-#include <curses.h>
+-#include <term.h>
+-#else
+-#if defined(HAVE_TERMIOS_H)
+-#include <termios.h>
+-#include <unistd.h>
+-#elif defined(HAVE_TERMBITS_H)
+-#include <termbits.h>
+-#elif defined(HAVE_ASM_TERMBITS_H) && (!defined __GLIBC__ || !(__GLIBC__ > 2 || __GLIBC__ == 2 && __GLIBC_MINOR__ > 0))
+-#include <asm/termbits.h>		// Standard linux
+-#endif
+-#undef VOID
+-#if defined(HAVE_TERMCAP_H)
+-#include <termcap.h>
+-#else
+-#ifdef HAVE_CURSES_H
+-#include <curses.h>
+-#endif
+-#undef SYSV				// hack to avoid syntax error
+-#ifdef HAVE_TERM_H
+-#include <term.h>
+-#endif
+-#endif
+-#endif /* defined(HAVE_CURSES_H) && defined(HAVE_TERM_H) */
++#include <ncursesw/curses.h>
++#include <ncursesw/term.h>
+ 
+ #undef bcmp				// Fix problem with new readline
+ #if !defined(_WIN32)
