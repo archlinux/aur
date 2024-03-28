@@ -1,18 +1,18 @@
 # Maintainer: loh.tar <loh.tar at googlemail dot com>
 pkgname="wrt2pdf"
-pkgver="0.6"
+pkgver="0.6.1"
 pkgrel="1"
 pkgdesc="Create a PDF out of a plain text file"
 arch=("x86_64")
 url="https://github.com/loh-tar/$pkgname"
-license=("GPL2")
-depends=("qt5-base")
+license=("GPL-2.0-or-later")
+depends=("qt6-base" "gcc-libs")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/loh-tar/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('f204671e76bac20c4e039d4bec8bd7a52bdc69c2b62ce68d48ebadd29d8f8a87')
+sha256sums=('cb1e01428ef49ecb7d1ca517418a11ecf98a0f7afecf9014c91c5b2158cf5fab')
 
 build() {
   cd "$pkgname-$pkgver"
-  mkdir build
+  mkdir -p build
   cmake -DCMAKE_BUILD_TYPE=Release -S "./" -B "build"
   cd build
   make
