@@ -2,7 +2,7 @@
 
 pkgname='smol_img'
 pkgver='v1.3'
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Quick Image Editor with automatic resizing to reach target JPG/PNG size.'
 arch=(pentium4 i686 x86_64 armv7h aarch64)
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 prepare()
 {
     cd $pkgname
-git     git checkout $pkgver
+    git checkout $pkgver
 }
 
 build()
