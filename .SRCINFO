@@ -1,6 +1,6 @@
 pkgbase = zapzap-git
 	pkgdesc = WhatsApp desktop application written in Pyqt6 + PyQt6-WebEngine
-	pkgver = 5.1.r0.gb85d6f3
+	pkgver = 5.2.1.r7.g5abbce3
 	pkgrel = 1
 	url = https://github.com/zapzap-linux/zapzap
 	arch = x86_64
@@ -21,7 +21,9 @@ pkgbase = zapzap-git
 	depends = python-typing_extensions>=4.6.1
 	optdepends = hunspell: spell check
 	provides = zapzap
+	provides = zapzap-git
 	conflicts = zapzap
+	conflicts = zapzap-git
 	source = git+https://github.com/zapzap-linux/zapzap.git
 	b2sums = SKIP
 

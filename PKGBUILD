@@ -2,7 +2,7 @@
 
 pkgname=zapzap-git
 _pkgname=com.rtosta.zapzap
-pkgver=5.1.r0.gb85d6f3
+pkgver=5.2.1.r7.g5abbce3
 pkgrel=1
 pkgdesc="WhatsApp desktop application written in Pyqt6 + PyQt6-WebEngine"
 arch=('x86_64')
@@ -13,8 +13,8 @@ makedepends=('git' 'python-build' 'python-installer' 'python-setuptools>=40.8.0'
 optdepends=(
 	'hunspell: spell check'
 	)
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}" "${pkgname}")
+conflicts=("${pkgname%-git}" "${pkgname}")
 source=(git+$url.git)
 b2sums=('SKIP')
 
