@@ -1,0 +1,4 @@
+[python-fontaine]
+source = "github"
+github = "googlefonts/pyfontaine"
+use_max_tag = true
