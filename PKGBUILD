@@ -1,38 +1,36 @@
-# Maintainer: Joar Heimonen <joarheimonen@live.no>
-# Note: This is only an install script for Yuma123, not the actual project itself.
+# Maintainer: Rafflesiaceae <rafflesiaceae.plant@gmail.com>
+# shellcheck disable=SC2034,SC2164,SC2154
 
-pkgname=yuma123-git
-pkgver=latest
+pkgname=petool-git
+_pkgname=petool
+pkgver=2024.03.14.r7.g869d58e
 pkgrel=1
-pkgdesc="Open-source YANG API in C and CLI (yangcli) and server (netconfd)"
-arch=('x86_64')
-url="https://github.com/vlvassilev/yuma123"
-license=('BSD')
-depends=('git' 'autoconf' 'automake' 'make' 'gcc')
-makedepends=('libtool') # Add libtool as a build dependency
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-pkgbase=yuma123-git
+pkgdesc="Tool to help rebuild, extend and patch 32-bit Windows applications."
+arch=('any')
+license=('MIT')
+url="https://github.com/FunkyFr3sh/petool"
+depends=()
+makedepends=('gcc' 'gcc-libs' 'git' 'make')
+provides=('petool')
+conflicts=('petool')
+options=('!buildflags')
 
-source=("git+https://github.com/vlvassilev/yuma123")
+source=("$_pkgname::git+${url}#branch=${BRANCH:-master}")
+sha512sums=('SKIP')
 
-prepare() {
-  cd "$srcdir/yuma123"
-  libtoolize
-  autoreconf -i -f
+pkgver() {
+    cd "$srcdir/$_pkgname"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-  cd "$srcdir/yuma123"
-  ./configure CFLAGS='-g -O0' CXXFLAGS='-g -O0' --prefix=/usr
-  make
+    cd "${srcdir}/${_pkgname}"
+    make
 }
 
 package() {
-  cd "$srcdir/yuma123"
-  make DESTDIR="${pkgdir}" install
-  mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
+    cd "${srcdir}/${_pkgname}"
+    install -Dm 755 petool "${pkgdir}/usr/bin/petool"
 }
 
-
-sha256sums=('SKIP') 
+# vim:set ft=sh syn=sh ts=4 sw=4 et:

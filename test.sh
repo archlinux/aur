@@ -1,1 +1,1 @@
-echo 'test'
+petool help

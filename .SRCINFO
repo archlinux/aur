@@ -1,19 +1,18 @@
-pkgbase = pkgbase
-	pkgdesc = Open-source YANG API in C and CLI (yangcli) and server (netconfd)
-	pkgver = latest
+pkgbase = petool-git
+	pkgdesc = Tool to help rebuild, extend and patch 32-bit Windows applications.
+	pkgver = 2024.03.14.r7.g869d58e
 	pkgrel = 1
-	url = https://github.com/vlvassilev/yuma123
-	arch = x86_64
-	license = BSD
-	depends = git
-	depends = autoconf
-	depends = automake
-	depends = libtool
-	depends = make
-	depends = gcc
-	provides = yuma123
-	conflicts = yuma123
-	source = git+https://github.com/vlvassilev/yuma123
-	sha256sums = SKIP
+	url = https://github.com/FunkyFr3sh/petool
+	arch = any
+	license = MIT
+	makedepends = gcc
+	makedepends = gcc-libs
+	makedepends = git
+	makedepends = make
+	provides = petool
+	conflicts = petool
+	options = !buildflags
+	source = petool::git+https://github.com/FunkyFr3sh/petool#branch=master
+	sha512sums = SKIP
 
-pkgname = yuma123-git
+pkgname = petool-git
