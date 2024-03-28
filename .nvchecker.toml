@@ -1,0 +1,5 @@
+[python-xgridfit]
+source = "github"
+github = "psb1558/xgridfit-3"
+prefix = "v"
+use_max_tag = true
