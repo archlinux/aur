@@ -13,8 +13,8 @@ makedepends=('git' 'python-build' 'python-installer' 'python-setuptools>=40.8.0'
 optdepends=(
 	'hunspell: spell check'
 	)
-provides=("${pkgname%-git}" "${pkgname}")
-conflicts=("${pkgname%-git}" "${pkgname}")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=(git+$url.git)
 b2sums=('SKIP')
 

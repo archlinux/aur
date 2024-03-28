@@ -21,9 +21,7 @@ pkgbase = zapzap-git
 	depends = python-typing_extensions>=4.6.1
 	optdepends = hunspell: spell check
 	provides = zapzap
-	provides = zapzap-git
 	conflicts = zapzap
-	conflicts = zapzap-git
 	source = git+https://github.com/zapzap-linux/zapzap.git
 	b2sums = SKIP
 
