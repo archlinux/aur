@@ -4,7 +4,7 @@
 # Previous Maintainer: Rocka <i at Rocka dot me>
 
 pkgname=p3x-onenote
-pkgver=2024.4.167
+pkgver=2024.4.168
 pkgrel=1
 pkgdesc="Linux Electron Onenote - A Linux compatible version of OneNote"
 arch=('any')
@@ -21,7 +21,7 @@ source=("$url/$tarballpath/v${pkgver//_/-}.tar.gz"
         "p3x-$repo.sh"
         "p3x-$repo.desktop")
 
-sha256sums=('b83539d681d3e59ccb4bd40c16e6eb6dd814b36362fd33feccc4e893628585e5'
+sha256sums=('96e2857f52b98085e7ba419a29cdf5cff2c25aeedd5f091b71a1e43f34e15e79'
             '97aca184d656b8021ce43d524d9de91f014c838372356844c845a531f8ab2b9f'
             '9bbb2f84f401a4da62ffe7f533aa0b149921f3f88fec7f470c4d4b5fcf63f331')
 
