@@ -1,6 +1,7 @@
 [nextcloud-app-user-saml]
 source = "github"
 github = "nextcloud/user_saml"
-include_regex = 'v\d+\.\d+\.\d+'
+# Upstream has v9.0.0-v11.0.8 series that is old, not new
+include_regex = 'v[6-8]+\.\d+\.\d+'
 prefix = "v"
 use_max_tag = true
