@@ -1,22 +1,23 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=isotree
-_pkgver=0.5.24-3
+_pkgver=0.6.1-1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Isolation-Based Outlier Detection"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(BSD)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('BSD-2-Clause')
 depends=(
+  r-jsonlite
   r-rcpp
 )
 makedepends=(
   robin-map
 )
 optdepends=(
-  r-jsonlite
+  r-diagrammer
   r-kableextra
   r-kernlab
   r-knitr
@@ -27,10 +28,10 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "system-robin-map.patch")
-md5sums=('187c07e96a3e58931b39747e3aa18112'
+md5sums=('9a80442d77131bcad08414f8abe46a68'
          'eb4f3a13cc4014676e7b49b44982d662')
-sha256sums=('d46dac42a4fca9d87c5dd46ffa84f4297c11f1831dc2ff6562bfb0897c9a9609'
-            '21873d5c2e0fb0ea13156b91de036c7c02b1284a0e262f95b81988161c1915a5')
+b2sums=('9404c90b03c26dc9133d051389750a8d2d6cddf87194bce3b549136d9ac60c98b3c847e49c665aceecfcfc938e266a206583472d87b3a880871bcb73bfa61573'
+        '061b04fafc1523f3e9f892f68d747b4dd7434193dee5a8e41e3739870addcc9e10b7777c1fa3916dab7d405c7d856406418093c4b490085e88480ec6bb15f001')
 
 prepare() {
   # use system robin-map
@@ -38,8 +39,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
