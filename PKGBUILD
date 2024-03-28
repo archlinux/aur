@@ -17,7 +17,7 @@ package() {
     INSTALL_PATH=$HOME/.local/share/v64saturn
     DESKTOP_ENTRY=$HOME/.local/share/applications/saturn.desktop
     mkdir -p $INSTALL_PATH/res
-    mkdir ~/.local/share/applications
+    mkdir -p ~/.local/share/applications
     cp "$srcdir/Saturn-legacy/build/us_pc/saturn.us.f3dex2e" $INSTALL_PATH/saturn
     cp "$srcdir/Saturn-legacy/build/us_pc/libdiscord_game_sdk.so" $INSTALL_PATH
     cp "$srcdir/Saturn-legacy/res/saturn-linuxicon.png" $INSTALL_PATH/res
