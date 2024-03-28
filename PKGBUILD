@@ -21,7 +21,7 @@ optdepends=(
   'vlc: for stream playback'
 )
 source=(
-  $_pkgname-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/refs/tags/$pkgver.tar.gz
+  $_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz
   de.$_pkgname.$_name.desktop
   $_pkgname.sh
 )
