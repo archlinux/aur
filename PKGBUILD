@@ -2,8 +2,8 @@
 # Contributor: lynix <lynix47@gmail.com>
 
 pkgname=linphone-desktop-appimage-stable
-pkgver=5.2.1
-pkgrel=2
+pkgver=5.2.2
+pkgrel=1
 pkgdesc="A free VoIP and video softphone based on the SIP protocol (AppImage version. Stable release)"
 arch=('x86_64')
 url='https://www.linphone.org'
