@@ -1,21 +1,22 @@
 # Maintainer: Matthew Spangler. <mattspangler at protonmail dot com>
+# Contributor: Deab22 <deab22 dot thermal577 at simplelogin dot com>
 # Contributor: Valentijn V. <neko at catgirlsin dot space>
 pkgname=gb-studio-bin
 _pkgname=GB-Studio
-pkgver=3.1.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Visual retro game maker"
 arch=('x86_64')
 url="https://gbstudio.dev"
 license=('MIT')
-groups=('')
+groups=()
 replaces=('gb-studio')
 provides=('gb-studio')
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'util-linux' 'trash-cli')
 optdepends=('pulseaudio: sound support')
 options=('!strip' '!emptydirs')
 source=("https://github.com/chrismaltby/gb-studio/releases/download/v${pkgver}/gb-studio-linux-debian.deb")
-sha512sums=('eea859cc9832663835ab5b8625c08273ca99a7da9e8ee41a479c14dd3ca9cad9bb382c3a2ca2f9049a634b82d68ffe1b990e215cf7af90ba17df770562a87c6c')
+sha512sums=('376babcecfd5b762221a379cbca0db148127ad7e29e9847771cc1b4b7d536d74de9a9389c769ad06376e1f0b59645edbf78469f83aef6433019308e1e9095e8f')
 
 prepare(){
         bsdtar -xf gb-studio-linux-debian.deb
