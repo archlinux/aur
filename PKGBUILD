@@ -2,7 +2,7 @@
 
 _pipname=pandoc-include
 pkgname=python-$_pipname
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Panflute filter to allow file includes'
 arch=(any)
@@ -15,7 +15,7 @@ makedepends=(python-{build,installer,wheel}
              python-setuptools)
 _archive="$_pipname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('e0c3a14e3a9ff34f23f2b27823d6d3b864453fe31f748d55cf430fb5f6eb7111')
+sha256sums=('18d55b66e9323a43bb850e6a94e0507397ea98f87e0787e0f74f9d7e5775d7d4')
 
 build() {
 	cd "$_archive"
