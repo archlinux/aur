@@ -1,0 +1,5 @@
+[python-pysilfont]
+source = "github"
+github = "silnrsi/pysilfont"
+prefix = "v"
+use_max_tag = true
