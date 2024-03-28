@@ -3,8 +3,8 @@
 
 pkgname=python-grandalf
 _pkgname=${pkgname#python-}
-pkgver=0.7
-pkgrel=4
+pkgver=0.8
+pkgrel=1
 pkgdesc='graph and drawing algorithms framework'
 arch=(any)
 url="https://github.com/bdcht/$_pkgname"
@@ -17,7 +17,7 @@ checkdepends=(python-pytest
               python-pytest-runner)
 _archive="$_pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('b3112299fe0a9123c088a16bf2f1b541d0d91199b77170a9739b569bd16a828e')
+sha256sums=('82d80072e5a1928bc46d94a54d2d92a38f73da0af052efc84ce34b5f4601dfa2')
 
 build() {
 	cd "$_archive"
