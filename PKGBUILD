@@ -2,7 +2,7 @@
 
 _gemname=selenium-webdriver
 pkgname=ruby-$_gemname
-pkgver=4.18.1
+pkgver=4.19.0
 pkgrel=1
 pkgdesc="A browser automation framework and ecosystem"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(ruby-childprocess ruby-rubyzip)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-b2sums=('10f8a8d2c6acfeb6c29e47b61dbda28200a02d879351db76fb2ea908fcc97c19f36482d41e7e93c9bba580557238e9ed7963209725fdf8964e04f39f20f6cbad')
+b2sums=('812199743b919543fee5dde5452b2ce50d6c7a64dd7b23aa3124d9771c643942f2d53096a1ec1cc6981a2dbfe4ba967f6e00266bf1ef09a934487d5a2e4d461d')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
