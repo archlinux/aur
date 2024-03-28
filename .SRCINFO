@@ -1,0 +1,16 @@
+pkgbase = python-idzip
+	pkgdesc = Improved Dictzip: seekable, gzip compatible compression format
+	pkgver = 0.3.9
+	pkgrel = 1
+	url = https://github.com/bauman/python-idzip
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-wheel
+	depends = python
+	depends = python-importlib-metadata
+	source = python-idzip::https://github.com/bauman/python-idzip/archive/refs/tags/0.3.9.tar.gz
+	sha256sums = aefe24d8dee8e95f642a18043f266d434ab2adca5edc4642b5641e2667cccd75
+
+pkgname = python-idzip
