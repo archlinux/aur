@@ -6,3 +6,4 @@ sdo/*
 *.part
 pkg/*
 src/*
+Makefile
