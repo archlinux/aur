@@ -1,0 +1,6 @@
+[mattermost-plugin-gitlab]
+source = "github"
+github = "mattermost/mattermost-plugin-gitlab"
+include_regex = 'v\d+\.\d+\.\d+'
+prefix = "v"
+use_max_tag = true
