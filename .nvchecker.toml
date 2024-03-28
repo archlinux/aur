@@ -1,0 +1,5 @@
+[nixpacks]
+source = "github"
+github = "railwayapp/nixpacks"
+prefix = "v"
+use_max_tag = true
