@@ -1,12 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=swarm-desktop
 _pkgname="Swarm Desktop"
-pkgver=0.36.0
+pkgver=0.37.0
 _electronversion=18
 _nodeversion=18
-pkgrel=5
+pkgrel=1
 pkgdesc="Electron Desktop app that helps you easily spin up and manage Swarm node"
-arch=('any')
+arch=(
+    'aarch64'
+    'armv7h'
+    'x86_64'
+)
 url="https://desktop.ethswarm.org/"
 _ghurl="https://github.com/ethersphere/swarm-desktop"
 license=('BSD-3-Clause')
@@ -21,10 +25,10 @@ makedepends=(
     'git'
 )
 source=(
-    "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
+    "${pkgname}::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('SKIP'
+sha256sums=('e6161869a2e0263a4967da6562b3dad85d650b3740c31832e3c98a52524e97a6'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -48,34 +52,23 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    cd "${srcdir}/${pkgname}.git"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
-        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
-        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
         echo "Your network is OK."
     fi
+    cd "${srcdir}/${pkgname}"
+    sed 's|cd ui \&\& npm run build|cd ui \&\& npm ci \&\& npm run build|g' -i package.json
     npm ci
-    cd "${srcdir}/${pkgname}.git/ui"
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
-        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
-        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
-    else
-        echo "Your network is OK."
-    fi
-    npm ci
-    cd "${srcdir}/${pkgname}.git"
     npm run build
-    cp -r ./ui/node_modules/@ethersphere/bee-dashboard/lib/* ./dist/ui/static/js
-    npx rimraf ./ui
     npm run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/out/${_pkgname}-linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}/out/${_pkgname}-linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
