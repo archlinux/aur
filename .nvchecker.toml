@@ -1,0 +1,3 @@
+[python-pantable]
+source = "pypi"
+pypi = "pantable"
