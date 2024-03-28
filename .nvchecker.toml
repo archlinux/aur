@@ -1,0 +1,4 @@
+[ijq]
+source = "git"
+git = "https://git.sr.ht/~gpanders/ijq"
+prefix = "v"
