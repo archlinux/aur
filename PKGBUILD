@@ -3,17 +3,17 @@
 pkgbase=flutter-artifacts-google-bin
 _group=flutter
 groups=("$_group")
-pkgver=3.19.4
+pkgver=3.19.5
 # in order to update these version hashes, consult the PKGBUILD and update-artifact-versions.sh
 # script of https://aur.archlinux.org/pkgbase/flutter
-_enginever=a5c24f538d05aaf66f7972fb23959d8cafb9f95a
+_enginever=e76c956498841e1ab458577d3892003e553e4f3c
 _materialfontsver=3012db47f3130e62f7cc0beabff968a33cbec8d8
 _gradlewver=fd5c1f2c013565a3bea56ada6df9d2b8e96d56aa
 _flutterarch=$(uname -m | sed s/aarch64/arm64/ | sed s/x86_64/x64/)
 # this host is blocked in China, according to Flutter docs, the FLUTTER_STORAGE_BASE_URL environment variable
 # should be used to provide an alternative mirror
 _storagebase="${FLUTTER_STORAGE_BASE_URL:-"https://storage.googleapis.com"}"
-pkgrel=5
+pkgrel=1
 _pkgdesc="Flutter SDK artifacts (binary from Google)"
 pkgdesc="${_pkgdesc}"
 arch=("x86_64" "aarch64")
@@ -149,37 +149,37 @@ noextract=(
 
 sha256sums=('e56fa8e9bb4589fde964be3de451f3e5b251e4a1eafb1dc98d94add034dd5a86'
             '31e9428baf1a2b2f485f1110c5899f852649b33d46a2e9b07f9d17752d50190a'
-            'd5da421c4849c169766be16f51e2634e02f1536416befb61f5f6551fb60c32d9'
-            'ec7e0d94b5fa32efe772e246893e9cc832e1f133e737f498fb7f7da5b84192c2'
-            'e5be895a4e8d2bf7d553839eeb097aff109fcc2efc45d76d7feebb18855831c8'
-            'e56fa8dfcaa3830eaa616c66faae0910a32df772d01a2d68d3fa2c895e6d65ff'
-            '3921c7e7f95e6d95731fbc673da5e692da006738f3667a7db0295cb5ee7c1632'
-            '3e7f49b80b31db50b6b74fc91a4d9a69407ebb1b1a33a6525e3e6dad0a397d99'
-            'e82408b2c0d7fa57f490a03492bfd9110a8ef923d4f22417fa99fd8854022dc8'
-            'c00b0d2b848dbbb184d263e7be87225219cf6d13fc2193d986c8684630b18fac'
-            'b50fed99cd5f6ae41282beab6c97380832aa0a1b81c261fe855bbff7ca95e9d3'
-            '69153dd195a753bafd0f06ac0991cc92d408590e7b1dc398370dd4aa0255f614'
-            '5a38c17cfc0e9aef522d20b6b889462b340cc0430ece8d9a456b947d0cb731e4'
-            'efa93f450398060b49a89b04caeac7d4a8bf2c3870170e6b619acaf0ffb0337b'
-            'b1f8faafcc0f3492aa1d0dab511e9a026de19356e35c55a237b8cfa3c0b1bcf1'
-            '0a52880f8f3aff667db1a29ec2e68567689b378e773345427f9e5cf6cb80dea3'
-            '2e848e6ee2dd591c0e558ee37d80391e4acb5bf8672cbe3e02af9a52d39e25b8')
-sha256sums_x86_64=('f41f8cf16ed627f94c9ad2c60602fdedb585ff1f8d50f4c44927da706dbe1808'
-                   '9032d360fb258fba392fd00a150881674bfa88598c6fad2c73f552a03501f1ce'
-                   '33517b19738cf68a4c1de7566d3602a09b3be037b9f4aca17f10a364b476cb9e'
-                   '29780ca6efbcdabe6988cd7eae6dbf995c5839d3f4c0b1f3ee6de2f9bfdc6c5c'
-                   '6a35206886a116ba4ae83432035b877818b883033a70697a8330c473f9374b8e'
-                   '1778a36d34657f853b1c6cb848c5dae6a1480babd357131ab723d8b41109ffd3'
-                   'c72981b583838b6016f3ab5bf5240f041acefc82c3f67983e447373b520e54e5'
-                   '214302538b9c983bc075cb59770329f4f751f2a0f73c390566f68d670cdcdb6f'
-                   '70edb9c63fe08d77cb2a9b59f9d4d1ec16e28a49737e8dd0cdbf5ccefcc562bb'
-                   '6f5d86f207c78cb64744889c34ed3ac45e403ea035d512674e5b348cb0d6355a'
-                   '05778e62c2da50d8280dc55589225871bf90bb2d543b48d2f1d6acd73460d573')
-sha256sums_aarch64=('7f99e5020f79d3a9a369e579543db860afef6f2a41403992733a2b707b73e757'
-                    '10ae30dac5b3ed1cc820a2d0ea9796ce2fa0a6e87813d212a15e9d595a1c3afc'
-                    'ddc83cb35141192222529db34e57e26aef70b3960d4c688b73121a434d580232'
-                    '65500e40641c62f470d36034e3579c87108964660788d67fc3d771be66b1a096'
-                    '6e0044cf445b8650efe57daf9415adb99f063c7a529437f2dbe58c7774e57cab')
+            'a97418bd50f1da93664282d005d1926f47732958b4f6462d5b3ba235a4079089'
+            '6f874ff1b8443a727386f6e55d10282a5b4fc3b49466415213c167636e2c5a90'
+            'c54b26c4c0ecaa314fa1aa019f8ee58bd6e5d70c178d76cb894fec59087ae1c5'
+            '13b6ba6ad76008ed988ab9994a38cfa34f533861b87030fb7ff92e1240d794f2'
+            '4f905e3ea7245bc59e38a40997d7c70dc55f10cc421773ebc090019666798fe8'
+            'bcbda790c44771db96f898daf7f58c0cc94ab4573f26ac6050d9e66eca5ed2a1'
+            '5d64976b232c2047122e6d72b79cc90a6f0a833ca03a43ba84b095a0cfeef4c0'
+            'bd00c62bdfa014149bae4197eafaa7ecdce1c2ca56ddd09077f6ac99b6a46939'
+            '5a644638321619a2b7cd32b8439eac5a91e1776f888f85cce79c558101a9cf9d'
+            '5680e339439b55511ec82350a2b53f65f60a8a2c2ce2444e21a49a6836d098f4'
+            '2f7257bb89835ed2aa84b678ffb560a173eabecfe6098e0eff5f19b6bed04cbc'
+            '03177bff99bdd5ee32c12a86784db98e9e94bb1c07c805ab54ce2adc73d5eebc'
+            'c3dae7db1edf5afb373aa57c364c6320988b17da26a9529d054a6fe9579cc924'
+            '806f42883cdcbab617d27dae222603784471756c5ebcc2d8a50d453749c144a4'
+            '9711ba3d3be41f8cd24912dbf9cc7e77b6a048ce779420345de910a4ad532af4')
+sha256sums_x86_64=('b81e5ad671f1cc5779d3ab2e3e43feda65caec7fbf27060a8229867c82422596'
+                   'a0e18483ec27d0a6b6d9b6795c9fd200af1f6c485c09bf0b367e020dfc9788cb'
+                   'bdf715209d1682924648e8a960d1f20302e5f8c2e24597c647d6dccf270e962d'
+                   'cc5314adeb0466298e988fdf2009a80bcb0449bb76a397e1b39e0d7b033f2d07'
+                   '9498f428db4d09fae625a650027780cb7d6cfff33b69822cb48f6da59ddee83f'
+                   'f9bda382dd0a40eacb55d9a8af1a616fc7b119ce3137c6f91d346f97eda0340f'
+                   'da06ec3550254dcacbfe5a417dc303d3cbc85313ac4e3a63691effc1a3902e7d'
+                   '5f4c9d85d5e7f7f0de9cf8ed0cb4bea9fceba4182449e808b621a996cc6a8aee'
+                   'e38158311e81fbc3ef767a32a0e20155602b83efb14bd8ee0a2253860dbf874c'
+                   '06709a7cdbe22c47a3a24fa51411a1c85a563aa04cb93e34cb6aa6089062e91f'
+                   'eb58b40d563078ebd0cb3ccc617b022f6752bec35905a1516c9d84e543bc1ec6')
+sha256sums_aarch64=('cd8212efab86911917e00d742e608b4aa72655a6655030ab157207c91ca3df24'
+                    'ae9a3455ab950cdec9b6a58327fa2d78fa2bd351fbe9f2a81236874179a5c301'
+                    'b4d89c5a25cb8a87b36a8e48023a93cf45c6f49556e5864fc4e420334861314a'
+                    'a7fc7ca0875d1b74697ebdbb857eb7520f16f46a9c23bd0debc5802be8e571ac'
+                    'a3056052b070468e84e836da2cb4d9219373472d1e9d1fee5391f5c37174a84a')
 
 prepare() {
   mkdir -p "${srcdir}/${_group}/bin/cache/artifacts"

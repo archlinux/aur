@@ -1,7 +1,7 @@
 pkgbase = flutter-artifacts-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google)
-	pkgver = 3.19.4
-	pkgrel = 5
+	pkgver = 3.19.5
+	pkgrel = 1
 	url = https://flutter.dev
 	arch = x86_64
 	arch = aarch64
@@ -47,21 +47,21 @@ pkgbase = flutter-artifacts-google-bin
 	options = !emptydirs
 	source = material_fonts.zip::https://storage.googleapis.com/flutter_infra_release/flutter/fonts/3012db47f3130e62f7cc0beabff968a33cbec8d8/fonts.zip
 	source = gradle_wrapper.tar.gz::https://storage.googleapis.com/flutter_infra_release/gradle-wrapper/fd5c1f2c013565a3bea56ada6df9d2b8e96d56aa/gradle-wrapper.tgz
-	source = android-x86.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/android-x86/artifacts.zip
-	source = android-x64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/android-x64/artifacts.zip
-	source = android-arm.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/android-arm/artifacts.zip
-	source = android-arm-profile.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/android-arm-profile/artifacts.zip
-	source = android-arm-release.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/android-arm-release/artifacts.zip
-	source = android-arm64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/android-arm64/artifacts.zip
-	source = android-arm64-profile.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/android-arm64-profile/artifacts.zip
-	source = android-arm64-release.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/android-arm64-release/artifacts.zip
-	source = android-x64-profile.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/android-x64-profile/artifacts.zip
-	source = android-x64-release.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/android-x64-release/artifacts.zip
-	source = android-x64-jit-release.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/android-x86-jit-release/artifacts.zip
-	source = flutter_web_sdk.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/flutter-web-sdk.zip
-	source = sky_engine.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/sky_engine.zip
-	source = flutter_patched_sdk.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/flutter_patched_sdk.zip
-	source = flutter_patched_sdk_product.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/flutter_patched_sdk_product.zip
+	source = android-x86.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/android-x86/artifacts.zip
+	source = android-x64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/android-x64/artifacts.zip
+	source = android-arm.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/android-arm/artifacts.zip
+	source = android-arm-profile.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/android-arm-profile/artifacts.zip
+	source = android-arm-release.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/android-arm-release/artifacts.zip
+	source = android-arm64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/android-arm64/artifacts.zip
+	source = android-arm64-profile.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/android-arm64-profile/artifacts.zip
+	source = android-arm64-release.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/android-arm64-release/artifacts.zip
+	source = android-x64-profile.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/android-x64-profile/artifacts.zip
+	source = android-x64-release.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/android-x64-release/artifacts.zip
+	source = android-x64-jit-release.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/android-x86-jit-release/artifacts.zip
+	source = flutter_web_sdk.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/flutter-web-sdk.zip
+	source = sky_engine.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/sky_engine.zip
+	source = flutter_patched_sdk.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/flutter_patched_sdk.zip
+	source = flutter_patched_sdk_product.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/flutter_patched_sdk_product.zip
 	sha256sums = e56fa8e9bb4589fde964be3de451f3e5b251e4a1eafb1dc98d94add034dd5a86
 	sha256sums = 31e9428baf1a2b2f485f1110c5899f852649b33d46a2e9b07f9d17752d50190a
 	sha256sums = d5da421c4849c169766be16f51e2634e02f1536416befb61f5f6551fb60c32d9
@@ -79,17 +79,17 @@ pkgbase = flutter-artifacts-google-bin
 	sha256sums = b1f8faafcc0f3492aa1d0dab511e9a026de19356e35c55a237b8cfa3c0b1bcf1
 	sha256sums = 0a52880f8f3aff667db1a29ec2e68567689b378e773345427f9e5cf6cb80dea3
 	sha256sums = 2e848e6ee2dd591c0e558ee37d80391e4acb5bf8672cbe3e02af9a52d39e25b8
-	source_x86_64 = android-arm-profile-linux-x64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/android-arm-profile/linux-x64.zip
-	source_x86_64 = android-arm-release-linux-x64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/android-arm-release/linux-x64.zip
-	source_x86_64 = android-arm64-profile-linux-x64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/android-arm64-profile/linux-x64.zip
-	source_x86_64 = android-arm64-release-linux-x64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/android-arm64-release/linux-x64.zip
-	source_x86_64 = android-x64-profile-linux-x64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/android-x64-profile/linux-x64.zip
-	source_x86_64 = android-x64-release-linux-x64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/android-x64-release/linux-x64.zip
-	source_x86_64 = engine-x64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/linux-x64/artifacts.zip
-	source_x86_64 = gtk-debug-x64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/linux-x64-debug/linux-x64-flutter-gtk.zip
-	source_x86_64 = gtk-profile-x64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/linux-x64-profile/linux-x64-flutter-gtk.zip
-	source_x86_64 = gtk-release-x64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/linux-x64-release/linux-x64-flutter-gtk.zip
-	source_x86_64 = font-subset-x64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/linux-x64/font-subset.zip
+	source_x86_64 = android-arm-profile-linux-x64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/android-arm-profile/linux-x64.zip
+	source_x86_64 = android-arm-release-linux-x64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/android-arm-release/linux-x64.zip
+	source_x86_64 = android-arm64-profile-linux-x64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/android-arm64-profile/linux-x64.zip
+	source_x86_64 = android-arm64-release-linux-x64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/android-arm64-release/linux-x64.zip
+	source_x86_64 = android-x64-profile-linux-x64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/android-x64-profile/linux-x64.zip
+	source_x86_64 = android-x64-release-linux-x64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/android-x64-release/linux-x64.zip
+	source_x86_64 = engine-x64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/linux-x64/artifacts.zip
+	source_x86_64 = gtk-debug-x64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/linux-x64-debug/linux-x64-flutter-gtk.zip
+	source_x86_64 = gtk-profile-x64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/linux-x64-profile/linux-x64-flutter-gtk.zip
+	source_x86_64 = gtk-release-x64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/linux-x64-release/linux-x64-flutter-gtk.zip
+	source_x86_64 = font-subset-x64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/linux-x64/font-subset.zip
 	sha256sums_x86_64 = f41f8cf16ed627f94c9ad2c60602fdedb585ff1f8d50f4c44927da706dbe1808
 	sha256sums_x86_64 = 9032d360fb258fba392fd00a150881674bfa88598c6fad2c73f552a03501f1ce
 	sha256sums_x86_64 = 33517b19738cf68a4c1de7566d3602a09b3be037b9f4aca17f10a364b476cb9e
@@ -101,11 +101,11 @@ pkgbase = flutter-artifacts-google-bin
 	sha256sums_x86_64 = 70edb9c63fe08d77cb2a9b59f9d4d1ec16e28a49737e8dd0cdbf5ccefcc562bb
 	sha256sums_x86_64 = 6f5d86f207c78cb64744889c34ed3ac45e403ea035d512674e5b348cb0d6355a
 	sha256sums_x86_64 = 05778e62c2da50d8280dc55589225871bf90bb2d543b48d2f1d6acd73460d573
-	source_aarch64 = engine-arm64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/linux-arm64/artifacts.zip
-	source_aarch64 = gtk-debug-arm64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/linux-arm64-debug/linux-arm64-flutter-gtk.zip
-	source_aarch64 = gtk-profile-arm64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/linux-arm64-profile/linux-arm64-flutter-gtk.zip
-	source_aarch64 = gtk-release-arm64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/linux-arm64-release/linux-arm64-flutter-gtk.zip
-	source_aarch64 = font-subset-arm64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a5c24f538d05aaf66f7972fb23959d8cafb9f95a/linux-arm64/font-subset.zip
+	source_aarch64 = engine-arm64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/linux-arm64/artifacts.zip
+	source_aarch64 = gtk-debug-arm64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/linux-arm64-debug/linux-arm64-flutter-gtk.zip
+	source_aarch64 = gtk-profile-arm64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/linux-arm64-profile/linux-arm64-flutter-gtk.zip
+	source_aarch64 = gtk-release-arm64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/linux-arm64-release/linux-arm64-flutter-gtk.zip
+	source_aarch64 = font-subset-arm64.zip::https://storage.googleapis.com/flutter_infra_release/flutter/e76c956498841e1ab458577d3892003e553e4f3c/linux-arm64/font-subset.zip
 	sha256sums_aarch64 = 7f99e5020f79d3a9a369e579543db860afef6f2a41403992733a2b707b73e757
 	sha256sums_aarch64 = 10ae30dac5b3ed1cc820a2d0ea9796ce2fa0a6e87813d212a15e9d595a1c3afc
 	sha256sums_aarch64 = ddc83cb35141192222529db34e57e26aef70b3960d4c688b73121a434d580232
@@ -114,42 +114,42 @@ pkgbase = flutter-artifacts-google-bin
 
 pkgname = flutter-engine-common-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - common engine files
-	depends = flutter-common=3.19.4
-	depends = flutter-sky-engine=3.19.4
-	depends = flutter-material-fonts=3.19.4
-	provides = flutter-engine-common=3.19.4
+	depends = flutter-common=3.19.5
+	depends = flutter-sky-engine=3.19.5
+	depends = flutter-material-fonts=3.19.5
+	provides = flutter-engine-common=3.19.5
 	conflicts = flutter-engine-common
 
 pkgname = flutter-engine-linux-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - linux engine
-	depends = flutter-engine-common=3.19.4
-	provides = flutter-engine-linux=3.19.4
+	depends = flutter-engine-common=3.19.5
+	provides = flutter-engine-linux=3.19.5
 	conflicts = flutter-engine-linux
 
 pkgname = flutter-engine-web-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - web engine
-	depends = flutter-engine-common=3.19.4
-	provides = flutter-engine-web=3.19.4
+	depends = flutter-engine-common=3.19.5
+	provides = flutter-engine-web=3.19.5
 	conflicts = flutter-engine-web
 
 pkgname = flutter-engine-android-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - android engine
-	depends = flutter-engine-common=3.19.4
-	provides = flutter-engine-android=3.19.4
+	depends = flutter-engine-common=3.19.5
+	provides = flutter-engine-android=3.19.5
 	conflicts = flutter-engine-android
 
 pkgname = flutter-sky-engine-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - sky-engine
-	provides = flutter-sky-engine=3.19.4
+	provides = flutter-sky-engine=3.19.5
 	conflicts = flutter-sky-engine
 
 pkgname = flutter-material-fonts-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - material fonts
-	provides = flutter-material-fonts=3.19.4
+	provides = flutter-material-fonts=3.19.5
 	conflicts = flutter-material-fonts
 
 pkgname = flutter-gradle-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - gradle wrapper
-	depends = flutter-common=3.19.4
-	provides = flutter-gradle=3.19.4
+	depends = flutter-common=3.19.5
+	provides = flutter-gradle=3.19.5
 	conflicts = flutter-gradle
