@@ -1,6 +1,6 @@
 # $Id$
-# Maintainer: Masato TOYOSHIMA <phoepsilonix@gmail.com>
-# Contributor: Morgan <morganamilo@archlinux.org>
+# Maintainer: Morgan <morganamilo@archlinux.org>
+# Contributor: Masato TOYOSHIMA <phoepsilonix@gmail.com>
 pkgname=paru-static
 _pkgname=paru
 pkgver=2.0.3
@@ -19,6 +19,7 @@ optdepends=('bat: colored pkgbuild printing' 'devtools: build in chroot and down
 sha256sums=('ccf6defc4884d580a4b813cc40323a0389ffc9aa4bdc55f3764a46b235dfe1e0'
             'SKIP')
 
+# Add -ffat-lto-objects flag to LTOFLAGS to prevent mangling of static libs.(gcc)
 export LTOFLAGS+=" -ffat-lto-objects"
 # musl build for openssl-sys
 export PKG_CONFIG_ALLOW_CROSS=1
@@ -84,7 +85,6 @@ build () {
 
   if [[ $CARCH == x86_64 ]]; then
     export RUSTFLAGS="-C link-self-contained=on -C strip=symbols -C no-redzone=y -C overflow-checks=y -C lto=fat -C embed-bitcode=y -C codegen-units=1 -C opt-level=z -C control-flow-guard=y -C link-arg=-fuse-ld=lld -C link-arg=-Wp,-D_FORTIFY_SOURCE=2 -C link-arg=-U_FORTIFY_SOURCE -C link-arg=-D_FORTIFY_SOURCE=2 -C link-arg=-fPIE -C link-arg=-fpie -C link-arg=-Wl,-z,relro,-z,now",
-
   fi
   cargo build --frozen --features "${_features:-}" --release --target-dir target --target $TARGET
   #./scripts/mkmo locale/
