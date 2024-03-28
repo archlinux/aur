@@ -1,15 +1,18 @@
 pkgbase = warp-plus-bin
 	pkgdesc = An open-source implementation of Cloudflare's Warp, enhanced with Psiphon integration.
-	pkgver = 1.0.4_rc2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/bepass-org/warp-plus
+	install = warp-plus.install
 	arch = x86_64
 	license = MIT
 	provides = warp-plus
 	conflicts = warp-plus
-	source = warp-plus-bin-1.0.4-rc2.zip::https://github.com/bepass-org/warp-plus/releases/download/v1.0.4-rc2/warp-linux-amd64.b6d64e.zip
+	source = warp-plus-1.1.0-cdb551.zip::https://github.com/bepass-org/warp-plus/releases/download/v1.1.0/warp-plus-linux-amd64.cdb551.zip
+	source = warp-plus-config.json
 	source = warp-plus.service
-	sha256sums = ae4de0e0928be13abc50a02a1e8edec40202daf59604f2ee59729a2fd2f54c82
-	sha256sums = 71c8d7db0b28e860bb94930fa4b5b8566dcfead6d0d83405962082f964b8b8a0
+	sha256sums = 1f0ac7c201c3a23eb8c343cd4bd77f7e6023b0a818b87aca9b9e2760a14fb810
+	sha256sums = b76bf2c04e60befcf95cf8ed38bfe3b56da7719cededb97f4048136789abe5fd
+	sha256sums = 5ada20e3b2871c0921dfe36d721914fa02fe2f4892919160daa71992e91be49b
 
 pkgname = warp-plus-bin
