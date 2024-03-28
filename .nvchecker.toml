@@ -1,0 +1,4 @@
+[ezra-bible-app-bin]
+source = "github"
+github = "ezra-bible-app/ezra-bible-app"
+use_max_tag = true
