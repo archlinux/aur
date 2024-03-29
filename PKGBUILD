@@ -1,5 +1,5 @@
 pkgname=firefox-esr-extension-download-with-aria2
-pkgver=4.8.5.2577
+pkgver=4.8.6.2594
 pkgrel=1
 pkgdesc='The Aria2 Download Manager for Firefox.'
 arch=('any')
