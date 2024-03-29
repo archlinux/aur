@@ -6,7 +6,7 @@
 
 _name=pytango
 pkgname=python-${_name}
-pkgver=9.5.0
+pkgver=9.5.1
 _tag=v${pkgver}
 pkgrel=1
 pkgdesc="A python binding for the Tango control system"
@@ -19,10 +19,8 @@ depends=('tango-cpp>=9.4.0' 'boost' 'python-numpy' 'python-six'
 makedepends=(python-setuptools python-sphinx python-sphinx_rtd_theme python-numpy python-scikit-build-core)
 
 source=("${_name}-${_tag}.tar.gz::https://gitlab.com/tango-controls/${_name}/-/archive/v${pkgver}/${_name}-${_tag}.tar.gz" pyproject.patch)
-sha256sums=(
-            '07e0ddc0530a0cd78124787107f69474b28bd88ff5077e609c05959b7354f3b0'
-            '0d878261df397ae698759a06d9494c06f94ee48cbe799282f6721013d2c78e7f'
-)
+sha256sums=('b6d55c7e3843726ad29c7f7587af7cb356c49fdd61085b6c4de76811ab01f4ed'
+            '0d878261df397ae698759a06d9494c06f94ee48cbe799282f6721013d2c78e7f')
 
 prepare() {
   cd "${_name}-${_tag}"
