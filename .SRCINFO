@@ -1,13 +1,15 @@
 pkgbase = mpdproxy-coffeescript-git
 	pkgdesc = MPD proxy automatically entering password for clients in certain IP ranges
-	pkgver = r7.6506821
+	pkgver = r11.b798091
 	pkgrel = 1
 	url = https://github.com/tremby/mpdproxy
 	arch = x86_64
+	makedepends = git
+	makedepends = npm
 	depends = mpd
 	depends = coffeescript
+	depends = nodejs
 	source = mpdproxy-coffeescript-git::git+https://github.com/tremby/mpdproxy
 	md5sums = SKIP
 
 pkgname = mpdproxy-coffeescript-git
-
