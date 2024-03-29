@@ -2,13 +2,16 @@ pkgbase = x2godesktopsharing
 	pkgdesc = X2Go add-on tool that allows a user to grant other X2go users access to the current session (shadow session support).
 	pkgver = 3.2.0.0
 	pkgrel = 1
-	url = <http://www.x2go.org/>
+	url = http://www.x2go.org
 	arch = x86_64
+	arch = aarch64
 	groups = x2go
 	groups = alts
 	license = GPL
 	depends = x2goserver>=4.0.1
 	depends = qt5-base
+	depends = qt5-svg
+	depends = qt5-tools
 	options = emptydirs
 	source = https://code.x2go.org/releases/source/x2godesktopsharing/x2godesktopsharing-3.2.0.0.tar.gz
 	source = https://code.x2go.org/releases/source/x2godesktopsharing/x2godesktopsharing-3.2.0.0.tar.gz.asc
@@ -19,4 +22,3 @@ pkgbase = x2godesktopsharing
 	sha512sums = 67aae752373174504d5b2de52f2b4bb195cc111033525a9e166bcd0da79ef9be0295850666050f1847a9f2895bb20656b3f1ca82b4c0565d2c35769be6542e4f
 
 pkgname = x2godesktopsharing
-

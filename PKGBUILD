@@ -5,10 +5,10 @@ pkgname=x2godesktopsharing
 pkgver=3.2.0.0
 pkgrel=1
 pkgdesc="X2Go add-on tool that allows a user to grant other X2go users access to the current session (shadow session support)."
-arch=('x86_64')
-url="<http://www.x2go.org/>"
+arch=('x86_64' 'aarch64')
+url="http://www.x2go.org"
 license=('GPL')
-depends=('x2goserver>=4.0.1' 'qt5-base')
+depends=('x2goserver>=4.0.1' 'qt5-base' 'qt5-svg' 'qt5-tools')
 options=(emptydirs)
 groups=('x2go' 'alts')
 source=("https://code.x2go.org/releases/source/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.asc}
