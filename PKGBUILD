@@ -12,7 +12,7 @@ depends=('python' 'pyalpm' 'python-requests' 'python-termcolor' 'python-pyxdg' '
 optdepends=('libnotify')
 options=(!emptydirs)
 source=('https://github.com/cherti/blinky/archive/v0.23.2.tar.gz')
-sha256sums=('e9f617d9e704203ba8e755f90bd81f5efdb2572a8f868eb859fee21eec259dfd')
+sha256sums=('579f3a4e728c2ba51ea79e14adfe7e09887d48f79ab099a07cc1029f31083f03')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
