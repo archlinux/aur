@@ -1,0 +1,30 @@
+pkgbase = graphite-editor-git
+	pkgdesc = 2D raster & vector editor that melds traditional layers & tools with a modern node-based, non-destructive, procedural workflow
+	pkgver = r1409.46a9fc0
+	pkgrel = 1
+	url = https://github.com/GraphiteEditor/Graphite
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = binaryen
+	makedepends = cargo
+	makedepends = cargo-about
+	makedepends = cargo-tauri
+	makedepends = git
+	makedepends = libappimage
+	makedepends = libsoup
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = rust-wasm
+	makedepends = wasm-bindgen
+	makedepends = wasm-pack
+	makedepends = webkit2gtk
+	depends = gcc-libs
+	depends = glibc
+	depends = gtk3
+	depends = openssl
+	provides = graphite-editor=r1409.46a9fc0
+	conflicts = graphite-editor
+	source = graphite-editor-git::git+https://github.com/GraphiteEditor/Graphite.git
+	sha256sums = SKIP
+
+pkgname = graphite-editor-git
