@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=laradumps-bin
 _pkgname=LaraDumps
-pkgver=2.4.3
-_electronversion=28
-pkgrel=3
+pkgver=3.0.0
+_electronversion=30
+pkgrel=1
 pkgdesc="A friendly app designed to boost your Laravel PHP coding and debugging experience."
 arch=('x86_64')
 url="https://laradumps.dev/"
@@ -13,7 +13,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'hicolor-icon-theme'
 )
 makedepends=(
     'fuse2'
@@ -23,14 +22,14 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/laradumps/app/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7eaf42750e181c569be5a552ab82369bbd0d95adae7a1be0dc1991cf34a55186'
-            'f8bf03b56eb053128b56fffec88e14404cafd4a63bf1fcc39f90c672f5318650'
+sha256sums=('3a71f18562fd8c53513e1ae91460b470fc70efe238dc361027cda2e2f6e8bc19'
+            'a0085129b133bfa326092dd20264268e4854406a4ec2270468ad5f6dc8f5ca01'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
