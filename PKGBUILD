@@ -3,12 +3,12 @@
 _pkgname=fmrs
 _pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
-pkgrel=1
-pkgdesc='Variable Selection in Finite Mixture of AFT Regression and FMR'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Variable Selection in Finite Mixture of AFT Regression and FMR Models"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r
 )
@@ -16,17 +16,17 @@ optdepends=(
   r-biocgenerics
   r-knitr
   r-testthat
-  r-utils
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6a9566cda423e834136eed456b6f702de7ed37c7624b06656d60417b793e57e3')
+md5sums=('ccf41504ab27d93464e555b363ef406a')
+b2sums=('f8b92bfe2b48cf70c50532ab837b13924006632d4265f4382ccc4609bcd9ea2fc0495fe4a2bb42a124482ed867444684272b235533bf2c367c6703b93854f0ca')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
