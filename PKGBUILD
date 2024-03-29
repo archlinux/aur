@@ -1,6 +1,5 @@
-# Maintainer: Angelo Verlain SHEMA (https://vixalien.com)
-# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Angelo Verlain SHEMA (https://vixalien.com)
 pkgname=decibels
 pkgver=46.0
 pkgrel=2
