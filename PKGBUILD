@@ -3,7 +3,7 @@
 pkgname=python-libthumbor
 _name=${pkgname#python-}
 pkgver=2.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Python extensions to thumbor'
 arch=(any)
 url='https://github.com/thumbor/libthumbor'
@@ -20,6 +20,7 @@ build() {
 }
 
 check() {
+  cd $_name-$pkgver
   pytest
 }
 

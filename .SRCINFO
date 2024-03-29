@@ -1,7 +1,7 @@
 pkgbase = python-libthumbor
 	pkgdesc = Python extensions to thumbor
 	pkgver = 2.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/thumbor/libthumbor
 	arch = any
 	license = MIT
