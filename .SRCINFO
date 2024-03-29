@@ -1,7 +1,7 @@
 pkgbase = gsconnect
 	pkgdesc = KDE Connect implementation. GSConnect CLI usage without Gnome environment
 	pkgver = 56
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GSConnect/gnome-shell-extension-gsconnect
 	arch = any
 	license = GPL-2.0-or-later OR MPL-2.0
@@ -34,7 +34,7 @@ pkgbase = gsconnect
 	optdepends = nemo-python: Nemo integration
 	conflicts = gnome-shell-extension-gsconnect
 	options = !debug
-	source = gsconnect-56.tar.gz::https://github.com/GSConnect/gnome-shell-extension-gsconnect/archive/v56.tar.gz
+	source = https://github.com/GSConnect/gnome-shell-extension-gsconnect/archive/v56/gsconnect-56.tar.gz
 	source = gsconnect.service
 	b2sums = a389ad50585bed2826f6a4b12552c5d6ff431bf4674d23710c992eb4a89cd3ecc363cddb90a2e14c65f14061a4be1c43ab956e3646b814de454d32ef08e9cf91
 	b2sums = ecd31b50393dbbf23b5f33d16d11573200ce28fd818b99e3f54f269287c505b724fc55f0135809c679629842448b29f7986bed309baa6193aaf1211f144171b4
