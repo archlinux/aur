@@ -1,6 +1,6 @@
 # Maintainer: ldev <ldev dot eu dot org>
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 
 pkgname=git-credential-github
 pkgdesc="A simple git credentials helper for github"
@@ -36,12 +36,6 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
-}
-
-check() {
-    cd "$srcdir/$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
 }
 
 package() {

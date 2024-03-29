@@ -1,7 +1,7 @@
 pkgbase = git-credential-github
 	pkgdesc = A simple git credentials helper for github
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Xgames123/git-credential-github
 	arch = any
 	license = MIT
