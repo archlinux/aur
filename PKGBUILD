@@ -1,13 +1,14 @@
-# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Maintainer: cqzw555 < cqzw555@163.com >
+# Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-rl
 pkgver=3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Alternative Python bindings for GNU Readline"
 arch=('i686' 'x86_64' 'aarch64')
 depends=('python' 'readline')
-makedepends=('python-build' 'python-installer')
+makedepends=('python-build' 'python-installer' 'python-setuptools')
 url="https://github.com/stefanholek/rl"
 license=('GPL' 'PSFL')
 options=(!emptydirs)
