@@ -1,0 +1,15 @@
+pkgbase = eepers-git
+	pkgdesc = Simple Turn-based Game
+	pkgver = 1.2.r18.gc951f11
+	pkgrel = 1
+	url = https://github.com/tsoding/eepers
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gcc-ada
+	depends = raylib
+	provides = eepers
+	source = git+https://github.com/tsoding/eepers.git
+	sha256sums = SKIP
+
+pkgname = eepers-git
