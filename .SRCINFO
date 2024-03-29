@@ -1,0 +1,17 @@
+pkgbase = comet-gog-git
+	pkgdesc = Open Source implementation of GOG Galaxy Communication Service for SDK bundled with GOG games
+	pkgver = r76.e313c8a
+	pkgrel = 1
+	url = https://github.com/imLinguin/comet
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = cargo
+	provides = comet-gog
+	conflicts = comet-gog
+	source = comet-gog::git+https://github.com/imLinguin/comet.git
+	source = proto::git+https://github.com/Yepoleb/gog_protocols.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = comet-gog-git
