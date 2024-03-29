@@ -4,10 +4,9 @@
 pkgbase='s3_exporter'
 pkgname='prometheus-s3-exporter'
 pkgver='0.6.1'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='Exports Prometheus metrics about S3 buckets and objects'
 arch=('x86_64' 'aarch64')
-options=(!lto)
 _uri='github.com/qaoru'
 url="https://${_uri}/${pkgbase}"
 license=('Apache 2.0')
@@ -38,12 +37,12 @@ build() {
     -trimpath \
     -mod="readonly" \
     -modcacherw \
-    -ldflags "-linkmode external -extldflags ${LDFLAGS} \
+    -ldflags "-linkmode external -extldflags '${LDFLAGS}' \
     -X github.com/prometheus/common/version.Version=${pkgver} \
     -X github.com/prometheus/common/version.Revision=${pkgrel} \
     -X github.com/prometheus/common/version.Branch=tarball \
     -X github.com/prometheus/common/version.BuildUser=$(whoami)@$(hostnamectl hostname) \
-    -X github.com/prometheus/common/version.BuildDate=$(date -d@"$SOURCE_DATE_EPOCH" +%Y%m%d-%H:%M:%S)"
+    -X github.com/prometheus/common/version.BuildDate=$(date -u '+%Y%m%d-%H:%M:%S' --date=@${SOURCE_DATE_EPOCH})"
 }
 
 package() {
