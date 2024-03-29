@@ -6,12 +6,12 @@ pkgver=0
 pkgrel=1
 pkgdesc='A Nintendo DS emulator written in Rust for desktop devices and the web, with debugging features and a focus on accuracy'
 url=https://github.com/kelpsyberry/dust
-source_x86_64=(https://nightly.link/kelpsyberry/dust/workflows/build-release/main/Linux.zip)
+source=(https://nightly.link/kelpsyberry/dust/workflows/build-release/main/Linux.zip)
 license=(GPL-3.0)
 arch=(x86_64)
 conflicts=(dust-emu dust-emu-git)
 provides=(dust-emu)
-sha256sums_x86_64=(27dd5466573c35cba430afac3916f917aa62f376be2f4f380bfafcc85d41aed5)
+sha256sums=(27dd5466573c35cba430afac3916f917aa62f376be2f4f380bfafcc85d41aed5)
 
 prepare() {
   cd $srcdir

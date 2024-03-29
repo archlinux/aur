@@ -8,7 +8,7 @@ pkgbase = dust-emu-bin
 	provides = dust-emu
 	conflicts = dust-emu
 	conflicts = dust-emu-git
-	source_x86_64 = https://nightly.link/kelpsyberry/dust/workflows/build-release/main/Linux.zip
-	sha256sums_x86_64 = 27dd5466573c35cba430afac3916f917aa62f376be2f4f380bfafcc85d41aed5
+	source = https://nightly.link/kelpsyberry/dust/workflows/build-release/main/Linux.zip
+	sha256sums = 27dd5466573c35cba430afac3916f917aa62f376be2f4f380bfafcc85d41aed5
 
 pkgname = dust-emu-bin
