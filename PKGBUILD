@@ -9,8 +9,8 @@ _ff_theme=official
 
 _pkgname=firefox-esr
 pkgname=firefox-esr-globalmenu
-pkgver=115.8.0
-pkgrel=2
+pkgver=115.9.1
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release. (With appmenu patch from Ubuntu)"
 url="https://www.mozilla.org/en-US/firefox/enterprise/"
 arch=(x86_64)
@@ -76,7 +76,7 @@ validpgpkeys=(
 	# https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
 	'14F26682D0916CDD81E37B6D61B7B526D98F0353')
 sha1sums=(
-		'd2bd2c47676c0c8575bcccbad4742dcdc23bc698'
+		'3ddd358e115719fa8476e17190b0eefff9475544'
 		'SKIP'
 		'bb4bbaddc549edd3506b5e955840fcebffcafb71'
 		'b3ccca02959d94ef2a5db8f140ff96a2cd9724ef'

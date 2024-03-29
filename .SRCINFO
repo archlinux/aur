@@ -1,7 +1,7 @@
 pkgbase = firefox-esr-globalmenu
 	pkgdesc = Standalone web browser from mozilla.org, Extended Support Release. (With appmenu patch from Ubuntu)
-	pkgver = 115.8.0
-	pkgrel = 2
+	pkgver = 115.9.1
+	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/enterprise/
 	arch = x86_64
 	license = MPL-2.0
@@ -44,13 +44,13 @@ pkgbase = firefox-esr-globalmenu
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	provides = firefox-esr=115.8.0
+	provides = firefox-esr=115.9.1
 	conflicts = firefox-esr
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
-	source = https://archive.mozilla.org/pub/firefox/releases/115.8.0esr/source/firefox-115.8.0esr.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/115.8.0esr/source/firefox-115.8.0esr.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/115.9.1esr/source/firefox-115.9.1esr.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/115.9.1esr/source/firefox-115.9.1esr.source.tar.xz.asc
 	source = assert.patch
 	source = D187418.patch
 	source = D187749.patch
@@ -58,7 +58,7 @@ pkgbase = firefox-esr-globalmenu
 	source = fix_csd_window_buttons.patch
 	source = icu-74.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha1sums = d2bd2c47676c0c8575bcccbad4742dcdc23bc698
+	sha1sums = 3ddd358e115719fa8476e17190b0eefff9475544
 	sha1sums = SKIP
 	sha1sums = bb4bbaddc549edd3506b5e955840fcebffcafb71
 	sha1sums = b3ccca02959d94ef2a5db8f140ff96a2cd9724ef
