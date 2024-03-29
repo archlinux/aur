@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Moe
 pkgname=rime-minecraft-dict-git
-pkgver=r24.13107bd
+pkgver=1.20.4.r0.g88b2c634
 pkgrel=1
 pkgdesc="Minecraft dict for RIME"
 arch=('any')
@@ -14,7 +14,7 @@ install=${pkgname}.install
 
 function pkgver(){
 	cd rime-minecraft-dict
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 function package(){
