@@ -32,7 +32,6 @@ build() {
     "${srcdir}/${pkgname%-bin}" completion fish > "${srcdir}/fish.completion"
     "${srcdir}/${pkgname%-bin}" completion zsh > "${srcdir}/zsh.completion"
 }
-
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/bash.completion" "${pkgdir}/usr/share/bash-completion/completions/${pkgname%-bin}"
