@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=1.17.7
+pkgver=1.17.8
 _electronversion=27
 _nodeversion=18
 pkgrel=1
@@ -26,7 +26,7 @@ source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('55f0cc27b0a68c21e140dfe7f3b397bb45d01b969b29e9a03c8435feaadfe19d'
+sha256sums=('7a9c2b6cc8588964fa90a725f65f58bdc87341a63f0281b3b53b29e048c76956'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -51,7 +51,14 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    # .npmrc already existed,pointed to China's mirrors.
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
+    else
+        echo "Your network is OK."
+    fi
+    rm -rf dist_release node_modules
     sed "s|--linux|build -l --dir|g" -i package.json
     icotool -i 1 -x  public/logo.ico -o public/logo.png
     sed "s|logo.icns|logo.png|g" -i electron-builder.json
