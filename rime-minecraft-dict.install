@@ -1,0 +1,20 @@
+function _info() {
+	if [ -f /usr/bin/pamac ]; then
+		echo "  ==> [Info]: $@"
+	else
+		all_off="$(tput sgr0)"
+		bold="${all_off}$(tput bold)"
+		blue="${bold}$(tput setaf 4)"
+		yellow="${bold}$(tput setaf 3)"
+		printf "${blue}==>${yellow} [Info]:${bold} $1${all_off}\n"
+	fi
+}
+
+function post_install(){
+	_info "Minecraft for Rime 词典已安装, 请在 .import_tables 下添加:"
+	_info "- /usr/share/rime-data/minecraft_pinyin"
+}
+
+function post_upgrade(){
+    _info "Minecraft for Rime 词典已更新, 请重新部署"
+}
