@@ -2,7 +2,7 @@
 
 pkgname=gitoxide-git
 _pkgname=gitoxide
-pkgver=gix.v0.61.1.r4.g9e9c653a8
+pkgver=0.61.1.r4.g9e9c653a8
 pkgrel=1
 pkgdesc='An idiomatic, lean, fast & safe pure Rust implementation of Git'
 url=https://github.com/Byron/gitoxide
@@ -22,7 +22,7 @@ prepare() {
 
 pkgver() {
   cd $_pkgname
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/.*v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
