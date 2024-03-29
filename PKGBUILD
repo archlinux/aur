@@ -2,6 +2,7 @@
 
 pkgname=switcheroo-gtk4
 pkgver=2.1.0
+_commit=fc1fb4f79f6b60f480f9381667d6683f33b9e8ac
 pkgrel=2
 pkgdesc="Convert and manipulate images"
 url="https://gitlab.com/adhami3310/Switcheroo"
@@ -11,7 +12,7 @@ depends=('gdk-pixbuf2' 'ghostscript' 'highway' 'imagemagick' 'imath' 'libadwaita
          'libheif' 'libjxl' 'liblqr' 'librsvg' 'openexr' 'webp-pixbuf-loader' 'x265')
 makedepends=('blueprint-compiler' 'cargo' 'git' 'meson')
 checkdepends=('appstream-glib')
-source=("git+$url.git#tag=v$pkgver")
+source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
 prepare() {

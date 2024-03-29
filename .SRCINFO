@@ -25,7 +25,7 @@ pkgbase = switcheroo-gtk4
 	depends = openexr
 	depends = webp-pixbuf-loader
 	depends = x265
-	source = git+https://gitlab.com/adhami3310/Switcheroo.git#tag=v2.1.0
+	source = git+https://gitlab.com/adhami3310/Switcheroo.git#commit=fc1fb4f79f6b60f480f9381667d6683f33b9e8ac
 	sha256sums = SKIP
 
 pkgname = switcheroo-gtk4
