@@ -6,23 +6,23 @@ _android_arch=aarch64
 # When releasing a xorgproto version with updated keysyms, rebuild libx11
 
 pkgname=android-${_android_arch}-xorgproto
-pkgver=2023.2
-pkgrel=2
-pkgdesc="combined X.Org X11 Protocol headers (android)"
+pkgver=2024.1
+pkgrel=1
 arch=('any')
+pkgdesc="combined X.Org X11 Protocol headers (Android ${_android_arch}"
 url="https://xorg.freedesktop.org/"
 license=('custom')
 depends=('android-ndk')
-options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-meson'
              "android-${_android_arch}-xorg-util-macros")
+options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://xorg.freedesktop.org/archive/individual/proto/xorgproto-$pkgver.tar.xz"{,.sig})
-sha512sums=('af0a8c8094fc6a490a886a8c048175762b6334798f2e48b6f6e19a7bb39ddbef05fa1237c4e9d9f1d870d24f5ca7a7c463044c41ceebd108f8ab0816677a582d'
-            'SKIP')
+md5sums=('12374d29fb5ae642cfa872035e401640'
+         'SKIP')
 validpgpkeys=('67DC86F2623FC5FD4BB5225D14706DBE1E4B4540') # "Olivier Fourdan <fourdan@xfce.org>"
 
 build() {
-    cd "${srcdir}"/xorgproto-${pkgver}
+    cd "${srcdir}/xorgproto-${pkgver}"
     source android-env ${_android_arch}
 
     android-${_android_arch}-meson build
@@ -30,7 +30,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}"/xorgproto-${pkgver}
+    cd "${srcdir}/xorgproto-${pkgver}"
     source android-env ${_android_arch}
 
     DESTDIR="${pkgdir}" meson install -C build
