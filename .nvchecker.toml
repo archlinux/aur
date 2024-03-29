@@ -1,0 +1,5 @@
+[python-pypardiso]
+source = "github"
+github = "haasad/PyPardisoProject"
+use_latest_release = "true"
+prefix = "v"
