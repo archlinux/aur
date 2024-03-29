@@ -6,8 +6,10 @@ pkgbase = zapzap
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = python3
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools>=40.8.0
+	makedepends = python-wheel
 	makedepends = desktop-file-utils
 	depends = python-pyqt6
 	depends = python-pyqt6-webengine
