@@ -11,6 +11,7 @@ pkgbase = python-rl
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	depends = readline
 	options = !emptydirs
