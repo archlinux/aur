@@ -48,7 +48,7 @@ makedepends=(
   zip
 )
 source=(
-  ${pkgname}-${pkgver//.u/+}.tar.gz::https://github.com/openjdk/jfx${pkgver%%.*}u/archive/refs/tags/${pkgver//.u/+}.tar.gz
+  "${pkgbase}-${pkgver//.u/+}.tar.gz::https://github.com/openjdk/jfx${pkgver%%.*}u/archive/refs/tags/${pkgver//.u/+}.tar.gz"
   gradle.properties
   java-openjfx-flags.patch
   java-openjfx-no-xlocale.patch
