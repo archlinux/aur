@@ -3,27 +3,29 @@
 _pkgname=LEA
 _pkgver=3.14.0
 pkgname=r-${_pkgname,,}
-pkgver=3.14.0
-pkgrel=1
-pkgdesc='LEA: an R package for Landscape and Ecological Association Studies'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="an R package for Landscape and Ecological Association Studies"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
+  lapack
   r
 )
 optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('611918debc6f25f2cc7277f77979a3e8352c517b63bea56626c6fd9c2ecb14e6')
+md5sums=('e32cbc2a97921f9b911eef1a5d1ef3d7')
+b2sums=('6c39d143ccc7213006f7fca3221ecef3aff81957cce5999c3e417cb007afb011ff54c90701a80dbd4d7e6671f86a8cf03575a154186b3765dd57bce68737fee9')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
