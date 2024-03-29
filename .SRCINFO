@@ -1,0 +1,13 @@
+pkgbase = nyaa-tui
+	pkgdesc = tui to download from nyaa.si
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/woolw/nyaa-tui
+	arch = x86_64
+	license = GPL3
+	depends = openssl
+	depends = aria2
+	source = https://github.com/woolw/nyaa-tui/releases/download/v1.1.1/nyaa-tui
+	sha256sums = 59cf64b1f8e9f768b2cb1bbf172ca9dc337ce4d8657aadfcd354df43641e273a
+
+pkgname = nyaa-tui
