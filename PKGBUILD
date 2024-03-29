@@ -13,8 +13,8 @@
 
 pkgname=gnome-control-center-x11-scaling
 _pkgname=gnome-control-center
-pkgver=45.3
-pkgrel=2
+pkgver=46.0.1
+pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 license=(GPL-2.0-or-later)
@@ -28,7 +28,7 @@ depends=(
   dconf
   fontconfig
   gcc-libs
-  gcr
+  gcr-4
   gdk-pixbuf2
   glib2
   glibc
@@ -38,11 +38,12 @@ depends=(
   gnome-online-accounts
   gnome-settings-daemon
   gnutls
+  graphene
   gsettings-desktop-schemas
   gsound
-  gtk3
   gtk4
   hicolor-icon-theme
+  json-glib
   krb5
   libadwaita
   libcolord
@@ -59,6 +60,7 @@ depends=(
   libpulse
   libpwquality
   libsecret
+  libsoup3
   libwacom
   libx11
   libxi
@@ -77,6 +79,7 @@ makedepends=(
   meson
   modemmanager
   python
+  python-packaging
 )
 checkdepends=(
   python-dbusmock
@@ -103,21 +106,17 @@ optdepends=(
 groups=(gnome)
 conflicts=($_pkgname)
 provides=($_pkgname)
-_commit=4e107fa21250416812d64da8cf32946babb7728d  # tags/45.3^0
+_commit=005f40dcfa464f113a1c95f97673bc5505fc15ad  # tags/46.0.1^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
   "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
-  "https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/master/gnome-control-center-45.0-display-Allow-fractional-scaling-to-be-enabled.patch"
-  "https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/master/gnome-control-center-45.0-display-Support-UI-scaled-logical-monitor-mode.patch"
-  "https://gitlab.archlinux.org/archlinux/packaging/packages/gnome-control-center/-/raw/5549a8fdee89db942c46cae91a7e7dbfc8d41baf/0001-info-overview-Install-bare-logos-into-pixmaps-not-ic.patch"
-  "https://gitlab.archlinux.org/archlinux/packaging/packages/gnome-control-center/-/raw/5549a8fdee89db942c46cae91a7e7dbfc8d41baf/0002-subprojects-Update-gvc-to-latest-commit.patch"
+  "https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/e02b3620aad876b9fafd720d6d327e559288694c/display-Allow-fractional-scaling-to-be-enabled.patch"
+  "https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/e02b3620aad876b9fafd720d6d327e559288694c/display-Support-UI-scaled-logical-monitor-mode.patch"
 )
-b2sums=('SKIP'
+b2sums=('b7c73de8d57df1dd4f08fb52067b5c50d4aadb0f5034527774c088c8237f6d77dad9b4a2e80a4121fc6863acf565a3baf99b446d6e73c16fcab0c839f9d945f6'
         'SKIP'
-        '968494b571fa09217b45ac94e02e931b0761a73cfcadde879d7a5d66f5ccd420d521b39d2eaf6dcfcf77ac7edbf3e7e3cabee54323ab641f2dbf6c6a04b122e3'
-        '7d0cd2fd2faa08ff5608b2e3965b6dafb829ff4de97c41b45a575126d926cb9c78197b0dc125e67d3007a5529559dbfba14039e64b658c788f7552af7c3146c1'
-        'ae1401e0811658e10ff2317065aace8d4172530a322a4f71639737c6bc07621fdb9dae23ccabbee8a57cb00cadf93ea9c2cef2948aee432e2202dff070a95e4b'
-        '587186a917094d98abb79adc031b463fb33d5f06f441b1895804510e13f83e8bfed2d9cebd6b013e2674f83c829cef4be97bda7dbd8d9ff5bf56d72235a0df6c')
+        'afe98782593334d4de02ee1866f9ef4ab06e41f024e5bdf5489a13c1469c7d0f8bf62140cdb828b28b6e159a3f6e66e618ce9889ca8d73875b8740bea554dbdb'
+        'a0f87a1a9e1cb2e1a952928bea33a7a3f309bfbcb73a38d3389b32902677a73257712dd226bd0a1e309e431a1b49adbb499b2f845498812b04fa53da25561757')
 
 pkgver() {
   cd $_pkgname
@@ -127,20 +126,13 @@ pkgver() {
 prepare() {
   cd $_pkgname
 
-  # Install bare logos into pixmaps, not icons
-  git apply -3 ../0001-info-overview-Install-bare-logos-into-pixmaps-not-ic.patch
-
-  # Update libgnome-volume-control
-  # Related to https://gitlab.archlinux.org/archlinux/packaging/packages/gnome-shell/-/issues/3
-  git apply -3 ../0002-subprojects-Update-gvc-to-latest-commit.patch
-
   git submodule init subprojects/gvc
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
   git -c protocol.file.allow=always submodule update
 
   # Support UI scaled logical monitor mode (Marco Trevisan, Robert Ancell)
-  patch -p1 -i "${srcdir}/gnome-control-center-45.0-display-Support-UI-scaled-logical-monitor-mode.patch"
-  patch -p1 -i "${srcdir}/gnome-control-center-45.0-display-Allow-fractional-scaling-to-be-enabled.patch"
+  patch -p1 -i "${srcdir}/display-Support-UI-scaled-logical-monitor-mode.patch"
+  patch -p1 -i "${srcdir}/display-Allow-fractional-scaling-to-be-enabled.patch"
 }
 
 build() {
