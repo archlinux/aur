@@ -25,9 +25,5 @@ package() {
     # Makefile's prefix is /usr/local which seems less standard
     prefix="/usr"
     
-    # create completions dirs
-    mkdir -p "$pkgdir$prefix/share/bash-completions/completions"
-    mkdir -p "$pkgdir$prefix/share/zsh/vendor-completions"
-
     make DESTDIR="$pkgdir" PREFIX="$prefix" install
 }
