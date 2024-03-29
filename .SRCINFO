@@ -1,14 +1,14 @@
 pkgbase = golines
 	pkgdesc = A golang formatter that fixes long lines
-	pkgver = 0.11.0
-	pkgrel = 2
+	pkgver = 0.12.2
+	pkgrel = 1
 	url = https://github.com/segmentio/golines
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
 	makedepends = make
-	source = https://github.com/segmentio/golines/archive/refs/tags/v0.11.0.tar.gz
-	sha256sums = d7336fbddb045bd2448629c4b8ef5ab2dc6136e71a795b6fdd596066bc00adc0
+	source = https://github.com/segmentio/golines/archive/refs/tags/v0.12.2.tar.gz
+	sha256sums = 6f3c462dc707b4441733dbcbef624c61cce829271db64bd994d43e50be95a211
 
 pkgname = golines

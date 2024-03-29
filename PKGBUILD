@@ -2,19 +2,19 @@
 # Contributor: Morteza NourelahiAlamdari <m@0t1.me>
 
 pkgname=golines
-pkgver=0.11.0
-pkgrel=2
+pkgver=0.12.2
+pkgrel=1
 pkgdesc="A golang formatter that fixes long lines"
 arch=('x86_64' 'aarch64')
 url="https://github.com/segmentio/golines"
 license=('MIT')
 makedepends=('go' 'make')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d7336fbddb045bd2448629c4b8ef5ab2dc6136e71a795b6fdd596066bc00adc0')
+sha256sums=('6f3c462dc707b4441733dbcbef624c61cce829271db64bd994d43e50be95a211')
 
 build() {
   cd "$pkgname-$pkgver"
-  make build
+  GOAMD64=v3 go build -o golines -trimpath .
 }
 
 package() {
