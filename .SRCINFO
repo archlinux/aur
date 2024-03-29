@@ -1,12 +1,13 @@
 pkgbase = r-iaseq
-	pkgdesc = iASeq: integrating multiple sequencing datasets for detecting allele-specific events
+	pkgdesc = integrating multiple sequencing datasets for detecting allele-specific events
 	pkgver = 1.46.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/iASeq
 	arch = any
-	license = GPL
+	license = GPL-2.0-only
 	depends = r
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/iASeq_1.46.0.tar.gz
-	sha256sums = 35f0563d9c1573290e1e726ff16099c580239e11c13577a39632e59634c29478
+	md5sums = 3086632b16254c5b1f22c4f376bd43a7
+	b2sums = 9c61497d515671c501d808184d8d64e6ef5d204f6d6ea24e25f4e36d8004dde49cbfadcdd62aa63122041035e9907e56876304f05b7b92dba579e527d5a800e9
 
 pkgname = r-iaseq
