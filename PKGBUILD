@@ -2,7 +2,7 @@
 # Contributor: Pavel Merzlyakov <pavel.merzlyakov@gmail.com>
 _base=allure
 pkgname=python-${_base}-commons
-pkgver=2.13.3
+pkgver=2.13.4
 pkgrel=1
 pkgdesc="Common module for integrate allure with python-based frameworks"
 arch=(any)
@@ -11,7 +11,7 @@ license=(Apache-2.0)
 depends=(python-attrs python-pluggy)
 makedepends=(python-build python-installer python-setuptools-scm python-wheel)
 source=(${_base}-python-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('cc0a7b4181ecc482ff10cbcacbfe47068329f7c4dfa659998957f13619d5c63765e94aec272e843179580040c8e044a774948ddd95c164f377b0714f6abb9011')
+sha512sums=('0ca33832aa0f9679bd4a71d79197b4217e333d6920b4f2259679fdba57268dff38a44e379831439fd2527c243f84bee84cd4b846d9f5ead919f6094f0c2446b9')
 
 build() {
   cd ${_base}-python-${pkgver}/${_base}-python-commons
