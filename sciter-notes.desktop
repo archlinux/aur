@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Sciter-notes
+Comment=sciter-notes
+Exec=sciter-notes
+Icon=sciter-notes
+Terminal=false
+StartupNotify=false
+Categories=Application;

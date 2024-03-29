@@ -1,16 +1,18 @@
 pkgbase = sciter-notes-bin
 	pkgdesc = Evernote-like app based on Sciter SDK
 	pkgver = 4.3.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://notes.sciter.com
 	arch = x86_64
-	license = custom
+	license = BSD
 	depends = gtk3
-	noextract = license.htm
-	source = https://notes.sciter.com/distributions/sciter-notes.tar.gz
-	source = https://raw.githubusercontent.com/c-smile/sciter-sdk/master/license.htm
-	md5sums = 3df3d7feaa1b26fcddd8e4fc66a70e08
-	md5sums = ee2065beedad9ac9a8bd53d63c8922a7
+	provides = sciter-notes
+	options = !strip
+	source = sciter-notes-bin-4.3.0.9.tgz::https://notes.sciter.com/distributions/sciter-notes-x64.tar.gz
+	source = https://gitlab.com/sciter-engine/sciter-js-sdk/-/raw/main/LICENSE
+	source = sciter-notes.desktop
+	b2sums = 6a7be4630398ad3adf4c3d7b01747e5cebc096799c5839db81936819aebb21652ed4baafa6e4d10799ff969334c71e241ef3f56d9cd15f6fe68da15505c1f03f
+	b2sums = 53fce109be23349b6960f038f0bb8ca236a13e728eb2f0ed049d5d5db2adaa5fcab45bd02b4fc8aba17c25195b4f913bb39229de89acf9258ef70f6e7dc7d2a0
+	b2sums = acb1b7a94324a8b3893196f333fa68f8892b53019571b07b7ac7a3d111289772e812055e733ce51c11b5bdbaae3d89427410e5ae349d55422b8abac691c6e32c
 
 pkgname = sciter-notes-bin
-
