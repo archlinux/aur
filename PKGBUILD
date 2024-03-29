@@ -1,9 +1,9 @@
 # vim:ts=2:sw=2:expandtab
 # Maintainer: peelz <peelz.dev+arch@gmail.com>
 
-_commit="e7db47c510fb66243d63c677ed7010f5d0e20744"
+_commit="fa10c5a9442a3012410ca4fd36dce0b48a80aca6"
 pkgname="sd-inhibit-bridge"
-pkgver="0.1.0"
+pkgver="0.1.1"
 pkgrel="1"
 pkgdesc="A daemon implementing the Idle Inhibition D-Bus API that forwards inhibitor locks to systemd-logind"
 url="https://github.com/notpeelz/sd-inhibit-bridge"
