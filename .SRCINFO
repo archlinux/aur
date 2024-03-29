@@ -1,6 +1,6 @@
 pkgbase = taler-merchant
 	pkgdesc = Merchant logic implementation(s) and support code
-	pkgver = 0.9.3
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = https://taler.net/
 	arch = i686
@@ -17,10 +17,10 @@ pkgbase = taler-merchant
 	depends = taler-exchange
 	conflicts = taler-merchant-git
 	conflicts = taler-merchant-bin
-	source = http://ftp.gnu.org/gnu/taler/taler-merchant-0.9.3.tar.gz
-	source = http://ftp.gnu.org/gnu/taler/taler-merchant-0.9.3.tar.gz.sig
+	source = ftp://ftp.gnu.org/gnu/taler/taler-merchant-0.9.4.tar.gz
+	source = ftp://ftp.gnu.org/gnu/taler/taler-merchant-0.9.4.tar.gz.sig
 	validpgpkeys = D8423BCB326C7907033929C7939E6BE1E29FC3CC
-	sha256sums = 56d8568e7b720ca85d148f0af81110fa30cd837bf5cb86621c9754893f1d4d20
+	sha256sums = 19923291e047b1842b4f9b4a605a6277ee079910e0c9199b3d6395ef21eb7c9c
 	sha256sums = SKIP
 
 pkgname = taler-merchant
