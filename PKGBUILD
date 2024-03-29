@@ -1,14 +1,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=affine-bin
 _pkgname=AFFiNE
-pkgver=0.13.3
+pkgver=0.13.4
 _electronversion=29
 pkgrel=1
 pkgdesc="There can be more than Notion and Miro. AFFiNE is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use."
 arch=('x86_64')
 url="https://affine.pro/"
 _ghurl="https://github.com/toeverything/AFFiNE"
-license=('LicenseRef-custom')
+license=(
+    'LicenseRef-custom'
+    'MIT'
+)
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -20,10 +23,12 @@ makedepends=(
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-stable-linux-x64.appimage"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/toeverything/AFFiNE/v${pkgver}/LICENSE"
+    "LICENSE-MIT-${pkgver}::https://raw.githubusercontent.com/toeverything/AFFiNE/v${pkgver}/LICENSE-MIT"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ee021ffe1674d98848416c1e8ea7d2488b8a0c8842338dce3885864689f72fc4'
+sha256sums=('3d7b18f9cb20acdbbe67b9f41374b2ccac4f8735b0d98385eab3a8b8e2a7efc8'
             'b54bb7aa14dd5725bc268921eeea9dee973dacbc13e0cea30e7d2adb5cd5a53f'
+            '1cdeca52d4f740361f103926144eb8b3f265975b2337d4e27b3313f72465897f'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
@@ -43,6 +48,7 @@ package() {
     install -Dm755 "${srcdir}/squashfs-root/resources/app.asar.unpacked/dist/${pkgname%-bin}.linux-x64-gnu.node" \
         -t "${pkgdir}/usr/lib/${pkgname%-bin}/app.asar.unpacked/dist"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/LICENSE-MIT-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/64x64/apps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
