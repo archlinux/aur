@@ -1,6 +1,6 @@
 /pkg
 /src
-xmcl-*
+
 *.asar
 *.tar.xz
-*.pkg.zst
+*.pkg.tar.zst
