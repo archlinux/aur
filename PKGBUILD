@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cTRAP
-_pkgver=1.20.0
+_pkgver=1.20.1
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.20.1
 pkgrel=1
 pkgdesc='Identification of candidate causal perturbations from differential gene expression data'
 arch=('any')
@@ -49,7 +49,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4a24fc2f6b31640d78dd7942e392d6e6e96d0a1842d710d2bf3bc138436d1838')
+sha256sums=('5a1bb2f97ddbe1d7db7925a49cb70690894ebc7633fb0034b2977e0bf0e84433')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
