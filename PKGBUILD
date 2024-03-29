@@ -1,13 +1,13 @@
 # Maintainer: beelzy
 
 pkgname=kame-editor-git
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url="https://gitlab.com/beelzy/kame-editor"
 license=('GPL3')
-pkgdesc='A 3DS theme editor made with Qt5'
-depends=('qt5-base' 'portaudio' 'kame-tools-git' 'rstmcpp-git' 'vgmstream-git')
+pkgdesc='A 3DS theme editor made with Qt6'
+depends=('qt6-base' 'portaudio' 'kame-tools-git' 'rstmcpp-git' 'vgmstream-git')
 makedepends=('git')
 
 _gitroot='https://gitlab.com/beelzy/kame-editor.git'
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_gitname"
-    qmake
+    qmake6
     make
 
     "$srcdir/$_gitname/buildicons.sh"
