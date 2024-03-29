@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CATALYST
-_pkgver=1.26.0
+_pkgver=1.26.1
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.26.1
 pkgrel=1
 pkgdesc='Cytometry dATa anALYSis Tools'
 arch=('any')
@@ -48,7 +48,7 @@ optdepends=(
   r-uwot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e4bb7bf34fcb95d8f1e369f4cd21a3cd6d8facbd3a63e6615d68d608564ccf35')
+sha256sums=('083cd5f8c7271d0a2dcae29cbcbf072153dc8196f94d84bbde7a0289d022cbfd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
