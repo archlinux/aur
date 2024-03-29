@@ -1,14 +1,15 @@
+# Maintainer: a821 at mail dot de
 # Contributor: Alex Xu <alex_y_xu@yahoo.ca>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=sshguard-git
-pkgver=2.4.2.r6.g653c2dd
+pkgver=2.4.3.r6.g9a48b50
 pkgrel=1
 pkgdesc="Brute force detector for SSH, Exim, VSFTPD and more. Blocks by ip with iptables"
 arch=('i686' 'x86_64')
 url="https://www.sshguard.net/"
-license=('GPL')
+license=('ISC' 'BSD-2-Clause')
 makedepends=('git' 'python-docutils')
 optdepends=('iptables' 'nftables' 'firewalld' 'ipset')
 conflicts=('sshguard')
@@ -18,12 +19,12 @@ source=("git+https://bitbucket.org/sshguard/sshguard.git"
         "sshguard.service"
         "sshguard.tmpfile")
 sha256sums=('SKIP'
-            '18a5674d8acb9fe2a7bb3ef760b2d7d8e8ad9dbe244b9c762b754c8a482e912a'
+            '5dda7a47c11898142fcc21cf8e76c0c7009814a0d924675feacb3df084a0fa1b'
             'cd2ba683f25a650a29dd465ec7eb507826af46822d1a1ea6116a052c77c4148f')
 
 prepare() {
     cd sshguard
-    sed -i '/iptables/d;/sample/d' examples/sshguard.service
+    sed -i 's|tables.target|tables.service|g' examples/sshguard.service
     autoreconf -i
 }
 
@@ -57,4 +58,5 @@ BLACKLIST_FILE=120:/var/db/sshguard/blacklist.db
 BACKEND="/usr/lib/sshguard/sshg-fw-iptables"
 EOF
 
+    install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" COPYING
 }

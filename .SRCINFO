@@ -1,11 +1,12 @@
 pkgbase = sshguard-git
 	pkgdesc = Brute force detector for SSH, Exim, VSFTPD and more. Blocks by ip with iptables
-	pkgver = 2.4.2.r6.g653c2dd
+	pkgver = 2.4.3.r6.g9a48b50
 	pkgrel = 1
 	url = https://www.sshguard.net/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = ISC
+	license = BSD-2-Clause
 	makedepends = git
 	makedepends = python-docutils
 	optdepends = iptables
@@ -19,7 +20,7 @@ pkgbase = sshguard-git
 	source = sshguard.service
 	source = sshguard.tmpfile
 	sha256sums = SKIP
-	sha256sums = 18a5674d8acb9fe2a7bb3ef760b2d7d8e8ad9dbe244b9c762b754c8a482e912a
+	sha256sums = 5dda7a47c11898142fcc21cf8e76c0c7009814a0d924675feacb3df084a0fa1b
 	sha256sums = cd2ba683f25a650a29dd465ec7eb507826af46822d1a1ea6116a052c77c4148f
 
 pkgname = sshguard-git
