@@ -7,6 +7,7 @@ pkgbase = rime-minecraft-dict-git
 	arch = any
 	license = GPL-3.0-or-later
 	provides = rime-minecraft-dict
+	conflicts = rime-minecraft-dict
 	source = git+https://github.com/Kimiblock/rime-minecraft-dict.git
 	sha256sums = SKIP
 

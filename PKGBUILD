@@ -8,6 +8,7 @@ url="https://github.com/Kimiblock/rime-minecraft-dict"
 license=('GPL-3.0-or-later')
 depends=()
 provides=('rime-minecraft-dict')
+conflicts=('rime-minecraft-dict')
 source=("git+https://github.com/Kimiblock/rime-minecraft-dict.git")
 sha256sums=("SKIP")
 install=${pkgname}.install
