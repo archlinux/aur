@@ -4,10 +4,9 @@
 pkgbase='ovirt_exporter'
 pkgname='prometheus-ovirt-exporter'
 pkgver='0.10.1'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Exporter for oVirt engine metrics'
 arch=('x86_64' 'aarch64')
-options=(!lto)
 _uri='github.com/czerwonk'
 url="https://${_uri}/${pkgbase}"
 license=('MIT')
@@ -38,7 +37,7 @@ build() {
     -trimpath \
     -mod="readonly" \
     -modcacherw \
-    -ldflags "-linkmode external -extldflags ${LDFLAGS}"
+    -ldflags "-linkmode external -extldflags '${LDFLAGS}'"
 }
 
 package() {
