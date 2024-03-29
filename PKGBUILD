@@ -2,7 +2,7 @@
 pkgname=homeassistant-desktop-bin
 pkgver=1.0.0
 _electronversion=23
-pkgrel=7
+pkgrel=8
 pkgdesc="A simple Home Assistant Desktop application, built using Electron.js"
 arch=('x86_64')
 url="https://github.com/mikepruett3/homeassistant-desktop"

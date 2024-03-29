@@ -1,7 +1,7 @@
 pkgbase = homeassistant-desktop-bin
 	pkgdesc = A simple Home Assistant Desktop application, built using Electron.js
 	pkgver = 1.0.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/mikepruett3/homeassistant-desktop
 	arch = x86_64
 	license = MIT
