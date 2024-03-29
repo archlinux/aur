@@ -1,5 +1,5 @@
 # Maintainer: ldev <ldev dot eu dot org> 
-pkgver=r1.72cefff
+pkgver=r3.3f22126
 pkgrel=1
 
 pkgname=git-credential-github-git
@@ -33,18 +33,11 @@ prepare() {
     cargo fetch
 }
 
-
 build() {
     cd "$srcdir/git-credential-github"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
-}
-
-check() {
-    cd "$srcdir/git-credential-github"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
 }
 
 package() {

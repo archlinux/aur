@@ -1,6 +1,6 @@
 pkgbase = git-credential-github-git
 	pkgdesc = A simple git credentials helper for github
-	pkgver = r1.72cefff
+	pkgver = r3.3f22126
 	pkgrel = 1
 	url = https://github.com/Xgames123/git-credential-github
 	arch = any
