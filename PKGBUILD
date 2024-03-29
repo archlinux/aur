@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
   cd $_pkgname
-  CARGO_INCREMENTAL=0 cargo build --frozen --release --no-default-features --features max-pure
+  cargo build --frozen --release --no-default-features --features max-pure
 }
 
 check() {
