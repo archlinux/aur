@@ -16,7 +16,7 @@ pkgname=(
   java-openjfx-src
 )
 pkgver=21.0.2.u5
-pkgrel=2
+pkgrel=3
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version"
 arch=(x86_64 x86_64_v3)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
@@ -71,11 +71,6 @@ prepare() {
 
 build() {
   cd $_jfxdir
-
-  # Workaround for users without set $CFLAGS and $LDFLAGS causing
-  # build to fail because of included java-openjfx-flags.patch
-  export CFLAGS=${CFLAGS:=}
-  export LDFLAGS=${LDFLAGS:=}
 
   # Build with openjdk-17
   export PATH="/usr/lib/jvm/java-17-openjdk/bin/:$PATH"
