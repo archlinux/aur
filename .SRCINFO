@@ -1,19 +1,18 @@
 pkgbase = smartctl_exporter
 	pkgdesc = Export smartctl statistics to prometheus
-	pkgver = 0.11.0
-	pkgrel = 2
+	pkgver = 0.12.0
+	pkgrel = 1
 	url = https://github.com/prometheus-community/smartctl_exporter
 	arch = x86_64
-	arch = i686
 	arch = aarch64
 	license = GNU
 	makedepends = go
 	depends = smartmontools
 	backup = etc/conf.d/smartctl_exporter
-	source = https://github.com/prometheus-community/smartctl_exporter/archive/refs/tags/v0.11.0.tar.gz
+	source = https://github.com/prometheus-community/smartctl_exporter/archive/refs/tags/v0.12.0.tar.gz
 	source = smartctl_exporter
 	source = smartctl_exporter.service
-	sha256sums = 9c171a9eaeaf7f25fa884f3a0d6b3db6ae85102c43ce6bb748e4dfbda4d84875
+	sha256sums = 30c605f7f9551399ed2da1ed610be4102734b5f3e61d4e42d5169ce597ff7870
 	sha256sums = 5645b05537feb19bd57218ed358403ee7e1bc7520a015a2a885730cff35b7367
 	sha256sums = 91fa22825b6f5be3678ee394b7d60b908a989b5885079335313ab22f6ecb4b73
 
