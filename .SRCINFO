@@ -1,7 +1,7 @@
 pkgbase = aider-chat
 	pkgdesc = AI pair programming in your terminal
 	pkgver = 0.26.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aider.chat/
 	arch = any
 	license = Apache2
@@ -26,6 +26,8 @@ pkgbase = aider-chat
 	depends = python-yaml
 	depends = python-pillow
 	depends = python-diff-match-patch
+	depends = python-pypandoc
+	depends = python-playwright
 	optdepends = python-sounddevice: portaudio support
 	optdepends = python-soundfile: portaudio support
 	provides = aider

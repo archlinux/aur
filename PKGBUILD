@@ -3,7 +3,7 @@
 pkgname="aider-chat"
 _pkgname="$pkgname"
 pkgver=0.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AI pair programming in your terminal"
 url="https://aider.chat/"
 license=("Apache2")
@@ -26,6 +26,8 @@ depends=("python-configargparse"
          "python-yaml"
          "python-pillow"
          "python-diff-match-patch"
+         "python-pypandoc"
+         "python-playwright"
 )
 makedepends=("python-packaging" "python-build" "python-installer" "python-wheel")
 optdepends=("python-sounddevice: portaudio support"
