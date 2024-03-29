@@ -1,7 +1,7 @@
 pkgbase = wireguard-ui-bin
 	pkgdesc = Web user interface to manage your WireGuard setup
 	pkgver = 0.6.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/ngoduykhanh/wireguard-ui
 	install = wireguard-ui.install
 	arch = aarch64

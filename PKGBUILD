@@ -2,7 +2,7 @@
 
 pkgname=wireguard-ui-bin
 pkgver=0.6.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Web user interface to manage your WireGuard setup"
 arch=(aarch64 armv7h i686 x86_64)
 url="https://github.com/ngoduykhanh/${pkgname%-bin}"
@@ -35,10 +35,10 @@ md5sums_i686=(   '2ab2666093261b7529369d3c64666a78' 'SKIP')
 md5sums_x86_64=( '9f5f16950101409218fe80ac0a4b3cce' 'SKIP')
 
 package() {
-    install -Dm644 99-wg.conf              -t $pkgdir/etc/sysctl.d/
-    install -Dm755 ${pkgname%-bin}         -t $pkgdir/usr/bin/
-    install -Dm755 wgiptables.sh              $pkgdir/usr/bin/wgiptables
-    install -Dm644 ${pkgname%-bin}.service -t $pkgdir/usr/lib/systemd/system/
-    install -Dm644 wgui.{path,service}     -t $pkgdir/usr/lib/systemd/system/
-    install -Dm644 LICENSE                 -t $pkgdir/usr/share/licenses/${pkgname%-bin}/
+    install -Dm644 99-wg.conf              -t "$pkgdir"/etc/sysctl.d/
+    install -Dm755 ${pkgname%-bin}         -t "$pkgdir"/usr/bin/
+    install -Dm755 wgiptables.sh              "$pkgdir"/usr/bin/wgiptables
+    install -Dm644 ${pkgname%-bin}.service -t "$pkgdir"/usr/lib/systemd/system/
+    install -Dm644 wgui.{path,service}     -t "$pkgdir"/usr/lib/systemd/system/
+    install -Dm644 LICENSE                 -t "$pkgdir"/usr/share/licenses/${pkgname%-bin}/
 }
