@@ -1,7 +1,7 @@
-pkgbase = sddm-theme-tokyo-night
+pkgbase = sddm-theme-tokyo-night-git
 	pkgdesc = A Tokyo Night theme for the SDDM Login Manager
 	pkgver = r6.320c8e7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rototrash/tokyo-night-sddm
 	arch = any
 	license = LGPL2
@@ -11,10 +11,8 @@ pkgbase = sddm-theme-tokyo-night
 	depends = qt5-quickcontrols2
 	depends = qt5-svg
 	depends = sddm
-	provides = sddm-theme-tokyo-night
-	conflicts = sddm-theme-tokyo-night
 	backup = usr/share/sddm/themes/tokyo-night-sddm/theme.conf
 	source = git+https://github.com/rototrash/tokyo-night-sddm
 	sha256sums = SKIP
 
-pkgname = sddm-theme-tokyo-night
+pkgname = sddm-theme-tokyo-night-git
