@@ -5,7 +5,7 @@ pkgbase = resources
 	url = https://github.com/nokyan/resources
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-or-later
 	checkdepends = appstream-glib
 	makedepends = cargo
 	makedepends = git
@@ -13,7 +13,7 @@ pkgbase = resources
 	depends = dmidecode
 	depends = libadwaita
 	depends = polkit
-	source = git+https://github.com/nokyan/resources.git#tag=v1.3.0
+	source = git+https://github.com/nokyan/resources.git#commit=45da0f97de4de5d2015cffdae7b77ce297be370a
 	sha256sums = SKIP
 
 pkgname = resources

@@ -2,15 +2,16 @@
 
 pkgname=resources
 pkgver=1.3.0
+_commit=45da0f97de4de5d2015cffdae7b77ce297be370a
 pkgrel=1
 pkgdesc="Monitor your system resources and processes"
 url="https://github.com/nokyan/resources"
+license=('GPL-3.0-or-later')
 arch=('x86_64' 'aarch64')
-license=('GPL3')
 depends=('dmidecode' 'libadwaita' 'polkit')
 makedepends=('cargo' 'git' 'meson')
 checkdepends=('appstream-glib')
-source=("git+$url.git#tag=v$pkgver")
+source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
 prepare() {
