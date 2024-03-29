@@ -5,7 +5,7 @@
 # Contributor: bilibili_xiaok <the_xiaok@qq.com>
 pkgname=xmcl-launcher
 pkgver=0.43.0
-pkgrel=1
+pkgrel=2
 pkgdesc="X Minecraft Launcher - 一个现代化的 Minecraft 启动器"
 arch=('x86_64')
 provide=("xmcl")
