@@ -1,7 +1,7 @@
 # Maintainer: David Lazarescu <prtnprvtmail@protonmail.com>
 pkgname='librum'
-pkgver=v.0.12.1
-pkgrel=3
+pkgver=v.0.12.2
+pkgrel=4
 pkgdesc="A modern e-book reader and library manager"
 arch=(x86_64)
 url="https://librumreader.com"
