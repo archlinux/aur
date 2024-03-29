@@ -1,8 +1,8 @@
 # Maintainer: James Knight <james.d.knight@live.com>
 
 pkgname=releng-tool
-pkgver=1.0.0
-_pkgtarget=v1.0
+pkgver=1.1.0
+_pkgtarget=v1.1
 pkgrel=1
 pkgdesc='A tool to manage the building of packages'
 url=https://releng.io/
@@ -42,8 +42,8 @@ source=(
   $_base_url/$_pkgtarget/releng-tool-$pkgver.tar.gz.asc
 )
 sha512sums=(
-  ece80d6528f64c28673dc33f00f092a9d5f9843e0ae4a95de07575da509bb72f2e478e56b3bc8ef9fb2f0d7e1215a85793d8918bf6aed48ac01cf90c3b12afef
-  9718801dd8f885f9f52365b680130822add8bffc4084b7a136a9fbef69b462ada883f5b8d6d01942545cc866908f602bcf78f70ba2fd2186706d00c140cbeb8f
+  8689289ce5b2730270ac7e1c0db9b1a7b39c44f566dff737daabc8b6298806213924f8542af77080dc06c1b0eb3005ccb6ee04f23ec9e32b1cc112e837e9fe39
+  c91b42dceec7b753a2bf2b8312158b8143bb76df2863eaf35d105a930e7cf6e62081de3e395adfb618e8ba1287c3e81201576bf13a16b060c4c8f616cb0ca3bd
 )
 validpgpkeys=(D04A27BA9305DBBD354E653902D3C27B922CCC13)
 
