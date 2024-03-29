@@ -2,9 +2,9 @@
 pkgname=xbyyunpan-bin
 _zhsname="小白羊云盘"
 _pkgname="XBYDriver"
-pkgver=3.12.5
+pkgver=3.13.1
 _electronversion=21
-pkgrel=3
+pkgrel=1
 pkgdesc="小白羊网盘 - Powered by 阿里云盘Open"
 arch=(
     'aarch64'
@@ -32,9 +32,9 @@ source=(
 )
 sha256sums=('37b92e7918a9a8599a558d5e978900966b243cc9f6c964c36f4afa35bf50e009'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('a5047842f75abe78837517f4de70a2ca6b262046be278b8002fc446800d7808d')
-sha256sums_armv7h=('54e8c04571110e47042c0a3068fd7672dfcd4247058558f1e3829600191cbf9d')
-sha256sums_x86_64=('00bfc210c1ed52ee8d732625c71109384d52448536ea2affde0efe6e57e12c3d')
+sha256sums_aarch64=('eb809bbfe409449e12adcbfbc97d97a1c558ad5cf0e84b3deac4c361329c89a3')
+sha256sums_armv7h=('f268ecdf5a4b396cc6c55a62d1e900ce53fee347e9e7d0566230abad55db4fb8')
+sha256sums_x86_64=('a0eed801ae7999d13dfd3114f96bc0ace74d95d21c09f9cfddf069b4ff6423ed')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
