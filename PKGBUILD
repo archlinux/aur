@@ -5,10 +5,10 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-postgresql
-pkgver=16.1
+pkgver=16.2
 pkgrel=1
 arch=('any')
-pkgdesc="Sophisticated object-relational DBMS (Android, ${_android_arch})"
+pkgdesc="Sophisticated object-relational DBMS (Android ${_android_arch})"
 url='https://www.postgresql.org/'
 license=('custom:PostgreSQL')
 depends=("android-${_android_arch}-icu"
@@ -34,7 +34,7 @@ source=("https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.t
         '0005-Added-missing-headers.patch'
         '0006-Fix-duplicate-case.patch'
         '0007-Unversioned-libs.patch')
-md5sums=('9cbfb9076ed06384471802b850698a6d'
+md5sums=('3d19d93434666db5d33e692472915ae5'
          '4c19ab4024b4079e668117d79a9058b3'
          '75dad9c605ab1987c22e5b0da564dccb'
          '3305f78f93bed96409971e5ca269314d'
