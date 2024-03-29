@@ -1,12 +1,13 @@
 pkgbase = wayneko-git
 	pkgdesc = Display an animated neko cat on the bottom of a Wayland output.
 	pkgver = r29.c1919dc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~leon_plickat/wayneko
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
 	depends = wayland
+	depends = pixman
 	provides = wayneko
 	conflicts = wayneko
 	source = git+https://git.sr.ht/~leon_plickat/wayneko

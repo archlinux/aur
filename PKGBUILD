@@ -2,12 +2,13 @@
 _pkgname=wayneko
 pkgname=$_pkgname-git
 pkgver=r29.c1919dc
-pkgrel=1
+pkgrel=2
 pkgdesc="Display an animated neko cat on the bottom of a Wayland output."
 arch=("x86_64")
 url="https://git.sr.ht/~leon_plickat/$_pkgname"
 license=('GPL-3.0-or-later')
-depends=("wayland")
+depends=("wayland"
+         "pixman")
 makedepends=("git")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
