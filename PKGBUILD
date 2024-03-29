@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
   cd $_pkgname
-  CARGO_INCREMENTAL=0 cargo build --frozen --release
+  cargo build --frozen --release
 }
 
 check() {
