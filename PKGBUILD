@@ -1,8 +1,7 @@
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-tcl'
-pkgver='1.02'
+pkgver='1.32'
 pkgrel='1'
 pkgdesc="Tcl extension module for Perl"
 arch=('i686' 'x86_64')
@@ -11,10 +10,10 @@ options=('!emptydirs')
 depends=('perl>=5.006')
 makedepends=()
 url='http://search.cpan.org/dist/Tcl'
-source=('http://search.cpan.org/CPAN/authors/id/V/VK/VKON/Tcl-1.02.tar.gz')
-md5sums=('e3fb55e44e9013751b4bc6f6173c3048')
-sha512sums=('bcd1430526ace01092465f0bed9ff4c5d6966fb81231fbd278ab49d9902774a7d7d81ff0926c6432e861d89e36e3de122611542c25c9226f7623a62c977f4ed6')
-_distdir="Tcl-1.02"
+source=('http://search.cpan.org/CPAN/authors/id/V/VK/VKON/Tcl-1.32.tar.gz')
+md5sums=('34415b3624cd38dcc4ab919a0369713c')
+sha512sums=('363ae39b0d110718e56606ea89432c5c749b077d7adc1fef2f0beeaccc8ac3fe23a37f743331a06d7c1cdb1c161a1a3800a5875d7f03549c05ae63e536b85bbc')
+_distdir="Tcl-1.32"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \

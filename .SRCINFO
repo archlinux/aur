@@ -1,6 +1,6 @@
 pkgbase = perl-tcl
 	pkgdesc = Tcl extension module for Perl
-	pkgver = 1.02
+	pkgver = 1.32
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Tcl
 	arch = i686
@@ -9,9 +9,8 @@ pkgbase = perl-tcl
 	license = GPL
 	depends = perl>=5.006
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/V/VK/VKON/Tcl-1.02.tar.gz
-	md5sums = e3fb55e44e9013751b4bc6f6173c3048
-	sha512sums = bcd1430526ace01092465f0bed9ff4c5d6966fb81231fbd278ab49d9902774a7d7d81ff0926c6432e861d89e36e3de122611542c25c9226f7623a62c977f4ed6
+	source = http://search.cpan.org/CPAN/authors/id/V/VK/VKON/Tcl-1.32.tar.gz
+	md5sums = 34415b3624cd38dcc4ab919a0369713c
+	sha512sums = 363ae39b0d110718e56606ea89432c5c749b077d7adc1fef2f0beeaccc8ac3fe23a37f743331a06d7c1cdb1c161a1a3800a5875d7f03549c05ae63e536b85bbc
 
 pkgname = perl-tcl
-
