@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=netron-git
 _pkgname=Netron
-pkgver=7.5.6.r7.g0b5f7a06
+pkgver=7.5.7.r0.g6b3cf239
 _electronversion=29
 _nodeversion=20
 pkgrel=1
@@ -63,12 +63,13 @@ build() {
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
-        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
-        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
         echo "Your network is OK."
     fi
+    rm -rf dist node_modules
     sed 's|"AppImage", "snap"|"dir"|g' -i package.json
     sed '/python -m pip/d;/--mac /d;/--win /d;/--linux snap/d;s|--linux appimage --x64|--dir|g' -i package.js
     npm install
