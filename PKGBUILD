@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=jnv
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Interactive JSON filter using jq"
 arch=(x86_64)
@@ -17,7 +17,7 @@ makedepends=(
 )
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e83ca02d02fb98ea90179d5436e6425e18c0c47d8d2eea529bb25a1059512477')
+sha256sums=('14d6429173cc6c9a1bca3b3aec9728716b271b249c6e6b897a81877f9fc5f6b3')
 
 _archive="$pkgname-$pkgver"
 
