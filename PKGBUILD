@@ -1,4 +1,4 @@
-# Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
+# Maintainer: Alex Potapenko <opotapenko@gmail.com>
 
 pkgname=zapzap
 _pkgname=com.rtosta.zapzap
