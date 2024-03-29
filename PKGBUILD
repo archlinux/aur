@@ -1,9 +1,9 @@
 # vim:ts=2:sw=2:expandtab
 # Maintainer: peelz <peelz.dev+arch@gmail.com>
 
-_commit="e1a24d2377515857f1dece726e0a13c1cedad200"
+_commit="9c02a4368326cadc423d2cecacf74e60914f967a"
 pkgname="wlclipblock"
-pkgver="0.1.3"
+pkgver="0.1.4"
 pkgrel="1"
 pkgdesc="A hack to prevent Wayland compositors from advertising support for the primary clipboard"
 url="https://github.com/notpeelz/wlclipblock"
