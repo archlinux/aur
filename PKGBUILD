@@ -1,59 +1,51 @@
-# $Id$
-# Maintainer: Donald Carr <sirspudd at gmail dot com>
-# Contributor: Arthur Borsboom <arthurborsboom@gmail.com>
-# Contributor: Jonas Heinrich <onny@project-insanity.org>
+# Maintainer: Donald Carr <d at chaos-reins dot com>
+# Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
+# Maintainer: Robin Broda <robin@broda.me>
+# Contributor: Christian Rebischke <chris.rebischke@archlinux.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
-
-pkgname=libvirt-git
 _pkgname=libvirt
-pkgver=8.9.0.r267.gd5ae0cd178
+# I don't know how to handle conflict arrays; all pkgs appear to get all conlicts
+#pkgname=(${_pkgname}-git ${_pkgname}-git-storage-gluster ${_pkgname}-git-storage-iscsi-direct)
+pkgname=(${_pkgname}-git)
+provides=(${_pkgname})
+conflicts=(${_pkgname})
+pkgver=10.2.0.rc2.r1.g32d836bc6f
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
-arch=('i686' 'x86_64')
-url="http://libvirt.org/"
-license=('LGPL' 'GPL3')
-depends=('libpciaccess' 'yajl' 'fuse2' 'gnutls' 'parted' 'libssh' 'numactl' 'polkit' 'netcf' 'glusterfs' 'libiscsi' 'fmt')
-makedepends=('libxslt' 'python-docutils' 'lvm2' 'open-iscsi' 'bash-completion' 'rpcsvc-proto' 'dnsmasq' 'iproute2' 'git' 'meson' 'ninja')
-checkdepends=('ebtables')
+arch=('x86_64')
+url="https://libvirt.org/"
+license=('LGPL' 'GPL3') #libvirt_parthelper links to libparted which is GPL3 only
+depends=('libpciaccess' 'yajl' 'fuse3' 'gnutls' 'parted' 'libssh' 'libxml2' 'numactl' 'polkit')
+makedepends=('meson' 'libxslt' 'python-docutils' 'lvm2' 'open-iscsi' 'libiscsi' 'glusterfs'
+             'bash-completion' 'rpcsvc-proto' 'dnsmasq' 'iproute2' 'qemu-base')
 optdepends=('libvirt-storage-gluster: Gluster storage backend'
             'libvirt-storage-iscsi-direct: iSCSI-direct storage backend'
-            'libvirt-storage-rbd: RBD storage backend'
             'gettext: required for libvirt-guests.service'
             'openbsd-netcat: for remote management over ssh'
             'dmidecode: DMI system info support'
             'dnsmasq: required for default NAT/DHCP for guests'
             'radvd: IPv6 RAD support'
-            'ebtables: required for default NAT networking'
-            'qemu: QEMU/KVM support'
+            'iptables-nft: required for default NAT networking'
+            'qemu-desktop: QEMU/KVM support'
+            'qemu-emulators-full: Support of additional QEMU architectures'
             'lvm2: Logical Volume Manager support'
-            'open-iscsi: iSCSI support via iscsiadm')
-conflicts=('libvirt')
-provides=('libvirt')
-options=('emptydirs')
+            'open-iscsi: iSCSI support via iscsiadm'
+            'swtpm: TPM emulator support')
+
 backup=(
-  'etc/conf.d/libvirtd'
-  'etc/conf.d/libvirt-guests'
-  'etc/conf.d/virtinterfaced'
-  'etc/conf.d/virtlockd'
-  'etc/conf.d/virtlogd'
-  'etc/conf.d/virtlxcd'
-  'etc/conf.d/virtnetworkd'
-  'etc/conf.d/virtnodedevd'
-  'etc/conf.d/virtnwfilterd'
-  'etc/conf.d/virtproxyd'
-  'etc/conf.d/virtqemud'
-  'etc/conf.d/virtsecretd'
-  'etc/conf.d/virtstoraged'
-  'etc/conf.d/virtvboxd'
   'etc/libvirt/libvirt-admin.conf'
   'etc/libvirt/libvirt.conf'
   'etc/libvirt/libvirtd.conf'
   'etc/libvirt/lxc.conf'
   'etc/libvirt/nwfilter/allow-arp.xml'
   'etc/libvirt/nwfilter/allow-dhcp-server.xml'
+  'etc/libvirt/nwfilter/allow-dhcpv6-server.xml'
   'etc/libvirt/nwfilter/allow-dhcp.xml'
+  'etc/libvirt/nwfilter/allow-dhcpv6.xml'
   'etc/libvirt/nwfilter/allow-incoming-ipv4.xml'
+  'etc/libvirt/nwfilter/allow-incoming-ipv6.xml'
+  'etc/libvirt/nwfilter/allow-ipv6.xml'
   'etc/libvirt/nwfilter/allow-ipv4.xml'
   'etc/libvirt/nwfilter/clean-traffic-gateway.xml'
   'etc/libvirt/nwfilter/clean-traffic.xml'
@@ -61,9 +53,11 @@ backup=(
   'etc/libvirt/nwfilter/no-arp-mac-spoofing.xml'
   'etc/libvirt/nwfilter/no-arp-spoofing.xml'
   'etc/libvirt/nwfilter/no-ip-multicast.xml'
+  'etc/libvirt/nwfilter/no-ipv6-multicast.xml'
   'etc/libvirt/nwfilter/no-ip-spoofing.xml'
-  'etc/libvirt/nwfilter/no-mac-broadcast.xml'
+  'etc/libvirt/nwfilter/no-ipv6-spoofing.xml'
   'etc/libvirt/nwfilter/no-mac-spoofing.xml'
+  'etc/libvirt/nwfilter/no-mac-broadcast.xml'
   'etc/libvirt/nwfilter/no-other-l2-traffic.xml'
   'etc/libvirt/nwfilter/no-other-rarp-traffic.xml'
   'etc/libvirt/nwfilter/qemu-announce-self-rarp.xml'
@@ -71,6 +65,7 @@ backup=(
   'etc/libvirt/qemu.conf'
   'etc/libvirt/qemu-lockd.conf'
   'etc/libvirt/qemu/networks/default.xml'
+  'etc/libvirt/virtchd.conf'
   'etc/libvirt/virtinterfaced.conf'
   'etc/libvirt/virtlockd.conf'
   'etc/libvirt/virtlogd.conf'
@@ -89,74 +84,112 @@ backup=(
   'etc/logrotate.d/libvirtd.qemu'
   'etc/sasl2/libvirt.conf'
 )
-install="libvirt.install"
-source=('git+git://libvirt.org/libvirt.git'
-    libvirtd.conf.d
-    libvirtd-guests.conf.d
-    libvirt.tmpfiles.d)
+source=(
+	'git+https://gitlab.com/libvirt/libvirt.git'
+)
+sha256sums=('SKIP')
 
-  
 pkgver() {
-  cd "$SRCDEST/${pkgname/-git/}"
+  cd "$_pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
 }
 
 prepare() {
-  cd "$srcdir/${pkgname/-git/}"
-
-  for file in $(find . -name '*.py' -print); do
-    sed -i 's_#!.*/usr/bin/python_#!/usr/bin/python_' $file
-    sed -i 's_#!.*/usr/bin/env.*python_#!/usr/bin/env python_' $file
-  done
+  cd "$_pkgname"
 
   sed -i 's|/sysconfig/|/conf.d/|g' \
     src/remote/libvirtd.service.in \
     tools/{libvirt-guests.service,libvirt-guests.sh,virt-pki-validate}.in \
-    src/locking/virtlockd.service.in
-  sed -i 's|@sbindir@|/usr/bin|g' src/locking/virtlockd.service.in
-  # 78 is kvm group: https://wiki.archlinux.org/index.php/DeveloperWiki:UID_/_GID_Database
-  sed -i 's|#group =.*|group="78"|' src/qemu/qemu.conf.in
+    docs/manpages/libvirt-guests.rst \
+    src/locking/virtlockd.service.in \
+    src/logging/virtlogd.service.in
   sed -i 's|/usr/libexec/qemu-bridge-helper|/usr/lib/qemu/qemu-bridge-helper|g' \
-    src/qemu/qemu{.conf.in,_conf.c} \
+    src/qemu/qemu.conf.in \
     src/qemu/test_libvirtd_qemu.aug.in
-
-  sed -i 's/notify/simple/' src/remote/libvirtd.service.in
 }
 
 build() {
-  cd "$srcdir/${pkgname/-git/}"
+  cd "$_pkgname"
 
-  export PYTHON=`which python`
-  export LDFLAGS=-lX11
-  export RADVD=/usr/bin/radvd
-  #sed -i 's|libsystemd-daemon|libsystemd|g' configure
-  mkdir -p build && cd build
-   
-  meson --prefix=/usr --libexec=/usr/lib/$_pkgname --sysconfdir=/etc --sbindir=/usr/bin
-  ninja
+  arch-meson build \
+    --libexecdir=lib/libvirt \
+    -Drunstatedir=/run \
+    -Dqemu_user=libvirt-qemu \
+    -Dqemu_group=libvirt-qemu \
+    -Dnetcf=disabled \
+    -Dopenwsman=disabled \
+    -Dapparmor=disabled \
+    -Dapparmor_profiles=disabled \
+    -Dselinux=disabled \
+    -Dwireshark_dissector=disabled \
+    -Ddriver_bhyve=disabled \
+    -Ddriver_hyperv=disabled \
+    -Ddriver_libxl=disabled \
+    -Ddriver_vz=disabled \
+    -Dsanlock=disabled \
+    -Dsecdriver_apparmor=disabled \
+    -Dsecdriver_selinux=disabled \
+    -Dstorage_vstorage=disabled \
+    -Ddtrace=disabled \
+    -Dnumad=disabled \
+    -Dstorage_zfs=enabled\
+    -Dstorage_rbd=disabled
+
+  ninja -C build
 }
 
-package() {
-  cd "$srcdir/${pkgname/-git/}/build"
+check() {
+  cd "$_pkgname"
 
-  DESTDIR="$pkgdir" ninja install
+  ninja -C build test
+}
 
-  install -D -m644 "$srcdir"/libvirtd.conf.d "$pkgdir"/etc/conf.d/libvirtd
-  install -D -m644 "$srcdir"/libvirtd-guests.conf.d "$pkgdir"/etc/conf.d/libvirt-guests
-  install -D -m644 "$srcdir"/libvirt.tmpfiles.d "$pkgdir"/usr/lib/tmpfiles.d/libvirt.conf
+package_libvirt-git() {
+  provides=("libvirt=$pkgver" 'libvirt.so' 'libvirt-admin.so' 'libvirt-lxc.so' 'libvirt-qemu.so')
+  cd "$_pkgname"
+  DESTDIR="$pkgdir" ninja -C build install
 
-  chown -R 0:78 "$pkgdir"/var/lib/libvirt/qemu
-  chmod 0770 "$pkgdir"/var/lib/libvirt/qemu
+  mkdir -p "$pkgdir"/usr/lib/{sysusers,tmpfiles}.d
+  echo 'g libvirt - -' > "$pkgdir/usr/lib/sysusers.d/libvirt.conf"
+  echo 'u libvirt-qemu /var/lib/libvirt "Libvirt QEMU user"' >> "$pkgdir/usr/lib/sysusers.d/libvirt.conf"
+  echo 'm libvirt-qemu kvm' >> "$pkgdir/usr/lib/sysusers.d/libvirt.conf"
+  echo 'z /var/lib/libvirt/qemu 0751' > "$pkgdir/usr/lib/tmpfiles.d/libvirt.conf"
 
-  chown 0:102 "$pkgdir"/usr/share/polkit-1/rules.d
-  chmod 0750 "$pkgdir"/usr/share/polkit-1/rules.d
+  chown 0:102 "$pkgdir/usr/share/polkit-1/rules.d"
+  chmod 0750 "$pkgdir/usr/share/polkit-1/rules.d"
+  chmod 600 "$pkgdir"/etc/libvirt/nwfilter/*.xml \
+    "$pkgdir/etc/libvirt/qemu/networks/default.xml"
+  chmod 700 "$pkgdir"/etc/libvirt/secrets
 
   rm -rf \
-    "$pkgdir"/var/run \
-    "$pkgdir"/etc/sysconfig \
-    "$pkgdir"/etc/rc.d
+    "$pkgdir/run" \
+    "$pkgdir/var/lib/libvirt/qemu" \
+    "$pkgdir/var/cache/libvirt/qemu" \
+    "$pkgdir/etc/logrotate.d/libvirtd.libxl"
+
+  rm -f "$pkgdir/etc/libvirt/qemu/networks/autostart/default.xml"
+
+  # move split modules
+  mv "$pkgdir"/usr/lib/libvirt/storage-backend/libvirt_storage_backend_gluster.so "$pkgdir/../"
+  mv "$pkgdir/usr/lib/libvirt/storage-backend/libvirt_storage_backend_iscsi-direct.so" "$pkgdir/../"
+  mv "$pkgdir/usr/lib/libvirt/storage-file/libvirt_storage_file_gluster.so" "$pkgdir/../"
 }
-sha256sums=('SKIP'
-            '9d0597bbf2bd7892420cebaf0563236fe1483b83ae95ee6263c1ce7f44a44134'
-            '0896c30100e9e40aee1eb4a2cf0cac2c0bdd5fd7b077b9d2680d90e77435ea66'
-            '5c26353833944db8dc97aa63843734519d6521bd8d88497d94d910ee9d3169d8')
+
+package_libvirt-git-storage-gluster() {
+  pkgdesc="Libvirt Gluster storage backend"
+  depends=("libvirt=$pkgver" 'glusterfs')
+  optdepends=()
+  backup=()
+
+  install -Dv -t "$pkgdir/usr/lib/libvirt/storage-backend" "$pkgdir/../libvirt_storage_backend_gluster.so"
+  install -Dv -t "$pkgdir/usr/lib/libvirt/storage-file" "$pkgdir/../libvirt_storage_file_gluster.so"
+}
+
+package_libvirt-git-storage-iscsi-direct() {
+  pkgdesc="Libvirt iSCSI-direct storage backend"
+  depends=("libvirt=$pkgver" 'libiscsi')
+  optdepends=()
+  backup=()
+
+  install -Dv -t "$pkgdir/usr/lib/libvirt/storage-backend" "$pkgdir/../libvirt_storage_backend_iscsi-direct.so"
+}
