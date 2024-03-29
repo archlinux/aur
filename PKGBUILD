@@ -3,27 +3,25 @@
 _pkgname=gpls
 _pkgver=1.74.0
 pkgname=r-${_pkgname,,}
-pkgver=1.74.0
-pkgrel=1
-pkgdesc='Classification using generalized partial least squares'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Classification using generalized partial least squares"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r
 )
-optdepends=(
-  r-mass
-)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('406afeee1ab2ebcc3a5ec952acf0143e558d130668a48e36147e612e196ed5fc')
+md5sums=('db6bc720156a5f7571a34e64b1189d3b')
+b2sums=('f647d89a455f050a3189a23cca82b14697f1ea5aebd6851900353cee91747f52f66f4d97550fa0d8c14a57fd97993ed8fadd11110aaf108cfd91e8d7a2ba61ca')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
