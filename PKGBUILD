@@ -24,11 +24,13 @@ fi
 
 prepare() {
   cd $srcdir/libhugetlbfs-$pkgver
-  sed 's|/lib64/perl5/TLBC|/lib/perl5/TLBC|g;s|/lib/perl5/TLBC|/lib/perl5/vendor_perl/TLBC|g' -i Makefile
+  autoreconf -fiv
 }
 
 build() {
   cd $srcdir/libhugetlbfs-$pkgver
+  ./configure --prefix=/usr
+  sed 's|/lib64/perl5/TLBC|/lib/perl5/TLBC|g;s|/lib/perl5/TLBC|/lib/perl5/vendor_perl/TLBC|g' -i Makefile
   make $_options PREFIX=/usr
 }
 
