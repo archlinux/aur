@@ -1,14 +1,14 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=herokuish
-pkgver=0.7.6
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Utility for emulating Heroku build and runtime tasks in containers'
 arch=('x86_64')
 url='https://github.com/gliderlabs/herokuish'
 license=('MIT')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('371d0cb776b468c12d3baf9c184f32a48f6fce3b41c9d43c6bf129bb76f3e796')
+sha256sums=('6abafea0f3f6dd7a42577358e8f9b232d2f7a942d64b15792f5e5e6f2c215610')
 makedepends=('go'
              'go-bindata')
 
@@ -29,6 +29,7 @@ build() {
   go-bindata include
 
   # Build executable
+  export GOPATH="${srcdir}/gopath"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
