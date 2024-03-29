@@ -1,6 +1,6 @@
 pkgbase = python-elevenlabs
 	pkgdesc = ElevenLabs API module - generate realistic, captivating speech in a wide range of languages
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://pypi.org/project/elevenlabs/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-elevenlabs
 	depends = python-httpx
 	depends = python-pydantic
 	depends = python-websockets
-	source = https://pypi.org/packages/source/e/elevenlabs/elevenlabs-1.0.2.tar.gz
-	sha256sums = e9793d5a0619bd00b51fc89ccf1b00baf9663c1bdb4214e8f9b8c5ee40aef7b5
+	source = https://pypi.org/packages/source/e/elevenlabs/elevenlabs-1.0.3.tar.gz
+	sha256sums = 23f23ec33dc69532397b501b6bd60a0a6e0313c634e8afdfb525125a5d1a51ff
 
 pkgname = python-elevenlabs
