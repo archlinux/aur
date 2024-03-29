@@ -2,8 +2,8 @@
 
 pkgname=python-pytensor
 _pkgname=${pkgname#python-}
-pkgver=2.19.0
-_commit=4ee358818543ee271b7922f5ccf988ef9338591f
+pkgver=2.20.0
+_commit=ef22377d7e6ea6c74c36a8dc634ef7f1f1f8f9c6
 pkgrel=1
 pkgdesc="Fork of Aesara -- Library for defining, optimizing, and efficiently evaluating mathematical expressions involving multi-dimensional arrays"
 arch=(x86_64)
@@ -22,7 +22,6 @@ depends=(
   python-pydot
   python-scipy
   python-setuptools
-  python-typing_extensions
 )
 makedepends=(
   cython
@@ -50,7 +49,7 @@ source=(
   "remove-bin-package.patch"
 )
 sha256sums=(
-  'SKIP'
+  '0954cf717ea415efb2f0ed0ba501636edd2e83f2090355fe89bc615a3cfe85f3'
   '73360d53a5c5e5718a544c69218d3d64adc2390007a9b6781f7b61cc32415e59'
 )
 
