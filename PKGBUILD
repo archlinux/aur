@@ -1,7 +1,7 @@
 # Maintainer: koyu <me@koyu.space>
 
 pkgname=teams-nativefier
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Microsoft Teams desktop app built with nativefier (electron)"
 arch=("armv7l" "i686" "x86_64")
@@ -52,4 +52,5 @@ package() {
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/${_size}/apps"
     convert "${srcdir}/${pkgname}.png" -strip -resize "${_size}" "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/teams.png"
   done
+  chmod go+rx "${pkgdir}/opt/${pkgname}/"
 }
