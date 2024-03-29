@@ -2,7 +2,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=seamonkey
-pkgver=2.53.18.1
+pkgver=2.53.18.2
 pkgrel=1
 pkgdesc="SeaMonkey internet suite"
 arch=(x86_64)
@@ -62,17 +62,16 @@ optdepends=(
   'networkmanager: Location detection via available WiFi networks'
   'pulseaudio: Audio support'
 )
-
+install="$pkgname.install"
+options=(!lto)
 source=(
-  "https://archive.seamonkey-project.org/releases/2.53.18.1/source/seamonkey-2.53.18.1.source.tar.xz"
+  "https://archive.seamonkey-project.org/releases/$pkgver/source/seamonkey-$pkgver.source.tar.xz"
   "mozconfig"
 )
 sha256sums=(
-  '6fbd622e6554ed881f9eec00c3f346f9aeecbc459d5f9e16ef2636c563607040'
+  '2422e824dbec0cb268d3741dcbf3f2b23a477437052300f181fa7b6c7c364fef'
   '9554b2823d05c7d406325daec629c8b3f64e7d6a32db1bae5683c57d41de529f'
 )
-install="$pkgname.install"
-options=(!lto)
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
