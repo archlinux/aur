@@ -1,7 +1,8 @@
 # Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 pkgname=librivox-checker
 _pkgname=${pkgname/-/_}
-pkgver=1.1
+pkgver=1.2alpha1
+_pkgver=${pkgver/alpha/-alpha-}
 pkgrel=1
 pkgdesc='Validator for LibriVox audio files'
 arch=('any')
@@ -10,11 +11,11 @@ license=('MIT')
 depends=('java-runtime' 'sh')
 makedepends=('java-environment' 'ant' 'gendesk' 'desktop-file-utils')
 checkdepends=('desktop-file-utils')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CGJennings/${pkgname}/archive/v${pkgver}.tar.gz")
-b2sums=('c914571e85d62d6bae495fc369f040500d01383c98a041f30c971c6b3235e5a26a8a62f5c2d4efd613005cd1c1fc57ce519fbdae1a839bcb4b3c3d6df164ef01')
+source=("${pkgname}-${_pkgver}.tar.gz::https://github.com/CGJennings/${pkgname}/archive/v${_pkgver}.tar.gz")
+b2sums=('9944a01941cc9f0891b7bc0a6cd88becc7c18ee9e94f49994fac4de6a480fbeb21cf56f1f402399a1c38efecc34f502be903f9218254bce87d0929e6b0927ab5')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${_pkgver}"
   export GRADLE_USER_HOME="${srcdir}/.gradle"
   ant -nouserlib -silent -quiet jar
 
@@ -23,9 +24,7 @@ build() {
   export _exec="java -jar ${_pkgname}.jar"
   export _name="LibriVox Checker"
   export _path="/usr/share/${pkgname}"
-  # librivox-checker doesn’t currently support being started with file arguments
-  # See https://github.com/CGJennings/librivox-checker/issues/4
-  #export _mimetypes='audio/mpeg;audio/x-mp3;audio/x-mpeg;inode/directory;application/x-zip;application/x-zip-compressed;application/zip'
+  export _mimetypes='audio/mpeg;audio/x-mp3;audio/x-mpeg;inode/directory;application/x-zip;application/x-zip-compressed;application/zip'
   export _categories='Utility;AudioVideo;Audio;Java'
 
   echo '#!/bin/sh' > "${_pkgname}.sh"
@@ -36,7 +35,7 @@ build() {
 }
 
 package(){
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${_pkgver}"
   install -Dm644 'dist/librivox_checker.jar' "${pkgdir}/usr/share/${pkgname}/librivox_checker.jar"
   install -Dm644 'README.md' "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 'LICENSE.txt' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
@@ -52,6 +51,6 @@ package(){
 }
 
 check(){
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${_pkgver}"
   desktop-file-validate "${pkgname}.desktop"
 }
