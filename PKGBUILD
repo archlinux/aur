@@ -3,12 +3,12 @@
 _pkgname=flowPlots
 _pkgver=1.50.0
 pkgname=r-${_pkgname,,}
-pkgver=1.50.0
-pkgrel=1
-pkgdesc='flowPlots: analysis plots and data class for gated flow cytometry data'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="analysis plots and data class for gated flow cytometry data"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r
 )
@@ -16,14 +16,15 @@ optdepends=(
   r-vcd
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9ac84c0a3af3071a4dd2dbc70883105eced78c1996f1f282002dd0ccea7cb8d1')
+md5sums=('523b0d79646813f56d711d3e0f38a5e9')
+b2sums=('5b35b308070ff5bef1d1dd8ade1633843eb34202f32dcc311fe8519b28184e4d940446bec0f71d898d13acdc70a9899338f3d10753f62aeee544ede5ca309b92')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
