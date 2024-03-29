@@ -1,8 +1,8 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=gsconnect-git
-pkgver=56.r15.g43594cc
-pkgrel=4
+pkgver=56.r23.gcce2e9e
+pkgrel=1
 pkgdesc="KDE Connect implementation. GSConnect CLI usage without Gnome environment"
 arch=(any)
 url="https://github.com/GSConnect/gnome-shell-extension-${pkgname%-git}"
@@ -34,9 +34,9 @@ build() {
 }
 
 package() {
-    DESTDIR=$pkgdir meson install -C build
-    install -Dm644 ${pkgname%-git}.service -t $pkgdir/usr/lib/systemd/user/
-    install -d     $pkgdir/usr/bin/
-    ln -s /usr/share/gnome-shell/extensions/${pkgname%-git}@andyholmes.github.io/service/daemon.js           $pkgdir/usr/bin/${pkgname%-git}
-    ln -s /usr/share/gnome-shell/extensions/${pkgname%-git}@andyholmes.github.io/${pkgname%-git}-preferences $pkgdir/usr/bin/${pkgname%-git}-preferences
+    DESTDIR="$pkgdir" meson install -C build
+    install -Dm644 ${pkgname%-git}.service -t "$pkgdir"/usr/lib/systemd/user/
+    install -d     "$pkgdir"/usr/bin/
+    ln -s /usr/share/gnome-shell/extensions/${pkgname%-git}@andyholmes.github.io/service/daemon.js           "$pkgdir"/usr/bin/${pkgname%-git}
+    ln -s /usr/share/gnome-shell/extensions/${pkgname%-git}@andyholmes.github.io/${pkgname%-git}-preferences "$pkgdir"/usr/bin/${pkgname%-git}-preferences
 }
