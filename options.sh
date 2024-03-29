@@ -144,21 +144,38 @@ while [[ $# -gt 0 ]]; do
             $aur_helper -Syu --noconfirm
             shift
             ;;
-        -i|--install)
-            echo "Installing app..."
-            read -p "Package: " package_choice
-            $aur_helper -S $package_choice
+        -h|--help)
             shift
+            if [[ $# -gt 0 ]]; then
+                display_option_help "$1"
+            else
+                display_usage
+            fi
+            exit 0
             ;;
         -s|--search)
             echo "Search app..."
-            read -p "Search: " package_choice
+            if [[ $# -eq 1 ]]; then
+                read -p "Search: " package_choice
+            else
+                package_choice=$2
+                shift
+            fi
             $aur_helper -Ss $package_choice
             read -p "Do you want to install a package? (y/n): " answer_choice
             if [[ $answer_choice == "y" ]]; then
-                OMA -i
+                oma -i "$package_choice"
             fi
-
+            shift
+            ;;
+        -i|--install)
+            echo "Installing apps..."
+            while [[ $# -gt 1 ]]; do
+                echo "Installing $2..."
+                $aur_helper -S "$2"
+                shift
+            done
+            echo "Optimization complete!"
             shift
             ;;
         -r|--remove-packages)

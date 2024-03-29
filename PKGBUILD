@@ -1,6 +1,6 @@
 # Maintainer: Asher Winstead asher@mrashcreates.xyz
 pkgname=optimizemyarch
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="A script to optimize and maintain Arch Linux installations"
 arch=('any')
@@ -11,7 +11,7 @@ source=("optimizemyarch.sh" "init.sh" "dependencies.sh" "options.sh" "optimizati
 sha256sums=('b3392c2d80bc9ba4e539f1911404509ac7b59cff9f307e0c461c716dd9828ae8'
             '7b4bacf70fe2d772231b0225a79cac5c6775324cc951a0708b9ecc72ea3389b8'
             '9c10be88b92149c5b0834d82d522fce8e271f40414571ebc278e3782af7f3344'
-            'cdcf8889e598f7a38f688e14ac73d3f7a0985494ef4292e71bc4206266522335'
+            '644773026983f47c4bfdb376987c3578365a95b489eafb5ce8dbcc343c9d7014'
             '90cf09c0fc358afc55670770c48fb489de2a08215f74181e27449b728cd46f37')
 
 package() {
