@@ -15,7 +15,7 @@ conflicts=("${pkgname}-git" "${pkgname}-bin")
 depends=('python' 'gnunet' 'libmicrohttpd' 'postgresql' 'jq')
 makedepends=('python-jinja')
 #checkdepends=('wget')
-source=("http://ftp.gnu.org/gnu/${_framework}/${pkgname}-${pkgver}.tar.gz"{,.sig})
+source=("ftp://ftp.gnu.org/gnu/${_framework}/${pkgname}-${pkgver}.tar.gz"{,.sig})
 validpgpkeys=('D8423BCB326C7907033929C7939E6BE1E29FC3CC')
 sha256sums=('717a9f0423e24e75127f9bd50eefe2a534cfed47cf0a54a3604ca35af4cff8ed'
             'SKIP')
