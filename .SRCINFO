@@ -1,6 +1,6 @@
 pkgbase = python-cupy
 	pkgdesc = NumPy-like API accelerated with CUDA
-	pkgver = 12.3.0
+	pkgver = 13.0.0
 	pkgrel = 1
 	url = https://cupy.dev
 	arch = x86_64
@@ -15,11 +15,13 @@ pkgbase = python-cupy
 	optdepends = cudnn
 	optdepends = libcutensor
 	optdepends = nccl
-	source = https://github.com/cupy/cupy/archive/v12.3.0.tar.gz
-	source = https://github.com/NVIDIA/cub/archive/c3cceac115c072fb63df1836ff46d8c60d9eb304.tar.gz
-	source = https://github.com/NVIDIA/jitify/archive/4a37de0be4639f222c6565ebd0654cb922b5180e.tar.gz
-	md5sums = 9621d8be161bd1716e5db8e31ec953c0
-	md5sums = ae6435aef98378a8b323b69f6665df33
-	md5sums = 2ad752c0814c2da9909e2dcac0f50401
+	source = https://github.com/cupy/cupy/archive/v13.0.0.tar.gz
+	source = https://github.com/NVIDIA/cccl/archive/3ef9dd9642da2d4e0b3ff77e445e73d7aabd4687.tar.gz
+	source = https://github.com/dmlc/dlpack/archive/365b823cedb281cd0240ca601aba9b78771f91a3.tar.gz
+	source = https://github.com/NVIDIA/jitify/archive/1a0ca0e837405506f3b8f7883bacb71c20d86d96.tar.gz
+	md5sums = 9ee621fba177cb2503988d4146522060
+	md5sums = 17c7f9635569aac243be498275ba71ba
+	md5sums = 4fbb2aeba1e0ef8d7e094deb811630df
+	md5sums = 0fb2589c81179e752d9bc45be72ed992
 
 pkgname = python-cupy
