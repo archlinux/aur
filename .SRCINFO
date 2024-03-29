@@ -20,6 +20,7 @@ pkgbase = sunshine-bin
 	depends = libxfixes
 	depends = libxrandr
 	depends = libxtst
+	depends = miniupnpc
 	depends = numactl
 	depends = openssl
 	depends = opus
