@@ -1,12 +1,13 @@
 pkgbase = r-matchbox
-	pkgdesc = Utilities to compute, compare, and plot the agreement between ordered vectors of features (ie. distinct genomic experiments). The package includes Correspondence-At-the-TOP (CAT) analysis.
+	pkgdesc = Utilities to compute, compare, and plot the agreement between ordered vectors of features (ie. distinct genomic experiments). The package includes Correspondence-At-the-TOP (CAT) analysis
 	pkgver = 1.44.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/matchBox
 	arch = any
-	license = Artistic2.0
+	license = Artistic-2.0
 	depends = r
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/matchBox_1.44.0.tar.gz
-	sha256sums = 3191d06eae4802bcd3e3eab87a15c2ddaae29c46bf1907026cfa8782e86eb1a0
+	md5sums = b6e4b10ee38f433d1bce146a089a44ec
+	b2sums = 3d3ea47607e5966961c870ec60a51cd1cedfd401a2ad81f07b5a869363d86e3fc7d358b17a574ea8222fece45d0b8cdcf63486a0979a7ab2f00fb78941019c13
 
 pkgname = r-matchbox
