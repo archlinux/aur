@@ -1,0 +1,17 @@
+pkgbase = etcher-ng-bin
+	pkgdesc = Flash OS images to SD cards & USB drives, safely and easily - Custom, debloated
+	pkgver = 1.19.6
+	pkgrel = 1
+	url = https://github.com/Alex313031/etcher-ng
+	arch = x86_64
+	license = Apache-2.0
+	depends = electron22
+	provides = etcher=1.19.6
+	conflicts = etcher-ng
+	conflicts = etcher
+	source = etcher-ng-1.19.6.deb::https://github.com/Alex313031/etcher-ng/releases/download/v1.19.6/etcher-ng_1.19.6_amd64.deb
+	source = etcher-ng.sh
+	sha256sums = 70d85de455f49dc3c78511c03d5812548ba58d7d8659afc14c59f467f5ee1bbe
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+
+pkgname = etcher-ng-bin
