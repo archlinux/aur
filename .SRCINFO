@@ -1,6 +1,6 @@
 pkgbase = taler-mdb
 	pkgdesc = Sales integration with the Multi-Drop-Bus of Snack machines, NFC readers and QR code display
-	pkgver = 0.9.3
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = https://taler.net/
 	arch = i686
@@ -17,10 +17,10 @@ pkgbase = taler-mdb
 	optdepends = qrencode: for QR Code generation
 	conflicts = taler-mdb-git
 	conflicts = taler-mdb-bin
-	source = http://ftp.gnu.org/gnu/taler/taler-mdb-0.9.3.tar.gz
-	source = http://ftp.gnu.org/gnu/taler/taler-mdb-0.9.3.tar.gz.sig
+	source = ftp://ftp.gnu.org/gnu/taler/taler-mdb-0.9.4.tar.gz
+	source = ftp://ftp.gnu.org/gnu/taler/taler-mdb-0.9.4.tar.gz.sig
 	validpgpkeys = D8423BCB326C7907033929C7939E6BE1E29FC3CC
-	sha256sums = 336d2d0405efe15cbc69bbe3cb7a417f0bdc1738768c965664c978a9f83b8a61
+	sha256sums = 22f4f17ef448a4b3b285db316ab50f90e798f662e75e0dbc747b4ca1857da476
 	sha256sums = SKIP
 
 pkgname = taler-mdb
