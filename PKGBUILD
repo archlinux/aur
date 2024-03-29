@@ -1,46 +1,36 @@
 # Maintainer: Chizuru-Kagurazaka <chizuru-mtf@outlook.com>
+# Maintainer: bilibili_xiaok <the_xiaok@qq.com>
 # Contributor: Twor <i@twor.me>
+# Contributor: Chizuru-Kagurazaka <chizuru-mtf@outlook.com>
+# Contributor: bilibili_xiaok <the_xiaok@qq.com>
 pkgname=xmcl-launcher
 pkgver=0.43.0
 pkgrel=1
 pkgdesc="X Minecraft Launcher - 一个现代化的 Minecraft 启动器"
 arch=('x86_64')
+provide=("xmcl")
 url="https://xmcl.app/"
 license=('MIT')
-#depends=('')
-makedepends=('wget')
+depends=('electron')
+#makedepends=('wget')
+conflicts=('xmcl-launcher-bin')
 optdepends=('jre8-openjdk: 启动低版本游戏的最低要求'
 'jre11-openjdk: 推荐使用此版本Java启动1.12(17w13a)-1.17(21w18a)'
 'jre17-openjdk: 推荐使用此Java版本启动1.17(21w19a)及以上的版本')
-source=("https://github.com/Voxelum/x-minecraft-launcher/releases/download/v$pkgver/xmcl-$pkgver-x64.tar.xz"
+source=("https://github.com/Voxelum/x-minecraft-launcher/releases/download/v$pkgver/app-$pkgver-linux.asar"
     xmcl.desktop
-    xmcl.png)
-md5sums=('c5f06f2e3bd52704a2a976023dedacb3'
-         '410f264b348c0268132ff8fa3d2d3491'
-         '8facdbaf84f32aaefff5d6fcdad0b8a8')
+    xmcl.png
+    xmcl-launcher)
+md5sums=('e7be5f99e708392521eb54aa90525d0b'
+         'ef302df83d9a2e867dc94e509ba1e0b2'
+         '8facdbaf84f32aaefff5d6fcdad0b8a8'
+         'b58bd18c2830e2915211af9e8564dc3a')
 #install="$pkgname.install"
 
-_setvars() {
-    cd "$srcdir"
-    _full="xmcl-$pkgver-x64"
-}
-
-pkgver() {
-    _setvars
-    printf "$pkgver"
-}
-
-build() {
-    _setvars
-}
-
 package() {
-    _setvars
     cd "$srcdir"
     install -Dm644 "$srcdir/xmcl.desktop" "$pkgdir/usr/share/applications/xmcl.desktop"
-    mkdir -p "$pkgdir/usr/share/icons/hicolor/192x192/apps/"
     install -Dm644 "$srcdir/xmcl.png" "$pkgdir/usr/share/icons/hicolor/192x192/apps/xmcl.png"
-    mkdir -p "$pkgdir/usr/share/xmcl/"
-    cp -r $_full "$pkgdir/usr/share/xmcl/$_full"
-    chmod -R +x "$pkgdir/usr/share/xmcl/$_full"
+    install -Dm644 "${srcdir}/app-$pkgver-linux.asar" "${pkgdir}"/usr/share/xmcl/xmcl.asar
+    install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }

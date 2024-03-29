@@ -1,3 +1,0 @@
-pre_install() {
-	rm -rf "/usr/share/xmcl/"
-}
