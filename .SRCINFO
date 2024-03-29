@@ -1,0 +1,22 @@
+pkgbase = python-aksharamukha
+	pkgdesc = Indic scripts converter
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://aksharamukha.appspot.com/python
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-fonttools
+	depends = python-langcodes
+	depends = python-language-data
+	depends = python-pykakasi
+	depends = python-regex
+	depends = python-requests
+	depends = python-yaml
+	depends = python>=3.8
+	source = https://files.pythonhosted.org/packages/28/af/62556d7f1ef2001c6855f894bec094f615e808bc78aaadd758b123eb1a16/aksharamukha-2.1.2.tar.gz
+	sha256sums = 30ba28d78046e390537c93e45ff8d54398a8e91e4b569ffe6db42fd81c2ff894
+
+pkgname = python-aksharamukha
