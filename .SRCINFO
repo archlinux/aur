@@ -1,7 +1,7 @@
 pkgbase = python-swig
 	pkgdesc = SWIG is a software development tool that connects programs written in C and C++ with a variety of high-level programming languages.
 	pkgver = 4.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nightlark/swig-pypi
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,7 @@ pkgbase = python-swig
 	makedepends = python-build
 	makedepends = python-scikit-build
 	makedepends = m4
+	makedepends = python-setuptools-scm
 	depends = python
 	conflicts = swig
 	source = https://files.pythonhosted.org/packages/source/s/swig/swig-4.2.1.tar.gz
