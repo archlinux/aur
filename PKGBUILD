@@ -2,7 +2,7 @@
 
 pkgname=envision-xr-git
 pkgver=r398.35b0ab9
-pkgrel=1
+pkgrel=2
 pkgdesc='GUI for Monado'
 arch=(x86_64 aarch64)
 url='https://gitlab.com/gabmus/envision'
@@ -24,6 +24,7 @@ depends=(
     vulkan-headers
     vte4
     polkit
+    base-devel
 )
 makedepends=(
     meson
