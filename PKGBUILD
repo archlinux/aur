@@ -16,9 +16,9 @@ pkgname=(
   java-openjfx-src
 )
 pkgver=21.0.2.u5
-pkgrel=1
+pkgrel=2
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version"
-arch=(x86_64)
+arch=(x86_64 x86_64_v3)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
 license=('GPL-2.0-only WITH Classpath-exception-2.0')
 makedepends=(
@@ -110,6 +110,7 @@ package_java-openjfx() {
 }
 
 package_java-openjfx-doc() {
+  arch=(any)
   cd $_jfxdir
 
   install -dm 755 "${pkgdir}"/usr/share/{doc,licenses}
@@ -118,6 +119,7 @@ package_java-openjfx-doc() {
 }
 
 package_java-openjfx-src() {
+  arch=(any)
   cd $_jfxdir
 
   install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-${pkgver%%.*}-openjdk,share/licenses}
