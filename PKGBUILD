@@ -1,6 +1,5 @@
 pkgname=matrix-media-repo
 pkgver=1.3.4
-_tag=4fc0d96c8311f5c9d7af54303c0acdf223b4be1e
 pkgrel=2
 pkgdesc="Highly configurable multi-domain media repository for Matrix."
 arch=("any")
@@ -10,13 +9,8 @@ depends=("glibc" "libheif" "libde265" "imagemagick")
 makedepends=("go" "git")
 backup=()
 provides=("matrix-media-repo")
-source=("git+https://github.com/t2bot/matrix-media-repo.git#tag=${_tag}")
+source=("git+https://github.com/t2bot/matrix-media-repo.git#tag=v${pkgver}")
 sha256sums=('SKIP')
-
-function pkgver() {
-	cd "${srcdir}/matrix-media-repo"
-	git describe --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 function prepare() {
 	cd "${srcdir}/matrix-media-repo"

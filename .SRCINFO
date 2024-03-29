@@ -12,7 +12,7 @@ pkgbase = matrix-media-repo
 	depends = libde265
 	depends = imagemagick
 	provides = matrix-media-repo
-	source = git+https://github.com/t2bot/matrix-media-repo.git#tag=4fc0d96c8311f5c9d7af54303c0acdf223b4be1e
+	source = git+https://github.com/t2bot/matrix-media-repo.git#tag=v1.3.4
 	sha256sums = SKIP
 
 pkgname = matrix-media-repo
