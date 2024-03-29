@@ -2,7 +2,6 @@
 pkgname=clash-nyanpasu
 _pkgname=clash-nyanpasu
 pkgver=1.5.0
-_tag=0a915bf96a86ed61f5ed5034632c0b8c620747f1
 pkgrel=1
 pkgdesc="A Clash GUI based on tauri."
 arch=('any')
@@ -11,14 +10,13 @@ license=('GPL-3.0-or-later')
 depends=('webkit2gtk' 'clash-geoip' 'libayatana-appindicator' "clash-meta-is-mihomo")
 makedepends=('yarn' 'cargo-tauri' 'jq' 'moreutils' 'rust' 'git' 'pnpm' 'clang')
 optdepends=('clash' 'clash-rs')
-source=("git+https://github.com/keiko233/clash-nyanpasu.git#tag=${_tag}"
+source=("git+https://github.com/keiko233/clash-nyanpasu.git#tag=v${pkgver}"
 	"${_pkgname}.desktop"
 )
 provides=(clash-nyanpasu)
 conflicts=()
 
-sha512sums=('SKIP'
-            '085ba585e531f430050cb5fba6221228091c5c59d7c73004eba6c305a794a270e067ce971b92afa23c7d3b6024e4ad208061a2048b219ff42175a28c9d41ee82')
+sha512sums=('SKIP' '085ba585e531f430050cb5fba6221228091c5c59d7c73004eba6c305a794a270e067ce971b92afa23c7d3b6024e4ad208061a2048b219ff42175a28c9d41ee82')
 options=(!lto)
 
 function prepare(){
@@ -50,7 +48,6 @@ function prepare(){
 
 function build(){
 	cd "${srcdir}/clash-nyanpasu"
-	#pnpm dev
 	pnpm build
 }
 package(){
