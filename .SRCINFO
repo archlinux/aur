@@ -1,0 +1,20 @@
+pkgbase = python-tantivy-simsapa-git
+	pkgdesc = Python bindings for Tantivy, Simsapa fork
+	pkgver = r193.cf899cc
+	pkgrel = 1
+	url = https://github.com/simsapa/tantivy-py
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-maturin
+	makedepends = python-wheel
+	depends = python>=3.7
+	depends = glibc
+	depends = gcc-libs
+	provides = python-tantivy-py-simsapa
+	source = python-tantivy-simsapa-git::git+https://github.com/simsapa/tantivy-py.git#branch=simsapa
+	sha256sums = SKIP
+
+pkgname = python-tantivy-simsapa-git
