@@ -6,7 +6,7 @@ pkgrel=3
 pkgdesc="Lightweight, general, scalable C++ library for finite element methods"
 arch=(x86_64)
 url="https://github.com/${pkgname}/${pkgname}"
-license=('custom:BSD-3-clause')
+license=(BSD-3-clause)
 depends=(gcc-libs blitz metis hypre openmpi)
 # gnutls conduit ginkgo hdf5-openmpi libunwind mpfr | sundials scalapack scotch suitesparse superlu_dist
 makedepends=(cmake)
