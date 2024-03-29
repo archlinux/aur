@@ -1,0 +1,22 @@
+pkgbase = pharmaspot-bin
+	pkgdesc = A cross-platform Point of Sale system designed for pharmacies and built to streamline operations and enhance customer service.
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/drkNsubuga/PharmaSpot
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	depends = electron22
+	provides = pharmaspot=1.4.1
+	conflicts = pharmaspot
+	options = !emptydirs
+	source = pharmaspot-1.4.1.zip::https://github.com/drkNsubuga/PharmaSpot/releases/download/v1.4.1/Pharmaspot-linux-x64-1.4.1.zip
+	source = LICENSE-1.4.1::https://raw.githubusercontent.com/drkNsubuga/PharmaSpot/v1.4.1/LICENSE
+	source = pharmaspot-1.4.1.png::https://raw.githubusercontent.com/drkNsubuga/PharmaSpot/v1.4.1/assets/images/favicon.png
+	source = pharmaspot.sh
+	sha256sums = 4814c7009534caa7b22a46da33f6551f237a077d987a695eb7eb57756c849c49
+	sha256sums = 66d59240c025ee617d78f981b88b1bb53393e657f064f9e8e0d68204644d8e1c
+	sha256sums = ba44229f6c0a35bb02fe584adb1b33029c78a80b2bdb96877ddff05c3b6ac17a
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+
+pkgname = pharmaspot-bin
