@@ -21,6 +21,11 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd $_pkgname
+    sed -i "s|-D_FORTIFY_SOURCE=2||" CMakeLists.txt
+}
+
 build() {
     cmake -B build -S "$_pkgname"       \
         -DCMAKE_BUILD_TYPE=Release      \
