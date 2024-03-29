@@ -1,0 +1,20 @@
+pkgbase = blockyfish-client-bin
+	pkgdesc = A custom desktop client for deeeep.io v4 with some improvements. Made by pi.
+	pkgver = 3.1.4
+	pkgrel = 1
+	url = https://blockyfish.vercel.app/
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = gendesk
+	depends = electron24-bin
+	provides = blockyfish-client=3.1.4
+	conflicts = blockyfish-client
+	options = !emptydirs
+	source = blockyfish-client-3.1.4.tar.xz::https://github.com/blockyfish-client/desktop-client/releases/download/v3.1.4/blockyfish-client-linux-3.1.4.tar.xz
+	source = blockyfish-client-3.1.4.png::https://raw.githubusercontent.com/blockyfish-client/desktop-client/v3.1.4/src/icons/256x256.png
+	source = blockyfish-client.sh
+	sha256sums = 381319fd34e8b33aa299487a275f990172a051a6dc9edb1b38f41db0ee9d0ad0
+	sha256sums = a12cbee4d98a5ce986a40d133219d735433edd94d858fc86babe0868e5e87145
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+
+pkgname = blockyfish-client-bin
