@@ -1,17 +1,18 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: a821
+# Contributor Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=python-google-crc32c
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Wraps Google's crc32c library into a Python wrapper"
 arch=('x86_64')
 url="https://github.com/googleapis/python-crc32c"
-license=('APACHE')
+license=('Apache-2.0')
 depends=('python-setuptools' 'google-crc32c')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
-changelog=CHANGELOG.md
+changelog="CHANGELOG.md"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('029111b916bf130d9bcb13ad81d592e66623713f7791dd6d2bf366afd15dacf6')
 
@@ -34,6 +35,6 @@ check() {
 
 package() {
 	cd "python-crc32c-$pkgver"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 README.md SECURITY.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
