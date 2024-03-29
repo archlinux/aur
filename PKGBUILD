@@ -11,7 +11,7 @@
 : ${_sccache:=}
 
 pkgname=scu-git
-pkgver=1.4.0.r11.gaa71db4
+pkgver=1.4.0.r15.g2f24a32
 pkgrel=1
 pkgdesc="System fetch utility is aimed at informativeness"
 arch=(i686 x86_64)
@@ -32,20 +32,20 @@ pkgver() {
 
 prepare() {
     cd ${pkgname%-git}
-    export CARGO_HOME=$srcdir/${pkgname%-git}/.cargo           # Download all to src directory, not in ~/.cargo
+    export CARGO_HOME="$srcdir"/.cargo
     cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd ${pkgname%-git}
-    [[ -n $_sccache ]] && export RUSTC_WRAPPER=sccache         # If $_sccache not empty, build using binary cache
-    export RUSTFLAGS="--remap-path-prefix=$srcdir=/"           # Prevent warning: 'Package contains reference to $srcdir'
-    export CARGO_HOME=$srcdir/${pkgname%-git}/.cargo           # Use downloaded earlier from src directory, not from ~/.cargo
-    export CARGO_TARGET_DIR=target                             # Place the output in target relative to the current directory
+    [[ -n $_sccache ]] && export RUSTC_WRAPPER=sccache
+    export RUSTFLAGS="--remap-path-prefix=$srcdir=/"
+    export CARGO_HOME="$srcdir"/.cargo
+    export CARGO_TARGET_DIR=target
     cargo build --release
 }
 
 package() {
     cd ${pkgname%-git}
-    install -Dm755 target/release/${pkgname%-git}              -t $pkgdir/usr/bin/
+    install -Dm755 target/release/${pkgname%-git} -t "$pkgdir"/usr/bin/
 }

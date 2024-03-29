@@ -1,6 +1,6 @@
 pkgbase = scu-git
 	pkgdesc = System fetch utility is aimed at informativeness
-	pkgver = 1.4.0.r11.gaa71db4
+	pkgver = 1.4.0.r15.g2f24a32
 	pkgrel = 1
 	url = https://gitlab.com/omnitix/scu
 	arch = i686
