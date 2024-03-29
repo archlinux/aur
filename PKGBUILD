@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=simple64
-pkgver=2024.03.1
+pkgver=2024.03.2
 pkgrel=1
 _cheat_parser_commit='0de7c5c0af4508887ff996d56eb2a6a7fc827528'
 pkgdesc='Nintendo64 emulator based on Mupen64Plus'
