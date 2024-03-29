@@ -1,0 +1,12 @@
+pkgbase = optimizemyarch
+	pkgdesc = A script to optimize and maintain Arch Linux installations
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/MrAshCreates/optimizemyarch
+	arch = any
+	license = MIT
+	depends = bash
+	source = optimizemyarch.sh
+	sha256sums = 39bfb476971b62800077315077a8a0bf574a4ac3b29ce51c13186ce26caddd82
+
+pkgname = optimizemyarch
