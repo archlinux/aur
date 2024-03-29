@@ -1,7 +1,7 @@
-From 6585f325ad4267af079226e9a75b6b08f193130f Mon Sep 17 00:00:00 2001
+From 8180f4fe12837287dfeb8ca1618e1b40940566f1 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Mon, 12 May 2014 14:57:18 +0200
-Subject: [PATCH 01/16] Restore transparency
+Subject: [PATCH 1/4] Restore transparency
 
 The transparency settings were removed as a side effect of
 2bff4b63ed3ceef6055e35563e9b0b33ad57349d
@@ -25,10 +25,10 @@ Some changes by Peter Weber <peter.weber@mailbox.org>
  6 files changed, 107 insertions(+), 1 deletion(-)
 
 diff --git a/src/org.gnome.Terminal.gschema.xml b/src/org.gnome.Terminal.gschema.xml
-index 882b251a..d34e8dc2 100644
+index eb2dd009..97bc6943 100644
 --- a/src/org.gnome.Terminal.gschema.xml
 +++ b/src/org.gnome.Terminal.gschema.xml
-@@ -349,6 +349,16 @@
+@@ -355,6 +355,16 @@
        <default>'narrow'</default>
        <summary>Whether ambiguous-width characters are narrow or wide when using UTF-8 encoding</summary>
      </key>
@@ -46,7 +46,7 @@ index 882b251a..d34e8dc2 100644
  
    <!-- Keybinding settings -->
 diff --git a/src/preferences.ui b/src/preferences.ui
-index efc0ad0a..c24f3fea 100644
+index 6ca5502d..706d8146 100644
 --- a/src/preferences.ui
 +++ b/src/preferences.ui
 @@ -95,6 +95,11 @@
@@ -61,7 +61,7 @@ index efc0ad0a..c24f3fea 100644
    <object class="GtkListStore" id="cjk-ambiguous-width-model">
      <columns>
        <!-- column-name gchararray -->
-@@ -1435,6 +1440,48 @@
+@@ -1436,6 +1441,48 @@
                                              <property name="position">1</property>
                                            </packing>
                                          </child>
@@ -111,10 +111,10 @@ index efc0ad0a..c24f3fea 100644
                                      </child>
                                    </object>
 diff --git a/src/profile-editor.cc b/src/profile-editor.cc
-index 0cb99b62..d0e71e26 100644
+index 542b2ed1..2cccb2aa 100644
 --- a/src/profile-editor.cc
 +++ b/src/profile-editor.cc
-@@ -1491,6 +1491,25 @@ profile_prefs_load (const char *uuid, GSettings *profile)
+@@ -1518,6 +1518,25 @@ profile_prefs_load (const char *uuid, GSettings *profile)
  			       GSettingsBindFlags(G_SETTINGS_BIND_GET |
  						  G_SETTINGS_BIND_SET));
    gtk_widget_set_visible (w, (vte_get_feature_flags() & VTE_FEATURE_FLAG_SIXEL) != 0);
@@ -141,10 +141,10 @@ index 0cb99b62..d0e71e26 100644
  
  /* Called once per Preferences window, to destroy stuff that doesn't depend on the profile being edited */
 diff --git a/src/terminal-schemas.hh b/src/terminal-schemas.hh
-index 61f1305e..c33723bf 100644
+index 4e661244..aa109078 100644
 --- a/src/terminal-schemas.hh
 +++ b/src/terminal-schemas.hh
-@@ -78,6 +78,9 @@ G_BEGIN_DECLS
+@@ -79,6 +79,9 @@ G_BEGIN_DECLS
  #define TERMINAL_PROFILE_VISIBLE_NAME_KEY               "visible-name"
  #define TERMINAL_PROFILE_WORD_CHAR_EXCEPTIONS_KEY       "word-char-exceptions"
  
@@ -155,7 +155,7 @@ index 61f1305e..c33723bf 100644
  #define TERMINAL_SETTING_CONTEXT_INFO_KEY               "context-info"
  #define TERMINAL_SETTING_DEFAULT_SHOW_MENUBAR_KEY       "default-show-menubar"
 diff --git a/src/terminal-screen.cc b/src/terminal-screen.cc
-index a559f7f9..16f98c9d 100644
+index 43450928..97eac67c 100644
 --- a/src/terminal-screen.cc
 +++ b/src/terminal-screen.cc
 @@ -1059,7 +1059,9 @@ terminal_screen_profile_changed_cb (GSettings     *profile,
@@ -169,7 +169,7 @@ index a559f7f9..16f98c9d 100644
      update_color_scheme (screen);
  
    if (!prop_name || prop_name == I_(TERMINAL_PROFILE_AUDIBLE_BELL_KEY))
-@@ -1144,6 +1146,8 @@ update_color_scheme (TerminalScreen *screen)
+@@ -1147,6 +1149,8 @@ update_color_scheme (TerminalScreen *screen)
    GdkRGBA *cursor_bgp = nullptr, *cursor_fgp = nullptr;
    GdkRGBA *highlight_bgp = nullptr, *highlight_fgp = nullptr;
    GtkStyleContext *context;
@@ -178,7 +178,7 @@ index a559f7f9..16f98c9d 100644
    gboolean use_theme_colors;
  
    context = gtk_widget_get_style_context (widget);
-@@ -1187,6 +1191,18 @@ update_color_scheme (TerminalScreen *screen)
+@@ -1190,6 +1194,18 @@ update_color_scheme (TerminalScreen *screen)
      }
  
    colors = terminal_g_settings_get_rgba_palette (priv->profile, TERMINAL_PROFILE_PALETTE_KEY, &n_colors);
@@ -197,7 +197,7 @@ index a559f7f9..16f98c9d 100644
    vte_terminal_set_colors (VTE_TERMINAL (screen), &fg, &bg,
                             colors, n_colors);
    vte_terminal_set_color_bold (VTE_TERMINAL (screen), boldp);
-@@ -1194,6 +1210,10 @@ update_color_scheme (TerminalScreen *screen)
+@@ -1197,6 +1213,10 @@ update_color_scheme (TerminalScreen *screen)
    vte_terminal_set_color_cursor_foreground (VTE_TERMINAL (screen), cursor_fgp);
    vte_terminal_set_color_highlight (VTE_TERMINAL (screen), highlight_bgp);
    vte_terminal_set_color_highlight_foreground (VTE_TERMINAL (screen), highlight_fgp);
@@ -234,13 +234,13 @@ index 36eb7ce7..a41d2de2 100644
    uuid_unparse (u, uuidstr);
    priv->uuid = g_strdup (uuidstr);
 -- 
-2.43.0
+2.44.0
 
 
-From bd816ce81bb9bd80029dfc7eea7428f561665956 Mon Sep 17 00:00:00 2001
+From 6a7853a538ea67fdd0e527240d201c7c17b9a615 Mon Sep 17 00:00:00 2001
 From: Lars Uebernickel <lars.uebernickel@canonical.com>
 Date: Wed, 28 May 2014 14:11:02 +0200
-Subject: [PATCH 02/16] window: Make the drawing robust across all themes
+Subject: [PATCH 2/4] window: Make the drawing robust across all themes
 
 There are lots of themes out there in the wild that do not specify a
 background-color for all widgets and the default is transparent. This
@@ -296,13 +296,13 @@ index a41d2de2..11d93419 100644
    widget_class->screen_changed = terminal_window_screen_changed;
    widget_class->style_updated = terminal_window_style_updated;
 -- 
-2.43.0
+2.44.0
 
 
-From 8c1492323a375909ad6cf5245c812f1a8d7509ad Mon Sep 17 00:00:00 2001
+From 42c2ed1350a1e1c1c53e031f4546af1237ff0b10 Mon Sep 17 00:00:00 2001
 From: "Owen W. Taylor" <otaylor@fishsoup.net>
 Date: Fri, 13 Nov 2015 15:16:42 +0100
-Subject: [PATCH 03/16] screen, window: Extra padding around transparent
+Subject: [PATCH 3/4] screen, window: Extra padding around transparent
  terminals in Wayland
 
 https://bugzilla.redhat.com/show_bug.cgi?id=1207943
@@ -312,7 +312,7 @@ https://bugzilla.redhat.com/show_bug.cgi?id=1207943
  2 files changed, 49 insertions(+), 10 deletions(-)
 
 diff --git a/src/terminal-screen.cc b/src/terminal-screen.cc
-index 16f98c9d..51fdc20b 100644
+index 97eac67c..c264e681 100644
 --- a/src/terminal-screen.cc
 +++ b/src/terminal-screen.cc
 @@ -156,6 +156,8 @@ static void terminal_screen_system_font_changed_cb (GSettings *,
@@ -332,7 +332,7 @@ index 16f98c9d..51fdc20b 100644
  
    terminal_class->child_exited = terminal_screen_child_exited;
  
-@@ -1131,6 +1134,32 @@ terminal_screen_profile_changed_cb (GSettings     *profile,
+@@ -1134,6 +1137,32 @@ terminal_screen_profile_changed_cb (GSettings     *profile,
    g_object_thaw_notify (object);
  }
  
@@ -365,7 +365,7 @@ index 16f98c9d..51fdc20b 100644
  static void
  update_color_scheme (TerminalScreen *screen)
  {
-@@ -1146,7 +1175,6 @@ update_color_scheme (TerminalScreen *screen)
+@@ -1149,7 +1178,6 @@ update_color_scheme (TerminalScreen *screen)
    GdkRGBA *cursor_bgp = nullptr, *cursor_fgp = nullptr;
    GdkRGBA *highlight_bgp = nullptr, *highlight_fgp = nullptr;
    GtkStyleContext *context;
@@ -373,7 +373,7 @@ index 16f98c9d..51fdc20b 100644
    gboolean transparent;
    gboolean use_theme_colors;
  
-@@ -1211,9 +1239,7 @@ update_color_scheme (TerminalScreen *screen)
+@@ -1214,9 +1242,7 @@ update_color_scheme (TerminalScreen *screen)
    vte_terminal_set_color_highlight (VTE_TERMINAL (screen), highlight_bgp);
    vte_terminal_set_color_highlight_foreground (VTE_TERMINAL (screen), highlight_fgp);
  
@@ -384,7 +384,7 @@ index 16f98c9d..51fdc20b 100644
  }
  
  static void
-@@ -1755,6 +1781,13 @@ terminal_screen_do_popup (TerminalScreen *screen,
+@@ -1758,6 +1784,13 @@ terminal_screen_do_popup (TerminalScreen *screen,
    terminal_screen_popup_info_unref (info);
  }
  
@@ -431,14 +431,13 @@ index 11d93419..61857bfe 100644
  
    return GTK_WIDGET_CLASS (terminal_window_parent_class)->draw (widget, cr);
 -- 
-2.43.0
+2.44.0
 
 
-From 5235c2c6b60738c81935a88591a2900acf830433 Mon Sep 17 00:00:00 2001
+From aedf7c02a50633d67323b6d5cb51d3c6f6aa9175 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 17:06:17 +0100
-Subject: [PATCH 11/16] Restore translations for setting a title and
- transparency
+Subject: [PATCH 4/4] Restore translations for setting a title and transparency
 
 ---
  po/am.po          |   8 +-
@@ -865,7 +864,7 @@ index e16ea07d..f4cbe857 100644
  
  #: ../src/profile-preferences.glade.h:74
 diff --git a/po/bs.po b/po/bs.po
-index 49e71085..87035529 100644
+index e18510c4..17724733 100644
 --- a/po/bs.po
 +++ b/po/bs.po
 @@ -680,6 +680,10 @@ msgstr "Kratica tastature za povećavanje fonta"
@@ -1598,7 +1597,7 @@ index aa384812..4a28d9ae 100644
 +msgid "Set Title"
 +msgstr "Postavi naslov"
 diff --git a/po/hu.po b/po/hu.po
-index 1aac3640..ba21739b 100644
+index d20e10fb..a9043fe1 100644
 --- a/po/hu.po
 +++ b/po/hu.po
 @@ -2486,3 +2486,15 @@ msgstr "_Ablak bezárása"
@@ -2322,10 +2321,10 @@ index b25a2cb4..3855b2f3 100644
  #: ../src/profile-preferences.glade.h:70
  msgid "_Update login records when command is launched"
 diff --git a/po/pt.po b/po/pt.po
-index f5df7eb5..9728483b 100644
+index e2e65775..b9a3981b 100644
 --- a/po/pt.po
 +++ b/po/pt.po
-@@ -2865,11 +2865,11 @@ msgstr "Falha ao processar argumentos: %s\n"
+@@ -2874,11 +2874,11 @@ msgstr "Falha ao processar argumentos: %s\n"
  #~ msgid "Default size:"
  #~ msgstr "Tamanho predefinido:"
  
@@ -2341,7 +2340,7 @@ index f5df7eb5..9728483b 100644
  
  #~ msgid "Title and Command"
  #~ msgstr "Título e comando"
-@@ -2877,8 +2877,8 @@ msgstr "Falha ao processar argumentos: %s\n"
+@@ -2886,8 +2886,8 @@ msgstr "Falha ao processar argumentos: %s\n"
  #~ msgid "_Unlimited"
  #~ msgstr "_Ilimitado"
  
@@ -2352,7 +2351,7 @@ index f5df7eb5..9728483b 100644
  
  #~ msgid "Current Locale"
  #~ msgstr "Configuração Regional Atual"
-@@ -3633,8 +3633,8 @@ msgstr "Falha ao processar argumentos: %s\n"
+@@ -3642,8 +3642,8 @@ msgstr "Falha ao processar argumentos: %s\n"
  #~ msgid "Background image _scrolls"
  #~ msgstr "Imagem de fundo _rola"
  
@@ -3190,10 +3189,10 @@ index 45dbad07..852c47cc 100644
 +msgid "Transparent background"
 +msgstr "Providna pozadina"
 diff --git a/po/sv.po b/po/sv.po
-index ce79cba7..03420a66 100644
+index 1e4e6054..72450042 100644
 --- a/po/sv.po
 +++ b/po/sv.po
-@@ -2810,5 +2810,17 @@ msgstr "Misslyckades med att tolka argument: %s\n"
+@@ -2839,5 +2839,17 @@ msgstr "Misslyckades med att tolka argument: %s\n"
  #~ msgid "Unknown completion request for \"%s\""
  #~ msgstr "Okänd kompletteringsbegäran för \"%s\""
  
@@ -3672,7 +3671,7 @@ index 61153529..c366abdd 100644
 +msgid "Transparent background"
 +msgstr "透明背景"
 diff --git a/po/zh_TW.po b/po/zh_TW.po
-index 80cb2343..20e2a93c 100644
+index d692f648..4bdaac8a 100644
 --- a/po/zh_TW.po
 +++ b/po/zh_TW.po
 @@ -2735,17 +2735,17 @@ msgstr "關閉視窗(_L)"
@@ -3707,4 +3706,5 @@ index 80cb2343..20e2a93c 100644
 +msgid "Transparent background"
 +msgstr "透明背景"
 -- 
-2.43.0
+2.44.0
+
