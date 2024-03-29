@@ -2,7 +2,7 @@
 
 pkgname=leapp-bin
 _pkgname=leapp
-pkgver=0.25.2
+pkgver=0.25.3
 _pkgdate=20220112
 pkgrel=1
 pkgdesc="Leapp is a Desktop DevTool that handles the management and security of your cloud credentials for you, converted from .deb package"
@@ -12,7 +12,7 @@ license=('custom')
 depends=('gtk3' 'libxss' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'util-linux-libs' 'libsecret' 'at-spi2-core' 'aws-session-manager-plugin')
 provides=("$_pkgname")
 source=("Leapp_${pkgver}_amd64.deb::https://asset.noovolari.com/${pkgver}/Leapp_${pkgver}_amd64.deb")
-sha512sums=('65c89f1147c36f24dd390c0d5c42293e9735db726424cbac1a7c5ec3375168a43a9a7986e8bd947209fe4a14e33fe463f5469e4f7c69e44f4158c4f033247b24')
+sha512sums=('1524850fac25251831532541857bc3f2fa9334d74f3bced6b1b4240f5f51e8c7faa789e694d4d4231fa855d0cd852b74cc83a9ca389ecf07c79422b6b21f6df4')
 
 package() {
     cd ${srcdir}
