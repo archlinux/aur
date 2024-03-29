@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=projclean
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='project dependencies & build artifacts cleanup tool'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(gcc-libs
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('2528257ee66fd740d01180a4ac0e01dbff885ceeb209286d4d24815391f71cbe')
+sha256sums=('5bc3264ae7a74c93cedf206b5679a786e563df6287ab87e5a393bcb0e970199c')
 
 prepare() {
 	cd "$_archive"
