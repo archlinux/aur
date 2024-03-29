@@ -1,0 +1,18 @@
+pkgbase = bloom-wallet
+	pkgdesc = Bloom is a beautifully designed, user-centric wallet. Explore the best of Web3 in a safe, curated environment.
+	pkgver = 0.1.12
+	pkgrel = 1
+	url = https://bloomwallet.io/
+	arch = x86_64
+	license = Apache
+	depends = gnome-keyring
+	depends = libsecret
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	provides = bloom-wallet
+	options = !strip
+	source_x86_64 = https://github.com/bloomwalletio/bloom/releases/download/desktop-0.1.12/bloom-desktop-0.1.12.AppImage
+	sha256sums_x86_64 = SKIP
+
+pkgname = bloom-wallet
