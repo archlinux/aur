@@ -1,27 +1,16 @@
 # Maintainer: a821
 
 pkgname=litecoin-daemon
-pkgver=0.21.2.2
-pkgrel=2
+pkgver=0.21.3
+pkgrel=1
 arch=('x86_64')
 url="https://www.litecoin.org/"
 license=('MIT')
 pkgdesc="Peer-to-peer digital currency (includes litecoind and litecoin-cli)"
 depends=('boost-libs' 'db4.8' 'fmt' 'libevent' 'miniupnpc' 'openssl' 'sqlite' 'zeromq')
 makedepends=('boost')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/litecoin-project/litecoin/archive/refs/tags/v${pkgver}.tar.gz"
-        "Fix-build-with-Boost-1.77.0.patch")
-sha256sums=('c04366711c27acb0196c40b83f833f40b5431ad35c15809aa7f93b84b96eb7ff'
-            '0eb6bb4bb1c82560b063da9e0c2d0404df90637ab13b5db4a75f7959e29bfa44')
-
-prepare() {
-    cd litecoin-${pkgver}
-    patch -p1 < ../Fix-build-with-Boost-1.77.0.patch
-
-    # missing headers
-    sed -i '/algorithm/a #include <stdexcept>' src/support/lockedpool.cpp
-    sed -i '/attributes/a #include <cstdint>' src/util/bip32.h src/util/string.h
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/litecoin-project/litecoin/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('e08642fb1d4ca3891981e6fd39f8c9fbc995d0db8b6b1c3f8f8671de8e120f9a')
 
 build() {
     cd litecoin-${pkgver}
