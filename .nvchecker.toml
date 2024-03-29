@@ -1,0 +1,3 @@
+[python-baidubce]
+source = "pypi"
+pypi = "bce-python-sdk"
