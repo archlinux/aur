@@ -1,6 +1,6 @@
 # Maintainer: Anysets<anysets@qq.com>
 pkgname=cn.flamescion.bookworm-compatibility-mode
-pkgver=12.4.10
+pkgver=12.4.11.1
 pkgrel=1
 pkgdesc="a container app packaging and distributing solution."
 arch=('aarch64' 'x86_64')
@@ -17,7 +17,7 @@ depends=('bubblewrap'
 install=cn.flamescion.bookworm-compatibility-mode.install
 
 source=("$pkgname-$pkgver.tar.gz::https://gitee.com/amber-compatability-environment/bookworm-compatibility-mode/repository/archive/${pkgver}.tar.gz")
-sha256sums=('b08687b2d897352af95bcf21f54544478e44b83234acb126761aac6f39711a2a')
+sha256sums=('b09ea74b789844606626c5e9799a9aa9067a3761e95c71a62954b2a1bf11060b')
 
 package() {
 	cp -rf ${srcdir}/bookworm-compatibility-mode-${pkgver}/src/opt ${pkgdir}/
@@ -32,6 +32,6 @@ package() {
 	then
 		bash build-container.sh amd64
 	else
-		echo "Unsupportable arch!"
+		echo "Unsupported arch!"
 	fi
 }
