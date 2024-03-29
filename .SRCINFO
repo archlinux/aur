@@ -1,0 +1,20 @@
+pkgbase = palletone-git
+	pkgdesc = Desktop color pallete builder and manager for developers and designers.
+	pkgver = r84.ec8ca5c
+	pkgrel = 1
+	url = https://palletone-demo.vercel.app/
+	arch = any
+	license = Apache-2.0
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	depends = electron28
+	provides = palletone=r84.ec8ca5c
+	conflicts = palletone
+	source = palletone.git::git+https://github.com/KainNhantumbo/palletone-app.git
+	source = palletone.sh
+	sha256sums = SKIP
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+
+pkgname = palletone-git
