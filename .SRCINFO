@@ -1,0 +1,23 @@
+pkgbase = scl-bin
+	pkgdesc = A very light, fast, simple, rust-made Minecraft launcher
+	pkgver = 1.2.0
+	pkgrel = 1.0
+	url = https://github.com/Steve-xmh/scl
+	arch = x86_64
+	arch = aarch64
+	license = LGPL3.0
+	depends = openssl-1.1
+	optdepends = jre-openjdk: for Minecraft needed
+	conflicts = scl-bin
+	options = !strip
+	source_x86_64 = logo.png
+	source_x86_64 = scl-bin.desktop
+	source_x86_64 = https://github.com/Steve-xmh/scl/releases/download/v1.2.0/SharpCraftLauncher-20240216-1.2.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = logo.png
+	source_aarch64 = scl-bin.desktop
+	source_aarch64 = https://github.com/Steve-xmh/scl/releases/download/v1.2.0/SharpCraftLauncher-20240216-1.2.0-linux-x86_64.tar.gz
+
+pkgname = scl-bin

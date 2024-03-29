@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=scl-bin
+Type=Application
+Icon=/usr/share/icons/hicolor/512x512/app/scl-bin.png
+Comment=A very light, fast, simple, rust-made Minecraft launcher
+Comment[zh_CN]=一个无比轻量，迅速，简洁的启动器
+Exec=/usr/bin/scl-bin
+Terminal=false
+Keywords=game;minecraft;mc;launcher;scl;scl-bin
+Categories=Game;ActionGame;AdventureGame;Simulation;
