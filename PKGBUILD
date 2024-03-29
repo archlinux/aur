@@ -2,6 +2,7 @@
 
 pkgname=recorder
 pkgver=1.0.17
+_commit=c236986fcc884d3ecd6a02bb0c752f74eee2286d
 pkgrel=1
 pkgdesc='Simple audio recorder'
 url="https://github.com/alexkdeveloper/recorder"
@@ -10,7 +11,7 @@ arch=('x86_64' 'aarch64')
 depends=('gstreamer' 'libadwaita' 'libpulse')
 makedepends=('git' 'meson' 'vala')
 checkdepends=('appstream-glib')
-source=("git+$url.git#tag=$pkgver")
+source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
 build() {
