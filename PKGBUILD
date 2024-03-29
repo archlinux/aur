@@ -3,16 +3,17 @@
 
 pkgname=blivet-gui-git
 pkgver=2.5.0.r16.g1b7473d
-pkgrel=1
+pkgrel=2
 pkgdesc='GUI tool for storage configuration'
 arch=('any')
 license=('GPL')
 url='https://github.com/storaged-project/blivet-gui'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-makedepends=('git' 'python' 'python-cairo')
+makedepends=('git' 'python' 'python-cairo' 'python-setuptools' 'python-gobject'
+'python-pid' 'python-blivet' 'python-sphinx')
 depends=('python' 'python-blivet-git' 'python-cairo' 'python-gobject' 'python-meh'
-'python-pid' 'python-polib' 'python-coverage' 'python-pycodestyle' 'python-pip')
+'python-pid' 'python-polib' 'python-coverage' 'python-pycodestyle' 'python-pip' 'python-pocketlint')
 source=("${pkgname%-git}::git+https://github.com/storaged-project/blivet-gui.git")
 sha256sums=('SKIP')
 
