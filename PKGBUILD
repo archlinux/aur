@@ -9,10 +9,10 @@ url='https://github.com/faceleft/pft'
 license=('MIT')
 makedepends=('go' 'git')
 
-_tag=d6e33d91132d96f50b62c8ac025ff0e8ba935877 # git rev-parse "v$pkgver"
+_tag=fc09bb1f38d8d38530d21f556fa55f5230c8b996 # git rev-parse "v$pkgver"
 source=("git+https://github.com/faceleft/pft.git?signed#tag=$_tag")
 
-sha256sums=('6d305a97da488d2053b20bd2d96cd6db09cff5053ac95326b8d991aaa4a4c2ce')
+sha256sums=('cc0899ea1618ec732826394e1f08ea3ef36497726536089a89877c3b93663637')
 
 pkgver() {
 	cd "$pkgname"
