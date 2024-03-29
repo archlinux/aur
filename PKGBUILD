@@ -26,7 +26,6 @@ pkgver() {
 
 build() {
   cd $_pkgname
-  [[ $CARCH != x86_64 ]] && export CARGO_PROFILE_RELEASE_LTO=off
   CARGO_INCREMENTAL=0 cargo build --frozen --release
 }
 
