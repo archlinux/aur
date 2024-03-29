@@ -1,7 +1,7 @@
 # Maintainer: w0rty <mawo97 at gmail.com>
 
 pkgname=bpftop-bin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='bpftop provides a dynamic real-time view of running eBPF programs.'
 url='https://github.com/Netflix/bpftop'
