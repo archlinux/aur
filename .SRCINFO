@@ -11,7 +11,7 @@ pkgbase = tacentview
 	depends = hicolor-icon-theme
 	depends = libx11
 	depends = libxcb
-	source = git+https://github.com/bluescan/tacentview.git#tag=v1.0.43
+	source = git+https://github.com/bluescan/tacentview.git#commit=bbb47e69561a11a3efcfd0582653495dc59d52a6
 	sha256sums = SKIP
 
 pkgname = tacentview

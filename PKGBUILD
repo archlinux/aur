@@ -4,6 +4,7 @@
 
 pkgname=tacentview
 pkgver=1.0.43
+_commit=bbb47e69561a11a3efcfd0582653495dc59d52a6
 pkgrel=4
 pkgdesc="Image viewer/editor for tga, png, apng, exr, dds, pvr, ktx, ktx2, astc, pkm, qoi, gif, hdr, jpg, tif, ico, webp, and bmp files"
 url="https://github.com/bluescan/tacentview"
@@ -11,7 +12,7 @@ license=('ISC')
 arch=('x86_64')
 depends=('hicolor-icon-theme' 'libx11' 'libxcb')
 makedepends=('cmake' 'git' 'ninja')
-source=("git+$url.git#tag=v$pkgver")
+source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
 prepare() {
