@@ -2,7 +2,7 @@
 _pkgname=wayneko
 pkgname=$_pkgname-git
 pkgver=r29.c1919dc
-pkgrel=2
+pkgrel=3
 pkgdesc="Display an animated neko cat on the bottom of a Wayland output."
 arch=("x86_64")
 url="https://git.sr.ht/~leon_plickat/$_pkgname"
@@ -22,10 +22,12 @@ pkgver() {
 
 package() {
     cd "$srcdir/$_pkgname"
+    # Makefile's prefix is /usr/local which seems less standard
+    prefix="/usr"
+    
+    # create completions dirs
+    mkdir -p "$pkgdir$prefix/share/bash-completions/completions"
+    mkdir -p "$pkgdir$prefix/share/zsh/vendor-completions"
 
-    # note: the makefile puts the mandir and bashcompdir as /usr/local/share/...;
-    # just /usr/share is a more standard location
-    bashcompdir="/usr/share/bash-completions/completions"
-    mkdir -p "$pkgdir$bashcompdir"
-    make DESTDIR="$pkgdir" MANDIR="/usr/share/man" BASHCOMPDIR="$bashcompdir" install
+    make DESTDIR="$pkgdir" PREFIX="$prefix" install
 }
