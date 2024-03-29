@@ -2,7 +2,7 @@
 
 _framework='anastasis'
 pkgname="${_framework}-gtk"
-pkgver='0.4.0'
+pkgver='0.4.1'
 pkgrel=1
 pkgdesc='Graphical user interface for GNU Anastasis'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('anastasis' 'imagemagick' 'jansson' 'gnunet' 'gnunet-gtk' 'glade'
          'taler-exchange' 'taler-merchant')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 source=("ftp://ftp.gnu.org/gnu/${_framework}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('3bad56ba4c5c5d5c97790ef3d70829dafd9e96f939feafb1f1193a7d9548e08c7dd2db63347c63ccefbc080a3cd0a613e3f99c4355a8de972092c9158b350acc')
+sha512sums=('e05da6117d94247179648fac0a1d124f948fa8a428a7660a5248b5ff552f8bd013cd204e10c0a2d75041db478a82ae94cbc11fe19f09622d3e41f3dc70b279bf')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
