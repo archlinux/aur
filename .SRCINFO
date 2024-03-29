@@ -1,6 +1,6 @@
 pkgbase = forgetpass
 	pkgdesc = Simple password generator for websites
-	pkgver = 1.0.16
+	pkgver = 1.0.17
 	pkgrel = 1
 	url = https://github.com/alexkdeveloper/forgetpass
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = forgetpass
 	makedepends = vala
 	depends = libadwaita
 	depends = libgee
-	source = git+https://github.com/alexkdeveloper/forgetpass.git#tag=1.0.16
+	source = git+https://github.com/alexkdeveloper/forgetpass.git#commit=3255be06cb47eaf6d838073f7b975c48e4f489cb
 	sha256sums = SKIP
 
 pkgname = forgetpass

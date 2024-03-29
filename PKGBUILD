@@ -1,7 +1,8 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=forgetpass
-pkgver=1.0.16
+pkgver=1.0.17
+_commit=3255be06cb47eaf6d838073f7b975c48e4f489cb
 pkgrel=1
 pkgdesc='Simple password generator for websites'
 url="https://github.com/alexkdeveloper/forgetpass"
@@ -10,7 +11,7 @@ arch=('x86_64' 'aarch64')
 depends=('libadwaita' 'libgee')
 makedepends=('git' 'meson' 'vala')
 checkdepends=('appstream-glib')
-source=("git+$url.git#tag=$pkgver")
+source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
 build() {
