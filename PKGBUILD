@@ -2,15 +2,16 @@
 
 pkgname=mousam
 pkgver=1.1.0
+_commit=de0a7a9084acd1dc3c83cff64a22c9e0e2a38c14
 pkgrel=1
 pkgdesc='Beautiful and lightweight weather app build using Gtk4, Libadwaita and Python'
 url="https://github.com/amit9838/mousam"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 arch=('x86_64' 'aarch64')
 depends=('libadwaita' 'python')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
-source=("git+$url.git#tag=v$pkgver")
+source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
 build() {
