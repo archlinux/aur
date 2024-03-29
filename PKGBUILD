@@ -9,7 +9,8 @@ arch=(i686 x86_64)
 url="https://github.com/detiam/$_pkgname"
 _commit=2a178a44c3cb3759560a8838340a53a420986863
 license=('GPL-2.0+')
-depends=('plasma-workspace')
+depends=('plasma-workspace<=5.27.10')
+makedepends=('git')
 source=(
 	"git+$url#commit=$_commit"
 )

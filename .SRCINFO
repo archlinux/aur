@@ -6,7 +6,8 @@ pkgbase = plasma5-nvidiap2statusworkaround
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0+
-	depends = plasma-workspace
+	makedepends = git
+	depends = plasma-workspace<=5.27.10
 	source = git+https://github.com/detiam/nvidiap2statusworkaround#commit=2a178a44c3cb3759560a8838340a53a420986863
 	sha256sums = SKIP
 
