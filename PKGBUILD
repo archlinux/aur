@@ -6,7 +6,7 @@ pkgname=vesktop-bin
 _appname=vencord-desktop
 pkgver=1.5.1
 _electronversion=29
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross platform electron-based desktop app aiming to give you a snappier Discord experience with Vencord pre-installed"
 arch=(
     'aarch64'
