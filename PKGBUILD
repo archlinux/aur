@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=atuin-bin
-pkgver=18.0.1
+pkgver=18.1.0
 pkgrel=1
 pkgdesc="Magical shell history"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gcc-libs')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$url/releases/download/v$pkgver/${pkgname%-bin}-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha512sums_x86_64=('62bb84c1f525a4a0ce54741415baf3ee6b004f68d73750b5630a64d89c0cd5884591a8bb9ee80b678ae659e501212d8d1fc37572ca430f1b0a4beec6945d93f7')
+sha512sums_x86_64=('6b9f07c0b1d88127b809612c9dc96fd1569a6e3b15989e174ead55658a1af0e441b16976b674c6e0e12316268ebb63270e3f1cb81e301c0fc519b297da015b2c')
 
 package() {
   cd "${pkgname%-bin}-v$pkgver-x86_64-unknown-linux-gnu"
