@@ -28,7 +28,6 @@ depends=(
 	libxt
 	mime-types
 	nss
-	icu
 	ttf-font)
 makedepends=(
 	cbindgen
@@ -69,8 +68,7 @@ source=(
 	D187418.patch
 	D187749.patch
 	unity-menubar.patch
-	fix_csd_window_buttons.patch
-	icu-74.patch)
+	fix_csd_window_buttons.patch)
 validpgpkeys=(
 	# Mozilla Software Releases <release@mozilla.com>
 	# https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
@@ -82,8 +80,7 @@ sha1sums=(
 		'b3ccca02959d94ef2a5db8f140ff96a2cd9724ef'
 		'559ce09fee54c849ea4da2bf881da37f5fc0cac9'
 		'076dc68b2ec6c454afe9b5a9b3fbb7908ce575b8'
-		'4193d307cfc152ef2813973b0eae4385a4a2a968'
-		'54a3b8938f64aa41b03581e48c660851d4676253')
+		'4193d307cfc152ef2813973b0eae4385a4a2a968')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -145,18 +142,8 @@ prepare() {
 		ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 
 		# System libraries
-		ac_add_options --with-system-libvpx
-		ac_add_options --with-system-webp
-		ac_add_options --with-system-libevent
-		ac_add_options --with-system-ffi
-		ac_add_options --with-system-pixman
-		ac_add_options --with-system-zlib
-		ac_add_options --with-system-jpeg
-		# does not have APNG support
-		# ac_add_options --with-system-png
 		ac_add_options --with-system-nspr
 		ac_add_options --with-system-nss
-		ac_add_options --with-system-icu
 
 		# Features
 		ac_add_options --enable-alsa
