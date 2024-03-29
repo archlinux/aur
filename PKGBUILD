@@ -22,7 +22,14 @@ package() {
     install -dm755 "${pkgdir}/opt/${pkgname}"
     cp -Rr "${srcdir}/squashfs-root/"* "${pkgdir}/opt/${pkgname}"
 
+    # Modify desktop.desktop with absolute paths
+    sed -i "s|Exec=desktop|Exec=/opt/${pkgname}/desktop|" "${srcdir}/squashfs-root/desktop.desktop"
+    sed -i "s|Icon=desktop|Icon=/usr/share/icons/bloom.png|" "${srcdir}/squashfs-root/desktop.desktop"
+
     install -Dm644 "${srcdir}/squashfs-root/desktop.desktop" "${pkgdir}/usr/share/applications/bloom.desktop"
+
+    # Copy desktop file to user applications directory
+    install -Dm644 "${srcdir}/squashfs-root/desktop.desktop" "${pkgdir}/home/${USER}/.local/share/applications/bloom-wallet.desktop"
 
     install -dm755 "${pkgdir}/usr/share/icons/hicolor"
     cp -Rr "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/desktop.png" "${pkgdir}/usr/share/icons/bloom.png"
