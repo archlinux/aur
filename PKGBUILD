@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=catcat-dm-react
-_pkgname="CatCatDM React"
-pkgver=2.0.0
+_pkgname="CatCatDM"
+pkgver=2.0.1
 _electronversion=23
 _nodeversion=18
 pkgrel=1
@@ -25,7 +25,7 @@ source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('728f4b7748feaa920990dba54b79bd6f02ee09b170691a9f4719998525dc2697'
+sha256sums=('c6a22d620f20456e6ff3555e49be08be48ab2a83e4122627ee292a1821d93f3e'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -57,9 +57,10 @@ build() {
     else
         echo "Your network is OK."
     fi
-    sed "s|-p always|--dir|g" -i package.json
+    rm -rf build node_modules
+    sed "s|--win --x64|-l --dir|g" -i package.json
     npm install --force
-    npm run package
+    npm run local
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
