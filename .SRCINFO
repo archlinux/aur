@@ -1,6 +1,6 @@
 pkgbase = gnunet-fuse
 	pkgdesc = Read-only mounting of GNUnet directories as file systems using FUSE
-	pkgver = 0.20.0
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://gnunet.org/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = gnunet-fuse
 	depends = libextractor
 	conflicts = gnunet-fuse-git
 	conflicts = gnunet-fuse-bin
-	source = ftp://ftp.gnu.org/gnu/gnunet/gnunet-fuse-0.20.0.tar.gz
-	sha256sums = c27cca8fa2b325d629ba497df78f2e7e8824094fe23c29d6c4d9574995143ce0
+	source = ftp://ftp.gnu.org/gnu/gnunet/gnunet-fuse-0.21.0.tar.gz
+	sha256sums = e2b66be6421aa0cd79e378bbf2f7f0f50cae31b03167af7cbde51d1d72280e2b
 
 pkgname = gnunet-fuse
