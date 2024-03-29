@@ -1,6 +1,6 @@
 pkgbase = bloom-wallet
 	pkgdesc = Bloom is a beautifully designed, user-centric wallet. Explore the best of Web3 in a safe, curated environment.
-	pkgver = 0.1.12
+	pkgver = 0.1.12.1
 	pkgrel = 1
 	url = https://bloomwallet.io/
 	arch = x86_64
