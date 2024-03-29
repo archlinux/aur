@@ -4,7 +4,7 @@ _zhsname="小白羊云盘"
 _pkgname="XBYDriver"
 pkgver=3.12.5
 _electronversion=21
-pkgrel=2
+pkgrel=3
 pkgdesc="小白羊网盘 - Powered by 阿里云盘Open"
 arch=(
     'aarch64'
@@ -47,7 +47,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_zhsname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/opt/${_zhsname}/resources/"{crx,engine,images,localVersion} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/opt/${_zhsname}/resources/"{crx,engine,images} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
