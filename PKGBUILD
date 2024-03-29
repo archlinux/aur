@@ -14,7 +14,7 @@ license=('GPL2')
 conflicts=('radium_compressor')
 provides=('radium_compressor')
 depends=(jack qt5-base)
-makedepends=(faust)
+makedepends=(faust ladspa)
 source=("git+https://github.com/kmatheussen/radium_compressor"
 		"radium_compressor.desktop"
 		"radium_compressor.png")

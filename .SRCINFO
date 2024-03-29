@@ -7,6 +7,7 @@ pkgbase = radium_compressor-git
 	arch = x86_64
 	license = GPL2
 	makedepends = faust
+	makedepends = ladspa
 	depends = jack
 	depends = qt5-base
 	provides = radium_compressor
@@ -19,4 +20,3 @@ pkgbase = radium_compressor-git
 	md5sums = c535752663bd92f3467e9aef7a5316fe
 
 pkgname = radium_compressor-git
-
