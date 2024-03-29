@@ -1,8 +1,9 @@
 # Maintainer: Angelo Verlain SHEMA (https://vixalien.com)
+# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=decibels
 pkgver=46.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Play audio files"
 arch=('any')
 url="https://gitlab.gnome.org/GNOME/Incubator/decibels"
@@ -25,9 +26,10 @@ makedepends=(
 checkdepends=(
   appstream-glib
 )
-source=("git+https://gitlab.gnome.org/GNOME/Incubator/decibels#tag=$pkgver"
+_commit=d3d85a7d6fac2af348789a05ece4ddea5e828150  # tags/46.0^0
+source=("git+https://gitlab.gnome.org/GNOME/Incubator/decibels#commit=${_commit}"
         'git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions.git')
-sha256sums=('SKIP'
+sha256sums=('136e9e604f4c2c8438cc4c9a0ae2a40c9986c772b7c9f2e908de2082f2b5e87e'
             'SKIP')
 
 pkgver() {
@@ -37,16 +39,9 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-
   git submodule init
   git config submodule.gi-types.url "$srcdir/gi-typescript-definitions"
   git -c protocol.file.allow=always submodule update
-
-  # Fix build:
-  sed -i "s/tsc, '--outDir'/tsc, '--project', files('..\/tsconfig.json'), '--outDir'/g" src/meson.build
-
-  # Replace service exec with `decibels`
-  sed -i "s/Exec=@application_id@/Exec=$pkgname/g" data/org.gnome.Decibels.service.in
 }
 
 build() {
@@ -62,8 +57,7 @@ package() {
   meson install -C build --destdir "$pkgdir"
 
   cd $pkgname
+  install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  install -Dm644 LICENCE -t "$pkgdir/usr/share/licenses/$pkgname/"
-
-  ln -s "/usr/bin/org.gnome.Decibels" "$pkgdir/usr/bin/$pkgname"
+  ln -s /usr/bin/org.gnome.Decibels "$pkgdir/usr/bin/$pkgname"
 }
