@@ -2,41 +2,40 @@
 
 pkgname=gensoquote-git
 _pkgname=gensoquote
-pkgver=0.3.0.r0.ga9c9646
+pkgver=0.3.0.r4.gf46072a
 pkgrel=1
 pkgdesc='Like fortune, but in Gensokyo and memory safe™'
 url=https://github.com/dmyTRUEk/gensoquote
-source=('git+https://github.com/dmyTRUEk/gensoquote')
-arch=('aarch64' 'arm' 'armv5' 'armv6h' 'armv7h' 'i686' 'pentium4' 'riscv64' 'x86_64')
-license=('MIT')
-makedepends=('cargo')
-depends=('git')
-conflicts=('gensoquote' 'gensoquote-bin')
-provides=('gensoquote')
-sha256sums=('SKIP')
+source=(git+https://github.com/dmyTRUEk/gensoquote)
+license=(MIT)
+arch=(x86_64)
+makedepends=(cargo git)
+conflicts=(gensoquote gensoquote-bin)
+provides=(gensoquote)
+sha256sums=(SKIP)
 
 prepare() {
   cd $_pkgname
-
-  cargo fetch --locked --target $(rustc -vV | sed -n 's|host: ||p')
-}
-
-build () {
-  cd $srcdir/$_pkgname
-
-  [[ $CARCH != x86_64 ]] && export CARGO_PROFILE_RELEASE_LTO=off
-
-  CARGO_INCREMENTAL=0 GENSOQUOTE_VERSION=$pkgver cargo build --frozen --release --target-dir target
-}
-
-package() {
-  cd $srcdir/$_pkgname
-
-  install -Dm755 -t ${pkgdir}/usr/bin target/release/gensoquote
+  cargo fetch --locked --target $CARCH-unknown-linux-gnu
 }
 
 pkgver() {
-  cd $srcdir/$_pkgname
-
+  cd $_pkgname
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd $_pkgname
+  [[ $CARCH != x86_64 ]] && export CARGO_PROFILE_RELEASE_LTO=off
+  CARGO_INCREMENTAL=0 cargo build --frozen --release
+}
+
+check() {
+  cd $_pkgname
+  cargo test --frozen --release
+}
+
+package() {
+  cd $_pkgname
+  install -Dm755 -t $pkgdir/usr/bin target/release/gensoquote
 }
