@@ -1,14 +1,14 @@
 # Maintainer: Kimiblock Moe
 pkgname=clash-nyanpasu-git
 _pkgname=clash-nyanpasu
-pkgver=r1502.7385e5d
+pkgver=pre.release.r2.g780b6d41
 pkgrel=1
 pkgdesc="A Clash GUI based on tauri."
 arch=('any')
 url="https://github.com/LibNyanpasu/clash-nyanpasu"
 license=('GPL-3.0-or-later')
 depends=('webkit2gtk' 'clash-geoip' 'libayatana-appindicator' "clash-meta-is-mihomo")
-makedepends=('yarn' 'cargo-tauri' 'jq' 'moreutils' 'rust' 'quickjs' 'git' 'pnpm' 'clang')
+makedepends=('yarn' 'cargo-tauri' 'jq' 'moreutils' 'rust' 'git' 'pnpm' 'clang')
 optdepends=('clash' 'clash-rs')
 source=("git+https://github.com/LibNyanpasu/clash-nyanpasu.git"
 	"${_pkgname}.desktop"
@@ -21,7 +21,7 @@ options=(!lto)
 
 function pkgver() {
 	cd "${srcdir}/clash-nyanpasu"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 function prepare(){
 	cd "${srcdir}/clash-nyanpasu"
