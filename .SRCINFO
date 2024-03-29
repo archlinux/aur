@@ -1,6 +1,6 @@
 pkgbase = r-biocfilecache
 	pkgdesc = Manage Files Across Sessions
-	pkgver = 2.10.1
+	pkgver = 2.10.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BiocFileCache
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-biocfilecache
 	optdepends = r-rmarkdown
 	optdepends = r-rtracklayer
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocFileCache_2.10.1.tar.gz
-	sha256sums = b5d58418fef661743247229a39646685c31c5bfbeb73b28547c0ace772809310
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocFileCache_2.10.2.tar.gz
+	sha256sums = 3f0cfc6dc10aaeae9f5856da1c1a4d31493222fe8be01ee0b6725fef09b3f601
 
 pkgname = r-biocfilecache
