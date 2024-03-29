@@ -1,0 +1,4 @@
+[python-sport-activities-features]
+source = "github"
+github = "firefly-cpp/sport-activities-features"
+use_latest_release = "true"
