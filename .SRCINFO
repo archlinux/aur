@@ -1,6 +1,6 @@
 pkgbase = spacedrive
 	pkgdesc = Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed filesystem written in Rust.
-	pkgver = 0.2.7
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://spacedrive.com/
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = spacedrive
 	depends = libsoup
 	depends = glib2
 	conflicts = spacedrive-git
-	source = spacedrive-v0.2.7.tar.gz::https://github.com/spacedriveapp/spacedrive/archive/refs/tags/0.2.7.tar.gz
-	sha256sums = 64395d455ed57a8497e8f2a6130fce3e4a693882e8e638a51e0bea8aa30a832a
+	source = spacedrive-v0.2.8.tar.gz::https://github.com/spacedriveapp/spacedrive/archive/refs/tags/0.2.8.tar.gz
+	sha256sums = 10b65bc3bd403d437213006f32fb322c2452cc1ea0653b75b9836f7e0fc4e40a
 
 pkgname = spacedrive
