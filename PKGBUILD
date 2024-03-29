@@ -1,7 +1,7 @@
 # Maintainer: KUHTOXO oxomhuk@gmail.com
 pkgname=armgs
 pkgver=23.2
-pkgrel=1
+pkgrel=2
 pkgdesc="ARM GS"
 arch=('x86_64')
 url="https://armgs.team/"
@@ -18,7 +18,7 @@ source=(
 #noextract=()
 sha256sums=(
 	'7dc21abb6f62e300cdccc15cb08e6e88489fc1cbd1fbac62826094281fcd4c79'
-	'8cb6af4a27d8a312c075474cbcb783eb4b9fa1481517be4c090b664e2ffe6753'
+	'a88a4cb554a8ac6d9e421ea176a0d44e29a8c57a5e0cb6aaa3d09501bcc51282'
 )
 
 package() {

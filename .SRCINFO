@@ -1,7 +1,7 @@
 pkgbase = armgs
 	pkgdesc = ARM GS
 	pkgver = 23.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://armgs.team/
 	arch = x86_64
 	license = proprietary
@@ -9,6 +9,6 @@ pkgbase = armgs
 	source = https://dl.armgs.team/downloads/linux/x64/latest/armgs.tar.xz
 	source = armgs.desktop
 	sha256sums = 7dc21abb6f62e300cdccc15cb08e6e88489fc1cbd1fbac62826094281fcd4c79
-	sha256sums = 8cb6af4a27d8a312c075474cbcb783eb4b9fa1481517be4c090b664e2ffe6753
+	sha256sums = a88a4cb554a8ac6d9e421ea176a0d44e29a8c57a5e0cb6aaa3d09501bcc51282
 
 pkgname = armgs
