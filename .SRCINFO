@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-end_to_end_encryption
 	pkgdesc = Nextcloud End-to-End-Encryption App
-	pkgver = 1.15.0
+	pkgver = 1.15.2
 	pkgrel = 1
 	url = https://github.com/nextcloud/end_to_end_encryption
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = nextcloud-app-end_to_end_encryption
 	makedepends = nextcloud
 	makedepends = yq
 	options = !strip
-	source = nextcloud-app-end_to_end_encryption-1.15.0.tar.gz::https://github.com/nextcloud-releases/end_to_end_encryption/releases/download/v1.15.0/end_to_end_encryption-v1.15.0.tar.gz
-	sha512sums = 30ed009ca77ff79b05686c47dce56c73518a43892c0710a72077fea97044a3b7c3dbafbfdd3d5db6f6123fc62a1cf440909b772eeec70c5c6c02c80b579727a4
+	source = nextcloud-app-end_to_end_encryption-1.15.2.tar.gz::https://github.com/nextcloud-releases/end_to_end_encryption/releases/download/v1.15.2/end_to_end_encryption-v1.15.2.tar.gz
+	sha512sums = 89609204c39e2885eee09aa48ae2f20ee96ed2bcc899ad43169dcda50b8861f230c973738f1a311e630ee3904da69cddf87051d5cfe20228331331fad5b3a39f
 
 pkgname = nextcloud-app-end_to_end_encryption
