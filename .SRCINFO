@@ -1,15 +1,15 @@
 pkgbase = dive-cli-bin
 	pkgdesc = Deployable Infrastructure for Virtually Effortless blockchain integration
-	pkgver = 0.1.0
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/HugoByte/DIVE
 	install = dive-cli-bin.install
 	arch = x86_64
 	license = Apache-2.0 License
 	depends = docker
-	source = dive-cli-bin-0.1.0.tar.gz::https://github.com/HugoByte/DIVE/releases/download/v0.1.0/dive-cli_v0.1.0_linux_amd64.tar.gz
+	source = dive-cli-bin-0.1.2.tar.gz::https://github.com/HugoByte/DIVE/releases/download/v0.1.2/dive-cli_v0.1.2_linux_amd64.tar.gz
 	source = dive-cli-bin.install
-	sha256sums = 58c8dd9423b6ec70bfafe19215a3197d8b8d0b0da0a6024e27ea4eb41caa7ca4
+	sha256sums = 259343c8fa2f4167e5791445b52d08ca8f79aa7ca56da942be7fe47fad1f2f27
 	sha256sums = 4c06ab378065181b1d32dd213b12fdcc3d6a912704ff94ece7a949becdb97a48
 
 pkgname = dive-cli-bin
