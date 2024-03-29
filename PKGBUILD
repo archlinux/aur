@@ -5,10 +5,10 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-prrte
-pkgver=3.0.4
-pkgrel=3
+pkgver=3.0.5
+pkgrel=1
 arch=('any')
-pkgdesc="PMIx Reference RunTime Environment (Android, ${_android_arch})"
+pkgdesc="PMIx Reference RunTime Environment (Android ${_android_arch})"
 url="https://github.com/openpmix/prrte"
 license=('BSD-3-Clause')
 depends=("android-${_android_arch}-hwloc"
@@ -27,7 +27,7 @@ source=("$url/releases/download/v$pkgver/prrte-$pkgver.tar.gz"
         '0001-Force-32-bits-compile.patch'
         '0002-Unversioned-libs.patch'
         '0003-Remove-getdtablesize.patch')
-md5sums=('0ad393b5f180c78858d4deb16123af4c'
+md5sums=('099bfb7922146b5199e5e19a3ca624f2'
          '846d0affc94d41dafa76adb72abe210b'
          'aed50d2a9dae9f25179547c76332eae2'
          '33b8d8a53fb67b636835e9e3e955ff77'
