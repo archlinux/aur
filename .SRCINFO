@@ -1,0 +1,16 @@
+pkgbase = vapoursynth-plugin-complexpr-git
+	pkgdesc = Plugin for Vapoursynth: complexpr (GIT version)
+	pkgver = r47.eba0d99
+	pkgrel = 1
+	url = https://github.com/Irrational-Encoding-Wizardry/vapoursynth-complexpr.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-complexpr
+	conflicts = vapoursynth-plugin-complexpr
+	options = debug
+	source = complexpr::git+https://github.com/Irrational-Encoding-Wizardry/vapoursynth-complexpr.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-complexpr-git
