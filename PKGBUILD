@@ -2,18 +2,17 @@
 
 pkgname=wireguard-ui
 pkgver=0.6.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Web user interface to manage your WireGuard setup"
 arch=(aarch64 armv7h i686 x86_64)
 url="https://github.com/ngoduykhanh/$pkgname"
 license=(MIT)
 depends=(glibc wireguard-tools)
 makedepends=(yarn npm go)
-conflicts=($pkgname)
 options=(!debug)
 backup=(usr/bin/wgiptables)
 install=$pkgname.install
-source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz
+source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz
         $pkgname.service
         99-wg.conf
         wgiptables.sh
@@ -29,7 +28,7 @@ source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz
 b2sums=('78b972b802bdc9da33a3cd17682dc435b4855a4eef06b1b60b0919e8dfb098c31bf677483b4923e847017481963f30a2067495200034afabf8bf43a7a29739de'
         '89d9e0ccc55a2b01b7625ddc7da70a260960c77e1fc2c876cd92934e41bb59bef2097af56813ab8cad1f8db7dc596fd5500f324722b626abeb4a8fa4b303a703'
         '9c018527a70120edbf2bd70279e61c1f257158e70f7c74d73ed74ec449b02538bae2ccacb722106eb66002e8704d51ffc279052f3e590691102d6577db346923'
-        'ddf1833a1de4cb9478ac17007743d934b9c28358252a8e0b9c770b933cc1aed26464b6227ef2feabbe7247e8cda7e8fbc8258e3536e29319bb4d4dd0560edcad'
+        'a71cb02226b039b569cf22e7f1be6a9b5ec3cf096128b3a091141ca15192c59ef2c7f4989d04532ccdf6df1ce5f59ed1d4026a069793c343dd208332ee2f744a'
         'd7ea6f2c405abd6b2a07e6c216387e8eb085476899e8bf6101cbed41115934816d0362e2030e3165b481314d65b88adcc5bd4928071e34ceb602fa45ffe1db4d'
         'f7045f01d73757129cc98675d7fa87b477b780548fe2d72562c2aef33bdfb87c661fd6306c6e55a1d757f9c920bbcdc80f38f32b2a38df7029e5413ddc0b03aa'
         'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'                             # Skip checking hashsums of patches, Github issue
@@ -46,30 +45,30 @@ prepare() {
         echo "Applying patch $src..."
         patch -Np1 < "../$src"
     done
-    export NPM_CONFIG_USERCONFIG=$srcdir/.npmrc
-    export NPM_CONFIG_CACHE=$srcdir/npm_cache
-    export YARN_CACHE_FOLDER=$srcdir/yarn_cache
+    export NPM_CONFIG_USERCONFIG="$srcdir"/.npmrc
+    export NPM_CONFIG_CACHE="$srcdir"/npm_cache
+    export YARN_CACHE_FOLDER="$srcdir"/yarn_cache
     ./prepare_assets.sh
 }
 
 build() {
     cd $pkgname-$pkgver
-    export GOPATH=$srcdir
+    export GOPATH="$srcdir"
     export CGO_CPPFLAGS=$CPPFLAGS
     export CGO_CFLAGS=$CFLAGS
     export CGO_CXXFLAGS=$CXXFLAGS
     export CGO_LDFLAGS=$LDFLAGS
     export CGO_ENABLED=1
-    export GOCACHE=$srcdir/go-build
+    export GOCACHE="$srcdir"/go-build
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
     go build -o $pkgname
 }
 
 package() {
-    install -Dm644 99-wg.conf                -t $pkgdir/etc/sysctl.d/
-    install -Dm755 $pkgname-$pkgver/$pkgname -t $pkgdir/usr/bin/
-    install -Dm755 wgiptables.sh                $pkgdir/usr/bin/wgiptables
-    install -Dm644 $pkgname.service          -t $pkgdir/usr/lib/systemd/system/
-    install -Dm644 wgui.{path,service}       -t $pkgdir/usr/lib/systemd/system/
-    install -Dm644 $pkgname-$pkgver/LICENSE  -t $pkgdir/usr/share/licenses/$pkgname/
+    install -Dm644 99-wg.conf                -t "$pkgdir"/etc/sysctl.d/
+    install -Dm755 $pkgname-$pkgver/$pkgname -t "$pkgdir"/usr/bin/
+    install -Dm755 wgiptables.sh                "$pkgdir"/usr/bin/wgiptables
+    install -Dm644 $pkgname.service          -t "$pkgdir"/usr/lib/systemd/system/
+    install -Dm644 wgui.{path,service}       -t "$pkgdir"/usr/lib/systemd/system/
+    install -Dm644 $pkgname-$pkgver/LICENSE  -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
