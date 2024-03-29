@@ -4,7 +4,7 @@
 
 pkgname=scx-scheds
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Sched_ext schedulers'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -31,7 +31,7 @@ prepare() {
 
 build() {
   cd scx-${pkgver}
-  arch-meson . build
+  arch-meson . build --buildtype release
   meson compile -C build
 }
 
