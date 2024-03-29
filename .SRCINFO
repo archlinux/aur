@@ -1,7 +1,7 @@
 pkgbase = java-openjfx
 	pkgdesc = Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version
-	pkgver = 21.0.2.u5
-	pkgrel = 3
+	pkgver = 22.u30
+	pkgrel = 1
 	url = https://wiki.openjdk.java.net/display/OpenJFX/Main
 	arch = x86_64
 	arch = x86_64_v3
@@ -15,13 +15,14 @@ pkgbase = java-openjfx
 	makedepends = gdk-pixbuf2
 	makedepends = glib2
 	makedepends = gperf
-	makedepends = gradle7
+	makedepends = gradle<9
 	makedepends = gtk2
 	makedepends = gtk3
-	makedepends = java-environment-openjdk=17
+	makedepends = java-environment-openjdk=21
 	makedepends = libgl
 	makedepends = libx11
 	makedepends = libxtst
+	makedepends = libxxf86vm
 	makedepends = pango
 	makedepends = perl
 	makedepends = python
@@ -30,17 +31,16 @@ pkgbase = java-openjfx
 	makedepends = unzip
 	makedepends = webkit2gtk
 	makedepends = zip
-	source = java-openjfx-21.0.2+5.tar.gz::https://github.com/openjdk/jfx21u/archive/refs/tags/21.0.2+5.tar.gz
+	options = !lto
+	source = java-openjfx-22+30.tar.gz::https://github.com/openjdk/jfx22u/archive/refs/tags/22+30.tar.gz
 	source = gradle.properties
 	source = java-openjfx-flags.patch
-	source = java-openjfx-no-xlocale.patch
-	b2sums = ed5870478bacf5d2d6289118e764a316f2ed44c5abe799dfef97290477824060a7af15bde915aaf86186111eee49df5e3614ecd8aceccfca005aa79bb2663cc8
+	b2sums = 18f138409d18c6ed3bd0492260f71284c0ac3ffd2527e997abc40f08550f64a6480b6c5b50739f03b4e70df44d3287bb0cff2ad601a13dccd8d94c7b726cc7f8
 	b2sums = a77fd8814a5978827de01a652f7b945f3439df04606434ced8998c8d77a82985292490e6965299aeb52f9da3d8069b4091d75519bd4ec8a15f70bc6d28b13498
-	b2sums = 609ffbc0938922f00ccebab6d1e9ab0d54b84f088f75c10c0eb4211ff1b33438481d76092eae8811a5e9f53dfc3ff422f7aa4e98abd8fc27fb73f1c3d4661c41
-	b2sums = 13216615c01b8d48d17889ffa22668c38568870d83ab30c542eb5b5620db305f02efb1acb99d9b5e89eb0a73a134bb336cb301f4de4e8855cae50efb099e384e
+	b2sums = 5b6dafc22995b57564fda89aaedeb2b6ee58b2c635336ac43a123ea4ac6ced3a20eba39d99cc4eb7ec7b29fc7541f5c3bee454ee55ca79fd2d7ce5ef4ed65cd3
 
 pkgname = java-openjfx
-	depends = java-runtime-openjdk=21
+	depends = java-runtime-openjdk=22
 	depends = libgl
 	depends = libx11
 	depends = libxtst
@@ -48,7 +48,7 @@ pkgname = java-openjfx
 	optdepends = gtk2: GTK2 support,
 	optdepends = gtk3: GTK3 support,
 	optdepends = webkit2gtk: Web support
-	provides = java-openjfx=21
+	provides = java-openjfx=22
 
 pkgname = java-openjfx-doc
 	arch = any

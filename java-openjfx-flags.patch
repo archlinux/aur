@@ -25,7 +25,7 @@ index 387d5eee06..ac3be55f6a 100644
 
 +commonFlags.addAll(System.getenv("CFLAGS").trim().replaceAll(" +", " ").split(" "))
 +
- if (!IS_64) {
+ if (OS_ARCH == "i386") {
      commonFlags += "-m32"
  }
 @@ -70,6 +73,7 @@ def dynamicLinkFlags = ["-static-libgcc", "-static-libstdc++", "-shared", common

@@ -15,8 +15,8 @@ pkgname=(
   java-openjfx-doc
   java-openjfx-src
 )
-pkgver=21.0.2.u5
-pkgrel=3
+pkgver=22.u30
+pkgrel=1
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version"
 arch=(x86_64 x86_64_v3)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
@@ -31,13 +31,14 @@ makedepends=(
   gdk-pixbuf2
   glib2
   gperf
-  gradle7
+  'gradle<9'
   gtk2
   gtk3
-  java-environment-openjdk=17
+  java-environment-openjdk=$((${pkgver%%.*}-1))
   libgl
   libx11
   libxtst
+  libxxf86vm
   pango
   perl
   python
@@ -47,36 +48,42 @@ makedepends=(
   webkit2gtk
   zip
 )
+options=(!lto)
 source=(
   "${pkgbase}-${pkgver//.u/+}.tar.gz::https://github.com/openjdk/jfx${pkgver%%.*}u/archive/refs/tags/${pkgver//.u/+}.tar.gz"
   gradle.properties
   java-openjfx-flags.patch
-  java-openjfx-no-xlocale.patch
 )
-b2sums=('ed5870478bacf5d2d6289118e764a316f2ed44c5abe799dfef97290477824060a7af15bde915aaf86186111eee49df5e3614ecd8aceccfca005aa79bb2663cc8'
+b2sums=('18f138409d18c6ed3bd0492260f71284c0ac3ffd2527e997abc40f08550f64a6480b6c5b50739f03b4e70df44d3287bb0cff2ad601a13dccd8d94c7b726cc7f8'
         'a77fd8814a5978827de01a652f7b945f3439df04606434ced8998c8d77a82985292490e6965299aeb52f9da3d8069b4091d75519bd4ec8a15f70bc6d28b13498'
-        '609ffbc0938922f00ccebab6d1e9ab0d54b84f088f75c10c0eb4211ff1b33438481d76092eae8811a5e9f53dfc3ff422f7aa4e98abd8fc27fb73f1c3d4661c41'
-        '13216615c01b8d48d17889ffa22668c38568870d83ab30c542eb5b5620db305f02efb1acb99d9b5e89eb0a73a134bb336cb301f4de4e8855cae50efb099e384e')
+        '5b6dafc22995b57564fda89aaedeb2b6ee58b2c635336ac43a123ea4ac6ced3a20eba39d99cc4eb7ec7b29fc7541f5c3bee454ee55ca79fd2d7ce5ef4ed65cd3')
 
 _jfxdir=jfx${pkgver%%.*}u-${pkgver//.u/-}
 
 prepare() {
   cd $_jfxdir
 
+  # Clean from potential previous runs
+  gradle --stop
+  rm -rf build
+  #gradle clean
+
   ln -sf ../gradle.properties .
   patch -Np1 -i ../java-openjfx-flags.patch
-  patch -Np1 -i ../java-openjfx-no-xlocale.patch
   sed 's|, "-Werror"||g' -i buildSrc/linux.gradle
 }
 
 build() {
   cd $_jfxdir
 
-  # Build with openjdk-17
-  export PATH="/usr/lib/jvm/java-17-openjdk/bin/:$PATH"
+  # Build with openjdk-(current version minus 1)
+  export PATH="/usr/lib/jvm/java-$((${pkgver%%.*}-1))-openjdk/bin/:$PATH"
 
   # build against ffmpeg4.4
   export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
+  
+  # Workaround for situation where the linker treats whitespace as arguments
+  export LDFLAGS="${LDFLAGS//+([[:space:]]|[[:blank:]])/ }"
 
   gradle zips
 }
