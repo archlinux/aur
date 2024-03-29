@@ -3,12 +3,12 @@
 _pkgname=globalSeq
 _pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
-pkgrel=1
-pkgdesc='Global Test for Counts'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Global Test for Counts"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r
 )
@@ -19,14 +19,15 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e71a151ac910673542fbb47fd6c453cc00c6f21630fde9cf645ba39a399318ac')
+md5sums=('1b427214cf1345b8d75ba69dc02adb77')
+b2sums=('aa04d988e6f966e02ab983eb008bf26df43741297f2d01159aabf9dd2b28fde158d6c41c71f7904fb85573e65a02db7b87930f40ef104fa533cf623991f5feb9')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

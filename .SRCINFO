@@ -1,16 +1,17 @@
 pkgbase = r-globalseq
 	pkgdesc = Global Test for Counts
 	pkgver = 1.30.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/globalSeq
 	arch = any
-	license = GPL
+	license = GPL-3.0-only
 	depends = r
 	optdepends = r-knitr
 	optdepends = r-s4vectors
 	optdepends = r-summarizedexperiment
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/globalSeq_1.30.0.tar.gz
-	sha256sums = e71a151ac910673542fbb47fd6c453cc00c6f21630fde9cf645ba39a399318ac
+	md5sums = 1b427214cf1345b8d75ba69dc02adb77
+	b2sums = aa04d988e6f966e02ab983eb008bf26df43741297f2d01159aabf9dd2b28fde158d6c41c71f7904fb85573e65a02db7b87930f40ef104fa533cf623991f5feb9
 
 pkgname = r-globalseq
