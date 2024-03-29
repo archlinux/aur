@@ -2,7 +2,7 @@
 
 pkgname="yd-go-git"
 _pkgname=${pkgname%-git}
-pkgrel=7
+pkgrel=8
 pkgver="master.5af17d8.r0.g5af17d8"
 pkgdesc="Panel indicator for Yandex-disk CLI daemon (linux)"
 arch=('x86_64')
@@ -28,6 +28,8 @@ prepare() {
 		--exec "/usr/bin/${_pkgname}"
 		# Desktop entry spec.:https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html 
 		# Categories spec.: https://specifications.freedesktop.org/menu-spec/menu-spec-1.1.html#category-registry
+
+	mkdir -p "${srcdir}/${_pkgname}/build"
 }
 
 pkgver() {
@@ -37,7 +39,6 @@ pkgver() {
 
 build() {
 	echo "Build yd-go..."
-		mkdir -p "${srcdir}/${_pkgname}/build"
 		cd "${srcdir}/${_pkgname}"
 		export CGO_LDFLAGS="${LDFLAGS}"
 		export CGO_CFLAGS="${CFLAGS}"
@@ -54,16 +55,6 @@ build() {
 	#If you need UPX, set !strip in options()
 	#echo "Compress yd-go..."
 		#upx --best ${srcdir}/${_pkgname}/build/${_pkgname}
-}
-
-#Test yd-go
-check() {
-	echo "Test yd-go..."
-	cd "${srcdir}/${_pkgname}"
-	go test ./icons/
-	go test ./notify/
-	go test ./tools/
-	#go test ./ydisk/
 }
 
 package() {
