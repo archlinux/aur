@@ -1,6 +1,6 @@
 pkgbase = cano-git
 	pkgdesc = Terminal-based modal text editor
-	pkgver = r93.8efde9f
+	pkgver = r311.af4a963
 	pkgrel = 1
 	url = https://github.com/CobbCoding1/cano
 	arch = x86_64
