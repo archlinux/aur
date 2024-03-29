@@ -16,7 +16,7 @@ source=("https://github.com/Voxelum/x-minecraft-launcher/releases/download/v$pkg
     xmcl.desktop
     xmcl.png)
 md5sums=('c5f06f2e3bd52704a2a976023dedacb3'
-         '6525c8a885683b0c9821bc348915f49a'
+         '410f264b348c0268132ff8fa3d2d3491'
          '8facdbaf84f32aaefff5d6fcdad0b8a8')
 #install="$pkgname.install"
 

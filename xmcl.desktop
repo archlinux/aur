@@ -1,3 +1,4 @@
+#!/usr/bin/env xdg-open
 [Desktop Entry]
 Name=X Minecraft Launcher
 Comment=X Minecraft Launcher - 一个现代化的 Minecraft 启动器
