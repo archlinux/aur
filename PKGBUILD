@@ -2,17 +2,17 @@
 # Contributor: acxz <akashpatel2008@yahoo.com>
 _base=flake8-builtins
 pkgname=python-${_base}
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Check for python builtins being used as variables or parameters"
-arch=('any')
+arch=(any)
 url="https://github.com/gforcada/${_base}"
-license=(GPL2)
+license=(GPL-2.0-or-later)
 depends=(flake8)
 makedepends=(python-build python-installer python-hatchling python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('2223b8151032aed3c58393113b54f285555684b48061bd38a99f30ad4efcf1dfc0cdd579faaba2a764354e4503ae36faa5605bc98411554673361da785401275')
+sha512sums=('e4aeb5bfd95f2f8bfd5b6404deff76fc2094dc432d5870d38752051d4851ba6953741704304c0a3665c0976240c3e26d39b62389c96cc83653d1436c9d8d5b0a')
 
 build() {
   cd ${_base}-${pkgver}

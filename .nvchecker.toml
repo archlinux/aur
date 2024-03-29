@@ -1,0 +1,4 @@
+[python-flake8-builtins]
+source = "github"
+github = "gforcada/flake8-builtins"
+use_max_tag = "true"
