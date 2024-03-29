@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=apple-music-bin
 _pkgname="Apple Music"
-pkgver=2.1.1
-_electronversion=22
+pkgver=2.1.2
+_electronversion=28
 pkgrel=1
 pkgdesc="An Electron app that provides a native Apple Music experience for Linux & Windows."
 arch=('x86_64')
@@ -14,7 +14,6 @@ depends=(
     'nspr'
     'nss'
     'alsa-lib'
-    'hicolor-icon-theme'
     'gtk3'
 )
 options=(
@@ -23,7 +22,7 @@ options=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
 )
-sha256sums=('223cd587d54ff764ac95e0c1d516aa6d0415aac98b309ff40bb84572d95b4174')
+sha256sums=('3e4a947a74e3580c87b2ac53c97ffb3d6b48e732f58aab6984d005c7feb60d84')
 build() {
     bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\"|${pkgname%-bin} --no-sandbox|g" \
