@@ -2,6 +2,7 @@ pkgbase = alpine-git
 	pkgdesc = Fork of the PINE mail client (git)
 	pkgver = 2.26.0.678.267cba3
 	pkgrel = 1
+	url = https://alpineapp.email/
 	arch = i686
 	arch = x86_64
 	arch = aarch64

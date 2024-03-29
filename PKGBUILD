@@ -6,7 +6,7 @@ pkgver=2.26.0.678.267cba3
 pkgrel=1
 pkgdesc="Fork of the PINE mail client (git)"
 arch=(i686 x86_64 aarch64)
-ugitr='https://alpineapp.email/'
+url='https://alpineapp.email/'
 license=('APACHE')
 depends=(
     'gettext'
