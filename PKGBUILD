@@ -1,7 +1,7 @@
 # Maintainer: grufo <madmurphy333 AT gmail DOT com>
 
 pkgname='anastasis'
-pkgver='0.4.0'
+pkgver='0.4.1'
 pkgrel=1
 pkgdesc='Protocol and implementation to securely deposit core secrets and recover them if their original copies are lost'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('jansson' 'gnunet' 'libgcrypt' 'libsodium' 'postgresql' 'taler-exchange
          'taler-merchant')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 source=("ftp://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('c0c2df5c55690a7bbb29cb1aa8c3d5c89a243a14f5aa0072ff0aa5c6cbabfb4602f79353fe6cb200929d85aee65ecc48520ed1a98eaf82acec79236eb19b9ed4')
+sha512sums=('7e7630e59bdac91f7abb89808bfade642a4802cd464108c69f39e329b7597f6d3c1cbf81f99bd179cab8bff2951ededf1f1421e47606ef27d86ca281517addd6')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
