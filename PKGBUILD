@@ -5,7 +5,7 @@ _pkgname=Vesktop
 pkgname=vesktop-bin
 _appname=vencord-desktop
 pkgver=1.5.1
-_electronversion=28
+_electronversion=29
 pkgrel=1
 pkgdesc="A cross platform electron-based desktop app aiming to give you a snappier Discord experience with Vencord pre-installed"
 arch=(
@@ -24,7 +24,6 @@ conflicts=(
 )
 depends=(
     "electron${_electronversion}"
-    'hicolor-icon-theme'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")

@@ -6,8 +6,7 @@ pkgbase = vesktop-bin
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = electron28
-	depends = hicolor-icon-theme
+	depends = electron29
 	provides = vesktop=1.5.1
 	provides = vencord-desktop=1.5.1
 	conflicts = vesktop
