@@ -6,21 +6,21 @@
 
 libname=libpng
 pkgname=$libname-apng
-pkgver=1.6.40
-_apngver=1.6.40
+pkgver=1.6.43
+_apngver=$pkgver
 pkgrel=1
 pkgdesc="A collection of routines used to create PNG format graphics files"
 arch=('x86_64')
 url="https://sourceforge.net/projects/libpng-apng/"
 license=('custom')
 depends=('zlib' 'sh')
-provides=(libpng=$pkgver)
+provides=(libpng=$pkgver libpng16.so)
 conflicts=(libpng)
 validpgpkeys=('8048643BA2C840F4F92A195FF54984BFA16C640F') # Glenn Randers-Pehrson (mozilla) <glennrp@gmail.com>
 source=("https://downloads.sourceforge.net/sourceforge/$libname/$libname-$pkgver.tar.xz"
         "https://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-$_apngver-apng.patch.gz")
-sha256sums=('535b479b2467ff231a3ec6d92a525906fb8ef27978be4f66dbe05d3f3a01b3a1'
-            '0a3ca46482938d8d6c722662bed2c7ee0c65a1b5624444b3ced21ad8d356db2f')
+sha256sums=('6a5ca0652392a2d7c9db2ae5b40210843c0bbc081cbd410825ab00cc59f14a6c'
+            'd107579e90d55386d00e6086ea750942f22a04b9ab476bba0c660770cefafe22')
 
 prepare() {
   cd $libname-$pkgver
