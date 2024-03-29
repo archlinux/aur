@@ -2,28 +2,27 @@
 
 gitname=htop
 pkgname=${gitname}-git
-pkgver=3.3.0.23.g4abe9f4c
+pkgver=3.3.0.r64.gef6658c2
 pkgrel=1
 epoch=1
 pkgdesc="Interactive text-mode process viewer"
-url="https://htop.dev"
-license=('GPL')
+url="https://github.com/htop-dev/htop"
+license=('GPL-2.0-or-later')
 arch=('i686' 'x86_64')
-depends=(ncurses libnl)
-makedepends=('git' 'python')
+depends=('libcap' 'libcap.so' 'libnl' 'ncurses' 'libncursesw.so')
+makedepends=('git' 'lm_sensors')
 optdepends=('lsof: list open files for running process'
             'strace: attach to running process'
            'lm_sensors: temperature monitoring')
 provides=('htop')
 conflicts=('htop')
 options=('!emptydirs')
-source=("git+https://github.com/htop-dev/htop.git")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${gitname}"
-    local ver="$(git describe --tags)"
-    printf "%s" "${ver//-/.}"
+    git describe --long --tags --abbrev=8 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
