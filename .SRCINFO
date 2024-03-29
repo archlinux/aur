@@ -1,0 +1,13 @@
+pkgbase = gnome-online-accounts-gtk
+	pkgdesc = A GTK Frontend for GNOME Online Accounts
+	pkgver = 3.50.1
+	pkgrel = 1
+	url = https://github.com/linuxmint/gnome-online-accounts-gtk
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	depends = gnome-online-accounts
+	source = gnome-online-accounts-gtk-3.50.1.tar.gz::https://github.com/linuxmint/gnome-online-accounts-gtk/archive/refs/tags/3.50.1.tar.gz
+	sha256sums = 47406ac9023d29c6fe6897abf9cdd2b8563647701502342d8c0e572027a24a17
+
+pkgname = gnome-online-accounts-gtk
