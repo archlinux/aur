@@ -6,9 +6,9 @@ config_file="$HOME/.config/oma/.config"
 # Function to display initialization prompt
 display_init_prompt() {
     clear
-    echo "==============================="
-    echo "| Welcome to OptimizeMyArch!  |"
-    echo "==============================="
+    echo "================================="
+    echo "| Welcome to Optimize My Arch!  |"
+    echo "================================="
     echo "Let's set up your Arch Linux environment."
     echo ""
 
@@ -373,7 +373,7 @@ while [[ $# -gt 0 ]]; do
             if [[ $answer_choice == "y" ]]; then
                 OMA -i
             fi
-            
+
             shift
             ;;
         -r|--remove-packages)
