@@ -4,24 +4,25 @@
 _pkgname=gbRd
 _pkgver=0.4-11
 pkgname=r-${_pkgname,,}
-pkgver=0.4.11
-pkgrel=1
-pkgdesc='Utilities for processing Rd objects and files'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=4
+pkgdesc="Utilities for processing Rd objects and files"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0251f6dd6ca987a74acc4765838b858f1edb08b71dbad9e563669b58783ea91b')
+md5sums=('7d43d8e79f3cbdc917f44817a34d2d37')
+b2sums=('a7a68f4c58848057567252e2b437016a17bb95d98449b7268a5327d9c40d88863572342add28735599965308e7bba25d3c1e7be8b06c3283e6402ccec3082665')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
