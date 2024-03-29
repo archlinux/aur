@@ -6,7 +6,7 @@
 _distname=krunner
 pkgname=${_distname}5
 pkgver=5.115.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Framework for providing different actions given a string query'
 arch=(x86_64)
 url="https://invent.kde.org/frameworks/${_distname}"
@@ -36,10 +36,8 @@ makedepends=(
 conflicts=("${_distname}<5.111")
 replaces=("${_distname}<5.111")
 groups=(kf5)
-source=(https://download.kde.org/stable/frameworks/"${pkgver%.*}"/"${_distname}"-"${pkgver}".tar.xz{,.sig})
-b2sums=('bc50f60c87ea4b583702f76f7ab38065ffae34da454b999ccac82f197dd047e00bd7973bea7991b5f02740f0c88aa272fa111382448114ed03aff23e5a413bbb'
-        'SKIP')
-validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org> TODO: signing key has expired, find newer one
+source=("https://download.kde.org/stable/frameworks/${pkgver%.*}/${_distname}-${pkgver}.tar.xz")
+b2sums=('bc50f60c87ea4b583702f76f7ab38065ffae34da454b999ccac82f197dd047e00bd7973bea7991b5f02740f0c88aa272fa111382448114ed03aff23e5a413bbb')
 
 build() {
   cmake -B build -S "${_distname}-${pkgver}" \
