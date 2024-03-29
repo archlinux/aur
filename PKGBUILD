@@ -1,11 +1,11 @@
 # Maintainer: Angelo Verlain SHEMA (https://vixalien.com)
 
 pkgname=decibels
-pkgver=0.1.7
-pkgrel=2
+pkgver=46.0
+pkgrel=1
 pkgdesc="Play audio files"
 arch=('any')
-url="https://github.com/vixalien/decibels"
+url="https://gitlab.gnome.org/GNOME/Incubator/decibels"
 license=(GPL-3.0)
 depends=(
   gjs
@@ -25,7 +25,7 @@ makedepends=(
 checkdepends=(
   appstream-glib
 )
-source=("git+https://github.com/vixalien/decibels#tag=$pkgver"
+source=("git+https://gitlab.gnome.org/GNOME/Incubator/decibels#tag=$pkgver"
         'git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions.git')
 sha256sums=('SKIP'
             'SKIP')
@@ -46,7 +46,7 @@ prepare() {
   sed -i "s/tsc, '--outDir'/tsc, '--project', files('..\/tsconfig.json'), '--outDir'/g" src/meson.build
 
   # Replace service exec with `decibels`
-  sed -i "s/Exec=@application_id@/Exec=$pkgname/g" data/com.vixalien.decibels.service.in
+  sed -i "s/Exec=@application_id@/Exec=$pkgname/g" data/org.gnome.Decibels.service.in
 }
 
 build() {
@@ -65,5 +65,5 @@ package() {
 
   install -Dm644 LICENCE -t "$pkgdir/usr/share/licenses/$pkgname/"
 
-  ln -s "/usr/bin/com.vixalien.decibels" "$pkgdir/usr/bin/$pkgname"
+  ln -s "/usr/bin/org.gnome.Decibels" "$pkgdir/usr/bin/$pkgname"
 }

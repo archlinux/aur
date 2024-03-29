@@ -1,8 +1,8 @@
 pkgbase = decibels
 	pkgdesc = Play audio files
-	pkgver = 0.1.7
-	pkgrel = 2
-	url = https://github.com/vixalien/decibels
+	pkgver = 46.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/Incubator/decibels
 	arch = any
 	license = GPL-3.0
 	checkdepends = appstream-glib
@@ -17,7 +17,7 @@ pkgbase = decibels
 	depends = gst-plugins-good
 	depends = gtk4
 	depends = libadwaita
-	source = git+https://github.com/vixalien/decibels#tag=0.1.7
+	source = git+https://gitlab.gnome.org/GNOME/Incubator/decibels#tag=46.0
 	source = git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions.git
 	sha256sums = SKIP
 	sha256sums = SKIP
