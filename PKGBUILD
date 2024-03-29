@@ -42,7 +42,7 @@ makedepends=(
   'python-pycryptodomex' 'python-pillow' 'python-pybluez'
   'python-simplejson' 'shairplay' 'smbclient' 'taglib' 'tinyxml' 'swig'
   'upower' 'giflib' 'rapidjson' 'ghostscript' 'meson' 'gtest' 'graphviz'
-  'libdisplay-info'
+  'libdisplay-info' 'tinyxml2'
   # wayland
   'wayland-protocols' 'waylandpp' 'libxkbcommon'
   # gbm
