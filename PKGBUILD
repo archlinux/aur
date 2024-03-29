@@ -7,12 +7,11 @@ arch=(any)
 url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
 depends=('mingw-w64-gst-plugins-base' 'mingw-w64-orc')
-makedepends=('mingw-w64-meson' 'mingw-w64-directxmath' 'mingw-w64-openh264' 'mingw-w64-nettle' 'mingw-w64-opus' 'mingw-w64-bzip2' 'mingw-w64-libsrtp' 'mingw-w64-vo-aacenc' 'mingw-w64-libkate' 'mingw-w64-librsvg' 'mingw-w64-openjpeg2' 'mingw-w64-opencv' 'mingw-w64-libfdk-aac' 'mingw-w64-librtmp0' 'mingw-w64-libwebp' 'mingw-w64-srt' 'mingw-w64-curl' 'mingw-w64-libnice')
+makedepends=('mingw-w64-meson' 'mingw-w64-directxmath' 'mingw-w64-openh264' 'mingw-w64-nettle' 'mingw-w64-opus' 'mingw-w64-bzip2' 'mingw-w64-libsrtp' 'mingw-w64-libkate' 'mingw-w64-librsvg' 'mingw-w64-openjpeg2' 'mingw-w64-opencv' 'mingw-w64-libfdk-aac' 'mingw-w64-librtmp0' 'mingw-w64-libwebp' 'mingw-w64-srt' 'mingw-w64-curl' 'mingw-w64-libnice')
 optdepends=(
   "mingw-w64-openh264: H.264 video codec plugin"
   "mingw-w64-opus: OPUS audio parser plugin"
   "mingw-w64-libsrtp: Secure RTP codec plugin"
-  "mingw-w64-vo-aacenc: AAC audio encoder plugin"
   "mingw-w64-libkate: Kate subtitle parser, tagger, and codec plugin"
   "mingw-w64-librsvg: SVG overlayer and image decoder plugin"
   "mingw-w64-openjpeg2: JPEG2000 image codec plugin"
