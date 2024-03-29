@@ -1,0 +1,16 @@
+pkgbase = kak-ansi
+	pkgdesc = Kakoune plugin that renders ANSI escape codes
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://github.com/eraserhd/kak-ansi
+	install = kak-ansi.install
+	arch = x86_64
+	license = Unlicense
+	depends = kakoune
+	depends = glibc
+	source = kak-ansi-0.2.6.tar.gz::https://github.com/eraserhd/kak-ansi/archive/refs/tags/v0.2.6.tar.gz
+	source = static_path.patch
+	sha256sums = aabf07770ae6e41fc592b3c6c7ceaf2649c67e6241dc9d9678f6d7ed7bde4444
+	sha256sums = 0f0e2246daed413b1f4de8f08b911f5e88b3c2d936f7b64e84e132ae5b71dc58
+
+pkgname = kak-ansi

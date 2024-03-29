@@ -1,0 +1,21 @@
+--- rc/ansi.kak
++++ rc/ansi.kak
+@@ -1,17 +1,6 @@
+ declare-option -hidden range-specs ansi_color_ranges
+ declare-option -hidden str ansi_command_file
+-declare-option -hidden str ansi_filter %sh{
+-    filterdir="$(dirname $kak_source)/.."
+-    filter="${filterdir}/kak-ansi-filter"
+-    if ! [ -x "${filter}" ]; then
+-        echo "kak-ansi: Compiling kak-ansi-filter.c" >&2
+-        ( set -x; cd "$filterdir" && ${CC-cc} -o kak-ansi-filter kak-ansi-filter.c )
+-        if ! [ -x "${filter}" ]; then
+-            filter=$(command -v cat)
+-        fi
+-    fi
+-    printf '%s' "$filter"
+-}
++declare-option -hidden str ansi_filter /usr/share/kak/rc/addons/kak-ansi-filter
+ 
+ define-command \
+     -docstring %{ansi-render-selection: colorize ANSI codes contained inside selection
