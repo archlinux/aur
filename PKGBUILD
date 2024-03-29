@@ -2,7 +2,7 @@
 pkgname=docker-slim-bin
 _pkgname=docker-slim
 pkgver=1.40.11
-pkgrel=1
+pkgrel=3
 pkgdesc="Don't change anything in your Docker container image and minify it by up to 30x (and for compiled languages even more) making it secure too! (free and open source)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/docker-slim/docker-slim"
