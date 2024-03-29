@@ -2,7 +2,7 @@
 
 pkgname=gvc-git
 pkgver=r3.a00aa37
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides libgnome-volume-control outside Gnome environment."
 arch=(x86_64)
 url="https://github.com/JingMatrix/${pkgname%-git}"
@@ -24,5 +24,5 @@ build() {
 }
 
 package() {
-    DESTDIR=$pkgdir ninja install -C build
+    DESTDIR="$pkgdir" ninja install -C build
 }
