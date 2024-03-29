@@ -5,7 +5,7 @@ pkgbase = xmcl-launcher
 	url = https://xmcl.app/
 	arch = x86_64
 	license = MIT
-	depends = electron21-bin
+	depends = electron27-bin
 	optdepends = jre8-openjdk: 启动低版本游戏的最低要求
 	optdepends = jre11-openjdk: 推荐使用此版本Java启动1.12(17w13a)-1.17(21w18a)
 	optdepends = jre17-openjdk: 推荐使用此Java版本启动1.17(21w19a)及以上的版本
@@ -17,6 +17,6 @@ pkgbase = xmcl-launcher
 	md5sums = e7be5f99e708392521eb54aa90525d0b
 	md5sums = ef302df83d9a2e867dc94e509ba1e0b2
 	md5sums = 8facdbaf84f32aaefff5d6fcdad0b8a8
-	md5sums = 82e59cbaa2d3bde884d9c224f9ec0dd8
+	md5sums = 0ca353b6f4df117ce040b717f15eada2
 
 pkgname = xmcl-launcher

@@ -11,7 +11,7 @@ arch=('x86_64')
 provide=("xmcl")
 url="https://xmcl.app/"
 license=('MIT')
-depends=('electron21-bin')
+depends=('electron27-bin')
 #makedepends=('wget')
 conflicts=('xmcl-launcher-bin')
 optdepends=('jre8-openjdk: 启动低版本游戏的最低要求'
@@ -24,7 +24,7 @@ source=("https://github.com/Voxelum/x-minecraft-launcher/releases/download/v$pkg
 md5sums=('e7be5f99e708392521eb54aa90525d0b'
          'ef302df83d9a2e867dc94e509ba1e0b2'
          '8facdbaf84f32aaefff5d6fcdad0b8a8'
-         '82e59cbaa2d3bde884d9c224f9ec0dd8')
+         '0ca353b6f4df117ce040b717f15eada2')
 #install="$pkgname.install"
 
 package() {
