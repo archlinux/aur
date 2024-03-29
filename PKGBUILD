@@ -11,7 +11,7 @@ source=("optimizemyarch.sh" "init.sh" "dependencies.sh" "options.sh" "optimizati
 sha256sums=('b3392c2d80bc9ba4e539f1911404509ac7b59cff9f307e0c461c716dd9828ae8'
             '7b4bacf70fe2d772231b0225a79cac5c6775324cc951a0708b9ecc72ea3389b8'
             '9c10be88b92149c5b0834d82d522fce8e271f40414571ebc278e3782af7f3344'
-            '644773026983f47c4bfdb376987c3578365a95b489eafb5ce8dbcc343c9d7014'
+            '67c49a970d2d1709e0ba1042a535482250b89bbf94484aba437117a756db8be9'
             '90cf09c0fc358afc55670770c48fb489de2a08215f74181e27449b728cd46f37')
 
 package() {

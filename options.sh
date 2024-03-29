@@ -170,9 +170,10 @@ while [[ $# -gt 0 ]]; do
             ;;
         -i|--install)
             echo "Installing apps..."
-            while [[ $# -gt 1 ]]; do
-                echo "Installing $2..."
-                $aur_helper -S "$2"
+            shift
+            while [[ $# -gt 0 ]]; do
+                echo "Installing $1..."
+                $aur_helper -S "$1" --noconfirm
                 shift
             done
             echo "Optimization complete!"
