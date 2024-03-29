@@ -1,0 +1,4 @@
+[nbqa]
+source = "github"
+github = "nbQA-dev/nbQA"
+use_latest_release = "true"
