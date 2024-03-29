@@ -1,17 +1,23 @@
-# Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
+# Maintainer: cqzw555 < cqzw555@163.com >
+# Contributor: Achmad Fathoni<fathoni.id(at)gmail.com>
 pkgname=python-libclang
 _pkgname=${pkgname:7}
-pkgver=16.0.6
+pkgver=18.1.1
 pkgrel=1
 pkgdesc="Clang Python Bindings"
-arch=(x86_64)
+arch=('x86_64' 'aarch64')
 url="https://pypi.org/project/${_pkgname}"
-license=('Apache')
+license=('Apache-2.0')
 makedepends=(python-build python-installer python-wheel)
 depends=(python)
-source=(https://files.pythonhosted.org/packages/py2.py3/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver-py2.py3-none-manylinux2010_x86_64.whl)
-sha256sums=('9dcdc730939788b8b69ffd6d5d75fe5366e3ee007f1e36a99799ec0b0c001492')
-
+source=(https://files.pythonhosted.org/packages/source/l/$_pkgname/$_pkgname-$pkgver.tar.gz)
+sha256sums=(a1214966d08d73d971287fc3ead8dfaf82eb07fb197680d8b3859dbbbbf78250)
+build(){
+    cd $_pkgname-$pkgver
+    python -m build --wheel --no-isolation
+}
 package() {
-    python -m installer --destdir="$pkgdir" *.whl
+    cd $_pkgname-$pkgver
+
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
