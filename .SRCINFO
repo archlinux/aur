@@ -1,6 +1,6 @@
 pkgbase = python-instructor
 	pkgdesc = Structured outputs for LLMs
-	pkgver = 0.6.7
+	pkgver = 0.6.8
 	pkgrel = 1
 	url = https://github.com/jxnl/instructor
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = python-instructor
 	depends = python-typer
 	depends = python-typing_extensions
 	optdepends = python-anthropic: support using Anthropic models
-	source = python-instructor-0.6.7.tar.gz::https://github.com/jxnl/instructor/archive/0.6.7.tar.gz
-	sha256sums = b429ed3c76c6a313d939fad679969dbd06da21189ce69076fcfa9bb2dbfd013f
+	source = python-instructor-0.6.8.tar.gz::https://github.com/jxnl/instructor/archive/0.6.8.tar.gz
+	sha256sums = 0454f21018676674fbf616b2d2c866789b859e9f70e992fe6d6b32af0456836a
 
 pkgname = python-instructor
