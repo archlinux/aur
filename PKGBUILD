@@ -22,7 +22,7 @@ makedepends=(
   python-setuptools
 )
 install=mopidy-spotify.install
-source=(git+https://github.com/mopidy/mopidy-spotify.git)
+source=(git+https://github.com/mopidy/mopidy-spotify.git#branch=main)
 sha256sums=('SKIP')
 
 pkgver () {

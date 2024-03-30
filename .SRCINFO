@@ -13,7 +13,7 @@ pkgbase = mopidy-spotify-git
 	depends = gst-plugins-rs
 	provides = mopidy-spotify=4.1.1.r67.g984151a
 	conflicts = mopidy-spotify
-	source = git+https://github.com/mopidy/mopidy-spotify.git
+	source = git+https://github.com/mopidy/mopidy-spotify.git#branch=main
 	sha256sums = SKIP
 
 pkgname = mopidy-spotify-git
