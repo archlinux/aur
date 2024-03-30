@@ -18,7 +18,7 @@ install=
 source=("${pkgname%-git}::git+https://github.com/TamtamHero/fw-fanctrl.git" fw-fanctrl-suspend fw-fanctrl.service)
 noextract=()
 sha256sums=('SKIP'
-            '61fb2628b9b8d0d1edf34108ba25736fd7bc72f3b9f382e1bd67fe88b9492f44'
+            'ba58336a8e46fab3d1aad40a99eaead44af41ab530dcd72c31e8f6d098c8e2dc'
             '14745a7cb3b2cefd2dca87532a924bae684d878b55608a6799916f3c34821bb3')
 
 pkgver() {
