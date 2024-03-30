@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=("bun" "llvm" "clang" "lld" "ccache" "cmake" "git" "go" "libiconv" "libtool" "make" "ninja" "pkg-config" "python" "rust" "sed" "unzip" "ruby")
 conflicts=("bun" "bun-bin")
 provides=("bun")
-source=("git+https://github.com/oven-sh/bun.git")
+source=("$pkgname::git+https://github.com/oven-sh/bun.git")
 sha512sums=("SKIP")
 
 pkgver() {
