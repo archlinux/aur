@@ -1,12 +1,12 @@
 pkgbase = gnome-shell-extension-no-overview-git
 	pkgdesc = No overview at start-up
-	pkgver = r26.c4d1546
+	pkgver = r29.85eba64
 	pkgrel = 1
 	url = https://github.com/fthx/no-overview
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
-	depends = gnome-shell>=1:45
+	depends = gnome-shell>=1:46
 	provides = gnome-shell-extension-no-overview
 	conflicts = gnome-shell-extension-no-overview
 	options = !strip
