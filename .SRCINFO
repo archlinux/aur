@@ -1,0 +1,21 @@
+pkgbase = xsysinfo
+	pkgdesc = An X application to display some kernel parameters in graphical form. It is like a mix of top, free and xload with the values shown as horizontal bar.
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://sourceforge.net/projects/xsysinfo
+	arch = x86_64
+	arch = i686
+	license = Other License
+	makedepends = imake
+	makedepends = make
+	makedepends = gcc
+	depends = xorg-server
+	depends = libx11
+	depends = libxt
+	depends = libxaw
+	source = https://sourceforge.net/projects/xsysinfo/files/xsysinfo/xsysinfo-1.6/xsysinfo-1.6.tar.gz
+	source = Makefile.patch
+	sha256sums = 55741fa09a175609436f215762032485e1f8a6bc9e5fb335ea0181619a73026b
+	sha256sums = a1540638cce56e2839f795d21bc0f7a0b81ed56feefe99579ea2928f495ddabb
+
+pkgname = xsysinfo
