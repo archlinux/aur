@@ -1,7 +1,7 @@
 # Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
 # Maintainer: Allen Zhong <pdev@zhoal.pw>
 pkgname=tikv
-pkgver=7.6.0
+pkgver=8.0.0
 pkgrel=1
 pkgdesc='Distributed transactional key-value database, originally created to complement TiDB'
 arch=('x86_64')
@@ -25,11 +25,11 @@ source=(tikv-${pkgver}.tar.gz::https://github.com/tikv/tikv/archive/v${pkgver}.t
         tikv-sysusers.conf
         tikv-tmpfiles.conf
         tikv.toml)
-sha256sums=('8d7802fd613ee932d2c4517d27dfcbb6765c0509ed6f837cccbbcc947c59ba6a'
+sha256sums=('b0e9475d2b56b7cd40dba8c87f3b8c86f1973081aba18921b44c0d2635606cb0'
             '870b8eaf83bc0d22b05b0f3a7890660e483cf77bb1d84bc50ad04fb23068cd8c'
             '744b252e29099b0099dc41e30bc3badd33b3d661c7126af8044faa4fc2df8927'
             '935291bac6a216c6f880df9bfaec8900266413bb202ac483e79f291e1f28e9f1'
-            'be2f8c6830a48da6c356db943aa55ee2f3c9c30b2e9027e7b758cab875fc8520')
+            '1c933198cd9b5611bd7d25f4f3501bd1b580bb35352f8d65bc1cef8588400d24')
 
 prepare() {
     cd tikv-${pkgver}
