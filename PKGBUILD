@@ -1,6 +1,6 @@
-# Maintainer: Romain Gallet <rgallet@grumlimited.co.uk>
-# Contributor: Romain Gallet <rgallet@grumlimited.co.uk>
-_packager="Romain Gallet <rgallet@grumlimited.co.uk>"
+# Maintainer: Romain Gallet <gr211 at users.noreply.github.com>
+# Contributor: Romain Gallet <gr211 at users.noreply.github.com>
+_packager="Romain Gallet <gr211 at users.noreply.github.com>"
 _deb_pkgname=authenticator-rs
 pkgname=$_deb_pkgname-bin
 md5sums=('2e6397c236c627a4acd7f570c2ddd5b4')
