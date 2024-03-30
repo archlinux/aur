@@ -1,9 +1,9 @@
 # Maintainer: worstuser
 
 pkgname=stylelint-config-recess-order
-pkgver=r4.3643d44
-pkgrel=1
-pkgdesc='Optimize your system in one click'
+pkgver=r4
+pkgrel=2
+pkgdesc='Optimize your system in one click click'
 arch=('x86_64')
 url='https://github.com/sophgn/one_click_optimizer'
 license=('MIT')
