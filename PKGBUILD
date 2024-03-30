@@ -6,13 +6,13 @@
 # Contributor: Tsekhovoy Eugene aka Krash <8552246@gmail.com>
 
 pkgname=mc-git
-pkgver=4.8.29.r146.g299d9a2fb
+pkgver=4.8.31.r19.g293e534f3
 pkgrel=1
 pkgdesc='A file manager that emulates Norton Commander'
 arch=('x86_64')
 url='https://www.midnight-commander.org/'
-license=('GPL')
-depends=('e2fsprogs' 'glib2' 'gpm' 'libssh2' 'slang' 'which')
+license=('GPL-3.0-or-later')
+depends=('e2fsprogs' 'glib2' 'glibc' 'gpm' 'libssh2' 'sh' 'slang' 'which')
 makedepends=('aspell' 'git' 'libxt' 'libx11' 'unzip')
 optdepends=(
     'aspell: spelling corrections'
@@ -43,10 +43,8 @@ backup=('etc/mc/edit.indent.rc'
         'etc/mc/mc.menu'
         'etc/mc/sfs.ini')
 options=('!emptydirs')
-source=('git+https://github.com/MidnightCommander/mc'
-        'mc-python3.patch')
-sha256sums=('SKIP'
-            '78df8592c86445fa6249433e8587889e3923c0bb8b604cae32d5e739d2cc025c')
+source=('git+https://github.com/MidnightCommander/mc')
+sha256sums=('SKIP')
 
 pkgver() {
   cd mc
@@ -55,9 +53,6 @@ pkgver() {
 
 prepare() {
   cd mc
-  # port to Python 3
-  # ref: https://github.com/MidnightCommander/mc/pull/149
-  patch -p1 -i "../mc-python3.patch"
   ./autogen.sh
 }
 
@@ -82,6 +77,9 @@ package() {
   # FS#50889: Replace mc.keymap symlink with target file to fix backup mechanism.
   rm "$pkgdir/etc/mc/mc.keymap"
   cp "$pkgdir"/etc/mc/mc{.default,}.keymap
+  # remove s3 support until it no longer depends on deprecated python-boto:
+  # https://midnight-commander.org/ticket/3904
+  rm -v "$pkgdir/usr/lib/mc/extfs.d/s3+"
 }
 
 # vim:set ts=2 sw=2 ft=sh et:
