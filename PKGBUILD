@@ -2,7 +2,7 @@
 
 pkgname=xorg-xwayland-explicit-sync-git
 pkgver=23.2.4.r387.ga57b44948
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
