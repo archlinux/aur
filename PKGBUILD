@@ -6,7 +6,7 @@
 # Contributor: ssfdust@gmail.com <ssfdust@gmail.com>
 
 pkgname=cairo-dock-plug-ins-wayland-git
-pkgver=3.5.99.alpha1.20240329.ccc0d1c0f
+pkgver=3.5.99.alpha1.20240330.04ef72fd7
 pkgrel=1
 pkgdesc='Plugins for Cairo-Dock with wayland support'
 arch=('x86_64')
@@ -59,7 +59,7 @@ replaces=('cairo-dock-plugins')
 provides=("${pkgname%-git}" 'cairo-dock-plug-ins')
 conflicts=("${pkgname%-git}" 'cairo-dock-plug-ins')
 options=(debug)
-source=("${pkgname}::git+https://github.com/dkondor/cairo-dock-plug-ins#commit=ccc0d1c0f01dafc628915685a56388a653f498fe")
+source=("${pkgname}::git+https://github.com/dkondor/cairo-dock-plug-ins")
 sha256sums=('SKIP')
 
 _builddir="build"

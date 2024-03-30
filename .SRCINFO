@@ -1,6 +1,6 @@
 pkgbase = cairo-dock-plug-ins-wayland-git
 	pkgdesc = Plugins for Cairo-Dock with wayland support
-	pkgver = 3.5.99.alpha1.20240329.ccc0d1c0f
+	pkgver = 3.5.99.alpha1.20240330.04ef72fd7
 	pkgrel = 1
 	url = https://github.com/dkondor/cairo-dock-plug-ins
 	arch = x86_64
@@ -54,7 +54,7 @@ pkgbase = cairo-dock-plug-ins-wayland-git
 	conflicts = cairo-dock-plug-ins
 	replaces = cairo-dock-plugins
 	options = debug
-	source = cairo-dock-plug-ins-wayland-git::git+https://github.com/dkondor/cairo-dock-plug-ins#commit=ccc0d1c0f01dafc628915685a56388a653f498fe
+	source = cairo-dock-plug-ins-wayland-git::git+https://github.com/dkondor/cairo-dock-plug-ins
 	sha256sums = SKIP
 
 pkgname = cairo-dock-plug-ins-wayland-git
