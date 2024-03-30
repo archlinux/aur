@@ -13,7 +13,7 @@ makedepends=('dune>=1.1.0')
 checkdepends=('ocaml-ppx_expect')
 options=('!strip')
 source=("$pkgname-$pkgver::git+$url#commit=$_commit?signed")
-sha512sums=('SKIP')
+sha512sums=('ddd64148ac9e746b03d96fa08505fe2b56d290703bbeb5658043c8a057222ff11bc61c188de6c6c42692e780e9a2b39019ff87e3ab2379bfc369f79f7827cf1e')
 validpgpkeys=('364216C4466A9E17A97CD5DBEECA66966D9E4261') # ZAN DoYe <zandoye@gmail.com> (https://github.com/kandu.gpg)
 
 _sourcedirectory="$pkgname-$pkgver"

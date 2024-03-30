@@ -14,6 +14,6 @@ pkgbase = ocaml-mew
 	options = !strip
 	source = ocaml-mew-0.1.0::git+https://github.com/kandu/mew#commit=e2a5ca84d9c3c4142a47ef867b2bbc44083246c5?signed
 	validpgpkeys = 364216C4466A9E17A97CD5DBEECA66966D9E4261
-	sha512sums = SKIP
+	sha512sums = ddd64148ac9e746b03d96fa08505fe2b56d290703bbeb5658043c8a057222ff11bc61c188de6c6c42692e780e9a2b39019ff87e3ab2379bfc369f79f7827cf1e
 
 pkgname = ocaml-mew
