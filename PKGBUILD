@@ -1,8 +1,8 @@
 # Maintainer: Gabriele Musco <gabmus@disroot.org>
 
 pkgname=envision-xr-git
-pkgver=r398.35b0ab9
-pkgrel=2
+pkgver=r439.ce04390
+pkgrel=3
 pkgdesc='GUI for Monado'
 arch=(x86_64 aarch64)
 url='https://gitlab.com/gabmus/envision'
@@ -25,6 +25,7 @@ depends=(
     vte4
     polkit
     base-devel
+    jq
 )
 makedepends=(
     meson
@@ -32,6 +33,7 @@ makedepends=(
 )
 optdepends=(
     'libudev0-shim: steamvr_lh lighthouse driver support'
+    'monado-vulkan-layers-git: Vulkan layers for NVIDIA users'
 )
 provides=(envision)
 conflicts=(envision)
@@ -56,6 +58,30 @@ build() {
 #     meson test -C build --print-errorlogs
 # }
 
+
 package() {
     meson install -C build --destdir "${pkgdir}"
+
+    # We will check for optional packages here:
+    # Check for NVIDIA GPU and if monado-vulkan-layers-git is not already installed
+    if lspci | grep -qi nvidia && ! pacman -Qm monado-vulkan-layers-git &>/dev/null; then
+        echo "An NVIDIA GPU has been detected on your system."
+        echo "For NVIDIA GPU, 'monado-vulkan-layers-git' from the AUR is recommended."
+        echo "Please install it manually using an AUR helper, e.g., yay -S monado-vulkan-layers-git"
+        echo "Press any key to continue..."
+        read answer
+    fi
+
+    # Ask to install libudev0-shim
+    if ! pacman -Q libudev0-shim &>/dev/null; then
+        echo "The package 'libudev0-shim' is recommended for lighthouse driver support."
+        echo "Do you want to install 'libudev0-shim'? [y/N]"
+        read answer
+        if [[ $answer =~ ^[Yy]$ ]]; then
+            sudo pacman -S libudev0-shim
+        fi
+    else
+        echo "'libudev0-shim' is already installed."
+    fi
 }
+
