@@ -10,7 +10,6 @@ pkgbase = openspace-git
 	makedepends = sed
 	makedepends = glm
 	makedepends = websocketpp
-	makedepends = gcc11
 	depends = gdal
 	depends = mpv
 	depends = vulkan-headers
