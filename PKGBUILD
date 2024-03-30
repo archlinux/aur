@@ -2,8 +2,8 @@
 # Contributor: Julien Savard <juju@juju2143.ca>
 pkgname=('x16-emulator-bin' 'x16-rom-bin' 'x16-docs-bin')
 pkgbase=x16-emulator-bin
-pkgver=r46
-pkgrel=2
+pkgver=r47
+pkgrel=1
 pkgdesc="An emulator for The 8-Bit Guy's Commander X16 (release package)"
 arch=('any')
 url="http://commanderx16.com/"
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/X16Community/x16-emulator/releases/download/$pkgver/x16emu_linux-x86_64-$pkgver.zip"
 	"https://raw.githubusercontent.com/X16Community/x16-emulator/$pkgver/.gh/logo.png")
-sha256sums=('2bdaf3c59116934dbc1bd3eb3f353e679b95d46a0a1b65ecfc3e3ff522e48d28'
+sha256sums=('0cb2bb31755fa0f691b42bd2f10ba4cd9e75386428d9ebf766aca2ed5a1ef67e'
             'd6765978fb80bea04c774d58667ea2c974395958506ef7add48fcd7f4ceb8988')
 
 prepare() {
@@ -58,6 +58,5 @@ package_x16-docs-bin() {
 	conflicts=('x16-docs')
 
 	install -Dm644 $srcdir/"Commander X16 Programmer's Reference Guide.pdf" "$pkgdir/usr/share/doc/x16-docs/Commander X16 Programmer's Reference Guide.pdf"
-	install -Dm644 $srcdir/"VERA Programmer's Reference.pdf" "$pkgdir/usr/share/doc/x16-docs/VERA Programmer's Reference.pdf"
 }
 
