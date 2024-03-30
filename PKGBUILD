@@ -1,7 +1,7 @@
 # Maintainer: Thulinma
 # Maintainer: jjacky
 pkgname=kalu
-pkgver=4.5.0
+pkgver=4.5.1
 pkgrel=1
 pkgdesc="Upgrade notifier w/ AUR support, watched (AUR) packages, news"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('dbus' 'polkit' 'gtk3' 'pacman>=6.1' 'pacman<6.2' 'curl' 'libnotify' 'n
 makedepends=('perl' 'groff')
 source=(https://github.com/Thulinma/kalu/archive/refs/tags/$pkgver.tar.gz)
 install=kalu.install
-md5sums=('e380c5935e5cc1b48735bdec6006034a')
+md5sums=('e77c724b95f018f1252045349f3e0a73')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
