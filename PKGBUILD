@@ -201,7 +201,6 @@ package() {
   install -Dm644 ${_pkgname}/dist/72-suyu-input.rules -t "${pkgdir}"/usr/lib/udev/rules.d/
 
   cd "${pkgdir}"/usr/share/applications
-  sed -i '12s/Exec=suyu/Exec=env QT_QPA_PLATFORM=xcb suyu/' org.suyu_emu.suyu.desktop
 }
 
 # vim: ts=2 sw=2 et
