@@ -11,12 +11,12 @@ license=('Apache-2.0')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/$pkgname-$pkgver"
     go build .
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/$pkgname-$pkgver"
     install -Dm755 $pkgname "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
