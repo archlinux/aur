@@ -1,7 +1,7 @@
 pkgbase = gnome-chatty
 	pkgdesc = XMPP and SMS messaging via libpurple and ModemManager
 	pkgver = 0.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/World/Chatty
 	arch = aarch64
 	arch = armv6h
@@ -17,6 +17,7 @@ pkgbase = gnome-chatty
 	depends = evolution-data-server
 	depends = feedbackd
 	depends = libhandy
+	depends = libmm-glib
 	depends = libolm
 	depends = libpurple-carbons
 	optdepends = libpurple-lurch: XMPP E2E OMEMO encryption

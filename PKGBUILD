@@ -13,7 +13,7 @@ pkgname=gnome-chatty
 # NOTE! Make sure to update the libcmatrixrev that Chatty is using when bumping Chatty version.
 # See below for more info.
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='XMPP and SMS messaging via libpurple and ModemManager'
 url='https://gitlab.gnome.org/World/Chatty'
 license=(
@@ -32,6 +32,7 @@ depends=(
   evolution-data-server
   feedbackd
   libhandy
+  libmm-glib
   libolm
   libpurple-carbons
 )
