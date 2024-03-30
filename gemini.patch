@@ -1,0 +1,1038 @@
+From: Rene Kita <mail@rkta.de>
+Subject: Add Gemini support
+
+This patch adds Gemini support to w3m. This is still work in progress. Consider
+this as alpha stage. INPUT may break with unquoted chars.
+
+The patch should apply to the current master branch of
+https://github.com/tats/w3m (commit c8223fed7cc631ad85d8e5665e509e7988bedbab)
+also to the releases w3m-0.5.3+git20210102, w3m-0.5.3-git20220429 and
+w3m-0.5.3+git20230121.
+---
+ buffer.c               |    9 +
+ display.c              |    3 
+ doc-de/README.func     |    1 
+ doc/README.func        |    1 
+ file.c                 |  292 ++++++++++++++++++++++++++++++++++++++++++++++++-
+ html.h                 |    1 
+ istream.c              |  140 ++++++++++++++++++-----
+ istream.h              |    5 
+ main.c                 |  152 +++++++++++++++++++++++++
+ proto.h                |    1 
+ rc.c                   |    5 
+ rc.h                   |    2 
+ scripts/w3mhelp.cgi.in |    5 
+ url.c                  |   35 +++++
+ 14 files changed, 613 insertions(+), 39 deletions(-)
+
+--- a/file.c
++++ b/file.c
+@@ -30,6 +30,8 @@
+ 
+ #define MAX_INPUT_SIZE 80 /* TODO - max should be screen line length */
+ 
++Buffer * loadGeminiBuffer(URLFile *uf, Buffer *volatile newBuf);
++
+ static int frame_source = 0;
+ static int need_number = 0;
+ 
+@@ -248,7 +250,7 @@ loadSomething(URLFile *f,
+        )
+ 	buf->type = "text/html";
+     else
+-	buf->type = "text/plain";
++	buf->type = buf->type ? buf->type : "text/plain";
+     return buf;
+ }
+ 
+@@ -1702,7 +1704,7 @@ loadGeneralFile(char *path, ParsedURL *v
+     URLFile f, *volatile of = NULL;
+     ParsedURL pu;
+     Buffer *b = NULL;
+-    Buffer *(*volatile proc)(URLFile *, Buffer *) = loadBuffer;
++    Buffer *(*volatile proc)(URLFile *, Buffer *);
+     char *volatile tpath;
+     char *volatile t = "text/plain", *p, *volatile real_type = NULL;
+     Buffer *volatile t_buf = NULL;
+@@ -2054,6 +2056,166 @@ loadGeneralFile(char *path, ParsedURL *v
+     else if (pu.scheme == SCM_DATA) {
+ 	t = f.guess_type;
+     }
++    else if (pu.scheme == SCM_GEMINI) {
++	Str err, hdr, meta;
++	char *m;
++	long status;
++
++	if (fmInitialized) {
++	    term_cbreak();
++	    message(Sprintf("%s contacted. Waiting for reply...", pu.host)->
++		    ptr, 0, 0);
++	    refresh();
++	}
++
++	hdr = StrmyUFgets(&f);
++	if (!hdr || !hdr->length) {
++	    err = Sprintf("Could not read from %s", pu.host);
++	    goto fail;
++	}
++
++	/* Gemini response header: <STATUS><SPACE><META><CR><LF> */
++	status = strtol(hdr->ptr, &m, 10);
++	if (!IS_SPACE(*m)
++		|| hdr->length > 1024 + 2
++		|| hdr->ptr[hdr->length - 2] != '\r'
++		|| hdr->ptr[hdr->length - 1] != '\n') {
++	    Strchop(hdr);
++	    err = Sprintf("Invalid Gemini response header: %s", hdr->ptr);
++	    goto fail;
++	}
++
++	Strchop(hdr);
++	SKIP_BLANKS(m);
++	meta = Strnew_charp(m);
++
++	t_buf = newBuffer(INIT_BUFFER_WIDTH);
++	t_buf->document_header = newTextList();
++
++	charset = WC_CES_UTF_8;
++	switch(status) {
++	case 10: /* INPUT */
++	case 11: /* SENSITIVE INPUT */
++	    /* TODO(rkta): Fix quoting */
++	    term_raw();
++	    p = inputLine(Strnew_m_charp(meta->ptr, ": ", NULL)->ptr, NULL,
++			  status == 11 ? IN_PASSWORD : IN_STRING);
++	    if (!p || !*p)
++		return NULL;
++	    tpath = url_encode(Strnew_m_charp(tpath, "?", p, NULL)->ptr, NULL, 0);
++	    request = NULL;
++	    UFclose(&f);
++	    current = New(ParsedURL);
++	    copyParsedURL(current, &pu);
++	    goto load_doc;
++	case 20: /* SUCCESS */
++	    /*
++	     * Gemini spec section 3.3:
++	     * If <META> is an empty string, the MIME type MUST default to
++	     * "text/gemini; charset=utf-8".
++	     */
++	    if (!*meta->ptr) {
++		t = "text/gemini";
++		pushText(t_buf->document_header, hdr->ptr);
++		break;
++	    }
++
++	    t = m = meta->ptr;
++	    while (*m && !IS_SPACE(*m) && *m != ';') m++;
++	    if (*m)
++		*m++ = '\0';
++	    SKIP_BLANKS(m);
++
++	    while (*m) { /* Not done parsing */
++		if (!strncmp(m, "lang=", 5)) {
++		    /* Ignore this */
++		    while (*m && *m++ != ';');
++		    SKIP_BLANKS(m);
++		}
++		else if (!strncmp(m, "charset=", 8)) {
++		    m += 8;
++		    charset = wc_charset_to_ces(m);
++		    if (!charset) {
++			err = Sprintf("Unknown charset: %s", hdr->ptr);
++			goto fail;
++		    }
++		    while (*m && *m++ != ';');
++		    SKIP_BLANKS(m);
++		}
++		else {
++		    err = Sprintf("Can't parser Gemini response header: %s", hdr->ptr);
++		    goto fail;
++		}
++	    }
++
++	    t_buf->buffername = parsedURL2Str(&pu)->ptr;
++	    t_buf->document_charset = charset;
++	    t_buf->type = t;
++	    pushText(t_buf->document_header, hdr->ptr);
++	    break;
++	case 30: /* REDIRECT - TEMPORARY */
++	case 31: /* REDIRECT - PERMANENT */
++	    p = meta->ptr;
++	    if (*p == '.' || *p == '/' || !strchr(p, ':')) /* relative URI */
++		p = Strnew_m_charp("gemini://", pu.host, "/", meta->ptr,
++				   NULL)->ptr;
++	    tpath = url_encode(p, NULL, 0);
++	    request = NULL;
++	    UFclose(&f);
++	    current = New(ParsedURL);
++	    copyParsedURL(current, &pu);
++	    t_buf = newBuffer(INIT_BUFFER_WIDTH);
++	    t_buf->bufferprop |= BP_REDIRECTED;
++	    status = HTST_NORMAL;
++	    goto load_doc;
++	case 40: /* TEMPORARY FAILURE */
++	    err = Sprintf("TEMPORARY FAILURE: %s", hdr->ptr);
++	    goto fail;
++	case 41: /* SERVER UNAVAILABLE */
++	    err = Sprintf("SERVER UNAVAILABLE: %s", hdr->ptr);
++	    goto fail;
++	case 42: /* CGI ERROR */
++	    err = Sprintf("CGI ERROR: %s", hdr->ptr);
++	    goto fail;
++	case 43: /* PROXY ERROR */
++	    err = Sprintf("PROXY ERROR: %s", hdr->ptr);
++	    goto fail;
++	case 44: /* SLOW DOWN */
++	    err = Sprintf("Status code %d not implemented", status);
++	    goto fail;
++	case 50: /* PERMANENT FAILURE */
++	    err = Sprintf("PERMANENT FAILURE: %s", hdr->ptr);
++	    goto fail;
++	case 51: /* NOT FOUND */
++	    err = Sprintf("NOT FOUND: %s", hdr->ptr);
++	    goto fail;
++	case 52: /* GONE */
++	    err = Sprintf("GONE: %s", hdr->ptr);
++	    goto fail;
++	case 53: /* PROXY REQUEST REFUSED */
++	    err = Sprintf("PROXY REQUEST REFUSED: %s", hdr->ptr);
++	    goto fail;
++	case 59: /* BAD REQUEST */
++	    err = Sprintf("BAD REQUEST: %s", hdr->ptr);
++	    goto fail;
++	case 60: /* CLIENT CERTIFICATE REQUIRED */
++	    err = Sprintf("CLIENT CERTIFICATE REQUIRED: %s", hdr->ptr);
++	    goto fail;
++	case 61: /* CERTIFICATE NOT AUTHORISED */
++	    err = Sprintf("CERTIFICATE NOT AUTHORISED: %s", hdr->ptr);
++	    goto fail;
++	case 62: /* CERTIFICATE NOT VALID */
++	    err = Sprintf("CERTIFICATE NOT VALID: %s", hdr->ptr);
++	    goto fail;
++	default:
++	    err = Sprintf("Unknown status code %d", status);
++fail:
++	    TRAP_OFF;
++	    disp_err_message(err->ptr, FALSE);
++	    UFclose(&f);
++	    return NULL;
++	}
++    }
+     else if (searchHeader) {
+ 	searchHeader = SearchHeader = FALSE;
+ 	if (t_buf == NULL)
+@@ -2232,6 +2394,8 @@ loadGeneralFile(char *path, ParsedURL *v
+ 
+     if (is_html_type(t))
+ 	proc = loadHTMLBuffer;
++    else if (!strcmp(t, "text/gemini"))
++	proc = loadGeminiBuffer;
+     else if (is_plain_text_type(t))
+ 	proc = loadBuffer;
+ #ifdef USE_IMAGE
+@@ -2486,7 +2650,6 @@ is_boundary(unsigned char *ch1, unsigned
+     return 1;
+ }
+ 
+-
+ static void
+ set_breakpoint(struct readbuffer *obuf, int tag_length)
+ {
+@@ -7643,6 +7806,129 @@ loadGopherSearch0(URLFile *uf, ParsedURL
+ }
+ #endif				/* USE_GOPHER */
+ 
++Buffer *
++loadGeminiBuffer(URLFile *uf, Buffer *volatile buf)
++{
++    Anchor *a;
++    FILE *src = NULL;
++    wc_ces charset;
++    Str l, line, tmpf;
++    char *spacer, *p, *q;
++    int hseq, len, nlines, pre = 0;
++    clen_t linelen = 0, trbyte = 0;
++    Lineprop *propBuf = NULL;
++    MySignalHandler(*volatile prevtrap) (SIGNAL_ARG) = NULL;
++
++    if (SETJMP(AbortLoading) != 0) {
++	goto _end;
++    }
++    TRAP_ON;
++
++    charset = buf->document_charset;
++    hseq = nlines = 0;
++    if (buf->sourcefile == NULL &&
++	(uf->scheme != SCM_LOCAL || buf->mailcap)) {
++	tmpf = tmpfname(TMPF_SRC, NULL);
++	if (!(src = fopen(tmpf->ptr, "w"))) {
++	    TRAP_OFF;
++	    disp_err_message(Sprintf("Cannot open %s, aborting!", tmpf->ptr)->ptr,
++			     FALSE);
++	    return NULL;
++	}
++	buf->sourcefile = tmpf->ptr;
++    }
++
++    while ((line = StrmyISgets(uf->stream)) && line->length) {
++	if (src)
++	    Strfputs(line, src);
++	linelen += line->length;
++	line = convertLine(uf, line, PAGER_MODE, &charset, charset);
++	Strchop(line);
++
++	p = line->ptr;
++	if (!strncmp(p, "```", 3)) {
++	    pre = !pre;
++	    continue;
++	}
++
++	++nlines;
++	showProgress(&linelen, &trbyte);
++
++	if (pre) {
++	    line = checkType(line, &propBuf, NULL);
++	    addnewline(buf, line->ptr, propBuf, NULL,
++		       line->length, FOLD_BUFFER_WIDTH, nlines);
++	    continue;
++	}
++
++	if (!strncmp(p, "=>", 2)) {
++	    p += 2;
++	    SKIP_BLANKS(p);
++	    q = p;
++	    while(*q && !IS_SPACE(*q)) q++;
++	    if (*q)
++		*q++ = '\0';
++	    SKIP_BLANKS(q);
++	    if (!*q)
++		q = p;
++	    buf->href = putAnchor(buf->href,
++				  url_encode(p, baseURL(buf), charset),
++				  NULL, &a, NO_REFERER, q, '\0', nlines, 0);
++	    buf->hmarklist = putHmarker(buf->hmarklist, currentLn(buf),
++					0, hseq);
++	    if (displayLinkNumber)
++		line = Sprintf("[%d]: %s", hseq + 1, q);
++	    else
++		line = Sprintf("%s", q);
++	    line = checkType(line, &propBuf, NULL);
++	    for (int i = 0; i < line->length; i++)
++		propBuf[i] |= PE_ANCHOR;
++	    a->end.line = nlines;
++	    a->end.pos = line->length;
++	    a->hseq = hseq++;
++	    addnewline(buf, line->ptr, propBuf, NULL,
++		       line->length, FOLD_BUFFER_WIDTH, nlines);
++	    continue;
++	}
++
++	len = line->length;
++	spacer = "";
++	if (*p == '>') {
++	    spacer = "    ";
++	    p++;
++	    SKIP_BLANKS(p);
++	}
++	while (len > buf->width) {
++	    q = &p[buf->width - (strlen(spacer) + 1)];
++	    while(!IS_SPACE(*q) && q != p) q--;
++	    if (q == p)
++		break;
++	    *q = '\0';
++	    l = checkType(Strnew_m_charp(spacer, p, NULL), &propBuf, NULL);
++	    addnewline(buf, l->ptr, propBuf, NULL, l->length, -1, nlines);
++	    nlines++;
++	    len -= (l->length - strlen(spacer));
++	    if (line->ptr[0] == '*')
++		spacer = "  ";
++	    p = q + 1;
++	}
++	l = checkType(Strnew_m_charp(spacer, p, NULL), &propBuf, NULL);
++	addnewline(buf, l->ptr, propBuf, NULL, l->length, FOLD_BUFFER_WIDTH,
++		   nlines);
++    }
++  _end:
++    TRAP_OFF;
++    if (src)
++	fclose(src);
++    UFclose(uf);
++    buf->topLine = buf->firstLine;
++    buf->lastLine = buf->currentLine;
++    buf->currentLine = buf->firstLine;
++    buf->trbyte = trbyte + linelen;
++
++    return buf;
++}
++
+ /* 
+  * loadBuffer: read file and make new buffer
+  */
+--- a/html.h
++++ b/html.h
+@@ -419,5 +419,6 @@ struct environment {
+ #ifdef USE_SSL
+ #define SCM_HTTPS       13
+ #endif				/* USE_SSL */
++#define SCM_GEMINI	14
+ 
+ #endif				/* _HTML_H */
+--- a/url.c
++++ b/url.c
+@@ -75,6 +75,7 @@ static int
+ #ifdef USE_SSL
+     443,			/* https */
+ #endif				/* USE_SSL */
++    1965			/* gemini */
+ };
+ 
+ struct cmdtable schemetable[] = {
+@@ -95,6 +96,7 @@ struct cmdtable schemetable[] = {
+ #ifdef USE_SSL
+     {"https", SCM_HTTPS},
+ #endif				/* USE_SSL */
++    {"gemini", SCM_GEMINI},
+     {NULL, SCM_UNKNOWN},
+ };
+ 
+@@ -235,6 +237,7 @@ DefaultFile(int scheme)
+     case SCM_LOCAL_CGI:
+     case SCM_FTP:
+     case SCM_FTPDIR:
++    case SCM_GEMINI:
+ 	return allocStr("/", -1);
+     }
+     return NULL;
+@@ -256,7 +259,7 @@ free_ssl_ctx(void)
+     if (ssl_ctx != NULL)
+ 	SSL_CTX_free(ssl_ctx);
+     ssl_ctx = NULL;
+-    ssl_accept_this_site(NULL);
++    ssl_accept_this_site(NULL, NULL, 0);
+ }
+ 
+ #if SSLEAY_VERSION_NUMBER >= 0x00905100
+@@ -1262,6 +1265,7 @@ _parsedURL2Str(ParsedURL *pu, int pass,
+ 	"news", "news", "data", "mailto",
+ #ifdef USE_SSL
+ 	"https",
++	"gemini",
+ #endif				/* USE_SSL */
+     };
+ 
+@@ -1962,6 +1966,35 @@ openURL(char *url, ParsedURL *pu, Parsed
+ 	}
+ 	break;
+ #endif				/* USE_GOPHER */
++    case SCM_GEMINI:
++	sock = openSocket(pu->host, schemeNumToName(pu->scheme), pu->port);
++	if (sock < 0) {
++	    *status = HTST_MISSING;
++	    return uf;
++	}
++	if (!(sslh = openSSLHandle(sock, pu->host,
++				   &uf.ssl_certificate))) {
++	    *status = HTST_MISSING;
++	    return uf;
++	}
++	hr->flag |= HR_FLAG_LOCAL;
++	tmp = Strnew_m_charp("gemini://", pu->host, pu->file,
++			     pu->query ?
++				     Strnew_m_charp("?", pu ->query, NULL)->ptr :
++				     "",
++			     "\r\n", NULL);
++	*status = HTST_NORMAL;
++	uf.stream = newSSLStream(sslh, sock);
++	SSL_write(sslh, tmp->ptr, tmp->length);
++	if(w3m_reqlog){
++	    FILE *ff = fopen(w3m_reqlog, "a");
++	    if (ff == NULL)
++		return uf;
++	    fputs("GEMINI: request via SSL\n", ff);
++	    fwrite(tmp->ptr, sizeof(char), tmp->length, ff);
++	    fclose(ff);
++	}
++	return uf;
+ #ifdef USE_NNTP
+     case SCM_NNTP:
+     case SCM_NNTP_GROUP:
+--- a/display.c
++++ b/display.c
+@@ -382,7 +382,8 @@ displayBuffer(Buffer *buf, int mode)
+     if (buf->height == 0)
+ 	buf->height = LASTLINE + 1;
+     if ((buf->width != INIT_BUFFER_WIDTH &&
+-	 (is_html_type(buf->type) || FoldLine))
++	 (is_html_type(buf->type) || FoldLine || !strcmp(buf->type,
++							 "text/gemini")))
+ 	|| buf->need_reshape) {
+ 	buf->need_reshape = TRUE;
+ 	reshapeBuffer(buf);
+--- a/buffer.c
++++ b/buffer.c
+@@ -18,6 +18,10 @@ extern int do_getch();
+ char *NullLine = "";
+ Lineprop NullProp[] = { 0 };
+ 
++
++/* TODO(rkta): header file */
++Buffer * loadGeminiBuffer(URLFile *uf, Buffer *volatile buf);
++
+ /* 
+  * Buffer creation
+  */
+@@ -507,6 +511,8 @@ reshapeBuffer(Buffer *buf)
+ {
+     URLFile f;
+     Buffer sbuf;
++    /* TODO(rkta): Shouldn't we do this for all schemes? */
++    Str t;
+ #ifdef USE_M17N
+     wc_uint8 old_auto_detect = WcOption.auto_detect;
+ #endif
+@@ -517,6 +523,7 @@ reshapeBuffer(Buffer *buf)
+     buf->width = INIT_BUFFER_WIDTH;
+     if (buf->sourcefile == NULL)
+ 	return;
++    t = Strnew_charp(buf->type);
+     init_stream(&f, SCM_LOCAL, NULL);
+     examineFile(buf->mailcap_source ? buf->mailcap_source : buf->sourcefile,
+ 		&f);
+@@ -562,6 +569,8 @@ reshapeBuffer(Buffer *buf)
+ #endif
+     if (is_html_type(buf->type))
+ 	loadHTMLBuffer(&f, buf);
++    else if (!strcmp(t->ptr, "text/gemini"))
++	loadGeminiBuffer(&f, buf);
+     else
+ 	loadBuffer(&f, buf);
+     UFclose(&f);
+--- a/main.c
++++ b/main.c
+@@ -406,6 +406,32 @@ die_oom(size_t bytes)
+     return NULL;
+ }
+ 
++/* TODO(rkta): header */
++TextList * load_known_hosts(void);
++
++TextList *
++load_known_hosts(void)
++{
++    FILE *f;
++    Str l;
++    TextList *kh;
++
++    kh = newTextList();
++
++    if (!(f = fopen(known_hosts_file, "r")))
++	return kh;
++
++    while (!feof(f)) {
++	l = Strfgets(f);
++	if (!l->length)
++	    continue;
++	Strchop(l);
++	pushText(kh, l->ptr);
++    }
++    fclose(f);
++    return kh;
++}
++
+ int
+ main(int argc, char **argv)
+ {
+@@ -908,6 +934,9 @@ main(int argc, char **argv)
+     if (UseHistory)
+ 	loadHistory(URLHist);
+ #endif				/* not USE_HISTORY */
++    known_hosts_file = rcFile("known_hosts");
++    if (ssl_known_hosts)
++	known_hosts = load_known_hosts();
+ 
+ #ifdef USE_M17N
+     /*  if (w3m_dump)
+@@ -2557,10 +2586,36 @@ DEFUN(movRW, NEXT_WORD, "Move to the nex
+     displayBuffer(Currentbuf, B_NORMAL);
+ }
+ 
++static int
++save_known_hosts(void)
++{
++    FILE *fp;
++    TextListItem *host;
++    char *khf, *tmpf;
++
++    if (!known_hosts)
++	return 0;
++
++    tmpf = tmpfname(TMPF_HIST, NULL)->ptr;
++    khf = rcFile("known_hosts");
++    if (!(fp = fopen(tmpf, "w")))
++	return 1;
++
++    for (host = known_hosts->first; host; host = host->next)
++	fprintf(fp, "%s\n", host->ptr);
++
++    fclose(fp);
++    if (rename(tmpf, khf))
++	return 1;
++
++    return 0;
++}
++
+ static void
+ _quitfm(int confirm)
+ {
+     char *ans = "y";
++    int err = 0;
+ 
+     if (checkDownloadList())
+ 	/* FIXME: gettextize? */
+@@ -2587,7 +2642,9 @@ _quitfm(int confirm)
+     if (UseHistory && SaveURLHist)
+ 	saveHistory(URLHist, URLHistSize);
+ #endif				/* USE_HISTORY */
+-    w3m_exit(0);
++    if ((err = save_known_hosts()))
++	perror(NULL);
++    w3m_exit(err);
+ }
+ 
+ /* Quit */
+@@ -4786,6 +4843,13 @@ DEFUN(vwSrc, SOURCE VIEW, "Toggle betwee
+ 	displayBuffer(Currentbuf, B_NORMAL);
+ 	return;
+     }
++
++    /* TODO(rkta): keep && document this */
++    if (!strcmp(Currentbuf->type, "text/gemini")) {
++	geminize();
++	return;
++    }
++
+     if (Currentbuf->sourcefile == NULL) {
+ 	if (Currentbuf->pagerSource &&
+ 	    !strcasecmp(Currentbuf->type, "text/plain")) {
+@@ -4864,6 +4928,91 @@ DEFUN(vwSrc, SOURCE VIEW, "Toggle betwee
+     displayBuffer(Currentbuf, B_NORMAL);
+ }
+ 
++DEFUN(geminize, GEMINIZE, "Toggle between text/gemini shown or processed")
++{
++    Buffer *buf;
++
++    if (Currentbuf->type == NULL || Currentbuf->bufferprop & BP_FRAME)
++	return;
++    if ((buf = Currentbuf->linkBuffer[LB_SOURCE]) != NULL ||
++	(buf = Currentbuf->linkBuffer[LB_N_SOURCE]) != NULL) {
++	Currentbuf = buf;
++	displayBuffer(Currentbuf, B_NORMAL);
++	return;
++    }
++
++    if (Currentbuf->sourcefile == NULL) {
++	if (Currentbuf->pagerSource &&
++	    !strcasecmp(Currentbuf->type, "text/plain")) {
++#ifdef USE_M17N
++	    wc_ces old_charset;
++	    wc_bool old_fix_width_conv;
++#endif
++	    FILE *f;
++	    Str tmpf = tmpfname(TMPF_SRC, NULL);
++	    f = fopen(tmpf->ptr, "w");
++	    if (f == NULL)
++		return;
++#ifdef USE_M17N
++	    old_charset = DisplayCharset;
++	    old_fix_width_conv = WcOption.fix_width_conv;
++	    DisplayCharset = (Currentbuf->document_charset != WC_CES_US_ASCII)
++		? Currentbuf->document_charset : 0;
++	    WcOption.fix_width_conv = WC_FALSE;
++#endif
++	    saveBufferBody(Currentbuf, f, TRUE);
++#ifdef USE_M17N
++	    DisplayCharset = old_charset;
++	    WcOption.fix_width_conv = old_fix_width_conv;
++#endif
++	    fclose(f);
++	    Currentbuf->sourcefile = tmpf->ptr;
++	}
++	else {
++	    return;
++	}
++    }
++
++    buf = newBuffer(INIT_BUFFER_WIDTH);
++
++    if (!strcmp(Currentbuf->type, "text/gemini")) {
++	buf->type = "text/plain";
++	buf->real_type = Currentbuf->real_type;
++	buf->buffername = Sprintf("source of %s", Currentbuf->buffername)->ptr;
++	buf->linkBuffer[LB_N_SOURCE] = Currentbuf;
++	Currentbuf->linkBuffer[LB_SOURCE] = buf;
++    }
++    else if (!strcasecmp(Currentbuf->type, "text/plain")) {
++	buf->type = "text/gemini";
++	if (Currentbuf->real_type &&
++	    !strcasecmp(Currentbuf->real_type, "text/plain"))
++	    buf->real_type = "text/gemini";
++	else
++	    buf->real_type = Currentbuf->real_type;
++	buf->buffername = Sprintf("Gemini view of %s",
++				  Currentbuf->buffername)->ptr;
++	buf->linkBuffer[LB_SOURCE] = Currentbuf;
++	Currentbuf->linkBuffer[LB_N_SOURCE] = buf;
++    }
++    else {
++	return;
++    }
++    buf->currentURL = Currentbuf->currentURL;
++    buf->real_scheme = Currentbuf->real_scheme;
++    buf->filename = Currentbuf->filename;
++    buf->sourcefile = Currentbuf->sourcefile;
++    buf->header_source = Currentbuf->header_source;
++    buf->search_header = Currentbuf->search_header;
++    buf->document_charset = Currentbuf->document_charset;
++    buf->clone = Currentbuf->clone;
++    (*buf->clone)++;
++
++    buf->need_reshape = TRUE;
++    reshapeBuffer(buf);
++    pushBuffer(buf);
++    displayBuffer(Currentbuf, B_NORMAL);
++}
++
+ /* reload */
+ DEFUN(reload, RELOAD, "Load current document anew")
+ {
+@@ -5089,6 +5238,7 @@ chkURLBuffer(Buffer *buf)
+ 	"https?://[a-zA-Z0-9:%\\-\\./_@]*\\[[a-fA-F0-9:][a-fA-F0-9:\\.]*\\][a-zA-Z0-9:%\\-\\./?=~_\\&+@#,\\$;]*",
+ 	"ftp://[a-zA-Z0-9:%\\-\\./_@]*\\[[a-fA-F0-9:][a-fA-F0-9:\\.]*\\][a-zA-Z0-9:%\\-\\./=_+@#,\\$]*",
+ #endif				/* INET6 */
++	"gemini:/[a-zA-Z0-9:%\\-\\./=_\\+@#,\\$;]*",
+ 	NULL
+     };
+     int i;
+--- a/proto.h
++++ b/proto.h
+@@ -97,6 +97,7 @@ extern void peekURL(void);
+ extern void peekIMG(void);
+ extern void curURL(void);
+ extern void vwSrc(void);
++extern void geminize(void);
+ extern void reload(void);
+ extern void reshape(void);
+ extern void chkURL(void);
+--- a/istream.c
++++ b/istream.c
+@@ -1,6 +1,7 @@
+ /* $Id: istream.c,v 1.27 2010/07/18 13:43:23 htrb Exp $ */
+ #include "fm.h"
+ #include "myctype.h"
++#include "rc.h"
+ #include "istream.h"
+ #include <signal.h>
+ #ifdef USE_SSL
+@@ -350,15 +351,43 @@ ISeos(InputStream stream)
+ }
+ 
+ #ifdef USE_SSL
+-static Str accept_this_site;
++TextList *known_hosts;
++char *known_hosts_file;
++static Str _accept_this_site;
++
++static Str
++X509_fingerprint(X509 *x)
++{
++    Str fp = Strnew();
++    const EVP_MD *digest;
++    unsigned n;
++    unsigned char md[EVP_MAX_MD_SIZE];
++
++    digest = EVP_get_digestbyname("sha1");
++    X509_digest(x, digest, md, &n);
++    for(int i = 0; i < n - 1; i++)
++	Strcat(fp, Sprintf("%02x:", md[i]));
++    Strcat(fp, Sprintf("%02x", md[n - 1]));
++
++    return fp;
++}
+ 
+ void
+-ssl_accept_this_site(char *hostname)
++ssl_accept_this_site(char *hostname, X509 *x, int perm)
+ {
+-    if (hostname)
+-	accept_this_site = Strnew_charp(hostname);
+-    else
+-	accept_this_site = NULL;
++
++    if (!hostname)
++	return;
++
++    if (!perm) {
++	_accept_this_site = Strnew_charp(hostname);
++    }
++    else {
++	pushText(known_hosts, Strnew_m_charp(hostname,
++					     " ",
++					     X509_fingerprint(x)->ptr,
++					     NULL)->ptr);
++    }
+ }
+ 
+ static int
+@@ -497,6 +526,50 @@ ssl_check_cert_ident(X509 * x, char *hos
+     return ret;
+ }
+ 
++/* TODO(rkta): header */
++TextList * load_known_hosts(void);
++
++/* Return true if the host's cert was manually accepted before */
++static int
++accept_this_site(const char *hostname, X509 *x)
++{
++    Str fp;
++    TextListItem *host;
++    char *h;
++    size_t n;
++
++    if (!ssl_known_hosts) {
++	if (!_accept_this_site)
++	    return 0;
++	return !strncasecmp(_accept_this_site->ptr,
++			    hostname,
++			    _accept_this_site->length);
++    }
++
++    if (!known_hosts && (!(known_hosts = load_known_hosts())))
++	known_hosts = newTextList();
++
++    if (!(host = known_hosts->last)) /* Empty list */
++	return 0;
++
++    n = strlen(hostname);
++    fp = X509_fingerprint(x);
++    if (!strncasecmp(host->ptr, hostname, n)
++	&& !strncmp(host->ptr + n + 1, fp->ptr, fp->length))
++	return 1;
++
++    for (host = host->prev; host; host = host->prev) {
++	if (!strncasecmp(host->ptr, hostname, n)
++	    && !strncmp(host->ptr + n + 1, fp->ptr, fp->length)) {
++	    h = host->ptr;
++	    delText(known_hosts, host);
++	    pushText(known_hosts, h);
++	    return 1;
++	}
++    }
++    return 0;
++}
++
+ Str
+ ssl_get_certificate(SSL * ssl, char *hostname)
+ {
+@@ -504,7 +577,7 @@ ssl_get_certificate(SSL * ssl, char *hos
+     X509 *x;
+     X509_NAME *xn;
+     char *p;
+-    int len;
++    int len, perm;
+     Str s;
+     char buf[2048];
+     Str amsg = NULL;
+@@ -513,10 +586,10 @@ ssl_get_certificate(SSL * ssl, char *hos
+ 
+     if (ssl == NULL)
+ 	return NULL;
++
+     x = SSL_get_peer_certificate(ssl);
+     if (x == NULL) {
+-	if (accept_this_site
+-	    && strcasecmp(accept_this_site->ptr, hostname) == 0)
++	if (accept_this_site(hostname, x))
+ 	    ans = "y";
+ 	else {
+ 	    /* FIXME: gettextize? */
+@@ -537,7 +610,7 @@ ssl_get_certificate(SSL * ssl, char *hos
+ 	}
+ 	if (amsg)
+ 	    disp_err_message(amsg->ptr, FALSE);
+-	ssl_accept_this_site(hostname);
++	ssl_accept_this_site(hostname, x, 0);
+ 	/* FIXME: gettextize? */
+ 	s = amsg ? amsg : Strnew_charp("valid certificate");
+ 	return s;
+@@ -547,39 +620,46 @@ ssl_get_certificate(SSL * ssl, char *hos
+      * The chain length is automatically checked by OpenSSL when we
+      * set the verify depth in the ctx.
+      */
++    perm = 0;
+     if (ssl_verify_server) {
+ 	long verr;
+ 	if ((verr = SSL_get_verify_result(ssl))
+ 	    != X509_V_OK) {
+ 	    const char *em = X509_verify_cert_error_string(verr);
+-	    if (accept_this_site
+-		&& strcasecmp(accept_this_site->ptr, hostname) == 0)
++	    if (accept_this_site(hostname, x))
+ 		ans = "y";
+ 	    else {
+-		/* FIXME: gettextize? */
+-		emsg = Sprintf("%s: accept? (y/n)", em);
++		if (ssl_known_hosts)
++		    emsg = Sprintf("%s: accept? (y)es/(n)o/(a)lways)", em);
++		else
++		    emsg = Sprintf("%s: accept? (y/n)", em);
+ 		ans = inputAnswer(emsg->ptr);
+-	    }
+-	    if (ans && TOLOWER(*ans) == 'y') {
+-		/* FIXME: gettextize? */
+-		amsg = Sprintf("Accept unsecure SSL session: "
+-			       "unverified: %s", em);
+-	    }
+-	    else {
+-		/* FIXME: gettextize? */
+-		char *e =
+-		    Sprintf("This SSL session was rejected: %s", em)->ptr;
+-		disp_err_message(e, FALSE);
+-		free_ssl_ctx();
+-		return NULL;
++		if (ans && TOLOWER(*ans) == 'y') {
++		    /* FIXME: gettextize? */
++		    amsg = Sprintf("Accept unsecure SSL session: "
++				   "unverified: %s", em);
++		}
++		else if (ssl_known_hosts && ans && TOLOWER(*ans) == 'a') {
++		    amsg = Sprintf("Permanently accepted unverified SSL"
++				   "session: %s", em);
++		    perm = 1;
++		}
++		else {
++		    /* FIXME: gettextize? */
++		    char *e =
++			Sprintf("This SSL session was rejected: %s", em)->ptr;
++		    disp_err_message(e, FALSE);
++		    free_ssl_ctx();
++		    return NULL;
++		}
+ 	    }
+ 	}
++	ssl_accept_this_site(hostname, x, perm);
+     }
+ #endif
+     emsg = ssl_check_cert_ident(x, hostname);
+     if (emsg != NULL) {
+-	if (accept_this_site
+-	    && strcasecmp(accept_this_site->ptr, hostname) == 0)
++	if (accept_this_site(hostname, x))
+ 	    ans = "y";
+ 	else {
+ 	    Str ep = Strdup(emsg);
+@@ -601,10 +681,10 @@ ssl_get_certificate(SSL * ssl, char *hos
+ 	    free_ssl_ctx();
+ 	    return NULL;
+ 	}
++	ssl_accept_this_site(hostname, x, 0);
+     }
+     if (amsg)
+ 	disp_err_message(amsg->ptr, FALSE);
+-    ssl_accept_this_site(hostname);
+     /* FIXME: gettextize? */
+     s = amsg ? amsg : Strnew_charp("valid certificate");
+     Strcat_charp(s, "\n");
+--- a/istream.h
++++ b/istream.h
+@@ -109,6 +109,9 @@ typedef struct encoded_stream *EncodedSt
+ 
+ typedef union input_stream *InputStream;
+ 
++extern TextList *known_hosts;
++extern char *known_hosts_file;
++
+ extern InputStream newInputStream(int des);
+ extern InputStream newFileStream(FILE * f, void (*closep) ());
+ extern InputStream newStrStream(Str s);
+@@ -130,7 +133,7 @@ int ISread_n(InputStream stream, char *d
+ extern int ISfileno(InputStream stream);
+ extern int ISeos(InputStream stream);
+ #ifdef USE_SSL
+-extern void ssl_accept_this_site(char *hostname);
++extern void ssl_accept_this_site(char *hostname, X509 *x, int perm);
+ extern Str ssl_get_certificate(SSL * ssl, char *hostname);
+ #endif
+ 
+--- a/rc.c
++++ b/rc.c
+@@ -36,6 +36,8 @@ struct rc_search_table {
+ static struct rc_search_table *RC_search_table;
+ static int RC_table_size;
+ 
++int ssl_known_hosts = 1;
++
+ #define P_INT      0
+ #define P_SHORT    1
+ #define P_CHARINT  2
+@@ -209,6 +211,7 @@ static int OptionEncode = FALSE;
+ #define CMT_SSL_CA_PATH N_("Path to directory for PEM encoded certificates of CAs")
+ #define CMT_SSL_CA_FILE N_("File consisting of PEM encoded certificates of CAs")
+ #define CMT_SSL_CA_DEFAULT N_("Use default locations for PEM encoded certificates of CAs")
++#define CMT_SSL_KNOWN_HOSTS N_("Remember accepted self signed certificates")
+ #endif				/* USE_SSL_VERIFY */
+ #define CMT_SSL_FORBID_METHOD N_("List of forbidden SSL methods (2: SSLv2, 3: SSLv3, t: TLSv1.0, 5: TLSv1.1, 6: TLSv1.2, 7: TLSv1.3)")
+ #ifdef SSL_CTX_set_min_proto_version
+@@ -647,6 +650,8 @@ struct param_ptr params7[] = {
+      NULL},
+     {"ssl_ca_default", P_INT, PI_ONOFF, (void *)&ssl_ca_default,
+      CMT_SSL_CA_DEFAULT, NULL},
++    {"ssl_known_hosts", P_INT, PI_ONOFF, (void *)&ssl_known_hosts,
++     CMT_SSL_KNOWN_HOSTS, NULL},
+ #endif				/* USE_SSL_VERIFY */
+     {NULL, 0, 0, NULL, NULL, NULL},
+ };
+--- a/rc.h
++++ b/rc.h
+@@ -4,4 +4,6 @@
+ extern void show_params(FILE * fp);
+ extern int str_to_bool(char *value, int old);
+ 
++extern int ssl_known_hosts;
++
+ #endif /* RC_H */
+--- a/doc-de/README.func
++++ b/doc-de/README.func
+@@ -32,6 +32,7 @@ EXIT		Sofort beenden
+ EXTERN		Verwende externen Browser zur Anzeige
+ EXTERN_LINK	Verwende externen Browser zur Anzeige des Linkziels
+ FRAME		Wechsle zwischen Kennung und Umsetzung von HTML-Frames
++GEMINIZE	Wechsle zwischen text/gemini-Wiedergabe und -Verarbeitung
+ GOTO		Öffne angegebenes Dokument in neuem Puffer
+ GOTO_HOME	Zurück zur Startseite (die Variablen HTTP_HOME oder WWW_HOME spezifiziert wurden)
+ GOTO_LINE	Gehe zur angebenen Zeile
+--- a/doc/README.func
++++ b/doc/README.func
+@@ -32,6 +32,7 @@ EXIT		Quit without confirmation
+ EXTERN		Display using an external browser
+ EXTERN_LINK	Display target using an external browser
+ FRAME		Toggle rendering HTML frames
++GEMINIZE	Toggle between text/gemini shown or processed
+ GOTO		Open specified document in a new buffer
+ GOTO_HOME	Return to the homepage (specified HTTP_HOME or WWW_HOME variable)
+ GOTO_LINE	Go to the specified line
+--- a/scripts/w3mhelp.cgi.in
++++ b/scripts/w3mhelp.cgi.in
+@@ -152,8 +152,9 @@ print "<P><A HREF=\"$keymap\">$head</A>\
+ 		pipeBuf"));
+ 
+ &show_keymap('Buffer Operations',
+-	     split(" ", "backBf nextBf prevBf goHome selMn selBuf vwSrc svSrc
+-		svBuf editBf editScr reload reshape rdrwSc dispI stopI"));
++	     split(" ", "backBf nextBf prevBf goHome selMn selBuf geminize
++		vwSrc svSrc svBuf editBf editScr reload reshape rdrwSc
++		dispI stopI"));
+ 
+ &show_keymap('Tab Operations',
+ 	     split(" ", "newT closeT nextT prevT tabMn tabR tabL"));

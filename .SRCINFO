@@ -1,0 +1,20 @@
+pkgbase = w3m-gemini
+	pkgdesc = w3m with gemini support
+	pkgver = 0.5.3.git20230713_1
+	pkgrel = 1
+	url = https://salsa.debian.org/debian/w3m
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = imlib2
+	depends = openssl
+	depends = gc
+	depends = ncurses
+	depends = gpm
+	optdepends = imlib2: for graphics support
+	source = git+https://salsa.debian.org/debian/w3m.git#commit=edc602651c506aeeb60544b55534dd1722a340d3
+	source = gemini.patch
+	sha256sums = SKIP
+	sha256sums = 43a5711390b22b80533a915a9aade18301781430e4d0cceea8f88df989a89d2a
+
+pkgname = w3m-gemini
