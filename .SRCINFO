@@ -1,6 +1,6 @@
 pkgbase = clash-meta-alpha-git
 	pkgdesc = Another Clash Kernel by MetaCubeX (git virsion)
-	pkgver = 2024032823.11f0983e
+	pkgver = 2024032914.72d09482
 	pkgrel = 1
 	url = https://github.com/MetaCubeX/mihomo
 	arch = x86_64
