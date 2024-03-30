@@ -13,24 +13,18 @@ pkgname=gnome-chatty
 # NOTE! Make sure to update the libcmatrixrev that Chatty is using when bumping Chatty version.
 # See below for more info.
 pkgver=0.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc='XMPP and SMS messaging via libpurple and ModemManager'
 url='https://gitlab.gnome.org/World/Chatty'
 license=(
   GPL3
 )
-arch=(
-  aarch64
-  armv6h
-  armv7h
-  arm
-  i686
-  pentium4
-  x86_64
-)
+arch=(aarch64 x86_64)
 depends=(
   evolution-data-server
   feedbackd
+  gnome-desktop-4
+  libadwaita
   libhandy
   libmm-glib
   libolm
@@ -45,7 +39,6 @@ makedepends=(
   meson
   pkg-config
 )
-group="gnome-world"
 _srcname="Chatty-v${pkgver}"
 source=("${url}/-/archive/v${pkgver}/${_srcname}.tar.gz")
 
@@ -69,4 +62,3 @@ package() {
   cd "${_srcname}"
   meson install -C build --destdir "$pkgdir"
 }
-
