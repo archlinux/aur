@@ -1,8 +1,7 @@
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-tkx'
-pkgver='1.09'
+pkgver='1.10'
 pkgrel='1'
 pkgdesc="Yet another Tk interface"
 arch=('any')
@@ -11,10 +10,10 @@ options=('!emptydirs')
 depends=('perl>=5.008' 'perl-tcl>=1')
 makedepends=()
 url='http://search.cpan.org/dist/Tkx'
-source=('http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/Tkx-1.09.tar.gz')
-md5sums=('8dfe38d1b7c6a92101e840949c584d7d')
-sha512sums=('061942367ba042b2044ac75cd7e7451ef1f5e3748204c60708d44dd8a360237f81023463badaa94a28c7d3b913b9196b5945f8a577baf2e8a376fdfd91877177')
-_distdir="Tkx-1.09"
+source=('https://cpan.metacpan.org/authors/id/C/CA/CAC/Tkx-1.10.tar.gz')
+md5sums=('edbb92ced28998612fd1e3a864be0887')
+sha512sums=('95264a6cf0894f69dbc26c48e7e8772383c64aa9c2f5fc037a7f57a608ae1309f5a9f7570abfa5f0570a43b2a977594ee9caaacfeef48f9370fc4d99087f7dac')
+_distdir="Tkx-1.10"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
