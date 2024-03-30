@@ -1,12 +1,14 @@
 # Maintainer: Christian Schendel <doppelhelix at gmail dot com>
 pkgname=gnome-shell-extension-useless-gaps-git
 pkgver=8.r28.g1d48100
-pkgrel=1
+pkgrel=2
 pkgdesc="Useless Gaps is a GNOME Shell Extension which for aesthetic purposes adds 'useless gaps' around windows."
 arch=(any)
 url="https://github.com/mipmip/gnome-shell-extensions-useless-gaps"
 install=${pkgname%-git}.install
-license=('GPL3')
+license=(
+  'GPL-3.0-or-later'
+)
 depends=(
   'gnome-shell>=1:45'
 )
