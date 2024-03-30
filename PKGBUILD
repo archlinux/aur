@@ -1,10 +1,10 @@
 # Maintainer: Anysets<anysets@qq.com>
 pkgname=cn.flamescion.bookworm-compatibility-mode
-pkgver=12.4.11.1
+pkgver=12.4.11.2
 pkgrel=1
 pkgdesc="a container app packaging and distributing solution."
 arch=('aarch64' 'x86_64')
-url="https://gitee.com/amber-compatability-environment/bookworm-compatibility-mode"
+url="https://gitee.com/amber-ce/amber-ce-bookworm"
 license=('unknown')
 depends=('bubblewrap'
 	'xdg-desktop-portal'
@@ -16,13 +16,13 @@ depends=('bubblewrap'
 
 install=cn.flamescion.bookworm-compatibility-mode.install
 
-source=("$pkgname-$pkgver.tar.gz::https://gitee.com/amber-compatability-environment/bookworm-compatibility-mode/repository/archive/${pkgver}.tar.gz")
-sha256sums=('b09ea74b789844606626c5e9799a9aa9067a3761e95c71a62954b2a1bf11060b')
+source=("$pkgname-$pkgver.tar.gz::https://gitee.com/amber-ce/amber-ce-bookworm/repository/archive/${pkgver}.tar.gz")
+sha256sums=('57ef48776c9c3b2a1a0dda3b6df0a7225b452d1805ca6a91196c84b0bcea43fb')
 
 package() {
-	cp -rf ${srcdir}/bookworm-compatibility-mode-${pkgver}/src/opt ${pkgdir}/
-	cp -rf ${srcdir}/bookworm-compatibility-mode-${pkgver}/src/etc ${pkgdir}/
-	cp -rf ${srcdir}/bookworm-compatibility-mode-${pkgver}/src/usr ${pkgdir}/
+	cp -rf ${srcdir}/amber-ce-bookworm-${pkgver}/src/opt ${pkgdir}/
+	cp -rf ${srcdir}/amber-ce-bookworm-${pkgver}/src/etc ${pkgdir}/
+	cp -rf ${srcdir}/amber-ce-bookworm-${pkgver}/src/usr ${pkgdir}/
 
 	cd "${pkgdir}/opt/apps/cn.flamescion.bookworm-compatibility-mode/files"
 	if [ "$CARCH" = "aarch64" ]
