@@ -14,7 +14,7 @@ depends=('python>=3.8.0' 'python-chardet' 'python-humanfriendly' 'smartmontools'
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm' 'python-wheel')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver::git+$url#commit=$_commit?signed")
-sha512sums=('SKIP')
+sha512sums=('905c0a355245fd5c7e9dd20e264feaf86077f665780a8c6dcd49dcf35ffe8afc93a28e275dd11ea299f01bd864d0b13f3ec28b365eb74edda8e472fcd41261bd')
 validpgpkeys=('5F6761715FB2876BF2355A72195598EC98A1C1DF') # Rafael Leira Osuna <rafael.leira@naudit.es> (https://github.com/ralequi.gpg) - expired
 
 _sourcedirectory="$pkgname-$pkgver"
