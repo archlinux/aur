@@ -8,8 +8,8 @@
 # Maintainer: Mikhail f. Shiryaev <mr<dot>felixoid<at>gmail<dot>com>
 
 pkgname=polysh
-pkgver=0.13
-pkgrel=2
+pkgver=0.14
+pkgrel=1
 pkgdesc="a tool to aggregate several remote shells into one."
 arch=("any")
 url="https://pypi.org/project/${pkgname}/"
@@ -18,7 +18,7 @@ depends=("python" "openssh")
 makedepends=("python-setuptools" "python-docutils")
 options=(!emptydirs)
 source=("https://github.com/innogames/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz")
-sha256sums=("c36eace91f1bd7f529fbbd2d3dbdf3d279e6cf51d0d0364a0cddcd0c3004c953")
+sha256sums=('d49ea5e38d8b4d8abec7144ac3200e086420b679c5ea2dc886ba6189203d7ad2')
 
 package() {
   # TODO: fix in upstream
