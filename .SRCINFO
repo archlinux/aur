@@ -1,4 +1,4 @@
-pkgbase = tableplus
+pkgbase = tableplus-bin
 	pkgdesc = Modern, native, and friendly GUI tool for relational databases (Alpha)
 	pkgver = 0.1.246
 	pkgrel = 1
@@ -18,4 +18,4 @@ pkgbase = tableplus
 	source_aarch64 = tableplus_0.1.246_1_arm64.deb::https://deb.tableplus.com/debian/22-arm/pool/main/t/tableplus/tableplus_0.1.246_arm64.deb
 	sha256sums_aarch64 = ac866c1c2087e00232ae3d5f3fceac3b121f4b7afd2213dedcbcae972e7dec7c
 
-pkgname = tableplus
+pkgname = tableplus-bin
