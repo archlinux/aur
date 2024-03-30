@@ -2,7 +2,7 @@
 
 pkgname=phog
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A greetd-compatible greeter for mobile devices like Purism's Librem 5 and Pine64's PinePhone."
 url='https://gitlab.com/mobian1/phog'
 license=(GPL3)
@@ -14,21 +14,22 @@ depends=(
     squeekboard
 )
 makedepends=(
-    gtk-doc
     gcr
     glib2
     gnome-desktop
+    gtk-doc
     gtk3
-    libgudev
     json-glib
+    libgudev
     libhandy
     libnm
+    meson
     pam
+    pandoc-cli
+    python-packaging
     systemd-libs
     upower
-    wayland
-    meson
-    pandoc-cli
+    wayland-protocols
 
     # to run the tests
     at-spi2-core
