@@ -9,7 +9,7 @@ pkgrel=2
 pkgdesc="Mopidy extension for playing music from Spotify (git version)"
 arch=('any')
 url="https://github.com/mopidy/mopidy-spotify"
-license=('APACHE')
+license=('Apache-2.0')
 conflicts=('mopidy-spotify')
 provides=("mopidy-spotify=$pkgver")
 depends=(
