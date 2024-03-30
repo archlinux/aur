@@ -3,25 +3,28 @@
 _pkgname=mpmi
 _pkgver=0.43.2.1
 pkgname=r-${_pkgname,,}
-pkgver=0.43.2.1
-pkgrel=1
-pkgdesc='Mixed-Pair Mutual Information Estimators'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Mixed-Pair Mutual Information Estimators"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r
+)
+makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b6283ae09091e9fe1ae0c05e46e1ca3934e910debc8d615fa298048f159c9089')
+md5sums=('05858a74af0888bfc700c2ca3c6c050c')
+b2sums=('8e20e384a05d91c68aee651d2de3937894179792a31898c449599778653ce5c99926c4a834916ff01216afb372fb4d4cc5440400b5f062b6678105ee80b5ba8d')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
