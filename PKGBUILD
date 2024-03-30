@@ -2,7 +2,7 @@
 
 pkgname=gitstatus
 # Whenever pkgver is updated, _libgit2ver below must also be updated.
-pkgver=1.5.4
+pkgver=1.5.5
 pkgrel=1
 pkgdesc='Git status for Bash and Zsh prompt'
 arch=('aarch64' 'i686' 'x86_64')
@@ -11,13 +11,13 @@ license=('GPL3')
 depends=('glibc')
 # _libgit2ver depends on pkgver. They must be updated together. See libgit2_version in:
 # https://raw.githubusercontent.com/romkatv/gitstatus/v${pkgver}/build.info
-_libgit2ver="tag-0ad3d776aa86dd607dc86dcd7f77ad3ed7ebec61"
+_libgit2ver="tag-2ecf33948a4df9ef45a66c68b8ef24a5e60eaac6"
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/romkatv/gitstatus/archive/v${pkgver}.tar.gz"
   "libgit2-${_libgit2ver}.tar.gz::https://github.com/romkatv/libgit2/archive/${_libgit2ver}.tar.gz")
 sha512sums=(
-  'db7b082f302851e516c79fb464972fc065aafae426dc1d732b2a08e72d88e47a35b11c079cd7bb8795b8363dc8a583c1c62bb44566d82e5c925a335c015c0329'
-  'ffd637fc9e8ed440953f5fc39ca736785ff961f6391bff541dee3fe4e89b3d9eb44ef54767963eb63a14c314c7e53538e00e1ad7d83090d03eead40f160045a5')
+  '8fa4fe941128427f5362d97620bbf5b2722682843197649b3acae4e9ccffcb694226510b2957c65b6b68c27e5518a3b6aa841b624cff160e48d8c8014e0f6757'
+  'f3d056eb181ec084ebe3d5bcd6edaddb781a22eeac747115cb4fb09015904ccae9b439145430bfe6fd544e39fe3f019e3512e1010549d53cc8338039ec339f9c')
 makedepends=('git' 'cmake' 'zsh')
 install='gitstatus.install'
 
