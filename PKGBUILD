@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hardinfo2-git
-pkgver=2.0.18.r1.g4ac6eaa
+pkgver=2.0.18.r2.g60796c2
 pkgrel=1
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64')
@@ -20,8 +20,8 @@ optdepends=(
   'udisks2: Storage module'
   'usbutils: USB Devices module'
   'xdg-utils: open your browser for bugs, homepage & links')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}" 'hardinfo')
+conflicts=("${pkgname%-git}" 'hardinfo-git')
 source=('git+https://github.com/hardinfo2/hardinfo2.git')
 sha256sums=('SKIP')
 

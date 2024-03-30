@@ -1,6 +1,6 @@
 pkgbase = hardinfo2-git
 	pkgdesc = System Information and Benchmark for Linux Systems.
-	pkgver = 2.0.18.r1.g4ac6eaa
+	pkgver = 2.0.18.r2.g60796c2
 	pkgrel = 1
 	url = https://www.hardinfo2.org
 	arch = x86_64
@@ -21,7 +21,9 @@ pkgbase = hardinfo2-git
 	optdepends = usbutils: USB Devices module
 	optdepends = xdg-utils: open your browser for bugs, homepage & links
 	provides = hardinfo2
+	provides = hardinfo
 	conflicts = hardinfo2
+	conflicts = hardinfo-git
 	source = git+https://github.com/hardinfo2/hardinfo2.git
 	sha256sums = SKIP
 
