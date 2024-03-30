@@ -9,7 +9,7 @@ pkgdesc="OpenSpace is an open source, non-commercial, and freely available inter
 arch=('x86_64')
 url="https://github.com/OpenSpace/OpenSpace"
 license=('MIT')
-makedepends=('cmake' 'git' 'sed' 'glm' 'websocketpp' 'gcc11')
+makedepends=('cmake' 'git' 'sed' 'glm' 'websocketpp')
 depends=('gdal' 'mpv' 'vulkan-headers' 'libxinerama' 'libxi' 'qt5-base' 'nss' 'at-spi2-core' 'libxcomposite')
 conflicts=('openspace')
 source=("git+https://github.com/OpenSpace/OpenSpace.git#branch=master"
@@ -26,7 +26,7 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/OpenSpace"
-         git submodule update --init --recursive
+		git submodule update --init --recursive
 
 }
 
@@ -38,8 +38,8 @@ build() {
 
 	cmake \
 	-DCMAKE_BUILD_TYPE:STRING="Release" \
-	-DCMAKE_CXX_COMPILER:FILEPATH=/usr/bin/g++-11 \
-	-DCMAKE_C_COMPILER:FILEPATH=/usr/bin/gcc-11 \
+	-DCMAKE_CXX_COMPILER:FILEPATH=/usr/bin/g++ \
+	-DCMAKE_C_COMPILER:FILEPATH=/usr/bin/gcc \
 	-DASSIMP_BUILD_MINIZIP=1 "${srcdir}/OpenSpace"
 	
 	export MAKEFLAGS="-j$(nproc)"
