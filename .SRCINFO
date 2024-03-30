@@ -1,7 +1,7 @@
 pkgbase = python-librosa
 	pkgdesc = Python library for music and audio analysis
 	pkgver = 0.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://librosa.org
 	arch = any
 	license = ISC
