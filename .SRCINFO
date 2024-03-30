@@ -1,0 +1,24 @@
+pkgbase = marknote-git
+	pkgdesc = A simple markdown note management app
+	pkgver = 1.0.0_r37.g33a2faf
+	pkgrel = 1
+	url = https://github.com/KDE/marknote
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = qt5-svg
+	depends = gcc-libs
+	depends = glibc
+	depends = kconfig5
+	depends = ki18n5
+	depends = kirigami2
+	depends = kdeclarative5
+	depends = qt5-base
+	depends = qt5-declarative
+	provides = marknote
+	conflicts = marknote
+	source = git+https://github.com/KDE/marknote.git
+	sha256sums = SKIP
+
+pkgname = marknote-git
