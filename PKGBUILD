@@ -30,4 +30,7 @@ build() {
 package() {
   cd ${srcdir}/xsysinfo-${pkgver}
   make DESTDIR="${pkgdir}" install
+  cd "${pkgdir}"
+  rm usr/lib/X11/app-defaults
+  mv etc/X11/app-defaults usr/lib/X11/
 }
