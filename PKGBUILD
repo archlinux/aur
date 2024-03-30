@@ -14,10 +14,10 @@ provides=('sos')
 conflicts=('sos')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/devlup-labs/sos/releases/download/0.1.0/sos_0.1.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('e50bd4ba8733a1f5a5b2d649d6ff150ce74bbe7db5285e41ff686405da3a792d')
+sha256sums_aarch64=('7b7b826dd7440e92ed4a37a4768c539873b2e139a6227953991cd3fd0a0e54c8')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/devlup-labs/sos/releases/download/0.1.0/sos_0.1.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('6277773b15280050b35fc5e2414430e7d731c89a235151faaccca420fc3c5688')
+sha256sums_x86_64=('b0bf1b8f8685df6f630a005d0ee878b0cead6713bfbd019e315153c837c012cb')
 
 package() {
   install -Dm755 "./bin/sos" "${pkgdir}/usr/bin/sos"
