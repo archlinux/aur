@@ -9,7 +9,7 @@ url="https://erratique.ch/software/$_projectname"
 license=('ISC')
 depends=('ocaml>=4.03.0' 'ocaml-cmdliner' 'ocaml-fmt' 'ocaml-lwt')
 makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-topkg>=1.0.3' 'opam')
-provides=("ocaml-$_projectname")
+provides=("ocaml-$_projectname=$pkgver")
 conflicts=("ocaml-$_projectname")
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dbuenzli/$_projectname/archive/v$pkgver.tar.gz")
