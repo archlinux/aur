@@ -11,7 +11,7 @@ pkgdesc="Run X clients under Wayland with explicit sync patch"
 depends=('nettle' 'libegl' 'libepoxy' 'systemd-libs' 'libxfont2'
          'pixman' 'xorg-server-common' 'libxcvt')
 makedepends=('meson' 'git'
-             'xorgproto-git'
+             'xorgproto'
              'xtrans'
              'libxkbfile' 'dbus'
              'xorg-font-util'
