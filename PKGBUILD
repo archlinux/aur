@@ -4,24 +4,24 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libxml2
-pkgver=2.12.5
+pkgver=2.12.6
 pkgrel=1
-pkgdesc="XML parsing library, version 2 (android)"
 arch=('any')
+pkgdesc="XML parsing library, version 2 (Android ${_android_arch})"
 url="http://www.xmlsoft.org/"
 license=('LGPL')
+groups=('android-libxml2')
 depends=('android-ndk'
          "android-${_android_arch}-libiconv"
          "android-${_android_arch}-zlib"
          "android-${_android_arch}-xz")
-groups=(android-libxml2)
-options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-configure')
+options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://gitlab.gnome.org/GNOME/libxml2/-/archive/v${pkgver}/libxml2-v${pkgver}.tar.gz")
-md5sums=('2b7bd6b5be223a2d04b0578e375c21f3')
+md5sums=('51b9d36d5148cec5e82d48a032e1c4b9')
 
 prepare () {
-    cd "${srcdir}"/libxml2-v${pkgver}
+    cd "${srcdir}/libxml2-v${pkgver}"
     source android-env ${_android_arch}
 
     # disable doc & examples
@@ -31,7 +31,7 @@ prepare () {
 
 build()
 {
-    cd "${srcdir}"/libxml2-v${pkgver}
+    cd "${srcdir}/libxml2-v${pkgver}"
     source android-env ${_android_arch}
 
     android-${_android_arch}-configure \
@@ -48,13 +48,12 @@ build()
 
 package()
 {
-    cd "${srcdir}"/libxml2-v${pkgver}
+    cd "${srcdir}/libxml2-v${pkgver}"
     source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
     rm -r "${pkgdir}"/${ANDROID_PREFIX_BIN}
     rm -r "${pkgdir}"/${ANDROID_PREFIX_SHARE}
-    rm -f "${pkgdir}"/${ANDROID_PREFIX_LIB}/xml2Conf.sh
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
     ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
 }
