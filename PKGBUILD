@@ -2,14 +2,14 @@
 # Contributor: Thomas Schneider <maxmusterm@gmail.com>
 
 pkgname=svt-vp9-git
-pkgver=0.3.0.r3.g10910b7
+pkgver=0.3.0.r22.g3ecdf8f
 pkgrel=1
 pkgdesc='Scalable Video Technology VP9 encoder (git version)'
 arch=('x86_64')
 url='https://github.com/OpenVisualCloud/SVT-VP9/'
-license=('BSD')
+license=('BSD-2-Clause-Patent')
 depends=('glibc')
-makedepends=('git' 'cmake' 'yasm')
+makedepends=('git' 'cmake' 'nasm')
 provides=('svt-vp9')
 conflicts=('svt-vp9')
 source=('git+https://github.com/OpenVisualCloud/SVT-VP9.git')
@@ -21,13 +21,15 @@ pkgver() {
 
 build() {
     cmake -B build -S SVT-VP9 \
+        -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DNATIVE:BOOL='OFF' \
         -Wno-dev
-    make -C build
+    cmake --build build
 }
 
 package() {
-    make -C build DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
     install -D -m644 SVT-VP9/LICENSE.md -t "$pkgdir/usr/share/licenses/${pkgname}"
 }
