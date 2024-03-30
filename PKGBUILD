@@ -6,10 +6,10 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libpciaccess
-pkgver=0.18
+pkgver=0.18.1
 pkgrel=1
 arch=('any')
-pkgdesc="X11 PCI access library (android)"
+pkgdesc="X11 PCI access library (Android ${_android_arch})"
 license=('LicenseRef-libpciaccess')
 url="https://gitlab.freedesktop.org/xorg/lib/libpciaccess"
 depends=("android-${_android_arch}-zlib")
@@ -19,7 +19,7 @@ options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://xorg.freedesktop.org/releases/individual/lib/libpciaccess-${pkgver}.tar.xz"{,.sig}
         '0001-Set-linux-host.patch'
         '0002-Do-not-use-sys-io.patch')
-md5sums=('54f48367e37666f9e0f12571d1ee3620'
+md5sums=('57c7efbeceedefde006123a77a7bc825'
          'SKIP'
          'c605afd4f4edd9b2e261ed66c24b5b69'
          '5f8c7b710ac2dfeaa37c945ffd8bb88b')
