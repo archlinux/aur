@@ -1,6 +1,6 @@
 pkgbase = jdk-temurin
-	pkgdesc = Temurin (OpenJDK 21 Java binaries by Adoptium, formerly AdoptOpenJDK)
-	pkgver = 21.0.2.u13
+	pkgdesc = Temurin (OpenJDK 22 Java binaries by Adoptium, formerly AdoptOpenJDK)
+	pkgver = 22.0.0.u36
 	pkgrel = 1
 	url = https://adoptium.net/
 	install = install_jdk-temurin.sh
@@ -15,18 +15,16 @@ pkgbase = jdk-temurin
 	depends = alsa-lib
 	optdepends = gtk2: for the Gtk+ 2 look and feel
 	optdepends = gtk3: for the Gtk+ 3 look and feel
-	provides = java-runtime-headless=21
-	provides = java-runtime-headless-openjdk=21
-	provides = jre21-openjdk-headless=21.0.2.u13
-	provides = java-runtime=21
-	provides = java-runtime-openjdk=21
-	provides = jre21-openjdk=21.0.2.u13
-	provides = java-environment=21
-	provides = java-environment-openjdk=21
-	provides = jdk21-openjdk=21.0.2.u13
-	provides = jdk-openjdk=21.0.2.u13
-	provides = openjdk21-src=21.0.2.u13
-	provides = openjdk-src=21.0.2.u13
+	provides = java-runtime-headless=22
+	provides = java-runtime-headless-openjdk=22
+	provides = java-runtime=22
+	provides = java-runtime-openjdk=22
+	provides = java-environment=22
+	provides = java-environment-openjdk=22
+	provides = jdk22-openjdk=22.0.0.u36
+	provides = jdk-openjdk=22.0.0.u36
+	provides = openjdk22-src=22.0.0.u36
+	provides = openjdk-src=22.0.0.u36
 	replaces = jdk-adoptopenjdk
 	options = !strip
 	backup = etc/java-temurin/logging.properties
@@ -44,13 +42,13 @@ pkgbase = jdk-temurin
 	backup = etc/java-temurin/security/policy/unlimited/default_local.policy
 	backup = etc/java-temurin/security/policy/unlimited/default_US_export.policy
 	backup = etc/java-temurin/sound.properties
-	source = https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.2%2B13/OpenJDK21U-jdk_x64_linux_hotspot_21.0.2_13.tar.gz
+	source = https://github.com/adoptium/temurin22-binaries/releases/download/jdk-22%2B36/OpenJDK22U-jdk_x64_linux_hotspot_22_36.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = 454bebb2c9fe48d981341461ffb6bf1017c7b7c6e15c6b0c29b959194ba3aaa5
-	sha256sums = 23ced5efdb3381e6318af1acb343c714b2d9aacdb4666fee05dc58cd254b2d07
-	sha256sums = ef7f6465272608a35615665f8e4b0837b43b4db7bf22f8eb7cecdd6170b5b2ee
-	sha256sums = 166b128e025404e7b4048c5b3c958e080a13a98f84b6faa9cfe11530f553e287
+	sha256sums = bc3d99e816d0c373f424cd7aa2b6d3e8081a7189fe55c1561616922200ec8e47
+	sha256sums = a67f393684e85d04653eb925fa4a6baaa618a152899bb81646a4ff7f30e84c30
+	sha256sums = bc6f506add26b48d77282535026357984fdb8bd924fe6f053fbec5a37984b710
+	sha256sums = 0544f1ca50c9d8d4a7361392c31e5cdafdd12e9587c9a1d710074f6ab14f7aff
 
 pkgname = jdk-temurin
