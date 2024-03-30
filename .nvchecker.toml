@@ -1,0 +1,5 @@
+[python-clawpack]
+source = "github"
+github = "clawpack/clawpack"
+use_latest_release = "true"
+prefix = "v"
