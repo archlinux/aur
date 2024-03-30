@@ -14,13 +14,12 @@ provides=('sos')
 conflicts=('sos')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/devlup-labs/sos/releases/download/0.1.0/sos_0.1.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('823a35a2a5537d559b980ba12be27e5b66ce21e9c103e4d081470330a0453730')
+sha256sums_aarch64=('e50bd4ba8733a1f5a5b2d649d6ff150ce74bbe7db5285e41ff686405da3a792d')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/devlup-labs/sos/releases/download/0.1.0/sos_0.1.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('675ff356cd7f7ee22bb6915bc63fd621003d591f91c9fb3be31dd21ec7d0001a')
+sha256sums_x86_64=('6277773b15280050b35fc5e2414430e7d731c89a235151faaccca420fc3c5688')
 
 package() {
-  install -Dm755 "./bin/verifier" "${pkgdir}/etc/sos/bin/verifier"
   install -Dm755 "./bin/sos" "${pkgdir}/usr/bin/sos"
   install -Dm755 "./scripts/configure-sos-server.sh" "${pkgdir}/etc/sos/scripts/configure-sos-server.sh"
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/sos/LICENSE"
