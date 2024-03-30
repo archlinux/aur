@@ -1,6 +1,6 @@
 pkgbase = saml2aws
 	pkgdesc = CLI tool which enables you to login and retrieve AWS temporary credentials using a SAML IDP
-	pkgver = 2.36.14
+	pkgver = 2.36.15
 	pkgrel = 1
 	url = https://github.com/Versent/saml2aws
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = saml2aws
 	depends = systemd-libs
 	provides = saml2aws
 	conflicts = saml2aws-bin
-	source = saml2aws_2.36.14.tar.gz::https://github.com/Versent/saml2aws/archive/refs/tags/v2.36.14.tar.gz
-	sha256sums = fe0bfc588857e4eb4153a3e7b639d958a672323d093404379d4f69f9322c3380
+	source = saml2aws_2.36.15.tar.gz::https://github.com/Versent/saml2aws/archive/refs/tags/v2.36.15.tar.gz
+	sha256sums = d31b6b611453bd91fb0ffe4ea13cbd710463f2069bc35cd69cc1c842d78e6823
 
 pkgname = saml2aws

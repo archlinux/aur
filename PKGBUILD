@@ -3,20 +3,20 @@
 # Contributor: David Stark <david@starkers.org>
 
 pkgname=saml2aws
-pkgver=2.36.14
+pkgver=2.36.15
 pkgrel=1
 pkgdesc='CLI tool which enables you to login and retrieve AWS temporary credentials using a SAML IDP'
 arch=('x86_64' 'armv7h' 'aarch64')
-url="https://github.com/Versent/${pkgname}"
+url="https://github.com/Versent/saml2aws"
 license=('MIT')
 depends=('gcc-libs' 'systemd-libs')
 makedepends=('git' 'go')
 provides=("${pkgname}")
 conflicts=("${pkgname}-bin")
-source=("saml2aws_${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fe0bfc588857e4eb4153a3e7b639d958a672323d093404379d4f69f9322c3380')
+source=("${pkgname}_${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('d31b6b611453bd91fb0ffe4ea13cbd710463f2069bc35cd69cc1c842d78e6823')
 
-export GGO_ENABLED="true"
+export GGO_ENABLED="1"
 export CGO_CPPFLAGS="${CPPFLAGS}"
 export CGO_CFLAGS="${CFLAGS}"
 export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -25,7 +25,7 @@ export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -tags=hidraw"
 
 build() {
     local _commit _flags
-    _commit=$(bsdcat "saml2aws_${pkgver}.tar.gz" | git get-tar-commit-id)
+    _commit=$(bsdcat "${pkgname}_${pkgver}.tar.gz" | git get-tar-commit-id)
     _flags=(
         -X=main.Version="${pkgver}"
         -X=main.commit="${_commit::7}"
