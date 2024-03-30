@@ -3,7 +3,7 @@
 # Contributor: Johan Förberg <johan@forberg.se>
 pkgname=magicq-beta
 pkgver=1.9.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Lighting control software from ChamSys'
 arch=(x86_64)
 url='https://chamsyslighting.com/products/magicq'
@@ -28,7 +28,7 @@ package() {
     ln -s /opt/magicq/License_Conditions.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # We use the system libraries instead of the bundled binaries.
-    rm -rf opt/magicq/lib*.so*
+    rm -rf opt/magicq/lib/libstdc++.so.6
 
     # Magicq expects to be able to write these directories.
     # The directory list comes from the debian package postinst.

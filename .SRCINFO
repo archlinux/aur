@@ -1,7 +1,7 @@
 pkgbase = magicq-beta
 	pkgdesc = Lighting control software from ChamSys
 	pkgver = 1.9.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://chamsyslighting.com/products/magicq
 	arch = x86_64
 	license = custom
