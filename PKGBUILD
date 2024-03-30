@@ -2,11 +2,13 @@
 
 pkgname=gnome-shell-extension-pano-git
 pkgver=22.r6.g4be918b
-pkgrel=1
+pkgrel=2
 pkgdesc="Next-gen Clipboard Manager"
 arch=('any')
 url="https://github.com/oae/gnome-shell-pano"
-license=('GPL')
+license=(
+  'GPL-2.0-or-later'
+)
 depends=(
   'gnome-shell>=1:45'
   'libgda6'
