@@ -1,20 +1,17 @@
 pkgbase = zuu
 	pkgdesc = A program to check your code quality before all commit
-	pkgver = 11.0.0
+	pkgver = 15.0.0
 	pkgrel = 1
 	url = https://github.com/otechdo/zuu
 	arch = any
-	license = GPL3
+	license = GPL
 	makedepends = cargo
 	depends = rustup
 	depends = cargo-audit
 	optdepends = git: git support
-	optdepends = packer: test with packer
-	optdepends = docker: Test witch docke-compose
-	optdepends = docker-compose: test with docker-compose.yml file
 	optdepends = mercurial: mercurial support
 	provides = zuu
-	source = zuu-11.0.0.tar.gz::https://static.crates.io/crates/zuu/zuu-11.0.0.crate
-	sha256sums = 9f8ad8fa43f937d368569a1e6b45c3667c7f57262718df18ad9235955179691b
+	source = zuu-15.0.0.tar.gz::https://static.crates.io/crates/zuu/zuu-15.0.0.crate
+	sha256sums = 9ad13a6d2784845f1b6eba5f8ee6525ddd5f33735af25a9f58ce7e6b501cc7e8
 
 pkgname = zuu
