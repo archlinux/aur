@@ -1,10 +1,10 @@
 # Maintainer: Romain Gallet <romain.gallet@gmail.com>
-# Contributor: Romain Gallet <romain.gallet@gmail.com>
-_packager="Romain Gallet <romain.gallet@gmail.com>"
+# Contributor: Romain Gallet <gr211 at users.noreply.github.com>
+_packager="Romain Gallet <gr211 at users.noreply.github.com>"
 _deb_pkgname=kinesis-tailr
 pkgname=kinesis-tailr-bin
-md5sums=('bf6f7a44951e57c2c73edbec11818285')
-pkgver=0.5.7
+md5sums=('4836c5f798674ed8e55292ec27fae151')
+pkgver=0.5.8
 pkgrel=1
 pkgdesc='Kinesis tail tool'
 arch=('x86_64')
