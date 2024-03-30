@@ -24,6 +24,7 @@ pkgbase = hardinfo2-git
 	provides = hardinfo
 	conflicts = hardinfo2
 	conflicts = hardinfo-git
+	replaces = hardinfo-git
 	source = git+https://github.com/hardinfo2/hardinfo2.git
 	sha256sums = SKIP
 
