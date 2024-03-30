@@ -1,16 +1,16 @@
 # Maintainer: a821
 pkgname=python-pynndescent
-pkgver=0.5.11
+pkgver=0.5.12
 pkgrel=1
 pkgdesc="Simple fast approximate nearest neighbor search"
 arch=('any')
 url="https://github.com/lmcinnes/pynndescent"
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('python-joblib' 'python-numba' 'python-scikit-learn' 'python-scipy')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 checkdepends=('python-pytest')
 source=("https://pypi.io/packages/source/p/pynndescent/pynndescent-${pkgver}.tar.gz")
-sha256sums=('6f44ced9d5a9da2c87d9b2fff30bb5308540c0657605e4d5cde7ed3275bbad50')
+sha256sums=('0736291fcbbedfd5e0a3a280f71a63f8eb2f8bd9670d4c0b51ac1b4d081adf70')
 
 build() {
   cd "pynndescent-$pkgver"
