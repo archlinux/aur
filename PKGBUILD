@@ -12,7 +12,6 @@ makedepends=('git' 'qt6-webengine')
 optdepends=('hunspell: the spell checking libraries and apps')
 provides=('hunspell-dictionary')
 conflicts=('hunspell-be')
-replaces=('hunspell-be')
 source=("$pkgname::git+$url.git#commit=$_version")
 b2sums=('ce7cf60ac777e1bab93e17beac05697560a437af988ed2b567434432dc5524f63452942fa727389a0e00e1503ff9551e98c42c107546af41b5e242065aa4ff94')
 
