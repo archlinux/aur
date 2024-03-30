@@ -4,14 +4,14 @@ pkgname=bun-git
 pkgver=1.0.36.r9080.02ad501
 pkgrel=1
 pkgdesc="Bun is a fast JavaScript all-in-one toolkit. This PKGBUILD builds from source, resulting into a minor binary depending on your CPU."
-arch=(x86_64)
+arch=("x86_64")
 url="https://github.com/oven-sh/bun"
 license=('MIT')
-makedepends=(bun llvm clang lld ccache cmake git go libiconv libtool make ninja pkg-config python rust sed unzip ruby)
-conflicts=(bun bun-bin)
-provides=(bun)
+makedepends=("bun" "llvm" "clang" "lld" "ccache" "cmake" "git" "go" "libiconv" "libtool" "make" "ninja" "pkg-config" "python" "rust" "sed" "unzip" "ruby")
+conflicts=("bun" "bun-bin")
+provides=("bun")
 source=("git+https://github.com/oven-sh/bun")
-
+sha256sums=("SKIP")
 
 pkgver() {
   cd "$pkgname"
