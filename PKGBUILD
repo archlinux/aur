@@ -3,15 +3,18 @@
 _pkgname=timm
 pkgname=python-timm
 pkgver=0.9.16
-pkgrel=1
+pkgrel=2
 pkgdesc='PyTorch Image Models'
 arch=('any')
 url='https://pypi.org/project/timm/'
-license=('Apache')
+license=('Apache-2.0')
 depends=(
   python-huggingface-hub
+  python-numpy
+  python-pillow
   python-pytorch
   python-safetensors
+  python-scipy
   python-torchvision
   python-yaml
 )
