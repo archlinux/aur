@@ -1,6 +1,6 @@
 pkgbase = zuu
 	pkgdesc = A program to check your code quality before all commit
-	pkgver = 15.0.0
+	pkgver = 15.1.0
 	pkgrel = 1
 	url = https://github.com/otechdo/zuu
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = zuu
 	optdepends = git: git support
 	optdepends = mercurial: mercurial support
 	provides = zuu
-	source = zuu-15.0.0.tar.gz::https://static.crates.io/crates/zuu/zuu-15.0.0.crate
+	source = zuu-15.1.0.tar.gz::https://static.crates.io/crates/zuu/zuu-15.1.0.crate
 	sha256sums = 9ad13a6d2784845f1b6eba5f8ee6525ddd5f33735af25a9f58ce7e6b501cc7e8
 
 pkgname = zuu
