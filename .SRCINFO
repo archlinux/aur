@@ -6,7 +6,6 @@ pkgbase = qrtr
 	arch = aarch64
 	arch = x86_64
 	license = BSD-3-Clause
-	makedepends = qmic
 	source = qrtr-1.0.tar.gz::https://github.com/linux-msm/qrtr/archive/refs/tags/v1.0.tar.gz
 	sha256sums = dc5db4872ff0d3c43b5c6d115fadc94f393c9c8c89b4246e327853b466d6c49f
 
