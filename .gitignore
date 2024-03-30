@@ -1,0 +1,4 @@
+pkg
+src
+mopidy-spotify
+*.pkg.tar*
