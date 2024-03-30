@@ -5,7 +5,7 @@ _pkgname=suyu
 _branch=dev
 pkgname=suyu-dev-qt6-git
 pkgver=r27269.b6ad090424
-pkgrel=2
+pkgrel=3
 pkgdesc="suyu is the afterlife the world's most popular, open-source, Nintendo Switch emulator (dev branch with QT6)"
 arch=(x86_64)
 url=https://git.suyu.dev/suyu/suyu
@@ -52,11 +52,11 @@ makedepends=(
   qt6-tools
   shaderc
   spirv-headers
-  vulkan-headers
   vulkan-utility-libraries
   catch2
   rapidjson
   mbedtls
+  vcpkg
 )
 options=(!debug lto)
 source=(
@@ -68,13 +68,11 @@ source=(
   git+https://git.suyu.dev/suyu/discord-rpc.git
   git+https://github.com/KhronosGroup/Vulkan-Headers.git
   git+https://git.suyu.dev/suyu/sirit.git
-  git+https://git.suyu.dev/suyu/mbedtls.git
   git+https://github.com/herumi/xbyak.git
   git+https://github.com/xiph/opus.git
   git+https://github.com/libsdl-org/SDL.git
   git+https://github.com/yhirose/cpp-httplib.git
   ffmpeg::git+https://github.com/FFmpeg/FFmpeg.git
-  git+https://github.com/microsoft/vcpkg.git
   git+https://github.com/arun11299/cpp-jwt.git
   git+https://github.com/bylaws/libadrenotools.git
   git+https://github.com/lat9nq/tzdb_to_nx.git
@@ -127,7 +125,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_pkgname"
   git submodule init
-  for submodule in {enet,cubeb,dynarmic,libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus,SDL,cpp-httplib,ffmpeg,vcpkg,cpp-jwt,libadrenotools,tzdb_to_nx,VulkanMemoryAllocator,breakpad,simpleini,oaknut,Vulkan-Utility-Libraries};
+  for submodule in {enet,cubeb,dynarmic,libusb,discord-rpc,Vulkan-Headers,sirit,xbyak,opus,SDL,cpp-httplib,ffmpeg,cpp-jwt,libadrenotools,tzdb_to_nx,VulkanMemoryAllocator,breakpad,simpleini,oaknut,Vulkan-Utility-Libraries};
   do
     git config submodule.$submodule.url "${srcdir}"/$submodule
   done
@@ -199,8 +197,6 @@ build() {
 package() {
   DESTDIR="${pkgdir}" cmake --install build
   install -Dm644 ${_pkgname}/dist/72-suyu-input.rules -t "${pkgdir}"/usr/lib/udev/rules.d/
-
-  cd "${pkgdir}"/usr/share/applications
 }
 
 # vim: ts=2 sw=2 et
