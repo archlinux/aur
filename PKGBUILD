@@ -2,7 +2,7 @@
 # Maintainer: devolutionsinfra https://devolutions.net/
 pkgname=remote-desktop-manager
 pkgver=2024.1.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Devolutions Remote Desktop Manager centralizes all remote connections on a single platform that is securely shared between users and across the entire team."
 arch=('x86_64')
 url="https://remotedesktopmanager.com/"
@@ -16,23 +16,10 @@ sha256sums=('C8C41D78CB7B795AC8ABD61671B31C819C700FB3B958B73BFBE584B39F366264')
 
 prepare() {
   tar -xf ${srcdir}/data.tar.xz
-  sed -i "s/usr\/lib/opt/" "${srcdir}/bin/remotedesktopmanager"
-  sed -i "s/usr\/lib/opt/" "${srcdir}/usr/share/applications/remotedesktopmanager.desktop"
-  sed -i "s/RemoteDesktopManager\/RemoteDesktopManager/RemoteDesktopManager\/RemoteDesktopManager %u/" "${srcdir}/usr/share/applications/remotedesktopmanager.desktop"
-  echo "MimeType=x-scheme-handler/rdm;" >> "${srcdir}/usr/share/applications/remotedesktopmanager.desktop"
 }
 
 package() {
-  mkdir -p "${pkgdir}/usr/bin"
-  mv "bin/remotedesktopmanager" "${pkgdir}/usr/bin/"
-
-  mkdir -p "${pkgdir}/opt/devolutions"
-  mv "usr/lib/devolutions/RemoteDesktopManager" "${pkgdir}/opt/devolutions"
-
-  mkdir -p "${pkgdir}/usr/share/applications"
-  mv "usr/share/applications/remotedesktopmanager.desktop" "${pkgdir}/usr/share/applications/"
-
-  mkdir -p "${pkgdir}/usr/share/icons"
-  mv "usr/share/icons/remotedesktopmanager.png" "${pkgdir}/usr/share/icons/"
+  mv "usr/" "${pkgdir}/"
+  install -Dm755 "${srcdir}/bin/remotedesktopmanager" "${pkgdir}/usr/bin/remotedesktopmanager"
 }
 
