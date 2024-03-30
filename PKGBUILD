@@ -1,20 +1,15 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=multicrispr
-_pkgver=1.12.3
+_pkgver=1.12.9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Multi-locus multi-purpose Crispr/Cas design"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('GPL-2.0-only')
 depends=(
-  r-assertive.base
-  r-assertive.files
-  r-assertive.numbers
-  r-assertive.reflection
-  r-assertive.sets
   r-biocgenerics
   r-biostrings
   r-bsgenome
@@ -49,8 +44,8 @@ optdepends=(
   r-txdb.mmusculus.ucsc.mm10.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d0bbc847e39772348376d944c884290a')
-b2sums=('ed79977a043b0bf57b139d7f304568fd88d7bb7317c673e58f459908fb0330c545243798cdaec86fd56bdf3f0c2e67270e67e0f8f341d280b35b130d4d898be8')
+md5sums=('1eb85739f11d9bac705ffb44aa5cc541')
+b2sums=('0d0d6327bdfc5b9dff2a886240a436b506cf6231d1d8602d3fc38ca8cd4ad523b33d99eac82eff829062abe7d2ae4b38ee61369f49f65f8fbb0d1acff0d36551')
 
 build() {
   mkdir build
