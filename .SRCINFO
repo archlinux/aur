@@ -1,13 +1,13 @@
 pkgbase = oauth2c
 	pkgdesc = User-friendly CLI for OAuth2
 	pkgver = 1.13.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cloudentity/oauth2c
 	arch = x86_64
 	arch = arm64
 	arch = armv6
 	license = Apache-2.0
-	source = git+https://github.com/cloudentity/oauth2c.git#tag=v1.13.0
-	sha256sums = SKIP
+	source = https://github.com/cloudentity/oauth2c/archive/refs/tags/v1.13.0.tar.gz
+	sha256sums = f5545e9aca8c79042080e8510ec77ac66ed3ac4acf976a8bbeb53e04fae02630
 
 pkgname = oauth2c
