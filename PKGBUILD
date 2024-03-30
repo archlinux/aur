@@ -3,12 +3,12 @@
 _pkgname=MultiMed
 _pkgver=2.24.0
 pkgname=r-${_pkgname,,}
-pkgver=2.24.0
-pkgrel=1
-pkgdesc='Testing multiple biological mediators simultaneously'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Testing multiple biological mediators simultaneously"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
@@ -17,14 +17,15 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9904ecf3cd672505b4789252deb363db51d8150c3c71ecc73b5f34aa3c86ae3b')
+md5sums=('019bc5d7be15d1688b3b5df7b87246f7')
+b2sums=('abf84800287a29ffbe27511e4cdeb0cc9bffb8e744cd03e6517e80d27a6ed7482e7a899b1c0739a8d2a3cb7ce2732cfdf151de4ac0ed29aa60372ec231b00afe')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
