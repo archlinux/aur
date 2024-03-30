@@ -1,7 +1,7 @@
 # Maintainer: Hans-Nikolai Viessmann <hand AT viess DOT mn>
 
 pkgname='xmrig-proxy'
-pkgver=6.21.0
+pkgver=6.21.1
 pkgrel=1
 pkgdesc='Stratum protocol proxy for Monero; HTTP API disabled, donation percentage is 0.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('monero: XMR wallet'
 license=('GPL')
 install="${pkgname}.install"
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('3790cc380bbe54fd7eb68539721c83ee7b01400faa1aa5f0c659bbdd0f7020cb')
+sha256sums=('9f7ed608081cfe93891058a95f1d9752e94e6b5d86740fc6770a1f82bd3b5e02')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
