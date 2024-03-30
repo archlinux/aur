@@ -19,7 +19,7 @@ makedepends=('cmake' 'qt5-tools')
 provides=('kadu')
 conflicts=('kadu')
 options=('!emptydirs')
-source=("$pkgname::git+https://github.com/piotr-wrobel/kadu/kadu.git#commit=$_commit")
+source=("$pkgname::git+https://github.com/piotr-wrobel/kadu.git#commit=$_commit")
 sha256sums=('SKIP')
 
 prepare() {

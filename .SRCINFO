@@ -27,7 +27,7 @@ pkgbase = kadu-git
 	provides = kadu
 	conflicts = kadu
 	options = !emptydirs
-	source = kadu-git::git+https://github.com/piotr-wrobel/kadu/kadu.git#commit=f9499d1
+	source = kadu-git::git+https://github.com/piotr-wrobel/kadu.git#commit=f9499d1
 	sha256sums = SKIP
 
 pkgname = kadu-git
