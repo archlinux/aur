@@ -1,11 +1,14 @@
 pkgbase = python-dateparser
 	pkgdesc = python parser for human readable dates
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/scrapinghub/dateparser
 	arch = any
-	license = custom:bsd
+	license = BSD-3-Clause
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-dateutil
 	depends = python-regex
 	depends = python-tzlocal

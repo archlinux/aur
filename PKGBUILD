@@ -3,11 +3,11 @@
 
 pkgname=python-dateparser
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="python parser for human readable dates"
 url="https://github.com/scrapinghub/dateparser"
 arch=('any')
-license=('custom:bsd')
+license=('BSD-3-Clause')
 depends=(
   'python-dateutil'
   'python-regex'
@@ -23,7 +23,7 @@ optdepends=(
   'python-hijri-converter: to convert Hijri dates to Gregorian' # AUR
 
 )
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 #checkdepends=(
 #  'python-pytest'
 #  'python-parameterized'
@@ -35,7 +35,7 @@ sha256sums=('13f5b024978a2251043c9d5fa937fcf2120864b36765ab8825eab79f6313fe8c')
 build() {
   cd "${pkgname#python-}-${pkgver}"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 # Currently: 2260 failed, 21272 passed, 14 skipped, 15 warnings in 253.79s (0:04:13)
@@ -48,7 +48,7 @@ build() {
 package() {
   cd "${pkgname#python-}-${pkgver}"
 
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
