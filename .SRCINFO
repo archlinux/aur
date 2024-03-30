@@ -1,6 +1,6 @@
 pkgbase = python-recurring-ical-events
 	pkgdesc = Python library for recurrence of ical events based on icalendar
-	pkgver = 2.1.3
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/niccokunzmann/python-recurring-ical-events
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-recurring-ical-events
 	depends = python-icalendar
 	depends = python-pytz
 	depends = python-x-wr-timezone
-	source = python-recurring-ical-events-2.1.3.tar.gz::https://github.com/niccokunzmann/python-recurring-ical-events/archive/refs/tags/v2.1.3.tar.gz
-	sha256sums = afbd21ab93b847192db16748960f3b0de5bdef88588d6db3751efff9917ace26
+	source = python-recurring-ical-events-2.2.0.tar.gz::https://github.com/niccokunzmann/python-recurring-ical-events/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = dd3167b5c1247486872f817cbff46e6f8fd311a8b0ef0042f3e6851543b946b1
 
 pkgname = python-recurring-ical-events
