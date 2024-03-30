@@ -1,0 +1,18 @@
+pkgbase = scanlogd
+	pkgdesc = A tool to detect and log TCP port scans
+	pkgver = 2.2.8
+	pkgrel = 1
+	url = https://github.com/openwall/scanlogd
+	arch = any
+	license = BSD
+	options = zipman
+	source = scanlogd.zip::https://github.com/openwall/scanlogd/archive/refs/heads/main.zip
+	source = scanlogd.service
+	source = sysusers.conf
+	source = tmpfiles.conf
+	sha256sums = SKIP
+	sha256sums = e8fc8b60385957e90627c1998f9a159f49697172386aef4c81ecf452aa22bb39
+	sha256sums = f34bf3c7555fa6a1b53f2154c8a7a92868fb3eb5c6060ca3fef1b1bacd622896
+	sha256sums = f2b287885cdd73b7f0a083c7270c2d6b696624d725e73096975f606c8f7d6c0c
+
+pkgname = scanlogd

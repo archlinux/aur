@@ -1,0 +1,13 @@
+[Unit]
+Description=scanlogd Daemon
+After=network.target
+
+[Service]
+Type=forking
+User=scanlogd
+Group=scanlogd
+ExecStart=/usr/bin/scanlogd
+ExecStop=/bin/kill $MAINPID
+
+[Install]
+WantedBy=multi-user.target
