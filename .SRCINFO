@@ -2,7 +2,14 @@ pkgbase = meteo-avi-2-gba
 	pkgdesc = (BROKEN) AVI conversion tool for Nintendo Game Boy Advance
 	pkgver = 1.4.0
 	pkgrel = 1
-	arch = x86_64 i686
+	depends = wine
+	depends = winetricks
+	arch = x86_64
+	arch = i686
+	source = https://github.com/Sterophonick/mirror-meteo-avi2gba/raw/master/Meteo140EN.exe
+	source = meteo-avi-2-gba
+	source = meteo-avi-2-gba.desktop
+	source = meteo-avi-2-gba.png
 
 pkgname = meteo-avi-2-gba
 
