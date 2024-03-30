@@ -1,6 +1,6 @@
-# Maintainer: Romain Gallet <romain.gallet at gmail.com>
-# Contributor: Romain Gallet <romain.gallet at gmail.com>
-_packager="Romain Gallet <romain.gallet at gmail.com>"
+# Maintainer: Romain Gallet <gr211 at users.noreply.github.com>
+# Contributor: Romain Gallet <gr211 at users.noreply.github.com>
+_packager="Romain Gallet <gr211 at users.noreply.github.com>"
 _deb_pkgname=leather-wallet.mainnet
 pkgver=4.14.3
 pkgname=leather-wallet.mainnet-bin
@@ -21,7 +21,9 @@ backup=()
 options=()
 install=leather-wallet.mainnet-bin.install
 source=("$url/releases/download/v$pkgver/leather-wallet.mainnet.v$pkgver.deb" "file://leather-wallet.desktop" "file://leather-192x192.png")
-md5sums=('ce09f61a0550cadaa20c115f4d2c7a9c' '21908631b19a511f720f502b75985a4d' 'cf9746b967c79915938547c77f280a38')
+md5sums=('ce09f61a0550cadaa20c115f4d2c7a9c'
+         '21908631b19a511f720f502b75985a4d'
+         'cf9746b967c79915938547c77f280a38')
 noextract=()
 
 build() {
