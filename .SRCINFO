@@ -13,4 +13,3 @@ pkgbase = mathics-pygments
 	sha256sums = 70121208eb13be0d1795bda1890bfd7e3b856bbc2e0b9891119ca5ae97de51ac
 
 pkgname = mathics-pygments
-
