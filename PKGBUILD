@@ -21,7 +21,7 @@ sha256sums=('SKIP' '43a5711390b22b80533a915a9aade18301781430e4d0cceea8f88df989a8
 # https://github.com/tats/w3m
 
 build() {
-  cd ${pkgname}
+  cd w3m
   patch -p1 < ${srcdir}/gemini.patch
   ./configure \
     --prefix=/usr \
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-  cd ${pkgname}
+  cd w3m
   make DESTDIR="${pkgdir}" install
 
   install -d "${pkgdir}"/usr/share/{doc,licenses}/w3m
