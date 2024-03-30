@@ -7,6 +7,13 @@ post_install() {
   echo "     reboot"
 }
 
+post_upgrade() {
+  echo ':: Caution! This version needs heed while using it and should be avoided.'
+  echo '     I strongly advice downgrading to 3.17.2 and wait for a new version or patching.'
+  echo ':: 3.17.3v has DNS LEAK and it is unable to connect as usual.'
+  echo '     See the currently version note on AUR page for details.'
+}
+
 pre_install() {
   if [ -d /var/lib/nordvpn/data/ ]; then
   	chattr -i /var/lib/nordvpn/data/*
