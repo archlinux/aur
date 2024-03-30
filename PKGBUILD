@@ -1,6 +1,6 @@
 # Maintainer: Emilien Devos (unixfox) <contact@emiliendevos.be>
 pkgname=pet-bin
-pkgver=0.5.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Simple command-line snippet manager, written in Go."
 arch=('x86_64')
@@ -15,7 +15,7 @@ replaces=()
 backup=()
 options=()
 source=("pet_"$pkgver"_linux_amd64.tar.gz::https://github.com/knqyf263/pet/releases/download/v$pkgver/pet_"$pkgver"_linux_amd64.tar.gz")
-sha256sums=('641c4224aeb618eca8c09a04657acfae705b91831c421f36a0660c5679e5c224')
+sha256sums=('a28204dc48e430c8e790c58c6af7844aa6e07194749bf2a4071f966078e3e120')
 
 package() {
   mkdir -p "$pkgdir/usr/bin"
