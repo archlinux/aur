@@ -1,0 +1,15 @@
+[Unit]
+Description=GPT-Telegramus service
+After=multi-user.target
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=5
+
+WorkingDirectory=/opt/gpt-telegramus
+ExecStart=/opt/gpt-telegramus/run.sh
+
+[Install]
+WantedBy=multi-user.target
+
