@@ -5,7 +5,7 @@
 pkgname=mopidy-spotify-git
 _pkgname="mopidy-spotify"
 pkgver=4.1.1.r67.g984151a
-pkgrel=2
+pkgrel=3
 pkgdesc="Mopidy extension for playing music from Spotify (git version)"
 arch=('any')
 url="https://github.com/mopidy/mopidy-spotify"
