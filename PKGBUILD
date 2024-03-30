@@ -5,13 +5,13 @@
 # Contributor: Jaroslaw Swierczynski <swiergot@aur.archlinux.org>
 
 _name=kadu
-_commit=c2007766
+_commit=f9499d1
 pkgname=$_name-git
-pkgver=20170821
-pkgrel=5
+pkgver=20240330
+pkgrel=1
 pkgdesc='Qt-based Jabber/XMPP and Gadu-Gadu client'
 arch=('i686' 'x86_64')
-url='https://gitlab.com/kadu/kadu'
+url='https://github.com/piotr-wrobel/kadu'
 license=('GPL')
 depends=('enchant' 'boost' 'hicolor-icon-theme' 'injeqt' 'libarchive' 'libgadu' 'libmpdclient' 'libotr'
          'libxss' 'qt5-multimedia' 'qt5-script' 'qt5-svg' 'qt5-webkit' 'qt5-x11extras' 'qt5-xmlpatterns' 'qxmpp-qt5')
@@ -19,28 +19,11 @@ makedepends=('cmake' 'qt5-tools')
 provides=('kadu')
 conflicts=('kadu')
 options=('!emptydirs')
-source=("$pkgname::git+https://gitlab.com/kadu/kadu.git#commit=$_commit"
-	        "kadu-find-x11-with-newer-cmake-modules.patch"
-          "qcompare_and_qpainter.patch"
-          "history_sql.patch"
-	"qxmpp.patch")
-sha256sums=('SKIP'
-	    '997cacdf023dd4516cd7bf829e5732b42d0e2939e4119a85a2b73ed869138100'
-	    '309319930594040f876f7565a3e879c38c06eb35713c92ee176b6c15d9e30e83'
-	'6868f032d6beeca686f4f978a268f136acfc5385a3e8a379471c97f1b852ef2b'
-	'0773c66e8d81cd04a4f14a0cb24698fa7113f2b01a65ea0e44c69d6d757ea16c')
+source=("$pkgname::git+https://github.com/piotr-wrobel/kadu/kadu.git#commit=$_commit")
+sha256sums=('SKIP')
 
 prepare() {
   cd $pkgname
-  patch -Np1 -i ../qcompare_and_qpainter.patch
-  patch -Np1 -i ../kadu-find-x11-with-newer-cmake-modules.patch
-  patch -Np1 -i ../history_sql.patch
-  patch -Np1 -i ../qxmpp.patch
-  sed -i 's/ENCHANT enchant/ENCHANT enchant-2/' plugins/spellchecker/CMakeLists.txt
-  sed -i 's/unity_integration//g' Plugins.cmake
-  sed -i 's/indicator_docking//g' Plugins.cmake
-  sed -i 's/set (CMAKE_CXX_STANDARD 14)/set (CMAKE_CXX_STANDARD 17)/g' CMakeLists.txt
-  sed -i 's/set (CMAKE_CXX_STANDARD 14)/set (CMAKE_CXX_STANDARD 17)/g' cmake/KaduMacros.cmake
 }
 
 build() {

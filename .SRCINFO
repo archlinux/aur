@@ -1,8 +1,8 @@
 pkgbase = kadu-git
 	pkgdesc = Qt-based Jabber/XMPP and Gadu-Gadu client
-	pkgver = 20170821
-	pkgrel = 5
-	url = https://gitlab.com/kadu/kadu
+	pkgver = 20240330
+	pkgrel = 1
+	url = https://github.com/piotr-wrobel/kadu
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -27,15 +27,7 @@ pkgbase = kadu-git
 	provides = kadu
 	conflicts = kadu
 	options = !emptydirs
-	source = kadu-git::git+https://gitlab.com/kadu/kadu.git#commit=c2007766
-	source = kadu-find-x11-with-newer-cmake-modules.patch
-	source = qcompare_and_qpainter.patch
-	source = history_sql.patch
-	source = qxmpp.patch
+	source = kadu-git::git+https://github.com/piotr-wrobel/kadu/kadu.git#commit=f9499d1
 	sha256sums = SKIP
-	sha256sums = 997cacdf023dd4516cd7bf829e5732b42d0e2939e4119a85a2b73ed869138100
-	sha256sums = 309319930594040f876f7565a3e879c38c06eb35713c92ee176b6c15d9e30e83
-	sha256sums = 6868f032d6beeca686f4f978a268f136acfc5385a3e8a379471c97f1b852ef2b
-	sha256sums = 0773c66e8d81cd04a4f14a0cb24698fa7113f2b01a65ea0e44c69d6d757ea16c
 
 pkgname = kadu-git
