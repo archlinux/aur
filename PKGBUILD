@@ -1,20 +1,23 @@
-# Maintainer katt <magunasu.b97@gmail.com>
+# Maintainer: l-koehler <lorenz.koehler@posteo.de>
+# Contributor: katt <magunasu.b97@gmail.com>
 # Contributor: Antonio Rojas <arojas@archlinux,org>
 
 pkgname=dolphin-git
-pkgver=21.07.90.r29.g0ed31f10c
+pkgver=24.01.90.r155.gefbae76af
 pkgrel=1
 pkgdesc='KDE File Manager (git)'
 arch=(i686 x86_64)
 url=https://kde.org/applications/system/dolphin
-license=(LGPL)
-depends=(baloo-widgets knewstuff kio-extras kcmutils kparts kactivities kuserfeedback)
-makedepends=(extra-cmake-modules kdoctools git)
+license=('GPL-2.0-or-later')
+depends=(knewstuff kcmutils kparts kuserfeedback ktextwidgets kdoctools phonon-qt6 plasma-activities)
+makedepends=(extra-cmake-modules git)
 optdepends=('kde-cli-tools: for editing file type options'
             'ffmpegthumbs: video thumbnails'
             'kdegraphics-thumbnailers: PDF and PS thumbnails'
             'konsole: terminal panel'
-            'purpose: share context menu')
+            'purpose: share context menu'
+            'baloo-widgets'
+            'kio-extras')
 groups=(kde-applications kde-system)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
