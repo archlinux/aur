@@ -1,13 +1,14 @@
 pkgbase = stylelint-config-recess-order
-	pkgdesc = Recess-based property sort order for Stylelint
-	pkgver = 5.0.0
-	pkgrel = 3
-	url = https://github.com/stormwarning/stylelint-config-recess-order
-	arch = any
-	license = ISC
-	makedepends = npm
-	depends = stylelint
-	source = stylelint-config-recess-order-5.0.0.tar.gz::https://github.com/stormwarning/stylelint-config-recess-order/archive/refs/tags/v5.0.0.tar.gz
-	sha256sums = 6616f3729be9e5b2f778fd72677879cd40b6f6fac9046108c5ead6363c96800b
+	pkgdesc = Optimize your system in one click
+	pkgver = r4.3643d44
+	pkgrel = 1
+	url = https://github.com/sophgn/one_click_optimizer
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	provides = one-click-optimizer
+	conflicts = one-click-optimizer
+	source = one-click-optimizer-git::git+https://github.com/sophgn/one_click_optimizer
+	sha1sums = SKIP
 
 pkgname = stylelint-config-recess-order
