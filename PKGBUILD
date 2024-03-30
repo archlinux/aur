@@ -12,7 +12,7 @@
 
 pkgname=niri
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Scrollable-tiling Wayland compositor"
 arch=(aarch64 x86_64)
 url="https://github.com/YaLTeR/$pkgname"
@@ -45,7 +45,7 @@ prepare() {
 build() {
     cd $pkgname-$pkgver
     [[ -n $_sccache ]] && export RUSTC_WRAPPER=sccache                   # If $_sccache not empty, build using binary cache
-    export RUSTFLAGS="--remap-path-prefix=\"$srcdir\"=/"                 # Prevent warning: 'Package contains reference to $srcdir'
+    export RUSTFLAGS="--remap-path-prefix=$srcdir=/"                     # Prevent warning: 'Package contains reference to $srcdir'
     export CARGO_HOME="$srcdir"/.cargo                                   # Use downloaded earlier from src directory, not from ~/.cargo
     export CARGO_TARGET_DIR=target                                       # Place the output in target relative to the current directory
     cargo build --frozen --release
