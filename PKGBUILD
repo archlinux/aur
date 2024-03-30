@@ -1,7 +1,7 @@
-# Maintainer: Soma Yamamoto <mail[at]daizu[dot]dev>
+# Maintainer: Sosuke Inaba <mail[at]daizu[dot]dev>
 
 pkgname=ttf-moralerspace
-pkgver=0.0.11
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A composite font of IBM Plex Sans JP and Monaspace"
 arch=(any)
@@ -14,12 +14,12 @@ source=("$url/releases/download/v$pkgver/Moralerspace_v$pkgver.zip"
         "$url/releases/download/v$pkgver/MoralerspaceHWNF_v$pkgver.zip"
         "$url/releases/download/v$pkgver/MoralerspaceHWJPDOC_v$pkgver.zip"
         "https://raw.githubusercontent.com/yuru7/moralerspace/v$pkgver/LICENSE")
-sha256sums=('359dd7e97dcfe21a455e7e9236a3771a80aa73f107eada8613683ed7c38f78e6'
-            '39d419c8da532665e77a85a7712638eacd3712f8e763185fd0942823d719b0e0'
-            '87668a1acbc69a3fe0a6d1f5f60fc0657953b70b6f40a74795d37364740cc284'
-            '5a00c8390bb4c23c692daa12b8a4a7ccfed09c63f405e06b6231d4f9bc649773'
-            '50582ec70fa1fe7d8ad77ef0c4c7be078fbdd73a0f4f66157dd44e3ee6618317'
-            '517edb350f05832a9dcb0eec335a6856ebe91c87a52dd099040796d0f90b3f90'
+sha256sums=('8a6b4a011be5757b0e471f21af021e142259d9f23f13e34e9e3ecf179d37624f'
+            '5c0c20abd39cb4f09da16cc30f5d74c8e95ffc86a21baeb9d2672aafdf2097a4'
+            '093405c15a7bd41aa17e21744a8b3716e04b8c6559d69fdf393f73434793dad5'
+            '32cdbc021a08b278bb8a9319b531556fb6ed6230e7481138d65a1c5a8a3a1acb'
+            '0b9f5d85cb50452a91fcc1a16d037d01089511d919962a3213926917689cc0e8'
+            '7693ea9ee7e427252f1aa6c4e5cdeaf5aad624e9674ec1c33bc89fe7d393f595'
             '9d23767271951afeaddbe5de4dec5d1cb60456c06f45e4d04fbb9ab517d79e30')
 
 package() {
