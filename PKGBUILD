@@ -2,6 +2,7 @@
 
 pkgname=dosage-tracker
 pkgver=1.6.0
+_commit=bf5addfa2391328f1029ff9bf0004d4250ace7f9
 pkgrel=1
 pkgdesc='Medication tracker for Linux'
 url="https://github.com/diegopvlk/Dosage"
@@ -10,7 +11,7 @@ arch=('x86_64' 'aarch64')
 depends=('gjs' 'libadwaita')
 makedepends=('blueprint-compiler' 'git' 'meson')
 checkdepends=('appstream-glib')
-source=("git+$url.git#tag=v$pkgver")
+source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
 build() {
