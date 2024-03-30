@@ -1,33 +1,32 @@
-# Maintainer: Zenvie <134689569+Zenvie@users.noreply.github.com>
-# Contributor: Daniel M. Capella <polyzen@archlinux.org>
+# Maintainer: worstuser
 
 pkgname=stylelint-config-recess-order
-pkgver=5.0.0
-pkgrel=3
-pkgdesc="Recess-based property sort order for Stylelint"
-arch=(any)
-url="https://github.com/stormwarning/$pkgname"
-license=(ISC)
+pkgver=r4.3643d44
+pkgrel=1
+pkgdesc='Optimize your system in one click'
+arch=('x86_64')
+url='https://github.com/sophgn/one_click_optimizer'
+license=('MIT')
+depends=()
+makedepends=('cargo')
+provides=("one-click-optimizer")
+conflicts=("one-click-optimizer")
+source=("${pkgname}::git+${url}")
+sha1sums=('SKIP')
 
-depends=(stylelint)
-makedepends=(npm)
-
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6616f3729be9e5b2f778fd72677879cd40b6f6fac9046108c5ead6363c96800b')
-
-prepare() {
-  cd $pkgname-$pkgver
-  npm install
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-check() {
-  cd $pkgname-$pkgver
-  npm test
+build() {
+  cd "${srcdir}/${pkgname}"
+  export CFLAGS="-fcommon -fPIE"
+  cargo build --release
 }
 
 package() {
-  cd $pkgname-$pkgver
-  install -Dm644 -t "$pkgdir/usr/lib/node_modules/$pkgname" {groups,index}.js package.json
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" {CHANGELOG,README}.md
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
+  install -Dm755 ${srcdir}/${pkgname}/target/release/one_click_optimizer ${pkgdir}/usr/bin/one_click_optimizer
 }
+
+# vim: ts=2 sw=2 et:
