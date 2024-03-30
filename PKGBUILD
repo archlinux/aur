@@ -2,7 +2,7 @@
 
 _name=geemlib
 pkgname="python-$_name"
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="TUI / CLI interface for conversing with GPT models (from OpenAI)"
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('f34390b8e5940b451cb63a26eed9b31fac45b458cb0aab9a8c5e26f85174f34bca47342083a581856244c4d83380d5741634be670e08a76a3ab273cc5cae2ef3')
+b2sums=('6c859c72d4c4b676d06a71459b96f83d56b48ad7a3a13ea0c215d76e458820bc2ddd4b74817814b06c2c8f9e9885e2c837da397335fa096a7b21d0067b10c356')
 
 build() {
     cd "$srcdir/$_name-$pkgver"

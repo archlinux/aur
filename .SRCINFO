@@ -1,6 +1,6 @@
 pkgbase = python-geemlib
 	pkgdesc = TUI / CLI interface for conversing with GPT models (from OpenAI)
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://pypi.org/project/geemlib/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-geemlib
 	depends = python
 	depends = python-beautifulsoup4
 	depends = python-requests
-	source = https://files.pythonhosted.org/packages/source/g/geemlib/geemlib-1.0.1.tar.gz
-	b2sums = f34390b8e5940b451cb63a26eed9b31fac45b458cb0aab9a8c5e26f85174f34bca47342083a581856244c4d83380d5741634be670e08a76a3ab273cc5cae2ef3
+	source = https://files.pythonhosted.org/packages/source/g/geemlib/geemlib-1.0.2.tar.gz
+	b2sums = 6c859c72d4c4b676d06a71459b96f83d56b48ad7a3a13ea0c215d76e458820bc2ddd4b74817814b06c2c8f9e9885e2c837da397335fa096a7b21d0067b10c356
 
 pkgname = python-geemlib
