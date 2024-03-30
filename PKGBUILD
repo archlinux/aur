@@ -24,7 +24,7 @@ unset _pkgtype
 # basic info
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.7.5586.r0.gb9a7143d
+pkgver=1.7.5659.r0.g9de38e50
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
@@ -120,11 +120,9 @@ _source_pcsx2() {
     'khronosgroup.vulkan-headers'::'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
     'lz4'::'git+https://github.com/lz4/lz4.git'
     'microsoft.wil'::'git+https://github.com/microsoft/wil.git'
-    'tukaani-project.xz'::'git+https://github.com/tukaani-project/xz.git'
     'webmproject.libwebp'::'git+https://github.com/webmproject/libwebp.git'
   )
   sha256sums+=(
-    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -147,7 +145,6 @@ _source_pcsx2() {
       ['khronosgroup.vulkan-headers']='3rdparty/vulkan-headers'
       ['lz4']='3rdparty/lz4/lz4'
       ['microsoft.wil']='3rdparty/wil'
-      ['tukaani-project.xz']='3rdparty/xz/xz'
       ['webmproject.libwebp']='3rdparty/libwebp/libwebp'
     )
     _submodule_update
