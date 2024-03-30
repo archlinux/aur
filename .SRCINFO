@@ -1,12 +1,13 @@
 pkgbase = r-mirnapath
-	pkgdesc = miRNApath: Pathway Enrichment for miRNA Expression Data
+	pkgdesc = Pathway Enrichment for miRNA Expression Data
 	pkgver = 1.62.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/miRNApath
 	arch = any
-	license = LGPL
+	license = LGPL-2.1-only
 	depends = r
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/miRNApath_1.62.0.tar.gz
-	sha256sums = a9f84c24b09665616583ea064b2f6d339b40379d856aa6583c66d2b430eab0e6
+	md5sums = 94aad8a3b57b070cb5c559d9d1f14726
+	b2sums = 2a893a2cda9f3e1c4b19c95d33290e7570d01fbcf3c97e0a4f11c8696a184480e925eb98cbb174e0f3d4e1900ed6c1d5b52670cd1587e7f7ee2c15076f7a2d26
 
 pkgname = r-mirnapath

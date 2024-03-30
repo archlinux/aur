@@ -3,24 +3,25 @@
 _pkgname=miRNApath
 _pkgver=1.62.0
 pkgname=r-${_pkgname,,}
-pkgver=1.62.0
-pkgrel=1
-pkgdesc='miRNApath: Pathway Enrichment for miRNA Expression Data'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('LGPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Pathway Enrichment for miRNA Expression Data"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('LGPL-2.1-only')
 depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a9f84c24b09665616583ea064b2f6d339b40379d856aa6583c66d2b430eab0e6')
+md5sums=('94aad8a3b57b070cb5c559d9d1f14726')
+b2sums=('2a893a2cda9f3e1c4b19c95d33290e7570d01fbcf3c97e0a4f11c8696a184480e925eb98cbb174e0f3d4e1900ed6c1d5b52670cd1587e7f7ee2c15076f7a2d26')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
