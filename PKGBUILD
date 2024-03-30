@@ -1,7 +1,7 @@
 # Maintainer: erdii <me at erdii dot engineering>
 pkgname=ice9-bluetooth-sniffer
 pkgver=23.06.0
-pkgrel=1
+pkgrel=2
 pkgdesc=" Wireshark-compatible all-channel BLE sniffer for bladeRF, with wideband Bluetooth sniffing for HackRF and USRP"
 arch=("any")
 provides=()
@@ -17,6 +17,7 @@ build() {
   cmake -B build -S "$pkgname-$pkgver" \
     -DCMAKE_BUILD_TYPE='None' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DEXTCAP_INSTALL_PATH='/usr/lib/wireshark' \
     -Wno-dev
   cmake --build build
 }
