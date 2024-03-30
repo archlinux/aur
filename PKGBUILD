@@ -9,12 +9,17 @@ arch=('any')
 url="https://pyos.github.io/dg"
 license=('MIT')
 depends=('python')
-makedepends=('git')
+makedepends=('git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("git+https://github.com/pyos/dg.git#commit=$_commit")
 md5sums=('SKIP')
 
+build() {
+  cd dg
+  python -m build --wheel --no-isolation
+}
+
 package() {
   cd dg
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
