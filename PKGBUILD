@@ -1,8 +1,8 @@
 # Maintainer: Jezer Mejía <amyuki4@gmail.com>
 
 pkgname=web-greeter
-pkgver=3.5.2
-pkgrel=2
+pkgver=3.5.3
+pkgrel=1
 pkgdesc='A modern, visually appealing greeter for LightDM'
 arch=('any')
 url='https://github.com/JezerM/web-greeter'
