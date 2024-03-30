@@ -16,7 +16,7 @@ source=(
 	"$pkgname-$pkgver::git+$url#commit=$_commit?signed"
 	'LICENSE'
 )
-sha512sums=('SKIP'
+sha512sums=('b482d76580f184257725f2b3989615db1ce99887bd3f61d7ebcb6404858fdee349746950baf6493fa07bfc65d51d47bacf129b4929e8b3bdaad3a93c687d6855'
             'e1fc24490196adba7ac36223b7013f00322178bfdbe59133bc09c8d3b1fc8af1b2eeff8968a7b1bff8324c70e5071ee716a4e9f03c5e73dff367706561b91906')
 validpgpkeys=('1370978BC81E9735DFE727E1EBFFF6F283F3A2B4') # Simon Cruanes <simon.cruanes.2007@m4x.org> (https://github.com/c-cube.gpg)
 
