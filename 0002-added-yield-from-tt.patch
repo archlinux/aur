@@ -1,7 +1,7 @@
-From 3a27fb29e2f4900a8baa7b7df22f3336e10bc4f8 Mon Sep 17 00:00:00 2001
+From cc81d8a5d57df4c0644138f2bd6fe68cc7eb8218 Mon Sep 17 00:00:00 2001
 From: hamadmarri <hamad.s.almarri@gmail.com>
 Date: Fri, 22 Mar 2024 03:16:24 +0300
-Subject: [PATCH 02/11] added yield from tt
+Subject: [PATCH 02/16] added yield from tt
 
 ---
  include/linux/sched.h                         |  1 +
@@ -20,10 +20,10 @@ Subject: [PATCH 02/11] added yield from tt
  rename nohz.h => kernel/sched/nohz.h (100%)
 
 diff --git a/include/linux/sched.h b/include/linux/sched.h
-index 34ac565e0..62e5be998 100644
+index 36d6dd7a5..af5a9f1a4 100644
 --- a/include/linux/sched.h
 +++ b/include/linux/sched.h
-@@ -578,6 +578,7 @@ struct sched_entity {
+@@ -563,6 +563,7 @@ struct sched_entity {
  	u64				vruntime;
  	s64				vlag;
  	u64				slice;

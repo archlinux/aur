@@ -1,7 +1,7 @@
-From 65766f02bcd97c26a9f7a0e290d49759a325ab7a Mon Sep 17 00:00:00 2001
+From df45c35b996f407f3cae5e150f05e088f0843da3 Mon Sep 17 00:00:00 2001
 From: hamadmarri <hamad.s.almarri@gmail.com>
 Date: Sat, 23 Mar 2024 01:46:47 +0300
-Subject: [PATCH 05/11] fix update candidate to pick cfs_rq->head unless it is
+Subject: [PATCH 05/16] fix update candidate to pick cfs_rq->head unless it is
  null or cannot be candidate, then pick cfs_rq->q2_head
 
 ---

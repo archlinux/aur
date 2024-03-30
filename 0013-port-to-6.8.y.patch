@@ -1,0 +1,425 @@
+From df54f491b040f42195a480ad39badc54df8db488 Mon Sep 17 00:00:00 2001
+From: hamadmarri <hamad.s.almarri@gmail.com>
+Date: Mon, 25 Mar 2024 22:43:24 +0300
+Subject: [PATCH 13/16] port to 6.8.y
+
+---
+ kernel/sched/balancer.h       |   3 +-
+ kernel/sched/bs.c             |  44 ++-------
+ kernel/sched/core.c           |   3 +-
+ kernel/sched/fair_dep_funcs.h | 178 ++++++++++++++--------------------
+ 4 files changed, 87 insertions(+), 141 deletions(-)
+
+diff --git a/kernel/sched/balancer.h b/kernel/sched/balancer.h
+index 68965fc82..852faad1f 100644
+--- a/kernel/sched/balancer.h
++++ b/kernel/sched/balancer.h
+@@ -493,8 +493,7 @@ static int move_task(struct rq *dst_rq, struct rq *src_rq,
+ 	return 0;
+ }
+ 
+-
+-int idle_pull_global_candidate(struct rq *dist_rq)
++static int idle_pull_global_candidate(struct rq *dist_rq)
+ {
+ 	struct rq *src_rq;
+ 	struct task_struct *p;
+diff --git a/kernel/sched/bs.c b/kernel/sched/bs.c
+index 9515eb3a7..7760327e5 100644
+--- a/kernel/sched/bs.c
++++ b/kernel/sched/bs.c
+@@ -138,17 +138,19 @@ static void update_candidate(struct cfs_rq *cfs_rq)
+ static void update_curr(struct cfs_rq *cfs_rq)
+ {
+ 	struct sched_entity *curr = cfs_rq->curr;
++	struct task_struct *curtask = task_of(curr);
+ 	u64 now = rq_clock_task(rq_of(cfs_rq));
+-	u64 delta_exec, calc;
++	s64 delta_exec, calc;
+ 
+ 	if (unlikely(!curr))
+ 		return;
+ 
+ 	delta_exec = now - curr->exec_start;
+-	if (unlikely((s64)delta_exec <= 0))
++	if (unlikely(delta_exec <= 0))
+ 		return;
+ 
+ 	curr->exec_start = now;
++	curr->sum_exec_runtime += delta_exec;
+ 
+ 	if (schedstat_enabled()) {
+ 		struct sched_statistics *stats;
+@@ -158,9 +160,6 @@ static void update_curr(struct cfs_rq *cfs_rq)
+ 				max(delta_exec, stats->exec_max));
+ 	}
+ 
+-	curr->sum_exec_runtime += delta_exec;
+-	schedstat_add(cfs_rq->exec_clock, delta_exec);
+-
+ 	calc = calc_delta_fair(delta_exec, curr);
+ 	curr->vruntime			+= calc;
+ 	curr->bs_node.vburst		+= calc;
+@@ -173,13 +172,11 @@ static void update_curr(struct cfs_rq *cfs_rq)
+ 
+ 	cfs_rq->local_cand_est = curr->bs_node.est;
+ 
+-	if (entity_is_task(curr)) {
+-		struct task_struct *curtask = task_of(curr);
+-
+-		trace_sched_stat_runtime(curtask, delta_exec, curr->vruntime);
+-		cgroup_account_cputime(curtask, delta_exec);
+-		account_group_exec_runtime(curtask, delta_exec);
+-	}
++	trace_sched_stat_runtime(curtask, delta_exec);
++	account_group_exec_runtime(curtask, delta_exec);
++	cgroup_account_cputime(curtask, delta_exec);
++	if (curtask->dl_server)
++		dl_server_update(curtask->dl_server, delta_exec);
+ }
+ 
+ static void update_curr_fair(struct rq *rq)
+@@ -258,27 +255,6 @@ static void __dequeue_entity(struct cfs_rq *cfs_rq, struct bs_node *bsn)
+ 		prev->next = itr->next;
+ }
+ 
+-// static u32
+-// update_alpha(struct bs_node *bsn, u64 vburst, u64 prev_est, u32 prev_alpha)
+-// {
+-// 	u32 new_alpha;
+-// 	u64 error_part;
+-//
+-// 	if (vburst == 0)
+-// 		return prev_alpha;
+-//
+-// 	// 0.15 * <prev alpha> + 0.15 * MIN(1, error / <prev burst>)
+-// 	new_alpha = (150 * prev_alpha) / 1000;
+-//
+-// 	error_part = abs((s64)(vburst - prev_est)) * 1000;
+-// 	error_part = min(1000, error_part / vburst);
+-// 	error_part = (150 * error_part) / 1000;
+-//
+-// 	bsn->alpha = new_alpha + (u32)error_part;
+-//
+-// 	return bsn->alpha ;
+-// }
+-
+ static void
+ update_est_entity(struct sched_entity *se)
+ {
+@@ -287,8 +263,6 @@ update_est_entity(struct sched_entity *se)
+ 	u64 prev_est	= bsn->est;
+ 	u64 next_est;
+ 
+-	// alpha = update_alpha(bsn, vburst, prev_est, alpha);
+-
+ 	/*
+ 	 * <alpha> * <prev burst> + (1 - <alpha>) * <prev estimated>
+ 	 */
+diff --git a/kernel/sched/core.c b/kernel/sched/core.c
+index 20d0aa1ca..83fa2c8c2 100644
+--- a/kernel/sched/core.c
++++ b/kernel/sched/core.c
+@@ -4540,7 +4540,7 @@ static void __sched_fork(unsigned long clone_flags, struct task_struct *p)
+ 	p->se.nr_migrations		= 0;
+ 	p->se.vruntime			= 0;
+ 	p->se.vlag			= 0;
+-	p->se.slice			= 0;
++	p->se.slice			= sysctl_sched_base_slice;
+ 
+ 	p->se.bs_node.vburst		= 0;
+ 	p->se.bs_node.est		= 0;
+@@ -5785,6 +5785,7 @@ static void sched_tick_remote(struct work_struct *work)
+ 
+ 		if (cpu_online(cpu)) {
+ 			update_rq_clock(rq);
++
+ 			if (!is_idle_task(curr)) {
+ 				/*
+ 				 * Make sure the next tick runs within a
+diff --git a/kernel/sched/fair_dep_funcs.h b/kernel/sched/fair_dep_funcs.h
+index 775c4ec6c..d4411cded 100644
+--- a/kernel/sched/fair_dep_funcs.h
++++ b/kernel/sched/fair_dep_funcs.h
+@@ -1,10 +1,38 @@
+-
+-void unregister_fair_sched_group(struct task_group *tg) { }
+-void free_fair_sched_group(struct task_group *tg) { }
+-void online_fair_sched_group(struct task_group *tg) { }
+-int alloc_fair_sched_group(struct task_group *tg, struct task_group *parent)
++/*
++ * Used by other classes to account runtime.
++ */
++s64 update_curr_common(struct rq *rq)
+ {
+-	return 1;
++	struct sched_entity *curr = &rq->curr->se;
++	struct task_struct *curtask = task_of(curr);
++	u64 now = rq_clock_task(rq);
++	s64 delta_exec;
++
++	if (unlikely(!curr))
++		return 0;
++
++	delta_exec = now - curr->exec_start;
++	if (unlikely(delta_exec <= 0))
++		return delta_exec;
++
++	curr->exec_start = now;
++	curr->sum_exec_runtime += delta_exec;
++
++	if (schedstat_enabled()) {
++		struct sched_statistics *stats;
++
++		stats = __schedstats_from_se(curr);
++		__schedstat_set(stats->exec_max,
++				max(delta_exec, stats->exec_max));
++	}
++
++	trace_sched_stat_runtime(curtask, delta_exec);
++	account_group_exec_runtime(curtask, delta_exec);
++	cgroup_account_cputime(curtask, delta_exec);
++	if (curtask->dl_server)
++		dl_server_update(curtask->dl_server, delta_exec);
++
++	return delta_exec;
+ }
+ 
+ #if defined(CONFIG_NO_HZ_FULL) && defined(CONFIG_CGROUP_SCHED)
+@@ -252,53 +280,9 @@ static inline unsigned long task_util(struct task_struct *p)
+ 
+ static inline unsigned long _task_util_est(struct task_struct *p)
+ {
+-	struct util_est ue = READ_ONCE(p->se.avg.util_est);
+-
+-	return max(ue.ewma, (ue.enqueued & ~UTIL_AVG_UNCHANGED));
+-
++	return READ_ONCE(p->se.avg.util_est) & ~UTIL_AVG_UNCHANGED;
+ }
+ 
+-/**
+- * cpu_util() - Estimates the amount of CPU capacity used by CFS tasks.
+- * @cpu: the CPU to get the utilization for
+- * @p: task for which the CPU utilization should be predicted or NULL
+- * @dst_cpu: CPU @p migrates to, -1 if @p moves from @cpu or @p == NULL
+- * @boost: 1 to enable boosting, otherwise 0
+- *
+- * The unit of the return value must be the same as the one of CPU capacity
+- * so that CPU utilization can be compared with CPU capacity.
+- *
+- * CPU utilization is the sum of running time of runnable tasks plus the
+- * recent utilization of currently non-runnable tasks on that CPU.
+- * It represents the amount of CPU capacity currently used by CFS tasks in
+- * the range [0..max CPU capacity] with max CPU capacity being the CPU
+- * capacity at f_max.
+- *
+- * The estimated CPU utilization is defined as the maximum between CPU
+- * utilization and sum of the estimated utilization of the currently
+- * runnable tasks on that CPU. It preserves a utilization "snapshot" of
+- * previously-executed tasks, which helps better deduce how busy a CPU will
+- * be when a long-sleeping task wakes up. The contribution to CPU utilization
+- * of such a task would be significantly decayed at this point of time.
+- *
+- * Boosted CPU utilization is defined as max(CPU runnable, CPU utilization).
+- * CPU contention for CFS tasks can be detected by CPU runnable > CPU
+- * utilization. Boosting is implemented in cpu_util() so that internal
+- * users (e.g. EAS) can use it next to external users (e.g. schedutil),
+- * latter via cpu_util_cfs_boost().
+- *
+- * CPU utilization can be higher than the current CPU capacity
+- * (f_curr/f_max * max CPU capacity) or even the max CPU capacity because
+- * of rounding errors as well as task migrations or wakeups of new tasks.
+- * CPU utilization has to be capped to fit into the [0..max CPU capacity]
+- * range. Otherwise a group of CPUs (CPU0 util = 121% + CPU1 util = 80%)
+- * could be seen as over-utilized even though CPU1 has 20% of spare CPU
+- * capacity. CPU utilization is allowed to overshoot current CPU capacity
+- * though since this is useful for predicting the CPU capacity required
+- * after task migrations (scheduler-driven DVFS).
+- *
+- * Return: (Boosted) (estimated) utilization for the specified CPU.
+- */
+ static unsigned long
+ cpu_util(int cpu, struct task_struct *p, int dst_cpu, int boost)
+ {
+@@ -325,16 +309,16 @@ cpu_util(int cpu, struct task_struct *p, int dst_cpu, int boost)
+ 	if (sched_feat(UTIL_EST)) {
+ 		unsigned long util_est;
+ 
+-		util_est = READ_ONCE(cfs_rq->avg.util_est.enqueued);
++		util_est = READ_ONCE(cfs_rq->avg.util_est);
+ 
+ 		/*
+ 		 * During wake-up @p isn't enqueued yet and doesn't contribute
+-		 * to any cpu_rq(cpu)->cfs.avg.util_est.enqueued.
++		 * to any cpu_rq(cpu)->cfs.avg.util_est.
+ 		 * If @dst_cpu == @cpu add it to "simulate" cpu_util after @p
+ 		 * has been enqueued.
+ 		 *
+ 		 * During exec (@dst_cpu = -1) @p is enqueued and does
+-		 * contribute to cpu_rq(cpu)->cfs.util_est.enqueued.
++		 * contribute to cpu_rq(cpu)->cfs.util_est.
+ 		 * Remove it to "simulate" cpu_util without @p's contribution.
+ 		 *
+ 		 * Despite the task_on_rq_queued(@p) check there is still a
+@@ -657,9 +641,9 @@ static inline void util_est_enqueue(struct cfs_rq *cfs_rq,
+ 		return;
+ 
+ 	/* Update root cfs_rq's estimated utilization */
+-	enqueued  = cfs_rq->avg.util_est.enqueued;
++	enqueued  = cfs_rq->avg.util_est;
+ 	enqueued += _task_util_est(p);
+-	WRITE_ONCE(cfs_rq->avg.util_est.enqueued, enqueued);
++	WRITE_ONCE(cfs_rq->avg.util_est, enqueued);
+ 
+ 	trace_sched_util_est_cfs_tp(cfs_rq);
+ }
+@@ -673,39 +657,25 @@ static inline void util_est_dequeue(struct cfs_rq *cfs_rq,
+ 		return;
+ 
+ 	/* Update root cfs_rq's estimated utilization */
+-	enqueued  = cfs_rq->avg.util_est.enqueued;
++	enqueued  = cfs_rq->avg.util_est;
+ 	enqueued -= min_t(unsigned int, enqueued, _task_util_est(p));
+-	WRITE_ONCE(cfs_rq->avg.util_est.enqueued, enqueued);
++	WRITE_ONCE(cfs_rq->avg.util_est, enqueued);
+ 
+ 	trace_sched_util_est_cfs_tp(cfs_rq);
+ }
+ 
+ #define UTIL_EST_MARGIN (SCHED_CAPACITY_SCALE / 100)
+ 
+-// static inline unsigned long task_runnable(struct task_struct *p)
+-// {
+-// 	return READ_ONCE(p->se.avg.runnable_avg);
+-// }
+-
+-/*
+- * Check if a (signed) value is within a specified (unsigned) margin,
+- * based on the observation that:
+- *
+- *     abs(x) < y := (unsigned)(x + y - 1) < (2 * y - 1)
+- *
+- * NOTE: this only works when value + margin < INT_MAX.
+- */
+-static inline bool within_margin(int value, int margin)
++static inline unsigned long task_runnable(struct task_struct *p)
+ {
+-	return ((unsigned int)(value + margin - 1) < (2 * margin - 1));
++	return READ_ONCE(p->se.avg.runnable_avg);
+ }
+ 
+ static inline void util_est_update(struct cfs_rq *cfs_rq,
+ 				   struct task_struct *p,
+ 				   bool task_sleep)
+ {
+-	long last_ewma_diff, last_enqueued_diff;
+-	struct util_est ue;
++	unsigned int ewma, dequeued, last_ewma_diff;
+ 
+ 	if (!sched_feat(UTIL_EST))
+ 		return;
+@@ -717,71 +687,73 @@ static inline void util_est_update(struct cfs_rq *cfs_rq,
+ 	if (!task_sleep)
+ 		return;
+ 
++	/* Get current estimate of utilization */
++	ewma = READ_ONCE(p->se.avg.util_est);
++
+ 	/*
+ 	 * If the PELT values haven't changed since enqueue time,
+ 	 * skip the util_est update.
+ 	 */
+-	ue = p->se.avg.util_est;
+-	if (ue.enqueued & UTIL_AVG_UNCHANGED)
++	if (ewma & UTIL_AVG_UNCHANGED)
+ 		return;
+ 
+-	last_enqueued_diff = ue.enqueued;
++	/* Get utilization at dequeue */
++	dequeued = task_util(p);
+ 
+ 	/*
+ 	 * Reset EWMA on utilization increases, the moving average is used only
+ 	 * to smooth utilization decreases.
+ 	 */
+-	ue.enqueued = task_util(p);
+-	if (sched_feat(UTIL_EST_FASTUP)) {
+-		if (ue.ewma < ue.enqueued) {
+-			ue.ewma = ue.enqueued;
+-			goto done;
+-		}
++	if (ewma <= dequeued) {
++		ewma = dequeued;
++		goto done;
+ 	}
+ 
+ 	/*
+ 	 * Skip update of task's estimated utilization when its members are
+ 	 * already ~1% close to its last activation value.
+ 	 */
+-	last_ewma_diff = ue.enqueued - ue.ewma;
+-	last_enqueued_diff -= ue.enqueued;
+-	if (within_margin(last_ewma_diff, UTIL_EST_MARGIN)) {
+-		if (!within_margin(last_enqueued_diff, UTIL_EST_MARGIN))
+-			goto done;
+-
+-		return;
+-	}
++	last_ewma_diff = ewma - dequeued;
++	if (last_ewma_diff < UTIL_EST_MARGIN)
++		goto done;
+ 
+ 	/*
+ 	 * To avoid overestimation of actual task utilization, skip updates if
+ 	 * we cannot grant there is idle time in this CPU.
+ 	 */
+-	if (task_util(p) > arch_scale_cpu_capacity(cpu_of(rq_of(cfs_rq))))
++	if (dequeued > arch_scale_cpu_capacity(cpu_of(rq_of(cfs_rq))))
+ 		return;
+ 
++	/*
++	 * To avoid underestimate of task utilization, skip updates of EWMA if
++	 * we cannot grant that thread got all CPU time it wanted.
++	 */
++	if ((dequeued + UTIL_EST_MARGIN) < task_runnable(p))
++		goto done;
++
++
+ 	/*
+ 	 * Update Task's estimated utilization
+ 	 *
+ 	 * When *p completes an activation we can consolidate another sample
+-	 * of the task size. This is done by storing the current PELT value
+-	 * as ue.enqueued and by using this value to update the Exponential
+-	 * Weighted Moving Average (EWMA):
++	 * of the task size. This is done by using this value to update the
++	 * Exponential Weighted Moving Average (EWMA):
+ 	 *
+ 	 *  ewma(t) = w *  task_util(p) + (1-w) * ewma(t-1)
+ 	 *          = w *  task_util(p) +         ewma(t-1)  - w * ewma(t-1)
+ 	 *          = w * (task_util(p) -         ewma(t-1)) +     ewma(t-1)
+-	 *          = w * (      last_ewma_diff            ) +     ewma(t-1)
+-	 *          = w * (last_ewma_diff  +  ewma(t-1) / w)
++	 *          = w * (      -last_ewma_diff           ) +     ewma(t-1)
++	 *          = w * (-last_ewma_diff +  ewma(t-1) / w)
+ 	 *
+ 	 * Where 'w' is the weight of new samples, which is configured to be
+ 	 * 0.25, thus making w=1/4 ( >>= UTIL_EST_WEIGHT_SHIFT)
+ 	 */
+-	ue.ewma <<= UTIL_EST_WEIGHT_SHIFT;
+-	ue.ewma  += last_ewma_diff;
+-	ue.ewma >>= UTIL_EST_WEIGHT_SHIFT;
++	ewma <<= UTIL_EST_WEIGHT_SHIFT;
++	ewma  -= last_ewma_diff;
++	ewma >>= UTIL_EST_WEIGHT_SHIFT;
+ done:
+-	ue.enqueued |= UTIL_AVG_UNCHANGED;
+-	WRITE_ONCE(p->se.avg.util_est, ue);
++	ewma |= UTIL_AVG_UNCHANGED;
++	WRITE_ONCE(p->se.avg.util_est, ewma);
+ 
+ 	trace_sched_util_est_se_tp(&p->se);
+ }
+-- 
+2.44.0
+

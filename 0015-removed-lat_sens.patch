@@ -1,0 +1,145 @@
+From 03cdbd12deee8021bd81acc6ddd645bdf9c42096 Mon Sep 17 00:00:00 2001
+From: hamadmarri <hamad.s.almarri@gmail.com>
+Date: Wed, 27 Mar 2024 03:05:07 +0300
+Subject: [PATCH 15/16] removed lat_sens
+
+---
+ kernel/sched/core.c  | 33 ---------------------------------
+ kernel/sched/idle.c  | 15 ++-------------
+ kernel/sched/sched.h |  9 +--------
+ 3 files changed, 3 insertions(+), 54 deletions(-)
+
+diff --git a/kernel/sched/core.c b/kernel/sched/core.c
+index ff6e2d0a1..49df55bb0 100644
+--- a/kernel/sched/core.c
++++ b/kernel/sched/core.c
+@@ -3347,24 +3347,6 @@ void relax_compatible_cpus_allowed_ptr(struct task_struct *p)
+ 	WARN_ON_ONCE(ret);
+ }
+ 
+-#ifdef CONFIG_ECHO_SCHED
+-inline void inc_nr_lat_sensitive(unsigned int cpu, struct task_struct *p)
+-{
+-	if (per_cpu(nr_lat_sensitive, cpu) == 0 || per_cpu(nr_lat_sensitive, cpu) == -10)
+-		per_cpu(nr_lat_sensitive, cpu) = HZ / 78;
+-}
+-
+-inline void dec_nr_lat_sensitive(unsigned int cpu)
+-{
+-	if (per_cpu(nr_lat_sensitive, cpu) > -10) {
+-		per_cpu(nr_lat_sensitive, cpu)--;
+-
+-		if (per_cpu(nr_lat_sensitive, cpu) == 0)
+-			per_cpu(nr_lat_sensitive, cpu) = -1;
+-	}
+-}
+-#endif
+-
+ void set_task_cpu(struct task_struct *p, unsigned int new_cpu)
+ {
+ #ifdef CONFIG_SCHED_DEBUG
+@@ -5722,13 +5704,6 @@ void scheduler_tick(void)
+ 	if (curr->flags & PF_WQ_WORKER)
+ 		wq_worker_tick(curr);
+ 
+-#ifdef CONFIG_ECHO_SCHED
+-	if (idle_cpu(cpu))
+-		inc_nr_lat_sensitive(cpu, NULL);
+-	else
+-		dec_nr_lat_sensitive(cpu);
+-#endif
+-
+ #ifdef CONFIG_SMP
+ 	rq->idle_balance = idle_cpu(cpu);
+ 	trigger_load_balance(rq);
+@@ -9937,10 +9912,6 @@ LIST_HEAD(task_groups);
+ static struct kmem_cache *task_group_cache __ro_after_init;
+ #endif
+ 
+-#ifdef CONFIG_ECHO_SCHED
+-DEFINE_PER_CPU(int, nr_lat_sensitive);
+-#endif
+-
+ void __init sched_init(void)
+ {
+ 	unsigned long ptr = 0;
+@@ -10079,10 +10050,6 @@ void __init sched_init(void)
+ 		hrtick_rq_init(rq);
+ 		atomic_set(&rq->nr_iowait, 0);
+ 
+-#ifdef CONFIG_ECHO_SCHED
+-		per_cpu(nr_lat_sensitive, i) = 0;
+-#endif
+-
+ #ifdef CONFIG_SCHED_CORE
+ 		rq->core = rq;
+ 		rq->core_pick = NULL;
+diff --git a/kernel/sched/idle.c b/kernel/sched/idle.c
+index dbfc30710..95e7f83b5 100644
+--- a/kernel/sched/idle.c
++++ b/kernel/sched/idle.c
+@@ -237,9 +237,7 @@ static void cpuidle_idle_call(void)
+ static void do_idle(void)
+ {
+ 	int cpu = smp_processor_id();
+-#ifdef CONFIG_ECHO_SCHED
+-	int pm_disabled = per_cpu(nr_lat_sensitive, cpu);
+-#endif
++
+ 	/*
+ 	 * Check if we need to update blocked load
+ 	 */
+@@ -307,22 +305,13 @@ static void do_idle(void)
+ 		 * broadcast device expired for us, we don't want to go deep
+ 		 * idle as we know that the IPI is going to arrive right away.
+ 		 */
+-		if (
+-#ifdef CONFIG_ECHO_SCHED
+-			pm_disabled > 0 ||
+-#endif
+-			cpu_idle_force_poll || tick_check_broadcast_expired()) {
++		if (cpu_idle_force_poll || tick_check_broadcast_expired()) {
+ 			tick_nohz_idle_restart_tick();
+ 			cpu_idle_poll();
+-			dec_nr_lat_sensitive(cpu);
+ 		} else {
+ 			cpuidle_idle_call();
+ 		}
+ 
+-#ifdef CONFIG_ECHO_SCHED
+-		if (pm_disabled < 0)
+-			dec_nr_lat_sensitive(cpu);
+-#endif
+ 		arch_cpu_idle_exit();
+ 	}
+ 
+diff --git a/kernel/sched/sched.h b/kernel/sched/sched.h
+index 56b5c0114..e27be055c 100644
+--- a/kernel/sched/sched.h
++++ b/kernel/sched/sched.h
+@@ -1901,9 +1901,7 @@ DECLARE_PER_CPU(struct sched_domain_shared __rcu *, sd_llc_shared);
+ DECLARE_PER_CPU(struct sched_domain __rcu *, sd_numa);
+ DECLARE_PER_CPU(struct sched_domain __rcu *, sd_asym_packing);
+ DECLARE_PER_CPU(struct sched_domain __rcu *, sd_asym_cpucapacity);
+-#ifdef CONFIG_ECHO_SCHED
+-DECLARE_PER_CPU(int, nr_lat_sensitive);
+-#endif
++
+ extern struct static_key_false sched_asym_cpucapacity;
+ extern struct static_key_false sched_cluster_active;
+ 
+@@ -2561,11 +2559,6 @@ extern void wakeup_preempt(struct rq *rq, struct task_struct *p, int flags);
+ #define SCHED_NR_MIGRATE_BREAK 32
+ #endif
+ 
+-#ifdef CONFIG_ECHO_SCHED
+-extern inline void inc_nr_lat_sensitive(unsigned int cpu, struct task_struct *p);
+-extern inline void dec_nr_lat_sensitive(unsigned int cpu);
+-#endif
+-
+ extern const_debug unsigned int sysctl_sched_nr_migrate;
+ extern const_debug unsigned int sysctl_sched_migration_cost;
+ 
+-- 
+2.44.0
+

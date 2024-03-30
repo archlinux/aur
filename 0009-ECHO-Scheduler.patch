@@ -1,17 +1,17 @@
-From c274b5b8841daafc6e59c7e53b14e5e3c5ccf647 Mon Sep 17 00:00:00 2001
+From 27eaf9d3b6eda719dfb5bb126a4dd923380b70b4 Mon Sep 17 00:00:00 2001
 From: hamadmarri <hamad.s.almarri@gmail.com>
 Date: Mon, 25 Mar 2024 00:19:06 +0300
-Subject: [PATCH 09/11] ECHO Scheduler
+Subject: [PATCH 09/16] ECHO Scheduler
 
 ---
  kernel/sched/core.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index ed8a6b75d..529569699 100644
+index 26c58e87d..20d0aa1ca 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -9920,7 +9920,7 @@ void __init sched_init(void)
+@@ -9945,7 +9945,7 @@ void __init sched_init(void)
  
  	wait_bit_init();
  

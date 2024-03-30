@@ -1,0 +1,27 @@
+From 6f3aa390a57090ea132a029c22d894e73a42ad74 Mon Sep 17 00:00:00 2001
+From: hamadmarri <hamad.s.almarri@gmail.com>
+Date: Mon, 25 Mar 2024 20:37:29 +0300
+Subject: [PATCH 12/16] add help in HZ_625 config
+
+---
+ kernel/Kconfig.hz | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/kernel/Kconfig.hz b/kernel/Kconfig.hz
+index fc2807605..80861d904 100644
+--- a/kernel/Kconfig.hz
++++ b/kernel/Kconfig.hz
+@@ -42,6 +42,10 @@ choice
+ 
+ 	config HZ_625
+ 		bool "625 HZ"
++	help
++	 The default HZ for ECHO is 625HZ - ticks every 1.6ms.
++	 No need to increase it since the HighRes clock handles
++	 the task preemption in 105us max.
+ 
+ 	config HZ_1000
+ 		bool "1000 HZ"
+-- 
+2.44.0
+

@@ -34,11 +34,11 @@ fi
 ###################################################################################
 
 pkgbase=linux-echo
-pkgver=6.7.10
-_pkgver=6.7.10
+pkgver=6.8.1
+_pkgver=6.8.1
 pkgrel=1
-major=6.7
-commit=0bd29eb1601f9b1d256cf8b402ba7d5e2a04b441
+major=6.8
+commit=abef9db380deca88617f7014b683667ef6fc81e4
 arch=(x86_64)
 url='https://www.kernel.org/'
 license=(GPL-2.0-only)
@@ -105,7 +105,12 @@ source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz
         0008-port-select_task_fair-from-TT.patch
         0009-ECHO-Scheduler.patch
         0010-Fix-missing-sched_idle_cpu-when-enabling-NUMA.patch
-        0011-fair_group-and-autogroup-must-be-disabled-by-default.patch)
+        0011-fair_group-and-autogroup-must-be-disabled-by-default.patch
+        0012-add-help-in-HZ_625-config.patch
+        0013-port-to-6.8.y.patch
+        0014-add-CONFIG_ECHO_SCHED.patch
+        0015-removed-lat_sens.patch
+        0016-ECHO-CPU-scheduler-v6.8.patch)
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -180,6 +185,12 @@ prepare(){
   # Setup ECHO
   # https://github.com/hamadmarri/ECHO-CPU-Scheduler?tab=readme-ov-file#defaults-and-sysctls
   msg "Setup ECHO"
+
+  # Enable ECHO
+  msg "Enable ECHO CPU Scheduler"
+  scripts/config --enable CONFIG_ECHO_SCHED
+
+  sleep 2s
 
   msg2 "Enable CONFIG_HZ_625"
   scripts/config --disable CONFIG_HZ_300
@@ -368,22 +379,27 @@ _package-headers(){
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('a9b99fb376f9fcd699c7c252aeef3bb5ba26280eb049711ac091b2eb2b487c03'
-            '04143712e593d45a597661fe00f89cf92d52c62df3468c68a46c952c2ef4db64'
+sha256sums=('8d0c8936e3140a0fbdf511ad7a9f21121598f3656743898f47bb9052d37cff68'
+            'c2b00c84c4b543db431e06604d939a62f93107d18369f4d9860dc8062b01ab45'
             '416609986399d3046811bcc2344f4ee0833b6c92e305da3925a6e193f810dad2'
             'b4c85f49a0c0fe6d6ac1f55165c2c897000a7c6c0c30f258693d66223c0389fd'
             'd9c0e2b3fa16f02abfd95d4c00747a43dd761e5cd622d40ab908155c5957759b'
-            '52eb2013a7078e8c681c2c49cdbb7d1d6ce7f64e2cb1b1f59c375452fee71a27'
-            '3c1f57ec80a4284a33405462b637e95725d641a4bc1afdb255701b7e0be5f35b'
-            'ed6ab2c58deb3135f3bd65d12c03cefa5055f3c22c2fffaa123b8f718a6bfa3f'
-            '3491f6d3194660954e058f43d18e1056f56d7ed67ccde018187566b12b931c48'
-            '73aefea3d20d130208b286d610914f2335abce65107e61bb275a587e8f1cb21b'
-            '2d1fbb361d9038ea7ba5ef39f4ff5985568a6d538509cd7f6d593987857efc0d'
-            'd3e98d29fb4fa0e64c2359656d1d08e6f12a388838ece9102252ced30d2b3375'
-            '9a80253b840c27deb508d9a67a2ac480c675664a95b148ef7fa891343d58a3dc'
-            '6ddcc5e8737c637ca4dc4c6685fb47d0baff3a87a4a00a358e14ed30146368c3'
-            'bbe65dca2ebed50274d75f5190f8eef89c5d6e2c3398452d43d653a1f11d9cd9'
-            '881d9fc89e928ba04360e370bce1c52feefad8e0a7d878877377851c4671dd81')
+            'decfd4c32e2a20accd20b1df6209b5821f97bf6b567c00e4be0f1209d94190dc'
+            'd2d9b13bd70047c44eec1a65d85ad7f868aac95f61e589a754d34a429f526075'
+            '6149cd3f81aaa2bdf9e976fd9f23427fc744cc95a27908421600d1c60d6f203b'
+            '527fe7fe67e795256589914e9e24b0189d2e13e6779f2616939dc4fcc18e9874'
+            '73d93134935cf83f8cab18fec9f0878f00b2acd20ff68b7f16b16494e7837923'
+            'cd5b0483ef9da761138a53d31e8d7b4111a024c1e72d433608a1aad57e6e59e0'
+            'f4a501cace9e3152f32ee08f1740b7acd48f9e6cc3827dfc4e95b5a8170063e3'
+            '992e1eacde82228ad29bcd13013df0ec3bcb4042f418a3cb36af8abc80203599'
+            '2235123851f3d93da93b90db5f182983aff71086428290ee9f90649e6dc478f3'
+            'b0596dceaad088d555e29240794016bce240532dd71c72657a1f3ec78a2bed35'
+            '574be7a1d09f27c73039f34a85cb5475504cc9c0d04b67927dfa458c6eb664d9'
+            '245eae3bb6098d8b036bf482beb19b4f09688e77db544f8b59e80a746acc35cd'
+            '82ae578ea6415bb368575ef56932614311a6c833e2e80d2d676523d6b8aa016a'
+            '640449359fb0305a441bcd14777fe8bcb416087bdaea3332427dc3f46fc6a611'
+            '6afa0e024891a1252f2cd9400d0a0387483d600c3cd3b7453c5a8d819fa967f5'
+            'a31a307a4184187d962a25f1132d0e1b0330fcdb694a9fc53f969eff4dce17b4')
 
 pkgname=($pkgbase $pkgbase-headers)
 for _p in "${pkgname[@]}"; do

@@ -1,0 +1,330 @@
+From d37ebcbf15c162531a18b7a4b131f908c2be39ca Mon Sep 17 00:00:00 2001
+From: hamadmarri <hamad.s.almarri@gmail.com>
+Date: Mon, 25 Mar 2024 23:36:53 +0300
+Subject: [PATCH 14/16] add CONFIG_ECHO_SCHED
+
+---
+ include/linux/sched.h  |  9 ++++++---
+ init/Kconfig           | 10 +++++++++-
+ kernel/Kconfig.preempt |  2 +-
+ kernel/sched/Makefile  |  4 ++++
+ kernel/sched/core.c    | 14 ++++++++++++++
+ kernel/sched/debug.c   |  2 ++
+ kernel/sched/idle.c    | 12 +++++++++---
+ kernel/sched/sched.h   | 10 ++++++++++
+ 8 files changed, 55 insertions(+), 8 deletions(-)
+
+diff --git a/include/linux/sched.h b/include/linux/sched.h
+index 5b22c1f26..947d94be2 100644
+--- a/include/linux/sched.h
++++ b/include/linux/sched.h
+@@ -533,6 +533,7 @@ struct sched_statistics {
+ #endif /* CONFIG_SCHEDSTATS */
+ } ____cacheline_aligned;
+ 
++#ifdef CONFIG_ECHO_SCHED
+ struct bs_node {
+ 	struct bs_node*                 next;
+ 	u64				c_vrt_start;
+@@ -543,6 +544,7 @@ struct bs_node {
+ #endif
+ 	u64				est;
+ };
++#endif
+ 
+ struct sched_entity {
+ 	/* For load-balancing: */
+@@ -553,17 +555,18 @@ struct sched_entity {
+ 
+ 	struct list_head		group_node;
+ 	unsigned int			on_rq;
+-
++#ifdef CONFIG_ECHO_SCHED
+ 	struct bs_node                  bs_node;
+-
++#endif
+ 	u64				exec_start;
+ 	u64				sum_exec_runtime;
+ 	u64				prev_sum_exec_runtime;
+ 	u64				vruntime;
+ 	s64				vlag;
+ 	u64				slice;
++#ifdef CONFIG_ECHO_SCHED
+ 	bool				yielded;
+-
++#endif
+ 	u64				nr_migrations;
+ 
+ #ifdef CONFIG_FAIR_GROUP_SCHED
+diff --git a/init/Kconfig b/init/Kconfig
+index a8bf21f68..933ec5c9a 100644
+--- a/init/Kconfig
++++ b/init/Kconfig
+@@ -130,6 +130,12 @@ config THREAD_INFO_IN_TASK
+ 	  One subtle change that will be needed is to use try_get_task_stack()
+ 	  and put_task_stack() in save_thread_stack_tsk() and get_wchan().
+ 
++config ECHO_SCHED
++	bool "ECHO CPU Scheduler"
++	default y
++	help
++	  https://github.com/hamadmarri/ECHO-CPU-Scheduler
++
+ menu "General setup"
+ 
+ config BROKEN
+@@ -1008,11 +1014,12 @@ menuconfig CGROUP_SCHED
+ if CGROUP_SCHED
+ config FAIR_GROUP_SCHED
+ 	bool "Group scheduling for SCHED_OTHER"
+-	depends on CGROUP_SCHED
++	depends on CGROUP_SCHED && !ECHO_SCHED
+ 	default n
+ 
+ config CFS_BANDWIDTH
+ 	bool "CPU bandwidth provisioning for FAIR_GROUP_SCHED"
++	depends on !ECHO_SCHED
+ 	depends on FAIR_GROUP_SCHED
+ 	default n
+ 	help
+@@ -1281,6 +1288,7 @@ config CHECKPOINT_RESTORE
+ 
+ config SCHED_AUTOGROUP
+ 	bool "Automatic process group scheduling"
++	depends on !ECHO_SCHED
+ 	select CGROUPS
+ 	select CGROUP_SCHED
+ 	select FAIR_GROUP_SCHED
+diff --git a/kernel/Kconfig.preempt b/kernel/Kconfig.preempt
+index 7d671d4e6..d54bb52cc 100644
+--- a/kernel/Kconfig.preempt
++++ b/kernel/Kconfig.preempt
+@@ -117,7 +117,7 @@ config PREEMPT_DYNAMIC
+ 
+ config SCHED_CORE
+ 	bool "Core Scheduling for SMT"
+-	depends on SCHED_SMT
++	depends on SCHED_SMT && !ECHO_SCHED
+ 	default n
+ 	help
+ 	  This option permits Core Scheduling, a means of coordinated task
+diff --git a/kernel/sched/Makefile b/kernel/sched/Makefile
+index f550be3a2..f78ee1bff 100644
+--- a/kernel/sched/Makefile
++++ b/kernel/sched/Makefile
+@@ -29,6 +29,10 @@ endif
+ # build parallelizes well and finishes roughly at once:
+ #
+ obj-y += core.o
++ifeq ($(CONFIG_ECHO_SCHED),y)
+ obj-y += bs.o
++else
++obj-y += fair.o
++endif
+ obj-y += build_policy.o
+ obj-y += build_utility.o
+diff --git a/kernel/sched/core.c b/kernel/sched/core.c
+index 83fa2c8c2..ff6e2d0a1 100644
+--- a/kernel/sched/core.c
++++ b/kernel/sched/core.c
+@@ -3347,6 +3347,7 @@ void relax_compatible_cpus_allowed_ptr(struct task_struct *p)
+ 	WARN_ON_ONCE(ret);
+ }
+ 
++#ifdef CONFIG_ECHO_SCHED
+ inline void inc_nr_lat_sensitive(unsigned int cpu, struct task_struct *p)
+ {
+ 	if (per_cpu(nr_lat_sensitive, cpu) == 0 || per_cpu(nr_lat_sensitive, cpu) == -10)
+@@ -3362,6 +3363,7 @@ inline void dec_nr_lat_sensitive(unsigned int cpu)
+ 			per_cpu(nr_lat_sensitive, cpu) = -1;
+ 	}
+ }
++#endif
+ 
+ void set_task_cpu(struct task_struct *p, unsigned int new_cpu)
+ {
+@@ -4542,8 +4544,10 @@ static void __sched_fork(unsigned long clone_flags, struct task_struct *p)
+ 	p->se.vlag			= 0;
+ 	p->se.slice			= sysctl_sched_base_slice;
+ 
++#ifdef CONFIG_ECHO_SCHED
+ 	p->se.bs_node.vburst		= 0;
+ 	p->se.bs_node.est		= 0;
++#endif
+ 
+ 	INIT_LIST_HEAD(&p->se.group_node);
+ 
+@@ -4707,6 +4711,7 @@ static int sysctl_schedstats(struct ctl_table *table, int write, void *buffer,
+ 
+ #ifdef CONFIG_SYSCTL
+ static struct ctl_table sched_core_sysctls[] = {
++#ifdef CONFIG_ECHO_SCHED
+ 	{
+ 		.procname	= "sched_bs_shared_quota",
+ 		.data		= &bs_shared_quota,
+@@ -4714,6 +4719,7 @@ static struct ctl_table sched_core_sysctls[] = {
+ 		.mode		= 0644,
+ 		.proc_handler	= proc_dointvec,
+ 	},
++#endif
+ #ifdef CONFIG_SCHEDSTATS
+ 	{
+ 		.procname       = "sched_schedstats",
+@@ -5716,10 +5722,12 @@ void scheduler_tick(void)
+ 	if (curr->flags & PF_WQ_WORKER)
+ 		wq_worker_tick(curr);
+ 
++#ifdef CONFIG_ECHO_SCHED
+ 	if (idle_cpu(cpu))
+ 		inc_nr_lat_sensitive(cpu, NULL);
+ 	else
+ 		dec_nr_lat_sensitive(cpu);
++#endif
+ 
+ #ifdef CONFIG_SMP
+ 	rq->idle_balance = idle_cpu(cpu);
+@@ -9929,7 +9937,9 @@ LIST_HEAD(task_groups);
+ static struct kmem_cache *task_group_cache __ro_after_init;
+ #endif
+ 
++#ifdef CONFIG_ECHO_SCHED
+ DEFINE_PER_CPU(int, nr_lat_sensitive);
++#endif
+ 
+ void __init sched_init(void)
+ {
+@@ -9946,7 +9956,9 @@ void __init sched_init(void)
+ 
+ 	wait_bit_init();
+ 
++#ifdef CONFIG_ECHO_SCHED
+ 	printk(KERN_INFO "ECHO CPU scheduler v6.7 by Hamad Al Marri.");
++#endif
+ 
+ #ifdef CONFIG_FAIR_GROUP_SCHED
+ 	ptr += 2 * nr_cpu_ids * sizeof(void **);
+@@ -10067,7 +10079,9 @@ void __init sched_init(void)
+ 		hrtick_rq_init(rq);
+ 		atomic_set(&rq->nr_iowait, 0);
+ 
++#ifdef CONFIG_ECHO_SCHED
+ 		per_cpu(nr_lat_sensitive, i) = 0;
++#endif
+ 
+ #ifdef CONFIG_SCHED_CORE
+ 		rq->core = rq;
+diff --git a/kernel/sched/debug.c b/kernel/sched/debug.c
+index 370dfb693..ec7d41bc6 100644
+--- a/kernel/sched/debug.c
++++ b/kernel/sched/debug.c
+@@ -1003,9 +1003,11 @@ void proc_sched_show_task(struct task_struct *p, struct pid_namespace *ns,
+ 	PN(se.exec_start);
+ 	PN(se.vruntime);
+ 	PN(se.sum_exec_runtime);
++#ifdef CONFIG_ECHO_SCHED
+ 	PN(se.bs_node.vburst);
+ 	PN(se.bs_node.prev_vburst);
+ 	PN(se.bs_node.est);
++#endif
+ 
+ 	nr_switches = p->nvcsw + p->nivcsw;
+ 
+diff --git a/kernel/sched/idle.c b/kernel/sched/idle.c
+index c8f92fefd..dbfc30710 100644
+--- a/kernel/sched/idle.c
++++ b/kernel/sched/idle.c
+@@ -237,8 +237,9 @@ static void cpuidle_idle_call(void)
+ static void do_idle(void)
+ {
+ 	int cpu = smp_processor_id();
++#ifdef CONFIG_ECHO_SCHED
+ 	int pm_disabled = per_cpu(nr_lat_sensitive, cpu);
+-
++#endif
+ 	/*
+ 	 * Check if we need to update blocked load
+ 	 */
+@@ -306,7 +307,11 @@ static void do_idle(void)
+ 		 * broadcast device expired for us, we don't want to go deep
+ 		 * idle as we know that the IPI is going to arrive right away.
+ 		 */
+-		if (pm_disabled > 0 || cpu_idle_force_poll || tick_check_broadcast_expired()) {
++		if (
++#ifdef CONFIG_ECHO_SCHED
++			pm_disabled > 0 ||
++#endif
++			cpu_idle_force_poll || tick_check_broadcast_expired()) {
+ 			tick_nohz_idle_restart_tick();
+ 			cpu_idle_poll();
+ 			dec_nr_lat_sensitive(cpu);
+@@ -314,9 +319,10 @@ static void do_idle(void)
+ 			cpuidle_idle_call();
+ 		}
+ 
++#ifdef CONFIG_ECHO_SCHED
+ 		if (pm_disabled < 0)
+ 			dec_nr_lat_sensitive(cpu);
+-
++#endif
+ 		arch_cpu_idle_exit();
+ 	}
+ 
+diff --git a/kernel/sched/sched.h b/kernel/sched/sched.h
+index d8758c2ce..56b5c0114 100644
+--- a/kernel/sched/sched.h
++++ b/kernel/sched/sched.h
+@@ -109,7 +109,9 @@ extern int sysctl_sched_rt_period;
+ extern int sysctl_sched_rt_runtime;
+ extern int sched_rr_timeslice;
+ 
++#ifdef CONFIG_ECHO_SCHED
+ extern unsigned int bs_shared_quota;
++#endif
+ 
+ /*
+  * Helpers for converting nanosecond timing to jiffy resolution
+@@ -576,7 +578,9 @@ struct cfs_rq {
+ 	unsigned int		h_nr_running;      /* SCHED_{NORMAL,BATCH,IDLE} */
+ 	unsigned int		idle_nr_running;   /* SCHED_IDLE */
+ 	unsigned int		idle_h_nr_running; /* SCHED_IDLE */
++#ifdef CONFIG_ECHO_SCHED
+ 	u64			local_cand_est;
++#endif
+ 	s64			avg_vruntime;
+ 	u64			avg_load;
+ 
+@@ -598,8 +602,10 @@ struct cfs_rq {
+ 	 * It is set to NULL otherwise (i.e when none are currently running).
+ 	 */
+ 	struct sched_entity	*curr;
++#ifdef CONFIG_ECHO_SCHED
+ 	struct bs_node		*head;
+ 	struct bs_node		*q2_head;
++#endif
+ 	struct sched_entity	*next;
+ 
+ #ifdef	CONFIG_SCHED_DEBUG
+@@ -1895,7 +1901,9 @@ DECLARE_PER_CPU(struct sched_domain_shared __rcu *, sd_llc_shared);
+ DECLARE_PER_CPU(struct sched_domain __rcu *, sd_numa);
+ DECLARE_PER_CPU(struct sched_domain __rcu *, sd_asym_packing);
+ DECLARE_PER_CPU(struct sched_domain __rcu *, sd_asym_cpucapacity);
++#ifdef CONFIG_ECHO_SCHED
+ DECLARE_PER_CPU(int, nr_lat_sensitive);
++#endif
+ extern struct static_key_false sched_asym_cpucapacity;
+ extern struct static_key_false sched_cluster_active;
+ 
+@@ -2553,8 +2561,10 @@ extern void wakeup_preempt(struct rq *rq, struct task_struct *p, int flags);
+ #define SCHED_NR_MIGRATE_BREAK 32
+ #endif
+ 
++#ifdef CONFIG_ECHO_SCHED
+ extern inline void inc_nr_lat_sensitive(unsigned int cpu, struct task_struct *p);
+ extern inline void dec_nr_lat_sensitive(unsigned int cpu);
++#endif
+ 
+ extern const_debug unsigned int sysctl_sched_nr_migrate;
+ extern const_debug unsigned int sysctl_sched_migration_cost;
+-- 
+2.44.0
+

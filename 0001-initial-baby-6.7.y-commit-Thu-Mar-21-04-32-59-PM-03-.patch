@@ -1,7 +1,7 @@
-From 43db8fe971087d627743c45f4576ab5823e71975 Mon Sep 17 00:00:00 2001
+From 788af0c0e1b067b177bb99a1de05a9b4c25bef3d Mon Sep 17 00:00:00 2001
 From: hamadmarri <hamad.s.almarri@gmail.com>
 Date: Thu, 21 Mar 2024 16:32:59 +0300
-Subject: [PATCH 01/11] initial baby 6.7.y commit Thu Mar 21 04:32:59 PM +03
+Subject: [PATCH 01/16] initial baby 6.7.y commit Thu Mar 21 04:32:59 PM +03
  2024
 
 ---
@@ -5034,10 +5034,10 @@ index 000000000..1d9f6ff65
 +
 +#endif /* CONFIG_NUMA_BALANCING */
 diff --git a/include/linux/sched.h b/include/linux/sched.h
-index 292c31697..34ac565e0 100644
+index ffe8f618a..36d6dd7a5 100644
 --- a/include/linux/sched.h
 +++ b/include/linux/sched.h
-@@ -548,6 +548,18 @@ struct sched_statistics {
+@@ -533,6 +533,18 @@ struct sched_statistics {
  #endif /* CONFIG_SCHEDSTATS */
  } ____cacheline_aligned;
  
@@ -5056,7 +5056,7 @@ index 292c31697..34ac565e0 100644
  struct sched_entity {
  	/* For load-balancing: */
  	struct load_weight		load;
-@@ -558,6 +570,8 @@ struct sched_entity {
+@@ -543,6 +555,8 @@ struct sched_entity {
  	struct list_head		group_node;
  	unsigned int			on_rq;
  
@@ -5121,10 +5121,10 @@ index 976092b7b..f550be3a2 100644
  obj-y += build_policy.o
  obj-y += build_utility.o
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index a708d225c..95f842b03 100644
+index 9116bcc90..225474369 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -4497,7 +4497,12 @@ static void __sched_fork(unsigned long clone_flags, struct task_struct *p)
+@@ -4524,7 +4524,12 @@ static void __sched_fork(unsigned long clone_flags, struct task_struct *p)
  	p->se.nr_migrations		= 0;
  	p->se.vruntime			= 0;
  	p->se.vlag			= 0;
@@ -5138,7 +5138,7 @@ index a708d225c..95f842b03 100644
  	INIT_LIST_HEAD(&p->se.group_node);
  
  #ifdef CONFIG_FAIR_GROUP_SCHED
-@@ -4663,6 +4668,13 @@ static int sysctl_schedstats(struct ctl_table *table, int write, void *buffer,
+@@ -4687,6 +4692,13 @@ static int sysctl_schedstats(struct ctl_table *table, int write, void *buffer,
  
  #ifdef CONFIG_SYSCTL
  static struct ctl_table sched_core_sysctls[] = {
@@ -5152,7 +5152,7 @@ index a708d225c..95f842b03 100644
  #ifdef CONFIG_SCHEDSTATS
  	{
  		.procname       = "sched_schedstats",
-@@ -9887,6 +9899,8 @@ void __init sched_init(void)
+@@ -9912,6 +9924,8 @@ void __init sched_init(void)
  
  	wait_bit_init();
  
@@ -5162,10 +5162,10 @@ index a708d225c..95f842b03 100644
  	ptr += 2 * nr_cpu_ids * sizeof(void **);
  #endif
 diff --git a/kernel/sched/debug.c b/kernel/sched/debug.c
-index 4580a4507..2d8660b48 100644
+index 8d5d98a58..f6a71f797 100644
 --- a/kernel/sched/debug.c
 +++ b/kernel/sched/debug.c
-@@ -998,6 +998,10 @@ void proc_sched_show_task(struct task_struct *p, struct pid_namespace *ns,
+@@ -1003,6 +1003,10 @@ void proc_sched_show_task(struct task_struct *p, struct pid_namespace *ns,
  	PN(se.exec_start);
  	PN(se.vruntime);
  	PN(se.sum_exec_runtime);
@@ -5177,7 +5177,7 @@ index 4580a4507..2d8660b48 100644
  	nr_switches = p->nvcsw + p->nivcsw;
  
 diff --git a/kernel/sched/sched.h b/kernel/sched/sched.h
-index 2e5a95486..af2280b5b 100644
+index 001fe047b..8ffb6731b 100644
 --- a/kernel/sched/sched.h
 +++ b/kernel/sched/sched.h
 @@ -109,6 +109,8 @@ extern int sysctl_sched_rt_period;
@@ -5189,7 +5189,7 @@ index 2e5a95486..af2280b5b 100644
  /*
   * Helpers for converting nanosecond timing to jiffy resolution
   */
-@@ -538,7 +540,7 @@ struct cfs_rq {
+@@ -574,7 +576,7 @@ struct cfs_rq {
  	unsigned int		h_nr_running;      /* SCHED_{NORMAL,BATCH,IDLE} */
  	unsigned int		idle_nr_running;   /* SCHED_IDLE */
  	unsigned int		idle_h_nr_running; /* SCHED_IDLE */
@@ -5198,7 +5198,7 @@ index 2e5a95486..af2280b5b 100644
  	s64			avg_vruntime;
  	u64			avg_load;
  
-@@ -560,6 +562,8 @@ struct cfs_rq {
+@@ -596,6 +598,8 @@ struct cfs_rq {
  	 * It is set to NULL otherwise (i.e when none are currently running).
  	 */
  	struct sched_entity	*curr;

@@ -1,7 +1,7 @@
-From 2a34d5c262d7989b796dd9e0da1a3816a9a00732 Mon Sep 17 00:00:00 2001
+From a6513a5cf0a0a7131a08a817cbd0f75b9def37d0 Mon Sep 17 00:00:00 2001
 From: hamadmarri <hamad.s.almarri@gmail.com>
 Date: Sat, 23 Mar 2024 01:47:51 +0300
-Subject: [PATCH 06/11] make quota for preempted task preserved so it doesn't
+Subject: [PATCH 06/16] make quota for preempted task preserved so it doesn't
  start over
 
 ---
@@ -12,10 +12,10 @@ Subject: [PATCH 06/11] make quota for preempted task preserved so it doesn't
  4 files changed, 24 insertions(+), 17 deletions(-)
 
 diff --git a/include/linux/sched.h b/include/linux/sched.h
-index 62e5be998..a68f67356 100644
+index af5a9f1a4..5b22c1f26 100644
 --- a/include/linux/sched.h
 +++ b/include/linux/sched.h
-@@ -550,14 +550,13 @@ struct sched_statistics {
+@@ -535,14 +535,13 @@ struct sched_statistics {
  
  struct bs_node {
  	struct bs_node*                 next;
@@ -145,10 +145,10 @@ index 6fe2ba6e3..ca12d3aa5 100644
  	} else {
  		__enqueue_entity(&cfs_rq->head, &se->bs_node);
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index e9ad2a7f5..f99b51020 100644
+index 4d326fa52..9b7b7a123 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -4517,7 +4517,6 @@ static void __sched_fork(unsigned long clone_flags, struct task_struct *p)
+@@ -4544,7 +4544,6 @@ static void __sched_fork(unsigned long clone_flags, struct task_struct *p)
  
  	p->se.bs_node.vburst		= 0;
  	p->se.bs_node.est		= (u64)bs_shared_quota;
@@ -157,10 +157,10 @@ index e9ad2a7f5..f99b51020 100644
  	INIT_LIST_HEAD(&p->se.group_node);
  
 diff --git a/kernel/sched/debug.c b/kernel/sched/debug.c
-index 2d8660b48..6ebd68faa 100644
+index f6a71f797..370dfb693 100644
 --- a/kernel/sched/debug.c
 +++ b/kernel/sched/debug.c
-@@ -1001,7 +1001,6 @@ void proc_sched_show_task(struct task_struct *p, struct pid_namespace *ns,
+@@ -1006,7 +1006,6 @@ void proc_sched_show_task(struct task_struct *p, struct pid_namespace *ns,
  	PN(se.bs_node.vburst);
  	PN(se.bs_node.prev_vburst);
  	PN(se.bs_node.est);

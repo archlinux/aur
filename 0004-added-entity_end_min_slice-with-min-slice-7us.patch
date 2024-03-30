@@ -1,7 +1,7 @@
-From 6a203a9662fd9cf0499287f22f26c0a88da35845 Mon Sep 17 00:00:00 2001
+From 55aae14baead090809640388a5bc5eae7a579fd2 Mon Sep 17 00:00:00 2001
 From: hamadmarri <hamad.s.almarri@gmail.com>
 Date: Fri, 22 Mar 2024 23:48:49 +0300
-Subject: [PATCH 04/11] added entity_end_min_slice with min slice = 7us
+Subject: [PATCH 04/16] added entity_end_min_slice with min slice = 7us
 
 ---
  kernel/sched/bs.c             | 61 ++++++++++++++++++++++++-----------
