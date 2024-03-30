@@ -2,8 +2,8 @@
 # Maintainer: Lukas Michel <lgm(dot)aur(at)outlook(dot)de
 # Contributor: Uladzimir Panasiuk <v.s.panasyuk+AUR(at)gmail.com>
 pkgname=epson-printer-utility
-pkgver=1.1.2
-pkgrel=2
+pkgver=1.1.3
+pkgrel=1
 pkgdesc='This is a Printer Utility program for Epson. Using this software, you can check ink levels, view error and other status... on EPSON Printers.'
 arch=('x86_64')
 url='http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX'
@@ -11,13 +11,13 @@ license=('LGPL' 'custom:Epson License Agreement')
 options=('strip')
 depends=('qt5-base' 'ld-lsb=3')
 install="$pkgname.install"
-source=("https://download3.ebz.epson.net/dsc/f/03/00/14/68/92/d73ac45cccd3c5c349dbe365b5e99ae3112cbe49/${pkgname}_${pkgver}-1_amd64.deb"
+source=("https://download3.ebz.epson.net/dsc/f/03/00/15/43/23/b85f4cf2956db3dd768468b418b964045c047b2c/${pkgname}_${pkgver}-1_amd64.deb"
   'ecbd.service'
   'LICENSE'
   'AVASYSPL.en.txt'
   "$pkgname.install"
   "$pkgname.desktop")
-sha256sums=('c34c08476ab185f8fd339e9681a3697cdb3c2e85d454be2aaed11e40b09aedff'
+sha256sums=('99cd93cbd5e9ea794525edde188ec34296c1877ef4b9d8b0328eb0a3745f14c1'
             '8cc99a3e68b3367f4a78c05b93fdbbdcded13302fac72daf20b5a0ec9c6c9d55'
             'e1bb0ade3e05ab06adcdecc117d2243612419b2b959c46c70db08885a4670c9e'
             'd9d156980047833ed7a5841b4fd92f6bed0146480748d8a595b8e6d0a2cd004c'
