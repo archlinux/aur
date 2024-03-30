@@ -3,7 +3,7 @@
 # Contributor: Jian Zeng <anonymousknight96@gmail.com>
 # Contributor: Xuanwo <xuanwo@archlinuxcn.org>
 pkgbase=tidb-bin
-_basever=7.6.0
+_basever=8.0.0
 #_relver=-prega
 #pkgver=$_basever.$_relver
 pkgver=$_basever
@@ -35,9 +35,9 @@ source=("https://tiup-mirrors.pingcap.com/tidb-v$_basever-linux-amd64.tar.gz"
         pd.toml
         tidb.toml
         tikv.toml)
-sha256sums=('6149a616db667da28482d7b45ad5da68d28d2769e7cf3d3e5b3403bb1a0dc389'
-            '60f6dbe5fb8c2b0167f321ca8c25c01439db96b494f748b5f78d438b0399afd9'
-            'e3d9df8420b4f24fb628569b9750af72d4ee9ac6f14c4b7778c3ddc84da7984f'
+sha256sums=('98c8471797de5a19bd88b237cce0746e52864f6c167115b96cbcb8db9ccae185'
+            '11e1a38b8c547a4df159f8802d1e30cb8e5a6da9b737472333fec12a2cdeba0b'
+            '09d8d5fdeff882d2629f8679ae1195df5922e4383c116cce7eadae61112a3960'
             'b03d12f2f8d6eb2e9d654d6258ca39000225cdf1418840f7e35081631bc4d924'
             '22318c19bb89ff5a0852df5186cc1496214cd49f2264192413a326d1e8c93dc9'
             '870b8eaf83bc0d22b05b0f3a7890660e483cf77bb1d84bc50ad04fb23068cd8c'
@@ -47,9 +47,9 @@ sha256sums=('6149a616db667da28482d7b45ad5da68d28d2769e7cf3d3e5b3403bb1a0dc389'
             '30ce83fbec8f102c30e438282bb5b18c026d08480f2386d68f1116c12481bf66'
             '744b252e29099b0099dc41e30bc3badd33b3d661c7126af8044faa4fc2df8927'
             '935291bac6a216c6f880df9bfaec8900266413bb202ac483e79f291e1f28e9f1'
-            '10d3fdb40e522c8731e87a7ba2acc6a7866d8f967a6b931247ae8ff97709065a'
+            '44de9aed72b8bc9156db354dcddfe0624f2fe4fc91e903fe64892913cae93e0f'
             'f32709894c0d2c105a4398dcaf027f1cbdee359a2a6747f43cac819e9df25517'
-            'be2f8c6830a48da6c356db943aa55ee2f3c9c30b2e9027e7b758cab875fc8520')
+            '1c933198cd9b5611bd7d25f4f3501bd1b580bb35352f8d65bc1cef8588400d24')
 
 _package() {
     provides=("tidb-server=$_basever" "tikv-server=$_basever" "pd-server=$_basever")
