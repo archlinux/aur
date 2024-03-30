@@ -1,7 +1,7 @@
 # Maintainer: Jingbei Li <i@jingbei.li>
 pkgname=python-mkl-fft
 _pkgname=mkl_fft
-pkgver=1.3.1
+pkgver=1.3.8
 pkgrel=1
 pkgdesc="NumPy-based Python interface to Intel (R) MKL FFT functionality"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('intel-mkl' 'python-numpy')
 makedepends=('cython' 'git' 'python-setuptools')
 source=("git+$url#tag=v${pkgver}")
-md5sums=('SKIP')
+md5sums=('3902a685e4880eb230c8e82079deb7be')
 
 build() {
   cd "$srcdir/${_pkgname}"
