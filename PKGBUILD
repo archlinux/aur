@@ -9,7 +9,7 @@ license=('GPL3')
 makedepends=('readline')
 depends=('bash' 'coreutils' 'sudo')
 optdepends=('ccd2iso: BIN/IMG conversion support' 'mdf2iso: MDF/MDS conversion support')
-md5sums=('857c6a8d13cd0d3f000c80df82a8026f')
+md5sums=('7b36b22d62e46ae6fa06d0aa2dee7ba4')
 
 source=("https://github.com/siyia2/mounter-elite-plus/archive/v${pkgver}.tar.gz")
 
