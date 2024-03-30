@@ -12,7 +12,7 @@
 
 pkgname=scu-git
 pkgver=1.4.0.r15.g2f24a32
-pkgrel=2
+pkgrel=3
 pkgdesc="System fetch utility is aimed at informativeness"
 arch=(i686 x86_64)
 url="https://gitlab.com/omnitix/${pkgname%-git}"
@@ -39,7 +39,7 @@ prepare() {
 build() {
     cd ${pkgname%-git}
     [[ -n $_sccache ]] && export RUSTC_WRAPPER=sccache
-    export RUSTFLAGS="--remap-path-prefix=\"$srcdir\"=/"
+    export RUSTFLAGS="--remap-path-prefix=$srcdir=/"
     export CARGO_HOME="$srcdir"/.cargo
     export CARGO_TARGET_DIR=target
     cargo build --release
