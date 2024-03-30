@@ -1,8 +1,8 @@
 # Maintainer: LINUX-GAMING.RU (tergoevm@gmail.com)
 
 pkgname=portproton
-pkgver=1.5
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="Software for playing Microsoft Windows games and launchers"
 arch=('x86_64')
 url="https://linux-gaming.ru"
@@ -11,16 +11,17 @@ depends=('bash' 'icoutils' 'yad' 'bubblewrap' 'zstd' 'cabextract' 'gzip'
          'tar' 'openssl' 'openssl-1.1' 'desktop-file-utils' 'curl' 'dbus' 'freetype2' 'xdg-utils'
          'gdk-pixbuf2' 'ttf-font' 'nss' 'xorg-xrandr' 'lsof' 'mesa-utils' 'imagemagick'
          'vulkan-driver' 'vulkan-icd-loader' 'lib32-libgl' 'lib32-gcc-libs' 'vulkan-tools'
-         'lib32-libx11' 'lib32-libxss' 'lib32-alsa-plugins' 'lib32-libgpg-error' 'lib32-freetype2'
+         'lib32-libx11' 'lib32-libxss' 'lib32-alsa-plugins' 'lib32-libgpg-error' 'lib32-gnutls' 'lib32-freetype2'
          'lib32-nss' 'lib32-vulkan-driver' 'lib32-vulkan-icd-loader' 'lib32-openssl' 'lib32-openssl-1.1' 'lib32-mesa-utils' 'python-pillow')
 optdepends=('gamemode: Support for Feral GameMode'
             'lib32-gamemode: 32-bit support for Feral GameMode'
             'gamescope: Support for Gamescope'
             'icoextract: For proper icon creation in GNOME')
-_commit=b5233fc
+_commit=ccd9c83
 source=("git+https://github.com/Castro-Fidel/PortProton_ALT.git#commit=$_commit")
 sha256sums=('SKIP')
 _gitname=PortProton_ALT
+_flatpakname=ru.linux_gaming.PortProton
 #source=("https://raw.githubusercontent.com/Castro-Fidel/PortWINE/master/portwine_install_script/PortProton_1.0"
 #        "$pkgname.desktop"
 #        "https://raw.githubusercontent.com/Castro-Fidel/PortProton_PKGBUILD/main/$pkgname.svg"
@@ -34,8 +35,8 @@ _gitname=PortProton_ALT
 
 package() {
   install -Dm755 "$srcdir/$_gitname/$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 "$srcdir/$_gitname/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
-  install -Dm644 "$srcdir/$_gitname/$pkgname.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
-#  install -Dm644 "$pkgname.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
+  install -Dm644 "$srcdir/$_gitname/$_flatpakname.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "$srcdir/$_gitname/$_flatpakname.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
+  install -Dm644 "$srcdir/$_gitname/$_flatpakname.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
   install -Dm644 "$srcdir/$_gitname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
