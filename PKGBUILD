@@ -187,7 +187,7 @@ prepare(){
   msg "Setup ECHO"
 
   # Enable ECHO
-  msg "Enable ECHO CPU Scheduler"
+  msg2 "Enable ECHO CPU Scheduler"
   scripts/config --enable CONFIG_ECHO_SCHED
 
   sleep 2s
