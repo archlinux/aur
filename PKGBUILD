@@ -4,10 +4,10 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libx11
-pkgver=1.8.7
-pkgrel=2
+pkgver=1.8.8
+pkgrel=1
 arch=('any')
-pkgdesc="X11 client-side library (Android, ${_android_arch})"
+pkgdesc="X11 client-side library (Android ${_android_arch})"
 url="https://xorg.freedesktop.org/"
 license=('custom')
 # keep xorgproto runtime dependency
@@ -20,9 +20,9 @@ makedepends=('android-configure'
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("${url}/releases/individual/lib/libX11-${pkgver}.tar.xz"{,.sig}
         '0001-Fix-missing-symbols.patch')
-sha512sums=('d53bfc18f38d339a6a695b09835b2ae96b323881678bfe7ddca697605e3bdf4102ff49cc3078880a6c55b5977fcdd0aadaf5429086132de3a5bda302f79a2fa6'
-            'SKIP'
-            'ff37be288378b1b0023f754ff52ec8b41bf3f1b0fc9d1f21f79472ea145172cee50211f1fbbf8de2c58693577e21e4fe70f6820d1d7ad3914a6f5e0d08e08bee')
+md5sums=('b3ead07f3706fc530c8c584bbe86506b'
+         'SKIP'
+         '7e75887c531b49934b9ac36ac329074a')
 validpgpkeys=('4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E') # Alan Coopersmith <alanc@freedesktop.org>
 
 prepare() {
