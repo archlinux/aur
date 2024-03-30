@@ -4,17 +4,17 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libassuan
-pkgver=2.5.6
+pkgver=2.5.7
 pkgrel=1
 arch=('any')
-pkgdesc="IPC library used by some GnuPG related software (android)"
+pkgdesc="IPC library used by some GnuPG related software (Android ${_android_arch})"
 url="http://www.gnupg.org/related_software/libassuan/"
 license=('GPL')
 depends=("android-${_android_arch}-libgpg-error")
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://gnupg.org/ftp/gcrypt/libassuan/libassuan-${pkgver}.tar.bz2")
-sha256sums=('e9fd27218d5394904e4e39788f9b1742711c3e6b41689a31aa3380bd5aa4f426')
+md5sums=('fe8310b1a5bcaa32d70af476fa2b942a')
 
 prepare() {
     cd "${srcdir}/libassuan-${pkgver}"
