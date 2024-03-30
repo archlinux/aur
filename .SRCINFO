@@ -1,0 +1,16 @@
+pkgbase = sos-bin
+	pkgdesc =
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/devlup-labs/sos
+	license = MIT
+	conflicts = sos
+	provides = sos
+	arch = aarch64
+	source_aarch64 = https://github.com/devlup-labs/sos/releases/download/0.1.0/sos_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 823a35a2a5537d559b980ba12be27e5b66ce21e9c103e4d081470330a0453730
+	arch = x86_64
+	source_x86_64 = https://github.com/devlup-labs/sos/releases/download/0.1.0/sos_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 675ff356cd7f7ee22bb6915bc63fd621003d591f91c9fb3be31dd21ec7d0001a
+	
+pkgname = sos-bin
