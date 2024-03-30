@@ -1,0 +1,17 @@
+pkgbase = dg
+	pkgdesc = A simple language that compiles to CPython bytecode
+	pkgver = 1.1.0.20160916
+	pkgrel = 8
+	url = https://pyos.github.io/dg
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = git+https://github.com/pyos/dg.git#commit=9d9a5365c8ee28d4812062db1e9932754260d2d0
+	sha256sums = b493c71df7e52595154c6720028b447493e822d0b57287862dd8d8696f358c26
+
+pkgname = dg
