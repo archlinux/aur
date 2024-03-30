@@ -14,6 +14,6 @@ pkgbase = vrf-decompiler
 	options = !strip
 	source = vrf-decompiler-9.0::git+https://github.com/ValveResourceFormat/ValveResourceFormat#tag=9.0?signed
 	validpgpkeys = E58081FB804DF24DF217AB772B6E7BF31D171C61
-	sha512sums = SKIP
+	sha512sums = 461d680a3eb83b1c3e181f5a4c272e9f8f4c38dcff09aad5cb864dd4759e6fa27c8844386a40a5fe2e199fb492bb27d0285677f335f831c3e11508cd124f04de
 
 pkgname = vrf-decompiler

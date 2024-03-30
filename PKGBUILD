@@ -11,7 +11,7 @@ depends=('dotnet-runtime>=8.0.0' 'skia-sharp')
 makedepends=('dotnet-sdk>=8.0.0' 'git')
 options=('!strip')
 source=("$pkgname-$pkgver::git+$url#tag=$pkgver?signed")
-sha512sums=('SKIP')
+sha512sums=('461d680a3eb83b1c3e181f5a4c272e9f8f4c38dcff09aad5cb864dd4759e6fa27c8844386a40a5fe2e199fb492bb27d0285677f335f831c3e11508cd124f04de')
 validpgpkeys=('E58081FB804DF24DF217AB772B6E7BF31D171C61') # Pavel Djundik <github@xpaw.me> (https://github.com/xPaw.gpg)
 
 _sourcedirectory="$pkgname-$pkgver"
