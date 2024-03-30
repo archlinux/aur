@@ -5,12 +5,14 @@ pkgname=(yaru-remix-gtk-theme-git
          yaru-remix-icon-theme-git
          yaru-remix-wallpaper-git)
 pkgver=r6.a1fdac60
-pkgrel=5
+pkgrel=6
 epoch=1
 pkgdesc="Yaru-remix is a fork of Yaru theme"
 arch=(any)
 url="https://github.com/Muqtxdir/${pkgbase%-git}"
-license=('GPL3' 'LGPL3' 'LGPL2.1' 'CCPL:by-nc-sa')
+license=(
+  'GPL-3.0-or-later AND LGPL-3.0-or-later AND LGPL-2.1-or-later AND CC-BY-NC-SA-4.0'
+)
 makedepends=(
   'meson'
   'sassc'
