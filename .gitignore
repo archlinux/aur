@@ -3,3 +3,4 @@
 !.nvchecker.toml
 !.SRCINFO
 !PKGBUILD
+!0001-test-Replace-dependency-pytest-lazy-fixture.patch

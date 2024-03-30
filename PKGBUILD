@@ -2,7 +2,7 @@
 
 pkgname=python-litestar
 _pkgname=${pkgname#python-}
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="Production-ready, Light, Flexible and Extensible ASGI API framework"
 arch=(any)
@@ -23,8 +23,6 @@ depends=(
   python-multidict
   python-polyfactory
   python-psycopg
-  python-pydantic
-  python-pydantic-extra-types
   python-rich
   python-rich-click
   python-sniffio
@@ -47,6 +45,7 @@ checkdepends=(
   python-brotli
   python-cryptography
   python-daphne
+  python-email-validator
   python-fsspec
   python-httpx-sse
   python-hypothesis
@@ -58,9 +57,11 @@ checkdepends=(
   python-picologging
   python-polyfactory
   python-psycopg
+  python-pydantic
+  python-pydantic-extra-types
   python-pytest
   python-pytest-asyncio
-  python-pytest-lazy-fixture
+  python-pytest-lazy-fixtures
   python-pytest-mock
   python-pytest-rerunfailures
   python-pytest-timeout
@@ -79,6 +80,10 @@ optdepends=(
   'python-structlog: logging library alternative'
   'python-picologging: logging library alternative'
 
+  'python-pydantic: Pydantic support'
+  'python-pydantic-extra-types: Pydantic support'
+  'python-email-validator: Pydantic support'
+
   # 'python-opentelemetry-instrumentation-asgi: Open Telementry instrumentation'
   'python-brotli: Brotli compression middleware'
   'python-cryptography: cookie based sessions & JWT authentication'
@@ -88,10 +93,22 @@ optdepends=(
   'python-redis: Redis store'
   'python-sqlalchemy: SQLAlchemy integration'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a79ad5f9f135502604dd955d757dde01ae4291680fa5f4869d5fc3a6c4be67ed')
+source=(
+  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+  "0001-test-Replace-dependency-pytest-lazy-fixture.patch"
+)
+sha256sums=(
+  'ca4659b1695f5f007f02081ae9963e0838b19ad97779708cda8cb48f2481ba8f'
+  'a8f0d355791c14c17ee0d6bfe85341cffd2e699b997d4636acb0e13dd67b31dc'
+)
 
 _archive="$_pkgname-$pkgver"
+
+prepare() {
+  cd "$_archive"
+
+  patch --forward --strip=1 --input="$srcdir/0001-test-Replace-dependency-pytest-lazy-fixture.patch"
+}
 
 build() {
   cd "$_archive"
@@ -115,14 +132,15 @@ check() {
 
     # Requires mapped_column
     --ignore=tests/unit/test_repository/test_generic_mock_repository.py
-
-    # Requires running docker compose
-    --ignore=tests/unit/test_testing/test_test_client.py
-    --ignore=tests/unit/test_channels/test_plugin.py
-    --ignore=tests/unit/test_channels/test_backends.py
-    --ignore=tests/unit/test_stores.py
   )
+
   local deselect_test_args=(
+    # Requires running docker compose
+    --deselect=tests/unit/test_testing/test_test_client.py
+    --deselect=tests/unit/test_channels/test_plugin.py
+    --deselect=tests/unit/test_channels/test_backends.py
+    --deselect=tests/unit/test_stores.py
+
     # Fails for unkown reason
     --deselect=tests/unit/test_template/test_template.py::test_media_type_inferred
 
@@ -136,7 +154,7 @@ check() {
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   export PYTHONPATH="$PWD/tmp_install/$site_packages"
-  pytest tests/ "${ignore_test_args[@]}" "${deselect_test_args[@]}"
+  pytest tests/ "${deselect_test_args[@]}" "${ignore_test_args[@]}"
 }
 
 package() {
