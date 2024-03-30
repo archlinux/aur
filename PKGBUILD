@@ -17,7 +17,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=(llvm-minimal-git llvm-libs-minimal-git clang-minimal-git clang-libs-minimal-git clang-opencl-headers-minimal-git)
-pkgver=19.0.0_r493341.fb5fd2d82f9b
+pkgver=19.0.0_r494338.b361b5369ed4
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -173,6 +173,10 @@ package_llvm-minimal-git() {
     rm "$pkgdir"/usr/lib/{LLVMgold,lib{LLVM,LTO}}.so
     rm "$pkgdir"/usr/lib/libRemarks.so
 
+    # for an unknown reason static *.a libraries are not removed from clang-minimal-git .
+    # forcefully remove them
+    rm "$pkgdir"/usr/lib/clang/19/lib/{i386-pc-linux-gnu,x86_64-pc-linux-gnu}/*.a
+    
     # prepare folders in srcdir to store files that are placed in other package_*() functions
     mkdir -p "$srcdir"{/llvm-libs/usr/lib,/clang-libs/usr/lib,/clang-opencl-headers/usr/{lib/clang/$_major_ver/include,include/clang/Basic}}
     
@@ -218,7 +222,7 @@ _python_optimize() {
   python -OO -m compileall "$@"
 }
 
-package_clang-minimal-git(){
+package_clang-minimal-git() {
   pkgdesc='C language family frontend for LLVM (git version)'
   depends=(llvm-libs-minimal-git clang-libs-minimal-git gcc)
   optdepends=('openmp: OpenMP support in clang with -fopenmp'
