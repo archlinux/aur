@@ -1,4 +1,5 @@
 /fix-protobuf-v20.patch
+/fix-liblo.patch
 pkg/
 src/
 *.tar.*

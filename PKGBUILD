@@ -4,7 +4,7 @@
 pkgbase=ola
 pkgname=(ola ola-docs)
 pkgver=0.10.9
-pkgrel=4
+pkgrel=5
 pkgdesc='Open Lighting Architecture for controlling entertainment lighting equipment'
 arch=(x86_64 aarch64)
 url='https://www.openlighting.org'
@@ -13,15 +13,19 @@ depends=()
 makedepends=(avahi cppunit doxygen flake8 libftdi-compat liblo libmicrohttpd ncurses protobuf-21
   python-numpy python-protobuf util-linux-libs)
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/OpenLightingProject/$pkgbase/archive/refs/tags/$pkgver.tar.gz"
-        "fix-protobuf-v20.patch::https://github.com/OpenLightingProject/$pkgbase/pull/1875.patch")
+        "fix-protobuf-v20.patch::https://github.com/OpenLightingProject/$pkgbase/pull/1875.patch"
+        "fix-liblo.patch::https://github.com/OpenLightingProject/$pkgbase/pull/1954.patch")
 sha256sums=('d2a80d907f5a0a5169583060bd32aa0fdbb2fdfe18d1194dd922595ab6d447b5'
-            '6e57bb39c94981f62da6cd6b5c2744ace8ebe4b7b9fa8ee383800c1e3b8d6742')
+            '6e57bb39c94981f62da6cd6b5c2744ace8ebe4b7b9fa8ee383800c1e3b8d6742'
+            'b72b5e337546d93fe3873ab1aae7427e59e121ae0cb50bf5eeeb372ef6c5e411')
 options=(!lto)
 
 prepare() {
   cd $pkgbase-$pkgver
   # https://github.com/OpenLightingProject/ola/pull/1875
   patch -p1 -i ../fix-protobuf-v20.patch
+  # https://github.com/OpenLightingProject/ola/pull/1954
+  patch -Np1 -i ../fix-liblo.patch
 }
 
 build() {
