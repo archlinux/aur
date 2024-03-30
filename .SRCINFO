@@ -5,6 +5,7 @@ pkgbase = octopi
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = qt5-tools
+	makedepends = knotifications5
 	depends = alpm-octopi-utils
 	depends = qtermwidget
 	source = octopi-0.15.0.tar.gz::https://github.com/aarnt/octopi/archive/v0.15.0.tar.gz
@@ -24,3 +25,18 @@ pkgname = octopi
 	optdepends = sudo: privilege elevation
 	provides = octopi-repoeditor
 	provides = octopi-cachecleaner
+
+pkgname = octopi-notifier-qt5
+	pkgdesc = Notifier for Octopi using Qt5 libs
+	depends = octopi
+	provides = octopi-notifier
+	conflicts = octopi-notifier
+	replaces = octopi-qt5-notifier
+	replaces = octopi-notifier-qt4
+
+pkgname = octopi-notifier-frameworks
+	pkgdesc = Notifier for Octopi with Knotifications support
+	depends = octopi
+	depends = knotifications5
+	provides = octopi-notifier
+	conflicts = octopi-notifier
