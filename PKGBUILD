@@ -1,32 +1,34 @@
-# Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
-_pkgname=asyncio_extras
-pkgname='python-asyncio_extras'
-pkgver='1.3.2'
-pkgrel='1'
-pkgdesc='Asynchronous generators and context managers for asyncio'
+# Maintainer: 
+# Contributor: Guillaume Horel <guillaume.horel@gmail.com>
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
+pkgname=python-asyncio_extras
+_name=${pkgname#python-}
+pkgver=1.3.2
+pkgrel=2
+pkgdesc="Asynchronous generators and context managers for asyncio"
 arch=('any')
-url='https://pypi.python.org/pypi/asyncio_extras'
+url="https://github.com/agronholm/asyncio_extras"
 license=('MIT')
-depends=('python' 'python-async_generator')
-makedepends=('python-setuptools')
-checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-asyncio')
-
-source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('084b62bebc19c6ba106d438a274bbb5566941c469128cd4af1a85f00a2c81f8d')
+depends=('python-async_generator')
+makedepends=('python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
+checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-cov')
+source=("$_name-$pkgver.tar.gz::https://github.com/agronholm/asyncio_extras/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('af41dbf28200d3a4e29ca3c2330d7d89ef08dd2554a4187ae92b3616f68d04a7')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
-  python ./setup.py build
-}
-
-package() {
-  cd "${_pkgname}-${pkgver}"
-  python ./setup.py install --root="${pkgdir}" --prefix="/usr"
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "$_name-$pkgver"
+  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
+  python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "${_pkgname}-${pkgver}"
+  cd "$_name-$pkgver"
   PYTHONPATH=. pytest
 }
-# vim:set ts=2 sw=2 et:
+
+package() {
+  cd "$_name-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+}
