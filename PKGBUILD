@@ -3,7 +3,7 @@
 pkgname="qrtr"
 pkgdesc="Userspace reference for net/qrtr in the Linux kernel"
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 arch=(aarch64 x86_64)
 url="https://github.com/andersson/qrtr"
 license=("BSD-3-Clause")
@@ -21,5 +21,5 @@ package() {
 	cd "$_srcname"
 
 	make prefix=/usr DESTDIR="$pkgdir/" install
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/COPYING
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 }
