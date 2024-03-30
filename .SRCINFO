@@ -14,6 +14,6 @@ pkgbase = ocaml-iter
 	options = !strip
 	source = ocaml-iter-1.8::git+https://github.com/c-cube/iter#commit=4f47de66fe63868487004b0f0b1d100c9dcbe1c3?signed
 	validpgpkeys = 1370978BC81E9735DFE727E1EBFFF6F283F3A2B4
-	sha512sums = SKIP
+	sha512sums = dd9cd3a1244cff8b1ac69b0eba4c4a043a130b0902b092529b55a392c67a5801d9a871c5ede7c4607fe72002ec01ba05957b444b29cac5565375c2b656caf05c
 
 pkgname = ocaml-iter
