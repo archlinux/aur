@@ -5,7 +5,7 @@ pkgname="ocaml-$_projectname"
 pkgver='3.6.5'
 pkgrel='1'
 pkgdesc='Manipulate, parse and generate OCaml compiler version strings'
-arch=('x86_64' 'aarch64') # TODO: check
+arch=('x86_64' 'aarch64')
 url="https://github.com/ocurrent/$_projectname"
 license=('ISC')
 depends=('ocaml>=4.07.0')
