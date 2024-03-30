@@ -27,5 +27,6 @@ pkgbase = bun-git
 	conflicts = bun
 	conflicts = bun-bin
 	source = git+https://github.com/oven-sh/bun
+	sha256sums = SKIP
 
 pkgname = bun-git
