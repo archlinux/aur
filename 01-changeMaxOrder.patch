@@ -1,0 +1,14 @@
+--- a/LinuxSDK/Drivers/DtSal/Source/DtUtility.c	2024-03-30 22:37:02.102670878 +0100
++++ b/LinuxSDK/Drivers/DtSal/Source/DtUtility.c	2024-03-30 22:39:04.223836236 +0100
+@@ -182,7 +182,11 @@
+         return DtMemAllocPool(Type, Size, Tag);
+     
+     // Check if we can allocate one contiguous piece of memory 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,8,0)
++    if (get_order(Size) < MAX_PAGE_ORDER)
++#else
+     if (get_order(Size) < MAX_ORDER )   
++#endif
+     {   
+         *ppPageList = NULL;
+         return DtMemAllocPool(Type, Size, Tag);    

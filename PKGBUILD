@@ -2,7 +2,7 @@
 
 pkgname=dektec-drivers-dkms
 pkgver=2024.01.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux DKMS for Dektec device drivers'
 arch=('x86_64')
 url="https://www.dektec.com/downloads/SDK/#linux"
@@ -18,16 +18,19 @@ source=(
 	"https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v$pkgver.tar.gz"
 	'dkms.conf'
 	'Makefile'
+	'01-changeMaxOrder.patch'
 )
 sha256sums=('3b767e61a88833e23e735852ae448a8c17985397f416bd2655841faa14e75ff0'
             '3ab98092aad33786c1766b8d0b29636c5bb1ccdb116cbfe32608c972b99d4d47'
-            '3ee9f2b8836d3e68451c3c29f343295f6ceaca52e84e18d040205b245473d314')
+            '3ee9f2b8836d3e68451c3c29f343295f6ceaca52e84e18d040205b245473d314'
+            'c8415be1a0583d269f9dfbe1497c4186882de18b4ac5cf9609c02d91308ea0d6')
 
 prepare() {
 	# Set version
 	sed -e "s|@PKGVER@|$pkgver|" -i dkms.conf -i Makefile
 
 	# Insert patches below this line
+	patch -Np1 -i 01-changeMaxOrder.patch
 }
 
 
