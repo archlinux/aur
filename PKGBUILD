@@ -5,10 +5,10 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libunistring
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 arch=('any')
-pkgdesc="Library for manipulating Unicode strings and C strings (Android, ${_android_arch})"
+pkgdesc="Library for manipulating Unicode strings and C strings (Android ${_android_arch})"
 url="https://www.gnu.org/software/libunistring/"
 license=('GPL')
 depends=('android-ndk'
@@ -18,11 +18,11 @@ options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://ftp.gnu.org/gnu/libunistring/libunistring-${pkgver}.tar.xz"{,.sig})
 validpgpkeys=('462225C3B46F34879FC8496CD605848ED7E69871'  # Daiki Ueno <ueno@unixuser.org>
               '9001B85AF9E1B83DF1BDA942F5BE8B267C6A406D') # Bruno Haible (Open Source Development) <bruno@clisp.org>
-md5sums=('0dfba19989ae06b8e7a49a7cd18472a1'
+md5sums=('6b4ea63617bf09d76e5234379e75e7f9'
          'SKIP')
 
 build() {
-    cd "${srcdir}"/libunistring-${pkgver}
+    cd "${srcdir}/libunistring-${pkgver}"
     source android-env ${_android_arch}
 
     export ac_cv_func_pthread_atfork=no
@@ -32,7 +32,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}"/libunistring-${pkgver}
+    cd "${srcdir}/libunistring-${pkgver}"
     source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
