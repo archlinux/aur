@@ -4,7 +4,7 @@
 # Contributor: Winston Astrachan <winston dot astrachan at gmail dot com>
 # Contributor: Henry Pham <huy at tableplus dot com>
 
-pkgname=tableplus
+pkgname=tableplus-bin
 pkgver=0.1.246
 pkgrel=1
 pkgdesc='Modern, native, and friendly GUI tool for relational databases (Alpha)'
