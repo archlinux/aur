@@ -1,0 +1,14 @@
+pkgbase = astrojs-ts-plugin
+	pkgdesc = The Astro language server, powered by Volar
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://github.com/withastro/language-tools/tree/main/packages/language-server#readme
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = ts-plugin-1.6.1.tgz
+	source = https://registry.npmjs.org/@astrojs/ts-plugin/-/ts-plugin-1.6.1.tgz
+	sha256sums = 68e9a0ef59f5058e54a80a5cc2f032cf9278e6f8acdd6830c4670f3423e598df
+
+pkgname = astrojs-ts-plugin
