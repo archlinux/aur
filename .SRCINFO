@@ -1,7 +1,7 @@
 pkgbase = hunspell-be-tarask
 	pkgdesc = Belarusian hunspell dictionary (classic orthography)
 	pkgver = 0.60.beta1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/375gnu/spell-be-tarask
 	arch = any
 	license = CC-BY-SA-3.0
