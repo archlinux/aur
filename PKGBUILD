@@ -19,7 +19,7 @@ SYSTEM_FIRMWARE_DIR="/usr/lib/firmware/scarlett2"
 
 pkgver() {
     cd "$_pkgname"
-    echo "$(git describe --abbrev=4 --always --tags | sed 's/-/./g')"
+    git describe --abbrev=4 --always --tags | sed 's/-/./g'
 }
 
 package() {
