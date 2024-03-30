@@ -1,0 +1,100 @@
+# Maintainer: Alan Placidina Maria <placidina[at]protonmail[dot]com>
+
+pkgname=gaming-lutris-steam-nvidia
+pkgver=1.0.0
+pkgrel=1
+pkgdesc='Install and configure Lutris and Steam for NVIDIA'
+arch=('x86_64')
+url='https://github.com/Placidina'
+license=('Apache')
+depends=(
+    nvidia
+    nvidia-utils
+    opencl-nvidia
+    mesa
+    mesa-demos
+    mesa-utils
+    vulkan-icd-loader
+    vkd3d
+    dxvk-bin
+    vkd3d-proton-bin
+    wine
+    wine-gecko
+    wine-mono
+    winetricks
+    innoextract
+    dosbox
+    gst-plugins-bad
+    gst-plugins-base
+    gst-plugins-good
+    gst-plugins-ugly
+    libgphoto2
+    opencl-icd-loader
+    alsa-lib
+    alsa-plugins
+    alsa-oss
+    gnutls
+    gamemode
+    mangohud
+    fontconfig
+    freetype2
+    gcc-libs
+    gettext
+    libpcap
+    libunwind
+    libxcursor
+    libxi
+    libxkbcommon
+    libxrandr
+    libcups
+    libpulse
+    libxcomposite
+    libxinerama
+    pcsclite
+    sdl2
+    v4l-utils
+    lutris
+    steam
+)
+depends_x86_64=(
+    lib32-opencl-nvidia
+    lib32-nvidia-utils
+    lib32-vkd3d
+    lib32-mesa
+    lib32-mesa-demos
+    lib32-mesa-utils
+    lib32-vulkan-icd-loader
+    lib32-gst-plugins-base
+    lib32-gst-plugins-base-libs
+    lib32-gst-plugins-good
+    lib32-opencl-icd-loader
+    lib32-alsa-lib
+    lib32-alsa-plugins
+    lib32-alsa-oss
+    lib32-gnutls
+    lib32-gamemode
+    lib32-mangohud
+    lib32-fontconfig
+    lib32-freetype2
+    lib32-gcc-libs
+    lib32-gettext
+    lib32-libpcap
+    lib32-libunwind
+    lib32-libxcursor
+    lib32-libxi
+    lib32-libxkbcommon
+    lib32-libxrandr
+    lib32-libcups
+    lib32-libpulse
+    lib32-libxcomposite
+    lib32-libxinerama
+    lib32-pcsclite
+    lib32-sdl2
+    lib32-v4l-utils
+)
+source=('80-gamecompatibility.conf')
+sha256sums=('a2f7d66d97ed5b7f77db47c3565fd2e8e318233f01532cdfaf03d6d3c70ea8c6')
+
+package() {
+    install -Dm 644 "${srcdir}/80-gamecompatibility.conf" "${pkgdir}/etc/sysctl.d/80-gamecompatibility.conf"
+}
