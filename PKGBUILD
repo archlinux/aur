@@ -1,8 +1,5 @@
-# Maintainer: Lucas Saliés Brum <sistematico at gmail dot com>
-# Contributor: Ethan Reece <aur at ethanreece dot com>
-# Contributor: Loopsmark <loopsmark at merkur dot pm>
-# Contributor: Winston Astrachan <winston dot astrachan at gmail dot com>
-# Contributor: Henry Pham <huy at tableplus dot com>
+# Basically a copy of https://aur.archlinux.org/packages/tableplus
+# Made this because the other package lacks updates.
 
 pkgname=tableplus-bin
 pkgver=0.1.246
