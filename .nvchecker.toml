@@ -1,0 +1,5 @@
+[python-transonic]
+source = "gitlab"
+gitlab = "fluiddyn/transonic"
+host = "foss.heptapod.net"
+use_max_tag = true
