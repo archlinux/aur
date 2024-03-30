@@ -13,7 +13,7 @@ depends=(qt6-base qt6-multimedia qt6-tools qt6-imageformats qt6-translations)
 makedepends=(git cmake ninja)
 provides=(quran-companion)
 conflicts=(quran-companion)
-source=("git+https://github.com/0xzer0x/quran-companion.git")
+source=("git+https://github.com/0xzer0x/quran-companion.git#branch=main")
 md5sums=('SKIP')
 
 pkgver() {

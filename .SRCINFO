@@ -15,7 +15,7 @@ pkgbase = quran-companion-git
 	depends = qt6-translations
 	provides = quran-companion
 	conflicts = quran-companion
-	source = git+https://github.com/0xzer0x/quran-companion.git
+	source = git+https://github.com/0xzer0x/quran-companion.git#branch=main
 	md5sums = SKIP
 
 pkgname = quran-companion-git
