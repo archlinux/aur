@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-libunistring
-	pkgdesc = Library for manipulating Unicode strings and C strings (Android, aarch64)
-	pkgver = 1.1
-	pkgrel = 2
+	pkgdesc = Library for manipulating Unicode strings and C strings (Android aarch64)
+	pkgver = 1.2
+	pkgrel = 1
 	url = https://www.gnu.org/software/libunistring/
 	arch = any
 	license = GPL
@@ -12,11 +12,11 @@ pkgbase = android-aarch64-libunistring
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://ftp.gnu.org/gnu/libunistring/libunistring-1.1.tar.xz
-	source = https://ftp.gnu.org/gnu/libunistring/libunistring-1.1.tar.xz.sig
+	source = https://ftp.gnu.org/gnu/libunistring/libunistring-1.2.tar.xz
+	source = https://ftp.gnu.org/gnu/libunistring/libunistring-1.2.tar.xz.sig
 	validpgpkeys = 462225C3B46F34879FC8496CD605848ED7E69871
 	validpgpkeys = 9001B85AF9E1B83DF1BDA942F5BE8B267C6A406D
-	md5sums = 0dfba19989ae06b8e7a49a7cd18472a1
+	md5sums = 6b4ea63617bf09d76e5234379e75e7f9
 	md5sums = SKIP
 
 pkgname = android-aarch64-libunistring
