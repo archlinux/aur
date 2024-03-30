@@ -1,0 +1,13 @@
+pkgbase = cxxitimer
+	pkgdesc = A C++ Library to handle linux interval timer
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/NikolasK-source/cxxitimer
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	source = git+https://github.com/NikolasK-source/cxxitimer.git#tag=v2.0.1
+	sha256sums = SKIP
+
+pkgname = cxxitimer
