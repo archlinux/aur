@@ -19,6 +19,6 @@ pkgbase = ocaml-containers
 	options = !strip
 	source = ocaml-containers-3.13.1::git+https://github.com/c-cube/ocaml-containers#commit=60bb2c8c68e3fce3d77c0e521fd6a1861ce6701e?signed
 	validpgpkeys = 1370978BC81E9735DFE727E1EBFFF6F283F3A2B4
-	sha512sums = SKIP
+	sha512sums = b885133e8f4cdc0ffa9ab764b30565dac2c3da9bb016bc480946dd611bfafed9447f00d735bd9ed50b17f7fadf767f937d3e875ea4936923fe2a06215073525c
 
 pkgname = ocaml-containers
