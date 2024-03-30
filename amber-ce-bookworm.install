@@ -1,0 +1,17 @@
+post_install(){
+pkexec bash /opt/apps/cn.flamescion.bookworm-compatibility-mode/files/bin/ace-init
+systemctl enable --now ace-bookworm-auto-upgrade.service
+}
+
+post_upgrade(){
+pkexec bash /opt/apps/cn.flamescion.bookworm-compatibility-mode/files/bin/ace-init
+systemctl enable --now ace-bookworm-auto-upgrade.service
+}
+
+post_remove(){
+rm -f /usr/bin/bookworm-run
+rm -f /usr/bin/ace-uninstall-helper
+rm -f /usr/bin/ace-uninstall-helper-gui
+
+rm -rf /opt/apps/cn.flamescion.bookworm-compatibility-mode
+}
