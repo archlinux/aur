@@ -2,6 +2,10 @@
 
 SHELL := /bin/bash
 
+MAKEFILE_DIR := $(dir $(lastword $(MAKEFILE_LIST)))
+
+TARGET_REPO := k1LoW/dirmap
+
 .PHONY: default
 default: help
 
@@ -13,10 +17,10 @@ help-common:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m %-30s\033[0m %s\n", $$1, $$2}'
 
 
-.PHONY: renew install update package clean update_tag test
+.PHONY: renew update_package install update_checksum package package_auto clean update_tag test
 renew: update_tag install ## get newer version and renew package, install that
 
-update_pakage: package_auto test ## 自動的に最新バージョンを取得してパッケージングしてテスト
+update_package: package_auto test ## 自動的に最新バージョンを取得してパッケージングしてテスト
 
 install: ## install package
 	makepkg -si
@@ -30,23 +34,24 @@ package: update_checksum ## 事前に手動でバージョンを更新してパ�
 	makepkg -s
 	mksrcinfo
 
-package_auto: update_tag ## 自動でバージョンを更新してパッケージング
+package_auto: update_tag ## 自動で最新バージョンに更新してパッケージング
 	makepkg -s
 	mksrcinfo
 
 clean: ## remove tar.gz
 	rm -vf *.tar.xz *.tar.gz
 
-update_tag: LATEST := "$(shell curl -sL https://api.github.com/repos/k1LoW/dirmap/releases/latest | jq -r '.tag_name|ltrimstr("v")')"
+update_tag: LATEST := $(shell curl -sL https://api.github.com/repos/$(TARGET_REPO)/releases/latest | jq -r '.tag_name|ltrimstr("v")')
 update_tag: ## get and update newest version in PKGBUILD
 	source ./PKGBUILD && \
 	if [[ $${pkgver} != $(LATEST) ]]; then \
 	  sed -i -e 's/^pkgver=.*$$/pkgver=$(LATEST)/' ./PKGBUILD && \
+	  sed -i -e 's/^pkgrel=.*$$/pkgrel=1/' ./PKGBUILD && \
 	  updpkgsums && \
 	  git diff ./PKGBUILD;  \
 	fi
 
-test: ## test
-	source ./PKGBUILD && \
-	./test.sh $${pkgname}-$${pkgver}-$${pkgrel}-x86_64.pkg.tar.xz
+test: ## test (事前にパッケージの生成が必要)
+	docker build -t arch:arch-package-test -f $(MAKEFILE_DIR)/Dockerfile $(MAKEFILE_DIR) && \
+	docker run -it --rm -v $(MAKEFILE_DIR):/work -w /work arch:arch-package-test ./test.sh
 

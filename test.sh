@@ -2,14 +2,25 @@
 
 set -eu
 
-PKG=${1}
+source ./PKGBUILD
 
-REPOSITORY_DIR="$(cd "$(dirname "$0")" && pwd)"
+echo "## install start"
+pacman -U --noconfirm "${pkgname}-${pkgver}-${pkgrel}-$(uname -m).pkg.tar.xz"
 
-docker build -t arch:direnv-test -f ${REPOSITORY_DIR}/Dockerfile ${REPOSITORY_DIR}
+echo "## install completed"
 
-docker run -it --rm \
-  -v ${REPOSITORY_DIR}:/work \
-  -w /work \
-  arch:direnv-test pacman -U ${PKG}
+echo "## check installed files"
+
+echo
+echo "### check command help"
+
+${pkgname} --help
+
+echo
+echo "### check command version"
+
+${pkgname} --version
+
+echo "test OK"
+
 
