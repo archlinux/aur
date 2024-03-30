@@ -1,0 +1,8 @@
+pkgbase = meteo-avi-2-gba
+	pkgdesc = (BROKEN) AVI conversion tool for Nintendo Game Boy Advance
+	pkgver = 1.4.0
+	pkgrel = 1
+	arch = x86_64 i686
+
+pkgname = meteo-avi-2-gba
+
