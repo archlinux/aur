@@ -2,7 +2,7 @@
 
 pkgname=cxxshm
 pkgrel=1
-pkgver=2.0.1
+pkgver=2.0.2
 pkgdesc="A C++ library to handle POSIX shared memory"
 url="https://github.com/NikolasK-source/cxxshm"
 license=('MIT')
