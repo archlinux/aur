@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Meteo AVI-2-GBA
+Comment=AVI conversion tool for Nintendo Game Boy Advance
+Exec=meteo-avi-2-gba
+Icon=meteo-avi-2-gba
+Terminal=false
+StartupNotify=false
+Categories=Wine;AudioVideo
