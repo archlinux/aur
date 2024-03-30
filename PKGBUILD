@@ -2,7 +2,7 @@
 
 pkgname=binsec
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source toolset to help improve software security at the binary level'
 arch=('x86_64')
 url='https://binsec.github.io'
@@ -11,6 +11,7 @@ makedepends=('ocaml>=4.11' 'dune>=3.0' 'ocaml-menhir')
 checkdepends=('ocaml-ounit' 'ocaml-qcheck')
 depends=('glibc' 'gmp' 'ocaml-curses' 'ocaml-grain_dypgen' 'ocaml-ocamlgraph>=1.8.5' 'ocaml-toml' 'ocaml-zarith>=1.4' 'ocaml>=4.11')
 optdepends=('bash: make_coredump.sh'
+	    'bitwuzla: Bitwuzla SMT solver'
 	    'boolector: Boolector SMT solver'
 	    'z3: Z3 SMT solver'
 	    'cvc4: CVC4 SMT solver'

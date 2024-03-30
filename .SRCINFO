@@ -1,7 +1,7 @@
 pkgbase = binsec
-	pkgdesc = Open-source toolset to help improve software security at the binary level.
+	pkgdesc = Open-source toolset to help improve software security at the binary level
 	pkgver = 0.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://binsec.github.io
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -19,6 +19,7 @@ pkgbase = binsec
 	depends = ocaml-zarith>=1.4
 	depends = ocaml>=4.11
 	optdepends = bash: make_coredump.sh
+	optdepends = bitwuzla: Bitwuzla SMT solver
 	optdepends = boolector: Boolector SMT solver
 	optdepends = z3: Z3 SMT solver
 	optdepends = cvc4: CVC4 SMT solver
