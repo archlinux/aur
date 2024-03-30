@@ -1,0 +1,14 @@
+pkgbase = qmic
+	pkgdesc = QMI IDL compiler
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/andersson/qmic
+	arch = aarch64
+	arch = x86_64
+	license = BSD
+	provides = qmic
+	conflicts = qmic
+	source = qmic-1.0.tar.gz::https://github.com/linux-msm/qmic/archive/refs/tags/v1.0.tar.gz
+	sha256sums = e2797c85a2b617b2b35024566105f4d8e998ef576f0f96f7923abf3717d12e86
+
+pkgname = qmic
