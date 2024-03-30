@@ -3,7 +3,7 @@
 _version=v0.60-beta1
 pkgname='hunspell-be-tarask'
 pkgver=0.60.beta1
-pkgrel=2
+pkgrel=3
 pkgdesc="Belarusian hunspell dictionary (classic orthography)"
 arch=('any')
 url="https://github.com/375gnu/spell-be-tarask"
