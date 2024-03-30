@@ -1,0 +1,20 @@
+pkgbase = vigiland-git
+	pkgdesc = Inhibit idle behaviour of a Wayland compositor
+	pkgver = r11.6b84e1a
+	pkgrel = 1
+	url = https://github.com/Jappie3/vigiland
+	arch = x86_64
+	license = AGPL3
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = wayland
+	depends = wayland-protocols
+	provides = vigiland
+	conflicts = vigiland
+	options = !debug
+	source = vigiland::git+https://github.com/Jappie3/vigiland
+	sha256sums = SKIP
+
+pkgname = vigiland-git
