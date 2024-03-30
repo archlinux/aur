@@ -4,19 +4,27 @@ pkgver=2.10.0.r59.g39c83fa0
 pkgrel=1
 pkgdesc='MediaElch is a MediaManager for Kodi'
 url='https://github.com/Komet/MediaElch'
-arch=('x86_64')
-license=('LGPL3')
+arch=(
+  'x86_64'
+)
+license=(
+  'LGPL-3.0-or-later'
+)
 
-depends=('glibc'
-         'gcc-libs'
-         'libmediainfo'
-         'qt6-declarative'
-         'qt6-multimedia'
-         'qt6-svg'
-         'quazip-qt6')
-makedepends=('cmake'
-             'ninja'
-             'qt6-tools')
+depends=(
+  'glibc'
+  'gcc-libs'
+  'libmediainfo'
+  'qt6-declarative'
+  'qt6-multimedia'
+  'qt6-svg'
+  'quazip-qt6'
+)
+makedepends=(
+  'cmake'
+  'ninja'
+  'qt6-tools'
+)
 
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
