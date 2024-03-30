@@ -3,14 +3,14 @@
 
 pkgname=phonon-qt6-git
 pkgdesc="The multimedia framework by KDE"
-pkgver=4.11.1_r3911.g0f0ae8d0
+pkgver=4.12.0_r3961.g6febf7f0
 pkgrel=1
 arch=($CARCH)
 url='https://community.kde.org/Phonon'
 license=(LGPL)
-depends=(libpulse qt6-base)
+depends=(libpulse qt6-base phonon-qt6-backend)
 optdepends=('pulseaudio: PulseAudio support' 'qt6-tools: Designer plugin')
-makedepends=(git extra-cmake-modules-git qt6-tools qt6-5compat)
+makedepends=(git extra-cmake-modules-git qt6-tools qt6-5compat qt5-base qt5-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 replaces=(phonon-git)
