@@ -1,0 +1,12 @@
+pkgbase = pyonji
+	pkgdesc = An easy-to-use tool to send e-mail patches
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://sr.ht/~emersion/pyonji
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	source = pyonji-0.1.0.tar.gz::https://git.sr.ht/~emersion/pyonji/archive/v0.1.0.tar.gz
+	b2sums = 2a87bac1646937956b01a52f239b43e58918cf3044b777788b4793d60ff2fd51440a0e646005bbffd832da257510c771c2111fc127fdc8df2ddf6b465dbfb918
+
+pkgname = pyonji
