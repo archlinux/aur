@@ -1,0 +1,12 @@
+diff --unified --recursive --text bitwuzla-0.4.0.orig/src/meson.build bitwuzla-0.4.0/src/meson.build
+--- bitwuzla-0.4.0.orig/src/meson.build	2024-03-30 15:53:33.155005989 +0100
++++ bitwuzla-0.4.0/src/meson.build	2024-03-30 16:18:42.411278668 +0100
+@@ -49,7 +49,7 @@
+ # ---
+ 
+ # Get git information
+-git = find_program('git')
++git = find_program('git', required : false)
+ git_id = ''
+ if git.found()
+   repo = meson.project_source_root()

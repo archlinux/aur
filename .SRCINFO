@@ -1,0 +1,50 @@
+pkgbase = bitwuzla
+	pkgdesc = SMT solver for the theories of fixed-size bit-vectors, floating-point arithmetic, arrays and uninterpreted functions and their combinations
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://bitwuzla.github.io
+	arch = x86_64
+	license = MIT
+	checkdepends = gtest
+	checkdepends = python-pytest
+	makedepends = cadical>=1.5.0
+	makedepends = cmake
+	makedepends = cython
+	makedepends = doxygen
+	makedepends = meson>=0.64
+	makedepends = ninja
+	makedepends = python-breathe
+	makedepends = python-sphinx
+	makedepends = python-sphinx-tabs
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-sphinxcontrib-bibtex
+	makedepends = python>=3.7
+	makedepends = python-sphinx
+	makedepends = symfpu-cvc5
+	depends = gcc-libs
+	depends = glibc
+	depends = gmp>=6.1
+	depends = kissat
+	optdepends = cryptominisat5: Support for the CryptoMiniSat SAT solver
+	optdepends = python>=3.7: Python bindings
+	provides = bitwuzla.cpython-311-x86_64-linux-gnu.so
+	provides = libbitwuzlabv.so
+	provides = libbitwuzlabb.so
+	provides = libbitwuzlals.so
+	provides = libbitwuzla.so
+	options = !lto
+	source = bitwuzla-0.4.0.tar.gz::https://github.com/bitwuzla/bitwuzla/archive/refs/tags/0.4.0.tar.gz
+	source = 0001-Use-installed-libraries.patch
+	source = 0002-Skip-Test-based-on-timeout.patch
+	source = 0003-Do-not-require-git.patch
+	b2sums = 135ed8dbe8ada22ca36f872ccc062622bfdfa87592cfcad596f9c1c0c92c99a486a7ff52707fe7dba33531405cd6c84a20a3f546d3614585721f6b7468dc2894
+	b2sums = 0ebea6754d4fc270c268d4088af9bcb93596fe5ec7b1065f83d39e5c56eef93d567592443ec0a460a34bf5829b5b54f2c9971644f6fbbebbf9c43a1b440ac54d
+	b2sums = 7728ab77cb234b4427e7cf493817a24bf97440304efb4fc4300125ec470a0bf15430b4416d3c5fdea51dc91441640d05995ed4a08d4c628f97f4d4dc08538d7e
+	b2sums = 7c80c06aec86c5c75a72786cfafa03d703950efa5639726abec5466b82928ae231eed75bff29d056d6e47bf2e4ab1ce4f9634fd96f9454d0b92d90c30fd26f37
+
+pkgname = bitwuzla
+
+pkgname = bitwuzla-doc
+	pkgdesc = Documentation for the Bitwuzla SMT solver
+	arch = any
+	depends = 
