@@ -14,7 +14,7 @@ makedepends=('dune>=2.9.0')
 checkdepends=('ocaml-fileutils>=0.4.4' 'ocaml-ounit>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver::git+$url#commit=$_commit?signed")
-sha512sums=('SKIP')
+sha512sums=('b23664ab3ed5336fb00454e454362e1ac05a608c2b398d4e653f4d7325a4e97b8720012698e669cecd8d00f1422d3d93331bb249bd593853654e0f4d5f427cf3')
 validpgpkeys=('1370978BC81E9735DFE727E1EBFFF6F283F3A2B4') # Simon Cruanes <simon.cruanes.2007@m4x.org> (https://github.com/c-cube.gpg)
 
 _sourcedirectory="$pkgname-$pkgver"

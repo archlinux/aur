@@ -14,6 +14,6 @@ pkgbase = ocaml-inotify
 	options = !strip
 	source = ocaml-inotify-2.5::git+https://github.com/whitequark/ocaml-inotify#commit=5e5853680c2b2e41091c1ed030eef9ab008203bb?signed
 	validpgpkeys = 1370978BC81E9735DFE727E1EBFFF6F283F3A2B4
-	sha512sums = SKIP
+	sha512sums = b23664ab3ed5336fb00454e454362e1ac05a608c2b398d4e653f4d7325a4e97b8720012698e669cecd8d00f1422d3d93331bb249bd593853654e0f4d5f427cf3
 
 pkgname = ocaml-inotify
