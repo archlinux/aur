@@ -8,10 +8,10 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-glib2
-pkgver=2.78.4
-pkgrel=2
+pkgver=2.80.0
+pkgrel=1
 arch=('any')
-pkgdesc="Low level core library (Android, ${_android_arch})"
+pkgdesc="Low level core library (Android ${_android_arch})"
 url="https://wiki.gnome.org/Projects/GLib"
 license=("LGPL2.1")
 groups=('android-glib2')
@@ -22,7 +22,7 @@ depends=("android-${_android_arch}-libffi"
 makedepends=('android-meson')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://download.gnome.org/sources/glib/${pkgver%.*}/glib-${pkgver}.tar.xz")
-sha256sums=('24b8e0672dca120cc32d394bccb85844e732e04fe75d18bb0573b2dbc7548f63')
+sha256sums=('8228a92f92a412160b139ae68b6345bd28f24434a7b5af150ebe21ff587a561d')
 
 build() {
     cd "${srcdir}"/glib-${pkgver}
