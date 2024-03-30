@@ -14,8 +14,8 @@
 : ${_sccache:=}
 
 pkgname=niri-git
-pkgver=0.1.2.r23.gd1fe693
-pkgrel=2
+pkgver=0.1.4.r917.7ff2de1
+pkgrel=1
 pkgdesc="Scrollable-tiling Wayland compositor"
 arch=(x86_64 aarch64)
 url="https://github.com/YaLTeR/${pkgname%-git}"
