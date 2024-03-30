@@ -1,7 +1,7 @@
 pkgbase = eduke32
 	pkgdesc = An advanced Duke Nukem 3D source port
 	pkgver = 20240316.r10564_0bc78c53d
-	pkgrel = 2
+	pkgrel = 3
 	url = http://eduke32.com/
 	install = eduke32.install
 	arch = i686
@@ -18,6 +18,7 @@ pkgbase = eduke32
 	optdepends = freepats-legacy: a free soundfont for music
 	optdepends = fluidsynth: alternative midi sequencer
 	optdepends = eduke32-shareware-episode: Duke Nukem 3D Demo
+	options = !debug
 	source = http://dukeworld.com/eduke32/synthesis/20240316-10564-0bc78c53d/eduke32_src_20240316-10564-0bc78c53d.tar.xz
 	source = eduke32.png
 	source = eduke32.desktop
