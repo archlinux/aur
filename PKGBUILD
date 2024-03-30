@@ -48,6 +48,6 @@ package() {
 	install -Dm644 dist/xdg/logo256.png "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/io.github._0xzer0x.qurancompanion.png
 
 	cmake --install build --prefix "${pkgdir}/opt/${_pkgname}"
-	ln -sf "${pkgdir}/opt/${_pkgname}/bin/quran-companion" "${pkgdir}/usr/bin/quran-companion"
+	ln -sf "/opt/${_pkgname}/bin/quran-companion" "${pkgdir}/usr/bin/quran-companion"
 
 }
