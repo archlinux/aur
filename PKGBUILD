@@ -3,12 +3,13 @@
 _pkgname=pylibsrtp
 pkgname=python-pylibsrtp
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python bindings for libsrtp'
 arch=('x86_64')
 url='https://github.com/aiortc/pylibsrtp'
-license=('BSD')
+license=('BSD-3-Clause')
 depends=(
+  glibc
   libsrtp
   python-cffi
 )

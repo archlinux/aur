@@ -1,14 +1,15 @@
 pkgbase = python-pylibsrtp
 	pkgdesc = Python bindings for libsrtp
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aiortc/pylibsrtp
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = glibc
 	depends = libsrtp
 	depends = python-cffi
 	source = pylibsrtp-0.10.0.tar.gz::https://github.com/aiortc/pylibsrtp/archive/refs/tags/0.10.0.tar.gz
