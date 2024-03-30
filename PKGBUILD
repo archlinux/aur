@@ -1,8 +1,8 @@
 # Maintainer: Rafael Carvalho <contact@rafaelrc.com>
 
 pkgname=wayland-pipewire-idle-inhibit
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="Inhibit wayland idle when computer is playing sound"
 arch=('x86_64')
 url="https://github.com/rafaelrc7/wayland-pipewire-idle-inhibit"
@@ -10,7 +10,7 @@ license=('GPL-3.0-only')
 depends=(gcc-libs glibc libpipewire wayland wayland-protocols)
 makedepends=(cargo clang)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2b7a1707861a3eefbaf93a5a4200ba8420998d80cb4c99777bbfa2d0a0a1dd71')
+sha256sums=('68e459454d7f63bfb140077ef745979aa3b877cd83c48abf057b6524a20a7cdc')
 
 build() {
 	cd "$pkgname-$pkgver"
