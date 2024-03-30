@@ -1,9 +1,8 @@
-# Basically a copy of https://aur.archlinux.org/packages/tableplus
-# Made this because the other package lacks updates.
+# This PKGBUILD is forked from https://aur.archlinux.org/packages/tableplus due to lack of updating.
 
 pkgname=tableplus-bin
 pkgver=0.1.246
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern, native, and friendly GUI tool for relational databases (Alpha)'
 arch=('x86_64' 'aarch64')
 conflicts=('tableplus')
