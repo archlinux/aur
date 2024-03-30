@@ -9,6 +9,7 @@ pkgbase = tableplus-bin
 	depends = gtksourceview3
 	depends = libgee
 	depends = gnome-keyring
+	conflicts = tableplus
 	source = LICENSE
 	source = tableplus.desktop
 	sha256sums = 76f924b1ebad5309ccf0dd7f3fe3d1b57ff3088b208a603900b0e240fdb5debb
