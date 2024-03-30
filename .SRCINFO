@@ -1,7 +1,7 @@
 pkgbase = lightlyshaders-plasma6-git
 	pkgdesc = Round corners and outline effect for KWin
 	pkgver = 2.0.0.r27.ga380ae6
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/a-parhom/LightlyShaders
 	arch = x86_64
 	license = GPL3
