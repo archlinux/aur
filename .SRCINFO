@@ -1,6 +1,6 @@
 pkgbase = carla-bridges-win32
 	pkgdesc = Carla Win32 Bridge
-	pkgver = 6940.86afb5f65
+	pkgver = 6940.3c7d0e7b9
 	pkgrel = 1
 	url = http://kxstudio.sf.net/carla
 	arch = i686
