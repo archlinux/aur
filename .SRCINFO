@@ -1,10 +1,10 @@
 pkgbase = rabbitvcs-git
 	pkgdesc = A set of graphical tools written to provide simple and straightforward access to the version control systems you use
 	pkgver = r1935.f3da1d7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rabbitvcs/rabbitvcs
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = gtk-update-icon-cache

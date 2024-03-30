@@ -20,7 +20,7 @@ pkgname=(
 )
 
 pkgver=r1935.f3da1d7
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of graphical tools written to provide simple and straightforward access to the version control systems you use"
 arch=('any')
 url="https://github.com/rabbitvcs/rabbitvcs"
@@ -33,7 +33,9 @@ makedepends=(
     'gtk-update-icon-cache'
 )
 
-license=('GPL')
+license=(
+    'GPL-2.0-or-later'
+)
 sha256sums=('SKIP')
 
 pkgver() {
