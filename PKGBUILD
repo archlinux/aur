@@ -6,16 +6,37 @@
 # Contributor: ssfdust@gmail.com <ssfdust@gmail.com>
 
 pkgname=cairo-dock-plug-ins-wayland-git
-pkgver=3.5.99.alpha1.20240204.6c3e683d7
+pkgver=3.5.99.alpha1.20240329.ccc0d1c0f
 pkgrel=1
 pkgdesc='Plugins for Cairo-Dock with wayland support'
 arch=('x86_64')
 url='https://github.com/dkondor/cairo-dock-plug-ins'
 license=('GPL')
 depends=('cairo-dock-core-wayland-git')
-makedepends=('alsa-lib' 'cmake' 'dbus-sharp-glib' 'fftw' 'gnome-menus'
-             'gtk-sharp-3' 'gvfs' 'libetpan' 'libexif' 'libical' 'libpulse' 'libxklavier' 'lm_sensors' 'python' 'ruby' 'upower'
-             'vala' 'vte3' 'zeitgeist')
+makedepends=('alsa-lib'
+             'ayatana-ido'
+             'cmake'
+             'dbus-sharp-glib'
+             'fftw'
+             'git'
+             'gnome-menus'
+             'gtk-sharp-2'
+             'gtk-sharp-3'
+             'gvfs'
+             'libayatana-indicator'
+             'libdbusmenu-gtk3'
+             'libetpan'
+             'libexif'
+             'libical'
+             'libpulse'
+             'libxklavier'
+             'lm_sensors'
+             'python'
+             'ruby'
+             'upower'
+             'vala'
+             'vte3'
+             'zeitgeist')
 optdepends=('alsa-lib: Sound Control, Sound Effects applets'
             'dbus-sharp-glib: Mono API'
             'fftw: Impulse applet'
@@ -38,7 +59,7 @@ replaces=('cairo-dock-plugins')
 provides=("${pkgname%-git}" 'cairo-dock-plug-ins')
 conflicts=("${pkgname%-git}" 'cairo-dock-plug-ins')
 options=(debug)
-source=("${pkgname}::git+https://github.com/dkondor/cairo-dock-plug-ins#branch=wayland_new3")
+source=("${pkgname}::git+https://github.com/dkondor/cairo-dock-plug-ins#commit=ccc0d1c0f01dafc628915685a56388a653f498fe")
 sha256sums=('SKIP')
 
 _builddir="build"

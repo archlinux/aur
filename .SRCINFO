@@ -1,17 +1,22 @@
 pkgbase = cairo-dock-plug-ins-wayland-git
 	pkgdesc = Plugins for Cairo-Dock with wayland support
-	pkgver = 3.5.99.alpha1.20240204.6c3e683d7
+	pkgver = 3.5.99.alpha1.20240329.ccc0d1c0f
 	pkgrel = 1
 	url = https://github.com/dkondor/cairo-dock-plug-ins
 	arch = x86_64
 	license = GPL
 	makedepends = alsa-lib
+	makedepends = ayatana-ido
 	makedepends = cmake
 	makedepends = dbus-sharp-glib
 	makedepends = fftw
+	makedepends = git
 	makedepends = gnome-menus
+	makedepends = gtk-sharp-2
 	makedepends = gtk-sharp-3
 	makedepends = gvfs
+	makedepends = libayatana-indicator
+	makedepends = libdbusmenu-gtk3
 	makedepends = libetpan
 	makedepends = libexif
 	makedepends = libical
@@ -49,7 +54,7 @@ pkgbase = cairo-dock-plug-ins-wayland-git
 	conflicts = cairo-dock-plug-ins
 	replaces = cairo-dock-plugins
 	options = debug
-	source = cairo-dock-plug-ins-wayland-git::git+https://github.com/dkondor/cairo-dock-plug-ins#branch=wayland_new3
+	source = cairo-dock-plug-ins-wayland-git::git+https://github.com/dkondor/cairo-dock-plug-ins#commit=ccc0d1c0f01dafc628915685a56388a653f498fe
 	sha256sums = SKIP
 
 pkgname = cairo-dock-plug-ins-wayland-git
