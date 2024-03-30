@@ -12,6 +12,6 @@ pkgbase = ocaml-gen
 	options = !strip
 	source = ocaml-gen-1.1::git+https://github.com/c-cube/gen#commit=30802b92145e0c9cd235d3d2ba4d2210fda5612a?signed
 	validpgpkeys = 1370978BC81E9735DFE727E1EBFFF6F283F3A2B4
-	sha512sums = SKIP
+	sha512sums = 438dab1de8fade55742aab94f542b84a35a207b5a1aedf82275723aad08206d3273f9788bedd7b949a3f5336292b60c4e62f6d1f43dc8df72930828fe9714caf
 
 pkgname = ocaml-gen
