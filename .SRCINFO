@@ -1,13 +1,14 @@
 pkgbase = jslint.mjs
-	pkgdesc = The JavaScript Code Quality and Coverage Tool
-	pkgver = 2024.3.26
+	pkgdesc = Optimize your system in one click
+	pkgver = r4.3643d44
 	pkgrel = 1
-	url = https://github.com/jslint-org/jslint
-	arch = any
-	license = Unlicense
-	makedepends = npm
-	depends = nodejs
-	source = jslint-2024.3.26.tar.gz::https://github.com/jslint-org/jslint/archive/refs/tags/v2024.3.26.tar.gz
-	sha256sums = e57b21464e07efbe0395d0ff0040c1016f80552344c83b0a0d3a0d3613494283
+	url = https://github.com/sophgn/one_click_optimizer
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	provides = one-click-optimizer
+	conflicts = one-click-optimizer
+	source = one-click-optimizer-git::git+https://github.com/sophgn/one_click_optimizer
+	sha1sums = SKIP
 
 pkgname = jslint.mjs

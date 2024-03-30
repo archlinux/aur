@@ -1,33 +1,32 @@
-# Maintainer: Zenvie <134689569+Zenvie@users.noreply.github.com>
-# Contributor: Daniel M. Capella <polyzen@archlinux.org>
+# Maintainer: worstuser
 
 pkgname=jslint.mjs
-_pkgname=jslint
-pkgver=2024.3.26
+pkgver=r4.3643d44
 pkgrel=1
-pkgdesc="The JavaScript Code Quality and Coverage Tool"
-arch=(any)
-url="https://github.com/jslint-org/$_pkgname"
-license=(Unlicense)
+pkgdesc='Optimize your system in one click'
+arch=('x86_64')
+url='https://github.com/sophgn/one_click_optimizer'
+license=('MIT')
+depends=()
+makedepends=('cargo')
+provides=("one-click-optimizer")
+conflicts=("one-click-optimizer")
+source=("${pkgname}::git+${url}")
+sha1sums=('SKIP')
 
-depends=(nodejs)
-makedepends=(npm)
-
-source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e57b21464e07efbe0395d0ff0040c1016f80552344c83b0a0d3a0d3613494283')
-
-prepare() {
-  cd "$_pkgname-$pkgver"
-  npm install
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-check() {
-  cd "$_pkgname-$pkgver"
-  npm test
+build() {
+  cd "${srcdir}/${pkgname}"
+  export CFLAGS="-fcommon -fPIE"
+  cargo build --release
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
-  sed -i 's|^// #!|#!|' "$pkgname"
-  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 ${srcdir}/${pkgname}/target/release/one_click_optimizer ${pkgdir}/usr/bin/one_click_optimizer
 }
+
+# vim: ts=2 sw=2 et:
