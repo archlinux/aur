@@ -2,14 +2,13 @@
 # Contributor: solopasha <daron439 at gmail dot com>
 # Contributor: KspLite <ksplite@outlook.com>
 # Contributor: Daniil Kovalev <daniil@kovalev.website>
-pkgname=64gram-desktop
-_pkgname=64Gram
-pkgver=1.1.14
+pkgname=0wgram
+pkgver=1.2.4
 pkgrel=1
 epoch=1
 pkgdesc='Unofficial desktop version of Telegram messaging app'
-arch=('x86_64')
-url="https://github.com/TDesktop-x64/tdesktop"
+arch=('x86_64' 'aarch64')
+url="https://github.com/clansty/tdesktop"
 license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
          'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash'
@@ -21,22 +20,16 @@ makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 
-source=("https://github.com/TDesktop-x64/tdesktop/releases/download/v${pkgver}/${_pkgname}-${pkgver}-full.tar.gz"
-        "block-sponsored_messages.patch"
-        "fix-lzma-link.patch"
-        "io.github.tdesktop_x64.TDesktop.desktop")
+commit="f3928f7ae8eee05b6a2e9f9e7e5a4fdd4f414382"
+source=("git+${url}.git#commit=${commit}"
+        "fix-lzma-link.patch")
 
-noextract=("${_pkgname}-${pkgver}-full.tar.gz")
-
-sha512sums=('4482abe93f0873bc7ced8b1a391caf5db9f757206b40e1ead4aa4a1dd8a2a3c098bca828aa572cf0aaf8853766afea7ae32aa8d544a00cd15e0585dde16391b4'
-            'c662524ca4f4a8df021ee94696d84896ed9a271df321933942806dda4544ea25f51a650ec8b4fc72f9a2219ea54cbfaf37b9604124f7263c86f74f1d647587ae'
-            'd813a5ac6ff2208b693ecf494d7bf036087e223662f9f34aaaeafea0afe0fe798e867b9610f7221ea80319865502c20b61310d5a31634b888793873d63322463'
-            'ea027bc2d40c74507adf32380444207210a8c31cdba57f3f468d23d8e9c7376647cc8c713f188660f9b1dacd9041227aafd5a27c7889f47ea3985712b6b74b8b')
+sha512sums=('SKIP'
+            'e15cdc8513793f17e4b6ca2dfab5b4bbf22d0934c1e88038957b9004865edb4101a3133482708aab6844de3c1dfdac9c98970de684c1508634180d90c84345f7')
 
 prepare() {
-    LANG=C.UTF-8 bsdtar -xf ${_pkgname}-${pkgver}-full.tar.gz
-    cd $_pkgname-$pkgver-full
-    patch -Np1 --binary -i ../block-sponsored_messages.patch
+    cd tdesktop
+    git submodule update --init --recursive
     patch -p1 --binary < ../fix-lzma-link.patch
 }
 
@@ -45,22 +38,23 @@ build() {
 
     cmake \
         -B build \
-        -S $_pkgname-$pkgver-full \
+        -S tdesktop \
         -G Ninja \
         -DCMAKE_VERBOSE_MAKEFILE=ON \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
         -DDESKTOP_APP_DISABLE_AUTOUPDATE=ON \
-        -DTDESKTOP_API_TEST=ON
+        -DTDESKTOP_API_ID=16138177 \
+        -DTDESKTOP_API_HASH=f14e4d935dcd9f002e44b2698aeb2466
+        # -DTDESKTOP_API_TEST=ON
     cmake --build build
 }
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
-    mv "$pkgdir/usr/bin/telegram-desktop" "$pkgdir/usr/bin/64gram-desktop"
-    install -Dm644 "$srcdir/io.github.tdesktop_x64.TDesktop.desktop" -t "$pkgdir/usr/share/applications"
-    find "$pkgdir" -type f -name "telegram.png" -exec rename telegram.png 64gram.png {} \;
-    mv "$pkgdir/usr/share/icons/hicolor/symbolic/apps/telegram-symbolic.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/64gram-symbolic.svg"
-    mkdir -p "$pkgdir/usr/share/64Gram/externalupdater.d"
-    echo "/usr/bin/64gram-desktop" >"$pkgdir/usr/share/64Gram/externalupdater.d/telegram-desktop.conf"
+    mv "$pkgdir/usr/bin/telegram-desktop" "$pkgdir/usr/bin/${pkgname}"
+    find "$pkgdir" -type f -name "telegram.png" -exec rename telegram.png ${pkgname}.png {} \;
+    mv "$pkgdir/usr/share/icons/hicolor/symbolic/apps/telegram-symbolic.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/${pkgname}-symbolic.svg"
+    mkdir -p "$pkgdir/usr/share/${pkgname}/externalupdater.d"
+    echo "/usr/bin/${pkgname}" > "$pkgdir/usr/share/${pkgname}/externalupdater.d/telegram-desktop.conf"
 }
