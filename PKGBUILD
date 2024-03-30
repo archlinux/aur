@@ -26,6 +26,8 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/OpenSpace"
+		# deleted wrong submodule path
+		git rm --cached modules/sound/ext/soloud
 		git submodule update --init --recursive
 
 }
