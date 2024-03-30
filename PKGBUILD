@@ -13,11 +13,11 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-rusticl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=24.1.0_devel.186662.72e1e6e1206
+pkgver=24.1.0_devel.186995.0e4b5e0b000
 pkgrel=1
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
-                            wayland-protocols glslang-minimal-git llvm-minimal-git libdrm libclc-minimal-git clang-minimal-git
+                            wayland-protocols glslang-minimal-git llvm-minimal-git libdrm-git libclc-minimal-git clang-minimal-git
                             rust rust-bindgen spirv-tools-git spirv-llvm-translator-minimal-git libvdpau systemd-libs clang-opencl-headers-minimal-git
                             python-ply)
 # In order to keep the package simple and ease troubleshooting only use one llvm implementation
@@ -50,7 +50,10 @@ pkgver() {
 }
 
 build() {
-    
+
+    CXXFLAGS+=" -fpermissive"
+# see https://gitlab.freedesktop.org/mesa/mesa/-/issues/10928
+
     meson setup mesa _build \
        -D b_ndebug=true \
        -D b_lto=false \
