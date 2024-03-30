@@ -8,13 +8,13 @@ arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://gitlab.redox-os.org/redox-os/$pkgname"
 license=('MIT')
 depends=('sdl2')
-makedepends=('cargo')
+makedepends=('cargo' 'cmake')
 source=(
 	"$pkgname-$pkgver::git+$url#commit=$_commit?signed"
 	"$pkgname-$pkgver-Cargo.lock::$url/-/raw/505cac5d5c071eb8d10ec5e4843ec0a83ad18c9b/Cargo.lock"
 	"$pkgname-$pkgver-Cargo.toml::$url/-/raw/505cac5d5c071eb8d10ec5e4843ec0a83ad18c9b/Cargo.toml"
 )
-sha512sums=('SKIP'
+sha512sums=('8fa560b36917d955743e1761f581666bd3929545250fd516be8bbea2c1f02e2d48d060a7122d9a8a9ad718e1cc6dc4110b95ef113f07c6fd8c1422963496e3b2'
             '7cc14d115b787459630c15cc351595ca12c70d89faec1bc9ac85ec9fd185210e25097d8d12d85ccb5264ced6731a650596254515b0668d32044257272ba3bf4e'
             'da2ffef5ea6c3c0e9240f2951c30b0abeb5623bedfeec6b1c30d1b58e17808928190466d6a72ce0707204c888cdc5d5c1e973afa8ca31903b61261af148debbc')
 validpgpkeys=('DA0878FCF806089ED4FDDF58E988B49EE78A7FB1') # Jeremy Soller <jeremy@system76.com> (available on keyserver.ubuntu.com)

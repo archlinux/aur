@@ -10,12 +10,13 @@ pkgbase = orbterm
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
+	makedepends = cmake
 	depends = sdl2
 	source = orbterm-0.3.6::git+https://gitlab.redox-os.org/redox-os/orbterm#commit=033ac47355554f20e2935f86f382b9aa9be5fcdd?signed
 	source = orbterm-0.3.6-Cargo.lock::https://gitlab.redox-os.org/redox-os/orbterm/-/raw/505cac5d5c071eb8d10ec5e4843ec0a83ad18c9b/Cargo.lock
 	source = orbterm-0.3.6-Cargo.toml::https://gitlab.redox-os.org/redox-os/orbterm/-/raw/505cac5d5c071eb8d10ec5e4843ec0a83ad18c9b/Cargo.toml
 	validpgpkeys = DA0878FCF806089ED4FDDF58E988B49EE78A7FB1
-	sha512sums = SKIP
+	sha512sums = 8fa560b36917d955743e1761f581666bd3929545250fd516be8bbea2c1f02e2d48d060a7122d9a8a9ad718e1cc6dc4110b95ef113f07c6fd8c1422963496e3b2
 	sha512sums = 7cc14d115b787459630c15cc351595ca12c70d89faec1bc9ac85ec9fd185210e25097d8d12d85ccb5264ced6731a650596254515b0668d32044257272ba3bf4e
 	sha512sums = da2ffef5ea6c3c0e9240f2951c30b0abeb5623bedfeec6b1c30d1b58e17808928190466d6a72ce0707204c888cdc5d5c1e973afa8ca31903b61261af148debbc
 
