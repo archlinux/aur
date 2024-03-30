@@ -5,29 +5,31 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-nss
-pkgver=3.98
+pkgver=3.99
 pkgrel=1
 arch=('any')
-pkgdesc="Network Security Services"
+pkgdesc="Network Security Services (Android ${_android_arch})"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 license=('MPL-2.0')
 depends=("android-${_android_arch}-nspr>=4.35"
          "android-${_android_arch}-p11-kit>=0.23.19"
          "android-${_android_arch}-sqlite"
          "android-${_android_arch}-zlib")
-makedepends=(clang
-             perl
-             python
-             zip)
+makedepends=('clang'
+             'perl'
+             'python'
+             'zip')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://ftp.mozilla.org/pub/security/nss/releases/NSS_${pkgver//./_}_RTM/src/nss-${pkgver}.tar.gz"
         'Linux.mk.patch'
         'FreeblMakefile.patch'
-        'mpcpucache.c.patch')
-sha256sums=('f549cc33d35c0601674bfacf7c6ad683c187595eb4125b423238d3e9aa4209ce'
+        'mpcpucache.c.patch'
+        'fix.patch')
+sha256sums=('5cd5c2c8406a376686e6fa4b9c2de38aa280bea07bf927c0d521ba07c88b09bd'
             '79d959a1af5f00e4515e930121eb12cc8927d3ee8730b0cbfb3fd005c1075f7f'
             '957675d7a34c56c388057348941d2ab814ba9e94648c79c4285bc19de8ddd6fc'
-            '7e0eaf3111942f46e503464957f25b2d36a1b24b91adc6a6a858e209e0c0e27f')
+            '7e0eaf3111942f46e503464957f25b2d36a1b24b91adc6a6a858e209e0c0e27f'
+            'SKIP')
 
 prepare() {
     cd "${srcdir}/nss-${pkgver}"
@@ -43,6 +45,10 @@ prepare() {
         *)
             ;;
     esac
+
+    sed -i 's|"mpi.h"|"mpi/mpi.h"|g' nss/lib/freebl/blapii.h
+    sed -i 's|"mpi.h"|"mpi/mpi.h"|g' nss/lib/freebl/secmpi.h
+    sed -i 's|"mpi.h"|"mpi/mpi.h"|g' nss/lib/freebl/ecl/ecl.h
 }
 
 build() {
