@@ -25,8 +25,8 @@ _renderer=gles
 
 pkgbase=kodi-stable-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r65484.0f844b189d2
-pkgrel=1
+pkgver=r65501.ed0c71562b9
+pkgrel=2
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -100,6 +100,9 @@ b2sums=('SKIP'
         'be5e3c8ea81ce4b6f2e2c1b2f22e1172434c435f096fa7dade060578c506cff0310e3e2ef0627e26ce2be44f740652eb9a8e1b63578c18f430f7925820f04e66'
         '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61')
 
+# https://github.com/xbmc/xbmc/issues/24919
+export LDFLAGS="${LDFLAGS/-Wl,-z,pack-relative-relocs/}"
+
 pkgver() {
   cd "$_gitname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -172,9 +175,6 @@ build() {
     -DUDFREAD_URL="$srcdir/libudfread-$_libudfread_version.tar.gz"
     -DAPP_RENDER_SYSTEM=$_renderer
   )
-
-  # https://github.com/google/flatbuffers/issues/7404
-  CXXFLAGS+=' -Wno-error=restrict'
 
   echo "building kodi"
   cmake "${_args[@]}" ../"$_gitname"
