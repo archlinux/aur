@@ -1,0 +1,24 @@
+pkgbase = qgv
+	pkgdesc = Interactive Qt graphViz display
+	pkgver = 1.3.5
+	pkgrel = 1
+	url = https://github.com/gepetto/qgv
+	arch = i686
+	arch = x86_64
+	license = LGPL-3.0-only
+	makedepends = cmake
+	makedepends = doxygen
+	depends = qt5-base
+	depends = gcc-libs
+	depends = graphviz
+	depends = glibc
+	source = https://github.com/gepetto/qgv/releases/download/v1.3.5/qgv-1.3.5.tar.gz
+	source = https://github.com/gepetto/qgv/releases/download/v1.3.5/qgv-1.3.5.tar.gz.sig
+	validpgpkeys = 9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28
+	validpgpkeys = A031AD35058955293D54DECEC45D22EF408328AD
+	sha256sums = 90c63bf27c29e31e269ddf34a89ebbdb57fedf6a9a6f5070061ab7b22fe29062
+	sha256sums = SKIP
+
+pkgname = qgv
+
+pkgname = qgv-docs
