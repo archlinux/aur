@@ -1,0 +1,6 @@
+[git-credential-azure]
+source = "github"
+github = "hickford/git-credential-azure"
+prefix = "v"
+include_prereleases = false
+use_max_tag = true
