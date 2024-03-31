@@ -1,7 +1,7 @@
 pkgbase = notepad
 	pkgdesc = A simple notepad for GNU/Linux distributions
 	pkgver = 1.2.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alexkdeveloper/notepad
 	arch = x86_64
 	arch = aarch64

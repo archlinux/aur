@@ -3,7 +3,7 @@
 pkgname=notepad
 pkgver=1.2.7
 _commit=7df18c3d6245c148d628290a910459c5f62f6a5e
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple notepad for GNU/Linux distributions'
 url="https://github.com/alexkdeveloper/notepad"
 license=('GPL-3.0-or-later')
@@ -25,5 +25,5 @@ check() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
-  ln -s /usr/bin/com.github.alexkdeveloper.notepad "$pkgdir/usr/bin/notepad"
+  ln -s /usr/bin/com.github.alexkdeveloper.notepad "$pkgdir/usr/bin/notepad.alexkdeveloper"
 }
