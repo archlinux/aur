@@ -3,7 +3,7 @@
 pkgname=recorder
 pkgver=1.0.18
 _commit=585365d971cfc88c1c910839219c836a27beebc8
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple audio recorder'
 url="https://github.com/alexkdeveloper/recorder"
 license=('GPL-3.0-or-later')
@@ -24,10 +24,6 @@ check() {
 }
 
 package() {
-  $name=com.github.alexkdeveloper.$pkgname
   meson install -C build --destdir "$pkgdir"
-  ln -s $name "$pkgdir/usr/bin/$pkgname"
-  cd $pkgname
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm644 data/$name.xml.in "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.xml"
+  ln -s /usr/bin/com.github.alexkdeveloper.$pkgname "$pkgdir/usr/bin/$pkgname"
 }
