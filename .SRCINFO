@@ -9,6 +9,6 @@ pkgbase = c3-bin
 	provides = c3
 	conflicts = c3
 	source = c3-bin::https://github.com/nimaaskarian/c3/releases/download/0.7.2/c3.x86.linux
-	md5sums = b21ff1ab62ecef0bfa6648d21facc551
+	md5sums = 66dc94e31060ad154575402e97550189
 
 pkgname = c3-bin
