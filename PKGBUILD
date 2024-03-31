@@ -11,7 +11,7 @@ license=(GPL-3.0)
 arch=(x86_64)
 conflicts=(dust-emu dust-emu-git)
 provides=(dust-emu)
-sha256sums=(e74459fcf98e33afca50e6a5725e90ba068936616f256a092f0304a52400a167)
+sha256sums=(SKIP)
 
 prepare() {
   cd $srcdir
