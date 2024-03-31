@@ -31,8 +31,6 @@ pkgname = octopi-notifier-qt5
 	depends = octopi
 	provides = octopi-notifier
 	conflicts = octopi-notifier
-	replaces = octopi-qt5-notifier
-	replaces = octopi-notifier-qt4
 
 pkgname = octopi-notifier-frameworks
 	pkgdesc = Notifier for Octopi with Knotifications support

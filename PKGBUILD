@@ -87,7 +87,6 @@ package_octopi-notifier-qt5() {
   depends=('octopi')
   provides=('octopi-notifier')
   conflicts=('octopi-notifier')
-  replaces=('octopi-qt5-notifier' 'octopi-notifier-qt4')
 
   cd "${pkgbase}-${pkgver}"
   make -C notifier INSTALL_ROOT="${pkgdir}" install
