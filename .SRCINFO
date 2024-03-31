@@ -13,7 +13,6 @@ pkgbase = jasper-gtk-theme-git
 	provides = jasper-gtk-theme
 	conflicts = jasper-gtk-theme
 	conflicts = nephrite-gtk-theme
-	replaces = nephrite-gtk-theme-git
 	options = !strip
 	source = git+https://github.com/vinceliuice/Jasper-gtk-theme.git
 	sha256sums = SKIP

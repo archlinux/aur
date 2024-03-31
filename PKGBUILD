@@ -11,7 +11,6 @@ optdepends=('gtk-engine-murrine: GTK2 theme support'
             'colloid-icon-theme: Recommended icon theme')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'nephrite-gtk-theme')
-replaces=('nephrite-gtk-theme-git')
 options=('!strip')
 install='jasper-theme.install'
 source=('git+https://github.com/vinceliuice/Jasper-gtk-theme.git')
