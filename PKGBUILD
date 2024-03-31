@@ -3,7 +3,7 @@
 # Contributor: dorphell <dorphell@archlinux.org>
 
 pkgname=sdl
-pkgver=1.2.15+r465+g52c71402
+pkgver=1.2.15+r506+gf5f2d382
 pkgrel=1
 epoch=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard"
@@ -15,13 +15,13 @@ makedepends=('alsa-lib' 'mesa' 'libpulse' 'glu' 'git')
 optdepends=('alsa-lib: ALSA audio driver'
             'libpulse: PulseAudio audio driver')
 options=('staticlibs')
-_commit=52c714024e2d5a5383f64f9b119ea96cb46f9af2 # main
+_commit=f5f2d3825637169fc8f3ebc6ef0d076916e27e82 # main
 source=("git+https://github.com/libsdl-org/SDL-1.2#commit=$_commit"
         0001-SDL-1.2.15-no-default-backing-store.patch
         0002-x11-Bypass-SetGammaRamp-when-changing-gamma.patch
         0003-sdl-1.2.14-fix-mouse-clicking.patch
         0004-sdl-1.2.14-disable-mmx.patch)
-sha256sums=('SKIP'
+sha256sums=('436049ae65eb18abbd379cd1a8e3d32029db3c28bb55cb685ef44cee8721a8d7'
             '658a3467f285201431a274339bd5b35a15c6b12156d8b19b21d66546ab8512bc'
             '786c55a1e2c3bd5d68d5649d6f4325ec22109ea3453e73d8d173966798a36538'
             'c2be5af8e1fe36d3771972de4575d30b48372bb94f53433a3ae8cff030d1724d'
