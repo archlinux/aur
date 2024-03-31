@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-datavis3d
-_qtver=6.6.2
+_qtver=6.6.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -19,7 +19,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtdatavis3d-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('314a6b2904006d151c2ec7d753814c8c63903ff814069baf9c4978d49d2a1c47')
+sha256sums=('9b1781e464901996b56f31a5cef3e50aac051906e0e535b21b36ca3ae140dfbf')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
