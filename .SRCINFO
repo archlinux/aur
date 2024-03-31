@@ -13,7 +13,6 @@ pkgbase = tutanota-desktop-bin
 	provides = tutanota-desktop
 	conflicts = tutanota-desktop
 	conflicts = tutanota-desktop-linux
-	replaces = tutanota-desktop-linux
 	source = tutanota-desktop-220.240319.1.AppImage::https://app.tuta.com/desktop/tutanota-desktop-linux.AppImage
 	source = linux-sig-220.240319.1.bin::https://app.tuta.com/desktop/linux-sig.bin
 	source = tutao-pub-220.240319.1.pem::https://github.com/tutao/tutanota/raw/tutanota-desktop-release-220.240319.1/tutao-pub.pem
