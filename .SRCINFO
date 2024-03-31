@@ -1,0 +1,13 @@
+pkgbase = perfectdark
+	pkgdesc = Perfect Dark powered by perfect_dark reimplimentation engine
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/perfectdark
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	depends = pd-bin
+	source = https://gitlab.com/perfectdark-aur/perfectdark/-/archive/1.0.0/perfectdark-1.0.0.tar.bz2
+	sha256sums = SKIP
+
+pkgname = perfectdark
