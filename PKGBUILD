@@ -1,14 +1,14 @@
 # Maintainer: zotan <aur@zotan.email>
 
 pkgname=iceshrimp.net-git
-pkgver=v2024.1.alpha+d5b7fa5
+pkgver=v2024.1.alpha+fb0b58b
 pkgrel=1
 pkgdesc="The Iceshrimp .NET rewrite. Caution: This is alpha software, do not use with production database"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp.net"
 license=(EUPL)
 
-makedepends=('dotnet-sdk>=8.0' 'aspnet-targeting-pack>=8.0' 'aspnet-targeting-pack<9.0' nodejs npm)
+makedepends=('dotnet-sdk>=8.0' 'aspnet-targeting-pack>=8.0' 'aspnet-targeting-pack<9.0')
 depends=('aspnet-runtime>=8.0' 'aspnet-runtime<9.0')
 optdepends=(
   "ffmpeg: for video transcoding"
@@ -53,14 +53,6 @@ rid() {
 }
 
 build() {
-  # Build frontend
-  cd "${srcdir}/iceshrimp.net/Iceshrimp.Frontend"
-  export NODE_ENV="production"
-  corepack yarn install --immutable
-  corepack yarn build
-  corepack yarn gulp
-
-  # Build backend
   cd "${srcdir}/iceshrimp.net/Iceshrimp.Backend"
   dotnet publish -c Release -r $(rid)
 }
@@ -78,8 +70,6 @@ package() {
   install -Dm 644 "${srcdir}/iceshrimp.net.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/iceshrimp.net.conf"
   install -Dm 644 "${srcdir}/iceshrimp.net.hook" "${pkgdir}/usr/share/libalpm/hooks/iceshrimp.net.hook"
   install -Dm 640 "${srcdir}/iceshrimp.net/Iceshrimp.Backend/configuration.ini" "${pkgdir}/etc/iceshrimp.net/configuration.ini"
-
-#  find "${srcdir}/iceshrimp/.yarn/unplugged" -path "*/re2/build/Makefile" -or -path "*/re2/build/config.gypi" | xargs -r sed -i "s%${srcdir}%/usr/share%g"
 
   cp -dpTr --no-preserve=ownership "${srcdir}/iceshrimp.net/Iceshrimp.Backend/bin/Release/net8.0/$(rid)/publish/" "${pkgdir}/usr/share/iceshrimp.net"
 }
