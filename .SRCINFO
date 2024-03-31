@@ -4,6 +4,7 @@ pkgbase = vdr-softhdcuvid
 	pkgrel = 1
 	url = https://github.com/jojo61/vdr-plugin-softhdcuvid
 	arch = x86_64
+	arch = aarch64
 	license = AGPL3
 	makedepends = ffmpeg
 	makedepends = freeglut
@@ -12,17 +13,32 @@ pkgbase = vdr-softhdcuvid
 	makedepends = vdr-api=2.6.6
 	makedepends = xcb-util-wm
 	makedepends = xorg-server
-	makedepends = nvidia>=410.48
 	makedepends = libplacebo>=3.120.0
 	makedepends = glm
 	makedepends = glu
 	makedepends = vulkan-headers
 	makedepends = ffnvcodec-headers
 	makedepends = freetype2
+	makedepends = nvidia>=410.48
 	source = vdr-softhdcuvid-3.22.tar.gz::https://github.com/jojo61/vdr-plugin-softhdcuvid/archive/refs/tags/V3.22.tar.gz
 	source = 50-softhdcuvid.conf
 	sha256sums = 6c1d5ba564d7d5f7a9efdc4cb4d4d3ff83c5d38974965859f59c3fde0d1bb710
 	sha256sums = ad30dd72260a25663e8ea46ca941c4d55d11fef7b936791cdf51de4fd91cb3af
+
+pkgname = vdr-softhddrm
+	depends = freeglut
+	depends = glew
+	depends = mesa
+	depends = vdr-api=2.6.6
+	depends = xcb-util-wm
+	depends = glu
+	depends = freetype2
+	depends = libavcodec.so
+	depends = libavfilter.so
+	depends = libavutil.so
+	depends = libswresample.so
+	conflicts = vdr-xorg
+	backup = etc/vdr/conf.avail/50-softhddrm.conf
 
 pkgname = vdr-softhdcuvid
 	depends = freeglut
@@ -55,18 +71,3 @@ pkgname = vdr-softhdvaapi
 	depends = libswresample.so
 	optdepends = vdr-xorg: Recommended way to start X.org server together with VDR
 	backup = etc/vdr/conf.avail/50-softhdvaapi.conf
-
-pkgname = vdr-softhddrm
-	depends = freeglut
-	depends = glew
-	depends = mesa
-	depends = vdr-api=2.6.6
-	depends = xcb-util-wm
-	depends = glu
-	depends = freetype2
-	depends = libavcodec.so
-	depends = libavfilter.so
-	depends = libavutil.so
-	depends = libswresample.so
-	conflicts = vdr-xorg
-	backup = etc/vdr/conf.avail/50-softhddrm.conf

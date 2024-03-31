@@ -1,19 +1,24 @@
 # This PKGBUILD is part of the VDR4Arch project [https://github.com/vdr4arch]
 pkgbase=vdr-softhdcuvid
-pkgname=(vdr-softhdcuvid vdr-softhdvaapi vdr-softhddrm)
+pkgname=(vdr-softhddrm)
 pkgver=3.22
 pkgrel=1
 _vdrapi=2.6.6
 pkgdesc="VDR output plugin with CUDA and Opengl"
 url="https://github.com/jojo61/vdr-plugin-softhdcuvid"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('AGPL3')
-makedepends=('ffmpeg' 'freeglut' 'glew' 'mesa' "vdr-api=${_vdrapi}" 'xcb-util-wm' 'xorg-server' 'nvidia>=410.48' 'libplacebo>=3.120.0' 'glm' 'glu' 'vulkan-headers' 'ffnvcodec-headers' 'freetype2')
+makedepends=('ffmpeg' 'freeglut' 'glew' 'mesa' "vdr-api=${_vdrapi}" 'xcb-util-wm' 'xorg-server' 'libplacebo>=3.120.0' 'glm' 'glu' 'vulkan-headers' 'ffnvcodec-headers' 'freetype2')
 _plugname=${pkgbase//vdr-/}
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/V${pkgver}.tar.gz"
         "50-$_plugname.conf")
 sha256sums=('6c1d5ba564d7d5f7a9efdc4cb4d4d3ff83c5d38974965859f59c3fde0d1bb710'
             'ad30dd72260a25663e8ea46ca941c4d55d11fef7b936791cdf51de4fd91cb3af')
+
+if [ "$CARCH" == "x86_64" ] ; then
+  pkgname+=(vdr-softhdcuvid vdr-softhdvaapi)
+  makedepends+=( 'nvidia>=410.48' )
+fi
 
 prepare() {
   cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
@@ -27,10 +32,12 @@ prepare() {
 
 build() {
   cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
-  make CUVID=1 LIBPLACEBO=1 libvdr-softhdcuvid.so
-  make clean
-  make VAAPI=1 LIBPLACEBO=1 libvdr-softhdvaapi.so
-  make clean
+  if [ "$CARCH" == "x86_64" ] ; then
+    make CUVID=1 LIBPLACEBO=1 libvdr-softhdcuvid.so
+    make clean
+    make VAAPI=1 LIBPLACEBO=1 libvdr-softhdvaapi.so
+    make clean
+  fi
   make DRM=1 LIBPLACEBO=0 libvdr-softhddrm.so
   make clean
 }
