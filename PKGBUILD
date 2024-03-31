@@ -3,11 +3,11 @@
 # Author: LostRuins (concedo)
 pkgname=koboldcpp-cuda
 pkgver=1.61.2
-pkgrel=5
-pkgdesc="KoboldCpp is an easy-to-use AI text-generation software for GGML and GGUF models (with CUDA)"
+pkgrel=6
+pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (with CUDA)"
 arch=('x86_64')
 url="https://github.com/LostRuins/koboldcpp"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 depends=(
   'python'
   'openblas'
@@ -17,8 +17,10 @@ depends=(
 )
 optdepends=(
   'customtkinter: for GUI launcher'
+  'python-psutil: increasing the process CPU priority'
 )
-provides=('koboldcpp' 'koboldcpp-cuda')
+provides=("koboldcpp=$pkgver")
+conflicts=('koboldcpp')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('eea87a2a780b4c99f87e06071a19c4c2508fe873cacb9da0d7cc6561f8e6e88d')
 
@@ -37,10 +39,6 @@ package() {
   install -Dm644 "koboldcpp_vulkan.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_vulkan.so"
   install -Dm644 "koboldcpp_openblas.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_openblas.so"
   install -Dm644 "koboldcpp_clblast.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_clblast.so"
-#   install -Dm644 "koboldcpp_failsafe.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_failsafe.so"
-#   install -Dm644 "koboldcpp_noavx2.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_noavx2.so"
-#   install -Dm644 "koboldcpp_clblast_noavx2.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_clblast_noavx2.so"
-#   install -Dm644 "koboldcpp_vulkan_noavx2.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_vulkan_noavx2.so"
   install -Dm644 "klite.embd" "$pkgdir/usr/share/koboldcpp/klite.embd"
   install -Dm644 "kcpp_docs.embd" "$pkgdir/usr/share/koboldcpp/kcpp_docs.embd"
   install -Dm644 "rwkv_vocab.embd" "$pkgdir/usr/share/koboldcpp/rwkv_vocab.embd"
