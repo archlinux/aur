@@ -1,0 +1,3 @@
+[python-click-command-tree]
+source = "pypi"
+pypi = "click-command-tree"
