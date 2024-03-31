@@ -4,8 +4,8 @@
 _pkgname=suyu
 _branch=dev
 pkgname=suyu-dev-qt6-git
-pkgver=r27269.b6ad090424
-pkgrel=3
+pkgver=r27347.d3f67d1e9c
+pkgrel=1
 pkgdesc="suyu is the afterlife the world's most popular, open-source, Nintendo Switch emulator (dev branch with QT6)"
 arch=(x86_64)
 url=https://git.suyu.dev/suyu/suyu
@@ -56,7 +56,6 @@ makedepends=(
   catch2
   rapidjson
   mbedtls
-  vcpkg
 )
 options=(!debug lto)
 source=(
@@ -68,6 +67,7 @@ source=(
   git+https://git.suyu.dev/suyu/discord-rpc.git
   git+https://github.com/KhronosGroup/Vulkan-Headers.git
   git+https://git.suyu.dev/suyu/sirit.git
+  git+https://git.suyu.dev/suyu/mbedtls.git
   git+https://github.com/herumi/xbyak.git
   git+https://github.com/xiph/opus.git
   git+https://github.com/libsdl-org/SDL.git
@@ -114,7 +114,6 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'SKIP'
         'SKIP')
 
 pkgver() {
@@ -124,12 +123,11 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
-  git submodule init
-  for submodule in {enet,cubeb,dynarmic,libusb,discord-rpc,Vulkan-Headers,sirit,xbyak,opus,SDL,cpp-httplib,ffmpeg,cpp-jwt,libadrenotools,tzdb_to_nx,VulkanMemoryAllocator,breakpad,simpleini,oaknut,Vulkan-Utility-Libraries};
+  for submodule in {enet,cubeb,dynarmic,libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus,SDL,cpp-httplib,ffmpeg,cpp-jwt,libadrenotools,tzdb_to_nx,VulkanMemoryAllocator,breakpad,simpleini,oaknut,Vulkan-Utility-Libraries};
   do
-    git config submodule.$submodule.url "${srcdir}"/$submodule
+    git config --file=.gitmodules submodule.$submodule.url "${srcdir}"/$submodule
   done
-  git -c protocol.file.allow=always submodule update
+  git -c protocol.file.allow=always submodule update --init
 
   pushd externals/cubeb
   git config submodule.cmake/sanitizers-cmake.url "${srcdir}"/sanitizers-cmake
