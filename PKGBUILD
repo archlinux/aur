@@ -3,19 +3,25 @@ pkgbase=damask
 pkgname=('damask' 'damask-grid' 'damask-mesh' 'python-damask')
 pkgver_=3.0.0-beta
 pkgver=${pkgver_//-}
-pkgrel=1
+pkgrel=2
 pkgdesc='DAMASK - The Duesseldorf Advanced Material Simulation Kit'
 arch=('x86_64')
 url='https://damask.mpie.de'
 license=('AGPL3')
 makedepends=('cmake' 'python-setuptools'
-             'petsc<3.21' 'hdf5-openmpi' 'fftw' 'zlib' 'libfyaml'
+             'petsc<3.22' 'hdf5-openmpi' 'fftw' 'zlib' 'libfyaml'
              'python-matplotlib' 'python-scipy' 'python-pandas' 'python-h5py' 'python-pyaml')
 optdepends=('paraview: post-processing')
-source=(https://damask.mpie.de/download/damask-${pkgver_}.tar.xz)
+source=(https://damask.mpie.de/files/download/damask-${pkgver_}.tar.xz)
 
 sha512sums=('5ecf85c9e51f55275eec27a3ef369a71970d3ad9b4daaab5890861b769bee2f985d86d075eea5bdd9664e45107e427ee127d1857a5f38eb4edeb9974b842eef4')
 
+prepare() {
+  sed -i '23s/20/21/g' ${pkgname}-${pkgver_}/src/CLI.f90
+  sed -i '114d' ${pkgname}-${pkgver_}/src/CLI.f90
+  sed -i '14s/21/22/g' ${pkgname}-${pkgver_}/CMakeLists.txt
+
+}
 
 build() {
   cmake -S ${pkgbase}-${pkgver_} \
@@ -66,7 +72,7 @@ check() {
 
 package_damask-grid() {
   pkgdesc='Grid solver for DAMASK'
-  depends=('petsc<3.21' 'openmpi' 'hdf5-openmpi' 'fftw' 'zlib' 'libfyaml')
+  depends=('petsc<3.22' 'openmpi' 'hdf5-openmpi' 'fftw' 'zlib' 'libfyaml')
   optdepends=('dream3d: pre-processing')
 
   install -Dm644 ${pkgbase}-${pkgver_}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
@@ -78,7 +84,7 @@ package_damask-grid() {
 
 package_damask-mesh() {
   pkgdesc='Mesh solver for DAMASK'
-  depends=('petsc<3.21' 'openmpi' 'hdf5-openmpi' 'libfyaml')
+  depends=('petsc<3.22' 'openmpi' 'hdf5-openmpi' 'libfyaml')
   optdepends=('neper: pre-processing')
 
   install -Dm644 ${pkgbase}-${pkgver_}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
