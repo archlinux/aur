@@ -1,6 +1,6 @@
 pkgbase = vidmerger-git
 	pkgdesc = Merge video and audio files via CLI.
-	pkgver = r247.78e3d0c
+	pkgver = r292.b02f60b
 	pkgrel = 1
 	url = https://github.com/tgotwig/vidmerger
 	arch = x86_64
@@ -10,9 +10,11 @@ pkgbase = vidmerger-git
 	depends = ffmpeg
 	depends = glibc
 	depends = gcc-libs
-	provides = vidmerger-bin
-	conflicts = vidmerger-bin
+	provides = vidmerger
+	conflicts = vidmerger
 	source = git+https://github.com/tgotwig/vidmerger.git
+	source = https://raw.githubusercontent.com/tgotwig/vidmerger/cb3526790dae9ebc72f52c5c16d1428846645e53/LICENSE
 	sha256sums = SKIP
+	sha256sums = fb25a5d14edb9164a63a126aec696eceb654b4b0e8b382bcac378b6c44eb920c
 
 pkgname = vidmerger-git
