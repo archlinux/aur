@@ -11,7 +11,6 @@ depends=('nemo-python')
 makedepends=('git' 'dpkg' 'python-build' 'python-distutils-extra' 'python-installer'
              'python-setuptools' 'python-wheel')
 conflicts=("$_pkgname-bzr" 'folder-color-common')
-replaces=('folder-color-common')
 _commit=67428606aa802e624b5b783f9f06f8bd724ae56c  # 0.4.1
 source=("git+https://github.com/costales/folder-color.git#commit=$_commit")
 sha256sums=('SKIP')
