@@ -8,7 +8,6 @@ license=(custom)
 
 arch=(any)
 pkgver=0.10.27
-_tag=64fe69d9451479089655d9ae4cef5779f5e7ff9e
 pkgrel=2
 makedepends=(python-build python-installer python-wheel python-cython-lint python-versioneer git)
 
@@ -17,7 +16,7 @@ depends=(python python-numpy python-wxpython python-opengl python-amulet-nbt pyt
 source=(
 	amulet.desktop
 	icon.png
-	"git+https://github.com/Amulet-Team/Amulet-Map-Editor.git#tag=${_tag}"
+	"git+https://github.com/Amulet-Team/Amulet-Map-Editor.git#tag=${pkgver}"
 )
 
 sha256sums=(
