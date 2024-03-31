@@ -1,4 +1,4 @@
-# Maintainer: RealStickman <mrc+aur _a_ frm01 _d_ net>
+# Maintainer: exu <aur _a_ frm01 _d_ net>
 
 pkgname=streamrip
 pkgver=2.0.5
