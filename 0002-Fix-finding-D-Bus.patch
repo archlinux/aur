@@ -1,4 +1,4 @@
-From df5d77a3a0ab5cd0c4237a65cbdedc0825910544 Mon Sep 17 00:00:00 2001
+From 238012eaa343098ec97473788bec60cc74587800 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 7 Oct 2020 12:13:37 +0200
 Subject: [PATCH 02/17] Fix finding D-Bus
@@ -9,7 +9,7 @@ Change-Id: Ie21eb9cbc6b1b5d9c8b34eea46f54718e5926986
  1 file changed, 3 insertions(+)
 
 diff --git a/cmake/FindWrapDBus1.cmake b/cmake/FindWrapDBus1.cmake
-index e2a58790c4..8e0ed81f89 100644
+index e2a58790c4e..8e0ed81f893 100644
 --- a/cmake/FindWrapDBus1.cmake
 +++ b/cmake/FindWrapDBus1.cmake
 @@ -48,3 +48,6 @@ include(FindPackageHandleStandardArgs)
@@ -20,5 +20,5 @@ index e2a58790c4..8e0ed81f89 100644
 +    set_property(TARGET dbus-1 PROPERTY IMPORTED_IMPLIB ${DBus1_LIBRARY})
 +endif()
 -- 
-2.43.2
+2.44.0
 

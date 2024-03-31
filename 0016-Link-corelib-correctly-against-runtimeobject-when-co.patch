@@ -1,4 +1,4 @@
-From 63a51d8dc13ad219b56ba1f6adae92a8c90b25c7 Mon Sep 17 00:00:00 2001
+From 31f9863d7d2228baaea7be1debf94d1e272c6768 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 17 Feb 2024 21:39:39 +0100
 Subject: [PATCH 16/17] Link corelib correctly against runtimeobject when
@@ -14,7 +14,7 @@ Change-Id: Ie3bd0290bb2f1c0d227c60a6cf6580efddd837fd
  2 files changed, 2 insertions(+), 3 deletions(-)
 
 diff --git a/src/corelib/CMakeLists.txt b/src/corelib/CMakeLists.txt
-index 1296ff0408..31030159f2 100644
+index f4bd31b55d4..ba7c025d722 100644
 --- a/src/corelib/CMakeLists.txt
 +++ b/src/corelib/CMakeLists.txt
 @@ -779,8 +779,7 @@ qt_internal_extend_target(Core CONDITION WIN32
@@ -28,7 +28,7 @@ index 1296ff0408..31030159f2 100644
          runtimeobject
  )
 diff --git a/src/plugins/networkinformation/networklistmanager/CMakeLists.txt b/src/plugins/networkinformation/networklistmanager/CMakeLists.txt
-index a9acc465f3..acd3754f4e 100644
+index a9acc465f36..acd3754f4e5 100644
 --- a/src/plugins/networkinformation/networklistmanager/CMakeLists.txt
 +++ b/src/plugins/networkinformation/networklistmanager/CMakeLists.txt
 @@ -14,7 +14,7 @@ qt_internal_add_plugin(QNLMNIPlugin
@@ -41,5 +41,5 @@ index a9acc465f3..acd3754f4e 100644
          runtimeobject
          oleaut32
 -- 
-2.43.2
+2.44.0
 

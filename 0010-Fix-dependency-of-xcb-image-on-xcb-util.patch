@@ -1,4 +1,4 @@
-From af9caa1b9cc22f2534755d0754404f8b20a0c82c Mon Sep 17 00:00:00 2001
+From 1f7ead09cc41d8be6f60b03ace9d6583be130bbe Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 24 Apr 2022 23:49:36 +0200
 Subject: [PATCH 10/17] Fix dependency of xcb-image on xcb-util
@@ -15,7 +15,7 @@ Change-Id: Ic87a94ec664c126a5af1012d31b068d3dc7ec947
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/cmake/3rdparty/extra-cmake-modules/find-modules/FindXCB.cmake b/cmake/3rdparty/extra-cmake-modules/find-modules/FindXCB.cmake
-index 26b9bf8963..0ae21f774c 100644
+index 26b9bf89633..0ae21f774c6 100644
 --- a/cmake/3rdparty/extra-cmake-modules/find-modules/FindXCB.cmake
 +++ b/cmake/3rdparty/extra-cmake-modules/find-modules/FindXCB.cmake
 @@ -108,6 +108,7 @@ set(XCB_known_components
@@ -44,5 +44,5 @@ index 26b9bf8963..0ae21f774c 100644
  set(XCB_XFIXES_component_deps XCB RENDER SHAPE)
  set(XCB_XVMC_component_deps XCB XV)
 -- 
-2.43.2
+2.44.0
 

@@ -1,4 +1,4 @@
-From c67988c5f36623d9ac326bbb86fdcea4265da815 Mon Sep 17 00:00:00 2001
+From b372fe6ab04d2ab06c173f16f8f116f477ff025b Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Tue, 26 Apr 2022 20:16:31 +0200
 Subject: [PATCH 11/17] Allow using properties of PkgConfig targets for glib2
@@ -10,7 +10,7 @@ Change-Id: I37d20256d17ae9cc0775e32aa479f1e433ece908
  1 file changed, 18 insertions(+), 4 deletions(-)
 
 diff --git a/cmake/3rdparty/extra-cmake-modules/find-modules/FindGLIB2.cmake b/cmake/3rdparty/extra-cmake-modules/find-modules/FindGLIB2.cmake
-index a6a16b494f..a5da57824c 100644
+index a6a16b494fd..a5da57824c9 100644
 --- a/cmake/3rdparty/extra-cmake-modules/find-modules/FindGLIB2.cmake
 +++ b/cmake/3rdparty/extra-cmake-modules/find-modules/FindGLIB2.cmake
 @@ -52,7 +52,7 @@
@@ -70,5 +70,5 @@ index a6a16b494f..a5da57824c 100644
  set_package_properties(GLIB2 PROPERTIES
    URL "https://wiki.gnome.org/Projects/GLib"
 -- 
-2.43.2
+2.44.0
 

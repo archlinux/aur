@@ -1,4 +1,4 @@
-From dc4b23c50ba75b9bffc397c38f73496d7bf04100 Mon Sep 17 00:00:00 2001
+From ee08e83b5a8bc4960326f15229ee9f033be8134b Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 8 Nov 2020 00:34:09 +0100
 Subject: [PATCH 07/17] Allow overriding CMAKE_FIND_LIBRARY_SUFFIXES to prefer
@@ -10,7 +10,7 @@ Change-Id: Ibb688ac503ecdf1dd3bd838890efdfc01bf706aa
  1 file changed, 4 insertions(+)
 
 diff --git a/cmake/QtBuildInternals/QtBuildInternalsConfig.cmake b/cmake/QtBuildInternals/QtBuildInternalsConfig.cmake
-index 129f1ebb77..9bae62d879 100644
+index 129f1ebb771..9bae62d8795 100644
 --- a/cmake/QtBuildInternals/QtBuildInternalsConfig.cmake
 +++ b/cmake/QtBuildInternals/QtBuildInternalsConfig.cmake
 @@ -4,6 +4,10 @@
@@ -25,5 +25,5 @@ index 129f1ebb77..9bae62d879 100644
  
  # This depends on qt_internal_read_repo_dependencies existing.
 -- 
-2.43.2
+2.44.0
 

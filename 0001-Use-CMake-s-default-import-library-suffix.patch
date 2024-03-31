@@ -1,4 +1,4 @@
-From ab531280437a9ea29a579c6cf6303850b3cf3af3 Mon Sep 17 00:00:00 2001
+From 30fa1f27688dd6b7263479bdfaefb266102427c3 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 22:08:10 +0100
 Subject: [PATCH 01/17] Use CMake's default import library suffix
@@ -13,7 +13,7 @@ Change-Id: I3dbedaec74683e5bfd008f7f2fd1e046dfb921b2
  5 files changed, 21 insertions(+), 6 deletions(-)
 
 diff --git a/cmake/QtPriHelpers.cmake b/cmake/QtPriHelpers.cmake
-index f1d45cdcf6..32ca058969 100644
+index f1d45cdcf6c..32ca0589699 100644
 --- a/cmake/QtPriHelpers.cmake
 +++ b/cmake/QtPriHelpers.cmake
 @@ -523,9 +523,13 @@ QT.${config_module_name}_private.disabled_features = ${disabled_private_features
@@ -47,7 +47,7 @@ index f1d45cdcf6..32ca058969 100644
          ${CMAKE_STATIC_LIBRARY_SUFFIX})
      if(MSVC)
 diff --git a/cmake/QtPrlHelpers.cmake b/cmake/QtPrlHelpers.cmake
-index 45bfaedcdf..a433c98fe8 100644
+index 45bfaedcdf6..a433c98fe8c 100644
 --- a/cmake/QtPrlHelpers.cmake
 +++ b/cmake/QtPrlHelpers.cmake
 @@ -123,11 +123,17 @@ ${prl_step1_content_libs}
@@ -70,7 +70,7 @@ index 45bfaedcdf..a433c98fe8 100644
      if(QT_GENERATOR_IS_MULTI_CONFIG)
          set(configs ${CMAKE_CONFIGURATION_TYPES})
 diff --git a/mkspecs/common/g++-win32.conf b/mkspecs/common/g++-win32.conf
-index 67ad1e3b8c..b98c7121f6 100644
+index 67ad1e3b8c1..b98c7121f6f 100644
 --- a/mkspecs/common/g++-win32.conf
 +++ b/mkspecs/common/g++-win32.conf
 @@ -54,6 +54,7 @@ QMAKE_PREFIX_SHLIB      =
@@ -82,7 +82,7 @@ index 67ad1e3b8c..b98c7121f6 100644
  
  QMAKE_LIBS              =
 diff --git a/mkspecs/features/create_cmake.prf b/mkspecs/features/create_cmake.prf
-index 24ed125f12..73ebe453d3 100644
+index 24ed125f12b..73ebe453d3d 100644
 --- a/mkspecs/features/create_cmake.prf
 +++ b/mkspecs/features/create_cmake.prf
 @@ -332,8 +332,9 @@ mac {
@@ -98,7 +98,7 @@ index 24ed125f12..73ebe453d3 100644
          CMAKE_WINMAIN_FILE_LOCATION_DEBUG = qtmain$${QT_LIBINFIX}$${debug_suffix}.lib
          CMAKE_WINMAIN_FILE_LOCATION_RELEASE = qtmain$${QT_LIBINFIX}.lib
 diff --git a/src/corelib/Qt6CoreMacros.cmake b/src/corelib/Qt6CoreMacros.cmake
-index e082e586a6..791c580c73 100644
+index 32d0693311d..566cbac3799 100644
 --- a/src/corelib/Qt6CoreMacros.cmake
 +++ b/src/corelib/Qt6CoreMacros.cmake
 @@ -550,7 +550,6 @@ function(_qt_internal_apply_win_prefix_and_suffix target)
@@ -110,5 +110,5 @@ index e082e586a6..791c580c73 100644
              get_target_property(target_type ${target} TYPE)
              if(target_type STREQUAL "STATIC_LIBRARY")
 -- 
-2.43.2
+2.44.0
 

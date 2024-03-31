@@ -1,4 +1,4 @@
-From 76a37b0e210b0199388d1ddf8697ba2d055db32c Mon Sep 17 00:00:00 2001
+From f54f12d78abb6cd209f79c2309d6b50cff64c06e Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 21:59:33 +0100
 Subject: [PATCH 04/17] Fix transitive dependencies (of static libraries)
@@ -23,7 +23,7 @@ Change-Id: I3baec612ee071eec77f756b18bbb9af87663527c
  8 files changed, 9 insertions(+), 7 deletions(-)
 
 diff --git a/cmake/3rdparty/extra-cmake-modules/find-modules/FindGLIB2.cmake b/cmake/3rdparty/extra-cmake-modules/find-modules/FindGLIB2.cmake
-index 24a194c9cb..a6a16b494f 100644
+index 24a194c9cb3..a6a16b494fd 100644
 --- a/cmake/3rdparty/extra-cmake-modules/find-modules/FindGLIB2.cmake
 +++ b/cmake/3rdparty/extra-cmake-modules/find-modules/FindGLIB2.cmake
 @@ -135,7 +135,7 @@ if(GLIB2_FOUND AND NOT TARGET GLIB2::GLIB2)
@@ -36,7 +36,7 @@ index 24a194c9cb..a6a16b494f 100644
  endif()
  
 diff --git a/cmake/FindMySQL.cmake b/cmake/FindMySQL.cmake
-index d191d1ac0a..b61d0107f2 100644
+index d191d1ac0a3..b61d0107f25 100644
 --- a/cmake/FindMySQL.cmake
 +++ b/cmake/FindMySQL.cmake
 @@ -83,6 +83,7 @@ if(MySQL_FOUND)
@@ -48,7 +48,7 @@ index d191d1ac0a..b61d0107f2 100644
      if(MySQL_LIBRARY_DEBUG)
        set_target_properties(MySQL::MySQL PROPERTIES
 diff --git a/cmake/FindWrapDBus1.cmake b/cmake/FindWrapDBus1.cmake
-index 8e0ed81f89..0aec7dbb77 100644
+index 8e0ed81f893..0aec7dbb776 100644
 --- a/cmake/FindWrapDBus1.cmake
 +++ b/cmake/FindWrapDBus1.cmake
 @@ -50,4 +50,5 @@ find_package_handle_standard_args(WrapDBus1 REQUIRED_VARS
@@ -58,7 +58,7 @@ index 8e0ed81f89..0aec7dbb77 100644
 +    set_property(TARGET dbus-1 PROPERTY INTERFACE_LINK_LIBRARIES "${DBUS1_DEPENDENCIES}")
  endif()
 diff --git a/cmake/FindWrapOpenSSL.cmake b/cmake/FindWrapOpenSSL.cmake
-index a4341271fe..be6ac7003a 100644
+index a4341271fee..be6ac7003a1 100644
 --- a/cmake/FindWrapOpenSSL.cmake
 +++ b/cmake/FindWrapOpenSSL.cmake
 @@ -14,7 +14,7 @@ set(WrapOpenSSL_FOUND OFF)
@@ -80,7 +80,7 @@ index a4341271fe..be6ac7003a 100644
  
  include(FindPackageHandleStandardArgs)
 diff --git a/cmake/FindWrapSystemFreetype.cmake b/cmake/FindWrapSystemFreetype.cmake
-index d0c27a9f0f..64e14c584c 100644
+index d0c27a9f0f7..64e14c584c2 100644
 --- a/cmake/FindWrapSystemFreetype.cmake
 +++ b/cmake/FindWrapSystemFreetype.cmake
 @@ -47,7 +47,7 @@ find_package_handle_standard_args(WrapSystemFreetype
@@ -93,7 +93,7 @@ index d0c27a9f0f..64e14c584c 100644
  unset(__freetype_target_name)
  unset(__freetype_found)
 diff --git a/cmake/FindWrapSystemHarfbuzz.cmake b/cmake/FindWrapSystemHarfbuzz.cmake
-index 07b3405bc0..10fb738d7c 100644
+index 07b3405bc07..10fb738d7cb 100644
 --- a/cmake/FindWrapSystemHarfbuzz.cmake
 +++ b/cmake/FindWrapSystemHarfbuzz.cmake
 @@ -73,7 +73,7 @@ find_package_handle_standard_args(WrapSystemHarfbuzz
@@ -106,7 +106,7 @@ index 07b3405bc0..10fb738d7c 100644
  unset(__harfbuzz_target_name)
  unset(__harfbuzz_find_include_dirs_hints)
 diff --git a/cmake/FindWrapSystemPNG.cmake b/cmake/FindWrapSystemPNG.cmake
-index 967ccc5c02..9a7d5150dc 100644
+index 967ccc5c026..9a7d5150dcf 100644
 --- a/cmake/FindWrapSystemPNG.cmake
 +++ b/cmake/FindWrapSystemPNG.cmake
 @@ -36,7 +36,7 @@ find_package_handle_standard_args(WrapSystemPNG
@@ -119,7 +119,7 @@ index 967ccc5c02..9a7d5150dc 100644
  unset(__png_target_name)
  unset(__png_found)
 diff --git a/src/plugins/sqldrivers/psql/CMakeLists.txt b/src/plugins/sqldrivers/psql/CMakeLists.txt
-index d392f4dfa5..165c345e1b 100644
+index d392f4dfa55..165c345e1ba 100644
 --- a/src/plugins/sqldrivers/psql/CMakeLists.txt
 +++ b/src/plugins/sqldrivers/psql/CMakeLists.txt
 @@ -17,7 +17,7 @@ qt_internal_add_plugin(QPSQLDriverPlugin
@@ -132,5 +132,5 @@ index d392f4dfa5..165c345e1b 100644
          Qt::CorePrivate
          Qt::SqlPrivate
 -- 
-2.43.2
+2.44.0
 

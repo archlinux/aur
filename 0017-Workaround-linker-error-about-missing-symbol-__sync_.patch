@@ -1,4 +1,4 @@
-From 1bcb7df3e6d7027df3cc242acb14c036b0df1ad5 Mon Sep 17 00:00:00 2001
+From 267f6ff8b49fca1b16463864fe18accbf81d6e37 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 17 Feb 2024 23:11:18 +0100
 Subject: [PATCH 17/17] Workaround linker error about missing symbol
@@ -19,7 +19,7 @@ Change-Id: I02c47c386d80e5f8a21bb2a4cee83e2141dee481
  4 files changed, 20 insertions(+)
 
 diff --git a/src/corelib/CMakeLists.txt b/src/corelib/CMakeLists.txt
-index 31030159f2..5390f1e5e4 100644
+index ba7c025d722..fbb40bb8305 100644
 --- a/src/corelib/CMakeLists.txt
 +++ b/src/corelib/CMakeLists.txt
 @@ -779,6 +779,11 @@ qt_internal_extend_target(Core CONDITION WIN32
@@ -35,7 +35,7 @@ index 31030159f2..5390f1e5e4 100644
      LIBRARIES
          runtimeobject
 diff --git a/src/plugins/networkinformation/networklistmanager/CMakeLists.txt b/src/plugins/networkinformation/networklistmanager/CMakeLists.txt
-index acd3754f4e..0557c60afd 100644
+index acd3754f4e5..0557c60afd1 100644
 --- a/src/plugins/networkinformation/networklistmanager/CMakeLists.txt
 +++ b/src/plugins/networkinformation/networklistmanager/CMakeLists.txt
 @@ -20,6 +20,11 @@ qt_internal_extend_target(QNLMNIPlugin CONDITION WIN32
@@ -51,7 +51,7 @@ index acd3754f4e..0557c60afd 100644
  set_property(TARGET QNLMNIPlugin PROPERTY
      AUTOGEN_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/autogen")
 diff --git a/src/plugins/platforms/direct2d/CMakeLists.txt b/src/plugins/platforms/direct2d/CMakeLists.txt
-index e21b230cd7..e44587af74 100644
+index e21b230cd78..e44587af743 100644
 --- a/src/plugins/platforms/direct2d/CMakeLists.txt
 +++ b/src/plugins/platforms/direct2d/CMakeLists.txt
 @@ -82,6 +82,11 @@ qt_internal_add_plugin(QWindowsDirect2DIntegrationPlugin
@@ -67,7 +67,7 @@ index e21b230cd7..e44587af74 100644
  set_source_files_properties("../windows/openglblacklists/default.json"
      PROPERTIES QT_RESOURCE_ALIAS "default.json"
 diff --git a/src/plugins/platforms/windows/CMakeLists.txt b/src/plugins/platforms/windows/CMakeLists.txt
-index 16fd2cd2be..2521707dda 100644
+index 16fd2cd2be9..2521707ddae 100644
 --- a/src/plugins/platforms/windows/CMakeLists.txt
 +++ b/src/plugins/platforms/windows/CMakeLists.txt
 @@ -70,6 +70,11 @@ qt_internal_add_plugin(QWindowsIntegrationPlugin
@@ -83,5 +83,5 @@ index 16fd2cd2be..2521707dda 100644
  set_source_files_properties("openglblacklists/default.json"
      PROPERTIES QT_RESOURCE_ALIAS "default.json"
 -- 
-2.43.2
+2.44.0
 
