@@ -8,8 +8,16 @@ pkgdesc="Click plugin to show the command tree of your CLI"
 arch=(any)
 url="https://github.com/whwright/click-command-tree"
 license=(MIT)
-depends=(python python-click)
-makedepends=(python-build python-installer python-setuptools python-wheel)
+depends=(
+  python
+  python-click
+)
+makedepends=(
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
+)
 checkdepends=(python-pytest)
 # tests not in sdist tarball: https://github.com/whwright/click-command-tree/issues/5
 # source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
