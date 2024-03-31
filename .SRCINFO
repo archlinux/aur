@@ -19,9 +19,6 @@ pkgbase = git-nautilus-icons-git
 	conflicts = git-nautilus-icons-common
 	conflicts = git-caja-icons
 	conflicts = git-nemo-icons
-	replaces = git-nautilus-icons-common-git
-	replaces = git-caja-icons-git
-	replaces = git-nemo-icons-git
 	source = git+https://github.com/chrisjbillington/git-nautilus-icons.git
 	sha256sums = SKIP
 

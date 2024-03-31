@@ -15,8 +15,6 @@ optdepends=('python-nautilus: Nautilus support'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "${pkgname%-git}-common" 'git-caja-icons'
            'git-nemo-icons')
-replaces=("${pkgname%-git}-common-git" 'git-caja-icons-git'
-          'git-nemo-icons-git')
 source=("git+https://github.com/chrisjbillington/git-nautilus-icons.git")
 sha256sums=('SKIP')
 
