@@ -1,7 +1,7 @@
 _phpbase=71
 pkgname=php71-imagick
 _extname=imagick
-pkgver=3.4.4
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="PHP extension for IMagick"
 arch=('i686' 'x86_64')
@@ -26,4 +26,4 @@ package() {
   echo "extension=${_extname}.so" > "${_extname}.ini"
   install -D -m644 "${_extname}.ini" "${pkgdir}/etc/php${_phpbase}/conf.d/${_extname}.ini"
 }
-md5sums=('6d3a7048ab73b0fab931f28c484dbf76')
+md5sums=('0687774a6126467d4e5ede02171e981d')

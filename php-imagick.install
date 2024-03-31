@@ -1,8 +1,8 @@
 post_install() {
   echo '
-    ==> PHP72 extension
+    ==> PHP71 extension
 
-    A config file was stored under /etc/php72/conf.d/ with the extension enabled.
+    A config file was stored under /etc/php71/conf.d/ with the extension enabled.
     '
 }
 
