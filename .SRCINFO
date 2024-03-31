@@ -13,7 +13,6 @@ pkgbase = clipto-bin
 	provides = clipto
 	conflicts = clipto
 	conflicts = clipto.pro
-	replaces = clipto.pro
 	source = https://github.com/clipto-pro/Desktop/releases/download/v7.2.17/clipto-7.2.17.AppImage
 	sha256sums = ed0fc3b0e84efc986fdb41a1a38a1483c61d3c128eaa5014e97dc14c3b376028
 
