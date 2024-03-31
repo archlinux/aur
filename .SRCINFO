@@ -1,10 +1,10 @@
 pkgbase = r-dbitest
 	pkgdesc = Testing DBI Backends
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=DBItest
 	arch = any
-	license = LGPL
+	license = LGPL-2.1-or-later
 	depends = r-blob
 	depends = r-callr
 	depends = r-dbi
@@ -16,20 +16,18 @@ pkgbase = r-dbitest
 	depends = r-palmerpenguins
 	depends = r-rlang
 	depends = r-testthat
-	depends = r-vctrs
 	depends = r-withr
 	optdepends = r-clipr
 	optdepends = r-constructive
 	optdepends = r-debugme
 	optdepends = r-devtools
-	optdepends = r-dplyr
 	optdepends = r-knitr
 	optdepends = r-lintr
 	optdepends = r-pkgload
 	optdepends = r-rmarkdown
 	optdepends = r-rsqlite
-	source = https://cran.r-project.org/src/contrib/DBItest_1.8.0.tar.gz
-	md5sums = c30ed34e11c4e2e44ecb051fad564b66
-	b2sums = 06bf87c55f921fa832f96968334932c59dcdd810eeeadeb1837ff4258cecd6c7b921053e84eb31356ea1ec7186a7b31f6e27a55da961b147f3fad352cfc68730
+	source = https://cran.r-project.org/src/contrib/DBItest_1.8.1.tar.gz
+	md5sums = 4c364d7e113a1ed755412a9601c4be00
+	b2sums = 634b480e4a697b64b572e6957909845d279332a7fa0d8dd4c72bba81a29867dd2a798227a73623f8ed0aaedac0f69bd27cd66bafa7b1570b28c7b61ac426ff9c
 
 pkgname = r-dbitest
