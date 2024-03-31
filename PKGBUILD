@@ -59,7 +59,7 @@ build() {
 
 package() {
   # Add runtime-only dependencies
-  depends+=(redis postgresql)
+  depends+=(postgresql)
 
   install -dm 755 "${pkgdir}/usr/share/iceshrimp.net"
   install -dm 755 "${pkgdir}/etc/iceshrimp.net"

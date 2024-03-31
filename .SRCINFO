@@ -32,5 +32,4 @@ pkgbase = iceshrimp.net-git
 pkgname = iceshrimp.net-git
 	depends = aspnet-runtime>=8.0
 	depends = aspnet-runtime<9.0
-	depends = redis
 	depends = postgresql
