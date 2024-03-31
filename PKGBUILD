@@ -11,7 +11,6 @@ depends=('glibmm' 'hicolor-icon-theme' 'libarchive' 'libpipewire' 'qt6-svg')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
-replaces=('jdsp4linux-git' 'jdsp4linux-gui-git' 'gst-plugin-jamesdsp-git')
 options=('!strip' 'debug')
 source=('git+https://github.com/Audio4Linux/JDSP4Linux.git'
         'git+https://github.com/ThePBone/GraphicEQWidget.git'
