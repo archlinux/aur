@@ -19,7 +19,6 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'cosmic-text-editor')
-replaces=('cosmic-text-editor-git')
 source=('git+https://github.com/pop-os/cosmic-edit.git')
 sha256sums=('SKIP')
 

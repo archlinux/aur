@@ -14,7 +14,6 @@ pkgbase = cosmic-edit-git
 	provides = cosmic-edit
 	conflicts = cosmic-edit
 	conflicts = cosmic-text-editor
-	replaces = cosmic-text-editor-git
 	source = git+https://github.com/pop-os/cosmic-edit.git
 	sha256sums = SKIP
 
