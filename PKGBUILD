@@ -2,26 +2,27 @@
 
 pkgname=e2-sat-editor
 pkgdesc="Satellite channel lists editor: Enigma2, Neutrino, dreambox"
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 arch=('any')
 url="https://github.com/ctlcltd/e2-sat-editor"
 license=('GPL3')
 
-depends=('qt6-base' 'curl')
+depends=('qt6-base' 'qt6-translations' 'curl')
 makedepends=('cmake' 'ninja')
 provides=('e2-sat-editor')
 conflicts=('e2-sat-editor')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ctlcltd/e2-sat-editor/archive/v$pkgver.tar.gz")
-sha256sums=('7a9c13c5c6e997b3af556d4f791b03c080971870b3f3c69774e244412bd468bf')
+sha256sums=('9faa8513d7ba7193bd8617eb26dc92ee6f4612cc59053b5d2826d621202aa720')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver/src"
 
 	cmake -G Ninja -B build\
 		-DCMAKE_BUILD_TYPE=Release\
-		-DCMAKE_INSTALL_PREFIX=/usr
+		-DCMAKE_INSTALL_PREFIX=/usr\
+		-DRELEASE_MEDIUM=aur
 	ninja -C build
 }
 
@@ -31,5 +32,5 @@ package() {
 	DESTDIR="$pkgdir" ninja -C build install
 
 	install -Dm644 "$srcdir/$pkgname-$pkgver/src/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-	install -Dm644 "$srcdir/$pkgname-$pkgver/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 "$srcdir/$pkgname-$pkgver/dist/commom/Readme.txt.in" "$pkgdir/usr/share/doc/$pkgname/Readme.txt"
 }
