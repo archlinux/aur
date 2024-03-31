@@ -11,7 +11,7 @@ depends=('glibc' 'libelf' 'gcc-libs' 'zlib')
 provides=('bpftop')
 conflicts=('bpftop')
 license=('Apache-2.0')
-b2sums=('7f0054fea407811d9365e1cc010efd63ed3595d03503f36ee8a0e2b0fdfcf5a983eed008469b0128503e5608ebd832ed3b125fdcb9f21436f6fb4aec77b6e165')
+b2sums=('2a79e8a7b5b2c365a3620b061e63812dd9a74f67f2c9909aef1bcdb015e5a1c544836706b09a3fac4d0877ddc54b803d312d455e619777597254abdab70c847b')
 
 package() {
   cd "$srcdir"
