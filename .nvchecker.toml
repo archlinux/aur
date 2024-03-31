@@ -1,0 +1,5 @@
+[python-monty]
+source = "github"
+github = "materialsvirtuallab/monty"
+use_latest_release = "true"
+prefix = "v"
