@@ -1,8 +1,8 @@
 post_install() {
 	ln -s /usr/share/ente_auth/ente_auth /usr/bin/ente_auth
 	chmod +x /usr/bin/ente_auth
-    ln -s /usr/share/ente-auth/data/flutter_assets/assets/icons/auth-icon.png /usr/share/icons/hicolor/256x256/apps/ente_auth.png
-    ln -s /usr/share/ente-auth/data/flutter_assets/assets/icons/auth-icon.png /usr/share/icons/hicolor/128x128/apps/ente_auth.png
+    ln -s /usr/share/ente_auth/data/flutter_assets/assets/icons/auth-icon.png /usr/share/icons/hicolor/256x256/apps/ente_auth.png
+    ln -s /usr/share/ente_auth/data/flutter_assets/assets/icons/auth-icon.png /usr/share/icons/hicolor/128x128/apps/ente_auth.png
 }
 
 post_upgrade() {
