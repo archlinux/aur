@@ -1,7 +1,7 @@
 # Maintainer: Shohei Maruyama <cheat.sc.linux@outlook.com>
 
 pkgname='spacedrive'
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 pkgdesc='Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed filesystem written in Rust.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('spacedrive-git')
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/spacedriveapp/spacedrive/archive/refs/tags/${pkgver}.tar.gz")
 depends=('ffmpeg' 'libheif' 'gtk3' 'webkit2gtk' 'pango' 'gdk-pixbuf2' 'cairo' 'libsoup' 'glib2')
 makedepends=('cargo' 'pnpm' 'clang' 'git' 'lld')
-sha256sums=('a579aa278b626224b62b5f7f448d6f671d0d3171660fff1b01afcfbe46da3b1c')
+sha256sums=('56791a84716d1d539526af4933cfb8a9962445a0b707999ed56150ad92e4735b')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
