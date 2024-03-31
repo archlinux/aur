@@ -1,0 +1,78 @@
+--- a/src/cap-ng.c
++++ b/src/cap-ng.c
+@@ -449,7 +449,6 @@
+ #endif
+ 	f = fopen(buf, "re");
+ 	if (f) {
+-		__fsetlocking(f, FSETLOCKING_BYCALLER);
+ 		while (fgets(buf, sizeof(buf), f)) {
+ 			if (strncmp(buf, "CapB", 4))
+ 				continue;
+@@ -494,7 +493,6 @@
+ #endif
+ 	f = fopen(buf, "re");
+ 	if (f) {
+-		__fsetlocking(f, FSETLOCKING_BYCALLER);
+ 		while (fgets(buf, sizeof(buf), f)) {
+ 			if (strncmp(buf, "CapA", 4))
+ 				continue;
+--- a/utils/pscap.c
++++ b/utils/pscap.c
+@@ -176,7 +176,6 @@
+ 				euid = 0;
+ 			else {
+ 				line = 0;
+-				__fsetlocking(f, FSETLOCKING_BYCALLER);
+ 				while (fgets(buf, sizeof(buf), f)) {
+ 					if (line == 0) {
+ 						line++;
+--- a/utils/netcap.c
++++ b/utils/netcap.c
+@@ -120,7 +120,6 @@
+ 			euid = 0;
+ 		else {
+ 			int line = 0;
+-			__fsetlocking(sf, FSETLOCKING_BYCALLER);
+ 			while (fgets(buf, sizeof(buf), sf)) {
+ 				if (line == 0) {
+ 					line++;
+@@ -294,7 +293,6 @@
+ 				proc, strerror(errno));
+ 		return;
+ 	}
+-	__fsetlocking(f, FSETLOCKING_BYCALLER);
+ 	while (fgets(buf, sizeof(buf), f)) {
+ 		if (line == 0) {
+ 			line++;
+@@ -329,7 +327,6 @@
+ 					proc, strerror(errno));
+ 		return;
+ 	}
+-	__fsetlocking(f, FSETLOCKING_BYCALLER);
+ 	while (fgets(buf, sizeof(buf), f)) {
+ 		if (line == 0) {
+ 			line++;
+@@ -364,7 +361,6 @@
+ 					proc, strerror(errno));
+ 		return;
+ 	}
+-	__fsetlocking(f, FSETLOCKING_BYCALLER);
+ 	while (fgets(buf, sizeof(buf), f)) {
+ 		if (line == 0) {
+ 			line++;
+@@ -402,7 +398,6 @@
+ 				strerror(errno));
+ 		return;
+ 	}
+-	__fsetlocking(f, FSETLOCKING_BYCALLER);
+ 	while (fgets(buf, sizeof(buf), f)) {
+ 		if (line == iface) {
+ 			char *c;
+@@ -434,7 +429,6 @@
+ 				strerror(errno));
+ 		return;
+ 	}
+-	__fsetlocking(f, FSETLOCKING_BYCALLER);
+ 	while (fgets(buf, sizeof(buf), f)) {
+ 		if (line == 0) {
+ 			line++;
