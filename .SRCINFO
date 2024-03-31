@@ -10,7 +10,6 @@ pkgbase = gnome-shell-extension-fuzzy-app-search-git
 	provides = gnome-shell-extension-fuzzy-app-search
 	conflicts = gnome-shell-extension-fuzzy-app-search
 	conflicts = gnome-fuzzy-app-search
-	replaces = gnome-fuzzy-app-search-git
 	source = git+https://gitlab.com/Czarlie/gnome-fuzzy-app-search.git
 	sha256sums = SKIP
 

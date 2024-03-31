@@ -11,7 +11,6 @@ depends=('gnome-shell')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'gnome-fuzzy-app-search')
-replaces=('gnome-fuzzy-app-search-git')
 source=('git+https://gitlab.com/Czarlie/gnome-fuzzy-app-search.git')
 sha256sums=('SKIP')
 
