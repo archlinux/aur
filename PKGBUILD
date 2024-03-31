@@ -37,5 +37,6 @@ check() {
 
 package() {
   cd $_pkgname
-  install -Dm755 -t $pkgdir/usr/bin target/release/{gix,ein}
+  install -Dm755 target/release/{gix,ein} -t $pkgdir/usr/bin
+  for license in APACHE MIT; do install -Dm644 LICENSE-$license $pkgdir/usr/share/licenses/$_pkgname/LICENSE-$license; done
 }
