@@ -13,7 +13,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 # tests not in sdist tarball: https://github.com/whwright/click-command-tree/issues/5
 # source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-source=($_name-$pkgver.tar.gz::https://github.com/whwright/$_name/archive/refs/tags/$pkgver.tar.gz)
+source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
 sha256sums=('0bb9c223cedf72af004ae6ba6daf916a21300d03d5fb8e939a7265fbe481f6d2')
 b2sums=('7fc40e8273c05aedb8f71ddfe33d640761f3fe8c02afdb8973828b8c247910c67e7469aa43e41bc003dadd741736c0b4ffc48d146cd417051a4b939299a49033')
 
