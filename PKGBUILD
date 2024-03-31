@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HardyWeinberg
-_pkgver=1.7.5
+_pkgver=1.7.7
 pkgname=r-${_pkgname,,}
-pkgver=1.7.5
+pkgver=1.7.7
 pkgrel=1
 pkgdesc='Statistical Tests and Graphics for Hardy-Weinberg Equilibrium'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
   r-rsolnp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cfd8ac4aaf0a315c77f4ad62f1fe3751707ed0e97b0aade61a4c379000ff7a2c')
+sha256sums=('d072d3d3a5fd88e1d84bec109a8381507019e98f030f1f05cb728b38c8720b15')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
