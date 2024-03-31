@@ -1,7 +1,7 @@
 # Maintainer: Alex Tharp <alex@toastercup.io>
 pkgname=coolvlviewer-bin
-pkgver=1.30.2.36
-pkgrel=2
+pkgver=1.32.0.16
+pkgrel=1
 pkgdesc="A third-party viewer for Second Life (TM) and OpenSim grids."
 url="http://sldev.free.fr"
 license=('custom')
@@ -24,7 +24,7 @@ install=coolvlviewer.install
 source=("http://sldev.free.fr/binaries/CoolVLViewer-${pkgver}-Linux-x86_64-Setup"
         "coolvlviewer.desktop"
         "coolvlviewer.launcher")
-sha1sums=('f495e80f7731eb27eaee3eb1b0533660ed444f82'
+sha1sums=('a01439b8eb04a0fb5931a083fe57db1e8cf2a303'
           'd5defd3d847fcfb7cdf41150ab55684dedc79275'
           '3ef1284a00a4437e4c34f809311ee0672604ef04')
 
