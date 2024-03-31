@@ -2,7 +2,7 @@
 
 pkgname=dust-emu-git
 _pkgname=dust
-pkgver=0
+pkgver=r210.618a418
 pkgrel=1
 pkgdesc='A Nintendo DS emulator written in Rust for desktop devices and the web, with debugging features and a focus on accuracy'
 url=https://github.com/kelpsyberry/dust
@@ -20,6 +20,11 @@ prepare() {
   cd $_pkgname
   rustup default nightly
   cargo fetch --locked --target $CARCH-unknown-linux-gnu
+}
+
+pkgver() {
+  cd $_pkgname
+  printf r%s.%s $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 build() {
