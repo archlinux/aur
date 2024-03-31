@@ -13,7 +13,6 @@ makedepends=('blueprint-compiler' 'dotnet-sdk>=8' 'git')
 checkdepends=('appstream')
 optdepends=('yelp: in-app help')
 conflicts=('nickvision-tagger')
-replaces=('nickvision-tagger')
 _commit=81a2f63d1b239b03063cfa1dab048c2c0bb71e81  # tags/2023.11.3^0
 source=("git+https://github.com/NickvisionApps/Tagger.git#commit=${_commit}"
         'git+https://github.com/NickvisionApps/CakeScripts.git')
