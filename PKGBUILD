@@ -14,10 +14,10 @@ license=('GPL3')
 optdepends=('potato-c: pomodoro timer module')
 
 source=(
-  "${pkgname}.tar.gz::https://github.com/nimaaskarian/${_gitname}/archive/refs/tags/${pkgver}.zip"
+  "${pkgname}.tar.gz::https://github.com/nimaaskarian/${_gitname}/releases/download/${pkgver}/source.tar.gz"
 )
 
-md5sums=('2869c1b148a71e2531877c23570588a0')
+md5sums=('b0b3c6a0ad80de3c1efd80a624c88587')
 build () {
   cd "${pkgname}-${pkgver/v/}" || exit
   cargo build --release

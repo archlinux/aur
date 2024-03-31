@@ -10,7 +10,7 @@ pkgbase = c3
 	optdepends = potato-c: pomodoro timer module
 	provides = c3
 	conflicts = c3
-	source = c3.tar.gz::https://github.com/nimaaskarian/c3/archive/refs/tags/0.7.2.zip
-	md5sums = 2869c1b148a71e2531877c23570588a0
+	source = c3.tar.gz::https://github.com/nimaaskarian/c3/releases/download/0.7.2/source.tar.gz
+	md5sums = b0b3c6a0ad80de3c1efd80a624c88587
 
 pkgname = c3
