@@ -72,7 +72,6 @@ package_pop-shell-plugin-system76-power-git() {
   depends=('gnome-terminal' 'pop-launcher-git' 'system76-power')
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}" 'pop-launcher-system76-power')
-  replaces=('pop-launcher-system76-power-git')
 
   cd launcher
   install -d "$pkgdir/usr/lib/${pkgbase%-git}/scripts"

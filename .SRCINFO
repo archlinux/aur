@@ -33,4 +33,3 @@ pkgname = pop-shell-plugin-system76-power-git
 	provides = pop-shell-plugin-system76-power
 	conflicts = pop-shell-plugin-system76-power
 	conflicts = pop-launcher-system76-power
-	replaces = pop-launcher-system76-power-git
