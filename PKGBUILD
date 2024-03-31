@@ -6,7 +6,7 @@
 pkgname=hmcl-java-run
 _pkgname=HMCL
 _ver=3.5
-_build=6
+_build=7
 _pkgver=release-$_ver.$_build
 _java_version=17
 _jar_path="/usr/share/java/$pkgname.jar"
@@ -23,9 +23,9 @@ conflicts=('hmcl')
 source=("${_pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz"
 		"0001-Target-Java-$_java_version.patch"
 		"0002-Cleanup.patch")
-sha256sums=('bba9b7d8fa15970043b990a60f5f977aa93e70c0d1e265e4fc409c8efd4533b5'
-            'f98f716e544c74a6f1ab116a1aab2ae1c857f88b9999d009491333fa562cb2d5'
-            '3afebafe4739a92416a6543e7441638df8e8f299058cd76009e136d6b57670d8')
+sha256sums=('115af54c288521cb5fdb087cee44b6ee7ef613970bde2fbff230f69605242e68'
+            '0dc7909795777dff86c5c3cee030e1768387e52b92a2e569686788b093e76945'
+            '98100e45c3253ddf6c1cbb3e2d164584021958fa4251b9f035b61ab44d2aa231')
 
 prepare() {
 	for patch in "${source[@]}"; do
