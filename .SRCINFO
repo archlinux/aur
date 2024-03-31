@@ -1,6 +1,6 @@
 pkgbase = lf-bin
 	pkgdesc = A terminal file manager inspired by ranger (Precompiled binary from official repository)
-	pkgver = 31
+	pkgver = 32
 	pkgrel = 1
 	url = https://github.com/gokcehan/lf
 	arch = i686
@@ -13,11 +13,11 @@ pkgbase = lf-bin
 	conflicts = lf-sixel-git
 	options = !strip
 	options = !emptydirs
-	source_i686 = lf-31-linux-386.tar.gz::https://github.com/gokcehan/lf/releases/download/r31/lf-linux-386.tar.gz
-	sha256sums_i686 = 9561652ace9d9a493ff53e1ec94339a3e1eb15bc7fb386dfd9ce33735ce638b8
-	source_x86_64 = lf-31-linux-amd64.tar.gz::https://github.com/gokcehan/lf/releases/download/r31/lf-linux-amd64.tar.gz
-	sha256sums_x86_64 = db529fbc0c9ba66d426d7acde95a3520ff67c02162b115415ec2c288b2867f02
-	source_armv7h = lf-31.linux-arm.tar.gz::https://github.com/gokcehan/lf/releases/download/r31/lf-linux-arm.tar.gz
-	sha256sums_armv7h = e37df7248df110d4782ff703477be1192313458caaeb0849bc477d8da8b1819b
+	source_i686 = lf-32-linux-386.tar.gz::https://github.com/gokcehan/lf/releases/download/r32/lf-linux-386.tar.gz
+	sha256sums_i686 = da2dc1ae6b6ac6c0cd8e538fe79900cd49250c8b84a921831c53cb517fc9e8d0
+	source_x86_64 = lf-32-linux-amd64.tar.gz::https://github.com/gokcehan/lf/releases/download/r32/lf-linux-amd64.tar.gz
+	sha256sums_x86_64 = f587e3acef5945232aabbf293bbc85d231ba299f179764a99171275219acdeb0
+	source_armv7h = lf-32.linux-arm.tar.gz::https://github.com/gokcehan/lf/releases/download/r32/lf-linux-arm.tar.gz
+	sha256sums_armv7h = 81dd923787494f5c6a87eca697cbfb805a9d4a887502f061db5815e002120754
 
 pkgname = lf-bin
