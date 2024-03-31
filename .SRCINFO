@@ -1,6 +1,6 @@
 pkgbase = candy-git
-	pkgdesc = Another virtual private network that supports peer-to-peer connections
-	pkgver = 5.0.r4.g2568058
+	pkgdesc = A reliable, low-latency, and anti-censorship virtual private network
+	pkgver = 5.5.r0.g4b9e79a
 	pkgrel = 1
 	url = https://github.com/lanthora/candy
 	arch = x86_64

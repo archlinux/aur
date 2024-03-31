@@ -1,9 +1,9 @@
 # Maintainer: lanthora <lanthora@outlook.com>
 
 pkgname=candy-git
-pkgver=5.0.r4.g2568058
+pkgver=5.5.r0.g4b9e79a
 pkgrel=1
-pkgdesc="Another virtual private network that supports peer-to-peer connections"
+pkgdesc="A reliable, low-latency, and anti-censorship virtual private network"
 url="https://github.com/lanthora/candy"
 license=('MIT')
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
