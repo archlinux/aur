@@ -1,23 +1,26 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
-pkgname=gepetto-viewer-corba
-pkgver=5.7.3
-pkgrel=2
+_org='gepetto'
+_pkgname=gepetto-viewer-corba
+pkgname=("$_pkgname" "$_pkgname-docs")
+pkgver=5.8.0
+pkgrel=1
 pkgdesc="Graphical Interface for Pinocchio and HPP."
 arch=('i686' 'x86_64')
-url="https://github.com/gepetto/$pkgname"
-license=('BSD')
-depends=('gepetto-viewer' 'omniorbpy')
-makedepends=('cmake' 'boost')
+url="https://github.com/$_org/$_pkgname"
+license=('BSD-2-Clause')
+depends=('gepetto-viewer' 'omniorb' 'omniorbpy' 'python-yaml' 'python-numpy' 'python' 'glibc' 'qt5-base' 'gcc-libs')
+makedepends=('cmake' 'boost' 'doxygen')
 source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig})
-sha256sums=('79793619c55554be36b89ce348a0dd5bb84d6354363ca8b0ccc1bb2ffbae1f44'
+sha256sums=('5672d10833eb5ff26f5b59af34e0303ed0648377049380f66f2386d0e89c76fe'
             'SKIP')
 validpgpkeys=('9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28')
 
 build() {
     cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
+        -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib
+        -Wno-dev
     cmake --build "build-$pkgver"
 }
 
@@ -25,7 +28,14 @@ check() {
     cmake --build "build-$pkgver" -t test
 }
 
-package() {
+package_gepetto-viewer-corba() {
     DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
+    rm -rf "$pkgdir/usr/share/doc"
+    install -Dm644 "$pkgbase-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_gepetto-viewer-corba-docs() {
+    DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
+    rm -rf "$pkgdir"/usr/{bin,etc,lib,include,share/{"$_pkgname",ament_index,idl}}
     install -Dm644 "$pkgbase-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
