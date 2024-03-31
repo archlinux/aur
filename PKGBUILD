@@ -5,8 +5,8 @@ pkgdesc="A Cython wrapper for Mojang's modified LevelDB library."
 url="https://github.com/Amulet-Team/Amulet-LevelDB"
 license=(unknown)
 arch=(any)
-pkgver=r29.11aa86c
-pkgrel=2
+pkgver=1.0.0b5.r2.g11aa86c1
+pkgrel=1
 makedepends=(python-setuptools git)
 depends=(python python-versioneer python-portalocker python-leveldb)
 source=(
@@ -15,11 +15,12 @@ source=(
 md5sums=(
 	"SKIP"
 )
-provides=(python-amulet-leveldb-git python-amulet-leveldb)
+provides=(python-amulet-leveldb)
+conflicts=(python-amulet-leveldb)
 
 function pkgver() {
 	cd "${srcdir}/Amulet-LevelDB"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 function prepare() {
