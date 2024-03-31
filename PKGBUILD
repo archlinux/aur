@@ -2,7 +2,7 @@
 _pkgname=AHK_X11
 pkgname="${_pkgname,,}"
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='AutoHotkey for Linux (X11-based systems)'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/phil294/$_pkgname"
@@ -15,6 +15,7 @@ depends=(
   libxkbcommon
   libxinerama
   libxtst
+  gc
   fuse2
 )
 makedepends=(
@@ -22,7 +23,6 @@ makedepends=(
   crystal
   shards
   gcc
-  gc
 )
 _xdotool_commit='7b63eb46631815fd4a10e1fd78a37213250d1193'
 source=("$_pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
