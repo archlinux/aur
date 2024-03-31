@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-qt6-5compat
 	pkgdesc = Module that contains unsupported Qt 5 APIs (android)
-	pkgver = 6.6.2
+	pkgver = 6.6.3
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = android-aarch64-qt6-5compat
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.6/6.6.2/submodules/qt5compat-everywhere-src-6.6.2.tar.xz
-	sha256sums = e07b08ab7658e4856f07e3262ab342df4ed7e7a69f2720e56bb2128729191967
+	source = https://download.qt.io/official_releases/qt/6.6/6.6.3/submodules/qt5compat-everywhere-src-6.6.3.tar.xz
+	sha256sums = 68c2cf4e5eabfea27626fe40d088cb0dbb2c0414d3961ef132b7e06c60ceec0b
 
 pkgname = android-aarch64-qt6-5compat
