@@ -1,0 +1,15 @@
+pkgbase = nodejs-reveal.js-git
+	pkgdesc = The HTML Presentation Framework
+	pkgver = 5.0.5.r20.g6410c756
+	pkgrel = 1
+	url = https://github.com/hakimel/reveal.js
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	provides = nodejs-reveal.js
+	conflicts = nodejs-reveal.js
+	source = git+https://github.com/hakimel/reveal.js.git
+	sha256sums = SKIP
+
+pkgname = nodejs-reveal.js-git
