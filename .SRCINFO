@@ -1,0 +1,15 @@
+pkgbase = php83-redis
+	pkgdesc = PHP extension for interfacing with Redis
+	pkgver = 6.0.2
+	pkgrel = 1
+	url = http://pecl.php.net/package/redis
+	arch = x86_64
+	license = PHP
+	makedepends = php83
+	makedepends = liblzf
+	depends = php83
+	backup = etc/php83/conf.d/40-redis.ini
+	source = http://pecl.php.net/get/redis-6.0.2.tgz
+	sha256sums = 01aeccb0e14f897fe56f0509be6e6991ff0ad459f9d34e95e4556d02699b9a03
+
+pkgname = php83-redis
