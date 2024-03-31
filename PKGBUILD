@@ -3,12 +3,12 @@
 
 pkgname=xf86-video-vmware
 pkgver=13.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="X.org vmware video driver"
 arch=(x86_64)
 url="https://xorg.freedesktop.org/"
-license=('custom')
-depends=('mesa' 'systemd-libs')
+license=('MIT AND X11')
+depends=('mesa' 'systemd-libs' 'libxext' 'libx11' 'libdrm' 'glibc')
 makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=25.2') # 'git')
 conflicts=('xorg-server<21.1.1' 'X-ABI-VIDEODRV_VERSION<25' 'X-ABI-VIDEODRV_VERSION>=26')
 groups=('xorg-drivers')
@@ -27,7 +27,7 @@ build() {
   # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
   export CFLAGS=${CFLAGS/-fno-plt}
   export CXXFLAGS=${CXXFLAGS/-fno-plt}
-  export LDFLAGS=${LDFLAGS/,-z,now}
+  export LDFLAGS=${LDFLAGS/-Wl,,-z,now}
 
   ./configure --prefix=/usr --enable-vmwarectrl-client
   make
