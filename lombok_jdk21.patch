@@ -1,0 +1,12 @@
+diff --unified --recursive --text LightZone-5.0.0beta2/lightcrafts/ivy.xml LightZone-5.0.0beta2.new/lightcrafts/ivy.xml
+--- LightZone-5.0.0beta2/lightcrafts/ivy.xml	2023-09-25 21:58:06.000000000 +0900
++++ LightZone-5.0.0beta2.new/lightcrafts/ivy.xml	2024-03-31 14:38:38.160510073 +0900
+@@ -17,7 +17,7 @@
+     <dependency name="jiconfont-font_awesome" rev="4.7.0.0" org="com.github.jiconfont" conf="compile->default"/>
+     <dependency name="jiconfont-google_material_design_icons" rev="2.2.0.2" org="com.github.jiconfont" conf="compile->default"/>
+     <dependency name="jiconfont-swing" rev="1.0.1" org="com.github.jiconfont" conf="compile->default"/>
+-    <dependency name="lombok" rev="1.18.26" org="org.projectlombok" conf="compile->default"/>
++    <dependency name="lombok" rev="1.18.32" org="org.projectlombok" conf="compile->default"/>
+     <!-- Test dependencies -->
+     <dependency name="junit-jupiter-api" rev="5.9.3" org="org.junit.jupiter" conf="test->default"/>
+     <dependency name="junit-jupiter-params" rev="5.9.3" org="org.junit.jupiter" conf="test->default"/>

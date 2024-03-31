@@ -6,21 +6,26 @@
 
 pkgname=lightzone
 pkgver=5.0.0beta2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source professional-level digital darkroom software"
 url="https://github.com/ktgw0316/LightZone/"
-license=("custom:BSD-3-Clause")
+license=("BSD-3-Clause")
 arch=("x86_64")
 conflicts=('lightzone-git')
 provides=('lightzone')
-depends=('java-runtime>=17'
+depends=(
+    'gcc-libs'
+    'glibc'
+    'hicolor-icon-theme'
+    'java-runtime>=17'
     'javahelp2'
     'lcms2'
     'lensfun'
     'libjpeg-turbo'
     'libtiff'
     'libraw'
-    'libxml2')
+    'libxml2'
+)
 makedepends=('java-environment=17'
     'ant'
     'autoconf'
@@ -30,18 +35,22 @@ makedepends=('java-environment=17'
     'libx11'
     'pkgconf'
     'rsync'
-    'javahelp2'
-    'lcms2'
-    'libjpeg-turbo'
-    'libtiff'
-    'libraw')
+)
 
-git_url=${url}
-source=("${git_url}/archive/${pkgver}.zip")
+_git_url=${url}
+_patch_name="lombok_jdk21.patch"
+source=("${_git_url}/archive/${pkgver}.zip")
 md5sums=('d3b9246311182e12fc6da5230dfcb173')
 
+prepare() {
+  cd "${srcdir}/LightZone-${pkgver}/"
+  patch -Np1 -i "${srcdir}/../${_patch_name}"
+}
+
 build() {
-  if [ -d /usr/lib/jvm/java-17-openjdk ]; then
+  if [ -d /usr/lib/jvm/java-21-openjdk ]; then
+    export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+  elif [ -d /usr/lib/jvm/java-17-openjdk ]; then
     export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
   else
     export JAVA_HOME=/usr/lib/jvm/default
