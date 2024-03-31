@@ -1,15 +1,16 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Co-Maintainer: p0ryae
 
 pkgname=lazap-bin
 pkgver=0.7.0
 pkgrel=2
 pkgdesc="Lightweight cross-platform client, unifying games into a single, modern library 🎮 (binary release)"
-arch=('x86_64')
 url="https://github.com/Lazap-Development/Lazap"
-license=('CCPL:by-nc-sa4')
+license=('CC-BY-NC-SA-4.0')
+arch=('x86_64')
 depends=('libayatana-appindicator' 'libxtst' 'webkit2gtk')
-conflicts=("lazap")
 provides=("lazap")
+conflicts=("lazap")
 source=("$url/releases/download/v$pkgver/lazap_${pkgver}_amd64.deb")
 sha256sums=('9edaa3edfc409f0ad9b735d7eafc8c104297ccaa6528383eb9fc2456e287844b')
 
