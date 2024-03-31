@@ -2,7 +2,7 @@
 # Maintainer: M Hickford <mirth.hickford@gmail.com>
 _pkgbase=git-credential-azure
 pkgname=git-credential-azure-git
-pkgver=0.2.3.r0.g5d59ce5
+pkgver=0.3.0.r0.gcf44c48
 pkgrel=1
 pkgdesc='Git credential helper that authenticates to Azure Repos (dev.azure.com) (Git version)'
 arch=('any')
