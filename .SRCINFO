@@ -1,15 +1,14 @@
 pkgbase = dungeondraft
 	pkgdesc = Dungeondraft is a tabletop encounter map creation tool designed to draw aesthetic maps without the typical frustrations and time investment
-	pkgver = 1.0.0.0
-	pkgrel = 1
+	pkgver = 1.0.3.2
+	pkgrel = 2
 	url = https://dungeondraft.net
 	arch = x86_64
 	license = custom:TailwindGamesLicense
 	makedepends = unzip
 	depends = mono
 	depends = zenity
-	source = file:///Dungeondraft-1.0.0.0-Linux64-hotfix.zip
+	source = https://cdn.humble.com/humblebundle/tailwindgamesllc_ChunI/Dungeondraft-1.0.3.2-Linux64.zip?gamekey=fmKGXN3GG3zwduTa&t=st=1711894556~exp=1711980956~hmac=5ba8e8ca8265200020afd5485831518ceed539001971c9c7b41712a4a669f06a
 	md5sums = SKIP
 
 pkgname = dungeondraft
-
