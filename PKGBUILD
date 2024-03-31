@@ -1,81 +1,90 @@
-# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Maintainer:
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Alexey D. <lq07829icatm at rambler.ru>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-pkgname='ark-git'
-_basename="${pkgname%-git}"
-pkgver=22.04.1.r57.g6037bcd0
+_pkgname="ark"
+pkgname="$_pkgname-git"
+pkgver=24.02.1.r99.g531f976
 pkgrel=1
-pkgdesc='Compressed archive manager from KDE Gear'
-arch=('i686' 'x86_64')
-url="https://apps.kde.org/${_basename}/"
-license=('GPL')
-groups=('kde-applications' 'kde-utilities')
+pkgdesc='Archiving Tool'
+url="https://invent.kde.org/utilities/ark"
+license=('GPL-2.0-or-later')
+arch=('x86_64')
+
 depends=(
-  'hicolor-icon-theme'
-  'kitemmodels'
-  'kparts'
-  'kpty'
-  'libarchive'
-  'libzip'
+  kconfig
+  kcrash
+  kdbusaddons
+  kfilemetadata
+  ki18n
+  kio
+  kparts
+  kpty
+  libarchive
+
+  ## implicit
+  #bash
+  #hicolor-icon-theme
+  #kcolorscheme
+  #kcompletion
+  #kconfigwidgets
+  #kcoreaddons
+  #kjobwidgets
+  #kservice
+  #kwidgetsaddons
+  #kwindowsystem
+  #kxmlgui
+  #libzip
+  #qt6-base
+  #zlib
 )
 makedepends=(
-  'cmake'
-  'extra-cmake-modules'
-  'git'
-  'kdoctools'
-  'python'
+  extra-cmake-modules
+  git
+  kdoctools
+  ninja
 )
 optdepends=(
+  'arj: ARJ format support'
   'lrzip: LRZ format support'
   'lzop: LZO format support'
   'p7zip: 7Z format support'
+  'unarchiver: RAR format support'
   'unrar: RAR decompression support'
-  'unarchiver: alternative support for RAR and multipart ZIP formats'
-  'unzip: legacy extraction support for single-part ZIP files'
-  'zip: legacy compression support for single-part ZIP files'
 )
-provides=("${_basename}=${pkgver}")
-conflicts=("${_basename}")
-source=("git+https://invent.kde.org/utilities/${_basename}.git")
-b2sums=('SKIP')
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_basename}"
+  cd "$_pkgsrc"
 
-  # Generate git tag based version. Count only proper v#.#* [#=number] tags.
-  local _gitversion=$(git describe --long --tags --match 'v[0-9][0-9.][0-9.]*' | sed -e 's|^v||' | tr '[:upper:]' '[:lower:]') 
+  local _tag=$(git tag | grep -Ev '\.[0-9][0-9]$' | sort -rV | head -1)
+  local _revision=$(git rev-list --count --cherry-pick "$_tag"...HEAD)
+  local _hash=$(git rev-parse --short=7 HEAD)
 
-  # Format git-based version for pkgver
-  echo "${_gitversion}" | sed \
-    -e 's|^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)|\1\2|' \
-    -e 's|\([0-9]\+-g\)|r\1|' \
-    -e 's|-|.|g'
-}
-
-prepare() {
-  printf 'Configuring external build flags for CMake...\n'
-  printf '# Adding CPPFLAGS to CFLAGS, CXXFLAGS; otherwise CMake might ignore the former.\n'
-
-  export CFLAGS+=" ${CPPFLAGS}" # CMake ignores CPPFLAGS
-  export CXXFLAGS+=" ${CPPFLAGS}" # CMake ignores CPPFLAGS
-
-  printf '# Adding LDFLAGS to CMake LINKER_FLAGS_INIT vars, otherwise CMake might ignore the former.\n\n'
-
-  printf 'Configuring CMake build...\n'
-  cmake -B build -S "${_basename}" \
-    -DCMAKE_BUILD_TYPE='RelWithDebInfo' \
-    -DCMAKE_EXE_LINKER_FLAGS_INIT="${LDFLAGS}" \
-    -DCMAKE_SHARED_LINKER_FLAGS_INIT="${LDFLAGS}" \
-    -DCMAKE_MODULE_LINKER_FLAGS_INIT="${LDFLAGS}" \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DBUILD_TESTING='OFF'
+  printf '%s.r%s.g%s' "${_tag#v}" "$_revision" "$_hash"
 }
 
 build() {
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DBUILD_TESTING=OFF
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
   cmake --build build
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 }
