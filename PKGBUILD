@@ -6,7 +6,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-curl
-pkgver=8.6.0
+pkgver=8.7.1
 pkgrel=1
 arch=('any')
 pkgdesc="An URL retrival utility and library (Android ${_android_arch})"
@@ -25,11 +25,9 @@ makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("${url}/download/curl-${pkgver}.tar.bz2"
         "0002-nghttp2-static.patch"
-        "0003-libpsl-static-libs.patch"
         "0004-more-static-fixes.patch")
-md5sums=('4418e0d94f29d352afafdab445e37a3d'
+md5sums=('a7335b3daf80b9a0ee884fcb62324f88'
          '08976b11b3e986c43c2ebd8eac36e2fb'
-         '0d6963bab0b98f8bc7cf8f2f7311e75a'
          '98ba4e01c3545650087a4852192ce10e')
 
 prepare() {
@@ -37,7 +35,6 @@ prepare() {
     source android-env ${_android_arch}
 
     patch -Np1 -i ../0002-nghttp2-static.patch
-    patch -Np1 -i ../0003-libpsl-static-libs.patch
     patch -Np1 -i ../0004-more-static-fixes.patch
 
     autoreconf -vfi
