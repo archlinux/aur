@@ -1,16 +1,23 @@
 pkgbase = kalker-git
 	pkgdesc = A calculator program that supports user-defined variables, functions, derivation, and integration.
-	pkgver = v1.1.0.r19.gf3d8802
+	pkgver = v2.1.1.r7.g74d787f
 	pkgrel = 1
 	url = https://github.com/PaddiM8/kalker
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
+	depends = mpfr
+	depends = gmp
+	depends = libmpc
+	depends = glibc
 	conflicts = kalker
 	source = git+https://github.com/PaddiM8/kalker
+	source = build.patch
 	b2sums = SKIP
+	b2sums = 21b518490cd68c2d6f1bd46326ed734ccab767537f91a66635c89125db5d191c6444a74e80c98fc77c5c47747b436f9e6f8c2bb485fb461fc132a030a4266d6c
 
 pkgname = kalker-git

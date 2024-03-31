@@ -1,0 +1,16 @@
+diff --git a/kalk/Cargo.toml b/kalk/Cargo.toml
+index 13910db..1d00a9c 100644
+--- a/kalk/Cargo.toml
++++ b/kalk/Cargo.toml
+@@ -18,6 +18,11 @@ rug = { version = "1.24.0", features = ["float"], optional = true }
+ lazy_static = "1.4.0"
+ wasm-bindgen = "0.2.69"
+ 
++[dependencies.gmp-mpfr-sys]
++version = "1.6.2"
++default-features = false
++features = ["mpfr", "use-system-libs"]
++
+ [dev-dependencies]
+ wasm-bindgen-test = "0.3.19"
+ test-case = "1.0.0"
