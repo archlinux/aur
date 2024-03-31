@@ -7,7 +7,7 @@
 
 pkgname=python-spotdl
 pkgver=4.2.5
-pkgrel=2
+pkgrel=3
 
 pkgdesc='Download your Spotify playlists and songs along with album art and metadata (from YouTube if a match is found).'
 arch=('any')
@@ -42,28 +42,27 @@ depends=(
 	'yt-dlp'
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry-core')
-checkdepends=('python-pytest-asyncio')
+checkdepends=('python-pytest-asyncio' 'python-pytest-mock')
 provides=("$pkgname" 'spotdl')
 options=(strip emptydirs zipman)
 
-source=("https://pypi.io/packages/source/s/spotdl/spotdl-$pkgver.tar.gz")
-# source=("https://github.com/spotDL/spotify-downloader/archive/refs/tags/v$pkgver.zip")
-b2sums=('e7b1ba0c7bebceb0d78ea0b4974b7a2a46612f03a3b3e457f8f996d68b9b23df0c199448956ad5f4398effbe5d59d51c43c310f998a8d4798d07bb89f6c51a5d')
+source=("https://github.com/spotDL/spotify-downloader/archive/refs/tags/v$pkgver.zip")
+b2sums=('bad96199ae1768e85efbc992603b911b3967624b26b65e1e3d7de0cbdcba193bbc04f64210c390017cb8b08d4a277907ebf8d9236e5247a2e56e4e2d50fb8c1b')
 
 # Document: https://wiki.archlinux.org/title/Python_package_guidelines
 build() {
-	cd spotdl-$pkgver
+	cd spotify-downloader-$pkgver
 	# https://github.com/python-poetry/poetry/issues/5547
 	python -m build --wheel --no-isolation
 }
 
 check() {
-	cd spotdl-$pkgver
+	cd spotify-downloader-$pkgver
 	pytest || echo 'Tests failed!'
 }
 
 package() {
-	cd spotdl-$pkgver
+	cd spotify-downloader-$pkgver
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -vDm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
