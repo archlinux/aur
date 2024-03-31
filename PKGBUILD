@@ -31,7 +31,6 @@ optdepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'turtlegit')
-replaces=('turtlegit-git')
 source=('git+https://gitlab.gnome.org/philippun1/turtle.git')
 sha256sums=('SKIP')
 

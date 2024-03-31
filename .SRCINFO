@@ -23,7 +23,6 @@ pkgbase = turtle-git
 	provides = turtle
 	conflicts = turtle
 	conflicts = turtlegit
-	replaces = turtlegit-git
 	source = git+https://gitlab.gnome.org/philippun1/turtle.git
 	sha256sums = SKIP
 
