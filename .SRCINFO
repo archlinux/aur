@@ -9,4 +9,4 @@ pkgbase = minecraft-server-jar
 	noextract = minecraft_server.1.20.4.jar
 	source = mcserver.1.20.4.jar::https://launcher.mojang.com/v1/objects/8dd1a28015f51b1803213892b50b7b4fc76e594d/server.jar
     sha256sums = c03fa6f39daa69ddf413c965a3a83084db746a7a138ce535a693293b5472d363
-pkgname = minecraft-jar
+pkgname = minecraft-server-jar
