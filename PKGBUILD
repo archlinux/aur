@@ -2,7 +2,7 @@
 
 pkgname=pufferpanel-bin
 _pkgname=pufferpanel
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="PufferPanel: A web-base game management system (binary version)."
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ source=(https://raw.githubusercontent.com/PufferPanel/PufferPanel/v${pkgver//_/-
                https://raw.githubusercontent.com/PufferPanel/PufferPanel/v${pkgver//_/-}/config.linux.json)
 b2sums=('ed744c35200b918c3107ea6191e3c6c38b3a731183b5cf7ed8b066550a6038fd712429b24264b0b00c52f9533b8503462962d2bfdb45c49724be49a2b9b39141'
         '0281c464b61c7a869d0f2844d18b30728a97cd66504b3ced5cded26d4ed826f3dd340ce063d0a8f1877500782be19d586e04a8e79a9ca6ae465dbd67114d5e9f')
-b2sums_x86_64=('1069a4ad06f80cf34f20bf72631ecb62e255ce12eda98a03ffb30adf67a5fecfcc92a695e63b861b1ff85eece0e732c625d9e73949718bb3a47aa4058fcc5166')
-b2sums_aarch64=('cd5773a5866eb5af7feb34c2f12814455f0903c77bf5e3dae722d16a69ae251fd5bfba488895cb51a21c52257eaea0722d9f3f0b0861c035829eeb35a6ac9343')
+b2sums_x86_64=('03c40ef788ba5f62e05988ea6e5ac4ece63e7e6ed7f811f74e04458ff2b268224a8ba20bd0376174d45e09fbdfcabbb64d2b8df56b3365d37088ecc93437777e')
+b2sums_aarch64=('d24d058d4b7a46be6a6587bdfcfc2cd7c9f020c94f7a15ceca3f6060962b5e0639de334a2e09a10432a611c14a6d59c77015b53c1c418dc2126ae2ea2d9526c5')
 package() {
   export pkg=pufferpanel
   mkdir -p ${pkgdir}/var/www/${pkg}/
