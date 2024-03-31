@@ -20,8 +20,8 @@ optdepends=(
     'clash-meta: clash core'
 )
 makedepends=('asar' 'npm')
-source_x86_64=("${pkgname}-${pkgver}-x86_64-linux.tar.gz::${url}/releases/download/${pkgver}/Clash.for.Windows-${pkgver}-x64-linux.tar.gz")
-source_aarch64=("${pkgname}-${pkgver}-aarch64-linux.tar.gz::${url}/releases/download/${pkgver}/Clash.for.Windows-${pkgver}-arm64-linux.tar.gz")
+source_x86_64=("${pkgname}-${pkgver}-x86_64-linux.tar.gz::https://web.archive.org/web/20231020093608if_/https://objects.githubusercontent.com/github-production-release-asset-2e65be/153697551/c6e9c14e-0049-4e02-8ea5-12d8fabf9f9d?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231020%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231020T093608Z&X-Amz-Expires=300&X-Amz-Signature=f07dabe509fbcb04ed7d0491a41bce68417ce24f04792124b300344c623114b4&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=153697551&response-content-disposition=attachment%3B%20filename%3DClash.for.Windows-0.20.39-x64-linux.tar.gz&response-content-type=application%2Foctet-stream")
+source_aarch64=("${pkgname}-${pkgver}-aarch64-linux.tar.gz::https://web.archive.org/web/20231020093527if_/https://objects.githubusercontent.com/github-production-release-asset-2e65be/153697551/b1e7558e-9fa3-4ccc-b2f6-d0ff6cc5b34a?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231020%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231020T093527Z&X-Amz-Expires=300&X-Amz-Signature=4942053a395a115dcea01b4ee9854fc57a01b0d5ebf8eab99b0933a29e155f12&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=153697551&response-content-disposition=attachment%3B%20filename%3DClash.for.Windows-0.20.39-arm64-linux.tar.gz&response-content-type=application%2Foctet-stream")
 source=(
     "clash-for-windows.desktop"
     "cfw"
