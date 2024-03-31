@@ -13,7 +13,6 @@ pkgbase = meteo
 	depends = libayatana-appindicator
 	depends = webkit2gtk
 	conflicts = meteo-gtk
-	replaces = meteo-gtk
 	source = git+https://gitlab.com/bitseater/meteo.git#commit=5d8501911faed913036609e8ae7dfb2b35d76f4a?signed
 	validpgpkeys = 900E41F44EFF4B6D696EB80AE6BDC743AED36483
 	sha256sums = SKIP

@@ -10,7 +10,6 @@ depends=('gtk3' 'libayatana-appindicator' 'webkit2gtk')
 makedepends=('git' 'meson' 'vala')
 checkdepends=('appstream')
 conflicts=('meteo-gtk')
-replaces=('meteo-gtk')
 _commit=5d8501911faed913036609e8ae7dfb2b35d76f4a  # tags/0.9.9.3^0
 source=("git+https://gitlab.com/bitseater/meteo.git#commit=${_commit}?signed")
 sha256sums=('SKIP')
