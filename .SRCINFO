@@ -1,0 +1,19 @@
+pkgbase = plasma6-runners-appmenu-git
+	pkgdesc = A little krunner plugin (Plasma 6) to search through the menu items of the current application.
+	pkgver = r16.f705ea0
+	pkgrel = 1
+	url = https://github.com/Kishore96in/krunner-appmenu
+	install = plasma6-runners-appmenu-git.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = krunner
+	depends = python
+	depends = python-xlib
+	depends = python-dbus
+	depends = python-gobject
+	conflicts = plasma5-runners-appmenu-git
+	source = git+https://github.com/Kishore96in/krunner-appmenu.git
+	md5sums = SKIP
+
+pkgname = plasma6-runners-appmenu-git
