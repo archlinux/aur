@@ -2,6 +2,7 @@
 
 pkgname=flightcore
 pkgver=2.19.3
+_commit=10392d13359eddeda7e5efef906dddf1e7a6240b
 pkgrel=1
 pkgdesc="A Northstar installer, updater, and mod-manager"
 url="https://github.com/R2NorthstarTools/FlightCore"
@@ -10,7 +11,7 @@ arch=('x86_64')
 depends=('webkit2gtk')
 makedepends=('cargo' 'git' 'npm')
 options+=('!lto')
-source=("git+$url.git#tag=v$pkgver")
+source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
 prepare() {
@@ -35,6 +36,7 @@ Type=Application" > $pkgname.desktop
 
 # npm dependencies
   export CARGO_HOME="$srcdir/CARGO_HOME"
+  export npm_config_cache="$srcdir/npm_cache"
   npm install
   cd src-vue
   npm install
@@ -43,6 +45,7 @@ Type=Application" > $pkgname.desktop
 build() {
   export CARGO_HOME="$srcdir/CARGO_HOME"
   export RUSTUP_TOOLCHAIN=stable
+  export npm_config_cache="$srcdir/npm_cache"
   cd FlightCore
   npm run tauri build
 }
@@ -54,11 +57,12 @@ package() {
   cd docs
   install -Dm644 ../README.md DEV-TOOLS.md DEVELOPMENT.md FAQ.md TROUBLESHOOTING.md\
   -t "$pkgdir/usr/share/doc/$pkgname"
-  cd ../src-tauri
+  cd ../src-tauri/icons
   _icdr=usr/share/icons/hicolor
-  install -Dm644 icons/32x32.png "$pkgdir/$_icdr/32x32/apps/$pkgname.png"
-  install -Dm644 icons/128x128.png "$pkgdir/$_icdr/128x128/apps/$pkgname.png"
-  install -Dm644 icons/128x128@2x.png "$pkgdir/$_icdr/256x256/apps/$pkgname.png"
-  install -Dm644 icons/icon.png "$pkgdir/$_icdr/512x512/apps/$pkgname.png"
-  install -Dm755 target/release/flight-core "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 32x32.png "$pkgdir/$_icdr/32x32/apps/$pkgname.png"
+  install -Dm644 128x128.png "$pkgdir/$_icdr/128x128/apps/$pkgname.png"
+  install -Dm644 128x128@2x.png "$pkgdir/$_icdr/256x256/apps/$pkgname.png"
+  install -Dm644 icon.png "$pkgdir/$_icdr/512x512/apps/$pkgname.png"
+  cd ../target/release
+  install -Dm755 flight-core "$pkgdir/usr/bin/$pkgname"
 }

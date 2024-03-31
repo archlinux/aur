@@ -10,7 +10,7 @@ pkgbase = flightcore
 	makedepends = npm
 	depends = webkit2gtk
 	options = !lto
-	source = git+https://github.com/R2NorthstarTools/FlightCore.git#tag=v2.19.3
+	source = git+https://github.com/R2NorthstarTools/FlightCore.git#commit=10392d13359eddeda7e5efef906dddf1e7a6240b
 	sha256sums = SKIP
 
 pkgname = flightcore
