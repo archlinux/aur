@@ -1,13 +1,11 @@
 pkgbase = kubech
 	pkgdesc = Set kubectl contexts/namespaces per shell/terminal to manage multi Kubernetes cluster at the same time.
-	pkgver = 0.0.6
+	pkgver = 1.1.0
 	pkgrel = 1
-	url = https://github.com/aabouzaid/kubech
+	url = https://github.com/DevOpsHiveHQ/kubech
 	arch = x86_64
 	license = Apache
-	makedepends = git
-	makedepends = go
-	source = git+https://github.com/aabouzaid/kubech.git#commit=0296024b8c4e05b68abbbec70712d9ad7bb267c1
-	sha256sums = SKIP
+	source = kubech-1.1.0.tar.gz::https://github.com/DevOpsHiveHQ/kubech/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 9a1dbc0f8103a4b4a9fda4203b1b84b029144401a3d4284537b3b169804ef872
 
 pkgname = kubech
