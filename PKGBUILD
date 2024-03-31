@@ -1,15 +1,9 @@
 # Maintainer:
 # Contributor: Don Harper < duck at duckland dot org>
 
-# options
-: ${_build_git:=true}
-
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
-
-# basic info
 _pkgname="sigal"
-pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.4.r7.g943d77c
+pkgname="$_pkgname-git"
+pkgver=2.4.r18.g9eead93
 pkgrel=1
 pkgdesc="Simple Static Gallery Generator"
 url="https://github.com/saimn/sigal"
@@ -17,11 +11,12 @@ license=('MIT')
 arch=("any")
 
 depends=(
-  'ffmpeg'
+  'python'
   'python-blinker'
   'python-click'
   'python-jinja'
   'python-markdown'
+  'python-markupsafe'
   'python-natsort'
   'python-pilkit'
   'python-pillow'
@@ -65,8 +60,10 @@ build() {
 }
 
 package() {
+  depends+=('ffmpeg')
+
   cd "$_pkgsrc"
-  python -m installer --destdir="${pkgdir:?}" dist/*.whl
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   # man page
   install -Dm644 "docs/_build/man/sigal.1" -t "$pkgdir/usr/share/man/man1/"
