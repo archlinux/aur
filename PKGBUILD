@@ -3,7 +3,6 @@ _pkgname=Zeldalttp
 pkgver=1.0.2
 pkgrel=1
 pkgdesc="Legend Of Zelda: Link to the Past game powered by the zelda3."
-arch=('x86_64' 'aarch64')
 arch=('pentium4' 'i386' 'i686' 'x86_64' 'aarch64')
 license=('GPL')
 depends=('zelda3-bin' 'wget' 'unzip' 'yad')
