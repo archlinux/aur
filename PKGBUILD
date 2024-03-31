@@ -8,11 +8,8 @@ pkgdesc="Kineto is part of the PyTorch Profiler"
 arch=('x86_64')
 url="http://www.pytorch.org"
 license=('BSD')
-depends=(
-    python-pytorch
-)
-optdepends=(
-)
+depends=()
+optdepends=()
 makedepends=(
     cmake
     git
@@ -47,9 +44,7 @@ build() {
 }
 
 function package_libkineto-git() {
-    depends=(
-        python-pytorch
-    )
+    depends=()
     optdepends=()
     conflicts=()
     cd ${srcdir}/kineto/libkineto/build
@@ -57,9 +52,7 @@ function package_libkineto-git() {
 }
 
 function package_torch-tb-profiler-git() {
-    depends=(
-        python-pytorch
-    )
+    depends=()
     optdepends=()
     conflicts=()
     cd ${srcdir}/kineto/tb_plugin

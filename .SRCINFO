@@ -8,16 +8,15 @@ pkgbase = pytorch-kineto-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = python-setuptools
-	depends = python-pytorch
 	source = kineto::git+https://github.com/pytorch/kineto.git
 	sha256sums = SKIP
 
 pkgname = libkineto-git
-	depends = python-pytorch
+	depends = 
 	optdepends = 
 	conflicts = 
 
 pkgname = torch-tb-profiler-git
-	depends = python-pytorch
+	depends = 
 	optdepends = 
 	conflicts = 
