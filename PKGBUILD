@@ -10,7 +10,7 @@ url="https://github.com/tgotwig/vidmerger"
 license=('MIT')
 depends=('ffmpeg' 'glibc' 'gcc-libs')
 source=("${_pkgname}-${pkgver}::${url}/releases/download/${pkgver}/${_pkgname}-linux.tar.gz"
-        "https://raw.githubusercontent.com/tgotwig/vidmerger/main/LICENSE")
+        "https://raw.githubusercontent.com/tgotwig/vidmerger/cb3526790dae9ebc72f52c5c16d1428846645e53/LICENSE")
 sha256sums=('8c061848f9879fc06771dbd9b4311452e113efa80d57cf157402934602082487'
             'fb25a5d14edb9164a63a126aec696eceb654b4b0e8b382bcac378b6c44eb920c')
 
