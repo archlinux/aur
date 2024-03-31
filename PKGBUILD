@@ -4,7 +4,7 @@
 pkgname=paru-static
 _pkgname=paru
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Feature packed AUR helper'
 url='https://github.com/morganamilo/paru'
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/Morganamilo/paru/archive/v$pkgver.tar.gz"
