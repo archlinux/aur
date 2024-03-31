@@ -17,7 +17,6 @@ pkgbase = firmware-manager
 	optdepends = fwupd: Generic firmware updates
 	optdepends = system76-firmware-daemon: System76 firmware updates
 	conflicts = libfirmware-manager
-	replaces = libfirmware-manager
 	source = git+https://github.com/pop-os/firmware-manager.git#commit=f3ead34e243025eb1ae39d19b5844f91e17f3c31
 	source = com.system76.FirmwareManager.policy
 	source = firmware-manager.sh
