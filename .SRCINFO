@@ -1,6 +1,6 @@
 pkgbase = mediainfo-gui-qt
 	pkgdesc = Supplies technical and tag information about a video or audio file (Qt GUI interface)
-	pkgver = 24.01
+	pkgver = 24.03
 	pkgrel = 1
 	url = https://github.com/MediaArea/MediaInfo
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = mediainfo-gui-qt
 	depends = libmediainfo
 	depends = qt6-base
 	depends = hicolor-icon-theme
-	provides = mediainfo-gui
+	provides = mediainfo-gui=24.03
 	conflicts = mediainfo-gui
-	source = mediainfo-gui-qt-24.01.tar.gz::https://github.com/MediaArea/MediaInfo/archive/v24.01.tar.gz
+	source = mediainfo-gui-qt-24.03.tar.gz::https://github.com/MediaArea/MediaInfo/archive/v24.03.tar.gz
 	source = mediainfo-gui.desktop
-	sha256sums = d6ab1599a5283e26cb35c38aee0179c7085ca4166985048f48a995545cc85974
+	sha256sums = b7dca820f5d3fd6894076b2b73df15eb49cfa443339ec6d080291151c1708ba2
 	sha256sums = dbac58889cd842729bbe0e9cfeb0d7492bea8b0a4801a10d2017c079251fc797
 
 pkgname = mediainfo-gui-qt
