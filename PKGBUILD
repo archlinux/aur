@@ -1,16 +1,16 @@
-# Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
+# Maintainer: Stilk <alexader612@gmail.com> 
 
 pkgname=hunspell-nb
-_LOver=6.1.3
-pkgver=6.1.3.2
+_LOver=24.2.2
+pkgver=24.2.2.2
 pkgrel=1
 pkgdesc='Spell checking support for Norwegian'
 arch=('any')
-url='http://no.speling.org/'
+url='https://www.documentfoundation.org'
 license=('GPL')
 depends=('hunspell')
 source=("https://download.documentfoundation.org/libreoffice/src/${_LOver}/libreoffice-dictionaries-${pkgver}.tar.xz")
-md5sums=('716e3e91be00cee5f1c4fac15d94a867')
+md5sums=('7091a370829bdcddd30e73b877bbc404')
 
 package() {
   cd "${srcdir}/libreoffice-${pkgver}/dictionaries/no/"
