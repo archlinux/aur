@@ -7,7 +7,7 @@
 
 pkgname=lib32-fluidsynth
 _name=fluidsynth
-pkgver=2.3.4
+pkgver=2.3.5
 pkgrel=1
 pkgdesc='A real-time software synthesizer based on the SoundFont 2 specifications'
 arch=(x86_64)
@@ -35,8 +35,8 @@ makedepends=(
   lib32-portaudio
 )
 source=($pkgname-$pkgver.tar.gz::https://github.com/$_name/$_name/archive/v$pkgver.tar.gz)
-sha512sums=('79891116d78b9be1c38bce9e5759b9bb732c3d8ee31c6e57d1a3e2b5548879b91d19582e73ee7fb0fd243beba3bf1bbc341a26aab0b6440eef36fc55dce3e8b0')
-b2sums=('5146c1f0243ac1fcc3d4f29ea65bb03b326c59bf9de1f53def447f4a924c7fdde31f8b33300051d2e7765087fb8bbdba3643b03c537e3366b02ca42b3b9d4311')
+sha512sums=('35eaea8c1709ebbd5dee8f3946ab59c39afe31d92b972a44013fa23987aa48936f7d1326d5bda81c6e66f02bf988e48601367d49276a4dd78dbca7a2571f5e57')
+b2sums=('11f04d2a508f54c4bd03c867e81528f36eeb5698ad017d7fe778349b5ab91dc9e518d426d2394e748344795b8c1bf86eeaee97294ad66974db07587d0a80797a')
 
 build() {
   local cmake_options=(
