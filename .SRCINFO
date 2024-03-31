@@ -26,4 +26,3 @@ pkgname = pop-shell-plugin-system76-power
 	depends = pop-launcher
 	depends = system76-power
 	conflicts = pop-launcher-system76-power
-	replaces = pop-launcher-system76-power

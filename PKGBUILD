@@ -54,7 +54,6 @@ package_pop-shell-plugin-system76-power() {
   pkgdesc="System76 Power scripts for the launcher"
   depends=('gnome-terminal' 'pop-launcher' 'system76-power')
   conflicts=('pop-launcher-system76-power')
-  replaces=('pop-launcher-system76-power')
 
   cd "launcher-$pkgver"
   install -d "$pkgdir/usr/lib/$pkgbase/scripts"
