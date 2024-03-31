@@ -1,6 +1,6 @@
 pkgbase = hyprland-nox
 	pkgdesc = A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (w/o XWayland support)
-	pkgver = 0.36.0
+	pkgver = 0.37.1
 	pkgrel = 1
 	url = https://github.com/hyprwm/Hyprland
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = hyprland-nox
 	depends = gcc-libs
 	depends = glib2
 	depends = glibc
+	depends = hyprcursor
 	depends = hyprlang
 	depends = libdisplay-info
 	depends = libdrm
@@ -34,11 +35,11 @@ pkgbase = hyprland-nox
 	optdepends = meson: to build and install plugins using hyprpm
 	provides = hyprland
 	conflicts = hyprland
-	source = hyprland-nox::git+https://github.com/hyprwm/Hyprland#tag=v0.36.0
+	source = hyprland-nox::git+https://github.com/hyprwm/Hyprland#tag=v0.37.1
 	source = hyprland-nox_wlroots::git+https://gitlab.freedesktop.org/wlroots/wlroots.git
 	source = hyprland-nox_hyprland-protocols::git+https://github.com/hyprwm/hyprland-protocols.git
 	source = hyprland-nox_udis86::git+https://github.com/canihavesomecoffee/udis86.git
-	sha256sums = SKIP
+	sha256sums = f434293142eb2b4f6f3da51c9babf4c32e52f97eb26667d1f3eee8b7cef8651f
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
