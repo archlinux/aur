@@ -1,8 +1,8 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=recorder
-pkgver=1.0.17
-_commit=c236986fcc884d3ecd6a02bb0c752f74eee2286d
+pkgver=1.0.18
+_commit=585365d971cfc88c1c910839219c836a27beebc8
 pkgrel=1
 pkgdesc='Simple audio recorder'
 url="https://github.com/alexkdeveloper/recorder"
