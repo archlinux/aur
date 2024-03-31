@@ -1,5 +1,5 @@
 pkgname=takang-git
-pkgver=r209.646371f
+pkgver=r220.c16606f
 pkgrel=1
 pkgdesc='Minimal presentation tool for Wayland'
 url='https://sr.ht/~tardypad/takang/'
@@ -34,7 +34,7 @@ pkgver() {
 
 build() {
   cd takang
-  arch-meson build
+  arch-meson -Dzsh-completions=true build
   meson compile -C build
 }
 

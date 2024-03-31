@@ -1,6 +1,6 @@
 pkgbase = takang-git
 	pkgdesc = Minimal presentation tool for Wayland
-	pkgver = r209.646371f
+	pkgver = r220.c16606f
 	pkgrel = 1
 	url = https://sr.ht/~tardypad/takang/
 	arch = any
