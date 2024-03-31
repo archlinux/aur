@@ -9,13 +9,10 @@ fi
 
 : ${_install_path:=opt}
 
-unset _pkgtype
-: ${_pkgtype:=-bin}
-
 # basic info
 _pkgname="logseq-desktop"
-pkgname="$_pkgname${_pkgtype:-}"
-pkgver=0.10.7
+pkgname="$_pkgname-bin"
+pkgver=0.10.8
 pkgrel=1
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
@@ -48,7 +45,7 @@ _main_package() {
 
 # common functions
 pkgver() {
-  printf '%s' "${_pkgver:?}"
+  echo "${_pkgver:?}"
 }
 
 prepare() {
