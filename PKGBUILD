@@ -11,7 +11,6 @@ license=('LGPL-3.0-or-later')
 depends=('vulkan-icd-loader' 'qt5-x11extras')
 provides=("${pkgname%-*-*}")
 conflicts=("${pkgname%-*-*}")
-replaces=("${pkgname%-*-*}-bin")
 source=("https://vulkan.gpuinfo.org/downloads/vulkancapsviewer_${pkgver}_linux64.AppImage")
 sha256sums=('4a9c750f24b3770ca435b84af7b9e82ad7433b188da12dcd22f01946651a85e0')
 
