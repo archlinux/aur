@@ -3,7 +3,7 @@
 # Contributor: Johan Förberg <johan@forberg.se>
 pkgname=magicq-beta
 pkgver=1.9.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Lighting control software from ChamSys'
 arch=(x86_64)
 url='https://chamsyslighting.com/products/magicq'
@@ -17,8 +17,19 @@ source=("http://files.magicq.co.uk/v${_pkgver}/magicq_ubuntu_v${_pkgver}.deb")
 sha256sums=('4f1b3b1d53c4250bc0ddd5340c31690206e2057dd723584b12f4d35ca251a69e')
 
 package() {
-    depends=(alsa-lib ffmpeg glu gst-plugins-base gst-plugins-good
-    libarchive libcups libusb libx11 libxcb qt5-multimedia qt5-webkit zlib)
+    depends=(
+        alsa-lib
+        jack
+        gst-plugins-base
+        gst-plugins-good
+        libarchive
+        libcups
+        libgl
+        libx11
+        libxcb
+        udev
+        zlib
+    )
 
     cd "$pkgdir"
 
@@ -27,8 +38,11 @@ package() {
     mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
     ln -s /opt/magicq/License_Conditions.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    # We use the system libraries instead of the bundled binaries.
+    # We use the system libraries instead of the bundled binaries:
+    # https://secure.chamsys.co.uk/help/documentation/magicq/troubleshooting.html#_linux_magicq_fails_to_start_libgl_error
     rm -rf opt/magicq/lib/libstdc++.so.6
+    # There are different JACK implementations, their client libraries and daemons are not compatibible with each other 
+    rm -rf opt/magicq/lib/libjack.so.0
 
     # Magicq expects to be able to write these directories.
     # The directory list comes from the debian package postinst.
