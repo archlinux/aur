@@ -1,0 +1,25 @@
+pkgbase = openhv-git
+	pkgdesc = An open-source SciFi RTS game based on OpenRA game engine.
+	pkgver = 2501.git.61fabc8
+	pkgrel = 1
+	url = https://www.openhv.net
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = unzip
+	depends = mono
+	depends = openal
+	depends = libgl
+	depends = freetype2
+	depends = sdl2
+	depends = lua51
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	depends = desktop-file-utils
+	depends = xdg-utils
+	depends = zenity
+	options = !debug
+	source = git+https://github.com/OpenHV/OpenHV.git
+	sha512sums = SKIP
+
+pkgname = openhv-git

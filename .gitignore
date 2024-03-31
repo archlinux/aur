@@ -1,0 +1,12 @@
+pkg
+src
+OpenHV
+*.xz
+*.gz
+Changelog.md
+.*.swp
+octave-workspace
+*.zst
+.RData
+.Rhistory
+*.tar.*
