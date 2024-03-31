@@ -3,56 +3,84 @@
 
 _pkgname="lightly"
 pkgname="$_pkgname-git"
-pkgver=0.4.1.r69.g1a831f7f
+pkgver=0.4.1.r73.g00ca234
 pkgrel=1
 pkgdesc="Modern style for Qt applications"
 url="https://github.com/boehs/lightly"
 arch=('x86_64' 'aarch64')
-license=("GPL2")
+license=("GPL-2.0-or-later")
 
 depends=(
-  'breeze-icons'
-  'frameworkintegration5'
+  'frameworkintegration'
   'hicolor-icon-theme'
-  'kcmutils5'
+  'kcmutils'
+  'kcolorscheme'
+  'kconfig'
+  'kcoreaddons'
   'kdecoration'
-  'kwayland5'
+  'kguiaddons'
+  'kiconthemes'
+  'kwindowsystem'
+  'qt6-declarative'
+
+  ## implicit
+  #ki18n
+  #kwidgetsaddons
+  #qt6-base
 )
 makedepends=(
   'cmake'
   'extra-cmake-modules'
   'git'
-  'kdecoration'
-  'qt5-declarative'
-  'qt5-x11extras'
 )
 
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=(
+  "$_pkgname=${pkgver%%.r*}"
+  lightly-qt6-git
+  lightly-qt
+)
+conflicts=(
+  "$_pkgname"
+  lightly-boehs-git
+  lightly-qt6-git
+  lightly-qt
+)
 
 _pkgsrc="$_pkgname"
-source=("$_pkgname"::"git+$url.git")
-sha256sums=('SKIP')
+source=(
+  "$_pkgname"::"git+$url.git#branch=qt6"
+  "qt6-missing-config.patch"
+)
+sha256sums=(
+  'SKIP'
+  '2553ff71310e265a9481c0afb9d50bbd1d9f66d47bd67675956199601c1a6501'
+)
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' \
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
     | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$_pkgsrc"
+  patch -Np1 -F100 -i ../qt6-missing-config.patch
 }
 
 build() {
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
-    -DCMAKE_INSTALL_PREFIX='/usr'
-    -DCMAKE_INSTALL_LIBDIR='lib'
     -DBUILD_TESTING=OFF
+    -Wno-dev
   )
 
   cmake "${_cmake_options[@]}"
+
+  cmake --build build/kdecoration/config/
   cmake --build build
 }
 
 package() {
-  DESTDIR="${pkgdir:?}" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 }

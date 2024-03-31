@@ -1,26 +1,35 @@
 pkgbase = lightly-git
 	pkgdesc = Modern style for Qt applications
-	pkgver = 0.4.1.r69.g1a831f7f
+	pkgver = 0.4.1.r73.g00ca234
 	pkgrel = 1
 	url = https://github.com/boehs/lightly
 	arch = x86_64
 	arch = aarch64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = git
-	makedepends = kdecoration
-	makedepends = qt5-declarative
-	makedepends = qt5-x11extras
-	depends = breeze-icons
-	depends = frameworkintegration5
+	depends = frameworkintegration
 	depends = hicolor-icon-theme
-	depends = kcmutils5
+	depends = kcmutils
+	depends = kcolorscheme
+	depends = kconfig
+	depends = kcoreaddons
 	depends = kdecoration
-	depends = kwayland5
-	provides = lightly
+	depends = kguiaddons
+	depends = kiconthemes
+	depends = kwindowsystem
+	depends = qt6-declarative
+	provides = lightly=0.4.1
+	provides = lightly-qt6-git
+	provides = lightly-qt
 	conflicts = lightly
-	source = lightly::git+https://github.com/boehs/lightly.git
+	conflicts = lightly-boehs-git
+	conflicts = lightly-qt6-git
+	conflicts = lightly-qt
+	source = lightly::git+https://github.com/boehs/lightly.git#branch=qt6
+	source = qt6-missing-config.patch
 	sha256sums = SKIP
+	sha256sums = 2553ff71310e265a9481c0afb9d50bbd1d9f66d47bd67675956199601c1a6501
 
 pkgname = lightly-git
