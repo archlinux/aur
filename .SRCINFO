@@ -1,0 +1,25 @@
+pkgbase = gog-pepper-grinder
+	pkgdesc = Action-packed pirate adventure starring Pepper and her drilling device. GOG version.
+	pkgver = 1.0.72232
+	pkgrel = 1
+	url = https://www.gog.com/en/game/pepper_grinder
+	arch = x86_64
+	license = LicenseRef-eula
+	makedepends = lgogdownloader
+	depends = bash
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk2
+	depends = libglvnd
+	depends = pango
+	options = !strip
+	source = pepper-grinder_1.0_(72232).sh::gogdownloader://pepper_grinder/en3installer0
+	source = gog-pepper-grinder.desktop
+	source = pepper-grinder.bash
+	sha512sums = c5e28ea48017a8d452781cad34f1b55e3d575100ec17c0e70c83be25028ed9eebe385b20960d024fa24cf856f7542f1c66017d69287068167bd2f41339688ab6
+	sha512sums = cb2397f0f41bac863904747193b9472fc58b4ecec1edc8e6aa6f4fbd8a72a2150bcdf5f8c21941ea49f19de0414856f4c5677043ea4d07e17414933488f54db2
+	sha512sums = 53da9b7305c1de689254913dfc7e74bd13b8d0eb4e72c8f57658e5838c77fec521ee648eb9f0de78f96c0f8ca9f5548920c96629664087f55c9453dfb7e86724
+
+pkgname = gog-pepper-grinder

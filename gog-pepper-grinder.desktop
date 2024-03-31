@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Pepper Grinder
+Comment=Action-packed pirate adventure starring Pepper and her drilling device
+Exec=pepper-grinder
+Icon=gog-pepper-grinder
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8
