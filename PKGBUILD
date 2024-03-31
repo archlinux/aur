@@ -1,14 +1,14 @@
 # Maintainer: aliu <aaronliu0130 @gmail.com>
 pkgname='ttf-monaspice-huhanme-nerd-font-bin'
 pkgver=1.000_3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GitHub's Monaspace, with the Humanist, Handwriting and Mechanical variants for the normal, italic (& bold italic), and bold variants, patched with nerd font glyphs on top"
 arch=('any')
 url='https://github.com/aaronliu0130/monaspice'
 license=('OFL-1.1-RFN')
 provides=('ttf-monaspice')
-source=("monaspice-${pkgver}.tar.gz::https://github.com/aaronliu0130/monaspice/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f1a1dd3ccca6294b5a1c12745d54d28e5c71336db4bd38e525862be1a1cba3e6')
+source=("monaspice-${pkgver}-${pkgrel}.tar.gz::https://github.com/aaronliu0130/monaspice/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('96a05bc7882246c588d39a3ddbbcc52e8c4608ca82305cc67b5c9c56e49778af')
 
 package() {
 	cd "monaspice-${pkgver}"
