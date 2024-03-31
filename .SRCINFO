@@ -1,7 +1,7 @@
 pkgbase = multimon-ng-git
 	pkgdesc = An sdr decoder, supports pocsag, ufsk, clipfsk, afsk, hapn, fsk, dtmf, zvei.
 	pkgver = 20240106
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dekar.wc3edit.net/2012/05/24/multimonng/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,10 @@ pkgbase = multimon-ng-git
 	makedepends = qt4
 	depends = ncurses
 	depends = libpulse
+	depends = libx11
 	optdepends = sox: wav conversion
+	provides = multimon-ng
+	conflicts = multimon-ng
 	source = git+https://github.com/EliasOenal/multimonNG.git
 	md5sums = SKIP
 

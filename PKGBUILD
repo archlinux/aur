@@ -1,15 +1,17 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Kyle Keen <keenerd@gmail.com>
 pkgname=multimon-ng-git
 pkgver=20240106
-pkgrel=1
+pkgrel=2
 pkgdesc="An sdr decoder, supports pocsag, ufsk, clipfsk, afsk, hapn, fsk, dtmf, zvei."
 url="http://dekar.wc3edit.net/2012/05/24/multimonng/"
 arch=('i686' 'x86_64')
 license=("GPL2")
-depends=('ncurses' 'libpulse')
+depends=('ncurses' 'libpulse' 'libx11')
 makedepends=('git' 'qt4')
 optdepends=('sox: wav conversion')
-
+provides=('multimon-ng')
+conflicts=('multimon-ng')
 source=("git+https://github.com/EliasOenal/multimonNG.git")
 md5sums=('SKIP')
 _gitname="multimonNG"
