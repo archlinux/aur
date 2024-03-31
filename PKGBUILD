@@ -1,6 +1,6 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=caj2pdf-qt
-pkgver=0.1.5
+pkgver=0.1.6
 _caj2pdf_hash='acce7c9ffd919e67b447e7baa8df2ae17b450dd4'
 pkgrel=1
 pkgdesc='CAJ 转 PDF 转换器（GUI 版本）'
@@ -42,7 +42,7 @@ conflicts=('caj2pdf-qt')
 source=("${pkgname}::https://github.com/sainnhe/caj2pdf-qt/archive/refs/tags/v${pkgver}.tar.gz"
         "caj2pdf::https://github.com/caj2pdf/caj2pdf/archive/${_caj2pdf_hash}.zip"
         'dev.sainnhe.caj2pdf-qt.desktop')
-md5sums=('0c818b614e135bad365cd1d90972ee21'
+md5sums=('337c441d8102cf2f5f45124ab938952a'
          '8fc97b57370fd00895049a80db37dd28'
          '3068f1cbf4fb1d8c04a9f8afb3fb7d54')
 
