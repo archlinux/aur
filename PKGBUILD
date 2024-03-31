@@ -12,17 +12,15 @@
 : ${_build_noglu:=true}
 
 : ${_build_avx:=false}
-: ${_build_git:=false}
 
 unset _pkgtype
 [[ "${_build_avx::1}" == "t" ]] && _pkgtype+="-avx"
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
 ## basic info
 _pkgname="nestopia"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.52.0
-pkgrel=5
+pkgver=1.52.1
+pkgrel=1
 pkgdesc="High-accuracy NES/Famicom emulator"
 url="https://github.com/0ldsk00l/nestopia"
 license=('GPL-2.0-only')
@@ -33,6 +31,10 @@ depends=(
   libarchive
   sdl2
   zlib
+
+  ## implicit
+  #hicolor-icon-theme
+  #libglvnd
 )
 makedepends=(
   autoconf-archive
@@ -45,27 +47,10 @@ makedepends=(
 
 install="$_pkgname.install"
 
-if [ "${_build_git::1}" != "t" ] ; then
-  _pkgsrc="$_pkgname-$pkgver"
-  _pkgext="tar.gz"
-  source=("$_pkgsrc.$_pkgext"::"https://github.com/0ldsk00l/nestopia/archive/$pkgver.$_pkgext")
-  sha256sums=('eae1d2f536ae8585edb8d723caf905f4ae65349edee4ffbee45f9f52b5e3b06c')
-else
-  makedepends+=('git')
-
-  provides=("$_pkgname=${pkgver%%.r*}")
-  conflicts=("$_pkgname")
-
-  _pkgsrc="$_pkgname"
-  source=("$_pkgsrc"::"git+$url.git")
-  sha256sums=('SKIP')
-
-  pkgver() {
-    cd "$_pkgsrc"
-    git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' \
-      | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
-  }
-fi
+_pkgsrc="$_pkgname-$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgsrc.$_pkgext"::"https://github.com/0ldsk00l/nestopia/archive/$pkgver.$_pkgext")
+sha256sums=('c9c0bce673eb3b625b538b462e49c00ed1ee1ded1e0bad09be780076880968b5')
 
 build() {
   if [[ "${_build_clang::1}" == "t" ]] ; then

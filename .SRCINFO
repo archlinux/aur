@@ -1,7 +1,7 @@
 pkgbase = nestopia
 	pkgdesc = High-accuracy NES/Famicom emulator
-	pkgver = 1.52.0
-	pkgrel = 5
+	pkgver = 1.52.1
+	pkgrel = 1
 	url = https://github.com/0ldsk00l/nestopia
 	install = nestopia.install
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = nestopia
 	depends = libarchive
 	depends = sdl2
 	depends = zlib
-	source = nestopia-1.52.0.tar.gz::https://github.com/0ldsk00l/nestopia/archive/1.52.0.tar.gz
-	sha256sums = eae1d2f536ae8585edb8d723caf905f4ae65349edee4ffbee45f9f52b5e3b06c
+	source = nestopia-1.52.1.tar.gz::https://github.com/0ldsk00l/nestopia/archive/1.52.1.tar.gz
+	sha256sums = c9c0bce673eb3b625b538b462e49c00ed1ee1ded1e0bad09be780076880968b5
 
 pkgname = nestopia
