@@ -24,6 +24,10 @@ check() {
 }
 
 package() {
+  $name=com.github.alexkdeveloper.notepad
   meson install -C build --destdir "$pkgdir"
-  ln -s com.github.alexkdeveloper.notepad "$pkgdir/usr/bin/notepad.alexkdeveloper"
+  ln -s $name "$pkgdir/usr/bin/notepad.alexkdeveloper"
+  cd notepad
+  install -Dm644 README.md "$pkgdir/usr/share/doc/notepad"
+  install -Dm644 data/$name.xml.in "$pkgdir/usr/share/doc/notepad/CHANGELOG.xml"
 }
