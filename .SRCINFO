@@ -12,7 +12,6 @@ pkgbase = macintosh.js-bin
 	provides = macintosh.js
 	conflicts = macintosh.js
 	conflicts = macintosh-js-bin
-	replaces = macintosh-js-bin
 	source = https://github.com/felixrieseberg/macintosh.js/raw/v1.2.0/CREDITS.md
 	sha256sums = 6a221f623fa4f773ea6ba81c8a1731ff0d680cc7e8f20c68488c31b0f13e3dec
 	source_x86_64 = https://github.com/felixrieseberg/macintosh.js/releases/download/v1.2.0/macintosh.js_1.2.0_amd64.deb
