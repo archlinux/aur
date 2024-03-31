@@ -2,13 +2,14 @@
 
 pkgname=waybar-cava
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors, with module cava (Cross-platform Audio Visualizer)'
 arch=('x86_64')
 url='https://github.com/Alexays/Waybar/'
 license=('MIT')
 provides=('waybar')
 conflicts=('waybar')
+#    'libdate-tz.so'
 depends=(
     'gtkmm3'
     'libjsoncpp.so'
@@ -16,7 +17,6 @@ depends=(
     'fmt'
     'jack' 'libjack.so'
     'wayland'
-    'libdate-tz.so'
     'spdlog'
     'gtk-layer-shell'
     'libupower-glib.so'
@@ -42,7 +42,7 @@ makedepends=(
     'wayland-protocols'
 )
 backup=(
-    etc/xdg/waybar/config
+    etc/xdg/waybar/config.jsonc
     etc/xdg/waybar/style.css
 )
 optdepends=(
@@ -50,20 +50,19 @@ optdepends=(
 )
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/Alexays/Waybar/archive/$pkgver.tar.gz"
-    waybar-cava-0.10.0-1.patch
+    waybar-cava-0.10.0-2.patch
 )
 sha256sums=('3af6665889868f2334ba1793c8b0f3104c4c3b176a8c759f0d08f07266ad2620'
-            'a31c63995c111db171286d41b5c3aa779c270f5a3cc7eb2c2ad9c0a245e000a9'
+            '1b02ad651554b112bb21822806c8cc75ef102cbb7a2eb695fbff34b1112ef67c'
 )
 
 prepare() {
-    patch --directory="Waybar-${pkgver}" --strip=1 --input="${srcdir}/waybar-cava-0.10.0-1.patch"
+    patch --directory="Waybar-${pkgver}" --strip=1 --input="${srcdir}/waybar-cava-0.10.0-2.patch"
 }
 
 build() {
     cd "Waybar-${pkgver}"
 
-    # enable flag `experimental` to activate module wlr/workspaces
     meson setup \
           --prefix=/usr \
           --buildtype=plain \
@@ -86,7 +85,7 @@ build() {
           -Dlogind=enabled \
           -Dman-pages=enabled \
           -Dwireplumber=enabled \
-          -Dcava=disabled \
+          -Dcava=enabled \
           -Dtests=disabled \
           build
 
@@ -97,6 +96,8 @@ build() {
 
 package() {
     cd "${srcdir}/Waybar-${pkgver}"
+
     DESTDIR="$pkgdir" ninja -C build install
+
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
