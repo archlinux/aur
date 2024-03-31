@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/olofk/fusesoc'
 license=('BSD')
 depends=('python' 'python-edalize' 'python-pyparsing' 'python-yaml' 'python-simplesat' 'python-fastjsonschema')
-makedepends=('python-setuptools-scm')
+makedepends=('python-setuptools-scm' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('iverilog: run simulation/testbenchs'
             'svn: opencores provider')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
@@ -19,13 +19,13 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
 build() {
   cd $pkgname-$pkgver
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd $pkgname-$pkgver
 
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
