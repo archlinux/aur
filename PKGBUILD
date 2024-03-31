@@ -2,7 +2,7 @@
 # Contributor: Butui Hu <hot123tea123@gmail.com>
 
 pkgname=texlive-full
-pkgver=2023.20230620
+pkgver=2024.20240331
 pkgrel=1
 epoch=1
 pkgdesc="This packages provides texlive-full in /opt.  It also tricks ArchLinux into thinking it has its texlive packages installed."
@@ -44,7 +44,7 @@ texlive-science texlive-xetex
 source=("install-tl-unx-${pkgver}.tar.gz::https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz"
     "LICENSE.TL::https://tug.org/texlive/LICENSE.TL")
 sha256sums=('SKIP'
-            'e8f070b2d1a9bad00af9d6cb94e687f2120591d092c8dab8727249b70adc96d0')
+            '8147ff504e6d7d89a7c42d5c3dfbaa8705ad17f72c82a5c1bce5f4f0ee8b2fb7')
 #PKGEXT='.pkg.tar'
 options=(!strip)
 
