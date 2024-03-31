@@ -27,7 +27,7 @@ build() {
   # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
   export CFLAGS=${CFLAGS/-fno-plt}
   export CXXFLAGS=${CXXFLAGS/-fno-plt}
-  export LDFLAGS=${LDFLAGS/-Wl,,-z,now}
+  export LDFLAGS=${LDFLAGS/-Wl,-z,now}
 
   ./configure --prefix=/usr --enable-vmwarectrl-client
   make
