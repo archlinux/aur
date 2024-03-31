@@ -1,13 +1,13 @@
 # Maintainer: Eric Biggers <ebiggers3@gmail.com>
 
 pkgname=fsverity-utils-git
-pkgver=1.5.r4.gc3098e1
+pkgver=1.6.r0.g2543e6e
 pkgrel=1
 pkgdesc='Userspace utilities for fs-verity'
 arch=('x86_64')
 url='https://git.kernel.org/pub/scm/fs/fsverity/fsverity-utils.git'
 license=('MIT')
-makedepends=('git' 'pandoc')
+makedepends=('git')
 depends=('openssl')
 conflicts=('fsverity-utils')
 provides=('fsverity-utils')
@@ -33,7 +33,7 @@ check() {
 
 package() {
   cd fsverity-utils
-  make DESTDIR="$pkgdir" PREFIX=/usr install install-man
+  make DESTDIR="$pkgdir" PREFIX=/usr install
   install -Dm644 README.md "${pkgdir}/usr/share/doc/fsverity-utils/README.md"
   install -Dm644 NEWS.md "${pkgdir}/usr/share/doc/fsverity-utils/NEWS.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/fsverity-utils/LICENSE"
