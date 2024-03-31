@@ -2,15 +2,14 @@
 
 _pkgname="scm_breeze"
 pkgname="$_pkgname-git"
-pkgver=1.0.0.r337.g0e21e89
+pkgver=1.0.0.r376.gdd6ee87
 pkgrel=1
 pkgdesc='Streamline your SCM workflow.'
 arch=('any')
 url='https://github.com/scmbreeze/scm_breeze'
 license=('MIT')
-depends=('git')
-optdepends=('ruby: improve performance of scm_breeze'
-            'bash: shell integration'
+depends=('git' 'ruby')
+optdepends=('bash: shell integration'
             'zsh: shell integration')
 install='scm_breeze-git.install'
 source=("$pkgname::git+https://github.com/scmbreeze/$_pkgname.git"
