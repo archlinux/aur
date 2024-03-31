@@ -80,7 +80,6 @@ optdepends=(
 )
 provides=('gnome-games')
 conflicts=('gnome-games')
-replaces=('gnome-games')
 source=("https://gitlab.gnome.org/World/highscore/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         'tracker3.patch'
         'meson-0.60.patch'

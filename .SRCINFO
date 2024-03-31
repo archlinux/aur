@@ -70,7 +70,6 @@ pkgbase = highscore
 	optdepends = retroarch: Reference frontend for the libretro API
 	provides = gnome-games
 	conflicts = gnome-games
-	replaces = gnome-games
 	source = https://gitlab.gnome.org/World/highscore/-/archive/40.0/highscore-40.0.tar.gz
 	source = tracker3.patch
 	source = meson-0.60.patch
