@@ -26,6 +26,7 @@ sha256sums=('ccf6defc4884d580a4b813cc40323a0389ffc9aa4bdc55f3764a46b235dfe1e0'
 # musl build for openssl-sys
 export PKG_CONFIG_ALLOW_CROSS=1
 export RUSTUP_TOOLCHAIN=stable
+unset RUSTC
 case "$CARCH" in
   "armv6h")
     ARCH="arm"
