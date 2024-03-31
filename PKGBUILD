@@ -1,7 +1,6 @@
 # Maintainer: kojq <kojq@mailfence.com>
 
 pkgname=dust-emu-bin
-_rel=-1
 pkgver=0.0.0
 pkgrel=1
 pkgdesc='A Nintendo DS emulator written in Rust for desktop devices and the web, with debugging features and a focus on accuracy'
