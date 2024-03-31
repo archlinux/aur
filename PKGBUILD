@@ -1,22 +1,23 @@
 # Contributor: Filipp "Scorp" Andjelo <scorp@mailueberfall.de>
 
 pkgname=syslog-notify
-pkgver=0.1
-pkgrel=2
+pkgver=0.2
+pkgrel=1
 pkgdesc="Pop-up display for system log messages"
 arch=('i686' 'x86_64')
 url="http://jtniehof.github.com/syslog-notify"
 license=('GPL')
 depends=('libnotify')
 install=${pkgname}.install
-source=(http://cloud.github.com/downloads/jtniehof/syslog-notify/${pkgname}-${pkgver}.tar.bz2
+source=(https://github.com/jtniehof/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz
        ${pkgname}.patch)
-md5sums=('18474e11ceb0add6e8b70fe7680f0abf'
+md5sums=('1ab07dacff870c3cc3472a4f6e65d2c2'
          '3dc49b913d4ee1a00426fb993770084d')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  patch -p1 -i ${srcdir}/${pkgname}.patch
+#  patch -p1 -i ${srcdir}/${pkgname}.patch
+  autoreconf -fi
   ./configure --prefix=/usr
   make
 }
