@@ -12,7 +12,6 @@ pkgbase = smile
 	depends = noto-fonts-emoji
 	optdepends = xdotool: Automatically paste emojis (X11 only)
 	conflicts = smile-emoji-picker
-	replaces = smile-emoji-picker
 	source = smile-2.9.2.tar.gz::https://github.com/mijorus/smile/archive/refs/tags/2.9.2.tar.gz
 	sha256sums = 47270acf1ded7446ed03d68303977000d4c99526cf12ae7de8778413cef5b6cf
 

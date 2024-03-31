@@ -13,7 +13,6 @@ makedepends=('meson')
 checkdepends=('appstream-glib')
 optdepends=('xdotool: Automatically paste emojis (X11 only)')
 conflicts=("$pkgname-emoji-picker")
-replaces=("$pkgname-emoji-picker")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mijorus/smile/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('47270acf1ded7446ed03d68303977000d4c99526cf12ae7de8778413cef5b6cf')
 
