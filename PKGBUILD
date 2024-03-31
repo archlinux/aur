@@ -10,7 +10,6 @@ license=('GPL-3.0-or-later')
 depends=('glibmm' 'hicolor-icon-theme' 'libarchive' 'libpipewire' 'qt6-svg')
 makedepends=('git')
 conflicts=('jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
-replaces=('jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
 options=('!strip')
 _commit=30a30aa5ce90f97ea2c93bc372c0a67c8e3c54c8  # tags/2.7.0^0
 source=("git+https://github.com/Audio4Linux/JDSP4Linux.git#commit=$_commit"

@@ -14,9 +14,6 @@ pkgbase = jamesdsp
 	conflicts = jdsp4linux
 	conflicts = jdsp4linux-gui
 	conflicts = gst-plugin-jamesdsp
-	replaces = jdsp4linux
-	replaces = jdsp4linux-gui
-	replaces = gst-plugin-jamesdsp
 	options = !strip
 	source = git+https://github.com/Audio4Linux/JDSP4Linux.git#commit=30a30aa5ce90f97ea2c93bc372c0a67c8e3c54c8
 	source = git+https://github.com/ThePBone/GraphicEQWidget.git
