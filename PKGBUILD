@@ -1,7 +1,7 @@
 # Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 _pkgname=AHK_X11
 pkgname="${_pkgname,,}-git"
-pkgver=1.0.3.r25.g047a897
+pkgver=1.0.3.r27.gb4f092d
 pkgrel=1
 pkgdesc='AutoHotkey for Linux (X11-based systems)'
 arch=('x86_64' 'x86_64_v3')
@@ -14,7 +14,6 @@ depends=(
   libxinerama
   libxtst
   gc
-  fuse2
 )
 makedepends=(
   git

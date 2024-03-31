@@ -1,6 +1,6 @@
 pkgbase = ahk_x11-git
 	pkgdesc = AutoHotkey for Linux (X11-based systems)
-	pkgver = 1.0.3.r25.g047a897
+	pkgver = 1.0.3.r27.gb4f092d
 	pkgrel = 1
 	url = https://github.com/phil294/AHK_X11
 	arch = x86_64
@@ -16,7 +16,6 @@ pkgbase = ahk_x11-git
 	depends = libxinerama
 	depends = libxtst
 	depends = gc
-	depends = fuse2
 	provides = ahk_x11
 	conflicts = ahk_x11
 	source = git+https://github.com/phil294/AHK_X11.git
