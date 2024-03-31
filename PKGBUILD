@@ -2,7 +2,7 @@
 
 pkgname=gensoquote-git
 _pkgname=gensoquote
-pkgver=0.3.0.r4.gf46072a
+pkgver=0.4.1.r4.gff1dc25
 pkgrel=1
 pkgdesc='Like fortune, but in Gensokyo and memory safe™'
 url=https://github.com/dmyTRUEk/gensoquote
@@ -36,5 +36,6 @@ check() {
 
 package() {
   cd $_pkgname
-  install -Dm755 -t $pkgdir/usr/bin target/release/gensoquote
+  install -Dm755 target/release/gensoquote -t $pkgdir/usr/bin
+  install -Dm644 LICENSE.md $pkgdir/usr/share/licenses/$_pkgname/LICENSE
 }

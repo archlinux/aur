@@ -1,6 +1,6 @@
 pkgbase = gensoquote-git
 	pkgdesc = Like fortune, but in Gensokyo and memory safe™
-	pkgver = 0.3.0.r4.gf46072a
+	pkgver = 0.4.1.r4.gff1dc25
 	pkgrel = 1
 	url = https://github.com/dmyTRUEk/gensoquote
 	arch = x86_64
