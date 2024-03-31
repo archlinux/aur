@@ -1,6 +1,6 @@
 pkgbase = platformio-core
 	pkgdesc = An open source ecosystem for IoT development
-	pkgver = 6.1.13
+	pkgver = 6.1.14
 	pkgrel = 1
 	url = https://platformio.org
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = platformio-core
 	optdepends = platformio-core-udev: Udev rules for PlatformIO supported boards/devices
 	optdepends = python-click-completion: for shell completions
 	optdepends = python-shellingham: for shell completions
-	source = platformio-core::git+https://github.com/platformio/platformio-core#commit=ffacd173873cebf0f980585d4da018c286a99b42
+	source = platformio-core::git+https://github.com/platformio/platformio-core#commit=9d1593da0b5a23df19fe7d7c0460bc0ff47731a5
 	b2sums = SKIP
 
 pkgname = platformio-core

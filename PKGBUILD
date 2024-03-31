@@ -2,7 +2,7 @@
 
 pkgbase=platformio-core
 pkgname=('platformio-core' 'platformio-core-udev')
-pkgver=6.1.13
+pkgver=6.1.14
 pkgrel=1
 pkgdesc='An open source ecosystem for IoT development'
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=(
   'python-click-completion: for shell completions'
   'python-shellingham: for shell completions'
 )
-_commit='ffacd173873cebf0f980585d4da018c286a99b42'
+_commit='9d1593da0b5a23df19fe7d7c0460bc0ff47731a5'
 source=("$pkgbase::git+https://github.com/platformio/platformio-core#commit=$_commit")
 b2sums=('SKIP')
 
