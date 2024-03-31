@@ -4,7 +4,7 @@
 # Contributor: hexchain <i@hexchain.org>
 pkgname=telegram-desktop-userfonts
 pkgver=4.15.6
-pkgrel=1
+pkgrel=2
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
 pkgdesc='Official Telegram Desktop client, with your fonts as set by fontconfig'
@@ -42,6 +42,7 @@ build() {
     cmake -B build -S tdesktop-$pkgver-full -G Ninja \
         -DCMAKE_VERBOSE_MAKEFILE=ON \
         -DCMAKE_INSTALL_PREFIX="/usr" \
+        -DCMAKE_CXX_FLAGS=-g0 \
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_ID=611335 \
         -DDESKTOP_APP_USE_PACKAGED_FONTS=OFF \
