@@ -1,41 +1,29 @@
 # Author:     David Rosca <nowrep@gmail.com>
-# Maintainer: Martin Stibor <martin.von.reichenberg@proton.me>
 
+_pkgbase=dualsensectl
+pkgbase=${_pkgbase}-git
 pkgname=dualsensectl-git
-_pkgname=dualsensectl
-pkgver=0.4.r1.g602ffe4
-pkgrel=2
-pkgdesc='Tool for controlling Sony PlayStation 5 DualSense controller on Linux'
-arch=('any')
+pkgdesc='Tool for controlling PS5 DualSense controller'
+conflicts=('dualsensectl')
+pkgver=r1.aaaaaaa
+pkgrel=1
 url='https://github.com/nowrep/dualsensectl'
 license=('GPL2')
-depends=('systemd' 'systemd-libs' 'dbus' 'hidapi' 'gcc-libs' 'glibc')
-makedepends=('git' 'gcc' 'make' 'pkgconf')
-provides=('dualsensectl')
-conflicts=('dualsensectl')
-source=("${_pkgname}-${pkgver}::git+https://github.com/nowrep/dualsensectl#branch=main")
+arch=('x86_64')
+depends=('dbus' 'hidapi')
+makedepends=('git' 'gcc')
+source=("$_pkgbase::git+$url")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}-${pkgver}/"
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g' ||
-    											 
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-  )
+    cd "$_pkgbase"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    make -C "${srcdir}/${_pkgname}-${pkgver}/"
+    make -C "$_pkgbase"
 }
 
 package() {
-    make -C "${srcdir}/${_pkgname}-${pkgver}/" DESTDIR="${pkgdir}/" install all
-}
-
-install() {
-    $(CC) "${srcdir}/${_pkgname}-${pkgver}/main.c" -o "$(TARGET)" "$(DEFINES)" "$(CFLAGS)" "$(LIBS)"
-    install -D -m 755 -p "${srcdir}/${_pkgname}-${pkgver}/$(TARGET)" "$(DESTDIR)/usr/bin/$(TARGET)"
-    install -D -m 755 -p "${srcdir}/${_pkgname}-${pkgver}/completion/$(TARGET)" "$(DESTDIR)/usr/share/bash-completion/completions/$(TARGET)"
-    install -D -m 755 -p "${srcdir}/${_pkgname}-${pkgver}/completion/_$(TARGET)" "$(DESTDIR)/usr/share/zsh/site-functions/_$(TARGET)"
+    make -C "$_pkgbase" DESTDIR="$pkgdir" install
 }
