@@ -22,7 +22,6 @@ optdepends=(
 makedepends=('cmake')
 provides=('hardinfo')
 conflicts=('hardinfo')
-replaces=('hardinfo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hardinfo2/hardinfo2/archive/refs/tags/release-$pkgver.tar.gz")
 sha256sums=('d8342d5e66d3779e8ac1fb9b3366bbbca9ade2816de556c89082ff04127bfa58')
 
