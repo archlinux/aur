@@ -1,0 +1,17 @@
+pkgbase = vinesauce-rom-corruptor
+	pkgdesc = Change the bytes of any file by tweaking some simple settings.
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = http://github.com/Rikerz/VRC
+	arch = x86_64
+	arch = i686
+	depends = wine
+	depends = wine-mono
+	source = http://github.com/Rikerz/VRC/raw/master/bin/Vinesauce%20ROM%20Corruptor%20v1.2.2.zip
+	source = vinesauce-rom-corruptor
+	source = vinesauce-rom-corruptor.desktop
+	source = vinesauce-rom-corruptor.png
+	md5sums = 44e3497aff83af18db38f61d87611b94
+
+pkgname = vinesauce-rom-corruptor
+
