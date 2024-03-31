@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Scott Whiskers in: the Search for Mr. Fumbleclaw
+Comment=Point-and-click adventure about cats, Star Trek, and life itself
+Exec=scott-whiskers-in-the-search-for-mr-fumbleclaw
+Icon=gog-scott-whiskers-in-the-search-for-mr-fumbleclaw
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8

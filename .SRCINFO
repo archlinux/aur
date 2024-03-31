@@ -1,0 +1,25 @@
+pkgbase = gog-scott-whiskers-in-the-search-for-mr-fumbleclaw
+	pkgdesc = Point-and-click adventure about cats, Star Trek, and life itself. GOG version.
+	pkgver = 1.0.155.72227
+	pkgrel = 1
+	url = https://www.gog.com/en/game/scott_whiskers_in_the_search_for_mr_fumbleclaw
+	arch = x86_64
+	license = LicenseRef-eula
+	makedepends = lgogdownloader
+	depends = bash
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk2
+	depends = gtk3
+	depends = pango
+	options = !strip
+	source = scott-whiskers-in-the-search-for-mr-fumbleclaw_1.0.155_(72227).sh::gogdownloader://1259892701/en3installer0
+	source = gog-scott-whiskers-in-the-search-for-mr-fumbleclaw.desktop
+	source = scott-whiskers-in-the-search-for-mr-fumbleclaw.bash
+	sha512sums = d14550a392ca5c79e1556e6bd1cf0c5340f44a7400dd551289b211effbeea5d5e242dbb7ea1d73abd9933ffc6ea9a0bba1636234bd8995291694a0a4b7c2144b
+	sha512sums = 7787d3e167d34485fbda0cca87c97c879f427a8f4b7e55a5d376eb1e70efab2b15b4a93877486ecb0f50ce044c0f0ae521a810d225e4f007ac0c80c0838881d7
+	sha512sums = 5875d36b43bb583e47fceffa821955d2410d92bbe62fa7c74260c5a7df4e6e014101bbc6589a0b609000b5ba9d465e3251a0dc1c259cce16c743800321296d8e
+
+pkgname = gog-scott-whiskers-in-the-search-for-mr-fumbleclaw

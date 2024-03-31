@@ -1,0 +1,8 @@
+/.vscode/
+/src
+/pkg
+*.log
+*.pkg.*
+*.tar.*
+*.zip
+scott-whiskers-in-the-search-for-mr-fumbleclaw_*.sh
