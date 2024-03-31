@@ -4,7 +4,7 @@
 pkgbase=open3d
 pkgname=( {,python-}open3d python-py3d )
 pkgver=0.18.0
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="A Modern Library for 3D Data Processing"
 arch=('x86_64')
@@ -58,7 +58,8 @@ function build() {
           -DBUILD_SHARED_LIBS=ON \
           -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_C_COMPILER=/usr/bin/gcc-12 \
-          -DCMAKE_CXX_COMPILER=/usr/bin/g++-12
+          -DCMAKE_CXX_COMPILER=/usr/bin/g++-12 \
+          -DGLIBCXX_USE_CXX11_ABI=OFF
     make -j$(nproc)
 }
 
