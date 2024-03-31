@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-harfbuzz
-	pkgdesc = OpenType text shaping engine (Android, x86-64)
-	pkgver = 8.3.0
-	pkgrel = 2
+	pkgdesc = OpenType text shaping engine (Android x86-64)
+	pkgver = 8.4.0
+	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/HarfBuzz
 	arch = any
 	license = MIT
@@ -17,12 +17,12 @@ pkgbase = android-x86-64-harfbuzz
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/harfbuzz/harfbuzz/archive/refs/tags/8.3.0.tar.gz
-	sha256sums = 6a093165442348d99f3307480ea87ed83bdabaf642cdd9548cff6b329e93bfac
+	source = https://github.com/harfbuzz/harfbuzz/archive/refs/tags/8.4.0.tar.gz
+	sha256sums = 9f1ca089813b05944ad1ce8c7e018213026d35dc9bab480a21eb876838396556
 
 pkgname = android-x86-64-harfbuzz
 
 pkgname = android-x86-64-harfbuzz-icu
-	pkgdesc = OpenType text shaping engine (ICU integration, android)
+	pkgdesc = OpenType text shaping engine (ICU integration, Android x86-64)
 	depends = android-x86-64-harfbuzz
 	depends = android-x86-64-icu
