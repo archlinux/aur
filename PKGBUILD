@@ -1,7 +1,7 @@
 # Maintainer: LINUX-GAMING.RU (tergoevm@gmail.com)
 
 pkgname=portproton
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Software for playing Microsoft Windows games and launchers"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=('gamemode: Support for Feral GameMode'
             'lib32-gamemode: 32-bit support for Feral GameMode'
             'gamescope: Support for Gamescope'
             'icoextract: For proper icon creation in GNOME')
-_commit=ccd9c83
+_commit=1a1eff6
 source=("git+https://github.com/Castro-Fidel/PortProton_ALT.git#commit=$_commit")
 sha256sums=('SKIP')
 _gitname=PortProton_ALT
