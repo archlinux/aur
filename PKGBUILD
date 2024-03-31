@@ -2,7 +2,7 @@
 # Contributor: Alessandro Bernardello
 pkgname=ente-auth-git
 pkgver=auth.v2.0.50.r33.ge1ac5e739
-pkgrel=1
+pkgrel=2
 pkgdesc="Ente two-factor authenticator."
 arch=('x86_64')
 url="https://github.com/ente-io/ente/tree/main/auth"

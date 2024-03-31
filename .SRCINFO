@@ -1,7 +1,7 @@
 pkgbase = ente-auth-git
 	pkgdesc = Ente two-factor authenticator.
 	pkgver = auth.v2.0.50.r33.ge1ac5e739
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ente-io/ente/tree/main/auth
 	install = ente-auth-git.install
 	arch = x86_64
