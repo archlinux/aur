@@ -4,10 +4,10 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-gnutls
-pkgver=3.8.3
+pkgver=3.8.4
 pkgrel=1
 arch=('any')
-pkgdesc='A library which provides a secure layer over a reliable transport layer (android)'
+pkgdesc="A library which provides a secure layer over a reliable transport layer (Android ${_android_arch})"
 url="https://www.gnutls.org/"
 license=('GPL-3.0-or-later AND LGPL-2.1-or-later')
 depends=("android-${_android_arch}-libtasn1"
@@ -16,13 +16,12 @@ depends=("android-${_android_arch}-libtasn1"
          "android-${_android_arch}-nettle"
          "android-${_android_arch}-p11-kit"
          "android-${_android_arch}-libunistring")
+makedepends=('android-configure'
+             'autogen')
 optdepends=("android-${_android_arch}-openssl: libgnutls-openssl")
-makedepends=('android-configure' 'autogen')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=(https://www.gnupg.org/ftp/gcrypt/gnutls/v${pkgver%.*}/gnutls-${pkgver}.tar.xz{,.sig})
-sha256sums=('f74fc5954b27d4ec6dfbb11dea987888b5b124289a3703afcada0ee520f4173e'
-            'SKIP')
-validpgpkeys=('462225C3B46F34879FC8496CD605848ED7E69871') # "Daiki Ueno <ueno@unixuser.org>"
+source=(https://www.gnupg.org/ftp/gcrypt/gnutls/v${pkgver%.*}/gnutls-${pkgver}.tar.xz)
+sha256sums=('2bea4e154794f3f00180fa2a5c51fe8b005ac7a31cd58bd44cdfa7f36ebc3a9b')
 
 prepare() {
     cd "${srcdir}/gnutls-${pkgver}"
