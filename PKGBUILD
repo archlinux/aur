@@ -1,4 +1,4 @@
-# Maintainer: RealStickman <mrc+aur@frm01.net>
+# Maintainer: exu <aur _a_ frm01 _d_ net>
 
 pkgname=feishin-bin
 pkgdesc='Rewrite of Sonixd'
