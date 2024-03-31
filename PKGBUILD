@@ -14,7 +14,6 @@ makedepends=('crystal' 'gobject-introspection' 'shards' 'spglib')
 checkdepends=('appstream')
 optdepends=('python-nautilus: Add a shortcut to the Nautilus right-click menu')
 conflicts=("$pkgname-hashes" 'hashbrown')
-replaces=("$pkgname-hashes" 'hashbrown')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GeopJr/Collision/archive/v$pkgver.tar.gz"
         'Makefile.patch')
 sha256sums=('0ea9e4f15f072a6befaf64b6f75cad01c34d9d892698d9ac5731853154f58f06'
