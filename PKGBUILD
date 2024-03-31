@@ -7,25 +7,25 @@ license=(unknown)
 arch=(any)
 pkgver=1.9.21
 pkgrel=1
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-wheel git)
 depends=(python python-amulet-nbt python-numpy python-pymctranslate python-versioneer python-portalocker python-leveldb python-amulet-leveldb)
 source=(
-	"amulet-core-${pkgver}"::"https://github.com/Amulet-Team/Amulet-Core/archive/refs/tags/${pkgver}.tar.gz"
+	"git+https://github.com/Amulet-Team/Amulet-Core.git#tag=${pkgver}"
 )
 md5sums=(
 	"SKIP"
 )
 
 function prepare() {
-	sed -i 's/versioneer-518/versioneer/g' "${srcdir}/Amulet-Core-${pkgver}/pyproject.toml"
+	sed -i 's/versioneer-518/versioneer/g' "${srcdir}/Amulet-Core/pyproject.toml"
 }
 
 function build() {
-	cd "${srcdir}/Amulet-Core-${pkgver}"
+	cd "${srcdir}/Amulet-Core"
 	python -m build --wheel --no-isolation
 }
 
 function package() {
-	cd "${srcdir}/Amulet-Core-${pkgver}"
+	cd "${srcdir}/Amulet-Core"
 	python -m installer --destdir="${pkgdir}" dist/*.whl
 }

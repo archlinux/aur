@@ -8,6 +8,7 @@ pkgbase = python-amulet-core
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = git
 	depends = python
 	depends = python-amulet-nbt
 	depends = python-numpy
@@ -16,7 +17,7 @@ pkgbase = python-amulet-core
 	depends = python-portalocker
 	depends = python-leveldb
 	depends = python-amulet-leveldb
-	source = amulet-core-1.9.21::https://github.com/Amulet-Team/Amulet-Core/archive/refs/tags/1.9.21.tar.gz
+	source = git+https://github.com/Amulet-Team/Amulet-Core.git#tag=1.9.21
 	md5sums = SKIP
 
 pkgname = python-amulet-core
