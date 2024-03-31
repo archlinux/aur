@@ -4,15 +4,15 @@ _pyname=nbgitpuller
 pkgname=jupyter-$_pyname
 pkgdesc="Jupyter server extension to sync a git repository one-way to a local path"
 url="https://github.com/jupyterhub/nbgitpuller"
-pkgver=1.2.0
-pkgrel=2
-license=(BSD)
+pkgver=1.2.1
+pkgrel=1
+license=(BSD-3-Clause)
 arch=(any)
 depends=(jupyter-server git)
 makedepends=(python-build python-installer python-setuptools python-jupyter-packaging npm)
 checkdepends=(python-pytest python-pytest-cov jupyter-notebook)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('5610a50d3fbe53fe4568620a3de225ad33fcdc698f05af83a1f7c1ee2a8b45f5')
+sha256sums=('6808fadcf57ace9da967aca441a397e764f20adb0b5fffd2cac62e769cd655a2')
 
 prepare() {
   cd $_pyname-$pkgver
