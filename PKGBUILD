@@ -24,6 +24,10 @@ check() {
 }
 
 package() {
+  $name=com.github.alexkdeveloper.$pkgname
   meson install -C build --destdir "$pkgdir"
-  ln -s com.github.alexkdeveloper.$pkgname "$pkgdir/usr/bin/$pkgname"
+  ln -s $name "$pkgdir/usr/bin/$pkgname"
+  cd $pkgname
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 data/$name.xml.in "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.xml"
 }
