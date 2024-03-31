@@ -1,13 +1,13 @@
 pkgbase = python-types-pillow
 	pkgdesc = Typing stubs for Pillow
-	pkgver = 10.2.0.20240324
+	pkgver = 10.2.0.20240331
 	pkgrel = 1
 	url = https://pypi.org/project/types-Pillow/
 	arch = any
 	license = Apache-2.0
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/69/0f/91bdd83d12907b0a01df00a0696f19ea974d5cb00d2461f3185bb84d3ab5/types-Pillow-10.2.0.20240324.tar.gz
-	sha256sums = e0108f0b30ea926a3a5d00f201cde627cde1574181b586eb36dd6be1e4ba09cf
+	source = https://files.pythonhosted.org/packages/6c/32/9cf61921f0c2ac07effc7c1a8bcc54c11fc1316860bcf6097a3c495a79d1/types-Pillow-10.2.0.20240331.tar.gz
+	sha256sums = c604e39aeb70719e463d359157a2238bfc0e81bf9c658375703f7b98cfd607da
 
 pkgname = python-types-pillow
