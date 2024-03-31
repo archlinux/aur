@@ -3,8 +3,8 @@
 pkgname=sliding-sync-git
 arch=('x86_64')
 backup=("etc/default/sliding-sync")
-pkgver=r1783.bbb886e
-pkgrel=2
+pkgver=0.99.15.r17.g8750e1c4
+pkgrel=1
 pkgdesc="Run a sliding sync proxy. An implementation of MSC3575."
 url=https://github.com/matrix-org/sliding-sync
 license=("Apache")
@@ -13,12 +13,13 @@ source=("git+https://github.com/matrix-org/sliding-sync.git" "sliding-sync-git.s
 makedepends=("go" "git")
 sha256sums=('SKIP'
             '732a62fa9edd235022a8fc9ede32d7c4a0fb5235a9e49097f3a9df46cacca289')
-provides=("sliding-sync")
+provides=("sliding-sync" "matrix-sliding-sync")
+conflicts=("sliding-sync" "matrix-sliding-sync")
 install="sliding-sync-git.install"
 
 function pkgver(){
 	cd sliding-sync
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 function build(){
