@@ -1,5 +1,5 @@
-# Maintainer: M Hickford <mirth.hickford@gmail.com>
 # Maintainer: Brainos <brainos233@gmail.com>
+# Maintainer: M Hickford <mirth.hickford@gmail.com>
 _pkgbase=git-credential-azure
 pkgname=git-credential-azure-git
 pkgver=0.2.3.r0.g5d59ce5
