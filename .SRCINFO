@@ -1,0 +1,14 @@
+pkgbase = wollok-cli
+	pkgdesc = Wollok Command Line Interface project
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/uqbar-project/wollok-cli
+	arch = any
+	makedepends = git
+	depends = jdk-openjdk
+	source = https://github.com/uqbar-project/wollok-cli/archive/refs/tags/v3.2.0.tar.gz
+	source = wollok
+	sha256sums = 4cdc2cdfe8d4c5d5ae2b13acdffe11291348f3c7fee88705420e2a7cbdc005d3
+	sha256sums = 3577f7f8d0fdc6d90fb661973392591a40eac1a27de599b3e69a987542e0a11a
+
+pkgname = wollok-cli
