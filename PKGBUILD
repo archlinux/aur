@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre
 pkgver=6.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Libre'
 url='https://linux-libre.fsfla.org/'
 arch=(x86_64)
@@ -35,7 +35,7 @@ makedepends=(
 )
 options=('!debug' '!strip')
 _srcname=linux-${pkgver%.*}
-source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${pkgver}-gnu/linux-libre-${pkgver%.*}-gnu.tar.lz"{,.sign}
+source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${pkgver%.*}-gnu/linux-libre-${pkgver%.*}-gnu.tar.lz"{,.sign}
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${pkgver}-gnu/patch-${pkgver%.*}-gnu-${pkgver}-gnu.bz2"{,.sign}
         'https://repo.parabola.nu/other/linux-libre/logos/logo_linux_'{clut224.ppm,vga16.ppm,mono.pbm}{,.sig}
         'config')
