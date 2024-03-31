@@ -7,7 +7,6 @@ pkgdesc="Wollok Command Line Interface project "
 arch=(any)
 url="https://github.com/uqbar-project/wollok-cli"
 depends=('jdk-openjdk')
-makedepends=(git)
 source=(
     "https://github.com/uqbar-project/wollok-cli/archive/refs/tags/v${pkgver}.tar.gz"
     "wollok"

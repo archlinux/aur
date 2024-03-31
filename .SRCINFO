@@ -4,7 +4,6 @@ pkgbase = wollok-cli
 	pkgrel = 1
 	url = https://github.com/uqbar-project/wollok-cli
 	arch = any
-	makedepends = git
 	depends = jdk-openjdk
 	source = https://github.com/uqbar-project/wollok-cli/archive/refs/tags/v3.2.0.tar.gz
 	source = wollok
