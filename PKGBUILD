@@ -26,7 +26,7 @@ _renderer=gles
 pkgbase=kodi-stable-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
 pkgver=r65501.ed0c71562b9
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -39,7 +39,7 @@ makedepends=(
   'pipewire' 'python-pycryptodomex' 'python-pillow' 'python-pybluez'
   'python-simplejson' 'shairplay' 'smbclient' 'sndio' 'spdlog' 'taglib'
   'tinyxml' 'swig' 'upower' 'giflib' 'rapidjson' 'ghostscript' 'meson' 'gtest'
-  'graphviz' 'pcre' 'libdisplay-info' 'tinyxml2'
+  'graphviz' 'pcre' 'libdisplay-info' 'tinyxml2' 'mold'
   # wayland
   'wayland-protocols' 'waylandpp' 'libxkbcommon'
   # gbm
@@ -100,9 +100,6 @@ b2sums=('SKIP'
         'be5e3c8ea81ce4b6f2e2c1b2f22e1172434c435f096fa7dade060578c506cff0310e3e2ef0627e26ce2be44f740652eb9a8e1b63578c18f430f7925820f04e66'
         '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61')
 
-# https://github.com/xbmc/xbmc/issues/24919
-export LDFLAGS="${LDFLAGS/-Wl,-z,pack-relative-relocs/}"
-
 pkgver() {
   cd "$_gitname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -139,7 +136,7 @@ build() {
     -DENABLE_AVX2=ON
     -DUSE_LTO=$(nproc)
     -DVERBOSE=ON
-    -DENABLE_LDGOLD=OFF
+    -DENABLE_MOLD=ON
     -DENABLE_AIRTUNES=ON
     -DENABLE_AVAHI=ON
     -DENABLE_BLURAY=ON

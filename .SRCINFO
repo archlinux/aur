@@ -1,6 +1,6 @@
 pkgbase = kodi-stable-git
 	pkgver = r65501.ed0c71562b9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -59,6 +59,7 @@ pkgbase = kodi-stable-git
 	makedepends = pcre
 	makedepends = libdisplay-info
 	makedepends = tinyxml2
+	makedepends = mold
 	makedepends = wayland-protocols
 	makedepends = waylandpp
 	makedepends = libxkbcommon
