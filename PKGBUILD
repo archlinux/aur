@@ -2,8 +2,8 @@
 
 _name=click-command-tree
 pkgname=python-click-command-tree
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Click plugin to show the command tree of your CLI"
 arch=(any)
 url="https://github.com/whwright/click-command-tree"
@@ -20,14 +20,8 @@ makedepends=(
 )
 checkdepends=(python-pytest)
 source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('0bb9c223cedf72af004ae6ba6daf916a21300d03d5fb8e939a7265fbe481f6d2')
-b2sums=('7fc40e8273c05aedb8f71ddfe33d640761f3fe8c02afdb8973828b8c247910c67e7469aa43e41bc003dadd741736c0b4ffc48d146cd417051a4b939299a49033')
-
-prepare() {
-  cd $_name-$pkgver
-  # flake8 is not required for building the project: https://github.com/whwright/click-command-tree/issues/4
-  sed -e '/flake8/d' -i setup.py
-}
+sha256sums=('1c689898bb393bf1bdd88b91b11215a0a134142a5e7988ada7012a94c1b8c8bd')
+b2sums=('f57802bf3ceb3596d4d06af00a360d295b7aeaab627c9e50129a66e038329252552710c1ba50c68bc623c3a169d5ffe5d3ef42f9db78671633bd40419aeb486f')
 
 build() {
   cd $_name-$pkgver
