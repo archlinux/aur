@@ -12,7 +12,6 @@ depends=('glibc')
 makedepends=('git' 'go' 'pandoc')
 optdepends=('fzf: Fuzzy Finder integration for bash-completion')
 conflicts=("python-$pkgname")
-replaces=("python-$pkgname")
 backup=("etc/$pkgname/conf.yml")
 _commit=36bdb99dcfadde210503d8c2dcf94b34ee950e1d
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"

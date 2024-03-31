@@ -15,7 +15,6 @@ pkgbase = cheat
 	depends = glibc
 	optdepends = fzf: Fuzzy Finder integration for bash-completion
 	conflicts = python-cheat
-	replaces = python-cheat
 	backup = etc/cheat/conf.yml
 	source = cheat-4.4.2.tar.gz::https://github.com/cheat/cheat/archive/refs/tags/4.4.2.tar.gz
 	source = conf.yml
