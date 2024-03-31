@@ -1,6 +1,6 @@
 pkgbase = hamrs-appimage
 	pkgdesc = Ham Radio portable logger tailored for activities like Parks on the Air, Field Day, and others.
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://hamrs.app/
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = hamrs-appimage
 	provides = hamrs
 	conflicts = hamrs
 	options = !strip
-	source = https://hamrs-releases.s3.us-east-2.amazonaws.com/1.0.6/hamrs-1.0.6-linux-x86_64.AppImage
-	md5sums = 8ffeb9c5ba99158c94e409c5c5f383d2
-	sha256sums = d234be158780c36cdc4f284bc2aaf775e406e2fde7bd9245d613f60a3b5a1795
+	source = https://hamrs-releases.s3.us-east-2.amazonaws.com/1.0.7/hamrs-1.0.7-linux-x86_64.AppImage
+	md5sums = ec375d555cee5e9f7883f2b350d171b9
+	sha256sums = b69969ed3003bdbc64939a816f8738ce6e26af3ad5b56fd65548e2a250412477
 
 pkgname = hamrs-appimage
