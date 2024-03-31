@@ -16,7 +16,6 @@ makedepends=('git')
 optdepends=('gtk-engine-murrine: GTK2 theme support'
             'gtk-engines: GTK2 theme support')
 conflicts=('material-gtk-framework')
-replaces=('material-gtk-framework')
 options=('!strip')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'git+https://github.com/vinceliuice/vimix-icon-theme.git')
