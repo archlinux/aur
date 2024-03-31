@@ -1,6 +1,6 @@
 pkgbase = notepad
 	pkgdesc = A simple notepad for GNU/Linux distributions
-	pkgver = 1.2.6
+	pkgver = 1.2.7
 	pkgrel = 1
 	url = https://github.com/alexkdeveloper/notepad
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = notepad
 	makedepends = meson
 	makedepends = vala
 	depends = libadwaita
-	source = git+https://github.com/alexkdeveloper/notepad.git#tag=1.2.6
+	source = git+https://github.com/alexkdeveloper/notepad.git#commit=7df18c3d6245c148d628290a910459c5f62f6a5e
 	sha256sums = SKIP
 
 pkgname = notepad

@@ -1,7 +1,8 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=notepad
-pkgver=1.2.6
+pkgver=1.2.7
+_commit=7df18c3d6245c148d628290a910459c5f62f6a5e
 pkgrel=1
 pkgdesc='A simple notepad for GNU/Linux distributions'
 url="https://github.com/alexkdeveloper/notepad"
@@ -10,7 +11,7 @@ arch=('x86_64' 'aarch64')
 depends=('libadwaita')
 makedepends=('git' 'meson' 'vala')
 checkdepends=('appstream-glib')
-source=("git+$url.git#tag=$pkgver")
+source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
 build() {
