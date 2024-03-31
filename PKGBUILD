@@ -11,14 +11,14 @@
 # All patches are managed at https://github.com/Martchus/qtbase
 
 pkgname=mingw-w64-qt6-base-static
-_qtver=6.6.2
+_qtver=6.6.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='A cross-platform application and UI framework (mingw-w64)'
-depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-libjpeg-turbo' 'mingw-w64-sqlite'
+depends=('mingw-w64-crt' 'mingw-w64-cppwinrt' 'mingw-w64-zlib' 'mingw-w64-libjpeg-turbo' 'mingw-w64-sqlite'
          'mingw-w64-libpng' 'mingw-w64-openssl' 'mingw-w64-dbus' 'mingw-w64-harfbuzz'
          'mingw-w64-brotli' 'mingw-w64-pcre2' 'mingw-w64-zstd')
 makedepends=('mingw-w64-cmake-static' 'mingw-w64-postgresql' 'mingw-w64-mariadb-connector-c'
@@ -43,21 +43,29 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
         '0010-Fix-dependency-of-xcb-image-on-xcb-util.patch'
         '0011-Allow-using-properties-of-PkgConfig-targets-for-glib.patch'
         '0012-Allow-using-properties-of-PkgConfig-targets-for-Wayl.patch'
-        '0013-Allow-overriding-preference-for-shared-libzstd-libra.patch')
-sha256sums=('b89b426b9852a17d3e96230ab0871346574d635c7914480a2a27f98ff942677b'
-            '5337bd308d6c6342b1a61cb45a6e435d706c2eb751ab93c9118322165370809a'
-            'f1e013452ca62cccf9d17682701f67886173eb24e53b94ea0fe99a5edcb34d7a'
-            '401d9275e9832c5000dd2b410158289b0cf853319da1a5ee97130598e28c0599'
-            '404dc4efb1bdbdcaee2f0f8d561edf1b55a1050fab8e9a80c8eaf1c8aa816be2'
-            'bfae4a5fb06153204e2b731ade3f169a6f4b5b44769f7b7cd420cf9d492ff830'
-            '6bbf063870a45dd58be5ec849195b553ce8697985cca8441c18e5baccf67d449'
-            '843b63b105767bf26c3d2e0fb65d4a9021aae598b7fbae8f501e848551e6bc6c'
-            'a9c705a909876e20e0da2bf1137020b509e59fa25bb759831ce23f9b46576ffb'
-            '6935ba318b0af86c40fca397e84046d004a23422b0c74187808133e5b1539b8c'
-            'ba9fb48fb7ddeaa665e81136fa33377ba4fbf1efeb787c229cb091c33c1b31c6'
-            '6fd11b4bdd602f0b17cc75f8fc0e999119d2606e16e6ebca5804865a4094c55c'
-            'a589ff90a9be1c4b973e632f4b7419505a89406221a32c432aa9e72d59c8ef8f'
-            '70f35a369aa9ee3d5b69ed036ee1091efc4535d727f6d05dd5737d2b81efe707')
+        '0013-Allow-overriding-preference-for-shared-libzstd-libra.patch'
+        '0014-Fix-errors-due-to-disabled-exceptions-with-cpp_winrt.patch'
+        '0015-Fix-setting-exception-flags-of-plugin-targets.patch'
+        '0016-Link-corelib-correctly-against-runtimeobject-when-co.patch'
+        '0017-Workaround-linker-error-about-missing-symbol-__sync_.patch')
+sha256sums=('0493fd0b380c4edf8872f011a7f26d245aa4cdd75b349904ef340a22dedf7462'
+            '4436fa3cb4ae8042d4e7420dd69aff5e7ee90eab623b55290dadb4347f3af562'
+            '5535db09b73284474eaf13181f52f52d67acad39f9fdc3a4cbd9938354e431b5'
+            'c4dd118f2670f526d1a294e00db91e3bc8e3fc733ece40f3d42e14f4210c9d9e'
+            '9e4e0cffecb7718c76f6f1f5d1d73bfddb630339ebb71e1fe947b0abe1cd9696'
+            '2365407788639c006c03b0c9ab524c1335a4175623e92d537b6e134b5b78793d'
+            '9de86821cb75a0c7f6ffd26188a58347d4982497460aa1940ae7c6fd19a05e11'
+            '721c32de68daca63ee2440218da7f998d052cf5122f0266ce18dc9fcf979d743'
+            'e8540d9b2b06a149668e389d8713a5e5d70a6728a01f7678fec36091f10d57a1'
+            '25aaadd7ea30f4fc2d75f3bcb8dcb0a82e1fed23c7c34fa1deb7369032f9e24e'
+            '7f1d483ab4b229c60a0658c6da18fb82619e0d8696ad5010de40748ce0b15b85'
+            'e61047f9f167c9229978895cd19cb7cbd722620fb600d48f63dcc8f727b79b09'
+            'e2811f2f857bf09572622cfec907bf738f3fdca1da9d83acd6cbaa62aa12ec85'
+            '4b3a18cb211bdbdefda2ac34e97d16bc989e969ab77983cfcef8a75e06366504'
+            'd3a02fb4fe241187ce9dd91123e661cde1e6ccdb098c26a9f7a2209b20074c89'
+            '3652e0a71c16c2d7ec249f349cd38374d32b0f87401b4ef3e2f583e0e290ec78'
+            '022dbdf8b2e89bb4ec80311807aaae46cb52896dd89ecb212adc5c7b7ab59be6'
+            '1497d88387d761da233588b024cdb46e7f02b4a7a3efcc9508317fd4571e008c')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -74,10 +82,20 @@ prepare () {
 build() {
   for _arch in ${_architectures}; do
     export PKG_CONFIG=/usr/bin/$_arch-pkg-config
+
+    local _enable_winrt_support=ON
+    if [[ ! -e /usr/${_arch}/include/winrt/Windows.Foundation.h ]]; then
+      echo "cppwinrt headers seem incomplete, disabling FEATURE_cpp_winrt"
+      _enable_winrt_support=OFF
+    fi
+
     $_arch-cmake-static -G Ninja -B build-$_arch -S $_pkgfqn \
+      -DCMAKE_CXX_STANDARD=20 \
+      -DCMAKE_CXX_FLAGS="$CXX_FLAGS -std=c++20" \
       -DCMAKE_INSTALL_PREFIX:PATH="/usr/$_arch/static" \
       -DFEATURE_static_runtime=ON \
       -DFEATURE_openssl_linked=ON \
+      -DFEATURE_cpp_winrt=$_enable_winrt_support \
       -DFEATURE_pkg_config=ON \
       -DFEATURE_system_pcre2=ON \
       -DFEATURE_system_freetype=ON \

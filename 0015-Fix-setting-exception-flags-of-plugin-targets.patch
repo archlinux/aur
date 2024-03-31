@@ -1,0 +1,31 @@
+From 16270d06822ab9ad3f0aa179c32607ad7260a6ad Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sat, 17 Feb 2024 20:48:21 +0100
+Subject: [PATCH 15/17] Fix setting exception flags of plugin targets
+
+Change-Id: I93b1b5fa55f3e35e13351d9c981409f1593bf8a8
+---
+ cmake/QtPluginHelpers.cmake | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/cmake/QtPluginHelpers.cmake b/cmake/QtPluginHelpers.cmake
+index bc0f651b99c..0a832a71f08 100644
+--- a/cmake/QtPluginHelpers.cmake
++++ b/cmake/QtPluginHelpers.cmake
+@@ -376,8 +376,11 @@ function(qt_internal_add_plugin target)
+ 
+     qt_internal_add_repo_local_defines("${target}")
+ 
+-    qt_internal_set_exceptions_flags("${target}" ${arg_EXCEPTIONS})
+-
++    if(NOT arg_EXCEPTIONS AND NOT ${arg_HEADER_MODULE})
++        qt_internal_set_exceptions_flags("${target}" FALSE)
++    elseif(arg_EXCEPTIONS)
++        qt_internal_set_exceptions_flags("${target}" TRUE)
++    endif()
+ 
+     set(qt_libs_private "")
+     qt_internal_get_qt_all_known_modules(known_modules)
+-- 
+2.44.0
+
