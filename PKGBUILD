@@ -24,7 +24,6 @@ makedepends=(
 )
 checkdepends=('appstream')
 conflicts=('elementary-planner')
-replaces=('elementary-planner')
 _commit=b5edd9379b7b8991ebde8ce2284ae61811dddece  # tags/4.5.12^0
 source=("git+https://github.com/alainm23/planify.git#commit=$_commit")
 sha256sums=('28bca21c1633336e61ee0283d86ac2b798eb43bc4d32840f007075e5a1d2c260')

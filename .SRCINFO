@@ -18,7 +18,6 @@ pkgbase = planify
 	depends = libportal-gtk4
 	depends = webkitgtk-6.0
 	conflicts = elementary-planner
-	replaces = elementary-planner
 	source = git+https://github.com/alainm23/planify.git#commit=b5edd9379b7b8991ebde8ce2284ae61811dddece
 	sha256sums = 28bca21c1633336e61ee0283d86ac2b798eb43bc4d32840f007075e5a1d2c260
 
