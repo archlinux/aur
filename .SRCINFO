@@ -10,10 +10,10 @@ pkgbase = vtex2
 	depends = gcc-libs
 	depends = glibc
 	depends = qt6-base
-	source = git+https://github.com/StrataSource/vtex2.git
+	source = git+https://github.com/StrataSource/vtex2.git#commit=09d03a07a8034e7574b4235aff8e7f1d2450e0e4
 	source = vtflib::git+https://github.com/StrataSource/VTFLib.git
 	source = fmtlib::git+https://github.com/fmtlib/fmt.git
-	sha256sums = SKIP
+	sha256sums = 6252cf751c7a0c81e7d2a38047d1f24b98ed8e4ba7b8e4f7b6534538fef9ec6d
 	sha256sums = SKIP
 	sha256sums = SKIP
 

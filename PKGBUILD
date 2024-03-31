@@ -8,10 +8,10 @@ url="https://github.com/StrataSource/vtex2"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'qt6-base')
 makedepends=('cmake' 'git')
-source=("git+$url.git"
-		"vtflib::git+https://github.com/StrataSource/VTFLib.git"
-		"fmtlib::git+https://github.com/fmtlib/fmt.git")
-sha256sums=('SKIP'
+source=("git+$url.git#commit=09d03a07a8034e7574b4235aff8e7f1d2450e0e4"
+	"vtflib::git+https://github.com/StrataSource/VTFLib.git"
+	"fmtlib::git+https://github.com/fmtlib/fmt.git")
+sha256sums=('6252cf751c7a0c81e7d2a38047d1f24b98ed8e4ba7b8e4f7b6534538fef9ec6d'
             'SKIP'
             'SKIP')
 
