@@ -9,7 +9,6 @@ license=('LGPL-3.0-or-later AND CC-BY-SA-3.0')
 depends=('libtorrent-rasterbar' 'qt6-base' 'yt-dlp')
 makedepends=('boost' 'cmake' 'qt6-tools')
 conflicts=('downzemall')
-replaces=('downzemall')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/setvisible/ArrowDL/archive/v$pkgver.tar.gz")
 sha256sums=('ca03d55a89ff10534b9848829d78427d6b9a14211b8a09aa5fcedc389ac2675d')
 
