@@ -1,7 +1,7 @@
 pkgbase = ahk_x11
 	pkgdesc = AutoHotkey for Linux (X11-based systems)
 	pkgver = 1.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/phil294/AHK_X11
 	arch = x86_64
 	arch = x86_64_v3
@@ -15,7 +15,6 @@ pkgbase = ahk_x11
 	depends = libxinerama
 	depends = libxtst
 	depends = gc
-	depends = fuse2
 	source = AHK_X11-1.0.3.tar.gz::https://github.com/phil294/AHK_X11/archive/refs/tags/1.0.3.tar.gz
 	source = AHK_X11-1.0.3-xdotool-7b63eb46631815fd4a10e1fd78a37213250d1193.tar.gz::https://github.com/jordansissel/xdotool/archive/7b63eb46631815fd4a10e1fd78a37213250d1193.tar.gz
 	source = AHK_X11-1.0.3-17_update_crystal-gi.patch::https://github.com/phil294/AHK_X11/commit/7873b93b63593cc3a178e6213181d112eb1c6acc.patch
