@@ -2,11 +2,11 @@
 
 pkgname=lua-wcwidth
 pkgver=0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Pure Lua implementation of the wcwidth() function"
 arch=('any')
 url="https://github.com/aperezdc/lua-wcwidth"
-license=('custom')
+license=('MIT')
 depends=('lua')
 makedepends=('luarocks')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aperezdc/$pkgname/archive/v$pkgver.tar.gz")
