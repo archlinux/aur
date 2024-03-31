@@ -1,13 +1,14 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=python2-lxml
-pkgver=4.9.4
-pkgrel=1
+_pkgver=4.9.4
+pkgver=${_pkgver/-/.}
+pkgrel=2
 pkgdesc='Python2 binding for the libxml2 and libxslt libraries'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://lxml.de/'
 license=('BSD' 'custom')
-depends=('python2' 'libxslt' 'libxml2')
+depends=('python2' 'libxslt' 'libxml2-2.9')
 makedepends=('python2-setuptools' 'cython2')
 optdepends=(
 	'python2-beautifulsoup4: malformed HTML parsing support'
@@ -17,13 +18,15 @@ optdepends=(
 checkdepends=(
 	'python2-cssselect'
 )
-source=("https://github.com/lxml/lxml/archive/lxml-$pkgver.tar.gz")
+source=("https://github.com/lxml/lxml/archive/lxml-$_pkgver.tar.gz")
 sha512sums=('528ef4ae057a7ee54d3193a042a6db500ada883d1d506829b6824d91ec979feb69ec79239420112eae0e08a437b2e5da8efc35feb5d04d119bfae2679e918d29')
-_dir="lxml-lxml-${pkgver}"
+_dir="lxml-lxml-${_pkgver}"
+
+_args=(--with-xml2-config=xml2-config-2.9 --with-xslt-config=xslt-config --auto-rpath)
 
 build() {
 	cd "${_dir}"
-	python2 setup.py build build_ext -i
+	python2 setup.py build build_ext -i "${_args[@]}"
 }
 
 check() {
@@ -34,7 +37,7 @@ check() {
 
 package() {
 	cd "${_dir}"
-	python2 setup.py install --root "${pkgdir}" --prefix=/usr --optimize=1 --skip-build
+	python2 setup.py install --root "${pkgdir}" --prefix=/usr --optimize=1 --skip-build "${_args[@]}"
 	
 	install -Dm644 'LICENSES.txt' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 'doc/licenses/BSD.txt' "$pkgdir/usr/share/licenses/$pkgname/BSD.txt"
