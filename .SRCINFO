@@ -1,11 +1,12 @@
 pkgbase = openhv-git
 	pkgdesc = An open-source SciFi RTS game based on OpenRA game engine.
-	pkgver = 2501.git.61fabc8
+	pkgver = r2501.61fabc8f
 	pkgrel = 1
 	url = https://www.openhv.net
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = mono-msbuild
 	makedepends = unzip
 	depends = mono
 	depends = openal
