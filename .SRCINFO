@@ -1,6 +1,6 @@
 pkgbase = openapi-python-client
 	pkgdesc = Generate modern Python clients from OpenAPI 3.0 and 3.1 documents
-	pkgver = 0.19.0
+	pkgver = 0.19.1
 	pkgrel = 1
 	url = https://github.com/openapi-generators/openapi-python-client
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = openapi-python-client
 	optdepends = python-poetry: use generated Poetry metadata
 	optdepends = python-setuptools: use generated setuptools metadata
 	optdepends = python-ruff>=0.2: linter support in generated code
-	source = openapi-python-client-0.19.0.tar.gz::https://github.com/openapi-generators/openapi-python-client/archive/refs/tags/v0.19.0.tar.gz
-	sha256sums = 79705cf290f50261df1a725362f77b9e3e0f87a8ee5c7fd8935610099a12313e
+	source = openapi-python-client-0.19.1.tar.gz::https://github.com/openapi-generators/openapi-python-client/archive/refs/tags/v0.19.1.tar.gz
+	sha256sums = 0c56d7e6ca46dee6e564d4f3ad7df411026799545650ce696d156824b181ca84
 
 pkgname = openapi-python-client
