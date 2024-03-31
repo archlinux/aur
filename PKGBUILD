@@ -1,4 +1,4 @@
-# Maintainer: YidaozhanYa <yidaozhan_ya@outlook.com>
+# Maintainer: Kirikaze Chiyuki <me@chyk.ink>
 pkgname=thextech-adventuresofdemo-git
 _pkgname=thextech-aod
 pkgver=v1.3.r3028.g6e732ff3
