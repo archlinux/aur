@@ -5,6 +5,7 @@ pkgbase = moondust-configpack-thextechsdk-git
 	url = https://github.com/Wohlstand/TheXTech-SDK
 	arch = any
 	license = custom
+	makedepends = git
 	makedepends = gawk
 	makedepends = sed
 	makedepends = curl
