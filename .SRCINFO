@@ -1,7 +1,7 @@
 pkgbase = nodejs-shared
 	pkgdesc = Evented I/O for V8 javascript
 	pkgver = 21.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nodejs.org/
 	arch = x86_64
 	license = MIT
@@ -17,11 +17,13 @@ pkgbase = nodejs-shared
 	depends = zlib
 	depends = brotli
 	depends = c-ares
-	optdepends = npm: nodejs package manager
-	provides = nodejs
-	conflicts = nodejs
 	options = !lto
 	source = node-21.7.1.zip::https://github.com/nodejs/node/archive/84c7e6fad4adbc972e0fecf537d6c6a3accf6b9e.zip
 	sha512sums = 82699400af0ee082c6ff24560e3acfd99dd9e28f1701ad1ad1a41d8a925462b63cffa6a30b282e742c2ccc3a32fc13064f6d783feb5ed1282a95905532978c5a
 
 pkgname = nodejs-shared
+	optdepends = npm: nodejs package manager
+	provides = nodejs
+	conflicts = nodejs
+
+pkgname = libnode
