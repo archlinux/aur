@@ -2,12 +2,13 @@
 # Contributer: Alpin <alpin 'at' alpindale 'dot' dev>
 # Author: LostRuins (concedo), YellowRoseCx
 pkgname=koboldcpp-hipblas
-pkgver=1.61.2.yr1
-pkgrel=1
-pkgdesc="KoboldCpp is an easy-to-use AI text-generation software for GGML and GGUF models (with HIPBLAS, for ROCM)"
+_pkgver=1.61.2
+pkgver=$_pkgver.yr1
+pkgrel=2
+pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (with HIPBLAS, for ROCM)"
 arch=('x86_64')
 url="https://github.com/YellowRoseCx/koboldcpp-rocm"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 depends=(
   'python'
   'openblas'
@@ -17,8 +18,10 @@ depends=(
 )
 optdepends=(
   'customtkinter: for GUI launcher'
+  'python-psutil: increasing the process CPU priority'
 )
-provides=('koboldcpp' 'koboldcpp-hipblas' 'koboldcpp-rocm')
+provides=("koboldcpp=$_pkgver" "koboldcpp-rocm=$_pkgver")
+conflicts=('koboldcpp')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/YellowRoseCx/koboldcpp-rocm/archive/refs/tags/v$pkgver-ROCm.tar.gz")
 sha256sums=('3e1adc6ad2d4282f7fc4066ba81bf9470276283094e5e9ab3f47a8438853ce52')
 
@@ -37,10 +40,6 @@ package() {
   install -Dm644 "koboldcpp_vulkan.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_vulkan.so"
   install -Dm644 "koboldcpp_openblas.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_openblas.so"
   install -Dm644 "koboldcpp_clblast.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_clblast.so"
-#   install -Dm644 "koboldcpp_failsafe.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_failsafe.so"
-#   install -Dm644 "koboldcpp_noavx2.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_noavx2.so"
-#   install -Dm644 "koboldcpp_clblast_noavx2.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_clblast_noavx2.so"
-#   install -Dm644 "koboldcpp_vulkan_noavx2.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_vulkan_noavx2.so"
   install -Dm644 "klite.embd" "$pkgdir/usr/share/koboldcpp/klite.embd"
   install -Dm644 "kcpp_docs.embd" "$pkgdir/usr/share/koboldcpp/kcpp_docs.embd"
   install -Dm644 "rwkv_vocab.embd" "$pkgdir/usr/share/koboldcpp/rwkv_vocab.embd"
