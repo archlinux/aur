@@ -1,6 +1,6 @@
 pkgbase = php70-imagick
 	pkgdesc = PHP extension for IMagick
-	pkgver = 3.4.4
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = http://pecl.php.net/package/imagick
 	install = php-imagick.install
@@ -9,9 +9,8 @@ pkgbase = php70-imagick
 	license = PHP
 	depends = php70
 	depends = imagemagick
-	backup = etc/php70/conf.d/imagick.ini
-	source = http://pecl.php.net/get/imagick-3.4.4.tgz
-	md5sums = 6d3a7048ab73b0fab931f28c484dbf76
+	backup = etc/php70/conf.d/20-imagick.ini
+	source = http://pecl.php.net/get/imagick-3.7.0.tgz
+	md5sums = 0687774a6126467d4e5ede02171e981d
 
 pkgname = php70-imagick
-
