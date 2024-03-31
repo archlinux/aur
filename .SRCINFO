@@ -12,7 +12,6 @@ pkgbase = libpqmarble
 	depends = gtk4
 	provides = libpqmarble.so=2
 	conflicts = libmarble
-	replaces = libmarble
 	source = git+https://gitlab.gnome.org/raggesilver/marble.git#commit=f240b2ec7d5cdacb8fdcc553703420dc5101ffdb
 	source = libmarblepq-2.0.0-alt-css-provider-build-fix.patch
 	sha256sums = SKIP

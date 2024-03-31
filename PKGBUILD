@@ -10,7 +10,6 @@ depends=('gtk4')
 makedepends=('git' 'gobject-introspection' 'meson' 'vala')
 provides=('libpqmarble.so=2')
 conflicts=('libmarble')
-replaces=('libmarble')
 _commit=f240b2ec7d5cdacb8fdcc553703420dc5101ffdb  # branch/master
 source=("git+https://gitlab.gnome.org/raggesilver/marble.git#commit=${_commit}"
         "libmarblepq-2.0.0-alt-css-provider-build-fix.patch")
