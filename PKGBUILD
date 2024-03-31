@@ -22,7 +22,6 @@ optdepends=(
   'xdg-utils: open your browser for bugs, homepage & links')
 provides=("${pkgname%-git}" 'hardinfo')
 conflicts=("${pkgname%-git}" 'hardinfo')
-replaces=('hardinfo-git')
 source=('git+https://github.com/hardinfo2/hardinfo2.git')
 sha256sums=('SKIP')
 
