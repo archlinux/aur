@@ -4,14 +4,14 @@ _reponame=watt-wiser
 pkgdesc='A software energy consumption estimation tool'
 arch=("any")
 url="https://git.sr.ht/~whereswaldon/$_reponame"
-pkgver=v0.1.0
+pkgver=v0.1.2
 pkgrel=1
 license=("Unlicense")
 makedepends=("go" "gcc" "lm_sensors")
 conflicts=("watt-wiser-git" "watt-wiser-sensors-git")
 
 source=("${_reponame}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-b2sums=('be106ed2808ee442577a83cc446b1ea7abe1f05385cad58ead9d7108ee3b0988822b57ada29b1ad6bda81fcab0cf65cba0baf45bd9dc7a55b8fe8b66a48b2d05')
+b2sums=('164df3f67f2a1101f6cfce29d13bd11e3c5fd53e2fc718d6b5e57cb7edf8d2a273f44325c6f1f04725f8aee5471ac624e86f0b03fa8ccf4b33c4c0547dc77ed6')
 
 build() {
   cd "${_reponame}-${pkgver}"
