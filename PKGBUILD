@@ -1,8 +1,9 @@
-# Maintainer: westpain <homicide@disroot.org>
+# Maintainer: omansh-krishn <omanshkrishn@duck.com>
+# Contributor: westpain <homicide@disroot.org>
 pkgname=materialgram-bin
-pkgver=4.11.1.1
+pkgver=v4.15.6.1
 pkgrel=1
-pkgdesc="Unofficial desktop version of Telegram messaging app with Material Design - Static binaries"
+pkgdesc="What if Telegram and Google had kids - Static binaries"
 arch=(x86_64)
 url="https://github.com/kukuruzka165/materialgram"
 license=(GPL3)
@@ -13,13 +14,9 @@ optdepends=('webkit2gtk: embedded browser features'
 provides=('materialgram')
 conflicts=('materialgram')
 
-# Archive source
-source=(
-	https://github.com/kukuruzka165/materialgram/releases/download/v${pkgver}/archlinux_materialgram_v${pkgver}.tar.gz
-)
+source=( https://github.com/kukuruzka165/materialgram/releases/download/${pkgver}/materialgram-${pkgver}.tar.gz )
 
-# Checksums
-sha256sums=('c8b97eec492e3afd3f9ab6a2fd0ac9f30149016130dc740e715c57f9559bf284')
+sha256sums=('b1f75c56184a5fb74058552b0ea24af8c4d038ddb50c42e63ac403b4f6661ead')
 
 package() {
 
@@ -42,13 +39,13 @@ package() {
 
 	# Desktop launcher
 	install -Dm644 "$srcdir/usr/share/icons/hicolor/256x256/apps/materialgram.png" "$pkgdir/usr/share/pixmaps/materialgram.png"
-	install -Dm644 "$srcdir/usr/share/applications/materialgram.desktop" "$pkgdir/usr/share/applications/materialgram.desktop"
+	install -Dm644 "$srcdir/usr/share/applications/io.github.kukuruzka165.materialgram.desktop" "$pkgdir/usr/share/applications/io.github.kukuruzka165.materialgram.desktop"
 
 	# DBus service
-	install -Dm644 "$srcdir/usr/share/dbus-1/services/materialgram.service" "$pkgdir/usr/share/dbus-1/services/materialgram.service"
+	install -Dm644 "$srcdir/usr/share/dbus-1/services/io.github.kukuruzka165.materialgram.service" "$pkgdir/usr/share/dbus-1/services/io.github.kukuruzka165.materialgram.service"
 
 	# Metainfo
-	install -Dm644 "$srcdir/usr/share/metainfo/materialgram.metainfo.xml" "$pkgdir/usr/share/metainfo/materialgram.metainfo.xml"
+	install -Dm644 "$srcdir/usr/share/metainfo/io.github.kukuruzka165.materialgram.metainfo.xml" "$pkgdir/usr/share/metainfo/io.github.kukuruzka165.materialgram.metainfo.xml"
 
 	# Icons
 	local icon_size icon_dir
@@ -58,3 +55,4 @@ package() {
 		install -m644 "$srcdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/materialgram.png" "$icon_dir/materialgram.png"
 	done
 }
+

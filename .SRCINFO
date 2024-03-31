@@ -1,6 +1,6 @@
 pkgbase = materialgram-bin
-	pkgdesc = Unofficial desktop version of Telegram messaging app with Material Design - Static binaries
-	pkgver = 4.11.1.1
+	pkgdesc = What if Telegram and Google had kids - Static binaries
+	pkgver = v4.15.6.1
 	pkgrel = 1
 	url = https://github.com/kukuruzka165/materialgram
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = materialgram-bin
 	optdepends = xdg-desktop-portal: desktop integration
 	provides = materialgram
 	conflicts = materialgram
-	source = https://github.com/kukuruzka165/materialgram/releases/download/v4.11.1.1/archlinux_materialgram_v4.11.1.1.tar.gz
-	sha256sums = c8b97eec492e3afd3f9ab6a2fd0ac9f30149016130dc740e715c57f9559bf284
+	source = https://github.com/kukuruzka165/materialgram/releases/download/v4.15.6.1/materialgram-v4.15.6.1.tar.gz
+	sha256sums = b1f75c56184a5fb74058552b0ea24af8c4d038ddb50c42e63ac403b4f6661ead
 
 pkgname = materialgram-bin
