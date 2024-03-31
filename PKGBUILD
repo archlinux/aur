@@ -1,14 +1,14 @@
 _phpbase=72
 pkgname=php72-imagick
 _extname=imagick
-pkgver=3.6.0
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="PHP extension for IMagick"
 arch=('i686' 'x86_64')
 url="http://pecl.php.net/package/${_extname}"
 license=('PHP')
 depends=("php${_phpbase}" 'imagemagick')
-backup=("etc/php${_phpbase}/conf.d/${_extname}.ini")
+backup=("etc/php${_phpbase}/conf.d/20-${_extname}.ini")
 install="php-${_extname}.install"
 source=("http://pecl.php.net/get/${_extname}-${pkgver}.tgz")
 
@@ -23,7 +23,8 @@ package() {
   cd "${_extname}-${pkgver}"
 
   make INSTALL_ROOT="${pkgdir}" install
-  echo "extension=${_extname}.so" > "${_extname}.ini"
-  install -D -m644 "${_extname}.ini" "${pkgdir}/etc/php${_phpbase}/conf.d/${_extname}.ini"
+  echo "extension=${_extname}.so" > "20-${_extname}.ini"
+  install -D -m644 "20-${_extname}.ini" "${pkgdir}/etc/php${_phpbase}/conf.d/20-${_extname}.ini"
+  rm "20-${_extname}.ini"
 }
-md5sums=('f7b5e9b23fb844e5eb035203d316bc63')
+md5sums=('0687774a6126467d4e5ede02171e981d')
