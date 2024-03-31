@@ -1,8 +1,8 @@
 # Maintainer: Bence Cs <bence98 at sch bme hu>
 
 pkgname='cpan2aur2git'
-pkgver='0.0.1'
-pkgrel='3'
+pkgver='0.0.2'
+pkgrel='1'
 pkgdesc="CPAN2AUR wrapper"
 arch=('any')
 url="https://github.com/bence98/${pkgname}"
