@@ -1,10 +1,10 @@
 pkgbase = qcm-git
 	pkgdesc = Qt client for netease cloud music
-	pkgver = r97.3499c08
-	pkgrel = 2
+	pkgver = 1.0.2.r5.gab29b2cd
+	pkgrel = 1
 	url = https://github.com/hypengw/Qcm
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = cmake
 	makedepends = extra-cmake-modules

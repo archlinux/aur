@@ -1,11 +1,11 @@
 # Maintainer: Kimiblock Moe
 pkgname=qcm-git
-pkgver=r97.3499c08
-pkgrel=2
+pkgver=1.0.2.r5.gab29b2cd
+pkgrel=1
 pkgdesc="Qt client for netease cloud music"
 arch=('x86_64')
 url="https://github.com/hypengw/Qcm"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=(
     'qt6-base'
     'qt6-shadertools'
@@ -46,7 +46,7 @@ conflicts=("qcm")
 
 function pkgver(){
     cd Qcm
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 function build(){
