@@ -11,7 +11,6 @@ license=('MIT')
 depends=('alsa-lib' 'gtk3' 'nss')
 makedepends=('nvm' 'yarn')
 conflicts=("${pkgname%-desktop}")
-replaces=("${pkgname%-desktop}")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ooni/probe-desktop/archive/v$pkgver.tar.gz"
         "${pkgname%-desktop}-${_cliver}-linux-amd64::https://github.com/ooni/probe-cli/releases/download/v${_cliver}/${pkgname%-desktop}-linux-amd64"
         "$pkgname.desktop")
