@@ -11,7 +11,6 @@ makedepends=('dmd' 'dub' 'git')
 _commit=04683dbf0d40510543db748c0a3c1a88524c5f8d
 source=("git+https://github.com/yatima1460/Drill.git#commit=$_commit")
 conflicts=("$pkgname-cli" "$pkgname-gtk")
-replaces=("$pkgname-cli" "$pkgname-gtk")
 sha256sums=('SKIP')
 
 pkgver() {

@@ -13,8 +13,6 @@ pkgbase = drill-search
 	depends = xdg-utils
 	conflicts = drill-search-cli
 	conflicts = drill-search-gtk
-	replaces = drill-search-cli
-	replaces = drill-search-gtk
 	source = git+https://github.com/yatima1460/Drill.git#commit=04683dbf0d40510543db748c0a3c1a88524c5f8d
 	sha256sums = SKIP
 
