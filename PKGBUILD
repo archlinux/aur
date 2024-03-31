@@ -35,4 +35,5 @@ check() {
 package() {
   cd $_pkgname
   install -Dm755 -t $pkgdir/usr/bin target/ci/dust-desktop
+  install -Dm644 LICENSE $pkgdir/usr/share/licenses/$_pkgname/LICENSE
 }
