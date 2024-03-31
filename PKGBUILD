@@ -6,9 +6,7 @@ pkgrel=1
 pkgdesc='AutoHotkey for Linux (X11-based systems)'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/phil294/$_pkgname"
-# Unclear license; using strictest license for now
-# See https://github.com/phil294/AHK_X11/issues/76
-license=('GPL-2.0-only')
+license=('GPL-2.0-or-later')
 depends=(
   gtk3
   libnotify
