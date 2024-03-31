@@ -1,0 +1,5 @@
+[lib32-fluidsynth]
+source = "git"
+git = "https://github.com/fluidsynth/fluidsynth"
+exclude_regex = ".*(dev|rc|RC|alpha|beta|bp).*"
+prefix = "v"
