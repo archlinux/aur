@@ -3,7 +3,7 @@
 pkgbase=autodiff
 pkgname=(${pkgbase} python-${pkgbase})
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic differentiation made easier for C++"
 arch=(any)
 url="https://github.com/${pkgbase}/${pkgbase}"
@@ -13,6 +13,11 @@ makedepends=(cmake eigen pybind11 python-build python-installer python-setuptool
 # checkdepends=(catch2)
 source=(${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('9209cc16383a87b1e86372d48a9f2ddd945f1f54c6ebd62b7eba0fa191a2dab359a2331d2a42cd4367eec97dc97db0c7374818f04d0bb8b20e20eb96c87bd251')
+
+prepare() {
+  # https://github.com/autodiff/autodiff/issues/305#issuecomment-2028248898
+  sed -i 's/PYTHON_EXECUTABLE/Python_EXECUTABLE/' ${pkgbase}-${pkgver}/python/package/CMakeLists.txt
+}
 
 build() {
   cmake \
