@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Vinesauce ROM Corruptor
+Comment=Change the bytes of any file by tweaking some simple settings.
+Exec=vinesauce-rom-corruptor
+Icon=vinesauce-rom-corruptor
+Terminal=false
+StartupNotify=false
+Categories=Wine;Game;
