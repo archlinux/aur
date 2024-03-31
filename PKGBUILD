@@ -1,24 +1,27 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
-pkgname=gepetto-viewer
-pkgver=4.15.1
-pkgrel=2
+_org='gepetto'
+_pkgname='gepetto-viewer'
+pkgname=("$_pkgname" "$_pkgname-docs")
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="Graphical Interface for Pinocchio and HPP."
 arch=('i686' 'x86_64')
-url="https://github.com/gepetto/$pkgname"
-license=('BSD')
-depends=('openscenegraph' 'urdfdom' 'osgqt' 'boost')
-makedepends=('cmake' 'boost' 'urdfdom')
+url="https://github.com/$_org/$_pkgname"
+license=('BSD-2-Clause')
+depends=('openscenegraph' 'osgqt' 'pythonqt' 'boost-libs' 'glibc' 'qgv' 'qt5-base' 'gcc-libs' 'python' 'pythonqt')
+makedepends=('cmake' 'doxygen' 'urdfdom' 'boost')
 optdepends=('openscenegraph-dae: load DAE files')
 source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig})
-sha256sums=('2efd27e4653f793b96ed3ce4914a8f605596f42799db88ac796a058ac7d5d2dc'
+sha256sums=('1a9a15ecd9d4094071e110bad6daa2c35dedd2f552574c9b0a7c73161414cbc8'
             'SKIP')
 validpgpkeys=('9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28' 'A031AD35058955293D54DECEC45D22EF408328AD')
 
 build() {
     cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
+        -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib
+        -Wno-dev
     cmake --build "build-$pkgver"
 }
 
@@ -26,7 +29,15 @@ check() {
     cmake --build "build-$pkgver" -t test
 }
 
-package() {
+package_gepetto-viewer() {
     DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
+    rm -rf "$pkgdir/usr/share/doc"
+    mv "$pkgdir/usr/etc" "$pkgdir/etc"
+    install -Dm644 "$pkgbase-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_gepetto-viewer-docs() {
+    DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
+    rm -rf "$pkgdir"/usr/{bin,etc,lib,include,share/{"$_pkgname",ament_index}}
     install -Dm644 "$pkgbase-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
