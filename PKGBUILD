@@ -80,7 +80,6 @@ optdepends=(
 )
 provides=("${pkgname%-git}" 'gnome-games')
 conflicts=("${pkgname%-git}" 'gnome-games')
-replaces=('gnome-games-git')
 source=('git+https://gitlab.gnome.org/World/highscore.git')
 sha256sums=('SKIP')
 
