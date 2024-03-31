@@ -15,7 +15,6 @@ pkgbase = ezra-bible-app
 	depends = nodejs
 	depends = nss
 	conflicts = ezra-project
-	replaces = ezra-project
 	source = git+https://github.com/ezra-bible-app/ezra-bible-app.git#commit=48357d117fc0648f60b87efa6f4b1913118e4501
 	source = git+https://github.com/ezra-project/apidocs.ezrabibleapp.net.git
 	sha256sums = SKIP

@@ -8,9 +8,8 @@ arch=('x86_64')
 url="https://github.com/ezra-bible-app/ezra-bible-app"
 license=('GPL-2.0-or-later')
 depends=('alsa-lib' 'gtk3' 'nodejs' 'nss')
-conflicts=('ezra-project')
-replaces=('ezra-project')
 makedepends=('cmake' 'git' 'npm' 'subversion' 'unzip')
+conflicts=('ezra-project')
 _commit=48357d117fc0648f60b87efa6f4b1913118e4501  # tags/1.13.0^0
 source=("git+https://github.com/ezra-bible-app/ezra-bible-app.git#commit=$_commit"
         'git+https://github.com/ezra-project/apidocs.ezrabibleapp.net.git')
