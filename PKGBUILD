@@ -2,8 +2,8 @@
 # Maintainer: Justin Gottula <justin@jgottula.com>
 
 pkgname=wsdd
-pkgver=0.7.1
-pkgrel=2
+pkgver=0.8
+pkgrel=1
 pkgdesc="A Web Service Discovery (WSD) host daemon for SMB/Samba."
 arch=('any')
 url="https://github.com/christgau/wsdd"
@@ -17,7 +17,7 @@ source=("wsdd-${pkgver}.tar.gz::https://github.com/christgau/wsdd/archive/v${pkg
         'wsdd.service'
         'wsdd.conf')
 
-sha256sums=('deb4e647c7dbcaace8a88100db83b9a80fa0f67b9490c04c76db2b142d4457a4'
+sha256sums=('175b997518073ea82c95dadea50a0f01ffa4ff292cbb84b5e64f82e7e6c94fc9'
             '8f4326841b5ba899752ba30554fcc5ea4b2353dadb951535fd62e234fb1f5009'
             '7330cfb5cabbc7f3116781baa0f92c8bb4ac86a20f22edef5c5d98997f253c08')
 
