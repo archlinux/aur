@@ -29,12 +29,14 @@ Type=Application" > $pkgname.desktop
 
 # Dependencies
   export CARGO_HOME="$srcdir/CARGO_HOME"
+  export YARN_CACHE_FOLDER="$srcdir/YARN_CACHE"
   yarn
 }
 
 build() {
   export CARGO_HOME="$srcdir/CARGO_HOME"
   export RUSTUP_TOOLCHAIN=stable
+  export YARN_CACHE_FOLDER="$srcdir/YARN_CACHE"
   cd HarmonyVPKTool
   yarn tauri build -b none
 }
