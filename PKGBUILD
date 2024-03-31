@@ -12,7 +12,6 @@ makedepends=('git')
 optdepends=('bluez-utils: Get battery levels using bluetoothctl')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'gnome-bluetooth-battery-indicator')
-replaces=('gnome-bluetooth-battery-indicator-git')
 source=('git+https://github.com/MichalW/gnome-bluetooth-battery-indicator.git'
         'git+https://github.com/TheWeirdDev/Bluetooth_Headset_Battery_Level.git')
 sha256sums=('SKIP'
