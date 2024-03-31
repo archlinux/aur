@@ -8,9 +8,9 @@ pkgbase = sos-bin
 	provides = sos
 	arch = aarch64
 	source_aarch64 = https://github.com/devlup-labs/sos/releases/download/0.1.0/sos_0.1.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = dd22e7d35eedad7ef6c5d267c8a7054fd204f0c0ccd69d77abee8b7d33e4b488
+	sha256sums_aarch64 = ca5db5aff3f8436c84687c8ae5f243ff367b40c44cd328c3612131d004e9e8bb
 	arch = x86_64
 	source_x86_64 = https://github.com/devlup-labs/sos/releases/download/0.1.0/sos_0.1.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 7f840ac4ceb05020add4e9edc059bd6349e90efe237c1d067682f7c1c4eb47fc
+	sha256sums_x86_64 = fab67c2ae72fa0e73c5ccd64c120c2d4922b837f23876672bf9c656102d084ca
 	
 pkgname = sos-bin
