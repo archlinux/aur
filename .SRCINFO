@@ -1,10 +1,11 @@
 pkgbase = nextcloud-inotifyscan-git
 	pkgdesc = Automatically scan external changes for Nextcloud local storage.
-	pkgver = r14.0eaf4a2
+	pkgver = r2.9bc30c6
 	pkgrel = 1
 	url = https://github.com/Blaok/nextcloud-inotifyscan
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = python
 	depends = inotify-tools
 	depends = nextcloud
@@ -13,4 +14,3 @@ pkgbase = nextcloud-inotifyscan-git
 	sha256sums = SKIP
 
 pkgname = nextcloud-inotifyscan-git
-

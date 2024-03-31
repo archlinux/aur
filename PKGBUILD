@@ -1,13 +1,14 @@
-# Maintainer: Bjoern Franke <bjo@nord-west.org>
+# Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
 pkgname=nextcloud-inotifyscan-git
 _pkgname=nextcloud-inotifyscan
-pkgver=r14.0eaf4a2
+pkgver=r2.9bc30c6
 pkgrel=1
 pkgdesc="Automatically scan external changes for Nextcloud local storage. "
 arch=('any')
 url="https://github.com/Blaok/nextcloud-inotifyscan"
 license=('MIT')
 depends=('python' 'inotify-tools' 'nextcloud')
+makedepends=('git')
 options=(!emptydirs)
 sha256sums=('SKIP')
 source=("git+https://github.com/Blaok/nextcloud-inotifyscan.git")
