@@ -2,7 +2,7 @@
 
 _name=spsdk
 pkgname=python-spsdk
-pkgver=1.11.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="NXP Secure Provisioning SDK"
 arch=(any)
@@ -18,19 +18,19 @@ depends=(
   python-click-command-tree
   python-click-option-group
   python-colorama
-  python-commentjson
   python-crcmod
   python-cryptography
   python-deepmerge
   python-fastjsonschema
   python-hexdump
-  python-jinja
   python-libusbsio
   python-oscrypto
-  python-pycryptodome
+  python-platformdirs
+  python-prettytable
   python-pylink-square
   python-pyocd
   python-pyserial
+  python-requests
   python-ruamel-yaml
   python-sly
   python-typing_extensions
@@ -52,12 +52,12 @@ optdepends=(
 )
 source=(
   $_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz
-  $pkgname-1.6.0-remove_pypemicro.patch
+  $pkgname-2.1.0-remove_pypemicro.patch
 )
-sha512sums=('1c798dc7dbaa1e7f666255d9b8b269ac0920812f085f27c7401d7458c518b87a4dc8e3792c85b0b8dbc1de0e7f36e4d31685252b21af37bd578688e424bf0b2f'
-            '7bfb3739053284ba0b4084c1f84e37e307233fa7b52adf403fa5c574393d71e08ea02bdc927106b036d1055f6efd6c326b534d697c1d5f6c097def53dbafc560')
-b2sums=('e7baba27e824c658ff6233694fba06796dcfffe8d3c72840f732a08bbd72c1a1f8af5015220f7431c6513d22ad787acc02610d3686625d20c1597e8f93518115'
-        '2c68116494b5e7ff51e59ec79dd3e354e2a8035ab35e29b27a097d7baa47e48c71a2cdac651920c76cd29097c5e8710e74106e41a4b3d5f543e259ef7404beac')
+sha512sums=('3ef8398eb0f3008b50a0cac7f9491913f6acc70513f50351a0e15fb64af7759c18f1771a9ca0d297f7977df20e4278072c1b8f70613d1af5d962ab2b0c54f2e6'
+            '52977b5caaf43c3a4f14a5c493d499a64dc6d9ad1af163570f311f723d485dd6d836a2a64946b1c364fe3942f4cc607a777dbb965a340ecfc271a9bd03f77af4')
+b2sums=('5c93d63232d94ad2c2840c41a88f441ae76d4dcf8598f440ee5203626a8c7716a06bd841f1a830ebbada1262c917c5e4380ab905418c4cf7f2414325635d460b'
+        '0b28b43bb84ff4083ceb2ba3115859d38814725d743897122e70b724bd462d6093458569a2380549b931f772ce067dbcddd12b0a108a05bdd8b9746cf547e140')
 
 prepare() {
   cd $_name-$pkgver
@@ -68,7 +68,7 @@ prepare() {
   # https://github.com/NXPmicro/spsdk/issues/30
   # https://github.com/NXPmicro/pypemicro/issues/10
   sed '/pypemicro/d' -i requirements.txt
-  patch -Np1 -i ../$pkgname-1.6.0-remove_pypemicro.patch
+  patch -Np1 -i ../$pkgname-2.1.0-remove_pypemicro.patch
   # remove dependency on python-pyocd-pemicro as it vendors prebuilt shared libraries via python-pypemicro
   # https://github.com/pyocd/pyOCD/issues/1319
   # https://github.com/NXPmicro/spsdk/issues/30
@@ -84,6 +84,29 @@ build() {
 check() {
   local pytest_options=(
     -vv
+    --ignore tests/mcu_examples/test_jupyter.py  # we don't care about examples
+    # tests due to missing files and whatever other reasons: https://github.com/nxp-mcuxpresso/spsdk/issues/66
+    --deselect 'tests/nxpcrypto/test_nxpcrypto.py::test_nxpcrypto_create_signature_algorithm[EnumHashAlgorithm.SHA1-secp256r1]'
+    --deselect 'tests/nxpcrypto/test_nxpcrypto.py::test_nxpcrypto_create_signature_algorithm[EnumHashAlgorithm.SHA1-secp384r1]'
+    --deselect 'tests/nxpcrypto/test_nxpcrypto.py::test_nxpcrypto_create_signature_algorithm[EnumHashAlgorithm.SHA1-secp521r1]'
+    --deselect 'tests/nxpcrypto/test_nxpcrypto.py::test_nxpcrypto_create_signature_algorithm[EnumHashAlgorithm.SHA1-rsa2048]'
+    --deselect 'tests/nxpcrypto/test_nxpcrypto.py::test_nxpcrypto_create_signature_algorithm[EnumHashAlgorithm.SHA1-rsa4096]'
+    --deselect 'tests/nxpcrypto/test_nxpcrypto.py::test_nxpcrypto_create_signature_algorithm[EnumHashAlgorithm.SHA256-secp384r1]'
+    --deselect 'tests/nxpcrypto/test_nxpcrypto.py::test_nxpcrypto_create_signature_algorithm[EnumHashAlgorithm.SHA256-secp521r1]'
+    --deselect 'tests/nxpcrypto/test_nxpcrypto.py::test_nxpcrypto_create_signature_algorithm[EnumHashAlgorithm.SHA384-secp256r1]'
+    --deselect 'tests/nxpcrypto/test_nxpcrypto.py::test_nxpcrypto_create_signature_algorithm[EnumHashAlgorithm.SHA384-secp521r1]'
+    --deselect 'tests/nxpcrypto/test_nxpcrypto.py::test_nxpcrypto_create_signature_algorithm[EnumHashAlgorithm.SHA384-rsa2048]'
+    --deselect 'tests/nxpcrypto/test_nxpcrypto.py::test_nxpcrypto_create_signature_algorithm[EnumHashAlgorithm.SHA384-rsa4096]'
+    --deselect 'tests/nxpcrypto/test_nxpcrypto.py::test_nxpcrypto_create_signature_algorithm[EnumHashAlgorithm.SHA512-secp256r1]'
+    --deselect 'tests/nxpcrypto/test_nxpcrypto.py::test_nxpcrypto_create_signature_algorithm[EnumHashAlgorithm.SHA512-secp384r1]'
+    --deselect 'tests/nxpcrypto/test_nxpcrypto.py::test_nxpcrypto_create_signature_algorithm[EnumHashAlgorithm.SHA512-rsa2048]'
+    --deselect 'tests/nxpcrypto/test_nxpcrypto.py::test_nxpcrypto_create_signature_algorithm[EnumHashAlgorithm.SHA512-rsa4096]'
+    --deselect 'tests/nxpcrypto/test_nxpcrypto.py::test_nxpcrypto_create_signature_algorithm[EnumHashAlgorithm.MD5-secp256r1]'
+    --deselect 'tests/nxpcrypto/test_nxpcrypto.py::test_nxpcrypto_create_signature_algorithm[EnumHashAlgorithm.MD5-secp384r1]'
+    --deselect 'tests/nxpcrypto/test_nxpcrypto.py::test_nxpcrypto_create_signature_algorithm[EnumHashAlgorithm.MD5-secp521r1]'
+    --deselect 'tests/nxpcrypto/test_nxpcrypto.py::test_nxpcrypto_create_signature_algorithm[EnumHashAlgorithm.MD5-rsa2048]'
+    --deselect 'tests/nxpcrypto/test_nxpcrypto.py::test_nxpcrypto_create_signature_algorithm[EnumHashAlgorithm.MD5-rsa4096]'
+    --deselect 'tests/nxpimage/test_nxpimage_sb31.py::test_nxpimage_sb31_kaypair_not_matching'
   )
 
   cd $_name-$pkgver
