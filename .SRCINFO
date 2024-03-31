@@ -1,0 +1,21 @@
+pkgbase = android-x86-libcap-ng
+	pkgdesc = A library for Linux that makes using posix capabilities easy (Android x86)
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = https://people.redhat.com/sgrubb/libcap-ng/
+	arch = any
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
+	makedepends = android-configure
+	makedepends = swig
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/stevegrubb/libcap-ng/archive/v0.8.4/libcap-ng-0.8.4.tar.gz
+	source = 0001-Disable-fsetlocking.patch
+	md5sums = 42640e5395f607b1a6566146c080baae
+	md5sums = 2ecb9b10f198c5222237864ab215d217
+
+pkgname = android-x86-libcap-ng
