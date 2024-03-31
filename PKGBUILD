@@ -1,4 +1,4 @@
-# Maintainer: RealStickman <mrc+aur@frm01.net>
+# Maintainer: exu <aur _a_ frm01 _d_ net>
 
 pkgname=vivictpp
 pkgdesc='An easy to use tool for subjective comparison of the visual quality of different encodings of the same video source.'
