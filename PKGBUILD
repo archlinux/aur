@@ -4,12 +4,12 @@ pkgname=python-pytest-subprocess
 pkgdesc='Pytest plugin to fake subprocess'
 url='https://github.com/aklajnert/pytest-subprocess'
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('MIT')
 
 depends=('python-pytest')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=(
   'python-anyio'
   'python-docutils'
@@ -21,10 +21,17 @@ checkdepends=(
 _pkgname=pytest-subprocess
 source=(
   "$_pkgname-$pkgver.tar.gz::https://github.com/aklajnert/pytest-subprocess/archive/refs/tags/$pkgver.tar.gz"
+  'github-pr142.patch::https://patch-diff.githubusercontent.com/raw/aklajnert/pytest-subprocess/pull/148.patch'
 )
 sha256sums=(
   '80172ac95439cd4a237c5ee7f343227a7fd21fb61284bfa0de4b7802502d88dc'
+  '694663a0ebc7db59c1c281984b583e78d8d63c35a616b2d7141f1ea733361b6c'
 )
+
+prepare() {
+  cd "$_pkgname-$pkgver"
+  git apply "$srcdir/github-pr142.patch"
+}
 
 build() {
   cd "$_pkgname-$pkgver"
