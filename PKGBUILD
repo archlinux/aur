@@ -170,7 +170,11 @@ prepare() {
     if [ "${_opt_SYS_FLUTTER}" -ne 0 ]; then
       set +u; msg2 'Copy /opt/flutter'; set -u
       rm -rf 'flutter'
-      cp -pr '/opt/flutter' .
+      if [ -d '/opt/flutter' ]; then
+        cp -pr '/opt/flutter' .
+      else
+        cp -pr '/usr/lib/flutter' .
+      fi
     fi
     if [ ! -d 'flutter_rust_bridge' ]; then
       ln -s "flutter_rust_bridge-${_FRBVER}" 'flutter_rust_bridge'
