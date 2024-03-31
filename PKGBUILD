@@ -5,7 +5,7 @@ pkgver=r3602.5794f61
 pkgrel=1
 pkgdesc='Track and control the processes running in your system. KF6 version'
 arch=(x86_64)
-url='https://kde.org/plasma-desktop/'
+url='https://github.com/zvova7890/ksysguard6'
 license=(LGPL)
 depends=(gcc-libs
          glibc
