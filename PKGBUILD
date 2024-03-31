@@ -12,7 +12,6 @@ makedepends=('cargo' 'git')
 optdepends=('fwupd: Generic firmware updates'
             'system76-firmware-daemon: System76 firmware updates')
 conflicts=('libfirmware-manager')
-replaces=('libfirmware-manager-git')
 source=('git+https://github.com/pop-os/firmware-manager.git'
         "${_app_id}.policy"
         "${pkgname%-git}.sh")
