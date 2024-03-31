@@ -1,4 +1,5 @@
 post_install(){
+
 pkexec bash /opt/apps/cn.flamescion.bookworm-compatibility-mode/files/bin/ace-init
 systemctl enable --now ace-bookworm-auto-upgrade.service
 echo "This package will be replaced by amber-ce-bookworm, please remove this package and install amber-ce-bookworm"
@@ -6,6 +7,11 @@ echo "这个包将会被 amber-ce-bookworm 替代，请卸载此包，安装 amb
 }
 
 post_upgrade(){
+if [ -d /opt/apps/cn.flamescion.bookworm-compatibility-mode/files/bookworm-env ];then
+mv /opt/apps/cn.flamescion.bookworm-compatibility-mode/files/bookworm-env /opt/apps/cn.flamescion.bookworm-compatibility-mode/files/ace-env
+ln -sfv /opt/apps/cn.flamescion.bookworm-compatibility-mode/files/ace-env /opt/apps/cn.flamescion.bookworm-compatibility-mode/files/bookworm-env
+fi
+
 pkexec bash /opt/apps/cn.flamescion.bookworm-compatibility-mode/files/bin/ace-init
 systemctl enable --now ace-bookworm-auto-upgrade.service
 echo "This package will be replaced by amber-ce-bookworm"

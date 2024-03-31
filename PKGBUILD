@@ -1,7 +1,7 @@
 # Maintainer: Anysets<anysets@qq.com>
 pkgname=cn.flamescion.bookworm-compatibility-mode
 pkgver=12.4.11.2
-pkgrel=1
+pkgrel=3
 pkgdesc="a container app packaging and distributing solution."
 arch=('aarch64' 'x86_64')
 url="https://gitee.com/amber-ce/amber-ce-bookworm"
