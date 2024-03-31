@@ -1,0 +1,17 @@
+pkgbase = moondust-configpack-thextechsdk-git
+	pkgdesc = Moondust Project's game configuration pack - TheXTech SDK
+	pkgver = v1.3.6.3.r8.g14f4519
+	pkgrel = 1
+	url = https://github.com/Wohlstand/TheXTech-SDK
+	arch = any
+	license = custom
+	makedepends = gawk
+	makedepends = sed
+	makedepends = curl
+	depends = thextech
+	provides = moondust-configpack
+	conflicts = moondust-project-stable-bin
+	source = git+https://github.com/Wohlstand/TheXTech-SDK.git
+	sha512sums = SKIP
+
+pkgname = moondust-configpack-thextechsdk-git
