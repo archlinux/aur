@@ -1,6 +1,6 @@
 pkgbase = ttf-babelstone-tibetan
 	pkgdesc = BabelStone Font for Tibetan script
-	pkgver = 10.010
+	pkgver = 10.011
 	pkgrel = 1
 	url = https://www.babelstone.co.uk/Fonts/Tibetan.html
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = ttf-babelstone-tibetan
 	source = https://www.babelstone.co.uk/Fonts/Download/BabelStoneTibetan.ttf
 	source = https://www.babelstone.co.uk/Fonts/Download/BabelStoneTibetanSlim.ttf
 	source = https://www.babelstone.co.uk/Fonts/BabelStoneOFL.txt
-	sha256sums = ACF0AD1D08403708E71C0CE441703E8954784180D74D6B90CBEA846C20847F63
-	sha256sums = 8F516F5FC455C82C7EF6BE185B90FD2DB567FC5765EE7026B0483107407189DA
+	sha256sums = 6791BAB3919DFB16DE9223817B40E3786FD567427A77790ECB17B4EFE66FA667
+	sha256sums = E5D86891D81FC052434EA1F03A7353354AECEE6F10373DD4A9F34C7CA23EBE1C
 	sha256sums = D2B1B6E4E9201832E94E6F9231B6C32488CB76EA30C4EF82CA3FAC35EC2F0B66
 
 pkgname = ttf-babelstone-tibetan

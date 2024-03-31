@@ -1,7 +1,7 @@
 # Maintainer: Dringsim <dringsim@qq.com>
 
 pkgname=ttf-babelstone-tibetan
-pkgver=10.010
+pkgver=10.011
 pkgrel=1
 pkgdesc="BabelStone Font for Tibetan script"
 url="https://www.babelstone.co.uk/Fonts/Tibetan.html"
@@ -10,8 +10,8 @@ license=(OFL)
 source=("https://www.babelstone.co.uk/Fonts/Download/BabelStoneTibetan.ttf"
             "https://www.babelstone.co.uk/Fonts/Download/BabelStoneTibetanSlim.ttf"
             "https://www.babelstone.co.uk/Fonts/BabelStoneOFL.txt")
-sha256sums=('ACF0AD1D08403708E71C0CE441703E8954784180D74D6B90CBEA846C20847F63'
-           '8F516F5FC455C82C7EF6BE185B90FD2DB567FC5765EE7026B0483107407189DA'
+sha256sums=('6791BAB3919DFB16DE9223817B40E3786FD567427A77790ECB17B4EFE66FA667'
+           'E5D86891D81FC052434EA1F03A7353354AECEE6F10373DD4A9F34C7CA23EBE1C'
            'D2B1B6E4E9201832E94E6F9231B6C32488CB76EA30C4EF82CA3FAC35EC2F0B66')
 
 package() {
