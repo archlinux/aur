@@ -2,7 +2,7 @@
 _pkgname=AHK_X11
 pkgname="${_pkgname,,}"
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='AutoHotkey for Linux (X11-based systems)'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/phil294/$_pkgname"
@@ -19,7 +19,6 @@ depends=(
   fuse2
 )
 makedepends=(
-  git
   crystal
   shards
   gcc

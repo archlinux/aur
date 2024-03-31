@@ -1,12 +1,11 @@
 pkgbase = ahk_x11
 	pkgdesc = AutoHotkey for Linux (X11-based systems)
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/phil294/AHK_X11
 	arch = x86_64
 	arch = x86_64_v3
 	license = GPL-2.0-only
-	makedepends = git
 	makedepends = crystal
 	makedepends = shards
 	makedepends = gcc
