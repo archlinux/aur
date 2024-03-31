@@ -1,21 +1,21 @@
-# Contributor: Anonymous
+# Contributor: CpanBot <cpanbot at sch bme hu>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-dist-zilla-plugin-modulebuildtiny'
-pkgver='0.015'
+pkgver='0.017'
 pkgrel='1'
 pkgdesc="Build a Build.PL that uses Module::Build::Tiny"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-dist-zilla>=4.300039' 'perl-module-build-tiny>=0.039' 'perl-moose>=0' 'perl-moosex-types-perl>=0' 'perl-path-tiny>=0' 'perl>=5.006')
-makedepends=()
-checkdepends=('perl-dist-zilla>=0' 'perl-test-deep>=0' 'perl-test-fatal>=0')
+depends=('perl-dist-zilla>=4.300039' 'perl-module-build-tiny>=0.039' 'perl-moose>=0' 'perl-moosex-types>=0' 'perl-moosex-types-perl>=0' 'perl>=5.006')
+makedepends=('perl-module-build-tiny>=0.034' 'perl>=5.4.5')
+checkdepends=('perl-dist-zilla>=0' 'perl-path-tiny>=0' 'perl-test-deep>=0' 'perl-test-fatal>=0')
 url='https://metacpan.org/release/Dist-Zilla-Plugin-ModuleBuildTiny'
-source=('http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/Dist-Zilla-Plugin-ModuleBuildTiny-0.015.tar.gz')
-md5sums=('8887e08f0cdef9a2b4226b67e97699a8')
-sha512sums=('d63138a5e83b35092d4b4913b4a6d83a87c8c67898cf88edd0b5a46a308a098c80955c2d5c7f7061b68dbbbc410a5c9027627099d07635751add5c3721c6c0ab')
-_distdir="Dist-Zilla-Plugin-ModuleBuildTiny-0.015"
+source=('http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/Dist-Zilla-Plugin-ModuleBuildTiny-0.017.tar.gz')
+md5sums=('e2df9091d24d964da2a3752e8d4a1d12')
+sha512sums=('27314976431b07a90c14637dd768b18d6a520e1b786eff3985e3d96705d6d66211893b989b0810b14383dff7eb6e2b68395540373fc921968f37aacb9ea42466')
+_distdir="Dist-Zilla-Plugin-ModuleBuildTiny-0.017"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
