@@ -4,7 +4,7 @@ pkgbase=decasify
 pkgname=("$pkgbase" "lua-$pkgbase" "lua53-$pkgbase" "lua52-$pkgbase" "lua51-$pkgbase")
 pkgver=0.4.6
 _rockrel=1
-pkgrel=2
+pkgrel=3
 pkgdesc='cast strings to title-case according to locale specific style guides including Turkish'
 arch=(x86_64)
 url="https://github.com/alerque/$pkgbase"
@@ -19,8 +19,10 @@ makedepends=(cargo
              luarocks
              jq)
 _archive="$pkgbase-$pkgver"
-source=("$url/releases/download/v$pkgver/$_archive.tar.zst")
-sha256sums=('e64c6aeb20e4de3c28d2b15ad28c340b28ab3b0804393cfaf5e159d608f0e21d')
+source=("$url/releases/download/v$pkgver/$_archive.tar.zst"{,.asc})
+sha256sums=('e64c6aeb20e4de3c28d2b15ad28c340b28ab3b0804393cfaf5e159d608f0e21d'
+            'SKIP')
+validpgpkeys=('9F377DDB6D3153A48EB3EB1E63CC496475267693') # Caleb Maclennan <caleb@alerque.com> (@alerque)
 
 prepare() {
 	cd "$_archive"
