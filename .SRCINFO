@@ -1,7 +1,7 @@
 pkgbase = nzsl
 	pkgdesc = A shader language inspired by Rust and C++ which compiles to GLSL or SPIRV (without any additional dependency)
 	pkgver = 20240227
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/NazaraEngine/ShaderLang
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = nzsl
 	license = MIT
 	makedepends = xmake
 	makedepends = fast_float
+	makedepends = git
+	provides = nzsl
 	source = git+https://github.com/NazaraEngine/ShaderLang.git#commit=00426331127bca10b79498e3b1edf5a4d1d87986
 	sha256sums = SKIP
 
