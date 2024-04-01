@@ -1,6 +1,6 @@
 pkgbase = b-em-git
 	pkgdesc = BBC Micro emulator - git version
-	pkgver = r1856.b5134db
+	pkgver = r2007.5557a36
 	pkgrel = 1
 	url = http://b-em.bbcmicro.com/
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = b-em-git
 	depends = glibc
 	depends = jack
 	depends = zlib
+	options = !debug
 	source = git+https://github.com/stardot/b-em.git
 	sha256sums = SKIP
 
