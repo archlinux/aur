@@ -1,6 +1,6 @@
 pkgbase = tremotesf
 	pkgdesc = Remote GUI for transmission-daemon
-	pkgver = 2.6.1
+	pkgver = 2.6.2
 	pkgrel = 1
 	url = https://github.com/equeim/tremotesf2
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = tremotesf
 	depends = fmt
 	depends = hicolor-icon-theme
 	depends = libpsl
-	source = https://github.com/equeim/tremotesf2/releases/download/2.6.1/tremotesf-2.6.1.tar.zst
-	sha256sums = 1fe8ca02a843640b52211a2f2a5edeb27eb99816896e86d837127ede939baa03
+	source = https://github.com/equeim/tremotesf2/releases/download/2.6.2/tremotesf-2.6.2.tar.zst
+	sha256sums = 8a8dbfe7d421513eb31e438dcbf39b7e9b24063e4d60c231b663a859befbbce6
 
 pkgname = tremotesf
