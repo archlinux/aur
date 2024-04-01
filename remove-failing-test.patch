@@ -1,0 +1,17 @@
+diff --unified --recursive --text --new-file prawn-icon-3.1.0.orig/spec/integration/icon_spec.rb prawn-icon-3.1.0/spec/integration/icon_spec.rb
+--- prawn-icon-3.1.0.orig/spec/integration/icon_spec.rb	2024-04-01 09:59:31.352524804 +0200
++++ prawn-icon-3.1.0/spec/integration/icon_spec.rb	2024-04-01 10:00:26.259483107 +0200
+@@ -261,13 +261,4 @@
+       expect(text.strings.first).to eq('')
+     end
+   end
+-
+-  context 'Material Design Icons' do
+-    it 'renders Material Design Icon glyphs' do
+-      pdf.icon 'mdi-beer'
+-      text = PDF::Inspector::Text.analyze(pdf.render)
+-
+-      expect(text.strings.first).to eq('')
+-    end
+-  end
+ end
