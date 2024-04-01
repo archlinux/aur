@@ -1,7 +1,7 @@
 # Maintainer: Moon Sungjoon <sumoon at seoulsaram dot org>
 
 pkgname=libreoffice-extension-h2orestart
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="LibreOffice extension that import hwp and hwpx file and present in odt format"
 _extname=H2Orestart
@@ -9,7 +9,7 @@ _filename=${_extname}-${pkgver}.oxt
 arch=(any)
 url="https://github.com/ebandal/H2Orestart"
 license=(MIT)
-sha512sums=('2f999451c8a3ef2230e5be2d1cb9710b6b91a8e96929b5e5771ece071d6e9cc0918fc6f6168b3cebcd4c7d5ceb88f5e3e840ce7f1415885fa12d857e5f84bf47')
+sha512sums=('a2171f29a4e4e1d69b9ad416275337478555828e964f97b8f9a2a4fb54f2499a885a5ea8fb161a70f802462e218bf7dff9fb9ef5e8be9b03cd407b991f58d9ff')
 
 depends=('libreoffice' 'java-runtime-headless')
 groups=('libreoffice-extensions')
