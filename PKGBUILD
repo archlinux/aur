@@ -2,7 +2,7 @@
 
 pkgname=ares-emu
 pkgver=137
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform, open source, multi-system emulator by Near and Ares team, focusing on accuracy and preservation."
 arch=(x86_64 i686)
 url="https://ares-emu.net/"
@@ -28,6 +28,6 @@ package() {
 
   # Also install shaders and databases in Ares' shared data directory
   install -dm 755 "${pkgdir}/usr/share/ares"
-  cp -dr --no-preserve=ownership "${srcdir}/ares/thirdparty/slang-shaders/" "${pkgdir}/usr/share/ares/Shaders/"
+  cp -dr --no-preserve=ownership "${srcdir}/ares-${pkgver}/thirdparty/slang-shaders/" "${pkgdir}/usr/share/ares/Shaders/"
   cp -dr --no-preserve=ownership "${srcdir}/ares-${pkgver}/mia/Database/" "${pkgdir}/usr/share/ares/Database/"
 }
