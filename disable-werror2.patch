@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b8852e4..cf1d447 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -19,7 +19,7 @@ option(BENCHMARK_ENABLE_TESTING "Enable testing of the benchmark library." ON)
+ option(BENCHMARK_ENABLE_EXCEPTIONS "Enable the use of exceptions in the benchmark library." ON)
+ option(BENCHMARK_ENABLE_LTO "Enable link time optimisation of the benchmark library." OFF)
+ option(BENCHMARK_USE_LIBCXX "Build and test using libc++ as the standard library." OFF)
+-option(BENCHMARK_ENABLE_WERROR "Build Release candidates with -Werror." ON)
++option(BENCHMARK_ENABLE_WERROR "Build Release candidates with -Werror." OFF)
+ option(BENCHMARK_FORCE_WERROR "Build Release candidates with -Werror regardless of compiler issues." OFF)
+ 
+ if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "PGI")

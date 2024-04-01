@@ -1,0 +1,18 @@
+--- a/aten/src/ATen/core/boxing/impl/boxing.h	2024-03-19 19:57:10.939716493 +0000
++++ b/aten/src/ATen/core/boxing/impl/boxing.h	2024-03-19 20:30:47.642693577 +0000
+@@ -38,7 +38,15 @@
+ struct has_ivalue_to : std::false_type {};
+
+ template <class T>
+-struct has_ivalue_to<T, guts::void_t<decltype(std::declval<IValue>().to<T>())>>
++struct __ivalue_to_helper__
++{
++    using type = decltype(std::declval<IValue>().template to<T>());
++};
++template <class T>
++using __ivalue_to_helper_t = typename __ivalue_to_helper__<T>::type;
++
++template <class T>
++struct has_ivalue_to<T, guts::void_t<__ivalue_to_helper_t<T>>>
+ : std::true_type
+ {};

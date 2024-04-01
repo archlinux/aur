@@ -1,0 +1,28 @@
+diff --git a/c10/util/Logging.cpp b/c10/util/Logging.cpp
+index f4eef35b147..5a0a850650e 100644
+--- a/c10/util/Logging.cpp
++++ b/c10/util/Logging.cpp
+@@ -280,20 +280,20 @@ void UpdateLoggingLevelsFromFlags() {
+ #endif
+   // If caffe2_log_level is set and is lower than the min log level by glog,
+   // we will transfer the caffe2_log_level setting to glog to override that.
+-  FLAGS_minloglevel = std::min(FLAGS_caffe2_log_level, FLAGS_minloglevel);
++  FLAGS_minloglevel = std::min(FLAGS_caffe2_log_level, static_cast<int>(FLAGS_minloglevel));
+   // If caffe2_log_level is explicitly set, let's also turn on logtostderr.
+   if (FLAGS_caffe2_log_level < google::GLOG_WARNING) {
+     FLAGS_logtostderr = 1;
+   }
+   // Also, transfer the caffe2_log_level verbose setting to glog.
+   if (FLAGS_caffe2_log_level < 0) {
+-    FLAGS_v = std::min(FLAGS_v, -FLAGS_caffe2_log_level);
++    FLAGS_v = std::min(FLAGS_v, static_cast<int>(-FLAGS_caffe2_log_level));
+   }
+ }
+ 
+ void ShowLogInfoToStderr() {
+   FLAGS_logtostderr = 1;
+-  FLAGS_minloglevel = std::min(FLAGS_minloglevel, google::GLOG_INFO);
++  FLAGS_minloglevel = std::min(FLAGS_minloglevel, static_cast<int>(google::GLOG_INFO));
+ }
+ } // namespace c10
+ 
