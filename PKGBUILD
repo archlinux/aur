@@ -12,7 +12,7 @@ _pandoc_commit=b1e2e452deb36e050c0b81c4c2351d5a829d2977
 pkgrel=1
 pkgdesc="Pandoc filter for cross-references (static build)"
 url="https://github.com/lierdakil/pandoc-crossref"
-license=("GPL2")
+license=("GPL-2.0-or-later")
 arch=('x86_64')
 conflicts=("pandoc-crossref")
 provides=("$_pkgname=${pkgver%%.r*}")
