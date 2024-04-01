@@ -5,7 +5,7 @@ _rockname=copas
 pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=4.7.0
 _rockrel=1
-pkgrel=5
+pkgrel=6
 pkgdesc='A dispatcher based on coroutines that can be used by TCP/IP servers'
 arch=(x86_64 i686)
 url="https://lunarmodules.github.io/$_rockname"
@@ -24,8 +24,6 @@ source=("$_url/archive/$pkgver/$_archive.tar.gz")
 sha256sums=('54c16a5f56ff32f3a6c9410f5927c33156c81fde035772e5adc6404565ed3d3a')
 
 _package() {
-	depends+=("${pkgname%%-*}" "${_luadeps[@]/#/${pkgname%%-*}-}")
-	optdepends+=("${pkgname%%-*}-sec: secure sockets support")
 	cd "$_archive"
 	luarocks --lua-version="$1" --tree="$pkgdir/usr/" \
 		make --deps-mode=none --no-manifest \
@@ -36,18 +34,26 @@ _package() {
 }
 
 package_lua-copas() {
+	depends+=("${pkgname%%-*}" "${_luadeps[@]/#/${pkgname%%-*}-}")
+	optdepends+=("${pkgname%%-*}-sec: secure sockets support")
 	_package 5.4
 }
 
 package_lua53-copas() {
+	depends+=("${pkgname%%-*}" "${_luadeps[@]/#/${pkgname%%-*}-}")
+	optdepends+=("${pkgname%%-*}-sec: secure sockets support")
 	_package 5.3
 }
 
 package_lua52-copas() {
+	depends+=("${pkgname%%-*}" "${_luadeps[@]/#/${pkgname%%-*}-}")
+	optdepends+=("${pkgname%%-*}-sec: secure sockets support")
 	_package 5.2
 }
 
 package_lua51-copas() {
+	depends+=("${pkgname%%-*}" "${_luadeps[@]/#/${pkgname%%-*}-}")
+	optdepends+=("${pkgname%%-*}-sec: secure sockets support")
 	depends+=(lua51-coxpcall)
 	_package 5.1
 }
