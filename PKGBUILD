@@ -1,7 +1,7 @@
 # Maintainer: Samsagax <samsagax at gmail dot com>
 _pkgbase=chimeraos-device-quirks
 pkgname=${_pkgbase}-git
-pkgver=r239.b2c3678
+pkgver=r242.c9a0d99
 pkgrel=1
 pkgdesc="A collection of device specific configuration files"
 arch=('any')
@@ -40,8 +40,7 @@ package() {
 	install -v -m644 -D -t "${pkgdir}/usr/lib/systemd/system/" usr/lib/systemd/system/*
 	install -v -m755 -D -t "${pkgdir}/usr/lib/systemd/system-sleep/" usr/lib/systemd/system-sleep/*
 
-	# Install firmware DSDT and EDID
-	install -v -m644 -D -t "${pkgdir}/usr/lib/firmware/dsdt/" usr/lib/firmware/dsdt/*
+	# Install firmware EDID
 	install -v -m644 -D -t "${pkgdir}/usr/lib/firmware/edid/" usr/lib/firmware/edid/*
 
 	# Install sysctl configurations
