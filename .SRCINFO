@@ -1,7 +1,7 @@
 pkgbase = nodejs-shared
 	pkgdesc = Evented I/O for V8 javascript
 	pkgver = 21.7.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://nodejs.org/
 	arch = x86_64
 	license = MIT
