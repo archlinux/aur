@@ -1,7 +1,7 @@
 # Maintainer: Liam Doan <not.lamdn@gmail.com>
 
 pkgname=surfshark-client
-pkgver=2.2.0.2835
+pkgver=2.3.1.3267
 pkgrel=1
 pkgdesc="Surfshark VPN GUI client for Linux. Encrypt your internet activity so no one can track or steal your data. Increase your privacy and avoid tracking by using a different IP address. Keep your digital freedom and security while using unprotected networks."
 arch=('x86_64')
@@ -10,10 +10,10 @@ license=('custom:surfshark')
 depends=('alsa-lib' 'at-spi2-core' 'gjs' 'nss' 'org.freedesktop.secrets' 'wireguard-tools')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source=("https://ocean.surfshark.com/debian/pool/main/s/surfshark_2.2.0_amd64.deb")
-sha512sums=('aef4c588c8505f0720aa91f96e882877f22556410a36eae9b606d3a73f3868a450c21e9810b8a792273b58af65c97aa1342c970b4f3f9beee879ea3c22543309')
+source=("https://ocean.surfshark.com/debian/pool/main/s/surfshark_2.3.1_amd64.deb")
+sha512sums=('9ecb7b12a884eb04b0f4f6377f2acaec28c59ec1f1c09d65de917452774133325702a056617cb9a4087a8ed39b99f2413816a1fef9ababb025a6fb842681ef64')
 
-package() {
+package(){
 
 	# Extract package data
 	tar -xJ -f data.tar.xz -C "${pkgdir}"
