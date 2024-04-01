@@ -1,5 +1,5 @@
 pkgbase = xz-5.4
-	pkgdesc = xz 5.4.x as a workaround for the recently known vulnerability
+	pkgdesc = xz 5.4.x
 	pkgver = 5.4.6
 	pkgrel = 3
 	url = https://xz.tukaani.org/xz-utils/

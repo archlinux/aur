@@ -2,7 +2,7 @@
 pkgname=xz-5.4
 pkgver=5.4.6
 pkgrel=3
-pkgdesc="xz 5.4.x as a workaround for the recently known vulnerability"
+pkgdesc="xz 5.4.x"
 arch=("x86_64")
 url="https://xz.tukaani.org/xz-utils/"
 license=('GPL' 'LGPL' 'custom')
