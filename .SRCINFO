@@ -1,7 +1,7 @@
 pkgbase = numworks-epsilon
 	pkgdesc = A simulator for the Numworks graphic calculator (Epsilon firmware)
 	pkgver = 22.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.numworks.com/resources/engineering/software/
 	arch = x86_64
 	license = Apache-2.0
@@ -23,11 +23,13 @@ pkgbase = numworks-epsilon
 	source = numworks-epsilon-22.2.0.tar.gz::https://github.com/numworks/epsilon/archive/22.2.0.tar.gz
 	source = LICENSE.micropython::https://raw.githubusercontent.com/micropython/micropython/5114f2c1ea7c05fc7ab920299967595cfc5307de/LICENSE
 	source = LICENSE.micropython-ulab::https://raw.githubusercontent.com/v923z/micropython-ulab/65c941a8059afe1cfd6f4c2b15d0ade798dc24f2/LICENSE
+	source = add-hidpi-support.patch
 	source = devendor-sdl.patch
 	source = LICENSE.regularized_incomplete_beta_function
 	md5sums = 1ba5f66dd8abb28b61e7ae3a29771069
 	md5sums = b5c7595f793a0c8b7758f4ff0152cffb
 	md5sums = d9881740850078297bfa270e674e6e99
+	md5sums = 2e03fc45154ee59aeb4c78809e7ee696
 	md5sums = e45599b7d190abffbb7019390a8e8ab3
 	md5sums = f377d0e994b14a12313a724b821e3194
 

@@ -1,0 +1,21 @@
+diff --git a/ion/src/simulator/shared/window.cpp b/ion/src/simulator/shared/window.cpp
+index 2275a99450..80b9514a7a 100644
+--- a/ion/src/simulator/shared/window.cpp
++++ b/ion/src/simulator/shared/window.cpp
+@@ -23,6 +23,16 @@ static SDL_Rect sScreenRect;
+ bool isHeadless() { return sWindow == nullptr; }
+ 
+ void init() {
++  /*
++   * This app is known to work just fine under the Wayland driver,
++   * so make that driver the default when on a Wayland compositor.
++   * Users can still override by setting the `SDL_VIDEODRIVER`
++   * environment variable to `x11`.
++   */
++  if (getenv("WAYLAND_DISPLAY")) {
++    SDL_SetHint(SDL_HINT_VIDEODRIVER, "wayland,x11");
++  }
++
+   if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+     SDL_Log("Could not init video");
+     return;
