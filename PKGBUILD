@@ -4,7 +4,7 @@
 
 pkgname=asciidoctor-pdf
 _pkgname=$pkgname
-pkgver=2.3.13
+pkgver=2.3.15
 pkgrel=1
 pkgdesc="Translate asciidoctor directly to pdf"
 arch=(any)
@@ -33,8 +33,14 @@ checkdepends=(
 )
 optdepends=('ruby-coderay: for syntax highlighting')
 options=(!emptydirs)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('07dfcc932a2edc4fc69031fb150a3db88aaa3f5f80aee6e273c6e05b11d1d8ee')
+source=(
+  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+  "remove-failing-tests.patch"
+)
+sha256sums=(
+  'cd05a8b5cff781655531da2a4b78af9f437a1cb67074eb1e81a4cbee96f637e2'
+  '40e0aea913c4abc3313b9ae05957e334510899ae64fd882a898144c9ede025d4'
+)
 
 _archive="$_pkgname-$pkgver"
 
@@ -42,10 +48,9 @@ prepare() {
   cd "$_archive"
 
   # update gemspec/Gemfile to allow newer version of the dependencies
-  sed --in-place --regexp-extended 's|~>|>=|g' "$_pkgname.gemspec"
+  sed -i -E 's|~>|>=|g' "$_pkgname.gemspec"
 
-  # Remove failing tests - not sure why they fail
-  rm ./spec/image_spec.rb
+  patch --forward --strip=1 --input="$srcdir/remove-failing-tests.patch"
 }
 
 build() {

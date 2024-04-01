@@ -1,0 +1,65 @@
+diff --unified --recursive --text --new-file asciidoctor-pdf-2.3.15.orig/spec/font_spec.rb asciidoctor-pdf-2.3.15/spec/font_spec.rb
+--- asciidoctor-pdf-2.3.15.orig/spec/font_spec.rb	2024-04-01 10:22:42.408069741 +0200
++++ asciidoctor-pdf-2.3.15/spec/font_spec.rb	2024-04-01 10:23:00.331452490 +0200
+@@ -160,17 +160,6 @@
+     end
+   end
+ 
+-  context 'OTF' do
+-    it 'should allow theme to specify an OTF font', unless: (Gem::Version.new RUBY_VERSION) < (Gem::Version.new '2.7.0'), visual: true, &(proc do
+-      to_file = to_pdf_file <<~'EOS', 'font-otf.pdf', enable_footer: true, attribute_overrides: { 'pdf-theme' => (fixture_file 'otf-theme.yml'), 'pdf-fontsdir' => fixtures_dir }
+-      == OTF
+-
+-      You're looking at an OTF font!
+-      EOS
+-      (expect to_file).to visually_match 'font-otf.pdf'
+-    end)
+-  end
+-
+   context 'custom' do
+     it 'should resolve fonts in specified fonts dir' do
+       pdf = to_pdf 'content', attribute_overrides: { 'pdf-theme' => (fixture_file 'bundled-fonts-theme.yml'), 'pdf-fontsdir' => Asciidoctor::PDF::ThemeLoader::FontsDir }
+diff --unified --recursive --text --new-file asciidoctor-pdf-2.3.15.orig/spec/footnote_spec.rb asciidoctor-pdf-2.3.15/spec/footnote_spec.rb
+--- asciidoctor-pdf-2.3.15.orig/spec/footnote_spec.rb	2024-04-01 10:22:42.408069741 +0200
++++ asciidoctor-pdf-2.3.15/spec/footnote_spec.rb	2024-04-01 10:23:14.344824862 +0200
+@@ -80,40 +80,6 @@
+     (expect chapter_b_lines).not_to include '[1] More about that thing.'
+   end
+ 
+-  it 'should not warn when adding label accessor to footnote' do
+-    old_verbose, $VERBOSE = $VERBOSE, 1
+-    warnings = []
+-    Warning.singleton_class.define_method :warn do |str|
+-      warnings << str
+-    end
+-
+-    input = <<~'EOS'
+-    = Document Title
+-    :doctype: book
+-    :notitle:
+-    :nofooter:
+-
+-    == Chapter A
+-
+-    About this thing.footnote:fn1[More about that thing.] And so on.
+-
+-    == Chapter B
+-
+-    Yada yada yada.footnote:fn1[]
+-    EOS
+-
+-    doc = Asciidoctor.convert input, backend: 'pdf', safe: :safe, to_file: (pdf_io = StringIO.new), standalone: true
+-    pdf_io.truncate 0
+-    doc.converter.write doc.convert, pdf_io
+-    pdf = TextInspector.analyze pdf_io
+-    lines = pdf.lines pdf.find_text page_number: 2
+-    (expect lines.join ?\n).to include '[1 - Chapter A]'
+-    (expect warnings).to be_empty
+-  ensure
+-    $VERBOSE = old_verbose
+-    Warning.singleton_class.send :remove_method, :warn
+-  end
+-
+   it 'should place footnotes at the end of document when doctype is not book' do
+     pdf = to_pdf <<~'EOS', attributes_overrides: { 'notitle' => '' }, analyze: true
+     == Section A

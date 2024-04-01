@@ -3,4 +3,4 @@
 !.nvchecker.toml
 !.SRCINFO
 !PKGBUILD
-!remove-failing-test.patch
+!remove-failing-tests.patch
