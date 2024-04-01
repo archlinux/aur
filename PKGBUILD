@@ -3,36 +3,34 @@
 
 pkgname=android-file-transfer-linux
 pkgver=4.3
-pkgrel=1
-pkgdesc="Android File Transfer for Linux — a reliable MTP client with a minimalistic UI similar to official Android File Transfer. It just works."
+pkgrel=2
+pkgdesc="A reliable MTP client with a minimalistic UI similar to official Android File Transfer. It just works."
 arch=('any')
 url="https://whoozle.github.io/android-file-transfer-linux/"
 license=('GPL3')
-depends=('qt5-base' 'file' 'glibc' 'gcc-libs' 'readline' 'fuse2' 'fuse-common' 'libxkbcommon-x11' 'hicolor-icon-theme' 'taglib' 'openssl' 'zlib')
-makedepends=('base-devel' 'qt5-tools' 'cmake' 'ninja')
+depends=('qt6-base' 'file' 'glibc' 'gcc-libs' 'readline' 'fuse2' 'fuse-common' 'libxkbcommon-x11'
+         'hicolor-icon-theme' 'hidapi' 'android-udev' 'libudev0-shim' 'taglib' 'openssl' 'zlib')
+makedepends=('base-devel' 'qt6-tools' 'cmake' 'ninja')
 conflicts=('android-file-transfer-linux-git')
-source=("${pkgname}-${pkgver}::https://github.com/MartinVonReichenberg/android-file-transfer-linux/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/whoozle/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
-options=('!strip')
 
 prepare() {
-  cd "${srcdir}"/"${pkgname}"-"${pkgver}"
-  mkdir -p build
+  mkdir -p "${srcdir}/${pkgname}-${pkgver}/build/"
 }
 
 build() {
-  cd "${srcdir}"/"${pkgname}"-"${pkgver}/build"
+  cmake -S "${srcdir}/${pkgname}-${pkgver}/" \
+        -B "${srcdir}/${pkgname}-${pkgver}/build/" \
+        -G Ninja -DCMAKE_INSTALL_PREFIX="/usr/" \
+        -DCMAKE_CXX_FLAGS="$CXXFLAGS -ffat-lto-objects" \
+        -DCMAKE_EXE_LINKER_FLAGS=-Wl,-O1,--sort-common,-z,relro,-z,now
 
-  cmake -G Ninja ../ \
-    -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_EXE_LINKER_FLAGS=-Wl,-O1,--sort-common,-z,relro,-z,now
-
-  ninja
+  ninja -C "${srcdir}/${pkgname}-${pkgver}/build/" all
 }
 
 package() {
-  cd "${srcdir}"/"${pkgname}"-"${pkgver}"/build
+  DESTDIR="${pkgdir}" ninja -C "${srcdir}/${pkgname}-${pkgver}/build/" install
 
-  DESTDIR="${pkgdir}" ninja install all
-
-  install -Dm644 ../LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
