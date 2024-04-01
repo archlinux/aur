@@ -13,7 +13,7 @@ _flutterarch=$(uname -m | sed s/aarch64/arm64/ | sed s/x86_64/x64/)
 # this host is blocked in China, according to Flutter docs, the FLUTTER_STORAGE_BASE_URL environment variable
 # should be used to provide an alternative mirror
 _storagebase="${FLUTTER_STORAGE_BASE_URL:-"https://storage.googleapis.com"}"
-pkgrel=3
+pkgrel=4
 _pkgdesc="Flutter SDK artifacts (binary from Google)"
 pkgdesc="${_pkgdesc}"
 arch=("x86_64" "aarch64")
@@ -298,6 +298,8 @@ _package-engine-linux-google-bin() {
   conflicts=(
 	"${_group}-engine-linux"
 	"${_group}-target-linux<${pkgver}"
+	"${_group}-engine-android<${pkgver}"
+	"${_group}-engine-web<${pkgver}"
   )
 
   install -dm755 "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"
@@ -318,6 +320,8 @@ _package-engine-web-google-bin() {
   conflicts=(
 	"${_group}-engine-web"
 	"${_group}-target-web<${pkgver}"
+	"${_group}-engine-android<${pkgver}"
+	"${_group}-engine-linux<${pkgver}"
   )
 
   install -dm755 "${pkgdir}/usr/lib/${_group}/bin/cache"
@@ -354,6 +358,8 @@ _package-engine-android-google-bin() {
   conflicts=(
 	"${_group}-engine-android"
 	"${_group}-target-android<${pkgver}"
+	"${_group}-engine-linux<${pkgver}"
+	"${_group}-engine-web<${pkgver}"
   )
 
   install -dm755 "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"

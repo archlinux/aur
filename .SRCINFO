@@ -1,7 +1,7 @@
 pkgbase = flutter-artifacts-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google)
 	pkgver = 3.19.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://flutter.dev
 	arch = x86_64
 	arch = aarch64
@@ -126,6 +126,8 @@ pkgname = flutter-engine-linux-google-bin
 	provides = flutter-engine-linux=3.19.5
 	conflicts = flutter-engine-linux
 	conflicts = flutter-target-linux<3.19.5
+	conflicts = flutter-engine-android<3.19.5
+	conflicts = flutter-engine-web<3.19.5
 
 pkgname = flutter-engine-web-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - web engine
@@ -133,6 +135,8 @@ pkgname = flutter-engine-web-google-bin
 	provides = flutter-engine-web=3.19.5
 	conflicts = flutter-engine-web
 	conflicts = flutter-target-web<3.19.5
+	conflicts = flutter-engine-android<3.19.5
+	conflicts = flutter-engine-linux<3.19.5
 
 pkgname = flutter-engine-android-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - android engine
@@ -140,6 +144,8 @@ pkgname = flutter-engine-android-google-bin
 	provides = flutter-engine-android=3.19.5
 	conflicts = flutter-engine-android
 	conflicts = flutter-target-android<3.19.5
+	conflicts = flutter-engine-linux<3.19.5
+	conflicts = flutter-engine-web<3.19.5
 
 pkgname = flutter-sky-engine-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - sky-engine
