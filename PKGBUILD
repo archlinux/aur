@@ -3,7 +3,7 @@
 _name=gb-io
 _module=gb_io
 pkgname=python-${_name}
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A Python interface to gb-io, a fast GenBank parser and serializer written in Rust."
 url="https://github.com/althonos/gb-io.py"
