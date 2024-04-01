@@ -1,7 +1,7 @@
 pkgbase = ruby-pdf-reader
 	pkgdesc = Ruby library that implements a PDF parser conforming as much as possible to the PDF specification from Adobe
 	pkgver = 2.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yob/pdf-reader
 	arch = any
 	license = MIT
