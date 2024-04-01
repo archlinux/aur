@@ -2,7 +2,7 @@
 
 pkgname=pix
 pkgver=3.2.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Image viewer and browser based on gthumb. X-Apps Project."
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
@@ -26,6 +26,7 @@ makedepends=(
 optdepends=(
     'gstreamer: Video support'
     'gst-plugin-gtk: Video support'
+    'gst-libav: Video support'
     'exiv2: Embedded metadata support'
     'libjpeg-turbo: Jpeg writing support'
     'libtiff: Tiff writing support'
