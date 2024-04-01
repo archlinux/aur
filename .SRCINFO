@@ -1,15 +1,15 @@
 pkgbase = octave-matgeom
 	pkgdesc = Geometry toolbox for 2D/3D geometric computing
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://gnu-octave.github.io/packages/matgeom/
 	install = octave-matgeom.install
 	arch = any
 	groups = octave-forge
-	license = custom
+	license = BSD-2-Clause-FreeBSD
 	depends = octave>=4.2.0
-	noextract = matgeom-1.2.3.tar.gz
-	source = http://downloads.sourceforge.net/octave/matgeom-1.2.3.tar.gz
-	md5sums = 5d1750c01486183840a6894423556f4c
+	noextract = matgeom-1.2.4.tar.gz
+	source = http://downloads.sourceforge.net/octave/matgeom-1.2.4.tar.gz
+	sha256sums = 6b344f870315bf2742ca88c0feb5c3da8835b4f4cbd2f8a2d793af798405f920
 
 pkgname = octave-matgeom
