@@ -413,7 +413,8 @@ _package() {
 
 package_python-pytorch-cxx11abi() {
   pkgdesc="${_pkgdesc}"
-
+  conflicts=(python-pytorch)
+  provides=(python-pytorch=${pkgver})
   cd "${srcdir}/${_pkgname}"
   _package
 }

@@ -169,6 +169,8 @@ pkgbase = python-pytorch-cxx11abi
 
 pkgname = python-pytorch-cxx11abi
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (with CXX11 ABI)
+	provides = python-pytorch=2.2.2
+	conflicts = python-pytorch
 
 pkgname = python-pytorch-cxx11abi-opt
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (with CXX11 ABI) (with AVX2 CPU optimizations)
