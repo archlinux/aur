@@ -1,47 +1,50 @@
-# Maintainer: Leo "em0lar" Maroni <hello@em0lar.de>
-# Contributor: Jens Adam <jra@byte.cx>
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
-_perlmod=Travel-Status-DE-DeutscheBahn
-pkgname=perl-travel-status-de-deutschebahn
-pkgver=3.01
-pkgrel=1
-pkgdesc='Interface to the DeutscheBahn online departure monitor'
-url='http://finalrewind.org/projects/Travel-Status-DE-DeutscheBahn/'
-license=('PerlArtistic')
+pkgname='perl-travel-status-de-deutschebahn'
+pkgver='5.06'
+pkgrel='1'
+pkgdesc="Interface to the online arrival/departure"
 arch=('any')
-depends=(
-  'perl-class-accessor'
-  'perl-datetime'
-  'perl-datetime-format-strptime'
-  'perl-json'
-  'perl-lwp-protocol-https'
-  'perl-list-moreutils'
-  'perl-xml-libxml'
-)
-makedepends=(
-  'perl-module-build'
-  'perl-test-compile'
-  'perl-test-pod'
-)
+license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-validpgpkeys=('781BB7071C6BF648EAEB08A1100D5BFB5166E005')
-source=("http://finalrewind.org/projects/${_perlmod}/${_perlmod}-${pkgver}.tar.gz"{,.asc})
-md5sums=('ee3411f56432bea92b8a406be53bcbb1' 'd24f309994a3151a17c66844ab51e5ec')
+depends=('perl-class-accessor>=0.16' 'perl-datetime>=0' 'perl-datetime-format-strptime>=0' 'perl-json>=0' 'perl-lwp-protocol-https>=0' 'perl-list-moreutils>=0' 'perl-libwww>=0' 'perl>=5.14.0')
+makedepends=('perl-module-build>=0.4' 'perl-test-compile>=0' 'perl-test-pod>=0')
+checkdepends=('perl-file-slurp>=0')
+url='https://metacpan.org/release/Travel-Status-DE-DeutscheBahn'
+source=('http://search.cpan.org/CPAN/authors/id/D/DE/DERF/Travel-Status-DE-DeutscheBahn-5.06.tar.gz')
+md5sums=('7aee97fd05730d0071ce1df7e1940bbb')
+sha512sums=('0893f0dfeb8e09a9dcef04d849d6fcda7a24c68465b87b5269d7afc09856fbafa7187a10131b848969b339311292240c23e293c2781be164b9dde112155a7480')
+_distdir="Travel-Status-DE-DeutscheBahn-5.06"
 
 build() {
-  cd "${srcdir}"/${_perlmod}-${pkgver}
-  perl Build.PL installdirs=vendor destdir="${pkgdir}"
-  ./Build
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      MODULEBUILDRC=/dev/null
+
+    cd "$srcdir/$_distdir"
+    /usr/bin/perl Build.PL
+    /usr/bin/perl Build
+  )
 }
 
 check() {
-  cd "${srcdir}"/${_perlmod}-${pkgver}
-  ./Build test
+  cd "$srcdir/$_distdir"
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+    /usr/bin/perl Build test
+  )
 }
 
 package() {
-  cd "${srcdir}"/${_perlmod}-${pkgver}
-  ./Build install
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  cd "$srcdir/$_distdir"
+  /usr/bin/perl Build install
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
+
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
+# vim:set ts=2 sw=2 et:
