@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gopeed-bin
 _pkgname=Gopeed
-pkgver=1.5.5
-pkgrel=3
+pkgver=1.5.6
+pkgrel=1
 pkgdesc="High speed downloader that supports all platforms."
 arch=('x86_64')
 url="https://gopeed.com/"
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('309baac5199c910598e710579f9fde6d24b67071c3046810e715c346ad6ad67f'
+sha256sums=('03df317da441cb611b5718a6a427347191a253b914b1cc9502fe152c9bf38cfe'
             '604adf794f3bfc9f3e3cec68edb76fe8ee03157ea0fab4a0fdafb7c4b7501253')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
