@@ -1,3 +1,5 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 3d8540f7..8bac4513 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
 @@ -1,5 +1,5 @@
@@ -7,19 +9,11 @@
  build-backend = "setuptools.build_meta"
  
  [tool.pytype]
---- a/setup.cfg
-+++ b/setup.cfg
-@@ -36,7 +36,6 @@ install_requires =
-     jinja2
-     libcst
-     networkx
--    ninja
-     pydot
-     tabulate
-     toml
+diff --git a/pytype/tools/analyze_project/pytype_runner.py b/pytype/tools/analyze_project/pytype_runner.py
+index 2c7dba42..6e2fcd7c 100644
 --- a/pytype/tools/analyze_project/pytype_runner.py
 +++ b/pytype/tools/analyze_project/pytype_runner.py
-@@ -379,8 +379,7 @@ class PytypeRunner:
+@@ -402,8 +402,7 @@ class PytypeRunner:
      # relpath() prevents possibly sensitive directory info from appearing in
      # ninja's "Entering directory" message.
      c = path_utils.relpath(path_utils.dirname(self.ninja_file))
@@ -29,3 +23,15 @@
      if logging.getLogger().isEnabledFor(logging.INFO):
        command.append('-v')
      ret = subprocess.call(command)
+diff --git a/setup.cfg b/setup.cfg
+index e9cfac0f..523dcc40 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -38,7 +38,6 @@ install_requires =
+     libcst
+     msgspec
+     networkx
+-    ninja
+     pycnite
+     pydot
+     tabulate
