@@ -2,7 +2,7 @@
 
 pkgname=nzsl
 pkgver=20240227
-pkgrel=2
+pkgrel=3
 pkgdesc="A shader language inspired by Rust and C++ which compiles to GLSL or SPIRV (without any additional dependency)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/NazaraEngine/ShaderLang"
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 prepare() {
    cd "ShaderLang"
-   xmake f -m release --tests=y --examples=n --yes
+   xmake f -k shared -m release --tests=y --examples=n --yes
 }
 
 build() {
