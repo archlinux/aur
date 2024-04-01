@@ -173,9 +173,10 @@ prepare() {
   # see discussion: https://github.com/pop-os/cosmic-epoch/issues/87
   sed -i 's|libexecdir = $(prefix)/libexec|libexecdir = $(libdir)|g' \
     xdg-desktop-portal-cosmic/Makefile
-  sed -i 's|libexec|lib|g' cosmic-osd/Makefile cosmic-session/{Justfile,src/main.rs} \
+  sed -i 's|libexec|lib|g' cosmic-session/{Justfile,src/main.rs} \
     cosmic-settings-daemon/{Makefile,src/main.rs}
-  sed -i 's|libexec|lib/polkit-1|g' cosmic-osd/src/subscriptions/polkit_agent_helper.rs
+  sed -i 's|libexec|lib/polkit-1|g' cosmic-osd/Makefile \
+    cosmic-osd/src/subscriptions/polkit_agent_helper.rs
 
   # Revert justfile changes
   git revert -n 5f2fd3324b997142fa10c8170fd6b53feb5f2673
