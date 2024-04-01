@@ -1,0 +1,20 @@
+pkgbase = xz-5.4
+	pkgdesc = "Unaffected" version of xz
+	pkgver = 5.4.6
+	pkgrel = 1
+	url = https://sourceforge.net/projects/lzmautils/
+	arch = x86_64
+	license = GPLv2-or-later
+	checkdepends = cmake
+	makedepends = cmake
+	makedepends = make
+	makedepends = tar
+	makedepends = gzip
+	depends = sh
+	provides = xz
+	provides = liblzma.so=5-64
+	conflicts = xz
+	source = xz-5.4.6.tar.gz::https://sourceforge.net/projects/lzmautils/files/xz-5.4.6.tar.gz/download
+	sha256sums = aeba3e03bf8140ddedf62a0a367158340520f6b384f75ca6045ccc6c0d43fd5c
+
+pkgname = xz-5.4
