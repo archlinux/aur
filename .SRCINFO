@@ -1,16 +1,18 @@
 pkgbase = ruby-ttfunk
-	pkgdesc = TrueType Font Metrics Parser
-	pkgver = 1.7.0
+	pkgdesc = Font Metrics Parser for Prawn
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/prawnpdf/ttfunk
 	arch = any
+	license = GPL-2.0-only
+	license = GPL-3.0-only
 	license = Ruby
-	license = GPL
+	checkdepends = ruby-rspec
+	makedepends = rubygems
 	depends = ruby
-	noextract = ttfunk-1.7.0.gem
+	depends = ruby-bigdecimal
 	options = !emptydirs
-	source = https://rubygems.org/downloads/ttfunk-1.7.0.gem
-	sha256sums = 2370ba484b1891c70bdcafd3448cfd82a32dd794802d81d720a64c15d3ef2a96
+	source = ruby-ttfunk-1.8.0.tar.gz::https://github.com/prawnpdf/ttfunk/archive/1.8.0.tar.gz
+	sha256sums = 7a9ee2f791a2f3214a3bd73cb58843105c7b7d3748a1e1424834e6f438ef3fbc
 
 pkgname = ruby-ttfunk
-
