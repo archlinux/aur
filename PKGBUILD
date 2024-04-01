@@ -5,7 +5,7 @@
 _pkgname=fcitx5-qt
 pkgbase=$_pkgname-git
 pkgname=(fcitx5-qt5-git fcitx5-qt4-git fcitx5-qt6-git)
-pkgver=5.1.5.r0.gcc77e32
+pkgver=5.1.5.r4.g24c7dfc
 pkgrel=2
 pkgdesc="Fcitx Qt Library"
 arch=('x86_64')
@@ -70,6 +70,7 @@ package_fcitx5-qt5-git(){
 
   cd /tmp/$_pkgname
   _mv_pkg usr/bin/fcitx5-qt5-immodule-probing
+  _mv_pkg usr/share/applications/org.fcitx.fcitx5-qt5-gui-wrapper.desktop
   _mv_pkg usr/lib/qt
   _mv_pkg usr/lib/libFcitx5Qt5*
   _mv_pkg usr/lib/fcitx5-qt5*
@@ -85,7 +86,6 @@ package_fcitx5-qt4-git(){
   pkgdesc="Fcitx Qt Library, for Qt4"
 
   cd /tmp/$_pkgname
-  _mv_pkg usr/share/applications/org.fcitx.fcitx5-qt5-gui-wrapper.desktop
   _mv_pkg usr/lib/qt4
   _mv_pkg usr/lib/libFcitx5Qt4*
   _mv_pkg usr/lib/cmake/Fcitx5Qt4*
