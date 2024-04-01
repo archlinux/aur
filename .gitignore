@@ -1,0 +1,10 @@
+*
+!.gitignore
+!PKGBUILD
+!redict.conf-sane-defaults.patch
+!redict-sentinel.service
+!redict.service
+!redict.sysusers
+!redict.tmpfiles
+!redict-use-system-jemalloc.patch
+!.SRCINFO
