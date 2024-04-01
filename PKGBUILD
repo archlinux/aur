@@ -2,7 +2,7 @@
 # Contributor: Benjamin Hodgetts <ben@xnode.org>
 
 pkgname=vice-svn
-pkgver=r45013
+pkgver=r45058
 pkgrel=1
 pkgdesc="The Versatile Commodore Emulator 8-bits (PET/C64/C128/Plus4/Vic20) - Development version"
 arch=('i686' 'x86_64')
@@ -56,6 +56,7 @@ sha256sums=('SKIP'
             'ce2710836a0622295d033c6b21d8d1b896cc3138d774234336f07bfc292ee317'
             'c443e2f8617b6404cd5a26678a5c018c8b12a0c1024275aebfe2e2addab17368'
             'bee44a1fe16fb92550c5960b9c568982624a6c3d18bdb44f82efd34ea0a0c66c')
+options=(!debug)
 
 pkgver() {
 	echo r$(svnversion "${SRCDEST}"/${pkgname}/)
