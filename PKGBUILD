@@ -16,9 +16,11 @@ optdepends=('xsettingsd: Apply settings to GTK applications on the fly')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/baduhai/Koi/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
-build() {
+prepare() {
     mkdir -p "${srcdir}/${_pkgname}-${pkgver}/src/build/"
+}
 
+build() {
     cmake -S "${srcdir}/${_pkgname}-${pkgver}/src/" \
           -B "${srcdir}/${_pkgname}-${pkgver}/src/build/" \
           -DCMAKE_INSTALL_PREFIX=/usr/
