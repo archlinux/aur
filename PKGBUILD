@@ -2,7 +2,7 @@
 pkgname=airgorah-bin
 _appname="com.martin-olivier.${pkgname%-bin}"
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A WiFi auditing software that can perform deauth attacks and passwords cracking"
 arch=(
     #'aarch64'
@@ -18,6 +18,10 @@ depends=(
     'pango'
     'gdk-pixbuf2'
     'gtk4'
+    'aircrack-ng'
+)
+optdepends=(
+    'crunch'
 )
 #source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pkg.tar.zst::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_aarch64.pkg.tar.zst")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pkg.tar.zst::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_x86_64.pkg.tar.zst")
