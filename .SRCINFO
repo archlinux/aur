@@ -1,6 +1,6 @@
 pkgbase = obs-studio-git
 	pkgdesc = Free and open source software for video recording and live streaming.
-	pkgver = 30.1.1.r18.gc4ef7c3
+	pkgver = 30.1.1.r33.g3a10355
 	pkgrel = 1
 	url = https://github.com/obsproject/obs-studio
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = obs-studio-git
 	makedepends = asio
 	makedepends = cef-minimal-obs-bin
 	makedepends = cmake
+	makedepends = ffnvcodec-headers
 	makedepends = git
 	makedepends = libfdk-aac
 	makedepends = libxcomposite
@@ -50,7 +51,7 @@ pkgbase = obs-studio-git
 	optdepends = pipewire: Pipewire capture
 	optdepends = pipewire-media-session: Pipewire capture
 	optdepends = xdg-desktop-portal: Pipewire capture
-	provides = obs-studio=30.1.1.r18.gc4ef7c3
+	provides = obs-studio=30.1.1.r33.g3a10355
 	conflicts = obs-studio
 	source = obs-studio-git::git+https://github.com/obsproject/obs-studio.git#branch=master
 	source = git+https://github.com/Mixer/ftl-sdk.git
