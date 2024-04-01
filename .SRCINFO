@@ -1,7 +1,7 @@
 pkgbase = python-tensorflow-probability-git
 	pkgdesc = Probabilistic reasoning and statistical analysis in TensorFlow
-	pkgver = r10119.90fc5c917
-	pkgrel = 1
+	pkgver = r12127.51f1ed39e
+	pkgrel = 2
 	url = https://github.com/tensorflow/probability
 	arch = any
 	license = APACHE
@@ -17,4 +17,3 @@ pkgbase = python-tensorflow-probability-git
 	sha256sums = SKIP
 
 pkgname = python-tensorflow-probability-git
-

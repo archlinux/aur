@@ -2,8 +2,8 @@
 # Contributor: Oystein Sture <oysstu (at) gmail (dot) com>
 
 pkgname=python-tensorflow-probability-git
-pkgver=r10119.90fc5c917
-pkgrel=1
+pkgver=r12127.51f1ed39e
+pkgrel=2
 pkgdesc="Probabilistic reasoning and statistical analysis in TensorFlow"
 url="https://github.com/tensorflow/probability"
 arch=('any')
@@ -24,11 +24,11 @@ build() {
 
   cd "${srcdir}"/probability
   bazel build --copt=-O3 --copt=-march=native :pip_pkg
-  cd ./bazel-bin/pip_pkg.runfiles/tensorflow_probability
+  cd ./bazel-bin/pip_pkg.runfiles/_main
   python setup.py build --release
 }
 
 package() {
-  cd "${srcdir}"/probability/bazel-bin/pip_pkg.runfiles/tensorflow_probability
+  cd "${srcdir}"/probability/bazel-bin/pip_pkg.runfiles/_main
   python setup.py install --release --root=${pkgdir} --optimize=1 --skip-build
 }
