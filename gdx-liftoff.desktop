@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.12.1.7
+Name=Libgdx Project Setup
+GenericName=Libgdx Project Setup
+Exec=gdx-liftoff %U
+Terminal=false
+Icon=gdx-liftoff
+Type=Application
+Categories=Development;
