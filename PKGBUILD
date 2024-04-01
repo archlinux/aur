@@ -5,8 +5,8 @@
 _pkgname=pytorch
 pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
-pkgver=2.2.1
-_pkgver=2.2.1
+pkgver=2.2.2
+_pkgver=2.2.2
 pkgrel=1
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
