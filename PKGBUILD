@@ -1,8 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=buttercup-desktop-git
 _pkgname="Buttercup Password Manager"
-pkgver=2.26.5.r5.gac894833
-_electronversion=22
+pkgver=2.27.0.r0.g86666c44
 _nodeversion=18
 pkgrel=1
 pkgdesc="Cross-Platform Passwords & Secrets Vault"
@@ -12,9 +11,7 @@ _ghurl="https://github.com/buttercup/buttercup-desktop"
 license=('GPL-3.0-only')
 provides=("${pkgname%-git}=${pkgver%.r*}")
 conflicts=("${pkgname%-git}")
-depends=(
-    "electron${_electronversion}"
-)
+
 makedepends=(
     'npm'
     'git'
@@ -30,6 +27,10 @@ pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
+_getelectronversion() {
+    cd "${srcdir}/${pkgname%-git}.git"
+    grep '"electron": ' -i package.json | awk '{print $2}' | sed 's|"||g;s|\^||g;s|\.| |g' | awk '{print $1}'
+}
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -37,6 +38,10 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 build() {
+    _electronversion=$(_getelectronversion)
+    depends=(
+        "electron${_electronversion}"
+    )
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app.asar|g" \
@@ -60,10 +65,12 @@ build() {
     else
         echo "Your network is OK."
     fi
+    rm -rf node_modules
+    npm cache clean --force
     sed 's|--linux",|--dir",|g' -i package.json
     npm install
     chmod 755 node_modules/.bin/run-s
-    npm run build
+    npm run build --openssl_fips=''
     npm run package:linux
 }
 package() {
