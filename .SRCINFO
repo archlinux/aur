@@ -1,5 +1,5 @@
 pkgbase = xz-5.4
-	pkgdesc = "Unaffected" version of xz
+	pkgdesc = xz 5.4.x as a workaround for the recently known vulnerability
 	pkgver = 5.4.6
 	pkgrel = 1
 	url = https://sourceforge.net/projects/lzmautils/
