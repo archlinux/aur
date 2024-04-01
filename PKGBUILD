@@ -5,16 +5,25 @@
 pkgname='headsetcontrol'
 _pkgname='HeadsetControl'
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Sidetone and Battery status for Logitech G930, G533, G633, G933 SteelSeries Arctis 7/PRO 2019 and Corsair VOID (Pro) in Linux and MacOSX '
 arch=('x86_64')
 url='https://github.com/Sapd/HeadsetControl'
 provides=("${pkgname}")
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('hidapi')
 makedepends=('cmake')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('63bfd147c82277bfcf2314ad2b01ca4e4bf06e1d5516e01ee39232661f4d5144')
+source=(
+  "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/${pkgver}/${pkgver}.tar.gz.asc"
+)
+sha256sums=(
+  '63bfd147c82277bfcf2314ad2b01ca4e4bf06e1d5516e01ee39232661f4d5144'
+  'SKIP'
+)
+validpgpkeys=(
+  '77BEB7E232CF1E5154777D4DD5866C58940197BF' # Denis Arnst <git@sapd.eu>
+)
 
 build() {
   export CFLAGS+=" ${CPPFLAGS} -Wno-error=unused-result"
@@ -27,7 +36,7 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
-#   install -Dvm644 "${_pkgname}-${pkgver}/README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dvm644 "${_pkgname}-${pkgver}/README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
