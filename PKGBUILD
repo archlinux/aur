@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=web-os-dev-manager-bin
-pkgver=1.12.5
-pkgrel=2
+pkgver=1.13.0
+pkgrel=1
 pkgdesc="Device/DevMode Manager for webOS TV"
 arch=(
     'aarch64'
@@ -18,8 +18,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums_aarch64=('30bd74a6c396ed9f0e326c4e6cfb8a311d4f6e484469e2e076278b1ad4d3cb1c')
-sha256sums_x86_64=('1f704d5790ce42ec451fe5780a6f3ed453d612e7748ea77b16c9694696a98ad3')
+sha256sums_aarch64=('e0663dc5da1452ea3e79234b6734715bdf8554e78e930f2611474495d8eaef81')
+sha256sums_x86_64=('6b7336616e6dd0e00641f80ea3dcfb505c12b8a066275aff3ed3858222bb4be5')
 build() {
     bsdtar -xf "${srcdir}/data."*
 }
