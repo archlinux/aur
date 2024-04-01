@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=buttercup
 pkgname="${_pkgname}-desktop-bin"
-pkgver=2.26.4
+pkgver=2.26.5
 _electronversion=22
 pkgrel=1
 pkgdesc="Cross-Platform Passwords & Secrets Vault"
@@ -26,9 +26,9 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.AppImage::${_ghurl}/releases/do
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname//b/B}-linux-x86_64.AppImage")
 source=("${pkgname%-bin}.sh")
 sha256sums=('dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('7672186849412bbd042d48608fcc79febdf8d76557521599e10d24e324b1091d')
-sha256sums_armv7h=('fc8605e642dc9862d15dc5555c140615c1db15544b1dfdb4c65f27bb0b3de59f')
-sha256sums_x86_64=('2ad3b8541ad559d80c2714ecac2959df54fd7a38052f47a53c40f88fa7c667bc')
+sha256sums_aarch64=('97fd17d80088e1028c6dd68ae1f5f22f84db757958329b4aaf9e4933f7f38061')
+sha256sums_armv7h=('1ca1d27576747fcb29c217d5f1d4153b2d3b5d571f7b2d1ab61f41fa1cc14d8e')
+sha256sums_x86_64=('78de2a913bed00a2374ebca0b3bac8850deb0970a272eb776ab09a3e0e3ddcb3')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
