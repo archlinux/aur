@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Maintainer: Claudio Nave <claudio nave nine seven at gmail dot com>
+# Maintainer: Evariste Galois <evariste galois one one at proton dot me>
 # Contributor: PumpkinCheshire <me at pumpkincheshire dot com>
 # Contributor:  <tigersoldi at gmail dot com>
 
 pkgname=google-java-format
-pkgver=1.21.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Reformats Java source code to comply with Google Java Style'
 url='https://github.com/google/google-java-format'
@@ -17,7 +17,7 @@ source=(
   "$pkgname"
   "https://raw.githubusercontent.com/google/$pkgname/master/LICENSE"
 )
-sha256sums=('1e69f8b63c39a5124a8efb7bad213eb9ac03944339eb9580ae210b0c60565d9b'
+sha256sums=('16b2a1ee938686c8b1d88abf19eb83dfd0d623cee9de6fc6d09980214f816d3f'
             '5869a6ec4dd3c681b06e9a0fa1cdef30d0ee722d48115ff4a5e1efb01947e100'
             '2c7e23c8000fe553b6f380b5e365dd72198439174f1b6821d5e3b190b54af0dc')
 
