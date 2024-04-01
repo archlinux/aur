@@ -7,8 +7,7 @@ arch=('x86_64' 'aarch64')
 license=('GPL')
 depends=('jazz2-native-bin' 'wget' 'unzip' 'yad')
 makedepends=('unzip')
-#source=("https://gitlab.com/jazz2-bin/jazz2/-/archive/$pkgver/jazz2-$pkgver.tar.bz2")
-source=("./jazz2-$pkgver.tar.bz2")
+source=("https://gitlab.com/jazz2-bin/jazz2/-/archive/$pkgver/jazz2-$pkgver.tar.bz2")
 sha256sums=("SKIP")
 
 package() {

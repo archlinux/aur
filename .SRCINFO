@@ -10,7 +10,7 @@ pkgbase = jazzjackrabbit2
 	depends = wget
 	depends = unzip
 	depends = yad
-	source = ./jazz2-1.0.0.tar.bz2
+	source = https://gitlab.com/jazz2-bin/jazz2/-/archive/1.0.0/jazz2-1.0.0.tar.bz2
 	sha256sums = SKIP
 
 pkgname = jazzjackrabbit2
