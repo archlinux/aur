@@ -1,6 +1,7 @@
 pkgbase = kwin-scripts-kzones
+	pkgdesc = KDE KWin Script for snapping windows into zones
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gerritdevriese/kzones
 	arch = any
 	license = GPL-3.0-only
