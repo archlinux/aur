@@ -1,6 +1,6 @@
 pkgname=jazzjackrabbit2
 _pkgname=JazzJackrabbit2
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Jazz Jackrabbit 2 game powered by the jazz2."
 arch=('x86_64' 'aarch64')
@@ -33,7 +33,9 @@ else
        unzip Jazz2-source.zip -d "$pkgdir/usr/share/games/$_pkgname"
 fi    
     cp "$srcdir/jazz2-$pkgver/$pkgname" "$pkgdir/usr/bin"
-    cp -r jazzjackrabbit2 jazz2.png "$pkgdir/usr/share/games/$_pkgname/"
+    
+    cp -r "$srcdir/jazz2-$pkgver/$pkgname" "$pkgdir/usr/share/games/$_pkgname/"
+    cp -r "$srcdir/jazz2-$pkgver/jazz2.png" "$pkgdir/usr/share/games/$_pkgname/"
     cp "$srcdir/jazz2-$pkgver/jazz2.png" "$pkgdir/usr/share/pixmaps"
 
     # Desktop Entry
