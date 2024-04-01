@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Siavash Askari Nasr <ciavash@protonmail.com>
 pkgname=restfox-bin
-pkgver=0.7.1
+pkgver=0.8.0
 _electronversion=27
 pkgrel=1
 pkgdesc="Offline-first web HTTP client"
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/flawiddsouza/Restfox/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8c90ded2f459e4798bbe5929edd70bc8955b290cb7ea468c234741f6af0a1b00'
+sha256sums=('bdd36daa7b01eb373bcf61fb869fb54f8391ac5ef22e200cc4b9e782191d3d37'
             '82601c8ed24f59528b28c23a2fb309f9743dffc860ba06ce8d253e1ed8959a16'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 
