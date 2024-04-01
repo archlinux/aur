@@ -4,7 +4,7 @@
 pkgname=ruby-prawn-table
 _name=${pkgname#ruby-}
 pkgver=0.2.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Provides support for tables in Prawn"
 arch=(any)
 url="https://github.com/prawnpdf/prawn-table"
@@ -15,6 +15,7 @@ license=(
 )
 depends=(
   ruby
+  ruby-matrix
   ruby-prawn
 )
 makedepends=(
@@ -29,7 +30,7 @@ checkdepends=(
 )
 options=(!emptydirs)
 source=(
-  "$url/archive/refs/tags/$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
   "remove-failing-tests.patch"
 )
 sha256sums=(
@@ -43,21 +44,21 @@ prepare() {
   cd "$_archive"
 
   # Update gemspec/Gemfile to allow newer version of the dependencies
-  sed --in-place --regexp-extended 's|~>|>=|g' "$_name.gemspec"
+  sed -i -E 's|~>|>=|g' "$_name.gemspec"
 
   # sed --in-place '/rspec/d' "$_name.gemspec"
-  sed --in-place '/prawn-manual_builder/d' "$_name.gemspec"
-  sed --in-place 's/2.14.1/>= 2.15.1/' "$_name.gemspec"
+  sed -i '/prawn-manual_builder/d' "$_name.gemspec"
+  sed -i 's/2.14.1/>= 2.15.1/' "$_name.gemspec"
 
   # Remove 5 failint tests - 4 of them due to depending on image not packaged
   # with Prawn, 1 due incompatible with recent rspec.
-  patch --strip=1 --input="$srcdir/remove-failing-tests.patch"
+  patch --forward --strip=1 --input="$srcdir/remove-failing-tests.patch"
 }
 
 build() {
   cd "$_archive"
 
-  _gemdir="$(gem env gemdir)"
+  local gemdir="$(gem env gemdir)"
 
   gem build "$_name.gemspec"
 
@@ -66,17 +67,17 @@ build() {
     --verbose \
     --ignore-dependencies \
     --no-user-install \
-    --install-dir "tmp_install/$_gemdir" \
+    --install-dir "tmp_install/$gemdir" \
     --bindir "tmp_install/usr/bin" \
     "$_name-$pkgver.gem"
 
   # Remove unrepreducible files
   rm --force --recursive --verbose \
-    "tmp_install/$_gemdir/cache/" \
-    "tmp_install/$_gemdir/gems/$_name-$pkgver/vendor/" \
-    "tmp_install/$_gemdir/doc/$_name-$pkgver/ri/ext/"
+    "tmp_install/$gemdir/cache/" \
+    "tmp_install/$gemdir/gems/$_name-$pkgver/vendor/" \
+    "tmp_install/$gemdir/doc/$_name-$pkgver/ri/ext/"
 
-  find "tmp_install/$_gemdir/gems/" \
+  find "tmp_install/$gemdir/gems/" \
     -type f \
     \( \
     -iname "*.o" -o \
@@ -88,7 +89,7 @@ build() {
     \) \
     -delete
 
-  find "tmp_install/$_gemdir/extensions/" \
+  find "tmp_install/$gemdir/extensions/" \
     -type f \
     \( \
     -iname "mkmf.log" -o \
@@ -100,16 +101,15 @@ build() {
 check() {
   cd "$_archive"
 
-  _gemdir="$(gem env gemdir)"
-  GEM_HOME="tmp_install/$_gemdir" rspec
+  GEM_HOME="tmp_install/$(gem env gemdir)" rspec
 }
 
 package() {
   cd "$_archive"
 
-  cp --archive tmp_install/* "$pkgdir"
+  cp -a -t "$pkgdir" tmp_install/*
 
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     COPYING LICENSE
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
 }
