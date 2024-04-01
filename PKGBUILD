@@ -2,7 +2,7 @@
 # Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=fwupd-git
-pkgver=1.9.10.r450.g465c59c33
+pkgver=1.9.10.r640.g96cc2c6bc
 pkgrel=1
 pkgdesc="Simple daemon to allow session software to update firmware"
 arch=('x86_64')
@@ -54,6 +54,7 @@ makedepends=(
 )
 checkdepends=(
     'umockdev'
+    'python-dbusmock'
 )
 provides=('libfwupd.so' 'libfwupdplugin.so' "${pkgname%-git}")
 conflicts=("${pkgname%-git}")
