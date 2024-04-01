@@ -1,7 +1,7 @@
 # Maintainer: soloturn <soloturn@gmail.com>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-comp-git
-pkgver=r449.8f6ad62
+pkgver=r996.3da08ed
 pkgrel=1
 pkgdesc="Compositor for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
