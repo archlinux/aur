@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=ktailctl
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 arch=(x86_64 aarch64)
 url='https://github.com/f-koehler/KTailctl'
@@ -11,32 +11,27 @@ depends=(
   gcc-libs
   glibc
   hicolor-icon-theme
-  kconfig5
-  kcoreaddons5
-  kguiaddons5
-  ki18n5
-  kirigami-addons5
-  kirigami2
-  knotifications5
+  kconfig
+  kcoreaddons
+  kguiaddons
+  ki18n
+  kirigami
+  kirigami-addons
+  knotifications
   nlohmann-json
-  qt5-base
-  qt5-declarative
-  qt5-quickcontrols2
-  qt5-svg
+  qt6-base
+  qt6-declarative
+  qt6-svg
   tailscale
 )
-makedepends=(cmake extra-cmake-modules)
+makedepends=(cmake extra-cmake-modules go)
 
 # git tag is used by the cmake script to determine app version
-source=(git+$url.git#tag=v$pkgver 0001-use-system-packages.patch)
-sha256sums=('SKIP'
-            '4a81c8d6a4ffb52f592e942e45307facad6f0bb82da65998942a2578792b043c')
+source=(git+$url.git#tag=v$pkgver)
+sha256sums=('17e37f1acabfb2ec90032b8f94eca67a03e322a030a039537b0ce260d65a01de')
 
 prepare() {
-  cd KTailctl
-  patch -p1 <"$srcdir"/0001-use-system-packages.patch
-
-  cd tailwrap
+  cd KTailctl/tailwrap
   go mod vendor
 }
 
