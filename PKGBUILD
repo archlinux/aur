@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ulogviewer-bin
 _pkgname=ULogViewer
-pkgver=4.0.8.303
+pkgver=4.0.9.331
 pkgrel=1
 pkgdesc="Cross-Platform Universal Log Viewer."
 arch=(
@@ -35,9 +35,9 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('4b023d792eb6b929311286a207c6493e18875bd9d320db8f7a996dd5d5716fea'
-            'b5655aeda6af46f693ab0b78c69e313f2db718cc75fb707e0160637158239aa1')
-sha256sums_aarch64=('f3cf317f2c29a9dcf94299e1fbb969653ae8274ba54b02cad21672bc1c9c2c73')
-sha256sums_x86_64=('769c3e0e74d8ffe87cf00d6c72a288b6692db90fd889ab18bf6aa03065c29d9f')
+            '15c97baa7cb5db54234f94cc9ff8d2b3487f2f1a243bef95d7f4fa8a30c78469')
+sha256sums_aarch64=('4ec41cabd4411f7e63488fabd1cb9909605944a721f994f0487683b96392a96a')
+sha256sums_x86_64=('0a8b67a32345caf2e93c8a2b0311970bc906f004f4acae824d9c94f86341b3fa')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
@@ -46,6 +46,7 @@ build() {
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.zip" -C "${srcdir}/opt/${pkgname%-bin}"
     gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
     chmod 755 "${srcdir}/opt/${pkgname%-bin}/${_pkgname}"
+    rm -rf "${srcdir}/opt/${pkgname%-bin}/__MACOSX"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
