@@ -2,7 +2,7 @@
 
 pkgname=tetrio-desktop
 pkgver=9.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='TETR.IO desktop client'
 arch=('x86_64')
 license=('custom')
@@ -19,7 +19,7 @@ package() {
     tar -xf data.tar.xz -C "$pkgdir"
 
     mkdir -p "$pkgdir/usr/bin"
-    ln -sf "/opt/TETR.IO/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    ln -sf "/opt/TETR.IO/TETR.IO" "$pkgdir/usr/bin/$pkgname"
 
     install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
