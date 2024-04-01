@@ -39,6 +39,7 @@ prepare() {
     cd $_pkgname-$pkgver-full
     patch -Np1 --binary -i ../block-sponsored_messages.patch
     patch -p1 --binary < ../fix-lzma-link.patch
+    find "${srcdir}"/ -type f -exec dos2unix {} \;
 }
 
 build() {
