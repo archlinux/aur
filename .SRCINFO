@@ -1,12 +1,14 @@
 pkgbase = fvm-bin
 	pkgdesc = Flutter Version Management: A simple CLI to manage Flutter SDK versions
 	pkgver = 3.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/leoafarias/fvm
 	arch = x86_64
 	license = MIT
 	depends = bash
 	depends = glibc
+	depends = git
+	depends = unzip
 	provides = fvm
 	conflicts = fvm
 	source = https://github.com/leoafarias/fvm/releases/download/3.1.3/fvm-3.1.3-linux-x64.tar.gz
