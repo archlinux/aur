@@ -23,7 +23,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
-  chmod 750 "$pkgdir/usr/share/polkit-1/rules.d"
-  chown 0:102 "$pkgdir/usr/share/polkit-1/rules.d"
+  chmod 755 "$pkgdir/usr/share/polkit-1/rules.d"
+  chown 0:0 "$pkgdir/usr/share/polkit-1/rules.d"
 }
 
