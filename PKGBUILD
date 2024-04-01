@@ -3,7 +3,7 @@ pkgname=ytdl-desktop
 _pkgname="Youtube Downloader Desktop"
 pkgver=1.0.0
 _electronversion=25
-pkgrel=6
+pkgrel=7
 pkgdesc="Youtube Downloader Desktop"
 arch=('x86_64')
 url="https://github.com/kayy0812/ytdl-desktop"
@@ -31,7 +31,7 @@ build() {
         -e "s|@runname@|app.asar|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
-    gendesk -f -n -q --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
+    gendesk -f -n -q --pkgname="${pkgname}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1

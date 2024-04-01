@@ -1,7 +1,7 @@
 pkgbase = ytdl-desktop
 	pkgdesc = Youtube Downloader Desktop
 	pkgver = 1.0.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/kayy0812/ytdl-desktop
 	arch = x86_64
 	license = MIT
