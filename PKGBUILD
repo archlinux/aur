@@ -28,7 +28,10 @@ build() {
     mkdir -p build
     cd build
     # shellcheck disable=SC2086
-    gnatmake $CFLAGS -gnat2012 ../eepers.adb -largs "$LDFLAGS" -lraylib -lm -pthread
+    FLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions \
+        -Wp,-D_FORTIFY_SOURCE=2 \
+        -fstack-clash-protection -fcf-protection"
+    gnatmake $FLAGS -gnat2012 ../eepers.adb -largs "$LDFLAGS" -lraylib -lm -pthread
 }
 
 package() {
