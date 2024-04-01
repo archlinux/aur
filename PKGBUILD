@@ -3,7 +3,7 @@
 
 pkgname=vice-sdl2-svn
 _pkgname=vice-svn
-pkgver=r45013
+pkgver=r45058
 pkgrel=1
 pkgdesc="The Versatile Commodore Emulator 8-bits (PET/C64/C128/Plus4/Vic20) - SDL2 development version"
 arch=('i686' 'x86_64')
@@ -16,6 +16,7 @@ replaces=('vice')
 conflicts=('vice' 'vice-svn')
 source=("${_pkgname}::svn://svn.code.sf.net/p/vice-emu/code/trunk")
 sha256sums=('SKIP')
+options=(!debug)
 
 pkgver() {
     echo r$(svnversion "${SRCDEST}"/${_pkgname}/)
