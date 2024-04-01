@@ -1,11 +1,11 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 
-_commit=34cc425b40bb6299868157fe98c945c30bbc3b71  # tags/2.57.1
+_commit=eb713262e3458b77cfe00d286d7fa0b7968dbb8f  # tags/2.58.0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-librsvg
-pkgver=2.57.1
+pkgver=2.58.0
 pkgrel=1
 pkgdesc="SVG rendering library (mingw-w64)"
 arch=('any')
@@ -65,6 +65,10 @@ build() {
     sed -i "s/^deplibs_check_method=.*/deplibs_check_method=\"pass_all\"/g" libtool
     # add missing crt libs (bcrypt, ws2_32, userenv and ntdll) to LIBRSVG_LIBS
     sed -i "s/^LIBRSVG_LIBS = .*/& -lbcrypt -lws2_32 -luserenv  -lntdll/g" Makefile
+    # fix missing CARGO_TARGET_ARGS
+    sed -i "s/^#CARGO_TARGET_ARGS = /CARGO_TARGET_ARGS = /g" Makefile
+    # fix cross RUST_TARGET_SUBDIR
+    sed -i 's|^RUST_TARGET_SUBDIR = |RUST_TARGET_SUBDIR = $(RUST_TARGET)/|g' Makefile
 
     make
     popd
