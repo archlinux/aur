@@ -1,12 +1,12 @@
 pkgbase = fcitx5-skin-adwaita-dark
 	pkgdesc = An Fcitx5 dark theme mimics GNOME Adwaita-dark
-	pkgver = 0.0.0.20200806
+	pkgver = r9.1d45848
 	pkgrel = 1
 	url = https://github.com/escape0707/fcitx5-adwaita-dark
 	arch = any
 	license = AGPL3
-	source = https://github.com/escape0707/fcitx5-adwaita-dark/archive/2938a7cf417ec149aa26fc35949911ae297b0799/fcitx5-adwaita-dark-2938a7cf417ec149aa26fc35949911ae297b0799.tar.gz
-	sha512sums = 452463eab11e481ad81ef100c43284dd00d2bff1d75978afdcfba42ca75e54d34ae02d0da9aa8018d981c76241431b860c35d07cb3ceeb25170a5cc6939b7faf
+	makedepends = git
+	source = fcitx5-skin-adwaita-dark::git+https://github.com/escape0707/fcitx5-adwaita-dark#commit=1d45848312368595f3eeb9c246f203ca7032cbdd
+	sha512sums = SKIP
 
 pkgname = fcitx5-skin-adwaita-dark
-
