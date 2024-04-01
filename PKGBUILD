@@ -30,7 +30,7 @@ else
   pkgname=(gnome-shell-performance gnome-shell-performance-docs)
 fi
 pkgver=46.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -75,8 +75,6 @@ if [ -n "$_enable_check" ]; then
     xorg-server-xvfb
   )
 fi
-provides=(gnome-shell gnome-shell=$pkgver gnome-shell=$epoch:$pkgver)
-conflicts=(gnome-shell)
 _commit=0463511457612ca87f7426b3b01356d1d85bee9b  # tags/46.0^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
@@ -206,6 +204,8 @@ package_gnome-shell-performance() {
     'python-simplejson: gnome-shell-test-tool performance tester'
     'switcheroo-control: Multi-GPU support'
   )
+  provides=(gnome-shell gnome-shell=$pkgver gnome-shell=$epoch:$pkgver)
+  conflicts=(gnome-shell)
   groups=(gnome)
 
   meson install -C build --destdir "$pkgdir"
