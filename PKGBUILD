@@ -1,7 +1,7 @@
 # Mantainer: Franco Tortoriello
 
 pkgname=dosbox-x-sdl2-git
-pkgver=2024.03.01.r58.g3dd83cfb9
+pkgver=2024.03.01.r167.gd9007bdc9
 pkgrel=1
 epoch=3
 pkgdesc="x86 emulator with builtin DOS, with patches with more features - sdl2 git version"
@@ -14,6 +14,7 @@ conflicts=(dosbox-x-sdl2 dosbox-x-git dosbox-x)
 install='dosbox-x.install'
 source=(dosbox-x::git+https://github.com/joncampbell123/dosbox-x.git)
 sha256sums=('SKIP')
+options=(!debug)
             
 pkgver() {
   cd "$srcdir/dosbox-x"
