@@ -1,19 +1,19 @@
 # Maintainer: Snowstorm64
 
 pkgname=ares-emu
-pkgver=136
+pkgver=137
 pkgrel=1
 pkgdesc="Cross-platform, open source, multi-system emulator by Near and Ares team, focusing on accuracy and preservation."
 arch=(x86_64 i686)
 url="https://ares-emu.net/"
 license=("ISC")
-depends=(gtk3 libao libgl libpulse libudev.so=1-64 libxv openal sdl2 vulkan-driver vulkan-icd-loader)
+depends=(gtk3 libao libgl libpulse librashader libudev.so=1-64 libxv openal sdl2 vulkan-driver vulkan-icd-loader)
 makedepends=(mesa git clang lld)
 provides=(ares-emu)
 conflicts=(ares-emu)
 install=ares.install
 source=("https://github.com/ares-emulator/ares/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("6b7637d2c441dce8f321c57b6b52a9640b24e8a9762257c479dfd358f4e1d510ea5c5388e6946479d7f2c0afb5fac5ed1461bd52aae08b56b48d03618012e87b")
+sha512sums=("7fd2091c197f3fafac99d1f28e8fdb26d02f3f8a0e58e01f9db5fd911f424862eb87617168cd63ad01d113aa582b1e9ce09a38341f6bb6e17dfe019da438da4b")
 
 build() {
   # If you want to build with gcc, edit to use g++ instead of clang++
@@ -28,6 +28,6 @@ package() {
 
   # Also install shaders and databases in Ares' shared data directory
   install -dm 755 "${pkgdir}/usr/share/ares"
-  cp -dr --no-preserve=ownership "${srcdir}/ares-${pkgver}/ares/Shaders/" "${pkgdir}/usr/share/ares/Shaders/"
+  cp -dr --no-preserve=ownership "${srcdir}/ares/thirdparty/slang-shaders/" "${pkgdir}/usr/share/ares/Shaders/"
   cp -dr --no-preserve=ownership "${srcdir}/ares-${pkgver}/mia/Database/" "${pkgdir}/usr/share/ares/Database/"
 }
