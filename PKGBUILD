@@ -2,7 +2,7 @@
 pkgname=deepin-wine-mcloud
 _pkgname=com.139.yun.deepin
 _officalname=mCloud
-pkgver=7.7.1
+pkgver=8.0.1
 _deepinver=7.2.0deepin2
 _deepinurl=https://com-store-packages.uniontech.com
 pkgrel=3
@@ -22,15 +22,13 @@ makedepends=(
 install="${pkgname}.install"
 source=(
     "${_pkgname}_${_deepinver}_i386.deb::${_deepinurl}/appstore/pool/appstore/c/${_pkgname}/${_pkgname}_${_deepinver}_i386.deb"
-    "${_officalname}-${pkgver}.exe::https://img.zone139.com/m2012/controlupdate/v6/${_officalname}_Setup-001.exe"
-    "fake_simsun.ttc::https://images.xuthus.cc/images/fake_simsun.ttc"
+    "${_officalname}-${pkgver}.exe::https://yun.mcloud.139.com/${_officalname}Pc/v8010/${_officalname}_Setup-001.exe"
     "LICENSE.html::https://caiyun.feixin.10086.cn:7071/portal/templateView/initve.html?id=145&marketName=hcy_yhxy"
     "${pkgname}.sh"
 )
 sha256sums=('ecc41143f5c0a96f17236e2f7a4c1e79eb601d1129674d89ea360999a93c6dcb'
-            'cbe7b194f8b8ca9241aa5fadf168771a855523e177b5c85230d2e239097cbacf'
-            '3e2ed9203a5ce3b2f00b6c942d8fac6b24e7a6e7b1ebc863cee2e27d3ff487db'
-            '5997490663bddd20190aed804aadbc064c05cd6ac9c30ff2fdfaf217226141c6'
+            'ea2555db5087be3419ec898da58157b07305f25fa0499ef4f1fdfcb4c9bebbbb'
+            'e53db97fd17c2d3b799d5f97801a71f27ba8c45133645d4eb424a3a9067b681e'
             '4c549967da523dc6bbb551df00ca06f0000438c8f7f967318dda40b8390f2f20')
 build() {
     sed -e "s|@bottomname@|${_officalname}|g" \
@@ -49,7 +47,6 @@ build() {
         "${srcdir}/tmp/drive_c/users/@current_user@/Application Data/ThinkMail" \
         "${srcdir}/tmp/drive_c/users/@current_user@/Local Settings/Application Data/Programs" \
         "${srcdir}/tmp/drive_c/users/@current_user@/Start Menu/Programs"
-    cp "${srcdir}/fake_simsun.ttc" "${srcdir}/tmp/drive_c/windows/Fonts"
     mkdir -p "${srcdir}/tmp/drive_c/Program Files/${_officalname}"
     7z e -aoa "${_officalname}-${pkgver}.exe" -o"${srcdir}/extracted_exe"
     bsdtar -xf "${srcdir}/extracted_exe/app.7z" -C "${srcdir}/tmp/drive_c/Program Files/${_officalname}"
