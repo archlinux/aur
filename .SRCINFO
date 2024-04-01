@@ -1,11 +1,11 @@
 pkgbase = rf24
 	pkgdesc = Linux support for RF24 radio modules
-	pkgver = 1.4.7
+	pkgver = 1.4.8
 	pkgrel = 0
 	url = https://github.com/nRF24/RF24
 	arch = any
 	license = GPL2
-	source = https://github.com/nRF24/RF24/archive/refs/tags/v1.4.7.tar.gz
-	sha256sums = 665284886e15c0bcc3a09c83537f7aade9633d7e7cee8c86f4420fad35937aef
+	source = https://github.com/nRF24/RF24/archive/refs/tags/v1.4.8.tar.gz
+	sha256sums = dca5f3e28d6206505ba7839b8ef3576e25f0f227904239e3bdc3ffa2fa042573
 
 pkgname = rf24
