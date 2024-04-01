@@ -1,7 +1,7 @@
 # Maintainer: importcjj <importcjj at gmail dot com>
 
 pkgname=omni-terminal
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="The omni terminal, produced by wisburg."
 arch=('x86_64')
