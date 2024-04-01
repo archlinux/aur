@@ -4,7 +4,7 @@
 pkgname=ruby-prawn
 _pkgname=${pkgname#ruby-}
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and nimble PDF generator for Ruby"
 arch=(any)
 url="https://github.com/prawnpdf/prawn"
@@ -15,6 +15,7 @@ license=(
 )
 depends=(
   ruby
+  ruby-matrix
   ruby-pdf-core
   ruby-ttfunk
 )
@@ -34,7 +35,7 @@ prepare() {
   cd "$_archive"
 
   # Update gemspec/Gemfile to allow newer version of the dependencies
-  sed --in-place --regexp-extended 's|~>|>=|g' "$_pkgname.gemspec"
+  sed -i -E 's|~>|>=|g' "$_pkgname.gemspec"
 }
 
 build() {
@@ -98,7 +99,7 @@ package() {
 
   cp -a tmp_install/* "$pkgdir"
 
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     COPYING LICENSE
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
 }

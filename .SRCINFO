@@ -1,7 +1,7 @@
 pkgbase = ruby-prawn
 	pkgdesc = A fast and nimble PDF generator for Ruby
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/prawnpdf/prawn
 	arch = any
 	license = GPL-2.0-only
@@ -12,6 +12,7 @@ pkgbase = ruby-prawn
 	checkdepends = ruby-rspec
 	makedepends = rubygems
 	depends = ruby
+	depends = ruby-matrix
 	depends = ruby-pdf-core
 	depends = ruby-ttfunk
 	options = !emptydirs
