@@ -2,7 +2,7 @@ diff --git a/redict.conf b/redict.conf
 index 465d56fc0..9c1bd1ed1 100644
 --- a/redict.conf
 +++ b/redict.conf
-@@ -441,7 +441,7 @@ rdb-del-sync-files no
+@@ -508,7 +508,7 @@ rdb-del-sync-files no
  # The Append Only File will also be created inside this directory.
  #
  # Note that you must specify a directory here, not a file name.

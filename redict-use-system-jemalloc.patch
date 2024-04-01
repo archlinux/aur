@@ -2,7 +2,7 @@ diff --git a/src/Makefile b/src/Makefile
 index 3bc9f11c0..a4b23d986 100644
 --- a/src/Makefile
 +++ b/src/Makefile
-@@ -229,8 +229,8 @@ endif
+@@ -267,8 +267,8 @@ endif
  
  ifeq ($(MALLOC),jemalloc)
  	DEPENDENCY_TARGETS+= jemalloc
@@ -12,4 +12,4 @@ index 3bc9f11c0..a4b23d986 100644
 +	FINAL_LIBS := -ljemalloc $(FINAL_LIBS)
  endif
  
- ifeq ($(BUILD_TLS),yes)
+ # LIBSSL & LIBCRYPTO
