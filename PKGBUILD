@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vpkedit-git
-pkgver=4.1.0.r11.g459ea7c
+pkgver=4.1.3.r4.g8dd7d14
 epoch=1
 pkgrel=1
 pkgdesc="A library and tool to create, read, and write Valve VPK archives"
@@ -21,9 +21,11 @@ source=("$pkgname::git+$url.git"
 		"minizip-ng::git+https://github.com/zlib-ng/minizip-ng.git"
 		"sourcepp::git+https://github.com/craftablescience/sourcepp.git"
 		"miniaudio::git+https://github.com/mackron/miniaudio.git"
+		"discord::git+https://github.com/craftablescience/discord-rpc-clean.git"
 		#Submodule for submodules
 		"bufferstream::git+https://github.com/craftablescience/BufferStream.git")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -43,7 +45,7 @@ pkgver(){
 prepare() {
 	cd "$srcdir/$pkgname"
 	git submodule init
-	for submodule in {vtflib,saap,speedykeyv,sourcepp,miniaudio};
+	for submodule in {vtflib,saap,speedykeyv,sourcepp,miniaudio,discord};
 	do
 		git config submodule.src/gui/thirdparty/$submodule.url "$srcdir/${submodule}"
 	done
