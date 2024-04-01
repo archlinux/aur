@@ -10,7 +10,7 @@
 pkgname=python-cssutils
 _name="${pkgname#python-}"
 
-pkgver=2.9.0
+pkgver=2.10.2
 pkgrel=1
 
 pkgdesc='CSS Cascading Style Sheets library for Python'
@@ -24,7 +24,7 @@ checkdepends=('python-jaraco.test' 'python-mock' 'python-pytest')
 
 changelog=CHANGES.rst
 source=("https://files.pythonhosted.org/packages/source/c/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('89477b3d17d790e97b9fb4def708767061055795aae6f7c82ae32e967c9be4cd')
+sha256sums=('93cf92a350b1c123b17feff042e212f94d960975a3ed145743d84ebe8ccec7ab')
 
 
 build() {
