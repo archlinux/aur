@@ -1,31 +1,25 @@
 pkgbase = github-desktop-git
-	pkgdesc = GUI for managing Git and GitHub.
-	pkgver = r26627.3461639c7
+	pkgdesc = GUI for managing Git and GitHub.Use system-wide electron.
+	pkgver = release.2.9.10.r4415.ge315c497a1
 	pkgrel = 1
-	url = https://desktop.github.com
-	arch = x86_64
+	url = https://github.com/shiftkey/desktop
+	arch = any
 	license = MIT
-	makedepends = xorg-server-xvfb
-	makedepends = nodejs>=10.16.0
+	makedepends = npm
 	makedepends = yarn
-	makedepends = python2
-	makedepends = unzip
-	depends = gnome-keyring
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = base-devel
+	makedepends = gcc
+	depends = electron28
+	depends = perl
 	depends = libsecret
-	depends = git
-	depends = curl
-	depends = libxss
-	depends = gconf
-	depends = nss
-	depends = nspr
-	depends = unzip
-	optdepends = hub: CLI interface for GitHub.
-	provides = github-desktop
+	provides = github-desktop=release.2.9.10
 	conflicts = github-desktop
-	source = git+https://github.com/shiftkey/desktop.git
-	source = github-desktop.desktop
+	source = github-desktop.git::git+https://github.com/shiftkey/desktop.git
+	source = github-desktop.sh
 	sha256sums = SKIP
-	sha256sums = 932e4c456e8c6db03d27172cf0daa37806bf025bb560d8b3d758c0997d1a618c
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = github-desktop-git
-
