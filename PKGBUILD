@@ -1,7 +1,7 @@
 # Maintainer: fossdd <fossdd@pwned.life>
 
 pkgname=bpftop
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="bpftop provides a dynamic real-time view of running eBPF programs"
 url='https://github.com/Netflix/bpftop'
@@ -11,7 +11,7 @@ depends=(glibc libelf gcc-libs zlib)
 makedepends=(cargo git)
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.zip")
-sha256sums=('a8eaf95d6e4a96e6743330c8cb28762b7307b0880257f65273efbc47e1d92582')
+sha256sums=('bd9ba66f3ccedecee0efab0e13e0d2b32f20069d5ed5dd7bef634448ab108826')
 
 prepare() {
 	cd $pkgname-$pkgver
