@@ -3,7 +3,7 @@
 
 _pkgbase=ocp
 pkgname=('ocp-git' 'ocp-sdl2-git')
-pkgver=0.2.106.r1.24ae3d0
+pkgver=0.2.108.r2.d1fc8df
 pkgrel=1
 pkgdesc="Open Cubic Player (GIT Version)"
 arch=('i686' 'x86_64')
