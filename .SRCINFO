@@ -1,18 +1,22 @@
 pkgbase = xz-5.4
 	pkgdesc = xz 5.4.x as a workaround for the recently known vulnerability
 	pkgver = 5.4.6
-	pkgrel = 2
-	url = https://sourceforge.net/projects/lzmautils/
+	pkgrel = 3
+	url = https://xz.tukaani.org/xz-utils/
 	arch = x86_64
-	license = GPL-2.0-or-later
-	makedepends = make
-	makedepends = tar
-	makedepends = gzip
+	license = GPL
+	license = LGPL
+	license = custom
+	makedepends = git
+	makedepends = po4a
+	makedepends = doxygen
 	depends = sh
 	provides = xz
 	provides = liblzma.so=5-64
 	conflicts = xz
-	source = xz-5.4.6.tar.gz::https://sourceforge.net/projects/lzmautils/files/xz-5.4.6.tar.gz/download
-	sha256sums = aeba3e03bf8140ddedf62a0a367158340520f6b384f75ca6045ccc6c0d43fd5c
+	source = git+https://git.tukaani.org/xz.git#tag=v5.4.6
+	validpgpkeys = 3690C240CE51B4670D30AD1C38EE757D69184620
+	sha256sums = 562a7ab5be6c72ff9486671dfc6ca1e9ca6668e60c943350103bc8b509319514
+	sha512sums = ca38849ce7168c0773223fd6d44cceea73804f639753d2ee871138ce46c7325ced516207d3de4998b7e9174bcfb3b1bc6a02bc208f0bd71530cf80af27322702
 
 pkgname = xz-5.4
