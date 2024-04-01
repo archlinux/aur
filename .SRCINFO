@@ -1,6 +1,6 @@
 pkgbase = buttercup-desktop-git
 	pkgdesc = Cross-Platform Passwords & Secrets Vault
-	pkgver = 2.26.2.r0.g88f8b31b
+	pkgver = 2.26.5.r5.gac894833
 	pkgrel = 1
 	url = https://buttercup.pw/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = buttercup-desktop-git
 	makedepends = nvm
 	makedepends = gendesk
 	depends = electron22
-	provides = buttercup-desktop=2.26.2
+	provides = buttercup-desktop=2.26.5
 	conflicts = buttercup-desktop
 	source = buttercup-desktop.git::git+https://github.com/buttercup/buttercup-desktop.git
 	source = buttercup-desktop.sh
