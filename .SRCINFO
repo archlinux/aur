@@ -1,0 +1,21 @@
+pkgbase = ahk_x11-bin
+	pkgdesc = AutoHotkey for Linux.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/phil294/AHK_X11
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = coreutils
+	depends = xorg-server
+	depends = fuse2
+	provides = ahk_x11
+	conflicts = ahk_x11-git
+	conflicts = ahk_x11
+	options = !debug
+	options = !strip
+	source = ahk_x11-bin-1.0.3.tar.gz::https://github.com/phil294/AHK_X11/archive/refs/tags/1.0.3.tar.gz
+	source = ahk_x11-bin-1.0.3.AppImage::https://github.com/phil294/AHK_X11/releases/download/1.0.3/ahk_x11.AppImage
+	sha512sums = a3bc9abe55a1cef65796a0a6f894617bc120f5c0a310220d6e1bbc8ff35fde885ea35c6689871ceca03848c424551e0b0061065e0c9d1f3344498033a26695c1
+	sha512sums = f2abd9d5fbbd788638acdd01b9e2654aa56fb7b98d384fec3b5dcbf2540c8f2ee45d5cf7248afe18d3c4b133e517024178461a50b7b168d3a322a7a75161608d
+
+pkgname = ahk_x11-bin
