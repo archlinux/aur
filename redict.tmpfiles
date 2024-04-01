@@ -1,0 +1,3 @@
+d /var/lib/redict 0700 redict redict
+d /etc/redict 0755 root redict
+f /etc/redict/sentinel.conf 0664 root redict
