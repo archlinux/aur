@@ -1,6 +1,6 @@
 # Maintainer:   Razer <razer[AT]neuf[DOT]fr>
 pkgname=rf24-network
-pkgver=1.0.18
+pkgver=1.0.19
 pkgrel=0
 pkgdesc='Networking with RF24 radio modules'
 arch=(any)
@@ -11,7 +11,7 @@ depends=(
 'pigpio'
 )
 source=("https://github.com/nRF24/RF24Network/archive/v${pkgver}.tar.gz")
-sha256sums=('8045e3f1b64ca266e97c7aec54537911e59f75e0f2f7316b55dd25cc7c67dfda')
+sha256sums=('0adf5a1f362f2648b43f5882025f3e319b710cc4830a462c7a44a1eb11f5e807')
 
 build() {
   cd "$srcdir/RF24Network-$pkgver"
