@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fxradio
 _pkgname=FXRadio
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc="Internet radio directory for desktop written in tornadofx"
 arch=('any')
