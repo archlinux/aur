@@ -3,10 +3,13 @@
 
 pkgname=android-meson
 pkgver=2
-pkgrel=3
+pkgrel=4
 arch=('any')
 pkgdesc="Meson wrapper for Android"
-depends=('meson' 'android-environment' 'android-pkg-config')
+depends=('meson'
+         'android-environment'
+         'android-pkg-config'
+         'python-packaging')
 license=("GPL")
 url="https://mesonbuild.com/"
 source=("toolchain_generator.py"
