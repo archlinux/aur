@@ -1,6 +1,6 @@
 # Maintainer: Thorsten Roth <elthoro@gmx.de>
 pkgname=inyokaedit-plugins
-pkgver=0.28.0
+pkgver=0.28.1
 pkgrel=1
 pkgdesc='Plugins for InyokaEdit'
 arch=('i686' 'x86_64')
