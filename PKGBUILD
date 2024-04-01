@@ -4,7 +4,7 @@
 _pkgname=SPIRV-Headers
 pkgname=spirv-headers-git
 epoch=1
-pkgver=1.3.236.0.r4.g34d0464
+pkgver=1.3.280.0.r3.g4f7b471
 pkgrel=1
 pkgdesc='SPIR-V header files Git version'
 arch=('any')
@@ -18,7 +18,7 @@ provides=("spirv-headers=1:$pkgver")
 
 pkgver() {
     cd "$_pkgname"
-	git describe --long --tags | sed 's/^sdk-//; s/\([^-]*-g\)/r\1/; s/-/./g'
+	git describe --long --tags | sed 's/^[^0-9]*//; s/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
 build() {
