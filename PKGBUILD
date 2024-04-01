@@ -2,7 +2,7 @@
 # Contributor: shimi <shimi.chen@gmail.com>
 # Contributor: Dmytro Meleshko <dmytro.meleshko@gmail.com>
 pkgname=imagewriter
-_pkgver=1.10.1432200249.1d253d9-2.19
+_pkgver=1.10.1432200249.1d253d9-2.20
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="A graphical utility for writing raw disk images & hybrid isos to USB keys"
@@ -11,7 +11,7 @@ url="https://github.com/openSUSE/imagewriter"
 license=('GPL-2.0-or-later')
 depends=('hicolor-icon-theme' 'qt5-base' 'udisks2')
 source=("https://download.opensuse.org/tumbleweed/repo/src-oss/src/$pkgname-${_pkgver}.src.rpm")
-sha256sums=('8f1b33478aa44d2caf12d39a0caaa5cdaa99559f785574564b8526eaa9ddbb46')
+sha256sums=('1b61f1672a30bfd426ee4424e1113e6410646477a65abf7279276d402b11622e')
 
 prepare() {
   bsdtar xvf "$pkgname-${_pkgver%-*}.tar.xz"
