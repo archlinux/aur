@@ -13,7 +13,7 @@ _flutterarch=$(uname -m | sed s/aarch64/arm64/ | sed s/x86_64/x64/)
 # this host is blocked in China, according to Flutter docs, the FLUTTER_STORAGE_BASE_URL environment variable
 # should be used to provide an alternative mirror
 _storagebase="${FLUTTER_STORAGE_BASE_URL:-"https://storage.googleapis.com"}"
-pkgrel=2
+pkgrel=3
 _pkgdesc="Flutter SDK artifacts (binary from Google)"
 pkgdesc="${_pkgdesc}"
 arch=("x86_64" "aarch64")
@@ -186,8 +186,8 @@ prepare() {
 
   cd "${srcdir}/${_group}/bin/cache"
 
-  unzip -o -q "${srcdir}/flutter_web_sdk.zip" -d flutter_web_sdk
-  unzip -o -q "${srcdir}/sky_engine.zip" -d pkg
+  unzip -o -q "${srcdir}/flutter_web_sdk-${_enginever}.zip" -d flutter_web_sdk
+  unzip -o -q "${srcdir}/sky_engine-${_enginever}.zip" -d pkg
 
   cd "${srcdir}/${_group}/bin/cache/artifacts"
 
