@@ -1,0 +1,15 @@
+diff --git a/build/defaults.mak b/build/defaults.mak
+index e7f62d0972..644f35aaca 100644
+--- a/build/defaults.mak
++++ b/build/defaults.mak
+@@ -11,8 +11,8 @@ SFLAGS += -DHWTEST_ALL_KEYS=$(HWTEST_ALL_KEYS)
+ SFLAGS += -DVALGRIND=$(VALGRIND)
+ 
+ # Language-specific flags
+-CFLAGS = -std=c11
+-CXXFLAGS = -std=c++17 -fno-exceptions -fno-rtti -fno-threadsafe-statics
++CFLAGS += -std=c11
++CXXFLAGS += -std=c++17 -fno-exceptions -fno-rtti -fno-threadsafe-statics
+ 
+ # Flags - Optimizations
+ ifeq ($(DEBUG),1)

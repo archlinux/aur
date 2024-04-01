@@ -35,6 +35,7 @@ source=(
 	'LICENSE.micropython-ulab::https://raw.githubusercontent.com/v923z/micropython-ulab/65c941a8059afe1cfd6f4c2b15d0ade798dc24f2/LICENSE'
 	'add-hidpi-support.patch'
 	'devendor-sdl.patch'
+	'use-distro-cflags-cppflags.patch'
 	'LICENSE.regularized_incomplete_beta_function'
 )
 
@@ -44,6 +45,7 @@ md5sums=(
 	'd9881740850078297bfa270e674e6e99'
 	'2e03fc45154ee59aeb4c78809e7ee696'
 	'e45599b7d190abffbb7019390a8e8ab3'
+	'516a57ad9a2184eb191987912b075f9b'
 	'f377d0e994b14a12313a724b821e3194'
 )
 
@@ -55,6 +57,8 @@ prepare() {
 	# We can safely devendor. See also:
 	# https://github.com/numworks/epsilon/blob/117eea7915082a63551e0caf44aa63f1a0216ecc/ion/src/simulator/external/README.md#sdl-version-compatibilities
 	patch -p1 < ../devendor-sdl.patch
+
+	patch -p1 < ../use-distro-cflags-cppflags.patch
 
 	convert -background "#FFB734" "ion/src/simulator/assets/logo.svg" "$pkgname.png"
 	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name "Numworks Epsilon" --icon "$pkgname" --exec "$pkgname" --categories "Education;Emulator"
