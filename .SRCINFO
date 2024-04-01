@@ -1,0 +1,27 @@
+pkgbase = aif-master
+	pkgver = 2.8
+	pkgrel = 1
+	url = https://github.com/maximalisimus/aif-master.git
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = imagemagick
+	depends = arch-install-scripts
+	depends = dialog
+	depends = ncurses
+	depends = lib32-ncurses
+	depends = pacman-contrib
+	depends = parted
+	depends = util-linux
+	depends = gptfdisk
+	depends = python
+	depends = wget
+	depends = curl
+	depends = sed
+	depends = gawk
+	depends = grep
+	replaces = aif-master
+	source = aif-master::git+https://github.com/maximalisimus/aif-master.git
+	sha256sums = SKIP
+
+pkgname = aif-master
