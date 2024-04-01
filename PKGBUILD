@@ -43,6 +43,8 @@ prepare() {
 
 build() {
   cd ${pkgname/-cuda-git}
+  export CFLAGS="-march=native -mtune=generic -O2 -pipe -fno-plt"
+  export CXXFLAGS="$CFLAGS"
   export CGO_CFLAGS="$CFLAGS" CGO_CPPFLAGS="$CPPFLAGS" CGO_CXXFLAGS="$CXXFLAGS" CGO_LDFLAGS="$LDFLAGS"
   go generate ./...
   go build -buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external \
