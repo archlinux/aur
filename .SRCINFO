@@ -1,0 +1,11 @@
+pkgbase = kwin-scripts-kzones
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/gerritdevriese/kzones
+	arch = any
+	license = GPL-3.0-only
+	depends = kwin
+	source = kwin-scripts-kzones-0.7.tar.gz::https://github.com/gerritdevriese/kzones/archive/refs/tags/v0.7.tar.gz
+	sha256sums = b36078d275e7e4f6e391ca9bca485c2aaaa38fb8473726cdb18ff9963897a523
+
+pkgname = kwin-scripts-kzones
