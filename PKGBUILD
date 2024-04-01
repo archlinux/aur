@@ -2,7 +2,7 @@
 # Contributor: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 
 pkgname=zesarux-git
-pkgver=ZEsarUX.11.0.beta1.r30.g2056b3e
+pkgver=ZEsarUX.11.0.beta1.r194.g50ebe51
 _ver=11.0
 pkgrel=1
 epoch=2
@@ -15,6 +15,7 @@ depends=('libxxf86vm' 'aalib' 'libcaca' 'alsa-lib')
 optdepends=('libpulse: for support Pulseaudio'
 	'openssl: for enable SSL functions'
 	'sdl: for support sdl video and audio output')
+options=(!debug)
 source=('zesarux-code::git+https://github.com/chernandezba/zesarux.git'
 	zesarux.desktop
 	zesarux.png)

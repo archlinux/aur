@@ -1,6 +1,6 @@
 pkgbase = zesarux-git
 	pkgdesc = A Zx80/Zx81/Z88, Zx Spectrum 16/48/128/+2/+2A and ZX-Uno emulator with ULAPlus support. Development version.
-	pkgver = ZEsarUX.11.0.beta1.r30.g2056b3e
+	pkgver = ZEsarUX.11.0.beta1.r194.g50ebe51
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/chernandezba/zesarux
@@ -16,6 +16,7 @@ pkgbase = zesarux-git
 	optdepends = openssl: for enable SSL functions
 	optdepends = sdl: for support sdl video and audio output
 	conflicts = zesarux
+	options = !debug
 	source = zesarux-code::git+https://github.com/chernandezba/zesarux.git
 	source = zesarux.desktop
 	source = zesarux.png
