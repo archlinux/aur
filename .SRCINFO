@@ -1,0 +1,16 @@
+pkgbase = jazzjackrabbit2
+	pkgdesc = Jazz Jackrabbit 2 game powered by the jazz2.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = jazz2-native-bin
+	depends = wget
+	depends = unzip
+	depends = yad
+	source = ./jazz2-1.0.0.tar.bz2
+	sha256sums = SKIP
+
+pkgname = jazzjackrabbit2
