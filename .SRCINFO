@@ -1,6 +1,6 @@
 pkgbase = qoi-git
 	pkgdesc = The 'Quite OK Image' format for fast, lossless image compression
-	pkgver = r321.9c487be
+	pkgver = r335.d4fc9d1
 	pkgrel = 1
 	url = https://qoiformat.org/
 	arch = x86_64
@@ -10,9 +10,7 @@ pkgbase = qoi-git
 	makedepends = stb
 	makedepends = libpng
 	source = qoi::git+https://github.com/phoboslab/qoi.git
-	source = 010-qoi-use-arch-flags.patch
 	sha256sums = SKIP
-	sha256sums = 3c5aed75c5560fe782cdb47b713be7292291b37fa311f74a01ec88561f0e321f
 
 pkgname = qoi-headers-git
 	pkgdesc = The 'Quite OK Image' format for fast, lossless image compression - headers
