@@ -8,7 +8,7 @@
 
 pkgbase=handbrake-git
 pkgname=(handbrake-git handbrake-cli-git)
-pkgver=1.7.0.r11.g7f3368569
+pkgver=1.7.3.r6.g057d5e768
 pkgrel=1
 pkgdesc="Multithreaded video transcoder. Enabled: x265, nvenc, fdk-aac, qsv, vce, numa, hardened. Last stable branch"
 arch=(i686 x86_64)
@@ -31,7 +31,7 @@ source=("${pkgname%-git}::git+https://github.com/HandBrake/HandBrake.git#branch=
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/zimg-3.0.5.tar.gz')
 _commondeps=(libxml2 libass libvorbis opus speex libtheora lame libjpeg-turbo
              libx264.so jansson libvpx libva numactl)
-_guideps=(gst-plugins-base gtk3 libgudev)
+_guideps=(gst-plugins-base gtk4 libgudev)
 makedepends=(git intltool python nasm wget cmake meson llvm clang
              x264
              "${_commondeps[@]}" "${_guideps[@]}")
