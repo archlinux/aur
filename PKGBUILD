@@ -2,12 +2,13 @@
 
 pkgname=dump-shm
 pkgrel=1
-pkgver=1.2.0
+pkgver=1.3.0
 pkgdesc="dump content of a shared memory to stdout"
 url="https://github.com/NikolasK-source/dump_shm"
 license=('MIT')
 arch=('x86_64' 'aarch64')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'cxxopts' 'cxxshm' 'cxxsemaphore')
+depends=('cxxshm' 'cxxsemaphore')
 source=("git+https://github.com/NikolasK-source/dump_shm.git#tag=v${pkgver}")
 
 sha256sums=('SKIP')
@@ -17,7 +18,7 @@ prepare() {
     git submodule init
     git submodule update
     mkdir -p build
-    cmake -DCMAKE_BUILD_TYPE=Release -DCLANG_FORMAT=OFF -DCOMPILER_WARNINGS=OFF -B build .
+    cmake -DCMAKE_BUILD_TYPE=Release -DCLANG_FORMAT=OFF -DCOMPILER_WARNINGS=OFF -DCLANG_TIDY=OFF -B build .
 }
 
 build() {
