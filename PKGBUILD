@@ -1,35 +1,49 @@
-# Maintainer: Leo "em0lar" Maroni <hello@em0lar.de>
-# Contributor: Jens Adam <jra@byte.cx>
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
-_perlmod=Travel-Status-DE-VRR
-pkgname=perl-travel-status-de-vrr
-pkgver=1.17
-pkgrel=1
-pkgdesc='Interface to the efa.vrr.de departure monitor'
-url='http://finalrewind.org/projects/Travel-Status-DE-VRR/'
-license=('PerlArtistic')
+pkgname='perl-travel-status-de-vrr'
+pkgver='2.00'
+pkgrel='1'
+pkgdesc="unofficial VRR departure monitor."
 arch=('any')
-depends=('perl-class-accessor' 'perl-lwp-protocol-https' 'perl-xml-libxml')
-makedepends=('perl-module-build' 'perl-file-slurp' 'perl-test-pod')
+license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-validpgpkeys=('781BB7071C6BF648EAEB08A1100D5BFB5166E005')  # Daniel Friesel
-source=("http://finalrewind.org/projects/${_perlmod}/${_perlmod}-${pkgver}.tar.gz"{,.asc})
-md5sums=('ae19b805c1fdba08cd4265a885dc38b2' '3f28e6f743d5a01cade4efa45ecb5227')
+depends=('perl-class-accessor>=0' 'perl-datetime>=0' 'perl-lwp-protocol-https>=0' 'perl-xml-libxml>=0' 'perl-libwww>=0' 'perl>=5.10.1')
+makedepends=('perl-file-slurp>=0' 'perl-module-build>=0.4' 'perl-test-pod>=0')
+url='https://metacpan.org/release/Travel-Status-DE-VRR'
+source=('http://search.cpan.org/CPAN/authors/id/D/DE/DERF/Travel-Status-DE-VRR-2.00.tar.gz')
+md5sums=('caf301e1616ae85aae610ef22e300656')
+sha512sums=('954b670c68a4f1cb00e7e2defe192d77fda1df67abfa55cdcd5243441a5eaae2298eb8706d11da59cdeb06266ba90b4fdfaa5c7f2ac35b2e68df2fcdcb23fd3f')
+_distdir="Travel-Status-DE-VRR-2.00"
 
 build() {
-  cd "${srcdir}"/${_perlmod}-${pkgver}
-  perl Build.PL installdirs=vendor destdir="${pkgdir}"
-  ./Build
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      MODULEBUILDRC=/dev/null
+
+    cd "$srcdir/$_distdir"
+    /usr/bin/perl Build.PL
+    /usr/bin/perl Build
+  )
 }
 
 check() {
-  cd "${srcdir}"/${_perlmod}-${pkgver}
-  ./Build test
+  cd "$srcdir/$_distdir"
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+    /usr/bin/perl Build test
+  )
 }
 
 package() {
-  cd "${srcdir}"/${_perlmod}-${pkgver}
-  ./Build install
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-  install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
+  cd "$srcdir/$_distdir"
+  /usr/bin/perl Build install
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
+
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
+# vim:set ts=2 sw=2 et:
