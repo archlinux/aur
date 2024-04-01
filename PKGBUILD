@@ -1,30 +1,22 @@
-# Maintainer: Łukasz Pożarlik <lpozarlik@gmail.com>
+# Maintainer: Benoit Brummer (Trougnouf) <trougnouf@gmail.com>
+# Contributor: Łukasz Pożarlik <lpozarlik@gmail.com>
+# Contributor: Nicholas Wang <me AT nicho1as DOT wang>
 
 pkgname=('python-timezonefinder')
 pkgdesc="Fast and lightweight project for looking up the timezone for a given lat/lng"
-pkgver=5.2.0
-pkgrel=2
+pkgver=6.5.0
+pkgrel=1
 url="https://github.com/MrMinimal64/timezonefinder"
 license=('MIT')
 arch=('any')
-makedepends=('python' 
-  'python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/t/timezonefinder/timezonefinder-${pkgver}.tar.gz")
-sha256sums=('a374570295a8dbd923630ce85f754e52578e288cb0a9cf575834415e84758352')
+makedepends=('python' 'python-numpy' 'python-build' 'python-installer' 'python-setuptools' 'python-cffi'  'python-poetry-core')
+source=("https://github.com/jannikmi/timezonefinder/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('d28f633c86a4affb4b47b37ef6dc3339033d705dca27817b9f2ff34027d1c773')
 
 build() {
-  cp -r ${srcdir}/timezonefinder-${pkgver} ${srcdir}/timezonefinder-${pkgver}-py2
-
-  cd ${srcdir}/timezonefinder-${pkgver}
-  python setup.py build
+  python -m build --no-isolation --wheel --outdir ${srcdir}/dist/ ${srcdir}/timezonefinder-${pkgver}
 }
 
-package_python-timezonefinder() {
-  depends=('python-numpy')
-  cd ${srcdir}/timezonefinder-${pkgver}
-  python setup.py install --prefix=/usr --root=${pkgdir}
-  install -D --mode 644 --target-directory "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+package() {
+  python -m installer --destdir="$pkgdir" ${srcdir}/dist/*.whl
 }
-
-# vim:set ts=2 sw=2 et:
-
