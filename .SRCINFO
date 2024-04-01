@@ -1,0 +1,18 @@
+pkgbase = soh-bin
+	pkgdesc = Ship of Sarkinian Reimplimentation engine
+	pkgver = 8.0.5
+	pkgrel = 1
+	url = https://gitlab.com/soh-bin
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = sdl2
+	depends = sdl2_net
+	depends = libpng
+	source_x86_64 = https://gitlab.com/soh-bin/binaries/8.0.5/-/raw/main/soh-linux-x64.tar.xz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://gitlab.com/soh-bin/binaries/8.0.5/-/raw/main/soh-linux-arm64.tar.xz
+	sha256sums_aarch64 = SKIP
+
+pkgname = soh-bin
