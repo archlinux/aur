@@ -1,7 +1,7 @@
-# Maintainer: Phillip Wood <phillip.wood@dunelm.org.uk>
+# Contributor: Phillip Wood <phillip.wood@dunelm.org.uk>
 pkgname='gnome-break-timer-git'
 _pkgname=${pkgname%-git}
-pkgver=1
+pkgver=3.1.0_1_gceef277
 pkgrel=1
 epoch=
 pkgdesc="The new typing break for GNOME, (replaces gnome-typing-break-bzr & drwright)"
@@ -9,8 +9,8 @@ arch=('x86_64' 'i686')
 url='https://wiki.gnome.org/GnomeBreakTimer'
 license=('GPL3')
 groups=()
-depends=('libnotify' 'libcanberra' 'libgee06' 'json-glib' 'libxtst' 'gtk3')
-makedepends=('vala' 'git' 'intltool')
+depends=('glib2' 'gsound' 'glibc' 'hicolor-icon-theme' 'libadwaita' 'graphene' 'gtk4' 'cairo' 'json-glib' 'dconf')
+makedepends=('blueprint-compiler' 'git' 'meson' 'vala')
 checkdepends=()
 optdepends=()
 provides=()
@@ -20,7 +20,7 @@ backup=()
 options=(!makeflags)
 install="$pkgname.install"
 changelog=
-source=("git://git.gnome.org/gnome-break-timer.git"
+source=("git+https://gitlab.gnome.org/GNOME/gnome-break-timer.git"
         "$pkgname.install")
 noextract=()
 sha256sums=('SKIP'
@@ -31,14 +31,10 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/$_pkgname"
-	./autogen.sh --prefix=/usr --sysconfdir=/etc \
-	  --localstatedir=/var --libexecdir=/usr/lib/$pkgname \
-	  --disable-static --disable-schemas-compile
-	make
+  arch-meson $_pkgname build
+  meson compile -C build
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
-	make DESTDIR="$pkgdir/" install
+  meson install -C build --destdir "$pkgdir"
 }
