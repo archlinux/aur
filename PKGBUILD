@@ -3,13 +3,14 @@
 # Contributor: Pablo Olmos de Aguilera Corradini <pablo <at] glatelier (dot} org>
 # Contributor: Sander van Kasteel <info at sandervankasteel dot nl>
 pkgname=gtg-git
-pkgver=0.6.r367.g66f91627
+pkgver=0.6.r422.g80b09c84
 pkgrel=1
 pkgdesc="Getting Things GNOME! is a personal tasks and TODO-list items organizer for GNOME"
 arch=('any')
 url="https://wiki.gnome.org/Apps/GTG"
 license=('GPL-3.0-or-later')
 depends=(
+  'dbus-python'
   'gtk4'
   'gtksourceview5'
   'libsecret'
