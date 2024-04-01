@@ -1,5 +1,5 @@
 pkgbase = omni-terminal
-	pkgdesc = The omni terminal, produced by Wisburg.
+	pkgdesc = The omni terminal, produced by wisburg.
 	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://wisburg.com/

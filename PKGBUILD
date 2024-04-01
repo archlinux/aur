@@ -3,13 +3,12 @@
 pkgname=omni-terminal
 pkgver=0.5.1
 pkgrel=1
-pkgdesc="The omni terminal, producted by wisburg.com"
+pkgdesc="The omni terminal, produced by wisburg."
 arch=('x86_64')
 url="https://wisburg.com/"
 license=('custom')
-depends=('electron28')
 makedepends=('wget' 'dpkg') # dpkg 用于解压.deb文件
-source=("https://download.wisburg.com/omni/prod/e32b3a13-8c5a-444f-9b23-c920014a05c1.deb")
+source=("https://download.wisburg.com/omni/prod/6fd15f71-f995-4a9a-9103-c84e8c1a1b68.deb")
 sha256sums=('SKIP') 
 
 package() {
