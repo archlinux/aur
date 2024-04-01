@@ -1,40 +1,44 @@
-# Maintainer :  Kr1ss  < $(tr +- .@ <<<kr1ss+x-yandex+com) >
+# Maintainer  : SysAdm <sysadm [dot] archlinux [at] proton [dot] me>
 # Contributor : Stephen Argent <steve [at] tuxcon [dot] com>
-
 
 pkgname=maltego
 
-pkgver=4.3.1
+pkgver=4.6.0
 pkgrel=1
 
-pkgdesc='Information gathering software by Paterva'
+pkgdesc='An open source intelligence and forensics application'
 url="https://www.$pkgname.com"
 arch=('any')
 license=('custom')
 
-depends=('java-runtime<=15' 'sh')
+depends=('java-environment=17')
 
 install="$pkgname.install"
-source=("https://$pkgname-downloads.s3.us-east-2.amazonaws.com/linux/${pkgname^}.v$pkgver.deb"
-        "LICENSE.pdf::https://www.$pkgname.com/pdf/legal/${pkgname^}%20Technologies_TermsandConditions_2020-11.pdf")
-sha256sums=('9f7493a557522b72e12fd6390001be6f882a0be1f25872eef2bcdf082bbef5c6'
-            '5295b55e0da0a7aaa733032bf6d508dd149d66b379f71c4b15271729c3aa5500')
+source=("https://downloads.maltego.com/maltego-v4/linux/Maltego.v$pkgver.linux.zip"
+        "LICENSE.pdf::https://www.maltego.com/pdf/legal/2022-09_Maltego%20Technologies_TermsandConditions.pdf")
+sha256sums=('5eb8f4a516897ef3ac42116f83c7740aa4f3723e055532e0524dffb5eeceb0f8'
+            'b06d49dae3ded95e2c01b4ec26210492add658ee02c32d4950985276e5f5fffa')
 
 options=('!emptydirs')
 
-
 package() {
-  bsdtar -xf data.tar.gz -C "$pkgdir"
-  sed -i 's|\(Exec=\)x-www-browser|\1xdg-open|g;s|^\(Version=\).*|\11.0|' \
-         "$pkgdir/usr/share/applications/$pkgname.desktop"
-  sed -i '1s|bash|sh|' "$pkgdir/usr/bin/$pkgname"
-  # maltego_java_config is defined as action in maltego.desktop, don't need that twice
-  rm "$pkgdir/usr/share/applications/${pkgname}_java_config.desktop"
-  # remove Windows assets
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/opt/$pkgname"
+  install -dm 755 "$pkgdir/usr/share/applications"
+
   find "$pkgdir" -type f -regex '.*\.\(exe\|dll\)$' -delete
-  chmod -R go-w "$pkgdir"
-  install -Dm644 LICENSE.pdf -t"$pkgdir/usr/share/licenses/$pkgname/"
+
+  cp -aR "${pkgname}_${pkgver}"/* "$pkgdir/opt/$pkgname/"
+  ln -s "/opt/$pkgname/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
+
+  install -Dm 644 LICENSE.pdf -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm 644 "${pkgname}_${pkgver}/bin/maltego.ico" -t "$pkgdir/usr/share/icons/hicolor/256x256/apps/"
+
+  desktop_file="$pkgdir/usr/share/applications/maltego.desktop"
+  echo "[Desktop Entry]" > "$desktop_file"
+  echo "Name=Maltego" >> "$desktop_file"
+  echo "GenericName=Open Source Intelligence and Forensics" >> "$desktop_file"
+  echo "Exec=/usr/bin/$pkgname" >> "$desktop_file"
+  echo "Type=Application" >> "$desktop_file"
+  echo "Categories=Network;Security;Forensics;" >> "$desktop_file"
 }
-
-
-# vim: ts=2 sw=2 et ft=PKGBUILD:
