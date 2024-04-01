@@ -1,12 +1,12 @@
 pkgbase = fasmg
 	pkgdesc = Assembler with advanced macro-instruction abilities
-	pkgver = kcm8
+	pkgver = kd3c
 	pkgrel = 1
 	url = http://flatassembler.net/
 	arch = x86_64
 	license = BSD
-	noextract = fasmg.kcm8.zip
-	source = https://flatassembler.net/fasmg.kcm8.zip
-	sha512sums = a2c1b8cbb1730381cbfd159454bcb4d3cca6caa6f0e8ad3b3e83edffe6cd4060bd33b627a349da7196ccb6aaea4993241532e15a726b4774aec92581d6e51a58
+	noextract = fasmg.kd3c.zip
+	source = https://flatassembler.net/fasmg.kd3c.zip
+	sha512sums = 54d3fa2ffde1d6137b419b880049d4a55704c46b905bd396c8372078b4ddfee9beb3b46443401ef4e2c3319915c6d2729d5fb9d02b5fdd4f35ada384ad2a91e5
 
 pkgname = fasmg

@@ -2,7 +2,7 @@
 # Contributor: Chjara Yebgui <tuxcrafting@cronut.cafe>
 
 pkgname=fasmg
-pkgver=kcm8
+pkgver=kd3c
 pkgrel=1
 pkgdesc="Assembler with advanced macro-instruction abilities"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='http://flatassembler.net/'
 license=('BSD')
 source=("https://flatassembler.net/$pkgname.$pkgver.zip")
 noextract=("$pkgname.$pkgver.zip")
-sha512sums=('a2c1b8cbb1730381cbfd159454bcb4d3cca6caa6f0e8ad3b3e83edffe6cd4060bd33b627a349da7196ccb6aaea4993241532e15a726b4774aec92581d6e51a58')
+sha512sums=('54d3fa2ffde1d6137b419b880049d4a55704c46b905bd396c8372078b4ddfee9beb3b46443401ef4e2c3319915c6d2729d5fb9d02b5fdd4f35ada384ad2a91e5')
 prepare() {
     [ -d "$pkgname-$pkgver" ] || mkdir "$pkgname-$pkgver"
     cd "$pkgname-$pkgver"
