@@ -2,13 +2,13 @@
 # Contributor: Peter Hatina <phatina AT gmail.com>
 pkgname=lib32-glm
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ mathematics library for 3D software based on the OpenGL Shading Language (GLSL) specification"
 arch=('x86_64')
 license=('MIT')
 url="http://glm.g-truc.net"
-depends=('lib32-gcc-libs' 'glm')
-makedepends=('cmake' 'ninja')
+depends=('glm')
+makedepends=('cmake' 'ninja' 'lib32-gcc-libs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/g-truc/glm/archive/refs/tags/${pkgver}.tar.gz")
 sha512sums=('62e22002a6369a54e1f0ee2885a65f2780af7d2a446573e5387b81518f5dc7e8076053837cb99ae850a0166ce8b0f077bed009e8986d9884d01c456ce467553f')
 
@@ -28,10 +28,10 @@ build() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
 
-  mv "$pkgdir"/usr/share/glm "$pkgdir"/usr/lib32/glm
+  mkdir "$pkgdir"/usr/lib32/cmake
+  mv "$pkgdir"/usr/share/glm "$pkgdir"/usr/lib32/cmake/glm
 
   rm -rf "$pkgdir"/usr/include
 
-  install -dm 755 "${pkgdir}"/usr/share/licenses
-  ln -s glm "${pkgdir}"/usr/share/licenses/glm
+  install -vDm 644 glm-${pkgver}/copying.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
