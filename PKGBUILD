@@ -16,11 +16,6 @@ source=("git+https://github.com/NazaraEngine/ShaderLang.git#commit=00426331127bc
 
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "${srcdir}/ShaderLang"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 prepare() {
    cd "${srcdir}/ShaderLang"
    xmake f -k shared -m releasedbg --tests=y --examples=n --yes
