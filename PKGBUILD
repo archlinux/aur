@@ -1,14 +1,14 @@
 # Maintainer: Charles Dong <charlesdong_2000@outlook.com>
 pkgname=xz-5.4
 pkgver=5.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="xz 5.4.x as a workaround for the recently known vulnerability"
 arch=("x86_64")
 url="https://sourceforge.net/projects/lzmautils/"
 license=('GPL-2.0-or-later')
 depends=("sh")
-makedepends=("cmake" "make" "tar" "gzip")
-checkdepends=("cmake")
+makedepends=("make" "tar" "gzip")
+checkdepends=()
 optdepends=()
 provides=("xz" "liblzma.so=5-64")
 conflicts=("xz")
