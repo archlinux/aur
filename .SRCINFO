@@ -1,14 +1,19 @@
 pkgbase = ruby-treetop
-	pkgdesc = A Ruby-based text parsing and interpretation DSL
+	pkgdesc = A Ruby-based parsing DSL based on parsing expression grammars
 	pkgver = 1.6.12
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/cjheath/treetop
 	arch = any
 	license = MIT
+	checkdepends = ruby-activesupport
+	checkdepends = ruby-rr
+	checkdepends = ruby-rspec
+	makedepends = git
+	makedepends = rubygems
+	depends = ruby
 	depends = ruby-polyglot
-	noextract = treetop-1.6.12.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/treetop-1.6.12.gem
-	sha256sums = ed48add684a2d7a8fd6e3b8b027d8ee5983b50977ae691913131a24f1746ac29
+	source = git+https://github.com/cjheath/treetop.git#commit=b6a60e16e80f288dd25d45e372e5249f190f4561
+	sha256sums = 60b44029ded39276145a755981cf9a83a8c09708547390640eb4884d5ebe5685
 
 pkgname = ruby-treetop
