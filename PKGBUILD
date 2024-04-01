@@ -2,17 +2,20 @@
 
 pkgname=redict-db-git
 _pkgname=redict
-pkgver=r12133.3fe17f47b
+pkgver=r12201.aadcf99b7
 pkgrel=1
-pkgdesc='A distributed key/value database'
+pkgdesc='A distributed key/value database (development version)'
 arch=('x86_64')
 url="https://codeberg.org/$_pkgname/$_pkgname"
-license=('BSD')
+license=('LGPL-3.0-only')
+provides=("$_pkgname")
+conflicts=("$_pkgname" "$_pkgname-git" "$_pkgname-rc")
 depends=('jemalloc' 'grep' 'shadow' 'systemd-libs')
 # pkg-config fails to detect systemd libraries if systemd is not installed
 makedepends=('systemd' 'openssl')
 backup=("etc/$_pkgname/$_pkgname.conf"
         "etc/$_pkgname/sentinel.conf")
+
 source=("git+$url.git"
         $_pkgname.service
         $_pkgname-sentinel.service
@@ -48,13 +51,28 @@ build() {
 		-C $_pkgname
 }
 
+check() {
+	make test \
+		BUILD_TLS=yes \
+		USE_SYSTEMD=yes \
+		-C $_pkgname
+	}
+
 package() {
 	cd $_pkgname
+
+	# make install
 	make PREFIX="$pkgdir"/usr install
 
-	install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
+	# configuration files
 	install -Dm644 -t "$pkgdir"/etc/$_pkgname $_pkgname.conf sentinel.conf
+
+	# systemd integration
 	install -Dm644 -t "$pkgdir"/usr/lib/systemd/system/ ../$_pkgname.service ../$_pkgname-sentinel.service
 	install -Dm644 "$srcdir"/$_pkgname.sysusers "$pkgdir"/usr/lib/sysusers.d/$_pkgname.conf
 	install -Dm644 "$srcdir"/$_pkgname.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/$_pkgname.conf
+
+	# licenses
+	mkdir -p "$pkgdir"/usr/share/licenses/$_pkgname
+	cp -vr LICENSES/* "$pkgdir"/usr/share/licenses/$_pkgname
 }
