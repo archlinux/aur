@@ -8,12 +8,12 @@
 
 _pack=geometry
 pkgname=octave-$_pack
-pkgver=4.0.0
-pkgrel=3
+pkgver=4.1.0
+pkgrel=1
 pkgdesc="Library for geometric computing extending MatGeom functions. Useful to create, transform, manipulate and display geometric primitives."
 arch=(any)
 url="https://gnu-octave.github.io/packages/$_pack/"
-license=('custom')
+license=('GPL-3.0-or-later and BSL-1.0')
 groups=('octave-forge')
 depends=('octave>=4.2.0' 'octave-matgeom>=1.0.0')
 makedepends=()
@@ -22,11 +22,9 @@ backup=()
 options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
-source=("https://downloads.sourceforge.net/octave/$_archive"
-        "4.0.0_to_tip.diff")
+source=("https://downloads.sourceforge.net/octave/$_archive")
 #noextract=("$_archive")
-sha256sums=('1ad2403c01948ebac55d67f9048f79ae28bb99802ef65376c94e981cfb49adfe'
-            '753a384acac9f7a38c86682ca67d80a714e79cd694e7a2beba5a4606aca70e4c')
+sha256sums=('dbc1658845c97d2d6687c1490a61b43d359913d33420e475b659f335f7a34360')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
@@ -39,12 +37,6 @@ _install_dir() {
 	cp -rT "$src" "$dst"
 }
 
-prepare() {
-	cd "$srcdir"
-    patch -Np0 -i 4.0.0_to_tip.diff
-    tar cf $_pack-tip.tar.gz $_pack-$pkgver
-}
-
 build() {
 	_prefix="$srcdir"/install_prefix
 	_archprefix="$srcdir"/install_archprefix
@@ -53,7 +45,7 @@ build() {
 	_octave_run "$(cat <<-EOF
 		pkg local_list octave_packages;
 		pkg prefix $_prefix $_archprefix;
-		pkg install -verbose -nodeps $_pack-tip.tar.gz;
+		pkg install -verbose -nodeps $_archive;
 		EOF
 		)"
 }
