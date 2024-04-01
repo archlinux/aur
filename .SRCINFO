@@ -7,6 +7,7 @@ pkgbase = nextdns
 	license = MIT
 	makedepends = go
 	options = !lto
+	options = !buildflags
 	source = https://github.com/nextdns/nextdns/archive/v1.42.0.tar.gz
 	source = nextdns.service
 	sha256sums = 893692bea9015116d6ce610c94dccf744f3aa29aeb716a15cca17dd6e6b837c1

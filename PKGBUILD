@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('go')
 source=("$url/archive/v$pkgver.tar.gz" "nextdns.service")
 sha256sums=('@checksum@')
-options=(!lto)
+options=(!lto !buildflags)
 
 build() {
   cd $pkgname-$pkgver
