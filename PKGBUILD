@@ -2,7 +2,7 @@
 # Meta package for ALL-IN-ONE out-of-the-box gaming on Arch Linux.
 
 pkgname=arch-gaming-meta
-pkgver=3
+pkgver=4
 pkgrel=1
 arch=('any')
 pkgdesc='Meta package for Gaming including Steam, Lutris, Wine, Essential Proprietary libraries & several other dependencies;
@@ -19,11 +19,13 @@ depends=('alsa-lib' 'alsa-plugins' 'dosbox' 'fontconfig' 'gamemode' 'gamescope' 
          'lib32-libgpg-error' 'lib32-libjpeg-turbo' 'lib32-libldap' 'lib32-libpng' 'lib32-libpulse' 'lib32-libva'
          'lib32-libva-mesa-driver' 'lib32-libxcomposite' 'lib32-libxinerama' 'lib32-libxslt' 'lib32-mangohud' 'lib32-mpg123'
          'lib32-ncurses' 'lib32-ocl-icd' 'lib32-openal' 'lib32-sqlite' 'lib32-v4l-utils' 'lib32-vkd3d' 'lib32-vulkan-icd-loader')
-optdepends=('bottles: Requires Chaotic AUR repository'
+optdepends=('bottles: Can be obtained from AUR/Chaotic AUR repository'
             'cups: Can be required by some very old legacy Windows games'
-            'protontricks: Requires Chaotic AUR repository'
-            'protonup-qt: Requires Chaotic AUR repository'
+            'dxvk-bin: HIGHLY RECOMMENDED - Can be obtained from AUR/Chaotic AUR repository'
+            'proton-ge-custom: Can be obtained from AUR/Chaotic AUR repository'
+            'protontricks: Can be obtained from AUR/Chaotic AUR repository'
+            'protonup-qt: Can be obtained from AUR/Chaotic AUR repository'
             'samba: Can be required by some very old legacy Windows games'
             'sane: Can be required by some very old legacy Windows games'
-            'wine-installer: Requires Chaotic AUR repository')
+            'wine-installer: A metapackage that provides desktop files and menus to WINE - Can be obtained from AUR/Chaotic AUR repository')
 conflicts=('cachyos-gaming-meta')
