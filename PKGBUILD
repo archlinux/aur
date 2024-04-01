@@ -2,7 +2,7 @@
 # Contributor: Peter Hatina <phatina AT gmail.com>
 pkgname=lib32-glm
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="C++ mathematics library for 3D software based on the OpenGL Shading Language (GLSL) specification"
 arch=('x86_64')
 license=('MIT')
@@ -20,6 +20,7 @@ build() {
   cmake -S glm-${pkgver} -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_DATAROOTDIR=/usr/lib32/cmake \
     -DCMAKE_INSTALL_LIBDIR=lib32 \
     -W no-dev
   cmake --build build --verbose
@@ -27,9 +28,6 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-
-  mkdir "$pkgdir"/usr/lib32/cmake
-  mv "$pkgdir"/usr/share/glm "$pkgdir"/usr/lib32/cmake/glm
 
   rm -rf "$pkgdir"/usr/include
 
