@@ -3,18 +3,18 @@
 
 pkgbase=ocaml4
 pkgname=(ocaml4 ocaml4-compiler-libs)
-pkgver=4.14.1
+pkgver=4.14.2
 pkgrel=1
 pkgdesc="A functional language with OO extensions"
 arch=(x86_64)
-license=(LGPL2.1 custom: QPL-1.0)
-url="https://caml.inria.fr/"
+license=(LGPL2.1 'custom: QPL-1.0')
+url="https://ocaml.org/"
 makedepends=(ncurses)
 optdepends=('ncurses: advanced ncurses features'
             'tk: advanced tk features')
-options=('!makeflags' '!emptydirs' 'staticlibs')
 source=(https://caml.inria.fr/distrib/ocaml-${pkgver%.*}/ocaml-${pkgver}.tar.xz)
-sha512sums=('326a063e7e18ec55a21fbb129e4b2915733e67166ec1d94412875853aa10fbfb27fdfc9f6440ce65b188924b93f3cb8d01b0c4640179a5a12bc4e561f48b3e5b')
+sha512sums=('acd0c0434d3e98fd97c22b77cabdb02f46e5b68504b751e0fce4886b35b751c1ac89030d380c2b94b096b73ea96b419168c4ecd1b4c8651535cae93de0e81e58')
+options=('!makeflags' '!emptydirs' 'staticlibs')
 
 build() {
   cd "${srcdir}/ocaml-${pkgver}"
