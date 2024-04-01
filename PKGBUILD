@@ -2,7 +2,7 @@
 # Contributor: Labello <sebastian.semper@tu-ilmenau.de>
 _base=fastmat
 pkgname=python-${_base}
-pkgver=0.2.2
+pkgver=0.2.2.post0
 pkgrel=1
 pkgdesc="fast linear transforms in Python"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=(Apache2)
 depends=(python-scipy)
 makedepends=(cython python-setuptools)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('02f44bc4363c0b056154a205e1f7e0cf7a98187dc5556586769832489ac7d7d2315463ddabbed1d5d266316374d990ee3eb1bd92ee73bf8b55518df7223263da')
+sha512sums=('e686bfcdec860a8a0b2f21a1550090fbb45ed3d2fd457a4dbb7644ac189edc8e41b7509ee57dbd478a0c70378183b0d93aeb98f0c97289c3bfbcbbbcd1e77565')
 
 build() {
   cd ${_base}-${pkgver}
