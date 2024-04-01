@@ -1,32 +1,64 @@
-# Maintainer: Julien Savard <juju@juju2143.ca>
+# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Contributor: Julien Savard <juju@juju2143.ca>
 pkgname=numworks-epsilon
-pkgver=15.3.2
+pkgver=22.2.0
 pkgrel=1
 pkgdesc="A simulator for the Numworks graphic calculator (Epsilon firmware)"
 arch=('x86_64')
 url="https://www.numworks.com/resources/engineering/software/"
-license=('custom:CC-BY-NC-SA')
-groups=()
-depends=('gcc-libs' 'libxext' 'libjpeg-turbo')
-makedepends=('freetype2' 'imagemagick' 'gendesk')
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-options=()
-install=
-changelog=
-source=("$pkgname-$pkgver.tar.gz::https://github.com/numworks/epsilon/archive/$pkgver.tar.gz")
-md5sums=('cb887debd9f577fe58c0e4d290e50277')
+license=(
+	'Apache-2.0'
+	'CC-BY-NC-ND-4.0'
+	'LicenseRef-numworks'
+	'MIT'
+	'Zlib'
+)
+depends=(
+	'gcc-libs'
+	'libjpeg-turbo'
+	'libpng'
+	'libxext'
+	'sdl2'
+)
+makedepends=(
+	'freetype2'
+	'gendesk'
+	'imagemagick'
+	'librsvg'
+	'libwebp'
+	'python-lz4'
+)
+
+source=(
+	"$pkgname-$pkgver.tar.gz::https://github.com/numworks/epsilon/archive/$pkgver.tar.gz"
+	'LICENSE.micropython::https://raw.githubusercontent.com/micropython/micropython/5114f2c1ea7c05fc7ab920299967595cfc5307de/LICENSE'
+	'LICENSE.micropython-ulab::https://raw.githubusercontent.com/v923z/micropython-ulab/65c941a8059afe1cfd6f4c2b15d0ade798dc24f2/LICENSE'
+	'devendor-sdl.patch'
+	'LICENSE.regularized_incomplete_beta_function'
+)
+
+md5sums=(
+	'1ba5f66dd8abb28b61e7ae3a29771069'
+	'b5c7595f793a0c8b7758f4ff0152cffb'
+	'd9881740850078297bfa270e674e6e99'
+	'e45599b7d190abffbb7019390a8e8ab3'
+	'f377d0e994b14a12313a724b821e3194'
+)
 
 prepare() {
 	cd "epsilon-$pkgver"
+
+	# We can safely devendor. See also:
+	# https://github.com/numworks/epsilon/blob/117eea7915082a63551e0caf44aa63f1a0216ecc/ion/src/simulator/external/README.md#sdl-version-compatibilities
+	patch -p1 < ../devendor-sdl.patch
+
 	convert -background "#FFB734" "ion/src/simulator/assets/logo.svg" "$pkgname.png"
 	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name "Numworks Epsilon" --icon "$pkgname" --exec "$pkgname" --categories "Education;Emulator"
 }
 
 build() {
 	cd "epsilon-$pkgver"
+	awk '/^## Copyright/,0' README.md > LICENSE
 	make PLATFORM=simulator clean
 	make PLATFORM=simulator
 }
@@ -34,7 +66,12 @@ build() {
 package() {
 	cd "epsilon-$pkgver"
 	install -Dm755 output/release/simulator/linux/epsilon.bin "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -D -m 644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+		'../LICENSE.micropython' \
+		'../LICENSE.micropython-ulab' \
+		'LICENSE' \
+		'../LICENSE.regularized_incomplete_beta_function'
+
 	install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }

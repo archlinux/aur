@@ -1,0 +1,41 @@
+diff --git a/ion/src/simulator/Makefile b/ion/src/simulator/Makefile
+index 88327bce1e..0427331e1a 100644
+--- a/ion/src/simulator/Makefile
++++ b/ion/src/simulator/Makefile
+@@ -57,7 +57,6 @@ $(eval $(call rule_for, \
+ ion_src += $(BUILD_DIR)/ion/src/simulator/shared/layout.cpp
+ 
+ include ion/src/simulator/$(TARGET)/Makefile
+-include ion/src/simulator/external/Makefile
+ 
+ SFLAGS += -DION_EVENTS_JOURNAL
+ 
+diff --git a/ion/src/simulator/linux/Makefile b/ion/src/simulator/linux/Makefile
+index 8081022c26..b4895191ac 100644
+--- a/ion/src/simulator/linux/Makefile
++++ b/ion/src/simulator/linux/Makefile
+@@ -1,13 +1,5 @@
+ ION_SIMULATOR_FILES = 1
+ 
+-# The following lines allow us to use our own SDL_config.h
+-# First, make sure an error is raised if we ever use the standard SDL_config.h
+-SFLAGS += -DUSING_GENERATED_CONFIG_H
+-# Then use our very own include dir if either SDL.h or SDL_config.h are included
+-# Note that this one will appear before ion/src/simulator/external/sdl/include
+-# which is added later on in the SDL Makefile
+-SFLAGS += -Iion/src/simulator/linux/include
+-
+ ion_src += $(addprefix ion/src/simulator/linux/, \
+   assets.s \
+   platform_files.cpp \
+@@ -15,8 +7,8 @@ ion_src += $(addprefix ion/src/simulator/linux/, \
+   platform_language.cpp \
+ )
+ 
+-SFLAGS += $(shell pkg-config libpng libjpeg --cflags)
+-LDFLAGS += $(shell pkg-config libpng libjpeg --libs)
++SFLAGS += $(shell pkg-config libpng libjpeg sdl2 --cflags)
++LDFLAGS += $(shell pkg-config libpng libjpeg sdl2 --libs)
+ 
+ ifeq ($(VALGRIND),1)
+ SFLAGS += $(shell pkg-config valgrind --cflags)
