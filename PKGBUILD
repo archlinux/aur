@@ -2,7 +2,7 @@
 
 pkgname=simplex-desktop-appimage
 pkgver=5.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The latest release of Simplex Desktop, the first messaging platform operating without user identifiers of any kind - 100% private by design!"
 arch=('x86_64')
 url="https://simplex.chat/"
@@ -50,8 +50,6 @@ package() {
     # disable appimage desktop integration: https://github.com/AppImage/AppImageSpec/blob/master/draft.md#desktop-integration
     # disable AppimageLauncher integration prompt
     # https://github.com/TheAssassin/AppImageLauncher/issues/78#issuecomment-466390939
-    echo "-- Change desktop file execution"
-    sed -i -E "s|Exec=AppRun --no-sandbox %U|Exec=env DESKTOPINTEGRATION=0 APPIMAGELAUNCHER_DISABLE=1 /usr/bin/simplex --no-sandbox|" "squashfs-root/${_squashfs_desktop_file}"
     echo "-- Install desktop file"
     install -Dm644 "squashfs-root/${_squashfs_desktop_file}" "${pkgdir}/${_desktop_file}"
     echo "-- Install appimage"
