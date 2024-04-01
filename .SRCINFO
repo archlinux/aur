@@ -1,12 +1,10 @@
 pkgbase = xz-5.4
 	pkgdesc = xz 5.4.x as a workaround for the recently known vulnerability
 	pkgver = 5.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/lzmautils/
 	arch = x86_64
 	license = GPL-2.0-or-later
-	checkdepends = cmake
-	makedepends = cmake
 	makedepends = make
 	makedepends = tar
 	makedepends = gzip
