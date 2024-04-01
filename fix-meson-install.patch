@@ -1,0 +1,24 @@
+From 7877983acb3b1a27e900f7e7aea89cb7b29a817d Mon Sep 17 00:00:00 2001
+From: Bradford Boyle <bradfordboyle@users.noreply.github.com>
+Date: Tue, 26 Mar 2024 15:29:37 -0700
+Subject: [PATCH] Tag pgbackrest build target in meson as installable.
+
+By default meson does not install anything. Targets can be installed by tagging them as installable in the build definition.
+---
+ doc/xml/release/2024/2.52.xml   | 14 ++++++++++++++
+ doc/xml/release/contributor.xml |  5 +++++
+ src/meson.build                 |  3 ++-
+ 3 files changed, 21 insertions(+), 1 deletion(-)
+
+diff --git a/src/meson.build b/src/meson.build
+index 3f86c8b9ae..f34ccb9bf4 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -284,5 +284,6 @@ executable(
+         lib_xml,
+         lib_z,
+         lib_zstd,
+-    ]
++    ],
++    install: true,
+ )
