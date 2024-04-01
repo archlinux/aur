@@ -2,14 +2,14 @@
 _pkgname=dynamorio
 pkgname=$_pkgname-git
 pkgdesc="A dynamic instrumentation tool platform"
-pkgver=10.0.r6140.3fc09e86e
-pkgrel=2
+pkgver=10.0.r6355.b9a0ba0e7
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/DynamoRIO/dynamorio"
 license=('BSD' 'custom:libelftc' 'LGPL2.1')
 groups=()
 depends=('gcc-libs' 'zlib' 'libunwind' 'snappy' 'lz4' 'perl' 'qt5-base' 'python')
-makedepends=('git' 'cmake' 'doxygen-git')
+makedepends=('git' 'cmake' 'doxygen')
 provides=("$_pkgname=$pkgver")
 options=(!strip !lto)
 source=(
