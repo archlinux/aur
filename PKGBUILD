@@ -3,14 +3,18 @@
 # Contributor: IgnorantGuru http://igurublog.wordpress.com/contact-ignorantguru/
 
 pkgname=spacefm-thermitegod-git
-pkgver=2.1.0.r846.g9e6269d2
-pkgrel=1
+pkgver=2.1.0.r1339.g8dcdad46
+pkgrel=2
 pkgdesc="Multi-panel tabbed file manager"
 arch=(x86_64)
 url="https://github.com/thermitegod/spacefm"
 license=(GPL3)
-depends=(gtk3 ffmpegthumbnailer exo fmt spdlog glibmm-2.68 pugixml zeromq zmqpp ztd-git python libsigc++-3.0)
-makedepends=(git meson cmake magic_enum toml11 fish nlohmann-json cli11)
+depends=(gtk3 gtkmm3 ffmpegthumbnailer exo fmt spdlog pugixml zeromq zmqpp python concurrencpp libgexiv2
+
+        # namcap implicit depends
+        gdk-pixbuf2 ffmpeg glibmm openssl libsigc++ systemd-libs pango glib2 hicolor-icon-theme glibc gcc-libs)
+depends+=(libspdlog.so)
+makedepends=(git meson cmake magic_enum toml11 fish nlohmann-json cli11 libsigc++-3.0)
 #cmake required to find toml11
 #optdepends=('dbus: dbus integration'
 #            'util-linux: disk eject support'
@@ -25,7 +29,7 @@ makedepends=(git meson cmake magic_enum toml11 fish nlohmann-json cli11)
 #            'gphotofs: mount cameras'
 #            'ifuse: mount your iPhone/iPod Touch'
 #            'fuseiso: mount ISO files')
-conflicts=(spacefm spacefm-thermitegod)
+conflicts=(spacefm spacefm-thermitegod ztd-git)
 provides=(spacefm spacefm-thermitegod)
 source=("spacefm-thermitegod::git+https://github.com/thermitegod/spacefm.git")
 sha256sums=('SKIP')
@@ -37,7 +41,7 @@ pkgver() {
 
 build() {
   cd "spacefm-thermitegod"
-  arch-meson build
+  arch-meson build --wrap-mode default
   ninja -C build
 }
 
