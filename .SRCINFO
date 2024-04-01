@@ -1,0 +1,14 @@
+pkgbase = archub-bin
+	pkgdesc = Command-line tool designed for managing packages in AUR
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/nbebaw/Archub
+	arch = x86_64
+	license = MIT
+	depends = git
+	provides = archub
+	conflicts = archub
+	source_x86_64 = archub-0.0.5::https://github.com/nbebaw/Archub/releases/download/v0.0.5/archub
+	sha256sums_x86_64 = c0b0d6292f082f6a16f500c596d6b9d79e4b3859a76814b357756f782f6aa6fa
+
+pkgname = archub-bin
