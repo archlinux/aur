@@ -3,7 +3,7 @@
 
 pkgname=python-ginga
 _pyname=${pkgname#python-}
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="A viewer for astronomical data FITS (Flexible Image Transport System) files."
 arch=('any')
@@ -19,7 +19,7 @@ checkdepends=('python-pytest-astropy-header'
               'python-astlib'
               'python-starlink-pyast')  # pillow <- matplotlib, scipy required by astlib
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('10e1e7300c179302a385b29881d66fd0')
+md5sums=('a0824e37667507a432bfc377cf1caf63')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -45,6 +45,7 @@ package() {
              'python-pillow>=9.2'
              'python-yaml>=6.0'
              'python-tomli>=2.0.1'
+             'python-packaging>=23.1'
              'hicolor-icon-theme')
     optdepends=('python-scipy>=0.18.1: required by Pick, some built-in auto cuts algorithms used when you load an image'
                 'python-matplotlib>=3.4: required by Pick, Cuts, Histogram, LineProfile'
