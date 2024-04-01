@@ -1,0 +1,4 @@
+[python-phiml]
+source = "github"
+github = "tum-pbs/PhiML"
+use_latest_release = true
