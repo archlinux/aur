@@ -3,12 +3,14 @@ pkgbase = awk-language-server
 	pkgver = 0.10.5
 	pkgrel = 1
 	url = https://github.com/Beaglefoot/awk-language-server
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = jq
 	makedepends = yarn
 	makedepends = typescript
 	depends = nodejs
+	depends = glibc
+	depends = gcc-libs
 	source = awk-language-server-0.10.5.zip::https://github.com/Beaglefoot/awk-language-server/archive/_commit.zip
 	sha256sums = 697cf54e371baefe416212707921e1cb4d54a20b536afa7b563e0641d2a24d61
 
