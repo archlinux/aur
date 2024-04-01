@@ -1,17 +1,17 @@
 pkgbase = python-tweakwcs-doc
 	pkgdesc = Documentation for tweakwcs
-	pkgver = 0.8.6
+	pkgver = 0.8.7
 	pkgrel = 1
 	url = https://tweakwcs.readthedocs.io
 	arch = any
-	license = BSD
-	makedepends = python-tweakwcs=0.8.6
+	license = BSD-3-Clause
+	makedepends = python-tweakwcs=0.8.7
 	makedepends = python-setuptools
 	makedepends = python-sphinx-automodapi
 	makedepends = python-numpydoc
 	makedepends = python-stsci_rtd_theme
 	makedepends = texlive-latexextra
-	source = https://github.com/spacetelescope/tweakwcs/archive/0.8.6.tar.gz
-	md5sums = d8aefda62b02546e85e939ffb8012a8c
+	source = https://github.com/spacetelescope/tweakwcs/archive/0.8.7.tar.gz
+	md5sums = e09985105450bfb0f2b43c58e2749272
 
 pkgname = python-tweakwcs-doc
