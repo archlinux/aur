@@ -1,6 +1,6 @@
 pkgbase = kwin-scripts-ultrawidewindows
 	pkgver = 5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lucmos/UltrawideWindows
 	arch = any
 	license = GPL-2.0-only
