@@ -1,6 +1,6 @@
 pkgbase = inxi-perl-git
 	pkgdesc = Pinxi, development branch of inxi, a full featured CLI system information tool
-	pkgver = r5884.930a63d5
+	pkgver = r6144.60b6fbb9
 	pkgrel = 1
 	url = https://smxi.org/docs/inxi.htm
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = inxi-perl-git
 	depends = perl
 	depends = procps-ng
 	optdepends = bluez-tools: bt-adapter: -E bluetooth data (if no hciconfig)
-	optdepends = bluez-utils-compat: hciconfig: -E bluetooth HCI data
+	optdepends = bluez-deprecated-tools: hciconfig: -E bluetooth HCI data
 	optdepends = bind: -i wlan IP
 	optdepends = dmidecode: inxi -M if no sys machine data
 	optdepends = file: inxi -o unmounted file system

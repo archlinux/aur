@@ -2,7 +2,7 @@
 # Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=inxi-perl-git
-pkgver=r5884.930a63d5
+pkgver=r6144.60b6fbb9
 pkgrel=1
 pkgdesc="Pinxi, development branch of inxi, a full featured CLI system information tool"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(coreutils pciutils perl procps-ng)
 makedepends=(git)
 optdepends=(
         "bluez-tools: bt-adapter: -E bluetooth data (if no hciconfig)"
-        "bluez-utils-compat: hciconfig: -E bluetooth HCI data"
+        "bluez-deprecated-tools: hciconfig: -E bluetooth HCI data"
         "bind: -i wlan IP"
         "dmidecode: inxi -M if no sys machine data"
         "file: inxi -o unmounted file system"
