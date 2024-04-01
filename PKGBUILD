@@ -1,25 +1,26 @@
 # Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 # This PKGBUILD is heavily inspired by the bash-language-server PKGBUILD
 pkgname=awk-language-server
-pkgver=0.10.0
+pkgver=0.10.5
 pkgrel=1
 pkgdesc='Language server for the AWK programming language'
 arch=(any)
 url="https://github.com/Beaglefoot/awk-language-server"
 license=(MIT)
-depends=(nodejs)
+depends=('nodejs')
 makedepends=(jq yarn typescript)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/server-$pkgver.tar.gz")
-sha256sums=('e61b5e6af5cda2959b5927a5ae5adad890df24337a6d869efe4922f500a842ea')
+_commit=55bfe7a07ba1e282b2f9cbc23173246ae9d6596c/
+source=("$pkgname-$pkgver.zip::$url/archive/_commit.zip")
+sha256sums=('697cf54e371baefe416212707921e1cb4d54a20b536afa7b563e0641d2a24d61')
 
 build() {
-	cd "$pkgname-server-$pkgver"
+	cd "$pkgname-$_commit"
 	yarn --frozen-lockfile
 	yarn run build:server
 }
 
 package() {
-	cd "$pkgname-server-$pkgver/server"
+	cd "$pkgname-$_commit/server"
 
 	# Emulate `npm prune --production`
 	cp package.json{,.bak}
@@ -29,10 +30,10 @@ package() {
 
 	install -d "$pkgdir/usr/lib/$pkgname"
 	cd "$pkgdir/usr/lib/$pkgname"
-	cp -a "$srcdir/$pkgname-server-$pkgver/server/"* .
+	cp -a "$srcdir/$pkgname-$_commit/server/"* .
 	chmod +x out/cli.js
 
-	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$srcdir/$pkgname-server-$pkgver/LICENSE"
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$srcdir/$pkgname-$_commit/LICENSE"
 
 	install -d "$pkgdir/usr/bin"
 	ln -s "/usr/lib/$pkgname/out/cli.js" "$pkgdir/usr/bin/$pkgname"
