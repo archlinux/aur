@@ -4,8 +4,8 @@
 
 pkgname='headsetcontrol'
 _pkgname='HeadsetControl'
-pkgver=2.7.0
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc='Sidetone and Battery status for Logitech G930, G533, G633, G933 SteelSeries Arctis 7/PRO 2019 and Corsair VOID (Pro) in Linux and MacOSX '
 arch=('x86_64')
 url='https://github.com/Sapd/HeadsetControl'
@@ -14,21 +14,20 @@ license=('GPL3')
 depends=('hidapi')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('57ef523fa469b77f93d31bb2283d4fdb2e612c7f9822f958fb1f59fd67149529')
+sha256sums=('63bfd147c82277bfcf2314ad2b01ca4e4bf06e1d5516e01ee39232661f4d5144')
 
 build() {
-  export CFLAGS+=" ${CPPFLAGS}"
-  export CXXFLAGS+=" ${CPPFLAGS}"
+  export CFLAGS+=" ${CPPFLAGS} -Wno-error=unused-result"
+  export CXXFLAGS+=" ${CPPFLAGS} -Wno-error=unused-result"
   cmake -B 'build' -S "${_pkgname}-${pkgver}" \
     -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -Wno-dev
-  make -C 'build'
+    -DCMAKE_INSTALL_PREFIX='/usr'
+  cmake --build 'build'
 }
 
 package() {
-  make DESTDIR="${pkgdir}" PREFIX='/usr' -C 'build' install
-  install -Dvm644 "${_pkgname}-${pkgver}/README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
+  DESTDIR="${pkgdir}" cmake --install build
+#   install -Dvm644 "${_pkgname}-${pkgver}/README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
