@@ -5,7 +5,7 @@
 pkgname=papis-git
 _pkgname=papis
 pkgver=0.13.r410.g75316b25
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line document and bibliography manager"
 arch=('any')
 url="https://github.com/papis/papis"
@@ -38,7 +38,6 @@ depends=('python'
          'python-requests'
          'python-slugify'
          'python-stevedore'
-         'python-tqdm'
          'python-typing_extensions'
         )
 optdepends=(
@@ -78,7 +77,6 @@ checkdepends=(
     python-types-pygments
     python-types-requests
     python-types-setuptools
-    python-types-tqdm
     )
 provides=("papis")
 conflicts=("papis")
