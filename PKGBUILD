@@ -2,13 +2,13 @@
 
 pkgbase=decasify
 pkgname=("$pkgbase" "lua-$pkgbase" "lua53-$pkgbase" "lua52-$pkgbase" "lua51-$pkgbase")
-pkgver=0.4.5
+pkgver=0.4.6
 _rockrel=1
 pkgrel=1
 pkgdesc='cast strings to title-case according to locale specific style guides including Turkish'
 arch=(x86_64)
 url="https://github.com/alerque/$pkgbase"
-license=(GPL3)
+license=(GPL-3.0-only)
 depends=(gcc-libs
          glibc)
 makedepends=(cargo
@@ -19,15 +19,15 @@ makedepends=(cargo
              luarocks
              jq)
 _archive="$pkgbase-$pkgver"
-source=("$url/releases/download/v$pkgver/$_archive.tar.xz")
-sha256sums=('84a8c87f90666ad2807968613c5b54ee734e02e12e896e80786ea1085426b844')
+source=("$url/releases/download/v$pkgver/$_archive.tar.zst")
+sha256sums=('e64c6aeb20e4de3c28d2b15ad28c340b28ab3b0804393cfaf5e159d608f0e21d')
 
 prepare() {
 	cd "$_archive"
 	sed Makefile.am -i \
 		-e 's/cargo \(build\|install\|test\)/cargo --offline \1/'
 	autoreconf
-	cargo fetch --locked
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -46,28 +46,25 @@ package_decasify() {
 	make DESTDIR="$pkgdir" install
 }
 
-_package_helper() {
+_package() {
 	cd "$_archive"
-	luarocks --lua-version="$1" --tree="$pkgdir/usr/" \
-		make --deps-mode=none --no-manifest "rockspecs/$pkgbase-$pkgver-$_rockrel.rockspec"
+	depends=("${pkgname%%-*}" "${_luadeps[@]/#/${pkgname%%-*}-}")
+	luarocks --lua-version "$1" --tree "$pkgdir/usr/" \
+		make --deps-mode none --no-manifest "rockspecs/$_archive-$_rockrel.rockspec"
 }
 
 package_lua-decasify() {
-	depends=(lua "${_luadeps[@]/#/lua-}")
-	_package_helper 5.4
+	_package 5.4
 }
 
 package_lua51-decasify() {
-	depends=(lua51 "${_luadeps[@]/#/lua51-}")
-	_package_helper 5.1
+	_package 5.1
 }
 
 package_lua52-decasify() {
-	depends=(lua52 "${_luadeps[@]/#/lua52-}")
-	_package_helper 5.2
+	_package 5.2
 }
 
 package_lua53-decasify() {
-	depends=(lua53 "${_luadeps[@]/#/lua53-}")
-	_package_helper 5.3
+	_package 5.3
 }
