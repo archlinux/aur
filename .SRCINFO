@@ -1,6 +1,6 @@
 pkgbase = ttop
-	pkgdesc = System monitoring tool with TUI, historical data service and triggers
-	pkgver = 1.4.4
+	pkgdesc = System monitoring tool with historical data service, triggers and top-like TUI
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/inv2004/ttop
 	install = .INSTALL
@@ -8,8 +8,10 @@ pkgbase = ttop
 	license = MIT
 	makedepends = git
 	makedepends = nim
-	provides = ttop
-	source = git+https://github.com/inv2004/ttop
+	backup = etc/ttop.toml
+	source = git+https://github.com/inv2004/ttop.git#tag=v1.5.0
+	source = .INSTALL
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = ttop

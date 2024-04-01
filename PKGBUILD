@@ -1,47 +1,44 @@
-# Maintainer: inv2004 (https://github.com/inv2004)
-
 pkgname=ttop
-pkgver=1.4.4
+pkgver=1.5.0
 pkgrel=1
-pkgdesc="System monitoring tool with TUI, historical data service and triggers"
-arch=('x86_64')
+pkgdesc="System monitoring tool with historical data service, triggers and top-like TUI"
 url="https://github.com/inv2004/ttop"
 license=("MIT")
-makedepends=(
-    "git"
-    "nim"
-)
-provides=($pkgname)
-source=(
-    "git+"$url
-)
-sha256sums=("SKIP")
+arch=('x86_64')
+makedepends=("git" "nim")
+source=("git+$url.git#tag=v$pkgver"
+        ".INSTALL")
+sha256sums=('SKIP'
+            'SKIP')
 install=".INSTALL"
-
-pkgver() {
-    cd "${srcdir}/${pkgname}"
-    VER=$(git tag | sort -V | tail -1)
-    printf "%s" "${VER#v}"
-}
+backup=("etc/ttop.toml")
 
 prepare() {
-    cd "${srcdir}/${pkgname}"
-    VER=$(git tag | sort -V | tail -1)
-    git checkout "$VER"
+# Shortcut
+  echo -e "[Desktop Entry]
+Name=ttop
+Exec=ttop
+Icon=ttop
+Terminal=true
+Type=Application
+Comment=System monitoring tool with historical data service, triggers and top-like TUI" > ttop.desktop
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
-    nimble -y -d:release build
-    nim r src/ttop/onoff.nim
+  export NIMBLE_DIR="$srcdir/NIMBLE_CACHE"
+  cd ttop
+  nimble -y -d:release build
+  nim r src/ttop/onoff.nim
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
-    install -D $pkgname "${pkgdir}/usr/bin/${pkgname}"
-    mkdir -p "${pkgdir}/usr/lib/systemd/system"
-    install -m644 usr/lib/systemd/system/* "${pkgdir}/usr/lib/systemd/system"
-    mkdir -p "${pkgdir}/etc"
-    install -m644 etc/* "${pkgdir}/etc"
-    mkdir -p "${pkgdir}/var/log/ttop"
+  mkdir -p "$pkgdir/usr/lib/systemd/system" "$pkgdir/etc" "$pkgdir/var/log/ttop"
+  install -Dm644 ttop.desktop -t "$pkgdir/usr/share/applications"
+  cd ttop
+  install -Dm644 .github/images/screen.png "$pkgdir/usr/share/pixmaps/ttop.png"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/ttop"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/ttop"
+  install -Dm644 usr/lib/systemd/system/* "$pkgdir/usr/lib/systemd/system"
+  install -Dm644 etc/* "$pkgdir/etc"
+  install -Dm755 ttop -t "$pkgdir/usr/bin"
 }
