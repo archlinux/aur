@@ -1,7 +1,7 @@
 pkgbase = ruby-prawn-table
 	pkgdesc = Provides support for tables in Prawn
 	pkgver = 0.2.2
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/prawnpdf/prawn-table
 	arch = any
 	license = GPL-2.0-only
@@ -14,7 +14,6 @@ pkgbase = ruby-prawn-table
 	makedepends = ruby-yard
 	makedepends = rubygems
 	depends = ruby
-	depends = ruby-matrix
 	depends = ruby-prawn
 	options = !emptydirs
 	source = ruby-prawn-table-0.2.2.tar.gz::https://github.com/prawnpdf/prawn-table/archive/refs/tags/0.2.2.tar.gz

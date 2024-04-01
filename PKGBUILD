@@ -4,7 +4,7 @@
 pkgname=ruby-prawn-table
 _name=${pkgname#ruby-}
 pkgver=0.2.2
-pkgrel=7
+pkgrel=8
 pkgdesc="Provides support for tables in Prawn"
 arch=(any)
 url="https://github.com/prawnpdf/prawn-table"
@@ -15,7 +15,6 @@ license=(
 )
 depends=(
   ruby
-  ruby-matrix
   ruby-prawn
 )
 makedepends=(
