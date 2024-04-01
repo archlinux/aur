@@ -1,0 +1,16 @@
+pkgbase = spok-bin
+	pkgdesc = Sans Password or Key (SPoK) - An easier way for remote server authentication
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/devlup-labs/spok
+	license = MIT
+	conflicts = spok
+	provides = spok
+	arch = aarch64
+	source_aarch64 = https://github.com/devlup-labs/spok/releases/download/0.1.0/spok_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0b31543f68d88325a669d900a16a584e600fe543594ba9772a86f4af2b753202
+	arch = x86_64
+	source_x86_64 = https://github.com/devlup-labs/spok/releases/download/0.1.0/spok_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = ada1340486fa7c294b08f116eb9cb74df50f3e48c5d9430ce2cdd156ba952894
+	
+pkgname = spok-bin
