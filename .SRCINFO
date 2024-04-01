@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-openjpeg2
-	pkgdesc = An open source JPEG 2000 codec, version 2.5.0 (mingw-w64)
-	pkgver = 2.5.0
+	pkgdesc = An open source JPEG 2000 codec, version 2.5.2 (mingw-w64)
+	pkgver = 2.5.2
 	pkgrel = 1
 	url = https://www.openjpeg.org
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = mingw-w64-openjpeg2
 	options = !strip
 	options = staticlibs
 	options = !buildflags
-	source = openjpeg-2.5.0.tar.gz::https://github.com/uclouvain/openjpeg/archive/v2.5.0.tar.gz
+	source = openjpeg-2.5.2.tar.gz::https://github.com/uclouvain/openjpeg/archive/v2.5.2.tar.gz
 	source = 0003-versioned-dlls.mingw.patch
-	sha256sums = 0333806d6adecc6f7a91243b2b839ff4d2053823634d4f6ed7a59bc87409122a
-	sha256sums = a966dc4aeb9b0b768d4cb411a3bce792c84913b3be403c25efa8f8daa8b13cc8
+	sha256sums = 90e3896fed910c376aaf79cdd98bdfdaf98c6472efd8e1debf0a854938cbda6a
+	sha256sums = 787cee06732de997a3a99b6a40676ea9335388d3a706071b6f266f7c47822197
 
 pkgname = mingw-w64-openjpeg2
