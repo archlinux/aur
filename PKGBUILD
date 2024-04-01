@@ -4,7 +4,7 @@
 # Contributor: Dan Fuhry <dan@fuhry.com>
 
 pkgname=envoyproxy
-pkgver=1.29.1
+pkgver=1.29.2
 pkgrel=1
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ source=(
     0001-arch-dynamically-link-libpsl.patch
     0002-patch-cel-cpp-to-not-break-build.patch
 )
-sha512sums=('912caf9d305832998becb0990d02238d7aeb2d12cece0e1882d65288aaa236fb456e3a1d16ab7bb95d21d92b6e6d0f92ae985b6d42f1bc6e35ed67d25fb4823b'
+sha512sums=('40db5d45e8620680a0aece41de7bf8d09ac81d0bf339a77a3d70baca61823c4aa4e8e951a2c57f417ebe4fecda8acf17edda593292170b7c5f39e5b753f4579a'
             '82a695c4c5ebd3f154acd424e00c5b9be27d809ed895870650b1ea0d1a757104753c242b67718bb68eef128d507668af2a5c7b101a64c346f27a9d0d5ad33cb9'
             '6306c91abe482533dbc11aa4c39b0fc0ca145893c6692d56d5ecc77a8bf195e9495151c417ffa5d0702b85c0ad8a96133e1ec8fb01d04b1cdf5db9d71f51216f')
 
