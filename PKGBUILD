@@ -1,7 +1,7 @@
 # Maintainer: Amir Zarrinkafsh <nightah at me dot com>
 pkgname=authelia
 pkgver=4.38.7
-pkgrel=1
+pkgrel=2
 pkgdesc="The Cloud ready multi-factor authentication portal for your Apps."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/authelia/authelia"
@@ -25,7 +25,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/a
 sha256sums=('b15d764ee48271041f4146f6460738734c882cad3bac4c9a57ebc154e5c67931')
 
 build() {
-  export GOPATH="$srcdir/gopath" PATH="$PATH:$srcdir/gopath/bin" _pkgver="v${pkgver}"
+  export GOPATH="$srcdir/gopath" PATH="$PATH:$srcdir/gopath/bin" _pkgver="v${pkgver}" CGO_CPPFLAGS="-D_FORTIFY_SOURCE=2 -fstack-protector-strong" CGO_LDFLAGS="-Wl,-z,relro,-z,now"
   cd "$srcdir/$pkgname-$pkgver/web"
 
   COMMIT=$(curl -s https://api.github.com/repos/authelia/authelia/tags | jq -r '.[] | select(.name==env._pkgver) | .commit.sha')
@@ -38,7 +38,14 @@ build() {
   pnpm build
   cd ..
   cp -R api internal/server/public_html/
-  go build -ldflags "-w ${XOPTIONS}" -trimpath -o authelia cmd/authelia/*.go
+  go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -s -w ${XOPTIONS}" \
+     -o authelia \
+     cmd/authelia/*.go
 }
 
 package() {
