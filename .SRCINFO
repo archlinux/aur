@@ -1,7 +1,7 @@
 pkgbase = petsc
 	pkgdesc = Portable, extensible toolkit for scientific computation
 	pkgver = 3.21.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://petsc.org
 	install = petsc.install
 	arch = i686
@@ -25,7 +25,6 @@ pkgbase = petsc
 	depends = zlib
 	depends = python-numpy
 	depends = python-mpi4py
-	optdepends = trilinos: support for trilinos
 	optdepends = hypre: support for HYPRE
 	optdepends = kokkos: support Kokkos
 	optdepends = metis: support for METIS
