@@ -1,92 +1,52 @@
-# Maintainer: Anna <morganamilo@gmail.com>
+# Maintainer:
+# Contributor: Anna <morganamilo@gmail.com>
 
 pkgname=superproductivity
-_reponame=super-productivity
-pkgver=6.4.0
+pkgver=8.0.1
 pkgrel=1
-pkgdesc='To Do List / Time Tracker with Jira Integration.'
+pkgdesc="ToDo List / Time Tracker / Personal Jira Task Manager"
 arch=('x86_64')
-url="http://super-productivity.com/"
+url="https://super-productivity.com"
 license=('MIT')
-depends=('alsa-lib' 'gtk3' 'gconf' 'libxss' 'libxtst' 'nss' 'nspr' 
-'xdg-utils' 'xprintidle' 'libnotify' 'libappindicator-gtk3' 'electron>=10')
-makedepends=('npm' 'yarn' 'python')
-provides=("${pkgname}")
-conflicts=("${pkgname}-git")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/johannesjo/${_reponame}/archive/v${pkgver}.tar.gz"
+depends=('bash' 'electron' 'hicolor-icon-theme')
+makedepends=('git' 'npm')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/johannesjo/super-productivity/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-md5sums=('9ca2eac409c4a5b7a4fb175149191ea9'
-         '2497ef16691da7fe4dc3c9d6ce6a8bcf'
-         '6532676c1c13ae77f24205b3e3e97db9')
+sha256sums=('a97c79883b75342cafb22bb3a440c6e9fd8956a3d8275c599c2f7b765e4d176c'
+            '54e5773ce27144d4f4a33b0b494fc37b52312c62eeda627882e4b6e328aaa9d9'
+            '9fe6112e3e2150e3c858a7a6f0ec7dbff072d4f4540a6aadcedfd9882d3a94de')
 
 prepare() {
-	cd "${srcdir}/${_reponame}-${pkgver}"
-
-	electronVer=$(electron --version | tail -c +2)
-
-	# Nodejs script for package version replacement
-	replacement=$(cat <<-END
-			d = JSON.parse(fs.readFileSync('package.json'));
-			d.devDependencies.electron = "$electronVer";
-			fs.writeFileSync('package.json', JSON.stringify(d, null, 2));
-	END
-	)
-	# Change electron version to the one in the system
-	node -e "${replacement}"
-
-	# Edit electron builder config so only the linux-unpacked package is built
-	sed -i '/- AppImage/d' electron-builder.yaml
-	# Replacing deb with dir
-	sed -i 's/- deb/dir/' electron-builder.yaml
-	sed -i '/- snap/d' electron-builder.yaml
-	# No snap
-	sed -i '/snap/d' electron-builder.yaml
-	sed -i '/grade: stable/d' electron-builder.yaml
+    cd "super-productivity-${pkgver}"
+    npm install --no-fund
 }
 
 build() {
-	cd "${srcdir}/${_reponame}-${pkgver}"
-
-	yarn --cache-folder "${srcdir}/yarn-cache"
-
-  # Better configuration for npm cache and calling installed binaries
-  export npm_config_cache="${srcdir}/npm_cache"
-  
-	# use system electron version
-	# see: https://wiki.archlinux.org/index.php/Electron_package_guidelines
-	electronDist=$(dirname $(realpath $(which electron)))
-	electronVer=$(electron --version | tail -c +2)
-
-	# Building angular and electron-builder
-	yarn buildFrontend:prod && yarn electron:build
-
-	# Building the app
-	npx electron-builder --linux dir --x64 --dir \
-	 -c.electronDist="${electronDist}" -c.electronVersion="${electronVer}"
+    cd "super-productivity-${pkgver}"
+    npm run build
+    npx electron-builder --linux --x64 --dir \
+        -c.electronDist=/usr/lib/electron \
+        -c.electronVersion="$(tail -c +1 /usr/lib/electron/version)"
 }
 
 package() {
-	cd "${srcdir}"
+    cd "super-productivity-${pkgver}"
 
-	# Install asar file
-	install -Dm644 "${_reponame}-${pkgver}/app-builds/linux-unpacked/resources/app.asar" \
-	 "${pkgdir}/usr/lib/${pkgname}/resources/app.asar"
+    # Install asar file
+    install -Dm644 -t "${pkgdir}/usr/lib/${pkgname}" app-builds/linux-unpacked/resources/*
 
-	# Install start script
-	install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    # Install start script
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
-	# Install shortcut
-	install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    # Install shortcut
+    install -Dm644 -t "${pkgdir}/usr/share/applications" "${srcdir}/${pkgname}.desktop"
 
-	# Installing icons
-	for size in 16 32 48 128 256 512; do
-		icon_file="${_reponame}-${pkgver}/build/icons/${size}x${size}.png"
-		if [ -n "$icon_file" ]; then
-			install -Dm644 "${icon_file}" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
-		fi
-	done
+    # Installing icons
+    for i in 16 32 48 64 128 256 512 1024; do
+        install -Dm644 "build/icons/${i}x${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
+    done
 
-	# Copying Licence
-	install -Dm644 "${_reponame}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    # Copying Licence
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }

@@ -1,9 +1,9 @@
 [Desktop Entry]
+Type=Application
 Name=Super Productivity
+Comment=Super Productivity is an advanced ToDo list app with integrated time-boxing and time tracking capabilities. You can load your task from your calendars and from Jira, Gitlab, GitHub, Open Project and others all into a single ToDo list.
+Icon=superproductivity
 Exec=superproductivity %U
 Terminal=false
-Type=Application
-Icon=superproductivity
-StartupWMClass=superProductivity
-Comment=Personal Task Management App to help you with your daily struggle with JIRA etc.
 Categories=Productivity;Office;Development
+StartupWMClass=superProductivity
