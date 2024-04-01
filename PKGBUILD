@@ -4,7 +4,7 @@
 # Thanks to Fabio Lolix for the patch.
 
 pkgname=applewin-git
-pkgver=1.30.14.1.r1362.g3cda77c6
+pkgver=1.30.14.1.r1485.g1affd619
 pkgrel=1
 pkgdesc="AppleWin Linux port by Audetto - GIT version"
 arch=('x86_64')
@@ -15,6 +15,7 @@ makedepends=('git' 'cmake' 'boost')
 provide=(applewin)
 conflicts=(applewin)
 install=applewin.install
+options=(!debug)
 source=("${pkgname%-git}::git+https://github.com/audetto/AppleWin.git"
         "git+https://github.com/Dax89/QHexView.git"
         "git+https://github.com/ocornut/imgui.git"
