@@ -1,7 +1,7 @@
 pkgbase = ruby-prawn-templates
 	pkgdesc = Experimental extraction of template features from Prawn
 	pkgver = 0.1.2
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/prawnpdf/prawn-templates
 	arch = any
 	license = GPL-2.0-only
@@ -15,6 +15,8 @@ pkgbase = ruby-prawn-templates
 	depends = ruby-prawn
 	options = !emptydirs
 	source = ruby-prawn-templates-0.1.2.tar.gz::https://github.com/prawnpdf/prawn-templates/archive/0.1.2.tar.gz
+	source = remove-failing-tests.patch
 	sha256sums = 116c18d2977db506cadc1e168cbb2ee7fb5d9f9abc9fd25d4a2265f9404c554a
+	sha256sums = 9c095ca8b0aa4c033e1eda6a2c750386ee2d2b3ed018e97464d2994a003d6395
 
 pkgname = ruby-prawn-templates

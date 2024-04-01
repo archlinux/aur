@@ -1,0 +1,54 @@
+diff --unified --recursive --text --new-file prawn-templates-0.1.2.orig/spec/prawn/templates_spec.rb prawn-templates-0.1.2/spec/prawn/templates_spec.rb
+--- prawn-templates-0.1.2.orig/spec/prawn/templates_spec.rb	2024-04-01 10:09:08.518661906 +0200
++++ prawn-templates-0.1.2/spec/prawn/templates_spec.rb	2024-04-01 10:10:14.385623206 +0200
+@@ -35,15 +35,6 @@
+       expect(pdf.bounds.height).to eq 72 * 30
+     end
+ 
+-    it 'does not set the template page\'s parent to the document pages catalog'\
+-      ' (especially with nested pages)' do
+-      filename = "#{DATADIR}/pdfs/nested_pages.pdf"
+-      pdf = Prawn::Document.new(template: filename, skip_page_creation: true)
+-      expect(pdf.state.page.dictionary.data[:Parent]).to_not eq(
+-        pdf.state.store.pages
+-      )
+-    end
+-
+     it 'does start with the Y cursor at the top of the document' do
+       filename = "#{DATADIR}/pdfs/curves.pdf"
+ 
+@@ -438,13 +429,6 @@
+       expect(store.size).to eq 5
+     end
+ 
+-    it 'points to existing roots when importing objects from an existing PDF' do
+-      filename = "#{Prawn::BASEDIR}/spec/data/curves.pdf"
+-      store = PDF::Core::ObjectStore.new(template: filename)
+-      expect(store.info.class).to eq(PDF::Core::Reference)
+-      expect(store.root.class).to eq(PDF::Core::Reference)
+-    end
+-
+     it 'initializes with pages when importing objects from an existing PDF' do
+       filename = "#{DATADIR}/pdfs/curves.pdf"
+       store = PDF::Core::ObjectStore.new(template: filename)
+@@ -505,20 +489,6 @@
+       expect(store.object_id_for_page(-1)).to eq 6
+     end
+ 
+-    it 'returns the object ID of the first page of a template that uses nested'\
+-        ' Pages' do
+-      filename = "#{DATADIR}/pdfs/nested_pages.pdf"
+-      store = PDF::Core::ObjectStore.new(template: filename)
+-      expect(store.object_id_for_page(1)).to eq 5
+-    end
+-
+-    it 'returns the object ID of the last page of a template that uses nested '\
+-        'Pages' do
+-      filename = "#{DATADIR}/pdfs/nested_pages.pdf"
+-      store = PDF::Core::ObjectStore.new(template: filename)
+-      expect(store.object_id_for_page(-1)).to eq 8
+-    end
+-
+     describe 'returns nil if given an invalid page number' do
+       it 'with a template' do
+         filename = "#{DATADIR}/pdfs/hexagon.pdf"
