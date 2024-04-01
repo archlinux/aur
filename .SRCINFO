@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-status-area-horizontal-spacing-git
 	pkgdesc = A GNOME shell extension that reduces the horizontal spacing between icons/indicators in the status area.
 	pkgver = r102.74f4d77
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/p91paul/status-area-horizontal-spacing-gnome-shell-extension
 	arch = any
-	license = LGPL-2.0-or-later
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = glib2
-	depends = gnome-shell>=1:45
+	depends = gnome-shell=1:45
 	provides = gnome-shell-extension-status-area-horizontal-spacing
 	conflicts = gnome-shell-extension-status-area-horizontal-spacing
 	options = !strip
