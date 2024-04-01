@@ -1,23 +1,97 @@
-# Maintainer: Dmitry Kharitonov <arch[at]nano-model[dot]com>
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Contributor: Dmitry Kharitonov <arch[at]nano-model[dot]com>
 # Contributor: kusakata <shohei atmark kusakata period com>
 
-_gemname=pdf-reader
-pkgname=ruby-$_gemname
-pkgver=2.10.0
+pkgname=ruby-pdf-reader
+_name=${pkgname#ruby-}
+pkgver=2.12.0
 pkgrel=1
-pkgdesc='A library for accessing the content of PDF files'
+pkgdesc="Ruby library that implements a PDF parser conforming as much as possible to the PDF specification from Adobe"
 arch=(any)
-url='http://github.com/yob/pdf-reader'
+url="https://github.com/yob/pdf-reader"
 license=(MIT)
-depends=(ruby ruby-ascii85 ruby-ruby-rc4 ruby-hashery ruby-ttfunk ruby-afm)
+depends=(
+  ruby
+  ruby-afm
+  ruby-ascii85
+  ruby-hashery
+  ruby-ruby-rc4
+  ruby-ttfunk
+)
+makedepends=(rubygems)
+checkdepends=(ruby-rspec)
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
-sha256sums=('9f6f3ab26b85f45d4049050b58dc8a6ec58342f943db67653199e2e1ba87901d')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('afb01b71579a0d36d8e0ddb6324251c4f7598dd2cee9c5909801cd953171b928')
+
+_archive="$_name-$pkgver"
+
+prepare() {
+  cd "$_archive"
+
+  # Update gemspec/Gemfile to allow newer version of the dependencies
+  sed -i -E 's|~>|>=|g' "$_name.gemspec"
+  sed -i -E 's|"< 13.0"|">= 13.0"|g' "$_name.gemspec"
+
+  # Remove bundler
+  sed -i '/require "bundler"/d' spec/spec_helper.rb
+  sed -i '/Bundler.setup/d' spec/spec_helper.rb
+}
+
+build() {
+  cd "$_archive"
+
+  local gemdir="$(gem env gemdir)"
+
+  gem build "$_name.gemspec"
+
+  gem install \
+    --local \
+    --verbose \
+    --ignore-dependencies \
+    --no-user-install \
+    --install-dir "tmp_install/$gemdir" \
+    --bindir "tmp_install/usr/bin" \
+    "$_name-$pkgver.gem"
+
+  # Remove unrepreducible files
+  rm --force --recursive --verbose \
+    "tmp_install/$gemdir/cache/" \
+    "tmp_install/$gemdir/gems/$_name-$pkgver/vendor/" \
+    "tmp_install/$gemdir/doc/$_name-$pkgver/ri/ext/"
+
+  find "tmp_install/$gemdir/gems/" \
+    -type f \
+    \( \
+    -iname "*.o" -o \
+    -iname "*.c" -o \
+    -iname "*.so" -o \
+    -iname "*.time" -o \
+    -iname "gem.build_complete" -o \
+    -iname "Makefile" \
+    \) \
+    -delete
+
+  find "tmp_install/$gemdir/extensions/" \
+    -type f \
+    \( \
+    -iname "mkmf.log" -o \
+    -iname "gem_make.out" \
+    \) \
+    -delete
+}
+
+check() {
+  cd "$_archive"
+
+  GEM_HOME="tmp_install/$(gem env gemdir)" rspec
+}
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install --no-document -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/MIT-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/MIT-LICENSE"
+  cd "$_archive"
+
+  cp -a -t "$pkgdir" tmp_install/*
+
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" MIT-LICENSE
 }
