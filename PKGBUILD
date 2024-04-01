@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=timetracker-bin
 _pkgname=TimeTracker
-pkgver=0.9.23
+pkgver=0.9.24
 _electronversion=26
 pkgrel=1
 pkgdesc="An application to track your work time ⏰"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c3a1ee06359e4483b5acc3bacb6e9e129b73880af8bccb99c47383b9b1e6cd0e'
+sha256sums=('150d910ce346ecfb89d5624d3d925b07047c85d9655dd9a31e1d9e640d261907'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
