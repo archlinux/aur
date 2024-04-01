@@ -1,11 +1,11 @@
 # Maintainer: Nikolas Koesling <nikolas@koesling.network>
 
 pkgname=modbus-rtu-client-shm
-pkgrel=1
+pkgrel=2
 pkgver=0.4.0
 pkgdesc="modbus rtu client that stores its data (registers) in shared memory"
 url="https://github.com/NikolasK-source/modbus_rtu_client_shm"
-license=('MIT')
+license=('GPL-3.0-only')
 arch=('x86_64' 'aarch64')
 makedepends=('cmake' 'git' 'cxxopts' 'cxxshm' 'cxxsemaphore' 'libmodbus')
 depends=('cxxshm' 'cxxsemaphore' 'libmodbus')
