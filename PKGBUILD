@@ -1,7 +1,7 @@
 # Maintainer: Junxuan Liao <mikeljx at 126 dot com>
 _pkgname=eepers
 pkgname=${_pkgname}-git
-pkgver=1.2.r18.gc951f11
+pkgver=1.3.r11.g7ff09ac
 pkgrel=1
 pkgdesc="Simple Turn-based Game"
 arch=('x86_64')
@@ -33,7 +33,7 @@ build() {
 
 package() {
     cd "${_pkgname}"
-    install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     find assets -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/usr/share/$_pkgname/{}" \;
