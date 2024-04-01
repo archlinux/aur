@@ -1,30 +1,29 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-braintree
-pkgver=4.27.0
+pkgver=4.28.0
 pkgrel=1
 pkgdesc="Braintree Python Library"
 arch=('any')
 url="https://www.braintreepayments.com/docs/python"
 license=('MIT')
 depends=('python-requests')
-makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/braintree/braintree_python/archive/$pkgver.tar.gz")
-sha512sums=('b0d8c3a30db70df6b1d1b0fa89ac9dfbe6e3d2b4d08b9aa72279274c49307db21cee3f5dcc8bae79a1b4a045159e8fffeef9aa7048437299b3d6553eba1a1e45')
+makedepends=('git' 'python-setuptools')
+source=("git+https://github.com/braintree/braintree_python.git#tag=$pkgver")
+sha512sums=('5d3f1382bf2eaf9ee2d7539aa22e612e9dce3c43c2eb786aedd94d49cb7087b24f7cff3a1904bb47a7d42fe72bdb61b23925a5e77627027c4ce529de6863aec1')
 
 build() {
-  cd braintree_python-$pkgver
+  cd braintree_python
   python setup.py build
 }
 
 check() {
-  cd braintree_python-$pkgver
+  cd braintree_python
   python -m unittest discover tests/unit
 }
 
 package() {
-  cd braintree_python-$pkgver
+  cd braintree_python
   python setup.py install -O1 --root="$pkgdir"
-
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
