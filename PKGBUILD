@@ -3,7 +3,7 @@
 pkgname=cosmic-edit-git
 pkgver=r403.07115fd
 pkgrel=1
-pkgdesc="COSMIC Text Editor"
+pkgdesc="Text editor for the COSMIC desktop"
 arch=('x86_64')
 url="https://github.com/pop-os/cosmic-edit"
 license=('GPL-3.0-or-later')
@@ -14,7 +14,7 @@ depends=(
 )
 makedepends=(
   'cargo'
-  'git' 
+  'git'
   'just'
 )
 provides=("${pkgname%-git}")
