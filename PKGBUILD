@@ -8,7 +8,7 @@ pkgname=(
   gnome-shell-extension-asusctl-gnome
 )
 pkgver=5.0.10
-pkgrel=0.1
+pkgrel=0.3
 pkgdesc="A control daemon, tools, and a collection of crates for interacting with ASUS ROG laptops"
 arch=('x86_64')
 url="https://asus-linux.org"
@@ -19,7 +19,7 @@ makedepends=(
   "fontconfig"
   "git"
   "hicolor-icon-theme"
-  "libappindicator-gtk3"
+  "libayatana-appindicator"
   "libusb"
   "power-profiles-daemon"
   "rust"
@@ -30,14 +30,8 @@ makedepends=(
   "unzip"
   "yarn"
 )
-_commit=9faebe9e389ef06b81bca201bb007b740b4be984 # tags/5.0.10^0
-source=("git+https://gitlab.com/asus-linux/asusctl.git#commit=$_commit")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "${pkgbase}"
-  git describe --tags | sed -r 's/\.([a-z])/\1/;s/[^-]*-g/r&/;s/-/+/g'
-}
+source=("git+https://gitlab.com/asus-linux/asusctl.git#tag=$pkgver")
+b2sums=('2be7cd61489d223e511e71c8d62b4f68903a6efed98848491d7824cceb87e4cd3c90db015c1159020ec493aa088472572549126ac36349c475098ded0842fe88')
 
 prepare() {
   cd "${pkgbase}"
@@ -118,7 +112,7 @@ package_rog-control-center() {
     "glib2"
     "gtk3"
     "hicolor-icon-theme"
-    "libappindicator-gtk3"
+    "libayatana-appindicator"
   )
   pkgdesc="App to control asusctl"
   mv rogcc/* "${pkgdir}"
