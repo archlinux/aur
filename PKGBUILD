@@ -2,10 +2,10 @@
 # Contributor: Anatoly Bashmakov <anatoly at posteo dot net>
 
 pkgname=ruby-prawn-svg
-_name=${pkgname#ruby-}
-pkgver=0.34.0
+_pkgname=${pkgname#ruby-}
+pkgver=0.34.2
 pkgrel=1
-pkgdesc="SVG renderer for Prawn Ruby PDF library "
+pkgdesc="SVG renderer for Prawn Ruby PDF library"
 arch=(any)
 url="https://github.com/mogest/prawn-svg"
 license=(MIT)
@@ -16,62 +16,58 @@ depends=(
   ruby-prawn
   ruby-rexml
 )
-makedepends=(
-  rubygems
-)
-checkdepends=(
-  ruby-rspec
-)
+makedepends=(rubygems)
+checkdepends=(ruby-rspec)
 options=(!emptydirs)
 source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   "fix-gem-files.patch"
 )
 sha256sums=(
-  'c1e5c634faa1f95e1a498cf6f3c43d3e96a9acfe0f2091bd817852c8b5934387'
+  '1324f8a1657ec4964d38364dda7e7eeeb5181dd22d095735928ffc7522f2435c'
   'fd1e6dee91c543bcd3f6f7be7b482fc4503f01533e5042625ae25f2210bf8521'
 )
 
-_archive="$_name-$pkgver"
+_archive="$_pkgname-$pkgver"
 
 prepare() {
   cd "$_archive"
 
   # Update gemspec/Gemfile to allow newer version of the dependencies
-  sed --in-place --regexp-extended 's|~>|>=|g' "$_name.gemspec"
+  sed -i -E 's|~>|>=|g' "$_pkgname.gemspec"
 
-  patch --strip=1 --input="$srcdir/fix-gem-files.patch"
+  patch --forward --strip=1 --input="$srcdir/fix-gem-files.patch"
 
   # Remove files potentially left over from previous builds
   rm -rf tmp_install
   rm -rf spec/sample_output/*.pdf
   rm -f Gemfile.lock
-  rm -f "$_name-$pkgver.gem"
+  rm -f "$_pkgname-$pkgver.gem"
 }
 
 build() {
   cd "$_archive"
 
-  _gemdir="$(gem env gemdir)"
+  local gemdir="$(gem env gemdir)"
 
-  gem build "$_name.gemspec"
+  gem build "$_pkgname.gemspec"
 
   gem install \
     --local \
     --verbose \
     --ignore-dependencies \
     --no-user-install \
-    --install-dir "tmp_install/$_gemdir" \
+    --install-dir "tmp_install/$gemdir" \
     --bindir "tmp_install/usr/bin" \
-    "$_name-$pkgver.gem"
+    "$_pkgname-$pkgver.gem"
 
   # Remove unrepreducible files
   rm --force --recursive --verbose \
-    "tmp_install/$_gemdir/cache/" \
-    "tmp_install/$_gemdir/gems/$_name-$pkgver/vendor/" \
-    "tmp_install/$_gemdir/doc/$_name-$pkgver/ri/ext/"
+    "tmp_install/$gemdir/cache/" \
+    "tmp_install/$gemdir/gems/$_pkgname-$pkgver/vendor/" \
+    "tmp_install/$gemdir/doc/$_pkgname-$pkgver/ri/ext/"
 
-  find "tmp_install/$_gemdir/gems/" \
+  find "tmp_install/$gemdir/gems/" \
     -type f \
     \( \
     -iname "*.o" -o \
@@ -83,7 +79,7 @@ build() {
     \) \
     -delete
 
-  find "tmp_install/$_gemdir/extensions/" \
+  find "tmp_install/$gemdir/extensions/" \
     -type f \
     \( \
     -iname "mkmf.log" -o \
@@ -95,14 +91,13 @@ build() {
 check() {
   cd "$_archive"
 
-  _gemdir="$(gem env gemdir)"
-  GEM_HOME="tmp_install/$_gemdir" rspec
+  GEM_HOME="tmp_install/$(gem env gemdir)" rspec
 }
 
 package() {
   cd "$_archive"
 
-  cp --archive tmp_install/* "$pkgdir"
+  cp -a -t "$pkgdir" tmp_install/*
 
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
