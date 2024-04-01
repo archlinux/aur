@@ -1,7 +1,7 @@
 pkgbase = calls
 	pkgdesc = Phone dialer and call handler
 	pkgver = 46.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/calls
 	arch = x86_64
 	arch = aarch64
@@ -13,6 +13,7 @@ pkgbase = calls
 	makedepends = git
 	makedepends = meson
 	makedepends = python-docutils
+	makedepends = python-packaging
 	makedepends = vala
 	depends = callaudiod
 	depends = dconf
@@ -32,7 +33,7 @@ pkgbase = calls
 	depends = libpeas
 	depends = libsecret
 	depends = sofia-sip
-	source = git+https://gitlab.gnome.org/GNOME/calls.git#commit=32c24f5468b157d8c755c79295a14958dc2f86fa
+	source = git+https://gitlab.gnome.org/GNOME/calls.git#commit=db9b771c19a22cf1ee46e1bce60c69a6c4c0e155
 	source = git+https://gitlab.gnome.org/World/Phosh/libcall-ui.git
 	source = remove-failing-tests.patch
 	sha256sums = SKIP

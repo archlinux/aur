@@ -4,8 +4,8 @@
 
 pkgname=calls
 pkgver=46.0
-_commit=32c24f5468b157d8c755c79295a14958dc2f86fa
-pkgrel=1
+_commit=db9b771c19a22cf1ee46e1bce60c69a6c4c0e155
+pkgrel=2
 pkgdesc="Phone dialer and call handler"
 arch=(x86_64 aarch64)
 url="https://gitlab.gnome.org/GNOME/calls"
@@ -34,6 +34,7 @@ makedepends=(
   git
   meson
   python-docutils
+  python-packaging
   vala
 )
 checkdepends=(
