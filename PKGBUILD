@@ -1,7 +1,7 @@
 # Maintainer: Amir Zarrinkafsh <nightah at me dot com>
 pkgname=authelia
 pkgver=4.38.7
-pkgrel=2
+pkgrel=3
 pkgdesc="The Cloud ready multi-factor authentication portal for your Apps."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/authelia/authelia"
@@ -44,8 +44,8 @@ build() {
     -mod=readonly \
     -modcacherw \
     -ldflags "-linkmode external -s -w ${XOPTIONS}" \
-     -o authelia \
-     cmd/authelia/*.go
+    -o authelia \
+    cmd/authelia/*.go
 }
 
 package() {
