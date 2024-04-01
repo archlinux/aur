@@ -1,6 +1,6 @@
 pkgbase = python-msoffcrypto-tool
 	pkgdesc = A Python tool and library for decrypting encrypted MS Office files
-	pkgver = 5.1.1
+	pkgver = 5.3.1
 	pkgrel = 1
 	url = https://github.com/nolze/msoffcrypto-tool
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-msoffcrypto-tool
 	makedepends = python-setuptools
 	depends = python-olefile
 	depends = python-cryptography
-	source = python-msoffcrypto-tool-5.1.1.tar.gz::https://files.pythonhosted.org/packages/source/m/msoffcrypto_tool/msoffcrypto_tool-5.1.1.tar.gz
-	sha256sums = 5585a303fa3ee49eec0253f912be17b82cf83f13f0f7489b4ea10f4ecb285278
+	source = python-msoffcrypto-tool-5.3.1.tar.gz::https://files.pythonhosted.org/packages/source/m/msoffcrypto_tool/msoffcrypto_tool-5.3.1.tar.gz
+	sha256sums = f800ff133b9a753dfedff6a37b0f79bfeb8cc6856487b91dd486110c7d4f4099
 
 pkgname = python-msoffcrypto-tool

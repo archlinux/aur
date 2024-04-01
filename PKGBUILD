@@ -4,7 +4,7 @@
 
 pkgname=python-msoffcrypto-tool
 _pkg="msoffcrypto_tool"
-pkgver=5.1.1
+pkgver=5.3.1
 pkgrel=1
 pkgdesc='A Python tool and library for decrypting encrypted MS Office files'
 arch=('any')
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('python-olefile' 'python-cryptography')
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('5585a303fa3ee49eec0253f912be17b82cf83f13f0f7489b4ea10f4ecb285278')
+sha256sums=('f800ff133b9a753dfedff6a37b0f79bfeb8cc6856487b91dd486110c7d4f4099')
 
 build() {
 	cd "$_pkg-$pkgver"
