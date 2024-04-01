@@ -5,7 +5,7 @@
 
 pkgname=pandoc-crossref-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.3.17.0f.r0.g2dfb0d5
+pkgver=0.3.17.0.r15.g2dfb0d5
 _pandoc_type=version
 _pandoc_ver=3.1.12.3
 _pandoc_commit=b1e2e452deb36e050c0b81c4c2351d5a829d2977
@@ -24,7 +24,8 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --match='*[0-9]' --tags --long \
+        | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 _bumpVer() {

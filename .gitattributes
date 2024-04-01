@@ -1,2 +1,2 @@
 .SRCINFO -whitespace
-*.patch -whitespace
+*.patch  -whitespace
