@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-epoch-git
-pkgver=r119.408aa60
+pkgver=r120.f7cd2ac
 pkgrel=1
 pkgdesc="Cosmic desktop environment from System76's Pop!_OS written in Rust utilizing Iced inspired by GNOME"
 arch=('x86_64' 'aarch64')
@@ -37,10 +37,6 @@ makedepends=(
   'just'
   'mold'
   'nasm'
-)
-checkdepends=(
-  'appstream'
-  'desktop-file-utils'
 )
 optdepends=(
   'flatpak: Flatpak support for Cosmic Store'
@@ -109,6 +105,7 @@ source=(
   'git+https://github.com/pop-os/cosmic-workspaces-epoch.git'
   'git+https://github.com/pop-os/xdg-desktop-portal-cosmic.git'
   'git+https://github.com/jackpot51/appstream.git'
+  'justfile.diff'
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -132,7 +129,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            'c220eb96dec5c48908860aae3b6858dbcdf584944ae230f958416bf872642f86')
 
 pkgver() {
   cd cosmic-epoch
@@ -178,15 +176,8 @@ prepare() {
   sed -i 's|libexec|lib/polkit-1|g' cosmic-osd/Makefile \
     cosmic-osd/src/subscriptions/polkit_agent_helper.rs
 
-  # Revert justfile changes
-  git revert -n 5f2fd3324b997142fa10c8170fd6b53feb5f2673
-
-  # Problem in CI for cosmic-epoch caused by cargo.just file
-  # https://github.com/pop-os/cosmic-settings/issues/214
-  pushd cosmic-settings
-  sed -i '/no-cd/d' scripts/cargo.just
-  sed -i 's/no-cd, private/private/g' scripts/common.just
-  popd
+  # Fix justfile
+  patch -p1 justfile < ../justfile.diff
 }
 
 build() {
@@ -200,43 +191,12 @@ build() {
   # to not block user installing this pkg. to speed up build, use "mold" linker, see 
   # https://stackoverflow.com/questions/67511990/how-to-use-the-mold-linker-with-cargo
   RUSTFLAGS="-A warnings -C link-arg=-fuse-ld=mold"
-  nice just sysext
-}
-
-check() {
-  cd cosmic-epoch
-  appstreamcli validate --no-net cosmic-sysext/usr/share/metainfo/*.metainfo.xml || :
-  desktop-file-validate cosmic-sysext/usr/share/applications/*.desktop || :
-
-#  export CARGO_HOME="$srcdir/cargo-home"
-#  export RUSTUP_TOOLCHAIN=stable
-
-#  _checklist=(
-#    cosmic-applibrary
-#    cosmic-bg
-#    cosmic-edit
-#    cosmic-files
-#    cosmic-greeter
-#    cosmic-launcher
-#    cosmic-notifications
-#    cosmic-panel
-#    cosmic-randr
-#    cosmic-screenshot
-#    cosmic-settings
-#    cosmic-store
-#    cosmic-term
-#  )
-
-#  for item in "${_checklist[@]}"; do
-#    pushd "${item}"
-#    nice just check
-#    popd
-#  done
+  nice just build
 }
 
 package() {
   cd cosmic-epoch
-  cp -r cosmic-sysext/* "$pkgdir/"
+  just rootdir="$pkgdir" install
 
   # Keybinding config
   # https://github.com/pop-os/cosmic-epoch#cosmic-comp
