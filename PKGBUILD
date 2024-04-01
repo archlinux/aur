@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=flashpoint-launcher
 _pkgname="Flashpoint Launcher"
-pkgver=12.1.1
+pkgver=13.0.0
 _electronversion=19
 _nodeversion=16
 pkgrel=4
@@ -31,7 +31,7 @@ makedepends=(
 source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=${pkgver}"
 )
-sha256sums=('SKIP')
+sha256sums=('a8030b84ae63f417b32ee07a006f9d501e650b9bd2f4c20a3b87226103e7f7d6')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -50,10 +50,20 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
+        export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+	    export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+    else
+        echo "Your network is OK."
+    fi
     export CARGO_HOME="${srcdir}/.cargo"
-    sed 's|"deb", "7z"|"AppImage"|g' -i gulpfile.js
+    rm -rf dist
     npm install --force
-    npm run release:linux
+    npm run build
+    npm run pack
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/"${pkgname}",usr/bin}
