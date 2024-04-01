@@ -4,7 +4,7 @@
 _pkgname=suyu
 _branch=dev
 pkgname=suyu-dev-git
-pkgver=r27269.b6ad090424
+pkgver=r27347.d3f67d1e9c
 pkgrel=1
 pkgdesc="suyu is the afterlife the world's most popular, open-source, Nintendo Switch emulator (dev branch)"
 arch=(x86_64)
@@ -74,7 +74,6 @@ source=(
   git+https://github.com/libsdl-org/SDL.git
   git+https://github.com/yhirose/cpp-httplib.git
   ffmpeg::git+https://github.com/FFmpeg/FFmpeg.git
-  git+https://github.com/microsoft/vcpkg.git
   git+https://github.com/arun11299/cpp-jwt.git
   git+https://github.com/bylaws/libadrenotools.git
   git+https://github.com/lat9nq/tzdb_to_nx.git
@@ -116,7 +115,6 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'SKIP'
         'SKIP')
 
 pkgver() {
@@ -126,12 +124,11 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
-  git submodule init
-  for submodule in {enet,cubeb,dynarmic,libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus,SDL,cpp-httplib,ffmpeg,vcpkg,cpp-jwt,libadrenotools,tzdb_to_nx,VulkanMemoryAllocator,breakpad,simpleini,oaknut,Vulkan-Utility-Libraries};
+  for submodule in {enet,cubeb,dynarmic,libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus,SDL,cpp-httplib,ffmpeg,cpp-jwt,libadrenotools,tzdb_to_nx,VulkanMemoryAllocator,breakpad,simpleini,oaknut,Vulkan-Utility-Libraries};
   do
-    git config submodule.$submodule.url "${srcdir}"/$submodule
+    git config --file=.gitmodules submodule.$submodule.url "${srcdir}"/$submodule
   done
-  git -c protocol.file.allow=always submodule update
+  git -c protocol.file.allow=always submodule update --init
 
   pushd externals/cubeb
   git config submodule.cmake/sanitizers-cmake.url "${srcdir}"/sanitizers-cmake
