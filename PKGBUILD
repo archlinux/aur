@@ -18,10 +18,10 @@ source=(
   "https://software.concise.cc/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
 )
 sha512sums=(
-  'b17bf7dbc2610fce88083fcffff0a446eee4f306c8de7642f27dad488c4569359af5b5a355015e9a54feb81b3836259128049a0644cb56b3f21e4531cf7847a7'
+  'd60d750f1b49da309b33da73393e28f40ee36b47eb5c17bb96d6e1de2fa4133b6182ced8965563dba9cabc1ce151602ca2498d116ace017c97066dd764ac627f'
 )
 md5sums=(
-  'f611104ffd9ae55f37302fa06fb22c8f'
+  '2da7ecedc65024b717f6e27b07d33dcf'
 )
 validpgpkeys=(
   '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
@@ -33,7 +33,9 @@ package() {
   cd "$srcdir/${pkgname}/lfpreviewer"
 
   pip install . --root="$pkgdir" --prefix=/usr --no-deps
-  pip install ./lfpreviewer-1.0.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl 2>/dev/null || true
+  pip install ./lfpreviewer-1.0.1-cp311-cp311-linux_x86_64.whl 2>/dev/null ||
+    pip install ./lfpreviewer-1.0.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl 2>/dev/null || true
+
 
   cd "$srcdir/${pkgname}-${pkgver}-${pkgrel}-${arch}" >/dev/null 2>&1 ||
   cd "$srcdir/${pkgname}"
