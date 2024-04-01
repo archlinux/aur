@@ -1,5 +1,5 @@
 pkgname=act-bin
-pkgver=0.2.60
+pkgver=0.2.61
 pkgrel=0
 pkgdesc="Run your GitHub Actions locally"
 arch=("x86_64")
@@ -8,7 +8,7 @@ license=("MIT")
 provides=("act")
 conflicts=("act")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nektos/act/releases/download/v$pkgver/act_Linux_x86_64.tar.gz")
-sha256sums=("dcb443969cd29743bc65193a92e8992ffae2cf2548ac2c523634d195619e6bbd")
+sha256sums=("0e087414b2837fa4437930a6f07cb661a9d28c4be69e258aded0c8e44682f056")
 
 package() {
     install -Dm755 "$srcdir/act" "$pkgdir/usr/bin/act"
