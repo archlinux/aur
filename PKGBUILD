@@ -17,6 +17,8 @@ sha256sums=('8cba7d803c23267bf7431bf79c4a65a03c767c01026a0cced18985bfa418a076')
 
 build() {
     cmake -B 'build' -S "${_snapshot}" \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib \
         -DPHONON_BUILD_QT5=OFF \
         -DPHONON_BUILD_QT6=ON
 
