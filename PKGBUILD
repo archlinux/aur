@@ -4,7 +4,7 @@ pkgbase=decasify
 pkgname=("$pkgbase" "lua-$pkgbase" "lua53-$pkgbase" "lua52-$pkgbase" "lua51-$pkgbase")
 pkgver=0.4.6
 _rockrel=1
-pkgrel=1
+pkgrel=2
 pkgdesc='cast strings to title-case according to locale specific style guides including Turkish'
 arch=(x86_64)
 url="https://github.com/alerque/$pkgbase"
@@ -48,23 +48,26 @@ package_decasify() {
 
 _package() {
 	cd "$_archive"
-	depends=("${pkgname%%-*}" "${_luadeps[@]/#/${pkgname%%-*}-}")
 	luarocks --lua-version "$1" --tree "$pkgdir/usr/" \
 		make --deps-mode none --no-manifest "rockspecs/$_archive-$_rockrel.rockspec"
 }
 
 package_lua-decasify() {
+	depends=("${pkgname%%-*}")
 	_package 5.4
 }
 
 package_lua51-decasify() {
+	depends=("${pkgname%%-*}")
 	_package 5.1
 }
 
 package_lua52-decasify() {
+	depends=("${pkgname%%-*}")
 	_package 5.2
 }
 
 package_lua53-decasify() {
+	depends=("${pkgname%%-*}")
 	_package 5.3
 }

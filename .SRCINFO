@@ -1,7 +1,7 @@
 pkgbase = decasify
 	pkgdesc = cast strings to title-case according to locale specific style guides including Turkish
 	pkgver = 0.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alerque/decasify
 	arch = x86_64
 	license = GPL-3.0-only
@@ -24,9 +24,13 @@ pkgbase = decasify
 pkgname = decasify
 
 pkgname = lua-decasify
+	depends = lua
 
 pkgname = lua53-decasify
+	depends = lua53
 
 pkgname = lua52-decasify
+	depends = lua52
 
 pkgname = lua51-decasify
+	depends = lua51
