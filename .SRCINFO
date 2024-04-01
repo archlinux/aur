@@ -1,6 +1,6 @@
 pkgbase = arch-gaming-meta
 	pkgdesc = Meta package for Gaming including Steam, Lutris, Wine, Essential Proprietary libraries & several other dependencies; Inspired by CachyOS-Gaming-Meta package
-	pkgver = 3
+	pkgver = 4
 	pkgrel = 1
 	arch = any
 	depends = alsa-lib
@@ -83,13 +83,15 @@ pkgbase = arch-gaming-meta
 	depends = lib32-v4l-utils
 	depends = lib32-vkd3d
 	depends = lib32-vulkan-icd-loader
-	optdepends = bottles: Requires Chaotic AUR repository
+	optdepends = bottles: Can be obtained from AUR/Chaotic AUR repository
 	optdepends = cups: Can be required by some very old legacy Windows games
-	optdepends = protontricks: Requires Chaotic AUR repository
-	optdepends = protonup-qt: Requires Chaotic AUR repository
+	optdepends = dxvk-bin: HIGHLY RECOMMENDED - Can be obtained from AUR/Chaotic AUR repository
+	optdepends = proton-ge-custom: Can be obtained from AUR/Chaotic AUR repository
+	optdepends = protontricks: Can be obtained from AUR/Chaotic AUR repository
+	optdepends = protonup-qt: Can be obtained from AUR/Chaotic AUR repository
 	optdepends = samba: Can be required by some very old legacy Windows games
 	optdepends = sane: Can be required by some very old legacy Windows games
-	optdepends = wine-installer: Requires Chaotic AUR repository
+	optdepends = wine-installer: A metapackage that provides desktop files and menus to WINE - Can be obtained from AUR/Chaotic AUR repository
 	conflicts = cachyos-gaming-meta
 
 pkgname = arch-gaming-meta
