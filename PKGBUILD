@@ -3,7 +3,7 @@
 # Contributor: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=sysvinit
-pkgver=3.08
+pkgver=3.09
 pkgrel=1
 pkgdesc='Linux System V Init'
 url="https://github.com/slicer69/$pkgname"
@@ -14,7 +14,7 @@ optdepends=('e2fsprogs')
 conflicts=('systemd-sysvcompat')
 source=($url/releases/download/$pkgver/$pkgname-$pkgver.tar.xz{,.sig}
         $pkgname-makefile.patch)
-b2sums=('ec4a4ff3663ac7d67808b50b67631ff4fe1ab56d376df15868df0eb79cbc329b192af124380eec6a797d827c3c7c5586058310d803f42ee1934dcffbfbe876f7'
+b2sums=('81c3e80dd66896110b1a2488415dd20fae03b4b7d8d4f40d175c195942e1c13367a7f1cf9efd1c79a37e16684bd12e1c76dbb1f8faab44e495e8de684fe744ef'
         'SKIP'
         '7a3b8f3d84b4cf1dadc00ee2ee62d2e5cc74bba202cdf6a3d424974ace65f91ca1a68a9cfc15027988098b0b6e7c974d30cb3aaf90524ba69d2355b6df70b8b8')
 validpgpkeys=(
