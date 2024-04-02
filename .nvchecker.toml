@@ -1,0 +1,5 @@
+[python-pina-mathlab]
+source = "github"
+github = "mathLab/PINA"
+use_latest_release = "true"
+prefix = "v"
