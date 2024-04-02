@@ -4,29 +4,29 @@
 # you also find the URL of a binary repository.
 
 # set whether the Qt Quick GUI should be enabled: set to either ON or OFF
-_quick_gui=${PASSWORD_MANAGER_QUICK_GUI:-OFF}
+_quick_gui=${PASSWORD_MANAGER_QUICK_GUI:-ON}
 
 _reponame=passwordmanager
 _cfg=qt6
 pkgname=passwordmanager-$_cfg
 _name=${pkgname%-$_cfg}
-pkgver=4.1.13
+pkgver=4.2.0
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A simple password store using AES-256-CBC encryption via OpenSSL'
 license=('GPL')
 depends=('qt6-base' 'libqtutilities-qt6.so' 'libpasswordfile.so' 'libc++utilities.so' 'openssl'
-         'libxkbcommon-x11' 'desktop-file-utils' 'xdg-utils')
+         'desktop-file-utils')
 makedepends=('cmake' 'ninja' 'qt6-tools' 'clang')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('68e44195cfbebef3df3404f0f552880e41e43dc16380d50c85052dff1d870e7c')
+sha256sums=('018dc831794182a66f4820ede7e399cee7633107542451206062bb01500541e0')
 
 # add further dependencies for the Qt Quick GUI (only kirigami2 is "pluggable")
 if [[ $_quick_gui == ON ]]; then
     depends+=('qt6-declarative')
-    makedepends+=('kirigami2')
-    optdepends+=('kirigami2: Qt Quick GUI')
+    makedepends+=('kirigami')
+    optdepends+=('kirigami: Qt Quick GUI')
 else
     makedepends+=('qt6-declarative')
 fi
@@ -41,6 +41,7 @@ build() {
     -DCONFIGURATION_PACKAGE_SUFFIX_QTUTILITIES:STRING="-$_cfg" \
     -DPASSWORD_MANAGER_CONFIGURATION_TARGET_SUFFIX:STRING="$_cfg" \
     -DQT_PACKAGE_PREFIX:STRING='Qt6' \
+    -DKF_PACKAGE_PREFIX:STRING='KF6' \
     -DBUILTIN_TRANSLATIONS:BOOL=ON \
     -DBUILTIN_TRANSLATIONS_OF_QT:BOOL=OFF \
     -DQUICK_GUI="$_quick_gui" .
