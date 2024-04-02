@@ -4,12 +4,12 @@
 
 pkgname=sdl
 pkgver=1.2.15+r506+gf5f2d382
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard"
 arch=('x86_64')
 url="https://www.libsdl.org"
-license=('LGPL')
+license=('LGPL-2.1-only')
 depends=('glibc' 'libxext' 'libxrender' 'libx11')
 makedepends=('alsa-lib' 'mesa' 'libpulse' 'glu' 'git')
 optdepends=('alsa-lib: ALSA audio driver'
