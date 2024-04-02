@@ -6,7 +6,7 @@
 
 pkgname=steghide
 pkgver=0.5.1
-pkgrel=9
+pkgrel=10
 pkgdesc='Embeds a message in a file by replacing some of the least significant bits'
 arch=('x86_64')
 url='http://steghide.sourceforge.net'
@@ -17,11 +17,11 @@ source=("steghide-${pkgver}.tar.gz::https://sourceforge.net/projects/steghide/fi
         'gcc-4.2.patch'
          "${pkgname}-climits.patch"
          steghide-gcc6.patch)
-md5sums=('5be490e24807d921045780fd8cc446b3'
-         '14f5e054d71c91262bb1140288043df8'
-         'fd861dc5a0a392c6c94a61e85ad74f29'
-         '897ce18edd008293a3328bc3f88775b3'
-         '6dd60a84fccca270fa7315f1102454ff')
+sha256sums=('78069b7cfe9d1f5348ae43f918f06f91d783c2b3ff25af021e6a312cf541b47b'
+            '52b050ad027dc0720e2d73ce90fcc0e8fa1a857c70b0650e0bffe1c717dd0e85'
+            'fcdb292b634b2b4ecb866bd7b72d1eb86d4d3fdff12b6b2456fa5e458669f8c1'
+            'c1489d23a91b29d6eb74dfb167b7454957e9ae1058b0485fe053d0b7279bf728'
+            '8c716ac3e2952934d23017c3258959afb89304c77f25dec2d20f0ffd249da1cf')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -38,7 +38,8 @@ build() {
   touch NEWS AUTHORS ChangeLog
 
   # autoreconf -i
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --mandir=/usr/share/man
+
   make
 }
 
