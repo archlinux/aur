@@ -7,7 +7,7 @@
 _gemname=sprockets
 pkgname=ruby-$_gemname
 pkgver=4.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Rack-based asset packaging system'
 arch=(any)
 url='https://github.com/rails/sprockets'
@@ -21,7 +21,7 @@ sha256sums=('951b13dd2f2fcae840a7184722689a803e0ff9d2702d902bd844b196da773f97')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" $_gemname-$pkgver.gem
+  gem install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir$_gemdir/cache/$_gemname-$pkgver.gem"
   install -D -m644 "$pkgdir$_gemdir/gems/$_gemname-$pkgver/MIT-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
