@@ -1,8 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cinematic-git
 _pkgname=Cinematic
-pkgver=0.10.0.r1112.g5dd3cf9
-_electronversion=27
+pkgver=3.r0.g47a94c3
 _nodeversion=20
 pkgrel=1
 pkgdesc="Gorgeous desktop movie collections"
@@ -11,10 +10,7 @@ url="http://gh.lacymorrow.com/cinematic/"
 _ghurl="https://github.com/lacymorrow/cinematic"
 license=('CC-BY-NC-SA-4.0')
 conflicts=("${pkgname%-git}")
-provides=("${pkgname%-git}")
-depends=(
-    "electron${_electronversion}"
-)
+provides=("${pkgname%-git}=${pkgver%.r*}")
 makedepends=(
     'gendesk'
     'git'
@@ -33,6 +29,10 @@ pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
+_getelectronver() {
+    cd "${srcdir}/${pkgname//-/.}"
+    grep '"electron": ' -i package.json | awk '{print $2}' | sed 's|"||g;s|\^||g;s|\.| |g' | awk '{print $1}'
+}
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -40,6 +40,10 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 build() {
+    _electronversion="$(_getelectronver)"
+    depends=(
+        "electron${_electronversion}"
+    )
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app.asar|g" \
@@ -64,17 +68,14 @@ build() {
     else
         echo "Your network is OK."
     fi
+    sed "s|icons|..\/..\/..\/${pkgname%-git}\/assets|g" -i src/main/tray.ts
     sed "s|-l --publish never|--dir|g" -i package.json
-    sed "s|style.css|[name].style.css|g" -i .erb/configs/webpack.config.renderer.prod.ts
     yarn install  --cache-folder "${srcdir}/.yarn_cache"
     yarn run package:linux
-    asar e "${srcdir}/${pkgname//-/.}/release/build/linux-"*/resources/app.asar "${srcdir}/app.asar.unpacked"
-    install -Dm644 public/favicons/icon.png -t "${srcdir}/app.asar.unpacked/src/static/icons"
-    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/release/build/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
     cp -r "${srcdir}/${pkgname//-/.}/release/build/linux-"*/resources/assets "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/public/favicons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"

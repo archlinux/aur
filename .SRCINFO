@@ -1,6 +1,6 @@
 pkgbase = cinematic-git
 	pkgdesc = Gorgeous desktop movie collections
-	pkgver = 0.10.0.r1112.g5dd3cf9
+	pkgver = 3.r0.g47a94c3
 	pkgrel = 1
 	url = http://gh.lacymorrow.com/cinematic/
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = cinematic-git
 	makedepends = npm
 	makedepends = yarn
 	makedepends = asar
-	depends = electron27
-	provides = cinematic
+	provides = cinematic=3
 	conflicts = cinematic
 	source = cinematic.git::git+https://github.com/lacymorrow/cinematic.git
 	source = cinematic.sh
