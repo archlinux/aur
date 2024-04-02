@@ -2,7 +2,7 @@
 
 _name=sardana
 pkgname=python-${_name}
-pkgver=3.4.3
+pkgver=3.4.4
 pkgrel=1
 pkgdesc="Instrument control and data acquisition system"
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
 optdepends=(gedit gst-editing-services gom libgexiv2)
 makedepends=(python-setuptools)
 source=("${_name}-${pkgver}.tar.gz::https://gitlab.com/sardana-org/${_name}/-/archive/${pkgver}/${_name}-${pkgver}.tar.gz")
-sha256sums=('8b29f861eb45e70138469202dd93e9106419120974723e0efc4a9d1606e776e4')
+sha256sums=('e5b71842ae1d7445d3365c6b4c236a5188bddd039dce52f6d3eb4cd069e54588')
 
 build() {
   cd "${_name}-${pkgver}"
