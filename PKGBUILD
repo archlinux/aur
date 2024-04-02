@@ -26,13 +26,13 @@ _reponame=syncthingtray
 _cfg=qt6
 pkgname=syncthingtray-$_cfg
 _name=${pkgname%-$_cfg}
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing (using Qt 6)'
 license=('GPL')
 depends=('libqtutilities-qt6.so' 'libqtforkawesome-qt6.so' 'libc++utilities.so' 'libboost_filesystem.so'
-         'qt6-svg' 'openssl' 'desktop-file-utils' 'xdg-utils')
+         'qt6-svg' 'openssl' 'desktop-file-utils')
 [[ $_webview_provider == none ]] && depends+=('qt6-base')
 [[ $_webview_provider == webkit ]] && depends+=('qt6-webkit')
 [[ $_webview_provider == webengine ]] && depends+=('qt6-webengine')
@@ -46,7 +46,7 @@ checkdepends=('cppunit' 'syncthing' 'iproute2')
 [[ $_enable_plasmoid ]] && makedepends+=('libplasma' 'extra-cmake-modules')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('ddec89979a579b703de5324383f4171ab89844c83fbc725c663a81951ac4b070')
+sha256sums=('38350e7b69de42c0a736762f70cb90399637e3b8619eef50149115600273dbdd')
 
 ephemeral_port() {
   comm -23 <(seq 49152 65535) <(ss -tan | awk '{print $4}' | cut -d':' -f2 | grep "[0-9]\{1,5\}" | sort | uniq) | shuf | head -n 1
