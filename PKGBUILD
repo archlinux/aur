@@ -1,8 +1,8 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node-debug
 _pkgname=cellframe-node
-pkgver=5.2.483
-pkgrel=3
+pkgver=5.2.487
+pkgrel=1
 pkgdesc="Cellframe blockchain node with a powerful SDK"
 arch=('x86_64' 'aarch64')
 url="https://cellframe.net"
@@ -10,9 +10,9 @@ license=('LGPL3')
 makedepends=(git cmake python3)
 depends=(logrotate libxcrypt-compat)
 provides=("cellframe-node" "cellframe-node-cli" "cellframe-node-tool")
-source=(git+https://gitlab.demlabs.net/cellframe/$_pkgname.git#commit=952b0eb04830e3a27f3f051f429479703ece87f6
-		git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git#commit=13a58fc4c50b0756c9f3485067f9e693c2150ca6
-		git+https://gitlab.demlabs.net/dap/dap-sdk.git#commit=482a2f13f982ee33fcff4863041b3db2eda1a00d
+source=(git+https://gitlab.demlabs.net/cellframe/$_pkgname.git#commit=0b0aa495bcdef34a2542143f3f2b66f6f24fff5d
+		git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git#commit=1d77890a32dd0b33fdaf9cf9db419922c7088940
+		git+https://gitlab.demlabs.net/dap/dap-sdk.git#commit=2f949bc90c2bc1922c0a8db260b9e2e371447ad3
 		git+https://gitlab.demlabs.net/cellframe/python-cellframe.git#commit=ed5e4b338052f1897164519c30392a838ce405f4
 		cellframe-node.logrotate
 		cellframe-node-logrotate.service
