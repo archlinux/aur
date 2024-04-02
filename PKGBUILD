@@ -2,7 +2,7 @@
 
 _pkgname=mcmap
 pkgname="${_pkgname}-git"
-pkgver=3.0.2.r27.ga5897aa
+pkgver=3.0.3.r1.g9e626f1
 pkgrel=1
 pkgdesc="Pixel-art map visualizer for Minecraft. Maps are drawn from an isometric perspective. "
 arch=('x86_64')
