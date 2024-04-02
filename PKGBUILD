@@ -1,6 +1,6 @@
 # Maintainer: Steve Engledow <steve@engledow.me>
 pkgname=dyalog-bin
-pkgver=18.2.45405
+pkgver=19.0.48958
 pkgrel=2
 pkgdesc='Dyalog APL interpreter'
 arch=('x86_64')
@@ -18,14 +18,17 @@ depends=(
     'at-spi2-atk'
     'ncurses5-compat-libs'
 )
+optdepends=(
+    'dotnet-core-3.1-bin'
+)
 makedepends=(
-  'binutils'
-  'tar'
+    'binutils'
+    'tar'
 )
 source=("$pkgname-$pkgver.deb::https://www.dyalog.com/uploads/php/download.dyalog.com/download.php?file=${pkgver%.*}/linux_64_${pkgver}_unicode.${CARCH}.deb"
         'LICENSE.pdf::https://www.dyalog.com/uploads/documents/Developer_Software_Licence.pdf')
 
-sha256sums=('a40fd619303a62fc06e0c82a6e23c12ca48a3ed2c640cec1ccae819b2cf9a663'
+sha256sums=('f8bf5723b2a7b7dd6c1bfd04dc61527aa8c3f59b3ed67ef63037efb179ebefb3'
             '94eea122f15d1e43443a6bbb10f375be23cf8ba8aacc6b0381bc89a7791c3172')
 
 options=('!strip')
