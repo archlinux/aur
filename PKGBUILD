@@ -6,7 +6,7 @@
 ## GPG key: https://greenbone.net/GBCommunitySigningKey.asc
 
 pkgname=gvm-libs
-pkgver=22.8.0
+pkgver=22.9.0
 pkgrel=1
 pkgdesc='greenbone-vulnerability-manager libraries'
 arch=('x86_64')
@@ -20,8 +20,8 @@ depends=(
 	'libgio-2.0.so'
 	'libglib-2.0.so'
 	'libgpgme.so'
+	'libldap'
 	'libnet'
-	'libpcap.so'
 	'libssh.so'
 	'libuuid.so'
 	'libxml2.so'
@@ -37,7 +37,7 @@ provides=(
 replaces=('openvas-libraries')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz.asc")
-sha256sums=('92bc63c988dc000bd01b7754ff40691e68c3116773043c445f4c61b7c38ba926'
+sha256sums=('78934177159f88c92ac686ce84910597dad41a0b41ed0c5264bc7226d4d910f2'
             'SKIP')
 validpgpkeys=('8AE4BE429B60A59B311C2E739823FAA60ED1E580') # GVM Transfer Integrity
 
