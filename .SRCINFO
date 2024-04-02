@@ -1,6 +1,6 @@
 pkgbase = virtualfish-git
 	pkgdesc = Fish shell tool for managing Python virtual environments
-	pkgver = r398.3f0de6e
+	pkgver = r407.2593997
 	pkgrel = 1
 	url = https://github.com/justinmayer/virtualfish
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = virtualfish-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-poetry-core
 	depends = python-pkgconfig
 	depends = python-psutil
 	depends = python-setuptools

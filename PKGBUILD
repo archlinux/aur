@@ -2,14 +2,14 @@
 
 pkgname=("virtualfish-git")
 _pkgname=virtualfish
-pkgver=r398.3f0de6e
+pkgver=r407.2593997
 pkgrel=1
 pkgdesc="Fish shell tool for managing Python virtual environments"
 arch=("any")
 url="https://github.com/justinmayer/virtualfish"
 license=("MIT")
 depends=("python-pkgconfig" "python-psutil" "python-setuptools" "python-virtualenv" "fish")
-makedepends=("git" "python-build" "python-installer" "python-wheel")
+makedepends=("git" "python-build" "python-installer" "python-wheel" "python-poetry-core")
 source=("${pkgname%-*}::git+https://github.com/justinmayer/virtualfish.git")
 md5sums=('SKIP')
 provides=("virtualfish")
