@@ -32,10 +32,10 @@ sha256sums_aarch64=('e8009d6c2b3db043896c236a3b3556b38ada29d6555ed17f46430681624
 sha256sums_armv7h=('d69c8c1a9ad646857e227c8901da0d9bedd4eaeda7c371cf481291f8a1aae00e')
 sha256sums_x86_64=('32db518ed65a0c53b34806f2f3a34548ceeee2bb8f2fc7424ade172a64124485')
 build() {
-    sed -e "s|@electronversion@|$(_electronversion)|" \
+    sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -i "${srcdir}/lintian-${pkgname%-bin}"
-    sed -e "s|@electronversion@|$(_electronversion)|" \
+    sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
