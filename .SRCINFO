@@ -1,17 +1,18 @@
 pkgbase = letterpress
-	pkgdesc = Uses jp2a to turn your pictures into images made up of ASCII Characters.
-	pkgver = 1.3.0
+	pkgdesc = Uses artem to turn your pictures into images made up of ASCII Characters.
+	pkgver = 2.0
 	pkgrel = 1
-	url = https://gitlab.com/gregorni/Letterpress
+	url = https://gitlab.gnome.org/World/Letterpress
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	checkdepends = appstream-glib
 	makedepends = blueprint-compiler
 	makedepends = meson
-	depends = jp2a
+	depends = artem
 	depends = libadwaita
 	depends = python-gobject
-	source = https://gitlab.com/gregorni/Letterpress/-/archive/1.3.0/Letterpress-1.3.0.tar.gz
-	sha256sums = f6f64c2c4df15bcbb5a41feac478593dc69f8fae8ea20a279166d967dfec6b6a
+	depends = python-pillow
+	source = https://gitlab.gnome.org/World/Letterpress/-/archive/2.0/Letterpress-2.0.tar.gz
+	sha256sums = 34c457f30af4eeb58785d125eb596859abc64a519625829d69008d10581b1951
 
 pkgname = letterpress
