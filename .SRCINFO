@@ -1,0 +1,15 @@
+pkgbase = ped
+	pkgdesc = Ped is a vim-like editor built with ncurses.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/tim-tm/ped
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	makedepends = gcc
+	depends = glibc
+	depends = ncurses
+	source = ped-0.0.1::https://github.com/tim-tm/ped/releases/download/v0.0.1/ped-0.0.1.tar.gz
+	md5sums = SKIP
+
+pkgname = ped
