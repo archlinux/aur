@@ -11,6 +11,7 @@ pkgbase = cinematic-git
 	makedepends = npm
 	makedepends = yarn
 	makedepends = asar
+	depends = electron27
 	provides = cinematic=3
 	conflicts = cinematic
 	source = cinematic.git::git+https://github.com/lacymorrow/cinematic.git

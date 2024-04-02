@@ -2,6 +2,7 @@
 pkgname=cinematic-git
 _pkgname=Cinematic
 pkgver=3.r0.g47a94c3
+_electronversion=27
 _nodeversion=20
 pkgrel=1
 pkgdesc="Gorgeous desktop movie collections"
@@ -11,6 +12,9 @@ _ghurl="https://github.com/lacymorrow/cinematic"
 license=('CC-BY-NC-SA-4.0')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
+depends=(
+    "electron${_electronversion}"
+)
 makedepends=(
     'gendesk'
     'git'
@@ -29,10 +33,6 @@ pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
-_getelectronver() {
-    cd "${srcdir}/${pkgname//-/.}"
-    grep '"electron": ' -i package.json | awk '{print $2}' | sed 's|"||g;s|\^||g;s|\.| |g' | awk '{print $1}'
-}
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -40,10 +40,6 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 build() {
-    _electronversion="$(_getelectronver)"
-    depends=(
-        "electron${_electronversion}"
-    )
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app.asar|g" \
@@ -62,9 +58,9 @@ build() {
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
-        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
-        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
         echo "Your network is OK."
     fi
