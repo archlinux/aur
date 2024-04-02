@@ -1,7 +1,7 @@
 pkgbase = pft
 	pkgdesc = TCP file sender/receiver
-	pkgver = v0.4.1
-	pkgrel = 1
+	pkgver = 0.4.1
+	pkgrel = 2
 	url = https://github.com/faceleft/pft
 	arch = x86_64
 	arch = i686
@@ -12,8 +12,7 @@ pkgbase = pft
 	arch = armv7h
 	license = MIT
 	makedepends = go
-	makedepends = git
-	source = git+https://github.com/faceleft/pft.git?signed#tag=fc09bb1f38d8d38530d21f556fa55f5230c8b996
-	sha256sums = cc0899ea1618ec732826394e1f08ea3ef36497726536089a89877c3b93663637
+	source = pft-0.4.1.tar.gz::https://github.com/faceleft/pft/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = SKIP
 
 pkgname = pft
