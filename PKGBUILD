@@ -6,12 +6,12 @@
 _quake=vkQuake
 pkgname=vkquake
 pkgver=1.30.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. This version contains Vulkan API support."
 arch=('x86_64')
 provides=('vkquake')
 url="https://github.com/Novum/vkquake"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('flac' 'libmad'
 	 'libvorbis' 'opusfile' 'sdl2')
 makedepends=('vulkan-validation-layers' 'meson' 'vulkan-headers' 'glslang' 'spirv-tools')
