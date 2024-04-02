@@ -4,7 +4,7 @@ pkgbase = joindesktop-bin
 	pkgrel = 2
 	url = https://joaoapps.com/join/desktop/
 	arch = x86_64
-	license = MIT
+	license = LicenseRef-unknown
 	depends = electron9-bin
 	provides = joindesktop=1.1.2
 	conflicts = joindesktop

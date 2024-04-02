@@ -10,7 +10,7 @@ pkgdesc='An official desktop app for Join by Joaoapps built in Electron.'
 arch=("x86_64")
 url="https://joaoapps.com/join/desktop/"
 _ghurl="https://github.com/joaomgcd/JoinDesktop"
-license=('MIT')
+license=('LicenseRef-unknown')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
