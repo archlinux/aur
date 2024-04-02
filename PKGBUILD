@@ -2,17 +2,16 @@
 
 pkgname=azure-cli-bin
 pkgdesc='Azure Command-Line Interface (Debian package)'
-pkgver=2.58.0
-pkgrel=3
+pkgver=2.59.0
+pkgrel=2
 url='https://github.com/Azure/azure-cli'
 arch=('x86_64')
 license=('MIT')
 depends=('python')
 provides=('azure-cli')
 conflicts=('azure-cli')
-options=('!debug')
 source=("https://packages.microsoft.com/repos/azure-cli/pool/main/a/azure-cli/azure-cli_${pkgver}-1~bookworm_amd64.deb")
-md5sums=('2da530a6fcdea82b1951f8fa3068669b')
+md5sums=('7e795bf76f9c89e6bc79705226faacff')
 
 package () {
     cd "${pkgdir}"
