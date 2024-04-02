@@ -21,7 +21,6 @@ pkgbase = tageditor-qt6
 	depends = libtagparser.so
 	depends = libc++utilities.so
 	depends = desktop-file-utils
-	depends = xdg-utils
 	depends = qt6-declarative
 	source = tageditor-3.9.0.tar.gz::https://github.com/Martchus/tageditor/archive/v3.9.0.tar.gz
 	source = 0001-Avoid-use-of-jq-argument-argjson-as-it-has-been-remo.patch
