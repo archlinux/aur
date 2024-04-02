@@ -15,7 +15,6 @@ pkgbase = videodownloader
 	depends = qtutilities
 	depends = openssl
 	depends = desktop-file-utils
-	depends = xdg-utils
 	source = videodownloader-1.3.6.tar.gz::https://github.com/Martchus/videodownloader/archive/v1.3.6.tar.gz
 	sha256sums = 59adbb242250235d0e580fbb858c3eb30c724f5463defc49330015e2233927ed
 
