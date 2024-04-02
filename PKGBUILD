@@ -3,7 +3,7 @@
 pkgname=gtk-session-lock-git
 _pkgname=gtk-session-lock
 pkgver=r510.00599bf
-pkgrel=1
+pkgrel=2
 provides=(gtk-session-lock)
 pkgdesc="A library to create screen lockers for Wayland using the ext-session-lock protocol"
 arch=(x86_64)
