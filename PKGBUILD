@@ -1,10 +1,10 @@
 # Contributors: Calimero <calimeroteknik@free.fr>
 # Maintainer: mimas <mimasgpc@free.fr>
-# Last Modified 2024-01-27 by Martin Filion <Mordillo98@gmail.com>
+# Last Modified 2024-04-02 by Martin Filion <Mordillo98@gmail.com>
 
 pkgname=openbox-menu
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Dynamic XDG menu for openbox"
 arch=('i686' 'x86_64')
 url="http://fabrice.thiroux.free.fr/openbox-menu_en.html"
