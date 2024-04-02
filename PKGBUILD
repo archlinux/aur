@@ -5,12 +5,13 @@ pkgdesc="A game engine for cool moddability and procedurally generated data"
 arch=('any')
 license=(Zlib)
 url="https://github.com/lexi-the-cute/catgirl-engine"
-pkgver=v0.12.30.r20.g9e0dc34
+pkgver=v0.12.32.r1.g996abc2
 pkgrel=2
 provides=("catgirl-engine=${pkgver%%.r*}")
 conflicts=(catgirl-engine)
 source=("git+https://github.com/lexi-the-cute/catgirl-engine.git")
 b2sums=("SKIP")
+options=(!strip !debug)
 depends=()
 makedepends=(
     "git"
