@@ -8,7 +8,7 @@
 readonly _pkgname="EpubMerge"
 
 pkgname="epubmerge"
-pkgver="2.17.0"
+pkgver="2.18.0"
 pkgrel="1"
 pkgdesc="A tool for merging multiple epub files into one."
 arch=("any")
@@ -17,7 +17,7 @@ license=("GPL-3.0-or-later")
 depends=("calibre" "python" "python-pyqt5" "python-setuptools" "python-six")
 makedepends=("python-build" "python-installer")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("4ec627887c256fb7b71de17534cd7115ee9d3ab8ee9dfbbb15ddd1957c5f6f26e230c5305b4b904991165fd9be9ec0002597eb0e7bbfac1b5f144570596229e6")
+sha512sums=("ce0e9dcaa8e8d978442ae5a066ff7e4ca46bdb5fe7a71784151202688571a623dda12a83f17358a3133bbae430c9dfe2704caacbe32af2250b1513840cccec34")
 
 prepare()
 {
