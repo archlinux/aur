@@ -1,6 +1,6 @@
 pkgbase = lndir
 	pkgdesc = Create a shadow directory of symbolic links to another directory tree
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = http://xorg.freedesktop.org/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = lndir
 	license = custom
 	depends = glibc
 	conflicts = imake
-	source = http://xorg.freedesktop.org/archive/individual/util/lndir-1.0.4.tar.xz
-	md5sums = a56ce1f81960e4b5af1730e4f5262162
+	source = http://xorg.freedesktop.org/archive/individual/util/lndir-1.0.5.tar.xz
+	md5sums = 9b05ad499f460e432c1601742bacd40e
 
 pkgname = lndir
