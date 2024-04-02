@@ -2,7 +2,7 @@
 
 pkgbase=cloud-fs-bin
 pkgname=clouddrive
-pkgver=0.6.9
+pkgver=0.6.10
 pkgrel=1
 epoch=2
 pkgdesc="CloudDrive - Unlocking the Unlimited Possibilities of Cloud Storage"
@@ -12,10 +12,8 @@ license=('custom' 'Commercial')
 provides=(${pkgbase%-bin} ${pkgname} ${pkgname}2)
 conflicts=(${pkgbase%-bin} ${pkgname} ${pkgname}2)
 replaces=()
-depends=(
-    bash
-    fuse3
-    systemd-libs)
+depends=(fuse3
+    systemd)
 makedepends=(libarchive)
 optdepends=('docker: Pack, ship and run any application as a lightweight container')
 backup=()
@@ -27,8 +25,8 @@ source_x86_64=("${pkgname}-${epoch}-x86_64-${pkgver}.tgz::${url}/releases/downlo
 source_aarch64=("${pkgname}-${epoch}-aarch64-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${pkgname}-${epoch}-linux-aarch64-${pkgver}.tgz")
 sha256sums=('c336f41e259916212c7fdd3e21a26a2faf94d725b5daf686bca501978efbf17e'
             'ee61e58c618535b420f5fcbc0d7b7d803bc6aec7f261bd595867152806f939aa')
-sha256sums_x86_64=('59567eace35e29677e320fffeb23c36783e5e289004626861858806a9b48b760')
-sha256sums_aarch64=('8fed54f0d94dface438f542fc11c63b4342c24c5f8ee7f887dfd5f3cb286b81a')
+sha256sums_x86_64=('6476de28ae8cfd9418eb9101327229fda5c5c8d8a7a549231910dceef10da37d')
+sha256sums_aarch64=('eb4f38f22190268d5108c6c153652b17d9b10496e241aad7253b8aa15e87090a')
 noextract=(
     ${pkgname}-${epoch}-x86_64-${pkgver}.tgz
     ${pkgname}-${epoch}-aarch64-${pkgver}.tgz)
@@ -43,8 +41,6 @@ package() {
     bsdtar -xf "${pkgname}-${epoch}-${CARCH}-${pkgver}.tgz" --strip-components=2 -C ${pkgdir}/${_install_path}
 
 #     sed -i 's/\\//g' "${pkgdir}/${_install_path}"/wwwroot/*.js
-
-    chown -R root:root ${pkgdir}/${_install_path}
 
     install -Dm755 /dev/stdin  "${pkgdir}/usr/bin/${pkgname}" << EOF
 #!/usr/bin/env bash
