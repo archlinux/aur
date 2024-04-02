@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-npth
 	pkgdesc = The new GNU portable threads library (Android aarch64)
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnupg.org/software/npth/index.html
 	arch = any
 	license = LGPL-2.1-or-later
