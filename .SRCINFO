@@ -1,0 +1,10 @@
+pkgbase = aiopm
+	pkgver = 1.8
+	pkgrel = 1
+	arch = x86_64
+	license = GPL2
+	depends = gcc
+	source = https://github.com/VPeti1/CWAcces/raw/main/aiopm.tar.gz
+	sha256sums = b33062c62b3775fdbce9c3411325bd9c9783cb8fcc2724d2c3f1d0795c55befb
+
+pkgname = aiopm
