@@ -7,6 +7,7 @@ pkgbase = trgui-ng-git
 	license = AGPL-3.0
 	makedepends = rust>=1.69.0
 	makedepends = nodejs>=16.0.0
+	makedepends = npm
 	makedepends = git
 	depends = alsa-lib
 	depends = cairo
