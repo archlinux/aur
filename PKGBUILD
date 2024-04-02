@@ -3,7 +3,7 @@
 pkgbase=ce-toolchain
 pkgname=ce-toolchain-bin
 pkgver=11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Toolchain and libraries for C/C++ programming on the TI-84+ CE calculator series"
 install=$pkgname.install
 depends=("glibc" "zlib" "gcc-libs")
@@ -12,7 +12,7 @@ provides=("ce-toolchain")
 conflicts=("ce-toolchain")
 arch=('i686' 'x86_64')
 url="https://ce-programming.github.io/toolchain/index.html"
-license=('LGPL3')
+license=('LGPL-3.0-only')
 source=("https://github.com/CE-Programming/toolchain/releases/download/v${pkgver}/CEdev-Linux.tar.gz")
 sha256sums=('94688d7a6684a0a8521161ba2e9b0068262dcbe7b4db3867cd4b5d74af646a07')
 
