@@ -2,9 +2,8 @@
 _pkgname=listen1
 pkgname="${_pkgname}-desktop-bin"
 _appname=Listen1
-_electronversion=13
-pkgver=2.31.0
-pkgrel=8
+pkgver=2.32.0
+pkgrel=1
 pkgdesc="One for all free music in China"
 arch=("x86_64")
 url="http://listen1.github.io/listen1"
@@ -17,23 +16,27 @@ conflicts=(
     "${_pkgname}-electron"
 )
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-desktop-bin}_${pkgver}_linux_amd64.deb"
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/listen1/listen1_desktop/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0623e152524477d1015b2619bb1784d82473de6153b8b78a892783fb9e0894f9'
+sha256sums=('5ac63be98672a30850a97765e6474ea95ce0cb5a9330eee6d6d1db62860a1916'
             'd2aa8a82485042b9d5efb8ed2d9c0e8a66e8983bc3f64ebbe35158d35662cdbc'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
+    bsdtar -xf "${srcdir}/data."*
+    _get_electron_ver() {
+        strings "${srcdir}/opt/${_appname}/${_pkgname}"  | grep '^Chrome/[0-9.]* Electron/[0-9]' | awk '{print $2}' | sed 's|Electron\/||g;s|\.| |g' | awk '{print $1}' 
+    }
+    _electronversion="$(_get_electron_ver)"
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_appname}/${_pkgname}|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g;s|Audio|AudioVideo|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
