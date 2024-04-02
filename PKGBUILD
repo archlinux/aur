@@ -1,6 +1,6 @@
 # Maintainer: alba4k <blaskoazzolaaaron@gmail.com>
 pkgname=albafetch-git
-pkgver=4.1.r89.g5eb870c7
+pkgver=4.1.r91.g34d31704
 pkgrel=1
 pkgdesc="Neofetch, but written in C; both faster and worse than the original (latest commit)"
 arch=(x86_64 aarch64)
@@ -24,6 +24,6 @@ build() {
 }
 
 package() {
-    make -C albafetch INSTALLPATH="$pkgdir/usr/bin" CONFIGPATH="$pkgdir/etc/xdg" DATAPATH="$pkgdir/usr/share" install
+    make -C albafetch PKGNAME=$pkgname INSTALLPATH="$pkgdir/usr/bin" CONFIGPATH="$pkgdir/etc/xdg" DATAPATH="$pkgdir/usr/share" install
 }
 
