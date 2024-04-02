@@ -1,13 +1,13 @@
 pkgbase = p7zip-gui
 	pkgdesc = Graphic user interface (alpha quality) for the 7zip file archiver
 	pkgver = 16.02
-	pkgrel = 8
+	pkgrel = 9
 	url = http://p7zip.sourceforge.net
 	install = p7zip-gui.install
 	arch = i686
 	arch = x86_64
 	license = custom:unRAR
-	license = LGPL
+	license = LGPL-2.1-or-later
 	makedepends = python
 	depends = p7zip
 	depends = wxwidgets-gtk3

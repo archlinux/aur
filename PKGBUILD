@@ -10,10 +10,10 @@
 
 pkgname=p7zip-gui
 pkgver=16.02
-pkgrel=8
+pkgrel=9
 pkgdesc='Graphic user interface (alpha quality) for the 7zip file archiver'
 url='http://p7zip.sourceforge.net'
-license=('custom:unRAR' 'LGPL')
+license=('custom:unRAR' ' LGPL-2.1-or-later')
 arch=('i686' 'x86_64')
 depends=('p7zip' 'wxwidgets-gtk3')
 optdepends=('desktop-file-utils: desktop entries'
@@ -74,19 +74,18 @@ package() {
 		DEST_MAN="/usr/share/man"
 
 	# remove files provided by p7zip package
-	rm -fR ${pkgdir}/usr/lib/p7zip/{7z.so,Codecs}
-	rm -R ${pkgdir}/usr/share/{doc,man}
+	rm -f -R \
+		${pkgdir}/usr/lib/p7zip/Codecs \
+		${pkgdir}/usr/lib/p7zip/7z.so \
+		${pkgdir}/usr/share/man
+	find ${pkgdir}/usr/share/doc -type f -not -path "${pkgdir}/usr/share/doc/p7zip/DOC/MANUAL/fm*" -delete
+	find ${pkgdir}/usr/share/doc -type d -empty -delete
 
-	install -Dm644 GUI/p7zip_32.png ${pkgdir}/usr/share/icons/hicolor/32x32/apps/p7zip.png
-	install -dm755 ${pkgdir}/usr/share/{applications,kde4/services/ServiceMenus}
-	cp GUI/kde4/*.desktop ${pkgdir}/usr/share/kde4/services/ServiceMenus
-	install -dm755 ${pkgdir}/usr/share/kservices5/ServiceMenus
-	cp GUI/kde4/*.desktop ${pkgdir}/usr/share/kservices5/ServiceMenus
-	cp ../7zFM.desktop ${pkgdir}/usr/share/applications
+	install -D -m 644 GUI/p7zip_32.png ${pkgdir}/usr/share/icons/hicolor/32x32/apps/p7zip.png
+	install -D -m 644 -t ${pkgdir}/usr/share/kservices5/ServiceMenus GUI/kde4/*.desktop
+	install -D -m 644 -t ${pkgdir}/usr/share/kio/servicemenus GUI/kde4/*.desktop
+	install -D -m 644 -t ${pkgdir}/usr/share/applications ${srcdir}/7zFM.desktop
 	ln -s 7zCon.sfx ${pkgdir}/usr/lib/p7zip/7z.sfx
-	install -dm755 ${pkgdir}/usr/share/doc/p7zip/DOC/MANUAL
-	cp -r DOC/MANUAL/fm ${pkgdir}/usr/share/doc/p7zip/DOC/MANUAL
-	chmod -R a+r,u+w,a+X ${pkgdir}/usr/share/doc/p7zip/DOC/MANUAL/fm
 	ln -s /usr/share/doc/p7zip/DOC/MANUAL ${pkgdir}/usr/lib/p7zip/help
 	chmod +x ${pkgdir}/usr/bin/p7zipForFilemanager
 }
