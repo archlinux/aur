@@ -1,11 +1,11 @@
 pkgbase = linux-apfs-rw-dkms-git
 	pkgdesc = Experimental APFS kernel module with Write support (DKMS)
-	pkgver = r288.10557ed
+	pkgver = r298.3f9d529
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/linux-apfs/linux-apfs-rw
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = git
 	depends = dkms
 	source = git+https://github.com/linux-apfs/linux-apfs-rw.git
