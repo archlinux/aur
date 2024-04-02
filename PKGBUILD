@@ -6,7 +6,7 @@ arch=('any')
 license=(Zlib)
 url="https://github.com/lexi-the-cute/catgirl-engine"
 pkgver=v0.12.30.r20.g9e0dc34
-pkgrel=1
+pkgrel=2
 provides=("catgirl-engine=${pkgver%%.r*}")
 conflicts=(catgirl-engine)
 source=("git+https://github.com/lexi-the-cute/catgirl-engine.git")
@@ -16,6 +16,7 @@ makedepends=(
     "git"
     "rust"
     "cargo-nightly"
+    "sed"
 )
 
 # Automatically updates pkgver variable
@@ -49,5 +50,10 @@ check() {
 # Packages built files
 package() {
     cd "catgirl-engine"
+    sed -i "s/\${engine_path}/\/usr\/bin\/catgirl-engine/" client/assets/resources/catgirl-engine.desktop
+    mv client/assets/vanilla/texture/logo/logo.png client/assets/vanilla/texture/logo/catgirl-engine.png
+
+    install -Dm0755 -t "$pkgdir/usr/share/icons" "client/assets/vanilla/texture/logo/catgirl-engine.png"
+    install -Dm0755 -t "$pkgdir/usr/share/applications/" "client/assets/resources/catgirl-engine.desktop"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/catgirl-engine"
 }
