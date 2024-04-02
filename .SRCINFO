@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-legacy-theme-auto-switcher-git
+	pkgdesc = Change the GTK3 theme to light/dark variant based on the system color scheme
+	pkgver = r21.e935a51
+	pkgrel = 1
+	url = https://github.com/mukul29/legacy-theme-auto-switcher-gnome-extension
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = git
+	depends = gnome-shell
+	provides = gnome-shell-extension-legacy-theme-auto-switcher
+	conflicts = gnome-shell-extension-legacy-theme-auto-switcher
+	source = gnome-shell-extension-legacy-theme-auto-switcher-git::git+https://github.com/mukul29/legacy-theme-auto-switcher-gnome-extension.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-legacy-theme-auto-switcher-git
