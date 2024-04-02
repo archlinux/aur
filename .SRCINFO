@@ -1,7 +1,7 @@
 pkgbase = peertube-viewer-rs-bin
 	pkgdesc = Peertube command line viewer inspired by youtube-viewer
 	pkgver = 1.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://peertube-viewer.com
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,6 @@ pkgbase = peertube-viewer-rs-bin
 	provides = peertube-viewer-rs
 	conflicts = peertube-viewer-rs
 	source = https://peertube-viewer.com/releases/linux/peertube-viewer-rs-v1.8.5.tar.gz
-	md5sums = 7812fa8eab1095aa5b32d052c4d340ab
+	sha256sums = a91eef3aa511ee638773fdb423a35ea42a4cd58b646cf11d15a46ad785996c0f
 
 pkgname = peertube-viewer-rs-bin
