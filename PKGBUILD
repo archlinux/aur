@@ -6,7 +6,7 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-npth
 pkgver=1.7
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="The new GNU portable threads library (Android ${_android_arch})"
 url="https://www.gnupg.org/software/npth/index.html"
@@ -25,6 +25,7 @@ prepare() {
     sed  -i 's|have_ld_version_script=yes|have_ld_version_script=no|g' configure
     sed  -i '/config_libs \$LIB_CLOCK_GETTIME/d' configure
     sed  -i 's|@NPTH_CONFIG_LIBS@|-lnpth|g' npth.pc.in
+    sed  -i 's|@INSERT_EXPOSE_RWLOCK_API@|1|g' src/npth.h.in
 }
 
 build() {
@@ -32,7 +33,7 @@ build() {
     source android-env ${_android_arch}
 
     export ac_cv_search_pthread_cancel=yes
-    export ac_cv_type_pthread_rwlock_t=no
+    export ac_cv_type_pthread_rwlock_t=yes
     export ac_cv_search_clock_gettime=yes
     android-${_android_arch}-configure \
         --disable-tests
