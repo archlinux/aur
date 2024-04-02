@@ -1,7 +1,7 @@
 # Maintainer: FineFindus <Finefindusgh@gmail.com>
 pkgname=artem
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Convert images from multiple formats (jpg, png, webp, etc…) to ASCII art, written in Rust'
 arch=('x86_64' 'aarch64')
 url='https://github.com/finefindus/artem'
@@ -10,7 +10,7 @@ makedepends=('cargo')
 provides=('artem')
 conflicts=('artem')
 options+=('!lto')
-source=("$pkgname-$pkgver=.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('d180ff37691654744891de77d956c83cc334c82e2377d1cfe4b795234753781a')
 
 
