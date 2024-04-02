@@ -6,7 +6,7 @@
 _reponame=passwordmanager
 pkgname=mingw-w64-passwordmanager
 _name=${pkgname#mingw-w64-}
-pkgver=4.1.13
+pkgver=4.2.0
 pkgrel=1
 arch=('any')
 pkgdesc='A simple password store using AES-256-CBC encryption via OpenSSL (mingw-w64)'
@@ -15,12 +15,12 @@ depends=('mingw-w64-crt' 'mingw-w64-qt5-base' 'mingw-w64-qtutilities' 'mingw-w64
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg' 'ninja')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('68e44195cfbebef3df3404f0f552880e41e43dc16380d50c85052dff1d870e7c')
+sha256sums=('018dc831794182a66f4820ede7e399cee7633107542451206062bb01500541e0')
 options=(!buildflags staticlibs !strip !emptydirs)
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 _configurations=()
-[[ $NO_SHARED_LIBS ]] || _configurations+=('shared') depends+=('mingw-w64-kirigami2')
+[[ $NO_SHARED_LIBS ]] || _configurations+=('shared')
 [[ $NO_STATIC_LIBS ]] || _configurations+=('static') makedepends+=('mingw-w64-qt5-base-static' 'mingw-w64-qt5-translations' 'mingw-w64-qt5-svg-static' 'breeze-icons' 'numix-icon-theme-git')
 
 build() {
@@ -29,7 +29,6 @@ build() {
   declare -A _config_flags=(
     [shared]='
         -DBUILD_SHARED_LIBS:BOOL=ON
-        -DQUICK_GUI:BOOL=ON
     '
     [static]='
         -DBUILD_SHARED_LIBS:BOOL=OFF
