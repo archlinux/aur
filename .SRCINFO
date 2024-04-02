@@ -1,7 +1,7 @@
 pkgbase = python-overpy
 	pkgdesc = Python Wrapper to access the Overpass API
-	pkgver = 0.6
-	pkgrel = 2
+	pkgver = 0.7
+	pkgrel = 1
 	url = https://github.com/DinoTools/python-overpy
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = python-overpy
 	makedepends = git
 	makedepends = python-pytest-runner
 	depends = python
-	source = git+https://github.com/DinoTools/python-overpy.git#tag=0.6
-	sha256sums = SKIP
+	source = git+https://github.com/DinoTools/python-overpy.git#tag=0.7
+	sha256sums = 76dbdad0d2150342a632f8e0fcc1f4524ad876f9a6fe2f1d88db6c755a0fb05c
 
 pkgname = python-overpy
