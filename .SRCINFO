@@ -1,13 +1,16 @@
 pkgbase = joindesktop-bin
 	pkgdesc = An official desktop app for Join by Joaoapps built in Electron.
 	pkgver = 1.1.2
-	pkgrel = 1
-	url = https://joaoapps.com/join/desktop
+	pkgrel = 2
+	url = https://joaoapps.com/join/desktop/
 	arch = x86_64
-	license = none
-	provides = joindesktop
+	license = MIT
+	depends = electron9-bin
+	provides = joindesktop=1.1.2
 	conflicts = joindesktop
-	source = https://github.com/joaomgcd/JoinDesktop/releases/download/v1.1.2/com.joaomgcd.join_1.1.2_amd64.deb
-	sha512sums = a0f18f1e21947cc15c10e5200b912dc6701f363c4f6abdaabbc5bee7f22510d23520027da29f2f6339a6de9c0c733c887606660085b6c174fcf56b2dafb9b440
+	source = joindesktop-1.1.2.deb::https://github.com/joaomgcd/JoinDesktop/releases/download/v1.1.2/com.joaomgcd.join_1.1.2_amd64.deb
+	source = joindesktop.sh
+	sha256sums = 9352d7fc70b7b5f2f845a8a9a3bc29fcb9dfacf6b7f31f0d05e291c8727bd825
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = joindesktop-bin
