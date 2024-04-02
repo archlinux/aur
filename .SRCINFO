@@ -1,4 +1,5 @@
 pkgbase = cwplus
+	pkgdesc = The GUI version of OpenCW/CW-I
 	pkgver = 1
 	pkgrel = 1
 	arch = x86_64

@@ -4,6 +4,7 @@ pkgrel=1
 arch=('x86_64')
 
 license=('GPL2')
+pkgdesc="The GUI version of OpenCW/CW-I"
 
 depends=('gcc' 'python3')
 
