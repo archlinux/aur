@@ -3,7 +3,7 @@
 # All my PKGBUILDs are managed at https://github.com/tmn505/AUR
 
 pkgname=onvif-gui
-pkgver=2.0.1
+pkgver=2.0.9
 pkgrel=1
 pkgdesc='A client side implementation of the ONVIF specification - GUI app'
 url='https://github.com/sr99622/libonvif'
@@ -22,10 +22,10 @@ makedepends=('git'
              'python-setuptools'
              'python-wheel')
 conflicts=('python-yolox')
-# _prjrel=2.0.1
-source=("git+${url}.git#commit=5c8433978a1bc15a5b662b451759af4f5d7e27be"
+# _prjrel=2.0.9
+source=("git+${url}.git#commit=b21f043dea0e4401fd59bed069d6fe306c37ab22"
         "${pkgname}.desktop")
-sha256sums=('3db685e429d00f733307b8c056a63817b864162d6b6d404ec83966138273ed8a'
+sha256sums=('1b7ba19e99c446a6fc752faba42ce4350eeec2436f9b6ff7b78eae6648196884'
             'dc6d193827628215ccf66c0617c6ce2150e2fc3a5ee66afc35fb9c0c7d571d88')
 
 prepare() {
