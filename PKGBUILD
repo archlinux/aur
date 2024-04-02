@@ -2,7 +2,7 @@
 # Contributor: acxz <akashpatel2008@yahoo.com>
 _base=flake8-builtins
 pkgname=python-${_base}
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Check for python builtins being used as variables or parameters"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(flake8)
 makedepends=(python-build python-installer python-hatchling python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('e4aeb5bfd95f2f8bfd5b6404deff76fc2094dc432d5870d38752051d4851ba6953741704304c0a3665c0976240c3e26d39b62389c96cc83653d1436c9d8d5b0a')
+sha512sums=('170a6bdd26da21614514f695ecc7fc474b4657e71c244178d150b50fcfa7c1a756d4f8122dc7ca82bf2ecf19335dc0dcb38b4678a9b6b8ac40dd26a4937df397')
 
 build() {
   cd ${_base}-${pkgver}
