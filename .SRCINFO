@@ -1,7 +1,7 @@
 pkgbase = zerobrane-studio
 	pkgdesc = A lightweight Lua-based IDE for Lua
 	pkgver = 2.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://studio.zerobrane.com/
 	arch = any
 	license = MIT
@@ -19,6 +19,7 @@ pkgbase = zerobrane-studio
 	optdepends = love: to debug löve programs
 	optdepends = lua51: to debug lua51 programs
 	optdepends = lua52: to debug lua52 programs
+	backup = etc/zerobrane-studio/user.lua
 	source = https://github.com/pkulchenko/ZeroBraneStudio/archive/2.01/ZeroBraneStudio-2.01.tar.gz
 	source = zbstudio.patch
 	source = user.lua
