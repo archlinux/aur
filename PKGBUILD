@@ -5,11 +5,11 @@
 
 pkgname=xmp
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Extended Module Player is a portable command-line module player that supports over 90 module formats (Amiga, Atari, ..)"
 arch=(i686 x86_64)
 url="http://xmp.sourceforge.net/"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('libxmp>=4.6' 'libpulse')
 backup=('etc/xmp/xmp.conf' 'etc/xmp/modules.conf')
 source=("http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz")
