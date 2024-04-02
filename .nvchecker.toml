@@ -1,0 +1,5 @@
+[python-eth-utils]
+source = "github"
+github = "ethereum/eth-utils"
+use_max_tag = true
+prefix = "v"
