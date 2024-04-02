@@ -6,7 +6,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-npth
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="The new GNU portable threads library (Android ${_android_arch})"
 url="https://www.gnupg.org/software/npth/index.html"
@@ -24,6 +24,7 @@ prepare() {
     autoreconf -fiv
     sed  -i 's|have_ld_version_script=yes|have_ld_version_script=no|g' configure
     sed  -i '/config_libs \$LIB_CLOCK_GETTIME/d' configure
+    sed  -i 's|@NPTH_CONFIG_LIBS@|-lnpth|g' npth.pc.in
 }
 
 build() {
