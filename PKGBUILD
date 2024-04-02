@@ -16,7 +16,7 @@ pkgname=("clc-intercal"
 # 	"vim-intercal"
 	)
 pkgbase=clc-intercal
-_actual_pkgver=1.-94.-2.4
+_actual_pkgver=1.00
 pkgver="${_actual_pkgver//-/pre}"
 pkgrel=1
 epoch=
@@ -45,7 +45,7 @@ _pkgname_with_version="CLC-INTERCAL-${_actual_pkgver}"
 _source_dirname="$_pkgname_with_version"
 _url_base="https://uilebheist.srht.site/dist/${_pkgname_with_version}/"
 source=("${_url_base}${_source_dirname}.tar.gz")
-sha256sums=(4cbfa1c084fb53f66908b457668bb9ba086d826212d41a663f646bb65b95d1e8)
+sha256sums=(06129dcb4e5db418ac93a6d2c927f15ace7a574c8c8d5220c8adb89dfff54dad)
 
 build() {
 	cd "$_source_dirname"
