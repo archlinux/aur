@@ -1,7 +1,7 @@
 pkgbase = qt6-base
 	pkgdesc = A cross-platform application and UI framework
 	pkgver = 6.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qt.io
 	arch = x86_64
 	groups = qt6
@@ -78,9 +78,11 @@ pkgbase = qt6-base
 	source = https://download.qt.io/official_releases/qt/6.7/6.7.0/submodules/qtbase-everywhere-src-6.7.0.tar.xz
 	source = qt6-base-cflags.patch
 	source = qt6-base-nostrip.patch
+	source = fix-wrong-cpp-if.patch
 	sha256sums = 11b2e29e2e52fb0e3b453ea13bbe51a10fdff36e1c192d8868c5a40233b8b254
 	sha256sums = 5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78
 	sha256sums = 4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094
+	sha256sums = b5cb3a29738a2783242a96c9d94298421875dcabec4fc2b5d8c5329b66e63070
 
 pkgname = qt6-base
 	pkgdesc = A cross-platform application and UI framework
