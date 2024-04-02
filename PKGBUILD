@@ -19,7 +19,7 @@
 
 pkgbase=lib32-llvm-minimal-git
 pkgname=('lib32-llvm-minimal-git' 'lib32-llvm-libs-minimal-git' 'lib32-clang-minimal-git' 'lib32-clang-libs-minimal-git' 'lib32-clang-opencl-headers-minimal-git')
-pkgver=19.0.0_r493377.75dfa58ea93a
+pkgver=19.0.0_r494546.b4adb42151bb
 pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
@@ -51,8 +51,12 @@ _get_distribution_components() {
             llvm-libraries|clang-libraries|clang-tidy-headers|distribution )
                 include=0
                 ;;
+            # donot build LLVMgold
+            LLVMgold )
+                include=0
+                ;;
             # shared libraries
-            LLVM|LLVMgold )
+            LLVM )
                 include=1
                 ;;
             # libraries needed for clang-tblgen
@@ -170,7 +174,7 @@ package_lib32-llvm-minimal-git() {
     mkdir -p "$srcdir"{/llvm-libs/usr/lib32,/clang-libs/usr/lib32,/clang-opencl-headers/usr/{lib32/clang/$_major_ver/include,include/clang/Basic}}
     
     # Remove files which conflict with lib32-llvm-libs
-    rm "$pkgdir"/usr/lib32/{LLVMgold,lib{LLVM,LTO,Remarks}}.so
+    rm "$pkgdir"/usr/lib32/lib{LLVM,LTO,Remarks}.so
 
    # remove files which conflicts with or are already present in clang-minimal-git
    rm -rf "$pkgdir"/usr/lib32/{libear,libscanbuild}
