@@ -1,7 +1,7 @@
-pkgbase = android-file-transfer-linux
-	pkgdesc = A reliable MTP client with a minimalistic UI similar to official Android File Transfer. It just works.
+pkgbase = android-file-transfer
+	pkgdesc = A reliable MTP client with a minimalistic UI similar to official Android File Transfer by Google. It just works.
 	pkgver = 4.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://whoozle.github.io/android-file-transfer-linux/
 	arch = any
 	license = GPL3
@@ -24,7 +24,10 @@ pkgbase = android-file-transfer-linux
 	depends = taglib
 	depends = openssl
 	depends = zlib
-	conflicts = android-file-transfer-linux-git
+	provides = android-file-transfer
+	provides = aft-mtp-cli
+	provides = aft-mtp-mount
+	conflicts = android-file-transfer
 	source = android-file-transfer-linux-4.3.tar.gz::https://github.com/whoozle/android-file-transfer-linux/archive/refs/tags/v4.3.tar.gz
 	sha256sums = SKIP
 
