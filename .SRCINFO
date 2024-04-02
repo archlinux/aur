@@ -1,0 +1,14 @@
+pkgbase = license-generator
+	pkgdesc = A command line tool that generates LICENSE file
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/azu/license-generator
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	provides = license-generator
+	conflicts = license-generator
+	source = https://github.com/azu/license-generator/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 3665dd609bf303359c612db5aa81d98469f7e78f46a788c490178e78ac5c72e8
+
+pkgname = license-generator
