@@ -1,4 +1,5 @@
 pkgbase = aiopmplus
+	pkgdesc = The argument based implementation of AIOPM
 	pkgver = 5
 	pkgrel = 1
 	arch = x86_64

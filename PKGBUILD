@@ -4,6 +4,7 @@ pkgrel=1
 arch=('x86_64')
 
 license=('GPL3')
+pkgdesc="The argument based implementation of AIOPM"
 
 depends=('wget' 'gcc' 'git')
 
