@@ -1,6 +1,6 @@
 pkgname=kakoune-git
 pkgver=2023.08.05
-pkgrel=1
+pkgrel=2
 pkgdesc="Multiple-selection, UNIX-flavored modal editor"
 arch=("x86_64" "armv7h")
 url="https://github.com/mawww/kakoune"
@@ -32,17 +32,17 @@ pkgver() {
 }
 
 check() {
-    cd "${srcdir}/${pkgname}/src"
+    cd "${srcdir}/${pkgname}"
     make test
 }
 
 build() {
-    cd "${srcdir}/${pkgname}/src"
+    cd "${srcdir}/${pkgname}"
     make
 }
 
 package() {
-    cd "${srcdir}/${pkgname}/src"
+    cd "${srcdir}/${pkgname}"
     make install-strip DESTDIR="${pkgdir}" PREFIX=/usr libexecdir="${pkgdir}"/usr/lib/kak
-    install -D ../UNLICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+    install -D UNLICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
