@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=MIDI 2.0 Workbench
+Comment=MIDI 2.0 debugging utility
+Exec=midi2-workbench
+Icon=midi2-workbench
+Terminal=false
+StartupNotify=false
+Categories=Audio;
+StartupWMClass=midi2_workbench_public
