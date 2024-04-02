@@ -1,6 +1,6 @@
 pkgbase = zaproxy-weekly
 	pkgdesc = Integrated penetration testing tool for finding vulnerabilities in web applications, weekly Pre-release
-	pkgver = 2024_03_25
+	pkgver = 2024_04_02
 	pkgrel = 1
 	url = https://github.com/zaproxy/zaproxy
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = zaproxy-weekly
 	depends = java-runtime
 	depends = ttf-font
 	conflicts = zaproxy
-	source = ZAP_WEEKLY_D-2024-03-25.zip::https://github.com/zaproxy/zaproxy/releases/download/w2024-03-25/ZAP_WEEKLY_D-2024-03-25.zip
-	sha256sums = 0150a588b26bc538b813af2a699f19f1c8afd6ff212c3248a6d05358bd06eb7c
-	b2sums = 041013e8ab466dd8e314b37d329c1f9998eb158d0b07d014cc599f16808a422401f8e484bc4d9325eff7c0173e101a4a55f176a486908d2fce5ac2431b030199
+	source = ZAP_WEEKLY_D-2024-04-02.zip::https://github.com/zaproxy/zaproxy/releases/download/w2024-04-02/ZAP_WEEKLY_D-2024-04-02.zip
+	sha256sums = b01f405ed7026f20e5cebfaaf829c9efd852f5eeab35788bfdb6054d897dcb22
+	b2sums = 8d1d2ca75eb4771a22f8db9e748f31c1e9444f79fa9259b48f1e984929f4a265c8dfa8445547776bf0b893a930c04e758fdf0ec4d31c2f35ba55117afb79d060
 
 pkgname = zaproxy-weekly
