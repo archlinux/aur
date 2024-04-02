@@ -1,11 +1,11 @@
 pkgbase = listen1-desktop-bin
 	pkgdesc = One for all free music in China
 	pkgver = 2.32.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://listen1.github.io/listen1
 	arch = x86_64
 	license = MIT
-	depends = electron
+	depends = electron13-bin
 	provides = listen1-desktop=2.32.0
 	conflicts = listen1-desktop
 	conflicts = listen1
