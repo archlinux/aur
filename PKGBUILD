@@ -17,13 +17,14 @@
 
 pkgbase=llvm-minimal-git
 pkgname=(llvm-minimal-git llvm-libs-minimal-git clang-minimal-git clang-libs-minimal-git clang-opencl-headers-minimal-git)
-pkgver=19.0.0_r494466.1d06f41b72e4
+pkgver=19.0.0_r494519.f59911615295
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=(git cmake libffi libedit ncurses libxml2
              libxcrypt python python-setuptools)
+# b361b5369ed4
 source=("git+https://github.com/llvm/llvm-project.git"
 )
 md5sums=('SKIP')
@@ -51,8 +52,12 @@ make help | grep -Po 'install-\K.*(?=-stripped)' | while read -r target; do
         llvm-libraries|clang-libraries|clang-tidy-headers|distribution )
             include=0
             ;;
+      # don't build functionality conflicting with llvm-libs
+      LLVMgold )
+        include=0
+        ;;
       # shared libraries
-        LLVM|LLVMgold )
+        LLVM )
             include=1
             ;;
         # libraries needed for clang-tblgen
@@ -153,7 +158,7 @@ check() {
 }
 
 package_llvm-minimal-git() {
-    pkgdesc="Collection of modular and reusable compiler and toolchain technologies"
+    pkgdesc="Collection of modular and reusable compiler and toolchain technologies, trimmed down git version"
     depends=(llvm-libs-minimal-git="$pkgver-$pkgrel")
     provides=('llvm')
     conflicts=('llvm')
@@ -169,13 +174,13 @@ package_llvm-minimal-git() {
     # -O1 ensures the python files for lit will be optimized
     popd
     
-    # Remove files which conflict with repo llvm-libs
-    rm "$pkgdir"/usr/lib/{LLVMgold,lib{LLVM,LTO}}.so
+    # Remove symlinks to prevent conflict with repo llvm-libs
+    rm "$pkgdir"/usr/lib/lib{LLVM,LTO}.so
     rm "$pkgdir"/usr/lib/libRemarks.so
 
-    # for an unknown reason !staticlibs doesn't remove all static *.a libraries, 
+    # for an unknown reason !staticlibs doesn't remove all static *.a libraries from clang
     # ensure they are removed
-    find "$pkgdir"/usr/lib/ -depth -type f -name "*.a" -delete
+    find "$pkgdir"/usr/lib/clang -depth -type f -name "*.a" -delete
     
     # prepare folders in srcdir to store files that are placed in other package_*() functions
     mkdir -p "$srcdir"{/llvm-libs/usr/lib,/clang-libs/usr/lib,/clang-opencl-headers/usr/{lib/clang/$_major_ver/include,include/clang/Basic}}
@@ -206,10 +211,8 @@ package_llvm-minimal-git() {
 }
 
 package_llvm-libs-minimal-git() {
-    pkgdesc="LLVM runtime libraries, trunk version"
-    depends=(gcc-libs zlib libffi libedit ncurses libxml2 llvm-libs)
-    # some applications expect llvmgold.so to be present and fail badly if it isn't.
-    # adding repo llvm-libs as depend is the easiest solution
+    pkgdesc="LLVM runtime libraries, trimmed down trunk version"
+    depends=(gcc-libs zlib libffi libedit ncurses libxml2)
 
     cp --preserve --recursive "$srcdir"/llvm-libs/* "$pkgdir"/
 
@@ -223,7 +226,7 @@ _python_optimize() {
 }
 
 package_clang-minimal-git() {
-  pkgdesc='C language family frontend for LLVM (git version)'
+  pkgdesc='C language family frontend for LLVM (trimmed down git version)'
   depends=(llvm-libs-minimal-git clang-libs-minimal-git gcc)
   optdepends=('openmp: OpenMP support in clang with -fopenmp'
               'python: for scan-view, scan-build, git-clang-format, clang-rename and python bindings'

@@ -1,5 +1,5 @@
 pkgbase = llvm-minimal-git
-	pkgver = 19.0.0_r494466.1d06f41b72e4
+	pkgver = 19.0.0_r494519.f59911615295
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
@@ -20,25 +20,24 @@ pkgbase = llvm-minimal-git
 	sha512sums = SKIP
 
 pkgname = llvm-minimal-git
-	pkgdesc = Collection of modular and reusable compiler and toolchain technologies
-	depends = llvm-libs-minimal-git=19.0.0_r494466.1d06f41b72e4-1
+	pkgdesc = Collection of modular and reusable compiler and toolchain technologies, trimmed down git version
+	depends = llvm-libs-minimal-git=19.0.0_r494519.f59911615295-1
 	optdepends = python: for using lit (LLVM Integrated Tester)
 	optdepends = python-setuptools: for using lit
 	provides = llvm
 	conflicts = llvm
 
 pkgname = llvm-libs-minimal-git
-	pkgdesc = LLVM runtime libraries, trunk version
+	pkgdesc = LLVM runtime libraries, trimmed down trunk version
 	depends = gcc-libs
 	depends = zlib
 	depends = libffi
 	depends = libedit
 	depends = ncurses
 	depends = libxml2
-	depends = llvm-libs
 
 pkgname = clang-minimal-git
-	pkgdesc = C language family frontend for LLVM (git version)
+	pkgdesc = C language family frontend for LLVM (trimmed down git version)
 	depends = llvm-libs-minimal-git
 	depends = clang-libs-minimal-git
 	depends = gcc
@@ -54,14 +53,14 @@ pkgname = clang-minimal-git
 
 pkgname = clang-libs-minimal-git
 	pkgdesc = clang runtime libraries, trunk version
-	depends = llvm-libs-minimal-git=19.0.0_r494466.1d06f41b72e4-1
+	depends = llvm-libs-minimal-git=19.0.0_r494519.f59911615295-1
 	provides = clang-libs
-	conflicts = clang<19.0.0_r494466.1d06f41b72e4-1
+	conflicts = clang<19.0.0_r494519.f59911615295-1
 	conflicts = clang-libs
 
 pkgname = clang-opencl-headers-minimal-git
 	pkgdesc = clang headers & include files for OpenCL, trunk version
-	depends = clang-libs-minimal-git=19.0.0_r494466.1d06f41b72e4-1
+	depends = clang-libs-minimal-git=19.0.0_r494519.f59911615295-1
 	provides = clang-opencl-headers
-	conflicts = clang<19.0.0_r494466.1d06f41b72e4-1
+	conflicts = clang<19.0.0_r494519.f59911615295-1
 	conflicts = clang-opencl-headers
