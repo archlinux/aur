@@ -159,12 +159,18 @@ _install_flutter_engine() {
 }
 
 if [[ -n "$_cached_flutter_dir" ]]; then
-	if [[ ! -L "$_cached_flutter_dir/out/arch_release" ]]; then
-		_prepare_flutter_engine && \
-		_build_flutter_engine && \
-		_install_flutter_engine || \
-			{ return 1; }
-	fi
+	mkdir -p "$_cached_flutter_dir"
+	
+	{
+		flock -s 4
+		
+		if [[ ! -L "$_cached_flutter_dir/out/arch_release" ]]; then
+			_prepare_flutter_engine && \
+			_build_flutter_engine && \
+			_install_flutter_engine || \
+				{ return 1; }
+		fi
+	} 4> "$_cached_flutter_dir/.lock"
 	
 	_ln "$_cached_flutter_dir/out" "${srcdir}/flutter-engine/out"
 else
