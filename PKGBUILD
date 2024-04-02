@@ -4,12 +4,12 @@
 
 pkgname=ncnn-git
 _pkgname=ncnn
-pkgver=20231027.r9.g31e315981
+pkgver=20240102.r68.g824b79a31
 pkgrel=1
 pkgdesc="High-performance neural network inference framework optimized for the mobile platform"
 url="https://github.com/Tencent/ncnn"
-license=('BSD')
-depends=('glslang')
+license=('BSD-3-Clause' 'BSD-2-Clause' 'Zlib')
+depends=('glibc')
 makedepends=('git' 'cmake' 'vulkan-icd-loader' 'protobuf' 'vulkan-headers')
 optdepends=('protobuf: for onnx2ncnn')
 conflicts=('ncnn')
@@ -42,13 +42,12 @@ build() {
         -DCMAKE_BUILD_TYPE='Release' \
         -DNCNN_BUILD_EXAMPLES=OFF \
         -DNCNN_VULKAN=ON \
-        -DNCNN_SYSTEM_GLSLANG=ON \
+        -DNCNN_SYSTEM_GLSLANG=OFF \
         -DNCNN_SHARED_LIB=ON \
         -DNCNN_ENABLE_LTO=ON \
         -DNCNN_STDIO=ON \
         -DNCNN_STRING=ON \
         -DNCNN_BUILD_TOOLS=1 \
-        -DGLSLANG_TARGET_DIR=/usr/lib/cmake \
         -Wno-dev
     cmake --build build
 }
