@@ -2,7 +2,7 @@
 
 pkgname=ros2-iron-base
 pkgver=2024.02.09
-pkgrel=2
+pkgrel=3
 _rosdist="Iron Irwini"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -56,11 +56,9 @@ build() {
         export COLCON_EXTRA_ARGS="${COLCON_EXTRA_ARGS} --executor sequential"
     fi
 
-    ## For people with the old version of makepkg.conf
-    #unset CPPFLAGS
-    ## For people with the new version of makepkg.conf
-    CFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=2\s//g" <(echo $CFLAGS))
-    CXXFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=2\s//g" <(echo $CXXFLAGS))
+    # Remove D_FORTIFY_SOURCE to avoid compilation errors
+    CFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=[0-9]\s//g" <(echo $CFLAGS))
+    CXXFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=[0-9]\s//g" <(echo $CXXFLAGS))
 
     # Build
     colcon build --packages-up-to ros_base --merge-install ${COLCON_EXTRA_ARGS} --cmake-args -DBUILD_TESTING=OFF
