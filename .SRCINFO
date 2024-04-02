@@ -1,0 +1,22 @@
+pkgbase = python-h3
+	pkgdesc = Hexagonal Hierarchical Geospatial Indexing System in Python
+	pkgver = 3.7.7
+	pkgrel = 1
+	url = https://github.com/uber/h3-py
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-scikit-build
+	makedepends = cmake
+	makedepends = flake8
+	makedepends = python-cmake-build-extension
+	makedepends = python-setuptools
+	depends = python
+	depends = cython
+	source = git+https://github.com/uber/h3-py.git#tag=v3.7.7
+	sha256sums = c6b42cfc785d4c43830be52be99bafedafcaee7cb8dd059e8448ce558516008a
+
+pkgname = python-h3
