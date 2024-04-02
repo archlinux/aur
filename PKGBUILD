@@ -6,10 +6,11 @@ arch=('any')
 url="https://github.com/lexi-the-cute/catgirl-engine"
 license=(Zlib)
 pkgver=0.12.32
-pkgrel=2
+pkgrel=3
 conflicts=(catgirl-engine-git)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 b2sums=("SKIP")
+options=(!strip !debug)
 makedepends=(
     "rust"
     "cargo-nightly"

@@ -1,7 +1,7 @@
 pkgbase = catgirl-engine
 	pkgdesc = A game engine for cool moddability and procedurally generated data
 	pkgver = 0.12.32
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lexi-the-cute/catgirl-engine
 	arch = any
 	license = Zlib
@@ -9,6 +9,8 @@ pkgbase = catgirl-engine
 	makedepends = cargo-nightly
 	makedepends = sed
 	conflicts = catgirl-engine-git
+	options = !strip
+	options = !debug
 	source = catgirl-engine-0.12.32.tar.gz::https://static.crates.io/crates/catgirl-engine/catgirl-engine-0.12.32.crate
 	b2sums = SKIP
 
