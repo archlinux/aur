@@ -5,7 +5,7 @@
 
 pkgbase=leftwm-git
 pkgname=(leftwm-nonsystemd-git leftwm-git)
-pkgver=0.5.1.r0.g2ae93293
+pkgver=0.5.1.r28.g765a1aeb
 pkgrel=1
 pkgdesc="A tiling window manager for the adventurer"
 arch=('i686' 'x86_64')
@@ -39,7 +39,7 @@ build() {
 	cd $pkgbase
 
 	export CARGO_TARGET_DIR=target_non_systemd
-	cargo build --frozen --release --no-default-features --features=lefthk,sys-log
+	cargo build --frozen --release --no-default-features --features=lefthk,sys-log,xlib
 
 	export CARGO_TARGET_DIR=target_systemd
 	cargo build --frozen --release
@@ -67,3 +67,4 @@ package_leftwm-git() {
 	cd $pkgbase/target_systemd/release
 	_package
 }
+md5sums=('SKIP')
