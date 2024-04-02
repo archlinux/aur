@@ -2,20 +2,21 @@
 # Contributor: ArcanusNEO <admin@transcliff.top>
 # Contributor: zhullyb < zhullyb [at] outook dot com >
 # Contributor: sukanka < su975853527 [at] gmail dot com >
-pkgname=aliyunpan-odomu-git
+_pkgname=aliyunpan
+pkgname="${_pkgname}-odomu-git"
 _zhsname="阿里云盘小白羊"
-pkgver=3.24.32319.r0.gd02691f
+pkgver=3.24.40213.r0.g26a0d6e
 _electronversion=21
-_nodeversion=20
+_nodeversion=18
 pkgrel=1
 pkgdesc="阿里云盘小白羊版，odomu's fork"
 arch=("any")
 url="https://github.com/odomu/aliyunpan"
 license=("MIT")
-provides=("aliyunpan-liupan1890")
+provides=("${_pkgname}-liupan1890")
 conflicts=(
     "${pkgname%-git}"
-    "aliyunpan-liupan1890"
+    "${_pkgname}-liupan1890"
     "xbyyunpan"
     "xbydriver"
 )
@@ -51,7 +52,7 @@ build() {
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories="Network" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n --pkgname="${_pkgname}-odomu-git" --categories="Network" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     sed "4i\Name[zh]=${_zhsname}" -i "${srcdir}/${pkgname%-git}.desktop"
     cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
@@ -65,9 +66,9 @@ build() {
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
     pnpm config set link-workspace-packages true
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-      export npm_config_registry=https://registry.npmmirror.com
-      export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
-      export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
       echo "Your network is OK."
     fi
