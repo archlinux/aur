@@ -4,11 +4,11 @@
 _pkgname=replay-sorcery
 pkgname=$_pkgname-git
 pkgver=r282.d8d5921
-pkgrel=2
+pkgrel=3
 pkgdesc='Open-source, instant-replay solution for Linux'
 url='https://github.com/matanui159/ReplaySorcery'
 arch=(x86_64 i686)
-license=(GPL3)
+license=(GPL-3.0-only)
 depends=(ffmpeg libx11 gcc-libs)
 optdepends=('pulseaudio: recording audio'
              'libdrm: listing kms devices')
