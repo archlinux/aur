@@ -80,9 +80,9 @@ build () {
 
   # If lto is specified in the PKGBUILD options, or if lto is specified in makepkg.conf and !lto is not specified in the PKGBUILD options,
   # turn on LTO for Rust.(CARGO_PROFILE_RELEASE_LTO=on)
-  [[ -n $(echo ${OPTIONS[@]} | tr ' ' '\n' | grep -x 'lto') ]] && \
-  [[ -z $(echo ${options[@]} | tr ' ' '\n' | grep -x '!lto') ]] || \
-  [[ -n $(echo ${options[@]} | tr ' ' '\n' | grep -x 'lto') ]] \
+  [[ -n $(printf '%s\n' ${OPTIONS[@]} | grep -x 'lto') ]] && \
+  [[ -z $(printf '%s\n' ${options[@]} | grep -x '!lto') ]] || \
+  [[ -n $(printf '%s\n' ${options[@]} | grep -x 'lto') ]] \
   && export CARGO_PROFILE_RELEASE_LTO=on \
   || export CARGO_PROFILE_RELEASE_LTO=off
 
