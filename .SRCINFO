@@ -1,4 +1,5 @@
 pkgbase = aif-master
+	pkgdesc = Bash script for installing the Archlinux system on a computer.
 	pkgver = 2.8
 	pkgrel = 1
 	url = https://github.com/maximalisimus/aif-master.git

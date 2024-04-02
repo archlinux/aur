@@ -2,6 +2,7 @@ pkgname=aif-master
 _pkgrun="aif"
 pkgver=2.8
 pkgrel=1
+pkgdesc="Bash script for installing the Archlinux system on a computer."
 arch=('any')
 url="https://github.com/maximalisimus/${pkgname}.git"
 license=('GPL')
