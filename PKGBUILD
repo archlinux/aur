@@ -5,7 +5,7 @@ _pkgsrc='https://static.replay.io/downloads/linux-replay.tar.bz2'
 _pkgsrcFileExtension='.tar.bz2'
 
 pkgname="${_pkgname}"
-pkgver=2024.03.01
+pkgver=2024.03.18
 pkgrel=1
 pkgdesc="Replay.io is a tool that makes debugging easy. It's a browser that lets you record your web app and retroactively inspect it using print statements and browser DevTools."
 url='https://www.replay.io'
@@ -25,7 +25,7 @@ optdepends=(
 # options=(!debug !emptydirs !lto !makeflags !strip)
 
 source=("${pkgname}-${pkgver}-${pkgrel}${_pkgsrcFileExtension}::${_pkgsrc}")
-sha256sums=('d44fcb212c56318c6fbd0b3e34aec3afd6d8e9d3117de0e3adf0288b13d25c46')
+sha256sums=('7cb91614766e078404ec56f1f82380dd4a37489fe2e338fcdd76f61e2c4bd923')
 
 pkgver() {
 	version=$(grep BuildID ${srcdir}/replay/platform.ini | cut -d'=' -f2 | cut -b1-8)
