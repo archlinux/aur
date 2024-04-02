@@ -1,0 +1,5 @@
+[python-eth-typing]
+source = "github"
+github = "ethereum/eth-typing"
+use_max_tag = true
+prefix = "v"
