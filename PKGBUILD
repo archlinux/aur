@@ -13,7 +13,7 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-rusticl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=24.1.0_devel.187235.e4aa095c6e5
+pkgver=24.1.0_devel.187245.89182faee8c
 pkgrel=1
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
@@ -23,7 +23,7 @@ makedepends=(git meson ninja libglvnd python-mako xorgproto libxml2 libx11  libv
 # In order to keep the package simple and ease troubleshooting only use one llvm implementation
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layer libva-mesa-driver vulkan-swrast mesa-vdpau vulkan-driver opengl-driver)
-conflicts=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layer libva-mesa-driver vulkan-swrast mesa-vdpau)
+conflicts=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layer libva-mesa-driver vulkan-swrast mesa-vdpau vulkan-nouveau)
 # mixing components from different mesa versions is a bad idea, conflict with everything unique provided by extra/mesa
 url="https://www.mesa3d.org"
 license=('custom')
@@ -51,6 +51,9 @@ pkgver() {
 
 build() {
 
+#  llvm trunk since https://github.com/llvm/llvm-project/commit/90c738ef15fc6f10255dced0b1557f2cd2c4f43b 
+# breaks build, see https://gitlab.freedesktop.org/mesa/mesa/-/issues/10947
+# disabling intel OpenGL & Vulkan driver for now
     meson setup mesa _build \
        -D b_ndebug=true \
        -D b_lto=false \
@@ -61,8 +64,8 @@ build() {
        -D prefix=/usr \
        -D sysconfdir=/etc \
        -D platforms=x11,wayland \
-       -D gallium-drivers=radeonsi,swrast,zink,virgl,iris \
-       -D vulkan-drivers=amd,swrast,intel \
+       -D gallium-drivers=radeonsi,swrast,zink,virgl \
+       -D vulkan-drivers=amd,swrast \
        -D dri3=enabled \
        -D egl=enabled \
        -D gallium-extra-hud=true \
