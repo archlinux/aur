@@ -2,6 +2,7 @@
 pkgname=listen1-desktop-git
 _pkgname=Listen1
 pkgver=2.32.0.r2.ga087d36
+_electronversion=13
 pkgrel=1
 pkgdesc="One for all free music in China.Listen 1 可以搜索和播放来自多个主流音乐网站的歌曲，让你的曲库更全面。并支持收藏功能，方便的创建自己的歌单。"
 arch=('any')
@@ -17,7 +18,7 @@ provides=(
     "${pkgname%-git}=${pkgver%.r*}"
 )
 depends+=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'gendesk'
@@ -35,12 +36,7 @@ pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
-_getelectronver() {
-    cd "${srcdir}/${pkgname%-git}.git"
-    grep '"electron": ' -i package.json | awk '{print $2}' | sed 's|"||g;s|\^||g;s|\.| |g' | awk '{print $1}'
-}
 build() {
-    _electronversion="$(_getelectronver)"
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app|g" \

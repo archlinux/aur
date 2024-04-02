@@ -9,7 +9,7 @@ pkgbase = listen1-desktop-git
 	makedepends = git
 	makedepends = nodejs
 	makedepends = npm
-	depends = electron
+	depends = electron13-bin
 	provides = listen1-desktop=2.32.0
 	conflicts = listen1-desktop
 	conflicts = listen1
