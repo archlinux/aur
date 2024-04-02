@@ -1,22 +1,18 @@
 # Maintainer: Arti Zirk <arti.zirk@gmail.com>
 
-pkgname=keybase-zsh-completion-git
-pkgver=r5.4ec76d5
-pkgrel=1
+_pkgname="keybase-zsh-completion"
+pkgname="${_pkgname}-git"
+pkgver=r7.8e37ebf5fc2c
+pkgrel=2
 pkgdesc="ZSH completion for keybase"
 arch=('any')
 url="https://github.com/fnoris/keybase-zsh-completion"
 license=('MIT')
-groups=()
 depends=('zsh')
 makedepends=('git')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
-replaces=()
-backup=()
-options=()
-install=
-source=('keybase-zsh-completion-git::git+https://github.com/fnoris/keybase-zsh-completion.git')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${pkgname}::git+https://github.com/fnoris/keybase-zsh-completion.git")
 noextract=()
 md5sums=('SKIP')
 
@@ -28,4 +24,7 @@ pkgver() {
 package() {
 	cd "$srcdir/${pkgname}"
 	install -Dm644 _keybase "$pkgdir/usr/share/zsh/site-functions/_keybase"
+	# Upstream repo does not contain proper LICENSE file :(
+	install -Dm644 README.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
 }
