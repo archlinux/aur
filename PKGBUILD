@@ -19,8 +19,11 @@ pkgver() {
       | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
+build() {
+    make -C albafetch build/albafetch
+}
+
 package() {
-    cd albafetch
-    make CC=gcc INSTALLPATH="$pkgdir/usr/bin" CONFIGPATH="$pkgdir/etc/xdg" DATAPATH="$pkgdir/usr/share" install
+    make -C albafetch INSTALLPATH="$pkgdir/usr/bin" CONFIGPATH="$pkgdir/etc/xdg" DATAPATH="$pkgdir/usr/share" install
 }
 
