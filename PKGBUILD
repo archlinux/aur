@@ -22,7 +22,7 @@ _installdir=/opt/appimages
 prepare() {
     chmod a+x ${_pkgname}
     ./${_pkgname} --appimage-extract >/dev/null
-    sed -i "s+^Exec=.*+Exec=env DESKTOPINTEGRATION=no ${_installdir}/localsend.AppImage+" "squashfs-root/org.localsend.localsend_app.desktop"
+    sed -i "s+^Exec=.*+Exec=${_installdir}/localsend.AppImage+" "squashfs-root/org.localsend.localsend_app.desktop"
     sed -i "s+^Icon=.*+Icon=localsend-appimage+" "squashfs-root/org.localsend.localsend_app.desktop"
     sed -i "s+^Comment=.*+Comment=An open source cross-platform alternative to AirDrop+" "squashfs-root/org.localsend.localsend_app.desktop"
 }
