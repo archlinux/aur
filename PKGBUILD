@@ -1,12 +1,12 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname=clvk
 pkgname=clvk-git
-pkgver=r633.7bbda74
+pkgver=r664.85becb2
 pkgrel=1
 pkgdesc="Experimental implementation of OpenCL 3.0 on Vulkan"
 arch=("x86_64")
 url="https://github.com/kpet/clvk"
-license=('Apache')
+license=('Apache-2.0')
 depends=("vulkan-icd-loader" "ocl-icd" "ncurses" "gcc-libs" "zstd" "zlib")
 makedepends=("gcc" "git" "cmake" "python" "opencl-headers" "spirv-headers" 
 "spirv-tools" "spirv-llvm-translator" "vulkan-headers" "ninja")
@@ -36,7 +36,7 @@ pkgver() {
 prepare() {
 	cd "$srcdir/$_pkgname"
 	git submodule init
-	for module in {opencl-headers,spirv-headers,spirv-llvm-translator,spirv-tools};
+	for module in {clspv,opencl-headers,spirv-headers,spirv-llvm-translator,spirv-tools};
 	do
 		git config submodule.$module.url "$srcdir/$module"
 	done
