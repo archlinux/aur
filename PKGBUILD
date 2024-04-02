@@ -1,7 +1,7 @@
 # Maintainer: Sosthène Guédon <dev@peertube-viewer.com>
 pkgname=peertube-viewer-rs
 pkgver=1.8.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Peertube command line viewer inspired by youtube-viewer"
 arch=('any')
 url="https://peertube-viewer.com" 
@@ -33,7 +33,7 @@ build() {
 package() {
     cd $pkgname-v$pkgver
     install -Dm755 target/release/peertube-viewer-rs $pkgdir/usr/bin/peertube-viewer-rs
-    install -Dm644 completions/peertube-viewer-rs.bash $pkgdir/usr/share/bash-completion/completions/peertube-viewer-rs.bash
+    install -Dm644 completions/peertube-viewer-rs.bash $pkgdir/usr/share/bash-completion/completions/peertube-viewer-rs
 
     install -Dm644 peertube-viewer-rs.1 $pkgdir/usr/share/man/man1/peertube-viewer-rs.1
     gzip $pkgdir/usr/share/man/man1/peertube-viewer-rs.1

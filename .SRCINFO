@@ -1,7 +1,7 @@
 pkgbase = peertube-viewer-rs
 	pkgdesc = Peertube command line viewer inspired by youtube-viewer
 	pkgver = 1.8.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://peertube-viewer.com
 	arch = any
 	license = AGPL-3.0-or-later
