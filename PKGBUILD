@@ -24,7 +24,7 @@ prepare() {
     ./${_pkgname} --appimage-extract >/dev/null
     sed -i "s+^Categories.*+Categories=Audio;AudioVideo+" "squashfs-root/listen1.desktop"
     sed -i "s+^Icon=.*+Icon=listen1-appimage+" "squashfs-root/listen1.desktop"
-    sed -i "s+AppRun+env DESKTOPINTEGRATION=no ${_installdir}/listen1.AppImage+" "squashfs-root/listen1.desktop"
+    sed -i "s+AppRun+${_installdir}/listen1.AppImage+" "squashfs-root/listen1.desktop"
     sed -i "s/[[:space:]]%U$//" "squashfs-root/listen1.desktop"
 }
 
