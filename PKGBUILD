@@ -3,11 +3,11 @@
 
 pkgname=udp-over-tcp
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Proxy UDP traffic over a TCP stream"
 arch=('i686' 'x86_64')
 url="https://github.com/mullvad/udp-over-tcp"
-license=('Apache-2.0' 'MIT')
+license=('Apache-2.0 OR MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('git' 'rust')
 source=("https://github.com/mullvad/udp-over-tcp/archive/refs/tags/v$pkgver.tar.gz")
