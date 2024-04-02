@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-bin
 pkgver=0.25.2
-pkgrel=1
+_electronversion=28
+pkgrel=2
 pkgdesc="VS Code inspired text editor that mostly runs in a webworker"
 arch=(
     'aarch64'
@@ -30,12 +31,6 @@ sha256sums=('ada1a0303abece27be80372538645da5c5b4e9d60fcacc87b97da1c26b8931bc'
 sha256sums_aarch64=('e8009d6c2b3db043896c236a3b3556b38ada29d6555ed17f4643068162491f64')
 sha256sums_armv7h=('d69c8c1a9ad646857e227c8901da0d9bedd4eaeda7c371cf481291f8a1aae00e')
 sha256sums_x86_64=('32db518ed65a0c53b34806f2f3a34548ceeee2bb8f2fc7424ade172a64124485')
-prepare() {
-    bsdtar -xf "${srcdir}/data."*
-}
-_electronversion() {
-    strings "${srcdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}"  | grep '^Chrome/[0-9.]* Electron/[0-9]' | awk '{print $2}' | sed 's|Electron\/||g;s|\.| |g' | awk '{print $1}' 
-}
 build() {
     sed -e "s|@electronversion@|$(_electronversion)|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -45,6 +40,7 @@ build() {
         -e "s|@runname@|app|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/usr/lib/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g" -i \
         "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }

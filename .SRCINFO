@@ -1,13 +1,13 @@
 pkgbase = lvce-bin
 	pkgdesc = VS Code inspired text editor that mostly runs in a webworker
 	pkgver = 0.25.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lvce-editor.github.io/lvce-editor
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = MIT
-	depends = electron
+	depends = electron28
 	depends = nodejs
 	provides = lvce=0.25.2
 	conflicts = lvce
