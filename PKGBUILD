@@ -25,7 +25,7 @@ md5sums=(
     '75ee391fc452b53b6016be9d03d95715'
 )
 
-_ppdFile="canontr8600.ppd"
+_ppdFiles="canontr8600.ppd canontr8630.ppd "
 _printDrvSrc='cnijfilter2-6.10-1-deb'
 _printDrvDebCommon='cnijfilter2_6.10-1_amd64'
 
@@ -51,7 +51,10 @@ package() {
    rm -v *.tar.gz
 
    # install ppd file
-   install -vDm 644 "${pkgdir}/usr/share/ppd/${_ppdFile}" "${pkgdir}/usr/share/cups/model/${_ppdFile}"
+   for file in ${_ppdFiles}
+   do
+       install -vDm 644 "${pkgdir}/usr/share/ppd/${file}" "${pkgdir}/usr/share/cups/model/${file}"
+   done
    rm -vrf ${pkgdir}/usr/share/ppd
 
    # install licence
