@@ -2,7 +2,7 @@
 # -*- mode: sh -*-
 
 pkgname='timestampit'
-pkgver=0.3.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc='Prefix each input line with a date/time stamp (formerly timestamp/stampit)'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -39,10 +39,10 @@ package() {
 }
 
 sha256sums=(
-  '97d34cc5cde29cecef2ddf67b1b75401a58084b68493e669ec5dfb0a2f20da15'
+  '03b632c4e59d744949ab0876d2bfa7ef77e3194f220059b8da31bb59b2f35a27'
 )
 b2sums=(
-  '741b629856a57a0a760afe423faf94dd742875d658f8d341b4681d086952798bc7be2ea1d183ce43f99aa50928d19fa267987860f971a6a521fa24dc49535e4e'
+  'ba7656f9a4040fcdbae8e013c49e21aea36311b0fef238d5093e7224f0b796414c322260a048b77da66a0381bab0294de138f28e01e59b53b0789ddfab4ce940'
 )
 
 # eof
