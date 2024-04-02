@@ -6,7 +6,7 @@ pkgbase = catgirl-engine-git
 	arch = any
 	license = Zlib
 	makedepends = git
-	makedepends = rust
+	makedepends = rustup
 	makedepends = cargo-nightly
 	makedepends = sed
 	provides = catgirl-engine=v0.12.32

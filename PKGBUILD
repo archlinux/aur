@@ -15,7 +15,7 @@ options=(!strip !debug)
 depends=()
 makedepends=(
     "git"
-    "rust"
+    "rustup"
     "cargo-nightly"
     "sed"
 )
