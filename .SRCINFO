@@ -1,7 +1,7 @@
 pkgbase = zathura-pdf-mupdf
 	pkgdesc = PDF support for Zathura (MuPDF backend) (Supports PDF, ePub, and OpenXPS)
 	pkgver = 0.4.1
-	pkgrel = 18
+	pkgrel = 19
 	url = https://pwmt.org/projects/zathura-pdf-mupdf/
 	arch = x86_64
 	license = Zlib
@@ -17,9 +17,9 @@ pkgbase = zathura-pdf-mupdf
 	depends = openssl
 	depends = zathura
 	conflicts = zathura-pdf-poppler
-	source = zathura-pdf-mupdf-0.4.1.tar.gz::https://pwmt.org/projects/zathura-pdf-mupdf/download/zathura-pdf-mupdf-0.4.1.tar.xz
+	source = zathura-pdf-mupdf-0.4.1.tar.gz::https://git.pwmt.org/pwmt/zathura-pdf-mupdf/-/archive/0.4.1/zathura-pdf-mupdf-0.4.1.tar.gz
 	source = 0001-Remove-mupdf-linking-detection.patch
-	sha256sums = f982a01d6523fa25669381184c06a625edbfd7961cbdb0711dccfdb9c402ac2f
+	sha256sums = 3cf142bfd189ee2cd0130d18a6c202bbc188f172695642a46556e824bd78b9aa
 	sha256sums = b72a21f697ffb6183345db62c3e7f97974ac7747a34587e0c84a4e5b87848af0
 
 pkgname = zathura-pdf-mupdf
