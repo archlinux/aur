@@ -1,102 +1,97 @@
-#!/hint/bash
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: bartus <scilab-aur@bartus.33mail.com>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: eolianoe <eolianoe [at] gmail [DoT] com>
 # Contributor: Kurnevsky Evgeny <kurnevsky@gmail.com>
 # Contributor: Victor Dmitriyev <mrvvitek@gmail.com>
-# Contributor : bartus <scilab-aur@bartus.33mail.com>
-
 pkgname=scilab
-pkgver=6.1.1
+pkgver=2024.0.0
 pkgrel=1
-pkgdesc='A scientific software package for numerical computations.'
-arch=('i686' 'x86_64')
-url='https://www.scilab.org'
-license=('BSD' 'custom:CeCILL' 'GPL2')
-depends=('suitesparse>=4.4.1' 'arpack' 'fftw' 'eigen'
-         'hdf5' 'libmatio'
-         'tk' 'bwidget'
-         'curl' 'inetutils'
-         'java-runtime>=8'
-         'beanshell' 'eclipse-ecj' 'java-flexdock>=1.2.4' 'fop-hyph'
-         'jeuclid-core' 'jgraphx-jre8' 'javahelp2'
-         'saxon-he' 'jlatexmath-fop>=1.0.3' 'jrosetta>=1.0.4' 'jgoodies-looks' 'java-qdox'
-         'java-skinlf' 'java-testng' 'xalan-java' 'docbook-xsl'
-         'jogl>=2.3.2' 'apache-lucene>=7'
-         'java-batik>=1.8' 'java-xmlgraphics-commons>=2.0.1')
-makedepends=('java-environment=8' 'ant>=1.9.0'
-             'ocaml-findlib' 'ocaml-num' 'gcc-fortran'
-             'time')
-source=("${url}/download/${pkgver}/${pkgname}-${pkgver}-src.tar.gz"
-        "${pkgname}-jogl-2.3.2.patch"
-        "${pkgname}-strict-jar.patch"
-        "${pkgname}-LD_LIBRARY_PATH.patch"
-        "${pkgname}-0004-Fix-build-with-ocaml-4.0.4.patch"
-        "${pkgname}-num.patch"
-        "libxml.patch"
-        "hdf5_18_api.patch"
-         )
-sha256sums=('e51347638bd385c276c930785a1f9f079ae7eaa78c62a0eca1dc7e6142434207'
-            '7b7b5609ee36b6f8d801eeb3899cd62cc889c2038e0e1616b7640f9b8a0424b0'
-            '38aa094951338fa1d267dc6f397552e175213b0f8ba7b35727c178607861f6dd'
-            'a39277cb8cfc3d7929c73ce6d707dc24e3df4b8d8f2d587f075efebda79ff4db'
-            '6712c6db2f3ba365d150e1feb1c71bf691f8aa3b45d5a872b05a42f0daf23392'
-            '79c5f32bc2142f9861491787e8ee86d0b75f148141b176bae394ea360b8944d7'
-            'c04114c4ef63d76bf898808e90c892de093fcc400a2371c7aa287b76c0c5d041'
-            'f781c2919a0c14be5deed3a8b8866addd8de1171a06aacb96ef1e19535d0988e')
+pkgdesc="A scientific software package for numerical computations"
+arch=(i686 x86_64)
+url="https://www.${pkgname}.org"
+license=(GPL-2.0-or-later BSD-3-Clause CECILL-2.1)
+depends=(arpack bwidget eigen fftw hdf5-openmpi libmatio suitesparse)
+# 'jogl>=2.5.0' 'java-flexdock>=1.2.4' jaf-api jaxb-api
+# jgoodies-looks jgoodies-common 'jrosetta>=1.0.4'
+# 'apache-lucene>=8.4.0' java-skinlf inetutils beanshell eclipse-ecj
+# fop-hyph jeuclid-core 'jgraphx>=1.4.0' javahelp2 saxon-he
+# 'jlatexmath-fop>=1.0.3' java-qdox xalan-java docbook-xsl 'java-batik>=1.8'
+# 'java-xmlgraphics-commons>=2.0.1')
+# checkstyle java-commons-beanutils junit java-hamcrest cobertura
+makedepends=(ant
+  curl
+  gcc-fortran
+  libxml2
+  ocaml-num
+  pcre
+  pkgconf
+  time
+  tk
+)
+source=(https://gitlab.com/${pkgname}/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
+# hdf5-api.patch ${pkgname}-strict-jar.patch ${pkgname}-LD_LIBRARY_PATH.patch ${pkgname}-num.patch
+sha512sums=('cae64d34612ab6924c405f418c5566163931b33523702e5a3d4c300ad71c42aea2f29677d47369a70a56b670510ee5a2d450b5725db1cb25c3604a5c8acfdb07')
 
-prepare(){
-  cd "${srcdir}/${pkgname}-${pkgver}"
+# prepare() {
+#   cd ${pkgname}-${pkgver}
+# Linked to: https://codereview.scilab.org/#/c/18089
+# patch <"${srcdir}"/${pkgname}-strict-jar.patch
+# Fix path, to avoid the following error:
+# An error has been detected while loading /usr/share/scilab//modules/functions/.libs/libscifunctions.so: /usr/share/scilab//modules/functions/.libs/libscifunctions.so: cannot open shared object file: No such file or directory
+# patch -p0 <"${srcdir}"/${pkgname}-LD_LIBRARY_PATH.patch
+# OCaml
+# patch -p0 <"${srcdir}"/${pkgname}-num.patch
+# # Jakarta
+# patch -p0 <"${srcdir}"/jar_names_in_configure.patch
+# sed -i 's/gluegen_rt/gluegen2_rt/' configure.ac
+# sed -i 's/gluegen_rt/gluegen2_rt/' modules/gui/src/java/org/scilab/modules/gui/SwingView.java
+# patch -p1 -i ../hdf5-api.patch
+# }
 
-  # https://codereview.scilab.org/#/c/17530/
-  patch -p2 < "${srcdir}"/${pkgname}-jogl-2.3.2.patch
-  # Linked to: https://codereview.scilab.org/#/c/18089/
-  patch < "${srcdir}"/${pkgname}-strict-jar.patch
-  # Fix path, to avoid the following error:
-  # An error has been detected while loading /usr/share/scilab//modules/functions/.libs/libscifunctions.so: /usr/share/scilab//modules/functions/.libs/libscifunctions.so: cannot open shared object file: No such file or directory
-  patch -p0 < "${srcdir}"/${pkgname}-LD_LIBRARY_PATH.patch
-  # OCaml
-  patch -p0 < "${srcdir}"/${pkgname}-0004-Fix-build-with-ocaml-4.0.4.patch
-  patch -p0 < "${srcdir}"/${pkgname}-num.patch
-  # libxml
-  patch -p1 < "${srcdir}"/libxml.patch
-  # hdf5_18_api
-  patch -p1 < "${srcdir}"/hdf5_18_api.patch
-}
+# --with-xcos \
+# --without-modelica \
+# --with-jdk=/usr/lib/jvm/java-17-openjdk \
+# --without-emf \
+# --with-openmp \
+# --enable-build-localization \
+# --without-install-help-xml \
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
+  cd ${pkgname}-${pkgver}/${pkgname}
   ./configure \
     --prefix=/usr \
+    --with-fftw \
+    --with-arpack-ng \
+    --with-arpack-library=/usr/lib \
     --with-gcc \
     --with-gfortran \
+    --with-tk \
+    --with-umfpack \
+    --with-umfpack-include=/usr/include/suitesparse \
+    --with-umfpack-library=/usr/lib \
     --with-mpi \
     --with-matio \
-    --with-umfpack \
-    --with-fftw \
-    --with-modelica \
-    --without-emf \
-    --with-install-help-xml \
-    --enable-build-help \
-    --enable-build-localization \
+    --with-hdf5-include=/usr/include \
+    --with-hdf5-library=/usr/lib \
+    --with-x \
+    --without-gui \
+    --without-javasci \
+    --without-jdk \
+    --disable-build-doxygen \
+    --disable-build-help \
+    --disable-debug-java \
     --disable-static-system-lib \
-    --with-jdk=/usr/lib/jvm/java-8-openjdk/ \
     FFLAGS="-fallow-argument-mismatch" \
     CFLAGS="$CFLAGS -fcommon" \
-    CXXFLAGS="$CXXFLAGS -fcommon" \
-
+    CXXFLAGS="$CXXFLAGS -fcommon" # -DH5_USE_18_API
   make
   make doc
 }
 
-package(){
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
+package() {
+  cd ${pkgname}-${pkgver}/${pkgname}
   make DESTDIR="${pkgdir}" install
   make DESTDIR="${pkgdir}" install-data install-html
-
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-  install -Dm644 COPYING-BSD "${pkgdir}/usr/share/licenses/${pkgname}/COPYING-BSD"
+  install -Dm 644 COPYING* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-# vim:set ts=2 sw=2 et:

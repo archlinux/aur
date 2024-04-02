@@ -1,0 +1,4 @@
+[scilab]
+source = "gitlab"
+gitlab = "scilab/scilab"
+use_max_tag = true

@@ -1,65 +1,30 @@
 pkgbase = scilab
-	pkgdesc = A scientific software package for numerical computations.
-	pkgver = 6.1.1
+	pkgdesc = A scientific software package for numerical computations
+	pkgver = 2024.0.0
 	pkgrel = 1
 	url = https://www.scilab.org
 	arch = i686
 	arch = x86_64
-	license = BSD
-	license = custom:CeCILL
-	license = GPL2
-	makedepends = java-environment=8
-	makedepends = ant>=1.9.0
-	makedepends = ocaml-findlib
-	makedepends = ocaml-num
+	license = GPL-2.0-or-later
+	license = BSD-3-Clause
+	license = CECILL-2.1
+	makedepends = ant
+	makedepends = curl
 	makedepends = gcc-fortran
+	makedepends = libxml2
+	makedepends = ocaml-num
+	makedepends = pcre
+	makedepends = pkgconf
 	makedepends = time
-	depends = suitesparse>=4.4.1
+	makedepends = tk
 	depends = arpack
-	depends = fftw
-	depends = eigen
-	depends = hdf5
-	depends = libmatio
-	depends = tk
 	depends = bwidget
-	depends = curl
-	depends = inetutils
-	depends = java-runtime>=8
-	depends = beanshell
-	depends = eclipse-ecj
-	depends = java-flexdock>=1.2.4
-	depends = fop-hyph
-	depends = jeuclid-core
-	depends = jgraphx-jre8
-	depends = javahelp2
-	depends = saxon-he
-	depends = jlatexmath-fop>=1.0.3
-	depends = jrosetta>=1.0.4
-	depends = jgoodies-looks
-	depends = java-qdox
-	depends = java-skinlf
-	depends = java-testng
-	depends = xalan-java
-	depends = docbook-xsl
-	depends = jogl>=2.3.2
-	depends = apache-lucene>=7
-	depends = java-batik>=1.8
-	depends = java-xmlgraphics-commons>=2.0.1
-	source = https://www.scilab.org/download/6.1.1/scilab-6.1.1-src.tar.gz
-	source = scilab-jogl-2.3.2.patch
-	source = scilab-strict-jar.patch
-	source = scilab-LD_LIBRARY_PATH.patch
-	source = scilab-0004-Fix-build-with-ocaml-4.0.4.patch
-	source = scilab-num.patch
-	source = libxml.patch
-	source = hdf5_18_api.patch
-	sha256sums = e51347638bd385c276c930785a1f9f079ae7eaa78c62a0eca1dc7e6142434207
-	sha256sums = 7b7b5609ee36b6f8d801eeb3899cd62cc889c2038e0e1616b7640f9b8a0424b0
-	sha256sums = 38aa094951338fa1d267dc6f397552e175213b0f8ba7b35727c178607861f6dd
-	sha256sums = a39277cb8cfc3d7929c73ce6d707dc24e3df4b8d8f2d587f075efebda79ff4db
-	sha256sums = 6712c6db2f3ba365d150e1feb1c71bf691f8aa3b45d5a872b05a42f0daf23392
-	sha256sums = 79c5f32bc2142f9861491787e8ee86d0b75f148141b176bae394ea360b8944d7
-	sha256sums = c04114c4ef63d76bf898808e90c892de093fcc400a2371c7aa287b76c0c5d041
-	sha256sums = f781c2919a0c14be5deed3a8b8866addd8de1171a06aacb96ef1e19535d0988e
+	depends = eigen
+	depends = fftw
+	depends = hdf5-openmpi
+	depends = libmatio
+	depends = suitesparse
+	source = https://gitlab.com/scilab/scilab/-/archive/2024.0.0/scilab-2024.0.0.tar.gz
+	sha512sums = cae64d34612ab6924c405f418c5566163931b33523702e5a3d4c300ad71c42aea2f29677d47369a70a56b670510ee5a2d450b5725db1cb25c3604a5c8acfdb07
 
 pkgname = scilab
