@@ -1,0 +1,4 @@
+[python-arm-preprocessing]
+source = "github"
+github = "firefly-cpp/arm-preprocessing"
+use_latest_release = "true"

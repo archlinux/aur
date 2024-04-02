@@ -1,6 +1,6 @@
 pkgbase = python-arm-preprocessing
 	pkgdesc = Implementation of several preprocessing techniques for Association Rule Mining
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/firefly-cpp/arm-preprocessing
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-arm-preprocessing
 	depends = python-niaarm
 	depends = python-sport-activities-features
 	depends = python-scikit-learn
-	source = arm-preprocessing-0.2.1.tar.gz::https://github.com/firefly-cpp/arm-preprocessing/archive/0.2.1.tar.gz
-	sha512sums = 8822a28daefe4c188bdecffa420ed92d213b1ce4c89de721d1724f9977b235b6d66b5e0cfe8215f8837cb4d2345cd40a79a9c05d1cc09f73674826d126821378
+	source = arm-preprocessing-0.2.2.tar.gz::https://github.com/firefly-cpp/arm-preprocessing/archive/0.2.2.tar.gz
+	sha512sums = ad362a1ffa2b493b55f8a150b5febb6b9289c6badf6411ae7b997bb64e6ed52597c007b8c26ea8d6770e2a4ccf3b4fedf7099f7c48135f856be45c89fdccc346
 
 pkgname = python-arm-preprocessing
