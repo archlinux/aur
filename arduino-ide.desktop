@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Arduino IDE v2
+GenericName=Arduino IDE v2
+Comment=Open-source electronics prototyping platform
+Exec=arduino-ide %U
+Icon=arduino-ide
+Terminal=false
+MimeType=text/x-arduino;
+Categories=Development;IDE;Electronics;
+Keywords=embedded electronics;avr;microcontroller;
+StartupWMClass=Arduino IDE
+
