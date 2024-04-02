@@ -1,14 +1,14 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=python-liboqs
 _name=liboqs-python
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.10.0
+pkgrel=1
 pkgdesc="Python 3 bindings for liboqs"
 arch=('any')
 url="https://github.com/open-quantum-safe/liboqs-python"
 license=('MIT')
 depends=(
-    'liboqs'
+    'liboqs=1:0.10.0'
     'python'
 )
 makedepends=(
@@ -19,7 +19,7 @@ makedepends=(
 )
 checkdepends=('python-nose2')
 source=("${_name}-${pkgver}.tar.gz::https://github.com/open-quantum-safe/$_name/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('a894c6c6ab95485d951441268ffa2be02f0768183fb7bd5c24c0026a326a7a227a2b25552ad9b1b5c6a1b3dcc3802fd0e618508205be8edad8b08b0a6f18dc69')
+b2sums=('2a23080616f2699db45fd62f641892dba7a11ed456a7eaa7c1ffe29523f0e5544590e9491eb06736ca589b521ddc2fb248b721eca2293f8cf45d91f93a492c4b')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
