@@ -1,10 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-# Co-maintainer: Edu4rdSHL <edu4rdshl@protonmail.com>
+# Maintainer: Edu4rdSHL <edu4rdshl@protonmail.com>
+# Maintainer: Evan Simkowitz <https://simkowitz.dev/>
 pkgname=waveterm
 _pkgname=Wave
 _appname="${_pkgname} Terminal"
 pkgver=0.7.2
-pkgrel=1
+_electronversion=29
+_nodeversion=20
+pkgrel=2
 pkgdesc="An open-source, cross-platform terminal for seamless workflows"
 arch=('any')
 url="https://www.waveterm.dev/"
@@ -33,14 +36,6 @@ source=(
 )
 sha256sums=('SKIP'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-_getelectronver() {
-    cd "${srcdir}/${pkgname//-/.}"
-    grep '"electron": ' -i package.json | awk '{print $2}' | sed 's|"||g;s|\^||g;s|\.| |g' | awk '{print $1}'
-}
-_getnodeversion() {
-    cd "${srcdir}/${pkgname//-/.}"
-    grep '"@types/node": "' -i package.json | awk '{print $2}' | sed 's|"||g;s|\^||g;s|\.| |g' | awk '{print $1}'
-}
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -48,11 +43,6 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 build() {
-    _electronversion="$(_getelectronver)"
-    _nodeversion="$(_getnodeversion)"
-    depends=(
-        "electron${_electronversion}"
-    )
     _ensure_local_nvm
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
