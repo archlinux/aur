@@ -20,18 +20,17 @@ prepare(){
 }
 
 build() {
-  cd gopath/src/github.com/anycable/$pkgname
-  export GOPATH="$srcdir"/gopath
-  export CGO_ENABLED=0
-  export GO111MODULE=on
-  export GOFLAGS=-mod=mod
+  cd "$pkgname-$pkgver"
   go build \
-    -ldflags "-s -w -X main.version=$pkgver" \
-    -gcflags "all=-trimpath=$GOPATH" \
-    -asmflags "all=-trimpath=$GOPATH" \
-    -a -o $GOPATH/bin/anycable-go cmd/anycable-go/main.go
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -X main.version=$pkgver" \
+    -a -o $pkgname cmd/anycable-go/main.go
 }
 
 package() {
-  install -Dm755 gopath/bin/$pkgname "$pkgdir"/usr/bin/$pkgname
+  cd "$pkgname-$pkgver"
+  install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
 }
