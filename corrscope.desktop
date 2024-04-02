@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Corrscope
+Comment=Python program to render wave files into oscilloscope views, featuring advanced correlation-based triggering algorithm
+Exec=corr
+Icon=corrscope
+Terminal=false
+StartupNotify=false
+Categories=AudioVideo;
