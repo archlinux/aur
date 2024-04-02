@@ -1,20 +1,21 @@
 pkgbase = electron-netease-cloud-music-git
-	pkgdesc = UNOFFICIAL client for music.163.com . Powered by Electron, Vue, and Muse-UI.
-	pkgver = 0.9.29.10.g64e1f15
-	pkgrel = 2
-	url = https://github.com/Rocket1184/electron-netease-cloud-music
+	pkgdesc = UNOFFICIAL client for music.163.com . Powered by Electron, Vue, and Muse-UI.Use system-wide electron.
+	pkgver = 0.9.38.r12.g149190d
+	pkgrel = 1
+	url = https://encm.rocka.me/
 	arch = any
-	license = GPL3
-	makedepends = yarn
+	license = GPL-3.0-only
+	makedepends = npm
 	makedepends = git
-	depends = electron
-	optdepends = dbus: MPRIS support
-	provides = electron-netease-cloud-music
-	source = git+https://github.com/Rocket1184/electron-netease-cloud-music
-	source = electron-netease-cloud-music.desktop
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = icoutils
+	depends = electron25-bin
+	provides = electron-netease-cloud-music=0.9.38
+	conflicts = electron-netease-cloud-music
+	source = electron-netease-cloud-music.git::git+https://github.com/Rocket1184/electron-netease-cloud-music.git
 	source = electron-netease-cloud-music.sh
 	sha256sums = SKIP
-	sha256sums = f2fe49203340612cf6e9205b56cb1851133c11abaa9d1caa1ddf8676ed56c9e7
-	sha256sums = 809320b5879e8b5b903a4e8d49610467d92c5ebff7f1b71ae4012185626193e1
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = electron-netease-cloud-music-git
