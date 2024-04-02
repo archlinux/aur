@@ -2,13 +2,13 @@
 
 pkgname=or-tools
 pkgver=9.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Google's Operations Research tools."
 arch=('x86_64')
 url="https://github.com/google/or-tools"
 license=('Apache')
 depends=('coin-or-cbc' 'protobuf' 're2' 'abseil-cpp>=20240116.1')
-makedepends=('cmake' 'pkgconf' 'git' 'eigen')
+makedepends=('cmake' 'pkgconf' 'git' 'eigen' 'gtest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/google/or-tools/archive/v${pkgver}.tar.gz")
 sha256sums=('8c17b1b5b05d925ed03685522172ca87c2912891d57a5e0d5dcaeff8f06a4698')
 
