@@ -1,6 +1,6 @@
 pkgbase = catgirl-engine-git
 	pkgdesc = A game engine for cool moddability and procedurally generated data
-	pkgver = v0.12.30.r20.g9e0dc34
+	pkgver = v0.12.32.r1.g996abc2
 	pkgrel = 2
 	url = https://github.com/lexi-the-cute/catgirl-engine
 	arch = any
@@ -9,8 +9,10 @@ pkgbase = catgirl-engine-git
 	makedepends = rust
 	makedepends = cargo-nightly
 	makedepends = sed
-	provides = catgirl-engine=v0.12.30
+	provides = catgirl-engine=v0.12.32
 	conflicts = catgirl-engine
+	options = !strip
+	options = !debug
 	source = git+https://github.com/lexi-the-cute/catgirl-engine.git
 	b2sums = SKIP
 
