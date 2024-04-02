@@ -1,11 +1,10 @@
 pkgbase = hid-mimouse-dkms-git
 	pkgdesc = Fixes Mi Silent Mouse side buttons (DKMS)
 	pkgver = r3.42f50b6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/matega/hid_mimouse
 	arch = x86_64
-	license = AGPL-3.0-only
-	license = GPL-3.0-or-later
+	license = AGPL-3.0-only AND GPL-3.0-or-later
 	makedepends = git
 	depends = dkms
 	provides = hid-mimouse
