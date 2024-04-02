@@ -4,21 +4,21 @@
 # you also find the URL of a binary repository.
 
 # set whether the Qt Quick GUI should be enabled: set to either ON or OFF
-_quick_gui=${PASSWORD_MANAGER_QUICK_GUI:-ON}
+_quick_gui=${PASSWORD_MANAGER_QUICK_GUI:-OFF}
 
 _reponame=passwordmanager
 pkgname=passwordmanager
-pkgver=4.1.13
+pkgver=4.2.0
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A simple password store using AES-256-CBC encryption via OpenSSL'
 license=('GPL')
 depends=('qt5-base' 'libqtutilities.so' 'libpasswordfile.so' 'libc++utilities.so' 'openssl'
-         'libxkbcommon-x11' 'desktop-file-utils' 'xdg-utils')
+         'desktop-file-utils')
 makedepends=('cmake' 'ninja' 'qt5-tools' 'kirigami2')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('68e44195cfbebef3df3404f0f552880e41e43dc16380d50c85052dff1d870e7c')
+sha256sums=('018dc831794182a66f4820ede7e399cee7633107542451206062bb01500541e0')
 
 # add further dependencies for the Qt Quick GUI (only kirigami2 is "pluggable")
 if [[ $_quick_gui == ON ]]; then
