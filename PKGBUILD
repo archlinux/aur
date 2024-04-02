@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tree-sitter-cli-git
-pkgver=0.20.9.r9.g78c297e6
+pkgver=0.22.2.r22.g78b6067a
 pkgrel=1
 pkgdesc="CLI tool for developing, testing, and using Tree-sitter parsers"
 arch=('i686' 'x86_64')
@@ -11,6 +11,7 @@ depends=('gcc-libs')
 makedepends=('git' 'cargo')
 provides=("tree-sitter-cli=$pkgver")
 conflicts=('tree-sitter-cli')
+options=('!lto')
 source=("git+https://github.com/tree-sitter/tree-sitter.git")
 sha256sums=('SKIP')
 

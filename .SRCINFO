@@ -1,6 +1,6 @@
 pkgbase = tree-sitter-cli-git
 	pkgdesc = CLI tool for developing, testing, and using Tree-sitter parsers
-	pkgver = 0.20.9.r9.g78c297e6
+	pkgver = 0.22.2.r22.g78b6067a
 	pkgrel = 1
 	url = https://tree-sitter.github.io/tree-sitter/
 	arch = i686
@@ -9,8 +9,9 @@ pkgbase = tree-sitter-cli-git
 	makedepends = git
 	makedepends = cargo
 	depends = gcc-libs
-	provides = tree-sitter-cli=0.20.9.r9.g78c297e6
+	provides = tree-sitter-cli=0.22.2.r22.g78b6067a
 	conflicts = tree-sitter-cli
+	options = !lto
 	source = git+https://github.com/tree-sitter/tree-sitter.git
 	sha256sums = SKIP
 
