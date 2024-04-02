@@ -1,0 +1,17 @@
+pkgbase = android-aarch64-npth
+	pkgdesc = The new GNU portable threads library (Android aarch64)
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://www.gnupg.org/software/npth/index.html
+	arch = any
+	license = LGPL-2.1-or-later
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://gnupg.org/ftp/gcrypt/npth/npth-1.7.tar.bz2
+	md5sums = 286274d0106ec408efebe4a399975b11
+
+pkgname = android-aarch64-npth
