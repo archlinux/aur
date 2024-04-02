@@ -1,55 +1,35 @@
 pkgname='sigmavpn'
-pkgver='0.2'
-pkgrel='5'
+pkgver='0.3alpha2'
+pkgrel='1'
 pkgdesc='Light-weight, secure and modular VPN solution'
-url='https://github.com/neilalexander/sigmavpn/'
-license=('BSD')
-depends=('libsodium')
+url=https://github.com/neilalexander/sigmavpn/
+license=(BSD-2-Clause)
+depends=(glibc libsodium)
+makedepends=(meson)
+arch=(x86_64 i686 arm)
 source=(
-	"${url}/archive/v${pkgver}.tar.gz"
+	"${url}/archive/${pkgver}.tar.gz"
 	fix-paths.patch
-	Makefile
+	meson.build
 	sigmavpn.conf
 )
-sha1sums=('8fb0e9eb03a0650d10fc3589381944b6b19a437e'
-          '59a308938341d1e13373b49ce482bb642fbc06fc'
-          'fb0fc62c58049feee34247efe99d619d9f6459b6'
-          'a5dd10b1599079f45bba4398fb295696c76cd9f2')
-sha512sums=('5b2660a3993d83f8f8eadf1ef3ae677f0f348c5aeb8d569ac27d8c3227cda5b39ee29d3709c9d8b2878883d2aa4726a9dc4a5aa89bd6072a89c81d549eee340c'
-            '4366c9f49253115bbee4b53a25bc5e27071bd25164d4e609d6f642e35d6c3367c4fb705771b5ed6e869cc51e7e900b13ef1c6dce400387e793a0f933a40b14aa'
-            'c7815f85a2c7dd9159ff747b02a9d1a5f45e2330f8afb2281051c4d4ccea303255d56c363ceb1afaca0bbe6cbed28df23992654f2e0fb562fa616d6cb3803da1'
+sha512sums=('8f2e0ccf3c2a37288b3fb9dbf37349f3b7340a391af55af61acd4243d2915f5ce92932b2d5da509aa1328f3d55d06f1c36bc3ace03f5971d2578b4a5b9b0c09d'
+            'f545a783fc93b5e6d640781ea3494f4845ac722304aff72bca0e153eed9646a498f52afb006485a6c733f177ab05382d25c250b0d9d91a3f82a6e80ef57b698d'
+            'd55e2e49555bb0931ed453f9e6401da42aa86ac99e38fd5059f1048f5e8aad2c3c5a440fa61b5e1065efd9c7a3e9e7dcf6cb6d60779c3cc68222792155ea4e53'
             'e08ca11165ba4635f6fc713fa7109bade00fcddd85b6d3e0924f8455f84e51c65bd7d25aff09935919949accc2e554c0158837d1afd6ae52090df753a997f727')
-arch=('x86_64' 'i686' 'arm')
 
 prepare () {
-	cd "${pkgname}-${pkgver}"
-	patch -p0 < "${srcdir}/fix-paths.patch"
-	cp -v "${srcdir}/Makefile" .
-
-	# Extract license text from main.c
-	sed -e '1,/^$/{p}' -e d main.c > COPYING
+	cd "$pkgname-$pkgver"
+	patch -p0 < "$srcdir/fix-paths.patch"
+	cp -v "$srcdir"/{meson.build,sigmavpn.conf} .
 }
 
 build () {
-	cd "${pkgname}-${pkgver}"
-	make USE_SODIUM=1 \
-		EXTRA_CFLAGS="${CFLAGS} -fcommon" \
-		EXTRA_LDFLAGS="${LDFLAGS} -fcommon"
+	rm -rf _build
+	arch-meson _build "$pkgname-$pkgver"
+	meson compile -C_build
 }
 
 package () {
-	cd "${pkgname}-${pkgver}"
-	install -m 755 -d "${pkgdir}/usr/bin"
-	install -m 755 -t "${pkgdir}/usr/bin" \
-		sigmavpn naclkeypair
-	install -m 755 -d "${pkgdir}/usr/lib/sigmavpn"
-	install -m 755 -t "${pkgdir}/usr/lib/sigmavpn" \
-		intf_*.o proto_*.o
-	install -m 755 -d "${pkgdir}/usr/share/man/man1"
-	install -m 644 -t "${pkgdir}/usr/share/man/man1" \
-		sigmavpn.1
-	install -m 755 -d "${pkgdir}/etc"
-	install -m 755 -t "${pkgdir}/etc" \
-		"${srcdir}/sigmavpn.conf"
-	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+	meson install -C_build --destdir="$pkgdir"
 }

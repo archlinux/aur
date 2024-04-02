@@ -1,16 +1,48 @@
---- main.c.orig	2014-05-08 18:34:30.502301834 +0300
-+++ main.c	2014-05-08 18:34:38.992301468 +0300
-@@ -167,8 +167,8 @@
- 	printf("SigmaVPN.\nCopyright (c) 2011 Neil Alexander T. All rights reserved.\n");
- 	
- 	conf = malloc(sizeof(sigma_conf));
--	strncpy(conf->modulepath, "/usr/local/lib/sigmavpn/", 128);
--	strncpy(conf->configfile, "/usr/local/etc/sigmavpn.conf", 128);
-+	strncpy(conf->modulepath, "/usr/lib/sigmavpn/", 128);
-+	strncpy(conf->configfile, "/etc/sigmavpn.conf", 128);
+--- main.c.orig	2024-04-02 16:16:41.012061258 +0300
++++ main.c	2024-04-02 16:21:27.840449585 +0300
+@@ -168,8 +168,8 @@
+     printf("SigmaVPN.\nCopyright (c) 2011 Neil Alexander T. All rights reserved.\n");
  
- 	int arg;
- 	
+     conf = malloc(sizeof(sigma_conf));
+-    strncpy(conf->modulepath, "/usr/local/lib/sigmavpn/", 128);
+-    strncpy(conf->configfile, "/usr/local/etc/sigmavpn.conf", 128);
++    strncpy(conf->modulepath, PLUGIN_PATH "/", 128);
++    strncpy(conf->configfile, CONFIG_PATH "/sigmavpn.conf", 128);
+ 
+     int arg;
+ 
+@@ -180,6 +180,7 @@
+ 
+         switch ((int) argv[arg][1])
+         {
++            case 'h':
+             case '?':
+             {
+                 printf("Possible arguments:\n\t-c 'path/to/config.conf'\n\t-m 'path/to/module/folder'\n");
+--- modules.c.orig	2024-04-02 16:16:36.220973033 +0300
++++ modules.c	2024-04-02 16:23:19.365588403 +0300
+@@ -38,8 +38,8 @@
+ 
+ sigma_proto* loadproto(char* protoname)
+ {
+-    char path[140];
+-    snprintf(path, sizeof(path), "%s/proto_%s.o", conf->modulepath, protoname);
++    char path[150];
++    snprintf(path, sizeof(path), "%s/libproto_%s.so", conf->modulepath, protoname);
+ 
+     void* proto_lib = dlopen(path, RTLD_NOW);
+ 
+@@ -64,8 +64,8 @@
+ 
+ sigma_intf* loadinterface(char* intfname)
+ {
+-    char path[140];
+-    snprintf(path, sizeof(path), "%s/intf_%s.o", conf->modulepath, intfname);
++    char path[150];
++    snprintf(path, sizeof(path), "%s/libintf_%s.so", conf->modulepath, intfname);
+ 
+     void* intf_lib = dlopen(path, RTLD_NOW);
+ 
 --- sigmavpn.1.orig	2014-05-08 18:35:23.948966193 +0300
 +++ sigmavpn.1	2014-05-08 18:35:34.902299052 +0300
 @@ -19,11 +19,11 @@

@@ -1,0 +1,6 @@
+*
+!/PKGBUILD
+!/fix-paths.patch
+!/meson.build
+!/.SRCINFO
+!/.gitignore
