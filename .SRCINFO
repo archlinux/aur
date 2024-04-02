@@ -1,11 +1,11 @@
 pkgbase = ofinstaller-beans-git
 	pkgdesc = Open Fortress's quick-n-easy downloading solution
-	pkgver = r177.bcebc68
-	pkgrel = 2
+	pkgver = r191.d69361e
+	pkgrel = 1
 	url = https://github.com/AdastralGroup/ofinstaller-beans
 	install = ofinstaller-beans-git.install
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = pyinstaller
 	depends = python-pyzstd
 	depends = python-rich
