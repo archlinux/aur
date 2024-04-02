@@ -1,7 +1,7 @@
 pkgbase = opera-beta
 	pkgdesc = A fast and secure web browser and Internet suite - beta stream
 	pkgver = 109.0.5097.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.opera.com/computer
 	arch = x86_64
 	license = custom:opera
