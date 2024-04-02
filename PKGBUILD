@@ -3,11 +3,12 @@
 pkgname=valaotp-git
 _pkgname=valaotp
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc="Vala app that parse the otpauth url parameter and call oathtool for generate an otp"
 arch=('any')
 url="https://github.com/BlackCodec/valaotp/"
 license=('GPL')
+makedepends=('vala')
 depends=('oath-toolkit')
 source=("https://github.com/BlackCodec/$_pkgname/archive/refs/heads/main.zip")
 sha256sums=('SKIP')
