@@ -7,7 +7,7 @@
 # by setting SYNCTHING_TEST_TIMEOUT_FACTOR
 
 # set the web view provider: either webkit, webengine, auto or none
-_webview_provider=${SYNCTHING_TRAY_WEBVIEW_PROVIDER:-webengine}
+_webview_provider=${SYNCTHING_TRAY_WEBVIEW_PROVIDER:-none}
 
 # set the JavaScript provider: either script, qml, auto or none
 _js_provider=${SYNCTHING_TRAY_JS_PROVIDER:-qml}
@@ -24,13 +24,13 @@ _enable_plasmoid=${SYNCTHING_TRAY_ENABLE_PLASMOID:-0}
 
 _reponame=syncthingtray
 pkgname=syncthingtray
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing'
 license=('GPL')
 depends=('libqtutilities.so' 'libqtforkawesome.so' 'libc++utilities.so' 'libboost_filesystem.so' 'qt5-svg' 'openssl'
-         'desktop-file-utils' 'xdg-utils')
+         'desktop-file-utils')
 [[ $_webview_provider == none ]] && depends+=('qt5-base')
 [[ $_webview_provider == webkit ]] && depends+=('qt5-webkit')
 [[ $_webview_provider == webengine ]] && depends+=('qt5-webengine')
@@ -44,7 +44,7 @@ checkdepends=('cppunit' 'syncthing' 'iproute2')
 [[ $_enable_plasmoid ]] && makedepends+=('plasma-framework5' 'extra-cmake-modules')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('ddec89979a579b703de5324383f4171ab89844c83fbc725c663a81951ac4b070')
+sha256sums=('38350e7b69de42c0a736762f70cb90399637e3b8619eef50149115600273dbdd')
 
 ephemeral_port() {
   comm -23 <(seq 49152 65535) <(ss -tan | awk '{print $4}' | cut -d':' -f2 | grep "[0-9]\{1,5\}" | sort | uniq) | shuf | head -n 1
