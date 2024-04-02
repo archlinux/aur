@@ -1,0 +1,17 @@
+# Gandi personal access token <https://docs.gandi.net/en/managing_an_organization/organizations/personal_access_token.html#personal-access-tokens>
+GANDI_V5_PAT=
+
+# a domain to manage (eg: example.org)
+FQDN=
+
+# a record name (eg: test; from test.example.org)
+NAME=
+
+# 'A' for ipv4, 'AAAA' for ipv6
+TYPE=A
+
+# ttl in second
+TTL=300
+
+# External service to provide your public IP
+IP=https://ipv4.seeip.org/

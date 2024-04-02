@@ -1,0 +1,9 @@
+[Unit]
+Description=Hourly Gandi Dynamic DNS Updater
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+
+[Install]
+WantedBy=timers.target

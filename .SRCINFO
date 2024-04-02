@@ -1,0 +1,26 @@
+pkgbase = gandictl-git
+	pkgver = r36.c1821c3
+	pkgrel = 1
+	url = https://github.com/mickybart/gandi-v5-rs
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = rustup
+	source = gandictl-git::git+https://github.com/mickybart/gandi-v5-rs
+	source = LICENSE
+	source = gandictl-ddns
+	source = gandictl-ddns.service
+	source = gandictl-ddns.timer
+	sha256sums = SKIP
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	sha256sums = 20466cfb345d1da56fa3dd3807ad0661aeb5014fddab7cebf830596a6c91fd11
+	sha256sums = 0cae7e0174e4fea035f53f0b1f04f54e717781c226617e43a49402e647c8e214
+	sha256sums = 58a921d4834ca3ac829f5f35ba22ed855cd632d04cd2ebd4cb465de2693b3461
+
+pkgname = gandictl-git
+	pkgdesc = gandictl controls the gandi.net management console
+	optdepends = gandictl-ddns-git: Dynamic DNS Updater
+
+pkgname = gandictl-ddns-git
+	pkgdesc = Gandi Dynamic DNS Updater
+	depends = gandictl-git
+	backup = etc/conf.d/gandictl-ddns

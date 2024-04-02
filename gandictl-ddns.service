@@ -1,0 +1,14 @@
+[Unit]
+Description=Start Gandi Dynamic DNS Updater
+After=network-online.target
+
+[Service]
+Type=simple
+User=gddns
+Group=gddns
+DynamicUser=true
+EnvironmentFile=/etc/conf.d/gandictl-ddns
+ExecStart=/bin/sh -c '/usr/bin/gandictl live-dns apply record ${FQDN} ${NAME} ${TYPE} --rrset-ttl ${TTL} --rrset-values $(curl -s ${IP})'
+
+[Install]
+WantedBy=multi-user.target
