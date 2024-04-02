@@ -6,7 +6,7 @@ arch=('any')
 url="https://github.com/lexi-the-cute/catgirl-engine"
 license=(Zlib)
 pkgver=0.12.32
-pkgrel=4
+pkgrel=5
 conflicts=(catgirl-engine-git)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 b2sums=("SKIP")
@@ -21,6 +21,7 @@ makedepends=(
 # Might require further modification depending on the package involved.
 prepare() {
     cd "$pkgname-$pkgver"
+    rustup install nightly
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
