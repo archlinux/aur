@@ -3,7 +3,7 @@
 # Contributor: whriedplanck
 
 pkgname=powdertoy-bin
-pkgver=98.1.364
+pkgver=98.2.365
 pkgrel=2
 pkgdesc="Desktop version of the classic falling sand physics sandbox, simulates air
     pressure, velocity & heat!"
@@ -11,14 +11,14 @@ arch=('x86_64')
 url="https://powdertoy.co.uk/"
 license=('GPL3')
 depends=('openssl' 'hicolor-icon-theme')
-source=("${pkgname}-${pkgver}-${pkgrel}.zip::https://powdertoy.co.uk/Download/Builds/Build-364/powder%20linux64.zip"
+source=("${pkgname}-${pkgver}-${pkgrel}.zip::https://powdertoy.co.uk/Download/Builds/Build-365/powder%20linux64.zip"
         "https://raw.githubusercontent.com/The-Powder-Toy/The-Powder-Toy/master/resources/icon_exe.svg"
         "https://raw.githubusercontent.com/The-Powder-Toy/The-Powder-Toy/master/resources/generated_icons/icon_exe.png"
         "https://raw.githubusercontent.com/The-Powder-Toy/The-Powder-Toy/master/resources/generated_icons/icon_exe_16.png"
         "https://raw.githubusercontent.com/The-Powder-Toy/The-Powder-Toy/master/resources/generated_icons/icon_exe_32.png"
         "https://raw.githubusercontent.com/The-Powder-Toy/The-Powder-Toy/master/resources/generated_icons/icon_exe_48.png"
         powdertoy-tpt.desktop)
-sha1sums=('fbe2f51dc32c71da9fc5f8870499fc8ca4aa9fb6'
+sha1sums=('43db9e56b256de2c6b4aeb0466b4ccf61ce1a8ae'
           'SKIP'
           'SKIP'
           'SKIP'
