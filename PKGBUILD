@@ -6,7 +6,7 @@
 # Contributor: lubosz
 
 pkgname=pcl-git
-pkgver=r14291.cc9c979cd
+pkgver=r14353.21b58c1be
 pkgrel=1
 pkgdesc="a standalone, large scale, open project for 2D/3D image and point cloud processing"
 arch=(i686 x86_64)
@@ -47,8 +47,14 @@ depends=(
     gcc12
 )
 makedepends=(cmake git)
-source=(git+https://github.com/PointCloudLibrary/pcl)
-sha256sums=(SKIP)
+source=(
+    git+https://github.com/PointCloudLibrary/pcl
+    patch-eigen.patch::https://github.com/PointCloudLibrary/pcl/pull/5998.patch
+)
+sha256sums=(
+    SKIP
+    SKIP
+)
 conflicts=(pcl)
 provides=(pcl)
 
@@ -59,15 +65,16 @@ pkgver() {
 }
 
 prepare() {
+    cd "${srcdir}/pcl"
+    patch -Np1 -i "${srcdir}/patch-eigen.patch" || true
 	mkdir  -p "$srcdir/build"
 	cd     "$srcdir/build"
-    export PATH="/opt/cuda/bin:$PATH"  # FIX for CUDA 12.3
 	cmake "${srcdir}/pcl" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS} -fPIC" \
 		-DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS} -Wl,--as-needed" \
 		-DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS} -Wl,--as-needed" \
-		-DCMAKE_CUDA_ARCHITECTURES="52;60;60;62;70;72;75;80;86;86-virtual" \
+		-DCMAKE_CUDA_ARCHITECTURES="all" \
 		-DBUILD_apps=ON \
 		-DBUILD_apps_cloud_composer=ON \
 		-DBUILD_apps_in_hand_scanner=ON \
@@ -86,6 +93,7 @@ prepare() {
 		-DBUILD_gpu_tracking=ON \
 		-DBUILD_simulation=ON \
 		-DCMAKE_CUDA_COMPILER=/opt/cuda/bin/nvcc \
+        -DCMAKE_CUDA_HOST_COMPILER=/usr/bin/g++-12 \
 		-DCMAKE_MODULE_PATH=/usr/lib/cmake/OpenVDB \
 		-DWITH_QT=QT5  # VTK is still using Qt5
 }

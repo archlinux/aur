@@ -1,6 +1,6 @@
 pkgbase = pcl-git
 	pkgdesc = a standalone, large scale, open project for 2D/3D image and point cloud processing
-	pkgver = r14291.cc9c979cd
+	pkgver = r14353.21b58c1be
 	pkgrel = 1
 	url = http://pointclouds.org/
 	arch = i686
@@ -43,6 +43,8 @@ pkgbase = pcl-git
 	provides = pcl
 	conflicts = pcl
 	source = git+https://github.com/PointCloudLibrary/pcl
+	source = patch-eigen.patch::https://github.com/PointCloudLibrary/pcl/pull/5998.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = pcl-git
