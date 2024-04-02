@@ -1,11 +1,11 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=libvtflib-git
 pkgver=r44.eaca22d
-pkgrel=2
+pkgrel=3
 pkgdesc="Library to handle Valve's Texture Format"
 arch=('x86_64')
 url="https://github.com/panzi/VTFLib"
-license=('GPL')
+license=('LGPL-2.1-or-later')
 depends=('libtxc_dxtn')
 makedepends=('cmake' 'git' 'extra-cmake-modules')
 source=("git+https://github.com/panzi/VTFLib.git")
