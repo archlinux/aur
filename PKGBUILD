@@ -3,7 +3,7 @@
 # Submitter:  not_anonymous <nmlibertarian@gmail.com>
 
 pkgname=not1mm
-pkgver=24.3.21
+pkgver=24.4.1.1
 pkgrel=1
 pkgdesc="Ham Radio Contest Logger - Blatant ripoff of N1MM - Numbered Release"
 license=('GPL-3.0-only')
@@ -11,7 +11,7 @@ arch=('any')
 url="https://pypi.org/project/not1mm/"
 depends=('python' 'python-pyqt5' 'python-pyqt6' 'python-requests' 'python-dicttoxml' 'python-xmltodict' 'python-psutil' \
 	 'python-sounddevice' 'python-soundfile' 'python-numpy' 'python-notctyparser' 'python-pyserial' 'python-appdata' \
-	 'python-gobject' 'python-thefuzz' 'gtk4' 'hamradio-menus')
+	 'python-gobject' 'python-thefuzz' 'python-levenshtein' 'gtk4' 'hamradio-menus')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=('hamlib' 'flrig')
 provides=('not1mm')
@@ -34,5 +34,5 @@ package() {
 #	install -Dm755 "not1mm/data/k6gte.not1mm.svg" "$pkgdir/usr/share/pixmaps/k6gte-not1mm.svg"
 	install -Dm755 "not1mm/data/k6gte.not1mm-128.png" "$pkgdir/usr/share/pixmaps/k6gte-not1mm.png"
 }
-md5sums=('671ce1968b51916c4fa6d56aebc2072e')
-sha256sums=('d1b3eb6f97ebd4f0bd7b72483190f2f6d1ca8796fe5365aa234d31c262d96ffb')
+md5sums=('bd3824caca312b3d1a7670441bb6ce17')
+sha256sums=('f555f5475f7e2b22bc6d23088e7f90ea256d604a3134c0d0b4c40bbef3b186cb')
