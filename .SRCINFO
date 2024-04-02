@@ -1,0 +1,19 @@
+pkgbase = tsukimi-git
+	pkgdesc = A simple third-party Emby client
+	pkgver = 0.3.0.r88.g6805baf
+	pkgrel = 1
+	url = https://github.com/tsukinaha/tsukimi
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	depends = mpv
+	depends = ffmpeg
+	depends = gtk4
+	provides = tsukimi
+	provides = tsukimi-git
+	conflicts = tsukimi
+	source = tsukimi::git+https://github.com/tsukinaha/tsukimi.git
+	sha256sums = SKIP
+
+pkgname = tsukimi-git
