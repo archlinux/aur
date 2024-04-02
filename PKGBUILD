@@ -2,11 +2,11 @@
 
 pkgname=dell-h825cdw-s2825cdn
 pkgver=1.0_3
-pkgrel=7
+pkgrel=8
 pkgdesc="Proprietary driver for Dell's H825cdw and S2825 Printers"
 arch=('x86_64')
 url="https://www.dell.com/support/home/en-us/product-support/product/dell-h825cdw-printer/drivers"
-license=('custom')
+license=('LicenseRef-Dell-Technologies-End-User-License-Agreement')
 depends=('cups')
 DLAGENTS=("http::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 source=("http://dl.dell.com/FOLDER03385341M/1/Printer_H825cdw_Driver_Dell_A00_Linux.zip")
