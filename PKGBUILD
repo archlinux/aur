@@ -2,7 +2,7 @@
 # Contributor: Ashwin <ashwinvis+arch_@t_Pr0t0nM4il_c0m>
 _base=fluiddyn
 pkgname=python-${_base}
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Framework for studying fluid dynamics"
 arch=(any)
@@ -13,7 +13,7 @@ optdepends=('python-pyfftw: Calculate FFT')
 makedepends=(python-build python-installer python-pdm python-wheel)
 checkdepends=(python-pytest python-scipy ipython)
 source=(${url}/-/archive/${pkgver}/${_base}-${pkgver}.tar.gz)
-sha512sums=('a47b2ddc7ca7ba6dd591b7ac2c6063df4ec5df5d2bf44918a136250fb4bdb1bbc7b620e97382fc2136ab2bdf782f9bccb3cfde24b5f8b540202c9eeca46522ce')
+sha512sums=('c169a1d2002140190fd94ffad6887a227604f1e1f22bd0a29d7feaa6eec6576c73f0d152d55db0487949a3d5e2f6d79c3b6c3e85e906851564d8583df3982841')
 
 build() {
   cd ${_base}-${pkgver}
@@ -24,7 +24,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest -k 'not save_load_image and not serie_1d and not serie_2d'
+  test-env/bin/python -m pytest 
 }
 
 package() {
