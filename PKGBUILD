@@ -4,7 +4,7 @@
 
 pkgbase=libavio
 pkgname=('libavio' 'python-avio')
-pkgver=3.1.0
+pkgver=3.1.2
 pkgrel=1
 url='https://github.com/sr99622/libavio'
 license=('Apache-2.0')
@@ -22,8 +22,8 @@ makedepends=('cmake'
              'python-setuptools'
              'python-wheel'
              'sdl2')
-source=("git+${url}.git#commit=39da8a680bae8bce6d38d2417673184d64d9baba")
-sha256sums=('e662e7ba5ed7c028c722a108ec33bafc9b68d203f1e2f6891c72c58f37fd123e')
+source=("git+${url}.git#commit=664f8d5dbb942dcc1eb526c05321bb634d77ea70")
+sha256sums=('b8cdf820cff4b88672ebbd78245aa48ca73c138a1c34227049ea621fa3626c9b')
 
 prepare() {
 	cd ${srcdir}/${pkgname}
