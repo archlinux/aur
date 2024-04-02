@@ -13,7 +13,7 @@
 
 pkgname=ros2-humble-base
 pkgver=2024.02.22
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of software libraries and tools for building robot applications (base variant)"
 url="https://index.ros.org/p/ros_base/#humble"
 arch=('any')
@@ -74,8 +74,8 @@ build() {
     ## For people with the old version of makepkg.conf
     #unset CPPFLAGS
     ## For people with the new version of makepkg.conf
-    CFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=2\s//g" <(echo $CFLAGS))
-    CXXFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=2\s//g" <(echo $CXXFLAGS))
+    CFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=[0-9]\s//g" <(echo $CFLAGS))
+    CXXFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=[0-9]\s//g" <(echo $CXXFLAGS))
 
     # Build
     colcon build --packages-up-to ros_base --merge-install ${COLCON_EXTRA_ARGS} --cmake-args -DBUILD_TESTING=OFF
