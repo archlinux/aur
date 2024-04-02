@@ -1,6 +1,6 @@
 pkgbase = ocaml-yojson
 	pkgdesc = Low level JSON binary for OCaml
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/ocaml-community/yojson
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ocaml-yojson
 	conflicts = ocaml-yojson
 	options = !strip
 	options = staticlibs
-	source = https://github.com/ocaml-community/yojson/releases/download/2.1.1/yojson-2.1.1.tbz
-	sha256sums = d58183207b198dc065866239066e074c34f9e139c0d9c4175a38809790e88173
+	source = https://github.com/ocaml-community/yojson/releases/download/2.1.2/yojson-2.1.2.tbz
+	sha256sums = 59f2f1abbfc8a7ccbdbf608894e5c75e8a76006e34899254446f83e200dfb4f9
 
 pkgname = ocaml-yojson
