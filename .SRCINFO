@@ -1,4 +1,5 @@
 pkgbase = aiopm
+	pkgdesc = All in one package manager for linux
 	pkgver = 1.8
 	pkgrel = 1
 	arch = x86_64

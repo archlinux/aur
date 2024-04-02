@@ -4,6 +4,7 @@ pkgrel=1
 arch=('x86_64')
 
 license=('GPL2')
+pkgdesc="All in one package manager for linux"
 
 depends=('gcc')
 
