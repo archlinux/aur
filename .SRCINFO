@@ -1,7 +1,7 @@
 pkgbase = catgirl-engine-git
 	pkgdesc = A game engine for cool moddability and procedurally generated data
 	pkgver = v0.12.32.r1.g996abc2
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/lexi-the-cute/catgirl-engine
 	arch = any
 	license = Zlib
