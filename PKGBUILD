@@ -17,12 +17,12 @@ source=("${_download_url}/moon"
         "${_download_url}/moonrun"
         "${_download_url}/mooninfo"
         "${_download_url}/moondoc")
-sha256sums=('aa8fb155503e14432071e1f0dca3e934c7764e2c3dbf5cd766e37802ed1fec07'
-            '904d274d1444152392a2f2df7eedc49e513da5cbc9913b5e18dd5dd56bc31740'
-            'ae96205cb5f110ca8264f13a200995ebbad9aeea7c2d7d89858a4c5dd69b5e16'
+sha256sums=('1af8998cbbeb29fa1acaabb9dd0c6064940c9f8bb39312df28b6c98be0e4995a'
+            'bbb49fe9a94fb6b39b4a0b18aab5102f1be658157a5daea769423d6eeefdc491'
+            '15d6e5591ddbf7264a9f50955f9cd0d033e4e790ace417ccde5969585ff5e8b7'
             '7d713257c2620a6551061399e02ffdf47241640b14d8ce34cc461f96b6aa514f'
-            'de42a6abae920826e60e76e1afe0110a343209598cffae7e6edfbe641720afac'
-            '2c003506510727e56aaf1d41433a1e36fb01f99b122a68dd3790c32b99e40765')
+            'bab20a7cb889b4e5f342a09ae6f9c96efe1682917270fb61464828a73b81ae63'
+            'abc9cadd59e33ad2d149d4e736fc38239e877f1225c390facbc4373bc1cd748c')
 
 pkgver() {
   cd "${srcdir}"
