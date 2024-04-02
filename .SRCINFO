@@ -1,6 +1,6 @@
 pkgbase = dragon-tea
 	pkgdesc = Dragon Tea. Free Messenger
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 0
 	url = https://github.com/badcast/dragon-tea
 	arch = any
@@ -12,9 +12,10 @@ pkgbase = dragon-tea
 	depends = gtk3
 	depends = json-c
 	depends = curl
-	source = dragon-tea-1.0.5.tar.gz::https://codeload.github.com/badcast/dragon-tea/tar.gz/refs/tags/v1.0.5
+	depends = libnotify
+	source = dragon-tea-1.0.6.tar.gz::https://codeload.github.com/badcast/dragon-tea/tar.gz/refs/tags/v1.0.6
 	source = dragon-tea.desktop
-	sha256sums = 57871b8b15d62b85906782fd40e16417c5e2186858d7970141b010afa9f52933
+	sha256sums = 75c034e12ae86c8337cff60154b8b07b089be493b6b015dc1b1dd4ac020d095a
 	sha256sums = d07ed3f1c38a7e36dce5d49b1f20160e28df309ae73d612e7375051a57fc084e
 
 pkgname = dragon-tea
