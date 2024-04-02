@@ -1,0 +1,14 @@
+pkgbase = vdr-softhddevice-drm
+	pkgdesc = VDR output plugin for software HD based on DRM interface
+	pkgver = r705.c1cd90c
+	pkgrel = 1
+	arch = x86_64
+	arch = aarch64
+	license = AGPL3
+	depends = ffmpeg-rpi
+	depends = vdr-api=2.6.6
+	depends = alsa-lib
+	source = vdr-softhddevice-drm::git+https://github.com/zillevdr/vdr-plugin-softhddevice-drm.git
+	sha256sums = SKIP
+
+pkgname = vdr-softhddevice-drm
