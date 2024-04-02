@@ -1,13 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-osd-git
-pkgver=r63.bc35c94
-pkgrel=2
+pkgver=r80.929a741
+pkgrel=1
 pkgdesc="WIP COSMIC OSD"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-osd"
 license=('GPL-3.0-or-later')
 groups=('cosmic')
 depends=(
+  'libpulse'
   'libxkbcommon'
   'systemd-libs'
   'wayland'
@@ -30,12 +31,10 @@ prepare() {
   cd "${pkgname%-git}"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
   make vendor
 
-  # # libexec > lib
-  sed -i 's|libexec|lib|g' Makefile
-  sed -i 's|libexec|lib/polkit-1|g' src/subscriptions/polkit_agent_helper.rs
+  # libexec > lib
+  sed -i 's|libexec|lib/polkit-1|g' Makefile src/subscriptions/polkit_agent_helper.rs
 }
 
 build() {
