@@ -1,0 +1,7 @@
+pre_upgrade() {
+    rm -f /usr/bin/gpgui
+}
+
+post_remove() {
+    rm -f /usr/bin/gpgui
+}
