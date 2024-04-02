@@ -2,9 +2,7 @@
 # Co-maintainer: Edu4rdSHL <edu4rdshl@protonmail.com>
 pkgname=waveterm-git
 _pkgname=Wave
-pkgver=0.7.1.r23.gdcc7b294
-_electronversion=29
-_nodeversion=20
+pkgver=0.7.2.r0.gf41ac1d5
 pkgrel=1
 pkgdesc="An open-source, cross-platform terminal for seamless workflows"
 arch=('any')
@@ -13,9 +11,6 @@ _ghurl="https://github.com/wavetermdev/waveterm"
 license=('Apache-2.0')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r}")
-depends=(
-    "electron${_electronversion}"
-)
 makedepends=(
     'gcc'
     'yarn'
@@ -39,6 +34,14 @@ pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
+_getelectronver() {
+    cd "${srcdir}/${pkgname//-/.}"
+    grep '"electron": ' -i package.json | awk '{print $2}' | sed 's|"||g;s|\^||g;s|\.| |g' | awk '{print $1}'
+}
+_getnodeversion() {
+    cd "${srcdir}/${pkgname//-/.}"
+    grep '"@types/node": "' -i package.json | awk '{print $2}' | sed 's|"||g;s|\^||g;s|\.| |g' | awk '{print $1}'
+}
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -46,13 +49,18 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 build() {
+    _electronversion="$(_getelectronver)"
+    depends=(
+        "electron${_electronversion}"
+    )
+    _nodeversion="$(_getnodeversion)"
+    _ensure_local_nvm
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-git}.sh"
-    _ensure_local_nvm
-    gendesk -f -n -q --categories="Utility" --name="${_appname}" --exec="${pkgname%-git} %U"
+    gendesk -f -n -q --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export CGO_ENABLED=1
     export GOCACHE="${srcdir}/go-build"
@@ -67,9 +75,9 @@ build() {
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
-        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
-        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
         export GOPROXY=https://goproxy.cn
     else
         echo "Your network is OK."
