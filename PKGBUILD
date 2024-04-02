@@ -2,17 +2,17 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=iotas
-pkgver=0.2.10
+pkgver=0.2.12
 pkgrel=1
 pkgdesc="Simple note taking"
 arch=('any')
 url="https://gitlab.gnome.org/cheywood/iotas"
 license=('GPL3')
-depends=('libadwaita' 'python')
+depends=('libadwaita' 'python' 'gtksourceview5')
 makedepends=('meson' 'gobject-introspection')
 checkdepends=('appstream-glib')
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('f422d99c82e9a891b878269d1dcb2947a4e3714c0928cb79032b723875cefaf0803115fe4ae427a4b319ff7455613128f801e7996da9d87c38b5abaf22d4ce26')
+b2sums=('6b4d17b5207644532c813993213da0fd927d7683740e24a927e25a4152e7dc2ac3c13c032461a6644272e4011037d1a6be41f2b6d01d5d45458bacf34800747f')
 
 _srcdir="$pkgname-$pkgver"
 
@@ -37,8 +37,7 @@ package() {
 		'nuspell'
 		'libvoikko'
 		'sqlite'
-		'org.freedesktop.secrets'
-		'gtksourceview5')
+		'org.freedesktop.secrets')
 	
 	meson install -C 'build' --destdir "$pkgdir"
 	install -Dm644 "$_srcdir/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
