@@ -29,11 +29,14 @@ depends=(perl)
 makedepends=()
 checkdepends=()
 optdepends=(
-	# "c-intercal: C-INTERCAL syslib" <- checkdepends
-	"perl-net-interface: for INET package" 
-	"ncurses: UI-Curses"
+	# "c-intercal: test with C-INTERCAL syslib" <- checkdepends
+	"perl-net-interface: INET" 
+	"perl-socket6: IPv6 support for INET package"
+	"perl-io-socket-inet6: IPv6 support for INET package"
+	"perl-curses: UI-Curses"
 	"perl-term-readline-gnu: UI-Line"
-	"perl-gtk3: UI-X")
+	"perl-gtk3: UI-X"
+	"perl-gtk2: UI-X (alternative for perl-gtk3)")
 provides=()
 conflicts=()
 replaces=()

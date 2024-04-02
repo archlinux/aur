@@ -6,10 +6,13 @@ pkgbase = clc-intercal
 	arch = any
 	license = custom
 	depends = perl
-	optdepends = perl-net-interface: for INET package
-	optdepends = ncurses: UI-Curses
+	optdepends = perl-net-interface: INET
+	optdepends = perl-socket6: IPv6 support for INET package
+	optdepends = perl-io-socket-inet6: IPv6 support for INET package
+	optdepends = perl-curses: UI-Curses
 	optdepends = perl-term-readline-gnu: UI-Line
 	optdepends = perl-gtk3: UI-X
+	optdepends = perl-gtk2: UI-X (alternative for perl-gtk3)
 	source = https://uilebheist.srht.site/dist/CLC-INTERCAL-1.00/CLC-INTERCAL-1.00.tar.gz
 	sha256sums = 06129dcb4e5db418ac93a6d2c927f15ace7a574c8c8d5220c8adb89dfff54dad
 
