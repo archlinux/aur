@@ -1,0 +1,17 @@
+pkgbase = rsftch
+	pkgdesc = Lightning fast hardware fetch tool written in rust.
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = https://github.com/charklie/rsftch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	depends = cargo
+	depends = pciutils
+	provides = rsftch
+	conflicts = rsftch
+	source = git+https://github.com/charklie/rsftch.git
+	sha256sums = SKIP
+
+pkgname = rsftch
