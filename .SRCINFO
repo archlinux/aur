@@ -1,12 +1,13 @@
 pkgbase = warfork-bin
-	pkgdesc = Free online multiplayer competitive FPS based on the Qfusion engine (official binary)
-	pkgver = 2.13
+	pkgdesc = Free online multiplayer competitive FPS based on the Qfusion engine (official binary via Steam)
+	pkgver = 2.14
 	pkgrel = 1
 	url = https://www.warfork.com/
 	arch = x86_64
 	license = GPL2
 	makedepends = imagemagick
 	makedepends = gendesk
+	makedepends = steamcmd
 	depends = sdl2
 	depends = libjpeg
 	depends = libpng
@@ -25,11 +26,9 @@ pkgbase = warfork-bin
 	source = warfork.launcher
 	source = wf-server.launcher
 	source = wftv-server.launcher
-	source = https://warfork.com/downloads/latest.zip
 	sha512sums = f78af226cad17ff9eaeebeafd754bb35f10549abede755f4fa9d6616118003877f036f3329b490a9c342267fdda4eaffde926878bf1d24c33488f0a02d4bc697
 	sha512sums = 073959aebd70807b893d474c7005341356f974acc573eae49eb2d23273068318ee855ccaeb0a037caf9a7a4ce545927b939f3b31d996384f56a90b54ff2cd5c0
 	sha512sums = 9fd472b186477259270aecef8456b72db51a3f7f161280b23633f25a5169f3d3ada7583aff50e7510df08f9b38514d77420adef5f761365e1b9aa29737f1c1c4
 	sha512sums = 10952bc4e123c0d75d492761b505a3b1ddf6c8e27143bf25bbb0e28dede5b44238849a96542345f9e068aaf442b0df4859f23b6e18049e7dfc94535e7aaefc65
-	sha512sums = 477c9b8e8b6f3d12131c9c3b156ed04fd335e66c576f151f1c7798c47a99dcc58b2f8b322f296440ace1e716f0e0c4fd60e0be93d3e8da164d37e1b2ad64c1ab
 
 pkgname = warfork-bin
