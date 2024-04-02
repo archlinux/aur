@@ -4,7 +4,7 @@
 
 pkgbase=libonvif
 pkgname=('libonvif' 'python-libonvif')
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 url='https://github.com/sr99622/libonvif'
 license=('LGPL-2.1-or-later')
@@ -17,9 +17,9 @@ makedepends=('cmake'
              'python-installer'
              'python-setuptools'
              'python-wheel')
-# _prjrel=2.0.1
-source=("git+${url}.git#commit=5c8433978a1bc15a5b662b451759af4f5d7e27be")
-sha256sums=('3db685e429d00f733307b8c056a63817b864162d6b6d404ec83966138273ed8a')
+# _prjrel=2.0.9
+source=("git+${url}.git#commit=b21f043dea0e4401fd59bed069d6fe306c37ab22")
+sha256sums=('1b7ba19e99c446a6fc752faba42ce4350eeec2436f9b6ff7b78eae6648196884')
 
 prepare() {
 	cd ${srcdir}/${pkgbase}/libonvif
@@ -36,7 +36,8 @@ build() {
 	cmake -B build-so \
 		-D CMAKE_BUILD_TYPE=Release \
 		-D CMAKE_INSTALL_PREFIX=/usr \
-		-D WITHOUT_PYTHON=true
+		-D WITHOUT_PYTHON=true \
+		-W no-dev
 	cmake --build build-so
 	python -m build --wheel --no-isolation
 }
