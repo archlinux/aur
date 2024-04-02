@@ -1,0 +1,13 @@
+pkgbase = wirelogd
+	pkgdesc = A logging daemon for WireGuard
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/nikaro/wirelogd
+	install = wirelogd.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = go
+	source = wirelogd-2.1.0.tar.gz::https://github.com/nikaro/wirelogd/archive/refs/tags/2.1.0.tar.gz
+	sha256sums = 1cffa33531549c94d71fc09c7a2d2ed32a067172ad06c147ef9a5975c95ff051
+
+pkgname = wirelogd
