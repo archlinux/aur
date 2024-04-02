@@ -3,7 +3,7 @@
 _pkgname=wox
 pkgname=${_pkgname}-bin
 pkgver=2.0.0_nightly
-pkgrel=18
+pkgrel=19
 pkgdesc="A cross-platform launcher that simply works"
 arch=(x86_64)
 url='https://github.com/Wox-launcher/Wox'
@@ -12,10 +12,10 @@ depends=('webkit2gtk' 'libayatana-indicator' 'glibc' 'libx11' 'libxtst' 'pango' 
 provides=(${_pkgname})
 conflicts=(${_pkgname}-git ${_pkgname})
 source=(
-    "${_pkgname}-${pkgver}-${pkgrel}::https://github.com/Wox-launcher/Wox/releases/download/v${pkgver//_/-}/wox-linux-amd64-20240401-c936d3"
+    "${_pkgname}-${pkgver}-${pkgrel}::https://github.com/Wox-launcher/Wox/releases/download/v${pkgver//_/-}/wox-linux-amd64-20240402-a3cbf0"
 )
 sha256sums=(
-    "c7cb6181a14b3392d75f5ee5fb1f6907efd40b0a5d07323d8a2e5cb349e3286d"
+    "073c9f9d3140f94f29cd085cfc357a5226c36d47ea00092c2264c4580dfda34a"
 )
 
 package() {
