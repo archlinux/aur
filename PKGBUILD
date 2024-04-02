@@ -1,7 +1,7 @@
-# Maintainer: Darren Ldl <darrenldldev@gmail.com>
+# Maintainer: Laythe <laythedev@gmail.com>
 pkgname=blkar
 pkgver=7.2.7
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Multithreaded archiver offering bit rot protection and sector level recoverability"
 arch=('x86_64')
@@ -15,6 +15,7 @@ sha256sums=('807d4ad9fca8afe13bbd7020ecf9102298d59d839b1a8fccd8693799a8edfc9b')
 
 build() {
   cd "blockyarchive-$pkgver"
+  cargo update -p lexical-core
   cargo build --release --locked
 }
 
