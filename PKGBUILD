@@ -2,7 +2,7 @@
 # Contributor: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=linux-ck-autobuild
-pkgver=0.8.3
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Automatically build linux-ck kernels service"
 arch=(any)
