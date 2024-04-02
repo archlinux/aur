@@ -3,8 +3,8 @@
 
 pkgname=junction
 pkgver=1.8
-_commit=274cf98dfd74db86b9f0e0dceba07c28adef06a0
-pkgrel=1
+_commit=ff603d64620fb48ff6f0424ff9d5d1b184b881dc
+pkgrel=2
 pkgdesc="Application/browser chooser"
 arch=('any')
 url="https://github.com/sonnyp/Junction"

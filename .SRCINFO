@@ -1,7 +1,7 @@
 pkgbase = junction
 	pkgdesc = Application/browser chooser
 	pkgver = 1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sonnyp/Junction
 	arch = any
 	license = GPL-3.0-or-later
@@ -17,7 +17,7 @@ pkgbase = junction
 	depends = libportal
 	depends = libportal-gtk4
 	depends = gjs
-	source = junction::git+https://github.com/sonnyp/Junction#commit=274cf98dfd74db86b9f0e0dceba07c28adef06a0
+	source = junction::git+https://github.com/sonnyp/Junction#commit=ff603d64620fb48ff6f0424ff9d5d1b184b881dc
 	source = git+https://github.com/sonnyp/troll.git
 	b2sums = SKIP
 	b2sums = SKIP
