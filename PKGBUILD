@@ -1,8 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=snippet-notes
 pkgver=0.4.4
+_electronversion=22
 _nodeversion=18
-pkgrel=1
+pkgrel=2
 pkgdesc="A local note-taking software with quick recording and enhanced search capabilities.效能笔记，一款快速记录及搜索功能增强的本地笔记记录软件."
 arch=('any')
 url="https://github.com/xunxun10/snippet-notes"
@@ -26,10 +27,6 @@ source=(
 )
 sha256sums=('c92993c2bf2d098f254912352693c893f0e494518bf0d3476603b98621f5faa8'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-_getelectronver() {
-    cd "${srcdir}/${pkgname}.git"
-    grep '"electron": ' -i package.json | awk '{print $2}' | sed 's|"||g;s|\^||g;s|\.| |g' | awk '{print $1}'
-}
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -37,7 +34,6 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 build() {
-    _electronversion="$(_getelectronver)"
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
