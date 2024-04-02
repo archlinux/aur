@@ -35,7 +35,7 @@ conflicts=(
   'linvamrun'
 )
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('9d01209988d1452bc60f2fd2374a8398dcebe9280c3b0917c2358f411e6b3319')
 options=('debug')
 install=linvam.install
 
@@ -43,7 +43,7 @@ build() {
   current_CFLAGS=$CFLAGS
   export CFLAGS=''
   cd "LinVAM-$pkgver"/scripts
-  sh ./build.sh
+  source ./build.sh
   export CFLAGS=$current_CFLAGS
 }
 
