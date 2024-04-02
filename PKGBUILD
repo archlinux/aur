@@ -4,11 +4,11 @@ _commit=d0c8469f66806b5ea738d607f7d2b000af8b1129
 
 pkgname=ftl-sdk
 pkgver=0.10.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Software Development Kit for Mixer's FTL Protocol"
 arch=(x86_64)
 url="https://github.com/Scrumplex/ftl-sdk"
-license=("custom:MIT")
+license=("MIT")
 depends=("jansson" "curl")
 makedepends=("cmake" "make" "git")
 provides=("libftl.so=0-64")
@@ -17,7 +17,7 @@ source=("$pkgname::git+https://github.com/microsoft/ftl-sdk.git#commit=${_commit
         "0002-cmake-Install-into-standard-directories.patch"
         "0003-cmake-Install-a-pkgconfig-file.patch"
         "0004-refactor-remove-ftl_app-completely.patch")
-sha512sums=('SKIP'
+sha512sums=('e6e5d87b783775be18a3fd8e3c0bad21c2a7764023bbd2b053e20120849b536c37e04f52a1754f2230e33d74887f9d775dab7faa72fe7224631236f300ccd8da'
             'a7b83b1f6e51040d84354b4c608fffb16be5cbb301d2dba87c13cd590440b322d240323f579999d368f6cedc28278af042baea055a90ca1e164907e67aa6d5c9'
             'bcc093365424824118d7a26c428c13ce50775f85b739100bd5e84900d60364802d356292ebb2346f8a1e19ba1b0deeb54fb59e65ab5302963da33ee9b9cfd85a'
             '4369b9b08c31527f1eea480c279c141fa4b859aa49796e2c0e7d3b83d2e9a6c28d3b3b6b147f77962bb0fe598009599466aefcf4f17f24cf4b3c51019d692ed5'
