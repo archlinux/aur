@@ -1,5 +1,6 @@
 # Maintainer: <Charklie charliejohanid@gmail.com>
-pkgname=rsftch
+pkgname=rsftch-git
+_pkgname=rsftch
 pkgver=0.3.7
 pkgrel=1
 pkgdesc="Lightning fast hardware fetch tool written in rust."
@@ -14,7 +15,7 @@ source=("git+https://github.com/charklie/rsftch.git")
 sha256sums=("SKIP")
 
 build() {
-	cd "$pkgname"
+	cd "$_pkgname"
 	git config http.postBuffer 524288000
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
@@ -22,7 +23,7 @@ build() {
 }
 
 package() {
-	cd "$pkgname"
-    install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
+	cd "$_pkgname"
+    install -Dm755 "target/release/$_pkgname" -t "$pkgdir/usr/bin"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -1,4 +1,4 @@
-pkgbase = rsftch
+pkgbase = rsftch-git
 	pkgdesc = Lightning fast hardware fetch tool written in rust.
 	pkgver = 0.3.7
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = rsftch
 	source = git+https://github.com/charklie/rsftch.git
 	sha256sums = SKIP
 
-pkgname = rsftch
+pkgname = rsftch-git
