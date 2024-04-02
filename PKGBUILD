@@ -1,13 +1,14 @@
 # Maintainer: VitalyR <vr AT vitalyr DOT com>
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 # Contributor: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=sdl3-git
-pkgver=3.0.0.r2618.g0b71898cb
+pkgver=3.1.1.r1.g58529c182
 pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 3)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.libsdl.org"
-license=('zlib')
+license=('Zlib')
 depends=('glibc' 'libxext' 'libxrender' 'libx11' 'libgl' 'libxcursor' 'hidapi' 'libusb')
 makedepends=('alsa-lib' 'mesa' 'libpulse' 'libxrandr' 'libxinerama' 'wayland' 'libxkbcommon'
              'wayland-protocols' 'ibus' 'fcitx5' 'libxss' 'cmake' 'jack' 'ninja' 'pipewire'
