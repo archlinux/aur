@@ -5,14 +5,15 @@ pkgdesc="A game engine for cool moddability and procedurally generated data"
 arch=('any')
 url="https://github.com/lexi-the-cute/catgirl-engine"
 license=(Zlib)
-pkgver=0.12.30
-pkgrel=1
+pkgver=0.12.32
+pkgrel=2
 conflicts=(catgirl-engine-git)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 b2sums=("SKIP")
 makedepends=(
     "rust"
     "cargo-nightly"
+    "sed"
 )
 
 # Generated in accordance to https://wiki.archlinux.org/title/Rust_package_guidelines.
@@ -38,5 +39,10 @@ check() {
 
 package() {
     cd "$pkgname-$pkgver"
+    sed -i "s/\${engine_path}/\/usr\/bin\/$pkgname/" $pkgname.desktop
+    mv logo.png $pkgname.png
+
+    install -Dm0755 -t "$pkgdir/usr/share/icons/" "$pkgname.png"
+    install -Dm0755 -t "$pkgdir/usr/share/applications/" "$pkgname.desktop"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
