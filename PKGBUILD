@@ -1,7 +1,6 @@
 # Author:     Vladimir Menshakov <vladimir.menshakov@gmail.com>
 # Maintainer: Martin Stibor <martin.von.reichenberg@proton.me>
 
-pkgbase=android-file-transfer
 pkgname=android-file-transfer-linux
 pkgver=4.3
 pkgrel=3
