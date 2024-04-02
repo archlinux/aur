@@ -17,7 +17,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=(llvm-minimal-git llvm-libs-minimal-git clang-minimal-git clang-libs-minimal-git clang-opencl-headers-minimal-git)
-pkgver=19.0.0_r494338.b361b5369ed4
+pkgver=19.0.0_r494466.1d06f41b72e4
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -173,9 +173,9 @@ package_llvm-minimal-git() {
     rm "$pkgdir"/usr/lib/{LLVMgold,lib{LLVM,LTO}}.so
     rm "$pkgdir"/usr/lib/libRemarks.so
 
-    # for an unknown reason static *.a libraries are not removed from clang-minimal-git .
-    # forcefully remove them
-    rm "$pkgdir"/usr/lib/clang/19/lib/{i386-pc-linux-gnu,x86_64-pc-linux-gnu}/*.a
+    # for an unknown reason !staticlibs doesn't remove all static *.a libraries, 
+    # ensure they are removed
+    find "$pkgdir"/usr/lib/ -depth -type f -name "*.a" -delete
     
     # prepare folders in srcdir to store files that are placed in other package_*() functions
     mkdir -p "$srcdir"{/llvm-libs/usr/lib,/clang-libs/usr/lib,/clang-opencl-headers/usr/{lib/clang/$_major_ver/include,include/clang/Basic}}
