@@ -22,7 +22,7 @@ sha256sums=('ccf6defc4884d580a4b813cc40323a0389ffc9aa4bdc55f3764a46b235dfe1e0'
 # Add -ffat-lto-objects flag to LTOFLAGS to prevent mangling of static libs.(gcc)
 # In clang-16, there seems to be no problem without this option specified.
 # (The -ffat-lto-objects option is planned to be supported from clang-17.)
-[[ $CC =~ gcc ]] && export LTOFLAGS+=" -fuse-linker-plugin -ffat-lto-objects"
+[[ $CC =~ gcc ]] && export LTOFLAGS+=" -ffat-lto-objects"
 # musl build for openssl-sys
 export PKG_CONFIG_ALLOW_CROSS=1
 export RUSTUP_TOOLCHAIN=stable
@@ -78,16 +78,27 @@ build () {
     _features+="static,"
   fi
 
+  # If lto is specified in the PKGBUILD options, or if lto is specified in makepkg.conf and !lto is not specified in the PKGBUILD options,
+  # turn on LTO for Rust.(CARGO_PROFILE_RELEASE_LTO=on)
+  [[ -n $(echo ${OPTIONS[@]} | tr ' ' '\n' | grep -x 'lto') ]] && \
+  [[ -z $(echo ${options[@]} | tr ' ' '\n' | grep -x '!lto') ]] || \
+  [[ -n $(echo ${options[@]} | tr ' ' '\n' | grep -x 'lto') ]] \
+  && export CARGO_PROFILE_RELEASE_LTO=on \
+  || export CARGO_PROFILE_RELEASE_LTO=off
+
   if [[ $CARCH != x86_64 ]]; then
     export CARGO_PROFILE_RELEASE_LTO=off
   fi
+
+  [[ "$CARGO_PROFILE_RELEASE_LTO" == "on" ]] && RUSTFLAGS+=" -Clto=fat -Cembed-bitcode=y"
+  echo "CARGO_PROFILE_RELEASE_LTO is "$CARGO_PROFILE_RELEASE_LTO
 
   if [[ $CARCH == aarch64 ]]; then
     _features+="generate,"
   fi
 
   if [[ $CARCH == x86_64 ]]; then
-    export RUSTFLAGS+=" -C link-self-contained=on -C strip=symbols -C no-redzone=y -C overflow-checks=y -C lto=fat -C embed-bitcode=y -C codegen-units=1 -C opt-level=z -C control-flow-guard=y -C link-arg=-fuse-ld=lld -C link-arg=-Wp,-D_FORTIFY_SOURCE=2 -C link-arg=-U_FORTIFY_SOURCE -C link-arg=-D_FORTIFY_SOURCE=2 -C link-arg=-fPIE -C link-arg=-fpie -C link-arg=-Wl,-z,relro,-z,now",
+    export RUSTFLAGS+=" -C link-self-contained=on -C strip=symbols -C no-redzone=y -C overflow-checks=y -C opt-level=z -C control-flow-guard=y -C link-arg=-fuse-ld=lld -C link-arg=-Wp,-D_FORTIFY_SOURCE=2 -C link-arg=-U_FORTIFY_SOURCE -C link-arg=-D_FORTIFY_SOURCE=2 -C link-arg=-fPIE -C link-arg=-fpie -C link-arg=-Wl,-z,relro,-z,now",
   fi
   cargo build --frozen --features "${_features:-}" --release --target-dir target --target $TARGET
   #./scripts/mkmo locale/
