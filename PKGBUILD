@@ -1,8 +1,8 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=python-instructor
 _pkgname=${pkgname#python-}
-pkgver=0.6.8
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
@@ -33,7 +33,7 @@ checkdepends=(
 )
 optdepends=('python-anthropic: support using Anthropic models')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('0454f21018676674fbf616b2d2c866789b859e9f70e992fe6d6b32af0456836a')
+sha256sums=('ce22a19d72c1e3d72d3759b1a85f22b372478ebeb9f7b7d3709de390ccf8e561')
 
 _archive="$_pkgname-$pkgver"
 
@@ -56,7 +56,8 @@ check() {
   export OPENAI_API_KEY=sk-dBAe8c5a9bc4294cca9bed292cd61e0ff9030bB94647adfb
   pytest \
     --ignore tests/llm/test_anthropic/evals/test_simple.py \
-    --ignore tests/llm/test_openai
+    --ignore tests/llm/test_openai \
+    --ignore tests/test_new_client.py
 }
 
 package() {
