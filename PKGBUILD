@@ -2,11 +2,11 @@
 pkgname=peertube-viewer-rs-bin
 __pkgname=peertube-viewer-rs
 pkgver=1.8.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Peertube command line viewer inspired by youtube-viewer"
 arch=('x86_64')
 url="https://peertube-viewer.com" 
-license=('MIT')
+license=('AGPL-3.0-or-later')
 provides=("peertube-viewer-rs")
 conflicts=("peertube-viewer-rs")
 
@@ -23,5 +23,6 @@ package() {
 
     install -Dm644 peertube-viewer-rs.1 $pkgdir/usr/share/man/man1/peertube-viewer-rs.1
     gzip $pkgdir/usr/share/man/man1/peertube-viewer-rs.1
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
+
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
