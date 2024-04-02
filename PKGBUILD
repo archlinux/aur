@@ -6,59 +6,58 @@
 
 pkgname=wxlua-git
 _pkgname=${pkgname/%-git}
-pkgver=3.0.0.8.r22.gdfd9963
+pkgver=3.2.0.2.r13.g4d83c8d
 pkgrel=1
 epoch=1
-pkgdesc="Lua bindings for wxWidgets (Lua 5.3 compatible fork)"
-arch=('i686' 'x86_64')
+pkgdesc='Lua bindings for wxWidgets (Lua 5.3+ compatible fork)'
+arch=(i686 x86_64)
 url="https://github.com/pkulchenko/$_pkgname"
-license=('custom:wxWindows')
-depends=('desktop-file-utils' 'wxgtk2' 'lua')
-makedepends=('git' 'cmake')
-provides=("$_pkgname")
+license=(wxWindows)
+depends=(desktop-file-utils
+         lua
+         wxwidgets-gtk3)
+optdepends=(webkit2gtk)
+makedepends=(cmake
+             git)
+checkdepends=(cppcheck)
+provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-checkdepends=('cppcheck')
-source=("git://github.com/pkulchenko/$_pkgname.git")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname%-git}"
-    git describe --tags --match "v[0-9\.]*" origin/master | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "${pkgname%-git}"
+	git describe --tags --match "v[0-9\.]*" HEAD |
+		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${pkgname%-git}/wxLua/build"
-    cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
-        -DwxLua_LUA_LIBRARY_USE_BUILTIN=FALSE \
-        -DwxLua_LUA_LIBRARY_BUILD_SHARED=TRUE \
-        -DwxLua_LUA_LIBRARY="/usr/lib/liblua.so" \
-        -DwxLua_LUA_INCLUDE_DIR="/usr/include/" \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DwxWidgets_COMPONENTS="stc;gl;html;aui;adv;core;net;base" \
-        -DwxLuaBind_COMPONENTS="stc;gl;html;aui;adv;core;net;base" \
-        -DBUILD_SHARED_LIBS=TRUE
-    make
+    cd "${pkgname%-git}/wxLua"
+    cmake -S . -B build \
+        -D CMAKE_BUILD_TYPE=Release \
+        -D CMAKE_INSTALL_PREFIX=/usr \
+        -D wxLua_LUA_LIBRARY_USE_BUILTIN=False \
+        -D wxLua_LUA_LIBRARY_BUILD_SHARED=True \
+        -D wxLua_LUA_LIBRARY='/usr/lib/liblua.so' \
+        -D wxLua_LUA_INCLUDE_DIR='/usr/include' \
+        -D wxWidgets_COMPONENTS='stc;gl;html;aui;adv;core;net;base' \
+        -D wxLuaBind_COMPONENTS='stc;gl;html;aui;adv;core;net;base' \
+        -D BUILD_SHARED_LIBS=True
+    make -C build
 }
 
 package() {
-    cd "${pkgname%-git}/wxLua/build"
-    make DESTDIR="$pkgdir/" install
-    rm -f "$pkgdir"/usr/bin/lua{,c}
+	cd "${pkgname%-git}/wxLua"
+	make -C build  DESTDIR="$pkgdir/" install
+	rm -f "$pkgdir"/usr/bin/lua{,c}
 
-    install -d "$pkgdir/usr/lib/lua/5.4"
-    mv "$pkgdir/usr/lib/libwx.so" "$pkgdir/usr/lib/lua/5.4/wx.so"
+	install -d "$pkgdir/usr/lib/lua/5.4"
+	mv "$pkgdir/usr/lib/"{lib,lua/5.4/}wx.so
 
-    pushd ..
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" docs/licence.txt
+	install -Dm644 -t "$pkgdir/usr/share/icons/" art/wxlualogo.xpm
 
-    install -Dm644 distrib/autopackage/wxlua.desktop \
-        "$pkgdir/usr/share/applications/wxlua.desktop"
-
-    install -Dm644 art/wxlualogo.xpm \
-        "$pkgdir/usr/share/icons/wxlualogo.xpm"
-
-    install -Dm644 distrib/autopackage/wxlua.xml \
-        "$pkgdir/usr/share/mime/packages/wxlua.xml"
-
-    install -Dm 644 docs/licence.txt \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	pushd distrib/autopackage
+	install -Dm644 "${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications/"
+	install -Dm644 "${pkgname%-git}.xml" -t "$pkgdir/usr/share/mime/packages/"
 }
