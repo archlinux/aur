@@ -1,0 +1,14 @@
+diff -ur a/t/File-DirList.t b/t/File-DirList.t
+--- a/t/File-DirList.t	2024-04-02 19:23:53.427466559 +0200
++++ b/t/File-DirList.t	2024-04-02 19:24:50.741155420 +0200
+@@ -13,8 +13,8 @@
+ # Insert your test code below, the Test::More module is use()ed here so read
+ # its man page ( perldoc Test::More ) for help writing this test script.
+ 
+-my $homeDir = ( "\L$^O" =~ m/win32/ ) ? '.' : glob('~');
+-print STDERR ("\nListing your home dir '$homeDir' for test purposes\n");
++my $homeDir = '/usr/share/licenses';
++print STDERR ("\nListing your licenses dir '$homeDir' for test purposes\n");
+ foreach my $item (@{File::DirList::list($homeDir, 'din', "\L$^O" =~ m/win32/ ? 1 : 0, 1, 1)})
+ 	{ print STDERR (sprintf("%s'%s'%s\n", ($item->[14] ? 'dir  ' : 'file '), $item->[13], (!$item->[15] ? '' : ($item->[15] < 0 ? ' bad' : '').' link to \''.$item->[16].'\''))); };
+ ok("listing completed");
