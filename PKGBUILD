@@ -217,6 +217,8 @@ package_gnome-shell-performance() {
 if ! [ -n "$_disable_docs" ]; then
   package_gnome-shell-performance-docs() {
     pkgdesc+=" (API documentation)"
+    provides=(gnome-shell-docs)
+    conflicts=(gnome-shell-docs)
     depends=()
 
     mv doc/* "$pkgdir"

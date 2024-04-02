@@ -80,3 +80,5 @@ pkgname = gnome-shell-performance
 pkgname = gnome-shell-performance-docs
 	pkgdesc = Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync (API documentation)
 	depends = 
+	provides = gnome-shell-docs
+	conflicts = gnome-shell-docs
