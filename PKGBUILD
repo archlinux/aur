@@ -2,15 +2,15 @@
 pkgbase=git-credential-manager
 pkgname=("$pkgbase"
          "${pkgbase}-extras")
-pkgver=2.4.1
-pkgrel=1
+pkgver=2.4.2
+pkgrel=2
 pkgdesc="A secure Git credential helper built on .NET that runs on Windows, macOS, and Linux"
 arch=(i686 x86_64)
 url="https://github.com/git-ecosystem/git-credential-manager"
 license=('MIT')
 makedepends=(dotnet-sdk dpkg fontconfig krb5 zlib)
 checkdepends=(dotnet-runtime-7.0 git)
-options=(!strip)
+options=(!strip !debug)
 install="$pkgname.install"
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "trim-executables.diff")
