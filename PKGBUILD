@@ -1,23 +1,18 @@
 # Maintainer: Arti Zirk <arti.zirk@gmail.com>
 
-pkgname=aptly-zsh-completion-git
-pkgver=r18.8aff667
-pkgrel=1
+_pkgname="aptly-zsh-completion"
+pkgname="${_pkgname}-git"
+pkgver=r18.8aff6674ac30
+pkgrel=2
 pkgdesc="ZSH completion for aptly"
 arch=('any')
 url="https://github.com/steinymity/aptly-zsh"
 license=('MIT')
-groups=()
 depends=('zsh')
 makedepends=('git')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
-replaces=()
-backup=()
-options=()
-install=
-source=('aptly-zsh-completion-git::git+https://github.com/steinymity/aptly-zsh')
-noextract=()
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${pkgname}::git+https://github.com/steinymity/aptly-zsh")
 md5sums=('SKIP')
 
 pkgver() {
@@ -28,4 +23,5 @@ pkgver() {
 package() {
 	cd "$srcdir/${pkgname}"
 	install -Dm644 _aptly "$pkgdir/usr/share/zsh/site-functions/_aptly"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
