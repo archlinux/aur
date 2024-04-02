@@ -6,13 +6,13 @@ appname=TouchPortal
 
 pkgname="${_pkgname}"-appimage
 pkgver=4.1.b2
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote macro control deck for PC and Mac OS for streamers, content creators and other professionals"
 arch=('x86_64')
 url="https://www.touch-portal.com"
 license=('custom')
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
-options=(!strip)
+options=("!strip" "!debug")
 _appimage="${appname}.AppImage"
 source_x86_64=("${_appimage}::https://www.touch-portal.com/downloads/releases/linux/${appname}.AppImage")
 noextract=("${_appimage}")
