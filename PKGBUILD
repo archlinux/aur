@@ -4,7 +4,7 @@
 
 pkgname=onvif-util
 pkgver=1.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A client side implementation of the ONVIF specification - CLI app'
 url='https://github.com/sr99622/libonvif'
 license=('LGPL-2.1-or-later')
@@ -19,6 +19,7 @@ sha256sums=('3db685e429d00f733307b8c056a63817b864162d6b6d404ec83966138273ed8a')
 
 prepare() {
 	cd ${srcdir}/libonvif/${pkgname}
+	git checkout d6e77c48f3e2a1993535214f0168d4fd5ba9d734 src/onvif-util.cpp
 	sed -e 's,libonvif,onvif,' -i CMakeLists.txt
 }
 

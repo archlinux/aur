@@ -1,7 +1,7 @@
 pkgbase = onvif-util
 	pkgdesc = A client side implementation of the ONVIF specification - CLI app
 	pkgver = 1.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sr99622/libonvif
 	arch = i686
 	arch = x86_64
