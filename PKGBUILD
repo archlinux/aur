@@ -48,7 +48,7 @@ build() {
   current_CFLAGS=$CFLAGS
   export CFLAGS=''
   cd LinVAM/scripts
-  sh ./build.sh
+  source ./build.sh
   export CFLAGS=$current_CFLAGS
 }
 
