@@ -1,10 +1,10 @@
 pkgbase = hunspell-et
 	pkgdesc = Estonian hunspell dictionary
 	pkgver = 20030606
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.meso.ee/~jjpp/speller/
 	arch = any
-	license = LGPL
+	license = LicenseRef-custom
 	depends = hunspell
 	depends = hyphen
 	source = http://www.meso.ee/~jjpp/speller/ispell-et_20030606.tar.gz
