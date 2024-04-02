@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=altair-bin
 _pkgname="Altair GraphQL Client"
-pkgver=6.3.1
+pkgver=6.4.0
 _electronversion=26
-pkgrel=2
+pkgrel=1
 pkgdesc="A beautiful feature-rich GraphQL Client for all platforms."
 arch=('x86_64')
 url="https://altairgraphql.dev/"
@@ -12,14 +12,14 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64_linux.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/altair-graphql/altair/v${pkgver}/packages/altair-core/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('21a2b7dd95376a4d8c388484c7a1f7da95b5144e7e5d6c25a14d72b889fea955'
+sha256sums=('671b90be84b1b3ae0e583dbfd71554b9874ed2f923dcef6d96f40c25292d8e70'
             'a406579cd136771c705c521db86ca7d60a6f3de7c9b5460e6193a2df27861bde'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
