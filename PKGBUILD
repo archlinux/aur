@@ -1,70 +1,54 @@
 # Maintainer:
 # Contributor: quellen <lodgerz@gmail.com>
 
+## useful links
+# https://pypi.org/project/amitools
+# https://github.com/cnvogelg/amitools
+
 _pkgname="amitools"
 pkgname="$_pkgname-git"
-pkgver=0.7.0.r8.g6c74b02
+pkgver=0.8.0.r0.gcfef841
 pkgrel=1
 pkgdesc="Various tools for using AmigaOS programs on other platforms"
-arch=('i686' 'x86_64')
 url="https://github.com/cnvogelg/amitools"
-license=('GPL')
+license=('GPL-2.0-only')
+arch=('any')
 
 depends=(
-  'glibc'
   'python'
-  'python-lhafile'
 )
 makedepends=(
-  'cython'
+  'git'
   'python-build'
   'python-installer'
   'python-setuptools'
   'python-setuptools-scm'
   'python-wheel'
 )
+optdepends=(
+  'python-lhafile'
+  #'machine68k: cpu emulator for vamos'
+)
 
-if [ x"$_pkgname" == x"$pkgname" ] ; then
-  # normal package
-  url="https://pypi.org/project/amitools"
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
 
-  _pkgsrc="$_pkgname-${pkgver%%.r*}"
-  _pkgext="tar.gz"
-  _module="amitools"
-  source+=(
-    "$_pkgsrc.$_pkgext"::"https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-${pkgver%%.r*}.tar.gz"
-  )
-  sha256sums+=(
-    '0a5b6a1a15c317cf7542c467dc7c8e3240f06ace320a597d25793a34c1e8c492'
-  )
+_pkgsrc="$_pkgname"
+source=("$_pkgname"::"git+$url.git")
+sha256sums=('SKIP')
 
-  pkgver() {
-    echo "${pkgver%%.r*}"
-  }
-else
-  # x-git package
-  _pkgsrc="$_pkgname"
-
-  makedepends+=('git')
-
-  provides+=("$_pkgname")
-  conflicts+=("$_pkgname")
-
-  source+=("$_pkgname"::"git+$url")
-  sha256sums+=('SKIP')
-
-  pkgver() {
-    cd "$_pkgsrc"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/; s/-/./g; s/^v//'
-  }
-fi
+pkgver() {
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+}
 
 build() {
   cd "$_pkgsrc"
-  python -m build --no-isolation --wheel
+  python -m build --no-isolation --wheel --skip-dependency-check
 }
 
 package() {
   cd "$_pkgsrc"
-  python -m installer --destdir="${pkgdir:?}" dist/*.whl
-} 
+  python -m installer --destdir="$pkgdir" "$(ls -1 dist/*.whl | sort -rV | head -1)"
+}
