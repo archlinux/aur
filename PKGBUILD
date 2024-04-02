@@ -25,6 +25,10 @@ build() {
   patch src/menu.c < ../menu.patch                 
   patch src/openbox-menu.h < ../openbox-menu.patch 
 
+
+  # Change the icons default resolution from 16x16 to 48x48.
+  patch src/utils.c < ../utils.patch                 
+
   make
 }
 

@@ -1,0 +1,23 @@
+--- utils.c	2024-04-02 13:02:13.643439616 -0400
++++ utils.c.new	2024-04-02 13:00:25.956771069 -0400
+@@ -198,9 +198,9 @@
+ 			return g_strdup (name);
+ 
+ 	#ifdef WITH_SVG
+-		icon_info = gtk_icon_theme_lookup_icon (gtk_icon_theme_get_default(), name, 16, GTK_ICON_LOOKUP_GENERIC_FALLBACK);
++		icon_info = gtk_icon_theme_lookup_icon (gtk_icon_theme_get_default(), name, 48, GTK_ICON_LOOKUP_GENERIC_FALLBACK);
+ 	#else
+-		icon_info = gtk_icon_theme_lookup_icon (gtk_icon_theme_get_default(), name, 16, GTK_ICON_LOOKUP_NO_SVG | GTK_ICON_LOOKUP_GENERIC_FALLBACK);
++		icon_info = gtk_icon_theme_lookup_icon (gtk_icon_theme_get_default(), name, 48, GTK_ICON_LOOKUP_NO_SVG | GTK_ICON_LOOKUP_GENERIC_FALLBACK);
+ 	#endif
+ 		g_free (tmp_name);
+ 	}
+@@ -208,7 +208,7 @@
+ 
+ 
+ 	if (!icon_info) /* 2nd fallback */
+-		icon_info = gtk_icon_theme_lookup_icon (gtk_icon_theme_get_default (), "empty", 16, GTK_ICON_LOOKUP_NO_SVG);
++		icon_info = gtk_icon_theme_lookup_icon (gtk_icon_theme_get_default (), "empty", 48, GTK_ICON_LOOKUP_NO_SVG);
+ 
+ 	icon = g_strdup (gtk_icon_info_get_filename (icon_info));
+ 	g_object_unref (icon_info);
