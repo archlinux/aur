@@ -1,11 +1,11 @@
 pkgbase = lib32-gdbm
 	pkgdesc = GNU database library (32-bit)
 	pkgver = 1.23
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/gdbm/gdbm.html
 	arch = x86_64
 	arch = i686
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = gcc-multilib
 	makedepends = lib32-gcc-libs
 	depends = gdbm

@@ -6,11 +6,11 @@
 
 pkgname=lib32-gdbm
 pkgver=1.23
-pkgrel=1
+pkgrel=2
 pkgdesc='GNU database library (32-bit)'
 arch=('x86_64' 'i686')
 url='http://www.gnu.org/software/gdbm/gdbm.html'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gdbm' 'lib32-glibc')
 makedepends=('gcc-multilib' 'lib32-gcc-libs')
 source=("ftp://ftp.gnu.org/gnu/gdbm/gdbm-${pkgver}.tar.gz")
