@@ -1,0 +1,15 @@
+pkgbase = typstfmt
+	pkgdesc = formatter for the Typst language
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://github.com/astrale-sharp/typstfmt
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = GPL3
+	makedepends = rust
+	source = https://github.com/astrale-sharp/typstfmt/archive/0.2.9.tar.gz
+	sha256sums = fa24ee1705ff5fec4db45e301d38439d0bd3d6d4ee04b280ba997b2f94ba16d9
+
+pkgname = typstfmt
