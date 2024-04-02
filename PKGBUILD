@@ -3,7 +3,7 @@
 pkgname=arduino-fwuploader
 pkgver=2.4.1
 pkgrel=1
-pkgdesc="An Arduino Language Server based on Clangd to Arduino code autocompletion"
+pkgdesc="Update the firmware or add SSL certificates for any Arduino with WINC or NINA Wi-Fi"
 arch=('x86_64')
 url="https://github.com/arduino/arduino-fwuploader"
 license=('AGPL-3.0-or-later')
