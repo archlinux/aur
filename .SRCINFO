@@ -16,8 +16,7 @@ pkgbase = inlyne
 	depends = libxi
 	depends = libxrandr
 	depends = oniguruma
-	depends = openssl
-	source = inlyne-0.4.1.tar.gz::https://github.com/Inlyne-Project/inlyne/archive/v0.4.1.tar.gz
-	sha512sums = 06a5f35003773821cd50fcfdcc8989d821b9937a35715e0b7e2804a65bca016b17c544874461c09b37b30b6ec038f929e0872996c24ea8fe459fc0c7c065b4e2
+	source = inlyne-0.4.1.tar.gz::https://static.crates.io/crates/inlyne/inlyne-0.4.1.crate
+	sha512sums = e586af636c77080413b411f056be4628fa38aea097aeb7412bcc8c47e134c1c22975cda6fc80a239d4bd2ae273ce15e0ce097280a21b7877353699d0bb554e09
 
 pkgname = inlyne

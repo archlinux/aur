@@ -7,19 +7,28 @@ pkgdesc='A GPU powered yet browserless tool to help you quickly view markdown fi
 arch=(x86_64)
 url="https://github.com/Inlyne-Project/$pkgname"
 license=(MIT)
-depends=(fontconfig gcc-libs freetype2 libxcursor libxi libxrandr oniguruma openssl)
+depends=(fontconfig gcc-libs freetype2 libxcursor libxi libxrandr oniguruma)
 makedepends=(cargo libxcb libxkbcommon wayland)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('06a5f35003773821cd50fcfdcc8989d821b9937a35715e0b7e2804a65bca016b17c544874461c09b37b30b6ec038f929e0872996c24ea8fe459fc0c7c065b4e2')
+source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
+sha512sums=('e586af636c77080413b411f056be4628fa38aea097aeb7412bcc8c47e134c1c22975cda6fc80a239d4bd2ae273ce15e0ce097280a21b7877353699d0bb554e09')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  RUSTONIG_SYSTEM_LIBONIG=yes cargo build --release
+  export RUSTUP_TOOLCHAIN=stable
+  RUSTONIG_SYSTEM_LIBONIG=yes cargo build --frozen --release
 }
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
-  RUSTONIG_SYSTEM_LIBONIG=yes cargo test --release
+  export RUSTUP_TOOLCHAIN=stable
+  RUSTONIG_SYSTEM_LIBONIG=yes cargo test --frozen --release
 }
 
 package() {
