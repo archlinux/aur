@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=terri-fried-git
 pkgver=r34.463aa1e
-pkgrel=12
+pkgrel=13
 pkgdesc="A multi-platform C++ game made for Ludum Dare 46"
 arch=('x86_64')
 url="https://github.com/polymarsdev/terri-fried"
@@ -35,11 +35,13 @@ build() {
 }
 
 package() {
-	cd "$pkgdir"
 	cd "$srcdir/$pkgname/linux"
 	install -Dm755 terri-fried "$pkgdir/opt/terri-fried/terri-fried"
 	cp -r resources "$pkgdir/opt/terri-fried/resources"
 	install -Dm755 "$srcdir/terri-fried" "$pkgdir/usr/bin/terri-fried"
 	install -Dm644 "$srcdir/$pkgname/linux/resources/egg.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/terri-fried.png"
 	install -Dm644 "$srcdir/terri-fried.desktop" "$pkgdir/usr/share/applications/terri-fried.desktop"
+	mkdir -p "$pkgdir/usr/share/licenses/$pkgname/" && cat > "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt" -<<EOF
+Feel free to create a fork of this repository if you want to port the game to additional platforms! The code can also be used for any other noncommercial purposes.
+EOF
 }
