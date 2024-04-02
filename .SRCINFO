@@ -1,0 +1,25 @@
+pkgbase = python-dtschema-git
+	pkgdesc = Tools and schema data for Devicetree schema validation using the json-schema vocabulary
+	pkgver = 2024.02.r12.db9c05a
+	pkgrel = 1
+	url = https://github.com/devicetree-org/dt-schema
+	arch = any
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = dtc
+	depends = python-jsonschema
+	depends = python-pyfdt
+	depends = python-rfc3987
+	depends = python-ruamel-yaml
+	depends = python-tqdm
+	provides = python-dtschema
+	conflicts = python-dtschema
+	source = python-dtschema::git+https://github.com/devicetree-org/dt-schema
+	sha256sums = SKIP
+
+pkgname = python-dtschema-git
