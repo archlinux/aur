@@ -1,0 +1,46 @@
+diff -rupw A/musique/src/coverutils.cpp B/musique/src/coverutils.cpp
+--- A/musique/src/coverutils.cpp	2024-04-02 22:43:34.330011875 +0200
++++ B/musique/src/coverutils.cpp	2024-04-02 23:56:42.855952202 +0200
+@@ -158,8 +158,8 @@ bool CoverUtils::coverFromMP4(const QStr
+     TagLib::MP4::Tag *tag = static_cast<TagLib::MP4::Tag *>(f.tag());
+     if (!tag) return false;
+ 
+-    TagLib::MP4::ItemListMap itemsListMap = tag->itemListMap();
+-    TagLib::MP4::Item coverItem = itemsListMap["covr"];
++    TagLib::MP4::ItemMap itemsMap = tag->itemMap();
++    TagLib::MP4::Item coverItem = itemsMap["covr"];
+     TagLib::MP4::CoverArtList coverArtList = coverItem.toCoverArtList();
+     TagLib::MP4::CoverArt coverArt = coverArtList.front();
+ 
+diff -rupw A/musique/src/mainwindow.cpp B/musique/src/mainwindow.cpp
+--- A/musique/src/mainwindow.cpp	2024-04-02 22:43:34.333345149 +0200
++++ B/musique/src/mainwindow.cpp	2024-04-02 23:48:04.371738064 +0200
+@@ -90,6 +90,7 @@ $END_LICENSE */
+ #include "updater.h"
+ #endif
+ 
++#include <iostream>
+ 
+ namespace {
+ MainWindow *singleton = nullptr;
+diff -rupw A/musique/src/tags/mp4utils.h B/musique/src/tags/mp4utils.h
+--- A/musique/src/tags/mp4utils.h	2024-04-02 22:43:34.333345149 +0200
++++ B/musique/src/tags/mp4utils.h	2024-04-02 23:51:39.551287361 +0200
+@@ -9,7 +9,7 @@
+ namespace Mp4Utils {
+ 
+ void load(TagLib::MP4::Tag *tag, Tags *tags) {
+-    const TagLib::MP4::ItemListMap &map = tag->itemListMap();
++    const TagLib::MP4::ItemMap &map = tag->itemMap();
+ 
+     if (map.contains("trkn")) {
+         TagLib::MP4::Item::IntPair intPair = map["trkn"].toIntPair();
+@@ -31,7 +31,7 @@ void load(TagLib::MP4::Tag *tag, Tags *t
+         tags->setComposerSort(v);
+     }
+ 
+-    TagLib::MP4::ItemListMap::ConstIterator it = map.find("aART");
++    TagLib::MP4::ItemMap::ConstIterator it = map.find("aART");
+     if (it != map.end()) {
+         TagLib::StringList sl = it->second.toStringList();
+         if (!sl.isEmpty())

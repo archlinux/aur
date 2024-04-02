@@ -1,7 +1,7 @@
 pkgbase = musique
 	pkgdesc = A finely crafted music player
 	pkgver = 1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://flavio.tordini.org/musique
 	arch = x86_64
 	license = GPL3
@@ -18,6 +18,8 @@ pkgbase = musique
 	source = git+https://github.com/flaviotordini/updater.git
 	source = git+https://github.com/flaviotordini/js.git
 	source = git+https://github.com/flaviotordini/sharedcache.git
+	source = taglib.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

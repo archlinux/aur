@@ -8,7 +8,7 @@
 
 pkgname=musique
 pkgver=1.12
-pkgrel=1
+pkgrel=2
 pkgdesc='A finely crafted music player'
 arch=('x86_64')
 url='https://flavio.tordini.org/musique'
@@ -23,8 +23,10 @@ source=("git+${_giturl}/musique.git#tag=${pkgver}"
         "git+${_giturl}/media.git"
         "git+${_giturl}/updater.git"
         "git+${_giturl}/js.git"
-        "git+${_giturl}/sharedcache.git")
+        "git+${_giturl}/sharedcache.git"
+        "taglib.patch")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -42,6 +44,8 @@ prepare() {
   git config submodule.lib/js.url "$srcdir/js"
   git config submodule.lib/sharedcache.url "$srcdir/sharedcache"
   git -c protocol.file.allow=always submodule update
+
+  patch -p2 <$srcdir/taglib.patch
 }
 
 build() {
