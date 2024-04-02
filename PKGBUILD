@@ -3,8 +3,8 @@
 # Contributor: Essem <smswessem@gmail.com>
 
 pkgname=szs
-pkgver=2.39a
-_rev=8904
+pkgver=2.42a
+_rev=8989
 pkgrel=1
 pkgdesc="A set of command line tools to manipulate SZS, U8, BRRES, BREFF, BREFT, BMG, KMP, TEX, TPL, and StaticR.rel files of Mario Kart Wii"
 arch=(x86_64)
@@ -14,7 +14,7 @@ depends=(libpng)
 provides=(szstools wszst wstrt wpatt wmdlt wlect wkmpt wkclt wimgt wctct wbmgt)
 conflicts=(szstools)
 source=("http://szs.wiimm.de/download/${pkgname}-v${pkgver}-r${_rev}-x86_64.tar.gz")
-sha512sums=('ca9c256d5837b9a0afbea00a31c329e40fe1c9a0012ec40f2e7fef5ce5978a489d70c458a864c663da8bfc91d93910739f09d9cb6f0b5cfc024acf2d2270ba81')
+sha512sums=('a077515b81883b15e5f7ba76e6d4ee5bb42fdd150d0960999c8026896b7df5774b423939bd4d5922168f2700cbde58d397017d650d19b22191fc5a46bae79bf4')
 
 prepare() {
   cd "${pkgname}-v${pkgver}-r${_rev}"-*/

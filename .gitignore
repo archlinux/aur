@@ -1,4 +1,5 @@
 *.pkg.tar.zst
+*.log
 pkg/
 src/
 szs-*.tar.gz
