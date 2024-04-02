@@ -1,6 +1,6 @@
 pkgbase = opensubtitlesdownload
 	pkgdesc = An application to help you quickly find and download subtitles for your favorite videos
-	pkgver = 5.0
+	pkgver = 6.2
 	pkgrel = 1
 	url = https://emeric.io/OpenSubtitlesDownload
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = opensubtitlesdownload
 	optdepends = zenity: only needed for GNOME based desktop environments
 	optdepends = kdialog: only needed for KDE based desktop environments
 	provides = OpenSubtitlesDownload
-	source = OpenSubtitlesDownload-5.0::https://github.com/emericg/OpenSubtitlesDownload/archive/v5.0.tar.gz
-	md5sums = a1f27ddedfeebbbadfb7456d31fa4d78
+	source = OpenSubtitlesDownload-6.2::https://github.com/emericg/OpenSubtitlesDownload/archive/v6.2.tar.gz
+	md5sums = f52fc69fc206421e48c5414c2ab5d965
 
 pkgname = opensubtitlesdownload
