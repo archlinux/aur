@@ -16,6 +16,9 @@ conflicts=(
 provides=(
     "${pkgname%-git}=${pkgver%.r*}"
 )
+depends+=(
+    "electron${_electronversion}"
+)
 makedepends=(
     'gendesk'
     'git'
@@ -38,9 +41,6 @@ _getelectronver() {
 }
 build() {
     _electronversion="$(_getelectronver)"
-    depends+=(
-        "electron${_electronversion}"
-    )
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app|g" \
