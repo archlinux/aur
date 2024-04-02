@@ -3,10 +3,13 @@ pkgname=autorandr-launcher-git
 pkgver=1.14.r8.g303d00b
 pkgrel=1
 pkgdesc="Listens to X server screen change events and launches autorandr after an event occurs."
-arch=(any)
+arch=('x86_64')
 url="https://github.com/phillipberndt/autorandr"
-license=(GPL3)
-depends=(autorandr)
+license=('GPL-3.0-only')
+provides=('autorandr-launcher')
+conflicts=('autorandr-launcher')
+depends=('autorandr' 'glibc' 'libxcb')
+makedepends=('git')
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
