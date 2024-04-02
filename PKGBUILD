@@ -1,8 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=listen1-desktop-git
 _pkgname=Listen1
-pkgver=2.31.0.r0.g5b49b73
-_electronversion=13
+pkgver=2.32.0.r2.ga087d36
 pkgrel=1
 pkgdesc="One for all free music in China.Listen 1 可以搜索和播放来自多个主流音乐网站的歌曲，让你的曲库更全面。并支持收藏功能，方便的创建自己的歌单。"
 arch=('any')
@@ -16,9 +15,6 @@ conflicts=(
 )
 provides=(
     "${pkgname%-git}=${pkgver%.r*}"
-)
-depends=(
-    "electron${_electronversion}-bin"
 )
 makedepends=(
     'gendesk'
@@ -36,13 +32,15 @@ pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
-_ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install "${_nodeversion}"
-    nvm use "${_nodeversion}"
+_getelectronver() {
+    cd "${srcdir}/${pkgname%-git}.git"
+    grep '"electron": ' -i package.json | awk '{print $2}' | sed 's|"||g;s|\^||g;s|\.| |g' | awk '{print $1}'
 }
 build() {
+    _electronversion="$(_getelectronver)"
+    depends+=(
+        "electron${_electronversion}"
+    )
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app|g" \
@@ -59,13 +57,13 @@ build() {
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
-        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
-        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
         echo "Your network is OK."
     fi
-    sed "s|--linux --ia32 --x64|--dir|g" -i package.json
+    sed "s|--ia32 --x64|--dir|g" -i package.json
     npm install
     npm run dist:linux
 }
