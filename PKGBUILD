@@ -3,7 +3,7 @@
 
 pkgname=dead-ringer
 _pkgname=dring
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Binary diff utility"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('68aabdab90f0d56c2f921e204f89942041ea34ee5ce77749218f943b9579719c')
+sha256sums=('a1963015d1fdef5412ba0c436918db93ac1b97b4552bc1b325fb54156f057b4a')
 
 prepare() {
   cd "$pkgname-$pkgver"

@@ -1,13 +1,13 @@
 pkgbase = dead-ringer
 	pkgdesc = Binary diff utility
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/ztroop/dead-ringer
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = dead-ringer-1.0.3.tar.gz::https://github.com/ztroop/dead-ringer/archive/1.0.3.tar.gz
-	sha256sums = 68aabdab90f0d56c2f921e204f89942041ea34ee5ce77749218f943b9579719c
+	source = dead-ringer-1.0.4.tar.gz::https://github.com/ztroop/dead-ringer/archive/1.0.4.tar.gz
+	sha256sums = a1963015d1fdef5412ba0c436918db93ac1b97b4552bc1b325fb54156f057b4a
 
 pkgname = dead-ringer
