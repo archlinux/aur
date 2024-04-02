@@ -21,7 +21,7 @@ depends=(
   'python-requests'
   'python-tqdm'
   'python-sounddevice'
-  'python-vosk'
+  'python-vosk-bin'
   'ffmpeg'
   'ydotool'
   'bash'
