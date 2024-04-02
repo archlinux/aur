@@ -1,13 +1,13 @@
-# Maintainer  : Matthias Fulz < mfulz [at] olznet [dot] de >
+# Contributor: Matthias Fulz < mfulz [at] olznet [dot] de >
 
-pkgname='gvmd'
-pkgver=22.4
-pkgrel=2
+pkgname=gvmd
+pkgver=23.5.2
+pkgrel=1
 pkgdesc='Vulnerability manager Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/gvmd"
 license=('GPL')
-depends=('gvm-libs-20>=22.4.0' 'libical' 'python3' 'gnutls' 'postgresql' 'libxslt' 'sudo')
+depends=('gvm-libs' 'libbsd' 'libical' 'python' 'gnutls' 'postgresql' 'libxslt' 'sudo')
 makedepends=('cmake' 'doxygen' 'xmltoman' 'libxslt')
 groups=('greenbone-vulnerability-manager')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/greenbone/gvmd/archive/v${pkgver}.tar.gz"
@@ -21,7 +21,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/greenbone/gvmd/archive/
         "gvmd.install"
         "gvmd.service"
         "gvmd")
-sha512sums=('467652223f0136c9c386622b734f96317ca00cdbec2bb2de4b1c382086e1422b3490c1d883e864d26c183562042ea2b57a3e491cf0df53b60e0b16537b2ac0d2'
+sha512sums=('4708fe0033d5244a988560ca9cbe8b0d5be0006690cc5c943eec3cd534329d776a556766a57257a07d40132fa5239455b9f71b4d0e9a5a4ba66d63436c2bc9f4'
             'ec2cbedf87bfd8cc1abfc6be9c566b6d2e6f7b1f902f5596d496b01faf208c9921b502d77ec9281ef3c0d03462f2d49bb973f4f9216a106116cd824e938951c2'
             '4d259ff625d29b10040ab1ff7cb472b3dee2355c8ef01275754c5c08779e0de3d5ae1cbb157239fd17d663644b43a642fe15c2d8e13cde037e52ad6a4e2e0afd'
             'e1be40755530f9793c91c47db3bc1fb65266dcea2d1ba5e3ba1de97a93572bc52a18dc182f9c4d11fc4586f714663447917d70321e32c20bbe35765f999141d2'
@@ -32,40 +32,42 @@ sha512sums=('467652223f0136c9c386622b734f96317ca00cdbec2bb2de4b1c382086e1422b349
             'b57434d05d3191e460a15ae0e54c3a56f229ffabc3d1b13f395805eb8259ea225379cedaf1554938dd3e442801cd39149707a49ea589c7ca249ff6ffd2340c43'
             'b2f914995939c573f057789c76631896c6545913299e4071526d269efa40f935eb6408e74db9b014c9ff2f3d42770c9196e7fcadb0f7eb02fdf0f2530cbb09de'
             'fee7f0cbc0795d8269aba7df64adb0dfa8765faacba152f4f4b43cb3140b97c3d18fbcfb0abb0ec7b773fba45d725e00aa9b16ddc272cc4423aa99793c1aa931')
+backup=("etc/default/gvmd")
+install=gvmd.install
 
-backup=(
-        "etc/default/gvmd"
-       )
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
-  patch --forward --strip=1 --input="${srcdir}/archlinux_postgres_headers.patch"
+	cd "${pkgname}-${pkgver}"
+	patch --forward --strip=1 --input="${srcdir}/archlinux_postgres_headers.patch"
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  cmake -DCMAKE_BUILD_TYPE=Release -DSBINDIR=/usr/bin \
-    -DCMAKE_INSTALL_PREFIX=/usr -DSYSCONFDIR=/etc -DLOCALSTATEDIR=/var \
-    -DGVM_FEED_LOCK_PATH=/run/gvm/feed-update.lock -DGVM_RUN_DIR=/run/gvm/ .
-  make
+  cmake \
+    -B build \
+    -S "$pkgname-$pkgver" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DSBINDIR=/usr/bin \
+    -DLIBDIR=/usr/lib \
+    -DSYSCONFDIR=/etc \
+    -DLOCALSTATEDIR=/var \
+    -DGVM_FEED_LOCK_PATH=/run/gvm/feed-update.lock \
+    -DGVM_RUN_DIR=/run/gvm/
+  make -C build
 }
 
 package() {
-  install=gvmd.install
-  cd "${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}/" -C build install
+  rm -rf "$pkgdir/lib"
 
-  install -d $pkgdir/etc/default
-  install -m 644 $srcdir/gvmd $pkgdir/etc/default
+  install -Dm644 gvmd -t $pkgdir/etc/default
   install -d $pkgdir/usr/lib/systemd/system
-  install -m 644 $srcdir/greenbone-certdata-sync.timer $pkgdir/usr/lib/systemd/system
-  install -m 644 $srcdir/greenbone-scapdata-sync.timer $pkgdir/usr/lib/systemd/system
-  install -m 644 $srcdir/greenbone-feed-sync.timer $pkgdir/usr/lib/systemd/system
-  install -m 644 $srcdir/greenbone-certdata-sync.service $pkgdir/usr/lib/systemd/system
-  install -m 644 $srcdir/greenbone-scapdata-sync.service $pkgdir/usr/lib/systemd/system
-  install -m 644 $srcdir/greenbone-feed-sync.service $pkgdir/usr/lib/systemd/system
-  install -m 644 $srcdir/gvmd.service $pkgdir/usr/lib/systemd/system
+  install -m 644 greenbone-certdata-sync.timer $pkgdir/usr/lib/systemd/system
+  install -m 644 greenbone-scapdata-sync.timer $pkgdir/usr/lib/systemd/system
+  install -m 644 greenbone-feed-sync.timer $pkgdir/usr/lib/systemd/system
+  install -m 644 greenbone-certdata-sync.service $pkgdir/usr/lib/systemd/system
+  install -m 644 greenbone-scapdata-sync.service $pkgdir/usr/lib/systemd/system
+  install -m 644 greenbone-feed-sync.service $pkgdir/usr/lib/systemd/system
+  install -m 644 gvmd.service $pkgdir/usr/lib/systemd/system
   install -d $pkgdir/var/lib/gvm/gvmd
-  # fix for destroying arch fs
-  rm -rf $pkgdir/lib
 }
