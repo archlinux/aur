@@ -1,8 +1,8 @@
 pkgbase = linux-ath-dfs
 	pkgdesc = Linux
-	pkgver = 6.4.11.arch2
+	pkgver = 6.8.2.arch2
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v6.4.11-arch2
+	url = https://github.com/archlinux/linux/commits/v6.8.2-arch2
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -16,14 +16,15 @@ pkgbase = linux-ath-dfs
 	makedepends = tar
 	makedepends = xz
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.4.11-arch2
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.8.2-arch2
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
-	sha256sums = SKIP
-	sha256sums = 7f7e02e1b4043566da32fbd0e976cb6d98a6aec1851bffe247bfa5214f45c72f
+	validpgpkeys = 83BC8889351B5DEBBB68416EB8AC08600F108CDF
+	sha256sums = 57167aaf867b68abe538633586b73aa7939fab20bf6d957fd643f64c3187c880
+	sha256sums = d198b86ff93a98705dee1e589643b88818db14152b65f2e99cb5c4ba9a8948a9
 
 pkgname = linux-ath-dfs
 	pkgdesc = The Linux kernel and modules
