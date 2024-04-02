@@ -2,7 +2,7 @@
 # This PKGBUILD is heavily inspired by the bash-language-server PKGBUILD
 pkgname=awk-language-server
 pkgver=0.10.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Language server for the AWK programming language'
 arch=(x86_64)
 url="https://github.com/Beaglefoot/awk-language-server"
@@ -10,7 +10,7 @@ license=(MIT)
 depends=('nodejs' 'glibc' 'gcc-libs')
 makedepends=(jq yarn typescript)
 _commit=55bfe7a07ba1e282b2f9cbc23173246ae9d6596c/
-source=("$pkgname-$pkgver.zip::$url/archive/_commit.zip")
+source=("$pkgname-$pkgver.zip::$url/archive/$_commit.zip")
 sha256sums=('697cf54e371baefe416212707921e1cb4d54a20b536afa7b563e0641d2a24d61')
 
 build() {
