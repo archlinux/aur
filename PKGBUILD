@@ -1,11 +1,11 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=treefetch
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A plant-based system fetch tool made with Rust"
 arch=("x86_64")
 url="https://github.com/angelofallars/treefetch"
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=("gcc-libs" "glibc")
 makedepends=("rust" "cargo")
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
