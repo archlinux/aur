@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=netpad-bin
 _pkgname=NetPad
-pkgver=0.6.1
+pkgver=0.7.0
 _electronversion=23
-pkgrel=4
+pkgrel=1
 pkgdesc="A cross-platform C# editor and playground."
 arch=('x86_64')
 url="https://github.com/tareqimbasher/NetPad"
@@ -14,12 +14,15 @@ depends=(
     "electron${_electronversion}"
     'dotnet-sdk'
 )
+optdepends=(
+    'aspnet-runtime: ASP.NET Support'
+)
 source=(
     "${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.pacman"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/tareqimbasher/NetPad/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4c58c6de973c242de83f2a4ac8c122ea0f12bfb09d03a7564c97c86d26bea16a'
+sha256sums=('cb0c2c9efb51bc2ea74ddaf245f873a1a356f6960a8fd9bb9d464f519b4a369a'
             '43485534798b716310ae2a0edeebb00e97ff0e42e5fde13ff2994e2bc82348f6'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
