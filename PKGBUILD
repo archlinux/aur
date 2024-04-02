@@ -2,7 +2,7 @@
 _pkgname=wazo-desktop
 pkgname=${_pkgname}-appimage
 pkgver=1.13.39
-pkgrel=1
+pkgrel=2
 pkgdesc="Wazo desktop client for wazo VOIP server"
 arch=('x86_64')
 url="https://wazo.io/download/"
@@ -14,7 +14,9 @@ _installdir=/opt/${pkgname}
 _installappimage=Wazo-Desktop.AppImage
 source=("${_appimage}::https://mirror.wazo.io/songbird/${pkgver}/${_appimage}")
 noextract=("${_appimage}")
-options=("!strip")
+# Require !strip to avoid corrupt AppImage file
+# Require !debug to workaround bug making strip still occure.
+options=("!strip" "!debug")
 sha256sums=('d702744a4cce7d1af1e4b6dd3903af15a38be2203d7f3d65817d2d072e0cf3f6')
 
 prepare() {
