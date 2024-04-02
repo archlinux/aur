@@ -16,6 +16,7 @@ pkgbase = waveterm-git
 	makedepends = base-devel
 	makedepends = zip
 	makedepends = nvm
+	depends = electron29
 	provides = waveterm=0.7.2.r0.gf41ac1d5
 	conflicts = waveterm
 	source = waveterm.git::git+https://github.com/wavetermdev/waveterm.git
