@@ -4,7 +4,7 @@
 # Contributor: sukanka <su975853527 at gmail dot com>
 _pkgname=siyuan
 pkgname="${_pkgname}-note-bin"
-pkgver=3.0.5
+pkgver=3.0.6
 _electronversion=28
 pkgrel=1
 pkgdesc="A local-first personal knowledge management system.Use system-wide electron."
@@ -22,14 +22,14 @@ source=(
     "${pkgname%-bin}.desktop"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a7509f324e2fe6b9459ac8d1a283d4f90773e32116fe57fddf63505781fa6c6a'
+sha256sums=('a9894e62eb30695325fcc0a4045c5ac0846776a21ce2a3b7263d43617cc8ecef'
             'a8129c198d77a882ce930ccf094ced1d7dc9c0f0c3eca1f204e013bcfae5c8df'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
 }
 package() {
