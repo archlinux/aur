@@ -1,6 +1,6 @@
 # Maintainer: Axel Kappel <aur@kappel.dev>
 pkgname='simp'
-pkgver=3.5.2
+pkgver=3.5.3
 pkgrel=0
 pkgdesc="A simple and fast image manipulation program"
 arch=('x86_64')
