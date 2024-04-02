@@ -1,0 +1,4 @@
+[python-rioxarray]
+source = "github"
+github = "corteva/rioxarray"
+use_latest_release = "true"
