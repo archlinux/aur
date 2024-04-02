@@ -1,0 +1,4 @@
+[calibre]
+source = "github"
+github = "arduino/arduino-fwuploader"
+use_max_tag = true

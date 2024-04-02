@@ -1,0 +1,14 @@
+pkgbase = arduino-fwuploader
+	pkgdesc = An Arduino Language Server based on Clangd to Arduino code autocompletion
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://github.com/arduino/arduino-fwuploader
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = go
+	depends = glibc
+	optdepends = arduino-cli: Arduino command line interface
+	source = arduino-fwuploader-2.4.1.tar.gz::https://github.com/arduino/arduino-fwuploader/archive/2.4.1.tar.gz
+	sha512sums = 39eea32d68a34db8f1442b7159d376b2acd2cad92eb887eb0875525e97990de5392700ebb936ceac4e9e29a3aa27307c358182296054291b9ac089a7ee6e6c09
+
+pkgname = arduino-fwuploader
