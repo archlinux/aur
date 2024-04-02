@@ -1,9 +1,9 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 
 pkgname=python-beartype
 _pkgname=${pkgname#python-}
-pkgver=0.17.2
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Unbearably fast near-real-time hybrid runtime-static type-checking in pure Python"
 arch=(any)
@@ -28,7 +28,7 @@ checkdepends=(
   python-sphinx
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dfe8fc7666c3eb1e35d43b8e9f4ebf7ff88b161411abc6aee964d481fdb8ea95')
+sha256sums=('af8a32c382acf36d77bc3b2470ddea268f95788b044c35f69e2724b2d7188e21')
 
 _archive="$_pkgname-$pkgver"
 
@@ -41,15 +41,12 @@ build() {
 check() {
   cd "$_archive"
 
-  pytest \
-    --deselect beartype_test/a00_unit/a90_claw/a00_core/test_claw_api.py::test_claw_api \
-    --deselect beartype_test/a00_unit/a90_claw/a90_hook/test_claw_extraprocess.py::test_claw_extraprocess_executable_submodule \
-    --deselect beartype_test/a00_unit/a90_claw/a90_hook/test_claw_extraprocess.py::test_claw_extraprocess_executable_package \
-    --deselect beartype_test/a00_unit/a90_claw/a90_hook/test_claw_intraprocess.py::test_claw_intraprocess_beartype_this_package \
-    --deselect beartype_test/a00_unit/a90_claw/a90_hook/test_claw_intraprocess.py::test_claw_intraprocess_beartype_package \
-    --deselect beartype_test/a00_unit/a90_claw/a90_hook/test_claw_intraprocess.py::test_claw_intraprocess_beartype_packages \
-    --deselect beartype_test/a00_unit/a90_claw/a90_hook/test_claw_intraprocess.py::test_claw_intraprocess_beartype_all \
-    --deselect beartype_test/a00_unit/a90_claw/a90_hook/test_claw_intraprocess.py::test_claw_intraprocess_beartyping
+  rm -rf tmp_install
+  python -m installer --destdir=tmp_install dist/*.whl
+
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  export PYTHONPATH="$PWD/tmp_install/$site_packages:$PYTHONPATH"
+  pytest
 }
 
 package() {
