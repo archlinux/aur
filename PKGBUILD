@@ -2,7 +2,7 @@
 # Contributor: w1nst0n <w1nst0n at keemail dot me>
 
 pkgname="uad-ng-bin"
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Cross-platform GUI written in Rust using ADB to debloat non-rooted Android devices (next generation)"
 arch=('x86_64')
