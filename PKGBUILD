@@ -4,11 +4,11 @@
 
 pkgname=dell-c2665dnf
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="CUPS driver for Dell C2665dnf"
 arch=("i686" "x86_64")
 url="http://www.dell.com/support/home/us/en/19/product-support/product/dell-c2665dnf/drivers"
-license=("custom")
+license=('custom:EULA')
 depends=("lib32-libcups")
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 source=("https://dl.dell.com/FOLDER01815904M/1/C2665dnf-Linux-Driver.zip" "LICENSE")

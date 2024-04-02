@@ -1,11 +1,11 @@
 pkgbase = dell-c2665dnf
 	pkgdesc = CUPS driver for Dell C2665dnf
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.dell.com/support/home/us/en/19/product-support/product/dell-c2665dnf/drivers
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = custom:EULA
 	depends = lib32-libcups
 	source = https://dl.dell.com/FOLDER01815904M/1/C2665dnf-Linux-Driver.zip
 	source = LICENSE
