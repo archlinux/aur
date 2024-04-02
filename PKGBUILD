@@ -5,12 +5,12 @@
 _target=sh3eb-elf
 pkgname=${_target}-binutils
 pkgver=2.42
-pkgrel=2
+pkgrel=3
 pkgdesc="GNU binary utilities for the ${_target} target."
 arch=(i686 x86_64)
 options=('!libtool' '!buildflags')
 url='https://www.gnu.org/software/binutils/'
-license=('GPL-2.0-or-later' 'GPL-3.0-or-later' 'LGPL-2.0-or-later' 'LGPL-3.0-or-later' 'GFDL-1.3-or-later' 'FSFAP')
+license=('GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.0-or-later AND LGPL-3.0-or-later AND GFDL-1.3-or-later AND FSFAP')
 depends=('zlib' 'flex')
 source=(https://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2)
 sha256sums=('aa54850ebda5064c72cd4ec2d9b056c294252991486350d9a97ab2a6dfdfaf12')
