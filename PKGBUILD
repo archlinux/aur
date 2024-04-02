@@ -35,7 +35,7 @@ conflicts=(
   'linvamrun'
 )
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3a8a6535c6d199c34828325737c6eee09c44ff269f457c5fde3a80d8dbedff7e')
+sha256sums=('5dbe2f732640daa32ccbbdafe18f81b42b46040caa7694e9790bc1ab8e5a8c87')
 options=('debug')
 install=linvam.install
 
