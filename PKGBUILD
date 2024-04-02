@@ -1,12 +1,20 @@
 pkgname='alsa-scarlett-gui-dev'
 _pkgname='alsa-scarlett-gui'
-pkgver=0.4.0.1.g1171
+pkgver=0.4.0.13.gf283
 pkgrel=1
 pkgdesc="GUI for the ALSA controls presented by the Scarlett2 driver, Development version"
 arch=('i686' 'x86_64')
 url="https://github.com/geoffreybennett/alsa-scarlett-gui"
 license=('GPL-3.0-or-later' 'LGPL-3.0-or-later')
-depends=('alsa-lib' 'gtk4' 'openssl')
+depends=(
+    'glibc'
+    'glib2'
+    'alsa-lib'
+    'gtk4'
+    'hicolor-icon-theme'
+    'cairo'
+    'openssl'
+)
 makedepends=('gcc' 'make' 'git' 'pkgconf' 'sed')
 provides=("$_pkgname")
 source=("git+${url}.git#branch=dev")
@@ -19,13 +27,24 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_pkgname"
-    sed -i 's/-Werror//' src/Makefile
-    PREFIX="/usr" make -C src
+
+    make \
+        -C src \
+        PREFIX=/usr \
+        VERSION="$pkgver"
 }
 
 package() {
     cd "$srcdir/$_pkgname"
-    PREFIX="${pkgdir}/usr" make -C src install
-    install -vd           "${pkgdir}/usr/share/doc/${_pkgname}/"
-    install -vm 644 *.md  "${pkgdir}/usr/share/doc/${_pkgname}/"
+
+    make \
+        -C src \
+        PREFIX="$pkgdir/usr" \
+        VERSION="$pkgver" \
+        install
+
+    # documentation
+    install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md ./docs/*.md
+    install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname/img" img/*
+    install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname/demo" demo/*
 }
