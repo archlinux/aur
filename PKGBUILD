@@ -1,4 +1,6 @@
 # Maintainer: Nikola Ivačič <nikola.ivacic@dropchop.com>
+# Maintainer: Dan Fuhry <dan@fuhry.com>
+# vim: set ts=2 sw=2 et:
 ### I AM ONLY THE PACKAGER, NOT THE DEVELOPER
 ### Please ask support questions about this software in one of:
 ###   1) The AUR comments; OR
@@ -11,18 +13,30 @@
 
 pkgname=lasso
 pkgver=2.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Lasso is a free software C library aiming to implement the Liberty Alliance standards. ID-WSF and SAML 2.0."
 arch=('i686' 'x86_64')
 url="http://lasso.entrouvert.org/"
 license=('GNU')
 depends=('libxml2' 'xmlsec' 'openssl')
 makedepends=('perl' 'python-six')
-source=("https://dev.entrouvert.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('f56b5fef68fd1e6025a7cfb0f84d65be9ddf195f0e80d38d60c31d43fcd4377be5a0d67140bc654c224331230f06c10e4eb498671a10ebfadc1d93decadf4c72')
+source=("https://dev.entrouvert.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+        "0001-stop-using-deprecated-symbols.patch")
+sha512sums=('f56b5fef68fd1e6025a7cfb0f84d65be9ddf195f0e80d38d60c31d43fcd4377be5a0d67140bc654c224331230f06c10e4eb498671a10ebfadc1d93decadf4c72'
+            '283000ee20a14efd42e65ed6d6c0358889e3aab54095c68caf7f10b15adc55a050c452c8b10a0dd8c750927b6971f182b044558ae3f426018363b55e73852d81')
+
+prepare() {
+  for f in "${source[@]}"; do
+    if test "${f%.patch}" != "${f}"; then
+      msg "Applying patch: $f"
+      cd "${srcdir}/${pkgname}-${pkgver}"
+      patch -Np1 -i "${srcdir}/${f}"
+    fi
+  done
+}
 
 build() {
-  cd "${pkgname}"-"${pkgver}"
+  cd "${pkgname}-${pkgver}"
   ./configure --prefix=/usr --disable-tests
   make CFLAGS="-g -O2 -w" CXXFLAGS="${CFLAGS}"
 }

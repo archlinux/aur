@@ -1,7 +1,7 @@
 pkgbase = lasso
 	pkgdesc = Lasso is a free software C library aiming to implement the Liberty Alliance standards. ID-WSF and SAML 2.0.
 	pkgver = 2.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://lasso.entrouvert.org/
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,8 @@ pkgbase = lasso
 	depends = xmlsec
 	depends = openssl
 	source = https://dev.entrouvert.org/releases/lasso/lasso-2.8.2.tar.gz
+	source = 0001-stop-using-deprecated-symbols.patch
 	sha512sums = f56b5fef68fd1e6025a7cfb0f84d65be9ddf195f0e80d38d60c31d43fcd4377be5a0d67140bc654c224331230f06c10e4eb498671a10ebfadc1d93decadf4c72
+	sha512sums = 283000ee20a14efd42e65ed6d6c0358889e3aab54095c68caf7f10b15adc55a050c452c8b10a0dd8c750927b6971f182b044558ae3f426018363b55e73852d81
 
 pkgname = lasso

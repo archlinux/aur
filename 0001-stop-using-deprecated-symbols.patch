@@ -1,0 +1,54 @@
+diff -Naur a/lasso/lasso.c b/lasso/lasso.c
+--- a/lasso/lasso.c	2024-04-02 08:48:00.452071137 -0400
++++ b/lasso/lasso.c	2024-04-02 08:47:09.337931309 -0400
+@@ -270,7 +270,7 @@
+ 	 * xmlsec-crypto library.
+ 	 */
+ #ifdef XMLSEC_CRYPTO_DYNAMIC_LOADING
+-	if (xmlSecCryptoDLLoadLibrary(BAD_CAST XMLSEC_CRYPTO) < 0) {
++	if (xmlSecCryptoDLLoadLibrary(BAD_CAST xmlSecGetDefaultCrypto()) < 0) {
+ 		message(G_LOG_LEVEL_CRITICAL,
+ 				"Unable to load default xmlsec-crypto library. Make sure"
+ 				"that you have it installed and check shared libraries path"
+diff -Naur a/lasso/xml/tools.c b/lasso/xml/tools.c
+--- a/lasso/xml/tools.c	2023-03-06 06:05:02.761160572 -0500
++++ b/lasso/xml/tools.c	2024-04-02 09:09:19.739795636 -0400
+@@ -47,6 +47,7 @@
+ #include <libxml/xmlIO.h>
+ 
+ #include <openssl/evp.h>
++#include <openssl/pem.h>
+ 
+ #include <xmlsec/base64.h>
+ #include <xmlsec/crypto.h>
+@@ -308,8 +309,8 @@
+ 			pub_key = lasso_get_public_key_from_pem_cert_file(file);
+ 			break;
+ 		case LASSO_PEM_FILE_TYPE_PUB_KEY:
+-			pub_key = xmlSecCryptoAppKeyLoad(file,
+-					xmlSecKeyDataFormatPem, NULL, NULL, NULL);
++			pub_key = xmlSecCryptoAppKeyLoadEx(file,
++					xmlSecKeyDataTypePublic, xmlSecKeyDataFormatPem, NULL, NULL, NULL);
+ 			break;
+ 		case LASSO_PEM_FILE_TYPE_PRIVATE_KEY:
+ 			pub_key = lasso_get_public_key_from_private_key_file(file);
+@@ -377,8 +378,8 @@
+ static xmlSecKeyPtr
+ lasso_get_public_key_from_private_key_file(const char *private_key_file)
+ {
+-	return xmlSecCryptoAppKeyLoad(private_key_file,
+-			xmlSecKeyDataFormatPem, NULL, NULL, NULL);
++	return xmlSecCryptoAppKeyLoadEx(private_key_file,
++			xmlSecKeyDataTypePublic, xmlSecKeyDataFormatPem, NULL, NULL, NULL);
+ }
+ 
+ /**
+@@ -1449,7 +1450,7 @@
+ 	}
+ }
+ 
+-static void structuredErrorFunc (void *userData, xmlErrorPtr error) {
++static void structuredErrorFunc (void *userData, const xmlError * error) {
+ 		*(int*)userData = error->code;
+ }
+ 
