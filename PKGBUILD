@@ -1,8 +1,8 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=opengfw
 _pkgname=OpenGFW
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A flexible, easy-to-use, open source implementation of GFW"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(MPL-2.0)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('19f43967fc6bb80574d5d4a02bf911ee9250ae3c45574ac9c4076830b2fc22ca')
+sha256sums=('acec3dd13178ca1a784eb761bc3be3b3156d243e551783eb608dbbc9eabcffbf')
 
 _archive="$_pkgname-$pkgver"
 
