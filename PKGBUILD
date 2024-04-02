@@ -5,11 +5,11 @@
 _target="sh3eb-elf"
 pkgname=${_target}-gcc
 pkgver=13.2.0
-pkgrel=1
+pkgrel=2
 _islver=0.24
 pkgdesc="The GNU Compiler Collection for the ${_target} target."
 arch=(i686 x86_64)
-license=('GPL' 'LGPL')
+license=('GPL-3.0-only WITH GCC-exception-2.0' 'GFDL-1.3-or-later')
 url="http://gcc.gnu.org"
 depends=("${_target}-binutils" 'libmpc' 'elfutils')
 options=('staticlibs' '!buildflags' '!libtool' '!emptydirs' 'zipman' 'docs' '!strip')

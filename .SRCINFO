@@ -1,12 +1,12 @@
 pkgbase = sh3eb-elf-gcc
 	pkgdesc = The GNU Compiler Collection for the sh3eb-elf target.
 	pkgver = 13.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gcc.gnu.org
 	arch = i686
 	arch = x86_64
-	license = GPL
-	license = LGPL
+	license = GPL-3.0-only WITH GCC-exception-2.0
+	license = GFDL-1.3-or-later
 	depends = sh3eb-elf-binutils
 	depends = libmpc
 	depends = elfutils
