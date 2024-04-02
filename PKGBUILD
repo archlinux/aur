@@ -5,11 +5,11 @@
 pkgname="python2-gimp"
 _pkgname="gimp"
 pkgver="2.10.36"
-pkgrel="1"
+pkgrel="2"
 pkgdesc='Python 2 plugins support for GIMP'
 url='https://www.gimp.org/'
 arch=('x86_64')
-license=('GPL-3.0-only' 'LGPL-3.0-only')
+license=('GPL-3.0-only AND LGPL-3.0-only')
 depends=('gimp<2.99' 'pygtk')
 makedepends=('gtk-doc' 'intltool' 'autoconf')
 source=("https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
