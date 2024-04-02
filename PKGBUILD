@@ -4,6 +4,7 @@ pkgrel=1
 arch=('x86_64')
 
 license=('GPL2')
+pkgdesc="The linux port of CW-I"
 
 depends=('gcc' 'flatpak' 'wget')
 

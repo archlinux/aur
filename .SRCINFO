@@ -1,4 +1,5 @@
 pkgbase = opencw
+	pkgdesc = The linux port of CW-I
 	pkgver = 1.3
 	pkgrel = 1
 	arch = x86_64
