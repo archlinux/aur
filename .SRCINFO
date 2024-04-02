@@ -1,6 +1,6 @@
 pkgbase = passwordfile
 	pkgdesc = C++ library to read/write passwords from/to encrypted files using AES-256-CBC via OpenSSL
-	pkgver = 5.0.10
+	pkgver = 5.0.11
 	pkgrel = 1
 	url = https://github.com/Martchus/passwordfile
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = passwordfile
 	depends = libz.so
 	optdepends = passwordfile-doc: API documentation
 	provides = libpasswordfile.so
-	source = passwordfile-5.0.10.tar.gz::https://github.com/Martchus/passwordfile/archive/v5.0.10.tar.gz
-	sha256sums = 7d4b8095c172ae48e19651ef561aa3b461b4f008fc1c4b378368532f4009a472
+	source = passwordfile-5.0.11.tar.gz::https://github.com/Martchus/passwordfile/archive/v5.0.11.tar.gz
+	sha256sums = b9a47be7669eb46c7951e928dbbfe17b6d818b8a438e8549da87d692440344da
 
 pkgname = passwordfile
