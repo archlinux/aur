@@ -1,9 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=snippet-notes
-pkgver=0.4.0
-_electronversion=22
+pkgver=0.4.4
 _nodeversion=18
-pkgrel=2
+pkgrel=1
 pkgdesc="A local note-taking software with quick recording and enhanced search capabilities.效能笔记，一款快速记录及搜索功能增强的本地笔记记录软件."
 arch=('any')
 url="https://github.com/xunxun10/snippet-notes"
@@ -25,8 +24,12 @@ source=(
     "${pkgname}.git::git+${url}.git#tag=${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('e28860fefe30b344923d422f16996c715810e518cbbc95d94b91198e347944a2'
+sha256sums=('c92993c2bf2d098f254912352693c893f0e494518bf0d3476603b98621f5faa8'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+_getelectronver() {
+    cd "${srcdir}/${pkgname}.git"
+    grep '"electron": ' -i package.json | awk '{print $2}' | sed 's|"||g;s|\^||g;s|\.| |g' | awk '{print $1}'
+}
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -34,6 +37,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 build() {
+    _electronversion="$(_getelectronver)"
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
@@ -44,16 +48,16 @@ build() {
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    export ELECTRONVERSION="${_electronversion}"
+    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    #export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
-        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
-        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
         echo "Your network is OK."
     fi
