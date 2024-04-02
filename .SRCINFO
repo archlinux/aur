@@ -1,0 +1,16 @@
+pkgbase = pysuntimes-git
+	pkgdesc = Print suntimes given a date and a set of coordinates. (civil/nautical/astronomical twilights, sunset/sunrise, and golden hours)
+	pkgver = r3.16c6fdf
+	pkgrel = 1
+	url = https://github.com/trougnouf/pysuntimes
+	arch = any
+	license = GPL
+	depends = python-pyephem
+	depends = python-timezonefinder
+	depends = python-pytz
+	provides = python-pysuntimes
+	conflicts = python-pysuntimes
+	source = git+https://github.com/trougnouf/pysuntimes.git
+	sha256sums = SKIP
+
+pkgname = pysuntimes-git
