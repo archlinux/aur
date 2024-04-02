@@ -6,7 +6,7 @@ arch=('any')
 license=(Zlib)
 url="https://github.com/lexi-the-cute/catgirl-engine"
 pkgver=v0.12.32.r1.g996abc2
-pkgrel=4
+pkgrel=5
 provides=("catgirl-engine=${pkgver%%.r*}")
 conflicts=(catgirl-engine)
 source=("git+https://github.com/lexi-the-cute/catgirl-engine.git")
@@ -19,11 +19,14 @@ makedepends=(
     "cargo-nightly"
     "sed"
 )
+optdepends=(
+    "wayland: Graphics display server"
+    "xorg-server: Graphics display server"
+)
 
 # Automatically updates pkgver variable
 pkgver() {
     cd "catgirl-engine"
-    rustup install nightly
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -31,6 +34,7 @@ pkgver() {
 prepare() {
     export RUSTUP_TOOLCHAIN=nightly
     cd "catgirl-engine"
+    rustup install nightly
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
