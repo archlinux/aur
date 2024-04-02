@@ -1,4 +1,5 @@
 pkgbase = easypacman
+	pkgdesc = An APT like implementation of pacman
 	pkgver = 1
 	pkgrel = 1
 	arch = x86_64

@@ -4,6 +4,7 @@ pkgrel=1
 arch=('x86_64')
 
 license=('GPL3')
+pkgdesc="An APT like implementation of pacman"
 
 depends=('gcc')
 
