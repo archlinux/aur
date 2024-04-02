@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=textshape
-_pkgver=1.7.3
+_pkgver=1.7.5
 pkgname=r-${_pkgname,,}
-pkgver=1.7.3
-pkgrel=4
+pkgver=1.7.5
+pkgrel=1
 pkgdesc='Tools for Reshaping Text'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,7 +19,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ba9ddfc0bc41501594fa98a09ef2808b6da7de69cfb7c3f2c542bee9bbb4314d')
+sha256sums=('de45cf4b95a3c11a18a72cfe9e6a8e09962429d71afbc9635088c34c5e1b29bc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
