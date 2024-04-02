@@ -4,7 +4,7 @@
 
 pkgname=tableplus-bin
 pkgver=0.1.248
-pkgrel=3
+pkgrel=1
 pkgdesc='Modern, native, and friendly GUI tool for relational databases (Alpha)'
 arch=('x86_64' 'aarch64')
 conflicts=('tableplus')
