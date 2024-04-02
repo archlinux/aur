@@ -1,13 +1,12 @@
 pkgbase = breeze-snow-cursor-theme
-	pkgdesc = Breeze Snow cursor theme.
-	pkgver = 1.0
-	pkgrel = 3
-	url = https://kver.wordpress.com/2015/01/09/curses-i-mean-cursors/
+	pkgdesc = Breeze Snow cursor theme (the light cursor theme released with KDE Plasma 5.27.11 and older)
+	pkgver = 5.27.11
+	pkgrel = 1
+	url = https://kde.org
 	arch = any
 	license = GPL
-	makedepends = unzip
-	source = https://code.jpope.org/jpope/breeze_cursor_sources/raw/master/breeze-snow-cursor-theme.zip
-	sha256sums = 1390272e693f258dc55f86fbd5c99f0f36cfb4e71f22e9062b8d6ff14483562e
+	conflicts = breeze<=5.27.11
+	source = https://download.kde.org/stable/plasma/5.27.11/breeze-5.27.11.tar.xz
+	sha256sums = 14756a2fe5bc3db11ca954ff0df9b98e8d78ada4b231111780c42ee627dd4cab
 
 pkgname = breeze-snow-cursor-theme
-

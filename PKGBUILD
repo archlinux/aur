@@ -1,20 +1,20 @@
 # Maintainer: Jeremy Pope <jpope at jpope dot org> PGP-Key: E00B4261
+# Maintainer: George McCarthy <mccarthee@outlook.com>
 pkgname=breeze-snow-cursor-theme
-pkgver=1.0
-pkgrel=3
-pkgdesc="Breeze Snow cursor theme."
+url="https://kde.org"
+pkgver=5.27.11
+pkgrel=1
+pkgdesc="Breeze Snow cursor theme (the light cursor theme released with KDE Plasma 5.27.11 and older)"
 arch=('any')
-url="https://kver.wordpress.com/2015/01/09/curses-i-mean-cursors/"
 license=('GPL')
-source=("https://code.jpope.org/jpope/breeze_cursor_sources/raw/master/breeze-snow-cursor-theme.zip")
-makedepends=('unzip')
-
-sha256sums=('1390272e693f258dc55f86fbd5c99f0f36cfb4e71f22e9062b8d6ff14483562e')
+source=("https://download.kde.org/stable/plasma/$pkgver/breeze-$pkgver.tar.xz")
+sha256sums=('14756a2fe5bc3db11ca954ff0df9b98e8d78ada4b231111780c42ee627dd4cab')
+conflicts=('breeze<=5.27.11')
 
 package() {
-    cd $srcdir/Breeze_Snow
+    cd $srcdir/breeze-$pkgver/cursors/Breeze_Snow/Breeze_Snow
     install -d $pkgdir/usr/share/icons/Breeze_Snow
-    cp -rf *   $pkgdir/usr/share/icons/Breeze_Snow
+    cp -rf * $pkgdir/usr/share/icons/Breeze_Snow
     chmod -R 644 $pkgdir/usr/share/icons/Breeze_Snow/*
     chmod 755 $pkgdir/usr/share/icons/Breeze_Snow
     chmod 755 $pkgdir/usr/share/icons/Breeze_Snow/cursors
