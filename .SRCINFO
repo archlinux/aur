@@ -1,0 +1,15 @@
+pkgbase = ncduh-git
+	pkgdesc = ncdu fork
+	pkgver = 20240402
+	pkgrel = 1
+	url = https://git.sr.ht/~snybl/ncduh
+	install = ncduh-git.install
+	arch = x86_64
+	license = BSD
+	makedepends = zig
+	conflicts = ncdu
+	replaces = ncdu
+	source = git+https://git.sr.ht/~snybl/ncduh
+	md5sums = SKIP
+
+pkgname = ncduh-git

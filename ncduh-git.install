@@ -1,0 +1,12 @@
+post_install() {
+    :
+}
+
+pre_remove() {
+    :
+}
+
+post_remove() {
+    :
+}
+
