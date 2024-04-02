@@ -11,7 +11,7 @@ license=("AGPL-3.0-or-later")
 arch=("x86_64")
 provides=("md-tui")
 conflicts=("md-tui")
-source=("https://github.com/henriklovhaug/md-tui/releases/download/v$pkgver/md-tui-$pkgver-x86_64.tar.gz")
+source=("https://github.com/henriklovhaug/md-tui/releases/download/0.5.0/md-tui-0.5.0-x86_64.tar.gz")
 sha256sums=("7614af2b5ed752bdc402ea1761690a69787810bab533bc43816e75e60a3ee1f9")
 
 package() {
