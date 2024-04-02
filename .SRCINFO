@@ -1,0 +1,14 @@
+pkgbase = tree-sitter-python-highlight
+	pkgdesc = Python grammar for tree-sitter with queries
+	pkgver = 0.21.0
+	pkgrel = 1
+	url = https://github.com/tree-sitter/tree-sitter-python
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = tree-sitter-cli
+	conflicts = tree-sitter-python
+	source = source.tar.gz::https://github.com/tree-sitter/tree-sitter-python/archive/refs/tags/v0.21.0.tar.gz
+	sha256sums = 720304a603271fa89e4430a14d6a81a023d6d7d1171b1533e49c0ab44f1e1c13
+
+pkgname = tree-sitter-python-highlight
