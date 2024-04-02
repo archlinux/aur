@@ -1,14 +1,14 @@
 pkgbase = letterpress
-	pkgdesc = Uses artem to turn your pictures into images made up of ASCII Characters.
+	pkgdesc = Uses jp2a to turn your pictures into images made up of ASCII Characters.
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.gnome.org/Letterpress
 	arch = any
 	license = GPL-3.0-or-later
 	checkdepends = appstream-glib
 	makedepends = blueprint-compiler
 	makedepends = meson
-	depends = artem
+	depends = jp2a
 	depends = libadwaita
 	depends = python-gobject
 	depends = python-pillow
