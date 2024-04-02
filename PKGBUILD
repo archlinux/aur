@@ -10,7 +10,7 @@ license=('AGPL-3.0')
 provides=('trgui-ng-git')
 conflicts=('trgui-ng')
 depends=('alsa-lib' 'cairo' 'desktop-file-utils' 'fontconfig' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libayatana-appindicator' 'libsoup' 'openssl' 'webkit2gtk')
-makedepends=('rust>=1.69.0' 'nodejs>=16.0.0' 'git')
+makedepends=('rust>=1.69.0' 'nodejs>=16.0.0' 'npm' 'git')
 source=("TrguiNG::git+https://github.com/openscopeproject/TrguiNG"
         "https://github.com/openscopeproject/TrguiNG/releases/download/v1.0.0/dbip.mmdb"
         "TrguiNG.desktop"::"https://raw.githubusercontent.com/flathub/org.openscopeproject.TrguiNG/master/org.openscopeproject.TrguiNG.desktop")
