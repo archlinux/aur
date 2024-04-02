@@ -9,7 +9,7 @@
 _pkgname="lightly"
 pkgbase="$_pkgname-git"
 pkgver=0.4.1.r73.g00ca234
-pkgrel=3
+pkgrel=4
 pkgdesc="Modern style for KDE/Qt applications"
 url="https://github.com/boehs/lightly"
 arch=('x86_64' 'aarch64')
@@ -179,6 +179,8 @@ if [[ "${_build_kf5::1}" == "t" ]] ; then
 
     local _pkgdir="$srcdir/fakeinstall_kf5"
     mv "$_pkgdir"/* "$pkgdir/"
+
+    chmod u=rwX,g=rX,o=rX -R "$pkgdir"
   }
 fi
 
@@ -205,5 +207,7 @@ if [[ "${_build_kf6::1}" == "t" ]] ; then
 
     local _pkgdir="$srcdir/fakeinstall_kf6"
     mv "$_pkgdir"/* "$pkgdir/"
+
+    chmod u=rwX,g=rX,o=rX -R "$pkgdir"
   }
 fi

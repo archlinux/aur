@@ -1,7 +1,7 @@
 pkgbase = lightly-git
 	pkgdesc = Modern style for KDE/Qt applications
 	pkgver = 0.4.1.r73.g00ca234
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/boehs/lightly
 	arch = x86_64
 	arch = aarch64
