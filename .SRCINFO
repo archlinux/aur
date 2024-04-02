@@ -1,11 +1,11 @@
 pkgbase = tailord
 	pkgdesc = Daemon handling fan, keyboard and general HW support for Tuxedo laptops (part of tuxedo-rs)
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/AaronErhardt/tuxedo-rs
 	arch = x86_64
 	groups = tuxedo-rs
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = cargo
 	depends = glibc
@@ -17,7 +17,7 @@ pkgbase = tailord
 	optdepends = tailor-hwcaps: CLI tool for checking hardware capabilities
 	provides = tailord
 	conflicts = tuxedo-control-center
-	source = tailord-0.2.4.tar.gz::https://github.com/AaronErhardt/tuxedo-rs/archive/refs/tags/tailord-v0.2.4.tar.gz
-	sha256sums = ee7da526b30044a1b06ae168a7335b48d18bc5bfb8a008c00550216c7dd6a81c
+	source = tailord::git+https://github.com/AaronErhardt/tuxedo-rs#tag=tailord-v0.2.5
+	sha256sums = cf33972732601cd9e0f2502689a2f7620ba5fc886174e84f9192bbd5c8e801a1
 
 pkgname = tailord
