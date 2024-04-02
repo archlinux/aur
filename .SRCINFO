@@ -1,18 +1,19 @@
 pkgbase = martypc
 	pkgdesc = An IBM PC/XT emulator written in Rust
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dbalsom/martypc
 	install = martypc.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
+	makedepends = git
 	depends = alsa-lib
 	depends = libudev.so
 	depends = gcc-libs
 	depends = glibc
-	source = martypc-0.2.0.tgz::https://github.com/dbalsom/martypc/archive/refs/tags/0.2.0.tar.gz
-	sha512sums = b3323da56f3ddead7ff1e8630ca85a6d904200032797f9a4f48ee0bb6f89838c26e9ea693e40e3f0e40979a7792cb4bfb0d2f26b9667fa8fdf09a8dbac8c6ece
+	source = git+https://github.com/dbalsom/martypc.git#branch=version_0_2_0
+	sha512sums = SKIP
 
 pkgname = martypc
