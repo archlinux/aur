@@ -9,7 +9,7 @@
 _pkgname="lightly"
 pkgbase="$_pkgname-git"
 pkgver=0.4.1.r73.g00ca234
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern style for KDE/Qt applications"
 url="https://github.com/boehs/lightly"
 arch=('x86_64' 'aarch64')
@@ -99,12 +99,9 @@ _package_kf5() (
   DESTDIR="$_pkgdir" cmake --install build_kf5
 
   rm -rf "$_pkgdir/usr/lib/cmake"
-
-  if [[ "${_build_kf6::1}" == "t" ]] ; then
-    rm -rf "$_pkgdir/usr/share/color-schemes"
-    rm -rf "$_pkgdir/usr/share/icons"
-    rm -rf "$_pkgdir/usr/share/kstyle"
-  fi
+  rm -rf "$_pkgdir/usr/share/icons"
+  mv "$_pkgdir/usr/share/color-schemes/Lightly.colors" "$_pkgdir/usr/share/color-schemes/Lightly5.colors"
+  mv "$_pkgdir/usr/share/kstyle/themes/lightly.themerc" "$_pkgdir/usr/share/kstyle/themes/lightly5.themerc"
 )
 
 # KF6/Qt6
@@ -153,14 +150,6 @@ _package_kf6() (
   DESTDIR="$_pkgdir" cmake --install build_kf6
 
   rm -rf "$_pkgdir/usr/lib/cmake"
-
-  if [[ "${_build_kf5::1}" == "t" ]] ; then
-    local _pkgdir_common="$srcdir/fakeinstall_common"
-    install -dm755 "$_pkgdir_common/usr/share"
-    mv "$_pkgdir/usr/share/color-schemes" "$_pkgdir_common/usr/share/"
-    mv "$_pkgdir/usr/share/icons" "$_pkgdir_common/usr/share/"
-    mv "$_pkgdir/usr/share/kstyle" "$_pkgdir_common/usr/share/"
-  fi
 )
 
 # execute
@@ -187,9 +176,6 @@ if [[ "${_build_kf5::1}" == "t" ]] ; then
     )
 
     depends=("${_depends_kf5[@]}")
-    if [[ "${_build_kf6::1}" == "t" ]] ; then
-      depends+=("$_pkgname-common-git")
-    fi
 
     local _pkgdir="$srcdir/fakeinstall_kf5"
     mv "$_pkgdir"/* "$pkgdir/"
@@ -216,21 +202,8 @@ if [[ "${_build_kf6::1}" == "t" ]] ; then
     )
 
     depends=("${_depends_kf6[@]}")
-    if [[ "${_build_kf5::1}" == "t" ]] ; then
-      depends+=("$_pkgname-common-git")
-    fi
 
     local _pkgdir="$srcdir/fakeinstall_kf6"
     mv "$_pkgdir"/* "$pkgdir/"
-  }
-fi
-
-if [[ "${_build_kf5::1}" == "t" ]] && [[ "${_build_kf6::1}" == "t" ]] ; then
-  pkgname+=("$_pkgname-common-git")
-
-  package_lightly-common-git() {
-    pkgdesc="Modern style for KDE/Qt applications - common files"
-
-    mv "$srcdir/fakeinstall_common"/* "$pkgdir/"
   }
 fi
