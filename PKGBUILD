@@ -3,7 +3,7 @@
 
 pkgbase="python-gvar"
 pkgname=("python-gvar" "python2-gvar")
-pkgver=13.0.1
+pkgver=13.0.2
 pkgrel=1
 pkgdesc="Python library for working with correlated Gaussian variables"
 arch=('i686' 'x86_64')
@@ -26,4 +26,4 @@ package_python2-gvar() {
 	python2 setup.py install --root="$pkgdir" --prefix=/usr
 }
 
-sha256sums=('4e602efac16d9f58ba1e67f6943ce1656e71005182f6218b62292c751f5e7024')
+sha256sums=('249b747e03e45c4aa04e41596b0baf7f7c7e2c827087d6e9b63c5bf79a97a4c3')
