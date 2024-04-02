@@ -1,7 +1,7 @@
 pkgbase = dyalog-bin
 	pkgdesc = Dyalog APL interpreter
 	pkgver = 19.0.48958
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.dyalog.com/download-zone.htm
 	arch = x86_64
 	license = custom
@@ -17,7 +17,7 @@ pkgbase = dyalog-bin
 	depends = unixodbc
 	depends = at-spi2-atk
 	depends = ncurses5-compat-libs
-	optdepends = dotnet-core-3.1-bin
+	optdepends = dotnet-runtime-3.1-bin
 	options = !strip
 	source = dyalog-bin-19.0.48958.deb::https://www.dyalog.com/uploads/php/download.dyalog.com/download.php?file=19.0/linux_64_19.0.48958_unicode.x86_64.deb
 	source = LICENSE.pdf::https://www.dyalog.com/uploads/documents/Developer_Software_Licence.pdf

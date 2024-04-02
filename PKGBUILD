@@ -1,7 +1,7 @@
 # Maintainer: Steve Engledow <steve@engledow.me>
 pkgname=dyalog-bin
 pkgver=19.0.48958
-pkgrel=2
+pkgrel=3
 pkgdesc='Dyalog APL interpreter'
 arch=('x86_64')
 url="https://www.dyalog.com/download-zone.htm"
@@ -19,7 +19,7 @@ depends=(
     'ncurses5-compat-libs'
 )
 optdepends=(
-    'dotnet-core-3.1-bin'
+    'dotnet-runtime-3.1-bin'
 )
 makedepends=(
     'binutils'
