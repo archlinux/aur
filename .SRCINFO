@@ -1,11 +1,12 @@
 pkgbase = dockit-bin
 	pkgdesc = GUI clients for elasticsearch, opensearch and etc
 	pkgver = 0.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dockit.geekfun.club/
 	arch = aarch64
 	arch = x86_64
 	license = Apache-2.0
+	depends = electron28
 	provides = dockit=0.2.6
 	conflicts = dockit
 	source = dockit.sh
