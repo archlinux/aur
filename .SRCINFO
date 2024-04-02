@@ -16,6 +16,6 @@ pkgbase = fmt9
 	depends = glibc
 	provides = libfmt.so
 	source = fmt::git+https://github.com/fmtlib/fmt.git#tag=9.1.0
-	b2sums = SKIP
+	b2sums = 5a26a3545833033833302b1ad2a6fb2c0b53c5fe95114faa254affabf226dadb1cb319f05f1ceb1cdb100706045fbc11e3c162f95df517173af424b4e2c03965
 
 pkgname = fmt9

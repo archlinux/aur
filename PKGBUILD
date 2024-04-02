@@ -11,14 +11,14 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cmake' 'git')
 provides=('libfmt.so')
 source=("$_pkgname::git+https://github.com/fmtlib/fmt.git#tag=$pkgver")
-b2sums=('SKIP')
+b2sums=('5a26a3545833033833302b1ad2a6fb2c0b53c5fe95114faa254affabf226dadb1cb319f05f1ceb1cdb100706045fbc11e3c162f95df517173af424b4e2c03965')
 
 prepare() {
 	cd $_pkgname
 	# hip workaround
 	git cherry-pick -n 0b0f7cfbfcebd021c910078003d413354bd843e2
 	# https://github.com/fmtlib/fmt/pull/3563
-	sed -i '/FMT_PKGCONFIG_DIR/s/PATH/STRING/' CMakeLists.txt
+	git cherry-pick -n eacd51c249bd9e2eb714969331dae3c0c5535523
 }
 
 build() {
