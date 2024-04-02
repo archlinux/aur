@@ -8,8 +8,8 @@
 # Contributor: Jeff 'codemac' Mickey <jeff@archlinux.org>
 
 pkgname=nordmenu
-pkgver=5.3
-pkgrel=2
+pkgver=5.3.1
+pkgrel=1
 pkgdesc='Generic menu for X with Nord colours'
 url='https://github.com/0jdxt/nordmenu'
 arch=('x86_64')

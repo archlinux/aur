@@ -1,7 +1,7 @@
 pkgbase = nordmenu
 	pkgdesc = Generic menu for X with Nord colours
-	pkgver = 5.3
-	pkgrel = 2
+	pkgver = 5.3.1
+	pkgrel = 1
 	url = https://github.com/0jdxt/nordmenu
 	arch = x86_64
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = nordmenu
 	depends = libfontconfig.so
 	provides = dmenu
 	conflicts = dmenu
-	source = nordmenu-5.3::https://github.com/0jdxt/nordmenu/archive/refs/tags/5.3.tar.gz
+	source = nordmenu-5.3.1::https://github.com/0jdxt/nordmenu/archive/refs/tags/5.3.1.tar.gz
 	sha512sums = caad25358fc2d955f14aad97afb75641314f30403cb28bc28001fb262b02a93f3b95ca6e231f0a99163244e21c0cb6e81fa8c653d9275306cfe22193dd91122b
 	b2sums = 167912cb8de9cd02f648b3f3503ba15170e8579eee4b3e379ed183c31692142a6bcce82ecedbbd548dc2ac05ae5dc9004b83b074bfe81254070cfbdeeea65b9d
 
