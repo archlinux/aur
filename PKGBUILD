@@ -6,11 +6,11 @@
 pkgname=treefetch-git
 _pkgname=${pkgname%-git}
 pkgver=2.0.0.r23.g02f65e1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightning-fast system fetch tool built with Rust"
 arch=('x86_64')
 url="https://github.com/angelofallars/treefetch"
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
 provides=("$_pkgname=${pkgver%.r*}")

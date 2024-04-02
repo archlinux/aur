@@ -1,10 +1,10 @@
 pkgbase = treefetch-git
 	pkgdesc = Lightning-fast system fetch tool built with Rust
 	pkgver = 2.0.0.r23.g02f65e1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/angelofallars/treefetch
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
