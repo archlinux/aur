@@ -1,7 +1,8 @@
 pkgbase = please
 	pkgdesc = A command line utility that makes it easy to integrate web services into your shell scripts
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/stilvoid/please
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -11,4 +12,3 @@ pkgbase = please
 	md5sums_x86_64 = ed0b9396974e0e9cbe9305037b3a443b
 
 pkgname = please
-

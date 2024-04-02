@@ -1,10 +1,10 @@
 # Maintainer: Steve Engledow <steve at offend dot me dot uk>
 pkgname=please
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line utility that makes it easy to integrate web services into your shell scripts"
 arch=('i686' 'x86_64')
-url=""
+url="https://github.com/stilvoid/please"
 license=('MIT')
 install=
 changelog=
