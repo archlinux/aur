@@ -1,0 +1,23 @@
+pkgbase = bitwig-studio-4
+	pkgdesc = Digital audio workstation for music production, remixing and live performance
+	pkgver = 4.4.10
+	pkgrel = 1
+	url = https://www.bitwig.com/
+	arch = x86_64
+	license = custom
+	depends = xdg-utils
+	depends = xcb-util-wm
+	depends = libbsd
+	optdepends = jack
+	optdepends = alsa-lib
+	optdepends = oss
+	optdepends = ffmpeg: MP3 support
+	provides = bitwig-studio
+	conflicts = bitwig-studio-legacy
+	conflicts = bitwig-8-track
+	conflicts = bitwig-studio
+	options = !strip
+	source = https://downloads.bitwig.com/stable/4.4.10/bitwig-studio-4.4.10.deb
+	sha256sums = 82d4359a15e4d00a8689d664e530b3491e7ca43d4926810b3019842edab26f85
+
+pkgname = bitwig-studio-4
