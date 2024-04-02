@@ -1,6 +1,6 @@
 # Maintainer: Felipe Alfonso Gonzalez <f.alfonso@res-ear.ch>
 pkgname=novanav-cpp
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="NovaNav: Lightweight browser for Linux written in C++, delivering fast, distraction-free browsing experience."
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/felipealfonsog/NovaNav"
 license=('BSD-3-Clause')
 depends=('qt5-base' 'qt5-webengine')
 source=("https://github.com/felipealfonsog/NovaNav/archive/refs/tags/v.${pkgver}.tar.gz")
-sha256sums=('41ae0b3468fc23dfcc1f451cbe8bf6f3f9d6023550b12ad6c3b244c20a098647')
+sha256sums=('f9dd4cc009fba4a152ed824e7854e55bb763e0e222249b1b3781ce75637d9756')
 
 prepare() {
   tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
