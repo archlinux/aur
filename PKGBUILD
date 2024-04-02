@@ -3,52 +3,53 @@
 # Contributor: Michael Gerhaeuser <michael.gerhaeuser@gmail.com>
 # Contributor: Harley Laue <losinggeneration@gmail.com>
 
-pkgname=zerobrane-studio
 _pkgname=ZeroBraneStudio
-pkgver=1.90
-pkgrel=6
-pkgdesc="A lightweight Lua-based IDE for Lua"
-arch=('any')
+pkgname=zerobrane-studio
+pkgver=2.01
+pkgrel=1
+pkgdesc='A lightweight Lua-based IDE for Lua'
+arch=(any)
 url='https://studio.zerobrane.com/'
-license=('MIT')
-_lua_deps=('copas'
-           'filesystem'
-           'lpeg'
-           'sec'
-           'socket')
+license=(MIT)
+_luadeps=(copas
+           filesystem
+           lpeg
+           sec
+           socket)
 depends=('hicolor-icon-theme'
         'lua'
-         "${_lua_deps[@]/#/lua-}"
-        'wxlua>=3.0.0.9')
-makedepends=('cmake')
+         "${_luadeps[@]/#/lua-}"
+        wxlua)
+makedepends=(cmake)
 optdepends=('lua-busted: to debug busted test specs'
             'gsl-shell: te debug GNU Scientific Library shell programs'
             'love: to debug löve programs'
             'lua51: to debug lua51 programs'
             'lua52: to debug lua52 programs')
 backups=("etc/$pkgname/user.lua")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/pkulchenko/$_pkgname/archive/$pkgver.tar.gz"
-        'zbstudio.patch'
-        'user.lua')
-sha256sums=('62307538cb1daa8c298c838f124f7cfff13c29e4c64c4ffea72191a6f1347ff2'
+_archive="$_pkgname-$pkgver"
+source=("https://github.com/pkulchenko/$_pkgname/archive/$pkgver/$_archive.tar.gz"
+        zbstudio.patch
+        user.lua)
+sha256sums=('2570b3fec51414572fde6cfd4c633b904f00d5eb387b7bc3296ffb07730d4e28'
             '44f3a18f169a571bace71c67c398917ea0ff1c163c7d22bec49aed7585bcb9b2'
             '46c752eb6fc3493d7c4123f543379b29dc25a7a0b6d56d155867d6aff6908b59')
 
 prepare() {
-    cd "$_pkgname-$pkgver"
-    patch -p1 < "$srcdir/zbstudio.patch"
+    cd "$_archive"
+    patch -p1 -i ../zbstudio.patch
 }
 
 build() {
-    cd "$_pkgname-$pkgver"
+    cd "$_archive"
     cmake -S build -B build \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release
+        -D CMAKE_INSTALL_PREFIX=/usr \
+        -D CMAKE_BUILD_TYPE=Release
     make -C build
 }
 
 package() {
-    cd "$_pkgname-$pkgver"
+    cd "$_archive"
     make -C build DESTDIR="$pkgdir" install
     install -Dm644 -t "$pkgdir/etc/$pkgname/" "$srcdir/user.lua"
     install -dm644 "$pkgdir/usr/share/zbstudio/cfg"
