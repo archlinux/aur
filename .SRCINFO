@@ -1,0 +1,21 @@
+pkgbase = goinload-bin
+	pkgdesc = A cross-platform desktop app that lets you scrape and bulk download images from a cyberdrop gallery.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://goinload.netlify.app/
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk
+	provides = goinload=0.1.0
+	conflicts = goinload
+	source = goinload-0.1.0::https://github.com/Vincemoc/GoinLoad/releases/download/v0.1.0/GoinLoad-linux
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/Vincemoc/GoinLoad/v0.1.0/LICENSE
+	source = goinload-0.1.0.png::https://raw.githubusercontent.com/Vincemoc/GoinLoad/v0.1.0/site/img/logo.png
+	sha256sums = 519574f99932c58970efebcd99e4ac5a57711a0606758a41484fff94a3d804fa
+	sha256sums = c274cf880ad53fec383ae410e1be7089cdf9b68c403733927d1e6bf2f9e07091
+	sha256sums = 03e9b439a85161e6677fe0a7f4e80d1761963c60562ca64bfc9d8aaa107ed0d2
+
+pkgname = goinload-bin
