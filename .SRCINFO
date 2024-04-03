@@ -1,7 +1,7 @@
 pkgbase = genshin-nativefier
 	pkgdesc = genshin collaborative edition built with nativefier
 	pkgver = 0.0.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://ys.mihoyo.com/cloud/
 	arch = x86_64
 	license = custom

@@ -2,7 +2,7 @@
 
 pkgname=genshin-nativefier
 pkgver=0.0.1
-pkgrel=0
+pkgrel=1
 pkgdesc="genshin collaborative edition built with nativefier"
 arch=('x86_64')
 url="https://ys.mihoyo.com/cloud/"
@@ -15,6 +15,7 @@ sha256sums=('6c8c8e2ddc76db4d326e1b179dfd7c39389fcfe0fba70b5957847a652cf1bdf8')
 build() {
   nativefier \
     --name "genshin" \
+    --disable-dev-tools \
     --verbose \
     --single-instance \
     --tray \
