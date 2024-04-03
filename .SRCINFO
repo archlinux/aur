@@ -5,7 +5,6 @@ pkgbase = python-yapsy
 	url = http://yapsy.sourceforge.net
 	arch = any
 	license = BSD-2-Clause
-	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
