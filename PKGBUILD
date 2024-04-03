@@ -165,7 +165,7 @@ elif [ -n "$_use_llvm_lto" ]  ||  [[ "$_use_lto_suffix" = "n" ]]; then
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.6
-_minor=22
+_minor=24
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -180,7 +180,7 @@ _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
 license=('GPL2')
-options=('!strip')
+options=('!strip' '!debug')
 makedepends=('bc' 'libelf' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'zstd' 'gcc' 'gcc-libs' 'glibc' 'binutils' 'make' 'patch' 'python')
 # LLVM makedepends
 if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_kcfi" ]; then
@@ -194,7 +194,7 @@ if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_k
 fi
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=550.54.14
+_nv_ver=550.67
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 source=(
     "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz"
@@ -745,8 +745,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('23e3e7b56407250f5411bdab95763d0bc4e3a19dfa431d951df7eacabd61a2f4'
-            '01e0933bd6fd3e5fcd667ecb3c692b94d2d57dff79d64512dc2e0badac00446c'
+sha256sums=('3e9ef879dae8319338eb0dc2d2c2025c13257fdeddf6245c000cb5a85a8af6f5'
+            'a53b90c53cad62cad4f29456a845fc452c16c4edd77ceadeddbee278966c08f7'
             '3f3233256725683aa95c29ee423932a5bcc74c0653e09d502240601387c3edec'
             '314d5b436420ff1611e9fbcfe5389446f50846ad556bdf12c37498b14cd04cfc'
             'd43061bf76f06835a7b400b06b3db876d336e871d654854a515899b84e6c9c01')
