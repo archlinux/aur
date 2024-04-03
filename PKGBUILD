@@ -1,3 +1,5 @@
+#Maintainer: VPeti1 (Vasko Peter) 
+
 pkgname=opencw
 pkgver=1.3
 pkgrel=1
