@@ -3,7 +3,7 @@ post_install() {
     echo '#######################################################################################'
     echo '####                                                                               ####'
     echo '#### Make sure your user is in the `input` group by running the following command: ####'
-    echo '####                  sudo usermod -aG input $USER                                 ####'
+    echo '####                  sudo usermod -aG tty,input $USER                             ####'
     echo '####                                                                               ####'
     echo '#######################################################################################'
     echo '#######################################################################################'

@@ -1,7 +1,7 @@
 # Maintainer: Stefan Dimitrijevic <stefanstele95@hotmail.com>
 
 pkgname='linvam-git'
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Linux voice activated macros'
 arch=('x86_64')
@@ -12,7 +12,6 @@ makedepends=(
   'python'
   'nuitka'
   'git'
-  'bash'
 )
 depends=(
   'python'
@@ -24,7 +23,6 @@ depends=(
   'python-vosk-bin'
   'ffmpeg'
   'ydotool'
-  'bash'
 )
 provides=(
   'linvam'
@@ -59,4 +57,7 @@ package_linvam-git() {
   install LinVAM/scripts/linvam -Dm755 "$pkgdir/usr/bin/linvam"
   install LinVAM/scripts/linvamrun -Dm755 "$pkgdir/usr/bin/linvamrun"
   install LinVAM/LICENSE.txt -Dm644 "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  install LinVAM/rules/12-input.rules -Dm644 "$pkgdir/etc/udev/rules.d/12-input.rules"
+  install LinVAM/rules/50-uinput.rules -Dm644 "$pkgdir/etc/udev/rules.d/50-uinput.rules"
+  install LinVAM/rules/80-uinput.rules -Dm644 "$pkgdir/etc/udev/rules.d/80-uinput.rules"
 }
