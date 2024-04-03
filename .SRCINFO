@@ -1,6 +1,6 @@
 pkgbase = tuf-fan-boost-notification-git
 	pkgdesc = Fan Boost Mode Notification Script for ASUS TUF laptops
-	pkgver = 1.0.0
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/MioKira/tuf-fan-boost-notification
 	arch = any

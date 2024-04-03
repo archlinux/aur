@@ -2,7 +2,7 @@
 # PKGBUILD for tuf-fan-boost-notification-git
 
 pkgname=tuf-fan-boost-notification-git
-pkgver=1.0.0
+pkgver=1.0
 pkgrel=1
 pkgdesc="Fan Boost Mode Notification Script for ASUS TUF laptops"
 arch=('any')
@@ -19,28 +19,30 @@ pkgver() {
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/bin"
-  install -Dm755 "$srcdir/$pkgname/FanNotifications.sh" "$pkgdir/usr/bin/fan-boost-notification"
-  
-  # Ask for root permission to copy to /usr/bin
-  sudo cp -r "$srcdir/$pkgname" "/usr/bin/"
-  sudo chmod +x /usr/bin/fan-boost-notification-git/FanNotifications.sh
-	
-   # Create and enable systemd service
+  mkdir -p "$pkgdir/usr/bin/FanNotifications"
+  install -Dm755 "$srcdir/$pkgname/FanNotifications.sh" "$pkgdir/usr/bin/FanNotifications/fan-boost-notification/FanNotifications.sh"
+
+  image_path="$srcdir/$pkgname/fan"  
+
+
+  # Copy image without sudo
+  install -Dm644 "$image_path" "$pkgdir/usr/bin/FanNotifications/fan-boost-notification/fan"
+
+  # Create and enable systemd service (potentially requires adjustment for your DE)
   echo "
   ######################################################################################################
 #                                                                                               	  #
-#  To auto-run the script in Hyprland, add:                                                       	  #
+#  To auto-run the script in Hyprland, add:                                                       	#
 #                                                                                               	  #
-#  ' exec-once = /usr/bin/fan-boost-notification-git/FanNotifications.sh '                       	  #
+#  ' exec-once = /usr/bin/tuf-fan-boost-notification-git/FanNotifications.sh'                       #
 #                                                                                               	  #
 #  If you're using another DE, check:                                                            	  #
 #  https://github.com/MioKira/tuf-fan-boost-notification#autostart-with-system                   	  #
 #                                                                                               	  #
 #  To start the script, run:                                                                     	  #
-#  /usr/bin/fan-boost-notification-git/FanNotifications.sh                                                #
+#  /usr/bin/tuf-fan-boost-notification-git/FanNotifications.sh                                      #
 #                                                                                               	  #
 ######################################################################################################
 "
-}
 
+}
