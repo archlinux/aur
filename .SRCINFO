@@ -1,6 +1,6 @@
 pkgbase = web-os-dev-manager-bin
 	pkgdesc = Device/DevMode Manager for webOS TV
-	pkgver = 1.13.0
+	pkgver = 1.13.3
 	pkgrel = 1
 	url = https://github.com/webosbrew/dev-manager-desktop
 	arch = aarch64
@@ -9,11 +9,11 @@ pkgbase = web-os-dev-manager-bin
 	depends = gtk3
 	depends = webkit2gtk
 	depends = libsoup
-	provides = web-os-dev-manager=1.13.0
+	provides = web-os-dev-manager=1.13.3
 	conflicts = web-os-dev-manager
-	source_aarch64 = web-os-dev-manager-1.13.0-aarch64.deb::https://github.com/webosbrew/dev-manager-desktop/releases/download/v1.13.0/web-os-dev-manager_1.13.0_arm64.deb
-	sha256sums_aarch64 = e0663dc5da1452ea3e79234b6734715bdf8554e78e930f2611474495d8eaef81
-	source_x86_64 = web-os-dev-manager-1.13.0-x86_64.deb::https://github.com/webosbrew/dev-manager-desktop/releases/download/v1.13.0/web-os-dev-manager_1.13.0_amd64.deb
-	sha256sums_x86_64 = 6b7336616e6dd0e00641f80ea3dcfb505c12b8a066275aff3ed3858222bb4be5
+	source_aarch64 = web-os-dev-manager-1.13.3-aarch64.deb::https://github.com/webosbrew/dev-manager-desktop/releases/download/v1.13.3/web-os-dev-manager_1.13.3_arm64.deb
+	sha256sums_aarch64 = 72239979789f00f798682a8ba57ca6ec4ab06b82c068db291912bf2fa4b680de
+	source_x86_64 = web-os-dev-manager-1.13.3-x86_64.deb::https://github.com/webosbrew/dev-manager-desktop/releases/download/v1.13.3/web-os-dev-manager_1.13.3_amd64.deb
+	sha256sums_x86_64 = 209464c327cff4bacdddbcaccd1c67ed82fd331f89a8f514700e849937c46888
 
 pkgname = web-os-dev-manager-bin
