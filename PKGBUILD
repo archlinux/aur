@@ -1,10 +1,10 @@
-# Maintainer: Askhat Bakarov <sirocco  ngs  ru>
+# Maintainer: Askhat Bakarov < >
 
 # on the base of jabref-latest
 
 pkgname=jabref-bin
 _pkgname=jabref
-pkgver=5.12
+pkgver=5.13
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java; bin version which bundles the Java runtime"
 arch=('x86_64')
@@ -24,8 +24,8 @@ source=(https://github.com/JabRef/jabref/releases/download/v${pkgver}/JabRef-${p
         jabref.sh
         JabRef.desktop
         JabRef.svg)
-sha256sums=('82bfcf52e96086fb5567424d5d7c8b384c03d5a9b8de37a37265a6233fe58465'
-            '5420fc1b814ef6776f2dfe845676b9c41e36118413e2a2d30fe0694d7a67743e'
+sha256sums=('a69da5fd09f1eab14fb3bf922ccebf5b6c1b157145dd7489fd8adedee6cea2aa'
+            '68664af2717c2be847dcc219ff34e9a86721e5441f60a6b11472abb50c1fdeff'
             '857807c9240181f5d7e783898e94e523beaba8b6b55617931141cbffba41c70d'
             '81a9ce53092525d1ba964435a0558654441a85e818581453a50df1045017c131'
             '84408ddc8c6e41e4367f3b6cd171909fb1cf7ac808495f3a8033b64a2ff4c40b')
