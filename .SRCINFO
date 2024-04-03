@@ -1,17 +1,19 @@
 pkgbase = qhotkey
 	pkgdesc = Library for creating global shortcut/hotkey for desktop Qt6 applications
 	pkgver = 1.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Skycoder42/QHotkey/
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = cmake
 	makedepends = libx11
 	makedepends = qt5-base
 	makedepends = qt5-x11extras
 	makedepends = qt6-base
 	source = https://github.com/Skycoder42/QHotkey/archive/1.5.0/qhotkey-1.5.0.tar.gz
+	source = 010-qhotkey-fix-segfault-under-wayland.patch::https://github.com/Skycoder42/QHotkey/pull/96.patch
 	sha256sums = e8ca5ba77ad04662c18dce8de4b37b373bcb693a7e062fca3d832bf63473b143
+	sha256sums = acac579950e7a160f396387f9fdcb8b7964a1e1ae7a38f13c636e2121536b15c
 
 pkgname = qhotkey-qt6
 	depends = libx11
