@@ -1,4 +1,4 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 # Contributor: Yassine Oudjana <y.oudjana@protonmail.com>
 # Contributor: Philip Goto <philip.goto@gmail.com>
 # Contributor: GI Jack <GI_Jack@hackermail.com>

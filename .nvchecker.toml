@@ -1,4 +1,4 @@
-[calls]
+[gnome-calls]
 source = "git"
 git = "https://gitlab.gnome.org/GNOME/calls.git"
 prefix = "v"
