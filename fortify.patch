@@ -1,0 +1,27 @@
+From 1e8ae9809d7c8f6be0c5c87e539853221aa50290 Mon Sep 17 00:00:00 2001
+From: Keeyou <keeyou-cn@outlook.com>
+Date: Wed, 3 Apr 2024 13:07:45 +0800
+Subject: [PATCH] fortify: use level 3
+
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3fdaac77..6410c328 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2101,8 +2101,8 @@ if (NOT MSVC)
+   ## fortify source code. Also, fortified build may fail when optimizations are
+   ## disabled, so only do that for Release build.
+   if (NOT WIN32 AND NOT APPLE)
+-    set(CMAKE_C_FLAGS_RELEASE   "${CMAKE_C_FLAGS_RELEASE} -D_FORTIFY_SOURCE=2")
+-    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -D_FORTIFY_SOURCE=2")
++    set(CMAKE_C_FLAGS_RELEASE   "${CMAKE_C_FLAGS_RELEASE} -D_FORTIFY_SOURCE=3")
++    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -D_FORTIFY_SOURCE=3")
+     set(CMAKE_C_FLAGS_RELWITHDEBINFO   "${CMAKE_C_FLAGS_RELWITHDEBINFO} -D_FORTIFY_SOURCE=2")
+     set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} -D_FORTIFY_SOURCE=2")
+   endif()
+-- 
+2.44.0
+

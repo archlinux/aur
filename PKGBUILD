@@ -3,7 +3,7 @@
 
 pkgname=yass-proxy-cli
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 _pkgver=1.8.1
 _pkgrel=1
 pkgdesc="lightweight http/socks proxy commandline"
@@ -15,12 +15,17 @@ makedepends=(git ninja perl pkg-config cmake gettext curl go clang lld llvm)
 checkdepends=(curl)
 provides=(yass-proxy-cli)
 conflicts=(yass-proxy-cli-git)
-source=("https://github.com/Chilledheart/yass/releases/download/${_pkgver}/yass-${_pkgver}.tar.gz")
-sha256sums=('34e8c0df5be5155504cc09466dc8becd0cedd278675d5add8c4e403586c63935')
+source=("https://github.com/Chilledheart/yass/releases/download/${_pkgver}/yass-${_pkgver}.tar.bz2"
+        "fortify.patch"
+       )
+sha256sums=('b6be8f8b6351505df64f1ed1ad6d25c28abeb67ea87d4727c92cc0369d992c1f'
+            '790762651ae1cbbf739fa68ba0c1076d4dc885212a83bd2e914e2217d0e10117'
+       )
 
 prepare() {
   SRC_DIR="${srcdir}/yass-${_pkgver}"
   pushd $SRC_DIR
+  patch --forward --strip=1 --input=../fortify.patch
   cd tools
   go build
   cd ..
@@ -32,6 +37,7 @@ build(){
   pushd $SRC_DIR
   export CC=clang
   export CXX=clang++
+  rm -rf build-linux-amd64
   mkdir build-linux-amd64
   cd build-linux-amd64
   cmake .. -DCLI=ON -DCMAKE_BUILD_TYPE=Release -G Ninja -DBUILD_TESTS=on \
