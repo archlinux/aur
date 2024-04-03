@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-workspaces-git
-pkgver=r161.7e81c9c
+pkgver=r175.7c8fddc
 pkgrel=1
 pkgdesc="WIP COSMIC Workspaces"
 arch=('x86_64' 'aarch64')
@@ -31,7 +31,6 @@ prepare() {
   cd cosmic-workspaces-epoch
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
   make vendor
 }
 
