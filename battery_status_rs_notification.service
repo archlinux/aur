@@ -1,0 +1,11 @@
+[Unit]
+Description=Battery Status Notification Daemon
+
+[Service]
+Type=notify
+ExecStart=/bin/battery_status_rs_notification
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=default.target
