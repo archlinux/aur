@@ -2,7 +2,7 @@
 # -*- mode: sh -*-
 
 pkgname='timestampit'
-pkgver=0.3.4
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Prefix each input line with a date/time stamp (formerly timestamp/stampit)'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -22,8 +22,8 @@ build() {
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
   #
   # ld(1) says: “Supported for i386 and x86-64.”
-  case "${CARCH:-unknown}" in
-    'x86_64' | 'i386' )
+  case "X${CARCH:-unknown}" in
+    'Xx86_64' | 'Xi386' )
       export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
     ;;
     * ) : pass ;;
@@ -39,10 +39,10 @@ package() {
 }
 
 sha256sums=(
-  '03b632c4e59d744949ab0876d2bfa7ef77e3194f220059b8da31bb59b2f35a27'
+  '0fe069262785d0a3ee997561cf7bd5b837d4c42344232e5bffac0f78cacf4a9f'
 )
 b2sums=(
-  'ba7656f9a4040fcdbae8e013c49e21aea36311b0fef238d5093e7224f0b796414c322260a048b77da66a0381bab0294de138f28e01e59b53b0789ddfab4ce940'
+  '686acef47d08667c80271f5c9dfd1793b42560ccf1b3cf73e1bfd1214702cb05311c0a4fd0401b00b8e547f02da7520368d9a13a32749b58aab42047541da94b'
 )
 
 # eof
