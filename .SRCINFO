@@ -1,0 +1,15 @@
+pkgbase = xcwd
+	pkgdesc = simple tool that prints the current working directory of the currently focused window
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/schischi/xcwd
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = libx11
+	provides = xcwd
+	conflicts = xcwd-git
+	source = xcwd-1.0.tar.gz::https://github.com/schischi/xcwd/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 2f43935ccec750abb782d21363b9e999538d901d4c451ab204097c78acd2316f
+
+pkgname = xcwd
