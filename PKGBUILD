@@ -1,8 +1,8 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=sentry-native
-pkgver=0.7.1
-_commit=9bc0fc75e34cb43e7019d76b0decb6c0cddbfd34
+pkgver=0.7.2
+_commit=0f1d664759cba187a846a562f9d55f3c62dffaa3
 pkgrel=1
 pkgdesc="Sentry SDK for C, C++ and native applications"
 arch=(x86_64)
@@ -33,7 +33,7 @@ source=(
   "git+https://chromium.googlesource.com/chromium/src/third_party/zlib.git"
 )
 sha256sums=(
-  '704370295758194498b733ee758d16c647d8346be57ac52302ad7919e3297ef7'
+  '48003098c6dc2e4737315a83961b2da18737c196c39eaa222cec683ba3d82065'
   'SKIP'
   'SKIP'
   'SKIP'
