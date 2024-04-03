@@ -1,24 +1,21 @@
 # Maintainer: atomicfs
 
 pkgname=firmware-action
-pkgver=0.164.934a72f
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Build system for firmware images for several open source firmware solutions"
 url="https://github.com/9elements/firmware-action"
 arch=(x86_64)
 license=(MIT)
-makedepends=('go' 'upx')
-depends=('docker')
-#source=("${url}/archive/v${pkgver}.tar.gz")
-source=("${pkgname}::git+${url}")
-#sha256sums=('09738830ce17ac450bce3007def5e79da58fc19b61c37cbc83a64a2aa4b02201')
-sha256sums=('SKIP')
-
-pkgver() {
-	cd "${srcdir}/${pkgname}"
-	version=$(printf "r0.%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)")
-	echo "${version:1}"
-}
+makedepends=(
+	'go'
+	'upx'
+)
+depends=(
+	'docker'
+)
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('668527a4122816cdcc04fef887f1644d89527df62ed73a54366adf46c3dd341d')
 
 build() {
 	cd "${srcdir}/${pkgname}/action"
