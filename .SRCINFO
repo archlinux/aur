@@ -1,0 +1,15 @@
+pkgbase = python-cached-property
+	pkgdesc = A decorator for caching properties in classes
+	pkgver = 1.5.2
+	pkgrel = 7
+	url = https://github.com/pydanny/cached-property
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-freezegun
+	makedepends = python-setuptools
+	depends = python
+	source = python-cached-property-1.5.2.tar.gz::https://github.com/pydanny/cached-property/archive/1.5.2.tar.gz
+	sha512sums = 71ce8376c5d90c8e97dc91af7a9329d3645a311c7cc41cf052074989430de68b66efc17c62c6780982f500b3d09a12cb24613df7b4f1bff95cf68f6442f50d0d
+
+pkgname = python-cached-property
