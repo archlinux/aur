@@ -18,6 +18,7 @@ _cachy_config=${_cachy_config-y}
 # 'rt' - select EEVDF, but includes a series of realtime patches
 # 'rt-bore' - select Burst-Oriented Response Enhancer, but includes a series of realtime patches
 # 'sched-ext' - select 'sched-ext' Scheduler, based on EEVDF
+# 'echo' - select 'ECHO Scheduler'
 _cpusched=${_cpusched-rt}
 
 ### Tweak kernel options prior to a build via nconfig
@@ -71,7 +72,7 @@ _per_gov=${_per_gov-}
 ### Enable TCP_CONG_BBR3
 _tcp_bbr3=${_tcp_bbr3-y}
 
-### Running with a 1000HZ, 750Hz, 600 Hz, 500Hz, 300Hz, 250Hz and 100Hz tick rate
+### Running with a 1000HZ, 750Hz, 625Hz, 600 Hz, 500Hz, 300Hz, 250Hz and 100Hz tick rate
 _HZ_ticks=${_HZ_ticks-1000}
 
 ## Choose between perodic, idle or full
@@ -158,7 +159,7 @@ elif [ -n "$_use_llvm_lto" ]  ||  [[ "$_use_lto_suffix" = "n" ]]; then
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.8
-_minor=2
+_minor=3
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -168,7 +169,7 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux RT + Cachy Sauce Kernel by CachyOS with other patches and improvements'
-pkgrel=3
+pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -218,10 +219,13 @@ fi
 
 ## List of CachyOS schedulers
 case "$_cpusched" in
-    cachyos|sched-ext) ## SCHED-EXT
-        source+=("${_patchsource}/sched/0001-sched-ext.patch");;
+    cachyos|sched-ext) ## SCHED-EXT + BORE Scheduler
+        source+=("${_patchsource}/sched/0001-sched-ext.patch"
+                 "${_patchsource}/sched/0001-bore-cachy-ext.patch");;
     bore) ## BORE Scheduler
         source+=("${_patchsource}/sched/0001-bore-cachy.patch");;
+    echo) ## ECHO Scheduler
+        source+=("${_patchsource}/sched/0001-echo-cachy.patch");;
     rt) ## EEVDF with RT patches
         source+=("${_patchsource}/misc/0001-rt.patch"
                  linux-cachyos-rt.install);;
@@ -232,6 +236,8 @@ case "$_cpusched" in
     hardened) ## Hardened Patches with BORE Scheduler
         source+=("${_patchsource}/sched/0001-bore-cachy.patch"
                  "${_patchsource}/misc/0001-hardened.patch");;
+    sched-ext) ## SCHED-EXT
+        source+=("${_patchsource}/sched/0001-sched-ext.patch");;
 esac
 
 export KBUILD_BUILD_HOST=cachyos
@@ -285,11 +291,13 @@ prepare() {
     [ -z "$_cpusched" ] && _die "The value is empty. Choose the correct one again."
 
     case "$_cpusched" in
-        cachyos|sched-ext) scripts/config -e SCHED_CLASS_EXT;;
+        cachyos) scripts/config -e SCHED_CLASS_EXT -e SCHED_BORE;;
         bore|hardened) scripts/config -e SCHED_BORE;;
+        echo) scripts/config -e ECHO_SCHED;;
         eevdf) ;;
         rt) scripts/config -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -e PREEMPT_RT -d PREEMPT_DYNAMIC -d PREEMPT_BUILD;;
         rt-bore) scripts/config -e SCHED_BORE -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -e PREEMPT_RT -d PREEMPT_DYNAMIC -d PREEMPT_BUILD;;
+        sched-ext) scripts/config -e SCHED_CLASS_EXT;;
         *) _die "The value $_cpusched is invalid. Choose the correct one again.";;
     esac
 
@@ -318,7 +326,7 @@ prepare() {
     [ -z $_HZ_ticks ] && _die "The value is empty. Choose the correct one again."
 
     case "$_HZ_ticks" in
-        100|250|500|600|750|1000)
+        100|250|500|600|625|750|1000)
             scripts/config -d HZ_300 -e "HZ_${_HZ_ticks}" --set-val HZ "${_HZ_ticks}";;
         300)
             scripts/config -e HZ_300 --set-val HZ 300;;
@@ -711,9 +719,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('f057c2512040600fbf0df67cf9c7200aee0c06b82b3cf749be8c5685844d2662a585ce17685c7af880c0d9dbbbd81302e5a1fa41c3dbd39869123121a0e82dc2'
-        '8178cdd3224ca5b7ef9e971fdb403b57d4f4e44d3b9de31cf118bc1b195cf5d376b424cd5a5013c10182116b9ed18d09b893633ccf2486454d60bcced32149a0'
+b2sums=('d03f8938da5a3322447fa639718590f5630cd391de45952bf2ca697d95210cc47d4ff27f26b7ebe5ce2328ea4f4df040ed0f335a3607fa8c05feb17a8c7d545c'
+        'aed56a9f01bebda81eb39f8a2160538581614d8163cdeb6980f78aab489f9c990349c93e9c82cf5ca93f407bdd8853078fc5dadfddb9c733518e6928ca612212'
         '43ef7a347878592740d9eb23b40a56083fa747f7700fa1e2c6d039d660c0b876d99bf1a3160e15d041fb13d45906cdb5defef034d4d0ae429911864239c94d8d'
-        '2a1405c927f5f21b0f88ffa43dd5137750929ad348d9fa5ee01e8e3d20bf98808be6cbc8a5b0c355245de4347f6db02af4d116262a3a672c790db431ee1cd243'
-        '8de7ad941b9dfec1e2c7c7c2f1f91bc43ead15a40133b56137c07cdfafb799f842eda47b668b76b7ee523d9b7d0bc7c025c8399fdd9d4323f132ad06ac6ca018'
+        '0c400c649ab765e65a05bc3fa51e7d1bc28f702ffeefa1a4140898d20a992fa57bd1b3ff43d33c032042d1f0321455ab8b6f83afb2beda1ac52c9ba6a4af9e11'
+        '34a2ed3bfe686620dad8002e443190d1e7198d607f66d33fdb7a921bc5ba2d077d7cf0775d8a9ec8fc69de69ec374d070a0bb3af968b4aeef6f1b16694a1718d'
         'e395035f1b0b944beca434c1e24264342088365de267cbb83b111f02a029fc78145aec73c14e458bd3ad648c8bb2c2ef30c2ff091b1dad2f9b754ecbeb45e41b')
