@@ -1,0 +1,40 @@
+--- linux-6.8.2/sound/pci/hda/cs35l41_hda_property.old.c	2024-04-03 15:32:51.000000000 +0200
++++ linux-6.8.2/sound/pci/hda/cs35l41_hda_property.c	2024-04-03 20:27:58.179588400 +0200
+@@ -83,6 +83,7 @@
+ 	{ "104317F3", 2, INTERNAL, { CS35L41_LEFT, CS35L41_RIGHT, 0, 0 }, 0, 1, -1, 1000, 4500, 24 },
+ 	{ "10431863", 2, INTERNAL, { CS35L41_LEFT, CS35L41_RIGHT, 0, 0 }, 1, 2, 0, 1000, 4500, 24 },
+ 	{ "104318D3", 2, EXTERNAL, { CS35L41_LEFT, CS35L41_RIGHT, 0, 0 }, 0, 1, -1, 0, 0, 0 },
++	{ "10431A63", 2, EXTERNAL, { CS35L41_LEFT, CS35L41_RIGHT, 0, 0 }, -1, 2, -1, 0, 0, 0 },
+ 	{ "10431A83", 2, INTERNAL, { CS35L41_LEFT, CS35L41_RIGHT, 0, 0 }, 0, 1, -1, 1000, 4500, 24 },
+ 	{ "10431C9F", 2, INTERNAL, { CS35L41_LEFT, CS35L41_RIGHT, 0, 0 }, 1, 2, 0, 1000, 4500, 24 },
+ 	{ "10431CAF", 2, INTERNAL, { CS35L41_LEFT, CS35L41_RIGHT, 0, 0 }, 1, 2, 0, 1000, 4500, 24 },
+@@ -229,7 +230,7 @@
+ 
+ 	dsd_found = acpi_dev_has_props(cs35l41->dacpi);
+ 
+-	if (!dsd_found) {
++	// if (!dsd_found) {
+ 		ret = cs35l41_add_gpios(cs35l41, physdev, cfg->reset_gpio_index,
+ 						 cfg->spkid_gpio_index, cfg->cs_gpio_index,
+ 						 cfg->num_amps);
+@@ -237,10 +238,10 @@
+ 			dev_err(cs35l41->dev, "Error adding GPIO mapping: %d\n", ret);
+ 			return ret;
+ 		}
+-	} else if (cfg->reset_gpio_index >= 0 || cfg->spkid_gpio_index >= 0) {
++	/*} else if (cfg->reset_gpio_index >= 0 || cfg->spkid_gpio_index >= 0) {
+ 		dev_warn(cs35l41->dev, "Cannot add Reset/Speaker ID/SPI CS GPIO Mapping, "
+ 			 "_DSD already exists.\n");
+-	}
++	}*/
+ 
+ 	if (cs35l41->control_bus == SPI) {
+ 		cs35l41->index = id;
+@@ -420,6 +421,7 @@
+ 	{ "CSC3551", "104317F3", generic_dsd_config },
+ 	{ "CSC3551", "10431863", generic_dsd_config },
+ 	{ "CSC3551", "104318D3", generic_dsd_config },
++	{ "CSC3551", "10431A63", generic_dsd_config },
+ 	{ "CSC3551", "10431A83", generic_dsd_config },
+ 	{ "CSC3551", "10431C9F", generic_dsd_config },
+ 	{ "CSC3551", "10431CAF", generic_dsd_config },
