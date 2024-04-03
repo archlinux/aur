@@ -3,8 +3,8 @@
 
 _pkgname=fluffychat
 pkgname=fluffychat-web
-pkgver=1.8.0
-pkgrel=2
+pkgver=1.19.0
+pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('any')
 url="https://fluffychat.im/"
@@ -15,34 +15,40 @@ makedepends=(
     'ninja'
     'cmake'
     'unzip'
+    'yq'
+    'flutter'
 )
 optdepends=('pantalaimon: used for E2E encryption')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=(
-    "fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v${pkgver}/fluffychat-v${pkgver}.tar.gz"
-    "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.3.10-stable.tar.xz"
+    "fluffychat-v${pkgver}.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('38dc5e7536de1981746d3c30625959ac8297cf618be523a1725087fe880c429c'
-            '4ab54d3f93ba6e0308b3176ab81843c9d3d44b126e27204aa96a339601d45aff')
+sha256sums=('0fb007f2ed56ee46115606dae5eb2bb9eac238c344caae8d478eb80d71e6295f')
 backup=(
     "etc/webapps/${_pkgname}/config.json"
 )
 
 prepare() {
-  export PATH="${srcdir}/flutter/bin":$PATH
-  cd "fluffychat-v${pkgver}"
-  ./scripts/prepare-web.sh
+  cd "fluffychat-${pkgver}"
+  rm -rf assets/js/package
+
+  OLM_VERSION=$(cat pubspec.yaml | yq -r .dependencies.flutter_olm)
+  DOWNLOAD_PATH="https://github.com/famedly/olm/releases/download/v$OLM_VERSION/olm.zip"
+
+  cd assets/js/ && curl -L $DOWNLOAD_PATH > olm.zip && cd ../../
+  cd assets/js/ && unzip olm.zip && cd ../../
+  cd assets/js/ && rm olm.zip && cd ../../
+  cd assets/js/ && mv javascript package && cd ../../
 }
 
 build() {
-  export PATH="${srcdir}/flutter/bin":$PATH
-  cd "fluffychat-v${pkgver}"
-  ./scripts/build-web.sh
+  cd "fluffychat-${pkgver}"
+  flutter build web --release
 }
 
 package() {  
-  cd "fluffychat-v${pkgver}"
+  cd "fluffychat-${pkgver}"
 
   install -dm755 ${pkgdir}/usr/share/webapps
   cp -r build/web ${pkgdir}/usr/share/webapps/${_pkgname}
