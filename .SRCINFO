@@ -1,0 +1,17 @@
+pkgbase = lexicanter-bin
+	pkgdesc = A lexicon management tool for constructed languages.It was developed and will occasionally be updated by Ethan Ray (known online as Cthethan or Saturnine).
+	pkgver = 2.1.16
+	pkgrel = 1
+	url = https://github.com/Saturnine-Softworks/Lexicanter
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = fuse2
+	depends = electron22
+	provides = lexicanter=2.1.16
+	conflicts = lexicanter
+	source = lexicanter-2.1.16.AppImage::https://github.com/Saturnine-Softworks/Lexicanter/releases/download/2.1.16/Lexicanter-2.1.16.AppImage
+	source = lexicanter.sh
+	sha256sums = bc044534a7ccf0ff2ea07fa5d6ee7f5bcd95fb09c7cc25c5b37149342ee69b65
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+
+pkgname = lexicanter-bin
