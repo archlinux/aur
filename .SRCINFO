@@ -1,0 +1,15 @@
+pkgbase = gmobile
+	pkgdesc = Functions useful in mobile related, glib based projects
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/Phosh/gmobile
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = meson
+	depends = glib2
+	depends = json-glib
+	source = git+https://gitlab.gnome.org/World/Phosh/gmobile.git
+	md5sums = SKIP
+
+pkgname = gmobile
