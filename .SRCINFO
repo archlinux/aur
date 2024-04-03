@@ -1,7 +1,7 @@
 pkgbase = xmrig-mo-cuda
 	pkgdesc = NVIDIA CUDA plugin for XMRig miner, MoneroOcean fork.
-	pkgver = 6.17.0mo1
-	pkgrel = 2
+	pkgver = 6.21.1mo1
+	pkgrel = 1
 	url = https://github.com/MoneroOcean/xmrig-cuda
 	arch = x86_64
 	license = GPL
@@ -10,13 +10,9 @@ pkgbase = xmrig-mo-cuda
 	depends = xmrig-mo>=6.17.0
 	depends = cuda>=11.8
 	optdepends = monero: wallet
-	source = https://github.com/MoneroOcean/xmrig-cuda/archive/v6.17.0-mo1.tar.gz
-	source = fix-compile.patch::https://aur.archlinux.org/cgit/aur.git/plain/fix-compile.patch?h=xmrig-cuda
-	source = fix-CUDA-12.0.patch::https://aur.archlinux.org/cgit/aur.git/plain/fix-CUDA-12.0.patch?h=xmrig-cuda
+	source = https://github.com/MoneroOcean/xmrig-cuda/archive/v6.21.1-mo1.tar.gz
 	source = fix-cryptonight.patch
-	sha256sums = 65ad593e689a95af50ae385fbc7150cd5e69bd968e0098546a90ee447911d7c9
-	sha256sums = d702dc516dc5b57c814d9ddeffb6df72b699891b2c0c50eb690f5a9dd1a3a77f
-	sha256sums = 0e92587fc966a550f6aab50aeec7c9c801ff77c22dd7f2845cf3d44e794375b2
+	sha256sums = c7094401010146565650e4a76c3b89aeee47f73cf918ec4dedf5598b0c7396ab
 	sha256sums = 668a954c1c127652cf693c96d05b928bd0e3c1126afcff26e1168d59b19543d2
 
 pkgname = xmrig-mo-cuda
