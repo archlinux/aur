@@ -3,7 +3,7 @@
 pkgname=fluffychat-bin
 _pkgname=fluffychat
 pkgver=1.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open. Nonprofit. Cute. Easy to use (matrix) messenger. Secure and decentralized."
 arch=('x86_64') # 'aarch64'
 url="https://fluffychat.im/"
@@ -42,10 +42,11 @@ package() {
 Type=Application
 Version=${pkgver}
 Name=FluffyChat
-Comment=Open. Nonprofit. Cute. Easy to use (matrix) messenger. Secure and decentralized.
+Comment=${pkgdesc}
 Exec=/opt/${_pkgname}/${_pkgname}
 Icon=${_pkgname}
 Terminal=false
+Categories=Network;InstantMessaging;Chat;MatrixClient
 EOF
 
 }
