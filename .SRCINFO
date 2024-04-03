@@ -1,6 +1,6 @@
 pkgbase = xfce4-settings-devel
 	pkgdesc = Settings manager for xfce
-	pkgver = 4.19.1
+	pkgver = 4.19.2
 	pkgrel = 1
 	url = https://docs.xfce.org/xfce/xfce4-settings/start
 	arch = i686
@@ -9,23 +9,25 @@ pkgbase = xfce4-settings-devel
 	arch = aarch64
 	groups = xfce4-devel
 	license = GPL2
+	makedepends = xf86-input-libinput
 	depends = exo
-	depends = libxfce4util
 	depends = garcon
-	depends = libxfce4ui
+	depends = libxfce4ui>=4.19.5
 	depends = xfconf
 	depends = libnotify
+	depends = libcanberra
 	depends = colord
 	depends = libxklavier
 	depends = adwaita-icon-theme
 	depends = gnome-themes-extra
-	depends = python
-	optdepends = libcanberra: for sound control
-	provides = xfce4-settings=4.19.1
+	depends = wayland
+	depends = gtk-layer-shell
+	optdepends = python: xfce4-compose-mail -- "mailto:" URI handling
+	provides = xfce4-settings=4.19.2
 	conflicts = xfce4-settings
-	source = https://archive.xfce.org/src/xfce/xfce4-settings/4.19/xfce4-settings-4.19.1.tar.bz2
+	source = https://archive.xfce.org/src/xfce/xfce4-settings/4.19/xfce4-settings-4.19.2.tar.bz2
 	source = enable-antialias-by-default.patch
-	sha256sums = 4e76008fdfeacc32c536d17c63d067889b1fc1f287f8dbb0bd4dd6710fd9aace
+	sha256sums = 23d44e50419263499096184b5931915b416328d6eca95dd99da3be2ba56946ad
 	sha256sums = 25176aa463740d344c194d94771b7bfd9550809fd2ecd0e86acceb925afcf1ac
 
 pkgname = xfce4-settings-devel

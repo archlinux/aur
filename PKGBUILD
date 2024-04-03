@@ -2,21 +2,24 @@
 
 _pkgname=xfce4-settings
 pkgname=${_pkgname}-devel
-pkgver=4.19.1
+pkgver=4.19.2
 pkgrel=1
 pkgdesc="Settings manager for xfce"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://docs.xfce.org/xfce/xfce4-settings/start"
 license=('GPL2')
 groups=('xfce4-devel')
-depends=('exo' 'libxfce4util' 'garcon' 'libxfce4ui' 'xfconf' 'libnotify' 'colord'
-         'libxklavier' 'adwaita-icon-theme' 'gnome-themes-extra' 'python')
-optdepends=('libcanberra: for sound control')
+depends=('exo' 'garcon' 'libxfce4ui>=4.19.5' 'xfconf' 'libnotify' 'libcanberra'
+         'colord' 'libxklavier' 'adwaita-icon-theme' 'gnome-themes-extra'
+         'wayland' 'gtk-layer-shell')
+makedepends=('xf86-input-libinput')
+optdepends=('python: xfce4-compose-mail -- "mailto:" URI handling')
+
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2"
         'enable-antialias-by-default.patch')
-sha256sums=('4e76008fdfeacc32c536d17c63d067889b1fc1f287f8dbb0bd4dd6710fd9aace'
+sha256sums=('23d44e50419263499096184b5931915b416328d6eca95dd99da3be2ba56946ad'
             '25176aa463740d344c194d94771b7bfd9550809fd2ecd0e86acceb925afcf1ac')
 
 prepare() {
