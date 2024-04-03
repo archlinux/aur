@@ -1,6 +1,6 @@
 # Maintainer: Eldred Habert <arch@eldred.fr>
 pkgname=hugetracker
-pkgver=1.0.5
+pkgver=1.0.7
 pkgrel=1
 pkgdesc='The music composition suite for the Nintendo Game Boy'
 arch=('x86_64')
@@ -15,13 +15,13 @@ makedepends=('fpc' 'git' 'lazarus')
 depends=(fontconfig gdk-pixbuf2 glib2 gtk2 pango 'rgbds>=0.5.0' sdl2
 	 libatk-1.0.so libcairo.so)
 optdepends=('ffmpeg: "Export song" functionality')
-source=("hUGETracker.tar.gz::https://github.com/SuperDisk/hUGETracker/archive/refs/tags/v${pkgver}.tar.gz"
+source=("hUGETracker-${pkgver}.tar.gz::https://github.com/SuperDisk/hUGETracker/archive/refs/tags/v${pkgver}.tar.gz"
         'Pascal-SDL-2-Headers.tar.gz::https://github.com/ev1313/Pascal-SDL-2-Headers/archive/088eeb3af8b680898d9fcaff390eddce9744ee51.tar.gz'
         'bgrabitmap.tar.gz::https://github.com/bgrabitmap/bgrabitmap/archive/2814b069d55f726b9f3b4774d85d00dd72be9c05.tar.gz'
         'hUGEDriver.tar.gz::https://github.com/SuperDisk/hUGEDriver/archive/df5a07ba1d684bf25b1de949ac0d9521a8937c32.tar.gz'
         'rackctls.tar.gz::https://github.com/olivluca/rackctls/archive/15c50fb5dd398875a274b3aa2c36aa769d145a11.tar.gz'
         'default_runtime_dir.patch')
-sha256sums=('19524290997dc8c04b2b5e42e20b7acf5430b6a8ac42366b9c12c8bc9e8f36c9'
+sha256sums=('af0e2213f1035b642e515edb04c59fc88ae731b66076427f710ffe9de3f0c6d7'
             '70a6b029365b9cb3c52628ea1419c5f2e379a2d960510560e6e730c8c5f907dc'
             'd9daea6027be28f6b2c30ee0fdd1c7fca8cc715d1bbb972403e844a42fa0f07c'
             'a2f19f1ec957c5ba17f981c277687098cc874002874533a0b2c461a5a9c6c819'
@@ -42,7 +42,7 @@ prepare() {
 	cd "$srcdir/hUGETracker-$pkgver"
 
 	for _archive in ../*.tar.gz; do
-		[[ "$_archive" != ../hUGETracker.tar.gz ]] || continue
+		[[ "$_archive" != ../hUGETracker-*.tar.gz ]] || continue
 
 		local _module=$(basename "${_archive%.tar.gz}")
 		local _submodule=$(sed -E "/$_module/ ! d; s/^\s*path\s*=\s*(.+)$/\1/; t; d" .gitmodules)
