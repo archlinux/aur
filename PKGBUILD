@@ -3,7 +3,6 @@
 
 pkgname=wander
 pkgver=1.1.0
-_commit=02551ed16346ef3dcabb06702b61c3e2abf8020d  # tags/v0.14.1
 pkgrel=1
 pkgdesc="An efficient terminal application/TUI for your HashiCorp Nomad cluster."
 arch=('i686' 'x86_64' 'aarch64')
@@ -12,8 +11,8 @@ license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
 provides=('wander')
-source=("${pkgname}::git+${url}.git#commit=${_commit}")
-sha256sums=('SKIP')
+source=("${pkgname}::git+${url}.git#tag=v1.1.0")
+sha256sums=('9d9b308e07f1d4ea9aa11ba22eaf0d489ff5d85e4f77993ac8457daf0a043f47')
 
 prepare() {
   cd "${pkgname}"

@@ -11,7 +11,7 @@ pkgbase = wander
 	makedepends = go
 	depends = glibc
 	provides = wander
-	source = wander::git+https://github.com/robinovitch61/wander.git#commit=02551ed16346ef3dcabb06702b61c3e2abf8020d
-	sha256sums = SKIP
+	source = wander::git+https://github.com/robinovitch61/wander.git#tag=v1.1.0
+	sha256sums = 9d9b308e07f1d4ea9aa11ba22eaf0d489ff5d85e4f77993ac8457daf0a043f47
 
 pkgname = wander
