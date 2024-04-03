@@ -13,7 +13,7 @@
 # You can pass parameters to `ninja` via MAKEFLAGS
 
 pkgname=telegram-desktop-dev
-pkgver=4.15.6
+pkgver=4.16.1
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -48,7 +48,7 @@ source=(
     # New approach: source tarball, same as the stable Arch package
     "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
 )
-sha512sums=('965790e34dcbb1ff84c054a0d241f9ef628ee03526c7fd6a3cb5e0d419082b495e377a55bf9aeafc03d7851077d3703fb11df497d181ddbf6699455c2945c158')
+sha512sums=('fb8da3e6ff6885b75e3e8f58fd080926cfbf28a7c47579197823e369d538534af6e7949b5d02905809db22b3e4595596fc32a3bcd7cef1b1cdcf327935316c8c')
 
 prepare() {
     # Magic submodule configuration, thanks to the Python script
@@ -87,8 +87,8 @@ build() {
     # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
     # Thanks @primeos!
     #cmake -B build -S tdesktop -G Ninja \
+    #    -DCMAKE_VERBOSE_MAKEFILE=ON \
     cmake -B build -S "tdesktop-$pkgver-full" -G "Unix Makefiles" \
-        -DCMAKE_VERBOSE_MAKEFILE=ON \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_ID=611335 \
