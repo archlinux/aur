@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=python-jaxlib-cuda
-pkgver=0.4.23
+pkgver=0.4.24
 pkgrel=1
 pkgdesc='XLA library for JAX'
 arch=('x86_64')
@@ -15,9 +15,11 @@ makedepends=('bazel' 'gcc12' 'pybind11' 'python-build' 'python-installer'
 conflicts=('python-jaxlib')
 provides=("python-jaxlib=$pkgver")
 source=("jaxlib-${pkgver}.tar.gz::https://github.com/google/jax/archive/refs/tags/jaxlib-v${pkgver}.tar.gz"
-        'bazelrc.user')
-sha256sums=('e4c06d62ba54becffd91abc862627b8b11b79c5a77366af8843b819665b6d568'
-            '07da4c3594dad382ee02748b860c629ffa083ba37ad22a892291bdc72efbac5e')
+        'bazelrc.user'
+        'https://github.com/bazelbuild/bazel/releases/download/6.1.2/bazel-6.1.2-linux-x86_64')
+sha256sums=('c4e6963c2c36f634a9a1765e476a1ed4e6c4a7954465ebf72e29f344c28ddc28'
+            '07da4c3594dad382ee02748b860c629ffa083ba37ad22a892291bdc72efbac5e'
+            'e89747d63443e225b140d7d37ded952dacea73aaed896bca01ccd745827c6289')
 
 prepare() {
     # Allow any bazel version
@@ -25,6 +27,10 @@ prepare() {
 
     # Add specific bazel's options.
     cp bazelrc.user jax-jaxlib-v${pkgver}/.bazelrc.user
+
+    # TODO(@daskol): Prepare spcific bazel version ad hoc.
+    chmod +x bazel-6.1.2-linux-x86_64
+    ./bazel-6.1.2-linux-x86_64 version
 }
 
 build() {
@@ -63,7 +69,7 @@ build() {
     export JAXLIB_RELEASE=$pkgver
 
     cd $srcdir/jax-jaxlib-v$pkgver
-    bazel --output_user_root=$srcdir/bazel \
+    ../bazel-6.1.2-linux-x86_64  --output_user_root=$srcdir/bazel \
         run --action_env=JAXLIB_RELEASE --verbose_failures=true \
         //jaxlib/tools:build_wheel -- --cpu x86_64 --output_path=$PWD/dist
 }
