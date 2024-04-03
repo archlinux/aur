@@ -3,14 +3,14 @@
 _reponame=Swig
 pkgname=swig-cli
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An easy to use git config manager"
 arch=(any)
 url="https://github.com/AlexanderDotH/$_reponame"
 license=(custom)
 depends=(git xdg-utils)
 makedepends=(dotnet-host dotnet-sdk)
-options=(!strip)
+options=(!strip !debug)
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('1ad9d2343c6d86012a8df1585b7796c7d244a9829b793609c3cb2b5d22092a5e')
 
