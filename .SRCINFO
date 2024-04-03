@@ -1,0 +1,19 @@
+pkgbase = youtube-music-next-bin
+	pkgdesc = YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader). forked from th-ch/youtube-music.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://organization.github.io/youtube-music-next/
+	arch = x86_64
+	license = MIT
+	depends = electron29
+	provides = youtube-music=2.1.0
+	conflicts = youtube-music-next
+	conflicts = youtube-music
+	source = youtube-music-next-2.1.0.deb::https://github.com/organization/youtube-music-next/releases/download/v2.1.0/youtube-music_2.1.0_amd64.deb
+	source = LICENSE-2.1.0::https://raw.githubusercontent.com/organization/youtube-music-next/v2.1.0/license
+	source = youtube-music-next.sh
+	sha256sums = 11b9e856d07f3408016cc38b6163ef55818b37cf255f2f16be9da0debcaf281a
+	sha256sums = e7e14b3b771ecadb23f6ee0b6f99d1553e385e35cdb44fc8e36ee7c878dacd08
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+
+pkgname = youtube-music-next-bin
