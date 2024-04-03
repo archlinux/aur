@@ -1,11 +1,11 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Douglas Soares de Andrade <dsa@aur.archlinux.org>
-# Contributor: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve> 
+# Contributor: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve>
 
 pkgname=python-numpy
 pkgver=1.26.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Scientific tools for Python"
 arch=('x86_64')
 license=('custom')
