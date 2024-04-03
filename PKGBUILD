@@ -1,15 +1,16 @@
+# shellcheck shell=bash disable=SC2034 disable=SC2154
 # Maintainer: Lucas Melo <luluco250 at gmail dot com>
 
 pkgname=soniccd-git
-pkgver=r476.972e89f
-pkgrel=2
+pkgver=r676.7a23c39
+pkgrel=1
 pkgdesc='A full decompilation of Sonic CD 2011, based on the PC remake with
 improvements & tweaks from the mobile remakes.'
 arch=('any')
 url='https://github.com/Rubberduckycooly/Sonic-CD-11-Decompilation'
 license=('custom:RSDKv3/4 Decompilation Source Code License v1')
-makedepends=('git')
-depends=('sdl2' 'libogg' 'libtheora' 'libvorbis')
+makedepends=('git' 'pkg-config')
+depends=('cmake' 'glew' 'sdl2' 'libogg' 'libtheora' 'libvorbis')
 provides=(soniccd)
 source=(
 	"git+${url}.git"
@@ -25,27 +26,35 @@ sha256sums=(
 )
 install=soniccd.install
 
+_safe_cd() {
+	if ! cd "$1"; then
+		>&2 echo "Directory '$1' not found"
+		exit 1
+	fi
+}
+
 pkgver() {
-	cd "$srcdir/Sonic-CD-11-Decompilation"
+	_safe_cd "$srcdir/Sonic-CD-11-Decompilation"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$srcdir/Sonic-CD-11-Decompilation"
+	_safe_cd "$srcdir/Sonic-CD-11-Decompilation"
 	git submodule init
-	git submodule set-url -- dependencies/all/tinyxml2 "$srcdir/tinyxml2"
-	git submodule update dependencies/all/tinyxml2
+	git config submodule.libs/dependencies/all/tinyxml2.url "$srcdir/tinyxml2"
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
-	cd "$srcdir/Sonic-CD-11-Decompilation"
-	make ${MAKEFLAGS:-CXXFLAGS=-O2 -j$(nproc)}
+	_safe_cd "$srcdir/Sonic-CD-11-Decompilation"
+	cmake -B build
+	cmake --build build --config release
 }
 
 package() {
 	install -Dm755 soniccd-launcher "$pkgdir/usr/bin/soniccd-launcher"
 	install -Dm644 soniccd.desktop "$pkgdir/usr/share/applications/soniccd.desktop"
-	cd "$srcdir/Sonic-CD-11-Decompilation/bin"
-	install -Dm755 RSDKv3 "$pkgdir/usr/bin/RSDKv3"
-	install -Dm644 ../LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	_safe_cd "$srcdir/Sonic-CD-11-Decompilation"
+	install -Dm755 ./build/RSDKv3 "$pkgdir/usr/bin/RSDKv3"
+	install -Dm644 ./LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
