@@ -75,10 +75,11 @@ package() {
 Type=Application
 Version=${pkgver}
 Name=FluffyChat
-Comment=Open. Nonprofit. Cute. Easy to use (matrix) messenger. Secure and decentralized.
+Comment=${pkgdesc}
 Exec=${_name}
 Icon=${_name}
 Terminal=false
+Categories=Network;InstantMessaging;Chat;MatrixClient
 EOF
 
 }
