@@ -1,0 +1,4 @@
+[obs-vertical-canvas]
+source = "github"
+github = "Aitum/obs-vertical-canvas"
+use_latest_release = true
