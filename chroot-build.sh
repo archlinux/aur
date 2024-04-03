@@ -45,7 +45,7 @@ updpkgsums
 
 #
 # To send environment variable to a PKGBUILD call this script like this:
-#   `rbuild.sh -- {any makepkg flags} VAR=VALUE VAR2=VALUE etc..`
+#   `chroot-build.sh -- {any makepkg flags} VAR=VALUE VAR2=VALUE etc..`
 #
 
 # either use makechrootpkg ...
@@ -53,6 +53,9 @@ updpkgsums
 
 # or clean-chroot-manager (AUR)
 sudo ccm s
+
+# sync repos afterwards (again)
+sudo pacman -Sy
 
 rm PKGBUILD
 mv .PKGBUILD PKGBUILD

@@ -1,0 +1,117 @@
+From: "Luke D. Jones" <luke@ljones.dev>
+To: hdegoede@redhat.com
+Cc: corentin.chary@gmail.com, ilpo.jarvinen@linux.intel.com,
+	platform-driver-x86@vger.kernel.org,
+	linux-kernel@vger.kernel.org, "Luke D. Jones" <luke@ljones.dev>
+Subject: [PATCH v1 8/9] platform/x86: asus-wmi: Add support for MCU powersave
+Date: Tue,  2 Apr 2024 14:34:52 +1300	[thread overview]
+Message-ID: <20240402013453.18205-9-luke@ljones.dev> (raw)
+In-Reply-To: <20240402013453.18205-1-luke@ljones.dev>
+
+Add support for an MCU powersave WMI call. This is intended to set the
+MCU in to a low-power mode when sleeping. This mode can cut sleep power
+use by around half.
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ .../ABI/testing/sysfs-platform-asus-wmi       | 11 +++-
+ drivers/platform/x86/asus-wmi.c               | 50 +++++++++++++++++++
+ 2 files changed, 60 insertions(+), 1 deletion(-)
+
+diff --git a/Documentation/ABI/testing/sysfs-platform-asus-wmi b/Documentation/ABI/testing/sysfs-platform-asus-wmi
+index 41b92e53e88a..28144371a0f1 100644
+--- a/Documentation/ABI/testing/sysfs-platform-asus-wmi
++++ b/Documentation/ABI/testing/sysfs-platform-asus-wmi
+@@ -202,4 +202,13 @@ Contact:	"Luke Jones" <luke@ljones.dev>
+ Description:
+ 		Set if the BIOS POST sound is played on boot.
+ 			* 0 - False,
+-			* 1 - True
+\ No newline at end of file
++			* 1 - True
++
++What:		/sys/devices/platform/<platform>/mcu_powersave
++Date:		Apr 2024
++KernelVersion:	6.10
++Contact:	"Luke Jones" <luke@ljones.dev>
++Description:
++		Set if the MCU can go in to low-power mode on system sleep
++			* 0 - False,
++			* 1 - True
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index ec249eca0d94..a6b648457908 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -1292,6 +1292,53 @@ static ssize_t nv_temp_target_show(struct device *dev,
+ }
+ static DEVICE_ATTR_RW(nv_temp_target);
+ 
++/* Ally MCU Powersave ********************************************************/
++static ssize_t mcu_powersave_show(struct device *dev,
++				   struct device_attribute *attr, char *buf)
++{
++	struct asus_wmi *asus = dev_get_drvdata(dev);
++	int result;
++
++	result = asus_wmi_get_devstate_simple(asus, ASUS_WMI_DEVID_MCU_POWERSAVE);
++	if (result < 0)
++		return result;
++
++	return sysfs_emit(buf, "%d\n", result);
++}
++
++static ssize_t mcu_powersave_store(struct device *dev,
++				    struct device_attribute *attr,
++				    const char *buf, size_t count)
++{
++	int result, err;
++	u32 enable;
++
++	struct asus_wmi *asus = dev_get_drvdata(dev);
++
++	result = kstrtou32(buf, 10, &enable);
++	if (result)
++		return result;
++
++	if (enable > 1)
++		return -EINVAL;
++
++	err = asus_wmi_set_devstate(ASUS_WMI_DEVID_MCU_POWERSAVE, enable, &result);
++	if (err) {
++		pr_warn("Failed to set MCU powersave: %d\n", err);
++		return err;
++	}
++
++	if (result > 1) {
++		pr_warn("Failed to set MCU powersave (result): 0x%x\n", result);
++		return -EIO;
++	}
++
++	sysfs_notify(&asus->platform_device->dev.kobj, NULL, "mcu_powersave");
++
++	return count;
++}
++static DEVICE_ATTR_RW(mcu_powersave);
++
+ /* Battery ********************************************************************/
+ 
+ /* The battery maximum charging percentage */
+@@ -4299,6 +4346,7 @@ static struct attribute *platform_attributes[] = {
+ 	&dev_attr_ppt_platform_sppt.attr,
+ 	&dev_attr_nv_dynamic_boost.attr,
+ 	&dev_attr_nv_temp_target.attr,
++	&dev_attr_mcu_powersave.attr,
+ 	&dev_attr_boot_sound.attr,
+ 	&dev_attr_panel_od.attr,
+ 	&dev_attr_mini_led_mode.attr,
+@@ -4352,6 +4400,8 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
+ 		devid = ASUS_WMI_DEVID_NV_DYN_BOOST;
+ 	else if (attr == &dev_attr_nv_temp_target.attr)
+ 		devid = ASUS_WMI_DEVID_NV_THERM_TARGET;
++	else if (attr == &dev_attr_mcu_powersave.attr)
++		devid = ASUS_WMI_DEVID_MCU_POWERSAVE;
+ 	else if (attr == &dev_attr_boot_sound.attr)
+ 		devid = ASUS_WMI_DEVID_BOOT_SOUND;
+ 	else if (attr == &dev_attr_panel_od.attr)
+-- 
+2.44.0

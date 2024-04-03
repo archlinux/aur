@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.8.2.arch1
+pkgver=6.8.2.arch2
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -56,11 +56,20 @@ source=(
   amd-tablet-sfh.patch
   fix_amd_eDP_HDR_flickering.patch
 
-  0001-platform-x86-asus-wmi-add-support-for-2024-ROG-Mini-.patch
-  0002-platform-x86-asus-wmi-add-support-for-Vivobook-GPU-M.patch
-  0003-platform-x86-asus-wmi-add-support-variant-of-TUF-RGB.patch
-  0004-platform-x86-asus-wmi-support-toggling-POST-sound.patch
-  0005-platform-x86-asus-wmi-store-a-min-default-for-ppt-op.patch
+#  0001-platform-x86-asus-wmi-add-support-for-2024-ROG-Mini-.patch
+  0001-v2-platform-x86-asus-wmi-add-support-for-2024-ROG-Mini-LED.patch
+#  0002-platform-x86-asus-wmi-add-support-for-Vivobook-GPU-M.patch
+  0002-v2-platform-x86-asus-wmi-add-support-for-Vivobook-GPU-MUX.patch
+#  0003-platform-x86-asus-wmi-add-support-variant-of-TUF-RGB.patch
+  0003-v2-platform-x86-asus-wmi-add-support-variant-of-TUF-RGB.patch
+#  0004-platform-x86-asus-wmi-support-toggling-POST-sound.patch
+  0004-v2-platform-x86-asus-wmi-support-toggling-POST-sound.patch
+#  0005-platform-x86-asus-wmi-store-a-min-default-for-ppt-op.patch
+  0005-v2-platform-x86-asus-wmi-store-a-min-default-for-ppt-op.patch
+  0006-v2-platform-x86-asus-wmi-adjust-formatting-of-ppt-fcts.patch
+  0007-v2-platform-x86-asus-wmi-ROG-Ally-increase-wait-time.patch
+  0008-v2-platform-x86-asus-wmi-add-support-for-MCU-powersave.patch
+  0009-v2-platform-x86-asus-wmi-add-clean-up-structs.patch
   
   "sys-kernel_arch-sources-g14_files-0047-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch"
   "sys-kernel_arch-sources-g14_files-0048-asus-nb-wmi-fix-tablet_mode_sw_int.patch"
@@ -73,7 +82,7 @@ validpgpkeys=(
 
 sha256sums=('9ac322d85bcf98a04667d929f5c2666b15bd58c6c2d68dd512c72acbced07d04'
             'SKIP'
-            '9ccb26c046bacf04777617e96cad5b33d3d048b30bb4840a3b5ac2cdf40a3aba'
+            '2d5fa7f4177ba1c40575d57282438ff28cdfc3729e0689eddf650616c8a93b65'
             'SKIP'
             'c2b00c84c4b543db431e06604d939a62f93107d18369f4d9860dc8062b01ab45'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
@@ -91,11 +100,15 @@ sha256sums=('9ac322d85bcf98a04667d929f5c2666b15bd58c6c2d68dd512c72acbced07d04'
             '1edb362a762c8858374027e30ff58ae0014e117fdc05cc7db6da50f80e7aab87'
             '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04'
             '9b94f02b87c28a7403478ce9f57461c3b2219b7279a928e814cafd78ee767366'
-            '1bc69aaec2089599c1154d7ee5709f5a6140434ef6edf81702b0ea7042a44967'
-            'aa171a103d4133db4cfe153e48e71b58a85d69ed9fe144100dcc792055d79495'
-            'f0e5b7653c91e025c5c2010e2447c98eaad699106b34ff140da106e628ea5c17'
-            '4b1e78681848c34175251e9dcbee02f6b2bb67a65aae6ea8bfb5e1322dc51f7a'
-            '4ee418b9d9905a89e58cc860fb93cb226f45ac2d00d767fc3c4dccb297c731ee'
+            '06375fa2bcc6fefd8d57c0d8a13b5af02d08318f3721c58fc0354970656f3b64'
+            'f64fbf3b7e817edd7267612531d5aba3d17b727d5151b5b9e620d616797cf3da'
+            '270fe67b07e8138be848958e9fa28ee8fecffd2e146ea68444c5200a9b09c2ed'
+            '1b53d1914fb0186585125fcd9db2367697e4c265bfd38378aa0f59cc4e0fb46d'
+            '9a5c4f2cc956933abcb9e1bd652dfad382108dd1f22844d6e5c393861a9ba35d'
+            '951fe0da7b7939665ffc5094a0d39641d4c73395c264237e082d8c54b2927dfb'
+            '66c25f11f3fc2cc0db9a3392400f072f1c3ac9408328128f075a9260f4eb01ef'
+            'd31ba415c2b65e3485d74f0268f1020dc49f31a6fe3316cf6c74a0690e96c81f'
+            '47ad6e0781f1df1f6a6d35b8f20c2bf9dbd7e8e0b92a332cb88145755afba77c'
             '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
             '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85')
 

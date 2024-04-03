@@ -1,0 +1,94 @@
+From: "Luke D. Jones" <luke@ljones.dev>
+To: hdegoede@redhat.com
+Cc: corentin.chary@gmail.com, ilpo.jarvinen@linux.intel.com,
+	platform-driver-x86@vger.kernel.org,
+	linux-kernel@vger.kernel.org, "Luke D. Jones" <luke@ljones.dev>
+Subject: [PATCH v1 3/9] platform/x86: asus-wmi: add support variant of TUF RGB
+Date: Tue,  2 Apr 2024 14:34:47 +1300	[thread overview]
+Message-ID: <20240402013453.18205-4-luke@ljones.dev> (raw)
+In-Reply-To: <20240402013453.18205-1-luke@ljones.dev>
+
+Adds support for a second TUF RGB wmi call that some versions of the TUF
+laptop come with. Also adjusts existing support to select whichever is
+available.
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/platform/x86/asus-wmi.c            | 14 ++++++++++----
+ include/linux/platform_data/x86/asus-wmi.h |  1 +
+ 2 files changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index 7d7a9c8ee529..fa5735af7675 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -270,7 +270,7 @@ struct asus_wmi {
+ 	bool nv_dyn_boost_available;
+ 	bool nv_temp_tgt_available;
+ 
+-	bool kbd_rgb_mode_available;
++	u32 kbd_rgb_dev;
+ 	bool kbd_rgb_state_available;
+ 
+ 	bool throttle_thermal_policy_available;
+@@ -870,6 +870,7 @@ static ssize_t kbd_rgb_mode_store(struct device *dev,
+ 				 struct device_attribute *attr,
+ 				 const char *buf, size_t count)
+ {
++	struct asus_wmi *asus = dev_get_drvdata(dev);
+ 	u32 cmd, mode, r, g, b, speed;
+ 	int err;
+ 
+@@ -906,7 +907,7 @@ static ssize_t kbd_rgb_mode_store(struct device *dev,
+ 		speed = 0xeb;
+ 	}
+ 
+-	err = asus_wmi_evaluate_method3(ASUS_WMI_METHODID_DEVS, ASUS_WMI_DEVID_TUF_RGB_MODE,
++	err = asus_wmi_evaluate_method3(ASUS_WMI_METHODID_DEVS, asus->kbd_rgb_dev,
+ 			cmd | (mode << 8) | (r << 16) | (g << 24), b | (speed << 8), NULL);
+ 	if (err)
+ 		return err;
+@@ -1549,7 +1550,7 @@ static int asus_wmi_led_init(struct asus_wmi *asus)
+ {
+ 	int rv = 0, num_rgb_groups = 0, led_val;
+ 
+-	if (asus->kbd_rgb_mode_available)
++	if (asus->kbd_rgb_dev)
+ 		kbd_rgb_mode_groups[num_rgb_groups++] = &kbd_rgb_mode_group;
+ 	if (asus->kbd_rgb_state_available)
+ 		kbd_rgb_mode_groups[num_rgb_groups++] = &kbd_rgb_state_group;
+@@ -4487,7 +4488,6 @@ static int asus_wmi_add(struct platform_device *pdev)
+ 	asus->egpu_enable_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_EGPU);
+ 	asus->egpu_connect_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_EGPU_CONNECTED);
+ 	asus->dgpu_disable_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_DGPU);
+-	asus->kbd_rgb_mode_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_MODE);
+ 	asus->kbd_rgb_state_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_STATE);
+ 	asus->ppt_pl2_sppt_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_PPT_PL2_SPPT);
+ 	asus->ppt_pl1_spl_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_PPT_PL1_SPL);
+@@ -4512,6 +4512,12 @@ static int asus_wmi_add(struct platform_device *pdev)
+ 		asus->gpu_mux_dev = ASUS_WMI_DEVID_GPU_MUX_VIVO;
+ 	}
+ 
++	if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_MODE)) {
++		asus->kbd_rgb_dev = ASUS_WMI_DEVID_TUF_RGB_MODE;
++	} else if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_MODE2)) {
++		asus->kbd_rgb_dev = ASUS_WMI_DEVID_TUF_RGB_MODE2;
++	}
++
+ 	err = fan_boost_mode_check_present(asus);
+ 	if (err)
+ 		goto fail_fan_boost_mode;
+diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
+index b48b024dd844..3e9a01467c67 100644
+--- a/include/linux/platform_data/x86/asus-wmi.h
++++ b/include/linux/platform_data/x86/asus-wmi.h
+@@ -132,6 +132,7 @@
+ 
+ /* TUF laptop RGB modes/colours */
+ #define ASUS_WMI_DEVID_TUF_RGB_MODE	0x00100056
++#define ASUS_WMI_DEVID_TUF_RGB_MODE2	0x0010005A
+ 
+ /* TUF laptop RGB power/state */
+ #define ASUS_WMI_DEVID_TUF_RGB_STATE	0x00100057
+-- 
+2.44.0
