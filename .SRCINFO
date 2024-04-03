@@ -1,6 +1,6 @@
 pkgbase = python-darker
 	pkgdesc = Apply black reformatting to Python files only in regions changed since a given commit
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/akaihola/darker
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = python-darker
 	checkdepends = python-toml
 	checkdepends = python-flynt
 	checkdepends = python-isort
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -25,9 +26,7 @@ pkgbase = python-darker
 	optdepends = python-isort: for sorting import statements
 	optdepends = python-pygments: terminal syntax highlighting
 	optdepends = python-flynt: convert string literals to f-strings
-	source = python-darker-2.0.0.tar.gz::https://github.com/akaihola/darker/archive/refs/tags/v2.0.0.tar.gz
-	source = flynt-0-78-compatibility.patch::https://github.com/akaihola/darker/pull/480.patch
-	sha512sums = 95abfe626323120f44e4607732218e82afe240388cdcc3ea3a3140046e40c06124fa06a70c77a2f9a062c3bdaa0c7e1514bee391fd874f56f05e38b420acf65f
-	sha512sums = b01be276a286fb0f6a543ed34a85d1b4f899b4b7a46d02a3c953287c3536e3f76ee0a199e5a3e9677b17add9f06425a76a2f4559c429abbeed37abd0231c38b8
+	source = python-darker::git+https://github.com/akaihola/darker.git#tag=v2.1.0
+	sha512sums = a73b81acace69bea1c6ebf7b9c7d2715ca4e4788087eec4d383c775136a2c251c818a65101a3e10504421eb0d41f0d186f3799494649ac4bc91ed4813e8332de
 
 pkgname = python-darker
