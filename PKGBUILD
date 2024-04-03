@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=passky
 pkgname="${_pkgname}-desktop-bin"
-pkgver=8.1.1
-_electronversion=22
-pkgrel=3
+pkgver=8.1.2
+_electronversion=29
+pkgrel=1
 pkgdesc="A simple, modern, lightweight, open source and secure password manager."
 arch=("x86_64")
 url="https://github.com/Rabbit-Company/Passky-Desktop"
@@ -12,19 +12,18 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'hicolor-icon-theme'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e83318acd9c418a9f82f5f5f2a7bb915abc68fbbd3047a44895af4222ece81e9'
+sha256sums=('7ae808969d769ba28859a3d0b093d28331538c05c62293590ec606defa8feb52'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed -e "s|/opt/${_pkgname//p/P}/${_pkgname}|${pkgname%-bin}|g" \
