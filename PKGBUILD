@@ -44,8 +44,8 @@ b2sums=('SKIP')
 validpgpkeys=('68990DD0B1EDC129B856958167997E14D563DA7C') # MusicBrainz Picard Developers <picard@metabrainz.org>
 
 pkgver(){
-    cd "${pkgname%%-git}"
-    git describe --tags --always | sed -r 's|release-||g;s/([^-]*-g)/r\1/;s/-/./g'
+  cd "${pkgname%%-git}"
+  git describe --tags --always | sed -r 's|release-||g;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
