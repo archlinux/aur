@@ -1,0 +1,26 @@
+pkgbase = gomoon-git
+	pkgdesc = An ai tools for everyone.一款桌面端的大模型效率工具.
+	pkgver = 1.0.5.r143.g04d9e1c
+	pkgrel = 1
+	url = https://gomoon.top/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = gendesk
+	makedepends = nvm
+	makedepends = npm
+	makedepends = yarn
+	makedepends = git
+	makedepends = icoutils
+	makedepends = curl
+	depends = electron28
+	provides = gomoon=1.0.5
+	conflicts = gomoon
+	noextract = resources.zip
+	source = gomoon.git::git+https://github.com/wizardAEI/Gomoon.git
+	source = resources.zip::https://github.com/zxp19821005/My_AUR_Files/releases/download/gomoon/gomoon-resources-20240327.zip
+	source = gomoon.sh
+	sha256sums = SKIP
+	sha256sums = c929b84eb11bd1a344b38a94f4778925a9207ad84e73392552d2ec920b2e6898
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+
+pkgname = gomoon-git
