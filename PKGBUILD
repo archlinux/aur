@@ -8,7 +8,7 @@ pkgrel=4
 pkgdesc='Screen-first serif font face'
 arch=('any')
 url='https://fonts.google.com/specimen/Spectral'
-license=('OFL')
+license=('OFL-1.1-no-RFN')
 
 _reponame=Spectral
 _commit='748733e3761fc7985ca9c473996ed121954debf8'
