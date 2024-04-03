@@ -1,8 +1,9 @@
 # Maintainer: suliman altassan <suliman.p2019@gmail.com>
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
+# Contributor: jinzhongjia <mail@nvimer.org>
 
 pkgname=webui
-pkgver=2.4.2+25+g2a5f0c98
+pkgver=2.4.2+36+ga994629f
 pkgrel=1
 pkgdesc="Use any web browser as GUI, with your preferred language in the backend and HTML5 in the frontend, all in a lightweight portable lib."
 arch=('x86_64')
@@ -10,7 +11,7 @@ url="https://webui.me/"
 license=('MIT')
 depends=("openssl" "glibc")
 makedepends=("git" "zig")
-_commit=2a5f0c98fbb267a5aed921a8678f3f108bb12a6e
+_commit=a994629f90454b78f83916a9911505e0d38d851e
 source=("git+https://github.com/webui-dev/webui.git#commit=${_commit}")
 md5sums=('SKIP')
 
