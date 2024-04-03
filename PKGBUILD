@@ -1,7 +1,7 @@
 pkgname=jazzjackrabbit2
 _pkgname=JazzJackrabbit2
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Jazz Jackrabbit 2 game powered by the jazz2."
 arch=('x86_64' 'aarch64')
 license=('GPL')
@@ -39,7 +39,7 @@ fi
     cp "$srcdir/jazz2-$pkgver/jazz2.png" "$pkgdir/usr/share/pixmaps"
 
     # Desktop Entry
-    install -Dm644 "$srcdir/jazz2-$pkgver/jazz2.desktop" \
-    "$pkgdir/usr/share/applications/jazz2.desktop"
-    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/jazz2.desktop"
+    install -Dm644 "$srcdir/jazz2-$pkgver/$pkgname.desktop" \
+    "$pkgdir/usr/share/applications/$pkgname.desktop"
+    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$pkgname.desktop"
 }

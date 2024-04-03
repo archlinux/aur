@@ -1,7 +1,7 @@
 pkgbase = jazzjackrabbit2
 	pkgdesc = Jazz Jackrabbit 2 game powered by the jazz2.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	arch = aarch64
 	license = GPL
