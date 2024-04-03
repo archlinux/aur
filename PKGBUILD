@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-screenshot-git
-pkgver=r7.98cafde
-pkgrel=2
+pkgver=r9.f853446
+pkgrel=1
 pkgdesc="Utility for capturing screenshots via XDG Desktop Portal"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-screenshot"
