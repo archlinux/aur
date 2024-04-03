@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-osd-git
-pkgver=r80.929a741
+pkgver=r81.789698e
 pkgrel=1
-pkgdesc="WIP COSMIC OSD"
+pkgdesc="COSMIC OSD"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-osd"
 license=('GPL-3.0-or-later')
