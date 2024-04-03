@@ -1,7 +1,7 @@
 # Maintainer: Grzegorz Alibożek <grzegorz.alibozek@gmail.com>
 _gitname="weather-widget-2"
 pkgname=plasma-applets-weather-widget-2
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="An updated version of the plasma-applet-weather-widget by Kotelnik"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('plasma-workspace' 'qt6-5compat' 'qt6-declarative')
 makedepends=('extra-cmake-modules')
 source=(${url}/archive/refs/tags/V${pkgver}.tar.gz)
-sha256sums=('ec63bcb922d61fbe37b4b1343b1ded493e18f265d361c54ac6dbb5e8223292d9')
+sha256sums=('c7a33f22f099afa49eba3abf1d9462fa82a4893b76a0f09d4a1a1f7eda4a9c6b')
 
 
 build() {
