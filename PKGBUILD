@@ -173,7 +173,6 @@ _stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
-pkgdesc='Cachyos kernel with a patch for Asus Zenbook OLED 14 sound'
 pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
@@ -578,7 +577,7 @@ build() {
 }
 
 _package() {
-    pkgdesc="The $pkgdesc kernel and modules"
+    pkgdesc="Based on the CachyOS kernel, including a patch that fixes low volume issus on Zenbook UX3405MA.304"
     depends=('coreutils' 'kmod' 'initramfs')
     optdepends=('wireless-regdb: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
@@ -607,7 +606,7 @@ _package() {
 }
 
 _package-headers() {
-    pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+    pkgdesc="Headers and scripts for building modules for the CachyOS kernel"
     depends=('pahole' linux-${pkgsuffix} )
 
     cd ${srcdir}/${_srcname}
@@ -691,7 +690,7 @@ _package-headers() {
 }
 
 _package-zfs(){
-    pkgdesc="zfs module for the $pkgdesc kernel"
+    pkgdesc="zfs module for the CachyOS kernel"
     depends=('pahole' $pkgbase=$_kernver)
     provides=('ZFS-MODULE')
 

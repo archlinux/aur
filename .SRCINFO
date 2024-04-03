@@ -1,5 +1,4 @@
 pkgbase = linux-cachyos-zenbook
-	pkgdesc = Cachyos kernel with a patch for Asus Zenbook OLED 14 sound
 	pkgver = 6.8.2
 	pkgrel = 1
 	url = https://github.com/CachyOS/linux-cachyos
@@ -40,7 +39,7 @@ pkgbase = linux-cachyos-zenbook
 	b2sums = dfc52d584e9d75c468d21a98bd97dbcf2ee0b7e686026f9202064060b17d599b552a50fe0f428ac21e56eb098bee90795f32eb2e44d912b5ed562bc73fa6e842
 
 pkgname = linux-cachyos-zenbook
-	pkgdesc = The Cachyos kernel with a patch for Asus Zenbook OLED 14 sound kernel and modules
+	pkgdesc = Based on the CachyOS kernel, including a patch that fixes low volume issus on Zenbook UX3405MA.304
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -54,6 +53,6 @@ pkgname = linux-cachyos-zenbook
 	provides = UKSMD-BUILTIN
 
 pkgname = linux-cachyos-zenbook-headers
-	pkgdesc = Headers and scripts for building modules for the Cachyos kernel with a patch for Asus Zenbook OLED 14 sound kernel
+	pkgdesc = Headers and scripts for building modules for the CachyOS kernel
 	depends = pahole
 	depends = linux-cachyos
