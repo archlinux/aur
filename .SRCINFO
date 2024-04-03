@@ -4,9 +4,10 @@ pkgbase = ttf-creepster
 	pkgrel = 2
 	url = https://fonts.google.com/specimen/Creepster
 	arch = any
-	license = OFL
-	source = ttf-creepster-1.000.zip::https://fonts.google.com/download?family=Creepster
-	sha256sums = 3c2d4c5f63be0a23b4763aa9c17c3c227aaee689004af2eaaec8b1ef6d4203a9
+	license = OFL-1.1-RFN
+	source = https://github.com/google/fonts/raw/90d7886db9000c893b9559828bf028aaed5f9c10/ofl/creepster/OFL.txt
+	source = https://github.com/google/fonts/raw/90d7886db9000c893b9559828bf028aaed5f9c10/ofl/creepster/Creepster-Regular.ttf
+	sha256sums = c09e3b81d9cfeec46bc29a3374000e8ad013d694bdf24a288088491dd4cd5c69
+	sha256sums = 402aeb734586c74aecd3dbdc454589b1fb12e2e1c71f782fd019ae68066d9f44
 
 pkgname = ttf-creepster
-
