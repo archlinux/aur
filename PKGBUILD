@@ -2,7 +2,7 @@
 # Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=bigcty
-pkgver=20240329
+pkgver=20240403
 _pkgyear=2024
 pkgrel=1
 pkgdesc="The package represents databases of entities (countries), prefixes and callsigns
@@ -21,5 +21,5 @@ package() {
 
 	cp -R *.{csv,dat} $pkgdir/usr/share/cty
 }
-md5sums=('a428a21458cbefe50a69a4b577e1c126')
-sha256sums=('533ca2aeeffd9097d59e958dffd3866e8e58eaebb2a125c087aea40f39404ba6')
+md5sums=('e5badd6bfd0e957d07b77267a43583cb')
+sha256sums=('4ed763572db3ba1429b18b25b79985d8c338d426e3edc4e5b62abcb57769dad8')
