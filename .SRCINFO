@@ -1,0 +1,20 @@
+pkgbase = kf6-servicemenus-imagetools
+	pkgdesc = KDE service menus for image file processing
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/marco-mania/kf6-servicemenus-imagetools
+	arch = any
+	license = GPL
+	depends = dolphin
+	depends = kdialog
+	depends = imagemagick
+	depends = perl-image-exiftool
+	depends = optipng
+	conflicts = kde-servicemenus-imagetools
+	conflicts = kf5-servicemenus-imagetools
+	replaces = kde-servicemenus-imagetools
+	replaces = kf5-servicemenus-imagetools
+	source = https://github.com/marco-mania/kf6-servicemenus-imagetools/archive/refs/tags/v1.tar.gz
+	sha256sums = d0c5accc941e36f47fe43ed97d67ac6e315b6942a7598827d9ce869f898f5c42
+
+pkgname = kf6-servicemenus-imagetools
