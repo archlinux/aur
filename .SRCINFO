@@ -1,0 +1,17 @@
+pkgbase = python-azure-keyvault-secrets
+	pkgdesc = Microsoft Azure Key Vault Secrets Client Library for Python
+	pkgver = 4.8.0
+	pkgrel = 2
+	url = https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/keyvault/azure-keyvault-secrets
+	arch = any
+	license = MIT
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python-azure-core>=1.23.0
+	depends = python-azure-core<2.0.0
+	depends = python-isodate>=0.6.1
+	depends = python-typing_extensions>=4.10.0
+	source = https://pypi.io/packages/source/a/azure-keyvault-secrets/azure-keyvault-secrets-4.8.0.tar.gz
+	sha256sums = 5636c0a1d8a20e3c5799cb3ccffd4ebf3f0d1acb7cae9526861833af8b0fe814
+
+pkgname = python-azure-keyvault-secrets
