@@ -203,7 +203,7 @@ source=(
     "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz"
     "config"
     "auto-cpu-optimization.sh"
-    "${_patchsource}/all/sound-fix.patch"
+    "sound-fix.patch"
     "${_patchsource}/all/0001-cachyos-base-all.patch")
 
 # WARNING The ZFS module doesn't build with selected RT sched due to licensing issues.
