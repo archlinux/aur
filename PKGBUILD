@@ -1,3 +1,5 @@
+#Maintainer: VPeti1 (Vasko Peter) 
+
 pkgname=flexpkg
 pkgver=8
 pkgrel=2
