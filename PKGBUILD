@@ -3,7 +3,7 @@
 pkgname=mimaflux
 pkgver=1.1.0
 _tagname=${pkgver%.0}
-pkgrel=1
+pkgrel=2
 pkgdesc='debugger for Mima assembly code'
 arch=('any')
 url="https://github.com/mattulbrich/mimaflux"
