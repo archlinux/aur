@@ -1,0 +1,6 @@
+[chatty-beta]
+source = "github"
+github = "chatty/chatty"
+use_latest_tag = true
+from_pattern = "[v-]"
+to_pattern = ""
