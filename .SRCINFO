@@ -5,6 +5,7 @@ pkgbase = battery_status_rs
 	arch = any
 	makedepends = cargo
 	makedepends = git
+	makedepends = systemd
 	depends = systemd
 	source = git+https://git.unfug.hs-furtwangen.de/weva/battery_status_rs/#tag=3.0.0
 	source = battery_status_rs_notification.service
