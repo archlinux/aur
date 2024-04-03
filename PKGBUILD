@@ -14,7 +14,7 @@ pkgname=qgis-qtwebkit
 _pkgname=qgis
 provides=('qqis=3.36.0')
 conflicts=('qgis')
-pkgver=3.36.0
+pkgver=3.36.1
 pkgrel=1
 pkgdesc="QGIS with GRASS and QtWebkit to support some plugins and qgis' functions"
 arch=(x86_64)
@@ -33,7 +33,7 @@ source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2"
         "https://src.fedoraproject.org/rpms/qgis/raw/rawhide/f/qgis-qwt.patch"
         "https://src.fedoraproject.org/rpms/qgis/raw/rawhide/f/qgis-yarn-offline.patch"
 )
-sha256sums=('1b64bc92660bf07edc6b6478fc6a13656149e87d92eabe5c3db9493072506e2c'
+sha256sums=('ca0ffa5a76167304a4c3b40f7bafde99a476fa9b490a87d4e4b73370a199fc1d'
             'efb66c3a8cb6bd61d3402b9400b8a3e50cd2775082a5a93fa7a8152c37e01aaa'
             '4dc9f6191ee497eebad2da17c93e36c3f9a88719e8c81c41531b45245f2f9446'
             'SKIP'
