@@ -1,10 +1,10 @@
 # Maintainer: qsqcqs
 pkgname='qwq'
-pkgver=1.1
-pkgrel=2
+pkgver=2.0
+pkgrel=3
 pkgdesc="uwu/qwq for terminal"
 arch=('x86_64')
-url="https://github.com/qsqcqs/qwq/tree"
+url="https://github.com/qsqcqs/qwq"
 license=('GPL-3.0-or-later')
 depends=('python3')
 checkdepends=()
@@ -25,4 +25,5 @@ package() {
 }
 
 
-sha256sums=('30150224510f04c6f01c1a713cbf3a7455b98571ce29089ced77009b87c50575')
+
+sha256sums=('522d8a110a50b0e1c0f8c28c3134733eac7e0f5540214e74d65387e4fc3c6e86')
