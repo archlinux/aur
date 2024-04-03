@@ -43,7 +43,9 @@ $_dart_sdk/bin/dart "\$@"
 EOF
 	) "${srcdir}/flutter/bin/dart"
 
-	git clone --depth=1 --single-branch 'https://chromium.googlesource.com/chromium/tools/depot_tools.git' "${srcdir}/depot_tools"
+	if [ ! -d "${srcdir}/depot_tools" ]; then
+		git clone --depth=1 --single-branch 'https://chromium.googlesource.com/chromium/tools/depot_tools.git' "${srcdir}/depot_tools"
+	fi
 popd
 
 export \
