@@ -1,0 +1,14 @@
+pkgbase = anyrun-plugin-kidex
+	pkgdesc = Kidex plugin for file search.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/anyrun-org/plugin-kidex
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = anyrun
+	source = https://github.com/anyrun-org/plugin-kidex/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 61fa4fc368fdb94db0552b069881b1f93f4fc2b34abdbdb6aa28a97d8b348a6b
+
+pkgname = anyrun-plugin-kidex
