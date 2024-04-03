@@ -1,6 +1,6 @@
 _pkgname=cyberdrop_dl
 pkgname=cyberdropdownloader
-pkgver=5.2.16
+pkgver=5.2.17
 pkgrel=1
 pkgdesc="Bulk downloader for multiple file hosts and forum sites"
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
 )
 conflicts=('cyberdrop-dl' 'cyberdrop-dl-git')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('c1920122588b260f214434fb2f1d6f192c8e3e3c4275227b2967984afce02cc9')
+sha256sums=('484de8c0d53301468f3dfb41dee767d8aa6a377ffb4b7f39ef06318d89c0b7f6')
 
 build(){
     cd $_pkgname-$pkgver
