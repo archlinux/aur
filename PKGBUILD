@@ -2,7 +2,7 @@
 # Contributor: FabioLolix
 
 pkgname=exoscale-cli-bin
-pkgver=1.76.2
+pkgver=1.77.0
 pkgrel=1
 pkgdesc="Command-line tool for everything at Exoscale: compute, storage, dns"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('exoscale-cli')
 
 source=("https://github.com/exoscale/cli/releases/download/v${pkgver}/exoscale-cli_${pkgver}_linux_amd64.tar.gz"
         "https://github.com/exoscale/cli/releases/download/v${pkgver}/exoscale-cli_${pkgver}_linux_amd64.tar.gz.sig")
-sha256sums=('3270aa3b9e60668677f98c972b802929ff94bd7c5c701ecf37422f77e8e0a97e'
+sha256sums=('dbee1407c1002ad3b4b0a3266c9dc014da6068d4072cebc90b0a0473c2f7b38c'
             'SKIP')
 
 if [ $SKIPPGPCHECK = 0 ] && ! gpg --list-keys 7100E8BFD6199CE0374CB7F003686F8CDE378D41 >/dev/null 2>&1; then
