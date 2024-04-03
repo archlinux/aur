@@ -1,0 +1,14 @@
+pkgbase = anyrun-plugin-websearch
+	pkgdesc = Websearch plugin for searching the web with configurable engines.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/anyrun-org/plugin-websearch
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = anyrun
+	source = https://github.com/anyrun-org/plugin-websearch/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 006ee9aa3721fb84cc83b835fc7aa094d51b32a899c40995a189b8e61175bcb5
+
+pkgname = anyrun-plugin-websearch
