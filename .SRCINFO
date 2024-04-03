@@ -1,5 +1,5 @@
 pkgbase = systemd-fml
-	pkgver = 255.4
+	pkgver = 255.5
 	pkgrel = 2
 	url = https://github.com/FML128/systemd/tree/machine_id_smbios
 	arch = x86_64
@@ -52,7 +52,7 @@ pkgbase = systemd-fml
 	makedepends = lib32-gcc-libs
 	makedepends = python-pefile
 	conflicts = mkinitcpio<38-1
-	source = systemd-fml::git+https://github.com/FML128/systemd#tag=v255.4
+	source = systemd-fml::git+https://github.com/FML128/systemd#tag=v255.5
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
 	source = arch.conf
 	source = loader.conf
@@ -142,9 +142,9 @@ pkgname = systemd-fml
 	optdepends = libp11-kit: support PKCS#11
 	optdepends = tpm2-tss: unlocking LUKS2 volumes with TPM2
 	provides = nss-myhostname
-	provides = systemd-tools=255.4
-	provides = udev=255.4
-	provides = systemd=255.4
+	provides = systemd-tools=255.5
+	provides = udev=255.5
+	provides = systemd=255.5
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -185,7 +185,7 @@ pkgname = systemd-libs-fml
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
-	provides = systemd-libs=255.4
+	provides = systemd-libs=255.5
 	conflicts = libsystemd
 	conflicts = systemd-libs
 	replaces = libsystemd
@@ -195,14 +195,14 @@ pkgname = systemd-resolvconf-fml
 	depends = systemd
 	provides = openresolv
 	provides = resolvconf
-	provides = systemd-resolvconf=255.4
+	provides = systemd-resolvconf=255.5
 	conflicts = resolvconf
 	conflicts = systemd-resolvconf
 
 pkgname = systemd-sysvcompat-fml
 	pkgdesc = sysvinit compat for systemd
 	depends = systemd
-	provides = systemd-sysvcompat=255.4
+	provides = systemd-sysvcompat=255.5
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 
@@ -215,5 +215,5 @@ pkgname = systemd-ukify-fml
 	optdepends = python-pillow: Show the size of splash image
 	optdepends = sbsigntools: Sign the embedded kernel
 	provides = ukify
-	provides = systemd-ukify=255.4
+	provides = systemd-ukify=255.5
 	conflicts = systemd-ukify

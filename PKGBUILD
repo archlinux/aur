@@ -6,7 +6,7 @@ pkgname=('systemd-fml'
          'systemd-resolvconf-fml'
          'systemd-sysvcompat-fml'
          'systemd-ukify-fml')
-_tag='255.4'
+_tag='255.5'
 # Upstream versioning is incompatible with pacman's version comparisons so we
 # replace tildes with the empty string to make sure pacman's version comparing
 # does the right thing for rc versions:
