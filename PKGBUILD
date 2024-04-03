@@ -1,3 +1,5 @@
+#Maintainer: VPeti1 (Vasko Peter) 
+
 pkgname=cwplus
 pkgver=1
 pkgrel=1
