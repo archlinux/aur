@@ -1,12 +1,13 @@
 pkgbase = python-materialyoucolor-git
 	pkgdesc = Material You color algorithms for Python!
 	pkgver = 2.0.8.r1.g9780c78
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/T-Dynamos/materialyoucolor-python
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = python-build
+	makedepends = python-setuptools
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = glibc

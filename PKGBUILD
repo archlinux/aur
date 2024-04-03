@@ -2,13 +2,13 @@
 pkgname=python-materialyoucolor-git
 _name=materialyoucolor-python
 pkgver=2.0.8.r1.g9780c78
-pkgrel=2
+pkgrel=3
 pkgdesc="Material You color algorithms for Python!"
 arch=('x86_64')
 url="https://github.com/T-Dynamos/materialyoucolor-python"
 license=('MIT')
 depends=('glibc' 'gcc-libs' 'python' 'python-pillow')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('git' 'python-build' 'python-setuptools' 'python-installer' 'python-wheel')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(git+$url.git)
