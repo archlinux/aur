@@ -7,7 +7,7 @@
 # Contributor: Marc Poiroud <marci1@archlinux.fr>
 
 pkgname=verbiste
-pkgver=0.1.47
+pkgver=0.1.48
 pkgrel=1
 pkgdesc="French conjugation system."
 url="http://sarrazip.com/dev/verbiste.html"
@@ -17,7 +17,7 @@ makedepends=('perl-xml-parser' 'gtk2')
 optdepends=('gtk2: for verbiste-gtk')
 arch=('i686' 'x86_64')
 source=("http://perso.b2b2c.ca/~sarrazip/dev/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('cc06d3e4a09b9edf2fe3996f527ae05fa50af909cc5ea6ed830d1b4f5706cf9b29028160cff842a211148e13d736f7e2cb74f10b3c5fd84d93a1038e05a26cbf')
+sha512sums=('4d0ac1a1116b51196b1ba72cceed507c56551ed97d2de07dfbf1f6eb48769a7c3c1ee676aa3a2d3f9e3cb512df3808d9bb1da9c7166a820cc3379ff06f4f14f2')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
