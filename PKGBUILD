@@ -3,7 +3,7 @@
 # Contributor: witchymary
 
 pkgname=aegisub-arch1t3cht-git
-pkgver=3.2.2.r1139.cd2e89463
+pkgver=3.2.2.r1147.a455e07f1
 pkgrel=1
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
@@ -20,7 +20,6 @@ depends=('alsa-lib'
          'hicolor-icon-theme'
          'hunspell'
          'icu'
-         'jansson'
          'libass'
          'libgl'
          'libiconv'
@@ -29,6 +28,7 @@ depends=('alsa-lib'
          'portaudio'
          'uchardet'
          'wxwidgets-gtk3'
+         'xxhash'
          'zlib')
 makedepends=('git' 'meson' 'cmake' 'boost')
 optdepends=('vapoursynth: VapourSynth source support'
@@ -38,7 +38,7 @@ optdepends=('vapoursynth: VapourSynth source support'
             'vapoursynth-plugin-scxvid: VapourSynth plugin for keyframe generation')
 source=("${pkgname}::git+https://github.com/arch1t3cht/Aegisub.git#branch=feature"
         "${pkgname}-ffms2::git+https://github.com/arch1t3cht/ffms2.git"
-        "${pkgname}-bestsource::git+https://github.com/vapoursynth/bestsource.git#tag=R1"
+        "${pkgname}-bestsource::git+https://github.com/vapoursynth/bestsource.git#commit=9d7e218588867bf2b1334e5382b0f4d1b6a45aa1"
         "${pkgname}-libp2p::git+https://github.com/sekrit-twc/libp2p#commit=5e65679ae54d0f9fa412ab36289eb2255e341625"
         "${pkgname}-avisynth::git+https://github.com/AviSynth/AviSynthPlus.git#tag=v3.7.2"
         "${pkgname}-vapoursynth::git+https://github.com/vapoursynth/vapoursynth.git#tag=R59"
