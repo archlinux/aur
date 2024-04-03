@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mqttx-git
 _pkgname=MQTTX
-pkgver=1.9.9.r17.gd6d16343
+pkgver=1.9.10.r1.g95cb8093
 _electronversion=13
 _nodeversion=16
 pkgrel=1
@@ -14,7 +14,7 @@ url="https://mqttx.app/"
 _ghurl="https://github.com/emqx/MQTTX"
 license=('Apache-2.0')
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'npm'
@@ -62,15 +62,15 @@ build() {
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
-        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
-        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/v
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
         echo "Your network is OK."
     fi
-    sed "s|--win --linux --mac|--dir|g" -i package.json
+    sed "s|--linux\",|--linux --dir\",|g" -i package.json
     yarn install --cache-folder "${srcdir}/.yarn_cache" #--no-lockfile
-    yarn run electron:build
+    yarn run electron:build-linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
