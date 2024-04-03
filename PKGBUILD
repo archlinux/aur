@@ -7,8 +7,8 @@ pkgrel=1
 pkgdesc='debugger for Mima assembly code'
 arch=('any')
 url="https://github.com/mattulbrich/mimaflux"
-license=('GPL3')
-depends=('java-runtime>=17')
+license=('GPL-3.0-only')
+depends=('java-runtime>=17' 'sh')
 makedepends=('java-environment=17' 'gradle')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$_tagname.tar.gz"
