@@ -2,18 +2,20 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-epoch-git
-pkgver=r120.f7cd2ac
+pkgver=r122.bf15773
 pkgrel=1
 pkgdesc="Cosmic desktop environment from System76's Pop!_OS written in Rust utilizing Iced inspired by GNOME"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-epoch"
 license=('GPL-3.0-or-later AND MPL-2.0 AND CC-BY-SA-4.0')
 depends=(
+  'accountsservice'
   'cage'
   'fontconfig'
   'geoclue'
   'greetd'
   'gtk4'
+  'iso-codes'
   'libinput'
   'libglvnd'
   'libpipewire'
