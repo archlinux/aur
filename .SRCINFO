@@ -15,9 +15,9 @@ pkgbase = hurl-rs
 	conflicts = hurl
 	conflicts = hurl-bin
 	options = !lto
-	source = hurl-rs::git+https://github.com/Orange-OpenSource/hurl#commit=b8e224599a6fe2b8a1919c1b196807e7e34d0f63?signed
+	source = hurl-rs::git+https://github.com/Orange-OpenSource/hurl#tag=4.2.0?signed
 	validpgpkeys = 2A8D14993928B676E424009F1283A2B4A0DCAF8D
 	validpgpkeys = 533460762F6401629670C6F307FF11CFD55356CC
-	sha256sums = SKIP
+	sha256sums = 197ac2785069cea8166f2e055bc59feae75c8795e1b8d74fd6c1a732e31af00e
 
 pkgname = hurl-rs

@@ -4,7 +4,6 @@
 
 pkgname=hurl-rs
 pkgver=4.2.0
-_commit="b8e224599a6fe2b8a1919c1b196807e7e34d0f63"  # git rev-list -n1 ${pkgver}
 pkgrel=1
 pkgdesc='HTTP Client to run and test requests'
 arch=('x86_64')
@@ -16,8 +15,8 @@ checkdepends=('cargo')
 conflicts=('hurl' 'hurl-bin')
 options=('!lto')
 changelog=CHANGELOG.md
-source=("${pkgname}::git+${url}#commit=${_commit}?signed")
-sha256sums=('SKIP')
+source=("${pkgname}::git+${url}#tag=${pkgver}?signed")
+sha256sums=('197ac2785069cea8166f2e055bc59feae75c8795e1b8d74fd6c1a732e31af00e')
 validpgpkeys=(
 	'2A8D14993928B676E424009F1283A2B4A0DCAF8D' # hurl-bot <bot@hurl.dev> : https://github.com/hurl-bot.gpg
 	'533460762F6401629670C6F307FF11CFD55356CC' # jcamiel <jeanchristophe.amiel@orange.com> : https://github.com/jcamiel.gpg
