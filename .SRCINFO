@@ -10,6 +10,7 @@ pkgbase = cosmic-term-git
 	makedepends = just
 	depends = libxkbcommon
 	depends = wayland
+	depends = cosmic-icons-git
 	provides = cosmic-term
 	options = !lto
 	source = git+https://github.com/pop-os/cosmic-term.git
