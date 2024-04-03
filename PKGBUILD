@@ -1,8 +1,9 @@
 # Maintainer: Graham Gower <graham dot gower at gmail dot com>
 _gitname=SLiM
-_gittag=v4.2  # tag, branch, or commit; comment out to use latest
+# 5b110b9 is v4.2 + minor patch. https://github.com/MesserLab/SLiM/issues/437
+_gittag=5b110b9  # tag, branch, or commit; comment out to use latest
 pkgname=slim-simulator
-pkgver=4.2.r0.g6d00ad37
+pkgver=4.2.r1.g5b110b92
 pkgrel=1
 pkgdesc="A forwards-time population genetic simulator."
 arch=("x86_64")
