@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=reqnotes-bin
 _pkgname=ReqNotes
-pkgver=1.8
-pkgrel=6
+pkgver=2.0
+pkgrel=1
 pkgdesc="Personal Notes Application, Cross platform desktop application, developed with .NET 6 and Avalonia UI"
 arch=('x86_64')
 url="https://github.com/ReqBaa/ReqNotes"
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_downurl}/main/pool/main/r/${pkgname%-bin}/${pkgname%-bin}_${pkgver}-0ubuntu1_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('08c7edd178beb43194eca99bf06ce9a788949b70e917458e9832272ac0db209c'
+sha256sums=('068ecf059a5123269a62e4097169834bfb1d23c645cd07ff1987453e7ec063b4'
             '46c44290e51c6b3f146c244fab112aaa1ff6f5ce4f26415f85820e5eee6a2d11')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
