@@ -1,5 +1,5 @@
 pkgbase = battery_status_rs
-	pkgdesc = A utility to watch the battery level and send the system to sleep if low.
+	pkgdesc = A utility to watch the battery level.
 	pkgver = 3.0.0
 	pkgrel = 1
 	arch = any
