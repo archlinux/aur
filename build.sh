@@ -6,7 +6,7 @@ docker run \
     -v $(pwd):/srv \
     --entrypoint /usr/bin/bash \
     --workdir /srv \
-    docker.io/archlinux -c '\
+    docker.io/archlinux:base-devel -c '\
         pacman -Sy --noconfirm archlinux-keyring && \
         pacman -Syu --noconfirm pacman-contrib pacman git sudo binutils && \
         git config --global --add safe.directory /srv && \
