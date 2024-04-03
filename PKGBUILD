@@ -1,7 +1,7 @@
 # Maintainer: ihipop <ihipop at gmail dot com>
 _pkgname=proxyman
 pkgname="${_pkgname}-bin"
-pkgver=2.12.0
+pkgver=2.13.0
 pkgrel=1
 pkgdesc="Proxyman is a native, high-performance app, which enables developers to capture, inspect, and manipulate HTTP/HTTPS requests/responses with ease."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
     "LICENSE.md"
 )
 sha256sums=(
-            'ae9864c77c0208c7938692c181ebf9096df08ed0c325ef7de3c63eabe729dc9c'
+            '3562abe814ffd6aeed002aabb21a2b67f62aeab1f1ac582183f995775bd8684a'
             '1f06e6dbbba57c36ef98daa6ad4893b944494b1e20bcf477eb78580476205f9a'
            )
 build() {
