@@ -7,7 +7,8 @@ pkgrel="1"
 pkgdesc="A utility to watch the battery level and send the system to sleep if low."
 arch=('any')
 makedepends=('cargo'
-             'git')
+             'git'
+             'systemd')
 
 source=("git+https://git.unfug.hs-furtwangen.de/weva/battery_status_rs/#tag=$pkgver"
         "battery_status_rs_notification.service"
