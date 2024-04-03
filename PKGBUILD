@@ -2,8 +2,7 @@
 
 pkgname=python-darkgraylib
 _pkgname="${pkgname#python-}"
-pkgver=1.1.0
-_commit=4413a5234ed8e8c51bf4cf3a3301e5f65fbef965 # tags/v1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Filter linter messages from various Python linters to only those which were caused by recent changes to the code base being linted'
 arch=(any)
@@ -26,8 +25,8 @@ checkdepends=(
 	'python-pytest-kwparametrize'
 )
 optdepends=('python-pygments: syntax highlighting')
-source=("${pkgname}::git+${url}.git#commit=${_commit}")
-sha256sums=('SKIP')
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
+sha256sums=('2e9d5ed4c7660ea39790fc81d23dc3f5b2a66b0548a9e23f8fd857b919013244')
 
 build() {
 	cd "${pkgname}"
