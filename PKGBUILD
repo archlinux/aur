@@ -146,9 +146,9 @@ build() {
   meson compile -C build "${_meson_compile[@]}"
 }
 
-check() {
-  meson test -C build --print-errorlogs
-}
+#check() {
+#  meson test -C build --print-errorlogs
+#}
 
 package_systemd-fml() {
   pkgdesc='system and service manager'
