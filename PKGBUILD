@@ -1,27 +1,27 @@
 # Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
-pkgname=hqplayer5
-pkgver=5.5.1
-_debpkgver=5.5.1-14avx2
+pkgname=hqplayer-client
+pkgver=5.5.2
+_debpkgver=5.5.2-15
 pkgrel=1
-pkgdesc="The high-end upsampling multichannel software HD-audio player"
+pkgdesc="The high-end upsampling multichannel software HD-audio player - client application"
 arch=('x86_64' 'x86_64_v3')
 url="http://www.signalyst.com/consumer.html"
 license=('custom')
-depends=('glibc' 'gcc-libs' 'libx11' 'libusb-compat' 'openmp' 'qt6-base' 'qt6-charts' 'libmicrohttpd' 'alsa-lib' 'flac' 'wavpack' 'mpg123')
-optdepends=('hqplayer-client' 'evince: hqplayer manual reading')
-conflicts=('hqplayer4')
+depends=('qt6-webengine')
+optdepends=('hqplayer4' 'hqplayer5' 'hqplayer-embedded' 'hqplayer-embedded-sse')
 source=("https://www.signalyst.com/bins/jammy/hqplayer5desktop_"$_debpkgver"_amd64.deb")
-sha256sums=('cf5d8665151f767512fa65132c8e03484491fc4daed22a597bb253547b1fe2e8')
+sha256sums=('0ef5c9542245b334cf67a5f777bbc4a6c1bfbe33b0fe94e514a9dfcf68d1f386')
 options=(!strip)
 install=${pkgname}.install
 
 package() {
-cd $srcdir
-bsdtar xf data.tar.zst -C "$pkgdir"
-install -Dm644 "$pkgdir/usr/share/doc/hqplayer5desktop/copyright" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-rm "$pkgdir/usr/share/doc/hqplayer5desktop/copyright"
-rm $pkgdir/usr/bin/hqplayer5client
-rm $pkgdir/usr/share/applications/hqplayer5client.desktop
-rm $pkgdir/usr/share/pixmaps/hqplayer5client.png
+bsdtar xf data.tar.zst
+install -Dm755 $srcdir/usr/bin/hqplayer5client $pkgdir/usr/bin/hqplayer5client
+install -Dm644 $srcdir/usr/share/applications/hqplayer5client.desktop $pkgdir/usr/share/applications/hqplayer5client.desktop
+install -Dm644 $srcdir/usr/share/applications/hqplayer5client.desktop $pkgdir/usr/share/applications/hqplayer5client-wayland.desktop
+sed -i 's/\/usr\/bin\/hqplayer5client/bash -c "export QT_QPA_PLATFORM=xcb; hqplayer5client"/g' $pkgdir/usr/share/applications/hqplayer5client-wayland.desktop
+sed -i 's/HQPlayer 5 Client/HQPlayer 5 Client Wayland/g' $pkgdir/usr/share/applications/hqplayer5client-wayland.desktop
+install -Dm644 $srcdir/usr/share/pixmaps/hqplayer5client.png $pkgdir/usr/share/pixmaps/hqplayer5client.png
+install -Dm644 $srcdir/usr/share/doc/hqplayer5desktop/copyright $pkgdir/usr/share/licenses/$pkgname/COPYING
 }
