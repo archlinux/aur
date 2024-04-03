@@ -3,7 +3,7 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=cmake
-pkgver=3.29.0
+pkgver=3.29.1
 pkgrel=1
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
@@ -18,8 +18,8 @@ optdepends=(
 )
 source=("https://www.cmake.org/files/v${pkgver%.*}/${pkgname}-${pkgver}.tar.gz"
         "https://www.cmake.org/files/v${pkgver%.*}/${pkgname}-${pkgver}-SHA-256.txt"{,.asc})
-sha512sums=('abcca7a4db221d98864b77220445f0b70f87149626d3162ed49636862b87514b2640318438c0c711bfaafa1aba4d049b55f98e6ac28c44545543986c35fbd062'
-            '9a33a74a799e0ae4464a3b084b94617734b36bed2ed70260a0700bd2e8f846b6cddb279d8fa91488b08d29b14ad34d45dcea01afabc720f57a9c90e7700aa205'
+sha512sums=('3665ddb356bf973f75c9f2601f7210f7ff58c77c39926a43af8640979777a796d441df43fda5d2632548f7d15e4553829680c76f3d9376f9e763fe7bba16f3d7'
+            '78ac190968e5253a5cdef8acbddebf0f5750bf47aef92932b65fee4c75fd3c66a1fe3a366cd8105a9908b2d3324da4275b2b4f4c9e2c269818a6613b9dd21214'
             'SKIP')
 validpgpkeys=(CBA23971357C2E6590D9EFD3EC8FEF3A7BFB4EDA) # Brad King <brad.king@kitware.com>
 
