@@ -1,7 +1,7 @@
 # Maintainer: Adam Reichold <adam.reichold@t-online.de>
 
 pkgname=qmediathekview-git
-pkgver=r131.602a3f4
+pkgver=r146.06113d8
 pkgrel=1
 pkgdesc='An alternative front-end to the MediathekView database. (development version)'
 arch=('i686' 'x86_64' 'armv7h')
@@ -21,6 +21,12 @@ pkgver() {
   cd "$srcdir/QMediathekView"
   
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/QMediathekView/internals"
+
+  cargo fetch
 }
 
 build() {

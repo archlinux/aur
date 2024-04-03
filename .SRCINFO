@@ -1,6 +1,6 @@
 pkgbase = qmediathekview-git
 	pkgdesc = An alternative front-end to the MediathekView database. (development version)
-	pkgver = r142.e5bfec2
+	pkgver = r146.06113d8
 	pkgrel = 1
 	url = https://github.com/adamreichold/QMediathekView
 	arch = i686
