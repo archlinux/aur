@@ -1,0 +1,14 @@
+pkgbase = anyrun-plugin-dictionary-git
+	pkgdesc = Dictionary plugin for looking up word definitions.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/anyrun-org/plugin-dictionary
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = anyrun
+	source = anyrun-plugin-dictionary::git+https://github.com/anyrun-org/plugin-dictionary.git
+	sha256sums = SKIP
+
+pkgname = anyrun-plugin-dictionary-git
