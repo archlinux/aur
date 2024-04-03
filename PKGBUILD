@@ -2,7 +2,7 @@
 
 pkgname=catapult-bin
 pkgver=24.04a
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform launcher for Cataclysm: DDA and BN"
 arch=("x86_64")
 url="https://github.com/AriaMoradi/Catapult"
@@ -13,7 +13,7 @@ source=("$pkgname-$pkgver::$url/releases/download/$pkgver/catapult-linux-x64-$pk
         "catapult.sh"
         "catapult.desktop" 
         "catapult.svg")
-sha256sums=('324e5421ec404e9068b8b04adb206d62c5e4d0b6dd6271c747f495e655be8c18'
+sha256sums=('ab1fbb6b81ea296dcf3dbaaf88ce602391fc4b8ccf5eb7d5edf0ba0d1a67d39a'
             'f3aec11b591edf74db91ba7e00239f2f155dd67376f4c5182cb8c77968c0d992'
             '034c9dd45dbaae5e56fb7be4470272b4aec128437c0a6ba12609a355f97aa37d'
             'e097f3147e96570e75e9e356114a42989784dfdc98388a3261517b481c850e39')
