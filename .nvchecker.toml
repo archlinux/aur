@@ -1,0 +1,4 @@
+[ahk_x11]
+source = "github"
+github = "phil294/AHK_X11"
+use_max_tag = true
