@@ -2,7 +2,7 @@
 
 pkgname=homeassistant-osagent
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Home Assistant OS Agent"
 arch=('any')
 url="https://github.com/home-assistant/os-agent"
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 build() {
     cd "${srcdir}/os-agent"
-    go build -buildmode=pie -ldflags "-linkmode=external -extldflags=$LDFLAGS -X main.version=${pkgver}"
+    go build -buildmode=pie -ldflags "-linkmode=external -extldflags \"$LDFLAGS\" -X main.version=${pkgver}"
 }
 
 package() {
