@@ -17,10 +17,10 @@ pkgver() {
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)//;s/-/./g'
 }
 
-
 package() {
     cd "${srcdir}/${short_pkgname}"
     python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+    install -Dm755 LICENSE "$pkgdir/usr/share/licenses/$short_pkgname/LICENSE"
 }
 
 # vim:set ts=4 sw=4
