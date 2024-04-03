@@ -1,41 +1,64 @@
+# Contributor: David Runge <dvzrv@archlinux.org>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
+# Contributor: Mateusz Herych <heniekk@gmail.com>
+# Contributor: sysrq
+
 pkgname=picard-git
-pkgver=2.5.5.r75.g7b8c6561
+pkgver=2.11
 pkgrel=1
-pkgdesc="MusicBrainz tagging application"
-arch=('i686' 'x86_64')
-url="https://picard.musicbrainz.org"
-license=('GPL')
-depends=('python-pyqt5'
-         'python-mutagen'
-         'python-dateutil'
-         'python-fasteners')
-optdepends=('python-discid: CD-Lookup feature'
-            'python-markdown: Scripting documentation'
-            'chromaprint: AcoustID integration'
-            'qt5-translations: Translated Qt5 components'
-            'qt5-multimedia: Built‐in media player')
-makedepends=('git')
-provides=("picard=$pkgver")
+pkgdesc="Official MusicBrainz tagger"
+arch=(x86_64 i686)
+url="https://github.com/metabrainz/picard"
+license=(GPL-2.0-or-later)
+depends=(
+  glibc
+  hicolor-icon-theme
+  python
+  python-dateutil
+  python-discid
+  python-fasteners
+  python-markdown
+  python-mutagen
+  python-pyjwt
+  python-pyqt5
+  python-yaml
+)
+makedepends=(
+  git
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
+)
+checkdepends=(python-pytest)
+optdepends=(
+  'chromaprint: fingerprinting'
+  'qt5-multimedia: media player toolbar'
+  'qt5-translations: full UI translation'
+)
+provides=("${pkgname%%-git}=$pkgver")
 conflicts=('picard' 'picard-qt' 'picard-bzr')
 source=('git+https://github.com/metabrainz/picard.git')
-md5sums=('SKIP')
+b2sums=('SKIP')
+validpgpkeys=('68990DD0B1EDC129B856958167997E14D563DA7C') # MusicBrainz Picard Developers <picard@metabrainz.org>
 
 pkgver(){
-    cd "$srcdir/picard"
+    cd "${pkgname%%-git}"
     git describe --tags --always | sed -r 's|release-||g;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$srcdir/picard"
-    python setup.py build --disable-autoupdate
+  cd "${pkgname%%-git}"
+  python -m build --wheel --no-isolation
 }
 
 check() {
-    cd "$srcdir/picard"
-    python setup.py test
+  cd "${pkgname%%-git}"
+  pytest -vv
 }
 
 package() {
-    cd "$srcdir/picard"
-    python setup.py install --skip-build --root=$pkgdir --optimize=1
+  cd "${pkgname%%-git}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -vDm 644 {AUTHORS.txt,{CONTRIBUTING,NEWS,README}.md} -t "$pkgdir/usr/share/doc/${pkgname%%-git}/"
 }
