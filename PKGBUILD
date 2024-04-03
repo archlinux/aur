@@ -1,12 +1,12 @@
 # Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 pkgname=otf-andada-git
 _pkgname=Andada
-pkgver=r17.4c311e4
+pkgver=r169.74ef333d
 pkgrel=1
 pkgdesc='Organic-slab serif font made for Guaraní and Spanish'
 arch=(any)
 url="https://github.com/huertatipografica/$_pkgname"
-license=('OFL')
+license=(OFL-1.1-no-RFN)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+$url.git")
