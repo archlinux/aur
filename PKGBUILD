@@ -1,3 +1,5 @@
+#Maintainer: VPeti1 (Vasko Peter) 
+
 pkgname=aiopm
 pkgver=1.8
 pkgrel=1
