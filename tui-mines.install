@@ -1,0 +1,6 @@
+post_install() {
+    ## copy in required files. The script does not copy these over.
+    echo "For tui-mines to function properly, you need to run these commands:"
+    echo "cp /etc/tui-mines.config ~/.config/tui-mines/tui-mines.config"
+    echo "cp -r /usr/share/tui-mines/tui-mines.png ~/.cache/tui-mines/"
+}

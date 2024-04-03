@@ -1,0 +1,14 @@
+pkgbase = tui-mines
+	pkgdesc = A text-based user interface implimentation of the classic mine sweeping puzzle game
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/christosangel/tui-mines
+	install = tui-mines.install
+	arch = any
+	license = GPL2-or-later
+	depends = bash
+	depends = ttf-font-nerd
+	source = tui-mines-0.1.0.tar.gz::https://gitlab.com/christosangel/tui-mines/-/archive/0.1.0/tui-mines-0.1.0.tar.gz
+	sha256sums = 7b429cf1bb4f3841c36ce6165d173de7e68bcbd815d59d2182b1b00934c66338
+
+pkgname = tui-mines
