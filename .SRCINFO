@@ -52,7 +52,7 @@ pkgbase = systemd-fml
 	makedepends = lib32-gcc-libs
 	makedepends = python-pefile
 	conflicts = mkinitcpio<38-1
-	source = systemd-fml-stable::git+https://github.com/systemd/systemd-stable#tag=v255.4?signed
+	source = systemd-fml-stable::git+https://github.com/systemd/systemd-stable#tag=v255.4
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
 	source = 0002_added_machine_id_smbios_variable.patch
 	source = arch.conf
