@@ -1,21 +1,23 @@
 #Maintainer: VPeti1 (Vasko Peter) 
 
 pkgname=aiopm
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 arch=('x86_64')
 
-license=('GPL2')
+license=('GPL3')
 pkgdesc="All in one package manager for linux"
 
-depends=('gcc')
+depends=('gcc' 'eaur')
 
 source=("https://github.com/VPeti1/CWAcces/raw/main/aiopm.tar.gz")
 
-sha256sums=('b33062c62b3775fdbce9c3411325bd9c9783cb8fcc2724d2c3f1d0795c55befb')
+sha256sums=('118d5dd1461c229ee83eef91a4a811b796982a3f8b3849692dfbf5211042cc55')
 
 build() {
     cd "$srcdir"
+    sudo mkdir /usr/aiopm
+    sudo touch /usr/aiopm/a1.cw
     g++ -o aiopm main.cpp
 }
 
