@@ -14,7 +14,7 @@ depends=(
     'jxrlib'
 )
 optdepends=('steam')
-options=('!debug')
+options=('!strip' '!debug')
 provides=("xivlauncher=${pkgver}")
 conflicts=(
 	"xivlauncher"
