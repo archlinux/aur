@@ -1,17 +1,17 @@
 # Use environment variable MAKEPKG_AYUGRAM_API_ID and MAKEPKG_AYUGRAM_API_HASH to override default values
 
 pkgname=ayugram-desktop
-pkgver=4.15.2
-pkgrel=2
+pkgver=4.16
+pkgrel=1
 pkgdesc="Desktop Telegram client with good customization and Ghost mode."
 arch=("x86_64")
 url="https://github.com/AyuGram/AyuGramDesktop"
 license=("GPL-3.0-only")
 depends=(
-    "hunspell" "ffmpeg" "hicolor-icon-theme" "lz4" "minizip" "openal" "ttf-opensans"
-    "qt6-imageformats" "qt6-svg" "qt6-wayland" "xxhash" "rnnoise" "pipewire" "libxtst"
-    "libxrandr" "libxcomposite" "abseil-cpp" "libdispatch" "openssl" "protobuf"
-    "glib2" "libsigc++-3.0" "glibmm-2.68" "kcoreaddons"
+    "hunspell" "ffmpeg" "hicolor-icon-theme" "lz4" "minizip" "openal"
+    "qt6-imageformats" "qt6-svg" "qt6-wayland" "xxhash" 
+    "rnnoise" "pipewire" "libxtst" "libxrandr" "libxcomposite" "libxdamage" "abseil-cpp" "libdispatch" 
+    "openssl" "protobuf" "glib2" "libsigc++-3.0" "kcoreaddons"
 )
 makedepends=(
     "cmake" "ninja" "python" "range-v3" "tl-expected" "microsoft-gsl" "meson"
@@ -26,12 +26,12 @@ source=(
     "AyuGram-v$pkgver.tar.gz::https://github.com/AyuGram/AyuGramDesktop/archive/refs/tags/v$pkgver.tar.gz"
 )
 declare -rAg _modules_name_map=(
-    [cmake]=https://github.com/desktop-app/cmake_helpers/archive/5a61112d6d025b56573ad48bcc1331ac65c4a927.tar.gz
+    [cmake]=https://github.com/desktop-app/cmake_helpers/archive/b875d0ae2bf457ec94aaddd08431753e14ec71ac.tar.gz
     [cmake/external/Implib.so]=https://github.com/yugr/Implib.so/archive/0ddaa715d2572b100f8248c0fa4450fbf895be14.tar.gz
-    [cmake/external/glib/cppgir]=https://gitlab.com/mnauw/cppgir/-/archive/748a04795616f792f6fe91edf24620f78a2ef65c/cppgir-748a04795616f792f6fe91edf24620f78a2ef65c.tar.gz
+    [cmake/external/glib/cppgir]=https://gitlab.com/mnauw/cppgir/-/archive/9c4f5820d94d62ab451501f016bfea97156518f4/cppgir-9c4f5820d94d62ab451501f016bfea97156518f4.tar.gz
     [cmake/external/glib/cppgir/expected-lite]=https://github.com/martinmoene/expected-lite/archive/95b9cb015fa17baa749c2b396b335906e1596a9e.tar.gz
     [Telegram/codegen]=https://github.com/desktop-app/codegen/archive/afed06a4c04d1a1cf7cfce4faca273e1f574462e.tar.gz
-    [Telegram/lib_base]=https://github.com/desktop-app/lib_base/archive/5b9556fddb9a67e514d0bed2c123e18cbe1663b7.tar.gz
+    [Telegram/lib_base]=https://github.com/desktop-app/lib_base/archive/f95154033c670cf786fce82b005abde8a5d3922f.tar.gz
     [Telegram/lib_crl]=https://github.com/desktop-app/lib_crl/archive/078006d29af0002e6cd8c61a405cdeaf65b37142.tar.gz
     [Telegram/lib_lottie]=https://github.com/desktop-app/lib_lottie/archive/1a700e5a0d7c3e2f617530354ff2a47c5c72bb4a.tar.gz
     [Telegram/lib_qr]=https://github.com/desktop-app/lib_qr/archive/501f4c3502fd872ab4d777df8911bdac32de7c48.tar.gz
@@ -39,9 +39,9 @@ declare -rAg _modules_name_map=(
     [Telegram/lib_spellcheck]=https://github.com/desktop-app/lib_spellcheck/archive/9b52030bfcd7e90e3e550231a3783ad1982fda78.tar.gz
     [Telegram/lib_storage]=https://github.com/desktop-app/lib_storage/archive/0971b69ca90f1697ef81276d9820dcd6d26de4ac.tar.gz
     [Telegram/lib_tl]=https://github.com/AyuGram/lib_tl/archive/11c8ae47ff9c9d69b0470700fff9ed924a97acd3.tar.gz
-    [Telegram/lib_ui]=https://github.com/AyuGram/lib_ui/archive/db1b039982d7b48d46df54347a3bd10e7dcafbcf.tar.gz
-    [Telegram/lib_webrtc]=https://github.com/desktop-app/lib_webrtc/archive/5493af61df5cb90a30b686296521961763a009e0.tar.gz
-    [Telegram/lib_webview]=https://github.com/desktop-app/lib_webview/archive/fbf9dd54787df90c98cf230cb53323527e0b0639.tar.gz
+    [Telegram/lib_ui]=https://github.com/AyuGram/lib_ui/archive/b893172343871ba854220c0ff670df4ae991bb97.tar.gz
+    [Telegram/lib_webrtc]=https://github.com/desktop-app/lib_webrtc/archive/1cbf5fa7d875074c40e76216a3047bd7c59996d7.tar.gz
+    [Telegram/lib_webview]=https://github.com/desktop-app/lib_webview/archive/7c346c6b042266b5adb116a2114df1d46b37c03f.tar.gz
     [Telegram/ThirdParty/GSL]=https://github.com/desktop-app/GSL/archive/09938e870420b69a01f55c755207c871bc20b4e5.tar.gz
     [Telegram/ThirdParty/QR]=https://github.com/nayuki/QR-Code-generator/archive/720f62bddb7226106071d4728c292cb1df519ceb.tar.gz
     [Telegram/ThirdParty/cld3]=https://github.com/google/cld3/archive/b48dc46512566f5a2d41118c8c1116c4f96dc661.tar.gz
@@ -82,16 +82,16 @@ do
         source+=("$source_str")
     fi
 done
-sha256sums=('c4f56a1a0f69a42f17d8bb0934c89b04ad0a69acefbf8ed8d6d7ce1c15f7c1f2'
+sha256sums=('b4fce8656b1c3e72ee3a294174259bfb2b42fbf7b96653d75f63ee11f9b22a2c'
             'd0d4ea2fddcbc7d10ace2c37309feb09da87e8ce7ced6ce73592da1359f4765f'
-            'a8f696fcf6bc85b0e9bfa898f85db94267c1e3c17ee80e5d857d9fe10efec3c2'
+            '4af7bb71070bdf3840f92b134bcbcf7046cb2b6d57292e9abffcde9ecbf68d67'
             '8b4ba7258685e49c9b7f2c60925264c3b2713805ad21304404d5f6b77cd5582b'
             'cbc1f4bf8c28ffeb89852eda7056ff6aa80d49cb45736a583c931d5ceeccdcdd'
             '3e7253b2cc31bdf68fa50d105715158e649812e5ad6b4f1f6e5fd1e89b3ffdfd'
             'c9aa4e32eb5e475d0826154055ff4749c07bb46d83b12f1641d31557e944a16f'
-            '3769b5ec854577570d48563877335848b5fe6d34296631dba9f5e194162104e4'
+            '6b45bc8987bcd8f769954da20a327f8ac9271b6aeafdc944597838b92876319a'
             '1142f3ccaf7750e4cf452aa9c39336b7029f2aee337957ef646da23a7b08ac62'
-            'b26d5e39e0e0e9b284888132e87cc5c9799798b9cb5625328b46b4c034b1ffb8'
+            'd050b648598f639f872d68a2569e9e5a7929ac31fbc2649edc4c67c9efeec2ee'
             'c9c7364bc59fb9421e3f87c421b87ef910e140b4b8144511106dee4bf5f78f18'
             '3454ad000136aef5d51a74a9c4714ed7e39914e30957f77ea18e8953ebe6cb78'
             '716fbe4fc85ecd36488afbbc635b59b5ab6aba5ed3b69d4a32a46eae5a453d38'
@@ -103,10 +103,10 @@ sha256sums=('c4f56a1a0f69a42f17d8bb0934c89b04ad0a69acefbf8ed8d6d7ce1c15f7c1f2'
             'dee085433f53dbeb7687e4f605f656871199384486f3000e343da38e4acb1e38'
             '15a9981ab5e6a01f301609017aee11e000c22880d38b3be4e3da58c338f9b2fc'
             '855997c49f5f7263b8270662d03c8a1d5ba1868664a150e0f837679e2629a5ab'
-            '47e0816b744e7aa4dfbd5862676110773737f7ecab3afdbb4f33af223ad50e32'
+            'ec25bbd47ba895684e9f9a3dfbb9aa96a7573c4c84455542be23998d5eb0fad8'
             '612b5d89f58a578240b28a1304ffb0d085686ebe0137adf175ed0e3382b7ed58'
             '996fdbcc6f99f44963c867a701bf8ab4179f32f3536ed32895a009ab569a4d66'
-            '9c05f2895e8ed66486ad2b119a96c460bb82eef86505760e152a2983e5622adb'
+            '2a649f007d7526dfa1a2ce4496e9a1a59006e0fcba19643c80d07f5fe97d01b7'
             '0de97c65d3833051ead485c2130d20049b32e0190a7bf965c8696544e749949c'
             'd80795686f3e58448c7b76830bb5c40847b7eaae1996c28f0422a029b66c2bb0'
             'f5f94a60077a15a0c583318703c7f1104c48bba93c8cbfa66fb9b6b8dda07cdf'
@@ -116,7 +116,7 @@ sha256sums=('c4f56a1a0f69a42f17d8bb0934c89b04ad0a69acefbf8ed8d6d7ce1c15f7c1f2'
             'fc22d9e6f2fa269fc607de20a5104644bc8b3ed5648fbad588f1d4933f4bc7f3'
             '4fed49839e82c934def32d5890770d34815f0a94a87868ba6848379cc841f110'
             '23afa0a99c984037d926df4e3e0328d527761ebfff3b4c5fe8bea7e5fff6e11a'
-            'a2bbaf9fab5bbc243b37d8e119d0e06f9781ef3b97935e6534282510a32a924b'
+            '741c62a2b84b08d2dab63c499efffd4c74f47ba5c47d84402bb98a6764e4536e'
             '22a1bfb607c1f6475834e774d9030f54161371dfbcc86108511bc63cbaaae24e'
             'c7083f7621d873d0734b1a68c8370faf45b44c04aa7465c63a3b1a48ff536057'
             'fbc6c37bd4b8e14ea8a2dbbd1a653de62471e0f9b29d49b2c58c7fca127518d7'
