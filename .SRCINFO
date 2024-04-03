@@ -1,0 +1,14 @@
+pkgbase = anyrun-plugin-rink-git
+	pkgdesc = Rink plugin for calculator and unit conversion.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/anyrun-org/plugin-rink
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = anyrun
+	source = anyrun-plugin-rink::git+https://github.com/anyrun-org/plugin-rink.git
+	sha256sums = SKIP
+
+pkgname = anyrun-plugin-rink-git
