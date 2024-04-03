@@ -1,0 +1,14 @@
+pkgbase = python-urlobject
+	pkgdesc = A utility class for manipulating URLs
+	pkgver = 2.4.3
+	pkgrel = 8
+	url = https://github.com/zacharyvoase/urlobject
+	arch = any
+	license = custom:Unlicense
+	checkdepends = python-nose
+	makedepends = python-setuptools
+	depends = python
+	source = python-urlobject-2.4.3.tar.gz::https://github.com/zacharyvoase/urlobject/archive/v2.4.3.tar.gz
+	sha512sums = 2bd08ba5695c8277eeed154d7f414939e8b471e83f1fc6b9db93931f8e49dea4583036b0b7fb8d820e0b214bdc4bf2fe78987eb6a5c63ba70611aea6365c2972
+
+pkgname = python-urlobject
