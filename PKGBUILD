@@ -1,15 +1,16 @@
 # Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 pkgname=ttf-hanken
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Geometric and rounded sans-serif font'
 arch=(any)
-url="https://fontlibrary.org/en/font/hanken"
-license=(OFL)
-source=("$pkgname-$pkgver.zip::https://fontlibrary.org/assets/downloads/hanken/855de8cbbcb144bc29cdd2927821141f/hanken.zip")
-sha256sums=('2362cf1b55acc527755e81214e08f12cb409ebf4ce9e76a6a5f822ef73216d4a')
+url="https://github.com/marcologous/hanken-grotesk"
+license=(OFL-1.1-no-RFN)
+source=("git+$url#commit=1ab416e82130b2d3ddb7710abf7ceabf07156a13")
+sha256sums=('29c0e4ef41c1dbcb9f9b90e98833d4db9c27e472e3b52a866e9a98574892efa7')
 
 package() {
-	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" OFL-FAQ.txt
-	install -Dm644 -t "$pkgdir/usr/share/fonts/TTF" *.ttf
+	cd hanken-grotesk
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" OFL.txt
+	install -Dm644 -t "$pkgdir/usr/share/fonts/TTF" fonts/ttf/*.ttf
 }

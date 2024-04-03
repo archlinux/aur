@@ -1,12 +1,11 @@
 pkgbase = ttf-hanken
 	pkgdesc = Geometric and rounded sans-serif font
 	pkgver = 1.0
-	pkgrel = 2
-	url = https://fontlibrary.org/en/font/hanken
+	pkgrel = 3
+	url = https://github.com/marcologous/hanken-grotesk
 	arch = any
-	license = OFL
-	source = ttf-hanken-1.0.zip::https://fontlibrary.org/assets/downloads/hanken/855de8cbbcb144bc29cdd2927821141f/hanken.zip
-	sha256sums = 2362cf1b55acc527755e81214e08f12cb409ebf4ce9e76a6a5f822ef73216d4a
+	license = OFL-1.1-no-RFN
+	source = git+https://github.com/marcologous/hanken-grotesk#commit=1ab416e82130b2d3ddb7710abf7ceabf07156a13
+	sha256sums = 29c0e4ef41c1dbcb9f9b90e98833d4db9c27e472e3b52a866e9a98574892efa7
 
 pkgname = ttf-hanken
-
