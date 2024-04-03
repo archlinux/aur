@@ -31,6 +31,7 @@ pkgbase = gtk3-classic
 	makedepends = libxrandr
 	makedepends = meson
 	makedepends = pango
+	makedepends = python-packaging
 	makedepends = quilt
 	makedepends = sassc
 	makedepends = shared-mime-info
