@@ -3,7 +3,7 @@
 
 pkgname=yass-proxy-cli
 pkgver=1.8.1
-pkgrel=3
+pkgrel=4
 _pkgver=1.8.1
 _pkgrel=1
 pkgdesc="lightweight http/socks proxy commandline"
@@ -19,7 +19,7 @@ source=("https://github.com/Chilledheart/yass/releases/download/${_pkgver}/yass-
         "fortify.patch"
        )
 sha256sums=('b6be8f8b6351505df64f1ed1ad6d25c28abeb67ea87d4727c92cc0369d992c1f'
-            'cc1b6e0a879c2f24b794ac70e049fab212c734778ba5ecdd03262279f1947549'
+            '63f3c95ad39bf178d92b26458c30baf15b513a8c3be7e00200985e0721e2ea41'
        )
 
 prepare() {
