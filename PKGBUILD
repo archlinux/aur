@@ -9,8 +9,20 @@ pkgdesc="Open. Nonprofit. Cute. Easy to use (matrix) messenger. Secure and decen
 arch=('x86_64' 'aarch64')
 url="https://fluffychat.im/"
 license=('AGPL3')
-depends=('gtk3' 'jsoncpp' 'libsecret' 'xdg-user-dirs' 'libolm')
+depends=(
+        'gtk3'
+        'jsoncpp'
+        # flutter_secure_storage
+        'libsecret'
+        # path_provider
+        'xdg-user-dirs'
+        # for e2ee
+        'libolm'
+        # flutter_file_picker - see https://github.com/miguelpruivo/flutter_file_picker/blob/master/lib/src/linux/file_picker_linux.dart#L115
+        'zenity'
+)
 makedepends=(
+             'git'
              'flutter-tool'
              'flutter-target-linux'
              )
