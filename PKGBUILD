@@ -2,7 +2,7 @@
 # Maintainer: Maas Lalani <maas@charm.sh>
 
 pkgname='freeze-bin'
-pkgver=0.1.4
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='Generate images of code and terminal output.'
 url='https://charm.sh/'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('freeze')
 conflicts=('freeze')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/freeze/releases/download/v0.1.4/freeze_0.1.4_Linux_arm64.tar.gz")
-sha256sums_aarch64=('767b3256f9a0b5b7081487cc9e3ca544016005156e757f95a678f19df7b40379')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/freeze/releases/download/v0.1.6/freeze_0.1.6_Linux_arm64.tar.gz")
+sha256sums_aarch64=('ee0858453cfb51accdb7fd2fd0ef4c30350b4b566d662cc10506b455517031d7')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/freeze/releases/download/v0.1.4/freeze_0.1.4_Linux_arm.tar.gz")
-sha256sums_armv7h=('de5f1123a4790efd97b2161945fcd666f82840fc39164c9165c3ed93603b5aa3')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/freeze/releases/download/v0.1.6/freeze_0.1.6_Linux_arm.tar.gz")
+sha256sums_armv7h=('7062295f3c4f9aeb158674769ed2524a0c6a87ff5dec052d63cc0178df0cccb1')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/freeze/releases/download/v0.1.4/freeze_0.1.4_Linux_i386.tar.gz")
-sha256sums_i686=('941270494662626224b321743a234f3dbf30290ac2f26cfd86b12eb472677941')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/freeze/releases/download/v0.1.6/freeze_0.1.6_Linux_i386.tar.gz")
+sha256sums_i686=('902d3f7d70b8a50fd2aad950ec912f4f89898cd21f1b7eb20749a62b3685249b')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/freeze/releases/download/v0.1.4/freeze_0.1.4_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('d26bb9f5fa379c7c67f6306946936a9ef4f803bf088f07017b885117255ec5a6')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/freeze/releases/download/v0.1.6/freeze_0.1.6_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('1146f8b0881ded798f7291f21910867adc9f7e8ae7b14243d74c5c05d0b8427f')
 
 package() {
   cd "${srcdir}/freeze_${pkgver}_Linux_${CARCH}"
