@@ -2,7 +2,7 @@
 
 _pkgname=xfce4-session
 pkgname=${_pkgname}-devel
-pkgver=4.19.1
+pkgver=4.19.2
 pkgrel=1
 pkgdesc="A session manager for Xfce"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -10,17 +10,19 @@ url="https://docs.xfce.org/xfce/xfce4-session/start"
 license=('GPL2')
 groups=('xfce4-devel')
 depends=('libxfce4ui' 'libwnck3' 'xfconf' 'libsm' 'polkit' 'xorg-iceauth'
-         'xorg-xinit' 'xorg-xrdb' 'polkit-gnome' 'hicolor-icon-theme')
+         'xorg-xinit' 'xorg-xrdb' 'polkit-gnome' 'hicolor-icon-theme'
+         'libxfce4windowing>=4.19.2' 'gtk-layer-shell')
 optdepends=('gnome-keyring: for keyring support when GNOME compatibility is enabled'
             'xfce4-screensaver: for locking screen with xflock4'
             'xscreensaver: for locking screen with xflock4'
-            'light-locker: for locking screen with xflock4')
+            'light-locker: for locking screen with xflock4'
+            'labwc: default wayland compositor for the experimental wayland session')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 replaces=('xfce-utils')
 source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2"
         'xfce-polkit-gnome-authentication-agent-1.desktop')
-sha256sums=('0dd996dd245b774617f439dd86965ca752695747b3071bdd0cd39014ab08b335'
+sha256sums=('7ce9173c7deee5c2d3dd638d5dc315f83c0d5117e06e17d7879acace0a876e1e'
             '74c94c5f7893d714e04ec7d8b8520c978a5748757a0cdcf5128492f09f31b643')
 
 build() {
