@@ -1,0 +1,14 @@
+pkgbase = anyrun-plugin-symbols
+	pkgdesc = Symbols plugin for searching unicode symbols.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/anyrun-org/plugin-symbols
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = anyrun
+	source = https://github.com/anyrun-org/plugin-symbols/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 3a0b57756e99ae3d914b2aa521fc5165342ff6999b40ae65a9916092bb7d9460
+
+pkgname = anyrun-plugin-symbols
