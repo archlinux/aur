@@ -6,6 +6,7 @@ pkgrel=__PKGREL__
 pkgdesc="command-line JSON Log viewer"
 arch=('x86_64')
 url="https://github.com/brocode/fblog"
+options=(!lto)
 license=('custom:WTFPL')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
