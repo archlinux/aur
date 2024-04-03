@@ -1,6 +1,6 @@
 diff -up splix/ppd/samsung.drv.in.deviceID splix/ppd/samsung.drv.in
 --- splix/ppd/samsung.drv.in.deviceID	2013-08-26 21:45:31.000000000 +0200
-+++ splix/ppd/samsung.drv.in	2013-09-02 13:56:57.002669362 +0200
++++ splix/ppd/samsung.drv.in	2015-12-29 11:01:10.646489492 +0100
 @@ -39,6 +39,7 @@ Manufacturer "Samsung"
              Resolution k 1 0 0 0 "300dpi/300 DPI"
   
@@ -21,11 +21,15 @@ diff -up splix/ppd/samsung.drv.in.deviceID splix/ppd/samsung.drv.in
                      Throughput 22
      		{
                      	ModelName "ML-2250"
-+                        Attribute "1284DeviceID" "" "MFG:Samsung;MDL:ML-2250;"
++                    	Attribute "1284DeviceID" "" "MFG:Samsung;MDL:ML-2250;"
      	                PCFileName "ml2250.ppd"
      		} {
                      	ModelName "ML-2251"
-@@ -166,6 +169,7 @@ Manufacturer "Samsung"
+@@ -163,9 +166,11 @@ Manufacturer "Samsung"
+                     PCFileName "ml1630.ppd"
+                 } {
+                     ModelName "ML-1640"
++                    Attribute "1284DeviceID" "" "MFG:Samsung;MDL:ML-1640 Series;CMD:GDI,FWV;"
                      PCFileName "ml1640.ppd"
                  } {
                      ModelName "ML-2010"
@@ -33,7 +37,7 @@ diff -up splix/ppd/samsung.drv.in.deviceID splix/ppd/samsung.drv.in
                      PCFileName "ml2010.ppd"
                  } {
                      ModelName "ML-2015"
-@@ -177,6 +181,7 @@ Manufacturer "Samsung"
+@@ -177,6 +182,7 @@ Manufacturer "Samsung"
                      #import "srtmode.defs"
      
                      ModelName "ML-2510"
@@ -41,7 +45,7 @@ diff -up splix/ppd/samsung.drv.in.deviceID splix/ppd/samsung.drv.in
                      PCFileName "ml2510.ppd"
                  }
              }
-@@ -193,15 +198,18 @@ Manufacturer "Samsung"
+@@ -193,15 +199,18 @@ Manufacturer "Samsung"
      
                  {
                      ModelName "ML-1660"
@@ -60,7 +64,15 @@ diff -up splix/ppd/samsung.drv.in.deviceID splix/ppd/samsung.drv.in
                      PCFileName "ml2525w.ppd"
                  }
              } {
-@@ -465,6 +473,7 @@ Manufacturer "Samsung"
+@@ -239,6 +248,7 @@ Manufacturer "Samsung"
+                 Attribute QPDL PacketSize "512"
+                 {
+                     ModelName "ML-2160"
++                    Attribute "1284DeviceID" "" "MFG:Samsung;MDL:ML-2160 Series;CMD:SPL,FWV,PIC,BDN,EXT;"
+                     PCFileName "ml2160.ppd"
+ 	        }
+             }
+@@ -465,6 +475,7 @@ Manufacturer "Samsung"
          Attribute General CMSFile "CLP-310"
  
          ModelName "CLP-310"
@@ -70,8 +82,16 @@ diff -up splix/ppd/samsung.drv.in.deviceID splix/ppd/samsung.drv.in
          Attribute General CMSFile "CLP-315"
 diff -up splix/ppd/xerox.drv.in.deviceID splix/ppd/xerox.drv.in
 --- splix/ppd/xerox.drv.in.deviceID	2013-08-26 17:22:00.000000000 +0200
-+++ splix/ppd/xerox.drv.in	2013-09-02 13:55:22.634957854 +0200
-@@ -66,6 +66,7 @@ Manufacturer "Xerox"
++++ splix/ppd/xerox.drv.in	2015-12-29 11:03:33.639830777 +0100
+@@ -31,6 +31,7 @@ Manufacturer "Xerox"
+ 	    Resolution k 1 0 0 0 "300dpi/300 DPI"
+ 
+             ModelName "WorkCentre 3119"
++            Attribute "1284DeviceID" "" "MFG:Xerox;MDL:WorkCentre 3119 Series;CMD:GDI;"
+             PCFileName "wc3119.ppd"
+ 	} {
+             Resolution k 1 0 0 0 "300dpi/300 DPI"
+@@ -66,6 +67,7 @@ Manufacturer "Xerox"
                  } {
                      #import "manualduplex.defs"
                      ModelName "Phaser 3120"
@@ -79,7 +99,7 @@ diff -up splix/ppd/xerox.drv.in.deviceID splix/ppd/xerox.drv.in
                      PCFileName "ph3120.ppd"
                  } {
                      #import "manualduplex.defs"
-@@ -74,6 +75,7 @@ Manufacturer "Xerox"
+@@ -74,6 +76,7 @@ Manufacturer "Xerox"
                  } {
                      #import "manualduplex.defs"
                      ModelName "Phaser 3130"
@@ -87,7 +107,7 @@ diff -up splix/ppd/xerox.drv.in.deviceID splix/ppd/xerox.drv.in
                      PCFileName "ph3130.ppd"
                  } {
                      // Multi-tray
-@@ -118,6 +120,7 @@ Manufacturer "Xerox"
+@@ -118,6 +121,7 @@ Manufacturer "Xerox"
  
              {
                  ModelName "Phaser 3117"
@@ -95,7 +115,7 @@ diff -up splix/ppd/xerox.drv.in.deviceID splix/ppd/xerox.drv.in
                  PCFileName "ph3117.ppd"
              } {
                  Resolution k 1 0 0 0 "1200x600dpi/1200x600 DPI"
-@@ -131,6 +134,7 @@ Manufacturer "Xerox"
+@@ -131,6 +135,7 @@ Manufacturer "Xerox"
  
                  {
                      ModelName "Phaser 3124"

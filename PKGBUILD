@@ -4,37 +4,37 @@
 # Contributor: Francis Carroll (franciscarroll at gmail dot com)
 
 pkgname=splix
-pkgver=2.0.0
-pkgrel=20
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="CUPS drivers for SPL (Samsung Printer Language) printers"
 arch=('x86_64')
-url="http://splix.ap2c.org/"
-license=('GPL')
+url="https://openprinting.github.io/splix/"
+license=('GPL-2.0-only')
 depends=('libcups' 'gcc-libs' 'ghostscript' 'jbigkit')
-makedepends=('krb5' 'subversion')
+makedepends=('krb5')
 install=splix.install
-source=(svn+https://svn.code.sf.net/p/splix/code/splix#revision=315
+source=(https://github.com/OpenPrinting/splix/releases/download/$pkgver/$pkgname-$pkgver.tar.xz
         splix-deviceID.patch
         splix-ldflags.patch)
-sha256sums=('SKIP'
-            'd8540032c994d49cbe32c7831b703125b2951ef353d5f2e3320933f47073efeb'
-            'cf8eb17d15bcfb0afae52622c441272171fb73cedfd4ab0537e658050ebe043c')
+sha256sums=('533946d57897bf62a2cf8f74e488258e11fa0c55028fad43ada24c5686f38a06'
+            '83bdee7236d577bee20d2ba38e1586e17702001c0c7e665cf54d7f0f156e50c3'
+            'e262082f1eeb3b2c637c0fd85e17ce3e3455c66730ba78417114ff74d0d78704')
 
 prepare() {
-  cd splix
+  cd $pkgname-$pkgver
   patch -Np1 -i ../splix-deviceID.patch
   patch -Np1 -i ../splix-ldflags.patch
 }
 
 build() {
-  cd splix
+  cd $pkgname-$pkgver
   CXXFLAGS+=' -fno-strict-aliasing'
   make drv
   make all DRV_ONLY=1
 }
 
 package() {
-  cd splix
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install DRV_ONLY=1
 }
 
