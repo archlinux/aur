@@ -1,6 +1,6 @@
 # Maintainer: Lucas Mindello <lucas at mindello dot com dot br>
 pkgname=homeassistant-supervised
-pkgver=1.5.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Home Assistant Supervised"
 arch=('any')
@@ -17,13 +17,15 @@ depends=(
     'dbus'
     'homeassistant-osagent'
 )
-optdepends=("networkmanager: support for built-in network management"
+optdepends=("cifs-utils: support for SMB/CIFS mounts"
+            "nfs-utils: support for NFS mounts"
+            "networkmanager: support for built-in network management"
             "apparmor: enhanced security")
 makedepends=('git')
 conflicts=('docker-desktop')
 install=.INSTALL
 backup=(etc/docker/daemon.json)
-_tag=06671c39bd5c81fd213330597fbf9c7dd9a36e78 # git rev-parse "$pkgver"
+_tag=b345d3ee653aaccc7f5fc756315961e7a4a2ec8f # git rev-parse "$pkgver"
 source=("git+https://github.com/home-assistant/supervised-installer.git#tag=${_tag}")
 md5sums=('SKIP')
 
@@ -32,6 +34,7 @@ package() {
     install -Dm755 "${srcdir}/supervised-installer/homeassistant-supervised/usr/sbin/hassio-apparmor" "${pkgdir}/usr/bin/hassio-apparmor"
     install -Dm755 "${srcdir}/supervised-installer/homeassistant-supervised/usr/sbin/hassio-supervisor" "${pkgdir}/usr/bin/hassio-supervisor"
     install -Dm644 "${srcdir}/supervised-installer/homeassistant-supervised/etc/NetworkManager/NetworkManager.conf" "${pkgdir}/etc/NetworkManager/conf.d/hassio.conf"
+    install -Dm644 "${srcdir}/supervised-installer/homeassistant-supervised/etc/systemd/resolved.conf" "${pkgdir}/etc/systemd/resolved.conf.d/hassio.conf"
     install -Dm644 "${srcdir}/supervised-installer/homeassistant-supervised/etc/docker/daemon.json" "${pkgdir}/etc/docker/daemon.json"
     install -Dm644 "${srcdir}/supervised-installer/homeassistant-supervised/etc/systemd/system/hassio-apparmor.service" "${pkgdir}/usr/lib/systemd/system/hassio-apparmor.service"
     install -Dm644 "${srcdir}/supervised-installer/homeassistant-supervised/etc/systemd/system/hassio-supervisor.service" "${pkgdir}/usr/lib/systemd/system/hassio-supervisor.service"
