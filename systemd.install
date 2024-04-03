@@ -1,0 +1,54 @@
+#!/bin/bash
+
+sd_booted() {
+  [[ -d run/systemd/system && ! -L run/systemd/system ]]
+}
+
+add_journal_acls() {
+  # ignore errors, since the filesystem might not support ACLs
+  setfacl -Rnm g:wheel:rx,d:g:wheel:rx,g:adm:rx,d:g:adm:rx var/log/journal/ 2>/dev/null
+  :
+}
+
+post_common() {
+  systemd-sysusers
+  journalctl --update-catalog
+}
+
+post_install() {
+  systemd-machine-id-setup
+
+  post_common "$@"
+
+  add_journal_acls
+
+  # enable some services by default, but don't track them
+  systemctl enable \
+    getty@tty1.service \
+    remote-fs.target \
+    systemd-userdbd.socket
+
+  # group 'systemd-journal-remote' is created by systemd-sysusers
+  mkdir -m2755 var/log/journal/remote
+  chgrp systemd-journal-remote var/log/journal/remote
+}
+
+post_upgrade() {
+  post_common "$@"
+
+  if sd_booted; then
+    systemctl --system daemon-reexec
+    systemctl kill --kill-whom='main' --signal='SIGRTMIN+25' 'user@*.service'
+  fi
+
+  local v upgrades=(
+  )
+
+  for v in "${upgrades[@]}"; do
+    if [[ $(vercmp "$v" "$2") -eq 1 ]]; then
+      "_${v//[.-]/_}_changes"
+    fi
+  done
+}
+
+# vim:set ts=2 sw=2 et:
