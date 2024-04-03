@@ -5,14 +5,14 @@
 # Contributor: dalto <dalto at fastmail dot com>
 pkgname=slimjet
 _pkgname="flashpeak-${pkgname}"
+_libffmpegver=0.86.0
 pkgver=42.0.3.0
-pkgrel=3
-_libffmpegverurl="https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt"
-_libffmpegver=0.85.0
+pkgrel=4
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('x86_64')
 url="https://www.slimjet.com"
-_downurl="https://www.slimjetbrowser.com"
+_dlurl="https://www.slimjetbrowser.com"
+_libffmpegverurl="https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt"
 license=('LicenseRef-freeware')
 depends=(
     'alsa-lib'
@@ -21,6 +21,7 @@ depends=(
     'at-spi2-core'
     'libxrandr'
     'libxcomposite'
+    'libxdamage'
 )
 optdepends=(
     'kdialog: needed for file dialogs in KDE'
@@ -37,12 +38,12 @@ options=(
     '!strip'
 )
 source=(
-    "${pkgname}-${pkgver}_amd64.deb::${_downurl}/release/${pkgname}_amd64.deb"
+    "${pkgname}-${pkgver}_amd64.deb::${_dlurl}/release/${pkgname}_amd64.deb"
     "libffmpeg-${_libffmpegver}.zip::${_libffmpegverurl}/releases/download/${_libffmpegver}/${_libffmpegver}-linux-x64.zip"
     "LICENSE-${pkgver}.html::${url}/en/webhelp/index.htm"
 )
 sha256sums=('a83b5922db4fc6d1037ce5122b4b3198a78e1d3f9f65882088886d8825fb1989'
-            '95eaa8588ea61ba2d4fbb31f666933b7f1cbe11e3b801a06b77474c1df94f09a'
+            'd9cf46f427f4d80a61e4cc5362fd4b706b0d6b08d6da7a083bfa04acc466fc12'
             '489c5c87b68886265b8ece54cbb58f1754062d90f1546d25aa8e26e759addf62')
 build() {
     bsdtar -xf "${srcdir}/data."*
