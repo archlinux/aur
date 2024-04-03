@@ -17,12 +17,9 @@ pkgver() {
 }
 
 build() {
-  cmake -B build -S eigen \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib
+  cmake -B build -S eigen
 }
 
 package() {
-  cmake --install build --prefix $pkgdir
+  cmake --install build --prefix "$pkgdir"/usr
 }
