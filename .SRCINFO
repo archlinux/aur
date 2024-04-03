@@ -1,6 +1,6 @@
 pkgbase = itgmania-bin
 	pkgdesc = A fork of stepmania 5.1, improved for the post-ITG community
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://www.itgmania.com/
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = itgmania-bin
 	depends = glu
 	provides = itgmania
 	conflicts = itgmania
-	source = https://github.com/itgmania/itgmania/releases/download/v0.7.0/ITGmania-0.7.0-Linux.tar.gz
+	source = https://github.com/itgmania/itgmania/releases/download/v0.8.0/ITGmania-0.8.0-Linux.tar.gz
 	source = itgmania.sh
-	sha256sums = 070d08abe20b51032af5630237916c25737afa717b24ac4db4a99f64777a09f5
+	sha256sums = 1a7485c500262352d3b60a2bdb12317bc75a119fa6762d9ce010a160ae534bcf
 	sha256sums = 0249497c6eb7969362d8a93e1bb50c3259e5dc3873f8c94a40503d1321f03810
 
 pkgname = itgmania-bin
