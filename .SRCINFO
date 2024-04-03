@@ -1,7 +1,7 @@
 pkgbase = systemd-fml
-	pkgver = 255.5
+	pkgver = 255.4
 	pkgrel = 2
-	url = https://github.com/FML128/systemd/tree/machine_id_smbios
+	url = https://www.github.com/systemd/systemd
 	arch = x86_64
 	license = LGPL-2.1-or-later
 	makedepends = acl
@@ -52,8 +52,9 @@ pkgbase = systemd-fml
 	makedepends = lib32-gcc-libs
 	makedepends = python-pefile
 	conflicts = mkinitcpio<38-1
-	source = systemd-fml::git+https://github.com/FML128/systemd#tag=v255.5
+	source = systemd-fml-stable::git+https://github.com/systemd/systemd-stable#tag=v255.4?signed
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
+	source = 0002_added_machine_id_smbios_variable.patch
 	source = arch.conf
 	source = loader.conf
 	source = splash-arch.bmp
@@ -69,8 +70,13 @@ pkgbase = systemd-fml
 	source = 30-systemd-tmpfiles.hook
 	source = 30-systemd-udev-reload.hook
 	source = 30-systemd-update.hook
-	sha512sums = ab1c91002de90756e6d4fd89a78b1b22c1ddfac6bc38d80bfbb121edda722afe89946ab8ca20c97d144049d007e02f09bace322f43f9d50cf6f16f535bdff180
+	validpgpkeys = 63CDA1E5D3FC22B998D20DD6327F26951A015CC4
+	validpgpkeys = A9EA9081724FFAE0484C35A1A81CEA22BC8C7E2E
+	validpgpkeys = 9A774DB5DB996C154EBBFBFDA0099A18E29326E1
+	validpgpkeys = 5C251B5FC54EB2F80F407AAAC54CA336CFEB557E
+	sha512sums = 0c41c21931c5f08b5c91fe718d90f8cb11fb83429b3028bde9922605a35ea81d8452b00af99775b519b19195b8ba0084147d13dec1c5dfe9c905d769018b0676
 	sha512sums = 3ccf783c28f7a1c857120abac4002ca91ae1f92205dcd5a84aff515d57e706a3f9240d75a0a67cff5085716885e06e62597baa86897f298662ec36a940cf410e
+	sha512sums = 3ea049ebdad33dbcab375e529b5c6839ecbc2a74f492ec5061c092662c2d394c3ebc086d60ab5ce569c428cc9de8f2a0ccd6ce8a0777160f4d55a00ba1b1f0c8
 	sha512sums = 61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648
 	sha512sums = c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5
 	sha512sums = 5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75
@@ -142,9 +148,9 @@ pkgname = systemd-fml
 	optdepends = libp11-kit: support PKCS#11
 	optdepends = tpm2-tss: unlocking LUKS2 volumes with TPM2
 	provides = nss-myhostname
-	provides = systemd-tools=255.5
-	provides = udev=255.5
-	provides = systemd=255.5
+	provides = systemd-tools=255.4
+	provides = udev=255.4
+	provides = systemd=255.4
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -185,7 +191,7 @@ pkgname = systemd-libs-fml
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
-	provides = systemd-libs=255.5
+	provides = systemd-libs=255.4
 	conflicts = libsystemd
 	conflicts = systemd-libs
 	replaces = libsystemd
@@ -195,14 +201,14 @@ pkgname = systemd-resolvconf-fml
 	depends = systemd
 	provides = openresolv
 	provides = resolvconf
-	provides = systemd-resolvconf=255.5
+	provides = systemd-resolvconf=255.4
 	conflicts = resolvconf
 	conflicts = systemd-resolvconf
 
 pkgname = systemd-sysvcompat-fml
 	pkgdesc = sysvinit compat for systemd
 	depends = systemd
-	provides = systemd-sysvcompat=255.5
+	provides = systemd-sysvcompat=255.4
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 
@@ -215,5 +221,5 @@ pkgname = systemd-ukify-fml
 	optdepends = python-pillow: Show the size of splash image
 	optdepends = sbsigntools: Sign the embedded kernel
 	provides = ukify
-	provides = systemd-ukify=255.5
+	provides = systemd-ukify=255.4
 	conflicts = systemd-ukify

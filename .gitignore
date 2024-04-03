@@ -54,6 +54,7 @@ dkms.conf
 
 src
 pkg
-systemd-fml
+systemd-fml/
+systemd-fml-stable/
 .idea
 *.pkg.*

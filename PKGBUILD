@@ -6,7 +6,7 @@ pkgname=('systemd-fml'
          'systemd-resolvconf-fml'
          'systemd-sysvcompat-fml'
          'systemd-ukify-fml')
-_tag='255.5'
+_tag='255.4'
 # Upstream versioning is incompatible with pacman's version comparisons so we
 # replace tildes with the empty string to make sure pacman's version comparing
 # does the right thing for rc versions:
@@ -18,7 +18,7 @@ pkgver="${_tag/~/}"
 pkgrel=2
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
-url='https://github.com/FML128/systemd/tree/machine_id_smbios'
+url='https://www.github.com/systemd/systemd'
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'intltool' 'iptables' 'kmod' 'libcap' 'libidn2' 'libgcrypt'
              'libmicrohttpd' 'libxcrypt' 'libxslt' 'util-linux' 'linux-api-headers'
@@ -28,8 +28,14 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'bpf' 'libbpf' 'clang' 'llvm' 'curl' 'gnutls' 'python-pyelftools'
              'libpwquality' 'qrencode' 'lib32-gcc-libs' 'python-pefile')
 conflicts=("mkinitcpio<38-1")
-source=("$pkgbase::git+https://github.com/FML128/systemd#tag=v${_tag}"
+validpgpkeys=('63CDA1E5D3FC22B998D20DD6327F26951A015CC4'  # Lennart Poettering <lennart@poettering.net>
+              'A9EA9081724FFAE0484C35A1A81CEA22BC8C7E2E'  # Luca Boccassi <luca.boccassi@gmail.com>
+              '9A774DB5DB996C154EBBFBFDA0099A18E29326E1'  # Yu Watanabe <watanabe.yu+github@gmail.com>
+              '5C251B5FC54EB2F80F407AAAC54CA336CFEB557E') # Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl>
+source=("$pkgbase-stable::git+https://github.com/systemd/systemd-stable#tag=v${_tag}?signed"
+#        "$pkgbase::git+https://github.com/systemd/systemd#tag=v${_tag%.*}?signed"
         '0001-Use-Arch-Linux-device-access-groups.patch'
+        '0002_added_machine_id_smbios_variable.patch'
         # bootloader files
         'arch.conf'
         'loader.conf'
@@ -49,8 +55,9 @@ source=("$pkgbase::git+https://github.com/FML128/systemd#tag=v${_tag}"
         '30-systemd-udev-reload.hook'
         '30-systemd-update.hook')
 
-sha512sums=('ab1c91002de90756e6d4fd89a78b1b22c1ddfac6bc38d80bfbb121edda722afe89946ab8ca20c97d144049d007e02f09bace322f43f9d50cf6f16f535bdff180'
+sha512sums=('0c41c21931c5f08b5c91fe718d90f8cb11fb83429b3028bde9922605a35ea81d8452b00af99775b519b19195b8ba0084147d13dec1c5dfe9c905d769018b0676'
             '3ccf783c28f7a1c857120abac4002ca91ae1f92205dcd5a84aff515d57e706a3f9240d75a0a67cff5085716885e06e62597baa86897f298662ec36a940cf410e'
+            '3ea049ebdad33dbcab375e529b5c6839ecbc2a74f492ec5061c092662c2d394c3ebc086d60ab5ce569c428cc9de8f2a0ccd6ce8a0777160f4d55a00ba1b1f0c8'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
             'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
             '5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75'
@@ -79,10 +86,29 @@ _reverts=(
 )
 
 prepare() {
-  cd "$pkgbase"
+  cd "$pkgbase-stable"
+
+  # add upstream repository for cherry-picking
+  git remote add -f upstream ../systemd
+
+  local _c _l
+  for _c in "${_backports[@]}"; do
+    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+    git log --oneline "${_l}" "${_c}"
+    git cherry-pick --mainline 1 --no-commit "${_c}"
+  done
+  for _c in "${_reverts[@]}"; do
+    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+    git log --oneline "${_l}" "${_c}"
+    git revert --mainline 1 --no-commit "${_c}"
+  done
+
 
   # Replace cdrom/dialout/tape groups with optical/uucp/storage
   patch -Np1 -i ../0001-Use-Arch-Linux-device-access-groups.patch
+
+  # Add machine-id override
+  patch -Np1 -i ../0002_added_machine_id_smbios_variable.patch
 }
 
 build() {
@@ -142,7 +168,7 @@ build() {
     -Dsbat-distro-url="https://aur.archlinux.org/pkgbase/${pkgname}"
   )
 
-  arch-meson "$pkgbase" build "${_meson_options[@]}" $MESON_EXTRA_CONFIGURE_OPTIONS
+  arch-meson "$pkgbase-stable" build "${_meson_options[@]}" $MESON_EXTRA_CONFIGURE_OPTIONS
 
   meson compile -C build "${_meson_compile[@]}"
 }

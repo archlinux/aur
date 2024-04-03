@@ -1,0 +1,87 @@
+Subject: [PATCH] added machine_id_smbios variable
+---
+Index: man/kernel-command-line.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/man/kernel-command-line.xml b/man/kernel-command-line.xml
+--- a/man/kernel-command-line.xml	(revision 8c27f1ba4a2c834fed4893844999ab9440ee5593)
++++ b/man/kernel-command-line.xml	(revision 2ed89719322ad4cadc1ace46014b2d39be50c614)
+@@ -68,6 +68,7 @@
+         <term><varname>systemd.default_standard_error=</varname></term>
+         <term><varname>systemd.setenv=</varname></term>
+         <term><varname>systemd.machine_id=</varname></term>
++        <term><varname>systemd.machine_id_smbios</varname></term>
+         <term><varname>systemd.set_credential=</varname></term>
+         <term><varname>systemd.set_credential_binary=</varname></term>
+         <term><varname>systemd.import_credentials=</varname></term>
+Index: man/machine-id.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/man/machine-id.xml b/man/machine-id.xml
+--- a/man/machine-id.xml	(revision 8c27f1ba4a2c834fed4893844999ab9440ee5593)
++++ b/man/machine-id.xml	(revision 2ed89719322ad4cadc1ace46014b2d39be50c614)
+@@ -104,6 +104,8 @@
+     (on KVM systems), the Xen hypervisor <filename>uuid</filename>, and finally a randomly
+     generated UUID.</para>
+ 
++    <para>The vm logic can be enabled manually by setting the <varname>systemd.machine_id_smbios</varname> kernel command line option.</para>
++
+     <para>After the machine ID is established,
+     <citerefentry><refentrytitle>systemd</refentrytitle><manvolnum>1</manvolnum></citerefentry>
+     will attempt to save it to <filename>/etc/machine-id</filename>. If this fails, it
+Index: src/shared/machine-id-setup.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/shared/machine-id-setup.c b/src/shared/machine-id-setup.c
+--- a/src/shared/machine-id-setup.c	(revision 8c27f1ba4a2c834fed4893844999ab9440ee5593)
++++ b/src/shared/machine-id-setup.c	(revision 2ed89719322ad4cadc1ace46014b2d39be50c614)
+@@ -1,6 +1,7 @@
+ /* SPDX-License-Identifier: LGPL-2.1-or-later */
+ 
+ #include <fcntl.h>
++#include <proc-cmdline.h>
+ #include <sched.h>
+ #include <sys/mount.h>
+ #include <unistd.h>
+@@ -48,6 +49,18 @@
+         return 0;
+ }
+ 
++static bool machine_id_smbios(void) {
++        bool b = false;
++        int r;
++
++        r = proc_cmdline_get_bool("systemd.machine_id_smbios", PROC_CMDLINE_VALUE_OPTIONAL, &b);
++        if (r < 0) {
++                log_warning_errno(r, "Failed to read systemd.machine_id_smbios from kernel command line, ignoring: %m");
++                return false;
++        }
++        return b;
++}
++
+ static int generate_machine_id(const char *root, sd_id128_t *ret) {
+         _cleanup_close_ int fd = -EBADF;
+         int r;
+@@ -80,14 +93,14 @@
+                                 return 0;
+                         }
+ 
+-                } else if (IN_SET(detect_vm(), VIRTUALIZATION_KVM, VIRTUALIZATION_AMAZON, VIRTUALIZATION_QEMU, VIRTUALIZATION_XEN)) {
++                } else if (IN_SET(detect_vm(), VIRTUALIZATION_KVM, VIRTUALIZATION_AMAZON, VIRTUALIZATION_QEMU, VIRTUALIZATION_XEN) || machine_id_smbios()) {
+ 
+                         /* If we are not running in a container, see if we are running in a VM that provides
+                          * a system UUID via the SMBIOS/DMI interfaces.  Such environments include QEMU/KVM
+                          * with the -uuid on the qemu command line or the Amazon EC2 Nitro hypervisor. */
+ 
+                         if (id128_get_product(ret) >= 0) {
+-                                log_info("Initializing machine ID from VM UUID.");
++                                log_info("Initializing machine ID from SMBIOS/DMI UUID.");
+                                 return 0;
+                         }
+                 }
