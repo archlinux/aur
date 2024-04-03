@@ -1,11 +1,11 @@
 # Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 pkgname=scarab-bin
 pkgver=2.5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Mod installer for Hollow Knight 1.5'
 arch=(x86_64)
 url="https://github.com/fifty-six/Scarab"
-license=(GPL)
+license=(GPL-3.0-only)
 provides=(scarab)
 conflicts=(scarab)
 depends=(gcc-libs zlib fontconfig)
