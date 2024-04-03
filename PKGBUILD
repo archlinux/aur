@@ -1,11 +1,11 @@
 # Maintainer: Nathaniel Chin <thegamingorangutans+aur at gmail.com>
-# Maintainer: William Boulanger <willbou2 at gmail.com>
+# Contributor: William Boulanger <willbou2 at gmail.com>
 # Contributor: Marko Korhonen <reekymarko at reekynet.com>
 # Contributor: Bruno Filipe < gmail-com: bmilreu >
 # Original: Daniel Bermond <dbermond@archlinux.org> https://aur.archlinux.org/packages/mpv-full-git
 
 pkgname=mpv-amd-full-git
-pkgver=0.37.0.r582.gc155c18023
+pkgver=0.37.0.r723.g6179995dd7
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs except Nvidia)'
 arch=('x86_64')
@@ -18,10 +18,7 @@ depends=(
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'mujs'
         'libdvdnav' 'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
         'zlib' 'vapoursynth' 'openal' 'vulkan-icd-loader' 'libxpresent'
-        'libpipewire' 'zimg' 'sndio' 'libsixel'
-    # AUR:
-        'ffmpeg-git'
-)
+        'libpipewire' 'zimg' 'sndio' 'libsixel' 'ffmpeg')
 makedepends=('git' 'meson' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
              'wayland-protocols')
 optdepends=('yt-dlp: for video-sharing websites playback'
@@ -80,6 +77,7 @@ build() {
         -Dalsa='enabled' \
         -Daudiounit='disabled' \
         -Dcoreaudio='disabled' \
+        -Davfoundation='disabled' \
         -Djack='enabled' \
         -Dopenal='enabled' \
         -Dopensles='disabled' \
