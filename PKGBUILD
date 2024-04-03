@@ -3,8 +3,7 @@
 pkgname=python-graylint
 _pkgname="${pkgname#python-}"
 pkgver=1.0.1
-_commit=0f0106d90e8c78d7d58827dcf20c54caeb7c5d4c # tags/v1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Filter linter messages from various Python linters to only those which were caused by recent changes to the code base being linted'
 arch=(any)
 url="https://github.com/akaihola/graylint"
@@ -25,8 +24,8 @@ checkdepends=(
 	'mypy'
 )
 optdepends=('python-pygments: syntax highlighting')
-source=("${pkgname}::git+${url}.git#commit=${_commit}")
-sha256sums=('SKIP')
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
+sha512sums=('e2dd54f277c48ec19b784faec78fb3a78638aa052185da739cf185fb3328f8eeee75c9cd4f0a588b71f93f6d73e4740e38ee0f8285f5c1180f0ee55a492f362f')
 
 prepare() {
 	cd "${pkgname}"
@@ -41,12 +40,13 @@ build() {
 
 check() {
 	cd "${pkgname}"
-	PYTHONPATH=src pytest -v "src/${_pkgname}"
+	PYTHONPATH=src \
+	pytest -v "src/${_pkgname}"
 }
 
 package() {
 	cd "${pkgname}"
-	python -m installer -d "$pkgdir" dist/*.whl
+	python -m installer -d "${pkgdir}" dist/*.whl
 	install -Dm644 "LICENSE.rst" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 	install -Dm644 "README.rst" -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
