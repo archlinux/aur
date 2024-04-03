@@ -1,17 +1,17 @@
 # Maintainer: Interaccoonale <xzzzf.dsx@gmail.com>
 pkgname=flut-renamer-bin
-pkgver=1.4.0
-pkgrel=9
+pkgver=1.5.0
+pkgrel=10
 pkgdesc='A GUI application written in Flutter (using GTK on Linux), it helps users batch renaming their files in multiple ways, including inserting text, inserting file metadata and Exif data, replacing text, deleting text, rearranging, transliterating characters.'
 arch=('x86_64')
-url="https://github.com/sun-jiao/renamer"
+url="https://github.com/sun-jiao/flut-renamer"
 depends=('gtk3')
 makedepends=()
 license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-source=("https://github.com/sun-jiao/renamer/releases/download/$pkgver/flut-renamer-linux.tar.gz")
-sha256sums=('464bea80b594515333fb3f48292caefbd0ab642091e83eeba4e7b28761f46056')
+source=("https://github.com/sun-jiao/flut-renamer/releases/download/$pkgver/flut-renamer-linux.tar.gz")
+sha256sums=('0d7b052a946ae3a9208aeea7d02aa62763e1eaa882335d2c00a56e7b7bcc826b')
 
 package() {
     # create the target folders
@@ -20,10 +20,10 @@ package() {
     rm "flut-renamer-linux.tar.gz"
     # copy the bundled output to /opt
     cp -rdp --no-preserve=ownership . "$pkgdir/opt/${pkgname%-bin}/"
-    cp "data/flutter_assets/assets/desktop.png" "$pkgdir/usr/share/pixmaps/flut-renamer.png"
-    gendesk -f -n --pkgname "${pkgname%-bin}" --pkgdesc "$pkgdesc" --name "Flut Renamer" --categories "Utility" --exec "flut-renamer %u" --icon "/usr/share/pixmaps/flut-renamer.png"
-    cp "flut-renamer.desktop" "$pkgdir/usr/share/applications/flut-renamer.desktop"
+    cp "data/flutter_assets/assets/desktop.png" "$pkgdir/usr/share/pixmaps/${pkgname%-bin}.png"
+    gendesk -f -n --pkgname "${pkgname%-bin}" --pkgdesc "$pkgdesc" --name "Flut Renamer" --categories "Utility" --exec "${pkgname%-bin} %u" --icon "/usr/share/pixmaps/${pkgname%-bin}.png"
+    cp "${pkgname%-bin}.desktop" "$pkgdir/usr/share/applications/${pkgname%-bin}.desktop"
     # symlink to /usr/bin so the app can be found in PATH
-    ln -s "/opt/${pkgname%-bin}/flut-renamer" "$pkgdir/usr/bin/${pkgname%-bin}"
+    ln -s "/opt/${pkgname%-bin}/${pkgname%-bin}" "$pkgdir/usr/bin/${pkgname%-bin}"
 }
 
