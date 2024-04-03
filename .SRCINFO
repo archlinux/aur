@@ -1,6 +1,6 @@
 pkgbase = fluffychat-web-git
 	pkgdesc = Chat with your friends
-	pkgver = 1.5.0.fdroid.2.r16.ged2d2083
+	pkgver = rc1.18.0.2.r97.g9a8f604f
 	pkgrel = 1
 	url = https://fluffychat.im/
 	arch = any
@@ -10,12 +10,13 @@ pkgbase = fluffychat-web-git
 	makedepends = ninja
 	makedepends = cmake
 	makedepends = unzip
+	makedepends = yq
 	makedepends = flutter
 	optdepends = pantalaimon: used for E2E encryption
 	provides = fluffychat-web
 	conflicts = fluffychat-web
 	backup = etc/webapps/fluffychat/config.json
-	source = fluffychat::git+https://gitlab.com/famedly/fluffychat.git
+	source = fluffychat::git+https://github.com/krille-chan/fluffychat.git
 	sha256sums = SKIP
 
 pkgname = fluffychat-web-git
