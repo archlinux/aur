@@ -7,7 +7,7 @@ pkgrel=6
 pkgdesc='Sans typeface by Kostas Bartsokas'
 arch=(any)
 url="https://github.com/kosbarts/$_reponame"
-license=(OFL)
+license=(OFL-1.1-no-RFN)
 source=("$url/releases/download/$pkgver/Commissioner_$pkgver.zip")
 sha512sums=('a1be692a076006e35a31c264bf5f7d8f0b0edc209714efc0986e08e8e4019db6300c8593b3e5ea8119c2a08217fabee248722fa04a00a02720d9e9f71ceb6d8a')
 

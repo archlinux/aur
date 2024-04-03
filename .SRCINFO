@@ -4,7 +4,7 @@ pkgbase = commissioner-font
 	pkgrel = 6
 	url = https://github.com/kosbarts/Commissioner
 	arch = any
-	license = OFL
+	license = OFL-1.1-no-RFN
 	source = https://github.com/kosbarts/Commissioner/releases/download/1.000/Commissioner_1.000.zip
 	sha512sums = a1be692a076006e35a31c264bf5f7d8f0b0edc209714efc0986e08e8e4019db6300c8593b3e5ea8119c2a08217fabee248722fa04a00a02720d9e9f71ceb6d8a
 
@@ -16,4 +16,3 @@ pkgname = ttf-commissioner
 
 pkgname = ttf-commissioner-variable
 	pkgdesc = Sans typeface by Kostas Bartsokas (variable version)
-
