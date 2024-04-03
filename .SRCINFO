@@ -1,7 +1,7 @@
 pkgbase = gtimelog
 	pkgdesc = Small GTK+ app for keeping track of your time
-	pkgver = 0.11.3
-	pkgrel = 2
+	pkgver = 0.12.0
+	pkgrel = 1
 	url = https://gtimelog.org/
 	arch = any
 	license = GPL
@@ -11,8 +11,7 @@ pkgbase = gtimelog
 	depends = python
 	depends = python-gobject
 	depends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/g/gtimelog/gtimelog-0.11.3.tar.gz
-	sha256sums = a5a65b7b929aa3b16ecb4213b56f6573a925613bbce3db1969ca26f31d6b8ab2
+	source = https://files.pythonhosted.org/packages/source/g/gtimelog/gtimelog-0.12.0.tar.gz
+	sha256sums = 8eccde32fb11f2dd3a7e28d14693dea5052b9922aacef14235232e109be236ab
 
 pkgname = gtimelog
-
