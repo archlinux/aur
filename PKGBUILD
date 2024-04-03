@@ -3,7 +3,7 @@
 # Contributor: Vladimir Tsanev <tsachev@gmail.com>
 
 pkgname=hiredict
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='C client library for Redict'
 arch=('x86_64')
