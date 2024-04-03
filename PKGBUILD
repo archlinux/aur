@@ -1,8 +1,8 @@
 # Maintainer: Mekyt <hello at mek dot yt>
 
 pkgname='ory-keto'
-pkgver=0.12.0_alpha.0
-pkgrel=2
+pkgver=0.13.0_alpha.0
+pkgrel=1
 pkgdesc='Ory Keto Global Authorization System written in Go'
 arch=('x86_64')
 url='https://github.com/ory/keto'
@@ -16,7 +16,7 @@ source=(
   'ory-keto.sysusers'
 )
 b2sums=(
-  '65098bea4f2c87699ca2480eac793a0a10b7eff3dbdb90361c80c6985c564560b871d46e8e3f1191a302b9728ac6e7940c86486f49fec78db082e4785c8b9335'
+  'caca7068faa7ba53a691ad07576df12aa3da87709a47848a72f8e08b52db387441fec78987f28db67641e7370bc99cec0b453afb9a1e9e4505a19f5af5971b22'
   '63a37f70e159ea9827c2b4f65a751bac62f24dd176e19c31f4fd06bff9f44e886afc6939a2a583c7395569799f576f2f40f205dbff41b42ca7a1316da4ee37b6'
   '360a7f2f615fe7bc62996b8382a8f3b8ffeb8fd53c40a399cd2ac0672780c48af1f0fbfba040a085a56cbd46822ca190280164fd42b362a91da6eab9f32d77df'
   'af4e0abd13212d81f32ad76b3d169248155af0a4bbe20cdaa8ca7a91c6b268a435275866a1a3c1be9de8e67dd2a3d029248b7a246172e8c9a035eebd1efe23c1'
