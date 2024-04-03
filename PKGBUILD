@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-greeter-git
-pkgver=r66.8fb7b9b
+pkgver=r74.d133e60
 pkgrel=1
-pkgdesc="WIP libcosmic greeter for greetd, which can be run inside cosmic-comp"
+pkgdesc="libcosmic greeter for greetd, which can be run inside cosmic-comp"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-greeter"
 license=('GPL-3.0-or-later')
