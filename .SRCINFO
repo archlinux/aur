@@ -1,15 +1,15 @@
 pkgbase = r-v8
 	pkgdesc = Embedded JavaScript and WebAssembly Engine for R
 	pkgver = 4.4.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=V8
 	arch = x86_64
 	license = MIT
 	checkdepends = r-testthat
+	depends = libnode
 	depends = r-curl
 	depends = r-jsonlite
 	depends = r-rcpp
-	depends = v8-r
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
