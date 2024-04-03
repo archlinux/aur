@@ -1,24 +1,38 @@
-From 1e8ae9809d7c8f6be0c5c87e539853221aa50290 Mon Sep 17 00:00:00 2001
+From 813a6edbf076317a4a9d3fcc80f2787f3e5d5151 Mon Sep 17 00:00:00 2001
 From: Keeyou <keeyou-cn@outlook.com>
 Date: Wed, 3 Apr 2024 13:07:45 +0800
-Subject: [PATCH] fortify: use level 3
+Subject: [PATCH] build: fix some missing flags in minsizerel build
 
+fortify: use level 3 for release build
 ---
- CMakeLists.txt | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ CMakeLists.txt | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 3fdaac77..6410c328 100644
+index 3fdaac77..60046e83 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -2101,8 +2101,8 @@ if (NOT MSVC)
+@@ -2095,14 +2095,20 @@ if (NOT MSVC)
+   ## not omit stack frame pointer for release
+   set(CMAKE_C_FLAGS_RELEASE   "${CMAKE_C_FLAGS_RELEASE} -fno-omit-frame-pointer")
+   set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fno-omit-frame-pointer")
++  set(CMAKE_C_FLAGS_MINSIZEREL   "${CMAKE_C_FLAGS_MINSIZEREL} -fno-omit-frame-pointer")
++  set(CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL} -fno-omit-frame-pointer")
+   set(CMAKE_C_FLAGS_RELWITHDEBINFO   "${CMAKE_C_FLAGS_RELWITHDEBINFO} -fno-omit-frame-pointer")
+   set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} -fno-omit-frame-pointer")
+ 
    ## fortify source code. Also, fortified build may fail when optimizations are
    ## disabled, so only do that for Release build.
-   if (NOT WIN32 AND NOT APPLE)
+-  if (NOT WIN32 AND NOT APPLE)
 -    set(CMAKE_C_FLAGS_RELEASE   "${CMAKE_C_FLAGS_RELEASE} -D_FORTIFY_SOURCE=2")
 -    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -D_FORTIFY_SOURCE=2")
++
++  string(REGEX MATCH "-D_FORTIFY_SOURCE=.*" HAS_FORTIFY_MACRO "${CMAKE_CXX_FLAGS}")
++  if (NOT WIN32 AND NOT APPLE AND NOT HAS_FORTIFY_MACRO)
 +    set(CMAKE_C_FLAGS_RELEASE   "${CMAKE_C_FLAGS_RELEASE} -D_FORTIFY_SOURCE=3")
 +    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -D_FORTIFY_SOURCE=3")
++    set(CMAKE_C_FLAGS_MINSIZEREL   "${CMAKE_C_FLAGS_MINSIZEREL} -D_FORTIFY_SOURCE=2")
++    set(CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL} -D_FORTIFY_SOURCE=2")
      set(CMAKE_C_FLAGS_RELWITHDEBINFO   "${CMAKE_C_FLAGS_RELWITHDEBINFO} -D_FORTIFY_SOURCE=2")
      set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} -D_FORTIFY_SOURCE=2")
    endif()
