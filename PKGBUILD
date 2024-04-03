@@ -3,7 +3,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qmplay2-appimage
 _appname=QMPlay2
-pkgver=24.03.16
+pkgver=24.04.02
 pkgrel=1
 pkgdesc="A video and audio player which can play most formats and codecs"
 arch=('x86_64')
@@ -11,16 +11,14 @@ url="https://github.com/zaps166/QMPlay2"
 license=("LGPL-3.0-only")
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
-depends=(
-    'hicolor-icon-theme'
-    'glibc'
-    'zlib'
+depends=()
+makedepends=(
+    'fuse2'
 )
-makedepends=('fuse2')
 options=('!strip')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_appname}-${pkgver}-1-${CARCH}.AppImage")
-sha256sums=('cadd57809e8865ee8a6a9367dcb35c89a116610f9399d455c666e7652a70b24e')
+sha256sums=('283db4c396b73ce4803fd9773e678c700925382d77403ad200069a6a233077ae')
 build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
