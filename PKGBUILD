@@ -1,9 +1,9 @@
 # Maintainer: Uffe Jakobsen <_uffe_|_at_|_uffe_|_dot_|_org_>
 pkgname=stlink-tool-git
 _pkgname=stlink-tool
-pkgver=r30.a4c1b6b
-pkgrel=4
-pkgdesc="Tool for flashing chinese ST-Link dongles"
+pkgver=r57.dff59ad
+pkgrel=1
+pkgdesc="Tool for flashing chinese clone (STM32) ST-Link dongles"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://github.com/blackmagic-debug/stlink-tool"
