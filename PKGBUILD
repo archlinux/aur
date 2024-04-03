@@ -1,3 +1,4 @@
+# Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 # Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Mateusz Herych <heniekk@gmail.com>
