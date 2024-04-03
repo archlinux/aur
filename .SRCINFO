@@ -1,6 +1,6 @@
 pkgbase = emudeck
 	pkgdesc = An installation script that helps you get started with emulation.
-	pkgver = 2.1.4
+	pkgver = 2.2.18
 	pkgrel = 3
 	url = https://emudeck.com
 	arch = x86_64
