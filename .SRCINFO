@@ -1,6 +1,6 @@
 pkgbase = xfce4-screenshooter-git
 	pkgdesc = Plugin that makes screenshots for the Xfce panel.
-	pkgver = 1.9.10.r38.g13d0c95
+	pkgver = 1.10.5.r50.g2a7d7de
 	pkgrel = 1
 	url = https://docs.xfce.org/apps/screenshooter/start
 	install = xfce4-screenshooter-git.install
@@ -10,11 +10,12 @@ pkgbase = xfce4-screenshooter-git
 	license = GPL2
 	makedepends = xfce4-dev-tools
 	makedepends = intltool
+	makedepends = git
 	depends = xfce4-panel
 	depends = libsoup
 	provides = xfce4-screenshooter
 	conflicts = xfce4-screenshooter
-	source = xfce4-screenshooter-git::git+https://gitlab.xfce.org/apps/xfce4-screenshooter
+	source = xfce4-screenshooter-git::git+https://gitlab.xfce.org/apps/xfce4-screenshooter.git
 	sha256sums = SKIP
 
 pkgname = xfce4-screenshooter-git
