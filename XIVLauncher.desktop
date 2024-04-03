@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=XIVLauncher
+Comment=Custom launcher for the most critically acclaimed MMO
+Exec=xivlauncher-core
+Icon=xivlauncher
+Terminal=false
+Type=Application
+Categories=Game;
+StartupWMClass=XIVLauncher.Core
