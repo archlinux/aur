@@ -6,6 +6,7 @@ pkgver="3.0.0"
 pkgrel="1"
 pkgdesc="A utility to watch the battery level and send the system to sleep if low."
 arch=('any')
+depends=('systemd')
 makedepends=('cargo'
              'git')
 
