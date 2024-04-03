@@ -1,0 +1,39 @@
+#!/bin/bash
+
+export WINEPREFIX=~/.geepee32/pfx
+
+mkdir -p ~/.geepee32/ ~/.geepee32/config ~/.geepee32/firmware ~/.geepee32/log ~/.geepee32/screenshot
+ln -sfn ~/.geepee32/config /usr/share/geepee32/system/gp32/config
+ln -sfn ~/.geepee32/firmware /usr/share/geepee32/system/gp32/firmware
+ln -sfn ~/.geepee32/log /usr/share/geepee32/system/gp32/log
+ln -sfn ~/.geepee32/screenshot /usr/share/geepee32/system/gp32/screenshot
+
+if [ ! -f ~/.geepee32/config/memory.def ]; then
+    cat > ~/.geepee32/config/memory.def << EOF
+    00000000 00080000 FIRMWARE
+    0C000000 00800000 RAM
+    14000000 00000100 MEMORY CONTROLLER
+    14200000 00000100 USB HOST CONTROLLER
+    14400000 00000100 INTERRUPT CONTROLLER
+    14600000 00000100 DMA
+    14800000 00000100 CLOCK & POWER MANAGEMENT
+    14A00000 00000800 LCD CONTROLLER
+    15000000 00000100 UART 0
+    15004000 00000100 UART 1
+    15100000 00000100 PWM TIMER
+    15200000 00000200 USB DEVICE
+    15300000 00000100 WATCHDOG TIMER
+    15400000 00000100 IIC
+    15400100 00002000 IIC (EEPROM DATA)
+    15508000 00000100 IIS
+    15600000 00000100 I/O PORT
+    15700000 00000100 RTC
+    15800000 00000100 A/D CONVERTER
+    15900000 00000100 SPI
+    15A00000 00000100 MMC INTERFACE
+EOF
+fi
+
+
+# WINE Launcher script for GeePee32 Emulator
+wine /usr/share/geepee32/geepee32.exe

@@ -1,0 +1,17 @@
+pkgbase = geepee32
+	pkgdesc = Windows application to emulate the GamePark GP32 system.
+	pkgver = 0.44
+	pkgrel = 1
+	url = https://www.schuerewegen.tk/gp32/
+	arch = x86_64
+	arch = i686
+	makedepends = unzip
+	depends = wine
+	source = https://www.schuerewegen.tk/download/geepee32_044_win32_directx.zip
+	source = geepee32
+	source = geepee32.desktop
+	source = geepee32.png
+	md5sums = a095dfdc88596e7f356d7a71d8030491
+
+pkgname = geepee32
+

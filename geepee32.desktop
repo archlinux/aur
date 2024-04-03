@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=GeePee32
+Comment=Windows application to emulate the GamePark GP32 system.
+Exec=geepee32
+Icon=geepee32
+Terminal=false
+StartupNotify=false
+Categories=Wine;Game;Emulator;
