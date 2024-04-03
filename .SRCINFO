@@ -1,0 +1,13 @@
+pkgbase = unkrawerter-gba
+	pkgdesc = A tool to rip music from Gameboy Advance games that use the Krawall sound engine.
+	pkgver = 4.0.999e310
+	pkgrel = 1
+	url = https://github.com/MCJack123/UnkrawerterGBA
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	makedepends = base-devel
+	source = git+https://github.com/MCJack123/UnkrawerterGBA.git
+
+pkgname = unkrawerter-gba
+
