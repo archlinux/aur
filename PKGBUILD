@@ -1,7 +1,7 @@
 #Maintainer: VPeti1 (Vasko Peter) 
 
 pkgname=aiopmplus
-pkgver=5.5
+pkgver=6
 pkgrel=1
 arch=('x86_64')
 
@@ -12,7 +12,7 @@ depends=('wget' 'gcc' 'eaur')
 
 source=("https://github.com/VPeti1/CWAcces/raw/main/aiopmplus.tar.gz")
 
-sha256sums=('0015ffb349d307628eb31709ba385da94bcfcb18ac12ec906a0aa5aeb87e381a')
+sha256sums=('e1d2fa51bfb38c184eff0622f81e59a5551e448dcb3cc8cd310f399a7be6bd19')
 
 build() {
     cd "$srcdir"
