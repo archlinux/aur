@@ -5,3 +5,4 @@
 !*.rules
 !*.install
 !*.service
+!.nvchecker.toml
