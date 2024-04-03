@@ -84,9 +84,9 @@ post_install()
     
     printf "\n"
     printf "%s\n"   "  If you're new to OpenSD, check out the online documentation"
-    printf "%s\n"   "  at  https://open-sd.gitlab.io/opensd-docs  or the offline"
+    printf "%s\n"   "  at  https://opensd.codeberg.page  or the offline"
     printf "%s\n"   "  documentation in /usr/share/doc/opensd/users_manual.html" 
-    printf "%s\n"   "  manpages are also available: Type 'man opensdd' or 'man opensd-files'"
+    printf "%s\n"   "  A manpage is also available: Type 'man opensdd'"
     printf "\n"
 }
 

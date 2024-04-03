@@ -1,8 +1,8 @@
 pkgbase = opensd-git
 	pkgdesc = An open-source Linux userspace driver for Valve's Steam Deck hardware.
-	pkgver = v0.47.r0.gc8fa41f
+	pkgver = git
 	pkgrel = 1
-	url = https://gitlab.com/open-sd/opensd
+	url = https://codeberg.org/opensd/opensd
 	install = opensd-git.install
 	arch = x86_64
 	license = GPL3
@@ -12,9 +12,9 @@ pkgbase = opensd-git
 	depends = glibc
 	depends = gcc-libs
 	depends = linux-headers
-	provides = opensd=v0.47.r0.gc8fa41f
+	provides = opensd=git
 	conflicts = opensd
-	source = opensd-git::git+https://gitlab.com/open-sd/opensd.git
+	source = opensd-git::git+https://codeberg.org/opensd/opensd.git
 	sha256sums = SKIP
 
 pkgname = opensd-git

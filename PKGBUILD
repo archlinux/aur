@@ -1,15 +1,15 @@
-# Maintainer: seek <seek@ntr0py.org>
+# Maintainer: evilichi <evilichi@disroot.org>
 
 pkgname="opensd-git"
-pkgver="v0.47.r0.gc8fa41f"
+pkgver="git"
 pkgrel=1
 pkgdesc="An open-source Linux userspace driver for Valve's Steam Deck hardware."
 arch=("x86_64")
-url="https://gitlab.com/open-sd/opensd"
+url="https://codeberg.org/opensd/opensd"
 license=("GPL3")
 depends=("glibc" "gcc-libs" "linux-headers")
 makedepends=("cmake" "git" "gcc")
-source=("${pkgname}::git+https://gitlab.com/open-sd/opensd.git")
+source=("${pkgname}::git+https://codeberg.org/opensd/opensd.git")
 sha256sums=("SKIP")
 provides=("opensd=${pkgver}")
 conflicts=("opensd")
@@ -19,7 +19,7 @@ options=()
 pkgver() 
 {
     cd "${pkgname}"
-    git describe --always --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build()
