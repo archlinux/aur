@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fsolauncher
 _pkgname="FreeSO Launcher"
-pkgver=1.11.1_prod.6
+pkgver=1.12.0_prod.1
 _electronversion=29
 _nodeversion=16
 pkgrel=1
@@ -29,7 +29,7 @@ source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=${pkgver//_/-}"
     "${pkgname}.sh"
 )
-sha256sums=('737f6d4fe1812dd8363980f5760717da805285435eace907803fed5c5446177e'
+sha256sums=('32078d4be10b2db6c48b812e47c75a7eef09fe0eb7221123143f1999b9a4151e'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -40,8 +40,8 @@ _ensure_local_nvm() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
-        -e "s|@runname@|app|g" \
-        -e "s|@options@||g" \
+        -e "s|@runname@|app.asar|g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -f -n -q --categories="Game" --name="${_pkgname}" --exec="${pkgname} %U"
@@ -63,13 +63,12 @@ build() {
     fi
     sed "s|beta.ico|beta.png|g" -i main.js
     npm install
-    npx electron-packager . "${pkgname}" --platform=linux --icon=beta.png --out=dist --overwrite
-    find "${srcdir}/${pkgname}.git/app/dist/" -type d -exec chmod 755 {} \;
+    npm run builddeb
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}.git/app/dist/${pkgname}-linux-"*/resources/app "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}.git/release/${_pkgname}-linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${pkgname}.git/release/${_pkgname}-linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.git/app/beta.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
