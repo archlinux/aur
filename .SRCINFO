@@ -1,12 +1,12 @@
 pkgbase = ttf-boogaloo
 	pkgdesc = Font reminding of the 1960s Latin music
 	pkgver = 1.002
-	pkgrel = 2
+	pkgrel = 3
 	url = https://fonts.google.com/specimen/Boogaloo
 	arch = any
-	license = OFL
-	source = ttf-boogaloo-1.002.zip::https://fonts.google.com/download?family=Boogaloo
+	license = OFL-1.1-RFN
+	source = https://github.com/google/fonts/raw/47a6c224b3e0287b2e48e3ffef8c9ce2ca4931f4/ofl/boogaloo/OFL.txt
+	source = https://github.com/google/fonts/raw/47a6c224b3e0287b2e48e3ffef8c9ce2ca4931f4/ofl/boogaloo/Boogaloo-Regular.ttf
 	sha256sums = 244a357fbfaf6401e6c4e1de94ffc9ee7f6bd2ef2fc0b70b0dc301a8e60220f4
 
 pkgname = ttf-boogaloo
-
