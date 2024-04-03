@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.8.2.arch2
+pkgver=6.8.3.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -54,7 +54,7 @@ source=(
 
   0001-platform-x86-asus-wmi-Support-2023-ROG-X16-tablet-mo.patch
   amd-tablet-sfh.patch
-  fix_amd_eDP_HDR_flickering.patch
+#  fix_amd_eDP_HDR_flickering.patch
 
 #  0001-platform-x86-asus-wmi-add-support-for-2024-ROG-Mini-.patch
   0001-v2-platform-x86-asus-wmi-add-support-for-2024-ROG-Mini-LED.patch
@@ -80,11 +80,11 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('9ac322d85bcf98a04667d929f5c2666b15bd58c6c2d68dd512c72acbced07d04'
+sha256sums=('db7eb56d5014ee9a7fac0c715053155d92798d98d9197a2173eef1f0a496c986'
             'SKIP'
-            '2d5fa7f4177ba1c40575d57282438ff28cdfc3729e0689eddf650616c8a93b65'
+            '194f2f7729d94c1642d83f591022a787fda9963ac688b6a6f1b9b91514a00080'
             'SKIP'
-            'c2b00c84c4b543db431e06604d939a62f93107d18369f4d9860dc8062b01ab45'
+            'c5347f53ecce97054ecef72ff1e6d265485c8536e2137e89998a6ec04b683845'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             'd69232afd0dd6982ae941cf2d1f577f4be2011e3bb847d1db37952acf416b5d3'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
@@ -99,7 +99,6 @@ sha256sums=('9ac322d85bcf98a04667d929f5c2666b15bd58c6c2d68dd512c72acbced07d04'
             'e41198b29cee4de7a5132d8df606f48c2d0f9c9076fe4230b00a33c7e0b22c71'
             '1edb362a762c8858374027e30ff58ae0014e117fdc05cc7db6da50f80e7aab87'
             '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04'
-            '9b94f02b87c28a7403478ce9f57461c3b2219b7279a928e814cafd78ee767366'
             '06375fa2bcc6fefd8d57c0d8a13b5af02d08318f3721c58fc0354970656f3b64'
             'f64fbf3b7e817edd7267612531d5aba3d17b727d5151b5b9e620d616797cf3da'
             '270fe67b07e8138be848958e9fa28ee8fecffd2e146ea68444c5200a9b09c2ed'
