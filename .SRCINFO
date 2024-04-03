@@ -1,6 +1,6 @@
 pkgbase = redict-rc
 	pkgdesc = A distributed key/value database (release candidate)
-	pkgver = 7.3.0rc2
+	pkgver = 7.3.0
 	pkgrel = 1
 	url = https://codeberg.org/redict/redict
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = redict-rc
 	conflicts = redict-db-git
 	backup = etc/redict/redict.conf
 	backup = etc/redict/sentinel.conf
-	source = git+https://codeberg.org/redict/redict.git#tag=7.3.0-rc2
+	source = git+https://codeberg.org/redict/redict.git#tag=7.3.0
 	source = redict.service
 	source = redict-sentinel.service
 	source = redict.sysusers

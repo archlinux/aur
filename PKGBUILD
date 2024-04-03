@@ -2,7 +2,7 @@
 
 pkgname=redict-rc
 _pkgname=redict
-_pkgver=7.3.0-rc2
+_pkgver=7.3.0
 pkgver=${_pkgver//-/}
 pkgrel=1
 pkgdesc='A distributed key/value database (release candidate)'
