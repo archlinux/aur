@@ -1,6 +1,6 @@
 # Maintainer: griffin <19497824+WingofaGriffin@users.noreply.github.com>
 pkgname=emudeck
-pkgver=2.1.4
+pkgver=2.2.18
 pkgrel=3
 pkgdesc='An installation script that helps you get started with emulation.'
 arch=('x86_64')
