@@ -1,7 +1,7 @@
 pkgbase = python-typed-ast
 	pkgdesc = a fork of Python 2 and 3 ast modules with type comment support
 	pkgver = 1.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/python/typed_ast
 	arch = x86_64
 	license = Apache
