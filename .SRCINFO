@@ -4,6 +4,7 @@ pkgbase = picard-git
 	pkgrel = 1
 	url = https://github.com/metabrainz/picard
 	arch = x86_64
+	arch = x86_64_v3
 	arch = i686
 	license = GPL-2.0-or-later
 	checkdepends = python-pytest
