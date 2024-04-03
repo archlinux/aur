@@ -1,0 +1,17 @@
+pkgbase = ninja-fuchsia-git
+	pkgdesc = Small build system with a focus on speed - Fichsia version with JobServer and improved status output
+	pkgver = r3033.83b2a567
+	pkgrel = 1
+	url = https://fuchsia.googlesource.com/third_party/github.com/ninja-build/ninja/
+	arch = x86_64
+	license = Apache
+	makedepends = python
+	makedepends = re2c
+	makedepends = git
+	depends = gcc-libs
+	provides = ninja
+	conflicts = ninja
+	source = ninja-fuchsia-git::git+https://fuchsia.googlesource.com/third_party/github.com/ninja-build/ninja/#commit=83b2a5674ae232da161ce26a18ac6802ffdcbccf
+	sha256sums = SKIP
+
+pkgname = ninja-fuchsia-git
