@@ -1,3 +1,5 @@
+#Maintainer: VPeti1 (Vasko Peter) 
+
 pkgname=easypacman
 pkgver=1
 pkgrel=1
