@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=xdg-desktop-portal-cosmic-git
-pkgver=r106.0ca1863
+pkgver=r124.db02412
 pkgrel=1
 pkgdesc="A backend implementation for xdg-desktop-portal for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -9,6 +9,7 @@ license=('GPL-3.0-or-later')
 groups=('cosmic')
 depends=(
   'hicolor-icon-theme'
+  'libpipewire'
   'libxkbcommon'
   'mesa'
   'wayland'
@@ -33,7 +34,6 @@ prepare() {
   cd "${pkgname%-git}"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
   make vendor
 
   # libexec > lib
