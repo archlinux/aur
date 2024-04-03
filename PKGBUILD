@@ -1,7 +1,7 @@
 # Maintainer: Ariel Abreu <facekapow@outlook.com>
 
 pkgname='gitify-bin'
-pkgver='5.1.0'
+pkgver='5.2.0'
 pkgrel=1
 pkgdesc='GitHub notifications on your menu bar'
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
 	"LICENSE::https://raw.githubusercontent.com/gitify-app/gitify/v$pkgver/LICENSE"
 )
 sha512sums=(
-	'c51aff9b6cac67a82c465349bef14c99a8a02c9c7f76700da7c33dca36420729c3a514a82503bd2bab7c51969bd602079b1a1976c1a27f395d340ffd3bd5cbf6'
+	'9b679fe61e7ef5c5e1a786345bf01305368995ae85691857f5352e9320d09193b795d10a64f6fc79ed25b4a1e2aa56c3e156ff0b4aa2a8cbca2e9177e2e1bd2d'
 	'ae194a5181f67d44dacb880e611e952f6b24943425ebccfba870f5c0367cbfbab3bf5549332344a298a580536ac1c65e6bfa77a0787102e3c10be00f9d4c7626'
 )
 noextract=("$pkgname-$pkgver.deb")
