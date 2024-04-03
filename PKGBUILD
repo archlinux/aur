@@ -1,7 +1,7 @@
 # Maintainer: Aria Moradi <aria.moradi007 at gmail dot com>
 
 pkgname=catapult-bin
-pkgver=24.03a
+pkgver=24.04a
 pkgrel=1
 pkgdesc="A cross-platform launcher for Cataclysm: DDA and BN"
 arch=("x86_64")
