@@ -7,8 +7,9 @@
 
 pkgname=virtualbox-kvm
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use (KVM backend)'
-pkgver=20240226
+pkgver=20240325
 _pkgver=dev-${pkgver}
+_vboxver='7.0.14'
 pkgrel=1
 conflicts=('virtualbox' 'virtualbox-ose')
 depends=('curl' 'gcc-libs' 'glibc' 'liblzf' 'libpng' 'libtpms' 'libvpx' 'libx11' 'libxcursor'
@@ -30,7 +31,8 @@ makedepends=('alsa-lib' 'cdrkit' 'curl' 'device-mapper' 'git' 'glu' 'gsoap' 'gls
                 'libxtst' 'linux-headers' 'mesa' 'python' 'qt5-base' 'qt5-tools' 'qt5-x11extras'
                 'sdl' 'sdl_ttf' 'vde2' 'xorgproto' 'xorg-server-devel' 'yasm')
 
-source=("${url}/archive/refs/tags/${_pkgver}.tar.gz"
+source=("https://download.virtualbox.org/virtualbox/${_vboxver}/VirtualBox-${_vboxver}.tar.bz2"
+        "${url}/releases/download/${_pkgver}/kvm-backend-${_vboxver}-${_pkgver}.patch"
         'virtualbox-host-dkms.conf'
         'virtualbox.sysusers'
         'virtualbox-guest-utils.sysusers'
@@ -51,7 +53,8 @@ source=("${url}/archive/refs/tags/${_pkgver}.tar.gz"
         '013-support-building-from-dkms.patch'
         '018-upate-xclient-script.patch'
         '019-libxml-2-12.patch')
-sha256sums=('cf972ecd351ed073ac29289bd8d524097020057ba9af0a010dd8296f15417eee'
+sha256sums=('45860d834804a24a163c1bb264a6b1cb802a5bc7ce7e01128072f8d6a4617ca9'
+            'f02aaab9e6dec3741aa246adc7613c3d0216edcf59b9ce081120d6eece0b0297'
             '76d98ea062fcad9e5e3fa981d046a6eb12a3e718a296544a68b66f4b65cb56db'
             '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
             'da4c49f6ca94e047e196cdbcba2c321199f4760056ea66e0fbc659353e128c9e'
@@ -74,7 +77,7 @@ sha256sums=('cf972ecd351ed073ac29289bd8d524097020057ba9af0a010dd8296f15417eee'
             '25271f26d897bb76ae2a39b6fdf10409acc929e2d424e34d1bd42014a42a0d31')
 
 prepare() {
-    cd "virtualbox-kvm-${_pkgver}"
+    cd "VirtualBox-${_vboxver}"
 
     # apply patches from the source array
     local filename
@@ -95,7 +98,7 @@ prepare() {
 }
 
 build() {
-    cd "virtualbox-kvm-${_pkgver}"
+    cd "VirtualBox-${_vboxver}"
 
     echo 'Build virtualbox-kvm'
     ./configure \
@@ -118,8 +121,8 @@ build() {
 }
 
 package() {
-    source "virtualbox-kvm-${_pkgver}/env.sh"
-    cd "virtualbox-kvm-${_pkgver}/out/linux.${BUILD_PLATFORM_ARCH}/release/bin"
+    source "VirtualBox-${_vboxver}/env.sh"
+    cd "VirtualBox-${_vboxver}/out/linux.${BUILD_PLATFORM_ARCH}/release/bin"
 
     # libraries (and non-PATH executables)
     install -d -m0755 "${pkgdir}/usr/lib/virtualbox"
@@ -185,15 +188,15 @@ package() {
     install -D -m0644 virtualbox.desktop "${pkgdir}/usr/share/applications/virtualbox.desktop"
     install -D -m0644 virtualbox.xml "${pkgdir}/usr/share/mime/packages/virtualbox.xml"
 
-    # install configuration
+    # configuration
     install -d -m0755 "${pkgdir}/etc/vbox"
     echo 'INSTALL_DIR=/usr/lib/virtualbox' > "${pkgdir}/etc/vbox/vbox.cfg"
 
     cd "${srcdir}"
 
-    # licence
-    install -D -m0644 virtualbox-kvm-${_pkgver}/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m0644 virtualbox-kvm-${_pkgver}/COPYING.CDDL "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.CDDL"
+    # license
+    install -D -m0644 VirtualBox-${_vboxver}/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m0644 VirtualBox-${_vboxver}/COPYING.CDDL "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.CDDL"
 
     # systemd
     install -D -m0644 60-vboxdrv.rules "${pkgdir}/usr/lib/udev/rules.d/60-vboxdrv.rules"
