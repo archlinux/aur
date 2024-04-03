@@ -1,0 +1,14 @@
+pkgbase = anyrun-plugin-applications
+	pkgdesc = Applications plugin for searching and running system-specific desktop entries.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/anyrun-org/plugin-applications
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = anyrun
+	source = https://github.com/anyrun-org/plugin-applications/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 04659c27cbb55ec9f30f9ba3a7934b817319b3cfcadaca7a35126cca88259a2d
+
+pkgname = anyrun-plugin-applications
