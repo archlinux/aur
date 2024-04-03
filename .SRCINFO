@@ -1,0 +1,14 @@
+pkgbase = anyrun-plugin-stdin-git
+	pkgdesc = Stdin plugin for dmenu-like operation.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/anyrun-org/plugin-stdin
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = anyrun
+	source = anyrun-plugin-stdin::git+https://github.com/anyrun-org/plugin-stdin.git
+	sha256sums = SKIP
+
+pkgname = anyrun-plugin-stdin-git
