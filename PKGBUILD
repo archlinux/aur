@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mockoon-git
-pkgver=7.0.0.r9.ge4ac91b3
+pkgver=8.0.0.r0.g276c9ae2
 _electronversion=29
 _nodeversion=20
 pkgrel=1
@@ -41,6 +41,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --categories="Development" --name="${pkgname}" --exec="${pkgname} %U"
@@ -54,13 +55,13 @@ build() {
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
-        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
-        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
         echo "Your network is OK."
     fi
-    sed "12,24d;s|'AppImage',|'dir'|g" -i "${srcdir}/${pkgname//-/.}/packages/desktop/build-configs/electron-builder.linux.js"
+    sed 's|electron-builder.linux.js",|electron-builder.linux.js --dir",|g' -i packages/desktop/package.json
     npm run bootstrap
     npm run build:libs
     npm run build:desktop:prod
