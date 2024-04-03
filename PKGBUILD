@@ -1,7 +1,7 @@
 # Maintainer: nezu <nezu@nezu.cc>
 pkgname=teamwork-desktop
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Teamwork for Desktop - Launch Teamwork directly from your desktop."
 arch=('any')
 url="https://integrations.teamwork.com/integrations/teamwork-projects-desktop/"
@@ -19,7 +19,7 @@ sha256sums=('c553c13ee1f242884cb74e6d3bf28b9d4734968791fbe89b847708894a28f087'
             '1a79b996a5913f3cd7957014631e8e71bd7b4bcadd51dfca729a2d9fdcfd9020'
             '18d089a98af2961f2a4e6feb2e63f74c9990f65d04b2055733630f08458e43bc'
             'abd0bf317ac70d5aa51516508cdcf09875496b8bfde643af52df98f0e58d0b93'
-            '875d757f8cf3a0c28342932e76ab151be55fef7985443a9750b782cac51563a8')
+            '241c4bdb71974742a4204f0d1cd0c58b007cb459961e278dbd77f3e4ea0c54f5')
 
 prepare() {
 	cd resources
