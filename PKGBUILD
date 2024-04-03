@@ -2,27 +2,23 @@
 # thanks to celogeek, sseneca, dr460nf1r3, dr460nf1r3 and AverytheFurry for pointing out multiple things
 
 pkgname=fluffychat
-pkgver=1.16.0
+pkgver=1.19.0
 pkgrel=1
-pkgdesc="Chat with your friends"
+pkgdesc="Open. Nonprofit. Cute. Easy to use (matrix) messenger. Secure and decentralized."
 arch=('x86_64' 'aarch64')
 url="https://fluffychat.im/"
 license=('AGPL3')
-depends=('gtk3' 'jsoncpp' 'libsecret' 'xdg-user-dirs' 'zenity' 'libolm')
-makedepends=('clang'
-             'ninja'
-             'flutter'
-             'cmake'
-             'git'
-             'gtk3')
+depends=('gtk3' 'jsoncpp' 'libsecret' 'xdg-user-dirs' 'libolm')
+makedepends=(
+             'flutter-tool'
+             'flutter-target-linux'
+  )
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("fluffychat-v${pkgver}.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6022012359fcc21fac3e12645ce731384f8ed705c3cb95a4dc5a1ccea7408f42')
+sha256sums=('0fb007f2ed56ee46115606dae5eb2bb9eac238c344caae8d478eb80d71e6295f')
 
 prepare() {
-  flutter --no-version-check --suppress-analytics config --enable-linux-desktop
-
   # overriding CMake flags for aarch64 in order to ensure build
   # is not failing
   if [[ "$(uname -m)" == "aarch64" ]]; then
@@ -34,13 +30,12 @@ prepare() {
   fi
   
   cd ${pkgname}-$pkgver
-  flutter --no-version-check --suppress-analytics clean
-  flutter --no-version-check --suppress-analytics pub get 
+  flutter pub get 
 }
 
 build() {
   cd ${pkgname}-$pkgver
-  flutter --no-version-check --suppress-analytics build linux --release --verbose
+  flutter build linux --release --verbose
 }
 
 package() {  
