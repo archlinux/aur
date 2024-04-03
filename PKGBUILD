@@ -2,12 +2,11 @@
 
 pkgname=linux-beep-music2
 _gitname=beep-melodies
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Collection of more beep melodies"
 arch=('any')
 url="https://github.com/Josef-Friedrich/beep-melodies"
-license=('')
 depends=('beep')
 makedepends=('git')
 source=('git+https://github.com/Josef-Friedrich/beep-melodies.git')
