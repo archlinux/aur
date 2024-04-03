@@ -2,9 +2,9 @@
 # Contributor: Bruno Pagani <archange@archlinux.org>
 
 pkgbase=arc-kde
-pkgname=(arc-kde kvantum-theme-arc)
+pkgname=(arc-kde plasma5-themes-arc kvantum-theme-arc)
 pkgver=20220908
-pkgrel=2
+pkgrel=3
 pkgdesc="Arc theme for KDE Plasma 5"
 arch=(any)
 url="https://github.com/PapirusDevelopmentTeam/${pkgbase}"
@@ -18,7 +18,16 @@ optdepends=(
 )
 
 package_arc-kde() {
+    pkgdesc='Arc theme for Plasma 5 - Transitional package (install "plasma5-themes-arc")'
+    depends=('plasma5-themes-arc')
+}
+
+# New package name using:
+# https://wiki.archlinux.org/title/KDE_package_guidelines#KF5_package_naming
+package_plasma5-themes-arc() {
     optdepends+=('kvantum-theme-arc: Arc theme for Kvantum Qt style (recommended)')
+    provides=('arc-kde')
+    replaces=('arc-kde')
 
     cd ${pkgbase}-${pkgver}
     DESTDIR=$pkgdir IGNORE=Kvantum make install

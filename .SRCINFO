@@ -1,7 +1,7 @@
 pkgbase = arc-kde
 	pkgdesc = Arc theme for KDE Plasma 5
 	pkgver = 20220908
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/PapirusDevelopmentTeam/arc-kde
 	arch = any
 	license = GPL3
@@ -12,9 +12,15 @@ pkgbase = arc-kde
 	sha256sums = bb4f547df20fc43fc19315cd0c96a447068abdc4095e7ae8b654a813e3422e93
 
 pkgname = arc-kde
+	pkgdesc = Arc theme for Plasma 5 - Transitional package (install "plasma5-themes-arc")
+	depends = plasma5-themes-arc
+
+pkgname = plasma5-themes-arc
 	optdepends = arc-gtk-theme: Arc theme for GTK apps
 	optdepends = arc-icon-theme: Arc icon theme
 	optdepends = kvantum-theme-arc: Arc theme for Kvantum Qt style (recommended)
+	provides = arc-kde
+	replaces = arc-kde
 
 pkgname = kvantum-theme-arc
 	pkgdesc = Arc theme for Kvantum
