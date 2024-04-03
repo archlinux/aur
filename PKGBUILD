@@ -12,7 +12,7 @@
 _fragment="${FRAGMENT:-#branch=master}"
 
 pkgname=upbge-git
-pkgver=139557.c3f0186638c
+pkgver=141072.9aa0853d14c
 pkgrel=1
 pkgdesc="Uchronia Project Blender Game Engine fork of Blender Game Engine"
 arch=('i686' 'x86_64')
@@ -97,7 +97,8 @@ build() {
   export CUDAHOSTCXX="$CC"
 
   _CMAKE_FLAGS+=( -DWITH_CLANG=ON \
-                  -DWITH_CYCLES=ON )
+                  -DWITH_CYCLES=ON \
+                  -DCMAKE_LINKER_TYPE=BFD )
 
   # Use CUDA_ARCH to build for specific GPU architecture
   # Supports: single arch (sm_52) and list of archs (sm_52;sm_60)
