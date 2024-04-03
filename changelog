@@ -1,3 +1,21 @@
+2024-04-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.0.1.24-1:
+    Fixed crash when running win-x64 ASF variant on the very old CPUs (@JustArchi #3180).
+    Added automatic plugin updates functionality. This feature requires appropriate support at plugin level, and allows plugin authors to issue updates easily through unified ASF mechanisms. Plugin updates are disabled by default, you can control that behaviour with PluginsUpdateMode and PluginsUpdateList global config properties (@JustArchi #3151).
+    Added support for ASF downgrade in update command, simply append ! character to the end of update channel (@JustArchi).
+    Added updateplugins command, which allows to update plugins manually on demand, similar to update command that updates ASF - also supports ! downgrading. In addition to that, added POST /Api/Plugins/Update for IPC (@JustArchi).
+    Added initial support for new Steam families. ASF now extracts family members and gives them FamilySharing access to the bot instance automatically on top of the old family sharing system, which is still being used (@JustArchi #3162).
+    Added support for FamilyJoin 2FA confirmation type (@ezhevita #3166).
+    Added ArchiSteamFarm.OfficialPlugins.Monitoring. This is the first official ASF plugin that doesn't come bundled with the release. Instead, a zip file is provided in each release for those interested, with an optional capability of automatic updates explained above. The plugin is currently considered experimental and requires more polishing and documentation before becoming useful, but it's already made available for those interested (@Abrynos #3160).
+    Improved performance of loading own inventories by moving logic over to Steam network. This also makes some breaking changes for plugin creators (@ezhevita #3155, @Citrinate #3164).
+    ASF will now try to flash its console window on Windows when expecting user input (@ezhevita #3158 #2998).
+    Added limited support for --minimized command-line switch also for Linux and OS X (@ezhevita #3158 #3159).
+    ASF now uses minimal amount of dependencies for its IPC initialization, this slightly decreases memory footprint (@JustArchi).
+    Fixed possible ASF crash when logging in as child account in new Steam families (@JustArchi).
+    Improved core ASFB routines to not hold ASF update and trade offers blocked for too long when timeouts occur (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2024-03-02 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.0.0.3-1:
     [!] ASF V6 comes with modern System.Text.Json replacement of previously used since the very first ASF version, Newtonsoft.Json library. This is core foundation that ASF is based on - while it should be mostly transparent for end-users, it's breaking change for existing ASF plugins, and it also has far bigger scope than usual in terms of ASF codebase, hence V6 major version bump. If you're plugin creator, you can find notes below for technical details in regards to upgrade (@JustArchi #3145 #3061).

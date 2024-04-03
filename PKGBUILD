@@ -5,10 +5,11 @@ pkgbase=asf
 pkgname=('asf-plugin-steamtokendumper'
          'asf-plugin-itemsmatcher'
          'asf-plugin-mobileauthenticator'
+         'asf-plugin-monitoring'
          'asf-plugin-periodicgc'
          'asf-plugin-signinwithsteam'
          'asf')
-pkgver="6.0.0.3"
+pkgver="6.0.1.24"
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
@@ -51,6 +52,7 @@ build() {
     dotnet publish "ArchiSteamFarm.OfficialPlugins.ItemsMatcher" -o "out/result/plugins/ArchiSteamFarm.OfficialPlugins.ItemsMatcher" $DOTNET_FLAGS $PUBLISH_FLAGS
     dotnet publish "ArchiSteamFarm.OfficialPlugins.SteamTokenDumper" -o "out/result/plugins/ArchiSteamFarm.OfficialPlugins.SteamTokenDumper" $DOTNET_FLAGS $PUBLISH_FLAGS
     dotnet publish "ArchiSteamFarm.OfficialPlugins.MobileAuthenticator" -o "out/result/plugins/ArchiSteamFarm.OfficialPlugins.MobileAuthenticator" $DOTNET_FLAGS $PUBLISH_FLAGS
+    dotnet publish "ArchiSteamFarm.OfficialPlugins.Monitoring" -o "out/result/plugins/ArchiSteamFarm.OfficialPlugins.Monitoring" $DOTNET_FLAGS $PUBLISH_FLAGS
     dotnet publish "ArchiSteamFarm.CustomPlugins.PeriodicGC" -o "out/result/plugins/ArchiSteamFarm.CustomPlugins.PeriodicGC" $DOTNET_FLAGS $PUBLISH_FLAGS
     dotnet publish "ArchiSteamFarm.CustomPlugins.SignInWithSteam" -o "out/result/plugins/ArchiSteamFarm.CustomPlugins.SignInWithSteam" $DOTNET_FLAGS $PUBLISH_FLAGS
 }
@@ -82,6 +84,14 @@ package_asf-plugin-mobileauthenticator() {
 
     install -d -m 755 ${pkgdir}/usr/lib/asf/plugins/ArchiSteamFarm.OfficialPlugins.MobileAuthenticator
     mv asf/out/result/plugins/ArchiSteamFarm.OfficialPlugins.MobileAuthenticator "${pkgdir}/usr/lib/asf/plugins/"
+}
+
+package_asf-plugin-monitoring() {
+    pkgdesc="Monitoring plugin for ArchiSteamFarm."
+    depends=('asf')
+
+    install -d -m 755 ${pkgdir}/usr/lib/asf/plugins/ArchiSteamFarm.OfficialPlugins.Monitoring
+    mv asf/out/result/plugins/ArchiSteamFarm.OfficialPlugins.Monitoring "${pkgdir}/usr/lib/asf/plugins/"
 }
 
 package_asf-plugin-periodicgc() {
