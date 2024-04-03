@@ -3,7 +3,7 @@
 # Contributor: Sarah Hay <sarah@archlinux.org>
 
 pkgbase=gpgme
-pkgname=(gpgme qgpgme-qt5 qgpgme-qt6 python-gpgme)
+pkgname=(gpgme qgpgme-qt6 python-gpgme)
 pkgver=1.23.2
 pkgrel=3
 pkgdesc='A C wrapper library for GnuPG'
@@ -18,7 +18,6 @@ makedepends=(
   'python-installer'
   'python-setuptools'
   'python-wheel'
-  'qt5-base'
   'qt6-base'
   'swig'
 )
@@ -33,9 +32,6 @@ prepare() {
 
   sed -i 's/-unknown//' autogen.sh
   autoreconf -fi
-
-  # Building qt5 and qt6 bindings in the same source tree is not supported
-  cp -r ${srcdir}/${pkgbase}-${pkgver}{,-qt6}
 }
 
 build() {
@@ -54,15 +50,6 @@ build() {
     cd lang/python/
     top_builddir="$srcdir/$pkgbase-$pkgver" python -m build --wheel --no-isolation
   )
-
-  cd ../${pkgbase}-${pkgver}-qt6
-  ./configure \
-    --prefix=/usr \
-    --disable-fd-passing \
-    --disable-static \
-    --disable-gpgsm-test \
-    --enable-languages=cpp,qt6
-  make
 }
 
 check() {
@@ -85,27 +72,15 @@ package_gpgme() {
   make DESTDIR="${pkgdir}" install
 
   # split qgpgme
-  rm -r "${pkgdir}"/usr/lib/{cmake/QGpgme/,libqgpgme.*}
+  rm -r "${pkgdir}"/usr/lib/{cmake/QGpgmeQt6/,libqgpgmeqt6.*}
   rm -r "${pkgdir}"/usr/lib/python*
-}
-
-package_qgpgme-qt5() {
-  pkgdesc="Qt5 bindings for GPGme"
-  depends=('gpgme' 'qt5-base')
-  provides=('qgpgme')
-  replaces=('qgpgme')
-
-  cd ${pkgbase}-${pkgver}/lang/qt
-
-  make DESTDIR="${pkgdir}" install
-  rm -r "${pkgdir}"/usr/include
 }
 
 package_qgpgme-qt6() {
   pkgdesc="Qt6 bindings for GPGme"
   depends=('gpgme' 'qt6-base')
 
-  cd ${pkgbase}-${pkgver}-qt6/lang/qt
+  cd ${pkgbase}-${pkgver}/lang/qt
 
   make DESTDIR="${pkgdir}" install
   rm -r "${pkgdir}"/usr/include
