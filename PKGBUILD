@@ -1,7 +1,7 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=infisical
-pkgver=0.19.1
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="Fetch and inject secrets into any framework in local development"
 url="https://github.com/Infisical/infisical"
@@ -10,14 +10,13 @@ license=(LicenseRef-Custom)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/infisical-cli/v$pkgver.tar.gz")
-sha256sums=('eca6f5c3de8b9ddab99a39566b72a6e5a398bc5a75beb6b4685d7e6c8a514a42')
+sha256sums=('fac934bfa1bffb7ecab658e97a6d542dab9d8af6ff26b8804d6358f5bd1f42db')
 
 _archive="$pkgname-infisical-cli-v$pkgver"
 
 prepare() {
   cd "$_archive/cli"
 
-  # Avoid downloading Go dependencies in build() by doing it here instead
   go mod download -x
 }
 
@@ -47,7 +46,7 @@ check() {
 
   # Skip failing tests - not sure why they fail.
   local unit_tests=$(
-    go list -buildvcs=false ./... \
+    go list ./... \
       | grep -v 'github.com/Infisical/infisical-merge/detect' \
       | grep -v 'github.com/Infisical/infisical-merge/packages/cmd' \
       | sort
