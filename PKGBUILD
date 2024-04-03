@@ -6,21 +6,23 @@
 
 _pkgbasename=ffmpeg
 pkgname=("lib32-$_pkgbasename" "lib32-lib$_pkgbasename")
-pkgver=6.1
+pkgver=6.1.1
 pkgrel=1
 epoch=2
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
-url="http://ffmpeg.org/"
-license=('GPL3')
+url="http://ffmpeg.org"
+license=('GPL-3.0-only')
 depends=(
 #  "$_pkgbasename"
   "$_pkgbasename>=${epoch}:${pkgver}"
   'lib32-alsa-lib'
   'lib32-aom'
   'lib32-bzip2'
+#  'lib32-cairo'
   'lib32-fontconfig'
   'lib32-fribidi'
+#  'lib32-glib2'
   'lib32-glibc'
   'lib32-gmp'
   'lib32-gnutls'
@@ -35,15 +37,18 @@ depends=(
   'lib32-libdrm' 
   'lib32-freetype2'
   'lib32-libglvnd'
+  'lib32-harfbuzz'
   'lib32-libiec61883'
 #  'lib32-libjxl'
 #  'lib32-onevpl'
   'lib32-libmodplug'
 #  'lib32-libopenmpt'
+  'lib32-libplacebo'
   'lib32-libpulse'
-#  'lib32-rav1e'
+  'lib32-rav1e'
   'lib32-libraw1394'
   'lib32-librsvg'
+#  'lib32-rubberband'
 #  'lib32-libsoxr'
 #  'lib32-libssh'
   'lib32-libtheora'
@@ -67,10 +72,12 @@ depends=(
   'lib32-openjpeg2'
   'lib32-opus'
   'lib32-sdl2'
+#  'lib32-snappy'
   'lib32-speex'
   'lib32-srt'
 #  'lib32-svt-av1'
   'lib32-v4l-utils'
+#  'lib32-vapoursynth'
   'lib32-vmaf'
   'lib32-vulkan-icd-loader'
   'lib32-xz'
@@ -81,6 +88,7 @@ makedepends=(
   'amf-headers'
   'lib32-clang'
   'ffnvcodec-headers'
+#  'lib32-frei0r-plugins'
   'git'
   'lib32-ladspa'
   'lib32-mesa'
@@ -90,15 +98,17 @@ makedepends=(
 )
 optdepends=(
 #  'avisynthplus: AviSynthPlus support'
+#  'frei0r-plugins: Frei0r video effects support'
 #  'intel-media-sdk: Intel QuickSync support (legacy)'
-#   'onevpl-intel-gpu: Intel QuickSync support'
   'lib32-ladspa: LADSPA filters'
   'lib32-nvidia-utils: Nvidia NVDEC/NVENC support'
+#  'onevpl-intel-gpu: Intel QuickSync support'
+#  'vapoursynth: VapourSynth support'
 )
 options=(
   debug
 )
-_tag=3cdfac27d3ea06f8719faed48b4ae2e75e94a463
+_tag=6f4048827982a8f48f71f551a6e1ed2362816eec
 source=(
   "git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}"
   "add-av_stream_get_first_dts-for-chromium.patch"
@@ -120,11 +130,21 @@ prepare() {
   # FS#77813: fix playing ogg files with mplayer
   git cherry-pick -n cbcc817353a019da4332ad43deb7bbc4e695d02a
 
+  patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch  # https://crbug.com/1251779
+
   # use non-deprecated nvenc GUID for conftest
   git cherry-pick -n 03823ac0c6a38bd6ba972539e3203a592579792f
   git cherry-pick -n d2b46c1ef768bc31ba9180f6d469d5b8be677500
 
-  patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch  # https://crbug.com/1251779
+  # Fix VDPAU vo
+  git cherry-pick -n e9c93009fc34ca9dfcf0c6f2ed90ef1df298abf7
+
+  # Fix bug in av_fft_end
+  git cherry-pick -n a562cfee2e214252f8b3f516527272ae32ef9532
+  git cherry-pick -n 250471ea1745fc703eb346a2a662304536a311b1
+
+  # Fix build with latest vulkan headers
+  git cherry-pick -n fef22c87ada4517441701e6e61e062c9f4399c8e
 }
 
 pkgver() {
@@ -153,6 +173,7 @@ build() {
     --enable-gmp \
     --enable-gnutls \
     --enable-gpl \
+    --enable-libharfbuzz \
     --enable-ladspa \
     --enable-libaom \
     --enable-libass \
@@ -171,7 +192,9 @@ build() {
     --enable-libopencore-amrwb \
     --enable-libopenjpeg \
     --enable-libopus \
+    --enable-libplacebo \
     --enable-libpulse \
+    --enable-librav1e \
     --enable-librsvg \
     --enable-libspeex \
     --enable-libsrt \
@@ -198,16 +221,19 @@ build() {
 
 ## not available under 32 bit
 #    --enable-avisynth \
+#    --enable-frei0r \
 #    --enable-libjxl \
 #    --enable-libopenh264
 #    --enable-libopenmpt \
-#    --enable-librav1e \
+#    --enable-librubberband \
+#    --enable-libsnappy \
 #    --enable-libsoxr \
 #    --enable-libssh \
 #    --enable-libsvtav1 
 #    --enable-libuavs3d
 #    --enable-libvidstab \
 #    --enable-libvpl \
+#    --enable-vapoursynth \
 
   make
 }
