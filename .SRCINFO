@@ -1,0 +1,13 @@
+pkgbase = shellpic-git
+	pkgdesc = Shellpic uses escape codes to display images in a terminal, IRC or NUTS client. -ASCII-art is so 2013.
+	pkgver = 1.6.2.94f1a18
+	pkgrel = 1
+	url = https://github.com/larsjsol/shellpic
+	arch = any
+	license = GPL-3.0
+	depends = python
+	depends = python-pillow
+	source = git+https://github.com/larsjsol/shellpic
+	sha256sums = SKIP
+
+pkgname = shellpic-git
