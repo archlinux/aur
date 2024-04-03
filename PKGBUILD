@@ -43,6 +43,7 @@ makedepends=(
   unzip
   webkit2gtk
 )
+DLAGENTS=("https::/usr/bin/curl --user-agent 'Mozilla' -fLC - -o %o %u")
 source=(
   https://hg.openjdk.java.net/openjfx/8u-dev/rt/archive/${pkgver//./}-ga.tar.bz2
   gradle.properties
