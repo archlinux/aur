@@ -1,4 +1,4 @@
 [stavekontrolden]
 source = "regex"
 url = "https://stavekontrolden.dk/?dictionaries=1"
-regex = "da_DK-(\d\.\d\.\d{3})\.oxt"
+regex = "da_DK-((?:\\d|\\.)+)\\.oxt"
