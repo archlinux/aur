@@ -13,12 +13,12 @@ license=('Unlicense')
 optdepends=('firefox: primary compatible browser' 'librewolf: alternative compatible browser')
 conflicts=("$pkgname-git")
 install="$pkgname.install"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/rafaelmardojai/$pkgname/archive/refs/tags/v122.tar.gz" "INSTALL.md")
+source=("$pkgname-122.tar.gz::https://github.com/rafaelmardojai/$pkgname/archive/refs/tags/v122.tar.gz" "INSTALL.md")
 md5sums=('70920cf2d1fab755c40956b46a221eb3'
          '25f18456221ffc91f472b1abff8aae84')
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname-122"
 	install -d "$pkgdir/usr/lib/$pkgname"
 	cp -ra theme userChrome.css userContent.css configuration "$pkgdir/usr/lib/$pkgname"
 
