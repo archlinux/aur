@@ -1,6 +1,6 @@
 pkgname=hyphen-el
-pkgver=7.6.4
-_pkgver=7.6.4.1
+pkgver=7.6.6
+_pkgver=7.6.6.3
 pkgrel=1
 pkgdesc="Greek hyphenation rules"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://www.documentfoundation.org/"
 license=('LGPL')
 optdepends=('hyphen: offers hyphenation library functions')
 source=(https://download.documentfoundation.org/libreoffice/src/${pkgver}/libreoffice-dictionaries-${_pkgver}.tar.xz)
-md5sums=('d0cd4106c2563797ba1e1dfde16ca9ed')
+md5sums=('be17b656407ad1ff80510998895624aa')
 
 package() {
   cd "${srcdir}"

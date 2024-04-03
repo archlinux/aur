@@ -1,12 +1,12 @@
 pkgbase = hyphen-el
 	pkgdesc = Greek hyphenation rules
-	pkgver = 7.6.4
+	pkgver = 7.6.6
 	pkgrel = 1
 	url = https://www.documentfoundation.org/
 	arch = any
 	license = LGPL
 	optdepends = hyphen: offers hyphenation library functions
-	source = https://download.documentfoundation.org/libreoffice/src/7.6.4/libreoffice-dictionaries-7.6.4.1.tar.xz
-	md5sums = d0cd4106c2563797ba1e1dfde16ca9ed
+	source = https://download.documentfoundation.org/libreoffice/src/7.6.6/libreoffice-dictionaries-7.6.6.3.tar.xz
+	md5sums = be17b656407ad1ff80510998895624aa
 
 pkgname = hyphen-el
