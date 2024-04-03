@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=20210704.1
+VERSION=20240403.1
 
 ##
 #
@@ -42,7 +42,7 @@ idos_pkgs_strings=(
 
 ### Packages with those regexp's are ignored. No whitespaces are allowed!
 idos_ignore_pkgs_regexps=(
-  '\-license'
+  '-license'
 )
 
 
@@ -218,7 +218,7 @@ compare_versions() {
       cat <<< "$1"
       cat <<< "$2"
     } | sort -V | head -n 1)"
-    
+
     if [ "${_smalleritem}x" == "$2x" ]; then
       cat <<< ">"
     else
