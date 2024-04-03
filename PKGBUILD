@@ -20,6 +20,7 @@ package() {
     DIR="/usr/share/games/$_pkgname/Source"
 if [ -d "$DIR" ]; then
     echo "$DIR exists, skipping download."
+    cp -r "/usr/share/games/$_pkgname/Source" "$pkgdir/usr/share/games/$_pkgname"
 else
     echo "$DIR does not exist, starting download.."
     cd "$srcdir/jazz2-$pkgver" || { echo "Failed to change directory"; exit 1; }
