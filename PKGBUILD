@@ -1,8 +1,8 @@
 # Maintainer: Stefan Dimitrijevic <stefanstele95@hotmail.com>
 
 pkgname='linvam'
-pkgver=0.5.1
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc='Linux voice activated macros'
 arch=('x86_64')
 url='https://github.com/stele95/LinVAM'
@@ -12,7 +12,6 @@ makedepends=(
   'python'
   'nuitka'
   'git'
-  'bash'
 )
 depends=(
   'python'
@@ -24,7 +23,6 @@ depends=(
   'python-vosk-bin'
   'ffmpeg'
   'ydotool'
-  'bash'
 )
 provides=(
   'linvam'
@@ -35,7 +33,7 @@ conflicts=(
   'linvamrun'
 )
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5dbe2f732640daa32ccbbdafe18f81b42b46040caa7694e9790bc1ab8e5a8c87')
+sha256sums=('c05e24eae54fd59f9d88e8d545951b7857d2b7038809649ad711f15da4e8b984')
 options=('debug')
 install=linvam.install
 
@@ -52,4 +50,7 @@ package() {
   install "LinVAM-$pkgver"/scripts/linvam -Dm755 "$pkgdir/usr/bin/linvam"
   install "LinVAM-$pkgver"/scripts/linvamrun -Dm755 "$pkgdir/usr/bin/linvamrun"
   install "LinVAM-$pkgver"/LICENSE.txt -Dm644 "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  install "LinVAM-$pkgver"/rules/12-input.rules -Dm644 "$pkgdir/etc/udev/rules.d/12-input.rules"
+  install "LinVAM-$pkgver"/rules/50-uinput.rules -Dm644 "$pkgdir/etc/udev/rules.d/50-uinput.rules"
+  install "LinVAM-$pkgver"/rules/80-uinput.rules -Dm644 "$pkgdir/etc/udev/rules.d/80-uinput.rules"
 }
