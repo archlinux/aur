@@ -2,7 +2,7 @@
 
 _pkgname=pdf4teachers
 pkgname=$_pkgname-bin
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="PDF editing software in large quantities designed for teachers"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('APACHE')
 depends=('java-runtime')
 provides=('pdf4teachers')
 source=("https://github.com/ClementGre/$_pkgname/releases/download/$pkgver/$_pkgname-Linux-${pkgver}.deb")
-sha256sums=('593762d6638b4fe64e82ba7e80210acddc9671062c7d9ed0ea2ddc6674c0b4ce')
+sha256sums=('a3841ec94d0b547c3f9486d8ebf61a27be28ca220c4c506b0fa4ebb4cc3ce29b')
 
 
 package() {
