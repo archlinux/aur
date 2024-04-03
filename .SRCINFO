@@ -1,14 +1,16 @@
 pkgbase = gpt-anywhere-bin
 	pkgdesc = Use GPT anywhere with just one shortcut.
-	pkgver = 0.0.1
-	pkgrel = 8
+	pkgver = 0.0.2
+	pkgrel = 1
 	url = http://jinay.dev/gpt-anywhere/
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = gtk3
-	provides = gpt-anywhere=0.0.1
+	depends = webkit2gtk
+	depends = libsoup
+	provides = gpt-anywhere=0.0.2
 	conflicts = gpt-anywhere
-	source = gpt-anywhere-0.0.1.deb::https://github.com/JinayJain/gpt-anywhere/releases/download/app-v0.0.1/gpt-anywhere_0.0.1_amd64.deb
-	sha256sums = a589d4714b03d41b34ce8163ad7472b423b07ecb193c00187753adb125950cef
+	source = gpt-anywhere-0.0.2.deb::https://github.com/JinayJain/gpt-anywhere/releases/download/app-v0.0.2/gpt-anywhere_0.0.2_amd64.deb
+	sha256sums = d6df9920a7c30c89486300ca3b52d6c34f60cffd39a2745564f70035abb4016d
 
 pkgname = gpt-anywhere-bin
