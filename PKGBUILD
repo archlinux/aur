@@ -5,11 +5,11 @@
 # Maintainer: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
-readonly _version_frappe="v15.19.1"
+readonly _version_frappe="v15.20.0"
 
 pkgname="erpnext"
 pkgver="15.18.3"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Free and open source Enterprise Resource Planning (ERP)."
 arch=("x86_64")
 url="https://github.com/frappe/${pkgname}"
