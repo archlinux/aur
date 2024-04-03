@@ -3,13 +3,23 @@
 pkgname=fluffychat-bin
 _pkgname=fluffychat
 pkgver=1.19.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open. Nonprofit. Cute. Easy to use (matrix) messenger. Secure and decentralized."
 arch=('x86_64') # 'aarch64'
 url="https://fluffychat.im/"
 license=('AGPL3')
-depends=('gtk3' 'jsoncpp' 'libsecret' 'xdg-user-dirs' 'libolm')
-makedepends=('unzip')
+depends=(
+        'gtk3'
+        'jsoncpp'
+        # flutter_secure_storage
+        'libsecret'
+        # path_provider
+        'xdg-user-dirs'
+        # for e2ee
+        'libolm'
+        # flutter_file_picker - see https://github.com/miguelpruivo/flutter_file_picker/blob/master/lib/src/linux/file_picker_linux.dart#L115
+        'zenity'
+)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source_x86_64=("fluffychat-v${pkgver}_x86_64.tar.gz::https://github.com/krille-chan/fluffychat/releases/download/v${pkgver}/fluffychat-linux-x64.tar.gz")
