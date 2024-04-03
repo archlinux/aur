@@ -1,0 +1,12 @@
+pkgbase = ddostool
+	pkgdesc = A simple DDossing utility made in python
+	pkgver = 1
+	pkgrel = 1
+	arch = x86_64
+	license = LGPL3
+	depends = gcc
+	depends = python3
+	source = https://github.com/VPeti1/CWAcces/raw/main/ddostool.tar.gz
+	sha256sums = 9f857e32a22f95d9096a2513270e058e7d5f16469257c5d4ec7dd60482cb09d1
+
+pkgname = ddostool
