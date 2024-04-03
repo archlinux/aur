@@ -1,7 +1,7 @@
 pkgbase = jetbrains-toolbox
 	pkgdesc = Manage all your JetBrains Projects and Tools
 	pkgver = 2.2.3.20090
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/toolbox/
 	arch = x86_64
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = jetbrains-toolbox
 	depends = nss
 	optdepends = xdg-utils: open URLs
 	options = !strip
+	options = !debug
 	source = https://download-cf.jetbrains.com/toolbox/jetbrains-toolbox-2.2.3.20090.tar.gz
 	source = jetbrains-toolbox.desktop
 	source = icon.svg

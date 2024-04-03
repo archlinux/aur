@@ -2,14 +2,14 @@
 
 pkgname=jetbrains-toolbox
 pkgver=2.2.3.20090
-pkgrel=1
+pkgrel=2
 pkgdesc='Manage all your JetBrains Projects and Tools'
 arch=('x86_64' 'i686')
 url='https://www.jetbrains.com/toolbox/'
 license=('custom:jetbrains')
 depends=('fuse' 'glib2' 'libxslt' 'libxss' 'xcb-util-keysyms' 'xdg-utils' 'nss')
 optdepends=('xdg-utils: open URLs')
-options=('!strip')
+options=('!strip' '!debug')
 source=("https://download-cf.jetbrains.com/toolbox/${pkgname}-${pkgver}.tar.gz"
         jetbrains-toolbox.desktop
         icon.svg
