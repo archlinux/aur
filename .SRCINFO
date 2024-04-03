@@ -1,11 +1,11 @@
 pkgbase = neocmakelsp-bin
 	pkgdesc = another cmake lsp
-	pkgver = 0.6.20
+	pkgver = 0.6.22
 	pkgrel = 1
 	url = https://github.com/Decodetalkers/neocmakelsp
 	arch = x86_64
 	license = GPL3
-	source = https://github.com/Decodetalkers/neocmakelsp/releases/download/v0.6.20/neocmakelsp-x86_64-unknown-linux-gnu
-	sha256sums = 98cfc7062097059b4e2d08ef542d545e1c7951a4fc54fb2b9c14bf185007bda0
+	source = https://github.com/Decodetalkers/neocmakelsp/releases/download/v0.6.22/neocmakelsp-x86_64-unknown-linux-gnu
+	sha256sums = 5aa92c283c3f8c71b6bbf451b9d6c298839002197395853133e4e035cdd3c817
 
 pkgname = neocmakelsp-bin
