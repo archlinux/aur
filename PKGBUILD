@@ -1,5 +1,5 @@
 pkgname=eigen-git
-pkgver=3.2.92.r8463
+pkgver=3.4.r1041.gbe54cc8
 pkgrel=1
 pkgdesc="Lightweight C++ template library for vector and matrix math, a.k.a. linear algebra."
 arch=('any')
@@ -11,22 +11,18 @@ sha1sums=('SKIP')
 provides=('eigen')
 conflicts=('eigen')
 
-prepare () {
+pkgver() {
   cd "${srcdir}/eigen"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "$(git describe --long --tags --abbrev=7 | sed 's/^before-//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
-  mkdir -p build
-  cd build
-  cmake \
+  cmake -B build -S eigen \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    ../eigen
+    -DCMAKE_INSTALL_LIBDIR=lib
 }
 
 package() {
-  cd ${srcdir}/build
-  make DESTDIR="$pkgdir" install
+  cmake --install build --prefix $pkgdir
 }

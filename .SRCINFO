@@ -1,6 +1,6 @@
 pkgbase = eigen-git
 	pkgdesc = Lightweight C++ template library for vector and matrix math, a.k.a. linear algebra.
-	pkgver = 3.2.92.r8463
+	pkgver = 3.4.r1041.gbe54cc8
 	pkgrel = 1
 	url = https://eigen.tuxfamily.org
 	arch = any
@@ -23,4 +23,3 @@ pkgbase = eigen-git
 	sha1sums = SKIP
 
 pkgname = eigen-git
-
