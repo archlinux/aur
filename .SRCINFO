@@ -1,11 +1,11 @@
 pkgbase = waylyrics
 	pkgdesc = the furry way to show desktop lyrics
 	pkgver = 0.2.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://waylyrics.github.io/waylyrics/waylyrics/
 	arch = x86_64
 	license = MIT
-	makedepends = rust>=1.73.0
+	makedepends = rust
 	depends = openssl
 	depends = dbus
 	depends = gcc-libs
