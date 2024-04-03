@@ -1,7 +1,7 @@
 # Maintainer: lantw44 (at) gmail (dot) com
 
 pkgname=mingw-w64-gtk4
-pkgver=4.12.1
+pkgver=4.14.1
 pkgrel=1
 pkgdesc='GObject-based multi-platform GUI toolkit (mingw-w64)'
 arch=('any')
@@ -12,8 +12,10 @@ makedepends=(
   'mingw-w64-gcc'
   'mingw-w64-pkg-config'
   'mingw-w64-meson'
-  'python'
-  'sassc')
+  'mingw-w64-vulkan-headers'
+  'python-packaging'
+  'sassc'
+  'shaderc')
 depends=(
   'mingw-w64-crt'
   'mingw-w64-adwaita-icon-theme'
@@ -29,12 +31,13 @@ depends=(
   'mingw-w64-libpng'
   'mingw-w64-librsvg>=2.52.0'
   'mingw-w64-libtiff'
-  'mingw-w64-pango>=1.50.0')
+  'mingw-w64-pango>=1.50.0'
+  'mingw-w64-vulkan-icd-loader>=1.3')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(
   "https://download.gnome.org/sources/gtk/${pkgver%.*}/gtk-${pkgver}.tar.xz")
 sha256sums=(
-  'b8b61d6cf94fac64bf3a0bfc7af137c9dd2f8360033fdeb0cfe9612b77a99a72')
+  'fcefb3f132f8cc4711a9efa5b353c9ae9bb5eeff0246fa74dbc2f2f839b9e308')
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 
@@ -59,7 +62,6 @@ build() {
       --default-library both \
       -Dbroadway-backend=false \
       -Dwin32-backend=true \
-      -Dmedia-ffmpeg=disabled \
       -Dmedia-gstreamer=enabled \
       -Dprint-cups=disabled \
       -Ddocumentation=false \

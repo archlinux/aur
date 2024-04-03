@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-gtk4
 	pkgdesc = GObject-based multi-platform GUI toolkit (mingw-w64)
-	pkgver = 4.12.1
+	pkgver = 4.14.1
 	pkgrel = 1
 	url = https://www.gtk.org
 	install = mingw-w64-gtk4.install
@@ -9,8 +9,10 @@ pkgbase = mingw-w64-gtk4
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-pkg-config
 	makedepends = mingw-w64-meson
-	makedepends = python
+	makedepends = mingw-w64-vulkan-headers
+	makedepends = python-packaging
 	makedepends = sassc
+	makedepends = shaderc
 	depends = mingw-w64-crt
 	depends = mingw-w64-adwaita-icon-theme
 	depends = mingw-w64-cairo>=1.14.2-3
@@ -26,10 +28,11 @@ pkgbase = mingw-w64-gtk4
 	depends = mingw-w64-librsvg>=2.52.0
 	depends = mingw-w64-libtiff
 	depends = mingw-w64-pango>=1.50.0
+	depends = mingw-w64-vulkan-icd-loader>=1.3
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.gnome.org/sources/gtk/4.12/gtk-4.12.1.tar.xz
-	sha256sums = b8b61d6cf94fac64bf3a0bfc7af137c9dd2f8360033fdeb0cfe9612b77a99a72
+	source = https://download.gnome.org/sources/gtk/4.14/gtk-4.14.1.tar.xz
+	sha256sums = fcefb3f132f8cc4711a9efa5b353c9ae9bb5eeff0246fa74dbc2f2f839b9e308
 
 pkgname = mingw-w64-gtk4
