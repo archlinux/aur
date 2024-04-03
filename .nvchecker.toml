@@ -1,0 +1,4 @@
+[wootility-appimage]
+source = "httpheader"
+url = "https://api.wooting.io/public/wootility/download?os=linux&branch=lekker"
+regex = "wootility-lekker-((?:\\d|\\.)+)\\.AppImage"
