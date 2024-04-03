@@ -1,0 +1,16 @@
+pkgbase = fish-fisher_path-git
+	pkgdesc = Fish shell plugin for automatically loading plugins under `$fisher_path`
+	pkgver = r8.2f70474
+	pkgrel = 1
+	url = https://github.com/kidonng/fisher_path.fish
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = fish
+	depends = fisher
+	provides = fish-fisher_path
+	conflicts = fish-fisher_path
+	source = git+https://github.com/kidonng/fisher_path.fish.git
+	b2sums = SKIP
+
+pkgname = fish-fisher_path-git
