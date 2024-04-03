@@ -2,7 +2,7 @@
 
 pkgname=realitlscanner
 _pkgname=RealiTLScanner
-pkgver=0.1.2
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A TLS server scanner for Reality "
 arch=('x86_64')
