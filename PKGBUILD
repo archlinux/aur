@@ -1,9 +1,9 @@
 # Maintainer: Christopher Snowhill <kode54@gmail.com>
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 # Contributor: Frank Tao <frank.tao@uwaterloo.ca>
-_wlrootsver=0.17.1
+_wlrootsver=0.17.2
 pkgname=wayfire-hidpi-xprop-git
-pkgver=0.8.1.r150.gb134f11f
+pkgver=0.8.1.r225.g13234c5e
 pkgrel=1
 pkgdesc="3D wayland compositor, integrating the wlroots hidpi-xprop patch set"
 arch=('x86_64')
