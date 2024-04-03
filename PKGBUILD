@@ -4,8 +4,8 @@
 _pypiname=PyGObject-stubs
 _pkgname=pygobject-stubs
 pkgname="python-${_pkgname}"
-pkgver=2.10.0
-pkgrel=2
+pkgver=2.11.0
+pkgrel=1
 pkgdesc="PEP 561 Typing Stubs for PyGObject."
 arch=('any')
 url='https://github.com/pygobject/pygobject-stubs'
@@ -20,7 +20,7 @@ makedepends=(
 	'python-setuptools'
 )
 source=("https://files.pythonhosted.org/packages/source/P/${_pypiname}/${_pypiname}-${pkgver}.tar.gz")
-sha512sums=('11a0546a0b586178c428b995fdd41dd3292cf89bdc0f55091d379c05c2d46153e0d716d57c4749f9d535e9c7e37cd2a55082d22689093cd78d4e315128e9e2af')
+sha512sums=('416a7caa3dd0b06f2bf3737e24b008f9864d617a8a183b28dbc3760cdeb91721ea57434cef60d1bd51ce9acfaead8296236338b056cb634228e75cd511de8dfc')
 
 build() {
   cd ${_pypiname}-$pkgver
