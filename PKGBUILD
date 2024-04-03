@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: soloturn <soloturn@gmail.com>
 pkgname=cosmic-notifications-git
-pkgver=r61.19f147f
+pkgver=r63.4ea0564
 pkgrel=1
-pkgdesc="WIP Layer Shell notifications daemon which integrates with COSMIC."
+pkgdesc="Layer Shell notifications daemon which integrates with COSMIC."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-notifications"
 license=('GPL-3.0-or-later')
@@ -20,8 +20,6 @@ makedepends=(
   'just'
   'mold'
 )
-checkdepends=()
-optdepends=()
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/pop-os/cosmic-notifications.git')
