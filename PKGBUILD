@@ -17,7 +17,7 @@ source=("${_origin}/ubuntu_x86/moon"
         "${_origin}/ubuntu_x86/moonrun"
         "${_origin}/ubuntu_x86/mooninfo"
         "${_origin}/ubuntu_x86/moondoc"
-        "https://github.com/tonyfettes/moonbit-aur/releases/download/v0.1.0.20240403/core.zip"
+        "https://github.com/tonyfettes/moonbit-aur/releases/download/v/core.zip"
         "moon.sh")
 sha256sums=('197b04be0e292be8a7797893695b5df0cee736975249b79f2c8919cca6bc66d0'
             'f5766fd8737129140b2059cb8d23af00cb194b83b47fdf6bf004570fcb8f0b32'
@@ -25,7 +25,7 @@ sha256sums=('197b04be0e292be8a7797893695b5df0cee736975249b79f2c8919cca6bc66d0'
             '53842027da2c14f2bcceaa803fd0a276043e147ab2052bff8bbce6ee6955c50f'
             'e3df89202105fe5ebdce9c8717b71059ddcd5eed60122783f93b0e4c83663183'
             '81f34a423b2a40ed0c499d1c148a7e33a300ce7c8505146c12586ee81a78458b'
-            '750db712196c09e1c033fede6a996acc359a464b98d0815232d44cbd25699025'
+            '6ea1afd051b99610c08038251729c5387ccb46ccf459230934e184c95a84f725'
             '58b177a4b0dda035620b8f5f44f1f26a251203924d1df927a8a00e0a78f9c13c')
 
 pkgver() {
