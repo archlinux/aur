@@ -1,9 +1,9 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 # Contributor: olddog <jeff@impcode.com>
 # Contributor: Jonathan Liu <net147@gmail.com>
 
 pkgname=pg_activity
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Top-like application for PostgreSQL server activity monitoring"
 arch=(any)
@@ -20,6 +20,7 @@ depends=(
 makedepends=(
   python-build
   python-installer
+  python-setuptools
   python-wheel
 )
 checkdepends=(
@@ -28,7 +29,7 @@ checkdepends=(
   python-pytest-postgresql
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9ea11060ccaad6fc95994cfca6663b0aa4a6a30ef090a2adf2324ac58cc8cddf')
+sha256sums=('e74b4a6c9fe20c33fac00c97d0239c3e268f77f640b2fd3c6fec222f377acd61')
 
 _archive="$pkgname-$pkgver"
 
