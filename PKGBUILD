@@ -3,19 +3,17 @@
 
 pkgname=fluffychat-git
 _name=fluffychat
-pkgver=v1.13.0.r0.g28c3dfa2
+pkgver=rc1.19.0.4.r4.g9a8f604f
 pkgrel=1
-pkgdesc="Chat with your friends"
+pkgdesc="Open. Nonprofit. Cute. Easy to use (matrix) messenger. Secure and decentralized."
 arch=('x86_64' 'aarch64')
 url="https://fluffychat.im/"
 license=('AGPL3')
-depends=('gtk3' 'jsoncpp' 'libsecret' 'xdg-user-dirs' 'zenity' 'libolm')
-makedepends=('clang'
-             'ninja'
-             'flutter'
-             'cmake'
-             'git'
-             'gtk3')
+depends=('gtk3' 'jsoncpp' 'libsecret' 'xdg-user-dirs' 'libolm')
+makedepends=(
+             'flutter-tool'
+             'flutter-target-linux'
+             )
 provides=("$_name")
 conflicts=("$_name")
 source=("git+https://github.com/krille-chan/fluffychat.git")
@@ -27,7 +25,6 @@ pkgver() {
 }
 
 prepare() {
-  flutter --no-version-check --suppress-analytics config --enable-linux-desktop
   cd ${_name}
   git submodule update --init --recursive
 
@@ -41,13 +38,12 @@ prepare() {
     export CFLAGS="${CFLAGS/-fstack-clash-protection/ }"
   fi
   
-  flutter --no-version-check --suppress-analytics clean
-  flutter --no-version-check --suppress-analytics pub get
+  flutter pub get
 }
 
 build() {
   cd ${_name}
-  flutter --no-version-check --suppress-analytics build linux --release --verbose
+  flutter build linux --release --verbose
 }
 
 package() {
