@@ -5,7 +5,7 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.16.r445.g71765daf4
+pkgver=0.5.16.r493.gfa0454724
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -67,8 +67,7 @@ optdepends=(
   'vulkan-icd-loader: Vulkan support'
   'vulkan-tools: Vulkan support'
   'wine: easiest way to get all the libraries missing from the Lutris runtime'
-  'winetricks: use system winetricks'
-  'xorg-xgamma: Restore gamma on game exit')
+  'winetricks: use system winetricks')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/lutris/lutris.git')
