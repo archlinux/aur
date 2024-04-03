@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=altus
 _pkgname=Altus
-pkgver=5.0.2
+pkgver=5.1.0
 _electronversion=28
 _nodeversion=18
-pkgrel=2
+pkgrel=1
 pkgdesc="Desktop client for WhatsApp Web with themes, notifications and multiple account support"
 arch=('any')
 url="https://github.com/amanharwara/altus"
@@ -29,7 +29,7 @@ source=(
     "${pkgname}.git::git+${url}.git#tag=${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('95996d80a775cdbf56f5b0c44d0c17da6053ecf3d47fd17229b54d1d18d02aa3'
+sha256sums=('82e16a99adc9deec44a03b130c36577915bc603d7460a37575438d556b659f57'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -41,7 +41,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --categories="Network" --name="${_pkgname}" --exec="${pkgname} %U"
@@ -56,9 +56,9 @@ build() {
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
-        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
-        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
         echo "Your network is OK."
     fi
