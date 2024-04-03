@@ -1,6 +1,6 @@
 pkgbase = cosmic-session-git
 	pkgdesc = Session manager for the COSMIC desktop environment
-	pkgver = r130.ac74753
+	pkgver = r131.d5d9c58
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-session
 	arch = x86_64
@@ -30,6 +30,8 @@ pkgbase = cosmic-session-git
 	optdepends = cosmic-files-git: COSMIC file manager
 	optdepends = cosmic-store-git: COSMIC store
 	optdepends = cosmic-term-git: COSMIC terminal
+	optdepends = otf-fira-mono: Recommended Mono font
+	optdepends = otf-fira-sans: Recommended Sans font
 	provides = cosmic-session
 	conflicts = cosmic-session
 	source = git+https://github.com/pop-os/cosmic-session.git
