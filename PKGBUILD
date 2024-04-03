@@ -4,7 +4,7 @@
 
 _pkgname=fluffychat
 pkgname=fluffychat-web-bin
-pkgver=1.8.0
+pkgver=1.19.0
 pkgrel=2
 pkgdesc="Chat with your friends"
 arch=('any')
@@ -15,13 +15,14 @@ optdepends=()
 provides=("fluffychat-web")
 conflicts=("fluffychat-web")
 source=(
-  "fluffychat-web-${pkgver}.tar.gz::https://static.celogeek.com/AUR/fluffychat-web/fluffychat-web-${pkgver}.tar.gz"
-  "config-${pkgver}.sample.json::https://gitlab.com/famedly/fluffychat/-/raw/v${pkgver}/config.sample.json"
+
+  "fluffychat-web-${pkgver}.tar.gz::https://github.com/krille-chan/fluffychat/releases/download/v${pkgver}/fluffychat-web.tar.gz"
+  "config-${pkgver}.sample.json::https://raw.githubusercontent.com/krille-chan/fluffychat/v${pkgver}/config.sample.json"
 )
 noextract=(
     "fluffychat-web-${pkgver}.tar.gz"
 )
-sha256sums=('a761ca47a2c0a6405fa38b361cdcaad209452444a31f0bee9a3ffe54a80abb49'
+sha256sums=('b5083f9932f711f85d9dd778cec359cb603af375abdc20168fd4504e23b54ae9'
             'c17a181d58527d4cc23bcf5534d61add1abc0da542ee22080d5bd6242c4c12d7')
 backup=(
     "etc/webapps/${_pkgname}/config.json"
@@ -29,7 +30,7 @@ backup=(
 
 package() {  
   install -dm755 ${pkgdir}/usr/share/webapps/${_pkgname}
-  tar xzf "fluffychat-web-${pkgver}.tar.gz" -C ${pkgdir}/usr/share/webapps/${_pkgname}
+  tar xzf "fluffychat-web-${pkgver}.tar.gz" -C ${pkgdir}/usr/share/webapps/${_pkgname} --strip=2
   install -Dm644 "config-${pkgver}.sample.json" ${pkgdir}/etc/webapps/${_pkgname}/config.json
   ln -s /etc/webapps/${_pkgname}/config.json ${pkgdir}/usr/share/webapps/${_pkgname}
   sed -i '/base href=/d' ${pkgdir}/usr/share/webapps/${_pkgname}/index.html
