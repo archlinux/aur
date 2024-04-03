@@ -1,7 +1,7 @@
 pkgbase = python-urlobject
 	pkgdesc = A utility class for manipulating URLs
 	pkgver = 2.4.3
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/zacharyvoase/urlobject
 	arch = any
 	license = custom:Unlicense
