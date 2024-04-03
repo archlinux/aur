@@ -2,7 +2,7 @@
 
 pkgname=linphone-desktop-appimage
 pkgver=5.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A free VoIP and video softphone based on the SIP protocol (AppImage version)"
 arch=('x86_64')
 url='https://www.linphone.org'
@@ -14,7 +14,7 @@ source=("https://download.linphone.org/releases/linux/app/Linphone-${pkgver}.App
         'linphone.sh')
 sha256sums=('ba16a0549c7bd4afbbb72917b91bf307a2bf5f5300677fd112b631ff78e5071b'
             '1238a372faa4d6de8569b508c95ac39b7d21d3619660740b3ac4306642076bd2')
-options=(!strip)
+options=(!strip !debug)
 _image="$(basename "${source[0]}")"
 
 prepare() {
