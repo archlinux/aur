@@ -1,26 +1,18 @@
 pkgbase = python-pyzabbix
-	pkgdesc = Zabbix API Python interface
-	pkgver = 0.7.5
-	pkgrel = 1
+	pkgdesc = Python Zabbix API
+	pkgver = 1.3.1
+	pkgrel = 0
 	url = https://github.com/lukecyca/pyzabbix
 	arch = any
 	license = LGPL2.1
-	checkdepends = python-pytest
-	checkdepends = python-httpretty
-	checkdepends = python2-pytest
-	checkdepends = python2-httpretty
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python-requests
-	makedepends = python2-setuptools
-	makedepends = python2-requests
-	source = python-pyzabbix-0.7.5.tar.gz::https://github.com/lukecyca/pyzabbix/archive/0.7.5.tar.gz
-	sha256sums = 0835b6c84d41cee2e0862c4e0c644f49f6aba9bf882945f2c13eff713dbc535e
+	makedepends = python-wheel
+	depends = python
+	depends = python-packaging
+	depends = python-requests
+	source = python-pyzabbix-1.3.1.tar.gz::https://github.com/lukecyca/pyzabbix/archive/refs/tags/1.3.1.tar.gz
+	sha512sums = eb49964d7265dcc650f01c3b2ff3fcee9567c6def3471a6c8981a523de7791f00cf7f049b11daf2aab19af626682f9ff60ae9d7cc71d9b4c3b97149edbfa8840
 
 pkgname = python-pyzabbix
-	depends = python
-	depends = python-requests
-
-pkgname = python2-pyzabbix
-	depends = python2
-	depends = python2-requests
-
