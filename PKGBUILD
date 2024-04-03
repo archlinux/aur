@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/mattulbrich/mimaflux"
 license=('GPL-3.0-only')
 depends=('java-runtime>=17' 'sh')
-makedepends=('java-environment=17' 'gradle')
+makedepends=('java-environment=17' 'gradle<9')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$_tagname.tar.gz"
 	make_it_build.patch
