@@ -2,12 +2,12 @@
 
 pkgname=jellything-git
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc=""
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://codeberg.org/metamuffin/jellything"
 license=('AGPL3')
-depends=('dav1d')
+depends=('dav1d' 'libavif')
 optdepends=('ffmpeg: Transcoding')
 makedepends=('rustup' 'esbuild' 'nasm' 'meson' 'ninja' 'cmake')
 backup=('etc/jellything.yaml')

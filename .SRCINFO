@@ -1,6 +1,6 @@
 pkgbase = jellything-git
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/metamuffin/jellything
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = jellything-git
 	makedepends = ninja
 	makedepends = cmake
 	depends = dav1d
+	depends = libavif
 	optdepends = ffmpeg: Transcoding
 	backup = etc/jellything.yaml
 	source = git+https://codeberg.org/metamuffin/jellything.git
