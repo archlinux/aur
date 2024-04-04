@@ -11,7 +11,7 @@ depends=('openssl')
 makedepends=('rust' 'cargo' 'git' 'desktop-file-utils' 'gcc' 'binutils')
 checkdepends=()
 optdepends=()
-provides=()
+provides=('surfer-waveform')
 conflicts=()
 replaces=()
 backup=()
@@ -22,7 +22,7 @@ source=('surfer-waveform-git::git+https://gitlab.com/surfer-project/surfer#branc
 noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
-pkgver=0.1.0.r53.g8889484
+pkgver=0.1.0.r88.g01c2486
 
 pkgver() {
     cd "$pkgname"
