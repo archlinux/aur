@@ -1,7 +1,7 @@
-From 16270d06822ab9ad3f0aa179c32607ad7260a6ad Mon Sep 17 00:00:00 2001
+From 5c025309750ea1093f46b2227d76348de5c0d4aa Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 17 Feb 2024 20:48:21 +0100
-Subject: [PATCH 15/17] Fix setting exception flags of plugin targets
+Subject: [PATCH 14/17] Fix setting exception flags of plugin targets
 
 Change-Id: I93b1b5fa55f3e35e13351d9c981409f1593bf8a8
 ---
