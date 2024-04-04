@@ -1,4 +1,4 @@
-# Maintainer: Claudio Nave <claudio nave nine seven at gmail dot com>
+# Maintainer: Claudio Nave <turbo dot backslid four zero zero at passinbox dot com>
 
 pkgname=gnome-shell-extension-no-overview
 pkgver=46
