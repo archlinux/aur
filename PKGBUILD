@@ -2,20 +2,20 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=python-pyyaml-include
-pkgver=1.4.1
+pkgver=2.0
 pkgrel=1
 pkgdesc='An extending constructor of PyYAML: include YAML files into YAML document'
 arch=('any')
 url="https://github.com/tanbro/pyyaml-include"
-license=('GPL3')
-depends=('python-toml' 'python-yaml')
+license=('GPL-3.0-or-later')
+depends=('python-fsspec' 'python-toml' 'python-yaml')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
-checkdepends=('python-pytest')
+checkdepends=('python-pytest' 'python-aiohttp' 'python-requests')
 source=(
   "git+https://github.com/tanbro/pyyaml-include#tag=v$pkgver"
 )
 sha256sums=(
-  'SKIP'
+  '0ac1cfb05e96a34844838a594dddd9239d2ee3cd86cfb4a5a83e5d438c2615a1'
 )
 
 build() {
