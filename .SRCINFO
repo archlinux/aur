@@ -1,0 +1,15 @@
+pkgbase = python-testing.common.database
+	pkgdesc = Utilities for testing.* packages
+	pkgver = 2.0.3
+	pkgrel = 10
+	url = https://github.com/tk0miya/testing.common.database
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	source = python-testing.common.database-2.0.3.tar.gz::https://github.com/tk0miya/testing.common.database/archive/2.0.3.tar.gz
+	source = python310.patch
+	sha256sums = f2d4f865e52bacf54cf853b6043cceb06a31ed020b50d3b0e63c7e59c66f00b4
+	sha256sums = 826867930199ad4032b668fdd8113f0390856c7c947ae25c44c232be9f4801da
+
+pkgname = python-testing.common.database
