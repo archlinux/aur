@@ -1,7 +1,7 @@
 pkgbase = crystal-nightly
 	pkgdesc = The Crystal Programming Language, nightly binaries
 	pkgver = 20240404
-	pkgrel = 2
+	pkgrel = 1
 	url = http://crystal-lang.org
 	arch = x86_64
 	license = Apache

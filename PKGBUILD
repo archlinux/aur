@@ -2,7 +2,7 @@
 
 pkgname=crystal-nightly
 pkgver=20240404
-pkgrel=2
+pkgrel=1
 
 pkgdesc="The Crystal Programming Language, nightly binaries"
 arch=('x86_64')
