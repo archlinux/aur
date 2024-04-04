@@ -2,14 +2,14 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=ttf-contemporary
 pkgver=2.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Contemporary Typeface"
 arch=("any")
-url="http://vicr123.github.io/contemporary"
-license=('custom:OFL')
+url="http://vicr123.com/projects/contemporary"
+license=('OFL-1.1')
 depends=()
 makedepends=()
-source=("$pkgname-$pkgver"::'https://vicr123.github.io/typeface/contemporary.zip')
+source=("$pkgname-$pkgver"::'https://vicr123.com/typeface/contemporary.zip')
 sha256sums=('SKIP')
 
 package() {
