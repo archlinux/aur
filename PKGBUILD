@@ -3,7 +3,7 @@
 _name=click-option-group
 pkgname=python-click-option-group
 pkgver=0.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Option groups missing in Click"
 arch=(any)
 url="https://github.com/click-contrib/click-option-group"
