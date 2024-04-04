@@ -1,0 +1,76 @@
+diff --git a/bundles/mod-mda-Combo.lv2/Combo.ttl b/bundles/mod-mda-Combo.lv2/Combo.ttl
+index f932a9f..1eb96e4 100644
+--- a/bundles/mod-mda-Combo.lv2/Combo.ttl
++++ b/bundles/mod-mda-Combo.lv2/Combo.ttl
+@@ -68,6 +68,7 @@ mda:Combo
+         lv2:minimum -100 ;
+         lv2:maximum 100 ;
+         units:unit [
++            a            units:Unit ;
+             rdfs:label   "Soft/Hard" ;
+             units:symbol "S <> H" ;
+             units:render "%f Sh"
+diff --git a/bundles/mod-mda-DX10.lv2/DX10.ttl b/bundles/mod-mda-DX10.lv2/DX10.ttl
+index 8c4f3ee..40d6520 100644
+--- a/bundles/mod-mda-DX10.lv2/DX10.ttl
++++ b/bundles/mod-mda-DX10.lv2/DX10.ttl
+@@ -100,6 +100,7 @@ N.B. The carrier operator has a fixed coarse tuning ratio of 2.
+         lv2:minimum 0.0 ;
+         lv2:maximum 40.0 ;
+         units:unit [
++            a            units:Unit ;
+             rdfs:label   "ratio" ;
+             units:symbol "ratio" ;
+             units:render "%f" ;
+@@ -115,6 +116,7 @@ N.B. The carrier operator has a fixed coarse tuning ratio of 2.
+         lv2:minimum 0.001 ;
+         lv2:maximum 0.750 ;
+         units:unit [
++            a            units:Unit ;
+             rdfs:label   "ratio" ;
+             units:symbol "ratio" ;
+             units:render "%f" ;
+diff --git a/bundles/mod-mda-Degrade.lv2/Degrade.ttl b/bundles/mod-mda-Degrade.lv2/Degrade.ttl
+index 8c69ce9..38caf64 100644
+--- a/bundles/mod-mda-Degrade.lv2/Degrade.ttl
++++ b/bundles/mod-mda-Degrade.lv2/Degrade.ttl
+@@ -68,6 +68,7 @@ Modeled by MDA
+         lv2:minimum 4 ;
+         lv2:maximum 16 ;
+         units:unit [
++          a            units:Unit ;
+           rdfs:label   "bits" ;
+           units:symbol "bit" ;
+           units:render "%f bits"
+@@ -85,6 +86,7 @@ Modeled by MDA
+         lv2:minimum 4800 ;
+         lv2:maximum 48000 ;
+         units:unit [
++          a            units:Unit ;
+           rdfs:label   "ssh" ;
+           units:symbol "s_sh" ;
+           units:render "%f Hz"
+@@ -130,8 +132,9 @@ Modeled by MDA
+         lv2:minimum 0.0 ;
+         lv2:maximum 1.0 ;
+         units:unit [
+-        rdfs:label   "nonlin" ;
+-        units:symbol "nonlin" ;
++          a            units:Unit ;
++          rdfs:label   "nonlin" ;
++          units:symbol "nonlin" ;
+         ] ;
+         rdfs:comment """Additional harmonic distortion "thickening" (turn control to left or right for different sound characters)"""
+     ] , [
+diff --git a/bundles/mod-mda-Dynamics.lv2/Dynamics.ttl b/bundles/mod-mda-Dynamics.lv2/Dynamics.ttl
+index 8671eb5..ac19b0b 100644
+--- a/bundles/mod-mda-Dynamics.lv2/Dynamics.ttl
++++ b/bundles/mod-mda-Dynamics.lv2/Dynamics.ttl
+@@ -45,6 +45,7 @@ mda:Dynamics
+         lv2:minimum -17.0 ;
+         lv2:maximum 0.5 ;
+         units:unit [
++            a            units:Unit ;
+             rdfs:label   "ratio" ;
+             units:symbol ":1" ;
+             units:render "%f" ;
