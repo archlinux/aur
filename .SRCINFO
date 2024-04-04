@@ -1,0 +1,19 @@
+pkgbase = beseda
+	pkgdesc = Accessibility ebook speech reader
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/psemiletov/beseda
+	arch = x86_64
+	groups = lv2-plugins
+	groups = pro-audio
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = libspeechd
+	depends = ncurses
+	depends = speech-dispatcher
+	provides = beseda
+	source = https://github.com/psemiletov/beseda/archive/1.0.0.tar.gz
+	md5sums = 425567e7ab4dd31b24a9cdbd31dcc5f3
+
+pkgname = beseda
