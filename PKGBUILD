@@ -2,7 +2,7 @@
 
 pkgname=python-py-serializable
 _gitpkgname=serializable
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Serialize and deserialize Python objects to and from JSON and XML'
 arch=('any')
@@ -11,14 +11,14 @@ license=('Apache-2.0')
 depends=('python-defusedxml')
 checkdepends=('python-lxml' 'xmldiff')
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
-options=('!strip')
+options=('!debug' '!strip')
 
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/madpah/serializable/archive/v${pkgver}.tar.gz"
 )
 
 sha512sums=(
-  '280de330130c4c6af071e586701711c0e39749539855358af9cb23deb2926f59ecc77499b280a52cf4fb0941f5f338764307474e5c4418a5ba922b355c82616e'
+  'f702dc4006f87b2efb5630022e9fe79862ccbb281c34a24b933ed703706e62a07aeccadb55e7874b6fe1ff40d4b8ab67650e632611e69547ebdf3d6b21c4d0c3'
 )
 
 build() {
