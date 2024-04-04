@@ -2,7 +2,7 @@
 # Contributor : Daniel Chesters <archlinux@coin-coin.xyz>
 
 pkgname=kalker
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A calculator program that supports user-defined variables, functions, derivation, and integration."
 url="https://github.com/PaddiM8/kalker"
@@ -33,5 +33,5 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-b2sums=('5d21c6281121193e027e64ba18c6496fe7dd2aa4d5a28ff592eba81dd8f5c3a3611cba57ec18ab8c527227382396278e34461ae0157a3a62aac9054a7f72ac1b'
-	'3837356a5404453253956a6be7e7d7513b3d263e18a111b4b80817fddb15e099b52c37c1d2e247ac346716d0e8d47d971c3467f483c67db5d4396154ddf155bf')
+b2sums=('94b74a7f1a30c88aad1506a2885bbad3950b1397c9e4b7f03872d3ef6d0fdf425c15ba9012624893822589ff6aed006e535ddf1dc589bf5b5f85fdc491fee81c'
+        '4d9f0e08c20fb074f68289397dff4a54add39ddc4cfa759a1f99709ffed416e3694d7285631130b30a4e66ac3dc916994c545fd384993ff433b429dd841634f9')
