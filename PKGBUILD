@@ -16,8 +16,8 @@ depends=('cairo' 'gumbo-parser' 'jbig2dec' 'libjpeg' 'libmupdf' 'openjpeg2' 'ope
 makedepends=('meson' 'ninja' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://git.pwmt.org/pwmt/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         0001-Remove-mupdf-linking-detection.patch)
-sha256sums=('3cf142bfd189ee2cd0130d18a6c202bbc188f172695642a46556e824bd78b9aa'
-            'b72a21f697ffb6183345db62c3e7f97974ac7747a34587e0c84a4e5b87848af0')
+sha512sums=('bf3360cdf6195af3cace4c769536a49f1cf2167c70a65b560410db1a0098119d726e73baeea98ca7100653c17248056c484fc436558e52a8dc12e7b83ce789b1'
+            '4a6dff37fd25714b85118bf0161bfe83d337ac0fe486560c520fe7f1b56be54edc80e26851c031aa899a8435eee5baf3870d3fe7a6f4207d894931c10efd4835')
 
 prepare() {
         cd "${pkgname}-${pkgver}"
