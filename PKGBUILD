@@ -1,53 +1,96 @@
-# Maintainer: Danny Bautista <pyrolagus at gmail.com>
+# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: Danny Bautista <pyrolagus at gmail.com>
 # Contributor: Agustin Borgna <hello[at]aborgna.com.ar>
 # Contributor: Marcel Korpel <marcel[dot]korpel[at]gmail>
 # Contributor: Renan Birck <renan.ee.ufsm at gmail.com>
 
-pkgname=logisim-evolution-git
-pkgver=3.0.0.r848.c86375e3
-pkgrel=2
-provides=('logisim-evolution')
-conflicts=('logisim-evolution')
-pkgdesc='An educational tool for designing and simulating digital logic circuits'
+_pkgbase='logisim-evolution'
+pkgbase="${_pkgbase}-git"
+pkgname="${_pkgbase}-git"
+pkgver=3.8.0+759.r4907.20240403.44999b523
+pkgrel=1
+provides=("${_pkgbase}=${pkgver}")
+conflicts=("${_pkgbase}")
+pkgdesc='An educational tool for designing and simulating digital logic circuits.'
 arch=('any')
 url="https://github.com/reds-heig/logisim-evolution"
-license=('GPL3')
-depends=('java-runtime' 'gtk-update-icon-cache' 'desktop-file-utils' 'shared-mime-info')
-makedepends=('git' 'java-environment' 'gradle')
-install=logisim-evolution.install
+license=('GPL-3.0-or-later')
+depends=(
+  'hicolor-icon-theme'
+  'java-runtime'
+  'sh'
+)
+makedepends=(
+  'git'
+  'gradle>=8.5'
+  'java-environment'
+  'optipng'
+)
 
-source=('git://github.com/reds-heig/logisim-evolution.git#branch=develop'
-        logisim-evolution.xml
-        logisim-evolution.desktop
-        logisim-evolution.sh)
-sha256sums=('SKIP'
-            'f90c3709748af806a33c14e81c8bf91dc06c3a4f58fe00cfe14a8f1842e09dec'
-            '086851b07012f669743080dc4f059cf7727b19200384070852b34e142533385b'
-            '35b6b4da515f1c5619d35bbedc1469e5ec5b823bf486efdfbb5b705b65e10656')
+source=(
+  "${_pkgbase}::git+${url}.git"
+  'logisim-evolution.xml'
+  'logisim-evolution.desktop'
+  'logisim-evolution.sh'
+)
+sha256sums=(
+  'SKIP'
+  'f90c3709748af806a33c14e81c8bf91dc06c3a4f58fe00cfe14a8f1842e09dec'
+  '086851b07012f669743080dc4f059cf7727b19200384070852b34e142533385b'
+  '35b6b4da515f1c5619d35bbedc1469e5ec5b823bf486efdfbb5b705b65e10656'
+)
+
+prepare() {
+  cd "$srcdir/${_pkgbase}"
+
+  git log > git.log
+}
 
 pkgver() {
-    cd "$srcdir/logisim-evolution"
-    printf "3.0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/${_pkgbase}"
+
+  _ver="$(git describe  --tags | sed 's|^[vV]||' | sed 's|-g[0-9a-fA-F]*$||' | tr '-' '+')"
+  _rev="$(git rev-list --count HEAD)"
+  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
+  _hash="$(git rev-parse --short HEAD)"
+
+  if [ -z "${_ver}" ]; then
+    error "Version could not be determined."
+    return 1
+  else
+    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
+  fi
 }
 
 build() {
-    cd "$srcdir/logisim-evolution"
+  cd "$srcdir/${_pkgbase}"
 
-    ./gradlew --no-daemon shadowJar
+  gradle --gradle-user-home "${srcdir}/.gradle" --no-daemon shadowJar
+
+  optipng -o7 build/resources/main/resources/logisim/img/*.png
 }
 
 package() {
-    cd "$srcdir"
-    _appver=$(grep -oP '(?<=^version = ).*$' logisim-evolution/gradle.properties)
-    install -Dm644 logisim-evolution/build/libs/logisim-evolution-${_appver}-all.jar \
-        "${pkgdir}/usr/share/java/logisim-evolution/logisim-evolution.jar"
-    install -Dm644 logisim-evolution.xml \
-        "${pkgdir}/usr/share/mime/packages/logisim-evolution.xml"
-    install -Dm644 logisim-evolution.desktop \
-        "${pkgdir}/usr/share/applications/logisim-evolution.desktop"
-    for SIZE in 16 20 24 48 64 128; do
-        install -Dm644 logisim-evolution/build/resources/main/resources/logisim/img/logisim-icon-${SIZE}.png \
-            "${pkgdir}/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/logisim-evolution.png"
-    done
-    install -Dm755 logisim-evolution.sh "${pkgdir}/usr/bin/logisim-evolution"
+  cd "$srcdir/${_pkgbase}"
+
+  _appver="$(grep -oP '(?<=^version = ).*$' gradle.properties | tr -d '-')"
+  install -Dvm644 build/libs/logisim-evolution-${_appver}-all.jar \
+      "${pkgdir}/usr/share/java/logisim-evolution/logisim-evolution.jar"
+
+  install -Dvm644 "${srcdir}/logisim-evolution.xml" "${pkgdir}/usr/share/mime/packages/logisim-evolution.xml"
+  install -Dvm644 "${srcdir}/logisim-evolution.desktop" "${pkgdir}/usr/share/applications/logisim-evolution.desktop"
+
+  for _icon in build/resources/main/resources/logisim/img/logisim-icon-[0-9]*.png; do
+    _SIZE="$(basename "${_icon}" .png | awk -F- '{print $3}')"
+    install -Dvm644 "build/resources/main/resources/logisim/img/logisim-icon-${_SIZE}.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${_SIZE}x${_SIZE}/apps/logisim-evolution.png"
+  done
+
+  install -Dvm755 "${srcdir}/logisim-evolution.sh" "${pkgdir}/usr/bin/logisim-evolution"
+
+  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgbase}" git.log README.md CHANGES.md CITATION.cff
+  cp -rv docs "${pkgdir}/usr/share/doc/${_pkgbase}/"
+
+  install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.md
+  ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md" "${pkgdir}/usr/share/doc/${_pkgbase}/LICENSE.md"
 }
