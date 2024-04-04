@@ -1,0 +1,15 @@
+pkgbase = kawaii-gcc-zh-cn-git
+	pkgdesc = GCCコンパイラーを可愛くしましょう！Make your GCC compiler kawaii.
+	pkgver = r24.fbfb66a
+	pkgrel = 1
+	url = https://github.com/Bill-Haku/kawaii-gcc
+	install = kawaii-gcc-zh-cn-git.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = gettext
+	provides = kawaii-gcc
+	source = git+https://github.com/Bill-Haku/kawaii-gcc
+	sha256sums = SKIP
+
+pkgname = kawaii-gcc-zh-cn-git
