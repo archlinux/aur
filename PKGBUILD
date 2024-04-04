@@ -1,8 +1,8 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=pev2-electron
 _pkgname=pev2
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="Postgres Explain Visualizer 2, using the system Electron package"
 arch=(any)
@@ -17,7 +17,7 @@ source=(
   "remove-demo-notice.patch"
 )
 sha256sums=(
-  '6975fad7fc8941d1c6e65a8e804211d592332d7a325f65d59c8b3eee9038717e'
+  '302f9d640837c0765b95249b653511892fbe60fdeadab7f6725450743f2bee60'
   'd4361d563a1c199b5887154ac5f4d8009dc2c882b409c8f4bbf00281a2e910e4'
   '219229650df88bf6f8ffc0bb53bf2986a479d0144c0fa93949996b58ed4e7d8e'
   '4e6d2bf9298e95e63e7bba7f2e96cfef031c0b77da88ed2e7bf0106b880f283b'
@@ -43,8 +43,10 @@ build() {
 package() {
   cd "$_archive"
 
+  install -Dm644 dist-app/index.html "$pkgdir/usr/lib/pev2/index.html"
+
   install -Dm755 "$srcdir/pev2.sh" "$pkgdir/usr/bin/pev2"
   install -Dm644 "$srcdir/pev2.desktop" "$pkgdir/usr/share/applications/pev2.desktop"
-  install -Dm644 dist-app/index.html "$pkgdir/usr/lib/pev2/index.html"
+
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
