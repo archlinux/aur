@@ -1,7 +1,7 @@
 # Maintainer: Nima Askarian <nimaaskarian.work@outlook.com>
 pkgname=c3
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 _gitname=c3
 pkgdesc="A TUI to-do list that uses and extends calcurse format to have tree-like dependencies."
 url="https://github.com/nimaaskarian/${_gitname}"
