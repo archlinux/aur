@@ -14,7 +14,7 @@ license=(
   LicenseRef-BSD-Chicago
   LicenseRef-BSD-Utah-California
 )
-depends=('pcre2' 'gcc-libs')
+depends=('gcc-libs' 'glibc' 'pcre2' 'zlib')
 checkdepends=('ruby' 'python' 'java-environment' 'tcl' 'php' 'lua' 'r' 'go' 'boost')
 source=($pkgname-$pkgver.tar.gz::https://github.com/swig/swig/archive/refs/tags/v$pkgver.tar.gz)
 sha512sums=('5d653333f73356d4d5ba8b615882e49f33f188bc68d8204352116bc4aca7946ec01ce2e02524c5ce805b98c2219ed05e664120485bf18095c5c0785436487074')
