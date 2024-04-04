@@ -9,6 +9,7 @@ pkgbase = gpt-telegramus-git
 	depends = python-virtualenv
 	depends = bash
 	provides = GPT-Telegramus
+	conflicts = gpt-telegramus
 	backup = opt/gpt-telegramus/config.json
 	source = GPT-Telegramus::git+https://github.com/F33RNI/GPT-Telegramus.git
 	source = gpt-telegramus.service

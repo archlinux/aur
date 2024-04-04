@@ -13,6 +13,7 @@ depends=(
   'bash'
   )
 provides=("$_pkgname")
+conflicts=("gpt-telegramus")
 backup=(
   "opt/gpt-telegramus/config.json"
   )
