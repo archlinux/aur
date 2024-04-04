@@ -2,7 +2,7 @@
 
 pkgname=python-jaxlib-cuda
 pkgver=0.4.24
-pkgrel=1
+pkgrel=2
 pkgdesc='XLA library for JAX'
 arch=('x86_64')
 url='https://github.com/google/jax/'
@@ -14,12 +14,17 @@ makedepends=('bazel' 'gcc12' 'pybind11' 'python-build' 'python-installer'
              'python-setuptools' 'python-wheel')
 conflicts=('python-jaxlib')
 provides=("python-jaxlib=$pkgver")
+xla_commit=12eee889e1f2ad41e27d7b0e970cb92d282d3ec5
 source=("jaxlib-${pkgver}.tar.gz::https://github.com/google/jax/archive/refs/tags/jaxlib-v${pkgver}.tar.gz"
         'bazelrc.user'
-        'https://github.com/bazelbuild/bazel/releases/download/6.1.2/bazel-6.1.2-linux-x86_64')
+        'https://github.com/bazelbuild/bazel/releases/download/6.1.2/bazel-6.1.2-linux-x86_64'
+        "xla-${xla_commit}.tar.gz::https://github.com/openxla/xla/archive/${xla_commit}.tar.gz"
+        'xla.patch::https://github.com/openxla/xla/commit/7a614cd346594fc7ea2fe75570c9c53a4a444f60.patch')
 sha256sums=('c4e6963c2c36f634a9a1765e476a1ed4e6c4a7954465ebf72e29f344c28ddc28'
             '07da4c3594dad382ee02748b860c629ffa083ba37ad22a892291bdc72efbac5e'
-            'e89747d63443e225b140d7d37ded952dacea73aaed896bca01ccd745827c6289')
+            'e89747d63443e225b140d7d37ded952dacea73aaed896bca01ccd745827c6289'
+            'db007b6628cfe108c63f45d611c6de910abe3ee827e55f08314ce143c4887d66'
+            '2b8e13f87fe85427f837e0282574e8adf44bcb8693b010f80a6e3439b2185754')
 
 prepare() {
     # Allow any bazel version
@@ -30,7 +35,10 @@ prepare() {
 
     # TODO(@daskol): Prepare spcific bazel version ad hoc.
     chmod +x bazel-6.1.2-linux-x86_64
-    ./bazel-6.1.2-linux-x86_64 version
+
+    # https://github.com/google/jax/issues/19814#issuecomment-194514125
+    cd xla-${xla_commit}
+    patch -p1 -i../xla.patch
 }
 
 build() {
@@ -51,7 +59,7 @@ build() {
     export CC=gcc
     export CXX=g++
     # For some reason, simlink is not resolved.
-    export GCC_HOST_COMPILER_PATH=/usr/bin/gcc-12
+    export GCC_HOST_COMPILER_PATH=/usr/bin/gcc
     export HOST_C_COMPILER=/usr/bin/${CC}
     export HOST_CXX_COMPILER=/usr/bin/${CXX}
     export TF_CUDA_CLANG=0  # Clang currently disabled because it's not compatible at the moment.
@@ -63,14 +71,15 @@ build() {
     # according to the above, we should be specifying CUDA compute capabilities as 'sm_XX' or 'compute_XX' from now on
     # add latest PTX for future compatibility
     # Valid values can be discovered from nvcc --help
-    export TF_CUDA_COMPUTE_CAPABILITIES=sm_70,sm_72,sm_75,sm_80,sm_86,sm_87,sm_89,sm_90,compute_90
+    export TF_CUDA_COMPUTE_CAPABILITIES=sm_80,sm_86,sm_87,sm_89,sm_90,compute_90
 
     # Override default version.
     export JAXLIB_RELEASE=$pkgver
 
     cd $srcdir/jax-jaxlib-v$pkgver
-    ../bazel-6.1.2-linux-x86_64  --output_user_root=$srcdir/bazel \
+    ../bazel-6.1.2-linux-x86_64 --output_user_root=$srcdir/bazel \
         run --action_env=JAXLIB_RELEASE --verbose_failures=true \
+        --override_repository=xla=$srcdir/xla-${xla_commit} \
         //jaxlib/tools:build_wheel -- --cpu x86_64 --output_path=$PWD/dist
 }
 
