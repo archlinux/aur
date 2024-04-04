@@ -1,10 +1,11 @@
 pkgbase = shm-modbus-gui
 	pkgdesc = QT GUI (PySide6) for shm-modbus
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NikolasK-source/shm_modbus_gui
 	arch = any
 	license = GPLv3
+	makedepends = python-setuptools
 	depends = python
 	depends = pyside6
 	depends = modbus-rtu-client-shm
