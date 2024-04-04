@@ -1,6 +1,6 @@
 pkgname=matrix-media-repo-git
 pkgver=1.3.4.r13.g2f8a209b
-pkgrel=2
+pkgrel=3
 pkgdesc="Highly configurable multi-domain media repository for Matrix."
 arch=("any")
 url="https://github.com/t2bot/matrix-media-repo"
@@ -44,4 +44,5 @@ function package() {
 	mkdir -p "${pkgdir}/usr/lib/matrix-media-repo"
 	cp "${srcdir}/matrix-media-repo/bin"/* "${pkgdir}/usr/lib/matrix-media-repo"
 	chmod 755 -R "${pkgdir}/usr/lib/matrix-media-repo"
+	echo "Home directory for Matrix Media Repo is at: /var/lib/matrix-media-repo"
 }
