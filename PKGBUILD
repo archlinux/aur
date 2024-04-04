@@ -5,7 +5,7 @@
 pkgname=python-pyzabbix
 _pkgname=${pkgname#python-}
 pkgver=1.3.1 # renovate: datasource=github-releases depName=lukecyca/pyzabbix
-pkgrel=0
+pkgrel=1
 pkgdesc="Python Zabbix API"
 arch=(any)
 url="https://github.com/lukecyca/pyzabbix"
