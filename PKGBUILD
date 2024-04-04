@@ -7,28 +7,22 @@ url="https://feynarts.de/cuba/"
 license=('LGPL')
 makedepends=('make' 'automake' 'gcc')
 options=('staticlibs' '!lto')
-#source=("https://feynarts.de/cuba/Cuba-$pkgver.tar.gz")
-#sha256sums=('8d9f532fd2b9561da2272c156ef7be5f3960953e4519c638759f1b52fe03ed52')
-source=("https://github.com/jschueller/cuba/archive/refs/heads/main.zip")
-sha256sums=("SKIP")
-
+source=("https://feynarts.de/cuba/Cuba-$pkgver.tar.gz")
+sha256sums=('8d9f532fd2b9561da2272c156ef7be5f3960953e4519c638759f1b52fe03ed52')
 
 build() {
-  #cd "$srcdir/Cuba-$pkgver"
-  cd cuba-main
+  cd "$srcdir/Cuba-$pkgver"
   CFLAGS="-fPIC ${CFLAGS}" ./configure --prefix=/usr
   make -j1
 }
 
 check() {
-  #cd "$srcdir/Cuba-$pkgver"
-  cd cuba-main
+  cd "$srcdir/Cuba-$pkgver"
   make -k check -j1
 }
 
 package() {
-  #cd "$srcdir/Cuba-$pkgver"
-  cd cuba-main
+  cd "$srcdir/Cuba-$pkgver"
   make install -j1 DESTDIR="$pkgdir"
   rm -r "$pkgdir"/usr/bin
 }

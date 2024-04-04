@@ -10,7 +10,7 @@ pkgbase = libcuba
 	makedepends = gcc
 	options = staticlibs
 	options = !lto
-	source = https://github.com/jschueller/cuba/archive/refs/heads/main.zip
-	sha256sums = SKIP
+	source = https://feynarts.de/cuba/Cuba-4.2.2.tar.gz
+	sha256sums = 8d9f532fd2b9561da2272c156ef7be5f3960953e4519c638759f1b52fe03ed52
 
 pkgname = libcuba
