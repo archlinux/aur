@@ -1,7 +1,7 @@
 pkgbase = fluffychat
 	pkgdesc = Open. Nonprofit. Cute. Easy to use (matrix) messenger. Secure and decentralized.
 	pkgver = 1.19.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://fluffychat.im/
 	arch = x86_64
 	arch = aarch64
@@ -14,9 +14,12 @@ pkgbase = fluffychat
 	depends = xdg-user-dirs
 	depends = libolm
 	depends = zenity
+	depends = openssl
 	provides = fluffychat
 	conflicts = fluffychat
 	source = fluffychat-v1.19.0.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/v1.19.0.tar.gz
+	source = system-sqlcipher.patch
 	sha256sums = 0fb007f2ed56ee46115606dae5eb2bb9eac238c344caae8d478eb80d71e6295f
+	sha256sums = b5b2beb552414e692c4cf6def9d74e8327a968dc15747cc0fb794f226e6633e7
 
 pkgname = fluffychat

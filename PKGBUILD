@@ -3,7 +3,7 @@
 
 pkgname=fluffychat
 pkgver=1.19.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Open. Nonprofit. Cute. Easy to use (matrix) messenger. Secure and decentralized."
 arch=('x86_64' 'aarch64')
 url="https://fluffychat.im/"
@@ -19,6 +19,8 @@ depends=(
         'libolm'
         # flutter_file_picker - see https://github.com/miguelpruivo/flutter_file_picker/blob/master/lib/src/linux/file_picker_linux.dart#L115
         'zenity'
+        # sqlite encryption
+        'openssl'
 )
 makedepends=(
              'flutter-tool'
@@ -26,8 +28,12 @@ makedepends=(
   )
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("fluffychat-v${pkgver}.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0fb007f2ed56ee46115606dae5eb2bb9eac238c344caae8d478eb80d71e6295f')
+source=(
+        "fluffychat-v${pkgver}.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/v${pkgver}.tar.gz"
+        "system-sqlcipher.patch"
+)
+sha256sums=('0fb007f2ed56ee46115606dae5eb2bb9eac238c344caae8d478eb80d71e6295f'
+            'b5b2beb552414e692c4cf6def9d74e8327a968dc15747cc0fb794f226e6633e7')
 
 prepare() {
   # overriding CMake flags for aarch64 in order to ensure build
@@ -42,11 +48,12 @@ prepare() {
   
   cd ${pkgname}-$pkgver
   flutter pub get 
+  patch --follow-symlinks -p1 -i "${srcdir}/system-sqlcipher.patch" -d .
 }
 
 build() {
   cd ${pkgname}-$pkgver
-  flutter build linux --release --verbose
+  flutter build linux --no-pub --release --verbose
 }
 
 package() {  
