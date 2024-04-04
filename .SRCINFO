@@ -1,6 +1,6 @@
 pkgbase = at32-work-bench-bin
 	pkgdesc = AT32 MCU 图形化配置软件，生成初始化 C 代码(目前仅支持 AT32F421 系列)
-	pkgver = 1.0.05
+	pkgver = 1.0.07
 	pkgrel = 0
 	url = https://www.arterytek.com/cn/support/index.jsp
 	arch = x86_64
@@ -17,7 +17,8 @@ pkgbase = at32-work-bench-bin
 	optdepends = at32-work-bench: AT32 MCU 图形化配置软件，生成初始化 C 代码(目前仅支持 AT32F421 系列)
 	optdepends = jlink-software-and-documentation: Segger JLink software & documentation pack for Linux
 	provides = at32-work-bench
-	source = AT32_Work_Bench_Linux-x86_64_V1.0.05.zip::https://www.arterytek.com/download/TOOL/AT32_Work_Bench_Linux-x86_64_V1.0.05.zip
-	sha256sums = e1372ab2521d0683b8456116b8ed983922d8fb634cadb4537541fc42af83b26d
+	options = !strip
+	source = AT32_Work_Bench_Linux-x86_64_V1.0.07.zip::https://www.arterytek.com/download/TOOL/AT32_Work_Bench_Linux-x86_64_V1.0.07.zip
+	sha256sums = e65781832eef4c6201c947a0d97e0126f49bb76fad10a817405433f4e63fb437
 
 pkgname = at32-work-bench
