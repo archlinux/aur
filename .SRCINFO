@@ -1,0 +1,13 @@
+pkgbase = python-nose-random
+	pkgdesc = Nose plugin to facilitate randomized unit testing
+	pkgver = 1.0.0
+	pkgrel = 11
+	url = https://github.com/xlwings/nose-random
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-nose
+	source = https://github.com/xlwings/nose-random/archive/1.0.0/python-nose-random-1.0.0.tar.gz
+	sha256sums = 528b1c9396cfa415741afaad60ecde695a657c9364dc01240050c747192f5148
+
+pkgname = python-nose-random
