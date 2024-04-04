@@ -4,13 +4,13 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.7.r228.g7d335fa
-pkgrel=1
+pkgrel=2
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
 license=('GPL-2.0-only')
 depends=('libelf' 'zlib' 'jq')
-makedepends=('git' 'python' 'meson' 'clang' 'llvm' 'llvm-libs' 'cargo' 'rust')
+makedepends=('git' 'python' 'meson' 'clang' 'llvm' 'llvm-libs' 'rust')
 backup=('etc/default/scx')
 source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
@@ -56,7 +56,7 @@ prepare() {
 
 build() {
   cd $gitname
-  arch-meson . build --buildtype release -Dsystemd=enabled -Dopenrc=disabled
+  arch-meson . build --buildtype release --auto-features auto
   meson compile -C build
 }
 
