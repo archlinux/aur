@@ -1,39 +1,51 @@
-# Maintainer: Rafał Kozdrój <kozeid2@gmail.com>
-# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
-_pkgname=libglvnd
-pkgname=$_pkgname-git
-pkgver=1.3.0.r34.g42a25c1
+pkgname=libglvnd-git
+pkgver=1.7.0.r10.g908086d
 pkgrel=1
 pkgdesc="The GL Vendor-Neutral Dispatch library"
-arch=('x86_64')
-url="https://github.com/NVIDIA/libglvnd"
-license=('custom:BSD-like')
-makedepends=('libxext' 'libx11' 'xorgproto' 'python' 'meson' 'git')
-provides=('libgl' 'libegl' 'libgles' "$_pkgname=$pkgver")
-conflicts=("$_pkgname")
-source=("git+https://gitlab.freedesktop.org/glvnd/libglvnd.git"
-        LICENSE)
-sha512sums=('SKIP'
-            'bf0f4a7e04220a407400f89226ecc1f798cc43035f2538cc8860e5088e1f84140baf0d4b0b28f66e4b802d4d6925769a1297c24e1ba39c1c093902b2931781a5')
+arch=('i686' 'x86_64')
+url="https://gitlab.freedesktop.org/glvnd/libglvnd"
+license=('MIT')
+depends=('glibc' 'libxext' 'mesa' 'opengl-driver')
+makedepends=('git' 'libx11' 'meson' 'python' 'xorgproto')
+provides=("libglvnd=$pkgver" 'libegl' 'libgl' 'libgles' 'libEGL.so' 'libGL.so' 'libGLdispatch.so' 'libGLESv2.so' 'libGLX.so' 'libOpenGL.so')
+conflicts=('libglvnd')
+source=("git+https://gitlab.freedesktop.org/glvnd/libglvnd.git")
+sha256sums=('SKIP')
+
 
 pkgver() {
-  cd $_pkgname
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "libglvnd"
+
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
-  arch-meson $_pkgname build \
-     -D gles1=false
+  cd "libglvnd"
 
-  ninja -C build
+  meson setup \
+    --buildtype=plain \
+    --prefix="/usr" \
+    -Dgles1="false" \
+    "_build"
+  meson compile -C "_build"
+}
+
+check() {
+  cd "libglvnd"
+
+  meson test -C "_build"
 }
 
 package() {
-  # libglvnd needs mesa for indirect rendering
-  depends=('libxext' 'mesa' 'opengl-driver')
+  cd "libglvnd"
 
-  DESTDIR="$pkgdir" ninja -C build install
-  
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  meson install -C "_build" --destdir "$pkgdir"
+
+  sed -n '/Copyright (c) 2013, NVIDIA/,/DEALINGS IN THE MATERIALS./p' "README.md" > "LICENSE"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/libglvnd"
 }
