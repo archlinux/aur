@@ -3,8 +3,8 @@
 
 _pkgbase=ocp
 pkgname=('ocp' 'ocp-sdl2')
-pkgver=0.2.107
-pkgrel=2
+pkgver=0.2.109
+pkgrel=1
 pkgdesc="Open Cubic Player"
 arch=('i686' 'x86_64')
 url="https://stian.cubic.org/project-ocp.php"
