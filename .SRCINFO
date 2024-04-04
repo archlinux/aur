@@ -31,5 +31,6 @@ pkgbase = python-standardebooks
 	depends = python-titlecase
 	depends = python-unidecode
 	source = tools-2.6.3.tar.gz::https://github.com/standardebooks/tools/archive/refs/tags/2.6.3.tar.gz
+	sha512sums = 404e4dc9d77472db1ddee277fcfa86ffb4c464537bcde15147fc9a73eaff3005a413a1277546d68d63c85d534bbe40dbf82253f3d338c18ca6023c385ab1285a
 
 pkgname = python-standardebooks
