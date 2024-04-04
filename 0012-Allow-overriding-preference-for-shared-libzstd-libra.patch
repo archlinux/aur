@@ -1,7 +1,7 @@
-From 4e1a0159903caec1b32ed1556dffecb66eba5298 Mon Sep 17 00:00:00 2001
+From 76d4c957cc1bc010b95a1fd755edd8d5a9b0b5ca Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Tue, 7 Nov 2023 23:58:54 +0100
-Subject: [PATCH 13/17] Allow overriding preference for shared libzstd library
+Subject: [PATCH 12/17] Allow overriding preference for shared libzstd library
 
 As of 3f45905953d57e0174059d7d9d6bc75c3c1c406c Qt prefers the shared zstd
 library. This breaks static builds. With this change the static library is

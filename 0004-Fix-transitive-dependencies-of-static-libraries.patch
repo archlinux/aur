@@ -1,4 +1,4 @@
-From f54f12d78abb6cd209f79c2309d6b50cff64c06e Mon Sep 17 00:00:00 2001
+From 1818236acb18356b2fbdd3bca4e7e36f55347c47 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 21:59:33 +0100
 Subject: [PATCH 04/17] Fix transitive dependencies (of static libraries)
@@ -119,12 +119,12 @@ index 967ccc5c026..9a7d5150dcf 100644
  unset(__png_target_name)
  unset(__png_found)
 diff --git a/src/plugins/sqldrivers/psql/CMakeLists.txt b/src/plugins/sqldrivers/psql/CMakeLists.txt
-index d392f4dfa55..165c345e1ba 100644
+index 2f55ab49500..bcf0bdbb42e 100644
 --- a/src/plugins/sqldrivers/psql/CMakeLists.txt
 +++ b/src/plugins/sqldrivers/psql/CMakeLists.txt
-@@ -17,7 +17,7 @@ qt_internal_add_plugin(QPSQLDriverPlugin
-         QT_NO_CAST_FROM_ASCII
+@@ -18,7 +18,7 @@ qt_internal_add_plugin(QPSQLDriverPlugin
          QT_NO_CAST_TO_ASCII
+         QT_NO_CONTEXTLESS_CONNECT
      LIBRARIES
 -        PostgreSQL::PostgreSQL
 +        PostgreSQL::PostgreSQL ${POSTGRESQL_DEPENDENCIES}

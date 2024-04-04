@@ -1,4 +1,4 @@
-From ee08e83b5a8bc4960326f15229ee9f033be8134b Mon Sep 17 00:00:00 2001
+From 2ea39a8625fa2a8bd61c91fd479b4299b4181f3f Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 8 Nov 2020 00:34:09 +0100
 Subject: [PATCH 07/17] Allow overriding CMAKE_FIND_LIBRARY_SUFFIXES to prefer

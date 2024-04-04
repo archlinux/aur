@@ -1,7 +1,7 @@
-From 3e13be5576b33773f16a4a4cdddbaab6235eae85 Mon Sep 17 00:00:00 2001
+From 5a4ab8c0fb624472ae7e4ad56c2d74b9cc67d57a Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 24 Apr 2022 23:00:27 +0200
-Subject: [PATCH 09/17] Find fontconfig via pkg-config for correct handling of
+Subject: [PATCH 08/17] Find fontconfig via pkg-config for correct handling of
  its dependencies
 
 CMake's own find module unforunately does not consider fontconfig's deps so
@@ -33,10 +33,10 @@ index 00000000000..1a52327ae6f
 +    set(Fontconfig_FOUND 1)
 +endif()
 diff --git a/src/gui/CMakeLists.txt b/src/gui/CMakeLists.txt
-index 820b943f16d..c6eb55f0a56 100644
+index 3207244afd2..b0cbee37bbb 100644
 --- a/src/gui/CMakeLists.txt
 +++ b/src/gui/CMakeLists.txt
-@@ -710,7 +710,7 @@ qt_internal_extend_target(Gui CONDITION QT_FEATURE_fontconfig AND QT_FEATURE_fre
+@@ -736,7 +736,7 @@ qt_internal_extend_target(Gui CONDITION QT_FEATURE_fontconfig AND QT_FEATURE_fre
          text/unix/qfontconfigdatabase.cpp text/unix/qfontconfigdatabase_p.h
          text/unix/qfontenginemultifontconfig.cpp text/unix/qfontenginemultifontconfig_p.h
      LIBRARIES
@@ -46,7 +46,7 @@ index 820b943f16d..c6eb55f0a56 100644
  
  qt_internal_extend_target(Gui CONDITION APPLE AND NOT MACOS
 diff --git a/src/gui/configure.cmake b/src/gui/configure.cmake
-index 222073adcdd..27cdac0dbf5 100644
+index 4affd7b30a5..141675b5e6e 100644
 --- a/src/gui/configure.cmake
 +++ b/src/gui/configure.cmake
 @@ -43,7 +43,7 @@ qt_find_package(WrapSystemFreetype 2.2.0 PROVIDED_TARGETS WrapSystemFreetype::Wr
