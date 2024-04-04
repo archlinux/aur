@@ -13,5 +13,5 @@ post_install() {
 }
 
 post_upgrade() {
-	echo "Run `spicetify apply` to apply the marketplace update."
+	echo "Run spicetify apply to apply the marketplace update."
 }
