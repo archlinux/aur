@@ -2,3 +2,4 @@ pkg/
 src/
 *.tar.*
 *.AppImage
+squashfs-root/
