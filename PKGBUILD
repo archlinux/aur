@@ -11,7 +11,7 @@ license=('MIT')
 depends=('ruby' 'ruby-net-ssh>=4.0.0')
 source=(http://gems.rubyforge.org/gems/net-ssh-gateway-$pkgver.gem)
 noextract=(net-ssh-gateway-$pkgver.gem)
-sha256sums=('1d9cb51de52e2d64982f4c136c30435e914c05a980814a91055c89e183397bd0')
+sha256sums=('99caed1ae3fd0ab191657b61adb3f2df83d139eac0586aa74ca177834b7521fd')
 
 package() {
 	cd "${srcdir}"
