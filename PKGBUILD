@@ -1,17 +1,18 @@
-# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
+# Contributor: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: David C. Rankin <drankinatty at gmail dot com>
 
 pkgname=cflow
 pkgver=1.7
-pkgrel=1
-pkgdesc="A C program flow analyzer."
+pkgrel=2
+pkgdesc="A C program flow analyzer"
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/cflow/"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('glibc')
-source=("https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.sig})
-sha256sums=('9e278b10ea420a1ab7ecccd8335fc31fb1921e91ab99d77e33df0729e19dca3b'
-            'SKIP')
+source=("https://ftpmirror.gnu.org/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.sig})
+b2sums=('0d015f66a1cdeb5119d09c6a81231414362bb5a130d744a4532f3eac7de54f05472716afdcf244d413f510f2f955655654192ef467c56588a09a69b064bd43b7'
+        'SKIP')
 validpgpkeys=('325F650C4C2B6AD58807327A3602B07F55D0C732')
 
 build() {
