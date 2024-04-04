@@ -4,8 +4,8 @@
 pkgbase=xorg-server-bug865
 pkgname=xorg-server-bug865
 
-pkgver=21.1.11
-pkgrel=2
+pkgver=21.1.12
+pkgrel=1
 arch=('x86_64')
 license=('LicenseRef-Adobe-Display-PostScript'
          'BSD-3-Clause'
@@ -31,22 +31,20 @@ makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms'
              'libxshmfence' 'libunwind' 'systemd' 'meson' 'git')
-#source=(${pkgbase}-${pkgver}::git+https://gitlab.freedesktop.org/xorg/xserver.git#commit=27a0ee32ccef8d621aaa758c804fc9a5ceeb5a56
-source=(https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${pkgver}.tar.xz{,.sig}
+source=(xorg-server::git+https://gitlab.freedesktop.org/xorg/xserver.git?signed#tag=xorg-server-${pkgver}
         xvfb-run # with updates from FC master
         xvfb-run.1
         freedesktop-bug-865.patch)
 validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF'  # Peter Hutterer (Who-T) <office@who-t.net>
               '67DC86F2623FC5FD4BB5225D14706DBE1E4B4540'  # Olivier Fourdan <fourdan@xfce.org>
               'FD0004A26EADFE43A4C3F249C6F7AE200374452D') # Povilas Kanapickas <povilas@radix.lt>
-sha512sums=('ad5edacbe8c7e2ebe6b4a690af94c7ea5ebc781d00b0e58ae2d273c78ceee2fa00b86d10479ad69da1b3233490619bae5a33db64c967c24bbfc5d5d39ddce1cb'
-            'SKIP'
+sha512sums=('3a5c406debc694112ab4dd1b248c20e84aeefd1cf4417f6131beffcd02e4449129b9488ff17e46f47627d3e7f05b90d55db8096ebb1ab098bfd820afc2d3278d'
             '87c79b4a928e74463f96f58d277558783eac9b8ea6ba00d6bbbb67ad84c4d65b3792d960ea2a70089ae18162e82ae572a49ad36df169c974cc99dbaa51f63eb2'
             'de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22'
             'c3b541c7ac95c94f682577cacedc06e79427003a870cde844056a7662087873b59dc06933552bb867b16fc0387f8a061672df780454769f26aa3e53b13a94edf')
 
 prepare() {
-  cd "xorg-server-${pkgver}"
+  cd "xorg-server"
 
   # The patch for freedesktop bug 865
   patch -Np1 -i "${srcdir}/freedesktop-bug-865.patch"
@@ -54,13 +52,13 @@ prepare() {
 
 build() {
   # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
-  # With them, module fail to load with undefined symbol.
+  # With them, modules fail to load with undefined symbol.
   # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
   export CFLAGS=${CFLAGS/-fno-plt}
   export CXXFLAGS=${CXXFLAGS/-fno-plt}
   export LDFLAGS=${LDFLAGS/-Wl,-z,now}
 
-  arch-meson xorg-server-$pkgver build \
+  arch-meson xorg-server build \
     -D ipv6=true \
     -D xvfb=true \
     -D xnest=true \
@@ -120,5 +118,5 @@ package_xorg-server-bug865() {
   install -m755 -d "${pkgdir}/etc/X11/xorg.conf.d"
 
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "xorg-server-${pkgver}"/COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "xorg-server/COPYING"
 }
