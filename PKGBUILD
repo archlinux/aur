@@ -1,5 +1,5 @@
 # Maintainer: Felipe Alfonso Gonzalez <f.alfonso@res-ear.ch>
-pkgname=novanav-cpp
+pkgname=novanav
 pkgver=0.0.9
 pkgrel=1
 pkgdesc="NovaNav: Lightweight browser for Linux written in C++, delivering fast, distraction-free browsing experience."
