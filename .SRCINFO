@@ -1,7 +1,7 @@
 pkgbase = oq
 	pkgdesc = A performant, and portable jq wrapper to facilitate the consumption and output of formats other than JSON; using jq filters to transform the data.
-	pkgver = 1.3.4
-	pkgrel = 2
+	pkgver = 1.3.5
+	pkgrel = 1
 	url = https://github.com/blacksmoke16/oq
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = oq
 	depends = libevent
 	depends = gc
 	depends = pcre2
-	source = oq-1.3.4::https://github.com/blacksmoke16/oq/archive/v1.3.4.tar.gz
-	sha256sums = 9e99c9ba292c466ca39fb7f6d0053f9fe13c2768a7493d1ef88ea2ca2e0d0ca0
+	source = oq-1.3.5::https://github.com/blacksmoke16/oq/archive/v1.3.5.tar.gz
+	sha256sums = 66b2d879b6e2061121c50b8e584ce82f95fe79348bf3696ca38e5910a6c42495
 
 pkgname = oq
