@@ -2,7 +2,7 @@
 
 pkgname=discover-overlay
 _name=${pkgname#python-}
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Yet another Discord overlay for Linux written in Python using GTK3"
 arch=("x86_64")
@@ -24,12 +24,13 @@ depends=(
     "python-pillow"
     "python-xlib"
     "python-setuptools"
+    "python-pulsectl-asyncio"
 )
 conflicts=("discover-overlay-git")
 provides=("discover-overlay")
 optdepends=("gtk-layer-shell: Wayland support")
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=("77324ed057964dfcbcefdce13d2a6a4e649a47e0cd88437d299e41925cc80f11f945475651c561d5b9e5beeccbd84e5ee21cfbef2c65c257b86630a1a5937bd4")
+sha512sums=("0d39ef100a58ba29497c6a86397526491dd32260bf5f9d0d0269756eb5968136f1e540ccbbdecad06d3830d72e24158626c83653b3a5e0581a13e6d5a814491d")
 
 build() {
     cd ${pkgname}-${pkgver}
