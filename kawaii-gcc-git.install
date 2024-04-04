@@ -2,12 +2,12 @@
 
 post_install() {
   echo ":: This package doesn't replace the existing gcc.mo"
-  echo "   It creates a new folder named \"zh_CN_kawaii\" in the \"/usr/share/locale/\" directory"
+  echo "   It creates a new folder named \"ja_JP_kawaii\" in the \"/usr/share/locale/\" directory"
   echo "   gcc.mo in the \"LC_MESSAGES/\" directory"
   echo "   Need to set the environment variable LANGUAGE makes GCC kawaii"
   echo "   "
   echo "   这个包没有替换原有的 gcc.mo"
-  echo "   而是在 \"/usr/share/locale/\" 目录下新建了一个 \"zh_CN_kawaii\" 文件夹"
+  echo "   而是在 \"/usr/share/locale/\" 目录下新建了一个 \"ja_JP_kawaii\" 文件夹"
   echo "   gcc.mo 在 \"LC_MESSAGES/\" 目录中"
   echo "   需要设置环境变量 LANGUAGE 让 GCC 变可爱"
 

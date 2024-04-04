@@ -23,11 +23,10 @@ pkgver() {
 
 build() {
     cd "$_pkgname"
-    make merge-zh
-    msgfmt gcc-zh.po -o gcc.mo
+    msgfmt gcc.po -o gcc.mo
 }
 
 package() {
     cd "$_pkgname"
-    install -Dm644 gcc.mo -t "$pkgdir/usr/share/locale/zh_CN_kawaii/LC_MESSAGES"
+    install -Dm644 gcc.mo -t "$pkgdir/usr/share/locale/ja_JP_kawaii/LC_MESSAGES"
 }
