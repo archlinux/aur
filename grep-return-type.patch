@@ -1,0 +1,19 @@
+diff --color --unified --recursive --text package.orig/serial-stubs/tools/list_ports.pyi package.new/serial-stubs/tools/list_ports.pyi
+--- package.orig/serial-stubs/tools/list_ports.pyi	2024-03-11 03:14:35.000000000 +0100
++++ package.new/serial-stubs/tools/list_ports.pyi	2024-04-04 14:33:21.801954046 +0200
+@@ -4,8 +4,14 @@
+ 
+ if sys.platform == "win32":
+     from serial.tools.list_ports_windows import comports as comports
++    from serial.tools.list_ports_common import ListPortInfo
+ else:
+     from serial.tools.list_ports_posix import comports as comports
++    from serial.tools.list_ports_linux import SysFS
++
++if sys.platform == "win32":
++    def grep(regexp: str | re.Pattern[str], include_links: bool = False) -> Generator[ListPortInfo]: ...
++else:
++    def grep(regexp: str | re.Pattern[str], include_links: bool = False) -> Generator[SysFS]: ...
+ 
+-def grep(regexp: str | re.Pattern[str], include_links: bool = False) -> Generator[tuple[str, str, str], None, None]: ...
+ def main() -> None: ...
