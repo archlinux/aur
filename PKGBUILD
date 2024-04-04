@@ -3,7 +3,7 @@
 
 pkgname=python-copier
 _name=${pkgname#python-}
-pkgver=9.1.1
+pkgver=9.2.0
 pkgrel=1
 pkgdesc='Library and command-line utility for rendering projects templates'
 arch=('any')
@@ -12,7 +12,6 @@ license=('MIT')
 
 depends=(
   'python-colorama'
-  'python-decorator'
   'python-dunamai'
   'python-funcy'
   'python-jinja'
@@ -23,7 +22,6 @@ depends=(
   'python-prompt_toolkit'
   'python-pydantic'
   'python-pygments'
-  'python-pyyaml-include'
   'python-questionary'
   'python-yaml'
 )
@@ -45,7 +43,7 @@ source=(
   "git+https://github.com/copier-org/copier.git#tag=v$pkgver"
 )
 sha256sums=(
-  'SKIP'
+  'c802a669a970d50e1b516b0ab1f3e9474c70960a5530dd309af62fd0c39ea276'
 )
 
 build() {
