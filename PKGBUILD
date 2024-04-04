@@ -6,13 +6,13 @@ pkgname=ampl-mp
 pkgver=3.1.0
 pkgrel=3
 pkgdesc="An open-source library for mathematical programming"
-arch=('x86_64')
+arch=(x86_64)
 url="https://github.com/${pkgname/-//}"
-license=('custom')
+license=(LPL-1.0)
 # depends=()
 makedepends=(cmake ninja) # unixodbc
 options=('!emptydirs')
-source=(${url}/archive/${pkgver}.tar.gz)
+source=(mp-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
 sha512sums=('f23bdf37d42ac93b48e00f929afcce0a848956c9a0c1182413ee04dfcab12e8cd1af93e3924a5a6e9669a8d6841d1b8874a15a7252cf2365eb6077ab580a4447')
 prepare() {
   # https://github.com/fmtlib/fmt/issues/398#issue-183946005
