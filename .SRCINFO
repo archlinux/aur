@@ -19,5 +19,3 @@ pkgbase = rime-pinyin-zhwiktionary-hant
 	sha512sums = 22d46818d3998ad841f537af4de7c50440dd918099fb6c5d4ab324cd71dc03066bfe1b67210a5efde77abd1d97b88da3c3dbfc39a24ae7248ee2d64e7f0fe6bb
 
 pkgname = rime-pinyin-zhwiktionary-hant
-
-pkgname = fcitx5-pinyin-zhwiktionary-hant
