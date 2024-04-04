@@ -1,6 +1,6 @@
 pkgbase = neovim-lush
 	pkgdesc = A colorscheme creation aid for Neovim
-	pkgver = 1.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/rktjmp/lush.nvim
 	install = lush.install
@@ -9,7 +9,7 @@ pkgbase = neovim-lush
 	groups = neovim-plugins
 	license = MIT
 	depends = neovim
-	source = neovim-lush-1.0.0.tar.gz::https://github.com/rktjmp/lush.nvim/archive/1.0.0.tar.gz
-	sha256sums = 29df7b46562ee165af42825c3ed94f43698992f7b8f8112ed960deaf6825d259
+	source = neovim-lush-2.0.1.tar.gz::https://github.com/rktjmp/lush.nvim/archive/v2.0.1.tar.gz
+	sha256sums = 494c1b1a9fe86e2d3bda713d9742ba538e890e5411e34f386c59879898e9a172
 
 pkgname = neovim-lush
