@@ -3,18 +3,18 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=scx-scheds
-pkgver=0.1.7
-pkgrel=2
+pkgver=0.1.8
+pkgrel=1
 pkgdesc='Sched_ext schedulers'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
 license=('GPL-2.0-only')
-depends=('libbpf' 'bpf' 'libelf' 'zlib')
+depends=('libelf' 'zlib' 'jq')
 makedepends=('python' 'meson' 'clang' 'llvm-libs' 'cargo' 'rust')
 backup=('etc/default/scx')
 options=(!lto)
 source=(https://github.com/sched-ext/scx/archive/refs/tags/v${pkgver}.tar.gz)
-sha512sums=('8137aac898ecce00299dc355a26f4d3565e6bc4ec3ce6dc38667fbee81f379ac62b1437fd289f9e20cfa9fbf82538078dce4c74a3ffe3f8e633306f8a8f6b6fe')
+sha512sums=('8ab850137c4c21a2c39ca9bca3927822e51b0e28ec59a613a43b266f1559a63c2e6aa48d4a8de7de78e5ac57cd92ecc0b3fdff3eee9af90c9f4b2590ebc64f86')
 
 prepare() {
  cd scx-${pkgver}
@@ -31,7 +31,7 @@ prepare() {
 
 build() {
   cd scx-${pkgver}
-  arch-meson . build --buildtype release
+  arch-meson . build --buildtype release --auto-features auto
   meson compile -C build
 }
 
