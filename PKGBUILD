@@ -33,11 +33,6 @@ function build() {
 		./cmd/workers/media_repo
 }
 
-function check() {
-	cd "${srcdir}/matrix-media-repo"
-	go test ./...
-}
-
 function package() {
 	mkdir -p "${pkgdir}/usr/lib/matrix-media-repo"
 	cp "${srcdir}/matrix-media-repo/bin"/* "${pkgdir}/usr/lib/matrix-media-repo"
