@@ -22,8 +22,8 @@
  # -------- GLOBAL COMPILE OPTIONS --------
  
  include_directories(${TENSORRT_ROOT}/include ${PROJECT_SOURCE_DIR}/include ${CUDA_INCLUDE_DIRS} ${PROJECT_SOURCE_DIR}/docstrings ${ONNX_INC_DIR} ${PYBIND11_DIR})
--link_directories(${TENSORRT_LIBPATH})
-+link_directories(${TENSORRT_LIBPATH} $ENV{TRT_NONOSS_ROOT}/lib)
+-link_directories(${TENSORRT_BUILD})
++link_directories(${TENSORRT_BUILD} $ENV{TRT_NONOSS_ROOT}/lib)
  
  if (MSVC)
      message(STATUS "include_dirs: ${MSVC_COMPILER_DIR}/include ${MSVC_COMPILER_DIR}/../ucrt/include ${NV_WDKSDK_INC}/um ${NV_WDKSDK_INC}/shared")
