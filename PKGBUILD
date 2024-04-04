@@ -18,8 +18,8 @@ pkgname=glibc-widevine
 provides=("glibc=2.35")
 conflicts=("glibc")
 pkgver=2.35
-_commit=c84018a05aec80f5ee6f682db0da1130b0196aef
-pkgrel=5.3
+_commit=d6d295a95b6463611d3517378be2c40685f98806
+pkgrel=5.4
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.gnu.org/software/libc'
 license=(GPL LGPL)
@@ -97,7 +97,7 @@ build() {
   # Credits @allanmcrae
   # https://github.com/allanmcrae/toolchain/blob/f18604d70c5933c31b51a320978711e4e6791cf1/glibc/PKGBUILD
   # remove fortify for building libraries
-  CFLAGS=${CFLAGS/-Wp,-D_FORTIFY_SOURCE=2/}
+  CFLAGS=${CFLAGS/-Wp,-D_FORTIFY_SOURCE=3/}
 
   "$srcdir/glibc/configure" \
       --libdir=/usr/lib \
@@ -110,7 +110,7 @@ build() {
 
   # re-enable fortify for programs
   sed -i "/build-programs=/s#no#yes#" configparms
-  echo "CFLAGS += -Wp,-D_FORTIFY_SOURCE=2" >> configparms
+  echo "CFLAGS += -Wp,-D_FORTIFY_SOURCE=3" >> configparms
   make -O
 
   # build info pages manually for reproducibility

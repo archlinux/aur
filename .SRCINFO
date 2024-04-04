@@ -1,6 +1,6 @@
 pkgbase = glibc-widevine
 	pkgver = 2.35
-	pkgrel = 5.3
+	pkgrel = 5.4
 	url = https://www.gnu.org/software/libc
 	arch = x86_64
 	arch = armv7h
@@ -16,7 +16,7 @@ pkgbase = glibc-widevine
 	options = staticlibs
 	options = !lto
 	options = !distcc
-	source = git+https://sourceware.org/git/glibc.git#commit=c84018a05aec80f5ee6f682db0da1130b0196aef
+	source = git+https://sourceware.org/git/glibc.git#commit=d6d295a95b6463611d3517378be2c40685f98806
 	source = locale.gen.txt
 	source = locale-gen
 	source = sdt.h
