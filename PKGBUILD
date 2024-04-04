@@ -9,7 +9,7 @@ _use_meson=0
 
 _pkgname=audacious-plugins
 pkgname="$_pkgname-git"
-pkgver=4.2.beta1.r5.gf0c055546
+pkgver=4.3.1.r60.g236e85910
 pkgrel=1
 epoch=1
 pkgdesc="Plugins for Audacious (git version)"
@@ -23,7 +23,7 @@ depends=('audacious-git'
          'jack' 'lame' 'libbs2b' 'libcddb' 'libcdio-paranoia' 'libcue'
          'libmms' 'libmodplug' 'libmtp' 'libnotify' 'libopenmpt' 'libpipewire'
          'libpulse' 'libsamplerate' 'libsidplayfp' 'libvorbis' 'lirc' 'mpg123'
-         'neon' 'opusfile' 'qt5-x11extras' 'wavpack')
+         'neon' 'opusfile' 'wavpack')
 makedepends=('glib2' 'python' 'git')
 source=("git+https://github.com/audacious-media-player/$_pkgname.git")
 sha256sums=('SKIP')

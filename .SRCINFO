@@ -1,6 +1,6 @@
 pkgbase = audacious-plugins-git
 	pkgdesc = Plugins for Audacious (git version)
-	pkgver = 4.2.beta1.r5.gf0c055546
+	pkgver = 4.3.1.r60.g236e85910
 	pkgrel = 1
 	epoch = 1
 	url = https://audacious-media-player.org/
@@ -39,7 +39,6 @@ pkgbase = audacious-plugins-git
 	depends = mpg123
 	depends = neon
 	depends = opusfile
-	depends = qt5-x11extras
 	depends = wavpack
 	provides = audacious-plugins
 	conflicts = audacious-plugins
