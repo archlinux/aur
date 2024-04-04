@@ -2,7 +2,7 @@
 # Maintainer: j178 <10510431+j178@users.noreply.github.com>
 
 pkgname='leetgo-bin'
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc='leetgo is a command line tool for leetcode.com. It can help you to login, submit, test, and view your submissions.'
 url='https://github.com/j178/leetgo'
@@ -11,11 +11,11 @@ license=('MIT')
 provides=('leetgo')
 conflicts=('leetgo')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/j178/leetgo/releases/download/v1.4.4/leetgo_linux_arm64.tar.gz")
-sha256sums_aarch64=('9c0cdc8123b3471fc901b31dae1ad5781903c6309d861bb8b036a00ebaf75886')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/j178/leetgo/releases/download/v1.4.5/leetgo_linux_arm64.tar.gz")
+sha256sums_aarch64=('e1f0c71092081050a908cd7bb61653f5a777858b780dda4b3bfd484b4c602ade')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/j178/leetgo/releases/download/v1.4.4/leetgo_linux_x86_64.tar.gz")
-sha256sums_x86_64=('f29fd949e117fe0631d0fa6f0ca35aac069922e233291803360f5077a61a5706')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/j178/leetgo/releases/download/v1.4.5/leetgo_linux_x86_64.tar.gz")
+sha256sums_x86_64=('d8c080fb38c5530786fbd6015293c2e54b0d76655e090456bd301e8f8f3c10f7')
 
 package() {
   # bin
