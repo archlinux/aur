@@ -1,6 +1,6 @@
 # Maintainer: Daniel Kuehn <daniel@kuehn.foo>
 pkgname=wordgen
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Bash script to print random words using the EFF large wordlist."
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('bash'
          'coreutils')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('04123bb771d2d1ed65a5c496a499b36a80afa51f291089f3489490e9fd12d7d4')
+sha256sums=('61e88a9737c144e4deb715148f6ceff39029717c15aa2ba5f415260219a1e235')
 
 package()
 {
