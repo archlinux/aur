@@ -1,7 +1,7 @@
 pkgbase = tuxedo-control-center-bin
 	pkgdesc = A tool to help you control performance, energy, fan and comfort settings on TUXEDO laptops.
 	pkgver = 2.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tuxedocomputers/tuxedo-control-center
 	install = tuxedo-control-center-bin.install
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = tuxedo-control-center-bin
 	conflicts = tuxedo-control-center
 	conflicts = auto-cpufreq
 	options = !strip
+	options = !debug
 	source = https://rpm.tuxedocomputers.com/fedora/39/x86_64/base/tuxedo-control-center_2.1.8.rpm
 	source = tuxedo-control-center-bin.install
 	sha256sums = 89da4b5e1c30fb871decd4ba1fbf1943cf4a830c2d608e4e30948f68d66d229e
