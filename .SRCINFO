@@ -1,0 +1,23 @@
+pkgbase = plasma-runners-nordvpn
+	pkgdesc = Nordvpn plasma runner
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/alex1701c/NordVPNKrunner
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = gettext
+	makedepends = qt6-tools
+	depends = nordvpn
+	depends = krunner
+	depends = kcmutils
+	conflicts = plasma5-runners-nordvpn
+	source = https://github.com/alex1701c/NordVPNKrunner/archive/3.0.0.tar.gz
+	source = https://s1.nordcdn.com/nordvpn/media/1.170.0/images/global/favicon/apple-touch-icon-57x57.png
+	source = https://github.com/alex1701c/NordVPNKrunner/commit/c9ce1a8cdbed63ee872f661c99120a86e8818910.patch
+	md5sums = 813e572250d28cbe8cfdd74324808120
+	md5sums = 45c79777d364ca2cc1665165aca77ea6
+	md5sums = 849bab482635f266229933c22d3c3dd7
+
+pkgname = plasma-runners-nordvpn
