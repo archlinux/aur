@@ -1,0 +1,20 @@
+pkgbase = python-click-repl
+	pkgdesc = Subcommand REPL for click apps
+	pkgver = 0.3.0
+	pkgrel = 2
+	url = https://github.com/click-contrib/click-repl
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-click
+	depends = python-prompt_toolkit
+	source = python-click-repl-0.3.0.tar.gz::https://github.com/click-contrib/click-repl/archive/refs/tags/0.3.0.tar.gz
+	sha512sums = 4135cfd4a0b041d9e6446b4c938bb5863d851703f47f204cd78fc9e5ae6b7fd71215abbf08863d9a5cdb664f92df5fca2380a6efa7ddeb67dd6c9b1d4f210f65
+	b2sums = 90b97c0e24e40c63770ee9c14fbcca2b8ac2c743ed62b46fce582ad9416c1c645af9e3d43499f488e4c6344f735d8b3c14f1119759e893af7250817992bf61d8
+
+pkgname = python-click-repl
