@@ -39,7 +39,7 @@ prepare() {
 
 build() {
   cd $_converter
-  $_make zhwiktionary.dict.yaml
+  $_make build
 }
 
 # package_fcitx5-pinyin-zhwiktionary-hant() {
