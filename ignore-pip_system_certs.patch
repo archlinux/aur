@@ -1,0 +1,15 @@
+diff --unified --recursive --text --color anki-bin/usr/lib/python3.11/site-packages/aqt/__init__.py new/usr/lib/python3.11/site-packages/aqt/__init__.py
+--- anki-bin/usr/lib/python3.11/site-packages/aqt/__init__.py	2024-04-04 13:01:44.960181070 +0900
++++ new/usr/lib/python3.11/site-packages/aqt/__init__.py	2024-04-04 13:05:10.340210819 +0900
+@@ -6,7 +6,10 @@
+ import logging
+ import sys
+ 
+-import pip_system_certs.wrapt_requests
++try:
++    import pip_system_certs.wrapt_requests
++except ModuleNotFoundError:
++    pass
+ 
+ if sys.version_info[0] < 3 or sys.version_info[1] < 9:
+     raise Exception("Anki requires Python 3.9+")

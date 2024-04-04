@@ -22,7 +22,6 @@ depends=(
 	'python-flask'
 	'python-flask-cors'
 	'python-jsonschema'
-    'python-pip-system-certs'
 	'python-pyqt6'
 	'python-pyqt6-webengine'
 	'python-send2trash'
@@ -63,6 +62,7 @@ source=(
 	"anki-$pkgver.png::https://raw.githubusercontent.com/ankitects/anki/$pkgver/qt/bundle/lin/anki.png"
 	"anki-$pkgver.xml::https://raw.githubusercontent.com/ankitects/anki/$pkgver/qt/bundle/lin/anki.xml"
 	"anki-$pkgver.xpm::https://raw.githubusercontent.com/ankitects/anki/$pkgver/qt/bundle/lin/anki.xpm"
+    "ignore-pip_system_certs.patch"
 )
 noextract=("${source[@]##*/}")
 sha256sums=('cfc89e1608c9817f1f3fea156e64a7e8824dbf88e7dabc7d49c5f1ff63d8361c'
@@ -72,12 +72,14 @@ sha256sums=('cfc89e1608c9817f1f3fea156e64a7e8824dbf88e7dabc7d49c5f1ff63d8361c'
             '53db2e5bfeb00aa249667e09466a34bfacb17b61097875a8cdd93ee1a9380b9a'
             '97ad2134ef1a7686789c7becd8bd05dd8693cf0d3127951ca6ba7b29a80b402a'
             '2845a528fb3a064b67404a03d72bfaba9b421cb220b25228b815946c6553ce38'
-            'd814c62e38246b6e4ba73ee037647a29675925167518137f05a8f9e60c258b6e')
+            'd814c62e38246b6e4ba73ee037647a29675925167518137f05a8f9e60c258b6e'
+            '55b55ce37bc23782b479ee9dc0fe706032a400d447f890dc34b0a9e6b0d8a590')
 
 package() {
 	python -m installer --destdir="$pkgdir" $_anki_whl
 	python -m installer --destdir="$pkgdir" $_aqt_whl
 
+    patch --directory="$pkgdir" --forward --strip=1 --input="$srcdir/ignore-pip_system_certs.patch"
 	install -Dm755 runanki-$pkgver.py "$pkgdir/usr/bin/anki"
 	install -Dm644 anki-$pkgver.1 "$pkgdir/usr/share/man/man1/anki.1"
 	install -Dm644 anki-$pkgver.desktop "$pkgdir/usr/share/applications/anki.desktop"
