@@ -6,7 +6,7 @@ pkgbase = errands
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	checkdepends = appstream-glib
+	checkdepends = appstream
 	makedepends = git
 	makedepends = meson
 	depends = gtksourceview5
@@ -17,7 +17,7 @@ pkgbase = errands
 	depends = libadwaita
 	depends = libsecret
 	optdepends = gnome-online-accounts
-	source = git+https://github.com/mrvladus/Errands.git#tag=45.1.9
+	source = git+https://github.com/mrvladus/Errands.git#commit=7b25a621bd3c4cd4d6641f64c1fbdd826bfc7a86
 	sha256sums = SKIP
 
 pkgname = errands
