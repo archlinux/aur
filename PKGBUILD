@@ -3,9 +3,9 @@
 _commit='15a51f14496891cfc31a6b7f08257a1d87749197'
 pkgname=amd-zen-ucode-platomav
 pkgver=r293
-pkgrel=1
+pkgrel=2
 arch=(any)
-pkgdesc="Microcode update image for AMD Zen CPUs (family 17h and 19h) from platomav's github"
+pkgdesc="Microcode update image for AMD Zen CPUs (family 17h, 19h, 1Ah) from platomav's github"
 url='https://github.com/platomav/CPUMicrocodes'
 license=(custom)
 conflicts=(amd-ucode)
@@ -19,6 +19,7 @@ build() {
   gcc amd-ucodegen.c -o amd-ucodegen
   ./amd-ucodegen "CPUMicrocodes-${_commit}"/AMD/cpu??8??F??_* # Family=0x17: Base Family=0xF + Extended Family=0x8
   ./amd-ucodegen "CPUMicrocodes-${_commit}"/AMD/cpu??A??F??_* # Family=0x19: Base Family=0xF + Extended Family=0xA
+  ./amd-ucodegen "CPUMicrocodes-${_commit}"/AMD/cpu??B??F??_* # Family=0x1A: Base Family=0xF + Extended Family=0xB
 
   mkdir -p kernel/x86/microcode
   cat microcode_amd*.bin > kernel/x86/microcode/AuthenticAMD.bin
@@ -39,6 +40,7 @@ package() {
 
   install -Dt "${pkgdir}/usr/lib/firmware/amd-ucode" -m644 microcode_amd_fam17h.bin
   install -Dt "${pkgdir}/usr/lib/firmware/amd-ucode" -m644 microcode_amd_fam19h.bin
+  install -Dt "${pkgdir}/usr/lib/firmware/amd-ucode" -m644 microcode_amd_fam1ah.bin
 
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 "CPUMicrocodes-${_commit}/AMD/LICENSE"
 }
