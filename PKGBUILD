@@ -1,14 +1,14 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=shedskin
-pkgver=0.9.4
-pkgrel=3
+pkgver=0.9.8
+pkgrel=1
 pkgdesc='Python to C++ compiler'
 arch=('any')
 url='https://shedskin.github.io/'
 license=('GPL2')
-depends=('pcre' 'gc' 'python2')
-makedepends=('git')
+depends=('pcre' 'gc' 'python')
+makedepends=('git' 'python-setuptools')
 source=("git+https://github.com/shedskin/shedskin.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
@@ -19,7 +19,7 @@ prepare() {
 package() {
   cd "$pkgname"
 
-  python2 setup.py install --prefix="$pkgdir/usr"
+  python setup.py install --root="$pkgdir"/
 }
 
 # vim: ts=2 sw=2 et:
