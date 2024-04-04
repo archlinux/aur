@@ -1,7 +1,7 @@
 # Credit: PKGBUILD from https://aur.archlinux.org/packages/alacritty-git
 pkgname='alacritty-smooth-cursor-git'
 _pkgname="alacritty"
-pkgver=0.14.0.2320.g80c2666f
+pkgver=0.14.0.2321.gcb324c95
 pkgrel=1
 epoch=1
 arch=('x86_64' 'i686' 'aarch64')
@@ -43,7 +43,7 @@ package_alacritty-smooth-cursor-git() {
 	scdoc < extra/man/alacritty-bindings.5.scd | gzip -c | tee "$pkgdir/usr/share/man/man5/alacritty-bindings.5.gz" > /dev/null
 
 	install -D -m755 "target/release/alacritty" "$pkgdir/usr/bin/alacritty-smooth-cursor"
-    echo "env -u WAYLAND_DISPLAY alacritty-smooth-cursor" > "$pkgdir/usr/bin/alacritty"
+    echo 'env -u WAYLAND_DISPLAY alacritty-smooth-cursor $@' > "$pkgdir/usr/bin/alacritty"
     chmod 755 "$pkgdir/usr/bin/alacritty"
 	install -D -m644 "extra/linux/org.alacritty.Alacritty.appdata.xml" "$pkgdir/usr/share/appdata/org.alacritty.Alacritty.appdata.xml"
 	install -D -m644 "extra/completions/alacritty.bash" "$pkgdir/usr/share/bash-completion/completions/alacritty"
