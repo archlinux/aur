@@ -4,24 +4,30 @@
 pkgname=python-flake8-quotes
 _pkgname=flake8-quotes
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Flake8 lint for quotes"
 arch=('any')
 url="https://github.com/zheller/${_pkgname}"
 license=('MIT')
 depends=('flake8')
-makedepends=('python-setuptools')
+checkdepends=('python-pytest')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zheller/${_pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('884d027b6126b6216bdb9fa95a9841c4f07f600569a4a41f3d0cdbf71afe6bcb')
 
 build() {
     cd "${_pkgname}-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "${_pkgname}-${pkgver}"
+    PYTHONPATH="${PWD}/src:${PYTHONPATH}" python -m pytest test
 }
 
 package() {
     cd "${_pkgname}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 
     install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
