@@ -1,6 +1,6 @@
 pkgbase = ddh
 	pkgdesc = Dynamic Display Handler
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/RiddlerXenon/DynamicDisplayHandler
 	install = ddh.install
@@ -11,7 +11,7 @@ pkgbase = ddh
 	depends = awk
 	depends = grep
 	depends = sed
-	source = ddh-1.0.3.tar.gz::https://github.com/RiddlerXenon/DynamicDisplayHandler/archive/v1.0.3.tar.gz
-	sha256sums = 412cb6d34e46ca30fbe03a52f38886717fa7b9ecb7dc7d1940062d55de902542
+	source = ddh-1.0.4.tar.gz::https://github.com/RiddlerXenon/DynamicDisplayHandler/archive/v1.0.4.tar.gz
+	sha256sums = 8a26564e369e98f3c7cdf64e311b28aa4f87c23634b03d54a2451aa3d0d137ab
 
 pkgname = ddh
