@@ -1,6 +1,6 @@
 pkgbase = hyprdots-ctl-git
 	pkgdesc = CLI for Hyprdots Configurations, Warning, this package has been renames to Hyde-cli
-	pkgver = v0.5.0.r11.0e8d3dd
+	pkgver = v0.5.0.r43.7929e50
 	pkgrel = 1
 	url = git+https://github.com/kRHYME7/Hyprdots-ctl
 	arch = any
