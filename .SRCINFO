@@ -1,0 +1,19 @@
+pkgbase = pyqt5-3d
+	pkgdesc = Python bindings for Qt3D
+	pkgver = 5.15.6
+	pkgrel = 3
+	url = https://www.riverbankcomputing.com/software/pyqt3d/intro
+	arch = x86_64
+	groups = pyqt5
+	license = GPL3
+	makedepends = sip
+	makedepends = pyqt-builder
+	depends = qt5-3d
+	depends = python-pyqt5
+	provides = python-pyqt3d
+	conflicts = python-pyqt3d
+	replaces = python-pyqt3d
+	source = https://pypi.python.org/packages/source/P/PyQt3D/PyQt3D-5.15.6.tar.gz
+	sha256sums = 7d6c6d55cd8fc221b313c995c0f8729a377114926f0377f8e9011d45ebf3881c
+
+pkgname = python-pyqt5-3d
