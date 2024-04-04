@@ -11,6 +11,6 @@ pkgbase = c3
 	provides = c3
 	conflicts = c3
 	source = c3.tar.gz::https://github.com/nimaaskarian/c3/releases/download/0.7.3/source.tar.gz
-	md5sums = d41d8cd98f00b204e9800998ecf8427e
+	md5sums = 44327a801ec85ac7b6cf438aea389885
 
 pkgname = c3

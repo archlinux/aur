@@ -17,7 +17,7 @@ source=(
   "${pkgname}.tar.gz::https://github.com/nimaaskarian/${_gitname}/releases/download/${pkgver}/source.tar.gz"
 )
 
-md5sums=('d41d8cd98f00b204e9800998ecf8427e')
+md5sums=('44327a801ec85ac7b6cf438aea389885')
 build () {
   cd "${pkgname}-${pkgver/v/}" || exit
   cargo build --release
