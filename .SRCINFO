@@ -14,6 +14,8 @@ pkgbase = matrix-media-repo-git
 	provides = matrix-media-repo
 	conflicts = matrix-media-repo
 	source = git+https://github.com/t2bot/matrix-media-repo.git
+	source = matrix-media-repo.service
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = matrix-media-repo-git
