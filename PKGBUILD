@@ -59,7 +59,11 @@ package()
   #
   cd "${srcdir}/${_pkgname}-${_pkgver}/source"
   install -d "${pkgdir}/usr/bin/"
-  install -m755 bmflash bmdebug bmscan bmprofile bmserial calltree elf-postlink tracegen bmtrace "${pkgdir}/usr/bin/"
+  # install utils: bmflash bmdebug bmscan bmprofile bmserial bmtrace calltree elf-postlink tracegen
+  install -m755 bmflash bmdebug bmscan bmprofile bmserial bmtrace "${pkgdir}/usr/bin/"
+  install -D -m755 calltree "${pkgdir}/usr/bin/bmcalltree"
+  install -D -m755 elf-postlink "${pkgdir}/usr/bin/bmelf-postlink"
+  install -D -m755 tracegen "${pkgdir}/usr/bin/bmtracegen"
 
   #
   cd "${srcdir}/${_pkgname}-${_pkgver}"
