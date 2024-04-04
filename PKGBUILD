@@ -5,7 +5,7 @@
 
 _pkg=cado-nfs
 pkgname=${_pkg}-git
-pkgver=20230731.9d69b04ae
+pkgver=20240318.a24829267
 pkgrel=1
 pkgdesc="Implementation of the Number Field Sieve (NFS) algorithm for factoring integers"
 arch=('x86_64')
@@ -23,7 +23,7 @@ provides=('cado-nfs')
 source=("git+https://gitlab.inria.fr/cado-nfs/${_pkg}.git"
         fmt.patch)
 sha384sums=('SKIP'
-            '496b2b68ed11d3ad7c5febffd900475502b871bb4541307eb909eb23e0faa9f2e45856393b2c8bf45ab54cdf02c40e58')
+            '493abdd5b33bb202eb6f159bd399cf947f6c8a082fc23ba4fcf79dadcc07fbc8ef5989b0a5580cdb7537346af713d374')
 
 # Need -march for SIMD support. Makes the resulting package less portable.
 _march=native
