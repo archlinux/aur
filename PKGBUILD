@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=ampl-asl
-_gitcommit=23f47c1b08efe756bc93f19a034f14fa5a0593ab
-pkgver=20231111
+_gitcommit=2f5d9de248c53a3063bba23af2013cd3db768bf8
+pkgver=20240106
 pkgrel=1
 pkgdesc="AMPL Solver Library"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(BSD-3-Clause)
 depends=(openmp)
 makedepends=(cmake git)
 source=("git+${url}#commit=${_gitcommit}")
-sha512sums=('de5fdd7c963882129c12141c3dc7ae35b46abd84a68d90b4eea449953f5cb3614e1c63e10bcbcbd136fe9948fa070fe44c92f71f71c41ba0003d0b179feb6e02')
+sha512sums=('4e88b5f5e9f572e2ea4f5e7decf116eada5b8ec293da0a19042765e94a041ced851f76845b24dcfda687acf0ab77f0806a6892f46cd8b348e2db481cc9a3ed68')
 
 build() {
   cmake \
