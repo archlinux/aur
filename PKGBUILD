@@ -1,7 +1,7 @@
 # Maintainer: nullobsi <me at nullob dot si>
 
 pkgname=pass-secrets-git
-pkgver=r38.525609b
+pkgver=r61.62ad348
 pkgrel=1
 pkgdesc="Freedesktop secrets provider that uses pass as a backend"
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('GPL3')
 groups=()
 depends=('sdbus-cpp' 'pass')
 makedepends=('git' 'cmake')
-provides=("${pkgname%-git}" "org.freedesktop.secrets" "gnome-keyring")
-conflicts=("${pkgname%-git}" "gnome-keyring")
+provides=("${pkgname%-git}" "org.freedesktop.secrets")
+conflicts=("${pkgname%-git}")
 source=('git+https://github.com/nullobsi/pass-secrets.git')
 md5sums=('SKIP')
 

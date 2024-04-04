@@ -1,6 +1,6 @@
 pkgbase = pass-secrets-git
 	pkgdesc = Freedesktop secrets provider that uses pass as a backend
-	pkgver = r38.525609b
+	pkgver = r61.62ad348
 	pkgrel = 1
 	url = https://github.com/nullobsi/pass-secrets
 	arch = x86_64
@@ -11,9 +11,7 @@ pkgbase = pass-secrets-git
 	depends = pass
 	provides = pass-secrets
 	provides = org.freedesktop.secrets
-	provides = gnome-keyring
 	conflicts = pass-secrets
-	conflicts = gnome-keyring
 	source = git+https://github.com/nullobsi/pass-secrets.git
 	md5sums = SKIP
 
