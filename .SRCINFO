@@ -1,0 +1,13 @@
+pkgbase = wordgen
+	pkgdesc = Bash script to print random words using the EFF large wordlist.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/daniel-kuehn/wordgen
+	arch = any
+	license = GPL-3.0-or-later
+	depends = bash
+	depends = coreutils
+	source = https://codeberg.org/daniel-kuehn/wordgen/archive/v1.0.0.tar.gz
+	sha256sums = 04123bb771d2d1ed65a5c496a499b36a80afa51f291089f3489490e9fd12d7d4
+
+pkgname = wordgen
