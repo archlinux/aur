@@ -2,51 +2,74 @@
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=dunedynasty
-pkgver=1.5.7
+pkgver=1.6.2
 pkgrel=1
-pkgdesc="Enhanced continuation of the classic real-time strategy game Dune II"
-url="http://dunedynasty.sourceforge.net/"
+pkgdesc="Maintained fork of an enhanced continuation of the classic real-time strategy game Dune II"
+url="https://github.com/gameflorist/dunedynasty"
 arch=('i686' 'x86_64')
-license=('GPL2')
-depends=('allegro')
+license=('GPL-2.0-only')
+depends=(
+  'allegro'
+  'alsa-lib'
+  'enet'
+  'libgl'
+)
 makedepends=('cmake')
-optdepends=('fluidsynth: software synthesizer for midi music'
-            'soundfont-fluid: good soundfont for use with fluidsynth'
-            'timidity++: alternative midi sequencer'
-            'timidity-freepats: patch set for timidity++'
-            'libmad: for mp3 music support')
-install=$pkgname.install
-changelog=$pkgname.ChangeLog
-source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz"
-        "$pkgname.desktop")
-sha256sums=('a50e5a643db6835acb8cf7afd262b5eeba3fac01151ea51afcb1f5914d35a5c5'
-            '4bc37a890a354e274b152a03fffa61d2da1609131c848742e1e4bca537176493')
+optdepends=(
+  'fluidsynth: MIDI music support alternative'
+  'soundfont-fluid: soundfont for fluidsynth'
+  'timidity++: MIDI music support alternative'
+  'timidity-freepats: patch set for timidity++'
+  'libmad: MP3 music support'
+)
+install="${pkgname}.install"
+changelog=CHANGELOG.md
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gameflorist/dunedynasty/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('97ca7af2423279674e4ac290a1c7d6ae85ad8a58b56108c8acceae829086a40f')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd "${pkgname}-${pkgver}"
 
-  # set doc folder
-  sed 's|doc/dunedynasty-${DUNE_DYNASTY_VERSION}|share/doc/dunedynasty|' -i CMakeLists.txt
-  # set soundfont path
-  sed 's|s/sf2/FluidR3_GM.sf2|fonts/FluidR3_GM2-2.sf2|' -i dist/dunedynasty.cfg-sample
+  # change doc directory to Archlinux conventions
+  sed \
+    -e 's|DESTINATION "doc/dunedynasty-${DUNE_DYNASTY_VERSION}")|DESTINATION "share/doc/dunedynasty")|' \
+    -i CMakeLists.txt
+
+  # default config settings for Archlinux in sample file
+  sed \
+    -e "s|^\s*\;\?s*sound_font\s*=\s*.*|sound_font=/usr/share/soundfonts/default.sf2|" \
+    -i dist/dunedynasty.cfg-sample
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd "${pkgname}-${pkgver}"
 
-  cmake ./ -DCMAKE_INSTALL_PREFIX=/usr -DDUNE_DATA_DIR=/usr/share/$pkgname
-  make
+  # allow format-security errors in existing codebase until fixed upstream
+  CFLAGS="${CFLAGS} -Wno-error=format-security" \
+  cmake \
+    -S "${srcdir}/${pkgname}-${pkgver}" \
+    -B "${srcdir}/${pkgname}-${pkgver}/build" \
+    -DOpenGL_GL_PREFERENCE=GLVND \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DDUNE_DATA_DIR="/usr/share/${pkgname}"
+
+  cmake \
+    --build "${srcdir}/${pkgname}-${pkgver}/build" \
+    --config Release
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd "${pkgname}-${pkgver}"
 
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="${pkgdir}" cmake \
+    --install "${srcdir}/${pkgname}-${pkgver}/build" \
+    --config Release
 
-  # remove license, part of common licenses
-  rm -f "$pkgdir"/usr/share/doc/$pkgname/COPYING
+  # remove common license file
+  rm -f "${pkgdir}/usr/share/doc/${pkgname}/LICENSE.txt"
 
-  # desktop entry
-  install -Dm644 src/video/dune2_32x32.xpm "$pkgdir"/usr/share/pixmaps/$pkgname.xpm
-  install -Dm644 ../$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
+  # desktop file and icon
+  install -Dm644 src/video/dune2_32x32.xpm "${pkgdir}/usr/share/pixmaps/${pkgname}.xpm"
+  install -Dm644 "dist/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
