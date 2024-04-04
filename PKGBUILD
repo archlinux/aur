@@ -3,7 +3,7 @@
 _pkgname=django-fake-model
 pkgname=python-$_pkgname
 pkgver=0.1.4
-pkgrel=6
+pkgrel=7
 pkgdesc='Simple library for creating fake Django models in the unit tests'
 arch=(any)
 url='https://github.com/erm0l0v/django-fake-model'

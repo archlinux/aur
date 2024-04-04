@@ -1,0 +1,15 @@
+pkgbase = python-django-fake-model
+	pkgdesc = Simple library for creating fake Django models in the unit tests
+	pkgver = 0.1.4
+	pkgrel = 7
+	url = https://github.com/erm0l0v/django-fake-model
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-django
+	source = https://github.com/erm0l0v/django-fake-model/archive/0.1.4/python-django-fake-model-0.1.4.tar.gz
+	source = django2.diff
+	sha256sums = cce30e32dc73a0b6280511cb92079755308a4b79fbfebda48fc55c48230b1d60
+	sha256sums = ffc0baaacf4a0b507ef99fc0975166cb2a36dde061a2be72e91959157183889d
+
+pkgname = python-django-fake-model
