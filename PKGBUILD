@@ -2,9 +2,8 @@
 # Contributor: Kasei Wang <kasei@kasei.im>
 # Maintainer: Kisaragi Hiu <mail@kisaragi-hiu.com>
 
-pkgbase=rime-pinyin-zhwiktionary-hant
+pkgname=rime-pinyin-zhwiktionary-hant
 _converter=rime-pinyin-zhwiktionary-hant-converter
-pkgname=(rime-pinyin-zhwiktionary-hant)
 _zhwiktionaryver=latest
 pkgver=0.20240401
 pkgrel=1
@@ -48,7 +47,7 @@ build() {
 #   install -Dm644 ../fdl-1.3.txt -t "$pkgdir"/usr/share/licenses/$pkgname/
 # }
 
-package_rime-pinyin-zhwiktionary-hant() {
+package() {
   cd $_converter
   $_make DESTDIR="$pkgdir" install
   install -Dm644 ../fdl-1.3.txt -t "$pkgdir"/usr/share/licenses/$pkgname/
