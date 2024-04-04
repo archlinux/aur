@@ -4,29 +4,42 @@
 # Based on tracktion-6 aur package from boltbuckle <amygdala@cheerful.com>
 
 pkgname=tracktion-waveform
-pkgver=12.5.11
+pkgver=13.0.32
 pkgrel=1
 pkgdesc="Audio and MIDI Workstation (DAW)"
-arch=('x86_64' 'armv7l' 'aarch64')
+arch=('x86_64' 'aarch64')
 url="https://www.tracktion.com/"
 license=('custom')
-depends=('gcc-libs'
+depends=(
   'alsa-lib'
-  'curl'
-  'freetype2'
-  'libglvnd'
-  'zlib'
-  'bzip2'
-  'libpng'
-  'harfbuzz'
   'brotli'
-  'graphite'
+  'bzip2'
+  'freetype2'
+  'gcc-libs'
   'glib2'
+  'glibc'
+  'graphite'
+  'harfbuzz'
+  'icu'
+  'libcap'
+  'libffi'
+  'libgcrypt'
+  'libglvnd'
+  'libgpg-error'
+  'libpng'
+  'libusb'
   'libx11'
-  'libxcb'
   'libxau'
+  'libxcb'
   'libxdmcp'
-  'pcre'
+  'lz4'
+  'pcre2'
+  'systemd-libs'
+  'util-linux-libs'
+  'webkit2gtk'
+  'xz'
+  'zlib'
+  'zstd'
 )
 optdepends=(
   'jack: A low-latency audio server'
@@ -39,16 +52,13 @@ conflicts=(
   'tracktion-waveform-beta'
 )
 
-# Tracktion did not publish ARM builds for the pkgver yet! Hence, using hardcoded versions here.
-source_aarch64=(https://cdn.tracktion.com/file/tracktiondownload/waveform/1157/waveform_pi_32bit_v11.5.7.deb)
-source_armv7l=(https://cdn.tracktion.com/file/tracktiondownload/waveform/1157/waveform_pi_64bit_v11.5.7.deb)
-source_x86_64=(https://cdn.tracktion.com/file/tracktiondownload/w12/${pkgver//./}/waveform_64bit_v${pkgver}.deb)
-sha256sums_x86_64=('52904ee71c8250533458d06da22f144cc5757fa26fca6ba3336055d814c2b7f7')
-sha256sums_armv7l=('20fb190be082173f0d17937286762de42031d6b291b3b4db5a62618f0ed7098a')
-sha256sums_aarch64=('f65a29d441061a3a674b1893d39d5eb85f000832d7948e8fd67dbeca2d127674')
+source_aarch64=(https://cdn.tracktion.com/file/tracktiondownload/w13/${pkgver//./}/waveform13_${pkgver}_arm64.deb)
+source_x86_64=(https://cdn.tracktion.com/file/tracktiondownload/w13/${pkgver//./}/waveform13_${pkgver}_amd64.deb)
+sha256sums_x86_64=('686d6785b1756e073ae75726cba15cd65f47fc38e544f008afb095e38df64393')
+sha256sums_aarch64=('4a7a2e36f799e34088fc7de75a292b2a527ead2902830afa9c12048273e9e3d8')
 
 package() {
-    tar -x --xz -f data.tar.xz -C "${pkgdir}"
+    tar -x --gz -f data.tar.gz -C "${pkgdir}"
     install -D -m 644 "$startdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    mv "$pkgdir/usr/share/doc/waveform12" "$pkgdir/usr/share/doc/$pkgname"
+    mv "$pkgdir/usr/share/doc/Waveform13" "$pkgdir/usr/share/doc/$pkgname"
 }
