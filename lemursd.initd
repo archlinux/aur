@@ -1,0 +1,24 @@
+#!/sbin/openrc-run
+
+# inspired by https://github.com/gentoo/guru/blob/master/gui-apps/lemurs/files/lemurs.initd
+
+name=$RC_SVCNAME
+description="lemurs TUI display manager"
+supervisor="supervise-daemon"
+
+depend() {
+   need localmount
+   after bootmisc consolefont modules netmound
+   after keymaps
+   after elogind
+
+   use dbus
+}
+
+start() {
+   tty=7
+   start-stop-daemon --start --background \
+   --exec "/usr/bin/openvt" -- --console ${tty} --switch -- /usr/bin/lemurs
+   
+   eend $?
+}
