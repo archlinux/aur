@@ -1,0 +1,5 @@
+[python-elasticsearch-dsl]
+source = "github"
+github = "elastic/elasticsearch-dsl-py"
+use_max_tag = "true"
+prefix = "v"
