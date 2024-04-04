@@ -1,7 +1,7 @@
 pkgbase = tijolo-git
 	pkgdesc = Lightweight, keyboard-oriented IDE for the masses
-	pkgver = HEAD
-	pkgrel = 5
+	pkgver = 0.8.1
+	pkgrel = 1
 	url = https://github.com/hugopl/tijolo
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = tijolo-git
 	depends = libevent
 	depends = pcre
 	depends = gtksourceview4
-	depends = nerd-fonts-jetbrains-mono
+	depends = ttf-jetbrains-mono-nerd
 	depends = libgit2
 	depends = editorconfig-core-c
 	depends = ttf-font-awesome>=5.15
@@ -21,4 +21,3 @@ pkgbase = tijolo-git
 	sha256sums = SKIP
 
 pkgname = tijolo-git
-
