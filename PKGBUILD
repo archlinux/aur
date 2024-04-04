@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-fuel-tools9
-pkgver=9.0.1
+pkgver=9.0.2
 pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
@@ -31,7 +31,7 @@ optdepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('85dbf8dc74e63fc6e70ed48bd40acd825acaa1429fa2cea891a265e847f01ab5')
+sha256sums=('1000b56c96f087fffd64c1812916c4f8d6609221b6ea2b8f0ffd85e18b995aab')
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
