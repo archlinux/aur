@@ -8,9 +8,9 @@ pkgbase = spok-bin
 	provides = spok
 	arch = aarch64
 	source_aarch64 = https://github.com/devlup-labs/spok/releases/download/0.1.0/spok_0.1.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 4e277058e4b2fea79f9c3af5e07ea18835b760bb23124423b7af70b9707ff718
+	sha256sums_aarch64 = 981170613f59bafc516a30589a07b947f1199fb29bb9642b9863beb343b59151
 	arch = x86_64
 	source_x86_64 = https://github.com/devlup-labs/spok/releases/download/0.1.0/spok_0.1.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = acc0861c6e1eccbabf9ad63f806039594a845a706b04a0a08345e0c62c318b99
+	sha256sums_x86_64 = 93e932e2f51516a1cfb04e3bcb9a21c925511eec8fe6a38b7b4e718dd2e3a613
 	
 pkgname = spok-bin
