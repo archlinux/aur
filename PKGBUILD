@@ -3,8 +3,8 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=swig
-pkgver=4.1.1
-pkgrel=2
+pkgver=4.2.1
+pkgrel=1
 pkgdesc="Generate scripting interfaces to C/C++ code"
 arch=('x86_64')
 url="http://www.swig.org/"
@@ -17,12 +17,18 @@ license=(
 depends=('pcre2' 'gcc-libs')
 checkdepends=('ruby' 'python' 'java-environment' 'tcl' 'php' 'lua' 'r' 'go' 'boost')
 source=($pkgname-$pkgver.tar.gz::https://github.com/swig/swig/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('26589a3b1af76db1e9e540760b0baeeff5ddf83e06075716eab1c46c0b49c768b951d9cda8a2061126ebbbeedf194d7724701ee76b4ef1b55073a89b1e60b1b4')
+sha512sums=('5d653333f73356d4d5ba8b615882e49f33f188bc68d8204352116bc4aca7946ec01ce2e02524c5ce805b98c2219ed05e664120485bf18095c5c0785436487074')
 
 prepare() {
   sed -n '5,32p' $pkgname-$pkgver/LICENSE-UNIVERSITIES > LicenseRef-BSD-Utah-California.txt
   sed -n '37,64p' $pkgname-$pkgver/LICENSE-UNIVERSITIES > LicenseRef-BSD-Chicago.txt
   sed -n '69,94p' $pkgname-$pkgver/LICENSE-UNIVERSITIES > LicenseRef-BSD-Arizona.txt
+
+  # https://github.com/swig/swig/issues/2858
+  sed '/stl_no_default_constructor/d' -i $pkgname-$pkgver/Examples/test-suite/common.mk
+
+  # https://github.com/swig/swig/issues/2859
+  sed '/li_std_list/d' -i $pkgname-$pkgver/Examples/test-suite/java/Makefile.in
 
   cd $pkgname-$pkgver
   ./autogen.sh
