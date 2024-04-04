@@ -1,5 +1,5 @@
 pkgbase = hyprdots-ctl-git
-	pkgdesc = CLI for Hyprdots Configurations ++ Hidden Gems
+	pkgdesc = CLI for Hyprdots Configurations, Warning, this package has been renames to Hyde-cli
 	pkgver = v0.5.0.r11.0e8d3dd
 	pkgrel = 1
 	url = git+https://github.com/kRHYME7/Hyprdots-ctl
@@ -10,8 +10,10 @@ pkgbase = hyprdots-ctl-git
 	depends = ttf-jetbrains-mono-nerd
 	provides = hyprdots-ctl-git
 	conflicts = hyprdots-ctl
+	conflicts = hyde-cli-git
 	replaces = hyprdots-ctl
-	source = git+https://github.com/kRHYME7/Hyprdots-ctl#branch=master
+	replaces = hyde-cli-git
+	source = git+https://github.com/kRHYME7/Hyde-cli#branch=hyprdots-ctl-old
 	sha256sums = SKIP
 
 pkgname = hyprdots-ctl-git

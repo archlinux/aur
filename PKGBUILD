@@ -3,15 +3,15 @@
 pkgname=hyprdots-ctl-git
 pkgver=v0.5.0.r11.0e8d3dd
 pkgrel=1
-pkgdesc="CLI for Hyprdots Configurations ++ Hidden Gems"
+pkgdesc="CLI for Hyprdots Configurations, Warning, this package has been renames to Hyde-cli"
 arch=('any')
 url="git+https://github.com/kRHYME7/Hyprdots-ctl"
 license=('GPL')
 depends=( 'fzf' 'tree' 'ttf-jetbrains-mono-nerd' )
 provides=("${pkgname}")
-conflicts=("hyprdots-ctl")
-replaces=("hyprdots-ctl")
-source=("git+https://github.com/kRHYME7/Hyprdots-ctl#branch=master")
+conflicts=("hyprdots-ctl" "hyde-cli-git")
+replaces=("hyprdots-ctl" "hyde-cli-git")
+source=("git+https://github.com/kRHYME7/Hyde-cli#branch=hyprdots-ctl-old")
 sha256sums=('SKIP')
 
 pkgver() {
