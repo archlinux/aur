@@ -1,6 +1,6 @@
 pkgbase = cloudfoundry-cli
 	pkgdesc = The official command line client for Cloud Foundry
-	pkgver = 8.7.8
+	pkgver = 8.7.10
 	pkgrel = 1
 	url = https://github.com/cloudfoundry/cli
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = cloudfoundry-cli
 	provides = cf
 	options = !emptydirs
 	options = !strip
-	source = cf-cli-8.7.8-amd64.tar.gz::https://cli.run.pivotal.io/stable?release=linux64-binary&version=8.7.8&source=github-rel
+	source = cf-cli-8.7.10-amd64.tar.gz::https://cli.run.pivotal.io/stable?release=linux64-binary&version=8.7.10&source=github-rel
 	source = cf-cli-completion::https://raw.githubusercontent.com/cloudfoundry/cli-ci/master/ci/installers/completion/cf
-	md5sums = 530e8fa9cc8a8c02e87ce74f0e68ad08
+	md5sums = 5da640f16fec9c37deb7a3c842ae1006
 	md5sums = b3dc7a45905e0dc58f3011f431befb90
-	sha256sums = a7855eed5e5db1a5a3a2ce7e0217782d999efdc553305296eb71df53d65477a2
+	sha256sums = 3ecb1cf3d677aa314f6cb638518dc01832426b4f60f795dee648aa78c8bdc480
 	sha256sums = f3f05a2414075c00b101b05f73cf260b9eec9966659adf2957c1b2937bd4c48e
-	sha512sums = be08485ae5b39be7d40fce067f8e97da595eeb8d6e8f2aec5bbf0001b2a1664afc01ad96acdadf23325af7530fa99f5f0c81a83e4398345a47dbd63a5ad1c02f
+	sha512sums = b37a5314f22f42e005c0e9082fcc00775b287c6829c52cc045821a360ec99093c1d52b0fffb570e208bd41ba38ae6b568d1ddc2d23528dfe57743153834fcee6
 	sha512sums = 016e999430d8c78ed06eb283f31ed601d6d6fb5ee2da9253f84e2364a13fe1723dfd9501f6bf53019ef6f1b54eb8e094e11564ed3d154a475a43321a99d080ef
 
 pkgname = cloudfoundry-cli
