@@ -1,7 +1,7 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=edencommon
-pkgver=2024.03.11.00
+pkgver=2024.04.01.00
 pkgrel=1
 pkgdesc="Shared library for Watchman and Eden projects"
 arch=(x86_64)
@@ -9,6 +9,7 @@ url="https://github.com/facebookexperimental/edencommon"
 license=(MIT)
 depends=(
   boost-libs
+  fb303
   fmt
   folly
   gcc-libs
@@ -18,21 +19,25 @@ depends=(
 makedepends=(
   boost
   cmake
+  fbthrift
   gtest
+  mvfst
 )
 provides=(
   libedencommon_os.so
+  libedencommon_telemetry.so
+  libedencommon_testharness.so
   libedencommon_utils.so
 )
 options=(!lto)
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-  "build-shared-library.patch"
+  "build-shared-libraries.patch"
   "fmt-v10.2-compatibility.patch"
 )
 sha256sums=(
-  'f5076de33abdb20feb1693b43b1fc164b09b33e0db20943042d9097228226e6d'
-  '000dfb9e316e486cb047fe4c5547b716033a99bb78a9eef0e7e4d860d017a092'
+  '9d7f7de1f1ff6039125c10ec0e7c36de9008705222ecf617af01a1f88b7622a8'
+  '49178a7eac4639a82ae17ca54833f4147170c6ae1b573d382771d92d88891c66'
   '019ae5911f839b4ff15c8508ce2824956ac5b2f0bb94182766f76863a81dbb35'
 )
 
@@ -41,7 +46,7 @@ _archive="$pkgname-$pkgver"
 prepare() {
   cd "$_archive"
 
-  patch --forward --strip=1 --input="$srcdir/build-shared-library.patch"
+  patch --forward --strip=1 --input="$srcdir/build-shared-libraries.patch"
   patch --forward --strip=1 --input="$srcdir/fmt-v10.2-compatibility.patch"
 
   # Use system CMake config instead of bundled module, incompatible with glog

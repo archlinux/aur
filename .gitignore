@@ -3,5 +3,5 @@
 !.nvchecker.toml
 !.SRCINFO
 !PKGBUILD
-!build-shared-library.patch
+!build-shared-libraries.patch
 !fmt-v10.2-compatibility.patch
