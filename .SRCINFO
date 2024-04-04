@@ -1,0 +1,14 @@
+pkgbase = zsh-sudo
+	pkgdesc = Easily prefix your current or previous commands with sudo by pressing esc twice
+	pkgver = f8bf8f0
+	pkgrel = 1
+	url = https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/sudo
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = zsh
+	conflicts = zsh-sudo-git
+	source = git+https://github.com/ohmyzsh/ohmyzsh.git#commit=f8bf8f0029a475831ebfba0799975ede20e08742
+	sha256sums = 97e5e3454dca543562b6f5672681892d4f2ebf85a9b1737121acbba46b2088ac
+
+pkgname = zsh-sudo
