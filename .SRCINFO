@@ -1,12 +1,13 @@
 pkgbase = satty
 	pkgdesc = A Screenshot Annotation Tool inspired by Swappy and Flameshot
-	pkgver = 0.11.3
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/gabm/satty
 	arch = x86_64
 	license = MPL-2.0
 	makedepends = cargo
 	depends = cairo
+	depends = fontconfig
 	depends = gcc-libs
 	depends = gdk-pixbuf2
 	depends = glib2
@@ -15,7 +16,7 @@ pkgbase = satty
 	depends = hicolor-icon-theme
 	depends = libadwaita
 	depends = pango
-	source = satty-0.11.3.tar.gz::https://github.com/gabm/satty/archive/v0.11.3.tar.gz
-	sha256sums = 0cb87510ea8bc2d12c3d556e7719139f40d7e610078de8239529689c2c052ae4
+	source = satty-0.12.0.tar.gz::https://github.com/gabm/satty/archive/v0.12.0.tar.gz
+	sha256sums = 42403b36e7babe245de2bebc78d4bebab68aeaa4594b28bb9d83f44808e52920
 
 pkgname = satty
