@@ -1,6 +1,6 @@
 pkgbase = python-jaxlib-cuda
 	pkgdesc = XLA library for JAX
-	pkgver = 0.4.25
+	pkgver = 0.4.26
 	pkgrel = 1
 	url = https://github.com/google/jax/
 	arch = x86_64
@@ -22,12 +22,12 @@ pkgbase = python-jaxlib-cuda
 	depends = python-ml-dtypes
 	depends = python-numpy
 	depends = python-scipy
-	provides = python-jaxlib=0.4.25
+	provides = python-jaxlib=0.4.26
 	conflicts = python-jaxlib
-	source = jaxlib-0.4.25.tar.gz::https://github.com/google/jax/archive/refs/tags/jaxlib-v0.4.25.tar.gz
+	source = jaxlib-0.4.26.tar.gz::https://github.com/google/jax/archive/refs/tags/jaxlib-v0.4.26.tar.gz
 	source = bazelrc.user
 	source = https://github.com/bazelbuild/bazel/releases/download/6.1.2/bazel-6.1.2-linux-x86_64
-	sha256sums = fc1197c401924942eb14185a61688d0c476e3e81ff71f9dc95e620b57c06eec8
+	sha256sums = ddc14da1eaa34f23430d40ad9b9585088575cac439a2fa1c6833a247e1b221fd
 	sha256sums = 07da4c3594dad382ee02748b860c629ffa083ba37ad22a892291bdc72efbac5e
 	sha256sums = e89747d63443e225b140d7d37ded952dacea73aaed896bca01ccd745827c6289
 
