@@ -2,10 +2,10 @@
 
 pkgbase=linux-amd-raven
 _srcname=linux
-gitver=v6.8.3
+gitver=v6.8.4
 patchver=20240221.2
 patchname=more-uarches-for-kernel-6.8-rc4+.patch
-pkgver=6.8.v.3
+pkgver=6.8.v.4
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -23,7 +23,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '09ef771a670db87b74746bd62d250ac92f5a16d13fd1f1ce37841533608828d1'
+            'd0a6fce9b25bf03cd9683e7cfb1dd51651b5e4004ab9ec231455fdfc7d3ca166'
             #.preset file
             'fd220b9f47a86162247b042f06311848678f9acb64b92f716572972f3aeb3d18'
             #grayskypatch file
