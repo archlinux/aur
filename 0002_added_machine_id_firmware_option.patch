@@ -57,8 +57,8 @@ diff --git a/src/shared/machine-id-setup.c b/src/shared/machine-id-setup.c
  #include <unistd.h>
 
 +#include "proc-cmdline.h"
- #include "sd-daemon.h"
  #include "sd-id128.h"
+
 
 @@ -80,14 +81,14 @@
                                  return 0;
