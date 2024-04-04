@@ -1,0 +1,18 @@
+pkgbase = python-pyhcl
+	pkgdesc = HCL configuration parser for python
+	pkgver = 0.4.5
+	pkgrel = 2
+	url = https://pypi.org/project/pyhcl/
+	arch = any
+	license = MPL2
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = git+https://github.com/virtuald/pyhcl.git#commit=5dcf8b8a5e826e24cd6e572c4215283bf4b06d45
+	sha256sums = SKIP
+
+pkgname = python-pyhcl

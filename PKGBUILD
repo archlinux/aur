@@ -6,7 +6,7 @@ pkgname=python-pyhcl
 # curl https://api.github.com/repos/virtuald/pyhcl/git/ref/tags/$pkgver | jq -r .object.sh
 _commit=5dcf8b8a5e826e24cd6e572c4215283bf4b06d45
 pkgver=0.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc='HCL configuration parser for python'
 arch=(any)
 url='https://pypi.org/project/pyhcl/'
