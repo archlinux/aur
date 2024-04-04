@@ -8,7 +8,7 @@ User=%i
 CapabilityBoundingSet=cap_net_admin
 AmbientCapabilities=cap_net_admin
 Restart=on-abort
-ExecStart=/usr/bin/mihomo
+ExecStart=+/usr/bin/mihomo
 
 [Install]
 WantedBy=multi-user.target

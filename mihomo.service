@@ -7,7 +7,7 @@ Type=exec
 CapabilityBoundingSet=cap_net_admin
 AmbientCapabilities=cap_net_admin
 Restart=on-abort
-ExecStart=/usr/bin/mihomo -d /etc/mihomo
+ExecStart=+/usr/bin/mihomo -d /etc/mihomo
 
 [Install]
 WantedBy=multi-user.target

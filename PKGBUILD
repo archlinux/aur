@@ -4,7 +4,7 @@
 
 pkgname=mihomo-bin
 pkgver=1.18.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary version of mihomo."
 arch=("i686" "x86_64" "armv7h" "aarch64" "loong64" "riscv64")
 url="https://github.com/MetaCubeX/mihomo"
