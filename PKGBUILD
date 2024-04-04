@@ -1,19 +1,19 @@
-# This PKGBUILD is based off the PKGBUILD for alacritty-git package
+# Credit: PKGBUILD from https://aur.archlinux.org/packages/alacritty-git
 pkgname='alacritty-smooth-cursor-git'
 _pkgname="alacritty"
-pkgver=0.13.0.2084.g255a1e5
+pkgver=0.14.0.2320.g80c2666f
 pkgrel=1
 epoch=1
-arch=('x86_64' 'i686')
-url="https://github.com/gregthemadmonk/alacritty"
-pkgdesc="A cross-platform, GPU-accelerated terminal emulator (basic cursor smoothing patch)"
+arch=('x86_64' 'i686' 'aarch64')
+url="https://github.com/GregTheMadMonk/alacritty-smooth-cursor"
+pkgdesc="A cross-platform, GPU-accelerated terminal emulator with a smooth cursor motion patch"
 license=('Apache')
 depends=('freetype2' 'fontconfig' 'libxi' 'libxcursor' 'libxrandr')
-makedepends=('rust' 'cargo' 'cmake' 'fontconfig' 'ncurses' 'desktop-file-utils' 'gdb' 'libxcb' 'libxkbcommon' 'git')
+makedepends=('rust' 'cargo' 'cmake' 'fontconfig' 'ncurses' 'desktop-file-utils' 'gdb' 'libxcb' 'libxkbcommon-x11' 'git' 'scdoc' 'gzip')
 checkdepends=('ttf-dejavu') # for monospace fontconfig test
 provides=('alacritty')
 conflicts=('alacritty')
-source=("$_pkgname::git+$url.git#branch=smooth-cursor")
+source=("$_pkgname::git+https://github.com/gregthemadmonk/alacritty.git#branch=smooth-cursor")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -31,15 +31,21 @@ check(){
   env CARGO_INCREMENTAL=0 cargo test --release
 }
 
-package() {
+package_alacritty-smooth-cursor-git() {
 	cd $_pkgname
 
 	desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "$srcdir/$_pkgname/extra/linux/Alacritty.desktop"
 
-	install -D -m755 "target/release/alacritty" "$pkgdir/usr/bin/alacritty"
-	install -D -m644 "extra/alacritty.man" "$pkgdir/usr/share/man/man1/alacritty.1"
+	mkdir -p "$pkgdir/usr/share/man/man1" "$pkgdir/usr/share/man/man5"
+	scdoc < extra/man/alacritty.1.scd | gzip -c | tee "$pkgdir/usr/share/man/man1/alacritty.1.gz" > /dev/null
+	scdoc < extra/man/alacritty.5.scd | gzip -c | tee "$pkgdir/usr/share/man/man5/alacritty.5.gz" > /dev/null
+	scdoc < extra/man/alacritty-msg.1.scd | gzip -c | tee "$pkgdir/usr/share/man/man1/alacritty-msg.1.gz" > /dev/null
+	scdoc < extra/man/alacritty-bindings.5.scd | gzip -c | tee "$pkgdir/usr/share/man/man5/alacritty-bindings.5.gz" > /dev/null
+
+	install -D -m755 "target/release/alacritty" "$pkgdir/usr/bin/alacritty-smooth-cursor"
+    echo "env -u WAYLAND_DISPLAY alacritty-smooth-cursor" > "$pkgdir/usr/bin/alacritty"
+    chmod 755 "$pkgdir/usr/bin/alacritty"
 	install -D -m644 "extra/linux/org.alacritty.Alacritty.appdata.xml" "$pkgdir/usr/share/appdata/org.alacritty.Alacritty.appdata.xml"
-	install -D -m644 "alacritty.yml" "$pkgdir/usr/share/doc/alacritty/example/alacritty.yml"
 	install -D -m644 "extra/completions/alacritty.bash" "$pkgdir/usr/share/bash-completion/completions/alacritty"
 	install -D -m644 "extra/completions/_alacritty" "$pkgdir/usr/share/zsh/site-functions/_alacritty"
 	install -D -m644 "extra/completions/alacritty.fish" "$pkgdir/usr/share/fish/vendor_completions.d/alacritty.fish"
