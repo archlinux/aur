@@ -1,6 +1,6 @@
 # Maintainer: Harsh Sharma <goharsh007 at gmail dot com>
 pkgname=hyprnotify
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="A notification daemon with 'hyprctl notify' as its backend."
 arch=(x86_64 aarch64)
