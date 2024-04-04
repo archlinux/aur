@@ -2,11 +2,11 @@
 
 _gcc_targets="i386 x64 arm aarch64 riscv ppc64 nds32le"
 _is_clang_enabled=1
-_commit='2ff24090376ae8eaf963696de0e20e3bc8bbe54f'
+_commit='4845b69db29107ce8d9cd2969b4aad5c7daa6399'
 
 pkgbase='coreboot-toolchain'
 pkgname=()
-pkgver=4.22
+pkgver=24.02
 pkgrel=1
 pkgdesc='Used to build coreboot'
 url='https://www.coreboot.org'
@@ -19,7 +19,7 @@ sources_gcc=(
   'https://ftpmirror.gnu.org/gmp/gmp-6.3.0.tar.xz'
   'https://ftpmirror.gnu.org/mpfr/mpfr-4.2.1.tar.xz'
   'https://ftpmirror.gnu.org/mpc/mpc-1.3.1.tar.gz'
-  'https://ftpmirror.gnu.org/gcc/gcc-11.4.0/gcc-11.4.0.tar.xz'
+  'https://ftpmirror.gnu.org/gcc/gcc-13.2.0/gcc-13.2.0.tar.xz'
   'https://ftpmirror.gnu.org/binutils/binutils-2.41.tar.xz'
 )
 sources_clang=(
@@ -28,7 +28,7 @@ sources_clang=(
   'https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.6/cmake-16.0.6.src.tar.xz'
   'https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.6/compiler-rt-16.0.6.src.tar.xz'
   'https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.6/clang-tools-extra-16.0.6.src.tar.xz'
-  'https://cmake.org/files/v3.26/cmake-3.26.4.tar.gz'
+  'https://cmake.org/files/v3.27/cmake-3.27.7.tar.gz'
 )
 source=(
   "git+https://review.coreboot.org/coreboot#commit=${_commit}"
@@ -39,7 +39,7 @@ hashes_gcc=(
   'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
   '277807353a6726978996945af13e52829e3abd7a9a5b7fb2793894e18f1fcbb2'
   'ab642492f5cf882b74aa0cb730cd410a81edcdbec895183ce930e706c1c759b8'
-  '3f2db222b007e8a4a23cd5ba56726ef08e8b1f1eb2055ee72c1402cea73a8dd9'
+  'e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da'
   'ae9a5789e23459e59606e6714723f2d3ffc31c03174191ef0d015bdf06007450'
 )
 hashes_clang=(
@@ -48,7 +48,7 @@ hashes_clang=(
   '39d342a4161095d2f28fb1253e4585978ac50521117da666e2b1f6f28b62f514'
   '7911a2a9cca10393a17f637c01a6f5555b0a38f64ff47dc9168413a4190bc2db'
   '174c7844db2590b18b2a59a9ce503f8fe439edc2de2f0f625006501c99736f31'
-  '313b6880c291bd4fe31c0aa51d6e62659282a521e695f30d5cc0d25abbd5c208'
+  '08f71a106036bf051f692760ef9558c0577c42ac39e96ba097e7662bd4158d8e'
 )
 sha256sums=(
   'SKIP'
