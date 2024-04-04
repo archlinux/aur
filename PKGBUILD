@@ -39,7 +39,7 @@ prepare() {
 
 build() {
   cd $_converter
-  $_make zhwiktionary.dict zhwiktionary.dict.yaml
+  $_make zhwiktionary.dict.yaml
 }
 
 # package_fcitx5-pinyin-zhwiktionary-hant() {
@@ -50,6 +50,6 @@ build() {
 
 package_rime-pinyin-zhwiktionary-hant() {
   cd $_converter
-  $_make DESTDIR="$pkgdir" install_rime_dict
+  $_make DESTDIR="$pkgdir" install
   install -Dm644 ../fdl-1.3.txt -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
