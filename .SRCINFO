@@ -1,14 +1,15 @@
 pkgbase = firefox-extension-plasma-integration
-	pkgdesc = plasma browser integration addon for firefox.
-	pkgver = 1.8.1
+	pkgdesc = KDE plasma browser integration extension for firefox
+	pkgver = 1.9
 	pkgrel = 1
-	url = https://addons.mozilla.org/en-US/firefox/addon/plasma-integration/
+	url = https://community.kde.org/Plasma/Browser_Integration
 	arch = any
-	groups = firefox-addons
-	license = GPLV3
-	depends = firefox
-	depends = plasma-browser-integration
-	source = extension.xpi::https://addons.mozilla.org/firefox/downloads/file/3859385/plasma_integration-1.8.1-fx.xpi
-	sha512sums = 47bb922787bed93fc8317a5cab99a4ac487bb7b7a95c98ee6ee59511c29f811082e224a992e0147f76bb3271e055b3651535c7da448b684fada1bd1444407fc0
+	license = GPL-3.0-or-later
+	makedepends = web-ext
+	makedepends = jq
+	source = https://invent.kde.org/plasma/plasma-browser-integration/-/archive/browser/1.9/plasma-browser-integration-browser-1.9.tar.gz
+	sha256sums = da4eda213b4cfc5cecbaadbf18870b07cb0c8da7482e2f604e5d52458309286d
 
 pkgname = firefox-extension-plasma-integration
+	depends = plasma-browser-integration
+	depends = firefox
