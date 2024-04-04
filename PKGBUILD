@@ -1,9 +1,10 @@
-# Maintainer: PolpOnline <aur at t0mmy dot anonaddy dot com>
+# Maintainer: Arne Brücher <archlinux [at] arne-bruecher [dot] de>
+# Contributor: PolpOnline <aur at t0mmy dot anonaddy dot com>
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=akamai-bin
 pkgver=1.5.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Manage and configure Akamai from the Command Line'
 arch=('x86_64' 'pentium4')
 url="https://github.com/akamai/cli"
