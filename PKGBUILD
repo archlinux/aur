@@ -2,8 +2,8 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=termusic
-pkgver=0.7.11
-pkgrel=4
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="Music Player TUI written in Rust"
 arch=('x86_64')
 url="https://github.com/tramhao/termusic"
@@ -13,12 +13,12 @@ optdepends=('yt-dlp: download mp3'
             'ffmpeg: download mp3')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('67f0b06ff37dbc3d16c77c6bdd0163dc547fbea1a25b3a7574b4540a4ad3a2059dc547d49411803fd9aa162d4f432ff5b99bef1e0f5c362342943fa76985f443')
+sha512sums=('d5c6ecb9f63047b8a04cc6eae07295f3d84f3de6814f9b5219477635570ffa26eab828a86164801cb7ed63ae759e8cee2a565030dc718b685b3c3c088ced0f7d')
 options=('!lto')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
