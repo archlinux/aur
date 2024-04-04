@@ -1,11 +1,12 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 # Maintainer: Xuanrui Qi <me@xuanruiqi.com>
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org>
 # Maintainer: Jens Heremans <jensheremans[at]gmail[dot]com>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=azcopy
-pkgver=10.23.0
+_pkgname=azure-storage-azcopy
+pkgver=10.24.0
 pkgrel=1
 pkgdesc="A command-line utility designed for copying data to/from Microsoft Azure"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -13,18 +14,19 @@ url="https://github.com/Azure/azure-storage-azcopy"
 license=('MIT')
 depends=('glibc')
 makedepends=('go')
-source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha256sums=('9e8ff91f28074b180b063092142a182ca3dffdecf83d1966a85d1ea2f491ba9a')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('bbb09bee00207eb6e6e80a3ecf58ac39beb956c94f500b62888ed3404580430d')
+
+_archive="$_pkgname-$pkgver"
 
 prepare() {
-  cd "${srcdir}/azure-storage-azcopy-${pkgver}"
+  cd "$_archive"
 
-  # Avoid downloading Go dependencies in build() by doing it here instead
   go mod download -x
 }
 
 build() {
-  cd "${srcdir}/azure-storage-azcopy-${pkgver}"
+  cd "$_archive"
 
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CFLAGS="$CFLAGS"
@@ -41,11 +43,11 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/azure-storage-azcopy-${pkgver}"
+  cd "$_archive"
 
   # Skip failing tests - not sure why they fail.
-  _unit_tests=$(
-    go list -buildvcs=false ./... \
+  local unit_tests=$(
+    go list ./... \
       | grep -v 'github.com/Azure/azure-storage-azcopy/v10/cmd' \
       | grep -v 'github.com/Azure/azure-storage-azcopy/v10/common' \
       | grep -v 'github.com/Azure/azure-storage-azcopy/v10/e2etest' \
@@ -53,17 +55,17 @@ check() {
       | sort
   )
   # shellcheck disable=SC2086
-  go test $_unit_tests
+  go test $unit_tests
 }
 
 package() {
-  cd "${srcdir}/azure-storage-azcopy-${pkgver}"
+  cd "$_archive"
 
-  install -Dm755 azcopy "${pkgdir}/usr/bin/azcopy"
+  install -Dm755 azcopy "$pkgdir/usr/bin/azcopy"
 
-  install -Dm644 azcopy.bash "${pkgdir}/usr/share/bash-completion/completions/azcopy"
-  install -Dm644 azcopy.fish "${pkgdir}/usr/share/fish/vendor_completions.d/azcopy.fish"
-  install -Dm644 azcopy.zsh "${pkgdir}/usr/share/zsh/site-functions/_azcopy"
+  install -Dm644 azcopy.bash "$pkgdir/usr/share/bash-completion/completions/azcopy"
+  install -Dm644 azcopy.fish "$pkgdir/usr/share/fish/vendor_completions.d/azcopy.fish"
+  install -Dm644 azcopy.zsh "$pkgdir/usr/share/zsh/site-functions/_azcopy"
 
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
