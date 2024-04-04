@@ -80,7 +80,8 @@ build() {
     ../bazel-6.1.2-linux-x86_64 --output_user_root=$srcdir/bazel \
         run --action_env=JAXLIB_RELEASE --verbose_failures=true \
         --override_repository=xla=$srcdir/xla-${xla_commit} \
-        //jaxlib/tools:build_wheel -- --cpu x86_64 --output_path=$PWD/dist
+        //jaxlib/tools:build_wheel -- \
+        --cpu x86_64 --output_path=$PWD/dist --jaxlib_git_hash ''
 }
 
 package() {
