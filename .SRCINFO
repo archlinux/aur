@@ -1,11 +1,13 @@
 pkgbase = libfirm-git
 	pkgdesc = A c-lib for graph-based IR, optimizations and code gen for compilers
-	pkgver = r18944.8bdd163f2
-	pkgrel = 3
+	pkgver = 1.22.0.r1139.g95a238c
+	pkgrel = 1
 	url = https://pp.ipd.kit.edu/firm/
 	arch = any
 	license = GPL
 	makedepends = git
+	provides = libfirm=1.22.0.r1139.g95a238c
+	conflicts = libfirm
 	options = staticlibs
 	source = libfirm::git+https://github.com/libfirm/libfirm.git
 	source = libfirm.pc

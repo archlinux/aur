@@ -1,7 +1,7 @@
 _reponame=libfirm
 pkgname="${_reponame}-git"
-pkgver=r18944.8bdd163f2
-pkgrel=3
+pkgver=1.22.0.r1139.g95a238c
+pkgrel=1
 pkgdesc='A c-lib for graph-based IR, optimizations and code gen for compilers'
 url="https://pp.ipd.kit.edu/firm/"
 license=('GPL')
@@ -11,13 +11,12 @@ source=("${_reponame}::git+https://github.com/${_reponame}/${_reponame}.git"
         libfirm.pc)
 md5sums=('SKIP' '39a7ef0417669487524b95460962f6c7')
 options=(staticlibs)
+conflicts=('libfirm')
+provides=("libfirm=${pkgver}")
 
 pkgver() {
 	cd "$_reponame"
-	( set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+	git describe --long --tags --abbrev=7 | sed 's/^libfirm-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
