@@ -20,7 +20,7 @@ optdepends=('djvulibre: for llppac djvu conversion'
             'inotify-tools: for the llpp.inotify autoreload wrapper'
             'librsvg: for llppac svg conversion'
             'unoconv: for llppac office conversion')
-options=('!strip')
+options=('!strip' '!debug')
 source=("git+$url#commit=$_commit")
 b2sums=('SKIP')
 
