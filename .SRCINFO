@@ -1,0 +1,19 @@
+pkgbase = pyqt5-purchasing
+	pkgdesc = Python bindings for QtPurchasing
+	pkgver = 5.15.5
+	pkgrel = 5
+	url = https://www.riverbankcomputing.com/software/pyqtpurchasing/intro
+	arch = x86_64
+	groups = pyqt5
+	license = GPL3
+	makedepends = sip
+	makedepends = pyqt-builder
+	depends = qt5-purchasing
+	depends = python-pyqt5
+	provides = python-pyqtpurchasing
+	conflicts = python-pyqtpurchasing
+	replaces = python-pyqtpurchasing
+	source = https://pypi.python.org/packages/source/P/PyQtPurchasing/PyQtPurchasing-5.15.5.tar.gz
+	sha256sums = 8bb1df553ba6a615f8ec3d9b9c5270db3e15e831a6161773dabfdc1a7afe4834
+
+pkgname = python-pyqt5-purchasing

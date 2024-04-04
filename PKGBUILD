@@ -4,7 +4,7 @@
 pkgbase=pyqt5-purchasing
 pkgname=(python-pyqt5-purchasing)
 pkgver=5.15.5
-pkgrel=4
+pkgrel=5
 pkgdesc='Python bindings for QtPurchasing'
 arch=(x86_64)
 url='https://www.riverbankcomputing.com/software/pyqtpurchasing/intro'
