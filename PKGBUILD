@@ -2,7 +2,7 @@
 # Maintainer: Christian Winther <dottie at jippi dot dev>
 
 pkgname='dottie-bin'
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc='Makes working with .env files easy'
 url='https://github.com/jippi/dottie'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('dottie')
 conflicts=('dottie')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jippi/dottie/releases/download/v0.11.1/dottie_Linux_arm64.tar.gz")
-sha256sums_aarch64=('ce4d61bc8c58869f6ab51e1f78aad7f2125da7c69b7b76386aca64dcab27f2e0')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jippi/dottie/releases/download/v0.11.2/dottie_Linux_arm64.tar.gz")
+sha256sums_aarch64=('82d3211fe5059e554ce248b6242a3d7c69e9bfad8de2a7a8fd901e287d419632')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jippi/dottie/releases/download/v0.11.1/dottie_Linux_armv7.tar.gz")
-sha256sums_armv7h=('0dc38b3dc8007c2397d5edcbe40b2711f6e11ca729d776ee223a035d82554af4')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jippi/dottie/releases/download/v0.11.2/dottie_Linux_armv7.tar.gz")
+sha256sums_armv7h=('05926c7d097a4083acc9ab45b716d1510aea8dcf46682c06c0dff1f7cdd2341c')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/jippi/dottie/releases/download/v0.11.1/dottie_Linux_i386.tar.gz")
-sha256sums_i686=('7d08119f5d4e0d042570d00502a3bd0060caa83e44586417064140883e7cc8df')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/jippi/dottie/releases/download/v0.11.2/dottie_Linux_i386.tar.gz")
+sha256sums_i686=('6f552749e47ab389758ecf3947f473a8d239cc472f47365c290c985187d94b79')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jippi/dottie/releases/download/v0.11.1/dottie_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('141c130c3c50364ce6c2336800663691520bb94edc87bfd7692b4cffa2fdc356')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jippi/dottie/releases/download/v0.11.2/dottie_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('92854ac1d8c4a1dc725a85c02dd173e84b819e1a52a8bd8e977aeff41335148c')
 
 package() {
   # bin
