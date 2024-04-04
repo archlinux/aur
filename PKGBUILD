@@ -4,7 +4,7 @@
 pkgbase=pyqt5-networkauth
 pkgname=(python-pyqt5-networkauth)
 pkgver=5.15.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Python bindings for QtNetworkAuth"
 arch=(x86_64)
 url="https://www.riverbankcomputing.com/software/pyqtnetworkauth/intro"
