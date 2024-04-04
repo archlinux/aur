@@ -1,6 +1,6 @@
 pkgbase = vgmtrans-git
 	pkgdesc = Converter for sequenced videogame music
-	pkgver = r1230.f638d0f
+	pkgver = r1234.0c528c4
 	pkgrel = 1
 	url = https://github.com/vgmtrans/vgmtrans
 	arch = x86_64

@@ -3,7 +3,7 @@
 
 _pkgname=vgmtrans
 pkgname=${_pkgname}-git
-pkgver=r1230.f638d0f
+pkgver=r1234.0c528c4
 pkgrel=1
 pkgdesc="Converter for sequenced videogame music"
 arch=("x86_64")
@@ -42,5 +42,5 @@ package() {
 	install -Dm644 "../lib/bass/libbassmidi.so" "${pkgdir}/usr/lib/${_pkgname}/libbassmidi.so"
 
 	# Add (required) ZLIB license
-	install -Dm644 "../LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "../LICENSE/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
