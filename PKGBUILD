@@ -16,13 +16,16 @@ license=(
 )
 depends=('pcre2' 'gcc-libs')
 checkdepends=('ruby' 'python' 'java-environment' 'tcl' 'php' 'lua' 'r' 'go' 'boost')
-source=(https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('1cea1918455a75ebc9b2653dd1715bd5dcd974554955f324295c6a6f14c0a715651b221b85fad4a8af5197e0c75bfe7b590bc6ba7178c26245fbbd9a7e110100')
+source=($pkgname-$pkgver.tar.gz::https://github.com/swig/swig/archive/refs/tags/v$pkgver.tar.gz)
+sha512sums=('26589a3b1af76db1e9e540760b0baeeff5ddf83e06075716eab1c46c0b49c768b951d9cda8a2061126ebbbeedf194d7724701ee76b4ef1b55073a89b1e60b1b4')
 
 prepare() {
   sed -n '5,32p' $pkgname-$pkgver/LICENSE-UNIVERSITIES > LicenseRef-BSD-Utah-California.txt
   sed -n '37,64p' $pkgname-$pkgver/LICENSE-UNIVERSITIES > LicenseRef-BSD-Chicago.txt
   sed -n '69,94p' $pkgname-$pkgver/LICENSE-UNIVERSITIES > LicenseRef-BSD-Arizona.txt
+
+  cd $pkgname-$pkgver
+  ./autogen.sh
 }
 
 build() {
