@@ -1,10 +1,10 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 # Maintainer: László Várady <laszlo.varady93@gmail.com>
 # Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
 # Contributor: Daichi Shinozaki <dsdseg at gmail dot com>
 
 pkgname=wangle
-pkgver=2024.03.11.00
+pkgver=2024.04.01.00
 pkgrel=1
 pkgdesc="C++ networking library providing client/server abstractions for building services"
 arch=(x86_64)
@@ -28,7 +28,7 @@ makedepends=(
 )
 provides=(libwangle.so)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('43095b3ef7abcadc3681f33aec36d5c3a2e3cf3b661949842719c61cd6afe8dd')
+sha256sums=('d009e5f715edeed59e9acc69addfdcdf8f29100ed115fb0c887b2033844a1028')
 
 _archive="$pkgname-$pkgver"
 
