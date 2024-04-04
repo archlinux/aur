@@ -1,8 +1,8 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=deptry
-pkgver=0.15.0
-_commit=e51a86a5138aedab65578caae85e4a5ab04358b8
+pkgver=0.16.0
+_commit=36a06f08a00941320d817149a8230d5cec297b55
 pkgrel=1
 pkgdesc="Find unused, missing and transitive dependencies in a Python project"
 arch=(x86_64)
@@ -27,7 +27,7 @@ checkdepends=(
   python-pytest-xdist
 )
 source=("$pkgname::git+$url.git?signed#commit=$_commit")
-sha256sums=('3d6a6d79048acc248ca0d3a398c484666e6c1c6fc1d1bb8bd85ba10b6ee3bfc1')
+sha256sums=('ad9e587f41871731bade2ceda31116446d0ce11901a5071802f56a264b18b4b0')
 validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194') # GitHub <noreply@github.com>
 
 _archive="$pkgname"
