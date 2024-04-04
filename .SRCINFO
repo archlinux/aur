@@ -1,14 +1,14 @@
 pkgbase = ampl-asl
 	pkgdesc = AMPL Solver Library
-	pkgver = 20221103
+	pkgver = 20231111
 	pkgrel = 1
 	url = https://github.com/ampl/asl
 	arch = x86_64
-	license = custom
+	license = BSD-3-Clause
 	makedepends = cmake
 	makedepends = git
 	depends = openmp
-	source = git+https://github.com/ampl/asl#commit=193c580d790684cdac798062fd23bdf5db01aebc
-	sha512sums = SKIP
+	source = git+https://github.com/ampl/asl#commit=23f47c1b08efe756bc93f19a034f14fa5a0593ab
+	sha512sums = de5fdd7c963882129c12141c3dc7ae35b46abd84a68d90b4eea449953f5cb3614e1c63e10bcbcbd136fe9948fa070fe44c92f71f71c41ba0003d0b179feb6e02
 
 pkgname = ampl-asl
