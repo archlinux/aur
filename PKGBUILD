@@ -9,7 +9,7 @@ license=('Apache-2.0')
 depends=(hyprland)
 makedepends=(go alsa-lib binutils)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('27a5ed365e8b7c72e14715f719e0f13028dbd75fa3db71d5806f4f5f600ccb27')
+sha256sums=('1821d396b275714eb0f67e26332b244db49deb35e11b24391b6679cd4dffa8b2')
 
 build() {
 	cd "$pkgname-$pkgver"
