@@ -12,7 +12,7 @@ pkgdesc="Rime Pinyin (+ tones) Dictionary for zh.wiktionary.org (Traditional Chi
 arch=('any')
 url="https://github.com/kisaragi-hiu/rime-pinyin-zhwiktionary-hant"
 license=('CCPL:by-sa' 'custom:GFDL')
-makedepends=('opencc' 'pypinyin')
+makedepends=('opencc' 'pypinyin' 'git')
 source=(git+https://github.com/kisaragi-hiu/rime-pinyin-zhwiktionary-hant-converter
         https://dumps.wikimedia.org/zhwiktionary/$_zhwiktionaryver/zhwiktionary-$_zhwiktionaryver-all-titles-in-ns0.gz
         https://dumps.wikimedia.org/zhwiktionary/$_zhwiktionaryver/zhwiktionary-$_zhwiktionaryver-md5sums.txt
