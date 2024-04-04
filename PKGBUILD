@@ -1,5 +1,5 @@
 pkgname=nyaa
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A tui tool for browsing and downloading torrents from nyaa.si"
 url='https://github.com/Beastwick18/nyaa/'
@@ -33,4 +33,7 @@ check() {
 package() {
 	cd $pkgname-$pkgver
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+	install -Dm0644 -t "$pkgdir/usr/share/doc/nyaa/" "README.md"
+	install -Dm0644 -t "$pkgdir/usr/share/doc/nyaa/" "CHANGELOG.md"
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/nyaa/" "LICENSE"
 }
