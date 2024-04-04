@@ -8,7 +8,7 @@ pkgdesc="Software system for algebraic geometry and commutative algebra"
 arch=('i686' 'x86_64')
 url="http://www.math.uiuc.edu/Macaulay2/"
 license=('GPL')
-depends=('gcc-fortran' 'readline' 'gdbm' 'gc' 'mpir' 'mpfr' 'mpsolve' 'boost' 'lapack' 'cblas' 'eigen' 'ntl' 'scscp' 'singular-factory' 'frobby' 'flint' 'cddlib' 'glpk' 'gfan' 'gtest' 'givaro')
+depends=('gcc-fortran' 'readline' 'gdbm' 'gc' 'mpir' 'mpfr' 'mpsolve' 'boost' 'lapack' 'cblas' 'eigen' 'ntl' 'scscp' 'singular-factory' 'frobby' 'flint' 'cddlib' 'glpk' 'gfan' 'gtest' 'givaro' 'onetbb')
 makedepends=('git' 'unzip' 'emacs' 'texinfo')
 source=('git+https://github.com/Macaulay2/M2')
 

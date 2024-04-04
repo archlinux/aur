@@ -31,6 +31,7 @@ pkgbase = macaulay2
 	depends = gfan
 	depends = gtest
 	depends = givaro
+	depends = onetbb
 	source = git+https://github.com/Macaulay2/M2
 	sha256sums = SKIP
 
