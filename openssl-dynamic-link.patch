@@ -1,3 +1,15 @@
+--- ./linux/CMakeLists.txt.orig
++++ ./linux/CMakeLists.txt
+@@ -9,6 +9,9 @@
+ # https://wiki.gnome.org/HowDoI/ChooseApplicationID
+ set(APPLICATION_ID "chat.fluffy.fluffychat")
+ 
++# dynamically link OpenSSL
++set(OPENSSL_USE_STATIC_LIBS OFF)
++
+ # Explicitly opt in to modern CMake behaviors to avoid warnings with recent
+ # versions of CMake.
+ cmake_policy(SET CMP0063 NEW)
 --- ./pubspec.lock.orig
 +++ ./pubspec.lock
 @@ -1799,10 +1799,10 @@
