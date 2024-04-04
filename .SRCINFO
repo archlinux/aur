@@ -1,6 +1,6 @@
 pkgbase = python-propka
 	pkgdesc = Heuristic pKa calculations with ligands
-	pkgver = 3.5.0
+	pkgver = 3.5.1
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/propka
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-propka
 	checkdepends = python-pytest
 	depends = python>=3.8
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/p/propka/propka-3.5.0.tar.gz
-	sha256sums = 0f32bbcafed56e94cc9d3fdb05d9c2faa7485d8a5779aaa79049b9ce0ab052fa
+	source = https://files.pythonhosted.org/packages/source/p/propka/propka-3.5.1.tar.gz
+	sha256sums = d8083b58d8c4c553ff8704c706190fe37ff82253adcd6e53b31d8ad7d6d52257
 
 pkgname = python-propka
