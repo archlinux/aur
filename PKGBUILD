@@ -13,7 +13,7 @@ optdepends=('libqpsd-git: PSB/PSD support'
             'xcftools: XCF support')
 makedepends=('cmake' 'qt6-tools' 'extra-cmake-modules')
 source=(https://photoqt.org/downloads/source/$pkgname-$pkgver.tar.gz)
-sha256sums=('b789f6736f1fe17da3bd6864c1586d9b2ce412e37563e0e8c9f44ba9540f0876')
+sha256sums=('74268d1795281fa4a4281ad91adc20daa65c0ed969b5d07110664bda82b28e12')
 
 # NOTE
 # To use GraphicsMagick instead of ImageMagick replace it in the depends array above and change
