@@ -1,4 +1,4 @@
-# Maintainer: Claudio Nave <claudio nave nine seven at gmail dot com>
+# Maintainer: EvaristeGalois11 <turbo dot backslid four zero zero at passinbox dot com>
 # Contributor: Antonio Muñoz <agmconejo AT gmail DOT com>
 
 pkgname=ora2pg
