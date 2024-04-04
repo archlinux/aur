@@ -2,13 +2,13 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=stars
-_pkgver=0.6-4
+_pkgver=0.6-5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Spatiotemporal Arrays, Raster and Vector Data Cubes"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
+url="https://cran.r-project.org/package=$_pkgname"
 license=(Apache)
 depends=(
   r-abind
@@ -70,12 +70,12 @@ optdepends=(
   r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('396cf91eb8e8d9c10ffeddd0cb85e1da')
-sha256sums=('424a4cfde4c3524f8bd44a1090c8d725662af8cc636f785d951d4aa45c130d57')
+md5sums=('dfaff96a4c88f6381c6761e4ea275370')
+b2sums=('e758cbcb57588ba24a7087e84bf06eb5c89c9cefc40a0436036f0b95c5d6865c09d6268c32e5e0be1f074e1fc4eaa717d5487445ad17c378cb47acd53d09eb4d')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
