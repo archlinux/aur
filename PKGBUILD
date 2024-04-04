@@ -19,7 +19,6 @@ provides=("xivlauncher=${pkgver}")
 conflicts=(
 	"xivlauncher"
         "xivlauncher-git"
-        "xivlauncher-rb"
 )
 source=(
     "XIVLauncher.Core.tar.gz::https://github.com/goatcorp/XIVLauncher.Core/releases/download/${pkgver}/XIVLauncher.Core-arch.tar.gz"

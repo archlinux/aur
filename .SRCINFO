@@ -14,7 +14,6 @@ pkgbase = xivlauncher-bin
 	provides = xivlauncher=1.0.8
 	conflicts = xivlauncher
 	conflicts = xivlauncher-git
-	conflicts = xivlauncher-rb
 	options = !strip
 	options = !debug
 	source = XIVLauncher.Core.tar.gz::https://github.com/goatcorp/XIVLauncher.Core/releases/download/1.0.8/XIVLauncher.Core-arch.tar.gz
