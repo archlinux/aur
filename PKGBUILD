@@ -3,7 +3,7 @@
 pkgname=gasconheart
 pkgver=v0.3
 pkgrel=1
-pkgdesc="Install gasconheart on your computer"
+pkgdesc="Install gasconheart on your computer. This is a simulacrum of gasconheart in a single shell script file."
 url="https://www.chats.dot.org.es/"
 license=('MIT')
 arch=('any')

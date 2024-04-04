@@ -1,5 +1,5 @@
 pkgbase = gasconheart
-	pkgdesc = Install gasconheart on your computer
+	pkgdesc = Install gasconheart on your computer. This is a simulacrum of gasconheart in a single shell script file.
 	pkgver = v0.3
 	pkgrel = 1
 	url = https://www.chats.dot.org.es/
