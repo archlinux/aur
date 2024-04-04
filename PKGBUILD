@@ -1,6 +1,7 @@
-# Maintainer Jonne Haß <me@jhass.eu>
+# Maintainer: Simon Pera <simon@nextmiracle.eu>
+# Contributor: Previous maintainer's Jonne Haß <me@jhass.eu>
 pkgname=workflowy
-pkgver=4.0.2403190958
+pkgver=4.0.2404020659
 pkgrel=1
 pkgdesc="Desktop app for workflowy.com, a note taking tool based on lists"
 arch=('x86_64')
@@ -9,23 +10,25 @@ license=('custom')
 depends=('fuse2')
 _filename="$pkgname-$pkgver.AppImage"
 _downloadname="WorkFlowy-x86_64.AppImage"
-options=('!strip')
+#!debug added to work around : https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/19
+options=('!strip' '!debug')
+noextract=("$_filename")
 source=("$_filename::https://github.com/workflowy/desktop/releases/download/v${pkgver/_/-}/$_downloadname")
 
 prepare() {
-  cd "$srcdir"
-  rm -rf squashfs-root
-  chmod +x $_filename
-  ./$_filename --appimage-extract
-  sed -i -e "s|Exec=.\+|Exec=env APPIMAGELAUNCHER_DISABLE=1 DESKTOPINTEGRATION=0 /opt/$_downloadname|" squashfs-root/workflowy.desktop
+	cd "$srcdir"
+	rm -rf squashfs-root
+	chmod +x $_filename
+	./$_filename --appimage-extract
+	sed -i -e "s|Exec=.\+|Exec=env APPIMAGELAUNCHER_DISABLE=1 DESKTOPINTEGRATION=0 /opt/$_downloadname|" squashfs-root/workflowy.desktop
 }
 
 package() {
-  cd "$srcdir/"
-  install -Dm755 $_filename "$pkgdir/opt/$_downloadname"
-  install -Dm644 squashfs-root/workflowy.desktop "$pkgdir/usr/share/applications/workflowy.desktop"
-  install -dm755 "$pkgdir/usr/share/icons/hicolor"
-  cp -av squashfs-root/usr/share/icons/hicolor/* "$pkgdir/usr/share/icons/hicolor/"
-  chmod -R a+rX "$pkgdir/usr/share/icons/hicolor"
+	cd "$srcdir/"
+	install -Dm755 $_filename "$pkgdir/opt/$_downloadname"
+	install -Dm644 squashfs-root/workflowy.desktop "$pkgdir/usr/share/applications/workflowy.desktop"
+	install -dm755 "$pkgdir/usr/share/icons/hicolor"
+	cp -av squashfs-root/usr/share/icons/hicolor/* "$pkgdir/usr/share/icons/hicolor/"
+	chmod -R a+rX "$pkgdir/usr/share/icons/hicolor"
 }
-sha256sums=('6051db6211863c6cdfdf81608e380b92912c863b57107228aa446f7d6e6e4c0b')
+sha256sums=('f8c422a3ad63f8e1e0a44e09341ff31851ffc21c79ec28c9d633102c8938ccd4')
