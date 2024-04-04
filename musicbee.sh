@@ -8,12 +8,12 @@ export WINEARCH=win32
 export WINEPREFIX="$PREFIX"
 
 # Check if running under Wayland
-if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
-  echo "Wayland support is ENABLED"
-  export DISPLAY=:0
-else
-  echo "Wayland support is DISABLED"
-fi
+# if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
+#   echo "Wayland support is ENABLED"
+#   export DISPLAY=:0
+# else
+#   echo "Wayland support is DISABLED"
+# fi
 
 if [[ ! -d "$DIR" ]]; then
   mkdir -p "$DIR/wine" || exit 1

@@ -5,7 +5,7 @@ _pkgver_major=3
 _pkgver_minor=5
 _pkgver_build=8698
 pkgver=${_pkgver_major}.${_pkgver_minor}.${_pkgver_build}
-pkgrel=2
+pkgrel=3
 pkgdesc="Advanced, feature-rich freeware audio player (uses Wine)"
 arch=(x86_64)
 url=https://getmusicbee.com
@@ -16,14 +16,13 @@ depends=(wine
 		wine-mono
 		bash)
 makedepends=(p7zip)
-optdepends=('wine-wl-git: Wayland Support')
 source=("https://files1.majorgeeks.com/10afebdbffcd4742c81a3cb0f6ce4092156b4375/multimedia/MusicBeePortable_3_5.zip"
 		"${pkgname}.desktop"
 		"${pkgname}.sh"
 		"https://www.un4seen.com/files/z/2/bass_aac24.zip") #M4A/AAC Support
 sha256sums=('a1da2ff921922fe4323f062a0032b6182b5dd000d6b5df34998614377aa3977a'
-            '054502f6dacceeeff10b7ac7511a514307a1e3f187c19f73b5913965c459dc6e'
-            '19a58ea42709b17c950d1988c573e334d0939a11540be9048f15d58ad719c6b9'
+            '42e9670e70a37837a026df7d1f3aa89b5247a09927a15204f8dcc95a551b5fab'
+            '28b4fcee5f7e88dfa8a8b3846a085167d475bd7c7da4680a8009da792addffd5'
             '782ec4f3758fc715d29ceab332103266df4000dd413a477901dccb8c9bac2090')
 
 package() {
