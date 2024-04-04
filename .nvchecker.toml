@@ -1,0 +1,4 @@
+[python-umap-learn]
+source = "github"
+github = "lmcinnes/umap"
+use_latest_release = "true"
