@@ -6,7 +6,7 @@ pkgname=python-croniter
 _name=${pkgname#python-}
 # https://github.com/kiorky/croniter/blob/master/CHANGELOG.rst
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python module to provide iteration for datetime object."
 arch=('any')
 url="https://github.com/kiorky/croniter"

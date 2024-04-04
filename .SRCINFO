@@ -1,7 +1,7 @@
 pkgbase = python-croniter
 	pkgdesc = A Python module to provide iteration for datetime object.
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kiorky/croniter
 	arch = any
 	license = MIT
