@@ -7,11 +7,11 @@ url="https://www.amuletmc.com/"
 license=(custom)
 
 arch=(any)
-pkgver=r1973.57892e8d
+pkgver=r1978.9a3d9c5a
 pkgrel=1
 makedepends=(python-build python-installer python-wheel)
 
-depends=(python python-numpy python-wxpython python-opengl python-amulet-nbt python-pymctranslate python-minecraft-model-reader python-amulet-core)
+depends=(python python-numpy python-wxpython python-opengl python-amulet-nbt python-pymctranslate python-minecraft-model-reader python-amulet-core python-lz4)
 
 provides=(amulet-map-editor amulet-map-editor-git)
 conflicts=(amulet-map-editor amulet-map-editor-git)
@@ -27,6 +27,11 @@ sha256sums=(
 	"SKIP"
 	"SKIP"
 )
+
+function prepare() {
+	cd "${srcdir}/Amulet-Map-Editor"
+	sed -i 's/versioneer-518/versioneer/g' "${srcdir}/Amulet-Map-Editor/pyproject.toml"
+}
 
 function pkgver() {
 	cd "${srcdir}/Amulet-Map-Editor"
