@@ -1,22 +1,17 @@
 pkgbase = python-jenkinsapi
 	pkgdesc = Python API for accessing resources on a Jenkins continuous-integration server
-	pkgver = 0.3.11
+	pkgver = 0.3.13
 	pkgrel = 1
 	url = https://github.com/pycontribs/jenkinsapi
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/j/jenkinsapi/jenkinsapi-0.3.11.tar.gz
-	sha256sums = a212a244b0a6022a61657746c8120ac9b6db83432371b345154075eb8faceb61
+	makedepends = python-build
+	makedepends = python-flit-core
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/j/jenkinsapi/jenkinsapi-0.3.13.tar.gz
+	sha256sums = 246a98a63e61f54a15d16105cb15488c5670734df41e86c7af0d5d9c0af240b9
 
 pkgname = python-jenkinsapi
 	depends = python
 	depends = python-requests
 	depends = python-pytz
-
-pkgname = python2-jenkinsapi
-	depends = python2
-	depends = python2-requests
-	depends = python2-pytz
-
