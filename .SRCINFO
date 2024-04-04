@@ -23,6 +23,7 @@ pkgbase = llpp
 	optdepends = librsvg: for llppac svg conversion
 	optdepends = unoconv: for llppac office conversion
 	options = !strip
+	options = !debug
 	source = git+https://github.com/criticic/llpp#commit=dbf07cf23e006d4bcb23469b41da50697c1907b8
 	b2sums = SKIP
 
