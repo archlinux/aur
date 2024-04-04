@@ -1,7 +1,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=plex-meta-manager
-pkgver=1.20.0
+pkgver=1.21.0
 pkgrel=1
 pkgdesc='A powerful tool designed to give you complete control over your Plex media libraries.'
 url='https://metamanager.wiki/'
@@ -35,7 +35,7 @@ source=(
   'plexmetamanager.tmpfiles'
 )
         
-sha256sums=('3ffa3cbecd87b3984a04d99fc7abcd2f752b99cb8d3f2dbc21fcf756acdfc2af'
+sha256sums=('0ac54f994264f40b1963c52204b62b86b3eb812450d38e0162c782a04d6d789e'
             'c2813181c2accbc04843ded8b101df1d58601e6c606f4a864ec4e55caea61666'
             '5adcf312386776a66d4710496e0cbe63bc2e8f5ceb5ff1901cc3d5318a681d37'
             'a8e8020062d0985e51b0241b0dc1e54d9dae3999a03ec0966c4a69c53ae8a5a2')
