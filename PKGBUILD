@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=infisical
-pkgver=0.20.0
+pkgver=0.20.1
 pkgrel=1
 pkgdesc="Fetch and inject secrets into any framework in local development"
 url="https://github.com/Infisical/infisical"
@@ -10,7 +10,7 @@ license=(LicenseRef-Custom)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/infisical-cli/v$pkgver.tar.gz")
-sha256sums=('fac934bfa1bffb7ecab658e97a6d542dab9d8af6ff26b8804d6358f5bd1f42db')
+sha256sums=('0e0befc9ee707d4d3720dec7426ab32379dd28f1f510fdb7e1aa3f3196e956cf')
 
 _archive="$pkgname-infisical-cli-v$pkgver"
 
@@ -66,5 +66,6 @@ package() {
 
   install -Dm644 -t "$pkgdir/usr/share/man/man1" cli/infisical.1
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
+
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
