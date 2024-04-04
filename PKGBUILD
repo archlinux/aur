@@ -10,14 +10,14 @@ _buildstamp='Arch Linux'
 
 _pkgname=audacious
 pkgname="$_pkgname-git"
-pkgver=4.2.beta1.r0.ge4755ce26
+pkgver=4.3.1.r40.g940ac0b66
 pkgrel=1
 epoch=1
 pkgdesc="Lightweight, advanced audio player focused on audio quality (git version)"
 arch=('i686' 'x86_64')
 url="https://audacious-media-player.org/"
 license=('BSD')
-depends=('glib2' 'gtk2' 'qt5-base' 'qt5-imageformats' 'qt5-svg')
+depends=('glib2' 'gtk2' 'qt6-base' 'qt6-imageformats' 'qt6-svg')
 makedepends=('git' 'python') # for gdbus-codegen
 optdepends=('unzip: zipped skins support')
 provides=("$_pkgname")
