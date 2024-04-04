@@ -8,10 +8,10 @@ license=(custom)
 
 arch=(any)
 pkgver=0.10.27
-pkgrel=2
+pkgrel=3
 makedepends=(python-build python-installer python-wheel python-cython-lint python-versioneer git)
 
-depends=(python python-numpy python-wxpython python-opengl python-amulet-nbt python-pymctranslate python-minecraft-model-reader python-amulet-core)
+depends=(python python-numpy python-wxpython python-opengl python-amulet-nbt python-pymctranslate python-minecraft-model-reader python-amulet-core python-lz4)
 
 source=(
 	amulet.desktop
