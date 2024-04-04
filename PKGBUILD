@@ -7,7 +7,7 @@ url="https://www.amuletmc.com/"
 license=(custom)
 
 arch=(any)
-pkgver=r1978.9a3d9c5a
+pkgver=0.10.26.r4.g9a3d9c5a
 pkgrel=1
 makedepends=(python-build python-installer python-wheel)
 
@@ -35,7 +35,7 @@ function prepare() {
 
 function pkgver() {
 	cd "${srcdir}/Amulet-Map-Editor"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 function build() {
