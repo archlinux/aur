@@ -1,0 +1,18 @@
+pkgbase = black-magic-probe-utils
+	pkgdesc = Black Magic Debug Probe utilities (compuphase)
+	pkgver = 1.5.7087
+	pkgrel = 1
+	url = https://github.com/compuphase/Black-Magic-Probe-Book
+	arch = x86_64
+	arch = i686
+	license = Apache-2.0
+	depends = nuklear
+	depends = glfw
+	depends = libusb
+	depends = libbsd
+	depends = zlib
+	depends = gtk3
+	source = https://github.com/compuphase/Black-Magic-Probe-Book/archive/refs/tags/v1.5.7087.tar.gz
+	sha256sums = 731d9820fde1fd343399fe79a46425a0d864b91a840a01c22e433d1e1e023118
+
+pkgname = black-magic-probe-utils
