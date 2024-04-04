@@ -1,7 +1,7 @@
 # Maintainer: ros3 <ros3@ros3.cc>
 
 pkgname=hello-http-bin
-pkgver=1.4.3
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='HTTP client for testing REST APIs, WebSocket, GraphQL and gRPC endpoints'
 url='https://sunny-chung.github.io/hello-http/'
