@@ -8,6 +8,7 @@ pkgbase = scx-scheds
 	makedepends = python
 	makedepends = meson
 	makedepends = clang
+	makedepends = llvm
 	makedepends = llvm-libs
 	makedepends = cargo
 	makedepends = rust
