@@ -1,0 +1,17 @@
+pkgbase = unittestpp-git
+	pkgdesc = A lightweight unit testing framework for C++
+	pkgver = 2.0.0.r30.g10e50ad
+	pkgrel = 1
+	url = https://github.com/unittest-cpp/unittest-cpp/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	provides = unittestpp=2.0.0.r30.g10e50ad
+	conflicts = unittestpp
+	options = staticlibs
+	source = git+https://github.com/unittest-cpp/unittest-cpp.git
+	sha256sums = SKIP
+
+pkgname = unittestpp-git
