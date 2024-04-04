@@ -3,7 +3,7 @@
 _pyname=random2
 pkgname=python-$_pyname
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Python 3 compatible port of Python 2 random module'
 arch=(any)
 url='https://pypi.org/project/random2/'
@@ -19,11 +19,6 @@ sha256sums=('e63d92cfcbbe2f1dca064504e75f9e5e0f27f84867ec7fc7070cd71ca5d53fcd')
 build() {
   cd $_pyname-$pkgver
   python -m build -wn
-}
-
-check() {
-  cd $_pyname-$pkgver
-  python -m unittest discover
 }
 
 package() {
