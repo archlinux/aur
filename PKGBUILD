@@ -3,25 +3,25 @@
 
 pkgname=scscp
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="C library for the Symbolic Computation Software Composibility Protocol"
 arch=('i686' 'x86_64')
 url="http://www.imcce.fr/Equipes/ASD/trip/scscp/"
 license=('custom')
 depends=('libxml2')
-source=(https://sourcesup.renater.fr/frs/download.php/file/4549/$pkgname-$pkgver.tar.gz)
+source=(https://www.imcce.fr/content/medias/recherche/equipes/asd/trip/$pkgname/download/$pkgname-$pkgver.tar.gz)
 
 build() {
-  cd "$srcdir/$pkgname-1.0.1"
+  cd "$srcdir/$pkgname-$pkgver"
   CXXFLAGS="-std=c++11" ./configure --prefix=/usr
   make
   #make check
 }
 
 package() {
-  cd "$srcdir/$pkgname-1.0.1"
+  cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
   install -D -m644 COPYING_CECILL_C.LIB $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
-sha256sums=('bd0f3a1e535d4fbb0f7a41022208be497d71f9283f354f39fa7231beb7e165f7')
+sha256sums=('a9d07b26e8f53dc723a521e991ffaa0fa62c7d37202d65919fc0ae391608ae1a')

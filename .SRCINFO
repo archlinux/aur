@@ -1,13 +1,13 @@
 pkgbase = scscp
 	pkgdesc = C library for the Symbolic Computation Software Composibility Protocol
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.imcce.fr/Equipes/ASD/trip/scscp/
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = libxml2
-	source = https://sourcesup.renater.fr/frs/download.php/file/4549/scscp-1.0.3.tar.gz
-	sha256sums = bd0f3a1e535d4fbb0f7a41022208be497d71f9283f354f39fa7231beb7e165f7
+	source = https://www.imcce.fr/content/medias/recherche/equipes/asd/trip/scscp/download/scscp-1.0.3.tar.gz
+	sha256sums = a9d07b26e8f53dc723a521e991ffaa0fa62c7d37202d65919fc0ae391608ae1a
 
 pkgname = scscp
