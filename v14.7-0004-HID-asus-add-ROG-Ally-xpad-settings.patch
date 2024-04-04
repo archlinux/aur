@@ -1,7 +1,7 @@
-From fc88194fbc824967cce666a6e2ab4b47722f8d01 Mon Sep 17 00:00:00 2001
+From 9fd3de7abd22d7e67a8757e3f67410302359fec7 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Fri, 1 Dec 2023 16:57:19 +1300
-Subject: [PATCH v14.1 4/4] HID: asus: add ROG Ally xpad settings
+Subject: [PATCH v14.7 4/4] HID: asus: add ROG Ally xpad settings
 
 - move ROG specific stuff to new .c
 - add a header for common parts
@@ -18,10 +18,10 @@ Subject: [PATCH v14.1 4/4] HID: asus: add ROG Ally xpad settings
  .../ABI/testing/sysfs-driver-hid-asus         |   85 +
  drivers/hid/Makefile                          |    2 +
  drivers/hid/{hid-asus.c => hid-asus-core.c}   |   71 +-
- drivers/hid/hid-asus-rog.c                    | 1457 +++++++++++++++++
+ drivers/hid/hid-asus-rog.c                    | 1469 +++++++++++++++++
  drivers/hid/hid-asus-rog.h                    |  482 ++++++
  drivers/hid/hid-asus.h                        |   58 +
- 6 files changed, 2114 insertions(+), 41 deletions(-)
+ 6 files changed, 2126 insertions(+), 41 deletions(-)
  create mode 100644 Documentation/ABI/testing/sysfs-driver-hid-asus
  rename drivers/hid/{hid-asus.c => hid-asus-core.c} (96%)
  create mode 100644 drivers/hid/hid-asus-rog.c
@@ -30,7 +30,7 @@ Subject: [PATCH v14.1 4/4] HID: asus: add ROG Ally xpad settings
 
 diff --git a/Documentation/ABI/testing/sysfs-driver-hid-asus b/Documentation/ABI/testing/sysfs-driver-hid-asus
 new file mode 100644
-index 000000000000..736233ebb38f
+index 000000000000..df5b0c5b0702
 --- /dev/null
 +++ b/Documentation/ABI/testing/sysfs-driver-hid-asus
 @@ -0,0 +1,85 @@
@@ -73,6 +73,12 @@ index 000000000000..736233ebb38f
 +Contact:	linux-input@vger.kernel.org
 +Description:	Descriptive labels for joystick deadzone array.
 +
++What:		/sys/bus/usb/devices/1-3:1.0/0003:0B05:1ABE.0001/axis_<x/y>_<left/right>/anti-deadzone
++Date:		December 2023
++Contact:	linux-input@vger.kernel.org
++Description:	Set the joystick anti-deadzone feature:
++		- range 0-32 (corresponds to 0-50%)
++
 +What:		/sys/bus/usb/devices/1-3:1.0/0003:0B05:1ABE.0001/axis_<x/y/z>_<left/right>/calibration
 +Date:		December 2023
 +Contact:	linux-input@vger.kernel.org
@@ -83,12 +89,6 @@ index 000000000000..736233ebb38f
 +Date:		December 2023
 +Contact:	linux-input@vger.kernel.org
 +Description:	Descriptive labels for joystick and triggers calibration array.
-+
-+What:		/sys/bus/usb/devices/1-3:1.0/0003:0B05:1ABE.0001/axis_<x/y>_<left/right>/anti-deadzone
-+Date:		December 2023
-+Contact:	linux-input@vger.kernel.org
-+Description:	Set the joystick anti-deadzone feature:
-+		- range 0-64 (corresponds to 0-100%)
 +
 +What:		/sys/bus/usb/devices/1-3:1.0/0003:0B05:1ABE.0001/axis_<x/y>_<left/right>/rc_point<n>
 +Date:		December 2023
@@ -297,10 +297,10 @@ index 3a1a6024d299..026705c43ee1 100644
  	  QUIRK_ROG_CLAYMORE_II_KEYBOARD },
 diff --git a/drivers/hid/hid-asus-rog.c b/drivers/hid/hid-asus-rog.c
 new file mode 100644
-index 000000000000..f0a2b366a298
+index 000000000000..94b7c986576c
 --- /dev/null
 +++ b/drivers/hid/hid-asus-rog.c
-@@ -0,0 +1,1457 @@
+@@ -0,0 +1,1469 @@
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +/*
 + *  HID driver for Asus ROG laptops and Ally
@@ -481,7 +481,7 @@ index 000000000000..f0a2b366a298
 +	STR_TO_CODE_ELIF(2, 0x32, KB_B)
 +	STR_TO_CODE_ELIF(2, 0x31, KB_N)
 +	STR_TO_CODE_ELIF(2, 0x3a, KB_M)
-+	STR_TO_CODE_ELIF(2, 0x41, KB_COMA)
++	STR_TO_CODE_ELIF(2, 0x41, KB_COMMA)
 +	STR_TO_CODE_ELIF(2, 0x49, KB_PERIOD)
 +	STR_TO_CODE_ELIF(2, 0x4a, KB_FWDSLASH)
 +	STR_TO_CODE_ELIF(2, 0x89, KB_RSHIFT)
@@ -509,9 +509,9 @@ index 000000000000..f0a2b366a298
 +	STR_TO_CODE_ELIF(2, 0x91, KB_LEFT_ARROW)
 +	STR_TO_CODE_ELIF(2, 0x9b, KB_RIGHT_ARROW)
 +
-+	STR_TO_CODE_ELIF(2, 0x77, NUMPAD_LCK)
++	STR_TO_CODE_ELIF(2, 0x77, NUMPAD_LOCK)
 +	STR_TO_CODE_ELIF(2, 0x90, NUMPAD_FWDSLASH)
-+	STR_TO_CODE_ELIF(2, 0x7c, NUMPAD_STAR)
++	STR_TO_CODE_ELIF(2, 0x7c, NUMPAD_ASTERISK)
 +	STR_TO_CODE_ELIF(2, 0x7b, NUMPAD_HYPHEN)
 +	STR_TO_CODE_ELIF(2, 0x70, NUMPAD_0)
 +	STR_TO_CODE_ELIF(2, 0x69, NUMPAD_1)
@@ -664,7 +664,7 @@ index 000000000000..f0a2b366a298
 +		CODE_TO_STR_IF(2, 0x32, KB_B)
 +		CODE_TO_STR_IF(2, 0x31, KB_N)
 +		CODE_TO_STR_IF(2, 0x3a, KB_M)
-+		CODE_TO_STR_IF(2, 0x41, KB_COMA)
++		CODE_TO_STR_IF(2, 0x41, KB_COMMA)
 +		CODE_TO_STR_IF(2, 0x49, KB_PERIOD)
 +		CODE_TO_STR_IF(2, 0x4a, KB_FWDSLASH)
 +		CODE_TO_STR_IF(2, 0x89, KB_RSHIFT)
@@ -692,9 +692,9 @@ index 000000000000..f0a2b366a298
 +		CODE_TO_STR_IF(2, 0x91, KB_LEFT_ARROW)
 +		CODE_TO_STR_IF(2, 0x9b, KB_RIGHT_ARROW)
 +
-+		CODE_TO_STR_IF(2, 0x77, NUMPAD_LCK)
++		CODE_TO_STR_IF(2, 0x77, NUMPAD_LOCK)
 +		CODE_TO_STR_IF(2, 0x90, NUMPAD_FWDSLASH)
-+		CODE_TO_STR_IF(2, 0x7c, NUMPAD_STAR)
++		CODE_TO_STR_IF(2, 0x7c, NUMPAD_ASTERISK)
 +		CODE_TO_STR_IF(2, 0x7b, NUMPAD_HYPHEN)
 +		CODE_TO_STR_IF(2, 0x70, NUMPAD_0)
 +		CODE_TO_STR_IF(2, 0x69, NUMPAD_1)
@@ -738,36 +738,38 @@ index 000000000000..f0a2b366a298
 +static int __gamepad_check_ready(struct hid_device *hdev)
 +{
 +	u8 *hidbuf;
-+	int ret;
++	int ret, count;
 +
 +	hidbuf = kzalloc(FEATURE_ROG_ALLY_REPORT_SIZE, GFP_KERNEL);
 +	if (!hidbuf)
 +		return -ENOMEM;
 +
-+	hidbuf[0] = FEATURE_KBD_REPORT_ID;
-+	hidbuf[1] = 0xD1;
-+	hidbuf[2] = xpad_cmd_check_ready;
-+	hidbuf[3] = 01;
-+	ret = asus_kbd_set_report(hdev, hidbuf, FEATURE_ROG_ALLY_REPORT_SIZE);
-+	if (ret < 0)
-+		goto report_fail;
++	for (count = 0; count < 3; count++) {
++		hidbuf[0] = FEATURE_KBD_REPORT_ID;
++		hidbuf[1] = 0xD1;
++		hidbuf[2] = xpad_cmd_check_ready;
++		hidbuf[3] = 01;
++		ret = asus_kbd_set_report(hdev, hidbuf,
++					  FEATURE_ROG_ALLY_REPORT_SIZE);
++		if (ret < 0)
++			hid_warn(hdev, "ROG Ally check failed set report: %d\n", ret);
 +
-+	hidbuf[0] = hidbuf[1] = hidbuf[2] = hidbuf[3] = 0;
-+	ret = asus_kbd_get_report(hdev, hidbuf, FEATURE_ROG_ALLY_REPORT_SIZE);
-+	if (ret < 0)
-+		goto report_fail;
++		hidbuf[0] = hidbuf[1] = hidbuf[2] = hidbuf[3] = 0;
++		ret = asus_kbd_get_report(hdev, hidbuf, FEATURE_ROG_ALLY_REPORT_SIZE);
++		if (ret < 0)
++			hid_warn(hdev, "ROG Ally check failed get report: %d\n", ret);
 +
-+	ret = hidbuf[2] == xpad_cmd_check_ready;
-+	if (!ret) {
-+		hid_warn(hdev, "ROG Ally not ready\n");
-+		ret = -ENOMSG;
++		ret = hidbuf[2] == xpad_cmd_check_ready;
++		if (!ret)
++			hid_warn(hdev, "ROG Ally not ready, retry %d\n", count);
++		else
++			break;
++		msleep(2); // don't spam the entire loop in less than USB response time
 +	}
 +
-+	kfree(hidbuf);
-+	return ret;
++	if (count == 3)
++		hid_err(hdev, "ROG Ally never responded with a ready\n");
 +
-+report_fail:
-+	hid_dbg(hdev, "ROG Ally check failed get report: %d\n", ret);
 +	kfree(hidbuf);
 +	return ret;
 +}
@@ -841,7 +843,7 @@ index 000000000000..f0a2b366a298
 +static int __gamepad_turbo_show(struct device *raw_dev, enum btn_pair pair, int side)
 +{
 +	struct asus_rog_ally *rog_ally = __rog_ally_data(raw_dev);
-+	return rog_ally->turbo_btns[rog_ally->mode][__gamepad_turbo_index(pair, side)];
++	return rog_ally->turbo_btns[rog_ally->mode - 1][__gamepad_turbo_index(pair, side)];
 +};
 +
 +static int __gamepad_turbo_store(struct device *raw_dev, const char *buf, enum btn_pair pair,
@@ -856,7 +858,7 @@ index 000000000000..f0a2b366a298
 +	if (val < 0 || val > 16)
 +		return -EINVAL;
 +
-+	rog_ally->turbo_btns[rog_ally->mode][__gamepad_turbo_index(pair, side)] = val;
++	rog_ally->turbo_btns[rog_ally->mode - 1][__gamepad_turbo_index(pair, side)] = val;
 +
 +	return 0;
 +};
@@ -949,6 +951,10 @@ index 000000000000..f0a2b366a298
 +	hidbuf[3] = 0x01;
 +	hidbuf[4] = val;
 +
++	ret = __gamepad_check_ready(hdev);
++	if (ret < 0)
++		goto report_fail;
++
 +	ret = asus_kbd_set_report(hdev, hidbuf, FEATURE_ROG_ALLY_REPORT_SIZE);
 +	if (ret < 0)
 +		goto report_fail;
@@ -1020,8 +1026,8 @@ index 000000000000..f0a2b366a298
 +	hidbuf[1] = 0xD1;
 +	hidbuf[2] = xpad_cmd_set_vibe_intensity;
 +	hidbuf[3] = 0x02; // length
-+	hidbuf[4] = rog_ally->anti_deadzones[rog_ally->mode][btn_pair_side_left];
-+	hidbuf[5] = rog_ally->anti_deadzones[rog_ally->mode][btn_pair_side_right];
++	hidbuf[4] = rog_ally->vibration_intensity[rog_ally->mode - 1][btn_pair_side_left];
++	hidbuf[5] = rog_ally->vibration_intensity[rog_ally->mode - 1][btn_pair_side_right];
 +
 +	ret = __gamepad_check_ready(hdev);
 +	if (ret < 0)
@@ -1041,8 +1047,8 @@ index 000000000000..f0a2b366a298
 +{
 +	struct asus_rog_ally *rog_ally = __rog_ally_data(raw_dev);
 +	return sysfs_emit(buf, "%d %d\n",
-+			  rog_ally->anti_deadzones[rog_ally->mode][btn_pair_side_left],
-+			  rog_ally->anti_deadzones[rog_ally->mode][btn_pair_side_right]);
++			  rog_ally->vibration_intensity[rog_ally->mode - 1][btn_pair_side_left],
++			  rog_ally->vibration_intensity[rog_ally->mode - 1][btn_pair_side_right]);
 +}
 +
 +static ssize_t gamepad_vibration_intensity_store(struct device *raw_dev,
@@ -1051,6 +1057,7 @@ index 000000000000..f0a2b366a298
 +{
 +	struct asus_rog_ally *rog_ally = __rog_ally_data(raw_dev);
 +	u32 left, right;
++	int ret;
 +
 +	if (sscanf(buf, "%d %d", &left, &right) != 2)
 +		return -EINVAL;
@@ -1058,8 +1065,12 @@ index 000000000000..f0a2b366a298
 +	if (left > 64 || right > 64)
 +		return -EINVAL;
 +
-+	rog_ally->vibration_intensity[rog_ally->mode][btn_pair_side_left] = left;
-+	rog_ally->vibration_intensity[rog_ally->mode][btn_pair_side_right] = right;
++	rog_ally->vibration_intensity[rog_ally->mode - 1][btn_pair_side_left] = left;
++	rog_ally->vibration_intensity[rog_ally->mode - 1][btn_pair_side_right] = right;
++
++	ret = __gamepad_write_vibe_intensity_to_mcu(raw_dev);
++	if (ret < 0)
++		return ret;
 +
 +	return count;
 +}
@@ -1098,20 +1109,20 @@ index 000000000000..f0a2b366a298
 +	hidbuf[1] = 0xD1;
 +	hidbuf[2] = xpad_cmd_set_js_dz;
 +	hidbuf[3] = 0x04; // length
-+	hidbuf[4] = rog_ally->deadzones[rog_ally->mode][0][0];
-+	hidbuf[5] = rog_ally->deadzones[rog_ally->mode][0][1];
-+	hidbuf[6] = rog_ally->deadzones[rog_ally->mode][0][2];
-+	hidbuf[7] = rog_ally->deadzones[rog_ally->mode][0][3];
++	hidbuf[4] = rog_ally->deadzones[rog_ally->mode - 1][0][0];
++	hidbuf[5] = rog_ally->deadzones[rog_ally->mode - 1][0][1];
++	hidbuf[6] = rog_ally->deadzones[rog_ally->mode - 1][0][2];
++	hidbuf[7] = rog_ally->deadzones[rog_ally->mode - 1][0][3];
 +
 +	ret = asus_kbd_set_report(hdev, hidbuf, FEATURE_ROG_ALLY_REPORT_SIZE);
 +	if (ret < 0)
 +		goto end;
 +
 +	hidbuf[2] = xpad_cmd_set_tr_dz;
-+	hidbuf[4] = rog_ally->deadzones[rog_ally->mode][1][0];
-+	hidbuf[5] = rog_ally->deadzones[rog_ally->mode][1][1];
-+	hidbuf[6] = rog_ally->deadzones[rog_ally->mode][1][2];
-+	hidbuf[7] = rog_ally->deadzones[rog_ally->mode][1][3];
++	hidbuf[4] = rog_ally->deadzones[rog_ally->mode - 1][1][0];
++	hidbuf[5] = rog_ally->deadzones[rog_ally->mode - 1][1][1];
++	hidbuf[6] = rog_ally->deadzones[rog_ally->mode - 1][1][2];
++	hidbuf[7] = rog_ally->deadzones[rog_ally->mode - 1][1][3];
 +
 +	ret = asus_kbd_set_report(hdev, hidbuf, FEATURE_ROG_ALLY_REPORT_SIZE);
 +	if (ret < 0)
@@ -1139,8 +1150,8 @@ index 000000000000..f0a2b366a298
 +	side = axis == xpad_axis_xy_right || axis == xpad_axis_z_right ? 2 : 0;
 +	cmd = is_tr ? xpad_cmd_set_js_dz : xpad_cmd_set_tr_dz;
 +
-+	rog_ally->deadzones[rog_ally->mode][is_tr][side] = inner;
-+	rog_ally->deadzones[rog_ally->mode][is_tr][side + 1] = outer;
++	rog_ally->deadzones[rog_ally->mode - 1][is_tr][side] = inner;
++	rog_ally->deadzones[rog_ally->mode - 1][is_tr][side + 1] = outer;
 +
 +	return 0;
 +}
@@ -1178,8 +1189,8 @@ index 000000000000..f0a2b366a298
 +	hidbuf[1] = 0xD1;
 +	hidbuf[2] = xpad_cmd_set_adz;
 +	hidbuf[3] = 0x02; // length
-+	hidbuf[4] = rog_ally->anti_deadzones[rog_ally->mode][btn_pair_side_left];
-+	hidbuf[5] = rog_ally->anti_deadzones[rog_ally->mode][btn_pair_side_right];
++	hidbuf[4] = rog_ally->anti_deadzones[rog_ally->mode - 1][btn_pair_side_left];
++	hidbuf[5] = rog_ally->anti_deadzones[rog_ally->mode - 1][btn_pair_side_right];
 +
 +	ret = __gamepad_check_ready(hdev);
 +	if (ret < 0)
@@ -1204,10 +1215,10 @@ index 000000000000..f0a2b366a298
 +	if (ret)
 +		return ret;
 +
-+	if (val < 0 || val > 64)
++	if (val < 0 || val > 32)
 +		return -EINVAL;
 +
-+	rog_ally->anti_deadzones[rog_ally->mode][side] = val;
++	rog_ally->anti_deadzones[rog_ally->mode - 1][side] = val;
 +
 +	return ret;
 +}
@@ -1217,7 +1228,7 @@ index 000000000000..f0a2b366a298
 +{
 +	struct asus_rog_ally *rog_ally = __rog_ally_data(raw_dev);
 +	return sysfs_emit(buf, "%d\n",
-+			  rog_ally->anti_deadzones[rog_ally->mode][btn_pair_side_left]);
++			  rog_ally->anti_deadzones[rog_ally->mode - 1][btn_pair_side_left]);
 +}
 +
 +static ssize_t xpad_axis_xy_left_ADZ_store(struct device *raw_dev, struct device_attribute *attr,
@@ -1237,7 +1248,7 @@ index 000000000000..f0a2b366a298
 +{
 +	struct asus_rog_ally *rog_ally = __rog_ally_data(raw_dev);
 +	return sysfs_emit(buf, "%d\n",
-+			  rog_ally->anti_deadzones[rog_ally->mode][btn_pair_side_right]);
++			  rog_ally->anti_deadzones[rog_ally->mode - 1][btn_pair_side_right]);
 +}
 +
 +static ssize_t xpad_axis_xy_right_ADZ_store(struct device *raw_dev, struct device_attribute *attr,
@@ -1280,14 +1291,14 @@ index 000000000000..f0a2b366a298
 +	hidbuf[2] = xpad_cmd_set_response_curve;
 +	hidbuf[3] = 0x09; // length
 +	hidbuf[4] = 0x01;
-+	memcpy(&hidbuf[5], &rog_ally->response_curve[rog_ally->mode][btn_pair_side_left], 8);
++	memcpy(&hidbuf[5], &rog_ally->response_curve[rog_ally->mode - 1][btn_pair_side_left], 8);
 +
 +	ret = __gamepad_check_ready(hdev);
 +	if (ret < 0)
 +		goto report_fail;
 +
 +	hidbuf[4] = 0x02;
-+	memcpy(&hidbuf[5], &rog_ally->response_curve[rog_ally->mode][btn_pair_side_right], 8);
++	memcpy(&hidbuf[5], &rog_ally->response_curve[rog_ally->mode - 1][btn_pair_side_right], 8);
 +
 +	ret = __gamepad_check_ready(hdev);
 +	if (ret < 0)
@@ -1315,8 +1326,8 @@ index 000000000000..f0a2b366a298
 +	if (move > 64 || response > 64)
 +		return -EINVAL;
 +
-+	rog_ally->response_curve[rog_ally->mode][side][idx] = move;
-+	rog_ally->response_curve[rog_ally->mode][side][idx + 1] = response;
++	rog_ally->response_curve[rog_ally->mode - 1][side][idx] = move;
++	rog_ally->response_curve[rog_ally->mode - 1][side][idx + 1] = response;
 +
 +	return 0;
 +}
@@ -1361,10 +1372,7 @@ index 000000000000..f0a2b366a298
 +	c = &hidbuf[6]; // pointer
 +
 +	for (size_t i = 0; i < data_len; i++) {
-+		if (axis == xpad_axis_xy_left || axis == xpad_axis_xy_right)
-+			cal = rog_ally->js_calibrations[side][i];
-+		else
-+			cal = rog_ally->tr_calibrations[side][i];
++		cal = rog_ally->js_calibrations[side][i];
 +		*c = (u8)((cal & 0xff00) >> 8);
 +		checksum += *c;
 +		c += 1;
@@ -1428,6 +1436,7 @@ index 000000000000..f0a2b366a298
 +		//TODO: validate input
 +
 +		side = axis == xpad_axis_xy_right || axis == xpad_axis_z_right ? 1 : 0;
++		/* stored in reverse order for easy copy to packet */
 +		rog_ally->tr_calibrations[side][0] = x_stable;
 +		rog_ally->tr_calibrations[side][1] = x_max;
 +
@@ -1663,7 +1672,7 @@ index 000000000000..f0a2b366a298
 +	hidbuf[1] = 0xD1;
 +	hidbuf[2] = xpad_cmd_set_turbo;
 +	hidbuf[3] = 0x20; // length
-+	memcpy(&hidbuf[4], rog_ally->turbo_btns[rog_ally->mode], TURBO_BLOCK_LEN);
++	memcpy(&hidbuf[4], rog_ally->turbo_btns[rog_ally->mode - 1], TURBO_BLOCK_LEN);
 +	ret = asus_kbd_set_report(hdev, hidbuf, FEATURE_ROG_ALLY_REPORT_SIZE);
 +
 +	kfree(hidbuf);
@@ -1673,7 +1682,7 @@ index 000000000000..f0a2b366a298
 +static int asus_rog_ally_probe(struct hid_device *hdev, const struct rog_ops *ops)
 +{
 +	struct asus_drvdata *drvdata = hid_get_drvdata(hdev);
-+	int ret;
++	int ret = 0;
 +
 +	/* all ROG devices have this HID interface but we will focus on Ally for now */
 +	if (drvdata->quirks & QUIRK_ROG_NKEY_KEYBOARD && hid_is_usb(hdev)) {
@@ -1697,41 +1706,44 @@ index 000000000000..f0a2b366a298
 +				}
 +				// TODO: move these to functions
 +				drvdata->rog_ally_data->mode = xpad_mode_game;
-+				drvdata->rog_ally_data->deadzones[xpad_mode_game][0][1] = 64;
-+				drvdata->rog_ally_data->deadzones[xpad_mode_game][0][3] = 64;
-+				drvdata->rog_ally_data->deadzones[xpad_mode_game][1][1] = 64;
-+				drvdata->rog_ally_data->deadzones[xpad_mode_game][1][3] = 64;
++				for (int i = 0; i < xpad_mode_mouse; i++) {
++					drvdata->rog_ally_data->deadzones[i][0][1] = 64;
++					drvdata->rog_ally_data->deadzones[i][0][3] = 64;
++					drvdata->rog_ally_data->deadzones[i][1][1] = 64;
++					drvdata->rog_ally_data->deadzones[i][1][3] = 64;
 +
-+				drvdata->rog_ally_data->anti_deadzones[xpad_mode_game][0] = 64;
-+				drvdata->rog_ally_data->anti_deadzones[xpad_mode_game][1] = 64;
++					drvdata->rog_ally_data->response_curve[i][0][0] = 0x14;
++					drvdata->rog_ally_data->response_curve[i][0][1] = 0x14;
++					drvdata->rog_ally_data->response_curve[i][0][2] = 0x28;
++					drvdata->rog_ally_data->response_curve[i][0][3] = 0x28;
++					drvdata->rog_ally_data->response_curve[i][0][4] = 0x3c;
++					drvdata->rog_ally_data->response_curve[i][0][5] = 0x3c;
++					drvdata->rog_ally_data->response_curve[i][0][6] = 0x50;
++					drvdata->rog_ally_data->response_curve[i][0][7] = 0x50;
 +
-+				drvdata->rog_ally_data->response_curve[xpad_mode_game][0][0] = 0x14;
-+				drvdata->rog_ally_data->response_curve[xpad_mode_game][0][1] = 0x14;
-+				drvdata->rog_ally_data->response_curve[xpad_mode_game][0][2] = 0x28;
-+				drvdata->rog_ally_data->response_curve[xpad_mode_game][0][3] = 0x28;
-+				drvdata->rog_ally_data->response_curve[xpad_mode_game][0][4] = 0x3c;
-+				drvdata->rog_ally_data->response_curve[xpad_mode_game][0][5] = 0x3c;
-+				drvdata->rog_ally_data->response_curve[xpad_mode_game][0][6] = 0x50;
-+				drvdata->rog_ally_data->response_curve[xpad_mode_game][0][7] = 0x50;
++					drvdata->rog_ally_data->response_curve[i][1][0] = 0x14;
++					drvdata->rog_ally_data->response_curve[i][1][1] = 0x14;
++					drvdata->rog_ally_data->response_curve[i][1][2] = 0x28;
++					drvdata->rog_ally_data->response_curve[i][1][3] = 0x28;
++					drvdata->rog_ally_data->response_curve[i][1][4] = 0x3c;
++					drvdata->rog_ally_data->response_curve[i][1][5] = 0x3c;
++					drvdata->rog_ally_data->response_curve[i][1][6] = 0x50;
++					drvdata->rog_ally_data->response_curve[i][1][7] = 0x50;
 +
-+				drvdata->rog_ally_data->response_curve[xpad_mode_game][1][0] = 0x14;
-+				drvdata->rog_ally_data->response_curve[xpad_mode_game][1][1] = 0x14;
-+				drvdata->rog_ally_data->response_curve[xpad_mode_game][1][2] = 0x28;
-+				drvdata->rog_ally_data->response_curve[xpad_mode_game][1][3] = 0x28;
-+				drvdata->rog_ally_data->response_curve[xpad_mode_game][1][4] = 0x3c;
-+				drvdata->rog_ally_data->response_curve[xpad_mode_game][1][5] = 0x3c;
-+				drvdata->rog_ally_data->response_curve[xpad_mode_game][1][6] = 0x50;
-+				drvdata->rog_ally_data->response_curve[xpad_mode_game][1][7] = 0x50;
++					drvdata->rog_ally_data->vibration_intensity[i][0] = 64;
++					drvdata->rog_ally_data->vibration_intensity[i][1] = 64;
++				}
 +
++				/* ignore all errors for this as they are related to USB HID I/O */
 +				__gamepad_mapping_xpad_default(drvdata->rog_ally_data);
++				__gamepad_mapping_wasd_default(drvdata->rog_ally_data);
 +				// these calls will never error so ignore the return
 +				__gamepad_mapping_store(&hdev->dev, "kb_f14", btn_pair_m1_m2,
 +							btn_pair_side_left, false); // M2
 +				__gamepad_mapping_store(&hdev->dev, "kb_f15", btn_pair_m1_m2,
 +							btn_pair_side_right, false); // M1
-+				ret = __gamepad_set_mode(&hdev->dev, xpad_mode_game);
-+				if (ret < 0)
-+					return ret;
++				__gamepad_set_mapping(&hdev->dev, btn_pair_m1_m2);
++				__gamepad_set_mode(&hdev->dev, xpad_mode_game);
 +			}
 +
 +			if (sysfs_create_groups(&hdev->dev.kobj, gamepad_device_attr_groups))
@@ -1760,7 +1772,7 @@ index 000000000000..f0a2b366a298
 +};
 diff --git a/drivers/hid/hid-asus-rog.h b/drivers/hid/hid-asus-rog.h
 new file mode 100644
-index 000000000000..4d81f0ce8c59
+index 000000000000..efad0b041d5d
 --- /dev/null
 +++ b/drivers/hid/hid-asus-rog.h
 @@ -0,0 +1,482 @@
@@ -1816,7 +1828,7 @@ index 000000000000..4d81f0ce8c59
 +#define KB_F14 "kb_f14"
 +#define KB_F15 "kb_f15"
 +
-+#define KB_BACKTICK "kb_`"
++#define KB_BACKTICK "kb_backtick"
 +#define KB_1 "kb_1"
 +#define KB_2 "kb_2"
 +#define KB_3 "kb_3"
@@ -1827,8 +1839,8 @@ index 000000000000..4d81f0ce8c59
 +#define KB_8 "kb_8"
 +#define KB_9 "kb_9"
 +#define KB_0 "kb_0"
-+#define KB_HYPHEN "kb_-"
-+#define KB_EQUALS "kb_="
++#define KB_HYPHEN "kb_hyphen"
++#define KB_EQUALS "kb_equals"
 +#define KB_BACKSPACE "kb_backspace"
 +
 +#define KB_TAB "kb_tab"
@@ -1842,8 +1854,8 @@ index 000000000000..4d81f0ce8c59
 +#define KB_I "kb_i"
 +#define KB_O "kb_o"
 +#define KB_P "kb_p"
-+#define KB_LBRACKET "kb_["
-+#define KB_RBRACKET "kb_]"
++#define KB_LBRACKET "kb_lbracket"
++#define KB_RBRACKET "kb_rbracket"
 +#define KB_BACKSLASH "kb_bkslash"
 +
 +#define KB_CAPS "kb_caps"
@@ -1856,8 +1868,8 @@ index 000000000000..4d81f0ce8c59
 +#define KB_J "kb_j"
 +#define KB_K "kb_k"
 +#define KB_L "kb_l"
-+#define KB_SEMI "kb_;"
-+#define KB_QUOTE "kb_'"
++#define KB_SEMI "kb_semicolon"
++#define KB_QUOTE "kb_quote"
 +#define KB_RET "kb_enter"
 +
 +#define KB_LSHIFT "kb_lshift"
@@ -1868,9 +1880,9 @@ index 000000000000..4d81f0ce8c59
 +#define KB_B "kb_b"
 +#define KB_N "kb_n"
 +#define KB_M "kb_m"
-+#define KB_COMA "kb_,"
-+#define KB_PERIOD "kb_."
-+#define KB_FWDSLASH "kb_/"
++#define KB_COMMA "kb_comma"
++#define KB_PERIOD "kb_period"
++#define KB_FWDSLASH "kb_fwdslash"
 +#define KB_RSHIFT "kb_rshift"
 +
 +#define KB_LCTL "kb_lctl"
@@ -1896,10 +1908,10 @@ index 000000000000..4d81f0ce8c59
 +#define KB_LEFT_ARROW "kb_left_arrow"
 +#define KB_RIGHT_ARROW "kb_right_arrow"
 +
-+#define NUMPAD_LCK "numpad_lck"
-+#define NUMPAD_FWDSLASH "numpad_/"
-+#define NUMPAD_STAR "numpad_*"
-+#define NUMPAD_HYPHEN "numpad_-"
++#define NUMPAD_LOCK "numpad_lock"
++#define NUMPAD_FWDSLASH "numpad_fwdslash"
++#define NUMPAD_ASTERISK "numpad_asterisk"
++#define NUMPAD_HYPHEN "numpad_hyphen"
 +#define NUMPAD_0 "numpad_0"
 +#define NUMPAD_1 "numpad_1"
 +#define NUMPAD_2 "numpad_2"
@@ -1910,7 +1922,7 @@ index 000000000000..4d81f0ce8c59
 +#define NUMPAD_7 "numpad_7"
 +#define NUMPAD_8 "numpad_8"
 +#define NUMPAD_9 "numpad_9"
-+#define NUMPAD_PLUS "numpad_+"
++#define NUMPAD_PLUS "numpad_plus"
 +#define NUMPAD_ENTER "numpad_enter"
 +#define NUMPAD_PERIOD "numpad_."
 +
@@ -2193,12 +2205,17 @@ index 000000000000..4d81f0ce8c59
 +	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 +};
 +
++/*
++ * the xpad_mode is used inside the mode setting packet and is used
++ * for indexing (xpad_mode - 1)
++ */
 +enum xpad_mode {
 +	xpad_mode_game = 0x01,
 +	xpad_mode_wasd = 0x02,
 +	xpad_mode_mouse = 0x03,
 +};
 +
++/* the xpad_cmd determines which feature is set or queried */
 +enum xpad_cmd {
 +	xpad_cmd_set_mode = 0x01,
 +	xpad_cmd_set_mapping = 0x02,
@@ -2212,20 +2229,15 @@ index 000000000000..4d81f0ce8c59
 +	xpad_cmd_set_adz = 0x18,
 +};
 +
++/*
++ * the xpad_mode is used in various set and query HID packets and is
++ * used for indexing (xpad_axis - 1)
++ */
 +enum xpad_axis {
 +	xpad_axis_xy_left = 0x01,
 +	xpad_axis_xy_right = 0x02,
 +	xpad_axis_z_left = 0x03,
 +	xpad_axis_z_right = 0x04,
-+};
-+
-+enum mcu_output_dev {
-+	mcu_output_dev_blank = 0x00,
-+	mcu_output_dev_xpad = 0x01,
-+	mcu_output_dev_keyboard = 0x02,
-+	mcu_output_dev_mouse = 0x03,
-+	mcu_output_dev_macro = 0x04,
-+	mcu_output_dev_media = 0x05,
 +};
 +
 +enum btn_pair {
@@ -2313,5 +2325,5 @@ index 000000000000..18317cad7110
 +extern const struct rog_ops rog_ally;
 \ No newline at end of file
 -- 
-2.41.0
+2.43.0
 

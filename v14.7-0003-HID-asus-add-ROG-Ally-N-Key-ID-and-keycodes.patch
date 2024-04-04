@@ -1,7 +1,7 @@
-From 2b1a33a519668105eb7261c2d8964da576be6146 Mon Sep 17 00:00:00 2001
+From 646c1ffacd59555825734bbcd2fa6e38100570c5 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Wed, 29 Nov 2023 22:18:11 +1300
-Subject: [PATCH v14.1 3/4] HID: asus: add ROG Ally N-Key ID and keycodes
+Subject: [PATCH v14.7 3/4] HID: asus: add ROG Ally N-Key ID and keycodes
 
 ---
  drivers/hid/hid-asus.c | 7 +++++++
@@ -34,7 +34,7 @@ index cdd998a761fe..3a1a6024d299 100644
  	    USB_DEVICE_ID_ASUSTEK_ROG_CLAYMORE_II_KEYBOARD),
  	  QUIRK_ROG_CLAYMORE_II_KEYBOARD },
 diff --git a/drivers/hid/hid-ids.h b/drivers/hid/hid-ids.h
-index c6e4e0d1f214..6debff9ad678 100644
+index 72046039d1be..ec9a41050446 100644
 --- a/drivers/hid/hid-ids.h
 +++ b/drivers/hid/hid-ids.h
 @@ -208,6 +208,7 @@
@@ -46,5 +46,5 @@ index c6e4e0d1f214..6debff9ad678 100644
  #define USB_DEVICE_ID_ASUSTEK_FX503VD_KEYBOARD	0x1869
  
 -- 
-2.41.0
+2.43.0
 

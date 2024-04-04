@@ -1,7 +1,7 @@
-From f311b6a3ff32c8221a0003c4a154aecbf04fb12c Mon Sep 17 00:00:00 2001
+From 5efbf21a6dc030b27e32cd632cfde1c3c7801075 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sat, 2 Dec 2023 17:27:23 +1300
-Subject: [PATCH v14.1 1/4] HID: asus: fix more n-key report descriptors if
+Subject: [PATCH v14.7 1/4] HID: asus: fix more n-key report descriptors if
  n-key quirked
 
 Adjusts the report descriptor for N-Key devices to
@@ -85,5 +85,5 @@ index 78cdfb8b9a7a..855972a4470f 100644
  }
  
 -- 
-2.41.0
+2.43.0
 

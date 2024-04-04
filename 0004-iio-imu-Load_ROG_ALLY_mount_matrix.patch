@@ -1,0 +1,51 @@
+diff --git a/drivers/iio/industrialio-core.c b/drivers/iio/industrialio-core.c
+index d752e9c..b495dba 100644
+--- a/drivers/iio/industrialio-core.c
++++ b/drivers/iio/industrialio-core.c
+@@ -13,6 +13,7 @@
+ #include <linux/cdev.h>
+ #include <linux/debugfs.h>
+ #include <linux/device.h>
++#include <linux/dmi.h>
+ #include <linux/err.h>
+ #include <linux/fs.h>
+ #include <linux/idr.h>
+@@ -571,6 +572,14 @@ static const struct iio_mount_matrix iio_mount_idmatrix = {
+ 	}
+ };
+ 
++static const struct iio_mount_matrix iio_mount_flip_x_z_matrix = {
++	.rotation = {
++		"-1", "0", "0",
++		"0", "1", "0",
++		"0", "0", "-1"
++	}
++};
++
+ static int iio_setup_mount_idmatrix(const struct device *dev,
+ 				    struct iio_mount_matrix *matrix)
+ {
+@@ -579,6 +588,14 @@ static int iio_setup_mount_idmatrix(const struct device *dev,
+ 	return 0;
+ }
+ 
++static int iio_setup_mount_flip_x_z_matrix(const struct device *dev,
++				    struct iio_mount_matrix *matrix)
++{
++	*matrix = iio_mount_flip_x_z_matrix;
++	dev_info(dev, "using flipped X-axis and flipped Z-axis mounting matrix...\n");
++	return 0;
++}
++
+ ssize_t iio_show_mount_matrix(struct iio_dev *indio_dev, uintptr_t priv,
+ 			      const struct iio_chan_spec *chan, char *buf)
+ {
+@@ -615,6 +632,8 @@ int iio_read_mount_matrix(struct device *dev, struct iio_mount_matrix *matrix)
+ 	int err;
+ 
+ 	err = device_property_read_string_array(dev, "mount-matrix", matrix->rotation, len);
++	if (dmi_match(DMI_BOARD_NAME, "RC71L"))
++		return iio_setup_mount_flip_x_z_matrix(dev, matrix);
+ 	if (err == len)
+ 		return 0;
+ 

@@ -12,7 +12,7 @@ pkgbase=linux-jcore
 pkgname=('linux-jcore' 'linux-jcore-headers')
 _kernelname=-jcore
 _hostname=jcore
-pkgver=6.6.6
+pkgver=6.6.25
 pkgrel=2
 pkgdesc="Kernel for Manjaro/EndeavourOS/Arch (ACS override patch include)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=(bc docbook-xsl libelf pahole python-sphinx git inetutils kmod xmlto
 replaces=('linux-acs-manjaro' 'linux-acs-manjaro-headers')
 options=('!strip')
 
-source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
+source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz
         config
         # Upstream Patches
         # ARCH Patches
@@ -32,13 +32,10 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         # Realtek patch
         0999-patch_realtek.patch
         # ROG ALLY Patches
-        0000-hid-asus-add-const-to-read-only-outgoing-usb-buffer.patch
-        0001-hid-asus-reset-the-backlight-brightness-level-on-resume.patch
-        v14.1-0001-HID-asus-fix-more-n-key-report-descriptors-if-.patch
-        v14.1-0002-HID-asus-make-asus_kbd_init-generic-remove-rog.patch
-        v14.1-0003-HID-asus-add-ROG-Ally-N-Key-ID-and-keycodes.patch
-        v14.1-0004-HID-asus-add-ROG-Ally-xpad-settings.patch
-        v14.1-fix-defaults1.patch
+        v14.7-0001-HID-asus-fix-more-n-key-report-descriptors-if-.patch
+        v14.7-0002-HID-asus-make-asus_kbd_init-generic-remove-rog.patch
+        v14.7-0003-HID-asus-add-ROG-Ally-N-Key-ID-and-keycodes.patch
+        v14.7-0004-HID-asus-add-ROG-Ally-xpad-settings.patch
         0006-platform-x86-asus-wmi-disable-USB0-hub-on-ROG-Ally-b.patch
         0007-mt7921e_Perform_FLR_to_recovery_the_device.patch
         # AMD GPU reset patches
@@ -50,24 +47,27 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         0001-ALSA-hda-cs35l41-Improve-support-for-ASUS-ROG-Ally.patch
         # Additional ALLY patches
         ROG-ALLY-NCT6775-PLATFORM.patch
-        0001-ROG-ALLY-bmi323-device.patch
+        0001-iio-imu_Add_driver_for_BMI323_IMU.patch
+        0002-iio-imu-bmi323-Make-the-local-structures-static.patch
+        0003-iio-imu_Add_ROG_ALLY_bmi323-support.patch
+        0004-iio-imu-Load_ROG_ALLY_mount_matrix.patch
+        0005-iio-imu-ASUS-ROG-ALLY-force-INT1-IRQ.patch
         # Steamdeck HID patches
         0001-HID.patch
+        # OrangePi Neo patches
+        0001-OrangePi-Neo-panel-orientation-quirk.patch
         # ACS override patch
-        '0999-acs.gitpatch')
+        0999-acs.gitpatch)
 
-sha256sums=('ebf70a917934b13169e1be5b95c3b6c2fea5bc14e6dc144f1efb8a0016b224c8'
-            '043ada1688a42e652bb0b339d2f9732c323c22da96bb2ca2bcf144a731c5e981'
+sha256sums=('99d210be87908233a55b0fadc0dccd3b95926c0651b6b82e37350b2029de1f44'
+            '9736c7856f4dd543d2172e1cb8a63cabdd6ed6fbf314dfdb5fe4c60b74954a68'
             '05f04019d4a2ee072238c32860fa80d673687d84d78ef436ae9332b6fb788467'
             'e1d17690dd21e8d5482b63ca66bfe6b478d39e8e8b59eedd53adb0a55ebc308d'
-            '3aa9f1ca47bb078f3c9a52fe61897cf4fe989068cd7e66bfa6644fd605fa40d2'
-            'fb2cd8a3ea9d47bd78c99b8ece1f3959c20b4de97a7959a12650f989f5c724da'
-            '7f3194f1a7c5ebc27bbfa4559cfd9a2ccffddbbd2d259c0d9c68631cb66c5855'
-            '176adde8fc3069bd28393bf0c9d788f1b0f9a186678aec4dc17b0b081c57f97b'
-            '493fa177cf602f087e981e95fad3764e305f4c486d4c2ef78255388b913be9cf'
-            '50ea381758fb8a8566f38a509fe7cf0448c77eaec5103066cafc2ecf02db1e9f'
-            '970687b811034e722befde62bcf6d51c7442a217074ed0fb71460bb1803f4c64'
-            'c00b23162fdbf50de375d8e444b6d59e2e3630cfac55ec1d06114b9dad00e542'
+            'a99b684fe5bc7fdacc6f5b1f2b6593672fc5d1e676c4de03ec29723747fc574b'
+            'b099ae83a3b561b8bff8b32b44b6f4835b99eb150c2314177aa0bc8ca96e2ead'
+            '10b60663195a65ec3b0f50b49e4c0af952369ee5afe95e11a69ffccefc020eb2'
+            '3c8b877dfaf85acf45b54c85a44fa269aa1512ea3781fe551cf6d4e2d69c992d'
+            '73aa4be8c1abcf1b24c9a5c5072e68da3da82df807f3ff49660a100d7634da1d'
             '836e88044263f7bc474ca466b3d0d98c39e265db94925c300d0b138492946a13'
             'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
             '1f62542a889a6c2eafd43acd0699f54720ed891eeda66a4a9261d75b92f28b7f'
@@ -76,8 +76,13 @@ sha256sums=('ebf70a917934b13169e1be5b95c3b6c2fea5bc14e6dc144f1efb8a0016b224c8'
             '79970a4729572cb25fd4644d66f38ecd5b3e1610a42ea4bbe436b501f3469fa2'
             '430a7f971d78d0873708e0ad38fba602ceafefd4da8ebbf9d9c591bc4799acb5'
             'cfcd5c177423df8b7b98b0500fe7ab0757f895ed945c33e205963f0069c7a3be'
-            '5574a68b1c7733769835bb856a8c32e54398dfde59f264708672b87b73b3c6ea'
+            '708a9899f80db35fb0f06e0144c361eac9a9b2d154cf2fa388a0b4810847e24c'
+            '514fd03c17245ed0aaee63e8830c9b02b00efa0307f7e0989065edec6ae185f0'
+            'fccdf24b25620dd8271bb3b52ddc53f8882dec26518258dc47e1469fed33e516'
+            'c3b901db58288b5cc5d8a947ac8ffec339870b00aba493d68a39f65c4ff3d869'
+            '5792a59a0c726a205ae1c1728700ea3e6385231cadc2cfdd2db08295b100638c'
             '7c948773d758418d8a436067265d678c444827562c46b9fced2ff31ced108481'
+            'aa2ff6edca0177b864868fdc2752d3a0eaaf5b801bd17e5c59dfd78999226d83'
             '458d7e024d33d4965b14b9b987f01a2884ff28761cff5da7c6a54132a95e9f36')
 
 prepare() {

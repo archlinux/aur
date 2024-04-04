@@ -1,7 +1,7 @@
-From 119615a0034ee5f8d7a949c1c9d992b1be125fcb Mon Sep 17 00:00:00 2001
+From d6b33439281d1b8cf93b0c5c5ecabcd9c6e7baad Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sat, 2 Dec 2023 17:47:59 +1300
-Subject: [PATCH v14.1 2/4] HID: asus: make asus_kbd_init() generic, remove
+Subject: [PATCH v14.7 2/4] HID: asus: make asus_kbd_init() generic, remove
  rog_nkey_led_init()
 
 Some of the n-key stuff is old and outdated, so
@@ -126,5 +126,5 @@ index 855972a4470f..cdd998a761fe 100644
  			return ret;
  
 -- 
-2.41.0
+2.43.0
 

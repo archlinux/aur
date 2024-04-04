@@ -1,0 +1,37 @@
+Make the local structures static within their respective driver files.
+
+Reported-by: kernel test robot <lkp@intel.com>
+Closes: https://lore.kernel.org/oe-kbuild-all/202311070530.qKhLTz1Y-lkp@intel.com/
+Fixes: b512c767e7bc ("iio: imu: Add driver for BMI323 IMU")
+Signed-off-by: Jagath Jog J <jagathjog1996@gmail.com>
+---
+ drivers/iio/imu/bmi323/bmi323_i2c.c | 2 +-
+ drivers/iio/imu/bmi323/bmi323_spi.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/iio/imu/bmi323/bmi323_i2c.c b/drivers/iio/imu/bmi323/bmi323_i2c.c
+index 0008e186367d..20a8001b9956 100644
+--- a/drivers/iio/imu/bmi323/bmi323_i2c.c
++++ b/drivers/iio/imu/bmi323/bmi323_i2c.c
+@@ -66,7 +66,7 @@ static struct regmap_bus bmi323_regmap_bus = {
+ 	.write = bmi323_regmap_i2c_write,
+ };
+ 
+-const struct regmap_config bmi323_i2c_regmap_config = {
++static const struct regmap_config bmi323_i2c_regmap_config = {
+ 	.reg_bits = 8,
+ 	.val_bits = 16,
+ 	.max_register = BMI323_CFG_RES_REG,
+diff --git a/drivers/iio/imu/bmi323/bmi323_spi.c b/drivers/iio/imu/bmi323/bmi323_spi.c
+index 6dc3352dd714..7b1e8127d0dd 100644
+--- a/drivers/iio/imu/bmi323/bmi323_spi.c
++++ b/drivers/iio/imu/bmi323/bmi323_spi.c
+@@ -41,7 +41,7 @@ static struct regmap_bus bmi323_regmap_bus = {
+ 	.write = bmi323_regmap_spi_write,
+ };
+ 
+-const struct regmap_config bmi323_spi_regmap_config = {
++static const struct regmap_config bmi323_spi_regmap_config = {
+ 	.reg_bits = 8,
+ 	.val_bits = 16,
+ 	.pad_bits = 8,

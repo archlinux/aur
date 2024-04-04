@@ -1,0 +1,40 @@
+diff --git a/drivers/iio/imu/bmi323/bmi323_core.c b/drivers/iio/imu/bmi323/bmi323_core.c
+index 0bd5ded..eae7756 100644
+--- a/drivers/iio/imu/bmi323/bmi323_core.c
++++ b/drivers/iio/imu/bmi323/bmi323_core.c
+@@ -10,6 +10,7 @@
+ #include <linux/bitfield.h>
+ #include <linux/cleanup.h>
+ #include <linux/device.h>
++#include <linux/dmi.h>
+ #include <linux/interrupt.h>
+ #include <linux/minmax.h>
+ #include <linux/module.h>
+@@ -1870,6 +1871,8 @@ static int bmi323_trigger_probe(struct bmi323_data *data,
+ 		return -ENODEV;
+ 
+ 	irq = fwnode_irq_get_byname(fwnode, "INT1");
++	if (dmi_match(DMI_BOARD_NAME, "RC71L"))
++		irq = 1; // force IRQ INT1 for ASUS ROG ALLY
+ 	if (irq > 0) {
+ 		irq_pin = BMI323_IRQ_INT1;
+ 	} else {
+@@ -1886,6 +1889,8 @@ static int bmi323_trigger_probe(struct bmi323_data *data,
+ 				     "Could not find IRQ %d\n", irq);
+ 
+ 	irq_type = irqd_get_trigger_type(desc);
++	if (dmi_match(DMI_BOARD_NAME, "RC71L"))
++		irq_type = IRQF_TRIGGER_RISING; // forcing trigger type for ASUS ROG ALLY
+ 	switch (irq_type) {
+ 	case IRQF_TRIGGER_RISING:
+ 		latch = false;
+@@ -1910,7 +1915,8 @@ static int bmi323_trigger_probe(struct bmi323_data *data,
+ 	}
+ 
+ 	open_drain = fwnode_property_read_bool(fwnode, "drive-open-drain");
+-
++	if (dmi_match(DMI_BOARD_NAME, "RC71L"))
++		open_drain = false; // forcing whether open drain (true) or push-pull (false) for ROG ALLY
+ 	ret = bmi323_int_pin_config(data, irq_pin, active_high, open_drain,
+ 				    latch);
+ 	if (ret)
