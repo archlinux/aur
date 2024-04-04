@@ -1,0 +1,15 @@
+pkgbase = mail4one
+	pkgdesc = Personal Mail Server
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/mail4one/mail4one
+	install = mail4one.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-pip
+	depends = python
+	source = git+https://gitea.balki.me/balki/mail4one.git#tag=v1.1
+	sha256sums = 51bf373725f16a79b08efa190711b57d0c74c4bf2eeb725b780484fca006d851
+
+pkgname = mail4one

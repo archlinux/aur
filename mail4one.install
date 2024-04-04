@@ -1,0 +1,20 @@
+
+## arg 1:  the new package version
+post_install() {
+		cat <<-'EOM'
+		**See https://github.com/mail4one/mail4one for help/support/issues. Quickstart below**
+		--------------------------------------------------------------
+		**Generate passwordhash**
+		    mail4one -g
+		**Edit/Create config**
+		    cp /usr/share/doc/mail4one/config.sample .
+		    # edit config.sample
+		    yq -oj -py config.sample | sudo tee /etc/mail4one/config.json
+		**Setup certbot and install deploy hook**
+		    sudo install -Dm755 /usr/share/doc/mail4one/mail4one_cert_copy.sh -t /etc/letsencrypt/renewal-hooks/deploy
+		    # Change domain name here. /etc/letsencrypt/renewal-hooks/deploy/mail4one_cert_copy.sh
+		**Enable service**
+		    sudo systemctl enable mail4one.service
+		==============================================================
+		EOM
+}
