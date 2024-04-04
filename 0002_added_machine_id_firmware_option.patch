@@ -7,7 +7,7 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 ===================================================================
 diff --git a/man/machine-id.xml b/man/machine-id.xml
 --- a/man/machine-id.xml	(revision 99a1ef8c9cdcb0fc15265533dae2bbd8f2d7a3a5)
-+++ b/man/machine-id.xml	(revision 3a01c4414175e630e1c2e62fa8cc89dfc61d55ee)
++++ b/man/machine-id.xml	(revision fe3fa3d6a2a02f665ebca19088873165e24ad0db)
 @@ -102,7 +102,7 @@
      value of the kernel command line option <varname>container_uuid</varname>, the KVM DMI
      <filename>product_uuid</filename> or the devicetree <filename>vm,uuid</filename>
@@ -24,7 +24,7 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 ===================================================================
 diff --git a/src/core/main.c b/src/core/main.c
 --- a/src/core/main.c	(revision 99a1ef8c9cdcb0fc15265533dae2bbd8f2d7a3a5)
-+++ b/src/core/main.c	(revision 3a01c4414175e630e1c2e62fa8cc89dfc61d55ee)
++++ b/src/core/main.c	(revision fe3fa3d6a2a02f665ebca19088873165e24ad0db)
 @@ -354,10 +354,11 @@
                  if (proc_cmdline_value_missing(key, value))
                          return 0;
@@ -48,7 +48,7 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 ===================================================================
 diff --git a/src/shared/machine-id-setup.c b/src/shared/machine-id-setup.c
 --- a/src/shared/machine-id-setup.c	(revision 99a1ef8c9cdcb0fc15265533dae2bbd8f2d7a3a5)
-+++ b/src/shared/machine-id-setup.c	(revision 3a01c4414175e630e1c2e62fa8cc89dfc61d55ee)
++++ b/src/shared/machine-id-setup.c	(revision fe3fa3d6a2a02f665ebca19088873165e24ad0db)
 @@ -1,6 +1,7 @@
  /* SPDX-License-Identifier: LGPL-2.1-or-later */
 
@@ -65,9 +65,9 @@ diff --git a/src/shared/machine-id-setup.c b/src/shared/machine-id-setup.c
 +        _cleanup_free_ char *buf = NULL;
 +        int r;
 +
-+        r = proc_cmdline_get_key("systemd.machine_id_smbios", PROC_CMDLINE_VALUE_OPTIONAL, &buf);
++        r = proc_cmdline_get_key("systemd.machine_id", PROC_CMDLINE_VALUE_OPTIONAL, &buf);
 +        if (r < 0) {
-+                log_warning_errno(r, "Failed to read systemd.machine_id_smbios from kernel command line, ignoring: %m");
++                log_warning_errno(r, "Failed to read systemd.machine_id from kernel command line, ignoring: %m");
 +                return false;
 +        }
 +

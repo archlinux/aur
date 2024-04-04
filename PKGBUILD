@@ -15,7 +15,7 @@ _tag='255.4'
 # ➜ vercmp 255rc1 255
 # -1
 pkgver="${_tag/~/}"
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
 url='https://www.github.com/systemd/systemd'
@@ -35,7 +35,7 @@ validpgpkeys=('63CDA1E5D3FC22B998D20DD6327F26951A015CC4'  # Lennart Poettering <
 source=("$pkgbase-stable::git+https://github.com/systemd/systemd-stable#tag=v${_tag}"
 #        "$pkgbase::git+https://github.com/systemd/systemd#tag=v${_tag%.*}?signed"
         '0001-Use-Arch-Linux-device-access-groups.patch'
-        '0002_added_machine_id_smbios_variable.patch'
+        '0002_added_machine_id_firmware_option.patch'
         # bootloader files
         'arch.conf'
         'loader.conf'
@@ -57,7 +57,7 @@ source=("$pkgbase-stable::git+https://github.com/systemd/systemd-stable#tag=v${_
 
 sha512sums=('0c41c21931c5f08b5c91fe718d90f8cb11fb83429b3028bde9922605a35ea81d8452b00af99775b519b19195b8ba0084147d13dec1c5dfe9c905d769018b0676'
             '3ccf783c28f7a1c857120abac4002ca91ae1f92205dcd5a84aff515d57e706a3f9240d75a0a67cff5085716885e06e62597baa86897f298662ec36a940cf410e'
-            '335e6d0b43c898655127fc4032a235b7add7c917c52a8973ab5eee0d02685aba648f428c167ff6319b8af76ae63a9c1b7fa92f0cae835d6409ccc0421ef8718b'
+            'b5ed67bc584e908712bae5cc7c073af1879b4f037806eb996c5c77e9d36c36941cc0c24d5644efcb98048d7b3339482bb5067a7254932b05e614a162dec4bc96'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
             'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
             '5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75'
