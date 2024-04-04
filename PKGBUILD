@@ -2,21 +2,18 @@
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 
 pkgname=photoqt
-pkgver=4.3
-pkgrel=3
+pkgver=4.4
+pkgrel=1
 pkgdesc="Fast and highly configurable image viewer with a simple and nice interface."
 arch=('x86_64')
 url="http://photoqt.org/"
 license=('GPL2')
-depends=('exiv2' 'imagemagick' 'qt6-imageformats' 'qt6-multimedia' 'qt6-svg' 'qt6-declarative' 'qt6-location' 'qt6-positioning' 'libraw' 'hicolor-icon-theme' 'libarchive' 'kimageformats' 'pugixml' 'mpv' 'resvg' 'python-pychromecast' 'qt6-webengine' 'zxing-cpp')
+depends=('exiv2' 'imagemagick' 'qt6-imageformats' 'qt6-multimedia' 'qt6-svg' 'qt6-declarative' 'qt6-location' 'qt6-positioning' 'libraw' 'hicolor-icon-theme' 'libarchive' 'kimageformats' 'pugixml' 'mpv' 'resvg' 'python-pychromecast' 'qt6-webengine' 'zxing-cpp' 'lcms2')
 optdepends=('libqpsd-git: PSB/PSD support'
-            'xcftools: XCF support'
-            'poppler-qt6: PDF support')
+            'xcftools: XCF support')
 makedepends=('cmake' 'qt6-tools' 'extra-cmake-modules')
-source=(https://photoqt.org/downloads/source/$pkgname-$pkgver.tar.gz
-        magick.patch)
-sha256sums=('07466e6ef5881191670f6bfbe1ba4fbfeff0afbbda1d2f503f8ffff7f69f8f34'
-            'a757cf48c09102de01071841af1d154e20826f9b00665d45c1bb4132e789390f')
+source=(https://photoqt.org/downloads/source/$pkgname-$pkgver.tar.gz)
+sha256sums=('b789f6736f1fe17da3bd6864c1586d9b2ce412e37563e0e8c9f44ba9540f0876')
 
 # NOTE
 # To use GraphicsMagick instead of ImageMagick replace it in the depends array above and change
@@ -35,7 +32,7 @@ prepare() {
 
   patch -p1 < $srcdir/magick.patch
 
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DFREEIMAGE=OFF -DDEVIL=OFF -DPOPPLER=OFF -DQTPDF=ON -DIMAGEMAGICK=ON -DGRAPHICSMAGICK=OFF -DLIBVIPS=OFF -DVIDEO_MPV=ON -DCHROMECAST=ON -DRESVG=ON -DZXING=ON -DCMAKE_BUILD_TYPE=Release
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DFREEIMAGE=OFF -DDEVIL=OFF -DPOPPLER=OFF -DQTPDF=ON -DIMAGEMAGICK=ON -DGRAPHICSMAGICK=OFF -DLIBVIPS=OFF -DVIDEO_MPV=ON -DCHROMECAST=ON -DRESVG=ON -DZXING=ON -DLCMS2=ON -DCMAKE_BUILD_TYPE=Release
 
 }
 
