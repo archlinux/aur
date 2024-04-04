@@ -1,6 +1,6 @@
 pkgbase = liana-bin
         pkgdesc = A Bitcoin wallet focused on recovery options (includes headless daemon and GUI).
-        pkgver = 4.0
+        pkgver = 5.0
         pkgrel = 1
         url = https://github.com/wizardsardine/liana
         arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = liana-bin
         depends = fontconfig>=2.12.6
         depends = freetype2>=2.8
         depends = systemd-libs
-        source = https://github.com/wizardsardine/liana/releases/download/v4.0/liana_4.0-1_amd64.deb
-        sha256sums = c8da42fcfa41988a38d92c30ad00eba9fca76a6f2f1a57f52ce12feafea0349c
+        source = https://github.com/wizardsardine/liana/releases/download/v5.0/liana_5.0-1_amd64.deb
+        sha256sums = ccb196a37c5aba31e15df7604a53033aa372b65b7a3bd05b978ac0ee7ce229f7
 
 pkgname = liana-bin
