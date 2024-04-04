@@ -1,0 +1,18 @@
+pkgbase = quirc-git
+	pkgdesc = QR decoder library (git version)
+	pkgver = 1.2.r0.g542848d
+	pkgrel = 1
+	url = https://github.com/dlbeer/quirc/
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	depends = libjpeg
+	depends = libpng
+	depends = sdl_gfx
+	depends = v4l-utils
+	provides = quirc
+	conflicts = quirc
+	source = git+https://github.com/dlbeer/quirc.git
+	sha256sums = SKIP
+
+pkgname = quirc-git
