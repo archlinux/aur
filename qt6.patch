@@ -1,0 +1,11 @@
+--- a/buildsystem/check_qml_module.py
++++ b/buildsystem/check_qml_module.py
+@@ -83,7 +83,7 @@
+             return False
+ 
+         ret = subprocess.run(
+-            [ qmake, "-qtconf", qtconf, "-query"],
++            [ qmake, "-query"],
+             capture_output=True,
+             encoding="utf8"
+         )

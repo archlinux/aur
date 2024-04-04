@@ -12,7 +12,7 @@
 
 pkgname="vlc-git"
 pkgdesc="Multi-platform MPEG, VCD/DVD, and DivX player"
-pkgver=4.0.0.r27672.gf030c94478
+pkgver=4.0.0.r28432.gfb836a9395
 pkgrel=1
 url='https://code.videolan.org/videolan/vlc'
 arch=('i686' 'x86_64')
@@ -20,10 +20,10 @@ license=('LGPL2.1' 'GPL2')
 depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'lua52'
          'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 'libmad'
          'libmpeg2' 'xcb-util-keysyms' 'libxinerama' 'libsecret'
-         'libarchive' 'qt5-base' 'qt5-x11extras' 'qt5-svg' 'freetype2'
+         'libarchive' 'qt6-base' 'qt6-svg' 'freetype2' 'qt6-shadertools' 'qt6-declarative'
          'fribidi' 'harfbuzz' 'fontconfig' 'libxml2' 'gnutls' 'wayland-protocols'
-         'libidn' 'aribb24' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'libmicrodns>=0.1.2'
-         'libplacebo' 'libixml.so')
+         'libidn' 'aribb24' 'libmicrodns>=0.1.2' 'qt6-5compat'
+         'libplacebo' 'libixml.so' 'qt6-wayland')
 makedepends=('gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
              'flac' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
              'librsvg' 'libgme' 'twolame' 'avahi' 'systemd-libs'
@@ -103,9 +103,11 @@ provides=("${_name}=${pkgver}")
 options=(!emptydirs)
 source=('git+https://code.videolan.org/videolan/vlc.git'
         'vlc-live-media-2021.patch'
+        'qt6.patch'
         'update-vlc-plugin-cache.hook')
 b2sums=('SKIP'
         '76103422a1eaad40d33bfb7897bf25c1b5748729270974bec13f642f2861c4458f0dc07b5fb68d9ba4fae6e44d4a6c8e4d67af7ec10e0c117f1b804dd06868e3'
+        'a3dd8dc5cf427c6f03be6502aceaeeb41ed2f91529eb0afa5be5290d5d7801a7df319e54ebaf63350bd692e77e40ec8fde95781d31e02372ae189142b666e97b'
         'fe3849f45fb91d3697573a9c23b90b78ff0bef5f94c42bc6e7c14427637f45f2fc86786803fb9b36c657ac2c50f6bf3c860cd763248711308ceab2bfcf7be49a')
 
 pkgver() {
@@ -121,6 +123,7 @@ prepare() {
   sed -e 's:truetype/ttf-dejavu:TTF:g' -i modules/visualization/projectm.cpp
   sed -e 's|-Werror-implicit-function-declaration||g' -i configure
   patch -Np1 < "${srcdir}"/vlc-live-media-2021.patch
+  patch -Np1 < "${srcdir}"/qt6.patch
   sed 's|whoami|echo builduser|g' -i configure
   sed 's|hostname -f|echo arch|g' -i configure
   autoreconf -vf
@@ -137,7 +140,8 @@ build() {
   # upstream doesn't support lua 5.4 yet: https://trac.videolan.org/vlc/ticket/25036
   export LUAC=/usr/bin/luac5.2
   export LUA_LIBS="$(pkg-config --libs lua5.2)"
-  export RCC=/usr/bin/rcc-qt5
+  export RCC=/usr/lib/qt6/rcc
+  export QMAKE=/usr/bin/qmake6
   export PKG_CONFIG_PATH="/usr/lib/pkgconfig/:$PKG_CONFIG_PATH"
 
   ./configure --prefix=/usr \

@@ -1,6 +1,6 @@
 pkgbase = vlc-git
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player
-	pkgver = 4.0.0.r27672.gf030c94478
+	pkgver = 4.0.0.r28432.gfb836a9395
 	pkgrel = 1
 	url = https://code.videolan.org/videolan/vlc
 	arch = i686
@@ -89,10 +89,11 @@ pkgbase = vlc-git
 	depends = libxinerama
 	depends = libsecret
 	depends = libarchive
-	depends = qt5-base
-	depends = qt5-x11extras
-	depends = qt5-svg
+	depends = qt6-base
+	depends = qt6-svg
 	depends = freetype2
+	depends = qt6-shadertools
+	depends = qt6-declarative
 	depends = fribidi
 	depends = harfbuzz
 	depends = fontconfig
@@ -101,11 +102,11 @@ pkgbase = vlc-git
 	depends = wayland-protocols
 	depends = libidn
 	depends = aribb24
-	depends = qt5-quickcontrols2
-	depends = qt5-graphicaleffects
 	depends = libmicrodns>=0.1.2
+	depends = qt6-5compat
 	depends = libplacebo
 	depends = libixml.so
+	depends = qt6-wayland
 	optdepends = avahi: service discovery using bonjour protocol
 	optdepends = gst-plugins-base-libs: for libgst plugins
 	optdepends = libdvdcss: decoding encrypted DVDs
@@ -166,14 +167,16 @@ pkgbase = vlc-git
 	optdepends = aom: AOM AV1 codec
 	optdepends = srt: SRT input/output plugin
 	optdepends = dav1d: dav1d AV1 decoder
-	provides = vlc=4.0.0.r27672.gf030c94478
+	provides = vlc=4.0.0.r28432.gfb836a9395
 	conflicts = vlc
 	options = !emptydirs
 	source = git+https://code.videolan.org/videolan/vlc.git
 	source = vlc-live-media-2021.patch
+	source = qt6.patch
 	source = update-vlc-plugin-cache.hook
 	b2sums = SKIP
 	b2sums = 76103422a1eaad40d33bfb7897bf25c1b5748729270974bec13f642f2861c4458f0dc07b5fb68d9ba4fae6e44d4a6c8e4d67af7ec10e0c117f1b804dd06868e3
+	b2sums = a3dd8dc5cf427c6f03be6502aceaeeb41ed2f91529eb0afa5be5290d5d7801a7df319e54ebaf63350bd692e77e40ec8fde95781d31e02372ae189142b666e97b
 	b2sums = fe3849f45fb91d3697573a9c23b90b78ff0bef5f94c42bc6e7c14427637f45f2fc86786803fb9b36c657ac2c50f6bf3c860cd763248711308ceab2bfcf7be49a
 
 pkgname = vlc-git
