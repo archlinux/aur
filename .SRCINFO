@@ -9,6 +9,7 @@ pkgbase = libcuba
 	makedepends = automake
 	makedepends = gcc
 	options = staticlibs
+	options = !lto
 	source = https://github.com/jschueller/cuba/archive/refs/heads/main.zip
 	sha256sums = SKIP
 
