@@ -2,8 +2,8 @@
 
 _pkgname="tsukimi"
 pkgname="${_pkgname}-git"
-pkgver=0.3.0.r88.g6805baf
-pkgrel=2
+pkgver=0.3.0.r103.gbd893fa
+pkgrel=1
 pkgdesc='A simple third-party Emby client'
 arch=('x86_64')
 url="https://github.com/tsukinaha/tsukimi"
@@ -45,7 +45,8 @@ build() {
 package() {
 	cd "${_pkgname}"
 	export RUSTUP_TOOLCHAIN=stable
-	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${_pkgname}"
-	install -Dm 644 -t "${pkgdir}"/usr/share/applications/ "${srcdir}"/tsukimi.desktop
-	install -Dm 644 -t "${pkgdir}"/usr/share/pixmaps/ "${srcdir}"/tsukimi.png
+	install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/${_pkgname}"
+	install -Dm 644 -t "${pkgdir}/usr/share/glib-2.0/schemas" "moe.tsuna.tsukimi.gschema.xml"
+	install -Dm 644 -t "${pkgdir}/usr/share/applications/" "${srcdir}/tsukimi.desktop"
+	install -Dm 644 -t "${pkgdir}/usr/share/pixmaps/" "${srcdir}/tsukimi.png"
 }
