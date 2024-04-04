@@ -1,7 +1,7 @@
 pkgbase = mail4one
 	pkgdesc = Personal Mail Server
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mail4one/mail4one
 	install = mail4one.install
 	arch = any
