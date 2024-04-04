@@ -6,7 +6,6 @@ pkgname="$_pkgname-git"
 pkgver=r24.fbfb66a
 pkgrel=1
 provides=("$_pkgname")
-conflicts=("$_pkgname")
 pkgdesc='GCCコンパイラーを可愛くしましょう！Make your GCC compiler kawaii. '
 arch=(any)
 url='https://github.com/Bill-Haku/kawaii-gcc'

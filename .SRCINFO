@@ -9,7 +9,6 @@ pkgbase = kawaii-gcc-git
 	makedepends = git
 	makedepends = gettext
 	provides = kawaii-gcc
-	conflicts = kawaii-gcc
 	source = git+https://github.com/Bill-Haku/kawaii-gcc
 	sha256sums = SKIP
 
