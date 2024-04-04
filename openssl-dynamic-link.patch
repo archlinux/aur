@@ -1,0 +1,38 @@
+--- ./linux/CMakeLists.txt.orig
++++ ./linux/CMakeLists.txt
+@@ -9,6 +9,9 @@
+ # https://wiki.gnome.org/HowDoI/ChooseApplicationID
+ set(APPLICATION_ID "chat.fluffy.fluffychat")
+ 
++# dynamically link OpenSSL
++set(OPENSSL_USE_STATIC_LIBS OFF)
++
+ # Explicitly opt in to modern CMake behaviors to avoid warnings with recent
+ # versions of CMake.
+ cmake_policy(SET CMP0063 NEW)
+--- ./pubspec.lock.orig
++++ ./pubspec.lock
+@@ -1799,10 +1799,10 @@
+     dependency: "direct main"
+     description:
+       name: sqlcipher_flutter_libs
+-      sha256: e2d4dde4288c7fd1fd1cc0b1d39a9cf537ec236fed0c6dcd54b577543872a19d
++      sha256: "60fe3444ff5b1b298a9ca3003c6c7f1f7ee4c90aa6035a8647f3aeaf05a073e2"
+       url: "https://pub.dev"
+     source: hosted
+-    version: "0.6.0"
++    version: "0.6.1"
+   sqlite3:
+     dependency: transitive
+     description:
+--- ./pubspec.yaml.orig
++++ ./pubspec.yaml
+@@ -83,7 +83,7 @@
+   shared_preferences: ^2.2.0 # Pinned because https://github.com/flutter/flutter/issues/118401
+   slugify: ^2.0.0
+   sqflite_common_ffi: ^2.3.0+4
+-  sqlcipher_flutter_libs: ^0.6.0
++  sqlcipher_flutter_libs: ^0.6.1
+   swipe_to_action: ^0.2.0
+   tor_detector_web: ^1.1.0
+   uni_links: ^0.5.1

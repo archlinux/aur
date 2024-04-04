@@ -20,6 +20,8 @@ depends=(
         'libolm'
         # flutter_file_picker - see https://github.com/miguelpruivo/flutter_file_picker/blob/master/lib/src/linux/file_picker_linux.dart#L115
         'zenity'
+        # sqlite encryption
+        'openssl'
 )
 makedepends=(
              'git'
@@ -28,8 +30,12 @@ makedepends=(
              )
 provides=("$_name")
 conflicts=("$_name")
-source=("git+https://github.com/krille-chan/fluffychat.git")
-sha256sums=('SKIP')
+source=(
+        "git+https://github.com/krille-chan/fluffychat.git"
+        "openssl-dynamic-link.patch"
+)
+sha256sums=('SKIP'
+            '30cabdeb108d7766b55c002978d8ef64df4dfba2e3e7b872de774727afa50730')
 
 pkgver() {
     cd ${_name}
@@ -50,6 +56,7 @@ prepare() {
     export CFLAGS="${CFLAGS/-fstack-clash-protection/ }"
   fi
   
+  patch -p1 -i "${srcdir}/openssl-dynamic-link.patch" -d .
   flutter pub get
 }
 

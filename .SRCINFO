@@ -15,6 +15,7 @@ pkgbase = fluffychat-git
 	depends = xdg-user-dirs
 	depends = libolm
 	depends = zenity
+	depends = openssl
 	provides = fluffychat
 	conflicts = fluffychat
 	source = git+https://github.com/krille-chan/fluffychat.git
