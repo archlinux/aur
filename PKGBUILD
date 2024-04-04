@@ -38,7 +38,7 @@ makedepends=("python-build" "python-installer" "python-wheel")
 
 source=("${_name}-${pkgver}.tar.gz::https://github.com/standardebooks/tools/archive/refs/tags/${pkgver}.tar.gz")
 
-sha512sum=("404e4dc9d77472db1ddee277fcfa86ffb4c464537bcde15147fc9a73eaff3005a413a1277546d68d63c85d534bbe40dbf82253f3d338c18ca6023c385ab1285a")
+sha512sums=("404e4dc9d77472db1ddee277fcfa86ffb4c464537bcde15147fc9a73eaff3005a413a1277546d68d63c85d534bbe40dbf82253f3d338c18ca6023c385ab1285a")
 
 prepare() {
   # Fix `importlib_resources` deprecation
