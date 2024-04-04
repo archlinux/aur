@@ -9,7 +9,7 @@
 pkgbase=nix-git
 pkgname=(nix-git nix-docs-git)
 _pkgname=${pkgbase%-git}
-pkgver=2.2.r7982.g60f06a1
+pkgver=2.2.r10010.g50cb14f
 pkgrel=1
 pkgdesc='A purely functional package manager'
 arch=(x86_64 i686)
@@ -29,6 +29,7 @@ makedepends=(autoconf-archive
              gtest
              jq
              libcpuid
+             libgit2
              libseccomp
              libsodium
              lowdown
@@ -55,7 +56,7 @@ sha256sums=('SKIP'
 prepare() {
 	cd "$_pkgname"
 	sed -i "s:\$(bindir):src/nix:g" doc/manual/local.mk
-	./bootstrap.sh
+	autoreconf -vfi
 }
 
 pkgver() {

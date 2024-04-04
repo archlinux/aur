@@ -1,6 +1,6 @@
 pkgbase = nix-git
 	pkgdesc = A purely functional package manager
-	pkgver = 2.2.r7982.g60f06a1
+	pkgver = 2.2.r10010.g50cb14f
 	pkgrel = 1
 	url = https://nixos.org/nix
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = nix-git
 	makedepends = gtest
 	makedepends = jq
 	makedepends = libcpuid
+	makedepends = libgit2
 	makedepends = libseccomp
 	makedepends = libsodium
 	makedepends = lowdown
@@ -62,7 +63,7 @@ pkgname = nix-git
 	depends = nix-busybox
 	depends = openssl
 	depends = sqlite
-	provides = nix=2.2.r7982.g60f06a1
+	provides = nix=2.2.r10010.g50cb14f
 	conflicts = nix
 	backup = etc/nix/nix.conf
 
