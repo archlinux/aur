@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Maintainer: Evariste Galois <evariste galois one one at proton dot me>
+# Maintainer: EvaristeGalois11 <turbo dot backslid four zero zero at passinbox dot com>
 # Contributor: PumpkinCheshire <me at pumpkincheshire dot com>
 # Contributor:  <tigersoldi at gmail dot com>
 
