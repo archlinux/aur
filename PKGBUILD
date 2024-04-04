@@ -19,9 +19,21 @@ build () {
 
 package () {
 	cd pluto-git
+
 	mkdir -p $pkgdir/usr/bin
 	cp src/pluto $pkgdir/usr/bin/pluto
 	cp src/plutoc $pkgdir/usr/bin/plutoc
+
+	mkdir -p $pkgdir/usr/lib
+	cp src/libpluto.a $pkgdir/usr/lib/libpluto.a
+
+	mkdir -p $pkgdir/usr/include/pluto
+	cp src/lua.h $pkgdir/usr/include/pluto/lua.h
+	cp src/lua.hpp $pkgdir/usr/include/pluto/lua.hpp
+	cp src/lualib.h $pkgdir/usr/include/pluto/lualib.h
+	cp src/lauxlib.h $pkgdir/usr/include/pluto/lauxlib.h
+	cp src/luaconf.h $pkgdir/usr/include/pluto/luaconf.h
+
 	mkdir -p $pkgdir/usr/share/licenses/$pkgname/
 	cp LICENSE $pkgdir/usr/share/licenses/$pkgname/
 }
