@@ -1,4 +1,4 @@
-pkgbase = tracktion-waveform
+pkgbase = tracktion-waveform-beta
 	pkgdesc = Audio and MIDI Workstation (DAW)
 	pkgver = 13.0.33
 	pkgrel = 1
@@ -46,4 +46,4 @@ pkgbase = tracktion-waveform
 	source_aarch64 = https://cdn.tracktion.com/file/tracktiondownload/w13/13033/waveform13_13.0.33_arm64.deb
 	sha256sums_aarch64 = 3e3a232db05064652c9d827d2c253678cc14611b9fe02a9e04f6dd6afe537d76
 
-pkgname = tracktion-waveform
+pkgname = tracktion-waveform-beta

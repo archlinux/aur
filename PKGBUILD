@@ -3,7 +3,7 @@
 # Based on tracktion-7 aur package from Felipe F. Tonello <eu@felipetonello.com>
 # Based on tracktion-6 aur package from boltbuckle <amygdala@cheerful.com>
 
-pkgname=tracktion-waveform
+pkgname=tracktion-waveform-beta
 pkgver=13.0.33
 pkgrel=1
 pkgdesc="Audio and MIDI Workstation (DAW)"
