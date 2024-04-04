@@ -1,6 +1,6 @@
 pkgbase = black-pearl-origin
 	pkgdesc = Free and open-source tool for managing game sources using community-made modules.
-	pkgver = 1.1.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/BlackPearlOrigin/blackpearlorigin
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = black-pearl-origin
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = openssl-1.1
-	source = https://github.com/BlackPearlOrigin/blackpearlorigin/archive/refs/tags/1.1.0.tar.gz
-	sha256sums = 548e1d78e80fb2bd6f37fb814d9aa3a6ef4e3e64ec95b2203e6d064405a73178
+	source = https://github.com/BlackPearlOrigin/blackpearlorigin/archive/refs/tags/1.2.1.tar.gz
+	sha256sums = 14a2b17757142387815a3da9c6e8be05f2d535d877d8e281419da5a97d98ecff
 
 pkgname = black-pearl-origin
