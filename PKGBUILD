@@ -1,6 +1,6 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 
-pkgver=0.43.4
+pkgver=0.43.5
 pkgrel=1
 pkgname=python-pyvista
 _name=${pkgname#python-}
