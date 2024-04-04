@@ -50,8 +50,8 @@
 		},
 		{
 			"name": "ms-vscode.js-debug",
-			"version": "1.87.0",
-			"sha256": "155ba715cc1045835951e70a663010c8f91d773d90a3ec504a041fd53b5658b0",
+			"version": "1.88.0",
+			"sha256": "3a048d87c0fac116fce9190ff6042ec7691e66fc17211a058faf0db91bb6605e",
 			"repo": "https://github.com/microsoft/vscode-js-debug",
 			"metadata": {
 				"id": "25629058-ddac-4e17-abba-74678e126c5d",
@@ -1779,14 +1779,13 @@
 	],
 	"extensionEnabledApiProposals": {
 		"ms-vscode.vscode-selfhost-test-provider": [
-			"testObserver",
-			"testCoverage"
-		],
-		"ms-vscode.extension-test-runner": [
-			"testCoverage"
+			"testObserver"
 		],
 		"VisualStudioExptTeam.vscodeintellicode-completions": [
 			"inlineCompletionsAdditions"
+		],
+		"ms-toolsai.datawrangler": [
+			"debugFocus"
 		],
 		"ms-vsliveshare.vsliveshare": [
 			"contribMenuBarHome",
@@ -1808,9 +1807,6 @@
 			"workspaceTrust",
 			"tunnels"
 		],
-		"vscjava.vscode-java-test": [
-			"testCoverage"
-		],
 		"ms-toolsai.vscode-ai-remote": [
 			"resolvers"
 		],
@@ -1822,7 +1818,8 @@
 			"testObserver",
 			"quickPickItemTooltip",
 			"terminalDataWriteEvent",
-			"terminalExecuteCommandEvent"
+			"terminalExecuteCommandEvent",
+			"contribIssueReporter"
 		],
 		"ms-dotnettools.dotnet-interactive-vscode": [
 			"notebookMessaging"
@@ -1912,7 +1909,10 @@
 		],
 		"GitHub.vscode-pull-request-github": [
 			"activeComment",
+			"commentingRangeHint",
+			"commentThreadApplicability",
 			"contribCommentThreadAdditionalMenu",
+			"contribCommentsViewThreadMenus",
 			"tokenInformation",
 			"codeActionRanges",
 			"commentReactor",
@@ -1952,7 +1952,10 @@
 			"textSearchProvider",
 			"contribSourceControlInputBoxMenu",
 			"newSymbolNamesProvider",
-			"findFiles2"
+			"findFiles2",
+			"extensionsAny",
+			"authLearnMore",
+			"testObserver"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",
@@ -1976,7 +1979,8 @@
 			"notebookCellExecutionState"
 		],
 		"ms-python.debugpy": [
-			"portsAttributes"
+			"portsAttributes",
+			"contribIssueReporter"
 		],
 		"ms-toolsai.jupyter-renderers": [
 			"contribNotebookStaticPreloads"
@@ -1994,6 +1998,7 @@
 			"contribNotebookStaticPreloads",
 			"quickPickItemTooltip",
 			"notebookExecution",
+			"notebookCellExecution",
 			"notebookVariableProvider"
 		],
 		"dbaeumer.vscode-eslint": [
@@ -2233,7 +2238,6 @@
 	],
 	"trustedExtensionAuthAccess": {
 		"github": [
-			"vscode.git",
 			"vscode.github",
 			"github.remotehub",
 			"ms-vscode.remote-server",
@@ -2244,7 +2248,6 @@
 			"ms-vsliveshare.vsliveshare"
 		],
 		"github-enterprise": [
-			"vscode.git",
 			"vscode.github",
 			"github.remotehub",
 			"ms-vscode.remote-server",
@@ -2255,7 +2258,6 @@
 			"ms-vsliveshare.vsliveshare"
 		],
 		"microsoft": [
-			"vscode.git",
 			"ms-vscode.azure-repos",
 			"ms-vscode.remote-server",
 			"ms-vsliveshare.vsliveshare",
@@ -2263,7 +2265,6 @@
 			"ms-edu.vscode-learning"
 		],
 		"microsoft-sovereign-cloud": [
-			"vscode.git",
 			"ms-vscode.azure-repos",
 			"ms-vscode.remote-server",
 			"ms-vsliveshare.vsliveshare",
@@ -2389,6 +2390,11 @@
 		"enablementKey": "chat_enabled",
 		"confirmationAction": "Install",
 		"confirmationMessage": "Are you sure you want to install GitHub Copilot?"
+	},
+	"chatWelcomeView": {
+		"welcomeViewId": "copilot.welcome",
+		"welcomeViewTitle": "GitHub Copilot",
+		"welcomeViewContent": "You have access to GitHub Copilot, an AI-powered coding assistant, as a part of the Microsoft organization.\n Getting started with Copilot is easy - simply install the Copilot extension. [Learn more](https://code.visualstudio.com/docs/copilot/overview)\n[Install GitHub Copilot](command:workbench.extensions.installExtension?%5B%22github.copilot%22%5D)"
 	},
 	"commit": "@COMMIT@",
 	"date": "@DATE@"
