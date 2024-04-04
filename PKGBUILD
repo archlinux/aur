@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=monocle
-_pkgver=2.30.0
+_pkgver=2.30.1
 pkgname=r-${_pkgname,,}
-pkgver=2.30.0
+pkgver=2.30.1
 pkgrel=1
 pkgdesc='Clustering, differential expression, and trajectory analysis for single- cell RNA-Seq'
 arch=('x86_64')
@@ -48,7 +48,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('41c5e9bd77e0eb2a5332939480238d9abcdf036a1f535b4a42ee0da762b53844')
+sha256sums=('3503b014eb460f7dd9dd56b7e24b4696d672c4f1ea5eca87cd9595de51d16241')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
