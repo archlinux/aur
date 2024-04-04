@@ -92,7 +92,7 @@ prepare() {
   patch -Np1 -i ../0001-Use-Arch-Linux-device-access-groups.patch
 
   # Add machine-id override
-  patch -Np1 -i ../0002_added_machine_id_smbios_variable.patch
+  patch -Np1 -i ../0002_added_machine_id_firmware_option.patch
 }
 
 build() {
