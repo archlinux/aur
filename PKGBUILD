@@ -1,13 +1,13 @@
 pkgname=matrix-media-repo-git
-pkgver=1.3.4.r13.g2f8a209b
-pkgrel=3
+pkgver=1.3.4.r14.g28238ca4
+pkgrel=1
 pkgdesc="Highly configurable multi-domain media repository for Matrix."
 arch=("any")
 url="https://github.com/t2bot/matrix-media-repo"
 license=("MIT")
 depends=("glibc" "libheif" "libde265" "imagemagick")
 makedepends=("go" "git")
-backup=()
+backup=("etc/matrix-media-repo.yaml")
 provides=("matrix-media-repo")
 conflicts=("matrix-media-repo")
 source=("git+https://github.com/t2bot/matrix-media-repo.git" "matrix-media-repo.service")
@@ -46,4 +46,7 @@ function package() {
 	chmod 755 -R "${pkgdir}/usr/lib/matrix-media-repo"
 	install -Dm644 "${srcdir}/matrix-media-repo.service" "${pkgdir}/usr/lib/systemd/system/matrix-media-repo.service"
 	echo "Home directory for Matrix Media Repo is at: /var/lib/matrix-media-repo"
+	echo "Configure MMR in /etc/matrix-media-repo.yaml"
+	install -d "${pkgdir}/etc"
+	touch "${pkgdir}/etc/matrix-media-repo.yaml"
 }

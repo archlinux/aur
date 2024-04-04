@@ -8,6 +8,7 @@ OOMPolicy=stop
 OOMScoreAdjust=10
 
 DynamicUser=yes
+ExecStartPre=/usr/bin/cp "/etc/matrix-media-repo.yaml" "/var/lib/private/matrix-media-repo/config.yaml"
 ExecStart=/usr/lib/matrix-media-repo/media_repo -config /var/lib/private/matrix-media-repo/config.yaml
 Restart=always
 StateDirectory=matrix-media-repo
