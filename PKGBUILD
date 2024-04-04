@@ -1,4 +1,4 @@
-# Maintainer: Claudio Nave <claudio nave nine seven at gmail dot com>
+# Maintainer: EvaristeGalois11 <turbo dot backslid four zero zero at passinbox dot com>
 # Contributor: samarthj <dev@samarthj.com>
 
 # shellcheck disable=2034,2148,2154
