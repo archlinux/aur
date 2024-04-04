@@ -9,12 +9,8 @@ depends=("glibc" "libheif" "libde265" "imagemagick")
 makedepends=("go" "git")
 backup=()
 provides=("matrix-media-repo")
-source=("git+https://github.com/t2bot/matrix-media-repo.git#tag=v${pkgver}")
-sha256sums=('SKIP')
-
-function prepare() {
-	cd "${srcdir}/matrix-media-repo"
-}
+source=("git+https://github.com/t2bot/matrix-media-repo.git#tag=v${pkgver}" "matrix-media-repo.service")
+sha256sums=("SKIP" "SKIP")
 
 function build() {
 	cd "${srcdir}/matrix-media-repo"
@@ -37,4 +33,9 @@ function package() {
 	mkdir -p "${pkgdir}/usr/lib/matrix-media-repo"
 	cp "${srcdir}/matrix-media-repo/bin"/* "${pkgdir}/usr/lib/matrix-media-repo"
 	chmod 755 -R "${pkgdir}/usr/lib/matrix-media-repo"
+	install -Dm644 "${srcdir}/matrix-media-repo.service" "${pkgdir}/usr/lib/systemd/system/matrix-media-repo.service"
+	echo "Home directory for Matrix Media Repo is at: /var/lib/matrix-media-repo"
+	echo "Configure MMR in /etc/matrix-media-repo.yaml"
+	install -d "${pkgdir}/etc"
+	touch "${pkgdir}/etc/matrix-media-repo.yaml"
 }

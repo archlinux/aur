@@ -13,6 +13,8 @@ pkgbase = matrix-media-repo
 	depends = imagemagick
 	provides = matrix-media-repo
 	source = git+https://github.com/t2bot/matrix-media-repo.git#tag=v1.3.4
+	source = matrix-media-repo.service
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = matrix-media-repo
