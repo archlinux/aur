@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-gui8
-pkgver=8.0.0
-pkgrel=3
+pkgver=8.1.0
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Graphical interfaces for robotics applications"
@@ -30,7 +30,7 @@ makedepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('4bb54ca7259fc312b6891d7054f04a3d8b89b150ffb31fb2fe50c717e20feac8')
+sha256sums=('adb9b67535bedd140725062e48df4933e9fea0cdfa0b6e9dbf20331e1cd912c3')
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
