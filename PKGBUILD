@@ -1,4 +1,8 @@
-# Maintainer: Piotr Rogoża <rogoza dot piotr at gmail dot com>
+# Maintainer: gilcu3
+
+# Previous Maintainers
+# Piotr Rogoża <rogoza dot piotr at gmail dot com>
+
 # Contributor: skydrome <skydrome@i2pmail.org>
 # Contributor: Valere Monseur <valere_monseur@hotmail.com>
 # Contributor: Phillip Smith <fukawi2@NO-SPAM.gmail.com>
@@ -6,32 +10,29 @@
 # Contributor: ratamahata
 
 pkgname=vuurmuur
-pkgver=0.8
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='powerful front-end for iptables aimed at system-administrators who need a decent firewall, but dont have netfilter specific knowledge'
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='http://www.vuurmuur.org'
 license=('GPL')
 install='vuurmuur.install'
-depends=(libnetfilter_log
-         iptables 
-         ncurses 
-         libjpeg)
+depends=(libnetfilter_log iptables ncurses libjpeg)
 optdepends=('conntrack-tools: for connection tracking'
             'iproute2: for traffic shapping'
             'iptrafvol: for traffic volume logging')
-conflicts=(vuurmuur-devel)
+conflicts=()
 backup=('etc/vuurmuur/config.conf'
         'etc/vuurmuur/modules.conf'
         'etc/vuurmuur/vuurmuur_conf.conf'
         'etc/vuurmuur/plugins/textdir.conf'
 )
-source=(ftp://ftp.vuurmuur.org/releases/$pkgver/${pkgname}-$pkgver.tar.gz
+source=(https://www.vuurmuur.org/releases/$pkgver/${pkgname}-$pkgver.tar.gz
         modules.conf
         vuurmuur.rc
         vuurmuur.service
         vuurmuur.script)
-sha256sums=('ff44c6be378d629ec3c5637830f87f2a41cff8f679c1f58bad901eebc69f4f1e'
+sha256sums=('4b5318fb5693308d8fae9a3bf7d20a3c470055900db2d1c4819ed6046d404899'
             'a18d4093075f8e0a24f902780b04d03116be8c057b139a7502d8517009bd65e0'
             'f1b49c9e1480f9d37ef2df779f725f926552f8713f7aacfc49e0b359e10f27a5'
             '1bf559e49ac64cdf6bff9b003adbe97af1b222d59ec49242545cf13daee07a24'
