@@ -1,28 +1,29 @@
 # Maintainer:  Joshua Holmer <jholmer.in@gmail.com>
 
 pkgname=libjxl-metrics-git
-pkgver=0.8.2.r404.g4e4f49c5
+pkgver=0.10.2.r81.g680d0e38
 pkgrel=1
 pkgdesc="JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 (git version)"
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
 license=('BSD')
-depends=('brotli' 'highway-git' 'gtest' 'libpng' 'lcms2')
+depends=('brotli' 'highway-git' 'gtest' 'libpng' 'lcms2' 'gperftools')
 makedepends=(
-    'git' 'cmake' 'clang' 'lld' 'giflib' 'gperftools' 'openexr' 'libjpeg-turbo'
+    'git' 'cmake' 'clang' 'lld' 'giflib' 'openexr' 'libjpeg-turbo'
     'python' 'asciidoc' 'graphviz' 'xdg-utils' 'gflags' 'zlib' 'doxygen'
 )
 provides=(
-    'libjxl' 'libjxl-git' 'libjxl.so' 'libjxl_threads.so' 'libjxl-doc'
-    'libjxl.so=0.8-64' 'libjxl_threads.so=0.8-64' 'libjxl.so=0.7-64' 'libjxl_threads.so=0.7-64'
+    'libjxl' 'libjxl-git' 'libjpeg-xl-git' 'libjxl.so' 'libjxl_threads.so' 'libjxl-doc'
+    'libjxl.so=0.10-64' 'libjxl_threads.so=0.10-64'
     'libjxl-doc-git' 'butteraugli' 'butteraugli-git' 'ssimulacra'
     'ssimulacra-git' 'ssimulacra2' 'ssimulacra2-git'
 )
 conflicts=(
-    'libjxl' 'libjxl-git' 'libjxl-doc' 'libjxl-doc-git' 'butteraugli'
+    'libjxl' 'libjxl-git' 'libjpeg-xl-git' 'libjxl-doc' 'libjxl-doc-git' 'butteraugli'
     'butteraugli-git' 'ssimulacra' 'ssimulacra-git' 'ssimulacra2'
     'ssimulacra2-git'
 )
+replaces=('libjxl-git' 'libjpeg-xl-git')
 optdepends=(
     'gdk-pixbuf2: for gdk-pixbuf loader'
     'gimp: for building gimp jxl plugin'
@@ -31,7 +32,7 @@ optdepends=(
     'libavif: for avif benchmarking'
 )
 source=(
-    'libjxl::git+https://github.com/libjxl/libjxl.git#commit=4e4f49c'
+    'libjxl::git+https://github.com/libjxl/libjxl.git'
     'brotli::git+https://github.com/google/brotli.git'
     'Little-CMS::git+https://github.com/mm2/Little-CMS.git'
     'googletest::git+https://github.com/google/googletest.git'
@@ -118,15 +119,4 @@ package() {
     # Metrics
     ln -s "/usr/bin/butteraugli_main" "$pkgdir/usr/bin/butteraugli"
     ln -s "/usr/bin/ssimulacra_main" "$pkgdir/usr/bin/ssimulacra"
-
-    # Work around for outdated tools
-    # This will break in the future and needs to be kept track of
-    ln -s "/usr/lib/libjxl.so.0.9.0" "$pkgdir/usr/lib/libjxl.so.0.8"
-    ln -s "/usr/lib/libjxl.so.0.9.0" "$pkgdir/usr/lib/libjxl.so.0.8.0"
-    ln -s "/usr/lib/libjxl_threads.so.0.9.0" "$pkgdir/usr/lib/libjxl_threads.so.0.8"
-    ln -s "/usr/lib/libjxl_threads.so.0.9.0" "$pkgdir/usr/lib/libjxl_threads.so.0.8.0"
-    ln -s "/usr/lib/libjxl.so.0.8.0" "$pkgdir/usr/lib/libjxl.so.0.7"
-    ln -s "/usr/lib/libjxl.so.0.8.0" "$pkgdir/usr/lib/libjxl.so.0.7.0"
-    ln -s "/usr/lib/libjxl_threads.so.0.8.0" "$pkgdir/usr/lib/libjxl_threads.so.0.7"
-    ln -s "/usr/lib/libjxl_threads.so.0.8.0" "$pkgdir/usr/lib/libjxl_threads.so.0.7.0"
 }
