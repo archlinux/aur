@@ -1,0 +1,16 @@
+pkgbase = python-traitsui
+	pkgdesc = Traits-capable user interfaces
+	pkgver = 7.4.3
+	pkgrel = 3
+	url = https://github.com/enthought/traitsui
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-pyface
+	source = traitsui-7.4.3.tar.gz::https://github.com/enthought/traitsui/archive/7.4.3.tar.gz
+	sha256sums = 587da5de6b6000a9ec520e3860dd20c030c1a987814cde90d803bc06918aa32d
+
+pkgname = python-traitsui
