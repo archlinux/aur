@@ -3,7 +3,7 @@
 _electronversion=28
 _pkgname=hhd-ui
 pkgname=$_pkgname
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Configurator interface for Handheld Daemon."
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('hhd: a version of Handheld Daemon to connect to (also works over th
 makedepends=('asar' 'libxss' 'npm')
 _srcname=hhd-ui
 source=("git+https://github.com/hhd-dev/hhd-ui.git#tag=v${pkgver}")
-sha512sums=('dfe45156bd2f9d7b0c5ffa41bcf49514fe41641f75465c3f5136d46dc72e85785e5fdf5d1fbf449e2b6f91fd01a93aa0c046d7c4126034d0fd5c5991e2b0b15b')
+sha512sums=('b3df900ab45e296a1edda1a82fb45bbb6c1289a78bc3ef6eca3dacaaa20f8e81fe130a416a5f8812a1ca09523cb993d3c2fe3b05e4439aa9c4585d8d7eec36aa')
 
 prepare() {
 	export ELECTRONVERSION=$_electronversion
@@ -56,6 +56,6 @@ package() {
 	install -vDm644 ./art/icon.png "${pkgdir}/usr/share/applications/${pkgname}/icon.png"
 
   # Install scripts
-	install -vDm644 "./aur/hhd-ui.desktop" -t "${pkgdir}"/usr/share/applications
-	install -vDm755 "./aur/hhd-ui.sh" "${pkgdir}/usr/bin/${_pkgname}"
+	install -vDm644 "./pkg/hhd-ui.desktop" -t "${pkgdir}"/usr/share/applications
+	install -vDm755 "./pkg/hhd-ui.sh" "${pkgdir}/usr/bin/${_pkgname}"
 }
