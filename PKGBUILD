@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RegEnrich
-_pkgver=1.10.0
+_pkgver=1.12.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Gene regulator enrichment analysis"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -12,6 +12,7 @@ license=('GPL-2.0-or-later')
 depends=(
   r-biocparallel
   r-biocset
+  r-biocstyle
   r-deseq2
   r-dose
   r-dplyr
@@ -33,9 +34,9 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('afbd8028754ca907215ba26c3eae83f8')
-b2sums=('51ee19ecda2bc70a0f3a3e458224d4bfd9d963b5a89eb121be06221b1e2ab331b9ca926e8e0bad9dab5212dbdb940b759c881fb22c9a4c635c44bc3d4847c5c6')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('0ff27069819390e46f1e8e3b92acc257')
+b2sums=('3bbb3e8922d6cdac61edfa3f06fe73ff8fab16b8113eba3caef0d84be9bf359ebe9959d775c63612355f670fad42adadff70cf079f5a2cbb5ac9d1d9f89fd25f')
 
 build() {
   mkdir build

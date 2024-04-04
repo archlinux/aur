@@ -1,12 +1,13 @@
 pkgbase = r-regenrich
 	pkgdesc = Gene regulator enrichment analysis
-	pkgver = 1.10.0
-	pkgrel = 2
+	pkgver = 1.12.1
+	pkgrel = 1
 	url = https://bioconductor.org/packages/RegEnrich
 	arch = any
 	license = GPL-2.0-or-later
 	depends = r-biocparallel
 	depends = r-biocset
+	depends = r-biocstyle
 	depends = r-deseq2
 	depends = r-dose
 	depends = r-dplyr
@@ -25,8 +26,8 @@ pkgbase = r-regenrich
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/3.17/bioc/src/contrib/RegEnrich_1.10.0.tar.gz
-	md5sums = afbd8028754ca907215ba26c3eae83f8
-	b2sums = 51ee19ecda2bc70a0f3a3e458224d4bfd9d963b5a89eb121be06221b1e2ab331b9ca926e8e0bad9dab5212dbdb940b759c881fb22c9a4c635c44bc3d4847c5c6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RegEnrich_1.12.1.tar.gz
+	md5sums = 0ff27069819390e46f1e8e3b92acc257
+	b2sums = 3bbb3e8922d6cdac61edfa3f06fe73ff8fab16b8113eba3caef0d84be9bf359ebe9959d775c63612355f670fad42adadff70cf079f5a2cbb5ac9d1d9f89fd25f
 
 pkgname = r-regenrich
