@@ -1,4 +1,4 @@
-# Maintainer: Claudio Nave <turbo dot backslid four zero zero at passinbox dot com>
+# Maintainer: EvaristeGalois11 <turbo dot backslid four zero zero at passinbox dot com>
 
 pkgname=gnome-shell-extension-no-overview
 pkgver=46
