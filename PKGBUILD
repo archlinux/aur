@@ -1,9 +1,9 @@
-# Maintainer: Gerasimos Chourdakis <chourdak at in dot tum dot de>
-# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Maintainer: Valentina Schüller <valentina.schueller@mailbox.org>
+# Contributor: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Florian Lindner <florian.lindner@xgm.de>
 
 pkgname=precice
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="A Coupling Library for Partitioned Multi-Physics Simulations on Massively Parallel Systems"
 arch=(x86_64)
@@ -15,7 +15,7 @@ makedepends=(cmake eigen gcc-fortran)
 optdepends=('man-db: manual pages for precice-tools'
   'git: for Git Revision Info support')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz)
-sha512sums=('dc1229de994854200e4868120ae28547d9d7acce152780f5d7fb210f3866323233015e46478e5c83f44080996a82198eeedfb95e4ee62d08f51e57fdca60cc31')
+sha512sums=('3c6b7d0dbdd8f37767acdeed51a984de2e76a066bc004ee7d0072f4f1edc4368dff1a9b290d3bd3c23dcda136a0a8d2c0d585229da24ad4b13583cfc70ddb9d4')
 
 build() {
   cmake \
