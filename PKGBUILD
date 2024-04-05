@@ -3,7 +3,7 @@ pkgname='blender-launcher-bin'
 _pkgname='blenderlauncher'
 pkgver=2.1.24
 pkgtarget='_Linux_x64'
-pkgrel=1
+pkgrel=2
 pkgdesc='Blender Launcher is a standalone software client that provides management for stable, daily and experimental builds of Blender 3D. It is a free open source project available for 64-bit Windows and Linux (GLIBC 2.31 and higher) operating systems.'
 arch=('x86_64')
 url='https://github.com/Victor-IX/Blender-Launcher-V2'
@@ -12,7 +12,7 @@ license=('GPL-3.0')
 #optdepends=()
 #conflicts=('ablavema' 'ablavema-git')
 source_x86_64=("$url/releases/download/v$pkgver/Blender_Launcher_v$pkgver$pkgtarget.zip")
-sha256sums_x86_64=('5b1aa846be9d0f2b2f3c99a9be7eb274eeeece3d54d588dc998fe5ab542529b4')
+sha256sums_x86_64=('acecdc7477502889634048b54ef99605bf8631018d8bf7f372b703d16f5d95c1')
 
 package() {
 	echo [Desktop Entry] >>$srcdir/$_pkgname.desktop
