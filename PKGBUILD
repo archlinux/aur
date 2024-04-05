@@ -3,7 +3,7 @@
 pkgname=python-doctest-ignore-unicode
 pkgver=0.1.2
 _commit=ee9412fd155ebf47c42974696d31e6a1510cffa0
-pkgrel=6
+pkgrel=7
 pkgdesc="Nose plugin to ignore unicode literal prefixes in doctests"
 arch=(any)
 url="https://github.com/gnublade/doctest-ignore-unicode"
