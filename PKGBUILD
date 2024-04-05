@@ -13,7 +13,7 @@ pkgname=(
   libnautilus-extension-typeahead
 )
 packager="Albert Vaca Cintora <albertvaka@gmail.com>"
-pkgver=45.2.1
+pkgver=46.0
 pkgrel=1
 pkgdesc="Default file manager for GNOME - Patched to bring back the 'typeahead find' feature"
 url="https://wiki.gnome.org/Apps/Files"
@@ -43,31 +43,23 @@ makedepends=(
   appstream-glib
   git
   gobject-introspection
+  graphene
   meson
   ninja
-  patch
   pkgconfig
   tracker3-miners
 )
 checkdepends=(python-gobject)
-_commit=46c13f34bf1008ad79bf5f52d772afd296a58c94 # tags/45.2.1^0
+_commit=6e96a9bca989a448abc0d89ef906aaf234a7bb77
 source=(
-  "git+https://gitlab.gnome.org/GNOME/nautilus.git#commit=$_commit"
-  nautilus-restore-typeahead.patch
+  "git+https://gitlab.gnome.org/xclaesse/nautilus.git#commit=$_commit"
 )
-b2sums=('SKIP'
-        'b33c789da1948b991939126b14f6583069d07c8949e4fcb66721ab23a29915469c5e8b339d2801423a9e2c4c2d92e5de354b24de7c253c2cc9ceb9ef79b3906a')
-
-pkgver() {
-  cd nautilus
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
-}
+b2sums=('SKIP')
 
 prepare() {
   cd nautilus
-
-  # Apply Typeahead patch
-  patch -p1 -i ../nautilus-restore-typeahead.patch
+  # Enable type-ahead behavior by default
+  awk -i '/type-ahead-search/{c++;} c==1 && /true/{sub("true", "false"); c++;} 1' data/org.gnome.nautilus.gschema.xml
 }
 
 build() {
@@ -99,7 +91,10 @@ _pick() {
 }
 
 package_nautilus-typeahead() {
-  depends+=(libnautilus-extension-typeahead)
+  depends+=(
+    'libnautilus-extension-typeahead'
+    'graphene'
+  )
   optdepends=(
     'nautilus-sendto: Share files from the right click menu'
     'tracker3-miners: Full text search and metadata-based renaming'

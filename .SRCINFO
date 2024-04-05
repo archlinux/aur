@@ -1,6 +1,6 @@
 pkgbase = nautilus-typeahead
 	pkgdesc = Default file manager for GNOME - Patched to bring back the 'typeahead find' feature
-	pkgver = 45.2.1
+	pkgver = 46.0
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Files
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = nautilus-typeahead
 	makedepends = appstream-glib
 	makedepends = git
 	makedepends = gobject-introspection
+	makedepends = graphene
 	makedepends = meson
 	makedepends = ninja
-	makedepends = patch
 	makedepends = pkgconfig
 	makedepends = tracker3-miners
 	depends = cairo
@@ -32,10 +32,8 @@ pkgbase = nautilus-typeahead
 	depends = libportal-gtk4
 	depends = pango
 	depends = tracker3
-	source = git+https://gitlab.gnome.org/GNOME/nautilus.git#commit=46c13f34bf1008ad79bf5f52d772afd296a58c94
-	source = nautilus-restore-typeahead.patch
+	source = git+https://gitlab.gnome.org/xclaesse/nautilus.git#commit=6e96a9bca989a448abc0d89ef906aaf234a7bb77
 	b2sums = SKIP
-	b2sums = b33c789da1948b991939126b14f6583069d07c8949e4fcb66721ab23a29915469c5e8b339d2801423a9e2c4c2d92e5de354b24de7c253c2cc9ceb9ef79b3906a
 
 pkgname = nautilus-typeahead
 	install = post.install
@@ -59,6 +57,7 @@ pkgname = nautilus-typeahead
 	depends = pango
 	depends = tracker3
 	depends = libnautilus-extension-typeahead
+	depends = graphene
 	optdepends = nautilus-sendto: Share files from the right click menu
 	optdepends = tracker3-miners: Full text search and metadata-based renaming
 	optdepends = python-nautilus: Use extensions written in python
