@@ -9,12 +9,12 @@ pkgdesc="Offizieller Client für Westermann Schulbücher / Official Client for s
 arch=('x86_64')
 url="https://www.bibox.schule"
 license=('custom')
-depends=('gnome-keyring')
+# depends=('')
 makedepends=('tar')
 optdepends=()
 conflicts=()
-source=("https://static.bibox2.westermann.de/electron/autoUpdate/BiBox%202.0%202.4.6.deb")
-sha512sums=('1996db4ec183acc3e3156a7e17a0bf0cf9d0d1f863a8b153858139c4c3e8999d3e6d6838a2336d7b8a6212e7ff57a30de1a77b3c23d2e08bfcc3a4f1744fdbec')
+source=("https://static.bibox2.westermann.de/electron/autoUpdate/BiBox%202.0%202.4.12.deb")
+sha512sums=('643204267be79fd60b55558e706db9b92a30ebef6c5500708320bdaae134a35461e5bec37eacb0c7d0bedf3a4a78370427ce40663f45344441f9dfb7fd01e939')
 
 package(){
 	# Extract package data
