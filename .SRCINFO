@@ -1,0 +1,14 @@
+pkgbase = python-litesata
+	pkgdesc = Small footprint and configurable SATA core
+	pkgver = 2021.08
+	pkgrel = 3
+	url = https://github.com/enjoy-digital/litesata
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-migen
+	depends = python-litex
+	source = python-litesata-2021.08.tar.gz::https://github.com/enjoy-digital/litesata/archive/2021.08.tar.gz
+	sha512sums = d7590b504633ed11bdd193a76184d0bf81b8a03b04c079134e25b3ee21169fae3bae7f4f099709000b4bcf6f78d8eee42a2147bcb80a2cf0e5bc94f9fed5c33c
+
+pkgname = python-litesata
