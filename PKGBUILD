@@ -1,12 +1,12 @@
 # Maintainer: Kppqju77 <ju.adde-gmail-com>
 
 pkgname=flutter-beta
-pkgver=3.21.0_0.0.pre
+pkgver=3.22.0_0.1.pre
 pkgrel=1
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
 url="https://${pkgname%-beta}.dev"
-license=("custom" "BSD" "CCPL")
+license=("BSD-3-Clause")
 depends=("git" "glu" "java-environment" "libglvnd" "unzip")
 optdepends=("android-sdk" "android-studio" "dart" "intellij-idea-community-edition" "intellij-idea-ultimate-edition" "perl" "python" "android-sdk-cmdline-tools-latest: for android checks" "cmake: for linux desktop build" "ninja: for linux desktop build" "clang: for linux desktop build" "gtk3: for linux desktop build")
 makedepends=("python")
@@ -20,7 +20,7 @@ source=(
   "${pkgname%-beta}.sh"
   "${pkgname%-beta}.csh"
 )
-sha256sums=('c1c09d6b96447338ca2f2efc6f8accd1b0b06209c5ab4c8ac37f109722fa79af'
+sha256sums=('3787eb78b8b71dc4f29df7c512fd5b809f0201c559c60fbe9b5ab8ba11e78a6e'
             '1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a'
             '7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f')
 
