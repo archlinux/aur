@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=common
-_pkgver=1.1.2
+_pkgver=1.1.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,8 +24,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c5850761d729ffb92977f0ecb0b8e84f')
-b2sums=('ae450977485e99fa40e955c293ea75ab4d48334954e40c0e91310803dbc5ca128117e426e1e682041e114a09ce047241299be6c64bc7aadc3ea8fa63d15eb9c1')
+md5sums=('786eedd15215e0bbc3d52d45feed3586')
+b2sums=('14f3877d09cf5c0b2420268dd25bd5dd02b358ece60fea405625f8c58d17ab6e476a888621c455b5d711834ae5dc2a58679f6e6c66bdba181f76f6783642d309')
 
 build() {
   mkdir build
