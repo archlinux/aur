@@ -10,7 +10,7 @@ source=("https://gitlab.com/libelectron/eact/-/archive/$pkgver-$pkgrel/applicati
 sha256sums=('SKIP')
 
 package() {
-    for dir in $pkgname-$pkgver-$pkgrel-* ; do mv "${dir}" "$pkgname" ;done
+    for dir in $pkgname-$pkgver-* ; do mv "${dir}" "$pkgname" ;done
     cd "$srcdir/$pkgname"
     chmod +x $pkgname
 
