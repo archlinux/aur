@@ -1,0 +1,13 @@
+pkgbase = python-bitvector
+	pkgdesc = A memory-efficient packed representation for bit arrays in pure Python
+	pkgver = 3.5.0
+	pkgrel = 5
+	url = https://pypi.python.org/pypi/BitVector
+	arch = any
+	license = PSF
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.io/packages/source/B/BitVector/BitVector-3.5.0.tar.gz
+	sha512sums = c303b77f0f6ea4fb80233afb09e0f830e0beb8cbe17d9bff242a4b6465ec34a5621b1003f5cb8e139460a27bb4fb897960e3dce92eb30b95bef55aa6aa5f0827
+
+pkgname = python-bitvector
