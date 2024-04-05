@@ -2,8 +2,8 @@
 
 pkgbase=freenginx
 pkgname=($pkgbase $pkgbase'-src')
-pkgver=1.25.4
-pkgrel=2
+pkgver=1.25.5
+pkgrel=1
 _prefix_relative='etc/'$pkgbase
 _prefix_full='/'$_prefix_relative
 arch=(x86_64)
@@ -16,15 +16,13 @@ checkdepends=(perl perl-gd perl-io-socket-ssl perl-fcgi
 source=($url/download/$pkgbase-$pkgver.tar.gz{,.asc}
         freenginx.service
         logrotate
-        ngx_setproctitle.c.patch
-        ngx_http_header_filter_module.c.patch)
+        ngx_setproctitle.c.patch)
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
-sha512sums=('337bd8b6116f61422afb4e91bfe068cd991e5f09d838d40834d0a5f9bea9acc2258826a8ebc779df8c7bdc42013645c6e6fe6aba52ce3b31d008bca183982926'
+sha512sums=('99576c1ceab5a9cd88d83932b7af6d1cd99f3dcda0ae93833ed0047dc0035e5f38f216ea504c0775b94d5641fae0636347f9caafb103dbfbd96302f64598ce1b'
             'SKIP'
             '2fb3e090e0b44ed9dadf2dee11a045bf422ba80f427ff642e478c533cf756c9727a2bfafbb8e034ef45192699afb6e34fc662a7899e18808cb51ca02f3f30464'
             '895312a52773e649c090d17c09f9b59c0fd49e1591be7304d683d38ac5b05a92e4374c2b08cdf918fc955ad8c12828a3d58a507cd69e4436e2fc3635e367d66e'
-            'f7b8c4de9e08c4e7fa2ade300b271085de560d68b8e15a9094aae16962079bde8da400da5ae833e7612712823f1e27a5efdb89bc3d051445ee7617ce936a3916'
-            '958fab6cd046b10aa73f76af04631cee89f1574eec24914b96bdc68d823974d56a7c835193c980a0e74c7eb7a7b858e11c0625362079b5a9da0b942a98d222fd')
+            'b5fa03c48f31e6e1f0fe3033f1a18c1740d38699d130f43094b60d309c2e32359830417a8c48e9c2a1969047e3df7cd350276e8a4a3923a6626ccbcd0e1c1e96')
 
 _common_flags=(
   --with-compat

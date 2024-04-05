@@ -1,5 +1,5 @@
---- freenginx-1.25.4/src/os/unix/ngx_setproctitle.c.original	2024-03-04 09:53:28.509525998 -0300
-+++ freenginx-1.25.4_custom/src/os/unix/ngx_setproctitle.c	2024-03-04 09:57:58.312820690 -0300
+--- freenginx-1.25.4/src/os/unix/ngx_setproctitle.c         2024-03-04 09:53:28.509525998 -0300
++++ freenginx-1.25.4_custom/src/os/unix/ngx_setproctitle.c  2024-03-04 09:57:58.312820690 -0300
 @@ -89,7 +89,7 @@
  
      ngx_os_argv[1] = NULL;
