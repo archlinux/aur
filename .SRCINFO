@@ -1,13 +1,13 @@
 pkgbase = guacamole-auth-sso-bin
 	pkgdesc = The sso authentication extension for Guacamole Client. It includes cas, openid and saml.
-	pkgver = 1.5.4
+	pkgver = 1.5.5
 	pkgrel = 1
 	url = https://guacamole.apache.org/
 	install = guacamole-auth.install
 	arch = any
 	license = GPL3
 	depends = guacamole-client
-	source = https://archive.apache.org/dist/guacamole/1.5.4/binary/guacamole-auth-sso-1.5.4.tar.gz
-	md5sums = 19bfa887a516f6badc0eea9f40444cfa
+	source = https://archive.apache.org/dist/guacamole/1.5.5/binary/guacamole-auth-sso-1.5.5.tar.gz
+	md5sums = 02494a880844aa540e5fbc46de9e04d2
 
 pkgname = guacamole-auth-sso-bin
