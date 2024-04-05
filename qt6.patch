@@ -1,11 +1,26 @@
 --- a/buildsystem/check_qml_module.py
 +++ b/buildsystem/check_qml_module.py
-@@ -83,7 +83,7 @@
+@@ -82,11 +82,18 @@
+             print("qmake not found")
              return False
  
-         ret = subprocess.run(
+-        ret = subprocess.run(
 -            [ qmake, "-qtconf", qtconf, "-query"],
-+            [ qmake, "-query"],
-             capture_output=True,
-             encoding="utf8"
-         )
+-            capture_output=True,
+-            encoding="utf8"
+-        )
++        if os.path.isfile(qtconf):
++            ret = subprocess.run(
++                [ qmake, "-qtconf", qtconf, "-query"],
++                capture_output=True,
++                encoding="utf8"
++            )
++        else:
++            ret = subprocess.run(
++                [ qmake, "-query"],
++                capture_output=True,
++                encoding="utf8"
++            )
+ 
+         if ret.returncode != 0:
+             return None
