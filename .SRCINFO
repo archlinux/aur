@@ -1,6 +1,6 @@
 pkgbase = python-geoviews
 	pkgdesc = Simple, concise geographical visualization in Python
-	pkgver = 1.11.1
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://github.com/pyviz/geoviews
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-geoviews
 	makedepends = npm
 	depends = python-cartopy
 	depends = python-holoviews
-	source = geoviews-1.11.1.tar.gz::https://github.com/pyviz/geoviews/archive/v1.11.1.tar.gz
-	sha512sums = 4f2024a47126fbf285dec9189eb7b52a7a1688347d4d6892ab87c3ef1098fb5c86ebde187b03df81215ca4042f624df058d23f8ff69f1c05c5fe2ee2f553b6f6
+	source = geoviews-1.12.0.tar.gz::https://github.com/pyviz/geoviews/archive/v1.12.0.tar.gz
+	sha512sums = b75a206313c4df58e1b70e3d785de55c574d90ae6fa10e1f05d9e363701e3bbd9b0cd070bce46966537db2260870eaa6d047371bf7b6eec1477923bc72a59405
 
 pkgname = python-geoviews
