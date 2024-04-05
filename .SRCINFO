@@ -1,14 +1,16 @@
 pkgbase = lua-fzy
 	pkgdesc = Lua fzf matching library
-	pkgver = 1.0
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/swarn/fzy-lua
 	arch = x86_64
 	license = MIT
+	checkdepends = busted
 	makedepends = luarocks
 	depends = lua
+	depends = glibc
 	conflicts = lua-fzy-purelua
-	source = lua-fzy-1.0.tar.gz::https://github.com/swarn/fzy-lua/archive/refs/tags/v1.0.tar.gz
-	sha256sums = 1dcf5283b2f79927c8d8fec11bcf05623dc55b12a0de8c0413f8442d112109bc
+	source = lua-fzy-1.0.3.tar.gz::https://github.com/swarn/fzy-lua/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = 11e13743ed7f60b68c55cff028760480ab5ea1ed0fd13ff6de64cac7fbc22d88
 
 pkgname = lua-fzy
