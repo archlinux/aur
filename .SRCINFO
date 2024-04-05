@@ -1,0 +1,16 @@
+pkgbase = python-nose-cover3
+	pkgdesc = Coverage 3.x support for Nose
+	pkgver = 0.1.0
+	pkgrel = 11
+	url = https://github.com/ask/nosecover3
+	arch = any
+	license = LGPL
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-nose
+	depends = python-coverage
+	options = !emptydirs
+	source = git+https://github.com/ask/nosecover3.git#tag=v0.1.0
+	sha512sums = SKIP
+
+pkgname = python-nose-cover3
