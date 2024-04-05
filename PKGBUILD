@@ -1,7 +1,7 @@
 # Maintainer: Sulthan A. Karimov <sulthankarimov@gmail.com>
 pkgname='blender-launcher-bin'
 _pkgname='blenderlauncher'
-pkgver=2.0.24
+pkgver=2.1.24
 pkgtarget='_Linux_x64'
 pkgrel=1
 pkgdesc='Blender Launcher is a standalone software client that provides management for stable, daily and experimental builds of Blender 3D. It is a free open source project available for 64-bit Windows and Linux (GLIBC 2.31 and higher) operating systems.'
