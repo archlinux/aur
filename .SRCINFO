@@ -1,7 +1,7 @@
 pkgbase = python-pytest-metadata
 	pkgdesc = Plugin for accessing test session metadata
 	pkgver = 3.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pytest-dev/pytest-metadata
 	arch = any
 	license = MPL-2.0
