@@ -1,0 +1,19 @@
+pkgbase = python-pywal
+	pkgdesc = Generate and change colorschemes on the fly
+	pkgver = 3.3.0
+	pkgrel = 9
+	url = https://github.com/dylanaraps/pywal/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = imagemagick
+	optdepends = feh: set wallpaper
+	optdepends = nitrogen: set wallpaper
+	source = python-pywal-3.3.0.tar.gz::https://github.com/dylanaraps/pywal/archive/3.3.0.tar.gz
+	source = python-pywal-3.3.0.tar.gz.asc::https://github.com/dylanaraps/pywal/releases/download/3.3.0/3.3.0.tar.gz.asc
+	validpgpkeys = 155DC67DC25496572CDD608FF635E931C2834999
+	sha256sums = fe8fc1c29d1cad1a1a8580293dcfe32e1fac259f9dbfd5c8877439fa5948d189
+	sha256sums = SKIP
+
+pkgname = python-pywal
