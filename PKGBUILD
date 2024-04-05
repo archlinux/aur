@@ -4,7 +4,7 @@
 pkgname=python-mdx-video
 _pipname=mdx_video
 pkgver=0.1.8
-pkgrel=8
+pkgrel=9
 pkgdesc="Python-Markdown extension for easy video embedding"
 arch=('any')
 url="https://pypi.python.org/pypi/mdx_video"
