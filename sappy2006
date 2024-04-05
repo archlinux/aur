@@ -16,6 +16,20 @@ configure() {
     wine regsvr32 /s $SAPPYDIR/vbalCbEx6.ocx
     wine regsvr32 /s $SAPPYDIR/vbalExpBar6.ocx
     touch $SAVEFILE # ensures that we don't repeat configuration process
+
+    if ! grep -q "[SAPPY_2006]" "$HOME/.config/kwinrulesrc"; then
+
+        cat >> ~/.config/kwinrulesrc << EOF
+
+[SAPPY_2006]
+Description=Fix to Sappy 2006 for taskbar appearance.
+clientmachine=localhost
+skiptaskbarrule=2
+wmclass=sappy.exe
+wmclassmatch=1
+EOF
+    fi
+
 }
 
 if [ ! -f "$SAVEFILE" ]; then # first boot
