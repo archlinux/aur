@@ -3,7 +3,7 @@
 pkgname=python-ansiwrap
 pkgver=0.8.4
 _commit=20e2e8c78a54bdce947e38c069c5eb9c115423ae
-pkgrel=6
+pkgrel=7
 pkgdesc="textwrap, but savvy to ANSI colors and styles"
 url="https://github.com/jonathaneunice/ansiwrap"
 license=('Apache')
@@ -16,7 +16,7 @@ source=("https://github.com/jonathaneunice/ansiwrap/archive/$_commit/$pkgname-$_
         $pkgname-python3.11.patch::https://github.com/jonathaneunice/ansiwrap/pull/19.patch)
 sha512sums=('a01f1f1f79c7a84ca63013f6d05e2abeb00135905d1763f1b5d9fe430613c6bb10fbd2e345074e0001a8e7e40f1916d4c3a946da4dbb02fa288277ad441fab00'
             '54064900875534263a11ddfd013928383dbb2f00f6e3e6b098940bb1159c485439191667b6c742214c10ec84aca8e3cc62cdc3a5d9ea39cb3e2b74f13ad3a4a4'
-            'f3c623594e609582dffe28b9bfb0159935c538fce1b31c23c8ae07829b7678cc6b1c53e3ee89c44c5720158b6ecb516648f10c1d62805102772933871d0ad8e6')
+            'cd9aa36634ce57243878ea7f5f08fec9ca82d4a090a016517c40dfa49a2fe4fed613c73d88906480c42761c09e487107ea0792a48d5ac36974ac9bcb9174e97c')
 
 prepare() {
   cd ansiwrap-$_commit
@@ -28,15 +28,15 @@ prepare() {
 
 build() {
   cd ansiwrap-$_commit
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
   cd ansiwrap-$_commit
-  python -m pytest
+  PYTHONPATH="$PWD/build/lib" pytest
 }
 
 package() {
   cd ansiwrap-$_commit
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir/" dist/*.whl
 }
