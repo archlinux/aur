@@ -1,0 +1,17 @@
+pkgbase = python-anyascii
+	pkgdesc = Unicode to ASCII transliteration
+	pkgver = 0.3.2
+	pkgrel = 2
+	url = https://anyascii.com/
+	arch = any
+	license = ISC
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-flit-core
+	makedepends = python-installer
+	depends = python
+	source = git+https://github.com/anyascii/anyascii.git#tag=0.3.2
+	b2sums = 76bd68cfd817592750f686767d5b3426848f688b172520e6a4bb289987ccd480bc26504d36dfef0063580b2012a528091548236795f6476adbe68f8f20533b57
+
+pkgname = python-anyascii
