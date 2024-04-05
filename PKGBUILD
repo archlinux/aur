@@ -41,9 +41,9 @@ backup=()
 options=()
 install='parallel-launcher.install'
 changelog=
-source=('https://gitlab.com/parallel-launcher/parallel-launcher/uploads/5d3deaab8b6691052b3b927f63e0fbf4/parallel-launcher-7.5.0.tar.gz')
+source=('https://gitlab.com/parallel-launcher/parallel-launcher/uploads/8807b51f27cdea3dd37f62bbab41d02a/parallel-launcher-7.5.0.tar.gz')
 noextract=()
-sha256sums=('44267bd54372018ed9f984ccd9267e7ac32b95b00b71611f2fc65da11c01b295')
+sha256sums=('9ddd7a4e39eedc1208d4439f657c8306945a9842128fe5a4c3fa69a91bd653e5')
 validpgpkeys=()
 
 build() {
