@@ -1,6 +1,6 @@
 # Maintainer: Felipe Alfonso Gonzalez <f.alfonso@res-ear.ch>
 pkgname=novanav-py
-pkgver=0.0.7
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="NovaNav: Lightweight browser for Linux and macOS, delivering fast, distraction-free browsing experience."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('python' 'python-pip' 'python-pyqt5' 'python-pyqt5-webengine')
 
 source=("https://github.com/felipealfonsog/NovaNav/archive/refs/tags/v.${pkgver}.tar.gz")
 
-sha256sums=('41ae0b3468fc23dfcc1f451cbe8bf6f3f9d6023550b12ad6c3b244c20a098647')
+sha256sums=('f36ccb22da164236cb7fce8b97bc15c0a46ba0973bf33d9a26b8b9a84c215e80')
 
 prepare() {
   tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
