@@ -1,0 +1,23 @@
+pkgbase = python-litex-boards
+	pkgdesc = Small footprint and configurable Ethernet core
+	pkgver = 2021.08
+	pkgrel = 3
+	url = https://github.com/litex-hub/litex-boards
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-migen
+	depends = python-litex
+	depends = python-litedram
+	depends = python-liteeth
+	depends = python-liteiclink
+	depends = python-litejesd204b
+	depends = python-litepcie
+	depends = python-litesata
+	depends = python-litescope
+	depends = python-litesdcard
+	depends = python-litevideo
+	source = python-litex-boards-2021.08.tar.gz::https://github.com/litex-hub/litex-boards/archive/2021.08.tar.gz
+	sha512sums = cdf309fe5cb0da2db12445388b27997698ebd31b5e5f61bf70c543e75f618b5c4cdf13c1e6b393b389176f9aa1fb0e77d64b2cafba4103a7eb133b913301b731
+
+pkgname = python-litex-boards
