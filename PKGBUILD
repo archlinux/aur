@@ -1,6 +1,6 @@
 # Maintainer: MrHacker <david.munozm@proton.me>
 pkgname=gpt-telegramus
-pkgver=5.2.5
+pkgver=5.2.6
 pkgrel=1
 pkgdesc="GPT-Telegramus is a Telegram bot that allows you to interact with various large language models (LLMs), including ChatGPT, Bing AI (also known as Sidney or EdgeGPT), and Gemini."
 arch=('x86_64')
@@ -10,7 +10,8 @@ depends=(
   'python'
   'python-virtualenv'
   )
-provides=(GPT-Telegramus)
+provides=(gpt-telegramus)
+conflicts=("gpt-telegramus-git")
 backup=(
   "opt/gpt-telegramus/config.json"
   )
@@ -22,7 +23,7 @@ source_x86_64=(
 validpgpkeys=(
   '2B9D22B41F2AF1042BFCE73A3CA0B9DF1BE7CE09' #MrHacker GPGKey
 )
-sha256sums_x86_64=('91f23324d7f69db44f86c4220224f7f71d95d3199be31f738312ca6ccf867231'
+sha256sums_x86_64=('ff20b500ef225fea1b6607043ff8a8e8a02e9a3d71295621e14d68981c42a47f'
                    '248424fe9c6d049786befbee00ebc270189d8afe16a2a4190d3cd127b3874156'
                    'SKIP')
 
