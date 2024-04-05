@@ -3,7 +3,7 @@
 pkgname=python-pylink-square
 _name=pylink
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python interface for the SEGGER J-Link"
 arch=(any)
 url="https://github.com/Square/pylink"
@@ -35,6 +35,8 @@ b2sums=('5bf83a517706a09e9c569040086d7be76d2bb06cbcb9937c3a0003d19d68ee10f0eeb12
 prepare() {
   # remove use of mock: https://github.com/square/pylink/issues/149
   patch -Np1 -d $_name-$pkgver -i ../$pkgname-0.14.3-remove_mock.patch
+  # test library changed with Python 3.12: https://github.com/square/pylink/issues/197
+  sed -i 's/assertEquals/assertEqual/g' $_name-$pkgver/tests/unit/test_library.py
 }
 
 build() {
@@ -43,8 +45,16 @@ build() {
 }
 
 check() {
+  local pytest_options=(
+    -vv
+    # tests broken with Python 3.12: https://github.com/square/pylink/issues/197
+    --deselect tests/unit/test_jlink.py::TestJLink::test_cp15_register_write_success
+    --deselect tests/unit/test_jlink.py::TestJLink::test_jlink_restarted
+    --deselect tests/unit/test_jlink.py::TestJLink::test_set_log_file_success
+  )
+
   cd $_name-$pkgver
-  pytest -v
+  pytest "${pytest_options[@]}"
 }
 
 package() {
