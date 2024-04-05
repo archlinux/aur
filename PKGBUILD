@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-weather-in-the-clock-git
 _uuid=weatherintheclock@JasonLG1979.github.io
 pkgver=r27.38ba360
@@ -22,5 +23,5 @@ pkgver() {
 package() {
   cd "${pkgname%-git}"
   install -d "$pkgdir/usr/share/gnome-shell/extensions"
-  cp -a $_uuid "$pkgdir/usr/share/gnome-shell/extensions"
+  cp -a "$_uuid" "$pkgdir/usr/share/gnome-shell/extensions"
 }
