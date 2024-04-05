@@ -2,17 +2,17 @@
 # Contributor: Richard PALO <richard.palo@free.fr>
 _base=tryton
 pkgname=python-${_base}
-pkgver=7.0.7
+pkgver=7.0.8
 pkgrel=1
 pkgdesc="Tryton desktop client"
 arch=(any)
 url="https://${_base}.org"
-license=(GPL3)
+license=(GPL-3.0-or-later)
 depends=(python-cairo python-dateutil python-gobject)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 optdepends=('python-goocalendar: calendar support')
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('f3e25d3569b23ac6be9d517cd2cb4108499862863397b1472221d673e0ae45b981c250d386e2439f01f5b26ffca2291f6ff6e4d0227a541b6006163807d2a874')
+sha512sums=('2558dec9bc07cf4b608e09d325f19d8efd8d048d0592e8947c383d6510bed8c151580c4eff41e200e8cbfc58a3774a5d8895fe34c48a880343527182f80d8c69')
 provides=(${_base})
 conflicts=(${_base})
 
