@@ -1,7 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-pkgname=('colloid-icon-theme-git' 'colloid-cursors-git')
+pkgname=(
+  'colloid-icon-theme-git'
+  'colloid-dracula-theme-git'
+  'colloid-nord-icon-theme-git'
+  'colloid-cursors-git'
+)
 pkgbase=colloid-icon-theme-git
-pkgver=2023.07.01.r3.g5ad181b
+pkgver=2024.02.28.r1.ga671b46
 pkgrel=1
 arch=('any')
 url="https://github.com/vinceliuice/Colloid-icon-theme"
@@ -24,14 +29,36 @@ prepare() {
 }
 
 package_colloid-icon-theme-git() {
-  pkgdesc="Modern and clean icon theme for Linux"
+  pkgdesc="Icon theme for Linux desktops"
   depends=('gtk-update-icon-cache' 'hicolor-icon-theme')
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
 
   cd Colloid-icon-theme
   install -d "$pkgdir/usr/share/icons"
-  ./install.sh -t all -d "$pkgdir/usr/share/icons"
+  ./install.sh -s all -t all -d "$pkgdir/usr/share/icons"
+}
+
+package_colloid-dracula-theme-git() {
+  pkgdesc="Dracula icon theme for Linux desktops"
+  depends=('gtk-update-icon-cache' 'hicolor-icon-theme')
+  provides=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}")
+
+  cd Colloid-icon-theme
+  install -d "$pkgdir/usr/share/icons"
+  ./install.sh -s dracula -t all -d "$pkgdir/usr/share/icons"
+}
+
+package_colloid-nord-icon-theme-git() {
+  pkgdesc="Nord icon theme for Linux desktops"
+  depends=('gtk-update-icon-cache' 'hicolor-icon-theme')
+  provides=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}")
+
+  cd Colloid-icon-theme
+  install -d "$pkgdir/usr/share/icons"
+  ./install.sh -s nord -t all -d "$pkgdir/usr/share/icons"
 }
 
 package_colloid-cursors-git() {
