@@ -1,7 +1,7 @@
 # Maintainer: Joan Figueras <ffigue at gmail dot com>
 
 pkgname=guacamole-auth-totp-bin
-pkgver=1.5.4
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="The totp authentication extension for Guacamole Client"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('guacamole-client')
 source=("https://archive.apache.org/dist/guacamole/${pkgver}/binary/guacamole-auth-totp-${pkgver}.tar.gz")
 
-md5sums=('f7359f50a6eabbe9accbd7dd7c97ff0b')
+md5sums=('f60e6108e0b16f9e2c80206559b7a692')
 
 package() {
   cd "${srcdir}/guacamole-auth-totp-${pkgver}"
