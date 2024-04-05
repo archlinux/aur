@@ -1,0 +1,17 @@
+pkgbase = dcexel
+	pkgdesc = Exelvision EXL100 family emulator for Windows
+	pkgver = 20231015
+	pkgrel = 1
+	url = dcexel.free.fr
+	arch = x86_64
+	arch = i686
+	makedepends = p7zip
+	depends = wine
+	source = http://dcexel.free.fr/telechargement/prog/dcexel_20231015.zip
+	source = dcexel
+	source = dcexel.desktop
+	source = dcexel.png
+	md5sums = 3b36ec9be175213ccaf41851432d82f5
+
+pkgname = dcexel
+

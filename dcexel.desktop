@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=DCExel
+Comment=Exelvision EXL100 family emulator for Windows
+Exec=dcexel
+Icon=dcexel
+Terminal=false
+StartupNotify=false
+Categories=Wine;Game;

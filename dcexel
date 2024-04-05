@@ -1,0 +1,3 @@
+#!/bin/bash
+
+wine /usr/share/dcexel/dcexel_20231015.exe "$(winepath -w "$1")"
