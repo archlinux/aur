@@ -16,7 +16,7 @@ source=("https://github.com/vran-dev/PrettyZoo/releases/download/v2.1.1/prettyzo
 md5sums=('5060164137922ba664b81e6dce903500')
 
 package() {
-    tar xf data.tar.xz -C ${pkgdir}/
+    tar xf data.tar.zst -C ${pkgdir}/
     chmod 755 ${pkgdir}"/opt/prettyzoo/" \
               ${pkgdir}"/opt/prettyzoo/bin/" 
 
