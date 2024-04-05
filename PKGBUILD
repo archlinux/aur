@@ -3,24 +3,25 @@
 _pkgname=sizepower
 _pkgver=1.72.0
 pkgname=r-${_pkgname,,}
-pkgver=1.72.0
-pkgrel=1
-pkgdesc='Sample Size and Power Calculation in Micorarray Studies'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('LGPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Sample Size and Power Calculation in Micorarray Studies"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('LGPL-2.0-or-later')
 depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fd3581187bce67e1318864b5b0db3e2cc2030fb6cad66246d4b93f325997840f')
+md5sums=('4edf7f08a26ccaa8ae0d08e17b6ef0cd')
+b2sums=('f42f2bd0b8311001df0719cb12aada6a8f64ee11ea267258553825cc92fcc4f74053a3bc5a7ed4c2302cdafc39a45653fae2081de950fe45452a9005203898b3')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
