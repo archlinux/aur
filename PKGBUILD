@@ -14,7 +14,7 @@ license=(BSD2 BSD3 GPL2 LGPL2Plus GPL3Plus)
 arch=(x86_64 aarch64 riscv)
 depends=() # TODO
 makedepends=('gcc-ada' 'git' 'python') # TODO
-options=('buildflags')
+options=('buildflags' '!debug')
 sources_gcc=(
   'https://ftpmirror.gnu.org/gmp/gmp-6.3.0.tar.xz'
   'https://ftpmirror.gnu.org/mpfr/mpfr-4.2.1.tar.xz'

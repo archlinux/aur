@@ -29,6 +29,7 @@ pkgbase = coreboot-toolchain
 	noextract = clang-tools-extra-16.0.6.src.tar.xz
 	noextract = cmake-3.27.7.tar.gz
 	options = buildflags
+	options = !debug
 	source = git+https://review.coreboot.org/coreboot#commit=4845b69db29107ce8d9cd2969b4aad5c7daa6399
 	source = https://github.com/acpica/acpica/archive/refs/tags/R06_28_23.tar.gz
 	source = https://www.nasm.us/pub/nasm/releasebuilds/2.16.01/nasm-2.16.01.tar.bz2
