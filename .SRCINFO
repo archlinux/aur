@@ -1,7 +1,7 @@
 pkgbase = lhapdf
 	pkgdesc = A particle physics tool for evaluating PDFs from discretised data files
 	pkgver = 6.5.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lhapdf.hepforge.org/
 	install = lhapdf.install
 	arch = x86_64
