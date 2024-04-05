@@ -4,24 +4,25 @@
 _pkgname=sciplot
 _pkgver=1.2-0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.0
-pkgrel=1
-pkgdesc='Scientific Graphing Functions for Factorial Designs'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=4
+pkgdesc="Scientific Graphing Functions for Factorial Designs"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('738fa4ddc1c1d20f5467376d9278f6461a405617904b871a378e94ade563ff24')
+md5sums=('4510ec33ecf0da8d371656de67e2db83')
+b2sums=('ff76873e6292adef8d0fbed01d85488790d6a1ae599a1e0d929a2661c0d675dfa68512b9e7a8c533a70b4160c213499c9950a52fbaadaf00a0c28dcff4b97d02')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

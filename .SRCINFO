@@ -1,12 +1,13 @@
 pkgbase = r-sciplot
 	pkgdesc = Scientific Graphing Functions for Factorial Designs
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=sciplot
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	source = https://cran.r-project.org/src/contrib/sciplot_1.2-0.tar.gz
-	sha256sums = 738fa4ddc1c1d20f5467376d9278f6461a405617904b871a378e94ade563ff24
+	md5sums = 4510ec33ecf0da8d371656de67e2db83
+	b2sums = ff76873e6292adef8d0fbed01d85488790d6a1ae599a1e0d929a2661c0d675dfa68512b9e7a8c533a70b4160c213499c9950a52fbaadaf00a0c28dcff4b97d02
 
 pkgname = r-sciplot
