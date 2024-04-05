@@ -5,7 +5,7 @@
 _name=sphinxcontrib-newsfeed
 pkgname=python-sphinxcontrib-newsfeed
 pkgver=0.1.4
-pkgrel=14
+pkgrel=15
 pkgdesc="News Feed extension for Sphinx"
 arch=('any')
 url="https://github.com/Cyclododecene/newsfeed"
