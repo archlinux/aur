@@ -4,15 +4,15 @@
 # Contributor: Krut Patel <kroot.patel@gmail.com>
 
 pkgname=sioyek-git
-pkgver=2.0.0.r863.gb48e66c
+pkgver=2.0.0.r882.g0c0507a
 pkgrel=1
 pkgdesc="PDF viewer for research papers and technical books."
 arch=(x86_64)
 license=(GPL3)
 url="https://github.com/ahrm/sioyek"
-depends=(libmupdf qt6-speech qt6-declarative)
+depends=(libmupdf qt6-speech qt6-declarative qt6-svg)
 optdepends=(qt6-wayland)
-makedepends=(git mujs qt6-3d qt6-svg)
+makedepends=(git qt6-3d)
 provides=(sioyek)
 conflicts=(sioyek)
 source=("git+https://github.com/ahrm/sioyek.git#branch=development"
