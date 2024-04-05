@@ -5,12 +5,12 @@ pkgbase=python-sunpy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=5.1.0
+pkgver=5.1.2
 pkgrel=1
 pkgdesc="Python library for solar physics"
 arch=('i686' 'x86_64')
 url="https://sunpy.org"
-license=('BSD')
+license=('BSD-2-Clause')
 makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-installer' 'python-extension-helpers' 'python-numpy')
 #'python-sunpy-sphinx-theme'
 #'python-parfive' 'python-astroquery' 'python-reproject' 'python-ruamel-yaml' 'python-jplephem' 'python-sphinx-automodapi' 'python-sphinx-changelog' 'python-sphinx-gallery>=0.9.0' 'python-sphinxext-opengraph'
@@ -63,7 +63,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #        "http://data.sunpy.org/sunpy/v1/aiacalibim5.fits.gz"
 #        "http://data.sunpy.org/sunpy/v1/glg_cspec_n5_110607_v00.pha")
 ##       "http://netdrms01.nispdc.nso.edu/VSO/WSDL/VSOi_rpc_literal.wsdl")
-md5sums=('94552eb056c92fee0d7febc833c39b3b')
+md5sums=('08dcb8c53fd8833e4ff8deac9806e437')
 #        'bde3bd7a691b38e2e4c4e1d17b143b24'
 #        '01efaf052d81efc32a92050a249aa557'
 #        'ead6d3ce4c183c471d76bf1bc3be44a3'
@@ -147,7 +147,7 @@ package_python-sunpy() {
                 'python-matplotlib>=3.5.0: map, timeseries, visualization'
                 'python-mpl-animators>=1.0.0: map, visualization'
                 'python-glymur>0.9.5: jpeg2000'
-                'python-lxml>=4.8.0: jpeg2000'
+                'python-lxml>5.0.0: jpeg2000'
                 'python-beautifulsoup4>=4.8.0: net'
                 'python-drms<0.7.0: net'
                 'python-dateutil>=2.8.0: net'
