@@ -5,13 +5,13 @@
 # Contributor: bilibili_xiaok <the_xiaok@qq.com>
 pkgname=xmcl-launcher
 pkgver=0.43.0
-pkgrel=4
+pkgrel=5
 pkgdesc="X Minecraft Launcher - 一个现代化的 Minecraft 启动器"
 arch=('x86_64')
 provide=("xmcl")
 url="https://xmcl.app/"
 license=('MIT')
-depends=('electron27-bin')
+depends=('electron27')
 #makedepends=('wget')
 conflicts=('xmcl-launcher-bin')
 optdepends=('jre8-openjdk: 启动低版本游戏的最低要求'
