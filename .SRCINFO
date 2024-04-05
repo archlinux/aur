@@ -1,0 +1,13 @@
+pkgbase = python-requests-ftp
+	pkgdesc = FTP transport adapter for Requests
+	pkgver = 0.3.1
+	pkgrel = 8
+	url = https://github.com/Lukasa/requests-ftp
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-requests
+	source = https://github.com/Lukasa/requests-ftp/archive/v0.3.1.tar.gz
+	sha256sums = 9e63cf0f21d306931e205363fb5021f9553c8fcc0197bac07f0882a56d8e7251
+
+pkgname = python-requests-ftp
