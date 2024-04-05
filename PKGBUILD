@@ -1,8 +1,8 @@
 # Maintainer: Bert Peters <bert@bertptrs.nl>
 pkgname=simdjson
 epoch=1
-pkgver=3.8.0
-pkgrel=2
+pkgver=3.9.0
+pkgrel=1
 pkgdesc="A C++ library to see how fast we can parse JSON with complete validation."
 arch=('x86_64')
 url="https://github.com/simdjson/simdjson"
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=(gcc-libs)
 makedepends=(cmake)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/simdjson/simdjson/archive/v$pkgver.tar.gz")
-sha256sums=('e28e3f46f0012d405b67de6c0a75e8d8c9a612b0548cb59687822337d73ca78b')
+sha256sums=('dbd752eb2ae051b6de3cb7e87ceb27a7f4331153d4d20d29e574350e9cab9732')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" \
@@ -18,7 +18,7 @@ build() {
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -Wno-dev
-	make -C build
+	cmake --build build
 }
 
 # Running tests requires enabling developer mode, which greatly increases the
@@ -31,5 +31,5 @@ build() {
 # }
 
 package() {
-	make -C build DESTDIR="$pkgdir/" install
+	DESTDIR="$pkgdir/" cmake --install build
 }
