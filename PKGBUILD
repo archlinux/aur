@@ -3,7 +3,7 @@
 _pkgname=docutils-stubs
 pkgname=python-$_pkgname
 pkgver=0.0.22
-pkgrel=2
+pkgrel=3
 pkgdesc='PEP 561 based Type information for docutils'
 arch=('any')
 url='https://github.com/tk0miya/docutils-stubs'
