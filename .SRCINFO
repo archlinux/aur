@@ -1,0 +1,15 @@
+pkgbase = python-litedram
+	pkgdesc = Small footprint and configurable DRAM core
+	pkgver = 2021.08
+	pkgrel = 3
+	url = https://github.com/enjoy-digital/litedram
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-migen
+	depends = python-litex
+	depends = python-yaml
+	source = python-litedram-2021.08.tar.gz::https://github.com/enjoy-digital/litedram/archive/2021.08.tar.gz
+	sha512sums = e84cefc357a31e8e421f9a39d0eeb26d3b3da300ccbcebe6cf907fa4c2465e07a819fff3e4368e1fd2b726a17b91dfd4e36d1ce954ddf2e5b338a4ac373bc003
+
+pkgname = python-litedram
