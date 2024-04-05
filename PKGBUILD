@@ -1,13 +1,13 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=gog-slay-the-princess-demo
-pkgver=1.0a.64269
+pkgver=1.0a.64271
 pkgrel=1
 pkgdesc='Choice-driven psychological horror visual novel. GOG version.'
 _shortname="${pkgname#gog-}"
 arch=('x86_64')
 url="https://www.gog.com/en/game/${_shortname//-/_}"
-license=('custom')
+license=('LicenseRef-eula')
 depends=(
   'bash'
   'cairo'
