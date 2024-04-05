@@ -1,0 +1,16 @@
+pkgbase = capcom-git
+	pkgdesc = Atom feed aggregator for Gemini
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://git.sr.ht/~solderpunk/capcom
+	arch = any
+	license = GPLv3
+	depends = python-agunua
+	depends = python-feedparser
+	depends = python-urllib3
+	provides = capcom
+	conflicts = capcom
+	source = git+https://git.sr.ht/~solderpunk/capcom
+	sha256sums = SKIP
+
+pkgname = capcom-git
