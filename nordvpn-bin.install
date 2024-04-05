@@ -8,10 +8,9 @@ post_install() {
 }
 
 post_upgrade() {
-  echo ':: Caution! This version needs heed while using it and should be avoided.'
-  echo '     I strongly advice downgrading to 3.17.2 and wait for a new version or patching.'
-  echo ':: 3.17.3v has DNS LEAK and it is unable to connect as usual.'
-  echo '     See the currently version note on AUR page for details.'
+  echo ':: Reminder: 3.17.3v has DNS LEAK and it is unable to connect as usual.'
+  echo '     The version above needs heed while using it and should be avoided.'
+  echo ':: 3.17.4v fix the issue present in previous version.'
 }
 
 pre_install() {
