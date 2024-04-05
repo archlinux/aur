@@ -1,7 +1,7 @@
 pkgbase = ssh-audit
 	pkgdesc = SSH configuration auditing
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jtesta/ssh-audit
 	arch = any
 	license = MIT
