@@ -1,0 +1,15 @@
+pkgbase = pacdef-bin
+	pkgdesc = multi-backend declarative package manager for Linux, binary version
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/steven-omaha/pacdef
+	arch = x86_64
+	license = GPL3
+	depends = gcc-libs
+	provides = pacdef
+	conflicts = pacdef-git
+	conflicts = pacdef
+	source = https://github.com/steven-omaha/pacdef/releases/download/v1.5.0/pacdef-arch.tar.gz
+	sha256sums = 361ad3bcf0fae6eac3577714895cacc3904117e8c986fe9ca8d711264742e0d5
+
+pkgname = pacdef-bin
