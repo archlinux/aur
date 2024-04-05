@@ -6,7 +6,7 @@
 
 _pkgname="xboxdrv"
 pkgname="$_pkgname-git"
-pkgver=0.8.9.r22.g34118a7.wip
+pkgver=0.8.9.r0.g25a1dcb
 pkgrel=1
 pkgdesc="Userspace Xbox gamepad driver and input remapper"
 url="https://github.com/xiota/xboxdrv"
@@ -38,11 +38,9 @@ conflicts=("$_pkgname")
 
 backup=("etc/default/xboxdrv")
 
-: ${_branch:=wip}
-
 _pkgsrc="$_pkgname"
 source=(
-  "$_pkgsrc"::"git+$url.git#branch=${_branch}"
+  "$_pkgsrc"::"git+$url.git"
   "xboxdrv.default"
   "xboxdrv.service"
 )
@@ -55,12 +53,8 @@ sha256sums=(
 pkgver() {
   cd "$_pkgsrc"
 
-  local _pkgver=$(
-    git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-      | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
-  )
-
-  [[ "$_branch" == "wip" ]] && printf '%s.%s' "${_pkgver:?}" "${_branch:?}"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
