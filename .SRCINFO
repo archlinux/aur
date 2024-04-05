@@ -1,6 +1,6 @@
 pkgbase = bluetuith
 	pkgdesc = TUI-based bluetooth manager
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/darkhz/bluetuith
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = bluetuith
 	makedepends = go
 	depends = bluez
 	depends = dbus
-	source = bluetuith-0.2.1.tar.gz::https://github.com/darkhz/bluetuith/archive/v0.2.1.tar.gz
-	sha256sums = 34b853a2e1ef1c77d06dc761c5e40050763d509cadc98a48e5342154633fffde
+	source = bluetuith-0.2.2.tar.gz::https://github.com/darkhz/bluetuith/archive/v0.2.2.tar.gz
+	sha256sums = 2a02f51c53668fa3171e642e25f268fc50fbb2438f764956fb7cd46fb786083d
 
 pkgname = bluetuith
