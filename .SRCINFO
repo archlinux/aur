@@ -1,6 +1,6 @@
 pkgbase = audacious-git
 	pkgdesc = Lightweight, advanced audio player focused on audio quality (git version)
-	pkgver = 4.3.1.r40.g940ac0b66
+	pkgver = 4.3.1.r42.gc015fef9f
 	pkgrel = 1
 	epoch = 1
 	url = https://audacious-media-player.org/
@@ -9,7 +9,7 @@ pkgbase = audacious-git
 	arch = x86_64
 	license = BSD
 	makedepends = git
-	makedepends = python
+	makedepends = python-packaging
 	depends = glib2
 	depends = gtk2
 	depends = qt6-base
