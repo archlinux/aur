@@ -1,6 +1,6 @@
 pkgbase = liteloader-qqnt-markdown-git
 	pkgdesc = LiteLoaderQQNT插件，为QQ添加Markdown支持
-	pkgver = 1.0.0.9960896
+	pkgver = 1.0.0.0d1be2a
 	pkgrel = 1
 	url = https://github.com/d0j1a1701/LiteLoaderQQNT-Markdown
 	arch = any

@@ -2,7 +2,7 @@
 
 pkgname='liteloader-qqnt-markdown-git'
 _pkgname='LiteLoaderQQNT-Markdown'
-pkgver='1.0.0.9960896'
+pkgver='1.0.0.0d1be2a'
 pkgrel=1
 pkgdesc="LiteLoaderQQNT插件，为QQ添加Markdown支持"
 arch=('any')
@@ -17,7 +17,8 @@ sha256sums=('SKIP')
 b2sums=('SKIP')
 
 package() {
-	mkdir -p "${pkgdir}/opt/LiteLoader/plugins"
-	chmod -R 0777 "${pkgdir}/opt/LiteLoader"
-	cp -rf "${srcdir}/${_pkgname}" "${pkgdir}/opt/LiteLoader/plugins/${_pkgname}"
+    mkdir -p "${pkgdir}/opt/LiteLoader/plugins"
+    chmod -R 0777 "${pkgdir}/opt/LiteLoader"
+    cp -rf "${srcdir}/${_pkgname}" "${pkgdir}/opt/LiteLoader/plugins/${_pkgname}"
+    echo "二进制版本在liteloader-qqnt-markdown-bin可用"
 }
