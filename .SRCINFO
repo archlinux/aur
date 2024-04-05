@@ -1,0 +1,14 @@
+pkgbase = python-litevideo
+	pkgdesc = Small footprint and configurable video cores
+	pkgver = 2021.08
+	pkgrel = 3
+	url = https://github.com/enjoy-digital/litevideo
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-migen
+	depends = python-litex
+	source = python-litevideo-2021.08.tar.gz::https://github.com/enjoy-digital/litevideo/archive/2021.08.tar.gz
+	sha512sums = 49cf97ab731badfeb51f7f892e53afa3b85515cc6f0086abf443cda3c4d4f2759f2d24bf7f2112010044412e8b07da99271d7b0d39308cac67afc826bd6e3c52
+
+pkgname = python-litevideo
