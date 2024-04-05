@@ -1,7 +1,7 @@
 pkgbase = stupidterm-git
 	pkgdesc = A Stupid Terminal based on VTE
-	pkgver = v1.r9.g61bf67b
-	pkgrel = 1
+	pkgver = v1.r27.g22ab2d4
+	pkgrel = 2
 	url = https://github.com/esmil/stupidterm
 	arch = i686
 	arch = x86_64
@@ -18,4 +18,3 @@ pkgbase = stupidterm-git
 	md5sums = 23b1a68491fef30c9bcbb9459ec67a23
 
 pkgname = stupidterm-git
-

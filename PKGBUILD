@@ -1,10 +1,11 @@
-# Maintainer: Emil Renner Berthing <esmil@mailme.dk>
+# Maintainer: Célestin Matte aur [at] cmatte dot me
+# Contributor: Emil Renner Berthing <esmil@mailme.dk>
 # Contributor: Elis Axelsson <etu@failar.nu>
 
 _pkgname=stupidterm
 pkgname=${_pkgname}-git
-pkgver=v1.r9.g61bf67b
-pkgrel=1
+pkgver=v1.r27.g22ab2d4
+pkgrel=2
 pkgdesc="A Stupid Terminal based on VTE"
 arch=("i686" "x86_64" "armv5tel" "armv7l")
 url="https://github.com/esmil/stupidterm"
