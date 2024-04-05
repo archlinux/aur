@@ -1,12 +1,13 @@
 pkgbase = r-smap
 	pkgdesc = A Segmental Maximum A Posteriori Approach to Array-CGH Copy Number Profiling
 	pkgver = 1.66.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/SMAP
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
 	depends = r
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/SMAP_1.66.0.tar.gz
-	sha256sums = b68c532cdbffdde5789ebd823eaceda95ae3d4d041e687363363da2bc7dad254
+	md5sums = f29ffdead8f34c2f531dd7ea764febe0
+	b2sums = e2b514e26146d8e3d49dba10c8a3baa1b02a76f9862c2f302a44f11d3433f0988737fffcfb983fea60fb312ffb20bb07a91150d240b695861263256efd6a89cf
 
 pkgname = r-smap
