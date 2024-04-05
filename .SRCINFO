@@ -1,7 +1,7 @@
 pkgbase = stratis-cli
 	pkgdesc = A CLI for the Stratis Project.
 	pkgver = 3.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stratis-storage.github.io/
 	arch = any
 	license = Apache
