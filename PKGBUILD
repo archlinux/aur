@@ -18,7 +18,7 @@ optdepends=('python-h5py: storing data in the hierarchical file format'
   'python-pandas: handling tabular data'
   'python-pyfftw: Faster Fourier transforms'
   'python-rocket-fft: Numba-compiled fast Fourier transforms'
-  'ffmpeg: creating movies from matplotlib figures')
+  'python-ffmpeg-python: creating movies from matplotlib figures')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
 sha512sums=('2b29d71de937c9b3da6cddf92417bc6da6958a019fd1794a5a1386fed02982f55272e4edab2b961c0d62ec2ff942ca2c4bb8f72d27a1f290bccafd9cd56220bd')
 
