@@ -1,11 +1,11 @@
 prefix=/usr
 exec_prefix=${prefix}
-libdir=/usr/lib
 includedir=${prefix}/include
+libdir=${exec_prefix}/lib
 
 Name: v8
 Description: V8 JavaScript Engine
 Version: @VERSION@
-Requires: icu-uc, icu-i18n, v8_libbase = @VERSION@
+Requires: icu-uc, icu-i18n, v8_libbase = @VERSION@, v8_libplatform = @VERSION@
+Cflags: -I${includedir}/v8
 Libs: -L${libdir} -lv8 -pthread
-Cflags: -I${includedir}
