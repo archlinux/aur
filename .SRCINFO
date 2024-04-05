@@ -1,4 +1,4 @@
-pkgbase = open-pha-appimage
+pkgbase = open-pha
 	pkgdesc = A comprehensive PHA, HAZOP and LOPA software solution from Kenexis
 	pkgver = 2.2.1
 	pkgrel = 1
@@ -7,10 +7,10 @@ pkgbase = open-pha-appimage
 	license = custom:Commercial
 	depends = zlib
 	depends = fuse2
-	noextract = open-pha-appimage-2.2.1.AppImage
+	noextract = open-pha-2.2.1.AppImage
 	options = !strip
 	options = !debug
-	source_x86_64 = open-pha-appimage-2.2.1.AppImage::https://d22j4f41zcdpc.cloudfront.net/Open+PHA-2.2.1.AppImage
+	source_x86_64 = open-pha-2.2.1.AppImage::https://d22j4f41zcdpc.cloudfront.net/Open+PHA-2.2.1.AppImage
 	sha256sums_x86_64 = aa1d1e631b170fa4f436ae5c493880bf8fbf203635a3e7bd8ed07b09bd2d0072
 
-pkgname = open-pha-appimage
+pkgname = open-pha

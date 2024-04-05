@@ -4,7 +4,7 @@
 
 _pkgname=open-pha
 
-pkgname="${_pkgname}"-appimage
+pkgname="${_pkgname}"
 pkgver=2.2.1
 pkgrel=1
 pkgdesc="A comprehensive PHA, HAZOP and LOPA software solution from Kenexis"
