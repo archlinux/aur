@@ -3,24 +3,25 @@
 _pkgname=pickgene
 _pkgver=1.74.0
 pkgname=r-${_pkgname,,}
-pkgver=1.74.0
-pkgrel=1
-pkgdesc='Adaptive Gene Picking for Microarray Expression Data Analysis'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Adaptive Gene Picking for Microarray Expression Data Analysis"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5da2bf657c69351c8f2b78e8f4da800ccbfb1e4cf6eb686b57beeb648030e836')
+md5sums=('250b3649eff783447f1d2c34f67bf3ca')
+b2sums=('c4d6dd063231b6df5e54667c5615794a71f9c6e14feecb39f865bc323330aa38ca3203501236265a3ab1b805e907c2a3a8e5988b0f3763963221caff82bea61f')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
