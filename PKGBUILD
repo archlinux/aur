@@ -4,7 +4,7 @@
 pkgname=bruno-electron
 _pkgname=bruno
 pkgdesc="Bruno, an opensource API Client for Exploring and Testing APIs using the system provided Electron"
-pkgver=1.12.1
+pkgver=1.12.3
 pkgrel=1
 conflicts=('bruno')
 provides=('bruno')
@@ -18,6 +18,7 @@ depends=(
 )
 makedepends=(
     'asar'
+    'npm'
 )
 
 source=(
@@ -25,18 +26,16 @@ source=(
    com.usebruno.app.Bruno.desktop
 )
 
-sha256sums=(
-    'e4c3f2e4aa01537d4e336802acd8e979fec9bbb00fd99996216b0e9264f0087f' # bruno
-    '7bad0d66e67fdaaf99d1b7b32ba2f119b7d6dba12ecfdb398c39ee3c81bbe051' # bruno.desktop
-)
+sha256sums=('4e964b5b053318d7604362aabc9b88ae2a4d58e39dadbe14e8083d7d1e38f987'
+            '7bad0d66e67fdaaf99d1b7b32ba2f119b7d6dba12ecfdb398c39ee3c81bbe051')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
 
-    # disabling husky however I can since I'm not in a git repository
+    # Try our hardest to disable Husky
     sed -i -e 's/"husky":.*//g' -e 's/"husky install"/"true"/g' package.json
 
-    npm install --legacy-peer-deps
+    npm install --cache "${srcdir/npm-cache}" --legacy-peer-deps
 }
 
 build() {
