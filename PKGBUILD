@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Kevin Majewski <kevin.majewski02@gmail.com>
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
