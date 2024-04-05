@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="fava-dashboards-git"
-pkgver=r37.7eb6635
+pkgver=r74.df40f4e
 pkgrel=1
 pkgdesc="Custom Dashboards for Beancount in Fava"
 url="https://github.com/andreasgerstmayr/fava-dashboards"
@@ -12,9 +12,12 @@ depends=(    "fava"
 makedepends=("git"
              "python-build"
              "python-installer"
+             "python-hatchling"
+             "python-hatch-vcs"
              "python-setuptools-scm"
              "python-wheel")
 options=("!strip")
+#source=("git+$url#branch=update-project-layout")
 source=("git+$url")
 sha256sums=("SKIP")
 

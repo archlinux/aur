@@ -1,6 +1,6 @@
 pkgbase = fava-dashboards-git
 	pkgdesc = Custom Dashboards for Beancount in Fava
-	pkgver = r37.7eb6635
+	pkgver = r74.df40f4e
 	pkgrel = 1
 	url = https://github.com/andreasgerstmayr/fava-dashboards
 	arch = any
@@ -8,6 +8,8 @@ pkgbase = fava-dashboards-git
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = fava
