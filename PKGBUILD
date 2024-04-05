@@ -1,21 +1,21 @@
 # Maintainer: a821
 
 pkgname=python-lmfit-git
-pkgver=1.2.1.r3.g502cc9ba
+pkgver=1.3.0.r0.g8781a2dc
 pkgrel=1
 pkgdesc="Non-Linear Least-Squares Minimization and Curve-Fitting for Python"
 arch=('any')
 url="https://lmfit.github.io/lmfit-py"
-license=('BSD')
-depends=('python-asteval' 'python-numpy' 'python-scipy' 'python-uncertainties')
+license=('BSD-3-Clause')
+depends=('python-asteval' 'python-dill' 'python-numpy' 'python-scipy' 'python-uncertainties')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm')
 optdepends=(
     'python-corner'
     'python-emcee'
     'python-pandas'
     'python-matplotlib'
-    'python-dill'
     'python-numdifftools'
+    'python-sympy'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
