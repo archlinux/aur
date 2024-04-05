@@ -1,0 +1,15 @@
+pkgbase = python-migen
+	pkgdesc = A Python toolbox for building complex digital hardware
+	pkgver = 0.9.2
+	pkgrel = 8
+	url = https://github.com/m-labs/migen
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-colorama
+	source = migen-0.9.2.tar.gz::https://github.com/m-labs/migen/archive/0.9.2.tar.gz
+	source = https://github.com/m-labs/migen/commit/0fb91737090fe45fd764ea3f71257a4c53c7a4ae.patch
+	sha512sums = 9ff39f9f9b7e99b7d933e39091eb7e98c413ec3e60b98722d813df30fe95484470a1a027ac08bdf065bf688f4bb53af2c4618d3bbc0f1086adab33e149dca98f
+	sha512sums = 7fbeccacb93d4ba7b956f6136433b0381cb88ec11b6b4b9601da7b6ac60c552568fddd108b1022e4e0fa771c351018485b1d1b6c00ad872c936bf505a29f1c8f
+
+pkgname = python-migen
