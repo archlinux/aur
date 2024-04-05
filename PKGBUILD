@@ -4,7 +4,7 @@
 
 pkgname=python-d2to1
 pkgver=0.2.12.post1
-pkgrel=12
+pkgrel=13
 pkgdesc="Python library that allows using distutils2-like setup.cfg files for a package's metadata with a distribute/setuptools setup.py script"
 arch=('any')
 url='https://pypi.python.org/pypi/d2to1'
