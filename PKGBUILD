@@ -3,7 +3,7 @@
 _name=assertpy
 pkgname=python-assertpy
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple assertion library for unit testing in python with a fluent API"
 arch=(any)
 url="https://github.com/assertpy/assertpy"

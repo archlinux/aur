@@ -1,7 +1,7 @@
 pkgbase = python-assertpy
 	pkgdesc = Simple assertion library for unit testing in python with a fluent API
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/assertpy/assertpy
 	arch = any
 	license = BSD-3-Clause
