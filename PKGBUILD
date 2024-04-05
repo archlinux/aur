@@ -18,7 +18,15 @@ optdepends=('ripgrep: text search, for autotype'
             'yad: dialog tool, for autotype'
             'xsel: X clipboard tool, for getAttr'
             'util-linux: for the column formatting command, for getAttr')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+source=(
+        "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+      	"claphelp.tar.gz::https://hg.sr.ht/~ser/claphelp/archive/v2.3.3.tar.gz"
+)
+
+prepare() {
+  cd "${srcdir}/claphelp-v2.3.3"
+  go build -o "${srcdir}/${pkgname}-v${pkgver}"/makeclapman ./cmd/makeclapman
+}
 
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
@@ -29,16 +37,29 @@ build() {
     -asmflags "all=-trimpath=${PWD}" \
     -ldflags "-X main.Version=v${pkgver} -extldflags ${LDFLAGS} -s -w" \
     -buildmode=pie .
+
+  mkdir -p man1
+  CLAPTRAP_USAGE_JSON=true ./rook | \
+    ./makeclapman -d man1 --author "Sean E. Russell" \
+      --description "Rook allows you to use a KeePass v2 database as storage for secrets. It provides client and server modes; the server unlocks the database and stays in memory, while the client communicates over a socket with the server and fetches data."
+  gzip man1/*
 }
 
 package() {
-  install -Dm755 "${srcdir}"/${pkgname}-v${pkgver}/rook "${pkgdir}"/usr/bin/rook
-	(type rg && type xdotool && type xprop && type yad && type zsh && type rofi) > /dev/null && \
-    install -Dm755 "${srcdir}/${pkgname}-v${pkgver}/utils/autotype.sh" "${pkgdir}/usr/bin/rook-autotype"
-	# test for optional dependencies
-	(type rofi && type xsel && type xdotool && type column) > /dev/null && \
-    install -Dm755 "${srcdir}/${pkgname}-v${pkgver}/utils/getAttr.sh" "${pkgdir}/usr/bin/rook-getattr"
-  install -Dm644 "${srcdir}"/${pkgname}-v${pkgver}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 "${srcdir}/${pkgname}-v${pkgver}/README.md" "${pkgdir}/usr/share/doc/rook/README.md"
+  cd "${srcdir}/${pkgname}-v${pkgver}"
+
+  install      -Dm755 rook              "${pkgdir}"/usr/bin/rook
+  install      -Dm644 LICENSE           "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install      -Dm644 README.md         "${pkgdir}/usr/share/doc/rook/README.md"
+  install      -Dm644 man1/*         -t "${pkgdir}"/usr/share/man/man1/
+  # Install utility apps IFF the dependencies exist. Always return true.
+	(type rg && type xdotool && type xprop && type yad && type zsh && type rofi) > /dev/null \
+    && install -Dm755 utils/autotype.sh "${pkgdir}/usr/bin/rook-autotype" \
+    || true
+  # Install utility apps IFF the dependencies exist. Always return true.
+	(type rofi && type xsel && type xdotool && type column) > /dev/null \
+    && install -Dm755 utils/getAttr.sh  "${pkgdir}/usr/bin/rook-getattr" \
+    || true
 }
-sha256sums=('c258a54146d4665c37c9dcd87fd74aad35532bdcfca2e333005b3672109de1c4')
+sha256sums=('0341c303348be20798dd0b9cd037e2b9ec5c9d89c94be43b28ae65ecc371595f'
+            'd8721700bb8f1f09bf9334c353eae1023a1cc1b341f2b6723799ddc779ae12c7')
