@@ -1,7 +1,7 @@
 pkgbase = python-periphery
 	pkgdesc = A pure Python 2/3 library for peripheral I/O (GPIO, LED, PWM, SPI, I2C, MMIO, Serial) in Linux
 	pkgver = 2.3.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/vsergeev/python-periphery
 	arch = any
 	license = MIT
