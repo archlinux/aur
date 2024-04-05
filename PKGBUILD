@@ -1,6 +1,6 @@
 # Maintainer: Totor <bertlover6969@gmail.com>
 pkgname='eeec'
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Extremely Elaborate Elegant Calendar"
 arch=('x86_64')
@@ -27,5 +27,9 @@ build() {
 package() {
 	cd eeec
 	sudo mv eeec /usr/bin/
-	mv .eeecrc ~/
+	if [[ -e ~/.eeecrc ]]; then
+		printf ""
+	else
+		mv .eeecrc ~/
+	fi
 }
