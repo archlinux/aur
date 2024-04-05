@@ -1,7 +1,7 @@
 pkgbase = scu-bin
 	pkgdesc = System fetch utility is aimed at informativeness
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/omnitix/scu
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -10,8 +10,8 @@ pkgbase = scu-bin
 	provides = scu
 	conflicts = scu
 	options = !debug
-	source = scu::https://gitlab.com/omnitix/scu/-/jobs/6560691221/artifacts/raw/target/release/scu
-	source = scu.md5::https://gitlab.com/omnitix/scu/-/jobs/6560691221/artifacts/raw/scu.md5sum
+	source = https://gitlab.com/omnitix/scu/-/jobs/6560963780/artifacts/raw/scu
+	source = https://gitlab.com/omnitix/scu/-/jobs/6560963780/artifacts/raw/scu.md5sum
 	b2sums = 43b3ec558bf6b853aba3363aa978bd4e2e48706994f8e91a0ea143680954b97a71171e050ad665e7538af69314cd6887c787abe674783b651add2084f67ea6c9
 	b2sums = SKIP
 
