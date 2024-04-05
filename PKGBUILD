@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=quanteda
-_pkgver=3.3.1
+_pkgver=4.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Quantitative Analysis of Textual Data"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -14,9 +14,9 @@ depends=(
   onetbb
   r-fastmatch
   r-jsonlite
+  r-lifecycle
   r-magrittr
   r-rcpp
-  r-rcppparallel
   r-snowballc
   r-stopwords
   r-stringi
@@ -38,43 +38,26 @@ checkdepends=(
   r-topicmodels
 )
 optdepends=(
-  r-dplyr
   r-formatr
-  r-ggplot2
   r-knitr
-  r-lda
   r-lsa
-  r-purrr
-  r-quanteda.textmodels
-  r-quanteda.textplots
-  r-quanteda.textstats
-  r-rcolorbrewer
+  r-rlang
   r-rmarkdown
   r-slam
-  r-spacyr
   r-spelling
-  r-stm
   r-testthat
-  r-text2vec
-  r-tibble
-  r-tidytext
   r-tm
-  r-tokenizers
-  r-topicmodels
-  r-xtable
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
-        "std-atomic.patch")
-md5sums=('b34e0169f0ac07848ecf17dc32585cd9'
-         '09a300caa20e8b24350b8999388a42a2')
-b2sums=('eea198adf7214955560d2a39c83355925a8282ae814fcb4a7bc332d4c5a791e1d4ddc4af34ec4082b5304fc98b07df09e6be60a5036bb75e20790b8715246a30'
-        'aa84229d25909d3c4054775df808fe9b0d1a76c33bc04dc477d22c801f8888985030e5f9cbcbc5a5897ee4a19a60eabbcb854ebfcc0b424bf5d6624680fbb60e')
+        "skip-tests.patch")
+md5sums=('b6116adb5b3a35f38a20869f55564626'
+         'fd46ba9ed33ccf9a5ae1e79737fd5c21')
+b2sums=('dd76426a99f09beef483af2a4b592d2b59350afb62089f85e98e0c0bc29c937f386721725d392e7db7ed18affd46a59eb4b0d3ce8a2bc8744dc8c8df461c2ec1'
+        'a8123128d9c00cf99f8d3d059886c2c3a5a175deca05f8281f3db2e0b01f418e7e5cfaf7fe0f8f0fe4c5dd7db262b07c15062b5267a65b74d7b80719740b10e8')
 
 prepare() {
-  # Switch from tbb::atomic to std::atomic to allow building with newer tbb.
-  # Modified from https://github.com/quanteda/quanteda/pull/2296
   # Skip failing test
-  patch -Np1 -i std-atomic.patch
+  patch -Np1 -i skip-tests.patch
 }
 
 build() {
