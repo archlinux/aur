@@ -1,7 +1,7 @@
 pkgbase = python-mistletoe
 	pkgdesc = A fast, extensible Markdown parser in pure Python
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/miyuchina/mistletoe
 	arch = any
 	license = MIT

@@ -2,7 +2,7 @@
 
 pkgname=python-mistletoe
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast, extensible Markdown parser in pure Python'
 arch=('any')
 url='https://github.com/miyuchina/mistletoe'
