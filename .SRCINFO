@@ -1,0 +1,19 @@
+pkgbase = python-pyrsistent
+	pkgdesc = Persistent/Functional/Immutable data structures
+	pkgver = 0.19.3
+	pkgrel = 4
+	url = https://github.com/tobgu/pyrsistent
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-hypothesis
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = glibc
+	depends = python
+	source = https://github.com/tobgu/pyrsistent/archive/v0.19.3/python-pyrsistent-0.19.3.tar.gz
+	sha512sums = 045d9ca4a2a5c5525887fbbcae77b2bc0271e6a596686ad6281c74fb1f6c8d8a4b0c9444cbd951900d953c61d51cf9452290f1e63e9107f7828bfea6e6b34545
+
+pkgname = python-pyrsistent
