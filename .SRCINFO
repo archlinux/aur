@@ -1,0 +1,23 @@
+pkgbase = breed-enter-rust-git
+	pkgdesc = A rust version of breedenter, automatically start browser http://192.168.1.1/ when breed is entered.
+	pkgver = 0.1.6.r2.g9519e03
+	pkgrel = 0
+	url = https://github.com/wwng2333/breed-enter-rust
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	provides = breed-enter-rust
+	provides = breed-enter
+	provides = breedenter-rust
+	conflicts = breed-enter-rust
+	conflicts = breed-enter
+	conflicts = breedenter-rust
+	source = breed-enter-rust-git::git+https://github.com/wwng2333/breed-enter-rust.git
+	sha256sums = SKIP
+
+pkgname = breed-enter-rust-git
