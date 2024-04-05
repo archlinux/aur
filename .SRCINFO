@@ -1,7 +1,7 @@
 pkgbase = ruff-lsp
 	pkgdesc = Language Server Protocol implementation for Ruff
 	pkgver = 0.0.53
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/astral-sh/ruff-lsp
 	arch = any
 	license = MIT

@@ -3,7 +3,7 @@
 
 pkgname=ruff-lsp
 pkgver=0.0.53
-pkgrel=2
+pkgrel=3
 pkgdesc='Language Server Protocol implementation for Ruff'
 arch=('any')
 url=https://github.com/astral-sh/ruff-lsp
