@@ -23,7 +23,6 @@ sha256sums=('003f1ae8a399166f3d99d11c20a62fd1e05201965cf521c9830a55bc8acc099a'
 prepare() {
   SRC_DIR="${srcdir}/yass-${_pkgver}"
   pushd $SRC_DIR
-  patch --forward --strip=1 --input=../fortify.patch
   cd tools
   go build
   cd ..
