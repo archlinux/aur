@@ -128,7 +128,7 @@ sha256sums=(
   '1789d14b184792db3fe0191aba0e4f733097dc058e73bf8c20a0a40cba74bfd8'
   '42cd9eeca74db7ab9493ca8824b41d7aec837992ac273f1b32601a222d654388'
 )
-options=(!strip emptydirs)
+options=(!strip emptydirs !debug)
 
 if [ -z "$_remove_vmware_keymaps_dependency" ]; then
 depends+=(
