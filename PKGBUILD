@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Python interface for the SEGGER J-Link"
 arch=(any)
 url="https://github.com/Square/pylink"
-license=(Apache)
+license=(Apache-2.0)
 depends=(
   python
   python-future
