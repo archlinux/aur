@@ -1,0 +1,6 @@
+[java21-openjfx]
+source = "git"
+git = "https://github.com/openjdk/jfx21u.git"
+include_regex = '^((?:\d|\.)+)\+\d+'
+from_pattern = '\+'
+to_pattern = '.u'
