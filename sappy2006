@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# WINE Launcher script for Sappy 2006 :3
+# TODO: report crash bugs for mod 17.1 and update package
+
+export WINEPREFIX=~/.sappy2006
+export SAVEFILE=~/.sappy2006/savefile
+export SAPPYDIR=/usr/share/sappy2006
+
+# configure all dlls
+configure() {
+    winetricks -q vb6run
+    wine regsvr32 /s $SAPPYDIR/SSubTmr6.dll
+    wine regsvr32 /s $SAPPYDIR/cPopMenu6.ocx
+    wine regsvr32 /s $SAPPYDIR/timermm.dll
+    wine regsvr32 /s $SAPPYDIR/vbalCbEx6.ocx
+    wine regsvr32 /s $SAPPYDIR/vbalExpBar6.ocx
+    touch $SAVEFILE # ensures that we don't repeat configuration process
+}
+
+if [ ! -f "$SAVEFILE" ]; then # first boot
+    configure
+elif [ "$1" = "--mkpfx" ]; then # Force reconfigure prefix
+    configure
+elif [ "$1" = "--erase" ]; then # delete all data in prefix
+    rm -rf $WINEPREFIX
+    exit 0
+else
+    echo ""
+fi
+
+wine $SAPPYDIR/sappy.exe

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Sappy 2006
+Comment=MusicPlayer2000 music and sound player and editor
+Exec=sappy2006
+Icon=sappy2006
+Terminal=false
+StartupNotify=false
+Categories=Wine;AudioVideo;

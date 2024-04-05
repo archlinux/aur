@@ -1,0 +1,15 @@
+pkgbase = sappy2006
+	pkgdesc = MusicPlayer2000 music and sound player and editor
+	pkgver = 1.2
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	makedepends = p7zip
+	depends = wine winetricks
+	source = https://archive.org/download/installateur-sappy/Installateur_Sappy.exe
+        mod17.zip
+	source = sappy2006
+	source = sappy2006.desktop
+	source = sappy2006.png
+
+pkgname = sappy2006
