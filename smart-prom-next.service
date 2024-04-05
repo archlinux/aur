@@ -1,0 +1,13 @@
+[Unit]
+Description=S.M.A.R.T. Prometheus Metrics Exporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+SyslogIdentifier=smart-prom-next
+ExecStart=/usr/bin/smart-prom-next
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

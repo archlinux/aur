@@ -1,0 +1,17 @@
+pkgbase = python-smart-prom-next
+	pkgdesc = S.M.A.R.T. Prometheus Metrics Exporter
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://github.com/PhilipMay/smart-prom-next
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-prometheus_client
+	depends = smartmontools
+	source = https://github.com/PhilipMay/smart-prom-next/archive/refs/tags/0.0.8.tar.gz
+	source = smart-prom-next.service
+	sha256sums = cdc9c050f543e5a325a3c5b76021eb0f1b18798d7ffa6aa06c3addf1eb82a920
+	sha256sums = 7f5b48120d8a8520a6dbd476cad1a1eb7bff1cbe9175e7faf1627fd4a317a4af
+
+pkgname = python-smart-prom-next
