@@ -18,7 +18,7 @@ source=(
     "https://github.com/wget/realtek-r8152-linux/archive/v${pkgver}.tar.gz"
     'dkms.conf'
 )
-sha512sums=('301ccc3f4b16fee2b4fb1d337ff03d87e98a55c747f7b6ce5e7cbce9088fcfdd0f068481dc0bff767f683d15fd39cd629b5ebb5440aaa5a59452d13897da4f76'
+sha512sums=('d188256a0c9eeea992741fe0b6856161db785fa324b4371e1266aa62cb457af92ae8759dfdb602fc01e2da7ef28cef20e66260dd84d857ed554b4ab0a0ba3655'
             '04d93f2297be0ffbd9ad8611ee619406af26f8fc987686e7150a68d4e8d9d94d104b76583a3190699587fd568c995e31c96332afa77b880a972eb24861ba5dea')
 
 package() {

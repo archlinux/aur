@@ -1,6 +1,6 @@
 pkgbase = r8152-dkms
 	pkgdesc = A kernel module for Realtek RTL8152/RTL8153/RTL8154/RTL8156 Based USB Ethernet Adapters
-	pkgver = 2.17.1.20230903
+	pkgver = 2.17.1.20240405
 	pkgrel = 1
 	url = http://www.realtek.com
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = r8152-dkms
 	optdepends = linux-headers: Build the module for Arch kernel
 	optdepends = linux-lts-headers: Build the module for LTS Arch kernel
 	conflicts = r8152
-	source = https://github.com/wget/realtek-r8152-linux/archive/v2.17.1.20230903.tar.gz
+	source = https://github.com/wget/realtek-r8152-linux/archive/v2.17.1.20240405.tar.gz
 	source = dkms.conf
-	sha512sums = 301ccc3f4b16fee2b4fb1d337ff03d87e98a55c747f7b6ce5e7cbce9088fcfdd0f068481dc0bff767f683d15fd39cd629b5ebb5440aaa5a59452d13897da4f76
+	sha512sums = d188256a0c9eeea992741fe0b6856161db785fa324b4371e1266aa62cb457af92ae8759dfdb602fc01e2da7ef28cef20e66260dd84d857ed554b4ab0a0ba3655
 	sha512sums = 04d93f2297be0ffbd9ad8611ee619406af26f8fc987686e7150a68d4e8d9d94d104b76583a3190699587fd568c995e31c96332afa77b880a972eb24861ba5dea
 
 pkgname = r8152-dkms
