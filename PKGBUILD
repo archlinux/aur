@@ -1,10 +1,10 @@
-# Maintainer: bipin kumar <bipin@ccmb.res.in>
+# Maintainer: bipin kumar <kbipinkumar@pm.me>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 # Contributor: big_gie nbigaouette . at . gmail.com
 
 pkgname=gri
-pkgver=20200626.145814
+pkgver=20240405.101042
 pkgrel=1
 pkgdesc="A script-based language for scientific graphics programming"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url="http://gri.sourceforge.net/"
 depends=('perl' 'netcdf')
 makedepends=('ghostscript' 'netcdf' 'imagemagick' 'texlive-core' 'perl-perl4-corelibs' 'git')
 source=('gri::git+https://github.com/dankelley/gri.git#commit=d9969d1')
-md5sums=('SKIP')
+md5sums=('fbe0f86bd394f679acab9d296f5e05d2')
 options=('!makeflags')
 
 prepare() {
