@@ -1,0 +1,13 @@
+pkgbase = pat-dealloc-dkms
+	pkgdesc = Kernel module to allow removal of x86 PAT entries from userspace
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/thorio/pat-dealloc
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = dkms
+	source = pat-dealloc-1.0.0.tar.gz::https://github.com/thorio/pat-dealloc/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = a6ebc128d6d85553ec5f9894e05d4ca5f2d0887d630f39a61dc3d355060b87aa
+
+pkgname = pat-dealloc-dkms
