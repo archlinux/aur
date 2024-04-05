@@ -1,19 +1,18 @@
 # Maintainer: Lukas Spies <lukas (at) photoqt _dot_ org>
 
 pkgname=previewqt
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
-pkgdesc="Simple application for previewing all kinds of files, from images to videos, from documents to comic books."
+pkgdesc="Simple application for previewing all kinds of files, from images to videos, from documents to archives."
 arch=('x86_64')
 url="http://photoqt.org/"
 license=('GPL2')
 depends=('exiv2' 'imagemagick' 'qt6-imageformats' 'qt6-multimedia' 'qt6-svg' 'qt6-declarative' 'libraw' 'hicolor-icon-theme' 'libarchive' 'kimageformats' 'resvg')
 optdepends=('libqpsd-git: PSB/PSD support'
-            'xcftools: XCF support'
-            'poppler-qt6: PDF support')
+            'xcftools: XCF support')
 makedepends=('cmake' 'qt6-tools' 'extra-cmake-modules')
 source=(https://photoqt.org/downloads/previewqt/source/$pkgname-$pkgver.tar.gz)
-sha256sums=('876adc9fd6d7542f718eedeeec29bfd280e9766c953438ccd3f7dfb69ae22ca8')
+sha256sums=('025b6ec0f95f15e069922baac7354c2151450de007ccfa25f9d2d920a0f792f3')
 
 # NOTE
 # To use GraphicsMagick instead of ImageMagick replace it in the depends array above and change
