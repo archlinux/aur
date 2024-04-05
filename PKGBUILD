@@ -8,7 +8,7 @@ _nodejs="18.17.1"
 
 pkgname=${_pkgname}-electron
 pkgver=1.88.0.24096
-pkgrel=1
+pkgrel=2
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/VSCodium/vscodium"
