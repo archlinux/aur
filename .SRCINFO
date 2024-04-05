@@ -1,0 +1,31 @@
+pkgbase = python-whey
+	pkgdesc = A simple Python wheel builder for simple projects
+	pkgver = 0.0.24
+	pkgrel = 2
+	url = https://whey.readthedocs.io/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-click
+	depends = python-consolekit
+	depends = python-dist-meta
+	depends = python-dom-toml
+	depends = python-domdf-python-tools
+	depends = python-handy-archives
+	depends = python-natsort
+	depends = python-packaging
+	depends = python-pyproject-parser
+	depends = python-shippinglabel
+	optdepends = python-docutils: readme functionality
+	optdepends = python-readme-renderer: readme functionality
+	optdepends = python-cmarkgfm: readme functionality
+	optdepends = python-editables: editable installs
+	source = python-whey::git+https://github.com/repo-helper/whey#commit=fab291b973239e23c9bdc8a22d9714de43e6d0c9
+	b2sums = SKIP
+
+pkgname = python-whey
