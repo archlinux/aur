@@ -3,31 +3,32 @@
 _pkgname=NuPoP
 _pkgver=2.10.0
 pkgname=r-${_pkgname,,}
-pkgver=2.10.0
-pkgrel=1
-pkgdesc='An R package for nucleosome positioning prediction'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="An R package for nucleosome positioning prediction"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r
+)
+makedepends=(
+  gcc-fortran
 )
 optdepends=(
   r-knitr
   r-rmarkdown
 )
-makedepends=(
-  gcc-fortran
-)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8eff03bb085be9274342ae1c72547de63f8bfbd1e072ee66db6a31eddba8b6ce')
+md5sums=('65372d828848fa588584e42324762643')
+b2sums=('62e72a0067788c712c38bd8a70f19541739a6113871c90b8a953f3e7a44b2248ba2b0ae0f7ef01aad9dfc38581f1ca86fae8de37964fc1daf1fe535eb03e10f6')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
