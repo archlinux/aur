@@ -1,7 +1,7 @@
 # Maintainer: Arne Brücher <archlinux [at] arne-bruecher [dot] de>
 
 pkgname=protonup-rs-bin
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Install and Update Proton-GE, rewritten in Rust"
 url="https://github.com/auyer/Protonup-rs"
