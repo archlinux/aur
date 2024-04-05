@@ -36,7 +36,7 @@ package_colloid-icon-theme-git() {
 
   cd Colloid-icon-theme
   install -d "$pkgdir/usr/share/icons"
-  ./install.sh -s all -t all -d "$pkgdir/usr/share/icons"
+  ./install.sh -t all -d "$pkgdir/usr/share/icons"
 }
 
 package_colloid-dracula-theme-git() {
