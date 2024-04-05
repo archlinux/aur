@@ -1,0 +1,16 @@
+pkgbase = hedgedoc-cli-git
+	pkgdesc = A tiny CLI for HedgeDoc
+	pkgver = r97.defeac8
+	pkgrel = 1
+	url = https://github.com/hedgedoc/cli
+	arch = any
+	license = AGPL-3.0
+	depends = curl
+	depends = wget
+	depends = jq
+	provides = hedgedoc-cli
+	conflicts = hedgedoc-cli
+	source = hedgedoc-cli-git::git+https://github.com/hedgedoc/cli.git
+	sha256sums = SKIP
+
+pkgname = hedgedoc-cli-git
