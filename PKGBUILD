@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
-_name=calmjs
 pkgname=python-calmjs
+_name="${pkgname#python-}"
 pkgver=3.4.4
 pkgrel=2
 pkgdesc="Framework for building toolchains and utilities for working with the JavaScript/Node.js ecosystem"
@@ -11,9 +11,9 @@ license=(GPL-2.0-or-later)
 depends=(python python-calmjs.parse python-calmjs.types python-setuptools)
 makedepends=(python-build python-installer python-wheel)
 checkdepends=(npm yarn)
-source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.zip)
-sha512sums=('77a69a0318f1d254ee80fa51d585442b65e6569231370e02f0e0f1b23f66445aa25d2ae8e774a616718d7107bdf2fc130952a4f5418972aa9b2b2b51cd02a69e')
-b2sums=('14558a865da131f87852932185b61e3a52ac963c4fa1782013214f79ced5e8745d527b27ac453a1c1d02c47f251fa926653241ac69aee1363b003e007dbd0597')
+source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
+sha512sums=('eb70d2d57b7d3cf22134f80c8c47b443893419e4f052b39102b04938b55c8afb950b6154f929a1a6cb74c2e67ae34ecf757b7b5765c47e9a74b805659eb6f22c')
+b2sums=('51ee6b24eaf59259140b9cbf3ba8a713b19934659688c02529cb8b4946ac7628b3bd07e8e4025d368f12db1eebaff41939e8b18ec3843938129d0943d4400216')
 
 build() {
   cd $_name-$pkgver
