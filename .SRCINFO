@@ -1,0 +1,14 @@
+pkgbase = python-litescope
+	pkgdesc = Small footprint and configurable embedded FPGA logic analyzer core
+	pkgver = 2021.08
+	pkgrel = 3
+	url = https://github.com/enjoy-digital/litescope
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-migen
+	depends = python-litex
+	source = python-litescope-2021.08.tar.gz::https://github.com/enjoy-digital/litescope/archive/2021.08.tar.gz
+	sha512sums = 1db7e5ac32b8d6fc35741b56116bb1b8d998aea15f52302eb2ce0d860e8d89fa11e2fc126db27c23bc0a6fdac353c944af498b5026ec99923c0e6ede64c38bec
+
+pkgname = python-litescope
