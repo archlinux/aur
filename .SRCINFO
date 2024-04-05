@@ -7,7 +7,7 @@ pkgbase = sappy2006
 	makedepends = p7zip
 	depends = wine winetricks
 	source = https://archive.org/download/installateur-sappy/Installateur_Sappy.exe
-        mod17.zip
+	source = mod17.zip
 	source = sappy2006
 	source = sappy2006.desktop
 	source = sappy2006.png
