@@ -1,7 +1,7 @@
 # Maintainer: sasvari <sasvari@fastmail.com>
 #             adapted from package python2-scikit-rf
 pkgname="python-scikit-rf"
-pkgver=0.31.0
+pkgver=0.32.0
 pkgrel=1
 pkgdesc="Scikit-rf (aka skrf) is a python package for RF/Microwave engineering"
 arch=(any)
@@ -28,17 +28,17 @@ optdepends=(
 	"python-pyqgraph: qtapps"
 )
 
-sha256sums=('7a059c84630d21a5d61336d6e00128f6e859673093041fb1c4a6b14eceafec99')
-source=("${pkgname}-${pkgver}::https://github.com/scikit-rf/scikit-rf/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('b0e2ceef1b8178a0344c7967185b6a81a2ae2d0bd656ea578b0aa1fbab07b256')
+source=("${pkgname}-${pkgver}::https://github.com/scikit-rf/scikit-rf/archive/refs/tags/v.${pkgver}.tar.gz")
 
 
 build() {
-	cd "${srcdir}/scikit-rf-${pkgver}"
+	cd "${srcdir}/scikit-rf-v.${pkgver}"
 	export PYTHONHASHSEED=0
 	python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "${srcdir}/scikit-rf-${pkgver}"
+	cd "${srcdir}/scikit-rf-v.${pkgver}"
 	find dist -name '*.whl' -exec python -m installer --compile-bytecode 1 --destdir="${pkgdir}" {} \;
 }
