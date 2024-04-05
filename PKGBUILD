@@ -4,7 +4,7 @@
 # Contributor: Richard Mathot <rim at odoo dot com>
 _pkgbase=r8152
 pkgname=${_pkgbase}-dkms
-pkgver=2.17.1.20230903
+pkgver=2.17.1.20240405
 pkgrel=1
 pkgdesc="A kernel module for Realtek RTL8152/RTL8153/RTL8154/RTL8156 Based USB Ethernet Adapters"
 url="http://www.realtek.com"
