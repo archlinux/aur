@@ -4,14 +4,14 @@
 
 pkgname=glom
 pkgver=1.32.0
-pkgrel=13
+pkgrel=14
 pkgdesc="An easy-to-use database designer and user interface"
 arch=('x86_64')
 url="https://www.glom.org/"
 license=('GPL')
 depends=('gettext' 'boost-libs' 'libgdamm' 'libxml++' 'python-gobject' 'libepc'
          'goocanvasmm' 'gtksourceviewmm' 'evince' 'postgresql' 'libgda-postgres')
-makedepends=('intltool' 'python-sphinx' 'boost' 'itstool' 'libgda-mysql')
+makedepends=('intltool' 'python-sphinx' 'boost' 'itstool' 'libgda-mysql' 'python-setuptools')
 changelog=$pkgname.changelog
 source=(https://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
 sha256sums=('53bf207ebca82c563b9e67bce977459a17e7fd94e35c27c196986736da248df1')
