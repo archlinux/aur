@@ -9,14 +9,14 @@
 # Contributor: Jens Kapitza <j dot kapitza at schwarze-allianz dot de>
 # Contributor: Olli <olli at coderkun dot de>
 
-pkgbase=java-openjfx
+pkgbase=java21-openjfx
 pkgname=(
-  java-openjfx
-  java-openjfx-doc
-  java-openjfx-src
+  java21-openjfx
+  java21-openjfx-doc
+  java21-openjfx-src
 )
 pkgver=21.0.2.u5
-pkgrel=3
+pkgrel=1
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version"
 arch=(x86_64 x86_64_v3)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
@@ -48,7 +48,7 @@ makedepends=(
   zip
 )
 source=(
-  "${pkgbase}-${pkgver//.u/+}.tar.gz::https://github.com/openjdk/jfx${pkgver%%.*}u/archive/refs/tags/${pkgver//.u/+}.tar.gz"
+  "${pkgbase/${pkgver%%.*}/}-${pkgver//.u/+}.tar.gz::https://github.com/openjdk/jfx${pkgver%%.*}u/archive/refs/tags/${pkgver//.u/+}.tar.gz"
   gradle.properties
   java-openjfx-flags.patch
   java-openjfx-no-xlocale.patch
@@ -81,7 +81,7 @@ build() {
   gradle zips
 }
 
-package_java-openjfx() {
+package_java21-openjfx() {
   depends=(
     java-runtime-openjdk=${pkgver%%.*}
     libgl
@@ -94,7 +94,7 @@ package_java-openjfx() {
     'gtk3: GTK3 support',
     'webkit2gtk: Web support'
   )
-  provides=(java-openjfx=${pkgver%%.*})
+  provides=(java21-openjfx=${pkgver%%.*})
 
   cd $_jfxdir
 
@@ -104,7 +104,7 @@ package_java-openjfx() {
   cp -dr --no-preserve=ownership build/sdk/legal "${pkgdir}"/usr/share/licenses/java-openjfx
 }
 
-package_java-openjfx-doc() {
+package_java21-openjfx-doc() {
   arch=(any)
   cd $_jfxdir
 
@@ -113,7 +113,7 @@ package_java-openjfx-doc() {
   ln -s java-openjfx "${pkgdir}"/usr/share/licenses/java-openjfx-doc
 }
 
-package_java-openjfx-src() {
+package_java21-openjfx-src() {
   arch=(any)
   cd $_jfxdir
 
