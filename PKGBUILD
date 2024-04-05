@@ -1,7 +1,7 @@
 # Maintainer: solnce <echo c29sbmNlQHJhdGFqY3phay5vbmU= | base64 -d>
 pkgname=pacdef-git
 _pkgname=pacdef
-pkgver=1.2.1+r2.g59d2be8
+pkgver=1.5.0+r0.g1d5f3d5
 pkgrel=1
 pkgdesc='multi-backend declarative package manager for Linux'
 url="https://github.com/steven-omaha/${_pkgname}"
@@ -9,10 +9,10 @@ source=("git+https://github.com/steven-omaha/${_pkgname}")
 arch=('x86_64')
 license=('GPL3')
 depends=('gcc-libs')
-conflicts=('pacdef')
+conflicts=('pacdef' 'pacdef-bin')
 provides=('pacdef')
 makedepends=('git' 'rust')
-sha256sums=(SKIP)
+sha256sums=('SKIP')
 
 build() {
   cd "${srcdir}/${_pkgname}"
