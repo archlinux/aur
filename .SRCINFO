@@ -1,7 +1,7 @@
 pkgbase = python-shippinglabel
 	pkgdesc = Utilities for handling Python packages
 	pkgver = 1.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://shippinglabel.readthedocs.io/
 	arch = any
 	license = MIT
@@ -17,7 +17,7 @@ pkgbase = python-shippinglabel
 	depends = python-domdf-python-tools
 	depends = python-packaging
 	depends = python-platformdirs
-	depends = python-typing-extensions
+	depends = python-typing_extensions
 	source = python-shippinglabel::git+https://github.com/domdfcoding/shippinglabel#commit=bd8f77743ab3749631f947d61dd46dd4bb430ea1
 	b2sums = SKIP
 
