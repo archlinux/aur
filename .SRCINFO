@@ -1,15 +1,13 @@
 pkgbase = elfio
-	pkgdesc = ELFIO is a small, header-only C++ library that provides a simple interface for reading and generating files in ELF binary format
-	pkgver = 3.5
+	pkgdesc = ELFIO - ELF (Executable and Linkable Format) reader and producer implemented as a header only C++ library
+	pkgver = 3.12
 	pkgrel = 1
 	url = https://github.com/serge1/ELFIO
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
+	makedepends = cmake
 	depends = gcc-libs
-	options = strip
-	source = https://github.com/serge1/ELFIO/releases/download/Release_3.5/elfio-3.5.tar.gz
-	sha256sums = 38215f17bb1b140c8afbf4c116d5303047619e70446dc393ef041f3c639a01cd
+	source = https://github.com/serge1/ELFIO/releases/download/Release_3.12/elfio-3.12.tar.gz
+	sha256sums = caf49f3bf55a9c99c98ebea4b05c79281875783802e892729eea0415505f68c4
 
 pkgname = elfio
-
