@@ -1,7 +1,7 @@
 pkgbase = python-genty
 	pkgdesc = Allows you to run a test with multiple data sets
 	pkgver = 1.3.2
-	pkgrel = 13
+	pkgrel = 14
 	url = https://github.com/box/genty
 	arch = any
 	license = Apache-2.0
