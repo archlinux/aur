@@ -2,7 +2,7 @@
 # Contributor: Black_Codec <orso.f.regna@gmail.com>
 
 pkgname=guacamole-client-bin
-pkgver=1.5.4
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="Apache Guacamole is a clientless remote desktop gateway. It supports standard protocols like VNC, RDP, and SSH. guacamole-client provides the client to be served by your servlet container. Binary prebuilt from Apache."
 arch=('any')
@@ -20,7 +20,7 @@ replaces=('guacamole-client')
 noextract=("guacamole-${pkgver}.war")
 backup=('etc/guacamole/guacamole.properties' 'etc/guacamole/user-mapping.xml')
 
-md5sums=('0a158e8c520b705f40f452addde6e22f'
+md5sums=('015976eac24ca852e3d77981cb44d8e2'
          '1f3ec0a32cc3c6b4f7aeb8a3b2e7531b'
          'c39b825c0ee68a60c42b94ed3d568d64')
 
