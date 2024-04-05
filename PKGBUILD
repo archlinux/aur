@@ -1,6 +1,6 @@
 # Maintainer: Noa <coolreader18@gmail.com>
 pkgname=celeste64-fuji-git
-pkgver=0.5.0.r16.d5aa2dd
+pkgver=0.6.0.r35.261dda3
 pkgrel=1
 pkgdesc="A free and open source mod loader for Celeste 64: Fragments of the Mountain (dev branch)"
 arch=(x86_64 aarch64)
@@ -19,7 +19,8 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	last_common=$(git merge-base main HEAD)
+	git fetch origin main
+	last_common=$(git merge-base origin/main HEAD)
 	num_revs=$(git rev-list --count "$last_common"...HEAD)
 	ver=$(git cat-file blob "$last_common":Celeste64.Launcher/Celeste64.Launcher.csproj | grep '<Version>' | sed 's/\s*\|<\/\?Version>//g')
 	printf "%s.r%s.%s" "$ver" "$num_revs" "$(git rev-parse --short HEAD)"
