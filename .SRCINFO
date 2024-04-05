@@ -1,6 +1,6 @@
 pkgbase = prettyzoo
 	pkgdesc = a GUI for Zookeeper created by JavaFX and Apache Curator Framework.
-	pkgver = 1.9.3
+	pkgver = 2.1.1
 	pkgrel = 0
 	url = https://github.com/vran-dev/PrettyZoo
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = prettyzoo
 	provides = prettyzoo
 	provides = prettyzoo
 	conflicts = prettyzoo
-	source = https://github.com/vran-dev/PrettyZoo/releases/download/v1.9.6/prettyzoo_1.9.6-1_amd64.deb
-	md5sums = 27c89e2911792e42196e809575ad77ca
+	source = https://github.com/vran-dev/PrettyZoo/releases/download/v2.1.1/prettyzoo_2.1.1_amd64.deb
+	md5sums = 5060164137922ba664b81e6dce903500
 
 pkgname = prettyzoo

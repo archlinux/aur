@@ -2,7 +2,7 @@
 
 pkgname=prettyzoo
 # the versin is from deb package
-pkgver=1.9.6
+pkgver=2.1.1
 pkgrel=0
 pkgdesc="a GUI for Zookeeper created by JavaFX and Apache Curator Framework."
 arch=("x86_64")
@@ -11,9 +11,9 @@ license=('custom')
 depends=('jdk8-openjdk')
 provides=('prettyzoo' "$pkgname")
 conflicts=("$pkgname")
-source=("https://github.com/vran-dev/PrettyZoo/releases/download/v1.9.6/prettyzoo_1.9.6-1_amd64.deb") 
+source=("https://github.com/vran-dev/PrettyZoo/releases/download/v2.1.1/prettyzoo_2.1.1_amd64.deb") 
 
-md5sums=('27c89e2911792e42196e809575ad77ca')
+md5sums=('5060164137922ba664b81e6dce903500')
 
 package() {
     tar xf data.tar.xz -C ${pkgdir}/
