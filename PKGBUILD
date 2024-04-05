@@ -2,7 +2,7 @@
 
 pkgname=python-instructor
 _pkgname=${pkgname#python-}
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
@@ -15,6 +15,7 @@ depends=(
   python-httpx
   python-openai
   python-pydantic
+  python-pydantic-core
   python-regex
   python-rich
   python-tenacity
@@ -33,7 +34,7 @@ checkdepends=(
 )
 optdepends=('python-anthropic: support using Anthropic models')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('ce22a19d72c1e3d72d3759b1a85f22b372478ebeb9f7b7d3709de390ccf8e561')
+sha256sums=('42900e9657f95c17c5e0b5fc209a15d660bb70f0f4a1134eae1fc914462c369d')
 
 _archive="$_pkgname-$pkgver"
 
@@ -51,13 +52,14 @@ check() {
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   export PYTHONPATH="$PWD/tmp_install/$site_packages:$PYTHONPATH"
-  # Ignore tests requiring valid API keys to OpenAI or Anthropic, below is a
-  # mock one.
+  # Deselect/ignore tests requiring valid API keys to OpenAI or Anthropic,
+  # below is a mock one.
   export OPENAI_API_KEY=sk-dBAe8c5a9bc4294cca9bed292cd61e0ff9030bB94647adfb
   pytest \
-    --ignore tests/llm/test_anthropic/evals/test_simple.py \
-    --ignore tests/llm/test_openai \
-    --ignore tests/test_new_client.py
+    --deselect tests/dsl/test_partial.py \
+    --deselect tests/llm/test_anthropic/evals/test_simple.py \
+    --deselect tests/test_new_client.py \
+    --ignore tests/llm/test_openai
 }
 
 package() {
