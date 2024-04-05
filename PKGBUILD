@@ -3,33 +3,26 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 # Contributor: Tom Richards <tom@tomrichards.net>
 pkgname=highscore-git
-pkgver=40.0.r333.gc324f5f5
+pkgver=r435.fd3c2851
 pkgrel=1
 pkgdesc="A retro gaming application for the GNOME desktop"
 arch=('x86_64' 'aarch64')
 url="https://wiki.gnome.org/Apps/Games"
 license=('GPL-3.0-or-later')
 depends=(
-  'cairo'
-  'dconf'
-  'gdk-pixbuf2'
-  'glib2'
-  'glibc'
-  'grilo'
-  'gtk4'
   'hicolor-icon-theme'
   'libadwaita'
-  'libarchive'
+  'libgee'
+  'libhighscore-git'
   'libmanette'
-  'librsvg'
-  'libsoup3'
-  'libxml2'
-  'retro-gtk-git'
-  'sqlite'
-  'tracker3'
+  'libpulse'
+  'sdl2'
 )
-makedepends=('git' 'meson' 'vala')
-checkdepends=('appstream-glib')
+makedepends=(
+  'git'
+  'meson'
+  'vala'
+)
 optdepends=(
   'libretro-beetle-ngp: Support for Neo Geo Pocket and Neo Geo Pocket Color games'
   'libretro-beetle-pce-fast: NEC PC Engine/CD core'
@@ -85,7 +78,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
