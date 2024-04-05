@@ -3,7 +3,7 @@
 _pkgname=pat-dealloc
 pkgname=$_pkgname-dkms
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module to allow removal of x86 PAT entries from userspace"
 url="https://github.com/thorio/$_pkgname"
 license=("GPL3")
@@ -18,7 +18,7 @@ build() {
 	cd $_archive
 
 	export RUSTUP_TOOLCHAIN=stable
-	cargo build --frozen --release --package pat-dealloc-bin
+	cargo build --release --package pat-dealloc-bin
 }
 
 package() {
