@@ -1,27 +1,27 @@
-# system requirements: Internal files Xba.CQV, Xba.regions (or otherregions file)
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RLMM
 _pkgver=1.64.0
 pkgname=r-${_pkgname,,}
-pkgver=1.64.0
-pkgrel=1
-pkgdesc='A Genotype Calling Algorithm for Affymetrix SNP Arrays'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('LGPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="A Genotype Calling Algorithm for Affymetrix SNP Arrays"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('LGPL-2.0-or-later')
 depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e075fe21e2b260f015582e5a4716b9731ec0d0a44d7a4b47780f62caba359357')
+md5sums=('7c43c967fab2a5e90059b26e46de345b')
+b2sums=('640292d7c9630803c409884c7aa2250bbe662f160c850c287f5195af82244632af58d29793045651be29812ea271f2ff137b5b11a183a2f2113f1de63e8ef02d')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
