@@ -6,7 +6,7 @@ arch=('any')
 url="https://gitlab.com/libelectron/eact"
 license=('GPL')
 depends=("git" "npm")
-source=("https://gitlab.com/libelectron/eact/-/archive/$pkgver-$pkgrel/application-$pkgver.tar.bz2")
+source=("https://gitlab.com/libelectron/eact/-/archive/$pkgver/application-$pkgver.tar.bz2")
 sha256sums=('SKIP')
 
 package() {

@@ -7,7 +7,7 @@ pkgbase = eact
 	license = GPL
 	depends = git
 	depends = npm
-	source = https://gitlab.com/libelectron/eact/-/archive/1.0.4-1/application-1.0.4.tar.bz2
+	source = https://gitlab.com/libelectron/eact/-/archive/1.0.4/application-1.0.4.tar.bz2
 	sha256sums = SKIP
 
 pkgname = eact
