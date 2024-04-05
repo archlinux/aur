@@ -1,0 +1,26 @@
+pkgbase = r-toastui
+	pkgdesc = Interactive Tables, Calendars and Charts for the Web
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=toastui
+	arch = any
+	license = MIT
+	checkdepends = r-tinytest
+	depends = r-htmltools
+	depends = r-htmlwidgets
+	depends = r-magrittr
+	depends = r-phosphoricons
+	depends = r-rlang
+	depends = r-shiny
+	depends = r-shinywidgets
+	optdepends = r-apexcharter
+	optdepends = r-bslib
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-scales
+	optdepends = r-tinytest
+	source = https://cran.r-project.org/src/contrib/toastui_0.3.3.tar.gz
+	md5sums = ff076c3c90f56a3ff70bb6303dd650e8
+	b2sums = 2abaf6716a4f674d59a7a5de6d3e10e208290e0f8fe5cfa139805c025cead1af770ae7f9fe14f73c4d499caf3aa1164fb715296216ef4752f695ff1d918a5f6d
+
+pkgname = r-toastui
