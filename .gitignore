@@ -1,4 +1,5 @@
-/lxdm-theme-archlinux
-/pkg
-/src
-*.tar*
+*
+!archlinux-lxdm-theme-full.install
+!PKGBUILD
+!.gitignore
+!.SRCINFO
