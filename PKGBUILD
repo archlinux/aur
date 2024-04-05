@@ -59,7 +59,7 @@ b2sums=('SKIP')
 prepare() {
   cd nautilus
   # Enable type-ahead behavior by default
-  awk -i '/type-ahead-search/{c++;} c==1 && /true/{sub("true", "false"); c++;} 1' data/org.gnome.nautilus.gschema.xml
+  awk -i inplace '/type-ahead-search/{c++;} c==1 && /true/{sub("true", "false"); c++;} 1' data/org.gnome.nautilus.gschema.xml
 }
 
 build() {
