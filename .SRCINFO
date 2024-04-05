@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-git
 	pkgdesc = Port of Facebook's LLaMA model in C/C++
-	pkgver = b2548.r3.e5b89a441
+	pkgver = b2608.r3.a307375c0
 	pkgrel = 1
 	url = https://github.com/ggerganov/llama.cpp
 	arch = armv7h
@@ -21,8 +21,12 @@ pkgbase = llama.cpp-git
 	conflicts = llama.cpp
 	source = llama.cpp::git+https://github.com/ggerganov/llama.cpp
 	source = kompute::git+https://github.com/nomic-ai/kompute.git
+	source = llama.cpp.conf
+	source = llama.cpp.service
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87
+	sha256sums = c1f25cb01825d951b76fb4747f5bd49a85b9bee8f605b1f43c5e6f12156cf49d
 
 pkgname = llama.cpp-git
 	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with OPENBlas CPU optimizations)

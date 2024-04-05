@@ -11,7 +11,7 @@ pkgname=(
   "${_name}-sycl-f32-git"
   "${_name}-vulkan-git"
 )
-pkgver=b2548.r3.e5b89a441
+pkgver=b2608.r3.a307375c0
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -33,7 +33,10 @@ optdepends=('ccache: for caching builds')
 conflicts=("${_name}")
 provides=("${_name}")
 source=("${_name}::git+${url}"
-  "kompute::git+https://github.com/nomic-ai/kompute.git")
+  "kompute::git+https://github.com/nomic-ai/kompute.git"
+  "${_name}.conf"
+  "${_name}.service"
+)
 
 pkgver() {
   cd "${srcdir}/${_name}"
@@ -47,14 +50,11 @@ prepare() {
   git config submodule.kompute.url "${srcdir}/kompute"
   git -c protocol.file.allow=always submodule update
 
-  if [ ! -d "${srcdir}/${_name}-clblas" ]; then
-    cp -r "${srcdir}/${_name}" "${srcdir}/${_name}-clblas"
-    cp -r "${srcdir}/${_name}" "${srcdir}/${_name}-cublas"
-    cp -r "${srcdir}/${_name}" "${srcdir}/${_name}-openblas"
-    cp -r "${srcdir}/${_name}" "${srcdir}/${_name}-hipblas"
-    cp -r "${srcdir}/${_name}" "${srcdir}/${_name}-sycl"
-    cp -r "${srcdir}/${_name}" "${srcdir}/${_name}-vulkan"
-  fi
+  for _pkg in "${pkgname[@]}"; do
+    if [ ! -d "${srcdir}/${_pkg%-git}" ]; then
+      cp -r "${srcdir}/${_name}" "${srcdir}/${_pkg%-git}"
+    fi
+  done
 }
 
 build() {
@@ -105,7 +105,7 @@ build() {
   )
 
   echo "Build ${pkgbase} with OPENBlas"
-  cd "${srcdir}/${_name}-openblas"
+  cd "${srcdir}/${_name}"
   cmake "${_cmake_openblas_args[@]}"
   cmake --build build
 
@@ -155,6 +155,12 @@ _package() {
   mv "${pkgdir}/usr/bin/${_name}-main" \
     "${pkgdir}/usr/bin/${_name}"
 
+  # systemd
+  install -D -m644 "${srcdir}/${_name}.conf" \
+    "${pkgdir}/etc/conf.d/${_name}"
+  install -D -m644 "${srcdir}/${_name}.service" \
+    -t "${pkgdir}/usr/lib/systemd/system"
+
   # it conflicts with whisper.cpp
   rm -f "${pkgdir}/usr/include/ggml.h"
 }
@@ -165,7 +171,7 @@ package_llama.cpp-git() {
     'openblas64')
   provides=("${_name}")
 
-  cd "${_name}-openblas"
+  cd "${_name}"
   DESTDIR="${pkgdir}" cmake --install build
   _package
 }
@@ -237,4 +243,6 @@ package_llama.cpp-vulkan-git() {
 }
 
 sha256sums=('SKIP'
-  'SKIP')
+  'SKIP'
+  '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
+  'c1f25cb01825d951b76fb4747f5bd49a85b9bee8f605b1f43c5e6f12156cf49d')
