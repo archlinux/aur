@@ -1,0 +1,14 @@
+pkgbase = python-shutilwhich
+	pkgdesc = Backport of shutil.which
+	pkgver = 1.1.0
+	pkgrel = 9
+	url = https://github.com/mbr/shutilwhich
+	arch = any
+	license = PSF
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	source = python-shutilwhich-1.1.0.tar.gz::https://github.com/mbr/shutilwhich/archive/1.1.0.tar.gz
+	sha256sums = 4292a973312c58ca1935ea75d7bd378b17668ef6aacfc812d00019e0726dea44
+
+pkgname = python-shutilwhich
