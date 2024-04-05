@@ -6,7 +6,6 @@ pkgbase = gog-stardew-valley
 	url = http://stardewvalley.net/
 	arch = x86_64
 	license = custom
-	depends = openssl-1.1
 	options = !strip
 	options = staticlibs
 	source = gog-stardew-valley

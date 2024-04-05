@@ -13,7 +13,6 @@ life."
 url='http://stardewvalley.net/'
 license=('custom')
 arch=('x86_64')
-depends=('openssl-1.1')
 options=('!strip' 'staticlibs')
 source=(
   "${pkgname}"
