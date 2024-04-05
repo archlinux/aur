@@ -2,8 +2,8 @@
 # Contributor: Jonas Witschel <diabonas@archlinux.org>
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
-pkgver=060.r6820.eeced5c
-pkgrel=1
+pkgver=060.r6886.faa3db7
+pkgrel=2
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracut-ng/dracut-ng'
@@ -26,6 +26,7 @@ makedepends=(
   'asciidoc'
   'bash-completion'
   'git'
+  'cargo'
 )
 optdepends=(
   'binutils: --uefi option support'
@@ -129,6 +130,7 @@ build() {
 
   local prefix=/usr sysconfdir=/etc
   ./configure \
+    --enable-dracut-cpio \
     --sysconfdir=${sysconfdir} \
     --prefix=${prefix} \
     --libdir=${prefix}/lib \
