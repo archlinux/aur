@@ -1,7 +1,7 @@
 pkgbase = python-domdf-python-tools
 	pkgdesc = Helpful functions for Python
 	pkgver = 3.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://domdf-python-tools.readthedocs.io
 	arch = any
 	license = MIT
