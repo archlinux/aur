@@ -1,7 +1,7 @@
 pkgbase = python-braintree
 	pkgdesc = Braintree Python Library
 	pkgver = 4.28.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.braintreepayments.com/docs/python
 	arch = any
 	license = MIT
