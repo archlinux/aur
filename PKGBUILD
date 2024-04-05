@@ -1,14 +1,14 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Delaporte
-_pkgver=8.3.0
+_pkgver=8.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Statistical Functions for the Delaporte Distribution"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(BSD)
+license=('BSD-2-Clause')
 depends=(
   r
 )
@@ -20,8 +20,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cc965f62f3d69e9c785e98890c9536db')
-b2sums=('403e1862a517e5fc0d39b2066a54298cf4be5e63f9c6529f5ec3acb234930cecfe0e14376f32bb8d30a7f70eb540456a83659c06ae906365c2f20a72ccf2d9d4')
+md5sums=('b125551dc6e6e0b952e1928b141cf6a8')
+b2sums=('e24619e3188135aa0a0d294a916574026966a464698b6bbe9377de3b402fce9436c8fa4a5368e181ed3edf4bca8d1f481068bc55495b1ab8f321b55ff31db285')
 
 build() {
   mkdir build
