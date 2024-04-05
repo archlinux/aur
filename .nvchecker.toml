@@ -1,0 +1,4 @@
+[python-py-pde]
+source = "github"
+github = "zwicker-group/py-pde"
+use_latest_release = "true"
