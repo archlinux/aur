@@ -1,6 +1,6 @@
 pkgbase = pycharm-community-jre
 	pkgdesc = PyCharm Community Edition IDE for Python with bundled JRE
-	pkgver = 2023.3.5
+	pkgver = 2024.1
 	pkgrel = 1
 	url = https://www.jetbrains.com/pycharm/
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = pycharm-community-jre
 	source = pycharm.sh
 	sha256sums = f727119ec7c8b96820e80712b1ee342de6a94ff72402e8f2d390cbff702f9b21
 	sha256sums = b6f0518e59c4744ded38de63efba91205bcba406fa74944a1f3a8937566d8acc
-	source_x86_64 = https://download.jetbrains.com/python/pycharm-community-2023.3.5.tar.gz
-	sha256sums_x86_64 = d8ffc4a20b692d506b0e4c4439b77fabca7f3a0fdb7eaddeb6c9edd7cb3febaf
-	source_aarch64 = https://download.jetbrains.com/python/pycharm-community-2023.3.5-aarch64.tar.gz
-	sha256sums_aarch64 = 99522aa803eb6fc1570f99286e5d710d5000378e0c116d9a62caea5c7a5ff95e
+	source_x86_64 = https://download.jetbrains.com/python/pycharm-community-2024.1.tar.gz
+	sha256sums_x86_64 = 96048ea55ef45f1af0ebe12ad0e38e2763c9e5d654b9e174b33aaa12665d836b
+	source_aarch64 = https://download.jetbrains.com/python/pycharm-community-2024.1-aarch64.tar.gz
+	sha256sums_aarch64 = de8259a4cea264a2263bf771d74949ca25a2b9a8ffc5bbbc7c42d2faace6bd09
 
 pkgname = pycharm-community-jre
