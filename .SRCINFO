@@ -1,7 +1,7 @@
 pkgbase = python-bincopy
 	pkgdesc = Mangling of various file formats that conveys binary information
 	pkgver = 20.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eerimoq/bincopy
 	arch = any
 	license = MIT
