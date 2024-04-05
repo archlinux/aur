@@ -1,5 +1,6 @@
-# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=veyon-bin
 pkgver=4.8.3
 pkgrel=1
