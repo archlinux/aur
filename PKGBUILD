@@ -42,9 +42,7 @@ package_alacritty-smooth-cursor-git() {
 	scdoc < extra/man/alacritty-msg.1.scd | gzip -c | tee "$pkgdir/usr/share/man/man1/alacritty-msg.1.gz" > /dev/null
 	scdoc < extra/man/alacritty-bindings.5.scd | gzip -c | tee "$pkgdir/usr/share/man/man5/alacritty-bindings.5.gz" > /dev/null
 
-	install -D -m755 "target/release/alacritty" "$pkgdir/usr/bin/alacritty-smooth-cursor"
-    echo 'env -u WAYLAND_DISPLAY alacritty-smooth-cursor $@' > "$pkgdir/usr/bin/alacritty"
-    chmod 755 "$pkgdir/usr/bin/alacritty"
+	install -D -m755 "target/release/alacritty" "$pkgdir/usr/bin/alacritty"
 	install -D -m644 "extra/linux/org.alacritty.Alacritty.appdata.xml" "$pkgdir/usr/share/appdata/org.alacritty.Alacritty.appdata.xml"
 	install -D -m644 "extra/completions/alacritty.bash" "$pkgdir/usr/share/bash-completion/completions/alacritty"
 	install -D -m644 "extra/completions/_alacritty" "$pkgdir/usr/share/zsh/site-functions/_alacritty"
