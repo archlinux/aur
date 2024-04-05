@@ -3,7 +3,7 @@
 
 pkgname="uad-ng-bin"
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform GUI written in Rust using ADB to debloat non-rooted Android devices (next generation)"
 arch=('x86_64')
 url="https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation"
@@ -19,7 +19,7 @@ b2sums=('23547a34e71d10a46ddacbb0cd1c6157910c590f090477e852619661281869b6bfb50e1
 
 package(){
  bsdtar --extract --file "$pkgname-$pkgver.zip"
- install -D -m 755 "uad-ng"            "$pkgdir/usr/bin/uad-ng"
+ install -D -m 755 "uad-ng-noselfupdate-linux" "$pkgdir/usr/bin/uad-ng"
  install -D -m 644 "uad-ng.desktop" -t "$pkgdir/usr/share/applications"
  install -D -m 644 "uad-ng.png"     -t "$pkgdir/usr/share/pixmaps"
 }
