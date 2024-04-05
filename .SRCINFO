@@ -1,6 +1,6 @@
 pkgbase = drumrox
 	pkgdesc = Drumrox is LV2 drum machine that supports Hydrogen, Drumrox and SFZ drumkits.
-	pkgver = 3.2.1
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/psemiletov/drumrox
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = drumrox
 	depends = libsamplerate
 	depends = lv2
 	provides = drumrox
-	source = https://github.com/psemiletov/drumrox/archive/3.2.1.tar.gz
-	md5sums = a3f160d2684fa9bbbb03f78ceb5b7c4d
+	source = https://github.com/psemiletov/drumrox/archive/3.3.0.tar.gz
+	md5sums = e01ead2f5366bfa086272b83a20beb30
 
 pkgname = drumrox

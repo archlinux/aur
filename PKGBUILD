@@ -1,7 +1,7 @@
 # Maintainer: Peter Semiletov peter.semiletov at gmail dot com
 
 pkgname=drumrox
-pkgver=3.2.1
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='Drumrox is LV2 drum machine that supports Hydrogen, Drumrox and SFZ drumkits.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('gtk2' 'cmake')
 #optdepends=('gtk2: For the built-in GUI')
 provides=("drumrox")
 source=("https://github.com/psemiletov/drumrox/archive/${pkgver}.tar.gz")
-md5sums=('a3f160d2684fa9bbbb03f78ceb5b7c4d')
+md5sums=('e01ead2f5366bfa086272b83a20beb30')
 
 build() {
 	cd "${srcdir}/drumrox-${pkgver}"
