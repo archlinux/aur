@@ -6,7 +6,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-librsvg
 pkgver=2.58.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SVG rendering library (mingw-w64)"
 arch=('any')
 url="https://wiki.gnome.org/action/show/Projects/LibRsvg"
@@ -48,6 +48,9 @@ build() {
     export CARGO_HOME="/opt/rust/cargo"
   fi
 
+  # get CHOST from gcc
+  export CHOST=$(LANG=C gcc -v 2>&1 | grep "^Target" | grep -o '[^ ]*$')
+
   cd "${srcdir}/librsvg"
   for _arch in ${_architectures}; do
     # configure can read RUST_TARGET now
@@ -59,16 +62,7 @@ build() {
     fi
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-configure \
-      --disable-introspection \
-      --disable-tools
-    # pass static rust package to linker
-    sed -i "s/^deplibs_check_method=.*/deplibs_check_method=\"pass_all\"/g" libtool
-    # add missing crt libs (bcrypt, ws2_32, userenv and ntdll) to LIBRSVG_LIBS
-    sed -i "s/^LIBRSVG_LIBS = .*/& -lbcrypt -lws2_32 -luserenv  -lntdll/g" Makefile
-    # fix missing CARGO_TARGET_ARGS
-    sed -i "s/^#CARGO_TARGET_ARGS = /CARGO_TARGET_ARGS = /g" Makefile
-    # fix cross RUST_TARGET_SUBDIR
-    sed -i 's|^RUST_TARGET_SUBDIR = |RUST_TARGET_SUBDIR = $(RUST_TARGET)/|g' Makefile
+      --disable-introspection
 
     make
     popd
