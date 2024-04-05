@@ -1,0 +1,14 @@
+pkgbase = python-liteiclink
+	pkgdesc = Small footprint and configurable Inter-Chip communication cores
+	pkgver = 2021.08
+	pkgrel = 3
+	url = https://github.com/enjoy-digital/liteiclink
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-migen
+	depends = python-litex
+	source = python-liteiclink-2021.08.tar.gz::https://github.com/enjoy-digital/liteiclink/archive/2021.08.tar.gz
+	sha512sums = f83ac3bdb3fe8a2e5926caba67d18d73287bffd87cb008b245b80b1be2942f5b9c2a66c0a44fc0556342ea4e4c2058bd437a50a27e9704b9f4a6b528465e3869
+
+pkgname = python-liteiclink

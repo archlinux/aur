@@ -3,7 +3,7 @@
 _pkgname=liteiclink
 pkgname=python-$_pkgname
 pkgver=2021.08
-pkgrel=2
+pkgrel=3
 pkgdesc='Small footprint and configurable Inter-Chip communication cores'
 arch=('any')
 url="https://github.com/enjoy-digital/$_pkgname"
