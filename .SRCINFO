@@ -1,0 +1,33 @@
+pkgbase = python-django-q
+	pkgdesc = A multiprocessing distributed task queue for Django
+	pkgver = 1.3.9
+	pkgrel = 8
+	url = https://github.com/Koed00/django-q
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python-arrow
+	depends = python-asgiref
+	depends = python-blessed
+	depends = python-dateutil
+	depends = python-django
+	depends = python-django-picklefield
+	depends = python-future
+	depends = python-pytz
+	depends = python-redis
+	depends = python-setuptools
+	depends = python-six
+	depends = python-sqlparse
+	depends = python-wcwidth
+	optdepends = python-boto3: Amazon Simple Queue Service message queue support
+	optdepends = python-psutil: resource usage limit support
+	optdepends = python-pymongo: MongoDB as a message broker support
+	source = git+https://github.com/Koed00/django-q.git#tag=4a8ef8f388b842b916f2ac713383192eec87b8d8
+	source = python-django-q-pep517.patch
+	b2sums = SKIP
+	b2sums = 2b95ad47f38f1217d21ad11b5f23a602660880b1d6bcb09716bf8b201987153a360cfabf94d7d3028caa46c9a494bc0716d8d69cf576fe78a5890c9508f88ef5
+
+pkgname = python-django-q
