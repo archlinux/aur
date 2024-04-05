@@ -1,15 +1,15 @@
 pkgbase = smile
 	pkgdesc = An emoji picker with custom tags support
 	pkgver = 2.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://smile.mijorus.it
 	arch = any
 	license = GPL-3.0-or-later
 	checkdepends = appstream-glib
 	makedepends = meson
 	depends = dbus-python
+	depends = emoji-font
 	depends = libadwaita
-	depends = noto-fonts-emoji
 	optdepends = wl-clipboard: Automatically paste emojis (Wayland)
 	optdepends = xdotool: Automatically paste emojis (X11)
 	conflicts = smile-emoji-picker

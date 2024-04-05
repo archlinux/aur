@@ -3,12 +3,12 @@
 # Contributor: Eli Schwartz
 pkgname=smile
 pkgver=2.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An emoji picker with custom tags support"
 arch=('any')
 url="https://smile.mijorus.it"
 license=('GPL-3.0-or-later')
-depends=('dbus-python' 'libadwaita' 'noto-fonts-emoji')
+depends=('dbus-python' 'emoji-font' 'libadwaita')
 makedepends=('meson')
 checkdepends=('appstream-glib')
 optdepends=('wl-clipboard: Automatically paste emojis (Wayland)'
