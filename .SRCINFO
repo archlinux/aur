@@ -1,0 +1,28 @@
+pkgbase = python-pyproject-parser
+	pkgdesc = Parser for pyproject.toml
+	pkgver = 0.9.1
+	pkgrel = 2
+	url = https://github.com/repo-helper/pyproject-parser
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-apeye-core
+	depends = python-attrs
+	depends = python-dom-toml
+	depends = python-domdf-python-tools
+	depends = python-natsort
+	depends = python-packaging
+	depends = python-shippinglabel
+	depends = python-toml
+	depends = python-typing_extensions
+	optdepends = python-readme-renderer: render markdown
+	optdepends = python-cmarkgfm: render markdown
+	source = python-pyproject-parser::git+https://github.com/repo-helper/pyproject-parser#commit=f24f2e8a762c715f113b11d1b97b65403a1576a2
+	b2sums = SKIP
+
+pkgname = python-pyproject-parser
