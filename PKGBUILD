@@ -3,12 +3,12 @@
 _pkgname=OSAT
 _pkgver=1.50.0
 pkgname=r-${_pkgname,,}
-pkgver=1.50.0
-pkgrel=1
-pkgdesc='OSAT: Optimal Sample Assignment Tool'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Optimal Sample Assignment Tool"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r
 )
@@ -17,14 +17,15 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a1f61d1ffe6db8d5193bb42e490cd0fed1d9881274bb374962c2faf18d01ea4d')
+md5sums=('64bba183cfa8a211960d891cb5ee3ddb')
+b2sums=('906b74290412ef0cc7199b3c5690229c0297360bb0c294ad07f9ca4eaada3a94055b41cec14e80965f08bdcf83dc4468d48d7fe6aeed52564b15d699f0221e88')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
