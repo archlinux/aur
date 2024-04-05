@@ -1,15 +1,13 @@
 pkgbase = ubuntu-wallpapers
 	pkgdesc = The default Wallpapers for Ubuntu
-	pkgver = 23.10.4
+	pkgver = 24.04.2
 	pkgrel = 1
 	url = https://launchpad.net/ubuntu-wallpapers
 	arch = any
 	license = custom
 	makedepends = python-distutils-extra
 	makedepends = python-setuptools
-	source = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers/ubuntu-wallpapers_23.10.4.orig.tar.gz
-	source = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers/ubuntu-wallpapers_23.10.4.debian.tar.xz
-	sha512sums = 5d99db3ca1bed9ff55d9c4db4e66542f1279df6cb6f7ec8a242e362eaacded10c31a3d3a6c6c1adae6413ad5d5364f1a1e61fe1d968532ffdcd2ff7dfe7ea44e
-	sha512sums = 709619d268b9622cb3df56e0a7eca021ab822a9020ea0a7ce59755f9ee27818e6d0fd0dc2b88820f451f28c50475926e07bbee7af10efcdb7b29f750fc36d3f8
+	source = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers/ubuntu-wallpapers_24.04.2.orig.tar.gz
+	sha512sums = 18cbf8498d2445350053fe472b7d081ae92df01911f15b5bd96c912f4ebb7dd6a4bfe8f90d25a16aba3f8d317faf1fbe8f381d437e95d669cf0d2dc06c898a28
 
 pkgname = ubuntu-wallpapers
