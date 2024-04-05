@@ -1,20 +1,18 @@
-pkgbase = radicle-cli
+pkgbase = radicle-cli-git
 	pkgdesc = Radicle command line interface
-	pkgver = 0.6.1
-	pkgrel = 3
-	url = https://app.radicle.xyz/seeds/seed.alt-clients.radicle.xyz/rad:git:hnrkmg77m8tfzj4gi4pa4mbhgysfgzwntjpao/tree
+	pkgver = 20240405.bc247dff
+	pkgrel = 1
+	url = https://app.radicle.xyz/nodes/seed.radicle.xyz/rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5
 	arch = x86_64
-	license = GPL3
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
 	makedepends = git
 	makedepends = cargo
 	depends = libusb
 	depends = gcc-libs
 	depends = openssl
-	source = radicle-cli-0.6.1::git+https://github.com/radicle-dev/radicle-cli.git#commit=1e6ed9b
+	source = git+https://seed.radicle.xyz/z3gqcJUoA1n9HaHKufZs5FCSGazv5.git
 	sha512sums = SKIP
 
-pkgname = radicle-cli
-	depends = libusb
-	depends = gcc-libs
-	depends = openssl
-	depends = openssh
+pkgname = radicle-cli-git
