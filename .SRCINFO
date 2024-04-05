@@ -1,0 +1,13 @@
+pkgbase = python-asynctest
+	pkgdesc = Enhance the standard unittest package with features for testing asyncio libraries
+	pkgver = 0.13.0
+	pkgrel = 8
+	url = https://github.com/Martiusweb/asynctest
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	source = python-asynctest-0.13.0.tar.gz::https://github.com/Martiusweb/asynctest/archive/v0.13.0.tar.gz
+	sha512sums = cfa76a461c81d702f96cc06d6a6786c35373802a4d878927a1f11eaad741aef8e55130e4b07cfc78673210f0ebf45bf808b7c43aebb1b2835f40306b5e44b141
+
+pkgname = python-asynctest

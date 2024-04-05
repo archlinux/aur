@@ -2,7 +2,7 @@
 
 pkgname=python-asynctest
 pkgver=0.13.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Enhance the standard unittest package with features for testing asyncio libraries"
 url="https://github.com/Martiusweb/asynctest"
 license=('Apache')
