@@ -1,0 +1,13 @@
+pkgbase = python-mimerender
+	pkgdesc = Transparently select a render function for an HTTP request handler's result
+	pkgver = 0.6.0
+	pkgrel = 9
+	url = https://github.com/martinblech/mimerender
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-mimeparse
+	source = python-mimerender-0.6.0.tar.gz::https://github.com/martinblech/mimerender/archive/v0.6.0.tar.gz
+	sha512sums = 68c584ba8ae608097b739078dd729bd8b5493087901ba281959abdb81d4e6052ff045c487fde4f67744b413bab36d7f938c68b162049ebe33bff642571b8fd98
+
+pkgname = python-mimerender
