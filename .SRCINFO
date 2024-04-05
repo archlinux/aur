@@ -1,0 +1,17 @@
+pkgbase = simple-notes
+	pkgdesc = A simple and open source notes application
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = https://github.com/danielmbomfim/notes-app-desktop
+	arch = x86_64
+	license = MIT
+	depends = curl
+	depends = libuv
+	depends = zlib
+	provides = simple-notes
+	conflicts = simple-notes
+	conflicts = simple-notes-git
+	source = https://github.com/danielmbomfim/notes-app-desktop/releases/download/app-v2.0.5/anotacoes_2.0.5_amd64.deb
+	sha256sums = 2b4733c20424068540c766501dad0157b2a4fd2a97781d1ea4ea9cb1365a6402
+
+pkgname = simple-notes
