@@ -5,7 +5,7 @@
 _pypiname=anyjson
 pkgname=python-$_pypiname
 pkgver=0.3.3
-pkgrel=18
+pkgrel=19
 pkgdesc="Wraps the best available JSON implementation available in a common interface"
 arch=(any)
 url="https://pypi.python.org/pypi/$_pypiname"

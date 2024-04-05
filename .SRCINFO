@@ -1,0 +1,20 @@
+pkgbase = python-anyjson
+	pkgdesc = Wraps the best available JSON implementation available in a common interface
+	pkgver = 0.3.3
+	pkgrel = 19
+	url = https://pypi.python.org/pypi/anyjson
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/a/anyjson/anyjson-0.3.3.tar.gz
+	source = anyjson-0.3.3-python3.11.patch
+	sha256sums = 37812d863c9ad3e35c0734c42e0bf0320ce8c3bed82cd20ad54cb34d158157ba
+	sha256sums = 5b7867c0b633ffdc0e73361d6bec7ef0707229dc899bd9e40036637067d4f2f7
+	b2sums = 196596b832bddf7969fa9f77f7b78e37bf7fbc93dacb2790615555072b1b504b70d43e50bd968969abe92b6503b79d392f344b72b663fc3be700a0e4053c278f
+	b2sums = 0a18b3ba23ee3cbbd0a109b4ef3607c5034eee3472630abd7fcb1068e3cd73bf24be5251bc0297a49820b3377e4662a0ec293385f085b9a000ea797d022e9b94
+
+pkgname = python-anyjson
