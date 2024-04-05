@@ -1,6 +1,6 @@
 pkgbase = java21-openjfx
 	pkgdesc = Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version
-	pkgver = 21.0.2.u5
+	pkgver = 21.0.3.u1
 	pkgrel = 1
 	url = https://wiki.openjdk.java.net/display/OpenJFX/Main
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = java21-openjfx
 	makedepends = unzip
 	makedepends = webkit2gtk
 	makedepends = zip
-	source = java-openjfx-21.0.2+5.tar.gz::https://github.com/openjdk/jfx21u/archive/refs/tags/21.0.2+5.tar.gz
+	source = java-openjfx-21.0.3+1.tar.gz::https://github.com/openjdk/jfx21u/archive/refs/tags/21.0.3+1.tar.gz
 	source = gradle.properties
 	source = java-openjfx-flags.patch
 	source = java-openjfx-no-xlocale.patch

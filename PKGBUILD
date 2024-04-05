@@ -15,7 +15,7 @@ pkgname=(
   java21-openjfx-doc
   java21-openjfx-src
 )
-pkgver=21.0.2.u5
+pkgver=21.0.3.u1
 pkgrel=1
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version"
 arch=(x86_64 x86_64_v3)
