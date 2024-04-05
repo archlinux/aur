@@ -1,0 +1,6 @@
+post_install() {
+	echo
+	echo -e "\033[0;33mDont forget to add your user to the uucp group for serial access:\033[0m"
+	echo "sudo usermod -aG uucp $USER"
+	echo
+}
