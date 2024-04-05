@@ -28,6 +28,11 @@ sha256sums=('SKIP'
             '248424fe9c6d049786befbee00ebc270189d8afe16a2a4190d3cd127b3874156')
 
 
+pkgver() {
+  git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
+      | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+
 package() {
   mkdir -p "$pkgdir/opt"
   cd "$_pkgname"
