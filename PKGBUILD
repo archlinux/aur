@@ -31,8 +31,8 @@ source_aarch64=("${pkgname}-aarch64-${pkgver}.gz::${url}/releases/download/v${pk
 source_loong64=("${pkgname}-loong64-${pkgver}.gz::${url}/releases/download/v${pkgver}/mihomo-linux-loong64-abi2-v${pkgver}.gz")
 source_riscv64=("${pkgname}-riscv64-${pkgver}.gz::${url}/releases/download/v${pkgver}/mihomo-linux-riscv64-v${pkgver}.gz")
 
-sha256sums=('db3ef7a0e8ae960700ab7828a59b0ee6dd39adf36fb21728476d6040e16617d4'
-            'c0ebad4d616980b88bab06d6b0f6c686dbe601d389112d2ea10e52e0b00def73'
+sha256sums=('12df82e131fae39e0b417fbf692c395ecfebcb959014981a0d58003deba0938f'
+            '0455abd5a27b98e72466d60eb37546299eaf021ad61f28fc57724d7a7516de85'
             'c4af03523b8006d206440163406ee9b4de1a10bb5023fb3194490b8225a5e481')
 sha256sums_i686=('f2a4da93cabf7da2de3b08da6bb71f7ba407f091b44338bd57bcdaad08beae45')
 sha256sums_x86_64=('c413824154e018c6f897ef0c377ecceff3bd15d86fb0387e1c43d765fde78458')
