@@ -2,7 +2,7 @@
 
 pkgname='liteloader-qqnt-lite-tools-bin'
 _pkgname='LiteLoaderQQNT-lite_tools'
-pkgver='2.21.1'
+pkgver='2.21.2'
 pkgrel=2
 pkgdesc='LiteLoaderQQNT插件，轻量工具箱，轻量、优雅、高效'
 arch=('any')
@@ -13,8 +13,8 @@ provides=('liteloader-qqnt-lite-tools')
 conflicts=('liteloader-qqnt-lite-tools')
 
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/lite_tools_v4.zip")
-sha256sums=('d88c364c07b6ad1f11014082836183b263a2013d667f0da133f6b7763f1d12de')
-b2sums=('5e2cd2a9831d2ca638d1e3f3804e63e30345005bcf9c87cb67fde7043497f38af34d07252965986222146eec72988ed39d3228dd84c46da8333406b6f92b4ffc')
+sha256sums=('2969a01e24426974523e2b843bdc95c46353da74156eebd75056ddbabe6f8936')
+b2sums=('97d939345c2862c1c38f0c594d5c0aa17d39116a109cb9ef4c1b2b353535edc83f8afe952ce695a89cfec88ceb739321f370fc9288c0986cca244bc1919ce73a')
 
 package() {
     mkdir -p "${pkgdir}/opt/LiteLoader/plugins/${_pkgname}"
