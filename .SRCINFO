@@ -1,0 +1,19 @@
+pkgbase = python-deprecation-alias
+	pkgdesc = A wrapper around deprecation providing support for deprecated aliases
+	pkgver = 0.3.2
+	pkgrel = 2
+	url = https://github.com/domdfcoding/deprecation-alias
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-deprecation
+	depends = python-packaging
+	source = python-deprecation-alias::git+https://github.com/domdfcoding/deprecation-alias#commit=f5c99188130565e810943755bf8568b840ec830a
+	b2sums = SKIP
+
+pkgname = python-deprecation-alias
