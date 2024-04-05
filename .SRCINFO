@@ -1,0 +1,12 @@
+pkgbase = python-sphinx-typlog-theme
+	pkgdesc = A sphinx theme by Typlog
+	pkgver = 0.8.0
+	pkgrel = 7
+	url = https://github.com/typlog/sphinx-typlog-theme
+	arch = any
+	license = custom:BSD-3-Clause
+	makedepends = python-setuptools
+	source = python-sphinx-typlog-theme-0.8.0.tar.gz::https://github.com/typlog/sphinx-typlog-theme/archive/f8f82b66e9c4ec9522fc08fdb77c0ae21500e12a.tar.gz
+	sha512sums = b2d2b4df4b69de333c82025ef3084016fe4ca7b67226dc3c230451affee24a75045db2962ec9080ce3748bbab5a47037bf8fb665441fda9e8adf0343ee066d05
+
+pkgname = python-sphinx-typlog-theme
