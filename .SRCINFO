@@ -1,0 +1,13 @@
+pkgbase = python-monotonic
+	pkgdesc = An implementation of time.monotonic() for Python
+	pkgver = 1.6
+	pkgrel = 5
+	url = https://pypi.python.org/pypi/monotonic
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	source = monotonic-1.6.tar.gz::https://github.com/atdt/monotonic/archive/1.6.tar.gz
+	sha512sums = 9bb01f4b34ce10b90dee2e49dd70bc37462333e0da9490893bf642ceea9bed5f9bdbd8f59c58350609ac4c89809039d7375f1f1583ab8fbf9c13d4064849ea18
+
+pkgname = python-monotonic
