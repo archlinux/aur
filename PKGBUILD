@@ -18,10 +18,10 @@ package(){
 	tar -xJ --no-same-owner -f data.tar.xz -C "${pkgdir}"
 
 	# HACK: Debian compatibility symlink
-	# ClassIn binary links /usr/lib/x86_64-linux-gnu/alsa-lib/libasound_module_ctl_pipewire.so,
-	# which is invalid on Arch. I tried examining the binary using `patchelf`,
-	# `ldd`, and `strings`, but couldn't figure out how it's linked. In lieu of a
-	# proper fix, this makeshift solution will do for now.
+	# ClassIn binary links several files in /usr/lib/x86_64-linux-gnu, which is
+	# invalid on Arch. I tried examining the binary using `patchelf`, `ldd`, and
+	# `strings`, but couldn't figure out how it's linked. In lieu of a proper fix,
+	# this makeshift solution will do for now.
 	mkdir -p "${pkgdir}/usr/lib"
 	ln -sf /usr/lib "${pkgdir}/usr/lib/x86_64-linux-gnu"
 }
