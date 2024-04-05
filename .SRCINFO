@@ -1,0 +1,23 @@
+pkgbase = python-pyface
+	pkgdesc = Traits-capable windowing framework
+	pkgver = 8.0.0
+	pkgrel = 3
+	url = https://github.com/enthought/pyface
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-traits
+	optdepends = python-pyqt6: for Qt backend (or pyside2)
+	optdepends = python-pyqt6-webengine: for Qt backend
+	optdepends = pyside6: for Qt backend (or python-pyqt5)
+	optdepends = python-pygments: for syntax coloring in Qt backend
+	optdepends = ipython: for IPython widget
+	optdepends = python-wxpython: for wx backend
+	options = !emptydirs
+	source = pyface-8.0.0.tar.gz::https://github.com/enthought/pyface/archive/8.0.0.tar.gz
+	sha256sums = e34f8fb285517e25bfe41a4b8d1d54860d2636bd5fa5b9bff26ab96c1a098895
+
+pkgname = python-pyface
