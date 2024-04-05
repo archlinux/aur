@@ -10,6 +10,7 @@ pkgbase = moonbit-bin
 	depends = git
 	provides = moonbit
 	conflicts = moonbit
+	options = !debug
 	source = https://cli.moonbitlang.com/ubuntu_x86/moon
 	source = https://cli.moonbitlang.com/ubuntu_x86/moonc
 	source = https://cli.moonbitlang.com/ubuntu_x86/moonfmt

@@ -10,6 +10,7 @@ license=('unknown')
 depends=('glibc' 'gcc-libs' 'git')
 provides=("moonbit")
 conflicts=("moonbit")
+options=('!debug')
 _origin="https://cli.moonbitlang.com"
 source=("${_origin}/ubuntu_x86/moon"
         "${_origin}/ubuntu_x86/moonc"
