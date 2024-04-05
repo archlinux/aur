@@ -6,7 +6,7 @@
 
 pkgname=navit
 pkgver=0.5.6
-pkgrel=6
+pkgrel=7
 pkgdesc="Modular turn-by-turn car navigation system"
 arch=('x86_64')
 url="https://www.navit-project.org/"
