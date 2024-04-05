@@ -1,0 +1,6 @@
+1 *
+ 2 !.SRCINFO
+ 3 !PKGBUILD
+ 4 !jellyfind.install
+ 5 !jellyfind.initd
+ 6 !LICENSE
