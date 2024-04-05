@@ -2,7 +2,7 @@
 
 pkgname=python-click-extra
 _name=${pkgname#python-}
-pkgver=4.7.1
+pkgver=4.7.4
 pkgrel=1
 pkgdesc='Extra colorization and configuration loading for Click.'
 url='https://kdeldycke.github.io/click-extra/'
@@ -11,11 +11,10 @@ depends=(python python-boltons python-click python-click-log python-cli_helpers 
 checkdepends=(python-pytest python-pytest-cov python-pytest-httpserver python-pytest-randomly python-pytest-cases mypy python-pytest-mypy)
 license=('GPL2')
 arch=('any')
-source=("https://github.com/kdeldycke/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('a5bbeec3004e5d1b27f6baa4acb978eecbf23087f4082b9ecaf96d10298a87940cd6f5f0a3bbb016f1a7f25af04fd86be9459af83e2a3dbb759753ad2c04f804')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kdeldycke/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('d2d38321fb0df75443084cb80e24a03e090457ab1e5533ffec633b6c23fe3e7f8e30015f6d7223bc465dd428da23a56d1fa5e050b6c50d0c17b0b9a876625898')
 
 build() {
-    # Poetry has a bug where .gitignore files in any parent directory is used in excluding files to build, resulting in an empty package.
     cd "$srcdir/$_name-$pkgver"
     GIT_DIR="$srcdir/$_name-$pkgver" python -m build --wheel --no-isolation
 }
