@@ -2,7 +2,7 @@
 
 pkgname='hostd'
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced host solution, designed to enhance the experience for storage providers within the Sia network.'
 arch=('x86_64' 'aarch64')
 depends=('glibc')
@@ -18,7 +18,7 @@ source=("git+https://github.com/SiaFoundation/hostd.git#tag=${_tag}"
         "hostd.service"
         "hostd.install"
         "hostd.yml")
-sha256sums=('fa31e10978dceee48300b809df55b3461f0ae689f1db8dc79c4a017dba19ed08'
+sha256sums=('SKIP'
             'd65ccb7decc6b266a64f51ab30d43912a6d8dcdc3aa67ccd703ee3d187f16c74'
             '23917e6034280d9891069a24d9069c46ba70cc52fb7515896edb4ade8614862f'
             '1dd23f6dd6ae61bbad1034dc4afd752cb6c957f08a6c0dc8175b75243ce5625c'
