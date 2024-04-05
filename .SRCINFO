@@ -1,7 +1,7 @@
 pkgbase = gtick
 	pkgdesc = A Gtk metronome application supporting different meters and speeds
 	pkgver = 0.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.antcom.de/gtick
 	arch = i686
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = gtick
 	sha1sums = bfc95da9148e5f3105951331b26a6c8d87a34c5b
 
 pkgname = gtick
-

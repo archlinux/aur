@@ -5,7 +5,7 @@
 
 pkgname=gtick
 pkgver=0.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Gtk metronome application supporting different meters and speeds"
 arch=('i686' 'x86_64')
 url="https://www.antcom.de/gtick"
