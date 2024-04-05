@@ -1,0 +1,13 @@
+diff --git a/cmd/dmarc-report-converter/main.go b/cmd/dmarc-report-converter/main.go
+index 50840a7..f3e23c9 100644
+--- a/cmd/dmarc-report-converter/main.go
++++ b/cmd/dmarc-report-converter/main.go
+@@ -20,7 +20,7 @@ func main() {
+ 	)
+ 
+ 	flag.BoolVar(&flagVersion, "version", false, "show version and exit")
+-	flag.StringVar(&flagConfig, "config", "./config.yaml", "Path to config file")
++	flag.StringVar(&flagConfig, "config", "/etc/dmarc-report-converter/config.yml", "Path to config file")
+ 	flag.Parse()
+ 
+ 	if flagVersion {

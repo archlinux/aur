@@ -1,0 +1,36 @@
+input:
+  delete: no
+  dir: "/var/lib/dmarc-report-converter/inputs"
+  #imap:
+  #  server: ""
+  #  username: ""
+  #  password: ""
+  #  mailbox: ""
+  # enable debug messages for imap package?
+  #  debug: no
+  # delete emails from server after fetch?
+  #  delete: no
+
+output:
+  # output file
+  # should be: string, golang template string or "stdout"
+  file: "/var/lib/dmarc-report-converter/outputs/{{ .ID }}.html"
+
+  # output format
+  # should be: txt, json, html_static, html, external_template
+  format: "html_static"
+
+  # if you configure format to "html" output, don't forget to configure assets_path and your web server
+  assets_path: "/usr/share/dmarc-report-converter/assets"
+
+  # if you configure format to "external_output", don't forget to configure external_template
+  external_template: "/var/lib/dmarc-report-converter/templates"
+
+# perform reverse lookups?
+lookup_addr: no
+
+# merge multiple similar reports to one?
+merge_reports: yes
+
+log_debug: no
+log_datetime: no

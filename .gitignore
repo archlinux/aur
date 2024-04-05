@@ -1,0 +1,6 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!config.yml
+!change-default-path-of-config-file.patch
