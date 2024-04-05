@@ -11,6 +11,6 @@ pkgbase = krathalans-apparmor-profiles-git
 	validpgpkeys = 0C6B73F391FA26F0EBCD1F75C0F9AEE56E47D174
 	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
 	sha256sums = SKIP
-	sha256sums = d0c73fca5a0998c1359e29edf892fa2c5e887e543e9abf4613076b5b03db4193
+	sha256sums = 138a4ba8c6e1bd1ce3461eaa4f3930ba34da43da62cf6d8722b366075eb74e5f
 
 pkgname = krathalans-apparmor-profiles-git

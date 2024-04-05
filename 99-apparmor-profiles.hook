@@ -6,4 +6,4 @@ Target = krathalans-apparmor-profiles-git
 [Action]
 Description = Reloading AppArmor service...
 When = PostTransaction
-Exec = /usr/bin/systemctl -q is-enabled apparmor.service && /usr/bin/systemctl reload apparmor.service
+Exec = /usr/bin/bash -c '/usr/bin/systemctl -q is-enabled apparmor.service && /usr/bin/systemctl reload apparmor.service'
