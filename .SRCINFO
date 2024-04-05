@@ -1,0 +1,19 @@
+pkgbase = python-okonomiyaki
+	pkgdesc = Experimental library aimed at consolidating a lot of our low-level code used for Enthought eggs
+	pkgver = 1.3.2
+	pkgrel = 3
+	url = https://github.com/enthought/okonomiyaki
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-attrs
+	depends = python-jsonschema
+	depends = python-six
+	source = python-okonomiyaki-1.3.2.tar.gz::https://github.com/enthought/okonomiyaki/archive/1.3.2.tar.gz
+	sha512sums = 89877ecca20370bcfd3f74429913e708a1e10f841fac012e154c4b43862dc9f1644d1b70638811cae71e5651565514db002ca777466b5e848009d7699b5735ed
+
+pkgname = python-okonomiyaki
