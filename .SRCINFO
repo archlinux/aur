@@ -1,7 +1,7 @@
 pkgbase = rook
 	pkgdesc = A lightweight, stand-alone, headless secret service tool backed by a Keepass v2 database.
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hg.sr.ht/~ser/rook
 	arch = x86_64
 	arch = i686
