@@ -4,7 +4,7 @@
 pkgname=classin-bin
 _pkgname=classin
 pkgver=5.1.1.34
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary remote classroom application by EEO."
 arch=('x86_64')
 url="https://www.eeo.cn/cn/classin"
@@ -16,4 +16,12 @@ sha512sums_x86_64=('a6f5996366cfb508128076d8d92f2211c55bc4feee12ceba71d5a81d3cd0
 
 package(){
 	tar -xJ --no-same-owner -f data.tar.xz -C "${pkgdir}"
+
+	# HACK: Debian compatibility symlink
+	# ClassIn binary links /usr/lib/x86_64-linux-gnu/alsa-lib/libasound_module_ctl_pipewire.so,
+	# which is invalid on Arch. I tried examining the binary using `patchelf`,
+	# `ldd`, and `strings`, but couldn't figure out how it's linked. In lieu of a
+	# proper fix, this makeshift solution will do for now.
+	mkdir -p "${pkgdir}/usr/lib"
+	ln -sf /usr/lib "${pkgdir}/usr/lib/x86_64-linux-gnu"
 }

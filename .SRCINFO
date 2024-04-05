@@ -1,7 +1,7 @@
 pkgbase = classin-bin
 	pkgdesc = Proprietary remote classroom application by EEO.
 	pkgver = 5.1.1.34
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.eeo.cn/cn/classin
 	install = classin-bin.install
 	arch = x86_64
