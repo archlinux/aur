@@ -1,0 +1,17 @@
+pkgbase = python-ipyxact
+	pkgdesc = Python-based IP-XACT parser
+	pkgver = 0.3.2
+	pkgrel = 3
+	url = https://github.com/olofk/ipyxact
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-yaml
+	source = python-ipyxact-0.3.2.tar.gz::https://github.com/olofk/ipyxact/archive/v0.3.2.tar.gz
+	sha512sums = 7048b914616135d5a7319d4bf93208da2fe02f8ea76a95a7000b64e40866b6e4064e0bf43705ad0a026e383f6c78a803768499a29c838f2fc6359bafeafb6a32
+
+pkgname = python-ipyxact
