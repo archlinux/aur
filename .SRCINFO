@@ -1,13 +1,14 @@
 pkgbase = r-slqpcr
 	pkgdesc = Functions for analysis of real-time quantitative PCR data at SIRS-Lab GmbH
 	pkgver = 1.68.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/SLqPCR
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	optdepends = r-rcolorbrewer
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/SLqPCR_1.68.0.tar.gz
-	sha256sums = d7c950fe53bac9aa677475c81ef2a9b854078eb5c9ab14d99aefe01e2289cedc
+	md5sums = 72759fb6b62f3852f458e695318c0f6f
+	b2sums = 77d8455c45030397a8bec7b2490cbda492cfbe877fff961604a07a5b583c100f1baf6c925b7c12ffe0d7f780d87401d3793afe736a3511b297a3a98b683371f9
 
 pkgname = r-slqpcr
