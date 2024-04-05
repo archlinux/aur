@@ -1,0 +1,15 @@
+pkgbase = liteloader-qqnt-markdown-bin
+	pkgdesc = LiteLoaderQQNT插件，为QQ添加Markdown支持
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/d0j1a1701/LiteLoaderQQNT-Markdown
+	arch = any
+	license = unknown
+	depends = liteloader-qqnt
+	provides = liteloader-qqnt-markdown-git
+	conflicts = liteloader-qqnt-markdown-git
+	source = liteloader-qqnt-markdown-bin-1.0.0.tar.gz::https://github.com/d0j1a1701/LiteLoaderQQNT-Markdown/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = 71e7d99619b53a381bc26b556b36e89ea843d9e1e75bd5576a80ee5a66237f2f
+	b2sums = 445b2331432a0a9a2872ced618fb06a0f055fb1444b561ae30d2076eab430087b8960805e5cb8b1869ab3d47f4c560430f51fdce4b9f8332576e1a94502edb81
+
+pkgname = liteloader-qqnt-markdown-bin
