@@ -1,14 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-weather-oclock-git
 _uuid=weatheroclock@CleoMenezesJr.github.io
-pkgver=9.r0.gdf70dc2
+pkgver=46.2.r2.g64a3f99
 pkgrel=1
 pkgdesc="Display the current weather inside the pill next to the clock."
 arch=('any')
 url="https://github.com/CleoMenezesJr/weather-oclock"
 license=('GPL-3.0-or-later')
-depends=('gnome-shell' 'gnome-weather')
+depends=('gnome-shell')
 makedepends=('git')
+optdepends=('gnome-weather: configure location')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/CleoMenezesJr/weather-oclock.git')
