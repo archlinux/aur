@@ -164,7 +164,7 @@ elif [ -n "$_use_llvm_lto" ]  ||  [[ "$_use_lto_suffix" = "n" ]]; then
     pkgbase=linux-$pkgsuffix-zenbook
 fi
 _major=6.8
-_minor=3
+_minor=4
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -724,7 +724,7 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('d03f8938da5a3322447fa639718590f5630cd391de45952bf2ca697d95210cc47d4ff27f26b7ebe5ce2328ea4f4df040ed0f335a3607fa8c05feb17a8c7d545c'
+b2sums=('cf58732397bfa11988b79901092887d53c3367d09f63da51ebdcc83518be3a7e9a638fbbb1ff080cd7abed633fadff03d1d7a3928b772de57b14e46e552f9462'
         'aed56a9f01bebda81eb39f8a2160538581614d8163cdeb6980f78aab489f9c990349c93e9c82cf5ca93f407bdd8853078fc5dadfddb9c733518e6928ca612212'
         '43ef7a347878592740d9eb23b40a56083fa747f7700fa1e2c6d039d660c0b876d99bf1a3160e15d041fb13d45906cdb5defef034d4d0ae429911864239c94d8d'
         'aa8813c617fd60442a80234c6e63e74205f0a45829bc6b20a97ad5eb6066aceff14457241477f79e53a33885f694d6f3877d2bc73ad295ea347be61996d7beda'

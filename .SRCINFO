@@ -1,5 +1,5 @@
 pkgbase = linux-cachyos-zenbook
-	pkgver = 6.8.3
+	pkgver = 6.8.4
 	pkgrel = 1
 	url = https://github.com/CachyOS/linux-cachyos
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = linux-cachyos-zenbook
 	depends = scx-scheds
 	options = !strip
 	options = !debug
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.8.3.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.8.4.tar.xz
 	source = config
 	source = auto-cpu-optimization.sh
 	source = sound-fix.patch
