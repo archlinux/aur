@@ -1,59 +1,77 @@
-# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
-# Maintainer: Andrew Rabert <ar@nullsum.net>
+# Maintainer:
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Andrew Rabert <ar@nullsum.net>
 # Contributor: Lubosz Sarnecki <lubosz@gmail.com>
 # Contributor: Vítor Ferreira <vitor.dominor@gmail.com>
 
-pkgname=xboxdrv-git
-pkgver=0.8.4.r453.gf8ef7e0
-pkgrel=2
-pkgdesc="An XBox/XBox 360 gamepad driver - as alternative to the xpad-kernel module - with more configurability, runs in userspace and supports a multitude of controllers"
-arch=(x86_64 i686 arm armv6h armv7h aarch64)
-url="https://xboxdrv.gitlab.io/"
-license=(GPL3)
-depends=(libx11 dbus-glib libusb bluez-libs gtk3 fmt)
-makedepends=(git cmake boost)
-provides=(xboxdrv)
-conflicts=(xboxdrv)
-source=("git+https://gitlab.com/xboxdrv/xboxdrv.git"
-        "git+https://gitlab.com/argparser/argparser.git"
-        "git+https://github.com/google/googletest.git"
-        "xboxdrv.service"
-        "xboxdrv.conf")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            '51387a52a97d2e004a4160432131f18326e9ae655447694e170f18bdb8d7204f'
-            'f155dd059faecafa60ecaa0988aec815ee0c58f1af45075de82ae10c31db2750')
+_pkgname="xboxdrv"
+pkgname="$_pkgname-git"
+pkgver=0.8.9.r0.g25a1dcb
+pkgrel=1
+pkgdesc="Userspace Xbox gamepad driver and input remapper"
+url="https://github.com/xiota/xboxdrv"
+license=('GPL-3.0-or-later')
+arch=('x86_64')
+
+depends=(
+  'python'
+  'dbus-glib'
+  'dbus-python'
+  'libusb'
+  'libx11'
+
+  # implicit
+  #bash
+  #dbus
+  #glib2
+  #systemd-libs
+)
+makedepends=(
+  'boost'
+  'git'
+  'pkg-config'
+  'scons'
+)
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
+backup=("etc/default/xboxdrv")
+
+_pkgsrc="$_pkgname"
+source=(
+  "$_pkgsrc"::"git+$url.git"
+  "xboxdrv.default"
+  "xboxdrv.service"
+)
+sha256sums=(
+  'SKIP'
+  '68a286300d28bbfc97eb694c6cc413776f0bc16e35de6d1969f13ef1e7d1cac5'
+  'd631a8c3af7e2b4ef22f1494ded5d7a8029a8dd9756ef8907f909ef6aa0afc2b'
+)
 
 pkgver() {
-  cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+  cd "$_pkgsrc"
 
-prepare() {
-  cd "${pkgname%-git}"
-  mkdir -p build
-  git submodule init
-  git config submodule.external/argparser.url "$srcdir/argparser"
-  git config submodule.external/googletest.url "$srcdir/googletest"
-  git submodule update
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${pkgname%-git}/build"
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTS=ON
-  make
-}
-
-check() {
-  cd "${pkgname%-git}/build"
-  make test
+  cd "$_pkgsrc"
+  scons \
+    LINKFLAGS="$LDFLAGS" \
+    CXXFLAGS="$CPPFLAGS $CXXFLAGS" \
+    "$MAKEFLAGS"
 }
 
 package() {
-  cd "${pkgname%-git}/build"
-  make install DESTDIR="$pkgdir"
+  cd "$_pkgsrc"
+  make PREFIX=/usr DESTDIR="$pkgdir" install
 
-  install -D -m755 "$srcdir/xboxdrv.service" "$pkgdir/usr/lib/systemd/system/xboxdrv.service"
-  install -D -m644 "$srcdir/xboxdrv.conf" "$pkgdir/etc/conf.d/xboxdrv"
+  install -Dm644 "$srcdir/$_pkgname.service" -t "$pkgdir/usr/lib/systemd/system/"
+  install -Dm644 "$srcdir/$_pkgname.default" "$pkgdir/etc/default/$_pkgname"
+  install -Dm644 README.md NEWS PROTOCOL -t "$pkgdir/usr/share/doc/$_pkgname/"
+  install -Dm644 examples/* -t "$pkgdir/usr/share/doc/$_pkgname/examples/"
+  install -Dm644 data/org.seul.Xboxdrv.conf -t "$pkgdir/etc/dbus-1/system.d/"
 }
