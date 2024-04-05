@@ -1,22 +1,34 @@
-# Maintainer:
+# Maintainer: Toolybird <toolybird at tuta dot io>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Bernard Baeyens (berbae) <berbae52 at sfr dot fr>
 
 pkgname=pan
-pkgver=0.155
+pkgver=0.157
 pkgrel=1
 pkgdesc='A powerful Newsgroup Article reader'
 arch=(x86_64)
 url='http://pan.rebelbase.com/'
-license=(GPL2)
-depends=(gtkspell3 gmime3)
-makedepends=(itstool)
-source=(https://gitlab.gnome.org/GNOME/pan/-/archive/v$pkgver/pan-v$pkgver.tar.gz)
-sha256sums=('49acd5e18e323e16f53438ac7721cf0fb2d8c1c78846e69c8985dd3640187670')
+license=(GPL-2.0-or-later)
+depends=(
+  cairo
+  enchant
+  gcc-libs
+  gdk-pixbuf2
+  glib2
+  gmime3
+  gnutls
+  gtk3
+  gtkspell3
+  hicolor-icon-theme
+  pango
+  zlib
+)
+source=("https://gitlab.gnome.org/GNOME/pan/-/archive/v$pkgver/pan-v$pkgver.tar.gz")
+sha256sums=('ea9093642dc3675a5868d67ea97aedce38beeb2c3281c84fb044fc802bbaa620')
 
 prepare() {
   cd pan-v$pkgver
-  ./autogen.sh
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
