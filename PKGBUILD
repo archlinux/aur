@@ -2,8 +2,8 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 pkgbase=autodiff
 pkgname=(${pkgbase} python-${pkgbase})
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="Automatic differentiation made easier for C++"
 arch=(any)
 url="https://github.com/${pkgbase}/${pkgbase}"
@@ -12,7 +12,7 @@ depends=()
 makedepends=(cmake eigen pybind11 python-build python-installer python-setuptools python-wheel)
 # checkdepends=(catch2)
 source=(${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('9209cc16383a87b1e86372d48a9f2ddd945f1f54c6ebd62b7eba0fa191a2dab359a2331d2a42cd4367eec97dc97db0c7374818f04d0bb8b20e20eb96c87bd251')
+sha512sums=('d084dc44f3864d9c6b2bae99b503d809765ec0a8164b9404c08700ffdafd23e78db3c169bbcbc9e47c6990a86ba2f91c3c9801c5cc727feaa6e1ca1dab44eef4')
 
 prepare() {
   # https://github.com/autodiff/autodiff/issues/305#issuecomment-2028248898

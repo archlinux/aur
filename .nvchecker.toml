@@ -1,0 +1,4 @@
+[autodiff]
+source = "github"
+github = "autodiff/autodiff"
+use_latest_release = "true"
