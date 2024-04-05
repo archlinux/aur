@@ -32,10 +32,8 @@ provides=("$_name")
 conflicts=("$_name")
 source=(
         "git+https://github.com/krille-chan/fluffychat.git"
-        "openssl-dynamic-link.patch"
 )
-sha256sums=('SKIP'
-            '30cabdeb108d7766b55c002978d8ef64df4dfba2e3e7b872de774727afa50730')
+sha256sums=('SKIP')
 
 pkgver() {
     cd ${_name}
@@ -56,7 +54,6 @@ prepare() {
     export CFLAGS="${CFLAGS/-fstack-clash-protection/ }"
   fi
   
-  patch -p1 -i "${srcdir}/openssl-dynamic-link.patch" -d .
   flutter pub get
 }
 
