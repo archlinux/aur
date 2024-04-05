@@ -1,0 +1,17 @@
+pkgbase = ttf-lxgw-xihei
+	pkgdesc = 霞鶩晰黑。一款衍生於「IPAex ゴシック」的舊字形寫法中文字型。A Chinese font derived from IPAex Gothic.
+	pkgver = 0.290
+	pkgrel = 1
+	url = https://github.com/lxgw/LxgwXiHei
+	changelog = changelog.txt
+	arch = any
+	license = custom:IPA
+	conflicts = ttf-lxgw-xihei
+	source = ttf-lxgw-xihei-0.290-CL-1.ttf::https://github.com/lxgw/LxgwXiHei/releases/download/v0.290/LXGWXiHeiCL.ttf
+	source = LICENSE_CHT.md
+	source = LICENSE.md
+	sha256sums = fa6e7ed48ea208c6e0eb63976bc1e3a95481caa9c2e132ce50e55b1f4a629cda
+	sha256sums = e33bc6a5f48e8fef08f7ab74b24b199c2d6b1495d7a6fc5cc285c1e44d768877
+	sha256sums = 18e639e1d5d575cb92694c79b2aed1781a234eb5be4200c1479a6c27e11fddcc
+
+pkgname = ttf-lxgw-xihei
