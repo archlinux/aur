@@ -1,7 +1,7 @@
 pkgbase = scx-scheds
 	pkgdesc = Sched_ext schedulers
 	pkgver = 0.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sched-ext/scx
 	arch = x86_64
 	license = GPL-2.0-only
@@ -10,7 +10,6 @@ pkgbase = scx-scheds
 	makedepends = clang
 	makedepends = llvm
 	makedepends = llvm-libs
-	makedepends = cargo
 	makedepends = rust
 	depends = libelf
 	depends = zlib
