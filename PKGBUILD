@@ -3,7 +3,7 @@
 
 pkgname=python-nptyping
 pkgver=2.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Type hints for Numpy'
 url="https://github.com/ramonhagenaars/nptyping"
 arch=(x86_64)
