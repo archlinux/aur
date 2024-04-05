@@ -1,6 +1,6 @@
 pkgbase = liteloader-qqnt-lite-tools-bin
 	pkgdesc = LiteLoaderQQNT插件，轻量工具箱，轻量、优雅、高效
-	pkgver = 2.21.0
+	pkgver = 2.21.1
 	pkgrel = 2
 	url = https://github.com/xiyuesaves/LiteLoaderQQNT-lite_tools
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = liteloader-qqnt-lite-tools-bin
 	depends = liteloader-qqnt
 	provides = liteloader-qqnt-lite-tools
 	conflicts = liteloader-qqnt-lite-tools
-	source = liteloader-qqnt-lite-tools-bin-2.21.0.zip::https://github.com/xiyuesaves/LiteLoaderQQNT-lite_tools/releases/download/v2.21.0/lite_tools_v4.zip
-	sha256sums = 95974baae1dbe61f77421f7f9206e244d5c9003852661e3bc4f36f5477769061
-	b2sums = 8094f6901f5d1180e46f654e61cee7036c30a7f1391bf670280d81d263732b67f59bcb745c16194d34bd7a46fff44b66531ea6eb1951589ac656cfa7d73b1dce
+	source = liteloader-qqnt-lite-tools-bin-2.21.1.zip::https://github.com/xiyuesaves/LiteLoaderQQNT-lite_tools/releases/download/v2.21.1/lite_tools_v4.zip
+	sha256sums = d88c364c07b6ad1f11014082836183b263a2013d667f0da133f6b7763f1d12de
+	b2sums = 5e2cd2a9831d2ca638d1e3f3804e63e30345005bcf9c87cb67fde7043497f38af34d07252965986222146eec72988ed39d3228dd84c46da8333406b6f92b4ffc
 
 pkgname = liteloader-qqnt-lite-tools-bin
