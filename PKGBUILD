@@ -5,14 +5,14 @@
 
 # Maintainer: Fantix King <fantix.king@gmail.com>
 pkgname=granted-bin
-pkgver=0.21.1
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="Granted is a command line interface (CLI) tool which simplifies access to cloud roles and allows multiple cloud accounts to be opened in your web browser simultaneously."
 arch=('x86_64')
 url="https://granted.dev/"
 license=('MIT')
 source=("https://releases.commonfate.io/granted/v${pkgver}/granted_${pkgver}_linux_${arch}.tar.gz")
-sha256sums=('557ac40447bba4f9c3604f183ee2e0ceaea194e5049ee4d307ae70f4245ad0a5')
+sha256sums=('e0592cec1c3d65d2653efc546ff63e68f29da00239f9e5db08669fa06d48b7ee')
 
 package() {
 	mkdir -p "${pkgdir}/usr/bin/"
