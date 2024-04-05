@@ -1,5 +1,5 @@
 pkgbase = prettyzoo
-	pkgdesc = a GUI for Zookeeper created by JavaFX and Apache Curator Framework.
+	pkgdesc = a GUI for Zookeeper created by JavaFX and Apache Curator Framework update0.
 	pkgver = 2.1.1
 	pkgrel = 0
 	url = https://github.com/vran-dev/PrettyZoo
