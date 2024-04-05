@@ -12,7 +12,7 @@ source=(https://archive.org/download/installateur-sappy/Installateur_Sappy.exe
         sappy2006
         sappy2006.desktop
         sappy2006.png)
-md5sums=('SKIP'
+md5sums=('07073b912761a3fc75d15e71f4af61f9'
          'SKIP'
          'SKIP'
          'SKIP'
