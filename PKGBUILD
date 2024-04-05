@@ -7,17 +7,10 @@ else
   : ${_autoupdate:=true}
 fi
 
-: ${_build_latest:=true}
-: ${_build_bin:=true}
-
-unset _pkgtype
-[[ "${_build_latest::1}" == "t" ]] && _pkgtype+="-latest"
-[[ "${_build_bin::1}" == "t" ]] && _pkgtype+="-bin"
-
 # basic info
 _pkgname='pcsx2'
-pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.7.5600
+pkgname="$_pkgname-latest-bin"
+pkgver=1.7.5678
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
