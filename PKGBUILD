@@ -14,7 +14,7 @@ arch=('x86_64')
 backup=(etc/udev/lomoco_mouse.conf)
 source=(http://http.debian.net/debian/pool/main/l/lomoco/lomoco_$pkgver.0.orig.tar.gz
         http://http.debian.net/debian/pool/main/l/lomoco/lomoco_$pkgver.0-4.debian.tar.xz
-        "lomoco_mxair.patch::https://bugs.archlinux.org/task/36657?getfile=10920"
+        "lomoco_mxair.patch::https://bugs.archlinux.org/attachments/36657/10920/mxair.patch"
         lomoco_mouse.conf
         lomoco.sh)
 md5sums=('f5197d0a3ee81229c3eecc1e03f7b08d'
