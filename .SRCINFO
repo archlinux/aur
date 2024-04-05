@@ -1,0 +1,15 @@
+pkgbase = python-aiohappyeyeballs
+	pkgdesc = Python library that provides happy eyeballs algorithm for asyncio.
+	pkgver = 2.3.2
+	pkgrel = 1
+	url = https://github.com/aio-libs/aiohappyeyeballs
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/a/aiohappyeyeballs/aiohappyeyeballs-2.3.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-aiohappyeyeballs
