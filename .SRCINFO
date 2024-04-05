@@ -7,7 +7,7 @@ pkgbase = gnome-shell-extension-weather-in-the-clock-git
 	license = GPL-3.0-or-later
 	makedepends = git
 	depends = gnome-shell<=1:44.6
-	depends = gnome-weather
+	optdepends = gnome-weather: configure location
 	provides = gnome-shell-extension-weather-in-the-clock
 	conflicts = gnome-shell-extension-weather-in-the-clock
 	source = git+https://github.com/JasonLG1979/gnome-shell-extension-weather-in-the-clock.git

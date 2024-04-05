@@ -8,8 +8,9 @@ pkgdesc="Display the current Weather in the Clock."
 arch=('any')
 url="https://github.com/JasonLG1979/gnome-shell-extension-weather-in-the-clock"
 license=('GPL-3.0-or-later')
-depends=('gnome-shell<=1:44.6' 'gnome-weather')
+depends=('gnome-shell<=1:44.6')
 makedepends=('git')
+optdepends=('gnome-weather: configure location')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+https://github.com/JasonLG1979/gnome-shell-extension-weather-in-the-clock.git")
