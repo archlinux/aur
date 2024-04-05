@@ -14,7 +14,7 @@ UMask=007
 
 WorkingDirectory=~
 
-EnvironmentFile=/etc/conf.d/hostd
+Environment="HOSTD_CONFIG_FILE=/etc/hostd.yml"
 
 [Install]
 WantedBy=multi-user.target

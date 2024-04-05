@@ -1,0 +1,8 @@
+# Check https://github.com/SiaFoundation/hostd?tab=readme-ov-file#yaml for more information
+# You can fill the content of this file interactively with the following command : `pushd /etc && sudo -u hostd hostd -dir /var/lib/hostd config; popd`
+
+# You must at least set a seed and an api password.
+recoveryPhrase:
+
+http:
+    password:

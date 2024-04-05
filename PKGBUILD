@@ -1,7 +1,7 @@
 # Maintainer: Didrole <Didrole@gmail.com>
 
 pkgname='hostd'
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='An advanced host solution, designed to enhance the experience for storage providers within the Sia network.'
 arch=('x86_64' 'aarch64')
@@ -10,20 +10,20 @@ makedepends=('git' 'go')
 url='https://sia.tech/software/hostd'
 license=('MIT')
 install='hostd.install'
-backup=('etc/conf.d/hostd')
-_tag='d7c7320f7d5e30e767632459c5e5f62bfa1e55d3'
+backup=('etc/conf.d/hostd' 'etc/hostd.yml')
+_tag='1795a3ac580ccf61bc54a5ce7c1b6ad302fd1d71'
 source=("git+https://github.com/SiaFoundation/hostd.git#tag=${_tag}"
         "hostd.sysusers"
         "hostd.tmpfiles"
         "hostd.service"
         "hostd.install"
-        "hostd.env")
-sha256sums=('SKIP'
+        "hostd.yml")
+sha256sums=('fa31e10978dceee48300b809df55b3461f0ae689f1db8dc79c4a017dba19ed08'
             'd65ccb7decc6b266a64f51ab30d43912a6d8dcdc3aa67ccd703ee3d187f16c74'
-            '9341e0f2228a0054beb111b93eeb510614249dab262ac6b51481942f2fffd3a0'
-            '850e32e76269a9038fa5eb48135d7869e49c2d7ca354de678039f6b15bed133d'
-            'b9ec9874e838163451777d6f0f469aff8a2c063860d60c31627f1fd76eb52d86'
-            'd70b0b00b276f6074ac1450af6db81fcf81121aa67ff8ab90665ec4f6289d20c')
+            '23917e6034280d9891069a24d9069c46ba70cc52fb7515896edb4ade8614862f'
+            '1dd23f6dd6ae61bbad1034dc4afd752cb6c957f08a6c0dc8175b75243ce5625c'
+            'b578ed3b767e7e41e1725b2213bf62586fadc0ea9031c63063cb063311a023c8'
+            '653ffb17f23ce1cbf2a12c4e67e0b33d48118197b6ccb89cc3ced0f25d77bc62')
 
 build() {
   cd "${srcdir}/${pkgname}"
@@ -40,7 +40,7 @@ package() {
   install -Dm644 "${srcdir}/hostd.service" "${pkgdir}/usr/lib/systemd/system/hostd.service"
   install -Dm644 "${srcdir}/hostd.sysusers" "${pkgdir}/usr/lib/sysusers.d/hostd.conf"
   install -Dm644 "${srcdir}/hostd.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/hostd.conf"
-  install -Dm640 "${srcdir}/hostd.env" "${pkgdir}/etc/conf.d/hostd"
+  install -Dm640 "${srcdir}/hostd.yml" "${pkgdir}/etc/hostd.yml"
 
   install -Dm755 "bin/hostd" -t "${pkgdir}/usr/bin"
 }
