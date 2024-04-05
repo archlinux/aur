@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = vscodium-insiders-bin
+
+[Action]
+Description = Patching vscodium-insiders-bin to include VsCode Extension Repository...
+Exec = /usr/share/vscodium-insiders-bin/resources/app/patch.sh
+When = PostTransaction
