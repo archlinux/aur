@@ -1,0 +1,19 @@
+pkgbase = python-calmjs
+	pkgdesc = Framework for building toolchains and utilities for working with the JavaScript/Node.js ecosystem
+	pkgver = 3.4.4
+	pkgrel = 3
+	url = https://github.com/calmjs/calmjs
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-calmjs.parse
+	depends = python-calmjs.types
+	depends = python-setuptools
+	source = python-calmjs-3.4.4.tar.gz::https://github.com/calmjs/calmjs/archive/refs/tags/3.4.4.tar.gz
+	sha512sums = eb70d2d57b7d3cf22134f80c8c47b443893419e4f052b39102b04938b55c8afb950b6154f929a1a6cb74c2e67ae34ecf757b7b5765c47e9a74b805659eb6f22c
+	b2sums = 51ee6b24eaf59259140b9cbf3ba8a713b19934659688c02529cb8b4946ac7628b3bd07e8e4025d368f12db1eebaff41939e8b18ec3843938129d0943d4400216
+
+pkgname = python-calmjs
