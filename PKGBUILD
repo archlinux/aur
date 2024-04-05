@@ -10,7 +10,6 @@ url="https://github.com/Square/pylink"
 license=(Apache-2.0)
 depends=(
   python
-  python-future
   python-psutil
   python-six
 )
