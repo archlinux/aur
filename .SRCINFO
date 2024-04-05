@@ -1,0 +1,20 @@
+pkgbase = python-dist-meta
+	pkgdesc = Parse and create Python distribution metadata
+	pkgver = 0.8.0
+	pkgrel = 2
+	url = https://dist-meta.readthedocs.io/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-domdf-python-tools
+	depends = python-handy-archives
+	depends = python-packaging
+	source = python-dist-meta::git+https://github.com/repo-helper/dist-meta#commit=6036a6fd75717632207677615f16c27da20258e9
+	b2sums = SKIP
+
+pkgname = python-dist-meta
