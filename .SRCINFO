@@ -1,7 +1,7 @@
 pkgbase = python-m2crypto
 	pkgdesc = A crypto and SSL toolkit for Python
 	pkgver = 0.41.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/M2Crypto
 	arch = x86_64
 	license = BSD
