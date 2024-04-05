@@ -1,15 +1,15 @@
 pkgbase = oracle-instantclient-sqlplus
 	pkgdesc = SQL*Plus for Oracle Instant Client
-	pkgver = 21.11.0.0.0
+	pkgver = 21.13.0.0.0
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/database/features/instant-client/
 	arch = x86_64
 	license = custom:OTN
-	depends = oracle-instantclient-basic=21.11.0.0.0
+	depends = oracle-instantclient-basic=21.13.0.0.0
 	replaces = instantclient-sqlplus
 	options = !strip
-	source = https://download.oracle.com/otn_software/linux/instantclient/2111000/instantclient-sqlplus-linux.x64-21.11.0.0.0dbru.zip
-	md5sums = 273877433bb203f2af7e8e4e89b154d5
-	sha256sums = 8a0544db6ce28d41a91693c720422a136684dc5927cea050128c175f385810a7
+	source = https://download.oracle.com/otn_software/linux/instantclient/2113000/instantclient-sqlplus-linux.x64-21.13.0.0.0dbru.zip
+	md5sums = 10066ec4d51d02b9c96be3e48d6696de
+	sha256sums = 65e12ab0232427312bade2e814d4b01e8018bd8027ff950b2504ece3ac1c39b6
 
 pkgname = oracle-instantclient-sqlplus
