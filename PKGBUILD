@@ -3,6 +3,7 @@ pkgname=eporezi
 pkgver=1.2.2_7
 pkgrel=1
 arch=('any')
+url="https://github.com/OpenSerbianEID/ePorezi"
 depends=('java-runtime-openjdk=8')
 optdepends=('safesignidentityclient: for Posta certificates')
 source=("https://github.com/OpenSerbianEID/ePorezi/releases/download/${pkgver/_/-}/ePorezi.zip"

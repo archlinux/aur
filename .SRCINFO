@@ -1,6 +1,7 @@
 pkgbase = eporezi
 	pkgver = 1.2.2_7
 	pkgrel = 1
+	url = https://github.com/OpenSerbianEID/ePorezi
 	arch = any
 	depends = java-runtime-openjdk=8
 	optdepends = safesignidentityclient: for Posta certificates
