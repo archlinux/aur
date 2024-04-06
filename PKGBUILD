@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=awakened-poe-trade-bin
 _pkgname=Awakened-PoE-Trade
-pkgver=3.24.10001
+pkgver=3.24.10002
 _electronversion=28
 pkgrel=1
 pkgdesc="Path of Exile trading app for price checking"
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/SnosMe/awakened-poe-trade/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('910df3c21909ff206f7c89cc417f95e8e58cc82b2a74b05afdb424ed67f0b2e0'
+sha256sums=('89e44162bb6907c1a09c30f2f9f0eec1a9a2c79b32447dcd1b98c4e54a068390'
             '5c8de7f881b34dc31f872531a1eee1eabc79e10acd8fc91c026e10c5a8258c3f'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
