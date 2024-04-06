@@ -3,7 +3,7 @@
 
 pkgname=tree-sitter-typescript-git
 pkgver=0.20.2.r10.g3429d8c
-pkgrel=2
+pkgrel=3
 pkgdesc="TypeScript and TSX grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/tree-sitter/tree-sitter-typescript"
@@ -32,11 +32,11 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname/typescript/src/"
-  cc $CFLAGS -std=c99 -c parser.c scanner.c
+  cc $CFLAGS -I. -std=c99 -c parser.c scanner.c
   cc $LDFLAGS -shared parser.o scanner.o -o "$srcdir/parser-ts.so"
 
   cd "$srcdir/$pkgname/tsx/src/"
-  cc $CFLAGS -std=c99 -c parser.c scanner.c
+  cc $CFLAGS -I. -std=c99 -c parser.c scanner.c
   cc $LDFLAGS -shared parser.o scanner.o -o "$srcdir/parser-tsx.so"
 }
 
