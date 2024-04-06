@@ -45,9 +45,9 @@ package() {
     #Setup
     cd $pkgdir
     mv $srcdir/etc .
-    mv $srcdir/lib .
     mv $srcdir/usr .
+    mv $srcdir/lib ./usr
 
     #Set systemd service file perms
-    chmod 644 $pkgdir/lib/systemd/system/filebeat.service
+    chmod 644 $pkgdir/usr/lib/systemd/system/filebeat.service
 }
