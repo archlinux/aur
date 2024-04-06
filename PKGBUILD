@@ -1,8 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-pkgname=colloid-gtk-theme-git
-pkgver=2023.10.28.r0.g46fa7423
+pkgname=(
+  'colloid-gtk-theme-git'
+  'colloid-dracula-gtk-theme-git'
+  'colloid-nord-gtk-theme-git'
+)
+pkgbase=colloid-gtk-theme-git
+pkgver=2023.10.28.r7.g06da74bb
 pkgrel=1
-pkgdesc="Modern and clean Gtk theme for linux"
+pkgdesc="Gtk theme for Linux"
 arch=('any')
 url="https://github.com/vinceliuice/Colloid-gtk-theme"
 license=('GPL-3.0-or-later')
@@ -22,17 +27,31 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-package() {
+package_colloid-gtk-theme-git() {
   cd Colloid-gtk-theme
   install -d "$pkgdir/usr/share/themes"
   ./install.sh -t all -d "$pkgdir/usr/share/themes"
   ./install.sh -t all -s compact --tweaks normal -d "$pkgdir/usr/share/themes"
 
-  # Nord, Dracula & Gruvbox versions
-  ./install.sh -t all --tweaks all -d "$pkgdir/usr/share/themes"
-  ./install.sh -t all -s compact --tweaks all -d "$pkgdir/usr/share/themes"
-
   # Firefox theme
   install -d "$pkgdir/usr/share/doc/${pkgname%-git}"
   cp -r src/other/firefox "$pkgdir/usr/share/doc/${pkgname%-git}/"
+}
+
+package_colloid-dracula-gtk-theme-git() {
+  pkgdesc="Gtk Dracula theme for Linux"
+
+  cd Colloid-gtk-theme
+  install -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all --tweaks dracula -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all -s compact --tweaks dracula normal -d "$pkgdir/usr/share/themes"
+}
+
+package_colloid-nord-gtk-theme-git() {
+  pkgdesc="Gtk Nord theme for Linux"
+
+  cd Colloid-gtk-theme
+  install -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all --tweaks nord -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all -s compact --tweaks nord normal -d "$pkgdir/usr/share/themes"
 }
