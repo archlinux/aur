@@ -1,7 +1,7 @@
 pkgbase = python-cmsis-pack-manager
 	pkgdesc = A Rust and Python module for handling CMSIS Pack files
 	pkgver = 0.5.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pyocd/cmsis-pack-manager
 	arch = x86_64
 	license = Apache-2.0
