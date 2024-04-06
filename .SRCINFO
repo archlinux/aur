@@ -1,7 +1,7 @@
 pkgbase = phosh-osk-stub
 	pkgdesc = An experimental alternative OSK for phosh
-	pkgver = 0.35.0
-	pkgrel = 3
+	pkgver = 0.38.0
+	pkgrel = 1
 	url = https://gitlab.gnome.org/guidog/phosh-osk-stub
 	install = phosh-osk-stub.install
 	arch = x86_64
@@ -14,13 +14,14 @@ pkgbase = phosh-osk-stub
 	depends = gnome-desktop
 	depends = fzf
 	depends = hunspell
+	depends = wayland-protocols
 	optdepends = presage-git: predictive text entry
 	optdepends = govarnam: transliteration for Indian languages
 	provides = phosh-osk-stub
 	conflicts = phosh-osk-stub
-	source = phosh-osk-stub::git+https://gitlab.gnome.org/guidog/phosh-osk-stub#tag=v0.35.0
+	source = phosh-osk-stub::git+https://gitlab.gnome.org/guidog/phosh-osk-stub#tag=v0.38.0
 	source = phosh-osk-stub.install
-	sha512sums = SKIP
+	sha512sums = aa03bb5a534cce45adef21a99732e9e5f75f535e4dc222572e0eeaac4d61f40de842d674a01b878f9fbd374655a611bf2f505db31c236c43b8fc30a836aa21b8
 	sha512sums = 55ae71c3ba4bf2ccaf017c9a64554ddeda11c8fd67e907941a364869ef44aca97b4eb185a17cd25782c78d7c51151ae952c95f6970333dc4b8a5d691c8112b1c
 
 pkgname = phosh-osk-stub
