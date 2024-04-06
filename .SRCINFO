@@ -1,0 +1,16 @@
+pkgbase = clipton
+	pkgdesc = Clipboard manager based on rofi
+	pkgver = 45
+	pkgrel = 1
+	url = https://github.com/madprops/clipton
+	arch = x86_64
+	license = Unlicense
+	depends = rofi
+	depends = xclip
+	depends = copyevent-git
+	provides = clipton
+	conflicts = clipton-git
+	source = clipton-45.tar.gz::https://github.com/madprops/clipton/archive/refs/tags/v45.tar.gz
+	sha256sums = d2e409192fe3a0d89aa758d2b7a5eba9b07ff5b53d74e988dd402607e2c61114
+
+pkgname = clipton
