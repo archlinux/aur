@@ -1,0 +1,357 @@
+From dac81e7c934ab0f7afaba9e7894e3770c5859b77 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 4 Nov 2023 17:09:15 +0100
+Subject: [PATCH] Replace deprecated assertEquals() with assertEqual() in tests
+
+Replace the calls to the deprecated `assertEquals()` method in tests
+with the modern `assertEqual()`.  This fixes compatibility with
+Python 3.12 where the deprecated aliases were removed.
+---
+ tubes/test/test_fan.py     |  8 ++++----
+ tubes/test/test_framing.py | 20 ++++++++++----------
+ tubes/test/test_routing.py |  2 +-
+ tubes/test/test_tube.py    | 38 +++++++++++++++++++-------------------
+ tubes/test/test_undefer.py | 24 ++++++++++++------------
+ 5 files changed, 46 insertions(+), 46 deletions(-)
+
+diff --git a/tubes/test/test_fan.py b/tubes/test/test_fan.py
+index b685cb4..b9c37c0 100644
+--- a/tubes/test/test_fan.py
++++ b/tubes/test/test_fan.py
+@@ -86,8 +86,8 @@ def test_fanOut(self):
+         fountB.flowTo(fdB)
+         ff.drain.receive("foo")
+ 
+-        self.assertEquals(fdA.received, ["foo"])
+-        self.assertEquals(fdB.received, ["foo"])
++        self.assertEqual(fdA.received, ["foo"])
++        self.assertEqual(fdB.received, ["foo"])
+ 
+ 
+     def test_fanReceivesBeforeFountsHaveDrains(self):
+@@ -106,7 +106,7 @@ def test_fanReceivesBeforeFountsHaveDrains(self):
+         ff.drain.receive("foo")
+ 
+         fount.flowTo(fd)
+-        self.assertEquals(fd.received, [])
++        self.assertEqual(fd.received, [])
+ 
+ 
+     def test_pausingOneOutFountPausesUpstreamFount(self):
+@@ -121,7 +121,7 @@ def test_pausingOneOutFountPausesUpstreamFount(self):
+         ff.flowTo(out.drain)
+ 
+         fount.pauseFlow()
+-        self.assertEquals(ff.flowIsPaused, 1)
++        self.assertEqual(ff.flowIsPaused, 1)
+ 
+ 
+     def test_oneFountPausesInReceive(self):
+diff --git a/tubes/test/test_framing.py b/tubes/test/test_framing.py
+index d49cb34..fda2032 100644
+--- a/tubes/test/test_framing.py
++++ b/tubes/test/test_framing.py
+@@ -27,7 +27,7 @@ def test_stringToNetstring(self):
+         fd = FakeDrain()
+         ff.flowTo(series(bytesToNetstrings())).flowTo(fd)
+         ff.drain.receive(b"hello")
+-        self.assertEquals(
++        self.assertEqual(
+             fd.received, [b"%(len)d:%(data)s," %
+                           {b"len": len(b"hello"), b"data": b"hello"}]
+         )
+@@ -42,7 +42,7 @@ def test_bytesToNetstrings(self):
+         ff.flowTo(series(bytesToNetstrings())).flowTo(fd)
+         ff.drain.receive(b"hello")
+         ff.drain.receive(b"world")
+-        self.assertEquals(
++        self.assertEqual(
+             b"".join(fd.received),
+             b"%(len)d:%(data)s,%(len2)d:%(data2)s," % {
+                 b"len": len(b"hello"), b"data": b"hello",
+@@ -59,7 +59,7 @@ def test_netstringToString(self):
+         fd = FakeDrain()
+         ff.flowTo(series(netstringsToBytes())).flowTo(fd)
+         ff.drain.receive(b"1:x,2:yz,3:")
+-        self.assertEquals(fd.received, [b"x", b"yz"])
++        self.assertEqual(fd.received, [b"x", b"yz"])
+ 
+ 
+ 
+@@ -77,7 +77,7 @@ def splitALine(newline):
+             fd = FakeDrain()
+             ff.flowTo(series(bytesToLines())).flowTo(fd)
+             ff.drain.receive(newline.join([b"alpha", b"beta", b"gamma"]))
+-            self.assertEquals(fd.received, [b"alpha", b"beta"])
++            self.assertEqual(fd.received, [b"alpha", b"beta"])
+         splitALine(b"\n")
+         splitALine(b"\r\n")
+ 
+@@ -91,7 +91,7 @@ def test_linesToBytes(self):
+         ff.flowTo(series(linesToBytes())).flowTo(fd)
+         ff.drain.receive(b"hello")
+         ff.drain.receive(b"world")
+-        self.assertEquals(b"".join(fd.received), b"hello\r\nworld\r\n")
++        self.assertEqual(b"".join(fd.received), b"hello\r\nworld\r\n")
+ 
+ 
+     def test_rawMode(self):
+@@ -125,7 +125,7 @@ def received(self, data):
+         ff.drain.receive(b"hello\r\nworld\r\nswitch 10\r\nabcde\r\nfgh"
+                          # + '\r\nagain\r\n'
+                          )
+-        self.assertEquals(b"".join(Switchee.datums), b"abcde\r\nfgh")
++        self.assertEqual(b"".join(Switchee.datums), b"abcde\r\nfgh")
+ 
+ 
+     def test_switchingWithMoreDataToDeliver(self):
+@@ -148,8 +148,8 @@ def received(self, line):
+         cc = series(lines, Switcher())
+         ff.flowTo(cc).flowTo(fd1)
+         ff.drain.receive(b'something\r\nswitch\r\n7:hello\r\n,5:world,')
+-        self.assertEquals(fd1.received, [b"something"])
+-        self.assertEquals(fd2.received, [b'hello\r\n', b'world'])
++        self.assertEqual(fd1.received, [b"something"])
++        self.assertEqual(fd2.received, [b'hello\r\n', b'world'])
+ 
+ 
+ 
+@@ -167,7 +167,7 @@ def test_prefixIn(self):
+         fd = FakeDrain()
+         ff.flowTo(series(packed)).flowTo(fd)
+         ff.drain.receive(b"\x0812345678\x02")
+-        self.assertEquals(fd.received, [b"12345678"])
++        self.assertEqual(fd.received, [b"12345678"])
+ 
+ 
+     def test_prefixOut(self):
+@@ -181,4 +181,4 @@ def test_prefixOut(self):
+         ff.drain.receive(b'a')
+         ff.drain.receive(b'bc')
+         ff.drain.receive(b'def')
+-        self.assertEquals(fd.received, [b'\x01a', b'\x02bc', b'\x03def'])
++        self.assertEqual(fd.received, [b'\x01a', b'\x02bc', b'\x03def'])
+diff --git a/tubes/test/test_routing.py b/tubes/test/test_routing.py
+index d2fd669..c8ed612 100644
+--- a/tubes/test/test_routing.py
++++ b/tubes/test/test_routing.py
+@@ -89,7 +89,7 @@ def test_specifiedTypeChecking(self):
+         correctFount = FakeFount(Routed(IFakeInput))
+         incorrectFount = FakeFount(Routed(IFakeOutput))
+         self.assertRaises(TypeError, incorrectFount.flowTo, router.drain)
+-        self.assertEquals(None, correctFount.flowTo(router.drain))
++        self.assertEqual(None, correctFount.flowTo(router.drain))
+ 
+ 
+ 
+diff --git a/tubes/test/test_tube.py b/tubes/test/test_tube.py
+index 86ef2a1..a081c6b 100644
+--- a/tubes/test/test_tube.py
++++ b/tubes/test/test_tube.py
+@@ -97,7 +97,7 @@ def test_tubeStarted(self):
+         """
+ 
+         self.ff.flowTo(series(Starter(), self.fd))
+-        self.assertEquals(self.fd.received, ["greeting"])
++        self.assertEqual(self.fd.received, ["greeting"])
+ 
+ 
+     def test_startedFlowingToAnother(self):
+@@ -221,14 +221,14 @@ def stopped(self, reason):
+                 yield "conclusion"
+ 
+         self.ff.flowTo(series(Ender(), self.fd))
+-        self.assertEquals(reasons, [])
+-        self.assertEquals(self.fd.received, [])
++        self.assertEqual(reasons, [])
++        self.assertEqual(self.fd.received, [])
+ 
+         stopReason = Failure(ZeroDivisionError())
+ 
+         self.ff.drain.flowStopped(stopReason)
+-        self.assertEquals(self.fd.received, ["conclusion"])
+-        self.assertEquals(len(reasons), 1)
++        self.assertEqual(self.fd.received, ["conclusion"])
++        self.assertEqual(len(reasons), 1)
+         self.assertIdentical(reasons[0].type, ZeroDivisionError)
+ 
+         self.assertEqual(self.fd.stopped, [stopReason])
+@@ -264,7 +264,7 @@ def received(self, data):
+         self.ff.flowTo(diverter).flowTo(series(Switcher(), fakeDrain))
+         self.ff.drain.receive("switch")
+         self.ff.drain.receive("to switchee")
+-        self.assertEquals(fakeDrain.received, ["switched to switchee"])
++        self.assertEqual(fakeDrain.received, ["switched to switchee"])
+ 
+ 
+     def test_tubeDivertingReassembly(self):
+@@ -467,7 +467,7 @@ def test_flowToNoneInitialNoOp(self):
+         any other invocations of L{_SiphonFount.flowTo}.
+         """
+         siphonFount = self.ff.flowTo(self.siphonDrain)
+-        self.assertEquals(siphonFount.drain, None)
++        self.assertEqual(siphonFount.drain, None)
+         siphonFount.flowTo(None)
+ 
+ 
+@@ -505,7 +505,7 @@ def received(self, data):
+         ff.bufferUp("after")
+         nf = ff.flowTo(firstDrain)
+         nf.flowTo(fakeDrain)
+-        self.assertEquals(self.fd.received, ["before", "switched after"])
++        self.assertEqual(self.fd.received, ["before", "switched after"])
+ 
+ 
+     def test_tubeDiverting_LotsOfStuffAtOnce(self):
+@@ -548,7 +548,7 @@ def received(self, data):
+ 
+         self.ff.flowTo(firstDrain).flowTo(fakeDrain)
+         self.ff.drain.receive(["before", "switch", "after"])
+-        self.assertEquals(self.fd.received, ["before", "switched after"])
++        self.assertEqual(self.fd.received, ["before", "switched after"])
+ 
+ 
+     def test_flowingFromFirst(self):
+@@ -610,7 +610,7 @@ def test_receiveIterableDeliversDownstream(self):
+         """
+         self.ff.flowTo(series(PassthruTube())).flowTo(self.fd)
+         self.ff.drain.receive(7)
+-        self.assertEquals(self.fd.received, [7])
++        self.assertEqual(self.fd.received, [7])
+ 
+ 
+     def test_receiveCallsTubeReceived(self):
+@@ -619,7 +619,7 @@ def test_receiveCallsTubeReceived(self):
+         tube.
+         """
+         self.siphonDrain.receive("one-item")
+-        self.assertEquals(self.tube.allReceivedItems, ["one-item"])
++        self.assertEqual(self.tube.allReceivedItems, ["one-item"])
+ 
+ 
+     def test_flowToWillNotResumeFlowPausedInFlowingFrom(self):
+@@ -742,9 +742,9 @@ def test_stopFlow(self):
+         fount.
+         """
+         self.ff.flowTo(series(self.siphonDrain, self.fd))
+-        self.assertEquals(self.ff.flowIsStopped, False)
++        self.assertEqual(self.ff.flowIsStopped, False)
+         self.fd.fount.stopFlow()
+-        self.assertEquals(self.ff.flowIsStopped, True)
++        self.assertEqual(self.ff.flowIsStopped, True)
+ 
+ 
+     def test_stopFlowInterruptsStarted(self):
+@@ -813,7 +813,7 @@ def test_stopFlowBeforeFlowBegins(self):
+         partially = series(self.siphonDrain, self.fd)
+         self.fd.fount.stopFlow()
+         self.ff.flowTo(partially)
+-        self.assertEquals(self.ff.flowIsStopped, True)
++        self.assertEqual(self.ff.flowIsStopped, True)
+ 
+ 
+     def test_stopFlowWhileStartingFlow(self):
+@@ -897,9 +897,9 @@ def started(self):
+         siphonDrain = series(UnstartableTube(), fd)
+         ff.flowTo(siphonDrain)
+         errors = self.flushLoggedErrors(ZeroDivisionError)
+-        self.assertEquals(len(errors), 1)
+-        self.assertEquals(ff.flowIsStopped, True)
+-        self.assertEquals(fd.stopped[0].type, ZeroDivisionError)
++        self.assertEqual(len(errors), 1)
++        self.assertEqual(ff.flowIsStopped, True)
++        self.assertEqual(fd.stopped[0].type, ZeroDivisionError)
+ 
+ 
+     def test_startedRaisesNoDrain(self):
+@@ -917,8 +917,8 @@ def started(self):
+         siphonDrain = series(UnstartableTube())
+         ff.flowTo(siphonDrain)
+         errors = self.flushLoggedErrors(ZeroDivisionError)
+-        self.assertEquals(len(errors), 1)
+-        self.assertEquals(ff.flowIsStopped, True)
++        self.assertEqual(len(errors), 1)
++        self.assertEqual(ff.flowIsStopped, True)
+ 
+ 
+ 
+diff --git a/tubes/test/test_undefer.py b/tubes/test/test_undefer.py
+index 701420b..9b105f6 100644
+--- a/tubes/test/test_undefer.py
++++ b/tubes/test/test_undefer.py
+@@ -43,7 +43,7 @@ def received(self, data):
+         self.ff.flowTo(series(SucceedingTube(),
+                               deferredToResult())).flowTo(fakeDrain)
+         self.ff.drain.receive("hello")
+-        self.assertEquals(self.fd.received, ["olleh"])
++        self.assertEqual(self.fd.received, ["olleh"])
+ 
+ 
+     def test_tubeYieldsUnfiredDeferred(self):
+@@ -63,11 +63,11 @@ def received(self, data):
+         self.ff.flowTo(series(WaitingTube(),
+                               deferredToResult())).flowTo(fakeDrain)
+         self.ff.drain.receive("ignored")
+-        self.assertEquals(self.fd.received, [])
++        self.assertEqual(self.fd.received, [])
+ 
+         d.callback("hello")
+ 
+-        self.assertEquals(self.fd.received, ["hello"])
++        self.assertEqual(self.fd.received, ["hello"])
+ 
+ 
+     def test_tubeYieldsMultipleDeferreds(self):
+@@ -90,11 +90,11 @@ def received(self, data):
+         self.ff.flowTo(series(MultiDeferredTube(),
+                               deferredToResult())).flowTo(fakeDrain)
+         self.ff.drain.receive("ignored")
+-        self.assertEquals(self.fd.received, [])
++        self.assertEqual(self.fd.received, [])
+ 
+         d.callback("hello")
+ 
+-        self.assertEquals(self.fd.received, ["hello", "goodbye"])
++        self.assertEqual(self.fd.received, ["hello", "goodbye"])
+ 
+ 
+     def test_tubeYieldedDeferredFiresWhileFlowIsPaused(self):
+@@ -118,10 +118,10 @@ def received(self, data):
+         anPause = self.fd.fount.pauseFlow()
+ 
+         d.callback("hello")
+-        self.assertEquals(self.fd.received, [])
++        self.assertEqual(self.fd.received, [])
+ 
+         anPause.unpause()
+-        self.assertEquals(self.fd.received, ["hello"])
++        self.assertEqual(self.fd.received, ["hello"])
+ 
+ 
+     def test_tubeStoppedDeferredly(self):
+@@ -139,20 +139,20 @@ def stopped(self, reason):
+                 yield conclusion
+ 
+         self.ff.flowTo(series(SlowEnder(), deferredToResult(), self.fd))
+-        self.assertEquals(reasons, [])
+-        self.assertEquals(self.fd.received, [])
++        self.assertEqual(reasons, [])
++        self.assertEqual(self.fd.received, [])
+ 
+         stopReason = Failure(ZeroDivisionError())
+ 
+         self.ff.drain.flowStopped(stopReason)
+-        self.assertEquals(self.fd.received, [])
+-        self.assertEquals(len(reasons), 1)
++        self.assertEqual(self.fd.received, [])
++        self.assertEqual(len(reasons), 1)
+         self.assertIdentical(reasons[0].type, ZeroDivisionError)
+         self.assertEqual(self.fd.stopped, [])
+ 
+         conclusion.callback("conclusion")
+         # Now it's really done.
+-        self.assertEquals(self.fd.received, ["conclusion"])
++        self.assertEqual(self.fd.received, ["conclusion"])
+         self.assertEqual(self.fd.stopped, [stopReason])
+ 
+ 
