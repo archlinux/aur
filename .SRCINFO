@@ -1,6 +1,6 @@
 pkgbase = mate-wayland-session-git
 	pkgver = 1.28.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mate-desktop/mate-desktop
 	install = matewayland.install
 	arch = x86_64

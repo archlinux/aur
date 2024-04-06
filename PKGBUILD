@@ -4,7 +4,7 @@ pkgbase=mate-wayland-session-git
 _srcname=mate-wayland-session
 install=matewayland.install
 pkgver=1.28.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/mate-desktop/mate-desktop"
 license=('GNU GENERAL PUBLIC LICENSE Version 2')
@@ -44,7 +44,7 @@ package() {
 	cd "${srcdir}/${_srcname}"
 	echo -e "${BYELLOW}Now ${BGREEN}Fixing/Patching${BYELLOW} packaging parameters..${NOCOLOR}"
 	bindir=${pkgdir}/usr
-	datadir=${pkgdir}/usr/share/wayland-sessions
+	datadir=${pkgdir}/usr/share/
 	sed -i "s/\${exec_prefix}/${bindir//\//\\/}/g" "${srcdir}/${_srcname}/session/Makefile"
 	sed -i "s/\${datarootdir}/${datadir//\//\\/}/g" "${srcdir}/${_srcname}/session/Makefile"
 	sed -i "s/\${datarootdir}/${datadir//\//\\/}/g" "${srcdir}/${_srcname}/data/mate/Makefile"
