@@ -1,0 +1,17 @@
+pkgbase = alpine-build-base
+	pkgdesc = Meta package for build base (Alpine Linux)
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://dev.alpinelinux.org/cgit
+	arch = any
+	license = MIT
+	depends = binutils
+	depends = file
+	depends = gcc
+	depends = make
+	depends = musl
+	depends = fortify-headers
+	depends = patch
+	options = !debug
+
+pkgname = alpine-build-base
