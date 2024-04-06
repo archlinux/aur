@@ -14,9 +14,6 @@ depends=(
     'gdk-pixbuf2'
     'webkit2gtk'
 )
-makedepends=(
-    'gendesk'
-)
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
 )

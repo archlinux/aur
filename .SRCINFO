@@ -5,7 +5,6 @@ pkgbase = keyopen-bin
 	url = https://github.com/iewnfod/keyopen
 	arch = x86_64
 	license = MPL-2.0
-	makedepends = gendesk
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk
