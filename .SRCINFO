@@ -21,7 +21,7 @@ pkgbase = previewqt
 	depends = resvg
 	optdepends = libqpsd-git: PSB/PSD support
 	optdepends = xcftools: XCF support
-	source = https://photoqt.org/downloads/previewqt/source/previewqt-2.0.tar.gz
-	sha256sums = 025b6ec0f95f15e069922baac7354c2151450de007ccfa25f9d2d920a0f792f3
+	source = https://previewqt.org/downloads/source/previewqt-2.0.tar.gz
+	sha256sums = 4773c916a10e73e2437f59068e9355a687cfad87f0d8b80daed2055a488a7738
 
 pkgname = previewqt

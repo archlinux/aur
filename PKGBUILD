@@ -11,8 +11,8 @@ depends=('exiv2' 'imagemagick' 'qt6-imageformats' 'qt6-multimedia' 'qt6-svg' 'qt
 optdepends=('libqpsd-git: PSB/PSD support'
             'xcftools: XCF support')
 makedepends=('cmake' 'qt6-tools' 'extra-cmake-modules')
-source=(https://photoqt.org/downloads/previewqt/source/$pkgname-$pkgver.tar.gz)
-sha256sums=('025b6ec0f95f15e069922baac7354c2151450de007ccfa25f9d2d920a0f792f3')
+source=(https://previewqt.org/downloads/source/$pkgname-$pkgver.tar.gz)
+sha256sums=('4773c916a10e73e2437f59068e9355a687cfad87f0d8b80daed2055a488a7738')
 
 # NOTE
 # To use GraphicsMagick instead of ImageMagick replace it in the depends array above and change
@@ -24,7 +24,7 @@ sha256sums=('025b6ec0f95f15e069922baac7354c2151450de007ccfa25f9d2d920a0f792f3')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DFREEIMAGE=OFF -DDEVIL=OFF -DPOPPLER=OFF -DQTPDF=ON -DIMAGEMAGICK=ON -DGRAPHICSMAGICK=OFF -DLIBVIPS=OFF -DVIDEO_MPV=OFF -DRESVG=ON -DCMAKE_BUILD_TYPE=Release
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DFREEIMAGE=OFF -DDEVIL=OFF -DPOPPLER=OFF -DQTPDF=ON -DIMAGEMAGICK=ON -DGRAPHICSMAGICK=OFF -DLIBVIPS=OFF -DVIDEO_MPV=OFF -DRESVG=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PREVIEWQT_REMOTE=OFF
 }
 
 build() {
