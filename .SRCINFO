@@ -1,0 +1,15 @@
+pkgbase = llp
+	pkgdesc = a filesystem pattern locator program
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://codeberg.org/cyber-luna/llp
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = 
+	source = git+https://codeberg.org/cyber-luna/llp
+	sha256sums = SKIP
+
+pkgname = llp
