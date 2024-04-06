@@ -28,6 +28,7 @@ pkgbase = vmware-workstation12
 	conflicts = vmware-systemd-services
 	options = !strip
 	options = emptydirs
+	options = !debug
 	backup = etc/vmware/config
 	backup = etc/vmware/hostd/authorization.xml
 	backup = etc/vmware/hostd/config.xml
