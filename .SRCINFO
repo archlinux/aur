@@ -1,0 +1,15 @@
+pkgbase = go-hass-agent-bin
+	pkgdesc = A Home Assistant， native app integration for desktop/laptop devices.
+	pkgver = 7.2.0
+	pkgrel = 1
+	url = https://github.com/joshuar/go-hass-agent
+	arch = x86_64
+	license = MIT
+	depends = libx11
+	depends = libglvnd
+	provides = go-hass-agent=7.2.0
+	conflicts = go-hass-agent
+	source = go-hass-agent-7.2.0.pkg.tar.zst::https://github.com/joshuar/go-hass-agent/releases/download/v7.2.0/go-hass-agent-7.2.0-1-x86_64.pkg.tar.zst
+	sha256sums = e8d06c3cdb97abc81aed23aa9603e4345c2c5a206973f537792f967936576d8c
+
+pkgname = go-hass-agent-bin
