@@ -1,7 +1,7 @@
 # Maintainer: Takase <takase1121 at proton dot me>
 
 pkgname=superderper
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 
 pkgdesc='superderper allows derper to admit clients from multiple tailnets.'
@@ -17,7 +17,7 @@ backup=('etc/default/tailscaled-derper'
 options=(!lto)
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/takase1121/superderper/archive/v$pkgver.tar.gz")
-sha256sums=('1b71e59414c2be31ff515ff1ccaebbf9fc491320195d14ca3596c23a5f087fe3')
+sha256sums=('edb8a65846f7584d4c5e394ca531fe08bd8524526ebe19cdb64572e1ed391f29')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
