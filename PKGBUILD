@@ -2,8 +2,8 @@
 pkgname=chinesechesscontrol-bin
 _pkgname=ChineseChessControl
 _appname="org.Rabbit.${_pkgname%Control}"
-pkgver=2.0.11
-pkgrel=6
+pkgver=2.0.13
+pkgrel=1
 pkgdesc="中国象棋控件,包括中国象棋 MFC 扩展库，中国象棋 activex 控件,中国象棋Qt插件,人工智能引擎等"
 arch=("x86_64")
 url="https://github.com/KangLin/ChineseChessControl"
@@ -12,16 +12,17 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'openssl'
-    'qt5-multimedia'
-    'qt5-base'
-    'qt5-webengine'
+    'qt6-multimedia'
+    'qt6-base'
+    'qt6-webengine'
+    'qt6-scxml'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_v${pkgver}_Linux_${CARCH}_setup.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('af81a3bc853c3d5a26ba1ef6b23a25f0c65ce7fca5affe66ee8619b66c796bf6'
-            '2d6271c4c4b0d253f37859ce68bf536bf1ce1a807e114ef69257b6082a8785bd')
+sha256sums=('16009e75c9ff725c200a34f967132ab585584f315983358bcbf6fe9a8425ad57'
+            '96c37f05372089426509db8433a256ca8ab2fc18a27625b7db9063beb79ab4aa')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|ChineseChessApp-v${pkgver}|g" \
