@@ -1,6 +1,6 @@
 pkgbase = helm-ls
 	pkgdesc = Language server for Helm
-	pkgver = 0.0.10
+	pkgver = 0.0.14
 	pkgrel = 1
 	url = https://github.com/mrjosh/helm-ls
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = helm-ls
 	makedepends = go
 	depends = glibc
 	provides = helm-ls
-	source = helm-ls-0.0.10.tar.gz::https://github.com/mrjosh/helm-ls/archive/v0.0.10.tar.gz
-	sha256sums = 4674a2d22fcfe3e4d2dd92d35b143c4584b7ee3c30c20b42cc5518ec2562c69e
+	source = helm-ls-0.0.14.tar.gz::https://github.com/mrjosh/helm-ls/archive/v0.0.14.tar.gz
+	sha256sums = 8df2cd5eeaf21e046bcab843d8fc280d355c65627ca1d084486b986a2114fa94
 
 pkgname = helm-ls
