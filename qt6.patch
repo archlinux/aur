@@ -24,3 +24,14 @@
  
          if ret.returncode != 0:
              return None
+--- a/configure
++++ b/configure
+@@ -61836,7 +61836,7 @@
+ 
+             { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if contribs provide qmake" >&5
+ printf %s "checking if contribs provide qmake... " >&6; }
+-      if test -x "${CONTRIB_DIR}/../bin/qmake${BUILDEXEEXT}"
++      if [ ! -z ${CONTRIB_DIR} ] && [ test -x "${CONTRIB_DIR}/../bin/qmake${BUILDEXEEXT}" ]
+ then :
+ 
+         QMAKE="${CONTRIB_DIR}/../bin/qmake${BUILDEXEEXT}"
