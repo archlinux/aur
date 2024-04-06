@@ -1,0 +1,18 @@
+pkgbase = desmume-highscore-git
+	pkgdesc = Highscore port of DeSmuME
+	pkgver = r6810.1907daed
+	pkgrel = 1
+	url = https://github.com/alice-mkh/desmume
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = meson
+	depends = libhighscore-git
+	depends = libpcap
+	depends = sdl2
+	provides = desmume-highscore
+	conflicts = desmume-highscore
+	source = git+https://github.com/alice-mkh/desmume.git
+	sha256sums = SKIP
+
+pkgname = desmume-highscore-git
