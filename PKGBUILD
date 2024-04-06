@@ -1,3 +1,4 @@
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mednafen-highscore-git
 pkgver=r19.af13095
 pkgrel=1
