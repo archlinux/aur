@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index d6b608c..357d428 100644
+index d6b608c..948436c 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -24,7 +24,10 @@ set(CMAKE_BUILD_RPATH_USE_ORIGIN ON)
@@ -14,6 +14,19 @@ index d6b608c..357d428 100644
  
  get_target_property(QT_QTPATHS_EXECUTABLE Qt6::qtpaths IMPORTED_LOCATION)
  
+@@ -50,8 +53,10 @@ if(Qt6LinguistTools_FOUND)
+     endif()
+ endif()
+ 
+-#execute_process(COMMAND ${QT_QTPATHS_EXECUTABLE} -query QT_INSTALL_PLUGINS OUTPUT_VARIABLE PLUGINDIR OUTPUT_STRIP_TRAILING_WHITESPACE)
+-execute_process(COMMAND ${QT_QTPATHS_EXECUTABLE} --plugin-dir OUTPUT_VARIABLE PLUGINDIR OUTPUT_STRIP_TRAILING_WHITESPACE)
++if(NOT PLUGINDIR)
++    #execute_process(COMMAND ${QT_QTPATHS_EXECUTABLE} -query QT_INSTALL_PLUGINS OUTPUT_VARIABLE PLUGINDIR OUTPUT_STRIP_TRAILING_WHITESPACE)
++    execute_process(COMMAND ${QT_QTPATHS_EXECUTABLE} --plugin-dir OUTPUT_VARIABLE PLUGINDIR OUTPUT_STRIP_TRAILING_WHITESPACE)
++endif()
+ 
+ if(PLUGINDIR)
+    message(STATUS "Plugin path: ${PLUGINDIR}")
 diff --git a/src/qt6ct-common/qt6ct.cpp b/src/qt6ct-common/qt6ct.cpp
 index d97d4c7..b2443cf 100644
 --- a/src/qt6ct-common/qt6ct.cpp
@@ -38,7 +51,7 @@ index c3d7498..0c78445 100644
 +target_link_libraries(qt6ct-qtplugin PRIVATE Qt6::Widgets Qt6::GuiPrivate Qt6::QuickControls2 KF6::ConfigCore KF6::ColorScheme KF6::IconThemes qt6ct-common)
  install(TARGETS qt6ct-qtplugin DESTINATION ${PLUGINDIR}/platformthemes)
 diff --git a/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp b/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
-index 1d13faf..2747c35 100644
+index 1d13faf..c6671b5 100644
 --- a/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
 +++ b/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
 @@ -44,6 +44,7 @@
@@ -66,7 +79,7 @@ index 1d13faf..2747c35 100644
  #endif
          QGuiApplication::setFont(m_generalFont);
 +        //don't override the value explicitly set by the user
-+        if (QQuickStyle::name().isEmpty()) {
++        if (QQuickStyle::name().isEmpty() || QQuickStyle::name() == QLatin1String("Fusion")) {
 +            QQuickStyle::setStyle(QLatin1String("org.kde.desktop"));
 +        }
      }
