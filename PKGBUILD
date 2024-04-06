@@ -1,6 +1,6 @@
 # Maintainer: Sainan <sainan@calamity.gg>
 pkgname=plutolang
-pkgdesc="A superset of Lua 5.4 — with unique features, optimizations, and improvements."
+pkgdesc="A superset of Lua 5.4 with a focus on general-purpose programming."
 pkgver=0.9.0
 pkgrel=1
 url='https://github.com/PlutoLang/Pluto'
