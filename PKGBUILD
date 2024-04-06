@@ -1,6 +1,6 @@
 pkgname=jazzjackrabbit2
 _pkgname=JazzJackrabbit2
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Jazz Jackrabbit 2 game powered by the jazz2."
 arch=('x86_64' 'aarch64')

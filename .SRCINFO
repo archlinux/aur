@@ -1,6 +1,6 @@
 pkgbase = jazzjackrabbit2
 	pkgdesc = Jazz Jackrabbit 2 game powered by the jazz2.
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://gitlab.com/jazzproject
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = jazzjackrabbit2
 	depends = wget
 	depends = unzip
 	depends = yad
-	source = https://gitlab.com/jazzproject/jazzjackrabbit2/jazz2/-/archive/1.0.2/jazz2-1.0.2.tar.bz2
+	source = https://gitlab.com/jazzproject/jazzjackrabbit2/jazz2/-/archive/1.0.3/jazz2-1.0.3.tar.bz2
 	sha256sums = SKIP
 
 pkgname = jazzjackrabbit2
