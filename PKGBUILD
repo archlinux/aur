@@ -3,12 +3,12 @@
 _pkgname=TypeInfo
 _pkgver=1.68.0
 pkgname=r-${_pkgname,,}
-pkgver=1.68.0
-pkgrel=1
-pkgdesc='Optional Type Specification Prototype'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('BSD')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Optional Type Specification Prototype"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('BSD-2-Clause')
 depends=(
   r
 )
@@ -16,14 +16,18 @@ optdepends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fa05cc4a02beb5c76294af5b9d311513aef63b06d6300cbda940c579224c49e4')
+md5sums=('a2c4ab8a27a1d9c5a463a18cd0e37356')
+b2sums=('c90020ceaccf86d00cc4087f779042db3574e3e5ed02621fec3d727f203d99d0765821cbf3be88422794562ebdefce35cdd636d89a76f1f56022b64d7d11f28b')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
