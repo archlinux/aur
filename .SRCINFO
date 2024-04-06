@@ -1,6 +1,6 @@
 pkgbase = cinematic-git
 	pkgdesc = Gorgeous desktop movie collections
-	pkgver = 3.r0.g47a94c3
+	pkgver = 3.r9.g174f075
 	pkgrel = 1
 	url = http://gh.lacymorrow.com/cinematic/
 	arch = any
