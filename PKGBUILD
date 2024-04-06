@@ -8,10 +8,10 @@
 # Contributor: wxt1221 <3264117476@qq.com>
 pkgname=bilibili-bin
 _pkgname="io.github.msojocs.${pkgname%-bin}"
-pkgver=1.13.0_2
+pkgver=1.13.2_1
 _electronversion=21
 epoch=5
-pkgrel=2
+pkgrel=1
 pkgdesc='哔哩哔哩官方客户端linux移植版。Bilibili official desktop client'
 arch=(
     'aarch64'
@@ -31,15 +31,15 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468'
-            '21c4d48798f22280ced9cf05e6bcbcc57c24f0952262a128c3bad0e73ba433f4')
-sha256sums_aarch64=('779c0e60c75377bf3decf5219b1b77827509359d05fb4a4e5fbf4db76ae207d6')
-sha256sums_x86_64=('b2f4c3f18641163d0af7fde08288e21fef1c311902c47aff8474c2db834bdad1')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums_aarch64=('beef17931cbc34f451116557c84ce25bafdc6269954e477a3678b2e65335f60e')
+sha256sums_x86_64=('caa81036c4c3e224f9e0b25811b57a764ece0fb2a866f5fad57111610e0cb120')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/apps/${_pkgname}/files/bin//bin/${pkgname%-bin}|${pkgname%-bin}|g;s|${_pkgname}|${pkgname%-bin}|g" \
         -i "${srcdir}/opt/apps/${_pkgname}/entries/applications/${_pkgname}.desktop"
 }
