@@ -1,12 +1,15 @@
 pkgbase = crawley
 	pkgdesc = Simple web scraper
 	pkgver = 1.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/s0rg/crawley
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
+	provides = crawley
+	conflicts = crawley-bin
+	conflicts = crawley-git
 	source = crawley-1.7.5.tar.gz::https://github.com/s0rg/crawley/archive/v1.7.5.tar.gz
 	sha512sums = c309bc8a0787f58662bf222660387e698061082bd31be4198c42a7e21e98b3e8dca9c8f852398c4e775a4c857847282ac170ca775d66e02c830a02d3fb59571a
 
