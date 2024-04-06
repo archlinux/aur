@@ -1,7 +1,7 @@
 pkgbase = android-x86-libice
 	pkgdesc = X11 Inter-Client Exchange library (Android x86)
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xorg.freedesktop.org/
 	arch = any
 	license = custom

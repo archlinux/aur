@@ -7,7 +7,7 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-libice
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="X11 Inter-Client Exchange library (Android ${_android_arch})"
 url="https://xorg.freedesktop.org/"
@@ -27,7 +27,7 @@ build() {
     source android-env ${_android_arch}
 
     android-${_android_arch}-configure \
-        --sysconfdir=/etc
+        --sysconfdir="${ANDROID_PREFIX_ETC}"
     make $MAKEFLAGS
 }
 
