@@ -1,0 +1,18 @@
+pkgbase = android-aarch64-libyuv
+	pkgdesc = Library for YUV scaling (Android aarch64)
+	pkgver = r2426+464c51a0
+	pkgrel = 1
+	url = https://chromium.googlesource.com/libyuv/libyuv/
+	arch = any
+	license = custom
+	makedepends = android-cmake
+	makedepends = git
+	depends = android-aarch64-libjpeg
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = git+https://chromium.googlesource.com/libyuv/libyuv/#commit=464c51a0353c71f08fe45f683d6a97a638d47833
+	sha512sums = SKIP
+
+pkgname = android-aarch64-libyuv
