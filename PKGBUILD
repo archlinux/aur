@@ -1,10 +1,10 @@
 # Maintainer: Alexander Daum <alexander.daum at mailbox dot org>
 
 pkgname='fantasia-archive-appimage'
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc='A database manager for world building'
-url='https://github.com/Elvanos/fantasia-archive'
+url='https://github.com/Elvanos/fantasia-archive-v1'
 basename="Fantasia.Archive-${pkgver}-linux-appimage"
 zipname="${basename}.zip"
 appimgname="${basename}.AppImage"
@@ -23,7 +23,7 @@ source=(
     "https://github.com/Elvanos/fantasia-archive/releases/download/v${pkgver}/${zipname}"
 )
 sha512sums=(
-    '9997cd857bad1523cd04d91a06c1ad2ff725f0037365fafa7135b7c16e77116897de21a3b09236314a97ad398baa9538948ae2daca9ddace42c06d1369dad4c7'
+    '5de6637012337a9799e327d244824e5352271b760f329a4dff040be6effce1b25efff93442e60b8cfdf27563829ae90e9e8198e824e5a5a0fa7593ca1d139cd0'
 )
 arch=(
     'x86_64'
