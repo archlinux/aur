@@ -6,7 +6,7 @@ _pname=${pkgbase#python-}
 _pyname=${_pname}
 pkgname=("python-${_pname}")
 #"python-${_pname}-doc")
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="ASDF serialization support for astropy"
 arch=('any')
@@ -28,7 +28,7 @@ checkdepends=('python-pytest-astropy-header'
               'python-scipy'
               'python-asdf_coordinates_schemas')   # 'python-asdf' 'python-astropy' by sphinx-asdf
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('93ae9920bab7ea5afa162777a1a0eaf6')
+md5sums=('8253b50b7f61bd43ed61283cdaa73263')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
