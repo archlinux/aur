@@ -35,9 +35,9 @@ pkgbase = gnome-shell-performance
 	depends = mutter
 	depends = unzip
 	depends = upower
-	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=0463511457612ca87f7426b3b01356d1d85bee9b
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=e4f2edf9bd56fa7a4af40a3959bbfb6359089b19
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
-	b2sums = 8684414294c781bd02f89eb76ae04a51a701c51e00966f227989c0a41d161f34e4bfb7e9609f0a902a565aa4ea22f9d9c740d043b668bc132ed6d7471b8d7119
+	b2sums = dfc8fc012cfdafaf4f7dc1a14c52885caf9178c2c41202fe6ae57c9e0a0f922c633d13a81b3403f83672a28cd84f635739e73792c7b266dc2ba0142b116c0d17
 	b2sums = SKIP
 
 pkgname = gnome-shell-performance
