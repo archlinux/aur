@@ -1,8 +1,8 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=python-litestar
 _pkgname=${pkgname#python-}
-pkgver=2.7.1
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Production-ready, Light, Flexible and Extensible ASGI API framework"
 arch=(any)
@@ -93,22 +93,10 @@ optdepends=(
   'python-redis: Redis store'
   'python-sqlalchemy: SQLAlchemy integration'
 )
-source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-  "0001-test-Replace-dependency-pytest-lazy-fixture.patch"
-)
-sha256sums=(
-  'ca4659b1695f5f007f02081ae9963e0838b19ad97779708cda8cb48f2481ba8f'
-  'a8f0d355791c14c17ee0d6bfe85341cffd2e699b997d4636acb0e13dd67b31dc'
-)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('ea3fe7f841f495925c25e919629754398039cc34325ef19b54d24a2f8020b87b')
 
 _archive="$_pkgname-$pkgver"
-
-prepare() {
-  cd "$_archive"
-
-  patch --forward --strip=1 --input="$srcdir/0001-test-Replace-dependency-pytest-lazy-fixture.patch"
-}
 
 build() {
   cd "$_archive"
