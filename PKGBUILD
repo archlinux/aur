@@ -1,3 +1,4 @@
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=bsnes-highscore-git
 pkgver=r3019.1ae043e3
 pkgrel=1
