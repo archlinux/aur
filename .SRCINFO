@@ -1,7 +1,7 @@
 pkgbase = zui-bin
 	pkgdesc = A powerful desktop application for exploring and working with data. The official front-end to the Zed lake.
-	pkgver = 1.6.0
-	pkgrel = 3
+	pkgver = 1.7.0
+	pkgrel = 1
 	url = https://www.brimdata.io/
 	arch = x86_64
 	license = BSD-3-Clause
@@ -11,12 +11,12 @@ pkgbase = zui-bin
 	depends = nss
 	depends = nspr
 	depends = libsecret
-	provides = zui=1.6.0
+	provides = zui=1.7.0
 	conflicts = zui
-	source = zui-1.6.0.deb::https://github.com/brimdata/zui/releases/download/v1.6.0/zui_1.6.0_amd64.deb
-	source = LICENSE-1.6.0.txt::https://raw.githubusercontent.com/brimdata/zui/v1.6.0/apps/zui/LICENSE.txt
+	source = zui-1.7.0.deb::https://github.com/brimdata/zui/releases/download/v1.7.0/zui_1.7.0_amd64.deb
+	source = LICENSE-1.7.0.txt::https://raw.githubusercontent.com/brimdata/zui/v1.7.0/apps/zui/LICENSE.txt
 	source = zui.sh
-	sha256sums = c857fae016a2f2c8e8d7af37e2f14cb1e1687e2db085ff5aa148561732b293dc
+	sha256sums = 33c4c1e6f24e5a36f9bb5996986174520a1128aa37ad4a6eb0c9be1a06573ad6
 	sha256sums = e3d24db419fcb44a1dab91f351b8203e74e8501ea11c4be82ad3cc05070cad9f
 	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
