@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://intiface.com/central/"
 license=('GPL-3.0-only')
 depends=('gtk3' 'openssl' 'bash' 'hicolor-icon-theme')
-makedepends=('rust' 'flutter' 'cmake' 'ninja')
+makedepends=('rust' 'flutter-tool' 'flutter-target-linux' 'cmake' 'ninja')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/intiface/intiface-central/archive/refs/tags/v$pkgver.tar.gz" "intiface-engine-flutter-bridge-license.md::https://raw.githubusercontent.com/intiface/$pkgname/v$pkgver/intiface-engine-flutter-bridge/LICENSE.md" 'intiface_central.desktop' 'run_intiface_central')
 sha512sums=('b34be496b653bea69ec421ee7af23670da0a43fbea3c069009da23cb770c658831984ce25ed7e86b6fc572a768e87eb4fad5151667c795d0ef372b874a4b665a'
   'f8ea2b3c07735021cd574e868f8433ed378049dbe42346d04c7488a62c28b267fdac04ce8a93ad9b01d1dc5fb7c32e6bbc5a35d1c03a84f440938d84b998853d'
@@ -17,9 +17,9 @@ sha512sums=('b34be496b653bea69ec421ee7af23670da0a43fbea3c069009da23cb770c6588319
   'c12f219a3de9b1587473c56bf999a0320980c9e4c9dcffa0b656fd82e1bd33e110054b52f6f6cade9815e222041f021c82ab8f0729bf21f75545b5d3fa096e32'
 )
 
-prepare() {
-    flutter config --enable-linux-desktop
-}
+#prepare() {
+    # flutter config --enable-linux-desktop
+# }
 
 build() {
     cd "$pkgname-$pkgver"
