@@ -1,13 +1,13 @@
 # Maintainer: Axel McLaren <scm(at)axml(dot)uk>
 
 pkgname="clipton"
-pkgdesc="Clipboard manager based on rofi"
+pkgdesc="Clipboard manager with a Rofi frontend"
 pkgver=45
-pkgrel=1
+pkgrel=2
 arch=("x86_64")
 url="https://github.com/madprops/clipton"
 license=("Unlicense")
-depends=("rofi" "xclip" "copyevent-git")
+depends=("rofi" "xclip")
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz)
