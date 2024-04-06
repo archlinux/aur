@@ -4,8 +4,8 @@
 # Contributor: aksr <aksr at t-com dot me>
 
 pkgname=pyradio-git
-pkgver=0.9.2.21.r0.g7e41359
-pkgrel=2
+pkgver=0.9.3.1
+pkgrel=1
 pkgdesc="Internet radio player for the command line"
 arch=('any')
 url="http://www.coderholic.com/pyradio/"
