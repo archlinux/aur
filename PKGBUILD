@@ -8,12 +8,12 @@ license=('GPL3')
 options=('!strip')
 pkgdesc="Media Preservation Frontend for Aaru and Redumper in C# (CLI Version)"
 provides=('mpf-check')
-pkgver=3.1.4
+pkgver=3.1.5
 pkgrel=1
-source=('https://github.com/SabreTools/MPF/releases/download/3.1.4/MPF.Check_3.1.4_net8.0_linux-x64_release.zip'
+source=('https://github.com/SabreTools/MPF/releases/download/3.1.5/MPF.Check_3.1.5_net8.0_linux-x64_release.zip'
 'https://raw.githubusercontent.com/SabreTools/MPF/master/README.md'
 'https://raw.githubusercontent.com/SabreTools/MPF/master/LICENSE')
-sha256sums=('2e73ff501ad1a80e4c3d63b838f34c6e09e8254e4ed3e1011a7c2ac7bd381afa'
+sha256sums=('8593ab111ed7a6debf034d9fda6a5441cb6ce1fe925e9eaf0b9a7ffc27e824ab'
 'SKIP'
 'SKIP')
 
@@ -25,6 +25,10 @@ package() {
 		${pkgdir}/usr/lib/${_prgname}/MPF.Check.dll.config
 	install -Dm 644 ${srcdir}/CascLib.dll \
 		${pkgdir}/usr/lib/${_prgname}/CascLib.dll
+	install -Dm 644 ${srcdir}/libAaru.Checksums.Native.so \
+		${pkgdir}/usr/lib/${_prgname}/libAaru.Checksums.Native.so
+	install -Dm 644 ${srcdir}/libblake3_dotnet.so \
+		${pkgdir}/usr/lib/${_prgname}/libblake3_dotnet.so
 	install -Dm 644 ${srcdir}/mspack.dll \
 		${pkgdir}/usr/lib/${_prgname}/mspack.dll
 	install -Dm 644 ${srcdir}/StormLib.dll \
