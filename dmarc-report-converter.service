@@ -1,0 +1,13 @@
+[Unit]
+Description=DMARC report converter
+After=network.target
+
+[Service]
+Type=simple
+User=nginx
+Group=nginx
+ExecStart=/usr/bin/dmarc-report-converter
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

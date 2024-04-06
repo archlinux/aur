@@ -1,0 +1,9 @@
+[Unit]
+Description=Run DMARC report converter daily
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+
+[Install]
+WantedBy=basic.target

@@ -3,4 +3,6 @@
 !PKGBUILD
 !.SRCINFO
 !config.yml
+!dmarc-report-converter.service
+!dmarc-report-converter.timer
 !change-default-path-of-config-file.patch
