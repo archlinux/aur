@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=flashpoint-launcher
 _pkgname="Flashpoint Launcher"
-pkgver=13.0.0
+pkgver=13.0.1
 _electronversion=19
 _nodeversion=16
-pkgrel=4
+pkgrel=1
 pkgdesc="A desktop application used to browse, manage and play games from Flashpoint Archive"
 arch=('x86_64')
 url="http://bluemaxima.org/flashpoint/"
@@ -31,7 +31,7 @@ makedepends=(
 source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=${pkgver}"
 )
-sha256sums=('a8030b84ae63f417b32ee07a006f9d501e650b9bd2f4c20a3b87226103e7f7d6')
+sha256sums=('370d0088befdd781ff88c2cc6014cbe19d952b483acb8fa9f095de33118352e3')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
