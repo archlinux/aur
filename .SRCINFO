@@ -1,0 +1,15 @@
+pkgbase = chatnio-bin
+	pkgdesc = 🚀 Next Generation AI One-Stop Internationalization Solution.
+	pkgver = 3.10
+	pkgrel = 1
+	url = https://chatnio.net/
+	arch = x86_64
+	license = Apache-2.0
+	depends = gtk3
+	depends = webkit2gtk
+	provides = chatnio=3.10
+	conflicts = chatnio
+	source = chatnio-3.10.deb::https://github.com/Deeptrain-Community/chatnio/releases/download/v3.10/chatnio_3.10.5_amd64.deb
+	sha256sums = 4338657fce74a5bfcac3252a38058638c7327c084c627c81ae4203c8638f4d0d
+
+pkgname = chatnio-bin
