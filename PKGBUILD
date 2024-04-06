@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=thoughts-bin
-pkgver=0.9.8
+pkgver=0.9.10
 _electronversion=23
 pkgrel=1
 pkgdesc="一个还算强大的Web思维导图。A relatively powerful web mind map."
@@ -12,7 +12,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'hicolor-icon-theme'
 )
 makedepends=(
     'fuse2'
@@ -22,7 +21,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/wanglin2/mind-map/electron-${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('75d34ee9f257a9495ffc5f9a56b021077f2a94934c3e4e82fe3ef88550e60f37'
+sha256sums=('364cd7fd2589e9b80448343c74301f64d92c0d72e6f7cd771c278c869bde8c92'
             '8a19b651678a6a644640524d984ed89d0b9a78c662545715218a05130c7329c7'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
