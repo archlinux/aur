@@ -1,7 +1,7 @@
 #Maintainer: VPeti1 (Vasko Peter) 
 
 pkgname=eaur
-pkgver=3
+pkgver=4
 pkgrel=1
 arch=('x86_64')
 
@@ -12,7 +12,7 @@ depends=('gcc' 'git' 'base-devel')
 
 source=("https://github.com/VPeti1/CWAcces/raw/main/easyaur.tar.gz")
 
-sha256sums=('51fcc8800b49b0e80a0e4df17cd3b80a6b611b1b0c4575abb873f7816dffbc26')
+sha256sums=('6f4dc630edfe4b046d1b37442b360c58efee73fd186de38b20652a26b152449e')
 
 build() {
     cd "$srcdir"
