@@ -10,7 +10,7 @@ makedepends=(git)
 depends=(glibc gcc-libs readline)
 provides=(libpluto.so)
 conflicts=(pluto)
-source=("$pkgname-git::git+https://github.com/PlutoLang/Pluto#tag=$pkgver")
+source=("pluto-git::git+https://github.com/PlutoLang/Pluto#tag=$pkgver")
 sha256sums=('SKIP')
 
 build () {
