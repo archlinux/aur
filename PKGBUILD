@@ -3,7 +3,7 @@
 pkgbase=mkdocstrings
 pkgname=("${pkgbase}")
 #"${pkgbase}-doc")
-pkgver=0.24.1
+pkgver=0.24.3
 pkgrel=1
 pkgdesc="Automatic documentation from sources, for MkDocs"
 url="https://mkdocstrings.github.io"
@@ -35,7 +35,7 @@ source=("https://files.pythonhosted.org/packages/source/${pkgbase:0:1}/${pkgbase
 ##        "${pkgver}-main.html::https://github.com/mkdocstrings/mkdocstrings/raw/${pkgver}/docs/.overrides/main.html"
 ##        "${pkgver}-gen_redirects.py::https://github.com/mkdocstrings/mkdocstrings/raw/${pkgver}/scripts/gen_redirects.py"
 #        "${pkgver}-gen_ref_nav.py::https://github.com/mkdocstrings/mkdocstrings/raw/${pkgver}/scripts/gen_ref_nav.py")
-sha256sums=('cc83f9a1c8724fc1be3c2fa071dd73d91ce902ef6a79710249ec8d0ee1064401')
+sha256sums=('f327b234eb8d2551a306735436e157d0a22d45f79963c60a8b585d5f7a94c1d2')
 
 #prepare() {
 #    cd "${pkgbase}-${pkgver}"
