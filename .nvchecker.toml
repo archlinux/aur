@@ -1,0 +1,4 @@
+[python-pyevtx]
+source = "github"
+github = "omerbenamram/pyevtx-rs"
+use_latest_release = "true"
