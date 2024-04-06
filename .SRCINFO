@@ -1,0 +1,15 @@
+pkgbase = python-cucumber-tag-expressions
+	pkgdesc = Provides tag-expression parser for cucumber/behave
+	pkgver = 4.1.0
+	pkgrel = 3
+	url = https://github.com/cucumber/tag-expressions
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-html
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/cucumber/tag-expressions/archive/v4.1.0/python-cucumber-tag-expressions-4.1.0.tar.gz
+	sha512sums = b4790d8057d486b3d222ceea0e1e40c2e7a59f7d64e52f29f5e72ac4d91bdce8ac1c5b1aeced685e2d03046bc5c94e2fcb84a6c15f0f21560e85522c9dbae489
+
+pkgname = python-cucumber-tag-expressions
