@@ -1,0 +1,146 @@
+diff --unified --recursive --text sortty.orig/src/sortty.py sortty/src/sortty.py
+--- sortty.orig/src/sortty.py	2024-04-06 16:39:41.938116747 +0100
++++ sortty/src/sortty.py	2024-04-06 16:42:51.212316543 +0100
+@@ -17,7 +17,7 @@
+ def help_advanced():
+     # Displays sorTTY in big ascii letters using figlet
+     os.system("figlet sortty")
+-    
++
+     print("""
+ Info usage:
+ sortty [ -h --help ] (to show advanced options) OR [ -v --version ] (to show version) OR [ -hs --help-short ] (to show short version of help message)
+@@ -81,12 +81,12 @@
+             else:
+                 run = -1
+                 print("fancy bar value not recognized")
+-            
++
+                 break
+         else:
+             run = -1
+             print("fancy bar value not recognized")
+-            
++
+             break
+ 
+     if (sys.argv[i] == "-b") or (sys.argv[i] == "--bar_size"):
+@@ -96,14 +96,14 @@
+             else:
+                 run = -1
+                 print("bar_size value not recognized")
+-            
++
+                 break
+         else:
+             run = -1
+             print("bar_size value not recognized")
+-            
++
+             break
+-    
++
+     if (sys.argv[i] == "-w") or (sys.argv[i] == "--wait_time"):
+         if argc > (i + 1):
+             if (sys.argv[i + 1].isnumeric()) and (int(sys.argv[i + 1]) > 0):
+@@ -111,12 +111,12 @@
+             else:
+                 run = -1
+                 print("wait_time value not recognized")
+-            
++
+                 break
+         else:
+             run = -1
+             print("wait_time value not recognized")
+-            
++
+             break
+ 
+     if (sys.argv[i] == "-a") or (sys.argv[i] == "--algorithm"):
+@@ -126,14 +126,14 @@
+             else:
+                 run = -1
+                 print("specified algoritm not recognized")
+-            
++
+                 break
+         else:
+             run = -1
+             print("specified algoritm not recognized")
+-            
++
+             break
+-    
++
+     if (sys.argv[i] == "-s") or (sys.argv[i] == "--size"):
+         if argc > (i + 1):
+             if (sys.argv[i + 1].isnumeric()) and (int(sys.argv[i + 1]) > 0):
+@@ -141,12 +141,12 @@
+             else:
+                 run = -1
+                 print("array size value not recognized")
+-            
++
+                 break
+         else:
+             run = -1
+             print("array size value not recognized")
+-            
++
+             break
+ 
+     if (sys.argv[i] == "-r") or (sys.argv[i] == "--range"):
+@@ -156,12 +156,12 @@
+             else:
+                 run = -1
+                 print("array range value not recognized")
+-            
++
+                 break
+         else:
+             run = -1
+             print("array range value not recognized")
+-            
++
+             break
+ 
+     if (sys.argv[i] == "-fi") or (sys.argv[i] == "--fill"):
+@@ -171,14 +171,14 @@
+             else:
+                 run = -1
+                 print("fill value not recognized")
+-            
++
+                 break
+         else:
+             run = -1
+             print("fill value not recognized")
+-            
++
+             break
+-    
++
+     elif (sys.argv[i] == "-h") or (sys.argv[i] == "--help"):
+         run = 0
+ 
+@@ -192,7 +192,7 @@
+         help_short()
+ 
+         break
+-    
++
+     elif (sys.argv[i] == "-v") or (sys.argv[i] == "--version"):
+         run = 0
+ 
+@@ -201,8 +201,8 @@
+         break
+ 
+ # runs installed program if present
+-if os.path.isdir("/usr/local/bin/sortty-bin/"):
+-    path = "/usr/local/bin/sortty-bin/main.py"
++if os.path.isdir("/usr/share/sortty/"):
++    path = "/usr/share/sortty/main.py"
+ else:
+     path = "src/main.py"
+ 
