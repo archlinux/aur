@@ -3,7 +3,7 @@
 _pkgname=mod-mda-lv2
 pkgname=$_pkgname-git
 pkgver=1.1.0.r217.b2df88c
-pkgrel=1
+pkgrel=2
 pkgdesc='MOD fork of the LV2 port of the MDA plugins (git version)'
 arch=(x86_64)
 url='https://github.com/moddevices/mda-lv2'
@@ -16,9 +16,11 @@ optdepends=('lv2-host: to load the LV2 plugins')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("$_pkgname::git+https://github.com/moddevices/mda-lv2.git"
-        'ttl-fixes.patch')
+        'ttl-fixes.patch::https://patch-diff.githubusercontent.com/raw/moddevices/mda-lv2/pull/9.patch'
+        'polyphony-param.patch')
 sha256sums=('SKIP'
-            'd65b3202225da4bb57611ec0f53b038386ae3f58d91fdbc7502c1ab032e62e80')
+            'd65b3202225da4bb57611ec0f53b038386ae3f58d91fdbc7502c1ab032e62e80'
+            'b8a262b83c9b2f89b9ceac336ee93868974a1e0ab435b864e9bfb9c36a9417bc')
 
 pkgver() {
   cd $_pkgname
@@ -29,6 +31,7 @@ pkgver() {
 prepare() {
   cd $_pkgname
   patch -p1 -N -r - -i "$srcdir"/ttl-fixes.patch
+  patch -p1 -N -r - -i "$srcdir"/polyphony-param.patch
 }
 
 build() {

@@ -1,0 +1,348 @@
+diff --git a/bundles/mod-mda-EPiano.lv2/EPiano.ttl b/bundles/mod-mda-EPiano.lv2/EPiano.ttl
+index b9d6652..31b8f13 100644
+--- a/bundles/mod-mda-EPiano.lv2/EPiano.ttl
++++ b/bundles/mod-mda-EPiano.lv2/EPiano.ttl
+@@ -130,13 +130,18 @@ Rhodes© Pianos are a trademark or trade name of another manufacturer and were u
+         a lv2:InputPort ,
+             lv2:ControlPort ;
+         lv2:index 8 ;
+-        lv2:name "Polyphonic" ;
+-        lv2:symbol "polyphonic" ;
+-        lv2:default 1 ;
+-        lv2:minimum 0 ;
+-        lv2:maximum 1 ;
+-        lv2:portProperty lv2:integer ,
+-            lv2:toggled ;
++        lv2:name "Polyphony" ;
++        lv2:symbol "polyphony" ;
++        lv2:portProperty lv2:integer ;
++        lv2:default 16 ;
++        lv2:minimum 1 ;
++        lv2:maximum 32 ;
++        units:unit [
++            a            units:Unit ;
++            rdfs:label   "voice" ;
++            units:symbol "vox" ;
++            units:render "%d voices"
++        ]
+     ] , [
+         a lv2:InputPort ,
+             lv2:ControlPort ;
+diff --git a/bundles/mod-mda-EPiano.lv2/default-preset.ttl b/bundles/mod-mda-EPiano.lv2/default-preset.ttl
+index 32a0373..fb2a2f8 100644
+--- a/bundles/mod-mda-EPiano.lv2/default-preset.ttl
++++ b/bundles/mod-mda-EPiano.lv2/default-preset.ttl
+@@ -38,8 +38,8 @@
+ 		pset:value 100 ;
+ 	] ;
+ 	lv2:port [
+-		lv2:symbol "polyphonic" ;
+-		pset:value 1 ;
++		lv2:symbol "polyphony" ;
++		pset:value 16 ;
+ 	] ;
+ 	lv2:port [
+ 		lv2:symbol "fine_tuning" ;
+diff --git a/bundles/mod-mda-EPiano.lv2/presets.ttl b/bundles/mod-mda-EPiano.lv2/presets.ttl
+index c06a33d..f5e836c 100644
+--- a/bundles/mod-mda-EPiano.lv2/presets.ttl
++++ b/bundles/mod-mda-EPiano.lv2/presets.ttl
+@@ -38,8 +38,8 @@
+ 		pset:value 100 ;
+ 	] ;
+ 	lv2:port [
+-		lv2:symbol "polyphonic" ;
+-		pset:value 1 ;
++		lv2:symbol "polyphony" ;
++		pset:value 16 ;
+ 	] ;
+ 	lv2:port [
+ 		lv2:symbol "fine_tuning" ;
+@@ -90,8 +90,8 @@
+ 		pset:value 100 ;
+ 	] ;
+ 	lv2:port [
+-		lv2:symbol "polyphonic" ;
+-		pset:value 1 ;
++		lv2:symbol "polyphony" ;
++		pset:value 16 ;
+ 	] ;
+ 	lv2:port [
+ 		lv2:symbol "fine_tuning" ;
+@@ -142,8 +142,8 @@
+ 		pset:value 100 ;
+ 	] ;
+ 	lv2:port [
+-		lv2:symbol "polyphonic" ;
+-		pset:value 1 ;
++		lv2:symbol "polyphony" ;
++		pset:value 16 ;
+ 	] ;
+ 	lv2:port [
+ 		lv2:symbol "fine_tuning" ;
+@@ -194,8 +194,8 @@
+ 		pset:value 100 ;
+ 	] ;
+ 	lv2:port [
+-		lv2:symbol "polyphonic" ;
+-		pset:value 1 ;
++		lv2:symbol "polyphony" ;
++		pset:value 16 ;
+ 	] ;
+ 	lv2:port [
+ 		lv2:symbol "fine_tuning" ;
+@@ -209,4 +209,3 @@
+ 		lv2:symbol "overdrive" ;
+ 		pset:value 0 ;
+ 	] .
+-
+diff --git a/bundles/mod-mda-Piano.lv2/Piano.ttl b/bundles/mod-mda-Piano.lv2/Piano.ttl
+index 3cbace0..a1d2b15 100644
+--- a/bundles/mod-mda-Piano.lv2/Piano.ttl
++++ b/bundles/mod-mda-Piano.lv2/Piano.ttl
+@@ -145,16 +145,15 @@ Modeled by MDA
+         lv2:index 8 ;
+         lv2:name "Polyphony" ;
+         lv2:symbol "polyphony" ;
+-        lv2:portProperty lv2:enumeration , lv2:integer ;
+-        lv2:default 1 ;
+-        lv2:minimum 0 ;
+-        lv2:maximum 1 ;
+-        lv2:scalePoint [
+-            rdfs:label "8 voices" ;
+-            rdf:value 0
+-        ] , [
+-            rdfs:label "32 voices" ;
+-            rdf:value 1
++        lv2:portProperty lv2:integer ;
++        lv2:default 16 ;
++        lv2:minimum 8 ;
++        lv2:maximum 32 ;
++        units:unit [
++            a            units:Unit ;
++            rdfs:label   "vox" ;
++            units:symbol "voices" ;
++            units:render "%d voices"
+         ]
+     ] , [
+         a lv2:InputPort ,
+diff --git a/bundles/mod-mda-Piano.lv2/default-preset.ttl b/bundles/mod-mda-Piano.lv2/default-preset.ttl
+index b5a97fc..ec5cd37 100644
+--- a/bundles/mod-mda-Piano.lv2/default-preset.ttl
++++ b/bundles/mod-mda-Piano.lv2/default-preset.ttl
+@@ -22,7 +22,7 @@
+ 		pset:value 80.30000305
+ 	] , [
+ 		lv2:symbol "polyphony" ;
+-		pset:value 1.0
++		pset:value 16
+ 	] , [
+ 		lv2:symbol "random_detuning" ;
+ 		pset:value 12.30000019
+diff --git a/bundles/mod-mda-Piano.lv2/presets.ttl b/bundles/mod-mda-Piano.lv2/presets.ttl
+index 10163c2..84cedc9 100644
+--- a/bundles/mod-mda-Piano.lv2/presets.ttl
++++ b/bundles/mod-mda-Piano.lv2/presets.ttl
+@@ -39,7 +39,7 @@
+ 	] ;
+ 	lv2:port [
+ 		lv2:symbol "polyphony" ;
+-		pset:value 1.0 ;
++		pset:value 16 ;
+ 	] ;
+ 	lv2:port [
+ 		lv2:symbol "fine_tuning" ;
+@@ -91,7 +91,7 @@
+ 	] ;
+ 	lv2:port [
+ 		lv2:symbol "polyphony" ;
+-		pset:value 1.0 ;
++		pset:value 16 ;
+ 	] ;
+ 	lv2:port [
+ 		lv2:symbol "fine_tuning" ;
+@@ -143,7 +143,7 @@
+ 	] ;
+ 	lv2:port [
+ 		lv2:symbol "polyphony" ;
+-		pset:value 1.0 ;
++		pset:value 16 ;
+ 	] ;
+ 	lv2:port [
+ 		lv2:symbol "fine_tuning" ;
+@@ -195,7 +195,7 @@
+ 	] ;
+ 	lv2:port [
+ 		lv2:symbol "polyphony" ;
+-		pset:value 1.0 ;
++		pset:value 16 ;
+ 	] ;
+ 	lv2:port [
+ 		lv2:symbol "fine_tuning" ;
+@@ -247,7 +247,7 @@
+ 	] ;
+ 	lv2:port [
+ 		lv2:symbol "polyphony" ;
+-		pset:value 1.0;
++		pset:value 16;
+ 	] ;
+ 	lv2:port [
+ 		lv2:symbol "fine_tuning" ;
+@@ -299,7 +299,7 @@
+ 	] ;
+ 	lv2:port [
+ 		lv2:symbol "polyphony" ;
+-		pset:value 1.0 ;
++		pset:value 16 ;
+ 	] ;
+ 	lv2:port [
+ 		lv2:symbol "fine_tuning" ;
+@@ -351,7 +351,7 @@
+ 	] ;
+ 	lv2:port [
+ 		lv2:symbol "polyphony" ;
+-		pset:value 1.0 ;
++		pset:value 16 ;
+ 	] ;
+ 	lv2:port [
+ 		lv2:symbol "fine_tuning" ;
+diff --git a/lvz/wrapper.cpp b/lvz/wrapper.cpp
+index 34bd836..ac13f8d 100644
+--- a/lvz/wrapper.cpp
++++ b/lvz/wrapper.cpp
+@@ -49,7 +49,7 @@
+ // para valores de 0 a 1, pois o código do mda foi projetado para trabalhar com esses valores
+ 
+ 
+-float translateParameter(PLUGIN_CLASS* effect,int port,float value,bool inverted) {    
++float translateParameter(PLUGIN_CLASS* effect,int port,float value,bool inverted) {
+     if(strcmp(effect->getUniqueID(), "mdaAmb") == 0) {
+         switch(port) {
+             case 0:
+@@ -224,17 +224,17 @@ float translateParameter(PLUGIN_CLASS* effect,int port,float value,bool inverted
+         }
+     }
+     else if(strcmp(effect->getUniqueID(), "mdaDX10") == 0) {
+-        /* 
+-        Scaling process is convoluted but here is an explanation, 
++        /*
++        Scaling process is convoluted but here is an explanation,
+         but just plugging through a bunch of values would make the presets not work:
+-        
++
+         All envelope time based parameters are implemented as a recursive equation within the synth.
+         This means that at each sample it calculated something along the lines of: env_volume = env_volume * 0.999...
+         Here the 0.999... parameter is a decayparameter which will be explained later, for now let's call it dec.
+         The volume over time can then be found as: amp = dec^[n_samples].
+         Thus the decay time can be found when subsituting a "silence ratio" for amp, in this case -60db -> 0.001.
+-        This gives n_samples = log_{dec}(amp) or in c++ terms: log(0.001)/log(dec). (as log_a(b) = log(b)/log(a)) 
+-        
++        This gives n_samples = log_{dec}(amp) or in c++ terms: log(0.001)/log(dec). (as log_a(b) = log(b)/log(a))
++
+         Now the host provides the value as a linear interpolation from min to max, no matter if you specify it as logarithmic.
+         F.Y.I. the scaling they use for logarithmic is min*e^(x * ln(max/min)) where x = [0,1].
+         The different time parameters have different equations for how they calculate the parameters:
+@@ -245,7 +245,7 @@ float translateParameter(PLUGIN_CLASS* effect,int port,float value,bool inverted
+         - Modulator Release = exp( -(1/samplerate) * exp(5-8x) )
+         However these map exactly to the way the logarithmic parameter mapping in the host works.
+         Given that the output needs to be scaled the same way we can solve the equation for x given a value between min and max:
+-        value = min*e^(x * ln(max/min)) -> x = ln(value/min)/ln(max/min). 
++        value = min*e^(x * ln(max/min)) -> x = ln(value/min)/ln(max/min).
+         Put this value in the equation and it should return the correct value for x for the time parameter.
+         However some parameters have insanely long times so there is some additional stretching going on for the last ten percent of the range.
+         */
+@@ -254,8 +254,8 @@ float translateParameter(PLUGIN_CLASS* effect,int port,float value,bool inverted
+             return inverted ? 2.5*expf(value * logf(4000.f/2.5)) : logf(value/2.5)/logf(4000.f/2.5);
+             //return inverted ? value*100 : value/(100);
+             case(1):
+-            /* 
+-            carrier decay times range from ~45ms to ~135 seconds 
++            /*
++            carrier decay times range from ~45ms to ~135 seconds
+             so in order to make it useful some stretching is applied to the value input for 6s to 7s to make it stretch
+             stretching should happen from 6000ms to 7000ms value input
+             log(6000/46.5)/log(7000/46.5) = ~0.97
+@@ -412,7 +412,7 @@ float translateParameter(PLUGIN_CLASS* effect,int port,float value,bool inverted
+             case(7):
+             return inverted ? value*200 : value/(200);
+             case(8):
+-            return value;
++            return inverted ? 1 + (int32_t)(31.9f * value) : (value - 1) / 31.9f;
+             case(9):
+             return inverted ? value*100 - 50 : (value + 50)/(100);
+             case(10):
+@@ -545,7 +545,7 @@ float translateParameter(PLUGIN_CLASS* effect,int port,float value,bool inverted
+             case(7):
+             return inverted ? value*200 : value/(200);
+             case(8):
+-            return inverted ? value : value;
++            return inverted ? 8 + (int32_t)(31.9f * value) : (value - 8) / 31.9f;
+             case(9):
+             return inverted ? value*100-50 : (value + 50)/(100);
+             case(10):
+diff --git a/src/mdaEPiano.cpp b/src/mdaEPiano.cpp
+index 6684e98..79a6b9a 100644
+--- a/src/mdaEPiano.cpp
++++ b/src/mdaEPiano.cpp
+@@ -40,11 +40,11 @@ mdaEPiano::mdaEPiano(audioMasterCallback audioMaster) : AudioEffectX(audioMaster
+   {
+     //fill patches...
+     int32_t i=0;
+-    fillpatch(i++, "Default", 0.500f, 0.500f, 0.500f, 0.500f, 0.500f, 0.650f, 0.250f, 0.500f, 1.0f, 0.500f, 0.146f, 0.000f);
+-    fillpatch(i++, "Bright", 0.500f, 0.500f, 1.000f, 0.800f, 0.500f, 0.650f, 0.250f, 0.500f, 1.0f, 0.500f, 0.146f, 0.500f);
+-    fillpatch(i++, "Mellow", 0.500f, 0.500f, 0.000f, 0.000f, 0.500f, 0.650f, 0.250f, 0.500f, 1.0f, 0.500f, 0.246f, 0.000f);
+-    fillpatch(i++, "Autopan", 0.500f, 0.500f, 0.500f, 0.500f, 0.250f, 0.650f, 0.250f, 0.500f, 1.0f, 0.500f, 0.246f, 0.000f);
+-    fillpatch(i++, "Tremolo", 0.500f, 0.500f, 0.500f, 0.500f, 0.750f, 0.650f, 0.250f, 0.500f, 1.0f, 0.500f, 0.246f, 0.000f);
++    fillpatch(i++, "Default", 0.500f, 0.500f, 0.500f, 0.500f, 0.500f, 0.650f, 0.250f, 0.500f, 0.500f, 0.500f, 0.146f, 0.000f);
++    fillpatch(i++, "Bright", 0.500f, 0.500f, 1.000f, 0.800f, 0.500f, 0.650f, 0.250f, 0.500f, 0.500f, 0.500f, 0.146f, 0.500f);
++    fillpatch(i++, "Mellow", 0.500f, 0.500f, 0.000f, 0.000f, 0.500f, 0.650f, 0.250f, 0.500f, 0.500f, 0.500f, 0.246f, 0.000f);
++    fillpatch(i++, "Autopan", 0.500f, 0.500f, 0.500f, 0.500f, 0.250f, 0.650f, 0.250f, 0.500f, 0.500f, 0.500f, 0.246f, 0.000f);
++    fillpatch(i++, "Tremolo", 0.500f, 0.500f, 0.500f, 0.500f, 0.750f, 0.650f, 0.250f, 0.500f, 0.500f, 0.500f, 0.246f, 0.000f);
+     setProgram(0);
+   }
+ 
+@@ -127,7 +127,7 @@ mdaEPiano::mdaEPiano(audioMasterCallback audioMaster) : AudioEffectX(audioMaster
+ 
+   //initialise...
+   memset(voice, 0, sizeof(voice));
+-  for(int32_t v=0; v<NVOICES; v++) 
++  for(int32_t v=0; v<NVOICES; v++)
+   {
+     voice[v].env = 0.0f;
+     voice[v].dec = 0.99f; //all notes off
+@@ -163,7 +163,7 @@ void mdaEPiano::update()  //parameter change
+   if(param[6] < 0.25f) velsens -= 0.75f - 3.0f * param[6];
+ 
+   width = 0.03f * param[7];
+-  poly = 1 + (int32_t)(31.0f * param[8]);
++  poly = 1 + (int32_t)(31.9f * param[8]);
+   fine = param[9] - 0.5f;
+   random = 0.077f * param[10];
+   stretch = 0.0f; //0.000434f * (param[11] - 0.5f); parameter re-used for overdrive!
+@@ -290,7 +290,7 @@ void mdaEPiano::getParameterName(int32_t index, char *label)
+ 
+     case  6: strcpy(label, "Velocity Sense"); break;
+     case  7: strcpy(label, "Stereo Width"); break;
+-    case  8: strcpy(label, "Polyphonic"); break;
++    case  8: strcpy(label, "Polyphony"); break;
+ 
+     case  9: strcpy(label, "Fine Tuning"); break;
+ 		case 10: strcpy(label, "Random Tuning"); break;
+@@ -408,7 +408,7 @@ void mdaEPiano::processReplacing(float **inputs, float **outputs, int32_t sample
+ 
+     if(frame<sampleFrames)
+     {
+-      if(activevoices == 0 && programs[curProgram].param[4] > 0.5f) 
++      if(activevoices == 0 && programs[curProgram].param[4] > 0.5f)
+         { lfo0 = -0.7071f;  lfo1 = 0.7071f; } //reset LFO phase - good idea?
+ 
+       if (!end) {
+@@ -541,7 +541,7 @@ int32_t mdaEPiano::processEvent(const LV2_Atom_Event* ev)
+             sustain = midiData[2] & 0x40;
+             if(sustain==0)
+             {
+-              noteOn(SUSTAIN, 0); //end all sustained notes  
++              noteOn(SUSTAIN, 0); //end all sustained notes
+             }
+             break;
+ 
