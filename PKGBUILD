@@ -3,14 +3,13 @@
 _pkgname=RGSEA
 _pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
-pkgrel=1
-pkgdesc='Random Gene Set Enrichment Analysis'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Random Gene Set Enrichment Analysis"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-or-later')
 depends=(
-  r
   r-biocgenerics
 )
 optdepends=(
@@ -20,14 +19,15 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2b8115fce42516a53ec7290f31d907482e0b639b8a30b8a48ba291475ab89fd2')
+md5sums=('426ab6d4dc463399d014c6e76c3f8c75')
+b2sums=('7f22ff09ecdc58d6b9e1fb0ab47285a79e39a7120916af517dcd3fe07507de4d653041d164588be343f1f76d2d66825200c1b1ac4b7f28f476fe6b396d61513e')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
