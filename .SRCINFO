@@ -1,20 +1,11 @@
 pkgbase = python-reproject
 	pkgdesc = Python-based Astronomical image reprojection
-	pkgver = 0.13.0
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = http://reproject.readthedocs.io
 	arch = i686
 	arch = x86_64
-	license = BSD
-	checkdepends = python-pytest-arraydiff
-	checkdepends = python-pytest-astropy-header
-	checkdepends = python-pytest-doctestplus
-	checkdepends = python-pytest-remotedata
-	checkdepends = python-matplotlib
-	checkdepends = python-sunpy
-	checkdepends = python-gwcs
-	checkdepends = python-shapely
-	checkdepends = python-zarr
+	license = BSD-3-Clause
 	makedepends = cython>=3.0.4
 	makedepends = python-setuptools-scm
 	makedepends = python-extension-helpers
@@ -27,16 +18,16 @@ pkgbase = python-reproject
 	makedepends = python-dask
 	makedepends = python-scipy
 	makedepends = python-pyvo
-	source = https://files.pythonhosted.org/packages/source/r/reproject/reproject-0.13.0.tar.gz
-	md5sums = d9abe12e3411657a6c01fb5abcf3ef4c
+	source = https://files.pythonhosted.org/packages/source/r/reproject/reproject-0.13.1.tar.gz
+	md5sums = 19076686f302fc52aba977dd5c7e83a3
 
 pkgname = python-reproject
-	depends = python>=3.8
-	depends = python-numpy>=1.20
+	depends = python>=3.10
+	depends = python-numpy>=1.23
 	depends = python-cloudpickle
 	depends = python-dask>=2021.8
 	depends = python-fsspec
-	depends = python-scipy>=1.5
+	depends = python-scipy>=1.9
 	depends = python-astropy>=5.0
 	depends = python-astropy-healpix>=0.6
 	depends = python-zarr

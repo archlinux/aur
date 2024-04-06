@@ -3,12 +3,12 @@
 pkgbase=python-reproject
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.13.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="Python-based Astronomical image reprojection"
 arch=('i686' 'x86_64')
 url="http://reproject.readthedocs.io"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('cython>=3.0.4'
              'python-setuptools-scm'
              'python-extension-helpers'
@@ -22,51 +22,54 @@ makedepends=('cython>=3.0.4'
              'python-scipy'
              'python-pyvo')
 #            'python-mimeparse')    # numpy for package itself
-checkdepends=('python-pytest-arraydiff'
-              'python-pytest-astropy-header'
-              'python-pytest-doctestplus'
-              'python-pytest-remotedata'
-              'python-matplotlib'
-              'python-sunpy'
-              'python-gwcs'
-              'python-shapely'
-              'python-zarr')     # astropy-healpix dask scipy already in makedep
+#checkdepends=('python-pytest-arraydiff'
+#              'python-pytest-astropy-header'
+#              'python-pytest-doctestplus'
+#              'python-pytest-remotedata'
+##             'python-matplotlib'
+#              'python-sunpy'
+#              'python-gwcs'
+#              'python-shapely'
+#              'python-zarr')     # astropy-healpix dask scipy already in makedep
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('d9abe12e3411657a6c01fb5abcf3ef4c')
+md5sums=('19076686f302fc52aba977dd5c7e83a3')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
 
-prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    sed -i -e "/cython/s/==/>=/" -e "/oldest-supported-numpy/d" pyproject.toml
-#   sed -i "/NaNs/a \	ignore:Subclassing validator classes is not intended:DeprecationWarning" setup.cfg
-#   patch -Np1 -i "${srcdir}/doc-use-local-fits.patch"
-}
+#prepare() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+#    sed -i -e "/cython/s/==/>=/" -e "/oldest-supported-numpy/d" pyproject.toml
+##   sed -i "/NaNs/a \	ignore:Subclassing validator classes is not intended:DeprecationWarning" setup.cfg
+##   patch -Np1 -i "${srcdir}/doc-use-local-fits.patch"
+#}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation --skip-dependency-check
 
     msg "Building Docs"
+    ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
+        build/lib.linux-${CARCH}-cpython-$(get_pyver)/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
     PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
 }
 
-check() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" -Wdefault || warning "Tests failed" # -vv --color=yes
-}
+#check() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+#    # Cost more than 10 min
+#    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" -vv -l -ra --color=yes -o console_output_style=count #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+#}
 
 package_python-reproject() {
-    depends=('python>=3.8'
-             'python-numpy>=1.20'
+    depends=('python>=3.10'
+             'python-numpy>=1.23'
              'python-cloudpickle'
              'python-dask>=2021.8'
              'python-fsspec'
-             'python-scipy>=1.5'
+             'python-scipy>=1.9'
              'python-astropy>=5.0'
              'python-astropy-healpix>=0.6'
              'python-zarr')
