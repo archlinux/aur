@@ -1,0 +1,5 @@
+[python-cmocean]
+source = "github"
+github = "matplotlib/cmocean"
+use_latest_release = "true"
+prefix = "v"
