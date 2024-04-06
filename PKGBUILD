@@ -7,12 +7,12 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=2024.3.3
+pkgver=2024.4.1
 pkgrel=1
 epoch=1
 arch=(any)
 url=https://home-assistant.io/
-license=(APACHE)
+license=(Apache-2.0)
 depends=(
   bluez-libs
   ffmpeg
@@ -33,12 +33,12 @@ makedepends=(
   python-setuptools
   python-wheel
 )
-_tag=25909f2ebd622c5d9eb836ed7dae8de53dea3d1e
+_tag=b1fb77cb4d6d78f93bf80959a6df2264cf49b868
 source=(
-  "$pkgname::git+https://github.com/home-assistant/core.git#tag=${_tag}"
+  home-assistant::git+https://github.com/home-assistant/core.git#tag=${_tag}
   home-assistant.service
 )
-b2sums=('SKIP'
+b2sums=('7c1db00c1ec5affc43127046da99ddae79928b6a318629c81e15e0a2b7541a75ac5ea6fa144ffb5d9603c71811772afc760d951d70a90f5462ec88af9c25ba71'
         'd7a6cd85b89c74997cd7794e5205504033c37684d798bd12e40786f33fce846980d10373261444077cc527ef382246b8235573e1bb6ade8bb8e6d9e34f9961ad')
 
 prepare() {
