@@ -1,0 +1,16 @@
+pkgbase = python-click-default-group
+	pkgdesc = Extends click.Group to invoke a command without explicit subcommand name
+	pkgver = 1.2.4
+	pkgrel = 2
+	url = https://github.com/click-contrib/click-default-group
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-flit-core
+	depends = python-click
+	source = https://github.com/click-contrib/click-default-group/archive/v1.2.4/python-click-default-group-1.2.4.tar.gz
+	sha512sums = 0239e703421e693399e8e54e4a6bdc4a74e6f16307f008ee742788ce3e8040f633de2b1bf12997a5c448b70cb55f77ccd4f42c5b4abe3b6a05df18908daf61da
+
+pkgname = python-click-default-group
