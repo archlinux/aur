@@ -1,7 +1,7 @@
 # Maintainer: Sainan <sainan@calamity.gg>
 pkgname=plutolang
 pkgdesc="A superset of Lua 5.4 — with unique features, optimizations, and improvements."
-pkgver=0.8.2
+pkgver=0.9.0
 pkgrel=1
 url='https://github.com/PlutoLang/Pluto'
 arch=('x86_64')
@@ -25,7 +25,8 @@ package () {
 	cp src/plutoc $pkgdir/usr/bin/plutoc
 
 	mkdir -p $pkgdir/usr/lib
-	cp src/libpluto.a $pkgdir/usr/lib/libpluto.a
+	#cp src/libplutostatic.a $pkgdir/usr/lib/libplutostatic.a
+	cp src/libpluto.so $pkgdir/usr/lib/libpluto.so
 
 	mkdir -p $pkgdir/usr/include/pluto
 	cp src/lua.h $pkgdir/usr/include/pluto/lua.h
