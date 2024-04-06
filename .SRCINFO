@@ -1,0 +1,19 @@
+pkgbase = python-flask-restful
+	pkgdesc = Simple framework for creating REST APIs
+	pkgver = 0.3.9
+	pkgrel = 6
+	url = https://github.com/flask-restful/flask-restful
+	arch = any
+	license = BSD
+	checkdepends = python-nose
+	checkdepends = python-blinker
+	checkdepends = python-pycryptodome
+	makedepends = python-setuptools
+	depends = python-six
+	depends = python-flask
+	depends = python-aniso8601
+	depends = python-pytz
+	source = https://github.com/flask-restful/flask-restful/archive/v0.3.9/python-flask-restful-0.3.9.tar.gz
+	sha512sums = 34bea8ed6e9de3ad1c2ca63e7af67ed2a175f84c433b08ff643f91d88feda0e3c1c3967deb2fe5ad308b05f373b10c08245edf65ed97a7c5a3683aa900e9edf2
+
+pkgname = python-flask-restful
