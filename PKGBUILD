@@ -5,8 +5,8 @@ _suffix=""
 pkgname=(
 		"${pkgbase}${_suffix}" "${pkgbase}-headers${_suffix}"
 )
-_rev=ac23a090d64f46d0eddca691efc95ba22c349eb3
-pkgver=6.8.3
+_rev=0fc9e59888a723bd93bffe2276c98281d3e7328f
+pkgver=6.8.4
 pkgrel=1
 pkgdesc="pf-kernel"
 arch=(x86_64)
@@ -17,7 +17,7 @@ options=(!debug !strip)
 source=(https://codeberg.org/pf-kernel/linux/archive/${_rev}.tar.gz
 		config)
 b2sums=(SKIP
-		'4a0300bbdeb6d23a57c5da444cfa6f160e33560dfa7520f7c6ad007d34509759a0ba18212d95a65a42f35f5782b5fadab61768dfcc4044eec44995eb369e96dc')
+		'e9627c24f265f7fc050a7fb28a2189406cf864a9a1ef68273f82237e9a3783f06305e21cee044f48488322b4632434c160057d9c0a4694076951021c580d5dba')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=${pkgbase}
@@ -59,7 +59,7 @@ _package() {
 				'linux-firmware: firmware images needed for some devices'
 				'uksmd: userspace KSM helper daemon'
 				'v4l2loopback-utils: v4l2-loopback device utilities')
-	provides=(linux-pf DDCCI-MODULE KSMBD-MODULE NTFS3-MODULE UKSMD-BUILTIN V4L2LOOPBACK-MODULE VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+	provides=(linux-pf KSMBD-MODULE NTFS3-MODULE UKSMD-BUILTIN V4L2LOOPBACK-MODULE VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
 	replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
 	cd linux
