@@ -1,0 +1,17 @@
+pkgbase = jazzjackrabbit
+	pkgdesc = Jazz Jackrabbit game powered by the openjazz.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/jazzproject
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = openjazz-bin
+	depends = wget
+	depends = unzip
+	depends = yad
+	source = https://gitlab.com/jazzproject/jazzjackrabbit/jazzjackrabbit/-/archive/1.0.0/jazzjackrabbit-1.0.0.tar.bz2
+	sha256sums = SKIP
+
+pkgname = jazzjackrabbit
