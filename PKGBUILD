@@ -7,7 +7,7 @@ pkgbase=lib32-libproxy
 pkgname=(
   lib32-libproxy
 )
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="Automatic proxy configuration management library (32-bit)"
 url="https://libproxy.github.io/libproxy/"
@@ -24,16 +24,10 @@ makedepends=(
   gsettings-desktop-schemas
   meson
 )
-_commit=dff9a603d823dcc740ec966cd27960daa6b891b1  # tags/0.5.4
 source=(
-  "git+https://github.com/libproxy/libproxy#commit=$_commit"
+  "git+https://github.com/libproxy/libproxy#tag=$pkgver"
 )
-b2sums=('SKIP')
-
-pkgver() {
-  cd libproxy
-  git describe --tags | sed 's/^libproxy-//;s/[^-]*-g/r&/;s/-/+/g'
-}
+b2sums=('8d5cb6295541ef386e328a77ac9dd827c85da4d57ba50c910996c690d1fd9d97ef0d4df37183fdfa3e9bd7bcac7c5e54afc1cd83c157c0b7d01cc4cc298535b8')
 
 prepare() {
   cd libproxy
@@ -44,6 +38,7 @@ build() {
     --cross-file lib32
     -D docs=false
     -D introspection=false
+    -D release=true
     -D vapi=false
   )
 
