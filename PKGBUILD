@@ -2,7 +2,7 @@
 pkgname=cellframe-node-debug
 _pkgname=cellframe-node
 pkgver=5.2.490
-pkgrel=2
+pkgrel=3
 pkgdesc="Cellframe blockchain node with a powerful SDK"
 arch=('x86_64' 'aarch64')
 url="https://cellframe.net"
@@ -19,15 +19,15 @@ source=(git+https://gitlab.demlabs.net/cellframe/$_pkgname.git#commit=4a230d2f14
 		cellframe-node-logrotate.timer
 		cellframe-node.service
 		cellframe-node.asan.service)
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
+md5sums=('485f1111843276340b0f1faf87abc3d0'
+         '23343c3c8be3363a5ac2b78a85eb96dc'
+         '6d8313251c773f8e8d2bce61636da94b'
+         'db753282b4e1647387fab277598c79ca'
          '6a52220e0b285dc9e803082f36897ad4'
          '7c1087eea7336d99c4af55119673b009'
          '47edb0d55d537e72f3de07ec6a72ea78'
-         '72472d529b38f06a78f37ac659b18d65'
-         '42a6fdb6b79a93d0a31dd33a40456c9c')
+         'd1468c5407f058d7d7c7881ef8f74516'
+         'ab49514b2af5b0f9dc3ff156bb768f93')
 install=$_pkgname.install
 conflicts=(cellframe-dashboard cellframe-wallet cellframe-node)
 options=(!strip !debug)
