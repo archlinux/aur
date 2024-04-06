@@ -1,7 +1,7 @@
-# Maintainer: Jelle van der Waa <jelle@archlinux.org>
+# Contributor: Jelle van der Waa <jelle@archlinux.org>
 
 pkgname=mescc-tools
-pkgver=1.3
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="tools for binary bootstrapping"
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=('GPL')
 url="https://github.com/oriansj/mescc-tools"
 makedepends=(git)
 depends=(glibc)
-source=(git+https://github.com/oriansj/mescc-tools.git#commit=13efebef12254fd39110b6f9dd80a7b5b0a579c2)
+source=(git+https://github.com/oriansj/mescc-tools.git#commit=8b0991748b04e3ecedc81fe759837b55d5c58eb2)
 sha256sums=('SKIP')
 validpgpkeys=("CA1132DD2BA1E81AC10C95D35410E91C14959E87")
 
