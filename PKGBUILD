@@ -1,10 +1,10 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-compute-runtime-bin
-pkgver=24.05.28454.6
-_gmmver=22.3.11
+pkgver=24.09.28717.12
+_gmmver=22.3.17
 _gmmsover=12
-_igcver=1.0.15985.7
+_igcver=1.0.16238.4
 _lzver="1.3.$(sed -E 's/([0-9]+\.){2}//' <<< "$pkgver")"
 pkgrel=1
 pkgdesc='Intel Graphics Compute Runtime for oneAPI Level Zero and OpenCL Driver (pre-compiled binaries)'
@@ -26,10 +26,10 @@ noextract=("intel-opencl-icd_${pkgver}_amd64.deb"
            "intel-level-zero-gpu_${_lzver}_amd64.deb"
            "${pkgname}-${pkgver}-gmmlib-dev-${_gmmver}_amd64.deb"
            "${pkgname}-${pkgver}-gmmlib-${_gmmver}_amd64.deb")
-sha256sums=('60cffce931aae40e8a08b6f91cf5bb8b447c888b15ca2cda097e6767b3e733bb'
-            'b78a26d38c750c6112352c6b0f0b53116040d99b02a1033e378d1a6e4790695d'
-            '78b4a1eab0e133c2917a8b7889ef1eae9f32aa07df2795acc5510ddee857bfdc'
-            'aba2ab44cc7a150c819768a0373c24306fb785ddf626ac6c29bcc90fcbc9bdfd'
+sha256sums=('3df24e07e3f7ff5539d82eb1d9426e4ccf02813f76cd08e9292d4cb40866b20f'
+            'fd914c2c8005e6b020b4beeeaf14e3f66526095d3d14a624b3a6eac3c7799f8b'
+            '13320c230328e8d0d377558fb153f1f975bb19eca58ca9d54b6724342457a611'
+            '883ffebb7c7d8603735b6e6028300601905a8af567f6582da8759e966206f72f'
             '987a002c6c9eb75290d9937735641ef4f4b670591ee79e1ac8edebe16a81872e')
 
 prepare() {
@@ -43,8 +43,8 @@ prepare() {
 package() {
     bsdtar -xf "opencl-${pkgver}/data.tar.xz" -C "$pkgdir"
     bsdtar -xf "level-zero-gpu-${pkgver}/data.tar.xz" -C "$pkgdir"
-    bsdtar -xf "gmmlib-dev-${pkgver}/data.tar.xz" -C "$pkgdir"
-    bsdtar -xf "gmmlib-${pkgver}/data.tar.xz" -C "$pkgdir"
+    bsdtar -xf "gmmlib-dev-${pkgver}/data.tar.zst" -C "$pkgdir"
+    bsdtar -xf "gmmlib-${pkgver}/data.tar.zst" -C "$pkgdir"
     mv "${pkgdir}/usr/lib/${CARCH}-linux-gnu"/* "${pkgdir}/usr/lib"
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     ln -s "$(find "${pkgdir}/usr/lib" -regex '.*libze_intel_gpu.so.[0-9]*' -exec basename {} \;)" "${pkgdir}/usr/lib/libze_intel_gpu.so"
