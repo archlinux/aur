@@ -2,7 +2,7 @@
 
 pkgname=python-instructor
 _pkgname=${pkgname#python-}
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
@@ -34,7 +34,7 @@ checkdepends=(
 )
 optdepends=('python-anthropic: support using Anthropic models')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('42900e9657f95c17c5e0b5fc209a15d660bb70f0f4a1134eae1fc914462c369d')
+sha256sums=('71634c99b6bc2f3e2ce9cf2f641499f0d1f8e52b72fb6069c3e6df3ba0cc0e94')
 
 _archive="$_pkgname-$pkgver"
 
