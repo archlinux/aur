@@ -7,10 +7,10 @@ pkgbase = updatecli-bin
 	conflicts = updatecli
 	provides = updatecli
 	arch = aarch64
-	source_aarch64 = https://github.com/updatecli/updatecli/releases/download/v0.75.0-rc.2/updatecli_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 831b30fc8a1e6f0f4cc962f815177ac80c0ee520d3fa4a0921b34e7add1098bc
+	source_aarch64 = https://github.com/updatecli/updatecli/releases/download/v0.75.0/updatecli_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 6608517af55d5e48fc3f6fb82c98d580a07499821504bd954f96ddfc665979ff
 	arch = x86_64
-	source_x86_64 = https://github.com/updatecli/updatecli/releases/download/v0.75.0-rc.2/updatecli_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = da33edfb25b8d7eac3f45e28ed94a51f9e36b2c3aef1ee789351434cfd2a326c
+	source_x86_64 = https://github.com/updatecli/updatecli/releases/download/v0.75.0/updatecli_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 60009c1a81e578c8dca9778ef6fb8bc01785a05af2725a529cfeb4e5b6549e33
 	
 pkgname = updatecli-bin
