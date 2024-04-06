@@ -3,8 +3,7 @@
 
 pkgname=qcm
 pkgver=1.0.2
-pkgrel=1
-_tag=07a05e2c2950b6dbbc226aefb7cf9980a2941fa4
+pkgrel=2
 pkgdesc="Qt client for netease cloud music"
 arch=('x86_64')
 url="https://github.com/hypengw/Qcm"
@@ -44,7 +43,7 @@ makedepends=(
     'ninja')
 provides=("qcm")
 conflicts=()
-source=("git+https://github.com/hypengw/Qcm.git#tag=${_tag}")
+source=("git+https://github.com/hypengw/Qcm.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 function prepare() {
