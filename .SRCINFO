@@ -1,7 +1,7 @@
 pkgbase = mesa-minimal-git
 	pkgdesc = an open-source implementation of the OpenGL specification, stripped down git version
-	pkgver = 24.1.0_devel.187245.89182faee8c
-	pkgrel = 1
+	pkgver = 24.1.0_devel.187587.fe36cf6cad9
+	pkgrel = 2
 	url = https://www.mesa3d.org
 	arch = x86_64
 	license = custom
@@ -31,6 +31,9 @@ pkgbase = mesa-minimal-git
 	makedepends = clang-opencl-headers-minimal-git
 	makedepends = python-ply
 	makedepends = libunwind
+	makedepends = libxdamage
+	makedepends = vulkan-icd-loader
+	makedepends = xcb-util-keysyms
 	optdepends = opengl-man-pages: for the OpenGL API man pages
 	provides = mesa
 	provides = vulkan-intel
@@ -89,7 +92,7 @@ pkgname = opencl-rusticl-mesa-minimal-git
 	depends = spirv-llvm-translator-minimal-git
 	depends = libclc-minimal-git
 	depends = spirv-tools-git
-	depends = mesa-minimal-git=24.1.0_devel.187245.89182faee8c-1
+	depends = mesa-minimal-git=24.1.0_devel.187587.fe36cf6cad9-2
 	depends = llvm-libs-minimal-git
 	depends = clang-libs-minimal-git
 	depends = expat

@@ -13,13 +13,13 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-rusticl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=24.1.0_devel.187245.89182faee8c
-pkgrel=1
+pkgver=24.1.0_devel.187587.fe36cf6cad9
+pkgrel=2
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
                             wayland-protocols glslang-minimal-git llvm-minimal-git libdrm libclc-minimal-git clang-minimal-git
                             rust rust-bindgen spirv-tools-git spirv-llvm-translator-minimal-git libvdpau systemd-libs clang-opencl-headers-minimal-git
-                            python-ply libunwind)
+                            python-ply libunwind libxdamage vulkan-icd-loader xcb-util-keysyms)
 # In order to keep the package simple and ease troubleshooting only use one llvm implementation
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layer libva-mesa-driver vulkan-swrast mesa-vdpau vulkan-driver opengl-driver)
@@ -64,8 +64,8 @@ build() {
        -D prefix=/usr \
        -D sysconfdir=/etc \
        -D platforms=x11,wayland \
-       -D gallium-drivers=radeonsi,swrast,zink,virgl \
-       -D vulkan-drivers=amd,swrast \
+       -D gallium-drivers=radeonsi,swrast,zink,virgl,iris \
+       -D vulkan-drivers=amd,swrast,intel \
        -D dri3=enabled \
        -D egl=enabled \
        -D gallium-extra-hud=true \
