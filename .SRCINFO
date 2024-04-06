@@ -1,14 +1,14 @@
 pkgbase = tailwindcss
         pkgdesc = A utility-first CSS framework for rapidly building custom user interfaces.
-        pkgver = 3.4.1
+        pkgver = 3.4.3
         pkgrel = 1
         url = https://tailwindcss.com
         arch = any
         license = MIT
         depends = nodejs>=16.0.0
         depends = npm
-        noextract = tailwindcss-3.4.1.tgz
-        source = https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.4.1.tgz
-        sha1sums = F512CA5D1DD4C9503C7D3D28A968F1AD8F5C839D
+        noextract = tailwindcss-3.4.3.tgz
+        source = https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.4.3.tgz
+        sha1sums = BE48F5283DF77DFCED705451319A5DFFB8621519
 
 pkgname = tailwindcss

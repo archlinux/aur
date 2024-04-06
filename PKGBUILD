@@ -2,7 +2,7 @@
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=tailwindcss
-pkgver=3.4.1
+pkgver=3.4.3
 pkgrel=1
 pkgdesc="A utility-first CSS framework for rapidly building custom user interfaces."
 arch=("any")
@@ -12,7 +12,7 @@ depends=('nodejs>=16.0.0' 'npm')
 optdepends=()
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha1sums=("F512CA5D1DD4C9503C7D3D28A968F1AD8F5C839D")
+sha1sums=("BE48F5283DF77DFCED705451319A5DFFB8621519")
 
 package() {
   cd $srcdir
