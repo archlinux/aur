@@ -1,11 +1,12 @@
 pkgbase = wineasio
 	pkgdesc = ASIO driver implementation for Wine
 	pkgver = 1.2.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/wineasio/wineasio
 	install = wineasio.install
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.1-or-later
+	license = GPL-2.0-or-later
 	makedepends = gcc
 	depends = jack
 	depends = lib32-jack
