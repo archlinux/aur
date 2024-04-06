@@ -1,0 +1,12 @@
+pkgbase = midi2agb-ipatix
+	pkgdesc = Open-source reimplementation of Nintendo's mid2agb for MusicPlayer2000
+	pkgver = ff820bf
+	pkgrel = 1
+	url = https://github.com/ipatix/midi2agb
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	makedepends = base-devel
+	source = git+https://github.com/ipatix/midi2agb
+
+pkgname = midi2agb
