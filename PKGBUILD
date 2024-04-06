@@ -36,5 +36,5 @@ function check() {
 
 function package() {
 	install -Dm755 "${srcdir}/clashtui/clashtui/target/release/clashtui" "${pkgdir}/usr/bin/clashtui"
-	install -Dm644 "${srcdir}/clashtui/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -Dm644 "${srcdir}/clashtui/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
