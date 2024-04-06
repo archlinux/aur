@@ -2,7 +2,7 @@
 pkgname=rickrack-bin
 _pkgname=Rickrack
 pkgver=2.9.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Generate harmonious colors freely.焰火十二卷(实时色彩工具箱)是一款免费且实用的色彩编辑器."
 arch=('x86_64')
 url="https://eigenmiao.com/rickrack/"
@@ -50,7 +50,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('928b9562eaff7aaabd18e021de2ca4dd4be8684cda2c9c361aed99e40cf14230'
-            'e93be2a7eebb30eaf857bec3a3dce7b9769da12a275d9c13a60f213bfa65f4ba')
+            'bbd65a055f2ed243d50972ebddd09efffe540d56961576c0476041e5b24eeb00')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
