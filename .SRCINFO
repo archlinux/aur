@@ -1,7 +1,7 @@
 pkgbase = xf86-input-wacom-nosystemd-git
 	pkgdesc = X.Org Wacom tablet driver. Without systemd dependency. Git checkout.
 	pkgver = 1.2.1+4.r2318.20240311.f424151
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linuxwacom/xf86-input-wacom
 	arch = i686
 	arch = x86_64
