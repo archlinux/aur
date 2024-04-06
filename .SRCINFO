@@ -1,7 +1,7 @@
 pkgbase = realm-studio-bin
 	pkgdesc = A tool, any developer or system administrator would use when building and maintaining their app built on the Realm Mobile Platform.
 	pkgver = 15.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://realm.io/products/realm-studio/
 	arch = x86_64
 	license = Apache-2.0

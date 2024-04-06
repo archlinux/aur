@@ -3,7 +3,7 @@ pkgname=realm-studio-bin
 _pkgname="Realm Studio"
 pkgver=15.0.0
 _electronversion=27
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool, any developer or system administrator would use when building and maintaining their app built on the Realm Mobile Platform.'
 arch=('x86_64')
 url="https://realm.io/products/realm-studio/"
@@ -40,5 +40,5 @@ package() {
     install -Dm755 "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/realm/binding/build/realm.node" \
         -t "${pkgdir}/usr/lib/${pkgname%-bin}/app.asar.unpacked/node_modules/realm/binding/build"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
