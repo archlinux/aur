@@ -2,7 +2,7 @@
 
 pkgname=python-doublex
 pkgver=1.9.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful test doubles framework for Python"
 arch=('any')
 license=('GPL')
