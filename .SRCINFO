@@ -1,6 +1,6 @@
 pkgbase = audacious-plugins-git
 	pkgdesc = Plugins for Audacious (git version)
-	pkgver = 4.3.1.r60.g236e85910
+	pkgver = 4.3.1.r64.g55a28d1dd
 	pkgrel = 1
 	epoch = 1
 	url = https://audacious-media-player.org/
@@ -20,6 +20,7 @@ pkgbase = audacious-plugins-git
 	depends = flac
 	depends = fluidsynth
 	depends = jack
+	depends = json-glib
 	depends = lame
 	depends = libbs2b
 	depends = libcddb
