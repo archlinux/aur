@@ -1,0 +1,5 @@
+[precice-config-visualizer]
+source = "github"
+github = "precice/config-visualizer"
+use_latest_release = "true"
+prefix = "v"

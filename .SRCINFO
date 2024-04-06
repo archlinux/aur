@@ -1,0 +1,19 @@
+pkgbase = precice-config-visualizer
+	pkgdesc = A tool for visualizing a preCICE configuration file as a dot file
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/precice/config-visualizer
+	arch = any
+	license = GPL-3.0-or-later
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-lxml
+	depends = python-pydot
+	depends = xdot
+	source = config-visualizer-0.2.0.tar.gz::https://github.com/precice/config-visualizer/archive/v0.2.0.tar.gz
+	sha512sums = 1677c75902bebc6519f3e203ad53833552c38c66e9d67d910b395881ce93d0348a1d0e1a438d9e0d55d78a54b7a68472a12c0b8cea3ef0e114867d2368109e59
+
+pkgname = precice-config-visualizer
