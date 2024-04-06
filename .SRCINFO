@@ -1,0 +1,17 @@
+pkgbase = mednafen-highscore-git
+	pkgdesc = Highscore port of Mednafen
+	pkgver = r19.af13095
+	pkgrel = 1
+	url = https://github.com/alice-mkh/mednafen-highscore
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = meson
+	depends = libhighscore-git
+	depends = zstd
+	provides = mednafen-highscore
+	conflicts = mednafen-highscore
+	source = git+https://github.com/alice-mkh/mednafen-highscore.git
+	sha256sums = SKIP
+
+pkgname = mednafen-highscore-git
