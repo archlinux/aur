@@ -1,0 +1,13 @@
+pkgbase = alpine-sdk
+	pkgdesc = Alpine Software Development Kit meta package
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://git.alpinelinux.org/
+	arch = any
+	license = GPL-2.0
+	depends = abuild
+	depends = alpine-build-base
+	depends = git
+	options = !debug
+
+pkgname = alpine-sdk
