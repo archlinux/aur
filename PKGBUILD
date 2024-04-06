@@ -2,7 +2,7 @@
 
 pkgname=ros-arch-deps
 pkgver=1.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Dependencies for building ROS on Arch"
 url="http://www.ros.org"
 arch=('x86_64' 'i686')
@@ -19,7 +19,7 @@ depends=(
   'gtest'
   'log4cxx'
   'lz4'
-  'ogre<2'
+  'ogre-1.9'
   'orocos-kdl'
   'pcl'
   'poco'
