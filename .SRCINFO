@@ -1,0 +1,16 @@
+pkgbase = blastem-highscore-git
+	pkgdesc = Highscore port of BlastEm
+	pkgver = r2446.40a8b22
+	pkgrel = 1
+	url = https://github.com/alice-mkh/blastem-highscore
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	depends = libhighscore-git
+	provides = blastem-highscore
+	conflicts = blastem-highscore
+	source = git+https://github.com/alice-mkh/blastem-highscore.git
+	sha256sums = SKIP
+
+pkgname = blastem-highscore-git
