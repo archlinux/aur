@@ -2,7 +2,7 @@
 
 pkgname=python-nose-show-skipped
 pkgver=0.1
-pkgrel=10
+pkgrel=11
 pkgdesc="A nose plugin to show skipped tests and their messages"
 arch=('any')
 url="https://github.com/cpcloud/nose-show-skipped"

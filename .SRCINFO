@@ -1,0 +1,16 @@
+pkgbase = python-nose-show-skipped
+	pkgdesc = A nose plugin to show skipped tests and their messages
+	pkgver = 0.1
+	pkgrel = 11
+	url = https://github.com/cpcloud/nose-show-skipped
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python-nose
+	depends = python-nose
+	source = https://pypi.python.org/packages/source/n/nose-show-skipped/nose-show-skipped-0.1.tar.gz
+	source = LICENSE
+	sha512sums = b6f3cbc8fdc6af7f6298ad54a5b06bd053d27197368eef1e006aff438d517dba549154eb3be35996b0bd1c291537729438f52709b76c507e20c496b6e504f5df
+	sha512sums = 3f9813adb48ca13f52ef119a6c313da4863ff02a8fabe37d48b1b2aa91b13ba672b21d7e7737a74e9c1a7647896bec0181237aa0ca693780419f49ef280a5082
+
+pkgname = python-nose-show-skipped
