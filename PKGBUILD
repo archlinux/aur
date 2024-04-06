@@ -6,7 +6,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=freefilesync
-pkgver=13.4
+pkgver=13.5
 pkgrel=1
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ source=(
 )
 noextract=("FreeFileSync_${pkgver}_Source.zip.1")
 sha256sums=('SKIP'
-            'd1ce076256a1f5a1ec30cc82cff4e3800e7da5371ee21a20cf99fa5dff4cca1a'
+            'f00b7c4286c0411da64271631523d3904bb198ff4cf2020d3f4a87dbc277ca76'
             '590d87707240529ca893199f852143f5d7c7266cb050e37e615900b013ac3d51'
             '82439b4b81b0a72652befad9b9db52ffbc0180f307c92205aa5ab344f9f82830')
 
