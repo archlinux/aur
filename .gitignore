@@ -1,4 +1,18 @@
-/pkg/
-/src/
-/libSavitar/
-/*.pkg.*
+# based on https://github.com/github/gitignore/blob/master/ArchLinuxPackages.gitignore
+*.tar
+*.tar.*
+*.rpm
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+
+*/
+*.orig
+*.bak
+*.backup
+*.kate-swp
+.directory

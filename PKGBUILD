@@ -1,38 +1,52 @@
-# Maintainer: Online122228 <premtimdukaj@hotmail.com>
-# Previous Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
-# Previous Maintainer: neodarz <neodarz@neodarz.net>
+# Contributor: Online122228 <premtimdukaj@hotmail.com>
+# Contributor: Adam Goldsmith <contact@adamgoldsmith.name>
+# Contributor: neodarz <neodarz@neodarz.net>
 # Contributor: brodokk <brodokk@brodokk.space>
 
 pkgname=libsavitar-git
-_pkgname=libSavitar
-pkgver=4.9.beta.r0.gfe88675
-pkgrel=3
+_pkgbase=libSavitar
+pkgver=5.3.0.r5.g94ad4be
+pkgrel=0.1
 pkgdesc="c++ implementation of 3mf loading with SIP python bindings"
 arch=('i686' 'x86_64')
-url="https://github.com/Ultimaker/$_pkgname"
+url="https://github.com/Ultimaker/$_pkgbase"
 license=('LGPL')
 depends=('python' 'pugixml')
-makedepends=('cmake' 'python-sip4' 'sip4' 'git')
+makedepends=(
+  'cmake'
+  'git'
+  'python-pyqt5-sip'
+  'sip'
+)
 provides=('libsavitar')
 conflicts=('libsavitar')
-source=("git+https://github.com/Ultimaker/$_pkgname.git"
-        "0001-Do-not-vendor-the-pugixml-library.patch")
-md5sums=('SKIP'
-         '6a59f74447a366e9b71d294b916e5cc6')
+source=("git+https://github.com/Ultimaker/$_pkgbase.git")
+b2sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
-  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${_pkgbase}"
+
+    # Generate git tag based version. Count only proper (v)#.#* [#=number] tags.
+    local _gitversion=$(git describe --long --tags --match '[v0-9][0-9.][0-9.]*' | sed -e 's|^v||' | tr '[:upper:]' '[:lower:]') 
+
+    # Format git-based version for pkgver
+    # Expected format: e.g. 1.5.0rc2.r521.g99982a1c
+    # Or in case of 'post': 1.5.0.post1.r521.g99982a1c
+    echo "${_gitversion}" | sed \
+        -e 's;^\([0-9][0-9.]*\)[-_.]\([a-zA-Z]\+\);\1\2;' \
+        -e 's;\([0-9]\+-g\);r\1;' \
+        -e 's;-;.;g' \
+        -e 's;\(post.*\);\.\1;'
 }
 
 prepare() {
-  cd "${_pkgname}"
+  cd "${_pkgbase}"
   sed -i 's,DESTINATION lib/python${PYTHON_VERSION_MAJOR}/dist-packages,DESTINATION lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages,g' CMakeLists.txt
   sed -i 's,DESTINATION lib/python${PYTHON_VERSION_MAJOR}/dist-packages/cura),DESTINATION lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages/cura),g' CMakeLists.txt
 }
 
 build() {
-  cd "${_pkgname}"
+  cd "${_pkgbase}"
   mkdir -p build && cd build
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -42,6 +56,6 @@ build() {
 }
 
 package() {
-  cd "${_pkgname}/build"
+  cd "${_pkgbase}/build"
   make DESTDIR="${pkgdir}" install
 }
