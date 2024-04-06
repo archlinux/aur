@@ -1,0 +1,14 @@
+pkgbase = python-selectors2
+	pkgdesc = Backported, durable, and portable selectors.
+	pkgver = 2.0.2
+	pkgrel = 7
+	url = https://github.com/SethMichaelLarson/selectors2
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	source = python-selectors2-2.0.2.tar.gz::https://github.com/SethMichaelLarson/selectors2/archive/2.0.2.tar.gz
+	source = python310.patch
+	sha256sums = 43e80168bec134ada813d4126b8eac071450bad8ec1bbdd91ec6481050dbc87e
+	sha256sums = 3a05a9b4c9b5a48db0c3c9d961badcb0fe7466f3f0fb12063e8ebc53be9a8041
+
+pkgname = python-selectors2
