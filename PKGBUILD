@@ -3,7 +3,7 @@
 # Maintainer: fossdd <fossdd@pwned.life>
 pkgname=atools
 pkgver=20.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Auxilary scripts for abuild"
 url="https://gitlab.alpinelinux.org/Leo/atools"
 arch=("x86_64" "aarch64" "armv7" "x86" "ppc64le" "s390x")
@@ -11,6 +11,7 @@ license=("MIT")
 depends=("lua53" "busybox")
 makedepends=("scdoc" "redo" "go")
 checkdepends=("bats")
+optdepends=("abuild: Script to build Alpine Packages")
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.alpinelinux.org/Leo/atools/-/archive/$pkgver/atools-$pkgver.tar.gz")
 
 prepare() {
