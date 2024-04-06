@@ -1,0 +1,22 @@
+pkgbase = fooyin-bin
+	pkgdesc = A customisable music player
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/ludouzi/fooyin
+	arch = any
+	license = GPL-3.0-only
+	depends = qt6-base
+	depends = alsa-lib
+	depends = ffmpeg
+	depends = taglib
+	optdepends = sdl2
+	optdepends = pipewire
+	provides = fooyin=0.4.0
+	conflicts = fooyin
+	options = !strip
+	source = fooyin-0.4.0.deb::https://github.com/ludouzi/fooyin/releases/download/v0.4.0/fooyin_0.4.0-mantic_amd64.deb
+	source = fooyin.sh
+	sha256sums = 8c1a21ae3bb73824dc6911dfd92cd9e311c5ef191d032019b914f25cec0ef4b4
+	sha256sums = 840eb0ad528d294064aa09b2b6df7a0e4a800249f43305c756cf78bee627fe1d
+
+pkgname = fooyin-bin
