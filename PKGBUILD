@@ -1,3 +1,4 @@
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=blastem-highscore-git
 pkgver=r2446.40a8b22
 pkgrel=1
