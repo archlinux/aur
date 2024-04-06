@@ -8,6 +8,7 @@ pkgname=(
 pkgbase=colloid-icon-theme-git
 pkgver=2024.02.28.r1.ga671b46
 pkgrel=1
+pkgdesc="Icon theme for Linux desktops"
 arch=('any')
 url="https://github.com/vinceliuice/Colloid-icon-theme"
 license=('GPL-3.0-or-later')
@@ -29,7 +30,6 @@ prepare() {
 }
 
 package_colloid-icon-theme-git() {
-  pkgdesc="Icon theme for Linux desktops"
   depends=('gtk-update-icon-cache' 'hicolor-icon-theme')
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
