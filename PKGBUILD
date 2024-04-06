@@ -2,7 +2,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=windterm-bin
 _pkgname=WindTerm
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc='A Quicker and better SSH/Telnet/Serial/Shell/Sftp client for DevOps.'
 arch=('x86_64')
@@ -23,18 +23,28 @@ options=(
     '!strip'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_Linux_Portable_${CARCH}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/2.6.0/${_pkgname}_${pkgver}_Linux_Portable_${CARCH}.tar.gz"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2cc89a1ab2a616583e806925a9a07f4df02716fb7f2d27fdc1817fcd01dcbb8d'
-            '2f136dd34110587056b818f8aa68beeacdbb278e1eb92b42545a10fbf2e65b8b')
+sha256sums=('2704ec7d49044a5daf531e3c4da9ca6003955b0eaae31198fa2d0facdf467e90'
+            '612bb2919e8389fe46f4d8cae00d6c18ec4a3b2cfc065c12266273205b75c112')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     sed "s|/usr/bin/${pkgname%-bin}|${pkgname%-bin} %U|g" -i "${srcdir}/${_pkgname}_${pkgver}/${pkgname%-bin}.desktop"
+    find "${srcdir}/${_pkgname}_${pkgver}/" -type d -exec chmod 755 {} \;
+    find "${srcdir}/${_pkgname}_${pkgver}/global" -type f -exec chmod 644 {} \;
+    find "${srcdir}/${_pkgname}_${pkgver}/lib" -type f -exec chmod 644 {} \;
+    find "${srcdir}/${_pkgname}_${pkgver}/terminal/applets" -type f -exec chmod 755 {} \;
+    find "${srcdir}/${_pkgname}_${pkgver}/terminal/commands" -type f -exec chmod 755 {} \;
+    find "${srcdir}/${_pkgname}_${pkgver}/terminal/configs" -type f -exec chmod 644 {} \;
+    find "${srcdir}/${_pkgname}_${pkgver}/terminal/protocols" -type f -exec chmod 644 {} \;
+    find "${srcdir}/${_pkgname}_${pkgver}/terminal/schemes" -type f -exec chmod 644 {} \;
+    find "${srcdir}/${_pkgname}_${pkgver}/terminal/terms" -type f -exec chmod 644 {} \;
+    find "${srcdir}/${_pkgname}_${pkgver}/vendors" -type f -exec chmod 644 {} \;
+    chmod 644 "${srcdir}/${_pkgname}_${pkgver}/"{license.txt,qt.conf,"${pkgname%-bin}".desktop,"${pkgname%-bin}.png"}
     chmod 755 "${srcdir}/${_pkgname}_${pkgver}/${_pkgname}"
-    chmod 755 "${srcdir}/${_pkgname}_${pkgver}/vendors/lrzsz/"*
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
