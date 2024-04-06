@@ -13,7 +13,6 @@ depends=("gcc-libs" "glibc")
 source=("git+https://github.com/JohanChane/clashtui.git#branch=main")
 md5sums=("SKIP")
 provides=("clashtui")
-conflicts=("clashtui")
 options=(!lto)
 
 function pkgver() {
