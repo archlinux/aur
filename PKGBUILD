@@ -1,12 +1,12 @@
 # Maintainer: Kazel <address at domain dot tld>
 pkgname=usbguard-qt
 pkgver=0.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc="USBGuard Qt GUI"
 
 arch=("x86_64")
 url="https://gitlab.com/WheelchairArtist/$pkgname"
-license=('GPL-2.0-only')
+license=('GPL-2.0-or-later')
 
 replaces=('usbguard-applet-qt')
 conflicts=('usbguard-applet-qt')
