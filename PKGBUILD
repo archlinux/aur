@@ -2,7 +2,7 @@
 _appname=caprine
 pkgname=${_appname}-ng-git
 _pkgname=Caprine
-pkgver=2.57.0.r68.g4894411
+pkgver=2.60.1.r0.gde34b2b
 _electronversion=22
 _nodeversion=16
 pkgrel=1
