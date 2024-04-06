@@ -3,7 +3,7 @@
 pkgname=python-prance
 pkgver=0.22.11.04.0
 _openapi_commit=0f9d3ec7c033fef184ec54e1ffc201b2d61ce023
-pkgrel=2
+pkgrel=3
 pkgdesc="Resolving Swagger/OpenAPI 2.0 and 3.0 Parser"
 url="https://github.com/jfinkhaeuser/prance"
 license=('custom:MITNFA')
@@ -31,7 +31,8 @@ build() {
 
 check() {
   cd prance-$pkgver
-  pytest
+  # Code depends on a service which is broken with a Bad gateway https://mermade.org.uk/api/v1/convert
+  pytest -k 'not test_convert_petstore and not test_convert and not test_openapi_spec_validator_validate_failure'
 }
 
 package() {
