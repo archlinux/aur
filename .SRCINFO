@@ -10,7 +10,7 @@ pkgbase = plutolang
 	depends = gcc-libs
 	depends = readline
 	conflicts = pluto
-	source = pluto-git::git+https://github.com/PlutoLang/Pluto#tag=0.9.0
+	source = plutolang-git::git+https://github.com/PlutoLang/Pluto#tag=0.9.0
 	sha256sums = SKIP
 
 pkgname = plutolang
