@@ -1,0 +1,15 @@
+pkgbase = bsnes-highscore-git
+	pkgdesc = Highscore port of BSNES
+	pkgver = r3019.1ae043e3
+	pkgrel = 1
+	url = https://github.com/alice-mkh/bsnes
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = libhighscore-git
+	provides = bsnes-highscore
+	conflicts = bsnes-highscore
+	source = git+https://github.com/alice-mkh/bsnes.git
+	sha256sums = SKIP
+
+pkgname = bsnes-highscore-git
