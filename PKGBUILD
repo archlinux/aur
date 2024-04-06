@@ -5,7 +5,7 @@
 _name=recommonmark
 pkgname=python-$_name
 pkgver=0.7.1
-pkgrel=6
+pkgrel=7
 pkgdesc='Markdown parser for docutils'
 arch=('any')
 url="https://recommonmark.readthedocs.io/"
