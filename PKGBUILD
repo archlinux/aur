@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=celda
-_pkgver=1.18.1
+_pkgver=1.18.2
 pkgname=r-${_pkgname,,}
-pkgver=1.18.1
+pkgver=1.18.2
 pkgrel=1
 pkgdesc='CEllular Latent Dirichlet Allocation'
 arch=('x86_64')
@@ -56,7 +56,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b73d43d5d1817ceabb91d14251e97fe2bfef05aff54b68b9741234eed2ed78f3')
+sha256sums=('52a998d6cd45029664c1ca8d014e515739cc6b9a60b1281a4f613a2d8b7bfef5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
