@@ -3,12 +3,12 @@ pkgbase=python-astropy-healpix
 _pyname=astropy_healpix
 _pname=${pkgbase#python-}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="BSD-licensed HEALPix for Astropy"
 arch=('i686' 'x86_64')
 url="http://astropy-healpix.readthedocs.io"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
              'python-extension-helpers'
              'python-wheel'
@@ -17,15 +17,15 @@ makedepends=('python-setuptools-scm'
              'python-numpy'
              'python-sphinx-astropy'
              'python-astropy')
-checkdepends=('python-pytest-doctestplus'
-              'python-pytest-astropy-header'
+checkdepends=('python-pytest-astropy-header'
+              'python-pytest-doctestplus'
               'python-hypothesis'
               'python-healpy')  # astropy already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "https://lambda.gsfc.nasa.gov/data/map/dr3/skymaps/5yr//wmap_band_imap_r9_5yr_K_v3.fits"
         'fix_deprecation_warning.patch'
         'use_local_doc_fits.patch')
-md5sums=('2ffe869d662a8ccdd9a5229fcffb2dda'
+md5sums=('6e791154dfc2510353cfd3e44e7e783d'
          'f183da2392e37b9b424e9866d7bca559'
          '71e532a1fed7a57d4ccf0d3e41035dd8'
          '6fc85696c0103b265309db0fa3339b33')
@@ -44,7 +44,7 @@ prepare() {
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation --skip-dependency-check
 
     msg "Building Docs"
     PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
