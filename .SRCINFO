@@ -1,0 +1,18 @@
+pkgbase = daily-diary-bin
+	pkgdesc = An app to create a diary entry every day
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = https://github.com/Voklen/Daily-Diary
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = gtk3
+	provides = daily-diary=1.4.3
+	conflicts = daily-diary
+	source = daily-diary-1.4.3.tar.gz::https://github.com/Voklen/Daily-Diary/releases/download/v1.4.3/daily_diary_linux.tar.gz
+	source = daily-diary-1.4.3.png::https://raw.githubusercontent.com/Voklen/Daily-Diary/v1.4.3/metadata/en-GB/images/icon.png
+	source = daily-diary.sh
+	sha256sums = d34fff1b1796c94403fb65ee30c507cf4348ef4d51d3caff1eda5acce809f538
+	sha256sums = dc10c98253ebd96235ef66b2343a1f3a73a83d90ce7222fb81b8d5e79e6c341d
+	sha256sums = 840eb0ad528d294064aa09b2b6df7a0e4a800249f43305c756cf78bee627fe1d
+
+pkgname = daily-diary-bin
