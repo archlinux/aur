@@ -3,8 +3,8 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-kelvie-fw-git
-_tag=v6.8.2
-pkgver=6.8.2.r11.4bfb164f0513.slim
+_tag=v6.8.4
+pkgver=6.8.4.r11.221efef6fb1b.slim
 pkgrel=1
 pkgdesc="Linux kernel for Kelvie's AMD Framework 13 laptop"
 url="https://www.kernel.org"
@@ -32,6 +32,12 @@ source=(
   v2_20231126_dustin_platform_chrome_cros_ec_lpc_add_support_for_amd_framework_laptops.mbx # for ectool to work on AMD
   0001-Add-a-lockdown_hibernate-parameter.patch # allow lockdown_hibernate kernel parameter
 )
+sha256sums=('a69a5c48c40b01bda4a5381c18633f3651be760e1afa072e4983b4d1c5d65f1c'
+            '46451dbc3305d4c2e726a2f1943bddf697c5bb6815d93e5baed80bca82e53fdc'
+            '8697057c6eaffa3dd398e39b013cdb47f3a3247d8d2bc5334c04f2cabc8758dd'
+            '62be11c4f4b0dc565a78eb9f82aa7147fd5296c1b9ec61d08e8b5c6757da80e1'
+            '7ae65ef5c7bad6dc1f733809b86a8f8b7322ebc5ae6733f0968175495d8e35f9'
+            '7d6037eb6fdbad042c63f157c095f737e8b58d2ce2f870700c95c876b7dc21c3')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -238,9 +244,3 @@ for _p in "${pkgname[@]}"; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
-sha256sums=('d1da77ec54ccbcc539463bb2523f2a7ddd9e8d1adbedb148d55687b998d9ced1'
-            '46451dbc3305d4c2e726a2f1943bddf697c5bb6815d93e5baed80bca82e53fdc'
-            '1d8452b747d14c1687596555c4a41f1957877f2dac3251f58317edb09e256c79'
-            '62be11c4f4b0dc565a78eb9f82aa7147fd5296c1b9ec61d08e8b5c6757da80e1'
-            '7ae65ef5c7bad6dc1f733809b86a8f8b7322ebc5ae6733f0968175495d8e35f9'
-            '7d6037eb6fdbad042c63f157c095f737e8b58d2ce2f870700c95c876b7dc21c3')
