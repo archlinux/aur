@@ -1,0 +1,5 @@
+pkg
+src/webui
+webui
+webui-nossl-2.4.2+36+ga994629f-1-x86_64.pkg.tar.zst
+webui-nossl-debug-2.4.2+36+ga994629f-1-x86_64.pkg.tar.zst
