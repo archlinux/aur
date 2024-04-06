@@ -1,0 +1,17 @@
+pkgbase = fortify-headers
+	pkgdesc = standalone fortify source implementation
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://git.2f30.org/fortify-headers/
+	arch = any
+	license = 0BSD
+	source = http://dl.2f30.org/releases/fortify-headers-1.1.tar.gz
+	source = 0001-add-initial-clang-support.patch
+	source = 0002-avoid-__extension__-with-clang.patch
+	source = 0003-Disable-wrapping-of-ppoll.patch
+	sha256sums = 6ba5d860a2d2ba4c3346924b93930c34856eafe148bdbdf271ecab8065201fb6
+	sha256sums = 41b0e73131959af228928c3a96403e9831c53033fc07494b63cc3d72252118a5
+	sha256sums = 2e8a14f08e6d77b7ec7d78c16a16b0bd96e147bafd1d35a54fba866cf13cf336
+	sha256sums = 356e3a8f090a4bfd21bc2ed615a7ad6c0c90c5ffd82e7c8457e63c1bda5ac82c
+
+pkgname = fortify-headers
