@@ -8,10 +8,31 @@ url="https://github.com/Ultimaker/libArcus"
 license=('GPL2')
 provides=('arcus' 'libarcus')
 conflicts=('arcus' 'libarcus')
-depends=('python' 'protobuf' 'python')
-makedepends=('git' 'cmake' 'ninja' 'conan')
-source=('git+https://github.com/Ultimaker/libArcus.git')
-md5sums=('SKIP')
+depends=(
+  'protobuf'
+  'python'
+)
+makedepends=(
+  'cmake'
+  'conan'
+  'cura'
+  'git'
+  'ninja'
+  'python-virtualenv'
+)
+source=('git+https://github.com/Ultimaker/libArcus.git'
+        'git+https://github.com/ultimaker/conan-config.git')
+b2sums=('SKIP'
+        'SKIP')
+
+prepare() {
+  cd libArcus
+  conan config install ../conan-config
+  conan profile detect --force
+  conan remote remove cura # as the JFrog artifact is behind loginwall, so cura needs to be in makedepends instead
+
+  conan install . --build=missing --update
+}
 
 pkgver() {
   cd libArcus
@@ -22,7 +43,7 @@ build() {
   mkdir -p libArcus/build
   cd libArcus/build
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_EXAMPLES=OFF -DCMAKE_INSTALL_PREFIX=/usr ..
-  make
+  cmake --build .
 }
 
 package() {
