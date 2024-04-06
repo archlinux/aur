@@ -1,0 +1,33 @@
+[Unit]
+Description=pluggable transport proxy for Tor, implementing obfs4
+After=network.target nss-lookup.target
+
+[Service]
+ExecStart=/usr/bin/lyrebird-proxy
+
+Restart=on-failure
+
+# Hardening
+DynamicUser=true
+NoNewPrivileges=true
+
+PrivateTmp=true
+PrivateDevices=true
+PrivateMounts=true
+PrivateIPC=true
+
+ProtectHome=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectKernelLogs=true
+ProtectProc=invisible
+ProtectHostname=true
+ProtectClock=true
+ProtectSystem=strict
+
+MemoryDenyWriteExecute=true
+RestrictRealtime=true
+
+[Install]
+WantedBy=multi-user.target

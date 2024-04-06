@@ -1,0 +1,21 @@
+pkgbase = lyrebird-proxy-git
+	pkgdesc = pluggable transport proxy for Tor, implementing obfs4
+	pkgver = r241.aab4891
+	pkgrel = 1
+	url = https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/lyrebird
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = BSD-3-Clause
+	makedepends = go
+	depends = glibc
+	provides = lyrebird-proxy
+	conflicts = lyrebird-proxy
+	source = lyrebird-proxy-git::git+https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/lyrebird.git
+	source = lyrebird-proxy.service
+	sha256sums = SKIP
+	sha256sums = 63b16cb083656a661d1cbe0198f2f3bb0fabc6bb09ad4501d1c470c7b3f832ab
+	b2sums = SKIP
+	b2sums = a5e898ccf657f541ed8c406c4f1970c5b8bd7389725899aced3f9d2b0f134d3f4e804d065f9018789a1403f209d5ad04e8af1dc4ffe719e844fabee53d1a7fe3
+
+pkgname = lyrebird-proxy-git
