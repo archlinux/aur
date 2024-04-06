@@ -1,11 +1,10 @@
 pkgbase = manage-kernel-backups
 	pkgdesc = Script collection to create and manage backups of updated kernels and their modules
 	pkgver = 1.0
-	pkgrel = 1
-	url = https://support.brother.com/g/b/downloadlist.aspx?c=de&lang=de&prod=dcp7065dn_all&os=128&flang=English
+	pkgrel = 2
 	arch = i686
 	arch = x86_64
-	license = custom:brother commercial license
+	license = GPL-3.0-or-later
 	depends = bash
 	optdepends = dkms
 	conflicts = kernel-modules-hook

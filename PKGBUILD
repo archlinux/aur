@@ -1,11 +1,10 @@
 # Maintainer: ghostbuster <ghost_buster+aur@posteo.de>
 pkgname="manage-kernel-backups"
 pkgver="1.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Script collection to create and manage backups of updated kernels and their modules"
 arch=('i686' 'x86_64')
-url="https://support.brother.com/g/b/downloadlist.aspx?c=de&lang=de&prod=dcp7065dn_all&os=128&flang=English"
-license=('custom:brother commercial license')
+license=('GPL-3.0-or-later')
 
 depends=('bash')
 optdepends=('dkms')
