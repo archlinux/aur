@@ -1,7 +1,7 @@
 # Maintainer: noodle <silentnoodle@cock.li>
 pkgname=passbolt-cli
 _pkgname=go-passbolt-cli
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Passbolt CLI tool'
 arch=('x86_64')
@@ -9,18 +9,18 @@ url="https://passbolt.com"
 license=('MIT')
 makedepends=('go')
 source=("https://github.com/passbolt/$_pkgname/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('755197cd0359cc18909f91e9b805f52d3dc554a1c68f021ad78c2a46ae25f379')
+sha256sums=('15c7c0141ae1fd9cb304dd4c1747c8c2f1fe2c9555f04f69d31f3c3ec9547686')
 
 prepare(){
   cd "$srcdir/$_pkgname-$pkgver"
   mkdir -p build/
   mkdir -p completion
   mkdir -p man/
-  go run main.go completion bash > completion/bash
-  go run main.go completion zsh > completion/zsh
-  go run main.go completion fish > completion/fish
-  go run main.go completion powershell > completion/powershell
-  go run main.go gendoc --type man
+  go run . completion bash > completion/bash
+  go run . completion zsh > completion/zsh
+  go run . completion fish > completion/fish
+  go run . completion powershell > completion/powershell
+  go run . gendoc --type man
 }
 
 build() {
