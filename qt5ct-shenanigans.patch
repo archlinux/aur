@@ -130,7 +130,7 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
  #endif
          QGuiApplication::setFont(m_generalFont);
 +        //don't override the value explicitly set by the user
-+        if (QQuickStyle::name().isEmpty()) {
++        if (QQuickStyle::name().isEmpty() || QQuickStyle::name() == QLatin1String("Fusion")) {
 +            QQuickStyle::setStyle(QLatin1String("org.kde.desktop"));
 +        }
      }
