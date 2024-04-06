@@ -1,7 +1,8 @@
+# Maintainer: Bill Durr <billyburly@gmail.com>
 # Maintainer: Giovanni Harting
 
 pkgname=zwave-js-ui
-pkgver=9.3.1
+pkgver=9.10.2
 pkgrel=1
 epoch=1
 pkgdesc="Full featured Z-Wave Control Panel UI and MQTT gateway"
@@ -18,7 +19,7 @@ source=("https://github.com/zwave-js/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 	"$pkgname.tmpfiles"
 	"$pkgname.service"
 	"$pkgname.install")
-b2sums=('6c26a1cf4c7a13db99879a6a87c21493317da5a8cc5b8a53e9537ea835399696fe31fceeb1080bbf329ef3f3e8d7ba0f934894e15ca601f505ebfbeaceed561a'
+b2sums=('d0c3a0f8df88c5837b11d9c6dcfb9dd57896948cb24b5cb01f2003d33ee728361e2515f1378495b05ab99df8fbf3d429adb9f717bb3263277d3a6d536f8e7011'
         '20fe5b3391e8ef54b7047c082b183e492bea4b6b9dac11ebfa69e98ca6f6889cfde7a55897f6a6a8d91a2753a3a316cde8c4802d4e23a65bf421eeac8a2725fe'
         'e2d3de5e1446f5b1f7c97581a0fa66022050993399d23afba63079ba6c690f995708dffca442170da44abc526103143fbecb94e95a9b7d85fcbf37b3fc49db5e'
         '8b2c0b4e3659297e311f7f3ae69d337cddfc6dc55a5edc4f39bf8a26bc728cfb7ca5fe56d89e253d17d74646336f53d5cacac5b18cc94f2be8fd29ff900615de'
@@ -96,14 +97,16 @@ package() {
          -exec rm -rvf {} +
 
   install -d "$pkgdir"/usr/share/webapps/$pkgname/dist/ "$pkgdir"/etc/$pkgname/ "$pkgdir"/usr/share/webapps/$pkgname/snippets
-  cp -r {node_modules,bin,lib,server,app.ts} "$pkgdir"/usr/share/webapps/$pkgname
+  cp -r {node_modules,server} "$pkgdir"/usr/share/webapps/$pkgname
+  cp -r api/{bin,lib,app.ts} "$pkgdir"/usr/share/webapps/$pkgname
   cp -r dist/* "$pkgdir"/usr/share/webapps/$pkgname/dist/
   cp -r snippets/* "$pkgdir"/usr/share/webapps/$pkgname/snippets
-  cp -r config/* "$pkgdir"/etc/$pkgname/
+  cp -r api/config/* "$pkgdir"/etc/$pkgname/
   ln -s /etc/$pkgname/ "$pkgdir"/usr/share/webapps/$pkgname/config
   ln -s /var/lib/$pkgname "$pkgdir"/usr/share/webapps/$pkgname/store
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
   install -Dm644 "${srcdir}"/$pkgname.sysusers "${pkgdir}"/usr/lib/sysusers.d/$pkgname.conf
   install -Dm644 "${srcdir}"/$pkgname.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/$pkgname.conf
   install -Dm644 "${srcdir}"/$pkgname.service -t "$pkgdir"/usr/lib/systemd/system/
+  install -Dm644 package.json "$pkgdir"/usr/share/webapps/$pkgname/package.json
 }
