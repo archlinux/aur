@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=proxyC
-_pkgver=0.3.4
+_pkgver=0.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Computes Proximity in Large Sparse Matrices"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -14,7 +14,6 @@ depends=(
   blas
   onetbb
   r-rcpp
-  r-rcppparallel
 )
 makedepends=(
   r-rcpparmadillo
@@ -32,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e57fe4d1fd003337b06845fe6c8cd591')
-b2sums=('c35d2ec7a6f506b0fb9f5ad3e0392289d147731a1f20d065ee9bde4cb8474e95854bc78be146cb64ba8b526eedc9cd2adbb44e6ef39b3523525736b80e95f901')
+md5sums=('42557eb4e121b03858186d3cc7eea542')
+b2sums=('451afa0b9b22431f63c0c357f0633b356b434846392c40a30c5d25ac1a7a73595725a66109ee2d29e896e5188ef8c2617d42836e81fad55c37c2f01d2d9a1de2')
 
 build() {
   mkdir build
