@@ -2,12 +2,12 @@
 pkgbase=python-astroplan
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.9.1
+pkgver=0.10
 pkgrel=1
 pkgdesc="A python package to help astronomers plan observations"
 arch=('any')
 url="https://astroplan.readthedocs.io"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
@@ -19,12 +19,12 @@ makedepends=('python-setuptools-scm'
              'graphviz')
 checkdepends=('python-pytest-astropy-header'
               'python-pytest-doctestplus'
-              'python-pytest-mpl') # six <- .. <- matplotlib <- pytest-mpl; pytz -< .. <- sphinx; astropy <- astroquery
+              'python-pytest-mpl') # six <- dateutil <- matplotlib <- pytest-mpl; pytz <- babel <- sphinx; astropy <- astroquery
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
 #       "http://hpiers.obspm.fr/iers/eop/eopc04/eopc04_IAU2000.62-now"
 #       "https://skyview.gsfc.nasa.gov/tempspace/fits/skv9820097384828.fits"
         'fix_doc_index_astropy_link.patch')
-md5sums=('d75b6900656e78ab3ba62c4aadd2b1d3'
+md5sums=('3d823e9f1bdf5f4183149e73c63557dc'
          'be56be5926b43589b273c16544c5241a')
 
 get_pyver() {

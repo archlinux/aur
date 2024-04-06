@@ -1,10 +1,10 @@
 pkgbase = python-astroplan
 	pkgdesc = A python package to help astronomers plan observations
-	pkgver = 0.9.1
+	pkgver = 0.10
 	pkgrel = 1
 	url = https://astroplan.readthedocs.io
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	checkdepends = python-pytest-astropy-header
 	checkdepends = python-pytest-doctestplus
 	checkdepends = python-pytest-mpl
@@ -17,9 +17,9 @@ pkgbase = python-astroplan
 	makedepends = python-pydata-sphinx-theme
 	makedepends = python-astroquery
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/a/astroplan/astroplan-0.9.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/a/astroplan/astroplan-0.10.tar.gz
 	source = fix_doc_index_astropy_link.patch
-	md5sums = d75b6900656e78ab3ba62c4aadd2b1d3
+	md5sums = 3d823e9f1bdf5f4183149e73c63557dc
 	md5sums = be56be5926b43589b273c16544c5241a
 
 pkgname = python-astroplan
