@@ -23,6 +23,18 @@ makedepends=(
   'meson'
   'vala'
 )
+#optdepends=(
+#  'blastem-highscore-git'
+#  'bsnes-highscore-git'
+#  'desmume-highscore-git'
+#  'gearsystem-highscore-git'
+#  'mednafen-highscore-git'
+#  'mgba-highscore-git'
+#  'mupen64plus-highscore-git'
+#  'nestopia-highscore-git'
+#  'prosystem-highscore-git'
+#  'stella-highscore-git'
+#)
 provides=("${pkgname%-git}" 'gnome-games')
 conflicts=("${pkgname%-git}" 'gnome-games')
 source=('git+https://gitlab.gnome.org/World/highscore.git')
