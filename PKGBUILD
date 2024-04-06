@@ -1,15 +1,15 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qtvsplayer-bin
 _pkgname=QtVsPlayer
-pkgver=1.0.52_1
-pkgrel=2
-pkgdesc="QtVsPlayer for Hikvision, QtVsPlayer can read local video files of Hikvision and display blue, green and red vector.It read real time live stream"
+pkgver=1.0.52_3
+pkgrel=1
+pkgdesc="Read local video files of Hikvision devices and display blue, green and red vectors."
 arch=(
     'aarch64'
     'x86_64'
 )
 url="https://github.com/surfzoid/QtVsPlayer"
-license=("GPL3")
+license=("GPL-3.0-only")
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
@@ -19,25 +19,25 @@ depends=(
     'libx11'
     'libglvnd'
     'openal'
-    'openssl-1.1'
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/${pkgver//_/-}/${_pkgname}_${pkgver//_/-}_bullseye-arm64.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/${pkgver//_/-}/${_pkgname}_${pkgver//_/-}_ubuntu-latest-amd64.deb")
-sha256sums_aarch64=('a8040dc4af3920829ce5f86880f32fa57dac836def528209f8264e21e7e4fca3')
-sha256sums_x86_64=('2361f785132b356a061391eee5600781be964d9383ddd7819f20ac907d29d909')
+source=("${pkgname%-bin}.sh")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/${pkgver//_/-}/${_pkgname}-${pkgver//_/-}.surf.mlo.aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/${pkgver//_/-}/${_pkgname}-${pkgver//_/-}.surf.mlo.x86_64.rpm")
+sha256sums=('b557fd5718a13641f40fbf227a9d6a2b48834c36f003dbbc54275215a16afc68')
+sha256sums_aarch64=('a38c294dd7aa44d8a7984baf9be5ed469be2621bd8cfd36e0f80b32b24c17559')
+sha256sums_x86_64=('2a12f0f3867f75144e5259123dbce704ff06df3e5601457d42138591b88d6b10')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    sed -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|${_pkgname}|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     sed "s|/usr/bin/${_pkgname}|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g;s|/usr/bin|/opt/${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
-    echo "/opt/${pkgname%-bin}/" >> "${srcdir}/${pkgname%-bin}.conf"
-    echo "/opt/${pkgname%-bin}/HCNetSDKCom/" >> "${srcdir}/${pkgname%-bin}.conf"
 }
 package() {
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/usr/bin/${_pkgname}" -t "${pkgdir}/opt/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.conf" -t "${pkgdir}/etc/ld.so.conf.d"
     cp -r "${srcdir}/usr/lib64/${_pkgname}/"* "${pkgdir}/opt/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/bin"
-    ln -sf "/opt/${pkgname%-bin}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/share/${_pkgname}/translations/${_pkgname}_fr_FR.qm" -t "${pkgdir}/opt/${pkgname%-bin}/translations"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/icons/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 }
