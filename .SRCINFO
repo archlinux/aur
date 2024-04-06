@@ -1,12 +1,12 @@
 pkgbase = git-completion
 	pkgdesc = Git completions for zsh and bash
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/felipec/git-completion
 	arch = any
 	license = GPL2
 	makedepends = git
-	source = https://github.com/felipec/git-completion/archive/v2.0.tar.gz
-	sha1sums = 0f6c53245d10058d4eee0cec918adb89f42bba31
+	source = https://github.com/felipec/git-completion/archive/v2.1.tar.gz
+	sha1sums = fa9fc5edfb52fb3f9b1de54a7b5207b3d8769faf
 
 pkgname = git-completion
