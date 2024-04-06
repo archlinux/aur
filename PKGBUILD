@@ -1,29 +1,63 @@
-# Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 
 pkgname=python-visvis
-_pkg="${pkgname#python-}"
-pkgver=1.13.0
+pkgver=1.14.0.r3.gd8f36d4
+_commit=d8f36d4b33554a24918c7043188ccffcc054690e
 pkgrel=1
 pkgdesc="Python library for visualization of 1D to 4D data"
 url="https://github.com/almarklein/visvis"
 arch=('any')
-license=('BSD')
-depends=('python-numpy' 'python-opengl')
-makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
-optdepends=('python-pyqt4: for Qt4 backend'
-            'python-pyside: for another Qt4 backend'
-            'wxpython: for WxWidgets backend'
-            'pygtk: for GTK backend')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a2858c61b9b2ff17d1f9e8bffb0445077e2e9bb93fe59ee3812dcaa7e0d43fda')
+license=('BSD-3-Clause')
+depends=(
+  'python'
+  'python-imageio'
+  'python-numpy'
+  'python-opengl'
+  'python-pillow'
+  'python-scipy'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+optdepends=(
+  'pyside2: for another Qt5 GUI backend'
+  'pyside6: for another Qt6 GUI backend'
+  'python-glfw: for GLFW GUI backend'
+  'python-pyfltk: for an FLTK GUI backend'
+  'python-pyqt5: for a Qt5 GUI backend'
+  'python-pyqt6: for a Qt6 GUI backend'
+  'python-wxpython: for the WxWidgets GUI backend'
+)
+source=("${pkgname}::git+${url}.git#commit=${_commit}")
+b2sums=('SKIP')
+
+pkgver() {
+    cd "${pkgname}"
+
+    # Generate git tag based version. Count only proper (v)#.#* [#=number] tags.
+    local _gitversion=$(git describe --long --tags --match '[v0-9][0-9.][0-9.]*' | sed -e 's|^v||' | tr '[:upper:]' '[:lower:]') 
+
+    # Format git-based version for pkgver
+    # Expected format: e.g. 1.5.0rc2.r521.g99982a1c
+    # Or in case of 'post': 1.5.0.post1.r521.g99982a1c
+    echo "${_gitversion}" | sed \
+        -e 's;^\([0-9][0-9.]*\)[-_.]\([a-zA-Z]\+\);\1\2;' \
+        -e 's;\([0-9]\+-g\);r\1;' \
+        -e 's;-;.;g' \
+        -e 's;\(post.*\);\.\1;'
+}
 
 build() {
-	cd "$_pkg-$pkgver"
-	python -m build --wheel --no-isolation
+  cd "${pkgname}"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "$_pkg-$pkgver"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
-	install -Dm644 license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${pkgname}"
+  python -m installer --destdir="$pkgdir/" dist/*.whl
+  install -Dm644 license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
