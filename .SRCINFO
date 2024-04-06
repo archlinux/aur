@@ -1,7 +1,7 @@
 pkgbase = translate-toolkit
 	pkgdesc = A toolkit to convert between various different translation formats, help process and validate localisations
 	pkgver = 3.12.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://toolkit.translatehouse.org/
 	arch = any
 	license = GPL

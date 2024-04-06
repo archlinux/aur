@@ -5,7 +5,7 @@
 
 pkgname=translate-toolkit
 pkgver=3.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A toolkit to convert between various different translation formats, help process and validate localisations"
 arch=('any')
 url="https://toolkit.translatehouse.org/"
