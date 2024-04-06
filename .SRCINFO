@@ -1,0 +1,14 @@
+pkgbase = python-pytest-freezegun
+	pkgdesc = Easily freeze time in pytest test + fixtures
+	pkgver = 0.4.2
+	pkgrel = 8
+	url = https://github.com/ktosiek/pytest-freezegun
+	arch = any
+	license = MIT
+	makedepends = python-setuptools-scm
+	depends = python-pytest
+	depends = python-freezegun
+	source = pytest-freezegun-0.4.2.tar.gz::https://github.com/ktosiek/pytest-freezegun/archive/0.4.2.tar.gz
+	sha512sums = 2bea7746e4e6a7f2a979cbc5c6d7a2576e0e2631a4e1d5abb7f27f76d6c32b0520a277474c092c5e05ce257f2ba19091918f67e28b7a2da1d5829037c6b70c55
+
+pkgname = python-pytest-freezegun
