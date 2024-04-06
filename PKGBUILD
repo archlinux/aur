@@ -4,7 +4,7 @@ _electronversion=28
 _pkgname=hhd-ui
 pkgname=$_pkgname
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Configurator interface for Handheld Daemon."
 arch=('x86_64')
 # provides=("${_pkgname}")
@@ -22,9 +22,9 @@ prepare() {
 	export ELECTRONVERSION=$_electronversion
 
   cd $_srcname
-	sed -i "s|@electronversion@|${ELECTRONVERSION}|" "./aur/hhd-ui.sh"
+	sed -i "s|@electronversion@|${ELECTRONVERSION}|" "./pkg/hhd-ui.sh"
   npm ci
-	sed -i "s|"version": "1.0.0"|"version": "${pkgver}"|" "package.json"
+	sed -i "s|\"version\": \"1.0.0\"|\"version\": \"${pkgver}\"|" ./electron/package.json
   cd ./electron
   npm ci
 }
