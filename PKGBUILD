@@ -3,7 +3,7 @@ pkgname=leafview-bin
 _pkgname=LeafView
 pkgver=2.9.2
 _electronversion=29
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalist image viewer based on Leaflet.js and Electron."
 arch=("x86_64")
 url="https://github.com/sprout2000/leafview"
@@ -12,7 +12,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'hicolor-icon-theme'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
@@ -21,7 +20,7 @@ source=(
 )
 sha256sums=('017ff883b9c485889033601af784a48b6df495eb293a139f5bcbcea4cf92f913'
             '17db9845cf37bf3bd6b48095f3c87e40d25f3b48d4d0c38c2e740d45f024e56e'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
