@@ -1,0 +1,15 @@
+pkgbase = kurumi
+	pkgdesc = Experimental PDF viewer
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/chardoncs/kurumi
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = rust
+	makedepends = rustfmt
+	depends = gtk4
+	depends = poppler-glib
+
+pkgname = kurumi
