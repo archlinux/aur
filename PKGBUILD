@@ -1,18 +1,21 @@
-# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Maintainer: Gallifreyan <gallifreyan@protonmai.ch>
+# Contributor: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Ícar N. S. <icar.nin@protonmail.com>
 
 pkgname=crawley
-pkgver=1.6.8
+pkgver=1.7.5
 pkgrel=1
 pkgdesc="Simple web scraper"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://github.com/s0rg/${pkgname}"
 license=(MIT)
 depends=(glibc)
+provides=(crawley)
+conflicts=("crawley" "crawley-git")
 makedepends=(go)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('98cf97a9388fc36eec2a5f3a3850c49aee8a384eeb93a8b9f7492504770369908201858f29f0c8508f9f48408728647cd8f46402c4deef695ac9ed01da787f55')
+sha512sums=('c309bc8a0787f58662bf222660387e698061082bd31be4198c42a7e21e98b3e8dca9c8f852398c4e775a4c857847282ac170ca775d66e02c830a02d3fb59571a')
 
 prepare() {
   cd ${pkgname}-${pkgver}
