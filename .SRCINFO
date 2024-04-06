@@ -12,7 +12,7 @@ pkgbase = jazz2-native-bin
 	depends = glfw
 	source_x86_64 = https://gitlab.com/jazzproject/jazzjackrabbit2/binaries/2.6.0/-/raw/main/jazz2-linux-x64.tar.xz
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://gitlab.com/jazzproject/jazzjackrabbit2/binaries/2.6.0/-/raw/main/Jazz2-linux-arm64.tar.xz
+	source_aarch64 = https://gitlab.com/jazzproject/jazzjackrabbit2/binaries/2.6.0/-/raw/main/jazz2-linux-arm64.tar.xz
 	sha256sums_aarch64 = SKIP
 
 pkgname = jazz2-native-bin
