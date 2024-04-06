@@ -1,0 +1,14 @@
+pkgbase = stabilitymatrix
+	pkgdesc = Multi-Platform Package Manager for Stable Diffusion
+	pkgver = 2.9.3
+	pkgrel = 1
+	url = https://github.com/LykosAI/StabilityMatrix
+	arch = x86_64
+	license = AGPL3
+	makedepends = dotnet-sdk
+	source = zone.lykos.stabilitymatrix.png
+	source = zone.lykos.stabilitymatrix.desktop
+	sha256sums = 0c32dcd560dfadae6c8cc1486fba1227e9cf93a55e3ba262571e83052e1bf22e
+	sha256sums = 6907f3fc4dbf9140af924977c18460b24d220dab6c7871cdd3e8f4cd5a1e1635
+
+pkgname = stabilitymatrix
