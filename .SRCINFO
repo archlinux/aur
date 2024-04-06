@@ -1,0 +1,22 @@
+pkgbase = atools
+	pkgdesc = Auxilary scripts for abuild
+	pkgver = 20.2.2
+	pkgrel = 1
+	url = https://gitlab.alpinelinux.org/Leo/atools
+	arch = x86_64
+	arch = aarch64
+	arch = armv7
+	arch = x86
+	arch = ppc64le
+	arch = s390x
+	license = MIT
+	checkdepends = bats
+	makedepends = scdoc
+	makedepends = redo
+	makedepends = go
+	depends = lua53
+	depends = busybox
+	source = atools-20.2.2.tar.gz::https://gitlab.alpinelinux.org/Leo/atools/-/archive/20.2.2/atools-20.2.2.tar.gz
+	sha512sums = 63c95e4b86d99bd913fafe56c89dddd52e11d7bd84e138d236043133b0a7103a9de7393265c5ad387a61218c1f79a458460dca213ff0e9e9a4a65be9313e6580
+
+pkgname = atools
