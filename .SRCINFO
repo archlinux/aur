@@ -1,0 +1,21 @@
+pkgbase = adagate-bin
+	pkgdesc = A kid-friendly 3D dungeon escape game within a Stargate fantasy setting
+	pkgver = 7.4.6
+	pkgrel = 1
+	url = https://github.com/fastrgv/AdaGate
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = gendesk
+	depends = libx11
+	depends = openal
+	depends = libglvnd
+	provides = adagate=7.4.6
+	conflicts = adagate
+	source = adagate-7.4.6.7z::https://github.com/fastrgv/AdaGate/releases/download/v7.4.6/ag4apr24.7z
+	source = adagate-7.4.6.png::https://raw.githubusercontent.com/fastrgv/AdaGate/v7.4.6/adagate.jpg
+	source = adagate.sh
+	sha256sums = 31fb7fb62a61f46792e7ac28ca28b5053df365ad6bd327f64400b53d8981a780
+	sha256sums = d7c362ed4529df6bfdde61b37fb17683719d13d566a7ce4d699ce0f6302b07a2
+	sha256sums = 44417192dcaa79a66744f35d93945490ab3e4c7042915aac43b08c8b66bf5bc1
+
+pkgname = adagate-bin
