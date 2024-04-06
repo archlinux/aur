@@ -3,7 +3,7 @@ _appname=daily_diary
 pkgname="${_appname//_/-}-bin"
 _pkgname="Daily-Diary"
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An app to create a diary entry every day"
 arch=("x86_64")
 url="https://github.com/Voklen/Daily-Diary"
@@ -12,6 +12,9 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'gtk3'
+)
+makedepends=(
+    'gendesk'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_appname}_linux.tar.gz"

@@ -1,10 +1,11 @@
 pkgbase = daily-diary-bin
 	pkgdesc = An app to create a diary entry every day
 	pkgver = 1.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Voklen/Daily-Diary
 	arch = x86_64
 	license = GPL-3.0-only
+	makedepends = gendesk
 	depends = gtk3
 	provides = daily-diary=1.4.3
 	conflicts = daily-diary
