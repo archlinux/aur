@@ -1,25 +1,35 @@
-# Maintainer: Richard Neumann aka. Schard <mail at richard dash neumann period de>
+# Maintainer: Axel McLaren <scm(at)axml(dot)uk>
+
 pkgname=xhidecursor
-pkgver=0.1.3
+_commit=159b877
+_pkgver=1.0.0
+pkgver=1.0.0.r2.159b877
 pkgrel=1
-pkgdesc="Hide the cursor on a running X11 server."
-arch=('x86_64')
-url="https://github.com/homeinfogmbh/${pkgname}"
+pkgdesc="minimal X-application which hides the cursor on key-press and unhides the cursor on mouse-movement"
+arch=('i686' 'x86_64')
+url="https://github.com/astier/xhidecursor"
 license=('MIT')
-depends=("libx11" "libxfixes")
-makedepends=("cargo")
-source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('184caeea858248c6673b219b8bbde3540286e76b8b71c312d827b9b87fec02a5')
+depends=('libx11' 'libxfixes' 'libxi')
+source=("${pkgname}-${_pkgver}::git+${url}#commit=${_commit}")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}-${_pkgver}"
+
+  printf "${_pkgver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-	cd "${pkgname}-${pkgver}"
-	cargo build --release
+  cd "${pkgname}-${_pkgver}"
+
+  make
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
-	mkdir -p "${pkgdir}/usr/bin"
-	mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-	install "target/release/${pkgname}" "${pkgdir}/usr/bin"
-	install LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd "${pkgname}-${_pkgver}"
+
+  make DESTDIR="${pkgdir}" PREFIX="/usr/bin" install
+
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }

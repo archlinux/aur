@@ -1,14 +1,15 @@
 pkgbase = xhidecursor
-	pkgdesc = Hide the cursor on a running X11 server.
-	pkgver = 0.1.3
+	pkgdesc = minimal X-application which hides the cursor on key-press and unhides the cursor on mouse-movement
+	pkgver = 1.0.0.r2.159b877
 	pkgrel = 1
-	url = https://github.com/homeinfogmbh/xhidecursor
+	url = https://github.com/astier/xhidecursor
+	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = cargo
 	depends = libx11
 	depends = libxfixes
-	source = xhidecursor-0.1.3::https://github.com/homeinfogmbh/xhidecursor/archive/refs/tags/0.1.3.tar.gz
-	sha256sums = 184caeea858248c6673b219b8bbde3540286e76b8b71c312d827b9b87fec02a5
+	depends = libxi
+	source = xhidecursor-1.0.0::git+https://github.com/astier/xhidecursor#commit=159b877
+	sha256sums = SKIP
 
 pkgname = xhidecursor
