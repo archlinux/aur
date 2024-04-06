@@ -18,9 +18,9 @@
 pkgname=blesh-git
 _pkgname=ble.sh
 pkgdesc="Bash Line Editor (ble.sh) -- a replacement for Bash's line editor with enhanced features"
-pkgver=0.4.0_devel4.r2005.3f133936
+pkgver=0.4.0_devel4.r2113.70a325f9
 pkgrel=1
-license=(BSD)
+license=(BSD-3-Clause)
 provides=(blesh)
 conflicts=(blesh)
 url='https://github.com/akinomyoga/ble.sh'
