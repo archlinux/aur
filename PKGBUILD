@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-docs-rs
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="Imitate the documentation build that docs.rs would do"
 arch=('x86_64')
@@ -12,8 +12,8 @@ depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "Cargo.lock")
-sha512sums=('8d4ae93b0bbb5b3e86984819b6db382a80c02137c20e302ab5bad8c9f51131aa3c8d1243b0c54c252833aade44d9b1b8e6adff2ed43d432793ee4b1e49c14d78'
-            '2c67e64323d411d77600cd408d82463d0c92eafc7475ba99d67a271cecc8fe048d6ca24edf53f63402ef0361cb8506261fb0c5e95117245a15832c45b95fa3fd')
+sha512sums=('2da8897ae87a2094679c2f77186389d385f7a2b829c40ea5e02297a9ccfe245120821ff8451959484b112c08aa88c8c7de389eceb441681c81d5198b03a6fea6'
+            '13dbaff9a70809e042d6a93b0b828f6ec8e63ce004b1d00c90bd4e15e8f1b604c19e6b80d6ec12099e14161becd1cd7742805a5818a742c32f4abeb2c08f7a56')
 
 prepare() {
   cd "$pkgname-$pkgver"
