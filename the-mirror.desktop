@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=The Mirror
+GenericName=Game Development Platform
+Exec=/usr/bin/the-mirror
+Icon=the-mirror
+Comment=Start The Mirror using helper script
+Terminal=false
+Categories=Game;Development;

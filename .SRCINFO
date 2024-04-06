@@ -1,0 +1,25 @@
+pkgbase = the-mirror-bin
+	pkgdesc = Open-source Roblox & UEFN alternative built on Godot and NestJS
+	pkgver = 6.0.259
+	pkgrel = 1
+	url = https://www.themirror.space
+	arch = x86_64
+	license = MIT
+	license = CC-BY-4.0
+	makedepends = curl
+	makedepends = jq
+	depends = vulkan-driver
+	depends = vulkan-icd-loader
+	provides = the-mirror
+	source = the-mirror-bin-6.0.259.zip::https://itchio-mirror.cb031a832f44726753d6267436f3b414.r2.cloudflarestorage.com/build/910060/3517748-archive-default?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=3edfcce40115d057d0b5606758e7e9ee%2F20240406%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20240406T004503Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=6326ff0d31889d501af2e1e0ddc505701eed10fa91bbec1372e350abea8dbbc3
+	source = the-mirror.png
+	source = the-mirror-launcher.sh
+	source = the-mirror.desktop
+	source = LICENSE
+	sha256sums = 87f989aba41d8bdf7f4ffa7fdd26cba7d975d527ebee0791115103120698c942
+	sha256sums = 05de3efaf859c7630a881121b590e06377d36ac93306adb063849e4fade7bda3
+	sha256sums = 316ba2e5d51061b69d30e0735ee7db66f34f206d95bba90ba1ffa1a8b26a8b66
+	sha256sums = 004e17eb2a2d24e49e79b865c2794793fac986e2c61b097b18e63356b3a5df33
+	sha256sums = 43edd49d6eb05ccf8f2a1ae3bae8fc57f5cd37d0743109ef86f64c868b039776
+
+pkgname = the-mirror-bin
