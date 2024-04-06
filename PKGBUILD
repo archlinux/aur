@@ -6,7 +6,7 @@
 
 pkgname=libopenshot
 pkgver=0.3.2
-pkgrel=9
+pkgrel=10
 pkgdesc="A video editing, animation, and playback library for C++, Python, and Ruby"
 arch=(x86_64)
 url="https://github.com/openshot/libopenshot"
@@ -32,6 +32,7 @@ makedepends=(
   jsoncpp
   libopenshot-audio
   protobuf
+  python-setuptools
   swig
   unittestpp
   xorg-server-xvfb
