@@ -2,7 +2,7 @@
 
 pkgname=python-pynamecheap
 pkgver=0.0.3
-pkgrel=9
+pkgrel=10
 pkgdesc="Namecheap API client in Python"
 url="https://github.com/Bemmu/PyNamecheap"
 license=('MIT')
