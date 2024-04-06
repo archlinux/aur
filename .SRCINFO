@@ -1,7 +1,7 @@
 pkgbase = python-flask-gravatar
 	pkgdesc = Small and simple gravatar usage in Flask
 	pkgver = 0.5.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/zzzsochi/Flask-Gravatar/
 	arch = any
 	license = BSD
