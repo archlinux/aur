@@ -6,31 +6,28 @@ pkgbase = colloid-icon-theme-git
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
+	depends = gtk-update-icon-cache
+	depends = hicolor-icon-theme
 	options = !strip
 	source = git+https://github.com/vinceliuice/Colloid-icon-theme.git
 	sha256sums = SKIP
 
 pkgname = colloid-icon-theme-git
-	depends = gtk-update-icon-cache
-	depends = hicolor-icon-theme
 	provides = colloid-icon-theme
 	conflicts = colloid-icon-theme
 
 pkgname = colloid-dracula-theme-git
 	pkgdesc = Dracula icon theme for Linux desktops
-	depends = gtk-update-icon-cache
-	depends = hicolor-icon-theme
 	provides = colloid-dracula-theme
 	conflicts = colloid-dracula-theme
 
 pkgname = colloid-nord-icon-theme-git
 	pkgdesc = Nord icon theme for Linux desktops
-	depends = gtk-update-icon-cache
-	depends = hicolor-icon-theme
 	provides = colloid-nord-icon-theme
 	conflicts = colloid-nord-icon-theme
 
 pkgname = colloid-cursors-git
 	pkgdesc = An x-cursor theme inspired by Colloid theme and based on capitaine-cursors
+	depends = 
 	provides = colloid-cursors
 	conflicts = colloid-cursors

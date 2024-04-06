@@ -12,6 +12,7 @@ pkgdesc="Icon theme for Linux desktops"
 arch=('any')
 url="https://github.com/vinceliuice/Colloid-icon-theme"
 license=('GPL-3.0-or-later')
+depends=('gtk-update-icon-cache' 'hicolor-icon-theme')
 makedepends=('git')
 options=('!strip')
 source=('git+https://github.com/vinceliuice/Colloid-icon-theme.git')
@@ -30,7 +31,6 @@ prepare() {
 }
 
 package_colloid-icon-theme-git() {
-  depends=('gtk-update-icon-cache' 'hicolor-icon-theme')
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
 
@@ -41,7 +41,6 @@ package_colloid-icon-theme-git() {
 
 package_colloid-dracula-theme-git() {
   pkgdesc="Dracula icon theme for Linux desktops"
-  depends=('gtk-update-icon-cache' 'hicolor-icon-theme')
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
 
@@ -52,7 +51,6 @@ package_colloid-dracula-theme-git() {
 
 package_colloid-nord-icon-theme-git() {
   pkgdesc="Nord icon theme for Linux desktops"
-  depends=('gtk-update-icon-cache' 'hicolor-icon-theme')
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
 
@@ -63,6 +61,7 @@ package_colloid-nord-icon-theme-git() {
 
 package_colloid-cursors-git() {
   pkgdesc="An x-cursor theme inspired by Colloid theme and based on capitaine-cursors"
+  depends=()
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
 
