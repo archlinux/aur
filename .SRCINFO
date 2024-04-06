@@ -28,6 +28,7 @@ pkgbase = vmware-workstation16
 	conflicts = vmware-systemd-services
 	options = !strip
 	options = emptydirs
+	options = !debug
 	backup = etc/vmware/config
 	backup = etc/conf.d/vmware
 	source = https://download3.vmware.com/software/WKST-1625-LX/VMware-Workstation-Full-16.2.5-20904516.x86_64.bundle
