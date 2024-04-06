@@ -10,6 +10,7 @@ arch=('x86_64')
 url="https://webui.me/"
 license=('MIT')
 depends=("openssl" "glibc")
+conflicts=('webui-nossl')
 makedepends=("git" "zig")
 _commit=a994629f90454b78f83916a9911505e0d38d851e
 source=("git+https://github.com/webui-dev/webui.git#commit=${_commit}")

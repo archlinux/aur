@@ -9,6 +9,7 @@ pkgbase = webui
 	makedepends = zig
 	depends = openssl
 	depends = glibc
+	conflicts = webui-nossl
 	source = git+https://github.com/webui-dev/webui.git#commit=a994629f90454b78f83916a9911505e0d38d851e
 	md5sums = SKIP
 
