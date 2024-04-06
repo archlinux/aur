@@ -21,7 +21,7 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.6.23
+pkgver=6.6.25
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
@@ -52,7 +52,7 @@ source+=(
   "config-$pkgver"::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/config
 )
 sha256sums+=(
-  '200fd119cb9ef06bcedcdb52be00ba443163eab154295c5831fed9a12211a8b9'
+  '99d210be87908233a55b0fadc0dccd3b95926c0651b6b82e37350b2029de1f44'
   'SKIP'
   'SKIP'
 )
