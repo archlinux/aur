@@ -5,7 +5,7 @@
 
 pkgname=atlauncher
 _upstreamname=ATLauncher
-pkgrel=1
+pkgrel=2
 pkgver=3.4.36.1
 pkgdesc="A launcher for Minecraft which integrates multiple different modpacks to allow you to download and install
 modpacks easily and quickly."
