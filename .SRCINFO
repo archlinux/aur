@@ -1,0 +1,16 @@
+pkgbase = python-mohawk
+	pkgdesc = Python library for Hawk HTTP authorization
+	pkgver = 1.1.0
+	pkgrel = 9
+	url = https://github.com/kumar303/mohawk
+	arch = any
+	license = BSD
+	checkdepends = python-nose
+	makedepends = python-setuptools
+	depends = python-six
+	source = https://github.com/kumar303/mohawk/archive/1.1.0/python-mohawk-1.1.0.tar.gz
+	source = use-unittest-mock.patch
+	sha256sums = 995ecf009a92efb18a6503707e0c4d9887fe758102d824ca3e5a5625fee1b8bd
+	sha256sums = aa98c3661aa46218094f645b772bb831500cdd069fd76aec78cf734f4b758445
+
+pkgname = python-mohawk
