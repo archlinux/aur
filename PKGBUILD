@@ -1,10 +1,10 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=python-pytensor
 _pkgname=${pkgname#python-}
 pkgver=2.20.0
 _commit=ef22377d7e6ea6c74c36a8dc634ef7f1f1f8f9c6
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of Aesara -- Library for defining, optimizing, and efficiently evaluating mathematical expressions involving multi-dimensional arrays"
 arch=(x86_64)
 url="https://github.com/pymc-devs/pytensor"
@@ -35,7 +35,6 @@ checkdepends=(
   python-jax
   python-numba
   python-pytest
-  python-pytest-benchmark
   python-pytest-mock
   python-tensorflow-probability
 )
@@ -49,7 +48,7 @@ source=(
   "remove-bin-package.patch"
 )
 sha256sums=(
-  '0954cf717ea415efb2f0ed0ba501636edd2e83f2090355fe89bc615a3cfe85f3'
+  '121ab3cdb287e0e9dbad241f501e5fa9640c10336289652b6a83af809691e189'
   '73360d53a5c5e5718a544c69218d3d64adc2390007a9b6781f7b61cc32415e59'
 )
 
@@ -65,8 +64,6 @@ prepare() {
   cd "$_archive"
 
   patch --forward --strip=1 --input="$srcdir/remove-bin-package.patch"
-
-  sed -i 's/versioneer\[toml\]==/versioneer\[toml\]>=/' pyproject.toml
 }
 
 build() {
@@ -78,48 +75,46 @@ build() {
 check() {
   cd "$_archive"
 
-  local ignore_test_args=(
+  local deselect_test_args=(
     # d3viz functionality is currently not being maintained, see:
     # https://github.com/pymc-devs/pytensor/issues/333
-    --ignore=tests/d3viz/test_d3viz.py
-
-    # I suspect this affects the global environment, specifically modifying
-    # pytensor.config.profile_optimizer, which makes other tests fail, see:
-    # https://github.com/pymc-devs/pytensor/issues/591
-    --ignore=tests/test_printing.py
+    --deselect=tests/d3viz/test_d3viz.py
 
     # Raises ImportError when importing 'bijectors' from "partially
     # initialized" module 'tensorflow_probability.substrates.jax', not sure
     # why.
-    --ignore=tests/link/jax/test_scalar.py
+    --deselect=tests/link/jax/test_scalar.py
 
-    # Most time-consuming test files, ignore these to make test duration
+    # Requires python-pytest-benchmark.
+    --deselect=tests/link/jax/test_elemwise.py::test_logsumexp_benchmark
+
+    # Most time-consuming test files, deselect these to make test duration
     # more reasonable.
-    --ignore=tests/link/numba/test_elemwise.py
-    --ignore=tests/link/numba/test_scan.py
-    --ignore=tests/scalar/test_basic.py
-    --ignore=tests/scan/test_basic.py
-    --ignore=tests/scan/test_checkpoints.py
-    --ignore=tests/scan/test_rewriting.py
-    --ignore=tests/sparse/test_basic.py
-    --ignore=tests/sparse/test_var.py
-    --ignore=tests/tensor/conv/test_abstract_conv.py
-    --ignore=tests/tensor/rewriting/test_basic.py
-    --ignore=tests/tensor/rewriting/test_elemwise.py
-    --ignore=tests/tensor/rewriting/test_math.py
-    --ignore=tests/tensor/rewriting/test_subtensor.py
-    --ignore=tests/tensor/test_basic.py
-    --ignore=tests/tensor/test_blas.py
-    --ignore=tests/tensor/test_blockwise.py
-    --ignore=tests/tensor/test_casting.py
-    --ignore=tests/tensor/test_elemwise.py
-    --ignore=tests/tensor/test_extra_ops.py
-    --ignore=tests/tensor/test_inplace.py
-    --ignore=tests/tensor/test_math.py
-    --ignore=tests/tensor/test_math_scipy.py
-    --ignore=tests/tensor/test_slinalg.py
-    --ignore=tests/tensor/test_sort.py
-    --ignore=tests/tensor/test_subtensor.py
+    --deselect=tests/link/numba/test_elemwise.py
+    --deselect=tests/link/numba/test_scan.py
+    --deselect=tests/scalar/test_basic.py
+    --deselect=tests/scan/test_basic.py
+    --deselect=tests/scan/test_checkpoints.py
+    --deselect=tests/scan/test_rewriting.py
+    --deselect=tests/sparse/test_basic.py
+    --deselect=tests/sparse/test_var.py
+    --deselect=tests/tensor/conv/test_abstract_conv.py
+    --deselect=tests/tensor/rewriting/test_basic.py
+    --deselect=tests/tensor/rewriting/test_elemwise.py
+    --deselect=tests/tensor/rewriting/test_math.py
+    --deselect=tests/tensor/rewriting/test_subtensor.py
+    --deselect=tests/tensor/test_basic.py
+    --deselect=tests/tensor/test_blas.py
+    --deselect=tests/tensor/test_blockwise.py
+    --deselect=tests/tensor/test_casting.py
+    --deselect=tests/tensor/test_elemwise.py
+    --deselect=tests/tensor/test_extra_ops.py
+    --deselect=tests/tensor/test_inplace.py
+    --deselect=tests/tensor/test_math.py
+    --deselect=tests/tensor/test_math_scipy.py
+    --deselect=tests/tensor/test_slinalg.py
+    --deselect=tests/tensor/test_sort.py
+    --deselect=tests/tensor/test_subtensor.py
   )
 
   rm -rf tmp_install
@@ -127,7 +122,7 @@ check() {
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   export PYTHONPATH="$PWD/tmp_install/$site_packages"
-  pytest tests "${ignore_test_args[@]}"
+  pytest tests "${deselect_test_args[@]}"
 }
 
 package() {
