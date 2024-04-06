@@ -2,7 +2,7 @@
 
 pkgname=python-consolekit
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Additional utilities for click'
 arch=('any')
 url='https://consolekit.readthedocs.io/'

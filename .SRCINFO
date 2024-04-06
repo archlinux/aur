@@ -1,7 +1,7 @@
 pkgbase = python-consolekit
 	pkgdesc = Additional utilities for click
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://consolekit.readthedocs.io/
 	arch = any
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = python-consolekit
 	depends = python-deprecation-alias
 	depends = python-domdf-python-tools
 	depends = python-mistletoe
-	depends = python-typing-extensions
+	depends = python-typing_extensions
 	optdepends = python-psutil: better terminal support
 	source = python-consolekit::git+https://github.com/domdfcoding/consolekit#commit=1c17c55214c9e24652e93ba1ab4e6bf5ff94fe30
 	b2sums = SKIP
