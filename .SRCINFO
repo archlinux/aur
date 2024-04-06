@@ -1,0 +1,16 @@
+pkgbase = python-handy-archives
+	pkgdesc = Handy archive helpers for Python
+	pkgver = 0.2.0
+	pkgrel = 2
+	url = https://handy-archives.readthedocs.io/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-flit-core
+	depends = python
+	source = python-handy-archives::git+https://github.com/domdfcoding/handy-archives#commit=fadd8999b7bdb0f5220683ee55bf107de819fa16
+	b2sums = SKIP
+
+pkgname = python-handy-archives
