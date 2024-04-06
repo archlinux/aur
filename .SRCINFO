@@ -1,0 +1,15 @@
+pkgbase = python-pyswip
+	pkgdesc = Python wrapper for SWI-Prolog
+	pkgver = 0.2.10
+	pkgrel = 4
+	url = https://github.com/yuce/pyswip
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = swi-prolog
+	source = git+https://github.com/yuce/pyswip#commit=9e9ca3e0059d156397fb020c2bdaef70f59529a6
+	sha256sums = SKIP
+
+pkgname = python-pyswip

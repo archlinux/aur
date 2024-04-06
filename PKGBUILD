@@ -2,7 +2,7 @@
 
 pkgname=python-pyswip
 pkgver=0.2.10
-pkgrel=3
+pkgrel=4
 pkgdesc='Python wrapper for SWI-Prolog'
 arch=(any)
 url='https://github.com/yuce/pyswip'
