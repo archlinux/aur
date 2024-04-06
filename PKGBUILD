@@ -1,7 +1,7 @@
 # Maintainer: CosmicHorror <CosmicHorrorDev@pm.me>
 
 pkgname=inlyne
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='A GPU powered yet browserless tool to help you quickly view markdown files in the blink of an eye'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(fontconfig gcc-libs freetype2 libxcursor libxi libxrandr oniguruma)
 makedepends=(cargo libxcb libxkbcommon wayland)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('e586af636c77080413b411f056be4628fa38aea097aeb7412bcc8c47e134c1c22975cda6fc80a239d4bd2ae273ce15e0ce097280a21b7877353699d0bb554e09')
+sha512sums=('9a2b5090020ba2cd54692790c4a97d294f6420b92195a642a72ba8bd2f34679d15a2ec6b8ee19b5e58e229122bb5aeaee41d8434bbff8a59661053655385d744')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -22,12 +22,14 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   RUSTONIG_SYSTEM_LIBONIG=yes cargo build --frozen --release
 }
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   RUSTONIG_SYSTEM_LIBONIG=yes cargo test --frozen --release
 }
 
