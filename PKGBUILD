@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=ncmdump 
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Convert Netease Cloud Music ncm files to mp3/flac files."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -13,8 +13,8 @@ provides=("${pkgname}"{,-latest-bin} )
 conflicts=("${pkgname}"{,-latest-bin})
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         "use-local-taglib.patch")
-sha256sums=('47fe99d30459cfdb46cc29a17b6979f08e7cf3239b125869e974da53eac221d2'
-            '6bda18b22ae320afc038922035007a87c503b275f34695179fe8e9439f5f5991')
+sha256sums=('331f78985f95280a88c481b2254b3e35598bc6e6892381b55ace67d0b2900ea9'
+            '0070228c1e04d829d8e01e3f997dd4d9acee53fccd6ed6e1e1440b0d8aa66b74')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
