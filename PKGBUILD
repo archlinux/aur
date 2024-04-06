@@ -4,9 +4,10 @@ pkgdesc="ROS - This package contains the python bindings PyKDL for the Kinematic
 url='https://wiki.ros.org/python_orocos_kdl'
 
 pkgname='ros-melodic-python-orocos-kdl'
-pkgver='1.4.0'
+pkgver=1.5.1.r87.g129693e
+_commit=129693e571a7822655d1f58bb0f83b385542a3d8
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=7
+pkgrel=1
 license=('LGPL')
 
 ros_makedepends=(
@@ -15,10 +16,11 @@ ros_makedepends=(
 
 makedepends=(
 	'cmake'
+	'git'
+	'python-pyqt5-sip'
+	'sip'
 	'ros-build-tools'
 	${ros_makedepends[@]}
-	python-sip4
-	sip4
 )
 
 ros_depends=(
@@ -28,19 +30,26 @@ ros_depends=(
 
 depends=(
 	${ros_depends[@]}
-	python-sip4
-	sip4
 )
 
-_dir="orocos_kinematics_dynamics-${pkgver}/python_orocos_kdl"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/orocos/orocos_kinematics_dynamics/archive/v${pkgver}.tar.gz"
-sip.patch)
-sha256sums=('05b93e759923684dc07433ccae1e476d158d89b3c2be5079c20062406da7b4dd'
-            'ec9e21e65c8ea70b5f9e3f651b1d36c0e79be63a008acd0f7d6d3b275c7dc241')
+_dir="${pkgname}/python_orocos_kdl"
+source=("${pkgname}::git+https://github.com/orocos/orocos_kinematics_dynamics.git#commit=${_commit}")
+b2sums=('SKIP')
 
-prepare() {
-  cd "${srcdir}/${_dir}"
-  patch --forward --strip=0 --input="${srcdir}/sip.patch"
+pkgver() {
+    cd "${_dir}"
+
+    # Generate git tag based version. Count only proper (v)#.#* [#=number] tags.
+    local _gitversion=$(git describe --long --tags --match '[v0-9][0-9.][0-9.]*' | sed -e 's|^v||' | tr '[:upper:]' '[:lower:]') 
+
+    # Format git-based version for pkgver
+    # Expected format: e.g. 1.5.0rc2.r521.g99982a1c
+    # Or in case of 'post': 1.5.0.post1.r521.g99982a1c
+    echo "${_gitversion}" | sed \
+        -e 's;^\([0-9][0-9.]*\)[-_.]\([a-zA-Z]\+\);\1\2;' \
+        -e 's;\([0-9]\+-g\);r\1;' \
+        -e 's;-;.;g' \
+        -e 's;\(post.*\);\.\1;'
 }
 
 build() {
@@ -52,16 +61,15 @@ build() {
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
+	local python_version="$(python --version | cut -d' ' -f2 | cut -d'.' -f1,2)"
 
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.9 \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.9.so
+		-DPYTHON_INCLUDE_DIR=/usr/include/python"${python_version}" \
+		-DPYTHON_LIBRARY=/usr/lib/libpython"${python_version}".so
 	make
 }
 
