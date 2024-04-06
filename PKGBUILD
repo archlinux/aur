@@ -7,7 +7,6 @@ pkgdesc="a filesystem pattern locator program"
 arch=('any')
 url="https://codeberg.org/cyber-luna/llp"
 license=('GPL3')
-depends=('')
 makedepends=('git' 'gcc' 'make')
 source=("git+https://codeberg.org/cyber-luna/llp")
 sha256sums=('SKIP')

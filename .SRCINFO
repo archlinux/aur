@@ -8,7 +8,6 @@ pkgbase = llp
 	makedepends = git
 	makedepends = gcc
 	makedepends = make
-	depends = 
 	source = git+https://codeberg.org/cyber-luna/llp
 	sha256sums = SKIP
 
