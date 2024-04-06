@@ -1,0 +1,19 @@
+pkgbase = betula-git
+	pkgdesc = Federated personal link collection manager (built from latest commit)
+	pkgver = 1.2.0.r55.ge83a303
+	pkgrel = 1
+	url = https://git.sr.ht/~bouncepaw/betula
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = betula
+	conflicts = betula
+	options = lto
+	source = git+https://git.sr.ht/~bouncepaw/betula
+	sha256sums = SKIP
+
+pkgname = betula-git
