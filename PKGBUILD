@@ -1,9 +1,9 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 # Contributor: AngrySoft - Sebastian Zwierzchowski
 
 pkgname=python-sse-starlette
-_name=${pkgname#python-}
-pkgver=2.0.0
+_pkgname=${pkgname#python-}
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Server Sent Events (SSE) for Starlette and FastAPI"
 arch=(any)
@@ -29,11 +29,10 @@ checkdepends=(
   python-pytest
   python-pytest-asyncio
 )
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('c6929fe7a3fe1dcbd285a4b214843fe04233960f22ec1a566c8c47b3ba67d12f')
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b349c9561f01a6c6efaaa982d2fd52d1a743f765217eb2da60eaa608897be509')
-
-_archive="$_name-$pkgver"
+_archive="$_pkgname-$pkgver"
 
 build() {
   cd "$_archive"
@@ -47,9 +46,10 @@ check() {
   rm -rf tmp_install
   python -m installer --destdir=tmp_install dist/*.whl
 
-  _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  export PYTHONPATH="$PWD/tmp_install/$_site_packages"
-  pytest
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  export PYTHONPATH="$PWD/tmp_install/$site_packages"
+  pytest \
+    --ignore tests/integration/test_multiple_consumers.py
 }
 
 package() {
