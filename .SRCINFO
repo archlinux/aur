@@ -1,0 +1,14 @@
+pkgbase = python-spec
+	pkgdesc = Specification-style nosetests output for Python
+	pkgver = 1.4.1
+	pkgrel = 5
+	url = https://github.com/bitprophet/spec
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-nose
+	depends = python-six
+	source = https://github.com/bitprophet/spec/archive/1.4.1/python-spec-1.4.1.tar.gz
+	sha512sums = da512a30106e324a7ce5a3a6b3b587d95a7f8b2bb584b069b28e5dca3369c5f9b7527154ac354e06c17489e70faaa72aa2350e3d51101547713d1efa97221e66
+
+pkgname = python-spec

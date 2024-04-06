@@ -2,7 +2,7 @@
 
 pkgname=python-spec
 pkgver=1.4.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Specification-style nosetests output for Python"
 url="https://github.com/bitprophet/spec"
 license=('MIT')
