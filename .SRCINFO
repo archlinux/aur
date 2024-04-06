@@ -1,14 +1,15 @@
 pkgbase = r-vbmp
 	pkgdesc = Variational Bayesian Multinomial Probit Regression
 	pkgver = 1.70.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/vbmp
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	optdepends = r-biobase
 	optdepends = r-statmod
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/vbmp_1.70.0.tar.gz
-	sha256sums = 0b164b582ebbff58a41ff65fa392b843415612b5f0d515f93d4bdd722bf84ec4
+	md5sums = b7d2a0a9950dd7ecdbcea5ffdfbd853c
+	b2sums = e37c0c83e0fce3473dafada8d2df9d7a4b3cc8d212a65b191442cb54563e2c2f0952fffe084aa6d7eae0a7e3dd2f06734e641237a9528258210dd927e84178f9
 
 pkgname = r-vbmp
