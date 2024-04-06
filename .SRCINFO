@@ -1,0 +1,18 @@
+pkgbase = pedax-bin
+	pkgdesc = Reversi Board with edax, which is the strongest reversi engine.
+	pkgver = 6.44.0_140
+	pkgrel = 1
+	url = https://sensuikan1973.github.io/pedax/
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = gendesk
+	depends = gtk3
+	provides = pedax=6.44.0_140
+	conflicts = pedax
+	noextract = pedax-6.44.0_140.zip
+	source = pedax-6.44.0_140.zip::https://github.com/sensuikan1973/pedax/releases/download/6.44.0%2B140/pedax-Linux.zip
+	source = pedax.sh
+	sha256sums = 345c55ba9ca3b1097b8cbc528c33a7e5860e73ae0e49e3cd60d8e3d9e0baef06
+	sha256sums = 840eb0ad528d294064aa09b2b6df7a0e4a800249f43305c756cf78bee627fe1d
+
+pkgname = pedax-bin
