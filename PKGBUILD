@@ -3,14 +3,13 @@
 _pkgname=a4Reporting
 _pkgver=1.50.0
 pkgname=r-${_pkgname,,}
-pkgver=1.50.0
-pkgrel=1
-pkgdesc='Automated Affymetrix Array Analysis Reporting Package'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Automated Affymetrix Array Analysis Reporting Package"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-xtable
 )
 optdepends=(
@@ -18,14 +17,15 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c63ed4ea5373f0a340fd0b7671fe9fda8c0bb10a190e8654eae75cfe345f8f9a')
+md5sums=('3ba7f3c5606c2f898d84314ba63208fa')
+b2sums=('4f009ee1c65c7d25b4e3fee5dd2bb70aa5ee9a4591d1e4ead220f5716a6ea4749be2d059637ce8018fac0b21e0967a820d576bb572f915410d5ab6f63c62aba8')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
