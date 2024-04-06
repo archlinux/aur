@@ -6,7 +6,7 @@
 
 pkgname=python-nose
 pkgver=1.3.7
-pkgrel=15
+pkgrel=16
 pkgdesc="A discovery-based unittest extension"
 arch=('any')
 url='https://readthedocs.org/docs/nose/'
@@ -23,7 +23,7 @@ makedepends=(
   python-wheel
 )
 source=(
-  "https://pypi.python.org/packages/source/n/nose/nose-${pkgver}.tar.gz"{,.asc}
+  "https://pypi.python.org/packages/source/n/nose/nose-${pkgver}.tar.gz"
   # thanks Fedora for all the great patches!
   python-nose-coverage4.patch
   python-nose-py35.patch
@@ -34,9 +34,9 @@ source=(
   python-nose-no-use_2to3.patch
   python-nose-py311.patch
   python-nose-py311-doctest.patch
+  python-nose-py312.patch
 )
 sha512sums=('e65c914f621f8da06b9ab11a0ff2763d6e29b82ce2aaed56da0e3773dc899d9deb1f20015789d44c65a5dad7214520f5b659b3f8d7695fb207ad3f78e5cf1b62'
-            'SKIP'
             '10d217ecebc97ee1740c0e057b63e2adcdb64779bbd98d37560304ea9bafff8ab9116311a5842bb58eb6307a3a5f689413ad60522f6fae328250dfec0c08e156'
             'f78d95edd97fdf2e2a692c484ea9e086f2a7221a7555e2c5eec5aa8b7366d7dfe22de9ac98287d6b23207d0e1473c1f6da7bd0f451e1db22f975d4e99b9cd478'
             '46f30b49ab78020502ed0e28bd14f38e67904231f2d0a7549519eef0177462795b4f3ab3c632563e53d4d8a96c7f324dcc3876fa0b0723bced3ed6c80e3ab8c4'
@@ -45,8 +45,9 @@ sha512sums=('e65c914f621f8da06b9ab11a0ff2763d6e29b82ce2aaed56da0e3773dc899d9deb1
             '459f99641116d00f822efe1a2e810aacb6c0994cd9f7fb5c2476065f80b5852e4ee9e26857e686b24e54f3168c3fbe276f25595c4d1914b3a0adbf2603712fff'
             '14a2e328b0d29425f176d857b6451a8245a730e74abe59156b4b6e2392388a703283bf1351e8a78a33fe901c5b5323a9d58d6079a53af096f59537dd92f5069c'
             '1f4d776d4de08a2977fe14108d217c7d86ef9c851dd1842c62ac86f0858452bbbeb07403e0853cb28558373157c667b9de404a8b20746c8c03ab3c539ca5f9a9'
-            'ab5abb49b8da8f4178788a0d57ea0a35236b769e7715e06ba74d2a8d3639f4b9ff5855f47721835051be4eb06b08ad79fa94c779877a5a21b2943e0d1c820911')
-validpgpkeys=('58B277C0D208F7AC460C07C84548B3A8C0D70C12') # John Szakmeister <john@szakmeister.net>
+            'ab5abb49b8da8f4178788a0d57ea0a35236b769e7715e06ba74d2a8d3639f4b9ff5855f47721835051be4eb06b08ad79fa94c779877a5a21b2943e0d1c820911'
+            '628a63b454a8ab7dfdfd879404bbe383889d75894f6cdc973d3ecc4796e58417e40e82644a3a6ca5a79d2c61ca83a4c40fffb5b122e23c5fbab0f109302caee3')
+#validpgpkeys=('58B277C0D208F7AC460C07C84548B3A8C0D70C12') # John Szakmeister <john@szakmeister.net>
 
 prepare() {
   local src
