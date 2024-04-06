@@ -1,24 +1,23 @@
 pkgbase = clapper-git
 	pkgdesc = A GNOME media player built using GJS with GTK4 toolkit and powered by GStreamer with OpenGL rendering.
-	pkgver = r959.159f96c
+	pkgver = r1128.e481487
 	pkgrel = 1
 	url = https://github.com/Rafostar/clapper
 	arch = any
-	license = GPL-3.0
-	makedepends = meson>=0.50
+	license = GPL-3.0 and LGPL-2.1
+	makedepends = meson>=0.64
 	makedepends = git
 	makedepends = gobject-introspection
-	depends = gtk4
-	depends = gjs
-	depends = glib2>=2.68.0
-	depends = wayland-protocols
-	depends = hicolor-icon-theme
+	makedepends = vala
+	depends = gtk4>=4.1.0
+	depends = glib2>=2.76.0
 	depends = gstreamer>=1.20.0
 	depends = gst-plugins-base>=1.20.0
 	depends = gst-plugins-good>=1.20.0
 	depends = gst-plugins-bad>=1.20.0
-	depends = libadwaita
+	depends = libadwaita>=1.4.0
 	depends = libsoup3
+	depends = libmicrodns
 	optdepends = gst-libav>=1.20.0: Popular video decoders
 	optdepends = gstreamer-vaapi>=1.20.0: Intel/AMD video acceleration
 	optdepends = gst-plugins-ugly>=1.20.0: CD/DVD playback

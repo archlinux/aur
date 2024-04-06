@@ -1,7 +1,7 @@
 #
 # PKGBUILD file for package clapper
 #
-# Copyright (C) 2020/21 sp1rit
+# Copyright (C) 2020-24 sp1rit
 # Copyright (C) 2020  Rafostar
 #
 # This program is free software: you can redistribute it and/or modify
@@ -21,29 +21,28 @@
 
 _basename=clapper
 pkgname="${_basename}-git"
-pkgver=r959.159f96c
+pkgver=r1128.e481487
 pkgrel=1
 pkgdesc="A GNOME media player built using GJS with GTK4 toolkit and powered by GStreamer with OpenGL rendering."
 arch=(any)
 url="https://github.com/Rafostar/clapper"
-license=("GPL-3.0")
+license=("GPL-3.0 and LGPL-2.1")
 depends=(
-	"gtk4"
-	"gjs"
-	"glib2>=2.68.0" # glib-2.0, gmodule-2.0, gio-2.0
-	"wayland-protocols" # gtk4 non-default runtime dep
-	"hicolor-icon-theme"
+	"gtk4>=4.1.0"
+	"glib2>=2.76.0" # glib-2.0, gmodule-2.0, gio-2.0
 	"gstreamer>=1.20.0" # gstreamer-1.0, gstreamer-base-1.0
 	"gst-plugins-base>=1.20.0"
 	"gst-plugins-good>=1.20.0"
 	"gst-plugins-bad>=1.20.0"
-	"libadwaita"
+	"libadwaita>=1.4.0"
 	"libsoup3"
+	"libmicrodns"
 )
 makedepends=(
-	"meson>=0.50"
+	"meson>=0.64"
 	"git"
 	"gobject-introspection" # /usr/sbin/g-ir-scanner
+	"vala"
 )
 optdepends=(
 	"gst-libav>=1.20.0: Popular video decoders"
