@@ -1,3 +1,4 @@
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=desmume-highscore-git
 pkgver=r6810.1907daed
 pkgrel=1
