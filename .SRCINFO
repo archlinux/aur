@@ -1,0 +1,18 @@
+pkgbase = magic-eye-bin
+	pkgdesc = A simple GUI interface for setting a live view from a camera
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/Sir-Thom/Magic-eye
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = magic-eye=0.9.3
+	conflicts = magic-eye
+	source = magic-eye-0.9.3.deb::https://github.com/Sir-Thom/Magic-eye/releases/download/v.0.9.3/magic-eye_0.9.3_amd64.deb
+	source = LICENSE-0.9.3::https://raw.githubusercontent.com/Sir-Thom/Magic-eye/v.0.9.3/LICENSE
+	sha256sums = df7388e78aafe44a9e86de85df58badfb6f45012c9821fb6085e8d54b754df73
+	sha256sums = 6788ec06d504c4fdf4e7ba5f8fc693af6fd601bbfce5de039fbe2a4bab537f32
+
+pkgname = magic-eye-bin
