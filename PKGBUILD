@@ -3,12 +3,12 @@
 _pkgname=xmapbridge
 _pkgver=1.60.0
 pkgname=r-${_pkgname,,}
-pkgver=1.60.0
-pkgrel=1
-pkgdesc='Export plotting files to the xmapBridge for visualisation in X:Map'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('LGPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Export plotting files to the xmapBridge for visualisation in X:Map"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('LGPL-3.0-only')
 depends=(
   r
 )
@@ -17,14 +17,15 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('29347911d56347ef944cefac2a1c89f8dd3ced80bb8d31efb3b48b5011147e5d')
+md5sums=('8b07bc6daa0d9dad8943ef442076eb5e')
+b2sums=('c313d64acb69bc52718885733d4f681cea82558679ba85e560d9140cc7a2965582d09fc20b458fecac3014d7ea8efcfb313696630c557c1d792fa7adabb642ec')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
