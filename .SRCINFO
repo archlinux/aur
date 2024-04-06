@@ -1,0 +1,22 @@
+pkgbase = android-x86-libice
+	pkgdesc = X11 Inter-Client Exchange library (Android x86)
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = any
+	license = custom
+	makedepends = android-configure
+	makedepends = android-x86-xtrans
+	makedepends = android-x86-xorg-util-macros
+	depends = android-x86-xorgproto
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org//releases/individual/lib/libICE-1.1.1.tar.xz
+	source = https://xorg.freedesktop.org//releases/individual/lib/libICE-1.1.1.tar.xz.sig
+	validpgpkeys = 3BB639E56F861FA2E86505690FDD682D974CA72A
+	md5sums = b444a0e4c2163d1bbc7b046c3653eb8d
+	md5sums = SKIP
+
+pkgname = android-x86-libice
