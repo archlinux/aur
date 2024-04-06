@@ -8,7 +8,7 @@
 
 pkgname=oauth2-proxy
 pkgver=7.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A reverse proxy that provides authentication with Google, Keycloak, GitHub or other providers."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/oauth2-proxy/oauth2-proxy"
@@ -63,5 +63,5 @@ package() {
 	install -Dm 644 github.com/oauth2-proxy/oauth2-proxy/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 	install dist/oauth2-proxy "${pkgdir}/usr/bin/oauth2-proxy"
 	install github.com/oauth2-proxy/oauth2-proxy/contrib/oauth2-proxy.cfg.example "${pkgdir}/etc/oauth2-proxy.cfg"
-	install github.com/oauth2-proxy/oauth2-proxy/contrib/oauth2-proxy.service.example "${pkgdir}/usr/lib/systemd/system/oauth2-proxy.service"
+	install -m 644 github.com/oauth2-proxy/oauth2-proxy/contrib/oauth2-proxy.service.example "${pkgdir}/usr/lib/systemd/system/oauth2-proxy.service"
 }
