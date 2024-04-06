@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-inputstream-ffmpegdirect
 	pkgdesc = Inputstream ffmpegdirect kodi plugin
-	pkgver = 20.5.1
+	pkgver = 21.3.5
 	pkgrel = 1
 	url = https://github.com/xbmc/inputstream.ffmpegdirect
 	arch = armv6h
@@ -19,9 +19,9 @@ pkgbase = kodi-addon-inputstream-ffmpegdirect
 	makedepends = pkgconf
 	depends = kodi
 	provides = kodi-addon-inputstream-ffmpegdirect
-	source = https://github.com/xbmc/inputstream.ffmpegdirect/archive/20.5.1-Nexus.tar.gz
-	source = https://github.com/xbmc/xbmc/archive/20.5-Nexus.tar.gz
-	sha256sums = 1019b3699adca58779bf8dac3063435b5eac7b4300496a30c289d79b1b77762c
-	sha256sums = 9bf3257ebf251d20f276b7f90681985a270779150af2fb395d4b593c04002deb
+	source = https://github.com/xbmc/inputstream.ffmpegdirect/archive/21.3.5-Omega.tar.gz
+	source = https://github.com/xbmc/xbmc/archive/21.0-Omega.tar.gz
+	sha256sums = b28ccbd489d9b69779fd818ee158f69ebd6fd85b1f0410ffc8098ff0c8665bdc
+	sha256sums = 7f54c1fd8456ac46221fbc85e447362bdc209163c6cb19fca98d106560071b7c
 
 pkgname = kodi-addon-inputstream-ffmpegdirect

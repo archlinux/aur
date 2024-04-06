@@ -1,11 +1,11 @@
 # Maintainer: ivanich
 pkgname=kodi-addon-inputstream-ffmpegdirect
-pkgver=20.5.1
+pkgver=21.3.5
 pkgrel=1
 pkgdesc="Inputstream ffmpegdirect kodi plugin"
-_koditarget=Nexus
+_koditarget=Omega
 _gitname=inputstream.ffmpegdirect
-_kodiver=20.5
+_kodiver=21.0
 arch=('armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
 url="https://github.com/xbmc/${_gitname}"
 license=('GPL')
@@ -17,8 +17,8 @@ source=("https://github.com/xbmc/${_gitname}/archive/${pkgver}-${_koditarget}.ta
         "https://github.com/xbmc/xbmc/archive/${_kodiver}-${_koditarget}.tar.gz"
 )
 
-sha256sums=('1019b3699adca58779bf8dac3063435b5eac7b4300496a30c289d79b1b77762c'
-            '9bf3257ebf251d20f276b7f90681985a270779150af2fb395d4b593c04002deb')
+sha256sums=('b28ccbd489d9b69779fd818ee158f69ebd6fd85b1f0410ffc8098ff0c8665bdc'
+            '7f54c1fd8456ac46221fbc85e447362bdc209163c6cb19fca98d106560071b7c')
 
 prepare() {
         cd xbmc-${_kodiver}-${_koditarget}
