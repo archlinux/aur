@@ -1,0 +1,17 @@
+pkgbase = jammer-appimage
+	pkgdesc = Play songs in cli with youtube and soundcloud support
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://github.com/jooapa/jammer
+	arch = x86_64
+	license = LicenseRef-custom
+	makedepends = fuse2
+	provides = jammer=2.0.4
+	conflicts = jammer
+	options = !strip
+	source = jammer-2.0.4.AppImage::https://github.com/jooapa/jammer/releases/download/2.0.4/jammer-2.0.4.AppImage
+	source = LICENSE-2.0.4::https://raw.githubusercontent.com/jooapa/jammer/2.0.4/LICENSE
+	sha256sums = 1b1f140a60e95ba1250af4a89c5bf29b7163ed541b535398131c0a915383b462
+	sha256sums = 4d5d7e1b9673212e762b79a2f85a5ac9c7f454bdbcfb56f6c0e4f407039e1d94
+
+pkgname = jammer-appimage
