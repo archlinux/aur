@@ -13,6 +13,7 @@ depends=("gcc-libs" "glibc")
 source=("git+https://github.com/JohanChane/clashtui.git#branch=main")
 md5sums=("SKIP")
 provides=("clashtui")
+conflicts=("clashtui")
 options=(!lto)
 
 function pkgver() {
@@ -41,5 +42,5 @@ function check() {
 
 function package() {
 	install -Dm755 "${srcdir}/clashtui/clashtui/target/release/clashtui" "${pkgdir}/usr/bin/clashtui"
-	install -Dm644 "${srcdir}/clashtui/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -Dm644 "${srcdir}/clashtui/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
