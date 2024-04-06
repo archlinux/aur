@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-performance
 	pkgdesc = Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync
-	pkgver = 46.0
-	pkgrel = 2
+	pkgver = 46.0+33+ge4f2edf9b
+	pkgrel = 1
 	epoch = 1
 	url = https://wiki.gnome.org/Projects/GnomeShell
 	arch = x86_64
@@ -73,8 +73,8 @@ pkgname = gnome-shell-performance
 	optdepends = python-simplejson: gnome-shell-test-tool performance tester
 	optdepends = switcheroo-control: Multi-GPU support
 	provides = gnome-shell
-	provides = gnome-shell=46.0
-	provides = gnome-shell=1:46.0
+	provides = gnome-shell=46.0+33+ge4f2edf9b
+	provides = gnome-shell=1:46.0+33+ge4f2edf9b
 	conflicts = gnome-shell
 
 pkgname = gnome-shell-performance-docs
