@@ -1,0 +1,27 @@
+pkgbase = oculante-bin
+	pkgdesc = A minimalistic image viewer with analysis and editing tools
+	pkgver = 0.8.18
+	pkgrel = 1
+	url = https://github.com/woelper/oculante
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	provides = oculante=0.8.18
+	conflicts = oculante
+	options = !lto
+	source = oculante-0.8.18.desktop::https://raw.githubusercontent.com/woelper/oculante/0.8.18/res/oculante.desktop
+	source = oculante-0.8.18.png::https://raw.githubusercontent.com/woelper/oculante/0.8.18/res/oculante.png
+	source = LICENSE-0.8.18::https://raw.githubusercontent.com/woelper/oculante/0.8.18/LICENSE
+	sha256sums = 686d39ed8b79ca532457b1e9d5d1d6d673204b0f603aaf624ec77983ea4e9e5c
+	sha256sums = 1d082e4a977a8a61a1a06f1a854d436617b5977f802bb88b9b7ffc3e5c9d7ef2
+	sha256sums = 8159398fbaa909f51cfb02684740917583ea5a88b8c743c28cdd70178161780f
+	source_aarch64 = oculante-0.8.18-aarch64.zip::https://github.com/woelper/oculante/releases/download/0.8.18/oculante_linux_aarch64_minimal.zip
+	sha256sums_aarch64 = 87b59dc1998394d07cbd8c6962bfc132ae725330d3161495b08441283665f4f6
+	source_armv7h = oculante-0.8.18-armv7h.zip::https://github.com/woelper/oculante/releases/download/0.8.18/oculante_linux_armv7_minimal.zip
+	sha256sums_armv7h = 81fc79c7f0634b07676637ad35d190497ec94aa42856360b80360ea5854790bf
+	source_x86_64 = oculante-0.8.18-x86_64.zip::https://github.com/woelper/oculante/releases/download/0.8.18/oculante_linux_minimal.zip
+	sha256sums_x86_64 = 8a36cb4b2328a534e01abff5ff7ac794385556b76182d163313df67b0db2f5f5
+
+pkgname = oculante-bin
