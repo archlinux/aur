@@ -9,4 +9,4 @@ pkgbase = midi2agb-ipatix
 	makedepends = base-devel
 	source = git+https://github.com/ipatix/midi2agb
 
-pkgname = midi2agb
+pkgname = midi2agb-ipatix
