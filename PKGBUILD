@@ -4,10 +4,10 @@
 # Contributor: Tom Richards <tom@tomrichards.net>
 pkgname=highscore-git
 pkgver=r435.fd3c2851
-pkgrel=2
-pkgdesc="A retro gaming application for the GNOME desktop"
+pkgrel=3
+pkgdesc="A rewrite of Highscore, formerly gnome-games"
 arch=('x86_64' 'aarch64')
-url="https://wiki.gnome.org/Apps/Games"
+url="https://gitlab.gnome.org/World/highscore"
 license=('GPL-3.0-or-later')
 depends=(
   'hicolor-icon-theme'
@@ -23,20 +23,20 @@ makedepends=(
   'meson'
   'vala'
 )
-#optdepends=(
-#  'blastem-highscore-git'
-#  'bsnes-highscore-git'
-#  'desmume-highscore-git'
-#  'gearsystem-highscore-git'
-#  'mednafen-highscore-git'
-#  'mgba-highscore-git'
-#  'mupen64plus-highscore-git'
-#  'nestopia-highscore-git'
-#  'prosystem-highscore-git'
-#  'stella-highscore-git'
-#)
-provides=("${pkgname%-git}" 'gnome-games')
-conflicts=("${pkgname%-git}" 'gnome-games')
+optdepends=(
+  'blastem-highscore-git'
+  'bsnes-highscore-git'
+  'desmume-highscore-git'
+  'gearsystem-highscore-git'
+  'mednafen-highscore-git'
+  'mgba-highscore-git'
+  'mupen64plus-highscore-git'
+#  'nestopia-highscore-git'  ## WIP
+#  'prosystem-highscore-git'  ## WIP
+#  'stella-highscore-git'  ## WIP
+)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=('git+https://gitlab.gnome.org/World/highscore.git')
 sha256sums=('SKIP')
 
