@@ -3,7 +3,7 @@
 # Contributor: Maxime Poulin <maxpoulin64@gmail.com>
 _pkgname=thelounge
 pkgname=thelounge-beta
-_pkgver=4.4.2-rc.1
+_pkgver=4.4.3
 pkgver=${_pkgver/-/}
 pkgrel=1
 pkgdesc='Modern self-hosted web IRC client (Latest release/pre-release)'
@@ -26,9 +26,9 @@ source=(
     'tmpfiles.d'
 )
 noextract=("$_pkgname-$_pkgver.tgz")
-sha256sums=('8d5baaa27721c13b7c9012e0ae0c1944cbcbbf0810a7014501ea030550ecde33'
+sha256sums=('685d753ad080c35ac7c4cf2eef6437df8de47a3d352b10f06d56acc9a08f4f18'
             '0bcb88814337e6dd1352dd382a14e6c277f71410767277db34c97b998e1cd0b9'
-            '8db0269b05dc4ea8faec9491967ff20587e2eb4d6b1bce7ef206d6a118d1b899'
+            'e0cca2931e46842039fcbc78efbecae4b9893608d18959f616aa7ea559311441'
             'c92210f6ac8f01c1cd01b6b26793094cd2feea583ed21fab3564d6bcafdc7a20'
             'c609f3309f54bd6285e99ff29ca2464828bec7bbbca67243ee688bd2d605dbf0'
             '30fab63b8a4ffcfdda4c5b8d7c66822a323c4f1de6ca62b77fe9500f4befc0a5'
@@ -41,7 +41,7 @@ prepare() {
 build() {
     mkdir -p _build
     cp package.json yarn.lock _build
-    cd _build
+    cd _build || exit 1
 
     # Install the package itself
     # we on purpose don't use yarn global add, because --ignore-scripts
@@ -52,8 +52,8 @@ build() {
     file:"$srcdir/$_pkgname-${_pkgver}.tgz"
 
     # fetch sqlite3 binary blob
-    cd node_modules/sqlite3
-    ./node_modules/.bin/prebuild-install -r napi || node-gyp rebuild
+    cd node_modules/sqlite3 || exit 1
+    yarn run install
 }
 
 package() {
