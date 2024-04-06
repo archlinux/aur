@@ -1,7 +1,7 @@
 pkgbase = python-lazy
 	pkgdesc = Lazy attributes for Python objects
 	pkgver = 1.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/stefanholek/lazy
 	arch = any
 	license = BSD-2-Clause

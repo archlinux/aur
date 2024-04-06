@@ -2,7 +2,7 @@
 
 pkgname=python-lazy
 pkgver=1.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Lazy attributes for Python objects"
 url="https://github.com/stefanholek/lazy"
 license=('BSD-2-Clause')
