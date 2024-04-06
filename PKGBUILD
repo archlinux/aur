@@ -28,7 +28,7 @@ depends=(
   'sqlite'
   'tracker3'
 )
-makedepends=('meson' 'vala')
+makedepends=('git' 'meson' 'vala')
 checkdepends=('appstream-glib')
 optdepends=(
   'libretro-beetle-ngp: Support for Neo Geo Pocket and Neo Geo Pocket Color games'
@@ -36,7 +36,7 @@ optdepends=(
   'libretro-beetle-pce: NEC PC Engine/SuperGrafx/CD core'
   'libretro-beetle-psx-hw: Sony PlayStation core'
   'libretro-beetle-psx: Sony PlayStation core'
-  'libretro-beetle-vb: Support for Virtual Boy games'
+#  'libretro-beetle-vb: Support for Virtual Boy games'
 #  'libretro-beetle-wswan: Support for WonderSwan and WonderSwan Color games'
   'libretro-beetle-supergrafx: NEC SuperGrafx core'
   'libretro-blastem: Sega Mega Drive core'
@@ -49,12 +49,12 @@ optdepends=(
   'libretro-desmume: Nintendo DS core'
 #  'libretro-desmume2015: Support for Nintendo DS games'
   'libretro-dolphin: Nintendo GC/Wii core'
-  'libretro-duckstation: Sony PlayStation core'
+#  'libretro-duckstation: Sony PlayStation core'
   'libretro-flycast: Sega Dreamcast core'
   'libretro-gambatte: Nintendo Game Boy/Game Boy Color core'
 #  'libretro-gearsystem: Support for Game Gear, Master System and SG-1000 games'
   'libretro-genesis-plus-gx: Sega MS/GG/MD/CD core'
-  'libretro-handy: Support for Atari Lynx games'
+#  'libretro-handy: Support for Atari Lynx games'
   'libretro-kronos: Sega Saturn core'
   'libretro-melonds: Nintendo DS core'
   'libretro-mesen-s: Super Nintendo Entertainment System core'
@@ -68,13 +68,13 @@ optdepends=(
   'libretro-picodrive: Sega MS/MD/CD/32X core'
   'libretro-play: Sony PlayStation 2 core'
   'libretro-ppsspp: Sony PlayStation Portable core'
-  'libretro-prosystem: Support for Atari 7800 games'
+#  'libretro-prosystem: Support for Atari 7800 games'
   'libretro-retrodream: Sega Dreamcast core'
   'libretro-sameboy: Nintendo Game Boy/Game Boy Color core'
   'libretro-scummvm: ScummVM core'
   'libretro-shaders-slang: Collection of shaders for libretro'
   'libretro-snes9x: Super Nintendo Entertainment System core'
-  'libretro-stella2014: Support for Atari 2600 games'
+#  'libretro-stella2014: Support for Atari 2600 games'
   'libretro-yabause: Sega Saturn core'
   'retroarch: Reference frontend for the libretro API'
 )
