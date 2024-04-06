@@ -3,10 +3,10 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: Charles Dong <charlesdong_2000@outlook.com>
+# Maintainer: Charles Dong <chardon_cs@proton.me>
 pkgname=rickroll-rs
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple rust program doing rickroll"
 arch=("x86_64" "aarch64")
 url="https://github.com/chardon55/rickroll-rs"
