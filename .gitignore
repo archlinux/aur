@@ -1,0 +1,5 @@
+pkg/
+src/
+v*.tar.gz
+zwave-js-ui-*.pkg.tar.zst
+*~
