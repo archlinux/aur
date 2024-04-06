@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=plutolang-git
-pkgver=0.8.1.r5.ge802902
+pkgver=0.9.0.r1.gb9d948b
 pkgrel=1
 pkgdesc='A superset of Lua 5.4 with unique features, optimizations, and improvements'
 arch=(x86_64)
@@ -11,9 +11,10 @@ depends=(gcc-libs
          glibc
          readline libreadline.so)
 makedepends=(git)
+provides=(${pkgname%-git}=$pkgver
+          libpluto.so)
 conflicts=(pluto
            ${pkgname%-git})
-provides=(${pkgname%-git}=$pkgver)
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
@@ -31,5 +32,7 @@ build () {
 package () {
 	cd "$pkgname"
 	install -Dm0755 -t "$pkgdir/usr/bin/" src/{pluto,plutoc}
+	install -Dm0755 -t "$pkgdir/usr/lib/" src/libpluto.so
+	install -Dm0644 -t "$pkgdir/usr/include/pluto/" src/lua.{h,hpp} src/{lualib,luaconf,lauxlib}.h
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
