@@ -3,7 +3,7 @@
 pkgname=python-args
 pkgver=0.1.0.20170708
 _commit=9460f1a35eb3055e9e4de1f0a6932e0883c72d65
-pkgrel=8
+pkgrel=9
 pkgdesc="Command Arguments for Humans"
 arch=('any')
 license=('BSD')

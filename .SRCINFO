@@ -1,0 +1,14 @@
+pkgbase = python-args
+	pkgdesc = Command Arguments for Humans
+	pkgver = 0.1.0.20170708
+	pkgrel = 9
+	url = https://github.com/kenneth-reitz/args
+	arch = any
+	license = BSD
+	checkdepends = python-nose
+	makedepends = python-setuptools
+	depends = python
+	source = python-args-9460f1a35eb3055e9e4de1f0a6932e0883c72d65.tar.gz::https://github.com/kenneth-reitz/args/archive/9460f1a35eb3055e9e4de1f0a6932e0883c72d65.tar.gz
+	sha512sums = acbb38e442fcc731a41d4ed5f63d33cfe7bc5cab730f99d5f9de3e9739ea4370df58798267df9c29892d93a3e2e5f4e21c54a1550c38bfc49abfc84a1e1cc438
+
+pkgname = python-args
