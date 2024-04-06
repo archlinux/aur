@@ -1,0 +1,17 @@
+pkgbase = scu
+	pkgdesc = System fetch utility is aimed at informativeness
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://gitlab.com/omnitix/scu
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	options = !debug
+	options = !lto
+	source = https://gitlab.com/omnitix/scu/-/archive/1.4.0/scu-1.4.0.tar.gz
+	b2sums = 180b4d27815e89de67d8b354e32c7e7ed91e0ecc8ce5608bb7297d776522b186303a60711ae87f394c7a9d7d4d9ee0d93bd744a282e8996b26e649df9cd38c8b
+
+pkgname = scu
