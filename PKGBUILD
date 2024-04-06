@@ -11,7 +11,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=2d53b360a0628f2562068404cfe4632be3ad19d5
+_mozc_commit=bf99e3ba1e16b2b661589aa8a743fdbe67fe5bac
 _branch=fcitx
 # Ut Dictionary
 _utdicdate=20230115
@@ -29,8 +29,8 @@ _sudachidict_date=20240109
 
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=2.29.5400.102
-pkgrel=11
+pkgver=2.30.5432.102
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND NAIST-2003')
@@ -49,7 +49,6 @@ source=("git+$url.git#commit=${_mozc_commit}"
         #"https://github.com/neologd/mecab-ipadic-neologd/raw/master/seed/mecab-user-dict-seed.20200910.csv.xz"
         "LICENSE-SudachiDict::https://github.com/WorksApplications/SudachiDict/raw/develop/LEGAL"
         #"LICENSE-ipadic-neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/master/COPYING"
-        #"0001-Zombie-Process-Prevention.patch"
         )
 #        https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz)
 #noextract=(jawiki-latest-all-titles-in-ns0.gz)
@@ -64,7 +63,6 @@ sha512sums=('SKIP'
             '8b51b783c60987d74d896ba4668987b69a4f83b7b294f2630b25a0adf2ca665b89ebf4e000ce5de9a343aa9929d0b120478f7820a31ab1718d1fcafd58460286'
             '8efaeeb103cfd14abbc8e27ca4c6313d68e800421f452701ff1771b09f32944cd14bfc4bd2fe75ebb3b851b4baba15ebd70b7b2cceae68a621eadbaa9d351bf5'
             '1a5b62c83a08781b44bd73f978a4024d93667df47b1a3f4c179096cbc32f28e803c50dca6b5b7ad20fb788d46797551c36ec1efb7782f4361b695e2e0a6060ca'
-            #'9279d955edb6024292828d29c85b35837822a851b1485ee54d5294f684df95fd2201ef14622a58d4c22e1665de2782b541669b035ca8b70a55de5a6ce249d832'
             )
 
 pkgver() {
