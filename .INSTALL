@@ -1,0 +1,11 @@
+post_install() {
+    killall krunner
+}
+
+post_upgrade() {
+    killall krunner
+}
+
+post_remove() {
+    killall krunner
+}

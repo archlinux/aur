@@ -1,0 +1,21 @@
+pkgbase = krunner-cratesio
+	pkgdesc = A plugin for krunner that allows you search crates.io
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/heipiao233/krunner-cratesio
+	install = .INSTALL
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = kconfig
+	depends = kcoreaddons
+	depends = ki18n
+	depends = kitemmodels
+	depends = qt6-base
+	source = krunner-cratesio-8088e4f1e3008ef19855879d4daa8d53a8d66274.tar.gz::https://github.com/heipiao233/krunner-cratesio/archive/8088e4f1e3008ef19855879d4daa8d53a8d66274.tar.gz
+	sha256sums = ddb7fcd56c6a22d210070f080cad7a6d83ea2e70a05b1525284dfcf372900a11
+
+pkgname = krunner-cratesio
