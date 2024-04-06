@@ -1,14 +1,14 @@
 # Maintainer: William Edwards <shadowapex@gmail.com>
 pkgname=powerstation-git
 _pkgbase=powerstation
-pkgver=v0.1.5.r0.gbb37ef8
+pkgver=v0.2.2.r0.g2b2c007
 pkgrel=1
 pkgdesc="Open source performance daemon with DBus interface"
 arch=('x86_64')
 url="https://github.com/ShadowBlip/PowerStation"
 license=('GPL')
 depends=('dbus' 'pciutils')
-makedepends=('rust' 'make' 'cmake' 'clang15' 'git')
+makedepends=('rust' 'make' 'cmake' 'clang' 'git')
 provides=('powerstation')
 conflicts=('powerstation-bin')
 source=("${_pkgbase}::git+https://github.com/ShadowBlip/${_pkgbase}.git")
