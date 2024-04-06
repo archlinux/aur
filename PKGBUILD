@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fooyin
 _pkgname=Fooyin
-pkgver=0.3.10
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A customisable music player"
 arch=('any')
@@ -9,7 +9,6 @@ url="https://github.com/ludouzi/fooyin"
 license=('GPL-3.0-only')
 conflicts=("${pkgname}")
 depends=(
-    'hicolor-icon-theme'
     'qt6-base'
     'alsa-lib'
     'taglib'
@@ -38,8 +37,8 @@ source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('SKIP'
-            '1e338ff128b2be2b0d484ea2d00814db6709a5e2cc455a373428d21f8ed690d5')
+sha256sums=('3144b069aeeba21d761c4f837a657826ff679d1d2a6d3ca91f323cc4c8745dee'
+            '840eb0ad528d294064aa09b2b6df7a0e4a800249f43305c756cf78bee627fe1d')
 build() {
     sed -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|${pkgname}|g" \
@@ -51,14 +50,15 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm755 "${srcdir}/${pkgname}.git/build/bin/${pkgname}" -t "${pkgdir}/opt/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/build/lib/${pkgname}/"*.so -t "${pkgdir}/opt/${pkgname}/lib"
-    install -Dm644 "${srcdir}/${pkgname}.git/build/lib/${pkgname}/plugins/"*.so -t "${pkgdir}/opt/${pkgname}/lib/plugins"
+    install -Dm755 "${srcdir}/${pkgname}.git/build/run/bin/${pkgname}" -t "${pkgdir}/opt/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/build/run/lib/${pkgname}/"*.so -t "${pkgdir}/opt/${pkgname}/lib"
+    ln -sf "/usr/lib/libtag.so" "${pkgdir}/opt/${pkgname%-bin}/lib/libtag.so.1"
+    install -Dm644 "${srcdir}/${pkgname}.git/build/run/lib/${pkgname}/plugins/"*.so -t "${pkgdir}/opt/${pkgname}/lib/plugins"
     for _icons in 16 22 32 48 64 128 256 512;do
         install -Dm644 "${srcdir}/${pkgname}.git/data/icons/${_icons}-${pkgname}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}x${_icons}/apps/${pkgname}.png"
     done
-    install -Dm644 "${srcdir}/${pkgname}.git/dist/org.${pkgname}.${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 "${srcdir}/${pkgname}.git/dist/linux/org.${pkgname}.${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${srcdir}/${pkgname}.git/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 "${srcdir}/${pkgname}.git/dist/org.${pkgname}.${pkgname}.metainfo.xml" -t "${pkgdir}/usr/share/metainfo"
+    install -Dm644 "${srcdir}/${pkgname}.git/dist/linux/org.${pkgname}.${pkgname}.metainfo.xml" -t "${pkgdir}/usr/share/metainfo"
 }
