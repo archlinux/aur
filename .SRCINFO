@@ -1,7 +1,7 @@
 pkgbase = python-deepmerge
 	pkgdesc = A deep merging tool for Python core data structures
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/toumorokoshi/deepmerge
 	arch = any
 	license = MIT
