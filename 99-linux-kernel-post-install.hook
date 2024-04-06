@@ -1,0 +1,14 @@
+[Trigger]
+Operation = Upgrade
+Operation = Install
+Type = Package
+Target = linux
+Target = linux-lts
+
+[Action]
+Description = Clean Linux kernel backup
+When = PostTransaction
+Depends = coreutils
+Depends = bash
+Exec = /usr/share/libalpm/scripts/manage_kernel_backup.sh clean
+NeedsTargets

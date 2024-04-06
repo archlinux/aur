@@ -1,0 +1,13 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = linux
+Target = linux-lts
+
+[Action]
+Description = Save Linux kernel modules
+When = PreTransaction
+Depends = coreutils
+Depends = bash
+Exec = /usr/share/libalpm/scripts/manage_kernel_backup.sh modules_backup
+NeedsTargets
