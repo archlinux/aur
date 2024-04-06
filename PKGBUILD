@@ -1,14 +1,14 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=nor1mix
-_pkgver=1.3-2
+_pkgver=1.3-3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Normal aka Gaussian 1-d Mixture Models"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL)
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
@@ -16,8 +16,8 @@ optdepends=(
   r-copula
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2309fce297cbfb80b367b7c7f7cf007e')
-b2sums=('a1fa2885e170f9bb66f4e5d17c413647040524e39018d37a3182f3144a205df5de4fee0071a813ad9f10681b64337e99390ecc4d813705abca662175ab453002')
+md5sums=('1d12069ed00dd01177f8a41749e4cce6')
+b2sums=('2c8eb05111bd581882fd46a58ba5de4934d70e64959596c7ac1509da9462a87347a90029cdb622e57bdb4cb72a9e40e760226a412120cb712b49d99abe564c63')
 
 build() {
   mkdir build
