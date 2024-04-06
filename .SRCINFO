@@ -12,6 +12,8 @@ pkgbase = gasket-dkms-git
 	provides = gasket
 	conflicts = gasket
 	source = git+https://github.com/google/gasket-driver.git
+	source = eventfd_signal.patch
 	sha256sums = SKIP
+	sha256sums = 44347d93a8f4bf8d632a32db2a59f736237a7c862a5570e724df1699a6b3508f
 
 pkgname = gasket-dkms-git

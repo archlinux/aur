@@ -1,0 +1,11 @@
+--- a/src/gasket_interrupt.c
++++ b/src/gasket_interrupt.c
+@@ -158,7 +158,7 @@
+ 	read_lock(&interrupt_data->eventfd_ctx_lock);
+ 	ctx = interrupt_data->eventfd_ctxs[interrupt_index];
+ 	if (ctx)
+-		eventfd_signal(ctx, 1);
++		eventfd_signal(ctx);
+ 	read_unlock(&interrupt_data->eventfd_ctx_lock);
+ 
+ 	++(interrupt_data->interrupt_counts[interrupt_index]);

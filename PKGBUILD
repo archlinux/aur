@@ -12,16 +12,19 @@ depends=('dkms')
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
 makedepends=('sed' 'binutils' 'git')
-source=("git+https://github.com/google/gasket-driver.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/google/gasket-driver.git"
+        "eventfd_signal.patch")
+sha256sums=('SKIP'
+        '44347d93a8f4bf8d632a32db2a59f736237a7c862a5570e724df1699a6b3508f')
 
 prepare() {
         echo "${srcdir}"
         echo "${pkgdir}"
+        patch --directory=$srcdir/gasket-driver/ --forward --strip=1 --input=$srcdir/eventfd_signal.patch
 }
 
 pkgver() {
-	cd "${srcdir}/gasket-driver/"
+        cd "${srcdir}/gasket-driver/"
         printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
