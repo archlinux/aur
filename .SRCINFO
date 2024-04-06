@@ -1,6 +1,6 @@
 pkgbase = biome-bin
 	pkgdesc = A toolchain for web projects, aimed to provide functionalities to maintain them. Biome offers formatter and linter, usable via CLI and LSP.
-	pkgver = 1.6.3
+	pkgver = 1.6.4
 	pkgrel = 1
 	url = https://github.com/biomejs/biome
 	changelog = biome-bin.changelog
@@ -14,9 +14,9 @@ pkgbase = biome-bin
 	source = LICENSE-MIT::https://raw.githubusercontent.com/biomejs/biome/main/LICENSE-MIT
 	sha256sums = e2746aba8799f7a3378259f36a83a079e811ca7926cbdd248a2eb7ca9cbbac5d
 	sha256sums = 4f6a0d776a00c0f46e1da1879321896071494229aa3219862a625e4560691a3a
-	source_x86_64 = biome-bin-x86_64-1.6.3::https://github.com/biomejs/biome/releases/download/cli/v1.6.3/biome-linux-x64-musl
-	sha256sums_x86_64 = 55792cdf4299d51ef357f7a6933f0cd98b573cc8f8c7883a0deef3f1b2a287c3
-	source_aarch64 = biome-bin-aarch64-1.6.3::https://github.com/biomejs/biome/releases/download/cli/v1.6.3/biome-linux-arm64-musl
-	sha256sums_aarch64 = 94531e86898a52ecb6b59e02e52ea637383b564155117b1e1a9d972ad3dc51c0
+	source_x86_64 = biome-bin-x86_64-1.6.4::https://github.com/biomejs/biome/releases/download/cli/v1.6.4/biome-linux-x64-musl
+	sha256sums_x86_64 = b4b9ac0fb6ce7f28c77430b07139ca54794a7e5fbcd94cacc91cdd15bbeb08a2
+	source_aarch64 = biome-bin-aarch64-1.6.4::https://github.com/biomejs/biome/releases/download/cli/v1.6.4/biome-linux-arm64-musl
+	sha256sums_aarch64 = 1cb7a0e478f6d1148d79c685af685c1033f4a361417cf9bf25a7ab05c075149a
 
 pkgname = biome-bin
