@@ -3,12 +3,12 @@
 _pkgname=swfdr
 _pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
-pkgrel=1
-pkgdesc='Estimation of the science-wise false discovery rate and the false discovery rate conditional on covariates'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Estimation of the science-wise false discovery rate and the false discovery rate conditional on covariates"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-or-later')
 depends=(
   r
 )
@@ -23,14 +23,15 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e3b56e72ab8e081aa5a7c3426e7c6febc5b2d49d47adb6fd48ebcb6836a0ce76')
+md5sums=('f873820993a9785dbca1c825b291abfb')
+b2sums=('f8db5f2a674c2281a976b747c3b55842bfb0d79f85d751f680c0438efbc254bc556e8a214a2e0af866d59d1978a50f171ff384c3832221d94ff856e72433430c')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
