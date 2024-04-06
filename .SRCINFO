@@ -1,7 +1,7 @@
 pkgbase = certbot
 	pkgdesc = An ACME client
 	pkgver = 2.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://certbot.eff.org
 	arch = any
 	license = Apache
