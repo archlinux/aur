@@ -1,11 +1,11 @@
-# Maintainer: Lukas Spies <lukas (at) photoqt _dot_ org>
+# Maintainer: Lukas Spies <lukas (at) previewqt _dot_ org>
 
 pkgname=previewqt
 pkgver=2.0
 pkgrel=1
 pkgdesc="Simple application for previewing all kinds of files, from images to videos, from documents to archives."
 arch=('x86_64')
-url="http://photoqt.org/"
+url="http://previewqt.org/"
 license=('GPL2')
 depends=('exiv2' 'imagemagick' 'qt6-imageformats' 'qt6-multimedia' 'qt6-svg' 'qt6-declarative' 'libraw' 'hicolor-icon-theme' 'libarchive' 'kimageformats' 'resvg')
 optdepends=('libqpsd-git: PSB/PSD support'
