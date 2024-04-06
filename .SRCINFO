@@ -1,6 +1,6 @@
 pkgbase = beekeeper-studio-git
 	pkgdesc = Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more
-	pkgver = 4.2.5.r1.g3f7a0974
+	pkgver = 4.2.9.r0.gabe5a1de
 	pkgrel = 1
 	url = https://www.beekeeperstudio.io/
 	arch = any

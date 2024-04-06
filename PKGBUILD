@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=beekeeper-studio-git
 _pkgname="Beekeeper Studio"
-pkgver=4.2.5.r1.g3f7a0974
+pkgver=4.2.9.r0.gabe5a1de
 _electronversion=18
 _nodeversion=16
 pkgrel=1
@@ -42,6 +42,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
