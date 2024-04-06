@@ -19,7 +19,7 @@ if [ -f "$FILE" ]; then
     cp -r "/usr/share/games/$_pkgname/*" "$pkgdir/usr/share/games/$_pkgname"
 else
     echo "Game files do not exist, starting download.."
-    cd "$srcdir/$pkgname-$pkgver" || { echo "Failed to change directory"; exit 1; }
+    cd "$srcdir/jazz-$pkgver" || { echo "Failed to change directory"; exit 1; }
    # Deleting any existing downloads
     rm -rf "Jazz Jackrabbit GOG v1.3 + Orbitus 2 fix.zip"
     wget "https://archive.org/download/jazzpack/Jazz%20Jackrabbit%20GOG%20v1.3%20%2B%20Orbitus%202%20fix.zip"
@@ -49,14 +49,14 @@ package() {
     install -dm775 "$pkgdir/usr/share/games/$_pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"
     
-    cp -r "$srcdir/$pkgname-$pkgver/$pkgname" "$pkgdir/usr/bin"
-    cp -r "$srcdir/$pkgname-$pkgver/$pkgname" "$pkgdir/usr/share/games/$_pkgname/"
-    cp -r "$srcdir/$pkgname-$pkgver/$pkgname.png" "$pkgdir/usr/share/games/$_pkgname/"
-    cp -r "$srcdir/$pkgname-$pkgver/$pkgname.png" "$pkgdir/usr/share/pixmaps"
+    cp -r "$srcdir/jazz-$pkgver/$pkgname" "$pkgdir/usr/bin"
+    cp -r "$srcdir/jazz-$pkgver/$pkgname" "$pkgdir/usr/share/games/$_pkgname/"
+    cp -r "$srcdir/jazz-$pkgver/$pkgname.png" "$pkgdir/usr/share/games/$_pkgname/"
+    cp -r "$srcdir/jazz-$pkgver/$pkgname.png" "$pkgdir/usr/share/pixmaps"
     cp -r "$srcdir/tmp/." "$pkgdir/usr/share/games/$_pkgname/"
 
     # Desktop Entry
-    install -Dm644 "$srcdir/$pkgname-$pkgver/$pkgname.desktop" \
+    install -Dm644 "$srcdir/jazz-$pkgver/$pkgname.desktop" \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
     sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
