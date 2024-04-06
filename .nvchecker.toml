@@ -1,0 +1,5 @@
+[librivox-checker]
+source = "git"
+git = "https://github.com/CGJennings/librivox-checker.git"
+include_regex = 'v((?:\d|\.)+)'
+prefix = "v"
