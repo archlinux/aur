@@ -1,4 +1,4 @@
-# Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
+# Contributor: Adam Goldsmith <contact@adamgoldsmith.name>
 pkgname=libarcus-git
 pkgver=r402.6cc4cec
 pkgrel=1
@@ -8,8 +8,8 @@ url="https://github.com/Ultimaker/libArcus"
 license=('GPL2')
 provides=('arcus' 'libarcus')
 conflicts=('arcus' 'libarcus')
-depends=('python' 'protobuf' 'python-sip4')
-makedepends=('git' 'cmake' 'sip4')
+depends=('python' 'protobuf' 'python')
+makedepends=('git' 'cmake' 'ninja' 'conan')
 source=('git+https://github.com/Ultimaker/libArcus.git')
 md5sums=('SKIP')
 
