@@ -1,0 +1,23 @@
+pkgbase = ersatztv-bin
+	pkgdesc = Software for configuring and streaming custom live channels using your media library
+	pkgver = 0.8.6
+	pkgrel = 1
+	url = https://ersatztv.org/
+	arch = x86_64
+	arch = aarch64
+	license = zlib
+	optdepends = ffmpeg
+	provides = ersatztv
+	options = !strip
+	source = ersatztv.service
+	source = ersatztv.sysusers
+	source = ersatztv.tmpfiles
+	sha256sums = 27b89ea376c06600ae7871f4e9db6cafb446e38e59334bdf31983bfa9f8bc550
+	sha256sums = b8fc55ba6da728a51e2d0ce5add05e8a9500a0e7626c55b042d6b55763bc1ad5
+	sha256sums = 95bb7e34c04af1288af7765940fd73c6807bba3fd276a9cb32f243b029d20d66
+	source_x86_64 = https://github.com/ErsatzTV/ErsatzTV/releases/download/v0.8.6-beta/ErsatzTV-v0.8.6-beta-linux-x64.tar.gz
+	sha256sums_x86_64 = a576d1783fdd1c25bba69e7388d103eff1ed914b388d0c8fad418ad48287b2fa
+	source_aarch64 = https://github.com/ErsatzTV/ErsatzTV/releases/download/v0.8.6-beta/ErsatzTV-v0.8.6-beta-linux-arm64.tar.gz
+	sha256sums_aarch64 = 8ad7a49e280bd6f74b192c1678cdc858c39d02f4869c4b94b141da4f79c400a4
+
+pkgname = ersatztv-bin
