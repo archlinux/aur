@@ -2,7 +2,7 @@
 # Maintainer: qlrd <qlrddev at gmail dot com>
 pkgname=krux-installer-bin
 _pkgname="org.selfcustody.${pkgname%-bin}"
-pkgver=0.0.12
+pkgver=0.0.13
 _electronversion=29
 pkgrel=1
 pkgdesc="A GUI based application to flash Krux firmware on K210 based devices.Use system-wide electron."
@@ -25,14 +25,14 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/selfcustody/krux-installer/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('125a49b11c50a09738a84de8265e35efb44addd658a84d19022d6378fe826a9f'
+sha256sums=('ec1a6629a77ac82a3548f8a1b403296b7573684a0e7f98e7cdd06a15ab2b50d9'
             '29eee3e9d9c5dd67213ec3ab4a7eef57a1224750e2e9aab3a278177a9444a355'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${pkgname%-bin}/||g;s|org.selfcustody.${pkgname%-bin}|${pkgname%-bin}|g" \
