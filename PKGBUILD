@@ -8,7 +8,7 @@ license=('GPL')
 depends=('openjazz-bin' 'wget' 'unzip' 'yad')
 makedepends=('unzip')
 url="https://gitlab.com/jazzproject"
-source=("https://gitlab.com/jazzproject/jazzjackrabbit/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2")
+source=("https://gitlab.com/jazzproject/jazz-jackrabbit/jazz/-/archive/$pkgver/jazz-$pkgver.tar.bz2")
 sha256sums=("SKIP")
 
 prepare() {
