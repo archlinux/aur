@@ -1,7 +1,8 @@
-# Maintainer: Katoitalia
+# Maintainer: Rucker <ruckeraur at proton dot me>
+# Contributor: Katoitalia
 
 pkgname=obs-plugin-tuna-git
-pkgver=1.5.3
+pkgver=1.9.7.r45.g72270af
 pkgrel=1
 arch=(x86_64)
 pkgdesc="Song information plugin for obs-studio git version"
@@ -24,6 +25,7 @@ pkgver() {
 prepare() {
   cd $pkgname
   git config submodule.deps/taglib.url $srcdir/taglib
+  git config --global protocol.file.allow always
   git config submodule.deps/libmpdclient.url $srcdir/libmpdclient
   git submodule update
 }
@@ -43,7 +45,7 @@ build() {
 package() {
   cd $srcdir
   mkdir -p $pkgdir/usr/lib/obs-plugins/
-  mv $srcdir/tuna/install/tuna/bin/64bit/tuna.so $pkgdir/usr/lib/obs-plugins/
+  mv $srcdir/tuna/install/lib/obs-plugins/tuna.so $pkgdir/usr/lib/obs-plugins/
   mkdir -p $pkgdir/usr/share/obs/obs-plugins/
-  mv $srcdir/tuna/install/tuna/data $pkgdir/usr/share/obs/obs-plugins/tuna
+  mv $srcdir/tuna/install/share/obs/obs-plugins/tuna $pkgdir/usr/share/obs/obs-plugins/tuna
 }
