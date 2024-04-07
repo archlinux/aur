@@ -8,18 +8,17 @@
 
 _pkgname=exo
 pkgname=${_pkgname}-git
-pkgver=0.12.11+68+ga978d108
+pkgver=4.19.0+11+g66004671
 pkgrel=1
 pkgdesc="Extensions to Xfce originally developed by os-cillation."
 arch=('i686' 'x86_64')
-license=('GPL2' 'LGPL2.1')
+license=('GPL2' 'LGPL')
 url="https://gitlab.xfce.org/xfce/exo/"
 groups=('xfce4-git')
-provides=("exo=${pkgver}")
-depends=('hicolor-icon-theme' 'libxfce4ui')
-makedepends=('xfce4-dev-tools' 'git' 'pkgconfig' 'libnotify' 'perl-uri')
-optdepends=('libnotify: enables notification support'
-	'perl: enables mail-compose helper script')
+#provides=("exo=${pkgver}")
+provides=("${_pkgname}=${pkgver%%+*}")
+depends=('libxfce4ui')
+makedepends=('git' 'xfce4-dev-tools')
 conflicts=('exo')
 source=("${_pkgname}::git+https://gitlab.xfce.org/xfce/${_pkgname}.git")
 options=('!libtool')
@@ -36,6 +35,7 @@ pkgver(){
 build() {
   cd "${_pkgname}"
 
+  #./autogen.sh --help=recursive
   ./autogen.sh \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -43,7 +43,8 @@ build() {
     --localstatedir=/var  \
     --disable-static \
     --enable-gtk-doc \
-    --disable-debug
+    --enable-debug=minimum \
+    --enable-maintainer-mode
   make
 }
 

@@ -1,6 +1,6 @@
 pkgbase = exo-git
 	pkgdesc = Extensions to Xfce originally developed by os-cillation.
-	pkgver = 0.12.11+68+ga978d108
+	pkgver = 4.19.0+11+g66004671
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.xfce.org/xfce/exo/
@@ -8,21 +8,14 @@ pkgbase = exo-git
 	arch = x86_64
 	groups = xfce4-git
 	license = GPL2
-	license = LGPL2.1
-	makedepends = xfce4-dev-tools
+	license = LGPL
 	makedepends = git
-	makedepends = pkgconfig
-	makedepends = libnotify
-	makedepends = perl-uri
-	depends = hicolor-icon-theme
+	makedepends = xfce4-dev-tools
 	depends = libxfce4ui
-	optdepends = libnotify: enables notification support
-	optdepends = perl: enables mail-compose helper script
-	provides = exo=0.12.11+68+ga978d108
+	provides = exo=4.19.0
 	conflicts = exo
 	options = !libtool
 	source = exo::git+https://gitlab.xfce.org/xfce/exo.git
 	md5sums = SKIP
 
 pkgname = exo-git
-
