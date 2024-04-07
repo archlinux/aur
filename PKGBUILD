@@ -2,10 +2,10 @@
 
 pkgname="embedded-studio"
 pkgver=8.10d
-pkgrel=2
+pkgrel=3
 pkgdesc="Segger Embedded Studio"
 arch=('x86_64' 'aarch64')
-makedepends=()
+makedepends=('libx11')
 depends=('jlink-software-and-documentation')
 optdepends=()
 conflicts=()
