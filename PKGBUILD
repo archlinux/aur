@@ -1,6 +1,5 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-arch-update-security-news-git
-_uuid=arch-update-security-news@slaclau.github.io
 pkgver=2.rc1.r0.g83b1a75
 pkgrel=1
 pkgdesc="Update indicator for ArchLinux and Gnome-Shell"
