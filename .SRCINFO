@@ -1,0 +1,18 @@
+pkgbase = python-fuzzywuzzy
+	pkgdesc = Fuzzy string matching like a boss
+	pkgver = 0.18.0
+	pkgrel = 7
+	url = https://pypi.python.org/pypi/fuzzywuzzy
+	arch = any
+	license = GPL2
+	checkdepends = python-pytest
+	checkdepends = python-hypothesis
+	checkdepends = python-levenshtein
+	checkdepends = python-pycodestyle
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-levenshtein: provides a 4-10x speedup in string matching
+	source = https://github.com/seatgeek/fuzzywuzzy/archive/0.18.0/python-fuzzywuzzy-0.18.0.tar.gz
+	sha256sums = 26795bd6c319a8c789d62ecbe95e29a97711f0176d3beea04ce510981095f696
+
+pkgname = python-fuzzywuzzy
