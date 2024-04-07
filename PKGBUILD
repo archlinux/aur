@@ -3,7 +3,7 @@
 
 pkgname=netradiant-custom
 pkgver=20240309
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source, cross-platform level editor for id Tech based games (NetRadiant fork)"
 url="https://garux.github.io/NRC/"
 depends=('bash' 'gcc-libs' 'glib2' 'glibc' 'libjpeg-turbo' 'libpng' 'libxml2' 'qt5-base' 'zlib')
@@ -18,6 +18,9 @@ license=('GPL' 'BSD' 'LGPL')
 arch=('i686' 'x86_64')
 
 build () {
+	# Work around a crash at startup or when displaying the texture browser
+	export CXXFLAGS+=" -Wp,-U_GLIBCXX_ASSERTIONS"
+
 	cd "${srcdir}/${pkgname}/"
 	make
 }
