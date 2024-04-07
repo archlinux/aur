@@ -9,6 +9,7 @@ workflow:
 get_latest:
   stage: .pre
   script:
+    - apk add bash
     - "[ -x ./update_pkgbuild.sh ] || chmod a+x ./update_pkgbuild.sh"
     - ./update_pkgbuild.sh
     - diff PKGBUILD.old PKGBUILD || sed -i -e "s|^pkgrel=.*$|pkgrel=1|g"
