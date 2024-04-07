@@ -6,7 +6,7 @@ build_number=08120
 # https://www.privateinternetaccess.com/pages/changelog
 
 epoch=1 # Switch versioning schemes for guaranteed upgrades
-pkgrel=1
+pkgrel=2
 pkgdesc="Private Internet Access client"
 arch=('x86_64' 'aarch64')
 url="https://privateinternetaccess.com/"

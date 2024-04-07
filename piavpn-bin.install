@@ -16,7 +16,7 @@ pre_install() {
 	if ! cat /etc/iproute2/rt_tables > /dev/null 2>&1 # If this doesn't exist, create it!
 	then
 		mkdir -p /etc/iproute2
-		cp /usr/lib/iproute2/rt_tables /etc/iproute2/rt_tables
+		cp /usr/share/iproute2/rt_tables /etc/iproute2/rt_tables
 	fi
 
 	addRoutingTable piavpnrt
@@ -43,9 +43,9 @@ post_remove() {
 	groupdel piavpn
 	groupdel piahnsd
 
-	if diff -q /usr/lib/iproute2/rt_tables /etc/iproute2/rt_tables > /dev/null 2>&1 # If files are identical
+	if diff -q /usr/share/iproute2/rt_tables /etc/iproute2/rt_tables > /dev/null 2>&1 # If files are identical
 	then
-		echo "/etc/iproute2/rt_tables is identical to default at /usr/lib/iproute2/rt_tables, removing"
+		echo "/etc/iproute2/rt_tables is identical to default at /usr/share/iproute2/rt_tables, removing"
 		rm /etc/iproute2/rt_tables
 		rmdir /etc/iproute2
 	fi
