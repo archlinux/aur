@@ -1,12 +1,12 @@
-# Maintainer: Ayush Agarwal <ayushnix at fastmail dot com>
+# Maintainer: Ayush Agarwal <ayush at ayushnix dot com>
 # Contributor: Ben Oliver <ben at bfoliver dot com>
 # Contributor: Andy Weidenbaum <archbaum at gmail dot com>
 # Contributor: John Jenkins <twodopeshaggy at gmail dot com>
 # Contributor: Julian Paul Dasmarinas <julian.dasma at gmail dot com>
 
 pkgname=buku
-pkgver=4.8
-pkgrel=3
+pkgver=4.9
+pkgrel=1
 pkgdesc="Bookmark manager like a text-based mini-web"
 arch=('any')
 url="https://github.com/jarun/buku"
@@ -21,7 +21,7 @@ optdepends=('wl-clipboard: to copy text in wayland'
   'xsel: to copy text in xorg'
   'xclip: to copy text in xorg')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a0b94210e80e9f9f359e5308323837d41781cf8dba497341099d5c59e27fa52c')
+sha256sums=('1e432270ae78c7852110dcf2c2e215893bcc338299a4998f14a1f6b26e37bfac')
 
 package() {
   cd "$pkgname-$pkgver"

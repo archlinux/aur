@@ -1,7 +1,7 @@
 pkgbase = buku
 	pkgdesc = Bookmark manager like a text-based mini-web
-	pkgver = 4.8
-	pkgrel = 3
+	pkgver = 4.9
+	pkgrel = 1
 	url = https://github.com/jarun/buku
 	arch = any
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = buku
 	optdepends = wl-clipboard: to copy text in wayland
 	optdepends = xsel: to copy text in xorg
 	optdepends = xclip: to copy text in xorg
-	source = buku-4.8.tar.gz::https://github.com/jarun/buku/archive/refs/tags/v4.8.tar.gz
-	sha256sums = a0b94210e80e9f9f359e5308323837d41781cf8dba497341099d5c59e27fa52c
+	source = buku-4.9.tar.gz::https://github.com/jarun/buku/archive/refs/tags/v4.9.tar.gz
+	sha256sums = 1e432270ae78c7852110dcf2c2e215893bcc338299a4998f14a1f6b26e37bfac
 
 pkgname = buku
