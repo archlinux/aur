@@ -4,7 +4,7 @@
 pkgname=classin-bin
 _pkgname=classin
 pkgver=5.1.1.34
-pkgrel=2
+pkgrel=3
 pkgdesc="Proprietary remote classroom application by EEO."
 arch=('x86_64')
 url="https://www.eeo.cn/cn/classin"
@@ -16,6 +16,12 @@ sha512sums_x86_64=('a6f5996366cfb508128076d8d92f2211c55bc4feee12ceba71d5a81d3cd0
 
 package(){
 	tar -xJ --no-same-owner -f data.tar.xz -C "${pkgdir}"
+
+  # Remove intefering vendored libraries
+  pushd "${pkgdir}/opt/apps/classin/lib"
+  rm libasound.so*
+  rm libstdc++.so*
+  popd
 
 	# HACK: Debian compatibility symlink
 	# ClassIn binary links several files in /usr/lib/x86_64-linux-gnu, which is
