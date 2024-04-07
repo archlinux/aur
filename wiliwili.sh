@@ -1,4 +1,6 @@
-function launch(){
+#!/bin/bash
+
+function launch() {
 	bwrap --die-with-parent \
 	--ro-bind /opt /opt \
 	--ro-bind /etc /etc \
@@ -22,4 +24,14 @@ function launch(){
 	/usr/bin/env -u DISPLAY wiliwili "$@"
 }
 
-launch $@
+function launchV2() {
+	bwrap \
+		--dev-bind / / \
+		--dev /dev \
+		--dev-bind /dev/dri /dev/dri \
+		--dev-bind /dev/shm /dev/shm \
+		--dev-bind /dev/input /dev/input \
+		/usr/bin/env -u DISPLAY wiliwili "$@"
+}
+
+launchV2 $@
