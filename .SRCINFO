@@ -1,0 +1,17 @@
+pkgbase = jwx
+	pkgdesc = A Java short-wave weatherfax receiver/converter
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://arachnoid.com/JWX/
+	arch = any
+	license = GPL3
+	depends = java-runtime
+	depends = bash
+	source = https://arachnoid.com/JWX/resources/JWX.jar
+	source = jwx.sh
+	source = jwx.desktop
+	sha256sums = 6fedb44ce127995abda23626e1b9e47c7d9c444f449ebfe5863d8b0a35e9f1bd
+	sha256sums = 1b1c17ae670b857a94d7ad84e06292687860ebd684aee2dc85067fd746546a85
+	sha256sums = bd75de5f88ed8dafa66bf6414f4073a0d17d707401773b7511f6e2cddb38cc3f
+
+pkgname = jwx
