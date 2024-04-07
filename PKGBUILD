@@ -1,7 +1,7 @@
 # Maintainer: Jax Young <jaxvanyang@gmail.com>
 
 pkgname=dotbackup
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='YAML config based backup utility'
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=(
 )
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jaxvanyang/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('c1fc081736f396ac11e9b9ae306ad23123faeddc79d30eddf7256fdf6de610ff')
+sha256sums=('745b39010344454ba37224f3c9871d0965164e3402c6426fa5ebff37dc918d7d')
 
 build() {
 	cd "$pkgname-$pkgver"
