@@ -2,26 +2,29 @@
 
 _basename=gssdp
 pkgname=lib32-gssdp
-pkgver=1.6.2
-pkgrel=2
+pkgver=1.6.3
+pkgrel=1
 pkgdesc="A GObject-based API for handling resource discovery and announcement over SSDP (32-bit)"
 arch=(x86_64)
 url="http://gupnp.org/"
 license=(LGPL)
-depends=(lib32-libsoup3 gssdp)
-makedepends=(git meson vala)
-_commit=c2d417d6a79f03c095e5730efd60015eb3109a82 # tags/gssdp-1.6.2^0
+depends=(lib32-libsoup3
+         gssdp)
+makedepends=(git
+             meson
+             vala)
+_commit=28c388aa45698dcc09ba24e8de849653e9eedf8c  # tags/gssdp-1.6.3^0
 source=("git+https://git.gnome.org/browse/gssdp#commit=$_commit")
-sha256sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
-    cd $_basename
+    cd gssdp
 
     git describe --tags | sed 's/^gssdp-//;s/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
-    cd $_basename
+    cd gssdp
 }
 
 build() {
@@ -29,13 +32,16 @@ build() {
     export CXX='g++ -m32'
     export PKG_CONFIG='/usr/bin/i686-pc-linux-gnu-pkg-config'
 
-    arch-meson $_basename build \
+    local meson_options=(
         --libdir='/usr/lib32' \
         -Dgtk_doc=false \
         -Dsniffer=false \
         -Dintrospection=false \
         -Dexamples=false \
         -Dmanpages=false
+    )
+
+    arch-meson gssdp build "${meson_options[@]}"
 
     meson compile -C build
 }
