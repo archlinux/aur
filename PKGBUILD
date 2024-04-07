@@ -3,12 +3,12 @@
 _pkgname=MassSpecWavelet
 _pkgver=1.68.0
 pkgname=r-${_pkgname,,}
-pkgver=1.68.0
-pkgrel=1
-pkgdesc='Mass spectrum processing by wavelet-based algorithms'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('LGPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Peak Detection for Mass Spectrometry data using wavelet-based algorithms"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('LGPL-2.0-or-later')
 depends=(
   r
 )
@@ -22,14 +22,15 @@ optdepends=(
   r-waveslim
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5ea71adfc8e632ab10c5b208572e398a1fc799b01d02a1608a688bafbbf89910')
+md5sums=('387636ea7c674fe339c56a8af3458f8a')
+b2sums=('c5497b87c948615a929ce729ecaa5ddd72ddac6bf71b4a33ca0334b5eba615efafe92d49049df798e82a1dc2a03efc8d181db20a4d1995a4ca5293a8763b31f9')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
