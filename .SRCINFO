@@ -1,0 +1,15 @@
+pkgbase = python-pytest-celery
+	pkgdesc = A shim pytest plugin to enable celery.contrib.pytest
+	pkgver = 0.0.0
+	pkgrel = 6
+	url = https://github.com/celery/pytest-celery
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-flit-core
+	depends = python-celery
+	source = https://pypi.io/packages/source/p/pytest-celery/pytest-celery-0.0.0.tar.gz
+	sha512sums = 5fc9c52da674ec2fcf55d6ebf278aec166877c5bd7962c786e5432e77d15132247021e4552001aad19bd7827e5b16256062eade43a8fc59c5b52e264d06b1cae
+
+pkgname = python-pytest-celery
