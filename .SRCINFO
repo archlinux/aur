@@ -1,6 +1,6 @@
 pkgbase = earthly-bin
 	pkgdesc = Build automation for the container era
-	pkgver = 0.8.5
+	pkgver = 0.8.7
 	pkgrel = 1
 	url = https://earthly.dev
 	install = earthly-bin.install
@@ -12,7 +12,7 @@ pkgbase = earthly-bin
 	optdepends = podman: Using podman as runtime
 	provides = earthly
 	conflicts = earthly
-	source = earthly-bin-0.8.5::https://github.com/earthly/earthly/releases/download/v0.8.5/earthly-linux-amd64
-	sha512sums = 8e5ac3da3c424114daa0540eb9c0d866e311a00742183500846697efb631ad8c0c35d4094f5d43438134b3e72cb6039423649d63cf73f6155a633840c5917f9b
+	source = earthly-bin-0.8.7::https://github.com/earthly/earthly/releases/download/v0.8.7/earthly-linux-amd64
+	sha512sums = 41c7c1086e2eb7d423b54c5f84c56197ee6ee3b2ca643c909ffed6504f517f81fe3ef12fa068c37cbf53a5c21e28c5656ff70045d28dfdb26726c990735c59fb
 
 pkgname = earthly-bin
