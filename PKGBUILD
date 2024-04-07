@@ -1,6 +1,7 @@
 # Maintainer: tippfehlr <tippfehlr at gmail dot com>
 
-pkgname=radicle-node-bin
+pkgbase=radicle-node-bin
+pkgname=radicle-node-bin-old
 # there are no versions attached to the binaries, just upload dates.
 pkgver=20240407
 _srchash="bd8e0ebcda8f6f06dc20641a71614e3778a43fea"
