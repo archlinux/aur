@@ -3,7 +3,7 @@
 # Contributor: Victor Häggqvist <aur a snilius d com>
 
 pkgname=solaar-git
-pkgver=1.1.7rc2.r0.gf539ac06
+pkgver=1.1.11.r165.gc70e8b54
 pkgrel=1
 pkgdesc="Device manager for Logitech's Unifying receiver peripherals"
 url="https://pwr-solaar.github.io/Solaar/"
@@ -35,23 +35,20 @@ pkgver() {
 
 build() {
   cd "${pkgname}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${pkgname}"
 
   tools/po-compile.sh
-
-  python setup.py install --skip-build \
-    --optimize=1 \
-    --prefix=/usr \
-    --root="${pkgdir}/"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  
   # udev
   install -vDm 644 rules.d/42-logitech-unify-permissions.rules \
     "${pkgdir}/usr/lib/udev/rules.d/42-logitech-unify-permissions.rules"
   # docs
-  install -vDm 644 {ChangeLog.md,README.md} \
+  install -vDm 644 {CHANGELOG.md,README.md} \
     -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
 # vim:set ts=2 sw=2 et:
