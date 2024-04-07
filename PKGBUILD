@@ -3,28 +3,28 @@
 _pkgname=qdapRegex
 _pkgver=0.7.8
 pkgname=r-${_pkgname,,}
-pkgver=0.7.8
-pkgrel=1
-pkgdesc='Regular Expression Removal, Extraction, and Replacement Tools'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Regular Expression Removal, Extraction, and Replacement Tools"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
   r-stringi
 )
 optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9f473f2f0c917005d6f1ba581bd0347a2b27c966442a15da40569b38c067c1dd')
+md5sums=('c5c21c986834e64e87a44891614f0196')
+b2sums=('5d27e98be30591e4b7086e08485d13e2b931aed8b40c0083ec8674f92e5695ea88fcdf7e65b31f02d375d4379d1869cd226f11760ad52a6948b7be0acdfe7c80')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
