@@ -3,16 +3,16 @@
 pkgbase='python-jupyterlab-vim'
 pkgname=('python-jupyterlab-vim')
 _module='jupyterlab_vim'
-pkgver='4.1.0'
-pkgrel=2
+pkgver='4.1.3'
+pkgrel=1
 pkgdesc="Code cell vim bindings for JupyterLab and Jupyter-Server"
-url="https://jupyterlab-contrib.github.io/jupyterlab-vim.html"
+url="https://github.com/jupyterlab-contrib/jupyterlab-vim"
 depends=('python' 'jupyter-lsp')
 makedepends=('python-build' 'python-installer' 'python-hatch-nodejs-version' 'python-hatch-jupyter-builder')
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/${_module/-/_}-$pkgver.tar.gz")
-sha256sums=('11d850ee91b2864a7b6298aae465219a822f8ccc6e01f23fa03f1ee617afe330')
+source=("${url}/releases/download/v${pkgver}/${_module}-${pkgver}.tar.gz")
+sha256sums=('57e1a0a4eddd2334e8d7a7c0df80f5097b78f5480ffa84307f2e508df98b6878')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
