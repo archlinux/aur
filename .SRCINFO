@@ -1,6 +1,6 @@
 pkgbase = bpftop-bin
 	pkgdesc = bpftop provides a dynamic real-time view of running eBPF programs.
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/Netflix/bpftop
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = bpftop-bin
 	depends = zlib
 	provides = bpftop
 	conflicts = bpftop
-	source = https://github.com/Netflix/bpftop/releases/download/v0.4.0/bpftop
-	b2sums = 2a79e8a7b5b2c365a3620b061e63812dd9a74f67f2c9909aef1bcdb015e5a1c544836706b09a3fac4d0877ddc54b803d312d455e619777597254abdab70c847b
+	source = https://github.com/Netflix/bpftop/releases/download/v0.4.1/bpftop
+	b2sums = 75dd814e3348f5de7ab22136603777eeb45c4e234e2077d6133018994743098ce5a10b4d836274631b4d7e7019e7c5ce0367bdbc3c3a0a8d37bc248dce459f1a
 
 pkgname = bpftop-bin
