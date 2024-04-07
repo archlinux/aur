@@ -1,4 +1,4 @@
-# Maintainer: fossdd <fossdd@pwned.life>
+# Maintainer: Jose Fernandez <josef@netflix.com>
 
 pkgname=bpftop
 pkgver=0.4.1
