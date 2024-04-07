@@ -1,10 +1,10 @@
 pkgbase = einat-ebpf-git
 	pkgdesc = eBPF-based Endpoint-Independent NAT
-	pkgver = 0.1.0.r8.g9e6f8e6
+	pkgver = 0.1.0.r17.g3c81872
 	pkgrel = 1
 	url = https://github.com/EHfive/einat-ebpf
 	arch = x86_64
-	license = GPL-2.0-or-later
+	license = GPL-2.0-only
 	makedepends = git
 	makedepends = cargo
 	makedepends = clang

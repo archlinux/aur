@@ -3,12 +3,12 @@
 pkgname=einat-ebpf-git
 _pkgname=einat-ebpf
 _target=einat
-pkgver=0.1.0.r8.g9e6f8e6
+pkgver=0.1.0.r17.g3c81872
 pkgrel=1
 pkgdesc="eBPF-based Endpoint-Independent NAT"
 arch=('x86_64')
 url="https://github.com/EHfive/einat-ebpf"
-license=('GPL-2.0-or-later')
+license=('GPL-2.0-only')
 depends=('glibc' 'gcc-libs' 'zlib' 'libelf')
 provides=('einat')
 conflicts=('einat')
