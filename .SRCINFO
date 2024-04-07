@@ -1,7 +1,7 @@
 pkgbase = python-geocoder
 	pkgdesc = A simple and consistent geocoding library
 	pkgver = 1.38.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/DenisCarriere/geocoder
 	arch = any
 	license = MIT
