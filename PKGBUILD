@@ -3,28 +3,28 @@
 _pkgname=heatmap3
 _pkgver=1.1.9
 pkgname=r-${_pkgname,,}
-pkgver=1.1.9
-pkgrel=4
-pkgdesc='An Improved Heatmap Package'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="An Improved Heatmap Package"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-fastcluster
 )
 optdepends=(
   r-knitr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('594c33947b2be2cc8a592075f41a0df2398c892add7d63a15c613a5eeb8fdb69')
+md5sums=('0bf9e7c9efab40a20f20871c91867bf4')
+b2sums=('44f1aea550d5b6d9d2949a4c7c6df0d915d47a320ad29c9584fd8dcb9ebb6021e9bcc5e80e0f7b92f03559e79e210e9726b130c97ed11a3a59960076b38f9187')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
