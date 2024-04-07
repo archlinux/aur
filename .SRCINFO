@@ -1,7 +1,7 @@
 pkgbase = python-glfw
 	pkgdesc = Module for OpenGL, OpenGL ES, Vulkan, window and input support (pyGLFW)
-	pkgver = 2.6.5
-	pkgrel = 2
+	pkgver = 2.7.0
+	pkgrel = 1
 	url = https://github.com/FlorianRhiem/pyGLFW
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = python-glfw
 	makedepends = python-setuptools
 	depends = glfw
 	depends = python
-	source = git+https://github.com/FlorianRhiem/pyGLFW#commit=bce6e2e53bcc46858a7d1c5029ae6ee24763ae4f
-	b2sums = SKIP
+	source = git+https://github.com/FlorianRhiem/pyGLFW#commit=d649113ecaac5c211f01afb864548cdfa87e2ac6
+	b2sums = 46f91af1e856c98c688110194f1dd3f3ab0711c483b175da63e209ad7fa7d144922937e3c9e8a311dd77374796456e484f820e89e7367776ca3d8efb61251c92
 
 pkgname = python-glfw
