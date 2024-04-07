@@ -4,7 +4,7 @@
 _pkgname=gimp
 pkgname=${_pkgname}-devel-noconflict
 pkgver=2.99.18
-pkgrel=3
+pkgrel=4
 pkgdesc="GNU Image Manipulation Program (Development version, doesn't conflict with gimp 2.0)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://www.gimp.org/"
@@ -37,9 +37,16 @@ optdepends=('alsa-lib: for MIDI event controller module'
             'gjs: JavaScript scripting support')
 provides=("${_pkgname}=${pkgver}")
 source=(https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz
+        fix-missing-gimpchoice-header.patch::https://gitlab.gnome.org/GNOME/gimp/-/commit/11892f1d83ffc465346dab7e2e8c6e790f555a64.patch
         linux.gpl)
 sha256sums=('8c1bb7a94ac0d4d0cde4d701d8b356387c2ecd87abbd35bbf7d222d40f6ddb6e'
+            'daeddaae0b5634f953189f4a479cc335c1516e7d490e6bf95f7be8e21835db3e'
             '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
+
+prepare() {
+  cd "${_pkgname}-${pkgver}"
+  patch -Np1 < ../fix-missing-gimpchoice-header.patch
+}
 
 build() {
   local meson_options=(
