@@ -1,8 +1,8 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=shell-gpt
 _pkgname=${pkgname/-/_}
-pkgver=1.4.0
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="A command-line productivity tool powered by OpenAI's ChatGPT"
 arch=(any)
@@ -26,8 +26,8 @@ makedepends=(
   python-wheel
 )
 checkdepends=(python-pytest)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('2a17bf7d087f6b026f10c0016e606ee32dd6bdcb262bd9a61d91c047485bf03a')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('0b7f6facf708a55ddc3b4a2495a445e90711b1100c489735afe289c062c33c45')
 
 _archive="$_pkgname-$pkgver"
 
@@ -54,9 +54,9 @@ check() {
   # Randomly generated mock API key
   export OPENAI_API_KEY=sk-dBAe8c5a9bc4294cca9bed292cd61e0ff9030bB94647adfb
   pytest \
-    --ignore tests/test_integration.py \
+    --deselect tests/test_default.py::test_markdown \
     --deselect tests/test_default.py::test_show_chat_use_markdown \
-    --deselect tests/test_default.py::test_markdown
+    --deselect tests/test_integration.py
 }
 
 package() {
