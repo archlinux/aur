@@ -1,0 +1,24 @@
+pkgbase = python-apeye
+	pkgdesc = Handy tools for working with URLs and APIs
+	pkgver = 1.4.0
+	pkgrel = 2
+	url = https://apeye.readthedocs.io/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-flit-core
+	depends = python
+	depends = python-apeye-core
+	depends = python-domdf-python-tools
+	depends = python-platformdirs
+	depends = python-requests
+	optdepends = python-cachecontrol: rate limiting
+	optdepends = python-lockfile: rate limiting
+	optdepends = python-ruamel-yaml: yaml serializer
+	optdepends = python-pyaml: yaml serializer
+	source = python-apeye::git+https://github.com/domdfcoding/apeye#commit=c7878245fb4f4a71bb53d1e38b6f5e4efff70854
+	b2sums = SKIP
+
+pkgname = python-apeye
