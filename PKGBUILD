@@ -1,120 +1,82 @@
 # Maintainer:
 
-## useful linkes
+## useful links
 # https://rsync.samba.org/
-# https://github.com/WayneD/rsync
-# https://github.com/WayneD/rsync-patches
+# https://github.com/RsyncProject/rsync
+# https://github.com/RsyncProject/rsync-patches
 
-## options
-: ${_build_git:=false}
-
-unset _pkgtype
-_pkgtype+="-reflink"
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
-
-## basic info
 _pkgname="rsync"
-pkgname="$_pkgname${_pkgtype:-}"
-pkgver=3.2.7
-pkgrel=7
+pkgname="$_pkgname-reflink"
+pkgver=3.3.0
+pkgrel=1
 pkgdesc='A fast and versatile file copying tool for remote and local files - with reflink support'
-url='https://github.com/WayneD/rsync'
+url='https://github.com/RsyncProject/rsync'
 license=('GPL-3.0-or-later')
 arch=('x86_64')
 
-# main package
-_main_package() {
-  depends=(
-    'libacl.so' # acl
-    'libxxhash.so' # xxhash
-    'openssl'
-    'popt'
-    'zstd'
+depends=(
+  'libacl.so' # acl
+  'libxxhash.so' # xxhash
+  'openssl'
+  'popt'
+  'zstd'
 
-    ## implicit
-    #bash
-    #glibc
-    #lz4
-    #zlib
-  )
-  optdepends=(
-    'python: for rrsync'
-  )
-  makedepends=(
-    'git'
-    'python-commonmark'
-  )
+  ## implicit
+  #bash
+  #lz4
+  #zlib
+)
+optdepends=(
+  ## AUR
+  'python-braceexpand: for rrsync'
+)
+makedepends=(
+  'git'
+  'python-commonmark'
+)
 
-  provides=("$_pkgname=${pkgver%%.r*}")
-  conflicts=("$_pkgname")
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
 
-  backup=(
-    'etc/rsyncd.conf'
-    'etc/xinetd.d/rsync'
-  )
+backup=(
+  'etc/rsyncd.conf'
+  'etc/xinetd.d/rsync'
+)
 
-  if [ "${_build_git::1}" != "t" ] ; then
-    _main_stable
-  else
-    _main_git
-  fi
+_pkgsrc="rsyncproject.rsync"
+source+=("$_pkgsrc"::"git+$url.git#tag=v${pkgver%%.r*}")
+sha256sums+=('SKIP')
 
-  source+=(
-    "$url-patches/raw/master/clone-dest.diff"
-    "$url-patches/raw/master/detect-renamed.diff"
-    "$url-patches/raw/master/detect-renamed-lax.diff"
-    'rsyncd.conf'
-  )
-  sha256sums+=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    '733ccb571721433c3a6262c58b658253ca6553bec79c2bdd0011810bb4f2156b'
-  )
-}
+_patch_id="$pkgver"
+_patch_branch="v$pkgver"
 
-# stable package
-_main_stable() {
-  : ${_pkgver:=${pkgver%%.r*}}
+source+=(
+  "reflink-${_patch_id}-clone-dest.patch"::"$url-patches/raw/${_patch_branch}/clone-dest.diff"
+  "reflink-${_patch_id}-detect-renamed.patch"::"$url-patches/raw/${_patch_branch}/detect-renamed.diff"
+  "reflink-${_patch_id}-detect-renamed-lax.patch"::"$url-patches/raw/${_patch_branch}/detect-renamed-lax.diff"
+  'rsyncd.conf'
+)
+sha256sums+=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  '733ccb571721433c3a6262c58b658253ca6553bec79c2bdd0011810bb4f2156b'
+)
 
-  _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git#tag=v${_pkgver:?}")
-  sha256sums+=('SKIP')
-
-  pkgver() {
-    echo "${_pkgver:?}"
-  }
-}
-
-# git package
-_main_git() {
-  provides=("$_pkgname=${pkgver%%.r*}")
-  conflicts=("$_pkgname")
-
-  _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git")
-  sha256sums+=('SKIP')
-
-  pkgver() (
-    cd "$_pkgsrc"
-    git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
-      | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
-  )
-}
-
-# common functions
 prepare() {
-  apply-patch() {
-    printf '\nApplying patch %s\n' "$1"
-    patch -Np1 -F100 -i "$1"
-  }
-
   cd "$_pkgsrc"
 
-  # patches
-  apply-patch "$srcdir/clone-dest.diff"
-  apply-patch "$srcdir/detect-renamed.diff"
-  apply-patch "$srcdir/detect-renamed-lax.diff"
+  # Apply patches from source array
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    src="${src%.zst}"
+    if [[ $src == *.patch ]] ; then
+      printf '\nApplying patch: %s\n' "$src"
+      patch -Np1 -F100 -i "$srcdir/$src"
+    fi
+  done
 }
 
 build() {
@@ -162,6 +124,3 @@ package() {
     "packaging/systemd/rsync@.service" \
     "$pkgdir/usr/lib/systemd/system/rsyncd@.service"
 }
-
-# execute
-_main_package
