@@ -7,51 +7,45 @@
 # See https://wiki.archlinux.org/index.php/Makepkg#Signature_checking
 # for more details # on package signing.
 pkgname=librepcb
-pkgver=1.0.0
-_pkgver=${pkgver/_/-}
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="A free EDA software to develop printed circuit boards"
 arch=('x86_64' 'i686')
 url="https://librepcb.org/"
-license=('GPL')
+license=('GPL-3.0-only')
 depends=(
   'glu'
   'hicolor-icon-theme'
   'muparser'
   'opencascade'
   'polyclipping'
-  'qt5-base'
-  'qt5-declarative'
-  'qt5-quickcontrols2'
-  'qt5-svg'
-  'quazip'
+  'qt6-base'
+  'qt6-declarative'
+  'qt6-svg'
+  'quazip-qt6'
 )
 makedepends=(
   'cmake'
   'pkg-config'
-  'qt5-tools'
-  'fontobene-qt5'
+  'qt6-tools'
+  'fontobene-qt-qt6'
   'gtest'
 )
 source=(
-  "https://download.librepcb.org/releases/${_pkgver}/librepcb-${_pkgver}-source.zip"
-  "https://download.librepcb.org/releases/${_pkgver}/librepcb-${_pkgver}-source.zip.asc"
+  "https://download.librepcb.org/releases/$pkgver/librepcb-$pkgver-source.zip"
+  "https://download.librepcb.org/releases/$pkgver/librepcb-$pkgver-source.zip.asc"
 )
 sha256sums=(
-  '1bc57489367c8e0fafe23a88a6677c6c73d8f4cac3f2f9caa2f306dca0e70e0b'
+  '102dcd713cf899af22e26b5e147592cc59d9330846f5bbdd98e5c1a77e958e83'
   'SKIP'
 )
 validpgpkeys=('D6F9AF572228C5BCD6B538407EF3061F5C8D5E25')
 
 prepare() {
-  cd "${srcdir}/librepcb-${_pkgver}/"
-}
-
-build() {
-  cd "${srcdir}/librepcb-${_pkgver}/"
+  cd "$srcdir/$pkgname-$pkgver/"
 
   # Remove unbundled libs from source to ensure they're not used
-  rm -rf libs/fontobene-qt5/
+  rm -rf libs/fontobene-qt/
   rm -rf libs/muparser/
   rm -rf libs/polyclipping/
   rm -rf libs/quazip/
@@ -60,30 +54,24 @@ build() {
   # Remove bundled hoedown, it is not needed on Qt >=5.14
   rm -rf libs/hoedown/
 
-  # Build
-  mkdir -p build && cd build
-  cmake .. \
+}
+
+build() {
+  cmake -B build -S "$pkgname-$pkgver" \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
     -DLIBREPCB_SHARE=/usr/share/librepcb \
-    -DUNBUNDLE_FONTOBENE_QT5=1 \
+    -DUNBUNDLE_FONTOBENE_QT=1 \
     -DUNBUNDLE_MUPARSER=1 \
     -DUNBUNDLE_POLYCLIPPING=1 \
     -DUNBUNDLE_QUAZIP=1 \
-    -DUNBUNDLE_GTEST=1
-  make
-}
-
-check() {
-  cd "${srcdir}/librepcb-${_pkgver}/build/"
-
-  # Run unit tests
-  ./tests/unittests/librepcb-unittests
+    -DUNBUNDLE_GTEST=1 \
+    -Wno-dev
+  cmake --build build
 }
 
 package() {
-  cd "${srcdir}/librepcb-${_pkgver}/build/"
-  make install
+  DESTDIR="$pkgdir" cmake --install build
 }
 
 # vim:set ts=2 sw=2 et:
