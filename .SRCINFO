@@ -1,7 +1,7 @@
 pkgbase = tinymediamanager-bin
 	pkgdesc = A media management tool written in Java/Swing.
-	pkgver = 5.0.3
-	pkgrel = 2
+	pkgver = 5.0.4
+	pkgrel = 1
 	url = https://www.tinymediamanager.org
 	arch = x86_64
 	arch = aarch64
@@ -15,9 +15,9 @@ pkgbase = tinymediamanager-bin
 	source = tinymediamanager.png
 	sha256sums = 08499a10730b6af6113c4a56e4ed7bed068d7fed282080dfd550b66d6a8ac9f5
 	sha256sums = 79b50c260b1c1c1f695c0ea1d743742d11d9a1337a2bc73985e4428752492f0f
-	source_x86_64 = https://release.tinymediamanager.org/v5/dist/tinyMediaManager-5.0.3-linux-amd64.tar.xz
-	sha256sums_x86_64 = 87a436839ac2ac4d4b465a980566dc359f1a773318d93935dcf3b6c98053f12b
-	source_aarch64 = https://release.tinymediamanager.org/v5/dist/tinyMediaManager-5.0.3-linux-arm64.tar.xz
-	sha256sums_aarch64 = 83a453a454ab804dc23e8f502efe468f2103725dba030002f6a23f3db91e3b7f
+	source_x86_64 = https://release.tinymediamanager.org/v5/dist/tinyMediaManager-5.0.4-linux-amd64.tar.xz
+	sha256sums_x86_64 = 3c3c2d12ce44076a499bb49c5d35c8d0839fa45caf0e031f6e0bc720a8072b3d
+	source_aarch64 = https://release.tinymediamanager.org/v5/dist/tinyMediaManager-5.0.4-linux-arm64.tar.xz
+	sha256sums_aarch64 = c9d32eab91f6b72535c7182cac3af22b8c928d98293636820e365fc9e8ab6ba3
 
 pkgname = tinymediamanager-bin
