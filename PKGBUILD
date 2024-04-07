@@ -2,13 +2,13 @@
 
 pkgname=email-to-pdf-converter
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Converts email files (eml, msg) to pdf"
 arch=('any')
 url="https://github.com/nickrussler/${pkgname}"
 license=('APACHE')
-depends=('jre-openjdk' 'wkhtmltopdf')
-makedepends=('gradle')
+depends=('java-runtime<=21' 'wkhtmltopdf')
+makedepends=('java-environment<=21' 'gradle')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         "java-version-and-build-version.patch")
 sha256sums=('5dd4107a4aa337ee05d584549d36db95ec31a8cef942ef86410433631ee7ec97'
