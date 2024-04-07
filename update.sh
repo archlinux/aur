@@ -1,12 +1,6 @@
 #!/bin/bash
 
-npm install
-sed -i $(for arg in $(./get_latest); do
-    key=${arg%%=*}
-    value=${arg#*=}
-
-    echo "-e s|$key=.*|$key=$value|g"
-done) PKGBUILD
+source $(dirname $0)/update_pkgbuild.sh
 
 updpkgsums
 makepkg --printsrcinfo > .SRCINFO
