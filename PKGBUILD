@@ -2,7 +2,7 @@
 pkgbase=python-stsci.imagestats
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="STScI clipped image statistics with core functionality of IRAF's imstatistics"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=('python-setuptools-scm'
              'python-numpy')
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('db98563813ca0d8facee23aac0865fbb')
+md5sums=('2c4858cf1f35515e376bb49006e11510')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
