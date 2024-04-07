@@ -14,14 +14,14 @@ makedepends=('cargo' 'clang')
 conflicts=('lottie2gif' 'lottie2webp')
 replaces=('lottie2gif' 'lottie2webp')
 
-source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/lottieconv/0.3.0/download")
+source=("$_crate-0.3.0.tar.gz::https://crates.io/api/v1/crates/lottieconv/0.3.0/download")
 sha512sums=('aec0d45d2dfdcc70ff062d73780dfd5860bff0180d87797c0fab24b76e9c6fa39a87cbbdcbb51ee1ab25f1c99702a5a10c34f29e10328c6c555177854462bf7d')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
 
 prepare() {
-	cd "$srcdir/$_crate-$pkgver"
+	cd "$srcdir/$_crate-0.3.0"
 
 	export RUSTUP_TOOLCHAIN=stable
 
@@ -29,10 +29,11 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/$_crate-$pkgver"
+	cd "$srcdir/$_crate-0.3.0"
 	
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	CFLAGS+=" -ffat-lto-objects"
 
 	
 	cargo build \
@@ -43,7 +44,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$_crate-$pkgver"
+	cd "$srcdir/$_crate-0.3.0"
 	install -Dm755 "target/release/lottie2gif" -t "$pkgdir/usr/bin"
 	install -Dm755 "target/release/lottie2webp" -t "$pkgdir/usr/bin"
 	install -Dm644 'LICENSE' -t "$pkgdir/usr/share/licenses/$pkgname/"
