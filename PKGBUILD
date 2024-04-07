@@ -7,19 +7,19 @@ pkgver=1.0.16
 pkgrel=1
 pkgdesc='Wrapper to exec a command in a pty, even if redirecting the output'
 url='https://crates.io/crates/faketty'
-license=('Apache' 'MIT')
+license=('Apache-2.0' 'MIT')
 
 depends=('gcc-libs')
 makedepends=('cargo')
 
-source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/faketty/1.0.16/download")
+source=("$_crate-1.0.16.tar.gz::https://crates.io/api/v1/crates/faketty/1.0.16/download")
 sha512sums=('eb5e2f979259ea470bd3f2520c773f231ac62d8883f073061d4a7e89dc9c10660ad2fa9504970db5c6210e7d8d4face6a99f0e3b2d072c9515a4a6c8902653d8')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
 
 prepare() {
-	cd "$srcdir/$_crate-$pkgver"
+	cd "$srcdir/$_crate-1.0.16"
 
 	export RUSTUP_TOOLCHAIN=stable
 
@@ -27,10 +27,11 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/$_crate-$pkgver"
+	cd "$srcdir/$_crate-1.0.16"
 	
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	CFLAGS+=" -ffat-lto-objects"
 
 	
 	cargo build \
@@ -40,7 +41,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$_crate-$pkgver"
+	cd "$srcdir/$_crate-1.0.16"
 	install -Dm755 "target/release/faketty" -t "$pkgdir/usr/bin"
 	install -Dm644 'LICENSE-MIT' -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 'LICENSE-APACHE' -t "$pkgdir/usr/share/licenses/$pkgname/"
