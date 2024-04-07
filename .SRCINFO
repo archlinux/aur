@@ -1,0 +1,20 @@
+pkgbase = gnome-shell-extension-arch-update-security-news-git
+	pkgdesc = Update indicator for ArchLinux and Gnome-Shell
+	pkgver = 2.rc1.r0.g83b1a75
+	pkgrel = 1
+	url = https://github.com/slaclau/arch-update-security-news
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = arch-audit
+	depends = gnome-shell
+	depends = pacman-contrib
+	depends = xdg-utils
+	optdepends = gnome-terminal: default terminal used to update packages
+	provides = gnome-shell-extension-arch-update-security-news
+	conflicts = gnome-shell-extension-arch-update-security-news
+	conflicts = gnome-shell-extension-arch-update
+	source = git+https://github.com/slaclau/arch-update-security-news.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-arch-update-security-news-git
