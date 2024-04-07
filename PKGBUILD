@@ -1,7 +1,7 @@
 pkgbase='novelwriter'
 pkgname=('novelwriter')
 _module='novelWriter'
-pkgver='2.2.1'
+pkgver='2.3.1'
 pkgrel=1
 pkgdesc="A markdown-like document editor for writing novels"
 url="https://novelwriter.io"
@@ -10,7 +10,7 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel
 license=('GPL')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('516a41d31d42ca1aef7626d1bdee41b3fae07e5c10b57751a540e6cefc9e7750')
+sha256sums=('a3832a5e9e6170d23cd5dff606eac2d55479a90f96cda5f8b42321ee72a3057a')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
