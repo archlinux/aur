@@ -1,0 +1,21 @@
+pkgbase = musicat-git
+	pkgdesc = A sleek desktop music player and tagger for offline music 🪕 With experimental features like map view, GPT analysis, artist toolkit.
+	pkgver = 0.6.0.r0.gd34b50c
+	pkgrel = 1
+	url = https://github.com/basharovV/musicat
+	arch = any
+	license = GPL-3.0-only
+	makedepends = npm
+	makedepends = git
+	makedepends = gendesk
+	makedepends = base-devel
+	makedepends = gcc
+	makedepends = rust
+	depends = gtk3
+	depends = webkit2gtk
+	provides = musicat=0.6.0
+	conflicts = musicat
+	source = musicat.git::git+https://github.com/basharovV/musicat.git
+	sha256sums = SKIP
+
+pkgname = musicat-git
