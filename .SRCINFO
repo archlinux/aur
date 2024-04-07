@@ -16,7 +16,15 @@ pkgbase = wiliwili-wayland
 	depends = mpv
 	depends = opencc
 	depends = pystring
-	depends = sdl2
+	depends = glibc
+	depends = curl
+	depends = hicolor-icon-theme
+	depends = openssl
+	depends = gcc-libs
+	depends = dbus
+	depends = zlib
+	depends = libwebp
+	depends = bash
 	provides = wiliwili
 	conflicts = wiliwili
 	source = wiliwili::git+https://github.com/xfangfang/wiliwili.git#tag=v1.3.0

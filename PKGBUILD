@@ -11,7 +11,7 @@ pkgdesc='专为手柄控制设计的第三方跨平台B站客户端, 使用 Wayl
 arch=('x86_64' 'aarch64')
 url='https://github.com/xfangfang/wiliwili'
 license=('GPL-3.0-or-later')
-depends=("mpv" "opencc" "pystring" "sdl2")
+depends=("mpv" "opencc" "pystring" "glibc" "curl" "hicolor-icon-theme" "openssl" "gcc-libs" "dbus" "zlib" "libwebp" "bash")
 makedepends=("cmake" "git" "libxi" "ninja" "python" "wayland-protocols" "sdl2")
 source=("${_pkgname}"::"git+${url}.git#tag=v${pkgver}" "wiliwili.sh")
 sha512sums=('0f04b3c6d40df6ef17824dee96f8ce1a2e7903f39ae45ca63a5fa70709265ea660992946759410cfa9e1d9023e39a29aa5d49ecedb76e4b204aee1b1996da4e0'
