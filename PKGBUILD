@@ -3,25 +3,25 @@
 _pkgname=NTW
 _pkgver=1.52.0
 pkgname=r-${_pkgname,,}
-pkgver=1.52.0
-pkgrel=1
-pkgdesc='Predict gene network using an Ordinary Differential Equation (ODE) based method'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Predict gene network using an Ordinary Differential Equation (ODE) based method"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
   r-mvtnorm
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('da9c5ec5e59c7b7a648ed694fbde2b67365eeb747322e2ca73bf0321ee3f629c')
+md5sums=('c64df447dfa43cbb3bf97922655ff516')
+b2sums=('e053bbce5a43f2828d7dc5a7ab6d92d00b919089950575f33cdb66618a46e0c7b57e56382086307b294b54640537fdba4557ef0b6b3fab041d50c35f068e8e02')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
