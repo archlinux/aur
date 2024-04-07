@@ -3,7 +3,7 @@
 pkgname='prm-bin'
 _pkgname="${pkgname%-bin}"
 pkgver=3.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Pull Request Manager for Maintainers'
 url='https://ldez.github.io/prm/'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -33,7 +33,4 @@ sha256sums_aarch64=('0cae415a3ccefe6f492f7ab54c8aecfd8b0771a0837b106e18134a3344a
 package() {
 	# Bin
 	install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-
-	# License
-	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }

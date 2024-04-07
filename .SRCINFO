@@ -1,7 +1,7 @@
 pkgbase = prm-bin
 	pkgdesc = Pull Request Manager for Maintainers
 	pkgver = 3.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ldez.github.io/prm/
 	arch = x86_64
 	arch = i686
