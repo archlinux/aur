@@ -1,0 +1,23 @@
+pkgbase = jdk22-graalvm-bin
+	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 22 version
+	pkgver = 22.0.0
+	pkgrel = 1
+	url = https://www.graalvm.org/
+	install = jdk22-graalvm-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = java-runtime-common
+	depends = java-environment-common
+	provides = java-runtime=22
+	provides = java-environment=22
+	replaces = native-image-jdk22-bin
+	options = staticlibs
+	source = graalvm-rebuild-libpolyglot.hook
+	sha256sums = eae72b5a2a2826eed7e4be5710d33f82934622a390ab6a9f009ed7753359e02e
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-22.0.0/graalvm-community-jdk-22.0.0_linux-x64_bin.tar.gz
+	sha256sums_x86_64 = e5eeb486a23101753f18181d002c3ede9da13c463fb61d3ea448abe774db0657
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-22.0.0/graalvm-community-jdk-22.0.0_linux-aarch64_bin.tar.gz
+	sha256sums_aarch64 = da9a0e11b110ebccff33ade502516d00f574ec3247868007e452cef4143e0904
+
+pkgname = jdk22-graalvm-bin
