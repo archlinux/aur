@@ -1,10 +1,10 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 # Contirbutor: Anatoly Bashmakov <anatoly at posteo dot net>
 
 pkgname=ruby-css_parser
 _pkgname=${pkgname#ruby-}
-pkgver=1.16.0
-pkgrel=2
+pkgver=1.17.0
+pkgrel=1
 pkgdesc="Ruby CSS parser"
 arch=(any)
 url="https://github.com/premailer/css_parser"
@@ -16,7 +16,7 @@ depends=(
 makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz")
-sha256sums=('90faa9d5c6575a84ec12902c782944d5bd190ed12f3ccd677bcaf39b664e41f7')
+sha256sums=('4b24427237997117293225f9abaa3374b498f09d6cd51f4fb05993b85e64ff15')
 
 _archive="$_pkgname-$pkgver"
 
