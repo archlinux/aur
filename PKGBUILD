@@ -3,7 +3,7 @@
 
 pkgname=python-vagrant
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Python bindings for interacting with Vagrant virtual machines."
 url="https://github.com/todddeluca/python-vagrant"
 license=('MIT')
