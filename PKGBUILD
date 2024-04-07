@@ -6,7 +6,7 @@
 
 _pkgname=firefox
 pkgname=firefox-globalmenu
-pkgver=123.0
+pkgver=124.0.2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, with appmenu patch."
 url="https://www.mozilla.org/$_pkgname/"
@@ -24,7 +24,6 @@ depends=(
   libxt
   mime-types
   nss
-  icu
   ttf-font)
 makedepends=(
   cbindgen
@@ -63,24 +62,16 @@ source=(
   "https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz"{,.asc}
   assert.patch
   unity-menubar.patch
-  fix_csd_window_buttons.patch
-  firefox-115.4.0-icu-74.patch)
+  fix_csd_window_buttons.patch)
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
   # https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
   '14F26682D0916CDD81E37B6D61B7B526D98F0353')
-sha256sums=('9e885abdaddb14cd4f313c1575282fec6af5901f445e9744fe24e2ea837d4cb7'
-            'SKIP'
-            'ed84a17fa4a17faa70a0528556dbafeeb6ee59697451325881cb064b0ee8afec'
-            '74440d292e76426ac5cba9058a6f86763c37a9aa61b7afc47771140f1f53870b'
-            'e08d0bc5b7e562f5de6998060e993eddada96d93105384960207f7bdf2e1ed6e'
-            'b07223e5928a5a0d4cb53e5c1a80cd93289f2f69a622c08e76d41a2434277ecc')
-b2sums=('6c9bfce3cd9c5ab3aa929ea20b50ef5e2c90d161a472dd374dfa20b7902fe1aec5504b94576a3e746945e30c6e21f189c17ce67328e6160df40e885805fc874c'
-        'SKIP'
-        'bbc69752492649f288e0ceef6ce4a1703030cc98abd2442b7ebfba2be786eea643f594af5dc237a6e3c04fd0c8b147f529fd9e790f04c64b9f10abb3c826827f'
-        '4b3837b398c5391ac036a59c8df51f9ad170b2d8c3d5d2011a63bacd9e24a81de4505ddf7ef722a0a6920b02bb8dbc2bb7b6f151e2aa7843baccec0572cc56c0'
-        'd5ec87260288d18718a3751c3cd9593cf00f64eabb0fc1285291bfca53fd7f2280d17607558ed4364667aef053f8d4917deec7a8dffab0f040634c8a27fa2754'
-        '94992ee197bbb5ce73a8187981aa1a6a2951219c08a7f5940dec7a7c2fcc053751843785f3edcbac97cec7977262ad8b31631a16357aac84215f90650cbc40cf')
+sha1sums=('837016d4da3b9c39c11abdecff03fdd81b15a8ee'
+          'SKIP'
+          'bb4bbaddc549edd3506b5e955840fcebffcafb71'
+          '076dc68b2ec6c454afe9b5a9b3fbb7908ce575b8'
+          '4193d307cfc152ef2813973b0eae4385a4a2a968')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -138,19 +129,8 @@ prepare() {
 		ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 
 		# System libraries
-		ac_add_options --with-system-libvpx
-		ac_add_options --with-system-webp
-		ac_add_options --with-system-libevent
-		ac_add_options --with-system-ffi
-		ac_add_options --with-system-pixman
-		ac_add_options --with-system-zlib
-		ac_add_options --with-system-icu
-		ac_add_options --with-system-jpeg
-		# does not have APNG support
-		# ac_add_options --with-system-png
 		ac_add_options --with-system-nspr
 		ac_add_options --with-system-nss
-		ac_add_options --with-system-icu
 
 		# Features
 		ac_add_options --enable-alsa
@@ -296,10 +276,10 @@ package() {
   # Desktop
   install -Dvm755 /dev/stdin "$pkgdir/usr/share/applications/$desktopid.desktop" < <(\
     sed "s|Exec=firefox |Exec=/usr/lib/$_pkgname/$_pkgname --name $desktopid |g" \
-			taskcluster/docker/firefox-flatpak/$desktopid.desktop\
-	)
+      taskcluster/docker/firefox-flatpak/$desktopid.desktop\
+  )
 
-	# Metainfo
+  # Metainfo
   install -Dvm644 /dev/stdin "$pkgdir/usr/share/metainfo/$desktopid.appdata.xml" < <(\
     VERSION=$pkgver DATE=$(date +%Y-%m-%d) envsubst < \
       taskcluster/docker/firefox-flatpak/$desktopid.appdata.xml.in\
