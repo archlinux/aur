@@ -3,28 +3,28 @@
 _pkgname=CNAnorm
 _pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.48.0
-pkgrel=1
-pkgdesc='A normalization method for Copy Number Aberration in cancer samples'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="A normalization method for Copy Number Aberration in cancer samples"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
   r-dnacopy
 )
 makedepends=(
   gcc-fortran
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('050233377f5128c1713c2fc2be812069e1a7e593afac3a95c01b18a3a42fb905')
+md5sums=('b9d0f995f3466875285a152415863842')
+b2sums=('5e8faf1239b7cce67ff5bea2a4a69b3541180f0427316efc45d5f97b1c3760238adf61d38c57a6825889ab077563e1f6fea6b2452c78d88e5a30b11ebe8e5654')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
