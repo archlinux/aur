@@ -1,13 +1,13 @@
 pkgbase = r-mhsmm
 	pkgdesc = Inference for Hidden Markov and Semi-Markov Models
 	pkgver = 0.4.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=mhsmm
 	arch = x86_64
-	license = GPL
-	depends = r
+	license = GPL-2.0-or-later
 	depends = r-mvtnorm
 	source = https://cran.r-project.org/src/contrib/mhsmm_0.4.21.tar.gz
-	sha256sums = 293544afb194934b1d58cf88c6f8c372f537745514b6e428cf83ae62e87d2bba
+	md5sums = f31ad965a28d4a6fe83ecd659ee53cad
+	b2sums = 8491e1fbf2bf490355ce93ed9d78d75f79921623f07cc4303987e4eb819e33dff69b51f79a0976f9503eedb2df7bb6e0169f5742e4c1f0b1e60e3a8a4a42625d
 
 pkgname = r-mhsmm
