@@ -6,4 +6,4 @@ Comment=Downloads commodity market and other station data from the game Elite: D
 Exec=edmarketconnector.sh
 Icon=application-rss+xml-symbolic
 Terminal=false
-Categories=Games;
+Categories=Game;
