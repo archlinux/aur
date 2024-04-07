@@ -1,4 +1,4 @@
-pkgbase = droidcam-obs-plugin-ffmpeg5-bin
+pkgbase = droidcam-obs-plugin-bin
 	pkgdesc = Plugin for DroidCam OBS
 	pkgver = 2.3.2
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = droidcam-obs-plugin-ffmpeg5-bin
 	source = https://github.com/dev47apps/droidcam-obs-plugin/releases/download/2.3.2/droidcam_obs_2.3.2_linux_ffmpeg5.zip
 	sha256sums = SKIP
 
-pkgname = droidcam-obs-plugin-ffmpeg5-bin
+pkgname = droidcam-obs-plugin-bin
