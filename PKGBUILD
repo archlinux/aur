@@ -1,7 +1,7 @@
 # Maintainer: gbletr42 <gbletr42@gmail.com>
 _pkgname="bef"
 pkgname="bef-git"
-pkgver=r3.06ad0a1
+pkgver=r4.17e7132
 pkgrel=1
 pkgdesc="An extensible, fast, and usable file utility to encode and decode interleaved erasure coded streams of data."
 arch=('i686' 'x86_64')
