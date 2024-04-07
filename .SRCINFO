@@ -1,7 +1,7 @@
 pkgbase = python-edalize
 	pkgdesc = An abstraction library for interfacing EDA tools
 	pkgver = 0.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/olofk/edalize
 	arch = any
 	license = BSD
