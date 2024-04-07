@@ -1,0 +1,16 @@
+pkgbase = cargo-unfmt-git
+	pkgdesc = Unformat Rust code into perfect blocks (git)
+	pkgver = r60.0f4882f
+	pkgrel = 1
+	url = https://github.com/fprasx/cargo-unfmt
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = cargo-unfmt
+	conflicts = cargo-unfmt
+	source = git+https://github.com/fprasx/cargo-unfmt
+	sha512sums = SKIP
+
+pkgname = cargo-unfmt-git
