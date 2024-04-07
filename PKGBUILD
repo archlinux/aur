@@ -1,4 +1,4 @@
-# Maintainer: Totor <bertlover6969@gmail.com>
+# Maintainer: Kittyy <laosnepada3@proton.me>
 pkgname='smol'
 pkgver=1.0
 pkgrel=1
