@@ -1,4 +1,6 @@
-# Maintainer: Vaargk <s30vm63qa@mozmail.com>
+# Maintainer: Rucker <ruckeraur@proton.me>
+# Contributor: Vaargk <s30vm63qa@mozmail.com>
+
 pkgname=obs-plugin-tuna-bin
 pkgver=1.9.7
 pkgrel=1
