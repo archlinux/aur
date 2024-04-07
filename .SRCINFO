@@ -1,0 +1,21 @@
+pkgbase = daphne-bin
+	pkgdesc = A command-line multiple arcade laserdisc emulator.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.daphne-emu.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = lib32-glew
+	depends = lib32-sdl_mixer
+	depends = lib32-zlib
+	depends = lib32-gcc-libs
+	depends = lib32-libxmu
+	source = http://www.daphne-emu.com/download/daphne-1.0beta-linux.tar.gz
+	source = daphne.sh
+	source = roms.tar.gz
+	sha256sums = 924eb8e20362574b2d2be2e09ca8022c7fbd2711bca7914dda9bbdce4f3ea5ac
+	sha256sums = a44c2c6d3aa44ce88110fd24b7bb390070feb97664c076a75a26fb435d16eb9d
+	sha256sums = 1f98cff4b8688b4fb7f2fa73ac650b5686a4d6ecf73edaa30722ae5a92135e54
+
+pkgname = daphne-bin
