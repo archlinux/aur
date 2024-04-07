@@ -1,7 +1,7 @@
 pkgbase = python-green
 	pkgdesc = Green is a clean, colorful, fast python test runner
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CleanCut/green
 	arch = any
 	license = MIT

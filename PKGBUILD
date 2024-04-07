@@ -3,7 +3,7 @@
 pkgname=python-green
 pkgver=4.0.1
 _commit=9e9e5cfe8b0a213899df78d3e06db4f592bbc84b
-pkgrel=1
+pkgrel=2
 pkgdesc="Green is a clean, colorful, fast python test runner"
 url="https://github.com/CleanCut/green"
 license=('MIT')
