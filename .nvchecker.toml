@@ -1,0 +1,3 @@
+[python-pytest-skip-markers]
+source = "pypi"
+pypi = "pytest-skip-markers"
