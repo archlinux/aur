@@ -6,11 +6,14 @@ pkgbase = python-hid-parser-git
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	makedepends = python-pytest
 	makedepends = python-hypothesis
 	provides = python-hid-parser
 	conflicts = python-hid-parser
 	source = python-hid-parser-git::git+https://github.com/usb-tools/python-hid-parser.git
+	source = fix-tests.patch
+	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = python-hid-parser-git

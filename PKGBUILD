@@ -9,23 +9,36 @@ license=('MIT')
 arch=('any')
 provides=("python-hid-parser")
 conflicts=("python-hid-parser")
-makedepends=('python-setuptools' 'python-pytest' 'python-hypothesis')
-source=("${pkgname}::git+https://github.com/usb-tools/python-hid-parser.git")
-sha512sums=('SKIP')
+makedepends=(
+  'python-setuptools'
+  'python-wheel'
+  'python-pytest'
+  'python-hypothesis'
+)
+source=(
+  "${pkgname}::git+https://github.com/usb-tools/python-hid-parser.git"
+  "fix-tests.patch"
+)
+sha512sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "${pkgname}"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${pkgname}"
+  git apply ../fix-tests.patch
+}
+
 build() {
   cd "${pkgname}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${pkgname}"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 check() {
