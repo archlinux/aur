@@ -1,0 +1,17 @@
+pkgbase = python-flask-jwt
+	pkgdesc = JWT token authentication for Flask apps
+	pkgver = 0.3.2
+	pkgrel = 11
+	url = https://github.com/mattupstate/flask-jwt
+	arch = any
+	license = MIT
+	checkdepends = python-pytest-runner
+	makedepends = python-setuptools
+	depends = python-flask
+	depends = python-pyjwt
+	source = python-flask-jwt-0.3.2.tar.gz::https://github.com/mattupstate/flask-jwt/archive/0.3.2.tar.gz
+	source = pyjwt-2.0.0.patch
+	sha512sums = 7c115ff4964da9a36303ac502dea98cd847abc3c1d45cd0be09b82ec761ee054d7ef97e25fd669112ab29dbfca00b4563914155ab1c8da4fc3d32f0063128b26
+	sha512sums = 4ec0a901263ac39bdb204bb684413617a5e1250536b07d03eb89fe489c58492b1960be0d3c429f908ea71e782563c0c3c6fcd76ec40fa7ae829c9a772355ed7f
+
+pkgname = python-flask-jwt
