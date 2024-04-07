@@ -3,16 +3,16 @@
 
 _pkgname=gitchangelog
 pkgname=python-gitchangelog
-pkgver=3.0.4
-pkgrel=2
+pkgver=3.2.0
+pkgrel=1
 pkgdesc="Creates a changelog from git log history."
-url="https://github.com/vaab/gitchangelog"
+url="https://github.com/sarnold/gitchangelog"
 license=("BSD")
 depends=('python')
 optdepends=('python-pystache')
 makedepends=('python-setuptools')
 arch=("x86_64")
-source=("git+https://github.com/vaab/${_pkgname}#tag=${pkgver}")
+source=("git+https://github.com/sarnold/${_pkgname}#tag=${pkgver}")
 
 build() {
 	cd ${srcdir}/${_pkgname}
@@ -26,4 +26,4 @@ package() {
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
-md5sums=('SKIP')
+sha256sums=('32799a97f232967209caf4f80a9b06a7e75aca2c32640caa17a4a168a4a7e092')
