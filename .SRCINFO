@@ -1,0 +1,15 @@
+pkgbase = fish-bass-git
+	pkgdesc = Make Bash utilities usable in Fish shell
+	pkgver = 1.0.r49.g79b6295
+	pkgrel = 1
+	url = https://github.com/edc/bass
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = fish
+	depends = python
+	provides = fish-bass
+	source = git+https://github.com/edc/bass.git
+	sha256sums = SKIP
+
+pkgname = fish-bass-git
