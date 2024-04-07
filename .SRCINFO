@@ -1,0 +1,22 @@
+pkgbase = python-future
+	pkgdesc = Clean single-source support for Python 3 and 2
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://python-future.org/
+	arch = any
+	license = MIT
+	checkdepends = python-requests
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	optdepends = python-setuptools: futurize and pasteurize scripts
+	provides = futurize
+	provides = pasteurize
+	options = !emptydirs
+	source = https://pypi.io/packages/source/f/future/future-1.0.0.tar.gz
+	sha512sums = 8e28d53172e3ae7b3b27c424a48fb698a6e86bf1c648cdf74e7fd57d34901a9bda18429fe4e176d70be67fc6c80b7f961b3021356594e38b5f294406af40bc61
+
+pkgname = python-future

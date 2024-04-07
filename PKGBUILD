@@ -4,8 +4,8 @@
 # Contributor: Melissa Padilla <mpadilla2 at hotmail dot com>
 
 pkgname=python-future
-pkgver=0.18.3
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Clean single-source support for Python 3 and 2"
 url="https://python-future.org/"
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel
 optdepends=('python-setuptools: futurize and pasteurize scripts')
 options=('!emptydirs')
 source=("https://pypi.io/packages/source/f/future/future-$pkgver.tar.gz")
-sha512sums=('6de56a5aa5c5dd56a0dc5a6732c753530f9868036bd97e9d355f9ee6e1305e266a60c167de779cba93f09b5b3fae615193074caba2afe857ca7ea944532ef910')
+sha512sums=('8e28d53172e3ae7b3b27c424a48fb698a6e86bf1c648cdf74e7fd57d34901a9bda18429fe4e176d70be67fc6c80b7f961b3021356594e38b5f294406af40bc61')
 
 build() {
   cd "$srcdir"/future-$pkgver
