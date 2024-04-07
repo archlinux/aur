@@ -1,0 +1,15 @@
+pkgbase = boson
+	pkgdesc = boson is an implementation of the meson language written in C11 focusing on portability and simplicity
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://git.sr.ht/~bl4ckb0ne/boson
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = GPL3
+	makedepends = meson
+	source = https://git.sr.ht/~bl4ckb0ne/boson/archive/0.1.tar.gz
+	sha256sums = 7a8025a0a4d2760885f92af3d304807c435819fbcaf3f67bad083dac342ab8d3
+
+pkgname = boson
