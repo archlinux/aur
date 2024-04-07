@@ -1,0 +1,23 @@
+pkgbase = python-pytest-helpers-namespace
+	pkgdesc = PyTest Helpers Namespace
+	pkgver = 2021.12.29
+	pkgrel = 4
+	url = https://github.com/saltstack/pytest-helpers-namespace
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-declarative-requirements
+	makedepends = python-setuptools-scm
+	makedepends = python-toml
+	makedepends = python-wheel
+	depends = python
+	depends = python-setuptools
+	depends = python-pytest
+	source = git+https://github.com/saltstack/pytest-helpers-namespace?signed#tag=v2021.12.29
+	validpgpkeys = D2908FB3A823B0FAB3BD21F5BB36BF6584A298FF
+	sha512sums = aa693512ab60cd57f06631f931d5907a6088b74905f1f27977883ea9879e746fdaae683affc54fdc2d84102dbe6dafb390a892d879c80575566abbc6fcd9d24b
+
+pkgname = python-pytest-helpers-namespace
