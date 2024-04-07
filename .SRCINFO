@@ -1,0 +1,17 @@
+pkgbase = python-flickrapi
+	pkgdesc = The official Python interface to the Flickr API
+	pkgver = 2.4.0
+	pkgrel = 8
+	url = https://stuvel.eu/flickrapi
+	arch = any
+	license = Python
+	checkdepends = python-nose
+	makedepends = python-docutils
+	makedepends = python-setuptools
+	depends = python-six
+	depends = python-requests-oauthlib
+	depends = python-requests-toolbelt
+	source = https://pypi.io/packages/source/f/flickrapi/flickrapi-2.4.0.tar.gz
+	sha512sums = 8c14a00850fa0d70d5f0f0e856425b09cd25746f8ed3aaf34f59e0f8e8567ebb814893ddc3c768500207ec1fd437179ccae24d39a167f116020d4cb97d4cce1d
+
+pkgname = python-flickrapi
