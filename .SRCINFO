@@ -1,6 +1,6 @@
 pkgbase = cppinsights
 	pkgdesc = C++ Insights - See your source code with the eyes of a compiler
-	pkgver = 0.17
+	pkgver = 17.0
 	pkgrel = 1
 	url = https://cppinsights.io
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = cppinsights
 	depends = llvm
 	depends = clang
 	conflicts = cppinsights-git
-	source = https://github.com/andreasfertig/cppinsights/archive/refs/tags/v_0.17.tar.gz
-	b2sums = 3a42853554de74ab47ad0618c1903d6bb0fc027c80651cdf9a3147e5e9c80058846f22044a80de70d49a07bb7016662f96fd2fa81e9b2b1aa365e31aa8662d33
+	source = https://github.com/andreasfertig/cppinsights/archive/refs/tags/v_17.0.tar.gz
+	b2sums = 7ab07c00faa8e9299daf8ad559109126d37e4454bc56ca65331795d5454ac49743351989638a2c5e2c2676bf265602639083fae082cfa05df638166ad709acdc
 
 pkgname = cppinsights
