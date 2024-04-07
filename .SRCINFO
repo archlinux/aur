@@ -1,7 +1,7 @@
 pkgbase = python-ioflo
 	pkgdesc = Flo based programming interface in python
 	pkgver = 2.0.2
-	pkgrel = 6
+	pkgrel = 7
 	url = https://ioflo.com
 	arch = any
 	license = Apache-2.0
