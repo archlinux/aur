@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=NetRadiant-custom
+GenericName=Level editor
+Comment=3D level editor for id Tech based games
+Icon=netradiant-custom
+Exec=env QT_QPA_PLATFORM=xcb netradiant-custom %f
+Terminal=false
+Type=Application
+Categories=Game;Graphics;3DGraphics;
+Keywords=darkplaces,nexuiz,openarena,osirion,quake,quake2,quake3,quetoo,tremulous,ufoai,unvanquished,warsow,xonotic,idtech;level;map;game development;
