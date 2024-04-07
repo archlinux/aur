@@ -2,7 +2,7 @@
 
 pkgname=libopenshot-git
 pkgver=0.3.2.r61.ga9e34a9b
-pkgrel=2
+pkgrel=3
 pkgdesc='A high quality, open-source video editing, animation, and playback library for C++, Python, and Ruby (git version)'
 arch=('x86_64')
 url='https://www.openshot.org/'
@@ -31,7 +31,6 @@ makedepends=(
   'python-setuptools'
   'swig'
   'unittestpp'
-  'xorg-server-xvfb'
   'zeromq'
 )
 provides=('libopenshot' 'libopenshot.so')
