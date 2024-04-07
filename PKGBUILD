@@ -2,7 +2,7 @@
 
 pkgname=python-dict2css
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A μ-library for constructing cascading style sheets from Python dictionaries'
 arch=('any')
 url='https://github.com/sphinx-toolbox/dict2css'

@@ -1,0 +1,18 @@
+pkgbase = python-dict2css
+	pkgdesc = A μ-library for constructing cascading style sheets from Python dictionaries
+	pkgver = 0.3.0
+	pkgrel = 2
+	url = https://github.com/sphinx-toolbox/dict2css
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-whey
+	depends = python
+	depends = python-css-parser
+	depends = python-domdf-python-tools
+	source = python-dict2css::git+https://github.com/sphinx-toolbox/dict2css#commit=fe95ef7433306258a58b6a91b1e777c6c3628a1c
+	b2sums = SKIP
+
+pkgname = python-dict2css
