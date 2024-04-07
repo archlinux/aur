@@ -1,0 +1,14 @@
+pkgbase = python-json-config
+	pkgdesc = A convenience utility for working with JSON config files with file syncing
+	pkgver = 2.0.1
+	pkgrel = 8
+	url = https://github.com/bionikspoon/json_config
+	arch = any
+	license = MIT
+	checkdepends = python-pytest-mock
+	makedepends = python-setuptools
+	depends = python-future
+	source = python-json-config-2.0.1.tar.gz::https://github.com/bionikspoon/json_config/archive/2.0.1.tar.gz
+	sha512sums = 54ad91e3ad8ba73dfb9e5180f7211646d4d24029688874d6db0de5a583515fa6a09b06156d2e4375159327bafaee622e68686a245af25dbebff5348e76a5562b
+
+pkgname = python-json-config
