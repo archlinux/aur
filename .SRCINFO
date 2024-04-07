@@ -1,7 +1,7 @@
 pkgbase = python-jwcrypto
 	pkgdesc = Python implementation of JWK, JWS, JWE specifications
 	pkgver = 1.5.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/latchset/jwcrypto
 	arch = any
 	license = LGPL-3.0-or-later
