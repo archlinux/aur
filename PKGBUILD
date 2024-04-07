@@ -1,10 +1,10 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=python-outlines
 _pkgname=${pkgname#python-}
 pkgver=0.0.37
 _commit=803439a83d15ea4fcc452e1c367ffb41feb39ac2
-pkgrel=1
+pkgrel=2
 pkgdesc="Guided text generation"
 arch=(any)
 url="https://github.com/outlines-dev/outlines"
@@ -39,7 +39,6 @@ makedepends=(
 checkdepends=(
   python-accelerate
   python-pytest
-  python-pytest-benchmark
   python-pytest-mock
   python-responses
 )
@@ -78,9 +77,10 @@ check() {
   # Ignored test requires python-llama-cpp which I'm currently unable to
   # install.
   pytest \
-    --ignore tests/models/test_llama_cpp.py \
+    --deselect tests/benchmark \
+    --deselect tests/models/test_openai.py::test_openai_call \
     --ignore tests/generate/test_integration_llamacpp.py \
-    --deselect tests/models/test_openai.py::test_openai_call
+    --ignore tests/models/test_llama_cpp.py
 }
 
 package() {

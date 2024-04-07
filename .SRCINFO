@@ -1,13 +1,12 @@
 pkgbase = python-outlines
 	pkgdesc = Guided text generation
 	pkgver = 0.0.37
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/outlines-dev/outlines
 	arch = any
 	license = Apache-2.0
 	checkdepends = python-accelerate
 	checkdepends = python-pytest
-	checkdepends = python-pytest-benchmark
 	checkdepends = python-pytest-mock
 	checkdepends = python-responses
 	makedepends = git
