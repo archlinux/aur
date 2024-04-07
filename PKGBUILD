@@ -1,4 +1,4 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgbase=python-opentelemetry
 _pkgbase=opentelemetry-python
@@ -23,7 +23,7 @@ pkgname=(
   python-opentelemetry-test-utils
 )
 pkgver=1.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenTelemetry Python API and SDK"
 url="https://github.com/open-telemetry/opentelemetry-python"
 license=(Apache-2.0)
@@ -46,7 +46,6 @@ checkdepends=(
   python-prometheus_client
   python-protobuf
   python-pytest
-  python-pytest-benchmark
   python-requests
   python-responses
   python-typing_extensions
@@ -103,12 +102,21 @@ check() {
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   export PYTHONPATH="$PWD/tmp_install/$site_packages"
 
+  local deselect_test_args=(
+    # Fails, not sure why.
+    --deselect exporter/opentelemetry-exporter-zipkin-json/tests/encoder
+    --deselect exporter/opentelemetry-exporter-zipkin-proto-http/tests/encoder/test_v2_protobuf.py
+
+    # Depends on python-pytest-benchmark.
+    --deselect exporter/opentelemetry-exporter-otlp-proto-grpc/tests/performance/benchmarks
+    --deselect opentelemetry-sdk/tests/performance/benchmarks/metrics
+    --deselect opentelemetry-sdk/tests/performance/benchmarks/trace
+    --deselect propagator/opentelemetry-propagator-b3/tests/performance/benchmarks/trace/propagation
+  )
+
   for path in "${_pkgpaths[@]}"; do
     [ "$path" = "tests/opentelemetry-test-utils" ] && continue
-    # Deselect failing tests - unsure why they fail.
-    pytest "$path" \
-      --deselect exporter/opentelemetry-exporter-zipkin-json/tests/encoder \
-      --deselect exporter/opentelemetry-exporter-zipkin-proto-http/tests/encoder/test_v2_protobuf.py
+    pytest "$path" "${deselect_test_args[@]}"
   done
 }
 

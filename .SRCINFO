@@ -1,7 +1,7 @@
 pkgbase = python-opentelemetry
 	pkgdesc = OpenTelemetry Python API and SDK
 	pkgver = 1.24.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/open-telemetry/opentelemetry-python
 	arch = any
 	license = Apache-2.0
@@ -15,7 +15,6 @@ pkgbase = python-opentelemetry
 	checkdepends = python-prometheus_client
 	checkdepends = python-protobuf
 	checkdepends = python-pytest
-	checkdepends = python-pytest-benchmark
 	checkdepends = python-requests
 	checkdepends = python-responses
 	checkdepends = python-typing_extensions
