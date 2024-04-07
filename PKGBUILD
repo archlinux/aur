@@ -26,11 +26,13 @@ options=()
 source=('git+https://github.com/WayfireWM/wayfire'
         '0001-xwayland-support-HiDPI-scale.patch'
         '0002-Fix-configure_notify-event.patch'
-        '0003-Fix-size-hints-under-Xwayland-scaling.patch')
+        '0003-Fix-size-hints-under-Xwayland-scaling.patch'
+        '4629.patch')
 sha256sums=('SKIP'
             'ec59d48108595c06537a5a1daae6f124cac5a783025e03417cb2c1b052b321d0'
             '1314d0ee63a4249698791d86cce5e6cdb4f005b81bbb1c6a747578d2a9223795'
-            'c08dd62a1786eeb7506f1839bfcbba791502360392c929e620244f70c8ca5b61')
+            'c08dd62a1786eeb7506f1839bfcbba791502360392c929e620244f70c8ca5b61'
+            '79fe970432e445e8292e1ab8ee6f47545afc7248b3121e6ff5a9f7f251c049ee')
 
 pkgver() {
 	cd "$srcdir/wayfire"
@@ -46,6 +48,7 @@ prepare() {
     patch -Np1 -i "$srcdir/0001-xwayland-support-HiDPI-scale.patch"
     patch -Np1 -i "$srcdir/0002-Fix-configure_notify-event.patch"
     patch -Np1 -i "$srcdir/0003-Fix-size-hints-under-Xwayland-scaling.patch"
+    patch -Np1 -i "$srcdir/4629.patch"
 }
 
 build() {

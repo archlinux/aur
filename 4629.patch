@@ -1,0 +1,150 @@
+From 78367d88b3d6b635af6c43f41b580c0e0754e1ef Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Chlo=C3=A9=20Vulquin?= <code@toast.bunkerlabs.net>
+Date: Thu, 28 Mar 2024 13:46:20 +0100
+Subject: [PATCH] xcursor: catch theme inheritance loops
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+As of currently, when an xcursor theme depends on itself or another theme
+that will eventually depend on it, `xcursor_load_theme` will recurse
+infinitely while processing the inherits.
+
+This change introduces a stack-allocated linked list of visited nodes
+by name, and skips any already visited nodes in the inherit list.
+
+Side effects:
+* Since the linked list is stack-allocated, there is a potential for an
+  overflow if there is a very long list of dependencies. If this turns out
+  to be a legitimate concern, the linked list is trivial to convert to
+  being heap-allocated.
+* There is an existing linked list (technically doubly linked list)
+  implementation in the wayland codebase. As of currently, the xcursor
+  codebase does not refer to it. Consequently, this change writes a
+  minimal single linked list implementation to utilize directly.
+
+This changeset is based on the merge request in wayland/wayland!376.
+The xcursor code is mostly shared between the two.
+This changeset diverges the files slightly due to stylistic differences
+between the repositories, but the logic is identical.
+
+Signed-off-by: Chloé Vulquin <toast@bunkerlabs.net>
+---
+ xcursor/xcursor.c | 84 +++++++++++++++++++++++++++++++++--------------
+ 1 file changed, 59 insertions(+), 25 deletions(-)
+
+diff --git a/xcursor/xcursor.c b/xcursor/xcursor.c
+index 663467097a..3b60db902f 100644
+--- a/xcursor/xcursor.c
++++ b/xcursor/xcursor.c
+@@ -723,38 +723,42 @@ load_all_cursors_from_dir(const char *path, int size,
+ 	closedir(dir);
+ }
+ 
+-/** Load all the cursor of a theme
+- *
+- * This function loads all the cursor images of a given theme and its
+- * inherited themes. Each cursor is loaded into an struct xcursor_images object
+- * which is passed to the caller's load callback. If a cursor appears
+- * more than once across all the inherited themes, the load callback
+- * will be called multiple times, with possibly different struct xcursor_images
+- * object which have the same name. The user is expected to destroy the
+- * struct xcursor_images objects passed to the callback with
+- * xcursor_images_destroy().
+- *
+- * \param theme The name of theme that should be loaded
+- * \param size The desired size of the cursor images
+- * \param load_callback A callback function that will be called
+- * for each cursor loaded. The first parameter is the struct xcursor_images
+- * object representing the loaded cursor and the second is a pointer
+- * to data provided by the user.
+- * \param user_data The data that should be passed to the load callback
+- */
+-void
+-xcursor_load_theme(const char *theme, int size,
++struct nodelist {
++	size_t nodelen;
++	const char *node;
++	struct nodelist *next;
++};
++
++static bool
++nodelist_contains(struct nodelist *nodelist, const char *s, size_t ss) {
++	struct nodelist *vi;
++	for (vi = nodelist; vi && vi->node; vi = vi->next) {
++		if (vi->nodelen == ss && !strncmp(s, vi->node, vi->nodelen))
++			return true;
++	}
++	return false;
++}
++
++static void
++xcursor_load_theme_protected(const char *theme, int size,
+ 		   void (*load_callback)(struct xcursor_images *, void *),
+-		   void *user_data)
+-{
++		   void *user_data,
++		   struct nodelist *visited_nodes) {
+ 	char *full, *dir;
+ 	char *inherits = NULL;
+ 	const char *path, *i;
+ 	char *xcursor_path;
++	size_t si;
++	struct nodelist current_node;
+ 
+ 	if (!theme)
+ 		theme = "default";
+ 
++	current_node.next = visited_nodes;
++	current_node.node = theme;
++	current_node.nodelen = strlen(theme);
++	visited_nodes = &current_node;
++
+ 	xcursor_path = xcursor_library_path();
+ 	for (path = xcursor_path;
+ 	     path;
+@@ -779,9 +783,39 @@ xcursor_load_theme(const char *theme, int size,
+ 		free(dir);
+ 	}
+ 
+-	for (i = inherits; i; i = xcursor_next_path(i))
+-		xcursor_load_theme(i, size, load_callback, user_data);
++	for (i = inherits; i; i = xcursor_next_path(i)) {
++		si = strlen(i);
++		if (nodelist_contains(visited_nodes, i, si))
++			continue;
++		xcursor_load_theme_protected(i, size, load_callback, user_data, visited_nodes);
++	}
+ 
+ 	free(inherits);
+ 	free(xcursor_path);
+ }
++
++/** Load all the cursor of a theme
++ *
++ * This function loads all the cursor images of a given theme and its
++ * inherited themes. Each cursor is loaded into an struct xcursor_images object
++ * which is passed to the caller's load callback. If a cursor appears
++ * more than once across all the inherited themes, the load callback
++ * will be called multiple times, with possibly different struct xcursor_images
++ * object which have the same name. The user is expected to destroy the
++ * struct xcursor_images objects passed to the callback with
++ * xcursor_images_destroy().
++ *
++ * \param theme The name of theme that should be loaded
++ * \param size The desired size of the cursor images
++ * \param load_callback A callback function that will be called
++ * for each cursor loaded. The first parameter is the struct xcursor_images
++ * object representing the loaded cursor and the second is a pointer
++ * to data provided by the user.
++ * \param user_data The data that should be passed to the load callback
++ */
++void
++xcursor_load_theme(const char *theme, int size,
++		   void (*load_callback)(struct xcursor_images *, void *),
++		   void *user_data) {
++	return xcursor_load_theme_protected(theme, size, load_callback, user_data, NULL);
++}
+-- 
+GitLab
+
