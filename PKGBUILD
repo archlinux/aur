@@ -4,7 +4,7 @@
 
 _pkgname=php-ssh
 pkgname=${_pkgname}
-pkgver=1.4
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="An SSH2 extension for PHP"
 url="http://pecl.php.net/package/ssh2"
@@ -15,7 +15,7 @@ makedepends=('git')
 provides=('php-ssh')
 conflicts=('php-ssh')
 install=${_pkgname}.install
-source=("${pkgname}::git+https://github.com/php/pecl-networking-ssh2.git")
+source=("${pkgname}::git+https://github.com/php/pecl-networking-ssh2.git#tag=${pkgver}")
 sha512sums=('SKIP')
 
 build() {

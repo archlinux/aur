@@ -1,6 +1,6 @@
 pkgbase = php-ssh
 	pkgdesc = An SSH2 extension for PHP
-	pkgver = 1.4
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = http://pecl.php.net/package/ssh2
 	install = php-ssh.install
@@ -12,7 +12,7 @@ pkgbase = php-ssh
 	depends = openssh
 	provides = php-ssh
 	conflicts = php-ssh
-	source = php-ssh::git+https://github.com/php/pecl-networking-ssh2.git
+	source = php-ssh::git+https://github.com/php/pecl-networking-ssh2.git#tag=1.4.1
 	sha512sums = SKIP
 
 pkgname = php-ssh
