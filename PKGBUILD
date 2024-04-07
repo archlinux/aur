@@ -15,7 +15,7 @@ source_x86_64=("${_pkgname}-${pkgver}.deb::https://www.eeo.cn/download/client/${
 sha512sums_x86_64=('a6f5996366cfb508128076d8d92f2211c55bc4feee12ceba71d5a81d3cd075737253a145fc66d0ca95461b43ed28823096b6c15786e5f8a139c62f10bd0410ad')
 
 package(){
-	tar -xJ --no-same-owner -f data.tar.xz -C "${pkgdir}"
+  tar -xJ --no-same-owner -f data.tar.xz -C "${pkgdir}"
 
   # Remove intefering vendored libraries
   pushd "${pkgdir}/opt/apps/classin/lib"
@@ -23,11 +23,11 @@ package(){
   rm libstdc++.so*
   popd
 
-	# HACK: Debian compatibility symlink
-	# ClassIn binary links several files in /usr/lib/x86_64-linux-gnu, which is
-	# invalid on Arch. I tried examining the binary using `patchelf`, `ldd`, and
-	# `strings`, but couldn't figure out how it's linked. In lieu of a proper fix,
-	# this makeshift solution will do for now.
-	mkdir -p "${pkgdir}/usr/lib"
-	ln -sf /usr/lib "${pkgdir}/usr/lib/x86_64-linux-gnu"
+  # HACK: Debian compatibility symlink
+  # ClassIn binary links several files in /usr/lib/x86_64-linux-gnu, which is
+  # invalid on Arch. I tried examining the binary using `patchelf`, `ldd`, and
+  # `strings`, but couldn't figure out how it's linked. In lieu of a proper fix,
+  # this makeshift solution will do for now.
+  mkdir -p "${pkgdir}/usr/lib"
+  ln -sf /usr/lib "${pkgdir}/usr/lib/x86_64-linux-gnu"
 }
