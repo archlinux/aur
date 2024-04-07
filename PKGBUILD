@@ -2,23 +2,42 @@
 # Contributer: David Mazieres (http://www.scs.stanford.edu/~dm/addr/)
 
 _pkgname="droidcam-obs-plugin"
-pkgname="${_pkgname}-bin"
-pkgver="1.5.1"
+pkgname="${_pkgname}-ffmpeg5-bin"
+pkgver="2.3.2"
 pkgrel="1"
-pkgdesc="plugin for droidcam obs"
+pkgdesc="Plugin for DroidCam OBS"
 arch=("x86_64" "i686")
-url="https://dev47apps.com/obs/"
+url="https://droidcam.app/"
 license=('GPL')
-depends=("obs-studio" 'libusbmuxd')
+depends=("obs-studio" 'libusbmuxd' 'ffmpeg')
 makedepends=('libjpeg-turbo')
-conflicts=("${pkgname}-git")
-source=("https://files.dev47apps.net/obs/droidcam_obs_${pkgver}_linux.zip" "ja-JP.ini")
-sha256sums=('SKIP' "SKIP")
+conflicts=("${_pkgname}-git")
+source=("https://github.com/dev47apps/droidcam-obs-plugin/releases/download/${pkgver}/droidcam_obs_${pkgver}_linux_ffmpeg5.zip")
+sha256sums=("SKIP")
 
 package() {
-    mkdir -p "${pkgdir}/usr/lib/obs-plugins"
-    cp "${srcdir}/droidcam-obs/bin/64bit/droidcam-obs.so" "${pkgdir}/usr/lib/obs-plugins/"
-    mkdir -p "${pkgdir}/usr/share/obs/obs-plugins/droidcam-obs"
-    cp -r "${srcdir}/droidcam-obs/data/locale" "${pkgdir}/usr/share/obs/obs-plugins/droidcam-obs/"
-    cp -r "${srcdir}/ja-JP.ini" "${pkgdir}/usr/share/obs/obs-plugins/droidcam-obs/locale"
+	set -e
+	OK=0
+	DIRS="
+	$HOME/.config/obs-studio
+	$HOME/snap/obs-studio/current/.config/obs-studio
+	$HOME/.var/app/com.obsproject.Studio/config/obs-studio
+	"
+
+	for dir in $DIRS; do
+		if [ -d $dir ]; then
+			set -x
+			mkdir -p "${dir}/plugins/"
+			cp -R droidcam-obs "${dir}/plugins/"
+			set +x
+			OK=1
+		fi
+	done
+
+	if [ $OK == 0 ]; then
+		echo "OBS Studio config folder not found!"
+		echo "Checked:${DIRS}"
+		exit 1
+	fi
+	echo "Done"
 }
