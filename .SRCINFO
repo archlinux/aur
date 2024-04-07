@@ -1,7 +1,7 @@
 pkgbase = fontobene-qt
 	pkgdesc = A header-only library to parse FontoBene stroke fonts with C++/Qt
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fontobene/fontobene-qt/
 	arch = any
 	license = Apache-2.0

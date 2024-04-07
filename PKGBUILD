@@ -2,7 +2,7 @@
 pkgbase=fontobene-qt
 pkgname=(fontobene-qt-qt6)
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A header-only library to parse FontoBene stroke fonts with C++/Qt"
 arch=('any')
 url="https://github.com/fontobene/fontobene-qt/"
@@ -34,7 +34,7 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build6
-  install -Dm644 -o root -g root "$srcdir/fontobene-qt-qt6.pc" "$pkgdir/usr/lib/pkgconfig/fontobene-qt-qt6.pc"
+  install -Dm644 -o root -g root "$srcdir/fontobene-qt-qt6.pc" "$pkgdir/usr/lib/pkgconfig/fontobene-qt.pc"
 }
 
 # vim:set ts=2 sw=2 et:
