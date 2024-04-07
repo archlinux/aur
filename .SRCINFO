@@ -1,0 +1,15 @@
+pkgbase = fontobene-qt
+	pkgdesc = FontoBene font parser library for C++ / Qt
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/fontobene/fontobene-qt/
+	arch = any
+	license = Apache-2.0
+	makedepends = cmake
+	depends = qt6-base
+	source = fontobene-qt-1.0.0-source.tar.gz::https://github.com/fontobene/fontobene-qt/archive/1.0.0.tar.gz
+	source = fontobene-qt.pc
+	sha256sums = 4e66c04c788a682a53bef89f4a0f092c33c4c231fbf8b47fcf7a8de80f6e161c
+	sha256sums = 09fff2e64fdd990274c6d3f43109777b528a96433f2c7169b7deb3457700bb78
+
+pkgname = fontobene-qt
