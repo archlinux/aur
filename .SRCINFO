@@ -48,10 +48,7 @@ pkgbase = wayfire-hidpi-xprop-git
 	provides = wf-config-git
 	provides = libwlroots.so=0.17.2
 	conflicts = wayfire
-	conflicts = wayfire-git
-	conflicts = wlroots-git
 	conflicts = wlroots
-	conflicts = wf-config-git
 	conflicts = wf-config
 	source = git+https://github.com/WayfireWM/wayfire
 	source = 0001-xwayland-support-HiDPI-scale.patch

@@ -19,7 +19,7 @@ makedepends=('git' 'glslang' 'meson' 'ninja' 'cmake' 'vulkan-headers')
 optdepends=('xorg-xeyes'
             'xorg-xwayland-hidpi-xprop: High DPI scaling of Xwayland applications')
 provides=("wayfire=$pkgver" "wayfire-git=$pkgver" "${pkgname%-git}" "wlroots=$_wlrootsver" 'wf-config' "wlroots-git=$_wlrootsver" "wlroots-hidpi-xprop=$_wlrootsver" 'wf-config-git' "libwlroots.so=$_wlrootsver")
-conflicts=('wayfire' 'wayfire-git' 'wlroots-git' 'wlroots' 'wf-config-git' 'wf-config')
+conflicts=('wayfire' 'wlroots' 'wf-config')
 replaces=()
 options=()
 
