@@ -4,13 +4,13 @@
 _pkgname="llm"
 _feature="clblast"
 pkgname="${_pkgname}-${_feature}-git"
-pkgver=0.1.1.r429.gfc1c052
+pkgver=0.1.1.r592.g9376078
 pkgrel=1
 pkgdesc="An ecosystem of Rust libraries for working with large language models (with CLBlast)"
 arch=(any)
 url="https://github.com/rustformers/${_pkgname}"
-license=('MIT' 'APACHE')
-depends=(glibc gcc-libs "${_feature}")
+license=('Apache-2.0 OR MIT')
+depends=(glibc gcc-libs "$_feature")
 makedepends=(git cargo)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -19,6 +19,7 @@ source=("git+${url}"
         "git+https://github.com/ggerganov/llama.cpp"
         )
 sha256sums=('SKIP' 'SKIP')
+options+=('!lto')
 
 
 prepare() {
@@ -26,10 +27,12 @@ prepare() {
     git submodule init
     git config submodule.crates/ggml/sys/llama-cpp.url "${srcdir}/llama.cpp"
     git -c protocol.file.allow=always submodule update
+
+    cat LICENSE-* > LICENSE
+
     export RUSTUP_TOOLCHAIN=stable
     cargo update
-    cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
-    cat LICENSE-* > LICENSE
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 pkgver() {
@@ -39,12 +42,15 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target cargo build --frozen --release "--features=${_feature}"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --features="${_feature}"
 }
 
 check () {
     cd "${srcdir}/${_pkgname}"
-    RUSTUP_TOOLCHAIN=stable cargo test --frozen --workspace "--features=${_feature}"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen --all-features
 }
 
 package() {
