@@ -13,8 +13,7 @@ cd "$SCRIPT_DIR"
 export LD_LIBRARY_PATH=$SCRIPT_DIR:$DAPHNE_SHARE:$LD_LIBRARY_PATH
 
 if [ -z $1 ] ; then
-	echo "Specify a game to try: ace astron badlands bega cliff cobra esh"
-	echo "\tgalaxyr gpworld interstellar lair lair2 mach3 rb sdq tq uvt"
+	echo "Specify a game to try: ace astron badlands bega cliff cobra esh tgalaxyr gpworld interstellar lair lair2 mach3 rb sdq tq uvt"
 	exit
 fi
 
