@@ -16,8 +16,8 @@ depends=(
 )
 
 ## BEGIN generated variables
-pkgver=20240322stable.r12.g21933672e3
-sha1sums=('6f44175970a33f2761aac4f10642552c8a248035')
+pkgver=20240322stable.r15.g64baaf17f9
+sha1sums=('41db50f72969fa937b1e3c40a79bf5b0701acd67')
 
 ## END generated variables
 
