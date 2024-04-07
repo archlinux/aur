@@ -4,7 +4,7 @@
 _pkgname=sshpubkeys
 pkgname=python-sshpubkeys
 pkgver=3.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc='OpenSSH public key parser for Python'
 arch=(any)
 url='https://github.com/ojarva/python-sshpubkeys'

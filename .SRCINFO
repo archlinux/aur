@@ -1,0 +1,17 @@
+pkgbase = python-sshpubkeys
+	pkgdesc = OpenSSH public key parser for Python
+	pkgver = 3.3.1
+	pkgrel = 5
+	url = https://github.com/ojarva/python-sshpubkeys
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-ecdsa
+	depends = python-cryptography
+	source = https://github.com/ojarva/python-sshpubkeys/archive/3.3.1/python-sshpubkeys-3.3.1.tar.gz
+	sha256sums = 04dbd4ed78b288b0cb2b265f7594367676d740d5ce0eda66cb745aaa9a597125
+
+pkgname = python-sshpubkeys
