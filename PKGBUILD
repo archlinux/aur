@@ -7,7 +7,7 @@ pkgver=0.4.0
 pkgrel=1
 pkgdesc='cargo subcommand to create a readme file containing the rustdoc comments from...'
 url='https://crates.io/crates/cargo-doc2readme'
-license=('Apache')
+license=('Apache-2.0')
 
 depends=('gcc-libs')
 makedepends=('cargo')
