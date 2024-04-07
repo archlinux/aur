@@ -1,4 +1,4 @@
-_orig_ver=1.12.3
+_orig_ver=1.14.10
 _orig_patch=
 _orig_fullver=$_orig_ver$_orig_patch
 
@@ -9,18 +9,24 @@ pkgdesc="Benchmark memory bandwidth"
 arch=('i686' 'x86_64')
 url="http://zsmith.co/bandwidth.php"
 license=('GPL')
+depends=('freetype2')
 makedepends=('nasm')
 options=(!makeflags !debug)
-sha256sums=('6a756d244d1d93036b8e79aff66f9c939a95ac743d43489e50b62903bb96640c')
+sha256sums=('fece39a6dfb10c65033d6d79b2356e9ee714e936862b075ebdabd7277ce914a6')
 source=("https://zsmith.co/archives/${pkgname}-${_orig_fullver}.tar.bz2")
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${_orig_fullver}"
+
+  make clean
+  ./configure
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${_orig_fullver}"
 
-  make clean
-
   # makefile uses LIB instead of LDFLAGS, and needs to know where OOC is
-  export LIB="${LDFLAGS} -L ./OOC"
+  export LIB="${LDFLAGS} -lm OOC/libOOC.a $(pkg-config --libs freetype2)"
 
   if [ "${CARCH}" = "x86_64" ]; then
      make -f Makefile-linux-x86_64 bandwidth64
