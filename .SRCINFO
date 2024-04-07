@@ -1,0 +1,18 @@
+pkgbase = python-apeye-core
+	pkgdesc = Core (offline) functionality for the apeye library
+	pkgver = 1.1.4
+	pkgrel = 2
+	url = https://github.com/domdfcoding/apeye-core
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatch-requirements-txt
+	depends = python
+	depends = python-domdf-python-tools
+	depends = python-idna
+	source = python-apeye-core::git+https://github.com/domdfcoding/apeye-core#commit=5f4dd62c7a3926c4615bbcccf2273bcafcc5487c
+	b2sums = SKIP
+
+pkgname = python-apeye-core

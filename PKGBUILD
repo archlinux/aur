@@ -2,7 +2,7 @@
 
 pkgname=python-apeye-core
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Core (offline) functionality for the apeye library'
 arch=('any')
 url='https://github.com/domdfcoding/apeye-core'
