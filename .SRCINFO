@@ -1,0 +1,22 @@
+pkgbase = prm-bin
+	pkgdesc = Pull Request Manager for Maintainers
+	pkgver = 3.5.1
+	pkgrel = 1
+	url = https://ldez.github.io/prm/
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = APACHE
+	depends = git
+	provides = prm
+	source_x86_64 = https://github.com/ldez/prm/releases/download/v3.5.1/prm_v3.5.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = e724293bb1eef41605503f65fd64fb188a17702623e5a94d21983a251e8a0c51
+	source_i686 = https://github.com/ldez/prm/releases/download/v3.5.1/prm_v3.5.1_linux_386.tar.gz
+	sha256sums_i686 = 5aaa9af67c615924346b91c3523c424723bb485e2be0ba1355c9f0f1181334d7
+	source_armv7h = https://github.com/ldez/prm/releases/download/v3.5.1/prm_v3.5.1_linux_armv7.tar.gz
+	sha256sums_armv7h = 59154ae72013048030788fdb61eb0680146ee53329e8581658a969a6ca8f19c1
+	source_aarch64 = https://github.com/ldez/prm/releases/download/v3.5.1/prm_v3.5.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0cae415a3ccefe6f492f7ab54c8aecfd8b0771a0837b106e18134a3344a53dd3
+
+pkgname = prm-bin
