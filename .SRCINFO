@@ -1,7 +1,7 @@
 pkgbase = python-occ-core
 	pkgdesc = Python package for 3D CAD/BIM/PLM/CAM
 	pkgver = 7.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tpaviot/pythonocc-core
 	arch = x86_64
 	license = LGPL3
