@@ -4,44 +4,28 @@
 _pkgname=CGEN
 _pkgver=3.38.0
 pkgname=r-${_pkgname,,}
-pkgver=3.38.0
-pkgrel=1
+pkgver=${_pkgver//-/.}
+pkgrel=2
 pkgdesc="An R package for analysis of case-control studies in genetic epidemiology"
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  'r>=4.0'
-   r-mvtnorm
-)
-optdepends=(
-  r-cluster
+  r-mvtnorm
 )
 makedepends=(
   gcc-fortran
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
-        "fix_globals.patch")
-sha256sums=('3609d6ff835c871cbcc497f1e846c6aede3e2d916fe7c6eb14701a313fef5e14'
-            'a1e9baa3c89b9950209e4832c35856ccb6b660fedb9ddf9c72c2ed0bc552c752')
-
-#prepare() {
-#  cd "${srcdir}/${_pkgname}"
-
-  # fix global variables overlap until it will be fixed in upstream
-#  patch -Np0 -i "${srcdir}/fix_globals.patch"
-#}
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('e62dd5874cfcaab65414fff648106633')
+b2sums=('9c6dc107a01b39ae81ad848a3d27e2cc5ffff691b4c27ab8a2c0007fb726d149333fc28d84377f8ce5e66c20782790fccd37ec6ed38210d1ef27b9beb5faa93b')
 
 build() {
-  # create staging directory for installation
-  mkdir -p "${srcdir}/staged"
-
-  R CMD INSTALL "${_pkgname}" -l "${srcdir}/staged"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-
-  cp -a --no-preserve=ownership "${srcdir}/staged/${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

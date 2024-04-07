@@ -1,17 +1,14 @@
 pkgbase = r-cgen
 	pkgdesc = An R package for analysis of case-control studies in genetic epidemiology
 	pkgver = 3.38.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/CGEN
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
 	makedepends = gcc-fortran
-	depends = r>=4.0
 	depends = r-mvtnorm
-	optdepends = r-cluster
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/CGEN_3.38.0.tar.gz
-	source = fix_globals.patch
-	sha256sums = 3609d6ff835c871cbcc497f1e846c6aede3e2d916fe7c6eb14701a313fef5e14
-	sha256sums = a1e9baa3c89b9950209e4832c35856ccb6b660fedb9ddf9c72c2ed0bc552c752
+	md5sums = e62dd5874cfcaab65414fff648106633
+	b2sums = 9c6dc107a01b39ae81ad848a3d27e2cc5ffff691b4c27ab8a2c0007fb726d149333fc28d84377f8ce5e66c20782790fccd37ec6ed38210d1ef27b9beb5faa93b
 
 pkgname = r-cgen
