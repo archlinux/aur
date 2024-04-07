@@ -3,14 +3,13 @@
 _pkgname=splitstackshape
 _pkgver=1.4.8
 pkgname=r-${_pkgname,,}
-pkgver=1.4.8
-pkgrel=4
-pkgdesc='Stack and Reshape Datasets After Splitting Concatenated Values'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Stack and Reshape Datasets After Splitting Concatenated Values"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-data.table
 )
 optdepends=(
@@ -18,14 +17,15 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('656032c3f1e3dd5b8a3ee19ffcae617e07104c0e342fc3da4d863637a770fe56')
+md5sums=('ed807075f73276c1769a51cb3ec3ff28')
+b2sums=('615d8812d39ac27c5e7b393d7ed267408e6f3f7d3efc993e0ff92630df9e2ec7013bf3ddebab5c0621a73bcc3915f3d7efd5643c3cb6ed270ad566e468eba415')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
