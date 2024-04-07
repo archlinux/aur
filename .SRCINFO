@@ -1,13 +1,13 @@
 pkgbase = fm-bin
 	pkgdesc = A terminal based file manager
-	pkgver = 0.16.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/knipferrc/fm
 	arch = x86_64
 	license = MIT
 	provides = fm
 	conflicts = fm
-	source_x86_64 = https://github.com/knipferrc/fm/releases/download/v0.16.0/fm_0.16.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = b4fb0f684bc5390a0309ef2714b52b51df0368bdc40a9afed7c8193ef6af2f56
+	source_x86_64 = https://github.com/knipferrc/fm/releases/download/v1.0.0/fm_1.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 77325c9d6f9cb814c8fc1e15ea3b7d99e5922cce2d65c819b971b60870d558ff
 
 pkgname = fm-bin
