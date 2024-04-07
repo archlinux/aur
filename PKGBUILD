@@ -2,7 +2,7 @@
 pkgname=plasma6-applets-uptime-widget-git
 _gitpkgname=plasma-applet-uptime-widget
 pkgver=r15.be8cc87
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple uptime KDE plasmoid'
 arch=(any)
 url='https://github.com/KaOSx/plasma-applet-uptime-widget'
@@ -15,7 +15,7 @@ makedepends=(
     extra-cmake-modules
     git
 )
-conflicts=(plasma6-applets-uptime-widget-git)
+conflicts=(plasma5-applets-uptime-widget-git)
 source=($_gitpkgname::git+https://github.com/KaOSx/$_gitpkgname)
 b2sums=(SKIP)
 

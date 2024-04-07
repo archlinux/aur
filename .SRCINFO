@@ -1,7 +1,7 @@
 pkgbase = plasma6-applets-uptime-widget-git
 	pkgdesc = A simple uptime KDE plasmoid
 	pkgver = r15.be8cc87
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KaOSx/plasma-applet-uptime-widget
 	arch = any
 	license = GPL-2.0-only
@@ -9,7 +9,7 @@ pkgbase = plasma6-applets-uptime-widget-git
 	makedepends = git
 	depends = libplasma
 	depends = plasma5support
-	conflicts = plasma6-applets-uptime-widget-git
+	conflicts = plasma5-applets-uptime-widget-git
 	source = plasma-applet-uptime-widget::git+https://github.com/KaOSx/plasma-applet-uptime-widget
 	b2sums = SKIP
 
