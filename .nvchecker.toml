@@ -1,0 +1,5 @@
+[python-adios4dolfinx]
+source = "github"
+github = "jorgensd/adios4dolfinx"
+use_latest_release = "true"
+prefix = "v"
