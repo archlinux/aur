@@ -13,6 +13,7 @@
 _bldtype=Release
 _mozc_commit=bf99e3ba1e16b2b661589aa8a743fdbe67fe5bac
 _branch=fcitx
+_sudachidict_date=20240109
 # Ut Dictionary
 _utdicdate=20230115
 _dict=(
@@ -25,12 +26,11 @@ _dict=(
 #       skk-jisyo
 #       sudachidict
        )
-_sudachidict_date=20240109
 
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.30.5432.102
-pkgrel=1
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND NAIST-2003')
@@ -49,6 +49,7 @@ source=("git+$url.git#commit=${_mozc_commit}"
         #"https://github.com/neologd/mecab-ipadic-neologd/raw/master/seed/mecab-user-dict-seed.20200910.csv.xz"
         "LICENSE-SudachiDict::https://github.com/WorksApplications/SudachiDict/raw/develop/LEGAL"
         #"LICENSE-ipadic-neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/master/COPYING"
+				mozc_renderer_Multiple_Start_Prevention.patch
         )
 #        https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz)
 #noextract=(jawiki-latest-all-titles-in-ns0.gz)
@@ -63,7 +64,7 @@ sha512sums=('SKIP'
             '8b51b783c60987d74d896ba4668987b69a4f83b7b294f2630b25a0adf2ca665b89ebf4e000ce5de9a343aa9929d0b120478f7820a31ab1718d1fcafd58460286'
             '8efaeeb103cfd14abbc8e27ca4c6313d68e800421f452701ff1771b09f32944cd14bfc4bd2fe75ebb3b851b4baba15ebd70b7b2cceae68a621eadbaa9d351bf5'
             '1a5b62c83a08781b44bd73f978a4024d93667df47b1a3f4c179096cbc32f28e803c50dca6b5b7ad20fb788d46797551c36ec1efb7782f4361b695e2e0a6060ca'
-            )
+            'eb8d1570339f375698f4cb00e8c16139fe72213842b91f60d4495103ecab0d0509ee2c456632c0f860f822e95677b8afe74010b80edeea1e4e7b3893212e3eeb')
 
 pkgver() {
   cd "${srcdir}/mozc" || exit
@@ -83,9 +84,7 @@ prepare() {
   # nm -f posix (llvm-nm -f posix)
   sed 's|nm \(.*\)\-f p |nm \1-f posix |' -i third_party/gyp/pylib/gyp/generator/ninja.py
 
-  # zombie process prevention for mozc_tool
-  #cd "$srcdir/mozc" || exit
-  #patch -p1 -i ${srcdir}/0001-Zombie-Process-Prevention.patch
+  patch -p2 -i ${srcdir}/mozc_renderer_Multiple_Start_Prevention.patch
 
   # mozc date and version
   #_date=$(git log -1 --pretty=format:'%as' $_mozc_commit)
