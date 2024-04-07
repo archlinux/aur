@@ -3,14 +3,13 @@
 _pkgname=rnaseqcomp
 _pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
-pkgrel=1
-pkgdesc='Benchmarks for RNA-seq Quantification Pipelines'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Benchmarks for RNA-seq Quantification Pipelines"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-rcolorbrewer
 )
 optdepends=(
@@ -19,14 +18,15 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('be01564bef64eda55c7334a3c37adbea403b4e686f1f2db3576185d207bdd47a')
+md5sums=('2d0e9f4dd34f6746ff48994f8067f6f6')
+b2sums=('f1dee01dee997a6aaa74b248563aff04c068184e3b46ef7475d33604f766de8f346d066ba0a739f491249ae07b5244190e26dab1ba48558d3eafb68a9ec173f2')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
