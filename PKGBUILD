@@ -52,7 +52,7 @@ fi
 
 pkgname=ffmpeg-obs
 pkgver=6.1.1
-pkgrel=9
+pkgrel=10
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -61,7 +61,7 @@ license=(GPL-3.0-only)
 # Only for default set of features
 _aomver=3
 _dav1dver=1.3.0
-_ffnvcodecver=12.0.16.0
+_ffnvcodecver=12.2
 _libjxlver=0.10.0
 _libplacebover=6
 _libristver=0.2.7
@@ -410,6 +410,12 @@ prepare() {
 
   ## {avcodec,tests}: rename the bundled Mesa AV1 vulkan video headers
   git cherry-pick -n fef22c87ada4517441701e6e61e062c9f4399c8e
+
+  ## avcodec/nvenc: stop using long deprecated format specifiers
+  git cherry-pick -n 3481f8d99fc44f5516957e774b7f2da74c33beb8
+
+  ## avcodec/nvenc: support SDK 12.2 bit depth API
+  git cherry-pick -n 38346298973e3869d895e0ad3ca3b19dc598c5c8
 
   ### ffmpeg-full changes
 
