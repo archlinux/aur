@@ -1,0 +1,14 @@
+pkgbase = python-txrequests
+	pkgdesc = Asynchronous Python HTTP Requests for Humans using twisted
+	pkgver = 0.9.6
+	pkgrel = 10
+	url = https://github.com/tardyp/txrequests
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-requests
+	depends = python-twisted
+	source = https://files.pythonhosted.org/packages/source/t/txrequests/txrequests-0.9.6.tar.gz
+	sha256sums = b452a1cafa4d005678f6fa47922a330feb4907d5b4732d1841ca98e89f1362e1
+
+pkgname = python-txrequests
