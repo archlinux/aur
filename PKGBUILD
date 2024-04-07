@@ -1,10 +1,10 @@
 pkgname=ffplayout
 pkgver=0.20.5
-pkgrel=0
+pkgrel=1
 pkgdesc="24/7 playout based on rust and ffmpeg"
 arch=('x86_64')
 url="https://github.com/ffplayout/ffplayout"
-license=('GPL3')
+license=('GPL-3.0')
 depends=(
   'ffmpeg-ffplayout'
   'sudo'
@@ -27,6 +27,7 @@ source=(
 )
 sha256sums=('SKIP'
             '91fa57deb966dd5f3f611d0a8213934f200487c64153167a1d9d6f7c9b1b85e8')
+options=('!lto')
 
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
@@ -60,8 +61,8 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   ./scripts/man_create.sh
 
-  # Frontend build step
-  cargo build --release --target=x86_64-unknown-linux-musl
+  # Backend build step
+  cargo build --locked --release --target=x86_64-unknown-linux-musl
 }
 
 package() {
