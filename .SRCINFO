@@ -1,7 +1,7 @@
 pkgbase = fusesoc
 	pkgdesc = Package manager and build abstraction tool for FPGA/ASIC development
 	pkgver = 2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/olofk/fusesoc
 	arch = any
 	license = BSD
