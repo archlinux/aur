@@ -7,10 +7,10 @@ pkgrel=1
 pkgdesc="An open-source 2D game engine which uses the versatile Lua scripting language to create dynamic gaming experiences."
 arch=(i686 x86_64 armv6h armv7h)
 url="https://love2d.org/"
-license=('ZLIB')
+license=('Zlib')
 depends=(
-	'luajit' 'physfs' 'freetype2' 'mpg123' 'openal' 'libvorbis' 'libmodplug'
-	'sdl2' 'zlib' 'libpng' 'libjpeg-turbo' 'libtheora'
+	'luajit' 'freetype2' 'openal' 'libvorbis' 'libmodplug'
+	'sdl2' 'zlib' 'libtheora' 'harfbuzz' 'libogg' 'gcc-libs' 'glibc'
 )
 replaces=('love-hg')
 source=('git+https://github.com/love2d/love')
