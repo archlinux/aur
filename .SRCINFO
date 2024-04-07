@@ -1,6 +1,6 @@
 pkgbase = smol
 	pkgdesc = Simple Fetch Script
-	pkgver = 1.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/eeec-cal/smol
 	arch = x86_64
