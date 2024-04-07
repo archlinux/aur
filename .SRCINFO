@@ -1,7 +1,7 @@
 pkgbase = python-billiard
 	pkgdesc = Python multiprocessing fork with improvements and bugfixes.
 	pkgver = 4.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/billiard/
 	arch = x86_64
 	license = BSD
