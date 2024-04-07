@@ -2,7 +2,7 @@
 pkgname=topcat
 pkgver=4.9.1
 _pkgver=4.9-1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for OPerations on Catalogues And Tables"
 arch=('any')
 url="http://www.star.bris.ac.uk/~mbt/topcat/"
@@ -15,7 +15,7 @@ source=("topcat-full-${pkgver}.jar::https://www.star.bristol.ac.uk/mbt/releases/
 md5sums=('6dc0960c839985d4a3a42461ac7b0649'
          'a8df7717765aa85d16dfbf296ea8d76e'
          '5f2df6a05c72b5641bf6a2b1c29173ed'
-         'c00fecfd325398c2bcbd08ac76456c6e')
+         '61d8176524b9f40b58b839b8c72a23de')
 
 package() {
   cd "$srcdir"
