@@ -1,0 +1,28 @@
+--- a/zpipe.cpp    2010-10-14 21:55:56.000000000 +0300
++++ b/zpipe.cpp    2024-04-06 18:24:20.827965383 +0300
+@@ -74,8 +74,10 @@
+    "Usage: zpipe -option < input > output\n"
+    "Options are:\n"
+    "  -1   compress fastest\n"
+-    "  -2   compress average\n"
+-    "  -3   compress smallest\n"
++    "  -2   ...\n"
++    "  -3   compress average\n"
++    "  -4   ...\n"
++    "  -5   compress smallest\n"
+    "  -d   decompress\n", __DATE__);
+   exit(1);
+ }
+@@ -100,8 +102,10 @@
+   // Compress
+   if (option=='d')
+     libzpaq::decompress(&in, &out);
+-  else if (option>='1' && option<='3')
+-    libzpaq::compress(&in, &out, option-'0');
++  else if (option>='1' && option<='5') {
++    char method[2] = { option, '\0' };
++    libzpaq::compress(&in, &out, method);
++  }
+   else
+     usage();
+   return 0;
