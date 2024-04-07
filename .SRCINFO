@@ -1,0 +1,23 @@
+pkgbase = python-setuptools-declarative-requirements
+	pkgdesc = File support for setuptools declarative setup.cfg
+	pkgver = 1.3.0
+	pkgrel = 5
+	url = https://github.com/s0undt3ch/setuptools-declarative-requirements
+	arch = any
+	license = Apache-2.0
+	checkdepends = pypiserver
+	checkdepends = python-pytest
+	checkdepends = python-pytest-shell-utilities
+	checkdepends = python-virtualenv
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-toml
+	makedepends = python-wheel
+	depends = python
+	depends = python-setuptools
+	source = python-setuptools-declarative-requirements-1.3.0.tar.gz::https://github.com/s0undt3ch/setuptools-declarative-requirements/archive/refs/tags/1.3.0.tar.gz
+	sha512sums = eb20016ab0b8029a38ff4632d19d63cd4b6396c9d101efce577ac862feb3fc485ac4a644035d3267cd05caf679f9b2259e1d1340f8cd902ea7c7451e099c71cc
+	b2sums = 5030cd7a0b651a11bec8ca9ca4db680c86634c3fe895a6a76544468c2f48aef43a15e30d0c7ba1eea1133dc5b47257a061f6700b8d1e1863d72430a0459ba9f5
+
+pkgname = python-setuptools-declarative-requirements
