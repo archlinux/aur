@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=fish-fzf
-pkgver=10.2
+pkgver=10.3
 pkgrel=1
 pkgdesc="fzf key-bindings into fish"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
 makedepends=('git')
 changelog="$pkgname.changelog"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ef1daeedee6de3c0ca6e6b0517757fbaaf87485bd73784a017f5db4d63dca4fc')
+sha256sums=('a0d56e974b8d5144c3262dcf87630c8886407d28a2f9e626e46bc18199fe6f97')
 
 package() {
 	cd "fzf.fish-$pkgver/"
