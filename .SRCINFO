@@ -1,0 +1,12 @@
+pkgbase = smol
+	pkgdesc = Simple Fetch Script
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/eeec-cal/smol
+	arch = x86_64
+	license = VPL
+	makedepends = git
+	source = smol::git+https://github.com/eeec-cal/smol
+	sha256sums = SKIP
+
+pkgname = smol
