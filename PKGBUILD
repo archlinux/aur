@@ -3,7 +3,7 @@
 
 pkgname=ruby-css_parser
 _pkgname=${pkgname#ruby-}
-pkgver=1.17.0
+pkgver=1.17.1
 pkgrel=1
 pkgdesc="Ruby CSS parser"
 arch=(any)
@@ -16,7 +16,7 @@ depends=(
 makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz")
-sha256sums=('4b24427237997117293225f9abaa3374b498f09d6cd51f4fb05993b85e64ff15')
+sha256sums=('069e419f2fdf2c500979f113348d459f7963c19ff72918a92b9b26a2fb0ee662')
 
 _archive="$_pkgname-$pkgver"
 
