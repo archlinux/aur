@@ -2,7 +2,7 @@
 
 pkgname=bombsquad-server
 pkgver=1.7.33
-pkgrel=1
+pkgrel=2
 pkgdesc='An explosive arcade-style party game, local server'
 arch=('x86_64' 'aarch64')
 url='http://www.froemling.net/apps/bombsquad'
@@ -10,8 +10,8 @@ license=('unknown')
 depends=('openal' 'libgl' 'sdl2' 'libvorbis' 'libogg' 'python')
 source=('bombsquad-server.sh')
 sha256sums=('82f833063fd6995823c8ba341879bac38d69a3470c1acbf4a7ffa7e3399c73f2')
-sha256sums_x86_64=('85380440196ce5b684403b47d084944c5afa2d50e70dbd15e971dd4c33a60245')
-sha256sums_aarch64=('2298b86fa6adf4976c55d5d102c3d2470510b5d44669d79df5c12d6c39b771e3')
+sha256sums_x86_64=('a0ec57fc0477cfa47715df8fe23ea5ac888e961c3ed880ff68c65e3e2d49dc6b')
+sha256sums_aarch64=('61ef9315b23098f275cc85abed68d2d1231ae96ae22fd1c7cfa6135b79ff1f5c')
 source_x86_64=("https://files.ballistica.net/bombsquad/builds/BombSquad_Server_Linux_x86_64_${pkgver}.tar.gz")
 source_aarch64=("https://files.ballistica.net/bombsquad/builds/BombSquad_Server_Linux_Arm64_${pkgver}.tar.gz")
 
