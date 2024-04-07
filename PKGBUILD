@@ -1,13 +1,13 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=sysbox-ce-bin
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)"
 url="https://github.com/nestybox/sysbox"
 arch=('x86_64')
 license=('Apache')
 source=("https://downloads.nestybox.com/sysbox/releases/v${pkgver}/sysbox-ce_${pkgver}-0.linux_amd64.deb")
-sha256sums=('cfce811006a27305071b1634ca8fe690392f5dcc205612e7b4e5bde411b7701e')
+sha256sums=('d034ddd364ee1f226b8b1ce7456ea8a12abc2eb661bdf42d3e603ed2dc741827')
 install=install.sh
 depends=('rsync' 'fuse2')
 optdepends=('shiftfs: For uid-mapping on very old kernels without idmapped-mounts')
