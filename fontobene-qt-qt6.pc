@@ -2,7 +2,7 @@ prefix=/usr
 includedir=${prefix}/include
 
 Name: fontobene-qt
-Description: FontoBene parser for Qt (header-only)
+Description: FontoBene parser for Qt6 (header-only)
 Version: 1.0.0
 Libs:
 Cflags: -I${includedir}
