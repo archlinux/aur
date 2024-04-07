@@ -4,7 +4,7 @@ pkgver=0.6.4
 pkgrel=1
 pkgdesc="Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)"
 url="https://github.com/nestybox/sysbox"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('Apache')
 source=("git+https://github.com/nestybox/sysbox.git#tag=v$pkgver"
         # On a recursive clone, git submodule foreach --recursive git rev-parse HEAD
