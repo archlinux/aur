@@ -1,7 +1,7 @@
 pkgbase = python-iocapture
 	pkgdesc = Capture stdout, stderr easily
 	pkgver = 0.1.2
-	pkgrel = 11
+	pkgrel = 12
 	url = https://github.com/oinume/iocapture
 	arch = any
 	license = MIT
