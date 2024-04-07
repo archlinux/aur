@@ -1,13 +1,14 @@
 # Maintainer: John Bernard <loqusion@gmail.com>
 _pkgname=hyprshade
 pkgname=${_pkgname}-git
-pkgver=3.2.1.r33.g43db77e
+pkgver=3.2.1.r110.g712acee
 pkgrel=1
 pkgdesc="Hyprland shade configuration tool"
 arch=('any')
 url="https://github.com/loqusion/$_pkgname"
 license=('MIT')
 _py_deps=(
+	chevron
 	click
 	more-itertools
 )
@@ -19,8 +20,6 @@ depends=(
 makedepends=(git python-{build,hatchling,installer})
 optdepends=(
 	'systemd: activate shader on schedule'
-	'python-chevron: shader configuration (recommended)'
-	'python-pystache: shader configuration (alternative)'
 )
 provides=($_pkgname)
 conflicts=($_pkgname)
