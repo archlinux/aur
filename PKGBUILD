@@ -1,61 +1,50 @@
 # Maintainer: xiota / aur.chaotic.cx
 
 _pkgname='geany-plugin-preview'
-_gitname='geany-preview'
 pkgname="$_pkgname-git"
-pkgdesc="Plugin for Geany to Preview lightweight markup languages, including AsciiDoc, DocBook, Fountain, LaTeX, Markdown, MediaWiki, reStructuredText, Textile, and Txt2Tags."
+pkgdesc="Plugin for Geany to preview lightweight markup languages"
 url="https://github.com/xiota/geany-preview"
-pkgver=0.0.4.r0.gd8b9e04
+pkgver=0.1.0.r0.g70f071a
 pkgrel=1
-arch=(x86_64)
-license=(GPL)
+license=('GPL-3.0-or-later')
+arch=('x86_64')
+
 depends=(
   'cmark-gfm'
   'geany'
-  'podofo-0.9'
+  'libpodofo.so' # podofo
   'webkit2gtk'
 )
 makedepends=(
   'git'
 )
+optdepends=(
+  # AUR
+  'ttf-courier-prime: Export Fountain screenplays to PDF'
+)
 
-if [ x"$_pkgname" == x"$pkgname" ] ; then
-  # normal package
-  source=("$_gitname"::"git+$url#tag=v$pkgver")
-  sha256sums=('SKIP')
-else
-  # git package
-  provides+=("$_pkgname")
-  conflicts+=("$_pkgname")
+provides+=("$_pkgname")
+conflicts+=("$_pkgname")
 
-  : ${_branch:=main}
-  source=("$_gitname"::"git+$url#branch=$_branch")
-  sha256sums=('SKIP')
+: ${_branch:=main}
 
-  pkgver() {
-    cd "$srcdir/$_gitname"
+_pkgsrc="geany-preview"
+source=("$_pkgsrc"::"git+$url.git#branch=$_branch")
+sha256sums=('SKIP')
 
-    if [ "$_branch" = "main" ] ; then
-      git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-    else
-      printf "%s.%s" \
-        $(git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g') \
-        "$_branch"
-    fi
-  }
-fi
+pkgver() {
+  cd "$_pkgsrc"
+
+  git describe --long --tags --abbrev=7 \
+    | sed 's/^[^0-9]*//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
-  cd "$srcdir/$_gitname"
+  cd "$_pkgsrc"
   autoreconf -vfi
-
-  export PKG_CONFIG_PATH='/usr/lib/podofo-0.9/pkgconfig:/usr/lib/pkgconfig'
-  export CPPFLAGS+=' -O3 -I "/usr/include/podofo-0.9" -DENABLE_EXPORT_PDF=1'
 
   local _configure_options=(
     --prefix='/usr'
-    --with-system-libdir='/usr/lib/podofo-0.9:/usr/lib'
-    --with-system-includedir='/usr/include/podofo-0.9:/usr/include'
   )
 
   ./configure "${_configure_options[@]}"
@@ -63,11 +52,11 @@ prepare() {
 
 
 build() {
-  cd "$srcdir/$_gitname"
+  cd "$_pkgsrc"
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd "$_pkgsrc"
   make install DESTDIR="$pkgdir"
 }
