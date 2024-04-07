@@ -1,0 +1,13 @@
+pkgbase = python-nine
+	pkgdesc = Python 3/2 compatibility library, allowing to add py2 compat to py3 code
+	pkgver = 1.1.0
+	pkgrel = 8
+	url = https://github.com/nandoflorestan/nine/
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	depends = python
+	source = nine-1.1.0.tar.gz::https://github.com/nandoflorestan/nine/archive/v1.1.0.tar.gz
+	sha512sums = b445cd1f324a0d2045081226fb650eebd8dbc86942faff204c19fffc022f0190fc04abec563b107cb860202d29f08c132056b1098495471fdfda104e57878828
+
+pkgname = python-nine
