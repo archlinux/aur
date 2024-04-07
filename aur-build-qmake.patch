@@ -1,6 +1,6 @@
---- vesc_tool.pro	2023-08-28 14:39:57.683583762 +0200
-+++ vesc_tool.pro	2023-08-28 14:56:07.186937143 +0200
-@@ -1,102 +1,38 @@
+--- vesc_tool.pro	2024-04-07 11:01:38.869088704 +0200
++++ vesc_tool.pro	2024-04-07 11:35:05.284270363 +0200
+@@ -1,106 +1,40 @@
 -#-------------------------------------------------
 -#
 -# Project created by QtCreator 2016-08-12T21:55:19
@@ -13,15 +13,18 @@
  VT_CONFIG_VERSION = 2
  
  # Set to 0 for stable versions and to test version number for development versions.
--VT_IS_TEST_VERSION = 1
+-VT_IS_TEST_VERSION = 2
+-
+-# GIT commit
+-VT_GIT_COMMIT = $$system(git rev-parse --short=8 HEAD)
 -
 -VT_ANDROID_VERSION_ARMV7 = 134
 -VT_ANDROID_VERSION_ARM64 = 135
 -VT_ANDROID_VERSION_X86 = 136
+-
+-VT_ANDROID_VERSION = $$VT_ANDROID_VERSION_X86
 +VT_IS_TEST_VERSION = 0
  
--VT_ANDROID_VERSION = $$VT_ANDROID_VERSION_X86
--
 -# Ubuntu 18.04 (should work on raspbian buster too)
 -# sudo apt install qml-module-qt-labs-folderlistmodel qml-module-qtquick-extras qml-module-qtquick-controls2 qt5-default libqt5quickcontrols2-5 qtquickcontrols2-5-dev qtcreator qtcreator-doc libqt5serialport5-dev build-essential qml-module-qt3d qt3d5-dev qtdeclarative5-dev qtconnectivity5-dev qtmultimedia5-dev qtpositioning5-dev qtpositioning5-dev libqt5gamepad5-dev qml-module-qt-labs-settings qml-module-qt-labs-platform libqt5svg5-dev
 +TEMPLATE = app
@@ -30,6 +33,7 @@
  DEFINES += VT_INTRO_VERSION=$$VT_INTRO_VERSION
  DEFINES += VT_CONFIG_VERSION=$$VT_CONFIG_VERSION
  DEFINES += VT_IS_TEST_VERSION=$$VT_IS_TEST_VERSION
+-DEFINES += VT_GIT_COMMIT=$$VT_GIT_COMMIT
  QT_LOGGING_RULES="qt.qml.connections=false"
 -#CONFIG += qtquickcompiler
  
@@ -47,6 +51,8 @@
 -#CONFIG += build_mobile
 -
 +QMAKE_CXXFLAGS += -Wno-deprecated-copy
++QMAKE_LFLAGS += -fuse-ld=mold
++LIBS += -fuse-ld=mold
  # Exclude built-in firmwares
 -#CONFIG += exclude_fw
 -
@@ -112,7 +118,7 @@
  QT       += core gui
  QT       += widgets
  QT       += network
-@@ -126,81 +62,11 @@
+@@ -130,81 +64,11 @@
      QT       += gamepad
  }
  
@@ -195,7 +201,7 @@
  SOURCES += main.cpp\
      bleuartdummy.cpp \
      codeloader.cpp \
-@@ -271,94 +137,18 @@
+@@ -278,94 +142,18 @@
      res_custom_module.qrc \
      res_lisp.qrc \
      res_qml.qrc

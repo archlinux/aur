@@ -1,24 +1,23 @@
 pkgname=vesc_tool-git
 epoch=1
-pkgver=r1315.e1eb241
+pkgver=r1403.24b62d1
 pkgrel=1
 pkgdesc="VESC ESC graphical configuration tool"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 url="https://vesc-project.com/vesc_tool"
 license=('GPL3')
 depends=('qt5-base' 'qt5-connectivity' 'qt5-quickcontrols2' 'qt5-serialport' 'qt5-location' 'qt5-gamepad' 'qt5-serialbus' 'qt5-svg')
-makedepends=('git')
+makedepends=('git' 'mold')
 conflicts=('vesc-tool')
-
 source=("$pkgname"::"git+https://github.com/vedderb/vesc_tool.git"
         'aur-build-qmake.patch'
         'vesc-tool.desktop'
         'vesc-tool.png')
-
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
+options=(!debug)
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -27,7 +26,7 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${pkgname}"
-    patch -i "${srcdir}"/aur-build-qmake.patch
+    patch -i "${srcdir}"/aur-build-qmake.patch || exit 1
 }
 
 build() {
