@@ -1,15 +1,15 @@
 pkgbase = r-inpower
 	pkgdesc = An R package for computing the number of susceptibility SNPs
 	pkgver = 1.38.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/INPower
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-2.0-only
 	depends = r-mvtnorm
 	optdepends = r-biocgenerics
 	optdepends = r-runit
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/INPower_1.38.0.tar.gz
-	sha256sums = 09a0f32decdf2ac1d3cc72ff14d8526e08dae530ed156de0c064644dc1a76656
+	md5sums = 3b769c08ded506c713da036c30fe4da9
+	b2sums = 9d2f07d4fe57273911b593837dda40b73cdf4564c9058e3793c6c1c9ffee548b4e60cc31b858ad1e6930b3ac3e2a8cff47ce71975a017c6e820123bb43257f85
 
 pkgname = r-inpower

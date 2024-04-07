@@ -3,14 +3,13 @@
 _pkgname=INPower
 _pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
-pkgrel=1
-pkgdesc='An R package for computing the number of susceptibility SNPs'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="An R package for computing the number of susceptibility SNPs"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
   r-mvtnorm
 )
 optdepends=(
@@ -18,14 +17,15 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('09a0f32decdf2ac1d3cc72ff14d8526e08dae530ed156de0c064644dc1a76656')
+md5sums=('3b769c08ded506c713da036c30fe4da9')
+b2sums=('9d2f07d4fe57273911b593837dda40b73cdf4564c9058e3793c6c1c9ffee548b4e60cc31b858ad1e6930b3ac3e2a8cff47ce71975a017c6e820123bb43257f85')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
