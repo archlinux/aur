@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=mirrord
-pkgver=3.95.0
+pkgver=3.95.1
 pkgrel=1
 pkgdesc="Connect your local process and your cloud environment, and run local code in cloud conditions"
 url="https://github.com/metalbear-co/mirrord"
@@ -18,7 +18,7 @@ makedepends=(
 )
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('ccf32847f29edc4811f14222a47521e17c8dd203e9e288822d7dfdd50cdfb985')
+sha256sums=('2306cdada51b4ce738c3149bf4c5524ce8160462250907a6ac1e6f08af8e90ef')
 
 _archive="$pkgname-$pkgver"
 
