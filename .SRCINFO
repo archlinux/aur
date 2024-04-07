@@ -1,10 +1,10 @@
 pkgbase = r-knitr
 	pkgdesc = A General-Purpose Package for Dynamic Report Generation in R
-	pkgver = 1.45
+	pkgver = 1.46
 	pkgrel = 1
 	url = https://cran.r-project.org/package=knitr
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r-evaluate
 	depends = r-highr
 	depends = r-xfun
@@ -12,7 +12,6 @@ pkgbase = r-knitr
 	optdepends = pandoc: R Markdown v2 and reStructuredText support
 	optdepends = rst2pdf: rst2pdf() support
 	optdepends = r-bslib
-	optdepends = r-curl
 	optdepends = r-dbi
 	optdepends = r-digest
 	optdepends = r-formatr
@@ -40,9 +39,8 @@ pkgbase = r-knitr
 	optdepends = r-tikzdevice
 	optdepends = r-tinytex
 	optdepends = r-webshot
-	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/knitr_1.45.tar.gz
-	md5sums = 334f8f963b3d8e9e0ce5c278775cb7ec
-	sha256sums = ee2edea53bc53efa51d131ab5a0b0c829c0f950b79d3c6ee34705354bf7584fb
+	source = https://cran.r-project.org/src/contrib/knitr_1.46.tar.gz
+	md5sums = ac4eae7a57b7ff78c5bd3faf76d4ec04
+	b2sums = 3b6b4c08b47ad40519c8c36af4d7e4d625665f998b23bd75cdc618411141dd0466372ea8e2c11ea2a7d2938e79ba6a43b4da77575141fec9bf95761047ce401c
 
 pkgname = r-knitr
