@@ -1,0 +1,19 @@
+pkgbase = jnx
+	pkgdesc = A Java Navtex marine weather receiver/converter
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://arachnoid.com/JNX/
+	arch = any
+	license = GPL3
+	depends = java-runtime
+	depends = bash
+	source = https://arachnoid.com/JNX/JNX.jar
+	source = jnx.sh
+	source = jnx.desktop
+	source = JNX_icon.png
+	sha256sums = a9317d79ab76e3b760036dfcd5f4c0ccc87eb4073edeea51912c8499ea360934
+	sha256sums = f72e101688a86e53fc23ac07a074ef67994515cb96ec90e647df1a94738d76c5
+	sha256sums = ecbfa6047b4f0c92addec02d602e6aedf82f14208949e0c1f8763a68b766c136
+	sha256sums = 7f9fc8f7be5463ca713cfb79ef3e397446f40678ec1c83d27925758c087fd17c
+
+pkgname = jnx

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=JNX
+Comment=A Java Navtex marine weather receiver/converter
+Exec=/usr/bin/jnx
+Icon=jnx
+Terminal=false
+Categories=HamRadio;Utility
