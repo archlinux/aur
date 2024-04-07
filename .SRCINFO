@@ -1,0 +1,16 @@
+pkgbase = python-pytest-black
+	pkgdesc = A pytest plugin to enable format checking with black
+	pkgver = 0.3.12
+	pkgrel = 10
+	url = https://github.com/shopkeep/pytest-black/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools-scm
+	depends = python-black
+	depends = python-pytest
+	depends = python-toml
+	source = git+https://github.com/shopkeep/pytest-black.git#commit=1d0d34a44004252ce73368ac3bf34354c06a5131
+	sha512sums = SKIP
+
+pkgname = python-pytest-black
