@@ -1,7 +1,7 @@
 pkgbase = osdlyrics
 	pkgdesc = A lyric show compatible with various media players
 	pkgver = 0.5.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/osdlyrics/osdlyrics
 	arch = x86_64
 	license = GPL3
