@@ -11,7 +11,7 @@ _pkgname="io.github.msojocs.${pkgname%-bin}"
 pkgver=1.13.2_1
 _electronversion=21
 epoch=5
-pkgrel=1
+pkgrel=2
 pkgdesc='哔哩哔哩官方客户端linux移植版。Bilibili official desktop client'
 arch=(
     'aarch64'
@@ -37,7 +37,8 @@ sha256sums_x86_64=('caa81036c4c3e224f9e0b25811b57a764ece0fb2a866f5fad57111610e0c
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/apps/${_pkgname}/files/bin//bin/${pkgname%-bin}|${pkgname%-bin}|g;s|${_pkgname}|${pkgname%-bin}|g" \
