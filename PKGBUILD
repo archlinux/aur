@@ -6,8 +6,8 @@
 
 pkgname=ffmpeg-ffplayout
 pkgver=6.1.1
-pkgrel=0
-epoch=
+pkgrel=1
+epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (for ffplayout)'
 arch=(x86_64)
 url=https://ffmpeg.org
@@ -111,13 +111,10 @@ provides=(
   libpostproc.so
   libswresample.so
   libswscale.so
-  'ffmpeg' 
-  'ffmpeg-debug'
+  ffmpeg
 )
-
 conflicts=('ffmpeg')
 replaces=('ffmpeg' 'ffmpeg-tree')
-
 options=(
   debug
 )
@@ -145,6 +142,8 @@ prepare() {
   # Fix bug in av_fft_end
   git cherry-pick -n a562cfee2e214252f8b3f516527272ae32ef9532
   git cherry-pick -n 250471ea1745fc703eb346a2a662304536a311b1
+  # Fix build with latest vulkan headers
+  git cherry-pick -n fef22c87ada4517441701e6e61e062c9f4399c8e
 }
 
 pkgver() {
