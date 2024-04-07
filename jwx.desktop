@@ -2,7 +2,6 @@
 Type=Application
 Version=1.0
 Name=JWX
-GenericName=JWX
 Comment=A Java short-wave weatherfax receiver/converter
 Exec=/usr/bin/jwx
 Icon=javaws
