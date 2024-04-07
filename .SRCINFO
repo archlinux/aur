@@ -1,14 +1,14 @@
 pkgbase = fitsverify
 	pkgdesc = A FITS file format-verification tool
-	pkgver = 4.20
+	pkgver = 4.22
 	pkgrel = 1
 	url = https://heasarc.gsfc.nasa.gov/docs/software/ftools/fitsverify/
 	arch = i686
 	arch = x86_64
-	license = unknown
-	depends = cfitsio
-	source = https://heasarc.gsfc.nasa.gov/docs/software/ftools/fitsverify/fitsverify-4.20.tar.gz
-	md5sums = 472f6189ce1acaf90a3e3308ebf3befd
+	license = custom
+	depends = cfitsio<1:4.4.0
+	conflicts = cfitsio>=1:4.4.0
+	source = https://heasarc.gsfc.nasa.gov/docs/software/ftools/fitsverify/fitsverify-4.22.tar.gz
+	md5sums = ab2b6ba4f7efb9c1e0203eb537d9248f
 
 pkgname = fitsverify
-
