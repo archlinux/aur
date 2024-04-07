@@ -1,5 +1,5 @@
 pkgname=d2launcher
-pkgver=4.0.4
+pkgver=4.0.5
 pkgrel=1
 pkgdesc="Launcher for Diablo 2, Median XL and D2 Stats"
 arch=('x86_64')
