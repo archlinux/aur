@@ -1,0 +1,12 @@
+pkgbase = python-pyvcd
+	pkgdesc = Python package for writing Value Change Dump (VCD) files
+	pkgver = 0.3.0
+	pkgrel = 4
+	url = https://github.com/SanDisk-Open-Source/pyvcd
+	arch = any
+	license = MIT
+	makedepends = python-setuptools-scm
+	source = python-pyvcd-0.3.0.tar.gz::https://github.com/SanDisk-Open-Source/pyvcd/archive/0.3.0.tar.gz
+	sha512sums = e6b1fc178a848fa9c8efed5184d09ab0cdf6d5d61ed717aecdbdec1998a0f15a1bcabd92a4191a006a4ee2dc0d4f62e10c82f3561eb3979da4e3a5b728998a6b
+
+pkgname = python-pyvcd

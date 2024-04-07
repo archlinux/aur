@@ -3,7 +3,7 @@
 _pkgname=pyvcd
 pkgname=python-$_pkgname
 pkgver=0.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Python package for writing Value Change Dump (VCD) files'
 arch=('any')
 url='https://github.com/SanDisk-Open-Source/pyvcd'
