@@ -8,7 +8,7 @@ pkgrel=3
 pkgdesc="PyTest Helpers Namespace"
 arch=(any)
 url="https://github.com/saltstack/pytest-helpers-namespace"
-license=(Apache)
+license=(Apache-2.0)
 depends=(
   python
   python-setuptools
