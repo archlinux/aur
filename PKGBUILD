@@ -6,7 +6,7 @@
 
 pkgname=buku
 pkgver=4.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Bookmark manager like a text-based mini-web"
 arch=('any')
 url="https://github.com/jarun/buku"
@@ -29,12 +29,14 @@ package() {
   python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  rm -f "$pkgdir"/usr/bin/bukuserver
-  rm -rf "$pkgdir/$site_packages"/bukuserver
+  rm -f "$pkgdir/usr/bin/bukuserver"
+  rm -rf "$pkgdir/$site_packages/bukuserver"
   gzip -f buku.1
 
-  install -Dm644 auto-completion/fish/buku.fish "${pkgdir}/usr/share/fish/vendor_completions.d/buku.fish"
-  install -Dm644 auto-completion/bash/buku-completion.bash "${pkgdir}/usr/share/bash-completion/completions/buku"
-  install -Dm644 auto-completion/zsh/_buku "${pkgdir}/usr/share/zsh/site-functions/_buku"
-  install -Dm644 buku.1.gz "${pkgdir}/usr/share/man/man1/buku.1.gz"
+  install -Dm644 auto-completion/fish/buku.fish "$pkgdir/usr/share/fish/vendor_completions.d/buku.fish"
+  install -Dm644 auto-completion/bash/buku-completion.bash "$pkgdir/usr/share/bash-completion/completions/buku"
+  install -Dm644 auto-completion/zsh/_buku "$pkgdir/usr/share/zsh/site-functions/_buku"
+  install -Dm644 buku.1.gz "$pkgdir/usr/share/man/man1/buku.1.gz"
+  install -Dm644 CHANGELOG "$pkgdir/usr/share/doc/buku/CHANGELOG"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/buku/README.md"
 }
