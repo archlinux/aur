@@ -1,0 +1,21 @@
+pkgbase = android-aarch64-aom
+	pkgdesc = Alliance for Open Media video codec (Android aarch64)
+	pkgver = 3.8.2
+	pkgrel = 1
+	url = https://aomedia.org/
+	arch = any
+	license = BSD-3-Clause
+	makedepends = android-cmake
+	makedepends = yasm
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://storage.googleapis.com/aom-releases/libaom-3.8.2.tar.gz
+	source = https://storage.googleapis.com/aom-releases/libaom-3.8.2.tar.gz.asc
+	validpgpkeys = B002F08B74A148DAA01F7123A48E86DB0B830498
+	md5sums = 4a1a94acf8d2798f7eb31134ba5be98a
+	md5sums = SKIP
+
+pkgname = android-aarch64-aom
