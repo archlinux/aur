@@ -4,18 +4,18 @@
     <comment>Chitubox Project</comment>
     <glob pattern="*.chitubox"/>
     <acronym>CHITUBOX</acronym>
-    <icon name="chitubox-free"/>
+    <icon name="chitubox-basic"/>
   </mime-type>
   <mime-type type="model/ctb">
     <comment>Chitubox Sliced 3D model</comment>
     <glob pattern="*.ctb"/>
     <acronym>CTB</acronym>
-    <icon name="chitubox-free"/>
+    <icon name="chitubox-basic"/>
   </mime-type>
   <mime-type type="model/cbddlp">
     <comment>Chitubox Sliced 3D model</comment>
     <glob pattern="*.cbddlp"/>
     <acronym>CBDDLP</acronym>
-    <icon name="chitubox-free"/>
+    <icon name="chitubox-basic"/>
   </mime-type>
 </mime-info>

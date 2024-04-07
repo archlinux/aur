@@ -1,84 +1,77 @@
-# Maintainer: Martin Rys <rys.pw/contact>
+# Maintainer: Martin Rys <rys.rs/contact>
 
 # Previous maintainers:
 #   Brian Li <brian14708@gmail.com>
 #   Denys Zariaiev <denys.zariaiev@gmail.com>
 
 pkgname=chitubox-free-bin
-pkgver=1.9.5
+pkgver=2.0.0
+RUNFILE='CHITUBOX_Basic_Linux_Installer_V2.0.run'
 
 pkgrel=1
-pkgdesc="All-in-one SLA/DLP/LCD Slicer"
+pkgdesc='All-in-one SLA/DLP/LCD Slicer'
 
 makedepends=(
-	'xdg-user-dirs'
-	'icoutils')
+	'dbus'
+	'fontconfig'
+	'freetype2'
+	'icoutils'
+	'libx11'
+	'libxkbcommon-x11'
+	'xcb-util-keysyms'
+	'xcb-util-image'
+	'xcb-util-renderutil'
+	'xcb-util-wm'
+)
 
-url="https://www.chitubox.com/download.html"
-arch=("x86_64")
-license=("Commercial")
-
-DOWNLOADS_DIR=$(xdg-user-dir DOWNLOAD)
-ARCHIVE_NAME="CHITUBOX_V${pkgver}.tar.gz"
-DIR_NAME="CHITUBOX V${pkgver}"
-
-if [ ! -f ${PWD}/$ARCHIVE_NAME ]; then
-	if [ -f $DOWNLOADS_DIR/$ARCHIVE_NAME ]; then
-		ln -sfn $DOWNLOADS_DIR/$ARCHIVE_NAME ${PWD}
-	else
-		msg2 ""
-		msg2 "Please download the archive with ChiTuBox binaries v${pkgver} from https://www.chitubox.com/download.html"
-		msg2 "You can either place it at '${PWD}/$ARCHIVE_NAME' or '$DOWNLOADS_DIR/$ARCHIVE_NAME'"
-		msg2 ""
-	fi
-fi
+url='https://www.chitubox.com/download.html'
+arch=('x86_64')
+license=('LicenseRef-CHITUBOX')
 
 options=(!strip)
 
 source=(
-	"local://$ARCHIVE_NAME"
-	"local://chitubox-free.desktop"
-	"local://launcher"
-	"local://chitubox-free.xml"
+	"$pkgname-$pkgver.tar.gz::https://sac.chitubox.com/software/download.do?softwareId=17839&softwareVersionId=v${pkgver}&fileName=CHITUBOX_V${pkgver}.tar.gz"
+	'local://chitubox-basic.desktop'
+	'local://launcher'
+	'local://chitubox-basic.xml'
 )
 
-sha256sums=(
-	'98d10c7eecd148a068e6d1884d6af083af1c68bc7c663cfe09a4a76eddf9362b'
-	'ef455760a0ed63b4f695fd5d999a338e6192e6fa9d4571791397cd5884c62c9f'
-	'1144e0420568f0745aa6392d42c0fe0f496d18fb26e28c636bae45615180ec4e'
-	'8bd846e6e12e293c8fe9a9c78e59658397dd078e1d697d72cda339ccd6ba06b2'
-)
-
-noextract=("$ARCHIVE_NAME")
-
-prepare() {
-  mkdir "$DIR_NAME"
-  bsdtar -x -C "$DIR_NAME" -f "${ARCHIVE_NAME}"
-	# Extract the included Windows ICO file into PNGs for each size
-	icotool --extract "${DIR_NAME}/resource/ico/freeIcon.ico" --output "${DIR_NAME}/.."
-}
+sha256sums=('0231fd7183342c6ca5395bd738935bb10abb46c1704e2b13aaf3f73ca9ce7b75'
+            '71dfcfa7d2e99e7aea135ec9495eec8a7507863d92ca4bed0b479cede033e04d'
+            'a3ac4d1b712ccf4c211245f0b51f51da4d985afbb22cdac4687fffe3427b73c5'
+            'fede9c1383063dbfade24289c1adeda505f2333b1206865a6696f0a9f6c7390b')
 
 package()
 {
+	INSTALL_ROOT="${srcdir}/opt/chitubox-basic"
+	OPT_DIR="${pkgdir}/opt"
+	APP_DIR="${OPT_DIR}/chitubox-basic"
+
+	# Run installer, which unfortunately doesn't run without root privileges. So it's not possible to put the install in build().
+	"${srcdir}/${RUNFILE}" --root "${INSTALL_ROOT}" --accept-licenses --no-size-checking --accept-messages --confirm-command install
+
+	# Clean up
+	rm "${INSTALL_ROOT}/Uninstall"* "${INSTALL_ROOT}/InstallationLog.txt"
+
+	# Install License
+	install -Dm644 "${INSTALL_ROOT}/Licenses/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
 	# binary data
 	install -d "$pkgdir"/opt
-	mv "${srcdir}/$DIR_NAME" "${pkgdir}/opt/chitubox-free"
+	mv "${INSTALL_ROOT}" "${OPT_DIR}/"
 
 	# launcher
 	install -d "$pkgdir"/usr/bin
-	install -Dm755 launcher "$pkgdir"/usr/bin/chitubox-free
+	install -Dm755 launcher "$pkgdir"/usr/bin/chitubox-basic
 
 	# desktop file
-	install -Dm644 chitubox-free.desktop "$pkgdir"/usr/share/applications/chitubox-free.desktop
+	install -Dm644 chitubox-basic.desktop "$pkgdir"/usr/share/applications/chitubox-basic.desktop
 
-	# icons
-	install -Dm644 freeIcon_4_16x16x8.png    "$pkgdir"/usr/share/icons/hicolor/16x16/apps/chitubox-free.png
-	install -Dm644 freeIcon_3_24x24x8.png    "$pkgdir"/usr/share/icons/hicolor/24x24/apps/chitubox-free.png
-	install -Dm644 freeIcon_2_32x32x8.png    "$pkgdir"/usr/share/icons/hicolor/32x32/apps/chitubox-free.png
-	install -Dm644 freeIcon_1_48x48x8.png    "$pkgdir"/usr/share/icons/hicolor/48x48/apps/chitubox-free.png
-	install -Dm644 freeIcon_6_64x64x32.png   "$pkgdir"/usr/share/icons/hicolor/64x64/apps/chitubox-free.png
-	install -Dm644 freeIcon_5_128x128x32.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/chitubox-free.png
+	# Extract the included Windows ICO file into PNG(s)
+	icotool --extract "${APP_DIR}/bin/Resources/Image/SoftwareIcon/freeIcon.ico" --output .
+	install -Dm644 freeIcon_1_256x256x32.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/chitubox-basic.png"
 
 	# mime/associations - see https://manual.chitubox.com/user-manual-pro/requirements/
-	install -Dm644 chitubox-free.xml "$pkgdir"/usr/share/mime/packages/chitubox-free.xml
+	install -Dm644 chitubox-basic.xml "$pkgdir"/usr/share/mime/packages/chitubox-basic.xml
 }

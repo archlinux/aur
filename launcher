@@ -1,3 +1,3 @@
-#!/bin/sh
-export LD_LIBRARY_PATH=/opt/chitubox-free/lib
-exec /opt/chitubox-free/CHITUBOX "${1}"
+#!/usr/bin/env bash
+#export LD_LIBRARY_PATH=/opt/chitubox-basic/lib
+exec /opt/chitubox-basic/CHITUBOX_Basic.sh "${1}"
