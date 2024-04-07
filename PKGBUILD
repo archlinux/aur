@@ -1,7 +1,7 @@
 # Patched package:
 # Maintainer: Térence Clastres <t.clastres@gmail.com>
 # Co-maintainer: Saren Arterius <saren@wtako.net>
-# Co-maintainer: Mingi Sung <fiestalake@disroot.org>
+# Co-maintainer: Mingi Sung <me@saltyming.pe.kr>
 
 # Official package:
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
