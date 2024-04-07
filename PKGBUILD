@@ -1,9 +1,8 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
-_name=pytest-helpers-namespace
 pkgname=python-pytest-helpers-namespace
+_name="${pkgname#python-}"
 pkgver=2021.12.29
-_commit=f5c519bfd65815cef78ea31fca390e662801b617  # refs/tags/v2021.12.29^{}
 pkgrel=3
 pkgdesc="PyTest Helpers Namespace"
 arch=(any)
@@ -24,8 +23,8 @@ makedepends=(
   python-wheel
 )
 checkdepends=(python-pytest)
-source=(git+$url#commit=$_commit?signed)
-sha512sums=('SKIP')
+source=(git+$url?signed#tag=v$pkgver)
+sha512sums=('aa693512ab60cd57f06631f931d5907a6088b74905f1f27977883ea9879e746fdaae683affc54fdc2d84102dbe6dafb390a892d879c80575566abbc6fcd9d24b')
 validpgpkeys=('D2908FB3A823B0FAB3BD21F5BB36BF6584A298FF') # Pedro Algarvio (s0undt3ch) <pedro@algarvio.me>
 
 build() {
