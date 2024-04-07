@@ -1,7 +1,7 @@
 pkgbase = wowup-cf
 	pkgdesc = WowUp client with CurseForge support
 	pkgver = 2.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WowUp/WowUp.CF
 	arch = x86_64
 	license = GPL3

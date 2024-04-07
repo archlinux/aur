@@ -3,7 +3,7 @@
 pkgname=wowup-cf
 _appname=WowUp.CF
 pkgver=2.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='WowUp client with CurseForge support'
 arch=(x86_64)
 url='https://github.com/WowUp/WowUp.CF'
@@ -36,18 +36,13 @@ source=(
 )
 sha256sums=('95fb48052b7f0ff400ba94771cec3dc7453877f990cdc2ebb2f8cbc863e27aa6')
 
-prepare() {
-	cd $_appname-$pkgver/wowup-electron
-	# Insert 'electron:build:pacman' build option
-	sed '34a\    \"electron:build:pacman\": \"npm run build:prod && electron-builder build -l pacman\",' -i package.json
-}
-
 build() {
 	cd $_appname-$pkgver/wowup-electron
 	# Install all dependencies
-	npm i --cache ../npm-cache webpack@5.91.0
+	npm i --cache ../npm-cache
 	# Build
-	npm run electron:build:pacman
+	npm run build -- -c production
+	npm exec electron-builder -- -l pacman
 	# Unpack compressed pacman file
 	mkdir -p release/pacman
 	bsdtar -xf release/$pkgname-$pkgver.pacman -C release/pacman
@@ -66,4 +61,3 @@ package() {
 	# Install license
 	install -vDm644 $_appname-$pkgver/wowup-electron/LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-
