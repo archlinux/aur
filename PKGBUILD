@@ -4,42 +4,63 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgbase=gdm-prime
-pkgname=(gdm-prime libgdm-prime)
-pkgver=45.0.1
+pkgname=(
+  gdm-prime
+  libgdm-prime
+)
+pkgver=46.0
 pkgrel=1
 pkgdesc="Display manager and login screen - patched with Prime support for Optimus laptops"
 url="https://wiki.gnome.org/Projects/GDM"
 arch=(x86_64)
-license=(GPL)
+license=(GPL-2.0-or-later)
 depends=(
+  accountsservice
+  audit
+  bash
+  gcc-libs
+  gdk-pixbuf2
+  glib2
+  glibc
   gnome-session
   gnome-shell
+  gtk3
+  json-glib
+  keyutils
   libcanberra
+  libgudev
+  libx11
+  libxau
+  libxcb
   libxdmcp
+  pam
   systemd
+  systemd-libs
   upower
   xorg-server
   xorg-xhost
   xorg-xrdb
 )
 makedepends=(
+  dconf
   docbook-xsl
   git
   gobject-introspection
   meson
   plymouth
+  python-packaging
   yelp-tools
 )
 checkdepends=(check)
-_commit=ef5620737de697d215f655722617e49f4a9a448e  # tags/45.0.1^0
+_commit=a5b591cd8d1db5c5d1ebe67d10ec3fe57b9bbded  # tags/46.0^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gdm.git#commit=$_commit"
   0001-Xsession-Don-t-start-ssh-agent-by-default.patch
   0002-nvidia-prime.patch
 )
-md5sums=('SKIP'
-         '48c7fb3c79183ae55b4dcb25cf75204e'
-         '7776ab2a539af7ce44cb3ae04669ffa1')
+b2sums=('23f2346014a2c7f39fb53627e1531d74eeb7636027e2192d8be72a1a553126796b0445b0c02691ee104835e333275881be77883b80252f9e0bc13a37a152fe6b'
+        'f7e868fdd7cc121433de1572583eb728f4d186cd4f52c6d6c8f2ccf4a3cf781144ff71f704f13571ddb97a1ff4ec55cfa3df25d38737ad19da21e84ddc2d3ee4'
+        'b02edd38bb178b457379717633f935f18bea153470905d34675a587c807a4c0de79e48cc82c53ec5a139d667f57c13e652ea6d9cb3a7fcd05bdd59b9cf715b45')
 
 pkgver() {
   cd gdm
@@ -89,9 +110,17 @@ package_gdm-prime() {
   conflicts=(gdm)
   depends+=(libgdm)
   optdepends=('fprintd: fingerprint authentication')
-  backup=(etc/pam.d/gdm-autologin etc/pam.d/gdm-fingerprint etc/pam.d/gdm-launch-environment
-          etc/pam.d/gdm-password etc/pam.d/gdm-smartcard etc/gdm/custom.conf
-          etc/gdm/Xsession etc/gdm/PostSession/Default etc/gdm/PreSession/Default)
+  backup=(
+    etc/gdm/PostSession/Default
+    etc/gdm/PreSession/Default
+    etc/gdm/Xsession
+    etc/gdm/custom.conf
+    etc/pam.d/gdm-autologin
+    etc/pam.d/gdm-fingerprint
+    etc/pam.d/gdm-launch-environment
+    etc/pam.d/gdm-password
+    etc/pam.d/gdm-smartcard
+  )
   groups=(gnome)
   install=gdm-prime.install
 
@@ -134,9 +163,19 @@ END
 
 package_libgdm-prime() {
   pkgdesc+=" - support library"
-  depends=(libsystemd.so libg{lib,object,io}-2.0.so)
+  depends=(
+    dconf
+    gcc-libs
+    glib2
+    glibc
+    libg{lib,object,io}-2.0.so
+    libsystemd.so
+    systemd-libs
+  )
   provides=(libgdm.so libgdm)
   conflicts=(libgdm)
 
   mv libgdm/* "$pkgdir"
 }
+
+# vim:set sw=2 sts=-1 et:
