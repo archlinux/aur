@@ -2,7 +2,7 @@
 # Contributer: David Mazieres (http://www.scs.stanford.edu/~dm/addr/)
 
 _pkgname="droidcam-obs-plugin"
-pkgname="${_pkgname}-ffmpeg5-bin"
+pkgname="${_pkgname}-bin"
 pkgver="2.3.2"
 pkgrel="1"
 pkgdesc="Plugin for DroidCam OBS"
