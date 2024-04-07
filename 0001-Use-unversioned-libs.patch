@@ -1,0 +1,39 @@
+--- a/Makefile
++++ b/Makefile
+@@ -76,7 +76,7 @@
+ 	SHARED_EXT_VER = $(SHARED_EXT).$(LIBVER)
+ endif
+ 
+-LIBXXH = libxxhash.$(SHARED_EXT_VER)
++LIBXXH = libxxhash.$(SHARED_EXT)
+ 
+ XXHSUM_SRC_DIR = cli
+ XXHSUM_SPLIT_SRCS = $(XXHSUM_SRC_DIR)/xxhsum.c \
+@@ -147,9 +147,7 @@
+ $(LIBXXH): xxh_x86dispatch.c
+ endif
+ $(LIBXXH): xxhash.c
+-	$(CC) $(FLAGS) $^ $(LDFLAGS) $(SONAME_FLAGS) -o $@
+-	ln -sf $@ libxxhash.$(SHARED_EXT_MAJOR)
+-	ln -sf $@ libxxhash.$(SHARED_EXT)
++	$(CC) $(FLAGS) $^ $(LDFLAGS) -o $@
+ 
+ .PHONY: libxxhash
+ libxxhash:  ## generate dynamic xxhash library
+@@ -581,8 +579,6 @@
+ 	@echo Installing libxxhash
+ 	$(Q)$(INSTALL_DIR) $(DESTDIR)$(LIBDIR)
+ 	$(Q)$(INSTALL_PROGRAM) $(LIBXXH) $(DESTDIR)$(LIBDIR)
+-	$(Q)ln -sf $(LIBXXH) $(DESTDIR)$(LIBDIR)/libxxhash.$(SHARED_EXT_MAJOR)
+-	$(Q)ln -sf $(LIBXXH) $(DESTDIR)$(LIBDIR)/libxxhash.$(SHARED_EXT)
+ 
+ install_libxxhash.includes:
+ 	$(Q)$(INSTALL) -d -m 755 $(DESTDIR)$(INCLUDEDIR)   # includes
+@@ -621,7 +617,6 @@
+ uninstall:  ## uninstall libraries, CLI, links and man page
+ 	$(Q)$(RM) $(DESTDIR)$(LIBDIR)/libxxhash.a
+ 	$(Q)$(RM) $(DESTDIR)$(LIBDIR)/libxxhash.$(SHARED_EXT)
+-	$(Q)$(RM) $(DESTDIR)$(LIBDIR)/libxxhash.$(SHARED_EXT_MAJOR)
+ 	$(Q)$(RM) $(DESTDIR)$(LIBDIR)/$(LIBXXH)
+ 	$(Q)$(RM) $(DESTDIR)$(INCLUDEDIR)/xxhash.h
+ 	$(Q)$(RM) $(DESTDIR)$(INCLUDEDIR)/xxh3.h
