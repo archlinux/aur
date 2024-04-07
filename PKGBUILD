@@ -3,9 +3,9 @@
 pkgname=(
     lib32-gupnp
 )
-pkgver=1.6.5
+pkgver=1.6.6
 pkgrel=1
-pkgdesc="An object-oriented UPNP framework (32-bit)"
+pkgdesc="GObject-based UPNP framework (32-bit)"
 arch=(x86_64)
 url="https://wiki.gnome.org/Projects/GUPnP"
 license=(LGPL)
@@ -19,7 +19,7 @@ makedepends=(
     meson
     vala
 )
-_commit=04fc6512bcf26a405ede293592bd69c733f3191b  # tags/gupnp-1.6.5^0
+_commit=78db66f6af9879b93db8eb6452acb24a1aaac71c  # tags/gupnp-1.6.6^0
 source=("git+https://gitlab.gnome.org/GNOME/gupnp.git#commit=$_commit")
 sha256sums=('SKIP')
 
