@@ -1,8 +1,8 @@
 # Maintainer: AndyRTR <andyrtr@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
-pkgbase=xorg-server-bug865
-pkgname=xorg-server-bug865
+pkgbase=xorg-server-bug865-bug1578
+pkgname=xorg-server-bug865-bug1578
 
 pkgver=21.1.12
 pkgrel=1
@@ -48,6 +48,9 @@ prepare() {
 
   # The patch for freedesktop bug 865
   patch -Np1 -i "${srcdir}/freedesktop-bug-865.patch"
+
+  # Workaround for freedesktop bug 1578
+  sed -i '/total = delta;/i\    delta *= 1.9;'  dix/getevents.c
 }
 
 build() {
@@ -93,8 +96,8 @@ _install() {
     rm -rf "${src}"
   done
 }
-package_xorg-server-bug865() {
-  pkgdesc="Xorg X server with the patch for freedesktop bug 865 (need to kick hotkeys on release, not press)"
+package_xorg-server-bug865-bug1578() {
+  pkgdesc="Xorg X server with the patch for freedesktop bug 865 (need to kick hotkeys on release, not press) and bug 1578"
   depends=(libepoxy libxfont2 pixman xorg-server-common libunwind
            dbus libgl xf86-input-libinput nettle
            libxdmcp sh glibc libxau systemd-libs libtirpc
