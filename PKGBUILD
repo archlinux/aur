@@ -3,13 +3,14 @@
 
 pkgname=stabilitymatrix
 pkgver=2.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-Platform Package Manager for Stable Diffusion'
-arch=('x86_64')
+arch=('any')
 url='https://github.com/LykosAI/StabilityMatrix'
-license=(AGPL3)
+license=('AGPL3')
+depends=('libxcrypt-compat')
 makedepends=('dotnet-sdk')
-options=()
+options=('!strip')
 source=(
     'zone.lykos.stabilitymatrix.png'
     'zone.lykos.stabilitymatrix.desktop'
@@ -34,6 +35,9 @@ build() {
 package() {
     mkdir -p "$pkgdir/opt"
     mv "$srcdir/StabilityMatrix/out" "${pkgdir}/opt/$pkgname"
+
+    # Make a Data directory so that choosing portable mode doesn't error.
+    mkdir -m777 "$pkgdir/opt/$pkgname/Data" 
 
     # Desktop file and icon
     install -Dm644 "zone.lykos.stabilitymatrix.desktop" "${pkgdir}/usr/share/applications/zone.lykos.stabilitymatrix.desktop"
