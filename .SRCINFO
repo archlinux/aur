@@ -1,6 +1,6 @@
 pkgbase = fava-portfolio-returns-git
 	pkgdesc = Show portfolio returns in Fava
-	pkgver = r34.796f680
+	pkgver = r42.de68b54
 	pkgrel = 1
 	url = https://github.com/andreasgerstmayr/fava-portfolio-returns
 	arch = any
@@ -14,6 +14,8 @@ pkgbase = fava-portfolio-returns-git
 	makedepends = python-wheel
 	depends = fava
 	depends = beangrow
+	depends = python-scipy
+	depends = python-matplotlib
 	options = !strip
 	source = git+https://github.com/andreasgerstmayr/fava-portfolio-returns
 	b2sums = SKIP

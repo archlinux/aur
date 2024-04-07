@@ -1,14 +1,16 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="fava-portfolio-returns-git"
-pkgver=r34.796f680
+pkgver=r42.de68b54
 pkgrel=1
 pkgdesc="Show portfolio returns in Fava"
 url="https://github.com/andreasgerstmayr/fava-portfolio-returns"
 license=("GPL3")
 arch=("any")
 depends=(    "fava"
-             "beangrow")
+             "beangrow"
+             "python-scipy"
+             "python-matplotlib")
 makedepends=("npm"
              "esbuild"
              "git"
