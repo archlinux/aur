@@ -1,7 +1,7 @@
 pkgbase = llm-cublas-git
 	pkgdesc = An ecosystem of Rust libraries for working with large language models (with cuBLAS)
 	pkgver = 0.1.1.r592.g9376078
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rustformers/llm
 	arch = any
 	license = Apache-2.0 OR MIT
