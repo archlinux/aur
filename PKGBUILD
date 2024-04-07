@@ -3,13 +3,13 @@
 # Contributor: David Roheim <david dot roheim at gmail dot com>
 
 pkgname='trafficserver'
-pkgver=9.2.3
+pkgver=9.2.4
 pkgrel=1
 pkgdesc="Apache Traffic Server"
 url="http://trafficserver.apache.org/"
 license=('Apache')
 arch=('i686' 'x86_64')
-depends=('hwloc' 'curl' 'libunwind' 'pcre' 'geoip' 'luajit' 'perl' 'brotli')
+depends=('hwloc' 'curl' 'libunwind' 'pcre' 'geoip' 'luajit' 'perl' 'brotli' 'libmaxminddb')
 makedepends=('flex' 'python-sphinx')
 
 # Temporary check disable
@@ -23,7 +23,7 @@ source=(
     trafficserver.lib_perl_Makefile.in.patch
     trafficserver.src_tscore_unit_tests.patch)
 
-sha256sums=('49686bf788f48f24f9db3454125856564a847cdc4520cde43dcdd5fed105fbf4'
+sha256sums=('fd4601677817de55d841376bb2deecf731f1adf317387148cf9a02f11375b7e4'
             '8c9dbabfe7a8e0ecf9f3edb3673d1ff0cd63bf79551389047a723479b8d21fac'
             'a4e6a00dea61aa3f98413f092711afb90795ef35676f6a8e3970f4163d360202'
             'fc0b437ef9f9c56ceaaa99eea7075abe15200ff540cfc505e42b0a8f762128b1'
