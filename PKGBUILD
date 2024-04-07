@@ -57,7 +57,7 @@ prepare() {
 		sysbox/sysbox-ipc/sysboxFsGrpc/sysboxFsProtobuf/Makefile \
 		sysbox/sysbox-ipc/sysboxMgrGrpc/sysboxMgrProtobuf/Makefile
 
-       patch -d sysbox -Np1 -i "$srcdir/Honor-SOURCE_DATE_EPOCH-for-reproducible-builds.patch"
+	patch -d sysbox -Np1 -i "$srcdir/Honor-SOURCE_DATE_EPOCH-for-reproducible-builds.patch"
 }
 
 build() {
