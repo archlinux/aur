@@ -1,0 +1,20 @@
+pkgbase = android-aarch64-dav1d
+	pkgdesc = AV1 cross-platform decoder focused on speed and correctness (Android aarch64)
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://code.videolan.org/videolan/dav1d/
+	arch = any
+	license = BSD
+	makedepends = android-meson
+	makedepends = ninja
+	makedepends = nasm
+	makedepends = android-aarch64-xxhash
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://downloads.videolan.org/pub/videolan/dav1d/1.4.1/dav1d-1.4.1.tar.xz
+	md5sums = 6b64d8e5360aab640cd7344c8dc0822f
+
+pkgname = android-aarch64-dav1d
