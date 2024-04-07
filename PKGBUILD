@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=hwatch-git
-pkgver=0.3.10.r0.g1267168
+pkgver=0.3.12.r1.g5dc06a5
 pkgrel=1
 pkgdesc="A modern alternative to the watch command (git)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
