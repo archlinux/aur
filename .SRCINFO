@@ -1,19 +1,23 @@
 pkgbase = corekeyboard-git
 	pkgdesc = A x11 based virtual keyboard from the CoreApps family.
-	pkgver = 2.8.0.r11.47dec4f
+	pkgver = 4.5.0.r2.g18e755d
 	pkgrel = 1
-	url = https://gitlab.com/cubocore
-	arch = any
+	url = https://gitlab.com/cubocore/coreapps/corekeyboard
+	arch = x86_64
+	arch = aarch64
 	groups = coreapps-git
 	license = GPL3
 	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt5-base
 	depends = libcprime-git
 	depends = qt5-x11extras
 	depends = libxtst
+	depends = libx11
 	provides = corekeyboard
 	conflicts = corekeyboard
-	source = git+https://gitlab.com/cubocore/corekeyboard.git
+	source = git+https://gitlab.com/cubocore/coreapps/corekeyboard.git
 	md5sums = SKIP
 
 pkgname = corekeyboard-git
-

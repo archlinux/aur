@@ -1,31 +1,39 @@
 _pkgname=corekeyboard
 pkgname=${_pkgname}-git
-pkgver=2.8.0.r11.47dec4f
+pkgver=4.5.0.r2.g18e755d
 pkgrel=1
 pkgdesc="A x11 based virtual keyboard from the CoreApps family."
-arch=('any')
-url="https://gitlab.com/cubocore"
+arch=('x86_64' 'aarch64')
+url="https://gitlab.com/cubocore/coreapps/$_pkgname"
 license=('GPL3')
-depends=('libcprime-git' 'qt5-x11extras' 'libxtst')
-makedepends=('git')
+depends=('qt5-base' 'libcprime-git' 'qt5-x11extras' 'libxtst' 'libx11')
+makedepends=('git' 'cmake' 'ninja')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 groups=('coreapps-git')
-source=("git+https://gitlab.com/cubocore/${_pkgname}.git")
+source=("git+https://gitlab.com/cubocore/coreapps/corekeyboard.git")
 md5sums=('SKIP')
 
+
 pkgver() {
-	cd "$srcdir/${_pkgname}"
-	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+  cd ${_pkgname}
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  mkdir -p build
 }
 
 build() {
-	cd "$srcdir/${_pkgname}"
-	qmake-qt5 ${_pkgname}.pro
-	make
+  cd build
+  cmake ../${_pkgname} \
+    -GNinja \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib
+  ninja
 }
 
 package() {
-	cd "$srcdir/${_pkgname}"
-	make INSTALL_ROOT=${pkgdir} install
+  cd build
+  DESTDIR="${pkgdir}" ninja install
 }
