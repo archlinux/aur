@@ -1,0 +1,18 @@
+pkgbase = meson++-git
+	pkgdesc = an experimental and incomplete implementation of Meson in C++, for solving Meson's bootstrapping issue
+	pkgver = r582.3f30fd9
+	pkgrel = 1
+	url = https://github.com/dcbaker/meson-plus-plus
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	provides = meson++
+	conflicts = meson++
+	source = git+https://github.com/dcbaker/meson-plus-plus#tag=3f30fd9bfe54d7e074a273cbd680dce67cabe4eb
+	sha256sums = SKIP
+
+pkgname = meson++-git
