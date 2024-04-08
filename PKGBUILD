@@ -1,8 +1,8 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname='warp-plus-git'
-pkgver=1.1.0.r0.cdb551a
+pkgver=1.1.3.r1.69977d9
 pkgrel=1
-pkgdesc="An open-source implementation of Cloudflare's Warp, enhanced with Psiphon integration."
+pkgdesc="An open-source implementation of Cloudflare's Warp, enhanced with Psiphon integration (GitHub Version)."
 arch=('x86_64')
 url="https://github.com/bepass-org/warp-plus"
 license=('MIT')
