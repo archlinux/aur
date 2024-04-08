@@ -1,16 +1,16 @@
 pkgbase = neosync-bin
 	pkgdesc = CLI for interfacing with Neosync
-	pkgver = 0.4.5
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://neosync.dev
 	license = MIT
 	conflicts = neosync
 	provides = neosync
 	arch = aarch64
-	source_aarch64 = https://github.com/nucleuscloud/neosync/releases/download/v0.4.5/neosync_0.4.5_linux_arm64.tar.gz
-	sha256sums_aarch64 = 59fd0d60d2a14ce52c998e68430fbc5efcc51b7bb407f627a9ca3652a9d73343
+	source_aarch64 = https://github.com/nucleuscloud/neosync/releases/download/v0.4.6/neosync_0.4.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3a374bd61d40992b8970d7642529dac8ad8d00a2c5cf888703652524af3b3a79
 	arch = x86_64
-	source_x86_64 = https://github.com/nucleuscloud/neosync/releases/download/v0.4.5/neosync_0.4.5_linux_amd64.tar.gz
-	sha256sums_x86_64 = 18e08598d620a47ae0001e3729c4760e41beff566fd7e35908909fec56a935d5
+	source_x86_64 = https://github.com/nucleuscloud/neosync/releases/download/v0.4.6/neosync_0.4.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = 47e098233e8d6cb544089356565c091391b0355140dee02e0521ec48e17bca84
 	
 pkgname = neosync-bin
