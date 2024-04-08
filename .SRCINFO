@@ -1,15 +1,15 @@
 pkgbase = r-genarise
 	pkgdesc = Microarray Analysis tool
 	pkgver = 1.78.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/genArise
 	arch = any
-	license = custom
-	depends = r
+	license = LicenseRef-genArise
 	depends = r-locfit
 	depends = r-tkrplot
 	depends = r-xtable
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/genArise_1.78.0.tar.gz
-	sha256sums = e095e1c32a8eac4d36e7a5387e86b03a23d65e24234967e3f72387ec9a7e6199
+	md5sums = d81489147ccfe688c07c228b7fcfcf7d
+	b2sums = 95a674942bf301f6b4e8c227ac25d7810eec88e497448aa0b852d3701136b1ac4c05f590b6bb7082fef11186bca9536bcd7665ca826b66c703ba46ce2fd654d4
 
 pkgname = r-genarise
