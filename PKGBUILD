@@ -10,7 +10,7 @@ pkgdesc="Access the Mediathek of many German TV stations (store data in XDG_DATA
 arch=(any)
 url="https://github.com/mediathekview/mediathekview"
 license=(GPL-3.0-or-later)
-_java_version=${JAVA_VERSION:-21}
+_java_version=${JAVA_VERSION:-22}
 depends=(
   bash
   hicolor-icon-theme
