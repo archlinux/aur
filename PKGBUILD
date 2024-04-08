@@ -66,7 +66,6 @@ build() {
     ninja -C build
 }
 
-
 package() {
     cd "$srcdir/wayfire"
     DESTDIR="$pkgdir/" ninja -C build install
