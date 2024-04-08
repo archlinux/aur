@@ -1,7 +1,7 @@
 pkgbase = rainfall
-	pkgdesc = A rainfall animation for CLI / unix terminals written in python.
+	pkgdesc = A rain animation for your terminal.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alpin111/rainfall
 	arch = any
 	license = MIT
