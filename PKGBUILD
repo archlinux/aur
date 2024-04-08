@@ -2,8 +2,8 @@
 
 pkgname=redlib-git
 _pkgname=${pkgname%-git}
-pkgver=v0.29.4.r207.2291095
-pkgrel=2
+pkgver=v0.29.4.r227.27f25e0
+pkgrel=1
 pkgdesc="Private front-end for Reddit"
 url='https://github.com/redlib-org/redlib'
 license=(AGPL-3.0)
@@ -28,7 +28,7 @@ pkgver() {
 prepare() {
 	cd $pkgname
 	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
