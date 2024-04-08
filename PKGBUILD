@@ -2,12 +2,12 @@
 
 pkgname=python-clint
 pkgver=0.5.1
-pkgrel=12
+pkgrel=13
 pkgdesc='Module for developing command line applications'
 arch=('any')
 url='https://pypi.python.org/pypi/clint/'
 license=('custom:ISC')
-depends=('python')
+depends=('python' 'python-setuptools')
 source=("https://pypi.python.org/packages/source/c/clint/clint-$pkgver.tar.gz")
 sha256sums=('05224c32b1075563d0b16d0015faaf9da43aa214e4a2140e51f08789e7a4c5aa')
 

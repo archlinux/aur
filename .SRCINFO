@@ -1,0 +1,13 @@
+pkgbase = python-clint
+	pkgdesc = Module for developing command line applications
+	pkgver = 0.5.1
+	pkgrel = 13
+	url = https://pypi.python.org/pypi/clint/
+	arch = any
+	license = custom:ISC
+	depends = python
+	depends = python-setuptools
+	source = https://pypi.python.org/packages/source/c/clint/clint-0.5.1.tar.gz
+	sha256sums = 05224c32b1075563d0b16d0015faaf9da43aa214e4a2140e51f08789e7a4c5aa
+
+pkgname = python-clint
