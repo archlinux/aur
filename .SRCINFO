@@ -10,6 +10,6 @@ pkgbase = polkit-explorer-git
 	provides = polkit-explorer
 	conflicts = polkit-explorer
 	source = git+https://github.com/scarygliders/polkit-explorer.git
-	sha256sums = SKIP
+	sha512sums = SKIP
 
 pkgname = polkit-explorer-git

@@ -12,7 +12,7 @@ depends=('python-pyqt5' 'python-lxml')
 conflicts=('polkit-explorer')
 provides=('polkit-explorer')
 source=("git+${url}.git")
-sha256sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname%-git}"
