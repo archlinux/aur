@@ -3,16 +3,13 @@
 # shellcheck shell=bash
 # shellcheck disable=SC2034,SC2154
 
-# TODO: Warning Package at path '/build/lix/src/lix-unit-threaded/' should be under '/build/lix/src/lix-unit-threaded/$VERSION/lix-unit-threaded'
-# Warning The package will no longer be detected starting from v1.42.0
-
 pkgname=lix
-pkgver=0.10.19
+pkgver=0.10.21
 pkgrel=1
 changelog=.CHANGELOG
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/SimonN/LixD/archive/v$pkgver.tar.gz"
         "$pkgname-music-1.1.zip::https://www.lixgame.com/dow/lix-music.zip")
-sha512sums=('9be21c7ff96bd1a3c3d623a8e83fbfed156b239387bdc8c55e47b1b7004d9cbb053ff652ec241b1721fe899dd3da21befde2da459ca41c98d8106b66bef1c365'
+sha512sums=('ba0775040000fb28d9c489d78f0b09552780c60e5810bdcffce3ab8efd245eacba6f9d02f88aa4073c1d3396adf99a4482e5cf98646a21b8a538b01a51c750c5'
             '280fd25a479ac8dd24475b014234270a12ab34edca7fb2f7ce4b768259111b1e7626d3ba37ac13d810f0653d23d7c9f212776e94d2c0b31a0de580864771ce9f')
 
 _gitname=LixD
@@ -21,42 +18,22 @@ arch=('i686' 'x86_64')
 url="https://www.lixgame.com/"
 license=('custom:CC0')
 depends=('allegro' 'enet' 'hicolor-icon-theme' 'd-runtime')
-makedepends=('git' 'd-compiler' 'dub')
-_dubv=( "4.0.6+5.2.0"   # allegro
-        "1.3.1"         # bolts
-        "4.2.0"         # derelict-enet
-        "3.0.0-beta.2"  # derelict-util
-        "0.4.2"         # enumap
-        "1.3.0"         # optional
-        "0.10.6"        # sdlang-d
-        "0.11.22"       # taggedalgebraic
-        "0.7.55"        # unit-threaded
-        )
+makedepends=('git' 'd-compiler' 'dub' 'jq')
 
-# let makepkg handle dub packages
-# These have to be git clones, otherwise dub isn't able to pick them up with the correct version later on
-# no git, no version field, assumed ~master
-# https://dub.pm/commandline.html#add-path
-source+=(   "$pkgname-allegro::git+https://github.com/SiegeLord/DAllegro5.git#tag=v${_dubv[0]}"
-            "$pkgname-bolts::git+https://github.com/aliak00/bolts.git#tag=v${_dubv[1]}"
-            "$pkgname-derelict-enet::git+https://github.com/DerelictOrg/DerelictENet.git#tag=v${_dubv[2]}"
-            "$pkgname-derelict-util::git+https://github.com/DerelictOrg/DerelictUtil.git#tag=v${_dubv[3]}"
-            "$pkgname-enumap::git+https://github.com/rcorre/enumap.git#tag=v${_dubv[4]}"
-            "$pkgname-optional::git+https://github.com/aliak00/optional.git#tag=v${_dubv[5]}"
-            "$pkgname-sdlang-d::git+https://github.com/Abscissa/SDLang-D.git#tag=v${_dubv[6]}"
-            "$pkgname-taggedalgebraic::git+https://github.com/s-ludwig/taggedalgebraic.git#tag=v${_dubv[7]}"
-            "$pkgname-unit-threaded::git+https://github.com/atilaneves/unit-threaded.git#tag=v${_dubv[8]}"
-            )
-sha512sums+=(   'SKIP'
-                'SKIP'
-                'SKIP'
-                'SKIP'
-                'SKIP'
-                'SKIP'
-                'SKIP'
-                'SKIP'
-                'SKIP'
-            )
+prepare() {
+    cd "$_gitname-$pkgver" || exit 1
+
+    # Iterate thorugh the required packages and versions to fetch them in advance
+    # Read from dub.selections.json and print them as "package,version"
+    for line in $(jq -r '.versions | keys[] as $k | "\($k),\(.[$k])"' <dub.selections.json); do
+
+        # Split each dependency at the ','
+        IFS=',' read -ra dep <<< "$line"
+
+        # Fetch each package at the required version
+        dub fetch --cache=local "${dep[0]}@${dep[1]}"
+    done
+}
 
 _build() {
     _r=0
@@ -67,10 +44,9 @@ _build() {
     # 15:26 <@SimonN> Yes, very high chance that the following will fix/workaround: Execute "ulimit -s 16384" in the same shell that will then run dub. I.e., we double the stack size, assuming "ulimit -s" printed 8192 before; it does that for me in new shells.
     ulimit -s 16384
 
-    # add local dependencies to search path
-    dub add-path "$srcdir"
-
     dub "$@" \
+        `# Do not resolve missing dependencies before building` \
+            --nodeps \
         `# ensure dub stays outside the users home directory:` \
             --cache=local \
         `# Runs multiple compiler instances in parallel, if possible:` \
@@ -78,22 +54,7 @@ _build() {
         `# Forces a recompilation even if the target is up to date:` \
             --force \
         `# force FHS compatibility:` \
-            --build=releaseXDG \
-        `# Save result code for later when failed:` \
-            || _r="$?"
-
-    # remove local dependencies from search path so dub won't find them
-    # later again
-    dub remove-path "$srcdir"
-
-    # removes any cached metadata like the list of available packages
-    # and their latest version
-    dub clean-caches
-
-    if [[ "$_r" != 0 ]]; then
-        # dub failed so we also fail after we removed the local dependencies
-        return "$_r"
-    fi
+            --build=releaseXDG
 }
 
 build() {

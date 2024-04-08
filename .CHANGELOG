@@ -1,6 +1,55 @@
 Version history
 ===============
 
+0.10.21
+-------
+
+2024-03-08
+
+Added geoo's new singleplayer pack with 106 levels. They're sorted by theme:
+Wrappy puzzles on cylindrical/toroidal maps, flowy puzzles about crowd control,
+classy large-scale strategic puzzles, loony puzzles about physics curiosities,
+and sketchy outtakes.
+
+Added two new miniatures by geoo: Bridges, and Mini Cellar.
+
+During insert mode, change the tooltip "Replaying. Click to play from here."
+to "Insert Mode: Click to insert." (You're in insert mode while the tweaker
+is open, unless you reconfigure this in the options menu.)
+
+
+
+0.10.20
+-------
+
+2024-02-18
+
+New in-game panel button: Rewind your previous skill assignment. You can then
+click air to erase the assignment, or unpause to let it replay. If there are
+no earlier skill assignments, the level restarts from the beginning.
+This button has no default hotkey; you can assign one in the user options.
+
+Rename the options tab "Replay" to "Game Controls". Moved the splat ruler,
+tooltip, builder queuing, and batter priority options into this tab.
+
+Eye of the Needle (lemforum Hopeless): Fix my backroute. Now, the exit platform
+is thin, you can't mine and then platform to turn there. Eye of the Needle
+is also shorter horizontally.
+
+Fix #479: Fix a crash in the editor. The crash required five ingredients:
+You had to run a debugging version of Lix, the map was cylindrical or toroidal,
+you had many tiles on both sides of the the torus seam, you grouped the tiles,
+and you used the editor's undo feature to undo the grouping across the seam.
+
+Fix #481: In the main menu, print the version of the Allegro DLLs
+detected at runtime.
+
+Change the tree structure of internal images: Now each scalable image has a
+directory, which contains the different scalings (1.png, 1.5.png, 2.png, ...)
+of that image.
+
+
+
 0.10.19
 -------
 
