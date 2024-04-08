@@ -3,7 +3,7 @@
 # Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
 
 pkgname=fizz
-pkgver=2024.04.01.00
+pkgver=2024.04.08.00
 pkgrel=1
 pkgdesc="C++14 implementation of the TLS-1.3 standard"
 arch=(x86_64)
@@ -32,7 +32,7 @@ provides=(
   libfizz_test_support.so
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('11c9b83216b0538e3e61a2ae13c1c4e0d6643a587bc56d466b3f3eabb8299008')
+sha256sums=('8bfa1cb24c06bb5c0131f12c0e3529143d82d2e090a0e122c2918395629c4577')
 
 _archive="$pkgname-$pkgver"
 
