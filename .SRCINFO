@@ -1,10 +1,10 @@
 pkgbase = r-genomeinfodb
 	pkgdesc = Utilities for manipulating chromosome names, including modifying them to follow a particular naming style
-	pkgver = 1.38.7
+	pkgver = 1.38.8
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/GenomeInfoDb.html
 	arch = any
-	license = Artistic2.0
+	license = Artistic-2.0
 	depends = r>=4.0.0
 	depends = r-biocgenerics>=0.37.0
 	depends = r-s4vectors>=0.25.12
@@ -16,6 +16,7 @@ pkgbase = r-genomeinfodb
 	optdepends = r-bsgenome.celegans.ucsc.ce2
 	optdepends = r-bsgenome.hsapiens.ncbi.grch38
 	optdepends = r-bsgenome.scerevisiae.ucsc.saccer2
+	optdepends = r-data.table
 	optdepends = r-genomicalignments
 	optdepends = r-genomicfeatures
 	optdepends = r-genomicranges
@@ -23,7 +24,8 @@ pkgbase = r-genomeinfodb
 	optdepends = r-rsamtools
 	optdepends = r-runit
 	optdepends = r-txdb.dmelanogaster.ucsc.dm3.ensgene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomeInfoDb_1.38.7.tar.gz
-	b2sums = 2b015fdde7dacc64987a771ee031410b635cf917bd820abdc3a0d1d08b9fd4a8a6fc800b8e932478dd30e7f3247d910dbacebe741e427a3c38378b10a217edb1
+	optdepends = r-r.utils
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomeInfoDb_1.38.8.tar.gz
+	b2sums = 25fc978b257f74375504a1639fe2a1c15dcbf089134472fe33e1add1399c4f0b80e497ba898816db6fe2846f81186bbeb1e0ea62f8baa9b806f27db1de70d7c6
 
 pkgname = r-genomeinfodb

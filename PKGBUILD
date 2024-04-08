@@ -3,14 +3,14 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=GenomeInfoDb
-_bcver=1.38.7
+_bcver=1.38.8
 pkgname="r-${_bcname,,}"
 pkgver="${_bcver//[:-]/.}"
 pkgrel=1
 pkgdesc="Utilities for manipulating chromosome names, including modifying them to follow a particular naming style"
 arch=("any")
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
-license=("Artistic2.0")
+license=("Artistic-2.0")
 
 depends=(
     "r>=4.0.0"
@@ -26,6 +26,7 @@ optdepends=(
     "r-bsgenome.celegans.ucsc.ce2"
     "r-bsgenome.hsapiens.ncbi.grch38"
     "r-bsgenome.scerevisiae.ucsc.saccer2"
+    "r-data.table"
     "r-genomicalignments"
     "r-genomicfeatures"
     "r-genomicranges"
@@ -33,6 +34,7 @@ optdepends=(
     "r-rsamtools"
     "r-runit"
     "r-txdb.dmelanogaster.ucsc.dm3.ensgene"
+    "r-r.utils"
 )
 
 # The unittests for `r-pkgcache` have circular
@@ -55,7 +57,7 @@ optdepends=(
 # )
 
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=('2b015fdde7dacc64987a771ee031410b635cf917bd820abdc3a0d1d08b9fd4a8a6fc800b8e932478dd30e7f3247d910dbacebe741e427a3c38378b10a217edb1')
+b2sums=("25fc978b257f74375504a1639fe2a1c15dcbf089134472fe33e1add1399c4f0b80e497ba898816db6fe2846f81186bbeb1e0ea62f8baa9b806f27db1de70d7c6")
 
 build() {
     mkdir -p "${srcdir}/build/"
