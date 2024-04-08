@@ -1,139 +1,134 @@
-# SPDX-License-Identifier: AGPL-3.0
-#
-# Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
-# Maintainer: Truocolo <truocolo@aol.com>
-# Contributor: katt <magunasu.b97@gmail.com>
-# Contributor: Fabio Loli <fabio.lolix@disroot.org>
+# Maintainer:
 
-_git="false"
-pkgname=duckstation
-_majver="0.1"
-_rev="6232"
-_pkgver="${_majver}-${_rev}"
-_commit="21bbe5c76cc95b2334585f62746905f8aa3464e2"
-pkgver="${_majver}.r${_rev}"
-_pkgdesc=(
-  "A Sony PlayStation (PSX) emulator,"
-  "focusing on playability, speed, and"
-  "long-term maintainability (stable snapshot)"
-)
+## useful links
+# https://github.com/stenzek/duckstation/tags
+
+## options
+: ${_build_avx:=false}
+: ${_build_git:=false}
+
+unset _pkgtype
+[[ "${_build_avx::1}" == "t" ]] && _pkgtype+="-avx"
+[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
+
+# basic info
+_pkgname="duckstation"
+pkgname="$_pkgname${_pkgtype:-}"
+pkgver=0.1.6461
 pkgrel=1
-arch=(
-  x86_64
-  aarch64
-  i686
-  pentium4
-  arm
-  risv32
-  powerpc
-  armv7h
-)
-_gh="github.com"
-_http="https://${_gh}"
-_ns="stenzek"
-url="${_http}/${_ns}/${pkgname}"
-license=(
-  GPL3
+_pkgdesc="Playstation emulator"
+url="https://github.com/stenzek/duckstation"
+arch=('x86_64')
+license=('GPL-3.0-only')
+
+depends=(
+  'libwebp'
+  'libxrandr'
+  'qt6-base'
+  'sdl2'
+  'shaderc'
+
+  ## implicit
+  #curl
+  #dbus
+  #freetype2
+  #libjpeg.so
+  #libpng
+  #libx11
+  #systemd-libs
+  #zlib
+  #zstd
 )
 makedepends=(
-  alsa-lib
-  cmake
-  extra-cmake-modules
-  gtk3
-  libdrm
-  libpulse
-  ninja
-  qt6-tools
-  sndio
-)
-source=()
-sha256sums=()
-[[  "${_git}" == "true" ]] && \
-  makedepends+=(
-    git
-  ) && \
-  source+=(
-    "${pkgname}-${_pkgver}::git+${url}#commit=${_commit}"
-  ) && \
-  sha256sums+=(
-    SKIP
-  )
-[[ "${_git}" == false ]] && \
-  source+=(
-    "${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz"
-  ) && \
-  sha256sums+=(
-    "c061a7a65575242652cf2224a830b14881274f1569393f84af41de6304874fe2"
-  )
-depends=(
-  sdl2
-  qt6-base
-)
-optdepends=(
-  'psx-bios: PlayStation Bioses'
+  'clang'
+  'cmake'
+  'extra-cmake-modules'
+  'git'
+  'llvm'
+  'mold'
+  'ninja'
+  'qt6-tools'
 )
 
+if [ "${_build_git::1}" != "t" ] ; then
+  _commit=359678a1678137f584760991dd4d45574fdbae12
+
+  _pkgsrc="$_pkgname"
+  source+=("$_pkgsrc"::"git+$url.git#commit=$_commit")
+  sha256sums+=('SKIP')
+
+  _pkgver() {
+    cd "$_pkgsrc"
+    git describe --tag | sed -E 's/^[^0-9]*//;s/-/./g'
+  }
+else
+  provides=("$_pkgname")
+  conflicts=("$_pkgname")
+
+  _pkgsrc="$_pkgname"
+  source+=("$_pkgsrc"::"git+$url.git")
+  sha256sums+=('SKIP')
+
+  pkgver() {
+    cd "$_pkgsrc"
+    local _tag=$(git tag | sed -E '/^.*[A-Za-z]{2}.*$/d' | sort -rV | head -1)
+    local _pkgver=$(sed -E 's/^[^0-9]*//;s/-/./g' <<< "$_tag")
+    local _revision=$(git rev-list --count --cherry-pick $_tag...HEAD)
+    local _commit=$(git rev-parse --short=7 HEAD)
+
+    printf "%s.r%s.g%s" "${_pkgver:?}" "${_revision:?}" "${_commit:?}"
+  }
+fi
+
 build() {
-  local \
-    _cmake_opts=()
-  _cmake_opts=(
+  export CC CXX CFLAGS CXXFLAGS LDFLAGS LTOFLAGS
+  CC="clang"
+  CXX="clang++"
+  LDFLAGS+=" -fuse-ld=mold"
+  LTOFLAGS="-flto=thin"
+
+  if [[ "${_build_avx::1}" == "t" ]] ; then
+    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+  fi
+
+  local _cmake_options=(
     -B build
-    -S "${pkgname}-${_pkgver}"
-    -DBUILD_NOGUI_FRONTEND=ON
-    -DUSE_WAYLAND=ON
+    -S "$_pkgsrc"
     -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DBUILD_NOGUI_FRONTEND=OFF
+    -DBUILD_QT_FRONTEND=ON
     -Wno-dev
   )
-  cmake \
-    "${_cmake_opts[@]}"
-  ninja \
-    -C build
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  local \
-    _pkgdir="${pkgdir}"
-  [[ ! -n "${TERMUX_VERSION}" ]] && \
-    _pkgdir="${terdir}"
-  # Main files
-  install \
-    -m755 \
-    -d "${_pkgdir}/opt"
-  cp \
-    -rv \
-    build/bin \
-    "${_pkgdir}/opt/${pkgname}"
+  install -dm755 "$pkgdir/opt/$_pkgname/"
+  cp --reflink=auto -r build/bin/{resources,translations,duckstation-qt} "$pkgdir/opt/$_pkgname/"
 
-  # Symlink to /usr/bin
-  install \
-    -m755 \
-    -d "${_pkgdir}/usr/bin"
-  ln \
-    -svt \
-    "${_pkgdir}/usr/bin" \
-    "/opt/${pkgname}/${pkgname}"-{qt,nogui}
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/duckstation-qt" <<END
+#!/usr/bin/env bash
+exec /opt/$_pkgname/duckstation-qt "\$@"
+END
 
-  # Desktop file
-  cat > \
-    "${pkgname}-${_pkgver}/data/resources/${pkgname}.desktop" << EOF
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/duckstation-qt.desktop" <<END
 [Desktop Entry]
 Type=Application
 Name=DuckStation
-GenericName=PlayStation 1 Emulator
-Comment=Fast PlayStation 1 emulator
-Icon=duckstation
+GenericName=PlayStation Emulator
+Comment=PlayStation emulator
+Icon=duckstation-qt
 TryExec=duckstation-qt
 Exec=duckstation-qt %f
 Categories=Game;Emulator;Qt;
-EOF
-  install \
-    -Dm644 \
-    "${pkgname}-${_pkgver}/data/resources/${pkgname}.desktop" \
-    "${_pkgdir}/usr/share/applications/${pkgname}-qt.desktop"
-  install \
-    -Dm644 \
-    "${pkgname}-${_pkgver}/data/resources/images/duck.png" \
-    "${_pkgdir}/usr/share/pixmaps/${pkgname}.png"
-}
+END
 
-# vim:set sw=2 sts=-1 et:
+  install -dm755 "$pkgdir/usr/share/pixmaps/"
+  ln "$pkgdir/opt/$_pkgname/resources/images/duck.png" "$pkgdir/usr/share/pixmaps/duckstation-qt.png"
+
+  chmod -R u=rwX,go=rX "$pkgdir/"
+}
