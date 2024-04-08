@@ -3,19 +3,19 @@
 _pkgname=mimic
 _pkgbase=$_pkgname-bpf
 pkgname=($_pkgbase-git $_pkgbase-dkms-git)
-pkgver=0.2.1.r2.2805895
+pkgver=0.3.0.r0.4827a8e
 pkgrel=1
 pkgdesc="eBPF UDP -> TCP obfuscator"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/hack3ric/$_pkgname"
 license=('GPL-2.0-only')
-makedepends=('git' 'clang' 'bpf' 'libbpf' 'json-c')
+makedepends=('git' 'clang' 'bpf' 'libbpf' 'json-c' 'libffi')
 source=("git+https://github.com/hack3ric/$_pkgname#branch=master")
 b2sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  printf "%s" "$(git describe --dirty=-patched --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g' | sed 's/^v//')"
+  printf "%s" "$(git describe --dirty=-patched --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g' | sed 's/^v//')"
 }
 
 prepare() {
@@ -32,7 +32,7 @@ build() {
 }
 
 package_mimic-bpf-git() {
-  depends=('glibc' 'gcc-libs' 'libbpf' 'json-c' $_pkgbase-modules=$pkgver)
+  depends=('glibc' 'gcc-libs' 'libbpf' 'json-c' 'libffi' $_pkgbase-modules=$pkgver)
   provides=($_pkgbase)
   conflicts=($_pkgbase)
 
