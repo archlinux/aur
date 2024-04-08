@@ -3,14 +3,13 @@
 _pkgname=venn
 _pkgver=1.12
 pkgname=r-${_pkgname,,}
-pkgver=1.12
-pkgrel=1
-pkgdesc='Draw Venn Diagrams'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Draw Venn Diagrams"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-or-later')
 depends=(
-  r
   r-admisc
 )
 optdepends=(
@@ -19,14 +18,15 @@ optdepends=(
   r-qca
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ed86b69bd99ceea93352a30699a0baba3fd8cdcde907a9476e92be202ad8721d')
+md5sums=('29b0e3dd951c8626b126705d88f8303a')
+b2sums=('09b3727890b2b2447a076c94e8449e20e39c4cf2eaaf9c8ff9573dd1ede01ae6ea8f10f3a0342910e717bf49b6079329fcf66184c30ea215198d24c514ec9102')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
