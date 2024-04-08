@@ -3,29 +3,30 @@
 _pkgname=snpStats
 _pkgver=1.52.0
 pkgname=r-${_pkgname,,}
-pkgver=1.52.0
-pkgrel=1
-pkgdesc='SnpMatrix and XSnpMatrix classes and methods'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="SnpMatrix and XSnpMatrix classes and methods"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-biocgenerics
   r-zlibbioc
+  zlib
 )
 optdepends=(
   r-hexbin
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d9af4679d0dcb74895b62825902925826b8303a2c674f884b1674b3ad2f69328')
+md5sums=('0625c920470937a31fd278cf8bd8982a')
+b2sums=('2ada9c7f21a9f59558519c9e34328101acd7815e153674a17cb65815471b6ec3570da2daf9f9cf5d4c78fa0c496b350973de312bfdbd223a5180f5ca4e21e2c0')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
