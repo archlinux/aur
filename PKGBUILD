@@ -2,7 +2,7 @@
 
 pkgname=dokku
 pkgver=0.34.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Docker-powered PaaS that helps build and manage the lifecycle of applications'
 arch=('x86_64')
 url='https://github.com/dokku/dokku'
@@ -39,10 +39,10 @@ depends=(
 )
 source=("${url}/archive/v${pkgver}.zip"
         "${pkgname}.install"
-        "LICENSE")
+        "scheduler-docker-local.patch")
 sha256sums=('41c38226d13234ac4bb25a9245a19a82b10a3a5bd9a728e2d4feccf09f6cded4'
-            '743c53127dc91c660a2aa0ff94cf8faa6aa763c6e76c5696438c97a5c97bd199'
-            'b1ac2fed5ac269fb7bbf651a3d37ef5fd56d2c33320e17cb6e23a22a93f5c046')
+            '2394e06cae4f0492d1bf63837c09e6c3b8272818bcc9dfecc30f3170a7c678ba'
+            'fd979a3d612396316603f7677cdcdb7d25c7fecf99c97a8d1458262684913fdd')
 install="${pkgname}.install"
 
 build() {
@@ -54,6 +54,9 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   cd "${pkgname}-${pkgver}"
+
+  # Fix privilege issue with crontab -u
+  patch -p1 -i "${srcdir}/scheduler-docker-local.patch"
 
   # Add .core and build go plugins
   for plugin in plugins/*; do
@@ -72,11 +75,11 @@ package() {
 
   # Install executable and license
   install -Dm755 "${pkgname}-${pkgver}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Move all files in place
   mkdir -p "${pkgdir}/var/lib/dokku/core-plugins/available"
-  cp -R "${srcdir}/${pkgname}-${pkgver}/plugins/." "${pkgdir}/var/lib/dokku/core-plugins/available"
+  cp -R "${pkgname}-${pkgver}/plugins/." "${pkgdir}/var/lib/dokku/core-plugins/available"
 
   # Version
   echo $pkgver > "${pkgdir}/var/lib/dokku/VERSION"

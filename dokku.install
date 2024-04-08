@@ -81,6 +81,9 @@ setup-plugins() {
   BASH_BIN=/tmp/login-basher dokku plugin:install --core
   rm /tmp/login-basher
 
+  echo "%dokku ALL=(ALL) NOPASSWD:/usr/bin/crontab -l -u dokku" > /etc/sudoers.d/dokku-crontab
+  chmod 440 /etc/sudoers.d/dokku-crontab
+
   rm -f /etc/update-motd.d/99-dokku
   sed -i 's/ syslog dokku$/ root dokku/g' /etc/logrotate.d/dokku
 }
@@ -143,6 +146,7 @@ post_remove() {
   rm -f /etc/systemd/system/dokku-retire.timer
   rm -f /etc/systemd/system/dokku-retire.service
   rm -f /etc/logrotate.d/dokku
+  rm -f /etc/sudoers.d/dokku-crontab
 
   # Remove nginx configuration
   rm -f /etc/nginx/conf.d/dokku.conf
