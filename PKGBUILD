@@ -1,5 +1,4 @@
 # Maintainer: Anton Karmanov <a.karmanov@inventati.org>
-# TODO Check deps
 
 pkgname=simsapa
 pkgver='0.5.2_alpha.1'
@@ -9,23 +8,7 @@ pkgdesc='A sutta reader and Pali dictionary application'
 arch=(any)
 url='https://simsapa.github.io'
 license=('GPL-3.0-only')
-# TODO dpd_db optional deps
 depends=(
-  # Potetially unused deps
-  #'python-aksharamukha'
-  #'python-chardet'
-  #'python-charset-normalizer'
-  #'python-click'
-  #'python-datetime'
-  #'python-lxml'
-  #'python-markupsafe'
-  #'python-pillow'
-  #'python-pytz'
-  #'python-roman'
-  #'python-scipy'
-  #'python-typing_extensions<4.11'  # FIXME
-  #'python-yaml'
-
   'python-alembic'
   'python-beautifulsoup4'
   'python-blessed'
@@ -57,7 +40,7 @@ depends=(
   'python>=3.11'
 )
 
-optdepends=()
+optdepends=('calibre: export to MOBI')
 makedepends=(
   'pyinstaller-hooks-contrib'
   'python-build'

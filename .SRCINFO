@@ -38,6 +38,7 @@ pkgbase = simsapa
 	depends = python-typer
 	depends = python-urllib3
 	depends = python>=3.11
+	optdepends = calibre: export to MOBI
 	source = simsapa-0.5.2_alpha.1.tar.gz::https://github.com/simsapa/simsapa/archive/refs/tags/v0.5.2-alpha.1.tar.gz
 	source = io.github.simsapa.desktop
 	sha256sums = 82fb27c3bfcc00e8dbdceefcd71463e1f37326cba2110a4fb1f87ca95bb534b5
