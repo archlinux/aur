@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='The theme from libadwaita ported to GTK-3'
 arch=(any)
 url=https://github.com/lassekongo83/adw-gtk3
-license=(LGPL2.1)
+license=('LGPL-2.1-only')
 makedepends=(git meson sassc)
 source=("git+$url.git#tag=v$pkgver")
 md5sums=(SKIP)
