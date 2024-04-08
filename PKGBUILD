@@ -15,11 +15,11 @@ makedepends=(qt5-declarative git)
 optdepends=('qt5-declarative: QML bindings')
 groups=(qt5)
 _pkgfqn=${pkgname/5-/}
-source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
+source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgfqn
+  cd kde-$_pkgfqn
   echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit` | sed -e 's|+kde+r0||'
 }
 
