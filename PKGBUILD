@@ -1,7 +1,7 @@
 # Maintainer: FederAndInk <unifai at protonmail dot com>
 _npmsubname=linthtml
 _npmname=@linthtml/${_npmsubname}
-_npmver=0.9.5
+_npmver=0.9.6
 pkgname=linthtml # All lowercase
 pkgver=${_npmver}
 pkgrel=1
@@ -14,7 +14,7 @@ makedepends=('npm')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_npmsubname-$_npmver.tgz)
 noextract=($_npmsubname-$_npmver.tgz)
-sha512sums=(f0c728b96da00adddb8371a72b593df0a2f92e20d5b58fb01320e381f0ba31da9b1ab99521dd01e80282d5e476c10e5f46f69d171371e567bf416dcaed58a6db)
+sha512sums=(6da94cc03a65d062aad31df96854ac12e3ca5329f6aa8cfbf774a9ad166f16edf491f75795d1f94c15ecb9dd65b5ffcdd9120441cb4adf191db4129b6ff64b60)
 
 package() {
   cd $srcdir
