@@ -1,5 +1,5 @@
 pkgbase = soh-bin
-	pkgdesc = Ship of Sarkinian Reimplimentation engine
+	pkgdesc = Ship of Harkinian Reimplimentation engine
 	pkgver = 8.0.5
 	pkgrel = 1
 	url = https://gitlab.com/soh-bin
