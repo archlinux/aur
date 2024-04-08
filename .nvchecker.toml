@@ -1,0 +1,5 @@
+[python-tcxreader]
+source = "github"
+github = "alenrajsp/tcxreader"
+use_latest_release = "true"
+prefix = "v"
