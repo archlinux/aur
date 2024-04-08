@@ -19,8 +19,8 @@ source=(
 	https://github.com/vision5/ngx_devel_kit/archive/v$_ndkver/ngx_devel_kit-$_ndkver.tar.gz
 	https://github.com/calio/$_modname-nginx-module/archive/v$pkgver/$_modname-$pkgver.tar.gz
 )
-sha256sums=('0e971105e210d272a497567fa2e2c256f4e39b845a5ba80d373e26ba1abfbd85'
-            '5c1869d55897075adb3fdf840b21060dc54669a1f840a36d1539acc7e59dd106')
+sha512sums=('de1e3349d8dd08e5982279b2219dc8a8006739f0409b8e0f5c50d93434beff1fbafba43e9c5ac85a5fab90afc5c0a7244a340610339c36f82f2cba7233e72de9'
+            '1c5c5ab74156cac09da44a2dcdd84f7c03c9919a23a847e63613e00e3781ecd73d5ad12446174b4fdef9d064257a31570a8dbcccc00d8266f7048e3dcde0362e')
 
 build() {
 	cp -r /usr/src/nginx .
