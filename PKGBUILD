@@ -28,6 +28,10 @@ package() {
   install -d "${pkgdir}/usr/share/${_pkgname}"
   install -d "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/share/icons"
+  install -d "${pkgdir}/usr/bin"
+
+  echo "java -jar /usr/share/${_pkgname}/VncViewer.jar" > "${pkgdir}/usr/bin/${_pkgname}"
+  chmod +x "${pkgdir}/usr/bin/${_pkgname}"
   install -m644 "platform_external_tigervnc-desktop-mode_v${pkgver}/java/VncViewer.jar" "${pkgdir}/usr/share/${_pkgname}"
   install -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -m644 "platform_external_tigervnc-desktop-mode_v${pkgver}/java/com/tigervnc/vncviewer/tigervnc.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
