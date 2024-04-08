@@ -1,23 +1,23 @@
 [Desktop Entry]
-Comment=WeChat (Qt)
-Comment[zh_CN]=微信 (Qt)
-TryExec=wechat-uos-beta
-Exec=wechat-uos-beta %u
-Icon=wechat-uos-beta
+Comment=WeChat
+Comment[zh_CN]=微信
+TryExec=wechat-uos-qt
+Exec=wechat-uos-qt %u
+Icon=wechat-uos-qt
 Name=WeChat
 Name[zh_CN]=微信
 Categories=Utility;Network;InstantMessaging;Chat;
 Terminal=false
 Type=Application
 Keywords=wechat;weixin;we;w;
-Keywords[zh_CN]=微;微信;wechat;weixin;we;
+Keywords[zh_CN]=微;微信;wechat;weixin;we;w;
 X-GNOME-SingleWindow=true
 SingleMainWindow=true
 Actions=nosandbox;
 StartupWMClass=wechat
 
 [Desktop Action nosandbox]
-Name=Disable Sandbox
-Name[zh_CN]=禁用沙盒
-Exec=/usr/bin/wechat-uos-beta --actions f5aaebc6-0014-4d30-beba-72bce57e0650
+Name=Disable Sandbox (Temporarily)
+Name[zh_CN]=禁用沙盒 (暂时)
+Exec=/usr/bin/wechat-uos-qt --actions f5aaebc6-0014-4d30-beba-72bce57e0650
 #Icon=application-exit
