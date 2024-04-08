@@ -4,43 +4,39 @@ pkgname=flashbrowser
 _appname=FlashBrowser
 pkgver=0.8.1
 _pkgver=0.81
-pkgrel=2
+pkgrel=3
 pkgdesc="A browser capable of viewing/displaying pages with embedded flash content"
 url="https://flash.pm/"
-arch=('x86_64')
-license=('unknown')
-makedepends=('yarn' 'imagemagick')
-provides=('flashbrowser')
-conflicts=('flashbrowser')
+arch=(x86_64)
+license=(unknown)
+makedepends=(
+	nodejs-lts-iron
+	npm
+	imagemagick
+)
+provides=(flashbrowser)
+conflicts=(flashbrowser)
 source=("${_appname}-${_pkgver}.tar.gz::https://github.com/radubirsan/FlashBrowser/archive/refs/tags/v${_pkgver}.tar.gz"
 	"https://github.com/darktohka/clean-flash-builds/releases/download/v1.7/flash_player_patched_ppapi_linux.x86_64.tar.gz"
 	"FlashBrowser.desktop")
 sha256sums=('062e59a50e30a7cdd618328d9582b58d805dfe50990a9f93df2dddc8c6e4b4ae'
             'fca4fd08f40639fc495c3f58a1877e7ea023ccb19f0a6466a396e418dee5a186'
-            'c4cf51979c204268bc70533a319e3fdfb913dec0aa8edaea0a7f7a7cb8ca3b78')
+            'd7cb1e280719ec12d61d69ce757cfe27d7aeb2fdd207e4a6ab068c9fb7b182c2')
 noextract=('flash_player_patched_ppapi_linux.x86_64.tar.gz')
 
 prepare() {
-	cd "$srcdir"/$_appname-$_pkgver
+	cd $_appname-$_pkgver
 	# Extract FlashPlugin (PPAPI)
 	mkdir -p ../flash_plugin
 	bsdtar -xf ../flash_player_patched_ppapi_linux.x86_64.tar.gz -C ../flash_plugin
-	# Remove lockfile for yarn build
-	rm -v package-lock.json
-	# Insert custom build command
-	sed '16a\    \"build5\": \"electron-packager . FlashBrowser --platform=linux --arch=x64\",' -i package.json
-	# Install all dependencies
-	yarn install --cache-folder ../yarn-cache
-	yarn add --cache-folder ../yarn-cache \
-		electron-builder@latest \
-		electron-packager@latest \
-		electron-updater@latest
 }
 
 build() {
-	cd "$srcdir"/$_appname-$_pkgver
-	# Custom build5: 'electron-packager . FlashBrowser --platform=linux --arch=x64'
-	yarn run build5
+	cd $_appname-$_pkgver
+	# Install all dependencies
+	npm ci --cache ../npm-cache --legacy-peer-deps
+	# Build
+	npm exec electron-packager -- ./ FlashBrowser --platform=linux --overwrite --icon=icon.ico -p always --prune-license nm-prune --force
 }
 
 package() {
@@ -56,7 +52,7 @@ package() {
 	install -vDm644 "$srcdir"/$_appname.desktop "$pkgdir"/usr/share/applications/$_appname.desktop
 	# Install icons
 	for d in 16 24 32 48 256; do
-		mkdir -p "$pkgdir"/usr/share/icons/hicolor/${d}x${d}/apps
+		install -d "$pkgdir"/usr/share/icons/hicolor/${d}x${d}/apps
 	done
 
 	for i in 16 24 32 48 256; do
@@ -73,6 +69,5 @@ package() {
 	rm -rf "$pkgdir"/opt/$pkgname/resources/app/flashver/PepperFlashPlayer.plugin
 	# Remove empty folders and dotfiles
 	find "$pkgdir"/opt/flashbrowser/resources/app -name '.git*' | xargs rm -rf
-	find "$pkgdir"/opt/flashbrowser/resources/app -name '.yarn*' | xargs rm
 	find "$pkgdir"/opt/flashbrowser/resources/app -empty -delete
 }

@@ -1,10 +1,9 @@
 [Desktop Entry]
-Version=1.0
 Name=FlashBrowser
-GenericName=Web Browser
 Exec=/usr/bin/FlashBrowser
-StartupNotify=false
 Terminal=false
-Icon=FlashBrowser
 Type=Application
-Categories=Network;WebBrowser;
+Icon=FlashBrowser
+StartupWMClass=FlashBrowser
+Comment=Browser For Flash Player Games
+Categories=Utility;
