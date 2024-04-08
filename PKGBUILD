@@ -72,4 +72,3 @@ package () {
   DESTDIR="${pkgdir}" meson install -C build
   install -Dm644 "${pkgname}/"LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
