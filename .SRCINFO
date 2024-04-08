@@ -1,6 +1,6 @@
 pkgbase = mutter-performance
 	pkgdesc = A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync
-	pkgver = 46.0+r19+gc0ae617b3
+	pkgver = 46.0+r20+g34d79b9dd
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
@@ -72,14 +72,21 @@ pkgbase = mutter-performance
 	depends = systemd-libs
 	depends = wayland
 	depends = xorg-xwayland
-	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=c0ae617b3ff86f5a4ad773d606e7bcdd7672139e
+	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=34d79b9ddf2b2455dbde78372e7355e8b6f95e96
 	source = mr1441.patch
 	source = mr3304.patch
 	source = mr3373.patch
-	b2sums = 118cb0ba40f1a14163ea848c49487869bccfaa8f1cdb0423005e22ecea53c90154ff4512c2a885af7eaca0b170819ea19aeca1b03a34c1e2ae04dce702ce83e7
+	source = mr3674.patch
+	sha256sums = d7cac80530a925413d6f69139fa0aa77468d547e5a71de4d04fbb5e69cf09a70
+	sha256sums = e5b85a47436cfac47f76f53e540f3e36886e65a991b1dbecbf5756eb062a8ea6
+	sha256sums = 90261cf4b2133ed3bf8c9c9e37c72ce816e5b0d75b55ae0c3899f7ef5809d593
+	sha256sums = 3e1f07b696ad37b1c639a524c092cd9259444bc6156542901ccaec936bea240f
+	sha256sums = 414e1dad3e527fc6f9ef6e5006700d97738bef6de9b087af9e232a2084b0ac88
+	b2sums = c3b55a34d1abd3a3e381593741ee0ffc14feebcb8725da92e99829452638abbe596e5149f9ac1460b01b8e5f40c84848ca8b8cedbfe28c8359208ccf7cbb9f74
 	b2sums = 75fb3ae1d4149c1cd82ae5cc23335e6d517665ba0527c6cbe112585706fa5191fb67e3264402527229185c0f6fc6638bb604243bb7c8123b7acc0b0a4379ba7e
 	b2sums = f53c0a7cf5fe400e83379be5e3694dba0668e0917b5bf29c485cef802660e38176ab856118a030ddc87bd49b75d0dd6f9e0d8f32d2b2ef27ebb1737f8914bf21
 	b2sums = 71f10db4ebe04a787940c7048131eac67cffd3ec8e415cfc961b8041b881f272650581e9df273e2a8da23a50ec9151c790dc2d5ecc0309ab2847a22f8c922c9c
+	b2sums = 12b128e46f47c077b504f2707a8b0ba407617b50c267f785982dc62ab3045202abe1cce3dfbb49b80fb27b70c2ff5dc188155c93cf7131bebda2e4f1f77077f6
 
 pkgname = mutter-performance
 	groups = gnome
