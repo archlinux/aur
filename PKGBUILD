@@ -14,20 +14,20 @@ depends=('qt5-declarative')
 makedepends=('git')
 groups=('qt5')
 _pkgfqn=${pkgname/5-/}
-source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
+source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         git+https://invent.kde.org/qt/qt/qtlocation-mapboxgl.git)
 sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd $_pkgfqn
+  cd kde-$_pkgfqn
   echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit` | sed -e 's|+kde+r0||'
 }
 
 prepare() {
   mkdir -p build
 
-  cd ${_pkgfqn}
+  cd kde-$_pkgfqn
   git submodule init
   git submodule set-url src/3rdparty/mapbox-gl-native "$srcdir"/qtlocation-mapboxgl
   git -c protocol.file.allow=always submodule update
