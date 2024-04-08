@@ -3,7 +3,7 @@
 
 _pkgname=qlog
 pkgname="$_pkgname-git"
-pkgver=0.29.2.r0.ge44fc85
+pkgver=0.34.0.r0.g5f8bf45
 pkgrel=1
 pkgdesc="Amateur radio logbook software"
 arch=("x86_64" "i686")
@@ -11,16 +11,16 @@ url="https://github.com/foldynl/QLog"
 license=('GPL')
 
 depends=(
+  'hamlib'
   'qt6-base'
   'qt6-charts'
   'qt6-serialport'
   'qt6-webengine'
+  'qt6-websockets'
   'qtkeychain-qt6'
-  'hamlib'
 )
 makedepends=(
   'git'
-  'qt6-tools'
 )
 optdepends=(
   'org.freedesktop.secrets: keyring/password support'
@@ -42,9 +42,9 @@ _source_qlog() {
   )
 
   _prepare_qlog() (
-    cd "${srcdir:?}/$_pkgsrc"
-    local -A _submodules=(
-      ['foldynl.qlog-flags']='res/flags'
+    cd "$srcdir/$_pkgsrc"
+    local _submodules=(
+      'foldynl.qlog-flags'::'res/flags'
     )
     _submodule_update
   )
@@ -54,17 +54,17 @@ _source_qlog
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' \
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
     | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
   _submodule_update() {
-    local key;
-    for key in ${!_submodules[@]} ; do
-      git submodule init "${_submodules[${key}]}"
-      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
-      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+    local _module
+    for _module in "${_submodules[@]}" ; do
+      git submodule init "${_module##*::}"
+      git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
+      git -c protocol.file.allow=always submodule update "${_module##*::}"
     done
   }
 
