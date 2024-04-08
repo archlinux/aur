@@ -12,6 +12,7 @@ makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gorilla-devs/ferium/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('5b4fde3eee2336c4874d8bf5c412e019843f9cef018f750bbb4c51c1fceb9484')
 b2sums=('0ecfb6f66992a04f2807382ca31699c27dde52934c53c56826eb26e81fd70d503010d6bbe162e0e8f809ddc5894d18db7406944f5d1e15f96c31d565aca72dc3')
+options=(!lto)
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 
