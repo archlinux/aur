@@ -3,7 +3,7 @@ pkgname=fooyin-bin
 _pkgname=Fooyin
 _appname="org.${pkgname%-bin}.${pkgname%-bin}"
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A customisable music player"
 arch=('any')
 url="https://github.com/ludouzi/fooyin"
@@ -44,7 +44,7 @@ package() {
     install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/plugins/"*.so -t "${pkgdir}/opt/${pkgname%-bin}/lib/plugins"
     for _icons in 16x16 22x22 32x32 48x48 64x64 128x128 256x256 512x512 scalable;do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}."* \
-            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}x${_icons}/apps"
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
     install -Dm644 "${srcdir}/usr/share/${pkgname%-bin}/translations/"*.qm -t "${pkgdir}/opt/${pkgname%-bin}/translations"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
