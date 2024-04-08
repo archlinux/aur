@@ -1,0 +1,12 @@
+pkgbase = blender-studio-pipeline-git
+	pkgdesc = The complete collection of documents, add-ons, scripts and tools that make up the Blender Studio pipeline. Learn more at studio.blender.org.
+	pkgver = r2351.dbc09de
+	pkgrel = 1
+	epoch = 0
+	url = https://projects.blender.org/studio/blender-studio-pipeline.git
+	arch = x86_64
+	license = GPL
+	makedepends = git-lfs
+	provides = blender-studio-pipeline
+
+pkgname = blender-studio-pipeline-git
