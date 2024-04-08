@@ -3,15 +3,15 @@
 _pkgname=mimic
 _pkgbase=$_pkgname-bpf
 pkgname=($_pkgbase $_pkgbase-dkms)
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="eBPF UDP -> TCP obfuscator"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/hack3ric/$_pkgname"
 license=('GPL-2.0-only')
-makedepends=('git' 'clang' 'bpf' 'libbpf' 'json-c')
+makedepends=('git' 'clang' 'bpf' 'libbpf' 'json-c' 'libffi')
 source=("https://github.com/hack3ric/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('b6e18fd68975288d2e1107e6ed3fb5f016cccc8feabfbf976c439b6a628bdaf87e74c10b829cfa33ffc44fa7fb8e4cc7614045099d953b225de1e6e82412dc50')
+b2sums=('c75e57b4f307289ea1fed3d5376b76431b413b734d861a56ef564817d6972a20e60a2df479614c75a24e32b5845358a945b5f998d6e4a1e00b2f7cb342f8ee7d')
 
 prepare() {
   cd $_pkgname-$pkgver
@@ -27,7 +27,7 @@ build() {
 }
 
 package_mimic-bpf() {
-  depends=('glibc' 'gcc-libs' 'libbpf' 'json-c' $_pkgbase-modules=$pkgver)
+  depends=('glibc' 'gcc-libs' 'libbpf' 'json-c' 'libffi' $_pkgbase-modules=$pkgver)
 
   install -Dm755 "$srcdir/$_pkgname-$pkgver/out/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 "$srcdir/$_pkgname-$pkgver/install/eth0.conf.example" "$pkgdir/etc/mimic/eth0.conf.example"
