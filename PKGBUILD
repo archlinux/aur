@@ -2,7 +2,7 @@
 
 pkgname=opengfw
 _pkgname=OpenGFW
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A flexible, easy-to-use, open source implementation of GFW"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(MPL-2.0)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('acec3dd13178ca1a784eb761bc3be3b3156d243e551783eb608dbbc9eabcffbf')
+sha256sums=('59f24a5f5850a23cc2f848cad0ab30db723b748d730109a445f35f02dc44b948')
 
 _archive="$_pkgname-$pkgver"
 
