@@ -1,0 +1,21 @@
+pkgbase = python-librabbitmq
+	pkgdesc = AMQP Client using the rabbitmq-c library
+	pkgver = 2.0.0
+	pkgrel = 10
+	url = https://pypi.python.org/pypi/librabbitmq
+	arch = x86_64
+	license = MPL
+	checkdepends = pifpaf
+	checkdepends = rabbitmq
+	makedepends = python-setuptools
+	depends = python-amqp
+	depends = python-six
+	source = https://files.pythonhosted.org/packages/source/l/librabbitmq/librabbitmq-2.0.0.tar.gz
+	source = librabbitmq-c-0.8.0.zip::https://github.com/alanxz/rabbitmq-c/archive/v0.8.0.zip
+	source = python-librabbitmq-remove-u-mode.patch::https://github.com/celery/librabbitmq/commit/eba309a9354347f0824f3f9a82e462ef243e11ff.patch
+	validpgpkeys = 0E54D05A3224273DC1B5435612A53B890119D176
+	sha512sums = c35b815bc776bbac3087880406cb8dbcf6d3d8fad3590139d0dd88ae059599927f7a277493e6fd557ba2da6c9e8ee1a668f079bbb16f5127ccfd223afbd30a3f
+	sha512sums = e386979ce1bc05c02cda06e8582981e0df25f9b31ca950f8a921bd2b249020f751ba65a6f38b8f5ba0be1b3e89492b29b72c6cd1d5ed3d6f19440799d6419ba6
+	sha512sums = 05405dd194a43958658ab03910bc5f52aa385dc0ee75b6c95f0d593fa9d443204d201b1e38f88f57e296e9100d91334199aa75eaa85a2dcfbd341cc4cc29b6e4
+
+pkgname = python-librabbitmq
