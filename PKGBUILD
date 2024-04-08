@@ -3,7 +3,7 @@
 pkgname=zswap-cli-git
 _pkgname="${pkgname%-git}"
 pkgver=0.9.1.r14.g224fdea
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line tool to control ZSwap Linux kernel module"
 arch=('x86_64')
 url="https://github.com/xvitaly/${_pkgname}"
