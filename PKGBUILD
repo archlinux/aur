@@ -2,7 +2,7 @@
 pkgname=bcrypt-sandbox-bin
 _pkgname="Bcrypt Sandbox"
 pkgver=1.0.0
-pkgrel=6
+pkgrel=7
 pkgdesc="A tool for encrypting and validating text with bcrypt"
 arch=('x86_64')
 url="https://felladrin.github.io/bcrypt-sandbox"
@@ -24,12 +24,12 @@ source=(
 )
 sha256sums=('9b1675cb7f13d3bfa2ade85fd0821c42d106d23b7e7b66e8682dc256a5a0b61d'
             '9fefa7c0ffe3e72fa6f422498c7a892ba6ef9360e84f3892448c2ebe9d04ba70'
-            '872b17ce0a4bd0dc6efee4e8cd2dc6bc78bb657aa98e01b0b009007e95b759a0')
+            '655567f68d80966c4d6daf8680f90f23f37eb0c9710e32ddf5620f3be113903f')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories="Utility;System" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    gendesk -q -f -n --categories="Utility;System" --name="${_pkgname}" --exec="${pkgname%-bin} --no-sandbox %U"
     chmod 755 "${srcdir}/${_pkgname}/${pkgname%-bin}"
 }
 package() {
