@@ -2,7 +2,7 @@
 
 pkgname=python-chacha20poly1305-reuseable
 _basename=chacha20poly1305-reuseable
-pkgver=v0.12.0
+pkgver=v0.12.1
 pkgrel=1
 pkgdesc='A reusable version of ChaCha20Poly1305 for use with cryptography and asyncio'
 url=https://github.com/bdraco/chacha20poly1305-reuseable
@@ -20,9 +20,9 @@ makedepends=(
   python-setuptools
   python-wheel
 )
-_tag=134390ab10534872e59fcbceefdf4c4f8f4ca219
+_tag=fc570bb974023b3c47042134f69516aa195abf61
 source=(git+${url}#tag=${_tag})
-b2sums=('SKIP')
+b2sums=('b6803067b8536f24ebd96efcfbb4dcbab99265d52416949c0ffd319187e7c48fbeacbeef09eac9ab30e995054b8406bef57b3f3c2f12ca82b240df614455656b')
 arch=(any)
 
 pkgver() {
