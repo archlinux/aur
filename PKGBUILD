@@ -12,20 +12,27 @@ license=('MIT')
 depends=('gcc-libs' 'curl')
 makedepends=('cargo')
 
-source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/cargo-duplicates/0.5.1/download")
+source=("$_crate-0.5.1.tar.gz::https://crates.io/api/v1/crates/cargo-duplicates/0.5.1/download")
 sha512sums=('825414d3bcd19e728f6adab7689ee66697957ac4d0dd82b73012cb18ce79fd583d4857e7fe9644907cee577219091c594c2e506977ebf041700650eb4555ad8b')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
 
 prepare() {
-	cd "$srcdir/$_crate-$pkgver"
+	cd "$srcdir/$_crate-0.5.1"
 
-	cargo fetch --locked
+	export RUSTUP_TOOLCHAIN=stable
+
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-	cd "$srcdir/$_crate-$pkgver"
+	cd "$srcdir/$_crate-0.5.1"
+	
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	CFLAGS+=" -ffat-lto-objects"
+
 	LIBSSH2_SYS_USE_PKG_CONFIG='1' \
 	cargo build \
 		--offline \
@@ -34,6 +41,6 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$_crate-$pkgver"
+	cd "$srcdir/$_crate-0.5.1"
 	install -Dm755 "target/release/cargo-duplicates" -t "$pkgdir/usr/bin"
 }
