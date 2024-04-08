@@ -1,12 +1,12 @@
 # Maintainer: Sulthan A. Karimov <sulthankarimov@gmail.com>
-pkgname=blender-studio-pipeline-git
 _pkgname=blender-studio-pipeline
+pkgname=$_pkgname-git
 pkgver=r2351.dbc09de
 pkgrel=1
 epoch=0
-pkgdesc="The complete collection of documents, add-ons, scripts and tools that make up the Blender Studio pipeline. Learn more at studio.blender.org."
-arch=('x86_64')
 url="https://projects.blender.org/studio/blender-studio-pipeline.git"
+pkgdesc="this will install Blender Media Viewer and Studio Addons. Learn more at $url."
+arch=('x86_64')
 license=('GPL')
 depends=()
 makedepends=('git-lfs')
