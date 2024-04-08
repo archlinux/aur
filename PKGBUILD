@@ -19,7 +19,7 @@ install=crowdsec.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crowdsecurity/crowdsec/archive/refs/tags/v${pkgver}.tar.gz"
         'crowdsec.install')
 sha256sums=('6d79d67383c7faed6c5b2019e4f01c6ed84334c8c45cd1736ff18a03167aa192'
-            '0161e23072d35baf82d4c3f9511e95cb689e8f6b9d9d8f6f1f4ad9f09ebc2ebb')
+            'e3b80fd4a1a3579a1b822ddf5898f3402aba8e6cf718f1d91f0ee2f4fb90ad99')
 
 prepare() {
     cd "${pkgname}-${pkgver}/config"

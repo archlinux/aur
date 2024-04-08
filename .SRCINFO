@@ -28,6 +28,6 @@ pkgbase = crowdsec
 	source = crowdsec-1.6.0.tar.gz::https://github.com/crowdsecurity/crowdsec/archive/refs/tags/v1.6.0.tar.gz
 	source = crowdsec.install
 	sha256sums = 6d79d67383c7faed6c5b2019e4f01c6ed84334c8c45cd1736ff18a03167aa192
-	sha256sums = 210dbcd4503e26ce4e55e519e9a08ed2ad444f612735ba115a90849de9111c16
+	sha256sums = e3b80fd4a1a3579a1b822ddf5898f3402aba8e6cf718f1d91f0ee2f4fb90ad99
 
 pkgname = crowdsec

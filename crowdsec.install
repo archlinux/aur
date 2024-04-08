@@ -24,6 +24,19 @@ post_install() {
 }
 
 pre_upgrade() {
+    echo " $1 => $2 "
+    MAJOR=$(echo "$2" | awk -F '.' '{print $1}')
+    MINOR=$(echo "$2" | awk -F '.' '{print $2}')
+
+    if [ "${MAJOR}" == 1 ] && [ "${MINOR}" -lt 6 ]; then
+        echo "Due to significant changes in the package structure, it is strongly advised not"
+        echo "to upgrade from any version older than 1.6.0 to a newer version, as this may lead"
+        echo "to potential issues. To safely upgrade to the new version, it is recommended to"
+        echo "uninstall the old package and perform a clean installation of the new one."
+        echo "Additionally, it is recommended to inspect the /usr/local directory and"
+        echo "remove all related files to Crowdsec to ensure a clean installation."
+    fi
+
     cscli config backup /var/lib/crowdsec/backup
 }
 
