@@ -1,9 +1,9 @@
+# Maintainer: Bill Sideris <bill88t@feline.gr>
+
 pkgname='python-escpos'
 _name=${pkgname#python-}
-
-# Maintainer: Bill Sideris <bill88t@feline.gr>
-pkgver=3.0
-pkgrel=2
+pkgver=3.1
+pkgrel=1
 pkgdesc='Python ESC/POS is a library which lets the user have access to all those printers handled by ESC/POS commands, as defined by Epson, from a Python application.'
 arch=('any')
 license=('MIT')
@@ -12,8 +12,8 @@ url='https://pypi.python.org/pypi/python-escpos'
 depends=('python' 'python-pyusb' 'python-pyserial' 'python-pillow' 'python-qrcode' 'python-barcode' 'python-importlib_resources')
 provides=('python-escpos')
 makedepends=('python' 'python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-setuptools-scm')
-source=('https://files.pythonhosted.org/packages/a4/e7/22b765d20e45ca8fbccff73c4f883b479751f6bc6daab3a6665fdb95b1bd/python-escpos-3.0.tar.gz')
-sha256sums=('b06bc44a460fc7c209219c491f5171f3b6f0b93b37617f08f65309ac5b252fac')
+source=('https://files.pythonhosted.org/packages/b5/e8/dbcaca6c9db8d133e3a2fc36982f20bb0bdc9bdc9e04a540b231dd75b2d1/python-escpos-3.1.tar.gz')
+sha256sums=('31240cdd43a6d3371c2c536f8dec02f31bf68ee967cd2edb255a94cf67295ac0')
 
 build(){
   cd "$srcdir"/"$pkgname-$pkgver"
