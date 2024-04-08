@@ -1,6 +1,6 @@
 pkgbase = yourkit
 	pkgdesc = Java CPU and memory profiler.
-	pkgver = 2024.3b148
+	pkgver = 2024.3.b150
 	pkgrel = 1
 	url = http://www.yourkit.com
 	arch = i686
@@ -17,11 +17,11 @@ pkgbase = yourkit
 	source = yourkit.sh
 	sha256sums = b071670d8264f4ec8c61d83f3717e83c7c87873c678a75d60670a002e185373d
 	sha256sums = 6fc9612a76e2b50bb84130b0c40fcaccd04fe513e23ced398e707087459cc50e
-	source_i686 = https://download.yourkit.com/yjp/2024.3/YourKit-JavaProfiler-2024.3-b148-x64.zip
-	sha256sums_i686 = e01c8c2358a476138e6a95e8218024a5f006f7f1960ee7a174f92e58c75f64e0
-	source_x86_64 = https://download.yourkit.com/yjp/2024.3/YourKit-JavaProfiler-2024.3-b148-x64.zip
-	sha256sums_x86_64 = e01c8c2358a476138e6a95e8218024a5f006f7f1960ee7a174f92e58c75f64e0
-	source_aarch64 = https://download.yourkit.com/yjp/2024.3/YourKit-JavaProfiler-2024.3-b148-arm64.zip
-	sha256sums_aarch64 = 42435527c18c3b8f6dbeb0f998a4782c6525d12821ae12e5abad923507c2f7e2
+	source_i686 = https://download.yourkit.com/yjp/2024.3/YourKit-JavaProfiler-2024.3-b150-x64.zip
+	sha256sums_i686 = 31b5e9f5aab50828899919f3ec326061464775ea7d292d6dfbcef1607a882aa4
+	source_x86_64 = https://download.yourkit.com/yjp/2024.3/YourKit-JavaProfiler-2024.3-b150-x64.zip
+	sha256sums_x86_64 = 31b5e9f5aab50828899919f3ec326061464775ea7d292d6dfbcef1607a882aa4
+	source_aarch64 = https://download.yourkit.com/yjp/2024.3/YourKit-JavaProfiler-2024.3-b150-arm64.zip
+	sha256sums_aarch64 = 7a929ff24dd9f4a683b1a4a077ebc91c8c17be16b0144e0db6b7949946a4c38f
 
 pkgname = yourkit

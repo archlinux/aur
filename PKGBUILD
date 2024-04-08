@@ -2,8 +2,8 @@
 # Contributor: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 pkgname=yourkit
 _version=2024.3
-_build=148
-pkgver=${_version}b${_build}
+_build=150
+pkgver=${_version}.b${_build}
 pkgrel=1
 pkgdesc="Java CPU and memory profiler."
 arch=(i686 x86_64 aarch64)
@@ -24,9 +24,9 @@ source=(
   yourkit-yjp.desktop
   yourkit.sh
 )
-sha256sums_x86_64=('e01c8c2358a476138e6a95e8218024a5f006f7f1960ee7a174f92e58c75f64e0')
+sha256sums_x86_64=('31b5e9f5aab50828899919f3ec326061464775ea7d292d6dfbcef1607a882aa4')
 sha256sums_i686=("${sha256sums_x86_64[@]}") # Same as sha256sums_x86_64
-sha256sums_aarch64=('42435527c18c3b8f6dbeb0f998a4782c6525d12821ae12e5abad923507c2f7e2')
+sha256sums_aarch64=('7a929ff24dd9f4a683b1a4a077ebc91c8c17be16b0144e0db6b7949946a4c38f')
 sha256sums=('b071670d8264f4ec8c61d83f3717e83c7c87873c678a75d60670a002e185373d'
             '6fc9612a76e2b50bb84130b0c40fcaccd04fe513e23ced398e707087459cc50e')
 
