@@ -1,58 +1,61 @@
 # Maintainer: Anton Karmanov <a.karmanov@inventati.org>
-
-# TODO Try isolated build in clean chroot
+# TODO Check deps
 
 pkgname=simsapa
-pkgver='0.5.0_alpha.1'  # No dashes in version string
-_projver='0.5.0-alpha.1'
-pkgdesc='A sutta reader and Pali dictionary application'
+pkgver='0.5.2_alpha.1'
 pkgrel=1
+_projver="${pkgver/_/-}"
+pkgdesc='A sutta reader and Pali dictionary application'
 arch=(any)
 url='https://simsapa.github.io'
-license=('GPL3')
+license=('GPL-3.0-only')
+# TODO dpd_db optional deps
 depends=(
-  'python>=3.11'
-  'python-pyqt6'
-  'python-pyqt6-webengine'
-  'python-sqlalchemy-git>=2.0.22'  # TODO Should provide non-git pkg
-  'python-sqlalchemy-utils'
-  'python-yaml'
+  # Potetially unused deps
+  #'python-aksharamukha'
+  #'python-chardet'
+  #'python-charset-normalizer'
+  #'python-click'
+  #'python-datetime'
+  #'python-lxml'
+  #'python-markupsafe'
+  #'python-pillow'
+  #'python-pytz'
+  #'python-roman'
+  #'python-scipy'
+  #'python-typing_extensions<4.11'  # FIXME
+  #'python-yaml'
+
   'python-alembic'
-  'python-requests'
-  'python-platformdirs'
-  'python-pillow'
-  'python-semver'
-  'python-lxml'
-  'python-dotenv'
-  'python-pyperclip'
-  'python-networkx'
-  'python-bokeh'
-  'python-scipy'
-  'python-typer'
-  'python-click'
-  'python-tomlkit'
   'python-beautifulsoup4'
-  'python-markupsafe'
+  'python-blessed'
+  'python-bokeh'
+  'python-deepmerge'
+  'python-dotenv'
+  'python-ebooklib'
+  'python-epub_meta'
   'python-flask'
   'python-flask-cors'
+  'python-idzip'
   'python-markdown'
-  'python-psutil'
-  'python-blessed'
-  'python-roman'
-  'python-chardet'
-  'python-urllib3'
-  'python-datetime'
-  'python-deepmerge'
-  'python-charset-normalizer'
-  'python-ebooklib'
+  'python-networkx'
   'python-openai'
+  'python-platformdirs'
+  'python-psutil'
+  'python-pyperclip'
+  'python-pyqt6'
+  'python-pyqt6-webengine'
+  'python-requests'
+  'python-semver'
+  'python-sqlalchemy-git>=2.0.22'  # TODO Should depends on non-git pkg
+  'python-sqlalchemy-utils'
+  'python-tantivy-py-simsapa'
   'python-tiktoken'
-  'python-pytz')
-# TODO Make pkgs
-#python-tantivy = { git = "https://github.com/simsapa/tantivy-py.git", branch = "simsapa" }
-#'aksharamukha'
-#'python-epub-meta'
-#'python-idzip'
+  'python-tomlkit'
+  'python-typer'
+  'python-urllib3'
+  'python>=3.11'
+)
 
 optdepends=()
 makedepends=(
@@ -60,8 +63,14 @@ makedepends=(
   'python-build'
   'python-installer'
   'python-wheel')
-source=("https://github.com/simsapa/${pkgname}/archive/refs/tags/v${_projver}.tar.gz")
-sha256sums=('23853b0fe927b46913b8f34540a0c3ca59aa7893dbccf6408a56ef8588b949ea')
+_src_url="${pkgname}-${pkgver}.tar.gz::"
+_src_url="${_src_url}https://github.com/simsapa/${pkgname}/archive/refs/tags/"
+_src_url="${_src_url}v${_projver}.tar.gz"
+source=("$_src_url" "io.github.${pkgname}.desktop")
+sha256sums=(
+  '82fb27c3bfcc00e8dbdceefcd71463e1f37326cba2110a4fb1f87ca95bb534b5'
+  '362eb4118ca2d48b5764ab836f83291be877773f23406220a56ef7d7b88efa0c'
+)
 
 build() {
   cd "${srcdir}/${pkgname}-${_projver}"
@@ -71,4 +80,10 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${_projver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install \
+    -Dm644 simsapa/assets/icons/appicons/simsapa.png \
+    -t "$pkgdir/usr/share/icons/hicolor/256x256/apps/"
+  install \
+    -Dm644 "${srcdir}/io.github.simsapa.desktop" \
+    -t "$pkgdir/usr/share/applications/"
 }

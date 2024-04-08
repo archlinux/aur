@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Categories=Education;TextTools;Dictionary;Translation;Languages;Humanities;Spirituality;Qt;
+Name=Simsapa
+Comment=A sutta reader and Pali dictionary application
+Comment[ru]=Приложение для чтения сутт и палийский словарь
+Icon=simsapa
+Exec=simsapa gui

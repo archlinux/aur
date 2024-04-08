@@ -1,0 +1,46 @@
+pkgbase = simsapa
+	pkgdesc = A sutta reader and Pali dictionary application
+	pkgver = 0.5.2_alpha.1
+	pkgrel = 1
+	url = https://simsapa.github.io
+	arch = any
+	license = GPL-3.0-only
+	makedepends = pyinstaller-hooks-contrib
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-alembic
+	depends = python-beautifulsoup4
+	depends = python-blessed
+	depends = python-bokeh
+	depends = python-deepmerge
+	depends = python-dotenv
+	depends = python-ebooklib
+	depends = python-epub_meta
+	depends = python-flask
+	depends = python-flask-cors
+	depends = python-idzip
+	depends = python-markdown
+	depends = python-networkx
+	depends = python-openai
+	depends = python-platformdirs
+	depends = python-psutil
+	depends = python-pyperclip
+	depends = python-pyqt6
+	depends = python-pyqt6-webengine
+	depends = python-requests
+	depends = python-semver
+	depends = python-sqlalchemy-git>=2.0.22
+	depends = python-sqlalchemy-utils
+	depends = python-tantivy-py-simsapa
+	depends = python-tiktoken
+	depends = python-tomlkit
+	depends = python-typer
+	depends = python-urllib3
+	depends = python>=3.11
+	source = simsapa-0.5.2_alpha.1.tar.gz::https://github.com/simsapa/simsapa/archive/refs/tags/v0.5.2-alpha.1.tar.gz
+	source = io.github.simsapa.desktop
+	sha256sums = 82fb27c3bfcc00e8dbdceefcd71463e1f37326cba2110a4fb1f87ca95bb534b5
+	sha256sums = 362eb4118ca2d48b5764ab836f83291be877773f23406220a56ef7d7b88efa0c
+
+pkgname = simsapa
