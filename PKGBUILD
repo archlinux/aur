@@ -2,14 +2,14 @@
 
 pkgname=qman-git
 pkgver=nightly
-pkgrel=1
+pkgrel=2
 pkgdesc="A more modern manual page viewer for our terminals"
 
 arch=('x86_64')
 url="https://github.com/plp13/qman"
 license=('BSD-2-CLAUSE')
 depends=('ncurses' 'libinih')
-makedepends=('git' 'meson' 'pandoc-cli')
+makedepends=('git' 'meson' 'pandoc-cli' 'python-cogapp')
 source=("$pkgname"::"git+https://github.com/plp13/qman.git")
 sha256sums=('SKIP')
 
