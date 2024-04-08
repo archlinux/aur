@@ -13,7 +13,7 @@ license=('GPL')
 depends=('gtk3' 'libxml2' 'librsvg' 'libxtst' 'gettext' 'gstreamer>=1.0') # http://florence.sourceforge.net/english/install.html
 makedepends=('intltool>=0.23')
 source=("http://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('422992fd07d285be73cce721a203e22cee21320d69b0fda1579ce62944c5091e')
+sha512sums=('c527e8c40c9a594106420a6187945d79dfa7ddb4f628805cd188c8a37f79f42cbc1f74b80e21186f104a79c4d5e90c7a9d93cbe35bf1c6ebfe874db047fbef3c')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
