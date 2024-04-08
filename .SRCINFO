@@ -1,7 +1,7 @@
 pkgbase = librashader
 	pkgdesc = A preprocessor, compiler, and runtime for RetroArch 'slang' shaders, rewritten in pure Rust.
 	pkgver = 0.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SnowflakePowered/librashader
 	arch = x86_64
 	arch = aarch64
@@ -15,6 +15,7 @@ pkgbase = librashader
 	depends = vulkan-icd-loader
 	provides = librashader
 	conflicts = librashader
+	options = !lto
 	source = https://github.com/SnowflakePowered/librashader/archive/refs/tags/librashader-v0.2.7.tar.gz
 	sha512sums = 85a85b9fd944095224b832dad2bc536734cc5d83e2bfe2a50a028eafb55abbf2cfa22bd65d3773d9cf7cef6c184cd887efbf106d0f03371aedf6445a5bbf90e7
 
