@@ -8,7 +8,7 @@ url="https://github.com/refi64/stylepak"
 pkgdesc="Automatically install your host GTK+ theme as a Flatpak. Git version."
 source=("$pkgname"::'git+https://github.com/refi64/stylepak.git')
 md5sums=('SKIP')
-depends=('ostree' 'appstream-glib')
+depends=('ostree' 'appstream-glib' 'git')
 provides=('pakitheme' 'pakitheme-git')
 
 pkgver() {

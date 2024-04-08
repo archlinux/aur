@@ -6,6 +6,9 @@ pkgbase = stylepak-git
 	arch = any
 	depends = ostree
 	depends = appstream-glib
+	depends = git
+	provides = pakitheme
+	provides = pakitheme-git
 	source = stylepak-git::git+https://github.com/refi64/stylepak.git
 	md5sums = SKIP
 
