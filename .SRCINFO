@@ -11,6 +11,7 @@ pkgbase = bibox2-bin
 	depends = ffmpeg
 	depends = pango
 	depends = xorg-xrandr
+	provides = bibox2
 	source = https://static.bibox2.westermann.de/electron/autoUpdate/BiBox%202.0%202.4.12.deb
 	sha512sums = 643204267be79fd60b55558e706db9b92a30ebef6c5500708320bdaae134a35461e5bec37eacb0c7d0bedf3a4a78370427ce40663f45344441f9dfb7fd01e939
 

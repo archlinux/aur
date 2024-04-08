@@ -11,6 +11,7 @@ url="https://www.bibox.schule"
 license=('custom')
 depends=('org.freedesktop.secrets' 'gtk3' 'ffmpeg' 'pango' 'xorg-xrandr')
 makedepends=('tar')
+provides=('bibox2')
 optdepends=()
 conflicts=()
 source=("https://static.bibox2.westermann.de/electron/autoUpdate/BiBox%202.0%202.4.12.deb")
