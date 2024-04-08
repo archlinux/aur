@@ -1,0 +1,22 @@
+pkgbase = finance-manager-git
+	pkgdesc = Simple application to manager revenue and expenses.
+	pkgver = 0.1.0.r0.g01017a8
+	pkgrel = 1
+	url = https://github.com/programmingKyle/finance-manager
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = base-devel
+	makedepends = gcc
+	depends = electron29
+	provides = finance-manager=0.1.0
+	conflicts = finance-manager
+	source = finance-manager.git::git+https://github.com/programmingKyle/finance-manager.git
+	source = finance-manager.sh
+	sha256sums = SKIP
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+
+pkgname = finance-manager-git
