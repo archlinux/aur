@@ -1,0 +1,22 @@
+pkgbase = gottengeography
+	pkgdesc = Easy to use photo geotagging application for the GNOME desktop
+	pkgver = 2.5
+	pkgrel = 14
+	url = https://launchpad.net/gottengeography
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-distutils-extra
+	makedepends = python-setuptools
+	depends = libchamplain
+	depends = libgexiv2
+	depends = python-dateutil
+	depends = python-gobject
+	source = git+https://git.launchpad.net/gottengeography#commit=7ea816fcaad366a4c6be6b16725fc3e1bff57e4d
+	source = gottengeography.appdata.xml
+	source = fixes.patch
+	sha256sums = SKIP
+	sha256sums = 8cf14124c72dd6213254ce0f3a8404916f30f2bd9b9350530760d77825632d75
+	sha256sums = 6adfc419b27dd2f10e787e5296d8904612aaf0cdca0d1f9949d37d42daf86047
+
+pkgname = gottengeography

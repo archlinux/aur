@@ -2,13 +2,13 @@
 
 pkgname=gottengeography
 pkgver=2.5
-pkgrel=13
+pkgrel=14
 pkgdesc='Easy to use photo geotagging application for the GNOME desktop'
 arch=('any')
 url='https://launchpad.net/gottengeography'
 license=('GPL3')
 depends=('libchamplain' 'libgexiv2' 'python-dateutil' 'python-gobject')
-makedepends=('git' 'python-distutils-extra')
+makedepends=('git' 'python-distutils-extra' 'python-setuptools')
 _commit=7ea816fcaad366a4c6be6b16725fc3e1bff57e4d  # master
 source=("git+https://git.launchpad.net/gottengeography#commit=$_commit"
         'gottengeography.appdata.xml'
