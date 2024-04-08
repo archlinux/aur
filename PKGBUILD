@@ -1,13 +1,12 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wayfire-plugins-extra
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Additional plugins for Wayfire'
 url=https://wayfire.org
 arch=(x86_64)
 license=(MIT)
-conflicts=("${pkgname}-git"
-           wayfire-plugins-focus-request
+conflicts=(wayfire-plugins-focus-request
            wayfire-plugins-windecor
            wayfire-plugins-shadows-git)
 depends=('wayfire>=0.8.1' cairo glibmm iio-sensor-proxy librsvg)
