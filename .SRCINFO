@@ -1,0 +1,17 @@
+pkgbase = android-aarch64-libdeflate
+	pkgdesc = Heavily optimized library for DEFLATE/zlib/gzip compression and decompression (Android aarch64)
+	pkgver = 1.20
+	pkgrel = 1
+	url = https://github.com/ebiggers/libdeflate
+	arch = any
+	license = MIT
+	makedepends = android-cmake
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/ebiggers/libdeflate/archive/refs/tags/v1.20.tar.gz
+	md5sums = 14494b58c42b3bf65b4c469a8e4252ab
+
+pkgname = android-aarch64-libdeflate
