@@ -5,7 +5,7 @@
 
 pkgname=xkcdpass
 _pkgname='XKCD-password-generator'
-pkgver=1.19.8
+pkgver=1.19.9
 pkgrel=1
 pkgdesc='Generate secure passphares inspired by XKCD'
 arch=('any')
@@ -17,7 +17,7 @@ checkdepends=('python-nose')
 optdepends=('cracklib: alternative wordlist'
     'words: alternative wordlist')
 source=("$url/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('8e0b4d48edb9d3ec70fd119849e160aea0c52f765e38391883c6a02257367ae6')
+sha256sums=('f0abdc934b7215533c5632efe1f9b9c48204cd12489274ce3c645689d22c3abe')
 
 build() {
     cd "$_pkgname-$pkgname-$pkgver"
