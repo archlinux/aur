@@ -1,14 +1,14 @@
 pkgbase = r-snowfall
-	pkgdesc = Easier cluster computing (based on snow).
+	pkgdesc = Easier Cluster Computing (Based on 'snow')
 	pkgver = 1.84.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=snowfall
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-2.0-or-later
 	depends = r-snow
 	optdepends = r-rmpi
 	source = https://cran.r-project.org/src/contrib/snowfall_1.84-6.3.tar.gz
-	sha256sums = 2641932b01041e34b7afb1261f649755b4c8d6560080e0e2ee549ffdf3b8b143
+	md5sums = 4ca758a26dd4e862cc9ffd43ae16b2d3
+	b2sums = f641aeef1a201c75424f61db662bf523fc277ac4d4abfb113588f52757c5b93c77af17bf97282dbd85604ff7099e9b62f6f80b7a672064447a9dc5512850e61e
 
 pkgname = r-snowfall
