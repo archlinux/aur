@@ -1,7 +1,7 @@
 pkgbase = zswap-cli-git
 	pkgdesc = Command-line tool to control ZSwap Linux kernel module
 	pkgver = 0.9.1.r14.g224fdea
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xvitaly/zswap-cli
 	arch = x86_64
 	license = MIT
