@@ -1,0 +1,21 @@
+pkgbase = python-reportlab3
+	pkgdesc = A proven industry-strength PDF generating solution
+	pkgver = 3.6.12
+	pkgrel = 1
+	url = https://www.reportlab.com/
+	arch = x86_64
+	license = BSD
+	makedepends = freetype2
+	makedepends = python-pillow
+	makedepends = mercurial
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = freetype2
+	depends = python-pillow
+	source = https://files.pythonhosted.org/packages/source/r/reportlab/reportlab-3.6.12.tar.gz
+	b2sums = 106e0ede2b3c039152ae5a39e0aa5b3bf0239789ba08630f751260b75305973bff13730e3f7419340514a4f0174223dddf522cd9408b8dd04fbe39b84979b152
+
+pkgname = python-reportlab3
