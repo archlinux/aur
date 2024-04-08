@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-3ds-movable">S
+    <comment>Nintendo 3DS Private Key</comment>
+    <comment xml:lang="en_GB">Nintendo 3DS Private Key</comment>
+    <generic-icon name="application-x-executable"/>
+    <magic priority="60">
+      <match type="string" offset="0" value="SEED"/>
+    </magic>
+    <glob pattern="*.sed"/>
+  </mime-type>
+  <mime-type type="application/x-3ds-payload">S
+    <comment>Nintendo 3DS FIRM Payload</comment>
+    <comment xml:lang="en_GB">Nintendo 3DS FIRM Payload</comment>
+    <generic-icon name="application-x-executable"/>
+    <glob pattern="*.firm"/>
+    <glob pattern="*.FIRM"/>
+  </mime-type>
+  <mime-type type="application/x-3ds-romfs">S
+    <comment>Nintendo 3DS RomFS</comment>
+    <comment xml:lang="en_GB">Nintendo 3DS RomFS</comment>
+    <generic-icon name="application-x-executable"/>
+    <magic priority="60">
+      <match type="string" offset="0" value="IVFC"/>
+    </magic>
+    <glob pattern="*.romfs"/>
+  </mime-type>
+  <mime-type type="application/x-ham-vhw">S
+    <comment>Commodore 64 Disk Image</comment>
+    <comment xml:lang="en_GB">Commodore 64 Disk Image</comment>
+    <generic-icon name="application-x-raw-disk-image"/>
+    <glob pattern="*.d64"/>
+    <glob pattern="*.D64"/>
+  </mime-type>
+  <mime-type type="application/x-gbfs">S
+    <comment>PinEight GBFS Archive</comment>
+    <comment xml:lang="en_GB">PinEight GBFS ARchive</comment>
+    <generic-icon name="application-zip"/>
+    <magic priority="100">
+      <match type="string" offset="0" value="PinEightGBFS"/>
+    </magic>
+    <glob pattern="*.gbfs"/>
+    <glob pattern="*.GBFS"/>
+  </mime-type>
+  <mime-type type="application/x-ham-vho">S
+    <comment>VisualHAM Object List</comment>
+    <comment xml:lang="en_GB">VisualHAM Object List</comment>
+    <generic-icon name="application-x-executable"/>
+    <glob pattern="*.vho"/>
+    <glob pattern="*.VHO"/>
+  </mime-type>
+  <mime-type type="application/x-ham-vhw">S
+    <comment>VisualHAM Workspace</comment>
+    <comment xml:lang="en_GB">VisualHAM Workspace</comment>
+    <generic-icon name="application-x-executable"/>
+    <glob pattern="*.vhw"/>
+    <glob pattern="*.VHW"/>
+  </mime-type>
+  <mime-type type="application/x-nintendo-exefs">S
+    <comment>Nintendo Executable Filesystem</comment>
+    <comment xml:lang="en_GB">Nintendo Executable Filesystem</comment>
+    <generic-icon name="application-x-raw-disk-image"/>
+    <glob pattern="*.exefs"/>
+  </mime-type>
+  <mime-type type="application/x-ps-self">S
+    <comment>PlayStation Signed ELF</comment>
+    <comment xml:lang="en_GB">PlayStation Signed ELF</comment>
+    <generic-icon name="application-x-executable"/>
+    <glob pattern="*.self"/>
+    <glob pattern="*.SELF"/>
+  </mime-type>
+  <mime-type type="application/x-ps-self">S
+    <comment>Signed PlayStation Relocatable eXecutable</comment>
+    <comment xml:lang="en_GB">Signed PlayStation Relocatable eXecutable</comment>
+    <generic-icon name="application-x-executable"/>
+    <glob pattern="*.sprx"/>
+    <glob pattern="*.SPRX"/>
+  </mime-type>
+  <mime-type type="application/x-wiiu-wux">S
+    <comment>Wii U Compressed Disc Image</comment>
+    <comment xml:lang="en_GB">Wii U Compressed Disc Image</comment>
+    <generic-icon name="application-x-raw-disk-image"/>
+    <magic priority="60">
+      <match type="string" offset="0" value="WUX0"/>
+    </magic>
+    <glob pattern="*.wux"/>
+    <glob pattern="*.WUX"/>
+  </mime-type>
+  <mime-type type="application/x-xbla-stfs">S
+    <comment>Xbox LIVE Arcade STFS Package</comment>
+    <comment xml:lang="en_GB">Xbox LIVE Arcade STFS Package</comment>
+    <generic-icon name="application-x-executable"/>
+    <magic priority="100">
+      <match type="string" offset="0" value="LIVE"/>
+    </magic>
+  </mime-type>
+</mime-info>
