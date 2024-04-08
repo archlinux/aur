@@ -11,10 +11,11 @@ pkgrel=16
 pkgdesc='Mouse wheel configuration tool for XFree86/Xorg (have patches from debian, fixed @Exclude command)'
 arch=('x86_64')
 url='https://salsa.debian.org/debian/imwheel'
-license=('GPL')
+license=('GPL-2.0-or-later')
 makedepends=('git')
-depends=('libxtst' 'libxmu')
+depends=('libxtst' 'libxmu' 'glibc' 'libx11' 'sh')
 provides=('imwheel')
+conflicts=('imwheel')
 install='imwheel.install'
 backup=('etc/X11/imwheel/imwheelrc'
         'etc/X11/imwheel/startup.conf')

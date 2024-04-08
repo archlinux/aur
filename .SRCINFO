@@ -5,11 +5,15 @@ pkgbase = imwheel-patched
 	url = https://salsa.debian.org/debian/imwheel
 	install = imwheel.install
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = git
 	depends = libxtst
 	depends = libxmu
+	depends = glibc
+	depends = libx11
+	depends = sh
 	provides = imwheel
+	conflicts = imwheel
 	backup = etc/X11/imwheel/imwheelrc
 	backup = etc/X11/imwheel/startup.conf
 	source = git+https://salsa.debian.org/debian/imwheel.git/#commit=1d6940c1630c05292039a75e4b3de3b3e5dab518
