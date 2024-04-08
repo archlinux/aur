@@ -1,6 +1,6 @@
 # Maintainer: Kittyy <laosnepada3@proton.me>
 pkgname='smol'
-pkgver=1.1.0
+pkgver=1.2
 pkgrel=1
 pkgdesc="Simple Fetch Script"
 arch=('x86_64')
@@ -25,4 +25,14 @@ build() {
 package() {
 	cd smol
 	sudo mv smol /usr/bin/
+	if [[ -d ~/.config/smol ]]; then
+		if [[ -e ~/.config/smol/config ]]; then
+			printf ""
+		else
+			mv config ~/.config/smol/
+		fi
+	else
+		mkdir ~/.config/smol/
+		mv config ~/.config/smol/
+	fi
 }
