@@ -1,27 +1,28 @@
-# Maintainer: Cory Jorgensen <coryj@gmx.com>
+# Maintainer: Scott Cheng <aur@chengscott.io>
+# Contributor: Cory Jorgensen <coryj@gmx.com>
 
-pkgname="libtorch-cuda"
-pkgver=2.1.0
+pkgname=libtorch-cuda
+_name="${pkgname%%-cuda}"
+pkgver=2.2.2
+_cuver=121
 pkgrel=1
-pkgdesc="Pytorchs C++ direct implementation"
+pkgdesc='PyTorch C++ API'
 arch=('x86_64')
-url="www.pytorch.org"
+url='pytorch.org'
 license=('BSD')
-depends=('cuda' 'cuda-tools' 'onednn' 'cudnn' 'cmake')
-provides=()
-conflicts=()
-source=("${pkgname}-${pkgver}.zip::https://download.pytorch.org/libtorch/cu121/libtorch-cxx11-abi-shared-with-deps-2.1.0%2Bcu121.zip")
-sha512sums=('51d6558149a63eb05c2cc4363f1eb0222e81b14003d091e604235eceb4927f85e346ed61ab9d738ddad26b470d95c73efcdcc4335240f28cd418c7ac0789f9e4')
+depends=('cuda' 'cudnn' 'cmake' 'onednn')
+provides=("${_name}")
+conflicts=("${_name}")
+source=("${pkgname}-${pkgver}.zip"::"https://download.pytorch.org/libtorch/cu${_cuver}/libtorch-shared-with-deps-${pkgver}%2Bcu${_cuver}.zip")
+sha512sums=('c8fc08ec5a195292570e72f65f5ed9c240206cf8c5ed4baf3963bd5654feace476ff7787532e685a2e18a256cfb8332e7b6a20d467bbfbfc8a7c8d1137df3589')
+options=(!strip libtool staticlibs)
 
 package() {
-  rm "${pkgname}-${pkgver}.zip"
-  install -d "${pkgdir}/usr/lib/"
   rm ${srcdir}/libtorch/lib/libcudnn*
-  mv ${srcdir}/libtorch/lib/* ${pkgdir}/usr/lib/
-  install -d ${pkgdir}/usr/include/
   rm ${srcdir}/libtorch/include/dnnl*
-  mv ${srcdir}/libtorch/include/* ${pkgdir}/usr/include/
-  install -d ${pkgdir}/usr/share/cmake/
-  mv ${srcdir}/libtorch/share/cmake/* ${pkgdir}/usr/share/cmake/
-  rm -r ${srcdir}
+
+  install -vDm755 "${srcdir}/libtorch/lib/"* -t "${pkgdir}/usr/lib"
+  install -vd "${pkgdir}/usr/include" "${pkgdir}/usr/share/cmake"
+  cp -r "${srcdir}/libtorch/include/"* "${pkgdir}/usr/include/"
+  cp -r "${srcdir}/libtorch/share/cmake/"* "${pkgdir}/usr/share/cmake/"
 } 
