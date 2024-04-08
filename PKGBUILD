@@ -10,10 +10,9 @@ url="https://github.com/xvitaly/${_pkgname}"
 license=('MIT')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-depends=('boost' 'sdbus-cpp' 'systemd')
+depends=('boost' 'fmt' 'sdbus-cpp' 'systemd')
 makedepends=('cmake' 'gcc' 'git' 'ninja' 'pandoc')
-optdepends=('fmt: Open-source formatting library for C++'
-            'semver: Semantic versioning for C++')
+optdepends=('semver: Semantic versioning for C++')
 backup=('etc/zswap-cli/zswap-cli.conf')
 source=("${_pkgname}::git+$url")
 sha512sums=('SKIP')
