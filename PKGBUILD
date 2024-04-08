@@ -1,4 +1,4 @@
-# Maintainer: Max Harmathy <max.harmathy@web.de>
+# Maintainer: Max Harmathy <harmathy@secure.mailbox.org>
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 # Contributor: Patrick McCarty <pnorcks at gmail dot com>
 # Contributor: Jimmy Tang <jtang@tchpc.tcd.ie>
