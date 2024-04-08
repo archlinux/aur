@@ -1,6 +1,6 @@
-pkgbase = labwc-git
+pkgbase = labwc-atomic-tearing-git
 	pkgdesc = stacking wayland compositor with look and feel from openbox (git version)
-	pkgver = 0.6.6.r21.gaab8061d
+	pkgver = 0.7.1.r94.g6e7f1b43
 	pkgrel = 1
 	url = https://github.com/labwc/labwc
 	arch = x86_64
@@ -13,14 +13,15 @@ pkgbase = labwc-git
 	depends = librsvg
 	depends = pango
 	depends = seatd
-	depends = wlroots>=0.17
-	depends = wlroots<0.18
+	depends = wlroots-hidpi-xprop
 	depends = wayland
 	depends = xorg-xwayland
 	optdepends = bemenu: default launcher via Alt+F3
 	provides = labwc
 	conflicts = labwc
 	source = git+https://github.com/labwc/labwc.git
+	source = labwc-atomic-tearing.patch
 	md5sums = SKIP
+	md5sums = 9d737e6f4cc42aacbf2018aa912bd0b8
 
-pkgname = labwc-git
+pkgname = labwc-atomic-tearing-git
