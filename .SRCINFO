@@ -62,8 +62,8 @@ pkgbase = xorg-server-bug865-bug1578
 	sha512sums = de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22
 	sha512sums = c3b541c7ac95c94f682577cacedc06e79427003a870cde844056a7662087873b59dc06933552bb867b16fc0387f8a061672df780454769f26aa3e53b13a94edf
 
-pkgname = xorg-server-bug865-bug1578
-	pkgdesc = Xorg X server with the patch for freedesktop bug 865 (need to kick hotkeys on release, not press) and bug 1578
+pkgname = xorg-server-bug865-issue1578
+	pkgdesc = Xorg X server with the patch for freedesktop bug 865 (need to kick hotkeys on release, not press) and issue 1578 (might ignore first scroll when direction is changed)
 	install = xorg-server.install
 	depends = libepoxy
 	depends = libxfont2
