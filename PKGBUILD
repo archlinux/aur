@@ -18,13 +18,14 @@ fi
 
 pkgname=${_pkgname}-utils-staging-git
 pkgver=2.2.3.r12.gdeb7a84231
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace utilities for the Zettabyte File System (release staging branch)."
 arch=("i686" "x86_64" "aarch64")
 url="https://zfsonlinux.org/"
 license=('CDDL-1.0')
 optdepends=('python: for arcstat/arc_summary/dbufstat')
 conflicts=("${_pkgname}-utils")
+makedepends=("git")
 source=("${_pkgname}::git+${_git_repo}#${_git_branch}"
         "zfs-node-permission.conf"
         "zfs.initcpio.install"

@@ -1,12 +1,13 @@
 pkgbase = zfs-utils-staging-git
 	pkgdesc = Userspace utilities for the Zettabyte File System (release staging branch).
 	pkgver = 2.2.3.r12.gdeb7a84231
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zfsonlinux.org/
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = CDDL-1.0
+	makedepends = git
 	optdepends = python: for arcstat/arc_summary/dbufstat
 	conflicts = zfs-utils
 	backup = etc/default/zfs
