@@ -10,7 +10,7 @@ pkgbase = rc-local
 	backup = etc/rc.local
 	source = rc.local
 	source = rc-local.service
-	sha256sums = 8aa661c15cf9a35c32c79055bf69ab2d16354128ddd67a1bce0a7e48fe26f2e3
-	sha256sums = f8c4f7a72833bb568bd4848ad16442cb3150b438184e0a6d30348fb518f969ae
+	sha512sums = 4c3f8498957d47cf2c6ed6d755f6d6a6e42a59ac176b5a752ea4cdd23418d009c180bd53609bc34a1b11f720d71e702d71b4014ae4f98008c89f86323dc9afab
+	sha512sums = 85c7eafe5d79c4829b48c4df867e28bdb0b4464cab3581fd67e288648d416ceb69fe4e6b5193f86517f1e9578ef05fba8f708097625de6b903c6794fbec5078e
 
 pkgname = rc-local
