@@ -1,7 +1,7 @@
 pkgbase = sublime-text-3
 	pkgdesc = Sophisticated text editor for code, html and prose (legacy version)
 	pkgver = 3.3211
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.sublimetext.com/3
 	install = sublime-text-3.install
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = sublime-text-3
 	depends = libpng
 	depends = gtk2
 	source = https://download.sublimetext.com/sublime_text_3_build_3211_x64.tar.bz2
-	sha256sums = 0b3c8ca5e6df376c3c24a4b9ac2e3b391333f73b229bc6e87d0b4a5f636d74ee
+	source = sublime-text-3.sh
+	sha512sums = a6a068119eff95c5360e9ccbe1d845e7a93e4ad13b3659073752a7bd0e87f4691555820185514875649e677a4e8702e2338f74f5584fc80f69c16b323685d6f1
+	sha512sums = ac56e9b7dddaebb3d222795cfc644109c93cc3f79695b8f9ee56022c74fe04a1134dd54cab07c74ff1f96b783cb3dbc026c16095552f1d2dd83115ea274dc2e9
 
 pkgname = sublime-text-3
