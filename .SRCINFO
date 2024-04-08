@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-inputstream-adaptive-git
 	pkgdesc = InputStream client for adaptive streams for Kodi 21+
-	pkgver = 21.4.0.Omega.r23.gc35451d2
+	pkgver = 21.4.4.Omega.r2.ga82e3eb8
 	pkgrel = 1
 	url = https://github.com/xbmc/inputstream.adaptive
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = kodi-addon-inputstream-adaptive-git
 	provides = kodi-addon-inputstream-adaptive
 	conflicts = kodi-addon-inputstream-adaptive
 	source = kodi-addon-inputstream-adaptive-git::git+https://github.com/xbmc/inputstream.adaptive.git#branch=Omega
-	source = xbmc-bento4::git+https://github.com/xbmc/Bento4.git#branch=release/v1.6.0-639-kodi
+	source = xbmc-bento4::git+https://github.com/xbmc/Bento4.git#branch=release/v1.6.0-641-kodi
 	sha256sums = SKIP
 	sha256sums = SKIP
 
