@@ -1,3 +1,0 @@
-post_install() {
-  useradd --home-dir / --shell /usr/bin/nologin oauth2-proxy
-}
