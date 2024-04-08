@@ -36,29 +36,24 @@ pkgbase = wayfire-hidpi-xprop-git
 	depends = wayland
 	depends = wayland-protocols
 	depends = libdisplay-info
+	depends = wlroots-hidpi-xprop>=0.17
+	depends = wlroots-hidpi-xprop<0.18
 	optdepends = xorg-xeyes
 	optdepends = xorg-xwayland-hidpi-xprop: High DPI scaling of Xwayland applications
 	provides = wayfire=0.8.1.r248.gcf3dcaae
 	provides = wayfire-git=0.8.1.r248.gcf3dcaae
 	provides = wayfire-hidpi-xprop
-	provides = wlroots=0.17.2
 	provides = wf-config
-	provides = wlroots-git=0.17.2
-	provides = wlroots-hidpi-xprop=0.17.2
 	provides = wf-config-git
-	provides = libwlroots.so=0.17.2
 	conflicts = wayfire
-	conflicts = wlroots
 	conflicts = wf-config
 	source = git+https://github.com/WayfireWM/wayfire
-	source = 0001-xwayland-support-HiDPI-scale.patch
-	source = 0002-Fix-configure_notify-event.patch
-	source = 0003-Fix-size-hints-under-Xwayland-scaling.patch
-	source = 4629.patch
+	source = git+https://github.com/WayfireWM/wf-config
+	source = git+https://github.com/WayfireWM/wf-touch
+	source = git+https://github.com/WayfireWM/wf-utils.git
 	sha256sums = SKIP
-	sha256sums = ec59d48108595c06537a5a1daae6f124cac5a783025e03417cb2c1b052b321d0
-	sha256sums = 1314d0ee63a4249698791d86cce5e6cdb4f005b81bbb1c6a747578d2a9223795
-	sha256sums = c08dd62a1786eeb7506f1839bfcbba791502360392c929e620244f70c8ca5b61
-	sha256sums = 79fe970432e445e8292e1ab8ee6f47545afc7248b3121e6ff5a9f7f251c049ee
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = wayfire-hidpi-xprop-git

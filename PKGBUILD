@@ -14,25 +14,24 @@ depends=('cairo' 'pango' 'doctest' 'freetype2' 'glm' 'nlohmann-json'
          'libpng' 'libxkbcommon' 'libxml2' 'pixman' 'polkit'
          'pkgconf' 'seatd' 'xcb-util-errors' 'xcb-util-renderutil'
          'xcb-util-wm' 'xorg-xwayland' 'wayland' 'wayland-protocols'
-         'libdisplay-info')
+         'libdisplay-info' 'wlroots-hidpi-xprop>=0.17'
+         'wlroots-hidpi-xprop<0.18')
 makedepends=('git' 'glslang' 'meson' 'ninja' 'cmake' 'vulkan-headers')
 optdepends=('xorg-xeyes'
             'xorg-xwayland-hidpi-xprop: High DPI scaling of Xwayland applications')
-provides=("wayfire=$pkgver" "wayfire-git=$pkgver" "${pkgname%-git}" "wlroots=$_wlrootsver" 'wf-config' "wlroots-git=$_wlrootsver" "wlroots-hidpi-xprop=$_wlrootsver" 'wf-config-git' "libwlroots.so=$_wlrootsver")
-conflicts=('wayfire' 'wlroots' 'wf-config')
+provides=("wayfire=$pkgver" "wayfire-git=$pkgver" "${pkgname%-git}" 'wf-config' 'wf-config-git')
+conflicts=('wayfire' 'wf-config')
 replaces=()
 options=()
 
 source=('git+https://github.com/WayfireWM/wayfire'
-        '0001-xwayland-support-HiDPI-scale.patch'
-        '0002-Fix-configure_notify-event.patch'
-        '0003-Fix-size-hints-under-Xwayland-scaling.patch'
-        '4629.patch')
+        'git+https://github.com/WayfireWM/wf-config'
+        'git+https://github.com/WayfireWM/wf-touch'
+        'git+https://github.com/WayfireWM/wf-utils.git')
 sha256sums=('SKIP'
-            'ec59d48108595c06537a5a1daae6f124cac5a783025e03417cb2c1b052b321d0'
-            '1314d0ee63a4249698791d86cce5e6cdb4f005b81bbb1c6a747578d2a9223795'
-            'c08dd62a1786eeb7506f1839bfcbba791502360392c929e620244f70c8ca5b61'
-            '79fe970432e445e8292e1ab8ee6f47545afc7248b3121e6ff5a9f7f251c049ee')
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
 	cd "$srcdir/wayfire"
@@ -42,13 +41,12 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/wayfire/"
-    git submodule update --init --recursive
-    cd "$srcdir/wayfire/subprojects/wlroots/"
-    git revert -n 18595000f3a21502fd60bf213122859cc348f9af
-    patch -Np1 -i "$srcdir/0001-xwayland-support-HiDPI-scale.patch"
-    patch -Np1 -i "$srcdir/0002-Fix-configure_notify-event.patch"
-    patch -Np1 -i "$srcdir/0003-Fix-size-hints-under-Xwayland-scaling.patch"
-    patch -Np1 -i "$srcdir/4629.patch"
+    git submodule init
+    git config submodule.subprojects/wlroots.update none
+    git config submodule.subprojects/wf-config.url "$srcdir/wf-config"
+    git config submodule.subprojects/wf-touch.url "$srcdir/wf-touch"
+    git config submodule.subprojects/wf-utils.url "$srcdir/wf-utils"
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
@@ -56,7 +54,7 @@ build() {
     arch-meson \
         --buildtype=release \
         -Dxwayland=auto \
-        -Duse_system_wlroots=disabled \
+        -Duse_system_wlroots=enabled \
         -Duse_system_wfconfig=disabled \
         -Db_lto=true \
         -Db_pie=true \
