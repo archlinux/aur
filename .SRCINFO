@@ -9,6 +9,6 @@ pkgbase = adw-gtk3
 	makedepends = meson
 	makedepends = sassc
 	source = git+https://github.com/lassekongo83/adw-gtk3.git#tag=v5.3
-	md5sums = SKIP
+	sha256sums = 541fa5747a6d0934660539d357eb3a1ce2723ef97045c002e55ee3b9da38b1ac
 
 pkgname = adw-gtk3

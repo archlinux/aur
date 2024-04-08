@@ -10,7 +10,7 @@ url=https://github.com/lassekongo83/adw-gtk3
 license=('LGPL-2.1-only')
 makedepends=(git meson sassc)
 source=("git+$url.git#tag=v$pkgver")
-md5sums=(SKIP)
+sha256sums=('541fa5747a6d0934660539d357eb3a1ce2723ef97045c002e55ee3b9da38b1ac')
 
 build() {
 	arch-meson "$pkgname" build
