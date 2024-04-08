@@ -1,4 +1,5 @@
-# Maintainer: AndyRTR <andyrtr@archlinux.org>
+# Maintainer: detiam <dehe_tian@outlook.com>
+# Contributor: AndyRTR <andyrtr@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgbase=xorg-server-bug865-bug1578
