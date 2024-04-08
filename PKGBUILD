@@ -73,7 +73,7 @@ _subarch=39
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=6.8.2
+pkgver=6.8.4
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -97,10 +97,10 @@ options=(
   !strip
 )
 _srcname=linux-${pkgver}
-_kernel_base_commit=03a22b591c5443ba269e8570c6fef411251fe1b8
-_kernel_arch_tag=${pkgver}-arch2
-_arch_config_commit=242ea4a023d5f190515cdcc15667f34209416ca8
-_prjc_version=6.8-r3
+_kernel_base_commit=4fa38f4b7264a40f029ea39fcc136400ac6bfdb6
+_kernel_arch_tag=${pkgver}-arch1
+_arch_config_commit=1b0c0b620d3d8838bf95cb5c80e8b8bdc070466c
+_prjc_version=6.8-r4
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20240221.2
 source=(
@@ -116,12 +116,12 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('f057c2512040600fbf0df67cf9c7200aee0c06b82b3cf749be8c5685844d2662a585ce17685c7af880c0d9dbbbd81302e5a1fa41c3dbd39869123121a0e82dc2'
+b2sums=('cf58732397bfa11988b79901092887d53c3367d09f63da51ebdcc83518be3a7e9a638fbbb1ff080cd7abed633fadff03d1d7a3928b772de57b14e46e552f9462'
         'SKIP'
-        '7bcda4c4c80af28160dae20dac00eaffff41b1e4f1a053893b2394d99b2a0f7ec694fbe8a2b7a3c293f541ec17098f1cbffc11c1557e3a628239b1c7a62a00e2'
-        'be283908cba19ff7d900992af5291131c75a680f9900257861c4ded454372d07ed84cff65cc93f3547ac16dfec695e2b41c0131d65c539bbc65584e006b12ef7'
+        '4a712da6b32c9c9716d4797076a01f22035f3d28c56109d4bbcaf095847b0302bb2eda5ff51bca3e59cfe68befefc5c90dcfe3dc7a73064d3159421f705a5c4b'
+        'f791596c0e92ec17e8f71350f2c9ea2990818ff804fb79f1244cf243bce893be4bc7a373369c1a417e6aaccb87a70101f28d079ba00b90b978249c9f1e95e11d'
         '221de3283857198a908a28b837cb542c5cf4e29868539f3f3c2c783c07c59a6868f3b1d4fe1e023e986fd3f9d17bd2e4f68b7c86fa5da76fcde25e5955b3c74d'
-        '262e9067d4b1282be6ceefca0a7f126b5b539cdea0aa385dfc581f495ca14189d0cc8e0e49553821b07d98476e89c205c33e944159eac8a9220b3f0e26915612'
+        '6ac6647f03fbe7e7cdce390f18be2e005afdab0153f4817b1ce233eb7141c10cd52f08f612577fd0b97f9dc1ddcf89d87ede274c8d5eb9e6532bef6af1306066'
         '07318d94a39ffe5fd252836a7a0d872c217bf57da25cab0411f04676273027763237b9eb8c83bf808c77e2f1b211469f740baf28fe8b6b739dcaf556b54a4ddb')
 
 _kernelname=${pkgbase#linux}
