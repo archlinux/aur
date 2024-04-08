@@ -4,14 +4,14 @@
 
 # shellcheck disable=SC1090,SC2207
 pkgname=pince-git
-pkgver=r1472.a548c73
+pkgver=r1477.0e0ae0b
 pkgrel=1
 pkgdesc="A Linux reverse engineering tool inspired by Cheat Engine."
 arch=('any')
 url="https://github.com/korcankaraokcu/PINCE"
-license=('GPL3')
-depends=('base-devel' 'python3' 'gdb')
-makedepends=('git' 'qt6-tools' 'sed')
+license=('GPL-3.0-or-later WITH CC-BY-3.0')
+depends=() # follow upstream, set this later
+makedepends=('python-pip' 'qt6-tools' 'lsb-release' 'pkgconf' 'git' 'sed')
 optdepends=(
 	'qt6-wayland: wayland support'
 )
@@ -22,14 +22,19 @@ _installpath='/usr/share/PINCE'
 _installsh='install_pince.sh'
 
 pkgver() {
-	cd "$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$pkgname" || exit 1
+	printf "r%s.%s" \
+		"$(git rev-list --count HEAD)" \
+		"$(git rev-parse --short HEAD)"
 }
 
 prepare() {
 	# Remove ".venv/PINCE" exist check
-	sed -i '/^if \[ ! -d "\.venv\/PINCE" \]; /,/activate$/ s/^/# /' "./$pkgname/PINCE.sh"
-	# Create a simple start script
+	sed -e '/^if \[ ! -d "\.venv\/PINCE" \]; /,/activate$/ s/^/# /' \
+		-e 's|.venv/PINCE/bin/python3|python3|' \
+		-i "./$pkgname/PINCE.sh"
+
+	# Create a start script
 	cat > pince <<- SHELL
 		#!/usr/bin/env bash
 
@@ -44,10 +49,10 @@ prepare() {
 		    echo "If the setting of icon changed, Re-login for setting to take effect."
 		}
 
-		pushd "$_installpath" || exit
+		pushd "$_installpath" || exit 1
 		sh PINCE.sh "\$@"
 		syncicon
-		popd || exit
+		popd || exit 1
 
 		read -p "Press enter to exit..."
 
@@ -55,34 +60,44 @@ prepare() {
 }
 
 build() {
-	cd "$pkgname"
+	cd "$pkgname" || exit 1
+	# Source PKG_NAMES* vars
+	. <(sed -n '/^PKG_NAMES/p' $_installsh)
+
 	# Source functions
 	. <(sed -n '/^exit_on_error() /,/^}/p' $_installsh)
 	. <(sed -n '/^set_install_vars() /,/^}/p' $_installsh)
 	. <(sed -n '/^compile_translations() /,/^}/p' $_installsh)
 	. <(sed -n '/^compile_libscanmem() /,/^}/p' $_installsh)
 	. <(sed -n '/^install_libscanmem() /,/^}/p' $_installsh)
+
 	# Execute functions
 	set_install_vars "Arch Linux" || exit_on_error
 	install_libscanmem || exit_on_error
 	compile_translations || exit_on_error
+
+	# Exports for later
+	export PKG_NAMES PKG_NAMES_PIP
 }
 
 package() {
+	# Install desktop entity
+	install -d "$pkgdir"/usr/share/applications
+	install -Dm755 PINCE.desktop "$pkgdir/usr/share/applications"
 
-	pushd "$pkgname"
+	pushd "$pkgname" || exit 1
 
 	if [[ -e requirements.txt ]]; then
 		# Get $PKG_NAMES_PIP from requirements.txt
-		PKG_NAMES_PIP=$(sed 's/=.*//g' requirements.txt | tr '[:upper:]' '[:lower:]')
-	else
-		# Source PKG_NAMES* vars
-		. <(sed -n '/^PKG_NAMES/p' $_installsh)
+		PKG_NAMES_PIP=$(
+			sed 's/=.*//g' requirements.txt \
+			| tr '[:upper:]' '[:lower:]'
+		)
 	fi
 
-	# Add new python depends
+	# Add new Python depends
 	for pipkg in $PKG_NAMES_PIP; do
-		echo 'Added new depend '"$pipkg"''
+		msg2 'Added new Python depend '"$pipkg"''
 		if [ "$pipkg" == "distorm3" ]; then
 			depends+=("python-distorm")
 		elif [ "$pipkg" == "pygobject" ]; then
@@ -94,7 +109,17 @@ package() {
 		else
 			depends+=("python-$pipkg")
 		fi
-	done && depends=($(printf "%s\n" "${depends[@]}" | sort -u))
+	done
+
+	# Add new depends
+	for dep in $PKG_NAMES; do
+		if [[ ! ${makedepends[*]} =~ $dep ]]; then
+			msg2 'Added new depend '"$dep"''
+			depends+=("${dep:-base-devel}")
+		fi
+	done
+
+	depends=($(printf "%s\n" "${depends[@]}" | sort -u))
 
 	# Copy files
 	install -d "$pkgdir/usr/bin"
@@ -105,14 +130,9 @@ package() {
 	cp -r GUI libpince media tr "$pkgdir/$_installpath"
 	cp -r i18n/qm "$pkgdir/$_installpath/i18n"
 
-	popd
+	popd || exit 1
 
 	# Compile Python bytecode
 	# https://wiki.archlinux.org/title/Talk:Python_package_guidelines#Future_of_Python_packaging_in_Arch_Linux?
-	python -m compileall -s "$pkgdir" -p / "$pkgdir"/usr/share
-
-	# Install desktop entity
-	install -d "$pkgdir"/usr/share/applications
-	install -Dm755 PINCE.desktop "$pkgdir/usr/share/applications"
-
+	python -m compileall -q -s "$pkgdir" -p / "$pkgdir"/usr/share
 }
