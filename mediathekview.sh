@@ -8,15 +8,17 @@ if [ -d "$upstream_default" ] && [ ! -d "$data_directory" ]; then
   mv -v "$upstream_default" "$data_directory"
 fi
 
-jvm_params=(
- "-XX:+UseShenandoahGC"
- "-XX:ShenandoahGCHeuristics=compact"
- "-XX:+UseStringDeduplication" 
- "-XX:MaxRAMPercentage=20.0"
- "--add-opens=java.desktop/sun.awt.X11=ALL-UNNAMED"
+java_options=(
+  # the application enforces the use of certain JVM parameters:
+  # https://github.com/mediathekview/MediathekView/blob/14.0.0/src/main/java/mediathek/Main.java#L286
+  -XX:+UseShenandoahGC
+  -XX:ShenandoahGCHeuristics=compact
+  -XX:+UseStringDeduplication
+  -XX:MaxRAMPercentage=25  # use the default 25%
+  --add-opens=java.desktop/sun.awt.X11=ALL-UNNAMED
+  -DexternalUpdateCheck  # disable automatic update check
+  -jar /usr/share/java/mediathekview/MediathekView.jar
 )
+PATH="/usr/lib/jvm/java-JAVA_VERSION-openjdk/bin:${PATH}"
 
-
-PATH="/usr/lib/jvm/java-21-openjdk/bin:${PATH}"
-# requires preview features: https://github.com/mediathekview/MediathekView/issues/528
-java -jar "${jvm_params[@]}" /usr/share/java/mediathekview/MediathekView.jar "$@" "$data_directory"
+exec java "${java_options[@]}" "$@" "$data_directory"
