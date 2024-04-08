@@ -1,6 +1,6 @@
 pkgbase = hdl-dump-git
 	pkgdesc = PlayStation 2 HDLoader image dump/install utility
-	pkgver = latest.r1.gaf15596
+	pkgver = latest.r16.gfd285d0
 	pkgrel = 1
 	url = https://github.com/AKuHAK/hdl-dump
 	arch = x86_64

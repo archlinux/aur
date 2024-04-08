@@ -1,8 +1,8 @@
-# Maintainer: Darjan Krijan (daren) <darjan_krijan@gmx.de>
+# Maintainer: Darjan Krijan [https://disc-kuraudo.eu]
 
 pkgname=hdl-dump-git
 _pkgbasename=hdl-dump
-pkgver=latest.r1.gaf15596
+pkgver=latest.r16.gfd285d0
 pkgrel=1
 pkgdesc="PlayStation 2 HDLoader image dump/install utility"
 arch=('x86_64')
