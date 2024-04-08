@@ -4,7 +4,7 @@
 _wlrootsver=0.17.2
 pkgname=wayfire-hidpi-xprop-git
 pkgver=0.8.1.r248.gcf3dcaae
-pkgrel=2
+pkgrel=3
 pkgdesc="3D wayland compositor, integrating the wlroots hidpi-xprop patch set"
 arch=('x86_64')
 url="https://github.com/WayfireWM/wayfire"
@@ -15,21 +15,19 @@ depends=('cairo' 'pango' 'doctest' 'freetype2' 'glm' 'nlohmann-json'
          'pkgconf' 'seatd' 'xcb-util-errors' 'xcb-util-renderutil'
          'xcb-util-wm' 'xorg-xwayland' 'wayland' 'wayland-protocols'
          'libdisplay-info' 'wlroots-hidpi-xprop>=0.17'
-         'wlroots-hidpi-xprop<0.18')
+         'wlroots-hidpi-xprop<0.18' 'wf-config-git')
 makedepends=('git' 'glslang' 'meson' 'ninja' 'cmake' 'vulkan-headers')
 optdepends=('xorg-xeyes'
             'xorg-xwayland-hidpi-xprop: High DPI scaling of Xwayland applications')
-provides=("wayfire=$pkgver" "wayfire-git=$pkgver" "${pkgname%-git}" 'wf-config' 'wf-config-git')
-conflicts=('wayfire' 'wf-config')
+provides=("wayfire=$pkgver" "wayfire-git=$pkgver" "${pkgname%-git}")
+conflicts=('wayfire')
 replaces=()
 options=()
 
 source=('git+https://github.com/WayfireWM/wayfire'
-        'git+https://github.com/WayfireWM/wf-config'
         'git+https://github.com/WayfireWM/wf-touch'
         'git+https://github.com/WayfireWM/wf-utils.git')
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP')
 
@@ -42,8 +40,8 @@ pkgver() {
 prepare() {
     cd "$srcdir/wayfire/"
     git submodule init
+    git config submodule.subprojects/wf-config.update none
     git config submodule.subprojects/wlroots.update none
-    git config submodule.subprojects/wf-config.url "$srcdir/wf-config"
     git config submodule.subprojects/wf-touch.url "$srcdir/wf-touch"
     git config submodule.subprojects/wf-utils.url "$srcdir/wf-utils"
     git -c protocol.file.allow=always submodule update
@@ -55,7 +53,7 @@ build() {
         --buildtype=release \
         -Dxwayland=auto \
         -Duse_system_wlroots=enabled \
-        -Duse_system_wfconfig=disabled \
+        -Duse_system_wfconfig=enabled \
         -Db_lto=true \
         -Db_pie=true \
         -Dprint_trace=false \
