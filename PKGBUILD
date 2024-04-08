@@ -33,12 +33,6 @@ pkgver() {
   echo "${tag#v}.r${revs}.g${abbrev}"
 }
 
-#prepare() {
-#  cd ninja
-#  git pull --no-edit https://github.com/intelfx/ninja \
-#    work/jobserver-fifo-1.11.1
-#}
-
 build() {
   cmake \
     -S ninja \
