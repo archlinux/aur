@@ -1,13 +1,13 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=kibot
-pkgver=2
+pkgver=1.6.5
 pkgrel=1
 epoch=
 pkgdesc="KiCad automation utility"
 arch=('any')
 url="https://github.com/INTI-CMNB/KiBot"
-license=('GPL-3.0')
+license=('AGPL-3.0-or-later')
 groups=()
 depends=(
     blender
@@ -40,24 +40,34 @@ depends=(
     python-yaml
     xorg-server-xvfb
     )
-makedepends=("python-setuptools")
+makedepends=('python-build'
+    'python-installer'
+    'python-setuptools'
+    'python-wheel'
+    'git')
 checkdepends=(python-pytest)
 optdepends=('kicad-interactivehtmlbom: Interactive HTML BOM generation plugin for KiCad'
     'kicad-library: KiCad symbol, footprint and template libraries'
     'kicad-library-3d: KiCad 3D model libraries')
-provides=()
-conflicts=(kibot-git)
+provides=(kibot)
+conflicts=(kibot kibot-git)
 replaces=()
 backup=()
-options=('!strip')
+options=()
 install=
 changelog=
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("KiBot-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('2d0881c0df5e3e61b1e461d04a0ae3c927eb0da3952733caf668b4887d84d748')
+sha256sums=('acc6dab74d446bf5bb7444a9fef34cb31ea231a92ef5f3aa6c17b3ded38ace89')
 #validpgpkeys=()
+
+build() {
+    cd "${srcdir}/KiBot-${pkgver}"
+    python -m build --wheel --no-isolation
+}
 
 package() {
     cd "${srcdir}/KiBot-${pkgver}"
-    python setup.py install --no-compile --root="$pkgdir"
+    # python setup.py install --no-compile --root="$pkgdir"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
