@@ -1,7 +1,26 @@
 post_install() {
+    source /usr/share/crowdsec/wizard.sh -n
+    SILENT=true detect_services
+    SILENT=true TMP_ACQUIS_FILE_SKIP=skip genacquisition
+
     cscli capi register --error
     cscli machines add --auto --force --error
     cscli hub update
+
+    CSCLI_BIN_INSTALLED="/usr/bin/cscli" SILENT=true install_collection
+
+    API=$(cscli config show --key "Config.API.Server")
+    if [ "${API}" = "nil" ]; then
+        LAPI=false
+    else
+        PORT=$(cscli config show --key "Config.API.Server.ListenURI" | cut -d ":" -f2)
+    fi
+    if [ "${LAPI}" = false ] || [ -z "$(ss -nlt "sport = ${PORT}" | grep -v ^State)" ]; then
+        systemctl start crowdsec
+    else
+        echo "Not attempting to start crowdsec, port ${PORT} is already used or lapi was disabled"
+        echo "This port is configured through /etc/crowdsec/config.yaml and /etc/crowdsec/local_api_credentials.yaml"
+    fi
 }
 
 pre_upgrade() {
@@ -9,7 +28,7 @@ pre_upgrade() {
 }
 
 post_upgrade() {
-    if [[ -d /var/lib/crowdsec/backup ]]; then
+    if [ -d /var/lib/crowdsec/backup ]; then
         cscli config restore /var/lib/crowdsec/backup && rm -rf /var/lib/crowdsec/backup
     fi
     cscli hub update
