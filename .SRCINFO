@@ -1,17 +1,17 @@
 pkgbase = r-attempt
 	pkgdesc = Tools for Defensive Programming
 	pkgver = 0.3.1
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=attempt
 	arch = any
 	license = MIT
-	depends = r
 	depends = r-rlang
 	optdepends = r-curl
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/attempt_0.3.1.tar.gz
-	sha256sums = 15159d3d20198c6300874451e925ca154c23e0b6cdd7e05eaf98a3cbe4798ffa
+	md5sums = b4cbba3e4a87008b3aa8c60251576ccc
+	b2sums = ce366713bd58732895e5fa820221587ab88ab815658a8803516a5f836a7698b7fa3c67ee1ebff3b3876684debadff4033def7b9373c312849968c7a19f60a7c9
 
 pkgname = r-attempt

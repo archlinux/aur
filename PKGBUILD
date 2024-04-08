@@ -3,14 +3,13 @@
 _pkgname=attempt
 _pkgver=0.3.1
 pkgname=r-${_pkgname,,}
-pkgver=0.3.1
-pkgrel=4
-pkgdesc='Tools for Defensive Programming'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Tools for Defensive Programming"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
 license=('MIT')
 depends=(
-  r
   r-rlang
 )
 optdepends=(
@@ -20,15 +19,18 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('15159d3d20198c6300874451e925ca154c23e0b6cdd7e05eaf98a3cbe4798ffa')
+md5sums=('b4cbba3e4a87008b3aa8c60251576ccc')
+b2sums=('ce366713bd58732895e5fa820221587ab88ab815658a8803516a5f836a7698b7fa3c67ee1ebff3b3876684debadff4033def7b9373c312849968c7a19f60a7c9')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
