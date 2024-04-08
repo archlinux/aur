@@ -3,7 +3,7 @@
 _pkgbasename=libplacebo
 pkgname=lib32-$_pkgbasename
 pkgver=6.338.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives (32bit)'
 url='https://github.com/haasn/libplacebo'
 arch=('x86_64')
@@ -22,17 +22,18 @@ depends=(
 #        'lib32-xxhash'
         )
 makedepends=(
+        'glad' 
         'meson'
 #        'meson-cross-x86-linux-gnu>=1.0.4'
+        'libglvnd'
         'ninja'
-        'vulkan-headers'
-        'glad' 
         'nuklear'
         'python'
-        'python-mako'
-        'python-setuptools' 
-        'python-markupsafe' 
         'python-jinja'
+        'python-mako'
+        'python-markupsafe' 
+        'python-setuptools' 
+        'vulkan-headers'
         )
 provides=('libplacebo.so')
 source=(
