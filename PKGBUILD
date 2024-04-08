@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CodeDepends
-_pkgver=0.6.5
+_pkgver=0.6.6
 pkgname=r-${_pkgname,,}
-pkgver=0.6.5
-pkgrel=4
+pkgver=0.6.6
+pkgrel=1
 pkgdesc='Analysis of R Code for Reproducible Research and Code Comprehension'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -24,7 +24,7 @@ optdepends=(
   r-runit
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('18067d49d67c3f8f0cca1f3890680dcee9ffc90a0469561c7da074aec68ef350')
+sha256sums=('7f815b03abe573b95ac9ed2e20caa7c5b5370aff710767e897575c2cf52c5857')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
