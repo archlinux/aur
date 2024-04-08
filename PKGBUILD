@@ -1,15 +1,15 @@
-# Maintainer marcs <aur@mg.odd.red>
+# Maintainer marcs <aur (at) mg (dot) odd (dot) red>
 
 _npmname=glslify
 _npmver=7.1.1
 pkgname=nodejs-glslify # All lowercase
 pkgver=7.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A node.js-style module system for GLSL!"
 arch=(any)
 url="https://github.com/stackgl/glslify"
 license=()
-depends=('nodejs' 'npm' )
+depends=('nodejs' 'npm')
 optdepends=()
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz")
 sha256sums=('70eac17441d005e885642490190e5a6c81e666632d1f0e5a6ed2197415809cd5')
