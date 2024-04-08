@@ -8,7 +8,7 @@
 # for more details # on package signing.
 pkgname=librepcb
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A free EDA software to develop printed circuit boards"
 arch=('x86_64' 'i686')
 url="https://librepcb.org/"
@@ -61,6 +61,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DLIBREPCB_SHARE=/usr/share/librepcb \
+    -DQT_MAJOR_VERSION=6 \
     -DUNBUNDLE_FONTOBENE_QT=1 \
     -DUNBUNDLE_MUPARSER=1 \
     -DUNBUNDLE_POLYCLIPPING=1 \
