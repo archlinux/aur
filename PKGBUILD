@@ -62,8 +62,8 @@ build() {
         -Db_pie=true \
         -Dprint_trace=false \
         build
-    ninja -C build
     sed "/WF_SRC_DIR/d" -i build/config.h
+    ninja -C build
 }
 
 
