@@ -2,9 +2,9 @@
 
 pkgbase=decasify
 pkgname=("$pkgbase" "lua-$pkgbase" "lua53-$pkgbase" "lua52-$pkgbase" "lua51-$pkgbase")
-pkgver=0.4.6
+pkgver=0.4.8
 _rockrel=1
-pkgrel=3
+pkgrel=1
 pkgdesc='cast strings to title-case according to locale specific style guides including Turkish'
 arch=(x86_64)
 url="https://github.com/alerque/$pkgbase"
@@ -20,26 +20,25 @@ makedepends=(cargo
              jq)
 _archive="$pkgbase-$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.zst"{,.asc})
-sha256sums=('e64c6aeb20e4de3c28d2b15ad28c340b28ab3b0804393cfaf5e159d608f0e21d'
+sha256sums=('c0e772d342b44c47af8b791a395053cbcdfe87b6d5d54cb15de14263e544c400'
             'SKIP')
 validpgpkeys=('9F377DDB6D3153A48EB3EB1E63CC496475267693') # Caleb Maclennan <caleb@alerque.com> (@alerque)
 
 prepare() {
 	cd "$_archive"
-	sed Makefile.am -i \
-		-e 's/cargo \(build\|install\|test\)/cargo --offline \1/'
-	autoreconf
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
 	cd "$_archive"
+	export CARGO_FEATURE_FLAGS==--offline
 	./configure --prefix /usr
 	make
 }
 
 check() {
 	cd "$_archive"
+	export CARGO_FEATURE_FLAGS==--offline
 	make check
 }
 
