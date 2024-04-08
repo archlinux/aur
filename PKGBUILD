@@ -7,14 +7,14 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
 pkgver=2.2.2
 _pkgver=2.2.2
-pkgrel=2
+pkgrel=3
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD')
 depends=('google-glog' 'gflags' 'opencv' 'openmp' 'openmpi' 'pybind11' 'python' 'python-yaml' 'libuv'
-         'python-numpy' 'python-sympy' 'protobuf' 'ffmpeg' 'python-future' 'qt6-base'
+         'python-numpy' 'python-sympy' 'protobuf' 'ffmpeg' 'python-future' 'qt6-base' 'eigen'
          'intel-oneapi-mkl' 'python-typing_extensions' 'numactl' 'python-jinja'
          'python-networkx' 'python-filelock')
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda'
@@ -273,6 +273,8 @@ _prepare() {
   export USE_OPENCV=ON
   # export USE_SYSTEM_LIBS=ON  # experimental, not all libs present in repos
   export USE_SYSTEM_NCCL=ON
+  export USE_SYSTEM_PYBIND11=ON
+  export USE_SYSTEM_EIGEN_INSTALL=ON
   export NCCL_VERSION=$(pkg-config nccl --modversion)
   export NCCL_VER_CODE=$(sed -n 's/^#define NCCL_VERSION_CODE\s*\(.*\).*/\1/p' /usr/include/nccl.h)
   # export BUILD_SPLIT_CUDA=ON  # modern preferred build, but splits libs and symbols, ABI break
@@ -394,8 +396,7 @@ _package() {
     mv "${_lib}" "${pkgdir}"/usr/lib/
   done
 
-  # clean up duplicates
-  rm -r "${pkgdir}/usr/include/pybind11"
+  # Clean up duplicates with Arch packages
   rm "${pkgdir}"/usr/include/*.h
 
   # Python module is hardcoded so look there at runtime
