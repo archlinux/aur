@@ -1,35 +1,31 @@
-# system requirements: ghostscript
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=grImport
 _pkgver=0.9-7
 pkgname=r-${_pkgname,,}
-pkgver=0.9.7
-pkgrel=1
-pkgdesc='Importing Vector Graphics'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=3
+pkgdesc="Importing Vector Graphics"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
-  r-xml
   ghostscript
+  r-xml
 )
 optdepends=(
-  r-cluster
   r-colorspace
-  r-lattice
-  r-survival
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('05f8b65a55c5fabce2afb74c2b843f5df772d1f931d1ba3ce5f3bfe0493cd0a4')
+md5sums=('15b22fb059f5cc409231f1af50b7316d')
+b2sums=('e35f32334da85d0bfdce10443aed632637e21c18d96c148d0968711e154c7f5508c9c694f7905e0456a1137c451aaaaa96189cd10784646acc34a93bdcc55359')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

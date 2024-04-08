@@ -1,18 +1,15 @@
 pkgbase = r-grimport
 	pkgdesc = Importing Vector Graphics
 	pkgver = 0.9.7
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=grImport
 	arch = any
-	license = GPL
-	depends = r
-	depends = r-xml
+	license = GPL-2.0-or-later
 	depends = ghostscript
-	optdepends = r-cluster
+	depends = r-xml
 	optdepends = r-colorspace
-	optdepends = r-lattice
-	optdepends = r-survival
 	source = https://cran.r-project.org/src/contrib/grImport_0.9-7.tar.gz
-	sha256sums = 05f8b65a55c5fabce2afb74c2b843f5df772d1f931d1ba3ce5f3bfe0493cd0a4
+	md5sums = 15b22fb059f5cc409231f1af50b7316d
+	b2sums = e35f32334da85d0bfdce10443aed632637e21c18d96c148d0968711e154c7f5508c9c694f7905e0456a1137c451aaaaa96189cd10784646acc34a93bdcc55359
 
 pkgname = r-grimport
