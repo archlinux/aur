@@ -1,6 +1,6 @@
 pkgbase = electerm-git
 	pkgdesc = Terminal/ssh/telnet/serialport/sftp client(linux, mac, win)
-	pkgver = 1.38.50.r3.g109a763b
+	pkgver = 1.38.60.r0.g23a7d858
 	pkgrel = 1
 	url = https://electerm.html5beta.com/
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = electerm-git
 	depends = electron26-bin
 	depends = python>=3
 	depends = java-runtime
-	provides = electerm=1.38.50
+	provides = electerm=1.38.60
 	conflicts = electerm
 	source = electerm.git::git+https://github.com/electerm/electerm.git
 	source = electerm.sh
