@@ -1,6 +1,6 @@
 pkgbase = aihub-bin
 	pkgdesc = A collection of large model capabilities, AI capabilities Electron client, with a minimalist interface, will support more AI capabilities in the future.一款集合众多大模型能力、AI能力的Electron客户端，具有极简的界面，将在未来支持更多AI能力.
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/classfang/AIHub
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = aihub-bin
 	depends = electron29
 	provides = aihub
 	conflicts = aihub
-	source = aihub-1.4.2.deb::https://github.com/classfang/AIHub/releases/download/v1.4.2/aihub_1.4.2_amd64.deb
+	source = aihub-1.4.3.deb::https://github.com/classfang/AIHub/releases/download/v1.4.3/aihub_1.4.3_amd64.deb
 	source = aihub.sh
 	sha256sums = 4f6cc7150e5af7f31261845a9e685f106599bc10f1b27115ddf9db61c798a718
 	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
