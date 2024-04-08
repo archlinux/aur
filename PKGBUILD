@@ -1,6 +1,6 @@
 # Maintainer : zhcn4087 <zhcn4087 @ zh-cn-4087@outlook.com>
 pkgname=yolx
-pkgver=0.3.8+1
+pkgver=0.3.9+1
 pkgrel=1
 pkgdesc="A modern download tool developed with Flutter, powered by 'Aria 2' at its core. "
 _pkgname=yolx
@@ -14,7 +14,7 @@ options=(!strip)
 _appimage="${_pkgname}-linux-${pkgver}.AppImage"
 source=("https://github.com/uiYzzi/Yolx/releases/download/${pkgver}/yolx-linux-${pkgver}.AppImage")
 noextract=("$_appimage")
-sha512sums=('1564666047bf0e54a4dfa7e72271b2a36b7fb8eeab71a20d5f3d29ca32296a95b28010efb1c0d847f089a3d3645866f90c0ed25b5a5801e95a6664537b111a81')
+sha512sums=('18a8c75bd2ca098daa5c07d39d621990c1476c284c9c628ed978526fdac4876fdc5077bf48386e444accaa07032926291d7897f571321b29b4d6a69584d7616c')
 
 prepare() {
     chmod +x "$_appimage"
