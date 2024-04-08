@@ -24,7 +24,7 @@ EOF
         echo "Please do not run it as root."
         exit 1
     fi
-    if [ -z "$(ls -A $BASE_DIR)" ]; then
+    if [ ! -d "/var/lib/1p/1panel" ]; then
         echo -e "1Panel has not been initialized."
         echo -e "Initializing 1Panel..."
     else
