@@ -2,8 +2,8 @@
 _appname=codius
 pkgname="vs${_appname}-bin"
 _pkgname=VSCodius
-pkgver=1.87.2
-_electronversion=27
+pkgver=1.88.0
+_electronversion=28
 pkgrel=1
 pkgdesc="Binary releases of Visual Studio Code without MS branding/telemetry/licensing and various personal workflow improvements."
 arch=('x86_64')
@@ -30,14 +30,14 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/RubisetCie/vscodius/v${pkgver}/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d22f8f80c024bce0cff2350bafd4260e1276620466c581c9e8406b6a07866c71'
+sha256sums=('7e945e743a77ef891edd2e34a0ab94191f8654b4a8334baa7d7d81805cd21c57'
             '9480271317925265e806a9a196aaa33410a962fa9d4d1e248a4a5187bc8c9df9'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -f -n -q --pkgname="vs${_appname}-bin" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-bin}"
 }

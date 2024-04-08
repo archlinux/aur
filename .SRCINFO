@@ -1,22 +1,22 @@
 pkgbase = vscodius-bin
 	pkgdesc = Binary releases of Visual Studio Code without MS branding/telemetry/licensing and various personal workflow improvements.
-	pkgver = 1.87.2
+	pkgver = 1.88.0
 	pkgrel = 1
 	url = https://github.com/RubisetCie/vscodius
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
-	depends = electron27
+	depends = electron28
 	depends = libxkbfile
-	provides = vscodius=1.87.2
+	provides = vscodius=1.88.0
 	provides = code
 	conflicts = vscodius
 	conflicts = code
 	options = !strip
-	source = vscodius-1.87.2.zip::https://github.com/RubisetCie/vscodius/releases/download/v1.87.2/VSCodius-Linux-x64-1.87.2.zip
-	source = LICENSE-1.87.2.txt::https://raw.githubusercontent.com/RubisetCie/vscodius/v1.87.2/LICENSE.txt
+	source = vscodius-1.88.0.zip::https://github.com/RubisetCie/vscodius/releases/download/v1.88.0/VSCodius-Linux-x64-1.88.0.zip
+	source = LICENSE-1.88.0.txt::https://raw.githubusercontent.com/RubisetCie/vscodius/v1.88.0/LICENSE.txt
 	source = vscodius.sh
-	sha256sums = d22f8f80c024bce0cff2350bafd4260e1276620466c581c9e8406b6a07866c71
+	sha256sums = 7e945e743a77ef891edd2e34a0ab94191f8654b4a8334baa7d7d81805cd21c57
 	sha256sums = 9480271317925265e806a9a196aaa33410a962fa9d4d1e248a4a5187bc8c9df9
 	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
