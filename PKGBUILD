@@ -11,7 +11,7 @@ pkgdesc='Modular Wayland compositor library (stable, with patches)'
 url=https://gitlab.freedesktop.org/wlroots/wlroots
 arch=(x86_64)
 provides=("libwlroots.so" "wlroots=${pkgver}")
-conflicts=(wlroots wlroots-git)
+conflicts=(wlroots)
 options=(debug)
 depends=(
 	glslang
