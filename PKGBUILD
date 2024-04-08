@@ -3,26 +3,25 @@
 _pkgname=sampling
 _pkgver=2.10
 pkgname=r-${_pkgname,,}
-pkgver=2.10
-pkgrel=1
+pkgver=${_pkgver//-/.}
+pkgrel=2
 pkgdesc="Survey Sampling"
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-lpsolve
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fdec976ec0abfb5c690049d76f89ebcb8ab3650e2eb28a5b54c3984d17372775')
+md5sums=('42f9a999adb8edaa1aa1199d1774b8aa')
+b2sums=('022baa77d2b46732f55c5bfc451cc6cf900d8d9c5709dd35ca8f73b62e9ef49337c57d28eba01b73180d7f4bb4f83a6eb85d7a860683d6c20a37cd2b1c168bdb')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-#  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
