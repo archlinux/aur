@@ -1,15 +1,16 @@
 pkgbase = wqy-microhei-patched
-	pkgdesc = A Sans-Serif style high quality CJK outline font (With kr patch, half-width quota and closer brackets)
+	pkgdesc = A Sans-Serif style high quality CJK outline font (With kr patch, half-width quotation mark and closer brackets)
 	pkgver = 0.2.0_beta
-	pkgrel = 11
+	pkgrel = 12
 	url = https://wenq.org
 	arch = any
-	license = GPL3
-	license = APACHE
-	license = custom:"font embedding exception"
+	license = (Apache-2.0 OR GPL-3.0-or-later) WITH Font-exception-2.0
 	makedepends = xdelta3
 	provides = wqy-microhei
+	provides = wqy-microhei-patched
 	conflicts = wqy-microhei
+	conflicts = wqy-microhei-patched
+	replaces = wqy-microhei-patched
 	source = https://downloads.sourceforge.net/project/wqy/wqy-microhei/0.2.0-beta/wqy-microhei-0.2.0-beta.tar.gz
 	source = 44-wqy-microhei.conf
 	source = wqy-microhei.ttc.xd3
@@ -17,4 +18,4 @@ pkgbase = wqy-microhei-patched
 	sha512sums = e443a5289b24ab1c405b3f1b5548f18bf1a63c54796e2e072c996680326de333ce2fb8d97aa41dbd5ac2cab99af1105e6c1a0f19313f832aa43ec4d6939f8b9e
 	sha512sums = f8c106089562647f2f33e8a01c7375e2f66319754aee990f74b8b9af19c010dd49028df66b8fdcfb1a394721e80d953da019046452d74a1ae381384e2ab5d6d4
 
-pkgname = wqy-microhei-patched
+pkgname = wqy-microhei-kr-halfmarks
