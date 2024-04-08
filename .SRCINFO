@@ -1,6 +1,6 @@
 pkgbase = kodi-git
-	pkgver = r65568.122a3696a0b
-	pkgrel = 2
+	pkgver = r65618.f0b18b55c57
+	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -57,9 +57,9 @@ pkgbase = kodi-git
 	makedepends = gtest
 	makedepends = graphviz
 	makedepends = pcre
-	makedepends = libdisplay-info
 	makedepends = tinyxml2
-	makedepends = mold
+	makedepends = libdisplay-info
+	makedepends = python-setuptools
 	makedepends = wayland-protocols
 	makedepends = waylandpp
 	makedepends = libxkbcommon
@@ -132,15 +132,15 @@ pkgname = kodi-git
 	depends = waylandpp
 	depends = libinput
 	depends = pcre
-	depends = libdisplay-info
 	depends = tinyxml2
+	depends = libdisplay-info
 	optdepends = afpfs-ng: Apple shares support
 	optdepends = bluez: Blutooth support
 	optdepends = python-pybluez: Bluetooth support
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = pipewire: PipeWire support
 	optdepends = upower: Display battery level
-	provides = kodi-common=r65568.122a3696a0b
+	provides = kodi-common=r65618.f0b18b55c57
 	provides = kodi-x11
 	provides = kodi-wayland
 	provides = kodi-gbm
@@ -154,7 +154,7 @@ pkgname = kodi-git-eventclients
 	pkgdesc = Kodi Event Clients (master branch)
 	optdepends = kodi: local machine eventclient use
 	optdepends = python: most eventclients are implemented in python
-	provides = kodi-eventclients=r65568.122a3696a0b
+	provides = kodi-eventclients=r65618.f0b18b55c57
 	conflicts = kodi-eventclients
 
 pkgname = kodi-git-tools-texturepacker
@@ -163,10 +163,10 @@ pkgname = kodi-git-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=r65568.122a3696a0b
+	provides = kodi-tools-texturepacker=r65618.f0b18b55c57
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-git-dev
 	pkgdesc = Kodi dev files (master branch)
-	provides = kodi-dev=r65568.122a3696a0b
+	provides = kodi-dev=r65618.f0b18b55c57
 	conflicts = kodi-dev

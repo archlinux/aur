@@ -25,8 +25,8 @@ _renderer=gles
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r65568.122a3696a0b
-pkgrel=2
+pkgver=r65618.f0b18b55c57
+pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -39,7 +39,10 @@ makedepends=(
   'pipewire' 'python-pycryptodomex' 'python-pillow' 'python-pybluez'
   'python-simplejson' 'shairplay' 'smbclient' 'sndio' 'spdlog' 'taglib'
   'tinyxml' 'swig' 'upower' 'giflib' 'rapidjson' 'ghostscript' 'meson' 'gtest'
-  'graphviz' 'pcre' 'libdisplay-info' 'tinyxml2' 'mold'
+  'graphviz' 'pcre' 'tinyxml2' 'libdisplay-info'
+  # cmake/scripts/linux/Install.cmake calls distutils
+  # python 3.12 does no longer come with distutils on board
+  'python-setuptools'
   # wayland
   'wayland-protocols' 'waylandpp' 'libxkbcommon'
   # gbm
@@ -121,6 +124,8 @@ prepare() {
 
 build() {
   cd "$srcdir/kodi-build"
+  # disable https://rfc.archlinux.page/0023-pack-relative-relocs/
+  export LDFLAGS=${LDFLAGS/-Wl,-z,pack-relative-relocs}
 
   _args=(
     -DCMAKE_BUILD_TYPE=Release
@@ -135,8 +140,7 @@ build() {
     -DENABLE_AVX=ON
     -DENABLE_AVX2=ON
     -DUSE_LTO=$(nproc)
-    -DVERBOSE=ON
-    -DENABLE_MOLD=ON
+    -DENABLE_LDGOLD=OFF
     -DENABLE_AIRTUNES=ON
     -DENABLE_AVAHI=ON
     -DENABLE_BLURAY=ON
@@ -189,7 +193,7 @@ package_kodi-git() {
     'mariadb-libs' 'mesa' 'libpipewire' 'python-pillow' 'python-pycryptodomex'
     'python-simplejson' 'shairplay' 'smbclient' 'sndio' 'spdlog' 'sqlite'
     'taglib' 'tinyxml' 'libxrandr' 'libxkbcommon' 'waylandpp' 'libinput'
-    'pcre' 'libdisplay-info' 'tinyxml2'
+    'pcre' 'tinyxml2' 'libdisplay-info'
   )
   [[ -n "$_clangbuild" ]] && depends+=('glu')
 
@@ -220,7 +224,7 @@ package_kodi-git() {
   # https://bugs.archlinux.org/task/77366
   mkdir -p "$pkgdir"/usr/lib/kodi/addons
 
-  # https://archlinux.org/todo/use-system-ca-store/
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/kodi/-/issues/2
   mkdir -p "$pkgdir"/usr/share/kodi/system/certs
   ln -s /etc/ssl/cert.pem "$pkgdir"/usr/share/kodi/system/certs/cacert.pem
 
