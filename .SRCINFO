@@ -9,6 +9,7 @@ pkgbase = sunshine-bin
 	depends = boost-libs
 	depends = curl
 	depends = libayatana-appindicator
+	depends = libappindicator-gtk3
 	depends = libevdev
 	depends = libmfx
 	depends = libnotify
