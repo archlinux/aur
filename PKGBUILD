@@ -7,9 +7,9 @@ pkgver=1.5.11
 pkgrel=1
 pkgdesc='Command line interface for building Tauri apps'
 url='https://tauri.app'
-license=('Apache' 'MIT')
+license=('Apache-2.0' 'MIT')
 
-depends=('gcc-libs' 'cargo' 'webkit2gtk-4.1' 'base-devel' 'curl' 'wget' 'file' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg')
+depends=('gcc-libs' 'cargo' 'gcc' 'webkit2gtk-4.1' 'curl' 'wget' 'file' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg')
 makedepends=('cargo')
 
 source=("$_crate-1.5.11.tar.gz::https://crates.io/api/v1/crates/tauri-cli/1.5.11/download")
@@ -43,6 +43,6 @@ build() {
 package() {
 	cd "$srcdir/$_crate-1.5.11"
 	install -Dm755 "target/release/cargo-tauri" -t "$pkgdir/usr/bin"
-	install -Dm644 'LICENSE_APACHE-2.0' -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 'LICENSE_MIT' -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 'LICENSE_APACHE-2.0' -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
