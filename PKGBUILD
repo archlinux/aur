@@ -18,7 +18,8 @@ license=('GPL' 'BSD' 'LGPL')
 arch=('i686' 'x86_64')
 
 build () {
-	# Work around a crash at startup or when displaying the texture browser
+	# Work around a crash at startup or when displaying the textures browser:
+	# https://github.com/Garux/netradiant-custom/issues/186
 	export CXXFLAGS+=" -Wp,-U_GLIBCXX_ASSERTIONS"
 
 	cd "${srcdir}/${pkgname}/"
@@ -26,21 +27,21 @@ build () {
 }
 
 package () {
-	mkdir -p "${pkgdir}"/opt/"${pkgname}"
-	cp -r "${srcdir}/${pkgname}"/install/* "${pkgdir}"/opt/"${pkgname}"/
+	mkdir -p "${pkgdir}/opt/${pkgname}"
+	cp -r "${srcdir}/${pkgname}/install/"* "${pkgdir}/opt/${pkgname}/"
 
 	# Add symlinks to /usr/bin and rename them so that this package can coexist with netradiant or gtkradiant
-	mkdir -p "${pkgdir}"/usr/bin
-	ln -s /opt/"${pkgname}"/radiant "${pkgdir}"/usr/bin/"${pkgname}"
-	ln -s /opt/"${pkgname}"/h2data "${pkgdir}"/usr/bin/h2data_nrc
-	ln -s /opt/"${pkgname}"/mbspc "${pkgdir}"/usr/bin/mbspc_nrc
-	ln -s /opt/"${pkgname}"/q2map "${pkgdir}"/usr/bin/q2map_nrc
-	ln -s /opt/"${pkgname}"/q3map2 "${pkgdir}"/usr/bin/q3map2_nrc
-	ln -s /opt/"${pkgname}"/qdata3 "${pkgdir}"/usr/bin/qdata3_nrc
+	mkdir -p "${pkgdir}/usr/bin"
+	ln -s "/opt/${pkgname}/radiant" "${pkgdir}/usr/bin/${pkgname}"
+	ln -s "/opt/${pkgname}/h2data" "${pkgdir}/usr/bin/h2data_nrc"
+	ln -s "/opt/${pkgname}/mbspc" "${pkgdir}/usr/bin/mbspc_nrc"
+	ln -s "/opt/${pkgname}/q2map" "${pkgdir}/usr/bin/q2map_nrc"
+	ln -s "/opt/${pkgname}/q3map2" "${pkgdir}/usr/bin/q3map2_nrc"
+	ln -s "/opt/${pkgname}/qdata3" "${pkgdir}/usr/bin/qdata3_nrc"
 
 	# Install a desktop entry and a license file
-	mkdir -p "${pkgdir}"/usr/share/pixmaps
-	ln -s /opt/"${pkgname}"/bitmaps/splash.png "${pkgdir}"/usr/share/pixmaps/netradiant-custom.png
-	install -D -m644 "${srcdir}"/"${pkgname}".desktop "${pkgdir}"/usr/share/applications/"${pkgname}".desktop
-	install -D -m644 "${srcdir}"/"${pkgname}"/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+	mkdir -p "${pkgdir}/usr/share/pixmaps"
+	ln -s "/opt/${pkgname}/bitmaps/splash.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+	install -D -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -D -m644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
