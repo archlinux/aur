@@ -3,14 +3,13 @@
 _pkgname=coro
 _pkgver=1.0.4
 pkgname=r-${_pkgname,,}
-pkgver=1.0.4
-pkgrel=1
+pkgver=${_pkgver//-/.}
+pkgrel=2
 pkgdesc="'Coroutines' for R"
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
 license=('MIT')
 depends=(
-  r
   r-rlang
 )
 optdepends=(
@@ -23,15 +22,18 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8f21bf44ec46fa1da88e9232db5536f494cbd87aade3ef16957d27919f58cc64')
+md5sums=('20d535e6d36920c23c8e74442977806a')
+b2sums=('b164beab9bf7818939e835071b0b85a162505bd0eff42f87b751385f99d990ee4907ac6ac8097c75147cec5b12882ab26ab9cac4ccbd46cd7e34119d1a32104a')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
