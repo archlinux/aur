@@ -1,7 +1,7 @@
 # Maintainer: sgar <swhaat in github>
 
 pkgname=veyon
-pkgver=4.8.2
+pkgver=4.8.3
 pkgrel=1
 pkgdesc="Cross-platform computer monitoring and classroom management"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('hicolor-icon-theme' 'libfakekey' 'libjpeg-turbo' 'libldap' 'libsasl'
          'procps-ng' 'qca-qt6' 'qt6-base')
 makedepends=('clang' 'cmake' 'git' 'qt6-declarative' 'qt6-httpserver' 'qt6-tools')
 optdepends=('kldap: KDE support')
-_commit=a8d6161687896c2aed8103771b3e3bf037a8d0fb  # tags/v4.8.2^0
+_commit=fd8f0ba1e5c1025e71abcebec5f17a186096b610  # tags/v4.8.3
 source=("git+https://github.com/veyon/veyon.git#commit=${_commit}"
         'git+https://github.com/veyon/ultravnc.git'
         'git+https://invent.kde.org/pim/kldap.git'
@@ -68,7 +68,7 @@ build() {
     -DCMAKE_BUILD_TYPE='RelWithDebInfo' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DSYSTEMD_SERVICE_INSTALL_DIR='/usr/lib/systemd/system' \
-    -DWITH_QT6=ON \
+    -DWITH_QT6=ON -DVEYON_DEBUG=ON \
     -Wno-dev
   cmake --build build
 }
