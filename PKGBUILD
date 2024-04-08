@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=before-dawn
 _pkgname="Before Dawn"
-pkgver=0.30.0
+pkgver=0.30.1
 _electronversion=29
 _nodeversion=20
 pkgrel=1
@@ -26,7 +26,7 @@ source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('dfc556af11fccae1b8cf2df745b4a7fd8eea1a5d1213f60db3c4aa09bb600bde'
+sha256sums=('89a6320693f537d47ad146d41852cd2b838eb2ca1a668fffd50e0fd3cac22677'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -58,16 +58,17 @@ build() {
     else
         echo "Your network is OK."
     fi
+    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname}\"|g" -i src/main/index.js
+    sed "s|run dist|run pack|g" -i package.json
     npm ci
-    npm run pack
+    npm rebuild
+    npm run release
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}/"{output,data/savers}
-    cp -r "${srcdir}/${pkgname}.git/output/system-savers" "${pkgdir}/usr/lib/${pkgname}/output"
-    cp -r "${srcdir}/${pkgname}.git/output/system-savers" "${pkgdir}/usr/lib/${pkgname}/data/savers"
-    install -Dm644 "${srcdir}/${pkgname}.git/output/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    cp -r "${srcdir}/${pkgname}.git/dist/linux-"*/resources/savers "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644  "${srcdir}/${pkgname}.git/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
