@@ -2,18 +2,18 @@
 
 _pkgname=assimp
 pkgname=mingw-w64-${_pkgname}
-pkgver=5.3.1
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="Portable Open Source library to import various well-known 3D model formats in an uniform manner (mingw-w64)"
 arch=('any')
 license=('BSD')
 depends=('mingw-w64-zlib' 'mingw-w64-boost' 'mingw-w64-minizip')
-makedepends=('mingw-w64-cmake')
+makedepends=('mingw-w64-cmake' 'ninja')
 checkdepends=('mingw-w64-wine')
 url='http://www.assimp.org/'
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/v${pkgver}.tar.gz")
-options=('!strip' '!buildflags' 'staticlibs' '!lto')
-sha256sums=('a07666be71afe1ad4bc008c2336b7c688aca391271188eb9108d0c6db1be53f1')
+options=('!strip' '!buildflags' 'staticlibs') #'!lto'
+sha256sums=('a90f77b0269addb2f381b00c09ad47710f2aab6b1d904f5e9a29953c30104d3f')
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 _flags=(
 	-Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG' -DCMAKE_C_FLAGS_RELEASE='-DNDEBUG'
@@ -38,14 +38,14 @@ prepare()
 build()
 {
 	for _arch in ${_architectures}; do
-		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" \
+		${_arch}-cmake -G Ninja -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" \
 			-DASSIMP_BUILD_TESTS=OFF \
 			-DASSIMP_BUILD_ASSIMP_TOOLS=OFF \
 			-DBUILD_SHARED_LIBS=OFF \
 			-DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
 		cmake --build "build-${_arch}-static"
 		
-		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" \
+		${_arch}-cmake -G Ninja -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" \
 			-DASSIMP_BUILD_TESTS=OFF \
 			-DASSIMP_BUILD_ASSIMP_TOOLS=ON
 		cmake --build "build-${_arch}"
