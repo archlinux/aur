@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ai-chat-bin
 _pkgname="AI Chat"
-pkgver=1.2.1
+pkgver=1.2.2
 _electronversion=28
 pkgrel=1
 pkgdesc="A cross-platform desktop application that provides quick access to chatbots like OpenAI ChatGPT from the menu bar (tray)"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('17ec960cf353bbc4567d952f1eb4eed3730ac1e1722237fbe4d5104281c2bddb'
+sha256sums=('bae8cdcb5006c04973327016fd75afea5a2a3a750bcd576e2eb15e077f75261e'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
