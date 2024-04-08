@@ -1,6 +1,7 @@
 # Maintainer: Anton Karmanov <a.karmanov@inventati.org>
 
 pkgname='python-aksharamukha'
+_proj_name="${pkgname#python-}"
 pkgver='2.1.2'
 pkgrel=1
 pkgdesc='Indic scripts converter'
@@ -18,10 +19,7 @@ depends=(
   'python>=3.8')
 optdepends=()
 makedepends=('python-build' 'python-installer' 'python-wheel')
-_src_url='https://files.pythonhosted.org/packages/'
-_src_url="${_src_url}28/af/62556d7f1ef2001c6855f894bec094f615e808bc78aaadd758b123eb1a16/"
-_src_url="${_src_url}aksharamukha-${pkgver}.tar.gz"
-source=("$_src_url")
+source=("https://files.pythonhosted.org/packages/source/${_proj_name::1}/$_proj_name/$_proj_name-$pkgver.tar.gz")
 sha256sums=('30ba28d78046e390537c93e45ff8d54398a8e91e4b569ffe6db42fd81c2ff894')
 _tardir="aksharamukha-${pkgver}"
 

@@ -16,7 +16,7 @@ pkgbase = python-aksharamukha
 	depends = python-requests
 	depends = python-yaml
 	depends = python>=3.8
-	source = https://files.pythonhosted.org/packages/28/af/62556d7f1ef2001c6855f894bec094f615e808bc78aaadd758b123eb1a16/aksharamukha-2.1.2.tar.gz
+	source = https://files.pythonhosted.org/packages/source/a/aksharamukha/aksharamukha-2.1.2.tar.gz
 	sha256sums = 30ba28d78046e390537c93e45ff8d54398a8e91e4b569ffe6db42fd81c2ff894
 
 pkgname = python-aksharamukha
