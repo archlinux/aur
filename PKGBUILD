@@ -61,7 +61,7 @@ prepare () {
 
 build () {
   arch-meson \
-    --buildtype=debug \
+    --buildtype=debugoptimized \
     -Dwerror=false \
     -Dexamples=false \
     "${pkgname}" build
