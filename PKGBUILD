@@ -3,14 +3,13 @@
 _pkgname=rBiopaxParser
 _pkgver=2.42.0
 pkgname=r-${_pkgname,,}
-pkgver=2.42.0
-pkgrel=1
-pkgdesc='Parses BioPax files and represents them in R'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Parses BioPax files and represents them in R"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-data.table
   r-xml
 )
@@ -24,14 +23,15 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('275cb296a6e9d262a2c853d85c0954fcf72a87197b482adfbb4c8e045346caff')
+md5sums=('53e24a8896bf17bd56fe48d62427eb33')
+b2sums=('46186aa0fd6c43330d8d928e39f3e4fda57afb0fab3e46f67c160ead21ff5260e35541ef1246f97b88d3df012c0fbafb4fbf13aa13ea8e7c737d2704eb9f359b')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
