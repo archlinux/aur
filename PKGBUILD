@@ -1,12 +1,12 @@
 # Maintainer: Siddhant Madhur <siddhant.madhur@gmail.com>
 pkgname=straw
-pkgver=v0.2.stable
-pkgrel=2
+pkgver=v2.1.alpha
+pkgrel=1
 pkgdesc="CLI tool to easily go-to projects all over your desktop and open a new tmux session in it"
 arch=(x86_64)
 url="https://github.com/siddhantmadhur/straw"
 license=(MIT)
-makedepends=(git go)
+makedepends=(git cargo)
 depends=(tmux)
 provides=(straw)
 source=("straw::git+https://github.com/siddhantmadhur/straw.git")
@@ -20,10 +20,10 @@ pkgver () {
 
 build() {
     cd straw
-    go build -ldflags="-X 'main.version=${pkgver}'" -o straw 
+    cargo build --release 
 }
 
 package() {
     cd straw
-    install -Dm755 straw -t "${pkgdir}/usr/bin" 
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
