@@ -1,0 +1,16 @@
+pkgbase = python-epub_meta
+	pkgdesc = Small library to read metadata from ePub 2 and 3 files
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/paulocheque/epub-meta
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/e/epub_meta/epub_meta-0.0.7.tar.gz
+	sha256sums = 9d9c6afeaef796105a77d0aef33a1c943ccd91cccb2cb7716f59ad149819a4e9
+
+pkgname = python-epub_meta
