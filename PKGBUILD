@@ -5,7 +5,7 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-hardened-cf
-pkgver=6.7.6.hardened1
+pkgver=6.8.4.hardened1
 pkgrel=1
 pkgdesc='Security-Hardened Linux with Cloudflare Patches'
 url='https://github.com/anthraxx/linux-hardened'
@@ -35,9 +35,9 @@ validpgpkeys=(
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
   E240B57E2C4630BA768E2F26FC1B547C8D8172C8  # Levente Polyak
 )
-b2sums=('51d6e2304e7a9188a0fec5714276589cb46948157c76a2f4ed3f5e0bf634d94a89ea75251229a86e018767a3367328c16b610d631c78d82663dcd1d904b73385'
+b2sums=('cf58732397bfa11988b79901092887d53c3367d09f63da51ebdcc83518be3a7e9a638fbbb1ff080cd7abed633fadff03d1d7a3928b772de57b14e46e552f9462'
         'SKIP'
-        '709c336070cbf2f665dad176bb837518bfdd8f77f978e4734da84e84056ed95dcf955b6595f8df7530e22c9f1ca8bf05c1087802330e668c3c787fc9d173dc4d'
+        'fe898a256bbe9a77c5e3b4d1e2fc3820a511af88faecd75009b49c4eb31505f4609b020be90197486a296b4bf3f8f3b83ea3c0d803dabf9a9b6f5b6a4a14e656'
         'SKIP'
         '6e5fe748f756eaaf26cf0d6608efed8c9c84f7fd51832635e80c70eba9d554d849fc4fb44b46d87a09c0e2368b6a8b66f7507243f699fd4c4428d0c82864feb8'
         'SKIP')
