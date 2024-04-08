@@ -12,13 +12,6 @@ pkgbase = pince-git
 	makedepends = pkgconf
 	makedepends = git
 	makedepends = sed
-	optdepends = qt6-wayland: wayland support
-	source = pince-git::git+https://github.com/korcankaraokcu/PINCE.git
-	source = PINCE.desktop
-	sha1sums = SKIP
-	sha1sums = 719d18d69abc299f739cc04041967e9d05a34104
-
-pkgname = pince-git
 	depend = gdb
 	depend = gobject-introspection-runtime
 	depend = python-distorm
@@ -28,3 +21,10 @@ pkgname = pince-git
 	depend = python-pexpect
 	depend = python-pygdbmi
 	depend = python-pyqt6
+	optdepends = qt6-wayland: wayland support
+	source = pince-git::git+https://github.com/korcankaraokcu/PINCE.git
+	source = PINCE.desktop
+	sha1sums = SKIP
+	sha1sums = 719d18d69abc299f739cc04041967e9d05a34104
+
+pkgname = pince-git
