@@ -1,6 +1,6 @@
 pkgbase = autodiff
 	pkgdesc = Automatic differentiation made easier for C++
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/autodiff/autodiff
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = autodiff
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	source = autodiff-1.1.1.tar.gz::https://github.com/autodiff/autodiff/archive/v1.1.1.tar.gz
-	sha512sums = d084dc44f3864d9c6b2bae99b503d809765ec0a8164b9404c08700ffdafd23e78db3c169bbcbc9e47c6990a86ba2f91c3c9801c5cc727feaa6e1ca1dab44eef4
+	source = autodiff-1.1.2.tar.gz::https://github.com/autodiff/autodiff/archive/v1.1.2.tar.gz
+	sha512sums = a8f3c3126fc8fb9502384eaf6cb416bfb24dede83edc70a8333c9e2824fefcb4221da71d2f0b30b52dcbe86042cb79a9dd1d93249bfdb052af71c0c1c63c819e
 
 pkgname = autodiff
 
