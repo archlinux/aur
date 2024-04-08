@@ -1,7 +1,7 @@
 pkgbase = python-amqp
 	pkgdesc = Low-level AMQP client for Python (fork of amqplib)
 	pkgver = 5.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/celery/py-amqp
 	arch = any
 	license = BSD-3-Clause
