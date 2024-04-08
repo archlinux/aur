@@ -31,6 +31,10 @@ build() {
 package() {
   cd DNS-nsdiff-$pkgver
   make DESTDIR="$pkgdir" install
+
+  for x in nsdiff nspatch nsvi; do
+    ln -s "vendor_perl/$x" "$pkgdir/usr/bin/$x"
+  done
 }
 
 # vim: ts=2:sw=2:et
