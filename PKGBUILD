@@ -13,14 +13,14 @@ depends=('gcc-libs' 'systemd-libs')
 makedepends=('cargo')
 optdepends=('probe-rs: Other probe-rs binaries')
 
-source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/rtthost/0.23.0/download")
+source=("$_crate-0.23.0.tar.gz::https://crates.io/api/v1/crates/rtthost/0.23.0/download")
 sha512sums=('1402297c5f1d2c198abc89b8f813a38e7869bdca510d32ecc05fe0c08bfa1f4ace64297022eb67c53505c40a5f7cb138cbd329d7b1656d8f2905b1f1afa8f801')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
 
 prepare() {
-	cd "$srcdir/$_crate-$pkgver"
+	cd "$srcdir/$_crate-0.23.0"
 
 	export RUSTUP_TOOLCHAIN=stable
 
@@ -28,10 +28,11 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/$_crate-$pkgver"
+	cd "$srcdir/$_crate-0.23.0"
 	
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	CFLAGS+=" -ffat-lto-objects"
 
 	
 	cargo build \
@@ -41,6 +42,6 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$_crate-$pkgver"
+	cd "$srcdir/$_crate-0.23.0"
 	install -Dm755 "target/release/rtthost" -t "$pkgdir/usr/bin"
 }
