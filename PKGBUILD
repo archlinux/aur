@@ -3,14 +3,13 @@
 _pkgname=semisup
 _pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
-pkgrel=1
-pkgdesc='Semi-Supervised Mixture Model'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Semi-Supervised Mixture Model"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-vgam
 )
 optdepends=(
@@ -19,14 +18,15 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a9b0a2eb85fe87ff5f7397d5a966637f07cbbe66b88a1ebb72391cfef8676376')
+md5sums=('fb3d32c07acbfadbbee01f9a6c8333fe')
+b2sums=('0f2feb4757068304cac0398c4bbf5d79ac07cefa2e191703cedea9e5fc446cababbac8ec9c5ef9f82ab36a9e904a563eb2b1b995f7c7379692b6b0ffcede6c32')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

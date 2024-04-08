@@ -1,16 +1,16 @@
 pkgbase = r-semisup
 	pkgdesc = Semi-Supervised Mixture Model
 	pkgver = 1.26.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/semisup
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-3.0-only
 	depends = r-vgam
 	optdepends = r-knitr
 	optdepends = r-summarizedexperiment
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/semisup_1.26.0.tar.gz
-	sha256sums = a9b0a2eb85fe87ff5f7397d5a966637f07cbbe66b88a1ebb72391cfef8676376
+	md5sums = fb3d32c07acbfadbbee01f9a6c8333fe
+	b2sums = 0f2feb4757068304cac0398c4bbf5d79ac07cefa2e191703cedea9e5fc446cababbac8ec9c5ef9f82ab36a9e904a563eb2b1b995f7c7379692b6b0ffcede6c32
 
 pkgname = r-semisup
