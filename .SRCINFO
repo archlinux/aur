@@ -1,0 +1,30 @@
+pkgbase = caribou
+	pkgdesc = A text entry and UI navigation application (on-screen keyboard)
+	pkgver = 0.4.21+75+g8ad9883
+	pkgrel = 6
+	url = https://wiki.gnome.org/Projects/Caribou
+	arch = x86_64
+	license = LGPL
+	makedepends = intltool
+	makedepends = docbook-xsl
+	makedepends = gobject-introspection
+	makedepends = vala
+	makedepends = git
+	makedepends = gnome-common
+	depends = at-spi2-atk
+	depends = python-atspi
+	depends = python-gobject
+	depends = gtk3
+	depends = libxklavier
+	depends = libgee
+	depends = clutter
+	depends = dconf
+	options = !emptydirs
+	source = git+https://gitlab.gnome.org/GNOME/caribou.git#commit=8ad9883ace9b38905af9ff1dd1a8c19cdc560141
+	source = 3.patch
+	source = unicode_to_keyval-symbol-check.patch
+	sha256sums = SKIP
+	sha256sums = c88b04a927e5a407503c007a78dafa7dcb71cf2002bbb3751d57cc21d090a2ed
+	sha256sums = 7b8969c275df30613531728408d75af1af22199b4fe3835d5ef67355f747799e
+
+pkgname = caribou

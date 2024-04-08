@@ -4,7 +4,7 @@
 
 pkgname=caribou
 pkgver=0.4.21+75+g8ad9883
-pkgrel=5
+pkgrel=6
 pkgdesc="A text entry and UI navigation application (on-screen keyboard)"
 url="https://wiki.gnome.org/Projects/Caribou"
 arch=(x86_64)
