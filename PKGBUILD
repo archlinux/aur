@@ -5,7 +5,7 @@
 pkgname=lmo-desktop-mode-git
 _pkgname=lmo-desktop-mode
 pkgver=1.0.1
-pkgrel=8
+pkgrel=9
 pkgdesc="Client and companion application for LibreMobileOS desktop mode"
 arch=('x86_64' 'aarch64')
 license=('GPL-2.0-only')
