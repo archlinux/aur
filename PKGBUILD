@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=terminusdm
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Terminal download manager with a TUI"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e0e2ffd29bba228172831e56f3364d0cdd4fe6cc82ba57adb7d873f325bd311b')
+sha256sums=('4d4de440fb79fd48089b567d0e6acdd61626745be00583c617a72b0b6036a0b2')
 
 prepare() {
   cd "$pkgname-$pkgver"
