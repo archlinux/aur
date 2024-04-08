@@ -1,7 +1,7 @@
 pkgbase = python-unyt
 	pkgdesc = A package for handling numpy arrays with units.
-	pkgver = 3.0.1
-	pkgrel = 2
+	pkgver = 3.0.2
+	pkgrel = 1
 	url = https://pypi.org/project/unyt/
 	arch = any
 	license = BSD
@@ -16,7 +16,7 @@ pkgbase = python-unyt
 	depends = python-numpy
 	depends = python-sympy
 	options = !emptydirs
-	source = https://pypi.io/packages/source/u/unyt/unyt-3.0.1.tar.gz
-	sha256sums = 8860efe960afadddebc8c0c2624336a9c64241a73dddfef863af6722f8022001
+	source = https://pypi.io/packages/source/u/unyt/unyt-3.0.2.tar.gz
+	sha256sums = f3b3d6665d1af4ff9be846ec932a61824fe20b2f5d0c06cf372a288f59894b73
 
 pkgname = python-unyt
