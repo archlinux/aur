@@ -18,7 +18,7 @@ post_install() {
         echo -e "\033[33mWarning: Docker Compose is not installed, please install it, or 1Panel application store will not be avaliable.\033[0m"
     fi
     echo -e "\033[31mUsing the default username, password, port number and security entry is very risky behavior!\033[0m."
-    echo -e "Please run \033[34m1pinit\033[0m to set your username and password before start 1panel.service."
+    echo -e "Please run \033[34m1pctl --init\033[0m to set your username and password before start 1panel.service."
 }
 
 pre_remove() {
