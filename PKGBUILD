@@ -1,7 +1,7 @@
 # Maintainer: Daniel Milenov <nullgaro@gmail.com>
 # Contributor: Mario Sánchez <icutum@hotmail.com>
 pkgname='ghfetch'
-pkgver='1.5.3'
+pkgver='1.5.4'
 pkgrel=1
 pkgdesc="A nice way to display CLI Github user / repo / organization info inspired in neofetch"
 arch=('any')
