@@ -1,11 +1,11 @@
-# Maintainer: Fredy García <frealgagu at gmail dot com>
+# Contributor: Fredy García <frealgagu at gmail dot com>
 # Contributor: Joel Teichroeb <joel@teichroeb.net>
 # Contributor: Matthias Maennich < arch .at. maennich.net >
 # Contributor: bruce < b_a_g99 .at. hotmail.com >
 # Contributor: carstene1ns <arch carsten-teibes de>
 
 pkgname=dropbox-cli
-pkgver=2023.09.06
+pkgver=2024.04.08
 pkgrel=1
 pkgdesc="Command line interface for Dropbox"
 arch=("any")
@@ -17,10 +17,8 @@ source=(
   "${pkgname}-${pkgver}.py::https://linux.${pkgname%-cli}.com/packages/${pkgname%-cli}.py"
   "${pkgname%-cli}d-fallback.patch"
 )
-sha256sums=(
-  "a7334c5003287d6bc94c59bfbd9a9b2e9e82047c8b35732c739f8cb4ecfeedbc"
-  "3e4f5d44c58dbeb586bb9539551ea1206e8a1e4b025ac316c42ba24c53c8f077"
-)
+sha256sums=('33e4463fdd6f90cab355e2f6b951c90160d7a3620cca63e3a676457e01d368f0'
+            '3e4f5d44c58dbeb586bb9539551ea1206e8a1e4b025ac316c42ba24c53c8f077')
 
 prepare() {
   cp -L "${srcdir}/${pkgname}-${pkgver}.py" "${srcdir}/${pkgname}.py"
