@@ -1,7 +1,7 @@
 pkgbase = wsrx-git
 	pkgdesc = Controlled TCP-over-WebSocket forwarding tunnel.
 	pkgver = 0.2.0.r9.gc6e2eb4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/XDSEC/WebSocketReflectorX
 	arch = x86_64
 	license = MIT
@@ -17,6 +17,8 @@ pkgbase = wsrx-git
 	depends = qt6-svg
 	depends = qt6-translations
 	depends = qt6-wayland
+	depends = qt6-declarative
+	depends = qt6-remoteobjects
 	provides = wsrx
 	provides = wsrx-desktop
 	options = !lto

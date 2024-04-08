@@ -3,13 +3,13 @@
 _pkgname='wsrx'
 pkgname="wsrx-git"
 pkgver=0.2.0.r9.gc6e2eb4
-pkgrel=1
+pkgrel=2
 pkgdesc="Controlled TCP-over-WebSocket forwarding tunnel."
 arch=('x86_64')
 url='https://github.com/XDSEC/WebSocketReflectorX'
 license=('MIT')
 makedepends=('git' 'rust' 'clang' 'ninja' 'bash' 'sed' 'cmake' 'extra-cmake-modules')
-depends=('qt6-base' 'qt6-svg' 'qt6-translations' 'qt6-wayland')
+depends=('qt6-base' 'qt6-svg' 'qt6-translations' 'qt6-wayland' 'qt6-declarative' 'qt6-remoteobjects')
 provides=("${_pkgname}" "${_pkgname}-desktop")
 source=("git+https://github.com/XDSEC/WebSocketReflectorX.git")
 sha256sums=('SKIP')
