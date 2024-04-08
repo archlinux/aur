@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Thiago Almeida <echo "dGhpYWdvYWxtZWlkYXNhQGdtYWlsLmNvbQo=" | base64 -d>
 pkgname=cloud-nuke
-pkgver=0.34.0
+pkgver=0.35.0
 pkgrel=1
 pkgdesc="AWS cloud account cleaning tool"
 url="https://github.com/gruntwork-io/${pkgname}"
@@ -12,7 +12,7 @@ depends=(glibc)
 makedepends=(go)
 install=${pkgname}.install
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('dce5f147745314319ffd1d649676a387c20b25e7a7caacb38cd2ef08a7399ece66b4a0ca8a31d6448b20e39b018a87687ac3fe562cbc5a44c4158dc1b87008ea')
+sha512sums=('949cf191a3ffc16dd86e3120f147c90d576617b9d597f83d2cab98a79a1a69528054092d92715d971dae7e8319764e51a45e596d9166e9c5d26f0315fd8bcb77')
 
 prepare() {
   cd ${pkgname}-${pkgver}
