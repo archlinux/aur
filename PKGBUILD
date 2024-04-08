@@ -1,4 +1,4 @@
-# Maintainer: Abdur-Rahman Mansoor <armansoor at posteo dot net>
+# Maintainer: Abdur-Rahman Mansoor <armansoor at missingno dot dev>
 
 _pkgname='quikc'
 pkgname='quikc-git'
@@ -8,7 +8,13 @@ url="https://codeberg.org/ramenu/$_pkgname"
 pkgdesc='A minimalistic, safety-focused build system for C/C++'
 arch=('x86_64')
 makedepends=('cargo' 'git')
-license=('MIT')
+license=('MIT' 
+         'Apache-2.0' 
+         'BSD-3-Clause'
+         'BSD-2-Clause'
+         'Unicode-DFS-2016'
+         'Zlib'
+         'ISC')
 source=("$_pkgname::git+$url.git")
 optdepends=('gcc: GNU C/C++ compiler'
 		    'clang: LLVM C/C++ frontend'
@@ -38,6 +44,7 @@ package() {
 	install -Dm644 ./manpages/quikc-init.7 "$pkgdir/usr/share/man/man7/quikc-init.7"
 	install -Dm644 ./README.md -t "$pkgdir/usr/share/doc/$_pkgname"
 	install -Dm644 ./LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
+	install -Dm644 ./LICENSE.html -t "$pkgdir/usr/share/licenses/$_pkgname"
 	install -Dm755 ./target/release/quikc -t "$pkgdir/usr/bin/"
 	install -Dm755 ./quikc-init -t "$pkgdir/usr/bin/"
 }
