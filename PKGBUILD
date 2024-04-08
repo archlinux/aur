@@ -3,25 +3,26 @@
 _pkgname=affyio
 _pkgver=1.72.0
 pkgname=r-${_pkgname,,}
-pkgver=1.72.0
-pkgrel=1
-pkgdesc='Tools for parsing Affymetrix data files'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('LGPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Tools for parsing Affymetrix data files"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('LGPL-2.0-or-later')
 depends=(
-  r
   r-zlibbioc
+  zlib
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e98fc0f5acba44885b9b7962d2b3d85e8972e8675ab7d9adf7653133d2d95007')
+md5sums=('9bd1e4acedbf756386f96d4c1ebb21f3')
+b2sums=('f6f89fc05c0da4f2f45fde959387fd133030d179f316adb6d6d8a1cb1483f6e34d111e2015098906a49a40f7efd7bbaf5aa461e8547d96a4fb6eaf96c3a53169')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
