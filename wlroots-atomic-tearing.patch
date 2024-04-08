@@ -1,0 +1,47 @@
+diff --git a/backend/drm/drm.c b/backend/drm/drm.c
+index 07880c47..a0d0eb3d 100644
+--- a/backend/drm/drm.c
++++ b/backend/drm/drm.c
+@@ -113,6 +113,8 @@ bool check_drm_features(struct wlr_drm_backend *drm) {
+ 
+ 	if (drm->iface == &legacy_iface) {
+ 		drm->supports_tearing_page_flips = drmGetCap(drm->fd, DRM_CAP_ASYNC_PAGE_FLIP, &cap) == 0 && cap == 1;
++	} else {
++		drm->supports_tearing_page_flips = drmGetCap(drm->fd, DRM_CAP_ATOMIC_ASYNC_PAGE_FLIP, &cap) == 0 && cap == 1;
+ 	}
+ 
+ 	if (env_parse_bool("WLR_DRM_NO_MODIFIERS")) {
+@@ -770,6 +772,8 @@ bool drm_connector_commit_state(struct wlr_drm_connector *conn,
+ 		}
+ 	}
+ 
++	bool tearing_ok = pending.base->tearing_page_flip;
++
+ 	if (pending.base->committed & WLR_OUTPUT_STATE_BUFFER) {
+ 		if (!drm_connector_state_update_primary_fb(conn, &pending)) {
+ 			goto out;
+@@ -779,6 +783,7 @@ bool drm_connector_commit_state(struct wlr_drm_connector *conn,
+ 		if (!drm_connector_set_pending_layer_fbs(conn, pending.base)) {
+ 			return false;
+ 		}
++		tearing_ok = false;
+ 	}
+ 
+ 	if (pending.modeset) {
+@@ -789,6 +794,7 @@ bool drm_connector_commit_state(struct wlr_drm_connector *conn,
+ 		} else {
+ 			wlr_drm_conn_log(conn, WLR_INFO, "Turning off");
+ 		}
++		tearing_ok = false;
+ 	}
+ 
+ 	// wlr_drm_interface.crtc_commit will perform either a non-blocking
+@@ -805,7 +811,7 @@ bool drm_connector_commit_state(struct wlr_drm_connector *conn,
+ 	if (pending.active) {
+ 		flags |= DRM_MODE_PAGE_FLIP_EVENT;
+ 	}
+-	if (pending.base->tearing_page_flip) {
++	if (tearing_ok) {
+ 		flags |= DRM_MODE_PAGE_FLIP_ASYNC;
+ 	}
+ 
