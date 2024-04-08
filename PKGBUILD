@@ -1,53 +1,78 @@
-# Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
+# Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
+# Contributor: Filip Brcic <brcha@gna.org>
 # Contributor: Mika Fischer <mika.fischer@zoopnet.de>
 # Contributor: Gergely Imreh <imrehgATgmailDOTcom>
 
 pkgname=ninja-git
 epoch=2
-pkgver=r2306.7bbc708f
+pkgver=1.11.1.r197.g903a05ce
 pkgrel=1
 pkgdesc='Small build system with a focus on speed'
-arch=('i686' 'x86_64')
+arch=(x86_64)
 url='https://ninja-build.org/'
 license=(Apache)
-depends=('gcc-libs')
-makedepends=('asciidoc' 'python2' 're2c')
-#makedepends+=('emacs-nox')
-provides=('ninja')
-conflicts=('ninja')
-install=ninja-git.install
-
+depends=(gcc-libs)
+makedepends=(git cmake python re2c emacs-nox)
+provides=(ninja)
+conflicts=(ninja)
 source=('git+https://github.com/ninja-build/ninja.git')
 md5sums=('SKIP')
 
-function pkgver() {
-	cd ninja
-
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+pkgver() {
+  cd ninja
+  #
+  # This is a somewhat unconventional use of git to derive a reasonable version.
+  # We need this because ninja does not merge releases back into master.
+  #
+  local tag revs abbrev
+  tag="$(git describe --tags --abbrev=0 origin/release)"
+  revs="$(git rev-list --count "$tag..")"
+  abbrev="$(git rev-parse --short HEAD)"
+  # reconstruct pkgver()ized git-describe output by hand
+  echo "${tag#v}.r${revs}.g${abbrev}"
 }
 
-build() {
-	cd ninja
+#prepare() {
+#  cd ninja
+#  git pull --no-edit https://github.com/intelfx/ninja \
+#    work/jobserver-fifo-1.11.1
+#}
 
-	python2 ./configure.py --bootstrap
-	if [[ "${makedepends[@]}" =~ "emacs-nox" ]]; then
-		emacs -Q --batch -f batch-byte-compile misc/ninja-mode.el
-	fi
+build() {
+  cmake \
+    -S ninja \
+    -B build \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -Wno-dev
+  cmake --build build
+
+  cd ninja
+  emacs -Q --batch -f batch-byte-compile misc/ninja-mode.el
+}
+
+check() {
+  cd build
+  ./ninja_test
 }
 
 package() {
-	cd ninja
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
-	install -m755 -D ninja "$pkgdir/usr/bin/ninja"
-	install -m644 -D doc/manual.asciidoc "$pkgdir/usr/share/doc/ninja/manual.asciidoc"
-	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  cd "$srcdir/build"
+  install -Dm755 -t "$pkgdir/usr/bin" ninja
 
-	install -m644 -D misc/ninja-mode.el "$pkgdir/usr/share/emacs/site-lisp/ninja-mode.el"
-	if [[ "${makedepends[@]}" =~ "emacs-nox" ]]; then
-		install -m644 -D misc/ninja-mode.elc "$pkgdir/usr/share/emacs/site-lisp/ninja-mode.elc"
-	fi
-	install -m644 -D misc/ninja.vim "$pkgdir/usr/share/vim/vimfiles/syntax/ninja.vim"
+  cd "$srcdir/ninja"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" COPYING
+  install -Dm644 -t "$pkgdir/usr/share/doc/ninja" doc/manual.asciidoc
+  install -Dm644 -t "$pkgdir/usr/share/emacs/site-lisp" \
+    misc/ninja-mode.elc \
+    misc/ninja-mode.el \
 
-	install -m644 -D misc/bash-completion "$pkgdir/usr/share/bash-completion/completions/ninja"
-	install -m644 -D misc/zsh-completion "$pkgdir/usr/share/zsh/site-functions/_ninja"
+  install -Dm644 -t "$pkgdir/usr/share/vim/vimfiles/syntax" misc/ninja.vim
+  install -Dm644 -t "$pkgdir/$site_packages" misc/ninja_syntax.py
+
+  install -Dm644 misc/bash-completion "$pkgdir/usr/share/bash-completion/completions/ninja"
+  install -Dm644 misc/zsh-completion "$pkgdir/usr/share/zsh/site-functions/_ninja"
 }
