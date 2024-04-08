@@ -2,7 +2,7 @@
 _pkgname=blender-studio-pipeline
 pkgname=$_pkgname-git
 pkgver=r2351.dbc09de
-pkgrel=1
+pkgrel=2
 epoch=0
 url="https://projects.blender.org/studio/blender-studio-pipeline.git"
 pkgdesc="this will install Blender Media Viewer and Studio Addons. Learn more at $url."
@@ -27,6 +27,9 @@ prepare() {
 		git clone $url $srcdir
 	fi
 	git pull
+	sed -i 's/\/path\/to\/blender_dir\///g' $srcdir/application-templates/blender-media-viewer/blender_media_viewer.desktop
+	sed -i '8d' $srcdir/application-templates/blender-media-viewer/blender_media_viewer.desktop
+	sed -i 's/Terminal=true/Terminal=false/g' $srcdir/application-templates/blender-media-viewer/blender_media_viewer.desktop
 }
 
 package() {
