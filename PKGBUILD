@@ -3,7 +3,7 @@
 pkgname=windterm-bin
 _pkgname=WindTerm
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Quicker and better SSH/Telnet/Serial/Shell/Sftp client for DevOps.'
 arch=('x86_64')
 license=('Apache-2.0')
@@ -52,4 +52,5 @@ package() {
     cp -r "${srcdir}/${_pkgname}_${pkgver}/"* "${pkgdir}/opt/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${_pkgname}_${pkgver}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${_pkgname}_${pkgver}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    chown -R "${USER}":"${USER}" "${pkgdir}/opt/${pkgname%-bin}"
 }
