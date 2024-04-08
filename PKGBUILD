@@ -1,7 +1,7 @@
 # Maintainer: torculus <20175597+torculus@users.noreply.github.com>
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 pkgname=shiori
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='Simple bookmark manager built with Go'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -43,7 +43,7 @@ build() {
   # set Go flags
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS} -Wl,-z,shstk"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   export GOOS="linux"
