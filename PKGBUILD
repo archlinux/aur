@@ -15,7 +15,7 @@ b2sums=('00a485093ae4f1268c3e6ed8b194f1c0f1579e665863cd609a4690f292b8646ec6d51ab
         '894d0e2f1c264096baf69a98716ffaeabac83d79544e7180721ead3067e17fe038096aa5394d6c282d5d409cf94988e2ef85a7079c4214bee7f33e173e430dac')
 
 prepare() {
-    cd "$srcdir/python-hid-parser-${pkgver}"
+    cd "$srcdir/${pkgname}-${pkgver}"
     patch -p1 -i "${srcdir}/test_items.patch"
 }
 
