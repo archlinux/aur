@@ -4,7 +4,8 @@
 # Contributor: Jimmy Tang <jtang@tchpc.tcd.ie>
 
 pkgname=pristine-tar
-pkgver=1.50
+pkgver=1.50.nmu2
+_pkgver=1.50+nmu2
 pkgrel=1
 pkgdesc="Tool to regenerate a pristine upstream tarball using only a small binary delta file and a copy of the source which can be a revision control checkout."
 arch=('i686' 'x86_64')
@@ -21,18 +22,23 @@ depends=(
 conflicts=('pristine-tar-git')
 checkdepends=('shunit2' 'diffoscope')
 source=(
-  http://ftp.debian.org/debian/pool/main/p/${pkgname}/${pkgname}_${pkgver}.tar.xz
+  http://ftp.debian.org/debian/pool/main/p/${pkgname}/${pkgname}_${_pkgver}.tar.xz
   remove-sys-cpuaffinity-dep.patch
 )
-sha256sums=('9a9790edddd2d5588da87cbc2dfd223dcd0967974c5b0bddf734d49ba85d7f6a'
-            '0c7a2f1c941c7f3b9acb7219822ffda62df8beea5059f8ccc403a43d6cb83b52')
-b2sums=('a10c16c6ee7e2473ae3f440746b1f6f6bcd8917cd4d6d2a7bae7e688f8af99cd371ec80d211e5103779dc6fd9b844a4945c3aef4cf3e9e9995bdf1c9fedef097'
-        'f35e1f85124571eb32228be0ae0eca818b34d7b65f8b4fe0fdb8977558af60b36e9c9024db0c8113a244a0fa6c0630d52eadca001237e7a3263b949473278959')
+sha256sums=('4b6c801bd6bd72a93b37e040ecef9113728016ba3baa35be2f8736c3d725c06c'
+            '561230b404e8b43c48c67f9eb271b44afb71f748911101a0d2ef745a7d8f2640')
+b2sums=('4439219b3f402681e693e20d7ae4efd6a3e390332203286c0b0b6878daba13d71f4e86e0e0002eff4272c577a7dbcfc7740ac8a47b62ea4fce4117efa7faa57c'
+        '19f2afeb860c432f459c579b5eb56d3a8c64ea51c1d2e00913e989282d273bdd4938edb7963e0d8b44d73a75f9912d6ce44f953dd12a678ffe5d6d396ec9b34d')
 
-build() {
-  cd "$srcdir/work"
+
+prepare() {
+  cd "$srcdir/$pkgname-$_pkgver"
 
   patch -p1 < "$startdir/remove-sys-cpuaffinity-dep.patch"
+}
+
+build() {
+  cd "$srcdir/$pkgname-$_pkgver"
 
   export PATH=/usr/bin/core_perl:$PATH
 
@@ -42,13 +48,13 @@ build() {
 
 
 check() {
-  cd "$srcdir/work"
+  cd "$srcdir/$pkgname-$_pkgver"
 
   make test
 }
 
 package() {
-  cd "$srcdir/work"
+  cd "$srcdir/$pkgname-$_pkgver"
 
   make install DESTDIR=$pkgdir PREFIX=/usr INSTALLSITESCRIPT=/usr/bin
   install -d $pkgdir/usr/share/doc/pristine-tar

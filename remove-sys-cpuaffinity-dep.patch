@@ -8,19 +8,17 @@
  
  my @supported_xz_programs = qw(xz pixz);
  
-@@ -255,12 +254,9 @@ sub predict_xz_args {
-     # xz writes sizes in block headers if and only if run with multiple threads
+@@ -256,10 +255,9 @@ sub predict_xz_args {
      # (even when --block-size or --block-list is specified)
      if ($xz->{summary}->{size_in_blocks} eq 'yes') {
--      # All -T values >1 produce the same output.
--      # 0 behaves the same as 1 on single core systems.
+       # All -T values >1 produce the same output.
 -      # Use as many threads as we have CPU affinities, with a minimum of 2.
 -      my @affinities = Sys::CpuAffinity::getAffinity($$);
 -      my $threads = @affinities > 2 ? @affinities : 2;
 -      push @$common, "-T$threads";
-+      # Note: All values >1 produce the same output.
-+      #       Careful, 0 behaves the same as 1 on single core systems.
-+      push @$common, '-T2'
++      # This is patched for AUR to use always two threads, since there is no package
++      # perl-sys-cpuaffinity available.
++      push @$common, "-T2";
+     } else {
+       push @$common, "-T1";
      }
-   }
-   my $possible_args = [];
