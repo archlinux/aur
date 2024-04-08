@@ -1,15 +1,16 @@
 pkgbase = r-seqtools
 	pkgdesc = Analysis of nucleotide, sequence and quality content on fastq files
 	pkgver = 1.36.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/seqTools
 	arch = x86_64
-	license = Artistic2.0
-	depends = r
+	license = Artistic-2.0
 	depends = r-zlibbioc
+	depends = zlib
 	optdepends = r-biocgenerics
 	optdepends = r-runit
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/seqTools_1.36.0.tar.gz
-	sha256sums = 559031059a9315d8b0912d5334c91cb5176427e09586df400b3eeff58b9a1584
+	md5sums = be9be6eb0ee1ff4ab001720970d68da8
+	b2sums = d813ac5feb6ac445a2462b4ac4aeb2c36837cb7101a210c64922561051b222c2c3126f11c1121f3a36e56a64fe903229a42495a72547ab7376ff1499ba2be96f
 
 pkgname = r-seqtools
