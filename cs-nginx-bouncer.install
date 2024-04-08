@@ -25,8 +25,8 @@ post_install() {
 	envsubst < "$TMP" | tee /etc/crowdsec/bouncers/crowdsec-nginx-bouncer.conf >/dev/null
 	
 	echo installing lua-resty-http and lua-cjson using luarocks
-	luarocks install lua-resty-http
-	luarocks install lua-cjson
+	luarocks install lua-resty-http 0.17.1-0
+	luarocks install lua-cjson 2.1.0.10-1
 }
 
 post_upgrade() {
