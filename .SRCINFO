@@ -1,13 +1,16 @@
 pkgbase = python-ansiwrap
 	pkgdesc = textwrap, but savvy to ANSI colors and styles
 	pkgver = 0.8.4
-	pkgrel = 6
+	pkgrel = 8
 	url = https://github.com/jonathaneunice/ansiwrap
 	arch = any
 	license = Apache
 	checkdepends = python-pytest
 	checkdepends = python-ansicolors
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	source = https://github.com/jonathaneunice/ansiwrap/archive/20e2e8c78a54bdce947e38c069c5eb9c115423ae/python-ansiwrap-20e2e8c78a54bdce947e38c069c5eb9c115423ae.tar.gz
 	source = python-ansiwrap-no-textwrap3.patch::https://github.com/jonathaneunice/ansiwrap/pull/16.patch

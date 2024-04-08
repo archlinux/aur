@@ -3,13 +3,13 @@
 pkgname=python-ansiwrap
 pkgver=0.8.4
 _commit=20e2e8c78a54bdce947e38c069c5eb9c115423ae
-pkgrel=7
+pkgrel=8
 pkgdesc="textwrap, but savvy to ANSI colors and styles"
 url="https://github.com/jonathaneunice/ansiwrap"
 license=('Apache')
 arch=('any')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-ansicolors')
 source=("https://github.com/jonathaneunice/ansiwrap/archive/$_commit/$pkgname-$_commit.tar.gz"
         $pkgname-no-textwrap3.patch::https://github.com/jonathaneunice/ansiwrap/pull/16.patch
