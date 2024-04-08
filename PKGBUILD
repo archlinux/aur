@@ -2,12 +2,12 @@
 # Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=vkroots
-pkgver=r29.d5ef31a 
+pkgver=r29.d5ef31a
 pkgrel=1
 pkgdesc="A stupid simple method of making Vulkan layers, at home!"
 arch=(any)
 url="https://github.com/Joshua-Ashton/vkroots"
-license=('Apache-2.0 OR MIT')
+license=('LGPL-2.1-or-later AND (Apache-2.0 or MIT)')
 makedepends=("git" "meson")
 provides=("$pkgname")
 conflicts=("$pkgname")
@@ -32,4 +32,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
+  install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
