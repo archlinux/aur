@@ -4,7 +4,7 @@
 _wlrootsver=0.17.2
 pkgname=wayfire-hidpi-xprop-git
 pkgver=0.8.1.r248.gcf3dcaae
-pkgrel=1
+pkgrel=2
 pkgdesc="3D wayland compositor, integrating the wlroots hidpi-xprop patch set"
 arch=('x86_64')
 url="https://github.com/WayfireWM/wayfire"
