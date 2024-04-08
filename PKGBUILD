@@ -1,8 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname='warp-plus-bin'
-pkgver=1.1.0
+pkgver=1.1.3
 pkgrel=1
-_buildver=cdb551
 pkgdesc="An open-source implementation of Cloudflare's Warp, enhanced with Psiphon integration."
 arch=('x86_64')
 url="https://github.com/bepass-org/warp-plus"
@@ -10,10 +9,10 @@ license=('MIT')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 install="${pkgname%-bin}.install"
-source=("${pkgname%-bin}-${pkgver//_/-}-${_buildver}.zip::${url}/releases/download/v${pkgver//_/-}/warp-plus-linux-amd64.${_buildver}.zip"
+source=("${pkgname%-bin}-${pkgver//_/-}.zip::${url}/releases/download/v${pkgver//_/-}/warp-plus_linux-amd64.zip"
 		"${pkgname%-bin}-config.json"
 		"${pkgname%-bin}.service")
-sha256sums=('1f0ac7c201c3a23eb8c343cd4bd77f7e6023b0a818b87aca9b9e2760a14fb810'
+sha256sums=('efead4e159c50fc87c789b2713dfe16d853f2c6221023f8f087b076bdc056318'
             '75f7943345b61ae5c7d1573b870733ad4de4bc013ca6f761c9f9e36c91dcb2bb'
             '5ada20e3b2871c0921dfe36d721914fa02fe2f4892919160daa71992e91be49b')
 

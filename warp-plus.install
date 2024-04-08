@@ -10,6 +10,7 @@ pre_upgrade() {
 }
 
 post_upgrade() {
+	systemctl daemon-reload
 	systemctl start warp-plus.service
 }
 
