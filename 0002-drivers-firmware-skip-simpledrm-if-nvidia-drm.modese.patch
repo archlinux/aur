@@ -1,7 +1,7 @@
-From 4d23b7ca9ef7806857a57a607a8bac22fd8e5b13 Mon Sep 17 00:00:00 2001
+From 7bf26e9b9f48019e408efb43a32e305f3e884af6 Mon Sep 17 00:00:00 2001
 From: Javier Martinez Canillas <javierm@redhat.com>
 Date: Thu, 19 May 2022 14:40:07 +0200
-Subject: [PATCH 2/3] drivers/firmware: skip simpledrm if nvidia-drm.modeset=1
+Subject: [PATCH 2/4] drivers/firmware: skip simpledrm if nvidia-drm.modeset=1
  is set
 
 The Nvidia proprietary driver has some bugs that leads to issues if used

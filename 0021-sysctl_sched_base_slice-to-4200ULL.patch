@@ -1,0 +1,26 @@
+From 4b5fcf77a00dc777239508cdc333f03f22fa19ed Mon Sep 17 00:00:00 2001
+From: Hamad Marri <hamad.s.almarri@gmail.com>
+Date: Thu, 4 Apr 2024 18:02:19 +0300
+Subject: [PATCH] sysctl_sched_base_slice to 4200ULL
+
+Thanks to @marioroy for the tests and debugging.
+---
+ kernel/sched/bs.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kernel/sched/bs.c b/kernel/sched/bs.c
+index 63781372e..6b3d51b43 100644
+--- a/kernel/sched/bs.c
++++ b/kernel/sched/bs.c
+@@ -14,7 +14,7 @@
+ #include "sched.h"
+ #include "pelt.h"
+ 
+-unsigned int sysctl_sched_base_slice	= 6000ULL;
++unsigned int sysctl_sched_base_slice	= 4200ULL;
+ unsigned int bs_shared_quota		= 35000ULL; // 35us
+ u32 alpha				= 500U;
+ 
+-- 
+2.44.0
+

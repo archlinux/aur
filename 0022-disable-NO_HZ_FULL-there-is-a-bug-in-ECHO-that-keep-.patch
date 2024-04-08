@@ -1,0 +1,29 @@
+From 2d05563e4544c52f2eb1bcd9658d67c6f33f36ed Mon Sep 17 00:00:00 2001
+From: hamadmarri <hamad.s.almarri@gmail.com>
+Date: Sat, 6 Apr 2024 08:51:36 +0000
+Subject: [PATCH] disable NO_HZ_FULL, there is a bug in ECHO that keep cpus
+ idle for sometime when adding full tickless args in grub nohz_full=...
+
+Currently the easy fix is to remove the nohz_full from grub
+parameters in echo linux line. The bug still there so for
+the time being I just disabled NO_HZ_FULL
+---
+ kernel/time/Kconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kernel/time/Kconfig b/kernel/time/Kconfig
+index bae8f1107..93caca5d2 100644
+--- a/kernel/time/Kconfig
++++ b/kernel/time/Kconfig
+@@ -119,7 +119,7 @@ config NO_HZ_FULL
+ 	bool "Full dynticks system (tickless)"
+ 	# NO_HZ_COMMON dependency
+ 	# We need at least one periodic CPU for timekeeping
+-	depends on SMP
++	depends on SMP && !ECHO_SCHED
+ 	depends on HAVE_CONTEXT_TRACKING_USER
+ 	# VIRT_CPU_ACCOUNTING_GEN dependency
+ 	depends on HAVE_VIRT_CPU_ACCOUNTING_GEN
+-- 
+2.44.0
+

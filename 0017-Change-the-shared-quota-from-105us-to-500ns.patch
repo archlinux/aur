@@ -1,0 +1,28 @@
+From 5ce10dc6c375890e45f45fa423897d3e4c9a7597 Mon Sep 17 00:00:00 2001
+From: Hamad Marri <hamad.s.almarri@gmail.com>
+Date: Tue, 2 Apr 2024 20:15:44 +0300
+Subject: [PATCH] Change the shared quota from 105us to 500ns and the min slice
+ from 7us to 50ns
+
+---
+ kernel/sched/bs.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/kernel/sched/bs.c b/kernel/sched/bs.c
+index 7760327e5..7ef119897 100644
+--- a/kernel/sched/bs.c
++++ b/kernel/sched/bs.c
+@@ -14,8 +14,8 @@
+ #include "sched.h"
+ #include "pelt.h"
+ 
+-unsigned int sysctl_sched_base_slice	= 7000ULL;
+-unsigned int bs_shared_quota		= 105000ULL; // 105us
++unsigned int sysctl_sched_base_slice	= 50ULL;
++unsigned int bs_shared_quota		= 500ULL; // 500ns
+ u32 alpha				= 500U;
+ 
+ struct lb_env {
+-- 
+2.44.0
+

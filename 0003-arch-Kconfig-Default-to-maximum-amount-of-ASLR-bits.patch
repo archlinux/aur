@@ -1,7 +1,7 @@
-From 6ce0f5c6171583c296bbf649d03ad68c0732d39c Mon Sep 17 00:00:00 2001
+From ebdc76787eb2e45c4990b2a63bb550b9609fd3e2 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
 Date: Sat, 13 Jan 2024 15:29:25 +0100
-Subject: [PATCH 3/3] arch/Kconfig: Default to maximum amount of ASLR bits
+Subject: [PATCH 3/4] arch/Kconfig: Default to maximum amount of ASLR bits
 
 To mitigate https://zolutal.github.io/aslrnt/; do this with a patch to
 avoid having to enable `CONFIG_EXPERT`.

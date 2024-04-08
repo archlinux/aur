@@ -1,0 +1,28 @@
+From 3c436b4ee7f6667450cb8d5285b8f089b43c065a Mon Sep 17 00:00:00 2001
+From: Hamad Marri <hamad.s.almarri@gmail.com>
+Date: Wed, 3 Apr 2024 19:18:39 +0300
+Subject: [PATCH] 35us for shared quota seems better suited for default value.
+ Thanks to @marioroy for the tests and debugging.
+
+---
+ kernel/sched/bs.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/kernel/sched/bs.c b/kernel/sched/bs.c
+index 7ef119897..63781372e 100644
+--- a/kernel/sched/bs.c
++++ b/kernel/sched/bs.c
+@@ -14,8 +14,8 @@
+ #include "sched.h"
+ #include "pelt.h"
+ 
+-unsigned int sysctl_sched_base_slice	= 50ULL;
+-unsigned int bs_shared_quota		= 500ULL; // 500ns
++unsigned int sysctl_sched_base_slice	= 6000ULL;
++unsigned int bs_shared_quota		= 35000ULL; // 35us
+ u32 alpha				= 500U;
+ 
+ struct lb_env {
+-- 
+2.44.0
+

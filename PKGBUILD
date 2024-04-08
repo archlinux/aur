@@ -34,11 +34,11 @@ fi
 ###################################################################################
 
 pkgbase=linux-echo
-pkgver=6.8.1
-_pkgver=6.8.1
+pkgver=6.8.4
+_pkgver=6.8.4
 pkgrel=1
 major=6.8
-commit=abef9db380deca88617f7014b683667ef6fc81e4
+commit=1b0c0b620d3d8838bf95cb5c80e8b8bdc070466c
 arch=(x86_64)
 url='https://www.kernel.org/'
 license=(GPL-2.0-only)
@@ -94,7 +94,10 @@ source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz
         0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
         0002-drivers-firmware-skip-simpledrm-if-nvidia-drm.modese.patch
         0003-arch-Kconfig-Default-to-maximum-amount-of-ASLR-bits.patch
+        0004-xen-netfront-Add-missing-skb_mark_for_recycle.patch
         # ECHO
+        # All commits from Hamad Al Marri in the linux-6.8.y-echo branch
+        # Some commits are not in the official path from the  ECHO-CPU-Scheduler repo
         0001-initial-baby-6.7.y-commit-Thu-Mar-21-04-32-59-PM-03-.patch
         0002-added-yield-from-tt.patch
         0003-added-lat_sensitive.patch
@@ -110,7 +113,13 @@ source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz
         0013-port-to-6.8.y.patch
         0014-add-CONFIG_ECHO_SCHED.patch
         0015-removed-lat_sens.patch
-        0016-ECHO-CPU-scheduler-v6.8.patch)
+        0016-ECHO-CPU-scheduler-v6.8.patch
+        0017-Change-the-shared-quota-from-105us-to-500ns.patch
+        0018-RR_TIMESLICE-to-1ms.patch
+        0019-Revert-RR_TIMESLICE-to-1ms.patch
+        0020-35us-for-shared-quota-seems-better-suited-for-defaul.patch
+        0021-sysctl_sched_base_slice-to-4200ULL.patch
+        0022-disable-NO_HZ_FULL-there-is-a-bug-in-ECHO-that-keep-.patch)
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -336,7 +345,7 @@ _package-headers(){
   # https://bugs.archlinux.org/task/71392
   install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
-  msg "Installing KConfig files..."
+  msg "Installing Kconfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
   msg "Removing unneeded architectures..."
@@ -379,11 +388,12 @@ _package-headers(){
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('8d0c8936e3140a0fbdf511ad7a9f21121598f3656743898f47bb9052d37cff68'
-            'c2b00c84c4b543db431e06604d939a62f93107d18369f4d9860dc8062b01ab45'
-            '416609986399d3046811bcc2344f4ee0833b6c92e305da3925a6e193f810dad2'
-            'b4c85f49a0c0fe6d6ac1f55165c2c897000a7c6c0c30f258693d66223c0389fd'
-            'd9c0e2b3fa16f02abfd95d4c00747a43dd761e5cd622d40ab908155c5957759b'
+sha256sums=('d5dec495fc00605fa9e04114df547fbc92b33d9ea7a4a2b7073c589590e79e63'
+            '5c0ebdac3ab21e1282cca9f5d41412eab90352f6f2ec22ce660ad038a5ff48fa'
+            '014474c35c7c7e1555661994af446ba3f8d21768e12eca0838eb9155624d937e'
+            '7a715017061c7122977b260a5917e65ac756343552ff3f8463fb9329a50848ee'
+            '074a0870a523d36874903fc496c49f568e50c837180ab898fcb5334318c72158'
+            '284c4235fcf6bce55e443707dbe72862090027a1a29a4083a2dbbb03ad778e19'
             'decfd4c32e2a20accd20b1df6209b5821f97bf6b567c00e4be0f1209d94190dc'
             'd2d9b13bd70047c44eec1a65d85ad7f868aac95f61e589a754d34a429f526075'
             '6149cd3f81aaa2bdf9e976fd9f23427fc744cc95a27908421600d1c60d6f203b'
@@ -399,7 +409,13 @@ sha256sums=('8d0c8936e3140a0fbdf511ad7a9f21121598f3656743898f47bb9052d37cff68'
             '82ae578ea6415bb368575ef56932614311a6c833e2e80d2d676523d6b8aa016a'
             '640449359fb0305a441bcd14777fe8bcb416087bdaea3332427dc3f46fc6a611'
             '6afa0e024891a1252f2cd9400d0a0387483d600c3cd3b7453c5a8d819fa967f5'
-            'a31a307a4184187d962a25f1132d0e1b0330fcdb694a9fc53f969eff4dce17b4')
+            'a31a307a4184187d962a25f1132d0e1b0330fcdb694a9fc53f969eff4dce17b4'
+            'db1da37203484a3b1f7c369552d6c1086620ad7431c80ffb3a7b629b01efd2b3'
+            'bb5699ff08ae9f8b0a9ae1ebe8f59df2cf984035fe14034fe61397c89de637bf'
+            'd0b38a0b1750b43cd378b4ee0e9fafbc6f95159c3747a3289a661803e0fbb1c8'
+            '48b0d67cc4534438b4c59873931ced019ddd61331d94e516c40bc85ec5ab7c5a'
+            '5d321257ccf6cd2e39fa10532c21e1dfcc0599291bf7de474422cf6d5a0c5120'
+            '0c60881992731ed2cadc71d07ec2aefd061161543ca7a8730b82237e25adf424')
 
 pkgname=($pkgbase $pkgbase-headers)
 for _p in "${pkgname[@]}"; do
