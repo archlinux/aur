@@ -16,9 +16,7 @@ install="${pkgname}.install"
 source=(
 	'plymouth-theme-arch-logo.tar.gz'
 )
-sha256sums=(
-	'553ab3efd51abefc50c10b521c24183df9ef879d080a75c54fb1c1512fbc94e6'
-)
+sha512sums=('0c834bccc32d8d2df1a0bf2ae859487eef273ddf8047a7444f3630dffbbf04a9d014242304c5b2bcd9172bea2e04195f329dfe1fe4661bcc5af29ca64104af06')
 
 package() {
 	cd "${srcdir}/arch-logo"
