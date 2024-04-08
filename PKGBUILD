@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="Tool to regenerate a pristine upstream tarball using only a small binary delta file and a copy of the source which can be a revision control checkout."
 arch=('i686' 'x86_64')
 url="https://salsa.debian.org/debian/pristine-tar"
-license=('GPL')
+license=('GPL-2.0-or-later AND BSD-3-Clause')
 depends=(
   pbzip2
   perl
