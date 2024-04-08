@@ -10,7 +10,10 @@ url='https://openenclave.io/sdk/'
 # _giturl='https://github.com/openenclave/openenclave'
 # Since it bundles all submodule deps
 license=('Apache-2.0')
-optdepends=('openssl-1.1: for bundled tools to use system-wide OpenSSL')
+optdepends=(
+  'openssl-1.1: for bundled tools and linked with host part when building'
+  'clang14: can build'
+)
 changelog="$_pkgname.changelog.md"
 source=(
   "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/o/${_pkgname}/${_pkgname}_${pkgver}_amd64.deb"
