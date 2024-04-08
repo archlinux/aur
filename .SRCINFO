@@ -1,6 +1,6 @@
 pkgbase = ayatana-indicator-display
 	pkgdesc = Ayatana Indicator Display
-	pkgver = 24.1.1
+	pkgver = 24.4.0
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators/ayatana-indicator-display
 	arch = i686
@@ -22,7 +22,7 @@ pkgbase = ayatana-indicator-display
 	depends = dconf
 	depends = accountsservice
 	conflicts = redshift
-	source = ayatana-indicator-display-24.1.1.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-display/archive/24.1.1.tar.gz
-	md5sums = 70c547021450b1c15ec47f42579ad806
+	source = ayatana-indicator-display-24.4.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-display/archive/24.4.0.tar.gz
+	md5sums = f4d73251e11a9faa873f6d7693451126
 
 pkgname = ayatana-indicator-display
