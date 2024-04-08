@@ -8,13 +8,7 @@ url="https://codeberg.org/ramenu/$_pkgname"
 pkgdesc='A minimalistic, safety-focused build system for C/C++'
 arch=('x86_64')
 makedepends=('cargo' 'git')
-license=('MIT' 
-         'Apache-2.0' 
-         'BSD-3-Clause'
-         'BSD-2-Clause'
-         'Unicode-DFS-2016'
-         'Zlib'
-         'ISC')
+license=('MIT')
 source=("$_pkgname::git+$url.git")
 optdepends=('gcc: GNU C/C++ compiler'
 		    'clang: LLVM C/C++ frontend'
