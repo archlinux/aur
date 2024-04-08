@@ -7,10 +7,10 @@ pkgbase = mediathekview-xdg
 	license = GPL-3.0-or-later
 	makedepends = maven
 	makedepends = strip-nondeterminism
-	makedepends = java-environment-openjdk=21
+	makedepends = java-environment-openjdk=22
 	depends = bash
 	depends = hicolor-icon-theme
-	depends = java-runtime-openjdk=21
+	depends = java-runtime-openjdk=22
 	depends = xdg-user-dirs
 	optdepends = libnotify: to use desktop notifications
 	optdepends = mplayer: for recording streams
