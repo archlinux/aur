@@ -12,7 +12,7 @@ pkgbase = python-language-data
 	depends = python-langcodes
 	depends = python-setuptools
 	depends = python-marisa-trie
-	source = https://files.pythonhosted.org/packages/f4/ef/b2176538ebb01ac7c08b29c9d8cf878275ff98a4e717c57ee8123c373424/language_data-1.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/l/language_data/language_data-1.1.tar.gz
 	sha256sums = c1f5283c46bba68befa37505857a3f672497aba0c522b37d99367e911232455b
 
 pkgname = python-language-data
