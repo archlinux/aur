@@ -1,7 +1,7 @@
 # Maintainer: Marc Tiehuis <marctiehuis at gmail.com>
 
 pkgname=zig-git
-pkgver=0.10.0.r1928.g3169f0529b
+pkgver=0.11.0.r3596.gfbb38a7682
 pkgrel=1
 pkgdesc="a programming language prioritizing robustness, optimality, and clarity"
 arch=('i686' 'x86_64' 'aarch64')
