@@ -1,4 +1,4 @@
-pkgbase = wechat-uos-qt
+pkgbase = wechat-uos-bwrap
 	pkgdesc = WeChat Qt w/ bwrap sandbox
 	pkgver = 1.0.0.238
 	pkgrel = 5
@@ -68,6 +68,12 @@ pkgbase = wechat-uos-qt
 	source_loong64 = wechat-loong64-1.0.0.238.deb::https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_1.0.0.238_arm64.deb
 	md5sums_loong64 = 280d9b202390954c011dbd12e28f892d
 
+pkgname = wechat-uos-bwrap
+	conflicts = wechat-universal-bwrap
+	conflicts = wechat-beta-bwrap
+	replaces = wechat-universal-bwrap
+	replaces = wechat-beta-bwrap
+
 pkgname = wechat-uos-qt
 	depends = zenity
 	depends = xdg-dbus-proxy
@@ -116,9 +122,3 @@ pkgname = wechat-uos-qt
 	replaces = wechat-universal-bwrap
 	replaces = wechat-beta-bwrap
 	replaces = wechat-uos-bwrap
-
-pkgname = wechat-uos-bwrap
-	conflicts = wechat-universal-bwrap
-	conflicts = wechat-beta-bwrap
-	replaces = wechat-universal-bwrap
-	replaces = wechat-beta-bwrap

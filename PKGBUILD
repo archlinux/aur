@@ -1,5 +1,5 @@
 # Maintainer: Kimiblock Moe
-pkgname=(wechat-uos-qt wechat-uos-bwrap)
+pkgname=(wechat-uos-bwrap wechat-uos-qt)
 pkgver=1.0.0.238
 pkgrel=5
 epoch=
