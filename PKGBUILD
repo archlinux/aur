@@ -1,6 +1,6 @@
 # Maintainer: Totor <bertlover6969@gmail.com>
 pkgname='eeec'
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Extremely Elaborate Elegant Calendar"
 arch=('x86_64')
