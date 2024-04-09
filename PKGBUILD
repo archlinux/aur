@@ -1,7 +1,7 @@
 # Maintainer: Giovanni Scafora <scafora.giovanni@gmail.com>
 pkgname=opgui
 pkgver=0.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc='An USB programmer for various devices, including PIC, dsPIC, AVR microcontrollers, and various kinds of serial eeproms'
 arch=('x86_64')
 url='http://openprog.altervista.org'

@@ -1,7 +1,7 @@
 pkgbase = opgui
 	pkgdesc = An USB programmer for various devices, including PIC, dsPIC, AVR microcontrollers, and various kinds of serial eeproms
 	pkgver = 0.12.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://openprog.altervista.org
 	arch = x86_64
 	license = GPL-2.0-only
