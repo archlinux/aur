@@ -7,19 +7,19 @@ pkgver=0.10.0
 pkgrel=1
 pkgdesc='The command line interface for svg2pdf.'
 url='https://crates.io/crates/svg2pdf-cli'
-license=('Apache' 'MIT')
+license=('Apache-2.0' 'MIT')
 
 depends=('gcc-libs')
 makedepends=('cargo')
 
-source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/svg2pdf-cli/0.10.0/download")
+source=("$_crate-0.10.0.tar.gz::https://crates.io/api/v1/crates/svg2pdf-cli/0.10.0/download")
 sha512sums=('d8f5c5fe44472fbcccafffb6143d6460c0ded24c4aa2d3a2adbb22ec6ba7734833676dc3da5f2a719b92867540a96cd85161f237275ebed2a97dc2377d3cdc6c')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
 
 prepare() {
-	cd "$srcdir/$_crate-$pkgver"
+	cd "$srcdir/$_crate-0.10.0"
 
 	export RUSTUP_TOOLCHAIN=stable
 
@@ -27,10 +27,11 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/$_crate-$pkgver"
+	cd "$srcdir/$_crate-0.10.0"
 	
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	CFLAGS+=" -ffat-lto-objects"
 
 	
 	cargo build \
@@ -40,6 +41,6 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$_crate-$pkgver"
+	cd "$srcdir/$_crate-0.10.0"
 	install -Dm755 "target/release/svg2pdf" -t "$pkgdir/usr/bin"
 }
