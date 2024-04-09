@@ -10,7 +10,7 @@ pkgbase = rosary
 	depends = git
 	depends = qt6-base>=6.4
 	depends = qt6-declarative>=6.4
-	depends = qt6-webview
+	depends = qt6-webview>=6.4
 	optdepends = sudo: privilege elevation
 	optdepends = doas: privilege elevation
 	source = Rosary-1.0.0_x86_64.tar.gz::https://github.com/RoseBlume/Rosary-Bible-App/releases/download/Debianv1.0-1/Rosary-1.0.0_x86_64.tar.gz
