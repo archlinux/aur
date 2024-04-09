@@ -1,0 +1,19 @@
+pkgbase = jupyter-nbclassic
+	pkgdesc = Jupyter Notebook as a Jupyter Server Extension
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://jupyter.org/
+	arch = any
+	license = custom
+	checkdepends = python-pytest-tornasync
+	checkdepends = python-pytest-jupyter
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-jupyter-packaging
+	depends = python-jupyter-server-terminals
+	depends = jupyter-notebook-shim
+	depends = mathjax2
+	source = https://pypi.io/packages/source/n/nbclassic/nbclassic-1.0.0.tar.gz
+	sha256sums = 0ae11eb2319455d805596bf320336cda9554b41d99ab9a3c31bf8180bffa30e3
+
+pkgname = jupyter-nbclassic
