@@ -3,11 +3,12 @@
 pkgname=expresslrs-configurator-bin
 _pkgname=expresslrs-configurator
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross platform configuration & build tool for the ExpressLRS radio link"
 arch=('x86_64')
 url="https://github.com/ExpressLRS/ExpressLRS-Configurator"
 license=('GPL')
+depends=('platformio-core-udev')
 source=(
     "https://github.com/ExpressLRS/ExpressLRS-Configurator/releases/download/v$pkgver/expresslrs-configurator-$pkgver.pacman"
 )
