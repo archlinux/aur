@@ -1,7 +1,7 @@
 pkgbase = xash3d-fwgs-bin
 	pkgdesc = Xash3D FWGS is a heavily modified fork of an original Xash3D Engine for Half Life 1
 	pkgver = 1677835
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/half-life1
 	arch = x86_64
 	arch = aarch64

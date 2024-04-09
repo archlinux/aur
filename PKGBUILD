@@ -1,6 +1,6 @@
 pkgname=xash3d-fwgs-bin
 pkgver=1677835
-pkgrel=1
+pkgrel=2
 _pkgrel_x86_64=1
 _pkgrel_aarch64=1
 pkgdesc="Xash3D FWGS is a heavily modified fork of an original Xash3D Engine for Half Life 1"
@@ -16,11 +16,9 @@ source_aarch64=("https://gitlab.com/half-life1/binaries/$pkgver/-/raw/main/xash3
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
-    install -dm755 "$pkgdir/usr/lib"
     install -dm755 "$pkgdir/usr/share/games/xash3d-fwgs"
     
-    rm -rf "$srcdir/libmenu.so"
-    cp -n "$srcdir"/*.so "$pkgdir/usr/lib"
+    cp -n "$srcdir"/*.so "$pkgdir/usr/share/games/xash3d-fwgs"
     cp -r "$srcdir/valve" "$pkgdir/usr/share/games/xash3d-fwgs"
     cp -n "$srcdir/xash3d" "$pkgdir/usr/share/games/xash3d-fwgs"
     ln -sf "/usr/share/games/xash3d-fwgs/xash3d" "$pkgdir/usr/bin"
