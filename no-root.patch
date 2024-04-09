@@ -1,0 +1,20 @@
+diff --color --unified --recursive --text drc-sim-e.orig/setup.py drc-sim-e.new/setup.py
+--- drc-sim-e.orig/setup.py	2024-04-09 20:02:19.030382742 +0800
++++ drc-sim-e.new/setup.py	2024-04-09 20:02:37.623978778 +0800
+@@ -32,13 +32,13 @@
+               'resources/image/spade.gif',
+               'resources/image/icon.gif'
+           ]),
+-          ('/usr/share/applications', [
++          ('usr/share/applications', [
+               'resources/bin/drcsimbackend.desktop'
+           ]),
+-          ('/usr/share/icons/hicolor/512x512/apps', [
++          ('usr/share/icons/hicolor/512x512/apps', [
+               'resources/image/drcsimbackend.png'
+           ]),
+-          ('/usr/share/polkit-1/actions', [
++          ('usr/share/polkit-1/actions', [
+               'resources/bin/com.rolandoislas.drcsim.server.policy'
+           ])
+       ],

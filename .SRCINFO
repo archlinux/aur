@@ -1,0 +1,33 @@
+pkgbase = drc-sim-e-git
+	pkgdesc = Wii U Gamepad Simulator Backend
+	pkgver = 2.1.1.r2.g2d8b3e6
+	pkgrel = 1
+	url = https://github.com/Veemyu/drc-sim-e
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	depends = python>=3.3
+	depends = python-pip
+	depends = libffi
+	depends = zlib
+	depends = libjpeg-turbo
+	depends = net-tools
+	depends = wireless_tools
+	depends = systemd-sysvcompat
+	depends = ffmpeg
+	depends = util-linux
+	depends = dhclient
+	depends = tk
+	depends = pkgconf
+	depends = openssl
+	depends = libnl
+	depends = ethtool
+	depends = ifmetric
+	source = drc-sim-e::git+https://github.com/Veemyu/drc-sim-e.git
+	source = no-root.patch
+	md5sums = SKIP
+	md5sums = d5f103f661f95da4f5202b47fede5d57
+
+pkgname = drc-sim-e-git
