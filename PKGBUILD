@@ -3,12 +3,12 @@
 
 _pkgname=vgmtrans
 pkgname=${_pkgname}-git
-pkgver=r1234.0c528c4
+pkgver=r1242.f5e212f
 pkgrel=1
 pkgdesc="Converter for sequenced videogame music"
 arch=("x86_64")
 url="https://github.com/vgmtrans/vgmtrans"
-license=("Zlib")
+license=("BSD-3-Clause" "Zlib")
 depends=("hicolor-icon-theme" "minizip" "qt6-base" "qt6-svg")
 makedepends=("cmake" "git" "qt6-tools")
 source=("${_pkgname}::git+${url}")
@@ -41,6 +41,7 @@ package() {
 	install -Dm644 "../lib/bass/libbass.so" "${pkgdir}/usr/lib/${_pkgname}/libbass.so"
 	install -Dm644 "../lib/bass/libbassmidi.so" "${pkgdir}/usr/lib/${_pkgname}/libbassmidi.so"
 
-	# Add (required) ZLIB license
+	# Install the licenses
 	install -Dm644 "../LICENSE/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "../LICENSE/LICENSE_oki_adpcm_state" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE_oki_adpcm_state"
 }
