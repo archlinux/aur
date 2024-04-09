@@ -1,0 +1,54 @@
+# Maintainer: taotieren <admin@taotieren.com>
+
+_pkgname=GX_ISPTool
+pkgname=gx-isptool-git
+pkgver=r17.31e6a85
+pkgrel=1
+pkgdesc="GX (感芯科技) 芯片下载工具，用于连接USB给GX芯片下载固件/调试固件，持续开发中，欢迎支持~"
+arch=(x86_64
+    aarch64
+    riscv64)
+url="https://gitee.com/gxchip/GX_ISPTool"
+license=('LGPL-3.0-or-later')
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
+replaces=()
+depends=(
+    glibc
+    gcc-libs
+    hidapi
+    qt5-base)
+makedepends=(git
+    qt5-tools)
+backup=()
+options=()
+install=
+source=("${pkgname}::git+https://gitee.com/taotieren/${_pkgname}.git"
+#     "${pkgname}::git+https://gitee.com/gxchip/${_pkgname}.git"
+)
+sha256sums=('SKIP')
+
+prepare() {
+    git -C "${srcdir}/${pkgname}" clean -dfx
+    cd "${srcdir}/${pkgname}"
+    git checkout archlinux
+}
+
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    ( set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
+}
+
+build() {
+    cd "${srcdir}/${pkgname}"
+    qmake ${_pkgname}.pro
+    make
+}
+
+package() {
+    cd "${srcdir}/${pkgname}"
+    INSTALL_ROOT=${pkgdir} make install
+}

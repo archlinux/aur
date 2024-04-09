@@ -1,0 +1,21 @@
+pkgbase = gx-isptool-git
+	pkgdesc = GX (感芯科技) 芯片下载工具，用于连接USB给GX芯片下载固件/调试固件，持续开发中，欢迎支持~
+	pkgver = r17.31e6a85
+	pkgrel = 1
+	url = https://gitee.com/gxchip/GX_ISPTool
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = LGPL-3.0-or-later
+	makedepends = git
+	makedepends = qt5-tools
+	depends = glibc
+	depends = gcc-libs
+	depends = hidapi
+	depends = qt5-base
+	provides = gx-isptool
+	conflicts = gx-isptool
+	source = gx-isptool-git::git+https://gitee.com/taotieren/GX_ISPTool.git
+	sha256sums = SKIP
+
+pkgname = gx-isptool-git
