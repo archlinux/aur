@@ -1,20 +1,20 @@
-# Maintainer: XandrCopyrighted (or xxandr, XDR) <xxandrr@proton.me>
+# Maintainer: XDR <xxdr@duck.com>
 
 pkgname="cazic-bin"
 pkgver=0.0.6
 pkgrel=1
-pkgdesc="Another music player created with Tauri!"
+pkgdesc="Another music player written in Rust."
 arch=('any')
-url="https://codeberg.org/XDR/Cazic"
+url="https://gitlab.com/XDRwastaken/Cazic"
 license=('MIT')
 
 source=(
-	"https://codeberg.org/XDR/Cazic/releases/download/0.0.6/Cazic_Linux.tar.gz"
-	"https://codeberg.org/XDR/Cazic/raw/branch/main/LICENSE"
+	"https://gitlab.com/XDRwastaken/archived/-/raw/main/Cazic/0.0.6/Cazic_Linux.tar.gz"
+	"https://gitlab.com/XDRwastaken/Cazic/-/raw/main/LICENSE"
 	"cazic.desktop"
-	"https://codeberg.org/XDR/Cazic/raw/branch/main/assets/app-icon/32x32.png"
-	"https://codeberg.org/XDR/Cazic/raw/branch/main/assets/app-icon/128x128.png"
-	"https://codeberg.org/XDR/Cazic/raw/branch/main/assets/app-icon/128x128%402x.png"
+	"https://gitlab.com/XDRwastaken/Cazic/-/raw/main/assets/app-icon/32x32.png"
+	"https://gitlab.com/XDRwastaken/Cazic/-/raw/main/assets/app-icon/128x128.png"
+	"https://gitlab.com/XDRwastaken/Cazic/-/raw/main/assets/app-icon/128x128%402x.png"
 )
 
 sha256sums=(
