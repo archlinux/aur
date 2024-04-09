@@ -1,0 +1,4 @@
+[clink]
+source = "git"
+git = "https://github.com/Lurk/clink.git"
+include_regex = '((?:\d|\.)+)'
