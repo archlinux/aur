@@ -8,8 +8,8 @@ pkgname=discord-electron-openasar
 _pkgname=discord
 pkgver=0.0.48+827
 _pkgver=${pkgver%%+*}
-pkgrel=1
-_electronver=28
+pkgrel=2
+_electronver=29
 _electronname="electron${_electronver}"
 pkgdesc="Discord packaged with OpenAsar using system provided electron (v${_electronver}) for increased security and performance"
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=("https://dl.discordapp.net/apps/linux/${_pkgver}/${_pkgname}-${_pkgver}.
 	'discord-launcher.sh'
 	"git+https://github.com/goosemod/openasar.git#commit=4f264d860a5a6a32e1862ce26178b9cf6402335d")
 sha512sums=('3cffb469283de46a234f09fc42bf9963d4497ae28f71637db1230d5f8531c0d9fe00ceb6002e5f65f085a1a9511fd3ac8dd48e23431e190555d6cf8e62519f2b'
-            'ceaeb357a84df0695fe65867f81d2fa35a65a6f47f47a29022e09fa15cc816b3e250f63eee1025388f51665e6bc39262de7cb7a137f25caf1d922bbacd217566'
+            '9d00f9d2e05c2ba31c930c066f247954700bb0f96f2fc605e61c3973d7dacf962bf372659b71e05e5d8d4e152cc884bf12ec1fb5ecbfc4da55d22ab2591c4c40'
             '055bbe5fbc63a715ab8357db8aabacad282e3d176b48e322d7133a5887291577687456bbfaf7b832d19f13b1a5a373e2c0f6f82664887509feb3c193ee4f1849')
 
 _krisp_b2sum='5f72dcddf45a680d16a49961d1756ac26ca555a94771ff5ece43c66783f9f311948e070f57d60c562675d993b69fc4f3375dd22e2f0d1692c1094258d71bb162'
@@ -64,7 +64,7 @@ build() {
 	# pack openasar
 	sed -i -e "s|nightly|nightly-$(git rev-parse HEAD | cut -c 1-7)|" src/index.js
 	sed -i -e "/config.setup = true/a\  config.autoupdate = false;" src/config/index.js
-	sed -i -e "s|process.resourcesPath|'/usr/lib/${_pkgname}'|" src/utils/buildInfo.js
+	sed -i -e "s|process.resourcesPath|'/usr/lib/${_pkgname}/resources'|" src/utils/buildInfo.js
 	sed -i -e "s|^Exec=\${exec}$|Exec=/usr/bin/${_pkgname}|" \
 		-e "s|^Name=\${basename(exec)}$|Name=${_pkgname^}|" src/autoStart.js
 	node scripts/strip.js
@@ -77,14 +77,14 @@ package() {
 	install -d "${pkgdir}"/usr/share/{pixmaps,applications,licenses/$_pkgname}
 
 	# copy relevant data
-	cp -r ${_pkgname^}/resources/* "${pkgdir}"/usr/lib/$_pkgname/
+	cp -r ${_pkgname^}/resources "${pkgdir}"/usr/lib/$_pkgname/
 	cp ${_pkgname^}/$_pkgname.png \
 		"${pkgdir}"/usr/share/pixmaps/$_pkgname.png
 	cp ${_pkgname^}/$_pkgname.desktop \
 		"${pkgdir}"/usr/share/applications/$_pkgname.desktop
 
 	# overwrite Discord asar
-	install -Dm 644 openasar/app.asar "${pkgdir}"/usr/lib/$_pkgname/
+	install -Dm 644 openasar/app.asar "${pkgdir}"/usr/lib/$_pkgname/resources/
 
 	# install the launch script
 	install -Dm 755 discord-launcher.sh "${pkgdir}"/usr/bin/$_pkgname

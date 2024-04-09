@@ -37,6 +37,6 @@ unset flags_file krisp_bin krisp_b2
 
 
 exec /usr/lib/@ELECTRON@/electron \
-	/usr/lib/@PKGNAME@/app.asar \
+	/usr/lib/@PKGNAME@/resources/app.asar \
 	--ozone-platform-hint=auto \
 	"${flags[@]}" "$@"
