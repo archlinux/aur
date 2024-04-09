@@ -1,9 +1,10 @@
 pkgbase = clink
 	pkgdesc = Url cleaner
 	pkgver = 0.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Lurk/clink
 	arch = x86_64
+	arch = x86_64_v3
 	license = MIT
 	makedepends = cargo
 	makedepends = git

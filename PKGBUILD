@@ -2,9 +2,9 @@
 # Contributor: Sergey Bargamon <sergey@bargamon.ru>
 pkgname=clink
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Url cleaner"
-arch=("x86_64")
+arch=("x86_64" "x86_64_v3")
 url="https://github.com/Lurk/clink"
 license=("MIT")
 makedepends=("cargo" "git")
