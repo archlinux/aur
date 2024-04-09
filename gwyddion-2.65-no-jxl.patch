@@ -1,0 +1,684 @@
+diff -Nuar gwyddion-2.65/app/Makefile.in gwyddion-2.65-no-jxl/app/Makefile.in
+--- gwyddion-2.65/app/Makefile.in	2024-01-04 21:24:43.000000000 +0700
++++ gwyddion-2.65-no-jxl/app/Makefile.in	2024-04-09 11:45:22.486935255 +0700
+@@ -350,8 +350,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/config.h.in gwyddion-2.65-no-jxl/config.h.in
+--- gwyddion-2.65/config.h.in	2024-01-04 20:03:43.000000000 +0700
++++ gwyddion-2.65-no-jxl/config.h.in	2024-04-09 11:58:41.746951060 +0700
+@@ -79,9 +79,6 @@
+ /* Define if we have the jansson package. */
+ #undef HAVE_JANSSON
+ 
+-/* Define if we have the libjxl package. */
+-#undef HAVE_JXL
+-
+ /* Define to 1 if you have the `lgamma' function. */
+ #undef HAVE_LGAMMA
+ 
+diff -Nuar gwyddion-2.65/configure gwyddion-2.65-no-jxl/configure
+--- gwyddion-2.65/configure	2024-01-04 20:03:40.000000000 +0700
++++ gwyddion-2.65-no-jxl/configure	2024-04-09 12:01:32.963621109 +0700
+@@ -785,10 +785,6 @@
+ EXR_CFLAGS
+ HAVE_CXX_FALSE
+ HAVE_CXX_TRUE
+-HAVE_JXL_FALSE
+-HAVE_JXL_TRUE
+-JXL_LIBS
+-JXL_CFLAGS
+ HAVE_WEBP_FALSE
+ HAVE_WEBP_TRUE
+ WEBP_LIBS
+@@ -1141,8 +1137,6 @@
+ PNG_LIBS
+ WEBP_CFLAGS
+ WEBP_LIBS
+-JXL_CFLAGS
+-JXL_LIBS
+ EXR_CFLAGS
+ EXR_LIBS
+ CFITSIO_CFLAGS
+@@ -1930,8 +1924,6 @@
+   PNG_LIBS    linker flags for PNG, overriding pkg-config
+   WEBP_CFLAGS C compiler flags for WEBP, overriding pkg-config
+   WEBP_LIBS   linker flags for WEBP, overriding pkg-config
+-  JXL_CFLAGS  C compiler flags for JXL, overriding pkg-config
+-  JXL_LIBS    linker flags for JXL, overriding pkg-config
+   EXR_CFLAGS  C compiler flags for EXR, overriding pkg-config
+   EXR_LIBS    linker flags for EXR, overriding pkg-config
+   CFITSIO_CFLAGS
+@@ -23850,88 +23842,7 @@
+ #############################################################################
+ # JPEG XL
+ # Optional.  Pixmap image format support.
+-enable_jxl=yes
+-
+-pkg_failed=no
+-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for JXL" >&5
+-printf %s "checking for JXL... " >&6; }
+-
+-if test -n "$PKG_CONFIG"; then
+-    if test -n "$JXL_CFLAGS"; then
+-        pkg_cv_JXL_CFLAGS="$JXL_CFLAGS"
+-    else
+-        if test -n "$PKG_CONFIG" && \
+-    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"libjxl\""; } >&5
+-  ($PKG_CONFIG --exists --print-errors "libjxl") 2>&5
+-  ac_status=$?
+-  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+-  test $ac_status = 0; }; then
+-  pkg_cv_JXL_CFLAGS=`$PKG_CONFIG --cflags "libjxl" 2>/dev/null`
+-else
+-  pkg_failed=yes
+-fi
+-    fi
+-else
+-	pkg_failed=untried
+-fi
+-if test -n "$PKG_CONFIG"; then
+-    if test -n "$JXL_LIBS"; then
+-        pkg_cv_JXL_LIBS="$JXL_LIBS"
+-    else
+-        if test -n "$PKG_CONFIG" && \
+-    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"libjxl\""; } >&5
+-  ($PKG_CONFIG --exists --print-errors "libjxl") 2>&5
+-  ac_status=$?
+-  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+-  test $ac_status = 0; }; then
+-  pkg_cv_JXL_LIBS=`$PKG_CONFIG --libs "libjxl" 2>/dev/null`
+-else
+-  pkg_failed=yes
+-fi
+-    fi
+-else
+-	pkg_failed=untried
+-fi
+-
+-
+-
+-if test $pkg_failed = yes; then
+-
+-if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+-        _pkg_short_errors_supported=yes
+-else
+-        _pkg_short_errors_supported=no
+-fi
+-        if test $_pkg_short_errors_supported = yes; then
+-	        JXL_PKG_ERRORS=`$PKG_CONFIG --short-errors --errors-to-stdout --print-errors "libjxl"`
+-        else
+-	        JXL_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libjxl"`
+-        fi
+-	# Put the nasty error message in config.log where it belongs
+-	echo "$JXL_PKG_ERRORS" >&5
+-
+-	{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-printf "%s\n" "no" >&6; }
+-                enable_jxl=no
+-elif test $pkg_failed = untried; then
+-	enable_jxl=no
+-else
+-	JXL_CFLAGS=$pkg_cv_JXL_CFLAGS
+-	JXL_LIBS=$pkg_cv_JXL_LIBS
+-        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+-printf "%s\n" "yes" >&6; }
+-
+-printf "%s\n" "#define HAVE_JXL 1" >>confdefs.h
+-
+-fi
+- if test "x$enable_jxl" != xno; then
+-  HAVE_JXL_TRUE=
+-  HAVE_JXL_FALSE='#'
+-else
+-  HAVE_JXL_TRUE='#'
+-  HAVE_JXL_FALSE=
+-fi
+-
++# Disabled.  The library is constantly changing APIs; cannot keep compatibility.
+ 
+ #############################################################################
+ # C++
+@@ -27977,7 +27888,6 @@
+ have_cxx? BigTIFF
+ have_cxx? PGM/16bit
+ enable_webp? WebP export
+-enable_jxl? JPEG-XL export
+ enable_hdf5? generic HDF5
+ enable_hdf5? Ergo
+ enable_hdf5? Shilps
+@@ -27985,7 +27895,7 @@
+ enable_jansson? PS-PPT
+ EOF
+ 
+-for dep in enable_bzip2 enable_cfitsio enable_exr enable_jansson enable_libxml2 enable_png enable_webp enable_jxl enable_hdf5 enable_zlib found_zip have_cxx; do
++for dep in enable_bzip2 enable_cfitsio enable_exr enable_jansson enable_libxml2 enable_png enable_webp enable_hdf5 enable_zlib found_zip have_cxx; do
+   eval x=\$$dep
+   if test "x$x" != xno; then
+     sed "s/$dep? //" conftest.out >conftest.tmp
+@@ -28231,10 +28141,6 @@
+   as_fn_error $? "conditional \"HAVE_WEBP\" was never defined.
+ Usually this means the macro was only invoked conditionally." "$LINENO" 5
+ fi
+-if test -z "${HAVE_JXL_TRUE}" && test -z "${HAVE_JXL_FALSE}"; then
+-  as_fn_error $? "conditional \"HAVE_JXL\" was never defined.
+-Usually this means the macro was only invoked conditionally." "$LINENO" 5
+-fi
+ if test -z "${HAVE_CXX_TRUE}" && test -z "${HAVE_CXX_FALSE}"; then
+   as_fn_error $? "conditional \"HAVE_CXX\" was never defined.
+ Usually this means the macro was only invoked conditionally." "$LINENO" 5
+diff -Nuar gwyddion-2.65/configure.ac gwyddion-2.65-no-jxl/configure.ac
+--- gwyddion-2.65/configure.ac	2024-01-04 20:03:13.000000000 +0700
++++ gwyddion-2.65-no-jxl/configure.ac	2024-04-09 12:06:14.183626671 +0700
+@@ -663,12 +663,13 @@
+ #############################################################################
+ # JPEG XL
+ # Optional.  Pixmap image format support.
+-enable_jxl=yes
+-PKG_CHECK_MODULES(JXL, [libjxl],
+-                  [AC_DEFINE(HAVE_JXL,1,
+-                            [Define if we have the libjxl package.])],
+-                  [enable_jxl=no])
+-AM_CONDITIONAL([HAVE_JXL],[test "x$enable_jxl" != xno])
++# Disabled.  The library is constantly changing APIs; cannot keep compatibility.
++dnl enable_jxl=yes
++dnl PKG_CHECK_MODULES(JXL, [libjxl],
++dnl                   [AC_DEFINE(HAVE_JXL,1,
++dnl                             [Define if we have the libjxl package.])],
++dnl                   [enable_jxl=no])
++dnl AM_CONDITIONAL([HAVE_JXL],[test "x$enable_jxl" != xno])
+ 
+ #############################################################################
+ # C++
+@@ -997,7 +998,6 @@
+ have_cxx? BigTIFF
+ have_cxx? PGM/16bit
+ enable_webp? WebP export
+-enable_jxl? JPEG-XL export
+ enable_hdf5? generic HDF5
+ enable_hdf5? Ergo
+ enable_hdf5? Shilps
+@@ -1005,7 +1005,7 @@
+ enable_jansson? PS-PPT
+ EOF
+ 
+-for dep in enable_bzip2 enable_cfitsio enable_exr enable_jansson enable_libxml2 enable_png enable_webp enable_jxl enable_hdf5 enable_zlib found_zip have_cxx; do
++for dep in enable_bzip2 enable_cfitsio enable_exr enable_jansson enable_libxml2 enable_png enable_webp enable_hdf5 enable_zlib found_zip have_cxx; do
+   AS_VAR_COPY([x],[$dep])
+   if test "x$x" != xno; then
+     sed "s/$dep? //" conftest.out >conftest.tmp
+diff -Nuar gwyddion-2.65/data/glmaterials/Makefile.in gwyddion-2.65-no-jxl/data/glmaterials/Makefile.in
+--- gwyddion-2.65/data/glmaterials/Makefile.in	2024-01-04 21:24:43.000000000 +0700
++++ gwyddion-2.65-no-jxl/data/glmaterials/Makefile.in	2024-04-09 11:45:22.616935258 +0700
+@@ -258,8 +258,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/data/gradients/Makefile.in gwyddion-2.65-no-jxl/data/gradients/Makefile.in
+--- gwyddion-2.65/data/gradients/Makefile.in	2024-01-04 21:24:43.000000000 +0700
++++ gwyddion-2.65-no-jxl/data/gradients/Makefile.in	2024-04-09 11:45:22.606935258 +0700
+@@ -258,8 +258,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/data/Makefile.in gwyddion-2.65-no-jxl/data/Makefile.in
+--- gwyddion-2.65/data/Makefile.in	2024-01-04 21:24:43.000000000 +0700
++++ gwyddion-2.65-no-jxl/data/Makefile.in	2024-04-09 11:45:22.613601925 +0700
+@@ -324,8 +324,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/devel-docs/libgwyapp/Makefile.in gwyddion-2.65-no-jxl/devel-docs/libgwyapp/Makefile.in
+--- gwyddion-2.65/devel-docs/libgwyapp/Makefile.in	2024-01-04 21:24:43.000000000 +0700
++++ gwyddion-2.65-no-jxl/devel-docs/libgwyapp/Makefile.in	2024-04-09 11:45:22.516935256 +0700
+@@ -237,8 +237,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/devel-docs/libgwyddion/Makefile.in gwyddion-2.65-no-jxl/devel-docs/libgwyddion/Makefile.in
+--- gwyddion-2.65/devel-docs/libgwyddion/Makefile.in	2024-01-04 21:24:43.000000000 +0700
++++ gwyddion-2.65-no-jxl/devel-docs/libgwyddion/Makefile.in	2024-04-09 11:45:22.500268589 +0700
+@@ -237,8 +237,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/devel-docs/libgwydgets/Makefile.in gwyddion-2.65-no-jxl/devel-docs/libgwydgets/Makefile.in
+--- gwyddion-2.65/devel-docs/libgwydgets/Makefile.in	2024-01-04 21:24:43.000000000 +0700
++++ gwyddion-2.65-no-jxl/devel-docs/libgwydgets/Makefile.in	2024-04-09 11:45:22.526935257 +0700
+@@ -237,8 +237,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/devel-docs/libgwydraw/Makefile.in gwyddion-2.65-no-jxl/devel-docs/libgwydraw/Makefile.in
+--- gwyddion-2.65/devel-docs/libgwydraw/Makefile.in	2024-01-04 21:24:43.000000000 +0700
++++ gwyddion-2.65-no-jxl/devel-docs/libgwydraw/Makefile.in	2024-04-09 11:45:22.543601923 +0700
+@@ -237,8 +237,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/devel-docs/libgwymodule/Makefile.in gwyddion-2.65-no-jxl/devel-docs/libgwymodule/Makefile.in
+--- gwyddion-2.65/devel-docs/libgwymodule/Makefile.in	2024-01-04 21:24:43.000000000 +0700
++++ gwyddion-2.65-no-jxl/devel-docs/libgwymodule/Makefile.in	2024-04-09 11:45:22.496935256 +0700
+@@ -237,8 +237,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/devel-docs/libgwyprocess/Makefile.in gwyddion-2.65-no-jxl/devel-docs/libgwyprocess/Makefile.in
+--- gwyddion-2.65/devel-docs/libgwyprocess/Makefile.in	2024-01-04 21:24:43.000000000 +0700
++++ gwyddion-2.65-no-jxl/devel-docs/libgwyprocess/Makefile.in	2024-04-09 11:45:22.506935256 +0700
+@@ -237,8 +237,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/devel-docs/Makefile.in gwyddion-2.65-no-jxl/devel-docs/Makefile.in
+--- gwyddion-2.65/devel-docs/Makefile.in	2024-01-04 21:24:43.000000000 +0700
++++ gwyddion-2.65-no-jxl/devel-docs/Makefile.in	2024-04-09 11:45:22.516935256 +0700
+@@ -286,8 +286,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/gwyddion/Makefile.in gwyddion-2.65-no-jxl/gwyddion/Makefile.in
+--- gwyddion-2.65/gwyddion/Makefile.in	2024-01-04 21:24:43.000000000 +0700
++++ gwyddion-2.65-no-jxl/gwyddion/Makefile.in	2024-04-09 11:45:22.600268591 +0700
+@@ -323,8 +323,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/libdraw/Makefile.in gwyddion-2.65-no-jxl/libdraw/Makefile.in
+--- gwyddion-2.65/libdraw/Makefile.in	2024-01-04 21:24:43.000000000 +0700
++++ gwyddion-2.65-no-jxl/libdraw/Makefile.in	2024-04-09 11:45:22.473601921 +0700
+@@ -334,8 +334,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/libgwyddion/Makefile.in gwyddion-2.65-no-jxl/libgwyddion/Makefile.in
+--- gwyddion-2.65/libgwyddion/Makefile.in	2024-01-04 21:24:43.000000000 +0700
++++ gwyddion-2.65-no-jxl/libgwyddion/Makefile.in	2024-04-09 10:06:40.783485168 +0700
+@@ -347,8 +347,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/libgwydgets/Makefile.in gwyddion-2.65-no-jxl/libgwydgets/Makefile.in
+--- gwyddion-2.65/libgwydgets/Makefile.in	2024-01-04 21:24:43.000000000 +0700
++++ gwyddion-2.65-no-jxl/libgwydgets/Makefile.in	2024-04-09 11:45:22.593601924 +0700
+@@ -399,8 +399,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/libgwymodule/Makefile.in gwyddion-2.65-no-jxl/libgwymodule/Makefile.in
+--- gwyddion-2.65/libgwymodule/Makefile.in	2024-01-04 21:24:43.000000000 +0700
++++ gwyddion-2.65-no-jxl/libgwymodule/Makefile.in	2024-04-09 10:06:14.313484661 +0700
+@@ -340,8 +340,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/libprocess/Makefile.in gwyddion-2.65-no-jxl/libprocess/Makefile.in
+--- gwyddion-2.65/libprocess/Makefile.in	2024-01-04 21:24:43.000000000 +0700
++++ gwyddion-2.65-no-jxl/libprocess/Makefile.in	2024-04-09 11:45:22.556935257 +0700
+@@ -365,8 +365,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/m4/Makefile.in gwyddion-2.65-no-jxl/m4/Makefile.in
+--- gwyddion-2.65/m4/Makefile.in	2024-01-04 21:24:43.000000000 +0700
++++ gwyddion-2.65-no-jxl/m4/Makefile.in	2024-04-09 11:45:22.550268590 +0700
+@@ -230,8 +230,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/Makefile.in gwyddion-2.65-no-jxl/Makefile.in
+--- gwyddion-2.65/Makefile.in	2024-01-04 21:24:43.000000000 +0700
++++ gwyddion-2.65-no-jxl/Makefile.in	2024-04-09 11:45:22.473601921 +0700
+@@ -342,8 +342,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/modules/cmap/Makefile.in gwyddion-2.65-no-jxl/modules/cmap/Makefile.in
+--- gwyddion-2.65/modules/cmap/Makefile.in	2024-01-04 21:24:43.000000000 +0700
++++ gwyddion-2.65-no-jxl/modules/cmap/Makefile.in	2024-04-09 11:45:22.680268592 +0700
+@@ -410,8 +410,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/modules/file/imgexport.c gwyddion-2.65-no-jxl/modules/file/imgexport.c
+--- gwyddion-2.65/modules/file/imgexport.c	2023-10-24 16:15:48.000000000 +0700
++++ gwyddion-2.65-no-jxl/modules/file/imgexport.c	2024-04-09 12:11:21.016966077 +0700
+@@ -19,6 +19,8 @@
+  * - alignment of image title (namely when it is on the top)
+  * - JPEG2000 support? seems possible but messy
+  */
++/* XXX: There is some JPEG XL code, but the libjxl library is changing API quickly (inlcuding removal of deprecated
++ * functions) and had to be disabled. So HAVE_JXL is never defined by configure. */
+ 
+ /**
+  * [FILE-MAGIC-MISSING]
+diff -Nuar gwyddion-2.65/modules/file/Makefile.am gwyddion-2.65-no-jxl/modules/file/Makefile.am
+--- gwyddion-2.65/modules/file/Makefile.am	2024-01-04 17:14:20.000000000 +0700
++++ gwyddion-2.65-no-jxl/modules/file/Makefile.am	2024-04-09 12:08:41.810296244 +0700
+@@ -169,8 +169,8 @@
+ createc_la_LIBADD    = @ZLIB@
+ hdrimage_la_LIBADD   = @EXR_LIBS@ @PNG_LIBS@
+ hdrimage_la_CXXFLAGS = $(AM_CXXFLAGS) @PNG_CFLAGS@ @EXR_CFLAGS@ @HDRIMAGE_EXTRA_CFLAGS@
+-imgexport_la_LIBADD  = @PNG_LIBS@ @WEBP_LIBS@ @JXL_LIBS@
+-imgexport_la_CFLAGS  = $(AM_CFLAGS) @PNG_CFLAGS@ @WEBP_CFLAGS@ @JXL_CFLAGS@
++imgexport_la_LIBADD  = @PNG_LIBS@ @WEBP_LIBS@
++imgexport_la_CFLAGS  = $(AM_CFLAGS) @PNG_CFLAGS@ @WEBP_CFLAGS@
+ jpkscan_la_CFLAGS    = $(AM_CFLAGS) $(zip_cflags)
+ jpkscan_la_LIBADD    = $(zip_libs)
+ keyence_la_CFLAGS    = $(AM_CFLAGS) $(zip_cflags)
+diff -Nuar gwyddion-2.65/modules/file/Makefile.in gwyddion-2.65-no-jxl/modules/file/Makefile.in
+--- gwyddion-2.65/modules/file/Makefile.in	2024-01-04 21:24:44.000000000 +0700
++++ gwyddion-2.65-no-jxl/modules/file/Makefile.in	2024-04-09 12:09:06.480296741 +0700
+@@ -1466,8 +1466,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+@@ -1740,8 +1738,8 @@
+ createc_la_LIBADD = @ZLIB@
+ hdrimage_la_LIBADD = @EXR_LIBS@ @PNG_LIBS@
+ hdrimage_la_CXXFLAGS = $(AM_CXXFLAGS) @PNG_CFLAGS@ @EXR_CFLAGS@ @HDRIMAGE_EXTRA_CFLAGS@
+-imgexport_la_LIBADD = @PNG_LIBS@ @WEBP_LIBS@ @JXL_LIBS@
+-imgexport_la_CFLAGS = $(AM_CFLAGS) @PNG_CFLAGS@ @WEBP_CFLAGS@ @JXL_CFLAGS@
++imgexport_la_LIBADD = @PNG_LIBS@ @WEBP_LIBS@
++imgexport_la_CFLAGS = $(AM_CFLAGS) @PNG_CFLAGS@ @WEBP_CFLAGS@
+ jpkscan_la_CFLAGS = $(AM_CFLAGS) $(zip_cflags)
+ jpkscan_la_LIBADD = $(zip_libs)
+ keyence_la_CFLAGS = $(AM_CFLAGS) $(zip_cflags)
+diff -Nuar gwyddion-2.65/modules/graph/Makefile.in gwyddion-2.65-no-jxl/modules/graph/Makefile.in
+--- gwyddion-2.65/modules/graph/Makefile.in	2024-01-04 21:24:44.000000000 +0700
++++ gwyddion-2.65-no-jxl/modules/graph/Makefile.in	2024-04-09 11:45:22.673601925 +0700
+@@ -511,8 +511,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/modules/layer/Makefile.in gwyddion-2.65-no-jxl/modules/layer/Makefile.in
+--- gwyddion-2.65/modules/layer/Makefile.in	2024-01-04 21:24:44.000000000 +0700
++++ gwyddion-2.65-no-jxl/modules/layer/Makefile.in	2024-04-09 11:45:22.653601926 +0700
+@@ -376,8 +376,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/modules/Makefile.in gwyddion-2.65-no-jxl/modules/Makefile.in
+--- gwyddion-2.65/modules/Makefile.in	2024-01-04 21:24:43.000000000 +0700
++++ gwyddion-2.65-no-jxl/modules/Makefile.in	2024-04-09 11:45:22.636935258 +0700
+@@ -358,8 +358,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/modules/process/Makefile.in gwyddion-2.65-no-jxl/modules/process/Makefile.in
+--- gwyddion-2.65/modules/process/Makefile.in	2024-01-04 21:24:44.000000000 +0700
++++ gwyddion-2.65-no-jxl/modules/process/Makefile.in	2024-04-09 11:45:22.623601924 +0700
+@@ -1508,8 +1508,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/modules/pygwy/Makefile.in gwyddion-2.65-no-jxl/modules/pygwy/Makefile.in
+--- gwyddion-2.65/modules/pygwy/Makefile.in	2024-01-04 21:24:44.000000000 +0700
++++ gwyddion-2.65-no-jxl/modules/pygwy/Makefile.in	2024-04-09 11:45:22.636935258 +0700
+@@ -349,8 +349,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/modules/tools/Makefile.in gwyddion-2.65-no-jxl/modules/tools/Makefile.in
+--- gwyddion-2.65/modules/tools/Makefile.in	2024-01-04 21:24:44.000000000 +0700
++++ gwyddion-2.65-no-jxl/modules/tools/Makefile.in	2024-04-09 11:45:22.676935260 +0700
+@@ -471,8 +471,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/modules/volume/Makefile.in gwyddion-2.65-no-jxl/modules/volume/Makefile.in
+--- gwyddion-2.65/modules/volume/Makefile.in	2024-01-04 21:24:44.000000000 +0700
++++ gwyddion-2.65-no-jxl/modules/volume/Makefile.in	2024-04-09 11:45:22.646935259 +0700
+@@ -637,8 +637,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/modules/xyz/Makefile.in gwyddion-2.65-no-jxl/modules/xyz/Makefile.in
+--- gwyddion-2.65/modules/xyz/Makefile.in	2024-01-04 21:24:44.000000000 +0700
++++ gwyddion-2.65-no-jxl/modules/xyz/Makefile.in	2024-04-09 11:45:22.650268592 +0700
+@@ -370,8 +370,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/perl/Makefile.in gwyddion-2.65-no-jxl/perl/Makefile.in
+--- gwyddion-2.65/perl/Makefile.in	2024-01-04 21:24:44.000000000 +0700
++++ gwyddion-2.65-no-jxl/perl/Makefile.in	2024-04-09 11:45:22.553601924 +0700
+@@ -258,8 +258,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/pixmaps/Makefile.in gwyddion-2.65-no-jxl/pixmaps/Makefile.in
+--- gwyddion-2.65/pixmaps/Makefile.in	2024-01-04 21:24:44.000000000 +0700
++++ gwyddion-2.65-no-jxl/pixmaps/Makefile.in	2024-04-09 10:07:26.916819388 +0700
+@@ -317,8 +317,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/pixmaps/src/Makefile.in gwyddion-2.65-no-jxl/pixmaps/src/Makefile.in
+--- gwyddion-2.65/pixmaps/src/Makefile.in	2024-01-04 21:24:44.000000000 +0700
++++ gwyddion-2.65-no-jxl/pixmaps/src/Makefile.in	2024-04-09 11:45:22.453601922 +0700
+@@ -230,8 +230,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/plugins/Makefile.in gwyddion-2.65-no-jxl/plugins/Makefile.in
+--- gwyddion-2.65/plugins/Makefile.in	2024-01-04 21:24:44.000000000 +0700
++++ gwyddion-2.65-no-jxl/plugins/Makefile.in	2024-04-09 10:07:00.540152202 +0700
+@@ -258,8 +258,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/python/Makefile.in gwyddion-2.65-no-jxl/python/Makefile.in
+--- gwyddion-2.65/python/Makefile.in	2024-01-04 21:24:44.000000000 +0700
++++ gwyddion-2.65-no-jxl/python/Makefile.in	2024-04-09 11:45:22.606935258 +0700
+@@ -262,8 +262,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/ruby/Makefile.in gwyddion-2.65-no-jxl/ruby/Makefile.in
+--- gwyddion-2.65/ruby/Makefile.in	2024-01-04 21:24:44.000000000 +0700
++++ gwyddion-2.65-no-jxl/ruby/Makefile.in	2024-04-09 11:45:22.550268590 +0700
+@@ -258,8 +258,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/thumbnailer/Makefile.in gwyddion-2.65-no-jxl/thumbnailer/Makefile.in
+--- gwyddion-2.65/thumbnailer/Makefile.in	2024-01-04 21:24:44.000000000 +0700
++++ gwyddion-2.65-no-jxl/thumbnailer/Makefile.in	2024-04-09 11:45:22.546935257 +0700
+@@ -341,8 +341,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
+diff -Nuar gwyddion-2.65/utils/Makefile.in gwyddion-2.65-no-jxl/utils/Makefile.in
+--- gwyddion-2.65/utils/Makefile.in	2024-01-04 21:24:44.000000000 +0700
++++ gwyddion-2.65-no-jxl/utils/Makefile.in	2024-04-09 11:45:22.603601925 +0700
+@@ -311,8 +311,6 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JANSSON_CFLAGS = @JANSSON_CFLAGS@
+ JANSSON_LIBS = @JANSSON_LIBS@
+-JXL_CFLAGS = @JXL_CFLAGS@
+-JXL_LIBS = @JXL_LIBS@
+ KDE4_CONFIG = @KDE4_CONFIG@
+ KDE4_CPPFLAGS = @KDE4_CPPFLAGS@
+ KDE4_LDFLAGS = @KDE4_LDFLAGS@
