@@ -1,6 +1,6 @@
 pkgbase = nomad-driver-podman-git
 	pkgdesc = A nomad taskdriver for podman containers
-	pkgver = 0.4.2.r10.gaeed282
+	pkgver = 0.5.2.r0.ge06c271
 	pkgrel = 1
 	url = https://github.com/hashicorp/nomad-driver-podman
 	arch = x86_64
@@ -12,8 +12,7 @@ pkgbase = nomad-driver-podman-git
 	provides = nomad-driver-podman
 	conflicts = nomad-driver-podman
 	options = !lto
-	options = debug
 	source = nomad-driver-podman::git+https://github.com/hashicorp/nomad-driver-podman
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = nomad-driver-podman-git

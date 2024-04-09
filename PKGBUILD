@@ -3,7 +3,7 @@
 
 _pkgname=nomad-driver-podman
 pkgname=${_pkgname}-git
-pkgver=0.4.2.r10.gaeed282
+pkgver=0.5.2.r0.ge06c271
 pkgrel=1
 pkgdesc="A nomad taskdriver for podman containers"
 arch=('x86_64')
@@ -15,12 +15,12 @@ options=('!lto')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+${url}")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
 
-  git describe --long --tags --match'=v[0-9]*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags "$(git tag -l | sort -k1Vr,1 | head -n1)" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -30,22 +30,27 @@ prepare() {
   mkdir -p build
 
   # download dependencies
+  export GOPATH="${srcdir}"
   go mod download
 }
 
 build() {
   cd "${_pkgname}"
 
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
+  # set Go flags
   export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export GOPATH="${srcdir}"
+
   go build -v \
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
     -ldflags "-linkmode=external -compressdwarf=false -extldflags ${LDFLAGS}" \
+    -ldflags "-compressdwarf=false \
+    -linkmode external \
+    -extldflags \"${LDFLAGS}\"" \
     -o build \
     .
 }
