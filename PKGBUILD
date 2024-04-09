@@ -8,7 +8,6 @@ url='http://openprog.altervista.org'
 license=('GPL-2.0-only')
 depends=(gtk3)
 source=(https://downloads.sourceforge.net/project/openprogrammer/OPGUI/${pkgname}_${pkgver}.tar.gz)
-#source=(${pkgname}_${pkgver}.tar.gz)
 sha512sums=('e6de138a36f66ce60d047966c83466b4a27510933b69311f90d0fd1e374a11b3512d631625697aa760b38272f3bb660bd87bc08f1330bb21cb954abfce16553e')
 
 build() {
