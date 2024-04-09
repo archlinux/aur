@@ -1,15 +1,14 @@
 pkgbase = r-gridsvg
 	pkgdesc = Export 'grid' Graphics as SVG
 	pkgver = 1.7.5
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=gridSVG
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-2.0-or-later
 	depends = r-jsonlite
 	depends = r-xml
-	optdepends = r-lattice
 	source = https://cran.r-project.org/src/contrib/gridSVG_1.7-5.tar.gz
-	sha256sums = 25cf6abaf6ea0abde676edc6f5012139c5c65e068412d2d38876998453b718dd
+	md5sums = 49c9794b0600ad93903751eb9c6f5534
+	b2sums = b4d8fe9556d9535b5bfc465a98e25081e962530a1c34c3007980880b0d8c34eb0caf492a9ac9d339f3322aa02d11c72ad2ac5e15ece21be42eca3bf7b3bbb046
 
 pkgname = r-gridsvg
