@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=python-unimpeded
 _name=${pkgname#python-}
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Universal model comparison & parameter estimation over diverse datasets"
 arch=(any)
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('9a53a7d3bd62fb01ec124742976b41568688b3bc0073a8f334ce199096e2ad1f')
+sha256sums=('1a6d860d68de7f71b0227e7f4bbf3e6c962ccfa2ab269c9a22997a4a8a1fe990')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
