@@ -19,12 +19,15 @@ optdepends=(
   'doas: privilege elevation'
 )
 source=("Rosary-1.0.0_$CARCH.tar.gz::https://github.com/RoseBlume/Rosary-Bible-App/releases/download/Debianv1.0-1/Rosary-1.0.0_$CARCH.tar.gz")
-sha256sums=('4a1f2c2248fe0383624e841560f3b6a989bf1442fbba3ef8606e2003510ec86e')
-
-fdir="$srcdir/Rosary-1.0.0-Linux"
+if [ "$CARCH" = "x86_64" ]; then
+	sha256sums=('4a1f2c2248fe0383624e841560f3b6a989bf1442fbba3ef8606e2003510ec86e')
+elif [ "$CARCH" = "aarch64" ]; then
+	sha256sums=('a38f377e0179f294e5b0c12df746fb999c40202549ae1179917b653fcd0ad25b')
+fi
 
 
 package() {
+  cd "$srcdir/Rosary-1.0.0-Linux"
   install -d "$pkgdir/usr/bin"
   install -d "$pkgdir/usr/share/applications"
   install -d "$pkgdir/usr/share/icons/hicolor/scalable/apps"
