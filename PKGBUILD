@@ -1,7 +1,7 @@
 # Maintainer: Gaël PORTAY <gael.portay@gmail.com>
 
 pkgname=iamroot-arm
-pkgver=20
+pkgver=21
 pkgrel=1
 pkgdesc='Emulating the syscall chroot(2) in an unpriviliged process (arm)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('armv5-eabi-glibc-bleeding-edge-toolchain'
 checkdepends=('shellcheck')
 options=('!strip')
 source=("https://github.com/gportay/${pkgname%-arm}/archive/v$pkgver.tar.gz")
-sha256sums=('27c3019135fce9359a7e7ff6abb0501108c4881e6c57609f4c14d0fb91f17eec')
+sha256sums=('3bbdc8b53a4e1e0a88d2aa281fd85bd4e3653c7634060d6b7442c932dae03b07')
 validpgpkeys=('8F3491E60E62695ED780AC672FA122CA0501CA71')
 
 prepare() {
@@ -26,8 +26,8 @@ prepare() {
 
 build() {
 	cd "${pkgname%-arm}-$pkgver"
-	make CFLAGS= PREFIX=/usr arm/libiamroot-linux.so.3
-	make CFLAGS= PREFIX=/usr arm/libiamroot-musl-arm.so.1
+	make CFLAGS=-DJIM_REGEXP PREFIX=/usr arm/libiamroot-linux.so.3
+	make CFLAGS=-DJIM_REGEXP PREFIX=/usr arm/libiamroot-musl-arm.so.1
 }
 
 check() {
@@ -39,5 +39,6 @@ package() {
 	cd "${pkgname%-arm}-$pkgver"
 	make PREFIX=/usr DESTDIR="$pkgdir" install-exec-arm-linux.3
 	make PREFIX=/usr DESTDIR="$pkgdir" install-exec-arm-musl-arm.1
+	make PREFIX=/usr DESTDIR="$pkgdir" install-support-arm
 	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
