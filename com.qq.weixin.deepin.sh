@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 ACTIVEX_NAME=""
 BOTTLENAME="@bottlename@"
@@ -43,7 +43,7 @@ if [ -n "${EXPORT_ENVS}" ];then
     export "${EXPORT_ENVS}"
 fi
 if [[ -z "${EXEC_PATH}" ]] && [[ -n "${INSTALL_SETUP}" ]];then
-    exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "${EXEC_PATH}" -c
+    exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "${EXEC_PATH}" -c || exit $?
     BOTTLEPATH="${HOME}/.deepinwine/${BOTTLENAME}"
     EXEC_PATH=$(find "${BOTTLEPATH}" -name ${EXEC_NAME} | head -1)
     if [ -z "${EXEC_PATH}" ];then
