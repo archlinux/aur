@@ -2,7 +2,7 @@
 
 pkgname=python-testing.postgresql
 pkgver=1.3.0
-pkgrel=9
+pkgrel=10
 pkgdesc='Helpers for using temporary PostgreSQL databases in tests'
 arch=(any)
 url='https://github.com/tk0miya/testing.postgresql'
@@ -11,15 +11,21 @@ makedepends=(python-setuptools)
 depends=(python-testing.common.database python-pg8000 postgresql)
 checkdepends=(python-nose python-psycopg2 python-sqlalchemy)
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/tk0miya/testing.postgresql/archive/$pkgver.tar.gz"
-        https://github.com/tk0miya/testing.postgresql/commit/738c8eb19a4b064dd74ff851c379dd1cbf11bc65.patch)
+        https://github.com/tk0miya/testing.postgresql/commit/738c8eb19a4b064dd74ff851c379dd1cbf11bc65.patch
+        ec9ce743a0f51076d7ea2485a6fa58b72ec8e338.patch)
 sha256sums=('a8b41501f92103e2da0990ae72962375f6f1d092b0ac7e97a92f17ab8683bc20'
-            '3fac5ec62af8ec6a1a15c3e8f7c71597de4bd3e9496d632bbdd6ce0d9b8da56e')
+            '3fac5ec62af8ec6a1a15c3e8f7c71597de4bd3e9496d632bbdd6ce0d9b8da56e'
+            '6e2b42f0acf4faaeb69af1f1fa238842fdf50121590e49e198ea9e9456819f21')
 
 prepare() {
   cd testing.postgresql-$pkgver
 
   # fix tests
   patch -Np1 -i ../738c8eb19a4b064dd74ff851c379dd1cbf11bc65.patch
+
+  # Fix tests with Python 3.12
+  # https://github.com/tk0miya/testing.postgresql/pull/44 (unmerged)
+  patch -Np1 -i ../ec9ce743a0f51076d7ea2485a6fa58b72ec8e338.patch
 }
 
 build() {
