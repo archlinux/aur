@@ -22,6 +22,6 @@ pkgbase = nomacs
 	optdepends = qt6-imageformats: support additional image formats
 	optdepends = kimageformats5: support QOI (Quite OK Image Format)
 	source = git+https://github.com/nomacs/nomacs.git#tag=3.17.2295
-	b2sums = fe221d571db3d7cc9498d9b5b819f79503a82dc10df3426385394aaba74cf32aab3a36de0239ccb92edb47d2966e930c65b4952e6b74e928ecb058e69842fca0
+	b2sums = SKIP
 
 pkgname = nomacs
