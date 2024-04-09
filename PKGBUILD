@@ -1,7 +1,7 @@
 # Maintainer: Paul Irofti <paul@irofti.net>
 _name=dictlearn
 pkgname="python-$_name"
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 
 pkgdesc="Dictionary Learning Toolbox"
@@ -19,7 +19,7 @@ depends=(python
 makedepends=(python-build python-installer python-wheel)
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('d2e196ee966207ff5d96615266680a0d158c0b8771f83dfb87189b68a9453b39')
+sha256sums=('014391e31e9ed87e530a293a780411d41d9805ef306eac5e4cfa090e9fc10769')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
