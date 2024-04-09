@@ -2,7 +2,7 @@
 
 pkgname="yd-go-git"
 _pkgname=${pkgname%-git}
-pkgrel=1
+pkgrel=9
 pkgver="master.6ad8241.r0.g6ad8241"
 pkgdesc="Panel indicator for Yandex-disk CLI daemon (linux)"
 arch=('x86_64')
