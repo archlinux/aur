@@ -16,7 +16,7 @@ DISABLE_ATTACH_FILE_DIALOG=""
 if [ -z "${DISABLE_ATTACH_FILE_DIALOG}" ];then
     export ATTACH_FILE_DIALOG=1
 fi
-if [ -n "$EXPO{RT_ENVS" ];then
+if [ -n "$EXPORT_ENVS" ];then
     export "${EXPORT_ENVS}"
 fi
 if [ -n "${EXEC_PATH}" ];then
