@@ -1,0 +1,13 @@
+pkgbase = python-async_interrupt
+	pkgdesc = Python library that provides happy eyeballs algorithm for asyncio.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/bdraco/async_interrupt
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/a/async_interrupt/async_interrupt-1.1.1.tar.gz
+	sha256sums = 1e5999f0980b5db21293e4cd022518eeaf52284c0499631932a1df250cb99215
+
+pkgname = python-async_interrupt
