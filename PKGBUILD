@@ -1,6 +1,7 @@
 # Maintainer: Yonaton Chriqui <yonaton.chriqui@gmail.com>
 
 pkgname=heaven-studio-bin
+_pkgname=heaven-studio
 provides=("heaven-studio")
 pkgver=1.0.1
 pkgrel=1
@@ -29,10 +30,10 @@ prepare() {
 
 package() {
   cd build/StandaloneLinux64
-  find . -type f -exec install -v -Dm 755 "{}" "$pkgdir/opt/$pkgname/{}" \;
+  find . -type f -exec install -v -Dm 755 "{}" "$pkgdir/opt/$_pkgname/{}" \;
 
   mkdir -p $pkgdir/usr/share/icons/hicolor/128x128/apps
-  ln -sf /opt/heaven-studio/Heaven\ Studio_Data/Resources/UnityPlayer.png $pkgdir/usr/share/icons/hicolor/128x128/apps/heaven-studio.png
+  ln -sf /opt/$pkgname/Heaven\ Studio_Data/Resources/UnityPlayer.png $pkgdir/usr/share/icons/hicolor/128x128/apps/heaven-studio.png
 
   mkdir -p $pkgdir/usr/share/applications
   cd ../..
