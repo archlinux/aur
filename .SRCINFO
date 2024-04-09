@@ -1,6 +1,6 @@
 pkgbase = python-accelerate
 	pkgdesc = A simple way to train and use PyTorch models with multi-GPU, TPU, mixed-precision
-	pkgver = 0.29.0
+	pkgver = 0.29.1
 	pkgrel = 1
 	url = https://github.com/huggingface/accelerate
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-accelerate
 	depends = python-pytorch
 	depends = python-safetensors
 	depends = python-yaml
-	source = accelerate-0.29.0.tar.gz::https://github.com/huggingface/accelerate/archive/refs/tags/v0.29.0.tar.gz
-	sha256sums = ee6495d6aa0621af7804e1b4568adfd1999353df306e70640da5dae38de891cf
+	source = accelerate-0.29.1.tar.gz::https://github.com/huggingface/accelerate/archive/refs/tags/v0.29.1.tar.gz
+	sha256sums = 9f663f87aa7c1963e6e194958ba9477c20b7f471a26d57bd8727d8c74aa77911
 
 pkgname = python-accelerate
