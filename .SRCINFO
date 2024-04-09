@@ -1,5 +1,5 @@
 pkgbase = python-async_interrupt
-	pkgdesc = Python library that provides happy eyeballs algorithm for asyncio.
+	pkgdesc = Python library that provides interrupt context manager for asyncio
 	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/bdraco/async_interrupt
