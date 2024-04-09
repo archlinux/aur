@@ -1,0 +1,24 @@
+pkgbase = android-x86-gdk-pixbuf2-bootstrap
+	pkgdesc = An image loading library (Android x86)
+	pkgver = 2.42.10
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/GdkPixbuf
+	arch = any
+	groups = android-gdk-pixbuf2-bootstrap
+	license = LGPL
+	makedepends = android-meson
+	makedepends = gobject-introspection
+	depends = android-x86-glib2
+	depends = android-x86-libpng
+	depends = android-x86-libtiff
+	depends = android-x86-libjpeg
+	provides = android-x86-gdk-pixbuf2
+	conflicts = android-x86-gdk-pixbuf2
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://gitlab.gnome.org/GNOME/gdk-pixbuf/-/archive/2.42.10/gdk-pixbuf-2.42.10.tar.bz2
+	md5sums = 2861bcef6effa7bbd608a965479ce34b
+
+pkgname = android-x86-gdk-pixbuf2-bootstrap
