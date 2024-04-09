@@ -1,13 +1,13 @@
 pkgbase = r-orcme
 	pkgdesc = Order Restricted Clustering for Microarray Experiments
 	pkgver = 2.0.2
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=ORCME
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-3.0-only
 	depends = r-iso
 	source = https://cran.r-project.org/src/contrib/ORCME_2.0.2.tar.gz
-	sha256sums = d3ab53aa5d7a3cf370f9a23a232d0bf4ba4a5cc15f3e90a313126322a454a8de
+	md5sums = 735283f8bee62bf430180975b1a7616f
+	b2sums = 7a2d61470179f5f5d00e47e91f98237b036240ff68a8ee4dedca5fca794510f5a710f91b055e9271e64626ec9a988f26c70266cd8d34ab57a5fd7c9a9505d958
 
 pkgname = r-orcme
