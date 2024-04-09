@@ -1,12 +1,13 @@
 pkgbase = python-plants-vs-zombies
-	pkgver = 0.0.1
+	pkgdesc = a simple PlantsVsZombies game
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/marblexu/PythonPlantsVsZombies
 	arch = any
 	license = MIT
 	makedepends = python-installer
 	depends = python-pygame
-	source = https://files.pythonhosted.org/packages/py3/p/plants_vs_zombies/plants_vs_zombies-0.0.1-py3-none-any.whl
-	sha256sums = 8bfae4d34c040c8640ef773bca172d28c6b9605f4da4561fd2afe91c37244fc5
+	source = https://files.pythonhosted.org/packages/py3/p/plants_vs_zombies/plants_vs_zombies-0.0.5-py3-none-any.whl
+	sha256sums = c74a46fe7bda5c8f3f379e69c9584140af79d524a30b9ed255659ba9ce11eabb
 
 pkgname = python-plants-vs-zombies
