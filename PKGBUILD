@@ -1,6 +1,6 @@
 # Maintainer: Hownioni <honeyhownioni at gmail dot com>
 pkgname=dra-cla-git
-pkgver=VERSION
+pkgver=r34.cf8a90c
 pkgrel=1
 pkgdesc="A cli to browse and watch Korean Drama, Chinese drama."
 arch=('any')

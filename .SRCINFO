@@ -1,6 +1,6 @@
 pkgbase = dra-cla-git
 	pkgdesc = A cli to browse and watch Korean Drama, Chinese drama.
-	pkgver = VERSION
+	pkgver = r34.cf8a90c
 	pkgrel = 1
 	url = https://github.com/CoolnsX/dra-cla
 	arch = any
