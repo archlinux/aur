@@ -1,0 +1,17 @@
+pkgbase = superfile-bin
+	pkgdesc = tui file manager
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/MHNightCat/superfile
+	arch = x86_64
+	license = MIT
+	depends = perl-image-exiftool
+	optdepends = perl-archive-zip: Support for zip files, including epub
+	optdepends = perl-io-compress-brotli: Support for brotli-compressed metadata
+	provides = superfile
+	conflicts = superfile
+	source = superfile-1.0.1::https://github.com/MHNightCat/superfile/releases/download/v1.0.1/superfile-linux-v1.0.1-amd64.tar.gz
+	validpgpkeys = SKIP
+	sha256sums = SKIP
+
+pkgname = superfile-bin
