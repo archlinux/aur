@@ -1,6 +1,6 @@
 pkgbase = mediawiki-extension-editcountneue-git
 	pkgdesc = EditCountNeue MediaWiki extension allows wikis to display the number of edits of a user, via a special page or a parser function.
-	pkgver = 0.4.3.r9.g7639f29
+	pkgver = 0.4.3.r10.g25490fa
 	pkgrel = 1
 	url = https://www.mediawiki.org/wiki/Extension:EditCountNeue
 	arch = any
