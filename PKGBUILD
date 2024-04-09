@@ -18,8 +18,6 @@ build() {
 
 package() {
     cd $pkgname
-    usrdir="$pkgdir/usr"
-    mkdir -p $usrdir
     install -Dm 755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm 755 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
