@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-lastfm
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="OCaml API to lastfm radio and audioscrobbler"
 arch=('i686' 'x86_64')
@@ -28,4 +28,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('e0c05c3221f0faa09d7c2447573181067bf9f192cadbfadb7b97067c72add73a')
+sha256sums=('7c3916707ed3d7ffc0dc7d8e3d2ec846b7e51563e313415b75cfa27d4aed134d')

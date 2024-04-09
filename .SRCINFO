@@ -1,6 +1,6 @@
 pkgbase = ocaml-lastfm
 	pkgdesc = OCaml API to lastfm radio and audioscrobbler
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/savonet/ocaml-lastfm
 	arch = i686
@@ -13,8 +13,7 @@ pkgbase = ocaml-lastfm
 	depends = ocaml-xmlplaylist
 	depends = ocamlnet
 	options = !strip
-	source = https://github.com/savonet/ocaml-lastfm/archive/v0.3.3.tar.gz
-	sha256sums = e0c05c3221f0faa09d7c2447573181067bf9f192cadbfadb7b97067c72add73a
+	source = https://github.com/savonet/ocaml-lastfm/archive/v0.3.4.tar.gz
+	sha256sums = 7c3916707ed3d7ffc0dc7d8e3d2ec846b7e51563e313415b75cfa27d4aed134d
 
 pkgname = ocaml-lastfm
-
