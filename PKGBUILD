@@ -3,26 +3,25 @@
 _pkgname=IMPCdata
 _pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
-pkgrel=1
-pkgdesc='Retrieves data from IMPC database'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('custom')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Retrieves data from IMPC database"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Apache-2.0')
 depends=(
-  r
   r-rjson
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d56bd3aa0e47be147b6160f7b69737a711da6c4ef0075c539aff1b125d499872')
+md5sums=('c4a243d4a15f680abfb5d61a951c620d')
+b2sums=('aae60f49b2cc4832f2a4f2456e4f29e0757c22e78f40ae84db8dd8787c603ce3279bc7104541759407c6dae2c2d0ec1fd11e6bfd2c14a7eda0020c0c08e9b115')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
