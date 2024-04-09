@@ -1,4 +1,5 @@
-# Maintainer: GI_Jack <GI_Jack@hackermail.com>
+# Maintainer: rosetintedcheeks <oaks@rosetintedcheeks.com>
+# Contributor: GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=python-json2html
 _pkgname=json2html
