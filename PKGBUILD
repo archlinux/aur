@@ -2,8 +2,8 @@
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=python-rosettasciio
 pkgshort=rosettasciio
-pkgver=0.3
-pkgrel=3
+pkgver=0.4
+pkgrel=1
 pkgdesc="Rosetta Scientific Input Output library"
 arch=('any')
 url="http://hyperspy.org/rosettasciio"
@@ -33,4 +33,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-md5sums=('22d3f5cb2182f1e79566e612e52343f2')
+md5sums=('8598090504c46a4fcb0524e0af87f795')
