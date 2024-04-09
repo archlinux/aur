@@ -4,7 +4,7 @@
 pkgname=koboldcpp-hipblas
 _pkgver=1.61.2
 pkgver=$_pkgver.yr1
-pkgrel=2
+pkgrel=3
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (with HIPBLAS, for ROCM)"
 arch=('x86_64')
 url="https://github.com/YellowRoseCx/koboldcpp-rocm"
@@ -47,7 +47,7 @@ package() {
   install -Dm644 "koboldcpp.py" "$pkgdir/usr/share/koboldcpp/koboldcpp.py"
 
   echo '#!/bin/sh' > koboldcpp
-  echo 'cd /usr/share/koboldcpp && python koboldcpp.py "$@"' >> koboldcpp
+  echo 'python /usr/share/koboldcpp/koboldcpp.py "$@"' >> koboldcpp
 
   install -Dm755 koboldcpp "$pkgdir/usr/bin/koboldcpp"
 }
