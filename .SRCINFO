@@ -1,14 +1,15 @@
 pkgbase = r-mba
 	pkgdesc = Multilevel B-Spline Approximation
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=MBA
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
+	makedepends = r-bh
 	depends = r
-	depends = r-bh
 	optdepends = r-sp
 	source = https://cran.r-project.org/src/contrib/MBA_0.1-0.tar.gz
-	sha256sums = 78039905c5b98be2bb79a5f292187a2aca21ef449daeefea58b0cac53a5283af
+	md5sums = 8b0a70701c0a153352088e320d0204df
+	b2sums = 8b8c8d27b0d596fa49b05d4b035fb4079f7947077f56cda102956e527ff7074b69039e985c26d6e3424d3bbc89f5ccbf6cc34ab92ef6a834a8ad2b28f2934016
 
 pkgname = r-mba
