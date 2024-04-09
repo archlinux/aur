@@ -1,13 +1,13 @@
 pkgbase = raspotify-git
 	pkgdesc = A spotify connect client that just works
-	pkgver = 0.43.34.r0.d989394
+	pkgver = 0.43.56.r0.98e2ee5
 	pkgrel = 1
 	url = https://github.com/dtcooper/raspotify
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = librespot-git
-	backup = etc/default/raspotify
+	depends = librespot
+	backup = etc/raspotify/conf
 	source = raspotify::git+https://github.com/dtcooper/raspotify.git
 	source = raspotify.sysusers
 	source = raspotify.tmpfiles
