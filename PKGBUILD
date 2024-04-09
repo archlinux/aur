@@ -1,23 +1,25 @@
-# Maintainer: Trevor <assviolat0r at live dot com>
+# Contributor: a821 at mail dot de
+# Contributor: Trevor <assviolat0r at live dot com>
 
 pkgname=python-rivescript
-pkgver=1.8.1
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="Rendering Intelligence Very Easily"
 arch=('any')
 license=('MIT')
-depends=('python2' 'python-six' 'python2-six' 'python-setuptools' 'python2-setuptools')
-conflicts=('python-rivescript-git')
-url=('https://pypi.python.org/pypi/rivescript')
-source=('https://pypi.python.org/packages/source/r/rivescript/rivescript-1.8.1.tar.gz')
-md5sums=('86cba9b7b1cf846d83d61f8ddeafa386')
-_distdir="rivescript-1.8.1"
+depends=('python-six')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+url="https://github.com/aichaos/rivescript-python"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('d148a9242ea88f2a5f3dd57a663a4ddd56729807ee24edcd37ade7ee690e1bfe')
 
-package() {
-   cd "$srcdir/$_distdir"
-   python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1 || return 1
+build() {
+   cd rivescript-python-$pkgver
+   python -m build --wheel --no-isolation
 }
 
-
-
-
+package() {
+   cd rivescript-python-$pkgver
+   python -m installer --destdir="$pkgdir" dist/*.whl
+   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
