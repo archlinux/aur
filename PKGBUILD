@@ -2,7 +2,7 @@
 
 pkgname=xfb
 pkgver=1.23
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source Radio Automation"
 arch=('x86_64')
 url="https://github.com/netpack/XFB"
