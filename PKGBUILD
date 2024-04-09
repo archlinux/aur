@@ -2,7 +2,7 @@
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=python-holospy
 pkgshort=holospy
-pkgver=0.1.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Analysis of (off-axis) electron holography data with HyperSpy"
 arch=('any')
@@ -33,4 +33,4 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-md5sums=('f7be3587bb0a77831e2c2c4d1e6afb78')
+md5sums=('cc08bcc20ea5074c4c2f30fa7a80152c')
