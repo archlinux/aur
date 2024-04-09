@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Kevin Maris <aur@kmaris.net>
 pkgname=devbox-bin
-pkgver=0.10.3
+pkgver=0.10.4
 pkgrel=1
 pkgdesc="A cli tool to easily create isolated shells and containers with nix."
 arch=(
@@ -23,10 +23,10 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/do
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.tar.gz::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_linux_arm64.tar.gz")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.tar.gz::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_linux_386.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.tar.gz")
-sha256sums_aarch64=('527ce8cae7eeb4698e04ea86a18b7af00908dc3667f94199eae9d0a0ba14ec2c')
-sha256sums_armv7h=('527ce8cae7eeb4698e04ea86a18b7af00908dc3667f94199eae9d0a0ba14ec2c')
-sha256sums_i686=('c158ef48dd7120be195f6e4ef39e06a9a41ba51e766bad15cb6a2ecf0204a64a')
-sha256sums_x86_64=('3c210f40a1aa9c0734eaf92fb9853575213d1c91772c19a857e706eee30deddd')
+sha256sums_aarch64=('21e46f1ec86d61f11a39532dc022c12143a7aaa5fd08a1af8e9393ac1eb94a46')
+sha256sums_armv7h=('21e46f1ec86d61f11a39532dc022c12143a7aaa5fd08a1af8e9393ac1eb94a46')
+sha256sums_i686=('408f84b05d4fe3015d98c6998b43e9bcc2fe6dc7bcbdeccf083b2d9006d4895d')
+sha256sums_x86_64=('503d6da8678fb64243f1f9ec70d2ce31a250f33b96849db10b9fc9e85f1654e0')
 build() {
     "${srcdir}/${pkgname%-bin}" completion bash > "${srcdir}/bash.completion"
     "${srcdir}/${pkgname%-bin}" completion fish > "${srcdir}/fish.completion"
