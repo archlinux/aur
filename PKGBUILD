@@ -2,7 +2,7 @@
 
 pkgname=dnscontrol-bin
 pkgver=4.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Synchronize your DNS to multiple providers from a simple DSL (binary release)"
 arch=('x86_64')
 url="https://stackexchange.github.io/dnscontrol/"
