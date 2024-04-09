@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-inputstream-rtmp-git
 	pkgdesc = librtmp support for Kodi 20+
-	pkgver = 21.0.1.Omega.r0.gc421903
+	pkgver = 21.1.0.Omega.r10.g8dd2ada
 	pkgrel = 1
 	url = https://github.com/xbmc/inputstream.rtmp
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = kodi-addon-inputstream-rtmp-git
 	makedepends = kodi-dev
 	makedepends = cmake
 	makedepends = git
-	depends = kodi
+	depends = kodi-common
 	depends = rtmpdump
 	provides = kodi-addon-inputstream-rtmp
 	conflicts = kodi-addon-inputstream-rtmp

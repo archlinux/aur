@@ -1,12 +1,12 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=kodi-addon-inputstream-rtmp-git
-pkgver=21.0.1.Omega.r0.gc421903
+pkgver=21.1.0.Omega.r10.g8dd2ada
 pkgrel=1
 pkgdesc="librtmp support for Kodi 20+"
 arch=('x86_64' 'i686' 'armv7h')
 url="https://github.com/xbmc/inputstream.rtmp"
 license=('GPL2')
-depends=('kodi' 'rtmpdump')
+depends=('kodi-common' 'rtmpdump')
 makedepends=('kodi-dev' 'cmake' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
