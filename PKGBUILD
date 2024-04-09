@@ -9,8 +9,14 @@ pkgdesc='懒猫微服'
 url='https://lazycat.cloud'
 arch=('x86_64')
 license=('custom')
-depends=('gtk3' 'zenity')
-makedepends=('tar' 'zstd')
+depends=(
+  'gtk3'
+  'zenity'
+  'rclone'
+  'fuse2')
+makedepends=(
+  'tar'
+  'zstd')
 source=(
   "https://dl.lazycat.cloud/client/desktop/${_channel}/lzc-client-desktop_${_pkgver}.tar.zst"
   "lzc-client-desktop")
@@ -24,15 +30,18 @@ package() {
 
   tar xf lzc-client-desktop_${_pkgver}.tar.zst -C ${pkgdir}/opt/lzc-client-desktop
 
+  # fix desktop file
   install -Dm755 ${srcdir}/lzc-client-desktop ${pkgdir}/usr/bin/lzc-client-desktop
   install -Dm644 ${pkgdir}/opt/lzc-client-desktop/lzc-client.desktop ${pkgdir}/usr/share/applications/lzc-client-desktop.desktop
   install -Dm644 ${pkgdir}/opt/lzc-client-desktop/icon.png ${pkgdir}/usr/share/icons/lzc-client-desktop.png
-
-  sed -i '/chmod/d' ${pkgdir}/opt/lzc-client-desktop/runcore.sh
-  chmod +x ${pkgdir}/opt/lzc-client-desktop/core/lzc-core
-  chmod +x ${pkgdir}/opt/lzc-client-desktop/rclone
-
   sed -i 's|Exec=.*|Exec=lzc-client-desktop|' ${pkgdir}/usr/share/applications/lzc-client-desktop.desktop
   sed -i 's|Icon=.*|Icon=lzc-client-desktop|' ${pkgdir}/usr/share/applications/lzc-client-desktop.desktop
 
+  # fix permission
+  sed -i '/chmod/d' ${pkgdir}/opt/lzc-client-desktop/runcore.sh
+  chmod +x ${pkgdir}/opt/lzc-client-desktop/core/lzc-core
+
+  # remove rclone
+  rm ${pkgdir}/opt/lzc-client-desktop/rclone
+  ln -s /bin/rclone ${pkgdir}/opt/lzc-client-desktop/rclone
 }
