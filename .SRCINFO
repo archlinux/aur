@@ -1,0 +1,16 @@
+pkgbase = crab-fetch-git
+	pkgdesc = A highly configurable command-line fetch tool thats also performant.
+	pkgver = v0.1.0.r5.gc3d58e3
+	pkgrel = 1
+	url = https://github.com/LivacoNew/CrabFetch
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = rustup
+	depends = glibc
+	depends = gcc-libs
+	provides = crabfetch
+	conflicts = crabfetch
+	source = crab-fetch-git::git+https://github.com/LivacoNew/CrabFetch
+	sha256sums = SKIP
+
+pkgname = crab-fetch-git
