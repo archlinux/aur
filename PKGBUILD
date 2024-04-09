@@ -6,14 +6,14 @@ pkgdesc="Concurrency library for C (coroutines)"
 arch=(any)
 url="https://github.com/tidwall/neco"
 license=('MIT')
-provides=("libneco.so=$pkgver")
+provides=('libneco.so')
 makedepends=('git')
 source=("$pkgname-$pkgver"::"git+${url}")
 sha256sums=('SKIP')
 
 build() {
   cd "$pkgname-$pkgver"
-  cc neco.c -shared -fPIC -o libneco.so
+  gcc $CFLAGS -shared -fPIC neco.c -o libneco.so
 }
 
 pkgver() {
