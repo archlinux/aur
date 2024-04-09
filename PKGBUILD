@@ -3,26 +3,28 @@
 _pkgname=kpmt
 _pkgver=0.1.0
 pkgname=r-${_pkgname,,}
-pkgver=0.1.0
-pkgrel=4
-pkgdesc='Known Population Median Test'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Known Population Median Test"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
 license=('MIT')
 depends=(
-  r
   r-matrixstats
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6342ad02c93bfa7a764d028821bb6115bb8bc8c55b057a5860736cc0e034a295')
+md5sums=('a7287ffe52028caad282fdb65df2bc53')
+b2sums=('f15064a95a6cc324bab8836d9124eac4b07895fd07423d9ec865377e105ba268e0090cf81af5ad97dbe496bcf7e401cbaaf722ddbcbfc6843248a0240c25c127')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
