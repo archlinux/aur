@@ -18,6 +18,7 @@ optdepends=(
 provides=('superfile')
 conflicts=('superfile')
 source=("${_pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-v${pkgver}-amd64.tar.gz")
+sha256sums=('SKIP')
 
 build() {
   chmod +x "${srcdir}/dist/${_pkgname}-linux-v${pkgver}-amd64/spf"

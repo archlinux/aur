@@ -11,5 +11,6 @@ pkgbase = superfile-bin
 	provides = superfile
 	conflicts = superfile
 	source = superfile-1.0.1::https://github.com/MHNightCat/superfile/releases/download/v1.0.1/superfile-linux-v1.0.1-amd64.tar.gz
+	sha256sums = SKIP
 
 pkgname = superfile-bin
