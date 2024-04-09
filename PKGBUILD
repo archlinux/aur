@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=Biostrings
-_bcver=2.70.1
+_bcver=2.70.3
 
 pkgname=r-${_bcname,,}
 pkgdesc="Efficient manipulation of biological strings"
@@ -41,7 +41,7 @@ optdepends=(
 )
 
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=('858bd8c07272385ba65252e6da988b3b8592f9f3aeebc437d65524c328d500605baf1fb3263459732a563f53e48512b86652e34ed6ad8e497b8d52eddd4a0f6b')
+b2sums=("aad04060ae1c199bf735a7ad0a33fbf9d4181c13f17aeaebdc6d68896883a18cc20280f3bf344f24cb56f0269f4945c79f10d2fd5781a6c9ae9c3a982eeacdcc")
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
