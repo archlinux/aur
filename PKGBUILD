@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=crm-git
-pkgver=0.2.1.r3.g10e818c
-pkgrel=16
+pkgver=0.2.1.r4.g1d14d69
+pkgrel=1
 pkgdesc="crm (Cargo registry manager)"
 arch=(x86_64
     aarch64
@@ -12,8 +12,10 @@ license=('MIT' 'Apache-2.0')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
-depends=('cargo')
-makedepends=('git' 'rust')
+depends=(gcc-libs
+    glibc)
+makedepends=(git
+    cargo)
 backup=()
 options=('!lto')
 install=
