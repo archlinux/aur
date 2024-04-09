@@ -1,5 +1,6 @@
-调整希腊扩展字母：ὰά。
+调整以下汉字字形：屘氡鍀鍆鎇鎿鐦鐧鐨（字形来源：[DWPI 明朝](https://www.digitalwidearea.org/dwpi_mincho)）。
 以下为较早版本的更新日志：
+    调整希腊扩展字母：ὰά。
     新增汉字「𢁉」。
     调整汉字「奧」「毒」的字形。
     新增汉字和其他字符，[详情点此查看](https://github.com/lxgw/LxgwNeoZhiSong/blob/main/documentation/changelog/20240228.md)；
