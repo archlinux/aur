@@ -1,12 +1,13 @@
 pkgbase = python-graylint
 	pkgdesc = Filter linter messages from various Python linters to only those which were caused by recent changes to the code base being linted
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/akaihola/graylint
 	arch = any
 	license = BSD-3-Clause
 	checkdepends = python-pytest
 	checkdepends = mypy
+	checkdepends = python-pytest-kwparametrize
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
@@ -15,7 +16,7 @@ pkgbase = python-graylint
 	depends = python
 	depends = python-darkgraylib
 	optdepends = python-pygments: syntax highlighting
-	source = python-graylint::git+https://github.com/akaihola/graylint.git#tag=v1.0.1
-	sha512sums = e2dd54f277c48ec19b784faec78fb3a78638aa052185da739cf185fb3328f8eeee75c9cd4f0a588b71f93f6d73e4740e38ee0f8285f5c1180f0ee55a492f362f
+	source = python-graylint::git+https://github.com/akaihola/graylint.git#tag=v1.1.0
+	sha512sums = 3441eaa6bd83d831ff1ebc904e65958b21148bc18eb791ab0d474f4d32167e3c9ac030baf86a48cd23a8aa362e34cca654687f7c4078ea755fe73aaae3677fd2
 
 pkgname = python-graylint
