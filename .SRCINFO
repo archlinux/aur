@@ -5,9 +5,10 @@ pkgbase = singularity-ce
 	url = https://github.com/sylabs/singularity
 	arch = x86_64
 	license = GPL2
+	makedepends = fuse3
 	makedepends = git
 	depends = cryptsetup
-	depends = go>=1.17
+	depends = go>=1.20
 	depends = libseccomp
 	depends = squashfs-tools>=4.3
 	optdepends = libnvidia-container-tools: use nvidia-container-cli for GPU setup (experimental)

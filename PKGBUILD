@@ -23,8 +23,8 @@ backup=(
     'etc/singularity/network/40_fakeroot.conflist'
     'etc/singularity/seccomp-profiles/default.json'
 )
-depends=('cryptsetup' 'go>=1.17' 'libseccomp' 'squashfs-tools>=4.3')
-makedepends=('git')
+depends=('cryptsetup' 'go>=1.20' 'libseccomp' 'squashfs-tools>=4.3')
+makedepends=('fuse3' 'git')
 optdepends=('libnvidia-container-tools: use nvidia-container-cli for GPU setup (experimental)')
 provides=('singularity-container')
 conflicts=('singularity-container')
@@ -36,6 +36,7 @@ b2sums=('af1f717bbfe09f8d392ce3e2c5cecc462359856a735fb9f07e8245dc75d2cdde5069aeb
 build() {
     cd $pkgname-$pkgver
 
+    export CGO_ENABLED="1"
     export CGO_CPPFLAGS="$CPPFLAGS"
     export CGO_CFLAGS="$CFLAGS"
     export CGO_CXXFLAGS="$CXXFLAGS"
