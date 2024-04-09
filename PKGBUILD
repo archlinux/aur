@@ -1,7 +1,7 @@
 pkgname=rosary
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Yet another yogurt. Pacman wrapper and AUR helper written in go."
+pkgdesc="A Simple Bible App Written in Qt"
 arch=('x86_64' 'aarch64')
 #options=(!verifysource)
 url="https://github.com/RoseBlume/Rosary-Bible-App"
