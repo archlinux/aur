@@ -1,6 +1,6 @@
 # Maintainer: Baltazár Radics <baltazar.radics@gmail.com>
 pkgname=nanopb
-pkgver=0.4.7
+pkgver=0.4.8
 pkgrel=1
 pkgdesc='Protocol Buffers with small code size'
 arch=(any)
@@ -11,7 +11,7 @@ makedepends=(pandoc)
 checkdepends=(scons)
 source=("https://jpa.kapsi.fi/$pkgname/download/$pkgname-$pkgver.tar.gz"
         'protoc-gen-nanopb')
-sha256sums=('87055a0d9a99a95429a95497e566e59d8d16103cfd90b7b6e8ee364b6559666a'
+sha256sums=('d685e05fc6e56fd7e4e3cacc71f45bd91d90c0455257603ed98a39d2b0f1dd4b'
             'cd1ff902034d8deabf2d8ad3fadcdc4860d0b5d3be746e2b4b7427b9a7aca9c0')
 
 build() {
