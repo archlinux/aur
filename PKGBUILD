@@ -15,7 +15,7 @@ depends=(gcc-libs
          kcrash5
          ki18n5
          kxmlgui5
-         libkexiv2
+         libkexiv2-qt5
          marble-common
          qt5-base
          xdg-utils)
