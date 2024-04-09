@@ -1,8 +1,8 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=azure-dev-cli
 _pkgname=azure-dev
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Developer CLI that reduces the time it takes for you to get started on Azure"
 arch=(x86_64)
@@ -17,14 +17,13 @@ depends=(
 )
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/azure-dev-cli_$pkgver.tar.gz")
-sha256sums=('c3c2d9576b93637b748ad81bd7148059d612e4beea18277f01a0f27dcc95b747')
+sha256sums=('a6301afccdf0f3b3b41fdeea5b843e8d77e01ef8a4a962ee2e64ba27f95c9be0')
 
 _archive="$_pkgname-azure-dev-cli_$pkgver"
 
 prepare() {
   cd "$_archive"
 
-  # Avoid downloading Go dependencies in build() by doing it here instead
   go mod download -x
 }
 
@@ -71,5 +70,6 @@ package() {
 
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
   cp -a -t "$pkgdir/usr/share/doc/$pkgname" docs
+
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
