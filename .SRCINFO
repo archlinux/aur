@@ -4,6 +4,7 @@ pkgbase = halflife
 	pkgrel = 1
 	url = https://gitlab.com/half-life1
 	arch = x86_64
+	arch = i686
 	arch = aarch64
 	license = GPL
 	makedepends = unzip
