@@ -5,9 +5,9 @@
 _pkgname=aliyunpan
 pkgname="${_pkgname}-odomu-git"
 _zhsname="阿里云盘小白羊"
-pkgver=3.24.40213.r0.g26a0d6e
+pkgver=3.24.40913.r0.g526515f
 _electronversion=21
-_nodeversion=18
+_nodeversion=20
 pkgrel=1
 pkgdesc="阿里云盘小白羊版，odomu's fork"
 arch=("any")

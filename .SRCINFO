@@ -1,6 +1,6 @@
 pkgbase = aliyunpan-odomu-git
 	pkgdesc = 阿里云盘小白羊版，odomu's fork
-	pkgver = 3.24.40213.r0.g26a0d6e
+	pkgver = 3.24.40913.r0.g526515f
 	pkgrel = 1
 	url = https://github.com/odomu/aliyunpan
 	arch = any
