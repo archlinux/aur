@@ -1,11 +1,10 @@
 pkgbase = r-googlevis
 	pkgdesc = R Interface to Google Charts
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=googleVis
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-2.0-or-later
 	depends = r-jsonlite
 	optdepends = r-data.table
 	optdepends = r-httpuv
@@ -14,6 +13,7 @@ pkgbase = r-googlevis
 	optdepends = r-rmarkdown
 	optdepends = r-shiny
 	source = https://cran.r-project.org/src/contrib/googleVis_0.7.1.tar.gz
-	sha256sums = 335931059ea8645f824b01a06d30fafb4e38b47cd610a5eee20628801767f218
+	md5sums = 8a48cbc976f069a073979cf228fe082a
+	b2sums = 95bfe78ed25df54b0403de4b81e6563d0bee0b8e9d33e14f4870362073e1f30f00adbec8416a5dcbacc23f35f2c7bc5dd9d9a8fb9650265bc05c152082af2891
 
 pkgname = r-googlevis
