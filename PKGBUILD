@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=autorecord-manager
 _pkgname="LAR 直播自动录制"
-pkgver=4.6.2
+pkgver=4.7.0
 _electronversion=20
 _nodeversion=16
 pkgrel=1
@@ -11,7 +11,7 @@ url="https://github.com/WhiteMinds/LiveAutoRecord"
 license=('LGPL-3.0-only')
 conflicts=("${pkgname}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'nodejs'
 )
 makedepends=(
@@ -30,7 +30,7 @@ source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('SKIP'
+sha256sums=('e9d2c2c5bd518008a86a7074712a10302cf9abc196a8468ed0974a5400881b2e'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -56,7 +56,14 @@ build() {
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
-    sed "s|electron-builder\",|electron-builder -l AppImage\",|g;s|\/\${version}||g" -i packages/electron/package.json
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
+    else
+        echo "Your network is OK."
+    fi
+    sed "s|electron-builder\",|electron-builder -l --dir\",|g;s|\/\${version}||g" -i packages/electron/package.json
     # .yarnrc.yml existed
     yarn install #--cache-folder "${srcdir}/.yarn_cache"
     cd "${srcdir}/${pkgname}.git/packages/shared"
@@ -64,7 +71,7 @@ build() {
     cd "${srcdir}/${pkgname}.git/packages/manager"
     yarn run build
     cd "${srcdir}/${pkgname}.git/packages/electron"
-    yarn run app:build -p never
+    yarn run app:build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
