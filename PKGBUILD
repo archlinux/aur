@@ -10,6 +10,8 @@ url="https://git.sr.ht/~libele/vilearn"
 license=('custom:Copyright')
 makedepends=('bmake' 'git')
 optdepends=('vi: the original ex/vi text editor')
+provides=('vilearn')
+conflicts=('vilearn')
 source=("git+https://git.sr.ht/~libele/vilearn")
 md5sums=('SKIP')
 
