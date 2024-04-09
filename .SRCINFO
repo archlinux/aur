@@ -1,10 +1,12 @@
 pkgbase = python-visvis
 	pkgdesc = Python library for visualization of 1D to 4D data
 	pkgver = 1.14.0.r3.gd8f36d4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/almarklein/visvis
 	arch = any
 	license = BSD-3-Clause
+	checkdepends = python-pytest
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools

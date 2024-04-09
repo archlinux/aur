@@ -1,10 +1,11 @@
+# Maintainer: cqz5555 < cqzw555@163.com >
 # Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 
 pkgname=python-visvis
 pkgver=1.14.0.r3.gd8f36d4
 _commit=d8f36d4b33554a24918c7043188ccffcc054690e
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for visualization of 1D to 4D data"
 url="https://github.com/almarklein/visvis"
 arch=('any')
@@ -18,6 +19,7 @@ depends=(
   'python-scipy'
 )
 makedepends=(
+  'git'
   'python-build'
   'python-installer'
   'python-setuptools'
@@ -31,6 +33,9 @@ optdepends=(
   'python-pyqt5: for a Qt5 GUI backend'
   'python-pyqt6: for a Qt6 GUI backend'
   'python-wxpython: for the WxWidgets GUI backend'
+)
+checkdepends=(
+  'python-pytest'
 )
 source=("${pkgname}::git+${url}.git#commit=${_commit}")
 b2sums=('SKIP')
@@ -54,6 +59,11 @@ pkgver() {
 build() {
   cd "${pkgname}"
   python -m build --wheel --no-isolation
+}
+
+check(){
+  cd "${pkgname}"
+  PYTHONPATH="$PWD/build/lib" pytest
 }
 
 package() {
