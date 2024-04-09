@@ -2,7 +2,7 @@
 
 pkgname=xfb
 pkgver=1.23
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source Radio Automation"
 arch=('x86_64')
 url="https://github.com/netpack/XFB"
@@ -19,7 +19,7 @@ sha512sums=("b92a5a48a64a26b5c43c0d696736328fd17cb7a65aa85c9bda9b4bc45a8bd0ff056
 
 build() {
   cd "$srcdir/usr/share/xfb/bin"
-  qmake-qt5 PREFIX=/usr/share/xfb/bin ..src/XFB.pro
+  qmake-qt5 PREFIX=/usr/share/xfb/bin ../src/XFB.pro
   make
 }
 
