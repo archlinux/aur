@@ -1,0 +1,19 @@
+pkgbase = Rosary
+	pkgdesc = Yet another yogurt. Pacman wrapper and AUR helper written in go.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/RoseBlume/Rosary-Bible-App
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = pacman>6.1
+	depends = git
+	depends = qt6-base>=6.4
+	depends = qt6-declarative>=6.4
+	depends = qt6-webview
+	optdepends = sudo: privilege elevation
+	optdepends = doas: privilege elevation
+	source = Rosary-1.0.0_x86_64.tar.gz::https://github.com/RoseBlume/Rosary-Bible-App/releases/download/Debianv1.0-1/Rosary-1.0.0_x86_64.tar.gz
+	sha256sums = 4a1f2c2248fe0383624e841560f3b6a989bf1442fbba3ef8606e2003510ec86e
+
+pkgname = Rosary
