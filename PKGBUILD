@@ -3,7 +3,7 @@
 pkgname=wolai-bin
 pkgver=1.2.9
 _electronversion=22
-pkgrel=5
+pkgrel=6
 pkgdesc="wolai是一种新形态的文档/笔记/信息系统,它与你过去使用的所有传统文档、在线文档都有很多不同,学会使用wolai就等于拥有了一个强大的个人与团队生产力工具。"
 arch=(
     "aarch64"
