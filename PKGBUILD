@@ -1,12 +1,14 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: André <andre-arch@delorus.de>
 pkgname=texbuild-git
 _gitname=texbuild
 pkgver=r34.1c25a29
-pkgrel=1
+pkgrel=2
 pkgdesc="This small script continuously builds a latex file in the background. It only overwrites the target pdf file upon a successful and complete build allowing to continuously watch the PDF in PDF viewer."
 arch=(any)
 url="https://github.com/pbiggar/texbuild"
 license=('GPL')
+depends=('python')
 makedepends=('git')
 source=('support-synctex.patch' 'git+https://github.com/pbiggar/texbuild.git')
 md5sums=('01a5dd8b6bba24d6e0af076e7a8aa981' 'SKIP')
