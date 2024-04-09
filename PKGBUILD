@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=go-hass-agent-bin
 _pkgname="Go Hass Agent"
-pkgver=7.2.0
+pkgver=7.3.0
 pkgrel=1
 pkgdesc="A Home Assistant， native app integration for desktop/laptop devices."
 arch=("x86_64")
@@ -16,7 +16,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.pkg.tar.zst::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1-${CARCH}.pkg.tar.zst"
 )
-sha256sums=('e8d06c3cdb97abc81aed23aa9603e4345c2c5a206973f537792f967936576d8c')
+sha256sums=('498e799528f430219a5f64f2bb92d114a0d003c406da063b341d7326face5d4c')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/usr/lib/systemd/user/${pkgname%-bin}.service" -t "${pkgdir}/usr/lib/systemd/user"
