@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=1.38.60.r0.g23a7d858
+pkgver=1.38.65.r0.g40e6bb08
 _electronversion=26
 _nodeversion=18
 pkgrel=1
