@@ -1,21 +1,20 @@
 pkgbase = python-pex
 	pkgdesc = Generates executable Python environments
-	pkgver = 2.1.126
+	pkgver = 2.3.0
 	pkgrel = 1
-	url = https://github.com/pantsbuild/pex
-	changelog = CHANGES.rst
+	url = https://docs.pex-tool.org/
+	changelog = CHANGES.md
 	arch = any
-	license = Apache
+	license = Apache-2.0
+	checkdepends = python-tox
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-flit-core
-	makedepends = python-sphinx
+	makedepends = python-hatchling
 	depends = python
 	provides = pex
 	replaces = pex
-	source = python-pex::git+https://github.com/pantsbuild/pex#tag=v2.1.126?signed
-	validpgpkeys = A1FE765B15233EAD18FA6ABB93E55CB567B5C626
-	sha256sums = SKIP
+	source = pex-2.3.0.tar::https://github.com/pex-tool/pex/archive/refs/tags/v2.3.0.tar.gz
+	sha256sums = 44e8a6b2c989dd6e75be9c6667f25be9664603b18733e69a3209e8defa01d13a
 
 pkgname = python-pex

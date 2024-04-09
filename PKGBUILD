@@ -1,46 +1,39 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: rosetintedcheeks <oaks at rosetintedcheeks dot com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Clément Démoulins <clement@archivel.fr>
 # Contributor: Zhaofeng Li <hello@zhaofeng.li>
 # Contributor: Carlo Cabanilla <carlo.cabanilla@gmail.com>
 
-## GPG key: https://github.com/jsirois.gpg
 
 pkgname=python-pex
-pkgver=2.1.126
+_pkgname=pex
+pkgver=2.3.0
+_srcdir="$_pkgname-$pkgver"
 pkgrel=1
 arch=('any')
 pkgdesc='Generates executable Python environments'
-url='https://github.com/pantsbuild/pex'
-license=('Apache')
+url='https://docs.pex-tool.org/'
+license=('Apache-2.0')
 depends=('python')
-makedepends=('git' 'python-build' 'python-installer' 'python-flit-core' 'python-sphinx')
-# checkdepends=('python-pytest' 'python-pkginfo')
-changelog=CHANGES.rst
+makedepends=('git' 'python-build' 'python-installer' 'python-hatchling')
+checkdepends=('python-tox')
+changelog=CHANGES.md
 provides=('pex')
 replaces=('pex')
-source=("$pkgname::git+$url#tag=v$pkgver?signed")
-sha256sums=('SKIP')
-validpgpkeys=('A1FE765B15233EAD18FA6ABB93E55CB567B5C626')
-
-prepare() {
-	cd "$pkgname"
-	sed -i '2c\requires = ["flit_core>=2"]' pyproject.toml
-}
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/pex-tool/pex/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('44e8a6b2c989dd6e75be9c6667f25be9664603b18733e69a3209e8defa01d13a')
 
 build() {
-	cd "$pkgname"
+	cd "$_srcdir"
 	python -m build --wheel --no-isolation
-	make -C docs man
 }
 
-# check() {
-# 	cd "$pkgname"
-# 	echo ':: Warning: This test will last at least five minutes. You have been warned.'
-# 	PYTHONPATH="$PWD" pytest --ignore=tests/integration
-# }
+check() {
+	cd "$_srcdir"
+ 	tox -e check
+}
 
 package() {
-	cd "$pkgname"
+	cd "$_srcdir"
 	python -m installer --destdir="$pkgdir/" dist/*.whl
-	install -Dvm644 docs/_build/man/pex.1 -t "$pkgdir/usr/share/man/man1/"
 }
