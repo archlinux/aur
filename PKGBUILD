@@ -1,20 +1,22 @@
-# maintainer: libele <libele@disroot.org>
+# Maintainer: libele <libele@disroot.org>
 
 pkgname=vilearn
 pkgver=1.1
-pkgrel=2
+_commit=00ee4a43
+pkgrel=3
 pkgdesc="An interactive vi tutorial."
 arch=('any')
-url="https://tildegit.org/libele/vilearn"
+url="https://git.sr.ht/~libele/vilearn"
 license=('custom:Copyright')
+makedepends=('bmake')
 optdepends=('vi: the original ex/vi text editor')
-source=("https://tildegit.org/libele/vilearn/archive/vilearn-$pkgver.tar.gz")
-b2sums=('f4ef596543b8d777990205129061c8417e457de41283cb58d51aba491f0382f8fec740c34919a9712472692f104a36805d6efdae7ee6e5bb9b649bb5170894fa')
+source=(${pkgname}-${pkgver}.tar.gz::"https://git.sr.ht/~libele/vilearn/archive/${_commit}.tar.gz")
+sha256sums=('4e234c5039eea23c479158a96f822921db4dfc6aa3093a8f8889b94cdf04422a')
 
 package() {
-  cd "${pkgname}"
+  cd "${pkgname}-${_commit}"
 
-  make DESTDIR=${pkgdir} install
+  bmake DESTDIR=${pkgdir} install
   install -Dm644 README.md "${pkgdir}"/usr/share/vilearn/README
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/vilearn/LICENSE
 }
