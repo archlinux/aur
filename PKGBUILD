@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=paws.common
-_pkgver=0.7.1
+_pkgver=0.7.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -32,8 +32,8 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9af459e0fbfbcc2232325db0e839a834')
-b2sums=('d80114ecc2291be42f23b7024b0b79ba40d6a33ecbf63cddd88c22e02b5b3d89e8591ead8d7637ff9a1a4e47e08a587ad98e669320f13bfd090ee0282c8ab13d')
+md5sums=('b1d5e7135bad64365e513c3b72d0013a')
+b2sums=('a52e55cfc560dfb4a73f7428186b3ff3adc9058daf541e4a9b69c022107031992a8f2df6042423c27702e7fc0273f5f2468a8ad01e1c917251ab0b2ed22bc5c5')
 
 build() {
   mkdir build
