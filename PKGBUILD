@@ -3,25 +3,25 @@
 _pkgname=ctc
 _pkgver=1.76.0
 pkgname=r-${_pkgname,,}
-pkgver=1.76.0
-pkgrel=1
-pkgdesc='Cluster and Tree Conversion.'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Cluster and Tree Conversion"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
   r-amap
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a3c661080f046b936bbced906f1046d4760892f1c0fa45376cdf420c721e4881')
+md5sums=('ea94b8b636b26d4f827ecd4569804d1e')
+b2sums=('ec76aaf109f7b5dd1c4e6926254380f3aeed5da78dc50369b2ab338091270efe2ddfb254f11c0f78c0aec6e69b531e5a59fdd8953dc314eb7c056036f156bc77')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

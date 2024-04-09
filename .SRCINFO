@@ -1,13 +1,13 @@
 pkgbase = r-ctc
-	pkgdesc = Cluster and Tree Conversion.
+	pkgdesc = Cluster and Tree Conversion
 	pkgver = 1.76.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/ctc
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-2.0-only
 	depends = r-amap
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/ctc_1.76.0.tar.gz
-	sha256sums = a3c661080f046b936bbced906f1046d4760892f1c0fa45376cdf420c721e4881
+	md5sums = ea94b8b636b26d4f827ecd4569804d1e
+	b2sums = ec76aaf109f7b5dd1c4e6926254380f3aeed5da78dc50369b2ab338091270efe2ddfb254f11c0f78c0aec6e69b531e5a59fdd8953dc314eb7c056036f156bc77
 
 pkgname = r-ctc
