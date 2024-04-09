@@ -1,6 +1,6 @@
 pkgbase = btllib
 	pkgdesc = Bioinformatics Technology Lab common code library https://doi.org/10.21105/joss.04720
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/bcgsc/btllib
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = btllib
 	depends = samtools
 	depends = python
 	options = !strip
-	source = btllib-1.7.1.tar.gz::https://github.com/bcgsc/btllib/releases/download/v1.7.1/btllib-1.7.1.tar.gz
-	sha256sums = 7fa600b34a1d46fa4a4dcd214a76c1c5e08c6f7e99a60a61f8bfc477e3fdfdfe
+	source = btllib-1.7.2.tar.gz::https://github.com/bcgsc/btllib/releases/download/v1.7.2/btllib-1.7.2.tar.gz
+	sha256sums = 4c1bb29fdbd7d9a39f960360a5d4b224d22189862b948027a8e3ecd67c635926
 
 pkgname = btllib
