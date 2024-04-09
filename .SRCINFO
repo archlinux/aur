@@ -1,13 +1,15 @@
 pkgbase = crab-fetch
 	pkgdesc = A highly configurable command-line fetch tool thats also performant.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LivacoNew/CrabFetch
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = rustup
 	depends = glibc
 	depends = gcc-libs
+	optdepends = mesa-utils
+	optdepends = pciutils
 	provides = crabfetch
 	conflicts = crabfetch
 	source = https://github.com/LivacoNew/CrabFetch/archive/refs/tags/v0.1.0.tar.gz
