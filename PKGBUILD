@@ -1,5 +1,5 @@
 pkgname=gnome-shell-extension-screen-autorotate
-pkgver=15
+pkgver=19
 pkgrel=1
 pkgdesc="A GNOME extension to auto-rotate screen regardless of touch mode"
 arch=("any")
