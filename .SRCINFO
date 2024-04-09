@@ -1,7 +1,7 @@
 pkgbase = discord-electron
-	pkgdesc = Discord using system provided electron (v28) for increased security and performance
+	pkgdesc = Discord using system provided electron (v29) for increased security and performance
 	pkgver = 0.0.48
-	pkgrel = 1
+	pkgrel = 2
 	url = https://discord.com
 	install = discord-electron.install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = discord-electron
 	makedepends = asar
 	makedepends = curl
 	makedepends = python-html2text
-	depends = electron28
+	depends = electron29
 	depends = libxss
 	optdepends = libpulse: Pulseaudio support
 	optdepends = libappindicator-gtk3: Systray indicator support
@@ -21,6 +21,6 @@ pkgbase = discord-electron
 	source = https://dl.discordapp.net/apps/linux/0.0.48/discord-0.0.48.tar.gz
 	source = discord-launcher.sh
 	sha512sums = 3cffb469283de46a234f09fc42bf9963d4497ae28f71637db1230d5f8531c0d9fe00ceb6002e5f65f085a1a9511fd3ac8dd48e23431e190555d6cf8e62519f2b
-	sha512sums = ceaeb357a84df0695fe65867f81d2fa35a65a6f47f47a29022e09fa15cc816b3e250f63eee1025388f51665e6bc39262de7cb7a137f25caf1d922bbacd217566
+	sha512sums = 9d00f9d2e05c2ba31c930c066f247954700bb0f96f2fc605e61c3973d7dacf962bf372659b71e05e5d8d4e152cc884bf12ec1fb5ecbfc4da55d22ab2591c4c40
 
 pkgname = discord-electron

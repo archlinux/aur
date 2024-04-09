@@ -14,8 +14,8 @@
 pkgname=discord-electron
 _pkgname=discord
 pkgver=0.0.48
-pkgrel=1
-_electronver=28
+pkgrel=2
+_electronver=29
 _electronname="electron${_electronver}"
 pkgdesc="Discord using system provided electron (v${_electronver}) for increased security and performance"
 arch=('x86_64')
@@ -36,7 +36,7 @@ optdepends=(
 source=("https://dl.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
 	'discord-launcher.sh')
 sha512sums=('3cffb469283de46a234f09fc42bf9963d4497ae28f71637db1230d5f8531c0d9fe00ceb6002e5f65f085a1a9511fd3ac8dd48e23431e190555d6cf8e62519f2b'
-            'ceaeb357a84df0695fe65867f81d2fa35a65a6f47f47a29022e09fa15cc816b3e250f63eee1025388f51665e6bc39262de7cb7a137f25caf1d922bbacd217566')
+            '9d00f9d2e05c2ba31c930c066f247954700bb0f96f2fc605e61c3973d7dacf962bf372659b71e05e5d8d4e152cc884bf12ec1fb5ecbfc4da55d22ab2591c4c40')
 
 _krisp_b2sum='5f72dcddf45a680d16a49961d1756ac26ca555a94771ff5ece43c66783f9f311948e070f57d60c562675d993b69fc4f3375dd22e2f0d1692c1094258d71bb162'
 
@@ -63,7 +63,7 @@ build() {
 	asar e resources/app.asar resources/app
 	rm resources/app.asar
 	sed -i -e "/resourcesPath = .*;$/d" -e "s|return resourcesPath|return '/usr/lib/${_pkgname}'|" resources/app/common/paths.js
-	sed -i -e "s|process.resourcesPath|'/usr/lib/${_pkgname}'|" resources/app/app_bootstrap/buildInfo.js
+	sed -i -e "s|process.resourcesPath|'/usr/lib/${_pkgname}/resources'|" resources/app/app_bootstrap/buildInfo.js
 	sed -i -e "/^const appName/d" -e "/^const exePath/d" -e "/^const exeDir/d" -e "/^const iconPath/d" \
 		-e "s|^Exec=\${exePath}$|Exec=/usr/bin/${_pkgname}|" \
 		-e "s|^Name=\${appName}$|Name=${_pkgname^}|" \
@@ -79,7 +79,7 @@ package() {
 	install -d "${pkgdir}"/usr/share/{pixmaps,applications,licenses/$_pkgname}
 
 	# copy relevant data
-	cp -r ${_pkgname^}/resources/* "${pkgdir}"/usr/lib/$_pkgname/
+	cp -r ${_pkgname^}/resources "${pkgdir}"/usr/lib/$_pkgname/
 	cp ${_pkgname^}/$_pkgname.png \
 		"${pkgdir}"/usr/share/pixmaps/$_pkgname.png
 	cp ${_pkgname^}/$_pkgname.desktop \
