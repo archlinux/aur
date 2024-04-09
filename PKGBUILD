@@ -1,4 +1,4 @@
-# Maintainer: XandrCopyrighted (or xxandr, XDR) <xxandrr@proton.me>
+# Maintainer: WilliamAnimate. Inquires go https://github.com/WilliamAnimate/exfetch/issues/new or contact me on Discord: wiamill
 
 pkgname="exfetch-bin"
 pkgver=0.10.0
