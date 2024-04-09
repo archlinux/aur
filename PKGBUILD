@@ -2,9 +2,9 @@
 _pkgname=antares
 pkgname="${_pkgname}-sql-bin"
 _appname=Antares
-pkgver=0.7.22
+pkgver=0.7.23
 _electronversion=26
-pkgrel=2
+pkgrel=1
 pkgdesc="A modern, fast and productivity driven SQL client with a focus in UX."
 arch=(
     "aarch64"
@@ -17,7 +17,6 @@ license=("MIT")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'hicolor-icon-theme'
     "electron${_electronversion}-bin"
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux_arm64.deb")
@@ -29,9 +28,9 @@ source=(
 )
 sha256sums=('7b960bb0bed7d2228b6a8a879558c97906cc041ab14ab1d1089959902f386613'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('89a9862c9f7cb32029304aba3ddbdeca306978cbe2378cf607f02f3010189c0e')
-sha256sums_armv7h=('4fab104806f38e52d2cbc3b2759cf464c522e7bee06eee9208672f39e3bcc2f7')
-sha256sums_x86_64=('d3087befdd79029ab4193ef2d0b2d715853f038f3f10da9b791bb2cf79785b05')
+sha256sums_aarch64=('a5e14ae84512263352313f81d5d039dae765bc8c1ec58e7d15edaba4c453c487')
+sha256sums_armv7h=('fd13178a883cd08be0925f4d5ed8d7422173c7a12eafb13a8763fc1f9a422654')
+sha256sums_x86_64=('81f94bed38910474b7e4e04764b7840830337ef0f437a82b3349da284037e45e')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
