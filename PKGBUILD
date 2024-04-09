@@ -1,7 +1,7 @@
 # Maintainer: Gaël PORTAY <gael.portay@gmail.com>
 
 pkgname=iamroot-aarch64_be
-pkgver=20
+pkgver=21
 pkgrel=1
 pkgdesc='Emulating the syscall chroot(2) in an unpriviliged process (aarch64_be)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('aarch64be-glibc-bleeding-edge-toolchain'
 checkdepends=('shellcheck')
 options=('!strip')
 source=("https://github.com/gportay/${pkgname%-aarch64_be}/archive/v$pkgver.tar.gz")
-sha256sums=('27c3019135fce9359a7e7ff6abb0501108c4881e6c57609f4c14d0fb91f17eec')
+sha256sums=('3bbdc8b53a4e1e0a88d2aa281fd85bd4e3653c7634060d6b7442c932dae03b07')
 validpgpkeys=('8F3491E60E62695ED780AC672FA122CA0501CA71')
 
 prepare() {
@@ -26,8 +26,8 @@ prepare() {
 
 build() {
 	cd "${pkgname%-aarch64_be}-$pkgver"
-	make CFLAGS= PREFIX=/usr aarch64_be/libiamroot-linux-aarch64_be.so.1
-	make CFLAGS= PREFIX=/usr aarch64_be/libiamroot-musl-aarch64_be.so.1
+	make CFLAGS=-DJIM_REGEXP PREFIX=/usr aarch64_be/libiamroot-linux-aarch64_be.so.1
+	make CFLAGS=-DJIM_REGEXP PREFIX=/usr aarch64_be/libiamroot-musl-aarch64_be.so.1
 }
 
 check() {
@@ -39,5 +39,6 @@ package() {
 	cd "${pkgname%-aarch64_be}-$pkgver"
 	make PREFIX=/usr DESTDIR="$pkgdir" install-exec-aarch64_be-linux-aarch64_be.1
 	make PREFIX=/usr DESTDIR="$pkgdir" install-exec-aarch64_be-musl-aarch64_be.1
+	make PREFIX=/usr DESTDIR="$pkgdir" install-support-aarch64_be
 	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
