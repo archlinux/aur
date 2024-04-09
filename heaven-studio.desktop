@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Heaven Studio
+Comment=Fully playable, open source recreation of every Rhythm Heaven minigame with a built in level editor.
+Exec="/opt/heaven-studio/Heaven Studio" %f
+Icon=heaven-studio
+Terminal=False
+Categories=Game;ActionGame;ArcadeGame;Music
+Keywords=Rhythm Heaven;Rhythm Paradise;Rhythm World;Rhythm Tengoku;RHeavenStudio;Rhythm Heaven Mania

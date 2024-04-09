@@ -1,0 +1,18 @@
+pkgbase = heaven-studio-bin
+	pkgdesc = Fully playable, open source recreation of every Rhythm Heaven minigame with a built in level editor.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/RHeavenStudio/HeavenStudio
+	arch = x86_64
+	license = GPL3
+	makedepends = unzip
+	makedepends = tar
+	provides = heaven-studio
+	conflicts = heaven-studio-nightly-bin
+	noextract = HeavenStudio_Linux_101.zip
+	source = https://github.com/RHeavenStudio/HeavenStudio/releases/download/v1.0.1/HeavenStudio_Linux_101.zip
+	source = heaven-studio.desktop
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = heaven-studio-bin
