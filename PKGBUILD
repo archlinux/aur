@@ -4,7 +4,7 @@
 # Contributor: jevv
 
 pkgname=hpmyroom
-pkgver=12.9.0.0601
+pkgver=12.13.0.0749
 pkgrel=1
 pkgdesc="HPE MyRoom a collaborative conferencing meetings software"
 url="https://www.myroom.hpe.com"
