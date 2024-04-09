@@ -1,14 +1,14 @@
-# Name: v5.3.1 
-### URL: https://github.com/rajasegar/alacritty-themes/releases/tag/v5.3.1
-### published at '2022-11-23T00:47:05Z' by rajasegar
+# Name: v6 with new TOML config support 
+### URL: https://github.com/rajasegar/alacritty-themes/releases/tag/v6.0.2
+### published at '2024-04-09T09:18:05Z' by rajasegar
 ---
-## [5.3.1](https://github.com/rajasegar/alacritty-themes/compare/v5.3.0...v5.3.1) (2022-11-23)
+This new release will support the latest toml config format
 
-
-### Bug Fixes
-
-* Config warning: bar has been deprecated; use `colors.footer_bar` instead ([#203](https://github.com/rajasegar/alacritty-themes/issues/203)) ([cda1555](https://github.com/rajasegar/alacritty-themes/commit/cda1555030801210f017086b1c2cf839a3351f6f))
-
-
-
+- Remove the preview option for now since it is buggy, you have to apply the theme to see the changes
+-    If your old config is not preserved, you can restore them by renaming the latest backup file
+     ``` mv alacritty.toml.xxxxxx.bak alacritty.toml ```
+-    Also ensure you remove these sections in your old config file to the new theme to take effect:
+    -   [colors.bright]
+    -    [colors.normal]
+    -  [colors.primary]
 

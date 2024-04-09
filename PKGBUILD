@@ -4,8 +4,8 @@
 
 _npmname=alacritty-themes
 pkgname=$_npmname
-pkgver=5.3.1
-pkgrel=2
+pkgver=6.0.2
+pkgrel=1
 
 pkgdesc="A utility for choosing and applying Alacritty terminal themes."
 arch=(any)
@@ -16,13 +16,12 @@ depends=("sh" "nodejs")
 makedepends=("npm" "jq" "icu")
 # provides=("$_npmname")
 # conflicts=("$_npmname")
-options=(strip emptydirs zipman)
 changelog="changelog.md"
 
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
 	"https://raw.githubusercontent.com/rajasegar/alacritty-themes/master/LICENSE")
 noextract=("${_npmname}-${pkgver}.tgz")
-b2sums=('a86c539747620e4d68d95f678ff817694bf1cb82d051e03ab66810c5e7f3f568990d1a1095b977b53e54fc3ea63c027670dc0dcba3724bfb1678be72583f88f5'
+b2sums=('4ee5bd30db3762d1faaa4f0abb65001dabf85bfb3ea708562ef98fe7619d3a25ab9f162788c7aba2d0daa7d516534cc569115d2a3e21a4740626c2e19e87fb53'
 	'7a11e2eeed89bc67e6cef84badf8cccd1bf2de44423c22bd023fe579795b45bc8906c7a2dc3df4c005d0524b99994d2f534410df8e9a52e2d95f97591dd8949c')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
