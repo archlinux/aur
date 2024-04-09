@@ -3,7 +3,7 @@
 # Author: LostRuins (concedo)
 pkgname=koboldcpp
 pkgver=1.62.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models"
 arch=('x86_64')
 url="https://github.com/LostRuins/koboldcpp"
@@ -42,7 +42,7 @@ package() {
   install -Dm644 "koboldcpp.py" "$pkgdir/usr/share/koboldcpp/koboldcpp.py"
 
   echo '#!/bin/sh' > koboldcpp
-  echo 'cd /usr/share/koboldcpp && python koboldcpp.py "$@"' >> koboldcpp
+  echo 'python /usr/share/koboldcpp/koboldcpp.py "$@"' >> koboldcpp
 
   install -Dm755 koboldcpp "$pkgdir/usr/bin/koboldcpp"
 }
