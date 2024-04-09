@@ -1,7 +1,7 @@
 pkgbase = singularity-ce
 	pkgdesc = An open source container platform designed to be simple, fast, and secure.
 	pkgver = 4.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sylabs/singularity
 	arch = x86_64
 	license = GPL2
