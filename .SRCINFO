@@ -1,0 +1,20 @@
+pkgbase = dra-cla-git
+	pkgdesc = A cli to browse and watch Korean Drama, Chinese drama.
+	pkgver = VERSION
+	pkgrel = 1
+	url = https://github.com/CoolnsX/dra-cla
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = fzf
+	depends = grep
+	depends = sed
+	depends = curl
+	depends = openssl
+	depends = mpv
+	depends = aria2
+	depends = ffmpeg
+	source = dra-cla::git+https://github.com/CoolnsX/dra-cla.git
+	sha256sums = SKIP
+
+pkgname = dra-cla-git
