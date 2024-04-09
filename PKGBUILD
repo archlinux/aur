@@ -2,8 +2,8 @@
 # Contributor: Conor Anderson <conor@conr.ca>
 # Contributor: Maxim Baz <$pkgname at maximbaz dot com>
 pkgname=wire-desktop-git
-pkgver=3.34.3307
-_electronversion=27
+pkgver=3.35.3348.r9.g24c8b14c
+_electronversion=29
 _nodeversion=18
 pkgrel=1
 pkgdesc='End-to-end encrypted messenger with file sharing, voice calls and video conferences'
@@ -46,7 +46,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --categories="Network" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
@@ -60,7 +60,14 @@ build() {
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
-    sed "s|, 'deb', 'rpm'||g" -i bin/build-tools/lib/build-linux.ts
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
+    else
+        echo "Your network is OK."
+    fi
+    sed "s|'AppImage', 'deb', 'rpm'|'dir'|g" -i bin/build-tools/lib/build-linux.ts
     # .yarnrc.yml existed
     yarn install --immutable #--cache-folder "${srcdir}/.yarn_cache"
     yarn run build:linux:internal
