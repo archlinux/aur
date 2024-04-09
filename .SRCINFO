@@ -1,0 +1,13 @@
+pkgbase = rotz
+	pkgdesc = Fully cross platform dotfile manager written in rust.
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://volllly.github.io/rotz/
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	options = !lto
+	source = rotz-0.10.0.tar.gz::https://static.crates.io/crates/rotz/rotz-0.10.0.crate
+	sha256sums = 556ed5c1a1721307a9ccf6ca455cfdd12b148280d0be76b42f237455b825bc88
+
+pkgname = rotz
