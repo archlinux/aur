@@ -29,7 +29,7 @@ prepare() {
 
 package() {
   cd build/StandaloneLinux64
-  find . -type f -exec install -v -Dm 755 "{}" "$pkgdir/opt/$_pkgname/{}" \;
+  find . -type f -exec install -v -Dm 755 "{}" "$pkgdir/opt/$pkgname/{}" \;
 
   mkdir -p $pkgdir/usr/share/icons/hicolor/128x128/apps
   ln -sf /opt/heaven-studio/Heaven\ Studio_Data/Resources/UnityPlayer.png $pkgdir/usr/share/icons/hicolor/128x128/apps/heaven-studio.png
