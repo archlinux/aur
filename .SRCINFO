@@ -1,7 +1,7 @@
 pkgbase = python-werkzeug2
 	pkgdesc = Swiss Army knife of Python web development. Compatible with Odoo 17
 	pkgver = 2.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://werkzeug.palletsprojects.com/
 	arch = any
 	license = custom:BSD
@@ -16,6 +16,7 @@ pkgbase = python-werkzeug2
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-flit-core
+	makedepends = python-wheel
 	depends = python-markupsafe
 	conflicts = python-werkzeug
 	source = https://github.com/pallets/werkzeug/archive/2.0.2/python-werkzeug-2.0.2.tar.gz
