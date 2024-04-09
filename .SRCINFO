@@ -1,6 +1,6 @@
-pkgbase = clink
+pkgbase = clink-git
 	pkgdesc = Clean URLs copied to clipboard
-	pkgver = 0.7.1
+	pkgver = 0.7.1.r0.2bcd77f
 	pkgrel = 1
 	url = https://github.com/Lurk/clink
 	arch = x86_64
@@ -9,7 +9,9 @@ pkgbase = clink
 	makedepends = cargo
 	makedepends = libxcb
 	makedepends = libxkbcommon
-	source = clink-0.7.1.tar.gz::https://github.com/Lurk/clink/archive/refs/tags/0.7.1.tar.gz
-	b2sums = b57738e524219eb63f5dd3730d2c98b9fe515aace7ce9b653a7a21574adb36857d102e08f16c03082070aedee351348fb1a92e4a65188afcc81c6be51fca84d1
+	provides = clink=0.7.1.r0.2bcd77f
+	conflicts = clink
+	source = git+https://github.com/Lurk/clink.git
+	b2sums = SKIP
 
-pkgname = clink
+pkgname = clink-git
