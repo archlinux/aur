@@ -3,14 +3,13 @@
 _pkgname=statip
 _pkgver=0.2.3
 pkgname=r-${_pkgname,,}
-pkgver=0.2.3
-pkgrel=4
-pkgdesc='Statistical Functions for Probability Distributions and Regression'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Statistical Functions for Probability Distributions and Regression"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-clue
 )
 optdepends=(
@@ -18,14 +17,15 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('56a81a1882856cd1c5711ba133417b64f09071dda356e74280a0dba0db60d54f')
+md5sums=('afa8bc4b690cf4a275a785800dda055a')
+b2sums=('e999d52b7f14383d1755cda1621b382914a0d8f5c26187a7245c776e7b9978485de493d134ddd654dab4042fbc1bab87ce1531631f946cb5e27b05564e4ad035')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
