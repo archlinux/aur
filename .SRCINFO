@@ -1,0 +1,13 @@
+pkgbase = gohash
+	pkgdesc = Calculate a files SHA256 sum with 1 command
+	pkgver = 1
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	depends = go
+	depends = git
+	depends = wget
+	source = https://github.com/VPeti1/CWAcces/raw/main/gohash.tar.gz
+	sha256sums = 00fdb7b019ce012167f49be9188611f13bcaa0d7304103fdd7816e30b4e5069b
+
+pkgname = gohash
