@@ -1,7 +1,11 @@
-# Maintainer: Daniel Menelkir <dmenelkir@gmail.com>
-# Maintainer: Donovan Glover <https://donovan.is/>
+# Maintainer: Sergey A. <murlakatamenka@disroot.org>
+#
+# Ex-maintainers:
+#   - Daniel Menelkir <dmenelkir@gmail.com>
+#   - Donovan Glover <https://donovan.is>
+
 pkgname=hyprdim
-pkgver=2.2.2
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="Automatically dim windows in Hyprland when switching between them"
 arch=('x86_64')
@@ -10,24 +14,38 @@ license=('GPL3')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/donovanglover/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('549257dbcb1b64c2090b3ea171b6a2aef4591f322d26c55be87d1d6456fbd913')
+
+prepare() {
+    cd "$pkgname-$pkgver"
+
+    export RUSTUP_TOOLCHAIN=stable
+
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
-  cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
 
-  cargo build --release --locked
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+
+    cargo build --release --frozen
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
 
-  install -Dm755 "target/release/hyprdim" "$pkgdir/usr/bin/hyprdim"
+    install -Dm 755 'target/release/hyprdim' -t "$pkgdir/usr/bin"
 
-  install -Dm644 "target/completions/_hyprdim" "$pkgdir/usr/share/zsh/site-functions/_hyprdim"
-  install -Dm644 "target/completions/hyprdim.bash" "$pkgdir/usr/share/bash-completion/completions/hyprdim"
-  install -Dm644 "target/completions/hyprdim.fish" "$pkgdir/usr/share/fish/vendor_completions.d/hyprdim.fish"
-  install -Dm644 "target/man/hyprdim.1" "$pkgdir/usr/share/man/man1/hyprdim.1"
+    # shell completions
+    install -Dm 644 'target/completions/_hyprdim' -t "$pkgdir/usr/share/zsh/site-functions/_hyprdim"
+    install -Dm 644 'target/completions/hyprdim.bash' -t "$pkgdir/usr/share/bash-completion/completions"
+    install -Dm 644 'target/completions/hyprdim.fish' -t "$pkgdir/usr/share/fish/vendor_completions.d"
 
-  install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    # docs
+    install -Dm 644 'target/man/hyprdim.1' -t "$pkgdir/usr/share/man/man1"
+    install -Dm 644 'README.md' -t "$pkgdir/usr/share/doc/$pkgname"
+
+    install -Dm 644 'LICENSE' -t "$pkgdir/usr/share/licenses/$pkgname"
 }
