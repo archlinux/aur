@@ -1,17 +1,17 @@
-# Maintainer:
+# Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 # Contributor: Vincent Bernardoff <vb@luminar.eu.org>
 
 pkgname=yyjson
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A high performance JSON library written in ANSI C"
 arch=('x86_64')
-url="https://ibireme.github.io/yyjson/"
+url="https://ibireme.github.io/yyjson"
 license=('MIT')
 depends=('glibc')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ibireme/yyjson/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b2e39ac4c65f9050820c6779e6f7dd3c0d3fed9c6667f91caec0badbedce00f3')
+sha256sums=('59902bea55585d870fd7681eabe6091fbfd1a8776d1950f859d2dbbd510c74bd')
 
 build() {
     cmake -B build -S "${pkgname}-${pkgver}" \
