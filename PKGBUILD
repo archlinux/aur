@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=kodi-addon-jellyfin
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Synchronize your media on your Jellyfin server to the native Kodi database.'
 url='https://github.com/jellyfin/jellyfin-kodi'
@@ -10,7 +10,7 @@ depends=('kodi' 'python-kodi_six' 'python-dateutil' 'python-requests' 'python-si
 groups=('kodi-addons')
 makedepends=('unzip' 'python-yaml')
 arch=('any')
-sha256sums=('098e6156b0ff64be3dbd712bda6e9c461351d7b21fa1bf1e615fa7ee2e973da7')
+sha256sums=('72cc3b429eecad3a1a00cc8ff8737290daff6a67a4af0d5a3bfa21d935a3c950')
 source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
 _srcdir="jellyfin-kodi-${pkgver}"
