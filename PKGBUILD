@@ -1,6 +1,6 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=megabasterd-git
-pkgver=7.74.r2.77542e971
+pkgver=8.21.r0.fc03de1d3
 pkgrel=1
 pkgdesc="MEGA.nz downloader/uploader/streaming suite"
 arch=("any")
