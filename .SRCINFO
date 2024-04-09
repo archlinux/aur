@@ -1,16 +1,22 @@
 pkgbase = encrypted-dns
 	pkgdesc = A modern encrypted DNS server (DNSCrypt v2, Anonymized DNSCrypt, DoH)
-	pkgver = 0.9.1.r3.0deb4f4d0b
+	pkgver = 0.9.15
 	pkgrel = 1
 	url = https://github.com/DNSCrypt/encrypted-dns-server
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	backup = etc/encrypted-dns/encrypted-dns.toml
-	source = encrypted-dns-0.9.1.r3.0deb4f4d0b.tar.gz::https://github.com/DNSCrypt/encrypted-dns-server/archive/0deb4f4d0bac6647414d2c61d4c2c1585044f587.tar.gz
+	makedepends = make
+	options = !lto
+	backup = var/lib/encrypted-dns/encrypted-dns.toml
+	source = encrypted-dns-0.9.15.tar.gz::https://github.com/DNSCrypt/encrypted-dns-server/archive/refs/tags/0.9.15.tar.gz
 	source = encrypted-dns.service
-	sha256sums = 0fc0ffb66d610bd6f78e11d31efbb04288295c11b08c77a78d6fc075a39d1578
-	sha256sums = 6de2ead853fc3de465ebcb3bd9e26edbb361c9dcc1afa3703eb0c8ce05d28676
+	source = encrypted-dns-sysusers.conf
+	source = encrypted-dns-tmpfiles.conf
+	sha256sums = 2579e51e0ccdaab0cd2cfa1716d6d72a22f689b286648df03691a052336e796a
+	sha256sums = 5f819e7faa3c8775f62fd2fa23d3d2e85de223015111a67e11e3e46ee9d6f7c1
+	sha256sums = 158f60a15356ec45aed4c27a0264d8520969f8aa19b2117f7e969c958f71c502
+	sha256sums = 2981c6e78d272e404a51a19155ed9158321079ffc3d9de58750767e5b9159e6d
 
 pkgname = encrypted-dns
