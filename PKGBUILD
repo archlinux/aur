@@ -2,9 +2,9 @@
 _pkgname=yesplaymusic
 pkgname="my-${_pkgname}-bin"
 _appname=YesPlayMusic
-pkgver=0.4.16
+pkgver=0.4.16_3
 _electronversion=13
-pkgrel=2
+pkgrel=1
 pkgdesc="A third party music player for Netease Music.高颜值的第三方网易云播放器，支持本地音乐播放、离线歌单、桌面歌词、Touch Bar歌词、Mac状态栏歌词显示。"
 arch=(
     'aarch64'
@@ -24,18 +24,18 @@ conflicts=(
 depends=(
     "electron${_electronversion}-bin"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
-source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_armv7l.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}_${pkgver//_3/}_arm64.deb")
+source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}_${pkgver//_3/}_armv7l.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}_${pkgver//_3/}_amd64.deb")
 source=(
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/stark81/my_yesplaymusic/v${pkgver}/LICENSE"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/stark81/my_yesplaymusic/v${pkgver//_/-}/LICENSE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c33378c6fd12e6d040cedd06dc0d1bedfca74fd66bc46cc2cf10cc10e0906be6'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('671644d212bc2a46bc271d8b4ba2ccc83e52cddca7e33367fd86c60d21546620')
-sha256sums_armv7h=('0956b9c88904d82a6f7d3b438844777ec8ea14a85ece9ccec48c26576167537e')
-sha256sums_x86_64=('48b0f9755241284de982304df03deca45ec6f399aa655e55d46b07c15f699fd9')
+sha256sums_aarch64=('09e78e2caa3e12d0d79e04571bb18dcf23932c51796cbc74f46f0132646f5c4d')
+sha256sums_armv7h=('c5776fdf445aec2859feaa8d874cdc281bb829987dfb5c026cda176f34cb6d0f')
+sha256sums_x86_64=('cb9bf64cb1109560f428b6da3fb9d168362bd9762f84c8b71061eaaf604f4ff7')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
