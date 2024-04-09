@@ -1,0 +1,18 @@
+pkgbase = halflife
+	pkgdesc = Half Life powered by the xash3d-fwgs engine. NOTE: You will need to own the game so it can import the game files from your Half Life game file.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/half-life1
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = xash3d-fwgs-bin
+	depends = wget
+	depends = unzip
+	depends = yad
+	depends = zenity
+	source = https://gitlab.com/half-life1/halflife/-/archive/1.0.0/halflife-1.0.0.tar.bz2
+	sha256sums = SKIP
+
+pkgname = halflife
