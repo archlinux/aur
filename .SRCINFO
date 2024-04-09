@@ -1,7 +1,7 @@
 pkgbase = clink
-	pkgdesc = Url cleaner
+	pkgdesc = Clean URLs copied to clipboard
 	pkgver = 0.4.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/Lurk/clink
 	arch = x86_64
 	arch = x86_64_v3

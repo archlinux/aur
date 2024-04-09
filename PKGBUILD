@@ -2,8 +2,8 @@
 # Contributor: Sergey Bargamon <sergey@bargamon.ru>
 pkgname=clink
 pkgver=0.4.1
-pkgrel=5
-pkgdesc="Url cleaner"
+pkgrel=6
+pkgdesc="Clean URLs copied to clipboard"
 arch=("x86_64" "x86_64_v3")
 url="https://github.com/Lurk/clink"
 license=("MIT")
