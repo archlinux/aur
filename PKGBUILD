@@ -1,11 +1,11 @@
 # Maintainer: acidicX
 pkgname=kodi-addon-pvr-waipu
-pkgver=20.11.0
+pkgver=21.5.0
 pkgrel=1
 pkgdesc='Waipu.tv PVR Plugin for Kodi'
-_koditarget=Nexus
+_koditarget=Omega
 _gitname=pvr.waipu
-_kodiver=20.3
+_kodiver=21.0
 arch=('any')
 url="https://github.com/flubshi/${_gitname}"
 license=('GPL')
@@ -17,8 +17,8 @@ depends=('kodi' 'kodi-addon-script-module-inputstreamhelper')
 source=("https://github.com/flubshi/${_gitname}/archive/${pkgver}-${_koditarget}.tar.gz"
         "https://github.com/xbmc/xbmc/archive/${_kodiver}-${_koditarget}.tar.gz"
 )
-sha256sums=('f43a7ac762b2c8bb7c2a66dc7d2a577fad92119bb4418867ce22369b96b18f8c'
-            '1dbf1d9f4d5eeeb6aa2593813703343a8a377e88a00c68226354e4d67467f64d')
+sha256sums=('c595fa830f56b265a94de5a33dd50bdd8ae068ebe0797dd15220ba52adf04fda'
+            '7f54c1fd8456ac46221fbc85e447362bdc209163c6cb19fca98d106560071b7c')
 prepare() {
         cd xbmc-${_kodiver}-${_koditarget}
         mkdir -p "cmake/addons/addons/${_gitname}/"
