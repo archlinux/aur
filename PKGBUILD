@@ -2,7 +2,7 @@
 # Contributor: Blackleg <blackleg@openaliasbox.org>
 
 pkgname=ca-certificates-fnmt
-pkgver=20240317
+pkgver=20240409
 pkgrel=1
 pkgdesc='Spanish Fabrica Nacional de Moneda y Timbre (FNMT) y Real Casa de la Moneda (RCM) certificates'
 arch=('any')
@@ -59,8 +59,8 @@ sha256sums=(
   'ee81b63c1f8761a1875f197c8b0f53b8dd4e87533756b9b63504b56f8a1a5c55'
   '2fafc47838bb09da94ecfdbaa999d14303c44d0d680685efae03fb2c84179ee5'
   '2ac88ecd7f70bbee01fbd5d7290bc07bb57e5f885ae871a6eadee9d1f069475f'
-  'f657d5413727807f0f140420700bad226259031544524d37848626252fef1334'
-  'dbb48cd3754d315341d14697e8608c76910f406fd4eb6ef357e042498c89a557'
+  '797a960349282702090b8e083d827eab94fea3824d23402ebf2df42c4573b806'
+  '2dd5b347c0bba8fedb40b0cdbaf6581ced46fa3b2e68a6bf98dee3423171c35f'
   'b03f7cc682d2f0a7c1d195692cc0de4c35ad017294955d35f6eb743fe78595f3'
   '5d93e19f26bcdcc9744f3f342a7d09b3d4d11f3e2dfd4c6079821625878be10a'
   'baf597d97d16bc697f8eb2a1e20ce68c08ad11024f9b1f5264271c1525eeb500'
