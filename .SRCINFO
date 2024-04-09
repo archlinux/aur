@@ -1,36 +1,36 @@
 pkgbase = linux-versioned-bin
 	pkgdesc = The Linux kernel and modules | repackaged with a unique package name for each version
-	pkgver = 6.8.2.arch2
+	pkgver = 6.8.4.arch1
 	pkgrel = 1
 	url = https://github.com/archlinux/linux
 	arch = x86_64
 	license = GPL2
-	noextract = linux-6.8.2.arch2-1-x86_64.pkg.tar.zst
-	noextract = linux-headers-6.8.2.arch2-1-x86_64.pkg.tar.zst
-	noextract = linux-docs-6.8.2.arch2-1-x86_64.pkg.tar.zst
+	noextract = linux-6.8.4.arch1-1-x86_64.pkg.tar.zst
+	noextract = linux-headers-6.8.4.arch1-1-x86_64.pkg.tar.zst
+	noextract = linux-docs-6.8.4.arch1-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://mirror.aarnet.edu.au/pub/archlinux/core/os/x86_64/linux-6.8.2.arch2-1-x86_64.pkg.tar.zst
-	source = https://mirror.aarnet.edu.au/pub/archlinux/core/os/x86_64/linux-headers-6.8.2.arch2-1-x86_64.pkg.tar.zst
-	source = https://mirror.aarnet.edu.au/pub/archlinux/core/os/x86_64/linux-docs-6.8.2.arch2-1-x86_64.pkg.tar.zst
-	sha256sums = c392312f216bc695160d1eec6fcfe194c05d38f3dc90586d4484d112d0283224
-	sha256sums = cb7a1f4d89a242d503670d53b3b043ac15fefc9769bcfa4ffea04b8466a1a462
-	sha256sums = 5dc14f9ea5105ed31694439011d05e0777654013c3e228e7fcaec4c23b7b1f4a
+	source = https://mirror.aarnet.edu.au/pub/archlinux/core/os/x86_64/linux-6.8.4.arch1-1-x86_64.pkg.tar.zst
+	source = https://mirror.aarnet.edu.au/pub/archlinux/core/os/x86_64/linux-headers-6.8.4.arch1-1-x86_64.pkg.tar.zst
+	source = https://mirror.aarnet.edu.au/pub/archlinux/core/os/x86_64/linux-docs-6.8.4.arch1-1-x86_64.pkg.tar.zst
+	sha256sums = e567e3eb5734fc0cea6450bf132a0a7e9768453dd085c517ff1528ecd8268202
+	sha256sums = a4c69ae6f014e8daf6afd4b21c92fa1e5ae1b297d8757c7dd88b38b54f0f097b
+	sha256sums = ccc3b1ed3abe81aad9bb1d31d659ad3c769d0d0d16bdcdfde07ee664914d71eb
 
 pkgname = linux-versioned-bin
-	pkgdesc = Metapackage depending on linux6.8.2.arch2-1-bin
-	depends = linux6.8.2.arch2-1-bin
+	pkgdesc = Metapackage depending on linux6.8.4.arch1-1-bin
+	depends = linux6.8.4.arch1-1-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-versioned-headers-bin
-	pkgdesc = Metapackage depending on linux6.8.2.arch2-1-headers-bin
-	depends = linux6.8.2.arch2-1-headers-bin
+	pkgdesc = Metapackage depending on linux6.8.4.arch1-1-headers-bin
+	depends = linux6.8.4.arch1-1-headers-bin
 
 pkgname = linux-versioned-docs-bin
-	pkgdesc = Metapackage depending on linux6.8.2.arch2-1-docs-bin
-	depends = linux6.8.2.arch2-1-docs-bin
+	pkgdesc = Metapackage depending on linux6.8.4.arch1-1-docs-bin
+	depends = linux6.8.4.arch1-1-docs-bin
 
-pkgname = linux6.8.2.arch2-1-bin
-	pkgdesc = The Linux kernel and modules, version 6.8.2-arch2-1
+pkgname = linux6.8.4.arch1-1-bin
+	pkgdesc = The Linux kernel and modules, version 6.8.4-arch1-1
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
@@ -43,11 +43,11 @@ pkgname = linux6.8.2.arch2-1-bin
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
-pkgname = linux6.8.2.arch2-1-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux kernel 6.8.2-arch2-1
+pkgname = linux6.8.4.arch1-1-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux kernel 6.8.4-arch1-1
 	depends = pahole
 	conflicts = linux-headers
 
-pkgname = linux6.8.2.arch2-1-docs-bin
-	pkgdesc = Documentation for the Linux kernel 6.8.2-arch2-1
+pkgname = linux6.8.4.arch1-1-docs-bin
+	pkgdesc = Documentation for the Linux kernel 6.8.4-arch1-1
 	conflicts = linux-docs
