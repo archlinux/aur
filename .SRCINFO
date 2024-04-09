@@ -1,0 +1,13 @@
+pkgbase = python-super-mario
+	pkgdesc = a improved supermario game
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/marblexu/PythonPlantsVsZombies
+	arch = any
+	license = MIT
+	makedepends = python-installer
+	depends = python-pygame
+	source = https://files.pythonhosted.org/packages/py3/s/super_mario/super_mario_game-0.0.1-py3-none-any.whl
+	sha256sums = b85da52d7bf06dda1eb8fd35d951bf1576e2bdd94bb2f6442e776a3f66373b0c
+
+pkgname = python-super-mario
