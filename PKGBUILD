@@ -1,23 +1,22 @@
-# Maintainer: XandrCopyrighted <xxandrr@proton.me>
+# Maintainer: XDR <xxdr@duck.com>
 
 pkgname="discordrpc-v2"
-pkgver=2.0
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Fast Discord RPC Client written in Rust. - XDR's fork"
 arch=('any')
-url="https://codeberg.org/XDR/DiscordRPC"
+url="https://gitlab.com/XDRwastaken/DiscordRPC"
 license=('GPL3')
 
 source=(
-	"https://codeberg.org/XDR/DiscordRPC/releases/download/v2/discordrpc.tar.xz"
-	"https://codeberg.org/XDR/DiscordRPC/raw/branch/main/LICENSE"
+	"https://gitlab.com/XDRwastaken/archived/-/raw/main/DiscordRPC/discordrpc_0.2.6.tar.xz"
+	"https://gitlab.com/XDRwastaken/DiscordRPC/-/raw/main/LICENSE"
 )
 sha256sums=(
 	'SKIP'
 	'SKIP'
 )
 
-provides=("discordrpc")
 conflicts=("discordrpc")
 
 package() {
