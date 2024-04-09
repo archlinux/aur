@@ -1,0 +1,17 @@
+pkgbase = libultrahdr-git
+	pkgdesc = Codec for the Ultra HDR format (git version)
+	pkgver = 1.0.0.r103.g74993de
+	pkgrel = 1
+	url = https://github.com/google/libultrahdr/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	depends = libjpeg
+	provides = libultrahdr
+	conflicts = libultrahdr
+	source = git+https://github.com/google/libultrahdr.git
+	sha256sums = SKIP
+
+pkgname = libultrahdr-git
