@@ -2,7 +2,7 @@
 pkgname=minedigger-bin
 _pkgname=MineDigger
 pkgver=1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Simple match-3 game prototype for Linux, Windows and Android"
 arch=('x86_64')
 url="https://play.google.com/store/apps/details?id=com.neodesys.minedigger"
@@ -28,7 +28,7 @@ build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -f -n -q --categories="Game" --name ="${_pkgname}" --exec="${pkgname%-bin} %U"
+    gendesk -f -n -q --categories="Game" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
