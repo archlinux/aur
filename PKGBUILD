@@ -2,12 +2,12 @@
 # shellcheck shell=bash disable=SC2034,SC2164
 
 pkgname=lib32-vulkan-nouveau-git
-pkgdesc="Nouveau Vulkan (NVK) EXPERIMENTAL Mesa driver with some additions (32-bit Git version)"
-pkgver=24.0.branchpoint.r3625.g44cfc57
+pkgdesc="Nouveau Vulkan (NVK) Mesa driver with some additions (32-bit Git version)"
+pkgver=24.0.branchpoint.r4572.ge2bcbcd
 pkgrel=1
 arch=('x86_64')
 depends=('lib32-libdrm' 'lib32-libxshmfence' 'lib32-libx11' 'lib32-systemd' 'lib32-vulkan-icd-loader' 'lib32-wayland')
-makedepends=('elfutils' 'git' 'glslang' 'lib32-libunwind' 'lib32-libxrandr' 'lib32-rust-libs' 'meson>=1.3.0rc2'
+makedepends=('cbindgen' 'elfutils' 'git' 'glslang' 'lib32-libunwind' 'lib32-libxrandr' 'lib32-rust-libs' 'meson>=1.3.0rc2'
              'python-mako' 'rust-bindgen' 'systemd' 'wayland-protocols' 'xorgproto' 'zstd')  # -rc1 has weird crate issues
 optdepends=('lib32-vulkan-mesa-layers: Additional Vulkan layers'
             'linux>=6.6.arch1: Minimum required kernel for new uAPI support')
@@ -52,8 +52,8 @@ pkgver() {
 }
 
 build() {
-  # Auto-download Rust crates for NAK (removes extra code for crate handling)
-  _nak_crate="--force-fallback-for=syn"
+  # Auto-download Rust crates for NAK/NIL (removes extra code for crate handling)
+  _nvk_crate="--force-fallback-for=paste,syn"
 
   # HACK: Remove crate .rlib files before build
   # (This prevents build errors after a Rust update: https://github.com/mesonbuild/meson/issues/10706)
@@ -65,7 +65,7 @@ build() {
     --cross-file lib32 \
     --reconfigure \
     --wrap-mode=nofallback \
-    ${_nak_crate} \
+    ${_nvk_crate} \
     -D b_ndebug=false \
     -D platforms=x11,wayland \
     -D gallium-drivers= \
@@ -83,7 +83,7 @@ build() {
     -D gbm=disabled \
     -D gles1=disabled \
     -D gles2=disabled \
-    -D glvnd=false \
+    -D glvnd=disabled \
     -D glx=disabled \
     -D libunwind=enabled \
     -D llvm=disabled \
@@ -92,8 +92,7 @@ build() {
     -D shared-glapi=disabled \
     -D microsoft-clc=disabled \
     -D valgrind=disabled \
-    -D android-libbacktrace=disabled \
-    -D intel-rt=disabled
+    -D android-libbacktrace=disabled
 
   meson compile -C build
 }
