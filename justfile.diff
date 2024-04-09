@@ -14,7 +14,7 @@
      {{ make }} -C xdg-desktop-portal-cosmic all
  
 -install rootdir="" prefix="/usr/local": build
-+install: build
++install:
      {{ just }} rootdir={{rootdir}} prefix={{prefix}} cosmic-applets/install
      {{ just }} rootdir={{rootdir}} prefix={{prefix}} cosmic-applibrary/install
      {{ just }} rootdir={{rootdir}} prefix={{prefix}} cosmic-bg/install

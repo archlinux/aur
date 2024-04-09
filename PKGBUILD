@@ -133,7 +133,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'c220eb96dec5c48908860aae3b6858dbcdf584944ae230f958416bf872642f86')
+            '5a642677504184fd2b4957aa3ce6596d426083dd17f5bba2217e882975d599d9')
 
 pkgver() {
   cd cosmic-epoch

@@ -132,6 +132,6 @@ pkgbase = cosmic-epoch-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = c220eb96dec5c48908860aae3b6858dbcdf584944ae230f958416bf872642f86
+	sha256sums = 5a642677504184fd2b4957aa3ce6596d426083dd17f5bba2217e882975d599d9
 
 pkgname = cosmic-epoch-git
