@@ -1,4 +1,4 @@
-pkgname="Rosary"
+pkgname=rosary
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Yet another yogurt. Pacman wrapper and AUR helper written in go."
