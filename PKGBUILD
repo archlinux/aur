@@ -1,13 +1,13 @@
 # Maintainer: Sean Teo <sawntoe@gmail.com>
 
 pkgname='redeclipse-dev'
-pkgver=v2.0.0.r1746.ga70a6a3
+pkgver=v2.0.0.r3251.gdb2e788
 pkgrel=1
 pkgdesc='Developmental version of Redeclipse, a free and open source movement based shooter'
 arch=('x86_64')
 url='https://github.com/redeclipse/base.git'
 license=("ZLIB" "CCPL:by-sa" "CCPL:by" "custom")
-makedepends=(ed sdl2_mixer sdl2_image enet git)
+makedepends=(ed sdl2_mixer sdl2_image enet git openal)
 depends=(sdl2_image sdl2_mixer enet hicolor-icon-theme)
 #provides=(redeclipse)
 conflicts=(redeclipse)
