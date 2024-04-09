@@ -3,7 +3,7 @@
 pkgname=python-werkzeug2
 _pkgname=python-werkzeug
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Swiss Army knife of Python web development. Compatible with Odoo 17'
 url='https://werkzeug.palletsprojects.com/'
 arch=('any')
@@ -13,6 +13,7 @@ makedepends=('python-build' 'python-installer' 'python-flit-core')
 checkdepends=('python-pytest' 'python-pytest-timeout' 'python-pytest-xprocess' 'python-requests'
               'python-ephemeral-port-reserve' 'python-greenlet' 'python-watchdog'
               'python-cryptography')
+conflicts=('python-werkzeug')
 source=("https://github.com/pallets/werkzeug/archive/${pkgver}/$_pkgname-$pkgver.tar.gz"
          https://github.com/pallets/werkzeug/commit/4e5bdca7.patch)
 b2sums=('15506d57a8545eb45cb0f4efb78bcc4dfc1faa68910f09dfdd14f4bbb2404078247a7f61475c5fff9058a1557f7f6541eec262fb274e7ed82e1a82b9f644cf8b'
