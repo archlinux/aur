@@ -1,0 +1,24 @@
+pkgbase = xfb
+	pkgdesc = Open-source Radio Automation
+	pkgver = 1.23
+	pkgrel = 1
+	url = https://github.com/netpack/XFB
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = qt5-tools
+	depends = qt5-webkit
+	depends = qt5-multimedia
+	depends = perl-image-exiftool
+	depends = ffmpeg
+	depends = soundconverter
+	depends = lame
+	depends = sox
+	depends = mplayer
+	depends = audacity
+	depends = mediainfo
+	source = https://github.com/netpack/XFB/releases/download/v1.23/xfb-1.23.tar.gz
+	sha512sums = b92a5a48a64a26b5c43c0d696736328fd17cb7a65aa85c9bda9b4bc45a8bd0ff05644767e10547dac0c2a57f81f4d1356c5c34db860f3731f49b2e4c2e01a656
+
+pkgname = xfb
