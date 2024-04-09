@@ -1,18 +1,17 @@
 pkgbase = gtkhash-nemo-git
-	pkgdesc = A Nemo filemanager plugin for computing message digests or checksums (development version).
-	pkgver = v1.4.r64.g3afea16
+	pkgdesc = Nemo filemanager plugin for computing message digests or checksums
+	pkgver = 1.5.r35.ge85ab4d
 	pkgrel = 1
-	url = https://github.com/tristanheaven/gtkhash
-	arch = i686
+	url = https://github.com/gtkhash/gtkhash
 	arch = x86_64
+	arch = i686
 	license = GPL2
 	makedepends = git
-	depends = gtkhash-git
 	depends = nemo
+	depends = gtkhash-git
 	provides = gtkhash-nemo
 	conflicts = gtkhash-nemo
-	source = gtkhash::git+https://github.com/tristanheaven/gtkhash.git
-	md5sums = SKIP
+	source = git+https://github.com/gtkhash/gtkhash.git
+	sha256sums = SKIP
 
 pkgname = gtkhash-nemo-git
-

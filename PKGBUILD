@@ -1,34 +1,43 @@
-# Maintainer: carstene1ns - https://git.io/ctPKG
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: carstene1ns - https://git.io/ctPKG
 
 pkgname=gtkhash-nemo-git
-pkgver=v1.4.r64.g3afea16
+pkgver=1.5.r35.ge85ab4d
 pkgrel=1
-pkgdesc='A Nemo filemanager plugin for computing message digests or checksums (development version).'
-arch=('i686' 'x86_64')
-url='https://github.com/tristanheaven/gtkhash'
-license=('GPL2')
-makedepends=('git')
-depends=('gtkhash-git' 'nemo')
-conflicts=("${pkgname%-git}")
-provides=("${pkgname%-git}")
-source=(gtkhash::"git+https://github.com/tristanheaven/gtkhash.git")
-md5sums=('SKIP')
+pkgdesc="Nemo filemanager plugin for computing message digests or checksums"
+arch=(x86_64 i686)
+url="https://github.com/gtkhash/gtkhash"
+license=(GPL2)
+depends=(nemo gtkhash-git)
+makedepends=(git)
+conflicts=(gtkhash-nemo)
+provides=(gtkhash-nemo)
+source=("git+https://github.com/gtkhash/gtkhash.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd gtkhash
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
-  git describe --long --tags | sed 's/-/.r/;s/-/./'
+prepare() {
+  cd gtkhash
+  ./autogen.sh
 }
 
 build() {
   cd gtkhash
+  ./configure \
+    --prefix=/usr \
+    --disable-schemas-compile \
+    --disable-gtkhash \
+    --enable-nemo \
+    --enable-linux-crypto \
+    --enable-nettle
 
-  ./autogen.sh
-  ./configure --prefix=/usr --disable-schemas-compile --disable-gtkhash \
-              --enable-linux-crypto --enable-nettle --enable-nemo
   make
 }
 
 package() {
-  make -C gtkhash/src/nautilus DESTDIR="$pkgdir/" install
+  make -C gtkhash/src/nautilus DESTDIR="${pkgdir}" install
 }
