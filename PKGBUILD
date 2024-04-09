@@ -2,7 +2,7 @@
 
 _name=hat-juggler
 pkgname=python-$_name
-pkgver=0.6.12
+pkgver=0.6.14
 pkgrel=1
 pkgdesc="Juggler communication protocol"
 url="https://github.com/hat-open/hat-juggler"
@@ -11,11 +11,11 @@ arch=('any')
 depends=('python-aiohttp' 'python-hat-aio' 'python-hat-json' 'python-hat-util')
 makedepends=('python-build' 'python-hat-doit' 'python-installer')
 source=("https://github.com/hat-open/hat-juggler/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a06a1a8410f5cc0455596325d43263ebb8c510b320c11441b7ba20ad96726d35')
+sha256sums=('dea73a69189a85b583263e64e9bf25219b688710b0d0e96b89ea9fd1fca17876')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
-    sed -i -e 's/"aiohttp ~= 3.8.4"/"jsonschema >=3.8.4"/' pyproject.toml
+    sed -i -e 's/"aiohttp ~=3.8.4"/"aiohttp >=3.8.4"/' pyproject.toml
     python -m build --wheel --no-isolation
 }
 
