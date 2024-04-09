@@ -2,18 +2,18 @@
 
 pkgname=clipmenu-git
 _gitname=clipmenu
-pkgver=6.2.0.r19.g87e1641
+pkgver=6.2.0.r24.ga6e9d85
 pkgrel=1
 pkgdesc='Clipboard management using dmenu'
 url='http://github.com/cdown/clipmenu'
-arch=('any')
-license=('Public Domain')
-depends=(dmenu xsel clipnotify)
+arch=(any)
+license=('MIT')
+depends=(dmenu libx11 libxfixes)
 provides=(clipmenu)
 conflicts=(clipmenu)
 makedepends=(git)
 
-source=(git+https://github.com/cdown/clipmenu.git)
+source=('git+https://github.com/cdown/clipmenu.git#branch=develop')
 md5sums=('SKIP')
 
 pkgver() {
@@ -22,19 +22,6 @@ pkgver() {
 }
 
 package() {
-    install -D -m755 \
-        "${srcdir?}/$_gitname/clipmenu" \
-        "${pkgdir?}/usr/bin/clipmenu"
-    install -D -m755 \
-        "${srcdir?}/$_gitname/clipmenud" \
-        "${pkgdir?}/usr/bin/clipmenud"
-    install -D -m755 \
-        "${srcdir?}/$_gitname/clipdel" \
-        "${pkgdir?}/usr/bin/clipdel"
-    install -D -m755 \
-        "${srcdir?}/$_gitname/clipctl" \
-        "${pkgdir?}/usr/bin/clipctl"
-    install -D -m644 \
-        "${srcdir?}/$_gitname/init/clipmenud.service" \
-        "${pkgdir?}/usr/lib/systemd/user/clipmenud.service"
+    cd "${srcdir?}/$_gitname"
+    make install PREFIX="${pkgdir?}/usr"
 }
