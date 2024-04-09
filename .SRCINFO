@@ -7,7 +7,7 @@ pkgbase = xfetch-bin
 	license = MIT
 	conflicts = xfetch
 	source = https://gitlab.com/XDRwastaken/archived/-/raw/main/xFetch/xfetch_2.1.2.tar.gz
-	source = https://gitlab.com/XDRwastaken/xFetch/-/raw/main/LICENSE?ref_type=heads
+	source = https://gitlab.com/XDRwastaken/xFetch/-/raw/main/LICENSE
 	sha256sums = SKIP
 	sha256sums = SKIP
 

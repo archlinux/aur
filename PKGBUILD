@@ -10,7 +10,7 @@ license=('MIT')
 
 source=(
 	"https://gitlab.com/XDRwastaken/archived/-/raw/main/xFetch/xfetch_2.1.2.tar.gz"
-	"https://gitlab.com/XDRwastaken/xFetch/-/raw/main/LICENSE?ref_type=heads"
+	"https://gitlab.com/XDRwastaken/xFetch/-/raw/main/LICENSE"
 )
 sha256sums=(
 	'SKIP'
