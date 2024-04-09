@@ -1,7 +1,7 @@
 pkgbase = r-bspm
 	pkgdesc = Bridge to System Package Manager
 	pkgver = 0.5.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=bspm
 	arch = any
 	license = MIT

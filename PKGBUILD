@@ -5,7 +5,7 @@ _pkgname=bspm
 _pkgver=0.5.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Bridge to System Package Manager"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -39,6 +39,9 @@ build() {
   mkdir build dbus
   R CMD INSTALL -l build "$_pkgname" \
       --configure-vars="BUILD_ROOT=$srcdir/dbus"
+
+  # compile python bytecode
+  python -m compileall -o 0 -o 1 -s build -p /usr/lib/R/library "build/$_pkgname/service"
 }
 
 check() {
