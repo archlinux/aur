@@ -1,12 +1,12 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgbase=minijinja
 pkgname=(
   minijinja-cli
   python-minijinja
 )
-pkgver=1.0.16
-_commit=c79857653c5b64983e1d57cae25bb48f9c8795c9
+pkgver=1.0.17
+_commit=7cc4ce9502ad99fbe622df92fb4afe57510bb829
 pkgrel=1
 pkgdesc="A powerful but minimal dependency template engine for Rust compatible with Jinja/Jinja2"
 url="https://github.com/mitsuhiko/minijinja"
@@ -23,7 +23,7 @@ makedepends=(
 )
 checkdepends=(python-pytest)
 source=("git+$url.git#commit=$_commit")
-sha256sums=('60a753b5008df38f8eadc5757b08b83c6f09c05206d5a374b774f7f4ae832163')
+sha256sums=('b0280e7f4c94d38be815dcbbe84944964cb6f94153de407e0f601f68dad5dbb3')
 
 _archive="$pkgbase"
 
@@ -35,8 +35,6 @@ pkgver() {
 
 prepare() {
   cd "$_archive"
-
-  sed -i 's|maturin>=0.15,<0.16|maturin>=0.15|' minijinja-py/pyproject.toml
 
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
@@ -51,7 +49,7 @@ build() {
 
   cd minijinja-py
 
-  python -m build --wheel --no-isolation
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 check() {
