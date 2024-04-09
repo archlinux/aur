@@ -1,9 +1,10 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Jan Oliver Oelerich <janoliver@oelerich.org>
 pkgname=uwsgitop-git
-pkgver=20230511
+pkgver=20240401
 pkgrel=1
 pkgdesc="uWSGI stats viewer"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://github.com/unbit/uwsgitop.git"
 license=('GPL')
 depends=('python2')
