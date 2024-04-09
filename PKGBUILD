@@ -4,12 +4,12 @@ pkgname=clink
 pkgver=0.4.1
 pkgrel=1
 pkgdesc="Url cleaner"
+arch=("x86_64")
 url="https://github.com/Lurk/clink"
 license=("MIT")
+makedepends=("cargo" "git")
 source=("git+$url#tag=$pkgver")
 md5sums=("SKIP")
-arch=("x86_64")
-makedepends=("cargo" "git")
 
 build() {
     cd $pkgname
