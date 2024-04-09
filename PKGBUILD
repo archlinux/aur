@@ -3,7 +3,7 @@
 pkgname=vilearn-git
 _pkgname=vilearn
 pkgver=r10.00ee4a4
-pkgrel=1
+pkgrel=2
 pkgdesc="An interactive vi tutorial (git version)"
 arch=('any')
 url="https://git.sr.ht/~libele/vilearn"
