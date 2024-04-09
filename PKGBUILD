@@ -1,6 +1,6 @@
 # Maintainer: drpebcak <tayworm@gmail.com>
 pkgname='gptscript'
-pkgver="v0.2.1"
+pkgver="v0.4.2"
 pkgrel=1
 pkgdesc="Scripting AI for fun and profit"
 arch=('x86_64')
