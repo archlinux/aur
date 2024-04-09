@@ -99,6 +99,8 @@ function execApp() {
 		--bind "${busDir}/bus" "${XDG_RUNTIME_DIR}/bus" \
 		--ro-bind "${XDG_RUNTIME_DIR}/pulse" \
 			"${XDG_RUNTIME_DIR}/pulse" \
+		--ro-bind-try "${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}" \
+			"${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}" \
 		--bind "${XDG_DOCUMENTS_DIR}"/WeChat_Data "${HOME}" \
 		--ro-bind-try "${XAUTHORITY}" "${XAUTHORITY}" \
 		--unshare-all \
