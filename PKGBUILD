@@ -3,8 +3,8 @@
 _pkgname=scikit-hep-testdata
 pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}")
-pkgver=0.4.25
-pkgrel=2
+pkgver=0.4.43
+pkgrel=1
 pkgdesc='A common package to provide example files (e.g. ROOT) for testing and developing packages against'
 arch=('any')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm' 'python-toml')
@@ -14,7 +14,7 @@ url="https://github.com/scikit-hep/${_pkgname}"
 license=('BSD')
 
 source=("${_pkgname}-${pkgver}::git+${url}#tag=v${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('13f208d241d59723f001d9721b75b07bcd103478849cd6e7eee139a12074279d')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"

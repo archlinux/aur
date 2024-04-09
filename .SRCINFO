@@ -1,0 +1,21 @@
+pkgbase = python-scikit-hep-testdata
+	pkgdesc = A common package to provide example files (e.g. ROOT) for testing and developing packages against
+	pkgver = 0.4.43
+	pkgrel = 1
+	url = https://github.com/scikit-hep/scikit-hep-testdata
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	makedepends = python-toml
+	depends = python-pyaml
+	depends = python-requests
+	depends = python-importlib_resources
+	source = scikit-hep-testdata-0.4.43::git+https://github.com/scikit-hep/scikit-hep-testdata#tag=v0.4.43
+	sha256sums = 13f208d241d59723f001d9721b75b07bcd103478849cd6e7eee139a12074279d
+
+pkgname = python-scikit-hep-testdata
