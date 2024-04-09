@@ -1,7 +1,7 @@
 pkgbase = python-pymc
 	pkgdesc = Markov chain Monte Carlo for Python
 	pkgver = 5.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pymc-devs/pymc
 	arch = any
 	license = MIT
@@ -14,7 +14,6 @@ pkgbase = python-pymc
 	depends = python-arviz
 	depends = python-cachetools
 	depends = python-cloudpickle
-	depends = python-dm-tree
 	depends = python-graphviz
 	depends = python-matplotlib
 	depends = python-networkx

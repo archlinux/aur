@@ -4,7 +4,7 @@
 pkgname=python-pymc
 _pkgname=${pkgname#python-}
 pkgver=5.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Markov chain Monte Carlo for Python"
 arch=(any)
 url="https://github.com/pymc-devs/pymc"
@@ -15,7 +15,6 @@ depends=(
   python-arviz
   python-cachetools
   python-cloudpickle
-  python-dm-tree # Missing dep to python-arviz
   python-graphviz
   python-matplotlib
   python-networkx
