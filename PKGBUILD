@@ -2,8 +2,8 @@
 # Maintainer: Specter119 <spcter119 AT gmail.com>
 
 pkgname=jupyter-lsp
-pkgver=2.2.4
-pkgrel=3
+pkgver=2.2.5
+pkgrel=1
 pkgdesc="Multi-Language Server WebSocket proxy for Jupyter Notebook/Lab server."
 arch=(any)
 url="https://github.com/jupyter-lsp/jupyterlab-lsp"
@@ -23,7 +23,7 @@ optdepends=(
   vscode-json-languageserver
   yaml-language-server)
 source=("$url/archive/refs/tags/$pkgname-$pkgver.tar.gz")
-sha256sums=('adf6536a5198119ea2541b0fa793b251c6f231d12baf7959b7a0e7e71c50636c')
+sha256sums=('22ecda5d95ea6d0f1f313c24c0ef78f255bc53826ebeb9706f39660414b74f20')
 
 build() {
   cd jupyterlab-lsp-$pkgname-$pkgver/python_packages/jupyter_lsp
