@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=piclist-bin
 _pkgname=PicList
-pkgver=2.8.0
+pkgver=2.8.1
 _electronversion=22
 pkgrel=1
 pkgdesc="A cloud storage platform management and file upload tool based on PicGo, which has been deeply redeveloped.一款云储存/图床管理和文件上传客户端工具,基于PicGo深度二次开发."
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Kuingsmile/PicList/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('abd335806c862b175ded65bab6fd1304b00cb335b174677e413b8d552350a4b5'
+sha256sums=('b8a22b900b11ddec9bbff73dd8496a72bcc29319a16a064affd0f99c727b41e9'
             'cddebc59798c76d191fc65eb4176d960e4e157177c9d81db80eaff8d84d86a1c'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
