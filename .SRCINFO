@@ -1,6 +1,6 @@
 pkgbase = python-unimpeded
 	pkgdesc = Universal model comparison & parameter estimation over diverse datasets
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/handley-lab/unimpeded
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-unimpeded
 	depends = python-pandas
 	provides = unimpeded
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/u/unimpeded/unimpeded-0.2.2.tar.gz
-	sha256sums = 1a6d860d68de7f71b0227e7f4bbf3e6c962ccfa2ab269c9a22997a4a8a1fe990
+	source = https://files.pythonhosted.org/packages/source/u/unimpeded/unimpeded-0.2.3.tar.gz
+	sha256sums = 382949fdf06d96d345f1730c70a4270e0a851876041d33b197cc94338c62a576
 
 pkgname = python-unimpeded
