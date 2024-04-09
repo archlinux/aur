@@ -1,7 +1,7 @@
 # Maintainer: Gaël PORTAY <gael.portay@gmail.com>
 
 pkgname=iamroot-s390x
-pkgver=20
+pkgver=21
 pkgrel=1
 pkgdesc='Emulating the syscall chroot(2) in an unpriviliged process (s390x)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('s390x-z13-glibc-bleeding-edge-toolchain'
 checkdepends=('shellcheck')
 options=('!strip')
 source=("https://github.com/gportay/${pkgname%-s390x}/archive/v$pkgver.tar.gz")
-sha256sums=('27c3019135fce9359a7e7ff6abb0501108c4881e6c57609f4c14d0fb91f17eec')
+sha256sums=('3bbdc8b53a4e1e0a88d2aa281fd85bd4e3653c7634060d6b7442c932dae03b07')
 validpgpkeys=('8F3491E60E62695ED780AC672FA122CA0501CA71')
 
 prepare() {
@@ -25,7 +25,7 @@ prepare() {
 
 build() {
 	cd "${pkgname%-s390x}-$pkgver"
-	make CFLAGS= PREFIX=/usr s390x/libiamroot.so.1
+	make CFLAGS=-DJIM_REGEXP PREFIX=/usr s390x/libiamroot.so.1
 }
 
 check() {
@@ -36,5 +36,6 @@ check() {
 package() {
 	cd "${pkgname%-s390x}-$pkgver"
 	make PREFIX=/usr DESTDIR="$pkgdir" install-exec-s390x.1
+	make PREFIX=/usr DESTDIR="$pkgdir" install-support-s390x
 	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
