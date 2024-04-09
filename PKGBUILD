@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=quanteda
-_pkgver=4.0.0
+_pkgver=4.0.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -50,9 +50,9 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "skip-tests.patch")
-md5sums=('b6116adb5b3a35f38a20869f55564626'
+md5sums=('f8b69c814a53717725f91ae2afd3f173'
          'fd46ba9ed33ccf9a5ae1e79737fd5c21')
-b2sums=('dd76426a99f09beef483af2a4b592d2b59350afb62089f85e98e0c0bc29c937f386721725d392e7db7ed18affd46a59eb4b0d3ce8a2bc8744dc8c8df461c2ec1'
+b2sums=('89ca735403064e1a012e6615e471494ad4e59a303ad1d808e353053887874813287ee6031ef86b19d078286995e15441864313949b06833368ed78077bb5f21e'
         'a8123128d9c00cf99f8d3d059886c2c3a5a175deca05f8281f3db2e0b01f418e7e5cfaf7fe0f8f0fe4c5dd7db262b07c15062b5267a65b74d7b80719740b10e8')
 
 prepare() {
