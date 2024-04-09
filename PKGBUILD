@@ -21,9 +21,9 @@
 
 _basename=clapper
 pkgname="${_basename}-git"
-pkgver=r1128.e481487
+pkgver=r1134.48b5a7c
 pkgrel=1
-pkgdesc="A GNOME media player built using GJS with GTK4 toolkit and powered by GStreamer with OpenGL rendering."
+pkgdesc="A modern media player powered by GStreamer and built for the GNOME desktop environment."
 arch=(any)
 url="https://github.com/Rafostar/clapper"
 license=("GPL-3.0 and LGPL-2.1")
