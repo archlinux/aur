@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=COTAN
-_pkgver=2.2.3
+_pkgver=2.2.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="COexpression Tables ANalysis"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(GPL3)
+license=('GPL-3.0-only')
 depends=(
   r-assertthat
   r-biocsingular
@@ -59,8 +59,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a3d6f259a1ad5ac8203558ca7e61a91b')
-b2sums=('a0e97f4c4d0d22a5172533f21d83b667c7a999f37f0dff1bdf95d842b2dcd16683c7eb456dfaac4278f5d759f665cef671d8a313639c549fe0c1f50ac07546a2')
+md5sums=('9bf9209fe9feef0c69493cff1ab4ed24')
+b2sums=('0729ec6acbd58c05567f2801d9fe7104be2846b051bc83aa7559b9d0658534587870d5fb585560e0efffca2089639200b69bb1e9ed58abd7dcc30eab09b4b2e4')
 
 build() {
   mkdir build
