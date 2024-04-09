@@ -13,13 +13,15 @@
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
-pkgver=7.1.1.29
+pkgver=7.1.1.30
 pkgrel=1
 arch=('x86_64')
 _qdepth='32'
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all possible features)"
 url='https://www.imagemagick.org/'
-license=('LicenseRef-custom')
+license=('LicenseRef-Custom')
+# fails to detect libwmf
+# https://github.com/ImageMagick/ImageMagick/issues/7230
 makedepends=(
     # official repositories:
         'perl' 'jbigkit' 'opencl-headers' 'glu' 'ghostpcl' 'ghostxps'
@@ -27,14 +29,14 @@ makedepends=(
         'lcms2' 'libraqm' 'liblqr' 'fftw' 'libxml2' 'fontconfig' 'freetype2' 'libxext'
         'libx11' 'bzip2' 'zlib' 'libltdl' 'djvulibre' 'libraw'
         'graphviz' 'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango'
-        'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
+        'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp'
         'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip' 'libjxl' 'highway'
     # AUR:
-        'dmalloc' 'flif' 'libfpx' 'libumem-git' 'magickcache-git'
+        'dmalloc' 'flif' 'libfpx' 'libultrahdr-git' 'libumem-git' 'magickcache-git'
 )
 source=("https://imagemagick.org/archive/releases/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.xz"{,.asc}
         'arch-fonts.diff')
-sha256sums=('f140465fbeb0b4724cba4394bc6f6fb32715731c1c62572d586f4f1c8b9b0685'
+sha256sums=('ec192780d09da7d7b1e7a374a19f97d69cceb4e5e83057515cd595eda233a891'
             'SKIP'
             '290c6a87845b419459fb552c0e7dcd81fbeafcecc370818d442fedf4d315b7fb')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A')  # Lexie Parsimoniae
@@ -47,6 +49,8 @@ prepare() {
 build() {
     cd "ImageMagick-${pkgver%.*}-${pkgver##*.}"
     export CFLAGS+=' -I/usr/include/FLIF'
+    local _perldir
+    _perldir="$(perl -V:vendorarch | sed "s/^vendorarch='//;s/'\;$//")"
     
     ./configure \
         --prefix='/usr' \
@@ -65,7 +69,7 @@ build() {
         --with-quantum-depth="${_qdepth}" \
         --with-magick-plus-plus \
         --with-perl \
-        --with-perl-options='INSTALLDIRS=vendor' \
+        --with-perl-options="INSTALLDIRS=vendor INSTALLVENDORARCH=${_perldir} INSTALLVENDORMAN3DIR=/usr/share/man/man3" \
         --without-jemalloc \
         --without-mtmalloc \
         --without-tcmalloc \
@@ -100,8 +104,9 @@ build() {
         --with-raw \
         --with-rsvg \
         --with-tiff \
+        --with-uhdr \
         --with-webp \
-        --with-wmf \
+        --without-wmf \
         --with-xml \
         --with-dejavu-font-dir='/usr/share/fonts/TTF' \
         --with-gs-font-dir='/usr/share/fonts/gsfonts' \
@@ -127,10 +132,10 @@ package_imagemagick-full() {
             'jbigkit' 'lcms2' 'libraqm' 'liblqr' 'fftw' 'libxml2' 'fontconfig' 'freetype2'
             'libxext' 'libx11' 'bzip2' 'zlib' 'libltdl' 'djvulibre' 'libraw'
             'graphviz' 'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango'
-            'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
+            'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp'
             'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip' 'libjxl'
         # AUR:
-            'dmalloc' 'flif' 'libfpx' 'libumem-git' 'magickcache-git'
+            'dmalloc' 'flif' 'libfpx' 'libultrahdr-git' 'libumem-git' 'magickcache-git'
     )
     optdepends=('imagemagick-full-doc: manual and API docs')
     backup=("etc/ImageMagick-${pkgver%%.*}"/{colors,delegates,log,mime,policy,quantization-table,thresholds,type-{apple,dejavu,ghostscript,urw-base35,windows}}.xml)
