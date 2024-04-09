@@ -1,6 +1,6 @@
 pkgbase = mvfst
 	pkgdesc = An implementation of the QUIC transport protocol
-	pkgver = 2024.04.01.00
+	pkgver = 2024.04.08.00
 	pkgrel = 1
 	url = https://github.com/facebook/mvfst
 	arch = x86_64
@@ -58,7 +58,7 @@ pkgbase = mvfst
 	provides = libmvfst_transport.so
 	provides = libmvfst_transport_knobs.so
 	provides = libmvfst_transport_settings_functions.so
-	source = mvfst-2024.04.01.00.tar.gz::https://github.com/facebook/mvfst/archive/v2024.04.01.00.tar.gz
-	sha256sums = e39c4d7dd87520fcce6a3d5d398b5d03bd3e680186b9b0db23f02b502c6bcb1e
+	source = mvfst-2024.04.08.00.tar.gz::https://github.com/facebook/mvfst/archive/v2024.04.08.00.tar.gz
+	sha256sums = f0745b81ec5fefd53ca43f6d399108e88264b8e14e329b47eba64f3872982160
 
 pkgname = mvfst
