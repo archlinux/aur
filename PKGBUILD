@@ -1,14 +1,14 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=filebrowser
-pkgver=2.26.0
+pkgver=2.28.0
 pkgrel=1
 pkgdesc="Standalone web file manager"
 arch=(x86_64)
 url="https://filebrowser.org/"
 license=(Apache)
 depends=(glibc)
-makedepends=(git go npm go.rice)
+makedepends=(git go nodejs-lts-iron npm go.rice)
 source=("git+https://github.com/filebrowser/filebrowser.git#tag=v${pkgver}"
         "filebrowser@.service")
 sha512sums=('SKIP'
