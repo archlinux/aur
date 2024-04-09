@@ -1,7 +1,7 @@
 pkgbase = python-hat-doit
 	pkgdesc = Hat build utility functions
-	pkgver = 0.15.7
-	pkgrel = 2
+	pkgver = 0.15.13
+	pkgrel = 1
 	url = https://github.com/hat-open/hat-doit
 	arch = any
 	license = Apache
@@ -19,7 +19,8 @@ pkgbase = python-hat-doit
 	depends = python-pytest-timeout
 	depends = python-sphinx
 	depends = python-tomli
-	source = https://github.com/hat-open/hat-doit/archive/refs/tags/v0.15.7.tar.gz
-	sha256sums = 7f8e49f14ed0ebe2628bdba7e4f6917bc8078a540edd1cedcab2c48ca4d41eec
+	depends = python-watchdog
+	source = https://github.com/hat-open/hat-doit/archive/refs/tags/v0.15.13.tar.gz
+	sha256sums = 121e316d8c8b096aab7bc5e8c2eb5babfbf8e66acd8fd2cb52a93bfa1216f400
 
 pkgname = python-hat-doit
