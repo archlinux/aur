@@ -1,44 +1,49 @@
-# Maintainer: Caleb Fontenot foley2431 (at) gmail.com
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Caleb Fontenot foley2431 (at) gmail.com
+
 pkgname=pcsx-rearmed-git
-pkgver=r23.r98.g8987ee2
+pkgver=r1638.67c020ee
 pkgrel=1
-pkgdesc="Playstation 1 Emulator. Optimized for ARM."
-arch=('x86_64' 'aarch64')
-license=('GPL-2.0')
-makedepends=()
-#depends=('perl')
-source=("git+https://github.com/notaz/pcsx_rearmed.git")
-md5sums=('SKIP')
+pkgdesc="Playstation 1 Emulator, optimized for ARM."
+arch=(x86_64 aarch64 armv7h)
+url=https://github.com/notaz/pcsx_rearmed
+license=(GPL-2.0)
+depends=(sdl12-compat alsa-lib libpng libpulse glibc zlib)
+makedepends=(git zip)
+source=("git+https://github.com/notaz/pcsx_rearmed.git"
+        "git+https://github.com/notaz/libpicofe.git"
+        "git+https://github.com/notaz/warm.git"
+        "git+https://github.com/rtissera/libchdr.git")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
   cd "$srcdir/pcsx_rearmed"
-
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-        cd "$srcdir/pcsx_rearmed"
-        #export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
-        git submodule init
-        git submodule update
+  cd "$srcdir/pcsx_rearmed"
+  git submodule init
+  git config submodule.frontend/libpicofe.url "${srcdir}/libpicofe"
+  git config submodule.frontend/warm.url "${srcdir}/warm"
+  git config submodule.libchdr.url "${srcdir}/libchdr"
+  git -c protocol.file.allow=always submodule update
 }
 
-
 build() {
-        cd "$srcdir/pcsx_rearmed"
-        ./configure
-        make rel $MAKEFLAGS
+  cd "$srcdir/pcsx_rearmed"
+  ./configure
+  make rel $MAKEFLAGS
 }
 
 package() {
-        cd "$srcdir/"
-        rm -v pcsx_rearmed/*.zip
-        #mkdir -p $srcdir/pcsx
-        mv -v pcsx_rearmed/pcsx_rearmed_* $srcdir/PCSX
-        mkdir -p $pkgdir/opt
-        mkdir -p $pkgdir/usr/bin
-        cp -rv PCSX $pkgdir/opt/PCSX
-        ln -sf /opt/PCSX/pcsx pcsx
-        mv -v pcsx $pkgdir/usr/bin/pcsx
-        #make DESTDIR="" install
+  cd "$srcdir/pcsx_rearmed"
+  rm -v *.zip
+  install -d $pkgdir/usr/bin
+  install -d $pkgdir/opt/pcsx
+  cp -rv pcsx_rearmed_*/* $pkgdir/opt/pcsx
+  ln -s /opt/pcsx/pcsx ${pkgdir}/usr/bin/pcsx
 }
