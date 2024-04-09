@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -96,7 +96,7 @@ if(${ENABLE_TESTS})
+   endif()
+ endif()
+ 
+-add_library(ultrahdr STATIC
++add_library(ultrahdr SHARED
+   "${SRC_DIR}/gainmapmath.cpp"
+   "${SRC_DIR}/icc.cpp"
+   "${SRC_DIR}/jpegr.cpp"

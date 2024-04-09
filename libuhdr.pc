@@ -1,0 +1,11 @@
+prefix=/usr
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: libuhdr
+Description: Library for encoding and decoding ultrahdr images
+Version: 1.0
+Requires.private: libjpeg
+Cflags: -I${includedir}
+Libs: -L${libdir} -luhdr
+Libs.private: 

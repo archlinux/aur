@@ -1,0 +1,37 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -67,24 +67,7 @@ ADD_SUBDIRECTORY("${SRC_DIR}/third_party
+ 
+ include(ExternalProject)
+ 
+-function(fetch_libjpegturbo)
+-  ExternalProject_Add(libjpeg-turbo
+-      GIT_REPOSITORY https://github.com/libjpeg-turbo/libjpeg-turbo.git
+-      GIT_TAG 3.0.1
+-      PREFIX ${SRC_DIR}/third_party/build/libjpeg-turbo
+-      SOURCE_DIR ${SRC_DIR}/third_party/libjpeg-turbo
+-      TMP_DIR ${SRC_DIR}/third_party/build/libjpeg-turbo/tmp
+-      BUILD_COMMAND ${CMAKE_COMMAND} --build <BINARY_DIR> --config $<CONFIG> --target jpeg-static
+-      CMAKE_ARGS -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}
+-                 -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+-      INSTALL_COMMAND ""
+-  )
+-  set(JPEG_INCLUDE_DIRS
+-      ${SRC_DIR}/third_party/libjpeg-turbo/
+-      ${SRC_DIR}/third_party/build/libjpeg-turbo/src/libjpeg-turbo-build PARENT_SCOPE)
+-  set(JPEG_LIBRARIES
+-      ${SRC_DIR}/third_party/build/libjpeg-turbo/src/libjpeg-turbo-build/libjpeg.a PARENT_SCOPE)
+-endfunction()
++find_package(JPEG 3.0.1 REQUIRED)
+ 
+ function(fetch_googletest)
+   ExternalProject_Add(googletest
+@@ -106,8 +89,6 @@ function(fetch_googletest)
+       ${SRC_DIR}/third_party/build/googletest/src/googletest-build/lib/libgtest_main.a PARENT_SCOPE)
+ endfunction()
+ 
+-fetch_libjpegturbo()
+-
+ if(${ENABLE_TESTS})
+   find_package(GTest)
+   if(NOT GTest_FOUND)
