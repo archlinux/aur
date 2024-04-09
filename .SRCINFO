@@ -1,6 +1,6 @@
 pkgbase = fbthrift
 	pkgdesc = Facebook's branch of Apache Thrift, including a new C++ server
-	pkgver = 2024.04.01.00
+	pkgver = 2024.04.08.00
 	pkgrel = 1
 	url = https://github.com/facebook/fbthrift
 	arch = x86_64
@@ -43,9 +43,9 @@ pkgbase = fbthrift
 	provides = libtransport.so
 	options = !emptydirs
 	options = !lto
-	source = fbthrift-2024.04.01.00.tar.gz::https://github.com/facebook/fbthrift/archive/v2024.04.01.00.tar.gz
+	source = fbthrift-2024.04.08.00.tar.gz::https://github.com/facebook/fbthrift/archive/v2024.04.08.00.tar.gz
 	source = remove-python-six-dependency-from-cmake-files.patch
-	sha256sums = e408a973a59a37def97a8e0ec368ee9fa39c8d49c925ecf7335f1c0463c1a819
+	sha256sums = 6a0082f49a22c1dbfa4248c37703922a1e5b0efc7dcc952191f91d4ffe24b22f
 	sha256sums = bedcf4d00d08263a943d0878b9a0fe68c0fafebd33b5445ae35f84a3e92540ec
 
 pkgname = fbthrift

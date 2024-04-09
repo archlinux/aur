@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=fbthrift
-pkgver=2024.04.01.00
+pkgver=2024.04.08.00
 pkgrel=1
 pkgdesc="Facebook's branch of Apache Thrift, including a new C++ server"
 arch=(x86_64)
@@ -58,7 +58,7 @@ source=(
   "remove-python-six-dependency-from-cmake-files.patch"
 )
 sha256sums=(
-  'e408a973a59a37def97a8e0ec368ee9fa39c8d49c925ecf7335f1c0463c1a819'
+  '6a0082f49a22c1dbfa4248c37703922a1e5b0efc7dcc952191f91d4ffe24b22f'
   'bedcf4d00d08263a943d0878b9a0fe68c0fafebd33b5445ae35f84a3e92540ec'
 )
 
