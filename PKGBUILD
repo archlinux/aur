@@ -2,7 +2,7 @@
 
 pkgname=flipperbit
 pkgver=0.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Corrupted files generator. Random bits flipper.'
 url='https://crates.io/crates/flipperbit'
 arch=('x86_64')
@@ -19,12 +19,12 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  cargo build --frozen --release
+  cargo build --frozen --release --all-features
 }
 
 check() {
   cd $pkgname-$pkgver
-  cargo test --frozen
+  cargo test --frozen --all-features
 }
 
 package() {
