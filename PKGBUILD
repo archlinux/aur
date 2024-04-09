@@ -2,21 +2,20 @@
 
 _name=hat-json
 pkgname=python-$_name
-pkgver=0.5.21
+pkgver=0.5.27
 pkgrel=1
 pkgdesc="Hat JSON library"
 url="https://github.com/hat-open/hat-json"
 license=('Apache')
 arch=('any')
 depends=('python-hat-util' 'python-jsonpatch' 'python-jsonschema'
-         'python-yaml' 'python-tomli' 'python-tomli-w')
+         'python-yaml' 'python-referencing' 'python-tomli' 'python-tomli-w')
 makedepends=('python-build' 'python-hat-doit' 'python-installer')
 source=("https://github.com/hat-open/hat-json/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9a416325b6bbef3d90d86193794e203373b2e365c209d51558430dd9c9164e7d')
+sha256sums=('574b1399acf2371b8d8ebe6c6e8d896c6320623b51ec7b3cfe566988c6b2aaea')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
-    sed -i -e 's/"jsonschema ~=4.17.3"/"jsonschema >=4.17.3"/' pyproject.toml
     python -m build --wheel --no-isolation
 }
 
