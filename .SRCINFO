@@ -1,0 +1,13 @@
+pkgbase = neco-git
+	pkgdesc = Concurrency library for C (coroutines)
+	pkgver = r1.ee209f7
+	pkgrel = 1
+	url = https://github.com/tidwall/neco
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = libneco.so=r1.ee209f7
+	source = neco-git-r1.ee209f7::git+https://github.com/tidwall/neco
+	sha256sums = SKIP
+
+pkgname = neco-git
