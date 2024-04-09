@@ -1,4 +1,4 @@
-pkgbase = Rosary
+pkgbase = rosary
 	pkgdesc = Yet another yogurt. Pacman wrapper and AUR helper written in go.
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -16,4 +16,4 @@ pkgbase = Rosary
 	source = Rosary-1.0.0_x86_64.tar.gz::https://github.com/RoseBlume/Rosary-Bible-App/releases/download/Debianv1.0-1/Rosary-1.0.0_x86_64.tar.gz
 	sha256sums = 4a1f2c2248fe0383624e841560f3b6a989bf1442fbba3ef8606e2003510ec86e
 
-pkgname = Rosary
+pkgname = rosary
