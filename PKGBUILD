@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _appname=ooniprobe
 pkgname="${_appname}-desktop-bin"
-_pkgname=OONI-Probe-desktop
-pkgver=3.9.4
+_pkgname=OONI-Probe
+pkgver=3.9.5
 _electronversion=12
-pkgrel=3
+pkgrel=1
 pkgdesc="The next generation OONI Probe desktop app"
 arch=('x86_64')
 url="https://github.com/ooni/probe-desktop"
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/ooni/probe-desktop/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e9138bccb09ecd9be3e120bbe9db6f7b30a4ba920ef28482b2c5569dbeb867a7'
+sha256sums=('fd4c95519d963beb674d2f8c4da02e9a5b4585b2820a370943c2cb9287b98c3d'
             '1fc3f6a8bf2909bfaad6d6f4825c8e8b6dfed17e3b5270a9fd060d6de7938f8d'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
