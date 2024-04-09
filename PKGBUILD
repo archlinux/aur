@@ -4,7 +4,7 @@ pkgname=python-scramp
 pkgver=1.4.4
 # curl $(curl https://api.github.com/repos/tlocke/scramp/git/ref/tags/$pkgver | jq -r .object.url) | jq -r .object.sha
 _commit=10a1f8491247b13f6e87a6a05ab0cc6b9288b6ac
-pkgrel=3
+pkgrel=4
 pkgdesc="Python implementation of the SCRAM protocol"
 arch=(any)
 url='https://github.com/tlocke/scramp'
