@@ -1,6 +1,6 @@
 # Maintainer: Tavian Barnes <tavianator@tavianator.com>
 pkgname=bfs-git
-pkgver=3.0.2.r23.1c775d0
+pkgver=3.1.3.r34.c31577d
 pkgrel=1
 pkgdesc="A breadth-first version of find."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -26,6 +26,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${pkgname%-git}"
+	make config
 	make
 }
 

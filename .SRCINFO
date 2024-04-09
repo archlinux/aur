@@ -1,6 +1,6 @@
 pkgbase = bfs-git
 	pkgdesc = A breadth-first version of find.
-	pkgver = 3.0.2.r23.1c775d0
+	pkgver = 3.1.3.r34.c31577d
 	pkgrel = 1
 	url = https://github.com/tavianator/bfs
 	arch = i686
