@@ -1,5 +1,5 @@
 pkgbase = goddos
-	pkgdesc = Add DDossing utility made in Go
+	pkgdesc = A simple DDossing utility made in Go
 	pkgver = 1
 	pkgrel = 1
 	arch = x86_64

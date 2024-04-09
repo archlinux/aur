@@ -6,7 +6,7 @@ pkgrel=1
 arch=('x86_64')
 
 license=('GPL3')
-pkgdesc="Add DDossing utility made in Go"
+pkgdesc="A simple DDossing utility made in Go"
 
 depends=('go' 'git' 'wget')
 
