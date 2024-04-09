@@ -45,7 +45,6 @@ prepare() {
 
   for x in ${source[@]}; do
     [[ $x == *.patch ]] || continue
-    msg "Applying $x"
     patch -Np1 -i "$srcdir"/${x##*/}
   done
 }
