@@ -3,14 +3,13 @@
 _pkgname=monocle
 _pkgver=2.30.1
 pkgname=r-${_pkgname,,}
-pkgver=2.30.1
-pkgrel=1
-pkgdesc='Clustering, differential expression, and trajectory analysis for single- cell RNA-Seq'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Clustering, differential expression, and trajectory analysis for single- cell RNA-Seq"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
-  r
   r-biobase
   r-biocgenerics
   r-biocviews
@@ -28,7 +27,6 @@ depends=(
   r-pheatmap
   r-plyr
   r-proxy
-  r-qlcmatrix
   r-rann
   r-rcpp
   r-reshape2
@@ -48,14 +46,15 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3503b014eb460f7dd9dd56b7e24b4696d672c4f1ea5eca87cd9595de51d16241')
+md5sums=('d958f3bb9af54d59a472f6ee6ddae596')
+b2sums=('06b8938300de4c4d1e482ad2e9fa26a6773ae22c7cdb256799f29a7038dca5a4f50a2365765c1e69a4127d625a66cd3b60b6359a7ccc9631a69e936ea1ee4094')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
