@@ -1,7 +1,7 @@
 pkgbase = python-uhashring
 	pkgdesc = Full featured consistent hashing python library compatible with ketama
 	pkgver = 2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ultrabug/uhashring
 	arch = any
 	license = BSD
