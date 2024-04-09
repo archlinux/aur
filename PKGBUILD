@@ -2,8 +2,8 @@
 # Maintainer: sukanka <su975853527 at gmail dot com>
 
 pkgname=eudic
-pkgver=13.5.1
-_date=2023-11-17
+pkgver=13.5.2
+_date=2024-03-01
 _lang=en
 _flang=English
 pkgrel=1
@@ -18,7 +18,7 @@ depends=(
          )
 source=("${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/${pkgname}.deb?v=${_date}")
 options=('!strip')
-sha512sums=('2cb236b8b1437f8f4fdfba63049ab1800bd93f357fb75baddf9206ee79616ea8780ed0c31955856114fc248155d713f8def52e92c9b6ae6d9ac6e9cad3b04127')
+sha512sums=('941f1b3984b9789162107ed2548fc6f1de2690605b699e87053b912502619348844c35991ca8f6f6c60de8b6176699529a27e37455adcbe2d45bca03be78f3b3')
 
 # sometime use curl to download source deb, throws 404 not found.
 # user other UA instead of origion one fixed it.
