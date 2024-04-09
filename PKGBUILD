@@ -2,8 +2,8 @@
 # -*- sh -*-
 
 pkgname='fuc-bin'
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc='Fast Unix Commands: Modern, performance focused unix commands (pre-compiled)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/SUPERCILEX/fuc'
@@ -40,13 +40,13 @@ package() {
 }
 
 sha256sums_aarch64=(
-  'bbc391228552df08c75ae2ecee1c3c9c236967b199625e92b1f8081114418db2'
-  '9a581b99da4c86103215be4ed19fdeb6e65cd609fed1bd20d92bc65e72577079'
+  '0049d31616d48d0aa0fffe89431d0f2ff7051dd4f42a65e7bdbb762b4a57f897'
+  '09fd21d290dedb9883ac4608631a6373542b74fe7b1d002ea1c03e8b8a19a973'
   'SKIP'
 )
 sha256sums_x86_64=(
-  'f59e768ea8a095bf9fb93a36ecdf55071f9e6dd36111411408318f72ed205c8d'
-  '97ee90c8875e8948595119b3a4b1b4ff339a915d31d0cb51aa52c32eb49361be'
+  'f86b5213f6fc636f57d720ec5cadb298c980ef0228134aae915359602729897c'
+  '53b8ea761593b2fc01ae23e0ba339ce8f375a4ccada613369929e2ab37ce886e'
   'SKIP'
 )
 
