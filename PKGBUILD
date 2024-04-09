@@ -2,7 +2,7 @@
 # Contributor:: Tab Fitts <tfitts [at] spryservers [dot] net>
 
 pkgname=splashtop-business
-pkgver=3.6.4.0
+pkgver=3.6.4.1
 pkgrel=1
 pkgdesc="Splashtop Business. Remotely access your desktop from any device from anywhere!"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('splashtop-business')
 options=('!strip')
 install=${pkgname}.install
 source=("https://download.splashtop.com/linuxclient/${pkgname}_Ubuntu_v${pkgver}_amd64.tar.gz")
-sha256sums=('fdec35ed85555ae060508a89e9bec6c008ba4d7e65102f17b287cdd0dc5d97bb')
+sha256sums=('44495d42a01a160806c10cc7a79e34d0597d5324f00be5e93660c6c8998b6f74')
 
 prepare(){
     ar x splashtop-business_Ubuntu_amd64.deb
