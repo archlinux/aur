@@ -2,7 +2,7 @@
 # Contributor: Florian Maunier <fmauneko@dissidence.ovh>
 
 pkgname=msquic
-pkgver=2.2.4
+pkgver=2.3.0
 pkgrel=1
 epoch=1
 pkgdesc="Microsoft implementation of the IETF QUIC protocol"
@@ -40,14 +40,13 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DQUIC_TLS=openssl3 \
     -DCMAKE_SKIP_INSTALL_RPATH=YES \
-    -DQUIC_BUILD_TEST=YES
+    -DQUIC_BUILD_TEST=NO
 
   cmake --build build
 
 #    -DQUIC_USE_SYSTEM_LIBCRYPTO=ON \
 #CMake Error at submodules/CMakeLists.txt:349 (message):
 #  OpenSSL 3.0 not found, found 3.2.0
-
 }
 
 check() {
