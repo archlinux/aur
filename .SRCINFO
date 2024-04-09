@@ -1,6 +1,6 @@
 pkgbase = fsolauncher-bin
 	pkgdesc = Official FreeSO Launcher made with Electron
-	pkgver = 1.12.1_prod.7
+	pkgver = 1.12.1_prod.8
 	pkgrel = 1
 	url = https://beta.freeso.org/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = fsolauncher-bin
 	depends = electron29
 	conflicts = fsolauncher
 	options = !emptydirs
-	source = fsolauncher-1.12.1_prod.7.deb::https://github.com/ItsSim/fsolauncher/releases/download/1.12.1-prod.7/fsolauncher-1.12.1-prod.7.deb
+	source = fsolauncher-1.12.1_prod.8.deb::https://github.com/ItsSim/fsolauncher/releases/download/1.12.1-prod.8/fsolauncher-1.12.1-prod.8.deb
 	source = fsolauncher.sh
-	sha256sums = 364576dcd2f33cf4153adf69b55b01c6c3a683db2ad1ab84bf8ded8c644b4d53
+	sha256sums = 1ac78b992d13bb96378c10507fa63f4a02588d183dc60e76c1efd9fe9c1e6ae6
 	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = fsolauncher-bin
