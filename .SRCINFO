@@ -1,6 +1,6 @@
 pkgbase = greetd-qtgreet
 	pkgdesc = Qt based greeter for greetd
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://gitlab.com/marcusbritanicus/QtGreet
 	arch = aarch64
@@ -20,8 +20,8 @@ pkgbase = greetd-qtgreet
 	makedepends = dfl-utils-qt6
 	makedepends = mpv
 	makedepends = wlroots
-	source = greetd-qtgreet-2.0.1.tar.gz::https://gitlab.com/marcusbritanicus/QtGreet/-/archive/v2.0.1/QtGreet-v2.0.1.tar.gz
-	sha256sums = 29071a5398f1c97af82eab60496fcee71c2b2c3f2c25a33b82083f1640869cf1
+	source = greetd-qtgreet-2.0.2.tar.gz::https://gitlab.com/marcusbritanicus/QtGreet/-/archive/v2.0.2/QtGreet-v2.0.2.tar.gz
+	sha256sums = a9e79d4ab498b54b02f246e67781a4622049eb77f507a4120e8a12298081d453
 
 pkgname = greetd-qtgreet
 	depends = qt5-base
