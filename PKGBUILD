@@ -4,7 +4,7 @@
 pkgname=python-pg8000
 # https://raw.githubusercontent.com/tlocke/pg8000/main/README.rst
 pkgver=1.30.4
-pkgrel=1
+pkgrel=2
 # curl $(curl https://api.github.com/repos/tlocke/pg8000/git/ref/tags/$pkgver | jq -r .object.url) | jq -r .object.sha
 _commit=f6f416c52af023eb5f6fd38a842d39403a20830b
 pkgdesc="Pure-Python PostgreSQL database driver, DB-API compatible"
