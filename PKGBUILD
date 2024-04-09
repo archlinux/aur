@@ -3,7 +3,7 @@
 
 pkgname=ame
 _pkgname=amethyst
-pkgver=4.0.4
+pkgver=4.0.5
 pkgrel=1
 pkgdesc='Amethyst is a fast and efficient AUR helper'
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ depends=(
 )
 makedepends=('cargo' 'clang' 'lld')
 source=("${url}/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-sha256sums=('1e0d7cc7d9c5d1e8b3e177fe2f89c445dce79d2ee3e450ac057ce3189e982e24')
+sha256sums=('a574cd63911886f87bbdf961ff345840667fe78b17042bec99e0e5888a7b0699')
 
 prepare() {
     cd "${_pkgname}-v${pkgver}"
