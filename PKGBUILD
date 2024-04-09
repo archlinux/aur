@@ -4,7 +4,7 @@ pkgname=xrefactory
 pkgdesc="Professional refactoring tool for C/Java and Emacs"
 url="http://xrefactory.com"
 pkgver=1.6.10
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 license=(custom)
 depends=('glibc' 'gcc')
@@ -41,7 +41,8 @@ source=(
     0034-Fix-Makefile.common.patch
     0035-Fix-clash-with-library-names.patch
     0036-Fix-Elisp-obsolete-functions-2.patch
-    0037-Fix-include-after-macro-expansion.patch)
+    0037-Fix-include-after-macro-expansion.patch
+    0038-Update-bootstrap-macro.patch)
 md5sums=('63e10baa9a5dfce9165570e7c3897701'
          '4791f8a42e53a141ded3bd36e39b3a6d'
          'a00b17df920380afd6689369845acbc8'
@@ -74,7 +75,8 @@ md5sums=('63e10baa9a5dfce9165570e7c3897701'
          '633789164b37a833579fb23b1b16c5f1'
          'ff4ac43651958f8e5f61f19858a87aa7'
          'c84a7d60425c8210c7767c3df99e6d52'
-         '602734cd3b425e3fbec646eab6804aed')
+         '602734cd3b425e3fbec646eab6804aed'
+		 'e92ad6217bfa847f1ebc2aabe88bacf8')
 
 prepare() {
     cd "$srcdir/xref-any"
@@ -110,11 +112,14 @@ prepare() {
     patch --verbose -p1 -i "$srcdir/0035-Fix-clash-with-library-names.patch"
     patch --verbose -p1 -i "$srcdir/0036-Fix-Elisp-obsolete-functions-2.patch"
     patch --verbose -p1 -i "$srcdir/0037-Fix-include-after-macro-expansion.patch"
+    patch --verbose -p1 -i "$srcdir/0038-Update-bootstrap-macro.patch"
     cd "$srcdir/xref-any/doc"
     cat "INSTALL" "readme" "readme2" > README
 }
 
 build() {
+    cd "$srcdir/byacc-1.9"
+    make
     cd "$srcdir/xref-any/src"
     make
 }

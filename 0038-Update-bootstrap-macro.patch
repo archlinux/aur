@@ -1,0 +1,2773 @@
+From c6ed1b935d4ea444c7ffe4b273c1852ecc2d502a Mon Sep 17 00:00:00 2001
+From: Sergei Litvin <litvindev@gmail.com>
+Date: Tue, 9 Apr 2024 15:04:35 +0200
+Subject: [PATCH] Update bootstrap macro
+
+---
+ src/Makefile.common |   44 +-
+ src/enumTxt.c       |   13 +-
+ src/strFill.h       | 2143 ++++++++++++++++++----------------
+ src/strTdef.h       |   28 +-
+ 4 files changed, 1163 insertions(+), 1065 deletions(-)
+
+diff --git a/src/Makefile.common b/src/Makefile.common
+index 7b624cc..5017782 100644
+--- a/src/Makefile.common
++++ b/src/Makefile.common
+@@ -67,28 +67,28 @@ cexp.c: cexp.y
+ 	$(ROOTDIR)/../byacc-1.9/yacc -v cexp.y
+ 	mv y.tab.c cexp.c
+ 
+-strFill.h: proto.h strTdef.h
+-	./xref.bs -task_regime_generate $(COMCFLAGS) proto.h \
+-		-str_fill -header \
+-		> tmpStrFill.h
+-	mv -f tmpStrFill.h strFill.h
+-
+-strTdef.h: proto.h
+-	echo > strTdef.h
+-	./xref.bs -task_regime_generate $(COMCFLAGS) proto.h \
+-		-typedefs -enum_name -header \
+-		> tmpStrTdef.h
+-	mv -f tmpStrTdef.h strTdef.h
+-	./xref.bs -task_regime_generate $(COMCFLAGS) proto.h \
+-		-typedefs -enum_name -header \
+-		> tmpStrTdef.h
+-	mv -f tmpStrTdef.h strTdef.h
+-
+-enumTxt.c: proto.h strFill.h strTdef.h ../doc/_xrefrc
+-	echo "#include \"stdinc.h\"" > enumTxt.c
+-	echo "#include \"proto.h\"  /*SBD*/" >> enumTxt.c
+-	./xref.bs -task_regime_generate $(COMCFLAGS) proto.h \
+-		-enum_name -body >> enumTxt.c
++# strFill.h: proto.h strTdef.h
++# 	./xref.bs -task_regime_generate $(COMCFLAGS) proto.h \
++# 		-str_fill -header \
++# 		> tmpStrFill.h
++# 	mv -f tmpStrFill.h strFill.h
++
++# strTdef.h: proto.h
++# 	echo > strTdef.h
++# 	./xref.bs -task_regime_generate $(COMCFLAGS) proto.h \
++# 		-typedefs -enum_name -header \
++# 		> tmpStrTdef.h
++# 	mv -f tmpStrTdef.h strTdef.h
++# 	./xref.bs -task_regime_generate $(COMCFLAGS) proto.h \
++# 		-typedefs -enum_name -header \
++# 		> tmpStrTdef.h
++# 	mv -f tmpStrTdef.h strTdef.h
++
++# enumTxt.c: proto.h strFill.h strTdef.h ../doc/_xrefrc
++# 	echo "#include \"stdinc.h\"" > enumTxt.c
++# 	echo "#include \"proto.h\"  /*SBD*/" >> enumTxt.c
++# 	./xref.bs -task_regime_generate $(COMCFLAGS) proto.h \
++# 		-enum_name -body >> enumTxt.c
+ 
+ #########################################################################
+ 
+diff --git a/src/enumTxt.c b/src/enumTxt.c
+index 2d3bd09..c15b251 100644
+--- a/src/enumTxt.c
++++ b/src/enumTxt.c
+@@ -263,6 +263,7 @@ char * storagesName[] = {
+ 	"StorageExtern",
+ 	"StorageConstant",
+ 	"StorageStatic",
++	"StorageThreadLocal",
+ 	"StorageTypedef",
+ 	"StorageMutable",
+ 	"StorageRegister",
+@@ -313,6 +314,7 @@ char * typesName[] = {
+ 	"TypeLongSignedInt",
+ 	"TypeFloat",
+ 	"TypeDouble",
++	"TypeBoolean",
+ 	"TypeStruct",
+ 	"TypeUnion",
+ 	"TypeEnum",
+@@ -341,7 +343,6 @@ char * typesName[] = {
+ 	"TypeByte",
+ 	"TypeShort",
+ 	"TypeLong",
+-	"TypeBoolean",
+ 	"TypeNull",
+ 	"TypeOverloadedFunction",
+ 	"TypeReserve7",
+@@ -381,13 +382,6 @@ char * typesName[] = {
+ 	"MAX_TYPE"
+ };
+ 
+-char * __codecvt_resultName[] = {
+-	"__codecvt_ok",
+-	"__codecvt_partial",
+-	"__codecvt_error",
+-	"__codecvt_noconv"
+-};
+-
+ char * refsFilterLevelsName[] = {
+ 	"RFilterAll",
+ 	"RFilterAddrVal",
+@@ -424,6 +418,8 @@ char * miscellaneousName[] = {
+ 	"ACC_CHECK_NO",
+ 	"VISIB_CHECK_YES",
+ 	"VISIB_CHECK_NO",
++	"SEARCH_IN_MEMBERS_YES",
++	"SEARCH_IN_MEMBERS_NO",
+ 	"CUT_OVERRIDEN_YES",
+ 	"CUT_OVERRIDEN_NO",
+ 	"CX_FILE_ITEM_GEN",
+@@ -434,6 +430,7 @@ char * miscellaneousName[] = {
+ 	"CX_HTML_SECOND_PASS",
+ 	"CX_MENU_CREATION",
+ 	"CX_BY_PASS",
++	"CX_BY_PASS2",
+ 	"HTML_GEN",
+ 	"HTML_NO_GEN",
+ 	"MEM_ALLOC_ON_SM",
+diff --git a/src/strFill.h b/src/strFill.h
+index 8f53c4f..e0c069b 100644
+--- a/src/strFill.h
++++ b/src/strFill.h
+@@ -289,12 +289,6 @@
+ 	(XXX)->tv_sec = _ARG_PROJECT_0_2 ARGS;\
+ 	(XXX)->tv_usec = _ARG_PROJECT_1_2 ARGS;\
+ }
+-#define FILL__IO_jump_t(XXX) {\
+-}
+-#define FILLF__IO_jump_t(XXX) {\
+-}
+-#define _FILLF__IO_jump_t(XXX,ARGS) {\
+-}
+ #define FILL_editorUndo(XXX,FARG0,FARG1,FARG2,FARG3,FARG4) {\
+ 	(XXX)->buffer = FARG0;\
+ 	(XXX)->operation = FARG1;\
+@@ -557,24 +551,36 @@
+ 	(XXX)->transPackageMove = _ARG_PROJECT_4_6 ARGS;\
+ 	(XXX)->sclass = _ARG_PROJECT_5_6 ARGS;\
+ }
+-#define FILL_idIdent(XXX,FARG0,FARG1,FARG2) {\
++#define FILL___pthread_internal_slist(XXX,FARG0) {\
++	(XXX)->__next = FARG0;\
++}
++#define FILLF___pthread_internal_slist(XXX,FARG0) {\
++	(XXX)->__next = FARG0;\
++}
++#define _FILLF___pthread_internal_slist(XXX,ARGS) {\
++	(XXX)->__next = _ARG_PROJECT_0_1 ARGS;\
++}
++#define FILL_idIdent(XXX,FARG0,FARG1,FARG2,FARG3) {\
+ 	(XXX)->name = FARG0;\
+ 	(XXX)->sd = FARG1;\
+ 	(XXX)->p = FARG2;\
++	(XXX)->next = FARG3;\
+ }
+-#define FILLF_idIdent(XXX,FARG0,FARG1,FARG2,FARG3,FARG4) {\
++#define FILLF_idIdent(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5) {\
+ 	(XXX)->name = FARG0;\
+ 	(XXX)->sd = FARG1;\
+ 	(XXX)->p.file = FARG2;\
+ 	(XXX)->p.line = FARG3;\
+ 	(XXX)->p.coll = FARG4;\
++	(XXX)->next = FARG5;\
+ }
+ #define _FILLF_idIdent(XXX,ARGS) {\
+-	(XXX)->name = _ARG_PROJECT_0_5 ARGS;\
+-	(XXX)->sd = _ARG_PROJECT_1_5 ARGS;\
+-	(XXX)->p.file = _ARG_PROJECT_2_5 ARGS;\
+-	(XXX)->p.line = _ARG_PROJECT_3_5 ARGS;\
+-	(XXX)->p.coll = _ARG_PROJECT_4_5 ARGS;\
++	(XXX)->name = _ARG_PROJECT_0_6 ARGS;\
++	(XXX)->sd = _ARG_PROJECT_1_6 ARGS;\
++	(XXX)->p.file = _ARG_PROJECT_2_6 ARGS;\
++	(XXX)->p.line = _ARG_PROJECT_3_6 ARGS;\
++	(XXX)->p.coll = _ARG_PROJECT_4_6 ARGS;\
++	(XXX)->next = _ARG_PROJECT_5_6 ARGS;\
+ }
+ #define FILL_bb_typeModifiersListPositionLstPair(XXX,FARG0,FARG1,FARG2) {\
+ 	(XXX)->b = FARG0;\
+@@ -695,18 +701,6 @@
+ }
+ #define _FILLF_sigevent(XXX,ARGS) {\
+ }
+-#define FILL___gconv_info(XXX,FARG0,FARG1) {\
+-	(XXX)->__nsteps = FARG0;\
+-	(XXX)->__steps = FARG1;\
+-}
+-#define FILLF___gconv_info(XXX,FARG0,FARG1) {\
+-	(XXX)->__nsteps = FARG0;\
+-	(XXX)->__steps = FARG1;\
+-}
+-#define _FILLF___gconv_info(XXX,ARGS) {\
+-	(XXX)->__nsteps = _ARG_PROJECT_0_2 ARGS;\
+-	(XXX)->__steps = _ARG_PROJECT_1_2 ARGS;\
+-}
+ #define FILL_macroArgTabElem(XXX,FARG0,FARG1,FARG2) {\
+ 	(XXX)->name = FARG0;\
+ 	(XXX)->linkName = FARG1;\
+@@ -809,6 +803,45 @@
+ 	(XXX)->node = _ARG_PROJECT_0_2 ARGS;\
+ 	(XXX)->sub = _ARG_PROJECT_1_2 ARGS;\
+ }
++#define FILL___pthread_rwlock_arch_t(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7,FARG8,FARG9,FARG10) {\
++	(XXX)->__readers = FARG0;\
++	(XXX)->__writers = FARG1;\
++	(XXX)->__wrphase_futex = FARG2;\
++	(XXX)->__writers_futex = FARG3;\
++	(XXX)->__pad3 = FARG4;\
++	(XXX)->__pad4 = FARG5;\
++	(XXX)->__flags = FARG6;\
++	(XXX)->__shared = FARG7;\
++	(XXX)->__rwelision = FARG8;\
++	(XXX)->__pad2 = FARG9;\
++	(XXX)->__cur_writer = FARG10;\
++}
++#define FILLF___pthread_rwlock_arch_t(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7,FARG8,FARG9,FARG10) {\
++	(XXX)->__readers = FARG0;\
++	(XXX)->__writers = FARG1;\
++	(XXX)->__wrphase_futex = FARG2;\
++	(XXX)->__writers_futex = FARG3;\
++	(XXX)->__pad3 = FARG4;\
++	(XXX)->__pad4 = FARG5;\
++	(XXX)->__flags = FARG6;\
++	(XXX)->__shared = FARG7;\
++	(XXX)->__rwelision = FARG8;\
++	(XXX)->__pad2 = FARG9;\
++	(XXX)->__cur_writer = FARG10;\
++}
++#define _FILLF___pthread_rwlock_arch_t(XXX,ARGS) {\
++	(XXX)->__readers = _ARG_PROJECT_0_11 ARGS;\
++	(XXX)->__writers = _ARG_PROJECT_1_11 ARGS;\
++	(XXX)->__wrphase_futex = _ARG_PROJECT_2_11 ARGS;\
++	(XXX)->__writers_futex = _ARG_PROJECT_3_11 ARGS;\
++	(XXX)->__pad3 = _ARG_PROJECT_4_11 ARGS;\
++	(XXX)->__pad4 = _ARG_PROJECT_5_11 ARGS;\
++	(XXX)->__flags = _ARG_PROJECT_6_11 ARGS;\
++	(XXX)->__shared = _ARG_PROJECT_7_11 ARGS;\
++	(XXX)->__rwelision = _ARG_PROJECT_8_11 ARGS;\
++	(XXX)->__pad2 = _ARG_PROJECT_9_11 ARGS;\
++	(XXX)->__cur_writer = _ARG_PROJECT_10_11 ARGS;\
++}
+ #define FILL_editorRegionList(XXX,FARG0,FARG1) {\
+ 	(XXX)->r = FARG0;\
+ 	(XXX)->next = FARG1;\
+@@ -835,39 +868,6 @@
+ 	(XXX)->s = _ARG_PROJECT_0_2 ARGS;\
+ 	(XXX)->p = _ARG_PROJECT_1_2 ARGS;\
+ }
+-#define FILL___pthread_attr_s(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7,FARG8) {\
+-	(XXX)->__detachstate = FARG0;\
+-	(XXX)->__schedpolicy = FARG1;\
+-	(XXX)->__schedparam = FARG2;\
+-	(XXX)->__inheritsched = FARG3;\
+-	(XXX)->__scope = FARG4;\
+-	(XXX)->__guardsize = FARG5;\
+-	(XXX)->__stackaddr_set = FARG6;\
+-	(XXX)->__stackaddr = FARG7;\
+-	(XXX)->__stacksize = FARG8;\
+-}
+-#define FILLF___pthread_attr_s(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7,FARG8) {\
+-	(XXX)->__detachstate = FARG0;\
+-	(XXX)->__schedpolicy = FARG1;\
+-	(XXX)->__schedparam.__sched_priority = FARG2;\
+-	(XXX)->__inheritsched = FARG3;\
+-	(XXX)->__scope = FARG4;\
+-	(XXX)->__guardsize = FARG5;\
+-	(XXX)->__stackaddr_set = FARG6;\
+-	(XXX)->__stackaddr = FARG7;\
+-	(XXX)->__stacksize = FARG8;\
+-}
+-#define _FILLF___pthread_attr_s(XXX,ARGS) {\
+-	(XXX)->__detachstate = _ARG_PROJECT_0_9 ARGS;\
+-	(XXX)->__schedpolicy = _ARG_PROJECT_1_9 ARGS;\
+-	(XXX)->__schedparam.__sched_priority = _ARG_PROJECT_2_9 ARGS;\
+-	(XXX)->__inheritsched = _ARG_PROJECT_3_9 ARGS;\
+-	(XXX)->__scope = _ARG_PROJECT_4_9 ARGS;\
+-	(XXX)->__guardsize = _ARG_PROJECT_5_9 ARGS;\
+-	(XXX)->__stackaddr_set = _ARG_PROJECT_6_9 ARGS;\
+-	(XXX)->__stackaddr = _ARG_PROJECT_7_9 ARGS;\
+-	(XXX)->__stacksize = _ARG_PROJECT_8_9 ARGS;\
+-}
+ #define FILL_lexInput(XXX,FARG0,FARG1,FARG2,FARG3,FARG4) {\
+ 	(XXX)->cc = FARG0;\
+ 	(XXX)->fin = FARG1;\
+@@ -889,46 +889,11 @@
+ 	(XXX)->macname = _ARG_PROJECT_3_5 ARGS;\
+ 	(XXX)->margExpFlag = _ARG_PROJECT_4_5 ARGS;\
+ }
+-#define FILL___gconv_step_data(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7) {\
+-	(XXX)->__outbuf = FARG0;\
+-	(XXX)->__outbufend = FARG1;\
+-	(XXX)->__flags = FARG2;\
+-	(XXX)->__invocation_counter = FARG3;\
+-	(XXX)->__internal_use = FARG4;\
+-	(XXX)->__statep = FARG5;\
+-	(XXX)->__state = FARG6;\
+-	(XXX)->__trans = FARG7;\
+-}
+-#define FILLF___gconv_step_data(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7,FARG8,FARG9) {\
+-	(XXX)->__outbuf = FARG0;\
+-	(XXX)->__outbufend = FARG1;\
+-	(XXX)->__flags = FARG2;\
+-	(XXX)->__invocation_counter = FARG3;\
+-	(XXX)->__internal_use = FARG4;\
+-	(XXX)->__statep = FARG5;\
+-	(XXX)->__state.__count = FARG6;\
+-	_FILLUREC__##FARG7((&(XXX)->__state.__value), FARG8);\
+-	(XXX)->__trans = FARG9;\
+-}
+-#define _FILLF___gconv_step_data(XXX,ARGS) {\
+-	(XXX)->__outbuf = _ARG_PROJECT_0_10 ARGS;\
+-	(XXX)->__outbufend = _ARG_PROJECT_1_10 ARGS;\
+-	(XXX)->__flags = _ARG_PROJECT_2_10 ARGS;\
+-	(XXX)->__invocation_counter = _ARG_PROJECT_3_10 ARGS;\
+-	(XXX)->__internal_use = _ARG_PROJECT_4_10 ARGS;\
+-	(XXX)->__statep = _ARG_PROJECT_5_10 ARGS;\
+-	(XXX)->__state.__count = _ARG_PROJECT_6_10 ARGS;\
+-	_FILLUREC__##_ARG_PROJECT_7_10 ARGS((&(XXX)->__state.__value), _ARG_PROJECT_8_10 ARGS);\
+-	(XXX)->__trans = _ARG_PROJECT_9_10 ARGS;\
+-}
+-#define FILL_internal_state(XXX,FARG0) {\
+-	(XXX)->dummy = FARG0;\
+-}
+-#define FILLF_internal_state(XXX,FARG0) {\
+-	(XXX)->dummy = FARG0;\
++#define FILL_internal_state(XXX) {\
++}
++#define FILLF_internal_state(XXX) {\
+ }
+ #define _FILLF_internal_state(XXX,ARGS) {\
+-	(XXX)->dummy = _ARG_PROJECT_0_1 ARGS;\
+ }
+ #define FILL_referencesChangeData(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5) {\
+ 	(XXX)->linkName = FARG0;\
+@@ -954,12 +919,6 @@
+ 	(XXX)->cxMemBegin = _ARG_PROJECT_4_6 ARGS;\
+ 	(XXX)->cxMemEnd = _ARG_PROJECT_5_6 ARGS;\
+ }
+-#define FILL__pthread_descr_struct(XXX) {\
+-}
+-#define FILLF__pthread_descr_struct(XXX) {\
+-}
+-#define _FILLF__pthread_descr_struct(XXX,ARGS) {\
+-}
+ #define FILL_htmlRefList(XXX,FARG0,FARG1,FARG2,FARG3) {\
+ 	(XXX)->s = FARG0;\
+ 	(XXX)->r = FARG1;\
+@@ -1176,6 +1135,42 @@
+ 	(XXX)->np = _ARG_PROJECT_1_3 ARGS;\
+ 	(XXX)->nri = _ARG_PROJECT_2_3 ARGS;\
+ }
++#define FILL_mallinfo2(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7,FARG8,FARG9) {\
++	(XXX)->arena = FARG0;\
++	(XXX)->ordblks = FARG1;\
++	(XXX)->smblks = FARG2;\
++	(XXX)->hblks = FARG3;\
++	(XXX)->hblkhd = FARG4;\
++	(XXX)->usmblks = FARG5;\
++	(XXX)->fsmblks = FARG6;\
++	(XXX)->uordblks = FARG7;\
++	(XXX)->fordblks = FARG8;\
++	(XXX)->keepcost = FARG9;\
++}
++#define FILLF_mallinfo2(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7,FARG8,FARG9) {\
++	(XXX)->arena = FARG0;\
++	(XXX)->ordblks = FARG1;\
++	(XXX)->smblks = FARG2;\
++	(XXX)->hblks = FARG3;\
++	(XXX)->hblkhd = FARG4;\
++	(XXX)->usmblks = FARG5;\
++	(XXX)->fsmblks = FARG6;\
++	(XXX)->uordblks = FARG7;\
++	(XXX)->fordblks = FARG8;\
++	(XXX)->keepcost = FARG9;\
++}
++#define _FILLF_mallinfo2(XXX,ARGS) {\
++	(XXX)->arena = _ARG_PROJECT_0_10 ARGS;\
++	(XXX)->ordblks = _ARG_PROJECT_1_10 ARGS;\
++	(XXX)->smblks = _ARG_PROJECT_2_10 ARGS;\
++	(XXX)->hblks = _ARG_PROJECT_3_10 ARGS;\
++	(XXX)->hblkhd = _ARG_PROJECT_4_10 ARGS;\
++	(XXX)->usmblks = _ARG_PROJECT_5_10 ARGS;\
++	(XXX)->fsmblks = _ARG_PROJECT_6_10 ARGS;\
++	(XXX)->uordblks = _ARG_PROJECT_7_10 ARGS;\
++	(XXX)->fordblks = _ARG_PROJECT_8_10 ARGS;\
++	(XXX)->keepcost = _ARG_PROJECT_9_10 ARGS;\
++}
+ #define FILL_funTypeModif(XXX,FARG0,FARG1) {\
+ 	(XXX)->args = FARG0;\
+ 	(XXX)->thisFunList = FARG1;\
+@@ -1188,15 +1183,6 @@
+ 	(XXX)->args = _ARG_PROJECT_0_2 ARGS;\
+ 	(XXX)->thisFunList = _ARG_PROJECT_1_2 ARGS;\
+ }
+-#define FILL___sched_param(XXX,FARG0) {\
+-	(XXX)->__sched_priority = FARG0;\
+-}
+-#define FILLF___sched_param(XXX,FARG0) {\
+-	(XXX)->__sched_priority = FARG0;\
+-}
+-#define _FILLF___sched_param(XXX,ARGS) {\
+-	(XXX)->__sched_priority = _ARG_PROJECT_0_1 ARGS;\
+-}
+ #define FILL_stringAddrList(XXX,FARG0,FARG1) {\
+ 	(XXX)->d = FARG0;\
+ 	(XXX)->next = FARG1;\
+@@ -1493,7 +1479,7 @@
+ 	(XXX)->allocatedIndex = _ARG_PROJECT_4_6 ARGS;\
+ 	(XXX)->allocatedSize = _ARG_PROJECT_5_6 ARGS;\
+ }
+-#define FILL__IO_FILE(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7,FARG8,FARG9,FARG10,FARG11,FARG12,FARG13,FARG14,FARG15,FARG16,FARG17,FARG18,FARG19,FARG20,FARG21,FARG22,FARG23) {\
++#define FILL__IO_FILE(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7,FARG8,FARG9,FARG10,FARG11,FARG12,FARG13,FARG14,FARG15,FARG16,FARG17,FARG18,FARG19,FARG20,FARG21,FARG22,FARG23,FARG24,FARG25,FARG26) {\
+ 	(XXX)->_flags = FARG0;\
+ 	(XXX)->_IO_read_ptr = FARG1;\
+ 	(XXX)->_IO_read_end = FARG2;\
+@@ -1515,11 +1501,14 @@
+ 	(XXX)->_vtable_offset = FARG18;\
+ 	(XXX)->_lock = FARG19;\
+ 	(XXX)->_offset = FARG20;\
+-	(XXX)->__pad1 = FARG21;\
+-	(XXX)->__pad2 = FARG22;\
+-	(XXX)->_mode = FARG23;\
+-}
+-#define FILLF__IO_FILE(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7,FARG8,FARG9,FARG10,FARG11,FARG12,FARG13,FARG14,FARG15,FARG16,FARG17,FARG18,FARG19,FARG20,FARG21,FARG22,FARG23) {\
++	(XXX)->_codecvt = FARG21;\
++	(XXX)->_wide_data = FARG22;\
++	(XXX)->_freeres_list = FARG23;\
++	(XXX)->_freeres_buf = FARG24;\
++	(XXX)->__pad5 = FARG25;\
++	(XXX)->_mode = FARG26;\
++}
++#define FILLF__IO_FILE(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7,FARG8,FARG9,FARG10,FARG11,FARG12,FARG13,FARG14,FARG15,FARG16,FARG17,FARG18,FARG19,FARG20,FARG21,FARG22,FARG23,FARG24,FARG25,FARG26) {\
+ 	(XXX)->_flags = FARG0;\
+ 	(XXX)->_IO_read_ptr = FARG1;\
+ 	(XXX)->_IO_read_end = FARG2;\
+@@ -1541,35 +1530,41 @@
+ 	(XXX)->_vtable_offset = FARG18;\
+ 	(XXX)->_lock = FARG19;\
+ 	(XXX)->_offset = FARG20;\
+-	(XXX)->__pad1 = FARG21;\
+-	(XXX)->__pad2 = FARG22;\
+-	(XXX)->_mode = FARG23;\
++	(XXX)->_codecvt = FARG21;\
++	(XXX)->_wide_data = FARG22;\
++	(XXX)->_freeres_list = FARG23;\
++	(XXX)->_freeres_buf = FARG24;\
++	(XXX)->__pad5 = FARG25;\
++	(XXX)->_mode = FARG26;\
+ }
+ #define _FILLF__IO_FILE(XXX,ARGS) {\
+-	(XXX)->_flags = _ARG_PROJECT_0_24 ARGS;\
+-	(XXX)->_IO_read_ptr = _ARG_PROJECT_1_24 ARGS;\
+-	(XXX)->_IO_read_end = _ARG_PROJECT_2_24 ARGS;\
+-	(XXX)->_IO_read_base = _ARG_PROJECT_3_24 ARGS;\
+-	(XXX)->_IO_write_base = _ARG_PROJECT_4_24 ARGS;\
+-	(XXX)->_IO_write_ptr = _ARG_PROJECT_5_24 ARGS;\
+-	(XXX)->_IO_write_end = _ARG_PROJECT_6_24 ARGS;\
+-	(XXX)->_IO_buf_base = _ARG_PROJECT_7_24 ARGS;\
+-	(XXX)->_IO_buf_end = _ARG_PROJECT_8_24 ARGS;\
+-	(XXX)->_IO_save_base = _ARG_PROJECT_9_24 ARGS;\
+-	(XXX)->_IO_backup_base = _ARG_PROJECT_10_24 ARGS;\
+-	(XXX)->_IO_save_end = _ARG_PROJECT_11_24 ARGS;\
+-	(XXX)->_markers = _ARG_PROJECT_12_24 ARGS;\
+-	(XXX)->_chain = _ARG_PROJECT_13_24 ARGS;\
+-	(XXX)->_fileno = _ARG_PROJECT_14_24 ARGS;\
+-	(XXX)->_flags2 = _ARG_PROJECT_15_24 ARGS;\
+-	(XXX)->_old_offset = _ARG_PROJECT_16_24 ARGS;\
+-	(XXX)->_cur_column = _ARG_PROJECT_17_24 ARGS;\
+-	(XXX)->_vtable_offset = _ARG_PROJECT_18_24 ARGS;\
+-	(XXX)->_lock = _ARG_PROJECT_19_24 ARGS;\
+-	(XXX)->_offset = _ARG_PROJECT_20_24 ARGS;\
+-	(XXX)->__pad1 = _ARG_PROJECT_21_24 ARGS;\
+-	(XXX)->__pad2 = _ARG_PROJECT_22_24 ARGS;\
+-	(XXX)->_mode = _ARG_PROJECT_23_24 ARGS;\
++	(XXX)->_flags = _ARG_PROJECT_0_27 ARGS;\
++	(XXX)->_IO_read_ptr = _ARG_PROJECT_1_27 ARGS;\
++	(XXX)->_IO_read_end = _ARG_PROJECT_2_27 ARGS;\
++	(XXX)->_IO_read_base = _ARG_PROJECT_3_27 ARGS;\
++	(XXX)->_IO_write_base = _ARG_PROJECT_4_27 ARGS;\
++	(XXX)->_IO_write_ptr = _ARG_PROJECT_5_27 ARGS;\
++	(XXX)->_IO_write_end = _ARG_PROJECT_6_27 ARGS;\
++	(XXX)->_IO_buf_base = _ARG_PROJECT_7_27 ARGS;\
++	(XXX)->_IO_buf_end = _ARG_PROJECT_8_27 ARGS;\
++	(XXX)->_IO_save_base = _ARG_PROJECT_9_27 ARGS;\
++	(XXX)->_IO_backup_base = _ARG_PROJECT_10_27 ARGS;\
++	(XXX)->_IO_save_end = _ARG_PROJECT_11_27 ARGS;\
++	(XXX)->_markers = _ARG_PROJECT_12_27 ARGS;\
++	(XXX)->_chain = _ARG_PROJECT_13_27 ARGS;\
++	(XXX)->_fileno = _ARG_PROJECT_14_27 ARGS;\
++	(XXX)->_flags2 = _ARG_PROJECT_15_27 ARGS;\
++	(XXX)->_old_offset = _ARG_PROJECT_16_27 ARGS;\
++	(XXX)->_cur_column = _ARG_PROJECT_17_27 ARGS;\
++	(XXX)->_vtable_offset = _ARG_PROJECT_18_27 ARGS;\
++	(XXX)->_lock = _ARG_PROJECT_19_27 ARGS;\
++	(XXX)->_offset = _ARG_PROJECT_20_27 ARGS;\
++	(XXX)->_codecvt = _ARG_PROJECT_21_27 ARGS;\
++	(XXX)->_wide_data = _ARG_PROJECT_22_27 ARGS;\
++	(XXX)->_freeres_list = _ARG_PROJECT_23_27 ARGS;\
++	(XXX)->_freeres_buf = _ARG_PROJECT_24_27 ARGS;\
++	(XXX)->__pad5 = _ARG_PROJECT_25_27 ARGS;\
++	(XXX)->_mode = _ARG_PROJECT_26_27 ARGS;\
+ }
+ #define FILL_topBlock(XXX,FARG0,FARG1,FARG2,FARG3) {\
+ 	(XXX)->firstFreeIndex = FARG0;\
+@@ -1628,27 +1623,6 @@
+ 	(XXX)->size = _ARG_PROJECT_0_2 ARGS;\
+ 	(XXX)->tab = _ARG_PROJECT_1_2 ARGS;\
+ }
+-#define FILL___gconv_trans_data(XXX,FARG0,FARG1,FARG2,FARG3,FARG4) {\
+-	(XXX)->__trans_fct = FARG0;\
+-	(XXX)->__trans_context_fct = FARG1;\
+-	(XXX)->__trans_end_fct = FARG2;\
+-	(XXX)->__data = FARG3;\
+-	(XXX)->__next = FARG4;\
+-}
+-#define FILLF___gconv_trans_data(XXX,FARG0,FARG1,FARG2,FARG3,FARG4) {\
+-	(XXX)->__trans_fct = FARG0;\
+-	(XXX)->__trans_context_fct = FARG1;\
+-	(XXX)->__trans_end_fct = FARG2;\
+-	(XXX)->__data = FARG3;\
+-	(XXX)->__next = FARG4;\
+-}
+-#define _FILLF___gconv_trans_data(XXX,ARGS) {\
+-	(XXX)->__trans_fct = _ARG_PROJECT_0_5 ARGS;\
+-	(XXX)->__trans_context_fct = _ARG_PROJECT_1_5 ARGS;\
+-	(XXX)->__trans_end_fct = _ARG_PROJECT_2_5 ARGS;\
+-	(XXX)->__data = _ARG_PROJECT_3_5 ARGS;\
+-	(XXX)->__next = _ARG_PROJECT_4_5 ARGS;\
+-}
+ #define FILL_bb_unsigned(XXX,FARG0,FARG1,FARG2) {\
+ 	(XXX)->b = FARG0;\
+ 	(XXX)->e = FARG1;\
+@@ -1745,6 +1719,24 @@
+ 	(XXX)->refsFilterLevel = _ARG_PROJECT_12_14 ARGS;\
+ 	(XXX)->previous = _ARG_PROJECT_13_14 ARGS;\
+ }
++#define FILL___pthread_cond_s(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5) {\
++	(XXX)->__wseq.FARG0 = FARG1;\
++	(XXX)->__g1_start.FARG2 = FARG3;\
++	(XXX)->__g1_orig_size = FARG4;\
++	(XXX)->__wrefs = FARG5;\
++}
++#define FILLF___pthread_cond_s(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5) {\
++	_FILLUREC__##FARG0((&(XXX)->__wseq), FARG1);\
++	_FILLUREC__##FARG2((&(XXX)->__g1_start), FARG3);\
++	(XXX)->__g1_orig_size = FARG4;\
++	(XXX)->__wrefs = FARG5;\
++}
++#define _FILLF___pthread_cond_s(XXX,ARGS) {\
++	_FILLUREC__##_ARG_PROJECT_0_6 ARGS((&(XXX)->__wseq), _ARG_PROJECT_1_6 ARGS);\
++	_FILLUREC__##_ARG_PROJECT_2_6 ARGS((&(XXX)->__g1_start), _ARG_PROJECT_3_6 ARGS);\
++	(XXX)->__g1_orig_size = _ARG_PROJECT_4_6 ARGS;\
++	(XXX)->__wrefs = _ARG_PROJECT_5_6 ARGS;\
++}
+ #define FILL_setGetEnv(XXX,FARG0) {\
+ 	(XXX)->num = FARG0;\
+ }
+@@ -1760,7 +1752,7 @@
+ 	(XXX)->flgopts = FARG2;\
+ 	(XXX)->next = FARG3;\
+ }
+-#define FILLF_optionsList(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7,FARG8,FARG9,FARG10,FARG11,FARG12,FARG13,FARG14,FARG15,FARG16,FARG17,FARG18,FARG19,FARG20,FARG21,FARG22,FARG23,FARG24,FARG25,FARG26,FARG27,FARG28,FARG29,FARG30,FARG31,FARG32,FARG33,FARG34,FARG35,FARG36,FARG37,FARG38,FARG39,FARG40,FARG41,FARG42,FARG43,FARG44,FARG45,FARG46,FARG47,FARG48,FARG49,FARG50,FARG51,FARG52,FARG53,FARG54,FARG55,FARG56,FARG57,FARG58,FARG59,FARG60,FARG61,FARG62,FARG63,FARG64,FARG65,FARG66,FARG67,FARG68,FARG69,FARG70,FARG71,FARG72,FARG73,FARG74,FARG75,FARG76,FARG77,FARG78,FARG79,FARG80,FARG81,FARG82,FARG83,FARG84,FARG85,FARG86,FARG87,FARG88,FARG89,FARG90,FARG91,FARG92,FARG93,FARG94,FARG95,FARG96,FARG97,FARG98,FARG99,FARG100,FARG101,FARG102,FARG103,FARG104,FARG105,FARG106,FARG107,FARG108,FARG109,FARG110,FARG111,FARG112,FARG113,FARG114,FARG115,FARG116,FARG117,FARG118,FARG119,FARG120,FARG121,FARG122,FARG123,FARG124,FARG125,FARG126,FARG127,FARG128,FARG129,FARG130,FARG131,FARG132,FARG133,FARG134,FARG135,FARG136,FARG137,FARG138,FARG139,FARG140,FARG141,FARG142,FARG143,FARG144,FARG145,FARG146,FARG147,FARG148,FARG149,FARG150,FARG151,FARG152,FARG153,FARG154,FARG155) {\
++#define FILLF_optionsList(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7,FARG8,FARG9,FARG10,FARG11,FARG12,FARG13,FARG14,FARG15,FARG16,FARG17,FARG18,FARG19,FARG20,FARG21,FARG22,FARG23,FARG24,FARG25,FARG26,FARG27,FARG28,FARG29,FARG30,FARG31,FARG32,FARG33,FARG34,FARG35,FARG36,FARG37,FARG38,FARG39,FARG40,FARG41,FARG42,FARG43,FARG44,FARG45,FARG46,FARG47,FARG48,FARG49,FARG50,FARG51,FARG52,FARG53,FARG54,FARG55,FARG56,FARG57,FARG58,FARG59,FARG60,FARG61,FARG62,FARG63,FARG64,FARG65,FARG66,FARG67,FARG68,FARG69,FARG70,FARG71,FARG72,FARG73,FARG74,FARG75,FARG76,FARG77,FARG78,FARG79,FARG80,FARG81,FARG82,FARG83,FARG84,FARG85,FARG86,FARG87,FARG88,FARG89,FARG90,FARG91,FARG92,FARG93,FARG94,FARG95,FARG96,FARG97,FARG98,FARG99,FARG100,FARG101,FARG102,FARG103,FARG104,FARG105,FARG106,FARG107,FARG108,FARG109,FARG110,FARG111,FARG112,FARG113,FARG114,FARG115,FARG116,FARG117,FARG118,FARG119,FARG120,FARG121,FARG122,FARG123,FARG124,FARG125,FARG126,FARG127,FARG128,FARG129,FARG130,FARG131,FARG132,FARG133,FARG134,FARG135,FARG136,FARG137,FARG138,FARG139,FARG140,FARG141,FARG142,FARG143,FARG144,FARG145,FARG146,FARG147,FARG148,FARG149,FARG150,FARG151,FARG152,FARG153,FARG154,FARG155,FARG156,FARG157) {\
+ 	(XXX)->section = FARG0;\
+ 	(XXX)->opts = FARG1;\
+ 	(XXX)->flgopts.fileEncoding = FARG2;\
+@@ -1773,308 +1765,312 @@
+ 	(XXX)->flgopts.commentMovingLevel = FARG9;\
+ 	(XXX)->flgopts.pruneNames = FARG10;\
+ 	(XXX)->flgopts.inputFiles = FARG11;\
+-	(XXX)->flgopts.continueRefactoring = FARG12;\
+-	(XXX)->flgopts.completionCaseSensitive = FARG13;\
+-	(XXX)->flgopts.xrefrc = FARG14;\
+-	(XXX)->flgopts.eolConversion = FARG15;\
+-	(XXX)->flgopts.checkVersion = FARG16;\
+-	(XXX)->flgopts.nestedClassDisplaying = FARG17;\
+-	(XXX)->flgopts.pushName = FARG18;\
+-	(XXX)->flgopts.parnum2 = FARG19;\
+-	(XXX)->flgopts.refpar1 = FARG20;\
+-	(XXX)->flgopts.refpar2 = FARG21;\
+-	(XXX)->flgopts.theRefactoring = FARG22;\
+-	(XXX)->flgopts.briefoutput = FARG23;\
+-	(XXX)->flgopts.cacheIncludes = FARG24;\
+-	(XXX)->flgopts.stdopFlag = FARG25;\
+-	(XXX)->flgopts.renameTo = FARG26;\
+-	(XXX)->flgopts.refactoringRegime = FARG27;\
+-	(XXX)->flgopts.xref2 = FARG28;\
+-	(XXX)->flgopts.moveTargetFile = FARG29;\
+-	(XXX)->flgopts.cFilesSuffixes = FARG30;\
+-	(XXX)->flgopts.javaFilesSuffixes = FARG31;\
+-	(XXX)->flgopts.cppFilesSuffixes = FARG32;\
+-	(XXX)->flgopts.fileNamesCaseSensitive = FARG33;\
+-	(XXX)->flgopts.htmlLineNumLabel = FARG34;\
+-	(XXX)->flgopts.htmlCutSuffix = FARG35;\
+-	(XXX)->flgopts.tagSearchSpecif = FARG36;\
+-	(XXX)->flgopts.javaVersion = FARG37;\
+-	(XXX)->flgopts.olcxWinDelFile = FARG38;\
+-	(XXX)->flgopts.olcxWinDelFromLine = FARG39;\
+-	(XXX)->flgopts.olcxWinDelFromCol = FARG40;\
+-	(XXX)->flgopts.olcxWinDelToLine = FARG41;\
+-	(XXX)->flgopts.olcxWinDelToCol = FARG42;\
+-	(XXX)->flgopts.moveFromUser = FARG43;\
+-	(XXX)->flgopts.noErrors = FARG44;\
+-	(XXX)->flgopts.fqtNameToCompletions = FARG45;\
+-	(XXX)->flgopts.moveTargetClass = FARG46;\
+-	(XXX)->flgopts.trivialPreCheckCode = FARG47;\
+-	(XXX)->flgopts.urlGenTemporaryFile = FARG48;\
+-	(XXX)->flgopts.urlAutoRedirect = FARG49;\
+-	(XXX)->flgopts.javaFilesOnly = FARG50;\
+-	(XXX)->flgopts.exactPositionResolve = FARG51;\
+-	(XXX)->flgopts.outputFileName = FARG52;\
+-	(XXX)->flgopts.lineFileName = FARG53;\
+-	(XXX)->flgopts.includeDirs = FARG54;\
+-	(XXX)->flgopts.cxrefFileName = FARG55;\
+-	(XXX)->flgopts.checkFileMovedFrom = FARG56;\
+-	(XXX)->flgopts.checkFileMovedTo = FARG57;\
+-	(XXX)->flgopts.checkFirstMovedLine = FARG58;\
+-	(XXX)->flgopts.checkLinesMoved = FARG59;\
+-	(XXX)->flgopts.checkNewLineNumber = FARG60;\
+-	(XXX)->flgopts.getValue = FARG61;\
+-	(XXX)->flgopts.java2html = FARG62;\
+-	(XXX)->flgopts.javaSlAllowed = FARG63;\
+-	(XXX)->flgopts.xfileHashingMethod = FARG64;\
+-	(XXX)->flgopts.htmlLineNumColor = FARG65;\
+-	(XXX)->flgopts.htmlCxLineLen = FARG66;\
+-	(XXX)->flgopts.htmlJdkDocAvailable = FARG67;\
+-	(XXX)->flgopts.htmlGenJdkDocLinks = FARG68;\
+-	(XXX)->flgopts.htmlJdkDocUrl = FARG69;\
+-	(XXX)->flgopts.javaDocPath = FARG70;\
+-	(XXX)->flgopts.allowPackagesOnCl = FARG71;\
+-	(XXX)->flgopts.sourcePath = FARG72;\
+-	(XXX)->flgopts.htmlDirectX = FARG73;\
+-	(XXX)->flgopts.jdocTmpDir = FARG74;\
+-	(XXX)->flgopts.noCxFile = FARG75;\
+-	(XXX)->flgopts.javaDoc = FARG76;\
+-	(XXX)->flgopts.noIncludeRefs = FARG77;\
+-	(XXX)->flgopts.allowClassFileRefs = FARG78;\
+-	(XXX)->flgopts.filterValue = FARG79;\
+-	(XXX)->flgopts.jdkClassPath = FARG80;\
+-	(XXX)->flgopts.manualResolve = FARG81;\
+-	(XXX)->flgopts.browsedSymName = FARG82;\
+-	(XXX)->flgopts.modifiedFlag = FARG83;\
+-	(XXX)->flgopts.olcxMenuSelectLineNum = FARG84;\
+-	(XXX)->flgopts.htmlNoUnderline = FARG85;\
+-	(XXX)->flgopts.htmlLinkColor = FARG86;\
+-	(XXX)->flgopts.htmlCutPath = FARG87;\
+-	(XXX)->flgopts.htmlCutPathLen = FARG88;\
+-	(XXX)->flgopts.ooChecksBits = FARG89;\
+-	(XXX)->flgopts.htmlLineNums = FARG90;\
+-	(XXX)->flgopts.htmlNoColors = FARG91;\
+-	(XXX)->flgopts.cxMemoryFaktor = FARG92;\
+-	(XXX)->flgopts.multiHeadRefsCare = FARG93;\
+-	(XXX)->flgopts.strictAnsi = FARG94;\
+-	(XXX)->flgopts.project = FARG95;\
+-	(XXX)->flgopts.updateOnlyModifiedFiles = FARG96;\
+-	(XXX)->flgopts.olcxlccursor = FARG97;\
+-	(XXX)->flgopts.htmlZipCommand = FARG98;\
+-	(XXX)->flgopts.olcxSearchString = FARG99;\
+-	(XXX)->flgopts.olineLen = FARG100;\
+-	(XXX)->flgopts.htmlLinkSuffix = FARG101;\
+-	(XXX)->flgopts.olExtractAddrParPrefix = FARG102;\
+-	(XXX)->flgopts.extractMode = FARG103;\
+-	(XXX)->flgopts.htmlFunSeparate = FARG104;\
+-	(XXX)->flgopts.extractName = FARG105;\
+-	(XXX)->flgopts.maxCompletions = FARG106;\
+-	(XXX)->flgopts.editor = FARG107;\
+-	(XXX)->flgopts.create = FARG108;\
+-	(XXX)->flgopts.olcxRefSuffix = FARG109;\
+-	(XXX)->flgopts.recursivelyDirs = FARG110;\
+-	(XXX)->flgopts.classpath = FARG111;\
+-	(XXX)->flgopts.tabulator = FARG112;\
+-	(XXX)->flgopts.htmlRoot = FARG113;\
+-	(XXX)->flgopts.htmlRichLists = FARG114;\
+-	(XXX)->flgopts.htmlglobalx = FARG115;\
+-	(XXX)->flgopts.htmllocalx = FARG116;\
+-	(XXX)->flgopts.cIsCplusplus = FARG117;\
+-	(XXX)->flgopts.olCursorPos = FARG118;\
+-	(XXX)->flgopts.olMarkPos = FARG119;\
+-	(XXX)->flgopts.taskRegime = FARG120;\
+-	(XXX)->flgopts.user = FARG121;\
+-	(XXX)->flgopts.debug = FARG122;\
+-	(XXX)->flgopts.cpp_comment = FARG123;\
+-	(XXX)->flgopts.c_struct_scope = FARG124;\
+-	(XXX)->flgopts.cxrefs = FARG125;\
+-	(XXX)->flgopts.olcxGotoVal = FARG126;\
+-	(XXX)->flgopts.originalDir = FARG127;\
+-	(XXX)->flgopts.no_ref_locals = FARG128;\
+-	(XXX)->flgopts.no_ref_records = FARG129;\
+-	(XXX)->flgopts.no_ref_enumerator = FARG130;\
+-	(XXX)->flgopts.no_ref_typedef = FARG131;\
+-	(XXX)->flgopts.no_ref_macro = FARG132;\
+-	(XXX)->flgopts.no_stdop = FARG133;\
+-	(XXX)->flgopts.qnxMessages = FARG134;\
+-	(XXX)->flgopts.typedefg = FARG135;\
+-	(XXX)->flgopts.str_fill = FARG136;\
+-	(XXX)->flgopts.enum_name = FARG137;\
+-	(XXX)->flgopts.body = FARG138;\
+-	(XXX)->flgopts.header = FARG139;\
+-	(XXX)->flgopts.str_copy = FARG140;\
+-	(XXX)->flgopts.err = FARG141;\
+-	(XXX)->flgopts.long_cxref = FARG142;\
+-	(XXX)->flgopts.brief = FARG143;\
+-	(XXX)->flgopts.update = FARG144;\
+-	(XXX)->flgopts.keep_old = FARG145;\
+-	(XXX)->flgopts.last_message = FARG146;\
+-	(XXX)->flgopts.refnum = FARG147;\
+-	(XXX)->flgopts.setGetEnv.num = FARG148;\
+-	(XXX)->flgopts.htmlCut.pathesNum = FARG149;\
+-	(XXX)->flgopts.allAllocatedStrings = FARG150;\
+-	(XXX)->flgopts.pendingMemory.overflowHandler = FARG151;\
+-	(XXX)->flgopts.pendingMemory.i = FARG152;\
+-	(XXX)->flgopts.pendingMemory.size = FARG153;\
+-	(XXX)->flgopts.pendingMemory.b = FARG154;\
+-	(XXX)->next = FARG155;\
++	(XXX)->flgopts.includeFiles = FARG12;\
++	(XXX)->flgopts.continueRefactoring = FARG13;\
++	(XXX)->flgopts.completionCaseSensitive = FARG14;\
++	(XXX)->flgopts.xrefrc = FARG15;\
++	(XXX)->flgopts.eolConversion = FARG16;\
++	(XXX)->flgopts.checkVersion = FARG17;\
++	(XXX)->flgopts.nestedClassDisplaying = FARG18;\
++	(XXX)->flgopts.pushName = FARG19;\
++	(XXX)->flgopts.parnum2 = FARG20;\
++	(XXX)->flgopts.refpar1 = FARG21;\
++	(XXX)->flgopts.refpar2 = FARG22;\
++	(XXX)->flgopts.theRefactoring = FARG23;\
++	(XXX)->flgopts.briefoutput = FARG24;\
++	(XXX)->flgopts.cacheIncludes = FARG25;\
++	(XXX)->flgopts.stdopFlag = FARG26;\
++	(XXX)->flgopts.renameTo = FARG27;\
++	(XXX)->flgopts.refactoringRegime = FARG28;\
++	(XXX)->flgopts.xref2 = FARG29;\
++	(XXX)->flgopts.moveTargetFile = FARG30;\
++	(XXX)->flgopts.cFilesSuffixes = FARG31;\
++	(XXX)->flgopts.javaFilesSuffixes = FARG32;\
++	(XXX)->flgopts.cppFilesSuffixes = FARG33;\
++	(XXX)->flgopts.fileNamesCaseSensitive = FARG34;\
++	(XXX)->flgopts.htmlLineNumLabel = FARG35;\
++	(XXX)->flgopts.htmlCutSuffix = FARG36;\
++	(XXX)->flgopts.tagSearchSpecif = FARG37;\
++	(XXX)->flgopts.javaVersion = FARG38;\
++	(XXX)->flgopts.olcxWinDelFile = FARG39;\
++	(XXX)->flgopts.olcxWinDelFromLine = FARG40;\
++	(XXX)->flgopts.olcxWinDelFromCol = FARG41;\
++	(XXX)->flgopts.olcxWinDelToLine = FARG42;\
++	(XXX)->flgopts.olcxWinDelToCol = FARG43;\
++	(XXX)->flgopts.moveFromUser = FARG44;\
++	(XXX)->flgopts.noErrors = FARG45;\
++	(XXX)->flgopts.fqtNameToCompletions = FARG46;\
++	(XXX)->flgopts.moveTargetClass = FARG47;\
++	(XXX)->flgopts.trivialPreCheckCode = FARG48;\
++	(XXX)->flgopts.urlGenTemporaryFile = FARG49;\
++	(XXX)->flgopts.urlAutoRedirect = FARG50;\
++	(XXX)->flgopts.javaFilesOnly = FARG51;\
++	(XXX)->flgopts.exactPositionResolve = FARG52;\
++	(XXX)->flgopts.outputFileName = FARG53;\
++	(XXX)->flgopts.lineFileName = FARG54;\
++	(XXX)->flgopts.includeDirs = FARG55;\
++	(XXX)->flgopts.cxrefFileName = FARG56;\
++	(XXX)->flgopts.checkFileMovedFrom = FARG57;\
++	(XXX)->flgopts.checkFileMovedTo = FARG58;\
++	(XXX)->flgopts.checkFirstMovedLine = FARG59;\
++	(XXX)->flgopts.checkLinesMoved = FARG60;\
++	(XXX)->flgopts.checkNewLineNumber = FARG61;\
++	(XXX)->flgopts.getValue = FARG62;\
++	(XXX)->flgopts.java2html = FARG63;\
++	(XXX)->flgopts.javaSlAllowed = FARG64;\
++	(XXX)->flgopts.xfileHashingMethod = FARG65;\
++	(XXX)->flgopts.htmlLineNumColor = FARG66;\
++	(XXX)->flgopts.htmlCxLineLen = FARG67;\
++	(XXX)->flgopts.htmlJdkDocAvailable = FARG68;\
++	(XXX)->flgopts.htmlGenJdkDocLinks = FARG69;\
++	(XXX)->flgopts.htmlJdkDocUrl = FARG70;\
++	(XXX)->flgopts.javaDocPath = FARG71;\
++	(XXX)->flgopts.allowPackagesOnCl = FARG72;\
++	(XXX)->flgopts.sourcePath = FARG73;\
++	(XXX)->flgopts.htmlDirectX = FARG74;\
++	(XXX)->flgopts.jdocTmpDir = FARG75;\
++	(XXX)->flgopts.noCxFile = FARG76;\
++	(XXX)->flgopts.javaDoc = FARG77;\
++	(XXX)->flgopts.noIncludeRefs = FARG78;\
++	(XXX)->flgopts.allowClassFileRefs = FARG79;\
++	(XXX)->flgopts.filterValue = FARG80;\
++	(XXX)->flgopts.jdkClassPath = FARG81;\
++	(XXX)->flgopts.manualResolve = FARG82;\
++	(XXX)->flgopts.browsedSymName = FARG83;\
++	(XXX)->flgopts.modifiedFlag = FARG84;\
++	(XXX)->flgopts.olcxMenuSelectLineNum = FARG85;\
++	(XXX)->flgopts.htmlNoUnderline = FARG86;\
++	(XXX)->flgopts.htmlLinkColor = FARG87;\
++	(XXX)->flgopts.htmlCutPath = FARG88;\
++	(XXX)->flgopts.htmlCutPathLen = FARG89;\
++	(XXX)->flgopts.ooChecksBits = FARG90;\
++	(XXX)->flgopts.htmlLineNums = FARG91;\
++	(XXX)->flgopts.htmlNoColors = FARG92;\
++	(XXX)->flgopts.cxMemoryFaktor = FARG93;\
++	(XXX)->flgopts.multiHeadRefsCare = FARG94;\
++	(XXX)->flgopts.strictAnsi = FARG95;\
++	(XXX)->flgopts.project = FARG96;\
++	(XXX)->flgopts.updateOnlyModifiedFiles = FARG97;\
++	(XXX)->flgopts.olcxlccursor = FARG98;\
++	(XXX)->flgopts.htmlZipCommand = FARG99;\
++	(XXX)->flgopts.olcxSearchString = FARG100;\
++	(XXX)->flgopts.olineLen = FARG101;\
++	(XXX)->flgopts.htmlLinkSuffix = FARG102;\
++	(XXX)->flgopts.olExtractAddrParPrefix = FARG103;\
++	(XXX)->flgopts.extractMode = FARG104;\
++	(XXX)->flgopts.htmlFunSeparate = FARG105;\
++	(XXX)->flgopts.extractName = FARG106;\
++	(XXX)->flgopts.maxCompletions = FARG107;\
++	(XXX)->flgopts.editor = FARG108;\
++	(XXX)->flgopts.create = FARG109;\
++	(XXX)->flgopts.olcxRefSuffix = FARG110;\
++	(XXX)->flgopts.recursivelyDirs = FARG111;\
++	(XXX)->flgopts.classpath = FARG112;\
++	(XXX)->flgopts.tabulator = FARG113;\
++	(XXX)->flgopts.htmlRoot = FARG114;\
++	(XXX)->flgopts.htmlRichLists = FARG115;\
++	(XXX)->flgopts.htmlglobalx = FARG116;\
++	(XXX)->flgopts.htmllocalx = FARG117;\
++	(XXX)->flgopts.cIsCplusplus = FARG118;\
++	(XXX)->flgopts.olCursorPos = FARG119;\
++	(XXX)->flgopts.olMarkPos = FARG120;\
++	(XXX)->flgopts.taskRegime = FARG121;\
++	(XXX)->flgopts.user = FARG122;\
++	(XXX)->flgopts.debug = FARG123;\
++	(XXX)->flgopts.showIncludes = FARG124;\
++	(XXX)->flgopts.cpp_comment = FARG125;\
++	(XXX)->flgopts.c_struct_scope = FARG126;\
++	(XXX)->flgopts.cxrefs = FARG127;\
++	(XXX)->flgopts.olcxGotoVal = FARG128;\
++	(XXX)->flgopts.originalDir = FARG129;\
++	(XXX)->flgopts.no_ref_locals = FARG130;\
++	(XXX)->flgopts.no_ref_records = FARG131;\
++	(XXX)->flgopts.no_ref_enumerator = FARG132;\
++	(XXX)->flgopts.no_ref_typedef = FARG133;\
++	(XXX)->flgopts.no_ref_macro = FARG134;\
++	(XXX)->flgopts.no_stdop = FARG135;\
++	(XXX)->flgopts.qnxMessages = FARG136;\
++	(XXX)->flgopts.typedefg = FARG137;\
++	(XXX)->flgopts.str_fill = FARG138;\
++	(XXX)->flgopts.enum_name = FARG139;\
++	(XXX)->flgopts.body = FARG140;\
++	(XXX)->flgopts.header = FARG141;\
++	(XXX)->flgopts.str_copy = FARG142;\
++	(XXX)->flgopts.err = FARG143;\
++	(XXX)->flgopts.long_cxref = FARG144;\
++	(XXX)->flgopts.brief = FARG145;\
++	(XXX)->flgopts.update = FARG146;\
++	(XXX)->flgopts.keep_old = FARG147;\
++	(XXX)->flgopts.last_message = FARG148;\
++	(XXX)->flgopts.refnum = FARG149;\
++	(XXX)->flgopts.setGetEnv.num = FARG150;\
++	(XXX)->flgopts.htmlCut.pathesNum = FARG151;\
++	(XXX)->flgopts.allAllocatedStrings = FARG152;\
++	(XXX)->flgopts.pendingMemory.overflowHandler = FARG153;\
++	(XXX)->flgopts.pendingMemory.i = FARG154;\
++	(XXX)->flgopts.pendingMemory.size = FARG155;\
++	(XXX)->flgopts.pendingMemory.b = FARG156;\
++	(XXX)->next = FARG157;\
+ }
+ #define _FILLF_optionsList(XXX,ARGS) {\
+-	(XXX)->section = _ARG_PROJECT_0_156 ARGS;\
+-	(XXX)->opts = _ARG_PROJECT_1_156 ARGS;\
+-	(XXX)->flgopts.fileEncoding = _ARG_PROJECT_2_156 ARGS;\
+-	(XXX)->flgopts.completeParenthesis = _ARG_PROJECT_3_156 ARGS;\
+-	(XXX)->flgopts.defaultAddImportStrategy = _ARG_PROJECT_4_156 ARGS;\
+-	(XXX)->flgopts.referenceListWithoutSource = _ARG_PROJECT_5_156 ARGS;\
+-	(XXX)->flgopts.jeditOldCompletions = _ARG_PROJECT_6_156 ARGS;\
+-	(XXX)->flgopts.completionOverloadWizardDeep = _ARG_PROJECT_7_156 ARGS;\
+-	(XXX)->flgopts.exit = _ARG_PROJECT_8_156 ARGS;\
+-	(XXX)->flgopts.commentMovingLevel = _ARG_PROJECT_9_156 ARGS;\
+-	(XXX)->flgopts.pruneNames = _ARG_PROJECT_10_156 ARGS;\
+-	(XXX)->flgopts.inputFiles = _ARG_PROJECT_11_156 ARGS;\
+-	(XXX)->flgopts.continueRefactoring = _ARG_PROJECT_12_156 ARGS;\
+-	(XXX)->flgopts.completionCaseSensitive = _ARG_PROJECT_13_156 ARGS;\
+-	(XXX)->flgopts.xrefrc = _ARG_PROJECT_14_156 ARGS;\
+-	(XXX)->flgopts.eolConversion = _ARG_PROJECT_15_156 ARGS;\
+-	(XXX)->flgopts.checkVersion = _ARG_PROJECT_16_156 ARGS;\
+-	(XXX)->flgopts.nestedClassDisplaying = _ARG_PROJECT_17_156 ARGS;\
+-	(XXX)->flgopts.pushName = _ARG_PROJECT_18_156 ARGS;\
+-	(XXX)->flgopts.parnum2 = _ARG_PROJECT_19_156 ARGS;\
+-	(XXX)->flgopts.refpar1 = _ARG_PROJECT_20_156 ARGS;\
+-	(XXX)->flgopts.refpar2 = _ARG_PROJECT_21_156 ARGS;\
+-	(XXX)->flgopts.theRefactoring = _ARG_PROJECT_22_156 ARGS;\
+-	(XXX)->flgopts.briefoutput = _ARG_PROJECT_23_156 ARGS;\
+-	(XXX)->flgopts.cacheIncludes = _ARG_PROJECT_24_156 ARGS;\
+-	(XXX)->flgopts.stdopFlag = _ARG_PROJECT_25_156 ARGS;\
+-	(XXX)->flgopts.renameTo = _ARG_PROJECT_26_156 ARGS;\
+-	(XXX)->flgopts.refactoringRegime = _ARG_PROJECT_27_156 ARGS;\
+-	(XXX)->flgopts.xref2 = _ARG_PROJECT_28_156 ARGS;\
+-	(XXX)->flgopts.moveTargetFile = _ARG_PROJECT_29_156 ARGS;\
+-	(XXX)->flgopts.cFilesSuffixes = _ARG_PROJECT_30_156 ARGS;\
+-	(XXX)->flgopts.javaFilesSuffixes = _ARG_PROJECT_31_156 ARGS;\
+-	(XXX)->flgopts.cppFilesSuffixes = _ARG_PROJECT_32_156 ARGS;\
+-	(XXX)->flgopts.fileNamesCaseSensitive = _ARG_PROJECT_33_156 ARGS;\
+-	(XXX)->flgopts.htmlLineNumLabel = _ARG_PROJECT_34_156 ARGS;\
+-	(XXX)->flgopts.htmlCutSuffix = _ARG_PROJECT_35_156 ARGS;\
+-	(XXX)->flgopts.tagSearchSpecif = _ARG_PROJECT_36_156 ARGS;\
+-	(XXX)->flgopts.javaVersion = _ARG_PROJECT_37_156 ARGS;\
+-	(XXX)->flgopts.olcxWinDelFile = _ARG_PROJECT_38_156 ARGS;\
+-	(XXX)->flgopts.olcxWinDelFromLine = _ARG_PROJECT_39_156 ARGS;\
+-	(XXX)->flgopts.olcxWinDelFromCol = _ARG_PROJECT_40_156 ARGS;\
+-	(XXX)->flgopts.olcxWinDelToLine = _ARG_PROJECT_41_156 ARGS;\
+-	(XXX)->flgopts.olcxWinDelToCol = _ARG_PROJECT_42_156 ARGS;\
+-	(XXX)->flgopts.moveFromUser = _ARG_PROJECT_43_156 ARGS;\
+-	(XXX)->flgopts.noErrors = _ARG_PROJECT_44_156 ARGS;\
+-	(XXX)->flgopts.fqtNameToCompletions = _ARG_PROJECT_45_156 ARGS;\
+-	(XXX)->flgopts.moveTargetClass = _ARG_PROJECT_46_156 ARGS;\
+-	(XXX)->flgopts.trivialPreCheckCode = _ARG_PROJECT_47_156 ARGS;\
+-	(XXX)->flgopts.urlGenTemporaryFile = _ARG_PROJECT_48_156 ARGS;\
+-	(XXX)->flgopts.urlAutoRedirect = _ARG_PROJECT_49_156 ARGS;\
+-	(XXX)->flgopts.javaFilesOnly = _ARG_PROJECT_50_156 ARGS;\
+-	(XXX)->flgopts.exactPositionResolve = _ARG_PROJECT_51_156 ARGS;\
+-	(XXX)->flgopts.outputFileName = _ARG_PROJECT_52_156 ARGS;\
+-	(XXX)->flgopts.lineFileName = _ARG_PROJECT_53_156 ARGS;\
+-	(XXX)->flgopts.includeDirs = _ARG_PROJECT_54_156 ARGS;\
+-	(XXX)->flgopts.cxrefFileName = _ARG_PROJECT_55_156 ARGS;\
+-	(XXX)->flgopts.checkFileMovedFrom = _ARG_PROJECT_56_156 ARGS;\
+-	(XXX)->flgopts.checkFileMovedTo = _ARG_PROJECT_57_156 ARGS;\
+-	(XXX)->flgopts.checkFirstMovedLine = _ARG_PROJECT_58_156 ARGS;\
+-	(XXX)->flgopts.checkLinesMoved = _ARG_PROJECT_59_156 ARGS;\
+-	(XXX)->flgopts.checkNewLineNumber = _ARG_PROJECT_60_156 ARGS;\
+-	(XXX)->flgopts.getValue = _ARG_PROJECT_61_156 ARGS;\
+-	(XXX)->flgopts.java2html = _ARG_PROJECT_62_156 ARGS;\
+-	(XXX)->flgopts.javaSlAllowed = _ARG_PROJECT_63_156 ARGS;\
+-	(XXX)->flgopts.xfileHashingMethod = _ARG_PROJECT_64_156 ARGS;\
+-	(XXX)->flgopts.htmlLineNumColor = _ARG_PROJECT_65_156 ARGS;\
+-	(XXX)->flgopts.htmlCxLineLen = _ARG_PROJECT_66_156 ARGS;\
+-	(XXX)->flgopts.htmlJdkDocAvailable = _ARG_PROJECT_67_156 ARGS;\
+-	(XXX)->flgopts.htmlGenJdkDocLinks = _ARG_PROJECT_68_156 ARGS;\
+-	(XXX)->flgopts.htmlJdkDocUrl = _ARG_PROJECT_69_156 ARGS;\
+-	(XXX)->flgopts.javaDocPath = _ARG_PROJECT_70_156 ARGS;\
+-	(XXX)->flgopts.allowPackagesOnCl = _ARG_PROJECT_71_156 ARGS;\
+-	(XXX)->flgopts.sourcePath = _ARG_PROJECT_72_156 ARGS;\
+-	(XXX)->flgopts.htmlDirectX = _ARG_PROJECT_73_156 ARGS;\
+-	(XXX)->flgopts.jdocTmpDir = _ARG_PROJECT_74_156 ARGS;\
+-	(XXX)->flgopts.noCxFile = _ARG_PROJECT_75_156 ARGS;\
+-	(XXX)->flgopts.javaDoc = _ARG_PROJECT_76_156 ARGS;\
+-	(XXX)->flgopts.noIncludeRefs = _ARG_PROJECT_77_156 ARGS;\
+-	(XXX)->flgopts.allowClassFileRefs = _ARG_PROJECT_78_156 ARGS;\
+-	(XXX)->flgopts.filterValue = _ARG_PROJECT_79_156 ARGS;\
+-	(XXX)->flgopts.jdkClassPath = _ARG_PROJECT_80_156 ARGS;\
+-	(XXX)->flgopts.manualResolve = _ARG_PROJECT_81_156 ARGS;\
+-	(XXX)->flgopts.browsedSymName = _ARG_PROJECT_82_156 ARGS;\
+-	(XXX)->flgopts.modifiedFlag = _ARG_PROJECT_83_156 ARGS;\
+-	(XXX)->flgopts.olcxMenuSelectLineNum = _ARG_PROJECT_84_156 ARGS;\
+-	(XXX)->flgopts.htmlNoUnderline = _ARG_PROJECT_85_156 ARGS;\
+-	(XXX)->flgopts.htmlLinkColor = _ARG_PROJECT_86_156 ARGS;\
+-	(XXX)->flgopts.htmlCutPath = _ARG_PROJECT_87_156 ARGS;\
+-	(XXX)->flgopts.htmlCutPathLen = _ARG_PROJECT_88_156 ARGS;\
+-	(XXX)->flgopts.ooChecksBits = _ARG_PROJECT_89_156 ARGS;\
+-	(XXX)->flgopts.htmlLineNums = _ARG_PROJECT_90_156 ARGS;\
+-	(XXX)->flgopts.htmlNoColors = _ARG_PROJECT_91_156 ARGS;\
+-	(XXX)->flgopts.cxMemoryFaktor = _ARG_PROJECT_92_156 ARGS;\
+-	(XXX)->flgopts.multiHeadRefsCare = _ARG_PROJECT_93_156 ARGS;\
+-	(XXX)->flgopts.strictAnsi = _ARG_PROJECT_94_156 ARGS;\
+-	(XXX)->flgopts.project = _ARG_PROJECT_95_156 ARGS;\
+-	(XXX)->flgopts.updateOnlyModifiedFiles = _ARG_PROJECT_96_156 ARGS;\
+-	(XXX)->flgopts.olcxlccursor = _ARG_PROJECT_97_156 ARGS;\
+-	(XXX)->flgopts.htmlZipCommand = _ARG_PROJECT_98_156 ARGS;\
+-	(XXX)->flgopts.olcxSearchString = _ARG_PROJECT_99_156 ARGS;\
+-	(XXX)->flgopts.olineLen = _ARG_PROJECT_100_156 ARGS;\
+-	(XXX)->flgopts.htmlLinkSuffix = _ARG_PROJECT_101_156 ARGS;\
+-	(XXX)->flgopts.olExtractAddrParPrefix = _ARG_PROJECT_102_156 ARGS;\
+-	(XXX)->flgopts.extractMode = _ARG_PROJECT_103_156 ARGS;\
+-	(XXX)->flgopts.htmlFunSeparate = _ARG_PROJECT_104_156 ARGS;\
+-	(XXX)->flgopts.extractName = _ARG_PROJECT_105_156 ARGS;\
+-	(XXX)->flgopts.maxCompletions = _ARG_PROJECT_106_156 ARGS;\
+-	(XXX)->flgopts.editor = _ARG_PROJECT_107_156 ARGS;\
+-	(XXX)->flgopts.create = _ARG_PROJECT_108_156 ARGS;\
+-	(XXX)->flgopts.olcxRefSuffix = _ARG_PROJECT_109_156 ARGS;\
+-	(XXX)->flgopts.recursivelyDirs = _ARG_PROJECT_110_156 ARGS;\
+-	(XXX)->flgopts.classpath = _ARG_PROJECT_111_156 ARGS;\
+-	(XXX)->flgopts.tabulator = _ARG_PROJECT_112_156 ARGS;\
+-	(XXX)->flgopts.htmlRoot = _ARG_PROJECT_113_156 ARGS;\
+-	(XXX)->flgopts.htmlRichLists = _ARG_PROJECT_114_156 ARGS;\
+-	(XXX)->flgopts.htmlglobalx = _ARG_PROJECT_115_156 ARGS;\
+-	(XXX)->flgopts.htmllocalx = _ARG_PROJECT_116_156 ARGS;\
+-	(XXX)->flgopts.cIsCplusplus = _ARG_PROJECT_117_156 ARGS;\
+-	(XXX)->flgopts.olCursorPos = _ARG_PROJECT_118_156 ARGS;\
+-	(XXX)->flgopts.olMarkPos = _ARG_PROJECT_119_156 ARGS;\
+-	(XXX)->flgopts.taskRegime = _ARG_PROJECT_120_156 ARGS;\
+-	(XXX)->flgopts.user = _ARG_PROJECT_121_156 ARGS;\
+-	(XXX)->flgopts.debug = _ARG_PROJECT_122_156 ARGS;\
+-	(XXX)->flgopts.cpp_comment = _ARG_PROJECT_123_156 ARGS;\
+-	(XXX)->flgopts.c_struct_scope = _ARG_PROJECT_124_156 ARGS;\
+-	(XXX)->flgopts.cxrefs = _ARG_PROJECT_125_156 ARGS;\
+-	(XXX)->flgopts.olcxGotoVal = _ARG_PROJECT_126_156 ARGS;\
+-	(XXX)->flgopts.originalDir = _ARG_PROJECT_127_156 ARGS;\
+-	(XXX)->flgopts.no_ref_locals = _ARG_PROJECT_128_156 ARGS;\
+-	(XXX)->flgopts.no_ref_records = _ARG_PROJECT_129_156 ARGS;\
+-	(XXX)->flgopts.no_ref_enumerator = _ARG_PROJECT_130_156 ARGS;\
+-	(XXX)->flgopts.no_ref_typedef = _ARG_PROJECT_131_156 ARGS;\
+-	(XXX)->flgopts.no_ref_macro = _ARG_PROJECT_132_156 ARGS;\
+-	(XXX)->flgopts.no_stdop = _ARG_PROJECT_133_156 ARGS;\
+-	(XXX)->flgopts.qnxMessages = _ARG_PROJECT_134_156 ARGS;\
+-	(XXX)->flgopts.typedefg = _ARG_PROJECT_135_156 ARGS;\
+-	(XXX)->flgopts.str_fill = _ARG_PROJECT_136_156 ARGS;\
+-	(XXX)->flgopts.enum_name = _ARG_PROJECT_137_156 ARGS;\
+-	(XXX)->flgopts.body = _ARG_PROJECT_138_156 ARGS;\
+-	(XXX)->flgopts.header = _ARG_PROJECT_139_156 ARGS;\
+-	(XXX)->flgopts.str_copy = _ARG_PROJECT_140_156 ARGS;\
+-	(XXX)->flgopts.err = _ARG_PROJECT_141_156 ARGS;\
+-	(XXX)->flgopts.long_cxref = _ARG_PROJECT_142_156 ARGS;\
+-	(XXX)->flgopts.brief = _ARG_PROJECT_143_156 ARGS;\
+-	(XXX)->flgopts.update = _ARG_PROJECT_144_156 ARGS;\
+-	(XXX)->flgopts.keep_old = _ARG_PROJECT_145_156 ARGS;\
+-	(XXX)->flgopts.last_message = _ARG_PROJECT_146_156 ARGS;\
+-	(XXX)->flgopts.refnum = _ARG_PROJECT_147_156 ARGS;\
+-	(XXX)->flgopts.setGetEnv.num = _ARG_PROJECT_148_156 ARGS;\
+-	(XXX)->flgopts.htmlCut.pathesNum = _ARG_PROJECT_149_156 ARGS;\
+-	(XXX)->flgopts.allAllocatedStrings = _ARG_PROJECT_150_156 ARGS;\
+-	(XXX)->flgopts.pendingMemory.overflowHandler = _ARG_PROJECT_151_156 ARGS;\
+-	(XXX)->flgopts.pendingMemory.i = _ARG_PROJECT_152_156 ARGS;\
+-	(XXX)->flgopts.pendingMemory.size = _ARG_PROJECT_153_156 ARGS;\
+-	(XXX)->flgopts.pendingMemory.b = _ARG_PROJECT_154_156 ARGS;\
+-	(XXX)->next = _ARG_PROJECT_155_156 ARGS;\
++	(XXX)->section = _ARG_PROJECT_0_158 ARGS;\
++	(XXX)->opts = _ARG_PROJECT_1_158 ARGS;\
++	(XXX)->flgopts.fileEncoding = _ARG_PROJECT_2_158 ARGS;\
++	(XXX)->flgopts.completeParenthesis = _ARG_PROJECT_3_158 ARGS;\
++	(XXX)->flgopts.defaultAddImportStrategy = _ARG_PROJECT_4_158 ARGS;\
++	(XXX)->flgopts.referenceListWithoutSource = _ARG_PROJECT_5_158 ARGS;\
++	(XXX)->flgopts.jeditOldCompletions = _ARG_PROJECT_6_158 ARGS;\
++	(XXX)->flgopts.completionOverloadWizardDeep = _ARG_PROJECT_7_158 ARGS;\
++	(XXX)->flgopts.exit = _ARG_PROJECT_8_158 ARGS;\
++	(XXX)->flgopts.commentMovingLevel = _ARG_PROJECT_9_158 ARGS;\
++	(XXX)->flgopts.pruneNames = _ARG_PROJECT_10_158 ARGS;\
++	(XXX)->flgopts.inputFiles = _ARG_PROJECT_11_158 ARGS;\
++	(XXX)->flgopts.includeFiles = _ARG_PROJECT_12_158 ARGS;\
++	(XXX)->flgopts.continueRefactoring = _ARG_PROJECT_13_158 ARGS;\
++	(XXX)->flgopts.completionCaseSensitive = _ARG_PROJECT_14_158 ARGS;\
++	(XXX)->flgopts.xrefrc = _ARG_PROJECT_15_158 ARGS;\
++	(XXX)->flgopts.eolConversion = _ARG_PROJECT_16_158 ARGS;\
++	(XXX)->flgopts.checkVersion = _ARG_PROJECT_17_158 ARGS;\
++	(XXX)->flgopts.nestedClassDisplaying = _ARG_PROJECT_18_158 ARGS;\
++	(XXX)->flgopts.pushName = _ARG_PROJECT_19_158 ARGS;\
++	(XXX)->flgopts.parnum2 = _ARG_PROJECT_20_158 ARGS;\
++	(XXX)->flgopts.refpar1 = _ARG_PROJECT_21_158 ARGS;\
++	(XXX)->flgopts.refpar2 = _ARG_PROJECT_22_158 ARGS;\
++	(XXX)->flgopts.theRefactoring = _ARG_PROJECT_23_158 ARGS;\
++	(XXX)->flgopts.briefoutput = _ARG_PROJECT_24_158 ARGS;\
++	(XXX)->flgopts.cacheIncludes = _ARG_PROJECT_25_158 ARGS;\
++	(XXX)->flgopts.stdopFlag = _ARG_PROJECT_26_158 ARGS;\
++	(XXX)->flgopts.renameTo = _ARG_PROJECT_27_158 ARGS;\
++	(XXX)->flgopts.refactoringRegime = _ARG_PROJECT_28_158 ARGS;\
++	(XXX)->flgopts.xref2 = _ARG_PROJECT_29_158 ARGS;\
++	(XXX)->flgopts.moveTargetFile = _ARG_PROJECT_30_158 ARGS;\
++	(XXX)->flgopts.cFilesSuffixes = _ARG_PROJECT_31_158 ARGS;\
++	(XXX)->flgopts.javaFilesSuffixes = _ARG_PROJECT_32_158 ARGS;\
++	(XXX)->flgopts.cppFilesSuffixes = _ARG_PROJECT_33_158 ARGS;\
++	(XXX)->flgopts.fileNamesCaseSensitive = _ARG_PROJECT_34_158 ARGS;\
++	(XXX)->flgopts.htmlLineNumLabel = _ARG_PROJECT_35_158 ARGS;\
++	(XXX)->flgopts.htmlCutSuffix = _ARG_PROJECT_36_158 ARGS;\
++	(XXX)->flgopts.tagSearchSpecif = _ARG_PROJECT_37_158 ARGS;\
++	(XXX)->flgopts.javaVersion = _ARG_PROJECT_38_158 ARGS;\
++	(XXX)->flgopts.olcxWinDelFile = _ARG_PROJECT_39_158 ARGS;\
++	(XXX)->flgopts.olcxWinDelFromLine = _ARG_PROJECT_40_158 ARGS;\
++	(XXX)->flgopts.olcxWinDelFromCol = _ARG_PROJECT_41_158 ARGS;\
++	(XXX)->flgopts.olcxWinDelToLine = _ARG_PROJECT_42_158 ARGS;\
++	(XXX)->flgopts.olcxWinDelToCol = _ARG_PROJECT_43_158 ARGS;\
++	(XXX)->flgopts.moveFromUser = _ARG_PROJECT_44_158 ARGS;\
++	(XXX)->flgopts.noErrors = _ARG_PROJECT_45_158 ARGS;\
++	(XXX)->flgopts.fqtNameToCompletions = _ARG_PROJECT_46_158 ARGS;\
++	(XXX)->flgopts.moveTargetClass = _ARG_PROJECT_47_158 ARGS;\
++	(XXX)->flgopts.trivialPreCheckCode = _ARG_PROJECT_48_158 ARGS;\
++	(XXX)->flgopts.urlGenTemporaryFile = _ARG_PROJECT_49_158 ARGS;\
++	(XXX)->flgopts.urlAutoRedirect = _ARG_PROJECT_50_158 ARGS;\
++	(XXX)->flgopts.javaFilesOnly = _ARG_PROJECT_51_158 ARGS;\
++	(XXX)->flgopts.exactPositionResolve = _ARG_PROJECT_52_158 ARGS;\
++	(XXX)->flgopts.outputFileName = _ARG_PROJECT_53_158 ARGS;\
++	(XXX)->flgopts.lineFileName = _ARG_PROJECT_54_158 ARGS;\
++	(XXX)->flgopts.includeDirs = _ARG_PROJECT_55_158 ARGS;\
++	(XXX)->flgopts.cxrefFileName = _ARG_PROJECT_56_158 ARGS;\
++	(XXX)->flgopts.checkFileMovedFrom = _ARG_PROJECT_57_158 ARGS;\
++	(XXX)->flgopts.checkFileMovedTo = _ARG_PROJECT_58_158 ARGS;\
++	(XXX)->flgopts.checkFirstMovedLine = _ARG_PROJECT_59_158 ARGS;\
++	(XXX)->flgopts.checkLinesMoved = _ARG_PROJECT_60_158 ARGS;\
++	(XXX)->flgopts.checkNewLineNumber = _ARG_PROJECT_61_158 ARGS;\
++	(XXX)->flgopts.getValue = _ARG_PROJECT_62_158 ARGS;\
++	(XXX)->flgopts.java2html = _ARG_PROJECT_63_158 ARGS;\
++	(XXX)->flgopts.javaSlAllowed = _ARG_PROJECT_64_158 ARGS;\
++	(XXX)->flgopts.xfileHashingMethod = _ARG_PROJECT_65_158 ARGS;\
++	(XXX)->flgopts.htmlLineNumColor = _ARG_PROJECT_66_158 ARGS;\
++	(XXX)->flgopts.htmlCxLineLen = _ARG_PROJECT_67_158 ARGS;\
++	(XXX)->flgopts.htmlJdkDocAvailable = _ARG_PROJECT_68_158 ARGS;\
++	(XXX)->flgopts.htmlGenJdkDocLinks = _ARG_PROJECT_69_158 ARGS;\
++	(XXX)->flgopts.htmlJdkDocUrl = _ARG_PROJECT_70_158 ARGS;\
++	(XXX)->flgopts.javaDocPath = _ARG_PROJECT_71_158 ARGS;\
++	(XXX)->flgopts.allowPackagesOnCl = _ARG_PROJECT_72_158 ARGS;\
++	(XXX)->flgopts.sourcePath = _ARG_PROJECT_73_158 ARGS;\
++	(XXX)->flgopts.htmlDirectX = _ARG_PROJECT_74_158 ARGS;\
++	(XXX)->flgopts.jdocTmpDir = _ARG_PROJECT_75_158 ARGS;\
++	(XXX)->flgopts.noCxFile = _ARG_PROJECT_76_158 ARGS;\
++	(XXX)->flgopts.javaDoc = _ARG_PROJECT_77_158 ARGS;\
++	(XXX)->flgopts.noIncludeRefs = _ARG_PROJECT_78_158 ARGS;\
++	(XXX)->flgopts.allowClassFileRefs = _ARG_PROJECT_79_158 ARGS;\
++	(XXX)->flgopts.filterValue = _ARG_PROJECT_80_158 ARGS;\
++	(XXX)->flgopts.jdkClassPath = _ARG_PROJECT_81_158 ARGS;\
++	(XXX)->flgopts.manualResolve = _ARG_PROJECT_82_158 ARGS;\
++	(XXX)->flgopts.browsedSymName = _ARG_PROJECT_83_158 ARGS;\
++	(XXX)->flgopts.modifiedFlag = _ARG_PROJECT_84_158 ARGS;\
++	(XXX)->flgopts.olcxMenuSelectLineNum = _ARG_PROJECT_85_158 ARGS;\
++	(XXX)->flgopts.htmlNoUnderline = _ARG_PROJECT_86_158 ARGS;\
++	(XXX)->flgopts.htmlLinkColor = _ARG_PROJECT_87_158 ARGS;\
++	(XXX)->flgopts.htmlCutPath = _ARG_PROJECT_88_158 ARGS;\
++	(XXX)->flgopts.htmlCutPathLen = _ARG_PROJECT_89_158 ARGS;\
++	(XXX)->flgopts.ooChecksBits = _ARG_PROJECT_90_158 ARGS;\
++	(XXX)->flgopts.htmlLineNums = _ARG_PROJECT_91_158 ARGS;\
++	(XXX)->flgopts.htmlNoColors = _ARG_PROJECT_92_158 ARGS;\
++	(XXX)->flgopts.cxMemoryFaktor = _ARG_PROJECT_93_158 ARGS;\
++	(XXX)->flgopts.multiHeadRefsCare = _ARG_PROJECT_94_158 ARGS;\
++	(XXX)->flgopts.strictAnsi = _ARG_PROJECT_95_158 ARGS;\
++	(XXX)->flgopts.project = _ARG_PROJECT_96_158 ARGS;\
++	(XXX)->flgopts.updateOnlyModifiedFiles = _ARG_PROJECT_97_158 ARGS;\
++	(XXX)->flgopts.olcxlccursor = _ARG_PROJECT_98_158 ARGS;\
++	(XXX)->flgopts.htmlZipCommand = _ARG_PROJECT_99_158 ARGS;\
++	(XXX)->flgopts.olcxSearchString = _ARG_PROJECT_100_158 ARGS;\
++	(XXX)->flgopts.olineLen = _ARG_PROJECT_101_158 ARGS;\
++	(XXX)->flgopts.htmlLinkSuffix = _ARG_PROJECT_102_158 ARGS;\
++	(XXX)->flgopts.olExtractAddrParPrefix = _ARG_PROJECT_103_158 ARGS;\
++	(XXX)->flgopts.extractMode = _ARG_PROJECT_104_158 ARGS;\
++	(XXX)->flgopts.htmlFunSeparate = _ARG_PROJECT_105_158 ARGS;\
++	(XXX)->flgopts.extractName = _ARG_PROJECT_106_158 ARGS;\
++	(XXX)->flgopts.maxCompletions = _ARG_PROJECT_107_158 ARGS;\
++	(XXX)->flgopts.editor = _ARG_PROJECT_108_158 ARGS;\
++	(XXX)->flgopts.create = _ARG_PROJECT_109_158 ARGS;\
++	(XXX)->flgopts.olcxRefSuffix = _ARG_PROJECT_110_158 ARGS;\
++	(XXX)->flgopts.recursivelyDirs = _ARG_PROJECT_111_158 ARGS;\
++	(XXX)->flgopts.classpath = _ARG_PROJECT_112_158 ARGS;\
++	(XXX)->flgopts.tabulator = _ARG_PROJECT_113_158 ARGS;\
++	(XXX)->flgopts.htmlRoot = _ARG_PROJECT_114_158 ARGS;\
++	(XXX)->flgopts.htmlRichLists = _ARG_PROJECT_115_158 ARGS;\
++	(XXX)->flgopts.htmlglobalx = _ARG_PROJECT_116_158 ARGS;\
++	(XXX)->flgopts.htmllocalx = _ARG_PROJECT_117_158 ARGS;\
++	(XXX)->flgopts.cIsCplusplus = _ARG_PROJECT_118_158 ARGS;\
++	(XXX)->flgopts.olCursorPos = _ARG_PROJECT_119_158 ARGS;\
++	(XXX)->flgopts.olMarkPos = _ARG_PROJECT_120_158 ARGS;\
++	(XXX)->flgopts.taskRegime = _ARG_PROJECT_121_158 ARGS;\
++	(XXX)->flgopts.user = _ARG_PROJECT_122_158 ARGS;\
++	(XXX)->flgopts.debug = _ARG_PROJECT_123_158 ARGS;\
++	(XXX)->flgopts.showIncludes = _ARG_PROJECT_124_158 ARGS;\
++	(XXX)->flgopts.cpp_comment = _ARG_PROJECT_125_158 ARGS;\
++	(XXX)->flgopts.c_struct_scope = _ARG_PROJECT_126_158 ARGS;\
++	(XXX)->flgopts.cxrefs = _ARG_PROJECT_127_158 ARGS;\
++	(XXX)->flgopts.olcxGotoVal = _ARG_PROJECT_128_158 ARGS;\
++	(XXX)->flgopts.originalDir = _ARG_PROJECT_129_158 ARGS;\
++	(XXX)->flgopts.no_ref_locals = _ARG_PROJECT_130_158 ARGS;\
++	(XXX)->flgopts.no_ref_records = _ARG_PROJECT_131_158 ARGS;\
++	(XXX)->flgopts.no_ref_enumerator = _ARG_PROJECT_132_158 ARGS;\
++	(XXX)->flgopts.no_ref_typedef = _ARG_PROJECT_133_158 ARGS;\
++	(XXX)->flgopts.no_ref_macro = _ARG_PROJECT_134_158 ARGS;\
++	(XXX)->flgopts.no_stdop = _ARG_PROJECT_135_158 ARGS;\
++	(XXX)->flgopts.qnxMessages = _ARG_PROJECT_136_158 ARGS;\
++	(XXX)->flgopts.typedefg = _ARG_PROJECT_137_158 ARGS;\
++	(XXX)->flgopts.str_fill = _ARG_PROJECT_138_158 ARGS;\
++	(XXX)->flgopts.enum_name = _ARG_PROJECT_139_158 ARGS;\
++	(XXX)->flgopts.body = _ARG_PROJECT_140_158 ARGS;\
++	(XXX)->flgopts.header = _ARG_PROJECT_141_158 ARGS;\
++	(XXX)->flgopts.str_copy = _ARG_PROJECT_142_158 ARGS;\
++	(XXX)->flgopts.err = _ARG_PROJECT_143_158 ARGS;\
++	(XXX)->flgopts.long_cxref = _ARG_PROJECT_144_158 ARGS;\
++	(XXX)->flgopts.brief = _ARG_PROJECT_145_158 ARGS;\
++	(XXX)->flgopts.update = _ARG_PROJECT_146_158 ARGS;\
++	(XXX)->flgopts.keep_old = _ARG_PROJECT_147_158 ARGS;\
++	(XXX)->flgopts.last_message = _ARG_PROJECT_148_158 ARGS;\
++	(XXX)->flgopts.refnum = _ARG_PROJECT_149_158 ARGS;\
++	(XXX)->flgopts.setGetEnv.num = _ARG_PROJECT_150_158 ARGS;\
++	(XXX)->flgopts.htmlCut.pathesNum = _ARG_PROJECT_151_158 ARGS;\
++	(XXX)->flgopts.allAllocatedStrings = _ARG_PROJECT_152_158 ARGS;\
++	(XXX)->flgopts.pendingMemory.overflowHandler = _ARG_PROJECT_153_158 ARGS;\
++	(XXX)->flgopts.pendingMemory.i = _ARG_PROJECT_154_158 ARGS;\
++	(XXX)->flgopts.pendingMemory.size = _ARG_PROJECT_155_158 ARGS;\
++	(XXX)->flgopts.pendingMemory.b = _ARG_PROJECT_156_158 ARGS;\
++	(XXX)->next = _ARG_PROJECT_157_158 ARGS;\
+ }
+ #define FILL_lexBuf(XXX,FARG0,FARG1,FARG2,FARG3) {\
+ 	(XXX)->cc = FARG0;\
+@@ -2231,20 +2227,23 @@
+ }
+ #define _FILLF_yyGlobalState(XXX,ARGS) {\
+ }
+-#define FILL__IO_marker(XXX,FARG0,FARG1,FARG2) {\
+-	(XXX)->_next = FARG0;\
+-	(XXX)->_sbuf = FARG1;\
+-	(XXX)->_pos = FARG2;\
++#define FILL__IO_marker(XXX) {\
+ }
+-#define FILLF__IO_marker(XXX,FARG0,FARG1,FARG2) {\
+-	(XXX)->_next = FARG0;\
+-	(XXX)->_sbuf = FARG1;\
+-	(XXX)->_pos = FARG2;\
++#define FILLF__IO_marker(XXX) {\
+ }
+ #define _FILLF__IO_marker(XXX,ARGS) {\
+-	(XXX)->_next = _ARG_PROJECT_0_3 ARGS;\
+-	(XXX)->_sbuf = _ARG_PROJECT_1_3 ARGS;\
+-	(XXX)->_pos = _ARG_PROJECT_2_3 ARGS;\
++}
++#define FILL___pthread_internal_list(XXX,FARG0,FARG1) {\
++	(XXX)->__prev = FARG0;\
++	(XXX)->__next = FARG1;\
++}
++#define FILLF___pthread_internal_list(XXX,FARG0,FARG1) {\
++	(XXX)->__prev = FARG0;\
++	(XXX)->__next = FARG1;\
++}
++#define _FILLF___pthread_internal_list(XXX,ARGS) {\
++	(XXX)->__prev = _ARG_PROJECT_0_2 ARGS;\
++	(XXX)->__next = _ARG_PROJECT_1_2 ARGS;\
+ }
+ #define FILL_fileItem(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7,FARG8,FARG9) {\
+ 	(XXX)->name = FARG0;\
+@@ -2300,6 +2299,21 @@
+ 	(XXX)->directEnclosingInstance = _ARG_PROJECT_17_19 ARGS;\
+ 	(XXX)->next = _ARG_PROJECT_18_19 ARGS;\
+ }
++#define FILL_gzFile_s(XXX,FARG0,FARG1,FARG2) {\
++	(XXX)->have = FARG0;\
++	(XXX)->next = FARG1;\
++	(XXX)->pos = FARG2;\
++}
++#define FILLF_gzFile_s(XXX,FARG0,FARG1,FARG2) {\
++	(XXX)->have = FARG0;\
++	(XXX)->next = FARG1;\
++	(XXX)->pos = FARG2;\
++}
++#define _FILLF_gzFile_s(XXX,ARGS) {\
++	(XXX)->have = _ARG_PROJECT_0_3 ARGS;\
++	(XXX)->next = _ARG_PROJECT_1_3 ARGS;\
++	(XXX)->pos = _ARG_PROJECT_2_3 ARGS;\
++}
+ #define FILL_mallinfo(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7,FARG8,FARG9) {\
+ 	(XXX)->arena = FARG0;\
+ 	(XXX)->ordblks = FARG1;\
+@@ -2406,8 +2420,8 @@
+ 	(XXX)->stat.st_mtim.tv_nsec = FARG18;\
+ 	(XXX)->stat.st_ctim.tv_sec = FARG19;\
+ 	(XXX)->stat.st_ctim.tv_nsec = FARG20;\
+-	(XXX)->stat.__unused4 = FARG21;\
+-	(XXX)->stat.__unused5 = FARG22;\
++	(XXX)->stat.__glibc_reserved4 = FARG21;\
++	(XXX)->stat.__glibc_reserved5 = FARG22;\
+ 	(XXX)->markers = FARG23;\
+ 	(XXX)->a.bufferSize = FARG24;\
+ 	(XXX)->a.text = FARG25;\
+@@ -2441,8 +2455,8 @@
+ 	(XXX)->stat.st_mtim.tv_nsec = _ARG_PROJECT_18_33 ARGS;\
+ 	(XXX)->stat.st_ctim.tv_sec = _ARG_PROJECT_19_33 ARGS;\
+ 	(XXX)->stat.st_ctim.tv_nsec = _ARG_PROJECT_20_33 ARGS;\
+-	(XXX)->stat.__unused4 = _ARG_PROJECT_21_33 ARGS;\
+-	(XXX)->stat.__unused5 = _ARG_PROJECT_22_33 ARGS;\
++	(XXX)->stat.__glibc_reserved4 = _ARG_PROJECT_21_33 ARGS;\
++	(XXX)->stat.__glibc_reserved5 = _ARG_PROJECT_22_33 ARGS;\
+ 	(XXX)->markers = _ARG_PROJECT_23_33 ARGS;\
+ 	(XXX)->a.bufferSize = _ARG_PROJECT_24_33 ARGS;\
+ 	(XXX)->a.text = _ARG_PROJECT_25_33 ARGS;\
+@@ -2494,6 +2508,51 @@
+ 	(XXX)->pos.coll = _ARG_PROJECT_2_4 ARGS;\
+ 	(XXX)->next = _ARG_PROJECT_3_4 ARGS;\
+ }
++#define FILL_gz_header_s(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7,FARG8,FARG9,FARG10,FARG11,FARG12) {\
++	(XXX)->text = FARG0;\
++	(XXX)->time = FARG1;\
++	(XXX)->xflags = FARG2;\
++	(XXX)->os = FARG3;\
++	(XXX)->extra = FARG4;\
++	(XXX)->extra_len = FARG5;\
++	(XXX)->extra_max = FARG6;\
++	(XXX)->name = FARG7;\
++	(XXX)->name_max = FARG8;\
++	(XXX)->comment = FARG9;\
++	(XXX)->comm_max = FARG10;\
++	(XXX)->hcrc = FARG11;\
++	(XXX)->done = FARG12;\
++}
++#define FILLF_gz_header_s(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7,FARG8,FARG9,FARG10,FARG11,FARG12) {\
++	(XXX)->text = FARG0;\
++	(XXX)->time = FARG1;\
++	(XXX)->xflags = FARG2;\
++	(XXX)->os = FARG3;\
++	(XXX)->extra = FARG4;\
++	(XXX)->extra_len = FARG5;\
++	(XXX)->extra_max = FARG6;\
++	(XXX)->name = FARG7;\
++	(XXX)->name_max = FARG8;\
++	(XXX)->comment = FARG9;\
++	(XXX)->comm_max = FARG10;\
++	(XXX)->hcrc = FARG11;\
++	(XXX)->done = FARG12;\
++}
++#define _FILLF_gz_header_s(XXX,ARGS) {\
++	(XXX)->text = _ARG_PROJECT_0_13 ARGS;\
++	(XXX)->time = _ARG_PROJECT_1_13 ARGS;\
++	(XXX)->xflags = _ARG_PROJECT_2_13 ARGS;\
++	(XXX)->os = _ARG_PROJECT_3_13 ARGS;\
++	(XXX)->extra = _ARG_PROJECT_4_13 ARGS;\
++	(XXX)->extra_len = _ARG_PROJECT_5_13 ARGS;\
++	(XXX)->extra_max = _ARG_PROJECT_6_13 ARGS;\
++	(XXX)->name = _ARG_PROJECT_7_13 ARGS;\
++	(XXX)->name_max = _ARG_PROJECT_8_13 ARGS;\
++	(XXX)->comment = _ARG_PROJECT_9_13 ARGS;\
++	(XXX)->comm_max = _ARG_PROJECT_10_13 ARGS;\
++	(XXX)->hcrc = _ARG_PROJECT_11_13 ARGS;\
++	(XXX)->done = _ARG_PROJECT_12_13 ARGS;\
++}
+ #define FILL_bb_symbolList(XXX,FARG0,FARG1,FARG2) {\
+ 	(XXX)->b = FARG0;\
+ 	(XXX)->e = FARG1;\
+@@ -2812,6 +2871,12 @@
+ 	(XXX)->previous = _ARG_PROJECT_2_4 ARGS;\
+ 	(XXX)->next = _ARG_PROJECT_3_4 ARGS;\
+ }
++#define FILL__IO_codecvt(XXX) {\
++}
++#define FILLF__IO_codecvt(XXX) {\
++}
++#define _FILLF__IO_codecvt(XXX,ARGS) {\
++}
+ #define FILL_editorMemoryBlock(XXX,FARG0) {\
+ 	(XXX)->next = FARG0;\
+ }
+@@ -3008,8 +3073,8 @@
+ 	(XXX)->st_atim = FARG12;\
+ 	(XXX)->st_mtim = FARG13;\
+ 	(XXX)->st_ctim = FARG14;\
+-	(XXX)->__unused4 = FARG15;\
+-	(XXX)->__unused5 = FARG16;\
++	(XXX)->__glibc_reserved4 = FARG15;\
++	(XXX)->__glibc_reserved5 = FARG16;\
+ }
+ #define FILLF_stat(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7,FARG8,FARG9,FARG10,FARG11,FARG12,FARG13,FARG14,FARG15,FARG16,FARG17,FARG18,FARG19) {\
+ 	(XXX)->st_dev = FARG0;\
+@@ -3030,8 +3095,8 @@
+ 	(XXX)->st_mtim.tv_nsec = FARG15;\
+ 	(XXX)->st_ctim.tv_sec = FARG16;\
+ 	(XXX)->st_ctim.tv_nsec = FARG17;\
+-	(XXX)->__unused4 = FARG18;\
+-	(XXX)->__unused5 = FARG19;\
++	(XXX)->__glibc_reserved4 = FARG18;\
++	(XXX)->__glibc_reserved5 = FARG19;\
+ }
+ #define _FILLF_stat(XXX,ARGS) {\
+ 	(XXX)->st_dev = _ARG_PROJECT_0_20 ARGS;\
+@@ -3052,8 +3117,8 @@
+ 	(XXX)->st_mtim.tv_nsec = _ARG_PROJECT_15_20 ARGS;\
+ 	(XXX)->st_ctim.tv_sec = _ARG_PROJECT_16_20 ARGS;\
+ 	(XXX)->st_ctim.tv_nsec = _ARG_PROJECT_17_20 ARGS;\
+-	(XXX)->__unused4 = _ARG_PROJECT_18_20 ARGS;\
+-	(XXX)->__unused5 = _ARG_PROJECT_19_20 ARGS;\
++	(XXX)->__glibc_reserved4 = _ARG_PROJECT_18_20 ARGS;\
++	(XXX)->__glibc_reserved5 = _ARG_PROJECT_19_20 ARGS;\
+ }
+ #define FILL_editorRegion(XXX,FARG0,FARG1) {\
+ 	(XXX)->b = FARG0;\
+@@ -3138,6 +3203,27 @@
+ #define _FILLF_editorUndoRenameBuff(XXX,ARGS) {\
+ 	(XXX)->name = _ARG_PROJECT_0_1 ARGS;\
+ }
++#define FILL___pthread_mutex_s(XXX,FARG0,FARG1,FARG2,FARG3,FARG4) {\
++	(XXX)->__lock = FARG0;\
++	(XXX)->__count = FARG1;\
++	(XXX)->__owner = FARG2;\
++	(XXX)->__kind = FARG3;\
++	(XXX)->__nusers = FARG4;\
++}
++#define FILLF___pthread_mutex_s(XXX,FARG0,FARG1,FARG2,FARG3,FARG4) {\
++	(XXX)->__lock = FARG0;\
++	(XXX)->__count = FARG1;\
++	(XXX)->__owner = FARG2;\
++	(XXX)->__kind = FARG3;\
++	(XXX)->__nusers = FARG4;\
++}
++#define _FILLF___pthread_mutex_s(XXX,ARGS) {\
++	(XXX)->__lock = _ARG_PROJECT_0_5 ARGS;\
++	(XXX)->__count = _ARG_PROJECT_1_5 ARGS;\
++	(XXX)->__owner = _ARG_PROJECT_2_5 ARGS;\
++	(XXX)->__kind = _ARG_PROJECT_3_5 ARGS;\
++	(XXX)->__nusers = _ARG_PROJECT_4_5 ARGS;\
++}
+ #define FILL_javaStat(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7,FARG8,FARG9,FARG10,FARG11,FARG12) {\
+ 	(XXX)->className = FARG0;\
+ 	(XXX)->thisType = FARG1;\
+@@ -3224,8 +3310,8 @@
+ 	(XXX)->st.st_mtim.tv_nsec = FARG15;\
+ 	(XXX)->st.st_ctim.tv_sec = FARG16;\
+ 	(XXX)->st.st_ctim.tv_nsec = FARG17;\
+-	(XXX)->st.__unused4 = FARG18;\
+-	(XXX)->st.__unused5 = FARG19;\
++	(XXX)->st.__glibc_reserved4 = FARG18;\
++	(XXX)->st.__glibc_reserved5 = FARG19;\
+ 	(XXX)->dir = FARG20;\
+ }
+ #define _FILLF_zipFileTabItem(XXX,ARGS) {\
+@@ -3247,8 +3333,8 @@
+ 	(XXX)->st.st_mtim.tv_nsec = _ARG_PROJECT_15_21 ARGS;\
+ 	(XXX)->st.st_ctim.tv_sec = _ARG_PROJECT_16_21 ARGS;\
+ 	(XXX)->st.st_ctim.tv_nsec = _ARG_PROJECT_17_21 ARGS;\
+-	(XXX)->st.__unused4 = _ARG_PROJECT_18_21 ARGS;\
+-	(XXX)->st.__unused5 = _ARG_PROJECT_19_21 ARGS;\
++	(XXX)->st.__glibc_reserved4 = _ARG_PROJECT_18_21 ARGS;\
++	(XXX)->st.__glibc_reserved5 = _ARG_PROJECT_19_21 ARGS;\
+ 	(XXX)->dir = _ARG_PROJECT_20_21 ARGS;\
+ }
+ #define FILL_dirent(XXX,FARG0,FARG1,FARG2,FARG3) {\
+@@ -3269,6 +3355,24 @@
+ 	(XXX)->d_reclen = _ARG_PROJECT_2_4 ARGS;\
+ 	(XXX)->d_type = _ARG_PROJECT_3_4 ARGS;\
+ }
++#define FILL__IO_cookie_io_functions_t(XXX,FARG0,FARG1,FARG2,FARG3) {\
++	(XXX)->read = FARG0;\
++	(XXX)->write = FARG1;\
++	(XXX)->seek = FARG2;\
++	(XXX)->close = FARG3;\
++}
++#define FILLF__IO_cookie_io_functions_t(XXX,FARG0,FARG1,FARG2,FARG3) {\
++	(XXX)->read = FARG0;\
++	(XXX)->write = FARG1;\
++	(XXX)->seek = FARG2;\
++	(XXX)->close = FARG3;\
++}
++#define _FILLF__IO_cookie_io_functions_t(XXX,ARGS) {\
++	(XXX)->read = _ARG_PROJECT_0_4 ARGS;\
++	(XXX)->write = _ARG_PROJECT_1_4 ARGS;\
++	(XXX)->seek = _ARG_PROJECT_2_4 ARGS;\
++	(XXX)->close = _ARG_PROJECT_3_4 ARGS;\
++}
+ #define FILL_cxScanFileFunctionLink(XXX,FARG0,FARG1,FARG2) {\
+ 	(XXX)->recordCode = FARG0;\
+ 	(XXX)->handleFun = FARG1;\
+@@ -3349,6 +3453,20 @@
+ 	(XXX)->foundRefNotToTestedClass = _ARG_PROJECT_7_9 ARGS;\
+ 	(XXX)->foundOuterScopeRef = _ARG_PROJECT_8_9 ARGS;\
+ }
++#define FILL__G_fpos64_t(XXX,FARG0,FARG1) {\
++	(XXX)->__pos = FARG0;\
++	(XXX)->__state = FARG1;\
++}
++#define FILLF__G_fpos64_t(XXX,FARG0,FARG1,FARG2,FARG3) {\
++	(XXX)->__pos = FARG0;\
++	(XXX)->__state.__count = FARG1;\
++	_FILLUREC__##FARG2((&(XXX)->__state.__value), FARG3);\
++}
++#define _FILLF__G_fpos64_t(XXX,ARGS) {\
++	(XXX)->__pos = _ARG_PROJECT_0_4 ARGS;\
++	(XXX)->__state.__count = _ARG_PROJECT_1_4 ARGS;\
++	_FILLUREC__##_ARG_PROJECT_2_4 ARGS((&(XXX)->__state.__value), _ARG_PROJECT_3_4 ARGS);\
++}
+ #define FILL_symbolList(XXX,FARG0,FARG1) {\
+ 	(XXX)->d = FARG0;\
+ 	(XXX)->next = FARG1;\
+@@ -3417,6 +3535,8 @@
+ 	(XXX)->s = _ARG_PROJECT_0_2 ARGS;\
+ 	(XXX)->p = _ARG_PROJECT_1_2 ARGS;\
+ }
++#define _FILLUREC_pthread_attr_t___size(XX,ARG) XX->__size = ARG;
++#define _FILLUREC_pthread_attr_t___align(XX,ARG) XX->__align = ARG;
+ #define FILL_position(XXX,FARG0,FARG1,FARG2) {\
+ 	(XXX)->file = FARG0;\
+ 	(XXX)->line = FARG1;\
+@@ -3435,31 +3555,36 @@
+ #define _FILLUREC_typeModifUnion_f(XX,ARGS) _FILLF_funTypeModif(&(XX->f),ARGS)
+ #define _FILLUREC_typeModifUnion_m(XX,ARGS) _FILLF_methodTypeModif(&(XX->m),ARGS)
+ #define _FILLUREC_typeModifUnion_t(XX,ARG) XX->t = ARG;
+-#define FILL_idIdentList(XXX,FARG0,FARG1,FARG2,FARG3) {\
++#define FILL_idIdentList(XXX,FARG0,FARG1,FARG2,FARG3,FARG4) {\
+ 	(XXX)->idi = FARG0;\
+ 	(XXX)->fname = FARG1;\
+ 	(XXX)->nameType = FARG2;\
+-	(XXX)->next = FARG3;\
++	(XXX)->down = FARG3;\
++	(XXX)->next = FARG4;\
+ }
+-#define FILLF_idIdentList(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7) {\
++#define FILLF_idIdentList(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7,FARG8,FARG9) {\
+ 	(XXX)->idi.name = FARG0;\
+ 	(XXX)->idi.sd = FARG1;\
+ 	(XXX)->idi.p.file = FARG2;\
+ 	(XXX)->idi.p.line = FARG3;\
+ 	(XXX)->idi.p.coll = FARG4;\
+-	(XXX)->fname = FARG5;\
+-	(XXX)->nameType = FARG6;\
+-	(XXX)->next = FARG7;\
++	(XXX)->idi.next = FARG5;\
++	(XXX)->fname = FARG6;\
++	(XXX)->nameType = FARG7;\
++	(XXX)->down = FARG8;\
++	(XXX)->next = FARG9;\
+ }
+ #define _FILLF_idIdentList(XXX,ARGS) {\
+-	(XXX)->idi.name = _ARG_PROJECT_0_8 ARGS;\
+-	(XXX)->idi.sd = _ARG_PROJECT_1_8 ARGS;\
+-	(XXX)->idi.p.file = _ARG_PROJECT_2_8 ARGS;\
+-	(XXX)->idi.p.line = _ARG_PROJECT_3_8 ARGS;\
+-	(XXX)->idi.p.coll = _ARG_PROJECT_4_8 ARGS;\
+-	(XXX)->fname = _ARG_PROJECT_5_8 ARGS;\
+-	(XXX)->nameType = _ARG_PROJECT_6_8 ARGS;\
+-	(XXX)->next = _ARG_PROJECT_7_8 ARGS;\
++	(XXX)->idi.name = _ARG_PROJECT_0_10 ARGS;\
++	(XXX)->idi.sd = _ARG_PROJECT_1_10 ARGS;\
++	(XXX)->idi.p.file = _ARG_PROJECT_2_10 ARGS;\
++	(XXX)->idi.p.line = _ARG_PROJECT_3_10 ARGS;\
++	(XXX)->idi.p.coll = _ARG_PROJECT_4_10 ARGS;\
++	(XXX)->idi.next = _ARG_PROJECT_5_10 ARGS;\
++	(XXX)->fname = _ARG_PROJECT_6_10 ARGS;\
++	(XXX)->nameType = _ARG_PROJECT_7_10 ARGS;\
++	(XXX)->down = _ARG_PROJECT_8_10 ARGS;\
++	(XXX)->next = _ARG_PROJECT_9_10 ARGS;\
+ }
+ #define FILL_exprTokenType(XXX,FARG0,FARG1,FARG2) {\
+ 	(XXX)->t = FARG0;\
+@@ -3488,6 +3613,12 @@
+ 	(XXX)->baseClassIndex = _ARG_PROJECT_0_2 ARGS;\
+ 	(XXX)->tree = _ARG_PROJECT_1_2 ARGS;\
+ }
++#define FILL__IO_wide_data(XXX) {\
++}
++#define FILLF__IO_wide_data(XXX) {\
++}
++#define _FILLF__IO_wide_data(XXX,ARGS) {\
++}
+ #define FILL_fileStat(XXX,FARG0,FARG1) {\
+ 	(XXX)->validFlag = FARG0;\
+ 	(XXX)->stat = FARG1;\
+@@ -3512,8 +3643,8 @@
+ 	(XXX)->stat.st_mtim.tv_nsec = FARG16;\
+ 	(XXX)->stat.st_ctim.tv_sec = FARG17;\
+ 	(XXX)->stat.st_ctim.tv_nsec = FARG18;\
+-	(XXX)->stat.__unused4 = FARG19;\
+-	(XXX)->stat.__unused5 = FARG20;\
++	(XXX)->stat.__glibc_reserved4 = FARG19;\
++	(XXX)->stat.__glibc_reserved5 = FARG20;\
+ }
+ #define _FILLF_fileStat(XXX,ARGS) {\
+ 	(XXX)->validFlag = _ARG_PROJECT_0_21 ARGS;\
+@@ -3535,8 +3666,8 @@
+ 	(XXX)->stat.st_mtim.tv_nsec = _ARG_PROJECT_16_21 ARGS;\
+ 	(XXX)->stat.st_ctim.tv_sec = _ARG_PROJECT_17_21 ARGS;\
+ 	(XXX)->stat.st_ctim.tv_nsec = _ARG_PROJECT_18_21 ARGS;\
+-	(XXX)->stat.__unused4 = _ARG_PROJECT_19_21 ARGS;\
+-	(XXX)->stat.__unused5 = _ARG_PROJECT_20_21 ARGS;\
++	(XXX)->stat.__glibc_reserved4 = _ARG_PROJECT_19_21 ARGS;\
++	(XXX)->stat.__glibc_reserved5 = _ARG_PROJECT_20_21 ARGS;\
+ }
+ #define FILL_caching(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6) {\
+ 	(XXX)->activeCache = FARG0;\
+@@ -3697,12 +3828,6 @@
+ 	(XXX)->ct.tree = _ARG_PROJECT_8_10 ARGS;\
+ 	(XXX)->next = _ARG_PROJECT_9_10 ARGS;\
+ }
+-#define FILL___gconv_loaded_object(XXX) {\
+-}
+-#define FILLF___gconv_loaded_object(XXX) {\
+-}
+-#define _FILLF___gconv_loaded_object(XXX,ARGS) {\
+-}
+ #define FILL_bb_symbolPositionPair(XXX,FARG0,FARG1,FARG2) {\
+ 	(XXX)->b = FARG0;\
+ 	(XXX)->e = FARG1;\
+@@ -3751,7 +3876,7 @@
+ 	(XXX)->e.coll = _ARG_PROJECT_5_7 ARGS;\
+ 	(XXX)->d = _ARG_PROJECT_6_7 ARGS;\
+ }
+-#define FILL_options(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7,FARG8,FARG9,FARG10,FARG11,FARG12,FARG13,FARG14,FARG15,FARG16,FARG17,FARG18,FARG19,FARG20,FARG21,FARG22,FARG23,FARG24,FARG25,FARG26,FARG27,FARG28,FARG29,FARG30,FARG31,FARG32,FARG33,FARG34,FARG35,FARG36,FARG37,FARG38,FARG39,FARG40,FARG41,FARG42,FARG43,FARG44,FARG45,FARG46,FARG47,FARG48,FARG49,FARG50,FARG51,FARG52,FARG53,FARG54,FARG55,FARG56,FARG57,FARG58,FARG59,FARG60,FARG61,FARG62,FARG63,FARG64,FARG65,FARG66,FARG67,FARG68,FARG69,FARG70,FARG71,FARG72,FARG73,FARG74,FARG75,FARG76,FARG77,FARG78,FARG79,FARG80,FARG81,FARG82,FARG83,FARG84,FARG85,FARG86,FARG87,FARG88,FARG89,FARG90,FARG91,FARG92,FARG93,FARG94,FARG95,FARG96,FARG97,FARG98,FARG99,FARG100,FARG101,FARG102,FARG103,FARG104,FARG105,FARG106,FARG107,FARG108,FARG109,FARG110,FARG111,FARG112,FARG113,FARG114,FARG115,FARG116,FARG117,FARG118,FARG119,FARG120,FARG121,FARG122,FARG123,FARG124,FARG125,FARG126,FARG127,FARG128,FARG129,FARG130,FARG131,FARG132,FARG133,FARG134,FARG135,FARG136,FARG137,FARG138,FARG139,FARG140,FARG141,FARG142,FARG143,FARG144,FARG145,FARG146,FARG147,FARG148,FARG149) {\
++#define FILL_options(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7,FARG8,FARG9,FARG10,FARG11,FARG12,FARG13,FARG14,FARG15,FARG16,FARG17,FARG18,FARG19,FARG20,FARG21,FARG22,FARG23,FARG24,FARG25,FARG26,FARG27,FARG28,FARG29,FARG30,FARG31,FARG32,FARG33,FARG34,FARG35,FARG36,FARG37,FARG38,FARG39,FARG40,FARG41,FARG42,FARG43,FARG44,FARG45,FARG46,FARG47,FARG48,FARG49,FARG50,FARG51,FARG52,FARG53,FARG54,FARG55,FARG56,FARG57,FARG58,FARG59,FARG60,FARG61,FARG62,FARG63,FARG64,FARG65,FARG66,FARG67,FARG68,FARG69,FARG70,FARG71,FARG72,FARG73,FARG74,FARG75,FARG76,FARG77,FARG78,FARG79,FARG80,FARG81,FARG82,FARG83,FARG84,FARG85,FARG86,FARG87,FARG88,FARG89,FARG90,FARG91,FARG92,FARG93,FARG94,FARG95,FARG96,FARG97,FARG98,FARG99,FARG100,FARG101,FARG102,FARG103,FARG104,FARG105,FARG106,FARG107,FARG108,FARG109,FARG110,FARG111,FARG112,FARG113,FARG114,FARG115,FARG116,FARG117,FARG118,FARG119,FARG120,FARG121,FARG122,FARG123,FARG124,FARG125,FARG126,FARG127,FARG128,FARG129,FARG130,FARG131,FARG132,FARG133,FARG134,FARG135,FARG136,FARG137,FARG138,FARG139,FARG140,FARG141,FARG142,FARG143,FARG144,FARG145,FARG146,FARG147,FARG148,FARG149,FARG150,FARG151) {\
+ 	(XXX)->fileEncoding = FARG0;\
+ 	(XXX)->completeParenthesis = FARG1;\
+ 	(XXX)->defaultAddImportStrategy = FARG2;\
+@@ -3762,148 +3887,150 @@
+ 	(XXX)->commentMovingLevel = FARG7;\
+ 	(XXX)->pruneNames = FARG8;\
+ 	(XXX)->inputFiles = FARG9;\
+-	(XXX)->continueRefactoring = FARG10;\
+-	(XXX)->completionCaseSensitive = FARG11;\
+-	(XXX)->xrefrc = FARG12;\
+-	(XXX)->eolConversion = FARG13;\
+-	(XXX)->checkVersion = FARG14;\
+-	(XXX)->nestedClassDisplaying = FARG15;\
+-	(XXX)->pushName = FARG16;\
+-	(XXX)->parnum2 = FARG17;\
+-	(XXX)->refpar1 = FARG18;\
+-	(XXX)->refpar2 = FARG19;\
+-	(XXX)->theRefactoring = FARG20;\
+-	(XXX)->briefoutput = FARG21;\
+-	(XXX)->cacheIncludes = FARG22;\
+-	(XXX)->stdopFlag = FARG23;\
+-	(XXX)->renameTo = FARG24;\
+-	(XXX)->refactoringRegime = FARG25;\
+-	(XXX)->xref2 = FARG26;\
+-	(XXX)->moveTargetFile = FARG27;\
+-	(XXX)->cFilesSuffixes = FARG28;\
+-	(XXX)->javaFilesSuffixes = FARG29;\
+-	(XXX)->cppFilesSuffixes = FARG30;\
+-	(XXX)->fileNamesCaseSensitive = FARG31;\
+-	(XXX)->htmlLineNumLabel = FARG32;\
+-	(XXX)->htmlCutSuffix = FARG33;\
+-	(XXX)->tagSearchSpecif = FARG34;\
+-	(XXX)->javaVersion = FARG35;\
+-	(XXX)->olcxWinDelFile = FARG36;\
+-	(XXX)->olcxWinDelFromLine = FARG37;\
+-	(XXX)->olcxWinDelFromCol = FARG38;\
+-	(XXX)->olcxWinDelToLine = FARG39;\
+-	(XXX)->olcxWinDelToCol = FARG40;\
+-	(XXX)->moveFromUser = FARG41;\
+-	(XXX)->noErrors = FARG42;\
+-	(XXX)->fqtNameToCompletions = FARG43;\
+-	(XXX)->moveTargetClass = FARG44;\
+-	(XXX)->trivialPreCheckCode = FARG45;\
+-	(XXX)->urlGenTemporaryFile = FARG46;\
+-	(XXX)->urlAutoRedirect = FARG47;\
+-	(XXX)->javaFilesOnly = FARG48;\
+-	(XXX)->exactPositionResolve = FARG49;\
+-	(XXX)->outputFileName = FARG50;\
+-	(XXX)->lineFileName = FARG51;\
+-	(XXX)->includeDirs = FARG52;\
+-	(XXX)->cxrefFileName = FARG53;\
+-	(XXX)->checkFileMovedFrom = FARG54;\
+-	(XXX)->checkFileMovedTo = FARG55;\
+-	(XXX)->checkFirstMovedLine = FARG56;\
+-	(XXX)->checkLinesMoved = FARG57;\
+-	(XXX)->checkNewLineNumber = FARG58;\
+-	(XXX)->getValue = FARG59;\
+-	(XXX)->java2html = FARG60;\
+-	(XXX)->javaSlAllowed = FARG61;\
+-	(XXX)->xfileHashingMethod = FARG62;\
+-	(XXX)->htmlLineNumColor = FARG63;\
+-	(XXX)->htmlCxLineLen = FARG64;\
+-	(XXX)->htmlJdkDocAvailable = FARG65;\
+-	(XXX)->htmlGenJdkDocLinks = FARG66;\
+-	(XXX)->htmlJdkDocUrl = FARG67;\
+-	(XXX)->javaDocPath = FARG68;\
+-	(XXX)->allowPackagesOnCl = FARG69;\
+-	(XXX)->sourcePath = FARG70;\
+-	(XXX)->htmlDirectX = FARG71;\
+-	(XXX)->jdocTmpDir = FARG72;\
+-	(XXX)->noCxFile = FARG73;\
+-	(XXX)->javaDoc = FARG74;\
+-	(XXX)->noIncludeRefs = FARG75;\
+-	(XXX)->allowClassFileRefs = FARG76;\
+-	(XXX)->filterValue = FARG77;\
+-	(XXX)->jdkClassPath = FARG78;\
+-	(XXX)->manualResolve = FARG79;\
+-	(XXX)->browsedSymName = FARG80;\
+-	(XXX)->modifiedFlag = FARG81;\
+-	(XXX)->olcxMenuSelectLineNum = FARG82;\
+-	(XXX)->htmlNoUnderline = FARG83;\
+-	(XXX)->htmlLinkColor = FARG84;\
+-	(XXX)->htmlCutPath = FARG85;\
+-	(XXX)->htmlCutPathLen = FARG86;\
+-	(XXX)->ooChecksBits = FARG87;\
+-	(XXX)->htmlLineNums = FARG88;\
+-	(XXX)->htmlNoColors = FARG89;\
+-	(XXX)->cxMemoryFaktor = FARG90;\
+-	(XXX)->multiHeadRefsCare = FARG91;\
+-	(XXX)->strictAnsi = FARG92;\
+-	(XXX)->project = FARG93;\
+-	(XXX)->updateOnlyModifiedFiles = FARG94;\
+-	(XXX)->olcxlccursor = FARG95;\
+-	(XXX)->htmlZipCommand = FARG96;\
+-	(XXX)->olcxSearchString = FARG97;\
+-	(XXX)->olineLen = FARG98;\
+-	(XXX)->htmlLinkSuffix = FARG99;\
+-	(XXX)->olExtractAddrParPrefix = FARG100;\
+-	(XXX)->extractMode = FARG101;\
+-	(XXX)->htmlFunSeparate = FARG102;\
+-	(XXX)->extractName = FARG103;\
+-	(XXX)->maxCompletions = FARG104;\
+-	(XXX)->editor = FARG105;\
+-	(XXX)->create = FARG106;\
+-	(XXX)->olcxRefSuffix = FARG107;\
+-	(XXX)->recursivelyDirs = FARG108;\
+-	(XXX)->classpath = FARG109;\
+-	(XXX)->tabulator = FARG110;\
+-	(XXX)->htmlRoot = FARG111;\
+-	(XXX)->htmlRichLists = FARG112;\
+-	(XXX)->htmlglobalx = FARG113;\
+-	(XXX)->htmllocalx = FARG114;\
+-	(XXX)->cIsCplusplus = FARG115;\
+-	(XXX)->olCursorPos = FARG116;\
+-	(XXX)->olMarkPos = FARG117;\
+-	(XXX)->taskRegime = FARG118;\
+-	(XXX)->user = FARG119;\
+-	(XXX)->debug = FARG120;\
+-	(XXX)->cpp_comment = FARG121;\
+-	(XXX)->c_struct_scope = FARG122;\
+-	(XXX)->cxrefs = FARG123;\
+-	(XXX)->olcxGotoVal = FARG124;\
+-	(XXX)->originalDir = FARG125;\
+-	(XXX)->no_ref_locals = FARG126;\
+-	(XXX)->no_ref_records = FARG127;\
+-	(XXX)->no_ref_enumerator = FARG128;\
+-	(XXX)->no_ref_typedef = FARG129;\
+-	(XXX)->no_ref_macro = FARG130;\
+-	(XXX)->no_stdop = FARG131;\
+-	(XXX)->qnxMessages = FARG132;\
+-	(XXX)->typedefg = FARG133;\
+-	(XXX)->str_fill = FARG134;\
+-	(XXX)->enum_name = FARG135;\
+-	(XXX)->body = FARG136;\
+-	(XXX)->header = FARG137;\
+-	(XXX)->str_copy = FARG138;\
+-	(XXX)->err = FARG139;\
+-	(XXX)->long_cxref = FARG140;\
+-	(XXX)->brief = FARG141;\
+-	(XXX)->update = FARG142;\
+-	(XXX)->keep_old = FARG143;\
+-	(XXX)->last_message = FARG144;\
+-	(XXX)->refnum = FARG145;\
+-	(XXX)->setGetEnv = FARG146;\
+-	(XXX)->htmlCut = FARG147;\
+-	(XXX)->allAllocatedStrings = FARG148;\
+-	(XXX)->pendingMemory = FARG149;\
+-}
+-#define FILLF_options(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7,FARG8,FARG9,FARG10,FARG11,FARG12,FARG13,FARG14,FARG15,FARG16,FARG17,FARG18,FARG19,FARG20,FARG21,FARG22,FARG23,FARG24,FARG25,FARG26,FARG27,FARG28,FARG29,FARG30,FARG31,FARG32,FARG33,FARG34,FARG35,FARG36,FARG37,FARG38,FARG39,FARG40,FARG41,FARG42,FARG43,FARG44,FARG45,FARG46,FARG47,FARG48,FARG49,FARG50,FARG51,FARG52,FARG53,FARG54,FARG55,FARG56,FARG57,FARG58,FARG59,FARG60,FARG61,FARG62,FARG63,FARG64,FARG65,FARG66,FARG67,FARG68,FARG69,FARG70,FARG71,FARG72,FARG73,FARG74,FARG75,FARG76,FARG77,FARG78,FARG79,FARG80,FARG81,FARG82,FARG83,FARG84,FARG85,FARG86,FARG87,FARG88,FARG89,FARG90,FARG91,FARG92,FARG93,FARG94,FARG95,FARG96,FARG97,FARG98,FARG99,FARG100,FARG101,FARG102,FARG103,FARG104,FARG105,FARG106,FARG107,FARG108,FARG109,FARG110,FARG111,FARG112,FARG113,FARG114,FARG115,FARG116,FARG117,FARG118,FARG119,FARG120,FARG121,FARG122,FARG123,FARG124,FARG125,FARG126,FARG127,FARG128,FARG129,FARG130,FARG131,FARG132,FARG133,FARG134,FARG135,FARG136,FARG137,FARG138,FARG139,FARG140,FARG141,FARG142,FARG143,FARG144,FARG145,FARG146,FARG147,FARG148,FARG149,FARG150,FARG151,FARG152) {\
++	(XXX)->includeFiles = FARG10;\
++	(XXX)->continueRefactoring = FARG11;\
++	(XXX)->completionCaseSensitive = FARG12;\
++	(XXX)->xrefrc = FARG13;\
++	(XXX)->eolConversion = FARG14;\
++	(XXX)->checkVersion = FARG15;\
++	(XXX)->nestedClassDisplaying = FARG16;\
++	(XXX)->pushName = FARG17;\
++	(XXX)->parnum2 = FARG18;\
++	(XXX)->refpar1 = FARG19;\
++	(XXX)->refpar2 = FARG20;\
++	(XXX)->theRefactoring = FARG21;\
++	(XXX)->briefoutput = FARG22;\
++	(XXX)->cacheIncludes = FARG23;\
++	(XXX)->stdopFlag = FARG24;\
++	(XXX)->renameTo = FARG25;\
++	(XXX)->refactoringRegime = FARG26;\
++	(XXX)->xref2 = FARG27;\
++	(XXX)->moveTargetFile = FARG28;\
++	(XXX)->cFilesSuffixes = FARG29;\
++	(XXX)->javaFilesSuffixes = FARG30;\
++	(XXX)->cppFilesSuffixes = FARG31;\
++	(XXX)->fileNamesCaseSensitive = FARG32;\
++	(XXX)->htmlLineNumLabel = FARG33;\
++	(XXX)->htmlCutSuffix = FARG34;\
++	(XXX)->tagSearchSpecif = FARG35;\
++	(XXX)->javaVersion = FARG36;\
++	(XXX)->olcxWinDelFile = FARG37;\
++	(XXX)->olcxWinDelFromLine = FARG38;\
++	(XXX)->olcxWinDelFromCol = FARG39;\
++	(XXX)->olcxWinDelToLine = FARG40;\
++	(XXX)->olcxWinDelToCol = FARG41;\
++	(XXX)->moveFromUser = FARG42;\
++	(XXX)->noErrors = FARG43;\
++	(XXX)->fqtNameToCompletions = FARG44;\
++	(XXX)->moveTargetClass = FARG45;\
++	(XXX)->trivialPreCheckCode = FARG46;\
++	(XXX)->urlGenTemporaryFile = FARG47;\
++	(XXX)->urlAutoRedirect = FARG48;\
++	(XXX)->javaFilesOnly = FARG49;\
++	(XXX)->exactPositionResolve = FARG50;\
++	(XXX)->outputFileName = FARG51;\
++	(XXX)->lineFileName = FARG52;\
++	(XXX)->includeDirs = FARG53;\
++	(XXX)->cxrefFileName = FARG54;\
++	(XXX)->checkFileMovedFrom = FARG55;\
++	(XXX)->checkFileMovedTo = FARG56;\
++	(XXX)->checkFirstMovedLine = FARG57;\
++	(XXX)->checkLinesMoved = FARG58;\
++	(XXX)->checkNewLineNumber = FARG59;\
++	(XXX)->getValue = FARG60;\
++	(XXX)->java2html = FARG61;\
++	(XXX)->javaSlAllowed = FARG62;\
++	(XXX)->xfileHashingMethod = FARG63;\
++	(XXX)->htmlLineNumColor = FARG64;\
++	(XXX)->htmlCxLineLen = FARG65;\
++	(XXX)->htmlJdkDocAvailable = FARG66;\
++	(XXX)->htmlGenJdkDocLinks = FARG67;\
++	(XXX)->htmlJdkDocUrl = FARG68;\
++	(XXX)->javaDocPath = FARG69;\
++	(XXX)->allowPackagesOnCl = FARG70;\
++	(XXX)->sourcePath = FARG71;\
++	(XXX)->htmlDirectX = FARG72;\
++	(XXX)->jdocTmpDir = FARG73;\
++	(XXX)->noCxFile = FARG74;\
++	(XXX)->javaDoc = FARG75;\
++	(XXX)->noIncludeRefs = FARG76;\
++	(XXX)->allowClassFileRefs = FARG77;\
++	(XXX)->filterValue = FARG78;\
++	(XXX)->jdkClassPath = FARG79;\
++	(XXX)->manualResolve = FARG80;\
++	(XXX)->browsedSymName = FARG81;\
++	(XXX)->modifiedFlag = FARG82;\
++	(XXX)->olcxMenuSelectLineNum = FARG83;\
++	(XXX)->htmlNoUnderline = FARG84;\
++	(XXX)->htmlLinkColor = FARG85;\
++	(XXX)->htmlCutPath = FARG86;\
++	(XXX)->htmlCutPathLen = FARG87;\
++	(XXX)->ooChecksBits = FARG88;\
++	(XXX)->htmlLineNums = FARG89;\
++	(XXX)->htmlNoColors = FARG90;\
++	(XXX)->cxMemoryFaktor = FARG91;\
++	(XXX)->multiHeadRefsCare = FARG92;\
++	(XXX)->strictAnsi = FARG93;\
++	(XXX)->project = FARG94;\
++	(XXX)->updateOnlyModifiedFiles = FARG95;\
++	(XXX)->olcxlccursor = FARG96;\
++	(XXX)->htmlZipCommand = FARG97;\
++	(XXX)->olcxSearchString = FARG98;\
++	(XXX)->olineLen = FARG99;\
++	(XXX)->htmlLinkSuffix = FARG100;\
++	(XXX)->olExtractAddrParPrefix = FARG101;\
++	(XXX)->extractMode = FARG102;\
++	(XXX)->htmlFunSeparate = FARG103;\
++	(XXX)->extractName = FARG104;\
++	(XXX)->maxCompletions = FARG105;\
++	(XXX)->editor = FARG106;\
++	(XXX)->create = FARG107;\
++	(XXX)->olcxRefSuffix = FARG108;\
++	(XXX)->recursivelyDirs = FARG109;\
++	(XXX)->classpath = FARG110;\
++	(XXX)->tabulator = FARG111;\
++	(XXX)->htmlRoot = FARG112;\
++	(XXX)->htmlRichLists = FARG113;\
++	(XXX)->htmlglobalx = FARG114;\
++	(XXX)->htmllocalx = FARG115;\
++	(XXX)->cIsCplusplus = FARG116;\
++	(XXX)->olCursorPos = FARG117;\
++	(XXX)->olMarkPos = FARG118;\
++	(XXX)->taskRegime = FARG119;\
++	(XXX)->user = FARG120;\
++	(XXX)->debug = FARG121;\
++	(XXX)->showIncludes = FARG122;\
++	(XXX)->cpp_comment = FARG123;\
++	(XXX)->c_struct_scope = FARG124;\
++	(XXX)->cxrefs = FARG125;\
++	(XXX)->olcxGotoVal = FARG126;\
++	(XXX)->originalDir = FARG127;\
++	(XXX)->no_ref_locals = FARG128;\
++	(XXX)->no_ref_records = FARG129;\
++	(XXX)->no_ref_enumerator = FARG130;\
++	(XXX)->no_ref_typedef = FARG131;\
++	(XXX)->no_ref_macro = FARG132;\
++	(XXX)->no_stdop = FARG133;\
++	(XXX)->qnxMessages = FARG134;\
++	(XXX)->typedefg = FARG135;\
++	(XXX)->str_fill = FARG136;\
++	(XXX)->enum_name = FARG137;\
++	(XXX)->body = FARG138;\
++	(XXX)->header = FARG139;\
++	(XXX)->str_copy = FARG140;\
++	(XXX)->err = FARG141;\
++	(XXX)->long_cxref = FARG142;\
++	(XXX)->brief = FARG143;\
++	(XXX)->update = FARG144;\
++	(XXX)->keep_old = FARG145;\
++	(XXX)->last_message = FARG146;\
++	(XXX)->refnum = FARG147;\
++	(XXX)->setGetEnv = FARG148;\
++	(XXX)->htmlCut = FARG149;\
++	(XXX)->allAllocatedStrings = FARG150;\
++	(XXX)->pendingMemory = FARG151;\
++}
++#define FILLF_options(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7,FARG8,FARG9,FARG10,FARG11,FARG12,FARG13,FARG14,FARG15,FARG16,FARG17,FARG18,FARG19,FARG20,FARG21,FARG22,FARG23,FARG24,FARG25,FARG26,FARG27,FARG28,FARG29,FARG30,FARG31,FARG32,FARG33,FARG34,FARG35,FARG36,FARG37,FARG38,FARG39,FARG40,FARG41,FARG42,FARG43,FARG44,FARG45,FARG46,FARG47,FARG48,FARG49,FARG50,FARG51,FARG52,FARG53,FARG54,FARG55,FARG56,FARG57,FARG58,FARG59,FARG60,FARG61,FARG62,FARG63,FARG64,FARG65,FARG66,FARG67,FARG68,FARG69,FARG70,FARG71,FARG72,FARG73,FARG74,FARG75,FARG76,FARG77,FARG78,FARG79,FARG80,FARG81,FARG82,FARG83,FARG84,FARG85,FARG86,FARG87,FARG88,FARG89,FARG90,FARG91,FARG92,FARG93,FARG94,FARG95,FARG96,FARG97,FARG98,FARG99,FARG100,FARG101,FARG102,FARG103,FARG104,FARG105,FARG106,FARG107,FARG108,FARG109,FARG110,FARG111,FARG112,FARG113,FARG114,FARG115,FARG116,FARG117,FARG118,FARG119,FARG120,FARG121,FARG122,FARG123,FARG124,FARG125,FARG126,FARG127,FARG128,FARG129,FARG130,FARG131,FARG132,FARG133,FARG134,FARG135,FARG136,FARG137,FARG138,FARG139,FARG140,FARG141,FARG142,FARG143,FARG144,FARG145,FARG146,FARG147,FARG148,FARG149,FARG150,FARG151,FARG152,FARG153,FARG154) {\
+ 	(XXX)->fileEncoding = FARG0;\
+ 	(XXX)->completeParenthesis = FARG1;\
+ 	(XXX)->defaultAddImportStrategy = FARG2;\
+@@ -3914,316 +4041,308 @@
+ 	(XXX)->commentMovingLevel = FARG7;\
+ 	(XXX)->pruneNames = FARG8;\
+ 	(XXX)->inputFiles = FARG9;\
+-	(XXX)->continueRefactoring = FARG10;\
+-	(XXX)->completionCaseSensitive = FARG11;\
+-	(XXX)->xrefrc = FARG12;\
+-	(XXX)->eolConversion = FARG13;\
+-	(XXX)->checkVersion = FARG14;\
+-	(XXX)->nestedClassDisplaying = FARG15;\
+-	(XXX)->pushName = FARG16;\
+-	(XXX)->parnum2 = FARG17;\
+-	(XXX)->refpar1 = FARG18;\
+-	(XXX)->refpar2 = FARG19;\
+-	(XXX)->theRefactoring = FARG20;\
+-	(XXX)->briefoutput = FARG21;\
+-	(XXX)->cacheIncludes = FARG22;\
+-	(XXX)->stdopFlag = FARG23;\
+-	(XXX)->renameTo = FARG24;\
+-	(XXX)->refactoringRegime = FARG25;\
+-	(XXX)->xref2 = FARG26;\
+-	(XXX)->moveTargetFile = FARG27;\
+-	(XXX)->cFilesSuffixes = FARG28;\
+-	(XXX)->javaFilesSuffixes = FARG29;\
+-	(XXX)->cppFilesSuffixes = FARG30;\
+-	(XXX)->fileNamesCaseSensitive = FARG31;\
+-	(XXX)->htmlLineNumLabel = FARG32;\
+-	(XXX)->htmlCutSuffix = FARG33;\
+-	(XXX)->tagSearchSpecif = FARG34;\
+-	(XXX)->javaVersion = FARG35;\
+-	(XXX)->olcxWinDelFile = FARG36;\
+-	(XXX)->olcxWinDelFromLine = FARG37;\
+-	(XXX)->olcxWinDelFromCol = FARG38;\
+-	(XXX)->olcxWinDelToLine = FARG39;\
+-	(XXX)->olcxWinDelToCol = FARG40;\
+-	(XXX)->moveFromUser = FARG41;\
+-	(XXX)->noErrors = FARG42;\
+-	(XXX)->fqtNameToCompletions = FARG43;\
+-	(XXX)->moveTargetClass = FARG44;\
+-	(XXX)->trivialPreCheckCode = FARG45;\
+-	(XXX)->urlGenTemporaryFile = FARG46;\
+-	(XXX)->urlAutoRedirect = FARG47;\
+-	(XXX)->javaFilesOnly = FARG48;\
+-	(XXX)->exactPositionResolve = FARG49;\
+-	(XXX)->outputFileName = FARG50;\
+-	(XXX)->lineFileName = FARG51;\
+-	(XXX)->includeDirs = FARG52;\
+-	(XXX)->cxrefFileName = FARG53;\
+-	(XXX)->checkFileMovedFrom = FARG54;\
+-	(XXX)->checkFileMovedTo = FARG55;\
+-	(XXX)->checkFirstMovedLine = FARG56;\
+-	(XXX)->checkLinesMoved = FARG57;\
+-	(XXX)->checkNewLineNumber = FARG58;\
+-	(XXX)->getValue = FARG59;\
+-	(XXX)->java2html = FARG60;\
+-	(XXX)->javaSlAllowed = FARG61;\
+-	(XXX)->xfileHashingMethod = FARG62;\
+-	(XXX)->htmlLineNumColor = FARG63;\
+-	(XXX)->htmlCxLineLen = FARG64;\
+-	(XXX)->htmlJdkDocAvailable = FARG65;\
+-	(XXX)->htmlGenJdkDocLinks = FARG66;\
+-	(XXX)->htmlJdkDocUrl = FARG67;\
+-	(XXX)->javaDocPath = FARG68;\
+-	(XXX)->allowPackagesOnCl = FARG69;\
+-	(XXX)->sourcePath = FARG70;\
+-	(XXX)->htmlDirectX = FARG71;\
+-	(XXX)->jdocTmpDir = FARG72;\
+-	(XXX)->noCxFile = FARG73;\
+-	(XXX)->javaDoc = FARG74;\
+-	(XXX)->noIncludeRefs = FARG75;\
+-	(XXX)->allowClassFileRefs = FARG76;\
+-	(XXX)->filterValue = FARG77;\
+-	(XXX)->jdkClassPath = FARG78;\
+-	(XXX)->manualResolve = FARG79;\
+-	(XXX)->browsedSymName = FARG80;\
+-	(XXX)->modifiedFlag = FARG81;\
+-	(XXX)->olcxMenuSelectLineNum = FARG82;\
+-	(XXX)->htmlNoUnderline = FARG83;\
+-	(XXX)->htmlLinkColor = FARG84;\
+-	(XXX)->htmlCutPath = FARG85;\
+-	(XXX)->htmlCutPathLen = FARG86;\
+-	(XXX)->ooChecksBits = FARG87;\
+-	(XXX)->htmlLineNums = FARG88;\
+-	(XXX)->htmlNoColors = FARG89;\
+-	(XXX)->cxMemoryFaktor = FARG90;\
+-	(XXX)->multiHeadRefsCare = FARG91;\
+-	(XXX)->strictAnsi = FARG92;\
+-	(XXX)->project = FARG93;\
+-	(XXX)->updateOnlyModifiedFiles = FARG94;\
+-	(XXX)->olcxlccursor = FARG95;\
+-	(XXX)->htmlZipCommand = FARG96;\
+-	(XXX)->olcxSearchString = FARG97;\
+-	(XXX)->olineLen = FARG98;\
+-	(XXX)->htmlLinkSuffix = FARG99;\
+-	(XXX)->olExtractAddrParPrefix = FARG100;\
+-	(XXX)->extractMode = FARG101;\
+-	(XXX)->htmlFunSeparate = FARG102;\
+-	(XXX)->extractName = FARG103;\
+-	(XXX)->maxCompletions = FARG104;\
+-	(XXX)->editor = FARG105;\
+-	(XXX)->create = FARG106;\
+-	(XXX)->olcxRefSuffix = FARG107;\
+-	(XXX)->recursivelyDirs = FARG108;\
+-	(XXX)->classpath = FARG109;\
+-	(XXX)->tabulator = FARG110;\
+-	(XXX)->htmlRoot = FARG111;\
+-	(XXX)->htmlRichLists = FARG112;\
+-	(XXX)->htmlglobalx = FARG113;\
+-	(XXX)->htmllocalx = FARG114;\
+-	(XXX)->cIsCplusplus = FARG115;\
+-	(XXX)->olCursorPos = FARG116;\
+-	(XXX)->olMarkPos = FARG117;\
+-	(XXX)->taskRegime = FARG118;\
+-	(XXX)->user = FARG119;\
+-	(XXX)->debug = FARG120;\
+-	(XXX)->cpp_comment = FARG121;\
+-	(XXX)->c_struct_scope = FARG122;\
+-	(XXX)->cxrefs = FARG123;\
+-	(XXX)->olcxGotoVal = FARG124;\
+-	(XXX)->originalDir = FARG125;\
+-	(XXX)->no_ref_locals = FARG126;\
+-	(XXX)->no_ref_records = FARG127;\
+-	(XXX)->no_ref_enumerator = FARG128;\
+-	(XXX)->no_ref_typedef = FARG129;\
+-	(XXX)->no_ref_macro = FARG130;\
+-	(XXX)->no_stdop = FARG131;\
+-	(XXX)->qnxMessages = FARG132;\
+-	(XXX)->typedefg = FARG133;\
+-	(XXX)->str_fill = FARG134;\
+-	(XXX)->enum_name = FARG135;\
+-	(XXX)->body = FARG136;\
+-	(XXX)->header = FARG137;\
+-	(XXX)->str_copy = FARG138;\
+-	(XXX)->err = FARG139;\
+-	(XXX)->long_cxref = FARG140;\
+-	(XXX)->brief = FARG141;\
+-	(XXX)->update = FARG142;\
+-	(XXX)->keep_old = FARG143;\
+-	(XXX)->last_message = FARG144;\
+-	(XXX)->refnum = FARG145;\
+-	(XXX)->setGetEnv.num = FARG146;\
+-	(XXX)->htmlCut.pathesNum = FARG147;\
+-	(XXX)->allAllocatedStrings = FARG148;\
+-	(XXX)->pendingMemory.overflowHandler = FARG149;\
+-	(XXX)->pendingMemory.i = FARG150;\
+-	(XXX)->pendingMemory.size = FARG151;\
+-	(XXX)->pendingMemory.b = FARG152;\
++	(XXX)->includeFiles = FARG10;\
++	(XXX)->continueRefactoring = FARG11;\
++	(XXX)->completionCaseSensitive = FARG12;\
++	(XXX)->xrefrc = FARG13;\
++	(XXX)->eolConversion = FARG14;\
++	(XXX)->checkVersion = FARG15;\
++	(XXX)->nestedClassDisplaying = FARG16;\
++	(XXX)->pushName = FARG17;\
++	(XXX)->parnum2 = FARG18;\
++	(XXX)->refpar1 = FARG19;\
++	(XXX)->refpar2 = FARG20;\
++	(XXX)->theRefactoring = FARG21;\
++	(XXX)->briefoutput = FARG22;\
++	(XXX)->cacheIncludes = FARG23;\
++	(XXX)->stdopFlag = FARG24;\
++	(XXX)->renameTo = FARG25;\
++	(XXX)->refactoringRegime = FARG26;\
++	(XXX)->xref2 = FARG27;\
++	(XXX)->moveTargetFile = FARG28;\
++	(XXX)->cFilesSuffixes = FARG29;\
++	(XXX)->javaFilesSuffixes = FARG30;\
++	(XXX)->cppFilesSuffixes = FARG31;\
++	(XXX)->fileNamesCaseSensitive = FARG32;\
++	(XXX)->htmlLineNumLabel = FARG33;\
++	(XXX)->htmlCutSuffix = FARG34;\
++	(XXX)->tagSearchSpecif = FARG35;\
++	(XXX)->javaVersion = FARG36;\
++	(XXX)->olcxWinDelFile = FARG37;\
++	(XXX)->olcxWinDelFromLine = FARG38;\
++	(XXX)->olcxWinDelFromCol = FARG39;\
++	(XXX)->olcxWinDelToLine = FARG40;\
++	(XXX)->olcxWinDelToCol = FARG41;\
++	(XXX)->moveFromUser = FARG42;\
++	(XXX)->noErrors = FARG43;\
++	(XXX)->fqtNameToCompletions = FARG44;\
++	(XXX)->moveTargetClass = FARG45;\
++	(XXX)->trivialPreCheckCode = FARG46;\
++	(XXX)->urlGenTemporaryFile = FARG47;\
++	(XXX)->urlAutoRedirect = FARG48;\
++	(XXX)->javaFilesOnly = FARG49;\
++	(XXX)->exactPositionResolve = FARG50;\
++	(XXX)->outputFileName = FARG51;\
++	(XXX)->lineFileName = FARG52;\
++	(XXX)->includeDirs = FARG53;\
++	(XXX)->cxrefFileName = FARG54;\
++	(XXX)->checkFileMovedFrom = FARG55;\
++	(XXX)->checkFileMovedTo = FARG56;\
++	(XXX)->checkFirstMovedLine = FARG57;\
++	(XXX)->checkLinesMoved = FARG58;\
++	(XXX)->checkNewLineNumber = FARG59;\
++	(XXX)->getValue = FARG60;\
++	(XXX)->java2html = FARG61;\
++	(XXX)->javaSlAllowed = FARG62;\
++	(XXX)->xfileHashingMethod = FARG63;\
++	(XXX)->htmlLineNumColor = FARG64;\
++	(XXX)->htmlCxLineLen = FARG65;\
++	(XXX)->htmlJdkDocAvailable = FARG66;\
++	(XXX)->htmlGenJdkDocLinks = FARG67;\
++	(XXX)->htmlJdkDocUrl = FARG68;\
++	(XXX)->javaDocPath = FARG69;\
++	(XXX)->allowPackagesOnCl = FARG70;\
++	(XXX)->sourcePath = FARG71;\
++	(XXX)->htmlDirectX = FARG72;\
++	(XXX)->jdocTmpDir = FARG73;\
++	(XXX)->noCxFile = FARG74;\
++	(XXX)->javaDoc = FARG75;\
++	(XXX)->noIncludeRefs = FARG76;\
++	(XXX)->allowClassFileRefs = FARG77;\
++	(XXX)->filterValue = FARG78;\
++	(XXX)->jdkClassPath = FARG79;\
++	(XXX)->manualResolve = FARG80;\
++	(XXX)->browsedSymName = FARG81;\
++	(XXX)->modifiedFlag = FARG82;\
++	(XXX)->olcxMenuSelectLineNum = FARG83;\
++	(XXX)->htmlNoUnderline = FARG84;\
++	(XXX)->htmlLinkColor = FARG85;\
++	(XXX)->htmlCutPath = FARG86;\
++	(XXX)->htmlCutPathLen = FARG87;\
++	(XXX)->ooChecksBits = FARG88;\
++	(XXX)->htmlLineNums = FARG89;\
++	(XXX)->htmlNoColors = FARG90;\
++	(XXX)->cxMemoryFaktor = FARG91;\
++	(XXX)->multiHeadRefsCare = FARG92;\
++	(XXX)->strictAnsi = FARG93;\
++	(XXX)->project = FARG94;\
++	(XXX)->updateOnlyModifiedFiles = FARG95;\
++	(XXX)->olcxlccursor = FARG96;\
++	(XXX)->htmlZipCommand = FARG97;\
++	(XXX)->olcxSearchString = FARG98;\
++	(XXX)->olineLen = FARG99;\
++	(XXX)->htmlLinkSuffix = FARG100;\
++	(XXX)->olExtractAddrParPrefix = FARG101;\
++	(XXX)->extractMode = FARG102;\
++	(XXX)->htmlFunSeparate = FARG103;\
++	(XXX)->extractName = FARG104;\
++	(XXX)->maxCompletions = FARG105;\
++	(XXX)->editor = FARG106;\
++	(XXX)->create = FARG107;\
++	(XXX)->olcxRefSuffix = FARG108;\
++	(XXX)->recursivelyDirs = FARG109;\
++	(XXX)->classpath = FARG110;\
++	(XXX)->tabulator = FARG111;\
++	(XXX)->htmlRoot = FARG112;\
++	(XXX)->htmlRichLists = FARG113;\
++	(XXX)->htmlglobalx = FARG114;\
++	(XXX)->htmllocalx = FARG115;\
++	(XXX)->cIsCplusplus = FARG116;\
++	(XXX)->olCursorPos = FARG117;\
++	(XXX)->olMarkPos = FARG118;\
++	(XXX)->taskRegime = FARG119;\
++	(XXX)->user = FARG120;\
++	(XXX)->debug = FARG121;\
++	(XXX)->showIncludes = FARG122;\
++	(XXX)->cpp_comment = FARG123;\
++	(XXX)->c_struct_scope = FARG124;\
++	(XXX)->cxrefs = FARG125;\
++	(XXX)->olcxGotoVal = FARG126;\
++	(XXX)->originalDir = FARG127;\
++	(XXX)->no_ref_locals = FARG128;\
++	(XXX)->no_ref_records = FARG129;\
++	(XXX)->no_ref_enumerator = FARG130;\
++	(XXX)->no_ref_typedef = FARG131;\
++	(XXX)->no_ref_macro = FARG132;\
++	(XXX)->no_stdop = FARG133;\
++	(XXX)->qnxMessages = FARG134;\
++	(XXX)->typedefg = FARG135;\
++	(XXX)->str_fill = FARG136;\
++	(XXX)->enum_name = FARG137;\
++	(XXX)->body = FARG138;\
++	(XXX)->header = FARG139;\
++	(XXX)->str_copy = FARG140;\
++	(XXX)->err = FARG141;\
++	(XXX)->long_cxref = FARG142;\
++	(XXX)->brief = FARG143;\
++	(XXX)->update = FARG144;\
++	(XXX)->keep_old = FARG145;\
++	(XXX)->last_message = FARG146;\
++	(XXX)->refnum = FARG147;\
++	(XXX)->setGetEnv.num = FARG148;\
++	(XXX)->htmlCut.pathesNum = FARG149;\
++	(XXX)->allAllocatedStrings = FARG150;\
++	(XXX)->pendingMemory.overflowHandler = FARG151;\
++	(XXX)->pendingMemory.i = FARG152;\
++	(XXX)->pendingMemory.size = FARG153;\
++	(XXX)->pendingMemory.b = FARG154;\
+ }
+ #define _FILLF_options(XXX,ARGS) {\
+-	(XXX)->fileEncoding = _ARG_PROJECT_0_153 ARGS;\
+-	(XXX)->completeParenthesis = _ARG_PROJECT_1_153 ARGS;\
+-	(XXX)->defaultAddImportStrategy = _ARG_PROJECT_2_153 ARGS;\
+-	(XXX)->referenceListWithoutSource = _ARG_PROJECT_3_153 ARGS;\
+-	(XXX)->jeditOldCompletions = _ARG_PROJECT_4_153 ARGS;\
+-	(XXX)->completionOverloadWizardDeep = _ARG_PROJECT_5_153 ARGS;\
+-	(XXX)->exit = _ARG_PROJECT_6_153 ARGS;\
+-	(XXX)->commentMovingLevel = _ARG_PROJECT_7_153 ARGS;\
+-	(XXX)->pruneNames = _ARG_PROJECT_8_153 ARGS;\
+-	(XXX)->inputFiles = _ARG_PROJECT_9_153 ARGS;\
+-	(XXX)->continueRefactoring = _ARG_PROJECT_10_153 ARGS;\
+-	(XXX)->completionCaseSensitive = _ARG_PROJECT_11_153 ARGS;\
+-	(XXX)->xrefrc = _ARG_PROJECT_12_153 ARGS;\
+-	(XXX)->eolConversion = _ARG_PROJECT_13_153 ARGS;\
+-	(XXX)->checkVersion = _ARG_PROJECT_14_153 ARGS;\
+-	(XXX)->nestedClassDisplaying = _ARG_PROJECT_15_153 ARGS;\
+-	(XXX)->pushName = _ARG_PROJECT_16_153 ARGS;\
+-	(XXX)->parnum2 = _ARG_PROJECT_17_153 ARGS;\
+-	(XXX)->refpar1 = _ARG_PROJECT_18_153 ARGS;\
+-	(XXX)->refpar2 = _ARG_PROJECT_19_153 ARGS;\
+-	(XXX)->theRefactoring = _ARG_PROJECT_20_153 ARGS;\
+-	(XXX)->briefoutput = _ARG_PROJECT_21_153 ARGS;\
+-	(XXX)->cacheIncludes = _ARG_PROJECT_22_153 ARGS;\
+-	(XXX)->stdopFlag = _ARG_PROJECT_23_153 ARGS;\
+-	(XXX)->renameTo = _ARG_PROJECT_24_153 ARGS;\
+-	(XXX)->refactoringRegime = _ARG_PROJECT_25_153 ARGS;\
+-	(XXX)->xref2 = _ARG_PROJECT_26_153 ARGS;\
+-	(XXX)->moveTargetFile = _ARG_PROJECT_27_153 ARGS;\
+-	(XXX)->cFilesSuffixes = _ARG_PROJECT_28_153 ARGS;\
+-	(XXX)->javaFilesSuffixes = _ARG_PROJECT_29_153 ARGS;\
+-	(XXX)->cppFilesSuffixes = _ARG_PROJECT_30_153 ARGS;\
+-	(XXX)->fileNamesCaseSensitive = _ARG_PROJECT_31_153 ARGS;\
+-	(XXX)->htmlLineNumLabel = _ARG_PROJECT_32_153 ARGS;\
+-	(XXX)->htmlCutSuffix = _ARG_PROJECT_33_153 ARGS;\
+-	(XXX)->tagSearchSpecif = _ARG_PROJECT_34_153 ARGS;\
+-	(XXX)->javaVersion = _ARG_PROJECT_35_153 ARGS;\
+-	(XXX)->olcxWinDelFile = _ARG_PROJECT_36_153 ARGS;\
+-	(XXX)->olcxWinDelFromLine = _ARG_PROJECT_37_153 ARGS;\
+-	(XXX)->olcxWinDelFromCol = _ARG_PROJECT_38_153 ARGS;\
+-	(XXX)->olcxWinDelToLine = _ARG_PROJECT_39_153 ARGS;\
+-	(XXX)->olcxWinDelToCol = _ARG_PROJECT_40_153 ARGS;\
+-	(XXX)->moveFromUser = _ARG_PROJECT_41_153 ARGS;\
+-	(XXX)->noErrors = _ARG_PROJECT_42_153 ARGS;\
+-	(XXX)->fqtNameToCompletions = _ARG_PROJECT_43_153 ARGS;\
+-	(XXX)->moveTargetClass = _ARG_PROJECT_44_153 ARGS;\
+-	(XXX)->trivialPreCheckCode = _ARG_PROJECT_45_153 ARGS;\
+-	(XXX)->urlGenTemporaryFile = _ARG_PROJECT_46_153 ARGS;\
+-	(XXX)->urlAutoRedirect = _ARG_PROJECT_47_153 ARGS;\
+-	(XXX)->javaFilesOnly = _ARG_PROJECT_48_153 ARGS;\
+-	(XXX)->exactPositionResolve = _ARG_PROJECT_49_153 ARGS;\
+-	(XXX)->outputFileName = _ARG_PROJECT_50_153 ARGS;\
+-	(XXX)->lineFileName = _ARG_PROJECT_51_153 ARGS;\
+-	(XXX)->includeDirs = _ARG_PROJECT_52_153 ARGS;\
+-	(XXX)->cxrefFileName = _ARG_PROJECT_53_153 ARGS;\
+-	(XXX)->checkFileMovedFrom = _ARG_PROJECT_54_153 ARGS;\
+-	(XXX)->checkFileMovedTo = _ARG_PROJECT_55_153 ARGS;\
+-	(XXX)->checkFirstMovedLine = _ARG_PROJECT_56_153 ARGS;\
+-	(XXX)->checkLinesMoved = _ARG_PROJECT_57_153 ARGS;\
+-	(XXX)->checkNewLineNumber = _ARG_PROJECT_58_153 ARGS;\
+-	(XXX)->getValue = _ARG_PROJECT_59_153 ARGS;\
+-	(XXX)->java2html = _ARG_PROJECT_60_153 ARGS;\
+-	(XXX)->javaSlAllowed = _ARG_PROJECT_61_153 ARGS;\
+-	(XXX)->xfileHashingMethod = _ARG_PROJECT_62_153 ARGS;\
+-	(XXX)->htmlLineNumColor = _ARG_PROJECT_63_153 ARGS;\
+-	(XXX)->htmlCxLineLen = _ARG_PROJECT_64_153 ARGS;\
+-	(XXX)->htmlJdkDocAvailable = _ARG_PROJECT_65_153 ARGS;\
+-	(XXX)->htmlGenJdkDocLinks = _ARG_PROJECT_66_153 ARGS;\
+-	(XXX)->htmlJdkDocUrl = _ARG_PROJECT_67_153 ARGS;\
+-	(XXX)->javaDocPath = _ARG_PROJECT_68_153 ARGS;\
+-	(XXX)->allowPackagesOnCl = _ARG_PROJECT_69_153 ARGS;\
+-	(XXX)->sourcePath = _ARG_PROJECT_70_153 ARGS;\
+-	(XXX)->htmlDirectX = _ARG_PROJECT_71_153 ARGS;\
+-	(XXX)->jdocTmpDir = _ARG_PROJECT_72_153 ARGS;\
+-	(XXX)->noCxFile = _ARG_PROJECT_73_153 ARGS;\
+-	(XXX)->javaDoc = _ARG_PROJECT_74_153 ARGS;\
+-	(XXX)->noIncludeRefs = _ARG_PROJECT_75_153 ARGS;\
+-	(XXX)->allowClassFileRefs = _ARG_PROJECT_76_153 ARGS;\
+-	(XXX)->filterValue = _ARG_PROJECT_77_153 ARGS;\
+-	(XXX)->jdkClassPath = _ARG_PROJECT_78_153 ARGS;\
+-	(XXX)->manualResolve = _ARG_PROJECT_79_153 ARGS;\
+-	(XXX)->browsedSymName = _ARG_PROJECT_80_153 ARGS;\
+-	(XXX)->modifiedFlag = _ARG_PROJECT_81_153 ARGS;\
+-	(XXX)->olcxMenuSelectLineNum = _ARG_PROJECT_82_153 ARGS;\
+-	(XXX)->htmlNoUnderline = _ARG_PROJECT_83_153 ARGS;\
+-	(XXX)->htmlLinkColor = _ARG_PROJECT_84_153 ARGS;\
+-	(XXX)->htmlCutPath = _ARG_PROJECT_85_153 ARGS;\
+-	(XXX)->htmlCutPathLen = _ARG_PROJECT_86_153 ARGS;\
+-	(XXX)->ooChecksBits = _ARG_PROJECT_87_153 ARGS;\
+-	(XXX)->htmlLineNums = _ARG_PROJECT_88_153 ARGS;\
+-	(XXX)->htmlNoColors = _ARG_PROJECT_89_153 ARGS;\
+-	(XXX)->cxMemoryFaktor = _ARG_PROJECT_90_153 ARGS;\
+-	(XXX)->multiHeadRefsCare = _ARG_PROJECT_91_153 ARGS;\
+-	(XXX)->strictAnsi = _ARG_PROJECT_92_153 ARGS;\
+-	(XXX)->project = _ARG_PROJECT_93_153 ARGS;\
+-	(XXX)->updateOnlyModifiedFiles = _ARG_PROJECT_94_153 ARGS;\
+-	(XXX)->olcxlccursor = _ARG_PROJECT_95_153 ARGS;\
+-	(XXX)->htmlZipCommand = _ARG_PROJECT_96_153 ARGS;\
+-	(XXX)->olcxSearchString = _ARG_PROJECT_97_153 ARGS;\
+-	(XXX)->olineLen = _ARG_PROJECT_98_153 ARGS;\
+-	(XXX)->htmlLinkSuffix = _ARG_PROJECT_99_153 ARGS;\
+-	(XXX)->olExtractAddrParPrefix = _ARG_PROJECT_100_153 ARGS;\
+-	(XXX)->extractMode = _ARG_PROJECT_101_153 ARGS;\
+-	(XXX)->htmlFunSeparate = _ARG_PROJECT_102_153 ARGS;\
+-	(XXX)->extractName = _ARG_PROJECT_103_153 ARGS;\
+-	(XXX)->maxCompletions = _ARG_PROJECT_104_153 ARGS;\
+-	(XXX)->editor = _ARG_PROJECT_105_153 ARGS;\
+-	(XXX)->create = _ARG_PROJECT_106_153 ARGS;\
+-	(XXX)->olcxRefSuffix = _ARG_PROJECT_107_153 ARGS;\
+-	(XXX)->recursivelyDirs = _ARG_PROJECT_108_153 ARGS;\
+-	(XXX)->classpath = _ARG_PROJECT_109_153 ARGS;\
+-	(XXX)->tabulator = _ARG_PROJECT_110_153 ARGS;\
+-	(XXX)->htmlRoot = _ARG_PROJECT_111_153 ARGS;\
+-	(XXX)->htmlRichLists = _ARG_PROJECT_112_153 ARGS;\
+-	(XXX)->htmlglobalx = _ARG_PROJECT_113_153 ARGS;\
+-	(XXX)->htmllocalx = _ARG_PROJECT_114_153 ARGS;\
+-	(XXX)->cIsCplusplus = _ARG_PROJECT_115_153 ARGS;\
+-	(XXX)->olCursorPos = _ARG_PROJECT_116_153 ARGS;\
+-	(XXX)->olMarkPos = _ARG_PROJECT_117_153 ARGS;\
+-	(XXX)->taskRegime = _ARG_PROJECT_118_153 ARGS;\
+-	(XXX)->user = _ARG_PROJECT_119_153 ARGS;\
+-	(XXX)->debug = _ARG_PROJECT_120_153 ARGS;\
+-	(XXX)->cpp_comment = _ARG_PROJECT_121_153 ARGS;\
+-	(XXX)->c_struct_scope = _ARG_PROJECT_122_153 ARGS;\
+-	(XXX)->cxrefs = _ARG_PROJECT_123_153 ARGS;\
+-	(XXX)->olcxGotoVal = _ARG_PROJECT_124_153 ARGS;\
+-	(XXX)->originalDir = _ARG_PROJECT_125_153 ARGS;\
+-	(XXX)->no_ref_locals = _ARG_PROJECT_126_153 ARGS;\
+-	(XXX)->no_ref_records = _ARG_PROJECT_127_153 ARGS;\
+-	(XXX)->no_ref_enumerator = _ARG_PROJECT_128_153 ARGS;\
+-	(XXX)->no_ref_typedef = _ARG_PROJECT_129_153 ARGS;\
+-	(XXX)->no_ref_macro = _ARG_PROJECT_130_153 ARGS;\
+-	(XXX)->no_stdop = _ARG_PROJECT_131_153 ARGS;\
+-	(XXX)->qnxMessages = _ARG_PROJECT_132_153 ARGS;\
+-	(XXX)->typedefg = _ARG_PROJECT_133_153 ARGS;\
+-	(XXX)->str_fill = _ARG_PROJECT_134_153 ARGS;\
+-	(XXX)->enum_name = _ARG_PROJECT_135_153 ARGS;\
+-	(XXX)->body = _ARG_PROJECT_136_153 ARGS;\
+-	(XXX)->header = _ARG_PROJECT_137_153 ARGS;\
+-	(XXX)->str_copy = _ARG_PROJECT_138_153 ARGS;\
+-	(XXX)->err = _ARG_PROJECT_139_153 ARGS;\
+-	(XXX)->long_cxref = _ARG_PROJECT_140_153 ARGS;\
+-	(XXX)->brief = _ARG_PROJECT_141_153 ARGS;\
+-	(XXX)->update = _ARG_PROJECT_142_153 ARGS;\
+-	(XXX)->keep_old = _ARG_PROJECT_143_153 ARGS;\
+-	(XXX)->last_message = _ARG_PROJECT_144_153 ARGS;\
+-	(XXX)->refnum = _ARG_PROJECT_145_153 ARGS;\
+-	(XXX)->setGetEnv.num = _ARG_PROJECT_146_153 ARGS;\
+-	(XXX)->htmlCut.pathesNum = _ARG_PROJECT_147_153 ARGS;\
+-	(XXX)->allAllocatedStrings = _ARG_PROJECT_148_153 ARGS;\
+-	(XXX)->pendingMemory.overflowHandler = _ARG_PROJECT_149_153 ARGS;\
+-	(XXX)->pendingMemory.i = _ARG_PROJECT_150_153 ARGS;\
+-	(XXX)->pendingMemory.size = _ARG_PROJECT_151_153 ARGS;\
+-	(XXX)->pendingMemory.b = _ARG_PROJECT_152_153 ARGS;\
+-}
+-#define FILL__pthread_fastlock(XXX,FARG0,FARG1) {\
+-	(XXX)->__status = FARG0;\
+-	(XXX)->__spinlock = FARG1;\
+-}
+-#define FILLF__pthread_fastlock(XXX,FARG0,FARG1) {\
+-	(XXX)->__status = FARG0;\
+-	(XXX)->__spinlock = FARG1;\
+-}
+-#define _FILLF__pthread_fastlock(XXX,ARGS) {\
+-	(XXX)->__status = _ARG_PROJECT_0_2 ARGS;\
+-	(XXX)->__spinlock = _ARG_PROJECT_1_2 ARGS;\
++	(XXX)->fileEncoding = _ARG_PROJECT_0_155 ARGS;\
++	(XXX)->completeParenthesis = _ARG_PROJECT_1_155 ARGS;\
++	(XXX)->defaultAddImportStrategy = _ARG_PROJECT_2_155 ARGS;\
++	(XXX)->referenceListWithoutSource = _ARG_PROJECT_3_155 ARGS;\
++	(XXX)->jeditOldCompletions = _ARG_PROJECT_4_155 ARGS;\
++	(XXX)->completionOverloadWizardDeep = _ARG_PROJECT_5_155 ARGS;\
++	(XXX)->exit = _ARG_PROJECT_6_155 ARGS;\
++	(XXX)->commentMovingLevel = _ARG_PROJECT_7_155 ARGS;\
++	(XXX)->pruneNames = _ARG_PROJECT_8_155 ARGS;\
++	(XXX)->inputFiles = _ARG_PROJECT_9_155 ARGS;\
++	(XXX)->includeFiles = _ARG_PROJECT_10_155 ARGS;\
++	(XXX)->continueRefactoring = _ARG_PROJECT_11_155 ARGS;\
++	(XXX)->completionCaseSensitive = _ARG_PROJECT_12_155 ARGS;\
++	(XXX)->xrefrc = _ARG_PROJECT_13_155 ARGS;\
++	(XXX)->eolConversion = _ARG_PROJECT_14_155 ARGS;\
++	(XXX)->checkVersion = _ARG_PROJECT_15_155 ARGS;\
++	(XXX)->nestedClassDisplaying = _ARG_PROJECT_16_155 ARGS;\
++	(XXX)->pushName = _ARG_PROJECT_17_155 ARGS;\
++	(XXX)->parnum2 = _ARG_PROJECT_18_155 ARGS;\
++	(XXX)->refpar1 = _ARG_PROJECT_19_155 ARGS;\
++	(XXX)->refpar2 = _ARG_PROJECT_20_155 ARGS;\
++	(XXX)->theRefactoring = _ARG_PROJECT_21_155 ARGS;\
++	(XXX)->briefoutput = _ARG_PROJECT_22_155 ARGS;\
++	(XXX)->cacheIncludes = _ARG_PROJECT_23_155 ARGS;\
++	(XXX)->stdopFlag = _ARG_PROJECT_24_155 ARGS;\
++	(XXX)->renameTo = _ARG_PROJECT_25_155 ARGS;\
++	(XXX)->refactoringRegime = _ARG_PROJECT_26_155 ARGS;\
++	(XXX)->xref2 = _ARG_PROJECT_27_155 ARGS;\
++	(XXX)->moveTargetFile = _ARG_PROJECT_28_155 ARGS;\
++	(XXX)->cFilesSuffixes = _ARG_PROJECT_29_155 ARGS;\
++	(XXX)->javaFilesSuffixes = _ARG_PROJECT_30_155 ARGS;\
++	(XXX)->cppFilesSuffixes = _ARG_PROJECT_31_155 ARGS;\
++	(XXX)->fileNamesCaseSensitive = _ARG_PROJECT_32_155 ARGS;\
++	(XXX)->htmlLineNumLabel = _ARG_PROJECT_33_155 ARGS;\
++	(XXX)->htmlCutSuffix = _ARG_PROJECT_34_155 ARGS;\
++	(XXX)->tagSearchSpecif = _ARG_PROJECT_35_155 ARGS;\
++	(XXX)->javaVersion = _ARG_PROJECT_36_155 ARGS;\
++	(XXX)->olcxWinDelFile = _ARG_PROJECT_37_155 ARGS;\
++	(XXX)->olcxWinDelFromLine = _ARG_PROJECT_38_155 ARGS;\
++	(XXX)->olcxWinDelFromCol = _ARG_PROJECT_39_155 ARGS;\
++	(XXX)->olcxWinDelToLine = _ARG_PROJECT_40_155 ARGS;\
++	(XXX)->olcxWinDelToCol = _ARG_PROJECT_41_155 ARGS;\
++	(XXX)->moveFromUser = _ARG_PROJECT_42_155 ARGS;\
++	(XXX)->noErrors = _ARG_PROJECT_43_155 ARGS;\
++	(XXX)->fqtNameToCompletions = _ARG_PROJECT_44_155 ARGS;\
++	(XXX)->moveTargetClass = _ARG_PROJECT_45_155 ARGS;\
++	(XXX)->trivialPreCheckCode = _ARG_PROJECT_46_155 ARGS;\
++	(XXX)->urlGenTemporaryFile = _ARG_PROJECT_47_155 ARGS;\
++	(XXX)->urlAutoRedirect = _ARG_PROJECT_48_155 ARGS;\
++	(XXX)->javaFilesOnly = _ARG_PROJECT_49_155 ARGS;\
++	(XXX)->exactPositionResolve = _ARG_PROJECT_50_155 ARGS;\
++	(XXX)->outputFileName = _ARG_PROJECT_51_155 ARGS;\
++	(XXX)->lineFileName = _ARG_PROJECT_52_155 ARGS;\
++	(XXX)->includeDirs = _ARG_PROJECT_53_155 ARGS;\
++	(XXX)->cxrefFileName = _ARG_PROJECT_54_155 ARGS;\
++	(XXX)->checkFileMovedFrom = _ARG_PROJECT_55_155 ARGS;\
++	(XXX)->checkFileMovedTo = _ARG_PROJECT_56_155 ARGS;\
++	(XXX)->checkFirstMovedLine = _ARG_PROJECT_57_155 ARGS;\
++	(XXX)->checkLinesMoved = _ARG_PROJECT_58_155 ARGS;\
++	(XXX)->checkNewLineNumber = _ARG_PROJECT_59_155 ARGS;\
++	(XXX)->getValue = _ARG_PROJECT_60_155 ARGS;\
++	(XXX)->java2html = _ARG_PROJECT_61_155 ARGS;\
++	(XXX)->javaSlAllowed = _ARG_PROJECT_62_155 ARGS;\
++	(XXX)->xfileHashingMethod = _ARG_PROJECT_63_155 ARGS;\
++	(XXX)->htmlLineNumColor = _ARG_PROJECT_64_155 ARGS;\
++	(XXX)->htmlCxLineLen = _ARG_PROJECT_65_155 ARGS;\
++	(XXX)->htmlJdkDocAvailable = _ARG_PROJECT_66_155 ARGS;\
++	(XXX)->htmlGenJdkDocLinks = _ARG_PROJECT_67_155 ARGS;\
++	(XXX)->htmlJdkDocUrl = _ARG_PROJECT_68_155 ARGS;\
++	(XXX)->javaDocPath = _ARG_PROJECT_69_155 ARGS;\
++	(XXX)->allowPackagesOnCl = _ARG_PROJECT_70_155 ARGS;\
++	(XXX)->sourcePath = _ARG_PROJECT_71_155 ARGS;\
++	(XXX)->htmlDirectX = _ARG_PROJECT_72_155 ARGS;\
++	(XXX)->jdocTmpDir = _ARG_PROJECT_73_155 ARGS;\
++	(XXX)->noCxFile = _ARG_PROJECT_74_155 ARGS;\
++	(XXX)->javaDoc = _ARG_PROJECT_75_155 ARGS;\
++	(XXX)->noIncludeRefs = _ARG_PROJECT_76_155 ARGS;\
++	(XXX)->allowClassFileRefs = _ARG_PROJECT_77_155 ARGS;\
++	(XXX)->filterValue = _ARG_PROJECT_78_155 ARGS;\
++	(XXX)->jdkClassPath = _ARG_PROJECT_79_155 ARGS;\
++	(XXX)->manualResolve = _ARG_PROJECT_80_155 ARGS;\
++	(XXX)->browsedSymName = _ARG_PROJECT_81_155 ARGS;\
++	(XXX)->modifiedFlag = _ARG_PROJECT_82_155 ARGS;\
++	(XXX)->olcxMenuSelectLineNum = _ARG_PROJECT_83_155 ARGS;\
++	(XXX)->htmlNoUnderline = _ARG_PROJECT_84_155 ARGS;\
++	(XXX)->htmlLinkColor = _ARG_PROJECT_85_155 ARGS;\
++	(XXX)->htmlCutPath = _ARG_PROJECT_86_155 ARGS;\
++	(XXX)->htmlCutPathLen = _ARG_PROJECT_87_155 ARGS;\
++	(XXX)->ooChecksBits = _ARG_PROJECT_88_155 ARGS;\
++	(XXX)->htmlLineNums = _ARG_PROJECT_89_155 ARGS;\
++	(XXX)->htmlNoColors = _ARG_PROJECT_90_155 ARGS;\
++	(XXX)->cxMemoryFaktor = _ARG_PROJECT_91_155 ARGS;\
++	(XXX)->multiHeadRefsCare = _ARG_PROJECT_92_155 ARGS;\
++	(XXX)->strictAnsi = _ARG_PROJECT_93_155 ARGS;\
++	(XXX)->project = _ARG_PROJECT_94_155 ARGS;\
++	(XXX)->updateOnlyModifiedFiles = _ARG_PROJECT_95_155 ARGS;\
++	(XXX)->olcxlccursor = _ARG_PROJECT_96_155 ARGS;\
++	(XXX)->htmlZipCommand = _ARG_PROJECT_97_155 ARGS;\
++	(XXX)->olcxSearchString = _ARG_PROJECT_98_155 ARGS;\
++	(XXX)->olineLen = _ARG_PROJECT_99_155 ARGS;\
++	(XXX)->htmlLinkSuffix = _ARG_PROJECT_100_155 ARGS;\
++	(XXX)->olExtractAddrParPrefix = _ARG_PROJECT_101_155 ARGS;\
++	(XXX)->extractMode = _ARG_PROJECT_102_155 ARGS;\
++	(XXX)->htmlFunSeparate = _ARG_PROJECT_103_155 ARGS;\
++	(XXX)->extractName = _ARG_PROJECT_104_155 ARGS;\
++	(XXX)->maxCompletions = _ARG_PROJECT_105_155 ARGS;\
++	(XXX)->editor = _ARG_PROJECT_106_155 ARGS;\
++	(XXX)->create = _ARG_PROJECT_107_155 ARGS;\
++	(XXX)->olcxRefSuffix = _ARG_PROJECT_108_155 ARGS;\
++	(XXX)->recursivelyDirs = _ARG_PROJECT_109_155 ARGS;\
++	(XXX)->classpath = _ARG_PROJECT_110_155 ARGS;\
++	(XXX)->tabulator = _ARG_PROJECT_111_155 ARGS;\
++	(XXX)->htmlRoot = _ARG_PROJECT_112_155 ARGS;\
++	(XXX)->htmlRichLists = _ARG_PROJECT_113_155 ARGS;\
++	(XXX)->htmlglobalx = _ARG_PROJECT_114_155 ARGS;\
++	(XXX)->htmllocalx = _ARG_PROJECT_115_155 ARGS;\
++	(XXX)->cIsCplusplus = _ARG_PROJECT_116_155 ARGS;\
++	(XXX)->olCursorPos = _ARG_PROJECT_117_155 ARGS;\
++	(XXX)->olMarkPos = _ARG_PROJECT_118_155 ARGS;\
++	(XXX)->taskRegime = _ARG_PROJECT_119_155 ARGS;\
++	(XXX)->user = _ARG_PROJECT_120_155 ARGS;\
++	(XXX)->debug = _ARG_PROJECT_121_155 ARGS;\
++	(XXX)->showIncludes = _ARG_PROJECT_122_155 ARGS;\
++	(XXX)->cpp_comment = _ARG_PROJECT_123_155 ARGS;\
++	(XXX)->c_struct_scope = _ARG_PROJECT_124_155 ARGS;\
++	(XXX)->cxrefs = _ARG_PROJECT_125_155 ARGS;\
++	(XXX)->olcxGotoVal = _ARG_PROJECT_126_155 ARGS;\
++	(XXX)->originalDir = _ARG_PROJECT_127_155 ARGS;\
++	(XXX)->no_ref_locals = _ARG_PROJECT_128_155 ARGS;\
++	(XXX)->no_ref_records = _ARG_PROJECT_129_155 ARGS;\
++	(XXX)->no_ref_enumerator = _ARG_PROJECT_130_155 ARGS;\
++	(XXX)->no_ref_typedef = _ARG_PROJECT_131_155 ARGS;\
++	(XXX)->no_ref_macro = _ARG_PROJECT_132_155 ARGS;\
++	(XXX)->no_stdop = _ARG_PROJECT_133_155 ARGS;\
++	(XXX)->qnxMessages = _ARG_PROJECT_134_155 ARGS;\
++	(XXX)->typedefg = _ARG_PROJECT_135_155 ARGS;\
++	(XXX)->str_fill = _ARG_PROJECT_136_155 ARGS;\
++	(XXX)->enum_name = _ARG_PROJECT_137_155 ARGS;\
++	(XXX)->body = _ARG_PROJECT_138_155 ARGS;\
++	(XXX)->header = _ARG_PROJECT_139_155 ARGS;\
++	(XXX)->str_copy = _ARG_PROJECT_140_155 ARGS;\
++	(XXX)->err = _ARG_PROJECT_141_155 ARGS;\
++	(XXX)->long_cxref = _ARG_PROJECT_142_155 ARGS;\
++	(XXX)->brief = _ARG_PROJECT_143_155 ARGS;\
++	(XXX)->update = _ARG_PROJECT_144_155 ARGS;\
++	(XXX)->keep_old = _ARG_PROJECT_145_155 ARGS;\
++	(XXX)->last_message = _ARG_PROJECT_146_155 ARGS;\
++	(XXX)->refnum = _ARG_PROJECT_147_155 ARGS;\
++	(XXX)->setGetEnv.num = _ARG_PROJECT_148_155 ARGS;\
++	(XXX)->htmlCut.pathesNum = _ARG_PROJECT_149_155 ARGS;\
++	(XXX)->allAllocatedStrings = _ARG_PROJECT_150_155 ARGS;\
++	(XXX)->pendingMemory.overflowHandler = _ARG_PROJECT_151_155 ARGS;\
++	(XXX)->pendingMemory.i = _ARG_PROJECT_152_155 ARGS;\
++	(XXX)->pendingMemory.size = _ARG_PROJECT_153_155 ARGS;\
++	(XXX)->pendingMemory.b = _ARG_PROJECT_154_155 ARGS;\
+ }
+ #define FILL_bb_idIdentList(XXX,FARG0,FARG1,FARG2) {\
+ 	(XXX)->b = FARG0;\
+@@ -4254,57 +4373,6 @@
+ #define _FILLUREC_defUnion_mbody(XX,ARG) XX->mbody = ARG;
+ #define _FILLUREC_defUnion_labn(XX,ARG) XX->labn = ARG;
+ #define _FILLUREC_defUnion_keyWordVal(XX,ARG) XX->keyWordVal = ARG;
+-#define FILL___gconv_step(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7,FARG8,FARG9,FARG10,FARG11,FARG12,FARG13,FARG14) {\
+-	(XXX)->__shlib_handle = FARG0;\
+-	(XXX)->__modname = FARG1;\
+-	(XXX)->__counter = FARG2;\
+-	(XXX)->__from_name = FARG3;\
+-	(XXX)->__to_name = FARG4;\
+-	(XXX)->__fct = FARG5;\
+-	(XXX)->__btowc_fct = FARG6;\
+-	(XXX)->__init_fct = FARG7;\
+-	(XXX)->__end_fct = FARG8;\
+-	(XXX)->__min_needed_from = FARG9;\
+-	(XXX)->__max_needed_from = FARG10;\
+-	(XXX)->__min_needed_to = FARG11;\
+-	(XXX)->__max_needed_to = FARG12;\
+-	(XXX)->__stateful = FARG13;\
+-	(XXX)->__data = FARG14;\
+-}
+-#define FILLF___gconv_step(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6,FARG7,FARG8,FARG9,FARG10,FARG11,FARG12,FARG13,FARG14) {\
+-	(XXX)->__shlib_handle = FARG0;\
+-	(XXX)->__modname = FARG1;\
+-	(XXX)->__counter = FARG2;\
+-	(XXX)->__from_name = FARG3;\
+-	(XXX)->__to_name = FARG4;\
+-	(XXX)->__fct = FARG5;\
+-	(XXX)->__btowc_fct = FARG6;\
+-	(XXX)->__init_fct = FARG7;\
+-	(XXX)->__end_fct = FARG8;\
+-	(XXX)->__min_needed_from = FARG9;\
+-	(XXX)->__max_needed_from = FARG10;\
+-	(XXX)->__min_needed_to = FARG11;\
+-	(XXX)->__max_needed_to = FARG12;\
+-	(XXX)->__stateful = FARG13;\
+-	(XXX)->__data = FARG14;\
+-}
+-#define _FILLF___gconv_step(XXX,ARGS) {\
+-	(XXX)->__shlib_handle = _ARG_PROJECT_0_15 ARGS;\
+-	(XXX)->__modname = _ARG_PROJECT_1_15 ARGS;\
+-	(XXX)->__counter = _ARG_PROJECT_2_15 ARGS;\
+-	(XXX)->__from_name = _ARG_PROJECT_3_15 ARGS;\
+-	(XXX)->__to_name = _ARG_PROJECT_4_15 ARGS;\
+-	(XXX)->__fct = _ARG_PROJECT_5_15 ARGS;\
+-	(XXX)->__btowc_fct = _ARG_PROJECT_6_15 ARGS;\
+-	(XXX)->__init_fct = _ARG_PROJECT_7_15 ARGS;\
+-	(XXX)->__end_fct = _ARG_PROJECT_8_15 ARGS;\
+-	(XXX)->__min_needed_from = _ARG_PROJECT_9_15 ARGS;\
+-	(XXX)->__max_needed_from = _ARG_PROJECT_10_15 ARGS;\
+-	(XXX)->__min_needed_to = _ARG_PROJECT_11_15 ARGS;\
+-	(XXX)->__max_needed_to = _ARG_PROJECT_12_15 ARGS;\
+-	(XXX)->__stateful = _ARG_PROJECT_13_15 ARGS;\
+-	(XXX)->__data = _ARG_PROJECT_14_15 ARGS;\
+-}
+ #define FILL_bb_intPair(XXX,FARG0,FARG1,FARG2) {\
+ 	(XXX)->b = FARG0;\
+ 	(XXX)->e = FARG1;\
+@@ -4364,6 +4432,21 @@
+ 	(XXX)->isSingleImportedFlag = _ARG_PROJECT_4_6 ARGS;\
+ 	(XXX)->next = _ARG_PROJECT_5_6 ARGS;\
+ }
++#define FILL___locale_struct(XXX,FARG0,FARG1,FARG2) {\
++	(XXX)->__ctype_b = FARG0;\
++	(XXX)->__ctype_tolower = FARG1;\
++	(XXX)->__ctype_toupper = FARG2;\
++}
++#define FILLF___locale_struct(XXX,FARG0,FARG1,FARG2) {\
++	(XXX)->__ctype_b = FARG0;\
++	(XXX)->__ctype_tolower = FARG1;\
++	(XXX)->__ctype_toupper = FARG2;\
++}
++#define _FILLF___locale_struct(XXX,ARGS) {\
++	(XXX)->__ctype_b = _ARG_PROJECT_0_3 ARGS;\
++	(XXX)->__ctype_tolower = _ARG_PROJECT_1_3 ARGS;\
++	(XXX)->__ctype_toupper = _ARG_PROJECT_2_3 ARGS;\
++}
+ #define FILL_bb_typeModifiers(XXX,FARG0,FARG1,FARG2) {\
+ 	(XXX)->b = FARG0;\
+ 	(XXX)->e = FARG1;\
+@@ -4428,6 +4511,12 @@
+ 	(XXX)->dbuffer = _ARG_PROJECT_2_4 ARGS;\
+ 	(XXX)->doffset = _ARG_PROJECT_3_4 ARGS;\
+ }
++#define FILL___locale_data(XXX) {\
++}
++#define FILLF___locale_data(XXX) {\
++}
++#define _FILLF___locale_data(XXX,ARGS) {\
++}
+ #define FILL_bb_typeModifiersList(XXX,FARG0,FARG1,FARG2) {\
+ 	(XXX)->b = FARG0;\
+ 	(XXX)->e = FARG1;\
+@@ -4451,6 +4540,20 @@
+ 	(XXX)->e.coll = _ARG_PROJECT_5_7 ARGS;\
+ 	(XXX)->d = _ARG_PROJECT_6_7 ARGS;\
+ }
++#define FILL__G_fpos_t(XXX,FARG0,FARG1) {\
++	(XXX)->__pos = FARG0;\
++	(XXX)->__state = FARG1;\
++}
++#define FILLF__G_fpos_t(XXX,FARG0,FARG1,FARG2,FARG3) {\
++	(XXX)->__pos = FARG0;\
++	(XXX)->__state.__count = FARG1;\
++	_FILLUREC__##FARG2((&(XXX)->__state.__value), FARG3);\
++}
++#define _FILLF__G_fpos_t(XXX,ARGS) {\
++	(XXX)->__pos = _ARG_PROJECT_0_4 ARGS;\
++	(XXX)->__state.__count = _ARG_PROJECT_1_4 ARGS;\
++	_FILLUREC__##_ARG_PROJECT_2_4 ARGS((&(XXX)->__state.__value), _ARG_PROJECT_3_4 ARGS);\
++}
+ #define FILL_programGraphNode(XXX,FARG0,FARG1,FARG2,FARG3,FARG4,FARG5,FARG6) {\
+ 	(XXX)->ref = FARG0;\
+ 	(XXX)->symRef = FARG1;\
+@@ -4557,9 +4660,3 @@
+ 	(XXX)->yyStateSize = _ARG_PROJECT_8_10 ARGS;\
+ 	(XXX)->next = _ARG_PROJECT_9_10 ARGS;\
+ }
+-#define FILL__IO_FILE_plus(XXX) {\
+-}
+-#define FILLF__IO_FILE_plus(XXX) {\
+-}
+-#define _FILLF__IO_FILE_plus(XXX,ARGS) {\
+-}
+diff --git a/src/strTdef.h b/src/strTdef.h
+index 09b30f8..101ba15 100644
+--- a/src/strTdef.h
++++ b/src/strTdef.h
+@@ -3,7 +3,6 @@ typedef struct fileItemBits S_fileItemBits;
+ typedef struct __jmp_buf_tag S___jmp_buf_tag;
+ typedef struct timeval S_timeval;
+ extern char * taskRegimesName[];
+-typedef struct _IO_jump_t S__IO_jump_t;
+ typedef struct editorUndo S_editorUndo;
+ typedef struct cachePoint S_cachePoint;
+ typedef struct zipArchiveDir S_zipArchiveDir;
+@@ -18,6 +17,7 @@ typedef struct nestedSpec S_nestedSpec;
+ typedef struct __dirstream S___dirstream;
+ typedef struct tpCheckMoveClassData S_tpCheckMoveClassData;
+ extern char * usagesName[];
++typedef struct __pthread_internal_slist S___pthread_internal_slist;
+ typedef struct idIdent S_idIdent;
+ typedef struct bb_typeModifiersListPositionLstPair S_bb_typeModifiersListPositionLstPair;
+ typedef struct fileItemList S_fileItemList;
+@@ -28,21 +28,18 @@ typedef union editorUndoUnion U_editorUndoUnion;
+ typedef struct unsPositionPair S_unsPositionPair;
+ typedef struct sigevent S_sigevent;
+ extern char * trivialPreChecksName[];
+-typedef struct __gconv_info S___gconv_info;
+ typedef struct macroArgTabElem S_macroArgTabElem;
+ typedef struct z_stream_s S_z_stream_s;
+ typedef struct tokenNameIni S_tokenNameIni;
+ typedef struct methodTypeModif S_methodTypeModif;
+ typedef struct cctNode S_cctNode;
++typedef struct __pthread_rwlock_arch_t S___pthread_rwlock_arch_t;
+ typedef struct editorRegionList S_editorRegionList;
+ typedef struct symbolPositionPair S_symbolPositionPair;
+-typedef struct __pthread_attr_s S___pthread_attr_s;
+ typedef struct lexInput S_lexInput;
+-typedef struct __gconv_step_data S___gconv_step_data;
+ typedef struct internal_state S_internal_state;
+ typedef struct referencesChangeData S_referencesChangeData;
+ extern char * fileEncodingsName[];
+-typedef struct _pthread_descr_struct S__pthread_descr_struct;
+ typedef struct htmlRefList S_htmlRefList;
+ typedef struct symbol S_symbol;
+ typedef struct random_data S_random_data;
+@@ -55,9 +52,9 @@ typedef struct refTab S_refTab;
+ typedef struct completionFqtMapInfo S_completionFqtMapInfo;
+ typedef struct completionSymFunInfo S_completionSymFunInfo;
+ typedef struct htmlData S_htmlData;
++typedef struct mallinfo2 S_mallinfo2;
+ typedef struct funTypeModif S_funTypeModif;
+ extern char * copyFlagName[];
+-typedef struct __sched_param S___sched_param;
+ extern char * syntaxPassParsedImportantPositionName[];
+ typedef struct stringAddrList S_stringAddrList;
+ typedef struct editorMarkerList S_editorMarkerList;
+@@ -75,13 +72,13 @@ typedef struct topBlock S_topBlock;
+ typedef struct timespec S_timespec;
+ typedef struct counters S_counters;
+ typedef struct symTab S_symTab;
+-typedef struct __gconv_trans_data S___gconv_trans_data;
+ typedef struct bb_unsigned S_bb_unsigned;
+ typedef struct disabledList S_disabledList;
+ typedef struct javaTypePCTIConvertIni S_javaTypePCTIConvertIni;
+ typedef struct olcxReferences S_olcxReferences;
+ extern char * olcxOptionsName[];
+ extern char * refCategoriesName[];
++typedef struct __pthread_cond_s S___pthread_cond_s;
+ typedef struct setGetEnv S_setGetEnv;
+ typedef struct optionsList S_optionsList;
+ typedef struct lexBuf S_lexBuf;
+@@ -93,9 +90,11 @@ typedef struct javaFqtTab S_javaFqtTab;
+ typedef struct typeModifiersListPositionLstPair S_typeModifiersListPositionLstPair;
+ typedef struct yyGlobalState S_yyGlobalState;
+ typedef struct _IO_marker S__IO_marker;
++typedef struct __pthread_internal_list S___pthread_internal_list;
+ extern char * editorsName[];
+ typedef struct fileItem S_fileItem;
+ extern char * storagesName[];
++typedef struct gzFile_s S_gzFile_s;
+ typedef struct mallinfo S_mallinfo;
+ typedef struct bb_idIdent S_bb_idIdent;
+ typedef struct positionLst S_positionLst;
+@@ -103,6 +102,7 @@ typedef struct editorBuffer S_editorBuffer;
+ typedef struct editorBufferList S_editorBufferList;
+ typedef struct availableRefactoring S_availableRefactoring;
+ typedef struct cppIfStack S_cppIfStack;
++typedef struct gz_header_s S_gz_header_s;
+ typedef struct bb_symbolList S_bb_symbolList;
+ typedef struct recFindStr S_recFindStr;
+ extern char * updateModifiersName[];
+@@ -115,6 +115,7 @@ typedef struct charBuf S_charBuf;
+ typedef struct currentlyParsedStatics S_currentlyParsedStatics;
+ typedef struct typeCharCodeIni S_typeCharCodeIni;
+ typedef struct editorMarker S_editorMarker;
++typedef struct _IO_codecvt S__IO_codecvt;
+ extern char * javaPCTIndexName[];
+ typedef struct editorMemoryBlock S_editorMemoryBlock;
+ typedef struct memory S_memory;
+@@ -132,20 +133,23 @@ typedef struct editorRegion S_editorRegion;
+ typedef struct jslClassStat S_jslClassStat;
+ typedef struct bb_positionLst S_bb_positionLst;
+ typedef struct editorUndoRenameBuff S_editorUndoRenameBuff;
++typedef struct __pthread_mutex_s S___pthread_mutex_s;
+ typedef struct javaStat S_javaStat;
+ typedef struct zipFileTabItem S_zipFileTabItem;
+ typedef struct dirent S_dirent;
++typedef struct _IO_cookie_io_functions_t S__IO_cookie_io_functions_t;
+ typedef struct cxScanFileFunctionLink S_cxScanFileFunctionLink;
+-extern char * __codecvt_resultName[];
+ typedef struct macroBody S_macroBody;
+ typedef struct jslTypeTab S_jslTypeTab;
+ typedef struct tpCheckSpecialReferencesData S_tpCheckSpecialReferencesData;
++typedef struct _G_fpos64_t S__G_fpos64_t;
+ extern char * refsFilterLevelsName[];
+ typedef struct symbolList S_symbolList;
+ typedef struct htmlCutPathesOpts S_htmlCutPathesOpts;
+ typedef struct bb_freeTrail S_bb_freeTrail;
+ typedef struct typeModifiersList S_typeModifiersList;
+ typedef struct symbolPositionLstPair S_symbolPositionLstPair;
++typedef union pthread_attr_t U_pthread_attr_t;
+ typedef struct position S_position;
+ typedef union typeModifUnion U_typeModifUnion;
+ typedef struct idIdentList S_idIdentList;
+@@ -154,6 +158,7 @@ extern char * sFunResultName[];
+ typedef struct classTreeData S_classTreeData;
+ extern char * menuFilterLevelsName[];
+ extern char * miscellaneousName[];
++typedef struct _IO_wide_data S__IO_wide_data;
+ typedef struct fileStat S_fileStat;
+ typedef struct caching S_caching;
+ typedef struct fileDesc S_fileDesc;
+@@ -161,25 +166,24 @@ typedef struct bb_exprTokenType S_bb_exprTokenType;
+ extern char * refScopesName[];
+ typedef struct userOlcx S_userOlcx;
+ extern char * commentMovingsName[];
+-typedef struct __gconv_loaded_object S___gconv_loaded_object;
+ typedef struct bb_symbolPositionPair S_bb_symbolPositionPair;
+ typedef struct bb_symbol S_bb_symbol;
+ typedef struct options S_options;
+-typedef struct _pthread_fastlock S__pthread_fastlock;
+ typedef struct bb_idIdentList S_bb_idIdentList;
+ extern char * inputTypeName[];
+ typedef union defUnion U_defUnion;
+-typedef struct __gconv_step S___gconv_step;
+ typedef struct bb_intPair S_bb_intPair;
+ typedef struct intlist S_intlist;
+ typedef struct jslSymbolList S_jslSymbolList;
++typedef struct __locale_struct S___locale_struct;
+ typedef struct bb_typeModifiers S_bb_typeModifiers;
+ typedef struct reference S_reference;
+ typedef struct editorUndoMoveBlock S_editorUndoMoveBlock;
++typedef struct __locale_data S___locale_data;
+ typedef struct bb_typeModifiersList S_bb_typeModifiersList;
++typedef struct _G_fpos_t S__G_fpos_t;
+ typedef struct programGraphNode S_programGraphNode;
+ typedef struct editorBufferBits S_editorBufferBits;
+ typedef struct itimerspec S_itimerspec;
+ typedef struct intPair S_intPair;
+ typedef struct jslStat S_jslStat;
+-typedef struct _IO_FILE_plus S__IO_FILE_plus;
+-- 
+2.44.0
+
