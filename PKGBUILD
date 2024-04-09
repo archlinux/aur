@@ -1,4 +1,5 @@
-# Maintainer: Sergey Bargamon <sergey@bargamon.ru>
+# Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
+# Contributor: Sergey Bargamon <sergey@bargamon.ru>
 pkgname=clink
 pkgver=0.4.1
 pkgrel=1
