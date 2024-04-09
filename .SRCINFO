@@ -1,7 +1,7 @@
 pkgbase = python-hid-parser
 	pkgdesc = Typed pure Python library to parse HID report descriptors
 	pkgver = 0.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/usb-tools/python-hid-parser
 	arch = any
 	license = MIT
