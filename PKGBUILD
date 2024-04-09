@@ -2,14 +2,14 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=bspm
-_pkgver=0.5.5
+_pkgver=0.5.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Bridge to System Package Manager"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   gobject-introspection-runtime
   pyalpm
@@ -25,10 +25,10 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-dbus.patch")
-md5sums=('86d4bc20c4b90d6d61873e554e0a20f4'
+md5sums=('5c14be37758643b7f291ebabce670649'
          '36f5173c5c892c7c525ff320f99952ab')
-sha256sums=('d49d91ec3e0caaf698596a17ce391dafc146b9cfa0f8ce5183b1ef41d142a61d'
-            '7a80496e502ddab4f4682e791b626b0a2ccb405ee2c138a0932cd112b86987c0')
+b2sums=('5ce4e6024c882a7a301d863edd7b6c5e7c6733c88894fecadc6f552f8bb48ee072bc85bc51d05e131bc2d5bb0fe30d24254faae905b6781a17a7981c5f649800'
+        '82a8ebbdd7806619c4e03ec9c5f27515bc8589d75588a3e3fe45318bd6df4f549547b19ba5d69a6ebb0f8bcfe7cb9b2679738057dbbe7c4c2617271ef1548946')
 
 prepare() {
   # fix dbus configuration
@@ -36,8 +36,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p build dbus
-  R CMD INSTALL "$_pkgname" -l build \
+  mkdir build dbus
+  R CMD INSTALL -l build "$_pkgname" \
       --configure-vars="BUILD_ROOT=$srcdir/dbus"
 }
 
