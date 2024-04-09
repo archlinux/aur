@@ -8,7 +8,7 @@ _nodejs="18.17.1"
 
 pkgname=${_pkgname}-electron
 pkgver=1.88.0.24096
-pkgrel=2
+pkgrel=3
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/VSCodium/vscodium"
@@ -18,7 +18,16 @@ optdepends=('x11-ssh-askpass: SSH authentication'
 	    'gvfs: For move to trash functionality'
 	    'libdbusmenu-glib: For KDE global menu')
 makedepends=('git' 'python' 'nvm' 'jq')
-conflicts=('vscodium')
+provides=(
+    'codium'
+    'vscodium'
+)
+conflicts=(
+    'codium'
+    'vscodium'
+    'vscodium-bin'
+    'vscodium-git'
+)
 source=("git+https://github.com/VSCodium/vscodium.git#tag=${pkgver}"
 		"vscodium-electron.patch"
 		"${_pkgname}.sh"
@@ -26,8 +35,8 @@ source=("git+https://github.com/VSCodium/vscodium.git#tag=${pkgver}"
 		"${_pkgname}.desktop"
 		"${_pkgname}-uri-handler.desktop")
 sha256sums=('SKIP'
-            'SKIP'
-            '75e5411d6f68f015ef0d1970a47b60e2d5ce765446c00ebead5f988550f823eb'
+            'b96a713be2577dd07b727362c77edc7fd0430a5894eead186c1f18f666fc5536'
+            'da8fbd6dcafa667e2b3368ae87ed216e7e76f56ce4a3e4ede426dc129e8f8349'
             '7a3dceb7a470f1dd6bc2991c28a4bfc68be6b81252ec7ff8f61f280e2e5b01f8'
             '204ed8761e4f57e095833aee800f5fe662667aa06c2a213ef8b733929c639237'
             '765db91bf3eb97936d85c53f108d739a5c95d806ff5d4808a05d2c2d9e5f8453')
