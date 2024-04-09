@@ -1,11 +1,12 @@
 pkgbase = ledmonutils
 	pkgdesc = Enclosure LED Utilities
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/intel/ledmon
 	arch = x86_64
 	license = GPL
 	makedepends = systemd
+	makedepends = autoconf-archive
 	depends = sg3_utils
 	depends = systemd-libs
 	depends = pciutils
