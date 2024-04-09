@@ -1,16 +1,16 @@
-# Maintainer: XandrCopyrighted (or xxandr, XDR) <xxandrr@proton.me>
+# Maintainer: XDR <xxdr@duck.com>
 
 pkgname="xfetch-bin"
-pkgver=3.6
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="A simple fetch written in Rust."
 arch=('any')
-url="https://codeberg.org/XDR/xFetch"
+url="https://gitlab.com/XDRwastaken/xFetch"
 license=('MIT')
 
 source=(
-	"https://codeberg.org/XDR/xFetch/releases/download/3.6/xfetch.tar.gz"
-	"https://codeberg.org/XDR/xFetch/raw/branch/main/LICENSE"
+	"https://gitlab.com/XDRwastaken/archived/-/raw/main/xFetch/xfetch_2.1.2.tar.gz"
+	"https://gitlab.com/XDRwastaken/xFetch/-/raw/main/LICENSE?ref_type=heads"
 )
 sha256sums=(
 	'SKIP'
