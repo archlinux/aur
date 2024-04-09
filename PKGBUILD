@@ -7,25 +7,33 @@ pkgver=0.1.1
 pkgrel=1
 pkgdesc='A CLI for running inference on supported Large Language Models. Powered by th...'
 url='https://crates.io/crates/llm-cli'
-license=('Apache' 'MIT')
+license=('Apache-2.0' 'MIT')
 
 depends=('gcc-libs')
 makedepends=('cargo')
 
-source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/llm-cli/0.1.1/download")
+source=("$_crate-0.1.1.tar.gz::https://crates.io/api/v1/crates/llm-cli/0.1.1/download")
 sha512sums=('dd013d9b8f27001ed695a203b6f647e140c46bf6b7228b0c1b3d9b83abdff3e2f0060263e9cdd0ded967f7f13bdf568e1d2f2415b08679302911a894757e6a45')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
 
 prepare() {
-	cd "$srcdir/$_crate-$pkgver"
+	cd "$srcdir/$_crate-0.1.1"
 
-	cargo fetch --locked
+	export RUSTUP_TOOLCHAIN=stable
+
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-	cd "$srcdir/$_crate-$pkgver"
+	cd "$srcdir/$_crate-0.1.1"
+	
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	CFLAGS+=" -ffat-lto-objects"
+
+	
 	cargo build \
 		--offline \
 		--locked \
@@ -33,6 +41,6 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$_crate-$pkgver"
+	cd "$srcdir/$_crate-0.1.1"
 	install -Dm755 "target/release/llm" -t "$pkgdir/usr/bin"
 }
