@@ -7,12 +7,12 @@
 pkgname=('0ad-git' '0ad-data-git')
 _pkgname=0ad
 epoch=1
-pkgver=A26.r1249.g4a5de262b7
+pkgver=A26.r1310.g899a956de4
 pkgrel=1
 pkgdesc="Cross-platform, 3D and historically-based real-time strategy game - built from git development version."
 arch=('i686' 'x86_64')
 url="http://play0ad.com/"
-license=('GPL2' 'CCPL')
+license=('GPL-2.0-or-later' 'CCPL')
 makedepends=('boost' 'cmake' 'mesa' 'zip' 'libsm' 'rust' 'python' 'git'
              'enet' 'fmt' 'gloox' 'glu' 'libgl' 'libminiupnpc.so' 'libogg'
              'libpng' 'libsodium' 'libvorbis' 'miniupnpc' 'nspr' 'openal'
