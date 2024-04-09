@@ -33,7 +33,7 @@ package() {
   find . -type f -exec install -v -Dm 755 "{}" "$pkgdir/opt/$_pkgname/{}" \;
 
   mkdir -p $pkgdir/usr/share/icons/hicolor/128x128/apps
-  ln -sf /opt/$pkgname/Heaven\ Studio_Data/Resources/UnityPlayer.png $pkgdir/usr/share/icons/hicolor/128x128/apps/heaven-studio.png
+  ln -sf /opt/$_pkgname/Heaven\ Studio_Data/Resources/UnityPlayer.png $pkgdir/usr/share/icons/hicolor/128x128/apps/heaven-studio.png
 
   mkdir -p $pkgdir/usr/share/applications
   cd ../..
