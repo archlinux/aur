@@ -2,7 +2,7 @@
 # Contributor: Sergey Bargamon <sergey@bargamon.ru>
 pkgname=clink
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Url cleaner"
 arch=("x86_64")
 url="https://github.com/Lurk/clink"
@@ -19,6 +19,6 @@ build() {
 package() {
     cd $pkgname
     install -Dm 755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm 755 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
