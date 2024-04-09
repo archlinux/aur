@@ -1,26 +1,12 @@
-[1m[32m==>[m[1m Making package: blender-studio-pipeline-git r2352.3f5ce26-1 (Sel 09 Apr 2024 13:32:06)[m
-[1m[32m==>[m[1m Checking runtime dependencies...[m
-[1m[32m==>[m[1m Checking buildtime dependencies...[m
-[1m[32m==>[m[1m Retrieving sources...[m
-[1m[32m==>[m[1m Extracting sources...[m
-[1m[32m==>[m[1m Starting prepare()...[m
-directory exists
-Already up to date.
-[1m[32m==>[m[1m Starting pkgver()...[m
-[1m[32m==>[m[1m Removing existing $pkgdir/ directory...[m
-[1m[32m==>[m[1m Entering fakeroot environment...[m
-[1m[32m==>[m[1m Starting package()...[m
-[1m[32m==>[m[1m Tidying install...[m
-[1m[34m  ->[m[1m Removing libtool files...[m
-[1m[34m  ->[m[1m Purging unwanted files...[m
-[1m[34m  ->[m[1m Removing static library files...[m
-[1m[34m  ->[m[1m Stripping unneeded symbols from binaries and libraries...[m
-[1m[34m  ->[m[1m Compressing man and info pages...[m
-[1m[32m==>[m[1m Checking for packaging issues...[m
-[1m[32m==>[m[1m Creating package "blender-studio-pipeline-git"...[m
-[1m[34m  ->[m[1m Generating .PKGINFO file...[m
-[1m[34m  ->[m[1m Generating .BUILDINFO file...[m
-[1m[34m  ->[m[1m Generating .MTREE file...[m
-[1m[34m  ->[m[1m Compressing package...[m
-[1m[32m==>[m[1m Leaving fakeroot environment.[m
-[1m[32m==>[m[1m Finished making: blender-studio-pipeline-git r2352.3f5ce26-1 (Sel 09 Apr 2024 13:32:11)[m
+pkgbase = blender-studio-pipeline-git
+	pkgdesc = this will install Blender Media Viewer and Studio Addons. Learn more at https://projects.blender.org/studio/blender-studio-pipeline.git.
+	pkgver = r2352.3f5ce26
+	pkgrel = 1
+	epoch = 0
+	url = https://projects.blender.org/studio/blender-studio-pipeline.git
+	arch = x86_64
+	license = GPL
+	makedepends = git-lfs
+	provides = blender-studio-pipeline
+
+pkgname = blender-studio-pipeline-git
