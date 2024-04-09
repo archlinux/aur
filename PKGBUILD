@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=story-writer-bin
 _pkgname=Story-writer
-pkgver=8.13.0
+pkgver=8.13.2
 pkgrel=1
 pkgdesc="A very excellent knowledge management software.小书匠是一款非常优秀的知识管理软件."
 arch=(
@@ -21,6 +21,12 @@ depends=(
     'libxrandr'
     'nodejs'
     'libdrm'
+    'libxdamage'
+    'pango'
+    'libxcomposite'
+    'at-spi2-core'
+    'mesa'
+    'libcups'
 )
 makedenpends=(
     'gendesk'
@@ -33,8 +39,8 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/downloa
 source=("${pkgname%-bin}.sh")
 noextract=("${pkgname%-bin}-${pkgver}-${CARCH}.zip")
 sha256sums=('7d80c20ecbd2ef4fdbe18493d26303a28bfbdecb23e722282494fbfb5c080073')
-sha256sums_i686=('b5f7580f4b219e02e653177a7c396ebf1e7fa45001e0ffe148531f071ec5742a')
-sha256sums_x86_64=('242eb853c75168938539fd110ae07a865b9f1a64653a5894e1985728c0e25da4')
+sha256sums_i686=('a79fd7feb015682460a591096086c614ea827d528836d9a31f2ed24caa3c0b62')
+sha256sums_x86_64=('f1dc90f979d844f825dc11b0647e74d4c5a844ebe5177dd7d7d230c8bf964323')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
