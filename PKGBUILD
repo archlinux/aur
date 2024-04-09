@@ -1,19 +1,19 @@
 pkgname=firefox-extension-adguard
-pkgver=4.3.35
+pkgver=4.3.46
 pkgrel=1
 pkgdesc="AdGuard browser extension."
 arch=("any")
 url="https://adguard.com/adguard-browser-extension/overview.html"
 license=("GPL-3.0-only")
 groups=("firefox-addons")
-makedepends=("npm" "yarn" "nodejs-lts-hydrogen" "git" "jq")
+makedepends=("npm" "yarn" "git" "jq")
 options=("!strip")
 source=("adguard-$pkgver.tar.gz::https://github.com/AdguardTeam/AdguardBrowserExtension/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('74f56f43152447338066f4d09fe0de2a810e516d7214914d7a5cf289d34dcfed')
+sha256sums=('c86859d9af0eadd35fd6763388e2d486d012c0a089a5a9e8033d068c34bc8d78')
 
 prepare() {
     cd "$srcdir/AdguardBrowserExtension-$pkgver"
-    yarn install --ignore-scripts
+    yarn install --ignore-scripts --ignore-engines
     if [[ -z "$OPENAI_API_KEY" ]]
     then
         # This needs an OPENAI_API_KEY
