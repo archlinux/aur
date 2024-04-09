@@ -5,8 +5,8 @@ _skinname_lowercase="${_skinname,,}"
 _pkgname_base="mediawiki-skin-${_skinname_lowercase}"
 
 pkgname="${_pkgname_base}-git"
-pkgver=1.1.17.r27.g0194d7f
-pkgrel=2
+pkgver=1.1.18.r2.g378056d
+pkgrel=1
 pkgdesc="Lakeus is a MediaWiki skin that aims to provide a simple but all-functional experience, named after a character in the novel of one of the authors, Lakejason0."
 arch=('any')
 url="https://www.mediawiki.org/wiki/Skin:${_skinname}"
