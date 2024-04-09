@@ -1,7 +1,7 @@
 # Maintainer: Gaël PORTAY <gael.portay@gmail.com>
 
 pkgname=iamroot
-pkgver=20
+pkgver=21
 pkgrel=1
 pkgdesc='Emulating the syscall chroot(2) in an unpriviliged process'
 arch=('x86_64')
@@ -18,14 +18,14 @@ makedepends=('lib32-glibc'
 checkdepends=('shellcheck')
 options=('!strip')
 source=("https://github.com/gportay/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('27c3019135fce9359a7e7ff6abb0501108c4881e6c57609f4c14d0fb91f17eec')
+sha256sums=('3bbdc8b53a4e1e0a88d2aa281fd85bd4e3653c7634060d6b7442c932dae03b07')
 validpgpkeys=('8F3491E60E62695ED780AC672FA122CA0501CA71')
 
 # Fixes:
 #
 # 	$ ish
 #	/bin/bash: symbol lookup error: /usr/lib/iamroot/libiamroot.so: undefined symbol: _Unwind_Resume
-CFLAGS="${CFLAGS//-fexceptions/}"
+CFLAGS="${CFLAGS//-fexceptions/} -DJIM_REGEXP"
 export CFLAGS
 
 prepare() {
@@ -59,6 +59,7 @@ package() {
 	make PREFIX=/usr DESTDIR="$pkgdir" install-exec
 	make PREFIX=/usr DESTDIR="$pkgdir" install-doc
 	make PREFIX=/usr DESTDIR="$pkgdir" install-bash-completion
-	make PREFIX=/usr DESTDIR="$pkgdir" install-support
+	make PREFIX=/usr DESTDIR="$pkgdir" install-support-i686
+	make PREFIX=/usr DESTDIR="$pkgdir" install-support-x86_64
 	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
