@@ -2,7 +2,7 @@
 
 pkgname=jupyter-server-mathjax
 pkgver=0.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc='MathJax resources as a Jupyter Server Extension'
 arch=(any)
 url='https://jupyter.org/'
