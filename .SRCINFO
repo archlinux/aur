@@ -1,6 +1,6 @@
 pkgbase = commas-git
 	pkgdesc = A hackable, pluggable terminal, and also a command runner.
-	pkgver = 0.30.0.r18.gd24e08e
+	pkgver = 0.31.0.r0.gf79623f
 	pkgrel = 1
 	url = https://github.com/CyanSalt/commas
 	arch = x86_64
