@@ -8,17 +8,17 @@ url="https://github.com/CoolnsX/dra-cla"
 license=('GPL3')
 depends=('fzf' 'grep' 'sed' 'curl' 'openssl' 'mpv' 'aria2' 'ffmpeg')
 makedepends=('git')
-#provides=("${pkgname%-VCS}")
-#conflicts=("${pkgname%-VCS}")
+#provides=("${pkgname%-git}")
+#conflicts=("${pkgname%-git}")
 source=('dra-cla::git+https://github.com/CoolnsX/dra-cla.git')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-VCS}"
+	cd "$srcdir/${pkgname%-git}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$srcdir/${pkgname%-VCS}"
+	cd "$srcdir/${pkgname%-git}"
     install -Dm755 "./dra-cla" "$pkgdir/usr/bin/dra-cla"
 }
