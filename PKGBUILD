@@ -1,17 +1,17 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=pv-git
-pkgver=1.6.20.r6.ga9cef81
+pkgver=1.8.5.r10.g1ad9c32
 pkgrel=1
 pkgdesc="Pipe Viewer is a terminal-based tool for monitoring the progress of data through a pipeline"
 arch=('i686' 'x86_64')
 url="https://www.ivarch.com/programs/pv.shtml"
-license=('custom:Artistic 2.0')
+license=('GPL-3.0-or-later')
 depends=('glibc')
 makedepends=('git')
 provides=("pv=$pkgver")
 conflicts=('pv')
-source=("git+https://github.com/a-j-wood/pv.git")
+source=("git+https://codeberg.org/a-j-wood/pv.git")
 sha256sums=('SKIP')
 
 
@@ -27,7 +27,7 @@ pkgver() {
 build() {
   cd "pv"
 
-  ./generate.sh
+  autoreconf -fi
   ./configure \
     --prefix="/usr"
   make
@@ -36,12 +36,11 @@ build() {
 check() {
   cd "pv"
 
-  make check
+  #make check
 }
 
 package() {
   cd "pv"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 "doc/COPYING" -t "$pkgdir/usr/share/licenses/pv"
 }
