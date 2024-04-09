@@ -1,6 +1,6 @@
 pkgbase = buildbot
 	pkgver = 3.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://buildbot.net
 	arch = any
 	license = GPL-2.0-only
