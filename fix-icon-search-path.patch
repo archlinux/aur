@@ -6,7 +6,7 @@ diff -aur package.pristine/mnemosyne/pyqt_ui/mnemosyne package.new/mnemosyne/pyq
  # For system install:
  QtCore.QDir.addSearchPath("icons", 
 -    os.path.abspath(__file__ + "/../../../pixmaps"))
-+    os.path.abspath(__file__ + "/../../pixmaps"))
++    os.path.abspath(__file__ + "/../pixmaps"))
  # For Windows installer:
  QtCore.QDir.addSearchPath("icons", 
      "pixmaps")
