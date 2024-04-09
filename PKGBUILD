@@ -3,26 +3,26 @@
 _pkgname=ALS
 _pkgver=0.0.7
 pkgname=r-${_pkgname,,}
-pkgver=0.0.7
-pkgrel=1
-pkgdesc='Multivariate Curve Resolution Alternating Least Squares (MCR-ALS)'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=3
+pkgdesc="Multivariate Curve Resolution Alternating Least Squares (MCR-ALS)"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-iso
   r-nnls
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('57a195e8c5a3d856cd543c99ae532cc25c83b3b444f513b74447bf4a72378da0')
+md5sums=('3aadfde3cc792b72fbf1768b3ae922ad')
+b2sums=('318c1a3398566af9cf7fa1b1561ed4d53bed9590ba4b64a713a9e5deb5508715fd51c0778129e63af9ab434f97c5e59e1869b7a6fcac965caf1850cee515cabd')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

@@ -1,14 +1,14 @@
 pkgbase = r-als
 	pkgdesc = Multivariate Curve Resolution Alternating Least Squares (MCR-ALS)
 	pkgver = 0.0.7
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=ALS
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-2.0-or-later
 	depends = r-iso
 	depends = r-nnls
 	source = https://cran.r-project.org/src/contrib/ALS_0.0.7.tar.gz
-	sha256sums = 57a195e8c5a3d856cd543c99ae532cc25c83b3b444f513b74447bf4a72378da0
+	md5sums = 3aadfde3cc792b72fbf1768b3ae922ad
+	b2sums = 318c1a3398566af9cf7fa1b1561ed4d53bed9590ba4b64a713a9e5deb5508715fd51c0778129e63af9ab434f97c5e59e1869b7a6fcac965caf1850cee515cabd
 
 pkgname = r-als
