@@ -1,10 +1,10 @@
 pkgbase = python-adaptive
 	pkgdesc = Parallel active learning of mathematical functions
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://adaptive.readthedocs.io
 	arch = x86_64
-	license = custom:BSD-3-clause
+	license = BSD-3-Clause
 	checkdepends = python-pytest-cov
 	checkdepends = python-flaky
 	makedepends = python-build
@@ -16,7 +16,7 @@ pkgbase = python-adaptive
 	depends = python-scipy
 	depends = python-sortedcollections
 	depends = python-versioningit
-	source = https://pypi.org/packages/source/a/adaptive/adaptive-1.1.0.tar.gz
-	sha512sums = 80f2ba7f50f51d4eeaced1c35863686b1b7f8cdc305313b85c5f2c7de05b76884be4e5157d1030afd39c0127dd61a773d6e26abcf8a3a01991a544b0a9cb74d4
+	source = https://pypi.org/packages/source/a/adaptive/adaptive-1.2.0.tar.gz
+	sha512sums = c959c12be074764cb89fab9fc66976ed0ef21d80521c772234c754825b2d987d7410cb6747dc9e9ed586dd298bb27ccb910fb94c0c1804e7f540505333daf968
 
 pkgname = python-adaptive

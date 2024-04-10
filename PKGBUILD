@@ -1,17 +1,17 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=adaptive
 pkgname=python-${_base}
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Parallel active learning of mathematical functions"
 arch=(x86_64)
 url="https://${_base}.readthedocs.io"
-license=('custom:BSD-3-clause')
+license=(BSD-3-Clause)
 depends=(python-cloudpickle python-loky python-scipy python-sortedcollections python-versioningit)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest-cov python-flaky)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('80f2ba7f50f51d4eeaced1c35863686b1b7f8cdc305313b85c5f2c7de05b76884be4e5157d1030afd39c0127dd61a773d6e26abcf8a3a01991a544b0a9cb74d4')
+sha512sums=('c959c12be074764cb89fab9fc66976ed0ef21d80521c772234c754825b2d987d7410cb6747dc9e9ed586dd298bb27ccb910fb94c0c1804e7f540505333daf968')
 
 build() {
   cd ${_base}-${pkgver}
