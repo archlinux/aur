@@ -4,8 +4,8 @@
 # TODO: report crash bugs for mod 17.1 and update package
 
 export WINEPREFIX=~/.sappy2006
-export SAVEFILE=~/.sappy2006/savefile
-export SAPPYDIR=/usr/share/sappy2006
+export SAVEFILE=$WINEPREFIX/savefile
+export SAPPYDIR=/usr/share/sappy2006 # installation dir for AUR package
 
 # configure all dlls
 configure() {
@@ -18,13 +18,27 @@ configure() {
     touch $SAVEFILE # ensures that we don't repeat configuration process
 }
 
-if [ ! -f "$SAVEFILE" ]; then # first boot
-    configure
-elif [ "$1" = "--mkpfx" ]; then # Force reconfigure prefix
+if [ "$1" = "--mkpfx" ]; then # Force reconfigure prefix
     configure
 elif [ "$1" = "--erase" ]; then # delete all data in prefix
     rm -rf $WINEPREFIX
     exit 0
+elif [ "$1" = "--help" ]; then # show command info
+    cat << EOF
+Sappy2006 Linux Loader by Atapi/Sterophonick
+Original Program: (c) 2006 Kawa and DJ ßouché
+
+Usage:
+    sappy2006 [--mkpfx] [--erase] [--help]
+
+    --mkpfx: Re-configure WINE prefix
+    --erase: Erase all data in WINE prefix
+    --help: Show this screen
+
+EOF
+    exit 0
+elif [ ! -f "$SAVEFILE" ]; then # first boot
+    configure
 else
     echo ""
 fi

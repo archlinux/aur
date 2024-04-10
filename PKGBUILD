@@ -2,7 +2,7 @@
 pkgname=sappy2006
 _pkgname='sappy2006'
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='MusicPlayer2000 music and sound player and editor'
 arch=(x86_64 i686)
 depends=('wine' 'winetricks')
