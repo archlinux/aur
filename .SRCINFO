@@ -1,15 +1,16 @@
 pkgbase = r-limsolve
 	pkgdesc = Solving Linear Inverse Models
 	pkgver = 1.5.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=limSolve
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = gcc-fortran
-	depends = r
+	depends = blas
 	depends = r-lpsolve
 	depends = r-quadprog
 	source = https://cran.r-project.org/src/contrib/limSolve_1.5.7.1.tar.gz
-	sha256sums = a5945217bbf512724297883f8d7c65846a11202266b2b6bb3355372935e85b92
+	md5sums = 6e05187f84421d535439364d4a6715af
+	b2sums = 4e2d8b0813296af9a3879a69771475cebe4fd30883fd91be919964ed60dc89c05d1c326d769818d288108b9700735f1c9de13cb4d8336466c3999506895b14ee
 
 pkgname = r-limsolve
