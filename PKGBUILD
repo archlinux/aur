@@ -13,17 +13,17 @@ makedepends=('cargo')
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
 
 build() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname-$pkgver"
     cargo build --release --locked
 }
 
 check() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname-$pkgver"
     cargo test --release --locked
 }
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname-$pkgver"
     install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # documentation
