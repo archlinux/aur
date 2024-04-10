@@ -1,7 +1,7 @@
 # Maintainer: Cross Nastasi <cross@dill.moe>
 pkgname=llama.cpp-cuda-git-fast
 pkgver=r2645.4f407a0a3
-pkgrel=1
+pkgrel=2
 pkgdesc="llama.cpp main and server binaries with cuda support compiled from source. It builds with all available cores + 1 for optimal performance."
 arch=('x86_64')
 url="https://github.com/ggerganov/llama.cpp"
