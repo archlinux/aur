@@ -1,11 +1,11 @@
---- ricty_generator.sh	2024-02-05 00:52:56.483228800 +0000
-+++ ricty_nerd_generator.sh	2024-02-06 04:14:02.746359500 +0000
+--- ricty_generator.sh	2024-04-10 23:06:45.339463300 +0900
++++ ricty_nerd_generator.sh	2024-04-10 23:17:00.008940400 +0900
 @@ -2,7 +2,7 @@
  
  #
  # Ricty Generator
 -ricty_version="4.1.1"
-+ricty_version="4.1.1; NF 3.1.1"
++ricty_version="4.1.1; NF 3.2.0"
  #
  
  #
@@ -151,7 +151,7 @@
  # r -> r of serif (Inconsolata's unused glyph)
  if (flag_r == "true")
 -    Select(65542);  Copy()
-+    Select("glyph21846");  Copy()
++    Select("glyph22702");  Copy()
      Select(0u0072); Paste()
  endif
  
