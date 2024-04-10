@@ -6,6 +6,7 @@ arch=('x86_64' 'i686' 'aarch64')
 license=('GPL')
 depends=('xash3d-fwgs-bin' 'wget' 'unzip' 'yad' 'zenity')
 replaces=('halflife')
+conflicts=('halflife')
 makedepends=('unzip')
 url="https://gitlab.com/half-life1"
 source=("https://gitlab.com/half-life1/halflife/-/archive/$pkgver/halflife-$pkgver.tar.bz2")

@@ -13,6 +13,7 @@ pkgbase = halflife-xash3d-fwgs
 	depends = unzip
 	depends = yad
 	depends = zenity
+	conflicts = halflife
 	replaces = halflife
 	source = https://gitlab.com/half-life1/halflife/-/archive/1.0.0/halflife-1.0.0.tar.bz2
 	sha256sums = SKIP
