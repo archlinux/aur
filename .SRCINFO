@@ -1,5 +1,5 @@
 pkgbase = ttf-ohruri
-	pkgdesc = Japanese TrueType font obtained by mixing M+ and Open Sans
+	pkgdesc = Japanese TrueType font obtained by mixing M+ FONTS, Source Han Sans, and Open Sans.
 	pkgver = 20221103
 	pkgrel = 2
 	url = https://github.com/Koruri/Ohruri
