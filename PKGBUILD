@@ -17,12 +17,18 @@ sha256sums_i386=('SKIP')
 sha256sums_i686=('SKIP')
 sha256sums_aarch64=('SKIP')
 source_x86_64=("https://gitlab.com/cavestory-bin/nxengine-evo-bin/$pkgver-$pkgrel/-/raw/main/nxengine-evo-linux-x64.tar.xz")
-source_i386=("https://gitlab.com/cavestory-bin/nxengine-evo-bin/$pkgver-$pkgrel/-/raw/main/nxengine-evo-linux-i386.tar.xz")
-source_i686=("https://gitlab.com/cavestory-bin/nxengine-evo-bin/$pkgver-$pkgrel/-/raw/main/nxengine-evo-linux-i386.tar.xz")
+source_i386=("https://gitlab.com/cavestory-bin/nxengine-evo-bin/$pkgver-$pkgrel/-/raw/main/nxengine-evo-linux-i686.tar.xz")
+source_i686=("https://gitlab.com/cavestory-bin/nxengine-evo-bin/$pkgver-$pkgrel/-/raw/main/nxengine-evo-linux-i686.tar.xz")
 source_aarch64=("https://gitlab.com/cavestory-bin/nxengine-evo-bin/$pkgver-$pkgrel/-/raw/main/nxengine-evo-linux-aarch64.tar.xz")
 
 
 package() {
    install -dm755 "$pkgdir/usr/bin"
-   cp -r $srcdir/nxengine-evo $pkgdir/usr/bin
+   install -dm755 "$pkgdir/usr/share/games/NXEngine-evo"
+   
+   cp -r $srcdir/. "$pkgdir/usr/share/games/NXEngine-evo"
+  
+  #Binary 
+   ln -s /usr/share/games/NXEngine-evo/nxengine-evo "$pkgdir/usr/bin"
+   ln -s /usr/share/games/NXEngine-evo/nxextract "$pkgdir/usr/bin"
 }
