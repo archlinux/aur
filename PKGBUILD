@@ -91,7 +91,7 @@ pkgver() {
 
 build() {
     arch-meson "${_pkgname}" build \
-        -Dforce_fallback_for=stb \
+        -Dforce_fallback_for=stb,wlroots \
         -Dpipewire=enabled
     meson compile -C build
 }
