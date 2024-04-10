@@ -1,6 +1,6 @@
 # Maintainer: Cross Nastasi <cross@dill.moe>
 pkgname=minetest-git-dill
-pkgver=1.1
+pkgver=r11518.30e280b69
 pkgrel=1
 pkgdesc="Minetest from git. This version uses github and allows aur helper devel functions to work properly. Also the PKGBUILD script is much simpler."
 arch=('x86_64')

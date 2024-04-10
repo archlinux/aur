@@ -1,6 +1,6 @@
 pkgbase = minetest-git-dill
 	pkgdesc = Minetest from git. This version uses github and allows aur helper devel functions to work properly. Also the PKGBUILD script is much simpler.
-	pkgver = 1.1
+	pkgver = r11518.30e280b69
 	pkgrel = 1
 	url = https://github.com/minetest/minetest
 	arch = x86_64
