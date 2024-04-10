@@ -1,6 +1,5 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
-# 由于 iventoy 本身的设计，只能以root用户运行。
 # Due to the design of iventoy itself, it can only run as root user.
 
 _pkgname=iventoy
@@ -28,18 +27,19 @@ prepare() {
 }
 
 package() {
-    install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 "${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+    install -Dm755 "${_pkgname}"          "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm644 "${_pkgname}.service"  "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
     install -Dm644 "${_pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
 
     cd "${_pkgname}-${pkgver}"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" doc/*
-    install -Dm644 -t "${pkgdir}/opt/${_pkgname}/data" data/*
-    install -Dm644 -t "${pkgdir}/usr/share/${_pkgname}/scripts" user/scripts/example/*
-    install -Dm755 -t "${pkgdir}/opt/${_pkgname}/lib/lin64" lib/lin64/*
-    install -Dm755 -t "${pkgdir}/opt/${_pkgname}/lib" "lib/${_pkgname}"
-    install -Dm755 -t "${pkgdir}/opt/${_pkgname}" "${_pkgname}.sh"
+    install -Dm644 -t "${pkgdir}/opt/${_pkgname}/data"           data/*
+    install -Dm644 -t "${pkgdir}/usr/share/${_pkgname}/scripts"  user/scripts/example/*
+    install -Dm755 -t "${pkgdir}/opt/${_pkgname}/lib/lin64"      lib/lin64/*
+    install -Dm755 -t "${pkgdir}/opt/${_pkgname}/lib"            "lib/${_pkgname}"
+    install -Dm755 -t "${pkgdir}/opt/${_pkgname}"                "${_pkgname}.sh"
+
     ln -s "/var/lib/${_pkgname}/config.dat" "${pkgdir}/opt/${_pkgname}/data/config.dat"
-    ln -s "/var/lib/${_pkgname}/iso" "${pkgdir}/opt/${_pkgname}/iso"
-    ln -s "/var/log/${_pkgname}" "${pkgdir}/opt/${_pkgname}/log"
+    ln -s "/var/lib/${_pkgname}/iso"        "${pkgdir}/opt/${_pkgname}/iso"
+    ln -s "/var/log/${_pkgname}"            "${pkgdir}/opt/${_pkgname}/log"
 }
