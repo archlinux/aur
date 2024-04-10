@@ -1,0 +1,4 @@
+[java-testng]
+source = "github"
+github = "testng-team/testng"
+use_latest_release = "true"
