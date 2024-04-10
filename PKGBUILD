@@ -10,11 +10,6 @@ depends=('gcc' 'cmake' 'make' 'git')
 source=("git+${url}.git")
 md5sums=('SKIP')
 
-pkgver() {
-  cd "${srcdir}/paq8px"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 build() {
   cd "${srcdir}/paq8px"
   cmake .
