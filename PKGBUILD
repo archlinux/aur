@@ -1,4 +1,5 @@
 # $Id$
+# Maintainer: ripping1903 <ripping1903 at proton dot me>
 # Contributor: Paul Nicholson <brenix@gmail.com>
 
 _name=terraform-docs
