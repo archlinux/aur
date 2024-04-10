@@ -1,16 +1,16 @@
 pkgbase = r-goric
 	pkgdesc = Generalized Order-Restricted Information Criterion
 	pkgver = 1.1.2
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=goric
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-2.0-or-later
 	depends = r-mvtnorm
 	depends = r-quadprog
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	source = https://cran.r-project.org/src/contrib/goric_1.1-2.tar.gz
-	sha256sums = 40ba2f0fa13f9e0f5dec99d330d255d4b825ccc9e32865c1cd2185cf93e89600
+	md5sums = 30e6ca89bea0e0d0c1c505d90c707aca
+	b2sums = 149004d847f1126f7a8f19a663a61d376b23ed4d617dc3011ba1e56525a1a69872738963dcd62e26176124f9cc1d0b75a9c2312cda30fbe726295298cef7ef6e
 
 pkgname = r-goric

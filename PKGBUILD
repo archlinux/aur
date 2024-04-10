@@ -3,14 +3,13 @@
 _pkgname=goric
 _pkgver=1.1-2
 pkgname=r-${_pkgname,,}
-pkgver=1.1.2
-pkgrel=4
-pkgdesc='Generalized Order-Restricted Information Criterion'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Generalized Order-Restricted Information Criterion"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-mvtnorm
   r-quadprog
 )
@@ -19,14 +18,15 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('40ba2f0fa13f9e0f5dec99d330d255d4b825ccc9e32865c1cd2185cf93e89600')
+md5sums=('30e6ca89bea0e0d0c1c505d90c707aca')
+b2sums=('149004d847f1126f7a8f19a663a61d376b23ed4d617dc3011ba1e56525a1a69872738963dcd62e26176124f9cc1d0b75a9c2312cda30fbe726295298cef7ef6e')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
