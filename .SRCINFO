@@ -6,6 +6,7 @@ pkgbase = extremetuxracer-svn
 	arch = x86_64
 	license = GPL
 	makedepends = subversion
+	makedepends = pkgconf
 	makedepends = csfml
 	depends = sfml
 	depends = glu
