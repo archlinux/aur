@@ -1,17 +1,17 @@
 pkgbase = r-sendmailr
-	pkgdesc = send email using R
+	pkgdesc = Send Email Using R
 	pkgver = 1.4.0
-	pkgrel = 3
+	pkgrel = 5
 	url = https://cran.r-project.org/package=sendmailR
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-2.0-only
 	depends = r-base64enc
 	optdepends = r-curl
 	optdepends = r-htmltools
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	source = https://cran.r-project.org/src/contrib/sendmailR_1.4-0.tar.gz
-	sha256sums = 5b8b91fc13f6b07b9fc5a2cf7591cf760fad47c5ea17d87a2891898c506454ad
+	md5sums = b8a5eccd3a787dad249d81e192d46c05
+	b2sums = 5b47be00752b87fe17f3bf701b8606792d9360ec55661973f188536657f28989bdad84a8eca8f68ec767abb2406ff085d9b0368e8928e6947b4e54cb4a517dd5
 
 pkgname = r-sendmailr

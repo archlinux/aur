@@ -3,14 +3,13 @@
 _pkgname=sendmailR
 _pkgver=1.4-0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
-pkgrel=3
-pkgdesc='send email using R'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=5
+pkgdesc="Send Email Using R"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
   r-base64enc
 )
 optdepends=(
@@ -20,14 +19,15 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5b8b91fc13f6b07b9fc5a2cf7591cf760fad47c5ea17d87a2891898c506454ad')
+md5sums=('b8a5eccd3a787dad249d81e192d46c05')
+b2sums=('5b47be00752b87fe17f3bf701b8606792d9360ec55661973f188536657f28989bdad84a8eca8f68ec767abb2406ff085d9b0368e8928e6947b4e54cb4a517dd5')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
