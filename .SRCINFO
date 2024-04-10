@@ -1,6 +1,6 @@
 pkgbase = python-django-webpack-loader
 	pkgdesc = Transparently use webpack with django
-	pkgver = 3.0.1
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/django-webpack/django-webpack-loader
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-django-webpack-loader
 	depends = python-lxml
 	depends = python-six
 	depends = python-requests
-	source = python-django-webpack-loader-3.0.1.tar.gz::https://github.com/django-webpack/django-webpack-loader/archive/3.0.1.tar.gz
-	sha256sums = 32f0709ed4a3d697fa4762bf414e9ea937408751c5fa27dc77cdadf1c4e59f92
+	source = python-django-webpack-loader-3.1.0.tar.gz::https://github.com/django-webpack/django-webpack-loader/archive/3.1.0.tar.gz
+	sha256sums = d920dd8624a3db299b0a891f51a7cc48a17514ea78b6bd606c11c509ae3fcbeb
 
 pkgname = python-django-webpack-loader
