@@ -5,7 +5,7 @@ _pkgname=hvac
 pkgname=python-$_pkgname
 # https://github.com/hvac/hvac/releases
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python 2.7/3.X client for HashiCorp Vault'
 url='https://python-hvac.org/'
 # The license defined at https://github.com/hvac/hvac/blob/v2.1.0/pyproject.toml#L17
