@@ -1,7 +1,7 @@
 # Maintainer: zotan <aur@zotan.email>
 
 pkgname=iceshrimp.net-git
-pkgver=v2024.1.alpha+fb0b58b
+pkgver=v2024.1.alpha+2e4e800
 pkgrel=1
 pkgdesc="The Iceshrimp .NET rewrite. Caution: This is alpha software, do not use with production database"
 arch=(x86_64 aarch64)
@@ -54,7 +54,12 @@ rid() {
 
 build() {
   cd "${srcdir}/iceshrimp.net/Iceshrimp.Backend"
-  dotnet publish -c Release -r $(rid)
+
+  if [[ -n $DISABLE_AOT ]] || ! dotnet workload list | grep -q '^wasm-tools\s'; then
+    dotnet publish -c Release -r $(rid)
+  else
+    dotnet publish -c Release -r $(rid) -p:EnableAOT=true
+  fi
 }
 
 package() {
