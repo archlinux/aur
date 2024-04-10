@@ -1,15 +1,11 @@
 pkgbase = ttf-ohruri
-	pkgdesc = Japanese TrueType font obtained by mixing Mgen+ and Open Sans
-	pkgver = 20150606
+	pkgdesc = Japanese TrueType font obtained by mixing M+ FONTS, Source Han Sans, and Open Sans.
+	pkgver = 20221103
 	pkgrel = 1
-	url = http://osdn.jp/projects/koruri
-	install = ttf.install
+	url = https://github.com/Koruri/Ohruri
 	arch = any
-	license = APACHE
-	depends = fontconfig
-	depends = xorg-font-utils
-	source = Ohruri-20150606.tar.xz::http://osdn.jp/frs/redir.php?m=iij&f=%2Fkoruri%2F63358%2FOhruri-20150606.tar.xz
-	md5sums = 18edece40298e08f90e4b1a27b2ba645
+	license = Apache-2.0
+	source = https://github.com/Koruri/Ohruri/archive/refs/tags/20221103.tar.gz
+	sha256sums = 3151949ea431012447f247690e2722362ef059f797e83a167a8b0223f8b54aa3
 
 pkgname = ttf-ohruri
-

@@ -1,0 +1,4 @@
+*.tar.gz
+ttf-ohruri-*.pkg.*
+pkg/
+src/
