@@ -2,9 +2,10 @@
 
 pkgname=dict-ozhegov
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ozhegov's Russian Dictionary"
 arch=('any')
+url="https://github.com/Layerex/ozhegov-dict"
 license=('unknown')
 optdepends=('dictd: dict client and server')
 makedepends=('python3' 'dictd')

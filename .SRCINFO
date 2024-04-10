@@ -1,7 +1,8 @@
 pkgbase = dict-ozhegov
 	pkgdesc = Ozhegov's Russian Dictionary
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/Layerex/ozhegov-dict
 	install = dict-ozhegov.install
 	arch = any
 	license = unknown
