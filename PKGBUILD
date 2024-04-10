@@ -3,25 +3,25 @@
 _pkgname=arrayhelpers
 _pkgver=1.1-0
 pkgname=r-${_pkgname,,}
-pkgver=1.1.0
-pkgrel=4
-pkgdesc='Convenience Functions for Arrays'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Convenience Functions for Arrays"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-svunit
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5fddd5dd4fb8237bcb24465ef823bc8715ba53e6e5fd7a716c31c48ec128340b')
+md5sums=('d94d13f45d5f4c8a771c1c670a5368e6')
+b2sums=('7c92e9f149e880d27042d7253f33f2e966b97705c4bf84c4cabe430c087c31ffef58aa1ff1ac999341a641ae8f094ce28fa36e043de6f4b9a862274dab32505b')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
