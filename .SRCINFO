@@ -1,13 +1,13 @@
 pkgbase = terminusdm-bin
 	pkgdesc = Terminus Download Manager. Download files, resume interrupted downloads, and keep a history of your downloads - within terminal UI.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/sumoduduk/terminusdm
 	arch = x86_64
 	license = GPL-3.0-or-later
 	provides = terminusdm
 	conflicts = terminusdm
-	source = https://github.com/sumoduduk/terminusdm/releases/download/v1.0.1/terminusdm-1.0.1-x86_64.tar.gz
-	sha256sums = 20acf4e548b32df386fb86c0027f000eaf0030adb0c22fcc0a60bba59e5a566d
+	source = https://github.com/sumoduduk/terminusdm/releases/download/v1.0.2/terminusdm-1.0.2-x86_64.tar.gz
+	sha256sums = 4615fd758f9fe5e0728648f6dd1512ef6fd54e36a03ea5e2d470502ec3487ac6
 
 pkgname = terminusdm-bin
