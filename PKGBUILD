@@ -4,7 +4,7 @@
 
 pkgname="odoo"
 pkgver=17.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Web-based Open Source Business Apps"
 url="https://www.odoo.com/"
 arch=("any")
@@ -47,7 +47,7 @@ depends=("postgresql"
         "python-pytz"
         "python-pyusb"
         "python-qrcode"
-        "python-reportlab<4" # thanks Weby
+        "python-reportlab3" # thanks Weby, HLFH
         "python-requests"
         "python-rjsmin" # 17
         "python-stdnum"
