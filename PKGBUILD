@@ -23,8 +23,6 @@ source_aarch64=("https://gitlab.com/cavestory-bin/nxengine-evo-bin/$pkgver-$pkgr
 
 
 package() {
-	install -dm755 "$pkgdir/usr/local/share/games/nxengine-evo"
    install -dm755 "$pkgdir/usr/bin"
-   cp -r $srcdir/nxengine-evo $pkgdir/usr/local/share/games/nxengine-evo
-   ln -sf $pkgdir/usr/local/share/games/nxengine-evo/nxengine-evo $pkgdir/usr/bin/nxengine-evo
+   cp -r $srcdir/nxengine-evo $pkgdir/usr/bin
 }
