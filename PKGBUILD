@@ -159,7 +159,7 @@ elif [ -n "$_use_llvm_lto" ]  ||  [[ "$_use_lto_suffix" = "n" ]]; then
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.8
-_minor=4
+_minor=5
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -173,7 +173,7 @@ pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
-license=('GPL2')
+license=('GPL-2.0-only')
 options=('!strip' '!debug')
 makedepends=('bc' 'libelf' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'zstd' 'gcc' 'gcc-libs' 'glibc' 'binutils' 'make' 'patch' 'python')
 # LLVM makedepends
@@ -219,7 +219,7 @@ fi
 
 ## List of CachyOS schedulers
 case "$_cpusched" in
-    cachyos|sched-ext) ## SCHED-EXT + BORE Scheduler
+    cachyos) ## SCHED-EXT + BORE Scheduler
         source+=("${_patchsource}/sched/0001-sched-ext.patch"
                  "${_patchsource}/sched/0001-bore-cachy-ext.patch");;
     bore) ## BORE Scheduler
@@ -719,9 +719,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('cf58732397bfa11988b79901092887d53c3367d09f63da51ebdcc83518be3a7e9a638fbbb1ff080cd7abed633fadff03d1d7a3928b772de57b14e46e552f9462'
-        '0bbdfe430d284894fbef3267bf11c7682b645ccd006c45ece762f7045651a6f5f5aab8b56b5b5c76750047756fa33588dab47fb1ec62a13e7017b2e6db6c9c73'
+b2sums=('795c67356a7992cc73a85a733471d0379156f7ba68eedd68d4aa099eb07b4eea4626239ae15cdcc409819c833beb1ec2dc4032b203363db52ab1cb8bc31ac4ea'
+        'cc2344a6bee451044c147e3048c4118e30303b2ccfb61c16624ae37cfcdefdd195c557ad07e364d9728e558d11801d42c86bf0726cbe47e3cea6dac2100cafba'
         '43ef7a347878592740d9eb23b40a56083fa747f7700fa1e2c6d039d660c0b876d99bf1a3160e15d041fb13d45906cdb5defef034d4d0ae429911864239c94d8d'
-        'b54c5d7c325bc5f66ae9af382dc8cc827d62e4d9b7600ba1ef9f9a71f6219b463ce8feb7b59994c27e2ee2ec968a110953fbd1b1d59d5a7853c842a34128f749'
-        '34a2ed3bfe686620dad8002e443190d1e7198d607f66d33fdb7a921bc5ba2d077d7cf0775d8a9ec8fc69de69ec374d070a0bb3af968b4aeef6f1b16694a1718d'
+        '5f753f964265422b229c453b6e6fd3a8ba7f3d0ff396da19693173ec270089c504288c06d919aaca1e3f925b985c05c69764650b7477b377cca675d62aa22f35'
+        'a00ce1e6b4a2abe681b15f020a094533db025ea6a4d1fddcaa6c64b2b316997f6b90ab11953ee62ff8ccf0ca551b93c8c3b1083ad78f78407e0ae0caa9cf2df6'
         'e395035f1b0b944beca434c1e24264342088365de267cbb83b111f02a029fc78145aec73c14e458bd3ad648c8bb2c2ef30c2ff091b1dad2f9b754ecbeb45e41b')
