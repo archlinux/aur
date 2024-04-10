@@ -31,7 +31,6 @@ build()
 package()
 {
     # Assure that the directories exist.
-    mkdir -p "${pkgdir}"/usr/bin/
     mkdir -p "${pkgdir}"/usr/share/doc/"${pkgname}"/
 
     # Install the software.
