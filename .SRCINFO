@@ -1,6 +1,6 @@
 pkgbase = pinstall
 	pkgdesc = Installer Tool for Python Programs
-	pkgver = 1.12
+	pkgver = 1.13
 	pkgrel = 1
 	url = https://github.com/bulletmark/pinstall
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = pinstall
 	depends = python>=3.11
 	depends = sudo
 	depends = python-packaging
-	source = pinstall-1.12.tar.gz::https://github.com/bulletmark/pinstall/archive/1.12.tar.gz
-	sha1sums = d83cdaa81b51cd9d28f35d05c6493004ee8f174f
+	source = pinstall-1.13.tar.gz::https://github.com/bulletmark/pinstall/archive/1.13.tar.gz
+	sha1sums = 1d9c91df88e8270152ef9515e8397b67f731df04
 
 pkgname = pinstall
