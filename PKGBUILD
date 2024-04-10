@@ -1,7 +1,7 @@
 # Maintainer: Cross Nastasi <cross@dill.moe>
 pkgname=paq8px-dill
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="paq8px compressor program without filesize limitation"
 arch=('x86_64')
 url="https://github.com/dillfrescott/paq8px"
@@ -13,7 +13,7 @@ md5sums=('SKIP')
 build() {
   cd "${srcdir}/paq8px"
   cmake .
-  make
+  make -j$(nproc)
 }
 
 package() {
