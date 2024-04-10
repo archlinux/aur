@@ -1,7 +1,7 @@
 pkgbase = python-pocketlint
 	pkgdesc = Addon pylint modules and configuration settings for checking the validity of Python-based source projects.
 	pkgver = 0.25
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rhinstaller/pocketlint
 	arch = i686
 	arch = x86_64
