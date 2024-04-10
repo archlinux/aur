@@ -1,14 +1,14 @@
 pkgbase = r-lsa
 	pkgdesc = Latent Semantic Analysis
 	pkgver = 0.73.3
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=lsa
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-2.0-or-later
 	depends = r-snowballc
 	optdepends = r-tm
 	source = https://cran.r-project.org/src/contrib/lsa_0.73.3.tar.gz
-	sha256sums = f07f1159f215501495d7a077911e7ed2ac61e1705899f3be3a5cf9012778619a
+	md5sums = 205b9add99f5a37f1cf93567ec73c5e0
+	b2sums = 3ee2effb3494a786fe8fafc10f609b449f4dfd277eb303eab2d31bbc33745ac5bd95f086d557391403486ecfa8e2bd80cc956cc3dd192c0b0dbb39010b509bd2
 
 pkgname = r-lsa

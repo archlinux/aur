@@ -3,28 +3,28 @@
 _pkgname=lsa
 _pkgver=0.73.3
 pkgname=r-${_pkgname,,}
-pkgver=0.73.3
-pkgrel=1
-pkgdesc='Latent Semantic Analysis'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=4
+pkgdesc="Latent Semantic Analysis"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-snowballc
 )
 optdepends=(
   r-tm
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f07f1159f215501495d7a077911e7ed2ac61e1705899f3be3a5cf9012778619a')
+md5sums=('205b9add99f5a37f1cf93567ec73c5e0')
+b2sums=('3ee2effb3494a786fe8fafc10f609b449f4dfd277eb303eab2d31bbc33745ac5bd95f086d557391403486ecfa8e2bd80cc956cc3dd192c0b0dbb39010b509bd2')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
