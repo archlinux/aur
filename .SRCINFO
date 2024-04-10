@@ -1,0 +1,14 @@
+pkgbase = python-expects
+	pkgdesc = Expressive and extensible TDD/BDD assertion library for Python
+	pkgver = 0.9.0
+	pkgrel = 10
+	url = https://github.com/jaimegildesagredo/expects
+	arch = any
+	license = Apache
+	checkdepends = python-mamba
+	makedepends = python-setuptools
+	depends = python
+	source = python-expects-0.9.0.tar.gz::https://github.com/jaimegildesagredo/expects/archive/v0.9.0.tar.gz
+	sha512sums = f145ed9b1a8921ddc813640f1c6533f41a3dc0f14bf90a69409e0c600cae502cfa16237864103c7e67560f6831ab2db23955ce533439e4fd3b896f2c8c9e7cbb
+
+pkgname = python-expects
