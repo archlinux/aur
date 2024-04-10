@@ -1,7 +1,7 @@
 # Maintainer: Haruo <haruo-mtok [at] outlook [dot] com>
 
 _cranname=rnaturalearth
-_cranver=0.3.4
+_cranver=1.0.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -11,30 +11,29 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=('MIT + file LICENSE')
 depends=(
     'r>=3.1.1'
-    'r-sp>=1.0.15'
-    'r-sf>=0.3-4'
     'r-httr>=1.1.0'
     'r-jsonlite'
+    'r-sf>=0.3-4'
     'r-terra'
 )
 optdepends=(
+    'r-devtools>=1.10.0'
+    'r-dplyr'
+    'r-ggplot2'
     'r-ggrepel'
     'r-knitr>=1.12.3'
-    'r-testthat>=0.9.1'
-    'r-devtools>=1.10.0'
+    'r-lifecycle>=1.0.3'
+    'r-pbapply'
+    'r-purrr'
+    'r-rlang'
+    'r-rmarkdown'
     'r-rnaturalearthdata>=0.1.0'
     'r-rnaturalearthhires>=0.1.0'
-    'r-pbapply'
-    'r-ggplot2'
-    'r-dplyr'
-    'r-purrr'
-    'r-rmarkdown'
+    'r-testthat>=0.9.1'
     'r-tmap'
-    'r-lifecycle>=1.0.3'
-    'r-rlang'
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha512sums=('be2a22678f49be3328cef7aa311fc57bc60cce0644f292c4c752a302f584b113337439ae20a73a1dd03b9bd8d091ae54c572e04ed9a4c4763508507d0d207582')
+sha512sums=('896198493afe42bde56a27fd4b1e597595241bfd01048e87a6c78cd6923dcf68bda7f43945adc9944e4dcdb107cc32d0a1a815fdbff72afe76f9098d3fbf8c49')
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"

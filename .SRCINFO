@@ -1,32 +1,31 @@
 pkgbase = r-rnaturalearth
 	pkgdesc = World Map Data from Natural Earth
-	pkgver = 0.3.4
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rnaturalearth
 	arch = i686
 	arch = x86_64
 	license = MIT + file LICENSE
 	depends = r>=3.1.1
-	depends = r-sp>=1.0.15
-	depends = r-sf>=0.3-4
 	depends = r-httr>=1.1.0
 	depends = r-jsonlite
+	depends = r-sf>=0.3-4
 	depends = r-terra
+	optdepends = r-devtools>=1.10.0
+	optdepends = r-dplyr
+	optdepends = r-ggplot2
 	optdepends = r-ggrepel
 	optdepends = r-knitr>=1.12.3
-	optdepends = r-testthat>=0.9.1
-	optdepends = r-devtools>=1.10.0
+	optdepends = r-lifecycle>=1.0.3
+	optdepends = r-pbapply
+	optdepends = r-purrr
+	optdepends = r-rlang
+	optdepends = r-rmarkdown
 	optdepends = r-rnaturalearthdata>=0.1.0
 	optdepends = r-rnaturalearthhires>=0.1.0
-	optdepends = r-pbapply
-	optdepends = r-ggplot2
-	optdepends = r-dplyr
-	optdepends = r-purrr
-	optdepends = r-rmarkdown
+	optdepends = r-testthat>=0.9.1
 	optdepends = r-tmap
-	optdepends = r-lifecycle>=1.0.3
-	optdepends = r-rlang
-	source = https://cran.r-project.org/src/contrib/rnaturalearth_0.3.4.tar.gz
-	sha512sums = be2a22678f49be3328cef7aa311fc57bc60cce0644f292c4c752a302f584b113337439ae20a73a1dd03b9bd8d091ae54c572e04ed9a4c4763508507d0d207582
+	source = https://cran.r-project.org/src/contrib/rnaturalearth_1.0.1.tar.gz
+	sha512sums = 896198493afe42bde56a27fd4b1e597595241bfd01048e87a6c78cd6923dcf68bda7f43945adc9944e4dcdb107cc32d0a1a815fdbff72afe76f9098d3fbf8c49
 
 pkgname = r-rnaturalearth
