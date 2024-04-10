@@ -4,7 +4,7 @@
 
 pkgname=quakespasm-git
 _pkgname=quakespasm
-pkgver=0.96.0.r3.g944b5d4
+pkgver=0.96.1.r14.g0604ce8
 pkgrel=1
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake and improved in many ways such as Vorbis/MP3 support for music. - Development version"
 arch=('i686' 'x86_64')
@@ -17,6 +17,7 @@ provides=('quakespasm')
 install=${pkgname}.install
 source=('git+https://git.code.sf.net/p/quakespasm/quakespasm')
 sha256sums=('SKIP')
+options=(!debug)
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
