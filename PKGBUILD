@@ -2,7 +2,7 @@
 pkgname=llama.cpp-cuda-git-fast
 pkgver=1.0
 pkgrel=1
-pkgdesc="llama.cpp main and server binaries with cuda support compiled from source. It builds with all available cores + 1 for optimal performance. Binaries are called 'lcpp-main' and 'lcpp-server' as to not conflict with packages that may already be using those general names for their binaries."
+pkgdesc="llama.cpp main and server binaries with cuda support compiled from source. It builds with all available cores + 1 for optimal performance."
 arch=('x86_64')
 url="https://github.com/ggerganov/llama.cpp"
 license=('GPL')
