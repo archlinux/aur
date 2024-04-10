@@ -1,7 +1,7 @@
 # Maintainer: Cross Nastasi <cross@dill.moe>
 pkgname=cmix-git
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="lossless data compression program aimed at optimizing compression ratio at the cost of high CPU/memory usage"
 arch=('x86_64')
 url="https://github.com/byronknoll/cmix"
@@ -13,7 +13,7 @@ md5sums=('SKIP')
 
 build() {
   cd "${srcdir}/cmix"
-  make
+  make -j$(( $(nproc) + 1 ))
 }
 
 package() {
