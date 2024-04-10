@@ -3,12 +3,12 @@
 _gemname=ovirt-engine-sdk
 pkgname=ruby-$_gemname
 pkgver=4.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Ruby SDK for the oVirt Engine API.'
 arch=(x86_64)
 url='https://rubygems.org/gems/ovirt-engine-sdk'
 license=(Apache-2.0)
-depends=(ruby-json)
+depends=(curl glibc icu libxml2 ruby ruby-json xz zlib)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
