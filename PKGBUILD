@@ -4,7 +4,7 @@ BUILDENV+=(!check)
 
 pkgname=python-dvc-render
 _pkgname=${pkgname#python-}
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Library for rendering DVC plots'
 arch=(any)
@@ -23,7 +23,7 @@ checkdepends=(mypy
               python-pylint)
 _archive=("$_pkgname-$pkgver")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_archive.tar.gz")
-sha256sums=('d7296869ea64c18ead9c99c46062ff116503b77a8d6e5c988f2d24716ea01d4a')
+sha256sums=('40d1cd81760daf34b48fa8362b5002fcbe415e3cdbcf42369b6347d01497ffc0')
 
 build() {
 	cd "$_archive"
