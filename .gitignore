@@ -57,6 +57,7 @@ GamescopeShaders/
 reshade/
 SPIRV-Headers/
 src/
+stb/
 .idea
 pkg
 *.pkg.*

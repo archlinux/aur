@@ -20,6 +20,7 @@ depends=(
   libdrm
   libliftoff.so
   libpipewire-0.3.so
+  libvulkan.so
   libwlroots.so
   libx11
   libxcb
@@ -48,39 +49,50 @@ makedepends=(
   vulkan-headers
   wayland-protocols
 )
-_tag=3.14.2
 source=(
-  git+https://github.com/ValveSoftware/gamescope.git#tag=${_tag}
+  git+https://github.com/ValveSoftware/gamescope.git#tag=${pkgver}
+  git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a
   git+https://github.com/Joshua-Ashton/reshade.git
   git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1
   git+https://github.com/KhronosGroup/SPIRV-Headers.git
-  add_720p_var.patch
   chimeraos.patch
   crashfix.patch
+  add_720p_var.patch
+  crashfix.patch
+  0001-disable-steam-touch-click-atom.patch
 )
 
 sha256sums=('9ba53bdbae2407d74f35345c720b25977f46b1745df83214c9894b50e842afd2'
+            'e39e0c91b297bfd707afcda84ecdc15a08c22e2ad4c347fc3533b1ed98fb3f85'
             'SKIP'
             '03726f2fb44ae79e6a398e8f9aaaf8054800dda9b8298726157522fe5f7296b1'
             'SKIP'
-            'f3e7e62c92eda9848cf4f93c1975155288a1f8cd0efb55a73e39472c7780d05a'
-            '44e84780277ebdf8f46955b9964890e8719fe4fd10432d696d860d883ffee023'
-            'bdd1dd6e9d82df745970715c2284458ba651fcf05cbc58e7b1e75551db681d46')
+            '3da074f82c7cc68f28a371c2711306e1e3cef38b36598c87693183147924e3ac'
+            '184a8660cc789e31573edfdadb0f79b7f90714e8ee6b5bc9e70f8ed88fad1e5a'
+            'ecd03eef896e6c5edfed6d5eeaa2f6a27a0fba25852f2efd57dc3ddbf7fd5f5e'
+            '184a8660cc789e31573edfdadb0f79b7f90714e8ee6b5bc9e70f8ed88fad1e5a'
+            'f908e641be087b3c01b2f43dd3c5d2ea4435080421c0660fa15a8337285fcb03')
 
 prepare() {
-  cd gamescope
-
-#  patch -Np1 -i ../add_720p_var.patch
-#  patch -Np1 -i ../chimeraos.patch
-#  patch -Np1 -i ../crashfix.patch
-
-  meson subprojects download
+  cd "$srcdir/$_pkgname"
+   
+  #  meson subprojects download
   git submodule init src/reshade
   git config submodule.src/reshade.url ../reshade
   git submodule init thirdparty/SPIRV-Headers
   git config submodule.thirdparty/SPIRV-Headers.url ../SPIRV-Headers
-  git -c protocol.file.allow=always submodule update
-
+  git -c protocol.file.allow=always submodule update   
+  
+  # make stb.wrap use our local clone
+  rm -rf subprojects/stb
+  git clone "$srcdir/stb" subprojects/stb
+  cp -av subprojects/packagefiles/stb/* subprojects/stb/ # patch from the .wrap we elided
+  
+  
+#  patch -Np1 -i ../chimeraos.patch
+#  patch -Np1 -i ../crashfix.patch
+#  patch -Np1 -i ../add_720p_var.patch
+#  patch -Np1 -i ../0001-disable-steam-touch-click-atom.patch
 
 }
 

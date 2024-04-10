@@ -21,6 +21,7 @@ pkgbase = gamescope-fml
 	depends = libdrm
 	depends = libliftoff.so
 	depends = libpipewire-0.3.so
+	depends = libvulkan.so
 	depends = libwlroots.so
 	depends = libx11
 	depends = libxcb
@@ -42,18 +43,24 @@ pkgbase = gamescope-fml
 	provides = gamescope
 	conflicts = gamescope
 	source = git+https://github.com/ValveSoftware/gamescope.git#tag=3.14.2
+	source = git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a
 	source = git+https://github.com/Joshua-Ashton/reshade.git
 	source = git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
-	source = add_720p_var.patch
 	source = chimeraos.patch
 	source = crashfix.patch
+	source = add_720p_var.patch
+	source = crashfix.patch
+	source = 0001-disable-steam-touch-click-atom.patch
 	sha256sums = 9ba53bdbae2407d74f35345c720b25977f46b1745df83214c9894b50e842afd2
+	sha256sums = e39e0c91b297bfd707afcda84ecdc15a08c22e2ad4c347fc3533b1ed98fb3f85
 	sha256sums = SKIP
 	sha256sums = 03726f2fb44ae79e6a398e8f9aaaf8054800dda9b8298726157522fe5f7296b1
 	sha256sums = SKIP
-	sha256sums = f3e7e62c92eda9848cf4f93c1975155288a1f8cd0efb55a73e39472c7780d05a
-	sha256sums = 44e84780277ebdf8f46955b9964890e8719fe4fd10432d696d860d883ffee023
-	sha256sums = bdd1dd6e9d82df745970715c2284458ba651fcf05cbc58e7b1e75551db681d46
+	sha256sums = 3da074f82c7cc68f28a371c2711306e1e3cef38b36598c87693183147924e3ac
+	sha256sums = 184a8660cc789e31573edfdadb0f79b7f90714e8ee6b5bc9e70f8ed88fad1e5a
+	sha256sums = ecd03eef896e6c5edfed6d5eeaa2f6a27a0fba25852f2efd57dc3ddbf7fd5f5e
+	sha256sums = 184a8660cc789e31573edfdadb0f79b7f90714e8ee6b5bc9e70f8ed88fad1e5a
+	sha256sums = f908e641be087b3c01b2f43dd3c5d2ea4435080421c0660fa15a8337285fcb03
 
 pkgname = gamescope-fml
