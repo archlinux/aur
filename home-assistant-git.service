@@ -12,7 +12,7 @@ StateDirectory=hass
 WorkingDirectory=/var/lib/hass
 Environment=HOME=/var/lib/hass
 
-ExecStartPre=/usr/bin/python12 -m venv --upgrade /var/lib/hass/.venv
+ExecStartPre=/usr/bin/python3.12 -m venv --upgrade /var/lib/hass/.venv
 ExecStartPre=/var/lib/hass/.venv/bin/python -m pip install wheel
 ExecStartPre=/var/lib/hass/.venv/bin/python -m pip install /usr/share/home-assistant-git/homeassistant-@VERSION@-py3-none-any.whl
 ExecStart=/var/lib/hass/.venv/bin/hass \
