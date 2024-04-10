@@ -1,0 +1,4 @@
+[python-niaaml-gui]
+source = "github"
+github = "firefly-cpp/NiaAML-GUI"
+use_latest_release = "true"
