@@ -13,7 +13,7 @@ md5sums=('SKIP')
 build() {
   cd "${srcdir}/paq8px"
   cmake .
-  make -j$(nproc)
+  make -j$(( $(nproc) + 1 ))
 }
 
 package() {
