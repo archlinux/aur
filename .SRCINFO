@@ -1,7 +1,7 @@
 pkgbase = odoo
 	pkgdesc = Web-based Open Source Business Apps
 	pkgver = 17.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.odoo.com/
 	install = odoo.install
 	arch = any
@@ -51,7 +51,7 @@ pkgbase = odoo
 	depends = python-stdnum
 	depends = python-urllib3
 	depends = python-vobject
-	depends = python-werkzeug
+	depends = python-werkzeug2
 	depends = python-xlrd-1
 	depends = python-xlsxwriter
 	depends = python-xlwt
