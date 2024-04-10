@@ -2,7 +2,7 @@
 # Previous Maintainer: NicKoehler <grillinicolavocal at gmail dot com>
 
 pkgname=yarg
-pkgver=0.12.2
+pkgver=0.12.3
 pkgrel=1
 pkgdesc="YARG - Yet Another Rhythm Game inspired off of Rockband, Guitar Hero, Clone Hero, or similar."
 arch=("x86_64")
@@ -18,7 +18,7 @@ source=(
 )
 sha256sums=('b0d35e17a3100e8c423f4b00c591b7cc9f35f1629bf3c29322db478ad0507005'
             '56b58195f481e1a2e0ccf6bf5ff84f4a81bcf5befbb38a72e47b2b4c4652dcab'
-            '5798f5af1be8e9b36c89ca3b43143514e558440022ab3d1bffdc53e7062837ea'
+            '93449f09ed08bfad465778f4bce72f6315ccf156e2891f9e870f0c540503f889'
             'a5681bf9b05db14d86776930017c647ad9e6e56ff6bbcfdf21e5848288dfaf1b')
 
 
