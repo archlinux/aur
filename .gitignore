@@ -4,3 +4,4 @@ src/
 *pkg.tar.zst
 qrookie-*
 PKGBUILD-namcap.log
+.vscode/

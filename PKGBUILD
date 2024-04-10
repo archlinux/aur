@@ -1,7 +1,7 @@
 # Maintainer: Glaumar git@geekgo.tech
 
 pkgname=qrookie-vrp
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Download and install Quest games from ROOKIE Public Mirror'
 arch=('x86_64')
@@ -15,11 +15,12 @@ depends=(hicolor-icon-theme
     p7zip
     android-tools
     qcoro-qt6
+    kirigami
     )
 makedepends=(cmake)
 provides=(qrookie)
 source=("https://github.com/glaumar/QRookie/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0c55665ef36879897a245a739cfea633a0b10d5c2a28a08d8f1e4f59a77f2805')
+sha256sums=('e0f036d7dc3b9408a9bdcd438316e7d6edc98a9ef3fa9fca8dbf42000917b628')
 
 build() {
     cmake -B build -S "QRookie-${pkgver}" -DCMAKE_BUILD_TYPE='Release' -DCMAKE_INSTALL_PREFIX='/usr'
