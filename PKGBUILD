@@ -1,21 +1,45 @@
-pkgname=boost-note-bin
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: espenaf <espenaf at junta dot no>
+_appname="boost note"
+pkgname="${_appname// /-}-bin"
+_pkgname="Boost Note"
 pkgver=0.23.1
-pkgrel=1
-pkgdesc="Boost Note.next, a replacement for Boostnote, an open source note-taking app for programmers. Official binary for the cloud space version."
+_electronversion=12
+pkgrel=2
+pkgdesc="A document driven project management tool that maximizes remote DevOps team velocity."
 arch=('any')
 url="https://boostnote.io/"
-license=('GPL3')
-conflicts=('boost-note')
-
-source=("${pkgname}-${pkgver}.deb::https://github.com/BoostIO/BoostNote.next/releases/download/v${pkgver}/boost-note-linux.deb")
-sha512sums=('f8b215d1b8a9e6471aef2a170aa1175d15c92db2ef43ad8cb96c37065bfe0ac99916836e6d65a9936f6cf479d8daf7433aa69bd5f1a08f07ac48987aafd8d520')
-
-
-package(){
-
-    # Extract package data
-    tar -xf data.tar.xz -C "${pkgdir}" --no-same-permissions
+_ghurl="https://github.com/BoostIO/BoostNote-App"
+license=('GPL-3.0-only')
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
+depends=(
+    "electron${_electronversion}-bin"
+    'nodejs'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux.deb"
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('391b4711af12e7d4a6ba90e428c990a2b9335cd537188e86704221fa47db2588'
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
+    bsdtar -xf "${srcdir}/data."*
+    sed "s|/opt/${_pkgname}/${_appname// /}.next|${_appname// /-}|g;s|Icon=${_appname// /}.next|Icon=${_appname// /-}|g" \
+        -i "${srcdir}/usr/share/applications/${_appname// /}.next.desktop"
 }
-
-
-
+package() {
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/swiftshader"
+    cp -r "${srcdir}/opt/${_pkgname}/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_appname// /}.next.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
+    done
+    install -Dm644 "${srcdir}/usr/share/applications/${_appname// /}.next.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+}
