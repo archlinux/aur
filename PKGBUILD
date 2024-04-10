@@ -8,8 +8,8 @@ unset _pkgtype
 # basic info
 _pkgname=qtscrcpy
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.1.2
-pkgrel=2
+pkgver=2.2.1
+pkgrel=1
 pkgdesc="Android real-time screencast control tool"
 url="https://github.com/barry-ran/QtScrcpy"
 license=('Apache-2.0')
