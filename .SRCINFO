@@ -21,7 +21,7 @@ pkgbase = nxengine-evo-bin
 	sha256sums_i386 = SKIP
 	source_i686 = https://gitlab.com/cavestory-bin/nxengine-evo-bin/2.6.5-1/-/raw/main/nxengine-evo-linux-i686.tar.xz
 	sha256sums_i686 = SKIP
-	source_aarch64 = https://gitlab.com/cavestory-bin/nxengine-evo-bin/2.6.5-1/-/blob/main/nxengine-evo-linux-arm64.tar.xz
+	source_aarch64 = https://gitlab.com/cavestory-bin/nxengine-evo-bin/2.6.5-1/-/raw/main/nxengine-evo-linux-arm64.tar.xz
 	sha256sums_aarch64 = SKIP
 
 pkgname = nxengine-evo-bin
