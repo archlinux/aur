@@ -29,7 +29,6 @@ package()
     mkdir -p "${pkgdir}"/usr/share/doc/"${pkgname}"/
 
     # Install the software.
-    cd "${srcdir}"/"${pkgname}"-"${pkgver}"/ || exit 1
     python -m installer -d "${pkgdir}" "${srcdir}"/"${pkgname}"-"${pkgver}"/dist/*.whl
 
     # Install the documentation.
