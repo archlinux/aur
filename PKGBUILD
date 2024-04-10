@@ -1,20 +1,22 @@
+# Maintainer: Kyuunex <kyuunex at protonmail dot ch>
 # Contributor: orumin <dev at orum.in>
 
 pkgname=ttf-koruri
-pkgver=20180915
-pkgrel=2
+pkgver=20210720
+pkgrel=1
 pkgdesc="Japanese TrueType font obtained by mixing M+ and Open Sans"
 arch=('any')
 url="https://github.com/Koruri/Koruri"
-license=('APACHE')
-depends=('fontconfig' 'xorg-mkfontscale')
-install=ttf.install
-source=("https://github.com/Koruri/Koruri/releases/download/Koruri-20180915/Koruri-20180915.tar.xz")
-sha256sums=('9cfd9a867f60b8da8653b87706b9bafc113bb477b5e72d1095f43117f7fb3366')
+license=('Apache-2.0')
+source=("https://github.com/Koruri/Koruri/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('f6cb55533a1f6b4a733152edc4153840151304e0fc4c232e586d4ec38e18cea1')
 
 package() {
-    cd "${srcdir}"
+    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF" "$srcdir/Koruri-$pkgver/Koruri-Bold.ttf"
+    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF" "$srcdir/Koruri-$pkgver/Koruri-Extrabold.ttf"
+    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF" "$srcdir/Koruri-$pkgver/Koruri-Light.ttf"
+    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF" "$srcdir/Koruri-$pkgver/Koruri-Regular.ttf"
+    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF" "$srcdir/Koruri-$pkgver/Koruri-Semibold.ttf"
 
-    install -d "${pkgdir}/usr/share/fonts/TTF"
-    install -m644 "Koruri-${pkgver}"/*.ttf "${pkgdir}/usr/share/fonts/TTF"
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/Koruri-$pkgver/LICENSE"
 }
