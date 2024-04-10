@@ -3,25 +3,25 @@
 _pkgname=Rook
 _pkgver=1.2
 pkgname=r-${_pkgname,,}
-pkgver=1.2
-pkgrel=1
-pkgdesc='Rook - a web server interface for R'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=3
+pkgdesc="HTTP Web Server for R"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
   r-brew
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c79ae4b5164daffd4e7cf74bd23c1b08a3948bf343dfe9570d57f39cbf8e5f62')
+md5sums=('e78c29afb2968412165d8bc45f13a452')
+b2sums=('d31ded93a6ecf04e44259e8deb6191440a30baa46e7985e6261f62550a72fcdc9aba39df5ae0d9a9f4a8300aae18ac1630eaf4c2c006198e4dab1b28427967b4')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
