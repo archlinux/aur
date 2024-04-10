@@ -19,7 +19,7 @@ sha256sums_aarch64=('SKIP')
 source_x86_64=("https://gitlab.com/cavestory-bin/nxengine-evo-bin/$pkgver-$pkgrel/-/raw/main/nxengine-evo-linux-x64.tar.xz")
 source_i386=("https://gitlab.com/cavestory-bin/nxengine-evo-bin/$pkgver-$pkgrel/-/raw/main/nxengine-evo-linux-i686.tar.xz")
 source_i686=("https://gitlab.com/cavestory-bin/nxengine-evo-bin/$pkgver-$pkgrel/-/raw/main/nxengine-evo-linux-i686.tar.xz")
-source_aarch64=("https://gitlab.com/cavestory-bin/nxengine-evo-bin/$pkgver-$pkgrel/-/raw/main/nxengine-evo-linux-aarch64.tar.xz")
+source_aarch64=("https://gitlab.com/cavestory-bin/nxengine-evo-bin/$pkgver-$pkgrel/-/blob/main/nxengine-evo-linux-arm64.tar.xz")
 
 
 package() {
