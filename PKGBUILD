@@ -1,22 +1,20 @@
 # Maintainer: BartSte bartsteensma@outlook.com
 
 pkgname=fzf-help
-pkgver=2.1.1
-pkgrel=2
+pkgver=2.1.2
+pkgrel=1
 pkgdesc="Use fzf to select command line options from --help"
 arch=('any')
 url="https://github.com/BartSte/fzf-help"
 license=('MIT')
 depends=('fzf' 'bat')
-makedepends=('git')
 source=("$pkgname::git+https://github.com/BartSte/fzf-help.git")
 md5sums=('SKIP')
 changelog="CHANGELOG.md"
 
 package() {
-    "$srcdir/$pkgname/install"
-}
-
-pre_remove() {
-    "$srcdir/$pkgname/uninstall"
+  cd "$srcdir/$pkgname"
+  install -Dm644 LICENCE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  cp -dr --no-preserve=ownership {src/*,uninstall} "${pkgdir}/usr/share/${pkgname}"
 }
