@@ -1,8 +1,8 @@
 diff --git a/bspm/configure b/bspm/configure
-index 6077606..fa9f109 100755
+index 011a1e1..1bcfe10 100755
 --- a/bspm/configure
 +++ b/bspm/configure
-@@ -7,7 +7,7 @@ subst() {
+@@ -11,7 +11,7 @@ subst() {
    DIR=`pwd`
    cd $1 && cat $2 |
      sed "s @BUS_NAME@ $BUS_NAME g" |
@@ -11,12 +11,12 @@ index 6077606..fa9f109 100755
    cd $DIR
  }
  
-@@ -20,7 +20,7 @@ fi
+@@ -24,7 +24,7 @@ fi
  
  if [ "$1" != "--without-dbus-service" ]; then
    SERVICE_DIR="$BUILD_ROOT/usr/share/dbus-1/system-services"
 -  SYSCONF_DIR="$BUILD_ROOT/etc/dbus-1/system.d"
 +  SYSCONF_DIR="$BUILD_ROOT/usr/share/dbus-1/system.d"
-   mkdir -p $SERVICE_DIR $SYSCONF_DIR
-   if [ ! -w "$SERVICE_DIR" ] || [ ! -w "$SYSCONF_DIR" ]; then
-     echo "* NOT installing D-Bus service"
+   mkdir -p $SERVICE_DIR $SYSCONF_DIR || exit 1
+   subst inst/service dbus.service.in $SERVICE_DIR/$BUS_NAME.service
+   subst inst/service dbus.conf.in $SYSCONF_DIR/$BUS_NAME.conf

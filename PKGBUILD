@@ -2,10 +2,10 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=bspm
-_pkgver=0.5.6
+_pkgver=0.5.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Bridge to System Package Manager"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -25,10 +25,10 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-dbus.patch")
-md5sums=('5c14be37758643b7f291ebabce670649'
-         '36f5173c5c892c7c525ff320f99952ab')
-b2sums=('5ce4e6024c882a7a301d863edd7b6c5e7c6733c88894fecadc6f552f8bb48ee072bc85bc51d05e131bc2d5bb0fe30d24254faae905b6781a17a7981c5f649800'
-        '82a8ebbdd7806619c4e03ec9c5f27515bc8589d75588a3e3fe45318bd6df4f549547b19ba5d69a6ebb0f8bcfe7cb9b2679738057dbbe7c4c2617271ef1548946')
+md5sums=('9b13de322ef5bea57ec0a7f320ef7f7d'
+         'b9264c2d1a89b4947b739ed62c7b2594')
+b2sums=('8f4027862cea4b5a9324d8bbbaa1a1c985c2df9178895c66a7bd112e88a4c7a90c2676a37a696485078c1aff3896e6d5347406e0d4b92e65919a5ddc764412dc'
+        'aa3a49c162c04e0600003dda3eb0b6920719df16b368b707a3e055aecfd9204d2e90f844965f685ff31c769f8066d2140e4d1b259d1765e30aeb4a0ab5ce54a6')
 
 prepare() {
   # fix dbus configuration
@@ -38,7 +38,7 @@ prepare() {
 build() {
   mkdir build dbus
   R CMD INSTALL -l build "$_pkgname" \
-      --configure-vars="BUILD_ROOT=$srcdir/dbus"
+      --configure-vars="BUILD_ROOT=${srcdir@Q}/dbus"
 
   # compile python bytecode
   python -m compileall -o 0 -o 1 -s build -p /usr/lib/R/library "build/$_pkgname/service"
