@@ -4,7 +4,7 @@ pkgbase = ttf-ohruri
 	pkgrel = 1
 	url = https://github.com/Koruri/Ohruri
 	arch = any
-	license = Apache-2.0
+	license = OFL-1.1
 	source = https://github.com/Koruri/Ohruri/archive/refs/tags/20221103.tar.gz
 	sha256sums = 3151949ea431012447f247690e2722362ef059f797e83a167a8b0223f8b54aa3
 

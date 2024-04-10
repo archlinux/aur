@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Japanese TrueType font obtained by mixing M+ FONTS, Source Han Sans, and Open Sans."
 arch=('any')
 url="https://github.com/Koruri/Ohruri"
-license=('Apache-2.0')
+license=('OFL-1.1')
 source=("https://github.com/Koruri/Ohruri/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('3151949ea431012447f247690e2722362ef059f797e83a167a8b0223f8b54aa3')
 
