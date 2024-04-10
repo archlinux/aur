@@ -3,14 +3,13 @@
 _pkgname=dupRadar
 _pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
-pkgrel=1
-pkgdesc='Assessment of duplication rates in RNA-Seq datasets'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Assessment of duplication rates in RNA-Seq datasets"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-rsubread
 )
 optdepends=(
@@ -20,14 +19,15 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('40fc1818e109f4649a1f4c97c6c377355b5f4b5a1c2126ef16ea6b7789f3f018')
+md5sums=('306ba6ddb1786eb7ec5e6cb4bc15562e')
+b2sums=('1f7d80cc1c01eb31511393419a03fd8c460c409c996001e29a4dbcd3dbcce0a2e58c05d71f707c3d7d14668f953ed4b7920bf6f5bc0b197a31c2547eb3b396d1')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
