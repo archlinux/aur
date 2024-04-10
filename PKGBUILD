@@ -6,17 +6,17 @@
 
 pkgdesc='A simple VTE-based terminal'
 pkgname=termite
-pkgver=16.6
-pkgrel=2
+pkgver=16.7
+pkgrel=1
 url=https://github.com/aperezdc/termite
-license=(LGPL)
+license=(LGPL-2.1-only)
 depends=(gtk3 pcre2 gnutls vte-common)
-makedepends=(gperf 'meson>=0.58' ninja)
+makedepends=(gperf 'meson>=1.0' ninja)
 arch=(x86_64)
 backup=(etc/xdg/termite/config)
 validpgpkeys=(5AA3BC334FD7E3369E7C77B291C559DBE4C9123B)
-source=("${url}/releases/download/v${pkgver}/termite-${pkgver}.tar.xz"{,.asc})
-b2sums=('4bc501ef459b6ac77afd7cbb2646e9b428c889546f0d5b15bdcca840d0501838158bf317fbf85fa7ffaa8e58a8da9ba03389277b089f92b6e22ce87208a8cdd7'
+source=("${url}/releases/download/v${pkgver}/termite-${pkgver}.tar.lz"{,.asc})
+b2sums=('07cd8570690c05a39953b2baccb248a6cdddedef31020d736532bd233601291deac61dd3f76fa1a05846e1e926dbc39031c809461e1f327445820084373642fa'
         'SKIP')
 
 build () {
