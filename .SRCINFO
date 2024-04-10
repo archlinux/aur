@@ -1,0 +1,16 @@
+pkgbase = python-nafcodec
+	pkgdesc = An encoder/decoder for Nucleotide Archive Format files.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/althonos/nafcodec
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = cargo
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/n/nafcodec/nafcodec-0.2.0.tar.gz
+	sha256sums = 8194203409f9e0b7aa762530747da4db4dc4c19de0b8fb0419b894e89368e6b8
+
+pkgname = python-nafcodec
