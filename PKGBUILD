@@ -2,15 +2,13 @@
 pkgname=ap-rename
 pkgver=1.601
 pkgrel=1
-# This is not File::Rename from CPAN, which is what gets installed as prename when
-# you run `apt install rename` on Debian.
-pkgdesc='Perl-powered file rename script with many helpful built-ins'
+pkgdesc="Perl-powered file rename script with many helpful built-ins"
 arch=(any)
-url='http://plasmasturm.org/code/rename'
-license=('PerlArtistic')
+url="http://plasmasturm.org/code/rename"
+license=(Artistic-1.0)
 depends=(perl)
 source=("https://github.com/ap/rename/archive/v$pkgver.tar.gz")
-sha384sums=('a3cc071fd4be319b0fc526d682bc920a6b1b03656356feb5a49fef4bd1881a919d82661eb5b7277cd66c448399d57181')
+sha384sums=(a3cc071fd4be319b0fc526d682bc920a6b1b03656356feb5a49fef4bd1881a919d82661eb5b7277cd66c448399d57181)
 
 build() {
   cd "rename-$pkgver"
