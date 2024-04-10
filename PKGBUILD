@@ -9,7 +9,7 @@ provides=("${_pkgname,,}")
 conflicts=("${_pkgname,,}")
 arch=("x86_64" "aarch64")
 url="https://www.${_pkgname,,}.org"
-license=("apache")
+license=("Apache-2.0")
 depends=("ffmpeg" "java-runtime>=21" "libmediainfo")
 source=("${_pkgname,,}.desktop"
         "${_pkgname,,}.png")

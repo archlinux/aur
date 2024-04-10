@@ -5,7 +5,7 @@ pkgbase = tinymediamanager-bin
 	url = https://www.tinymediamanager.org
 	arch = x86_64
 	arch = aarch64
-	license = apache
+	license = Apache-2.0
 	depends = ffmpeg
 	depends = java-runtime>=21
 	depends = libmediainfo
