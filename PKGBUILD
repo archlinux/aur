@@ -1,7 +1,7 @@
 # Maintainer: Cross Nastasi <cross@dill.moe>
 
 pkgname=mineclone2-git-dill
-pkgver=1.1
+pkgver=r12018.a3db7bd50
 pkgrel=1
 pkgdesc="Voxel-based sandbox game for Minetest. This package has been modified to work with the minetest-git-dill package."
 arch=(any)
