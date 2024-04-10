@@ -3,51 +3,30 @@
 _pkgname=MuMIn
 _pkgver=1.47.5
 pkgname=r-${_pkgname,,}
-pkgver=1.47.5
-pkgrel=1
-pkgdesc='Multi-Model Inference'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=3
+pkgdesc="Multi-Model Inference"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
   r-insight
 )
 optdepends=(
-  r-aod
-  r-aods3
-  r-betareg
-  r-caper
-  r-coxme
-  r-cplm
-  r-gamlss
   r-gamm4
-  r-gee
-  r-geem
   r-geepack
-  r-glmmml
   r-lme4
-  r-logistf
-  r-mass
-  r-mcmcglmm
-  r-mgcv
-  r-nnet
-  r-ordinal
-  r-pscl
-  r-spatialreg
-  r-splm
-  r-survival
-  r-unmarked
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6ff3554d8a503f29b1bd9e94dc2d4e1a9bcde5cd9faa5f8473b0559aced20a77')
+md5sums=('e733ab93b8e3cff6e827c04634f54976')
+b2sums=('82ca98c89b4efcd8d6b3c57feef7f9e343936f30d4a640c89057c7bd93638ac79b2aef8e8ba7c4718cd1c96e1409f1230795229381bd040fb6f196b16023b5cc')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
