@@ -17,6 +17,9 @@ yay -Rns \$(yay -Qdtq)
 "
 
 package() {
+  # Create the directory structure
+  mkdir -p "${pkgdir}/usr/bin"
+  
   # Write the script content to the destination
   echo "$_yayclean_script" > "${pkgdir}/usr/bin/yayclean"
   
