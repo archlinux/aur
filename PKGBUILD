@@ -7,7 +7,6 @@ arch=('any')
 url="https://github.com/dillfrescott/yayclean"
 license=('GPL')
 depends=('yay')
-source=("yayclean.sh")
 md5sums=('SKIP')
 
 # The script content
