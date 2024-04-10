@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=shinyMatrix
-_pkgver=0.6.0
+_pkgver=0.8.0
 pkgname=r-${_pkgname,,}
-pkgver=0.6.0
-pkgrel=4
+pkgver=0.8.0
+pkgrel=1
 pkgdesc='Shiny Matrix Input Field'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,7 +19,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b3a9fbe44d8814b3bc1475e999e201cfd4541001a8c561001fdd44baca7b679f')
+sha256sums=('fc9dd16128b783cb2e09e24703fe76dcf0f3d7f76da07c04573b11d7038c9536')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
