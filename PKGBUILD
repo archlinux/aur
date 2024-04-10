@@ -13,29 +13,31 @@ _opt_SYS_FLUTTER=0
 set -u
 _pkgname='rustdesk'
 pkgname="${_pkgname}"
-pkgver='1.2.3'
+_pkgver='1.2.3-2'
+pkgver="${_pkgver//-/.}"
 pkgrel=1
 pkgdesc='Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!'
 arch=('x86_64')
 url='https://rustdesk.com/'
 _giturl='https://github.com/rustdesk/rustdesk'
-license=('GPL3')
+license=('AGPL-3.0-only')
 _dpr=('gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'libva' 'libvdpau' 'libappindicator-gtk3' 'pam' 'gst-plugins-base' 'gst-plugin-pipewire') # from res/PKGBUILD/depends
 depends=("${_dpr[@]}" 'pulseaudio' 'gst-plugins-base-libs')
 depends+=('hicolor-icon-theme' 'xdg-utils')
 depends+=('xdg-user-dirs')
+depends+=('glibc' 'gcc-libs' 'glib2' 'libxtst' 'libepoxy' 'gdk-pixbuf2' 'cairo' 'at-spi2-core' 'dbus' 'gstreamer' 'pango' 'libx11' 'fontconfig' 'libxkbcommon' 'libpulse')
 _mdp=('unzip' 'git' 'cmake' 'gcc' 'curl' 'wget' 'yasm' 'nasm' 'zip' 'make' 'pkg-config' 'clang') # from Readme.MD
 makedepends=("${_mdp[@]}" 'rust' 'python' 'python-yaml' 'python-toml')
 makedepends+=('ninja') # vcpkg build can use the latest ninja
 options=('!strip' '!makeflags' '!lto')
 install="${pkgname}.install"
-_srcdir="${pkgname}-${pkgver}"
+_srcdir="${pkgname}-${_pkgver}"
 source=(
-  "${_srcdir}.tar.gz::https://github.com/rustdesk/rustdesk/archive/refs/tags/${pkgver}.tar.gz"
+  "${_srcdir}.tar.gz::https://github.com/rustdesk/rustdesk/archive/refs/tags/${_pkgver}.tar.gz"
 )
   makedepends+=('vcpkg')
   if [ "${_opt_SYS_FLUTTER}" -eq 0 ]; then
-    _FLUVER='3.10.6'
+    _FLUVER='3.19.5'
     source+=(
       "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${_FLUVER}-stable.tar.xz"
     )
@@ -43,21 +45,21 @@ source=(
     makedepends+=('flutter')
   fi
   if :; then
-    _FRBVER='1.75.0'
+    _FRBVER='1.80.0'
     source+=(
       "flutter_rust_bridge-${_FRBVER}.tar.gz::https://github.com/fzyzcjy/flutter_rust_bridge/archive/refs/tags/v${_FRBVER}.tar.gz"
     )
   fi
 if ! :; then
   _srcdir="${_pkgname}"
-  source[0]="git+${_giturl}#tag=${pkgver}"
+  source[0]="git+${_giturl}#tag=${_pkgver}"
 fi
-md5sums=('502bd04e968d354dd1e62f4802d36ae4'
-         '97115fa5fc6d8d63bdf13dc57fc20861'
-         '9cb4a6717db959e082db75200e75d3e1')
-sha256sums=('d5fcdd1af848c64cc718b4c3bc831a85a70176ce26b6d9fb55588e4cddead2a4'
-            '7048e51a89c99a5b6cac6d8ae416121264effa76da34dba5c0e7cf85519c8e98'
-            '6efb71ac8086699da74dad6736c32ddb20db5dcabe167c49a8c3a650675eb84b')
+md5sums=('a92955fb2130498feca68170b1e674bc'
+         '36faacc6645c87f1cdb9829a75e3458b'
+         'a63659fb966758db9fe95e5aae89757a')
+sha256sums=('88c2342ffe6c09c38c58fca43a7fae7732d238be0b94e5a0c7ad30306393e3fc'
+            '6590607e7f2fb23bcc7e0a2d6aac292f9208cbf12a40862c281058c758604fb3'
+            'b3a05ffca1f57afa48bd006d732969146dafa164c71390070623ba569977f9d3')
 
 _vcpkg=(libvpx libyuv opus aom)
 
@@ -130,6 +132,7 @@ new_toml_string = toml.load('Cargo.toml')
 print(new_toml_string.get('dependencies').get('flutter_rust_bridge').get('version'))
 "
     _flutter_rust_bridge="$(python -c "${_pyfrb}")"
+    _flutter_rust_bridge="${_flutter_rust_bridge#=}"
     if [ "$(vercmp "${_flutter_rust_bridge}" "${_FRBVER%.0}")" -gt 0 ]; then
       printf 'flutter_rust_bridge version has changed to %s\n' "${_flutter_rust_bridge}"
       set +u
