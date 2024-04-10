@@ -1,14 +1,15 @@
-# Maintainer: Gunar C. Gessner <gunar@gunar.uk>
+# Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
+# Contributor: Gunar C. Gessner <gunar@gunar.uk>
 _pkgname="difftastic"
 pkgname="${_pkgname}-git"
-pkgver=0.26.3.r5.92b3c6e93
+pkgver=0.57.0.r7.f52ca706f
 pkgrel=1
 pkgdesc="a diff that understands syntax"
 arch=("i686" "x86_64")
 url="https://github.com/Wilfred/difftastic"
 license=('MIT')
 groups=()
-depends=('gcc-libs')
+depends=('glibc' 'gcc-libs' 'shared-mime-info')
 makedepends=('git' 'cargo')
 optdepends=()
 provides=('difft')
@@ -18,9 +19,11 @@ backup=()
 options=()
 install=
 changelog=
-source=("${pkgname}::git+http://github.com/Wilfred/${_pkgname}.git")
+source=("${pkgname}::git+https://github.com/Wilfred/${_pkgname}.git"
+        remove-makedepends-jq.patch)
 noextract=()
-md5sums=('SKIP')
+md5sums=('SKIP'
+         '2f9a02d83bb816de9d261fba8909aaaa')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -29,9 +32,32 @@ pkgver() {
   echo "$tag.r$commits_since.$(git log --pretty=format:'%h' -n 1)"
 }
 
+prepare() {
+  cd "$pkgname"
+
+  # download dependencies
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+
+  # remove makedepends on jq
+  patch -p1 -i "$srcdir/remove-makedepends-jq.patch"
+}
+
 build() {
   cd "$pkgname"
-  cargo build --release
+  export CFLAGS+=" -ffat-lto-objects"
+
+  cargo build --frozen --release --all-features
+}
+
+check() {
+  cd "$pkgname"
+
+  # Skip tests that expect to detect interactive terminal
+  # Run ignored tests that *are* expected to work if MIME database present
+  # c.f. https://github.com/Wilfred/difftastic/commit/34f21c6d
+  cargo test --frozen --all-features -- \
+    --ignored \
+    --skip 'options::tests::test_detect_display_width'
 }
 
 package() {
