@@ -1,0 +1,17 @@
+pkgbase = aichat-latest
+	pkgdesc = 在终端中使用ai,支持OpenAI, Gemini, Claude, Mistral, Ollama, VertexAI, Ernie, Qianwen... 自动获取最新版本号，手动重新安装即可更新到最新版
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/sigoden/aichat
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = APACHE
+	conflicts = aichat
+	conflicts = aichat-git
+	conflicts = aichat-bin
+	source = https://github.com/sigoden/aichat/releases/
+	sha256sums = SKIP
+
+pkgname = aichat-latest
