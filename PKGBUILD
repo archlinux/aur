@@ -3,14 +3,13 @@
 _pkgname=directlabels
 _pkgver=2024.1.21
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
-pkgrel=3
-pkgdesc='Direct Labels for Multicolor Plots'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=4
+pkgdesc="Direct Labels for Multicolor Plots"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-quadprog
 )
 optdepends=(
@@ -21,24 +20,22 @@ optdepends=(
   r-inlinedocs
   r-knitr
   r-lars
-  r-lattice
   r-latticeextra
   r-markdown
-  r-mass
-  r-nlme
   r-rcolorbrewer
   r-rlang
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bb3ba484ff9486fd8e9ce65073b69ce38e42f1fab2f42822eecfec7823f6b6fe')
+md5sums=('7b77108461c30d70d2aff70222d5a730')
+b2sums=('340e48ebb417695b20c9d0cee498f0c8896dcb63fcf7748afeaa4fae0726e46917c6eecb050f5969921c1b62983310f1d5d5ba0bef9ef2ea8cfc079203bf87d1')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
