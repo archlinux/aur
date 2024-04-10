@@ -1,7 +1,7 @@
 pkgbase = python-pook
 	pkgdesc = Versatile and expressive HTTP traffic mocking and testing made simple in Python
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/h2non/pook
 	arch = any
 	license = MIT
