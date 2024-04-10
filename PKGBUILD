@@ -2,8 +2,8 @@
 
 pkgname="ddns-go"
 pkgver=6.3.2
-pkgrel=1
-pkgdesc="A simple, easy-to-use ddns service | 简单好用的DDNS"
+pkgrel=2
+pkgdesc="A simple, easy-to-use ddns service"
 license=('MIT')
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/jeessy2/${pkgname}"
@@ -16,13 +16,15 @@ makedepends=("git" "go")
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}.env"
         "${pkgname}.service"
+        "${pkgname}.user.service"
         "${pkgname}.sysusers"
-        "${pkgname}.user.service")
+        "${pkgname}.tmpfiles")
 sha256sums=('a737c175ce2466e11edd7091d39a3092332ea2d6eac0b113823a9c66e8a21c3d'
             'adc5116f5b965e642a826dd2ac5680a112b85b89963658dae18242cffb9224dc'
             'f1d7ee4f2ef6c13270ff7e3b9f17a35c5faba76e7601a81cc0ac75da9e27f724'
+            '9f7130bfaf2e1cd48803ca1fe18708c425e2336ad7d90051d121ca1948d6e6f1'
             '558a170cae11f423591c5487dfe5f5e72f4aa88aaf62055f79a6656b6a98235a'
-            'e6f40c329735dca3d1bd4597ffe0545c81db814499f4363a2df033f4e41a371d')
+            '757ef7494cdb32dd2f8eb086862f48ebe25bac180658b2c4ad18920e07ed2a71')
 
 build() {
     cd "${pkgname}"
@@ -46,12 +48,12 @@ build() {
 }
 
 package() {
-    install -Dm755 "${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" 
-    install -Dm644 "${pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    install -Dm644 "${pkgname}.env" "${pkgdir}/etc/${pkgname}/${pkgname}.env"
-    install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    install -Dm755 "${pkgname}/${pkgname}"   "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${pkgname}/LICENSE"      "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${pkgname}/README.md"    "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "${pkgname}.env"          "${pkgdir}/etc/${pkgname}/${pkgname}.env"
+    install -Dm644 "${pkgname}.service"      "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
     install -Dm644 "${pkgname}.user.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
-    install -Dm644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-    touch "${pkgdir}/etc/${pkgname}/config.yml"
+    install -Dm644 "${pkgname}.sysusers"     "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+    install -Dm644 "${pkgname}.tmpfiles"     "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }

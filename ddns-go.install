@@ -11,7 +11,6 @@ note() {
 }
 
 post_install() {
-    chown -R "ddns-go:ddns-go" "/etc/$_pkgname"
     if [[ $LANG == "zh_CN.UTF-8" ]]; then
         note "从 6.0.1-1 开始，不再以 root 权限运行 $_pkgname ...
           可以以普通用户启用 $_pkgname: 'systemctl enable --user --now $_pkgname.service'...
