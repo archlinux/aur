@@ -1,9 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-pkgname=('python-jaraco.packaging' 'python-jaraco.packaging-docs')
+pkgname=(
+  'python-jaraco.packaging'
+#  'python-jaraco.packaging-docs'
+)
 pkgbase=python-jaraco.packaging
 _name=${pkgname#python-}
-pkgver=9.4.0
-pkgrel=2
+pkgver=9.5.0
+pkgrel=1
 pkgdesc="Tools to supplement packaging Python releases"
 arch=('any')
 url="https://github.com/jaraco/jaraco.packaging"
@@ -13,12 +16,12 @@ depends=(
   'python-jaraco.context'
 )
 makedepends=(
-  'python-domdf-python-tools'
+#  'python-domdf-python-tools'  ## docs
   'python-installer'
-  'python-rst.linker'
+#  'python-rst.linker'  ## docs
   'python-setuptools-scm'
-  'python-sphinx-furo'
-  'python-sphinx-lint'
+#  'python-sphinx-furo'  ## docs
+#  'python-sphinx-lint'  ## docs
   'python-wheel'
 )
 #checkdepends=(
@@ -26,7 +29,7 @@ makedepends=(
 #  'python-pytest'
 #)
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9055ceb3dc03ecb069df5459669b80a6890780602be933fb9e21f4dc79b7a923')
+sha256sums=('096c6aea6c18e753482722705fc1be908c607731ae27d3e4f1fd7a17732070f1')
 
 build() {
   cd "$_name-$pkgver"
@@ -35,10 +38,10 @@ build() {
 
   # generate html docs
   # this package requires itself to build docs :/
-  PYTHONPATH=./ sphinx-build docs html
+#  PYTHONPATH=./ sphinx-build docs html
 
   # remove the sphinx-build leftovers
-  rm -rf html/.{doctrees,buildinfo}
+#  rm -rf html/.{doctrees,buildinfo}
 }
 
 #check() {
