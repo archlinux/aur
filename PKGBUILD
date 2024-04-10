@@ -9,7 +9,6 @@ arch=('x86_64')
 url='https://github.com/LennardKittner/HyperXCloudIIWireless'
 license=('MIT')
 depends=('dbus' 'libusb' 'hidapi')
-makedepends=('git' 'cargo')
 provides=('hyperx-cloud-ii-wireless')
 conflicts=('hyperx-cloud-ii-wireless')
 #source=('git+https://github.com/LennardKittner/HyperXCloudIIWireless.git')
