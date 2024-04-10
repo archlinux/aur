@@ -2,7 +2,7 @@
 
 pkgname=cargo-mommy
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Mommy's here to support you when running cargo~"
 url='https://github.com/Gankra/cargo-mommy'
 license=('Apache-2.0' 'MIT')
@@ -37,5 +37,6 @@ package() {
 
   install -Dm0755 -t "$pkgdir/usr/bin" \
     target/release/cargo-mommy
+  install -Dm644 LICENSE-MIT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-MIT
 }
 
