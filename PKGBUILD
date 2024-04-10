@@ -2,8 +2,8 @@
 # Based on the PKGBUILD for AUR package `ndi-sdk` by Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ndi-advanced-sdk
-pkgver=5.6.0.20230726.r135585
-pkgrel=2
+pkgver=5.6.1.20240216.r138387
+pkgrel=1
 _majver="${pkgver%%.*}"
 pkgdesc='NewTek NDI Advanced SDK'
 arch=('aarch64' 'armv6h' 'armv7h' 'x86_64' 'i686')
@@ -16,7 +16,7 @@ options=('!strip')
 _srcfile="Install_NDI_Advanced_SDK_v${pkgver}_Linux.tar.gz"
 source=("$_srcfile"::"https://downloads.ndi.tv/SDK/NDI_SDK_Linux/Install_NDI_Advanced_SDK_v${_majver}_Linux.tar.gz")
 noextract=("$_srcfile")
-sha256sums=('f325ea0dec269170a131132ae4cefc9907cd1b1dc26212b1192fc7ae2ca46c8e')
+sha256sums=('87ebc69eed87c4df38f637c577e3694c4c406fd47a6771ea418756313cec74c6')
 
 case "${CARCH}" in
 armv6*)
