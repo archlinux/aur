@@ -1,0 +1,8 @@
+type			= process
+pid-file		= /run/anope/anope.pid
+command			= /usr/bin/services --confdir=/etc/anope --dbdir=/var/lib/anope --localedir=/usr/lib/anope/locale --logdir=/var/log/anope --modulesdir=/usr/lib/anope --nofork
+smooth-recovery	= true
+logfile			= /var/log/dinit/anope.log
+run-as			= anope
+after			= network
+depends-on		= network
