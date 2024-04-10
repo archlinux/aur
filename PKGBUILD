@@ -1,7 +1,7 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 _pkgname=minosoft
 pkgname=$_pkgname-git
-pkgver=r3153.566463927
+pkgver=r5104.380046077
 pkgrel=1
 pkgdesc="Open source minecraft client, written from scratch in kotlin (and java)."
 arch=('any')
