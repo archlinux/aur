@@ -4,7 +4,6 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="A script to clean orphaned packages using yay"
 arch=('any')
-url="https://github.com/dillfrescott/yayclean"
 license=('GPL')
 depends=('yay')
 

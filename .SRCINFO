@@ -2,7 +2,6 @@ pkgbase = yayclean
 	pkgdesc = A script to clean orphaned packages using yay
 	pkgver = 1.0
 	pkgrel = 1
-	url = https://github.com/dillfrescott/yayclean
 	arch = any
 	license = GPL
 	depends = yay
