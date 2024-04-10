@@ -1,5 +1,6 @@
 # Find this package on https://github.com/pietmacom/kopano-pkgbuilds.git
 _pkgname='vmime'
+pkgbase='vmime'
 pkgname=('vmime-libonly'
          'vmime')
 pkgver=0.9.2.r1270.d03ad5f0

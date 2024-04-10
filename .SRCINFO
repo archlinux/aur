@@ -1,4 +1,4 @@
-pkgbase = vmime-libonly
+pkgbase = vmime
 	pkgdesc = A C++ class library for working with MIME messages
 	pkgver = 0.9.2.r1270.d03ad5f0
 	pkgrel = 1
