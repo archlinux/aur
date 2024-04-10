@@ -5,7 +5,7 @@
 
 pkgname=python-dockerpty
 pkgver=0.4.1
-pkgrel=10
+pkgrel=11
 pkgdesc="Python library to use the pseudo-tty of a docker container"
 arch=('any')
 license=('Apache')

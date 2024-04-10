@@ -1,0 +1,19 @@
+pkgbase = python-dockerpty
+	pkgdesc = Python library to use the pseudo-tty of a docker container
+	pkgver = 0.4.1
+	pkgrel = 11
+	url = https://github.com/d11wtq/dockerpty
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	checkdepends = python-expects
+	makedepends = python-setuptools
+	makedepends = python-docker-py
+	makedepends = python-six
+	makedepends = git
+	depends = python-docker-py
+	depends = python-six
+	source = git+https://github.com/d11wtq/dockerpty.git#tag=v0.4.1
+	sha512sums = SKIP
+
+pkgname = python-dockerpty
