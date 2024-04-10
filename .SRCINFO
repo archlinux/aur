@@ -1,0 +1,10 @@
+pkgbase = biboumi-dinit
+	pkgdesc = XMPP gateway to IRC (dinit)
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	depends = biboumi
+	source = biboumi.service
+	sha256sums = 0a87e36eb5fbaead3cc7eacf5c367e6e42c1d1f8d15e5ee821bd68e733533db3
+
+pkgname = biboumi-dinit
