@@ -1,8 +1,8 @@
 # Maintainer: Kyuunex <kyuunex at protonmail dot ch>
 
 pkgname=xorg-xwayland-osu
-pkgver=23.2.4
-pkgrel=2
+pkgver=23.2.6
+pkgrel=1
 arch=('x86_64')
 license=(
     LicenseRef-Adobe-Display-PostScript
@@ -33,7 +33,7 @@ makedepends=('meson' 'xorgproto' 'xtrans' 'libxkbfile' 'dbus'
              'systemd' 'egl-wayland')
 source=(https://xorg.freedesktop.org/archive/individual/xserver/xwayland-$pkgver.tar.xz{,.sig}
         xwayland-vsync.diff)
-sha512sums=('ac3ff208cbef5bbe4637c335cfda226489c93b0a3768f2f4fb0201c588485ede38262fbce77ef1425b3d2a0be61b6580df53341c7b95e6072c8b6371ad29d187'
+sha512sums=('9e3c2253af335a559d0f890fa8f9bc381beca6531e0842d739ac15cbca008b3d07c0eefafd03611b04917c626861a7871a83657afa2a298994f4b162f714fc49'
             'SKIP'
             'ce461fde80aeddf1ed0b412e1b79486759e3981448ccbc1af45591aa1b80a094386f0ecb1aa5bfb68ab6f2169c0a1ab9e6517cb6bc04317290077ded2f8b78b6')
 provides=('xorg-server-xwayland'
