@@ -1,0 +1,18 @@
+pkgbase = cavestory
+	pkgdesc = Cave Story powered by the nxengine-evo.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	arch = i386
+	arch = i686
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = nxengine-evo-bin
+	depends = wget
+	depends = unzip
+	depends = yad
+	source = https://gitlab.com/cavestory-bin/cavestory/-/archive/1.0.0/cavestory-1.0.0.tar.bz2
+	sha256sums = SKIP
+
+pkgname = cavestory
