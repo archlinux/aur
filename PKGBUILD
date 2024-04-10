@@ -1,7 +1,7 @@
 # Maintainer: Giovanni Scafora <scafora.giovanni@gmail.com>
 pkgname=opgui
 pkgver=0.12.2
-pkgrel=2
+pkgrel=3
 pkgdesc='An USB programmer for various devices, including PIC, dsPIC, AVR microcontrollers, and various kinds of serial eeproms'
 arch=('x86_64')
 url='http://openprog.altervista.org'
@@ -12,6 +12,7 @@ sha512sums=('e6de138a36f66ce60d047966c83466b4a27510933b69311f90d0fd1e374a11b3512
 
 build() {
 	cd ${pkgname}-${pkgver}
+	sed -i "s/\$(CFLAGS)/\$(LDFLAGS) \$(CFLAGS)/g" Makefile
 	make
 }
 
