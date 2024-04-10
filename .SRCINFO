@@ -1,0 +1,27 @@
+pkgbase = vmime-libonly
+	pkgdesc = A C++ class library for working with MIME messages
+	pkgver = 0.9.2.r1270.d03ad5f0
+	pkgrel = 1
+	url = http://www.vmime.org/
+	arch = armv7l
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = postfix
+	makedepends = doxygen
+	makedepends = xdot
+	makedepends = git
+	depends = gsasl
+	depends = gnutls
+	provides = libvmime
+	conflicts = zarafa-libvmime
+	conflicts = kopano-libvmime
+	conflicts = libvmime
+	source = git+https://github.com/kisli/vmime
+	sha256sums = SKIP
+
+pkgname = vmime-libonly
+
+pkgname = vmime
