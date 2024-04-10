@@ -2,7 +2,7 @@
 pkgname=atapi-mimetypes
 _pkgname='atapi-mimetypes'
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Various MIME types for my own personal use :3'
 arch=(any)
 makedepends=()

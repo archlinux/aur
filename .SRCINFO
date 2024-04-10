@@ -1,7 +1,7 @@
 pkgbase = atapi-mimetypes
 	pkgdesc = Various MIME types for my own personal use :3
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	source = x-atapi-mimetypes.xml
 

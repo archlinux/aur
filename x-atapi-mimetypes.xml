@@ -34,7 +34,7 @@
   </mime-type>
   <mime-type type="application/x-gbfs">S
     <comment>PinEight GBFS Archive</comment>
-    <comment xml:lang="en_GB">PinEight GBFS ARchive</comment>
+    <comment xml:lang="en_GB">PinEight GBFS Archive</comment>
     <generic-icon name="application-zip"/>
     <magic priority="100">
       <match type="string" offset="0" value="PinEightGBFS"/>
@@ -93,5 +93,12 @@
     <magic priority="100">
       <match type="string" offset="0" value="LIVE"/>
     </magic>
+  </mime-type>
+  <mime-type type="application/x-gp32-fxe">S
+    <comment>GamePark GP32 Executable</comment>
+    <comment xml:lang="en_GB">GamePark GP32 Executable</comment>
+    <generic-icon name="application-x-executable"/>
+    <glob pattern="*.fxe"/>
+    <glob pattern="*.FXE"/>
   </mime-type>
 </mime-info>
