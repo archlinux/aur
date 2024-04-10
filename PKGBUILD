@@ -1,7 +1,7 @@
 # Maintainer: Livaco <livaco@livaco.dev>
 pkgname=crab-fetch-git
-pkgver=v0.1.0.r5.gc3d58e3
-pkgrel=2
+pkgver=v0.1.1.r0.g3495b0c
+pkgrel=1
 pkgdesc="A highly configurable command-line fetch tool thats also performant."
 arch=('x86_64')
 url="https://github.com/LivacoNew/CrabFetch"
