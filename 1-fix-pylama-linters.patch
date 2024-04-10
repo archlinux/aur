@@ -1,0 +1,13 @@
+diff --git a/pymode/lint.py b/pymode/lint.py
+index ba18755..9ffd641 100644
+--- a/pymode/lint.py
++++ b/pymode/lint.py
+@@ -6,7 +6,7 @@ from .utils import silence_stderr
+ import os.path
+ 
+ 
+-from pylama.lint.extensions import LINTERS
++from pylama.lint import LINTERS
+ 
+ try:
+     from pylama.lint.pylama_pylint import Linter

@@ -1,7 +1,7 @@
 pkgbase = vim-python-mode
 	pkgdesc = A vim plugin that make vim into python IDE
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/python-mode/python-mode
 	arch = any
 	groups = vim-plugins
@@ -18,8 +18,10 @@ pkgbase = vim-python-mode
 	depends = python-rope
 	depends = python-six
 	depends = python-snowballstemmer
+	depends = pylama
 	source = https://github.com/python-mode/python-mode/archive/0.13.0.tar.gz
+	source = 1-fix-pylama-linters.patch
 	sha256sums = 1d0812ebfe5850b298502c37ceff1b30cb492550995f0c9612a0a8df09f17d9f
+	sha256sums = 9f7bc8e24c1a4fe2f1e158e69817f57805f25f81802b7b056d06603f7c38dc22
 
 pkgname = vim-python-mode
-
