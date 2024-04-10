@@ -1,4 +1,6 @@
-# Contributor: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Tom Moore <middleagedman@users.noreply.github.com>
+# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Alexander Epaneshnikov <alex19ep@archlinux.org>
 # Contributor: Ethan Skinner <aur@etskinner.com>
 # Contributor: Grégoire Seux <grego_aur@familleseux.net>
 # Contributor: Dean Galvin <deangalvin3@gmail.com>
@@ -6,8 +8,9 @@
 
 pkgname=home-assistant-git
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=2024.1.0_r215_g890615bb92e
+pkgver=2024.4.2
 pkgrel=1
+epoch=1
 arch=(any)
 url=https://home-assistant.io/
 license=(APACHE)
@@ -21,7 +24,7 @@ depends=(
   libtiff
   openjpeg2
   openssl
-  python
+  python312
   tzdata
   zlib
 )
@@ -31,41 +34,35 @@ makedepends=(
   python-setuptools
   python-wheel
 )
-conflicts=('home-assistant')
-provides=('home-assistant')
+_tag=04072cb3c1a2447200b322043a89c89e7e39d8ac
 source=(
-  git+https://github.com/home-assistant/home-assistant.git
-  home-assistant.service
+  "$pkgname::git+https://github.com/home-assistant/core.git#tag=${_tag}"
+  home-assistant-git.service
 )
-b2sums=('SKIP'
-        'd7a6cd85b89c74997cd7794e5205504033c37684d798bd12e40786f33fce846980d10373261444077cc527ef382246b8235573e1bb6ade8bb8e6d9e34f9961ad')
-
-pkgver() {
-  cd home-assistant
-  local dv=$(git describe --tags $(git rev-list --tags --max-count=1))
-  printf "%s_r%s_g%s" \
-    ${dv}\
-	$(git rev-list --count ${dv}..HEAD) \
-	$(git rev-parse --short HEAD)
-}
+b2sums=('cd740d71d62aceea54c87894b8e69c2818df28b5e449485dfa8bdef728159dd2a3b7fd212a9babdb541f8e944c5f53261cb3e39c07d2d999df3aa95ec650f942'
+        '50602803c05d7f2b1c7214915b4745d092aef796c4f1cc4339f6359ea6d2558f59404fd55223eade1c237a3b9cc8c9babdb95a2f71c85dd90fd5e572e97bd518')
 
 prepare() {
-  cd home-assistant
+  cd home-assistant-git
   # allow any setuptools and wheel to be used
   sed 's/==68.0.0//; s/~=0.40.0//' -i pyproject.toml
 }
 
+pkgver() {
+  cd home-assistant-git
+  git describe --tags
+}
+
 build() {
-  cd home-assistant
+  cd home-assistant-git
   python -m script.translations develop --all
   python -m build --wheel --no-isolation
-  mv dist/*.whl dist/homeassistant-$pkgver-py3-none-any.whl
 }
 
 package() {
-  install -Dm 644 home-assistant/dist/*.whl -t "${pkgdir}"/usr/share/home-assistant/
-  sed "s/@VERSION@/${pkgver}/" -i home-assistant.service
-  install -Dm 644 home-assistant.service -t "${pkgdir}"/usr/lib/systemd/system/
+  install -Dm 644 home-assistant-git/dist/*.whl -t "${pkgdir}"/usr/share/home-assistant-git/
+  sed "s/@VERSION@/${pkgver}/" -i home-assistant-git.service
+  install -Dm 644 home-assistant-git.service -t "${pkgdir}"/usr/lib/systemd/system/
 }
 
 # vim: ts=2 sw=2 et:
