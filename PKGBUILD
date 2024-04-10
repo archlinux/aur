@@ -1,11 +1,10 @@
 # Maintainer: Jrnr601 <jeroen at robben dot io>
-# Maintainer: DenBrahe <denbrahe at hotmail dot com>
 # Contributor(s): Michael Leuschel and others
 # Contributor(s): Formal Mind
 # Contributor(s): Heinrich-Heine-University
 
-_major_version='1.12'
-_minor_version='2'
+_major_version='1.13'
+_minor_version='0'
 
 pkgname='prob'
 pkgver=${_major_version}.${_minor_version}
@@ -21,7 +20,7 @@ optdepends=('graphviz: visualizations'
             'gv: PostScript visualizations')
 
 source_x86_64=("http://www3.hhu.de/stups/downloads/prob/tcltk/releases/${_major_version}.${_minor_version}/ProB.linux64.tar.gz")
-md5sums_x86_64=('a8e033178bc132975e2c9eb52ecc2cd9')
+md5sums_x86_64=('c2ca46e1b7343948e974a8a8f852bd4e')
 
 
 package() {
