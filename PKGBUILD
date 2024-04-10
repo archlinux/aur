@@ -2,7 +2,7 @@
 
 pkgname=qtcreator-spellchecker-plugin
 pkgver=3.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Spell Checker plugin for the Qt Creator IDE"
 groups=('qt')
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=(
     'qtcreator-devel>=12.0.0' 'qtcreator-devel<13.0.0'
     'cmake'
 )
-source=("$pkgname-$pkgver::${url}/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gzr::${url}/archive/v$pkgver.tar.gz")
 sha256sums=('d780fd90fee09c48c3162cd37e3e0f191bcedfe5805601c1f5728909960d38d3')
 
 build() {
