@@ -1,11 +1,10 @@
 pkgbase = r-base64url
 	pkgdesc = Fast and URL-Safe Base64 Encoder and Decoder
 	pkgver = 1.4
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=base64url
 	arch = x86_64
-	license = GPL
-	depends = r
+	license = GPL-3.0-only
 	depends = r-backports
 	optdepends = r-base64enc
 	optdepends = r-checkmate
@@ -15,6 +14,7 @@ pkgbase = r-base64url
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/base64url_1.4.tar.gz
-	sha256sums = 1d058f138660e9155ebb331d7a2561e2541ee3321b8da90f6c41fd8dcc122c58
+	md5sums = 0e41f7f53213278d81e2d1fb55b34480
+	b2sums = 1bde4789d2f880ac81bab2b6dee8867243a369443431d8e2d30b48c31e8c2966de33b695d407754105dcb021dcd5cb035db05fd09558a6ecbae7e0dd8c11a432
 
 pkgname = r-base64url
