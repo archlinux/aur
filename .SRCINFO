@@ -1,14 +1,14 @@
 pkgbase = formatjson
 	pkgdesc = JSON validator and formatter written in Rust
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://github.com/tusharsadhwani/formatjson
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
 	depends = rust
-	source = https://github.com/tusharsadhwani/formatjson/archive/refs/tags/0.2.0.tar.gz
-	sha256sums = 1c7d4e9b68376d1b8cd145e11ffbc3ff00f495815dd31e0b6ffc1d2e07f2a805
+	source = https://github.com/tusharsadhwani/formatjson/archive/refs/tags/0.2.1.tar.gz
+	sha256sums = a4529e0873676deb26ad79a99842966a2c289772f2c2419614af14a24ca6ba50
 
 pkgname = formatjson

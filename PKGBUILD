@@ -2,8 +2,8 @@
 # Maintainer: Radu Potop <radu at wooptoo com>
 
 pkgname=formatjson
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="JSON validator and formatter written in Rust"
 arch=('x86_64')
 url="https://github.com/tusharsadhwani/formatjson"
@@ -33,4 +33,4 @@ package() {
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" ./LICEN[CS]E
 }
 
-sha256sums=('1c7d4e9b68376d1b8cd145e11ffbc3ff00f495815dd31e0b6ffc1d2e07f2a805')
+sha256sums=('a4529e0873676deb26ad79a99842966a2c289772f2c2419614af14a24ca6ba50')
