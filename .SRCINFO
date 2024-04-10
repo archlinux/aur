@@ -11,6 +11,6 @@ pkgbase = tsac-bin
 	source = tsac-2024-04-08.tar.gz::https://bellard.org/tsac/tsac-2024-04-08.tar.gz
 	source = tsac
 	sha256sums = 6adfb6b340d118ac47f093dc07db6ace97ac00fc7b387635b1958d919ecfb05d
-	sha256sums = c23587fa6f5778db466bdf0ade6e4808d2c6eaf3c581b3ca1a6b884a6805fae8
+	sha256sums = cc1f895927bcd8aaefb2049de325293a190b69f12c011727f479cf0c3672464c
 
 pkgname = tsac-bin

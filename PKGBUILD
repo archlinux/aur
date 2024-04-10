@@ -15,7 +15,7 @@ optdepends=("cuda: for --cuda options support")
 source=("${_pkgname}-${_pkgver}.tar.gz::${url}/${_pkgname}-${_pkgver}.tar.gz"
         "${_pkgname}")
 sha256sums=('6adfb6b340d118ac47f093dc07db6ace97ac00fc7b387635b1958d919ecfb05d'
-            'c23587fa6f5778db466bdf0ade6e4808d2c6eaf3c581b3ca1a6b884a6805fae8')
+            'cc1f895927bcd8aaefb2049de325293a190b69f12c011727f479cf0c3672464c')
 
 prepare() {
     cd "${_pkgname}-${_pkgver}"
@@ -32,6 +32,6 @@ package() {
     install -Dm755 -t "${pkgdir}/usr/bin"                        "${_pkgname}"
 
     cd "${_pkgname}-${_pkgver}"
-    install -Dm755 -t "${pkgdir}/opt/${_pkgname}"                "${_pkgname}" *.so*
-    install -Dm644 -t "${pkgdir}/opt/${_pkgname}"                *.bin
+    install -Dm755 -t "${pkgdir}/usr/lib/${_pkgname}" "${_pkgname}" *.so*
+    install -Dm644 -t "${pkgdir}/usr/share/${_pkgname}" *.bin
 }

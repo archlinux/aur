@@ -10,9 +10,9 @@ if [[ $# -ge 3 && $1 != "--help" && $1 != "-h" ]]; then
         exit 1
     fi
 
-    cd /opt/tsac || exit 2
-    ./tsac $other_args "$input_file" "$output_file"
+    cd /usr/share/tsac || exit 2
+    /usr/lib/tsac/tsac $other_args "$input_file" "$output_file"
 else
-    cd /opt/tsac || exit 2
-    ./tsac "$@"
+    cd /usr/share/tsac || exit 2
+    /usr/lib/tsac/tsac "$@"
 fi
