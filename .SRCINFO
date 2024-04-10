@@ -1,0 +1,10 @@
+pkgbase = icecast-dinit
+	pkgdesc = Streaming audio over the Internet (dinit)
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	depends = icecast
+	source = icecast.service
+	sha256sums = eb42d85047d449d4c8bb6e919f7e16aff68c3b8773cc9d9ce81ec4aec1e57038
+
+pkgname = icecast-dinit
