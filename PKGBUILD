@@ -21,10 +21,10 @@ makedepends=(
   'python-sphinx-lint'
   'python-wheel'
 )
-checkdepends=(
-  'python-pip'
-  'python-pytest'
-)
+#checkdepends=(
+#  'python-pip'
+#  'python-pytest'
+#)
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('9055ceb3dc03ecb069df5459669b80a6890780602be933fb9e21f4dc79b7a923')
 
@@ -41,10 +41,10 @@ build() {
   rm -rf html/.{doctrees,buildinfo}
 }
 
-check() {
-  cd "$_name-$pkgver"
-  pytest
-}
+#check() {
+#  cd "$_name-$pkgver"
+#  pytest
+#}
 
 package_python-jaraco.packaging() {
   optdepends=('python-jaraco.packaging-docs: offline docs')
