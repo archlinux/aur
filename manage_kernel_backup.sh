@@ -22,6 +22,27 @@ INITRAMFS_IMAGES["linux-lts"]="initramfs-linux-lts.img"
 KERNEL_DIRECTORY="/boot"
 MODULES_DIRECTORY="/usr/lib/modules"
 
+_is_running_package_kernel() {
+  package="${1}"
+  if [ "${package}" == custom ]; then
+    return 1
+  fi
+  kernel_image="${KERNEL_IMAGES[$package]}"
+  cd "${KERNEL_DIRECTORY}"
+  if [ ! -e "${kernel_image}" ]; then
+    return 1
+  fi
+  kernel_version="$(_kernel_version_from_image "${package}" "${kernel_image}")"
+  running_version="$(uname -r)"
+  if [ "${kernel_version}" == "${running_version}" ]; then
+    echo "Running kernel is from package ${package}, backup needed" >&2
+    return 0
+  else
+    echo "Running kernel is not from package ${package}, no backup needed" >&2
+    return 1
+  fi
+}
+
 _update_grub_cfg() {
   grub-mkconfig -o /boot/grub/grub.cfg
 }
@@ -183,7 +204,7 @@ clean_backups() {
 
   declare -a kernel=()
   # shellcheck disable=SC2012
-  mapfile -t kernel < <(ls -1 "${kernel_image}"-[0-9]* | sort -r)
+  mapfile -t kernel < <(ls -1 "${kernel_image}"-[0-9]* 2> /dev/null | sort -r)
   for k in "${kernel[@]}"; do
     v="$(_kernel_version_from_kernel_file_name "${package}" "${k}")"
     if [ "${v}" == "${installed_version}" ]; then
@@ -226,7 +247,7 @@ remove_backups() {
     installed_version="$(_kernel_version_from_image "${package}" "${kernel_image}")"
   fi
   # shellcheck disable=SC2012
-  for k in $(ls -1 "${kernel_image}"-[0-9]* | sort -r); do
+  for k in $(ls -1 "${kernel_image}"-[0-9]* 2> /dev/null | sort -r); do
     v="$(_kernel_version_from_kernel_file_name "${package}" "${k}")"
     if [ "${v}" == "${installed_version}" ]; then
       _delete_kernel_version "${package}" "${k}" "${v}" 0
@@ -286,7 +307,7 @@ restore_modules_backup() {
 
 restore_dkms_backup() {
   kernel_version="${2}"
-  dkms autoinstall -k "${kernel_version}"
+  dkms autoinstall -k "${kernel_version}" || true
 }
 
 
@@ -316,8 +337,10 @@ case "${action}" in
       if [ "${p}" == "custom" ]; then
         continue
       fi
-      create_kernel_backup "${p}"
-      _update_grub_cfg
+      if _is_running_package_kernel "${p}"; then
+        create_kernel_backup "${p}"
+        _update_grub_cfg
+      fi
     done
     ;;
   remove)
@@ -333,7 +356,9 @@ case "${action}" in
       if [ "${p}" == "custom" ]; then
         continue
       fi
-      create_modules_backup "${p}"
+      if _is_running_package_kernel "${p}"; then
+        create_modules_backup "${p}"
+      fi
     done
     ;;
   modules_restore)
@@ -341,7 +366,9 @@ case "${action}" in
       if [ "${p}" == "custom" ]; then
         continue
       fi
-      restore_modules_backup "${p}"
+      if _is_running_package_kernel "${p}"; then
+        restore_modules_backup "${p}"
+      fi
     done
     ;;
   mkinitcpio)
@@ -350,17 +377,22 @@ case "${action}" in
         if [ "${p}" == "custom" ]; then
           continue
         fi
-        create_initramfs_backup "${p}"
+        if _is_running_package_kernel "${p}"; then
+          create_initramfs_backup "${p}"
+        fi
       done
+      _update_grub_cfg
     else
       for p in "${packages[@]}"; do
         if [ "${p}" == "custom" ]; then
           continue
         fi
-        create_initramfs_backup "${p}"
+        if _is_running_package_kernel "${p}"; then
+          create_initramfs_backup "${p}"
+        fi
       done
+      _update_grub_cfg
     fi
-    _update_grub_cfg
     ;;
   clean)
     if [ ${#packages[@]} -eq 0 ]; then
@@ -368,14 +400,22 @@ case "${action}" in
         if [ "${p}" == "custom" ]; then
           continue
         fi
-        clean_backups "${p}"
+        if _is_running_package_kernel "${p}"; then
+          clean_backups "${p}"
+        else
+          remove_backups "${p}"
+        fi
       done
     else
       for p in "${packages[@]}"; do
         if [ "${p}" == "custom" ]; then
           continue
         fi
-        clean_backups "${p}"
+        if _is_running_package_kernel "${p}"; then
+          clean_backups "${p}"
+        else
+          remove_backups "${p}"
+        fi
       done
     fi
     ;;
