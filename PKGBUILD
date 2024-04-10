@@ -14,13 +14,13 @@ source=("git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${pkgname%-*}"
+    cd "${pkgname%-*}"
     echo "$(git log -1 --format="%cd" --date='format:%Y%m%d.%H%M%S')"
 }
 
 package() {
     cd "${pkgname%-*}"
     install -Dm755 "${pkgname%-*}" "${pkgdir}/usr/bin/${pkgname%-*}"
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname%-*}/README.md"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-*}/LICENSE"
+    install -Dm644 README.md       "${pkgdir}/usr/share/doc/${pkgname%-*}/README.md"
+    install -Dm644 LICENSE         "${pkgdir}/usr/share/licenses/${pkgname%-*}/LICENSE"
 }
