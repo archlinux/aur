@@ -1,7 +1,7 @@
 # Maintainer: Tim Teichmann <teichmanntim@outlook.de>
 pkgname=ped
-pkgver=0.0.2
-pkgrel=2
+pkgver=0.0.3
+pkgrel=3
 pkgdesc="Ped is a vim-like editor built with ncurses."
 arch=('x86_64')
 url="https://github.com/tim-tm/ped"
