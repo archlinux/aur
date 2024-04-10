@@ -1,0 +1,12 @@
+pkgbase = opendmarc-dinit
+	pkgdesc = Free open source software implementation of the DMARC specification (dinit)
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	depends = opendmarc
+	source = opendmarc.service
+	source = opendmarc-pre.service
+	sha256sums = 8174e9373035d9c635b336158ec74c0abc622b5edacb52aac24222c2c5364ec2
+	sha256sums = 395ba1e46d30248a2ce51f997e6b8dc803d9393f55c99b9eaf997f8797e830f8
+
+pkgname = opendmarc-dinit
