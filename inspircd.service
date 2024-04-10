@@ -1,0 +1,5 @@
+type		= process
+command		= /usr/bin/inspircd --runasroot --nofork
+smooth-recovery	= true
+logfile		= /var/log/dinit/inspircd.log
+depends-on	= inspircd-pre
