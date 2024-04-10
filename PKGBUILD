@@ -1,17 +1,18 @@
 # Maintainer: Argyros Argyridis <arargyridis@gmail.com>
 # Contributor: Samuel Mesa <samuelmesa@linuxmail.org>
+# Contributor: Tu Yu-Hsuan <dobe0331@gmail.com>
 
 pkgname=orfeo-toolbox
 pkgver=9.0.0
 _pkgver=9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
 arch=(x86_64 i686)
 url="http://www.orfeo-toolbox.org"
 license=('CeCILL')
 groups=()
-depends=('gdal' 'cblas' 'freeglut' 'curl' 'fftw' 'tinyxml' 'muparser' 'muparserx' 'python' 'boost' 'lapack' 'hdf5' 'insight-toolkit4' 'libsvm' 'opencv>=3' 'openmpi')
-makedepends=('git' 'swig' 'cmake' 'qt5-base')
+depends=('gdal' 'cblas' 'freeglut' 'curl' 'fftw' 'tinyxml' 'muparser' 'muparserx' 'python' 'boost' 'lapack' 'hdf5' 'insight-toolkit4' 'libsvm' 'opencv>=3' 'openmpi' 'libkml')
+makedepends=('git' 'swig' 'cmake')
 optdepends=()
 provides=()
 conflicts=()
@@ -62,7 +63,7 @@ build() {
   -DBUILD_SHARED_LIBS=ON \
   -DOTBGroup_FeaturesExtraction=ON \
   -DOTBGroup_Hyperspectral=ON \
-  -DOTBGroup_Learning=ON \
+  -DOTBGroup_Learning=OFF \
   -DOTBGroup_Miscellaneous=ON \
   -DOTBGroup_Remote=ON \
   -DOTBGroup_SAR=ON \
