@@ -1,7 +1,7 @@
 # Maintainer: Franco Masotti (See /README.md in project source)
 # Contributor: Franco Masotti (See /README.md in project source)
 pkgname=python-md_toc
-pkgver=8.2.3
+pkgver=9.0.0
 pkgrel=1
 pkgdesc="Automatically generate and add an accurate table of contents to markdown files"
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('python-pyfakefs'
              'python-setuptools')
 options=(!emptydirs)
 source=("https://blog.franco.net.eu.org/software/md-toc-${pkgver}/md-toc-${pkgver}.tar.gz.sig" "https://blog.franco.net.eu.org/software/md-toc-${pkgver}/md-toc-${pkgver}.tar.gz")
-sha512sums=('SKIP' 'cf76d5a641fae6dfd3746f76f20ad8f40377b2198ee0c0ae01a7483a26181783294d4a69fe0253d50cc0234a4521dfcadb0897991153b9decca06c0c2ce8adb1')
+sha512sums=('SKIP' '17bd4a8138e3057c41501cd1cc84e5cc09b2e570efdb7de817e8a5cbbaf1a0857cefb8880bdb767dd37effd8323fefbb1c664484c5c9c6a08cecfab40eef3b39')
 
 check() {
     cd "${srcdir}"/md-toc-"${pkgver}"
