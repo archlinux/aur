@@ -29,6 +29,7 @@ build() {
   # Stop the compiler from treating warnings as error
   sed -i 's/set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror")//g' "${_pkgname}-${pkgver}/CMakeLists.txt"
 
+  # TODO: Follow CMake packaging guildeline
   cmake -B 'build' -S "${_pkgname}-${pkgver}" \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr'
