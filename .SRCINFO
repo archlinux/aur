@@ -1,6 +1,6 @@
 pkgbase = pymol-git
 	pkgdesc = Molecular visualization system on an Open Source foundation
-	pkgver = r5639.ca185848f
+	pkgver = r5647.071998658
 	pkgrel = 1
 	url = https://pymol.org
 	arch = x86_64
@@ -22,13 +22,11 @@ pkgbase = pymol-git
 	depends = python-numpy
 	depends = tcsh
 	optdepends = python-pyqt5: Qt5 based UI
-	provides = pymol=r5639.ca185848f
+	provides = pymol=r5647.071998658
 	conflicts = pymol
 	source = pymol::git+https://github.com/schrodinger/pymol-open-source.git
 	source = pymol.png::https://c.fsdn.com/allura/p/pymol/icon
-	source = glm_exp.patch
 	md5sums = SKIP
 	md5sums = a6b62ae41658a772f75b3b123a8e5c0b
-	md5sums = 26b4244b871a55a83bc6f42d761bc6f9
 
 pkgname = pymol-git

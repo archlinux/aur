@@ -7,7 +7,7 @@
 
 _name=pymol
 pkgname="${_name}-git"
-pkgver=r5639.ca185848f
+pkgver=r5647.071998658
 pkgrel=1
 pkgdesc='Molecular visualization system on an Open Source foundation'
 arch=(x86_64)
@@ -31,11 +31,9 @@ optdepends=('python-pyqt5: Qt5 based UI')
 conflicts=('pymol')
 provides=("${_name}=${pkgver}")
 source=(${_name}::"git+https://github.com/schrodinger/pymol-open-source.git"
-		${_name}.png::"https://c.fsdn.com/allura/p/pymol/icon"
-        "glm_exp.patch")
+		${_name}.png::"https://c.fsdn.com/allura/p/pymol/icon")
 md5sums=('SKIP'
-         'a6b62ae41658a772f75b3b123a8e5c0b'
-         '26b4244b871a55a83bc6f42d761bc6f9')
+         'a6b62ae41658a772f75b3b123a8e5c0b')
 
 pkgver() {
     cd "${srcdir}/${_name}"
@@ -43,9 +41,6 @@ pkgver() {
 }
 
 prepare() {
-    # Apply patch
-    patch --directory="${_name}" --forward --strip=1 --input=../glm_exp.patch
-
 	# create desktop file
 	gendesk -f -n \
 			--pkgname "${_name}" \
