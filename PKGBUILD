@@ -1,6 +1,6 @@
 # Maintainer: RiverOnVenus <error@zhui.dev>
 pkgname=neco-git
-pkgver=r1.ee209f7
+pkgver=0.1.0.r1.g8258e56
 pkgrel=1
 pkgdesc="Concurrency library for C (coroutines)"
 arch=(any)
@@ -18,7 +18,7 @@ build() {
 
 pkgver() {
   cd "$pkgname-$pkgver"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 package() {
