@@ -1,15 +1,15 @@
 pkgbase = r-kappalab
 	pkgdesc = Non-Additive Measure and Integral Manipulation Functions
 	pkgver = 0.4.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=kappalab
 	arch = x86_64
-	license = CeCILL
-	depends = r
+	license = CECILL-2.0
+	depends = r-kernlab
 	depends = r-lpsolve
 	depends = r-quadprog
-	depends = r-kernlab
 	source = https://cran.r-project.org/src/contrib/kappalab_0.4-12.tar.gz
-	sha256sums = b30829a18cc7ee3ee466edbbd6f85e3e41d445887e34eaf6a3fa58f53911138c
+	md5sums = cd88e018c6513b3931021f2391c6282b
+	b2sums = 59d191c1e249b4b5435b1c2fcf35b7805e8030eea85eb6cfc714b690ae421a688dbf1d63ae05a37f040bfb7efa80d19e030504344d21281583c539ed67ae1358
 
 pkgname = r-kappalab
