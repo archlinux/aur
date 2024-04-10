@@ -3,14 +3,14 @@
 # Contributor: articpenguin <julia.schweinz at mailfence dot com>
 
 _pkgname=argparse
-_pkgver=2.2.2
+_pkgver=2.2.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Command Line Optional and Positional Argument Parser"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   python
   r-findpython
@@ -26,8 +26,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fe22b79b423ac686d072694fe30b8617')
-sha256sums=('b62c9bf5e6ca35fb7a2e614a916815c04cbf6c6db3f89f99b4df76470a4a856d')
+md5sums=('a3d1cf4737fcccb4cd0ef0da970e61df')
+b2sums=('9da45954a4e2d941bd62eab33c3d66926524d0dae50a451b25d26e815d237fc9bd1628e6a9a8f1c372cd87f445a8dd5f14384ac0105fb6f786780b2166f195d7')
 
 prepare() {
   # fix tests
@@ -37,8 +37,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
