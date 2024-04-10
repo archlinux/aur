@@ -1,0 +1,5 @@
+type		= process
+command		= /usr/bin/icecast -c /etc/icecast.xml
+run-as		= icecast
+smooth-recovery	= true
+logfile		= /var/log/dinit/icecast.log
