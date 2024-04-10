@@ -1,7 +1,7 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=code-features
-pkgver=1.87.0
-pkgrel=2
+pkgver=1.88.0
+pkgrel=1
 pkgdesc='Unblock some features in Code OSS'
 arch=('any')
 url='https://github.com/microsoft/vscode'
@@ -16,7 +16,7 @@ source=("${pkgname}.hook"
         'patch.json')
 md5sums=('1d4002cba0560dd6da192ddd756f52e5'
          '9ed6f3972479ab6d3d053e7c47ead55a'
-         '1d9f06e2ed16e3100f41eb6c69a81638')
+         '3825c66c686454d02425c8b265f0d499')
 
 package() {
   install -Dm 644 "${srcdir}/${pkgname}.hook" "${pkgdir}/usr/share/libalpm/hooks/${pkgname}.hook"
