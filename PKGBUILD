@@ -3,13 +3,14 @@
 pkgname="aider-chat"
 _pkgname="$pkgname"
 pkgver=0.26.0
-pkgrel=2
+pkgrel=3
 pkgdesc="AI pair programming in your terminal"
 url="https://aider.chat/"
 license=("Apache2")
 arch=("any")
 provides=("aider")
-depends=("python-configargparse"
+depends=("python-beautifulsoup4"
+         "python-configargparse"
          "python-gitpython"
          "python-openai"
          "python-tiktoken"

@@ -1,7 +1,7 @@
 pkgbase = aider-chat
 	pkgdesc = AI pair programming in your terminal
 	pkgver = 0.26.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://aider.chat/
 	arch = any
 	license = Apache2
@@ -9,6 +9,7 @@ pkgbase = aider-chat
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	depends = python-beautifulsoup4
 	depends = python-configargparse
 	depends = python-gitpython
 	depends = python-openai
