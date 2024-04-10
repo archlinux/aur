@@ -36,6 +36,7 @@ backup=(
   etc/sway/config.d/50-systemd-user.conf
 )
 optdepends=(
+  'dmenu: dmenu_path support (used alongside wmenu in default $menu)'
   'grim: Screenshot utility'
   'foot: Terminal emulator used in the default configuration'
   'i3status: Status line generation'
