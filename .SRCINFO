@@ -1,7 +1,7 @@
 pkgbase = python-mamba
 	pkgdesc = The definitive testing tool for Python. Born under the banner of Behavior Driven Development.
 	pkgver = 0.11.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nestorsalceda.github.io/mamba
 	arch = any
 	license = MIT
