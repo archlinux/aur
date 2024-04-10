@@ -3,7 +3,7 @@
 
 pkgname=vulkan-nouveau-git
 pkgdesc="Nouveau Vulkan (NVK) Mesa driver with some additions (Git version)"
-pkgver=24.0.branchpoint.r4572.ge2bcbcd
+pkgver=24.0.branchpoint.r4611.g702f40f
 pkgrel=1
 arch=('x86_64')
 depends=('libdrm' 'libxshmfence' 'libx11' 'systemd-libs' 'vulkan-icd-loader' 'wayland')
@@ -58,8 +58,10 @@ build() {
 
   # HACK: Remove crate .rlib files before build
   # (This prevents build errors after a Rust update: https://github.com/mesonbuild/meson/issues/10706)
-  [ -d build/subprojects ] && find build/subprojects -iname "*.rlib" -delete
+  [ -d build/subprojects ] && find build/subprojects \( -iname "*.rlib" -o -iname "*.so" \) -delete
   [ -d build/src/nouveau/compiler ] && find build/src/nouveau/compiler -iname "*.rlib" -delete
+  [ -d build/src/nouveau/headers ] && find build/src/nouveau/headers -iname "*.rlib" -delete
+  [ -d build/src/nouveau/nil ] && find build/src/nouveau/nil -iname "*.rlib" -delete
 
   # As you can see, I optimized the build options pretty well 🐸
   arch-meson mesa build \
