@@ -5,11 +5,11 @@
 pkgname=guile-bytestructures
 _pkgname=bytestructures
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Structured access library to bytevector contents for Guile'
 arch=('x86_64')
 url="https://github.com/TaylanUB/scheme-bytestructures"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('guile')
 makedepends=('git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TaylanUB/scheme-${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
