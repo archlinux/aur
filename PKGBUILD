@@ -1,7 +1,7 @@
 # Maintainer: Cross Nastasi <cross@dill.moe>
 pkgname=minetest-git-dill
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Minetest from git. This version uses github and allows aur helper devel functions to work properly. Also the PKGBUILD script is much simpler."
 arch=('x86_64')
 url="https://github.com/minetest/minetest"
@@ -20,5 +20,5 @@ package() {
   cd "${srcdir}/minetest"
   make DESTDIR="${pkgdir}" install
   mkdir -p "${pkgdir}/usr/bin/"
-  ln -s /usr/share/minetest "${pkgdir}/usr/bin/minetest"
+  ln -s /usr/share/minetest/bin/minetest "${pkgdir}/usr/bin/minetest"
 }
