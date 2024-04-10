@@ -3,7 +3,7 @@
 _pkver=(5.30 2541)
 pkgname=aimp
 pkgver=${_pkver[0]}.${_pkver[1]}
-pkgrel=1
+pkgrel=2
 url="https://www.aimp.ru/"
 pkgdesc="AIMP (on Wine) is powerful free audio player."
 arch=('x86_64')
@@ -13,20 +13,20 @@ source=("${url}/files/linux/aimp_${_pkver[0]}-${_pkver[1]}_amd64.deb"
         "${pkgname}"
         "${pkgname}ac"
         "${pkgname}ate"
-        "${pkgname}.desktop"
+        "AIMP.exe.desktop"
         "${pkgname}ac.desktop"
         "${pkgname}ate.desktop")
 sha256sums=('0aeaddb35bea5869c81e00c7d715a4139fa53053b39125f228d8c457cadd147b'
             'b41610f455db4f7600488d49d8df697e85cd554ec3be35d382fa089526f6f051'
             '5ddae7098e215717b7243839686c9c07b6213a9f97fd3c28de5071a48e6942b6'
             '735954b1a61249e2e1ab2ca052330e39ee846e27a89eefb0193cac7ed8f4bebc'
-            'bc7f27965c2dd27b483a4a8fb667b125af65343c22764082d7680bd4ce429eaa'
+            '0e50842c16e53192f92d6d1b2b1fae64639283047a00f659c2f95274e54a5169'
             '638dac1fb0f8271c80789d64eb2a24820d2d2fadadb4fa98f97e8728c2810955'
             '310706f4ee0955956a3b660c86f88ee43e59f06bb1bacd039ab43d017c3a3615')
 
 package(){
    bsdtar -xf "data.tar.gz" -C "${pkgdir}"
-   install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+   install -Dm644 "${srcdir}/AIMP.exe.desktop" -t "${pkgdir}/usr/share/applications"
    install -Dm644 "${srcdir}/${pkgname}ac.desktop" -t "${pkgdir}/usr/share/applications"
    install -Dm644 "${srcdir}/${pkgname}ate.desktop" -t "${pkgdir}/usr/share/applications"
    install -Dm644 "${pkgdir}/opt/${pkgname}/AIMP/Assets/logo.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"

@@ -18,6 +18,7 @@ X-KDE-SubstituteUID=false
 Actions=Play;Pause;Stop;Previous;Next;
 
 [Desktop Action Next]
+Icon=media-skip-forward
 Exec=aimp /NEXT
 Name[ru_RU]=Следующая музыка
 Name=Next
@@ -27,7 +28,19 @@ Name[sr@ijekavianlatin]=Sljedeća
 Name[sr@latin]=Sledeća
 Name[sr]=Следећа
 
+[Desktop Action Previous]
+Icon=media-skip-backward
+Exec=aimp /PREV
+Name[ru_RU]=Предыдущая музыка
+Name=Previous
+Name[fr]=Précédent
+Name[sr@Ijekavian]=Претходна
+Name[sr@ijekavianlatin]=Prethodna
+Name[sr@latin]=Prethodna
+Name[sr]=Претходна
+
 [Desktop Action Pause]
+Icon=media-playback-pause
 Exec=aimp /PAUSE
 Name[ru_RU]=Пауза
 Name=Pause
@@ -38,6 +51,7 @@ Name[sr@latin]=Pauziraj
 Name[sr]=Паузирај
 
 [Desktop Action Play]
+Icon=media-playback-start
 Exec=aimp /PLAY
 Name[ru_RU]=Воспроизвести
 Name=Play
@@ -47,17 +61,8 @@ Name[sr@ijekavianlatin]=Pusti
 Name[sr@latin]=Pusti
 Name[sr]=Пусти
 
-[Desktop Action Previous]
-Exec=aimp /PREV
-Name[ru_RU]=Предыдущая музыка
-Name=Previous
-Name[fr]=Précédent
-Name[sr@Ijekavian]=Претходна
-Name[sr@ijekavianlatin]=Prethodna
-Name[sr@latin]=Prethodna
-Name[sr]=Претходна
-
 [Desktop Action Stop]
+Icon=media-playback-stopped
 Exec=aimp /STOP
 Name[ru_RU]=Остановить воспроизведение
 Name=Stop
