@@ -1,3 +1,0 @@
-d   /var/log/hath-rust  -       hath-rust   hath-rust   30d -
-v   /var/lib/hath-rust  0700    hath-rust   hath-rust   -   -
-f   /etc/hath-rust.conf -       -           -           -   -

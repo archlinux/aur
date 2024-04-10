@@ -6,24 +6,24 @@ After=network-online.target
 
 [Service]
 Type=simple
+DynamicUser=yes
+User=hath-rust
 EnvironmentFile=/etc/hath-rust.conf
 ExecStart=hath-rust $HATH_EXTRA_ARGS \
     --cache-dir=/var/lib/hath-rust/cache \
     --data-dir=/var/lib/hath-rust/data \
     --download-dir=/var/lib/hath-rust/download \
     --log-dir=/var/log/hath-rust \
-    --temp-dir=/tmp/hath-rust
+    --temp-dir=/var/lib/hath-rust/temp
 # Isolation
 WorkingDirectory=/var/lib/hath-rust
-User=hath-rust
 CapabilityBoundingSet=CAP_NET_BIND_SERVICE
 NoNewPrivileges=yes
 # Sandboxing
+StateDirectory=hath-rust
+LogsDirectory=hath-rust
 ProtectSystem=strict
 ProtectHome=yes
-ReadWritePaths=/var/log/hath-rust
-ReadWritePaths=/var/lib/hath-rust
-ReadWritePaths=/tmp/hath-rust
 PrivateTmp=yes
 PrivateUsers=yes
 ProtectKernelModules=yes

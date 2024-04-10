@@ -1,0 +1,9 @@
+[Trigger]
+Type=Package
+Operation=Install
+Target=hath-rust
+
+[Action]
+Description=Creating default config file for hath-rust...
+When=PostTransaction
+Exec=/usr/bin/bash -c '[[ -f ./etc/hath-rust.conf ]] || echo #HATH_EXTRA_ARGS= > ./etc/hath-rust.conf'
