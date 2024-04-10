@@ -1,0 +1,30 @@
+pkgbase = python-pymeasure
+	pkgdesc = Scientific measurement library for instruments, experiments, and live-plotting
+	pkgver = 0.13.1
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/PyMeasure
+	arch = any
+	license = MIT
+	checkdepends = python-pytest>=2.9.1
+	checkdepends = python-pytest-cov>=4.10
+	checkdepends = python-pytest-qt>=2.4.0
+	checkdepends = python-pyvisa-sim>=0.4.0
+	makedepends = python-setuptools>=45
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm>=6.2
+	depends = python>=3.8
+	depends = python-numpy>=1.6.1
+	depends = python-pandas>=0.14
+	depends = python-pint
+	depends = python-pyvisa>=1.8
+	depends = python-pyserial>=2.7
+	depends = python-pyqtgraph>=0.12
+	depends = python-importlib-metadata
+	optdepends = python-pyzmq>=16.0.2: tcp support
+	optdepends = python-cloudpickle>=0.3.1: tcp support
+	optdepends = python-vxi11>=0.9: VXI-11 ethernet support
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/P/PyMeasure/PyMeasure-0.13.1.tar.gz
+	sha256sums = 6c6f101407fef1a2218c63f333d0eeeb3c5cf614433d3a1331480988022ad520
+
+pkgname = python-pymeasure
