@@ -5,7 +5,7 @@ After = network-online.target
 
 [Service]
 Restart = on-failure
-ExecStart = /usr/bin/chinesesubfinder --setconfigselfpath .local/share/chinesesubfinder
+ExecStart = /usr/bin/chinesesubfinder --setconfigselfpath %h/.local/share/chinesesubfinder
 
 [Install]
 WantedBy = default.target
