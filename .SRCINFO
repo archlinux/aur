@@ -1,7 +1,7 @@
 pkgbase = fzf-help
 	pkgdesc = Use fzf to select command line options from --help
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BartSte/fzf-help
 	changelog = CHANGELOG.md
 	arch = any

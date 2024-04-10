@@ -2,7 +2,7 @@
 
 pkgname=fzf-help
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Use fzf to select command line options from --help"
 arch=('any')
 url="https://github.com/BartSte/fzf-help"
@@ -17,3 +17,6 @@ package() {
     "$srcdir/$pkgname/install"
 }
 
+pre_remove() {
+    "$srcdir/$pkgname/uninstall"
+}
