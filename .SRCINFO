@@ -1,5 +1,5 @@
-pkgbase = gimp-plugin-resynthesizer-git
-	pkgdesc = Suite of gimp plugins for texture synthesis (like heal-selection). Git-Version
+pkgbase = gimp3-plugin-resynthesizer-git
+	pkgdesc = Suite of gimp plugins for texture synthesis (like heal-selection), ported to GIMP 3. Git-Version
 	pkgver = 2.0.3.r24.gecfc4e7
 	pkgrel = 1
 	url = https://github.com/bootchk/resynthesizer
@@ -8,12 +8,16 @@ pkgbase = gimp-plugin-resynthesizer-git
 	license = GPL2
 	makedepends = git
 	makedepends = intltool
-	depends = python2-gimp
-	provides = gimp-plugin-resynthesizer=2.0
-	conflicts = gimp-resynth
-	conflicts = gimp-resynth-git
+	makedepends = meson
+	depends = gimp>=2.99
+	depends = python
+	depends = python-gobject
+	provides = gimp3-plugin-resynthesizer=2.0.3.r24.gecfc4e7
+	conflicts = gimp3-plugin-resynthesizer
 	options = !emptydirs
-	source = git+https://github.com/bootchk/resynthesizer#branch=master
-	md5sums = SKIP
+	source = git+https://github.com/bootchk/resynthesizer#branch=resynthesizer3
+	source = resynthesizer-0001-Fix-format-security-warning-in-debug.c.patch::https://github.com/bootchk/resynthesizer/pull/130.patch
+	b2sums = SKIP
+	b2sums = 35cc86808385984950bfa811d20422ba1082ecfb280f18ee42faa8b86b78e53b0cd354c818ac51efa15daab24190b864c08f8a6c8e821f079368a9fa6a319253
 
-pkgname = gimp-plugin-resynthesizer-git
+pkgname = gimp3-plugin-resynthesizer-git
