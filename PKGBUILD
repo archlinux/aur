@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your@email.com>
+# Maintainer: Cross Nastasi <cross@dill.moe>
 pkgname=paq8px-dill
 pkgver=1.0
 pkgrel=1
