@@ -1,11 +1,11 @@
 pkgbase = freefilesync
 	pkgdesc = Backup software to synchronize files and folders
 	pkgver = 13.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://freefilesync.org
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = custom
 	depends = wxwidgets-gtk3
 	noextract = FreeFileSync_13.5_Source.zip.1
 	source = FreeFileSync_13.5_Source.zip.1::https://freefilesync.org/download/FreeFileSync_13.5_Source.zip

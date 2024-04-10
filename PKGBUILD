@@ -2,22 +2,22 @@
 # Contributor: Michael Burkhard <Michael DOT Burkhard AT web DOT de>
 # Contributor: alexmo82 <25396682 AT live DOT it>
 # Contributor: Simon Brulhart <simon@brulhart.me>
-# Maintainer: jooch <jooch AT gmx DOT com>
+# Contributor: jooch <jooch AT gmx DOT com>
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=freefilesync
 pkgver=13.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
 url="https://freefilesync.org"
-license=(GPL3)
+license=(custom)
 depends=(wxwidgets-gtk3)
 source=(
     "FreeFileSync_${pkgver}_Source.zip.1::${url}/download/FreeFileSync_${pkgver}_Source.zip"
     "FreeFileSync_${pkgver}_Source.zip::${url}/download/FreeFileSync_${pkgver}_Source.zip"
-	FreeFileSync.desktop
-	RealTimeSync.desktop
+    FreeFileSync.desktop
+    RealTimeSync.desktop
 )
 noextract=("FreeFileSync_${pkgver}_Source.zip.1")
 sha256sums=('SKIP'
@@ -30,10 +30,11 @@ prepare() {
     sed -i 's|-2|-3|' FreeFileSync/Source/{Makefile,RealTimeSync/Makefile}
     sed -i 's|#error|//#error|' FreeFileSync/Source/{application.cpp,RealTimeSync/application.cpp} zen/{string_tools.h,globals.h}
     sed -i 's|::g_object_ref|g_object_ref|' FreeFileSync/Source/base/icon_loader.cpp
+    sed -i '/animalImg/s/^/\/\//' FreeFileSync/Source/ui/small_dlgs.cpp
 }
 
 build() {
-    MAKEFLAGS="-s -j`nproc`"
+    MAKEFLAGS="-j`nproc`"
     CXXFLAGS="$CXXFLAGS -DMAX_SFTP_READ_SIZE=30000 -DMAX_SFTP_OUTGOING_SIZE=30000"
     LDFLAGS="$LDFLAGS `pkg-config --libs gtk+-3.0`"
 
@@ -57,3 +58,4 @@ package() {
     install -Dm644 -t "$pkgdir/usr/share/pixmaps" FreeFileSync.png RealTimeSync.png
     install -Dm644 -t "$pkgdir/usr/share/applications" FreeFileSync.desktop RealTimeSync.desktop
 }
+# vim:set noet sts=0 sw=4 ts=4 ft=PKGBUILD:
