@@ -1,11 +1,11 @@
 pkgbase = emacs-haxe
 	pkgdesc = Emacs major mode for the haXe programming language
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://haxe.org/com/ide
 	install = emacs-haxe.install
 	arch = any
-	license = GPL
+	license = GPL-3.0-or-later
 	depends = emacs
 	source = https://raw.githubusercontent.com/emacsorphanage/haxe-mode/0.3.3/haxe-mode.el
 	md5sums = 9f322aa78c9fad5c390267e6c8b6a5d7

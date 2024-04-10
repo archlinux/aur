@@ -1,12 +1,13 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 # Contributor: Ismael Barros (RazZziel) <razielmine@gmail.com>
 pkgname=emacs-haxe
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Emacs major mode for the haXe programming language"
 arch=('any')
 url="http://haxe.org/com/ide"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('emacs')
 install=$pkgname.install
 #source=(http://people.debian.org/~jps/misc/haxe-mode.el)
