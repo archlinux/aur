@@ -2,7 +2,7 @@
 pkgname=minetest-git-dill
 pkgver=1.0
 pkgrel=1
-pkgdesc="Minetest from git"
+pkgdesc="Minetest from git. This version uses github and allows aur helper devel functions to work properly. Also the PKGBUILD script is much simpler."
 arch=('x86_64')
 url="https://github.com/minetest/minetest"
 license=('GPL')
