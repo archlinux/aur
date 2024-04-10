@@ -1,0 +1,7 @@
+type		= bgprocess
+command		= /usr/bin/opendkim -x /etc/opendkim/opendkim.conf -u opendkim -f
+pid-file	= /run/opendkim/opendkim.pid
+smooth-recovery	= true
+logfile		= /var/log/dinit/opendkim.log
+depends-on	= opendkim-pre
+run-as		= opendkim
