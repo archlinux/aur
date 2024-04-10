@@ -61,14 +61,14 @@ build() {
 }
 
 package() {
-    install -Dm644 completion.zsh "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
-    install -Dm644 completion.bash "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
-    install -Dm644 completion.fish "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+    install -Dm644 completion.zsh        "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+    install -Dm644 completion.bash       "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+    install -Dm644 completion.fish       "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
     install -Dm644 "${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
     install -Dm644 "${pkgname}@.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}@.service"
-    install -Dm644 -t "${pkgdir}/etc/${pkgname}" {master,server,client}.env
+    install -Dm644 *.env              -t "${pkgdir}/etc/${pkgname}"
 
     cd "${pkgname}-${pkgver}"
-    install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm755 "${pkgname}"          "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 README.md             "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
