@@ -4,7 +4,7 @@
 
 pkgname=python-libnacl
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple ctypes based python binding to libsodium'
 arch=('any')
 url='https://libnacl.readthedocs.org'

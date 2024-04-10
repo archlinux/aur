@@ -1,7 +1,7 @@
 pkgbase = python-libnacl
 	pkgdesc = A simple ctypes based python binding to libsodium
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libnacl.readthedocs.org
 	arch = any
 	license = Apache
