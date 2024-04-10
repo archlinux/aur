@@ -1,6 +1,6 @@
 pkgbase = gx-isptool-git
 	pkgdesc = GX (感芯科技) 芯片下载工具，用于连接USB给GX芯片下载固件/调试固件，持续开发中，欢迎支持~
-	pkgver = r17.31e6a85
+	pkgver = r18.e367e66
 	pkgrel = 1
 	url = https://gitee.com/gxchip/GX_ISPTool
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = gx-isptool-git
 	depends = qt5-base
 	provides = gx-isptool
 	conflicts = gx-isptool
-	source = gx-isptool-git::git+https://gitee.com/taotieren/GX_ISPTool.git
+	source = gx-isptool-git::git+https://gitee.com/gxchip/GX_ISPTool.git
 	sha256sums = SKIP
 
 pkgname = gx-isptool-git
