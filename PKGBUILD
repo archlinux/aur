@@ -3,14 +3,13 @@
 _pkgname=similaRpeak
 _pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
-pkgrel=1
-pkgdesc='Metrics to estimate a level of similarity between two ChIP-Seq profiles'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Metrics to estimate a level of similarity between two ChIP-Seq profiles"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
-  r
   r-r6
 )
 optdepends=(
@@ -24,14 +23,15 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('52e018f0d5cd9960cf3cff9cbbb1417c8f49f25b5ebcd44c1176a37d00cb36f1')
+md5sums=('3d91ba41941b12c9f93e77872e444c4d')
+b2sums=('d748dfef78a3a31c7e3d1f55b3baf96156548f60aeffb6ac5f1bd12ce6da6332cb63c7cea83618d2241046cb496f786833d9864d1d75ab3636fdd6b1539dd45c')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
