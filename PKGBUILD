@@ -1,0 +1,22 @@
+# Maintainer: Cross Nastasi <cross@dill.moe>
+pkgname=llama.cpp-cuda-git-fast
+pkgver=1.0
+pkgrel=1
+pkgdesc="llama.cpp main and server binaries with cuda support compiled from source. It builds with all available cores + 1 for optimal performance. Binaries are called 'lcpp-main' and 'lcpp-server' as to not conflict with packages that may already be using those general names for their binaries."
+arch=('x86_64')
+url="https://github.com/ggerganov/llama.cpp"
+license=('GPL')
+depends=('cuda' 'mingw-w64-binutils' 'gcc' 'make' 'git')
+source=("git+${url}.git")
+md5sums=('SKIP')
+
+build() {
+  cd "${srcdir}/llama.cpp"
+  env -i PATH="$PATH" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" CUDA_PATH="$CUDA_PATH" CUDA_HOME="$CUDA_HOME" make main server -j$(( $(nproc) + 1 )) LLAMA_CUDA=1
+}
+
+package() {
+  cd "${srcdir}/llama.cpp"
+  install -D -m755 main "${pkgdir}/usr/bin/lcpp-main"
+  install -D -m755 server "${pkgdir}/usr/bin/lcpp-server"
+}
