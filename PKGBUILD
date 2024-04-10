@@ -10,7 +10,6 @@ provides=("${_pkgname}")
 arch=("x86_64")
 url="https://bellard.org/${_pkgname}"
 license=("MIT")
-depends=("ffmpeg")
 optdepends=("cuda: for --cuda options support")
 source=("${_pkgname}-${_pkgver}.tar.gz::${url}/${_pkgname}-${_pkgver}.tar.gz"
         "${_pkgname}")
@@ -32,6 +31,6 @@ package() {
     install -Dm755 -t "${pkgdir}/usr/bin"                        "${_pkgname}"
 
     cd "${_pkgname}-${_pkgver}"
-    install -Dm755 -t "${pkgdir}/usr/lib/${_pkgname}" "${_pkgname}" *.so*
-    install -Dm644 -t "${pkgdir}/usr/share/${_pkgname}" *.bin
+    install -Dm755 -t "${pkgdir}/usr/lib/${_pkgname}"            "${_pkgname}" *.so*
+    install -Dm644 -t "${pkgdir}/usr/share/${_pkgname}"          *.bin
 }
