@@ -4,10 +4,9 @@ pkgbase = ap-rename
 	pkgrel = 1
 	url = http://plasmasturm.org/code/rename
 	arch = any
-	license = PerlArtistic
+	license = Artistic-1.0
 	depends = perl
 	source = https://github.com/ap/rename/archive/v1.601.tar.gz
 	sha384sums = a3cc071fd4be319b0fc526d682bc920a6b1b03656356feb5a49fef4bd1881a919d82661eb5b7277cd66c448399d57181
 
 pkgname = ap-rename
-
