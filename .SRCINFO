@@ -1,6 +1,6 @@
 pkgbase = mineclone2-git-dill
 	pkgdesc = Voxel-based sandbox game for Minetest. This package has been modified to work with the minetest-git-dill package.
-	pkgver = r12018.a3db7bd50
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/MineClone2/MineClone2
 	install = installfile

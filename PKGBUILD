@@ -1,7 +1,7 @@
 # Maintainer: Cross Nastasi <cross@dill.moe>
 
 pkgname=mineclone2-git-dill
-pkgver=r12018.a3db7bd50
+pkgver=1.0
 pkgrel=1
 pkgdesc="Voxel-based sandbox game for Minetest. This package has been modified to work with the minetest-git-dill package."
 arch=(any)
@@ -11,11 +11,6 @@ depends=(minetest-git-dill git)
 source=(git+"${url}".git)
 md5sums=('SKIP')
 install=installfile
-
-pkgver() {
-  cd "${srcdir}/MineClone2"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 package() {
     install -d "$pkgdir/usr/share/minetest/games"
