@@ -8,7 +8,7 @@ _pkgname=${_pkgbase}
 
 pkgname=${_pkgname}-git
 pkgver=r3689.30ccad30
-pkgrel=2
+pkgrel=3
 pkgdesc="Fork of sm64ex-coop with more features, customizability and power to the Lua API."
 arch=("x86_64" "i686" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/coop-deluxe/${_pkgbase}"
@@ -57,9 +57,10 @@ package() {
   install -Dm0644 ${_pkgbase}/build/${_sm64ver}_pc/libdiscord_game_sdk.so "${pkgdir}/usr/share/${_pkgname}/libdiscord_game_sdk.so"
   install -Dm0644 ${_pkgbase}/build/${_sm64ver}_pc/libbass.so "${pkgdir}/usr/share/${_pkgname}/libbass.so"
   install -Dm0644 ${_pkgbase}/build/${_sm64ver}_pc/libbass_fx.so "${pkgdir}/usr/share/${_pkgname}/libbass_fx.so"
-  #install -Dm0644 ${_pkgbase}/build/${_sm64ver}_pc/discord_game_sdk.so "${pkgdir}/usr/share/${_pkgname}/discord_game_sdk.so"
   install -Dm0644 ${_pkgbase}/build/${_sm64ver}_pc/lang/* -t ${pkgdir}/usr/share/${_pkgname}/lang/
-
+  # Install Mods and DynOS Packs
+  (cd ${_pkgbase}/build/${_sm64ver}_pc/ && find dynos -type f -exec install -Dm 755 "{}" ${pkgdir}/usr/share/${_pkgname}/"{}" \;)
+  (cd ${_pkgbase}/build/${_sm64ver}_pc/ && find mods -type f -exec install -Dm 755 "{}" ${pkgdir}/usr/share/${_pkgname}/"{}" \;)
   # Install desktop entry
   install -Dm0644 ${_pkgname}.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
   install -Dm0644 ${_pkgname}.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
