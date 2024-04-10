@@ -23,18 +23,20 @@ sha256sums=('d17566bc840534f4a1b1223d0d2332ab6b98e8c94f02ce1e941186b7cc67c484'
             'b37977d867e54bb4b7ddf2fb3a228f282419e803d8c42a1d7f833037d40d2b52')
 
 build() {
-    cd "${_reponame}-${pkgver}"
     local ldflags=" -s -w -extldflags '${LDFLAGS}'"
+    
+    cd "${_reponame}-${pkgver}"
     go build -trimpath -ldflags "${ldflags}" -o "${pkgname}"
 }
 
 package() {
-    install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-    install -Dm644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-    install -Dm644 "${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+    install -Dm644 "${pkgname}.service"      "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    install -Dm644 "${pkgname}.sysusers"     "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+    install -Dm644 "${pkgname}.tmpfiles"     "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
     install -Dm644 "${pkgname}.user.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
 
     cd "${_reponame}-${pkgver}"
-    install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm755 "${pkgname}"              "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 LICENSE                   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 *.md                   -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
