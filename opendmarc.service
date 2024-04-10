@@ -1,0 +1,6 @@
+type			= process
+command			= /usr/bin/opendmarc -c /etc/opendmarc/opendmarc.conf -f
+smooth-recovery	= true
+logfile			= /var/log/dinit/opendmarc.log
+depends-on		= opendmarc-pre
+run-as			= opendmarc
