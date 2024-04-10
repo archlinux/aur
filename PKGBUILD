@@ -31,8 +31,10 @@ package() {
     install -Dm644 "${_pkgname,,}.desktop" "${pkgdir}/usr/share/applications/${_pkgname,,}.desktop"
     install -Dm644 "${_pkgname,,}.png"     "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname,,}.png"
     install -dm755 "${pkgdir}/"{opt,usr/bin}
-    cp --preserve=mode -r "${_pkgname}" "${pkgdir}/opt/${_pkgname,,}"
+
+    cp --preserve=mode -r "${_pkgname}"    "${pkgdir}/opt/${_pkgname,,}"
+
     ln -s "/opt/${_pkgname,,}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname,,}"
-    ln -s /usr/lib/jvm/default "${pkgdir}/opt/${_pkgname,,}/jre"
-    ln -s /usr/bin/ffmpeg "${pkgdir}/opt/${_pkgname,,}/native/linux/addons/ffmpeg"
+    ln -s /usr/lib/jvm/default             "${pkgdir}/opt/${_pkgname,,}/jre"
+    ln -s /usr/bin/ffmpeg                  "${pkgdir}/opt/${_pkgname,,}/native/linux/addons/ffmpeg"
 }
