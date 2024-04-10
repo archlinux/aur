@@ -1,6 +1,6 @@
 pkgbase = terminusdm
 	pkgdesc = Terminal download manager with a TUI
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/sumoduduk/terminusdm
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = terminusdm
 	makedepends = cargo
 	depends = gcc-libs
 	depends = openssl
-	source = terminusdm-1.0.1.tar.gz::https://github.com/sumoduduk/terminusdm/archive/v1.0.1.tar.gz
-	sha256sums = 4d4de440fb79fd48089b567d0e6acdd61626745be00583c617a72b0b6036a0b2
+	source = terminusdm-1.0.2.tar.gz::https://github.com/sumoduduk/terminusdm/archive/v1.0.2.tar.gz
+	sha256sums = 07ed948ec82932ddddc37808039251e952ab60d8e23b2ee4423139c4f45784fb
 
 pkgname = terminusdm
