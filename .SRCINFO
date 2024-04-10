@@ -1,13 +1,13 @@
 pkgbase = r-longitudinal
 	pkgdesc = Analysis of Multiple Time Course Data
 	pkgver = 1.1.13
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=longitudinal
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-3.0-or-later
 	depends = r-corpcor
 	source = https://cran.r-project.org/src/contrib/longitudinal_1.1.13.tar.gz
-	sha256sums = 57f04a0f387c1cc30d2feb945dc3ed35d2a304d94d21d3bc2cac8c92571fdc10
+	md5sums = ac7842e3fa9e4f5a5a1ce49c66a20317
+	b2sums = 167bbfce334bdb1dab22faa15ae20ff178e7ceaf955e0455cfe7dc39d64801baebe407a10b718590778334f9c8f7a15fb0d2233a1c52a65a0a396082420419af
 
 pkgname = r-longitudinal
