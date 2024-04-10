@@ -1,8 +1,8 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=python-anthropic
 _pkgname=anthropic-sdk-python
-pkgver=0.23.1
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="Python library that provides convenient access to the Anthropic REST API"
 arch=(any)
@@ -42,7 +42,7 @@ source=(
   "fix-pytest-asyncio-usage.patch"
 )
 sha256sums=(
-  '7bc7e2114899e2ae65c49676db72997fed372dedfdbd1a309b5f3ac96358b3b9'
+  '837537950ac5734dbfb3ab00c398c1d50e24acc91f1428ea0ce50fed7126c211'
   '9058cc717a6e8eebba65d9735e7376f9d1a024f0e4a2635b96278e6a39b31e01'
 )
 
