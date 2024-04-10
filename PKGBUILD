@@ -3,14 +3,13 @@
 _pkgname=lgr
 _pkgver=0.4.4
 pkgname=r-${_pkgname,,}
-pkgver=0.4.4
-pkgrel=1
-pkgdesc='A Fully Featured Logging Framework'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
+pkgver=${_pkgver//-/.}
+pkgrel=3
+pkgdesc="A Fully Featured Logging Framework"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
 license=('MIT')
 depends=(
-  r
   r-r6
 )
 optdepends=(
@@ -29,21 +28,22 @@ optdepends=(
   r-rprojroot
   r-testthat
   r-tibble
-  r-tools
-  r-utils
   r-whoami
   r-yaml
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8c4011e34fa1ca42df88f64028e90c4ef9ce76c0e133eac1052c30cb0cdfa127')
+md5sums=('0804a98afca9506aab1ea2cde5db7c8a')
+b2sums=('189b16dda16e14af967f053506c9be341cd691e8bd7e17fa19223260e92687cd6e40abee16f161aaccc7a1dd9089176541897bcf87aec3cd5f1f84b31eb329df')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
