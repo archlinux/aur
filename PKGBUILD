@@ -3,7 +3,7 @@
 
 pkgname=netradiant-custom
 pkgver=20240309
-pkgrel=2
+pkgrel=3
 pkgdesc="The open-source, cross-platform level editor for id Tech based games (NetRadiant fork)"
 url="https://garux.github.io/NRC/"
 depends=('bash' 'gcc-libs' 'glib2' 'glibc' 'libjpeg-turbo' 'libpng' 'libxml2' 'qt5-base' 'zlib')
@@ -23,7 +23,9 @@ build () {
 	export CXXFLAGS+=" -Wp,-U_GLIBCXX_ASSERTIONS"
 
 	cd "${srcdir}/${pkgname}/"
-	make
+	make \
+	RADIANT_ABOUTMSG="NetRadiant-custom ${pkgver}" \
+	DOWNLOAD_GAMEPACKS=yes # free gamepacks only, set to "all" for free + proprietary gamepacks
 }
 
 package () {
