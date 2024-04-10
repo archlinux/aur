@@ -1,7 +1,7 @@
 pkgbase = discord-electron
 	pkgdesc = Discord using system provided electron (v29) for increased security and performance
 	pkgver = 0.0.49
-	pkgrel = 1
+	pkgrel = 2
 	url = https://discord.com
 	install = discord-electron.install
 	arch = x86_64

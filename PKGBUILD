@@ -14,7 +14,7 @@
 pkgname=discord-electron
 _pkgname=discord
 pkgver=0.0.49
-pkgrel=1
+pkgrel=2
 _electronver=29
 _electronname="electron${_electronver}"
 pkgdesc="Discord using system provided electron (v${_electronver}) for increased security and performance"
@@ -62,7 +62,7 @@ build() {
 	# use system electron
 	asar e resources/app.asar resources/app
 	rm resources/app.asar
-	sed -i -e "/resourcesPath = .*;$/d" -e "s|return resourcesPath|return '/usr/lib/${_pkgname}'|" resources/app/common/paths.js
+	sed -i -e "/resourcesPath = .*;$/d" -e "s|return resourcesPath|return '/usr/lib/${_pkgname}/resources'|" resources/app/common/paths.js
 	sed -i -e "s|process.resourcesPath|'/usr/lib/${_pkgname}/resources'|" resources/app/app_bootstrap/buildInfo.js
 	sed -i -e "/^const appName/d" -e "/^const exePath/d" -e "/^const exeDir/d" -e "/^const iconPath/d" \
 		-e "s|^Exec=\${exePath}$|Exec=/usr/bin/${_pkgname}|" \
