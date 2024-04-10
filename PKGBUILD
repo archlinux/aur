@@ -1,7 +1,7 @@
 # Maintainer: Mikhail f. Shiryaev <mr dot felixoid at gmail dot com>
 
 pkgname=clickhouse-lts
-pkgver=24.3.1.2672
+pkgver=24.3.2.23
 pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time. LTS version'
 arch=('x86_64' 'aarch64')
@@ -32,14 +32,14 @@ source_aarch64=(
 #   echo ')'
 # done
 sha256sums_x86_64=(
-  c79aa05634d19d1b97df10f53fadd9f2529294b022d3bafd9d5405c88b782e61
-  8ddae9c9591d8dedef983600ce2594d8c4330d809ddac11f675284be7616b3b0
-  f91a7937d22052f89d1262b5977c839c28438ee3e96cb11252fb753a773427af
+  729fdcada20d292354c2e8447be40c78ddeb71773a9db45553c54c54d23a7e63
+  f8e00258949166f982b2d65f7340150cc3a12c0ba185114594dedaec792cec8e
+  2554a5bc4e17dc2a569dd9285f116e743685e122422e0baefc414cbd92d2f0af
 )
 sha256sums_aarch64=(
-  9637bdffe997a77fe6223859c48391dc04bf1f375f90874d6b1261ba95d3ba98
-  d01c384178933b5cdda635f343f433da698d85738ecf50ae05210341d337ae14
-  6458db0ca14d32ce8ac88d0974027d23262781b2f0da1334c64f80548d5568a7
+  18f6902e2d28b221143c161bdd2ea20cf79afa74bc4e457ee26d7b9afe85a2eb
+  cb6aad4465783b19ffea5952faec87831a3aa8d9ffdda370883787481d3919cc
+  bb2d3653a4eeac6598bb80ce0baa8656f471ec17350048b99733337a40439361
 )
 _noextract_x86_64=(
   clickhouse-client_"${pkgver}"_amd64.deb
