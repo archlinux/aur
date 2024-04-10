@@ -4,11 +4,11 @@ pkgbase = reader-server
 	pkgrel = 1
 	url = https://github.com/hectorqin/reader
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	depends = java-runtime-headless>=8
 	backup = etc/reader-server/reader-server.env
 	backup = etc/reader-server/application.properties
-	source = https://github.com/hectorqin/reader/releases/download/v3.2.7/reader-server-3.2.7.zip
+	source = reader-server-3.2.7.zip::https://github.com/hectorqin/reader/releases/download/v3.2.7/reader-server-3.2.7.zip
 	source = reader-server.env
 	source = reader-server.service
 	source = reader-server.sysusers

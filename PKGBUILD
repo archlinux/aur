@@ -6,10 +6,10 @@ pkgrel=1
 pkgdesc="Book Reader Server | 阅读3服务器版"
 arch=('any')
 url="https://github.com/hectorqin/${pkgname%-*}"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 backup=("etc/${pkgname}/${pkgname}.env" "etc/${pkgname}/application.properties")
 depends=("java-runtime-headless>=8")
-source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.zip"
+source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.zip"
         "${pkgname}.env"
         "${pkgname}.service"
         "${pkgname}.sysusers"
@@ -21,10 +21,10 @@ sha256sums=('9593408b1244fd6be41cdf9bfca69c7f2e95b6ca0cbfa07588723228c16d8f4c'
             '4a3fa6b192b80c4e10052634e8b0d9a5aabd9268014c09876b6228f403ac2d35')
 
 package() {
-    install -Dm644 "${pkgname}.env" "${pkgdir}/etc/${pkgname}/${pkgname}.env"
-    install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-    install -Dm644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-    install -Dm644 "${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+    install -Dm644 "${pkgname}.env"              "${pkgdir}/etc/${pkgname}/${pkgname}.env"
+    install -Dm644 "${pkgname}.service"          "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    install -Dm644 "${pkgname}.sysusers"         "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+    install -Dm644 "${pkgname}.tmpfiles"         "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
     install -Dm644 "conf/application.properties" "${pkgdir}/etc/${pkgname}/application.properties"
-    install -Dm644 "target/"*.jar "${pkgdir}/usr/share/java/${pkgname}.jar"
+    install -Dm644 "target/"*.jar                "${pkgdir}/usr/share/java/${pkgname}.jar"
 }
