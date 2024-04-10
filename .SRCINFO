@@ -1,0 +1,15 @@
+pkgbase = paq8px-dill
+	pkgdesc = paq8px compressor program without filesize limitation
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://github.com/dillfrescott/paq8px
+	arch = x86_64
+	license = GPL
+	depends = gcc
+	depends = cmake
+	depends = make
+	depends = git
+	source = git+https://github.com/dillfrescott/paq8px.git
+	md5sums = SKIP
+
+pkgname = paq8px-dill
