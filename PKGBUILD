@@ -1,6 +1,8 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=emacs-moonscript-mode
 pkgver=r39.56f9047
+_commit=56f90471e2ced2b0a177aed4d8c2f854797e9cc7
 pkgrel=1
 pkgdesc="Emacs major mode for the MoonScript programming language"
 arch=('any')
@@ -9,7 +11,7 @@ license=('MIT')
 depends=('emacs')
 makedepends=('git')
 install=$pkgname.install
-source=('git+https://github.com/k2052/moonscript-mode.git')
+source=("git+https://github.com/k2052/moonscript-mode.git#commit=${_commit}")
 md5sums=('SKIP')
 _pkgname=${pkgname#emacs-}
 
