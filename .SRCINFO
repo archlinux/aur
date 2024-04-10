@@ -1,11 +1,12 @@
 pkgbase = ibus-pinyin
 	pkgdesc = Pinyin (Chinese) input method for the IBus framework
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ibus/ibus-pinyin/
 	arch = x86_64
 	license = GPL
 	makedepends = intltool
+	makedepends = gnome-common
 	depends = ibus
 	depends = pyzy
 	depends = lua
