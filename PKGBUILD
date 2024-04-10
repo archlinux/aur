@@ -13,7 +13,7 @@ depends=(
 	'hicolor-icon-theme>=0.17-1'
 	'qt5-multimedia>=5.14.1-1'
 	'qt5-webkit>=5.212.0alpha4-1'
-	'taglib>=1.11.1-3'
+	'taglib1>=1.13.1-2'
 	)
 makedepends=()
 checkdepends=()
