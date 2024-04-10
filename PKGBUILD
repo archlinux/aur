@@ -3,7 +3,7 @@
 _pkgname='histoprint'
 pkgname="python-${_pkgname}"
 pkgver='2.4.0'
-pkgrel=2
+pkgrel=3
 pkgdesc="Pretty print Numpy (and other) histograms to the console."
 arch=('any')
 url='https://github.com/scikit-hep/histoprint'
