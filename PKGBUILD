@@ -9,7 +9,7 @@
 pkgname=home-assistant-git
 pkgdesc='Open source home automation that puts local control and privacy first'
 pkgver=2024.4.2
-pkgrel=3
+pkgrel=4
 arch=(any)
 url=https://home-assistant.io/
 license=(APACHE)
