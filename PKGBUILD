@@ -50,7 +50,7 @@ makedepends=(
     vulkan-headers
     wayland-protocols
 )
-_tag=3.14.2-sk-4
+_tag=3.14.2-sk-5
 # _branch="wayland-backend"
 source=("git+https://github.com/3003n/gamescope.git#tag=${_tag}"
         "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a"
