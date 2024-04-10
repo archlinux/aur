@@ -1,13 +1,13 @@
 pkgbase = r-sagenhaft
 	pkgdesc = Collection of functions for reading and comparing SAGE libraries
 	pkgver = 1.72.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/sagenhaft
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-2.0-or-later
 	depends = r-sparsem
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/sagenhaft_1.72.0.tar.gz
-	sha256sums = 5b833759e7997e0218108bfd3e6fb4a540d13e630a7b8012358371c4a5588c05
+	md5sums = 4f27450a0e98b4f0f7396a784eb0e4e3
+	b2sums = 43f4fb5d8911aa198667ced7508948b2bb9053f51b28f9b4db6da6d719995a554adda8b0ba5bf64d782408d369da9892d3e918f1ba8539acdef469acf414db11
 
 pkgname = r-sagenhaft

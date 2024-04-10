@@ -3,25 +3,25 @@
 _pkgname=sagenhaft
 _pkgver=1.72.0
 pkgname=r-${_pkgname,,}
-pkgver=1.72.0
-pkgrel=1
-pkgdesc='Collection of functions for reading and comparing SAGE libraries'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Collection of functions for reading and comparing SAGE libraries"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-sparsem
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5b833759e7997e0218108bfd3e6fb4a540d13e630a7b8012358371c4a5588c05')
+md5sums=('4f27450a0e98b4f0f7396a784eb0e4e3')
+b2sums=('43f4fb5d8911aa198667ced7508948b2bb9053f51b28f9b4db6da6d719995a554adda8b0ba5bf64d782408d369da9892d3e918f1ba8539acdef469acf414db11')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
