@@ -116,7 +116,7 @@ _local_qt_repo="${local_qt_repo}"
 _pkgvermajmin="6.7"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
-_dev_suffix="beta2"
+_dev_suffix=""
 pkgrel=1
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_local_src_tree && pkgver=6.6.6
@@ -172,7 +172,7 @@ makedepends=("git" "pkgconfig" "gcc" "gperf" "python" "clang" "cmake" "ninja" "l
 #_provider=http://qt.mirror.constant.com/
 _provider=https://download.qt.io
 source=()
-sha256sums=('f69407d23486e92e178a0770c2d934491ae63b6ddbdb5a58317c982badba34ac')
+sha256sums=('bf5089912364f99cf9baf6c109de76a3172eec6267f148c69800575c47f90087')
 conflicts=('litehtml')
 
 if ! $_build_from_local_src_tree; then
@@ -206,12 +206,13 @@ build() {
 	set -o pipefail
 	set -o errexit
 
-  local _srcdir="${srcdir}/${_source_package_name}"
-
-  local _basedir="${_srcdir}/qtbase"
-
+	local _srcdir="${srcdir}/${_source_package_name}"
+	local _basedir="${_srcdir}/qtbase"
+	local _webenginedir="${_srcdir}/qtwebengine"
 	local additional_args=""
 
+	# a pig; I build on tmpfs so I dont need its bulk
+	rm -Rf ${_webenginedir}
   cd ${_build_path}
 
 for i in ${BUILDENV[@]}; do
@@ -245,7 +246,7 @@ done
                                 -GNinja \
 				-DINPUT_opengl=es2 \
 				-DFEATURE_optimize_full=ON \
-				-DFEATURE_lttng=ON \
+				-DFEATURE_lttng=OFF \
 				-DFEATURE_widgets=OFF \
                                 -DCMAKE_BUILD_TYPE=RelWithDebInfo \
                                 -DFEATURE_separate_debug_info=ON \
