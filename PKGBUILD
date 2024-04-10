@@ -1,6 +1,6 @@
 # Maintainer: Cross Nastasi <cross@dill.moe>
 pkgname=llama.cpp-cuda-git-fast
-pkgver=1.0
+pkgver=r2644.65c64dc36
 pkgrel=1
 pkgdesc="llama.cpp main and server binaries with cuda support compiled from source. It builds with all available cores + 1 for optimal performance."
 arch=('x86_64')
@@ -9,6 +9,11 @@ license=('GPL')
 depends=('cuda' 'mingw-w64-binutils' 'gcc' 'make' 'git')
 source=("git+${url}.git")
 md5sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/llama.cpp"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
   cd "${srcdir}/llama.cpp"

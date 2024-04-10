@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-cuda-git-fast
 	pkgdesc = llama.cpp main and server binaries with cuda support compiled from source. It builds with all available cores + 1 for optimal performance.
-	pkgver = 1.0
+	pkgver = r2644.65c64dc36
 	pkgrel = 1
 	url = https://github.com/ggerganov/llama.cpp
 	arch = x86_64
