@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+if [[ $# -ge 3 && $1 != "--help" && $1 != "-h" ]]; then
+    input_file=$(realpath "${@:$#-1:1}")
+    output_file=$(realpath "${!#}")
+    other_args="${@:1:$#-2}"
+
+    if [[ ! -f "$input_file" ]]; then
+        echo "file \"$input_file\" not found..."
+        exit 1
+    fi
+
+    cd /opt/tsac || exit 2
+    ./tsac $other_args "$input_file" "$output_file"
+else
+    cd /opt/tsac || exit 2
+    ./tsac "$@"
+fi

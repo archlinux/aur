@@ -1,13 +1,16 @@
 pkgbase = tsac-bin
 	pkgdesc = Very Low Bitrate Audio Compression
 	pkgver = 2024.04.08
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bellard.org/tsac
 	arch = x86_64
 	license = MIT
-	optdepends = nvidia-libgl: for CUDA support
+	depends = ffmpeg
+	optdepends = cuda: for --cuda options support
 	provides = tsac
 	source = tsac-2024-04-08.tar.gz::https://bellard.org/tsac/tsac-2024-04-08.tar.gz
+	source = tsac
 	sha256sums = 6adfb6b340d118ac47f093dc07db6ace97ac00fc7b387635b1958d919ecfb05d
+	sha256sums = c23587fa6f5778db466bdf0ade6e4808d2c6eaf3c581b3ca1a6b884a6805fae8
 
 pkgname = tsac-bin
