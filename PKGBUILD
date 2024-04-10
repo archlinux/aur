@@ -5,7 +5,7 @@ pkgname=(
 #  'ctranslate2-docs'
 )
 pkgbase=ctranslate2
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="A C++ and Python library for efficient inference with Transformer models."
 arch=('x86_64')
@@ -22,21 +22,21 @@ makedepends=(
   'pybind11'
   'python-build'
   'python-installer'
-#  'python-myst-parser' # docs
+#  'python-myst-parser'  ## docs
   'python-setuptools'
-#  'python-sphinx' # docs
-#  'python-sphinx_rtd_theme' # docs
+#  'python-sphinx'  ## docs
+#  'python-sphinx_rtd_theme'  ## docs
   'python-wheel'
 )
 #checkdepends=(
-#  'python-opennmt-tf'  # TODO
+#  'python-opennmt-tf'  ## TODO
 #  'python-numpy'
 #  'python-pytest'
 #  'python-pytorch'
 #  'python-yaml'
 #)
-options=('!lto')  # lto-wrapper fails with CUDA options enabled
-_commit=27092e4f3c8f23534a3ba2b5d2d35b048fa40ddf  # tags/4.1.0^0
+options=('!lto')  ## lto-wrapper fails with CUDA options enabled
+_commit=e491a5146c88e61a91da132043aced8e606a0859  # tags/v4.2.0^0
 source=("git+https://github.com/OpenNMT/CTranslate2.git#commit=$_commit"
         'git+https://github.com/jarro2783/cxxopts.git'
         'git+https://github.com/NVIDIA/thrust.git'
@@ -46,7 +46,7 @@ source=("git+https://github.com/OpenNMT/CTranslate2.git#commit=$_commit"
         'git+https://github.com/google/ruy.git'
         'git+https://github.com/pytorch/cpuinfo.git'
         'git+https://github.com/NVIDIA/cub.git')
-sha256sums=('SKIP'
+sha256sums=('42597a2174e3a49b35bb12a9d0aecba7f8193f8c45bc6174e07431d1259dc3bd'
             'SKIP'
             'SKIP'
             'SKIP'
