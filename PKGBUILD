@@ -3,14 +3,13 @@
 _pkgname=data.tree
 _pkgver=1.1.0
 pkgname=r-${_pkgname,,}
-pkgver=1.1.0
-pkgrel=1
-pkgdesc='General Purpose Hierarchical Data Structure'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="General Purpose Hierarchical Data Structure"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-r6
   r-stringi
 )
@@ -20,9 +19,7 @@ optdepends=(
   r-doparallel
   r-foreach
   r-formula
-  r-graphics
   r-htmlwidgets
-  r-igraph
   r-jsonlite
   r-knitr
   r-mockery
@@ -30,20 +27,20 @@ optdepends=(
   r-party
   r-partykit
   r-rmarkdown
-  r-rpart
   r-testthat
   r-treemap
   r-yaml
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b0b554e9220f7abeb8e40af7617802509bf49aa4b2b58882330cde54c20bad63')
+md5sums=('2cb316683cdf181900d26e49b69d7f79')
+b2sums=('a04a96ae2d95db3a8ff678c45f06ee9a0747e6767d2d6f06c4bb90487d440f7f2d1d4b1c2f2ad7ec11dcedfc2c81debf0afaa00a805cdf29a2189290493e25dd')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
