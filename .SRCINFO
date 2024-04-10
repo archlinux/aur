@@ -1,7 +1,7 @@
 pkgbase = python-doublex-expects
 	pkgdesc = Expects matchers for Doublex test doubles assertions
 	pkgver = 0.7.1
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/jaimegildesagredo/doublex-expects
 	arch = any
 	license = Apache
