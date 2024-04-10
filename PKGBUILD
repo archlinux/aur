@@ -14,8 +14,8 @@ source=("${pkgname}::git+${url}"
         "${pkgname}.tmpfiles")
 sha256sums=('SKIP'
             '6e1e437b71fcfe19e542254181d39eb479e16fea5fcaf5d1179d7ec8cd176520'
-            'c27f0a22e15483e44ae48001e0f8e9564574115ec7688488f2f2e6265745be1f'
-            '3b954e17e81121da378921b29e86eed4aea77e0788e13c9c28d202340eb6d0c6')
+            '74636a75d9e2837db2441805c50117def6f63dc7671ea3ff83c12361d246650d'
+            '35defea40aa4a403e07f9cd4474479a41cabc306b8c0f29192cd39f77f76e4f9')
 options=(!strip)
 
 pkgver() {
