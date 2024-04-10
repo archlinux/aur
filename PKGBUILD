@@ -3,28 +3,28 @@
 _pkgname=assertive.numbers
 _pkgver=0.0-2
 pkgname=r-${_pkgname,,}
-pkgver=0.0.2
-pkgrel=4
-pkgdesc='Assertions to Check Properties of Numbers'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Assertions to Check Properties of Numbers"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-or-later')
 depends=(
-  r
   r-assertive.base
 )
 optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bae18c0b9e5b960a20636e127eb738ecd8a266e5fc29d8bc5ca712498cd68349')
+md5sums=('94eead383227d15353b9629305c7269a')
+b2sums=('a02c6c3b03bb7016fda7ede441c9e4149ccb661d9a0b163511aa1f86b33257273a07a10acadbb3f99225e8ae40cf1fbdee084d4d30f775b2b85dbb184a42ce75')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
