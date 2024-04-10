@@ -1,5 +1,5 @@
 pkgbase = python-niaaml-gui
-	pkgdesc = Python automated machine learning framework
+	pkgdesc = GUI for NiaAML Python package
 	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/firefly-cpp/NiaAML-GUI
