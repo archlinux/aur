@@ -1,0 +1,3 @@
+d /etc/stalwart 0750 stalwart stalwart - -
+f /etc/stalwart/config.toml 0640 stalwart stalwart - -
+d /var/lib/stalwart 0750 stalwart stalwart - -

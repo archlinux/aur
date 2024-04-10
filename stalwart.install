@@ -1,0 +1,17 @@
+post_install(){
+ cat <<INFO
+
+To complete the installation of Stalwart, create an admin password with
+
+    openssl passwd -6
+
+Then copy the hash to /etc/stalwart/config.toml as the fallback admin secret.
+
+Once done, start the server by running:
+
+    sudo systemctl start stalwart.service
+    
+and login from the web interface at https://localhost:443/ to access the administrator panel.
+
+INFO
+}
