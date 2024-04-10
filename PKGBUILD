@@ -3,28 +3,28 @@
 _pkgname=assertive.matrices
 _pkgver=0.0-2
 pkgname=r-${_pkgname,,}
-pkgver=0.0.2
-pkgrel=4
-pkgdesc='Assertions to Check Properties of Matrices'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Assertions to Check Properties of Matrices"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-or-later')
 depends=(
-  r
   r-assertive.base
 )
 optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3462a7a7e11d7cc24180330d48cc3067cf92eab1699b3e4813deec66d99f5e9b')
+md5sums=('5602be5710fd1f9faae8ca638b490d4c')
+b2sums=('a5b066662c6f08447c51b82e4f941e58836a5140eccf9a48a4c20309654ea76ee0195ea5099f0c0b75cb5dcacd5b709ec9e98acee5f99a545997fa2132c6e930')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
