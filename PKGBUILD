@@ -87,8 +87,8 @@ package_dotnet-sdk-bin() {
     'dotnet-targeting-pack-bin'
     'netstandard-targeting-pack-bin')
   optdepends=('aspnet-targeting-pack-bin: Build ASP.NET Core applications')
-  provides=("dotnet-sdk-bin" "dotnet-sdk=${pkgver}" "dotnet-sdk-${_short_ver}" "dotnet-sdk-${_short_ver}=${pkgver}")
-  conflicts=("dotnet-sdk-bin" "dotnet-sdk=${pkgver}" "dotnet-sdk-${_short_ver}" "dotnet-sdk-${_short_ver}=${pkgver}")
+  provides=("dotnet-sdk-bin" "dotnet-sdk=${pkgver}" "dotnet-sdk-${_short_ver}=${pkgver}")
+  conflicts=("dotnet-sdk-bin" "dotnet-sdk=${pkgver}" "dotnet-sdk-${_short_ver}")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
   cp -dr --no-preserve='ownership' sdk sdk-manifests templates "${pkgdir}"/usr/share/dotnet/
