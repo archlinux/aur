@@ -1,0 +1,18 @@
+pkgbase = python-sepaxml
+	pkgdesc = SEPA Direct Debit XML generation in python
+	pkgver = 2.6.1
+	pkgrel = 2
+	url = https://github.com/raphaelm/python-sepaxml
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python
+	depends = python-lxml
+	depends = python-text-unidecode
+	depends = python-xmlschema
+	source = python-sepaxml-2.6.1.tar.gz::https://github.com/raphaelm/python-sepaxml/archive/2.6.1.tar.gz
+	sha512sums = fef5ba7116fb2c9581213f9eb0b3cf7deda8683441b0da95fbecbe6cf174d2cfdc3d2b58031156693500bde809d0f343ee947a4328ad6891a1cb7f6eedb36b3a
+	b2sums = e2f8794a24d4add0e42b43fb8a1269d21676769870c4dc3e87ebdb26aca0aa76541cefa602b5b606efe993671fb13344f98d7af5b7c629b5a9ec26b7293641be
+
+pkgname = python-sepaxml
