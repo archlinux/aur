@@ -4,8 +4,8 @@
 
 _pkgname=resynthesizer
 pkgname=gimp3-plugin-${_pkgname}-git
-pkgver=2.0.3.r24.gecfc4e7
-pkgrel=3
+pkgver=2.0.3.r90.gdee6711
+pkgrel=1
 pkgdesc="Suite of gimp plugins for texture synthesis (like heal-selection), ported to GIMP 3. Git-Version"
 arch=('i686' 'x86_64' 'x86_64_v3')
 url="https://github.com/bootchk/resynthesizer"
