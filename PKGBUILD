@@ -2,7 +2,7 @@
 pkgname=cellframe-node-debug
 _pkgname=cellframe-node
 pkgver=5.2.497
-pkgrel=1
+pkgrel=2
 pkgdesc="Cellframe blockchain node with a powerful SDK"
 arch=('x86_64' 'aarch64')
 url="https://cellframe.net"
@@ -10,7 +10,7 @@ license=('LGPL3')
 makedepends=(git cmake python3)
 depends=(logrotate libxcrypt-compat)
 provides=("cellframe-node" "cellframe-node-cli" "cellframe-node-tool")
-source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=ec56487d36aadc90a5532ecaa8c0a78cefe1a33f
+source=(git+https://gitlab.demlabs.net/cellframe/$_pkgname.git#commit=ec56487d36aadc90a5532ecaa8c0a78cefe1a33f
 		git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git#commit=5bc9818a4323f85bd7eaac6ad4f1cee98ac7242d
 		git+https://gitlab.demlabs.net/dap/dap-sdk.git#commit=693e647c6afeea00e837aa66ee1f0cb14fb55b44
 		git+https://gitlab.demlabs.net/cellframe/python-cellframe.git#commit=ed5e4b338052f1897164519c30392a838ce405f4

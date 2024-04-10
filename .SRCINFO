@@ -1,7 +1,7 @@
 pkgbase = cellframe-node-debug
 	pkgdesc = Cellframe blockchain node with a powerful SDK
 	pkgver = 5.2.497
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cellframe.net
 	install = cellframe-node.install
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = cellframe-node-debug
 	conflicts = cellframe-node
 	options = !strip
 	options = !debug
-	source = git+https://gitlab.demlabs.net/cellframe/cellframe-node-debug.git#commit=ec56487d36aadc90a5532ecaa8c0a78cefe1a33f
+	source = git+https://gitlab.demlabs.net/cellframe/cellframe-node.git#commit=ec56487d36aadc90a5532ecaa8c0a78cefe1a33f
 	source = git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git#commit=5bc9818a4323f85bd7eaac6ad4f1cee98ac7242d
 	source = git+https://gitlab.demlabs.net/dap/dap-sdk.git#commit=693e647c6afeea00e837aa66ee1f0cb14fb55b44
 	source = git+https://gitlab.demlabs.net/cellframe/python-cellframe.git#commit=ed5e4b338052f1897164519c30392a838ce405f4
