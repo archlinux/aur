@@ -1,0 +1,14 @@
+pkgbase = minijinja-cli-bin
+	pkgdesc = Command-line utility for the MiniJinja template engine
+	pkgver = 1.0.19
+	pkgrel = 1
+	url = https://github.com/mitsuhiko/minijinja
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = minijinja-cli
+	conflicts = minijinja-cli
+	source = https://github.com/mitsuhiko/minijinja/releases/download/1.0.19/minijinja-cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums = eb3c9db04085582142ffc69cf48abe8779862878c66970857793aa628fbaa359
+
+pkgname = minijinja-cli-bin
