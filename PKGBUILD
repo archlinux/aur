@@ -37,10 +37,10 @@ build() {
 }
 
 package() {
-    install -Dm755 "${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-    install -Dm644 "${pkgname}.user.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
+    install -Dm755 "${pkgname}/${pkgname}"                 "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${pkgname}/LICENSE"                    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${pkgname}.service"                    "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    install -Dm644 "${pkgname}.user.service"               "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
     install -Dm644 "${pkgname}/etc/default/${pkgname}.env" "${pkgdir}/etc/default/${pkgname}"
-    install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" "${pkgname}"/{README.md,scripts/*.sh,scripts/examples/*}
+    install -Dm644 "${pkgname}"/{README.md,scripts/*.sh,scripts/examples/*} -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
