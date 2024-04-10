@@ -30,6 +30,7 @@ pkgbase = python-trimesh
 	optdepends = python-scikit-image: for voxel ops
 	optdepends = python-mapbox-earcut: triangulate polygons
 	optdepends = python-psutil: get memory usage
+	optdepends = gmsh: gmsh file support
 	optdepends = python-ruff: static code analyzer
 	optdepends = python-pytest: test runner
 	optdepends = python-pyinstrument: sampling based profiler

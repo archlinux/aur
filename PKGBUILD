@@ -36,6 +36,7 @@ optdepends=('python-scipy: convex hulls'
   'python-scikit-image: for voxel ops'
   'python-mapbox-earcut: triangulate polygons'
   'python-psutil: get memory usage'
+  'gmsh: gmsh file support'
   'python-ruff: static code analyzer'
   'python-pytest: test runner'
   'python-pyinstrument: sampling based profiler') # python-xatlas python-glooey
