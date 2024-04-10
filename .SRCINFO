@@ -1,0 +1,14 @@
+pkgbase = cmix-git
+	pkgdesc = lossless data compression program aimed at optimizing compression ratio at the cost of high CPU/memory usage
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/byronknoll/cmix
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = clang
+	depends = make
+	depends = git
+	source = git+https://github.com/byronknoll/cmix.git
+	md5sums = SKIP
+
+pkgname = cmix-git
