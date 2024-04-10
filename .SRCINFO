@@ -1,6 +1,6 @@
 pkgbase = ayatana-indicator-notifications
 	pkgdesc = Ayatana Indicator for viewing recent notifications
-	pkgver = 23.10.0
+	pkgver = 23.10.1
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators/ayatana-indicator-notifications
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = ayatana-indicator-notifications
 	depends = dconf
 	depends = glib2
 	depends = glibc
-	source = ayatana-indicator-notifications-23.10.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-notifications/archive/23.10.0.tar.gz
-	md5sums = 90945512e86956922c7af792657421a3
+	source = ayatana-indicator-notifications-23.10.1.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-notifications/archive/23.10.1.tar.gz
+	md5sums = c8e1766992f1706f9b0be7ad552888b7
 
 pkgname = ayatana-indicator-notifications
