@@ -11,9 +11,23 @@ depends=('yay')
 # The script content
 _yayclean_script="#!/bin/bash
 
-yay -Sc --noconfirm
+cleanup() {
+  # Clean orphaned packages
+  yay -Sc --noconfirm &> /dev/null
+  
+  # Remove orphaned dependencies
+  orphaned=\$(yay -Qdtq)
+  while [[ -n \$orphaned ]]; do
+    echo 'Cleaning orphaned dependencies...'
+    yay -Rns \$orphaned --noconfirm &> /dev/null
+    orphaned=\$(yay -Qdtq)
+  done
+  
+  echo 'No more orphaned packages or dependencies.'
+}
 
-yay -Rns \$(yay -Qdtq)
+echo 'Cleaning orphaned packages...'
+cleanup
 "
 
 package() {
