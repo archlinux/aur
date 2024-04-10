@@ -1,7 +1,7 @@
 pkgbase = serverless
 	pkgdesc = Serverless Framework - Build web, mobile and IoT applications with serverless architectures
 	pkgver = 3.38.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/serverless/serverless
 	arch = any
 	license = MIT
