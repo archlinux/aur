@@ -1,4 +1,5 @@
-# Maintainer: Lex Black (autumn-wind at web.de)
+# Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
+# Contributor: Lex Black (autumn-wind at web.de)
 # Contributor: andre.vmatos
 
 _pkgname=resynthesizer
