@@ -1,0 +1,5 @@
+type		= process
+command		= /usr/bin/biboumi /etc/biboumi/biboumi.cfg
+smooth-recovery	= true
+logfile		= /var/log/dinit/biboumi.log
+depends-on	= network
