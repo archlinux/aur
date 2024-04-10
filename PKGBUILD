@@ -1,6 +1,6 @@
 # Maintainer: Cross Nastasi <cross@dill.moe>
 pkgname=minetest-git-dill
-pkgver=r11518.30e280b69
+pkgver=1.0
 pkgrel=1
 pkgdesc="Minetest from git. This version uses github and allows aur helper devel functions to work properly. Also the PKGBUILD script is much simpler."
 arch=('x86_64')
@@ -9,11 +9,6 @@ license=('GPL')
 depends=(base-devel libcurl-gnutls cmake libpng sqlite libogg libvorbis openal freetype2 jsoncpp gmp luajit leveldb ncurses zstd gettext sdl2 gcc make git)
 source=("git+${url}.git")
 md5sums=('SKIP')
-
-pkgver() {
-  cd "${srcdir}/minetest"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 build() {
   cd "${srcdir}/minetest"
