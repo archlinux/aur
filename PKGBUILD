@@ -13,7 +13,7 @@ depends=(ruby-webrick)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('e839dbb155f7a96e78feb9527d23000c038fee50')
+sha256sums=('ec3d46bc63a44920ac2d67c49399fd493295ff98cb96adf25e59eaa718b38e3b')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
