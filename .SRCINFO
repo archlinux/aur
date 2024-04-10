@@ -7,7 +7,7 @@ pkgbase = neco-git
 	license = MIT
 	makedepends = git
 	provides = libneco.so
-	source = neco-git-0.1.0.r1.g8258e56::git+https://github.com/tidwall/neco
+	source = neco-git::git+https://github.com/tidwall/neco
 	sha256sums = SKIP
 
 pkgname = neco-git
