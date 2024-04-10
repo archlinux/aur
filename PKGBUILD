@@ -1,7 +1,7 @@
 # Maintainer: TrueConf LLC <packager@trueconf.com>
 pkgbase='trueconf-client'
 pkgname='trueconf'
-pkgver='8.4.0.2045'
+pkgver='8.4.0.2046'
 pkgrel='1'
 pkgdesc='Video conference client with a range of rich collaborative tools and an easy-to-use interface'
 arch=('x86_64')
@@ -56,8 +56,8 @@ depends=('pulseaudio'
 )
 install="${pkgname}-client.install"
 _channel=stable
-source=('https://mirror.trueconf.com/archlinux/trueconf-8.4.0.2045-1-x86_64.pkg.tar.zst')
-sha512sums=('ac18aae310e61793416d5f9cb390c1846a53e5a41fb2754f09a833c18f9318c6fde48189c3e86af6f50024a0187611b6d5dd7c50397cdf99b108a97bb3bb30fe')
+source=('https://mirror.trueconf.com/archlinux/trueconf-8.4.0.2046-1-x86_64.pkg.tar.zst')
+sha512sums=('37dbd677dc137fd10a2bd619a31950cc9ec27704fde180cdd6c66ca86a340dec01112c04fe1ac8837b22858e4b292c4bf81d102c06341b5e9947b726cbccd844')
 
 package() {
   cd "${srcdir}"
@@ -71,7 +71,7 @@ package() {
   install -Dm 644 "${srcdir}/usr/share/pixmaps/${pkgname}16.png" "${pkgdir}/usr/share/pixmaps/${pkgname}16.png"
   #libs
   install -m755 -d "${pkgdir}/opt/${pkgname}/lib"
-  cp -r "${srcdir}/opt/${pkgname}/client/lib/"* "${pkgdir}/opt/client/${pkgname}/lib"
+  cp -r "${srcdir}/opt/${pkgname}/client/lib/"* "${pkgdir}/opt/${pkgname}/client/lib"
   #fonts
   install -m755 -d "${pkgdir}/opt/${pkgname}/client/fonts"
   cp -r "${srcdir}/opt/${pkgname}/client/fonts/"* "${pkgdir}/opt/${pkgname}/client/fonts"
