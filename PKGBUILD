@@ -2,9 +2,10 @@
 
 pkgname=plasma6-applets-qalculate
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Qalculate! applet for the KDE plasma desktop"
 url="https://github.com/dschopf/plasma-applet-qalculate"
+replaces=('plasma5-applets-qalculate')
 license=('MIT')
 depends=('libqalculate' 'plasma-workspace')
 makedepends=('cmake' 'extra-cmake-modules')
