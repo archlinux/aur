@@ -49,9 +49,11 @@ check() {
   cd $_pkgname-$pkgver
   # test_ldap requires many unpackaged dependencies
   # test_health contain some flaky tests - https://github.com/hvac/hvac/issues/1141
+  # test_jwt_login: fails with vault 1.16 https://github.com/hvac/hvac/issues/1152
   PATH="$srcdir/vault-unprivileged:$PATH" pytest tests \
     --ignore=tests/integration_tests/api/auth_methods/test_ldap.py \
-    --ignore=tests/integration_tests/api/system_backend/test_health.py
+    --ignore=tests/integration_tests/api/system_backend/test_health.py \
+    --deselect=tests/integration_tests/api/auth_methods/test_jwt.py::TestJWT::test_jwt_login
 }
 
 package() {
