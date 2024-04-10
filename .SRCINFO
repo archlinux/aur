@@ -1,0 +1,28 @@
+pkgbase = python-mplhep
+	pkgdesc = A set of helpers for matplotlib to more easily produce plots typically needed in HEP.
+	pkgver = 0.3.46
+	pkgrel = 1
+	url = https://github.com/scikit-hep/mplhep
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-mock
+	checkdepends = python-importlib-metadata
+	checkdepends = python-boost-histogram
+	checkdepends = python-scipy
+	checkdepends = python-uproot
+	checkdepends = python-scikit-hep-testdata
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python-numpy
+	depends = python-matplotlib
+	depends = python-mplhep_data
+	depends = python-uhi
+	depends = python-packaging
+	source = python-mplhep::git+https://github.com/scikit-hep/mplhep#tag=v0.3.46
+	sha256sums = SKIP
+
+pkgname = python-mplhep
