@@ -1,0 +1,8 @@
+post_install() {
+    echo 'Please run the following command to load the new environment variable that tells Minetest where to look for MineClone2 (or just log out and back in):'
+    echo 'source /etc/profile'
+}
+
+post_remove() {
+    sudo sed -i '/MINETEST_GAME_PATH/d' /etc/profile
+}
