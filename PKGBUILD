@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="IP geolocation databases tool and library."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/sjzar/${pkgname}"
-license=("Apache")
+license=("Apache-2.0")
 makedepends=("go")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('a1671268770d884482323631dea8a2f4c21c5fb2775899a5363519974f8d6a31')
@@ -27,6 +27,7 @@ build() {
 
 package() {
     cd "${pkgname}-${pkgver}"
-    install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" *.md
+    install -Dm755 -t "${pkgdir}/usr/bin/${pkgname}"            "${pkgname}"
+    install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}"      *.md
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
