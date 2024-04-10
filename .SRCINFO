@@ -1,7 +1,7 @@
 pkgbase = python-pycapnp
 	pkgdesc = A cython wrapping of the C++ Cap'n Proto library
 	pkgver = 2.0.0b2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/capnproto/pycapnp
 	arch = x86_64
 	license = BSD-2-Clause
