@@ -1,6 +1,6 @@
 # Maintainer: erdii <me at erdii dot engineering>
 pkgname=backplane-cli
-pkgver=0.1.26
+pkgver=0.1.27
 pkgrel=1
 pkgdesc="backplane-cli is a CLI tool to interact with backplane-api."
 arch=("any")
@@ -12,7 +12,7 @@ license=("Apache")
 depends=()
 makedepends=("go" "goreleaser")
 source=("backplane-cli-${pkgver}::git+https://github.com/openshift/backplane-cli#tag=v${pkgver}")
-sha256sums=('b2059e068af8eefab9abf170874667dd696abcacd1a8f8c895ec9cd310b17bbe')
+sha256sums=('81f6437fba01193cd798fb351d84b92d69250c3ab68426507461d47cc6e3c8b7')
 
 build() {
   cd "${srcdir}/backplane-cli-${pkgver}"
