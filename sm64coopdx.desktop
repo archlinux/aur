@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=SM64 Coop Deluxe
+GenericName=Platformer
+Comment=Fork of sm64ex-coop with more features, customizability and power to the Lua API.
+Type=Application
+Terminal=false
+Exec=sm64coopdx
+Icon=sm64coopdx
+Categories=Game;Retro;Emulator;
