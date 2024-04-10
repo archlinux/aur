@@ -1,5 +1,5 @@
 # Maintainer: Your Name <your@email.com>
-pkgname=paq8px-git
+pkgname=paq8px-dill
 pkgver=1.0
 pkgrel=1
 pkgdesc="paq8px compressor program without filesize limitation"
