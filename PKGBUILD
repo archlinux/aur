@@ -2,12 +2,12 @@
 # Based on Arch stock kernel build by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-amd-color
-pkgver=6.8
+pkgver=6.8.5
 pkgrel=1
 pkgdesc='Linux with experimental AMD color management enabled'
 url='https://github.com/archlinux/linux'
 arch=(x86_64)
-license=(GPL2)
+license=(GPL-2.0-only)
 makedepends=(
   bc
   cpio
@@ -19,10 +19,13 @@ makedepends=(
   tar
   xz
 )
-options=('!strip')
-_srcname=linux-${pkgver/rc/-rc}
+options=(
+  !debug
+  !strip
+)
+_srcname=linux-${pkgver}
 source=(
-  https://git.kernel.org/torvalds/t/${_srcname}.tar.gz
+  https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz
   config  # the main kernel config file
   oled_vrr.patch
 )
@@ -33,16 +36,16 @@ validpgpkeys=(
 )
 
 sha256sums=(
-  '87eebb4c5d35b5c71e2b1dbdd106be6e6ccc0ee3c3ba0602a3fc4d9d169a6b93'
-  '03e735507e01dd3fb845d3a9dfa9a7a7286fcb57d213b4b116dcba7e088407f0'
+  '138923e5d73748b4bdbe9b5a0b8f36dfac9fcc16753a9222928dc6c963effa89'
+  '2fc20cbd7c4f7f3eeeba73b8e354cecb8757050d2c774992959f93ccde16d667'
   '8bc4397bf114c5a2b17b36eb11f3ceda338fe7cbd2310c8e22ac02a79ebe730d'
 )
+
 b2sums=(
-  'd600ef90fd16dab677292bde149d3a237ab727bca1b3ed239ec0af03ed39708f9720e4f5f9be629fc2aa1f90818aca4a22e9a6480bb76a868cf328e3debec43a'
-  '167299818c921749eafeb83327eeddbfe4db9f5659e297d86cfd8ceb6006c504d8dd772f32b0fe13935cb2ed8937324fca122510bf07f107db0b270e2f26906a'
+  '795c67356a7992cc73a85a733471d0379156f7ba68eedd68d4aa099eb07b4eea4626239ae15cdcc409819c833beb1ec2dc4032b203363db52ab1cb8bc31ac4ea'
+  '09628a4dbe1b5cd34fe5e53394c7e44558a7f2c133530f52ae2b6e022f3303d6f8f28f939b13e175a2b4532f7511de26240d26d7dca0543ceaae905d6decb768'
   'cd6b48d1d4b228fbbe5d9e7dca077e5447e19e748d69d05d060d69238bc67362e212a66cfae3621b327b771dc37591fb07963e744bf72a25ef0e068effc1b464'
 )
-
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
