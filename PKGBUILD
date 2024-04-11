@@ -3,14 +3,13 @@
 _pkgname=qqman
 _pkgver=0.1.9
 pkgname=r-${_pkgname,,}
-pkgver=0.1.9
-pkgrel=1
-pkgdesc='Q-Q and Manhattan Plots for GWAS Data'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Q-Q and Manhattan Plots for GWAS Data"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-calibrate
 )
 optdepends=(
@@ -18,14 +17,15 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3f6a931771d375174b78f220471ddd601def9b5c69631931b0992ebbc8c5bc13')
+md5sums=('af41e4fe81ff4b26cd9d69e70c31a8df')
+b2sums=('1b41c01fea625e02c8a33b48ac3438950dac67ade665d64864be3fc33850be039567be03baed6538a421881d36f7dc73e1ed3de4ae72e19e7207f7a7388db1fd')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

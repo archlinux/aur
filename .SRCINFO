@@ -1,15 +1,15 @@
 pkgbase = r-qqman
 	pkgdesc = Q-Q and Manhattan Plots for GWAS Data
 	pkgver = 0.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=qqman
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-3.0-only
 	depends = r-calibrate
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	source = https://cran.r-project.org/src/contrib/qqman_0.1.9.tar.gz
-	sha256sums = 3f6a931771d375174b78f220471ddd601def9b5c69631931b0992ebbc8c5bc13
+	md5sums = af41e4fe81ff4b26cd9d69e70c31a8df
+	b2sums = 1b41c01fea625e02c8a33b48ac3438950dac67ade665d64864be3fc33850be039567be03baed6538a421881d36f7dc73e1ed3de4ae72e19e7207f7a7388db1fd
 
 pkgname = r-qqman
