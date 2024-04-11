@@ -5,7 +5,7 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.16.r493.gfa0454724
+pkgver=0.5.17.r1.ge8bfc73bb
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -33,13 +33,12 @@ depends=(
   'python-yaml'
   'unzip'
   'webkit2gtk-4.1'
-  'xdg-desktop-portal-impl'
   'xdg-utils'
   'xorg-xrandr'
 )
 makedepends=('git' 'meson')
 checkdepends=(
-  'appstream'
+  'appstream-glib'
 #  'fluidsynth'
 #  'pciutils'
 #  'python-nose-cover3'
@@ -48,6 +47,7 @@ checkdepends=(
 #  'xterm'
 )
 optdepends=(
+  'fluidsynth'
   'gamemode: Allows games to request a temporary set of optimisations'
   'gamescope: Draw the game window isolated from your desktop'
   'gvfs: GVFS backend'
@@ -67,7 +67,8 @@ optdepends=(
   'vulkan-icd-loader: Vulkan support'
   'vulkan-tools: Vulkan support'
   'wine: easiest way to get all the libraries missing from the Lutris runtime'
-  'winetricks: use system winetricks')
+  'winetricks: use system winetricks'
+  'xdg-desktop-portal-impl')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/lutris/lutris.git')
