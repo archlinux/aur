@@ -1,8 +1,9 @@
 pkgbase = arcan-git
 	pkgdesc = Game Engine meets a Display Server meets a Multimedia Framework
-	pkgver = 0.5.4.6.r10.gdb2f991e
+	pkgver = r4353.ad9686c7
 	pkgrel = 1
 	url = https://arcan-fe.com/
+	arch = aarch64
 	arch = x86_64
 	license = GPL2
 	license = LGPL
@@ -22,10 +23,12 @@ pkgbase = arcan-git
 	depends = openal
 	depends = ffmpeg
 	depends = apr
+	depends = wayland-protocols
 	provides = arcan
 	conflicts = arcan
 	source = arcan-git::git+https://github.com/letoram/arcan.git
+	source = 0001-fix-build-werror.patch
+	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = arcan-git
-

@@ -1,18 +1,19 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgdesc='Game Engine meets a Display Server meets a Multimedia Framework'
 pkgname='arcan-git'
-pkgver=0.5.4.6.r10.gdb2f991e
+pkgver=r4353.ad9686c7
 pkgrel=1
 license=('GPL2' 'LGPL' 'custom:BSD')
-arch=('x86_64')
+arch=(aarch64 'x86_64')
 depends=('freetype2' 'harfbuzz' 'harfbuzz-icu' 'mesa' 'luajit' 'sqlite'
-         'libxkbcommon' 'libvncserver' 'libusb' 'openal' 'ffmpeg' 'apr')
+         'libxkbcommon' 'libvncserver' 'libusb' 'openal' 'ffmpeg' 'apr' 'wayland-protocols')
 makedepends=('cmake' 'ruby' 'git')
 provides=('arcan')
 conflicts=('arcan')
 url='https://arcan-fe.com/'
-source=("${pkgname}::git+https://github.com/letoram/arcan.git")
-sha512sums=('SKIP')
+source=("${pkgname}::git+https://github.com/letoram/arcan.git"
+        "0001-fix-build-werror.patch")
+sha512sums=('SKIP' 'SKIP')
 
 pkgver () {
 	cd "${pkgname}"
@@ -21,6 +22,11 @@ pkgver () {
 		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
+}
+
+prepare () {
+  cd "${srcdir}"
+  patch -Np1 -i 0001-fix-build-werror.patch
 }
 
 build () {
@@ -35,7 +41,7 @@ build () {
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DVIDEO_PLATFORM=egl-dri \
-		-DSHMIF_TUI_ACCEL=ON \
+		-DHYBRID_SDL=ON \
 		-DENABLE_LWA=ON \
 		-DENABLE_LTO=ON \
 		../src

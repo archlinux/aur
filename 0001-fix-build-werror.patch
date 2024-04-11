@@ -1,0 +1,12 @@
+--- a/arcan-git/src/CMakeLists.txt
++++ b/arcan-git/src/CMakeLists.txt
+@@ -225,7 +225,8 @@ if ("${CMAKE_C_COMPILER_ID}" MATCHES "GN
+ 		-Wno-unused-value
+ 		-Wno-unused-variable
+ 		-Wno-unused-result
+-		-Wformat=0
++		-Wno-error=format-security
++		-Wno-format
+ 	)
+ 
+ elseif ("${CMAKE_C_COMPILER_ID}" MATCHES "Clang" AND NOT ENABLE_WALL_SPAM)
