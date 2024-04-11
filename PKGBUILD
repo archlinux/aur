@@ -1,7 +1,7 @@
 # Maintainer: Peter Fern <aur at 0xc0dedbad dot com>
 
 pkgname=hyprpanel
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="An opinionated panel/shell for the Hyprland compositor."
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ optdepends=('systemd: logging support'
 	'upower: battery status support')
 makedepends=('git' 'go')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('4c23a8ebd5b65c7245713f438735c3bd46edefc784a839b0ff5f89ab75566aa6')
+sha256sums=('54ee0b77ccb3c469d4b8c259a7ce2c795e2bb1e3d323af12c187758bac302331')
 
 build() {
 	export CGO_ENABLED=0
