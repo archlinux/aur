@@ -1,7 +1,7 @@
 pkgbase = gamescope-plus
 	pkgdesc = SteamOS session compositing window manager with added patches
 	pkgver = 3.13.16.9.plus1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ChimeraOS/gamescope
 	arch = x86_64
 	license = BSD
@@ -20,6 +20,7 @@ pkgbase = gamescope-plus
 	depends = libdrm
 	depends = libpipewire-0.3.so
 	depends = libvulkan.so
+	depends = libseat.so
 	depends = libx11
 	depends = libxcb
 	depends = libxcomposite
