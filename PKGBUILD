@@ -9,7 +9,7 @@ pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
 url='https://luarvique.github.io/ppa/'
 license=('AGPL3')
-depends=('csdr-luarvique' 'python-csdr-luarvique' 'rtl-sdr' 'js8py' 'owrx_connector-luarvique' 'python-setuptools')
+depends=('csdr-luarvique' 'python-csdr-luarvique' 'rtl-sdr' 'owrx_connector-luarvique' 'python-setuptools')
 optdepends=(
     # decoding
     'python-digiham: use digital voice modes'
@@ -21,6 +21,7 @@ optdepends=(
     'wsjtx: decode FT8, FST4, FST4, Q65 digital modes'
     'msk144decoder: decode the MSK144 digimode'
     'direwolf: decode Packet Radio and optionally report data back to APRS-IS'
+    'js8py: decode JS8'
     'js8call: decode JS8'
     'dream-nox: decode DRM broadcasts'
     'dump1090: decode Mode-S and ADS-B traffic'
