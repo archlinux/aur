@@ -7,7 +7,7 @@
 
 _pkgname=gamescope
 pkgname=gamescope-plus
-pkgver=3.13.16.4.plus3
+pkgver=3.13.16.9.plus1
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
@@ -22,10 +22,8 @@ depends=(
   libcap.so
   libdisplay-info.so
   libdrm
-  libliftoff.so
   libpipewire-0.3.so
   libvulkan.so
-  libwlroots.so
   libx11
   libxcb
   libxcomposite
@@ -55,7 +53,7 @@ makedepends=(
   wayland-protocols
 )
 
-_tag=62d425164d383fcde498b17b0af5d00bfa92aed4
+_tag=f2e47826d2bdefa8d4bb3f26a52b5cd6da09787e
 source=("git+https://github.com/ChimeraOS/gamescope.git#commit=${_tag}"
         "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a"
         "git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1"
@@ -91,11 +89,7 @@ pkgver() {
 
 build() {
   export LDFLAGS="$LDFLAGS -lrt"
-  arch-meson gamescope build \
-    -Dforce_fallback_for=stb,libliftoff,wlroots \
-    -Dpipewire=enabled \
-    -Dwlroots:backends=drm,libinput,x11 \
-    -Dwlroots:renderers=gles2,vulkan
+  arch-meson gamescope build
   ninja -C build
 }
 
