@@ -1,6 +1,6 @@
 _pkgname=gamescope
 pkgname=${_pkgname}-sk-git
-pkgver=3.14.2.r32.g4e0ce3a
+pkgver=3.14.3.r12.g248fb56
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
@@ -15,6 +15,7 @@ depends=(
     libcap.so
     libdisplay-info.so
     libdrm
+    libdecor
     libliftoff.so
     libinput
     libpipewire-0.3.so

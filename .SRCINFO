@@ -1,6 +1,6 @@
 pkgbase = gamescope-sk-git
 	pkgdesc = SteamOS session compositing window manager
-	pkgver = 3.14.2.r32.g4e0ce3a
+	pkgver = 3.14.3.r12.g248fb56
 	pkgrel = 1
 	url = https://github.com/ValveSoftware/gamescope
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = gamescope-sk-git
 	depends = libcap.so
 	depends = libdisplay-info.so
 	depends = libdrm
+	depends = libdecor
 	depends = libliftoff.so
 	depends = libinput
 	depends = libpipewire-0.3.so
