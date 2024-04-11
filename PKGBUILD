@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=GenomicPlot
-_pkgver=1.0.7
+_pkgver=1.0.8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -46,8 +46,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d90d164e2333313ae1c07b720eb74b7c')
-b2sums=('aba91fe99c8698b11cfcf856d9923d9efe6997dba81425da3a3fe03599223a2619fc5751f96b77caed9fd52b3cf22c994dac7e34bb7fe17966a0553db7a56372')
+md5sums=('8c4f020e1727a2eba0927bd5e7eb7268')
+b2sums=('80097263a64423bf1c7e02e84a8e2c1dd7a75b6b22b0641281948c63545e0aa90556be4ecabbb99c056e820ce2dfe6a8ff37224382c66a1543626f3deb9bf216')
 
 build() {
   mkdir build
