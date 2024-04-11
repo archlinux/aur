@@ -7,8 +7,8 @@ _electron=electron27
 _nodejs="18.17.1"
 
 pkgname=${_pkgname}-electron
-pkgver=1.88.0.24096
-pkgrel=3
+pkgver=1.88.1.24102
+pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/VSCodium/vscodium"
@@ -94,7 +94,7 @@ prepare() {
 	fi
 
 	# Mangle original vscodium build script to build against system electron
-	patch -u build.sh -i ../../vscodium-electron.patch
+	patch -u build.sh -i $srcdir/vscodium-electron.patch
 }
 
 build() {
