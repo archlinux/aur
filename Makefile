@@ -10,7 +10,7 @@ build: clean
 
 .PHONY: clean
 clean:
-	rm -rf *.tar.* *.pkg.* src pkg
+	rm -rf *.tar.* *.pkg.* src pkg ./inputplumber
 
 .PHONY: in-docker
 in-docker: clean
