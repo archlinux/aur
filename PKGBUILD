@@ -3,28 +3,25 @@
 _pkgname=brglm
 _pkgver=0.7.2
 pkgname=r-${_pkgname,,}
-pkgver=0.7.2
-pkgrel=4
-pkgdesc='Bias Reduction in Binomial-Response Generalized Linear Models'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Bias Reduction in Binomial-Response Generalized Linear Models"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-profilemodel
 )
-optdepends=(
-  r-mass
-)
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('56098d2ce238478e7a27cacc4cdec0bc65f287fe746b38fbb1edda20c1675023')
+md5sums=('ce9f9e9381b460f9e170ddd1370776cb')
+b2sums=('d3e0230c64da354c106b32f0d0fbee0b214e7c2ea2a6d6a083e8759d3fcfa910b9aa6f5e20a1695cf9f425ce14cde07b8808940f7072550d6d15d763054f83c9')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
