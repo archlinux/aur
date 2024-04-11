@@ -8,7 +8,7 @@ build: clean
 	makepkg --printsrcinfo > .SRCINFO
 
 clean:
-	rm -rf *.tar.* *.pkg.* src pkg
+	rm -rf *.tar.* *.pkg.* src pkg ./powerstation
 
 in-docker: clean
 	docker build -t $(IMAGE_NAME):$(IMAGE_TAG) .

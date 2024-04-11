@@ -2,7 +2,7 @@
 pkgname=powerstation-git
 _pkgbase=powerstation
 pkgver=v0.2.2.r0.g2b2c007
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source performance daemon with DBus interface"
 arch=('x86_64')
 url="https://github.com/ShadowBlip/PowerStation"
@@ -12,6 +12,7 @@ makedepends=('rust' 'make' 'cmake' 'clang' 'git')
 provides=('powerstation')
 conflicts=('powerstation-bin')
 source=("${_pkgbase}::git+https://github.com/ShadowBlip/${_pkgbase}.git")
+options=(!lto)
 
 sha256sums=('SKIP')
 
