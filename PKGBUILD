@@ -51,7 +51,6 @@ _submodules=(
   cosmic-applibrary
   cosmic-bg
   cosmic-comp
-  cosmic-edit
   cosmic-files
   cosmic-greeter
   cosmic-launcher
@@ -90,7 +89,6 @@ source=(
   'git+https://github.com/pop-os/cosmic-applibrary.git'
   'git+https://github.com/pop-os/cosmic-bg.git'
   'git+https://github.com/pop-os/cosmic-comp.git'
-  'git+https://github.com/pop-os/cosmic-edit.git'
   'git+https://github.com/pop-os/cosmic-files.git'
   'git+https://github.com/pop-os/cosmic-greeter.git'
   'git+https://github.com/pop-os/cosmic-icons.git'
@@ -111,7 +109,6 @@ source=(
   'justfile.diff'
 )
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
