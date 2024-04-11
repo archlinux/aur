@@ -4,7 +4,7 @@
 _fontname="koruri"
 pkgname="ttf-$_fontname"
 pkgver=20210720
-pkgrel=2
+pkgrel=3
 pkgdesc="Japanese TrueType font obtained by mixing M+ and Open Sans"
 arch=('any')
 url="https://github.com/Koruri/Koruri"
@@ -18,5 +18,4 @@ sha256sums=('f6cb55533a1f6b4a733152edc4153840151304e0fc4c232e586d4ec38e18cea1')
 
 package() {
     install -Dm644 "$_pkgsrc"/*.ttf -t "$pkgdir/usr/share/fonts/$_fontname/"
-    install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }

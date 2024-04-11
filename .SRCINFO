@@ -1,7 +1,7 @@
 pkgbase = ttf-koruri
 	pkgdesc = Japanese TrueType font obtained by mixing M+ and Open Sans
 	pkgver = 20210720
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Koruri/Koruri
 	arch = any
 	license = Apache-2.0
