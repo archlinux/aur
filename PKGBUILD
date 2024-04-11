@@ -2,7 +2,7 @@
 # Maintainer: cropinghigh <joinmark60@gmail.com>
 # Author: Ryzerth
 pkgname=sdrpp-headers-git
-pkgver=r1365.a9f882e
+pkgver=r1589.632a4eeb
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="SDR++ headers for building out-of-tree modules"
@@ -11,9 +11,9 @@ depends=('sdrpp-git')
 makedepends=('git')
 provides=('sdrpp-headers')
 conflicts=('sdrpp-headers')
-source=("git+https://github.com/AlexandreRouma/SDRPlusPlus")
+source=("git+https://github.com/AlexandreRouma/SDRPlusPlus" "sdrpp_module.cmake")
 url="https://github.com/AlexandreRouma/SDRPlusPlus"
-md5sums=('SKIP')
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
     cd "$srcdir/SDRPlusPlus"
@@ -22,6 +22,8 @@ pkgver() {
 
 package() {
     cd "$srcdir/SDRPlusPlus/core/src"
-    mkdir -p "$pkgdir/usr/include/sdrpp_core"
-    find . -regex ".*\.\(h\|hpp\)" -exec cp --parents \{\} "$pkgdir/usr/include/sdrpp_core" \;
+    mkdir -p "$pkgdir/usr/include/sdrpp_core/src"
+    mkdir -p "$pkgdir/usr/share/cmake/Modules/"
+    find . -regex ".*\.\(h\|hpp\)" -exec cp --parents \{\} "$pkgdir/usr/include/sdrpp_core/src" \;
+    cp "$srcdir/sdrpp_module.cmake" "$pkgdir/usr/share/cmake/Modules"
 }
