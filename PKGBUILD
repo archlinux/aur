@@ -8,33 +8,29 @@ pkgname=(
   "${pkgbase}-openvino"
 )
 pkgver=1.5.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Port of OpenAI's Whisper model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/whisper.cpp"
 license=("MIT")
 depends=('glibc' 'gcc-libs')
+optdepends=('ccache: for caching builds')
 makedepends=(
+  'blas-openblas'
   'clblast'
   'cmake'
   'cuda'
   'git'
-  'blas-openblas'
   'openvino'
 )
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 
 prepare() {
-  if [ ! -d "${srcdir}/${pkgbase}-clblas" ]; then
-    cp -r "${srcdir}/${pkgbase}-${pkgver}" \
-      "${srcdir}/${pkgbase}-clblas"
-    cp -r "${srcdir}/${pkgbase}-${pkgver}" \
-      "${srcdir}/${pkgbase}-cublas"
-    cp -r "${srcdir}/${pkgbase}-${pkgver}" \
-      "${srcdir}/${pkgbase}-openblas"
-    cp -r "${srcdir}/${pkgbase}-${pkgver}" \
-      "${srcdir}/${pkgbase}-openvino"
-  fi
+  for _pkg in "${pkgname[@]}"; do
+    if [ ! -d "${srcdir}/${_pkg}" ]; then
+      cp -r "${srcdir}/${pkgbase}-${pkgver}" "${srcdir}/${_pkg}"
+    fi
+  done
 }
 
 _package() {
@@ -67,7 +63,7 @@ build() {
 
   local _cmake_cublas_args=(
     "${_cmake_args[@]}"
-    -DWHISPER_CUBLAS=ON
+    -DWHISPER_CUDA=ON
   )
 
   local _cmake_openvino_args=(
@@ -76,7 +72,7 @@ build() {
   )
 
   echo "Build ${pkgbase} with OPENBlas"
-  cd "${srcdir}/${pkgbase}-openblas"
+  cd "${srcdir}/${pkgbase}"
   cmake "${_cmake_openblas_args[@]}"
   cmake --build build
 
@@ -103,7 +99,7 @@ package_whisper.cpp() {
   depends+=('blas-openblas')
   provides=("${pkgbase}=${pkgver}")
 
-  cd "${pkgbase}-openblas"
+  cd "${pkgbase}"
   DESTDIR="${pkgdir}" cmake --install build
   _package
 }
