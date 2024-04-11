@@ -1,5 +1,5 @@
 pkgbase = goaiopmplus
-	pkgdesc = AIOPM but in Go
+	pkgdesc = AIOPM Plus but in Go
 	pkgver = 1
 	pkgrel = 1
 	arch = x86_64

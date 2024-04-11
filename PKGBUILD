@@ -6,7 +6,7 @@ pkgrel=1
 arch=('x86_64')
 
 license=('GPL3')
-pkgdesc="AIOPM but in Go"
+pkgdesc="AIOPM Plus but in Go"
 
 depends=('go' 'git' 'wget')
 
