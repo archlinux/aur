@@ -1,7 +1,7 @@
 pkgbase = python-pybrowsers
 	pkgdesc = Python library for detecting and launching browsers
-	pkgver = 0.5.2
-	pkgrel = 2
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://github.com/roniemartinez/browsers
 	arch = any
 	license = MIT
@@ -11,8 +11,7 @@ pkgbase = python-pybrowsers
 	makedepends = python-wheel
 	depends = python
 	depends = python-pyxdg
-	depends = python-typing_extensions
-	source = python-pybrowsers-0.5.2.tar.gz::https://github.com/roniemartinez/browsers/archive/refs/tags/0.5.2.tar.gz
-	sha256sums = 9e7c0127d28b2b4a32810fcdcd6085db265361893dd443de54b5ec92da116e71
+	source = python-pybrowsers-0.6.0.tar.gz::https://github.com/roniemartinez/browsers/archive/0.6.0.tar.gz
+	sha256sums = 309b8b1aa57ac6a5b5da012b54aba23376d2695a27cae474f5189410352986f0
 
 pkgname = python-pybrowsers

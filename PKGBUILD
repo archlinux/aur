@@ -1,9 +1,9 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=python-pybrowsers
-_name=browsers
-pkgver=0.5.2
-pkgrel=2
+_pkgname=browsers
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="Python library for detecting and launching browsers"
 arch=(any)
 url="https://github.com/roniemartinez/browsers"
@@ -11,7 +11,6 @@ license=(MIT)
 depends=(
   python
   python-pyxdg
-  python-typing_extensions
 )
 makedepends=(
   python-build
@@ -19,11 +18,10 @@ makedepends=(
   python-poetry
   python-wheel
 )
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('309b8b1aa57ac6a5b5da012b54aba23376d2695a27cae474f5189410352986f0')
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('9e7c0127d28b2b4a32810fcdcd6085db265361893dd443de54b5ec92da116e71')
-
-_archive="$_name-$pkgver"
+_archive="$_pkgname-$pkgver"
 
 build() {
   cd "$_archive"
