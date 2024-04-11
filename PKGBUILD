@@ -6,7 +6,7 @@
 _pkgname=proto
 pkgname="${_pkgname}-bin"
 pkgdesc='Pluggable multi-language version manager'
-pkgver=0.34.2
+pkgver=0.34.3
 pkgrel=1
 license=('MIT')
 provides=("${_pkgname}")
@@ -15,7 +15,7 @@ url='https://github.com/moonrepo/proto'
 arch=('x86_64')
 depends=('git' 'gcc-libs' 'xz')
 source=("${pkgname}-${pkgver}.tar.xz::${url}/releases/download/v${pkgver}/proto_cli-${arch[0]}-unknown-linux-gnu.tar.xz")
-sha256sums=('9b88e019d2f150a0a5e530dfc3af29aaa0626db16ae9ac4f0ccf8b1bbb319c6e')
+sha256sums=('65bde55f608c0cb4efcf4e2df340332664c07aefb4a9f97d162d72a3688fca61')
 
 prepare() {
   cd "proto_cli-${CARCH}-unknown-linux-gnu"
