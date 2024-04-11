@@ -1,118 +1,83 @@
-# Maintainer: surefire <surefire at cryptomile dot net>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: surefire <surefire at cryptomile dot net>
 # Contributor wenLiangcan <boxeed at gmail dot com>
-
 pkgname=keeweb-git
-pkgver=1.17.0+3+gf8ec47bf
-_electron=electron
+_pkgname=KeeWeb
+pkgver=1.18.7.r37.gc1fda05c
+_electronversion=13
+_nodeversion=16
 pkgrel=1
 pkgdesc="Desktop password manager compatible with KeePass databases. (develop branch)"
 arch=('any')
-url="https://keeweb.info"
+url="https://keeweb.info/"
+_ghurl="https://github.com/keeweb/keeweb"
 license=('MIT')
+conflicts=(
+	"${pkgname%-git}"
+	"${pkgname%-git}-web"
+	"${pkgname%-git}-devel"
+	"${pkgname%-git}-desktop"
+)
+provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
-	$_electron
-	'org.freedesktop.secrets'
-	'libusb'
+    "electron${_electronversion}-bin"
+	'libsecret'
 )
 makedepends=(
-	'asar'
-	'git'
-	'libsass'
-	'npm'
+    'npm'
+    'git'
+    'nvm'
+    'gendesk'
+    'asar'
 )
-conflicts=('keeweb' 'keeweb-desktop')
-provides=('keeweb' 'keeweb-desktop')
 source=(
-	"${pkgname}::git+https://github.com/keeweb/keeweb.git#branch=develop"
-	"git+https://github.com/keeweb/keeweb-native-modules.git"
-	'package.json.patch.js'
-)
-
-sha1sums=('SKIP'
-          'SKIP'
-          '5e2a12694cf56ec9ed558554819dba0187e7fbdc')
-
-case "$CARCH" in
-	i686)    _arch=ia32;;
-	x86_64)  _arch=x64;;
-	aarch64) _arch=arm64;;
-	*)       _arch=DUMMY;;
-esac
-
+    "${pkgname//-/.}::git+${_ghurl}.git"
+    "${pkgname%-git}.sh")
+sha256sums=('SKIP'
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 pkgver() {
-	cd "${pkgname}"
-	git describe --long --tags | sed 's/^v//; s/_/./g; s/-/+/g'
+    cd "${srcdir}/${pkgname//-/.}"
+    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
-
-prepare() {
-	cd "${srcdir}/${pkgname}"
-
-	# remove extra dependencies
-	node ../package.json.patch.js
-
-	sed -i \
-		-e "/const electronVersion/  s/pkg.dependencies.electron/'$(</usr/lib/${_electron}/version)'/" \
-	Gruntfile.js
-
-	sed -i \
-		-e "/'eslint',/  d" \
-	grunt.tasks.js
-
-	sed -i \
-		-e "/const BundleAnalyzerPlugin/              d" \
-		-e "/new BundleAnalyzerPlugin({$/, /^\s*})$/  d" \
-	build/webpack.config.js
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
 }
-
 build() {
-	export npm_config_build_from_source=true
-	export npm_config_optional=false
-
-	cd "${srcdir}/${pkgname}"
-
-	export SKIP_SASS_BINARY_DOWNLOAD_FOR_CI=1
-	export SASS_FORCE_BUILD=1
-	export LIBSASS_EXT=auto
-
-	npm install --nodedir=/usr
-
-	npx grunt build-web-app build-desktop-app-content
-
-	asar p tmp/desktop/app tmp/desktop/app.asar
-
-	cat <<-EOF > tmp/desktop/keeweb
-		#!/usr/bin/sh
-		exec ${_electron} /usr/lib/keeweb/app.asar --disable-updater "\$@"
-	EOF
-
-	cd "${srcdir}/keeweb-native-modules"
-
-	npm install --ignore-scripts
-
-	HOME="${srcdir}/.electron-gyp" \
-	npm_config_use_system_libusb=true \
-	npx electron-rebuild --arch="${_arch}" --version="$(</usr/lib/${_electron}/version)" --only=argon2,keytar,usb,yubikey-chalresp,keyboard-auto-type
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-git}|g" \
+        -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
+        -i "${srcdir}/${pkgname%-git}.sh"
+    _ensure_local_nvm
+    gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    cd "${srcdir}/${pkgname//-/.}"
+    export npm_config_build_from_source=true
+	export npm_config_cache="${srcdir}/.npm_cache"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+	export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+	export ELECTRONVERSION="${_electronversion}"
+	export npm_config_disturl=https://electronjs.org/headers
+	HOME="${srcdir}/.electron-gyp"
+	if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+		export npm_config_registry=https://registry.npmmirror.com
+		export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+		export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
+	else
+		echo "Your network is OK."
+	fi
+	sed "s|'AppImage', 'snap', 'rpm'|'dir'|g" -i Gruntfile.js
+	npm install
+	npm run dev-desktop-linux
 }
-
 package() {
-	cd "${srcdir}/${pkgname}"
-
-	install -Dm0755 -t "${pkgdir}/usr/bin" tmp/desktop/keeweb
-	install -Dm0644 -t "${pkgdir}/usr/lib/keeweb" tmp/desktop/app.asar
-	install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE DEPS-LICENSE
-	install -Dm0644 -t "${pkgdir}/usr/share/mime/packages" package/deb/usr/share/mime/packages/keeweb.xml
-	install -Dm0644 -t "${pkgdir}/usr/share/applications"  package/deb/usr/share/applications/keeweb.desktop
-
-	install -Dm0644 graphics/128x128.png "${pkgdir}/usr/share/pixmaps/keeweb.png"
-
-	local _src_mdir="${srcdir}/keeweb-native-modules/node_modules"
-	local _pkg_mdir="${pkgdir}/usr/lib/keeweb/node_modules/@keeweb/keeweb-native-modules"
-
-	install -Dm0644 "${_src_mdir}/usb/build/Release/usb_bindings.node" \
-		"${_pkg_mdir}/usb-linux-${_arch}.node"
-
-	for _mod in argon2 keyboard-auto-type keytar yubikey-chalresp; do
-		install -Dm0644 "${_src_mdir}/${_mod}/build/Release/${_mod}.node" \
-			"${_pkg_mdir}/${_mod}-linux-${_arch}.node"
-	done
+    install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/tmp/desktop/${pkgname%-git}-linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -r "${srcdir}/${pkgname//-/.}/tmp/desktop/${pkgname%-git}-linux-"*/resources/node_modules "${pkgdir}/usr/lib/${pkgname%-git}"
+	install -Dm644 "${srcdir}/${pkgname//-/.}/graphics/512x512.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
