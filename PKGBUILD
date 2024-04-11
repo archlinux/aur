@@ -5,7 +5,7 @@ pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rocknam
 pkgver=0.9.6
 _fossilver=v${pkgver//./}
 _rockrel=1
-pkgrel=4
+pkgrel=5
 pkgdesc='A binding for Lua to the SQLite3 database library'
 arch=(x86_64 i686)
 url='http://lua.sqlite.org'
@@ -16,9 +16,9 @@ makedepends=(lua
              lua52
              lua53
              luarocks)
-_archive="${_rockname}_$_fossilver"
+_archive="${_rockname}_$_fossilver-$pkgrel"
 source=("$_archive.zip::http://lua.sqlite.org/index.cgi/zip/$_archive.zip?uuid=v$pkgver")
-sha256sums=('11aed1f9622ae43f8c1473cfddc7cd841c534cbb3bfa27d41d99e2fa8f8c7a48')
+sha256sums=('8c9ab3b01b08583b21d1081f3e2c0146bf16c25333a9e6bfd65be4014585865f')
 
 _package_helper() {
 	cd "$_archive"
