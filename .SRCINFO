@@ -1,0 +1,9 @@
+pkgbase = yaycleaner
+	pkgdesc = A script to clean orphaned packages using yay
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = yay
+
+pkgname = yaycleaner
