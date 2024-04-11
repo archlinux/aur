@@ -1,0 +1,9 @@
+post_install() {
+      echo "To configure emacs-lsp-booster, follow instructions provided in"
+      echo "/usr/share/doc/emacs-lsp-booster/README.md"
+      echo ""
+}
+
+post_upgrade() {
+  post_install $1
+}
