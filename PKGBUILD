@@ -5,7 +5,7 @@
 pkgname=lib32-amdvlk-2023q3.3
 _pkgname=lib32-amdvlk
 pkgver=2023.Q3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD's standalone Vulkan driver for Pre-GFX10 GPUs (Vega, Polaris)"
 arch=('x86_64')
 url="https://github.com/GPUOpen-Drivers"
@@ -60,12 +60,12 @@ package() {
 	install -m755 -d "${pkgdir}"/usr/lib32
 	install -m755 -d "${pkgdir}"/usr/share/vulkan/icd.d
 	install -m755 -d "${pkgdir}"/usr/share/vulkan/implicit_layer.d
-	install -m755 -d "${pkgdir}"/usr/share/licenses/${pkgname}
+	install -m755 -d "${pkgdir}"/usr/share/licenses/${_pkgname}
 
 	install xgl/builds/Release/icd/amdvlk32.so "${pkgdir}"/usr/lib32/
 	install xgl/builds/Release/icd/amd_icd32.json "${pkgdir}"/usr/share/vulkan/icd.d/
 	install xgl/builds/Release/icd/amd_icd32.json "${pkgdir}"/usr/share/vulkan/implicit_layer.d/
-	install AMDVLK-v-${pkgver}/LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/
+	install AMDVLK-v-${pkgver}/LICENSE.txt "${pkgdir}"/usr/share/licenses/${_pkgname}/
 
 	sed -i "s/\/lib/\/lib32/g" "${pkgdir}"/usr/share/vulkan/icd.d/amd_icd32.json
 	sed -i "s/\/lib/\/lib32/g" "${pkgdir}"/usr/share/vulkan/implicit_layer.d/amd_icd32.json
