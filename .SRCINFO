@@ -1,14 +1,15 @@
 pkgbase = r-maptpx
 	pkgdesc = MAP Estimation of Topic Models
 	pkgver = 1.9.7
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=maptpx
 	arch = x86_64
-	license = GPL
-	depends = r
+	license = GPL-3.0-only
+	depends = blas
+	depends = lapack
 	depends = r-slam
-	optdepends = r-mass
 	source = https://cran.r-project.org/src/contrib/maptpx_1.9-7.tar.gz
-	sha256sums = a720c8378cef7ae83158ae358c09ce1d2afd4ae8479a1f8cf83b97ccf7880539
+	md5sums = caffcd503c07fd413a460fb7832c9422
+	b2sums = 0d14281af934f2bd49d10d60707a9afdd9353ef2b01b25de5c643db6e695f513f02c29f8ef578ab354a44774039fbd343a9ce7ac281c61a165bcc40f84cea114
 
 pkgname = r-maptpx
