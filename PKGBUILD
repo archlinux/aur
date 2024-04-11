@@ -14,10 +14,10 @@ sha256sums=('caef3d16efe49cd49ff0a0311a4eeef69b7c2878299c3cfd335fe97020a4e0bb'
             '32eb295845efbcbc888b399590d3eecafd7c6d66a6e70c7b560b305b71c1111b')
 
 package() {
-  install -d "$/opt/${pkgname}"
-  cp -a "${pkgname}/"* "$/opt/${pkgname}"
+  install -d "/opt/${pkgname}"
+  cp -a "${pkgname}/"* "/opt/${pkgname}"
 
   # Add the icon and desktop file
-  install -D -m644 "${pkgname}.png" "$/usr/share/icons/${pkgname}.png"
-  install -D -m644 "${pkgname}.desktop" "$/usr/share/applications/${pkgname}.desktop"
+  install -D -m644 "${pkgname}.png" "/usr/share/icons/${pkgname}.png"
+  install -D -m644 "${pkgname}.desktop" "/usr/share/applications/${pkgname}.desktop"
 }
