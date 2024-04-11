@@ -2,32 +2,34 @@
 # Contributor: Alad Wenter <https://wiki.archlinux.org/index.php/Special:EmailUser/Alad>
 
 pkgname=polkit-explorer-git
+_pkgname=${pkgname%-git}
 pkgver=15.fac8d70
-pkgrel=3
+pkgrel=4
 pkgdesc='Present PolicyKit information in a human-readable form.'
 arch=('any')
-url="https://github.com/scarygliders/${pkgname%-git}"
+url="https://github.com/scarygliders/${_pkgname}"
 license=('ISC')
 depends=('python-pyqt5' 'python-lxml')
+makedepends=('git')
 conflicts=('polkit-explorer')
 provides=('polkit-explorer')
 source=("git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${pkgname%-git}"
+	cd "${srcdir}/${_pkgname}"
 	printf '%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "${srcdir}/${pkgname%-git}"
+	cd "${srcdir}/${_pkgname}"
 
-	install -d -m755 "${pkgdir}"/{usr/bin,opt/$pkgname}
-	install -m644 Ui_*.py "${pkgdir}/opt/${pkgname}/"
+	install -d -m755 "${pkgdir}"/{usr/bin,opt/$_pkgname}
+	install -m644 Ui_*.py "${pkgdir}/opt/${_pkgname}/"
 
-	install -m755 'polkitex.py' "${pkgdir}/opt/${pkgname}/"
-	ln -s "/opt/${pkgname}/polkitex.py" "${pkgdir}/usr/bin/polkitex"
+	install -m755 'polkitex.py' "${pkgdir}/opt/${_pkgname}/"
+	ln -s "/opt/${_pkgname}/polkitex.py" "${pkgdir}/usr/bin/polkitex"
 
-	install -Dm644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 "polkitex.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -Dm644 'LICENSE' "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	install -Dm644 "polkitex.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
