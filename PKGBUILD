@@ -3,7 +3,7 @@
 _pkgname=mod-mda-lv2
 pkgname=$_pkgname-git
 pkgver=1.1.0.r217.b2df88c
-pkgrel=2
+pkgrel=3
 pkgdesc='MOD fork of the LV2 port of the MDA plugins (git version)'
 arch=(x86_64)
 url='https://github.com/moddevices/mda-lv2'
@@ -20,7 +20,7 @@ source=("$_pkgname::git+https://github.com/moddevices/mda-lv2.git"
         'polyphony-param.patch')
 sha256sums=('SKIP'
             'd65b3202225da4bb57611ec0f53b038386ae3f58d91fdbc7502c1ab032e62e80'
-            'b8a262b83c9b2f89b9ceac336ee93868974a1e0ab435b864e9bfb9c36a9417bc')
+            '8f7f61df6823d9f501d098acad4987b632d8ef2cfd9f4c819e0b548025dfbe04')
 
 pkgver() {
   cd $_pkgname
