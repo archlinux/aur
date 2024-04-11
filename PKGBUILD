@@ -3,25 +3,25 @@
 _pkgname=lassopv
 _pkgver=0.2.0
 pkgname=r-${_pkgname,,}
-pkgver=0.2.0
-pkgrel=4
-pkgdesc='Nonparametric P-Value Estimation for Predictors in Lasso'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Nonparametric P-Value Estimation for Predictors in Lasso"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-lars
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3f65b1fe1b0d4e700c0a7129db12333bd2cad2523df998c7bc5e0e03b8b45c79')
+md5sums=('d539e6109681125bae8190a60c04abe3')
+b2sums=('d201261514d614d414d383c436bfcea6af94c38509ed94a294687c3955c272d1b4af80a0a9ec294fdf73175703232fb172fa286d0d023f630f81c3880f4fd641')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
