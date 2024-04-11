@@ -3,14 +3,13 @@
 _pkgname=textshape
 _pkgver=1.7.5
 pkgname=r-${_pkgname,,}
-pkgver=1.7.5
-pkgrel=1
-pkgdesc='Tools for Reshaping Text'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Tools for Reshaping Text"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
   r-data.table
   r-slam
   r-stringi
@@ -19,14 +18,15 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('de45cf4b95a3c11a18a72cfe9e6a8e09962429d71afbc9635088c34c5e1b29bc')
+md5sums=('b92a38c5024eed8bf087992fa3465795')
+b2sums=('6357863ae6d220b8aac2aef6f9be0b60e86b25b4146f611bed83731b3d98e1e9ad6f3ab12bc4304a17e95863ca6f5f54ee479308c0aa6a96188ecdf072c91d95')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
