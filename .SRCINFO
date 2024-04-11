@@ -1,11 +1,12 @@
 pkgbase = parsehub
 	pkgdesc = A free web scraper that is easy to use
-	pkgver = 2.4.29
+	pkgver = 2.4.30
 	pkgrel = 1
 	url = https://www.parsehub.com/
 	arch = x86_64
 	license = custom: https://www.parsehub.com/terms
 	noextract = ParseHub.AppImage
+	options = !strip
 	source = ParseHub.AppImage::https://www.parsehub.com/static/client/ParseHub.AppImage
 	source = parsehub.desktop
 	source = parsehub.png
