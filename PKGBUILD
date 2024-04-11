@@ -2,7 +2,7 @@
 
 pkgbase=freenginx
 pkgname=($pkgbase $pkgbase'-src')
-pkgver=1.25.5
+pkgver=1.26.0
 pkgrel=1
 _prefix_relative='etc/'$pkgbase
 _prefix_full='/'$_prefix_relative
@@ -18,7 +18,7 @@ source=($url/download/$pkgbase-$pkgver.tar.gz{,.asc}
         logrotate
         ngx_setproctitle.c.patch)
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
-sha512sums=('99576c1ceab5a9cd88d83932b7af6d1cd99f3dcda0ae93833ed0047dc0035e5f38f216ea504c0775b94d5641fae0636347f9caafb103dbfbd96302f64598ce1b'
+sha512sums=('5804671c8195c00cb52440585dd84d3fb77964624a8154e2f8c523f859c3d2bd0e35872945acbb3b2edd53c6789938e059208cac8463ff87f1be07b17ca99164'
             'SKIP'
             '2fb3e090e0b44ed9dadf2dee11a045bf422ba80f427ff642e478c533cf756c9727a2bfafbb8e034ef45192699afb6e34fc662a7899e18808cb51ca02f3f30464'
             '895312a52773e649c090d17c09f9b59c0fd49e1591be7304d683d38ac5b05a92e4374c2b08cdf918fc955ad8c12828a3d58a507cd69e4436e2fc3635e367d66e'
