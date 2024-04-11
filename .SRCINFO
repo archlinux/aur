@@ -1,7 +1,7 @@
 pkgbase = tal-filter2
 	pkgdesc = A Filter By TAL Software V2
 	pkgver = 3.1.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://tal-software.com/products/tal-filter
 	arch = x86_64
 	groups = pro-audio
@@ -17,6 +17,12 @@ pkgbase = tal-filter2
 	depends = pcre2
 	source = https://tal-software.com/downloads/plugins/TAL-Filter-2_64_linux.zip
 	sha256sums = ca6c2f2b6d68dfe160a8a723549e51d2a74505b3cf8c462580bf5001f3847be9
+
+pkgname = tal-filter2-clap-bin
+	groups = clap-plugins
+	provides = tal-chorus-filter2-clap-bin
+	conflicts = tal-chorus-filter2-bin
+	replaces = tal-chorus-filter2-bin
 
 pkgname = tal-filter2-vst-bin
 	groups = vst-plugins

@@ -1,7 +1,7 @@
 pkgbase=tal-filter2
-pkgname=("${pkgbase}-vst-bin" "${pkgbase}-vst3-bin")
+pkgname=("${pkgbase}-clap-bin" "${pkgbase}-vst-bin" "${pkgbase}-vst3-bin")
 pkgver=3.1.0
-pkgrel=8
+pkgrel=9
 groups=('pro-audio')
 pkgdesc="A Filter By TAL Software V2"
 arch=('x86_64')
@@ -10,6 +10,15 @@ license=('EULA')
 depends=('alsa-lib' 'bzip2' 'brotli' 'freetype2' 'glibc' 'graphite' 'harfbuzz' 'libpng' 'pcre2')
 source=('https://tal-software.com/downloads/plugins/TAL-Filter-2_64_linux.zip')
 sha256sums=('ca6c2f2b6d68dfe160a8a723549e51d2a74505b3cf8c462580bf5001f3847be9')
+
+package_tal-filter2-clap-bin() {
+  ## VST2 Plugin
+  groups=("clap-plugins")
+  replaces=("tal-chorus-filter2-bin")
+  conflicts=("tal-chorus-filter2-bin")
+  provides=("tal-chorus-filter2-clap-bin")
+  install -Dm755 ${srcdir}/TAL-Filter-2/TAL-Filter-2.clap ${pkgdir}/usr/lib/clap/TAL-Filter-2.clap
+}
 
 package_tal-filter2-vst-bin() {
   ## VST2 Plugin
