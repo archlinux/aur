@@ -1,10 +1,10 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-all-nightly
-pkgver=20230528_nextpnr_0.6_11_ge5a5de53
+pkgver=20240411_nextpnr_0.7_26_gd3b53d8e
 pkgrel=1
 epoch=1
-pkgdesc="nextpnr portable FPGA place and route tool - all FPGA architectures"
+pkgdesc="nextpnr portable FPGA place and route tool - ice40, ecp5, machxo2, nexus, and generic"
 arch=("x86_64")
 url="https://github.com/YosysHQ/nextpnr"
 license=("custom:ISC")
@@ -25,12 +25,13 @@ conflicts=(
 	"nextpnr-git"
 	"nextpnr-ice40-nightly"
 	"nextpnr-ecp5-nightly"
+	"nextpnr-machxo2-nightly"
 	"nextpnr-nexus-nightly"
 	"nextpnr-generic-nightly"
 )
 replaces=()
 source=(
-	"nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=e5a5de53"
+	"nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=d3b53d8e"
 )
 sha256sums=(
 	"SKIP"
@@ -39,25 +40,80 @@ sha256sums=(
 _PREFIX="/usr"
 prepare() {
 	cd "${srcdir}/nextpnr"
-	[ ! -d "${srcdir}/nextpnr/build-all" ] && mkdir build-all
+	[ ! -d "${srcdir}/nextpnr/build-ice40" ] && mkdir build-ice40
+	[ ! -d "${srcdir}/nextpnr/build-ecp5" ] && mkdir build-ecp5
+	[ ! -d "${srcdir}/nextpnr/build-machxo2" ] && mkdir build-machxo2
+	[ ! -d "${srcdir}/nextpnr/build-nexus" ] && mkdir build-nexus
+	[ ! -d "${srcdir}/nextpnr/build-generic" ] && mkdir build-generic
 }
 
 build() {
-	cd "${srcdir}/nextpnr"
-	cd build-all
-		cmake -G Ninja        \
-			-DARCH=all \
-			-DBUILD_PYTHON=ON \
-			-DBUILD_GUI=ON    \
-			-DCMAKE_BUILD_TYPE=RelWithDebInfo \
-			-DCMAKE_INSTALL_PREFIX=${_PREFIX} \
-			-DUSE_OPENMP=ON	\
-			..
+	cd "${srcdir}/nextpnr/build-ice40"
+	cmake -G Ninja        \
+		-DARCH=ice40      \
+		-DBUILD_PYTHON=ON \
+		-DBUILD_GUI=ON    \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+		-DCMAKE_INSTALL_PREFIX=${_PREFIX} \
+		-DUSE_OPENMP=ON	\
+		..
 	ninja
+
+	cd "${srcdir}/nextpnr/build-ecp5"
+	cmake -G Ninja        \
+		-DARCH=ecp5       \
+		-DBUILD_PYTHON=ON \
+		-DBUILD_GUI=ON    \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+		-DCMAKE_INSTALL_PREFIX=${_PREFIX} \
+		-DUSE_OPENMP=ON	\
+		..
+	ninja
+
+	cd "${srcdir}/nextpnr/build-machxo2"
+	cmake -G Ninja        \
+		-DARCH=ecp5       \
+		-DBUILD_PYTHON=ON \
+		-DBUILD_GUI=ON    \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+		-DCMAKE_INSTALL_PREFIX=${_PREFIX} \
+		-DUSE_OPENMP=ON	\
+		..
+	ninja
+
+	cd "${srcdir}/nextpnr/build-nexus"
+	cmake -G Ninja        \
+		-DARCH=nexus      \
+		-DBUILD_PYTHON=ON \
+		-DBUILD_GUI=ON    \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+		-DCMAKE_INSTALL_PREFIX=${_PREFIX} \
+		-DUSE_OPENMP=ON	\
+		..
+	ninja
+
+
+	cd "${srcdir}/nextpnr/build-generic"
+	cmake -G Ninja        \
+		-DARCH=generic    \
+		-DBUILD_PYTHON=ON \
+		-DBUILD_GUI=ON    \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+		-DCMAKE_INSTALL_PREFIX=${_PREFIX} \
+		-DUSE_OPENMP=ON	\
+		..
+	ninja
+
 }
 
 package() {
 	cd "${srcdir}/nextpnr"
-	DESTDIR="${pkgdir}" PREFIX="${_PREFIX}" ninja -C build-all install
+
+	DESTDIR="${pkgdir}" PREFIX="${_PREFIX}" ninja -C build-ice40 install
+	DESTDIR="${pkgdir}" PREFIX="${_PREFIX}" ninja -C build-ecp5 install
+	DESTDIR="${pkgdir}" PREFIX="${_PREFIX}" ninja -C build-machxo2 install
+	DESTDIR="${pkgdir}" PREFIX="${_PREFIX}" ninja -C build-nexus install
+	DESTDIR="${pkgdir}" PREFIX="${_PREFIX}" ninja -C build-generic install
+
 	install -Dm644 "${srcdir}/nextpnr/COPYING" "${pkgdir}${_PREFIX}/share/licenses/nextpnr/COPYING"
 }
