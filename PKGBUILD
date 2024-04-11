@@ -1,7 +1,7 @@
 pkgbase=tal-filter2
 pkgname=("${pkgbase}-vst-bin" "${pkgbase}-vst3-bin")
 pkgver=3.1.0
-pkgrel=7
+pkgrel=8
 groups=('pro-audio')
 pkgdesc="A Filter By TAL Software V2"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://tal-software.com/products/tal-filter"
 license=('EULA')
 depends=('alsa-lib' 'bzip2' 'brotli' 'freetype2' 'glibc' 'graphite' 'harfbuzz' 'libpng' 'pcre2')
 source=('https://tal-software.com/downloads/plugins/TAL-Filter-2_64_linux.zip')
-sha256sums=('b987c6fd5cc34ae441db93c753701dce049f2d12ab14e3890a4a3b52201b563f')
+sha256sums=('ca6c2f2b6d68dfe160a8a723549e51d2a74505b3cf8c462580bf5001f3847be9')
 
 package_tal-filter2-vst-bin() {
   ## VST2 Plugin
