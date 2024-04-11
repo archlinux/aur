@@ -2,7 +2,7 @@
 
 pkgname=honkers-launcher-git
 _pkgname="${pkgname%-git}"
-pkgver=1.6.0.r0.gd2ef29c
+pkgver=1.6.1.r0.gfd29dec
 pkgrel=1
 pkgdesc="A launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 url="https://github.com/an-anime-team/honkers-launcher"
@@ -24,6 +24,10 @@ depends=(
     "git"
     "gtk4"
     "glibc"
+    "gst-plugins-base"
+    "gst-plugins-good"
+    "gst-plugins-bad"
+    "gst-libav"
 )
 
 makedepends=(rust)
