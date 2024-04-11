@@ -1,0 +1,13 @@
+diff --git a/GetoptLong/R/get_options.R b/GetoptLong/R/get_options.R
+index a01c65e..97a80ef 100644
+--- a/GetoptLong/R/get_options.R
++++ b/GetoptLong/R/get_options.R
+@@ -45,7 +45,7 @@ GetoptLong = function(..., help_head = NULL, help_foot = NULL, envir = parent.fr
+ 	argv_str = NULL, template_control = list(), 
+ 	help_style = GetoptLong.options$help_style) {
+ 
+-	if(is.null(get_scriptname())) {
++	if(is.null(get_scriptname()) || identical(Sys.getenv("GETOPTLONG_TESTING"), "true")) {
+ 		IS_UNDER_COMMAND_LINE = FALSE
+ 	} else {
+ 		IS_UNDER_COMMAND_LINE = TRUE
