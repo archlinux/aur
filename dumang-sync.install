@@ -1,0 +1,3 @@
+post_install() {
+  echo '==> You might want to enable the sync service with the command "systemctl enable dumang-sync.service".'
+}
