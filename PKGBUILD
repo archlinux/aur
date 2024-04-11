@@ -6,7 +6,8 @@
 # Contributor: Drew DeVault
 
 _pkgbase=nginx
-_commit=6317e21a15e0
+_commit=9f84f2e49c62
+_libressl_ver=3.9.1
 pkgbase=nginx-quic-libressl
 pkgname=(nginx-quic-libressl nginx-quic-libressl-src)
 pkgver=1.25.3
@@ -30,11 +31,11 @@ install=nginx.install
 provides=('nginx' 'nginx-mainline')
 conflicts=('nginx')
 source=("hg+https://hg.nginx.org/nginx#revision=$_commit"
-        "https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.8.2.tar.gz"
+        "https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${_libressl_ver}.tar.gz"
         "service"
         "logrotate")
 sha256sums=('SKIP'
-            '6d4b8d5bbb25a1f8336639e56ec5088052d43a95256697a85c4ce91323c25954'
+            '6da0b954695f7ee62b03f64200a8a4f02af93717b60cce04ab6c8df262c07a51'
             '05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b'
             'b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e')
 
@@ -126,7 +127,7 @@ build() {
     --http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
     --http-scgi-temp-path=/var/lib/nginx/scgi \
     --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
-    --with-openssl=${srcdir}/libressl-3.8.2 \
+    --with-openssl=${srcdir}/libressl-${_libressl_ver} \
     --with-cc-opt="${_cc_opt}" \
     --with-ld-opt="${_ld_opt}" \
     ${_common_flags[@]} \
@@ -173,7 +174,7 @@ package_nginx-quic-libressl() {
     install -Dm644 contrib/vim/${i}/nginx.vim \
       "${pkgdir}/usr/share/vim/vimfiles/${i}/nginx.vim"
   done
-  install -Dm644 "$srcdir"/libressl-3.8.2/COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-LIBRESSL
+  install -Dm644 "$srcdir"/libressl-${_libressl_ver}/COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-LIBRESSL
 
 }
 
@@ -196,7 +197,7 @@ package_nginx-quic-libressl-src() {
   install -Dm644 docs/text/LICENSE "$pkgdir"/usr/share/licenses/$provides/LICENSE
   install -d "$pkgdir"/usr/share/licenses/$pkgname
   ln -s /usr/share/licenses/$provides/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-  install -Dm644 "$srcdir"/libressl-3.8.2/COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-LIBRESSL
+  install -Dm644 "$srcdir"/libressl-${_libressl_ver}/COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-LIBRESSL
 }
 
 # vim:set ts=2 sw=2 et:
