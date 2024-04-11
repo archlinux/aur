@@ -35,7 +35,6 @@ conflicts=(
 )
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('565f46e4efc2b57a7f31995a0c56e8a48579bc6ee6bea287ec8d2049534afb4e')
-options=('debug')
 install=linvam.install
 
 build() {

@@ -23,7 +23,6 @@ pkgbase = linvam
 	provides = linvamrun
 	conflicts = linvam
 	conflicts = linvamrun
-	options = debug
 	source = https://github.com/stele95/LinVAM/archive/refs/tags/v0.6.3.tar.gz
 	sha256sums = 565f46e4efc2b57a7f31995a0c56e8a48579bc6ee6bea287ec8d2049534afb4e
 
