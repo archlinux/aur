@@ -35,7 +35,6 @@ conflicts=(
 )
 source=('git+https://github.com/stele95/LinVAM.git')
 sha256sums=('SKIP')
-options=('debug')
 install=linvam.install
 
 pkgver() {

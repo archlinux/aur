@@ -23,7 +23,6 @@ pkgbase = linvam-git
 	provides = linvamrun
 	conflicts = linvam
 	conflicts = linvamrun
-	options = debug
 	source = git+https://github.com/stele95/LinVAM.git
 	sha256sums = SKIP
 
