@@ -1,7 +1,7 @@
 # Maintainer: atomicfs
 
 pkgname=mdbook-graphviz
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="A preprocessor for mdbook to renders graphs using Graphviz"
 url="https://github.com/dylanowen/mdbook-graphviz"
@@ -9,7 +9,7 @@ arch=(x86_64)
 license=(MPL)
 makedepends=(rust cargo)
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ca108e79797adb45a0ecbfffe744b310c11b2bdaceca327c8c6d0d01921dc8ce')
+sha256sums=('eab1204556b55d2dd845fdf7d03525204c8bcdb69cf93e5649b491895d485198')
 
 build() {
   cd "${pkgname}-${pkgver}"
