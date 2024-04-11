@@ -2,7 +2,7 @@
 # Maintainer: Mikhail f. Shiryaev <mr dot felixoid at gmail dot com>
 pkgname=oh-my-git-git
 pkgver=0.6.4.r22.g9da0bd1
-pkgrel=2
+pkgrel=3
 pkgdesc='An interactive Git learning game!'
 arch=(x86_64)
 url='https://ohmygit.org/'
