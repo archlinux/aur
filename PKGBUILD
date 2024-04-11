@@ -2,7 +2,7 @@
 
 pkgname=python-keycloak
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python package providing access to the Keycloak API'
 arch=('any')
 url='https://github.com/marcospereirampj/python-keycloak'

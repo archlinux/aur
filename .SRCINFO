@@ -1,0 +1,21 @@
+pkgbase = python-keycloak
+	pkgdesc = Python package providing access to the Keycloak API
+	pkgver = 3.3.0
+	pkgrel = 2
+	url = https://github.com/marcospereirampj/python-keycloak
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-requests
+	depends = python-requests-toolbelt
+	depends = python-jose
+	depends = python-urllib3
+	depends = python-deprecation
+	source = python-keycloak-3.3.0.tar.gz::https://github.com/marcospereirampj/python-keycloak/archive/refs/tags/v3.3.0.tar.gz
+	sha256sums = 908ece3caf99b067185a7c33f5773938b8da3d895c94b68fa7ba62c7c0e34ef5
+
+pkgname = python-keycloak
