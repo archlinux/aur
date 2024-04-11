@@ -3,12 +3,12 @@
 
 pkgname=lilium-voyager-git
 pkgver=20210609.g0f4e16fc
-pkgrel=1
+pkgrel=2
 pkgdesc="An ioquake3-based Voyager: Elite Force source port."
 url="https://clover.moe/lilium-voyager/"
 license=('GPL')
 arch=('i686' 'x86_64' 'aarch64')
-depends=('curl' 'freetype2' 'libjpeg' 'libvorbis' 'openal' 'opus' 'opusfile' 'sdl2' 'zlib')
+depends=('curl' 'freetype2' 'libjpeg' 'libmad' 'libvorbis' 'openal' 'opus' 'opusfile' 'sdl2' 'zlib')
 makedepends=('git')
 optdepends=('mumble: Mumble VoIP support' 'eliteforce-data-gog: data files from GOG')
 conflicts=('lilium-voyager' 'lilium-voyager-bin')

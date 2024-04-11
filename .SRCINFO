@@ -1,7 +1,7 @@
 pkgbase = lilium-voyager-git
 	pkgdesc = An ioquake3-based Voyager: Elite Force source port.
 	pkgver = 20210609.g0f4e16fc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://clover.moe/lilium-voyager/
 	install = lilium-voyager.install
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = lilium-voyager-git
 	depends = curl
 	depends = freetype2
 	depends = libjpeg
+	depends = libmad
 	depends = libvorbis
 	depends = openal
 	depends = opus
