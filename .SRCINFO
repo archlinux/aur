@@ -1,7 +1,7 @@
 pkgbase = vilearn
-	pkgdesc = An interactive vi tutorial.
+	pkgdesc = An interactive vi tutorial
 	pkgver = 1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://git.sr.ht/~libele/vilearn
 	arch = any
 	license = custom:Copyright
