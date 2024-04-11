@@ -3,7 +3,7 @@
 
 pkgname=honkers-launcher-bin
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 url="https://github.com/an-anime-team/honkers-launcher"
 provides=("honkers-launcher")
@@ -18,6 +18,10 @@ depends=(
     "git"
     "gtk4"
     "glibc"
+    "gst-plugins-base"
+    "gst-plugins-good"
+    "gst-plugins-bad"
+    "gst-libav"
 )
 
 optdepends=(
