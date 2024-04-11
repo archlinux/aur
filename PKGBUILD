@@ -15,7 +15,6 @@ depends=(
     libcap.so
     libdisplay-info.so
     libdrm
-    libdecor
     libliftoff.so
     libinput
     libpipewire-0.3.so
@@ -49,7 +48,7 @@ makedepends=(
     meson
     ninja
     vulkan-headers
-    wayland-protocols
+    'wayland-protocols>=1.34'
 )
 _tag=3.14.3-sk-1
 # _branch="wayland-backend"

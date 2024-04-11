@@ -12,7 +12,7 @@ pkgbase = gamescope-sk
 	makedepends = meson
 	makedepends = ninja
 	makedepends = vulkan-headers
-	makedepends = wayland-protocols
+	makedepends = wayland-protocols>=1.34
 	depends = gcc-libs
 	depends = glibc
 	depends = glm
@@ -21,7 +21,6 @@ pkgbase = gamescope-sk
 	depends = libcap.so
 	depends = libdisplay-info.so
 	depends = libdrm
-	depends = libdecor
 	depends = libliftoff.so
 	depends = libinput
 	depends = libpipewire-0.3.so
