@@ -1,0 +1,13 @@
+pkgbase = arxiv-downloader
+	pkgdesc = The arXiv PDF Command-Line Interface Downloader
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/braun-steven/arxiv-downloader
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-arxiv
+	source = git+https://github.com/braun-steven/arxiv-downloader.git#tag=v1.0.0
+	md5sums = SKIP
+
+pkgname = arxiv-downloader
