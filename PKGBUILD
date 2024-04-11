@@ -3,7 +3,7 @@
 
 _java_ver=8
 _jdkname="zing-${_java_ver}"
-_zing_build="24.01.0.0"
+_zing_build="24.03.0.0"
 _zing_weirdnumber="4"
 pkgname="${_jdkname}-bin"
 pkgver="${_java_ver}.0.402"
@@ -31,11 +31,12 @@ provides=(
 install="$pkgname.install"
 source_aarch64=("https://cdn.azul.com/zing-zvm/ZVM${_zing_build}/zing${_zing_build}-${_zing_weirdnumber}-jdk${pkgver}-linux_aarch64.tar.gz")
 source_x86_64=("https://cdn.azul.com/zing-zvm/ZVM${_zing_build}/zing${_zing_build}-${_zing_weirdnumber}-jdk${pkgver}-linux_x64.tar.gz")
+
 source=("${pkgname}.install")
 #https://cdn.azul.com/zing-zvm/${_zulu_build}/zing${_zulu_build}-3-jdk${pkgver}-linux_x64.tar.gz
 #https://cdn.azul.com/zing-zvm/ZVM23.12.0.0/zing23.12.0.0-4-jdk8.0.392-linux_x64.tar.gz
-sha256sums_aarch64=('6ddd93d1596f5a87450db82b2d5419b0cb19208eff84ea44d3ecc3953c6e2512')
-sha256sums_x86_64=('a941c47121aad64e3a26c94e61aa3cb492ac4db3f07ba6c4c433e87d5db9f4c1')
+sha256sums_aarch64=('e7cf0dfbaeda54eb7419db94eae2b939b5c75ec96c1f4839585fc8db1a307f94')
+sha256sums_x86_64=('1cfdafeea0372cfe2df9554708aef80d707774ddc24e69cd4739ada0187c71e7')
 sha256sums=('1762188053ca0c6413cfeb4fba26a5075072726fe230e54e1a18a1793abe5b84')
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
