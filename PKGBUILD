@@ -2,8 +2,8 @@
 # Please note that this is my first AUR package ever, let me know if I made any mistakes or you have any improvements.
 
 pkgname=stabilitymatrix
-pkgver=2.9.3
-pkgrel=2
+pkgver=2.10.0
+pkgrel=1
 pkgdesc='Multi-Platform Package Manager for Stable Diffusion'
 arch=('any')
 url='https://github.com/LykosAI/StabilityMatrix'
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
     cd "$srcdir/StabilityMatrix"
-    dotnet publish "./StabilityMatrix.Avalonia/StabilityMatrix.Avalonia.csproj" -o out -c Release -r linux-x64
+    dotnet publish "./StabilityMatrix.Avalonia/StabilityMatrix.Avalonia.csproj" -o out -c Release -r linux-x64 -p:Version=$pkgver
 }
 
 package() {
