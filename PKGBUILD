@@ -3,25 +3,25 @@
 _pkgname=elasticnet
 _pkgver=1.3
 pkgname=r-${_pkgname,,}
-pkgver=1.3
-pkgrel=4
-pkgdesc='Elastic-Net for Sparse Estimation and Sparse PCA'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Elastic-Net for Sparse Estimation and Sparse PCA"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-lars
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4826f1f7740a69b615c8db31b74eefa6f6a2bd4fd589f7f1aae232d00ce0ac5b')
+md5sums=('6cbe6a3a3828656bc331b2f0181a3ca1')
+b2sums=('5cd58bb9dc455ff60c68b6b0c6cc376a59c1a9c1e07bad8e43717fb12ed357c5b8bbba219ed3a2032c0aa132d0d640c72f12dc509feed1e309e1a0cd67f6e21d')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
