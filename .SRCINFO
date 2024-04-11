@@ -14,7 +14,6 @@ pkgbase = nextpnr-ecp5-nightly
 	makedepends = gawk
 	makedepends = eigen
 	makedepends = boost
-	makedepends = prjtrellis-nightly
 	depends = yosys-nightly
 	depends = prjtrellis-nightly
 	depends = python
