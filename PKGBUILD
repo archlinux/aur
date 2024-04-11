@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=typesense-dashboard-bin
 _pkgname="Typesense-Dashboard"
-pkgver=1.7.0
+pkgver=1.8.0
 _electronversion=29
 pkgrel=1
 pkgdesc="A Typesense Dashboard to manage and browse collections."
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/bfritscher/typesense-dashboard/v${pkgver}/public/icons/favicon-128x128.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e70cc0b9a77e0fabb88a1cae2146494b63b96b35691e3b3f4fb9c8b1a368ca5b'
+sha256sums=('b03053984c13f3e336a84762d2ad5ad8a5cfb07a6cad1bb198c5421a4fbc571e'
             'ce61a0d27e9167938ce2083e1391de1ee514b40d8a0f5c3602a7a04f449f6779'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
