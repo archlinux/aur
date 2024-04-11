@@ -1,12 +1,12 @@
 pkgbase = tomato
 	pkgdesc = AUR local repository manager
-	pkgver = 0.8.1
-	pkgrel = 2
+	pkgver = 0.8.2
+	pkgrel = 1
 	url = https://github.com/aji-prod/tomato
 	arch = any
 	license = GPL3
 	depends = docker
-	source = tomato-0.8.1.tar.gz::https://github.com/aji-prod/tomato/archive/v0.8.1.tar.gz
-	sha256sums = 2ad7a4d57bb11cd04521a15f5f15c237693126833742dc772110fbc9878541ec
+	source = tomato-0.8.2.tar.gz::https://github.com/aji-prod/tomato/archive/v0.8.2.tar.gz
+	sha256sums = 1128f282c38ef86313d6bbd228ec27d4936f4f063a298e42cf857ffee9d71218
 
 pkgname = tomato
