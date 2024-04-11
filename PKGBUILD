@@ -1,12 +1,12 @@
 # Maintainer: JacobTech <Jacob@JacobTech.com>
 pkgname='luski-beta-bin'
-pkgver=1.1.0.0
-pkgrel=1
+pkgver=0.0.0.1
+pkgrel=2
 pkgdesc="Simple open source chat app"
 arch=('x86_64')
 url="https://www.jacobtech.com/Luski"
 license=('GPL')
-depends=('dotnet-runtime-6.0' 'curl')
+depends=('dotnet-runtime-8.0' 'curl')
 provides=('luski-beta')
 conflicts=('luski-beta-contained-bin')
 source=("luski-beta.tar.gz::https://www.jacobtech.com/Updater/GetPKG?directory=Luski&branch=Beta&selfcontained=false&platform=linux-x64")
@@ -34,7 +34,7 @@ exec /usr/lib/luski-beta/Luski \"\$@\"" >> "$pkgdir"/usr/bin/luski-beta.sh
 	touch "$pkgdir/usr/share/applications/luski beta.desktop"
 	cd "$pkgdir"/usr/share/applications
 	echo -n "[Desktop Entry]
-Name=luski-beta
+Name=Luski Beta
 Version=1.0
 GenericName=Luski Beta
 Comment=Luski is a free opensource chat app
