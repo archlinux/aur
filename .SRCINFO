@@ -6,7 +6,6 @@ pkgbase = python-pyocd
 	arch = any
 	license = Apache
 	checkdepends = python-pytest
-	checkdepends = python-typing_extensions
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools

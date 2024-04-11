@@ -37,7 +37,6 @@ makedepends=(
 )
 checkdepends=(
   python-pytest
-  python-typing_extensions
 )
 optdepends=(
   'python-setuptools: for plugin support'
