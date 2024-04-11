@@ -4,7 +4,7 @@
 pkgname='python-dbus-signature-pyparsing'
 _srcname='dbus-signature-pyparsing'
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Parser for a D-Bus Signature'
 arch=('any')
 license=('Apache')

@@ -1,7 +1,7 @@
 pkgbase = python-dbus-signature-pyparsing
 	pkgdesc = A Parser for a D-Bus Signature
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stratis-storage/dbus-signature-pyparsing/releases
 	arch = any
 	license = Apache
