@@ -23,10 +23,10 @@ makedepends=(
   'cmake'
   'cuda'
   'git'
-  'rocm-hip-sdk'
   'intel-oneapi-basekit'
   'openblas'
   'openblas64'
+  'rocm-hip-sdk'
   'vulkan-headers'
 )
 optdepends=('ccache: for caching builds')
@@ -73,7 +73,7 @@ build() {
 
   local _cmake_cublas_args=(
     "${_cmake_args[@]}"
-    -DLLAMA_CUBLAS=ON
+    -DLLAMA_CUDA=ON
   )
 
   local _cmake_hipblas_args=(
