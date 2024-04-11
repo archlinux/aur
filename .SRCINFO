@@ -1,0 +1,14 @@
+pkgbase = tmux-session
+	pkgdesc = Use fzf to manage your tmux sessions
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/BartSte/tmux-session
+	changelog = CHANGELOG.md
+	arch = any
+	license = MIT
+	depends = fzf
+	depends = tmux
+	source = tmux-session::git+https://github.com/BartSte/tmux-session.git
+	md5sums = SKIP
+
+pkgname = tmux-session
