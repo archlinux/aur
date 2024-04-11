@@ -1,5 +1,5 @@
 pkgname=sui
-pkgver=1.17.3
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Sui, a next-generation smart contract platform with high throughput, low latency, and an asset-oriented programming model powered by the Move programming language.'
 url='https://sui.io'
