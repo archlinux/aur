@@ -8,7 +8,7 @@
 _pkgname=gamescope
 pkgname=gamescope-plus
 pkgver=3.13.16.9.plus1
-pkgrel=3
+pkgrel=4
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
 url=https://github.com/ChimeraOS/gamescope
@@ -21,11 +21,14 @@ depends=(
   glm
   libcap.so
   libdisplay-info.so
+  libglvnd
   libdrm
   libinput
   libpipewire-0.3.so
-  libvulkan.so
+  libpixman-1.so
   libseat.so
+  libudev.so
+  libvulkan.so
   libx11
   libxcb
   libxcomposite
@@ -38,10 +41,14 @@ depends=(
   libxres
   libxtst
   libxxf86vm
+  opengl-driver
   openvr
   sdl2
   vulkan-icd-loader
   wayland
+  xcb-util-errors
+  xcb-util-renderutil
+  xcb-util-wm
   xorg-server-xwayland
 )
 
