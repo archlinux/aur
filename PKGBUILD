@@ -32,4 +32,5 @@ package() {
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   python -s setup.py install --root="${pkgdir}" --optimize=1
   python -m compileall "${pkgdir}"/${_site-packages}/translate
+  cp -a translate/share "$pkgdir/$site_packages/translate"
 }
