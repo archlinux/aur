@@ -4,7 +4,7 @@ _org='vsg-dev'
 _pkgname=vsgXchange
 pkgname=vsgxchange
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility library for converting data+materials to/from VulkanSceneGraph"
 arch=('i686' 'x86_64')
 url="https://github.com/$_org/$_pkgname"
@@ -16,6 +16,7 @@ sha256sums=('44935f063eccfd59fd122eff6e8d1683ab2795c49bfc51012fa5db4c31013d2e')
 
 build() {
     cmake -B "build-$pkgver" -S "$_pkgname-$pkgver" \
+        -DBUILD_SHARED_LIBS=ON \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -Wno-dev
