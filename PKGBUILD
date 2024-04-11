@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=clash-nyanpasu
 _pkgname=clash-nyanpasu
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="A Clash GUI based on tauri."
 arch=('any')
