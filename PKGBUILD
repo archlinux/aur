@@ -1,19 +1,15 @@
-# Maintainer: Alex Palaistras <alex+archlinux@deuill.org>
+# Maintainer Chris Werner Rau <aur@cwrau.io>
 
 pkgname=rofi-dmenu
-pkgver=1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Symlink for using Rofi as a drop-in replacement to dmenu"
 arch=('any')
-url="https://davedavenport.github.io/rofi/"
-license=('MIT')
-depends=('rofi')
-provides=('dmenu')
-conflicts=('dmenu')
+provides=(dmenu)
+conflicts=(dmenu)
+depends=(rofi)
 
-package() {
-  install -d "$pkgdir"/usr/bin
-  ln -s $(which rofi) "$pkgdir"/usr/bin/dmenu
+package () {
+  install -d "$pkgdir/usr/bin"
+  ln -s /usr/bin/rofi "$pkgdir/usr/bin/dmenu"
 }
-
-# vim:set ts=2 sw=2
