@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgbase=linux-flowx13
-pkgver=6.8.4.arch1
+pkgver=6.8.5.arch1
 pkgrel=1
 pkgdesc='Linux (with patches for the Asus Flow X13)'
 url='https://github.com/archlinux/linux'
@@ -35,6 +35,7 @@ source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
   config  # the main kernel config file
+  docutils.patch  # fix the docs build
   0001-HID-amd_sfh-Add-support-for-tablet-mode-switch-senso.patch
 )
 validpgpkeys=(
@@ -43,17 +44,19 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('d5dec495fc00605fa9e04114df547fbc92b33d9ea7a4a2b7073c589590e79e63'
+sha256sums=('138923e5d73748b4bdbe9b5a0b8f36dfac9fcc16753a9222928dc6c963effa89'
             'SKIP'
-            'bb2b3aa16007a0d5d61571af86a44be414f8672dad5a719cbdc92bfb758b1217'
+            '4ad162664e08e57ed8abf44827ecc2fce2eeb38b34988483a9183065a229534e'
             'SKIP'
-            '5c0ebdac3ab21e1282cca9f5d41412eab90352f6f2ec22ce660ad038a5ff48fa'
+            '2fc20cbd7c4f7f3eeeba73b8e354cecb8757050d2c774992959f93ccde16d667'
+            '9cb73cacbb3633f207d0c30e738cae9965adcd0b0eb5ecd60563fed1394c0f38'
             '92b8cee96a70a2f27db6ff8899e47b18884e289f3c2eb05500b37c5db6f23fe8')
-b2sums=('cf58732397bfa11988b79901092887d53c3367d09f63da51ebdcc83518be3a7e9a638fbbb1ff080cd7abed633fadff03d1d7a3928b772de57b14e46e552f9462'
+b2sums=('795c67356a7992cc73a85a733471d0379156f7ba68eedd68d4aa099eb07b4eea4626239ae15cdcc409819c833beb1ec2dc4032b203363db52ab1cb8bc31ac4ea'
         'SKIP'
-        '51f592b6448e2fa81438048cc2b2fac6395f42f03e5a3bf2d3318e38db43a066ee0a24e364bee3fa42da939ff82f0bd44bba1a2b3fddd8cc61d370045e12b5fb'
+        'c4b429ed4508893913c8bd709e8f62496283ba78e5d5bf4d84b734be6d106bd0888341161615af8303f48fb93ce46efda425ff3e56b0e3013c2af4ab95c9428f'
         'SKIP'
-        '4a712da6b32c9c9716d4797076a01f22035f3d28c56109d4bbcaf095847b0302bb2eda5ff51bca3e59cfe68befefc5c90dcfe3dc7a73064d3159421f705a5c4b'
+        '09628a4dbe1b5cd34fe5e53394c7e44558a7f2c133530f52ae2b6e022f3303d6f8f28f939b13e175a2b4532f7511de26240d26d7dca0543ceaae905d6decb768'
+        '0bb42a22c110f06a45e59a9adc194184a51ff97e5584d6ffabca0aa37e1e65ccaf44f43dc744eaa3861d6f6b00e299d4662bcf0c0d94478af9352b4c4f6b0ffd'
         '5b4cff2ab2ce1d2464eb4b0b1398e2ad1af85c1322b9187e19894a7dff19e094ad0b7190122be5fdadde283d9433591bf6b55a045354d0abe5351bd4cd410dc4')
 
 
