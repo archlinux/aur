@@ -1,13 +1,13 @@
 pkgbase = r-rcdklibs
 	pkgdesc = The CDK Libraries Packaged for R
 	pkgver = 2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=rcdklibs
 	arch = any
-	license = LGPL
-	depends = r
+	license = LGPL-2.0-or-later
 	depends = r-rjava
 	source = https://cran.r-project.org/src/contrib/rcdklibs_2.9.tar.gz
-	sha256sums = ef91ad0411f35c5bafcec03b986c8bab99782b7be858a86d944877308ab1b4c1
+	md5sums = b1c063c63b02f714f0b3f01ed23ed93d
+	b2sums = 729cbd5b16e5256266767280b7b6bd4298a3e2d1dc49ecedfd0072da753c8ae853ef7a7539d8bddf0b869d7de8cea14adebc20c3e224b5294c6580455ce1d1b3
 
 pkgname = r-rcdklibs

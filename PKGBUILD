@@ -3,25 +3,25 @@
 _pkgname=rcdklibs
 _pkgver=2.9
 pkgname=r-${_pkgname,,}
-pkgver=2.9
-pkgrel=1
-pkgdesc='The CDK Libraries Packaged for R'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('LGPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="The CDK Libraries Packaged for R"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('LGPL-2.0-or-later')
 depends=(
-  r
   r-rjava
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ef91ad0411f35c5bafcec03b986c8bab99782b7be858a86d944877308ab1b4c1')
+md5sums=('b1c063c63b02f714f0b3f01ed23ed93d')
+b2sums=('729cbd5b16e5256266767280b7b6bd4298a3e2d1dc49ecedfd0072da753c8ae853ef7a7539d8bddf0b869d7de8cea14adebc20c3e224b5294c6580455ce1d1b3')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
