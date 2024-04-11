@@ -1,6 +1,6 @@
 pkgbase = gotosocial-rc
 	pkgdesc = ActivityPub social network server written in Golang (release candidate)
-	pkgver = 0.15.0rc2
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://gotosocial.org
 	arch = x86_64
