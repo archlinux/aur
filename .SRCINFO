@@ -1,7 +1,7 @@
 pkgbase = python-spsdk
 	pkgdesc = NXP Secure Provisioning SDK
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nxp-mcuxpresso/spsdk
 	arch = any
 	license = BSD-3-Clause

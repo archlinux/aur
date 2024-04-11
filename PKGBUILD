@@ -3,7 +3,7 @@
 _name=spsdk
 pkgname=python-spsdk
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="NXP Secure Provisioning SDK"
 arch=(any)
 url="https://github.com/nxp-mcuxpresso/spsdk"
