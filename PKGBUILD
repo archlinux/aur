@@ -1,4 +1,6 @@
-# Maintainer: JP-Ellis <josh@jpellis.me>
+# Submitter: JP-Ellis <josh@jpellis.me>
+# Maintainer: cphyc <contact@cphyc.me>
+
 pkgname=github-copilot-cli
 _pkgname="@githubnext/$pkgname"
 pkgver=0.1.36
