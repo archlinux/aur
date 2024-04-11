@@ -3,7 +3,7 @@
 _name=pyOCD
 pkgname=python-pyocd
 pkgver=0.36.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Programming and debugging Arm Cortex-M microcontrollers"
 arch=(any)
 url="https://github.com/pyocd/pyOCD"
@@ -76,12 +76,17 @@ build() {
 
 check() {
   local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  local pytest_options=(
+    -vv
+    # breaks due to changes in test facilities in Python 3.12
+    --deselect test/unit/test_autoflush.py::TestAutoflush::test_transfer_err_not_flushed
+  )
 
   cd $_name-$pkgver
   # install to temporary location
   python -m installer --destdir=test_dir dist/*.whl
   export PYTHONPATH="test_dir/$_site_packages:$PYTHONPATH"
-  pytest -vv
+  pytest "${pytest_options[@]}"
 }
 
 package() {

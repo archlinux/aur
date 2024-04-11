@@ -1,7 +1,7 @@
 pkgbase = python-pyocd
 	pkgdesc = Programming and debugging Arm Cortex-M microcontrollers
 	pkgver = 0.36.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyocd/pyOCD
 	arch = any
 	license = Apache-2.0
