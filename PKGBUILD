@@ -3,29 +3,28 @@
 _pkgname=getPass
 _pkgver=0.2-4
 pkgname=r-${_pkgname,,}
-pkgver=0.2.4
-pkgrel=1
-pkgdesc='Masked User Input'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('BSD')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Masked User Input"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('BSD-2-Clause')
 depends=(
-  r
   r-rstudioapi
 )
-optdepends=(
-  r-argon2
-)
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('15dbebf8b46814e6e4cf9affb83439b253477900b1159d6f0c3a919fc44e1828')
+md5sums=('4d5b96287de26d2bf021c940965d76a3')
+b2sums=('9bd8e26b1a53f501008d77b553aa7a978a8b30df5fc503904d24e12647b08f7bf9b29bc20adc5477eb616d42ae31c47a9cd51fe5a20dd72fbc674b2e4c2c99f8')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
