@@ -1,16 +1,14 @@
 pkgbase = r-skmeans
 	pkgdesc = Spherical k-Means Clustering
 	pkgver = 0.2.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=skmeans
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-2.0-only
 	depends = r-clue
 	depends = r-slam
-	optdepends = r-kmndirs
-	optdepends = r-matrix
 	source = https://cran.r-project.org/src/contrib/skmeans_0.2-16.tar.gz
-	sha256sums = 3aab34ab867cf53deafc3f16164bf8fed73ac4543897f1a1903b0682e5742f66
+	md5sums = 872d5851fd972dde7671b3fe099dbbaf
+	b2sums = b0adf08f148962651234ad86fe4de53df9d383f6b129e50503c6960a121d6e35fd70650eaea7e1b66aea5494ff5011bf42d91527f94489439e3dca02ce4ae52f
 
 pkgname = r-skmeans
