@@ -72,7 +72,7 @@ build() {
 
 	cd "${srcdir}/nextpnr/build-machxo2"
 	cmake -G Ninja        \
-		-DARCH=ecp5       \
+		-DARCH=machxo     \
 		-DBUILD_PYTHON=ON \
 		-DBUILD_GUI=ON    \
 		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
