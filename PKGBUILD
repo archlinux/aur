@@ -14,8 +14,12 @@ depends=('bash' 'python-lxml' 'python-ruamel-yaml')
 makedepends=('python-setuptools')
 optdepends=('gaupol: for po2sub'
             'python-chardet: encoding detector'
+            'python-cheroot: for TM Server'
             'python-levenshtein: faster matching'
-            'python-cheroot: for TM Server')
+            'python-mistletoe: Markdown support for po2md'
+            'python-pyenchant: for spellcheck filter'
+            'python-pyparsing: RC support for po2rc'
+            'python-vobject: iCalendar files support for po2ical')
 source=($pkgname-$pkgver.tar.gz::https://github.com/translate/translate/archive/$pkgver.tar.gz)
 sha256sums=('c6dcfd7f9177961b38e1a06e03722aab32a91f58d9efe7638af308f249b73509')
 
