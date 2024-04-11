@@ -1,0 +1,28 @@
+pkgbase = nextpnr-machxo2-nightly
+	pkgdesc = nextpnr portable FPGA place and route tool - for machxo2
+	pkgver = 20240411_nextpnr_0.7_26_gd3b53d8e
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/YosysHQ/nextpnr
+	arch = x86_64
+	license = custom:ISC
+	makedepends = git
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = gawk
+	makedepends = eigen
+	makedepends = boost
+	depends = yosys-nightly
+	depends = prjtrellis-nightly
+	depends = python
+	depends = boost-libs
+	depends = qt5-base
+	conflicts = nextpnr-git
+	conflicts = nextpnr-all-nightly
+	options = !strip
+	source = nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=d3b53d8e
+	sha256sums = SKIP
+
+pkgname = nextpnr-machxo2-nightly
